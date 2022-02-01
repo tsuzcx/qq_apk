@@ -1,40 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mediafocus.MediaFocusController;
-import com.tencent.mobileqq.mediafocus.MediaFocusController.1;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.Stack;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
 
-public class avoz
-  implements EIPCResultCallback
+class avoz
+  implements TVK_IMediaPlayer.OnVideoPreparingListener
 {
-  public avoz(MediaFocusController.1 param1, long paramLong) {}
+  avoz(avor paramavor) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    boolean bool1;
-    boolean bool2;
-    long l;
-    if (paramEIPCResult.data != null)
-    {
-      bool1 = paramEIPCResult.data.getBoolean("isProcessRunning");
-      bool2 = paramEIPCResult.data.getBoolean("isItemExist");
-      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-      if ((!bool1) || (!bool2)) {
-        break label75;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged not the same process but existed, cost:", Long.valueOf(l) });
-      }
-    }
-    return;
-    label75:
-    MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).pop();
     if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged isProcessRun:", Boolean.valueOf(bool1), " ,isItmeExist:", Boolean.valueOf(bool2), " ,stack:", Integer.valueOf(MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).size()), " ,cost:", Long.valueOf(l) });
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
     }
-    MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0, this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.a);
   }
 }
 

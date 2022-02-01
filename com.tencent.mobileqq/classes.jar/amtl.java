@@ -1,14 +1,12 @@
-class amtl
-  implements amqq
+import com.tencent.ttpic.filament.CmShowAssetsData;
+
+public abstract interface amtl
 {
-  amtl(amtk paramamtk) {}
+  public abstract CmShowAssetsData a();
   
-  public void onDpcPullFinished(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(CmShowAssetsData paramCmShowAssetsData, int paramInt);
 }
 
 

@@ -1,8 +1,26 @@
-public abstract interface bcyu
+import com.tencent.qphone.base.util.QLog;
+
+class bcyu
+  implements bcyy
 {
-  public abstract void a();
+  bcyu(bcyt parambcyt) {}
   
-  public abstract void a(int paramInt);
+  public void a(float paramFloat)
+  {
+    if (bcyt.a(this.a) != null) {
+      bcyt.a(this.a).a(this.a.a, paramFloat);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("VideoCompressProcessor", 1, "hardware compress finish code: " + paramInt);
+    if (bcyt.a(this.a) != null)
+    {
+      bcyt.a(this.a).a(this.a.a, 1.0F);
+      bcyt.a(this.a).a(this.a.a, 3);
+    }
+  }
 }
 
 

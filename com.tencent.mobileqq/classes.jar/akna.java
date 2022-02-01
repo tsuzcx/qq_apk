@@ -1,31 +1,13 @@
-import com.tencent.mobileqq.activity.recent.config.RecentConfig;
-import com.tencent.mobileqq.activity.recent.config.menu.RecentMenuFlagDispatch;
-import com.tencent.mobileqq.activity.recent.config.statusIcon.RecentStatusIconDispatch;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class akna
-  extends RecentConfig<QQAppInterface, RecentUserBaseData>
+class akna
+  implements biyc
 {
-  public void recentMenuFlagDispatchRegister()
-  {
-    this.recentMenuFlagDispatch = new RecentMenuFlagDispatch();
-    this.recentMenuFlagDispatch.register(aknb.class);
-    this.recentMenuFlagDispatch.register(aknc.class);
-    this.recentMenuFlagDispatch.prepare();
-  }
+  akna(akmu paramakmu, Runnable paramRunnable) {}
   
-  public void recentStatusIconRegister()
+  public void a(int paramInt)
   {
-    this.recentStatusIconDispatch = new RecentStatusIconDispatch();
-    this.recentStatusIconDispatch.register(aknj.class);
-    this.recentStatusIconDispatch.register(akne.class);
-    this.recentStatusIconDispatch.register(akng.class);
-    this.recentStatusIconDispatch.register(aknh.class);
-    this.recentStatusIconDispatch.register(aknf.class);
-    this.recentStatusIconDispatch.register(akni.class);
-    this.recentStatusIconDispatch.register(aknd.class);
-    this.recentStatusIconDispatch.prepare();
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

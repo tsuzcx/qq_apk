@@ -7,7 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
-import awhe;
+import axng;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import kotlin.Lazy;
 import kotlin.LazyKt;
@@ -62,7 +62,7 @@ public final class GdtMotiveBrowsingImage
     {
       localObject = getResources();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "resources");
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = awhe.a((Resources)localObject, 2130840252);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = axng.a((Resources)localObject, 2130840288);
       int i = AIOUtils.dp2px(18.0F, getResources());
       localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
       if (localObject == null) {

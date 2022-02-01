@@ -1,35 +1,19 @@
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.im.oidb.articlesummary.articlesummary.ArticleBasicInfo;
-import tencent.im.oidb.articlesummary.articlesummary.LongContentInfo;
-import tencent.im.oidb.articlesummary.articlesummary.OutsideLinkInfo;
-import tencent.im.oidb.articlesummary.articlesummary.PGCVideoInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rex
+class rex
+  implements View.OnClickListener
 {
-  public int a;
-  public ren a;
-  public rfd a;
-  public rfg a;
+  rex(rew paramrew) {}
   
-  public rex() {}
-  
-  public rex(articlesummary.LongContentInfo paramLongContentInfo)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramLongContentInfo.enum_long_content_card_type.get();
-    this.jdField_a_of_type_Ren = new ren(paramLongContentInfo.msg_article_basic_ingo);
-    this.jdField_a_of_type_Rfd = new rfd(paramLongContentInfo.msg_outside_link_info);
-    this.jdField_a_of_type_Rfg = new rfg(paramLongContentInfo.msg_pgc_video_info);
-  }
-  
-  public articlesummary.LongContentInfo a()
-  {
-    articlesummary.LongContentInfo localLongContentInfo = new articlesummary.LongContentInfo();
-    localLongContentInfo.enum_long_content_card_type.set(this.jdField_a_of_type_Int);
-    localLongContentInfo.msg_article_basic_ingo.set(this.jdField_a_of_type_Ren.a());
-    localLongContentInfo.msg_outside_link_info.set(this.jdField_a_of_type_Rfd.a());
-    localLongContentInfo.msg_pgc_video_info.set(this.jdField_a_of_type_Rfg.a());
-    localLongContentInfo.setHasFlag(true);
-    return localLongContentInfo;
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

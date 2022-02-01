@@ -21,6 +21,7 @@ public class FaceStatus
   public float tx;
   public float ty;
   public float[] xys = new float['¼'];
+  public float[] xys256;
   public float yaw;
 }
 

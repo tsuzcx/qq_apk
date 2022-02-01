@@ -1,27 +1,59 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class rhx
-  implements vgd
+  extends ClickableSpan
+  implements tbx
 {
-  public rhx(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  private int jdField_a_of_type_Int = -1;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  boolean jdField_a_of_type_Boolean;
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, syk paramsyk)
+  public rhx(ComponentHeaderNewSocial paramComponentHeaderNewSocial, ArticleInfo paramArticleInfo, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
     }
-    ReadInJoyDeliverVideoActivity.c(this.a, ShortVideoPreviewActivity.a(paramsyk.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment local cover is " + ReadInJoyDeliverVideoActivity.a(this.a));
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (ppe.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+    {
+      pqx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 5, false);
+      pqb.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a.a.e());
+      return;
     }
-    this.a.setRightViewTextDisable(1);
+    pqx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = -1)
+    {
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(AIOUtils.sp2TextSize(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getResources()));
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      return;
+    }
   }
 }
 

@@ -1,22 +1,17 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.drawable.Drawable;
 
-class afuf
-  extends amsu
+public class afuf
 {
-  afuf(afud paramafud) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
-    {
-      paramString = this.a.a.getFaceBitmap(this.a.a.getCurrentAccountUin(), (byte)3, false);
-      if ((paramString != null) && (afud.a(this.a) != null)) {
-        afud.a(this.a).setImageBitmap(paramString);
-      }
-    }
-  }
+  public int a;
+  public Drawable a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
 }
 
 

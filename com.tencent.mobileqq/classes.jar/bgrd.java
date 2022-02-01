@@ -1,21 +1,23 @@
-public class bgrd
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.TextView;
+
+class bgrd
+  implements Animation.AnimationListener
 {
-  public long a;
-  public String a = "";
-  public long b;
-  public String b = "";
-  public long c;
-  public String c = "";
-  public long d;
-  public String d;
-  public long e;
-  public long f;
+  bgrd(bgrc parambgrc) {}
   
-  public bgrd()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_d_of_type_Long = 999L;
-    this.jdField_d_of_type_JavaLangString = "";
+    paramAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(100L);
+    this.a.a.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

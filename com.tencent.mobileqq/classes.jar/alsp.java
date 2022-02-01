@@ -1,102 +1,53 @@
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class alsp
-  implements View.OnTouchListener
+class alsp
+  implements INetEngine.INetEngineListener
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
+  alsp(also paramalso) {}
   
-  public alsp(CmGameDebugView paramCmGameDebugView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onResp(NetResp paramNetResp)
   {
-    if (paramView == CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView))
+    Object localObject = (FilterDesc)paramNetResp.mReq.getUserData();
+    if (paramNetResp.mResult != 0) {
+      lbd.f("VideoFilterTools", "download file failed. errorCode: " + paramNetResp.mErrCode + ", errorMsg: " + paramNetResp.mErrDesc + ", file: " + ((FilterDesc)localObject).resurl);
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
-      this.b = ((int)paramMotionEvent.getRawY());
-      switch (paramMotionEvent.getAction())
+      return;
+      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.mReq.mOutPath)))
       {
-      default: 
-      case 0: 
-        for (;;)
+        lbd.f("VideoFilterTools", "download file failed: md5 is not match.");
+        FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
+        return;
+      }
+      lbd.f("VideoFilterTools", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
+      try
+      {
+        localObject = also.b;
+        FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, (String)localObject, false);
+        FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
+        if ((also.a(this.a).decrementAndGet() == 0) && (also.a(this.a) != null))
         {
-          return true;
-          this.c = this.jdField_a_of_type_Int;
-          this.d = this.b;
-        }
-      case 2: 
-        int i = this.jdField_a_of_type_Int - this.c;
-        int j = this.b - this.d;
-        this.e = (paramView.getLeft() + i);
-        this.f = (paramView.getTop() + j);
-        this.g = (i + paramView.getRight());
-        this.h = (paramView.getBottom() + j);
-        if (this.e < 0)
-        {
-          this.e = 0;
-          this.g = (this.e + paramView.getWidth());
-          label173:
-          if (this.f >= 0) {
-            break label355;
-          }
-          this.f = 0;
-          this.h = (this.f + paramView.getHeight());
-        }
-        for (;;)
-        {
-          paramMotionEvent = (FrameLayout.LayoutParams)paramView.getLayoutParams();
-          paramMotionEvent.setMargins(this.e, this.f, 0, 0);
-          paramView.setLayoutParams(paramMotionEvent);
-          if ((!this.jdField_a_of_type_Boolean) && ((Math.abs(this.jdField_a_of_type_Int - this.c) > CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView).density * 2.0F) || (Math.abs(this.b - this.d) > CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView).density * 2.0F))) {
-            this.jdField_a_of_type_Boolean = true;
-          }
-          this.c = this.jdField_a_of_type_Int;
-          this.d = this.b;
-          break;
-          if (this.g <= this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.jdField_a_of_type_Int) {
-            break label173;
-          }
-          this.g = this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.jdField_a_of_type_Int;
-          this.e = (this.g - paramView.getWidth());
-          break label173;
-          label355:
-          if (this.h > this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b)
-          {
-            this.h = this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b;
-            this.f = (this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b - paramView.getHeight());
-          }
+          also.a(this.a).a(true);
+          return;
         }
       }
-      if (!this.jdField_a_of_type_Boolean)
+      catch (IOException paramNetResp)
       {
-        if (CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView).getVisibility() == 0) {
-          break label434;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.aj_();
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        break;
-        label434:
-        this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b();
+        paramNetResp.printStackTrace();
+        lbd.f("VideoFilterTools", "unzip file failed.");
       }
     }
-    return false;
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

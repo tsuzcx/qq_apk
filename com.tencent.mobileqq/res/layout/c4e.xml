@@ -5,7 +5,7 @@
     <LinearLayout android:gravity="center" android:id="@id/e2v" android:background="@color/al3" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
         <LinearLayout android:orientation="horizontal" android:id="@id/aiq" android:background="@drawable/b89" android:paddingLeft="15.0dip" android:paddingRight="18.0dip" android:layout_width="wrap_content" android:layout_height="35.0dip">
             <ImageView android:layout_gravity="center_vertical" android:layout_width="27.0dip" android:layout_height="27.0dip" android:src="@drawable/cbq" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="@string/vnn" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/mkf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="@string/vnn" />
         </LinearLayout>
     </LinearLayout>
     <com.tencent.widget.XListView android:id="@id/ebs" android:background="@color/al3" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/al3" android:divider="@null" android:layout_above="@id/e2v" style="@style/n6" />

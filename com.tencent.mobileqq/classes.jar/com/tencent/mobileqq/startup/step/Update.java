@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.startup.step;
 
-import amtj;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -19,9 +18,10 @@ import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anot;
-import bcad;
-import bccs;
+import anvx;
+import aorm;
+import bdgy;
+import bdjn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -109,7 +109,7 @@ public class Update
       try
       {
         Thread.sleep(300L);
-        bool1 = bccs.b(4, this.mDirector, null).step();
+        bool1 = bdjn.b(4, this.mDirector, null).step();
         if (!bool1) {
           break label839;
         }
@@ -126,7 +126,7 @@ public class Update
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           BaseApplicationImpl.isFirstLaunchNew = true;
         }
-        bccs.b(28, this.mDirector, null).step();
+        bdjn.b(28, this.mDirector, null).step();
         if (BaseApplicationImpl.sProcessId != 1) {
           break label907;
         }
@@ -190,11 +190,11 @@ public class Update
         this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
       }
-      boolean bool2 = bccs.b(0, this.mDirector, jdField_a_of_type_ArrayOfInt).step();
+      boolean bool2 = bdjn.b(0, this.mDirector, jdField_a_of_type_ArrayOfInt).step();
       QLog.e("AutoMonitor", 1, "UPDATE_STEPS " + bool2);
       localInterruptedException.edit().putString(str1, AppSetting.g()).commit();
       if (!BaseApplicationImpl.isFirstLaunchNew) {
-        anot.a().c(BaseApplicationImpl.getContext());
+        aorm.a().c(BaseApplicationImpl.getContext());
       }
       for (;;)
       {
@@ -241,11 +241,11 @@ public class Update
             this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localAppActivity.getWindow().getDecorView());
             if (this.jdField_a_of_type_AndroidViewViewGroup != null)
             {
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.mDirector.a.getApplicationContext(), 2131562810, null));
+              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.mDirector.a.getApplicationContext(), 2131562881, null));
               this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-              this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368152));
-              this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370298));
-              this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131714921));
+              this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368295));
+              this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370477));
+              this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131715269));
               this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
             }
             this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
@@ -269,7 +269,7 @@ public class Update
         } while (this.jdField_a_of_type_AndroidWidgetProgressBar.getProgress() > i);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
         if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.mDirector.a.getString(2131692313), new Object[] { Integer.valueOf(i) }));
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.mDirector.a.getString(2131692406), new Object[] { Integer.valueOf(i) }));
         }
       } while (i >= 99);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 100L);

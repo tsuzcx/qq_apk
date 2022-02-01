@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import akvm;
-import amtj;
+import alti;
+import anvx;
 import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 import com.tencent.qphone.base.util.QLog;
 
 public class RMVideoRecordState$2
   implements Runnable
 {
-  public RMVideoRecordState$2(akvm paramakvm) {}
+  public RMVideoRecordState$2(alti paramalti) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class RMVideoRecordState$2
       if (localRMVideoStateMgr.a.i != -1) {
         break label95;
       }
-      localRMVideoStateMgr.b(0, amtj.a(2131712581), false);
+      localRMVideoStateMgr.b(0, anvx.a(2131712928), false);
     }
     for (;;)
     {
@@ -33,11 +33,11 @@ public class RMVideoRecordState$2
       return;
       label95:
       if (localRMVideoStateMgr.a.i == -2) {
-        localRMVideoStateMgr.b(0, amtj.a(2131712586), false);
+        localRMVideoStateMgr.b(0, anvx.a(2131712933), false);
       } else if (localRMVideoStateMgr.a.i == -3) {
-        localRMVideoStateMgr.b(0, amtj.a(2131712588), false);
+        localRMVideoStateMgr.b(0, anvx.a(2131712935), false);
       } else {
-        localRMVideoStateMgr.b(0, amtj.a(2131712584), false);
+        localRMVideoStateMgr.b(0, anvx.a(2131712931), false);
       }
     }
   }

@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.mini.manager;
 
-import blbu;
-import blbv;
-import blbw;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.tianshu.TianShuAdPosItemData;
+import cooperation.vip.tianshu.TianShuGetAdvCallback;
+import cooperation.vip.tianshu.TianShuManager;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MiniTianShuManager
 {
   public static final String TAG = "MiniTianShuManager";
-  private static List<blbv> mCallbackList = new ArrayList();
+  private static List<TianShuGetAdvCallback> mCallbackList = new ArrayList();
   
-  public static void requestAdv(List<blbu> paramList, blbv paramblbv)
+  public static void requestAdv(List<TianShuAdPosItemData> paramList, TianShuGetAdvCallback paramTianShuGetAdvCallback)
   {
-    if ((paramList == null) || (paramList.size() <= 0) || (paramblbv == null)) {
+    if ((paramList == null) || (paramList.size() <= 0) || (paramTianShuGetAdvCallback == null)) {
       return;
     }
-    paramblbv = new MiniTianShuManager.1(paramblbv);
-    mCallbackList.add(paramblbv);
+    paramTianShuGetAdvCallback = new MiniTianShuManager.1(paramTianShuGetAdvCallback);
+    mCallbackList.add(paramTianShuGetAdvCallback);
     QLog.i("MiniTianShuManager", 1, "add callback " + mCallbackList.size());
-    blbw.a().a(paramList, paramblbv);
+    TianShuManager.getInstance().requestAdv(paramList, paramTianShuGetAdvCallback);
   }
 }
 

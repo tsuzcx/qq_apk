@@ -1,11 +1,11 @@
-import com.google.gson.reflect.TypeToken;
-import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
-import java.util.List;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+import tencent.gdt.qq_ad_get.QQAdGetRsp;
 
-class bmkq
-  extends TypeToken<List<AEEditorDownloadResBean>>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcooperation/vip/VasGdtService$GdtCallback;", "", "onAdGetRsp", "", "rsp", "Ltencent/gdt/qq_ad_get$QQAdGetRsp;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface bmkq
 {
-  bmkq(bmkn parambmkn) {}
+  public abstract void a(@Nullable qq_ad_get.QQAdGetRsp paramQQAdGetRsp);
 }
 
 

@@ -1,11 +1,19 @@
-import tencent.im.oidb.articlesummary.articlesummary.GameLiveInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class ree
-  implements psw<articlesummary.GameLiveInfo, ret>
+class ree
+  implements View.OnClickListener
 {
-  public ret a(articlesummary.GameLiveInfo paramGameLiveInfo)
+  ree(red paramred) {}
+  
+  public void onClick(View paramView)
   {
-    return ret.a(paramGameLiveInfo);
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

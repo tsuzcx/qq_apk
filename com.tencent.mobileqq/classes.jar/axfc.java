@@ -1,6 +1,10 @@
 public abstract interface axfc
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
+  
+  public abstract void b(int paramInt);
 }
 
 

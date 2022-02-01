@@ -1,20 +1,27 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.qphone.base.util.QLog;
-import pay;
-import qja;
-import qjc;
+import prg;
+import qve;
+import qvg;
 
 public class ReadInjoyTextView$2$1
   implements Runnable
 {
-  public ReadInjoyTextView$2$1(qjc paramqjc, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
+  public ReadInjoyTextView$2$1(qvg paramqvg, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
   
   public void run()
   {
-    QLog.d("ReadInjoyTextView", 2, new Object[] { "setNickName callback, nick = ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo.nick });
-    this.jdField_a_of_type_Qjc.a.setText(pay.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo.nick));
+    QLog.d("ReadInjoyTextView", 2, new Object[] { "setDecorationName callback, nick = ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo.decorationName });
+    qve localqve = this.jdField_a_of_type_Qvg.a;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo.decorationName)) {}
+    for (String str = this.jdField_a_of_type_Qvg.b;; str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo.decorationName)
+    {
+      localqve.setText(prg.a(str));
+      return;
+    }
   }
 }
 

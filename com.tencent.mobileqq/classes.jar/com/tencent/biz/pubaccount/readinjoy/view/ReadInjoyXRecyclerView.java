@@ -15,32 +15,32 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
-import bjxe;
-import bjxg;
-import bjxo;
+import blip;
+import blir;
+import bliz;
 import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import com.tencent.widget.pull2refresh.XLoadMoreLayout;
-import sox;
-import soy;
-import soz;
-import spa;
-import spb;
-import spc;
-import szv;
+import tci;
+import tcj;
+import tck;
+import tcl;
+import tcm;
+import tcn;
+import tnd;
 
 public class ReadInjoyXRecyclerView
   extends AbsPullToRefreshViewFix
-  implements bjxg, bjxo
+  implements blir, bliz
 {
   public static int b = 1001;
-  private Handler jdField_a_of_type_AndroidOsHandler = new sox(this, Looper.getMainLooper());
-  private bjxe jdField_a_of_type_Bjxe;
+  private Handler jdField_a_of_type_AndroidOsHandler = new tci(this, Looper.getMainLooper());
+  private blip jdField_a_of_type_Blip;
   protected RecyclerViewWithHeaderFooterFix a;
   private XLoadMoreLayout jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout;
-  private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new soy(this);
-  private spb jdField_a_of_type_Spb;
+  private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new tcj(this);
+  private tcm jdField_a_of_type_Tcm;
   private int c = 0;
   private int d;
   private int e;
@@ -69,8 +69,8 @@ public class ReadInjoyXRecyclerView
   
   private boolean a(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramView instanceof spc)) {
-      return ((spc)paramView).a(paramMotionEvent);
+    if ((paramView instanceof tcn)) {
+      return ((tcn)paramView).a(paramMotionEvent);
     }
     if ((paramView instanceof HorizontalListView))
     {
@@ -91,30 +91,30 @@ public class ReadInjoyXRecyclerView
   {
     a(this);
     this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout = new XLoadMoreLayout(getContext());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecyclerViewWithHeaderFooterFix = new soz(this, getContext());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecyclerViewWithHeaderFooterFix = new tck(this, getContext());
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecyclerViewWithHeaderFooterFix, localLayoutParams);
-    this.jdField_a_of_type_Bjxe = new bjxe(this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout, getContext());
-    this.jdField_a_of_type_Bjxe.a(true);
-    this.jdField_a_of_type_Bjxe.a(this);
+    this.jdField_a_of_type_Blip = new blip(this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout, getContext());
+    this.jdField_a_of_type_Blip.a(true);
+    this.jdField_a_of_type_Blip.a(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecyclerViewWithHeaderFooterFix.b(this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecyclerViewWithHeaderFooterFix.addOnScrollListener(new spa(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecyclerViewWithHeaderFooterFix.addOnScrollListener(new tcl(this));
   }
   
   protected int a()
   {
-    return this.jdField_a_of_type_Szv.a();
+    return this.jdField_a_of_type_Tnd.a();
   }
   
   protected View a()
   {
-    View localView = this.jdField_a_of_type_Szv.a(this);
-    if ((this.jdField_a_of_type_Szv instanceof ReadInJoySkinAnimManager))
+    View localView = this.jdField_a_of_type_Tnd.a(this);
+    if ((this.jdField_a_of_type_Tnd instanceof ReadInJoySkinAnimManager))
     {
       setPullHeaderBgDrawable(new ColorDrawable(Color.parseColor("#F7F7F7")));
       return localView;
     }
-    setPullHeaderBgDrawable(getResources().getDrawable(2130839440));
+    setPullHeaderBgDrawable(getResources().getDrawable(2130839461));
     return localView;
   }
   
@@ -127,15 +127,15 @@ public class ReadInjoyXRecyclerView
   
   public void a(View paramView)
   {
-    if ((this.jdField_a_of_type_Szv != null) && (paramView == this.jdField_a_of_type_Szv.a(this))) {
-      this.jdField_a_of_type_Szv.a(100, this.jdField_a_of_type_Boolean);
+    if ((this.jdField_a_of_type_Tnd != null) && (paramView == this.jdField_a_of_type_Tnd.a(this))) {
+      this.jdField_a_of_type_Tnd.a(100, this.jdField_a_of_type_Boolean);
     }
   }
   
   public void a(View paramView, int paramInt)
   {
-    if ((this.jdField_a_of_type_Szv != null) && (paramView == this.jdField_a_of_type_Szv.a(this))) {
-      this.jdField_a_of_type_Szv.a(paramInt, this.jdField_a_of_type_Boolean);
+    if ((this.jdField_a_of_type_Tnd != null) && (paramView == this.jdField_a_of_type_Tnd.a(this))) {
+      this.jdField_a_of_type_Tnd.a(paramInt, this.jdField_a_of_type_Boolean);
     }
   }
   
@@ -153,10 +153,10 @@ public class ReadInjoyXRecyclerView
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_Szv != null)
+    if (this.jdField_a_of_type_Tnd != null)
     {
       f();
-      this.jdField_a_of_type_Szv.a(paramBoolean, paramString);
+      this.jdField_a_of_type_Tnd.a(paramBoolean, paramString);
     }
   }
   
@@ -165,8 +165,8 @@ public class ReadInjoyXRecyclerView
     if (QLog.isColorLevel()) {
       QLog.d("XRecyclerView", 2, "loadMoreComplete(): hasMoreData=" + paramBoolean2);
     }
-    this.jdField_a_of_type_Bjxe.a(paramBoolean1, paramBoolean2);
-    this.jdField_a_of_type_Bjxe.a(paramBoolean2);
+    this.jdField_a_of_type_Blip.a(paramBoolean1, paramBoolean2);
+    this.jdField_a_of_type_Blip.a(paramBoolean2);
   }
   
   @TargetApi(14)
@@ -197,11 +197,11 @@ public class ReadInjoyXRecyclerView
   {
     boolean bool = ((Boolean)this.jdField_a_of_type_JavaLangThreadLocal.get()).booleanValue();
     this.jdField_a_of_type_JavaLangThreadLocal.set(Boolean.valueOf(false));
-    if ((this.jdField_a_of_type_Szv != null) && (paramView == this.jdField_a_of_type_Szv.a(this)))
+    if ((this.jdField_a_of_type_Tnd != null) && (paramView == this.jdField_a_of_type_Tnd.a(this)))
     {
-      this.jdField_a_of_type_Szv.a(bool);
-      if (this.jdField_a_of_type_Spb != null) {
-        this.jdField_a_of_type_Spb.a(this, bool);
+      this.jdField_a_of_type_Tnd.a(bool);
+      if (this.jdField_a_of_type_Tcm != null) {
+        this.jdField_a_of_type_Tcm.a(this, bool);
       }
     }
     return true;
@@ -209,8 +209,8 @@ public class ReadInjoyXRecyclerView
   
   public boolean a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Spb != null) {
-      this.jdField_a_of_type_Spb.a(this, 0);
+    if (this.jdField_a_of_type_Tcm != null) {
+      this.jdField_a_of_type_Tcm.a(this, 0);
     }
     return true;
   }
@@ -222,8 +222,8 @@ public class ReadInjoyXRecyclerView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Szv != null) {
-      this.jdField_a_of_type_Szv.b();
+    if (this.jdField_a_of_type_Tnd != null) {
+      this.jdField_a_of_type_Tnd.b();
     }
     b(true);
   }
@@ -231,8 +231,8 @@ public class ReadInjoyXRecyclerView
   public void b(boolean paramBoolean)
   {
     super.b(paramBoolean);
-    if (this.jdField_a_of_type_Spb != null) {
-      this.jdField_a_of_type_Spb.m();
+    if (this.jdField_a_of_type_Tcm != null) {
+      this.jdField_a_of_type_Tcm.m();
     }
   }
   
@@ -261,9 +261,9 @@ public class ReadInjoyXRecyclerView
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRecyclerViewWithHeaderFooterFix.scrollToPosition(0);
   }
   
-  public void setRefreshCallback(spb paramspb)
+  public void setRefreshCallback(tcm paramtcm)
   {
-    this.jdField_a_of_type_Spb = paramspb;
+    this.jdField_a_of_type_Tcm = paramtcm;
   }
 }
 

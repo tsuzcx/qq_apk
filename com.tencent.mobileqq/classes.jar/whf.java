@@ -1,33 +1,40 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class whf
-  implements whe
+class whf
+  extends whr
 {
-  public void a() {}
+  whf(whe paramwhe) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 6) {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131690006, 0).a();
+    wgs localwgs;
+    int i;
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppActivity != null))
+    {
+      localwgs = (wgs)this.a.a();
+      if (whe.a(this.a) != 11) {
+        break label145;
+      }
+      i = 211;
+    }
+    for (;;)
+    {
+      StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
+      i = ykv.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      ykv.a("home_page", "clk_like_more", ykv.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), ykv.a(localwgs.a), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label145:
+      if (whe.a(this.a) == 12) {
+        i = 222;
+      } else {
+        i = 210;
+      }
     }
   }
-  
-  public void b() {}
-  
-  public void b(int paramInt) {}
-  
-  public void c() {}
-  
-  public void c(int paramInt)
-  {
-    QQToast.a(BaseApplication.getContext(), amtj.a(2131706950), 0).a();
-  }
-  
-  public void d() {}
-  
-  public void d(int paramInt) {}
 }
 
 

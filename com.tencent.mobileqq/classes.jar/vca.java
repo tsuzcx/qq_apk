@@ -1,76 +1,60 @@
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 public class vca
-  extends ukz<vaq>
-  implements View.OnClickListener
+  extends uyw
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  private vcu jdField_a_of_type_Vcu;
   
-  public vca(Context paramContext, vct paramvct)
+  public vca(Context paramContext, vcu paramvcu)
   {
     super(paramContext);
-    if (paramvct != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramvct.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+    this.jdField_a_of_type_Vcu = paramvcu;
+  }
+  
+  private void g()
+  {
+    f();
+    WSPlayerManager localWSPlayerManager = this.jdField_a_of_type_Vcu.a();
+    if ((localWSPlayerManager != null) && (localWSPlayerManager.i())) {
+      this.jdField_a_of_type_Vcu.a(localWSPlayerManager);
     }
   }
   
-  protected void a()
+  private void h()
   {
-    if ((a() != null) && ((((vaq)a()).a() instanceof stSimpleMetaFeed))) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)((vaq)a()).a());
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new vcc(this));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
   }
+  
+  protected void a() {}
   
   protected int b()
   {
-    return 2131560031;
+    return 2131560445;
   }
   
-  protected void b()
-  {
-    Object localObject = (vaq)a();
-    if (localObject == null) {}
-    while (!(((vaq)localObject).a() instanceof stSimpleMetaFeed)) {
-      return;
-    }
-    localObject = ((stSimpleMetaFeed)((vaq)localObject).a()).poster;
-    if ((localObject != null) && (!TextUtils.isEmpty(((stSimpleMetaPerson)localObject).nick)))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("@%s", new Object[] { ((stSimpleMetaPerson)localObject).nick }));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
+  protected void b() {}
   
   protected void c() {}
   
   protected void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380410));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131369085));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("wsfollow/muteguide/muteguide.json");
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetsFolder("wsfollow/muteguide/images");
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setOnClickListener(new vcb(this));
   }
   
-  public void onClick(View paramView)
+  public void f()
   {
-    if (paramView == null) {}
-    for (;;)
+    if (this.jdField_a_of_type_Vcu.a())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() == 2131380410) {
-        uyz.a("nickname", this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-      }
+      h();
+      this.jdField_a_of_type_Vcu.d();
+      vmp.e("WSFollowTabMuteGuideController", "[WSFollowTabMuteGuideController.java][playAnimationForMuteGuide] doPlay!");
     }
   }
 }

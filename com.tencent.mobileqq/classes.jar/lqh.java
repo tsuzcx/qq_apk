@@ -1,99 +1,180 @@
-import android.util.Log;
-import com.tencent.aekit.openrender.AEOpenRenderConfig;
-import com.tencent.aekit.openrender.UniformParam.Float4fParam;
-import com.tencent.aekit.openrender.UniformParam.TextureParam;
-import com.tencent.aekit.openrender.internal.Frame;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureFilterManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import java.util.HashMap;
+import java.util.Map;
 
 public class lqh
-  extends lqp
 {
-  private static String jdField_b_of_type_JavaLangString = "attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\nvoid main() {\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n}";
-  private static String c = "precision mediump float;\nvarying vec2 textureCoordinate;\nuniform vec4 offset;\nuniform vec4 offset1;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture1;\nvoid main() {\n    vec2 newCoordinate;\n    if (textureCoordinate.x <= 0.5) {\n        newCoordinate.x = offset.x + textureCoordinate.x * 2.0 * (1.0 - offset.y - offset.x);\n        newCoordinate.y = offset.y + textureCoordinate.y * (1.0 - offset.w - offset.z);\n        gl_FragColor = texture2D(inputImageTexture, newCoordinate);\n    } else {\n        newCoordinate.x = offset1.x + (textureCoordinate.x - 0.5) * 2.0 * (1.0 - offset1.y - offset1.x);\n        newCoordinate.y = offset1.z + textureCoordinate.y * (1.0 - offset1.w - offset1.z);\n        gl_FragColor = texture2D(inputImageTexture1, newCoordinate);\n    }\n}";
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "CompositeFilter2-" + Integer.toHexString(hashCode());
-  private lqi jdField_a_of_type_Lqi;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[4];
-  private int jdField_b_of_type_Int;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[4];
+  private String jdField_a_of_type_JavaLangString;
+  private Map<String, Drawable> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public lib a;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public lqh(int paramInt1, int paramInt2)
+  public int a(lpe paramlpe, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    super(2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "CompositeFilter2: width=" + paramInt1 + ", height=" + paramInt2);
-  }
-  
-  private void a(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
-  {
-    float f = this.jdField_b_of_type_Int / this.jdField_a_of_type_Int * 2.0F;
-    if (paramInt2 / paramInt1 > f)
+    int i = 1;
+    if (4 == paramlpe.a())
     {
-      paramArrayOfFloat[1] = 0.0F;
-      paramArrayOfFloat[0] = 0.0F;
-      paramArrayOfFloat[2] = ((paramInt2 - f * paramInt1) / paramInt2 / 2.0F);
-      paramArrayOfFloat[3] = paramArrayOfFloat[2];
-      return;
+      a(false);
+      return 0;
     }
-    paramArrayOfFloat[0] = ((paramInt1 - paramInt2 / f) / paramInt1 / 2.0F);
-    paramArrayOfFloat[1] = paramArrayOfFloat[0];
-    paramArrayOfFloat[3] = 0.0F;
-    paramArrayOfFloat[2] = 0.0F;
-  }
-  
-  @NotNull
-  protected Frame a(List<lqt> paramList, long paramLong)
-  {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int == 0))
+    if ((paramInt > 0) || (!paramBoolean2))
     {
-      Log.e(this.jdField_a_of_type_JavaLangString, "onRender: invalidate composite size");
-      return null;
-    }
-    if (paramList.size() > 2) {
-      Log.w(this.jdField_a_of_type_JavaLangString, "onRender: expect 2 inputs, but got " + paramList.size());
-    }
-    Frame localFrame = ((lqt)paramList.get(0)).a;
-    a(this.jdField_a_of_type_ArrayOfFloat, localFrame.width, localFrame.height);
-    this.jdField_a_of_type_Lqi.addParam(new UniformParam.Float4fParam("offset", this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3]));
-    if (paramList.size() > 1)
-    {
-      paramList = ((lqt)paramList.get(1)).a;
-      a(this.jdField_b_of_type_ArrayOfFloat, paramList.width, paramList.height);
-      this.jdField_a_of_type_Lqi.addParam(new UniformParam.TextureParam("inputImageTexture1", paramList.getTextureId(), 33985));
-      this.jdField_a_of_type_Lqi.addParam(new UniformParam.Float4fParam("offset1", this.jdField_b_of_type_ArrayOfFloat[0], this.jdField_b_of_type_ArrayOfFloat[1], this.jdField_b_of_type_ArrayOfFloat[2], this.jdField_b_of_type_ArrayOfFloat[3]));
+      c();
+      if (paramBoolean1) {
+        if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+        {
+          b(paramString1, paramString2);
+          paramInt = 2;
+        }
+      }
     }
     for (;;)
     {
-      return this.jdField_a_of_type_Lqi.RenderProcess(localFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Lqi.addParam(new UniformParam.TextureParam("inputImageTexture1", -1, 33985));
+      return paramInt;
+      a(true);
+      paramInt = 0;
+      continue;
+      a(false);
+      paramInt = 0;
+      continue;
+      a(false);
+      b();
+      paramInt = i;
     }
   }
   
-  protected void a()
+  public void a()
   {
-    this.jdField_a_of_type_Lqi = new lqi(this);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create filter#" + Integer.toHexString(this.jdField_a_of_type_Lqi.hashCode()));
-    this.jdField_a_of_type_Lqi.setPositions(AEOpenRenderConfig.ORIGIN_POSITION_COORDS, true);
-    this.jdField_a_of_type_Lqi.setTexCords(AEOpenRenderConfig.ORIGIN_TEX_COORDS, true);
-    this.jdField_a_of_type_Lqi.ApplyGLSLFilter();
+    this.jdField_a_of_type_JavaUtilMap.clear();
   }
   
-  protected void b()
+  public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Lqi != null)
+    a(false);
+    c();
+    a("clearState_" + paramLong, null);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject;
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
     {
-      this.jdField_a_of_type_Lqi.clearGLSLSelf();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: filter#" + Integer.toHexString(this.jdField_a_of_type_Lqi.hashCode()));
-      this.jdField_a_of_type_Lqi = null;
+      if (!GestureFilterManager.sGestureType.equals("fivea")) {
+        break label79;
+      }
+      localObject = VideoController.a().a().getResources().getDrawable(2130842165);
     }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+      lbd.h("TipsInfo", "ProcessGestureSDK pandentInfo.gestureType drawable insert, drawable" + String.valueOf(localObject));
+      return;
+      label79:
+      if (GestureFilterManager.sGestureType.equals("palmup")) {
+        localObject = VideoController.a().a().getResources().getDrawable(2130842166);
+      } else if (GestureFilterManager.sGestureType.equals("qheart")) {
+        localObject = VideoController.a().a().getResources().getDrawable(2130842167);
+      } else {
+        localObject = new BitmapDrawable(FileUtil.getBitmapByPath(bdaf.a() + paramString + ".png"));
+      }
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TipsInfo", 1, "setGestureType[" + paramString1 + "], GestureTips[" + this.jdField_a_of_type_JavaLangString + "->" + paramString2 + "]");
+    }
+    this.jdField_a_of_type_JavaLangString = paramString2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("TipsInfo", 1, "hideGestureTips, bGettureShown[" + paramBoolean + "], mCurGestureType[" + this.jdField_a_of_type_JavaLangString + "]");
+    }
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    do
+    {
+      return;
+      a("hideGestureTips", null);
+      if (paramBoolean) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+    } while (this.jdField_a_of_type_Lib == null);
+    this.jdField_a_of_type_Lib.b(0);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (!a()) {}
+    while (this.b) {
+      return;
+    }
+    lbd.f("TipsInfo", "processTips showfaceTips");
+    if (this.jdField_a_of_type_Lib != null) {
+      this.jdField_a_of_type_Lib.a(100);
+    }
+    this.b = true;
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    if (!a()) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString2));
+      lbd.f("TipsInfo", "showGestureTips showGestureTips mHasGestureTipsShow[" + this.jdField_a_of_type_Boolean + "]");
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_Lib != null) {
+          this.jdField_a_of_type_Lib.a(paramString1);
+        }
+        a("showGestureTips1", paramString2);
+        return;
+      }
+    } while (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString2));
+    Drawable localDrawable = (Drawable)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
+    if (this.jdField_a_of_type_Lib != null) {
+      this.jdField_a_of_type_Lib.a(localDrawable, paramString1);
+    }
+    a("showGestureTips2", paramString2);
+  }
+  
+  public void c()
+  {
+    if (!this.b) {
+      return;
+    }
+    lbd.f("TipsInfo", "processTips hideFaceTips");
+    if (this.jdField_a_of_type_Lib != null) {
+      this.jdField_a_of_type_Lib.b(0);
+    }
+    this.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lqh
  * JD-Core Version:    0.7.0.1
  */

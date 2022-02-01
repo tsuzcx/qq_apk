@@ -1,20 +1,22 @@
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class mgi
-  implements acwz
+  extends les
 {
-  public mgi(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public mgi(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void a(int paramInt1, int paramInt2)
+  protected void a(long paramLong1, long paramLong2, ArrayList<lcu> paramArrayList)
   {
-    this.a.h = paramInt1;
-    this.a.i = paramInt2;
-    this.a.d(10);
+    ThreadManager.getUIHandler().post(new MultiVideoCtrlLayerUIBase.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mgi
  * JD-Core Version:    0.7.0.1
  */

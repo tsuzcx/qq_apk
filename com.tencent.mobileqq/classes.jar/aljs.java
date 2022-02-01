@@ -1,36 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.Switch;
+import com.tencent.qphone.base.util.QLog;
 
-class aljs
-  implements View.OnClickListener
+public class aljs
+  implements aljm
 {
-  aljs(aljq paramaljq, RedTouch paramRedTouch, aqmf paramaqmf) {}
-  
-  public void onClick(View paramView)
+  public aljl a()
   {
-    Switch localSwitch;
-    if (AppSetting.c)
-    {
-      localSwitch = (Switch)paramView.findViewById(2131363982);
-      if (localSwitch != null) {
-        if (localSwitch.isChecked()) {
-          break label66;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BannerConflictExperiment", 2, "[getShouldShowBanner] get strategy 4");
     }
-    label66:
-    for (boolean bool = true;; bool = false)
-    {
-      localSwitch.setChecked(bool);
-      aljq.a(this.jdField_a_of_type_Aljq, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Aqmf, localSwitch.isChecked());
-      paramView.sendAccessibilityEvent(1);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    aljl localaljl = new aljl();
+    localaljl.a = true;
+    localaljl.b = true;
+    localaljl.d = true;
+    localaljl.e = true;
+    localaljl.g = true;
+    return localaljl;
   }
 }
 

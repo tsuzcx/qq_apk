@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.contact.addfriendverifi.AddFriendBlockedInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public final class aicj
-  implements Parcelable.Creator<AddFriendBlockedInfo>
+class aicj
+  implements Comparator<MessageRecord>
 {
-  public AddFriendBlockedInfo a(Parcel paramParcel)
-  {
-    return new AddFriendBlockedInfo(paramParcel);
-  }
+  aicj(aici paramaici) {}
   
-  public AddFriendBlockedInfo[] a(int paramInt)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    return new AddFriendBlockedInfo[paramInt];
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 

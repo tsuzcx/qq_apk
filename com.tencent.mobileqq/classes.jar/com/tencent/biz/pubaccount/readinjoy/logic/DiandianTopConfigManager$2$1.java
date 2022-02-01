@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.logic;
 
 import com.tencent.qphone.base.util.QLog;
-import pkp;
-import pta;
+import pvm;
+import qdx;
 import tencent.im.oidb.oidb_0xb7e.RspBody;
 
 class DiandianTopConfigManager$2$1
@@ -14,22 +14,22 @@ class DiandianTopConfigManager$2$1
   {
     if (this.jdField_a_of_type_ArrayOfByte == null)
     {
-      pkp.a().a(false, null);
+      pvm.a().a(false, null);
       return;
     }
     oidb_0xb7e.RspBody localRspBody = new oidb_0xb7e.RspBody();
     try
     {
       localRspBody.mergeFrom(this.jdField_a_of_type_ArrayOfByte);
-      pta.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicDiandianTopConfigManager$2.this$0, localRspBody);
+      qdx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicDiandianTopConfigManager$2.this$0, localRspBody);
       return;
     }
     catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
-        QLog.e(pta.a, 2, "loadDiandianTopConfig, e = " + localException);
+        QLog.e(qdx.a, 2, "loadDiandianTopConfig, e = " + localException);
       }
-      pkp.a().a(false, null);
+      pvm.a().a(false, null);
     }
   }
 }

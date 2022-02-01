@@ -1,40 +1,194 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.BannerInfoModule.2;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerRoundReqBody;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerRoundRspBody;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.ContentBannerItem;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.ReqBody;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.RspBody;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem;
 
 public class qew
-  implements ViewBase.OnClickListener
+  extends qhj
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private final ConcurrentHashMap<Integer, TopBannerInfo> a;
   
-  public qew(Context paramContext, ArticleInfo paramArticleInfo)
+  public qew(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qxn paramqxn, Handler paramHandler, qep paramqep)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqxn, paramHandler);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    if (paramqep != null) {
+      paramqep.a().a(new qex(this));
+    }
   }
   
-  public void onClick(ViewBase paramViewBase)
+  private void a(TopBannerInfo paramTopBannerInfo)
   {
-    paramViewBase = bkwm.a("kd_topic_recommend_card_jump_url");
-    if ((paramViewBase instanceof String)) {}
-    for (paramViewBase = (String)paramViewBase;; paramViewBase = "")
+    b(paramTopBannerInfo);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramTopBannerInfo.mChannelId), paramTopBannerInfo);
+    this.jdField_a_of_type_AndroidOsHandler.post(new BannerInfoModule.2(this, paramTopBannerInfo));
+  }
+  
+  private void b(TopBannerInfo paramTopBannerInfo)
+  {
+    a(paramTopBannerInfo);
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int j = 0;
+    paramToServiceMsg = new oidb_cmd0xbc9.RspBody();
+    int i = qxp.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    QLog.d("ReadInJoyEngineModule", 2, new Object[] { "handle0xbc9BannerInfo result = ", Integer.valueOf(i) });
+    if ((i == 0) && (paramToServiceMsg.msg_banner_round_rsp_body.has()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("OnJumpWrapperClickListener", 2, new Object[] { "jumpUrl = ", paramViewBase });
+      paramObject = (oidb_cmd0xbc9.BannerRoundRspBody)paramToServiceMsg.msg_banner_round_rsp_body.get();
+      if ((!paramObject.uint32_need_update.has()) || (paramObject.uint32_need_update.get() != 1)) {
+        break label453;
       }
-      if (!TextUtils.isEmpty(paramViewBase))
+      paramFromServiceMsg = new TopBannerInfo();
+      if ((paramObject.rpt_msg_banner_list.has()) && (paramObject.rpt_msg_banner_list.size() > 0))
       {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
-          pgw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+        i = 0;
+        if (i < paramObject.rpt_msg_banner_list.size())
+        {
+          paramToServiceMsg = (oidb_cmd0xbc9.BannerItem)paramObject.rpt_msg_banner_list.get(i);
+          if (paramToServiceMsg.uint32_banner_type.has())
+          {
+            if (paramToServiceMsg.uint32_banner_type.get() != 2) {
+              break label199;
+            }
+            if (!paramToServiceMsg.msg_video_banner_item.has()) {
+              break label462;
+            }
+            paramToServiceMsg = rse.b(paramToServiceMsg);
+          }
         }
-        pay.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
       }
+    }
+    label453:
+    for (;;)
+    {
+      if (paramToServiceMsg != null) {
+        paramFromServiceMsg.addItem(paramToServiceMsg);
+      }
+      i += 1;
+      break;
+      label199:
+      if (paramToServiceMsg.msg_article_content_item.has())
+      {
+        paramToServiceMsg = rsc.b(paramToServiceMsg);
+        continue;
+        if (paramObject.bytes_cookie.has()) {
+          paramFromServiceMsg.mCookie = paramObject.bytes_cookie.get().toStringUtf8();
+        }
+        if (paramObject.uint32_channel_id.has()) {
+          paramFromServiceMsg.mChannelId = paramObject.uint32_channel_id.get();
+        }
+        if ((paramObject.rpt_msg_dynamic_banner_list.has()) && (paramObject.rpt_msg_dynamic_banner_list.size() > 0))
+        {
+          i = j;
+          while (i < paramObject.rpt_msg_dynamic_banner_list.size())
+          {
+            if ((((oidb_cmd0xbc9.DynamicBannerItem)paramObject.rpt_msg_dynamic_banner_list.get(i)).has()) && (paramObject.rpt_msg_dynamic_banner_list.get(i) != null))
+            {
+              paramToServiceMsg = rsb.a((oidb_cmd0xbc9.DynamicBannerItem)paramObject.rpt_msg_dynamic_banner_list.get(i));
+              if (paramToServiceMsg != null)
+              {
+                paramToServiceMsg = paramToServiceMsg.iterator();
+                while (paramToServiceMsg.hasNext()) {
+                  paramFromServiceMsg.addDynamicItem((rsb)paramToServiceMsg.next());
+                }
+              }
+            }
+            i += 1;
+          }
+        }
+        if (paramObject.msg_more_channel_item.has())
+        {
+          paramToServiceMsg = rsd.a((oidb_cmd0xbc9.MoreChannelItem)paramObject.msg_more_channel_item.get());
+          if (paramToServiceMsg != null) {
+            paramFromServiceMsg.setMoreChannelItem(paramToServiceMsg);
+          }
+        }
+        a(paramFromServiceMsg);
+        QLog.d("ReadInJoyEngineModule", 2, "handle0xbc9BannerInfo bannerInfo = " + paramFromServiceMsg);
+        return;
+        QLog.d("ReadInJoyEngineModule", 2, "handle0xbc9BannerInfo uint32_need_update = 0");
+      }
+      else
+      {
+        label462:
+        paramToServiceMsg = null;
+      }
+    }
+  }
+  
+  public TopBannerInfo a(int paramInt)
+  {
+    return (TopBannerInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    Object localObject1 = a(paramInt1);
+    if (localObject1 == null) {}
+    for (localObject1 = "";; localObject1 = ((TopBannerInfo)localObject1).mCookie)
+    {
+      Object localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = "";
+      }
+      localObject1 = new oidb_cmd0xbc9.ReqBody();
+      oidb_cmd0xbc9.BannerRoundReqBody localBannerRoundReqBody = new oidb_cmd0xbc9.BannerRoundReqBody();
+      localBannerRoundReqBody.bytes_cookie.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+      localBannerRoundReqBody.uint32_channel_id.set(paramInt1);
+      ((oidb_cmd0xbc9.ReqBody)localObject1).msg_banner_round_req_body.set(localBannerRoundReqBody);
+      a(qxp.a("OidbSvc.0xbc9", 3017, paramInt2, ((oidb_cmd0xbc9.ReqBody)localObject1).toByteArray()));
+      QLog.d("ReadInJoyEngineModule", 2, "req banner info cookies: " + (String)localObject2 + "  channelId: " + paramInt1);
       return;
     }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xbc9")) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    a(paramInt, 1);
+  }
+  
+  public void c(int paramInt)
+  {
+    List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(TopBannerInfo.class, true, "mChannelId IS NOT NULL AND mChannelId == ?", new String[] { "" + paramInt }, null, null, null, "1");
+    if ((localList == null) || (localList.isEmpty()))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramInt), new TopBannerInfo());
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramInt), localList.get(0));
   }
 }
 

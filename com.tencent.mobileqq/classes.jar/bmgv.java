@@ -1,119 +1,130 @@
-import android.content.Context;
-import android.util.Log;
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.ttpic.filter.aifilter.NewEnhanceCategories;
-import com.tencent.ttpic.filter.aifilter.PhotoAIFilter;
-import dov.com.qq.im.aeeditor.module.aifilter.VideoAIFilterProxy.1;
+import android.util.SparseArray;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.mobileqq.redtouch.RedDisplayInfo;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.redtouch.RedTouchUI;
+import com.tencent.mobileqq.redtouch.RedTypeInfo;
+import cooperation.qqreader.view.ReaderTabBarView;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.List<Lbmgk;>;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bmgv
-  extends bmgg
 {
-  private static final String a;
-  public TAVCutVideoSession a;
-  protected final int b = 250;
+  public int a;
+  RedTouchUI jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI;
+  public String a;
+  public boolean a;
+  public int b = 0;
   
-  static
+  public bmgv(ReaderTabBarView paramReaderTabBarView, int paramInt1, String paramString, boolean paramBoolean, int paramInt2, RedTouchUI paramRedTouchUI)
   {
-    jdField_a_of_type_JavaLangString = bmgv.class.getSimpleName();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI = paramRedTouchUI;
   }
   
-  public bmgv(TAVCutVideoSession paramTAVCutVideoSession)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession = paramTAVCutVideoSession;
-  }
-  
-  protected bmgl a(List<bmgk> paramList)
-  {
-    bmgw localbmgw = new bmgw();
-    if (a(this.jdField_a_of_type_JavaUtilList)) {}
-    try
+    if (ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).get(paramInt) == null) {}
+    label165:
+    do
     {
-      localbmgw.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData = PhotoAIFilter.preprocessImages(this.jdField_a_of_type_JavaUtilList);
-      localbmgw.jdField_a_of_type_ArrayOfFloat = bmfh.a(localbmgw.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData);
-      localbmgw.jdField_a_of_type_JavaUtilHashMap = bmfh.a(localbmgw.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData);
-      localObject2 = new ArrayList();
-      if ((paramList == null) || (paramList.size() == 0))
+      do
       {
-        String str = NewEnhanceCategories.COMMON.serverLabel;
-        paramList = (List<bmgk>)localObject2;
-        bmbx.b(jdField_a_of_type_JavaLangString, "sceneLabel: " + str);
-        localObject2 = paramList.iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (YoutuResultItem)((Iterator)localObject2).next();
-          bmbx.b(jdField_a_of_type_JavaLangString, "label: " + ((YoutuResultItem)localObject3).Label + ", confidence: " + ((YoutuResultItem)localObject3).Confidence);
+        return;
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        if ((!this.jdField_a_of_type_Boolean) && (ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).containsKey(Integer.valueOf(paramInt)))) {
+          ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).remove(Integer.valueOf(paramInt));
         }
-      }
-    }
-    catch (Exception localException)
-    {
-      Object localObject1;
-      for (;;)
-      {
-        Object localObject2;
-        bmbx.d(jdField_a_of_type_JavaLangString, Log.getStackTraceString(localException));
-        continue;
-        Object localObject3 = a(paramList);
-        Iterator localIterator = paramList.iterator();
-        do
+        switch (this.jdField_a_of_type_Int)
         {
-          paramList = (List<bmgk>)localObject2;
-          localObject1 = localObject3;
-          if (!localIterator.hasNext()) {
+        default: 
+          paramInt = 0;
+        }
+        for (;;)
+        {
+          if (this.jdField_a_of_type_Boolean) {
+            break label165;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.d();
+          return;
+          paramInt = 0;
+          continue;
+          paramInt = -1;
+          try
+          {
+            int i = Integer.parseInt(this.jdField_a_of_type_JavaLangString);
+            paramInt = i;
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            for (;;)
+            {
+              bmgm.a("ReaderTabBarView", localNumberFormatException.getMessage());
+              continue;
+              paramBoolean = false;
+            }
+          }
+          if (this.jdField_a_of_type_Boolean)
+          {
+            if (paramInt <= 0) {
+              break;
+            }
+            paramBoolean = true;
+            this.jdField_a_of_type_Boolean = paramBoolean;
+          }
+          paramInt = 4;
+        }
+        RedAppInfo localRedAppInfo = new RedAppInfo();
+        localRedAppInfo.b(1);
+        localRedAppInfo.c(paramInt);
+        RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
+        RedTypeInfo localRedTypeInfo = new RedTypeInfo();
+        localRedTypeInfo.setRedType(paramInt);
+        Object localObject;
+        if (paramInt == 4) {
+          localObject = new JSONObject();
+        }
+        try
+        {
+          ((JSONObject)localObject).put("cn", "#FF0000");
+          localRedTypeInfo.setRedDesc(((JSONObject)localObject).toString());
+          localRedTypeInfo.setRedContent(this.jdField_a_of_type_JavaLangString);
+          localObject = new ArrayList();
+          ((ArrayList)localObject).add(localRedTypeInfo);
+          localRedDisplayInfo.a((ArrayList)localObject);
+          localRedAppInfo.a(localRedDisplayInfo);
+          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(localRedAppInfo);
+          if (localRedTypeInfo.getRedType() != 0) {
             break;
           }
-          paramList = (bmgk)localIterator.next();
-        } while (!paramList.jdField_a_of_type_JavaLangString.equals(localObject3));
-        paramList = paramList.jdField_a_of_type_JavaUtilList;
-        localObject1 = localObject3;
-      }
-      localbmgw.jdField_a_of_type_JavaLangString = localObject1;
-      localbmgw.jdField_a_of_type_JavaUtilList = paramList;
-      localbmgw.b = b(localbmgw.jdField_a_of_type_JavaLangString);
-    }
-    return localbmgw;
-  }
-  
-  protected List<Long> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null) && (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration() != null))
-    {
-      long l1 = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration().getTimeUs() / 1000L;
-      int i = 3000;
-      if (l1 > 30000L) {
-        i = 6000;
-      }
-      int j = 0;
-      while ((j <= l1 / i) && (j < 10))
-      {
-        long l2 = j * i;
-        if (l2 < l1) {
-          localArrayList.add(Long.valueOf(l2));
+          if (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) == 4)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 20, 8, 0).a();
+            return;
+          }
         }
-        j += 1;
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            bmgm.a("ReaderTabBarView", localJSONException.getMessage());
+          }
+        }
+      } while (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) != 5);
+      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 15, 8, 0).a();
+      return;
+      if (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) == 4)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 30, 2, 0).a();
+        return;
       }
-    }
-    return localArrayList;
-  }
-  
-  protected void a(Context paramContext, bmgj parambmgj)
-  {
-    List localList = a();
-    ThreadManager.getSubThreadHandler().post(new VideoAIFilterProxy.1(this, localList, paramContext, parambmgj));
-  }
-  
-  public boolean a()
-  {
-    return true;
+    } while (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) != 5);
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 25, 2, 0).a();
   }
 }
 

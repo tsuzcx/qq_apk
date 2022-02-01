@@ -1,9 +1,21 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import mqq.os.MqqHandler;
 
-public abstract interface aezl
+public class aezl
+  extends MqqHandler
 {
-  public abstract void onCheckedChanged(ChatMessage paramChatMessage, CompoundButton paramCompoundButton, boolean paramBoolean);
+  public aezl(SubAccountUgActivity paramSubAccountUgActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
+  }
 }
 
 

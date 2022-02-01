@@ -1,101 +1,69 @@
-import com.tencent.mobileqq.activity.TroopNotificationCache;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBFixed32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
-import tencent.im.s2c.msgtype0x210.submsgtype0x4e.Submsgtype0x4e.GroupBulletin;
-import tencent.im.s2c.msgtype0x210.submsgtype0x4e.Submsgtype0x4e.GroupBulletin.Content;
-import tencent.im.s2c.msgtype0x210.submsgtype0x4e.Submsgtype0x4e.MsgBody;
+import java.lang.ref.WeakReference;
 
 public class bbnc
-  implements bbnb
+  extends Handler
 {
-  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
+  protected WeakReference<bbna> a;
+  
+  public bbnc(bbna parambbna1, Looper paramLooper, bbna parambbna2)
   {
-    Object localObject = new Submsgtype0x4e.MsgBody();
-    for (;;)
-    {
-      int i;
-      long l1;
-      long l2;
-      long l3;
-      String str;
-      int j;
-      try
-      {
-        paramArrayOfByte = (Submsgtype0x4e.MsgBody)((Submsgtype0x4e.MsgBody)localObject).mergeFrom(paramArrayOfByte);
-        i = paramArrayOfByte.uint32_appid.get();
-        l1 = paramArrayOfByte.uint64_group_id.get();
-        l2 = paramArrayOfByte.uint64_group_code.get();
-        if (paramArrayOfByte.msg_group_bulletin.has())
-        {
-          l3 = (int)bbko.a();
-          localObject = paramArrayOfByte.msg_group_bulletin.rpt_msg_content.get();
-          new ArrayList();
-          paramArrayOfByte = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-          localObject = ((List)localObject).iterator();
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          Submsgtype0x4e.GroupBulletin.Content localContent = (Submsgtype0x4e.GroupBulletin.Content)((Iterator)localObject).next();
-          l3 = localContent.uint64_uin.get();
-          str = localContent.bytes_feedid.get().toStringUtf8();
-          j = localContent.uint32_time.get();
-          if (bfdg.b(str))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("TroopNotificationHelper", 2, "notice is loading");
-            continue;
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopAnnouncementDecoder", 2, "<---decodeC2CMsgPkg_MsgType0x210 : fail to parse SubMsgType0x4e.");
-        }
-      }
-      if ((TroopNotificationCache)paramArrayOfByte.find(TroopNotificationCache.class, "troopUin=? and feedsId=?", new String[] { String.valueOf(l2), str }) != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopAnnouncementDecoder", 2, "notice has exist!");
-        }
-      }
-      else {
-        bfdg.a(paramQQAppInterface, i, l1, l2, l3, str, j, "OidbSvc.0x852_35", (short)23, false, false);
-      }
-    }
-    paramArrayOfByte.close();
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbna2);
   }
   
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm, MessageHandler paramMessageHandler)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopNotificationHelper", 2, "get notice from decodeC2CMsgPkg_MsgType0x210");
+    int i = paramMessage.what;
+    bbna localbbna = (bbna)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localbbna == null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("HWVideoRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
+      }
     }
-    paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
-    a(paramMessageHandler.app, paramMsgType0x210);
-    bblf.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
+    label187:
+    do
+    {
+      do
+      {
+        return;
+        switch (i)
+        {
+        default: 
+          throw new RuntimeException("Unhandled msg what=" + i);
+        case 0: 
+          if (paramMessage.obj != null)
+          {
+            bbna.a(localbbna, (bbnd)paramMessage.obj);
+            return;
+          }
+          throw new RuntimeException("bundle == null");
+        case 1: 
+          if ((bbna.a(this.jdField_a_of_type_Bbna)) || (bbna.a(this.jdField_a_of_type_Bbna) == null) || (!bbna.a(this.jdField_a_of_type_Bbna).a)) {
+            break label187;
+          }
+          sendEmptyMessageDelayed(1, 100L);
+        }
+      } while ((!QLog.isColorLevel()) || (!QLog.isColorLevel()));
+      QLog.d("HWVideoRecorder", 2, "Thumbnail is not ready. Wait 100ms and retry.");
+      return;
+      bbna.a(localbbna);
+      return;
+      if (paramMessage.obj != null)
+      {
+        paramMessage = (Object[])paramMessage.obj;
+        if ((paramMessage == null) || (paramMessage.length != 5)) {
+          throw new IllegalArgumentException("args == null || args.length != 6");
+        }
+        localbbna.b(((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
+        return;
+      }
+      throw new RuntimeException("bundle == null");
+    } while (bbna.a(this.jdField_a_of_type_Bbna) == null);
+    bbna.a(this.jdField_a_of_type_Bbna).a();
   }
 }
 

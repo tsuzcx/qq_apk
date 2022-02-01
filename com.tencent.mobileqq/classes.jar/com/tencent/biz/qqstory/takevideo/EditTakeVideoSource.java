@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bdyh;
+import bffk;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
-import xxl;
+import yme;
 
 public class EditTakeVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditTakeVideoSource> CREATOR = new xxl();
+  public static final Parcelable.Creator<EditTakeVideoSource> CREATOR = new yme();
   @NonNull
   public final LocalMediaInfo a;
   @NonNull
@@ -24,7 +24,7 @@ public class EditTakeVideoSource
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(bdyh.class.getClassLoader()));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(bffk.class.getClassLoader()));
   }
   
   public EditTakeVideoSource(String paramString1, String paramString2, LocalMediaInfo paramLocalMediaInfo)

@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import abrl;
+import acho;
 import java.lang.ref.WeakReference;
 
 class GdtMvDownloadBtnManager$FirstLoadDataTask$1
@@ -10,7 +10,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask$1
   
   public void run()
   {
-    abrl.a("FirstLoadDataTask", "run() called");
+    acho.a("FirstLoadDataTask", "run() called");
     if (GdtMvDownloadBtnManager.FirstLoadDataTask.a(this.this$0)) {}
     GdtMvDownloadBtnManager localGdtMvDownloadBtnManager;
     do

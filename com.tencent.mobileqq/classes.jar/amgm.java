@@ -1,6 +1,23 @@
-public abstract interface amgm
+import java.util.Comparator;
+
+final class amgm
+  implements Comparator<String>
 {
-  public abstract void d();
+  public int a(String paramString1, String paramString2)
+  {
+    if ("★".equals(paramString2)) {}
+    do
+    {
+      return 1;
+      if ("★".equals(paramString1)) {
+        return -1;
+      }
+      if ("#".equals(paramString2)) {
+        return -1;
+      }
+    } while ("#".equals(paramString1));
+    return paramString1.compareTo(paramString2);
+  }
 }
 
 

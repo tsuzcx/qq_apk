@@ -1,36 +1,84 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Point;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bley
-  extends RemoteCommand
 {
-  private static blez jdField_a_of_type_Blez;
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private ArrayList<Point> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int b;
+  private int c;
+  private int d;
   
-  public bley()
+  public bley(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super("weiyun.notify_state");
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.jdField_a_of_type_Int = paramInt4;
+    this.jdField_a_of_type_JavaUtilArrayList = a(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void a(blez paramblez)
+  public int a()
   {
-    jdField_a_of_type_Blez = paramblez;
+    return (int)((this.c - this.b) / (this.jdField_a_of_type_Int - 1.0F));
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public ArrayList<Point> a()
   {
-    paramOnInvokeFinishLinstener = new Bundle();
-    int i = paramBundle.getInt("param_state", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-    if (i != jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public ArrayList<Point> a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    ArrayList localArrayList = new ArrayList(paramInt4);
+    int j = (int)((paramInt2 - paramInt1) / (paramInt4 - 1.0F));
+    int i = 0;
+    paramInt2 = paramInt1;
+    paramInt1 = i;
+    if (paramInt1 < paramInt4)
     {
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(i);
-      if (jdField_a_of_type_Blez != null) {
-        jdField_a_of_type_Blez.a(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      if (paramInt1 == 0) {}
+      for (i = 0;; i = j)
+      {
+        Point localPoint = new Point(i + paramInt2, paramInt3);
+        localArrayList.add(localPoint);
+        paramInt2 = localPoint.x;
+        paramInt1 += 1;
+        break;
       }
     }
-    return paramOnInvokeFinishLinstener;
+    return localArrayList;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint, blet paramblet)
+  {
+    int i = paramPaint.getColor();
+    float f1 = paramPaint.getStrokeWidth();
+    paramPaint.setColor(paramblet.b);
+    paramPaint.setStrokeWidth(paramblet.e);
+    paramCanvas.drawLine(this.b, this.d, this.c, this.d, paramPaint);
+    paramblet = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramblet.hasNext())
+    {
+      Point localPoint = (Point)paramblet.next();
+      float f2 = localPoint.x;
+      float f3 = localPoint.y;
+      float f4 = this.jdField_a_of_type_Float / 2.0F;
+      float f5 = localPoint.x;
+      float f6 = localPoint.y;
+      paramCanvas.drawLine(f2, f3 - f4, f5, this.jdField_a_of_type_Float / 2.0F + f6, paramPaint);
+    }
+    paramPaint.setColor(i);
+    paramPaint.setStrokeWidth(f1);
   }
 }
 

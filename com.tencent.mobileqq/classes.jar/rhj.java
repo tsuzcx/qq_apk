@@ -1,26 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class rhj
-  implements DialogInterface.OnDismissListener
+  implements qie
 {
-  public rhj(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  public rhj(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (ReadInJoyDeliverUGCActivity.f(this.a))
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentContentRecommendFollowList", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
+    }
+    if (paramBoolean)
     {
-      ReadInJoyDeliverUGCActivity.e(this.a, false);
-      ReadInJoyDeliverUGCActivity.e(this.a);
-      if (!ReadInJoyDeliverUGCActivity.g(this.a)) {
-        ReadInJoyDeliverUGCActivity.d(this.a, 1, this.a.getString(2131717342));
-      }
-      if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
-        ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);
+      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (paramInt == 2) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.isFollowed = paramBoolean;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+        ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).notifyDataSetChanged();
+        return;
       }
     }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.getContext(), 1, 2131717802, 0).a();
   }
 }
 

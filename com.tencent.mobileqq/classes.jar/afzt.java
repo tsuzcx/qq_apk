@@ -1,16 +1,26 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class afzt
-  extends aexg
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  afzt(afzr paramafzr, String paramString) {}
   
-  afzt(afzr paramafzr) {}
+  public void onClick(View paramView)
+  {
+    if ((afzr.a(this.jdField_a_of_type_Afzr) != null) && (afzr.a(this.jdField_a_of_type_Afzr).isShowing())) {
+      afzr.a(this.jdField_a_of_type_Afzr).dismiss();
+    }
+    if ((this.jdField_a_of_type_Afzr.a != null) && (this.jdField_a_of_type_Afzr.a.isShowing()))
+    {
+      this.jdField_a_of_type_Afzr.a.dismiss();
+      this.jdField_a_of_type_Afzr.a = null;
+    }
+    afzr.a(this.jdField_a_of_type_Afzr, this.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

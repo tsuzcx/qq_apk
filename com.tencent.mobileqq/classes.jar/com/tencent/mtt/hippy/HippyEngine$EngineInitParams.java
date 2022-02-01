@@ -31,6 +31,7 @@ import java.util.List;
 
 public class HippyEngine$EngineInitParams
 {
+  public Context appContext;
   public String codeCacheTag = "";
   public Context context;
   public String coreJSAssetsPath;

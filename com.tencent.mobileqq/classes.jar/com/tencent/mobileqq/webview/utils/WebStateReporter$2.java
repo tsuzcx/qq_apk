@@ -2,23 +2,23 @@ package com.tencent.mobileqq.webview.utils;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import bcdf;
-import bgyk;
+import bdka;
+import bijc;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
 public class WebStateReporter$2
   implements Runnable
 {
-  public WebStateReporter$2(bgyk parambgyk, String paramString, long paramLong, int paramInt) {}
+  public WebStateReporter$2(bijc parambijc, String paramString, long paramLong, int paramInt) {}
   
   public void run()
   {
     int i;
-    if (bgyk.a.containsKey(this.jdField_a_of_type_JavaLangString))
+    if (bijc.a.containsKey(this.jdField_a_of_type_JavaLangString))
     {
-      i = ((Integer)bgyk.a.get(this.jdField_a_of_type_JavaLangString)).intValue();
-      if ((1 != i) && (this.jdField_a_of_type_Long % i != bgyk.c)) {
+      i = ((Integer)bijc.a.get(this.jdField_a_of_type_JavaLangString)).intValue();
+      if ((1 != i) && (this.jdField_a_of_type_Long % i != bijc.c)) {
         break label63;
       }
       i = 1;
@@ -75,7 +75,7 @@ public class WebStateReporter$2
       ((StringBuilder)localObject).append(str1).append("|");
       ((StringBuilder)localObject).append(str1).append("|");
       ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      bcdf.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
+      bdka.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
       return;
     }
   }

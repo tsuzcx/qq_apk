@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.LruCache;
-import bnpo;
-import xvv;
-import yri;
+import bpfg;
+import ykq;
+import zgb;
 
 public class StoryFaceDrawableFactory$3
   implements Runnable
@@ -16,20 +16,20 @@ public class StoryFaceDrawableFactory$3
     Bitmap localBitmap = this.this$0.a(this.a);
     if (localBitmap != null)
     {
-      yri localyri = (yri)this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.b);
-      if (localyri != null)
+      zgb localzgb = (zgb)this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.b);
+      if (localzgb != null)
       {
-        localyri.a(localBitmap);
+        localzgb.a(localBitmap);
         this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(1002).sendToTarget();
         return;
       }
-      xvv.d("Q.qqstory.record.StoryFaceDrawableFactory", "Find faceDrawable is not in cache after decoding bitmap!");
-      localyri = new yri(this.this$0.jdField_a_of_type_Int, this.this$0.b);
-      localyri.a(localBitmap);
-      this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(this.b, localyri);
+      ykq.d("Q.qqstory.record.StoryFaceDrawableFactory", "Find faceDrawable is not in cache after decoding bitmap!");
+      localzgb = new zgb(this.this$0.jdField_a_of_type_Int, this.this$0.b);
+      localzgb.a(localBitmap);
+      this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(this.b, localzgb);
       return;
     }
-    xvv.e("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath return null!.");
+    ykq.e("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath return null!.");
   }
 }
 

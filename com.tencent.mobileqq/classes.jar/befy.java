@@ -1,40 +1,42 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver.1;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class befy
-  implements Observer
+  extends beem
 {
-  private final void a(Object paramObject)
+  protected int a;
+  
+  public befy(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    paramObject = (Object[])paramObject[1];
-    switch (i)
-    {
-    default: 
-      return;
-    }
-    a((Set)paramObject[0]);
+    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  protected void a(Set<Long> paramSet) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public View a(int paramInt1, befn parambefn, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
   {
-    if (paramObject == null) {
-      return;
-    }
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
+    if (paramView == null)
     {
-      new Handler(paramObservable).post(new TroopFileDownloadMgr.FileDownloadMgrObserver.1(this, paramObject));
-      return;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559296, null);
+      parambefn = new bega(null);
+      parambefn.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367912));
+      parambefn.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367913));
+      paramView.setTag(parambefn);
     }
-    a(paramObject);
+    for (;;)
+    {
+      parambefn.jdField_a_of_type_AndroidWidgetTextView.setText(2131692978);
+      parambefn.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840338);
+      return paramView;
+      parambefn = (bega)paramView.getTag();
+    }
   }
 }
 

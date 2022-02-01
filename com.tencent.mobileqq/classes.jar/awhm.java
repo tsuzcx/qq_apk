@@ -1,139 +1,30 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import mqq.app.MobileQQ;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.listentogether.data.ISong;
 
-public class awhm
+public abstract interface awhm
 {
-  public static HashSet a = new HashSet();
+  public abstract int a();
   
-  public static awhl a(AppInterface paramAppInterface)
-  {
-    awhl localawhl = new awhl();
-    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4);
-    localawhl.jdField_a_of_type_Boolean = paramAppInterface.getBoolean("isShowCard", false);
-    localawhl.jdField_b_of_type_Boolean = paramAppInterface.getBoolean("isShowList", false);
-    localawhl.jdField_a_of_type_Long = paramAppInterface.getLong("expireTime", 0L);
-    localawhl.jdField_a_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrl", "");
-    localawhl.jdField_b_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrlForHost", "");
-    localawhl.c = paramAppInterface.getString("entranceJumpUrlForGuest", "");
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.getConfig config.expireTime=" + localawhl.jdField_a_of_type_Boolean + "  config.isShowList=" + localawhl.jdField_b_of_type_Boolean + "  config.expireTime=" + localawhl.jdField_a_of_type_Long + "  config.entranceJumpUrl=" + localawhl.jdField_a_of_type_JavaLangString + "  config.entranceJumpUrlForHost=" + localawhl.jdField_b_of_type_JavaLangString + "  config.entranceJumpUrlForGuest=" + localawhl.c);
-    }
-    return localawhl;
-  }
+  public abstract void a();
   
-  public static String a(int paramInt, String... paramVarArgs)
-  {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= paramInt)) {
-      return "";
-    }
-    return paramVarArgs[paramInt];
-  }
+  public abstract void a(awhj paramawhj);
   
-  public static void a(AppInterface paramAppInterface, awhl paramawhl)
-  {
-    try
-    {
-      String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-      paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4).edit().putBoolean("isShowCard", paramawhl.jdField_a_of_type_Boolean).putBoolean("isShowList", paramawhl.jdField_b_of_type_Boolean).putLong("expireTime", paramawhl.jdField_a_of_type_Long).putString("entranceJumpUrl", paramawhl.jdField_a_of_type_JavaLangString).putString("entranceJumpUrlForHost", paramawhl.jdField_b_of_type_JavaLangString).putString("entranceJumpUrlForGuest", paramawhl.c).commit();
-      if (QLog.isColorLevel()) {
-        QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.saveConfig config.expireTime=" + paramawhl.jdField_a_of_type_Boolean + "  config.isShowList=" + paramawhl.jdField_b_of_type_Boolean + "  config.expireTime=" + paramawhl.jdField_a_of_type_Long + "  config.entranceJumpUrl=" + paramawhl.jdField_a_of_type_JavaLangString + "  config.entranceJumpUrlForHost=" + paramawhl.jdField_b_of_type_JavaLangString + "  config.entranceJumpUrlForGuest=" + paramawhl.c);
-      }
-      return;
-    }
-    finally
-    {
-      paramAppInterface = finally;
-      throw paramAppInterface;
-    }
-  }
+  public abstract void a(awhk paramawhk);
   
-  public static void a(AppInterface paramAppInterface, String paramString)
-  {
-    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4);
-    str = "has_insert_face_score_msg_" + paramString;
-    paramAppInterface.edit().putBoolean(str, true).commit();
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.setHasInsertMsgFlag uin=" + paramString);
-    }
-  }
+  public abstract void a(awhl paramawhl);
   
-  public static void a(MessageRecord paramMessageRecord, String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q..troop.faceScore", 2, "setFaceScoreFlag, msg = " + paramMessageRecord + "  key=" + paramString + " flag=" + paramBoolean);
-    }
-    if (paramMessageRecord == null) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (TextUtils.isEmpty(paramMessageRecord.extStr))
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put(paramString, paramBoolean);
-          paramMessageRecord.extStr = localJSONObject.toString();
-          paramMessageRecord.extLong |= 0x1;
-          return;
-        }
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-        return;
-      }
-      JSONObject localJSONObject = new JSONObject(paramMessageRecord.extStr);
-      localJSONObject.put(paramString, paramBoolean);
-      paramMessageRecord.extStr = localJSONObject.toString();
-    }
-  }
+  public abstract void a(awhn paramawhn);
   
-  public static void a(String paramString1, String paramString2, String... paramVarArgs)
-  {
-    bcef.b(null, "dc00899", "grp_lbs", paramString2, "face_score", paramString1, 0, 0, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
-  }
+  public abstract boolean a();
   
-  public static boolean a(AppInterface paramAppInterface, String paramString)
-  {
-    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
-    boolean bool = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4).getBoolean("has_insert_face_score_msg_" + paramString, false);
-    if (QLog.isColorLevel()) {
-      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.getHasInsertMsgFlag uin=" + paramString + "  flag=" + bool);
-    }
-    return bool;
-  }
+  public abstract boolean a(ISong paramISong);
   
-  public static boolean a(MessageRecord paramMessageRecord, String paramString)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q..troop.faceScore", 2, "getFaceScoreFlag, msg = " + paramMessageRecord + "  key=" + paramString);
-    }
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    if ((paramMessageRecord.extStr != null) && ((paramMessageRecord.extLong & 0x1) == 1) && (paramMessageRecord.extStr.contains(paramString)) && (paramMessageRecord.getExtInfoFromExtStr(paramString).equals("true"))) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q..troop.faceScore.FaceScoreUtils", 2, "isFaceScoreGrayTips, ret=" + bool + ", mr=" + paramMessageRecord);
-      }
-      return bool;
-      bool = false;
-    }
-  }
+  public abstract int b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 

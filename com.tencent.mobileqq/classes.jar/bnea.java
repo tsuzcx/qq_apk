@@ -1,18 +1,26 @@
+import android.support.annotation.FloatRange;
+
 public class bnea
 {
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
+  private float jdField_a_of_type_Float = 1.0F;
+  private bndz jdField_a_of_type_Bndz = new bndz();
   
-  public bnea(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  public bndz a()
   {
-    this.a = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
-    this.e = paramBoolean5;
+    bndz.b(this.jdField_a_of_type_Bndz, this.jdField_a_of_type_Float - bndz.a(this.jdField_a_of_type_Bndz));
+    return this.jdField_a_of_type_Bndz;
+  }
+  
+  public bnea a(@FloatRange(from=0.01D) float paramFloat)
+  {
+    bndz.a(this.jdField_a_of_type_Bndz, paramFloat);
+    return this;
+  }
+  
+  public bnea b(@FloatRange(from=0.01D) float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+    return this;
   }
 }
 

@@ -1,16 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public abstract interface ujc<V extends uiz>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "", "()V", "sceneTag", "", "getSceneTag", "()Ljava/lang/String;", "setSceneTag", "(Ljava/lang/String;)V", "subTag", "getSubTag", "setSubTag", "doStep", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract class ujc
 {
-  @UiThread
-  public abstract void a();
+  @NotNull
+  private String a = "";
+  @Nullable
+  private String b;
   
-  @UiThread
-  public abstract void a(@NonNull V paramV);
+  @NotNull
+  public final String a()
+  {
+    return this.a;
+  }
   
-  @UiThread
-  public abstract void b();
+  public final void a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.a = paramString;
+  }
+  
+  public abstract boolean a();
+  
+  @Nullable
+  public final String b()
+  {
+    return this.b;
+  }
+  
+  public final void b(@Nullable String paramString)
+  {
+    this.b = paramString;
+  }
 }
 
 

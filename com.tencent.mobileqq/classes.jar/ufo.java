@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class ufo
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJAdDownloadViewBase$Builder;", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase$IBuilder;", "()V", "build", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "context", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/VafContext;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ufo
+  implements ViewBase.IBuilder
 {
-  ufo(ufd paramufd, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void onClick(View paramView)
+  @NotNull
+  public ViewBase build(@NotNull VafContext paramVafContext)
   {
-    this.jdField_a_of_type_Ufd.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Ufd.o = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Ufd.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    Intrinsics.checkParameterIsNotNull(paramVafContext, "context");
+    return (ViewBase)new ufn(paramVafContext);
   }
 }
 

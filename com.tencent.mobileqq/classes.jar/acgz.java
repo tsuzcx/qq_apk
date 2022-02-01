@@ -1,90 +1,69 @@
-import android.content.Context;
-import java.io.File;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGet;
+import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
 
-public abstract class acgz
+class acgz
+  implements acgx
 {
-  public static String a;
-  public acha a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
+  private acag jdField_a_of_type_Acag = new acha(this);
+  private WeakReference<acfw> jdField_a_of_type_JavaLangRefWeakReference;
+  private Map<acaf, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  static
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    jdField_a_of_type_JavaLangString = File.separator;
-  }
-  
-  public static ArrayList<String> a(String paramString1, String paramString2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramString2.equals("Native"))
+    if (paramacfw != null) {}
+    for (Activity localActivity = paramacfw.a(); (paramacfw == null) || (localActivity == null); localActivity = null)
     {
-      localArrayList.add(paramString1 + ".cfg");
-      localArrayList.add("lib" + paramString1 + ".so");
-      localArrayList.add(paramString1 + ".subpatch");
-      return localArrayList;
+      acho.d("GdtLoadAdJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    if (paramString2.equals("DVM"))
+    try
     {
-      localArrayList.add(paramString1 + ".cfg");
-      localArrayList.add(paramString1 + ".jar");
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  public static acgz b(String paramString, acha paramacha)
-  {
-    String str = paramacha.f;
-    if (str.equals("Native"))
-    {
-      paramString = acgu.a(paramString, paramacha);
-      if (paramString == null) {
-        return null;
+      Object localObject = new JSONObject(paramVarArgs[0]);
+      acho.b("GdtLoadAdJsCallHandler", ((JSONObject)localObject).toString());
+      paramVarArgs = new acah();
+      paramVarArgs.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(achn.a(new qq_ad_get.QQAdGet(), localObject)));
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramacfw);
+      localObject = new acaf(paramVarArgs, new WeakReference(this.jdField_a_of_type_Acag));
+      this.jdField_a_of_type_JavaUtilMap.put(localObject, paramString);
+      ((acaf)localObject).a(new WeakReference(localActivity));
+      paramString = new ArrayList();
+      if ((paramVarArgs.a != null) && (!paramVarArgs.a.position_info.isEmpty()))
+      {
+        int i = 0;
+        while (i < paramVarArgs.a.position_info.size())
+        {
+          localObject = ((qq_ad_get.QQAdGet.PositionInfo)paramVarArgs.a.position_info.get(i)).pos_id.get();
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            paramString.add(localObject);
+          }
+          i += 1;
+        }
       }
+      if (paramacfw == null) {}
     }
-    else
+    catch (JSONException paramacfw)
     {
-      acgp.a("KingKongPatchInfo", "Unsupported patch type : " + str);
-      return null;
+      acho.d("GdtLoadAdJsCallHandler", "handleJsCallRequest error", paramacfw);
+      return true;
     }
-    if ((!paramString.c.equals(paramacha.jdField_a_of_type_JavaLangString)) || (!paramString.d.equals(paramacha.b)) || (!paramString.e.equals(paramacha.f)) || (!paramString.e.equals("Native")))
+    for (paramacfw = paramacfw.a();; paramacfw = null)
     {
-      acgp.a("KingKongPatchInfo", "Patch name, version or type mismatch : " + paramString.c + ", " + paramString.d + ", " + paramString.e);
-      return null;
+      AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "loadAd", paramacfw);
+      return true;
     }
-    paramString.jdField_a_of_type_Acha = paramacha;
-    return paramString;
   }
-  
-  public static ArrayList<String> b(String paramString1, String paramString2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramString2.equals("Native"))
-    {
-      localArrayList.add(paramString1 + ".cfg");
-      localArrayList.add("lib" + paramString1 + ".so");
-      localArrayList.add(paramString1 + ".subpatch");
-    }
-    while (!paramString2.equals("DVM")) {
-      return localArrayList;
-    }
-    localArrayList.add(paramString1 + ".cfg");
-    localArrayList.add(paramString1 + ".jar");
-    localArrayList.add(paramString1 + ".dex");
-    return localArrayList;
-  }
-  
-  public abstract int a(Context paramContext);
-  
-  public String a()
-  {
-    return this.b + jdField_a_of_type_JavaLangString + this.c + ".cfg";
-  }
-  
-  public abstract boolean a();
 }
 
 

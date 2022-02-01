@@ -1,41 +1,8 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
 
 public class akyw
-  extends aycd
 {
-  public akyw(ContactsInnerFrame paramContactsInnerFrame) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.a.a.unRegistObserver(this);
-    switch (ContactsInnerFrame.a(this.a).d())
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      ContactsInnerFrame.c(this.a);
-      return;
-    case 0: 
-    case 7: 
-    case 9: 
-      ContactsInnerFrame.a(this.a);
-      return;
-    case 1: 
-    case 5: 
-      ContactsInnerFrame.b(this.a);
-      return;
-    }
-    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
-    {
-      ContactsInnerFrame.a(this.a);
-      return;
-    }
-    ContactsInnerFrame.b(this.a);
-  }
+  public static final IRedPacket a = new akyx();
 }
 
 

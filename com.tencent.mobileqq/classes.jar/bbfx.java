@@ -1,45 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bbfx
-  implements Comparator<bayp>
+public class bbfx
 {
-  bbfx(bbfw parambbfw) {}
+  public ConcurrentHashMap<String, bbfm> a = new ConcurrentHashMap(10);
   
-  public int a(bayp parambayp1, bayp parambayp2)
+  public bbfm a(SVHwEncoder paramSVHwEncoder, SessionInfo paramSessionInfo, int paramInt)
   {
-    int i = -1;
-    parambayp1 = (bbad)parambayp1;
-    parambayp2 = (bbad)parambayp2;
-    amsw localamsw = (amsw)this.a.a.getManager(51);
-    boolean bool1 = localamsw.b((String)parambayp1.a());
-    boolean bool2 = localamsw.b((String)parambayp2.a());
-    if ((!bool1) && (!bool2))
-    {
-      bool1 = localamsw.d((String)parambayp1.a());
-      bool2 = localamsw.d((String)parambayp2.a());
-      if ((!bool1) && (!bool2)) {
-        return parambayp2.f() - parambayp1.f();
-      }
-      if (bool1 != bool2)
-      {
-        if (bool2) {
-          return -1;
-        }
-        return 1;
-      }
-      return parambayp2.f() - parambayp1.f();
+    paramSVHwEncoder = new bbfm(paramSVHwEncoder, paramSessionInfo, paramInt);
+    this.a.put(paramSVHwEncoder.a, paramSVHwEncoder);
+    bbfr.a("VideoCompoundController", "newProcessor, key = " + paramSVHwEncoder.a);
+    return paramSVHwEncoder;
+  }
+  
+  public bbfm a(String paramString)
+  {
+    bbfr.a("VideoCompoundController", "findProcessor, key = " + paramString);
+    if ((!this.a.isEmpty()) && (paramString != null) && (this.a.containsKey(paramString))) {
+      return (bbfm)this.a.get(paramString);
     }
-    if (bool1 != bool2)
-    {
-      if (bool2) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
+    return null;
+  }
+  
+  public boolean a(String paramString)
+  {
+    bbfr.a("VideoCompoundController", "removeProcessor, key = " + paramString);
+    if (paramString == null) {}
+    while (this.a.remove(paramString) == null) {
+      return false;
     }
-    return parambayp2.f() - parambayp1.f();
+    return true;
   }
 }
 

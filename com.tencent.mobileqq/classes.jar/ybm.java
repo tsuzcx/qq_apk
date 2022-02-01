@@ -1,80 +1,44 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ybm
-  extends bgod
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public ybm(ArtFilterManager paramArtFilterManager) {}
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
   
-  public void onDone(bgoe parambgoe)
+  public ybm(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
   {
-    long l2 = -1L;
-    super.onDone(parambgoe);
-    Object localObject2 = parambgoe.a();
-    if (localObject2 == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArtFilterManager", 2, "download bundle null");
-      }
-    }
-    String str;
-    Object localObject1;
-    do
-    {
-      return;
-      str = ((Bundle)localObject2).getString("url");
-      localObject1 = ((Bundle)localObject2).getString("md5");
-      localObject2 = ((Bundle)localObject2).getString("path");
-      if ((str != null) && (localObject1 != null) && (localObject2 != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ArtFilterManager", 2, "download bundle parms null");
-    return;
-    if (parambgoe.a == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArtFilterManager", 2, "[onDone] download finished " + str);
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        this.a.a((String)localObject2);
-      }
-    }
-    for (;;)
-    {
-      localObject1 = (PreDownloadController)ArtFilterManager.a(this.a).getManager(193);
-      localObject2 = new File((String)localObject2);
-      long l1 = l2;
-      if (parambgoe.a == 0)
-      {
-        l1 = l2;
-        if (((File)localObject2).exists()) {
-          l1 = ((File)localObject2).length();
-        }
-      }
-      ((PreDownloadController)localObject1).preDownloadSuccess(str, l1);
-      return;
-      if (((String)localObject1).equalsIgnoreCase(this.a.a((String)localObject2)))
-      {
-        this.a.a((String)localObject2);
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArtFilterManager", 2, "[onDone] checkMd5 failed: " + (String)localObject2);
-        }
-        FileUtils.deleteFile((String)localObject2);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("ArtFilterManager", 2, "[onDone] downloadFile failed: " + parambgoe.a);
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370446);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370474));
+    this.b = paramView.findViewById(2131371565);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371553));
+    paramView.setOnClickListener(this);
+    paramView.setOnLongClickListener(this);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemLongClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
   }
 }
 

@@ -4,8 +4,8 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import arev;
-import arey;
+import asjb;
+import asje;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -24,7 +24,7 @@ public abstract class QQSysAndEmojiResInfo
 {
   private static JSONObject a;
   protected Drawable a;
-  protected arey a;
+  protected asje a;
   protected ArrayList<Integer> a;
   protected HashMap<Integer, QQSysAndEmojiResInfo.QQEmoConfigItem> a;
   protected HashMap<Integer, Integer> b;
@@ -90,7 +90,7 @@ public abstract class QQSysAndEmojiResInfo
     {
       try
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130838043);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130838057);
         localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         localURLDrawableOptions.mPlayGifImage = paramBoolean;
@@ -140,7 +140,7 @@ public abstract class QQSysAndEmojiResInfo
   public JSONObject a()
   {
     if (jdField_a_of_type_OrgJsonJSONObject == null) {
-      a(arev.b());
+      a(asjb.b());
     }
     return jdField_a_of_type_OrgJsonJSONObject;
   }
@@ -198,10 +198,10 @@ public abstract class QQSysAndEmojiResInfo
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Arey == null) {
+    if (this.jdField_a_of_type_Asje == null) {
       b();
     }
-    this.jdField_a_of_type_Arey.a(paramInt);
+    this.jdField_a_of_type_Asje.a(paramInt);
   }
   
   public boolean b(int paramInt)
@@ -219,14 +219,14 @@ public abstract class QQSysAndEmojiResInfo
   
   public void d()
   {
-    if (this.jdField_a_of_type_Arey != null) {
-      this.jdField_a_of_type_Arey.a();
+    if (this.jdField_a_of_type_Asje != null) {
+      this.jdField_a_of_type_Asje.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ import com.dataline.activities.LiteActivity;
 import com.tencent.widget.XListView;
 
 public class cb
-  implements anuw
+  implements aoxw
 {
   public cb(LiteActivity paramLiteActivity) {}
   

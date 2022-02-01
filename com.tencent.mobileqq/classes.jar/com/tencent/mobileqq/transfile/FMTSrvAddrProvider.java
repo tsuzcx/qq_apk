@@ -9,8 +9,8 @@ import ConfigPush.DomainIpList;
 import ConfigPush.FileStoragePushFSSvcList;
 import ConfigPush.FileStorageServerListInfo;
 import ConfigPush.FmtIPInfo;
-import azbx;
-import bftf;
+import bahl;
+import bhbx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.highway.config.HwConfig;
@@ -76,7 +76,7 @@ public final class FMTSrvAddrProvider
   private String mGatewayIp = "";
   private FMTSrvAddrProvider.PttIpList mGroupPttIpList = new FMTSrvAddrProvider.PttIpList();
   private StructLongMessageIpSaver mLongMsgIpSaver = new StructLongMessageIpSaver();
-  private azbx mPttIpSaver = new azbx();
+  private bahl mPttIpSaver = new bahl();
   private int mState = 0;
   private FileStoragePushFSSvcList mSvcList = readFromFile();
   private FileStoragePushFSSvcList mSvcListCache;
@@ -744,60 +744,60 @@ public final class FMTSrvAddrProvider
     //   59: astore_3
     //   60: sipush 1024
     //   63: newarray byte
-    //   65: astore_2
-    //   66: aload 4
-    //   68: astore_3
-    //   69: new 609	java/io/ByteArrayOutputStream
-    //   72: dup
-    //   73: invokespecial 610	java/io/ByteArrayOutputStream:<init>	()V
-    //   76: astore 5
+    //   65: astore 5
+    //   67: aload 4
+    //   69: astore_3
+    //   70: new 609	java/io/ByteArrayOutputStream
+    //   73: dup
+    //   74: invokespecial 610	java/io/ByteArrayOutputStream:<init>	()V
+    //   77: astore_2
     //   78: aload 4
     //   80: astore_3
     //   81: aload 4
-    //   83: aload_2
-    //   84: invokevirtual 704	java/io/FileInputStream:read	([B)I
-    //   87: istore_1
-    //   88: iload_1
-    //   89: iconst_m1
-    //   90: if_icmpeq +60 -> 150
-    //   93: aload 4
-    //   95: astore_3
-    //   96: aload 5
-    //   98: aload_2
-    //   99: iconst_0
-    //   100: iload_1
-    //   101: invokevirtual 708	java/io/ByteArrayOutputStream:write	([BII)V
-    //   104: goto -26 -> 78
-    //   107: astore 5
-    //   109: aconst_null
-    //   110: astore_2
-    //   111: aload 4
-    //   113: astore_3
-    //   114: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   117: ifeq +16 -> 133
-    //   120: aload 4
-    //   122: astore_3
-    //   123: ldc 20
-    //   125: iconst_2
-    //   126: ldc 111
-    //   128: aload 5
-    //   130: invokestatic 711	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   133: aload_2
-    //   134: astore_3
-    //   135: aload 4
-    //   137: ifnull -92 -> 45
-    //   140: aload 4
-    //   142: invokevirtual 712	java/io/FileInputStream:close	()V
-    //   145: aload_2
-    //   146: areturn
-    //   147: astore_3
-    //   148: aload_2
-    //   149: areturn
-    //   150: aload 4
-    //   152: astore_3
-    //   153: new 714	com/qq/taf/jce/JceInputStream
-    //   156: dup
-    //   157: aload 5
+    //   83: aload 5
+    //   85: invokevirtual 704	java/io/FileInputStream:read	([B)I
+    //   88: istore_1
+    //   89: iload_1
+    //   90: iconst_m1
+    //   91: if_icmpeq +60 -> 151
+    //   94: aload 4
+    //   96: astore_3
+    //   97: aload_2
+    //   98: aload 5
+    //   100: iconst_0
+    //   101: iload_1
+    //   102: invokevirtual 708	java/io/ByteArrayOutputStream:write	([BII)V
+    //   105: goto -27 -> 78
+    //   108: astore 5
+    //   110: aconst_null
+    //   111: astore_2
+    //   112: aload 4
+    //   114: astore_3
+    //   115: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   118: ifeq +16 -> 134
+    //   121: aload 4
+    //   123: astore_3
+    //   124: ldc 20
+    //   126: iconst_2
+    //   127: ldc 111
+    //   129: aload 5
+    //   131: invokestatic 711	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   134: aload_2
+    //   135: astore_3
+    //   136: aload 4
+    //   138: ifnull -93 -> 45
+    //   141: aload 4
+    //   143: invokevirtual 712	java/io/FileInputStream:close	()V
+    //   146: aload_2
+    //   147: areturn
+    //   148: astore_3
+    //   149: aload_2
+    //   150: areturn
+    //   151: aload 4
+    //   153: astore_3
+    //   154: new 714	com/qq/taf/jce/JceInputStream
+    //   157: dup
+    //   158: aload_2
     //   159: invokevirtual 623	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   162: invokespecial 717	com/qq/taf/jce/JceInputStream:<init>	([B)V
     //   165: astore 5
@@ -843,51 +843,51 @@ public final class FMTSrvAddrProvider
     //   232: astore 4
     //   234: aconst_null
     //   235: astore_2
-    //   236: goto -125 -> 111
+    //   236: goto -124 -> 112
     //   239: astore 5
-    //   241: goto -130 -> 111
+    //   241: goto -129 -> 112
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	244	0	this	FMTSrvAddrProvider
-    //   87	14	1	i	int
+    //   88	14	1	i	int
     //   6	197	2	localObject1	Object
     //   204	12	2	localObject2	Object
     //   217	1	2	localIOException1	java.io.IOException
     //   225	1	2	localObject3	Object
     //   235	1	2	localObject4	Object
-    //   44	91	3	localObject5	Object
-    //   147	1	3	localIOException2	java.io.IOException
-    //   152	37	3	localObject6	Object
+    //   44	92	3	localObject5	Object
+    //   148	1	3	localIOException2	java.io.IOException
+    //   153	36	3	localObject6	Object
     //   201	1	3	localIOException3	java.io.IOException
     //   206	6	3	localObject7	Object
     //   221	1	3	localIOException4	java.io.IOException
     //   55	178	4	localFileInputStream	java.io.FileInputStream
-    //   76	21	5	localByteArrayOutputStream	ByteArrayOutputStream
-    //   107	51	5	localException1	Exception
+    //   65	34	5	arrayOfByte	byte[]
+    //   108	22	5	localException1	Exception
     //   165	18	5	localJceInputStream	com.qq.taf.jce.JceInputStream
     //   229	1	5	localException2	Exception
     //   239	1	5	localException3	Exception
     // Exception table:
     //   from	to	target	type
-    //   60	66	107	java/lang/Exception
-    //   69	78	107	java/lang/Exception
-    //   81	88	107	java/lang/Exception
-    //   96	104	107	java/lang/Exception
-    //   153	167	107	java/lang/Exception
-    //   170	178	107	java/lang/Exception
-    //   140	145	147	java/io/IOException
+    //   60	67	108	java/lang/Exception
+    //   70	78	108	java/lang/Exception
+    //   81	89	108	java/lang/Exception
+    //   97	105	108	java/lang/Exception
+    //   154	167	108	java/lang/Exception
+    //   170	178	108	java/lang/Exception
+    //   141	146	148	java/io/IOException
     //   194	199	201	java/io/IOException
     //   0	31	204	finally
     //   47	57	204	finally
     //   35	43	217	java/io/IOException
     //   211	215	221	java/io/IOException
-    //   60	66	225	finally
-    //   69	78	225	finally
-    //   81	88	225	finally
-    //   96	104	225	finally
-    //   114	120	225	finally
-    //   123	133	225	finally
-    //   153	167	225	finally
+    //   60	67	225	finally
+    //   70	78	225	finally
+    //   81	89	225	finally
+    //   97	105	225	finally
+    //   115	121	225	finally
+    //   124	134	225	finally
+    //   154	167	225	finally
     //   170	178	225	finally
     //   181	187	225	finally
     //   0	31	229	java/lang/Exception
@@ -1599,7 +1599,7 @@ public final class FMTSrvAddrProvider
     //   162: istore_3
     //   163: aload 9
     //   165: iconst_0
-    //   166: invokestatic 940	bftf:a	([BI)S
+    //   166: invokestatic 940	bhbx:a	([BI)S
     //   169: istore 6
     //   171: aload_1
     //   172: iload_3
@@ -2036,7 +2036,7 @@ public final class FMTSrvAddrProvider
     //   521	532	849	java/lang/Throwable
   }
   
-  public azbx getPttIpSaver()
+  public bahl getPttIpSaver()
   {
     return this.mPttIpSaver;
   }
@@ -2121,7 +2121,7 @@ public final class FMTSrvAddrProvider
         j += 1;
         byte[] arrayOfByte = new byte[2];
         System.arraycopy(paramArrayOfByte, j, arrayOfByte, 0, 2);
-        j = j + 2 + bftf.a(arrayOfByte, 0);
+        j = j + 2 + bhbx.a(arrayOfByte, 0);
         if (j <= paramArrayOfByte.length) {
           i += 1;
         }

@@ -1,22 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaGifView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
 
-class qcp
-  implements ViewBase.OnClickListener
+public class qcp
 {
-  qcp(qcm paramqcm, ArticleInfo paramArticleInfo, Container paramContainer) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public static qco a(int paramInt, Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a != null)
+    switch (paramInt)
     {
-      paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a;
-      rwv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-      qcm.a(this.jdField_a_of_type_Qcm, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.e);
+    default: 
+      return new MediaGifView(paramContext);
+    case 0: 
+      return new MediaGifView(paramContext);
     }
+    return new MediaVideoView(paramContext);
   }
 }
 

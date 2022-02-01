@@ -1,41 +1,34 @@
+import MQQ.VipUserInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.qphone.base.util.QLog;
 
 public class aogx
+  implements BusinessObserver
 {
-  public float a;
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c = -1;
+  protected void a(boolean paramBoolean, int paramInt) {}
   
-  public aogx()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-  }
-  
-  public String toString()
-  {
-    try
-    {
-      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
-      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
+    if (QLog.isColorLevel()) {
+      QLog.d("VipInfoObserver", 2, "onUpdate-isSuccess:" + paramBoolean);
     }
-    catch (Exception localException)
+    if (paramInt == 1)
     {
-      for (;;)
+      int i = -1;
+      paramInt = i;
+      if (paramBoolean)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ARCloudObjectClassifyResult", 2, "toString error, msg:" + localException.getMessage());
+        paramObject = (VipUserInfo)paramObject;
+        paramInt = i;
+        if (paramObject != null)
+        {
+          paramInt = i;
+          if (paramObject.bUpdate == 1) {
+            paramInt = paramObject.iGrowthValue;
+          }
         }
-        String str2 = "";
       }
+      a(paramBoolean, paramInt);
     }
   }
 }

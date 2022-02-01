@@ -1,20 +1,10 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class ayrc
+  implements BusinessObserver
 {
-  public int a;
-  public Point a;
-  public int b;
-  public Point b;
-  public int c;
-  public Point c;
-  public int d;
-  public Point d;
-  public Point e;
-  public Point f;
-  
-  public ayrc(SingleTouchLayout paramSingleTouchLayout) {}
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

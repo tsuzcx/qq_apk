@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.fragment;
 
 import android.os.Handler;
-import atsm;
-import avnu;
+import auxm;
+import awtz;
 
 public class QQSettingChatOperationFragment$1$1
   implements Runnable
 {
-  public QQSettingChatOperationFragment$1$1(atsm paramatsm) {}
+  public QQSettingChatOperationFragment$1$1(auxm paramauxm) {}
   
   public void run()
   {
     this.a.a.b();
-    avnu.a().j(QQSettingChatOperationFragment.a(this.a.a));
+    awtz.a().j(QQSettingChatOperationFragment.a(this.a.a));
     this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
   }
 }

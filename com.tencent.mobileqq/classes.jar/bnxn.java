@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import com.microrapid.opencv.ImageMainColorData;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import java.util.Comparator;
 
-public final class bnxn
-  implements Parcelable.Creator<FilterCategoryItem>
+public class bnxn
+  implements Comparator<ImageMainColorData>
 {
-  public FilterCategoryItem a(Parcel paramParcel)
-  {
-    return new FilterCategoryItem(paramParcel);
-  }
+  public bnxn(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public FilterCategoryItem[] a(int paramInt)
+  public int a(ImageMainColorData paramImageMainColorData1, ImageMainColorData paramImageMainColorData2)
   {
-    return new FilterCategoryItem[paramInt];
+    int i = 0;
+    if (paramImageMainColorData1.area > paramImageMainColorData2.area) {
+      i = -1;
+    }
+    while (paramImageMainColorData1.area >= paramImageMainColorData2.area) {
+      return i;
+    }
+    return 1;
   }
 }
 

@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bmbx;
+import bnrh;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import java.io.File;
 
@@ -16,7 +16,7 @@ final class AEEditorTextControlPanel$8
     }
     catch (Throwable localThrowable)
     {
-      bmbx.d("AEEditorTextControlPanel", "[clean] error");
+      bnrh.d("AEEditorTextControlPanel", "[clean] error");
     }
   }
 }

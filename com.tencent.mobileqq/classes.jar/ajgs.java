@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ajgs
-  implements View.OnClickListener
+final class ajgs
+  implements DialogInterface.OnClickListener
 {
-  ajgs(ajgq paramajgq) {}
+  ajgs(ajgu paramajgu, Object[] paramArrayOfObject) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_Ajgu != null) {
+      this.jdField_a_of_type_Ajgu.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
+    }
   }
 }
 

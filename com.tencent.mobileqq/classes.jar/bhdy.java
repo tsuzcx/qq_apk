@@ -1,30 +1,13 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.FolderTextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bhdy
-  implements View.OnClickListener
+public abstract interface bhdy
 {
-  public bhdy(FolderTextView paramFolderTextView) {}
-  
-  public void onClick(View paramView)
-  {
-    if (FolderTextView.a(this.a) == 0) {
-      FolderTextView.a(this.a, 1);
-    }
-    for (;;)
-    {
-      FolderTextView.a(this.a);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      FolderTextView.a(this.a, 0);
-    }
-  }
+  public abstract View a(Context paramContext, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhdy
  * JD-Core Version:    0.7.0.1
  */

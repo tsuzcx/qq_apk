@@ -1,19 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appstore.component.CommonTitleBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerPreparedListener.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class bhyg
-  implements View.OnClickListener
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public bhyg(CommonTitleBar paramCommonTitleBar) {}
+  public bhyg(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public void onClick(View paramView)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (CommonTitleBar.a(this.a) != null) {
-      CommonTitleBar.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.runOnUiThread(new VipVideoPlayActivity.VideoPlayerPreparedListener.1(this));
   }
 }
 

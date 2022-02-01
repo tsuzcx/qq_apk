@@ -1,34 +1,35 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.2.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class bdba
-  extends bggc
 {
-  bdba(bday parambday) {}
+  private double a;
+  public int a;
+  public int b;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public bdba() {}
+  
+  public bdba(int paramInt1, int paramInt2)
   {
-    if ((paramInt == 36) && ((paramObject instanceof Integer)))
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Double = (paramInt1 / paramInt2);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FloatViewSkin", 2, "mMusicBusinessObserver: isSuccess" + paramBoolean + "  music player id:" + paramObject);
+      return true;
+      if (!(paramObject instanceof bdba)) {
+        return false;
       }
-      paramInt = ((Integer)paramObject).intValue();
-      bday.a(this.a, paramInt);
-      if (paramInt > 0)
-      {
-        this.a.a = true;
-        bgiw.a.download(null, bday.a(this.a), bday.a(this.a), false);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.a = false;
-    ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.2.1(this));
+      paramObject = (bdba)paramObject;
+    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b));
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "CustomSize[width=" + this.jdField_a_of_type_Int + ", height=" + this.b + ", scaleWH='" + this.jdField_a_of_type_Double + ']';
   }
 }
 

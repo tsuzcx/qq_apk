@@ -3,27 +3,27 @@ package com.tencent.biz.pubaccount.readinjoy.pts.lite;
 import com.tencent.pts.core.itemview.PTSItemData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import qmh;
-import qob;
-import qoc;
+import qym;
+import rag;
+import rah;
 
 public class PTSLiteItemViewBuilder$2
   implements Runnable
 {
-  public PTSLiteItemViewBuilder$2(qmh paramqmh, PTSItemData paramPTSItemData) {}
+  public PTSLiteItemViewBuilder$2(qym paramqym, PTSItemData paramPTSItemData) {}
   
   public void run()
   {
     if (this.a == null) {
       return;
     }
-    if ((qmh.a(this.this$0).contains(this.a.getItemID())) && ((QLog.isColorLevel()) || (QLog.isDebugVersion())))
+    if ((qym.a(this.this$0).contains(this.a.getItemID())) && ((QLog.isColorLevel()) || (QLog.isDebugVersion())))
     {
       QLog.i("PTSLiteItemViewBuilder", 2, "[reportItemExposure], itemId : " + this.a.getItemID() + " has exposed.");
       return;
     }
-    qob.a("0X800A9DD", "", "", "", new qoc().a("page_name", this.a.getPageName()).a("item_id", this.a.getItemID()).a());
-    qmh.a(this.this$0).add(this.a.getItemID());
+    rag.a("0X800A9DD", "", "", "", new rah().a("page_name", this.a.getPageName()).a("item_id", this.a.getItemID()).a());
+    qym.a(this.this$0).add(this.a.getItemID());
   }
 }
 

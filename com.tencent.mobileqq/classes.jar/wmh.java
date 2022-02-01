@@ -1,19 +1,47 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.List;
 
-public class wmh
-  implements ViewTreeObserver.OnPreDrawListener
+class wmh
+  extends SimpleObserver<List<wzh>>
 {
-  public wmh(StoryPlayerFragment paramStoryPlayerFragment, View paramView) {}
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public boolean onPreDraw()
+  wmh(wmd paramwmd) {}
+  
+  public void a(List<wzh> paramList)
   {
-    wqq.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a, new wmi(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    ykq.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onNext()");
+    super.onNext(paramList);
+    int i = 0;
+    while (i < paramList.size())
+    {
+      wzh localwzh = (wzh)paramList.get(i);
+      if (!localwzh.a) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(localwzh.b);
+      }
+      i += 1;
+    }
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+  }
+  
+  public void onComplete()
+  {
+    ykq.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onComplete()");
+    super.onComplete();
+    this.jdField_a_of_type_Wmd.a(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    ykq.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onError()");
+    super.onError(paramError);
+    this.jdField_a_of_type_Wmd.a(this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

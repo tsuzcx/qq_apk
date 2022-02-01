@@ -1,15 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
 
-class tdy
-  extends AnimatorListenerAdapter
+public class tdy
+  extends bljb<RecyclerView.Adapter>
 {
-  tdy(tdw paramtdw, int paramInt) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public tdy(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix, RecyclerView.Adapter paramAdapter)
   {
-    this.jdField_a_of_type_Tdw.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Tdw.jdField_a_of_type_Float = 0.0F;
+    super(paramAdapter);
+  }
+  
+  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.a(paramViewHolder, paramInt);
+    this.a.a(paramViewHolder, paramInt);
   }
 }
 

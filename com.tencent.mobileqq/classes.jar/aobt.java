@@ -1,339 +1,207 @@
-import android.opengl.GLES20;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import com.tencent.imcore.message.QQMessageFacade;
 
 public class aobt
 {
-  public static float[] a;
-  public static float[] b;
-  static float[] jdField_c_of_type_ArrayOfFloat;
-  static float[] jdField_d_of_type_ArrayOfFloat;
-  public static float[] e;
-  static float[] jdField_f_of_type_ArrayOfFloat;
-  public static float[] g;
-  private static float[] jdField_i_of_type_ArrayOfFloat = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-  public final int a;
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private ByteBuffer jdField_b_of_type_JavaNioByteBuffer;
-  private int jdField_c_of_type_Int;
-  private int jdField_d_of_type_Int;
-  private int e;
-  private int jdField_f_of_type_Int;
-  private int g;
-  private int jdField_h_of_type_Int;
-  private float[] jdField_h_of_type_ArrayOfFloat;
-  private int jdField_i_of_type_Int = -1;
-  private int j = -1;
-  private int k = -1;
-  private int l = -1;
-  private int m = -1;
-  private int n = -1;
-  private int o = -1;
-  private int p = -1;
-  private int q = -1;
-  private int r = -1;
+  private QQMessageFacade a;
   
-  static
+  public aobt(QQMessageFacade paramQQMessageFacade)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-    jdField_b_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 1.0F, 1.0F, -1.0F, -1.0F, 1.0F, -1.0F };
-    jdField_c_of_type_ArrayOfFloat = new float[] { -1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F };
-    jdField_d_of_type_ArrayOfFloat = new float[] { 0.0F, -1.0F, 1.0F, -1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    jdField_e_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 0.0F, -1.0F, -1.0F, 0.0F, 0.0F, 0.0F };
-    jdField_f_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-    jdField_g_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 1.0F, 1.0F, -1.0F, -1.0F, 1.0F, -1.0F };
+    this.a = paramQQMessageFacade;
   }
   
-  public aobt(int paramInt)
+  private void c(acnt paramacnt)
   {
-    if (((paramInt < 0) || (paramInt > 4)) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Index can only be 0 to 4");
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    a(this.jdField_a_of_type_Int);
+    paramacnt = paramacnt.a();
+    paramacnt.a(acpe.class);
+    paramacnt.a(acpg.class);
+    paramacnt.a(acpf.class);
   }
   
-  private int a(int paramInt, String paramString)
+  private void d(acnt paramacnt)
   {
-    paramInt = GLES20.glCreateShader(paramInt);
-    if (paramInt != 0)
-    {
-      GLES20.glShaderSource(paramInt, paramString);
-      GLES20.glCompileShader(paramInt);
-      paramString = new int[1];
-      GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
-      if (paramString[0] == 0)
-      {
-        GLES20.glDeleteShader(paramInt);
-        return 0;
-      }
-    }
-    return paramInt;
+    paramacnt.a().a(acwu.class);
   }
   
-  private void a(String paramString)
+  private void e(acnt paramacnt)
   {
-    int i1 = GLES20.glGetError();
-    if (i1 != 0) {
-      QLog.i("GreetingYUVProgram", 1, paramString + ": glError 0x" + Integer.toHexString(i1));
-    }
+    paramacnt = paramacnt.a();
+    paramacnt.a(bfcy.class);
+    paramacnt.a(allx.class);
   }
   
-  public int a(String paramString1, String paramString2)
+  private void f(acnt paramacnt)
   {
-    int i1 = a(35633, paramString1);
-    int i2 = a(35632, paramString2);
-    int i3 = GLES20.glCreateProgram();
-    if (i3 != 0)
-    {
-      GLES20.glAttachShader(i3, i1);
-      a("glAttachShader");
-      GLES20.glAttachShader(i3, i2);
-      a("glAttachShader");
-      GLES20.glLinkProgram(i3);
-      paramString1 = new int[1];
-      GLES20.glGetProgramiv(i3, 35714, paramString1, 0);
-      if (paramString1[0] != 1)
-      {
-        GLES20.glDeleteProgram(i3);
-        return 0;
-      }
-    }
-    return i3;
+    paramacnt = paramacnt.a();
+    paramacnt.a(Integer.valueOf(1), acvs.class);
+    paramacnt.a(Integer.valueOf(3), acwd.class);
+    paramacnt.a(Integer.valueOf(6), acwt.class);
+    paramacnt.a(Integer.valueOf(8), acwo.class);
+    paramacnt.a(Integer.valueOf(10), acvx.class);
+    paramacnt.a(Integer.valueOf(5), acvz.class);
+    paramacnt.a(Integer.valueOf(11), acwr.class);
+    paramacnt.a(Integer.valueOf(12), acwf.class);
+    paramacnt.a(Integer.valueOf(23), acws.class);
+    paramacnt.a(Integer.valueOf(25), acvv.class);
+    paramacnt.a(Integer.valueOf(26), acvw.class);
+    paramacnt.a(Integer.valueOf(24), acwj.class);
+    paramacnt.a(Integer.valueOf(4), acvy.class);
+    paramacnt.a(Integer.valueOf(2), acwc.class);
+    paramacnt.a(Integer.valueOf(14), acwm.class);
+    paramacnt.a(Integer.valueOf(16), acvt.class);
+    paramacnt.a(Integer.valueOf(17), acwa.class);
+    paramacnt.a(Integer.valueOf(18), acwn.class);
+    paramacnt.a(Integer.valueOf(15), acvr.class);
+    paramacnt.a(Integer.valueOf(19), acwl.class);
+    paramacnt.a(Integer.valueOf(20), acwk.class);
+    paramacnt.a(Integer.valueOf(21), acwe.class);
+    paramacnt.a(Integer.valueOf(22), acvp.class);
+    paramacnt.a(Integer.valueOf(28), acwg.class);
+    paramacnt.a(Integer.valueOf(27), acvu.class);
+    paramacnt.a(Integer.valueOf(29), acwi.class);
+    paramacnt.a(Integer.valueOf(30), acwh.class);
+    paramacnt.a(Integer.valueOf(31), acwq.class);
+    paramacnt.a(Integer.valueOf(32), acwp.class);
+    paramacnt.a(Integer.valueOf(33), acwb.class);
+    paramacnt.a(Integer.valueOf(34), acvq.class);
   }
   
   public void a()
   {
-    if (this.jdField_b_of_type_Int <= 0) {
-      this.jdField_b_of_type_Int = a("attribute vec4 vPosition;\nattribute vec2 a_texCoord;\nvarying vec2 tc;\nvoid main() {\ngl_Position = vPosition;\ntc = a_texCoord;\n}\n", "precision mediump float;\nuniform sampler2D tex_y;\nuniform sampler2D tex_u;\nuniform sampler2D tex_v;\nvarying vec2 tc;\nvoid main() {\nvec4 c = vec4((texture2D(tex_y, tc).r - 16./255.) * 1.164);\nvec4 U = vec4(texture2D(tex_u, tc).r - 128./255.);\nvec4 V = vec4(texture2D(tex_v, tc).r - 128./255.);\nc += V * vec4(1.596, -0.813, 0, 0);\nc += U * vec4(0, -0.392, 2.017, 0);\nc.a = 1.0;\ngl_FragColor = c;\n}\n");
-    }
-    this.jdField_i_of_type_Int = GLES20.glGetAttribLocation(this.jdField_b_of_type_Int, "vPosition");
-    a("glGetAttribLocation vPosition");
-    if ((this.jdField_i_of_type_Int == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get attribute location for vPosition");
-    }
-    this.j = GLES20.glGetAttribLocation(this.jdField_b_of_type_Int, "a_texCoord");
-    a("glGetAttribLocation a_texCoord");
-    if ((this.j == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get attribute location for a_texCoord");
-    }
-    this.k = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "tex_y");
-    a("glGetUniformLocation tex_y");
-    if ((this.k == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_y");
-    }
-    this.l = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "tex_u");
-    a("glGetUniformLocation tex_u");
-    if ((this.l == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_u");
-    }
-    this.m = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "tex_v");
-    a("glGetUniformLocation tex_v");
-    if ((this.m == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_v");
-    }
-    this.jdField_a_of_type_Boolean = true;
+    acnt localacnt = this.a.getRegistry();
+    Object localObject = localacnt.a();
+    ((bcsh)localObject).a(Integer.valueOf(734), bcss.class);
+    ((bcsh)localObject).a(Integer.valueOf(193), bcsx.class);
+    ((bcsh)localObject).a(Integer.valueOf(562), bcsy.class);
+    ((bcsh)localObject).a(Integer.valueOf(519), bcsq.class);
+    ((bcsh)localObject).a(Integer.valueOf(524), bcsl.class);
+    ((bcsh)localObject).a(Integer.valueOf(528), bctj.class);
+    ((bcsh)localObject).a(Integer.valueOf(529), bcsn.class);
+    ((bcsh)localObject).a(Integer.valueOf(208), bcsr.class);
+    ((bcsh)localObject).a(Integer.valueOf(38), bcsj.class);
+    ((bcsh)localObject).a(Integer.valueOf(732), bcso.class);
+    ((bcsh)localObject).a(Integer.valueOf(33), bcsv.class);
+    ((bcsh)localObject).a(Integer.valueOf(140), bcsu.class);
+    ((bcsh)localObject).a(Integer.valueOf(141), bcsu.class);
+    ((bcsh)localObject).a(Integer.valueOf(187), bcst.class);
+    ((bcsh)localObject).a(Integer.valueOf(188), bcst.class);
+    ((bcsh)localObject).a(Integer.valueOf(189), bcst.class);
+    ((bcsh)localObject).a(Integer.valueOf(190), bcst.class);
+    ((bcsh)localObject).a(Integer.valueOf(191), bcst.class);
+    ((bcsh)localObject).a(Integer.valueOf(84), bcsw.class);
+    ((bcsh)localObject).a(Integer.valueOf(85), bcsw.class);
+    ((bcsh)localObject).a(Integer.valueOf(86), bcsw.class);
+    ((bcsh)localObject).a(Integer.valueOf(87), bcsw.class);
+    ((bcsh)localObject).a(Integer.valueOf(35), bcsw.class);
+    ((bcsh)localObject).a(Integer.valueOf(36), bcsw.class);
+    ((bcsh)localObject).a(Integer.valueOf(37), bcsw.class);
+    ((bcsh)localObject).a(Integer.valueOf(45), bcsw.class);
+    ((bcsh)localObject).a(Integer.valueOf(46), bcsw.class);
+    ((bcsh)localObject).a(Integer.valueOf(9), bcta.class);
+    ((bcsh)localObject).a(Integer.valueOf(10), bcta.class);
+    ((bcsh)localObject).a(Integer.valueOf(31), bcta.class);
+    ((bcsh)localObject).a(Integer.valueOf(79), bcta.class);
+    ((bcsh)localObject).a(Integer.valueOf(97), bcta.class);
+    ((bcsh)localObject).a(Integer.valueOf(120), bcta.class);
+    ((bcsh)localObject).a(Integer.valueOf(132), bcta.class);
+    ((bcsh)localObject).a(Integer.valueOf(133), bcta.class);
+    ((bcsh)localObject).a(Integer.valueOf(166), bcta.class);
+    ((bcsh)localObject).a(Integer.valueOf(167), bcta.class);
+    ((bcsh)localObject).a(bcsg.class);
+    localObject = bcsa.a();
+    ((acob)localObject).a(Integer.valueOf(-7009), bcuc.class);
+    ((acob)localObject).a(Integer.valueOf(-7010), bcub.class);
+    ((acob)localObject).a(Integer.valueOf(-7011), bcud.class);
+    ((acob)localObject).a(Integer.valueOf(-7012), bctz.class);
+    ((acob)localObject).a(Integer.valueOf(-7013), bcue.class);
+    ((acob)localObject).a(Integer.valueOf(-7014), bcuf.class);
+    ((acob)localObject).a(Integer.valueOf(-7015), bcua.class);
+    a(localacnt);
+    b(localacnt);
+    f(localacnt);
+    d(localacnt);
+    e(localacnt);
+    c(localacnt);
   }
   
-  public void a(int paramInt)
+  protected void a(acnt paramacnt)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      this.jdField_h_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33984;
-      this.jdField_d_of_type_Int = 33985;
-      this.jdField_e_of_type_Int = 33986;
-      this.jdField_f_of_type_Int = 0;
-      this.jdField_g_of_type_Int = 1;
-      this.jdField_h_of_type_Int = 2;
-      return;
-    case 1: 
-      this.jdField_h_of_type_ArrayOfFloat = jdField_c_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33984;
-      this.jdField_d_of_type_Int = 33985;
-      this.jdField_e_of_type_Int = 33986;
-      this.jdField_f_of_type_Int = 0;
-      this.jdField_g_of_type_Int = 1;
-      this.jdField_h_of_type_Int = 2;
-      return;
-    case 2: 
-      this.jdField_h_of_type_ArrayOfFloat = jdField_d_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33987;
-      this.jdField_d_of_type_Int = 33988;
-      this.jdField_e_of_type_Int = 33989;
-      this.jdField_f_of_type_Int = 3;
-      this.jdField_g_of_type_Int = 4;
-      this.jdField_h_of_type_Int = 5;
-      return;
-    case 3: 
-      this.jdField_h_of_type_ArrayOfFloat = jdField_e_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33990;
-      this.jdField_d_of_type_Int = 33991;
-      this.jdField_e_of_type_Int = 33992;
-      this.jdField_f_of_type_Int = 6;
-      this.jdField_g_of_type_Int = 7;
-      this.jdField_h_of_type_Int = 8;
-      return;
-    }
-    this.jdField_h_of_type_ArrayOfFloat = jdField_f_of_type_ArrayOfFloat;
-    this.jdField_c_of_type_Int = 33993;
-    this.jdField_d_of_type_Int = 33994;
-    this.jdField_e_of_type_Int = 33995;
-    this.jdField_f_of_type_Int = 9;
-    this.jdField_g_of_type_Int = 10;
-    this.jdField_h_of_type_Int = 11;
+    paramacnt.a(acvc.class);
+    paramacnt.a(acvj.class);
+    paramacnt.a(acuf.class);
+    paramacnt.a(actz.class);
+    paramacnt.a(acuo.class);
+    paramacnt.a(acua.class);
+    paramacnt.a(acut.class);
+    paramacnt.a(acui.class);
+    paramacnt.a(acvn.class);
+    paramacnt.a(acvh.class);
+    paramacnt.a(acuy.class);
+    paramacnt.a(acvi.class);
+    paramacnt.a(acva.class);
+    paramacnt.a(acux.class);
+    paramacnt.a(acvb.class);
+    paramacnt.a(acus.class);
+    paramacnt.a(acuw.class);
+    paramacnt.a(acvf.class);
+    paramacnt.a(acvg.class);
+    paramacnt.a(acuk.class);
+    paramacnt.a(acuj.class);
+    paramacnt.a(acuz.class);
+    paramacnt.a(acuv.class);
+    paramacnt.a(acvk.class);
+    paramacnt.a(acvl.class);
+    paramacnt.a(acug.class);
+    paramacnt.a(acub.class);
+    paramacnt.a(acuc.class);
+    paramacnt.a(acuh.class);
+    paramacnt.a(acur.class);
+    paramacnt.a(acuq.class);
+    paramacnt.a(acvd.class);
+    paramacnt.a(acup.class);
+    paramacnt.a(acuu.class);
+    paramacnt.a(acum.class);
+    paramacnt.a(acue.class);
+    paramacnt.a(acvm.class);
+    paramacnt.a(acun.class);
+    paramacnt.a(acud.class);
+    paramacnt.a(acul.class);
+    paramacnt.a(acvo.class);
   }
   
-  public void a(Buffer paramBuffer1, Buffer paramBuffer2, Buffer paramBuffer3, int paramInt1, int paramInt2)
+  protected void b(acnt paramacnt)
   {
-    if ((paramInt1 != this.q) || (paramInt2 != this.r)) {}
-    for (int i1 = 1;; i1 = 0)
-    {
-      if (i1 != 0)
-      {
-        this.q = paramInt1;
-        this.r = paramInt2;
-      }
-      if ((this.n < 0) || (i1 != 0))
-      {
-        if (this.n >= 0)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.n }, 0);
-          a("glDeleteTextures");
-        }
-        int[] arrayOfInt = new int[1];
-        GLES20.glGenTextures(1, arrayOfInt, 0);
-        a("glGenTextures");
-        this.n = arrayOfInt[0];
-      }
-      QLog.d("AVGAmeRender", 1, "buildTextures : w=" + this.q + " h=" + this.r + " yData=" + paramBuffer1.capacity());
-      GLES20.glBindTexture(3553, this.n);
-      a("glBindTexture");
-      GLES20.glTexImage2D(3553, 0, 6409, this.q, this.r, 0, 6409, 5121, paramBuffer1);
-      a("glTexImage2D");
-      GLES20.glTexParameterf(3553, 10241, 9728.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      if ((this.o < 0) || (i1 != 0))
-      {
-        if (this.o >= 0)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.o }, 0);
-          a("glDeleteTextures");
-        }
-        paramBuffer1 = new int[1];
-        GLES20.glGenTextures(1, paramBuffer1, 0);
-        a("glGenTextures");
-        this.o = paramBuffer1[0];
-      }
-      GLES20.glBindTexture(3553, this.o);
-      GLES20.glTexImage2D(3553, 0, 6409, this.q / 2, this.r / 2, 0, 6409, 5121, paramBuffer2);
-      GLES20.glTexParameterf(3553, 10241, 9728.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      if ((this.p < 0) || (i1 != 0))
-      {
-        if (this.p >= 0)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.p }, 0);
-          a("glDeleteTextures");
-        }
-        paramBuffer1 = new int[1];
-        GLES20.glGenTextures(1, paramBuffer1, 0);
-        a("glGenTextures");
-        this.p = paramBuffer1[0];
-      }
-      GLES20.glBindTexture(3553, this.p);
-      GLES20.glTexImage2D(3553, 0, 6409, this.q / 2, this.r / 2, 0, 6409, 5121, paramBuffer3);
-      GLES20.glTexParameterf(3553, 10241, 9728.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      return;
-    }
-  }
-  
-  public void a(float[] paramArrayOfFloat)
-  {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(paramArrayOfFloat.length * 4);
-    this.jdField_a_of_type_JavaNioByteBuffer.order(ByteOrder.nativeOrder());
-    this.jdField_a_of_type_JavaNioByteBuffer.asFloatBuffer().put(paramArrayOfFloat);
-    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_b_of_type_JavaNioByteBuffer == null)
-    {
-      this.jdField_b_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(jdField_i_of_type_ArrayOfFloat.length * 4);
-      this.jdField_b_of_type_JavaNioByteBuffer.order(ByteOrder.nativeOrder());
-      this.jdField_b_of_type_JavaNioByteBuffer.asFloatBuffer().put(jdField_i_of_type_ArrayOfFloat);
-      this.jdField_b_of_type_JavaNioByteBuffer.position(0);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    GLES20.glUseProgram(this.jdField_b_of_type_Int);
-    a("glUseProgram");
-    GLES20.glVertexAttribPointer(this.jdField_i_of_type_Int, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioByteBuffer);
-    a("glVertexAttribPointer mPositionHandle");
-    GLES20.glEnableVertexAttribArray(this.jdField_i_of_type_Int);
-    GLES20.glVertexAttribPointer(this.j, 2, 5126, false, 8, this.jdField_b_of_type_JavaNioByteBuffer);
-    a("glVertexAttribPointer maTextureHandle");
-    GLES20.glEnableVertexAttribArray(this.j);
-    GLES20.glActiveTexture(this.jdField_c_of_type_Int);
-    GLES20.glBindTexture(3553, this.n);
-    GLES20.glUniform1i(this.k, this.jdField_f_of_type_Int);
-    GLES20.glActiveTexture(this.jdField_d_of_type_Int);
-    GLES20.glBindTexture(3553, this.o);
-    GLES20.glUniform1i(this.l, this.jdField_g_of_type_Int);
-    GLES20.glActiveTexture(this.jdField_e_of_type_Int);
-    GLES20.glBindTexture(3553, this.p);
-    GLES20.glUniform1i(this.m, this.jdField_h_of_type_Int);
-    GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glFinish();
-    GLES20.glDisableVertexAttribArray(this.jdField_i_of_type_Int);
-    GLES20.glDisableVertexAttribArray(this.j);
-    GLES20.glUseProgram(0);
-  }
-  
-  public void c()
-  {
-    if (this.n != -1)
-    {
-      GLES20.glDeleteTextures(1, new int[] { this.n }, 0);
-      a("glDeleteTextures");
-      this.n = -1;
-    }
-    if (this.o != -1)
-    {
-      GLES20.glDeleteTextures(1, new int[] { this.o }, 0);
-      a("glDeleteTextures");
-      this.o = -1;
-    }
-    if (this.p != -1)
-    {
-      GLES20.glDeleteTextures(1, new int[] { this.p }, 0);
-      a("glDeleteTextures");
-      this.p = -1;
-    }
-    if (this.jdField_b_of_type_Int > 0)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      GLES20.glDeleteProgram(this.jdField_b_of_type_Int);
-      a("glDeleteProgram");
-      this.jdField_b_of_type_Int = 0;
-    }
+    paramacnt = paramacnt.a();
+    paramacnt.a(0, 1);
+    paramacnt.a(1000, 3);
+    paramacnt.a(10004, 24);
+    paramacnt.a(1005, 6);
+    paramacnt.a(1008, 8);
+    paramacnt.a(1006, 10);
+    paramacnt.a(1004, 5);
+    paramacnt.a(1009, 11);
+    paramacnt.a(3000, 4);
+    paramacnt.a(1, 2);
+    paramacnt.a(1001, 12);
+    paramacnt.a(10002, 23);
+    paramacnt.a(1033, 25);
+    paramacnt.a(1034, 26);
+    paramacnt.a(1020, 14);
+    paramacnt.a(1021, 16);
+    paramacnt.a(1022, 17);
+    paramacnt.a(1023, 18);
+    paramacnt.a(1025, 15);
+    paramacnt.a(1024, 15);
+    paramacnt.a(1010, 19);
+    paramacnt.a(7400, 22);
+    paramacnt.a(1026, 21);
+    paramacnt.a(1037, 28);
+    paramacnt.a(1036, 27);
+    paramacnt.a(1044, 29);
+    paramacnt.a(1045, 30);
+    paramacnt.a(10007, 31);
+    paramacnt.a(10008, 32);
+    paramacnt.a(10009, 33);
+    paramacnt.a(10010, 34);
   }
 }
 

@@ -1,112 +1,107 @@
-import android.content.Context;
-import com.rookery.translate.model.TranslateCache.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.support.v4.util.LruCache;
 
 public class lai
 {
-  private static lae jdField_a_of_type_Lae;
-  private static laf jdField_a_of_type_Laf;
+  private int jdField_a_of_type_Int;
+  LruCache<String, String> jdField_a_of_type_AndroidSupportV4UtilLruCache;
   
-  /* Error */
-  public static lae a(Context paramContext)
+  public lai(int paramInt)
   {
-    // Byte code:
-    //   0: getstatic 17	lai:jdField_a_of_type_Lae	Llae;
-    //   3: ifnonnull +81 -> 84
-    //   6: aload_0
-    //   7: ldc 19
-    //   9: invokevirtual 25	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   12: checkcast 27	android/app/ActivityManager
-    //   15: invokevirtual 31	android/app/ActivityManager:getMemoryClass	()I
-    //   18: ldc 32
-    //   20: imul
-    //   21: bipush 8
-    //   23: idiv
-    //   24: istore_1
-    //   25: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   28: ifeq +28 -> 56
-    //   31: ldc 40
-    //   33: iconst_2
-    //   34: new 42	java/lang/StringBuilder
-    //   37: dup
-    //   38: invokespecial 43	java/lang/StringBuilder:<init>	()V
-    //   41: ldc 45
-    //   43: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: iload_1
-    //   47: invokevirtual 52	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   50: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: invokestatic 60	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   56: ldc 2
-    //   58: monitorenter
-    //   59: getstatic 17	lai:jdField_a_of_type_Lae	Llae;
-    //   62: astore_2
-    //   63: aload_2
-    //   64: ifnonnull +17 -> 81
-    //   67: new 62	lae
-    //   70: dup
-    //   71: aload_0
-    //   72: iconst_1
-    //   73: iload_1
-    //   74: i2l
-    //   75: invokespecial 65	lae:<init>	(Landroid/content/Context;IJ)V
-    //   78: putstatic 17	lai:jdField_a_of_type_Lae	Llae;
-    //   81: ldc 2
-    //   83: monitorexit
-    //   84: getstatic 17	lai:jdField_a_of_type_Lae	Llae;
-    //   87: areturn
-    //   88: astore_0
-    //   89: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   92: ifeq -11 -> 81
-    //   95: ldc 40
-    //   97: iconst_2
-    //   98: new 42	java/lang/StringBuilder
-    //   101: dup
-    //   102: invokespecial 43	java/lang/StringBuilder:<init>	()V
-    //   105: ldc 67
-    //   107: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: aload_0
-    //   111: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   114: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   117: invokestatic 73	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   120: goto -39 -> 81
-    //   123: astore_0
-    //   124: ldc 2
-    //   126: monitorexit
-    //   127: aload_0
-    //   128: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	129	0	paramContext	Context
-    //   24	50	1	i	int
-    //   62	2	2	locallae	lae
-    // Exception table:
-    //   from	to	target	type
-    //   67	81	88	java/io/IOException
-    //   59	63	123	finally
-    //   67	81	123	finally
-    //   81	84	123	finally
-    //   89	120	123	finally
-    //   124	127	123	finally
+    this.jdField_a_of_type_Int = paramInt;
+    a();
   }
   
-  public static laf a(Context paramContext)
+  public String a(String paramString)
   {
     try
     {
-      if (jdField_a_of_type_Laf == null) {
-        jdField_a_of_type_Laf = new laf(65536);
-      }
-      return jdField_a_of_type_Laf;
+      paramString = (String)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+      return paramString;
     }
     finally {}
   }
   
-  public static lae b(Context paramContext)
+  public void a()
   {
-    if (jdField_a_of_type_Lae == null) {
-      ThreadManager.post(new TranslateCache.1(paramContext), 5, null, true);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new laj(this, this.jdField_a_of_type_Int);
+  }
+  
+  /* Error */
+  public void a(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: aload_0
+    //   4: getfield 22	lai:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
+    //   7: aload_1
+    //   8: invokevirtual 28	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   11: ifnonnull +17 -> 28
+    //   14: aload_0
+    //   15: getfield 22	lai:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
+    //   18: aload_1
+    //   19: aload_2
+    //   20: invokevirtual 40	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   23: pop
+    //   24: ldc 2
+    //   26: monitorexit
+    //   27: return
+    //   28: aload_0
+    //   29: getfield 22	lai:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
+    //   32: aload_1
+    //   33: invokevirtual 43	android/support/v4/util/LruCache:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   36: pop
+    //   37: aload_0
+    //   38: getfield 22	lai:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
+    //   41: aload_1
+    //   42: aload_2
+    //   43: invokevirtual 40	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   46: pop
+    //   47: goto -23 -> 24
+    //   50: astore_1
+    //   51: ldc 2
+    //   53: monitorexit
+    //   54: aload_1
+    //   55: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	56	0	this	lai
+    //   0	56	1	paramString1	String
+    //   0	56	2	paramString2	String
+    // Exception table:
+    //   from	to	target	type
+    //   3	24	50	finally
+    //   24	27	50	finally
+    //   28	47	50	finally
+    //   51	54	50	finally
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong, Boolean paramBoolean)
+  {
+    a(lam.a(paramString1, paramString2, paramLong) + "tween", paramBoolean.toString());
+  }
+  
+  public boolean a(String paramString1, String paramString2, long paramLong)
+  {
+    paramString1 = a(lam.a(paramString1, paramString2, paramLong) + "tween");
+    if (paramString1 == null) {
+      return false;
     }
-    return jdField_a_of_type_Lae;
+    return Boolean.valueOf(paramString1).booleanValue();
+  }
+  
+  public void b(String paramString1, String paramString2, long paramLong, Boolean paramBoolean)
+  {
+    a(lam.a(paramString1, paramString2, paramLong) + "HasChangeToOriginalText", paramBoolean.toString());
+  }
+  
+  public boolean b(String paramString1, String paramString2, long paramLong)
+  {
+    paramString1 = a(lam.a(paramString1, paramString2, paramLong) + "HasChangeToOriginalText");
+    if (paramString1 == null) {
+      return false;
+    }
+    return Boolean.valueOf(paramString1).booleanValue();
   }
 }
 

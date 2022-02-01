@@ -1,16 +1,30 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class pfv
-  extends pse
+  implements ViewBase.OnClickListener
 {
-  pfv(pey parampey, String paramString, AbsListView paramAbsListView, int paramInt)
-  {
-    super(paramString);
-  }
+  pfv(pfu parampfu) {}
   
-  public void a(prx paramprx)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramprx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      return;
+    case 1095: 
+      pqx.a(pfs.a(this.a.a), pfs.a(this.a.a), plk.a(pfs.a(this.a.a).innerUniqueID));
+      this.a.a.a(2);
+      this.a.a.dismiss();
+      paramViewBase = new pqg();
+      paramViewBase.i().b("wording", "" + plk.a());
+      pbq.a("0X8009FE8", pfs.a(this.a.a), paramViewBase);
+      return;
+    }
+    this.a.a.a(1);
+    this.a.a.dismiss();
   }
 }
 

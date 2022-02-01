@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import blnt;
+import bnbe;
 
 class AECameraGLSurfaceView$1
   implements Runnable

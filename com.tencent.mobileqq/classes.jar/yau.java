@@ -1,46 +1,16 @@
-import android.graphics.Bitmap;
+import android.text.TextUtils;
 
 public class yau
-  extends ybh
+  extends yap
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public String a;
-  public boolean a;
-  private long jdField_b_of_type_Long;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  public String b;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
-  
-  public yau(int paramInt, Bitmap paramBitmap)
+  public yau()
   {
-    super(paramInt, paramBitmap);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+    super("memory_publish", null);
   }
   
-  public yau a(Bitmap paramBitmap)
+  public static boolean a(yap paramyap)
   {
-    paramBitmap = new yau(this.jdField_c_of_type_Int, paramBitmap);
-    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramBitmap.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
-    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_Boolean = false;
-    this.d = false;
-    this.jdField_a_of_type_Boolean = false;
-    return paramBitmap;
-  }
-  
-  public String toString()
-  {
-    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_c_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + ", mRevertFailed=" + this.jdField_a_of_type_Boolean + '}';
+    return TextUtils.equals("memory_publish", paramyap.a);
   }
 }
 

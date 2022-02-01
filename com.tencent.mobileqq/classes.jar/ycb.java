@@ -1,45 +1,37 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.support.annotation.Nullable;
 
-public final class ycb
-  extends ycv
+public class ycb
 {
-  public ycb(DoodleView paramDoodleView)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  
+  public ycb(String paramString1, int paramInt, @Nullable String paramString2)
   {
-    super(paramDoodleView);
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public String a()
+  public ycb(String paramString1, int paramInt1, @Nullable String paramString2, int paramInt2)
   {
-    return "EmptyLayer";
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
-  
-  public void a() {}
-  
-  protected void a(Canvas paramCanvas) {}
   
   public boolean a()
   {
-    return true;
+    return (this.jdField_a_of_type_Int != 1) && ((this.jdField_a_of_type_Int != 2) || (this.jdField_b_of_type_Int != 0));
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public String toString()
   {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    xvv.b("EmptyLayer", "EmptyLayer handle touch event.");
-    return false;
-  }
-  
-  public boolean c(MotionEvent paramMotionEvent)
-  {
-    return false;
+    return "FeedCommentSync{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNextCookie='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mSource=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

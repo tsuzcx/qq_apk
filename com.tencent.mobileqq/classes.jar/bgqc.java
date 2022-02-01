@@ -1,6 +1,6 @@
 public abstract interface bgqc
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(long paramLong);
 }
 
 

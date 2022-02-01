@@ -1,30 +1,24 @@
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
 
-public class ubu
+class ubu
+  implements View.OnLayoutChangeListener
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  String jdField_a_of_type_JavaLangString;
-  Button jdField_b_of_type_AndroidWidgetButton;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  Button jdField_c_of_type_AndroidWidgetButton;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  Button d;
+  ubu(ubq paramubq, VVideoView paramVVideoView, View paramView, ArticleInfo paramArticleInfo, AnchorData paramAnchorData, int paramInt) {}
   
-  public ubu(ubs paramubs) {}
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    ubq.a(this.jdField_a_of_type_Ubq).removeOnLayoutChangeListener(this);
+    this.jdField_a_of_type_Ubq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataAnchorData, this.jdField_a_of_type_Int);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ubu
  * JD-Core Version:    0.7.0.1
  */

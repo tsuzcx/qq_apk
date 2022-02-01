@@ -1,60 +1,16 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NewFriendSubTitle;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XListView.DrawFinishedListener;
 
-public class aifb
-  extends aiea
-  implements View.OnClickListener
+class aifb
+  implements XListView.DrawFinishedListener
 {
-  public aifb(Context paramContext, QQAppInterface paramQQAppInterface, aifw paramaifw, aigo paramaigo)
-  {
-    super(paramContext, paramQQAppInterface, paramaifw, paramaigo);
-  }
+  aifb(aido paramaido) {}
   
-  public View a(int paramInt, View paramView)
+  public void drawFinished()
   {
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof aifc)))
+    if ((!this.a.t) && (this.a.u))
     {
-      localObject = new aifc();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561248, null);
-      ((aifc)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378707));
-      ((aifc)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366123);
-      ((aifc)localObject).jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      paramView.setTag(localObject);
-      ((aifc)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(((aigr)this.jdField_a_of_type_Aigo).a.title);
-      localObject = ((aifc)localObject).jdField_a_of_type_AndroidViewView;
-      if (!((aigr)this.jdField_a_of_type_Aigo).a.showEntrance) {
-        break label133;
-      }
-    }
-    label133:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      ((View)localObject).setVisibility(paramInt);
-      return paramView;
-      localObject = (aifc)paramView.getTag();
-      break;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      aicl.a((Activity)this.jdField_a_of_type_AndroidContentContext);
-      bcef.b(null, "dc00898", "", "", "0X800A3A5", "0X800A3A5", 0, 0, "", "", "", "");
+      this.a.t = true;
+      uuq.a("SUBSCRIPT_AIO_COST", null);
     }
   }
 }

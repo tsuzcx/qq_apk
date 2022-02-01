@@ -2,19 +2,19 @@ package com.tencent.av.random;
 
 import java.util.Iterator;
 import java.util.List;
-import lsi;
-import lsm;
+import lsv;
+import lsz;
 
 public class RandomController$2$1
   implements Runnable
 {
-  public RandomController$2$1(lsi paramlsi) {}
+  public RandomController$2$1(lsv paramlsv) {}
   
   public void run()
   {
     Iterator localIterator = RandomController.a(this.a.a).iterator();
     while (localIterator.hasNext()) {
-      ((lsm)localIterator.next()).a();
+      ((lsz)localIterator.next()).a();
     }
   }
 }

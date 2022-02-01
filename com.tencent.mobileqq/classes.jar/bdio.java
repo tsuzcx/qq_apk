@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadRegulator.Proxy;
 
-class bdio
-  extends bdit
+public final class bdio
+  implements IMCoreProxyRoute.ThreadRegulator.Proxy
 {
-  public bdio(EditorState paramEditorState, List<EditorState> paramList)
+  public void checkInNextBusiness()
   {
-    super(paramEditorState, paramList, localList);
-  }
-  
-  public void a(EditorState paramEditorState)
-  {
-    super.a(paramEditorState);
-    bfur.a(bdid.a(this.jdField_a_of_type_Bdid), 233, null, this.jdField_a_of_type_JavaLangString, new bdip(this), null).show();
+    ThreadRegulator.a().b();
   }
 }
 

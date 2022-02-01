@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget;
 
-import amtj;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -9,7 +8,8 @@ import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import xvf;
+import anvx;
+import yka;
 
 public class NewMessageYellowBar
   extends FrameLayout
@@ -54,7 +54,7 @@ public class NewMessageYellowBar
         return;
       }
       setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131706628));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131706980));
       this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.0F);
     } while (this.jdField_a_of_type_AndroidViewAnimationAnimationSet.hasEnded());
     this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
@@ -62,15 +62,15 @@ public class NewMessageYellowBar
   
   public void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(getContext()).inflate(2131561809, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381279));
+    LayoutInflater.from(getContext()).inflate(2131561877, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381642));
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(1000L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setStartOffset(1000L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(3000L);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new xvf(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new yka(this));
     setVisibility(8);
   }
 }

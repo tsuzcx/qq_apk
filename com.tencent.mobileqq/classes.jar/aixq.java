@@ -1,24 +1,27 @@
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class aixq
-  extends aiwz
+  implements AbsListView.OnScrollListener
 {
-  public static final int[] a = { 2131690702 };
-  public static final int[] b = { 2131364429 };
+  public aixq(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public aixq(FragmentActivity paramFragmentActivity)
-  {
-    super(paramFragmentActivity);
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  protected int[] a()
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
+    if (NewFriendVerifyBlockedListFragment.a(this.a) != null)
+    {
+      if ((paramInt != 0) && (paramInt != 1)) {
+        NewFriendVerifyBlockedListFragment.a(this.a).a();
+      }
+    }
+    else {
+      return;
+    }
+    NewFriendVerifyBlockedListFragment.a(this.a).b();
+    NewFriendVerifyBlockedListFragment.a(this.a).c();
   }
 }
 

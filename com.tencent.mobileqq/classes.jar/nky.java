@@ -1,27 +1,48 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import com.tencent.biz.PoiMapActivity;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
-public class nky
-  implements View.OnKeyListener
+public abstract interface nky
 {
-  public nky(PoiMapActivity paramPoiMapActivity) {}
+  public abstract RectF a();
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
-    {
-      paramView = ((TextView)paramView).getText().toString();
-      if (!TextUtils.isEmpty(paramView)) {
-        this.a.a(paramView);
-      }
-      return true;
-    }
-    return false;
-  }
+  public abstract Drawable a();
+  
+  public abstract nio a();
+  
+  public abstract void a();
+  
+  public abstract void a(ImageView paramImageView, long paramLong1, long paramLong2);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString, nfv paramnfv);
+  
+  public abstract void a(nfv paramnfv);
+  
+  public abstract void a(nio paramnio);
+  
+  public abstract void a(nkv paramnkv);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract Drawable b();
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString, nfv paramnfv);
+  
+  public abstract void b(nfv paramnfv);
+  
+  public abstract void b(nkv paramnkv);
+  
+  public abstract void c();
+  
+  public abstract void c(nkv paramnkv);
+  
+  public abstract void d(nkv paramnkv);
+  
+  public abstract void e(nkv paramnkv);
 }
 
 

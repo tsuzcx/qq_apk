@@ -1,13 +1,11 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.ConvertIFramesRunnable;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface ypm
+public class ypm
+  implements bbmr
 {
-  String a();
+  public ypm(HWEditLocalVideoPlayer.ConvertIFramesRunnable paramConvertIFramesRunnable) {}
+  
+  public void a() {}
 }
 
 

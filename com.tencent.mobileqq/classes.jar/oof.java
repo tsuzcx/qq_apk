@@ -1,18 +1,19 @@
+import com.tencent.mobileqq.app.BusinessObserver;
+
 public class oof
+  implements BusinessObserver
 {
-  public static int a()
-  {
-    return ((Integer)bkwm.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
-  }
+  public void a(Object paramObject) {}
   
-  public static void a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    bkwm.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bkwm.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
-  }
-  
-  public static int b()
-  {
-    return ((Integer)bkwm.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return;
+    }
+    a(paramObject);
   }
 }
 

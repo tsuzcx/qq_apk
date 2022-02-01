@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.history;
 
-import amsw;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
-import bfun;
+import anvk;
+import bhdf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
@@ -15,7 +15,7 @@ import java.util.List;
 class ChatHistoryTroopMemberFragment$2
   implements Runnable
 {
-  ChatHistoryTroopMemberFragment$2(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, Intent paramIntent, amsw paramamsw, TroopManager paramTroopManager) {}
+  ChatHistoryTroopMemberFragment$2(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, Intent paramIntent, anvk paramanvk, TroopManager paramTroopManager) {}
   
   public void run()
   {
@@ -76,21 +76,21 @@ class ChatHistoryTroopMemberFragment$2
               QLog.d("Q.history.BaseFragment", 2, "onActivityResult, REQUEST_CODE_SHOW_MEMBER_CARD, admins:" + this.this$0.g + " owner:" + this.this$0.f);
             }
           }
-          if ((i != 0) && (this.this$0.jdField_a_of_type_Ajae != null)) {
+          if ((i != 0) && (this.this$0.jdField_a_of_type_Ajvt != null)) {
             this.this$0.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(9);
           }
           return;
           if ((i & 0x2) == 0) {
             break;
           }
-          Object localObject2 = bfun.a().a(this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.c, (String)???);
-          if ((localObject2 == null) || (this.jdField_a_of_type_Amsw == null)) {
+          Object localObject2 = bhdf.a().a(this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.c, (String)???);
+          if ((localObject2 == null) || (this.jdField_a_of_type_Anvk == null)) {
             break;
           }
           this.this$0.a((String)???);
           synchronized (this.this$0)
           {
-            localObject2 = this.this$0.a((TroopMemberInfo)localObject2, this.jdField_a_of_type_Amsw);
+            localObject2 = this.this$0.a((TroopMemberInfo)localObject2, this.jdField_a_of_type_Anvk);
             this.this$0.jdField_a_of_type_JavaUtilList.add(localObject2);
           }
         }

@@ -1,16 +1,24 @@
-import android.content.Context;
-import com.tencent.biz.qcircleshadow.lib.delegate.IApplicationDelegate;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
 
-class vgx
-  implements IApplicationDelegate
+public abstract interface vgx
 {
-  vgx(vgw paramvgw) {}
+  public abstract void a(int paramInt, long paramLong, String paramString);
   
-  public void onCreate(Context paramContext)
-  {
-    QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginShadowService init plugin success");
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(vgv paramvgv);
+  
+  public abstract void a(vgv paramvgv, int paramInt1, int paramInt2);
+  
+  public abstract void a(vgv paramvgv, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
+  
+  public abstract boolean a(vgv paramvgv, int paramInt1, int paramInt2, int paramInt3, String paramString);
+  
+  public abstract boolean a(vgv paramvgv, int paramInt, Object paramObject);
+  
+  public abstract void b(vgv paramvgv);
+  
+  public abstract void c(vgv paramvgv);
 }
 
 

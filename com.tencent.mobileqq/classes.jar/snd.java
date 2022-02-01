@@ -1,18 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public class snd
-  extends amsu
+class snd
+  implements DialogInterface.OnShowListener
 {
-  public snd(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  snd(sna paramsna) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
-    {
-      QLog.d("ReadInJoyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
-      this.a.m();
-    }
+    smg.a(this.a.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
+    smg.a(this.a.a).getWindow().clearFlags(8);
   }
 }
 

@@ -1,16 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
 
-public class bmgy
+class bmgy
   implements View.OnClickListener
 {
-  public bmgy(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
+  bmgy(bmgx parambmgx) {}
   
   public void onClick(View paramView)
   {
-    AEEditorMvClipMenu.a(this.a);
+    bmgp.a(bmgx.a(this.a), bmgx.b(this.a), "5", "27", "", "3", "", "", "");
+    this.a.mUIStyleHandler.mHostFragment.webView.loadUrl("jsbridge://JSTittlebarAction/managerBtnSingleClick");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

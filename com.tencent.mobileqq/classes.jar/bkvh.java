@@ -1,59 +1,58 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.qqprotect.qsec.IQSecRuntime;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
-public final class bkvh
+public class bkvh
+  implements IQSecRuntime
 {
-  public static int a(Context paramContext, int paramInt)
+  public static IQSecRuntime a;
+  private HashMap<String, IRuntimeInterface> a;
+  
+  public bkvh()
   {
-    return paramContext.getSharedPreferences("QR_SETTING", 0).getInt("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "type", -1);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_ComTencentQqprotectQsecIQSecRuntime = this;
   }
   
-  public static long a(Context paramContext)
+  public void a(IRuntimeInterface paramIRuntimeInterface)
   {
-    return paramContext.getSharedPreferences("QR_SETTING", 0).getLong("LAST_LOGIN_TIME" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), -1L);
+    String str = paramIRuntimeInterface.getInterfaceName();
+    if ((str != null) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramIRuntimeInterface);
+    }
   }
   
-  public static String a(Context paramContext, int paramInt)
+  public Object getApplicationContext()
   {
-    return paramContext.getSharedPreferences("QR_SETTING", 0).getString("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "content", "");
+    return MobileQQ.sMobileQQ;
   }
   
-  public static void a(Context paramContext)
+  public Object getQQAppInterface()
   {
-    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putLong("LAST_LOGIN_TIME" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), System.currentTimeMillis()).apply();
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
   }
   
-  public static void a(Context paramContext, int paramInt1, int paramInt2)
+  public int getRuntimeVersion()
   {
-    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putInt("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt1 + "type", paramInt2).apply();
+    return 1;
   }
   
-  public static void a(Context paramContext, int paramInt, String paramString)
+  public IRuntimeInterface queryRuntimeInterface(String paramString)
   {
-    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putString("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "content", paramString).apply();
-  }
-  
-  public static void a(Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putBoolean("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "show", paramBoolean).apply();
-  }
-  
-  public static void a(Context paramContext, boolean paramBoolean)
-  {
-    paramContext.getSharedPreferences("QR_SETTING", 0).edit().putBoolean("USE_ENTRY_CONTROL", paramBoolean).apply();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("QR_SETTING", 0).getBoolean("USE_ENTRY_CONTROL", false);
-  }
-  
-  public static boolean a(Context paramContext, int paramInt)
-  {
-    return paramContext.getSharedPreferences("QR_SETTING", 0).getBoolean("GIFT_REDTOUCH" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + paramInt + "show", false);
+    if (paramString == null) {
+      return null;
+    }
+    IRuntimeInterface localIRuntimeInterface2 = (IRuntimeInterface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    IRuntimeInterface localIRuntimeInterface1 = localIRuntimeInterface2;
+    if (localIRuntimeInterface2 != null)
+    {
+      localIRuntimeInterface1 = localIRuntimeInterface2;
+      if (!paramString.equals(localIRuntimeInterface2.getInterfaceName())) {
+        localIRuntimeInterface1 = null;
+      }
+    }
+    return localIRuntimeInterface1;
   }
 }
 

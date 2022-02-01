@@ -1,14 +1,28 @@
-public abstract interface awts
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+
+class awts
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  awts(awtq paramawtq, BaseChatPie paramBaseChatPie, short paramShort) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.finish(1);
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      if (paramInt == 1)
+      {
+        this.jdField_a_of_type_Awtq.a(this.jdField_a_of_type_Short, true, true);
+        bdla.b(awtq.a(this.jdField_a_of_type_Awtq), "dc00898", "", "", "0X8009978", "0X8009978", this.jdField_a_of_type_Awtq.a(this.jdField_a_of_type_Short), this.jdField_a_of_type_Awtq.a(this.jdField_a_of_type_Short), "", "", "", "");
+      }
+    }
+  }
 }
 
 

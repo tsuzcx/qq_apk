@@ -1,201 +1,180 @@
-import android.content.res.Resources;
-import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.widget.XPanelContainer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ahql
-  implements afrc
+  implements ahqf<PlusPanel>
 {
-  private long jdField_a_of_type_Long;
-  private ahqo jdField_a_of_type_Ahqo;
-  private bcpe jdField_a_of_type_Bcpe = new ahqn(this);
-  private TroopChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bjmp(Looper.getMainLooper(), new ahqm(this));
+  private PlusPanel jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   
-  public ahql(TroopChatPie paramTroopChatPie)
+  ahql(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie = paramTroopChatPie;
-    this.jdField_a_of_type_Ahqo = new ahqo(paramTroopChatPie.app, paramTroopChatPie.mActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
   
-  private ahqo a()
+  public int a()
   {
-    if (this.jdField_a_of_type_Ahqo == null)
-    {
-      this.jdField_a_of_type_Ahqo = new ahqo(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.mActivity);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.getTipManager() != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.getTipManager().a(this.jdField_a_of_type_Ahqo);
-      }
+    return 8;
+  }
+  
+  public PlusPanel a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel;
+  }
+  
+  public PlusPanel a(Context paramContext)
+  {
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel = ((PlusPanel)View.inflate(paramContext, 2131558643, null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo);
+    paramContext = (agft)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(62);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.setAIOLongCaptureCtrlListener(paramContext.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenPanel", 2, "OpenIconPanel:" + (System.currentTimeMillis() - l));
     }
-    return this.jdField_a_of_type_Ahqo;
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.s();
-  }
-  
-  public String a(boolean paramBoolean)
-  {
-    int i = ((bcpa)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.app.getManager(362)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.sessionInfo.curFriendUin);
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.mActivity.getResources().getString(2131718630, new Object[] { i + "" });
-    if (paramBoolean) {
-      str = amtj.a(2131693395);
-    }
-    return str;
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel;
   }
   
   public void a()
   {
-    a();
-    this.jdField_a_of_type_Ahqo.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.sessionInfo.curFriendUin);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.panelicons != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.panelicons.c();
+    }
   }
   
-  public void a(int paramInt)
-  {
-    bcpa localbcpa = (bcpa)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.getApp().getManager(362);
-    switch (paramInt)
-    {
-    default: 
-    case 3: 
-    case 2: 
-      TroopManager localTroopManager;
-      String str;
-      do
-      {
-        return;
-        localbcpa.a(this.jdField_a_of_type_Bcpe);
-        return;
-        localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.app.getManager(52);
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.sessionInfo.curFriendUin;
-      } while (localTroopManager.b(str) == null);
-      localbcpa.a(str);
-      return;
-    }
-    localbcpa.b(this.jdField_a_of_type_Bcpe);
-  }
+  public void a(int paramInt1, int paramInt2) {}
   
-  public void a(ahqq paramahqq)
+  public void a(TroopChatPie paramTroopChatPie)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomTipBarHelper", 2, "onOtherTipsHide tip=" + paramahqq);
+    if (!paramTroopChatPie.b()) {
+      bdla.b(paramTroopChatPie.app, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_plusentry", 0, 0, paramTroopChatPie.sessionInfo.curFriendUin, "", "", "");
     }
-    if ((this.jdField_a_of_type_Ahqo != null) && (this.jdField_a_of_type_Ahqo != paramahqq))
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mAIOGiftPanelContainer == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mAIOGiftPanelContainer = new aahv(paramTroopChatPie);
+    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mAIOGiftPanelContainer;
+    int j = TroopGiftPanel.e;
+    if (nty.a().a(paramTroopChatPie.sessionInfo.curFriendUin)) {}
+    String str;
+    for (int i = 4;; i = 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StudyRoomTipBarHelper", 2, "onOtherTipsHide tip not equal StudyRoomTip");
+      ((aahv)localObject1).a(j, i);
+      bfbz.a(paramTroopChatPie.app).a(bfce.a(paramTroopChatPie.getCurTroopUin()));
+      localObject1 = (bbbq)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(QQManagerFactory.MGR_RED_TOUCH);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo == null) {
+        break label261;
       }
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.troopUin;
+      Object localObject2 = ((aghg)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(89)).a();
+      paramTroopChatPie = new ArrayList();
+      if (localObject2 == null) {
+        break label262;
+      }
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        paramTroopChatPie.add(String.valueOf(((PlusPanelAppInfo)((Iterator)localObject2).next()).getRedDotID()));
+      }
+    }
+    for (;;)
+    {
+      if (((bbbq)localObject1).a(11, str, paramTroopChatPie) != null) {
+        ((bbbq)localObject1).b(11, 31);
+      }
+      label261:
+      return;
+      label262:
+      paramTroopChatPie = null;
+    }
+  }
+  
+  public void a(XPanelContainer paramXPanelContainer)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof TroopChatPie)) {
+      a((TroopChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    }
+    b(paramXPanelContainer);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof agab)) {
       b();
-      c();
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.getTipManager() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("StudyRoomTipBarHelper", 2, "tipManager is null or together is null");
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.getTipManager().a() != this.jdField_a_of_type_Ahqo) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomTipBarHelper", 2, "curTip is studyRoomTip");
-    }
-    return true;
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 2, 13 };
+    return false;
   }
   
   public void b()
   {
-    if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) < 500L) {
-      return;
+    Object localObject1 = ((argb)aqxe.a().a(551)).a(4);
+    if ((localObject1 != null) && (((argc)localObject1).d > 0)) {
+      if (((argc)localObject1).c != 1) {
+        break label204;
+      }
     }
-    if (a()) {
-      c();
+    bbbq localbbbq;
+    String str;
+    label204:
+    for (int i = 1109995692;; i = ((argc)localObject1).d)
+    {
+      ((avwq)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(QQManagerFactory.FETCH_OPENID_MANAGER)).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin), i, true);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.a();
+      }
+      localbbbq = (bbbq)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(QQManagerFactory.MGR_RED_TOUCH);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo == null) {
+        break label232;
+      }
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.troopUin;
+      Object localObject2 = ((aghg)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(89)).a();
+      localObject1 = new ArrayList();
+      if (localObject2 == null) {
+        break label233;
+      }
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((List)localObject1).add(String.valueOf(((PlusPanelAppInfo)((Iterator)localObject2).next()).getRedDotID()));
+      }
     }
     for (;;)
     {
-      c();
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (localbbbq.a(10, str, (List)localObject1) != null) {
+        localbbbq.b(10, 31);
+      }
+      label232:
       return;
-      b();
+      label233:
+      localObject1 = null;
     }
   }
   
-  public boolean b()
+  public void b(XPanelContainer paramXPanelContainer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomTipBarHelper", 2, "showStudyRoomTip");
-    }
-    if (!d()) {}
-    ahqq localahqq;
-    do
+    ((aghq)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(83)).b();
+    paramXPanelContainer.a(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.setInputStat(0);
+    ahpt.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "0X8004078", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType);
+    paramXPanelContainer = (asbm)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER);
+    if (paramXPanelContainer != null)
     {
-      do
-      {
-        return false;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.getTipManager() != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("StudyRoomTipBarHelper", 2, "tipManager is null");
-      return false;
-      localahqq = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.getTipManager().a();
-      if ((localahqq == null) || (localahqq == this.jdField_a_of_type_Ahqo)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("StudyRoomTipBarHelper", 2, "currTip is other");
-    return false;
-    if (localahqq != null) {
-      this.jdField_a_of_type_Ahqo.a();
-    }
-    for (;;)
-    {
-      c();
-      return true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.getTipManager().a(this.jdField_a_of_type_Ahqo, new Object[0]);
-    }
-  }
-  
-  public boolean c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomTipBarHelper", 2, "dismissTogetherTip");
-    }
-    if ((this.jdField_a_of_type_Ahqo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.getTipManager() == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("StudyRoomTipBarHelper", 2, "tipManager is null or studyRoomTips is null");
+      paramXPanelContainer = (ascd)paramXPanelContainer.a("qq.android.poke.res_0625");
+      if ((paramXPanelContainer != null) && (!paramXPanelContainer.g())) {
+        paramXPanelContainer.a(false);
       }
     }
-    ahqq localahqq;
-    do
-    {
-      return false;
-      localahqq = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.getTipManager().a();
-    } while ((localahqq == null) || (localahqq != this.jdField_a_of_type_Ahqo));
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomTipBarHelper", 2, "currTip is studyRoomTips");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.getTipManager().a();
-    c();
-    return true;
-  }
-  
-  public boolean d()
-  {
-    return ((bcpa)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.app.getManager(362)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.sessionInfo.curFriendUin) > 0;
   }
 }
 

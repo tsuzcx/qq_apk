@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
 import android.app.Activity;
-import bfur;
+import bhdj;
 import mqq.app.QQPermissionCallback;
 
 class QzoneVideoTabJsPlugin$1
@@ -11,7 +11,7 @@ class QzoneVideoTabJsPlugin$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bfur.a(QzoneVideoTabJsPlugin.access$100(this.val$activity));
+    bhdj.a(QzoneVideoTabJsPlugin.access$100(this.val$activity));
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)

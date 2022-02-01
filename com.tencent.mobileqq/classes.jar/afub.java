@@ -1,9 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
-
-public abstract interface afub
+class afub
 {
-  public abstract void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo);
+  public int a;
+  public String a;
+  public int b;
+  public String b = "";
+  public String c = "";
+  
+  private afub()
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
 }
 
 

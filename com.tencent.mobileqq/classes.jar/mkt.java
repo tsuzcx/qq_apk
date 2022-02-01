@@ -1,46 +1,57 @@
-import android.content.Intent;
+import com.tencent.av.VideoController;
 import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-class mkt
-  implements mig
+public class mkt
+  extends lee
 {
-  mkt(mks parammks, long paramLong) {}
+  public mkt(VideoInviteActivity paramVideoInviteActivity) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(long paramLong, int paramInt)
   {
-    if (paramBoolean)
+    long l = AudioHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onDestroyInviteUI, relationId[" + paramLong + "], seq[" + l + "]");
+    }
+    boolean bool = this.a.i;
+    if ((bool) && (this.a.c != null) && (this.a.c.equals(String.valueOf(paramLong))))
     {
-      if (mks.a(this.jdField_a_of_type_Mks)) {
-        return;
-      }
-      if (this.jdField_a_of_type_Mks.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
-        this.jdField_a_of_type_Mks.a("0X80051FE");
-      }
-      for (;;)
+      super.a(paramLong);
+      muy.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      this.a.a(l);
+      if ((bool) && (this.a.c.length() > 2) && (paramLong != 0L))
       {
-        QLog.w("VideoInviteUILock", 1, "SlideAcceptListener, seq[" + this.jdField_a_of_type_Long + "]");
-        this.jdField_a_of_type_Mks.a.d = true;
-        this.jdField_a_of_type_Mks.a.c(this.jdField_a_of_type_Long);
-        return;
-        if (this.jdField_a_of_type_Mks.a.b) {
-          this.jdField_a_of_type_Mks.a("0X8004201");
-        } else {
-          this.jdField_a_of_type_Mks.a("0X8004205");
+        paramLong = Long.valueOf(this.a.c).longValue();
+        if (!this.a.h)
+        {
+          this.a.h = true;
+          if (paramInt != 1) {
+            break label255;
+          }
+          this.a.a().a(l, paramLong, 7);
         }
       }
     }
-    if (this.jdField_a_of_type_Mks.a.b)
+    for (;;)
     {
-      this.jdField_a_of_type_Mks.a("0X800439E");
+      this.a.e = true;
+      if ((!this.a.l) || (this.a.jdField_a_of_type_Mif == null) || (this.a.f())) {
+        break;
+      }
+      this.a.jdField_a_of_type_Mif.a(new mku(this));
       return;
+      label255:
+      if (paramInt == 2) {
+        this.a.a().a(l, paramLong, 2);
+      }
     }
-    this.jdField_a_of_type_Mks.a("0X80043FD");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mkt
  * JD-Core Version:    0.7.0.1
  */

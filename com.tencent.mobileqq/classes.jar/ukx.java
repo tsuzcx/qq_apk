@@ -1,6 +1,10 @@
-public class ukx
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+
+public abstract interface ukx
 {
-  public static boolean a;
+  public abstract void a(spk paramspk, AdvertisementInfo paramAdvertisementInfo);
+  
+  public abstract void b(spk paramspk, AdvertisementInfo paramAdvertisementInfo);
 }
 
 

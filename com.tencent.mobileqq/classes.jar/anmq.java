@@ -1,17 +1,8 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
-public class anmq
-  extends abwe
+public abstract interface anmq
 {
-  public anmq(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, abww paramabww)
-  {
-    super(paramQQAppInterface, paramQQMessageFacade, paramabww);
-    if (QLog.isColorLevel()) {
-      QLog.d("TinyIdMsgMessageManager", 2, "TinyIdMsgMessageManager() called with: app = [" + paramQQAppInterface + "], msgFacade = [" + paramQQMessageFacade + "], msgPool = [" + paramabww + "]");
-    }
-  }
+  public abstract void a(anmp paramanmp);
+  
+  public abstract void b(anmp paramanmp);
 }
 
 

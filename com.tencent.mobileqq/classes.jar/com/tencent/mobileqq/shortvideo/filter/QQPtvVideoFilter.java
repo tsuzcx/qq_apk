@@ -26,6 +26,7 @@ import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.PTSegAttr;
 import com.tencent.ttpic.openapi.initializer.Ace3DEngineInitializer;
 import com.tencent.ttpic.openapi.initializer.Face3DLibInitializer;
+import com.tencent.ttpic.openapi.initializer.TNNTongueDetectIntializer;
 import com.tencent.ttpic.openapi.initializer.Voice2TextInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
@@ -69,6 +70,7 @@ public class QQPtvVideoFilter
   private boolean mSegmentInited = false;
   private QQSharpFaceFilter mSharpFaceFilter = new QQSharpFaceFilter();
   public Frame mTempFrame = new Frame();
+  private boolean mTongueSoInited = false;
   boolean mUseTemplate = false;
   private boolean mVoiceChangeSoInited = false;
   private boolean mVoiceRecognizerSoInited = false;
@@ -414,6 +416,9 @@ public class QQPtvVideoFilter
     if ((VideoMaterialUtil.isAnimojiMaterial(paramVideoMaterial)) && (!this.mAnimojiSoInited)) {
       this.mAnimojiSoInited = FeatureManager.Features.FACE_3D_LIB.init();
     }
+    if ((VideoMaterialUtil.isAnimojiTongueMaterial(paramVideoMaterial)) && (!this.mTongueSoInited)) {
+      this.mTongueSoInited = FeatureManager.Features.TNN_TONGUE_DETECT.init();
+    }
     if ((VideoMaterialUtil.needVoiceChange(paramVideoMaterial)) && (!this.mVoiceChangeSoInited)) {
       this.mVoiceChangeSoInited = FeatureManager.Features.VOICE_TO_TEXT.init();
     }
@@ -435,10 +440,10 @@ public class QQPtvVideoFilter
       updateNeedEmotionDetect();
       updateNeedGenderDetect();
       if (paramVideoMaterial == null) {
-        break label178;
+        break label203;
       }
     }
-    label178:
+    label203:
     for (paramAESticker = paramVideoMaterial.getStarParam();; paramAESticker = null)
     {
       getQQFilterRenderManager().setStarParam(paramAESticker);
@@ -692,10 +697,10 @@ public class QQPtvVideoFilter
         j = 0;
         break label191;
         label885:
-        this.mFlipFilter.ClearGLSL();
+        this.mFlipFilter.clearGLSL();
         break label271;
         label895:
-        this.mCopyFilter.ClearGLSL();
+        this.mCopyFilter.clearGLSL();
         break label311;
         this.mCopyFilter.RenderProcess(paramInt, getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight(), this.mFlipTextureID[0], 0.0D, this.mFlipFrame);
         break label375;
@@ -756,10 +761,10 @@ public class QQPtvVideoFilter
       }
     }
     if (this.mFlipFilter != null) {
-      this.mFlipFilter.ClearGLSL();
+      this.mFlipFilter.clearGLSL();
     }
     if (this.mCopyFilter != null) {
-      this.mCopyFilter.ClearGLSL();
+      this.mCopyFilter.clearGLSL();
     }
     this.mTempFrame.clear();
     this.mFlipFrame.clear();
@@ -864,7 +869,7 @@ public class QQPtvVideoFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQPtvVideoFilter
  * JD-Core Version:    0.7.0.1
  */

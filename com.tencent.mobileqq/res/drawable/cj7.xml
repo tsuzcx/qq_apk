@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="100" android:drawable="@drawable/fzq" />
-    <item android:duration="100" android:drawable="@drawable/fzr" />
-    <item android:duration="100" android:drawable="@drawable/fzs" />
-    <item android:duration="100" android:drawable="@drawable/fzt" />
-    <item android:duration="100" android:drawable="@drawable/fzu" />
-    <item android:duration="100" android:drawable="@drawable/fzv" />
-    <item android:duration="100" android:drawable="@drawable/fzw" />
-    <item android:duration="100" android:drawable="@drawable/fzx" />
-    <item android:duration="100" android:drawable="@drawable/fzy" />
-    <item android:duration="100" android:drawable="@drawable/fzz" />
-    <item android:duration="100" android:drawable="@drawable/g00" />
-    <item android:duration="100" android:drawable="@drawable/g01" />
-    <item android:duration="100" android:drawable="@drawable/g02" />
-    <item android:duration="100" android:drawable="@drawable/g03" />
-    <item android:duration="100" android:drawable="@drawable/g04" />
-</animation-list>
+    <item android:state_enabled="false" android:state_checked="false" android:drawable="@drawable/g9e" />
+    <item android:state_enabled="true" android:state_checked="true" android:drawable="@drawable/g9d" />
+    <item android:state_checked="false" android:drawable="@drawable/g9c" />
+</selector>

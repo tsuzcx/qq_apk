@@ -1,38 +1,20 @@
 import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import com.tencent.widget.FadeIconImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aixr
-  extends aiwz
+  implements View.OnClickListener
 {
-  public static final int[] a;
-  public static final int[] b = { 2131364417 };
+  public aixr(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131690697 };
-  }
-  
-  public aixr(FragmentActivity paramFragmentActivity)
-  {
-    super(paramFragmentActivity);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return jdField_a_of_type_ArrayOfInt;
+    aixk.a(NewFriendVerifyBlockedListFragment.a(this.a).app).c(NewFriendVerifyBlockedListFragment.a(this.a).app.getCurrentAccountUin());
+    bdla.b(null, "dc00898", "", "", "0X800A3A9", "0X800A3A9", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

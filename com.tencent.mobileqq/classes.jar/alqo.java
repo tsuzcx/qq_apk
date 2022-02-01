@@ -1,13 +1,26 @@
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface alqo
+public class alqo
+  implements alrp
 {
-  public abstract EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject);
+  public alqo(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public abstract void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface);
+  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  {
+    if (this.a.r == 10011)
+    {
+      NewFlowCameraActivity.a(this.a, paramString1);
+      return;
+    }
+    if (paramBoolean)
+    {
+      NewFlowCameraActivity.b(this.a, paramString1);
+      return;
+    }
+    this.a.i(true);
+    QQToast.a(this.a, anvx.a(2131706952), 0).a();
+  }
 }
 
 

@@ -1,110 +1,169 @@
-import android.annotation.SuppressLint;
-import android.net.Uri;
-import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.sdk.ValueCallback;
-import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
+import java.util.List;
 
-class bgvk
-  extends nyz
+public class bgvk
 {
-  bgvk(bgvj parambgvj) {}
+  public final bgvj a;
+  public final List<bgvj> a;
   
-  @SuppressLint({"InflateParams"})
-  public View getVideoLoadingProgressView()
+  public bgvk()
   {
-    if (this.a.a != null) {
-      return this.a.a.getVideoLoadingProgressView();
-    }
-    return null;
+    this.jdField_a_of_type_Bgvj = new bgvj();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  public int a(bgvk parambgvk)
   {
-    if (this.a.a != null) {
-      this.a.a.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    int j;
+    int i;
+    label22:
+    int k;
+    if (parambgvk != null) {
+      if (this.jdField_a_of_type_JavaUtilList == null)
+      {
+        j = 0;
+        if (parambgvk.jdField_a_of_type_JavaUtilList != null) {
+          break label100;
+        }
+        i = 0;
+        if (j != i) {
+          break label144;
+        }
+        k = 0;
+        i = 1;
+        label32:
+        if ((i == 0) || (k >= j)) {
+          break label113;
+        }
+        if (bhbx.a((bgvj)this.jdField_a_of_type_JavaUtilList.get(k), (bgvj)parambgvk.jdField_a_of_type_JavaUtilList.get(k))) {
+          break label161;
+        }
+        i = 0;
+      }
     }
-  }
-  
-  public void onHideCustomView()
-  {
-    if (this.a.a != null) {
-      this.a.a.onHideCustomView();
-    }
-  }
-  
-  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
-  {
-    if (this.a.a != null) {
-      this.a.a.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
-    }
-    return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
-  }
-  
-  @Override
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
-  {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
-      return true;
-    }
-    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
-  }
-  
-  public void onProgressChanged(WebView paramWebView, int paramInt)
-  {
-    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewWrapper", 2, "onProgressChanged:" + paramInt);
-    }
-    if (this.a.a != null) {
-      this.a.a.onProgressChanged(paramWebView, paramInt);
-    }
-    if ((paramInt > 30) && (!paramWebView.getSettings().getLoadsImagesAutomatically())) {
-      paramWebView.getSettings().setLoadsImagesAutomatically(true);
-    }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    if (this.a.a != null) {
-      this.a.a.onReceivedTitle(paramWebView, paramString);
-    }
-  }
-  
-  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    if (this.a.a != null) {
-      this.a.a.showCustomView(paramView, paramInt, paramCustomViewCallback);
-    }
-  }
-  
-  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    if (this.a.a != null) {
-      this.a.a.showCustomView(paramView, 10, paramCustomViewCallback);
+    label144:
+    label161:
+    for (;;)
+    {
+      k += 1;
+      break label32;
+      j = this.jdField_a_of_type_JavaUtilList.size();
+      break;
+      label100:
+      i = parambgvk.jdField_a_of_type_JavaUtilList.size();
+      break label22;
+      label113:
+      if (i != 0) {
+        i = 0;
+      }
+      while (bhbx.a(parambgvk.jdField_a_of_type_Bgvj, this.jdField_a_of_type_Bgvj)) {
+        if (i == 0)
+        {
+          return 0;
+          i = 3;
+          continue;
+          i = 3;
+        }
+        else
+        {
+          return 1;
+        }
+      }
+      if (i == 0) {
+        return 2;
+      }
+      return 3;
+      return 3;
     }
   }
   
-  public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
+  public Object clone()
   {
-    if ((paramValueCallback != null) && (this.a.a != null)) {
-      return this.a.a.onShowFileChooser(paramValueCallback, paramFileChooserParams);
+    bgvk localbgvk = new bgvk();
+    localbgvk.jdField_a_of_type_Bgvj.a(this.jdField_a_of_type_Bgvj);
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      bgvj localbgvj = (bgvj)this.jdField_a_of_type_JavaUtilList.get(i);
+      localbgvk.jdField_a_of_type_JavaUtilList.add((bgvj)localbgvj.clone());
+      i += 1;
     }
-    return super.onShowFileChooser(paramWebView, paramValueCallback, paramFileChooserParams);
+    return localbgvk;
   }
   
-  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  public boolean equals(Object paramObject)
   {
-    if (this.a.a != null) {
-      this.a.a.openFileChooser(paramValueCallback, paramString1, paramString2);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int i;
+    int j;
+    if ((paramObject instanceof bgvk))
+    {
+      paramObject = (bgvk)paramObject;
+      bool1 = bool2;
+      if (bhbx.a(paramObject.jdField_a_of_type_Bgvj, this.jdField_a_of_type_Bgvj)) {
+        if (this.jdField_a_of_type_JavaUtilList == null)
+        {
+          i = 0;
+          if (paramObject.jdField_a_of_type_JavaUtilList != null) {
+            break label134;
+          }
+          j = 0;
+          label55:
+          bool1 = bool2;
+          if (i != j) {
+            break label147;
+          }
+          bool1 = true;
+          j = 0;
+          label69:
+          if ((!bool1) || (j >= i)) {
+            break label147;
+          }
+          if (bhbx.a((bgvj)this.jdField_a_of_type_JavaUtilList.get(j), (bgvj)paramObject.jdField_a_of_type_JavaUtilList.get(j))) {
+            break label150;
+          }
+          bool1 = false;
+        }
+      }
+    }
+    label134:
+    label147:
+    label150:
+    for (;;)
+    {
+      j += 1;
+      break label69;
+      i = this.jdField_a_of_type_JavaUtilList.size();
+      break;
+      j = paramObject.jdField_a_of_type_JavaUtilList.size();
+      break label55;
+      return bool1;
+    }
+  }
+  
+  public String toString()
+  {
+    localStringBuilder = new StringBuilder();
+    try
+    {
+      localStringBuilder.append(String.format("[head] type=%s value=%s\n", new Object[] { Integer.valueOf(this.jdField_a_of_type_Bgvj.jdField_a_of_type_Int), bhbx.b(this.jdField_a_of_type_Bgvj.jdField_a_of_type_JavaLangString) }));
+      int j = this.jdField_a_of_type_JavaUtilList.size();
+      int i = 0;
+      while (i < j)
+      {
+        bgvj localbgvj = (bgvj)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (localbgvj != null) {
+          localStringBuilder.append(String.format("[more item] type=%s value=%s\n", new Object[] { Integer.valueOf(localbgvj.jdField_a_of_type_Int), bhbx.b(localbgvj.jdField_a_of_type_JavaLangString) }));
+        }
+        i += 1;
+      }
+      return localStringBuilder.toString();
+    }
+    catch (Exception localException)
+    {
+      QLog.e("MQQProfileName", 1, "toString fail.", localException);
     }
   }
 }

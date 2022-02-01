@@ -1,23 +1,39 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import UserGrowth.stGlobalConfig;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import java.util.List;
 
-public class voi
+public abstract interface voi
+  extends vis<List<vpj>>
 {
-  public int a;
-  public ErrorMessage a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public abstract VideoFeedsRecyclerView a();
   
-  public voi()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
-  }
+  public abstract WSPlayerManager a();
   
-  public String toString()
-  {
-    return "UploadResult{errorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", fileKey='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileId='" + this.b + '\'' + ", uploadServerIp='" + this.d + '\'' + ", mLastUploadOffset='" + this.jdField_a_of_type_Int + '\'' + ", cdnUrl='" + this.c + '\'' + '}';
-  }
+  public abstract String a();
+  
+  public abstract List<vpj> a();
+  
+  public abstract vnw a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, Intent paramIntent);
+  
+  public abstract void a(stGlobalConfig paramstGlobalConfig);
+  
+  public abstract void a(List<vpj> paramList);
+  
+  public abstract String b();
+  
+  public abstract void b(Object paramObject);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract void d();
 }
 
 

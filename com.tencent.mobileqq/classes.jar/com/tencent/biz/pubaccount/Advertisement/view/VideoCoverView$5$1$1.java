@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.Advertisement.view;
 
-import nyu;
+import ofu;
 
 public class VideoCoverView$5$1$1
   implements Runnable
 {
-  public VideoCoverView$5$1$1(nyu paramnyu) {}
+  public VideoCoverView$5$1$1(ofu paramofu) {}
   
   public void run()
   {

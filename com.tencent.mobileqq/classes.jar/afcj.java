@@ -1,16 +1,15 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.aio.PanelAdapter;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
 public class afcj
-  implements Observer<Boolean>
+  extends anvi
 {
-  public afcj(PlusPanel paramPlusPanel) {}
+  public afcj(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a.a.notifyDataSetChanged();
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

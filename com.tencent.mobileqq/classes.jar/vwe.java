@@ -1,49 +1,126 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserId;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.biz.richframework.download.RFWDownloader;
+import com.tencent.biz.richframework.download.RFWDownloaderFactory;
+import com.tencent.biz.richframework.download.RFWMultiDownloadHelper;
+import com.tencent.biz.richframework.download.RFWMultiDownloadHelper.DownloadTask;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import cooperation.qqcircle.QCircleConfig;
 
 public class vwe
-  implements vkp
+  extends ReportDialog
 {
-  public String a;
-  public String b;
+  private static RFWMultiDownloadHelper jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWMultiDownloadHelper = new RFWMultiDownloadHelper();
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private QQAnimationDrawable jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable;
+  private final znw jdField_a_of_type_Znw = new vwf(this);
   
-  public vwe(String paramString1, String paramString2)
+  static
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWMultiDownloadHelper.addTask(new RFWMultiDownloadHelper.DownloadTask("https://downv6.qq.com/video_story/qcircle/animation/pull_refresh_logo.zip", QCircleConfig.getDownloadStrategy()));
+    jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWMultiDownloadHelper.start();
   }
   
-  public qqstory_struct.UserId a()
+  public vwe(@NonNull Context paramContext)
   {
-    qqstory_struct.UserId localUserId = new qqstory_struct.UserId();
-    if (!TextUtils.isEmpty(this.a)) {
-      localUserId.uid.set(Long.valueOf(this.a).longValue());
+    super(paramContext, 2131755899);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560754, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374040));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844049);
+  }
+  
+  private void b()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {
+      return;
     }
-    localUserId.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localUserId;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable);
+    this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.start();
   }
   
-  public boolean a()
+  private void c()
   {
-    return (QQStoryContext.a().a(this.b)) || (QQStoryContext.a().b(this.a));
+    d();
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
   }
   
-  public void copy(Object paramObject)
+  private void d()
   {
-    if ((paramObject instanceof vwe))
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable == null) {}
+    while (!this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.isRunning()) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.stop();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable == null) {
+      if (RFWDownloaderFactory.getDownloader(QCircleConfig.getDownloadStrategy()).isFileDownLoaded("https://downv6.qq.com/video_story/qcircle/animation/pull_refresh_logo.zip"))
+      {
+        znp localznp = new znp("https://downv6.qq.com/video_story/qcircle/animation/pull_refresh_logo.zip");
+        localznp.a(67);
+        localznp.a(2147483647L);
+        localznp.a(true);
+        localznp.b(true);
+        znq.a().a(hashCode(), localznp.a(), this.jdField_a_of_type_Znw);
+      }
+    }
+    for (;;)
     {
-      this.a = ((vwe)paramObject).a;
-      this.b = ((vwe)paramObject).b;
+      show();
+      return;
+      c();
+      continue;
+      b();
     }
   }
   
-  public String toString()
+  public void dismiss()
   {
-    return "UserID{qq=" + this.a + ", unionId='" + this.b + '\'' + '}';
+    super.dismiss();
+    d();
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = getWindow();
+    paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramBundle.getDecorView().setSystemUiVisibility(1280);
+      paramBundle.addFlags(-2147483648);
+      paramBundle.setStatusBarColor(0);
+    }
+    for (;;)
+    {
+      WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
+      localLayoutParams.width = -1;
+      localLayoutParams.height = -1;
+      localLayoutParams.gravity = 17;
+      paramBundle.setAttributes(localLayoutParams);
+      setCanceledOnTouchOutside(false);
+      return;
+      getWindow().addFlags(67108864);
+    }
   }
 }
 

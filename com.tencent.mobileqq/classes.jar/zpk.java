@@ -1,13 +1,57 @@
-class zpk
-  implements bkxq
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+
+public class zpk
+  extends StaggeredGridLayoutManager
 {
-  zpk(zpf paramzpf, anca paramanca, String paramString1, int paramInt, String paramString2) {}
-  
-  public void a(int paramInt)
+  public zpk(int paramInt1, int paramInt2)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Anca != null)) {
-      this.jdField_a_of_type_Anca.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 510, 0, this.jdField_a_of_type_Int, this.b);
+    super(paramInt1, paramInt2);
+  }
+  
+  public int getPosition(View paramView)
+  {
+    try
+    {
+      int i = super.getPosition(paramView);
+      return i;
     }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
+    }
+    return -1;
+  }
+  
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      super.onLayoutChildren(paramRecycler, paramState);
+      return;
+    }
+    catch (Exception paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+      QLog.e("SafeStaggeredGridLayoutManager", 4, paramRecycler, new Object[0]);
+    }
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (Exception paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+    return 0;
   }
 }
 

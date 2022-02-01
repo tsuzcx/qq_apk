@@ -1,16 +1,6 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-
-public class bnjg
-  implements bnkc
+class bnjg
 {
-  public bnjg(DoodleLayout paramDoodleLayout) {}
-  
-  public void a()
-  {
-    if (this.a.a != null) {
-      this.a.a.aH_();
-    }
-  }
+  static final bnjd a = new bnjd(null);
 }
 
 

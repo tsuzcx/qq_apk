@@ -19,20 +19,20 @@ public class FaceMaskItem
     if (paramJsonObject == null) {
       return;
     }
-    this.faceMaskID = GsonUtils.optString(paramJsonObject, FaceMaskItem.FACE_MASK_ITEM_FIELD.MASK_ID.value);
-    this.faceMaskType = GsonUtils.optInt(paramJsonObject, FaceMaskItem.FACE_MASK_ITEM_FIELD.FACE_MASK_TYPE.value);
-    this.faceMaskSize = GsonUtils.optDouble(paramJsonObject, FaceMaskItem.FACE_MASK_ITEM_FIELD.FACE_MASK_SIZE.value);
+    this.faceMaskID = GsonUtils.optString(paramJsonObject, FaceMaskItem.FaceMaskItemField.MASK_ID.value);
+    this.faceMaskType = GsonUtils.optInt(paramJsonObject, FaceMaskItem.FaceMaskItemField.FACE_MASK_TYPE.value);
+    this.faceMaskSize = GsonUtils.optDouble(paramJsonObject, FaceMaskItem.FaceMaskItemField.FACE_MASK_SIZE.value);
     if (Double.isNaN(this.faceMaskSize))
     {
       this.faceMaskSize = d;
-      this.featherStrength = GsonUtils.optDouble(paramJsonObject, FaceMaskItem.FACE_MASK_ITEM_FIELD.FEATHER_STRENGTH.value);
+      this.featherStrength = GsonUtils.optDouble(paramJsonObject, FaceMaskItem.FaceMaskItemField.FEATHER_STRENGTH.value);
       if (!Double.isNaN(this.featherStrength)) {
         break label166;
       }
       d = 0.0D;
       label114:
       this.featherStrength = d;
-      paramJsonObject = GsonUtils.optString(paramJsonObject, FaceMaskItem.FACE_MASK_ITEM_FIELD.FACE_MASK_PATH.value);
+      paramJsonObject = GsonUtils.optString(paramJsonObject, FaceMaskItem.FaceMaskItemField.FACE_MASK_PATH.value);
       if (paramJsonObject != null) {
         break label174;
       }

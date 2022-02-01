@@ -1,20 +1,43 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-public abstract class anus
+public class anus
+  implements View.OnTouchListener
 {
-  public QQAppInterface a;
-  public ProxyManager a;
+  public anus(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public anus(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    do
+    {
+      do
+      {
+        return false;
+      } while (!bdxj.c(this.a.getActivity().app, false));
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(13, 200L);
+      return false;
+      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(13)) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.clearAnimation();
+      }
+    } while (this.a.jdField_a_of_type_AndroidWidgetImageView == null);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    return false;
+    FrameHelperActivity.b(this.a);
+    return false;
   }
-  
-  public abstract void a();
-  
-  public abstract void b();
 }
 
 

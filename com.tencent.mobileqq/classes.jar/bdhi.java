@@ -1,33 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
-class bdhi
-  extends BroadcastReceiver
+public abstract interface bdhi
 {
-  bdhi(bdhh parambdhh) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if ("android.intent.action.TIME_TICK".equals(paramContext)) {
-      this.a.b();
-    }
-    do
-    {
-      return;
-      if ("android.intent.action.TIME_SET".equals(paramContext))
-      {
-        this.a.b();
-        return;
-      }
-    } while (!"android.intent.action.TIMEZONE_CHANGED".equals(paramContext));
-    this.a.b();
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhi
  * JD-Core Version:    0.7.0.1
  */

@@ -4,21 +4,11 @@ import android.content.DialogInterface.OnClickListener;
 class bkls
   implements DialogInterface.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  
-  private bkls(bklq parambklq, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  bkls(bkll parambkll) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_Bklq.cancelInstall(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.dismiss();
   }
 }
 

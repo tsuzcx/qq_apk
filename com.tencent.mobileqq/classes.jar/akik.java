@@ -1,44 +1,18 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
-class akik
-  implements View.OnClickListener
+public class akik
+  implements DialogInterface.OnDismissListener
 {
-  akik(akho paramakho) {}
+  public akik(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject = QQPlayerService.a();
-    int i;
-    if (localObject != null)
-    {
-      akho.a(this.a).startActivity((Intent)localObject);
-      localObject = ((Intent)localObject).getComponent().getClassName();
-      if (!((String)localObject).equals(MusicPlayerActivity.class.getName())) {
-        break label132;
-      }
-      i = 0;
+    if (this.a.a != null) {
+      this.a.a.setOnDismissListener(null);
     }
-    for (;;)
-    {
-      bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE4", "0X8009EE4", 1, 0, "", "", "", "");
-      bcef.b(akho.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label132:
-      if (((String)localObject).equals(MusicGeneQQBrowserActivity.class.getName())) {
-        i = 1;
-      } else {
-        i = -1;
-      }
-    }
+    this.a.a = null;
   }
 }
 

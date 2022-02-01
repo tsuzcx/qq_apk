@@ -1,8 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-
-public abstract interface rbk
+public class rbk
 {
-  public abstract void a(int paramInt, String paramString, BaseResData paramBaseResData);
+  private static final rbi a = new rbi(null);
 }
 
 

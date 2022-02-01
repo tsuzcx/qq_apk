@@ -1,57 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-class akmd
-  implements BusinessObserver
+public class akmd
+  extends RecyclerView.OnScrollListener
 {
-  akmd(akmc paramakmc, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface) {}
+  public akmd(NewPhotoListActivity paramNewPhotoListActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentPubAccHelper", 2, "unfollow isSuccess:" + String.valueOf(paramBoolean) + ", uin: " + this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-    }
-    if (!paramBoolean)
+    if (paramInt == 0)
     {
-      akmc.a(this.jdField_a_of_type_Akmc, 2131694775);
+      DropFrameMonitor.getInstance().stopMonitorScene("list_photo", false);
       return;
     }
-    for (;;)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-          localUnFollowResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() != 0) {
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("RecentPubAccHelper", 2, "unfollow success");
-          }
-          akmc.a(this.jdField_a_of_type_Akmc, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          StructLongMessageDownloadProcessor.deleteTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-          ((bfas)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin());
-          akmc.b(this.jdField_a_of_type_Akmc, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        continue;
-      }
-      akmc.a(this.jdField_a_of_type_Akmc);
-      return;
-      akmc.b(this.jdField_a_of_type_Akmc, 2131694775);
-    }
+    DropFrameMonitor.getInstance().startMonitorScene("list_photo");
   }
 }
 

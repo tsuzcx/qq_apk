@@ -1,27 +1,25 @@
 import android.view.View;
-import java.util.Map;
+import android.view.View.OnAttachStateChangeListener;
 
 class qpl
-  implements qps
+  implements View.OnAttachStateChangeListener
 {
-  qpl(qpk paramqpk) {}
+  qpl(qph paramqph) {}
   
-  public void a(View paramView, Map<String, Object> paramMap)
+  public void onViewAttachedToWindow(View paramView) {}
+  
+  public void onViewDetachedFromWindow(View paramView)
   {
-    if (paramView.getId() == 2131380137) {
-      this.a.a(paramView);
-    }
-    do
+    if (qph.a(this.a) != null)
     {
-      return;
-      if (paramView != this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead) {
-        break;
-      }
-      paramView = this.a.jdField_a_of_type_Slt.a().a();
-    } while (paramView == null);
-    paramView.c();
-    return;
-    this.a.a(paramView, paramMap);
+      qph.a(this.a).b();
+      qph.a(this.a, null);
+    }
+    if (qph.a(this.a) != null)
+    {
+      qph.a(this.a).a();
+      qph.a(this.a, null);
+    }
   }
 }
 

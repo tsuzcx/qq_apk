@@ -21,7 +21,9 @@ public class ABTestApi
   
   private static void _getExpByName(@NonNull String paramString, @NonNull GetExperimentListener paramGetExperimentListener, int paramInt, boolean paramBoolean)
   {
-    if ((paramGetExperimentListener == null) || (TextUtils.isEmpty(paramString)))
+    long l1 = System.currentTimeMillis();
+    if (paramBoolean) {}
+    for (String str = "getExpByNameWithExpose"; (paramGetExperimentListener == null) || (TextUtils.isEmpty(paramString)); str = "getExpByName")
     {
       ABTestLog.error("isExpose:" + paramBoolean + " expName:" + paramString + "  the listener is not null or expName must be not empty", new Object[0]);
       throw new NullPointerException("the listener is not null or expName must be not empty");
@@ -37,9 +39,11 @@ public class ABTestApi
       if (paramBoolean) {
         reportExpExpose(localRomaExpEntity);
       }
+      long l2 = System.currentTimeMillis();
+      ABTestManager.getInstance().reportBeaconApiEvent(str, true, l2 - l1);
       return;
     }
-    paramGetExperimentListener = new ABTestApi.2(paramString, paramBoolean, localArrayList, paramGetExperimentListener);
+    paramGetExperimentListener = new ABTestApi.2(paramString, paramBoolean, localArrayList, l1, str, paramGetExperimentListener);
     ABTestManager.getInstance().doGetSourceExpByExpName(paramString, paramGetExperimentListener, paramInt);
   }
   
@@ -136,18 +140,24 @@ public class ABTestApi
   
   public static void reportExpExpose(RomaExpEntity paramRomaExpEntity)
   {
+    long l1 = System.currentTimeMillis();
     String str1 = paramRomaExpEntity.getExpName();
     String str2 = paramRomaExpEntity.getAssignment();
     paramRomaExpEntity = paramRomaExpEntity.getGrayId();
-    if ((!TextUtils.isEmpty(str1)) && ("default".equals(str2))) {}
-    boolean bool;
-    do
-    {
+    if ((!TextUtils.isEmpty(str1)) && ("default".equals(str2))) {
       return;
-      bool = ABTestManager.getInstance().reportBeaconExpExpose(paramRomaExpEntity, str1);
-      ABTestLog.debug("report beacon status: " + bool, new Object[0]);
-    } while (bool);
+    }
+    boolean bool = ABTestManager.getInstance().reportBeaconExpExpose(paramRomaExpEntity, str1);
+    ABTestLog.debug("report beacon status: " + bool, new Object[0]);
+    if (bool)
+    {
+      long l2 = System.currentTimeMillis();
+      ABTestManager.getInstance().reportBeaconApiEvent("reportExpExpose", true, l2 - l1);
+      return;
+    }
     ABTestManager.getInstance().reportExpAttaExpose(paramRomaExpEntity);
+    l1 = System.currentTimeMillis();
+    ABTestManager.getInstance().reportBeaconApiEvent("reportExpExpose", false, l1);
   }
   
   public static void switchAccountId(String paramString, GetExperimentListener paramGetExperimentListener)

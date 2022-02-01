@@ -2,27 +2,25 @@ package com.tencent.biz.richframework.download;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.text.TextUtils;
-import bfys;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import bhhk;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.QCircleConfig;
+import cooperation.qqcircle.picload.QCircleOkHttpFactory;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
-import okhttp3.OkHttpClient.Builder;
-import okhttp3.Protocol;
 import okhttp3.Request;
 import okhttp3.Request.Builder;
 
@@ -30,6 +28,7 @@ public class RFWDownloader
 {
   private static final String COS_MD5 = "X-COS-META-MD5";
   private static final String TAG = "RFWDownloader";
+  private static Handler sDownLoadHandler;
   private static OkHttpClient sOkHttpClient;
   private final ConcurrentHashMap<String, ConcurrentHashMap<Integer, WeakReference<RFWDownloader.GetFileListener>>> mDownloadCenter;
   private RFWDownloadStrategy mDownloadStrategy;
@@ -85,6 +84,22 @@ public class RFWDownloader
     return "";
   }
   
+  public static Handler getDownLoadHandler()
+  {
+    if (sDownLoadHandler == null) {}
+    try
+    {
+      if (sDownLoadHandler == null)
+      {
+        HandlerThread localHandlerThread = new HandlerThread("qcircle_download", 0);
+        localHandlerThread.start();
+        sDownLoadHandler = new Handler(localHandlerThread.getLooper());
+      }
+      return sDownLoadHandler;
+    }
+    finally {}
+  }
+  
   private String getEncodeUrl(String paramString)
   {
     try
@@ -117,7 +132,7 @@ public class RFWDownloader
     try
     {
       if (sOkHttpClient == null) {
-        sOkHttpClient = new OkHttpClient().newBuilder().protocols(Arrays.asList(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 })).connectTimeout(30000L, TimeUnit.SECONDS).readTimeout(30000L, TimeUnit.SECONDS).writeTimeout(30000L, TimeUnit.SECONDS).build();
+        sOkHttpClient = QCircleOkHttpFactory.createDeFaultOKHttpClient();
       }
       return sOkHttpClient;
     }
@@ -153,6 +168,9 @@ public class RFWDownloader
   
   private void startDownload(String paramString1, String paramString2)
   {
+    if (getDownLoadHandler() == null) {
+      return;
+    }
     if (TextUtils.isEmpty(getEncodeUrl(paramString1)))
     {
       QLog.e("RFWDownloader", 1, "downloadError encodePath is Empty");
@@ -161,7 +179,7 @@ public class RFWDownloader
     String str = getDefaultSavePath(paramString1);
     try
     {
-      ThreadManagerV2.executeOnFileThread(new RFWDownloader.2(this, paramString1, str, paramString2));
+      getDownLoadHandler().post(new RFWDownloader.2(this, paramString1, str, paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -193,7 +211,10 @@ public class RFWDownloader
   
   public void downloadOrUpdateFile(String paramString, RFWDownloader.GetFileListener paramGetFileListener)
   {
-    ThreadManagerV2.executeOnFileThread(new RFWDownloader.3(this, paramGetFileListener, paramString));
+    if (getDownLoadHandler() == null) {
+      return;
+    }
+    getDownLoadHandler().post(new RFWDownloader.3(this, paramGetFileListener, paramString));
   }
   
   public String getDefaultSavePath(String paramString)
@@ -211,13 +232,16 @@ public class RFWDownloader
   
   public void getZipFile(String paramString, RFWDownloader.GetFileListener paramGetFileListener)
   {
-    ThreadManagerV2.executeOnFileThread(new RFWDownloader.1(this, paramString, paramGetFileListener));
+    if (getDownLoadHandler() == null) {
+      return;
+    }
+    getDownLoadHandler().post(new RFWDownloader.1(this, paramString, paramGetFileListener));
   }
   
   public boolean isFileDownLoaded(String paramString)
   {
     paramString = new File(getUnZipPath(paramString));
-    if (bfys.a() == null) {}
+    if (bhhk.a() == null) {}
     while ((!paramString.exists()) || ((!paramString.isFile()) && ((!paramString.isDirectory()) || (paramString.listFiles() == null) || (paramString.listFiles().length <= 0)))) {
       return false;
     }

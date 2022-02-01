@@ -25,27 +25,28 @@ import com.tencent.util.Pair;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import mzq;
-import naq;
-import ncp;
-import ned;
-import nee;
-import nef;
-import neg;
-import nes;
-import net;
-import neu;
-import nev;
-import njh;
-import njr;
-import nju;
-import njw;
-import nkc;
-import nkd;
+import nfc;
+import nfh;
+import ngg;
+import nin;
+import nkv;
+import nkw;
+import nkx;
+import nky;
+import nlk;
+import nll;
+import nlm;
+import nln;
+import nqf;
+import nqr;
+import nqu;
+import nqw;
+import nrc;
+import nrd;
 
 public class GuessPictureStageView
   extends RelativeLayout
-  implements Handler.Callback, nee, nkd
+  implements Handler.Callback, nkw, nrd
 {
   int jdField_a_of_type_Int = 0;
   public Bitmap a;
@@ -57,10 +58,10 @@ public class GuessPictureStageView
   URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   public Runnable a;
   ArrayList<Pair<Integer, String>> jdField_a_of_type_JavaUtilArrayList;
-  private List<njw> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public nef a;
-  public nes a;
-  private nkc jdField_a_of_type_Nkc;
+  private List<nqw> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public nkx a;
+  public nlk a;
+  private nrc jdField_a_of_type_Nrc;
   private volatile boolean jdField_a_of_type_Boolean = true;
   public View b;
   ImageView jdField_b_of_type_AndroidWidgetImageView;
@@ -96,18 +97,18 @@ public class GuessPictureStageView
     ThreadManager.getFileThreadHandler().post(new GuessPictureStageView.8(this, paramBitmap, paramInt));
   }
   
-  private void a(naq paramnaq)
+  private void a(ngg paramngg)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("GuessPictureStageView", 2, "onShowMosaicImageGameMosaicImage() topicMosaicGuess:" + paramnaq);
+      QLog.i("GuessPictureStageView", 2, "onShowMosaicImageGameMosaicImage() topicMosaicGuess:" + paramngg);
     }
-    if (paramnaq == null)
+    if (paramngg == null)
     {
       this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(null);
       ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       return;
     }
-    Object localObject = paramnaq.b();
+    Object localObject = paramngg.b();
     if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).startsWith("http")))
     {
       QLog.i("GuessPictureStageView", 1, "onShowMosaicImageGameMosaicImage() illegal url:" + (String)localObject);
@@ -118,19 +119,19 @@ public class GuessPictureStageView
     int i;
     if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)
     {
-      localObject = njr.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
+      localObject = nqr.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
       this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
-      if (paramnaq.c == 0)
+      if (paramngg.c == 0)
       {
         i = 10;
         label151:
         a((Bitmap)localObject, i);
         label157:
-        localObject = paramnaq.a();
+        localObject = paramngg.a();
         if ((localObject[0] == null) || (localObject[0].length() == 0) || (localObject[1] == null) || (localObject[1].length() == 0) || (localObject[2] == null) || (localObject[2].length() == 0)) {
           break label486;
         }
-        if (paramnaq.a() == 0L) {
+        if (paramngg.a() == 0L) {
           break label467;
         }
         i = 1;
@@ -150,7 +151,7 @@ public class GuessPictureStageView
     }
     for (;;)
     {
-      if (paramnaq.a() != 0L)
+      if (paramngg.a() != 0L)
       {
         ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
         if (this.jdField_b_of_type_AndroidViewView != null)
@@ -160,16 +161,16 @@ public class GuessPictureStageView
           this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         }
       }
-      this.jdField_a_of_type_JavaUtilArrayList = paramnaq.jdField_a_of_type_JavaUtilArrayList;
+      this.jdField_a_of_type_JavaUtilArrayList = paramngg.jdField_a_of_type_JavaUtilArrayList;
       if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
         break;
       }
       this.jdField_a_of_type_Int = 0;
       ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).first).intValue() * 1000);
       return;
-      i = paramnaq.c;
+      i = paramngg.c;
       break label151;
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new nev(this, paramnaq));
+      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new nln(this, paramngg));
       this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
       break label157;
       label467:
@@ -186,21 +187,21 @@ public class GuessPictureStageView
   
   private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131558723, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379876));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379874));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379495));
-    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379496));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370134);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369297));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365179));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370236);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378060));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new net(this));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131367673);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, nju.b());
-    this.jdField_b_of_type_AndroidViewView.getLayoutParams().width = nju.a();
-    this.jdField_a_of_type_Nes = new nes(this);
+    LayoutInflater.from(getContext()).inflate(2131558737, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380209));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380207));
+    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379804));
+    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379805));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370308);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369464));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365264));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370413);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378348));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new nll(this));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131367809);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, nqu.b());
+    this.jdField_b_of_type_AndroidViewView.getLayoutParams().width = nqu.a();
+    this.jdField_a_of_type_Nlk = new nlk(this);
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_b_of_type_AndroidViewView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
@@ -209,12 +210,12 @@ public class GuessPictureStageView
   
   private void d()
   {
-    if (this.jdField_a_of_type_Nkc == null)
+    if (this.jdField_a_of_type_Nrc == null)
     {
       QLog.d("GuessPictureStageView", 1, "startRecord fail, mGameRecordCtrl null");
       return;
     }
-    this.jdField_a_of_type_Nkc.a(this, getWidth(), getHeight());
+    this.jdField_a_of_type_Nrc.a(this, getWidth(), getHeight());
   }
   
   public ImageView a()
@@ -222,7 +223,7 @@ public class GuessPictureStageView
     return this.jdField_c_of_type_AndroidWidgetImageView;
   }
   
-  public ArrayList<njw> a()
+  public ArrayList<nqw> a()
   {
     try
     {
@@ -237,9 +238,9 @@ public class GuessPictureStageView
     }
   }
   
-  public ned a()
+  public nkv a()
   {
-    return this.jdField_a_of_type_Nes;
+    return this.jdField_a_of_type_Nlk;
   }
   
   public void a()
@@ -265,7 +266,7 @@ public class GuessPictureStageView
   
   public void a(Player paramPlayer, AVGameUserInfo paramAVGameUserInfo)
   {
-    if (ncp.k <= 0)
+    if (nin.k <= 0)
     {
       this.jdField_c_of_type_AndroidViewView.setVisibility(0);
       return;
@@ -277,27 +278,27 @@ public class GuessPictureStageView
   {
     this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
     if ((paramString != null) && (paramString.length() > 5)) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, nju.d());
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, nqu.d());
     }
     for (;;)
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_b_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(new neu(this, paramString));
+      this.jdField_b_of_type_AndroidWidgetTextView.getViewTreeObserver().addOnGlobalLayoutListener(new nlm(this, paramString));
       ThreadManager.getUIHandlerV2().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 3000L);
       b("Tips");
       return;
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, nju.c());
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, nqu.c());
     }
   }
   
-  public void a(mzq parammzq)
+  public void a(nfh paramnfh)
   {
-    a((naq)parammzq);
+    a((ngg)paramnfh);
   }
   
-  public void a(neg paramneg)
+  public void a(nky paramnky)
   {
-    this.jdField_a_of_type_Nes.a(paramneg);
+    this.jdField_a_of_type_Nlk.a(paramnky);
   }
   
   public void a(boolean paramBoolean)
@@ -317,10 +318,13 @@ public class GuessPictureStageView
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      return;
     }
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    do
+    {
+      return;
+      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    } while (nfc.a().f());
     if (paramBoolean1)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -345,7 +349,7 @@ public class GuessPictureStageView
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = njh.a("avgame_float_masaic_guess_place_holder@2x.png");
+    this.jdField_a_of_type_AndroidGraphicsBitmap = nqf.a("avgame_float_masaic_guess_place_holder@2x.png");
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
       this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
@@ -355,7 +359,7 @@ public class GuessPictureStageView
   {
     for (;;)
     {
-      njw localnjw;
+      nqw localnqw;
       try
       {
         if (QLog.isColorLevel()) {
@@ -363,7 +367,7 @@ public class GuessPictureStageView
         }
         this.jdField_a_of_type_Boolean = true;
         this.jdField_a_of_type_JavaUtilList.clear();
-        localnjw = new njw();
+        localnqw = new nqw();
         Object localObject = (BitmapDrawable)this.jdField_b_of_type_AndroidWidgetImageView.getDrawable();
         if (localObject != null)
         {
@@ -377,20 +381,20 @@ public class GuessPictureStageView
           }
         }
         return;
-        localnjw.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((Bitmap)localObject);
-        localnjw.jdField_a_of_type_JavaLangString = paramString;
-        localnjw.b = "Back Image";
-        this.jdField_a_of_type_JavaUtilList.add(localnjw);
+        localnqw.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((Bitmap)localObject);
+        localnqw.jdField_a_of_type_JavaLangString = paramString;
+        localnqw.b = "Back Image";
+        this.jdField_a_of_type_JavaUtilList.add(localnqw);
       }
       finally {}
       try
       {
-        localnjw = njw.a(this.jdField_b_of_type_AndroidViewView);
-        if (localnjw != null)
+        localnqw = nqw.a(this.jdField_b_of_type_AndroidViewView);
+        if (localnqw != null)
         {
-          localnjw.jdField_a_of_type_JavaLangString = paramString;
-          localnjw.b = "Tips";
-          this.jdField_a_of_type_JavaUtilList.add(localnjw);
+          localnqw.jdField_a_of_type_JavaLangString = paramString;
+          localnqw.b = "Tips";
+          this.jdField_a_of_type_JavaUtilList.add(localnqw);
         }
       }
       catch (Exception paramString)
@@ -398,8 +402,8 @@ public class GuessPictureStageView
         QLog.e("GuessPictureStageView", 1, "get drawingCache error", paramString);
         continue;
       }
-      if (this.jdField_a_of_type_Nkc != null) {
-        this.jdField_a_of_type_Nkc.a(new ArrayList(this.jdField_a_of_type_JavaUtilList));
+      if (this.jdField_a_of_type_Nrc != null) {
+        this.jdField_a_of_type_Nrc.a(new ArrayList(this.jdField_a_of_type_JavaUtilList));
       }
     }
   }
@@ -421,14 +425,14 @@ public class GuessPictureStageView
     }
   }
   
-  public void setGameRecordCtrl(nkc paramnkc)
+  public void setGameRecordCtrl(nrc paramnrc)
   {
-    this.jdField_a_of_type_Nkc = paramnkc;
+    this.jdField_a_of_type_Nrc = paramnrc;
   }
   
-  public void setOnSwitchTopicClickListener(nef paramnef)
+  public void setOnSwitchTopicClickListener(nkx paramnkx)
   {
-    this.jdField_a_of_type_Nef = paramnef;
+    this.jdField_a_of_type_Nkx = paramnkx;
   }
 }
 

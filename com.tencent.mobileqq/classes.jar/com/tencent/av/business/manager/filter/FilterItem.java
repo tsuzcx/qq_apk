@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.filter;
 
-import lgl;
+import lgx;
 
 public class FilterItem
-  extends lgl
+  extends lgx
 {
   private String desc;
   private String filterid;

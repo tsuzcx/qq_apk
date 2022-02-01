@@ -1,26 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class anjx
-  extends BroadcastReceiver
+final class anjx
+  implements BusinessObserver
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramIntent = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    anjr.a().b(paramIntent);
-    bcef.b(paramIntent, "dc00898", "", "", "0X800B278", "0X800B278", 0, 0, "", "", "", "");
-    try
-    {
-      paramContext.unregisterReceiver(this);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.d("AccountIdentityManager", 1, new Object[] { "unregisterReceiver error : ", paramContext.getMessage() });
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloConfigDataReport", 2, new Object[] { "interceptReport onReceive isSuccess:", Boolean.valueOf(paramBoolean), ",bundle", paramBundle.toString() });
     }
   }
 }

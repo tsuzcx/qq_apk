@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
 
 public class aevo
-  implements View.OnClickListener
+  extends anvi
 {
-  public aevo(ReminderListFragment paramReminderListFragment) {}
+  public aevo(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (ReminderListFragment.a(this.a) != null) {
-      ReminderListFragment.a(this.a).dismiss();
+    if (paramBoolean) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null)) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 

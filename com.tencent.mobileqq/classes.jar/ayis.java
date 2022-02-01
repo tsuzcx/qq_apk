@@ -1,6 +1,43 @@
-public class ayis
+import android.os.Message;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.qphone.base.util.QLog;
+
+class ayis
+  extends TransProcessorHandler
 {
-  public static final String a = amtj.a(2131707453);
+  ayis(ayih paramayih) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    case 1004: 
+    default: 
+    case 1003: 
+      do
+      {
+        do
+        {
+          return;
+        } while (localFileMsg.fileType != 8);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.mPhotoId);
+        }
+      } while (ayih.a(this.a) == null);
+      ayih.a(this.a).a = NearbyPeoplePhotoUploadProcessor.mPhotoId;
+      ayih.a(this.a);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
+    }
+    this.a.a.b();
+    this.a.a.b(anvx.a(2131706787));
+  }
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import aqlw;
+import arph;
 import java.io.File;
 
 public class ConfigServlet$1
   implements Runnable
 {
-  public ConfigServlet$1(aqlw paramaqlw, File paramFile, String paramString) {}
+  public ConfigServlet$1(arph paramarph, File paramFile, String paramString) {}
   
   /* Error */
   public void run()
@@ -128,8 +128,8 @@ public class ConfigServlet$1
     //   236: invokevirtual 132	java/io/File:delete	()Z
     //   239: pop
     //   240: aload_0
-    //   241: getfield 15	com/tencent/mobileqq/config/splashlogo/ConfigServlet$1:this$0	Laqlw;
-    //   244: invokevirtual 138	aqlw:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   241: getfield 15	com/tencent/mobileqq/config/splashlogo/ConfigServlet$1:this$0	Larph;
+    //   244: invokevirtual 138	arph:getAppRuntime	()Lmqq/app/AppRuntime;
     //   247: checkcast 140	com/tencent/common/app/AppInterface
     //   250: aload 12
     //   252: aload 9

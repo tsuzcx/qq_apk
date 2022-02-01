@@ -1,8 +1,12 @@
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.richmediabrowser.view.IBrowserViewHolder;
+
 public class bbrk
+  extends IBrowserViewHolder
 {
-  public int a;
-  public int b;
-  public int c;
+  public BaseVideoView a;
+  
+  public bbrk(bbrg parambbrg) {}
 }
 
 

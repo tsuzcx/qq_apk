@@ -51,22 +51,22 @@ class QQCustomDialogWtihForwardAvatar$ForwardTargetAdapter
   {
     if (AppConstants.DATALINE_PC_UIN.equals(paramResultRecord.uin))
     {
-      paramImageView.setImageResource(2130844119);
+      paramImageView.setImageResource(2130844186);
       return;
     }
     if (AppConstants.DATALINE_IPAD_UIN.equals(paramResultRecord.uin))
     {
-      paramImageView.setImageResource(2130844117);
+      paramImageView.setImageResource(2130844184);
       return;
     }
     if (AppConstants.DATALINE_PRINTER_UIN.equals(paramResultRecord.uin))
     {
-      paramImageView.setImageResource(2130844122);
+      paramImageView.setImageResource(2130844189);
       return;
     }
     if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(paramResultRecord.uin))
     {
-      paramImageView.setImageResource(2130839608);
+      paramImageView.setImageResource(2130839629);
       return;
     }
     int i = getAvatarTypeByUinType(paramResultRecord.getUinType());

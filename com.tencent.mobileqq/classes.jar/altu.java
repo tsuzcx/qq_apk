@@ -1,20 +1,6 @@
-import android.util.LruCache;
-
-class altu
-  extends LruCache<String, altv>
+public abstract interface altu
 {
-  altu(altt paramaltt, int paramInt)
-  {
-    super(paramInt);
-  }
-  
-  protected int a(String paramString, altv paramaltv)
-  {
-    if ((paramaltv == null) || (paramaltv.a == null)) {
-      return 0;
-    }
-    return paramaltv.a.length;
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

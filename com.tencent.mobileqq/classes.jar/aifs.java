@@ -1,6 +1,21 @@
-public class aifs
-  extends aiec
-{}
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aifs
+  implements View.OnClickListener
+{
+  aifs(aifq paramaifq) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!this.a.hasDestory) {
+      bghs.a(this.a.mContext, null, this.a.sessionInfo.curFriendUin);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

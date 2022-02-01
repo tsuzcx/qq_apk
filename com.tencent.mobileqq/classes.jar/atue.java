@@ -1,15 +1,43 @@
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.app.Activity;
+import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tbs.reader.TbsReaderView;
 
 class atue
-  implements INetEngine.INetEngineListener
+  implements View.OnClickListener
 {
-  atue(atud paramatud) {}
+  atue(atua paramatua, int paramInt, Activity paramActivity) {}
   
-  public void onResp(NetResp paramNetResp) {}
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public void onClick(View paramView)
+  {
+    int i;
+    if (this.jdField_a_of_type_Int == 5018)
+    {
+      Display localDisplay = this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay();
+      if (localDisplay.getWidth() > localDisplay.getHeight())
+      {
+        i = 0;
+        if (i == 0) {
+          break label61;
+        }
+        this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 1;
+      break;
+      label61:
+      this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+      continue;
+      atua.a(this.jdField_a_of_type_Atua).doCommand(Integer.valueOf(this.jdField_a_of_type_Int), null, null);
+    }
+  }
 }
 
 

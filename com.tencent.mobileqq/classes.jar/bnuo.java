@@ -1,152 +1,55 @@
-import android.os.Handler;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.1;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.2;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.3;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectConfigManager.1;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectConfigManager.2;
+import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class bnuo
-  extends bnup
 {
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
+  private static volatile bnuo jdField_a_of_type_Bnuo;
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private bnup jdField_a_of_type_Bnup;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
   
-  private void d()
+  private bnuo()
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMRecordState", 2, "[@] [startRecordVideo]Lock.CAPTURE_LOCK=" + bocr.jdField_a_of_type_Boolean);
-    }
-    if (!bocr.jdField_a_of_type_Boolean) {}
-    synchronized (bocr.jdField_a_of_type_JavaLangObject)
+    bnrh.b("AEEditorEffectConfigManager", "AEEditorEffectConfigManager init.");
+  }
+  
+  public static bnuo a()
+  {
+    if (jdField_a_of_type_Bnuo == null) {}
+    try
     {
-      bocr.jdField_a_of_type_Boolean = true;
-      bocr.jdField_a_of_type_JavaLangObject.notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("RMRecordState", 2, "[@] [startRecordVideo]Lock.CAPTURE_LOCK=" + bocr.jdField_a_of_type_Boolean);
+      if (jdField_a_of_type_Bnuo == null) {
+        jdField_a_of_type_Bnuo = new bnuo();
       }
-      AVCodec.get().startCapture();
-      localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext.startCapture();
-      if (localRMVideoStateMgr.a(2)) {
-        localRMVideoStateMgr.a();
-      }
-      if ((localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture != null) && (localRMVideoStateMgr.e())) {
-        localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.g();
-      }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      return;
+      return jdField_a_of_type_Bnuo;
     }
+    finally {}
   }
   
-  public void a()
+  public static String a()
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    localRMVideoStateMgr.jdField_a_of_type_Bnuv.b();
-    localRMVideoStateMgr.e();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMRecordState", 2, "[@] [RMFileEventNotify]stopWatching");
-    }
-    this.jdField_a_of_type_Boolean = false;
-    d();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMRecordState", 2, "[@] initState end");
-    }
+    return bnss.f + File.separator + "effect_group_list.json";
   }
   
-  public void a(bobw parambobw, boolean paramBoolean, int paramInt1, int paramInt2)
+  private void a()
   {
-    parambobw = RMVideoStateMgr.a();
-    if (parambobw.jdField_a_of_type_Boolean) {}
-    for (parambobw.jdField_a_of_type_Double = (System.currentTimeMillis() - parambobw.jdField_a_of_type_Long);; parambobw.jdField_a_of_type_Double = paramInt1)
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = paramBoolean;
-        if ((parambobw.d()) && (!parambobw.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.e) && (!parambobw.f)) {
-          parambobw.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.2(this));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("RMRecordState", 2, "[@] timeExpire: mIsRecordOver=" + this.jdField_a_of_type_Boolean + " mStateMgr.mTotalTime=" + parambobw.jdField_a_of_type_Double);
-        }
-        parambobw.jdField_a_of_type_Bnuv.a((int)(parambobw.jdField_a_of_type_Double + boct.a().a().a()), this.jdField_a_of_type_Boolean);
-        if (this.jdField_a_of_type_Boolean) {
-          parambobw.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.3(this));
-        }
-      }
-      return;
-    }
+    this.jdField_a_of_type_JavaLangRunnable = new AEEditorEffectConfigManager.2(this);
+    ThreadManager.getFileThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void b()
+  public void a(bnup parambnup)
   {
-    c();
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    localRMVideoStateMgr.a(2);
-    localRMVideoStateMgr.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMRecordState", 2, "[@] [RMFileEventNotify]startWatching");
-    }
+    this.jdField_a_of_type_Bnup = parambnup;
+    a();
   }
   
-  public void c()
+  public void a(AEEditorEffectGroupListBean paramAEEditorEffectGroupListBean)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMRecordState", 2, "[@] [stopRecordVideo]Lock.CAPTURE_LOCK = " + bocr.jdField_a_of_type_Boolean);
-    }
-    if (bocr.jdField_a_of_type_Boolean)
-    {
-      bocr.jdField_a_of_type_Boolean = false;
-      long l1 = System.currentTimeMillis();
-      this.jdField_a_of_type_Long = (l1 - this.jdField_a_of_type_Long);
-      if (QLog.isColorLevel()) {
-        QLog.d("RMRecordState", 2, "[@] [stopRecordVideo] current=" + l1 + " timestamp=" + this.jdField_a_of_type_Long);
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        localRMVideoStateMgr.jdField_a_of_type_Double = CodecParam.RECORD_MAX_TIME;
-      }
-      localRMVideoStateMgr.jdField_a_of_type_Bnuv.f();
-      localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext.stopCapture();
-      if (localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture != null) {
-        localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.h();
-      }
-      if (localRMVideoStateMgr.a(3))
-      {
-        if (localRMVideoStateMgr.jdField_a_of_type_Bodj != null) {
-          localRMVideoStateMgr.b = localRMVideoStateMgr.jdField_a_of_type_Bodj.a(localRMVideoStateMgr);
-        }
-        localRMVideoStateMgr.b();
-      }
-      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new RMVideoRecordState.1(this, localRMVideoStateMgr));
-      AVCodec.get().stopCapture();
-      long l2 = localRMVideoStateMgr.jdField_a_of_type_Bnuv.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("RMRecordState", 2, "[@] [stopRecordVideo] timeLimit=" + l2 + " timestamp=" + this.jdField_a_of_type_Long);
-      }
-      l1 = l2;
-      if (l2 == -1L) {
-        l1 = this.jdField_a_of_type_Long;
-      }
-      if ((l1 < 500L) && (!this.jdField_a_of_type_Boolean))
-      {
-        localRMVideoStateMgr.jdField_a_of_type_Bnuv.a(true);
-        localRMVideoStateMgr.a(true);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("RMRecordState", 2, "[@] stopRecordVideo end Lock.CAPTURE_LOCK = " + bocr.jdField_a_of_type_Boolean);
-      }
-    }
-  }
-  
-  public void e()
-  {
-    b();
+    ThreadManager.getFileThreadHandler().post(new AEEditorEffectConfigManager.1(this, paramAEEditorEffectGroupListBean));
   }
 }
 

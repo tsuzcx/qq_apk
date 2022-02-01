@@ -1,46 +1,27 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public abstract class ainh
-  implements aioi
+public class ainh
 {
-  protected Activity a;
+  String a = "";
+  String b = "";
   
-  public ainh(Activity paramActivity)
+  public String a()
   {
-    this.a = paramActivity;
+    return this.b;
   }
   
-  public Activity a()
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public String b()
   {
     return this.a;
   }
   
-  public void a(View paramView) {}
-  
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c() {}
-  
-  public void c(boolean paramBoolean)
+  public void b(String paramString)
   {
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      FrameHelperActivity.c(paramBoolean);
-      return;
-    }
+    this.a = paramString;
   }
-  
-  public void d() {}
-  
-  public void e() {}
 }
 
 

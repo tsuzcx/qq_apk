@@ -2,7 +2,7 @@ package com.tencent.mobileqq.hiboom;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.MQLruCache;
-import aueh;
+import avkb;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.List;
 import java.util.Vector;
@@ -10,14 +10,14 @@ import java.util.Vector;
 public class HiBoomFontDrawer$2
   implements Runnable
 {
-  public HiBoomFontDrawer$2(aueh paramaueh, List paramList) {}
+  public HiBoomFontDrawer$2(avkb paramavkb, List paramList) {}
   
   public void run()
   {
     int i = 0;
     if (i < this.a.size())
     {
-      Bitmap localBitmap = aueh.a((String)this.a.get(i));
+      Bitmap localBitmap = avkb.a((String)this.a.get(i));
       if (localBitmap != null) {
         BaseApplicationImpl.sImageCache.put(this.a.get(i), localBitmap);
       }
@@ -28,7 +28,7 @@ public class HiBoomFontDrawer$2
         this.this$0.a.add(this.a.get(i));
       }
     }
-    aueh.a(this.this$0);
+    avkb.a(this.this$0);
   }
 }
 

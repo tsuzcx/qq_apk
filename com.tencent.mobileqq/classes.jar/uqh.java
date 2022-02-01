@@ -1,103 +1,58 @@
-import UserGrowth.stFriendLike;
-import UserGrowth.stFriendLikes;
-import UserGrowth.stSimpleMetaFeed;
-import android.text.SpannableStringBuilder;
-import android.text.TextPaint;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import java.util.ArrayList;
-import org.jetbrains.annotations.NotNull;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public class uqh
+class uqh
+  implements View.OnClickListener
 {
-  private static int jdField_a_of_type_Int = ScreenUtil.getRealWidth(BaseApplicationImpl.context) - ScreenUtil.dip2px(30.0F);
-  private static String jdField_a_of_type_JavaLangString = "、";
+  uqh(uqg paramuqg, uqf paramuqf) {}
   
-  private static String a()
+  public void onClick(View paramView)
   {
-    return " 赞了";
-  }
-  
-  private static String a(int paramInt)
-  {
-    return " 等" + c(paramInt) + "位好友赞了";
-  }
-  
-  @NotNull
-  private static uqi a(stSimpleMetaFeed paramstSimpleMetaFeed, stFriendLike paramstFriendLike, int paramInt)
-  {
-    return new uqi(paramstSimpleMetaFeed, paramstFriendLike.schema, paramInt);
-  }
-  
-  public static uqk a(stSimpleMetaFeed paramstSimpleMetaFeed, TextPaint paramTextPaint, int paramInt)
-  {
-    long l1 = System.currentTimeMillis();
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    stFriendLikes localstFriendLikes;
-    int k;
-    if (paramstSimpleMetaFeed != null)
+    bdla.b(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005732", "0X8005732", 0, 0, "", "", "", "");
+    bdla.b(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642F", "0X800642F", 0, 0, String.valueOf(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqe.jdField_a_of_type_Long), "", "", "");
+    String str;
+    if (this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqe != null)
     {
-      localstFriendLikes = paramstSimpleMetaFeed.friendLikes;
-      if (localstFriendLikes != null)
-      {
-        k = localstFriendLikes.total;
-        if ((k > 0) && (paramTextPaint != null)) {
-          break label64;
-        }
+      str = String.valueOf(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqe.jdField_a_of_type_Long);
+      if (!TextUtils.isEmpty(str)) {
+        break label116;
       }
     }
-    uya.e("WSFriendLikeUtil", "[WSFriendLikeParser.parse()]friendLikes is empty，hide displayLine");
-    return new uqk(null, 0, "");
-    label64:
-    if (localstFriendLikes.likeFriends == null)
+    for (;;)
     {
-      uya.e("WSFriendLikeUtil", "[WSFriendLikeParser.parse()]friendLikes.likeFriends is empty，but friendLikes.total > 0，show the num");
-      return new uqk(null, 0, b(k));
-    }
-    int m = localstFriendLikes.likeFriends.size();
-    int n = (int)paramTextPaint.measureText(a());
-    int i1 = (int)paramTextPaint.measureText(a(k));
-    int i2 = jdField_a_of_type_Int;
-    int i3 = jdField_a_of_type_Int;
-    float f = 0.0F;
-    int j = 0;
-    int i = 0;
-    while (j < m)
-    {
-      stFriendLike localstFriendLike = (stFriendLike)localstFriendLikes.likeFriends.get(j);
-      String str2 = localstFriendLike.nick;
-      if (j == m - 1) {}
-      for (String str1 = str2;; str1 = str2 + jdField_a_of_type_JavaLangString)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label116:
+      if (this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqe.jdField_a_of_type_Int == 0)
       {
-        localSpannableStringBuilder.append(str1);
-        f = paramTextPaint.measureText(localSpannableStringBuilder.toString());
-        if (f <= i2 - n) {
-          break;
+        if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
+        {
+          QQToast.a(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.jdField_a_of_type_AndroidAppActivity, 2131694255, 0).b(((BaseActivity)this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
         }
-        l2 = System.currentTimeMillis();
-        uya.a("WSFriendLikeUtil", "[WSFriendLikeParser.parse()]the cost of friendLikes'Parsing： " + (l2 - l1));
-        uya.e("WSFriendLikeUtil", "[WSFriendLikeParser.parse()]the width of friendLikes is out of the max width，show with ...");
-        return new uqk(localSpannableStringBuilder, i3 - i1, a(k));
+        else
+        {
+          this.jdField_a_of_type_Uqg.a(2);
+          this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqe.jdField_a_of_type_Int = 2;
+          MqqHandler localMqqHandler = this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
+          if ((localMqqHandler != null) && (this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.jdField_a_of_type_AndroidAppActivity != null) && ((this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.jdField_a_of_type_AndroidAppActivity instanceof SubscriptFeedsActivity))) {
+            localMqqHandler.sendEmptyMessage(1007);
+          }
+          uuc.a(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.jdField_a_of_type_AndroidAppActivity, str, new uql(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf, this.jdField_a_of_type_Uqg));
+        }
       }
-      localSpannableStringBuilder.setSpan(a(paramstSimpleMetaFeed, localstFriendLike, paramInt), i, str2.length() + i, 33);
-      int i4 = str1.length();
-      j += 1;
-      i += i4;
+      else {
+        uqg.a(this.jdField_a_of_type_Uqg);
+      }
     }
-    long l2 = System.currentTimeMillis();
-    uya.a("WSFriendLikeUtil", "[WSFriendLikeParser.parse()]the cost of friendLikes'Parsing： " + (l2 - l1));
-    uya.e("WSFriendLikeUtil", "[WSFriendLikeParser.parse()]the width of friendLikes is in the max width，show completely");
-    return new uqk(localSpannableStringBuilder, (int)f, a());
-  }
-  
-  private static String b(int paramInt)
-  {
-    return c(paramInt) + "位好友 赞了";
-  }
-  
-  private static String c(int paramInt)
-  {
-    return rwv.e(paramInt);
   }
 }
 

@@ -1,31 +1,36 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class xau
-  extends QQUIEventReceiver<xas, voc>
+  implements AbsListView.OnScrollListener
 {
-  public xau(@NonNull xas paramxas)
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  int c = 0;
+  
+  public xau(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramxas);
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  public void a(@NonNull xas paramxas, @NonNull voc paramvoc)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramxas.a == null) || (paramvoc.a == null) || (!TextUtils.equals(paramxas.a.a, paramvoc.a.mVid))) {}
-    do
+    if ((paramInt == 0) && (this.c + this.jdField_a_of_type_Int >= this.b))
     {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b) {
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(3);
+      }
+    }
+    else {
       return;
-      paramxas.i();
-      paramxas = (wsm)paramxas.a(wsm.class);
-    } while (paramxas == null);
-    paramxas.d();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return voc.class;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
+    xaw.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
   }
 }
 

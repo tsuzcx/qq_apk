@@ -1,20 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class aguc
-  implements View.OnClickListener
+  implements bkzs
 {
-  aguc(agua paramagua) {}
+  aguc(agtz paramagtz) {}
   
-  public void onClick(View paramView)
-  {
-    ChatMessage localChatMessage = AIOUtils.getMessage(paramView);
-    agua.a(this.a, localChatMessage, 5);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onDismiss() {}
 }
 
 

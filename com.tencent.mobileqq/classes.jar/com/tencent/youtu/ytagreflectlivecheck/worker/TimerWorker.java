@@ -1,7 +1,7 @@
 package com.tencent.youtu.ytagreflectlivecheck.worker;
 
 import android.os.SystemClock;
-import com.tencent.youtu.ytcommon.tools.YTLogger;
+import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
 import java.util.Timer;
 
 public abstract class TimerWorker
@@ -15,7 +15,7 @@ public abstract class TimerWorker
   
   protected TimerWorker(long paramLong1, long paramLong2)
   {
-    YTLogger.i("CloudFaceCountDownTimer", "[TimerWorker.TimerWorker] mCountDownTimer");
+    YTAGReflectLiveCheckJNIInterface.nativeLog("CloudFaceCountDownTimer", "[TimerWorker.TimerWorker] mCountDownTimer");
     this.mMillisInFuture = paramLong1;
     this.mCountdownInterval = paramLong2;
   }

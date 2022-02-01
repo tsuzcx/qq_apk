@@ -1,37 +1,29 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public class bmsq
-  implements Cloneable
+class bmsq
+  implements INetEngine.INetEngineListener
 {
-  public int a;
-  public String a;
-  public List<PtvTemplateManager.PtvTemplateInfo> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
+  bmsq(bmsl parambmsl, bmsx parambmsx, String paramString1, String paramString2) {}
   
-  public bmsq() {}
-  
-  public bmsq(String paramString)
+  public void onResp(NetResp paramNetResp)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramNetResp.mResult == 3) {
+      return;
+    }
+    if (paramNetResp.mResult == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      int i = paramNetResp.mErrCode;
+      this.jdField_a_of_type_Bmsx.a(this.jdField_a_of_type_JavaLangString, this.b, bool, paramNetResp.mErrDesc, i);
+      return;
+    }
   }
   
-  public bmsq a()
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    bmsq localbmsq = new bmsq();
-    localbmsq.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localbmsq.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localbmsq.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localbmsq.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localbmsq.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localbmsq.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
-    localbmsq.jdField_a_of_type_JavaUtilList = new ArrayList();
-    localbmsq.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    return localbmsq;
+    this.jdField_a_of_type_Bmsx.a(this.jdField_a_of_type_JavaLangString, paramLong2, (float)paramLong1);
   }
 }
 

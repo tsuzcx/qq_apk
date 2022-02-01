@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -13,6 +12,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
+import anvx;
 
 public class AnimationableProgressView
   extends View
@@ -68,7 +68,7 @@ public class AnimationableProgressView
     if (this.jdField_b_of_type_Long > 0L) {
       if (this.jdField_a_of_type_Long > 0L)
       {
-        this.jdField_a_of_type_JavaLangString = (amtj.a(2131699416) + this.d + amtj.a(2131699418));
+        this.jdField_a_of_type_JavaLangString = (anvx.a(2131699767) + this.d + anvx.a(2131699769));
         this.i = -34816;
       }
     }
@@ -76,7 +76,7 @@ public class AnimationableProgressView
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(14.0F * getResources().getDisplayMetrics().density);
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = (this.d + "/" + this.c + amtj.a(2131699417));
+        this.jdField_a_of_type_JavaLangString = (this.d + "/" + this.c + anvx.a(2131699768));
       }
       float f1 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_Float = ((this.jdField_a_of_type_Int - f1) / 2.0F);
@@ -84,10 +84,10 @@ public class AnimationableProgressView
       this.jdField_b_of_type_Float = ((this.jdField_b_of_type_Int - localFontMetrics.bottom - localFontMetrics.top) / 2.0F);
       super.invalidate();
       return;
-      this.jdField_a_of_type_JavaLangString = (amtj.a(2131699413) + this.d + "/" + this.c);
+      this.jdField_a_of_type_JavaLangString = (anvx.a(2131699764) + this.d + "/" + this.c);
       break;
       this.i = -16777216;
-      this.jdField_a_of_type_JavaLangString = (amtj.a(2131699415) + this.d + "/" + this.c + amtj.a(2131699414));
+      this.jdField_a_of_type_JavaLangString = (anvx.a(2131699766) + this.d + "/" + this.c + anvx.a(2131699765));
     } while (this.d <= 0);
     if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
       this.jdField_a_of_type_AndroidGraphicsPath = new Path();

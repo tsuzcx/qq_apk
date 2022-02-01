@@ -1,6 +1,18 @@
-public abstract interface babp
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class babp
+  implements View.OnClickListener
 {
-  public abstract void a(float paramFloat);
+  babp(babn parambabn, View paramView) {}
+  
+  public void onClick(View paramView)
+  {
+    azru.a().b(babn.i(this.jdField_a_of_type_Babn));
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

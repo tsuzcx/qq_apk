@@ -1,17 +1,18 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnPreparedListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnPreparedListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.OpenSdkIMBlockFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bjfa
-  implements IMediaPlayer.OnPreparedListener
+public class bjfa
+  implements View.OnClickListener
 {
-  bjfa(bjey parambjey, ReliableVideoPlayer.OnPreparedListener paramOnPreparedListener) {}
+  public bjfa(OpenSdkIMBlockFragment paramOpenSdkIMBlockFragment) {}
   
-  public void onPrepared(IMediaPlayer paramIMediaPlayer)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnPreparedListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnPreparedListener.onPrepared(this.jdField_a_of_type_Bjey);
-    }
+    bjhg.a(OpenSdkIMBlockFragment.a(this.a), "0X800B65B");
+    OpenSdkIMBlockFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

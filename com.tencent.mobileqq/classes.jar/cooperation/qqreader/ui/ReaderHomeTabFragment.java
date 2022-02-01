@@ -15,17 +15,17 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import bgtw;
-import bjng;
-import bkty;
-import bkuf;
-import bkul;
-import bkuz;
-import bkvb;
-import bkvd;
-import bkvg;
-import bkvh;
-import bkvi;
+import bieo;
+import bkys;
+import bmfh;
+import bmfo;
+import bmfu;
+import bmgi;
+import bmgk;
+import bmgm;
+import bmgp;
+import bmgq;
+import bmgr;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -49,7 +49,7 @@ public class ReaderHomeTabFragment
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private View jdField_a_of_type_AndroidViewView;
   private long jdField_b_of_type_Long = -1L;
-  private Handler jdField_b_of_type_AndroidOsHandler = new bjng(Looper.getMainLooper(), this);
+  private Handler jdField_b_of_type_AndroidOsHandler = new bkys(Looper.getMainLooper(), this);
   
   public static WebViewFragment a(Intent paramIntent)
   {
@@ -73,7 +73,7 @@ public class ReaderHomeTabFragment
       {
         this.jdField_a_of_type_AndroidViewView = new View(getActivity());
         this.jdField_a_of_type_AndroidViewView.setBackgroundColor(1996488704);
-        this.jdField_a_of_type_AndroidViewView.setId(2131371801);
+        this.jdField_a_of_type_AndroidViewView.setId(2131371991);
         paramViewGroup.addView(this.jdField_a_of_type_AndroidViewView, new ViewGroup.LayoutParams(-1, -1));
       }
     }
@@ -97,10 +97,10 @@ public class ReaderHomeTabFragment
       Object localObject = a();
       ((ReaderTabBarView)localObject).setTextMsg(i, paramJSONObject, ((ReaderTabBarView)localObject).a(i) + 1, true);
       localObject = getActivity();
-      bkvg.a(DeviceInfoUtil.getNetInfo((Context)localObject).networkType, bkvi.a((Activity)localObject), "69", "335", "", "2", "", "", "");
-      bkvh.a((Context)localObject, i, j);
-      bkvh.a((Context)localObject, i, paramJSONObject);
-      bkvh.a((Context)localObject, i, true);
+      bmgp.a(DeviceInfoUtil.getNetInfo((Context)localObject).networkType, bmgr.a((Activity)localObject), "69", "335", "", "2", "", "", "");
+      bmgq.a((Context)localObject, i, j);
+      bmgq.a((Context)localObject, i, paramJSONObject);
+      bmgq.a((Context)localObject, i, true);
       return;
     }
     catch (JSONException paramJSONObject)
@@ -118,9 +118,9 @@ public class ReaderHomeTabFragment
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bkuz(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bmgi(this);
     IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction(bkuf.c);
+    localIntentFilter.addAction(bmfo.c);
     getActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
   }
   
@@ -135,9 +135,9 @@ public class ReaderHomeTabFragment
   
   private void c()
   {
-    bkty localbkty = ((ReaderBaseWebActivity)getActivity()).a(this.webView);
-    if (localbkty != null) {
-      localbkty.b();
+    bmfh localbmfh = ((ReaderBaseWebActivity)getActivity()).a(this.webView);
+    if (localbmfh != null) {
+      localbmfh.b();
     }
   }
   
@@ -189,7 +189,7 @@ public class ReaderHomeTabFragment
     else {
       return i;
     }
-    bkvd.a("ReaderHomeTabFragment", "tabBarView  is null or  tabBarView.getParent() is null");
+    bmgm.a("ReaderHomeTabFragment", "tabBarView  is null or  tabBarView.getParent() is null");
     return i;
   }
   
@@ -237,7 +237,7 @@ public class ReaderHomeTabFragment
     }
     b();
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    bkvd.e("ReaderHomeTabFragment", "onCreate");
+    bmgm.e("ReaderHomeTabFragment", "onCreate");
   }
   
   public void onDestroy()
@@ -261,7 +261,7 @@ public class ReaderHomeTabFragment
       if (this.jdField_a_of_type_Long > 0L)
       {
         l1 = l4 - this.jdField_a_of_type_Long;
-        bkvg.a(str, "8", "", 0, 0.0F, 0, l1, paramString);
+        bmgp.a(str, "8", "", 0, 0.0F, 0, l1, paramString);
       }
     }
     long l3 = 0L;
@@ -285,23 +285,23 @@ public class ReaderHomeTabFragment
           {
             paramWebView = paramString + ",\\n clickDynamicStartTime=" + l5;
             l2 = l4 - l5;
-            boolean bool = bkvb.a(getActivity());
-            bkvd.e("ReaderHomeTabFragment", "isFristEnterHomePageFromLeba =" + bool);
+            boolean bool = bmgk.a(getActivity());
+            bmgm.e("ReaderHomeTabFragment", "isFristEnterHomePageFromLeba =" + bool);
             if (!bool) {
               break label450;
             }
-            bkvb.a(getActivity(), false);
-            bkvg.a(str, "7", "", 0, 0.0F, 0, l2, paramWebView);
+            bmgk.a(getActivity(), false);
+            bmgp.a(str, "7", "", 0, 0.0F, 0, l2, paramWebView);
           }
         }
       }
     }
     for (;;)
     {
-      bkvd.e("ReaderHomeTabFragment", "onPageFinished ,fristSwitchTabPageTime=" + l1 + ", homePageFristLaunchTime=" + l2 + ",repoertExtraInfo=" + paramWebView);
+      bmgm.e("ReaderHomeTabFragment", "onPageFinished ,fristSwitchTabPageTime=" + l1 + ", homePageFristLaunchTime=" + l2 + ",repoertExtraInfo=" + paramWebView);
       return;
       label450:
-      bkvg.a(str, "9", "", 0, 0.0F, 0, l2, paramWebView);
+      bmgp.a(str, "9", "", 0, 0.0F, 0, l2, paramWebView);
     }
   }
   
@@ -316,7 +316,7 @@ public class ReaderHomeTabFragment
     super.onResume();
     ReaderTabBarView localReaderTabBarView = a();
     if ((localReaderTabBarView != null) && (localReaderTabBarView.b())) {
-      bkul.a().a("EVENT_PRE_FETCH_GAME_AD_DATA_AND_GET_READ_RECORD", null);
+      bmfu.a().a("EVENT_PRE_FETCH_GAME_AD_DATA_AND_GET_READ_RECORD", null);
     }
   }
 }

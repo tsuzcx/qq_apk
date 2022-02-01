@@ -1,17 +1,80 @@
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import mqq.manager.Manager;
+import org.json.JSONObject;
+import tencent.im.cs.cmd0x388.cmd0x388.ExtensionCommPicTryUp;
 
-final class blrh
-  implements Comparator<blrj>
+public class blrh
+  implements Manager
 {
-  public int a(blrj paramblrj1, blrj paramblrj2)
+  private azla jdField_a_of_type_Azla = new blri(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public RemoteCommand.OnInvokeFinishLinstener a;
+  private TransFileController jdField_a_of_type_ComTencentMobileqqTransfileTransFileController;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public blrh(QQAppInterface paramQQAppInterface)
   {
-    if (paramblrj1.a) {
-      return 1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController = paramQQAppInterface.getTransFileController();
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentUin();
+  }
+  
+  public void a(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    if (paramBundle == null) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = paramOnInvokeFinishLinstener;
+      paramOnInvokeFinishLinstener = new TransferRequest();
+      paramOnInvokeFinishLinstener.mFileType = 24;
+      paramOnInvokeFinishLinstener.mCommandId = 20;
+      paramOnInvokeFinishLinstener.mRichTag = "actQqComicPicUpload";
+      paramOnInvokeFinishLinstener.mSelfUin = this.jdField_a_of_type_JavaLangString;
+      paramOnInvokeFinishLinstener.mPeerUin = this.jdField_a_of_type_JavaLangString;
+      paramOnInvokeFinishLinstener.mIsUp = true;
+      paramOnInvokeFinishLinstener.mLocalPath = paramBundle.getString("localPath");
+      paramOnInvokeFinishLinstener.mUpCallBack = this.jdField_a_of_type_Azla;
+      Object localObject = paramBundle.getString("comicId");
+      String str1 = paramBundle.getString("picMd5");
+      String str2 = paramBundle.getString("actionData");
+      paramBundle = new JSONObject();
+      try
+      {
+        paramBundle.put("comicId", localObject);
+        paramBundle.put("picMd5", str1);
+        paramBundle.put("actionData", str2);
+        localObject = new cmd0x388.ExtensionCommPicTryUp();
+        ((cmd0x388.ExtensionCommPicTryUp)localObject).rpt_bytes_extinfo.add(ByteStringMicro.copyFrom(paramBundle.toString().getBytes()));
+        paramOnInvokeFinishLinstener.mExtentionInfo = ((cmd0x388.ExtensionCommPicTryUp)localObject).toByteArray();
+        if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController == null) {
+          continue;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.transferAsync(paramOnInvokeFinishLinstener);
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
+      }
     }
-    if (paramblrj2.a) {
-      return -1;
-    }
-    return 0;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController = null;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

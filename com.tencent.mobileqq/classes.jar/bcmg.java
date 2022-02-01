@@ -1,21 +1,21 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
-class bcmg
-  implements DialogInterface.OnClickListener
+public class bcmg
+  extends bckw
 {
-  bcmg(bcmf parambcmf, Context paramContext, View paramView) {}
+  public final bcmh a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bcmg(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    bcme.a(this.jdField_a_of_type_Bcmf.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-      bcef.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
-    }
-    paramDialogInterface.dismiss();
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+    this.a = new bcmh(paramQQAppInterface);
+  }
+  
+  public Comparator<bcff> a()
+  {
+    return this.a;
   }
 }
 

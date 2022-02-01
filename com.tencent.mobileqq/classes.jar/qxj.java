@@ -1,21 +1,44 @@
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.Proteus;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ProteusConfig;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ProteusConfig.ProteusConfigBuilder;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.mobileqq.app.FontSettingManager;
 
 public class qxj
+  extends VafContext
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<qxi> a;
-  public long b;
-  public String b;
-  public long c;
-  
-  public qxj(qxg paramqxg) {}
-  
-  public String toString()
+  private static void a()
   {
-    return "\nGestureEvent{direction=" + this.jdField_a_of_type_Int + ", deltaFromLastScroll=" + this.jdField_a_of_type_Long + ", scrollDistance=" + this.jdField_b_of_type_Long + ", scrollMills=" + this.c + ", scrollSpeed=" + this.jdField_a_of_type_Float + ", scrollDownAndUpCoordinate='" + this.jdField_a_of_type_JavaLangString + '\'' + ", clickCoordinate='" + this.jdField_b_of_type_JavaLangString + '\'' + ", scrollStateInfos=" + this.jdField_a_of_type_JavaUtilArrayList + "}";
+    ProteusConfig localProteusConfig = new ProteusConfig.ProteusConfigBuilder().withDrawableHelper(new qsm()).withCustomMethodInterface(new qsq()).withLogger(new qsi()).withDtReporter(new ptk()).build();
+    Proteus.getInstance().init(localProteusConfig);
+  }
+  
+  private void b() {}
+  
+  public void setContext(Context paramContext)
+  {
+    super.setContext(paramContext);
+    paramContext = paramContext.getResources().getDisplayMetrics();
+    float f2 = FontSettingManager.getFontLevel() / 16.0F;
+    float f1 = f2;
+    if (f2 == 0.0F) {
+      f1 = 1.0F;
+    }
+    f1 = paramContext.density / f1;
+    int i = paramContext.widthPixels;
+    if (Aladdin.getConfig(353).getIntegerFromString("enable_use_min_screen_size", 1) == 1) {
+      i = Math.min(paramContext.widthPixels, paramContext.heightPixels);
+    }
+    a();
+    Utils.init(f1, i);
+    b();
+    tmz.a();
   }
 }
 

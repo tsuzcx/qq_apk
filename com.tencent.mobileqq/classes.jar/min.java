@@ -1,37 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-class min
-  implements ValueAnimator.AnimatorUpdateListener
+public class min
 {
-  min(mim parammim) {}
+  public int a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public min()
   {
-    paramValueAnimator.getAnimatedFraction();
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    float f;
-    if (i <= 220)
-    {
-      f = i / 220.0F;
-      mim.a(this.a).setAlpha(f);
-    }
-    if (i <= 160)
-    {
-      f = i / 100.0F;
-      mim.a(this.a).setAlpha(f);
-    }
-    if (mim.a(this.a) != null) {
-      mim.a(this.a).requestLayout();
-    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    return "id[" + this.jdField_a_of_type_JavaLangString + "], name[" + this.c + "], desc[" + this.d + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     min
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,20 @@
-import android.app.Dialog;
-import android.os.Message;
-import java.lang.reflect.Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 
-public class achg
+class achg
+  extends ache
 {
-  public static void a(Dialog paramDialog)
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    if (paramDialog == null) {}
-    for (;;)
+    if (paramacfw != null) {}
+    for (paramString = paramacfw.a(); (paramacfw == null) || (paramString == null); paramString = null)
     {
-      return;
-      String[] arrayOfString = new String[3];
-      arrayOfString[0] = "mDismissMessage";
-      arrayOfString[1] = "mCancelMessage";
-      arrayOfString[2] = "mShowMessage";
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = arrayOfString[i];
-        try
-        {
-          localObject = Dialog.class.getDeclaredField((String)localObject);
-          if (localObject != null)
-          {
-            if (!((Field)localObject).isAccessible()) {
-              ((Field)localObject).setAccessible(true);
-            }
-            localObject = ((Field)localObject).get(paramDialog);
-            if ((localObject instanceof Message))
-            {
-              localObject = (Message)localObject;
-              if (((Message)localObject).obj != null)
-              {
-                ((Message)localObject).obj = null;
-                ((Message)localObject).what = 0;
-              }
-            }
-          }
-        }
-        catch (NoSuchFieldException localNoSuchFieldException)
-        {
-          localNoSuchFieldException.printStackTrace();
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          localIllegalArgumentException.printStackTrace();
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          localIllegalAccessException.printStackTrace();
-        }
-        catch (Throwable localThrowable)
-        {
-          localThrowable.printStackTrace();
-        }
-        i += 1;
-      }
+      QLog.i("WebGdtMvWebOnVideoCloseHandler", 1, "webPlugin == null || activity == null");
+      return true;
     }
+    QLog.i("WebGdtMvWebOnVideoCloseHandler", 1, "args=" + Arrays.toString(paramVarArgs));
+    a();
+    return true;
   }
 }
 

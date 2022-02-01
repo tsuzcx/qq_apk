@@ -1,34 +1,18 @@
-import Wallet.AcsPullMsgRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aevs
-  implements aewl
+  implements View.OnClickListener
 {
-  public aevs(ReminderListFragment paramReminderListFragment) {}
+  public aevs(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle != null)
-      {
-        paramBundle = paramBundle.msgs;
-        if ((paramBundle != null) && (!paramBundle.isEmpty()))
-        {
-          ArrayList localArrayList = new ArrayList(paramBundle.size());
-          ReminderListFragment.a(this.a, paramBundle, localArrayList, true);
-          return;
-        }
-        ReminderListFragment.b(this.a);
-        return;
-      }
-      ReminderListFragment.b(this.a);
-      return;
-    }
-    ReminderListFragment.a(this.a, amtj.a(2131712493));
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,17 +1,41 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
-public class agls
-  implements DialogInterface.OnClickListener
+class agls
+  implements aglv
 {
-  public agls(QQStoryItemBuilder paramQQStoryItemBuilder, Context paramContext, ChatMessage paramChatMessage) {}
+  agls(aglr paramaglr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
   {
-    acvv.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    int j;
+    int i;
+    if (aglr.a(this.a) != null)
+    {
+      j = aglr.a(this.a).getChildCount();
+      if (j > 0) {
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      if (i < j)
+      {
+        paramView = aglr.a(this.a).getChildAt(i).getTag();
+        if (((paramView instanceof IntimateInfo.MemoryDayInfo)) && (((IntimateInfo.MemoryDayInfo)paramView).dateType == paramMemoryDayInfo.dateType)) {
+          aglr.a(this.a).removeViewAt(i);
+        }
+      }
+      else
+      {
+        if (aglr.a(this.a).getChildCount() <= 0) {
+          aglr.a(this.a).setVisibility(8);
+        }
+        return;
+      }
+      i += 1;
+    }
   }
 }
 

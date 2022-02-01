@@ -1,9 +1,17 @@
-import com.tencent.maxvideo.common.AVIOStruct;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
-public class bbuz
+class bbuz
+  implements bbwe
 {
-  public AVIOStruct a;
-  public byte[] a;
+  bbuz(bbuy parambbuy) {}
+  
+  public void a(String paramString)
+  {
+    if (SignatureHistoryFragment.b(this.a.a)) {
+      return;
+    }
+    SignatureHistoryFragment.a(this.a.a, paramString);
+  }
 }
 
 

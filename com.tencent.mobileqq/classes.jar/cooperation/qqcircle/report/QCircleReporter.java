@@ -4,14 +4,19 @@ import NS_COMM.COMM.Entry;
 import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
 import android.os.Handler;
 import android.os.HandlerThread;
+import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.biz.qcircleshadow.local.requests.CommandReportRequest;
 import com.tencent.biz.qcircleshadow.local.requests.QCircleClientReportRequest;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import cooperation.qqcircle.report.outbox.QCircleReportOutboxTask;
+import cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskQueue;
+import cooperation.qqcircle.report.outbox.SimpleTaskQueue;
 import feedcloud.FeedCloudCommon.BytesEntry;
 import feedcloud.FeedCloudCommon.Entry;
 import java.util.ArrayList;
@@ -19,7 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import qqcircle.QQCircleReport.SingleDcData;
-import vhd;
+import vvw;
 
 public class QCircleReporter
 {
@@ -54,6 +59,7 @@ public class QCircleReporter
     localHandlerThread.setPriority(10);
     localHandlerThread.start();
     this.reportHandler = new QCircleReporter.1(this, localHandlerThread.getLooper());
+    initOutbox();
   }
   
   private void checkShouldImmediateReportToServer()
@@ -155,9 +161,18 @@ public class QCircleReporter
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      paramList = new QCircleClientReportRequest(paramList);
-      VSNetworkHelper.getInstance().sendRequest(paramList, new QCircleReporter.3(this));
+      paramList = new QCircleClientReportRequest(new ArrayList(paramList));
+      if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext()))
+      {
+        QLog.d("QCircleReporter", 2, "performClientReport fail! network is not available,save in cache first");
+        QCircleReportOutboxTaskQueue.getInstance().addPausedTask(new QCircleReportOutboxTask(paramList));
+      }
     }
+    else
+    {
+      return;
+    }
+    VSNetworkHelper.getInstance().sendRequest(paramList, new QCircleReporter.4(this));
   }
   
   private void performCommandDataListReportToServer()
@@ -172,7 +187,7 @@ public class QCircleReporter
     if ((paramList != null) && (paramList.size() > 0))
     {
       paramList = new CommandReportRequest(paramList);
-      VSNetworkHelper.getInstance().sendRequest(paramList, new QCircleReporter.4(this));
+      VSNetworkHelper.getInstance().sendRequest(paramList, new QCircleReporter.5(this));
     }
   }
   
@@ -211,27 +226,27 @@ public class QCircleReporter
   
   public void add(QQCircleReport.SingleDcData paramSingleDcData, boolean paramBoolean)
   {
-    this.reportHandler.post(new QCircleReporter.5(this, paramBoolean, paramSingleDcData));
+    this.reportHandler.post(new QCircleReporter.6(this, paramBoolean, paramSingleDcData));
   }
   
   public void addCommandReportData(APP_REPORT_TRANSFER.SingleDcData paramSingleDcData)
   {
-    this.reportHandler.post(new QCircleReporter.7(this, paramSingleDcData));
+    this.reportHandler.post(new QCircleReporter.8(this, paramSingleDcData));
   }
   
   public void addMissSessionReportDataCache(QQCircleReport.SingleDcData paramSingleDcData)
   {
-    this.reportHandler.post(new QCircleReporter.8(this, paramSingleDcData));
+    this.reportHandler.post(new QCircleReporter.9(this, paramSingleDcData));
   }
   
   public void addQualityReportData(QQCircleReport.SingleDcData paramSingleDcData)
   {
-    this.reportHandler.post(new QCircleReporter.6(this, paramSingleDcData));
+    this.reportHandler.post(new QCircleReporter.7(this, paramSingleDcData));
   }
   
   public void flush()
   {
-    this.reportHandler.post(new QCircleReporter.9(this));
+    this.reportHandler.post(new QCircleReporter.10(this));
   }
   
   public void flushVideoReport(List<QQCircleReport.SingleDcData> paramList)
@@ -241,12 +256,12 @@ public class QCircleReporter
       QLog.d("QCircleReporter", 1, "flushVideoReport data error");
       return;
     }
-    this.reportHandler.post(new QCircleReporter.10(this, paramList));
+    this.reportHandler.post(new QCircleReporter.11(this, paramList));
   }
   
   public void flushVideoReportByByte(List<byte[]> paramList)
   {
-    flushVideoReport(vhd.a(paramList));
+    flushVideoReport(vvw.a(paramList));
   }
   
   public Handler getReportHandler()
@@ -254,9 +269,14 @@ public class QCircleReporter
     return this.reportHandler;
   }
   
+  public void initOutbox()
+  {
+    this.reportHandler.postDelayed(new QCircleReporter.2(this), 10000L);
+  }
+  
   public void reportCacheDataListToServerWithSession(byte[] paramArrayOfByte)
   {
-    this.reportHandler.post(new QCircleReporter.2(this, paramArrayOfByte));
+    this.reportHandler.post(new QCircleReporter.3(this, paramArrayOfByte));
   }
 }
 

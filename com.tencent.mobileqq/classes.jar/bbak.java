@@ -1,90 +1,64 @@
-import android.text.TextUtils;
+import android.os.Handler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
-import com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager.1;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class bbak
-  implements Manager
+  implements azjj
 {
-  private bbaf jdField_a_of_type_Bbaf = new bbaf("Cahce_");
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private int jdField_a_of_type_Int;
+  private WeakReference<ReceiptMessageDetailFragment> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bbak(QQAppInterface paramQQAppInterface)
+  public bbak(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReceiptMessageDetailFragment);
   }
   
-  public ArrayList<bbai> a(String paramString)
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(azjk paramazjk)
   {
-    if (this.jdField_a_of_type_Bbaf != null)
+    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localReceiptMessageDetailFragment == null) {
+      return;
+    }
+    if ((paramazjk.b == 0) && (paramazjk.a != null))
     {
-      paramString = this.jdField_a_of_type_Bbaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-      if ((paramString != null) && (paramString.size() > 10))
+      MessageRecord localMessageRecord = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getMessageFacade().getMsgItemByUniseq(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).curFriendUin, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).curType, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment));
+      Object localObject = localMessageRecord;
+      if (localMessageRecord == null)
       {
-        ArrayList localArrayList = new ArrayList(paramString.subList(0, 10));
-        QLog.i("MostUsedSearchResultManager", 2, "tmpResult subList 10 ,orglist is " + paramString.size());
-        return localArrayList;
+        localObject = new MessageForStructing();
+        ((MessageRecord)localObject).senderuin = "0";
+        ((MessageRecord)localObject).uniseq = ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment);
       }
-      return paramString;
-    }
-    QLog.e("MostUsedSearchResultManager", 2, "Match with null cache");
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bbaf != null)
-    {
-      this.jdField_a_of_type_Bbaf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      QLog.d("MostUsedSearchResultManager", 2, "init");
-      return;
-    }
-    QLog.e("MostUsedSearchResultManager", 2, "init with null cache ");
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    if ((paramString1 == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
-    }
-    if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2))) {}
-    for (String str = paramString2;; str = paramString1)
-    {
-      QLog.d("MostUsedSearchResultManager", 2, "UpdateItemUsed : key= " + paramString1 + " mostusedKey= " + paramString2);
-      int i = bbae.a(paramInt);
-      if (!a(i)) {
-        break;
+      paramazjk = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getProxyManager().a().a(paramazjk.a, null, (MessageRecord)localObject, null);
+      if ((paramazjk != null) && (!paramazjk.isEmpty()))
+      {
+        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(10);
+        return;
       }
-      paramString1 = new MostUsedSearchItem(str, NetConnInfoCenter.getServerTimeMillis(), paramString3, paramInt, i);
-      ThreadManager.getSubThreadHandler().post(new MostUsedSearchResultManager.1(this, paramString1));
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
       return;
-      paramString2 = "";
     }
-  }
-  
-  boolean a(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bbaf != null) {
-      this.jdField_a_of_type_Bbaf.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "ReceiptMessageDownloadCallBack onDownload, download msg fail with code: " + paramazjk.b);
     }
-  }
-  
-  public void onDestroy()
-  {
-    b();
-    this.jdField_a_of_type_Bbaf = null;
-    QLog.d("MostUsedSearchResultManager", 2, "onDestroy");
+    int i = this.jdField_a_of_type_Int + 1;
+    this.jdField_a_of_type_Int = i;
+    if (i <= 3)
+    {
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(0);
+      return;
+    }
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
   }
 }
 

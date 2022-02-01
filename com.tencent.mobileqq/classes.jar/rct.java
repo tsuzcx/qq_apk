@@ -1,17 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rct
+class rct
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<DislikeInfo> a;
-  public List<Long> a;
-  public long b;
-  public long c;
-  public long d;
+  rct(rcr paramrcr) {}
+  
+  public void onClick(View paramView)
+  {
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

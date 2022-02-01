@@ -1,12 +1,21 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-final class aszo
-  implements Comparator<FileInfo>
+class aszo
+  implements audq
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  aszo(aszn paramaszn) {}
+  
+  public void onNo()
   {
-    return (int)(paramFileInfo2.b() / 1000L - paramFileInfo1.b() / 1000L);
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
+  }
+  
+  public void onYes()
+  {
+    UniformDownloadActivity.a(this.a.a);
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
   }
 }
 

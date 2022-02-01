@@ -1,91 +1,35 @@
-import com.tencent.qg.sdk.log.IQLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
-public class biky
-  implements IQLog
+class biky
+  extends ntf
 {
-  private static String a(String paramString, Object... paramVarArgs)
-  {
-    return String.format(null, paramString, paramVarArgs);
-  }
+  biky(bikt parambikt, bila parambila) {}
   
-  public void a(String paramString1, String paramString2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    xvv.c(paramString1, paramString2);
-  }
-  
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    xvv.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    xvv.b(paramString1, paramString2);
-  }
-  
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    xvv.a(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    xvv.b(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    xvv.e(paramString1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    xvv.c(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    xvv.c(paramString1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    xvv.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    xvv.c(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void v(String paramString1, String paramString2)
-  {
-    xvv.a(paramString1, paramString2);
-  }
-  
-  public void v(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    xvv.a(paramString1, paramString2, new Object[] { paramThrowable });
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    xvv.c(paramString1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    xvv.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void w(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    xvv.d(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void w(String paramString, Throwable paramThrowable)
-  {
-    xvv.b(paramString, "", paramThrowable);
+    if (this.jdField_a_of_type_Bila != null)
+    {
+      paramBundle = new oidb_0x8ed.RspBody();
+      if (paramArrayOfByte == null) {}
+    }
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bila.a(paramInt, paramBundle);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("WerewolvesHandler", 2, paramArrayOfByte.getMessage());
+        }
+      }
+    }
   }
 }
 

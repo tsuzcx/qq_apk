@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
 
-class axdu
-  implements DialogInterface.OnClickListener
+public class axdu
+  implements axfk
 {
-  axdu(axdo paramaxdo) {}
+  public axdu(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(boolean paramBoolean)
+  {
+    MultiAIOFragment.a(this.a).setViewPagerBusy(paramBoolean);
+  }
 }
 
 

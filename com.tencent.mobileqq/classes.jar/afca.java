@@ -1,17 +1,23 @@
-public abstract interface afca
-  extends afaa
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack.1;
+import com.tencent.qphone.base.util.QLog;
+
+public class afca
+  implements bgsv
 {
-  public abstract void onHeadsetChanged(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  public afca(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
   
-  public abstract void onPlayFailed(int paramInt);
-  
-  public abstract void onPlayStart();
-  
-  public abstract void onPlayStop();
-  
-  public abstract void onPlayVolumeChanged(int paramInt);
-  
-  public abstract void onVolumeStreamChanged(int paramInt);
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.a = bgst.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getContext(), TroopClassChoiceActivity.a(this.a));
+      this.a.runOnUiThread(new TroopClassChoiceActivity.GetClassChoiceCallBack.1(this));
+      return;
+    }
+    QLog.e("IphoneTitleBarActivity", 1, "getClassChoiceFromServer failed!");
+  }
 }
 
 

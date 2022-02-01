@@ -1,26 +1,59 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.QLog;
 
-public class atxs
-  implements bhle
+class atxs
+  extends aahg
 {
-  public atxs(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  atxs(atxr paramatxr) {}
   
-  public void onItemSelect(View paramView, int paramInt)
+  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
   {
-    if ((paramInt == 5) || (paramInt == 4))
+    this.a.e = auea.a(paramByteStringMicro1);
+    short s;
+    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.e)))
     {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", "2747277822");
-      this.a.startActivity(paramView);
+      QLog.d("TroopFileModel<FileAssistant>", 2, "downURL:" + this.a.e);
+      this.a.jdField_a_of_type_JavaLangString = paramString3;
+      this.a.b = ("" + paramInt3);
+      this.a.c = auea.a(paramByteStringMicro1);
+      this.a.d = paramString4;
+      this.a.c = auea.a(paramByteStringMicro1);
+      if ((!bgke.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (!bgke.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (paramBundle == null)) {
+        break label418;
+      }
+      paramString1 = paramBundle.getString("strHttpsDomain");
+      if (TextUtils.isEmpty(paramString1)) {
+        break label418;
+      }
+      s = (short)paramBundle.getInt("httpsPort", 0);
+      if (s != 0) {
+        break label413;
+      }
+      paramBoolean = true;
+      s = 443;
     }
-    while (paramInt != 1) {
+    for (;;)
+    {
+      aagu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString3, "" + paramInt3, this.a.c, auea.c(this.a.jdField_a_of_type_Atuz.a()), "/", paramString4, this.a.jdField_a_of_type_Atuz.a(), new atxt(this, paramBoolean, paramString1, s));
+      do
+      {
+        return;
+        QLog.e("TroopFileModel<FileAssistant>", 1, "get preview url failed for troop, retCode[" + paramInt1 + "], retMeg[" + paramString1 + "]");
+        bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.a.jdField_a_of_type_Atuz.a().TroopUin, "-1", auea.f(this.a.c()), "1");
+      } while (this.a.jdField_a_of_type_Atxh == null);
+      this.a.jdField_a_of_type_Atxh.a(paramInt1);
       return;
+      label413:
+      paramBoolean = true;
+      continue;
+      label418:
+      s = 0;
+      paramString1 = null;
+      paramBoolean = false;
     }
-    this.a.getActivity().finish();
   }
 }
 

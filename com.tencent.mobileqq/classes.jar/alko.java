@@ -1,18 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerView;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class alko
+public class alko
   implements DialogInterface.OnClickListener
 {
-  alko(alkj paramalkj) {}
+  public alko(NewerGuideBannerView paramNewerGuideBannerView, BaseActivity paramBaseActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "cancel click");
-    }
-    bcef.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 1, 0, "", "", "", "");
+    NewerGuideBannerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerView).d(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
   }
 }
 

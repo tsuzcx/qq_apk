@@ -1,19 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie.26.1;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.upload.uinterface.data.UpsImageUploadResult;
 
 public class afkc
-  implements nnc
+  extends azvb
 {
-  public afkc(TroopChatPie paramTroopChatPie) {}
-  
-  public void a(String paramString1, String paramString2)
+  public afkc(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, boolean paramBoolean)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.sessionInfo.curFriendUin))) {
-      this.a.uiHandler.post(new TroopChatPie.26.1(this, paramString2));
+    super(paramLong, paramString1, paramArrayOfByte, paramString2);
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
+    {
+    default: 
+    case 1001: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
+      } while (a() == null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
   }
 }
 

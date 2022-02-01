@@ -1,17 +1,19 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import org.json.JSONObject;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-class alwk
-  implements MediaPlayer.OnCompletionListener
+public abstract interface alwk
 {
-  alwk(alwf paramalwf, alxf paramalxf, JSONObject paramJSONObject) {}
+  public abstract int a();
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    this.jdField_a_of_type_Alxf.a(this.jdField_a_of_type_OrgJsonJSONObject);
-    this.jdField_a_of_type_Alwf.a(10);
-  }
+  public abstract void a();
+  
+  public abstract void a(@Nullable alwi paramalwi);
+  
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
 }
 
 

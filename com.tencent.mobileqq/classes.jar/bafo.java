@@ -1,21 +1,7 @@
-public class bafo
-{
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final long b;
-  
-  private bafo(long paramLong1, long paramLong2, int paramInt)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "VideoTimeStamp{TIME-CLOCK=" + this.jdField_a_of_type_Long + ", TIME-FRAME=" + this.b + ", CYCLE=" + this.jdField_a_of_type_Int + '}';
-  }
-}
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/CardSettingObserver$Companion;", "", "()V", "ON_GET_CARD_DISPLAY_SETTING", "", "ON_SET_CARD_DISPLAY_SETTING", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bafo {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajey;
-import amyk;
+import akam;
+import aoay;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class MainFragment$2
   implements Runnable
@@ -16,7 +17,7 @@ class MainFragment$2
     }
     if (MainFragment.a(this.this$0) != null)
     {
-      ((amyk)MainFragment.a(this.this$0).getManager(257)).a(MainFragment.a(this.this$0));
+      ((aoay)MainFragment.a(this.this$0).getManager(QQManagerFactory.QIM_NEW_FRIEND_MANAGER)).a(MainFragment.a(this.this$0));
       MainFragment.a(this.this$0).registObserver(MainFragment.a(this.this$0));
       MainFragment.a(this.this$0).registObserver(MainFragment.a(this.this$0));
     }

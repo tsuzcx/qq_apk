@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.upgrade;
 
 import android.os.Handler;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import nnv;
-import nop;
+import nuw;
+import nvq;
 
 class UpgradeTIMManager$DownloadTask
-  implements Runnable, nnv
+  implements Runnable, nuw
 {
   int jdField_a_of_type_Int;
   String jdField_a_of_type_JavaLangString;
@@ -87,7 +87,7 @@ class UpgradeTIMManager$DownloadTask
       UpgradeTIMManager.a(this.this$0);
       return;
     }
-    bcef.b(UpgradeTIMManager.a(this.this$0), "CliOper", "", "", "0X8008A47", "0X8008A47", 0, 0, "", "", "", "");
+    bdla.b(UpgradeTIMManager.a(this.this$0), "CliOper", "", "", "0X8008A47", "0X8008A47", 0, 0, "", "", "", "");
     UpgradeTIMManager.a(this.this$0).a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, this.b, this);
   }
 }

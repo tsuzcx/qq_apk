@@ -1,28 +1,28 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter;
 
-import amtj;
-import bnli;
-import bnlw;
-import bnly;
+import anvx;
+import bpba;
+import bpbo;
+import bpbq;
 import com.tencent.mobileqq.widget.QQToast;
 import dov.com.qq.im.capture.view.QIMCommonLoadingView;
 
 public class InformationFaceAdapter$DownloadProgressCallback$2
   implements Runnable
 {
-  public InformationFaceAdapter$DownloadProgressCallback$2(bnly parambnly, boolean paramBoolean, bnli parambnli) {}
+  public InformationFaceAdapter$DownloadProgressCallback$2(bpbq parambpbq, boolean paramBoolean, bpba parambpba) {}
   
   public void run()
   {
-    bnly.a(this.jdField_a_of_type_Bnly).setVisibility(8);
+    bpbq.a(this.jdField_a_of_type_Bpbq).setVisibility(8);
     if (this.jdField_a_of_type_Boolean) {
-      bnlw.a(this.jdField_a_of_type_Bnly.a, bnly.a(this.jdField_a_of_type_Bnly), this.jdField_a_of_type_Bnli);
+      bpbo.a(this.jdField_a_of_type_Bpbq.a, bpbq.a(this.jdField_a_of_type_Bpbq), this.jdField_a_of_type_Bpba);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bnly.a();
+      this.jdField_a_of_type_Bpbq.a();
       return;
-      QQToast.a(bnly.a(this.jdField_a_of_type_Bnly).getContext(), 0, amtj.a(2131704890), 0).a();
+      QQToast.a(bpbq.a(this.jdField_a_of_type_Bpbq).getContext(), 0, anvx.a(2131705241), 0).a();
     }
   }
 }

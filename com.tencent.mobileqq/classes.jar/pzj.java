@@ -1,50 +1,95 @@
-import android.text.TextUtils;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import java.util.List;
 
 public class pzj
+  extends oqu
+  implements View.OnClickListener
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  private szd jdField_a_of_type_Szd;
+  private boolean jdField_a_of_type_Boolean;
+  private View b;
+  
+  public pzj(Activity paramActivity)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2;
-    if (paramBaseArticleInfo != null)
-    {
-      localJSONObject1 = new JSONObject();
-      localJSONObject2 = new JSONObject();
-      localJSONObject2.put("game_title", paramBaseArticleInfo.mSubscribeName);
-      localJSONObject1.put("id_game_title", localJSONObject2);
-      localJSONObject2 = new JSONObject();
-      localJSONObject2.put("game_desc", paramBaseArticleInfo.mSummary);
-      localJSONObject1.put("id_game_desc", localJSONObject2);
-      localJSONObject2 = new JSONObject();
-      if ((paramBaseArticleInfo.mSmallMiniGameInfo == null) || (TextUtils.isEmpty(paramBaseArticleInfo.mSmallMiniGameInfo.e))) {
-        break label222;
-      }
-      localJSONObject2.put("game_btn_text", paramBaseArticleInfo.mSmallMiniGameInfo.e);
+    super(paramActivity);
+  }
+  
+  private void i()
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    for (;;)
-    {
-      localJSONObject1.put("id_game_btn", localJSONObject2);
-      if (paramBaseArticleInfo.mSmallMiniGameInfo != null)
-      {
-        localJSONObject2 = new JSONObject();
-        localJSONObject2.put("background_img_url", paramBaseArticleInfo.mSmallMiniGameInfo.i);
-        localJSONObject1.put("id_background_img", localJSONObject2);
-        localJSONObject2 = new JSONObject();
-        localJSONObject2.put("left_big_img_url", paramBaseArticleInfo.mSmallMiniGameInfo.h);
-        localJSONObject1.put("id_left_big_img", localJSONObject2);
-      }
-      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_game_new_style_cell");
-      qai.a(paramBaseArticleInfo, localJSONObject1);
-      qai.n(paramBaseArticleInfo, localJSONObject1);
-      qai.g(paramBaseArticleInfo, localJSONObject1);
-      qai.h(paramBaseArticleInfo, localJSONObject1);
-      return localJSONObject1;
-      label222:
-      localJSONObject2.put("game_btn_text", "去玩");
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.b = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131373860);
     }
   }
+  
+  public ViewGroup a()
+  {
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = new ReadInJoyProteusFamilyListViewGroup(this, 0, 0, 0, null, 2131560331);
+    this.jdField_a_of_type_Szd = ((ReadInJoyProteusFamilyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    super.a(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    i();
+  }
+  
+  public void a(boolean paramBoolean, List<BaseArticleInfo> paramList)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      a();
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (this.b != null) {
+      this.b.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
+    {
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+      {
+        ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.getParent() != null) {
+          ((ViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.getParent()).removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup);
+        }
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup, localLayoutParams);
+      }
+      ((ReadInJoyProteusFamilyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a(true, paramList);
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Szd != null) {
+      this.jdField_a_of_type_Szd.a();
+    }
+  }
+  
+  public void onClick(View paramView) {}
 }
 
 

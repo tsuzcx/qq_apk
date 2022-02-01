@@ -1,28 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class axsj
-  implements Animator.AnimatorListener
+class axsj
+  implements View.OnClickListener
 {
-  public axsj(ScanIconAnimateView paramScanIconAnimateView) {}
+  axsj(axsi paramaxsi, int paramInt, bikt parambikt) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    ScanIconAnimateView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.b();
+    try
+    {
+      long l = Long.parseLong(((axsh)this.jdField_a_of_type_Axsi.a.a.get(this.jdField_a_of_type_Int)).a);
+      this.jdField_a_of_type_Bikt.a(this.jdField_a_of_type_Axsi.a.b, l, null);
+      this.jdField_a_of_type_Axsi.a.a("invite_page", "kick_out");
+      label62:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
+    catch (Exception localException)
+    {
+      break label62;
     }
   }
 }

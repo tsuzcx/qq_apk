@@ -36,7 +36,6 @@ import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.c;
 import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.d;
 import com.tencent.ad.tangram.dialog.AdProgressDialog;
 import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.net.AdNet;
 import com.tencent.ad.tangram.protocol.landing_page_collect_data.LandingPageCollectData;
 import com.tencent.ad.tangram.statistics.a.a;
 import com.tencent.ad.tangram.thread.AdThreadManager;
@@ -213,7 +212,7 @@ public class AdCanvasView
       do
       {
         return;
-      } while ((!this.data.ad.isAppXiJingDefault()) || ((!this.mAppDownloadManager.hasStartedDownload()) && ((!this.data.getAutoDownLoad()) || (!AdNet.isWifiConnected(getContext())))) || (this.bottomFixedButtonView.getVisibility() != 0));
+      } while ((!this.data.ad.isAppXiJingDefault()) || ((!this.mAppDownloadManager.hasStartedDownload()) && (!this.data.getAutoDownLoad())) || (this.bottomFixedButtonView.getVisibility() != 0));
       this.floatingProgressBar.setVisibility(8);
     } while (this.bottomFixedButtonView.getVisibility() != 0);
     this.bottomFixedButtonView.doClick();
@@ -632,7 +631,7 @@ public class AdCanvasView
       {
         return;
         str = this.data.firstPictureComponentIdWithHotArea;
-      } while ((TextUtils.isEmpty(str)) || ((!this.mAppDownloadManager.hasStartedDownload()) && ((!this.data.getAutoDownLoad()) || (!AdNet.isWifiConnected(getContext())))));
+      } while ((TextUtils.isEmpty(str)) || ((!this.mAppDownloadManager.hasStartedDownload()) && (!this.data.getAutoDownLoad())));
       setFloatingButtonData(str);
     } while ((this.floatingAppBtnComponentView == null) || ((this.data.ad != null) && (!this.data.ad.isAppProductType())));
     showProgressBar(str, false);

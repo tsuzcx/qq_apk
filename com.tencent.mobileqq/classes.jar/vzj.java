@@ -1,22 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
 public class vzj
-  extends QQUIEventReceiver<vzf, vuc>
+  implements Dispatcher.Event
 {
-  public vzj(@NonNull vzf paramvzf)
+  public ErrorMessage a = new ErrorMessage();
+  
+  public String a()
   {
-    super(paramvzf);
+    return this.a.getErrorMessage();
   }
   
-  public void a(@NonNull vzf paramvzf, @NonNull vuc paramvuc)
+  public String toString()
   {
-    paramvzf.a.b(paramvuc);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vuc.class;
+    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
+    if (this.a == null) {}
+    for (String str = "null";; str = "\"" + this.a + "\"") {
+      return str + "}";
+    }
   }
 }
 

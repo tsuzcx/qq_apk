@@ -2,8 +2,8 @@ package com.tencent.mobileqq.servlet;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import bbor;
-import bbos;
+import bcvl;
+import bcvm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -19,14 +19,14 @@ import mqq.os.MqqHandler;
 public final class LoginVerifyServlet$4
   implements Runnable
 {
-  public LoginVerifyServlet$4(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, bbos parambbos) {}
+  public LoginVerifyServlet$4(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, bcvm parambcvm) {}
   
   public void run()
   {
     try
     {
       Object localObject5 = new URL(this.jdField_a_of_type_JavaLangString);
-      Object localObject1 = new bbor(this, (URL)localObject5);
+      Object localObject1 = new bcvl(this, (URL)localObject5);
       Object localObject2 = (HttpsURLConnection)((URL)localObject5).openConnection();
       ((HttpsURLConnection)localObject2).setHostnameVerifier((HostnameVerifier)localObject1);
       ((HttpsURLConnection)localObject2).setConnectTimeout(this.jdField_a_of_type_Int);
@@ -36,7 +36,7 @@ public final class LoginVerifyServlet$4
       ((HttpsURLConnection)localObject2).setUseCaches(false);
       ((HttpsURLConnection)localObject2).setRequestMethod("POST");
       ((HttpsURLConnection)localObject2).setRequestProperty("Connection", "Keep-Alive");
-      ((HttpsURLConnection)localObject2).setRequestProperty("User-Agent", "android" + "_" + Build.VERSION.SDK + "_" + Build.DEVICE + "_" + Build.VERSION.RELEASE + "_" + "8.4.8" + "_" + "QQ/" + "8.4.84810");
+      ((HttpsURLConnection)localObject2).setRequestProperty("User-Agent", "android" + "_" + Build.VERSION.SDK + "_" + Build.DEVICE + "_" + Build.VERSION.RELEASE + "_" + "8.4.10" + "_" + "QQ/" + "8.4.104875");
       ((HttpsURLConnection)localObject2).setRequestProperty("Accept", "*/*");
       ((HttpsURLConnection)localObject2).setRequestProperty("Content-Type", this.jdField_b_of_type_JavaLangString);
       localObject1 = ((HttpsURLConnection)localObject2).getOutputStream();

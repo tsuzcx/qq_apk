@@ -1,22 +1,16 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class obp
-  extends ContentObserver
+class obp
+  implements View.OnClickListener
 {
-  public obp(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  obp(obm paramobm) {}
   
-  public void onChange(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    super.onChange(paramBoolean);
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) != null) {
-      ReadInJoyNativeAdAppVideoView.a(this.a).post(new ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1(this));
-    }
+    this.a.a(this.a.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

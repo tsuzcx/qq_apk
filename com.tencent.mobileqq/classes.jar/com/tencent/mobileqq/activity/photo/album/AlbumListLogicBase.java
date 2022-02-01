@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bfwl;
+import bhfd;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.MediaFileFilter;
@@ -43,7 +43,7 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
   private QQAlbumInfo getLocalVideoAlbumInfo(QQAlbumInfo paramQQAlbumInfo)
   {
     paramQQAlbumInfo = getAlbumListAdapter().queryRecentMediaBucket(this.mFragment, paramQQAlbumInfo, false, true);
-    bfwl.a("PEAK", "compact.LocalVideoAlbumInfo");
+    bhfd.a("PEAK", "compact.LocalVideoAlbumInfo");
     return paramQQAlbumInfo;
   }
   
@@ -57,12 +57,12 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
     boolean bool1;
     if ((localMediaFileFilter != null) && (localMediaFileFilter.showImage()))
     {
-      bfwl.a();
+      bhfd.a();
       localList = ((AlbumListAdapter)localObject).queryImageBuckets(this.mActivity, paramInt);
       if ((paramInt != -1) && (localList != null) && (localList.size() == paramInt))
       {
         bool1 = true;
-        bfwl.a("PEAK", "queryImageBuckets");
+        bhfd.a("PEAK", "queryImageBuckets");
       }
     }
     for (;;)
@@ -70,7 +70,7 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
       boolean bool2;
       if ((localMediaFileFilter != null) && (localMediaFileFilter.showVideo()))
       {
-        bfwl.a();
+        bhfd.a();
         localObject = ((AlbumListAdapter)localObject).queryVideoBuckets(this.mActivity, paramInt, localMediaFileFilter);
         bool2 = bool1;
         if (paramInt != -1)
@@ -84,11 +84,11 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
             }
           }
         }
-        bfwl.a("PEAK", "queryVideoBuckets");
+        bhfd.a("PEAK", "queryVideoBuckets");
       }
       for (;;)
       {
-        bfwl.a();
+        bhfd.a();
         localList = this.mAlbumListAdapterCallBack.compact(localList, (List)localObject, paramInt);
         if (localList != null)
         {
@@ -98,12 +98,12 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
             i += ((QQAlbumInfo)localList.get(paramInt)).mMediaFileCount;
             paramInt += 1;
           }
-          bfwl.a("PEAK", "compact(" + (localList.size() - 1) + "," + i + ")");
+          bhfd.a("PEAK", "compact(" + (localList.size() - 1) + "," + i + ")");
         }
         for (;;)
         {
           return new Pair(Boolean.valueOf(bool2), localList);
-          bfwl.a("PEAK", "compact: medias ==null");
+          bhfd.a("PEAK", "compact: medias ==null");
         }
         localObject = null;
         bool2 = bool1;
@@ -118,10 +118,10 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
   private Pair<Boolean, List<QQAlbumInfo>> updateCommonAndDefaultAlbumList(int paramInt)
   {
     AlbumListAdapter localAlbumListAdapter = getAlbumListAdapter();
-    bfwl.a();
+    bhfd.a();
     Pair localPair = queryCommonAlbumList(paramInt);
     List localList = (List)localPair.second;
-    bfwl.a("PEAK", "queryAllAlbumList");
+    bhfd.a("PEAK", "queryAllAlbumList");
     localAlbumListAdapter.updateCommonAlbums(localList);
     localAlbumListAdapter.postData();
     return localPair;
@@ -268,7 +268,7 @@ public class AlbumListLogicBase<K extends AbstractAlbumListFragment, O extends O
     Object localObject;
     if (paramView == null)
     {
-      localView = this.mActivity.getLayoutInflater().inflate(2131560947, null);
+      localView = this.mActivity.getLayoutInflater().inflate(2131561008, null);
       localTextView = (TextView)localView;
       localQQAlbumInfo = localAlbumListAdapter.getItem(paramInt);
       localView.setContentDescription(localQQAlbumInfo.name + "，" + localQQAlbumInfo.mMediaFileCount + "张照片");

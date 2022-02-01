@@ -1,24 +1,28 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.mobileqq.widget.FormMutiItem;
 
-class aisf
-  implements View.OnClickListener
+public class aisf
+  implements bimf
 {
-  aisf(aisd paramaisd) {}
+  public aisf(AddContactsView paramAddContactsView) {}
   
-  public void onClick(View paramView)
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    amvo localamvo = (amvo)this.a.a.getManager(159);
-    Intent localIntent = new Intent(aisd.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("url", localamvo.a);
-    aisd.b(this.a).startActivity(localIntent);
-    bcef.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_skip_page", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.i != null)
+    {
+      if (paramInt2 < this.a.i.getY() + this.a.i.getHeight() * 2 / 3) {
+        break label74;
+      }
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        AddContactsView.a(this.a, false);
+      }
+    }
+    return;
+    label74:
+    AddContactsView.a(this.a);
   }
 }
 

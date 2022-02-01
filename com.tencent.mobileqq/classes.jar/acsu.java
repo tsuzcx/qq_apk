@@ -1,147 +1,92 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.MessageHandler;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.data.SubAccountMessage;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.s2c.msgtype0x210.submsgtype0xbe.SubMsgType0xbe.Medal;
+import tencent.im.s2c.msgtype0x210.submsgtype0xbe.SubMsgType0xbe.MsgBody;
 
 public class acsu
-  implements View.OnClickListener
+  implements acpi
 {
-  public acsu(AssociatedAccountActivity paramAssociatedAccountActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
   {
-    if ((paramView != null) && (paramView.getId() == 2131362181)) {
-      AssociatedAccountActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0xbe");
     }
-    Object localObject2;
-    for (;;)
+    Object localObject = new SubMsgType0xbe.MsgBody();
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      ((SubMsgType0xbe.MsgBody)localObject).mergeFrom(paramArrayOfByte);
+      if (!((SubMsgType0xbe.MsgBody)localObject).uint64_group_code.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0xbe : msg has not uint64_group_code");
+        }
+        return;
+      }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0xbe : fail to parse submsgtype0xbe.");
       return;
-      if ((paramView == null) || ((paramView.getTag() instanceof alhr)))
-      {
-        localObject1 = (alhr)paramView.getTag();
-        if ((localObject1 == null) || (((alhr)localObject1).a != null))
-        {
-          localObject2 = ((alhr)localObject1).a;
-          if (QLog.isColorLevel()) {
-            QLog.d("AssociatedAccountActivity", 2, "onItemClick type = " + ((bcqi)localObject2).jdField_a_of_type_Int);
-          }
-          switch (((bcqi)localObject2).jdField_a_of_type_Int)
-          {
-          case 5: 
-          default: 
-            localObject1 = null;
-            label163:
-            if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (aych.a().a(this.a.app, this.a)) && (this.a.c()))
-            {
-              if (((bcqi)localObject2).jdField_a_of_type_Boolean) {
-                break label673;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("AssociatedAccountActivity", 2, "onItemClick goto SubAccountUgActivity");
-              }
-              this.a.jdField_a_of_type_JavaLangString = ((String)localObject1);
-              this.a.d = true;
-              localObject2 = new Intent("before_account_change");
-              this.a.sendBroadcast((Intent)localObject2);
-              localObject2 = new Intent(this.a, SubAccountUgActivity.class);
-              ((Intent)localObject2).putExtra("subAccount", (String)localObject1);
-              ((Intent)localObject2).putExtra("from_associated_activity", true);
-              this.a.startActivity((Intent)localObject2);
-            }
-            break;
-          }
-        }
-      }
     }
-    if ((((bcqi)localObject2).jdField_a_of_type_JavaLangObject != null) && ((((bcqi)localObject2).jdField_a_of_type_JavaLangObject instanceof SimpleAccount))) {}
-    for (Object localObject1 = ((SimpleAccount)((bcqi)localObject2).jdField_a_of_type_JavaLangObject).getUin();; localObject1 = null)
+    try
     {
-      bcef.b(this.a.app, "CliOper", "", "", "0X8007141", "0X8007141", 0, 0, "", "", "", "");
-      break label163;
-      AssociatedAccountActivity.a(this.a);
-      bcef.b(this.a.app, "CliOper", "", "", "0X800714A", "0X800714A", 0, 0, "", "", "", "");
-      break;
-      if ((((bcqi)localObject2).jdField_a_of_type_JavaLangObject != null) && ((((bcqi)localObject2).jdField_a_of_type_JavaLangObject instanceof SubAccountMessage))) {}
-      for (localObject1 = ((SubAccountMessage)((bcqi)localObject2).jdField_a_of_type_JavaLangObject).subUin;; localObject1 = null)
+      paramArrayOfByte = new JSONObject();
+      if (((SubMsgType0xbe.MsgBody)localObject).uint64_uin.has()) {
+        paramArrayOfByte.put("uin", ((SubMsgType0xbe.MsgBody)localObject).uint64_uin.get());
+      }
+      if (((SubMsgType0xbe.MsgBody)localObject).uint64_group_code.has()) {
+        paramArrayOfByte.put("groupCode", ((SubMsgType0xbe.MsgBody)localObject).uint64_group_code.get());
+      }
+      if (((SubMsgType0xbe.MsgBody)localObject).uint32_notify_type.has()) {
+        paramArrayOfByte.put("notifyType", ((SubMsgType0xbe.MsgBody)localObject).uint32_notify_type.get());
+      }
+      if (((SubMsgType0xbe.MsgBody)localObject).uint32_online_level.has()) {
+        paramArrayOfByte.put("onlineLevel", ((SubMsgType0xbe.MsgBody)localObject).uint32_online_level.get());
+      }
+      if (((SubMsgType0xbe.MsgBody)localObject).rpt_msg_medal_list.has())
       {
-        bcef.b(this.a.app, "dc00898", "", "", "0X800AC3D", "0X800AC3D", 0, 0, "", "", "", "");
-        bcef.b(this.a.app, "CliOper", "", "", "0X8007140", "0X8007140", 0, 0, "", "", "", "");
-        break label163;
-        if ((((bcqi)localObject2).jdField_a_of_type_JavaLangObject != null) && ((((bcqi)localObject2).jdField_a_of_type_JavaLangObject instanceof SubAccountInfo))) {}
-        for (localObject1 = ((SubAccountInfo)((bcqi)localObject2).jdField_a_of_type_JavaLangObject).subuin;; localObject1 = null)
+        JSONArray localJSONArray = new JSONArray();
+        localObject = ((SubMsgType0xbe.MsgBody)localObject).rpt_msg_medal_list.get().iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          if (((bcqi)localObject2).jdField_a_of_type_Int == 2)
-          {
-            bcef.b(this.a.app, "dc00898", "", "", "0X800AC3C", "0X800AC3C", 0, 0, "", "", "", "");
-            bcef.b(this.a.app, "CliOper", "", "", "0X800713F", "0X800713F", 0, 0, "", "", "", "");
-            break label163;
-          }
-          bcef.b(this.a.app, "dc00898", "", "", "0X800AC3D", "0X800AC3D", 0, 0, "", "", "", "");
-          bcef.b(this.a.app, "CliOper", "", "", "0X8007140", "0X8007140", 0, 0, "", "", "", "");
-          break label163;
-          label673:
-          if ((((bcqi)localObject2).jdField_a_of_type_Boolean) && (((bcqi)localObject2).jdField_a_of_type_Int == 2))
-          {
-            if ((((bcqi)localObject2).jdField_a_of_type_JavaLangObject == null) || (!(((bcqi)localObject2).jdField_a_of_type_JavaLangObject instanceof SubAccountInfo)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo == null)) {
-              break;
-            }
-            localObject1 = (SubAccountInfo)((bcqi)localObject2).jdField_a_of_type_JavaLangObject;
-            if ((TextUtils.isEmpty(((SubAccountInfo)localObject1).subuin)) || (((SubAccountInfo)localObject1).subuin.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo.subuin))) {
-              break;
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = ((SubAccountInfo)localObject1);
-            AssociatedAccountActivity.b(this.a, true);
-            break;
-          }
-          this.a.a(2131694271);
-          if (QLog.isColorLevel()) {
-            QLog.d("AssociatedAccountActivity", 2, "onItemClick mNeed2ConfirmMsgNum = " + this.a.b + "  toUin=" + (String)localObject1);
-          }
-          if (this.a.b > 0)
-          {
-            this.a.jdField_a_of_type_JavaLangString = ((String)localObject1);
-            localObject2 = (MessageHandler)this.a.app.getBusinessHandler(0);
-            bcqt localbcqt = (bcqt)this.a.app.getManager(61);
-            Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-            int i = 0;
-            for (;;)
-            {
-              j = i;
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              SubAccountInfo localSubAccountInfo = (SubAccountInfo)localIterator.next();
-              if ((localSubAccountInfo != null) && (!TextUtils.isEmpty(localSubAccountInfo.subuin)) && (localbcqt.c(localSubAccountInfo.subuin) > 0))
-              {
-                i += 1;
-                ((MessageHandler)localObject2).a().a(localSubAccountInfo.subuin, "sub.account.switchAccount");
-              }
-            }
-          }
-          int j = 0;
-          if (j > 0)
-          {
-            this.a.b = j;
-            break;
-          }
-          AssociatedAccountActivity.b(this.a, false, (String)localObject1);
-          break;
+          SubMsgType0xbe.Medal localMedal = (SubMsgType0xbe.Medal)((Iterator)localObject).next();
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("id", localMedal.uint32_id.get());
+          localJSONObject.put("level", localMedal.uint32_level.get());
+          localJSONObject.put("type", localMedal.uint32_type.get());
+          localJSONObject.put("iconUrl", localMedal.str_icon_url.get());
+          localJSONObject.put("flashUrl", localMedal.str_flash_url.get());
+          localJSONObject.put("name", localMedal.str_name.get());
+          localJSONArray.put(localJSONObject);
         }
+        paramArrayOfByte.put("medalList", localJSONArray);
       }
     }
+    catch (JSONException paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+      return;
+    }
+    paramQQAppInterface.getGAudioHandler().a(paramArrayOfByte.toString());
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210.vProtobuf);
+    return null;
   }
 }
 

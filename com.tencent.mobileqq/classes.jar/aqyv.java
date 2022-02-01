@@ -1,66 +1,69 @@
-import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqyv
+  extends aqyt
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c = -1;
-  public int d = -1;
-  public int e = -1;
-  
-  public aqyv(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
+  public aqyn a(String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.e = paramInt5;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static aqyv a(Bundle paramBundle)
-  {
-    int j = 0;
-    int n = -1;
-    String str = "";
-    int i;
-    int k;
-    int m;
-    if (paramBundle != null)
+    QLog.d("ArkAIKeyWordConfigProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
+    for (;;)
     {
-      i = paramBundle.getInt("result", -1);
-      j = paramBundle.getInt("realSaveNum", 0);
-      k = paramBundle.getInt("payChannel", -1);
-      m = paramBundle.getInt("payState", -1);
-      n = paramBundle.getInt("provideState", -1);
-    }
-    for (paramBundle = paramBundle.getString("message");; paramBundle = str)
-    {
-      return new aqyv(i, j, k, m, n, paramBundle);
-      m = -1;
-      k = -1;
-      i = -1;
+      try
+      {
+        aqzg localaqzg = (aqzg)aqxo.a(paramString, aqzg.class);
+        aqzq localaqzq;
+        QLog.i("ArkAIKeyWordConfigProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException1);
+      }
+      catch (QStorageInstantiateException localQStorageInstantiateException1)
+      {
+        try
+        {
+          localaqzq = (aqzq)aqxo.a(paramString, aqzq.class);
+          return new aqyp(paramString, localaqzg, localaqzq);
+        }
+        catch (QStorageInstantiateException localQStorageInstantiateException2)
+        {
+          Object localObject;
+          break label71;
+        }
+        localQStorageInstantiateException1 = localQStorageInstantiateException1;
+        localaqzg = null;
+      }
+      label71:
+      localObject = null;
     }
   }
   
-  public Bundle a()
+  public void a(aqyn paramaqyn)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result", this.jdField_a_of_type_Int);
-    localBundle.putInt("realSaveNum", this.b);
-    localBundle.putInt("payChannel", this.c);
-    localBundle.putInt("payState", this.d);
-    localBundle.putInt("provideState", this.e);
-    localBundle.putString("message", this.jdField_a_of_type_JavaLangString);
-    return localBundle;
+    super.a(paramaqyn);
+    if (paramaqyn == null) {
+      QLog.i("ArkAIKeyWordConfigProcessor", 1, "newConf is null");
+    }
+    apwl localapwl;
+    do
+    {
+      return;
+      QLog.d("ArkAIKeyWordConfigProcessor", 1, "[onUpdate] type=" + type() + ", content = " + paramaqyn.a());
+      localapwl = ((ArkAppCenter)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER)).a();
+      paramaqyn = paramaqyn.a();
+    } while (paramaqyn == null);
+    localapwl.a(paramaqyn.a());
+  }
+  
+  public int type()
+  {
+    return 186;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyv
  * JD-Core Version:    0.7.0.1
  */

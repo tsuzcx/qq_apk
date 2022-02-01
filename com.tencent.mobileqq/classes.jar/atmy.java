@@ -1,13 +1,6 @@
-class atmy
-  implements bfzf
+public abstract interface atmy
 {
-  atmy(atmx paramatmx) {}
-  
-  public void onShowed(int paramInt, boolean paramBoolean)
-  {
-    atmx.a(this.a, bfzd.a(paramInt));
-    atmx.a(this.a).height = atmx.a(this.a);
-  }
+  public abstract void a(boolean paramBoolean, atmw paramatmw);
 }
 
 

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acvv;
-import amtj;
+import admh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -9,8 +8,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
-import awhn;
-import bcef;
+import anvx;
+import axnp;
+import bdla;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -41,7 +41,7 @@ public class CameraEmoticonInfo
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = ((int)(100.0F * paramFloat));
       localURLDrawableOptions.mRequestWidth = ((int)(100.0F * paramFloat));
-      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130843781);
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130843819);
       localURLDrawableOptions.mLoadingDrawable = this.mEmptyDrawable;
       localURLDrawableOptions.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
@@ -65,7 +65,7 @@ public class CameraEmoticonInfo
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = paramInt1;
       localURLDrawableOptions.mRequestWidth = paramInt2;
-      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130843781);
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130843819);
       localURLDrawableOptions.mLoadingDrawable = this.mEmptyDrawable;
       localURLDrawableOptions.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
@@ -298,10 +298,10 @@ public class CameraEmoticonInfo
         return;
       } while ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null));
       lastTime = l;
-      if (((paramContext instanceof BaseActivity)) && (awhn.a(paramSessionInfo.curType, paramSessionInfo.curFriendUin)))
+      if (((paramContext instanceof BaseActivity)) && (axnp.a(paramSessionInfo.curType, paramSessionInfo.curFriendUin)))
       {
         paramContext = (BaseActivity)paramContext;
-        QQToast.a(paramQQAppInterface.getApp(), amtj.a(2131700455), 0).b(paramContext.getTitleBarHeight());
+        QQToast.a(paramQQAppInterface.getApp(), anvx.a(2131700806), 0).b(paramContext.getTitleBarHeight());
         return;
       }
       paramEditText = null;
@@ -310,9 +310,9 @@ public class CameraEmoticonInfo
         paramEditText = new Bundle();
         paramEditText.putString("widgetinfo", this.templateId);
       }
-      acvv.a(paramQQAppInterface, paramContext, paramSessionInfo, this.path, true, this.contextKey, paramEditText);
+      admh.a(paramQQAppInterface, paramContext, paramSessionInfo, this.path, true, this.contextKey, paramEditText);
     } while (TextUtils.isEmpty(this.eId));
-    bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800A371", "0X800A371", 0, 0, "", "", this.eId, "");
+    bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800A371", "0X800A371", 0, 0, "", "", this.eId, "");
   }
   
   public void setIsChecked(boolean paramBoolean)
@@ -327,7 +327,7 @@ public class CameraEmoticonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CameraEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,57 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
-import com.tencent.open.agent.CreateVirtualAccountFragment.6.1;
-import com.tencent.open.agent.CreateVirtualAccountFragment.6.2;
-import com.tencent.open.model.CreateVirtualResult;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class bhrp
-  extends bhvf
+  extends bhro
 {
-  public bhrp(CreateVirtualAccountFragment paramCreateVirtualAccountFragment) {}
-  
-  public void a(boolean paramBoolean, CreateVirtualResult paramCreateVirtualResult, int paramInt)
+  private void a(String paramString1, long paramLong, String paramString2)
   {
-    if (this.a.getActivity() == null)
-    {
-      QLog.e("CreateVirtualAccountFragment", 1, "onCreate activity is null");
-      return;
-    }
-    this.a.getActivity().runOnUiThread(new CreateVirtualAccountFragment.6.2(this, paramBoolean, paramCreateVirtualResult, paramInt));
+    QLog.e("EmptyCallback", 1, "call empty method:" + paramString1 + " with " + paramLong + "_" + paramString2, new Exception());
   }
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  public boolean canUpdate(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2)
   {
-    if (this.a.getActivity() == null)
-    {
-      QLog.e("CreateVirtualAccountFragment", 1, "onUploadAvatar activity is null");
-      return;
-    }
-    this.a.getActivity().runOnUiThread(new CreateVirtualAccountFragment.6.1(this, paramBoolean, paramString1, paramString2, paramInt));
+    a("canUpdate", paramLong, paramString1);
+    return false;
+  }
+  
+  public boolean deleteFiles(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    a("deleteFiles", paramLong, paramString);
+    return true;
+  }
+  
+  protected void doOnCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  {
+    a("_onCompleted", paramLong, paramString1);
+  }
+  
+  protected void doOnProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  {
+    a("_onProgress", paramLong1, paramString1);
+  }
+  
+  public void download(QQAppInterface paramQQAppInterface, long paramLong, String paramString, bhog parambhog, boolean paramBoolean)
+  {
+    a("download", paramLong, paramString);
+  }
+  
+  public long getBID()
+  {
+    return 0L;
+  }
+  
+  public VasQuickUpdateEngine.TagItemInfo getItemInfo(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    a("getItemInfo", paramLong, paramString);
+    return null;
+  }
+  
+  public boolean isFileExists(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    a("isFileExists", paramLong, paramString);
+    return true;
   }
 }
 

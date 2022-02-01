@@ -1,5 +1,6 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
+import com.tencent.youtu.sdkkitframework.common.YtLogger;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
 import java.util.HashMap;
 
@@ -10,6 +11,7 @@ class NetLivenessReqResultState$8
   
   public void onNetworkResponseEvent(HashMap<String, String> paramHashMap, Exception paramException)
   {
+    YtLogger.i(NetLivenessReqResultState.access$000(), "handle actreflect response");
     NetLivenessReqResultState.access$100(this.this$0, paramHashMap, paramException);
     NetLivenessReqResultState.access$200(this.this$0);
   }

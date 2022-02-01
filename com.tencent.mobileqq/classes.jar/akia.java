@@ -1,20 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
+import com.tencent.mobileqq.widget.IndexView;
 
-class akia
-  implements View.OnClickListener
+public class akia
+  implements DialogInterface.OnDismissListener
 {
-  akia(akho paramakho) {}
+  public akia(CountryActivity paramCountryActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    akho.a(this.a).app.getQQProxyForQlink().a("0X800474F", 1);
-    bkmt.a(akho.a(this.a), 4, null);
-    bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 3, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
 }
 

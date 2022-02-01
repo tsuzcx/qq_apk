@@ -1,25 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.soload.SoLoadInfo;
 
 class bdfp
-  implements Animation.AnimationListener
+  implements bdgb
 {
   bdfp(bdfo parambdfo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(@NonNull SoLoadInfo paramSoLoadInfo)
   {
-    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(500);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setAnimationListener(new bdfq(this));
-    this.a.d.startAnimation(paramAnimation);
+    int i = bdfo.a(this.a, paramSoLoadInfo);
+    bdfo.a(this.a, i);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class adqn
-  extends axkv
+  extends aocc
 {
-  public adqn(LoginInfoActivity paramLoginInfoActivity) {}
+  public adqn(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void checkSecureResponse(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
+  public void a(Object paramObject)
   {
-    LoginInfoActivity.a(this.a, paramSecureCheckResponse);
-  }
-  
-  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
-  {
-    QQToast.a(this.a, paramString2, 0).a();
-    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+    if (paramObject != null) {
+      ((Integer)paramObject).intValue();
+    }
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.content.Context;
 import android.os.Environment;
-import aszq;
-import aszt;
-import ataj;
-import bftf;
-import bfvi;
+import audx;
+import auea;
+import aueq;
+import bhbx;
+import bhea;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -260,7 +260,7 @@ public class FileUtil
       if (bool3)
       {
         bool2 = bool3;
-        aszt.d(paramString);
+        auea.d(paramString);
         bool1 = bool3;
       }
     }
@@ -295,17 +295,17 @@ public class FileUtil
   
   public static boolean fileExistsAndNotEmpty(String paramString)
   {
-    return ataj.a(paramString);
+    return aueq.a(paramString);
   }
   
   public static String filesizeToString(long paramLong)
   {
-    return bfvi.a(paramLong);
+    return bhea.a(paramLong);
   }
   
   public static String filesizeToString(long paramLong, int paramInt)
   {
-    return bfvi.a(paramLong, paramInt);
+    return bhea.a(paramLong, paramInt);
   }
   
   /* Error */
@@ -444,7 +444,7 @@ public class FileUtil
         catch (Exception paramString) {}
       }
     } while (!QLog.isColorLevel());
-    QLog.e("FileUtils", 2, aszt.a());
+    QLog.e("FileUtils", 2, auea.a());
     return 0L;
   }
   
@@ -484,7 +484,7 @@ public class FileUtil
       for (;;)
       {
         return localArrayList;
-        Collections.sort(localArrayList, new aszq());
+        Collections.sort(localArrayList, new audx());
       }
       return null;
     }
@@ -501,7 +501,7 @@ public class FileUtil
   
   public static String getThumbnailPath(Context paramContext)
   {
-    paramContext = new File(bftf.a(paramContext) + "thumbnails/");
+    paramContext = new File(bhbx.a(paramContext) + "thumbnails/");
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
@@ -510,7 +510,7 @@ public class FileUtil
   
   public static boolean isFileExists(String paramString)
   {
-    return ataj.b(paramString);
+    return aueq.b(paramString);
   }
   
   public static boolean moveFile(File paramFile1, File paramFile2)
@@ -594,7 +594,7 @@ public class FileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import bjhh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class MiniAppSecurityUtil
 {
@@ -22,6 +21,7 @@ public class MiniAppSecurityUtil
   public static final String TAG = "MiniAppSecurityUtil";
   private static final String kLoginMiniAppForbidToken = "kLoginMiniAppForbidToken";
   private static final String kLoginMiniAppUin = "kLoginMiniAppUin";
+  public static final String kMiniAppSecurityUtilSP = "MiniAppSecurityUtil_Shared_Prefs";
   private static final List<String> sMiniAppLoginSecurityList = Arrays.asList(new String[] { "1109048181", "1109907872", "1109664704", "1108149324" });
   
   public static boolean checkMiniAppForLogin(String paramString)
@@ -65,6 +65,9 @@ public class MiniAppSecurityUtil
     try
     {
       String str = getLoginMiniAppUin(BaseApplicationImpl.sApplication);
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniAppSecurityUtil", 2, "doClearAfterLoginSuccess uin: " + bjhh.a(str));
+      }
       if (!TextUtils.isEmpty(str))
       {
         if (paramBoolean) {
@@ -130,22 +133,15 @@ public class MiniAppSecurityUtil
   {
     try
     {
-      if (BaseApplicationImpl.getApplication().getRuntime().isLogin())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniAppSecurityUtil", 2, "getLoginMiniAppForbidToken: isLogin return empty");
-        }
+      paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4).getString(paramString + "_" + "kLoginMiniAppForbidToken", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniAppSecurityUtil", 2, "getLoginMiniAppForbidToken uin: " + bjhh.a(paramString));
       }
-      else
-      {
-        paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString(paramString + "_" + "kLoginMiniAppForbidToken", "");
-        return paramContext;
-      }
+      return paramContext;
     }
     catch (Exception paramContext)
     {
       QLog.e("MiniAppSecurityUtil", 1, "getLoginMiniAppForbidToken error: " + paramContext.getMessage());
-      return "";
     }
     return "";
   }
@@ -154,7 +150,7 @@ public class MiniAppSecurityUtil
   {
     try
     {
-      paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString("kLoginMiniAppUin", "");
+      paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4).getString("kLoginMiniAppUin", "");
       return paramContext;
     }
     catch (Exception paramContext)
@@ -194,7 +190,7 @@ public class MiniAppSecurityUtil
   {
     try
     {
-      paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+      paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4).edit();
       paramContext.remove(paramString + "_" + "kLoginMiniAppForbidToken");
       paramContext.commit();
       return;
@@ -209,7 +205,7 @@ public class MiniAppSecurityUtil
   {
     try
     {
-      paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+      paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4).edit();
       paramContext.remove("kLoginMiniAppUin");
       paramContext.commit();
       return;
@@ -224,7 +220,7 @@ public class MiniAppSecurityUtil
   {
     try
     {
-      paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+      paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4).edit();
       paramContext.putString(paramString1 + "_" + "kLoginMiniAppForbidToken", paramString2);
       paramContext.commit();
       return;
@@ -239,7 +235,10 @@ public class MiniAppSecurityUtil
   {
     try
     {
-      paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniAppSecurityUtil", 2, "updateLoginMiniAppUin uin: " + bjhh.a(paramString));
+      }
+      paramContext = paramContext.getSharedPreferences("MiniAppSecurityUtil_Shared_Prefs", 4).edit();
       paramContext.putString("kLoginMiniAppUin", paramString);
       paramContext.commit();
       return;

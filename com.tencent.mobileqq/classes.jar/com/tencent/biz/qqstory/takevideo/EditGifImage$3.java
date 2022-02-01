@@ -2,8 +2,8 @@ package com.tencent.biz.qqstory.takevideo;
 
 import com.tencent.image.URLImageView;
 import cooperation.qzone.widget.FastAnimationDrawable;
-import xxq;
-import xzd;
+import ymj;
+import ynw;
 
 class EditGifImage$3
   implements Runnable
@@ -18,7 +18,7 @@ class EditGifImage$3
     this.this$0.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.this$0.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
     this.this$0.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
     this.this$0.d = false;
-    this.this$0.jdField_a_of_type_Xzd.a.a(true, false);
+    this.this$0.jdField_a_of_type_Ynw.a.a(true, false);
     this.this$0.b = localFastAnimationDrawable;
   }
 }

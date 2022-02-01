@@ -1,21 +1,29 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.9.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.os.Bundle;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public class aiyg
-  extends zrv
+class aiyg
+  implements AbsListView.OnScrollListener
 {
-  public aiyg(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  aiyg(aiya paramaiya) {}
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
-    while (!paramBoolean) {
+    aiya.a(this.a, paramInt1 + paramInt2 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0) {
       return;
     }
-    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.9.1(this, paramLong1, paramLong2));
+    if (aiya.b(this.a) >= this.a.getCount() - 2)
+    {
+      paramAbsListView = new Bundle();
+      paramAbsListView.putString("from", "4");
+      aiya.a(this.a).b(4, aiya.a(this.a), paramAbsListView);
+    }
+    this.a.d();
   }
 }
 

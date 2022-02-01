@@ -1,41 +1,46 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.util.Pair;
+import mqq.util.WeakReference;
 
-public class bmed
+class bmed
+  extends OnPluginInstallListener.Stub
 {
-  private List<bmee> a = Collections.synchronizedList(new ArrayList());
+  private int jdField_a_of_type_Int;
   
-  void a(long paramLong)
+  bmed(bmec parambmec) {}
+  
+  public void onInstallBegin(String paramString)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bmee)localIterator.next()).a(paramLong);
+    bmgm.d("QRPluginManager", "launchPlugin onInstallBegin: pluginId = " + paramString);
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int == 0) || (paramInt1 - this.jdField_a_of_type_Int > paramInt2 / 101))
+    {
+      bmgm.e("QRPluginManager", "launchPlugin onInstallDownloadProgress: pluginId = " + paramString + ", offset = " + paramInt1 + ", total = " + paramInt2);
+      this.jdField_a_of_type_Int = paramInt1;
     }
   }
   
-  void a(long paramLong, int paramInt)
+  public void onInstallError(String paramString, int paramInt)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bmee)localIterator.next()).a(paramLong, paramInt);
-    }
+    bmgm.a("QRPluginManager", "launchPlugin onInstallError, pluginId = " + paramString + ", errorCode = " + paramInt);
+    bmec.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramInt);
   }
   
-  public void a(bmee parambmee)
+  public void onInstallFinish(String paramString)
   {
-    if (parambmee == null)
+    bmgm.c("QRPluginManager", "launchPlugin onInstallFinish, pluginId = " + paramString);
+    bmec.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 0);
+    if ((bmec.a(this.jdField_a_of_type_Bmec) != null) && (((WeakReference)bmec.a(this.jdField_a_of_type_Bmec).first).get() != null))
     {
-      bmbx.c("LyricScrollHelper", "registerListener() lyricScrollListener == null.");
-      return;
+      bmec.a(this.jdField_a_of_type_Bmec, (Context)((WeakReference)bmec.a(this.jdField_a_of_type_Bmec).first).get(), ((Integer)bmec.a(this.jdField_a_of_type_Bmec).second).intValue());
+      bmec.a(this.jdField_a_of_type_Bmec, null);
     }
-    if (this.a == null)
-    {
-      bmbx.c("LyricScrollHelper", "registerListener() mScrollListener == null.");
-      return;
-    }
-    this.a.add(parambmee);
   }
 }
 

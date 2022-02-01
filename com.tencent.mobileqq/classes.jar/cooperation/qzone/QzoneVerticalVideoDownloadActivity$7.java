@@ -8,11 +8,13 @@ import java.util.HashMap;
 final class QzoneVerticalVideoDownloadActivity$7
   implements Runnable
 {
-  QzoneVerticalVideoDownloadActivity$7(QQAppInterface paramQQAppInterface, String paramString, HashMap paramHashMap) {}
+  QzoneVerticalVideoDownloadActivity$7(String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, int paramInt) {}
   
   public void run()
   {
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(this.val$app.getCurrentUin(), this.val$eventId, true, 0L, 0L, this.val$keyvalues, null);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(this.val$subKey, this.val$value);
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(this.val$app.getCurrentUin(), this.val$eventKey, true, this.val$time, 0L, localHashMap, null);
   }
 }
 

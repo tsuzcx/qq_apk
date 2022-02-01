@@ -1,19 +1,19 @@
+import android.os.Handler;
+import com.tencent.avgame.gameroom.video.AVGameNetWorkQualityManager;
 import com.tencent.qphone.base.util.QLog;
 
-class nmm
-  extends amwl
+public class nmm
+  extends ndp
 {
-  nmm(nmj paramnmj) {}
+  public nmm(AVGameNetWorkQualityManager paramAVGameNetWorkQualityManager) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (105 == paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "mGetRedPointPushObserver");
-      }
-      this.a.notifyUI(105, true, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AVGameNetWorkQualityManager", 2, "onNetTypeChange, [" + paramInt1 + "-->" + paramInt2 + "]");
     }
+    AVGameNetWorkQualityManager.b(this.a).removeCallbacks(AVGameNetWorkQualityManager.a(this.a));
+    AVGameNetWorkQualityManager.b(this.a).post(AVGameNetWorkQualityManager.a(this.a));
   }
 }
 

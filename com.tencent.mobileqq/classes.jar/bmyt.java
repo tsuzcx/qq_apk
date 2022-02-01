@@ -1,40 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bmyt
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+class bmyt
+  implements View.OnClickListener
 {
-  final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  final View jdField_a_of_type_AndroidViewView;
+  bmyt(bmyq parambmyq) {}
   
-  bmyt(View paramView, View.OnClickListener paramOnClickListener)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_AndroidViewView);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setScaleX(f);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(f);
+    this.a.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

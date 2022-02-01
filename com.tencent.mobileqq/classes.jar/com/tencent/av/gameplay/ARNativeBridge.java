@@ -2,7 +2,7 @@ package com.tencent.av.gameplay;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import lba;
+import lbd;
 
 public class ARNativeBridge
 {
@@ -15,7 +15,7 @@ public class ARNativeBridge
     }
     catch (UnsatisfiedLinkError paramString1)
     {
-      lba.h("ARZimuTask_ARNativeBridge", "nativeCreateEngineBusiness has exception: " + paramString1);
+      lbd.h("ARZimuTask_ARNativeBridge", "nativeCreateEngineBusiness has exception: " + paramString1);
       paramString1.printStackTrace();
     }
   }

@@ -1,33 +1,12 @@
-import android.graphics.Color;
-import android.util.SparseArray;
-
-public class bggn
+class bggn
+  implements bgtl
 {
-  public byte a;
-  public int a;
-  public long a;
-  public SparseArray<bggn> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public long c;
+  bggn(bggl parambggl, boolean paramBoolean) {}
   
-  public static bggn a()
+  public void a()
   {
-    return new bggn();
-  }
-  
-  public static bggn a(int paramInt, byte paramByte)
-  {
-    bggn localbggn = new bggn();
-    localbggn.jdField_b_of_type_Int = paramInt;
-    localbggn.jdField_a_of_type_Byte = paramByte;
-    return localbggn;
-  }
-  
-  public int a()
-  {
-    return Color.rgb((int)this.jdField_a_of_type_Long, (int)this.jdField_b_of_type_Long, (int)this.c);
+    this.jdField_a_of_type_Bggl.a = 1;
+    this.jdField_a_of_type_Bggl.a(this.jdField_a_of_type_Boolean);
   }
 }
 

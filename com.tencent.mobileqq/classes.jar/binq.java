@@ -1,23 +1,40 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
 
-class binq
-  extends BroadcastReceiver
+public class binq
+  implements View.OnTouchListener
 {
-  binq(binp parambinp) {}
+  public binq(CustomedTabWidget paramCustomedTabWidget) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.qidian.openactionsheet")) && (this.a.mRuntime.a() != null))
+    if (paramMotionEvent.getAction() == 0)
     {
-      paramContext = (bjnw)bjon.a((Activity)paramContext, null);
-      paramContext.b(2131697698);
-      paramContext.c(2131690620);
-      paramContext.a(new binr(this, paramIntent, paramContext));
-      paramContext.show();
+      i = 0;
+      if (i < this.a.getChildCount())
+      {
+        if (this.a.getChildAt(i) != paramView) {
+          break label57;
+        }
+        this.a.jdField_a_of_type_Int = i;
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.invalidate();
+      }
     }
+    label57:
+    while (paramMotionEvent.getAction() != 1) {
+      for (;;)
+      {
+        int i;
+        return false;
+        i += 1;
+      }
+    }
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.invalidate();
+    return false;
   }
 }
 

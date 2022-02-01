@@ -1,247 +1,126 @@
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.appstore.report.AppCenterReporter.1;
-import com.tencent.open.appstore.report.AppCenterReporter.2;
-import com.tencent.open.appstore.report.AppCenterReporter.3;
-import com.tencent.open.appstore.report.AppCenterReporter.4;
-import com.tencent.open.appstore.report.AppCenterReporter.5;
-import com.tencent.open.appstore.report.AppCenterReporter.6;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.replacemonitor.MonitorStep;
-import com.tencent.replacemonitor.MonitorTask;
-import com.tencent.replacemonitor.replace.ReplaceMonitor;
-import com.tencent.tmassistant.st.SDKReportManager2;
-import com.tencent.tmassistantbase.util.GlobalUtil;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import cooperation.qzone.PlatformInfor;
+import cooperation.qzone.QUA;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+import java.util.TimeZone;
+import mqq.app.AppRuntime;
+import org.jetbrains.annotations.NotNull;
 
 public class bhzd
 {
-  private static MonitorTask a(DownloadInfo paramDownloadInfo)
+  private static long a;
+  
+  @NotNull
+  public static MessageMicro a(byte[] paramArrayOfByte)
   {
-    MonitorTask localMonitorTask = new MonitorTask();
-    localMonitorTask.appName = paramDownloadInfo.f;
-    localMonitorTask.packageName = paramDownloadInfo.e;
-    localMonitorTask.versionCode = paramDownloadInfo.jdField_b_of_type_Int;
-    localMonitorTask.fileMd5 = paramDownloadInfo.p;
+    paramArrayOfByte = ByteStringMicro.copyFrom(paramArrayOfByte);
+    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+    PBUInt64Field localPBUInt64Field = localStQWebReq.Seq;
+    long l = a + 1L;
+    a = l;
+    localPBUInt64Field.set(l);
+    localStQWebReq.qua.set(QUA.getQUA3());
+    localStQWebReq.deviceInfo.set(a());
+    localStQWebReq.busiBuff.set(paramArrayOfByte);
+    localStQWebReq.traceid.set(b());
+    return localStQWebReq;
+  }
+  
+  public static String a()
+  {
+    Object localObject2 = PlatformInfor.g().getDeviceInfor();
+    Object localObject1 = localObject2;
+    if (localObject2 != null)
+    {
+      localObject1 = localObject2;
+      if (((String)localObject2).length() > 0)
+      {
+        localObject1 = new StringBuilder((String)localObject2);
+        ((StringBuilder)localObject1).append('&');
+        ((StringBuilder)localObject1).append("timezone=").append(TimeZone.getDefault().getID());
+        localObject2 = LbsManagerService.getCachedLbsInfo("qqcircle");
+        if ((localObject2 != null) && (((SosoInterface.SosoLbsInfo)localObject2).mLocation != null))
+        {
+          ((StringBuilder)localObject1).append('&');
+          ((StringBuilder)localObject1).append("latitude=").append(String.valueOf(((SosoInterface.SosoLbsInfo)localObject2).mLocation.mLat02));
+          ((StringBuilder)localObject1).append('&');
+          ((StringBuilder)localObject1).append("longitude=").append(String.valueOf(((SosoInterface.SosoLbsInfo)localObject2).mLocation.mLon02));
+        }
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+    }
+    return localObject1;
+  }
+  
+  public static void a(String paramString, MessageMicro paramMessageMicro, Class paramClass, BusinessObserver paramBusinessObserver)
+  {
+    ((VasExtensionHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(paramString, paramMessageMicro, paramClass, paramBusinessObserver);
+  }
+  
+  public static void a(String paramString1, String paramString2, BusinessObserver paramBusinessObserver)
+  {
+    ((VasExtensionHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(paramString1, paramString2, paramBusinessObserver);
+  }
+  
+  public static void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
+  {
+    ((VasExtensionHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(paramString, paramArrayOfByte, paramBusinessObserver);
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
     try
     {
-      localMonitorTask.yybApkId = Long.parseLong(paramDownloadInfo.k);
-      localMonitorTask.yybAppId = Long.parseLong(paramDownloadInfo.c);
-      label62:
-      localMonitorTask.downloadUrl = paramDownloadInfo.d;
-      localMonitorTask.additionalId = paramDownloadInfo.jdField_b_of_type_JavaLangString;
-      localMonitorTask.filePath = paramDownloadInfo.l;
-      localMonitorTask.traceId = paramDownloadInfo.x;
-      localMonitorTask.externalParams = new HashMap();
-      localMonitorTask.externalParams.put("via", paramDownloadInfo.h);
-      return localMonitorTask;
+      paramArrayOfByte = a(paramArrayOfByte);
+      ((Long)paramArrayOfByte[0]).longValue();
+      String str = (String)paramArrayOfByte[1];
+      paramArrayOfByte = ((ByteStringMicro)paramArrayOfByte[2]).toByteArray();
+      return paramArrayOfByte;
     }
-    catch (Throwable localThrowable)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      break label62;
+      paramArrayOfByte.printStackTrace();
     }
+    return null;
   }
   
-  private static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static Object[] a(byte[] paramArrayOfByte)
   {
-    return bhzg.a().i(paramString5).k(paramString1).j(paramString2).l(paramString3).m(paramString4).b();
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    localStQWebRsp.mergeFrom(paramArrayOfByte);
+    return new Object[] { Long.valueOf(localStQWebRsp.retCode.get()), localStQWebRsp.errMsg.get().toStringUtf8(), localStQWebRsp.busiBuff.get() };
   }
   
-  public static void a(int paramInt, String paramString)
+  public static String b()
   {
-    bhzm.b("AppCenterReporter", "[report] type=" + paramInt + "\ndata=" + paramString);
-    SDKReportManager2.getInstance().postReport(paramInt, paramString);
-  }
-  
-  public static void a(bhzg parambhzg)
-  {
-    parambhzg = parambhzg.a();
-    bhzm.b("AppCenterReporter", "[reportExposure] type=3002\ndata=" + parambhzg);
-    SDKReportManager2.getInstance().postReport(3002, parambhzg);
-  }
-  
-  public static void a(DownloadInfo paramDownloadInfo)
-  {
-    ThreadManager.excute(new AppCenterReporter.1(paramDownloadInfo), 16, null, true);
-  }
-  
-  public static void a(DownloadInfo paramDownloadInfo, int paramInt)
-  {
-    ThreadManager.excute(new AppCenterReporter.5(paramDownloadInfo, paramInt), 16, null, true);
-  }
-  
-  public static void a(DownloadInfo paramDownloadInfo, int paramInt, String paramString)
-  {
-    ThreadManager.excute(new AppCenterReporter.3(paramDownloadInfo, paramInt, paramString), 16, null, true);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    paramString1 = a(paramString1, paramString2, paramString3, paramString4, paramString5);
-    bhzm.b("AppCenterReporter", "[reportNormalExposure] type=3001\ndata=" + paramString1);
-    SDKReportManager2.getInstance().postReport(3001, paramString1);
-  }
-  
-  public static void a(String paramString, boolean paramBoolean)
-  {
-    bhzm.b("AppCenterReporter", ">notifyInstallFinish " + paramString + "|" + paramBoolean);
-    ThreadManager.excute(new AppCenterReporter.6(paramString, paramBoolean), 16, null, true);
-  }
-  
-  private static long b(String paramString)
-  {
-    if (aqmy.a(paramString, bhpc.a().a())) {}
-    try
-    {
-      long l = new File(GlobalUtil.getInstance().getContext().getPackageManager().getPackageInfo(paramString, 0).applicationInfo.sourceDir).length();
-      return l;
-    }
-    catch (Throwable paramString)
-    {
-      label77:
-      break label77;
-    }
-    bhzm.b("AppCenterReporter", "[getInstalledAppFileSize]" + paramString + ": NOT INSTALLED!");
-    return 0L;
-  }
-  
-  public static void b(bhzg parambhzg)
-  {
-    parambhzg = parambhzg.a();
-    bhzm.b("AppCenterReporter", "[reportClick] type=3003\ndata=" + parambhzg);
-    SDKReportManager2.getInstance().postReport(3003, parambhzg);
-  }
-  
-  public static void b(DownloadInfo paramDownloadInfo)
-  {
-    ThreadManager.excute(new AppCenterReporter.2(paramDownloadInfo), 16, null, true);
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    paramString1 = a(paramString1, paramString2, paramString3, paramString4, paramString5) + "|" + bhzg.a().d() + "|" + "200";
-    bhzm.b("AppCenterReporter", "[reportClick] type=3003\ndata=" + paramString1);
-    SDKReportManager2.getInstance().postReport(3003, paramString1);
-  }
-  
-  private static String c(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo == null) {
-      return "";
-    }
-    return bhzg.a().i(paramDownloadInfo.o).k(paramDownloadInfo.t).j(paramDownloadInfo.u).l(paramDownloadInfo.v).m(paramDownloadInfo.h).b();
-  }
-  
-  public static void c(DownloadInfo paramDownloadInfo)
-  {
-    g(paramDownloadInfo);
-    ThreadManager.excute(new AppCenterReporter.4(paramDownloadInfo), 16, null, true);
-  }
-  
-  private static String d(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo == null) {
-      return "";
-    }
-    return bhzg.a().a(paramDownloadInfo.f).b(paramDownloadInfo.e).a(paramDownloadInfo.jdField_b_of_type_Int).c(paramDownloadInfo.c).d(paramDownloadInfo.k).e(paramDownloadInfo.r).f(paramDownloadInfo.s).g(paramDownloadInfo.d).h(paramDownloadInfo.q).c();
-  }
-  
-  public static void d(DownloadInfo paramDownloadInfo)
-  {
-    bhzm.b("AppCenterReporter", ">tryInitMonitorTask info:" + paramDownloadInfo);
-    if (paramDownloadInfo == null) {
-      return;
-    }
-    MonitorTask localMonitorTask = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    bhzm.b("AppCenterReporter", ">tryInitMonitorTask info=" + paramDownloadInfo);
-    if (localMonitorTask == null) {}
-    for (paramDownloadInfo = a(paramDownloadInfo);; paramDownloadInfo = localMonitorTask)
-    {
-      ReplaceMonitor.get().addTask(paramDownloadInfo);
-      return;
-      if (TextUtils.isEmpty(localMonitorTask.filePath)) {
-        localMonitorTask.filePath = paramDownloadInfo.l;
-      }
-      bhzm.b("AppCenterReporter", ">tryInitMonitorTask 已有task2:" + localMonitorTask);
-    }
-  }
-  
-  public static void e(DownloadInfo paramDownloadInfo)
-  {
-    bhzm.b("AppCenterReporter", ">downloadSuccCheck info:" + paramDownloadInfo);
-    if (paramDownloadInfo == null) {
-      return;
-    }
-    MonitorTask localMonitorTask2 = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    MonitorTask localMonitorTask1;
-    if (localMonitorTask2 == null)
-    {
-      localMonitorTask1 = a(paramDownloadInfo);
-      ReplaceMonitor.get().addTask(localMonitorTask1);
-    }
-    for (;;)
-    {
-      bhzm.b("AppCenterReporter", ">downloadSuccCheck task:" + localMonitorTask1);
-      if (localMonitorTask1 == null) {
-        break;
-      }
-      ReplaceMonitor.get().execSync(localMonitorTask1, MonitorStep.DOWNLOADING);
-      return;
-      localMonitorTask1 = localMonitorTask2;
-      if (TextUtils.isEmpty(localMonitorTask2.filePath))
-      {
-        localMonitorTask2.filePath = paramDownloadInfo.l;
-        localMonitorTask1 = localMonitorTask2;
-      }
-    }
-  }
-  
-  public static void f(DownloadInfo paramDownloadInfo)
-  {
-    bhzm.b("AppCenterReporter", ">deleteCheck info:" + paramDownloadInfo);
-    if (paramDownloadInfo == null) {}
-    do
-    {
-      return;
-      paramDownloadInfo = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    } while (paramDownloadInfo == null);
-    ReplaceMonitor.get().deleteTask(paramDownloadInfo);
-  }
-  
-  public static void g(DownloadInfo paramDownloadInfo)
-  {
-    bhzm.b("AppCenterReporter", ">installStartCheck ,info:" + paramDownloadInfo);
-    if (paramDownloadInfo == null) {
-      return;
-    }
-    MonitorTask localMonitorTask2 = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    MonitorTask localMonitorTask1;
-    if (localMonitorTask2 == null)
-    {
-      localMonitorTask1 = a(paramDownloadInfo);
-      ReplaceMonitor.get().addTask(localMonitorTask1);
-    }
-    for (;;)
-    {
-      bhzm.b("AppCenterReporter", ">installStartCheck task:" + localMonitorTask1);
-      if (localMonitorTask1 == null) {
-        break;
-      }
-      ReplaceMonitor.get().execSync(localMonitorTask1, MonitorStep.BEFORE_INSTALL);
-      return;
-      localMonitorTask1 = localMonitorTask2;
-      if (TextUtils.isEmpty(localMonitorTask2.filePath))
-      {
-        localMonitorTask2.filePath = paramDownloadInfo.l;
-        localMonitorTask1 = localMonitorTask2;
-      }
-    }
+    String str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
+    Random localRandom = new Random();
+    localRandom.setSeed(System.currentTimeMillis());
+    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    return localStringBuilder.toString();
   }
 }
 

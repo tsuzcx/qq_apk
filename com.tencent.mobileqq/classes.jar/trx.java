@@ -1,10 +1,26 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelBottomBanner;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$Companion;", "", "()V", "EXPOSURE_STRICT", "", "EXPOSURE_WIDE", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class trx {}
+public class trx
+  implements tsc
+{
+  public trx(ChannelBottomBanner paramChannelBottomBanner) {}
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.e();
+      return;
+    }
+    this.a.d();
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     trx
  * JD-Core Version:    0.7.0.1
  */

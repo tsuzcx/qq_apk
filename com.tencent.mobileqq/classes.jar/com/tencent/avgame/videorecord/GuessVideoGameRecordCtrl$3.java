@@ -1,20 +1,20 @@
 package com.tencent.avgame.videorecord;
 
-import bija;
-import nkh;
+import bjuc;
+import nrh;
 
 public class GuessVideoGameRecordCtrl$3
   implements Runnable
 {
-  public GuessVideoGameRecordCtrl$3(nkh paramnkh) {}
+  public GuessVideoGameRecordCtrl$3(nrh paramnrh) {}
   
   public void run()
   {
-    bija.a(this.this$0.a, "onEncodeError man call check");
-    if (nkh.a(this.this$0))
+    bjuc.a(this.this$0.a, "onEncodeError man call check");
+    if (nrh.a(this.this$0))
     {
-      bija.a(this.this$0.a, "onEncodeError man call onEncodeFinish");
-      this.this$0.a(nkh.b(this.this$0));
+      bjuc.a(this.this$0.a, "onEncodeError man call onEncodeFinish");
+      this.this$0.a(nrh.b(this.this$0));
     }
   }
 }

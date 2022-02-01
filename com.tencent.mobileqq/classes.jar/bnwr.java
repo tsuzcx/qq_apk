@@ -1,28 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
 
 public class bnwr
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public bnwr(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public bnwr(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
+    if (AEEditorMvClipMenu.a(this.a) != null) {
+      AEEditorMvClipMenu.a(this.a).a();
     }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
-    {
-      if ((this.a.a != null) && (this.a.a.isPlaying())) {
-        this.a.h = true;
-      }
-      this.a.j();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -19,8 +19,8 @@ class PageSwitchObserver$DetectionIdleHandler
   
   private boolean isDetectable(@NonNull Activity paramActivity)
   {
-    if (!PageSwitchObserver.access$200(this.this$0)) {}
-    while ((!PageSwitchObserver.access$500(this.this$0).contains(paramActivity)) && (!ActivityCompat.isResumed(paramActivity))) {
+    if (!PageSwitchObserver.access$300(this.this$0)) {}
+    while ((!PageSwitchObserver.access$600(this.this$0).contains(paramActivity)) && (!ActivityCompat.isResumed(paramActivity))) {
       return false;
     }
     return true;
@@ -42,7 +42,7 @@ class PageSwitchObserver$DetectionIdleHandler
       if (VideoReportInner.getInstance().isDebugMode())
       {
         Log.d("PageSwitchObserver", "PendingTask.run: -------------------------------------------------------------------");
-        Log.d("PageSwitchObserver", "PendingTask.run: activity = " + localActivity + ", mIsAppForeground = " + PageSwitchObserver.access$200(this.this$0));
+        Log.d("PageSwitchObserver", "PendingTask.run: activity = " + localActivity + ", mIsAppForeground = " + PageSwitchObserver.access$300(this.this$0));
       }
       if ((localActivity != null) && (isDetectable(localActivity))) {
         break;

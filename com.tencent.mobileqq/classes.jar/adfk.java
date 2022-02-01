@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
-class adfk
-  implements DialogInterface.OnClickListener
+public class adfk
+  implements bisn
 {
-  adfk(adfj paramadfj) {}
+  public adfk(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    bgge.a(this.a.a, "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
-    paramDialogInterface.dismiss();
+    this.a.onBackPressed();
+    AddFriendLogicActivity.a(this.a).a(null);
   }
 }
 

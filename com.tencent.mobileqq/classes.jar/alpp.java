@@ -1,18 +1,26 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class alpp
+  implements bkzq
 {
-  public int a;
-  public float[] a;
-  public int[] a;
-  public float[] b;
-  public int[] b;
+  public alpp(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public alpp()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[4];
-    this.jdField_b_of_type_ArrayOfFloat = new float[4];
-    this.jdField_a_of_type_ArrayOfInt = new int[4];
-    this.jdField_b_of_type_ArrayOfInt = new int[4];
-    this.jdField_a_of_type_Int = 0;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if (this.a.a.b.get() == 4) {
+      this.a.a(false);
+    }
+    this.a.a.a("FlowCameraActivity");
+    this.a.b();
+    alpt.b("", "0X800656F", "0");
   }
 }
 

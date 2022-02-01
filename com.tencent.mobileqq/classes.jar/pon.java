@@ -1,24 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.List;
-
-public class pon
-  implements AdapterView.OnItemClickListener
+class pon
+  extends qdb
 {
-  public pon(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  pon(pob parampob, String paramString, boolean paramBoolean, int paramInt)
   {
-    if (paramInt <= 0) {}
-    do
-    {
-      return;
-      paramAdapterView = (pyf)ReadInJoySelectPositionFragment.a(this.a).get(paramInt - 1);
-    } while (paramAdapterView.a != 2);
-    this.a.a(new SelectPositionModule.PositionData(paramAdapterView.d, paramAdapterView.c, paramAdapterView.b, paramAdapterView.e));
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 

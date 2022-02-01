@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akbf
-  extends akbg
+class akbf
+  implements DialogInterface.OnClickListener
 {
-  bgod jdField_a_of_type_Bgod;
-  PreloadModule jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule;
-  PreloadResource jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource;
+  akbf(akam paramakam) {}
   
-  public akbf(PreloadResource paramPreloadResource, PreloadModule paramPreloadModule, bgod parambgod)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource = paramPreloadResource;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule = paramPreloadModule;
-    this.jdField_a_of_type_Bgod = parambgod;
-  }
-  
-  public void a(PreloadManager paramPreloadManager)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.handleFlowConfig(paramPreloadManager, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, this.jdField_a_of_type_Bgod);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,19 +1,12 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModelProvider;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
 
-class blkj
-  implements blwc
+public abstract interface blkj
 {
-  blkj(bljy parambljy) {}
-  
-  public void a(blwu paramblwu)
-  {
-    ((blzi)blks.a(this.a, bnaw.a()).get(blzi.class)).a().postValue(paramblwu);
-  }
+  public abstract void a(HttpMsg paramHttpMsg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blkj
  * JD-Core Version:    0.7.0.1
  */

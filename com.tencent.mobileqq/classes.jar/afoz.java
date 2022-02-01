@@ -1,18 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class afoz
-  implements CompoundButton.OnCheckedChangeListener
+final class afoz
+  implements afpm
 {
-  public afoz(AIOLongShotHelper paramAIOLongShotHelper) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    AIOLongShotHelper.a(this.a, paramCompoundButton, paramBoolean);
-    AIOLongShotHelper.a("0X8009DE8");
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 34);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

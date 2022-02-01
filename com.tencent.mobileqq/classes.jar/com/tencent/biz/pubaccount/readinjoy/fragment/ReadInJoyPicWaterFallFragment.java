@@ -18,7 +18,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bfpm;
+import bgyd;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
@@ -34,38 +34,39 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
-import odq;
-import ojk;
+import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import oyy;
-import oyz;
-import ozb;
-import ozd;
-import pay;
-import pgw;
-import phd;
-import pim;
-import pnm;
-import pnn;
-import pno;
-import pnp;
-import pnq;
-import pnr;
-import pns;
-import pnw;
-import pnx;
-import pod;
-import poe;
-import pog;
-import rcn;
-import rjl;
-import tdo;
-import uia;
+import orh;
+import pie;
+import pif;
+import pih;
+import pij;
+import pqb;
+import pqf;
+import pqw;
+import prg;
+import ptj;
+import pyk;
+import pyl;
+import pym;
+import pyn;
+import pyo;
+import pyp;
+import pyq;
+import pyu;
+import pyv;
+import pzb;
+import pzc;
+import pze;
+import rot;
+import rvy;
+import tqz;
+import uvx;
 
 public class ReadInJoyPicWaterFallFragment
-  extends ReadInJoyFragmentWithSubChannel<pnw>
-  implements oyz
+  extends ReadInJoyFragmentWithSubChannel<pyu>
+  implements pif
 {
   public static final int c = Color.parseColor("#999999");
   public static final int e = Color.parseColor("#262626");
@@ -73,13 +74,13 @@ public class ReadInJoyPicWaterFallFragment
   private RecyclerView.ItemAnimator jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator;
   private View jdField_a_of_type_AndroidViewView;
   public ReadInjoyXRecyclerView a;
-  public ArrayList<pnw> a;
-  public Map<Long, rcn> a;
+  public ArrayList<pyu> a;
+  public Map<Long, rot> a;
   public Set<Long> a;
-  public oyy a;
-  protected pod a;
-  public pog a;
-  private tdo jdField_a_of_type_Tdo;
+  public pie a;
+  protected pzb a;
+  public pze a;
+  private tqz jdField_a_of_type_Tqz;
   public int b;
   private boolean b;
   private int f = 41522;
@@ -92,23 +93,23 @@ public class ReadInJoyPicWaterFallFragment
   
   private void a(View paramView)
   {
-    TextView localTextView = (TextView)paramView.findViewById(2131369115);
-    Object localObject = (LinearLayout)paramView.findViewById(2131369117);
-    localObject = (ImageView)paramView.findViewById(2131369116);
-    paramView = (TextView)paramView.findViewById(2131369068);
+    TextView localTextView = (TextView)paramView.findViewById(2131369278);
+    Object localObject = (LinearLayout)paramView.findViewById(2131369280);
+    localObject = (ImageView)paramView.findViewById(2131369279);
+    paramView = (TextView)paramView.findViewById(2131369231);
     localTextView.setText(getActivity().getIntent().getStringExtra("sub_channel_name"));
-    paramView.setOnClickListener(new pnr(this));
+    paramView.setOnClickListener(new pyp(this));
     if (Build.VERSION.SDK_INT > 10) {
       paramView.setLayerType(0, null);
     }
     if (AppSetting.c) {
-      bfpm.b(paramView, Button.class.getName());
+      bgyd.b(paramView, Button.class.getName());
     }
   }
   
   public static void a(ArticleInfo paramArticleInfo, int paramInt1, int paramInt2)
   {
-    localObject1 = pay.d(paramArticleInfo);
+    localObject1 = pqw.b(paramArticleInfo);
     int i;
     if (paramArticleInfo.hasChannelInfo())
     {
@@ -120,7 +121,7 @@ public class ReadInJoyPicWaterFallFragment
     label152:
     for (int j = 0;; j = 1)
     {
-      Object localObject2 = pay.a(paramArticleInfo.mAlgorithmID, paramInt2, paramInt1, i, j, NetworkUtil.isWifiConnected(null), (String)localObject1, paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, pay.f(paramArticleInfo), paramArticleInfo);
+      Object localObject2 = pqf.a(paramArticleInfo.mAlgorithmID, paramInt2, paramInt1, i, j, NetworkUtil.isWifiConnected(null), (String)localObject1, paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, pqw.d(paramArticleInfo), paramArticleInfo);
       localObject1 = new JSONObject();
       for (;;)
       {
@@ -142,7 +143,7 @@ public class ReadInJoyPicWaterFallFragment
         {
           ((JSONObject)localObject2).put("feeds_type", paramInt2);
           localObject1 = localObject2;
-          odq.a(null, pay.d(paramArticleInfo), "0X8007625", "0X8007625", 0, 0, phd.a(paramArticleInfo.mFeedId), String.valueOf(paramArticleInfo.businessId), Integer.toString(paramArticleInfo.mStrategyId), ((JSONObject)localObject1).toString(), false);
+          olh.a(null, pqw.b(paramArticleInfo), "0X8007625", "0X8007625", 0, 0, prg.a(paramArticleInfo.mFeedId), String.valueOf(paramArticleInfo.businessId), Integer.toString(paramArticleInfo.mStrategyId), ((JSONObject)localObject1).toString(), false);
           return;
         }
         catch (JSONException localJSONException2)
@@ -177,19 +178,19 @@ public class ReadInJoyPicWaterFallFragment
     return this.f;
   }
   
-  protected View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle, ChannelClassificationListView<pnw> paramChannelClassificationListView)
+  protected View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle, ChannelClassificationListView<pyu> paramChannelClassificationListView)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131560200, null);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131378734);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131560246, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131379027);
     if (f())
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       a(paramLayoutInflater);
-      rjl.a(this);
+      rvy.a(this);
     }
-    paramBundle = (FrameLayout)paramLayoutInflater.findViewById(2131365035);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView = new pnn(this, paramViewGroup.getContext());
-    paramViewGroup = new pno(this, this.jdField_a_of_type_Int, 1);
+    paramBundle = (FrameLayout)paramLayoutInflater.findViewById(2131365119);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView = new pyl(this, paramViewGroup.getContext());
+    paramViewGroup = new pym(this, this.jdField_a_of_type_Int, 1);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView != null)
     {
       paramChannelClassificationListView = new ReadInJoyPicWaterFallFragment.ScrollableHeader(getActivity());
@@ -199,24 +200,24 @@ public class ReadInJoyPicWaterFallFragment
       localLayoutParams.gravity = 17;
       paramChannelClassificationListView.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView, localLayoutParams);
       paramChannelClassificationListView.setMinimumHeight(1);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setAdapter(new pnx(this, null));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setAdapter(new pyv(this, null));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().a(paramChannelClassificationListView);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().setLayoutManager(paramViewGroup);
-      this.jdField_a_of_type_Pog = new pog(this);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().setAdapter(this.jdField_a_of_type_Pog);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().addOnScrollListener(new pnp(this));
+      this.jdField_a_of_type_Pze = new pze(this);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().setAdapter(this.jdField_a_of_type_Pze);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().addOnScrollListener(new pyn(this));
       this.jdField_b_of_type_Int = AIOUtils.dp2px(3.0F, getResources());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().addItemDecoration(new poe(this, this.jdField_b_of_type_Int));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().addItemDecoration(new pzc(this, this.jdField_b_of_type_Int));
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().getItemAnimator();
       b();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.setBackgroundColor(Color.parseColor("#f7f7f7"));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.setRefreshCallback(this.jdField_a_of_type_Ojk);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.setRefreshCallback(this.jdField_a_of_type_Orh);
       paramViewGroup = new FrameLayout.LayoutParams(-1, -1);
       paramBundle.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView, paramViewGroup);
-      this.jdField_a_of_type_Tdo = new tdo(getActivity(), new pnq(this));
+      this.jdField_a_of_type_Tqz = new tqz(getActivity(), new pyo(this));
       return paramLayoutInflater;
       paramChannelClassificationListView = new ReadInJoyPicWaterFallFragment.ScrollableHeader(getActivity());
       paramChannelClassificationListView.setPadding(0, AIOUtils.dp2px(3.0F, getResources()), 0, AIOUtils.dp2px(3.0F, getResources()));
@@ -226,12 +227,12 @@ public class ReadInJoyPicWaterFallFragment
     }
   }
   
-  public pnm a()
+  public pyk a()
   {
-    if (this.jdField_a_of_type_Pod == null) {
-      this.jdField_a_of_type_Pod = new pns(this);
+    if (this.jdField_a_of_type_Pzb == null) {
+      this.jdField_a_of_type_Pzb = new pyq(this);
     }
-    return this.jdField_a_of_type_Pod;
+    return this.jdField_a_of_type_Pzb;
   }
   
   protected void a()
@@ -244,7 +245,7 @@ public class ReadInJoyPicWaterFallFragment
   
   public void a(View paramView, int paramInt)
   {
-    paramView = ((pnw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a;
+    paramView = ((pyu)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a;
     if (TextUtils.isEmpty(paramView.mChannelJumpUrl))
     {
       Intent localIntent = new Intent();
@@ -267,7 +268,7 @@ public class ReadInJoyPicWaterFallFragment
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        ThreadManager.post(new ReadInJoyPicWaterFallFragment.7(this, paramBaseArticleInfo, paramInt, pay.d(), System.currentTimeMillis()), 5, null, true);
+        ThreadManager.post(new ReadInJoyPicWaterFallFragment.7(this, paramBaseArticleInfo, paramInt, pqf.a(), System.currentTimeMillis()), 5, null, true);
       }
       return;
     }
@@ -276,25 +277,25 @@ public class ReadInJoyPicWaterFallFragment
   public void a(String paramString, Object paramObject)
   {
     if (paramString.equals("exp_waterfall_operation")) {
-      ozb.a((ozd)paramObject);
+      pih.a((pij)paramObject);
     }
     while (!paramString.equals("exp_subchannel")) {
       return;
     }
-    paramString = (pnw)paramObject;
-    ozb.a(getActivity(), "0X8009A70", a(), paramString.a.mChannelCoverId);
+    paramString = (pyu)paramObject;
+    pih.a(getActivity(), "0X8009A70", a(), paramString.a.mChannelCoverId);
   }
   
-  public void a(Map<Long, rcn> paramMap, boolean paramBoolean, Map<Long, uia> paramMap1, String paramString)
+  public void a(Map<Long, rot> paramMap, boolean paramBoolean, Map<Long, uvx> paramMap1, String paramString)
   {
-    new pgw().a(paramMap, paramBoolean, paramMap1, paramString, getActivity(), a());
+    new pqb().a(paramMap, paramBoolean, paramMap1, paramString, getActivity(), a());
   }
   
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
   {
     super.a(paramBoolean, paramActivity, paramBundle);
-    if (this.jdField_a_of_type_Pog != null) {
-      this.jdField_a_of_type_Pog.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Pze != null) {
+      this.jdField_a_of_type_Pze.notifyDataSetChanged();
     }
   }
   
@@ -310,13 +311,13 @@ public class ReadInJoyPicWaterFallFragment
   
   public void i()
   {
-    if (this.jdField_a_of_type_Ojk != null) {
-      this.jdField_a_of_type_Ojk.k();
+    if (this.jdField_a_of_type_Orh != null) {
+      this.jdField_a_of_type_Orh.k();
     }
-    if (this.jdField_a_of_type_Oyy != null)
+    if (this.jdField_a_of_type_Pie != null)
     {
-      this.jdField_a_of_type_Oyy.b();
-      this.jdField_a_of_type_Oyy.a();
+      this.jdField_a_of_type_Pie.b();
+      this.jdField_a_of_type_Pie.a();
     }
   }
   
@@ -329,8 +330,8 @@ public class ReadInJoyPicWaterFallFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Oyy = new oyy(this);
-    pim.a.a(getActivity());
+    this.jdField_a_of_type_Pie = new pie(this);
+    ptj.a.a(getActivity());
   }
   
   public void onDestroy()
@@ -341,11 +342,11 @@ public class ReadInJoyPicWaterFallFragment
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Pog != null) {
-      this.jdField_a_of_type_Pog.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Pze != null) {
+      this.jdField_a_of_type_Pze.notifyDataSetChanged();
     }
     if (f()) {
-      rjl.a(this);
+      rvy.a(this);
     }
   }
 }

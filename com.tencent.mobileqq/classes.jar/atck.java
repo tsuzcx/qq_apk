@@ -1,33 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
 
 public class atck
-  implements View.OnClickListener
+  implements atca
 {
-  public atck(SendBottomBar paramSendBottomBar) {}
-  
-  public void onClick(View paramView)
-  {
-    if (SendBottomBar.a(this.a).isChecked())
-    {
-      SendBottomBar.b(this.a, true);
-      aszr.a("0X800942B");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      SendBottomBar.c(this.a, false);
-      SendBottomBar.b(this.a, false);
-    }
-  }
+  public atck(QfileFavFileTabView paramQfileFavFileTabView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atck
  * JD-Core Version:    0.7.0.1
  */

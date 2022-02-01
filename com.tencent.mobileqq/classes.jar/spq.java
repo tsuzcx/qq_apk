@@ -1,33 +1,37 @@
 import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.22.1;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class spq
-  extends pkt
+class spq
+  implements Handler.Callback
 {
-  public spq(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  spq(spp paramspp) {}
   
-  public void a(int paramInt, SelectPositionModule.PositionData paramPositionData)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabFrame", 2, "onLocationChanged changeType = " + paramInt);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return true;
+          spp.a(this.a, false);
+          spp.a(this.a).removeMessages(0);
+        } while (spp.a(this.a) == null);
+        spp.a(this.a).a(true);
+        return true;
+        spp.a(this.a, false);
+        spp.a(this.a).removeMessages(1);
+      } while (spp.a(this.a) == null);
+      spp.a(this.a).a(false);
+      return true;
     }
-    ReadinjoyTabFrame.a(this.a, paramInt, paramPositionData);
-  }
-  
-  public void j()
-  {
-    super.j();
-    if (ReadinjoyTabFrame.a(this.a) != null) {
-      ReadinjoyTabFrame.a(this.a).post(new ReadinjoyTabFrame.22.1(this));
-    }
-  }
-  
-  public void k()
-  {
-    QLog.d("ReadInJoyTabFrame", 2, "onHideChannel");
+    spp.a(this.a, true);
+    return true;
   }
 }
 

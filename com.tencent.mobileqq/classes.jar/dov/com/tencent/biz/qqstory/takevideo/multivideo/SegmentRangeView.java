@@ -11,9 +11,9 @@ import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
-import bnon;
-import bnoq;
-import bnor;
+import bpef;
+import bpei;
+import bpej;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -22,15 +22,15 @@ import java.util.List;
 
 public class SegmentRangeView
   extends View
-  implements bnor
+  implements bpej
 {
   private float jdField_a_of_type_Float = 8.0F;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private bnoq jdField_a_of_type_Bnoq;
-  private WeakReference<bnon> jdField_a_of_type_JavaLangRefWeakReference;
+  private bpei jdField_a_of_type_Bpei;
+  private WeakReference<bpef> jdField_a_of_type_JavaLangRefWeakReference;
   private List<Bitmap> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 20.0F;
@@ -204,9 +204,9 @@ public class SegmentRangeView
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bnon localbnon = (bnon)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbnon != null) {
-        localbnon.a(paramList);
+      bpef localbpef = (bpef)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbpef != null) {
+        localbpef.a(paramList);
       }
     }
   }
@@ -274,10 +274,10 @@ public class SegmentRangeView
           this.jdField_c_of_type_Int += 1;
         }
       } while (this.jdField_c_of_type_Int == 0);
-      if (this.jdField_a_of_type_Bnoq != null)
+      if (this.jdField_a_of_type_Bpei != null)
       {
-        this.jdField_a_of_type_Bnoq.b();
-        this.jdField_a_of_type_Bnoq.a(this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Bpei.b();
+        this.jdField_a_of_type_Bpei.a(this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
     }
     List localList = this.jdField_b_of_type_JavaUtilList;
@@ -327,7 +327,7 @@ public class SegmentRangeView
     }
     label455:
     label457:
-    for (paramMotionEvent = (bnon)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
+    for (paramMotionEvent = (bpef)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
     {
       if (paramMotionEvent != null)
       {
@@ -355,7 +355,7 @@ public class SegmentRangeView
             this.g = (this.f + getWidth() * 0.1F);
           }
           if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-          for (paramMotionEvent = (bnon)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
+          for (paramMotionEvent = (bpef)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
           {
             if (paramMotionEvent == null) {
               break label455;

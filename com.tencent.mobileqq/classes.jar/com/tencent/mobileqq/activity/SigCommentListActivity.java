@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aegg;
-import aegh;
-import aegi;
-import allq;
-import amtj;
-import anbd;
+import aexo;
+import aexp;
+import aexq;
+import amjr;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -21,7 +19,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bjmp;
+import anvx;
+import aods;
+import bkyc;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SignatureHandler;
@@ -39,13 +40,13 @@ public class SigCommentListActivity
   extends IphoneTitleBarActivity
   implements Handler.Callback
 {
-  public allq a;
-  anbd jdField_a_of_type_Anbd = new aegg(this);
+  public amjr a;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bjmp jdField_a_of_type_Bjmp;
+  aods jdField_a_of_type_Aods = new aexo(this);
+  private bkyc jdField_a_of_type_Bkyc;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   
   private void a(int paramInt)
@@ -53,8 +54,8 @@ public class SigCommentListActivity
     if (paramInt == 1) {
       try
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131167098)));
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131713207));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131167112)));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131713554));
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, true);
         return;
@@ -71,12 +72,12 @@ public class SigCommentListActivity
     }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131167098)));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131167112)));
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850365);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850471);
       if (paramInt == 3)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131713208));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131713555));
         return;
       }
     }
@@ -88,13 +89,13 @@ public class SigCommentListActivity
           QLog.d("SigCommentListActivity", 2, localException2.toString());
         }
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131713204));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131713551));
     }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131166517)));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aegh(this));
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aegi(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131166531)));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aexp(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aexq(this));
       return;
     }
     catch (Exception localException3)
@@ -154,7 +155,7 @@ public class SigCommentListActivity
     Object localObject;
     if (NetworkUtil.isNetSupport(this))
     {
-      localObject = (SignatureHandler)this.app.getBusinessHandler(41);
+      localObject = (SignatureHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SIGNATURE_HANDLER);
       if (localObject != null) {
         ((SignatureHandler)localObject).a(paramBoolean2);
       }
@@ -165,9 +166,9 @@ public class SigCommentListActivity
         startTitleProgress();
       }
       return;
-      localObject = this.jdField_a_of_type_Bjmp.obtainMessage(1, 1, 0);
-      this.jdField_a_of_type_Bjmp.sendMessageDelayed((Message)localObject, 1000L);
-      this.jdField_a_of_type_Allq.a(2131718513);
+      localObject = this.jdField_a_of_type_Bkyc.obtainMessage(1, 1, 0);
+      this.jdField_a_of_type_Bkyc.sendMessageDelayed((Message)localObject, 1000L);
+      this.jdField_a_of_type_Amjr.a(2131718899);
     }
   }
   
@@ -183,38 +184,38 @@ public class SigCommentListActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562004);
-    super.setTitle(amtj.a(2131713205));
-    this.leftView.setTextColor(getResources().getColor(2131165351));
-    this.leftView.setBackgroundDrawable(getResources().getDrawable(2130840324));
-    this.centerView.setTextColor(getResources().getColor(2131165351));
+    super.setContentView(2131562069);
+    super.setTitle(anvx.a(2131713552));
+    this.leftView.setTextColor(getResources().getColor(2131165357));
+    this.leftView.setBackgroundDrawable(getResources().getDrawable(2130840360));
+    this.centerView.setTextColor(getResources().getColor(2131165357));
     a();
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131562814, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366058));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366069));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839449);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377478));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131562885, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366159));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366170));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839470);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377751));
     this.jdField_a_of_type_ComTencentWidgetXListView.setScrollbarFadingEnabled(true);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-    this.jdField_a_of_type_Allq = new allq(this, this.app, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Allq);
-    this.jdField_a_of_type_Bjmp = new bjmp(this);
-    this.app.setHandler(SigCommentListActivity.class, this.jdField_a_of_type_Bjmp);
-    if (this.jdField_a_of_type_Anbd != null) {
-      this.app.addObserver(this.jdField_a_of_type_Anbd);
+    this.jdField_a_of_type_Amjr = new amjr(this, this.app, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Amjr);
+    this.jdField_a_of_type_Bkyc = new bkyc(this);
+    this.app.setHandler(SigCommentListActivity.class, this.jdField_a_of_type_Bkyc);
+    if (this.jdField_a_of_type_Aods != null) {
+      this.app.addObserver(this.jdField_a_of_type_Aods);
     }
-    paramBundle = this.jdField_a_of_type_Bjmp.obtainMessage(0, 1, 1);
-    this.jdField_a_of_type_Bjmp.sendMessageDelayed(paramBundle, 500L);
+    paramBundle = this.jdField_a_of_type_Bkyc.obtainMessage(0, 1, 1);
+    this.jdField_a_of_type_Bkyc.sendMessageDelayed(paramBundle, 500L);
     a(1);
     return true;
   }
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Anbd != null)
+    if (this.jdField_a_of_type_Aods != null)
     {
-      this.app.removeObserver(this.jdField_a_of_type_Anbd);
-      this.jdField_a_of_type_Anbd = null;
+      this.app.removeObserver(this.jdField_a_of_type_Aods);
+      this.jdField_a_of_type_Aods = null;
     }
     this.app.removeHandler(SigCommentListActivity.class);
     super.doOnDestroy();
@@ -241,7 +242,7 @@ public class SigCommentListActivity
       stopTitleProgress();
     } while (1 != paramMessage.arg1);
     if (isResume()) {
-      QQToast.a(this, 0, getResources().getString(2131718514), 0).b(getTitleBarHeight());
+      QQToast.a(this, 0, getResources().getString(2131718900), 0).b(getTitleBarHeight());
     }
     a(2);
     return true;
@@ -256,7 +257,7 @@ public class SigCommentListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SigCommentListActivity
  * JD-Core Version:    0.7.0.1
  */

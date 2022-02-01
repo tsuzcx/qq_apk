@@ -419,7 +419,6 @@ public class AEDetector
   {
     AEDetector.WeishiDetectRunnable localWeishiDetectRunnable = null;
     initWeishiFaceDetect();
-    PTFaceAttrPro localPTFaceAttrPro = new PTFaceAttrPro();
     AIParam localAIParam = new AIParam();
     localAIParam.update(paramFrame.width, paramFrame.height, 0);
     localAIParam.setModuleParam(AEDetectorType.FACE.value, "phoneRoll", Float.valueOf(90.0F));
@@ -430,6 +429,7 @@ public class AEDetector
     localAIParam.setModuleParam(AEDetectorType.FACE.value, "syncAgeDetect", Boolean.valueOf(true));
     localAIParam.setModuleParam(AEDetectorType.FACE.value, "expressionDetectForEveryFace", Boolean.valueOf(true));
     localAIParam.setModuleParam(AEDetectorType.FACE.value, "reset", Boolean.valueOf(true));
+    PTFaceAttrPro localPTFaceAttrPro = new PTFaceAttrPro();
     PTFaceAttr localPTFaceAttr = this.mWeishiFaceDetector.detectFrame(paramFrame, 0, localAIParam);
     localPTFaceAttrPro.setFaceAttr(localPTFaceAttr);
     AIInput localAIInput;

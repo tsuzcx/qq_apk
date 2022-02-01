@@ -1,49 +1,117 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.ExtendGridView;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.Pic_list;
+import com.tencent.mobileqq.troop.data.TroopBarMyBar;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Hashtable;
 
-class beyn
-  implements Comparator<beyv>
+public class beyn
+  extends Handler
 {
-  beyn(beyh parambeyh) {}
+  public beyn(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public int a(beyv parambeyv1, beyv parambeyv2)
+  public void handleMessage(Message paramMessage)
   {
-    int j = -1;
-    if (((parambeyv1 instanceof MessageForDeliverGiftTips)) && ((parambeyv2 instanceof MessageForDeliverGiftTips)))
-    {
-      parambeyv1 = (MessageForDeliverGiftTips)parambeyv1;
-      parambeyv2 = (MessageForDeliverGiftTips)parambeyv2;
-      int i;
-      if ((parambeyv1.isToAll()) && (parambeyv2.isToAll())) {
-        i = (int)(parambeyv1.time - parambeyv2.time);
-      }
-      do
-      {
-        do
-        {
-          return i;
-          i = j;
-        } while (parambeyv1.isToAll());
-        if (parambeyv2.isToAll()) {
-          return 1;
-        }
-        if ((parambeyv1.receiverUin == this.a.a.getLongAccountUin()) && (parambeyv2.receiverUin == this.a.a.getLongAccountUin())) {
-          return (int)(parambeyv1.time - parambeyv2.time);
-        }
-        i = j;
-      } while (parambeyv1.receiverUin == this.a.a.getLongAccountUin());
-      if (parambeyv2.receiverUin == this.a.a.getLongAccountUin()) {
-        return 1;
-      }
-      return (int)(parambeyv1.time - parambeyv2.time);
+    if (this.a.isFinishing()) {
+      return;
     }
-    return (int)(parambeyv1.getShmsgseq() - parambeyv2.getShmsgseq());
+    long l1;
+    label254:
+    long l2;
+    label418:
+    long l3;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1001: 
+      if ((this.a.jdField_a_of_type_Bisl != null) && (this.a.jdField_a_of_type_Bisl.isShowing()))
+      {
+        this.a.c(false);
+        this.a.rightViewText.setEnabled(true);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
+        QQToast.a(this.a.getActivity(), 2131695981, 1).b(this.a.getTitleBarHeight());
+        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
+          break label254;
+        }
+      }
+      for (localObject = "0";; localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.jdField_c_of_type_JavaLangString)
+      {
+        bgip.a("pub_page", "fail", (String)localObject, "51", TroopBarPublishActivity.b(this.a), "");
+        QLog.d("tribe_publish_TroopBarPublishActivity", 2, "uploadVideoThumb failed " + paramMessage.obj);
+        TroopBarPublishActivity.a(this.a, null);
+        l1 = zeb.a(TroopBarPublishActivity.c(this.a));
+        bgip.a(this.a.getActivity(), "tribe_video", "video_thumb_upload", paramMessage.arg1, String.valueOf(l1), "", "");
+        return;
+      }
+    case 1003: 
+      localObject = (TroopBarPublishActivity.Pic_list)bgip.a.get(TroopBarPublishActivity.c(this.a));
+      if (localObject != null)
+      {
+        this.a.jdField_a_of_type_Besj.d = ((TroopBarPublishActivity.Pic_list)localObject).url;
+        QLog.d("tribe_publish_TroopBarPublishActivity", 2, "uploadVideoThumb succ " + paramMessage.obj);
+        l1 = zeb.a(TroopBarPublishActivity.c(this.a));
+        bgip.a(this.a.getActivity(), "tribe_video", "video_thumb_upload", paramMessage.arg1, String.valueOf(l1), String.valueOf(paramMessage.arg2), "");
+        if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Besj.jdField_a_of_type_JavaLangString)) {
+          break label418;
+        }
+        this.a.b(this.a.y, true);
+      }
+      for (;;)
+      {
+        TroopBarPublishActivity.a(this.a, null);
+        return;
+        if ((this.a.jdField_a_of_type_Bisl != null) && (this.a.jdField_a_of_type_Bisl.isShowing())) {
+          this.a.i();
+        }
+      }
+    case 1011: 
+      paramMessage = (beug)paramMessage.obj;
+      this.a.jdField_a_of_type_Besj.b = paramMessage.jdField_c_of_type_JavaLangString;
+      this.a.jdField_a_of_type_Besj.jdField_a_of_type_JavaLangString = paramMessage.b;
+      TroopBarPublishActivity.a(this.a, null);
+      if ((this.a.jdField_a_of_type_Bisl != null) && (this.a.jdField_a_of_type_Bisl.isShowing())) {
+        this.a.i();
+      }
+      l1 = zeb.a(paramMessage.jdField_a_of_type_JavaLangString);
+      l2 = SystemClock.elapsedRealtime();
+      l3 = paramMessage.jdField_a_of_type_Long;
+      bgip.a(this.a.getActivity(), "tribe_video", "video_upload", 0, String.valueOf(l1), String.valueOf(l2 - l3), "");
+      return;
+    }
+    Object localObject = (beug)paramMessage.obj;
+    if ((this.a.jdField_a_of_type_Bisl != null) && (this.a.jdField_a_of_type_Bisl.isShowing()))
+    {
+      QQToast.a(this.a, 2131695981, 1).b(this.a.getTitleBarHeight());
+      this.a.c(false);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
+        break label732;
+      }
+    }
+    label732:
+    for (paramMessage = "0";; paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.jdField_c_of_type_JavaLangString)
+    {
+      bgip.a("pub_page", "fail", paramMessage, "52", TroopBarPublishActivity.b(this.a), "");
+      l1 = zeb.a(((beug)localObject).jdField_a_of_type_JavaLangString);
+      l2 = SystemClock.elapsedRealtime();
+      l3 = ((beug)localObject).jdField_a_of_type_Long;
+      bgip.a(this.a.getActivity(), "tribe_video", "video_upload", ((beug)localObject).jdField_c_of_type_Int, String.valueOf(l1), String.valueOf(l2 - l3), "");
+      TroopBarPublishActivity.a(this.a, null);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyn
  * JD-Core Version:    0.7.0.1
  */

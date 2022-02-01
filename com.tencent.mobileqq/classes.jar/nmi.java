@@ -1,107 +1,276 @@
-import android.text.TextUtils;
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.GLES20;
+import android.os.Build.VERSION;
+import android.view.Surface;
+import com.tencent.avgame.gameroom.video.AVGameMediaPlayerWrapper.3;
+import com.tencent.avgame.gameroom.video.AVGameMediaPlayerWrapper.4;
+import com.tencent.avgame.gameroom.video.AVGameMediaPlayerWrapper.5;
+import com.tencent.avgame.gameroom.video.AVGameMediaPlayerWrapper.6;
+import com.tencent.avgame.gameroom.video.AVGameMediaPlayerWrapper.8;
+import com.tencent.avgame.gameroom.video.AVGameMediaPlayerWrapper.9;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnAudioFrameOutputListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnCaptureImageListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnDefinitionInfoListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnTVideoNetInfoListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnVideoSizeChangedListener;
+import com.tencent.superplayer.api.SuperPlayerFactory;
+import com.tencent.superplayer.api.TVideoNetInfo;
+import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
+import java.util.ArrayList;
 
 public class nmi
+  implements SurfaceTexture.OnFrameAvailableListener, SDKInitListener, ISuperPlayer.OnAudioFrameOutputListener, ISuperPlayer.OnCaptureImageListener, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnDefinitionInfoListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnSeekCompleteListener, ISuperPlayer.OnTVideoNetInfoListener, ISuperPlayer.OnVideoPreparedListener, ISuperPlayer.OnVideoSizeChangedListener
 {
-  public static final SparseIntArray a = new SparseIntArray();
+  private int jdField_a_of_type_Int = -1;
+  private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private volatile ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+  private String jdField_a_of_type_JavaLangString;
+  private nmj jdField_a_of_type_Nmj;
+  private nnx jdField_a_of_type_Nnx;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c = true;
+  private boolean d;
   
-  static
+  private void d()
   {
-    a.put(35, 3);
-    a.put(11, 2);
-    a.put(8, 1);
-    a.put(37, 4);
-    a.put(52, 5);
-  }
-  
-  public static int a(oidb_0x791.RedDotInfo paramRedDotInfo1, oidb_0x791.RedDotInfo paramRedDotInfo2)
-  {
-    if (paramRedDotInfo1 == null)
+    if (this.jdField_a_of_type_AndroidViewSurface != null)
     {
-      if (paramRedDotInfo2 == null) {
-        return 0;
-      }
-      return -1;
+      this.jdField_a_of_type_AndroidViewSurface.release();
+      this.jdField_a_of_type_AndroidViewSurface = null;
     }
-    if (paramRedDotInfo2 == null) {
-      return 1;
-    }
-    return a.get(paramRedDotInfo1.uint32_appid.get()) - a.get(paramRedDotInfo2.uint32_appid.get());
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 8) || (paramInt == 35) || (paramInt == 11) || (paramInt == 37);
-  }
-  
-  public static boolean a(oidb_0x791.RedDotInfo paramRedDotInfo)
-  {
-    boolean bool = true;
-    int i = paramRedDotInfo.uint32_appid.get();
-    if (i == 35)
+    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
     {
-      paramRedDotInfo = paramRedDotInfo.str_custom_buffer.get().toStringUtf8();
-      if (!TextUtils.isEmpty(paramRedDotInfo)) {
-        try
-        {
-          long l = new JSONObject(paramRedDotInfo).optLong("image_red_display_780", 1L);
-          if (l == 0L) {
-            bool = false;
-          }
-          return bool;
-        }
-        catch (JSONException paramRedDotInfo)
-        {
-          xvv.c("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: Error parse json: ", paramRedDotInfo);
-          return true;
-        }
-      }
-      xvv.b("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: str_custom_buffer is null");
-      return true;
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(null);
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
     }
-    return b(i);
+    if (this.jdField_a_of_type_Int != -1)
+    {
+      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = -1;
+    }
   }
   
-  public static boolean b(int paramInt)
+  private void e()
   {
-    return (a(paramInt)) || (paramInt == 52);
+    QLog.d("AVGameMediaPlayerWrapper", 1, "initMediaPlayer");
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer == null) {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 107, null);
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      d();
+      this.jdField_a_of_type_Int = GlUtil.createTexture(36197);
+      GLES20.glBindTexture(36197, 0);
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Int);
+      if (Build.VERSION.SDK_INT < 21) {
+        break label218;
+      }
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this, this.jdField_a_of_type_Nnx);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setSurface(this.jdField_a_of_type_AndroidViewSurface);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoPreparedListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCaptureImageListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnInfoListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnErrorListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnDefinitionInfoListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnTVideoNetInfoUpdateListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCompletionListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoSizeChangedListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnSeekCompleteListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnAudioFrameOutputListener(this);
+      return;
+      label218:
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    }
   }
   
-  public static boolean c(int paramInt)
+  private void f()
   {
-    return (d(paramInt)) || (e(paramInt)) || (f(paramInt)) || (g(paramInt)) || (h(paramInt)) || (paramInt == 40) || (paramInt == 39) || (paramInt == 41) || (paramInt == 42) || (paramInt == 58) || (paramInt == 56) || (paramInt == 57) || (paramInt == 59) || (paramInt == 60) || (paramInt == 61) || (paramInt == 65) || (paramInt == 63) || (paramInt == 53) || (paramInt == 54);
+    QLog.d("AVGameMediaPlayerWrapper", 1, "releaseMediaPlayer");
+    if (this.jdField_a_of_type_Nnx != null) {
+      this.jdField_a_of_type_Nnx.post(new AVGameMediaPlayerWrapper.6(this));
+    }
   }
   
-  public static boolean d(int paramInt)
+  public int a()
   {
-    return paramInt == 25;
+    return this.jdField_a_of_type_Int;
   }
   
-  public static boolean e(int paramInt)
+  public long a()
   {
-    return (paramInt == 23) || (paramInt == 26);
+    return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs();
   }
   
-  public static boolean f(int paramInt)
+  public SurfaceTexture a()
   {
-    return (paramInt == 24) || (paramInt == 27);
+    return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
   }
   
-  public static boolean g(int paramInt)
+  public void a()
   {
-    return paramInt == 38;
+    QLog.d("AVGameMediaPlayerWrapper", 1, "releaseMgrRes");
+    f();
   }
   
-  public static boolean h(int paramInt)
+  public void a(String paramString, long paramLong)
   {
-    return paramInt == 70;
+    QLog.d("AVGameMediaPlayerWrapper", 1, "playAudioByUrl url:=" + paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Nnx.post(new AVGameMediaPlayerWrapper.3(this, paramLong));
   }
+  
+  public void a(nmj paramnmj, nnx paramnnx)
+  {
+    QLog.d("AVGameMediaPlayerWrapper", 1, "addAVGameMediaPlayerCallBack");
+    this.jdField_a_of_type_Nmj = paramnmj;
+    this.jdField_a_of_type_Nnx = paramnnx;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOutputMute(this.c);
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying());
+  }
+  
+  public void b()
+  {
+    QLog.d("AVGameMediaPlayerWrapper", 1, "stopVideoPlay");
+    if (this.jdField_a_of_type_Nnx != null) {
+      this.jdField_a_of_type_Nnx.post(new AVGameMediaPlayerWrapper.5(this));
+    }
+  }
+  
+  public void b(String paramString, long paramLong)
+  {
+    QLog.d("AVGameMediaPlayerWrapper", 1, "playVideoByUrl url:=" + paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Nnx.post(new AVGameMediaPlayerWrapper.4(this, paramLong));
+  }
+  
+  public void c()
+  {
+    QLog.d("AVGameMediaPlayerWrapper", 1, "doDestroy");
+    f();
+  }
+  
+  public void onAudioFrameOutput(TPAudioFrameBuffer paramTPAudioFrameBuffer)
+  {
+    if (this.jdField_a_of_type_Nmj != null) {
+      this.jdField_a_of_type_Nmj.a(paramTPAudioFrameBuffer);
+    }
+  }
+  
+  public void onCaptureImageFailed(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2) {}
+  
+  public void onCaptureImageSucceed(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap) {}
+  
+  public void onCompletion(ISuperPlayer paramISuperPlayer)
+  {
+    QLog.d("AVGameMediaPlayerWrapper", 1, "onCompletion url:=" + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Nmj != null)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Nmj.d(this.jdField_a_of_type_JavaLangString);
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Nmj.b(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onDefinitionInfoUpdate(ISuperPlayer paramISuperPlayer, String paramString, ArrayList<String> paramArrayList) {}
+  
+  public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    QLog.e("AVGameMediaPlayerWrapper", 1, "PlayerCaptureProxy onError: module = " + paramInt1 + ", errorType = " + paramInt2 + ", errorCode = " + paramInt3 + ", extraInfo = " + paramString);
+    if (!this.jdField_a_of_type_Boolean) {
+      bdla.b(null, "dc00898", "", "", "0X800B0E7", "0X800B0E7", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      return false;
+      bdla.b(null, "dc00898", "", "", "0X800B1F4", "0X800B1F4", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    if (this.jdField_a_of_type_Nnx != null)
+    {
+      if (this.b)
+      {
+        this.b = false;
+        QLog.d("AVGameMediaPlayerWrapper", 1, "onFrameAvailable avalibale:= + " + this.jdField_a_of_type_JavaLangString);
+      }
+      if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {}
+    }
+    else
+    {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    paramSurfaceTexture = this.jdField_a_of_type_Nnx.obtainMessage(256, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, Long.valueOf(l));
+    this.jdField_a_of_type_Nnx.sendMessage(paramSurfaceTexture);
+  }
+  
+  public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
+  {
+    return false;
+  }
+  
+  public void onSDKInited(boolean paramBoolean)
+  {
+    QLog.d("AVGameMediaPlayerWrapper", 1, "onSDKInited b:=" + paramBoolean);
+  }
+  
+  public void onSeekComplete(ISuperPlayer paramISuperPlayer)
+  {
+    QLog.d("AVGameMediaPlayerWrapper", 1, "onSeekComplete");
+    if (this.jdField_a_of_type_Nnx != null) {
+      this.jdField_a_of_type_Nnx.post(new AVGameMediaPlayerWrapper.9(this));
+    }
+  }
+  
+  public void onTVideoNetInfoUpdate(ISuperPlayer paramISuperPlayer, TVideoNetInfo paramTVideoNetInfo) {}
+  
+  public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
+  {
+    QLog.d("AVGameMediaPlayerWrapper", 1, "onVideoPrepared");
+    if (this.jdField_a_of_type_Nnx != null) {
+      this.jdField_a_of_type_Nnx.post(new AVGameMediaPlayerWrapper.8(this));
+    }
+  }
+  
+  public void onVideoSizeChanged(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2) {}
 }
 
 

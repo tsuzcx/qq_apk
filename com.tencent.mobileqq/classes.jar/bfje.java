@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bfje
-  implements bcrf
+class bfje
+  implements DialogInterface.OnClickListener
 {
-  public bfje(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  bfje(bfis parambfis, bfif parambfif) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bcrn localbcrn = new bcrn(new bcre[] { new bcrm(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new bcrm(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
-    localbcrn.a = true;
-    TroopGiftToAllSurfaceView.a(this.a).a(new bcre[] { localbcrn });
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    if (bfis.a(this.jdField_a_of_type_Bfis) != 0) {
+      bgjh.a(this.jdField_a_of_type_Bfis.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfis.jdField_a_of_type_Long).b(this.jdField_a_of_type_Bfif);
+    }
+    bdla.b(this.jdField_a_of_type_Bfis.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_upload", 0, 0, "", this.jdField_a_of_type_Bfis.jdField_a_of_type_Long + "", "", "");
   }
 }
 

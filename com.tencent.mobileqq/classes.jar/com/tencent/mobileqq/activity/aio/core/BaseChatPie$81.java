@@ -1,18 +1,24 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.provider.Settings.System;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class BaseChatPie$81
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  BaseChatPie$81(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$81(BaseChatPie paramBaseChatPie, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if ((this.this$0.addFriendDialog != null) && (this.this$0.addFriendDialog.isShowing())) {
-      this.this$0.addFriendDialog.dismiss();
+    try
+    {
+      Settings.System.putInt(this.this$0.app.getApp().getContentResolver(), "listview_oversroll", this.val$isButtom);
+      return;
+    }
+    catch (SecurityException localSecurityException)
+    {
+      localSecurityException.printStackTrace();
     }
   }
 }

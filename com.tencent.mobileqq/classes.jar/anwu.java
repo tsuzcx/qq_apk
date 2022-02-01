@@ -1,22 +1,6 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-
-abstract class anwu
+public abstract interface anwu
 {
-  protected final SharedPreferences a = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 0);
-  
-  protected abstract String a();
-  
-  protected void a()
-  {
-    this.a.edit().putBoolean(a(), true).commit();
-  }
-  
-  protected boolean a()
-  {
-    return !this.a.contains(a());
-  }
+  public abstract boolean a(anwz paramanwz);
 }
 
 

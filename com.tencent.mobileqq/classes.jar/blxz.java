@@ -1,42 +1,59 @@
-import android.graphics.Color;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qlink.SendMsg;
 
-class blxz
-  implements View.OnClickListener
+public abstract class blxz
+  extends Binder
+  implements blxy
 {
-  blxz(blxy paramblxy, int paramInt, blya paramblya) {}
-  
-  public void onClick(View paramView)
+  public blxz()
   {
-    if (this.jdField_a_of_type_Int != blxy.a(this.jdField_a_of_type_Blxy))
-    {
-      blya localblya = (blya)blxy.a(this.jdField_a_of_type_Blxy).findViewHolderForAdapterPosition(blxy.a(this.jdField_a_of_type_Blxy));
-      if (localblya == null) {
-        break label101;
-      }
-      localblya.a(false);
+    attachInterface(this, "cooperation.qlink.IQlinkService");
+  }
+  
+  public static blxy a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    for (;;)
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qlink.IQlinkService");
+    if ((localIInterface != null) && ((localIInterface instanceof blxy))) {
+      return (blxy)localIInterface;
+    }
+    return new blya(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      this.jdField_a_of_type_Blya.a(true);
-      this.jdField_a_of_type_Blxy.a(this.jdField_a_of_type_Int);
-      if (blxy.a(this.jdField_a_of_type_Blxy) != null) {
-        blxy.a(this.jdField_a_of_type_Blxy).setTextColor(Color.parseColor(blxy.a(this.jdField_a_of_type_Blxy)));
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label101:
-      this.jdField_a_of_type_Blxy.notifyDataSetChanged();
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qlink.IQlinkService");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qlink.IQlinkService");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blxz
  * JD-Core Version:    0.7.0.1
  */

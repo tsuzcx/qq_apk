@@ -1,21 +1,6 @@
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import java.util.List;
-
-public class acoz
-  implements ahyj
-{
-  public acoz(AddFriendActivity paramAddFriendActivity) {}
-  
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString, int paramInt3, List<bays> paramList)
-  {
-    if (AddFriendActivity.a(this.a))
-    {
-      AddFriendActivity.a(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
-      return;
-    }
-    AddFriendActivity.b(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
-  }
-}
+public abstract interface acoz
+  extends acny<Integer, acoy>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

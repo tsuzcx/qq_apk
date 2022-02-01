@@ -1,22 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.app.CardObserver;
 
 public class aenr
-  implements View.OnTouchListener
+  extends CardObserver
 {
-  public aenr(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aenr(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
   {
-    if (paramMotionEvent.getAction() == 1)
+    if (paramBoolean)
     {
-      this.a.j();
-      paramView = this.a.n;
-      this.a.a("Clk_find", paramView, "");
+      this.a.setResult(-1);
+      this.a.b(2131719171);
     }
-    return true;
+    for (;;)
+    {
+      this.a.a = false;
+      this.a.finish();
+      return;
+      this.a.b(2131719169);
+    }
   }
 }
 

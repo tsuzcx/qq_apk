@@ -1,21 +1,17 @@
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aomo
-  implements DialogInterface.OnClickListener
+class aomo
+  implements DialogInterface.OnDismissListener
 {
-  public aomo(ARScanEntryView paramARScanEntryView) {}
+  aomo(aomk paramaomk, Activity paramActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Activity localActivity = (Activity)this.a.a;
-    Intent localIntent = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
-    localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
-    localActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    QLog.d("AccountIdentityManager", 1, "dialog dismiss");
+    aomk.a(this.jdField_a_of_type_Aomk, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

@@ -1,10 +1,22 @@
-public abstract interface sep
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import java.lang.ref.WeakReference;
+
+class sep
+  implements MediaPlayer.OnCompletionListener
 {
-  public abstract void onHeadsetStateChanged(boolean paramBoolean);
+  sep(sen paramsen) {}
   
-  public abstract void onPhoneCome();
-  
-  public abstract void onSystemVolumeChanged(int paramInt);
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    sen.a(this.a).isPlaying = false;
+    paramMediaPlayer = (seq)sen.a(this.a).get();
+    if (paramMediaPlayer != null)
+    {
+      paramMediaPlayer.b(sen.a(this.a));
+      this.a.a(false, "ugc voice play");
+    }
+  }
 }
 
 

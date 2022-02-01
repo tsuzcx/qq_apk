@@ -1,6 +1,12 @@
-public abstract interface blfi
+import android.view.animation.Interpolator;
+
+public class blfi
+  implements Interpolator
 {
-  public abstract void a(int paramInt, String paramString, byte[] paramArrayOfByte);
+  public float getInterpolation(float paramFloat)
+  {
+    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
+  }
 }
 
 

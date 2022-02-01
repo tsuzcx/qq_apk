@@ -3,6 +3,7 @@ package com.tencent.ttpic.openapi.filter;
 import android.opengl.GLES20;
 import com.tencent.aekit.openrender.AttributeParam;
 import com.tencent.aekit.openrender.UniformParam.Float2fParam;
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.UniformParam.Mat4Param;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
@@ -10,6 +11,7 @@ import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.initializer.Face3DLibInitializer;
+import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.util.AlgoUtils;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -17,10 +19,11 @@ import java.nio.IntBuffer;
 public class Face3DCosmeticFilter
   extends VideoFilterBase
 {
-  private static final String FRAGMENT_SHADER = "precision highp float;\nuniform sampler2D inputImageTexture;\nvarying vec2 v_uvTexCoords;\nvarying vec2 v_inputTexCoords;\nvoid main()\n{\n    gl_FragColor = texture2D(inputImageTexture, v_uvTexCoords); \n}\n";
+  private static final String FRAGMENT_SHADER = "precision highp float;\n varying vec3 v_normalVector;\n varying vec2 v_uvTexCoords;\n uniform sampler2D inputImageTexture;\n uniform float ambientStrength;\n uniform float diffuseStrength;\n  \n  const vec3 u_directionalLightColor = vec3(1.0);\n  const vec3 u_directionalLightDirection = vec3(0.0, 0.0, -1.0);\n  \n  vec3 computeLighting(vec3 normalVector, vec3 lightDirection, vec3 lightColor, float attenuation)\n  {\n     float diffuse = max(dot(normalVector, lightDirection), 0.0);\n //    diffuse = max((diffuse - 0.65) / 0.35, 0.0);\n     vec3 diffuseColor = lightColor * diffuse * attenuation;\n     return diffuseColor;\n  }\n  \n  vec3 getLitPixel()\n  {\n     vec3 normalVector = normalize(v_normalVector);\n     vec3 lightDirection = normalize(u_directionalLightDirection);\n     vec3 lightColor = computeLighting(normalVector, -lightDirection, u_directionalLightColor, 1.0);\n     vec3 combinedColor = vec3(0.3) + lightColor * 0.7;\n //    float gray = dot(combinedColor, vec3(0.299, 0.587, 0.114));\n //    combinedColor = vec3(1.0) - (vec3(1.0) - combinedColor) * (vec3(1.0) - lightColor * gray);\n     return combinedColor;\n  }\n \n void main() {\n     vec4 srcColor = texture2D(inputImageTexture, v_uvTexCoords);\n     vec3 light_color = getLitPixel();\n     float alpha_scale = ambientStrength + (1.0 - ambientStrength) * min(1.0, light_color.r * diffuseStrength);\n     srcColor = vec4(srcColor.rgb * alpha_scale, srcColor.a * alpha_scale);\n     gl_FragColor = srcColor;\n }";
   private static final int PER_FLOAT_BYTE = 4;
   private static final int PER_INT_BYTE = 4;
-  private static final String VERTEX_SHADER = "attribute vec4 position;\nattribute vec2 uvTexCoords;\nvarying vec2 v_uvTexCoords;\nvarying vec2 v_inputTexCoords;\nuniform vec2 faceDetSize; \nuniform mat4 matrix; \nvoid main()\n{\n  vec4 pos = matrix * position; \n  gl_Position = vec4(pos.x / faceDetSize.x * 2.0 - 1.0, pos.y / faceDetSize.y * 2.0 - 1.0, -pos.z / 2.0 / max(faceDetSize.x, faceDetSize.y), 1.0);\n  v_uvTexCoords = vec2(uvTexCoords.x, 1.0 - uvTexCoords.y);\n  v_inputTexCoords = vec2(pos.x / faceDetSize.x, pos.y / faceDetSize.y); \n}\n";
+  private static final String VERTEX_SHADER = "attribute vec4 position;\nattribute vec4 normal;\nattribute vec2 uvTexCoords;\n\nvarying vec2 v_uvTexCoords;\nvarying vec3 v_normalVector;\n\nuniform vec2 faceDetSize; \nuniform mat4 matrix; \nuniform mat4 rotateMatrix; \nuniform float phoneRotation;\n\nvec4 RevertPhoneRotation(vec4 pos) {\n  vec4 res_pos = pos;\n  if (phoneRotation > 269.0) {\n    res_pos.x = faceDetSize.x - pos.y;\n    res_pos.y = pos.x;\n  } else if (phoneRotation > 179.0) {\n    res_pos.x = faceDetSize.x - pos.x;\n    res_pos.y = faceDetSize.y - pos.y;\n  } else if (phoneRotation > 89.0) {\n    res_pos.x = pos.y;\n    res_pos.y = faceDetSize.y - pos.x;\n  }\n  \n  return res_pos;\n}\n\nvoid main()\n{\n  vec4 pos = matrix * position; \n  vec4 pointNormal = rotateMatrix * normal;\n  v_normalVector = pointNormal.xyz / pointNormal.w;\n  \n  vec4 correct_pos = RevertPhoneRotation(pos);\n  gl_Position = vec4(correct_pos.x / faceDetSize.x * 2.0 - 1.0, (1.0 - correct_pos.y / faceDetSize.y) * 2.0 - 1.0, -correct_pos.z / 2.0 / max(faceDetSize.x, faceDetSize.y), 1.0);\n  v_uvTexCoords = vec2(uvTexCoords.x, 1.0 - uvTexCoords.y);\n\n}\n";
+  private int cos3Dtype;
   private int[] mBuffer = new int[2];
   private BaseFilter mCopyFilter = new BaseFilter(BaseFilter.getFragmentShader(0));
   private int[] mDepthBuffer = new int[1];
@@ -32,7 +35,7 @@ public class Face3DCosmeticFilter
   
   public Face3DCosmeticFilter()
   {
-    super("attribute vec4 position;\nattribute vec2 uvTexCoords;\nvarying vec2 v_uvTexCoords;\nvarying vec2 v_inputTexCoords;\nuniform vec2 faceDetSize; \nuniform mat4 matrix; \nvoid main()\n{\n  vec4 pos = matrix * position; \n  gl_Position = vec4(pos.x / faceDetSize.x * 2.0 - 1.0, pos.y / faceDetSize.y * 2.0 - 1.0, -pos.z / 2.0 / max(faceDetSize.x, faceDetSize.y), 1.0);\n  v_uvTexCoords = vec2(uvTexCoords.x, 1.0 - uvTexCoords.y);\n  v_inputTexCoords = vec2(pos.x / faceDetSize.x, pos.y / faceDetSize.y); \n}\n", "precision highp float;\nuniform sampler2D inputImageTexture;\nvarying vec2 v_uvTexCoords;\nvarying vec2 v_inputTexCoords;\nvoid main()\n{\n    gl_FragColor = texture2D(inputImageTexture, v_uvTexCoords); \n}\n");
+    super("attribute vec4 position;\nattribute vec4 normal;\nattribute vec2 uvTexCoords;\n\nvarying vec2 v_uvTexCoords;\nvarying vec3 v_normalVector;\n\nuniform vec2 faceDetSize; \nuniform mat4 matrix; \nuniform mat4 rotateMatrix; \nuniform float phoneRotation;\n\nvec4 RevertPhoneRotation(vec4 pos) {\n  vec4 res_pos = pos;\n  if (phoneRotation > 269.0) {\n    res_pos.x = faceDetSize.x - pos.y;\n    res_pos.y = pos.x;\n  } else if (phoneRotation > 179.0) {\n    res_pos.x = faceDetSize.x - pos.x;\n    res_pos.y = faceDetSize.y - pos.y;\n  } else if (phoneRotation > 89.0) {\n    res_pos.x = pos.y;\n    res_pos.y = faceDetSize.y - pos.x;\n  }\n  \n  return res_pos;\n}\n\nvoid main()\n{\n  vec4 pos = matrix * position; \n  vec4 pointNormal = rotateMatrix * normal;\n  v_normalVector = pointNormal.xyz / pointNormal.w;\n  \n  vec4 correct_pos = RevertPhoneRotation(pos);\n  gl_Position = vec4(correct_pos.x / faceDetSize.x * 2.0 - 1.0, (1.0 - correct_pos.y / faceDetSize.y) * 2.0 - 1.0, -correct_pos.z / 2.0 / max(faceDetSize.x, faceDetSize.y), 1.0);\n  v_uvTexCoords = vec2(uvTexCoords.x, 1.0 - uvTexCoords.y);\n\n}\n", "precision highp float;\n varying vec3 v_normalVector;\n varying vec2 v_uvTexCoords;\n uniform sampler2D inputImageTexture;\n uniform float ambientStrength;\n uniform float diffuseStrength;\n  \n  const vec3 u_directionalLightColor = vec3(1.0);\n  const vec3 u_directionalLightDirection = vec3(0.0, 0.0, -1.0);\n  \n  vec3 computeLighting(vec3 normalVector, vec3 lightDirection, vec3 lightColor, float attenuation)\n  {\n     float diffuse = max(dot(normalVector, lightDirection), 0.0);\n //    diffuse = max((diffuse - 0.65) / 0.35, 0.0);\n     vec3 diffuseColor = lightColor * diffuse * attenuation;\n     return diffuseColor;\n  }\n  \n  vec3 getLitPixel()\n  {\n     vec3 normalVector = normalize(v_normalVector);\n     vec3 lightDirection = normalize(u_directionalLightDirection);\n     vec3 lightColor = computeLighting(normalVector, -lightDirection, u_directionalLightColor, 1.0);\n     vec3 combinedColor = vec3(0.3) + lightColor * 0.7;\n //    float gray = dot(combinedColor, vec3(0.299, 0.587, 0.114));\n //    combinedColor = vec3(1.0) - (vec3(1.0) - combinedColor) * (vec3(1.0) - lightColor * gray);\n     return combinedColor;\n  }\n \n void main() {\n     vec4 srcColor = texture2D(inputImageTexture, v_uvTexCoords);\n     vec3 light_color = getLitPixel();\n     float alpha_scale = ambientStrength + (1.0 - ambientStrength) * min(1.0, light_color.r * diffuseStrength);\n     srcColor = vec4(srcColor.rgb * alpha_scale, srcColor.a * alpha_scale);\n     gl_FragColor = srcColor;\n }");
     initParams();
   }
   
@@ -42,7 +45,7 @@ public class Face3DCosmeticFilter
     GLES20.glDeleteFramebuffers(this.mFrameBuffer.length, this.mFrameBuffer, 0);
     GLES20.glDeleteRenderbuffers(this.mDepthBuffer.length, this.mDepthBuffer, 0);
     GLES20.glDeleteBuffers(this.mBuffer.length, this.mBuffer, 0);
-    this.mCopyFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
   }
   
   private void initGLResources()
@@ -99,10 +102,21 @@ public class Face3DCosmeticFilter
     OnDrawFrameGLSLSuper();
     GLES20.glBindBuffer(34962, this.mBuffer[0]);
     GLES20.glBufferSubData(34962, 0, 41376, this.mVertexBuffer);
-    GLES20.glEnableVertexAttribArray(getAttribParam("position").handle);
-    GLES20.glVertexAttribPointer(getAttribParam("position").handle, 3, 5126, false, 12, 0);
-    GLES20.glEnableVertexAttribArray(getAttribParam("uvTexCoords").handle);
-    GLES20.glVertexAttribPointer(getAttribParam("uvTexCoords").handle, 2, 5126, false, 8, 41376);
+    if (getAttribParam("position").handle != -1)
+    {
+      GLES20.glEnableVertexAttribArray(getAttribParam("position").handle);
+      GLES20.glVertexAttribPointer(getAttribParam("position").handle, 3, 5126, false, 12, 0);
+    }
+    if (getAttribParam("uvTexCoords").handle != -1)
+    {
+      GLES20.glEnableVertexAttribArray(getAttribParam("uvTexCoords").handle);
+      GLES20.glVertexAttribPointer(getAttribParam("uvTexCoords").handle, 2, 5126, false, 8, (this.cos3Dtype * 2 + 1) * 3448 * 4);
+    }
+    if (getAttribParam("normal").handle != -1)
+    {
+      GLES20.glEnableVertexAttribArray(getAttribParam("normal").handle);
+      GLES20.glVertexAttribPointer(getAttribParam("normal").handle, 3, 5126, false, 12, 96544);
+    }
     GLES20.glBindBuffer(34963, this.mBuffer[1]);
   }
   
@@ -134,12 +148,17 @@ public class Face3DCosmeticFilter
   {
     super.initAttribParams();
     addAttribParam(new AttributeParam("uvTexCoords", GlUtil.EMPTY_POSITIONS));
+    addAttribParam(new AttributeParam("normal", GlUtil.EMPTY_POSITIONS, 4));
   }
   
   public void initParams()
   {
     addParam(new UniformParam.Float2fParam("faceDetSize", 180.0F, 240.0F));
     addParam(new UniformParam.Mat4Param("matrix", new float[16]));
+    addParam(new UniformParam.Mat4Param("rotateMatrix", new float[16]));
+    addParam(new UniformParam.FloatParam("ambientStrength", 1.0F));
+    addParam(new UniformParam.FloatParam("diffuseStrength", 1.0F));
+    addParam(new UniformParam.FloatParam("phoneRotation", 0.0F));
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
@@ -169,6 +188,13 @@ public class Face3DCosmeticFilter
     return true;
   }
   
+  public void setCosParam(FaceItem paramFaceItem)
+  {
+    this.cos3Dtype = paramFaceItem.is3DCos;
+    addParam(new UniformParam.FloatParam("ambientStrength", paramFaceItem.cos3DAmbientStrength));
+    addParam(new UniformParam.FloatParam("diffuseStrength", paramFaceItem.cos3DDiffuseStrength));
+  }
+  
   public void updatePreview(Object paramObject)
   {
     float[] arrayOfFloat;
@@ -187,6 +213,8 @@ public class Face3DCosmeticFilter
     }
     this.mVertexBuffer.put(paramObject.face3DVerticesArray, 0, paramObject.face3DVerticesArray.length).position(0);
     addParam(new UniformParam.Mat4Param("matrix", paramObject.face3DRotationArray));
+    addParam(new UniformParam.Mat4Param("rotateMatrix", paramObject.face3DNormalRotationArray));
+    addParam(new UniformParam.FloatParam("phoneRotation", (paramObject.phoneAngle + 360.0F) % 360.0F));
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)

@@ -1,19 +1,8 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.open.agent.CardContainer;
-
-public class bhrh
-  extends AnimatorListenerAdapter
+public abstract interface bhrh
 {
-  public bhrh(CardContainer paramCardContainer, ImageView paramImageView) {}
+  public abstract void a();
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
-  }
+  public abstract void b();
 }
 
 

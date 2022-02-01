@@ -1,16 +1,21 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.avgame.gameroom.gamelist.GameGridItemView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
 class ndb
-  extends RecyclerView.ViewHolder
+  implements DialogInterface.OnClickListener
 {
-  GameGridItemView a;
+  ndb(ncz paramncz, Activity paramActivity, int paramInt1, String paramString, int paramInt2, Bundle paramBundle) {}
   
-  public ndb(View paramView, GameGridItemView paramGameGridItemView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    this.a = paramGameGridItemView;
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Ncz.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    this.jdField_a_of_type_Ncz.a(this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

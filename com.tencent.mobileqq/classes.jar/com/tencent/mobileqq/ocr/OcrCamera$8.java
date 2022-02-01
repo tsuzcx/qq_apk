@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.ocr;
 
-import axmo;
-import axmt;
-import axmx;
+import aysx;
+import aytc;
+import aytg;
 
 public class OcrCamera$8
   implements Runnable
 {
-  public OcrCamera$8(axmo paramaxmo, boolean paramBoolean, byte[] paramArrayOfByte) {}
+  public OcrCamera$8(aysx paramaysx, boolean paramBoolean, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_Boolean = false;
     this.this$0.jdField_b_of_type_Boolean = true;
-    if (this.this$0.jdField_a_of_type_Axmt != null) {
-      this.this$0.jdField_a_of_type_Axmt.a();
+    if (this.this$0.jdField_a_of_type_Aytc != null) {
+      this.this$0.jdField_a_of_type_Aytc.a();
     }
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = axmx.a(this.jdField_a_of_type_ArrayOfByte, axmo.a(this.this$0), axmo.b(this.this$0), axmo.c(this.this$0), this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Int, this.this$0.jdField_a_of_type_AndroidGraphicsRectF, true);; str = axmx.a(this.jdField_a_of_type_ArrayOfByte, axmo.d(this.this$0), axmo.e(this.this$0), axmo.c(this.this$0), this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Int))
+    for (String str = aytg.a(this.jdField_a_of_type_ArrayOfByte, aysx.a(this.this$0), aysx.b(this.this$0), aysx.c(this.this$0), this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Int, this.this$0.jdField_a_of_type_AndroidGraphicsRectF, true);; str = aytg.a(this.jdField_a_of_type_ArrayOfByte, aysx.d(this.this$0), aysx.e(this.this$0), aysx.c(this.this$0), this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Int))
     {
-      if (this.this$0.jdField_a_of_type_Axmt != null) {
-        this.this$0.jdField_a_of_type_Axmt.a(str);
+      if (this.this$0.jdField_a_of_type_Aytc != null) {
+        this.this$0.jdField_a_of_type_Aytc.a(str);
       }
-      axmo.a(this.this$0, false);
+      aysx.a(this.this$0, false);
       return;
     }
   }

@@ -1,27 +1,16 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class afpi
-  implements bjoe
+final class afpi
+  implements afpm
 {
-  afpi(afpd paramafpd, ChatMessage paramChatMessage, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      afpd.a(this.jdField_a_of_type_Afpd, (MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      bcef.b(afpd.a(this.jdField_a_of_type_Afpd), "dc00899", "Grp_chatRecord", "", "remove_file", "tips_det", 0, 0, afpd.a(this.jdField_a_of_type_Afpd).curFriendUin, "", "", "");
-      continue;
-      bcef.b(afpd.a(this.jdField_a_of_type_Afpd), "dc00899", "Grp_chatRecord", "", "remove_file", "Clk_cel", 0, 0, afpd.a(this.jdField_a_of_type_Afpd).curFriendUin, "", "", "");
-    }
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 22);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

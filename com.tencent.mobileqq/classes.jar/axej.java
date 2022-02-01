@@ -1,40 +1,90 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class axej
-  implements URLDrawable.URLDrawableListener
 {
-  public axej(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public String a;
+  public List<String> a;
+  public boolean a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public axej()
   {
-    QLog.i("NearbyMomentFragment", 1, "onLoadCanceled");
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public static axej a(String paramString)
   {
-    if (NearbyMomentFragment.a(this.a) == 1) {
-      NearbyMomentFragment.a(this.a).setVisibility(8);
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
     }
-    QLog.i("NearbyMomentFragment", 1, "onLoadFialed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    QLog.i("NearbyMomentFragment", 1, "onLoadProgressed");
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 1)
+    try
     {
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
-      NearbyMomentFragment.a(this.a).setVisibility(0);
+      axej localaxej = new axej();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("mainswitch", 0) == 1) {}
+      for (;;)
+      {
+        localaxej.jdField_a_of_type_Boolean = bool;
+        localaxej.jdField_a_of_type_JavaLangString = paramString.optString("qmcf", "");
+        paramString = a(paramString.optJSONArray("black"));
+        localaxej.jdField_a_of_type_JavaUtilList.addAll(paramString);
+        return localaxej;
+        bool = false;
+      }
+      return null;
     }
-    QLog.i("NearbyMomentFragment", 1, "onLoadSuccessed");
+    catch (Exception paramString)
+    {
+      QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData parse error", paramString);
+    }
+  }
+  
+  private static List<String> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray != null)
+    {
+      int j = paramJSONArray.length();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j) {
+          try
+          {
+            localArrayList.add(paramJSONArray.getString(i).trim());
+            i += 1;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData processJsonArray error", localException);
+            }
+          }
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -1,35 +1,143 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.view.GameArkView;
+import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
+import com.tencent.mobileqq.gamecenter.view.MoreMsgHeaderView;
+import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class avft
-  extends andd
+public class avft
 {
-  avft(avfq paramavfq) {}
-  
-  protected void onPassiveExit(String paramString, int paramInt)
+  public static avfh a(MessageRecord paramMessageRecord, Activity paramActivity)
   {
-    super.onPassiveExit(paramString, paramInt);
-    if ((avfq.a(this.a).a() == 1) && (avfq.a(this.a).a().equals(paramString)))
+    if ((paramActivity != null) && (!paramActivity.isFinishing()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationShareController", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
+      if ((paramMessageRecord instanceof MessageForArkApp)) {
+        return new GameArkView(paramActivity, null);
       }
-      if (avfq.a(this.a) != null)
+      if (!(paramMessageRecord instanceof MessageForStructing)) {}
+    }
+    for (;;)
+    {
+      int n;
+      int i1;
+      try
       {
-        avfq.a(this.a).finish();
-        QQToast.a(avfq.a(this.a), 2131692906, 1).a();
+        paramMessageRecord = (ArrayList)((StructMsgForGeneralShare)((MessageForStructing)paramMessageRecord).structingMsg).getStructMsgItemLists();
+        if (paramMessageRecord != null) {
+          break label268;
+        }
+        return null;
       }
-      avfq.a(avfq.a(this.a), 1, paramString);
+      catch (Throwable paramMessageRecord)
+      {
+        QLog.e("QQGamePubHeaderFactory", 1, "createHeader failed structMsg error=" + paramMessageRecord.toString());
+        return null;
+      }
+      if (n < paramMessageRecord.size())
+      {
+        if (!(paramMessageRecord.get(n) instanceof bdnv)) {
+          break label290;
+        }
+        ArrayList localArrayList = ((bdnv)paramMessageRecord.get(n)).a;
+        k = i;
+        i = j;
+        i1 = 0;
+        j = k;
+        k = j;
+        m = i;
+        if (i1 >= localArrayList.size()) {
+          break label296;
+        }
+        if ((localArrayList.get(i1) instanceof StructMsgItemTitle))
+        {
+          k = 1;
+          if ((k != 0) && (j != 0))
+          {
+            paramMessageRecord = new ImgHeaderView(paramActivity);
+            return paramMessageRecord;
+          }
+        }
+        else
+        {
+          k = i;
+          if (!(localArrayList.get(i1) instanceof bdpx)) {
+            continue;
+          }
+          j = 1;
+          k = i;
+          continue;
+        }
+      }
+      else
+      {
+        if (paramMessageRecord.size() != 2) {
+          continue;
+        }
+        paramMessageRecord = new TextHeaderView(paramActivity);
+        return paramMessageRecord;
+        if ((paramMessageRecord instanceof MessageForPubAccount)) {
+          return new ImgHeaderView(paramActivity);
+        }
+        return new MoreMsgHeaderView(paramActivity);
+        QLog.d("QQGamePubHeaderFactory", 4, "createHeader fail activity is null");
+        return null;
+        label268:
+        n = 0;
+        i = 0;
+        j = 0;
+        continue;
+      }
+      i1 += 1;
+      int i = k;
+      continue;
+      label290:
+      int m = j;
+      int k = i;
+      label296:
+      n += 1;
+      int j = m;
+      i = k;
     }
   }
   
-  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  public static avfh a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity)
   {
-    super.onTroopManagerSuccess(paramInt1, paramInt2, paramString);
-    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0)) {
-      avfq.a(avfq.a(this.a), 1, paramString);
+    if ((paramActivity != null) && (!paramActivity.isFinishing()))
+    {
+      if (paramQQGameMsgInfo == null) {}
+      try
+      {
+        return new MoreMsgHeaderView(paramActivity);
+      }
+      catch (Throwable paramQQGameMsgInfo)
+      {
+        QLog.d("QQGamePubHeaderFactory", 4, "decode header(web) faile:" + paramQQGameMsgInfo.getMessage());
+        return null;
+      }
+      if (paramQQGameMsgInfo.msgType == 1)
+      {
+        paramQQGameMsgInfo = new GameArkView(paramActivity, null);
+        return paramQQGameMsgInfo;
+      }
+      if (paramQQGameMsgInfo.msgType == 2) {
+        return new ImgHeaderView(paramActivity);
+      }
+      if (paramQQGameMsgInfo.msgType == 3) {
+        return new TextHeaderView(paramActivity);
+      }
+      paramQQGameMsgInfo = new MoreMsgHeaderView(paramActivity);
+      return paramQQGameMsgInfo;
     }
+    QLog.d("QQGamePubHeaderFactory", 4, "createHeader fail activity is null");
+    return null;
   }
 }
 

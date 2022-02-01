@@ -1,32 +1,58 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
-import mqq.app.QQPermissionCallback;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 
-class bdoa
-  implements QQPermissionCallback
+public class bdoa
+  extends Drawable
 {
-  bdoa(bdnz parambdnz) {}
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = -16777216;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private int b;
+  private int c;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bdoa(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    bfur.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_Float = paramInt4;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void draw(Canvas paramCanvas)
   {
-    paramArrayOfString = new Intent();
-    paramArrayOfString.putExtra("audio_max_length", this.a.a.h);
-    if (this.a.a.q != null)
-    {
-      paramArrayOfString.putExtra("from", "publish");
-      paramArrayOfString.putExtra("bid", this.a.a.q);
-      paramArrayOfString.putExtra("fromflag", this.a.a.b);
-      bfaj.a(this.a.a.o, this.a.a.p, "Clk_record", this.a.a.q, this.a.a.b, "", "");
-    }
-    adxr.a(this.a.a.a, paramArrayOfString, PublicTransFragmentActivity.class, AudioRecordFragment.class, 1003);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+    Rect localRect = getBounds();
+    this.jdField_a_of_type_AndroidGraphicsRectF.top = localRect.top;
+    this.jdField_a_of_type_AndroidGraphicsRectF.left = localRect.left;
+    this.jdField_a_of_type_AndroidGraphicsRectF.right = localRect.right;
+    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = localRect.bottom;
+    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.c;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.b;
+  }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

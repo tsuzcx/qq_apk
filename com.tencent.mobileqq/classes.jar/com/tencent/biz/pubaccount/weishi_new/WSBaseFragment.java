@@ -13,18 +13,18 @@ import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import uiz;
-import uja;
-import ujb;
-import ujc;
-import ujn;
+import uww;
+import uwx;
+import uwy;
+import uwz;
+import uxk;
 
-public abstract class WSBaseFragment<V extends uiz, P extends ujc<V>>
+public abstract class WSBaseFragment<V extends uww, P extends uwz<V>>
   extends PublicBaseFragment
-  implements uiz, uja<V, P>
+  implements uww, uwx<V, P>
 {
   private MiniMsgUser jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
-  private ujb<V, P> jdField_a_of_type_Ujb;
+  private uwy<V, P> jdField_a_of_type_Uwy;
   public P a;
   public boolean a;
   public boolean b;
@@ -54,17 +54,17 @@ public abstract class WSBaseFragment<V extends uiz, P extends ujc<V>>
   }
   
   @NonNull
-  protected ujb<V, P> a()
+  protected uwy<V, P> a()
   {
-    if (this.jdField_a_of_type_Ujb == null) {
-      this.jdField_a_of_type_Ujb = new ujn(this);
+    if (this.jdField_a_of_type_Uwy == null) {
+      this.jdField_a_of_type_Uwy = new uxk(this);
     }
-    return this.jdField_a_of_type_Ujb;
+    return this.jdField_a_of_type_Uwy;
   }
   
   public void a(P paramP)
   {
-    this.jdField_a_of_type_Ujc = paramP;
+    this.jdField_a_of_type_Uwz = paramP;
   }
   
   protected boolean a()
@@ -120,7 +120,7 @@ public abstract class WSBaseFragment<V extends uiz, P extends ujc<V>>
   
   public P b()
   {
-    return this.jdField_a_of_type_Ujc;
+    return this.jdField_a_of_type_Uwz;
   }
   
   protected void b() {}
@@ -195,7 +195,7 @@ public abstract class WSBaseFragment<V extends uiz, P extends ujc<V>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSBaseFragment
  * JD-Core Version:    0.7.0.1
  */

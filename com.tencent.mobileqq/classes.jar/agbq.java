@@ -1,37 +1,28 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
-class agbq
-  extends ClickableSpan
+public class agbq
+  extends BroadcastReceiver
 {
-  agbq(agap paramagap) {}
+  public agbq(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (NetworkUtil.isNetSupport(this.a.jdField_a_of_type_AndroidContentContext))
+    if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
     {
-      paramView = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
-      paramView.gatherContacts((short)1, localArrayList, false);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "Confess action! ");
+      }
+      if (this.a.root != null)
+      {
+        this.a.root.a(35);
+        aqwc.a(this.a.app, true);
+      }
     }
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692035), 1).b(((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
   }
 }
 

@@ -1,22 +1,23 @@
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter;
-import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter.Params;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.videoimax.TransitionContext;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.device.msg.activities.DeviceTipActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class abkn
-  implements AdVideoSpliceAdapter
+  implements View.OnClickListener
 {
-  public AdError show(AdVideoSpliceAdapter.Params paramParams)
+  public abkn(DeviceTipActivity paramDeviceTipActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
-    {
-      abrl.d("GdtVideoSpliceAdapter", "show error");
-      return new AdError(4);
+    if (!NetworkUtil.isNetworkAvailable(this.a)) {
+      QQToast.a(this.a, anvx.a(2131702713), 2000).a();
     }
-    abrl.b("GdtVideoSpliceAdapter", "show");
-    new TransitionContext(paramParams).b();
-    return new AdError(0);
+    DeviceTipActivity.a(this.a, 2);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

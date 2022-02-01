@@ -4,10 +4,10 @@ import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 import com.tencent.qapmsdk.base.config.PluginCombination;
+import com.tencent.qapmsdk.base.config.SDKConfig;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
 import com.tencent.qapmsdk.base.meta.UserMeta;
 import com.tencent.qapmsdk.base.monitorplugin.PluginController;
-import com.tencent.qapmsdk.base.reporter.authorization.Authorization;
 import com.tencent.qapmsdk.common.thread.ThreadManager;
 import com.tencent.qapmsdk.qapmmanager.QAPMLauncher;
 import com.tencent.qapmsdk.qapmmanager.QAPMPluginManager;
@@ -43,7 +43,7 @@ public class a
             QAPMLauncher.INSTANCE.preLaunch();
           }
           int i = paramInt;
-          if (Authorization.isAuthorize) {
+          if (SDKConfig.PURE_QAPM) {
             i = paramInt | PluginCombination.userBreadCrumbPlugin.mode;
           }
           a(i);

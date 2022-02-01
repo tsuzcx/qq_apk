@@ -1,51 +1,16 @@
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class actc
-  extends MqqHandler
+  implements acpi
 {
-  public actc(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (AssociatedAccountManageActivity.a(this.a) == null) {
-        AssociatedAccountManageActivity.a(this.a, new bhht(this.a, this.a.getTitleBarHeight()));
-      }
-      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.a(this.a).isShowing()))
-      {
-        try
-        {
-          AssociatedAccountManageActivity.a(this.a).show();
-        }
-        catch (Exception localException) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
-          continue;
-          if ((AssociatedAccountManageActivity.a(this.a) != null) && (AssociatedAccountManageActivity.a(this.a).isShowing()))
-          {
-            AssociatedAccountManageActivity.a(this.a).dismiss();
-            AssociatedAccountManageActivity.a(this.a, null);
-            continue;
-            if (AssociatedAccountManageActivity.a(this.a) != null) {
-              AssociatedAccountManageActivity.a(this.a).cancel();
-            }
-            AssociatedAccountManageActivity.a(this.a, QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
-          }
-        }
-      }
-    }
+    ((vzu)paramacnk.a().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).a(paramMsgType0x210.vProtobuf);
+    return null;
   }
 }
 

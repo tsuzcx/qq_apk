@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
-import bjms;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.util.QQDeviceInfo;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppRuntime;
@@ -68,8 +68,8 @@ public class LpReportInfo_dc00307
     LpReportUtils.safePut(localHashMap, "act_id", this.act_id);
     LpReportUtils.safePut(localHashMap, "act_type", this.act_type);
     LpReportUtils.safePut(localHashMap, "platform_id", 2);
-    LpReportUtils.safePut(localHashMap, "qq_version", "8.4.8.4810");
-    LpReportUtils.safePut(localHashMap, "imei", bjms.a("52b7f2"));
+    LpReportUtils.safePut(localHashMap, "qq_version", "8.4.10.4875");
+    LpReportUtils.safePut(localHashMap, "imei", QQDeviceInfo.getIMEI("52b7f2"));
     LpReportUtils.safePut(localHashMap, "module_id", this.module_id);
     LpReportUtils.safePut(localHashMap, "data_timestamp", String.valueOf(System.currentTimeMillis()));
     LpReportUtils.safePut(localHashMap, "ext0", this.ext0);

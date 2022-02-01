@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.control;
 
-import bmqh;
-import bmql;
-import bmrr;
-import bnue;
-import bnvx;
+import bofz;
+import bogd;
+import bohj;
+import bpjw;
+import bplp;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 
 public class CaptureAsyncStep$InitCombo
@@ -12,12 +12,12 @@ public class CaptureAsyncStep$InitCombo
 {
   public int a()
   {
-    bnvx.a(bmqh.a());
-    bmrr localbmrr = (bmrr)bmql.a(5);
-    localbmrr.forceInit();
-    localbmrr.a(false);
-    if ((this.a[0] != null) && ((this.a[0] instanceof bnue))) {
-      ((bnue)this.a[0]).g(false);
+    bplp.a(bofz.a());
+    bohj localbohj = (bohj)bogd.a(5);
+    localbohj.forceInit();
+    localbohj.a(false);
+    if ((this.a[0] != null) && ((this.a[0] instanceof bpjw))) {
+      ((bpjw)this.a[0]).g(false);
     }
     return 7;
   }

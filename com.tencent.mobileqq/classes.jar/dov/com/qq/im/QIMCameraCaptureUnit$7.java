@@ -1,12 +1,12 @@
 package dov.com.qq.im;
 
-import blhu;
+import bmul;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayoutNew;
 
 public class QIMCameraCaptureUnit$7
   implements Runnable
 {
-  public QIMCameraCaptureUnit$7(blhu paramblhu) {}
+  public QIMCameraCaptureUnit$7(bmul parambmul) {}
   
   public void run()
   {

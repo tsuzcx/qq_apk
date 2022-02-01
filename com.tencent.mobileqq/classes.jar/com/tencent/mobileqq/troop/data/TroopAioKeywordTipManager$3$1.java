@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.data;
 
-import bdze;
+import bfgh;
 import com.tencent.mobileqq.data.MessageRecord;
 
 class TroopAioKeywordTipManager$3$1

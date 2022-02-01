@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ski;
-import sqj;
+import sxs;
+import tdu;
 
 class ReadinjoyTabbar$2
   implements Runnable
 {
-  ReadinjoyTabbar$2(ReadinjoyTabbar paramReadinjoyTabbar, int paramInt, sqj paramsqj) {}
+  ReadinjoyTabbar$2(ReadinjoyTabbar paramReadinjoyTabbar, int paramInt, tdu paramtdu) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Sqj.a.a);
+    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Tdu.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar.2
  * JD-Core Version:    0.7.0.1
  */

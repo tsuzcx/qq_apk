@@ -1,22 +1,62 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
+import java.util.ArrayList;
 
-public class bmpt
-  implements View.OnClickListener
+class bmpt
+  implements AdapterView.OnItemClickListener
 {
-  public bmpt(VideoTrackContainerView paramVideoTrackContainerView, int paramInt) {}
+  bmpt(bmps parambmps, bmpj parambmpj) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (!paramView.isSelected()) {
-      paramView.setSelected(true);
+    Object localObject;
+    if (this.jdField_a_of_type_Bmpj != null)
+    {
+      this.jdField_a_of_type_Bmpj.dismiss();
+      if ((this.jdField_a_of_type_Bmpj.a != null) && (paramInt < this.jdField_a_of_type_Bmpj.a.size()))
+      {
+        localObject = (bmpp)this.jdField_a_of_type_Bmpj.a.get(paramInt);
+        if (((bmpp)localObject).a != 1) {
+          break label148;
+        }
+        if ((!TextUtils.isEmpty(((bmpp)localObject).c)) && (bmpr.a(this.jdField_a_of_type_Bmps.a) != null))
+        {
+          Intent localIntent = new Intent(bmpr.a(this.jdField_a_of_type_Bmps.a), QQBrowserActivity.class);
+          localIntent.putExtra("url", ((bmpp)localObject).c);
+          bmpr.a(this.jdField_a_of_type_Bmps.a).startActivity(localIntent);
+        }
+      }
     }
-    if (VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView) != null) {
-      VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).a(this.jdField_a_of_type_Int);
+    for (;;)
+    {
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      label148:
+      if (((bmpp)localObject).a == 2)
+      {
+        if (bmpr.a(this.jdField_a_of_type_Bmps.a) != null)
+        {
+          if (!TextUtils.isEmpty(bmpr.a(this.jdField_a_of_type_Bmps.a).f))
+          {
+            localObject = bmpr.a(this.jdField_a_of_type_Bmps.a).f.replace("__ACT_TYPE__", "2001");
+            this.jdField_a_of_type_Bmps.a.a((String)localObject);
+          }
+          if (bmpr.a(this.jdField_a_of_type_Bmps.a) != null) {
+            this.jdField_a_of_type_Bmps.a.a(3, bmpr.a(this.jdField_a_of_type_Bmps.a).a, bmpr.a(this.jdField_a_of_type_Bmps.a) + 1);
+          }
+        }
+        if (this.jdField_a_of_type_Bmps.a.a != null) {
+          this.jdField_a_of_type_Bmps.a.a.a();
+        }
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

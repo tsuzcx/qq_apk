@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
+import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -100,20 +100,20 @@ public class ShortVideoUpHandler
     byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    amwm localamwm = paramProtoResp.statisInfo;
+    anza localanza = paramProtoResp.statisInfo;
     int i;
     if (((FromServiceMsg)localObject).getResultCode() != 1000)
     {
       i = ((FromServiceMsg)localObject).getResultCode();
       if ((i == 1002) || (i == 1013)) {
-        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject), "", localamwm, localRichProtoResp.resps);
+        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject), "", localanza, localRichProtoResp.resps);
       }
     }
     for (;;)
     {
       RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
       return;
-      setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject), "", localamwm, localRichProtoResp.resps);
+      setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject), "", localanza, localRichProtoResp.resps);
       continue;
       try
       {
@@ -125,7 +125,7 @@ public class ShortVideoUpHandler
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localamwm, localRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, localRichProtoResp.resps);
       }
       continue;
       for (;;)
@@ -149,7 +149,7 @@ public class ShortVideoUpHandler
               paramProtoResp.fileId = ((PttShortVideo.PttShortVideoUploadResp)localObject).str_fileid.get();
               paramProtoResp.videoAttr = ((PttShortVideo.PttShortVideoUploadResp)localObject).uint32_is_hot_file.get();
               paramProtoResp.videoKandianType = ((PttShortVideo.PttShortVideoUploadResp)localObject).uint32_long_video_carry_watch_point_type.get();
-              setResult(0, 0, "", "", localamwm, paramProtoResp);
+              setResult(0, 0, "", "", localanza, paramProtoResp);
             }
             catch (Exception localException)
             {
@@ -164,7 +164,7 @@ public class ShortVideoUpHandler
           paramProtoReq = null;
           continue;
         }
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localamwm, paramProtoReq);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, paramProtoReq);
         break;
         paramProtoReq = localException.bytes_ukey.get().toByteArray();
         if (((localException.rpt_same_area_out_addr.size() <= 0) && (localException.rpt_diff_area_out_addr.size() <= 0)) || (paramProtoReq == null) || (paramProtoReq.length == 0)) {
@@ -186,7 +186,7 @@ public class ShortVideoUpHandler
           return;
         }
       }
-      setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localamwm, paramProtoResp);
+      setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localanza, paramProtoResp);
     }
   }
   

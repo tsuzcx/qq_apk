@@ -1,33 +1,18 @@
-import android.annotation.TargetApi;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import rx.functions.Action1;
 
-@TargetApi(14)
-public class vnh
-  implements vms
+final class vnh
+  implements Action1<Throwable>
 {
-  public int a;
+  vnh(RoundImageView paramRoundImageView, Drawable paramDrawable) {}
   
-  public void a()
+  public void a(Throwable paramThrowable)
   {
-    ((vna)vux.a(6)).a(this.a);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public void a(List<vmp> paramList, boolean paramBoolean)
-  {
-    if (paramList == null) {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView == null) {
       return;
     }
-    ((vna)vux.a(6)).a(paramList, this.a, paramBoolean);
-  }
-  
-  public void a(vmt paramvmt)
-  {
-    ((vna)vux.a(6)).a(paramvmt);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

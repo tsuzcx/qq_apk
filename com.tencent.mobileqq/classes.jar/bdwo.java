@@ -1,10 +1,8 @@
-import android.widget.TextView;
+import com.tencent.shadow.dynamic.host.PluginManager;
 
-class bdwo
-{
-  public int a;
-  public TextView a;
-}
+public abstract interface bdwo
+  extends PluginManager
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

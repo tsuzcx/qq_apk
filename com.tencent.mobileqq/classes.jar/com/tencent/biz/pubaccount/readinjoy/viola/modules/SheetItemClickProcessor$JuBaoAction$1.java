@@ -4,22 +4,22 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.net.URLEncoder;
-import pay;
-import tkk;
+import pkh;
+import txy;
 
 public class SheetItemClickProcessor$JuBaoAction$1
   implements Runnable
 {
-  public SheetItemClickProcessor$JuBaoAction$1(tkk paramtkk, String paramString) {}
+  public SheetItemClickProcessor$JuBaoAction$1(txy paramtxy, String paramString) {}
   
   public void run()
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     try
     {
-      localObject = (QQAppInterface)pay.a();
+      localObject = (QQAppInterface)pkh.a();
       if (localObject == null) {
-        break label87;
+        break label88;
       }
       localObject = ((QQAppInterface)localObject).getAccount();
       localObject = "https://guanjia.qq.com/online_server/m_report.html?shareUrl=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString, "utf-8") + "&qq=" + (String)localObject + "&_wv=7";
@@ -34,13 +34,13 @@ public class SheetItemClickProcessor$JuBaoAction$1
       }
     }
     if (BaseActivity.sTopActivity != null) {
-      pay.a(BaseActivity.sTopActivity, (String)localObject);
+      pkh.a(BaseActivity.sTopActivity, (String)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.SheetItemClickProcessor.JuBaoAction.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.qphone.base.util.QLog;
-import qid;
-import qif;
-import rer;
+import quh;
+import quj;
+import rqy;
 
 public class ReadInJoySocializeRecommendFollowView$10$2
   implements Runnable
 {
-  public ReadInJoySocializeRecommendFollowView$10$2(qif paramqif, ArticleInfo paramArticleInfo, boolean paramBoolean) {}
+  public ReadInJoySocializeRecommendFollowView$10$2(quj paramquj, ArticleInfo paramArticleInfo, boolean paramBoolean) {}
   
   public void run()
   {
@@ -18,8 +18,8 @@ public class ReadInJoySocializeRecommendFollowView$10$2
       QLog.d("ReadInJoySocializeRecommendFollowView", 2, "onUpdateAfterAccountFollow articleInfo = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo + " isFollow = " + this.jdField_a_of_type_Boolean);
     }
     long l = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a;
-    if ((qid.a(this.jdField_a_of_type_Qif.a) == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID == 70L)) {
-      qid.a(this.jdField_a_of_type_Qif.a, l);
+    if ((quh.a(this.jdField_a_of_type_Quj.a) == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID == 70L)) {
+      quh.a(this.jdField_a_of_type_Quj.a, l);
     }
   }
 }

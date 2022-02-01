@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.recent;
 
-import aklx;
+import alhp;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 public class RecentOptPopBar$4
   implements Runnable
 {
-  public RecentOptPopBar$4(aklx paramaklx) {}
+  public RecentOptPopBar$4(alhp paramalhp) {}
   
   public void run()
   {

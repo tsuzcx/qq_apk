@@ -1,287 +1,226 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pluginsdk.IOUtil;
-import com.tencent.mobileqq.soload.LoadParam.LoadItem;
-import com.tencent.mobileqq.soload.SoLoadInfo;
-import com.tencent.mobileqq.soload.config.SoConfig.RelatedFileInfo;
-import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
+import android.annotation.TargetApi;
+import android.os.AsyncTask;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class bbzk
+  extends AsyncTask<Void, Void, Void>
 {
-  private static Map<String, SharedPreferences> a = new HashMap();
+  private static Comparator<bbzd> jdField_a_of_type_JavaUtilComparator = new bbzn();
+  private static final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(0, 3, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new bbzl());
+  private static Comparator<bbzd> jdField_b_of_type_JavaUtilComparator = new bbzo();
+  private final int jdField_a_of_type_Int = 300;
+  private bbzp jdField_a_of_type_Bbzp;
+  private String jdField_a_of_type_JavaLangString;
+  private List<? extends bbzd> jdField_a_of_type_JavaUtilList;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  boolean jdField_a_of_type_Boolean = false;
+  private String jdField_b_of_type_JavaLangString;
+  private List<Future<List<bbzd>>> jdField_b_of_type_JavaUtilList;
+  private List<bbzd> c;
   
-  public static long a()
+  public bbzk(String paramString1, String paramString2, List<? extends bbzd> paramList, bbzp parambbzp)
   {
-    return a("dynamic_so_load").getLong("key_last_rsp_time", 0L);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Bbzp = parambbzp;
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(20);
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.c = new ArrayList();
   }
   
-  private static SharedPreferences a(String paramString)
+  private void a(List<bbzd> paramList, String paramString)
   {
-    SharedPreferences localSharedPreferences2 = (SharedPreferences)a.get(paramString);
-    SharedPreferences localSharedPreferences1 = localSharedPreferences2;
-    if (localSharedPreferences2 == null)
+    if (paramList.size() > 20) {}
+    for (int i = 20;; i = paramList.size())
     {
-      localSharedPreferences1 = BaseApplicationImpl.getApplication().getSharedPreferences(paramString, 4);
-      a.put(paramString, localSharedPreferences1);
-    }
-    return localSharedPreferences1;
-  }
-  
-  static bbzj a(String paramString)
-  {
-    return bbzj.a(a("so_crash").getString(b(paramString), ""));
-  }
-  
-  static bbzj a(String paramString1, String paramString2)
-  {
-    paramString1 = a(paramString1);
-    if ((paramString1 != null) && (paramString1.jdField_a_of_type_JavaLangString.equals(paramString2))) {
-      return paramString1;
-    }
-    return null;
-  }
-  
-  static bbzx a(LoadParam.LoadItem paramLoadItem, @NonNull SoConfig.SoDetailInfo paramSoDetailInfo)
-  {
-    try
-    {
-      paramLoadItem = bbzx.a(a("dynamic_so_load").getString(a(paramLoadItem.name), ""));
-      boolean bool = a(paramLoadItem, paramSoDetailInfo);
-      if (bool) {
-        return paramLoadItem;
+      int j = 0;
+      while (j < i)
+      {
+        bbzc localbbzc = (bbzc)paramList.get(j);
+        if (QLog.isColorLevel()) {
+          QLog.d("SearchTask", 2, "printSearchResultData " + paramString + "matchDegree : " + localbbzc.c() + " message time : " + localbbzc.Y);
+        }
+        j += 1;
       }
     }
-    catch (Throwable paramLoadItem)
+  }
+  
+  protected Void a(Void... paramVarArgs)
+  {
+    int j;
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      QLog.e("SoLoadWidget.SoDataUtil", 1, paramLoadItem, new Object[0]);
       if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.SoDataUtil", 2, "[getLocalInfoFromCache] no cache, use default!");
+        QLog.d("SearchTask", 2, "Start doInBackground , keyword = " + this.jdField_a_of_type_JavaLangString);
+      }
+      int k = this.jdField_a_of_type_JavaUtilList.size();
+      int m = k / 300;
+      int i = 0;
+      int n;
+      if (i < m + 1)
+      {
+        n = i * 300;
+        if (n + 300 <= k) {
+          break label168;
+        }
+        j = k;
+        label91:
+        if ((!isCancelled()) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown())) {
+          break label178;
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          this.c.clear();
+          l1 = System.currentTimeMillis();
+          i = 0;
+          if ((i >= this.jdField_b_of_type_JavaUtilList.size()) || (isCancelled()))
+          {
+            this.jdField_b_of_type_JavaUtilList.clear();
+            boolean bool = isCancelled();
+            if (!bool) {
+              continue;
+            }
+            return null;
+            label168:
+            j = n + 300;
+            break label91;
+            label178:
+            paramVarArgs = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new bbzm(this, n, j));
+            this.jdField_b_of_type_JavaUtilList.add(paramVarArgs);
+            i += 1;
+            break;
+          }
+          paramVarArgs = (List)((Future)this.jdField_b_of_type_JavaUtilList.get(i)).get();
+          if (i == 0)
+          {
+            this.c.addAll(paramVarArgs);
+            paramVarArgs.clear();
+            i += 1;
+            continue;
+          }
+          localIterator = paramVarArgs.iterator();
+        }
+        catch (InterruptedException paramVarArgs)
+        {
+          Iterator localIterator;
+          bbzd localbbzd;
+          paramVarArgs.printStackTrace();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("SearchTask", 2, "InterruptedException happens, keyword = " + this.jdField_a_of_type_JavaLangString + " : ");
+          this.jdField_a_of_type_Boolean = false;
+          return null;
+          if (((bbzd)this.c.get(j)).c() >= localbbzd.c()) {
+            continue;
+          }
+          this.c.set(j, localbbzd);
+          continue;
+        }
+        catch (ExecutionException paramVarArgs)
+        {
+          long l1;
+          paramVarArgs.printStackTrace();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("SearchTask", 2, "InterruptedException happens, keyword = " + this.jdField_a_of_type_JavaLangString + " : ");
+          continue;
+          a(this.c);
+          l2 = System.currentTimeMillis();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("SearchTask", 2, "SearchTask ======= doInBackground time = " + (l2 - l1) + " , keyword = " + this.jdField_a_of_type_JavaLangString);
+          continue;
+        }
+        if (localIterator.hasNext())
+        {
+          localbbzd = (bbzd)localIterator.next();
+          if (!isCancelled())
+          {
+            j = this.c.indexOf(localbbzd);
+            if (-1 != j) {
+              continue;
+            }
+            this.c.add(localbbzd);
+          }
+        }
       }
     }
-    return new bbzx();
-  }
-  
-  private static String a()
-  {
-    if (bbzl.a()) {
-      return "_arm64_path";
-    }
-    return "_arm32_path";
-  }
-  
-  static String a(LoadParam.LoadItem paramLoadItem)
-  {
-    try
-    {
-      paramLoadItem = a("dynamic_so_load").getString("key_last_succ_" + paramLoadItem.name + a(), "");
-      return paramLoadItem;
-    }
-    catch (Throwable paramLoadItem)
-    {
-      paramLoadItem.printStackTrace();
-    }
-    return "";
-  }
-  
-  private static String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("key_local_info_").append(paramString);
-    if (!bbzl.a()) {}
-    for (paramString = "_32";; paramString = "_64") {
-      return paramString;
-    }
-  }
-  
-  public static void a()
-  {
-    SharedPreferences localSharedPreferences = a("dynamic_so_load");
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    localSharedPreferences.edit().putLong("key_last_rsp_time", l).apply();
-  }
-  
-  static void a(bbzj parambbzj, String paramString)
-  {
-    SharedPreferences localSharedPreferences = a("so_crash");
-    paramString = b(paramString);
-    localSharedPreferences.edit().putString(paramString, parambbzj.a()).commit();
-  }
-  
-  static void a(LoadParam.LoadItem paramLoadItem, @NonNull SoLoadInfo paramSoLoadInfo)
-  {
     for (;;)
     {
-      try
-      {
-        SharedPreferences localSharedPreferences = a("dynamic_so_load");
-        String str1 = a(paramLoadItem.name);
-        bbzx localbbzx = a(paramLoadItem, paramSoLoadInfo.soDetailInfo);
-        localObject = paramSoLoadInfo.soDetailInfo.relatedFileInfo;
-        boolean bool1 = a(localbbzx, paramSoLoadInfo);
-        boolean bool2 = a(localbbzx, paramSoLoadInfo, (SoConfig.RelatedFileInfo)localObject);
-        if ((bool1) && (bool2)) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("SoLoadWidget.SoDataUtil", 2, "[saveLocalInfo] need cal crc or save!");
-        }
-        String str2 = paramSoLoadInfo.soDetailInfo.url;
-        if (localObject != null)
-        {
-          localObject = ((SoConfig.RelatedFileInfo)localObject).url;
-          if (!bool1) {
-            break label173;
-          }
-          l = localbbzx.jdField_a_of_type_Long;
-          paramLoadItem = new bbzx(paramSoLoadInfo.getVer(), paramLoadItem.name, paramSoLoadInfo.soPathToLoad, l, str2, (String)localObject, paramSoLoadInfo.rFileFolder);
-          localSharedPreferences.edit().putString(str1, paramLoadItem.a()).commit();
-          return;
-        }
+      long l2;
+      this.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchTask", 2, "doInBackground:: inputSet is null.");
       }
-      catch (Throwable paramLoadItem)
-      {
-        paramLoadItem.printStackTrace();
-        return;
-      }
-      Object localObject = null;
-      continue;
-      label173:
-      long l = IOUtil.getCRC32Value(new File(paramSoLoadInfo.soPathToLoad));
     }
   }
   
-  static void a(LoadParam.LoadItem paramLoadItem, String paramString)
+  @TargetApi(11)
+  public void a()
   {
-    try
+    executeOnExecutor(jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, new Void[0]);
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchTask", 2, "Start execute , keyword = " + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    if (isCancelled())
     {
-      a("dynamic_so_load").edit().putString("key_last_succ_" + paramLoadItem.name + a(), paramString).apply();
+      this.c.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdown();
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchTask", 2, "onPostExecute:: isCancelled.");
+      }
+    }
+    while (this.jdField_a_of_type_Bbzp == null) {
       return;
     }
-    catch (Throwable paramLoadItem)
-    {
-      paramLoadItem.printStackTrace();
+    int i = 1;
+    if (this.jdField_a_of_type_Boolean) {
+      i = 0;
     }
+    this.jdField_a_of_type_Bbzp.a(i, this.c);
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdown();
   }
   
-  static void a(String paramString)
+  protected void a(List<bbzd> paramList)
   {
-    bbzj localbbzj = a(paramString);
-    if (localbbzj != null)
-    {
-      localbbzj.jdField_a_of_type_Int = 0;
-      localbbzj.jdField_a_of_type_Long = 0L;
-      a(localbbzj, paramString);
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchTask", 2, "start sortResultSet(), keyword = " + this.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  private static boolean a(@NonNull bbzx parambbzx, @NonNull SoLoadInfo paramSoLoadInfo)
-  {
-    return (TextUtils.equals(parambbzx.c, paramSoLoadInfo.soPathToLoad)) && (parambbzx.jdField_a_of_type_Long != -1L);
-  }
-  
-  private static boolean a(@NonNull bbzx parambbzx, @NonNull SoLoadInfo paramSoLoadInfo, SoConfig.RelatedFileInfo paramRelatedFileInfo)
-  {
-    return (paramRelatedFileInfo == null) || (TextUtils.equals(parambbzx.f, paramSoLoadInfo.rFileFolder));
-  }
-  
-  private static boolean a(@NonNull bbzx parambbzx, @NonNull SoConfig.SoDetailInfo paramSoDetailInfo)
-  {
-    if (!TextUtils.equals(paramSoDetailInfo.url, parambbzx.d)) {}
-    while ((paramSoDetailInfo.relatedFileInfo != null) && (!TextUtils.equals(paramSoDetailInfo.relatedFileInfo.url, parambbzx.e))) {
-      return false;
+    Collections.sort(paramList, jdField_a_of_type_JavaUtilComparator);
+    int i = Math.min(paramList.size(), 30);
+    List localList = paramList.subList(0, i);
+    Collections.sort(localList, jdField_b_of_type_JavaUtilComparator);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(localList);
+    localArrayList.addAll(paramList.subList(i, paramList.size()));
+    a(paramList, "after sort ");
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchTask", 2, "sortResultSet() time = " + (System.currentTimeMillis() - l) + " , keyword = " + this.jdField_a_of_type_JavaLangString);
     }
-    return true;
-  }
-  
-  static bbzx b(LoadParam.LoadItem paramLoadItem, @NonNull SoConfig.SoDetailInfo paramSoDetailInfo)
-  {
-    Object localObject1 = null;
-    bbzx localbbzx = a(paramLoadItem, paramSoDetailInfo);
-    Object localObject2 = localbbzx.c;
-    if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!new File((String)localObject2).exists()))
-    {
-      localObject2 = new DownloadParam();
-      ((DownloadParam)localObject2).filePos = 1;
-      ((DownloadParam)localObject2).url = paramSoDetailInfo.url;
-      ((DownloadParam)localObject2).md5ForChecked = paramSoDetailInfo.md5;
-      localObject2 = PreloadManager.a((DownloadParam)localObject2);
-      if ((localObject2 == null) || (((PreloadManager.PathResult)localObject2).folderPath == null)) {
-        break label270;
-      }
-    }
-    label270:
-    for (paramLoadItem = new File(((PreloadManager.PathResult)localObject2).folderPath, paramLoadItem.soFileName).getAbsolutePath();; paramLoadItem = null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.SoDataUtil", 2, "[getLocalxxConfig] try get so from sync method");
-      }
-      localbbzx.c = paramLoadItem;
-      localbbzx.jdField_a_of_type_Long = -1L;
-      if (paramSoDetailInfo.relatedFileInfo != null)
-      {
-        paramLoadItem = localbbzx.f;
-        if ((TextUtils.isEmpty(paramLoadItem)) || (!new File(paramLoadItem).exists()))
-        {
-          paramLoadItem = new DownloadParam();
-          paramLoadItem.filePos = 1;
-          paramLoadItem.url = paramSoDetailInfo.relatedFileInfo.url;
-          paramLoadItem.md5ForChecked = paramSoDetailInfo.relatedFileInfo.md5;
-          paramSoDetailInfo = PreloadManager.a(paramLoadItem);
-          paramLoadItem = localObject1;
-          if (paramSoDetailInfo != null)
-          {
-            paramLoadItem = localObject1;
-            if (!TextUtils.isEmpty(paramSoDetailInfo.folderPath)) {
-              paramLoadItem = paramSoDetailInfo.folderPath;
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("SoLoadWidget.SoDataUtil", 2, "[getLocalxxConfig] try get rPath from sync method");
-          }
-          localbbzx.f = paramLoadItem;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.SoDataUtil", 2, "[getLocalInfoFromCacheOrConfig] return info from cache");
-      }
-      return localbbzx;
-    }
-  }
-  
-  private static String b(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("key_crash_info_").append(paramString);
-    if (!bbzl.a()) {}
-    for (paramString = "_32";; paramString = "_64") {
-      return paramString;
-    }
-  }
-  
-  public static void b(String paramString)
-  {
-    bbzj localbbzj = a(paramString);
-    if ((localbbzj != null) && (!localbbzj.b()))
-    {
-      localbbzj.b = 0L;
-      a(localbbzj, paramString);
-    }
-  }
-  
-  static void c(String paramString)
-  {
-    SharedPreferences localSharedPreferences = a("dynamic_so_load");
-    paramString = a(paramString);
-    localSharedPreferences.edit().remove(paramString).apply();
   }
 }
 

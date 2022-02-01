@@ -1,18 +1,23 @@
+import android.graphics.RectF;
+
 public class aign
-  extends aigo
 {
-  public final apza a;
-  public final boolean a;
+  public int a;
+  public aigo a;
+  public aigp a;
+  public RectF a;
   
-  public aign(apza paramapza, boolean paramBoolean)
+  public aign()
   {
-    this.jdField_a_of_type_Apza = paramapza;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_Aigp = new aigp(0.0D, 0.0D);
+    this.jdField_a_of_type_Aigo = new aigo(0.0D, 0.0D);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public boolean a()
+  public String toString()
   {
-    return true;
+    return "ItemStatus{rect=" + this.jdField_a_of_type_AndroidGraphicsRectF + ", velocity=" + this.jdField_a_of_type_Aigp + ", acceleration=" + this.jdField_a_of_type_Aigo + '}';
   }
 }
 

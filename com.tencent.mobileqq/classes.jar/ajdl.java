@@ -1,62 +1,57 @@
-import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class ajdl
-  extends TransProcessorHandler
+  extends aofu
 {
-  final WeakReference<Conversation> a;
+  public ajdl(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
   
-  public ajdl(Conversation paramConversation)
+  protected void onGetTroopRecommendGrayTipsPerson(boolean paramBoolean1, String paramString1, ArrayList<ajcv> paramArrayList, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString2)
   {
-    this.a = new WeakReference(paramConversation);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int j = 0;
-    Conversation localConversation = (Conversation)this.a.get();
-    if (localConversation == null) {}
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopRecommendGrayTipsPerson ").append(paramBoolean1).append(" ").append(paramString1).append(" ");
+      if (paramArrayList == null)
+      {
+        localObject = "";
+        QLog.i("TroopRecommendFriendFragment", 2, localObject + " " + paramBoolean2 + " " + paramString2);
+      }
+    }
+    else if ((paramBoolean1) && (TroopRecommendFriendFragment.a(this.a).equals(paramString1)))
+    {
+      TroopRecommendFriendFragment.a(this.a).setVisibility(8);
+      if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
+        break label167;
+      }
+      TroopRecommendFriendFragment.a(this.a, paramArrayOfByte);
+      TroopRecommendFriendFragment.a(this.a).a(paramArrayList);
+      TroopRecommendFriendFragment.a(this.a).notifyDataSetChanged();
+    }
+    label167:
     do
     {
-      FileMsg localFileMsg;
-      int k;
-      int i;
       do
       {
-        do
-        {
-          return;
-          localFileMsg = (FileMsg)paramMessage.obj;
-        } while ((Conversation.a(localConversation) == null) || (localFileMsg == null) || (TextUtils.isEmpty(localFileMsg.mUin)));
-        k = paramMessage.what;
-        if (localFileMsg.fileType != 1)
-        {
-          i = j;
-          if (localFileMsg.fileType != 2) {}
-        }
-        else if ((k != 1001) && (k != 1002) && (k != 1000) && (k != 1005))
-        {
-          i = j;
-          if (k != 1003) {}
-        }
-        else
-        {
-          i = 1;
-        }
-      } while ((i == 0) && (((k != 1003) && (k != 2003)) || ((localFileMsg.fileType != 2) && (!localConversation.f))));
-      localConversation.a(8, localFileMsg.mUin, -2147483648);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.recent", 2, "refresh recent, from_transferListener2");
+        return;
+        localObject = Integer.valueOf(paramArrayList.size());
+        break;
+      } while (TextUtils.isEmpty(paramString2));
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopRecommendFriendFragment", 2, "onGetTroopRecommendGrayTipsPerson no data");
+      }
+      TroopRecommendFriendFragment.a(this.a).setVisibility(0);
+      paramString1 = TroopRecommendFriendFragment.a(this.a).findViewById(2131373219);
+      if (paramString1 != null) {
+        paramString1.setVisibility(8);
+      }
+      paramString1 = (TextView)TroopRecommendFriendFragment.a(this.a).findViewById(2131380283);
+    } while (paramString1 == null);
+    paramString1.setText(paramString2);
   }
 }
 

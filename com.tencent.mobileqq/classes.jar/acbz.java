@@ -1,83 +1,128 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletTips;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBSInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import org.jetbrains.annotations.Nullable;
-import tencent.im.s2c.msgtype0x210.submsgtype0x9f.MsgBody;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Looper;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Callback;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialStatus;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public class acbz
-  implements abzb
+public final class acbz
 {
-  @Nullable
-  private static MessageRecord a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  private AdIPCManager.Callback jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Callback = new acca(this);
+  private GdtInterstitialParams jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  public acbz(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams)
   {
-    MsgBody localMsgBody = new MsgBody();
-    MessageForQQWalletTips localMessageForQQWalletTips = (MessageForQQWalletTips)bbli.a(-2029);
+    this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams = paramGdtInterstitialParams;
+    acim.a().a(paramContext, null);
+    accf.a().b(paramContext);
+  }
+  
+  private GdtInterstitialParams a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams;
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    boolean bool;
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      bool = false;
+    }
     for (;;)
     {
-      int j;
-      String str;
-      try
+      acho.b("GdtInterstitialAd", String.format("close %b", new Object[] { Boolean.valueOf(bool) }));
+      return;
+      if (this.jdField_a_of_type_Boolean)
       {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        j = 0;
-        str = "";
-        paramMsgType0x210 = str;
-        i = j;
-        switch (localMsgBody.sint32_sessiontype.get())
+        if (this.b)
         {
-        case 5: 
-          localMessageForQQWalletTips.senderUin = (localMsgBody.uint64_sender_uin.get() + "");
-          localMessageForQQWalletTips.reciverUin = (localMsgBody.uint64_receiver_uin.get() + "");
-          localMessageForQQWalletTips.senderContent = localMsgBody.bytes_sender_rich_content.get().toStringUtf8();
-          localMessageForQQWalletTips.reciverContent = localMsgBody.bytes_receiver_rich_content.get().toStringUtf8();
-          localMessageForQQWalletTips.authKey = localMsgBody.bytes_authkey.get().toStringUtf8();
-          str = paramQQAppInterface.getCurrentAccountUin();
-          if (paramQQAppInterface.getCurrentAccountUin().equals(localMessageForQQWalletTips.senderUin))
-          {
-            paramQQAppInterface = localMessageForQQWalletTips.reciverUin;
-            localMessageForQQWalletTips.init(str, paramQQAppInterface, paramMsgType0x210, "[QQWallet Tips]", paramMsgInfo.getUMsgTime(), -2029, i, paramMsgInfo.getShMsgSeq());
-            localMessageForQQWalletTips.isread = true;
-            localMessageForQQWalletTips.shmsgseq = paramMsgInfo.shMsgSeq;
-            localMessageForQQWalletTips.msgUid = paramMsgInfo.lMsgUid;
-            localMessageForQQWalletTips.getBytes();
-            localMessageForQQWalletTips.onReceiveGrapTips();
-            return localMessageForQQWalletTips;
-          }
-        case 3: 
-          i = 1000;
-          paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_uin.get());
-          break;
-        case 4: 
-          i = 1004;
-          paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_uin.get());
-          continue;
-          paramQQAppInterface = localMessageForQQWalletTips.senderUin;
-          break;
-        default: 
-          paramMsgType0x210 = str;
+          bool = false;
+        }
+        else if (a() == null)
+        {
+          bool = false;
+        }
+        else
+        {
+          this.b = true;
+          Bundle localBundle = new Bundle();
+          localBundle.putString("IPC_ACTION", "ipc_interstitial_close");
+          localBundle.putString("IPC_TO_PROCESS_NAME", AdProcessManager.INSTANCE.getWebProcessName());
+          localBundle.putString("TRACE_ID", a().a());
+          AdIPCManager.INSTANCE.send(paramActivity, new AdIPCManager.Params(localBundle), new WeakReference(this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Callback));
+          bool = true;
         }
       }
-      catch (Exception paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        return localMessageForQQWalletTips;
+      else {
+        bool = false;
       }
-      int i = j;
-      continue;
-      i = 1001;
-      paramMsgType0x210 = str;
     }
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void a(Activity paramActivity, int paramInt, Intent paramIntent)
   {
-    return a(paramabxc.a(), paramMsgInfo, paramMsgType0x210);
+    acho.b("GdtInterstitialAd", "onClose");
+    if (paramIntent == null) {}
+    while ((GdtInterstitialStatus)paramIntent.getParcelableExtra("interstitialStatus") != null) {
+      return;
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams != null) {
+      this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.a = paramJSONObject;
+    }
+  }
+  
+  public boolean a()
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (a() != null)) {
+      return a().b();
+    }
+    return false;
+  }
+  
+  public boolean a(Activity paramActivity)
+  {
+    int i;
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      i = 1;
+    }
+    for (;;)
+    {
+      acho.b("GdtInterstitialAd", String.format("show %d", new Object[] { Integer.valueOf(i) }));
+      acid.a(paramActivity, a(), i);
+      if (i != 0) {
+        break;
+      }
+      return true;
+      if (!a())
+      {
+        i = 1;
+      }
+      else
+      {
+        int j = GdtInterstitialFragment.a(paramActivity, a());
+        i = j;
+        if (j == 0)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          i = 0;
+        }
+      }
+    }
+    return false;
   }
 }
 

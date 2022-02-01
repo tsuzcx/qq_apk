@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import amtj;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -20,7 +19,8 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhdy;
+import anvx;
+import bioq;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -30,7 +30,7 @@ public class FolderTextView
   extends RelativeLayout
 {
   private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bhdy(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bioq(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
@@ -63,7 +63,7 @@ public class FolderTextView
       this.jdField_a_of_type_Int = ViewUtils.pxTosp(this.jdField_a_of_type_Int);
       this.c = paramAttributeSet.getInt(5, 2);
       this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(4);
-      this.d = paramAttributeSet.getColor(3, paramContext.getResources().getColor(2131166322));
+      this.d = paramAttributeSet.getColor(3, paramContext.getResources().getColor(2131166331));
     }
     catch (Exception paramContext)
     {
@@ -78,7 +78,7 @@ public class FolderTextView
       paramAttributeSet.recycle();
     }
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = amtj.a(2131703790);
+      this.jdField_a_of_type_JavaLangString = anvx.a(2131704141);
     }
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       this.jdField_a_of_type_JavaLangCharSequence = "";
@@ -167,7 +167,7 @@ public class FolderTextView
   private void a()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131379623);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131379935);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_b_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(this.jdField_a_of_type_Int);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
@@ -181,8 +181,8 @@ public class FolderTextView
     int i = ViewUtils.dip2px(10.0F);
     this.jdField_b_of_type_AndroidWidgetTextView.setPadding(i, 0, i, 0);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(8, 2131379623);
-    localLayoutParams.addRule(7, 2131379623);
+    localLayoutParams.addRule(8, 2131379935);
+    localLayoutParams.addRule(7, 2131379935);
     addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       post(new FolderTextView.1(this));

@@ -1,40 +1,73 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0xaa.SubMsgType0xaa.MsgBody;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Callback;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialPreDownloader.1;
+import java.lang.ref.WeakReference;
 
-public class accf
-  implements abzb
+public final class accf
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  private static volatile accf jdField_a_of_type_Accf;
+  private volatile long jdField_a_of_type_Long = -2147483648L;
+  private volatile acbv jdField_a_of_type_Acbv;
+  private acbx jdField_a_of_type_Acbx = new acch(this);
+  private AdIPCManager.Callback jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Callback = new accg(this);
+  
+  public static accf a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameParty", 2, "recv 0x210_0xaa push message");
-    }
-    SubMsgType0xaa.MsgBody localMsgBody = new SubMsgType0xaa.MsgBody();
+    if (jdField_a_of_type_Accf == null) {}
     try
     {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      ((aubl)paramQQAppInterface.getManager(156)).a(localMsgBody, false);
-      return;
+      if (jdField_a_of_type_Accf == null) {
+        jdField_a_of_type_Accf = new accf();
+      }
+      return jdField_a_of_type_Accf;
     }
-    catch (Exception paramMsgType0x210)
-    {
-      for (;;)
+    finally {}
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Acbv != null) {
+      return this.jdField_a_of_type_Acbv.a();
+    }
+    return -2147483648;
+  }
+  
+  public void a()
+  {
+    acho.b("GdtInterstitialPreDownloader", "preDownloadImpl");
+    if (this.jdField_a_of_type_Acbv == null) {
+      synchronized (jdField_a_of_type_Accf)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("GameParty", 2, "recv 0x210_0xaa, prase msgBody error");
+        if (this.jdField_a_of_type_Acbv == null)
+        {
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          this.jdField_a_of_type_Acbv = new acbv(new WeakReference(this.jdField_a_of_type_Acbx), accc.a().a(), -2147483648L);
+          acid.a(BaseApplicationImpl.getApplication());
         }
+        return;
       }
     }
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void a(Context paramContext)
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    paramContext = new WeakReference(paramContext);
+    AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialPreDownloader.1(this, paramContext), 4, 300000L);
+  }
+  
+  public void b(Context paramContext)
+  {
+    acho.b("GdtInterstitialPreDownloader", String.format("preDownload", new Object[0]));
+    paramContext = new Bundle();
+    paramContext.putString("IPC_ACTION", "ipc_interstitial_predownload");
+    paramContext.putString("IPC_TO_PROCESS_NAME", AdProcessManager.INSTANCE.getWebProcessName());
+    AdIPCManager.INSTANCE.send(BaseApplicationImpl.getContext(), new AdIPCManager.Params(paramContext), new WeakReference(this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Callback));
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.text.TextUtils;
-import avtc;
+import awzd;
 
 class EmoticonPanelController$6
-  implements avtc<String, Integer>
+  implements awzd<String, Integer>
 {
   EmoticonPanelController$6(EmoticonPanelController paramEmoticonPanelController, int paramInt) {}
   
@@ -20,7 +20,7 @@ class EmoticonPanelController$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelController.6
  * JD-Core Version:    0.7.0.1
  */

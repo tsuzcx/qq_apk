@@ -5,23 +5,23 @@ import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
 import com.tencent.qphone.base.util.BaseApplication;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import zjy;
+import zzd;
 
 public class SubscribeAdDeviceInfoHelper$1
   implements Runnable
 {
-  public SubscribeAdDeviceInfoHelper$1(zjy paramzjy) {}
+  public SubscribeAdDeviceInfoHelper$1(zzd paramzzd) {}
   
   public void run()
   {
     Object localObject = new GdtDeviceInfoHelper.Params();
     ((GdtDeviceInfoHelper.Params)localObject).businessIdForAidTicketAndTaidTicket = "1b0ad2";
     localObject = GdtDeviceInfoHelper.create(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);
-    zjy localzjy = this.this$0;
+    zzd localzzd = this.this$0;
     if (localObject != null) {}
     for (localObject = ((GdtDeviceInfoHelper.Result)localObject).deviceInfo;; localObject = null)
     {
-      zjy.a(localzjy, (qq_ad_get.QQAdGet.DeviceInfo)localObject);
+      zzd.a(localzzd, (qq_ad_get.QQAdGet.DeviceInfo)localObject);
       return;
     }
   }

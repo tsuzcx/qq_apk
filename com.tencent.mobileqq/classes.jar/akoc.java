@@ -1,19 +1,51 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.Holder;
+import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class akoc
-  extends aknz
+  extends akmj
 {
-  public akoc(Context paramContext)
+  public akoc(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    this.a = "";
+    super(paramNewPhotoListActivity);
   }
   
-  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public void caseVideo(View paramView, int paramInt)
   {
-    return new akoc(BaseApplication.getContext());
+    paramView = ((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt);
+    if (paramView.fileSize > this.mPhotoCommonData.videoSizeLimit)
+    {
+      QQToast.a(this.mActivity, "请上传不超过" + (float)this.mPhotoCommonData.videoSizeLimit / 1024.0F / 1024.0F / 1024.0F + "G的视频", 0).a();
+      return;
+    }
+    if (paramView.mDuration > this.mPhotoCommonData.videoDurationLimit + 1000L)
+    {
+      QQToast.a(this.mActivity, "请上传不超过" + this.mPhotoCommonData.videoDurationLimit / 60L / 1000L + "分钟的视频", 0).a();
+      return;
+    }
+    Intent localIntent = new Intent();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramView.path);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(paramView.path, paramView);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+    localIntent.putExtra("PeakConstants.selectedMediaInfoHashMap", localHashMap);
+    localIntent.addFlags(268435456);
+    ((NewPhotoListActivity)this.mActivity).setResult(-1, localIntent);
+    d();
+  }
+  
+  public AbstractPhotoListActivity.Holder getViewCaseVideo(@NonNull AbstractPhotoListActivity.Holder paramHolder, int paramInt)
+  {
+    return super.getViewCaseVideo(paramHolder, paramInt);
   }
 }
 

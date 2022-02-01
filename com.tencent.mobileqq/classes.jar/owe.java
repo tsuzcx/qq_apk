@@ -1,21 +1,38 @@
+import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import com.tencent.mobileqq.text.QQTextBuilder;
+
 public class owe
+  extends QQTextBuilder
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  
-  public owe(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  public owe(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    super(paramCharSequence, paramInt1, paramInt2);
   }
   
-  public void a(boolean paramBoolean)
+  public int a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    int j = 0;
+    QQText.EmoticonSpan[] arrayOfEmoticonSpan = (QQText.EmoticonSpan[])getSpans(0, super.length(), QQText.EmoticonSpan.class);
+    if ((arrayOfEmoticonSpan == null) || (arrayOfEmoticonSpan.length <= 0)) {
+      return super.length();
+    }
+    int k = arrayOfEmoticonSpan.length;
+    int i = 0;
+    if (i < k)
+    {
+      QQText.EmoticonSpan localEmoticonSpan = arrayOfEmoticonSpan[i];
+      switch (localEmoticonSpan.emojiType)
+      {
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        int m = getSpanStart(localEmoticonSpan);
+        j += getSpanEnd(localEmoticonSpan) - m - 1;
+      }
+    }
+    return super.length() - j;
   }
 }
 

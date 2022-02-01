@@ -1,13 +1,19 @@
-import android.support.v4.view.ViewPager;
-
-class wli
-  implements bhjm
+public class wli
 {
-  wli(wlh paramwlh) {}
+  @zef(a="unionID")
+  public String a;
+  @zef(a="feedID")
+  public String b;
+  @zef(a="vid")
+  public String c;
+  @zef(a="fwReason")
+  public String d;
+  @zef(a="isNewFw")
+  public String e;
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public boolean a()
   {
-    this.a.a.setCurrentItem(paramInt2);
+    return "1".equals(this.e);
   }
 }
 

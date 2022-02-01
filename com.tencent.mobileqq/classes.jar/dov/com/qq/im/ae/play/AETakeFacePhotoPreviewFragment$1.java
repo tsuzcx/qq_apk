@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.play;
 
 import android.graphics.Bitmap;
-import blup;
+import bnjs;
 
 class AETakeFacePhotoPreviewFragment$1
   implements FaceChangeUtils.CropFaceCallback
@@ -12,7 +12,7 @@ class AETakeFacePhotoPreviewFragment$1
   
   public void onSuccess(Bitmap paramBitmap)
   {
-    AETakeFacePhotoPreviewFragment.access$002(blup.a(this.this$0.getActivity(), paramBitmap));
+    AETakeFacePhotoPreviewFragment.access$002(bnjs.a(this.this$0.getActivity(), paramBitmap));
   }
 }
 

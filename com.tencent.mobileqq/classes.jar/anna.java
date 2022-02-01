@@ -1,37 +1,18 @@
+import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.util.Arrays;
+import org.jetbrains.annotations.NotNull;
 
 class anna
-  implements PermissionMonitor.Listener
+  implements amvj
 {
-  static
-  {
-    if (!anmw.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  anna(anmz paramanmz, ApolloActionData paramApolloActionData) {}
   
-  anna(anmw paramanmw) {}
-  
-  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  public void a(boolean paramBoolean, String paramString, @NotNull Error paramError)
   {
-    if (anmw.a(this.jdField_a_of_type_Anmw) != Thread.currentThread()) {}
-    while ((!anmw.a(this.jdField_a_of_type_Anmw)) || (paramArrayOfObject.length != 2)) {
-      return;
+    QLog.d("ApolloDrawerInfoViewListener", 1, " handleCMSPlayerGetFrame success : " + paramBoolean);
+    if (paramBoolean) {
+      QLog.d("ApolloDrawerInfoViewListener", 1, " handleCMSPlayerGetFrame updateItemStatus : " + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId);
     }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != anmw.a(this.jdField_a_of_type_Anmw))) {
-      throw new AssertionError();
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1].getClass() != Double.class)) {
-      throw new AssertionError();
-    }
-    ShadowParcel.a((int)anmw.a(this.jdField_a_of_type_Anmw), ((Double)paramArrayOfObject[1]).doubleValue());
-    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

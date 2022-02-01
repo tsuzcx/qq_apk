@@ -1,6 +1,9 @@
-public abstract interface aujp
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
+
+public final class aujp
+  implements IHttpCommunicatorFlowCount
 {
-  public abstract void a();
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 

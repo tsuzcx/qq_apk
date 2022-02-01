@@ -59,7 +59,7 @@ public abstract class AbstractPhotoListActivity
   static final int COLUMN_COUNT = 3;
   static final String SHARE_PREFERENCE_NAME = "share";
   public static final String TAG = "PhotoListActivity";
-  FrameLayout albumListContainer;
+  public FrameLayout albumListContainer;
   public AbstractAlbumListFragment albumListFragment;
   public View bottomBar;
   public GridLayoutManager gridLayoutManager;
@@ -70,7 +70,7 @@ public abstract class AbstractPhotoListActivity
   public int mImageWidth;
   int mItemPadding;
   PhotoGridView.OnSelectListener mOnSelectChangeListener = new AbstractPhotoListActivity.1(this);
-  PhotoListBaseData mPhotoListData;
+  public PhotoListBaseData mPhotoListData;
   public PhotoListLogicBase mPhotoListLogic;
   public int mTitleBarHeight;
   int mVerticalSpacing;
@@ -80,10 +80,10 @@ public abstract class AbstractPhotoListActivity
   public Button previewBtn;
   public AsyncTask<Object, Object, List<LocalMediaInfo>> queryPhotoTask;
   public Button sendBtn;
-  TriangleView titleImage;
-  LinearLayout titleLayout;
-  TextView titleLeftBtn;
-  TextView titleText;
+  public TriangleView titleImage;
+  public LinearLayout titleLayout;
+  public TextView titleLeftBtn;
+  public TextView titleText;
   
   public static String formatTimeToString(long paramLong)
   {
@@ -200,14 +200,14 @@ public abstract class AbstractPhotoListActivity
     super.adjustStatusBar();
     try
     {
-      super.setContentView(2131561275);
+      super.setContentView(2131561336);
       getWindow().setBackgroundDrawable(null);
       this.mPhotoListLogic = ((PhotoListLogicBase)generateLogic());
       this.mPhotoListData = this.mPhotoListLogic.mPhotoListData;
       this.pref = BaseApplication.getContext().getSharedPreferences("share", 4);
       Resources localResources = getResources();
       int i = localResources.getDisplayMetrics().widthPixels;
-      this.mEdgePadding = localResources.getDimensionPixelSize(2131297429);
+      this.mEdgePadding = localResources.getDimensionPixelSize(2131297430);
       this.mImageWidth = ((i - this.mEdgePadding * 2) / 3);
       this.mImageHeight = this.mImageWidth;
       this.mPhotoListLogic.initData(paramBundle);
@@ -305,11 +305,11 @@ public abstract class AbstractPhotoListActivity
   
   protected void initUI()
   {
-    this.albumListContainer = ((FrameLayout)findViewById(2131362574));
-    this.titleLeftBtn = ((TextView)findViewById(2131369068));
+    this.albumListContainer = ((FrameLayout)findViewById(2131362588));
+    this.titleLeftBtn = ((TextView)findViewById(2131369231));
     this.titleLeftBtn.setVisibility(0);
     this.titleLeftBtn.setOnClickListener(this);
-    this.titleText = ((TextView)findViewById(2131369115));
+    this.titleText = ((TextView)findViewById(2131369278));
     String str;
     if (this.mPhotoListLogic.mPhotoCommonData.albumName != null) {
       str = this.mPhotoListLogic.mPhotoCommonData.albumName;
@@ -317,14 +317,14 @@ public abstract class AbstractPhotoListActivity
     for (;;)
     {
       setTitle(str);
-      this.titleImage = ((TriangleView)findViewById(2131369111));
+      this.titleImage = ((TriangleView)findViewById(2131369274));
       this.titleImage.setColor(this.titleText.getCurrentTextColor());
-      this.titleLayout = ((LinearLayout)findViewById(2131369062));
+      this.titleLayout = ((LinearLayout)findViewById(2131369225));
       this.titleLayout.setOnClickListener(this);
-      this.previewBtn = ((Button)findViewById(2131372922));
-      this.sendBtn = ((Button)findViewById(2131377075));
-      this.bottomBar = findViewById(2131378914);
-      this.mGridView = ((PhotoGridView)findViewById(2131372502));
+      this.previewBtn = ((Button)findViewById(2131373132));
+      this.sendBtn = ((Button)findViewById(2131377349));
+      this.bottomBar = findViewById(2131379207);
+      this.mGridView = ((PhotoGridView)findViewById(2131372696));
       this.mGridView.setScrollBarStyle(0);
       this.gridLayoutManager = new GridLayoutManager(this, 3);
       this.mGridView.setLayoutManager(this.gridLayoutManager);
@@ -384,7 +384,7 @@ public abstract class AbstractPhotoListActivity
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramCompoundButton.getId() == 2131374592) {
+    if (paramCompoundButton.getId() == 2131374832) {
       this.mPhotoListLogic.onQualityBtnClick(paramCompoundButton, paramBoolean);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
@@ -394,7 +394,7 @@ public abstract class AbstractPhotoListActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131369068) {
+    if (i == 2131369231) {
       this.mPhotoListLogic.onTitleBtnCancelClick(paramView);
     }
     do
@@ -403,19 +403,19 @@ public abstract class AbstractPhotoListActivity
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
-        if (i == 2131372922)
+        if (i == 2131373132)
         {
           this.mPhotoListLogic.onPreviewBtnClick(paramView);
         }
         else
         {
-          if (i != 2131377075) {
+          if (i != 2131377349) {
             break;
           }
           this.mPhotoListLogic.onSendBtnClick(paramView);
         }
       }
-    } while (i != 2131369062);
+    } while (i != 2131369225);
     if ((this.albumListFragment == null) || (!this.albumListFragment.isAdded()) || (this.albumListFragment.isHidden())) {}
     for (boolean bool = true;; bool = false)
     {
@@ -566,7 +566,7 @@ public abstract class AbstractPhotoListActivity
       if (!paramBoolean) {
         break label203;
       }
-      localObjectAnimator = ObjectAnimator.ofInt(this.albumListContainer, "backgroundColor", new int[] { getResources().getColor(2131165492), getResources().getColor(2131165503) });
+      localObjectAnimator = ObjectAnimator.ofInt(this.albumListContainer, "backgroundColor", new int[] { getResources().getColor(2131165498), getResources().getColor(2131165509) });
       rotate180Degrees(this.titleImage, false);
       if ((this.albumListFragment.isAdded()) || (localFragmentManager.findFragmentByTag(this.albumListFragment.toString()) != null)) {
         break label191;
@@ -576,7 +576,7 @@ public abstract class AbstractPhotoListActivity
     {
       try
       {
-        localFragmentTransaction.add(2131362574, this.albumListFragment, this.albumListFragment.toString());
+        localFragmentTransaction.add(2131362588, this.albumListFragment, this.albumListFragment.toString());
         localFragmentTransaction.commit();
         localObjectAnimator.setDuration(300L);
         localObjectAnimator.setEvaluator(new ArgbEvaluator());
@@ -594,7 +594,7 @@ public abstract class AbstractPhotoListActivity
       localFragmentTransaction.show(this.albumListFragment);
       continue;
       label203:
-      localObjectAnimator = ObjectAnimator.ofInt(this.albumListContainer, "backgroundColor", new int[] { getResources().getColor(2131165503), getResources().getColor(2131165492) });
+      localObjectAnimator = ObjectAnimator.ofInt(this.albumListContainer, "backgroundColor", new int[] { getResources().getColor(2131165509), getResources().getColor(2131165498) });
       rotate180Degrees(this.titleImage, true);
       localFragmentTransaction.hide(this.albumListFragment);
     }

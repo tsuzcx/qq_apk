@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.main;
 
-import ajey;
-import ajfw;
+import akam;
+import akbk;
 
 public class MainAssistObserver$5$1
   implements Runnable
 {
-  public MainAssistObserver$5$1(ajfw paramajfw) {}
+  public MainAssistObserver$5$1(akbk paramakbk) {}
   
   public void run()
   {

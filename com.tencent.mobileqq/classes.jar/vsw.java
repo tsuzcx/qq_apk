@@ -1,10 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-public abstract class vsw
-  implements View.OnClickListener
+public abstract interface vsw
 {
-  public void onClick(View paramView) {}
+  public abstract void a(Object paramObject);
+  
+  public abstract void b(Object paramObject);
 }
 
 

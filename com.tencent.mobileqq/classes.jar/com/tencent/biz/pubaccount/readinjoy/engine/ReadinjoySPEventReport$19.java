@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import ugf;
+import uuc;
 
 public final class ReadinjoySPEventReport$19
   implements Runnable
@@ -57,7 +57,7 @@ public final class ReadinjoySPEventReport$19
         localAttributeList.att_value.set(this.b + "");
         localArrayList.add(localAttributeList);
       }
-      ugf.a(70, localArrayList);
+      uuc.a(70, localArrayList);
       return;
       label385:
       localAttributeList.att_value.set("1");

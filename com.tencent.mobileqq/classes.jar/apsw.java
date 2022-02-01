@@ -1,105 +1,126 @@
+import android.app.Activity;
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopConfess;
+import android.os.Handler;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.ArkClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.1;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.2;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.4;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.5;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class apsw
-  extends BaseBubbleBuilder
+  implements apsy
 {
-  private int c;
+  public acag a;
   
-  public apsw(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public boolean notify(String paramString1, String paramString2, String paramString3)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.c = (BaseChatItemLayout.B + AIOUtils.dp2px(20.0F, paramContext.getResources()));
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
-  }
-  
-  public aezf a()
-  {
-    return new apsy();
-  }
-  
-  public View a(ChatMessage paramChatMessage, aezf paramaezf, View paramView, BaseChatItemLayout paramBaseChatItemLayout, afce paramafce)
-  {
-    paramBaseChatItemLayout = (MessageForTroopConfess)paramChatMessage;
-    apsy localapsy = (apsy)paramaezf;
-    paramChatMessage = paramView;
-    if (paramView == null)
+    if (paramString2.equals("ad_query_mute"))
     {
-      paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558871, null);
-      paramChatMessage.setLayoutParams(new ViewGroup.LayoutParams(this.c, -2));
-      apsy.a(localapsy, (TextView)paramChatMessage.findViewById(2131380035));
-      apsy.b(localapsy, (TextView)paramChatMessage.findViewById(2131380026));
-      apsy.c(localapsy, (TextView)paramChatMessage.findViewById(2131380050));
-      apsy.a(localapsy, (ConfessNewsBgView)paramChatMessage.findViewById(2131380322));
-      apsy.a(localapsy).setPressMask(true);
-      apsy.a(localapsy, paramChatMessage.findViewById(2131370191));
+      ArkAppNotifyCenter.access$100(paramString1);
+      return true;
     }
-    apsy.a(localapsy).setBgType(paramBaseChatItemLayout.getConfessTopicId() % 4);
-    apsy.a(localapsy).setOnLongClickListener(paramafce);
-    apsy.a(localapsy).setOnTouchListener(paramafce);
-    localapsy.a(paramBaseChatItemLayout.mTroopConfessMsg);
-    paramChatMessage.setOnClickListener(new apsx(this, paramBaseChatItemLayout));
-    if (e)
-    {
-      ((apsy)paramaezf).b.append(apsy.b(localapsy).getText()).append(apsy.a(localapsy).getText());
-      if (apsy.c(localapsy).getVisibility() == 0) {
-        ((apsy)paramaezf).b.append(apsy.c(localapsy).getText());
+    if (paramString3 == null) {
+      return false;
+    }
+    QLog.d("ark.ArkAppNotifyCenter", 1, "appname : " + paramString1 + "eventName : " + paramString2 + " params : " + paramString3, null);
+    if (ArkAppNotifyCenter.arkClickListener != null) {
+      ArkAppNotifyCenter.arkClickListener.onArkClick(paramString1, paramString2, paramString3);
+    }
+    if (paramString2.equals("ad_c2s_report")) {
+      try
+      {
+        paramString1 = new JSONObject(paramString3);
+        achv.a(paramString1.getInt("op"), 0, (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString1.getJSONObject("adInfo"))));
+        QLog.d("ark.ArkAppNotifyCenter", 1, "report c2s end", null);
+        return true;
       }
-      paramChatMessage.setContentDescription(((apsy)paramaezf).b.toString());
+      catch (JSONException paramString1)
+      {
+        QLog.d("ark.ArkAppNotifyCenter", 1, paramString1, new Object[0]);
+        return false;
+      }
     }
-    return paramChatMessage;
-  }
-  
-  public String a(ChatMessage paramChatMessage)
-  {
-    return null;
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
-  {
-    if ((paramChatMessage == null) || (!(paramChatMessage instanceof MessageForTroopConfess))) {
-      return;
-    }
-    MessageForTroopConfess localMessageForTroopConfess = (MessageForTroopConfess)paramChatMessage;
-    switch (paramInt)
+    if (BaseActivity.sTopActivity == null)
     {
-    default: 
-      super.a(paramInt, paramContext, paramChatMessage);
-      return;
+      QLog.d("ark.ArkAppNotifyCenter", 1, "top activity is null");
+      return false;
     }
-    acvv.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-  }
-  
-  public void a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout, int paramInt1, int paramInt2) {}
-  
-  public bgbb[] a(View paramView)
-  {
-    paramView = new bgaz();
-    acvv.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
-    super.e(paramView, this.jdField_a_of_type_AndroidContentContext);
-    return paramView.a();
-  }
-  
-  public void b(View paramView)
-  {
-    super.b(paramView);
+    Object localObject = new JSONObject();
+    if (paramString2.equals("ad_query_cell_rect"))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new ArkAppNotifyCenter.GdtNotify.1(this, (JSONObject)localObject, paramString3, paramString1));
+      return true;
+    }
+    WeakReference localWeakReference1 = new WeakReference(BaseActivity.sTopActivity);
+    WeakReference localWeakReference2 = new WeakReference(BaseActivity.sTopActivity);
+    if (paramString2.equals("ad_click")) {
+      if (localWeakReference1 != null)
+      {
+        localObject = (Activity)localWeakReference1.get();
+        AdReporterForAnalysis.reportForARKReceiveNotification((Context)localObject, false, paramString2, paramString1, null);
+        ArkAppCenter.a().postToMainThread(new ArkAppNotifyCenter.GdtNotify.2(this, paramString3, localWeakReference1, paramString1));
+        ark.arkNotify(paramString1, "ad_click_callback", paramString3, "json");
+        if (localWeakReference1 == null) {
+          break label330;
+        }
+        paramString2 = (Activity)localWeakReference1.get();
+        label313:
+        AdReporterForAnalysis.reportForARKSendNotification(paramString2, false, "ad_click_callback", paramString1, null);
+      }
+    }
+    for (;;)
+    {
+      return true;
+      localObject = null;
+      break;
+      label330:
+      paramString2 = null;
+      break label313;
+      if (paramString2.equals("ad_request"))
+      {
+        boolean bool;
+        if (!"com.tencent.yundong".equals(paramString1))
+        {
+          bool = true;
+          label356:
+          if (localWeakReference1 == null) {
+            break label412;
+          }
+        }
+        label412:
+        for (localObject = (Activity)localWeakReference1.get();; localObject = null)
+        {
+          AdReporterForAnalysis.reportForARKReceiveNotification((Context)localObject, bool, paramString2, paramString1, null);
+          ArkAppCenter.a().postToMainThread(new ArkAppNotifyCenter.GdtNotify.3(this, paramString1, localWeakReference1, bool, paramString3, localWeakReference2));
+          break;
+          bool = false;
+          break label356;
+        }
+      }
+      if (paramString2.equals("get_device_info"))
+      {
+        QLog.d("ark.ArkAppNotifyCenter", 1, "ark get_device_info", null);
+        ArkAppCenter.a().post(paramString1, new ArkAppNotifyCenter.GdtNotify.4(this, localWeakReference2, paramString3, paramString1));
+      }
+      else if (paramString2.equals("ad_preload_after_ad_loaded"))
+      {
+        QLog.d("ark.ArkAppNotifyCenter", 1, "ark ad_preload_after_ad_loaded", null);
+        ArkAppCenter.a().postToMainThread(new ArkAppNotifyCenter.GdtNotify.5(this, paramString3));
+      }
+    }
   }
 }
 

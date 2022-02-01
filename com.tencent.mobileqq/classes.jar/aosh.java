@@ -1,12 +1,32 @@
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface aosh
+public class aosh
+  extends aosi
 {
-  public abstract Bundle a();
+  protected aosh(QQAppInterface paramQQAppInterface, aosm paramaosm)
+  {
+    super(paramQQAppInterface, paramaosm);
+  }
   
-  public abstract String a();
+  public int a(QQMessageFacade.Message paramMessage)
+  {
+    return 527;
+  }
   
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public aosm a(QQMessageFacade.Message paramMessage)
+  {
+    Object localObject = avdu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage, c());
+    this.jdField_a_of_type_Aosm.d((String)localObject);
+    a();
+    a(paramMessage, this.jdField_a_of_type_Aosm);
+    localObject = avdu.a(paramMessage, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramMessage = avdu.a(paramMessage, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Aosm.a((Bitmap)localObject);
+    this.jdField_a_of_type_Aosm.c(paramMessage);
+    return this.jdField_a_of_type_Aosm;
+  }
 }
 
 

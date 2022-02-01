@@ -1,117 +1,99 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class bfpa
-  implements DownloadParams.DecodeHandler
+public class bfpa
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public int a;
+  private String jdField_a_of_type_JavaLangString;
+  private List<bfpb> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private JSONArray jdField_a_of_type_OrgJsonJSONArray;
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  public boolean a;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  
+  public static bfpa a(String paramString)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    int n;
-    int i1;
-    int i;
-    int j;
-    int k;
-    int m;
-    int i2;
-    int i3;
-    boolean bool;
-    label128:
-    label380:
-    do
+    bfpa localbfpa = new bfpa();
+    localbfpa.a(paramString);
+    return localbfpa;
+  }
+  
+  private void a(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    this.jdField_b_of_type_JavaLangString = paramString;
+    new ArrayList();
+    JSONObject localJSONObject1 = new JSONObject(paramString);
+    this.jdField_b_of_type_Int = localJSONObject1.optInt("errorcode");
+    this.jdField_a_of_type_JavaLangString = localJSONObject1.optString("errormsg");
+    JSONArray localJSONArray = localJSONObject1.optJSONArray("items");
+    int i = 0;
+    while (i < localJSONArray.length())
     {
-      Object localObject;
-      do
+      JSONObject localJSONObject2 = localJSONArray.getJSONObject(i);
+      bfpb localbfpb = new bfpb();
+      localbfpb.jdField_a_of_type_JavaLangString = localJSONObject2.optString("itemstring");
+      localbfpb.jdField_a_of_type_Boolean = "YES".equalsIgnoreCase(localJSONObject2.optString("item"));
+      localbfpb.jdField_a_of_type_Int = localJSONObject2.optInt("itemconf");
+      JSONObject localJSONObject3 = localJSONObject2.optJSONObject("itemcoord");
+      localbfpb.jdField_b_of_type_Int = localJSONObject3.optInt("x");
+      localbfpb.c = localJSONObject3.optInt("y");
+      localbfpb.d = localJSONObject3.optInt("width");
+      localbfpb.e = localJSONObject3.optInt("height");
+      if (!localbfpb.a())
       {
-        do
-        {
-          return paramDownloadParams;
-          localObject = paramDownloadParams.tag;
-          paramDownloadParams = paramBitmap;
-        } while (!(localObject instanceof int[]));
-        paramDownloadParams = paramBitmap;
-      } while (((int[])localObject).length != 6);
-      paramDownloadParams = (int[])localObject;
-      n = paramDownloadParams[0];
-      i1 = paramDownloadParams[1];
-      i = paramDownloadParams[2];
-      j = paramDownloadParams[3];
-      k = paramDownloadParams[4];
-      m = paramDownloadParams[5];
-      i2 = paramBitmap.getHeight();
-      i3 = paramBitmap.getWidth();
-      float f1;
-      if ((n >= 0) && (i1 >= 0) && (i > 0) && (j > 0) && (n < i3) && (i1 < i2))
-      {
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.i(bfol.a(), 2, String.format("CUSTOM_CLIP_DECODER [%d,%d,%d,%d,%d,%d] valid=%b", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) }));
-        }
-        if ((bool) || (k <= 0) || (m <= 0)) {
-          break label439;
-        }
-        f1 = k / m;
-        float f2 = paramBitmap.getWidth() / paramBitmap.getHeight();
-        localObject = new Rect();
-        if (f1 <= f2) {
-          break label380;
-        }
-        i = paramBitmap.getWidth();
-        j = (int)(i / f1);
-        n = (int)(0.5F * (paramBitmap.getHeight() - j));
-        f1 = paramBitmap.getHeight() - j;
-        ((Rect)localObject).set(0, n, i, (int)(j + 0.5F * f1));
+        ykq.e("QQ.Troop.homework.ArithResult", "arith homework json error!! all json=" + paramString);
+        zdl.a("arith homework json error!! json=" + localJSONObject2, new Object[0]);
       }
-      for (;;)
+      if (!localbfpb.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Int += 1;
+      }
+      this.jdField_a_of_type_JavaUtilList.add(localbfpb);
+      i += 1;
+    }
+    this.jdField_a_of_type_OrgJsonJSONArray = localJSONArray;
+    this.jdField_a_of_type_OrgJsonJSONObject = localJSONObject1;
+    ykq.d("QQ.Troop.homework.ArithResult", "parse json cost=" + (System.currentTimeMillis() - l));
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public bfpb a(int paramInt)
+  {
+    return (bfpb)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public String a()
+  {
+    ykq.d("QQ.Troop.homework.ArithResult", "toJson:" + this.jdField_a_of_type_Boolean);
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      int i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        paramBitmap = bfvo.a(paramBitmap, (Rect)localObject, ajpz.a(k, m, ((Rect)localObject).width(), ((Rect)localObject).height()));
-        paramDownloadParams = paramBitmap;
-        if (!QLog.isColorLevel()) {
+        localObject = (bfpb)this.jdField_a_of_type_JavaUtilList.get(i);
+        JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i);
+        if (((bfpb)localObject).jdField_a_of_type_Boolean) {}
+        for (localObject = "YES";; localObject = "NO")
+        {
+          localJSONObject.put("item", localObject);
+          i += 1;
           break;
         }
-        QLog.i(bfol.a(), 2, String.format("CUSTOM_CLIP_DECODER centerCrop %s", new Object[] { ((Rect)localObject).toShortString() }));
-        return paramBitmap;
-        bool = false;
-        break label128;
-        i = paramBitmap.getHeight();
-        j = (int)(f1 * i);
-        n = (int)(0.5F * (paramBitmap.getWidth() - j));
-        f1 = paramBitmap.getWidth() - j;
-        ((Rect)localObject).set(n, 0, (int)(j + 0.5F * f1), i);
       }
-      paramDownloadParams = paramBitmap;
-    } while (!bool);
-    label439:
-    if (n + i > i3) {
-      i = i3 - n;
+      this.jdField_a_of_type_OrgJsonJSONObject.put("items", this.jdField_a_of_type_OrgJsonJSONArray);
     }
-    for (;;)
+    for (Object localObject = this.jdField_a_of_type_OrgJsonJSONObject.toString();; localObject = this.jdField_b_of_type_JavaLangString)
     {
-      if (i1 + j > i2) {
-        j = i2 - i1;
-      }
-      for (;;)
-      {
-        paramDownloadParams = new Rect(n, i1, i + n, j + i1);
-        j = 1;
-        i = j;
-        if (k > 0)
-        {
-          i = j;
-          if (m > 0) {
-            i = ajpz.a(k, m, paramDownloadParams.width(), paramDownloadParams.height());
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i(bfol.a(), 2, String.format("CUSTOM_CLIP_DECODER [w,h]=[%d,%d] dstClip=%s sample=%d", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), paramDownloadParams, Integer.valueOf(i) }));
-        }
-        return bfvo.a(paramBitmap, paramDownloadParams, i);
-      }
+      ykq.d("QQ.Troop.homework.ArithResult", "toJSON cost=" + (System.currentTimeMillis() - l));
+      return localObject;
     }
   }
 }

@@ -1,18 +1,14 @@
-class ttw
-  extends ttu
+public abstract interface ttw
 {
-  ttw(ttv paramttv) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      ttv.a(this.a, paramString);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ttw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ptt.player;
 
-import agkq;
+import ahdg;
 import android.app.Application;
 import android.media.AudioTrack;
 import android.os.Process;
-import azcg;
-import azci;
-import bfyl;
+import bahu;
+import bahw;
+import bhhd;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.ptt.pttspeed.Sonic;
 import com.tencent.mobileqq.utils.SilkCodecWrapper;
@@ -29,9 +29,9 @@ class SilkPlayer$SilkPlayerThread
   
   public SilkPlayer$SilkPlayerThread(SilkPlayer paramSilkPlayer, Application paramApplication)
   {
-    this.d = bfyl.a(SilkPlayer.a(paramSilkPlayer));
+    this.d = bhhd.a(SilkPlayer.a(paramSilkPlayer));
     this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper = new SilkCodecWrapper(paramApplication, false);
-    this.c = bfyl.a(this.d);
+    this.c = bhhd.a(this.d);
     this.jdField_a_of_type_ArrayOfByte = new byte[this.c];
     this.jdField_b_of_type_ArrayOfByte = new byte[this.c];
     if (QLog.isColorLevel()) {
@@ -87,7 +87,7 @@ class SilkPlayer$SilkPlayerThread
   
   private void a(Sonic paramSonic, int paramInt, byte[] paramArrayOfByte)
   {
-    if ((MediaPlayerManager.a(SilkPlayer.a(this.this$0))) && (paramArrayOfByte != null) && (agkq.c)) {
+    if ((MediaPlayerManager.a(SilkPlayer.a(this.this$0))) && (paramArrayOfByte != null) && (ahdg.c)) {
       if (paramInt > 0)
       {
         paramSonic.a(this.jdField_b_of_type_ArrayOfByte, paramInt);
@@ -204,7 +204,7 @@ class SilkPlayer$SilkPlayerThread
         break label600;
       }
       i = j;
-      if (!agkq.c) {
+      if (!ahdg.c) {
         break label600;
       }
       i = j;
@@ -302,7 +302,7 @@ class SilkPlayer$SilkPlayerThread
       }
       else
       {
-        i = bfyl.a(arrayOfByte);
+        i = bhhd.a(arrayOfByte);
         if (i <= 0)
         {
           this.this$0.c(1);

@@ -1,23 +1,40 @@
-import android.util.SparseArray;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-public final class wsu
-  extends SparseArray<int[]>
+public class wsu
+  extends wfm<wus>
 {
-  public wsu()
+  public static final String a = weg.a("StorySvc.get_user_black_status");
+  public String b;
+  
+  public String a()
   {
-    put(0, new int[] { 1, 7 });
-    put(1, new int[] { 0, 2 });
-    put(2, new int[] { 0, 3 });
-    put(3, new int[] { 0, 4 });
-    put(4, new int[] { 0, 5 });
-    put(5, new int[] { 0, 6 });
-    put(6, new int[] { 0, 7 });
-    put(7, new int[] { 0, 8 });
-    put(8, new int[] { 0, 9 });
-    put(9, new int[] { 0, 10, 12 });
-    put(10, new int[] { 0, 11, 12 });
-    put(11, new int[] { 0, 9, 12 });
-    put(12, new int[] { 0, 7 });
+    return a;
+  }
+  
+  public wfh a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetBlackList localRspGetBlackList = new qqstory_service.RspGetBlackList();
+    try
+    {
+      localRspGetBlackList.mergeFrom(paramArrayOfByte);
+      return new wus(localRspGetBlackList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
+    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqGetBlackList.toByteArray();
   }
 }
 

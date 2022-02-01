@@ -1,39 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import java.util.List;
 
 public class bhll
-  implements Animator.AnimatorListener
 {
-  public bhll(FloatingScreenContainer paramFloatingScreenContainer) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    FloatingScreenContainer.a(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    FloatingScreenContainer.a(this.a).removeAllListeners();
-    if (FloatingScreenContainer.a(this.a) != null) {
-      FloatingScreenContainer.a(this.a).b();
-    }
-    FloatingScreenContainer.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    FloatingScreenContainer.a(this.a, true);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (FloatingScreenContainer.a(this.a) != null) {
-      FloatingScreenContainer.a(this.a).a();
-    }
-    FloatingScreenContainer.a(this.a, true);
-  }
+  public int a;
+  public String a;
+  public List<bhlk> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

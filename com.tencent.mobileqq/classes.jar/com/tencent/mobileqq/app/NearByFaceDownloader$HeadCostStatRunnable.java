@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import AvatarInfo.QQHeadInfo;
-import anhm;
+import aokc;
 import com.tencent.mobileqq.app.face.FaceDownloader;
 import com.tencent.mobileqq.app.face.FaceInfo;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
@@ -36,7 +36,7 @@ class NearByFaceDownloader$HeadCostStatRunnable
   public void run()
   {
     String str1 = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType + "_" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b + "_" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString;
-    this.this$0.jdField_a_of_type_Anhm.a(str1, false);
+    this.this$0.jdField_a_of_type_Aokc.a(str1, false);
     if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
       if ((this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] <= 0L) || (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l] <= 0L)) {
         break label770;

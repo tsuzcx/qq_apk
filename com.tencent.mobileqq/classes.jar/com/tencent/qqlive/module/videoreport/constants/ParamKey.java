@@ -7,6 +7,7 @@ public class ParamKey
   public static final String ELEMENT_ID = "eid";
   public static final String ELEMENT_PARAMS = "element_params";
   public static final String ELEMENT_PATH = "element_path";
+  public static final String PAGE_PATH = "pg_path";
   public static final String PARENTS = "prnts";
   public static final String PG_ID = "pgid";
   public static final String REF_PAGE = "ref_pg";

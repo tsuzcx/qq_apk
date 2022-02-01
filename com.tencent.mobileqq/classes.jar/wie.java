@@ -1,107 +1,170 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class wie
-  extends wif
+public class wie
+  extends nuu
 {
-  protected int a;
-  protected StoryVideoItem a;
-  protected int b = -1;
-  protected int c = -1;
-  protected String c;
-  protected int d;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
-  protected String h;
-  protected String i;
-  protected String j;
-  protected String k;
+  public SparseArray<wig> a;
+  public boolean a;
+  public int b;
+  public SparseArray<wif> b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
   
-  public wie()
+  public wie(Context paramContext, String paramString)
   {
-    this.jdField_d_of_type_Int = 1;
+    super(paramContext, paramString);
   }
   
-  public final void a(wjj paramwjj)
+  public String a()
   {
-    super.a(paramwjj);
-    paramwjj.a = a(6);
+    return "key_for_text_filter_cfg";
   }
   
-  public final void a(wjl paramwjl)
+  public void a(String paramString)
   {
-    super.a(paramwjl);
-    paramwjl.b = 0;
-    paramwjl.jdField_d_of_type_JavaLangString = this.k;
-    paramwjl.a = this.a.mVideoThumbnailUrl;
-    paramwjl.jdField_e_of_type_JavaLangString = this.a.mVid;
-    paramwjl.h = a(1);
-    if (this.b != -1) {
-      paramwjl.jdField_d_of_type_Int = this.b;
+    int j = 0;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    Object localObject1 = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.StoryCfg.name(), "1|1");
+    this.jdField_b_of_type_Boolean = true;
+    Object localObject2;
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = new Integer[2];
+      if (DeviceProfileManager.a((String)localObject1, (Object[])localObject2, new antj()) > 1) {
+        if (localObject2[1].intValue() != 1) {
+          break label115;
+        }
+      }
     }
-    if (this.c != -1) {
-      paramwjl.jdField_e_of_type_Int = this.c;
-    }
-  }
-  
-  public final void a(wjm paramwjm)
-  {
-    super.a(paramwjm);
-    paramwjm.a = this.a.mVideoThumbnailUrl;
-    paramwjm.jdField_c_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    paramwjm.jdField_d_of_type_JavaLangString = this.i;
-    paramwjm.jdField_e_of_type_JavaLangString = a(2);
-  }
-  
-  public final void a(wjn paramwjn)
-  {
-    super.a(paramwjn);
-    paramwjn.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
-    paramwjn.jdField_d_of_type_JavaLangString = this.a.mVideoLocalThumbnailPath;
-    if (TextUtils.isEmpty(paramwjn.jdField_d_of_type_JavaLangString)) {
-      paramwjn.jdField_d_of_type_JavaLangString = wjv.a(paramwjn.jdField_e_of_type_JavaLangString);
-    }
-    paramwjn.jdField_c_of_type_JavaLangString = a(5);
-    paramwjn.a = this.j;
-  }
-  
-  public void a(wjo paramwjo)
-  {
-    super.a(paramwjo);
-    paramwjo.jdField_c_of_type_JavaLangString = this.i;
-    paramwjo.a = this.jdField_e_of_type_JavaLangString;
-    paramwjo.jdField_d_of_type_JavaLangString = a(3);
-    paramwjo.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
-    paramwjo.jdField_c_of_type_Boolean = true;
-  }
-  
-  protected void a_(wjk paramwjk)
-  {
-    xvv.b("Q.qqstory.share.ShareModeBase", "prepareCommonShareData");
-    super.a_(paramwjk);
-    if (this.a.isPollVideo()) {
-      paramwjk.a("vote", "1");
+    label115:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_b_of_type_Boolean = bool;
+      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+      this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+      if (!TextUtils.isEmpty(paramString)) {
+        break;
+      }
+      this.jdField_a_of_type_Boolean = false;
+      return;
     }
     for (;;)
     {
-      paramwjk.a = this.a;
-      return;
-      if (this.a.isInteractVideo()) {
-        paramwjk.a("grade", "1");
+      int i;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.optInt("is_enable", 0) != 1) {
+          break label644;
+        }
+        bool = true;
+        this.jdField_a_of_type_Boolean = bool;
+        this.jdField_b_of_type_Int = paramString.optInt("bid");
+        this.jdField_c_of_type_JavaLangString = paramString.optString("template_manager", "TemplateManager");
+        this.jdField_c_of_type_Int = paramString.optInt("bg_alpha", 80);
+        localObject1 = paramString.optJSONArray("template");
+        if (localObject1 != null)
+        {
+          i = 0;
+          if (i < ((JSONArray)localObject1).length())
+          {
+            localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+            if (localObject2 == null) {
+              break label637;
+            }
+            wig localwig = new wig();
+            localwig.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("id");
+            localwig.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("report_id");
+            localwig.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("name");
+            localwig.jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("color_template_id");
+            if (((JSONObject)localObject2).optInt("is_support_other_color") != 1) {
+              break label650;
+            }
+            bool = true;
+            localwig.jdField_a_of_type_Boolean = bool;
+            localwig.jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).optString("text_color");
+            localwig.e = ((JSONObject)localObject2).optString("background_color");
+            localwig.jdField_c_of_type_Int = ((JSONObject)localObject2).optInt("max_text_count");
+            if (((JSONObject)localObject2).optInt("is_dynamictmp") != 1) {
+              break label656;
+            }
+            bool = true;
+            localwig.jdField_b_of_type_Boolean = bool;
+            localwig.jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).optString("res_name");
+            localwig.jdField_d_of_type_Int = ((JSONObject)localObject2).optInt("bid", 0);
+            localwig.f = ((JSONObject)localObject2).optString("music_file");
+            localwig.g = ((JSONObject)localObject2).optString("pcm_music_file");
+            localwig.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject2).optJSONObject("hint");
+            localwig.h = ((JSONObject)localObject2).optString("image_url");
+            localwig.jdField_b_of_type_OrgJsonJSONObject = ((JSONObject)localObject2).optJSONObject("extra_json_config");
+            this.jdField_a_of_type_AndroidUtilSparseArray.put(localwig.jdField_a_of_type_Int, localwig);
+            break label637;
+          }
+        }
+        paramString = paramString.optJSONArray("color_template");
+        if (paramString != null)
+        {
+          i = j;
+          if (i < paramString.length())
+          {
+            localObject1 = paramString.optJSONObject(i);
+            if (localObject1 != null)
+            {
+              localObject2 = new wif();
+              ((wif)localObject2).jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("id");
+              ((wif)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("report_id");
+              ((wif)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color");
+              ((wif)localObject2).jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color2");
+              ((wif)localObject2).jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color3");
+              ((wif)localObject2).e = ((JSONObject)localObject1).optString("text_color");
+              ((wif)localObject2).jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject1).optJSONObject("extra_json_config");
+              this.jdField_b_of_type_AndroidUtilSparseArray.put(((wif)localObject2).jdField_a_of_type_Int, localObject2);
+            }
+            i += 1;
+            continue;
+          }
+        }
+        if (!this.jdField_b_of_type_Boolean) {
+          break;
+        }
       }
+      catch (JSONException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("read TextFilter Config", 2, paramString.getMessage());
+        }
+      }
+      if (!this.jdField_a_of_type_Boolean) {
+        break;
+      }
+      return;
+      label637:
+      i += 1;
+      continue;
+      label644:
+      bool = false;
+      continue;
+      label650:
+      bool = false;
+      continue;
+      label656:
+      bool = false;
     }
   }
   
-  public void b(wjo paramwjo)
+  public String b()
   {
-    super.b(paramwjo);
-    paramwjo.jdField_c_of_type_JavaLangString = this.i;
-    paramwjo.a = this.jdField_d_of_type_JavaLangString;
-    paramwjo.jdField_d_of_type_JavaLangString = a(4);
-    paramwjo.jdField_e_of_type_JavaLangString = this.a.mVideoThumbnailUrl;
-    paramwjo.jdField_c_of_type_Boolean = true;
+    return "key_for_text_filter_cfg_version";
   }
 }
 

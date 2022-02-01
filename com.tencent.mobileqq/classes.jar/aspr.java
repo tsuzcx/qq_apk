@@ -1,31 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchBaseFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
-final class aspr
-  implements View.OnClickListener
+public class aspr
+  implements asug
 {
-  aspr(asqp paramasqp, FileManagerEntity paramFileManagerEntity) {}
+  public aspr(ExtendFriendSearchBaseFragment paramExtendFriendSearchBaseFragment) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, int paramInt)
   {
-    try
-    {
-      aszs localaszs = new aszs();
-      localaszs.b = "file_forward";
-      localaszs.a = 9;
-      aszr.a(this.jdField_a_of_type_Asqp.a().getCurrentAccountUin(), localaszs);
-      ataw.a(this.jdField_a_of_type_Asqp.a(), this.jdField_a_of_type_Asqp.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      label61:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label61;
-    }
+    ExtendFriendSearchBaseFragment.a(this.a).setText(paramString);
+    ExtendFriendSearchBaseFragment.a(this.a).setSelection(ExtendFriendSearchBaseFragment.a(this.a).length());
+    ExtendFriendSearchBaseFragment.a(this.a, paramString);
   }
 }
 

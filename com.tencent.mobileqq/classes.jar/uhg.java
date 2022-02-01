@@ -1,25 +1,30 @@
-import kotlin.Metadata;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "lastPosition", "", "newPosition", "onChange"}, k=3, mv={1, 1, 16})
-final class uhg
-  implements bjtg
+class uhg
+  extends BroadcastReceiver
 {
-  uhg(ugz paramugz) {}
+  uhg(uhf paramuhf) {}
   
-  public final void a(int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ugz.a(this.a, paramInt2);
-    Object localObject = ugz.a(this.a);
-    if (localObject != null) {}
-    for (float f = ((slb)localObject).a(ugz.a(this.a));; f = 1.0F)
+    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
     {
-      bkwm.a("readinjoy_font_size_index_sp" + pay.a(), Integer.valueOf(ugz.a(this.a)));
-      localObject = ugz.a(this.a);
-      if (localObject != null) {
-        ((uhc)localObject).a(ugz.a(this.a), f);
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (uhf.a(this.a) != null))
+      {
+        if (!paramContext.equals("homekey")) {
+          break label55;
+        }
+        uhf.a(this.a).a();
       }
+    }
+    label55:
+    while (!paramContext.equals("recentapps")) {
       return;
     }
+    uhf.a(this.a).b();
   }
 }
 

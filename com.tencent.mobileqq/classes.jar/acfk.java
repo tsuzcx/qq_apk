@@ -1,33 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.C2C;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.content.Context;
+import android.content.IntentFilter;
 
 public class acfk
-  implements abyl
 {
-  public int a()
+  private acfm jdField_a_of_type_Acfm;
+  private acfn jdField_a_of_type_Acfn;
+  private Context jdField_a_of_type_AndroidContentContext;
+  
+  public acfk(Context paramContext)
   {
-    return 0;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public boolean a()
+  public void a()
   {
-    return false;
+    this.jdField_a_of_type_Acfm = new acfm(this, null);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Acfm, localIntentFilter);
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public void a(acfn paramacfn)
   {
-    paramQQAppInterface = new msg_svc.C2C();
-    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.c2c.set(paramQQAppInterface);
-    return true;
+    this.jdField_a_of_type_Acfn = paramacfn;
   }
   
-  public int b()
+  public void b()
   {
-    return 3001;
+    if ((this.jdField_a_of_type_Acfm != null) && (this.jdField_a_of_type_AndroidContentContext != null))
+    {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Acfm);
+      this.jdField_a_of_type_Acfn = null;
+    }
   }
 }
 

@@ -1,24 +1,28 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class tkn
-  extends tkf
+class tkn
+  implements aaea
 {
-  tkn(tkc paramtkc1, Activity paramActivity, tkc paramtkc2, JSONObject paramJSONObject)
-  {
-    super(paramtkc1, paramActivity, paramtkc2, paramJSONObject);
-  }
+  tkn(tkm paramtkm, boolean paramBoolean) {}
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    tkc.a(this.a).mShareHelper.c();
+    int j = paramBundle.getInt("readinjoy_to_wx_config");
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("", 2, "config = " + j + ", scene" + i);
+      }
+      this.jdField_a_of_type_Tkm.a(j, i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tkn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,24 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.app.ThreadManagerExecutor;
-
 public class rqg
-  extends AsyncTask<Void, Void, Boolean>
+  implements Cloneable
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener;
-  private String jdField_a_of_type_JavaLangString;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = -1;
+  public int d = -1;
+  public int e = -1;
+  public int f = -1;
   
-  public rqg(Bitmap paramBitmap, String paramString)
+  public rqg()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
   }
   
-  protected Boolean a(Void... paramVarArgs)
+  public String toString()
   {
-    return Boolean.valueOf(yoy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public void a()
-  {
-    executeOnExecutor(ThreadManagerExecutor.getExecutorService(64), null);
-  }
-  
-  public void a(URLDrawable.DownloadListener paramDownloadListener)
-  {
-    this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = paramDownloadListener;
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    super.onPostExecute(paramBoolean);
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener == null) {
-      return;
-    }
-    if (paramBoolean.booleanValue())
-    {
-      this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadSucceed(0L);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadFailed(0);
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadStarted();
-    }
+    return "VideoExtraRepoerData{JumpWayWhich=" + this.jdField_a_of_type_Int + ", InOneThreeSource=" + this.jdField_b_of_type_Int + ", videoTimePosition=" + this.d + ", videoDuration=" + this.e + ", needWhetherClickIn=" + this.jdField_b_of_type_Boolean + ", whetherClickIn=" + this.jdField_a_of_type_Boolean + ", InVideoChannelSource=" + this.c + ", videoFromType=" + this.f + '}';
   }
 }
 

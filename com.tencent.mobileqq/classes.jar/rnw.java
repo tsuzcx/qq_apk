@@ -1,10 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
 public abstract interface rnw
 {
-  public abstract void a(@NotNull List<UgcVideo> paramList);
+  public abstract String a(BaseArticleInfo paramBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase);
+  
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean);
 }
 
 

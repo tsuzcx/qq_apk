@@ -7,12 +7,12 @@ class CommonRecordSoundPanel$7
   
   public void run()
   {
-    this.this$0.f();
+    this.this$0.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel.7
  * JD-Core Version:    0.7.0.1
  */

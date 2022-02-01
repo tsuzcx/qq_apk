@@ -1,34 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-final class tjq
-  implements qol
+public abstract interface tjq
 {
-  tjq(BridgeModule paramBridgeModule, String paramString) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("button", paramInt1);
-      localJSONObject.put("result", paramInt2);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
+  public abstract void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tjq
  * JD-Core Version:    0.7.0.1
  */

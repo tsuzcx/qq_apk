@@ -1,9 +1,4 @@
-public abstract interface vkd
-{
-  public abstract void a(vil paramvil);
-  
-  public abstract void b(vil paramvil);
-}
+class vkd {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

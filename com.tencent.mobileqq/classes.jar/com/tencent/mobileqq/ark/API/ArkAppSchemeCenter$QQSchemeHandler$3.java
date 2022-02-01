@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ark.API;
 
-import aoqu;
-import bddg;
+import aptv;
+import beki;
 import java.util.Map;
 
 public class ArkAppSchemeCenter$QQSchemeHandler$3
   implements Runnable
 {
-  public ArkAppSchemeCenter$QQSchemeHandler$3(aoqu paramaoqu, Map paramMap1, Map paramMap2) {}
+  public ArkAppSchemeCenter$QQSchemeHandler$3(aptv paramaptv, Map paramMap1, Map paramMap2) {}
   
   public void run()
   {
-    bddg.a(1, this.a, this.b);
+    beki.a(1, this.a, this.b);
   }
 }
 

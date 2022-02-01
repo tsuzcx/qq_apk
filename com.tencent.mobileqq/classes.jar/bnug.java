@@ -1,8 +1,23 @@
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
+import dov.com.qq.im.aeeditor.lyric.widget.LyricViewInternalBase;
 
-public abstract interface bnug
+public class bnug
+  extends Handler
 {
-  public abstract void a(int paramInt, QIMFilterCategoryItem paramQIMFilterCategoryItem);
+  public bnug(LyricViewInternalBase paramLyricViewInternalBase, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Log.d("ModuleLyricViewInternal", "mRefreshHandler -> handleMessage begin, mState:" + this.a.l);
+    this.a.requestLayout();
+    this.a.invalidate();
+  }
 }
 
 

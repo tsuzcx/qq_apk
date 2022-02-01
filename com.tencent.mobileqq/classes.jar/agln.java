@@ -1,20 +1,26 @@
-import android.view.View;
-import android.widget.ImageView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.intimate.IntimateScoreCardView;
 
 public class agln
-  extends aezf
+  implements Animator.AnimatorListener
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public RelativeLayout b;
-  public TextView b;
-  public View c;
-  public TextView c;
+  public agln(IntimateScoreCardView paramIntimateScoreCardView) {}
   
-  public agln(aglj paramaglj) {}
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    onAnimationEnd(paramAnimator);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    IntimateScoreCardView.a(this.a).setAlpha(1.0F);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

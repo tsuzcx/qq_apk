@@ -14,12 +14,6 @@ public class NightRGBStretchFilter
     super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   }
   
-  public void ClearGLSL()
-  {
-    this.adjustFilter = null;
-    super.ClearGLSL();
-  }
-  
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     this.glslProgramShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n";
@@ -38,6 +32,12 @@ public class NightRGBStretchFilter
       return;
       this.adjustFilter.addParam(new UniformParam.FloatParam("scale", 1.0F));
     }
+  }
+  
+  public void clearGLSL()
+  {
+    this.adjustFilter = null;
+    super.clearGLSL();
   }
   
   public boolean isAdjustFilter()

@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aygm
-  implements aygj
+class aygm
+  implements DialogInterface.OnClickListener
 {
-  public void a(aygw paramaygw, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  aygm(ayfx paramayfx) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!lld.c())
-    {
-      paramaygw.b(202);
-      paramaygw.b(201);
-      paramaygw.b(1200000007);
-      paramaygw.b(100719166);
-      paramaygw.b(101847385);
-      paramaygw.b(1104651886);
-      paramaygw.b(1106658188);
-    }
-    if ((paramInt != 0) && (paramInt != 1025) && (paramInt != 1024) && (!ChatActivityUtils.a(paramQQAppInterface, paramString)))
-    {
-      paramaygw.b(202);
-      paramaygw.b(201);
-    }
+    this.a.d(true);
+    bdla.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,36 +1,57 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ned
+class ned
+  extends BroadcastReceiver
 {
-  public abstract String a(Context paramContext, naf paramnaf);
+  ned(ndx paramndx) {}
   
-  public abstract String a(Context paramContext, boolean paramBoolean);
-  
-  public abstract neg a();
-  
-  public abstract void a(mzq parammzq);
-  
-  public abstract void a(naf paramnaf);
-  
-  public abstract void a(neg paramneg);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(boolean paramBoolean);
-  
-  public abstract void b(naf paramnaf);
-  
-  public abstract void c(naf paramnaf);
-  
-  public abstract void d(naf paramnaf);
-  
-  public abstract void e(naf paramnaf);
-  
-  public abstract void f(naf paramnaf);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    paramIntent = paramIntent.getStringExtra("process_name");
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatWindowController", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
+    }
+    int i;
+    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
+    {
+      i = 1;
+      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
+        break label120;
+      }
+      if ((paramIntent != null) && (paramIntent.equals("com.tencent.mobileqq")))
+      {
+        this.a.a(false);
+        this.a.a = false;
+        ndx.a(this.a, false);
+      }
+    }
+    label120:
+    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
+    {
+      return;
+      i = 0;
+      break;
+    }
+    if (i == 0)
+    {
+      this.a.a = true;
+      this.a.a(true);
+      ndx.a(this.a, false);
+      return;
+    }
+    if (ndx.b(this.a))
+    {
+      ndx.a(this.a, true);
+      return;
+    }
+    this.a.a = true;
+    ndx.a(this.a).a = true;
+    ndx.a(this.a, false);
+  }
 }
 
 

@@ -1,18 +1,44 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBannerVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class wsx
-  implements wlb
+  extends wfm<wuv>
 {
-  public wsx(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public static final String a = weg.a("StorySvc.square_720_banner_vid_list");
+  public String b;
+  public String c;
   
-  public void a()
+  public String a()
   {
-    xvv.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoaded");
+    return a;
   }
   
-  public void b()
+  public wfh a(byte[] paramArrayOfByte)
   {
-    xvv.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoadedFailed");
+    qqstory_service.RspBannerVideoList localRspBannerVideoList = new qqstory_service.RspBannerVideoList();
+    try
+    {
+      localRspBannerVideoList.mergeFrom(paramArrayOfByte);
+      return new wuv(localRspBannerVideoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBannerVideoList localReqBannerVideoList = new qqstory_service.ReqBannerVideoList();
+    localReqBannerVideoList.banner_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqBannerVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.c));
+    return localReqBannerVideoList.toByteArray();
   }
 }
 

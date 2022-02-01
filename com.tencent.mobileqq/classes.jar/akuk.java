@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akuk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public akuk(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  public akuk(KuaKuaHbFragment paramKuaKuaHbFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
+    if ((paramView instanceof TextView))
+    {
+      KuaKuaHbFragment.b(this.a).setVisibility(0);
+      this.a.a = ((TextView)paramView).getText().toString();
+      KuaKuaHbFragment.b(this.a).setText(this.a.a);
+      KuaKuaHbFragment.a(this.a).setText("");
+      this.a.a(this.a.a);
+      KuaKuaHbFragment.a(this.a).setIsShow(false);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

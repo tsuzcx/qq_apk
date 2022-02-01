@@ -1,6 +1,22 @@
-public abstract interface afyp
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
+
+class afyp
+  implements Animator.AnimatorListener
 {
-  public abstract String a(int paramInt1, int paramInt2, int paramInt3);
+  afyp(afyo paramafyo, ViewGroup paramViewGroup) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+  }
 }
 
 

@@ -1,15 +1,15 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.BragActivity;
+import android.graphics.drawable.Drawable;
+import android.os.Looper;
+import kotlin.jvm.functions.Function0;
 
-public class bhrd
-  implements bhvu
+class bhrd
+  implements Function0<Drawable>
 {
-  public bhrd(BragActivity paramBragActivity) {}
+  bhrd(bhrc parambhrc, bhrb parambhrb, Looper paramLooper, boolean paramBoolean) {}
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public Drawable a()
   {
-    this.a.a.setImageBitmap(paramBitmap);
+    return this.jdField_a_of_type_Bhrc.a(this.jdField_a_of_type_Bhrb, this.jdField_a_of_type_AndroidOsLooper, this.jdField_a_of_type_Boolean);
   }
 }
 

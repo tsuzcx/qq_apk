@@ -1,16 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import android.os.Build.VERSION;
 
 public class xlq
 {
-  public static boolean a(QQUserUIItem paramQQUserUIItem)
+  public static boolean a(int paramInt)
   {
-    return (paramQQUserUIItem != null) && (paramQQUserUIItem.isVip()) && (!paramQQUserUIItem.isMe()) && (!paramQQUserUIItem.isFriend()) && (!paramQQUserUIItem.isSubscribe());
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals("0_1000", paramString));
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    switch (paramInt)
+    {
+    default: 
+      bool1 = false;
+    case 3: 
+    case 1: 
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (Build.VERSION.SDK_INT >= 21);
+      return false;
+    }
+    return false;
   }
 }
 

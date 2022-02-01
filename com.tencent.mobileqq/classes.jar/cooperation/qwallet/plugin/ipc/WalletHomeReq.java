@@ -2,8 +2,9 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import azvi;
+import bbbq;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -192,9 +193,9 @@ public class WalletHomeReq
   
   protected void getRedTouch(QQAppInterface paramQQAppInterface)
   {
-    azvi localazvi = (azvi)paramQQAppInterface.getManager(36);
+    bbbq localbbbq = (bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
     ArrayList localArrayList = new ArrayList();
-    paramQQAppInterface = localazvi.a();
+    paramQQAppInterface = localbbbq.a();
     if (paramQQAppInterface == null)
     {
       onGetRedTouch(null);
@@ -205,7 +206,7 @@ public class WalletHomeReq
     {
       BusinessInfoCheckUpdate.AppInfo localAppInfo = (BusinessInfoCheckUpdate.AppInfo)localIterator1.next();
       Iterator localIterator2 = this.redTouchPaths.iterator();
-      label81:
+      label82:
       int j;
       Object localObject2;
       Object localObject3;
@@ -257,13 +258,13 @@ public class WalletHomeReq
         else
         {
           localArrayList.add(new QWalletRedTouchInfo(localAppInfo.path.get(), j, getContentByAppInfo(localAppInfo), (String)localObject1, paramQQAppInterface));
-          break label81;
+          break label82;
           break;
         }
         i += 1;
       }
     }
-    int i = localazvi.a("100007.102000", 100);
+    int i = localbbbq.a("100007.102000", 100);
     if (i > 0) {
       localArrayList.add(new QWalletRedTouchInfo("100007.102000", 5, null, null, i + ""));
     }
@@ -309,7 +310,7 @@ public class WalletHomeReq
   protected void reportRedTouch(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface != null) {
-      ((azvi)paramQQAppInterface.getManager(36)).b(this.redTouchPath);
+      ((bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(this.redTouchPath);
     }
   }
   

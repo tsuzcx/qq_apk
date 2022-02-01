@@ -1,26 +1,69 @@
-import com.tencent.tavcut.bean.TextEditorData;
-import com.tencent.tavcut.session.TAVCutSession;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
-class bmmy
-  implements bmmw
+public class bmmy
+  extends bmnd
 {
-  bmmy(bmmx parambmmx, TextEditorData paramTextEditorData, TAVCutSession paramTAVCutSession) {}
-  
-  public void a(TextEditorData paramTextEditorData)
+  public bmmy(String paramString, View paramView)
   {
-    if (paramTextEditorData != null)
-    {
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setContent(paramTextEditorData.getContent());
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setTextColor(paramTextEditorData.getTextColor());
-      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutSession.updateTextSticker(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
-      if (bmmx.a(this.jdField_a_of_type_Bmmx) != null)
-      {
-        bmmx.a(this.jdField_a_of_type_Bmmx).a(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
-        bmbx.a("AEEditorTextPart", "[stickerInfo] update");
-      }
-      return;
+    super(paramString, paramView);
+  }
+  
+  private ImageView.ScaleType a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return ImageView.ScaleType.CENTER_CROP;
     }
-    bmbx.d("AEEditorTextPart", "update sticker back null.");
+    if ("center_crop".equals(paramString)) {
+      return ImageView.ScaleType.CENTER_CROP;
+    }
+    if ("fit_center".equals(paramString)) {
+      return ImageView.ScaleType.FIT_CENTER;
+    }
+    return ImageView.ScaleType.CENTER_CROP;
+  }
+  
+  protected void a(String paramString)
+  {
+    if (!bkyp.a(paramString)) {}
+    do
+    {
+      return;
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
+      {
+        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
+        localURLDrawableOptions.mRequestHeight = this.b;
+      }
+      localURLDrawableOptions.mPlayGifImage = false;
+      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    } while (paramString == null);
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(paramString);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {}
+    do
+    {
+      return;
+      if ("content".equals(paramString1))
+      {
+        a(paramString2);
+        return;
+      }
+    } while (!"scale_type".equals(paramString1));
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setScaleType(a(paramString2));
+  }
+  
+  protected void b()
+  {
+    super.b();
   }
 }
 

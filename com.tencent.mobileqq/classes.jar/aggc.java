@@ -1,17 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopSign;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class aggc
-  implements aghk
+public class aggc
+  implements View.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public aggc(AIOLongShotHelper paramAIOLongShotHelper) {}
+  
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(((MessageForTroopSign)paramChatMessage).dynamicSource)) {
-      return 71;
-    }
-    return 84;
+    AIOLongShotHelper.b(this.a, paramView);
+    AIOLongShotHelper.a("0X8009DE7");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

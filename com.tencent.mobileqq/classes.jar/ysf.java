@@ -1,8 +1,18 @@
-public abstract interface ysf
+class ysf
+  implements wlo
 {
-  public abstract void a(int paramInt);
+  ysf(ysa paramysa, ysn paramysn) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a(boolean paramBoolean, wlk paramwlk)
+  {
+    ykq.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramwlk != null))
+    {
+      this.jdField_a_of_type_Ysa.a(paramwlk.b, paramwlk.a, this.jdField_a_of_type_Ysn);
+      return;
+    }
+    ykq.e("DoodleEmojiManager", "onLbsUpdate failed.");
+  }
 }
 
 

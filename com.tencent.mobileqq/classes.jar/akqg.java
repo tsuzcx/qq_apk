@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew.1;
+import java.util.Comparator;
 
-public class akqg
-  implements DialogInterface.OnClickListener
+class akqg
+  implements Comparator<akqd>
 {
-  public akqg(CameraPreviewNew.1 param1) {}
+  akqg(akqe paramakqe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a(akqd paramakqd1, akqd paramakqd2)
+  {
+    return (int)(paramakqd2.a - paramakqd1.a);
+  }
 }
 
 

@@ -1,141 +1,74 @@
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.webkit.URLUtil;
-import com.tencent.biz.qqstory.utils.JsonORM;
-import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qcircleshadow.remoteCheck.QCirclePluginInfo;
+import com.tencent.component.network.downloader.DownloadReport;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter.ReportData;
+import java.io.File;
 
-public class vwm
+class vwm
+  implements Downloader.DownloadListener
 {
-  @ypm(a="type")
-  public int a;
-  @ypm(a="linkUrl")
-  public String a;
-  @ypm(a="capture")
-  public vwi a;
-  @ypm(a="comp")
-  public vwj a;
-  @ypm(a="gameinfo")
-  public vwk a;
-  @ypm(a="game")
-  public vwl a;
-  @ypm(a="videoShare")
-  public vwn a;
-  @ypm(a="parseState")
-  public int b;
-  @ypm(a="title")
-  public String b;
-  @ypm(a="body")
-  public String c;
-  @ypm(a="picUrl")
-  public String d;
-  @ypm(a="app")
-  public String e;
+  vwm(vwj paramvwj, QCirclePluginInfo paramQCirclePluginInfo, String paramString) {}
   
-  @Nullable
-  public static vwm a(String paramString)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
+    QLog.e("QCirclePluginManager", 1, "onDownloadFailed qcirle-pluginmanager.apk ");
+    QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_download").setRetCode(2001L).setPluginVersion(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.version));
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String arg1, DownloadResult paramDownloadResult)
+  {
+    QLog.e("QCirclePluginManager", 1, "onDownloadSucceed qcirle-pluginmanager.apk ");
+    ??? = new File(this.jdField_a_of_type_JavaLangString);
+    if ((???.exists()) && (???.length() == this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.managerFilelength))
     {
-      paramString = (vwm)JsonORM.a(new JSONObject(paramString), vwm.class);
-      return paramString;
-    }
-    catch (JsonORM.JsonParseException paramString)
-    {
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
+      this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.pluginManagerPath = this.jdField_a_of_type_JavaLangString;
+      String str2 = "";
+      String str3 = "";
+      String str1 = str3;
+      ??? = str2;
+      if (paramDownloadResult != null)
       {
-        paramString.printStackTrace();
+        str1 = str3;
+        ??? = str2;
+        if (paramDownloadResult.getReport() != null)
+        {
+          ??? = String.valueOf(paramDownloadResult.getReport().fileSize);
+          str1 = String.valueOf(paramDownloadResult.getReport().downloadTime);
+        }
+      }
+      QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_download").setRetCode(2000L).setPluginVersion(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.version).setExt1(???).setExt2(str1));
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.pluginZipPath)) {
+        this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.isReady = true;
+      }
+      synchronized (vwj.a())
+      {
+        while (this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.isReady)
+        {
+          vwj.a(this.jdField_a_of_type_Vwj).delete(QCirclePluginInfo.class.getSimpleName(), null, null);
+          this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.setStatus(1000);
+          vwj.a(this.jdField_a_of_type_Vwj).persistOrReplace(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo);
+          return;
+          ??? = (QCirclePluginInfo)vwj.a(this.jdField_a_of_type_Vwj).find(QCirclePluginInfo.class, this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.version + "");
+          if ((??? != null) && (???.pluginZipPath != null))
+          {
+            this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.pluginZipPath = ???.pluginZipPath;
+            this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.isReady = true;
+          }
+        }
+        vwj.a(this.jdField_a_of_type_Vwj).delete(QCirclePluginInfo.class.getSimpleName(), "version=?", new String[] { this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.version + "" });
       }
     }
-  }
-  
-  public String a()
-  {
-    String str3 = this.jdField_a_of_type_JavaLangString;
-    String str2 = str3;
-    if (bfwx.d.matcher(str3).find())
-    {
-      String str1 = null;
-      int i = str3.lastIndexOf("#");
-      if (i > 0) {
-        str1 = str3.substring(i);
-      }
-      str3 = URLUtil.guessUrl(str3);
-      str2 = str3;
-      if (str1 != null) {
-        return str3 + str1;
-      }
-    }
-    return str2;
-  }
-  
-  public String a(boolean paramBoolean)
-  {
-    try
-    {
-      Object localObject = JsonORM.a(this);
-      if (paramBoolean) {
-        ((JSONObject)localObject).remove("parseState");
-      }
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (JsonORM.JsonParseException localJsonParseException)
-    {
-      xvv.b("Q.qqstory.tag", "VideoLinkInfo", localJsonParseException);
-    }
-    return "";
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_Vwn != null);
-  }
-  
-  public String b()
-  {
-    String str1;
-    String str2;
-    label30:
-    String str3;
-    if (this.b != null)
-    {
-      str1 = this.b.trim();
-      if (this.c == null) {
-        break label57;
-      }
-      str2 = this.c.trim();
-      if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2))) {
-        break label63;
-      }
-      str3 = this.jdField_a_of_type_JavaLangString;
-    }
-    label57:
-    label63:
-    do
-    {
-      return str3;
-      str1 = "";
-      break;
-      str2 = "";
-      break label30;
-      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-        return String.format("%s-%s", new Object[] { str1, str2 });
-      }
-      str3 = str1;
-    } while (!TextUtils.isEmpty(str1));
-    return str2;
+    QLog.e("QCirclePluginManager", 1, "file.exists " + ???.exists() + "file.length()= " + ???.length() + " managefilerlength= " + this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.managerFilelength);
+    QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_download").setRetCode(2002L).setPluginVersion(this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCirclePluginInfo.version));
   }
 }
 

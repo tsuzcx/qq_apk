@@ -1,17 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aies
-  implements View.OnClickListener
+class aies
+  implements BusinessObserver
 {
-  public aies(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
+  aies(aido paramaido) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "success:" + String.valueOf(paramBoolean));
+    }
+    boolean bool = true;
+    if (!paramBoolean)
+    {
+      this.a.b(2131694983);
+      paramBoolean = bool;
+      if (paramBoolean) {
+        this.a.b();
+      }
+      return;
+    }
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label139;
+        }
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        paramBoolean = aido.a(this.a, true, paramInt);
+      }
+      catch (Exception paramBundle)
+      {
+        paramBoolean = bool;
+      }
+      break;
+      label139:
+      paramBoolean = true;
+    }
   }
 }
 

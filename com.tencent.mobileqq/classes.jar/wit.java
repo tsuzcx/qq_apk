@@ -1,12 +1,63 @@
-class wit
-  extends whl
+public class wit
+  implements wja
 {
-  wit(wif paramwif, wjn paramwjn) {}
+  public final wir[] a = new wir[2];
   
-  public boolean b()
+  private void a(wir paramwir, int paramInt)
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Wjn.d);
-    return true;
+    this.a[paramInt] = paramwir;
+  }
+  
+  public <T extends wir> T a(int paramInt)
+  {
+    wir localwir = this.a[paramInt];
+    if (localwir == null) {}
+    for (;;)
+    {
+      synchronized (this.a)
+      {
+        localwir = this.a[paramInt];
+        if (localwir == null) {
+          break label80;
+        }
+        return localwir;
+        a(localwir, paramInt);
+        if (localwir != null) {
+          localwir.b();
+        }
+        return localwir;
+      }
+      Object localObject2 = new wkg();
+      continue;
+      localObject2 = new wik();
+      continue;
+      return localObject2;
+      label80:
+      switch (paramInt)
+      {
+      }
+    }
+  }
+  
+  public void a()
+  {
+    ykq.b("DataProviderManager", "onInit");
+  }
+  
+  public void b()
+  {
+    ykq.b("DataProviderManager", "onDestroy");
+    wir[] arrayOfwir = this.a;
+    int j = arrayOfwir.length;
+    int i = 0;
+    while (i < j)
+    {
+      wir localwir = arrayOfwir[i];
+      if (localwir != null) {
+        localwir.c();
+      }
+      i += 1;
+    }
   }
 }
 

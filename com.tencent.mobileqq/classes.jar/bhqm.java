@@ -1,122 +1,49 @@
-import android.os.Bundle;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.open.agent.BindGroupActivity.4.1;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.theme.TextHook;
 
-public class bhqm
-  implements bezd
+final class bhqm
+  extends bdfj
 {
-  public bhqm(BindGroupActivity paramBindGroupActivity) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    switch (paramInt)
+    paramInt = 0;
+    Object localObject1;
+    if (paramBoolean1)
     {
+      localObject1 = BaseApplicationImpl.getApplication().getApplicationContext();
+      if (!bdfk.b()) {
+        break label48;
+      }
+      localObject2 = TextHook.getFontPath((Context)localObject1);
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        bhql.a((Context)localObject1, (String)localObject2);
+        bhql.a(false);
+      }
     }
+    label48:
     do
     {
       return;
-    } while (paramJSONObject == null);
-    for (;;)
+      localObject1 = bhql.a((Context)localObject1);
+    } while (TextUtils.isEmpty((CharSequence)localObject1));
+    Object localObject2 = auea.a((String)localObject1).split("\\.");
+    try
     {
-      try
-      {
-        paramInt = ((Integer)paramJSONObject.get("retcode")).intValue();
-        paramJSONObject = (JSONObject)paramJSONObject.get("result");
-        if ((paramInt != 0) || (paramJSONObject == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("BindGroupActivity", 2, "checkApiState onResult. retCode = " + paramInt + "\n");
-        }
-        paramBundle = (JSONObject)paramJSONObject.get("basics");
-        Object localObject2;
-        if (paramBundle != null)
-        {
-          paramBundle = (JSONArray)paramBundle.get("datas");
-          if (paramBundle != null)
-          {
-            paramInt = 0;
-            if (paramInt < paramBundle.length())
-            {
-              localObject2 = (JSONObject)paramBundle.get(paramInt);
-              str = (String)((JSONObject)localObject2).get("name");
-              i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
-              localObject1 = (String)((JSONObject)localObject2).get("api");
-              localObject2 = (String)((JSONObject)localObject2).get("msg");
-              if (!QLog.isColorLevel()) {
-                break label717;
-              }
-              QLog.i("BindGroupActivity", 2, "checkApiState onResult, basics name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg = " + (String)localObject2 + "\n");
-              break label717;
-            }
-          }
-        }
-        paramBundle = (JSONObject)paramJSONObject.get("friendlink");
-        if (paramBundle != null)
-        {
-          paramBundle = (JSONArray)paramBundle.get("datas");
-          if (paramBundle != null)
-          {
-            paramInt = 0;
-            if (paramInt < paramBundle.length())
-            {
-              localObject2 = (JSONObject)paramBundle.get(paramInt);
-              str = (String)((JSONObject)localObject2).get("name");
-              i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
-              localObject1 = (String)((JSONObject)localObject2).get("api");
-              localObject2 = (String)((JSONObject)localObject2).get("msg");
-              if (("bind_group".equals(localObject1)) && (i != 1)) {
-                this.a.runOnUiThread(new BindGroupActivity.4.1(this));
-              }
-              if (!QLog.isColorLevel()) {
-                break label724;
-              }
-              QLog.i("BindGroupActivity", 2, "checkApiState onResult, friendlink name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg= " + (String)localObject2 + "\n");
-              break label724;
-            }
-          }
-        }
-        paramInt = ((Integer)paramJSONObject.get("appid")).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.i("BindGroupActivity", 2, "checkApiState onResult, appid =" + paramInt + "\n");
-        }
-        paramJSONObject = (JSONObject)paramJSONObject.get("qqpay");
-        if (paramJSONObject == null) {
-          break;
-        }
-        paramJSONObject = (JSONArray)paramJSONObject.get("datas");
-        if (paramJSONObject == null) {
-          break;
-        }
-        paramInt = 0;
-        if (paramInt >= paramJSONObject.length()) {
-          break;
-        }
-        Object localObject1 = (JSONObject)paramJSONObject.get(paramInt);
-        paramBundle = (String)((JSONObject)localObject1).get("name");
-        int i = ((Integer)((JSONObject)localObject1).get("state")).intValue();
-        String str = (String)((JSONObject)localObject1).get("api");
-        localObject1 = (String)((JSONObject)localObject1).get("msg");
-        if (QLog.isColorLevel()) {
-          QLog.i("BindGroupActivity", 2, "checkApiState onResult, qqpay name = " + paramBundle + " state = " + i + " api = " + str + " msg= " + (String)localObject1 + "\n");
-        }
-        paramInt += 1;
-        continue;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
+      int i = Integer.parseInt(localObject2[0]);
+      if (localObject2.length > 2) {
+        paramInt = Integer.parseInt(localObject2[1]);
       }
-      catch (Exception paramJSONObject) {}
-      QLog.d("BindGroupActivity", 2, "checkApiState onResult " + paramJSONObject.toString());
+      bhql.b(i, paramInt);
       return;
-      label717:
-      paramInt += 1;
-      continue;
-      label724:
-      paramInt += 1;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      QLog.e("ThemeFontAdapter", 1, "switchFont  prePath:" + (String)localObject1, localNumberFormatException);
+      localNumberFormatException.printStackTrace();
     }
   }
 }

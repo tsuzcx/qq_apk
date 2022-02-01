@@ -1,21 +1,21 @@
 package dov.com.qq.im.aeeditor.manage;
 
-import bmew;
-import bmex;
-import bmfb;
+import bnuo;
+import bnup;
+import bnut;
 
 public class AEEditorEffectConfigManager$1
   implements Runnable
 {
-  public AEEditorEffectConfigManager$1(bmew parambmew, AEEditorEffectGroupListBean paramAEEditorEffectGroupListBean) {}
+  public AEEditorEffectConfigManager$1(bnuo parambnuo, AEEditorEffectGroupListBean paramAEEditorEffectGroupListBean) {}
   
   public void run()
   {
     synchronized ()
     {
-      bmfb.a(this.a, bmew.a());
-      if (bmew.a(this.this$0) != null) {
-        bmew.a(this.this$0).a(bmew.a());
+      bnut.a(this.a, bnuo.a());
+      if (bnuo.a(this.this$0) != null) {
+        bnuo.a(this.this$0).a(bnuo.a());
       }
       return;
     }

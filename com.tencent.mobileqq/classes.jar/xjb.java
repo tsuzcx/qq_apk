@@ -1,30 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.v4.view.PagerAdapter;
 
-public class xjb
-  extends QQUIEventReceiver<xin, vvh>
+public abstract interface xjb
 {
-  public xjb(@NonNull xin paramxin)
-  {
-    super(paramxin);
-  }
-  
-  public void a(@NonNull xin paramxin, @NonNull vvh paramvvh)
-  {
-    if (xin.a(paramxin) == null)
-    {
-      xvv.b(this.TAG, "ignore this troop nick name change event. %s.", paramvvh.toString());
-      return;
-    }
-    xvv.a(this.TAG, "receive troop nick name change event. %s.", paramvvh.toString());
-    xin.a(paramxin).c();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vvh.class;
-  }
+  public abstract void a(PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
 }
 
 

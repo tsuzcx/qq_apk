@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import amsw;
+import anvk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.richstatus.RichStatus;
@@ -20,14 +20,14 @@ final class SignatureManager$2
       {
         QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
         RichStatus localRichStatus = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
-        Object localObject1 = (amsw)localQQAppInterface.getManager(51);
-        boolean bool = ((amsw)localObject1).b(this.jdField_a_of_type_JavaLangString);
+        Object localObject1 = (anvk)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        boolean bool = ((anvk)localObject1).b(this.jdField_a_of_type_JavaLangString);
         if (!bool) {
           return;
         }
         if (localRichStatus == null)
         {
-          localObject1 = ((amsw)localObject1).a(this.jdField_a_of_type_JavaLangString);
+          localObject1 = ((anvk)localObject1).a(this.jdField_a_of_type_JavaLangString);
           if (localObject1 == null) {
             return;
           }

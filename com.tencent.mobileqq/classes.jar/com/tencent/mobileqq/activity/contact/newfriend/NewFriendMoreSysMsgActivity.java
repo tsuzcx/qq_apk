@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
 import Override;
-import aiej;
-import aies;
-import alkj;
+import aizi;
+import aizr;
+import amik;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.SwipListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -22,7 +23,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class NewFriendMoreSysMsgActivity
   extends BaseActivity
 {
-  private alkj a;
+  private amik a;
   
   public static void a(Activity paramActivity, int paramInt1, int paramInt2)
   {
@@ -45,36 +46,36 @@ public class NewFriendMoreSysMsgActivity
   {
     super.doOnCreate(paramBundle);
     int i = getIntent().getIntExtra("first_visible_index", 0);
-    setContentView(2131561239);
-    paramBundle = (LinearLayout)findViewById(2131376679);
+    setContentView(2131561300);
+    paramBundle = (LinearLayout)findViewById(2131376947);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
       paramBundle.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    paramBundle = (SwipListView)findViewById(2131378094);
-    View localView = findViewById(2131371813);
-    TextView localTextView = (TextView)findViewById(2131369115);
+    paramBundle = (SwipListView)findViewById(2131378382);
+    View localView = findViewById(2131372003);
+    TextView localTextView = (TextView)findViewById(2131369278);
     localTextView.setVisibility(0);
-    localTextView.setText(2131694084);
-    setTitle(getString(2131694084));
-    localTextView = (TextView)findViewById(2131369068);
+    localTextView.setText(2131694275);
+    setTitle(getString(2131694275));
+    localTextView = (TextView)findViewById(2131369231);
     localTextView.setVisibility(0);
     localTextView.setText("");
-    localTextView.setOnClickListener(new aies(this));
-    localTextView = (TextView)findViewById(2131369099);
+    localTextView.setOnClickListener(new aizr(this));
+    localTextView = (TextView)findViewById(2131369262);
     localTextView.setVisibility(0);
-    localTextView.setText(2131698634);
-    this.a = new alkj(this, this.app, paramBundle, localView, localTextView, this.mFlingHandler, i);
+    localTextView.setText(2131698931);
+    this.a = new amik(this, this.app, paramBundle, localView, localTextView, this.mFlingHandler, i);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    aiej localaiej = (aiej)this.app.getManager(34);
-    localaiej.g();
-    localaiej.k();
+    aizi localaizi = (aizi)this.app.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
+    localaizi.g();
+    localaizi.k();
     this.a.a();
   }
   

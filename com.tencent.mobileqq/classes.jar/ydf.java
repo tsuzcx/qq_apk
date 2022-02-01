@@ -1,53 +1,49 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.List;
 
-public class ydf
+final class ydf
+  implements wfk<wsj, wsk>
 {
-  private static ydf a = new ydf();
+  ydf(yeb paramyeb) {}
   
-  public static ydf a()
+  public void a(@NonNull wsj paramwsj, @Nullable wsk paramwsk, @NonNull ErrorMessage paramErrorMessage)
   {
-    return a;
-  }
-  
-  public void a(Context paramContext, ImageView paramImageView, String paramString, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener)
-  {
-    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
+    ykq.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, refresh comment.");
+    if (paramwsk == null)
     {
-      xvv.e("ImageLoader", "ImageView or uri is null.");
+      ykq.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, response is null.");
+      new wsk(paramErrorMessage);
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramErrorMessage.isFail()) {
+          ykq.d("Q.qqstory.home.data.HomeFeedPresenter", "request fail for comment request");
+        }
+      } while ((paramwsk.jdField_a_of_type_JavaUtilList == null) || (paramwsk.jdField_a_of_type_JavaUtilList.isEmpty()));
+      paramwsj = (wip)wjs.a(17);
+      paramwsk = (wsl)paramwsk.jdField_a_of_type_JavaUtilList.get(0);
+    } while (paramwsk.jdField_a_of_type_JavaUtilList == null);
+    ykq.d("Q.qqstory.home.data.HomeFeedPresenter", "onCmdRespond, commentFeedId:%s, commentSize:%s, entryListSize:%s", new Object[] { paramwsk.jdField_a_of_type_JavaLangString, Integer.valueOf(paramwsk.jdField_a_of_type_Int), Integer.valueOf(paramwsk.jdField_a_of_type_JavaUtilList.size()) });
+    paramwsj.a(paramwsk.jdField_a_of_type_JavaUtilList, this.a.a.feedId, true, true);
+    paramwsj = new xvl(paramErrorMessage, paramwsk.jdField_a_of_type_JavaLangString, 1);
+    paramwsj.jdField_a_of_type_JavaUtilList = paramwsk.jdField_a_of_type_JavaUtilList;
+    paramwsj.c = true;
+    if (((CommentLikeFeedItem)this.a.a).mCommentIsEnd == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramwsj.jdField_a_of_type_Boolean = bool;
+      paramwsj.jdField_b_of_type_JavaLangString = ((CommentLikeFeedItem)this.a.a).mCommentLastCookie;
+      paramwsj.jdField_b_of_type_Int = paramwsk.jdField_a_of_type_Int;
+      wad.a().dispatch(paramwsj);
       return;
-    }
-    xvv.b("ImageLoader", "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
-    paramContext = URLDrawable.URLDrawableOptions.obtain();
-    if ((paramInt1 > 0) && (paramInt2 > 0))
-    {
-      paramContext.mRequestWidth = paramInt1;
-      paramContext.mRequestHeight = paramInt2;
-    }
-    paramContext.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-    paramContext.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    paramContext.mUseAutoScaleParams = false;
-    paramContext = URLDrawable.getDrawable(paramString, paramContext);
-    if (paramURLDrawableListener != null)
-    {
-      if (paramContext.getStatus() != 1) {
-        break label154;
-      }
-      xvv.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
-      paramURLDrawableListener.onLoadSuccessed(paramContext);
-    }
-    for (;;)
-    {
-      paramContext.setURLDrawableListener(paramURLDrawableListener);
-      paramImageView.setImageDrawable(paramContext);
-      return;
-      label154:
-      xvv.b("ImageLoader", "start load URLDrawable.");
     }
   }
 }

@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class axds
-  implements DialogInterface.OnClickListener
+public class axds
+  implements View.OnClickListener
 {
-  axds(axdo paramaxdo, axfs paramaxfs, axdv paramaxdv) {}
+  public axds(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_Axdo.jdField_a_of_type_AndroidContentContext))
-    {
-      QQToast.a(this.jdField_a_of_type_Axdo.jdField_a_of_type_AndroidContentContext, 1, amtj.a(2131700176), 0).a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "onClick() called with: v = [" + paramView + "]");
     }
-    ((axen)this.jdField_a_of_type_Axdo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.jdField_a_of_type_Axfs.c, this.jdField_a_of_type_Axfs.a, this.jdField_a_of_type_Axfs.d, new axdt(this));
+    MultiAIOFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

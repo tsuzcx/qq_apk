@@ -1,20 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import amux;
-import amuy;
-import com.tencent.biz.qcircleshadow.local.requests.QCircleSetCircleSwitchRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
+import anxl;
 import mqq.app.MobileQQ;
 
 public class LebaHelper$4
   implements Runnable
 {
-  public LebaHelper$4(amux paramamux, QQAppInterface paramQQAppInterface) {}
+  public LebaHelper$4(anxl paramanxl, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    QCircleSetCircleSwitchRequest localQCircleSetCircleSwitchRequest = new QCircleSetCircleSwitchRequest("qqcircle", "qqcircle_entrance_enable", "0");
-    VSNetworkHelper.getInstance().sendRequest(localQCircleSetCircleSwitchRequest, new amuy(this));
     this.this$0.a(this.a, this.a.getApplication().getApplicationContext());
   }
 }

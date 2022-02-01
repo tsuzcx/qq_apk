@@ -1,56 +1,89 @@
-import android.app.WallpaperColors;
-import android.service.wallpaper.WallpaperService.Engine;
-import android.view.SurfaceHolder;
-import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
-import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.GetPackageShopRsp;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.RspBody;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.StockItem;
 
-public class bgkq
-  extends WallpaperService.Engine
+class bgkq
+  extends nte
 {
-  private final WallpaperHelper jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper = new WallpaperHelper();
+  bgkq(bgko parambgko, bgkn parambgkn) {}
   
-  private bgkq(VipWallpaperService paramVipWallpaperService)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramVipWallpaperService);
-  }
-  
-  public WallpaperColors onComputeColors()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a();
-  }
-  
-  public void onOffsetsChanged(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2)
-  {
-    super.onOffsetsChanged(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramInt2);
-  }
-  
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.onSurfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    super.onSurfaceCreated(paramSurfaceHolder);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService, paramSurfaceHolder);
-  }
-  
-  public void onSurfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    super.onSurfaceDestroyed(paramSurfaceHolder);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a();
-  }
-  
-  public void onSurfaceRedrawNeeded(SurfaceHolder paramSurfaceHolder)
-  {
-    super.onSurfaceRedrawNeeded(paramSurfaceHolder);
-  }
-  
-  public void onVisibilityChanged(boolean paramBoolean)
-  {
-    super.onVisibilityChanged(paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(paramBoolean);
+    if (paramInt != 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Bgkn);
+      }
+      this.jdField_a_of_type_Bgkn.a(-1, "errorCode=" + paramInt);
+    }
+    do
+    {
+      return;
+      paramBundle = new Oidb_0xcd1.RspBody();
+      if (paramArrayOfByte != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult erro data=" + null);
+    return;
+    for (;;)
+    {
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (!paramBundle.get_pack_rsp.has()) {
+          break;
+        }
+        paramArrayOfByte = new Oidb_0xcd1.GetPackageShopRsp();
+        paramArrayOfByte.mergeFrom(((Oidb_0xcd1.GetPackageShopRsp)paramBundle.get_pack_rsp.get()).toByteArray());
+        paramBundle = new ArrayList();
+        if (paramArrayOfByte.msg_stock.has())
+        {
+          List localList = paramArrayOfByte.msg_stock.get();
+          paramInt = 0;
+          if (paramInt < localList.size())
+          {
+            Oidb_0xcd1.StockItem localStockItem = (Oidb_0xcd1.StockItem)localList.get(paramInt);
+            bgkz localbgkz = new bgkz();
+            localbgkz.a = localStockItem.int32_productid.get();
+            localbgkz.b = localStockItem.int32_amount.get();
+            paramBundle.add(localbgkz);
+            paramInt += 1;
+            continue;
+          }
+        }
+        if (paramArrayOfByte.empty_package_page.has())
+        {
+          paramArrayOfByte = (Oidb_0xcd1.EmptyPackagePage)paramArrayOfByte.empty_package_page.get();
+          if (paramArrayOfByte != null)
+          {
+            paramArrayOfByte = new aaip(paramArrayOfByte);
+            if (this.jdField_a_of_type_Bgkn == null) {
+              break;
+            }
+            this.jdField_a_of_type_Bgkn.a(paramBundle, paramArrayOfByte);
+            return;
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+        }
+        this.jdField_a_of_type_Bgkn.a(-1, "InvalidProtocolBufferMicroException");
+        return;
+      }
+      paramArrayOfByte = null;
+    }
   }
 }
 

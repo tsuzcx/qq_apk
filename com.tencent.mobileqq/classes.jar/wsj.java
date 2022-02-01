@@ -1,34 +1,57 @@
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import java.util.LinkedList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
 public class wsj
+  extends wfm
 {
-  private final SparseArray<LinkedList<Object>> a = new SparseArray();
+  private static final String jdField_a_of_type_JavaLangString = weg.a("StorySvc.feed_comment_list_batch_775");
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private int c;
   
-  public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
+  public wsj(List<String> paramList, boolean paramBoolean)
   {
-    paramClass = (LinkedList)this.a.get(paramClass.hashCode());
-    if (paramClass != null)
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      paramClass = paramClass.poll();
-      if (paramClass != null) {}
-      return paramClass;
+      this.c = i;
+      return;
     }
-    return null;
   }
   
-  public void a(@NonNull Object paramObject)
+  public String a()
   {
-    int i = paramObject.getClass().hashCode();
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(i);
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wfh a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchFeedComment localRspBatchFeedComment = new qqstory_service.RspBatchFeedComment();
+    try
     {
-      localLinkedList1 = new LinkedList();
-      this.a.put(i, localLinkedList1);
+      localRspBatchFeedComment.mergeFrom(paramArrayOfByte);
+      return new wsk(localRspBatchFeedComment);
     }
-    localLinkedList1.offer(paramObject);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchFeedComment localReqBatchFeedComment = new qqstory_service.ReqBatchFeedComment();
+    List localList = a(this.jdField_a_of_type_JavaUtilList);
+    localReqBatchFeedComment.feed_id_list.set(localList);
+    localReqBatchFeedComment.source.set(this.c);
+    return localReqBatchFeedComment.toByteArray();
   }
 }
 

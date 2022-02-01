@@ -4,19 +4,9 @@ import java.util.ArrayList;
 
 public class NetLivenessReqResultState$FivePoints
 {
-  ArrayList<NetLivenessReqResultState.Pointf> points;
+  public ArrayList<NetLivenessReqResultState.Pointf> points;
   
   public NetLivenessReqResultState$FivePoints(NetLivenessReqResultState paramNetLivenessReqResultState) {}
-  
-  public ArrayList<NetLivenessReqResultState.Pointf> getPoints()
-  {
-    return this.points;
-  }
-  
-  public void setPoints(ArrayList<NetLivenessReqResultState.Pointf> paramArrayList)
-  {
-    this.points = paramArrayList;
-  }
 }
 
 

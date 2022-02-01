@@ -1,14 +1,16 @@
 package com.tencent.youtu.sdkkitframework.common;
 
 import android.util.Base64;
+import com.tencent.youtu.sdkkitframework.framework.YtFSM;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import org.json.JSONObject;
 
 public class CommonUtils
 {
-  public static final int MAX_TIMEOUT_MS = 20000;
+  public static final int MAX_TIMEOUT_MS = 30000;
   public static final int MIN_TIMEOUT_MS = 0;
   private static final String TAG = "CommonUtils";
   private static ConcurrentHashMap<String, CommonUtils.BenchMarkTime> benchMarkMaps = new ConcurrentHashMap();
@@ -28,7 +30,7 @@ public class CommonUtils
     }
     CommonUtils.BenchMarkTime localBenchMarkTime = (CommonUtils.BenchMarkTime)benchMarkMaps.get(paramString);
     localBenchMarkTime.end();
-    YtLogger.d("CommonUtils", "benchMarkEnd -- " + paramString + " : " + localBenchMarkTime.cur);
+    YtLogger.d("CommonUtils", "benchMarkEnd -- " + paramString + " : " + localBenchMarkTime.cur + "ms");
     return localBenchMarkTime.cur;
   }
   
@@ -57,6 +59,23 @@ public class CommonUtils
     System.arraycopy(paramString2, 0, paramString3, 0, paramString2.length);
     System.arraycopy(paramString1.getBytes(), 0, paramString3, paramString2.length, paramString1.getBytes().length);
     return new String(Base64.encode(paramString3, 2));
+  }
+  
+  public static String makeMessageJson(int paramInt, String paramString1, String paramString2)
+  {
+    try
+    {
+      new JSONObject(paramString2);
+      return paramString2;
+    }
+    catch (Exception localException) {}
+    return "{ \"errorcode\":" + paramInt + ",\"errormsg\": \"" + paramString1 + "\",\"extrainfo\":\"" + paramString2 + "\"}";
+  }
+  
+  public static void reportException(String paramString, Exception paramException)
+  {
+    YtSDKStats.getInstance().reportInfo(paramString + " cause exception: " + paramException.getLocalizedMessage());
+    YtFSM.getInstance().sendFSMEvent(new CommonUtils.1(paramException));
   }
 }
 

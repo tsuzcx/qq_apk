@@ -2,14 +2,15 @@ package com.tencent.mobileqq.activity.qwallet.report;
 
 import VACDReport.ReportHeader;
 import VACDReport.ReportItem;
-import akfl;
+import albe;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import biaq;
+import bjls;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -51,7 +52,7 @@ public class VACDReportUtil
       paramString4 = BaseApplicationImpl.getApplication().peekAppRuntime();
       if ((paramString4 instanceof QQAppInterface))
       {
-        paramString4 = (akfl)((QQAppInterface)paramString4).getManager(148);
+        paramString4 = (albe)((QQAppInterface)paramString4).getManager(QQManagerFactory.VACD_REPORT_MANAGER);
         if (paramString4 == null)
         {
           if (QLog.isColorLevel()) {
@@ -88,7 +89,7 @@ public class VACDReportUtil
     localReportHeader.sModule = paramString1;
     localReportHeader.sAction = paramString2;
     localReportHeader.version = DeviceInfoUtil.getQQVersionWithCode(BaseApplicationImpl.getContext());
-    localReportHeader.imei = biaq.c();
+    localReportHeader.imei = bjls.c();
     localReportHeader.guid = SecUtil.toHexString(NetConnInfoCenter.GUID);
     long l = NetConnInfoCenter.getServerTimeMillis();
     localReportHeader.seqno = l;
@@ -137,7 +138,7 @@ public class VACDReportUtil
     paramString2 = BaseApplicationImpl.getApplication().peekAppRuntime();
     if ((paramString2 instanceof QQAppInterface))
     {
-      paramString2 = (akfl)((QQAppInterface)paramString2).getManager(148);
+      paramString2 = (albe)((QQAppInterface)paramString2).getManager(QQManagerFactory.VACD_REPORT_MANAGER);
       if (paramString2 == null)
       {
         if (QLog.isColorLevel()) {
@@ -178,7 +179,7 @@ public class VACDReportUtil
     paramString4 = BaseApplicationImpl.getApplication().peekAppRuntime();
     if ((paramString4 instanceof QQAppInterface))
     {
-      paramString4 = (akfl)((QQAppInterface)paramString4).getManager(148);
+      paramString4 = (albe)((QQAppInterface)paramString4).getManager(QQManagerFactory.VACD_REPORT_MANAGER);
       if (paramString4 == null)
       {
         if (QLog.isColorLevel()) {
@@ -225,7 +226,7 @@ public class VACDReportUtil
       paramString2 = BaseApplicationImpl.getApplication().peekAppRuntime();
       if ((paramString2 instanceof QQAppInterface))
       {
-        paramString2 = (akfl)((QQAppInterface)paramString2).getManager(148);
+        paramString2 = (albe)((QQAppInterface)paramString2).getManager(QQManagerFactory.VACD_REPORT_MANAGER);
         if (paramString2 == null)
         {
           if (QLog.isColorLevel()) {

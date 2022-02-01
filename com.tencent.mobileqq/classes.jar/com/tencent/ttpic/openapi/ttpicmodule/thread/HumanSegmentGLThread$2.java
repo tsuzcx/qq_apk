@@ -58,9 +58,9 @@ class HumanSegmentGLThread$2
     }
     for (;;)
     {
-      HumanSegmentGLThread.access$200(this.this$0).RenderProcess(HumanSegmentGLThread.access$800(this.this$0).getTextureId(), 256, 256, -1, 0.0D, HumanSegmentGLThread.access$700(this.this$0));
-      Bitmap localBitmap1 = Bitmap.createBitmap(256, 256, Bitmap.Config.ARGB_8888);
-      RendererUtils.saveTextureToBitmap(HumanSegmentGLThread.access$700(this.this$0).getTextureId(), 256, 256, localBitmap1);
+      HumanSegmentGLThread.access$200(this.this$0).RenderProcess(HumanSegmentGLThread.access$800(this.this$0).getTextureId(), 320, 320, -1, 0.0D, HumanSegmentGLThread.access$700(this.this$0));
+      Bitmap localBitmap1 = Bitmap.createBitmap(320, 320, Bitmap.Config.ARGB_8888);
+      RendererUtils.saveTextureToBitmap(HumanSegmentGLThread.access$700(this.this$0).getTextureId(), 320, 320, localBitmap1);
       Bitmap localBitmap2 = this.this$0.mHumanSegmentInitializer.forward(localBitmap1, 0);
       localBitmap1.recycle();
       localSegmentDataPipe.mMaskFrame.bindFrame(-1, localBitmap2.getWidth(), localBitmap2.getHeight(), 0.0D);

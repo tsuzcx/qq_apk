@@ -1,71 +1,35 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentThree;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class qsn
-  extends qpk
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/proteus/utils/RIJProteusDrawableHelper$getDrawableFromNet$1", "Landroid/graphics/drawable/Drawable$Callback;", "invalidateDrawable", "", "who", "Landroid/graphics/drawable/Drawable;", "scheduleDrawable", "what", "Ljava/lang/Runnable;", "when", "", "unscheduleDrawable", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qsn
+  implements Drawable.Callback
 {
-  public qsn(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
+  qsn(DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
+  
+  public void invalidateDrawable(@NotNull Drawable paramDrawable)
   {
-    super(paramContext, paramFaceDecoder, paramslt);
+    Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
+    QLog.i("Q.readinjoy.proteus", 1, "invalidateDrawable: ");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, (Drawable)this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
   
-  public qpk a()
+  public void scheduleDrawable(@NotNull Drawable paramDrawable, @NotNull Runnable paramRunnable, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return b();
+    Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
+    Intrinsics.checkParameterIsNotNull(paramRunnable, "what");
   }
   
-  public qpk d()
+  public void unscheduleDrawable(@NotNull Drawable paramDrawable, @NotNull Runnable paramRunnable)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend);
-    }
-    if ((this.jdField_a_of_type_Qpj != null) && ((this.jdField_a_of_type_Qpj instanceof ComponentContentThree))) {
-      localLinearLayout.addView((ComponentContentThree)this.jdField_a_of_type_Qpj);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
-  }
-  
-  public qpk e()
-  {
-    return null;
-  }
-  
-  public qpk g()
-  {
-    this.jdField_a_of_type_Qpj = new ComponentContentThree(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
+    Intrinsics.checkParameterIsNotNull(paramRunnable, "what");
   }
 }
 

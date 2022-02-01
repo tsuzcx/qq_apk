@@ -1,11 +1,9 @@
-class zea
-  implements zjr
+final class zea
+  extends wng
 {
-  zea(zdz paramzdz) {}
-  
-  public void a(boolean paramBoolean)
+  public String a()
   {
-    this.a.jdField_a_of_type_Zdx.a.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    return vzu.n;
   }
 }
 

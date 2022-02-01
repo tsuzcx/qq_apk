@@ -1,20 +1,13 @@
-import java.util.Comparator;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class alyi
-  implements Comparator<alyk>
+  extends alyl
 {
-  alyi(alyh paramalyh) {}
-  
-  public int a(alyk paramalyk1, alyk paramalyk2)
-  {
-    if (paramalyk1.a == paramalyk2.a) {
-      return 0;
-    }
-    if (paramalyk1.a > paramalyk2.a) {
-      return 1;
-    }
-    return -1;
-  }
+  public ImageView a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

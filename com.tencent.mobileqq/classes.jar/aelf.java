@@ -1,8 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class aelf
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  String b;
+  public aelf(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    PublicFragmentActivity.a(this.a, TempMsgSettingFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,36 +1,30 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
 
 public class adeb
-  implements bjoe
+  implements DialogInterface.OnClickListener
 {
-  public adeb(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bjnw parambjnw) {}
+  public adeb(AccountManageActivity paramAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
+    QLog.d("AccountManageActivity", 1, "switchFail, to LoginActivity");
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setPackage(this.a.getPackageName());
+    paramDialogInterface.setClass(this.a, LoginActivity.class);
+    paramDialogInterface.putExtra("is_change_account", true);
+    paramDialogInterface.putExtra("login_from_account_change", true);
+    if (this.a.a != null) {
+      paramDialogInterface.putExtra("uin", this.a.a.getUin());
     }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_Bjnw != null) && (this.jdField_a_of_type_Bjnw.isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.isFinishing()))
-      {
-        this.jdField_a_of_type_Bjnw.dismiss();
-        this.jdField_a_of_type_Bjnw.cancel();
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.b();
-      continue;
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.uin;
-      Bundle localBundle = aabc.a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
-      aabc.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), "", "", paramView, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getCurrentAccountUin(), 22001, null, localBundle);
-      bftc.a("Grp_Dis_set", "Dis_info", "clk_report", 0, 0, new String[] { DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), bftc.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a) });
-      continue;
-      DiscussionInfoCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
-    }
+    paramDialogInterface.putExtra("befault_uin", this.a.app.getCurrentAccountUin());
+    this.a.startActivityForResult(paramDialogInterface, 9876);
   }
 }
 

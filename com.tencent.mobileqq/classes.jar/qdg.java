@@ -1,22 +1,25 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcShortContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
 class qdg
-  extends ComponentContentPgcShortContentGridImage
+  extends AnimatorListenerAdapter
 {
-  qdg(qdf paramqdf, Context paramContext, ArticleInfo paramArticleInfo)
+  qdg(qdc paramqdc) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramContext);
+    super.onAnimationEnd(paramAnimator);
+    qdc.a(this.a).setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+    }
   }
   
-  public int a()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a != null)) {
-      return 11;
-    }
-    return super.a();
+    super.onAnimationStart(paramAnimator);
   }
 }
 

@@ -1,33 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class actk
-  implements bjoe
+  implements acpi
 {
-  SimpleAccount jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount;
-  
-  public actk(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b.dismiss();
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, false);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, true);
-  }
-  
-  public void a(SimpleAccount paramSimpleAccount)
-  {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = paramSimpleAccount;
+    ((bikt)paramacnk.a().getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(paramMsgType0x210.vProtobuf);
+    return null;
   }
 }
 

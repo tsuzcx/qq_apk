@@ -1,43 +1,22 @@
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/common/ProteusPreloadManager$PreloadContainerWrapper;", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "(Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;)V", "getContainer", "()Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "setContainer", "screenWidth", "", "getScreenWidth", "()Ljava/lang/Number;", "setScreenWidth", "(Ljava/lang/Number;)V", "isSuitableSize", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initExposeCommentClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class ozn
+  implements oyp
 {
-  @NotNull
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  @NotNull
-  private Number jdField_a_of_type_JavaLangNumber;
-  
-  public ozn(@NotNull Container paramContainer)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pcf parampcf, @NotNull pdp parampdp, @NotNull ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramContainer;
-    this.jdField_a_of_type_JavaLangNumber = ((Number)Integer.valueOf(UIUtils.getScreenWidth(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext())));
-  }
-  
-  @NotNull
-  public final Container a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  }
-  
-  @NotNull
-  public final Number a()
-  {
-    return this.jdField_a_of_type_JavaLangNumber;
-  }
-  
-  public final boolean a()
-  {
-    int i = UIUtils.getScreenWidth(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
-    Number localNumber = this.jdField_a_of_type_JavaLangNumber;
-    if (!(localNumber instanceof Integer)) {}
-    while (i != ((Integer)localNumber).intValue()) {
-      return false;
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampcf, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampdp, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    if (((paramViewBase instanceof phl)) && ((parampcf instanceof pau))) {
+      ((phl)paramViewBase).a((pau)parampcf);
     }
-    return true;
   }
 }
 

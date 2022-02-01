@@ -1,32 +1,34 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.player.IPlayer.PlayerListener;
-import com.tencent.tav.player.IPlayer.PlayerStatus;
-import com.tencent.tavcut.player.MoviePlayer;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import org.json.JSONObject;
 
-public class bmjs
-  implements IPlayer.PlayerListener
+class bmjs
+  implements bmjt
 {
-  public bmjs(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
+  bmjs(bmjr parambmjr) {}
   
-  public void onPositionChanged(CMTime paramCMTime)
+  public void a(boolean paramBoolean, String paramString)
   {
-    Object localObject = AEEditorMultiCutEditFragment.a(this.a).getDuration();
-    localObject = bmnt.a(paramCMTime.getTimeUs() / 1000L) + "/" + bmnt.a(((CMTime)localObject).getTimeUs() / 1000L);
-    AEEditorMultiCutEditFragment.a(this.a).setText((CharSequence)localObject);
-    AEEditorMultiCutEditFragment.b(this.a, paramCMTime.getTimeUs());
-  }
-  
-  public void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
-  {
-    if ((paramPlayerStatus == IPlayer.PlayerStatus.PLAYING) || (paramPlayerStatus == IPlayer.PlayerStatus.REPLAY))
+    if (paramBoolean)
     {
-      AEEditorMultiCutEditFragment.a(this.a).setSelected(true);
-      return;
+      JSONObject localJSONObject = this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.a.jdField_a_of_type_Bmjp.c, this.a.a.jdField_a_of_type_Int, this.a.a.b, "uploaded", this.a.a.jdField_a_of_type_JavaLangString, 0);
+      try
+      {
+        localJSONObject.put("result", 0);
+        localJSONObject.put("progress", 1.0D);
+        localJSONObject.put("coverurl", paramString);
+        QLog.e("TroopHWJsPlugin", 2, "upload thumb success:" + localJSONObject.toString());
+        this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.a.jdField_a_of_type_Bmjp.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("TroopHWJsPlugin", 2, "upload thumb exception:", paramString);
+        return;
+      }
     }
-    AEEditorMultiCutEditFragment.a(this.a).setSelected(false);
+    QLog.e("TroopHWJsPlugin", 1, "upload thumb failed!");
+    this.a.b(-1);
   }
 }
 

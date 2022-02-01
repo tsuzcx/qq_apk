@@ -1,6 +1,6 @@
 public abstract interface vfg
 {
-  public abstract void a(Object paramObject);
+  public abstract void a(vfr paramvfr);
 }
 
 

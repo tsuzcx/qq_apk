@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class vtm
-  implements Parcelable.Creator<DiscoverBannerVideoEntry.BannerInfo>
+class vtm
+  implements View.OnClickListener
 {
-  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
-  {
-    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
-  }
+  vtm(vtj paramvtj) {}
   
-  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
+    this.a.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

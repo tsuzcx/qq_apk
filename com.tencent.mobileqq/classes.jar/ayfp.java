@@ -1,135 +1,69 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView.Adapter;
-import androidx.recyclerview.widget.RecyclerView.LayoutParams;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.widget.XPanelContainer;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.qphone.base.util.QLog;
 
-public class ayfp
-  extends RecyclerView.Adapter<ayfq>
+class ayfp
+  implements ViewPager.OnPageChangeListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<ayfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  ayfp(ayek paramayek) {}
   
-  public ayfp(QQAppInterface paramQQAppInterface, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  private BusinessInfoCheckUpdate.AppInfo a(ayfo paramayfo)
-  {
-    return ((azvi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).a(10, String.valueOf(paramayfo.c), paramayfo.f);
-  }
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
   
-  private void a(@NonNull ayfq paramayfq, ayfo paramayfo)
+  public void onPageSelected(int paramInt)
   {
-    paramayfq.itemView.setContentDescription(paramayfo.jdField_a_of_type_JavaLangString + amtj.a(2131706978));
-    paramayfq.itemView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    paramayfq.itemView.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-    paramayfq.itemView.setEnabled(true);
-    paramayfq.itemView.setTag(paramayfo);
-    bfpm.a(paramayfq.itemView, true);
-  }
-  
-  private void b(@NonNull ayfq paramayfq, int paramInt)
-  {
-    int i = 3;
-    int j = XPanelContainer.a;
-    int k = XPanelContainer.b;
-    if (paramInt <= 3) {}
-    for (paramInt = i;; paramInt = 6)
-    {
-      paramInt = (j - k) / paramInt;
-      paramayfq.itemView.setPadding(0, paramInt, 0, 0);
-      return;
+    if (QLog.isColorLevel()) {
+      axql.a("onPageSelected", new Object[] { Integer.valueOf(paramInt) });
     }
-  }
-  
-  private void b(@NonNull ayfq paramayfq, ayfo paramayfo)
-  {
-    ayfq.a(paramayfq).setVisibility(0);
-    ayfq.a(paramayfq).setBackgroundDrawable(paramayfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if ((paramayfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable))
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
+    Object localObject = (NearbyBaseFragment)this.a.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag("android:switcher:2131381319:" + paramInt);
+    if (localObject != null) {
+      ((NearbyBaseFragment)localObject).aC_();
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2)
     {
-      paramayfq = (URLDrawable)paramayfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (paramayfq.getStatus() == 2) {
-        paramayfq.restartDownload();
+      if (paramInt == 0) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }
     }
-  }
-  
-  private void c(@NonNull ayfq paramayfq, ayfo paramayfo)
-  {
-    int i = 0;
-    ayfq.a(paramayfq).setVisibility(0);
-    ayfq.a(paramayfq).d();
-    if (!TextUtils.isEmpty(paramayfo.c))
+    else
     {
-      ayfq.b(paramayfq).setVisibility(8);
-      paramayfo = a(paramayfo);
-      if (paramayfo != null) {
-        ayfq.a(paramayfq).a(paramayfo);
+      if (paramInt != 0) {
+        break label292;
       }
-      return;
+      localbdlf = new bdlf(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("datatab_exp");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 2) {
+        break label286;
+      }
     }
-    paramayfq = ayfq.b(paramayfq);
-    if (paramayfo.jdField_a_of_type_Boolean) {}
-    for (;;)
+    label286:
+    for (localObject = "1";; localObject = "2")
     {
-      paramayfq.setVisibility(i);
+      localbdlf.a(new String[] { localObject }).a();
       return;
-      i = 8;
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localbdlf = new bdlf(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("exp_pub").e(String.valueOf(ayek.a(this.a).tinyId));
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
+      for (localObject = "1";; localObject = "2")
+      {
+        localbdlf.a(new String[] { localObject }).a();
+        break;
+      }
     }
-  }
-  
-  @NonNull
-  public ayfq a(@NonNull ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558876, null);
-    paramInt = ViewUtils.dpToPx(15.0F);
-    paramViewGroup.setLayoutParams(new RecyclerView.LayoutParams(-1, (XPanelContainer.b - paramInt) / 2 + (XPanelContainer.a - XPanelContainer.b) / 2));
-    return new ayfq(paramViewGroup);
-  }
-  
-  public void a(@NonNull ayfq paramayfq, int paramInt)
-  {
-    ayfo localayfo = (ayfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    b(paramayfq, paramInt);
-    b(paramayfq, localayfo);
-    c(paramayfq, localayfo);
-    ayfq.a(paramayfq).setText(localayfo.jdField_a_of_type_JavaLangString);
-    bfpm.a(ayfq.a(paramayfq), false);
-    a(paramayfq, localayfo);
-  }
-  
-  public void a(List<ayfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    label292:
+    bdlf localbdlf = new bdlf(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("feedtab_exp").e(String.valueOf(ayek.a(this.a).tinyId));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
+    for (localObject = "1";; localObject = "2")
+    {
+      localbdlf.a(new String[] { localObject }).a();
+      return;
     }
-    return 0;
   }
 }
 

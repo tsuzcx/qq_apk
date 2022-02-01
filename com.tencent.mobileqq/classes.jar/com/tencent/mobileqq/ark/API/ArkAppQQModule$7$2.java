@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ark.API;
 
-import aoqa;
-import aoqj;
+import aptb;
+import aptk;
 
 public class ArkAppQQModule$7$2
   implements Runnable
 {
-  public ArkAppQQModule$7$2(aoqj paramaoqj) {}
+  public ArkAppQQModule$7$2(aptk paramaptk) {}
   
   public void run()
   {
-    aoqa.a(this.a.jdField_a_of_type_Aoqa, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_JavaLangString, 16L, this.a.b, 2);
+    aptb.a(this.a.jdField_a_of_type_Aptb, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_JavaLangString, 16L, this.a.b, 2);
   }
 }
 

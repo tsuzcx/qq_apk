@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
 public class albu
-  implements Comparator<TroopMemberInfo>
 {
-  private albu(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
-  
-  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
+  public static void a(String paramString)
   {
-    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
-      return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QWalletPerTrace", 2, "markTimeStamp " + paramString);
     }
-    return 0;
   }
 }
 

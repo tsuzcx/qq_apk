@@ -1,6 +1,5 @@
 package cooperation.qzone;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
@@ -8,6 +7,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory.Options;
 import android.os.Bundle;
 import android.text.TextUtils;
+import anvx;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.subscribe.beans.SerializableMap;
 import com.tencent.common.app.AppInterface;
@@ -86,75 +86,84 @@ public class QZoneShareManager
     }
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    for (;;)
+    if (i < paramArrayList.size())
     {
-      if (i < paramArrayList.size())
+      Object localObject2 = (String)paramArrayList.get(i);
+      Object localObject1;
+      if (FileUtil.isFileExists((String)localObject2))
       {
-        Object localObject2 = (String)paramArrayList.get(i);
-        if (!FileUtil.isFileExists((String)localObject2)) {
-          break label436;
-        }
         if (QLog.isColorLevel()) {
-          QLog.d("QZoneShare", 4, "local url:" + (String)localObject2);
+          QLog.d("QZoneShare", 2, "local url:" + (String)localObject2);
         }
-        Object localObject1 = localObject2;
+        localObject1 = localObject2;
         if (FileUtil.getFileSize((String)localObject2) > 2097152L)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("QZoneShare", 4, "file length:" + FileUtil.getFileSize((String)localObject2));
+            QLog.d("QZoneShare", 2, "file length:" + FileUtil.getFileSize((String)localObject2));
           }
           localObject2 = compressImages((String)localObject2, i);
-          if (localObject2 == null) {
-            break;
+          if (localObject2 != null)
+          {
+            localObject1 = ((File)localObject2).getAbsolutePath();
+            QLog.d("QZoneShare", 2, "compressImages new Path:" + (String)localObject1);
+            localArrayList.add(localObject2);
           }
-          localObject1 = ((File)localObject2).getAbsolutePath();
-          localArrayList.add(localObject2);
         }
-        localObject2 = new HashMap();
-        ((Map)localObject2).put("Connection", "keep-alive");
-        ((Map)localObject2).put("Referer", "https://www.qq.com");
-        HashMap localHashMap1 = new HashMap();
-        localHashMap1.put("type", paramString3);
-        HashMap localHashMap2 = new HashMap();
-        localHashMap2.put("share_image", localObject1);
-        localObject1 = HttpUtil.uploadImageWithHttps(MsfSdkUtils.insertMtype("qzPicu", "https://cgi.connect.qq.com/qqconnectopen/upload_share_image"), "cgi.connect.qq.com", paramString1, paramString2, localHashMap1, localHashMap2, (Map)localObject2, true);
-        if (localObject1 == null) {
-          break label436;
+        else
+        {
+          localObject2 = new HashMap();
+          ((Map)localObject2).put("Connection", "keep-alive");
+          ((Map)localObject2).put("Referer", "https://www.qq.com");
+          HashMap localHashMap1 = new HashMap();
+          localHashMap1.put("type", paramString3);
+          HashMap localHashMap2 = new HashMap();
+          localHashMap2.put("share_image", localObject1);
+          localObject1 = HttpUtil.uploadImageWithHttps(MsfSdkUtils.insertMtype("qzPicu", "https://cgi.connect.qq.com/qqconnectopen/upload_share_image"), "cgi.connect.qq.com", paramString1, paramString2, localHashMap1, localHashMap2, (Map)localObject2, true);
+          if (localObject1 == null) {
+            break label472;
+          }
         }
+      }
+      for (;;)
+      {
         try
         {
           localObject1 = new JSONObject((String)localObject1);
-          if (((JSONObject)localObject1).getInt("retcode") == 0)
-          {
-            localObject1 = ((JSONObject)localObject1).getJSONObject("result");
-            if (localObject1 != null)
-            {
-              paramArrayList.set(i, ((JSONObject)localObject1).getString("url"));
-              if (QLog.isColorLevel()) {
-                QLog.d("QZoneShare", 4, "target url:" + ((JSONObject)localObject1).getString("url"));
-              }
-            }
+          if (((JSONObject)localObject1).getInt("retcode") != 0) {
+            continue;
           }
-          else
+          localObject1 = ((JSONObject)localObject1).getJSONObject("result");
+          if (localObject1 != null)
           {
-            QZONE_UPLOAD_FAIL_RESULT_CODE = ((JSONObject)localObject1).getInt("retcode");
-            QLog.d("QZoneShare", 1, "upload fail, code = " + QZONE_UPLOAD_FAIL_RESULT_CODE);
+            paramArrayList.set(i, ((JSONObject)localObject1).getString("url"));
+            if (QLog.isColorLevel()) {
+              QLog.d("QZoneShare", 2, "target url:" + ((JSONObject)localObject1).getString("url"));
+            }
           }
         }
         catch (JSONException localJSONException)
         {
           if (!QLog.isColorLevel()) {
-            break label436;
+            continue;
           }
+          QLog.d("QZoneShare", 2, localJSONException.getMessage());
+          continue;
         }
-        QLog.d("QZoneShare", 4, localJSONException.getMessage());
-        break label436;
+        i += 1;
+        break;
+        QLog.d("QZoneShare", 1, "compressImages error");
+        return paramArrayList;
+        QZONE_UPLOAD_FAIL_RESULT_CODE = ((JSONObject)localObject1).getInt("retcode");
+        QLog.d("QZoneShare", 1, "upload fail, code = " + QZONE_UPLOAD_FAIL_RESULT_CODE);
+        continue;
+        label472:
+        QLog.e("QZoneShare", 1, "uploadImageWithHttps error");
+        continue;
+        QLog.e("QZoneShare", 1, "uploadImageWithHttps file not exist");
       }
-      deleteTempFile(localArrayList);
-      return paramArrayList;
-      label436:
-      i += 1;
     }
+    deleteTempFile(localArrayList);
+    return paramArrayList;
   }
   
   public static int calculateInSampleSize(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
@@ -205,34 +214,34 @@ public class QZoneShareManager
     //   3: aconst_null
     //   4: astore_3
     //   5: aload_0
-    //   6: invokestatic 352	com/tencent/mobileqq/filemanager/util/FileUtil:getFileDirectoryOf	(Ljava/lang/String;)Ljava/lang/String;
+    //   6: invokestatic 363	com/tencent/mobileqq/filemanager/util/FileUtil:getFileDirectoryOf	(Ljava/lang/String;)Ljava/lang/String;
     //   9: astore 5
     //   11: aload_0
-    //   12: invokestatic 355	com/tencent/mobileqq/filemanager/util/FileUtil:getExtension	(Ljava/lang/String;)Ljava/lang/String;
+    //   12: invokestatic 366	com/tencent/mobileqq/filemanager/util/FileUtil:getExtension	(Ljava/lang/String;)Ljava/lang/String;
     //   15: astore 6
-    //   17: new 305	android/graphics/BitmapFactory$Options
+    //   17: new 316	android/graphics/BitmapFactory$Options
     //   20: dup
-    //   21: invokespecial 356	android/graphics/BitmapFactory$Options:<init>	()V
+    //   21: invokespecial 367	android/graphics/BitmapFactory$Options:<init>	()V
     //   24: astore_2
     //   25: aload_2
     //   26: iconst_1
-    //   27: putfield 360	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   27: putfield 371	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   30: aload_0
     //   31: aload_2
-    //   32: invokestatic 366	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   32: invokestatic 377	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   35: pop
     //   36: aload_2
     //   37: aload_2
     //   38: sipush 640
     //   41: sipush 640
-    //   44: invokestatic 368	cooperation/qzone/QZoneShareManager:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
-    //   47: putfield 371	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   44: invokestatic 379	cooperation/qzone/QZoneShareManager:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   47: putfield 382	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   50: aload_2
     //   51: iconst_0
-    //   52: putfield 360	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   52: putfield 371	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   55: aload_0
     //   56: aload_2
-    //   57: invokestatic 366	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   57: invokestatic 377	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   60: astore_0
     //   61: aload_3
     //   62: astore_2
@@ -251,35 +260,35 @@ public class QZoneShareManager
     //   85: dup
     //   86: invokespecial 181	java/lang/StringBuilder:<init>	()V
     //   89: iload_1
-    //   90: invokevirtual 292	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   90: invokevirtual 296	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   93: aload 6
     //   95: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   98: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: invokespecial 374	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: invokespecial 385	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   104: astore_3
     //   105: aload_0
     //   106: astore_2
-    //   107: new 376	java/io/FileOutputStream
+    //   107: new 387	java/io/FileOutputStream
     //   110: dup
     //   111: aload_3
-    //   112: invokespecial 379	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   112: invokespecial 390	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   115: astore 5
     //   117: aload_0
     //   118: astore_2
     //   119: aload_0
-    //   120: getstatic 385	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   120: getstatic 396	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   123: bipush 50
     //   125: aload 5
-    //   127: invokevirtual 391	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   127: invokevirtual 402	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   130: ifeq +10 -> 140
     //   133: aload_0
     //   134: astore_2
     //   135: aload 5
-    //   137: invokevirtual 394	java/io/FileOutputStream:flush	()V
+    //   137: invokevirtual 405	java/io/FileOutputStream:flush	()V
     //   140: aload_0
     //   141: astore_2
     //   142: aload 5
-    //   144: invokevirtual 397	java/io/FileOutputStream:close	()V
+    //   144: invokevirtual 408	java/io/FileOutputStream:close	()V
     //   147: aload_3
     //   148: astore_2
     //   149: aload_2
@@ -289,11 +298,11 @@ public class QZoneShareManager
     //   155: aload_2
     //   156: astore_3
     //   157: aload_0
-    //   158: invokevirtual 400	android/graphics/Bitmap:isRecycled	()Z
+    //   158: invokevirtual 411	android/graphics/Bitmap:isRecycled	()Z
     //   161: ifne +12 -> 173
     //   164: aload_0
-    //   165: invokevirtual 403	android/graphics/Bitmap:recycle	()V
-    //   168: invokestatic 408	java/lang/System:gc	()V
+    //   165: invokevirtual 414	android/graphics/Bitmap:recycle	()V
+    //   168: invokestatic 419	java/lang/System:gc	()V
     //   171: aload_2
     //   172: astore_3
     //   173: aload_3
@@ -309,9 +318,9 @@ public class QZoneShareManager
     //   187: astore_2
     //   188: ldc 110
     //   190: iconst_2
-    //   191: ldc_w 410
+    //   191: ldc_w 421
     //   194: aload_3
-    //   195: invokestatic 414	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   195: invokestatic 424	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   198: aload 4
     //   200: astore_3
     //   201: aload_0
@@ -319,11 +328,11 @@ public class QZoneShareManager
     //   205: aload 4
     //   207: astore_3
     //   208: aload_0
-    //   209: invokevirtual 400	android/graphics/Bitmap:isRecycled	()Z
+    //   209: invokevirtual 411	android/graphics/Bitmap:isRecycled	()Z
     //   212: ifne -39 -> 173
     //   215: aload_0
-    //   216: invokevirtual 403	android/graphics/Bitmap:recycle	()V
-    //   219: invokestatic 408	java/lang/System:gc	()V
+    //   216: invokevirtual 414	android/graphics/Bitmap:recycle	()V
+    //   219: invokestatic 419	java/lang/System:gc	()V
     //   222: aconst_null
     //   223: areturn
     //   224: astore_3
@@ -337,9 +346,9 @@ public class QZoneShareManager
     //   236: astore_2
     //   237: ldc 110
     //   239: iconst_2
-    //   240: ldc_w 416
+    //   240: ldc_w 426
     //   243: aload_3
-    //   244: invokestatic 414	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   244: invokestatic 424	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   247: aload 4
     //   249: astore_3
     //   250: aload_0
@@ -347,11 +356,11 @@ public class QZoneShareManager
     //   254: aload 4
     //   256: astore_3
     //   257: aload_0
-    //   258: invokevirtual 400	android/graphics/Bitmap:isRecycled	()Z
+    //   258: invokevirtual 411	android/graphics/Bitmap:isRecycled	()Z
     //   261: ifne -88 -> 173
     //   264: aload_0
-    //   265: invokevirtual 403	android/graphics/Bitmap:recycle	()V
-    //   268: invokestatic 408	java/lang/System:gc	()V
+    //   265: invokevirtual 414	android/graphics/Bitmap:recycle	()V
+    //   268: invokestatic 419	java/lang/System:gc	()V
     //   271: aconst_null
     //   272: areturn
     //   273: astore_0
@@ -360,11 +369,11 @@ public class QZoneShareManager
     //   276: aload_2
     //   277: ifnull +17 -> 294
     //   280: aload_2
-    //   281: invokevirtual 400	android/graphics/Bitmap:isRecycled	()Z
+    //   281: invokevirtual 411	android/graphics/Bitmap:isRecycled	()Z
     //   284: ifne +10 -> 294
     //   287: aload_2
-    //   288: invokevirtual 403	android/graphics/Bitmap:recycle	()V
-    //   291: invokestatic 408	java/lang/System:gc	()V
+    //   288: invokevirtual 414	android/graphics/Bitmap:recycle	()V
+    //   291: invokestatic 419	java/lang/System:gc	()V
     //   294: aload_0
     //   295: athrow
     //   296: astore_0
@@ -743,8 +752,8 @@ public class QZoneShareManager
   public static final void shareToQZoneForRedPocket(Context paramContext, String paramString1, DialogInterface.OnDismissListener paramOnDismissListener, int paramInt, String paramString2, String paramString3)
   {
     paramString3 = new QZoneShareData();
-    paramString3.mTitle = (paramString2 + amtj.a(2131711433));
-    paramString3.mSummary = amtj.a(2131711425);
+    paramString3.mTitle = (paramString2 + anvx.a(2131711780));
+    paramString3.mSummary = anvx.a(2131711772);
     paramString3.mImageUrls = new ArrayList();
     paramString3.mImageUrls.add("https://qzonestyle.gtimg.cn/aoi/sola/20161111222053_4wlQcl1Eta.png");
     paramString3.targetUrl = ("https://h5.qzone.qq.com/redpacket/share?_wv=1&_ws=1&uin=" + paramString1);

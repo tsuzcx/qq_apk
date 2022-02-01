@@ -1,18 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import pay;
-import qja;
-import qjc;
+import prg;
+import qve;
+import qvg;
 
 public class ReadInjoyTextView$2$2
   implements Runnable
 {
-  public ReadInjoyTextView$2$2(qjc paramqjc) {}
+  public ReadInjoyTextView$2$2(qvg paramqvg) {}
   
   public void run()
   {
-    this.a.a.setText(pay.e(ReadInJoyUserInfoModule.a()));
+    this.a.a.setText(prg.a(this.a.b));
   }
 }
 

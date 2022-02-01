@@ -1,18 +1,27 @@
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.home.Conversation;
 import mqq.os.MqqHandler;
 
-public class aldq
-  extends MqqHandler
+class aldq
+  implements DialogInterface.OnClickListener
 {
-  public aldq(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  aldq(aldp paramaldp) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramMessage = ShortVideoUtils.stringForTime(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    if (amyv.a() != null) {
+      amwn.a();
+    }
+    paramDialogInterface = amwn.a();
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
+      }
+    }
   }
 }
 

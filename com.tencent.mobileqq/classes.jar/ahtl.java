@@ -1,25 +1,28 @@
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-class ahtl
-  implements aqwe
+public final class ahtl
+  implements Parcelable.Creator<AIORichMediaData>
 {
-  ahtl(ahtj paramahtj, MqqHandler paramMqqHandler) {}
-  
-  public void a(int paramInt)
+  public AIORichMediaData a(Parcel paramParcel)
   {
-    switch (paramInt)
+    Object localObject = paramParcel.readString();
+    try
     {
+      localObject = AIORichMediaData.a((String)localObject);
+      ((AIORichMediaData)localObject).a(paramParcel);
+      return localObject;
     }
-    do
+    catch (ClassNotFoundException paramParcel)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
-      return;
-    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(84, 10000L);
+      throw new RuntimeException(paramParcel);
+    }
+  }
+  
+  public AIORichMediaData[] a(int paramInt)
+  {
+    return new AIORichMediaData[paramInt];
   }
 }
 

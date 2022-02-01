@@ -1,45 +1,16 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class xki
-  extends xnj<xoe>
+  implements xly
 {
-  public xki(@Nullable xnn paramxnn)
-  {
-    super(paramxnn);
-  }
+  public xki(TextureVideoView paramTextureVideoView) {}
   
-  protected JobSegment<xnm, xoe> a()
+  public boolean a_(xlu paramxlu, int paramInt1, int paramInt2)
   {
-    return new xnz();
-  }
-  
-  protected JobSegment<Integer, xnm> a(xnl paramxnl)
-  {
-    return new xkj(paramxnl);
-  }
-  
-  protected xoe a()
-  {
-    xnp localxnp = (xnp)vux.a(11);
-    List localList = localxnp.c();
-    xoe localxoe = new xoe(new ErrorMessage());
-    localxoe.jdField_b_of_type_JavaUtilList = localxnp.b(localList);
-    localxoe.jdField_b_of_type_Boolean = true;
-    localxoe.a = localxoe.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localxoe;
-  }
-  
-  protected xoe a(ErrorMessage paramErrorMessage)
-  {
-    return new xoe(paramErrorMessage);
-  }
-  
-  protected void a(List<String> paramList, boolean paramBoolean)
-  {
-    ((xnp)vux.a(11)).c(paramList, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.a_(paramxlu, paramInt1, paramInt2);
+    }
+    return true;
   }
 }
 

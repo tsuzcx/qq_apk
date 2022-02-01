@@ -1,34 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager.17;
-
 public class bicb
-  implements DialogInterface.OnClickListener
 {
-  public bicb(DownloadManager.17 param17) {}
+  public int a;
+  public bicc a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bicb(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int paramInt4, bicc parambicc)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bibw.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      this.a.this$0.a(10, paramDialogInterface);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.d = paramInt4;
+    this.jdField_a_of_type_Bicc = parambicc;
   }
 }
 

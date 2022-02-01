@@ -1,44 +1,42 @@
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-class lop
-  implements INetEngine.INetEngineListener
+public abstract interface lop
 {
-  public void onResp(NetResp paramNetResp)
-  {
-    Object localObject = (loq)paramNetResp.mReq.getUserData();
-    lba.f("EffectBeautyTools", "download file call back. file = " + ((loq)localObject).a);
-    if (paramNetResp.mResult != 0)
-    {
-      lba.f("EffectBeautyTools", "download file faild. errcode = " + paramNetResp.mErrCode);
-      return;
-    }
-    if (!((loq)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.mReq.mOutPath)))
-    {
-      lba.f("EffectBeautyTools", "download file faild : md5 is not match.");
-      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
-      return;
-    }
-    lba.f("EffectBeautyTools", "download file successed.");
-    try
-    {
-      localObject = lbe.h();
-      FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, (String)localObject, false);
-      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
-      return;
-    }
-    catch (IOException paramNetResp)
-    {
-      paramNetResp.printStackTrace();
-      lba.f("EffectBeautyTools", "unzip file faild.");
-    }
-  }
+  public abstract int a(int paramInt, boolean paramBoolean1, lpk paramlpk, boolean paramBoolean2);
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(PendantItem paramPendantItem, VideoMaterial paramVideoMaterial);
+  
+  public abstract void a(FilterDesc paramFilterDesc);
+  
+  public abstract void a(lpe paramlpe, lpk paramlpk);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(lov paramlov);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt1, int paramInt2);
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 

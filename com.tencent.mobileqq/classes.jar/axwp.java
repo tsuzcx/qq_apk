@@ -1,116 +1,67 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class axwp
-  implements Handler.Callback, axyp
+class axwp
+  implements axxd
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private final int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getSubThreadLooper(), this);
-  private axwq jdField_a_of_type_Axwq;
-  private axym jdField_a_of_type_Axym = new axym();
-  private int b;
-  private int c = axwj.H;
+  axwp(axwo paramaxwo) {}
   
-  public axwp(axwq paramaxwq, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Axwq = paramaxwq;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void c()
-  {
+    boolean bool = true;
+    int i = 0;
     if (QLog.isColorLevel()) {
-      QLog.d("AutoLocationInterface", 2, "[status][locInterface] startLocationImpl.");
+      QLog.i(axwo.a(this.a), 2, "errorCode:   " + paramInt);
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_Axym.a(this);
-    this.jdField_a_of_type_Axym.a(2000L, false, false);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 10000L);
-  }
-  
-  private void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLocationInterface", 2, "[status][locInterface] stopLocationImpl.");
+    if (paramArrayOfByte != null) {
+      paramBundle = new oidb_0xada.RspBody();
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_Axym.b(this);
-    this.jdField_a_of_type_Axym.a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(axyl paramaxyl, Double paramDouble, boolean paramBoolean)
-  {
-    if (paramaxyl.jdField_a_of_type_Float > this.jdField_a_of_type_Int + this.jdField_a_of_type_Float)
+    try
     {
-      this.b += 1;
-      if (this.b > 8L)
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.i(axwo.a(this.a), 2, "err_msg:   " + paramBundle.err_msg.get());
+      }
+      if (paramBundle.busi_buf.has())
       {
-        this.jdField_a_of_type_Float = ((float)(this.jdField_a_of_type_Float + 10.0D));
-        this.b = 0;
+        paramArrayOfByte = new FeedsProtocol.GetMediaDetailRsp();
+        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+        if (QLog.isColorLevel()) {
+          QLog.i(axwo.a(this.a), 2, "GetMediaDetailRsp  error_code:   " + paramArrayOfByte.err_code.get() + ",err_msg:     " + paramArrayOfByte.err_msg.get().toStringUtf8() + ",total:  " + paramArrayOfByte.total.get());
+        }
+        paramBundle = this.a;
+        if (paramArrayOfByte.is_end.get() == 0) {
+          break label309;
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoLocationInterface", 2, new Object[] { "[status][locInterface] ignore location: ", paramaxyl, " time:", Integer.valueOf(this.b), " adjust:", Float.valueOf(this.jdField_a_of_type_Float) });
-      }
-      return;
-    }
-    this.b = 0;
-    if ((paramBoolean) && (this.jdField_a_of_type_Axwq != null)) {
-      this.jdField_a_of_type_Axwq.a(paramaxyl);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((paramInt <= 0) || (paramInt > axwj.H * 2)) {}
-    for (this.c = axwj.H;; this.c = paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoLocationInterface", 2, new Object[] { "[status][distance] setDistanceReqTime ", Integer.valueOf(this.c) });
+      for (;;)
+      {
+        paramBundle.jdField_a_of_type_Boolean = bool;
+        this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
+        axwo.a(this.a, paramArrayOfByte);
+        axwo.a(this.a, axwo.a(this.a) + 10);
+        paramBundle = this.a.jdField_a_of_type_Axwb;
+        paramInt = i;
+        if (paramArrayOfByte.err_code.has()) {
+          paramInt = paramArrayOfByte.err_code.get();
+        }
+        paramBundle.a(1, paramInt);
+        return;
+        label309:
+        bool = false;
       }
       return;
     }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    catch (Exception paramArrayOfByte)
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoLocationInterface", 2, new Object[] { "unKnow msg:", Integer.valueOf(paramMessage.what) });
-      }
-      return false;
-    case 1: 
-      c();
-      return false;
-    case 2: 
-      d();
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, axwj.H);
-      return false;
+      paramArrayOfByte.printStackTrace();
     }
-    d();
-    return false;
   }
 }
 

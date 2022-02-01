@@ -1,26 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import java.util.ArrayList;
 
 public class bexe
-  implements bjoe
+  implements DialogInterface.OnClickListener
 {
-  public bexe(BulkSendMessageFragment paramBulkSendMessageFragment, bjnw parambjnw) {}
+  public bexe(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt < this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramView = (String)this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.get(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramView);
+    paramDialogInterface = (String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b.get(this.jdField_a_of_type_Int);
+    long l = Long.parseLong((String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.c.get(this.jdField_a_of_type_Int));
+    anri localanri = (anri)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+    if (localanri != null) {
+      localanri.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.getCurrentAccountUin(), paramDialogInterface, l);
     }
-    this.jdField_a_of_type_Bjnw.dismiss();
+    if (!this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.isFinishing()) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexe
  * JD-Core Version:    0.7.0.1
  */

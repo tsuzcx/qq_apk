@@ -1,23 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.MessageForPic;
 
-class agsf
-  implements TextWatcher
+public class agsf
+  implements bkzq
 {
-  agsf(agse paramagse) {}
+  public agsf(FlashPicItemBuilder paramFlashPicItemBuilder, MessageForPic paramMessageForPic, bkzi parambkzi) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.a.showSendWantGiftMsg.getAndSet(false);
-    this.a.a.a.input.removeTextChangedListener(this);
-    this.a.a.a.input.setTag(2131373800, null);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      FlashPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    }
   }
 }
 

@@ -1,17 +1,30 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aetj
-  extends bjmc
+  extends MqqHandler
 {
-  public aetj(VisitorsActivity paramVisitorsActivity) {}
+  public aetj(RegisterActivity paramRegisterActivity) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.d.setVisibility(0);
-    this.a.a.setClipChildren(false);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterActivity.b(this.a, paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
   }
 }
 

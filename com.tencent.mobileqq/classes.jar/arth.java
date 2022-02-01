@@ -1,9 +1,6 @@
-import android.widget.TextView;
-
-class arth
-  extends aliz
+public abstract interface arth<T>
 {
-  TextView a;
+  public abstract int a(T paramT, long paramLong);
 }
 
 

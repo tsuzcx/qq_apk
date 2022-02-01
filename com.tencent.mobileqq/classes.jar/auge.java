@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
-public final class auge
-  implements Parcelable.Creator<HotPicData>
+public class auge
+  implements audq
 {
-  public HotPicData a(Parcel paramParcel)
-  {
-    return new HotPicData(paramParcel);
-  }
+  public auge(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public HotPicData[] a(int paramInt)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    return new HotPicData[paramInt];
+    QfileEditBottomBar.a(this.a);
   }
 }
 

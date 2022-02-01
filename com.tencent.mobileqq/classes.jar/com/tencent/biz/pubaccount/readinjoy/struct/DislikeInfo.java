@@ -10,14 +10,14 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import java.util.ArrayList;
-import rcs;
+import roy;
 import tencent.im.oidb.articlesummary.articlesummary.DisLikeInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.DisLikeInfo;
 
 public class DislikeInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DislikeInfo> CREATOR = new rcs();
+  public static final Parcelable.Creator<DislikeInfo> CREATOR = new roy();
   public int a;
   public long a;
   public String a;

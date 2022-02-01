@@ -1,35 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem;
+import com.tencent.common.app.AppInterface;
+import java.util.ArrayList;
 
-public class bnva
+class bnva
+  implements bnwb
 {
-  private bnvb jdField_a_of_type_Bnvb;
-  private ConcurrentHashMap<Integer, bnve> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  bnva(bnuz parambnuz, AppInterface paramAppInterface, bnvy parambnvy, bnvc parambnvc) {}
   
-  public bnve a(int paramInt)
+  public void a(int paramInt)
   {
-    return (bnve)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public void a(bnve parambnve)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FrameAdapter", 2, "addFrame, index=" + parambnve.a);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(parambnve.a), parambnve);
-    if (this.jdField_a_of_type_Bnvb != null) {
-      this.jdField_a_of_type_Bnvb.a();
+    bnrh.b(bnuz.a(), "proxy onProcessFailed: errCode=" + paramInt);
+    if (this.jdField_a_of_type_Bnvc != null) {
+      this.jdField_a_of_type_Bnvc.a(paramInt, this.jdField_a_of_type_Bnvy.a());
     }
   }
   
-  public boolean a()
+  public void a(ArrayList<SmartFilterReqItem> paramArrayList)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
+    bnrh.b(bnuz.a(), "proxy onDataReadyForRequest");
+    bnuz.a(this.jdField_a_of_type_Bnuz, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramArrayList, new bnvb(this));
   }
 }
 

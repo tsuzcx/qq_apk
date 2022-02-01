@@ -1,27 +1,49 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.List;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.1;
+import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.2;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import java.util.concurrent.ExecutorService;
 
 public class avvx
-  extends avwf<MessageRecord>
+  implements IShadow
 {
-  public avvx(MessageRecord paramMessageRecord)
+  private avrx a;
+  
+  private void a(String paramString)
   {
-    super(paramMessageRecord);
-    this.a = (this.a + "." + paramMessageRecord.getClass().getSimpleName());
+    try
+    {
+      avvz.a().a().b("enter_shadow_err").c(paramString).b();
+      ThreadManagerV2.getUIHandlerV2().post(new NowShadowImpl.2(this));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  protected int a()
+  public avrx a(Context paramContext, String paramString1, String paramString2)
   {
-    return 0;
+    return avsg.a(paramContext, paramString1, paramString2);
   }
   
-  public List<MsgBackupResEntity> a()
+  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
   {
-    return null;
+    ThreadManagerExecutor.getSingleThreadExecutorService(192).execute(new NowShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
   }
   
-  public void a() {}
+  public boolean hasPluginManager()
+  {
+    return this.a != null;
+  }
+  
+  public void setILoggerFactory() {}
 }
 
 

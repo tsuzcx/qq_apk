@@ -1,19 +1,24 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.qphone.base.util.QLog;
 
-class zqi
-  extends zql
+final class zqi
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetMainPageRsp>
 {
-  zqi(zqb paramzqb, zpy paramzpy, String paramString)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    super(paramzqb.a);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
+    if ((paramBoolean) && (paramLong == 0L))
+    {
+      if (paramStGetMainPageRsp != null) {
+        zqh.a((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get());
+      }
     }
-    this.jdField_a_of_type_Zpy.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
+    else {
+      return;
+    }
+    QLog.w(zqh.class.getSimpleName(), 1, "getPuinUser empty");
   }
 }
 

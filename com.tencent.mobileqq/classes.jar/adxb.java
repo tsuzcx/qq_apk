@@ -1,53 +1,22 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class adxb
-  implements Comparator<adxi>
+  implements InputFilter
 {
-  public adxb(PublicAccountListActivity paramPublicAccountListActivity) {}
+  Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
   
-  public int a(adxi paramadxi1, adxi paramadxi2)
+  public adxb(EditInfoActivity paramEditInfoActivity) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    paramadxi1 = paramadxi1.a.name;
-    paramadxi2 = paramadxi2.a.name;
-    if ((paramadxi1 == null) && (paramadxi2 == null)) {}
-    int j;
-    int k;
-    do
-    {
-      return 0;
-      if ((paramadxi1 == null) && (paramadxi2 != null)) {
-        return -1;
-      }
-      if ((paramadxi1 != null) && (paramadxi2 == null)) {
-        return 1;
-      }
-      j = paramadxi1.length();
-      k = paramadxi2.length();
-      int m = Math.min(j, k);
-      int i = 0;
-      while (i < m)
-      {
-        char c1 = paramadxi1.charAt(i);
-        char c2 = paramadxi2.charAt(i);
-        if (c1 != c2)
-        {
-          paramadxi1 = ChnToSpell.a(c1, i);
-          paramadxi2 = ChnToSpell.a(c2, i);
-          if (paramadxi1.jdField_a_of_type_Int == paramadxi2.jdField_a_of_type_Int) {
-            return paramadxi1.jdField_a_of_type_JavaLangString.compareTo(paramadxi2.jdField_a_of_type_JavaLangString);
-          }
-          return paramadxi1.jdField_a_of_type_Int - paramadxi2.jdField_a_of_type_Int;
-        }
-        i += 1;
-      }
-      if (j < k) {
-        return -1;
-      }
-    } while (j <= k);
-    return 1;
+    if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).find()) {
+      return "";
+    }
+    return null;
   }
 }
 

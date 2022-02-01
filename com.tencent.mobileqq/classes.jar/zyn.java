@@ -1,9 +1,12 @@
-public class zyn
-  implements zyf
+import android.animation.TypeEvaluator;
+import android.graphics.Matrix;
+
+final class zyn
+  implements TypeEvaluator<Matrix>
 {
-  public avjt a(String paramString)
+  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
   {
-    return new avkf(paramString).a();
+    return null;
   }
 }
 

@@ -1,25 +1,39 @@
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
 
-public class yvs
-  implements AdapterView.OnItemClickListener
+public abstract class yvs<T extends yvr>
 {
-  public yvs(QRDisplayActivity paramQRDisplayActivity) {}
+  protected int a;
+  public final View a;
+  public T a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected yvs(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    QRDisplayActivity.a(this.a).dismiss();
-    if (QLog.isColorLevel()) {
-      QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
+    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      throw new NullPointerException("onCreateView can not return null");
     }
-    this.a.i = ((int)paramLong);
-    QRDisplayActivity.a(this.a);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+  }
+  
+  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Yvr = null;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a(T paramT, int paramInt)
+  {
+    this.jdField_a_of_type_Yvr = paramT;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Yvr != null) && (this.jdField_a_of_type_Yvr.a());
   }
 }
 

@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auvy
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  public auvy(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public auvy(DeleteFaceFragment paramDeleteFaceFragment, FragmentActivity paramFragmentActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: -1})");
+    bdla.b(null, "dc00898", "", "", "0X800A320", "0X800A320", 0, 0, "", "", "", "");
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://accounts.qq.com/face/delete");
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivityForResult(localIntent, 1001);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,7 +1,33 @@
-import kotlin.Metadata;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelStudyModeAppInfoOrderConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ayfn {}
+class ayfn
+  implements aulc
+{
+  ayfn(ayek paramayek, String paramString) {}
+  
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle) {}
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
+  {
+    QLog.i("NearbyProfileDisplayPanel", 1, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
+    paramBundle = BaseApplicationImpl.getContext().getSharedPreferences(this.jdField_a_of_type_JavaLangString, 4);
+    paramBundle.edit().putInt("state", 1);
+    paramBundle.edit().putString("filePath", paramString);
+  }
+  
+  public void b(int paramInt, Bundle paramBundle) {}
+  
+  public void c(int paramInt, Bundle paramBundle) {}
+  
+  public void d(int paramInt, Bundle paramBundle) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

@@ -1,35 +1,19 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.portal.FormalView;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class ayij
-  implements Animator.AnimatorListener
+class ayij
+  implements TextWatcher
 {
-  public ayij(FormalView paramFormalView) {}
+  ayij(ayih paramayih) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.d();
+    axql.a(this.a.f, 90);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.d();
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    FormalView.a(this.a).setVisibility(0);
-    if (this.a.a == 1)
-    {
-      FormalView.b(this.a).setVisibility(0);
-      return;
-    }
-    FormalView.b(this.a).setVisibility(8);
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

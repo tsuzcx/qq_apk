@@ -1,51 +1,55 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
 
-class woy
-  implements vqp<wea, wfy>
+public class woy
 {
-  woy(wox paramwox, wol paramwol) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void a(@NonNull wea paramwea, @Nullable wfy paramwfy, @NonNull ErrorMessage paramErrorMessage)
+  public woy()
   {
-    if ((paramwfy == null) || (paramErrorMessage.isFail()))
+    this.jdField_a_of_type_JavaLangString = "";
+    wjl localwjl = (wjl)wjs.a(10);
+    String str = zdu.a();
+    this.jdField_a_of_type_JavaLangString = ((String)localwjl.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_Int = ((Integer)localwjl.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int))).intValue();
+    this.b = ((Integer)localwjl.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(this.b))).intValue();
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str))
     {
-      this.jdField_a_of_type_Wol.a(paramErrorMessage, Collections.singletonList(this.jdField_a_of_type_Wox.jdField_a_of_type_Wod));
-      return;
+      this.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Int = 0;
+      localwjl.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
+      localwjl.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
     }
-    paramwfy.jdField_a_of_type_JavaUtilList = ((vuu)vux.a(5)).a(paramwfy.jdField_a_of_type_JavaUtilList);
-    paramwea = paramwfy.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramwea.hasNext()) {
-      ((StoryVideoItem)paramwea.next()).mOwnerUid = wow.a(this.jdField_a_of_type_Wox.jdField_a_of_type_Wow).uid;
-    }
-    ((vls)vux.a(28)).a(paramwfy.b);
-    paramwea = paramwfy.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramwea.hasNext())
+    ykq.a(woo.b(), "MsgTabShowCounter(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a()
+  {
+    b();
+    this.jdField_a_of_type_Int += 1;
+    ((wjl)wjs.a(10)).b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+    ykq.a(woo.b(), "addAutoShowCount(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a()
+  {
+    b();
+    ykq.a(woo.b(), "shouldAutoShow(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+    return this.jdField_a_of_type_Int < this.b;
+  }
+  
+  public void b()
+  {
+    String str = zdu.a();
+    if (!TextUtils.equals(str, this.jdField_a_of_type_JavaLangString))
     {
-      paramErrorMessage = (StoryVideoItem)paramwea.next();
-      wox.a(this.jdField_a_of_type_Wox).add(paramErrorMessage.mVid);
+      wjl localwjl = (wjl)wjs.a(10);
+      this.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Int = 0;
+      localwjl.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
+      localwjl.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
     }
-    if ((paramwfy.jdField_a_of_type_Boolean) || (paramwfy.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      paramwea = new woe(this.jdField_a_of_type_Wox.jdField_a_of_type_Wod);
-      paramwea.jdField_a_of_type_JavaUtilList = wox.a(this.jdField_a_of_type_Wox);
-      paramwea.a(wow.a(this.jdField_a_of_type_Wox.jdField_a_of_type_Wow).feedId);
-      this.jdField_a_of_type_Wol.a(Collections.singletonList(paramwea), true);
-      return;
-    }
-    wox.a(this.jdField_a_of_type_Wox);
-    if (wox.b(this.jdField_a_of_type_Wox) > 50)
-    {
-      this.jdField_a_of_type_Wol.a(new ErrorMessage(940001, "too much times"), Collections.singletonList(this.jdField_a_of_type_Wox.jdField_a_of_type_Wod));
-      return;
-    }
-    this.jdField_a_of_type_Wox.a(paramwfy.c, this.jdField_a_of_type_Wol);
   }
 }
 

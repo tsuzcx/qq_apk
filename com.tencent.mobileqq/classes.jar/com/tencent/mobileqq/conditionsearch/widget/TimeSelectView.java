@@ -8,17 +8,17 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import aprj;
-import aprk;
-import aprl;
-import aprm;
-import aprn;
-import apro;
-import aprp;
-import aprq;
-import aprr;
-import aprs;
-import bjuu;
+import aqum;
+import aqun;
+import aquo;
+import aqup;
+import aquq;
+import aqur;
+import aqus;
+import aqut;
+import aquu;
+import aquv;
+import blgg;
 import com.tencent.mobileqq.remind.widget.WheelTextView;
 import com.tencent.mobileqq.remind.widget.WheelView;
 import com.tencent.widget.AdapterView.OnItemSelectedListener;
@@ -31,12 +31,12 @@ public class TimeSelectView
   private static int jdField_c_of_type_Int = 35;
   public Vibrator a;
   private Button jdField_a_of_type_AndroidWidgetButton;
-  private aprr jdField_a_of_type_Aprr;
-  private aprs jdField_a_of_type_Aprs;
-  private bjuu jdField_a_of_type_Bjuu = new apro(this);
-  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new aprn(this);
+  private aquu jdField_a_of_type_Aquu;
+  private aquv jdField_a_of_type_Aquv;
+  private blgg jdField_a_of_type_Blgg = new aqur(this);
+  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new aquq(this);
   private boolean jdField_a_of_type_Boolean;
-  private aprq[] jdField_a_of_type_ArrayOfAprq;
+  private aqut[] jdField_a_of_type_ArrayOfAqut;
   private WheelView[] jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
   private Button jdField_b_of_type_AndroidWidgetButton;
   private Button jdField_c_of_type_AndroidWidgetButton;
@@ -86,13 +86,13 @@ public class TimeSelectView
   private void a(WheelView paramWheelView, int paramInt)
   {
     paramWheelView.setTag(Integer.valueOf(paramInt));
-    aprq localaprq = new aprq(this, paramInt, 25);
+    aqut localaqut = new aqut(this, paramInt, 25);
     this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[paramInt] = paramWheelView;
-    this.jdField_a_of_type_ArrayOfAprq[paramInt] = localaprq;
-    paramWheelView.setAdapter(localaprq);
+    this.jdField_a_of_type_ArrayOfAqut[paramInt] = localaqut;
+    paramWheelView.setAdapter(localaqut);
     paramWheelView.setOnItemSelectedListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener);
-    paramWheelView.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_Bjuu);
-    paramWheelView.setOnEndMovementListener(new aprp(this, paramInt));
+    paramWheelView.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_Blgg);
+    paramWheelView.setOnEndMovementListener(new aqus(this, paramInt));
   }
   
   public int a(int paramInt)
@@ -105,57 +105,57 @@ public class TimeSelectView
   
   public void a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfAprq.length)) {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfAqut.length)) {
       throw new IllegalArgumentException("Error column index " + paramInt);
     }
-    this.jdField_a_of_type_ArrayOfAprq[paramInt].notifyDataSetChanged();
+    this.jdField_a_of_type_ArrayOfAqut[paramInt].notifyDataSetChanged();
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
-  public void a(aprs paramaprs)
+  public void a(aquv paramaquv)
   {
     Object localObject = getContext().getResources();
-    jdField_a_of_type_Int = ((Resources)localObject).getColor(2131167102);
-    jdField_b_of_type_Int = ((Resources)localObject).getColor(2131167058);
-    View localView = findViewById(2131378642);
+    jdField_a_of_type_Int = ((Resources)localObject).getColor(2131167116);
+    jdField_b_of_type_Int = ((Resources)localObject).getColor(2131167072);
+    View localView = findViewById(2131378936);
     if (localView != null) {
-      localView.setBackgroundColor(((Resources)localObject).getColor(2131167119));
+      localView.setBackgroundColor(((Resources)localObject).getColor(2131167133));
     }
-    localView = findViewById(2131369970);
+    localView = findViewById(2131370140);
     if (localView != null) {
-      localView.setBackgroundColor(((Resources)localObject).getColor(2131167119));
+      localView.setBackgroundColor(((Resources)localObject).getColor(2131167133));
     }
-    localView = findViewById(2131369950);
+    localView = findViewById(2131370120);
     if (localView != null) {
-      localView.setBackgroundColor(((Resources)localObject).getColor(2131167119));
+      localView.setBackgroundColor(((Resources)localObject).getColor(2131167133));
     }
-    this.jdField_a_of_type_Aprs = paramaprs;
-    this.d = this.jdField_a_of_type_Aprs.a();
+    this.jdField_a_of_type_Aquv = paramaquv;
+    this.d = this.jdField_a_of_type_Aquv.a();
     if ((this.d <= 0) || (this.d > 2)) {
       throw new RuntimeException("Unsupportted column count " + this.d);
     }
     this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView = new WheelView[this.d];
-    this.jdField_a_of_type_ArrayOfAprq = new aprq[this.d];
+    this.jdField_a_of_type_ArrayOfAqut = new aqut[this.d];
     this.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)getContext().getSystemService("vibrator"));
-    paramaprs = (WheelView)findViewById(2131366730);
-    localObject = (WheelView)findViewById(2131376985);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131378639));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131378638));
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131378640));
+    paramaquv = (WheelView)findViewById(2131366846);
+    localObject = (WheelView)findViewById(2131377257);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131378933));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131378932));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131378934));
     if (this.jdField_a_of_type_AndroidWidgetButton != null)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aprj(this));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnTouchListener(new aprk(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aqum(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnTouchListener(new aqun(this));
     }
     if (this.jdField_b_of_type_AndroidWidgetButton != null) {
-      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new aprl(this));
+      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new aquo(this));
     }
     if (this.jdField_c_of_type_AndroidWidgetButton != null) {
-      this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new aprm(this));
+      this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new aqup(this));
     }
-    a(paramaprs, 0);
-    paramaprs.setNeedTranslateCenter(true);
-    paramaprs.setNeedTranslateCenterToRight(true);
+    a(paramaquv, 0);
+    paramaquv.setNeedTranslateCenter(true);
+    paramaquv.setNeedTranslateCenterToRight(true);
     if (this.d < 2)
     {
       ((WheelView)localObject).setVisibility(8);
@@ -166,9 +166,9 @@ public class TimeSelectView
     ((WheelView)localObject).setNeedTranslateCenter(true);
   }
   
-  public void setPickListener(aprr paramaprr)
+  public void setPickListener(aquu paramaquu)
   {
-    this.jdField_a_of_type_Aprr = paramaprr;
+    this.jdField_a_of_type_Aquu = paramaquu;
   }
   
   public void setSelection(int paramInt1, int paramInt2)

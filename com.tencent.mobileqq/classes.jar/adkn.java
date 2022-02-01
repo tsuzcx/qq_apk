@@ -1,38 +1,26 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adkn
-  implements bjoe
+  implements View.OnClickListener
 {
-  public adkn(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bjnw parambjnw) {}
+  public adkn(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    switch (paramInt)
+    ImageView localImageView = (ImageView)paramView.findViewById(2131368524);
+    if (localImageView != null)
     {
-    default: 
-      return;
-    case 0: 
-      FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, "1", "", "", "");
-      return;
-    case 1: 
-      FriendProfilePicBrowserActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, "1", "", "", "");
-      return;
-    case 2: 
-      FriendProfilePicBrowserActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C14", "0X8007C14", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.a, 0, "", "", "", "");
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, "1", "", "", "");
-      return;
-    case 3: 
-      FriendProfilePicBrowserActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, "1", "", "", "");
-      return;
+      int i = 0;
+      if (localImageView.getVisibility() == 0) {
+        i = 4;
+      }
+      localImageView.setVisibility(i);
     }
-    FriendProfilePicBrowserActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C15", "0X8007C15", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

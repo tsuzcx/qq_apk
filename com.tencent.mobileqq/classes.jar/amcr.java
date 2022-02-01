@@ -1,63 +1,21 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-@TargetApi(11)
 public class amcr
-  extends EditText
-  implements ActionMode.Callback
+  implements Animation.AnimationListener
 {
-  public amcr(Context paramContext)
+  public amcr(SpecailCareListActivity paramSpecailCareListActivity, amdg paramamdg) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext);
-    super.setLongClickable(false);
-    super.setTextIsSelectable(false);
-    super.setImeOptions(268435456);
-    if (Build.VERSION.SDK_INT >= 11) {
-      super.setCustomSelectionActionModeCallback(this);
-    }
+    this.jdField_a_of_type_Amdg.c.setVisibility(4);
   }
   
-  public void a(int paramInt)
-  {
-    try
-    {
-      super.setSelection(paramInt);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ApolloDiyTextActivity", 1, localException.getMessage());
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
-  {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public boolean onTextContextMenuItem(int paramInt)
-  {
-    return true;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

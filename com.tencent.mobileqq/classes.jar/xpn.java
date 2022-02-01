@@ -1,102 +1,152 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tribe.async.dispatch.Subscriber;
 import java.util.Map;
 
 public class xpn
-  implements xpo
+  extends AbsVideoInfoWidget
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  protected final int a;
-  public Bitmap a;
-  private String jdField_a_of_type_JavaLangString;
-  public Map<String, Bitmap> a;
-  protected final int b;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private boolean e;
   
-  public xpn(int paramInt1, int paramInt2, float paramFloat, Map<String, Bitmap> paramMap, Bitmap paramBitmap)
+  public xpn(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_JavaLangString = xqd.a(new Object[] { "rounded", "r=", Integer.valueOf(paramInt1), "dm=", Integer.valueOf(paramInt2), "ds=", Float.valueOf(paramFloat) });
-  }
-  
-  public Bitmap a(Bitmap paramBitmap)
-  {
-    for (;;)
-    {
-      try
-      {
-        float f1 = paramBitmap.getWidth();
-        float f2 = paramBitmap.getHeight();
-        float f3 = f2 / f1;
-        int m = (int)f2;
-        int k = (int)f1;
-        int j;
-        int i;
-        if (f3 > this.jdField_a_of_type_Float)
-        {
-          m = (int)(paramBitmap.getWidth() * this.jdField_a_of_type_Float);
-          j = (paramBitmap.getHeight() - m) / 2;
-          i = 0;
-          if (this.jdField_a_of_type_JavaUtilMap == null) {
-            break label422;
-          }
-          localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.get("RT:w=" + k + "h=" + m);
-          if ((localBitmap == null) || (localBitmap.isRecycled()))
-          {
-            paramBitmap = Bitmap.createBitmap(paramBitmap, i, j, k, m);
-            localBitmap = paramBitmap;
-            if (this.jdField_a_of_type_JavaUtilMap != null)
-            {
-              this.jdField_a_of_type_JavaUtilMap.put("RT:w=" + k + "h=" + m, paramBitmap);
-              localBitmap = paramBitmap;
-            }
-            Paint localPaint = new Paint();
-            localPaint.setAntiAlias(true);
-            localPaint.setShader(new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
-            if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-              break label414;
-            }
-            paramBitmap = Bitmap.createBitmap(localBitmap.getWidth(), localBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-            paramBitmap.eraseColor(0);
-            new Canvas(paramBitmap).drawRoundRect(new RectF(this.b, this.b, localBitmap.getWidth() - this.b, localBitmap.getHeight() - this.b), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, localPaint);
-            return paramBitmap;
-          }
-        }
-        else
-        {
-          k = (int)(paramBitmap.getHeight() / this.jdField_a_of_type_Float);
-          i = (paramBitmap.getWidth() - k) / 2;
-          j = 0;
-          continue;
-        }
-        localBitmap.eraseColor(0);
-        xqc.a(paramBitmap, localBitmap, i, j, k, m, null, false);
-        continue;
-        paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      }
-      catch (Exception paramBitmap)
-      {
-        xvv.e("RoundedTransformation", "occur error:" + paramBitmap);
-        return null;
-      }
-      label414:
-      continue;
-      label422:
-      Bitmap localBitmap = null;
-    }
+    super(paramViewGroup);
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return "UploadStatusVideoInfoWidget";
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131381067));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381069));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131381068));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381070));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    if (paramStoryVideoItem.isUploadFail())
+    {
+      j();
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      switch (paramStoryVideoItem.mUpLoadFailedError)
+      {
+      default: 
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699215);
+      }
+      while (this.e)
+      {
+        this.e = false;
+        ykv.a("play_video", "retrypub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
+        return;
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699217);
+      }
+      ykv.a("play_video", "exp_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
+      return;
+    }
+    if (paramStoryVideoItem.isUploading())
+    {
+      j();
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      int i = wcz.a().a(paramStoryVideoItem.mVid);
+      if (i >= 0) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131715288) + i + "%");
+      }
+      for (;;)
+      {
+        wcz.a().a(paramStoryVideoItem.mVid, new xpo(this));
+        return;
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131715290));
+      }
+    }
+    k();
+  }
+  
+  public void a(@NonNull Map<Subscriber, String> paramMap)
+  {
+    paramMap.put(new xpp(this), "");
+  }
+  
+  public void a(@NonNull xhf paramxhf, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    a(paramStoryVideoItem);
+  }
+  
+  public boolean a(@NonNull xhf paramxhf, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return (paramStoryVideoItem.isUploadFail()) || (paramStoryVideoItem.isUploading());
+  }
+  
+  public int b()
+  {
+    return 2131561854;
+  }
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void onClick(View paramView)
+  {
+    StoryVideoItem localStoryVideoItem;
+    if (this.jdField_a_of_type_Xhf != null)
+    {
+      localStoryVideoItem = this.jdField_a_of_type_Xhf.a();
+      if (localStoryVideoItem != null) {
+        break label41;
+      }
+      ykq.d(this.b, "video item not found ,click error..");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localStoryVideoItem = null;
+      break;
+      label41:
+      switch (paramView.getId())
+      {
+      default: 
+        break;
+      case 2131381067: 
+        switch (localStoryVideoItem.mUploadStatus)
+        {
+        }
+        break;
+      }
+    }
+    if (!wzk.a(localStoryVideoItem, b())) {
+      ykv.a("play_video", "retrypub_fail", 0, 0, new String[0]);
+    }
+    for (;;)
+    {
+      ykv.a("play_video", "clk_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from) });
+      ykq.b(this.b, "on retry click !");
+      break;
+      this.e = true;
+    }
   }
 }
 

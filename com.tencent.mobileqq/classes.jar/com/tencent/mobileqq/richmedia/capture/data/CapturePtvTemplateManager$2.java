@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import azzx;
+import bbgg;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -12,7 +12,7 @@ public final class CapturePtvTemplateManager$2
   
   public void run()
   {
-    FileUtils.writeFile(azzx.a.getPath() + File.separator, this.a, this.b);
+    FileUtils.writeFile(bbgg.a.getPath() + File.separator, this.a, this.b);
     if (QLog.isColorLevel()) {
       QLog.i("CapturePtvTemplateManager", 2, "save Config to file finish.");
     }

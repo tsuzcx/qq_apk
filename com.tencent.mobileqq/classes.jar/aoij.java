@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
 
 public class aoij
+  extends anqj
 {
-  public ArCloudConfigInfo a;
-  public String a = "";
-  public boolean a;
-  public String b = "";
-  public boolean b;
+  private aoij(GetCheckUpdate paramGetCheckUpdate) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    this.a.a(7);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoij
  * JD-Core Version:    0.7.0.1
  */

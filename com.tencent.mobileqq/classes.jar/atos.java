@@ -1,26 +1,29 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.qphone.base.util.QLog;
 
-public class atos
-  implements DialogInterface.OnClickListener
+class atos
+  extends atnt
 {
-  public atos(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atos(atno paramatno)
   {
-    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = false;
-    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.putExtra("fragment_id", 1);
-    paramDialogInterface.setFlags(67108864);
-    paramDialogInterface.setFlags(268435456);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    super(paramatno);
+  }
+  
+  protected String a()
+  {
+    return "StateSenderCancelSendWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atno.b(this.jdField_a_of_type_Atno, 11, 8);
+    atno.c(this.jdField_a_of_type_Atno, 11, 8);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateSenderCancelSend)");
+    this.jdField_a_of_type_Atnt = new atoq(this.jdField_a_of_type_Atno);
   }
 }
 

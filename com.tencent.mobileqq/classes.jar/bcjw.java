@@ -1,8 +1,12 @@
-import android.view.View;
-
-class bcjw
+public abstract interface bcjw
 {
-  View a;
+  public abstract void a();
+  
+  public abstract void a(String paramString, int paramInt, boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

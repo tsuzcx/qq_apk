@@ -1,21 +1,9 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.GroupListOpenFrame;
+import android.app.Activity;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
 
-public class bhsh
-  implements View.OnTouchListener
+public abstract interface bhsh
 {
-  public bhsh(GroupListOpenFrame paramGroupListOpenFrame) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.a.c();
-    }
-    return true;
-  }
+  public abstract void a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity, int paramInt);
 }
 
 

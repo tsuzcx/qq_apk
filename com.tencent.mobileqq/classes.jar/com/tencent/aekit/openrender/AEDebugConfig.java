@@ -9,6 +9,7 @@ public class AEDebugConfig
   public static boolean ENABLE_GENDER_DETECT;
   public static boolean ENABLE_HAIRSEG;
   public static boolean ENABLE_HAND_LINE;
+  public static boolean ENABLE_RGBDEPTH;
   public static boolean ENABLE_SEGMENT;
   public static boolean ENABLE_SKYSEG;
   public static boolean ENABLE_SMART_FILTER;
@@ -21,6 +22,7 @@ public class AEDebugConfig
     ENABLE_BODY_BEAUTY = false;
     ENABLE_HAIRSEG = false;
     ENABLE_SKYSEG = false;
+    ENABLE_RGBDEPTH = false;
     ENABLE_SEGMENT = false;
     ENABLE_SMART_FILTER = false;
   }
@@ -33,6 +35,7 @@ public class AEDebugConfig
     ENABLE_BODY_BEAUTY = false;
     ENABLE_HAIRSEG = false;
     ENABLE_SKYSEG = false;
+    ENABLE_RGBDEPTH = false;
     ENABLE_SEGMENT = false;
     ENABLE_SMART_FILTER = false;
     ENABLE_CAT = false;

@@ -1,50 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.KdTagItem;
 
-public class omk
-  implements CompoundButton.OnCheckedChangeListener
+public final class omk
+  implements Parcelable.Creator<VideoInfo.KdTagItem>
 {
-  public omk(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public VideoInfo.KdTagItem a(Parcel paramParcel)
   {
-    int j = 1;
-    int i;
-    if (paramBoolean) {
-      i = 0;
-    }
-    for (;;)
-    {
-      uhh.a(i);
-      JSONObject localJSONObject = new JSONObject();
-      if (paramBoolean) {
-        i = j;
-      }
-      try
-      {
-        for (;;)
-        {
-          localJSONObject.put("click_opt", i);
-          odq.a(null, "", "0X800A80B", "0X800A80B", 0, 0, "", "", "", localJSONObject.toString(), false);
-          EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-          return;
-          i = 1;
-          break;
-          i = 2;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
-    }
+    return new VideoInfo.KdTagItem(paramParcel);
+  }
+  
+  public VideoInfo.KdTagItem[] a(int paramInt)
+  {
+    return new VideoInfo.KdTagItem[paramInt];
   }
 }
 

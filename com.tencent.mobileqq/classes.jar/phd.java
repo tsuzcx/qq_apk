@@ -1,9 +1,13 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
 public class phd
+  implements ViewBase.IBuilder
 {
-  public static String a(long paramLong)
+  public ViewBase build(VafContext paramVafContext)
   {
-    long l = (paramLong >>> 1) / 5L;
-    return Long.toString(l) + (paramLong - 10L * l);
+    return new phc(paramVafContext);
   }
 }
 

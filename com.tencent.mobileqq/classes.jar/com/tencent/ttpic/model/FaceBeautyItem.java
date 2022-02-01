@@ -27,7 +27,7 @@ public class FaceBeautyItem
       try
       {
         float f = Float.parseFloat(paramString2);
-        i = (int)f * 100;
+        i = (int)(f * 100.0F);
       }
       catch (Exception paramString2)
       {

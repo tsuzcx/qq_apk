@@ -1,34 +1,18 @@
-import com.tencent.biz.videostory.widget.view.smartmusicview.EditVideoSmartMusicPart.1;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zzg
-  implements INetEngine.INetEngineListener
+class zzg
+  implements View.OnClickListener
 {
-  public zzg(EditVideoSmartMusicPart.1 param1) {}
+  zzg(zzf paramzzf, zzq paramzzq, String paramString, bkzi parambkzi) {}
   
-  public void onResp(NetResp paramNetResp)
+  public void onClick(View paramView)
   {
-    QLog.i("EditVideoSmartMusicPart", 1, "download smart anim onResp url:  resultcode: " + paramNetResp.mHttpCode);
-    if (zzf.a(this.a.this$0) == null) {
-      return;
-    }
-    try
-    {
-      QLog.i("EditVideoSmartMusicPart", 1, "start unzip smart anim");
-      npo.a(zzf.a(this.a.this$0), "/storage/emulated/0/Tencent/MobileQQ/video_story/");
-      return;
-    }
-    catch (IOException paramNetResp)
-    {
-      QLog.i("EditVideoSmartMusicPart", 1, "unzip smart anim failed" + paramNetResp);
-    }
+    this.jdField_a_of_type_Zzq.a(false, this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_Bkzi.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

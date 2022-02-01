@@ -1,52 +1,37 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.HashMap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlClient;", "", "()V", "TAG", "", "<set-?>", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterface;", "rijAidlInterface", "getRijAidlInterface", "()Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterface;", "rijServiceConnection", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlClient$RIJServiceConnection;", "bindService", "", "context", "Landroid/content/Context;", "getInstance", "unbindService", "RIJServiceConnection", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qyw
+public class qyw
 {
-  @Nullable
-  private static qyn jdField_a_of_type_Qyn;
-  public static final qyw a;
-  private static final qyx jdField_a_of_type_Qyx = new qyx();
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private szd jdField_a_of_type_Szd;
+  private HashMap<String, ArticleInfo> b;
   
-  static
+  public qyu a()
   {
-    jdField_a_of_type_Qyw = new qyw();
+    qyu localqyu = new qyu(null);
+    qyu.a(localqyu, this.jdField_a_of_type_Szd);
+    qyu.a(localqyu, this.jdField_a_of_type_JavaUtilHashMap);
+    qyu.b(localqyu, this.b);
+    return localqyu;
   }
   
-  @JvmStatic
-  @NotNull
-  public static final qyw a()
+  public qyw a(HashMap<String, Integer> paramHashMap)
   {
-    return jdField_a_of_type_Qyw;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    return this;
   }
   
-  @Nullable
-  public final qyn a()
+  public qyw a(szd paramszd)
   {
-    return jdField_a_of_type_Qyn;
+    this.jdField_a_of_type_Szd = paramszd;
+    return this;
   }
   
-  public final void a(@NotNull Context paramContext)
+  public qyw b(HashMap<String, ArticleInfo> paramHashMap)
   {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    try
-    {
-      paramContext.bindService(new Intent(paramContext, KandianVideoUploadService.class), (ServiceConnection)jdField_a_of_type_Qyx, 1);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("RIJAidlClient", 1, QLog.getStackTraceString((Throwable)paramContext));
-    }
+    this.b = paramHashMap;
+    return this;
   }
 }
 

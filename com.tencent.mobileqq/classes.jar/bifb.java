@@ -1,25 +1,7 @@
-import com.tencent.qphone.base.util.QLog;
-
-class bifb
-  implements bifh
-{
-  bifb(biey parambiey, bifh parambifh) {}
-  
-  public void a()
-  {
-    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "updatePreAuthFromServer onSuccess");
-    this.jdField_a_of_type_Bifh.a();
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "updatePreAuthFromServer onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    this.jdField_a_of_type_Bifh.a(paramInt, paramString);
-  }
-}
+public abstract interface bifb {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bifb
  * JD-Core Version:    0.7.0.1
  */

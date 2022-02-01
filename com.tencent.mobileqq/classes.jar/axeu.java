@@ -1,16 +1,13 @@
-public abstract class axeu
+import android.view.animation.Interpolator;
+
+public final class axeu
+  implements Interpolator
 {
-  public void a(String paramString) {}
-  
-  public void a(String paramString, long paramLong) {}
-  
-  public void b(String paramString) {}
-  
-  public void b(String paramString, long paramLong) {}
-  
-  public void c(String paramString) {}
-  
-  public void c(String paramString, long paramLong) {}
+  public float getInterpolation(float paramFloat)
+  {
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+  }
 }
 
 

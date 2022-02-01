@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.controller;
 
-import ahsa;
-import ahsb;
+import aimz;
+import aina;
 
 public class VoiceTextSttProcessController$1$2
   implements Runnable
 {
-  public VoiceTextSttProcessController$1$2(ahsb paramahsb) {}
+  public VoiceTextSttProcessController$1$2(aina paramaina) {}
   
   public void run()
   {
-    ahsa.a(this.a.a);
+    aimz.a(this.a.a);
   }
 }
 

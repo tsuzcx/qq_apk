@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import anca;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import aoep;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ class SelectMemberActivity$7
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    ((anca)this.this$0.app.getBusinessHandler(20)).a(this.this$0.mGroupCode, this.val$inviteMems, "");
+    ((aoep)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(this.this$0.mGroupCode, this.val$inviteMems, "");
     SelectMemberActivity.access$000(this.this$0);
     this.this$0.pd.show();
     this.this$0.reportInviteFriend("Clk_invite");

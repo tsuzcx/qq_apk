@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
-
-public class aytc
-  implements aytk
+public abstract interface aytc
 {
-  public aytc(ComponentCenter paramComponentCenter) {}
+  public abstract void a();
   
-  public void a(aysw paramaysw)
-  {
-    paramaysw.b();
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

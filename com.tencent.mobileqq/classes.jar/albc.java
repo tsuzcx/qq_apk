@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Set;
 
 public class albc
-  extends amnw
 {
-  public albc(TroopDiscussionTroop paramTroopDiscussionTroop) {}
+  public static final Set<String> a = new HashSet();
   
-  protected void a(int paramInt)
+  static
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopDiscussionTroop", 2, "onCacheInited " + paramInt);
-      }
-    } while (TroopDiscussionTroop.a(this.a) == null);
-    TroopDiscussionTroop.a(this.a).c();
+    a.add("SoLoadModule");
   }
 }
 

@@ -1,24 +1,8 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
-public class aglw
-  implements vmy
+public abstract interface aglw
 {
-  long jdField_a_of_type_Long;
-  aglx jdField_a_of_type_Aglx;
-  String jdField_a_of_type_JavaLangString;
-  
-  public void a(aglx paramaglx, String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_Aglx = paramaglx;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt) {}
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
-  
-  public void b(String paramString1, String paramString2, int paramInt) {}
+  public abstract void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo);
 }
 
 

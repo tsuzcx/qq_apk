@@ -1,28 +1,38 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aosw
-  implements aosh
+public class aosw
+  extends aouc
 {
-  private final long a;
-  private final long b;
-  
-  public aosw(long paramLong1, long paramLong2)
+  public aosw(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
+    super(paramQQAppInterface, paramContext);
   }
   
-  public Bundle a()
+  public boolean a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("srcAppID", this.a);
-    localBundle.putLong("dstAppID", this.b);
-    return localBundle;
+    try
+    {
+      boolean bool = f_();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("AssistantSettingAction", 1, "doAction error: " + localException.getMessage());
+      a("AssistantSettingAction");
+    }
+    return false;
   }
   
-  public String a()
+  public boolean f_()
   {
-    return "QQ.Login";
+    Intent localIntent = new Intent();
+    localIntent.setClass(this.a, AssistantSettingActivity.class);
+    this.a.startActivity(localIntent);
+    return true;
   }
 }
 

@@ -1,30 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import mqq.os.MqqHandler;
 
-public class aldi
-  implements DialogInterface.OnClickListener
+class aldi
+  implements awza
 {
-  public aldi(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  aldi(aldh paramaldh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    Object localObject = ShortVideoPreviewActivity.a(this.a);
-    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
-    Intent localIntent = new Intent();
-    localIntent.setClassName((String)localObject, paramDialogInterface);
-    localIntent.addFlags(603979776);
-    localIntent.putExtra("file_send_path", this.a.c);
-    localIntent.putExtra("file_send_size", this.a.a);
-    localIntent.putExtra("file_send_duration", this.a.jdField_b_of_type_Long);
-    localIntent.putExtra("file_source", this.a.jdField_b_of_type_JavaLangString);
-    this.a.startActivity(localIntent);
-    ShortVideoPreviewActivity.a(this.a);
-    localObject = new Intent("key_video_select_confirm_ok_click");
-    ((Intent)localObject).putExtra("className", paramDialogInterface);
-    this.a.sendBroadcast((Intent)localObject);
+    aldh.a(this.a).removeMessages(11);
+    aldh.a(this.a).sendEmptyMessageDelayed(11, 1000L);
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if ((paramInt & 0x1) != 0)
+    {
+      aldh.a(this.a).removeMessages(11);
+      aldh.a(this.a).sendEmptyMessageDelayed(11, 1000L);
+    }
   }
 }
 

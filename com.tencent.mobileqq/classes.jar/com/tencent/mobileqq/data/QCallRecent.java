@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import abwz;
-import bfwr;
+import acnh;
+import bhfj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
@@ -87,9 +87,9 @@ public class QCallRecent
           bool1 = bool3;
         } while (!this.uin.equals(paramObject.uin));
         bool1 = bool3;
-      } while (!abwz.d(this.type));
+      } while (!acnh.d(this.type));
       bool1 = bool3;
-    } while (!abwz.d(paramObject.type));
+    } while (!acnh.d(paramObject.type));
     return true;
   }
   
@@ -110,7 +110,7 @@ public class QCallRecent
   
   public boolean isSend()
   {
-    return bfwr.a(this.sendFlag);
+    return bhfj.a(this.sendFlag);
   }
   
   public boolean isVideo()
@@ -125,7 +125,7 @@ public class QCallRecent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.QCallRecent
  * JD-Core Version:    0.7.0.1
  */

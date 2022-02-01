@@ -1,54 +1,40 @@
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
+import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aqgi
-  extends aqgc<aqgf>
+  extends aqgd
 {
-  @NonNull
-  public static aqgf c()
-  {
-    aqgf localaqgf2 = (aqgf)apub.a().a(541);
-    aqgf localaqgf1 = localaqgf2;
-    if (localaqgf2 == null) {
-      localaqgf1 = aqgf.a();
-    }
-    return localaqgf1;
-  }
+  public aqgi(RockDownloaderManager.2 param2) {}
   
-  @NonNull
-  public aqgf a()
-  {
-    return aqgf.a();
-  }
-  
-  @NonNull
-  public aqgf a(@NonNull aptx[] paramArrayOfaptx)
+  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("KC.ConfigProcessor", 1, paramArrayOfaptx[0].a);
+      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
     }
-    return aqgf.a(paramArrayOfaptx[0].a);
   }
   
-  @NonNull
-  public aqgf b()
+  public void a(ArrayList<RockDownloadInfo> paramArrayList)
   {
-    return aqgf.a();
-  }
-  
-  public Class<aqgf> clazz()
-  {
-    return aqgf.class;
-  }
-  
-  public int type()
-  {
-    return 541;
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
+      }
+      boolean bool = aqgj.b(localRockDownloadInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgi
  * JD-Core Version:    0.7.0.1
  */

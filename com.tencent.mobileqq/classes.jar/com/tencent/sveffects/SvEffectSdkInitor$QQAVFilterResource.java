@@ -1,7 +1,7 @@
 package com.tencent.sveffects;
 
-import baah;
-import bnxl;
+import bbgq;
+import bpnd;
 import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
 
 public class SvEffectSdkInitor$QQAVFilterResource
@@ -10,9 +10,9 @@ public class SvEffectSdkInitor$QQAVFilterResource
   public String getFilterResPath()
   {
     if (SvEffectSdkInitor.isDovCapture) {
-      return bnxl.b;
+      return bpnd.b;
     }
-    return baah.b;
+    return bbgq.b;
   }
 }
 

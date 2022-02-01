@@ -1,36 +1,14 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class akbi
-  implements akbj
+  implements DialogInterface.OnClickListener
 {
-  akbi(akbh paramakbh) {}
+  akbi(akam paramakam) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 1;
-    akbh localakbh = this.a;
-    localakbh.jdField_a_of_type_Int += 1;
-    if (paramInt == 0)
-    {
-      this.a.jdField_a_of_type_JavaUtilHashMap.put(paramPathResult.url, paramPathResult);
-      if ((this.a.jdField_a_of_type_Int >= this.a.jdField_a_of_type_JavaUtilList.size()) && (this.a.jdField_a_of_type_Akbk != null))
-      {
-        paramPathResult = this.a.jdField_a_of_type_Akbk;
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label118;
-        }
-      }
-    }
-    label118:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramPathResult.a(paramInt, this.a.jdField_a_of_type_JavaUtilHashMap);
-      return;
-      this.a.jdField_a_of_type_Boolean = true;
-      break;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,9 +1,15 @@
-public abstract interface bgzo
-  extends bguj
+import android.graphics.drawable.BitmapDrawable;
+import java.lang.ref.WeakReference;
+
+class bgzo
+  extends BitmapDrawable
 {
-  public abstract String getOpenidBatch(String paramString);
+  private final WeakReference<bgzp> a;
   
-  public abstract boolean shareStructMsgForH5(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8);
+  public bgzp a()
+  {
+    return (bgzp)this.a.get();
+  }
 }
 
 

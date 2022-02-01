@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aeco;
-import bfur;
+import aett;
+import bhdj;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class RegisterBaseActivity$2
@@ -11,16 +11,16 @@ public class RegisterBaseActivity$2
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = bfur.a(this.this$0, 230);
+    QQCustomDialog localQQCustomDialog = bhdj.a(this.this$0, 230);
     localQQCustomDialog.setTitle(this.a);
     localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(2131718670, new aeco(this));
+    localQQCustomDialog.setPositiveButton(2131719059, new aett(this));
     localQQCustomDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterBaseActivity.2
  * JD-Core Version:    0.7.0.1
  */

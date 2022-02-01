@@ -1,35 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class xiq
-  implements vtb
+  implements xjn
 {
-  xiq(xin paramxin, CommentEntry paramCommentEntry, boolean paramBoolean) {}
+  xiq(xim paramxim, StoryVideoItem paramStoryVideoItem) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void a(xjm paramxjm)
   {
-    a(-1, amtj.a(2131713444));
+    if (this.jdField_a_of_type_Xim.isCanceled()) {}
+    do
+    {
+      return;
+      ykq.a(this.jdField_a_of_type_Xim.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Xim.a.c]);
+    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Xim.a, 12));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Xim.a, 12);
+    this.jdField_a_of_type_Xim.a.d = 1;
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Xim.a).a(this.jdField_a_of_type_Xim.a, paramxjm, VideoViewVideoHolder.b(this.jdField_a_of_type_Xim.a));
+    ykv.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131713441), 0).a();
-    xvv.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
-  }
-  
-  public void a(MessageMicro paramMessageMicro)
-  {
-    if (!xin.a(this.jdField_a_of_type_Xin).get()) {
-      xin.a(this.jdField_a_of_type_Xin, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
-    }
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

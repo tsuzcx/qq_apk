@@ -20,7 +20,7 @@ public class SystemAndEmojiUniversalPanel$Builder
   
   public SystemAndEmojiUniversalPanel create()
   {
-    SystemAndEmojiUniversalPanel localSystemAndEmojiUniversalPanel = (SystemAndEmojiUniversalPanel)View.inflate(this.mContext, 2131559148, null);
+    SystemAndEmojiUniversalPanel localSystemAndEmojiUniversalPanel = (SystemAndEmojiUniversalPanel)View.inflate(this.mContext, 2131559177, null);
     into(localSystemAndEmojiUniversalPanel);
     return localSystemAndEmojiUniversalPanel;
   }
@@ -70,7 +70,7 @@ public class SystemAndEmojiUniversalPanel$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.Builder
  * JD-Core Version:    0.7.0.1
  */

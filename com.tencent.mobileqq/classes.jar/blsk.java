@@ -1,30 +1,107 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Observable;
+import mqq.app.MobileQQ;
+import mqq.manager.Manager;
 
 public class blsk
-  implements Animator.AnimatorListener
+  extends Observable
+  implements Manager
 {
-  public blsk(AEMaterialPanel paramAEMaterialPanel, Runnable paramRunnable) {}
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public blsk(AppInterface paramAppInterface)
   {
-    AEMaterialPanel.b(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, false);
-    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null) {
-      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).c();
-    }
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new blsl(this);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.redpoint.broadcast.push.av"));
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public Map<String, RedAppInfo> a(ArrayList<String> paramArrayList)
   {
-    AEMaterialPanel.b(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, true);
+    if (paramArrayList == null) {}
+    do
+    {
+      do
+      {
+        return null;
+        localObject = new Bundle();
+        ((Bundle)localObject).putStringArrayList("pathList", paramArrayList);
+        paramArrayList = QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getRedTouchInfo", (Bundle)localObject);
+      } while ((paramArrayList == null) || (paramArrayList.code != 0) || (paramArrayList.data == null));
+      paramArrayList = paramArrayList.data;
+      paramArrayList.setClassLoader(RedAppInfo.class.getClassLoader());
+      localObject = paramArrayList.getParcelableArrayList("redTouchInfoList");
+    } while (localObject == null);
+    paramArrayList = new HashMap();
+    Object localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      RedAppInfo localRedAppInfo = (RedAppInfo)((Iterator)localObject).next();
+      paramArrayList.put(localRedAppInfo.b(), localRedAppInfo);
+    }
+    return paramArrayList;
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("path", paramString);
+    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "reportRedTouchClick", localBundle);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    boolean bool2 = false;
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("appId", paramInt);
+    localObject = QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "isLebaItemOpen", (Bundle)localObject);
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      bool1 = bool2;
+      if (((EIPCResult)localObject).code == 0)
+      {
+        bool1 = bool2;
+        if (((EIPCResult)localObject).data != null) {
+          bool1 = ((EIPCResult)localObject).data.getBoolean("isLebaItemOpen", false);
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public void onDestroy()
+  {
+    super.deleteObservers();
+    try
+    {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,49 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel.FrameCallback.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
+import org.jetbrains.annotations.Nullable;
 
 public class anph
-  extends anpp
+  implements amvj
 {
-  protected anph(QQAppInterface paramQQAppInterface, anpt paramanpt)
+  private ApolloActionData jdField_a_of_type_ComTencentMobileqqDataApolloActionData;
+  private List<anqh> jdField_a_of_type_JavaUtilList;
+  
+  public anph(List<anqh> paramList, ApolloActionData paramApolloActionData)
   {
-    super(paramQQAppInterface, paramanpt);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = paramApolloActionData;
   }
   
-  public int a(QQMessageFacade.Message paramMessage)
+  public void a(boolean paramBoolean, @Nullable String paramString, @Nullable Error paramError)
   {
-    return -113;
-  }
-  
-  public anpt a(QQMessageFacade.Message paramMessage)
-  {
-    Object localObject1;
-    if (("device_groupchat".equals(paramMessage.extStr)) && ((paramMessage.msgtype == -4501) || (paramMessage.msgtype == -4508)))
-    {
-      Object localObject2 = ContactUtils.getBuddyName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.senderuin, true);
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty(paramMessage.senderuin))
-      {
-        localObject1 = localObject2;
-        if (paramMessage.senderuin.equals(paramMessage.frienduin)) {
-          localObject1 = abdn.a(((aara)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(51)).a(Long.parseLong(paramMessage.senderuin)));
-        }
-      }
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = "";
-      }
-      localObject1 = (String)localObject2 + ": " + c();
-      this.jdField_a_of_type_Anpt.d((String)localObject1);
-    }
-    for (;;)
-    {
-      b(paramMessage);
-      return this.jdField_a_of_type_Anpt;
-      localObject1 = c();
-      this.jdField_a_of_type_Anpt.d((String)localObject1);
-    }
+    QLog.d("ApolloPanel", 1, "ApolloPanel handleCMSPlayerGetFrame success : " + paramBoolean + " actionId: " + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId);
+    ThreadManager.getUIHandler().post(new ApolloPanel.FrameCallback.1(this));
   }
 }
 

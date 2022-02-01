@@ -1,49 +1,44 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import java.util.Comparator;
 
-final class amkf
-  implements amdy
+public class amkf
+  implements Comparator<amkh>
 {
-  amkf(String paramString, String[] paramArrayOfString, amkd paramamkd) {}
-  
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  private int a(amkh paramamkh)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloHttpUtil", 2, "fakeResource3DUrlRequest onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
+    if ((a(paramamkh) == 0L) || (paramamkh.jdField_a_of_type_Int == 4)) {
+      return paramamkh.jdField_a_of_type_Int + 3;
     }
-    if (paramBoolean)
-    {
-      paramArrayOfInt = new File(this.jdField_a_of_type_JavaLangString);
-      if (paramArrayOfInt.exists()) {
-        try
-        {
-          paramString = amke.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-          if (amke.a(this.jdField_a_of_type_JavaLangString))
-          {
-            paramArrayOfInt = amke.a(paramArrayOfInt, paramString);
-            this.jdField_a_of_type_Amkd.a(0, paramString, paramArrayOfInt);
-          }
-          while (QLog.isColorLevel())
-          {
-            QLog.d("ApolloHttpUtil", 2, new Object[] { "fakeResource3DUrlRequest onDownLoadFinish retHeader:", paramString });
-            return;
-            this.jdField_a_of_type_Amkd.a(0, paramString, ApolloRender.readStream(new FileInputStream(paramArrayOfInt)));
-          }
-          this.jdField_a_of_type_Amkd.a(-1, null, null);
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("ApolloHttpUtil", 1, paramString, new Object[0]);
-          return;
-        }
-      }
+    return paramamkh.jdField_a_of_type_Int;
+  }
+  
+  private long a(amkh paramamkh)
+  {
+    if ((paramamkh.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof TroopInfo)) {
+      return ((TroopInfo)paramamkh.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).lastMsgTime;
     }
-    else
-    {
-      this.jdField_a_of_type_Amkd.a(-1, null, null);
+    if ((paramamkh.jdField_a_of_type_ComTencentMobileqqPersistenceEntity instanceof DiscussionInfo)) {
+      return ((DiscussionInfo)paramamkh.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).lastMsgTime;
     }
+    return 0L;
+  }
+  
+  public int a(amkh paramamkh1, amkh paramamkh2)
+  {
+    if ((paramamkh1 == null) && (paramamkh2 == null)) {
+      return 0;
+    }
+    if (paramamkh1 == null) {
+      return -1;
+    }
+    if (paramamkh2 == null) {
+      return 1;
+    }
+    if (a(paramamkh1) == a(paramamkh2)) {
+      return (int)(a(paramamkh2) - a(paramamkh1));
+    }
+    return a(paramamkh1) - a(paramamkh2);
   }
 }
 

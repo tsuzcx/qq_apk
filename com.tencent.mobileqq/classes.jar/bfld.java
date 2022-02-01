@@ -1,12 +1,12 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class bfld
+class bfld
+  extends aofu
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
+  bfld(bflc parambflc) {}
+  
+  protected void onSetTroopEssenceMsg(boolean paramBoolean, Object paramObject1, Object paramObject2, int paramInt)
+  {
+    bflc.a(this.a, paramBoolean, paramObject1, paramObject2, paramInt);
+  }
 }
 
 

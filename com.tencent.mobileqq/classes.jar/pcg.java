@@ -1,63 +1,21 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import mqq.app.AppRuntime;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public class pcg
-  implements AladdinConfigHandler
+class pcg
+  implements AbsListView.OnScrollListener
 {
-  public static int a(AppRuntime paramAppRuntime, int paramInt)
+  pcg(pcf parampcf) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 1;
-    if (paramAppRuntime == null)
+    if (this.a.a != null)
     {
-      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
-      return 0;
-    }
-    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
-    if (BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).getBoolean("channel_" + paramInt, false)) {}
-    for (paramInt = i;; paramInt = 0) {
-      return paramInt;
+      paramInt1 = pcf.a(this.a, paramInt1);
+      this.a.a.onScroll(paramInt1);
     }
   }
   
-  public static void a(AppRuntime paramAppRuntime, int paramInt)
-  {
-    if (paramAppRuntime == null)
-    {
-      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
-      return;
-    }
-    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
-    BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).edit().putBoolean("channel_" + paramInt, true).apply();
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("ChannelListDynamicOrder", 2, "[onReceiveConfig] " + paramString);
-    paramString = pbt.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      if (TextUtils.equals("channel_list_dynamic_order_switch", str1)) {
-        bkwm.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(TextUtils.equals(str2, "1")));
-      }
-    }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    bkwm.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false));
-  }
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

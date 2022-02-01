@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pkp;
-import pul;
+import pvm;
+import qff;
 
 public class DailyDynamicHeaderModule$2
   implements Runnable
 {
-  public DailyDynamicHeaderModule$2(pul parampul) {}
+  public DailyDynamicHeaderModule$2(qff paramqff) {}
   
   public void run()
   {
-    pkp.a().c(false);
+    pvm.a().c(false);
   }
 }
 

@@ -1,97 +1,85 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import android.text.TextUtils;
+import android.util.LruCache;
+import java.util.ArrayList;
 
-class bodn
+public class bodn
 {
-  private BufferedReader jdField_a_of_type_JavaIoBufferedReader;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
-  private InputStreamReader jdField_a_of_type_JavaIoInputStreamReader;
-  public Process a;
+  private static LruCache<String, ArrayList<Double>> jdField_a_of_type_AndroidUtilLruCache = new LruCache(10);
+  private static ArrayList<Double> jdField_a_of_type_JavaUtilArrayList;
   
-  public void a()
+  private static double a()
   {
-    if (this.jdField_a_of_type_JavaLangProcess != null)
-    {
-      this.jdField_a_of_type_JavaIoInputStream = this.jdField_a_of_type_JavaLangProcess.getInputStream();
-      this.jdField_a_of_type_JavaIoInputStreamReader = new InputStreamReader(this.jdField_a_of_type_JavaIoInputStream);
-      this.jdField_a_of_type_JavaIoBufferedReader = new BufferedReader(this.jdField_a_of_type_JavaIoInputStreamReader);
+    double d2 = Math.random();
+    double d1 = d2;
+    if (d2 < 0.1D) {
+      d1 = d2 + 0.1000000014901161D;
     }
+    return d1;
   }
   
-  public void b()
+  static double a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangProcess != null) {}
-    try
+    double d;
+    if (jdField_a_of_type_JavaUtilArrayList == null)
     {
-      for (;;)
+      bnrh.a("AEEditorMusicWaveRandomGenerator", "obtainRandomValue() mRandoms == null.");
+      d = a();
+    }
+    for (;;)
+    {
+      return d;
+      if (paramInt == jdField_a_of_type_JavaUtilArrayList.size())
       {
-        String str = this.jdField_a_of_type_JavaIoBufferedReader.readLine();
-        if (str == null) {
-          break;
-        }
-        bodl.a("[@] compressVideo log:" + str, null);
+        bnrh.a("AEEditorMusicWaveRandomGenerator", "obtainRandomValue() index == mRandoms.size().");
+        d = a();
+        jdField_a_of_type_JavaUtilArrayList.add(paramInt, Double.valueOf(d));
+        return d;
       }
-      label177:
+      if (paramInt < 0)
+      {
+        bnrh.a("AEEditorMusicWaveRandomGenerator", "obtainRandomValue() index < 0.");
+        return a();
+      }
+      if (paramInt <= jdField_a_of_type_JavaUtilArrayList.size()) {
+        break;
+      }
+      bnrh.a("AEEditorMusicWaveRandomGenerator", "obtainRandomValue() index > mRandoms.size().");
+      d = a();
+      int i = jdField_a_of_type_JavaUtilArrayList.size();
+      while (i <= paramInt)
+      {
+        d = a();
+        jdField_a_of_type_JavaUtilArrayList.add(i, Double.valueOf(d));
+        i += 1;
+      }
+    }
+    return ((Double)jdField_a_of_type_JavaUtilArrayList.get(paramInt)).doubleValue();
+  }
+  
+  static void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString1)) {}
+    for (;;)
+    {
+      if ((jdField_a_of_type_AndroidUtilLruCache != null) && (!TextUtils.isEmpty(paramString2)) && (jdField_a_of_type_AndroidUtilLruCache.get(paramString2) != null))
+      {
+        jdField_a_of_type_JavaUtilArrayList = (ArrayList)jdField_a_of_type_AndroidUtilLruCache.get(paramString2);
+        return;
+      }
+      int i = Math.min(paramInt, 10000);
+      paramString1 = new ArrayList();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        paramString1.add(Double.valueOf(a()));
+        paramInt += 1;
+      }
+      if (jdField_a_of_type_AndroidUtilLruCache != null) {
+        jdField_a_of_type_AndroidUtilLruCache.put(paramString2, paramString1);
+      }
+      jdField_a_of_type_JavaUtilArrayList = paramString1;
       return;
-    }
-    catch (IOException localIOException1)
-    {
-      for (;;)
-      {
-        try
-        {
-          if (this.jdField_a_of_type_JavaIoInputStream != null) {
-            this.jdField_a_of_type_JavaIoInputStream.close();
-          }
-          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-            this.jdField_a_of_type_JavaIoInputStreamReader.close();
-          }
-          if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
-            this.jdField_a_of_type_JavaIoBufferedReader.close();
-          }
-          return;
-        }
-        catch (IOException localIOException3) {}
-        try
-        {
-          if (this.jdField_a_of_type_JavaIoInputStream != null) {
-            this.jdField_a_of_type_JavaIoInputStream.close();
-          }
-          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-            this.jdField_a_of_type_JavaIoInputStreamReader.close();
-          }
-          if (this.jdField_a_of_type_JavaIoBufferedReader == null) {
-            continue;
-          }
-          this.jdField_a_of_type_JavaIoBufferedReader.close();
-          return;
-        }
-        catch (IOException localIOException2)
-        {
-          return;
-        }
-      }
-    }
-    finally
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaIoInputStream != null) {
-          this.jdField_a_of_type_JavaIoInputStream.close();
-        }
-        if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-          this.jdField_a_of_type_JavaIoInputStreamReader.close();
-        }
-        if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
-          this.jdField_a_of_type_JavaIoBufferedReader.close();
-        }
-      }
-      catch (IOException localIOException4)
-      {
-        break label177;
-      }
+      paramString2 = paramString1;
     }
   }
 }

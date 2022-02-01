@@ -1,15 +1,15 @@
 package com.tencent.avgame.gameroom.video;
 
-import nfy;
+import nmq;
 
 public class AVGameVideoLayer$1
   implements Runnable
 {
-  public AVGameVideoLayer$1(nfy paramnfy) {}
+  public AVGameVideoLayer$1(nmq paramnmq) {}
   
   public void run()
   {
-    nfy.a(this.this$0);
+    nmq.a(this.this$0);
   }
 }
 

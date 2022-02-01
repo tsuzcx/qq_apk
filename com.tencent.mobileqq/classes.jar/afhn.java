@@ -1,32 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afhn
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public afhn(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public afhn(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationStart is called,time is:" + System.currentTimeMillis());
-    }
+    this.a.f();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

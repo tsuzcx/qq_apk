@@ -1,36 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.forward.ForwardShortVideoOption.PressDarkImageView;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class auuu
-  extends Handler
 {
-  auut a;
+  public ImageView a;
+  public ForwardShortVideoOption.PressDarkImageView a;
   
-  protected auuu(auut paramauut)
+  public void a(Drawable paramDrawable)
   {
-    this.a = paramauut;
-  }
-  
-  protected void a()
-  {
-    this.a = null;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (paramDrawable == null)
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardShortVideoOption", 2, "setPreviewImage null");
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838112);
       return;
     }
-    this.a.a();
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(13);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
+    this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(ViewUtils.dip2px(140.0F));
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
   }
 }
 

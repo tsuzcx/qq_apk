@@ -1,54 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rfu
+class rfu
+  implements View.OnClickListener
 {
-  public String a;
+  rfu(rft paramrft) {}
   
-  public static List<rfu> a(oidb_cmd0xbc9.DynamicBannerItem paramDynamicBannerItem)
+  public void onClick(View paramView)
   {
-    localArrayList = new ArrayList();
-    if (!paramDynamicBannerItem.bytes_dynamic_json.has()) {}
-    for (;;)
-    {
-      return localArrayList;
-      Object localObject = paramDynamicBannerItem.bytes_dynamic_json.get().toStringUtf8();
-      try
-      {
-        JSONArray localJSONArray = new JSONArray((String)localObject);
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          rfu localrfu = new rfu();
-          localrfu.a = localJSONArray.get(i).toString();
-          localArrayList.add(localrfu);
-          i += 1;
-        }
-        return localArrayList;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("TopBannerInfo", 4, "" + (String)localObject);
-        localObject = new rfu();
-        ((rfu)localObject).a = paramDynamicBannerItem.bytes_dynamic_json.get().toStringUtf8();
-        localArrayList.add(localObject);
-      }
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-  }
-  
-  public oidb_cmd0xbc9.DynamicBannerItem a()
-  {
-    oidb_cmd0xbc9.DynamicBannerItem localDynamicBannerItem = new oidb_cmd0xbc9.DynamicBannerItem();
-    if (!TextUtils.isEmpty(this.a)) {
-      localDynamicBannerItem.bytes_dynamic_json.set(ByteStringMicro.copyFromUtf8(this.a));
-    }
-    return localDynamicBannerItem;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

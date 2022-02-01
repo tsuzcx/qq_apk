@@ -1,19 +1,28 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.16.1;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
 public class adfh
-  extends amsu
+  implements TextWatcher
 {
-  public adfh(EditInfoActivity paramEditInfoActivity) {}
+  public adfh(AddAccountActivity paramAddAccountActivity) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!this.a.f.equals(paramString1)) {}
-    while (!this.a.j) {
+    if (paramCharSequence.length() > 0) {
+      if (this.a.a != null) {
+        this.a.a.setVisibility(0);
+      }
+    }
+    while ((this.a.a == null) || (!this.a.a.isShown())) {
       return;
     }
-    this.a.j = false;
-    this.a.runOnUiThread(new EditInfoActivity.16.1(this, paramBoolean, paramString2));
+    this.a.a.setVisibility(8);
   }
 }
 

@@ -1,17 +1,44 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class alwg
-  implements MediaPlayer.OnErrorListener
+public abstract interface alwg
 {
-  alwg(alwf paramalwf) {}
+  public abstract void bind(@Nullable alwi paramalwi);
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
-  {
-    QLog.e("CmGameAudioPlayer", 1, "what " + paramInt1 + " ext " + paramInt2);
-    return false;
-  }
+  public abstract void clearHighlightContent();
+  
+  @Nullable
+  public abstract CharSequence content();
+  
+  public abstract int contentLength();
+  
+  @Nullable
+  public abstract alwi delegate();
+  
+  public abstract void doSelecting(ChatMessage paramChatMessage);
+  
+  public abstract boolean hasSelected();
+  
+  public abstract boolean hasTouchSelectableArea(int paramInt1, int paramInt2);
+  
+  public abstract void highlightBackgroundColor(@ColorInt int paramInt);
+  
+  public abstract void highlightContent();
+  
+  public abstract void locationByIndex(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean);
+  
+  @Nullable
+  public abstract CharSequence selectContent();
+  
+  public abstract void selectContent(int paramInt1, int paramInt2);
+  
+  public abstract int touchIndex(int paramInt1, int paramInt2);
+  
+  @NonNull
+  public abstract View view();
 }
 
 

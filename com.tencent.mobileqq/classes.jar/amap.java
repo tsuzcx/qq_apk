@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class amap
-  implements ameb
+  implements DialogInterface.OnClickListener
 {
-  amap(amam paramamam, boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
+  amap(aman paramaman) {}
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Amam.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.b);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

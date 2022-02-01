@@ -1,17 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 
-public class bmzu
-  extends bmtc
+class bmzu
+  implements ThreadExcutor.IThreadListener
 {
-  public bmzu(StaticStickerProviderView paramStaticStickerProviderView) {}
+  bmzu(bmzr parambmzr) {}
   
-  public void d()
+  public void onAdded()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("StaticStickerProviderView", 2, "paster config get notify");
-    }
-    this.a.g();
+    bnrh.a("AEPhotoListLogicBase", "onAdded--serialCompressVideos");
+  }
+  
+  public void onPostRun()
+  {
+    bnrh.a("AEPhotoListLogicBase", "onPostRun--serialCompressVideos");
+  }
+  
+  public void onPreRun()
+  {
+    bnrh.a("AEPhotoListLogicBase", "onPreRun--serialCompressVideos");
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aurt;
+import avxo;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class MiniMsgIPCClient$1
@@ -10,7 +10,7 @@ class MiniMsgIPCClient$1
   
   public void run()
   {
-    aurt.a().a(BaseApplicationImpl.getContext());
+    avxo.a().a(BaseApplicationImpl.getContext());
   }
 }
 

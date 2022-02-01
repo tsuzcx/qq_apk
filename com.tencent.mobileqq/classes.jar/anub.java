@@ -1,17 +1,51 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class anub
-  extends anri
+  implements BusinessObserver
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  public static final String TAG = "FavEmoRoamingObserver";
+  
+  protected void onDelEmoResponse(boolean paramBoolean) {}
+  
+  protected void onModifyFavData(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramQQAppInterface = new anua(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "teamwork";
-    paramQQAppInterface.c = "opendoclist";
-    return paramQQAppInterface;
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+      do
+      {
+        return;
+      } while (paramObject == null);
+      onDelEmoResponse(((Boolean)paramObject).booleanValue());
+      return;
+    case 1: 
+      try
+      {
+        onUploadReq((ArrayList)paramObject);
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("FavEmoRoamingObserver", 1, "onUploadReq error, ", paramObject);
+        return;
+      }
+    case 2: 
+      onUpdateFavData(paramBoolean, paramObject);
+      return;
+    }
+    onModifyFavData(paramBoolean, paramObject);
   }
+  
+  protected void onUpdateFavData(boolean paramBoolean, Object paramObject) {}
+  
+  protected void onUploadReq(List<CustomEmotionData> paramList) {}
 }
 
 

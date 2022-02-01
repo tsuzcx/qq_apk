@@ -1,180 +1,95 @@
-import android.text.TextUtils;
-import com.tencent.image.JpegExifReader;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
 
 public class asrn
-  implements assv
+  extends aqwt<asrv>
 {
-  protected int a;
-  protected asqs a;
-  protected String a;
-  protected int b;
-  protected String b;
-  protected int c;
-  
-  public asrn(asqs paramasqs)
+  public static asrv a()
   {
-    this.jdField_a_of_type_Asqs = paramasqs;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.c = -1;
+    return (asrv)aqxe.a().a(532);
   }
   
-  public int a()
+  @NonNull
+  public asrv a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.e("LimitChatOnPlusConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new asrv();
   }
   
-  public asqs a()
+  @Nullable
+  public asrv a(aqxa[] paramArrayOfaqxa)
   {
-    return this.jdField_a_of_type_Asqs;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public URL a()
-  {
-    String str = this.jdField_a_of_type_Asqs.f();
-    if (TextUtils.isEmpty(str))
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatOnPlusConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
     {
-      str = this.jdField_a_of_type_Asqs.h();
-      if (str == null)
-      {
-        a(1);
-        return null;
+      if (QLog.isColorLevel()) {
+        QLog.d("LimitChatOnPlusConfProcessor", 2, "onParsed " + paramArrayOfaqxa.length);
       }
-      this.jdField_a_of_type_Int = 2;
+      return asrv.a(paramArrayOfaqxa[0]);
     }
-    while (FileUtil.fileExistsAndNotEmpty(str)) {
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        return AsyncImageView.a(str);
-        this.jdField_a_of_type_Int = 1;
-      }
-      else
-      {
-        return AsyncImageView.a(str, -1, -1, new File(str), false, false, false);
-      }
-    }
-    a(1);
     return null;
   }
   
-  public void a(int paramInt)
+  public void a(asrv paramasrv)
   {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_Asqs.a(paramString);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (this.jdField_a_of_type_Asqs == null) {}
-    FileManagerEntity localFileManagerEntity;
-    do
-    {
-      return false;
-      localFileManagerEntity = this.jdField_a_of_type_Asqs.a();
-    } while (localFileManagerEntity == null);
-    if (localFileManagerEntity.isZipInnerFile)
-    {
-      if (localFileManagerEntity.status == 2) {}
-      for (;;)
-      {
-        return bool1;
-        bool1 = false;
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramasrv == null) {
+        break label73;
       }
     }
-    if (this.jdField_b_of_type_Int == 1) {}
-    for (bool1 = bool2;; bool1 = false) {
-      return bool1;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ((this.jdField_a_of_type_Asqs.a() != null) && (this.jdField_a_of_type_Asqs.a().isZipInnerFile)) {
-      return paramString.equalsIgnoreCase(String.valueOf(this.jdField_a_of_type_Asqs.a()));
-    }
-    return (paramString.equalsIgnoreCase(this.jdField_a_of_type_Asqs.c())) || (paramString.equalsIgnoreCase(this.jdField_a_of_type_Asqs.e()));
-  }
-  
-  public int b()
-  {
-    if (this.c == -1) {}
-    try
+    label73:
+    for (paramasrv = paramasrv.toString();; paramasrv = " empty")
     {
-      String str = this.jdField_a_of_type_Asqs.f();
-      if (FileUtil.fileExistsAndNotEmpty(str))
-      {
-        this.c = JpegExifReader.readOrientation(str);
-        return this.c;
+      QLog.d("LimitChatOnPlusConfProcessor", 2, paramasrv);
+      paramasrv = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramasrv instanceof QQAppInterface)) {
+        ((aslo)((QQAppInterface)paramasrv).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).c();
       }
-      return 1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        this.c = 0;
-      }
-    }
-  }
-  
-  public String b()
-  {
-    String str2 = this.jdField_a_of_type_Asqs.f();
-    String str1;
-    if (str2 != null)
-    {
-      str1 = str2;
-      if (!str2.equals("")) {}
-    }
-    else
-    {
-      str1 = this.jdField_a_of_type_Asqs.h();
-      if (str1 != null) {
-        break label44;
-      }
-      str1 = "";
-    }
-    return str1;
-    label44:
-    this.jdField_a_of_type_Int = 2;
-    return str1;
-  }
-  
-  public void b(String paramString)
-  {
-    if (FileUtil.fileExistsAndNotEmpty(paramString)) {
-      this.jdField_b_of_type_JavaLangString = paramString;
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.i("DefaultImageInfo", 2, "setImageOriginPath error  : can not find origin file [path] =  " + paramString);
   }
   
-  public boolean b()
+  public Class<asrv> clazz()
   {
-    return this.jdField_a_of_type_Asqs.b() < asld.c();
+    return asrv.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("LimitChatOnPlusConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 532;
   }
 }
 

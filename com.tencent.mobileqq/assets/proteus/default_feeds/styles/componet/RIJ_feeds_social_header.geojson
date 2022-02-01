@@ -314,6 +314,7 @@
                                 {
                                     "view_id":"id_feeds_biu_time",
                                     "view_type":"UILabel",
+                                    "margin_right": "4",
                                     "align_parent_center_vertical":"YES",
                                     "height":{
                                         "type":"wrap_content"
@@ -323,6 +324,23 @@
                                     },
                                     "attributes":{
                                         "setText:":"$biu_time_text",
+                                        "setTextColorString:":"#B0B3BF",
+                                        "setFontSizeString:":"11",
+                                        "setNumberOfLinesString:":"1"
+                                    }
+                                },
+                                {
+                                    "view_id":"id_feeds_extra_info",
+                                    "view_type":"UILabel",
+                                    "align_parent_center_vertical":"YES",
+                                    "height":{
+                                        "type":"wrap_content"
+                                    },
+                                    "width":{
+                                        "type":"wrap_content"
+                                    },
+                                    "attributes":{
+                                        "setText:":"$header_extra_info",
                                         "setTextColorString:":"#B0B3BF",
                                         "setFontSizeString:":"11",
                                         "setNumberOfLinesString:":"1"

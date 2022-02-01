@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.view.KeyEvent;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class ywg
-  implements DialogInterface.OnDismissListener
+class ywg
+  implements TextView.OnEditorActionListener
 {
-  public ywg(QRDisplayActivity paramQRDisplayActivity) {}
+  ywg(ywf paramywf) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.h = false;
+    if (paramInt == 6)
+    {
+      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
+      if (paramTextView != null) {
+        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
+      }
+    }
+    return false;
   }
 }
 

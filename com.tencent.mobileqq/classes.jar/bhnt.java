@@ -1,10 +1,6 @@
-import MConch.SCPullConchs;
-import MWIFI.SCGet3rdCloudCheck;
-
-public class bhnt
+public abstract interface bhnt
 {
-  public SCPullConchs a;
-  public SCGet3rdCloudCheck a;
+  public abstract void a();
 }
 
 

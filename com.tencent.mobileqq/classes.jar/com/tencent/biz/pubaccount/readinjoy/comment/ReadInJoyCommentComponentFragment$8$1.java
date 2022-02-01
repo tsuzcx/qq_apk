@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.comment;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import osm;
+import pam;
 
 public class ReadInJoyCommentComponentFragment$8$1
   implements Runnable
 {
-  public ReadInJoyCommentComponentFragment$8$1(osm paramosm) {}
+  public ReadInJoyCommentComponentFragment$8$1(pam parampam) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ReadInJoyCommentComponentFragment$8$1
     ReadInJoyCommentComponentFragment.a(this.a.a);
     if (this.a.a.jdField_a_of_type_Boolean)
     {
-      this.a.a.g.setImageResource(2130842854);
+      this.a.a.g.setImageResource(2130842886);
       ReadInJoyCommentComponentFragment.a(this.a.a, true);
     }
   }

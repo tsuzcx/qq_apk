@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import android.os.Handler;
+import android.os.Message;
 
-public class banr
-  implements DialogInterface.OnClickListener
+class banr
+  implements balr
 {
-  public banr(SignatureEditFragment paramSignatureEditFragment) {}
+  banr(banp parambanp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    SignatureEditFragment.a(this.a, 8589934618L, null);
-    paramDialogInterface.dismiss();
+    if (banp.b(this.a) != null)
+    {
+      Message localMessage = banp.b(this.a).obtainMessage(1002);
+      localMessage.obj = paramArrayOfByte;
+      banp.b(this.a).sendMessage(localMessage);
+    }
   }
 }
 

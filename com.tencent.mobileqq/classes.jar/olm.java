@@ -1,19 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class olm
-  implements nnv
 {
-  public olm(ReadInJoyFeedsActivity.1 param1) {}
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void loaded(String paramString, int paramInt)
+  public olm(oli paramoli, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void progress(int paramInt) {}
+  public String toString()
+  {
+    return "PublicAccountSearchRecommendItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean;
+  }
 }
 
 

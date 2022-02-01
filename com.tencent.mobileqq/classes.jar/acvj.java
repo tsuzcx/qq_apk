@@ -1,19 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
-final class acvj
-  implements DialogInterface.OnClickListener
+public class acvj
+  extends acve
 {
-  acvj(acxa paramacxa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    if (this.a != null) {
-      this.a.onCancel();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    return super.a() + 1;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
+  {
+    aqwc.a(paramList, paramList1, paramStringBuilder, paramMsg);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (21 == paramElem.common_elem.uint32_service_type.get()) && (3 == paramElem.common_elem.uint32_business_type.get());
   }
 }
 

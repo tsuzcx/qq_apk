@@ -1,44 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import java.util.List;
 
-public class atph
-  implements Manager
+public abstract interface atph
 {
-  private atlq jdField_a_of_type_Atlq;
-  private Map<String, Map<String, Object>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public abstract List<String> a(long paramLong, String paramString, int paramInt, boolean paramBoolean, List<String> paramList);
   
-  public atph()
-  {
-    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> init");
-    this.jdField_a_of_type_Atlq = new atlq();
-  }
+  public abstract void a(long paramLong, int paramInt, atpg paramatpg);
   
-  public atlq a()
-  {
-    return this.jdField_a_of_type_Atlq;
-  }
+  public abstract void a(long paramLong, atpg paramatpg);
   
-  public Map<String, Object> a(String paramString)
-  {
-    return (Map)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-  }
+  public abstract void a(long paramLong, HttpMsg paramHttpMsg);
   
-  public void a(String paramString, Map<String, Object> paramMap)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramMap);
-  }
+  public abstract void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, atpg paramatpg);
   
-  public void onDestroy()
-  {
-    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> onDestroy");
-    this.jdField_a_of_type_Atlq.a();
-  }
+  public abstract boolean a(long paramLong, atpg paramatpg);
+  
+  public abstract void b(long paramLong, atpg paramatpg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atph
  * JD-Core Version:    0.7.0.1
  */

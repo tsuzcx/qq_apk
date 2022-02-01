@@ -1,28 +1,85 @@
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class bdac
-  extends bdae
+  implements INetEngine.INetEngineListener
 {
-  private QQText.EmoticonSpan a;
+  bdac(bdab parambdab, String paramString, DownloadInfo paramDownloadInfo, int paramInt1, int paramInt2) {}
   
-  bdac(@NonNull String paramString, int paramInt1, int paramInt2)
+  public void onResp(NetResp paramNetResp)
   {
-    super(2, paramString);
-    this.a = new QQText.EmoticonSpan(paramInt1, paramInt2, 1);
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
+    if (this.jdField_a_of_type_Bdab.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
+      this.jdField_a_of_type_Bdab.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QavGesture", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.mReqUrl, Integer.valueOf(paramNetResp.mResult), Integer.valueOf(paramNetResp.mHttpCode), this.jdField_a_of_type_JavaLangString }));
+    }
+    int i;
+    if (paramNetResp.mResult == 0)
+    {
+      paramNetResp = new File(localHttpNetReq.mOutPath);
+      if (paramNetResp.exists())
+      {
+        try
+        {
+          String str = paramNetResp.getParent();
+          FileUtils.uncompressZip(localHttpNetReq.mOutPath, str, false);
+          bdaa.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.jdField_a_of_type_Int);
+          i = 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            i = 0;
+          }
+          bdaa.a(-1);
+          this.jdField_a_of_type_Bdab.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        paramNetResp.delete();
+      }
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        bdaa.a(100 / this.jdField_a_of_type_Bdab.jdField_a_of_type_Int + this.jdField_a_of_type_Bdab.b);
+        paramNetResp = this.jdField_a_of_type_Bdab;
+        paramNetResp.b += 100 / this.jdField_a_of_type_Bdab.jdField_a_of_type_Int;
+        if (!this.jdField_a_of_type_Bdab.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.b - 1)) {
+          this.jdField_a_of_type_Bdab.jdField_a_of_type_Boolean = false;
+        }
+        return;
+      }
+      i = 0;
+    }
   }
   
-  float a(@NonNull Paint paramPaint)
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    float f = this.a.getDrawable().getBounds().width();
-    if (QLog.isColorLevel()) {
-      QLog.d("NickWrapper", 2, "getWidth normal span width " + f);
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
     }
-    return f;
+    for (;;)
+    {
+      bdaa.a(i / this.jdField_a_of_type_Bdab.jdField_a_of_type_Int + this.jdField_a_of_type_Bdab.b);
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
+    }
   }
 }
 

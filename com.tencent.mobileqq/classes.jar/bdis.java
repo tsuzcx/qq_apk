@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import java.io.File;
+import java.util.Comparator;
 
-class bdis
-  extends bdit
+public class bdis
+  implements Comparator<File>
 {
-  public bdis(EditorState paramEditorState, List<EditorState> paramList)
-  {
-    super(paramEditorState, paramList, localList);
-  }
+  public bdis(MigrateSubscribeDB paramMigrateSubscribeDB) {}
   
-  public void a(int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    super.a(paramInt);
-    if (paramInt == 0) {
-      QQToast.a(bdid.a(this.b), this.a, 0).a();
+    long l = paramFile2.lastModified() - paramFile1.lastModified();
+    if (l > 0L) {
+      return 1;
     }
-  }
-  
-  public void a(EditorState paramEditorState)
-  {
-    super.a(paramEditorState);
-    bdid.a(this.b).c();
+    if (l == 0L) {
+      return 0;
+    }
+    return -1;
   }
 }
 

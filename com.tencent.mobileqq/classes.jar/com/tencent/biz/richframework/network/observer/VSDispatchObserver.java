@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import bgau;
+import bhjl;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.observer.BusinessObserver;
-import xvv;
+import ykq;
 
 public class VSDispatchObserver
   implements BusinessObserver
@@ -77,7 +77,7 @@ public class VSDispatchObserver
       MessageMicro localMessageMicro;
       try
       {
-        localObject2 = localVSBaseRequest.parseResponseWrapper(bgau.b(((FromServiceMsg)localObject1).getWupBuffer()));
+        localObject2 = localVSBaseRequest.parseResponseWrapper(bhjl.b(((FromServiceMsg)localObject1).getWupBuffer()));
         l2 = ((Long)localObject2[0]).longValue();
         localObject1 = (String)localObject2[1];
         localObject2 = ((ByteStringMicro)localObject2[2]).toByteArray();
@@ -103,7 +103,7 @@ public class VSDispatchObserver
   {
     if (StringUtil.isEmpty(paramVSBaseRequest.getRequestKey()))
     {
-      xvv.d("VSNetworkHelper| Protocol Cache", "requestKey is empty");
+      ykq.d("VSNetworkHelper| Protocol Cache", "requestKey is empty");
       return;
     }
     ThreadManagerV2.executeOnSubThread(new VSDispatchObserver.6(this, paramVSBaseRequest, paramArrayOfByte));

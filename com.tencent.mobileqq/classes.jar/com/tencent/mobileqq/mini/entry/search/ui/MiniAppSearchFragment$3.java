@@ -5,6 +5,7 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.EditText;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -23,7 +24,7 @@ class MiniAppSearchFragment$3
     {
       paramAbsListView = MiniAppSearchFragment.access$200(this.this$0).getText().toString();
       if (!TextUtils.isEmpty(paramAbsListView)) {
-        ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360)).loadMoreSearchAppDataRequest(paramAbsListView);
+        ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER)).loadMoreSearchAppDataRequest(paramAbsListView);
       }
     }
   }

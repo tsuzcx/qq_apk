@@ -1,9 +1,4 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetPlayShowCatMatTreeRsp;
-import com.google.gson.reflect.TypeToken;
-
-final class blum
-  extends TypeToken<GetPlayShowCatMatTreeRsp>
-{}
+class blum {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

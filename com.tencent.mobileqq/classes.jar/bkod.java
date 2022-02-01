@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
-
-public class bkod
-  implements DialogInterface.OnClickListener
+public abstract interface bkod
 {
-  public bkod(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.finish();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

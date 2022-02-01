@@ -1,28 +1,41 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.widget.FormMutiItem;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
 
 public class ahxg
-  implements bhbn
+  extends ahwx
 {
-  public ahxg(AddContactsView paramAddContactsView) {}
-  
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public ahxg(QQAppInterface paramQQAppInterface, ahxr paramahxr, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, afrr paramafrr)
   {
-    if (this.a.i != null)
-    {
-      if (paramInt2 < this.a.i.getY() + this.a.i.getHeight() * 2 / 3) {
-        break label74;
-      }
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        AddContactsView.a(this.a, false);
-      }
+    super(paramQQAppInterface, paramahxr, paramQQWalletBaseMsgElem, paramInt, paramafrr);
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend()) {
+      this.i = 0;
     }
-    return;
-    label74:
-    AddContactsView.a(this.a);
+    this.j = 2130847243;
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.jdField_a_of_type_Ahxr.b.setVisibility(0);
+    this.jdField_a_of_type_Ahxr.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Ahxr.b.setText(ahxc.b);
+    return false;
+  }
+  
+  public void i()
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend())
+    {
+      this.jdField_a_of_type_Ahxr.d.setVisibility(0);
+      return;
+    }
+    super.i();
   }
 }
 

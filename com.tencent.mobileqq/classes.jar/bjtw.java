@@ -1,12 +1,8 @@
-import android.view.animation.Interpolator;
-
-public class bjtw
-  implements Interpolator
+public abstract interface bjtw
 {
-  public float getInterpolation(float paramFloat)
-  {
-    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
-  }
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean b(int paramInt);
 }
 
 

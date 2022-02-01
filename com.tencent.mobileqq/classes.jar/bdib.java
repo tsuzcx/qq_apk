@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.CreatingState;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfoStub;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.TroopManagerProxy.Proxy;
 
-class bdib
-  extends bdji<CreatingState>
+public final class bdib
+  implements RecentRoute.TroopManagerProxy.Proxy
 {
-  bdib(bdhz parambdhz, CreatingState paramCreatingState, List paramList)
+  public TroopInfoStub getTroopInfo(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString)
   {
-    super(paramCreatingState, paramList);
-  }
-  
-  public void a(CreatingState paramCreatingState)
-  {
-    super.a(paramCreatingState);
-    if (bdhz.a(this.a).b() == CreatingState.TEMPLATE_SHOW_LAYER)
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface))
     {
-      bdhz.a(this.a).c(true);
-      return;
+      paramIMCoreAppRuntime = (TroopManager)paramIMCoreAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER);
+      if (paramIMCoreAppRuntime != null) {
+        return paramIMCoreAppRuntime.a(paramString, true);
+      }
     }
-    bdhz.a(this.a).c(false);
+    return null;
   }
 }
 

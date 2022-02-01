@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajdm;
+import ajza;
 import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
 
 public class Conversation$UICallBack$1
   implements Runnable
 {
-  public Conversation$UICallBack$1(ajdm paramajdm) {}
+  public Conversation$UICallBack$1(ajza paramajza) {}
   
   public void run() {}
 }

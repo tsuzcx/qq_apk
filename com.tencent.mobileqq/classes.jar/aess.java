@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 
 public class aess
-  implements aeta
+  extends ansi
 {
-  public aess(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public aess(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  protected void onUpgradeConfig(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    this.a.a.setActualViewSize(paramInt1, paramInt2);
-    this.a.a.invalidate();
+    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
+    QQSettingSettingActivity.c(this.a);
   }
 }
 

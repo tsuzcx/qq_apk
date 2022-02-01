@@ -1,156 +1,131 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.ViewGroup;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogTopGestureLayout;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import com.tencent.widget.XEditTextEx;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
-import javax.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class wpl
-  extends ReportDialog
+  extends wpg
 {
-  private int jdField_a_of_type_Int;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private CommentFloatDialogTopGestureLayout jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout;
-  private StoryPlayerCommentListView jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView;
-  private String jdField_a_of_type_JavaLangString;
-  private wpu jdField_a_of_type_Wpu;
-  private xhh jdField_a_of_type_Xhh;
-  @Nullable
-  private xhw jdField_a_of_type_Xhw;
-  private boolean jdField_a_of_type_Boolean;
-  private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private boolean a;
   
-  public wpl(@NonNull Context paramContext, @NonNull String paramString1, wpu paramwpu, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public wpl(ViewGroup paramViewGroup)
   {
-    super(paramContext, 2131755120);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Wpu = paramwpu;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561756, null);
-    a(paramContext, paramString2);
-    this.jdField_a_of_type_Wpu.a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Wpu.b();
-    super.setContentView(paramContext);
-    paramContext = getWindow();
-    if (paramContext != null)
+    super(paramViewGroup, 2131561731);
+  }
+  
+  private void a(wly paramwly, int paramInt)
+  {
+    switch (paramInt)
     {
-      paramContext.setSoftInputMode(16);
-      paramString1 = paramContext.getAttributes();
-      paramString1.width = -1;
-      paramString1.height = UIUtils.getScreenHeight(getContext());
-      paramString1.flags |= 0x20;
-      paramString1.gravity = 80;
-      paramContext.setAttributes(paramString1);
-      if (ImmersiveUtils.isSupporImmersive() == 1)
+    }
+    for (;;)
+    {
+      c(paramwly);
+      return;
+      super.b(paramwly);
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b();
+      continue;
+      super.b(paramwly);
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a();
+      continue;
+      super.b(paramwly);
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b();
+    }
+  }
+  
+  private void c(wly paramwly)
+  {
+    if ((paramwly.jdField_b_of_type_Boolean) || (paramwly.d > 0))
+    {
+      b(paramwly.h);
+      if ((!paramwly.jdField_b_of_type_Boolean) && (paramwly.d > 0)) {
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setDisplayState(1);
+      }
+      for (;;)
       {
-        getWindow().addFlags(67108864);
-        paramContext = new SystemBarCompact(this, true, getContext().getResources().getColor(17170445));
-        paramContext.setStatusBarDrawable(null);
-        paramContext.init();
+        ykq.b("VASH", "bindCoverImage: %s", paramwly.h);
+        return;
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setDisplayState(0);
       }
     }
+    b(zfe.b(paramwly.g));
+    ykq.b("VASH", "bindCoverImage: %s", paramwly.g);
   }
   
-  private void a(View paramView, String paramString)
+  public void a(wly paramwly)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout = ((CommentFloatDialogTopGestureLayout)paramView.findViewById(2131365073));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365035));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView = ((StoryPlayerCommentListView)paramView.findViewById(2131364869));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView.a(this.jdField_a_of_type_Wpu, new wpt(this, null), this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.a(this, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout);
-    if (QQStoryContext.a())
+    super.a(paramwly);
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject3;
+    Object localObject2;
+    boolean bool;
+    if ((localObject1 instanceof QQAppInterface))
     {
-      ((InputLinearLayout)paramView.findViewById(2131376283)).setBackgroundColor(getContext().getResources().getColor(2131166496));
-      ((LinearLayout)paramView.findViewById(2131363656)).setBackgroundColor(getContext().getResources().getColor(2131166495));
-      ((XEditTextEx)paramView.findViewById(2131366163)).setHintTextColor(getContext().getResources().getColor(2131166497));
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView.setBackgroundColor(getContext().getResources().getColor(2131166495));
-      paramView.findViewById(2131378762).setBackgroundColor(getContext().getResources().getColor(2131166495));
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.setBackgroundColor(getContext().getResources().getColor(2131166495));
-      paramView.findViewById(2131365665).setBackgroundColor(getContext().getResources().getColor(2131166496));
+      localObject3 = (QQAppInterface)localObject1;
+      localObject2 = String.valueOf(paramwly.jdField_b_of_type_Long);
+      localObject1 = localObject2;
+      if ("0".equals(localObject2)) {
+        localObject1 = ((QQAppInterface)localObject3).getCurrentAccountUin();
+      }
+      localObject3 = (wke)wjs.a(2);
+      localObject2 = QQStoryContext.a().b();
+      localObject3 = ((wke)localObject3).b((String)localObject2);
+      if (localObject3 == null)
+      {
+        if (!"0_1000".equals(localObject2)) {
+          break label223;
+        }
+        localObject2 = new wkz(String.valueOf(localObject1), "");
+        new wrb().a(0, (wkz)localObject2, String.valueOf(localObject1));
+      }
+      if ((localObject3 == null) || (!((QQUserUIItem)localObject3).isVip())) {
+        break label252;
+      }
+      bool = true;
+      label141:
+      this.jdField_a_of_type_Boolean = bool;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label257;
+      }
     }
-    paramView.setOnClickListener(new wpm(this));
-    ImageView localImageView = (ImageView)paramView.findViewById(2131364624);
-    localImageView.setOnClickListener(new wpn(this));
-    if (QQStoryContext.a()) {
-      localImageView.setBackgroundResource(2130846365);
-    }
-    ((TextView)paramView.findViewById(2131378707)).setText(paramString);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(400L);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(300L);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(new wpo(this));
-  }
-  
-  public CharSequence a()
-  {
-    if (this.jdField_a_of_type_Xhw != null) {
-      return this.jdField_a_of_type_Xhw.a.getText();
-    }
-    return "";
-  }
-  
-  public void a()
-  {
-    if (!this.c)
+    label257:
+    for (localObject1 = ((QQUserUIItem)localObject3).nickName;; localObject1 = anvx.a(2131713233))
     {
-      this.c = true;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName((String)localObject1, this.jdField_a_of_type_Boolean);
+      c(paramwly);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("SelfNodeViewHolder", 2, new Object[] { "update self view, isUploading:", Boolean.valueOf(paramwly.jdField_b_of_type_Boolean), ", unUploadVideoCount: ", Integer.valueOf(paramwly.d) });
+      }
+      return;
+      label223:
+      localObject1 = new wkz("", (String)localObject2);
+      new wrb().a(1, (wkz)localObject1, (String)localObject2);
+      break;
+      label252:
+      bool = false;
+      break label141;
     }
   }
   
-  public void a(int paramInt)
+  protected void b(wly paramwly)
   {
-    if (!this.c)
+    ykq.b("VASH", "My bindImage of data: %s", String.valueOf(paramwly));
+    if (paramwly.jdField_b_of_type_Boolean) {
+      a(paramwly, 1);
+    }
+    for (;;)
     {
-      this.c = true;
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 0, paramInt, 1, 1.0F);
-      localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new wpp(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.startAnimation(localTranslateAnimation);
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(paramwly);
+      return;
+      if (paramwly.d > 0) {
+        a(paramwly, 2);
+      } else {
+        a(paramwly, 0);
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Xhh != null) && (this.jdField_a_of_type_Xhh.a != null) && (this.jdField_a_of_type_Xhh.a.getOwner().isMe());
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Xhh != null) && (this.jdField_a_of_type_Xhh.a != null) && (this.jdField_a_of_type_Xhh.a.getOwner().isVip());
-  }
-  
-  protected void onStart()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogTopGestureLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-    super.onStart();
   }
 }
 

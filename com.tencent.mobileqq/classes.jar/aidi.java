@@ -1,14 +1,25 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aidi
-  extends aliz
+  implements aajv
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  aidi(aidd paramaidd) {}
+  
+  public void a()
+  {
+    axti localaxti = this.a.a;
+    if (this.a.sessionInfo.curType == 10002) {}
+    for (int i = 8;; i = 6)
+    {
+      localaxti.a(false, true, i);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    this.a.a.a();
+  }
 }
 
 

@@ -1,50 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluspanel.appinfo.PlusPanelAppInfo;
-import java.util.List;
-
-public class aygk
-  implements aygj
+class aygk
+  implements axpj
 {
-  private int a(List<PlusPanelAppInfo> paramList)
-  {
-    if (paramList.size() > 0)
-    {
-      int i = 0;
-      int j = paramList.size();
-      while (i < j)
-      {
-        if (209 == ((PlusPanelAppInfo)paramList.get(i)).getAppID()) {
-          return i;
-        }
-        i += 1;
-      }
-    }
-    return -1;
-  }
+  aygk(ayfx paramayfx) {}
   
-  public void a(aygw paramaygw, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (((paramaygw instanceof ayhc)) && (!((ayhc)paramaygw).a()))
-    {
-      paramaygw.b(1000000006);
-      if (!bbyp.a()) {
-        paramaygw.b(219);
-      }
-      paramQQAppInterface = paramaygw.a();
-      paramInt = a(paramQQAppInterface);
-      if (paramInt >= 0)
-      {
-        paramString = (PlusPanelAppInfo)paramQQAppInterface.get(paramInt);
-        paramaygw.b(209);
-        if (paramQQAppInterface.size() >= 10) {
-          break label91;
-        }
-        paramQQAppInterface.add(paramString);
-      }
-    }
-    return;
-    label91:
-    paramQQAppInterface.add(10, paramString);
+    this.a.c(paramBoolean);
+    this.a.u = paramBoolean;
   }
 }
 

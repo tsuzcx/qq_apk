@@ -1,16 +1,14 @@
 public abstract interface nhb
 {
+  public abstract long a();
+  
   public abstract void a();
   
-  public abstract void a(long paramLong);
+  public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
   
-  public abstract void a(long paramLong, boolean paramBoolean);
+  public abstract boolean a(long paramLong1, long paramLong2);
   
-  public abstract void b(long paramLong);
-  
-  public abstract void b(long paramLong, boolean paramBoolean);
-  
-  public abstract void c(long paramLong, boolean paramBoolean);
+  public abstract boolean a(long paramLong1, long paramLong2, boolean paramBoolean);
 }
 
 

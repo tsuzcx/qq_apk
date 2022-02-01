@@ -1,30 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.GeneralSettingActivity.ThemeCallback.1;
+import mqq.util.WeakReference;
 
 public class aecq
-  extends Handler
+  extends beip
 {
-  public aecq(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  WeakReference<aexr> a;
+  WeakReference<View> b;
   
-  public void handleMessage(Message paramMessage)
+  aecq(aexr paramaexr, View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 101: 
-      this.a.c();
-      String str = paramMessage.obj.toString();
-      paramMessage = str;
-      if (str == null) {
-        paramMessage = this.a.getString(2131719378);
-      }
-      this.a.a(paramMessage, 1);
-      return;
+    this.a = new WeakReference(paramaexr);
+    this.b = new WeakReference(paramView);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    aexr localaexr = (aexr)this.a.get();
+    View localView = (View)this.b.get();
+    if ((localaexr != null) && (localView != null)) {
+      localView.post(new GeneralSettingActivity.ThemeCallback.1(this, localaexr, localView));
     }
-    this.a.c();
-    this.a.finish();
+    return super.a(paramInt);
   }
 }
 

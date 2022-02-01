@@ -1,44 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class pwo
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public static long a;
+  public static List<pwp> a;
+  public static long b;
+  public static long c;
   
-  public JSONObject a()
+  static
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("businessId", this.jdField_a_of_type_Int);
-      localJSONObject.put("businessType", this.jdField_b_of_type_Int);
-      localJSONObject.put("businessName", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("jumpUrl", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("businessIconUrl", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("fansCount", this.jdField_c_of_type_Int);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("SelfInfoModule", 1, "toJson error. " + localJSONException);
-    }
-    return localJSONObject;
+    jdField_a_of_type_Long = -1L;
+    b = -1L;
+    jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(JSONObject paramJSONObject)
+  public static void a()
   {
-    this.jdField_a_of_type_Int = paramJSONObject.getInt("businessId");
-    this.jdField_b_of_type_Int = paramJSONObject.getInt("businessType");
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("businessName");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("jumpUrl");
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("businessIconUrl");
-    this.jdField_c_of_type_Int = paramJSONObject.getInt("fansCount");
+    jdField_a_of_type_JavaUtilList.clear();
+    c = 0L;
+  }
+  
+  public static void a(pwp parampwp)
+  {
+    if (!jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      pwp localpwp = (pwp)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
+      if (parampwp.b - localpwp.b > jdField_a_of_type_Long) {
+        a();
+      }
+    }
+    jdField_a_of_type_JavaUtilList.add(parampwp);
+    c += parampwp.jdField_a_of_type_Long;
+    if (a())
+    {
+      parampwp = new ArrayList();
+      parampwp.addAll(jdField_a_of_type_JavaUtilList);
+      jdField_a_of_type_JavaUtilList.clear();
+      pwb.a(parampwp);
+    }
+  }
+  
+  public static boolean a()
+  {
+    return c > b;
   }
 }
 

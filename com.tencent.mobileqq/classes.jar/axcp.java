@@ -1,12 +1,11 @@
-class axcp
-  implements bjog
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+
+public class axcp
 {
-  axcp(axcb paramaxcb) {}
-  
-  public void onDismiss()
-  {
-    axcb.a(this.a, this.a.b, false);
-  }
+  public static final String a = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "msgbackup/");
+  public static final String b = a + "multimsg/";
+  public static final String c = a + "db/";
 }
 
 

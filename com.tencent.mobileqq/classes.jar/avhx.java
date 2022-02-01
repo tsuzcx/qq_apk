@@ -1,24 +1,39 @@
+import android.text.SpannableStringBuilder;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.data.MessageForGrayTips.HighlightItem;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class avhx
-  implements View.OnClickListener
+  extends View.AccessibilityDelegate
 {
-  avhx(avhu paramavhu, BaseActivity paramBaseActivity, avcq paramavcq) {}
+  avhx(avhu paramavhu, long paramLong1, long paramLong2, ArrayList paramArrayList, SpannableStringBuilder paramSpannableStringBuilder) {}
   
-  public void onClick(View paramView)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-    int i = this.jdField_a_of_type_Avcq.a();
-    Object localObject = this.jdField_a_of_type_Avcq.a();
-    avcw.a(localQQAppInterface).a.a(3, i, (String)localObject);
-    localObject = new avcq(i, (String)localObject);
-    avcw.a(localQQAppInterface).a((avcq)localObject, false);
-    bcef.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatItemBuilder", 2, new Object[] { "revoke msg grayTipItemBuilder sendAccessibilityEvent click msg uinseq=", Long.valueOf(this.jdField_a_of_type_Long), ",holder.mPosition=", Long.valueOf(this.b) });
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (MessageForGrayTips.HighlightItem)localIterator.next();
+        if (localObject != null)
+        {
+          localObject = (ClickableSpan[])this.jdField_a_of_type_AndroidTextSpannableStringBuilder.getSpans(((MessageForGrayTips.HighlightItem)localObject).start, ((MessageForGrayTips.HighlightItem)localObject).end, MessageForGrayTips.HightlightClickableSpan.class);
+          if (localObject.length > 0) {
+            localObject[0].onClick(paramView);
+          }
+        }
+      }
+    }
   }
 }
 

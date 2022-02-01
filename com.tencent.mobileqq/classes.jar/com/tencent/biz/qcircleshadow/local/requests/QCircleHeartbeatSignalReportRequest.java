@@ -27,7 +27,7 @@ public class QCircleHeartbeatSignalReportRequest
     this.mReq.interval_time_ms.set(paramLong);
     this.mReq.sig_optype.set(paramInt);
     Object localObject = new QQCircleBase.StAppInfo();
-    ((QQCircleBase.StAppInfo)localObject).app_version.set("8.4.8.4810");
+    ((QQCircleBase.StAppInfo)localObject).app_version.set("8.4.10.4875");
     ((QQCircleBase.StAppInfo)localObject).qua.set(QUA.getQUA3());
     ((QQCircleBase.StAppInfo)localObject).platform.set("android");
     this.mReq.app_info.set((MessageMicro)localObject);
@@ -60,7 +60,7 @@ public class QCircleHeartbeatSignalReportRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.requests.QCircleHeartbeatSignalReportRequest
  * JD-Core Version:    0.7.0.1
  */

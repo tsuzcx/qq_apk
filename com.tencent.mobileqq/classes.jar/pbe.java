@@ -1,11 +1,18 @@
-final class pbe
-  implements pkr
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+
+public class pbe
+  implements pfw
 {
-  pbe(String paramString) {}
+  public pbe(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, pfw parampfw) {}
   
-  public void a(pkt parampkt)
+  public void a(int paramInt)
   {
-    parampkt.c(this.a);
+    if (ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment) != null) {
+      ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).c();
+    }
+    if (this.jdField_a_of_type_Pfw != null) {
+      this.jdField_a_of_type_Pfw.a(paramInt);
+    }
   }
 }
 

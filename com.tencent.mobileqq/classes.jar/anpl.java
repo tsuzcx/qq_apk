@@ -1,18 +1,23 @@
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanelListAdapter.1;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanelListAdapter.1.1.1;
 
 public class anpl
-  extends anpd
+  implements Animation.AnimationListener
 {
-  protected anpl(QQAppInterface paramQQAppInterface, anpt paramanpt)
+  public anpl(ApolloPanelListAdapter.1 param1) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramQQAppInterface, paramanpt);
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new ApolloPanelListAdapter.1.1.1(this), 300L);
   }
   
-  public int a(QQMessageFacade.Message paramMessage)
-  {
-    return 266;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

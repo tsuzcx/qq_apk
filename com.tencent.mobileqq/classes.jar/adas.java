@@ -1,23 +1,22 @@
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tribe.async.async.JobSegment;
 
-public class adas
-  implements View.OnLayoutChangeListener
+class adas
+  extends awxw<JobSegment>
 {
-  private boolean jdField_a_of_type_Boolean;
-  
-  public adas(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  adas(adar paramadar, JobSegment paramJobSegment)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    super(paramJobSegment);
+  }
+  
+  public void a(JobSegment paramJobSegment, boolean paramBoolean, awxt paramawxt)
+  {
+    if (paramBoolean)
     {
-      Looper.myQueue().addIdleHandler(new adat(this));
-      this.jdField_a_of_type_Boolean = true;
+      adar.a(this.a, paramawxt);
+      return;
     }
+    adar.a(this.a, new AppInfoError(5, "appInfo error"));
   }
 }
 

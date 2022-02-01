@@ -1,8 +1,9 @@
 package cooperation.qqcircle.redpoint;
 
 import android.text.TextUtils;
-import azvi;
+import bbbq;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -23,12 +24,12 @@ public class TianShuRedPointManagerDelegate
   private static final String TAG = "TianShuRedPointManagerDelegate";
   private static final String TIANSHU_QCIRCLE_RED_POINT_PATH = String.valueOf(140000);
   private QQAppInterface mApp;
-  azvi mDelegateRedTouchManager;
+  bbbq mDelegateRedTouchManager;
   
   public TianShuRedPointManagerDelegate(QQAppInterface paramQQAppInterface)
   {
     this.mApp = paramQQAppInterface;
-    this.mDelegateRedTouchManager = ((azvi)this.mApp.getManager(36));
+    this.mDelegateRedTouchManager = ((bbbq)this.mApp.getManager(QQManagerFactory.MGR_RED_TOUCH));
   }
   
   private String getPathByAppid(String paramString)

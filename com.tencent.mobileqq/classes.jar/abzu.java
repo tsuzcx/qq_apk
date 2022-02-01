@@ -1,24 +1,28 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.ad.tangram.dialog.AdProgressDialogAdapter;
 
 public class abzu
-  implements abzb
+  implements AdProgressDialogAdapter
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  private bisl a;
+  
+  public void dismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x11f");
+    if ((this.a != null) && (this.a.isShowing()))
+    {
+      this.a.dismiss();
+      this.a = null;
     }
-    auzl.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo.shMsgSeq, paramMsgInfo.uRealMsgTime, false);
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void show(Context paramContext, int paramInt)
   {
-    a(paramabxc.a(), paramMsgInfo, paramMsgType0x210);
-    return null;
+    if ((this.a == null) && (paramContext != null) && (paramContext.getResources() != null)) {
+      this.a = new bisl(paramContext, paramInt);
+    }
+    if (this.a != null) {
+      this.a.show();
+    }
   }
 }
 

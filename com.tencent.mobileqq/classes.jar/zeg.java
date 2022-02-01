@@ -1,21 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import java.lang.reflect.Field;
 
-class zeg
-  extends RecyclerView.ViewHolder
+public final class zeg
 {
-  public zeg(zee paramzee, View paramView)
-  {
-    super(paramView);
-  }
+  public final int a;
+  public final String a;
+  public final Field a;
   
-  public void a(SubscribeDraftBean paramSubscribeDraftBean)
+  public zeg(String paramString, int paramInt, Field paramField)
   {
-    if ((this.itemView instanceof SubScribeDraftItemView)) {
-      ((SubScribeDraftItemView)this.itemView).setData(paramSubscribeDraftBean);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangReflectField = paramField;
+    paramField.setAccessible(true);
   }
 }
 

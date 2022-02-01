@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import akxm;
-import akxn;
+import alvi;
+import alvj;
 
 public class LbsFilterStatusManager$3$1
   implements Runnable
 {
-  public LbsFilterStatusManager$3$1(akxn paramakxn) {}
+  public LbsFilterStatusManager$3$1(alvj paramalvj) {}
   
   public void run()
   {
-    akxm.a(this.a.a);
+    alvi.a(this.a.a);
   }
 }
 

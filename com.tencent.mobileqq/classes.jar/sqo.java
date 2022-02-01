@@ -1,36 +1,19 @@
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
-import java.util.List;
+import com.tencent.mobileqq.data.MessageRecord;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class sqo
-  extends RecyclerView.RecycledViewPool
+class sqo
+  implements azla
 {
-  public sqo(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix) {}
+  sqo(sqm paramsqm) {}
   
-  public RecyclerView.ViewHolder getRecycledView(int paramInt)
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    Object localObject = this.a.getAdapter();
-    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
-    if ((localViewHolder != null) && ((localObject instanceof bjxq)))
-    {
-      localObject = (bjxq)localObject;
-      if (((bjxq)localObject).d(paramInt))
-      {
-        if (!RecyclerViewWithHeaderFooterFix.a(this.a).contains(localViewHolder.itemView))
-        {
-          putRecycledView(localViewHolder);
-          return null;
-        }
-      }
-      else if ((((bjxq)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooterFix.b(this.a).contains(localViewHolder.itemView)))
-      {
-        putRecycledView(localViewHolder);
-        return null;
-      }
-    }
-    return localViewHolder;
+    return null;
   }
+  
+  public void onSend(azlb paramazlb) {}
+  
+  public void updateMsg(azlb paramazlb) {}
 }
 
 

@@ -1,21 +1,10 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
-
-public class msp
+public abstract interface msp
 {
-  public static PopupDialog a;
-  public int a;
-  public DialogInterface.OnClickListener a;
-  public String a;
-  public boolean a = false;
-  public int b;
-  public DialogInterface.OnClickListener b;
-  public String b;
-  public int c;
+  public abstract void a(int paramInt1, msr parammsr, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     msp
  * JD-Core Version:    0.7.0.1
  */

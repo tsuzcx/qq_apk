@@ -1,17 +1,15 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
-import java.util.List;
+import android.support.annotation.Nullable;
 
-class xcn
-  implements xch<Bitmap>
+public class xcn
+  extends xcy
 {
-  xcn(xck paramxck, List paramList, String paramString) {}
+  @Nullable
+  public ycc a;
   
-  @NonNull
-  public Stream<Bitmap> a(xcd paramxcd)
+  public xcn(String paramString, @Nullable ycc paramycc)
   {
-    return xck.a(this.jdField_a_of_type_Xck, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+    super(paramString);
+    this.a = paramycc;
   }
 }
 

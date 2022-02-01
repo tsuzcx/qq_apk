@@ -1,16 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akui
   implements View.OnClickListener
 {
-  public akui(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  public akui(KuaKuaHbFragment paramKuaKuaHbFragment) {}
   
   public void onClick(View paramView)
   {
-    QzoneSlideShowPreparingFragment.a(this.a);
+    if (KuaKuaHbFragment.a(this.a) != null) {
+      KuaKuaHbFragment.a(this.a).a(KuaKuaHbFragment.a(this.a).getText().toString());
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

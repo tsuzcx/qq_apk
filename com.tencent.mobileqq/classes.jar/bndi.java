@@ -1,38 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
 class bndi
-  implements bmvo
+  implements Observer<Boolean>
 {
-  private int jdField_a_of_type_Int = -1;
-  private bnee jdField_a_of_type_Bnee;
-  private String jdField_a_of_type_JavaLangString = "";
+  bndi(bnda parambnda) {}
   
-  public bndi(bnee parambnee)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bnee = parambnee;
-  }
-  
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditVideoAblumList", 2, "download Res Finished , type id, " + this.jdField_a_of_type_Int + " isSuccess : " + paramBoolean + " url : " + paramString + " StickerStr : " + this.jdField_a_of_type_JavaLangString + " mParent : " + this.jdField_a_of_type_Bnee);
-    }
-    if ((this.jdField_a_of_type_Int != -1) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Bnee != null)) {
-      this.jdField_a_of_type_Bnee.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    }
+    if (paramBoolean == null) {}
+    do
+    {
+      return;
+      if (bnda.a(this.a).a())
+      {
+        this.a.a.setVisibility(8);
+        return;
+      }
+      if (bnda.a(this.a).b())
+      {
+        if (!bnda.a(this.a))
+        {
+          AEBottomListScrollView localAEBottomListScrollView = this.a.a;
+          if (paramBoolean.booleanValue()) {}
+          for (int i = 0;; i = 4)
+          {
+            localAEBottomListScrollView.setVisibility(i);
+            return;
+          }
+        }
+        this.a.a.setVisibility(8);
+        return;
+      }
+    } while (!bnda.a(this.a).c());
+    this.a.a.setVisibility(8);
   }
 }
 

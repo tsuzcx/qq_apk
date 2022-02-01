@@ -1,125 +1,153 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.animation.AnimatorSet.Builder;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.ViewStub;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderFriendRecommend;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import com.tencent.widget.FixSizeImageView;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout.StressState;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class soh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowHelper;", "", "stressLayout", "Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowLayout;", "originAvatarLayout", "Landroid/view/View;", "(Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowLayout;Landroid/view/View;)V", "hasJudgeShowStressLayout", "", "isAnimating", "getOriginAvatarLayout", "()Landroid/view/View;", "originFollowBtn", "getStressLayout", "()Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowLayout;", "canDoStressAnim", "percent", "", "setStressState", "", "state", "Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowLayout$StressState;", "startShrinkAnim", "startStretchAnim", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "updateVideoPlayPercent", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class soh
 {
-  public View a;
-  public TextView a;
-  public ComponentHeaderFriendRecommend a;
-  public KandianUrlImageView a;
-  public View[] a;
-  public TextView[] a;
-  public FixSizeImageView[] a;
-  public View b;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public View e;
-  public TextView e;
-  public View f;
-  public TextView f;
-  public View g;
-  public View h;
-  public View i;
-  public View j;
-  public View k;
-  public View l;
-  public View m;
-  private View n;
+  private static float jdField_a_of_type_Float;
+  private static int jdField_a_of_type_Int;
+  public static final soj a;
+  private static int jdField_b_of_type_Int;
+  private static boolean c;
+  private final View jdField_a_of_type_AndroidViewView;
+  @NotNull
+  private final VideoFeedsStressFollowLayout jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout;
+  private boolean jdField_a_of_type_Boolean;
+  @NotNull
+  private final View jdField_b_of_type_AndroidViewView;
+  private boolean jdField_b_of_type_Boolean;
   
-  public soh(View paramView)
+  static
   {
-    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView = new FixSizeImageView[4];
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[4];
-    this.jdField_a_of_type_ArrayOfAndroidViewView = new View[2];
-    this.n = paramView;
-    e();
+    boolean bool = true;
+    jdField_a_of_type_Soj = new soj(null);
+    if (Aladdin.getConfig(359).getIntegerFromString("rij_is_strengthen_follow", 0) == 1) {}
+    for (;;)
+    {
+      c = bool;
+      jdField_a_of_type_Float = Aladdin.getConfig(359).getFloatFromString("rij_show_strengthen_follow_timeinterval", 0.8F);
+      jdField_b_of_type_Int = Aladdin.getConfig(359).getIntegerFromString("rij_show_strengthen_follow_frequency", 5);
+      soj.c(jdField_a_of_type_Soj);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsStressFollowHelper", 2, "dump config: stressEnable:" + c + " showStrengthenInterval:" + jdField_a_of_type_Float + " stressCountLimit:" + jdField_b_of_type_Int);
+      }
+      return;
+      bool = false;
+    }
   }
   
-  private void e()
+  public soh(@NotNull VideoFeedsStressFollowLayout paramVideoFeedsStressFollowLayout, @NotNull View paramView)
   {
-    this.jdField_e_of_type_AndroidViewView = this.n.findViewById(2131380137);
-    this.jdField_f_of_type_AndroidViewView = this.n.findViewById(2131378000);
-    this.g = this.n.findViewById(2131371615);
-    this.l = this.n.findViewById(2131375880);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout = paramVideoFeedsStressFollowLayout;
+    this.jdField_b_of_type_AndroidViewView = paramView;
+    paramVideoFeedsStressFollowLayout = this.jdField_b_of_type_AndroidViewView.findViewById(2131368118);
+    Intrinsics.checkExpressionValueIsNotNull(paramVideoFeedsStressFollowLayout, "originAvatarLayout.findV…er_account_follow_button)");
+    this.jdField_a_of_type_AndroidViewView = paramVideoFeedsStressFollowLayout;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout.a((sor)new soi(this));
   }
   
-  public View a()
+  private final void a()
   {
-    return this.n;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
+    if ((!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout.a()) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout.a() == VideoFeedsStressFollowLayout.StressState.Shrink) || (this.jdField_a_of_type_Boolean)) {
       return;
     }
-    this.jdField_b_of_type_AndroidViewView = ((ViewStub)this.n.findViewById(2131375885)).inflate();
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131363000);
-    this.jdField_c_of_type_AndroidViewView = this.n.findViewById(2131375892);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)this.n.findViewById(2131375906));
-    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[0] = ((FixSizeImageView)this.n.findViewById(2131375881));
-    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[1] = ((FixSizeImageView)this.n.findViewById(2131375882));
-    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[2] = ((FixSizeImageView)this.n.findViewById(2131375883));
-    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[3] = ((FixSizeImageView)this.n.findViewById(2131375884));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131375897));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131375888));
-    this.jdField_d_of_type_AndroidViewView = this.n.findViewById(2131380157);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend = ((ComponentHeaderFriendRecommend)this.n.findViewById(2131368004));
+    this.jdField_a_of_type_Boolean = true;
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+    Intrinsics.checkExpressionValueIsNotNull(localValueAnimator, "translationAnimator");
+    localValueAnimator.setDuration(400L);
+    localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new sok(this));
+    localValueAnimator.addListener((Animator.AnimatorListener)new sol(this));
+    localValueAnimator.start();
   }
   
-  public boolean a()
+  private final void a(Animator.AnimatorListener paramAnimatorListener)
   {
-    if (this.m != null) {
-      return true;
-    }
-    ViewStub localViewStub = (ViewStub)this.n.findViewById(2131375903);
-    if (localViewStub == null) {
-      return false;
-    }
-    this.m = localViewStub.inflate();
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131375902));
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.h != null) {
+    if ((!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout.a()) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout.a() == VideoFeedsStressFollowLayout.StressState.Stretched) || (this.jdField_a_of_type_Boolean)) {
       return;
     }
-    this.h = ((ViewStub)this.n.findViewById(2131369466)).inflate();
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)this.n.findViewById(2131369467));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)this.n.findViewById(2131369469));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)this.n.findViewById(2131369471));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)this.n.findViewById(2131369472));
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.n.findViewById(2131369468);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.n.findViewById(2131369470);
+    this.jdField_a_of_type_Boolean = true;
+    soj.b(jdField_a_of_type_Soj);
+    AnimatorSet localAnimatorSet1 = new AnimatorSet();
+    localAnimatorSet1.setDuration(160L);
+    localAnimatorSet1.play((Animator)ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 1.0F, 1.06F })).with((Animator)ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 1.0F, 1.06F }));
+    AnimatorSet localAnimatorSet2 = new AnimatorSet();
+    localAnimatorSet2.setDuration(200L);
+    localAnimatorSet2.play((Animator)ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 1.06F, 0.0F })).with((Animator)ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 1.06F, 0.0F }));
+    localAnimatorSet2.addListener((Animator.AnimatorListener)new som(this));
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    Intrinsics.checkExpressionValueIsNotNull(localValueAnimator, "translationAnimator");
+    localValueAnimator.setDuration(400L);
+    localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new son(this));
+    AnimatorSet localAnimatorSet3 = new AnimatorSet();
+    localAnimatorSet3.addListener((Animator.AnimatorListener)new soo(this, paramAnimatorListener));
+    localAnimatorSet3.playSequentially(new Animator[] { (Animator)localAnimatorSet1, (Animator)localAnimatorSet2 });
+    localAnimatorSet3.play((Animator)localValueAnimator).after(280L);
+    localAnimatorSet3.start();
   }
   
-  public void c()
+  private final boolean a(float paramFloat)
   {
-    if (this.i != null) {
-      return;
-    }
-    this.i = ((ViewStub)this.n.findViewById(2131367263)).inflate();
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131367264));
+    return (c) && (paramFloat >= jdField_a_of_type_Float) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout.b());
   }
   
-  public void d()
+  @NotNull
+  public final VideoFeedsStressFollowLayout a()
   {
-    if (this.j != null) {
-      return;
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout;
+  }
+  
+  public final void a(float paramFloat, @Nullable Animator.AnimatorListener paramAnimatorListener)
+  {
+    if ((a(paramFloat)) && (!this.jdField_b_of_type_Boolean))
+    {
+      soj.a(jdField_a_of_type_Soj);
+      if (jdField_a_of_type_Int >= jdField_b_of_type_Int) {
+        break label41;
+      }
+      a(paramAnimatorListener);
     }
-    this.j = ((ViewStub)this.n.findViewById(2131364886)).inflate();
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131364884));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131364882));
-    this.k = this.n.findViewById(2131364844);
+    for (;;)
+    {
+      this.jdField_b_of_type_Boolean = true;
+      return;
+      label41:
+      if ((!this.jdField_b_of_type_Boolean) && (QLog.isColorLevel())) {
+        QLog.w("VideoFeedsStressFollowHelper", 2, "startStretchAnim ignore for nowStressCount:" + jdField_a_of_type_Int + " is lager than stressCountLimit:" + jdField_b_of_type_Int + '.');
+      }
+    }
+  }
+  
+  public final void a(@NotNull VideoFeedsStressFollowLayout.StressState paramStressState)
+  {
+    Intrinsics.checkParameterIsNotNull(paramStressState, "state");
+    if (paramStressState == VideoFeedsStressFollowLayout.StressState.Stretched)
+    {
+      this.jdField_a_of_type_AndroidViewView.setScaleX(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setScaleY(0.0F);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout.setStressState(paramStressState);
+      this.jdField_b_of_type_Boolean = false;
+      return;
+      this.jdField_a_of_type_AndroidViewView.setScaleX(1.0F);
+      this.jdField_a_of_type_AndroidViewView.setScaleY(1.0F);
+    }
   }
 }
 

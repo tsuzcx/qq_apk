@@ -1,55 +1,17 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.PAAudioPttDownloadProcessor;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
-class bcll
-  implements View.OnClickListener
+public class bcll
+  extends bclv
 {
-  bcll(bclk parambclk) {}
-  
-  public void onClick(View paramView)
+  public bcll(GroupSearchEngine paramGroupSearchEngine, bclw parambclw, String paramString, int paramInt1, int paramInt2)
   {
-    if (TextUtils.isEmpty(this.a.ag))
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        String str = PAAudioPttDownloadProcessor.getPttPath(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.af);
-        if (!TextUtils.isEmpty(str)) {
-          break label133;
-        }
-        this.a.a();
-        this.a.a(this.a.ag, paramView);
-        bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.ag, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.ae, this.a.af);
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      break;
-      label133:
-      if (new File(localException).exists())
-      {
-        if (this.a.jdField_a_of_type_Boolean) {
-          this.a.d();
-        } else {
-          this.a.c();
-        }
-      }
-      else
-      {
-        this.a.a();
-        this.a.a(this.a.ag, paramView);
-      }
-    }
+    super(paramGroupSearchEngine, parambclw, paramString, paramInt1);
+  }
+  
+  public bcfi a(List<bcfj> paramList, String paramString)
+  {
+    return new atqq(paramList, paramString, this.jdField_a_of_type_Int);
   }
 }
 

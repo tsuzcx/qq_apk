@@ -1,138 +1,92 @@
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.List;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.jvm.internal.StringCompanionObject;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.util.ArrayList;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog;", "Lcom/tencent/mobileqq/mini/ui/dialog/DialogFromBottom;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "subTitleView", "Landroid/widget/TextView;", "getSubTitleView", "()Landroid/widget/TextView;", "setSubTitleView", "(Landroid/widget/TextView;)V", "taskAdapter", "Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$TaskAdapter;", "init", "", "refresh", "maxMatchCount", "", "leftMatchCount", "tasks", "", "Lcom/tencent/mobileqq/extendfriend/limitchat/CompletePesonalDataTask;", "showDialog", "updateTasks", "Companion", "SpacesItemDecoration", "TaskAdapter", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class arpo
-  extends DialogFromBottom
+public abstract class arpo
 {
-  public static final arpp a;
-  @Nullable
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  @Nullable
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private arpr jdField_a_of_type_Arpr;
+  public byte a;
+  private final int jdField_a_of_type_Int = aqwm.a();
+  public long a;
+  protected ArrayList a;
+  public short a;
+  private boolean jdField_a_of_type_Boolean;
+  public long b = -1L;
+  public long c = -1L;
   
-  static
+  public arpo(short paramShort, byte paramByte)
   {
-    jdField_a_of_type_Arpp = new arpp(null);
+    this.jdField_a_of_type_Byte = -1;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Short = paramShort;
+    this.jdField_a_of_type_Byte = paramByte;
   }
   
-  public arpo(@NotNull Context paramContext)
+  public final int a()
   {
-    super(paramContext);
-    a(paramContext);
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  private final void a(Context paramContext)
+  public abstract void a();
+  
+  public abstract void a(DataInputStream paramDataInputStream);
+  
+  public abstract void a(DataOutputStream paramDataOutputStream);
+  
+  public void a(Object paramObject)
   {
-    Object localObject1 = LayoutInflater.from(paramContext).inflate(2131561055, null);
-    if (localObject1 == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout");
-    }
-    localObject1 = (LinearLayout)localObject1;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)((LinearLayout)localObject1).findViewById(2131376176));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((LinearLayout)localObject1).findViewById(2131378795));
-    Object localObject2 = new LinearLayoutManager(paramContext);
-    ((LinearLayoutManager)localObject2).setOrientation(1);
-    RecyclerView localRecyclerView = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-    if (localRecyclerView != null) {
-      localRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject2);
-    }
-    int i = ViewUtils.dpToPx(8.0F);
-    int j = ViewUtils.dpToPx(0.0F);
-    localObject2 = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-    if (localObject2 != null) {
-      ((RecyclerView)localObject2).addItemDecoration((RecyclerView.ItemDecoration)new arpq(i, j));
-    }
-    this.jdField_a_of_type_Arpr = new arpr(paramContext);
-    paramContext = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-    if (paramContext != null) {
-      paramContext.setAdapter((RecyclerView.Adapter)this.jdField_a_of_type_Arpr);
-    }
-    ((ImageView)((LinearLayout)localObject1).findViewById(2131362968)).setOnClickListener((View.OnClickListener)new arpu(this));
-    setOnCancelListener((DialogInterface.OnCancelListener)arpv.a);
-    ((LinearLayout)localObject1).getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new arpw((LinearLayout)localObject1));
-    setContentView((View)localObject1);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
   }
   
-  private final void a(List<? extends armm> paramList)
+  public void a(String paramString)
   {
-    arpr localarpr = this.jdField_a_of_type_Arpr;
-    if (localarpr == null) {
-      Intrinsics.throwNpe();
-    }
-    localarpr.a(paramList);
-    paramList = this.jdField_a_of_type_Arpr;
-    if (paramList == null) {
-      Intrinsics.throwNpe();
-    }
-    paramList.notifyDataSetChanged();
-  }
-  
-  public final void a(int paramInt1, int paramInt2, @Nullable List<? extends armm> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CompletePersonalDataDialog", 2, "showDialog maxMatchCount = " + paramInt1 + ",leftMatchCount = " + paramInt2);
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
+    if ((paramString == null) || (paramString.trim().equals(""))) {}
+    label85:
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CompletePersonalDataDialog", 2, "showDialog return for empty tasks");
-      }
       return;
+      int i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        arpu localarpu = (arpu)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if ((localarpu.d == null) || (!localarpu.d.contains(paramString))) {}
+      }
+      for (;;)
+      {
+        if (i == -1) {
+          break label85;
+        }
+        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        return;
+        i += 1;
+        break;
+        i = -1;
+      }
     }
-    b(paramInt1, paramInt2, paramList);
-    show();
   }
   
-  public final void b(int paramInt1, int paramInt2, @Nullable List<? extends armm> paramList)
+  public final void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CompletePersonalDataDialog", 2, "refresh maxMatchCount = " + paramInt1 + ",leftMatchCount = " + paramInt2);
-    }
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localTextView != null)
-    {
-      Object localObject = StringCompanionObject.INSTANCE;
-      localObject = getContext().getString(2131698162);
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "context.getString(R.stri…_personal_data_sub_title)");
-      Object[] arrayOfObject = new Object[2];
-      arrayOfObject[0] = Integer.valueOf(paramInt1);
-      arrayOfObject[1] = Integer.valueOf(paramInt2);
-      localObject = String.format((String)localObject, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.String.format(format, *args)");
-      localTextView.setText((CharSequence)localObject);
-    }
-    a(paramList);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public final boolean a()
+  {
+    return (this.c > 0L) && (this.c <= System.currentTimeMillis());
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public final boolean b()
+  {
+    return this.b > System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpo
  * JD-Core Version:    0.7.0.1
  */

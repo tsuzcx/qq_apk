@@ -6,11 +6,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 import android.util.Base64;
-import axsb;
-import azzx;
-import bbxl;
-import bfra;
-import bjkf;
+import ayym;
+import bbgg;
+import bdeg;
+import bgzr;
+import bkvq;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
@@ -76,7 +76,7 @@ public class RecentDanceConfigMgr
         if (paramQQAppInterface != null) {
           if (paramQQAppInterface.compress.get() == 1)
           {
-            paramQQAppInterface = axsb.a(paramQQAppInterface.content.get().toByteArray());
+            paramQQAppInterface = ayym.a(paramQQAppInterface.content.get().toByteArray());
             if (paramQQAppInterface == null) {}
           }
         }
@@ -222,7 +222,7 @@ public class RecentDanceConfigMgr
           i = 0;
           if (i < paramString.length())
           {
-            localDItemInfo = (RecentDanceConfigMgr.DItemInfo)bfra.a(paramString.getJSONObject(i), RecentDanceConfigMgr.DItemInfo.class);
+            localDItemInfo = (RecentDanceConfigMgr.DItemInfo)bgzr.a(paramString.getJSONObject(i), RecentDanceConfigMgr.DItemInfo.class);
             if (localDItemInfo == null) {
               break label492;
             }
@@ -330,7 +330,7 @@ public class RecentDanceConfigMgr
     {
       try
       {
-        paramString = bjkf.a(new File(paramString));
+        paramString = bkvq.a(new File(paramString));
         return paramString;
       }
       catch (Exception paramString) {}
@@ -365,7 +365,7 @@ public class RecentDanceConfigMgr
   
   private static boolean b()
   {
-    return new File(azzx.a, "ptv_template_new.cfg").exists();
+    return new File(bbgg.a, "ptv_template_new.cfg").exists();
   }
   
   private static void c(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
@@ -391,7 +391,7 @@ public class RecentDanceConfigMgr
   private static void d(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
   {
     HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mCallback = new bbxl(paramDItemInfo, paramString);
+    localHttpNetReq.mCallback = new bdeg(paramDItemInfo, paramString);
     localHttpNetReq.mReqUrl = paramDItemInfo.icon_url;
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mOutPath = (paramString + "_temp");
@@ -417,7 +417,7 @@ public class RecentDanceConfigMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr
  * JD-Core Version:    0.7.0.1
  */

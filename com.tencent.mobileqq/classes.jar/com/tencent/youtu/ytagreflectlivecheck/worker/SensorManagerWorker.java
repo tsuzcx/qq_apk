@@ -3,7 +3,7 @@ package com.tencent.youtu.ytagreflectlivecheck.worker;
 import android.content.Context;
 import android.hardware.SensorManager;
 import android.util.Log;
-import com.tencent.youtu.ytcommon.tools.YTLogger;
+import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
 
 public class SensorManagerWorker
 {
@@ -32,7 +32,7 @@ public class SensorManagerWorker
   {
     if (this.mHasStarted)
     {
-      YTLogger.i("MicroMsg.LightSensor", "[SensorManagerWorker.start] light sensor has started");
+      YTAGReflectLiveCheckJNIInterface.nativeLog("MicroMsg.LightSensor", "[SensorManagerWorker.start] light sensor has started");
       return 2;
     }
     this.mHasStarted = true;
@@ -45,7 +45,7 @@ public class SensorManagerWorker
       this.mOnGetValue = paramOnGetValue;
       return 0;
     }
-    YTLogger.i("MicroMsg.LightSensor", "[SensorManagerWorker.start] System do not have lightSensor");
+    YTAGReflectLiveCheckJNIInterface.nativeLog("MicroMsg.LightSensor", "[SensorManagerWorker.start] System do not have lightSensor");
     return 1;
   }
   

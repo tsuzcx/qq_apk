@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.aioapp.data;
 
-import bdvb;
+import bfce;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
@@ -19,7 +19,7 @@ public class FullListGroupAppEntity
   public void postRead()
   {
     super.postRead();
-    Object localObject = bdvb.a(this.troopAIOAppInfosData);
+    Object localObject = bfce.a(this.troopAIOAppInfosData);
     if (localObject != null) {}
     try
     {
@@ -36,7 +36,7 @@ public class FullListGroupAppEntity
   public void prewrite()
   {
     super.prewrite();
-    this.troopAIOAppInfosData = bdvb.a(this.troopAIOAppInfos);
+    this.troopAIOAppInfosData = bfce.a(this.troopAIOAppInfos);
   }
 }
 

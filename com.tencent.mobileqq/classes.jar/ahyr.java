@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
 
-public class ahyr
-  implements View.OnClickListener
+class ahyr
+  extends anyz
 {
-  public ahyr(SearchBaseActivity paramSearchBaseActivity) {}
+  ahyr(ahyl paramahyl) {}
   
-  public void onClick(View paramView)
+  protected void onGetMsgFin(boolean paramBoolean)
   {
-    this.a.setResult(1);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.onGetMsgFin(paramBoolean);
+    this.a.a.sendEmptyMessage(0);
   }
 }
 

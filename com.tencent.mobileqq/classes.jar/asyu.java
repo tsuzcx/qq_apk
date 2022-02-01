@@ -1,15 +1,55 @@
-import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
+import com.tencent.widget.BubblePopupWindow;
 
-class asyu
-  implements bgoc
+public class asyu
+  implements SlideDetectListView.OnSlideListener
 {
-  asyu(asyq paramasyq, Activity paramActivity, int paramInt) {}
+  public asyu(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void callback(int paramInt)
+  public void onSlideCancelled(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    if ((paramInt == 1) || (paramInt == 2)) {
-      asyq.a(this.jdField_a_of_type_Asyq, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    paramSlideDetectListView = paramView.findViewById(2131377517);
+    this.a.jdField_a_of_type_Atpx.a(null);
+    if (paramSlideDetectListView != null)
+    {
+      ((ShaderAnimLayout)paramSlideDetectListView).hide();
+      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131365464);
+      paramSlideDetectListView.setTag(null);
+      paramSlideDetectListView.setOnClickListener(null);
     }
+    LocalFileBrowserActivity.a(this.a);
+  }
+  
+  public void onSlideStarted(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
+  {
+    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
+      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
+    }
+    if (!this.a.b())
+    {
+      this.a.jdField_a_of_type_Atpx.a(null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.resetSlideStatus();
+      paramView.setPressed(false);
+    }
+    do
+    {
+      return;
+      paramSlideDetectListView = paramView.findViewById(2131377517);
+      paramView = (FileInfo)this.a.jdField_a_of_type_Atpx.getItem(paramInt);
+      this.a.jdField_a_of_type_Atpx.a(paramView);
+    } while (paramSlideDetectListView == null);
+    paramView = (Button)paramSlideDetectListView.findViewById(2131365464);
+    paramView.setTag(Integer.valueOf(paramInt));
+    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    ((ShaderAnimLayout)paramSlideDetectListView).show();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
   }
 }
 

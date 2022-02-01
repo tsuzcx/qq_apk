@@ -1,37 +1,40 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class ajww
-  extends BroadcastReceiver
+class ajww
+  extends aufo
 {
-  public ajww(SendHbActivity paramSendHbActivity) {}
+  ajww(ajwu paramajwu) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(View paramView)
   {
-    if ("com.qwallet.report".equals(paramIntent.getAction()))
+    if ((ajwu.a(this.a)) && (ajwu.a(this.a) != null))
     {
-      int i = paramIntent.getIntExtra("type", 0);
-      QLog.i("SendHbActivity", 2, "onReceive type = " + i);
-      if (999 == i) {
-        break label53;
+      if (paramView.getId() != 2131365953) {
+        break label43;
       }
+      ajwu.a(this.a).a(1);
     }
-    label53:
+    label43:
     do
     {
-      do
+      return;
+      if (paramView.getId() == 2131365958)
       {
+        ajwu.a(this.a).a(3);
         return;
-        paramContext = paramIntent.getBundleExtra("params");
-      } while (paramContext == null);
-      QLog.i("SendHbActivity", 2, "onReceive bundle = " + paramContext.toString());
-      paramContext = paramContext.getString("from");
-    } while ((this.a.isFinishing()) || (!"video".equals(paramContext)));
-    this.a.finish();
+      }
+      if (paramView.getId() == 2131365955)
+      {
+        ajwu.a(this.a).a(2);
+        return;
+      }
+      if (paramView.getId() == 2131365952)
+      {
+        ajwu.a(this.a).a(4);
+        return;
+      }
+    } while (paramView.getId() != 2131365954);
+    ajwu.a(this.a).a(5);
   }
 }
 

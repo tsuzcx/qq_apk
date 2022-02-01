@@ -4,12 +4,14 @@ import android.content.Context;
 import com.tencent.avcore.jni.data.AVCorePbInfo;
 import com.tencent.avcore.jni.data.NetAddr;
 import com.tencent.avcore.jni.data.SDKConfigInfo;
-import mwc;
-import mwj;
-import mwk;
-import mwq;
+import nbp;
+import nbx;
+import nby;
+import nbz;
+import ncg;
 
 public class DavEngineProxy
+  implements nby
 {
   private DavEngineJni mJniImpl;
   
@@ -43,9 +45,16 @@ public class DavEngineProxy
     this.mJniImpl.enableDumpAudioData(paramBoolean);
   }
   
+  public void enableLocalSpeechRecognizeModel(boolean paramBoolean) {}
+  
   public boolean enableLoopback(boolean paramBoolean)
   {
     return this.mJniImpl.enableLoopback(paramBoolean);
+  }
+  
+  public String getAVSDKInfo(long paramLong, String paramString)
+  {
+    return this.mJniImpl.getAVSDKInfo(paramLong, paramString);
   }
   
   public int getBusiTypeFromCmdPkg(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
@@ -78,24 +87,9 @@ public class DavEngineProxy
     return this.mJniImpl.getOnPeerFrameRenderEndFunctionPtr();
   }
   
-  public int getPeerSdkVersion(long paramLong)
-  {
-    return this.mJniImpl.getPeerSdkVersion(paramLong);
-  }
-  
-  public int getPeerTerminalType(long paramLong)
-  {
-    return this.mJniImpl.getPeerTerminalType(paramLong);
-  }
-  
   public int getSdkVersion()
   {
     return this.mJniImpl.getSdkVersion();
-  }
-  
-  public long getTrafficSize(long paramLong)
-  {
-    return this.mJniImpl.getTrafficSize(paramLong);
   }
   
   public int getVolume(boolean paramBoolean)
@@ -123,9 +117,9 @@ public class DavEngineProxy
     this.mJniImpl.initContext();
   }
   
-  public void initEngine(mwc parammwc, mwq parammwq, mwj parammwj, mwk parammwk)
+  public void initEngine(nbp paramnbp, ncg paramncg, nbx paramnbx, nbz paramnbz)
   {
-    this.mJniImpl = new DavEngineJni(parammwc, parammwq, parammwj, parammwk);
+    this.mJniImpl = new DavEngineJni(paramnbp, paramncg, paramnbx, paramnbz);
   }
   
   public boolean isEnableLoopback()
@@ -278,6 +272,11 @@ public class DavEngineProxy
     this.mJniImpl.sendTransferMsg(paramLong, paramInt, paramArrayOfByte);
   }
   
+  public void setAVSDKInfo(long paramLong, String paramString1, String paramString2)
+  {
+    this.mJniImpl.setAVSDKInfo(paramLong, paramString1, paramString2);
+  }
+  
   public int setApType(int paramInt)
   {
     return this.mJniImpl.setApType(paramInt);
@@ -348,11 +347,6 @@ public class DavEngineProxy
     this.mJniImpl.setVideoJitterLength(paramInt);
   }
   
-  public void setVideoReceiver(boolean paramBoolean)
-  {
-    this.mJniImpl.setVideoReceiver(paramBoolean);
-  }
-  
   public int setVoiceType(int paramInt)
   {
     return this.mJniImpl.setVoiceType(paramInt);
@@ -408,9 +402,9 @@ public class DavEngineProxy
     return this.mJniImpl.uninit();
   }
   
-  public int unregisterAudioDataCallback(int paramInt, boolean paramBoolean)
+  public int unregisterAudioDataCallback(int paramInt)
   {
-    return this.mJniImpl.unregisterAudioDataCallback(paramInt, paramBoolean);
+    return this.mJniImpl.unregisterAudioDataCallback(paramInt, false);
   }
   
   public int unregisterAudioDataCallbackAll()

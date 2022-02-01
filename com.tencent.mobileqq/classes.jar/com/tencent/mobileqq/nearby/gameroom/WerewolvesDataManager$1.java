@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import awnd;
+import axtf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -11,7 +11,7 @@ import java.util.Map;
 public class WerewolvesDataManager$1
   implements Runnable
 {
-  public WerewolvesDataManager$1(awnd paramawnd, QQAppInterface paramQQAppInterface) {}
+  public WerewolvesDataManager$1(axtf paramaxtf, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

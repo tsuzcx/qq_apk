@@ -1,22 +1,20 @@
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+
 public class alyx
+  extends amgz
 {
   public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public ImageView b;
+  public TextView b;
+  
+  public alyx(alyu paramalyu) {}
 }
 
 

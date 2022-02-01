@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity.home;
 
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class Conversation$5
@@ -11,7 +12,7 @@ class Conversation$5
   
   public void run()
   {
-    boolean bool = ((PhoneContactManagerImp)this.this$0.a.getManager(11)).a(true);
+    boolean bool = ((PhoneContactManagerImp)this.this$0.a.getManager(QQManagerFactory.CONTACT_MANAGER)).a(true);
     if (QLog.isColorLevel()) {
       QLog.i("BindMsgConstant", 2, "REQ_FOR_SETTING : " + bool);
     }

@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.tribe.TribeVideoPlugin;
 
-public final class aadk
+public class aadk
+  implements View.OnTouchListener
 {
-  public PBStringField a;
-  public PBStringField b;
+  public aadk(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public aadk(PBStringField paramPBStringField1, PBStringField paramPBStringField2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = paramPBStringField1;
-    this.b = paramPBStringField2;
+    return true;
   }
 }
 

@@ -1,15 +1,26 @@
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoPreparedListener;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.open.agent.AuthorityControlFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XListView;
 
-class bjbf
-  implements ISuperPlayer.OnVideoPreparedListener
+public class bjbf
+  implements View.OnClickListener
 {
-  bjbf(bjbd parambjbd, AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener) {}
+  public bjbf(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoPreparedListener.onVideoPrepared(this.jdField_a_of_type_Bjbd);
+    AuthorityControlFragment.a(this.a).c();
+    AuthorityControlFragment.a(this.a, this.a.rightViewText, 2131690240);
+    this.a.rightViewText.setTextColor(AuthorityControlFragment.a(this.a));
+    this.a.rightViewText.setEnabled(true);
+    this.a.setLeftButton("", null);
+    this.a.leftView.setVisibility(0);
+    AuthorityControlFragment.a(this.a).setText(2131690251);
+    AuthorityControlFragment.a(this.a).setOverScrollHeader(AuthorityControlFragment.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

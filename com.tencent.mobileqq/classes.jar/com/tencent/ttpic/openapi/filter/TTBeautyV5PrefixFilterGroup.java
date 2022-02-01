@@ -106,9 +106,9 @@ public class TTBeautyV5PrefixFilterGroup
   
   public void clear()
   {
-    this.mBlurFilter.ClearGLSL();
-    this.mBorderFilter.ClearGLSL();
-    this.mSmoothFilter.ClearGLSL();
+    this.mBlurFilter.clearGLSL();
+    this.mBorderFilter.clearGLSL();
+    this.mSmoothFilter.clearGLSL();
     GLES20.glDeleteTextures(this.mTextures.length, this.mTextures, 0);
     this.lastLutPath = null;
   }
@@ -241,6 +241,11 @@ public class TTBeautyV5PrefixFilterGroup
   public void setSmoothSharpenStrength(float paramFloat)
   {
     this.mSharpenStrength = paramFloat;
+  }
+  
+  public void setWhitenStrength(float paramFloat)
+  {
+    this.mSmoothFilter.setWhitenStrength(paramFloat);
   }
   
   public void updateBlurAndSharpenStrength(boolean paramBoolean)

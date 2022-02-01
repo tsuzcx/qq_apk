@@ -1,10 +1,16 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment;
 
-class bdwr
-  extends bdws
+public class bdwr
+  implements DialogInterface.OnCancelListener
 {
-  public long a;
-  public View a;
+  public bdwr(StudyRoomLoadingFragment paramStudyRoomLoadingFragment) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.a();
+  }
 }
 
 

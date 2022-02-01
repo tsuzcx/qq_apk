@@ -2,7 +2,7 @@ package dov.com.tencent.mobileqq.activity.richmedia;
 
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-import bnuf;
+import bpjx;
 
 public class VideoFilterViewPager$1
   implements Runnable
@@ -15,7 +15,7 @@ public class VideoFilterViewPager$1
     localAlphaAnimation.setDuration(1000L);
     localAlphaAnimation.setFillAfter(true);
     this.a.startAnimation(localAlphaAnimation);
-    localAlphaAnimation.setAnimationListener(new bnuf(this));
+    localAlphaAnimation.setAnimationListener(new bpjx(this));
   }
 }
 

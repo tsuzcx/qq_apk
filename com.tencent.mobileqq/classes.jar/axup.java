@@ -1,54 +1,43 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class axup
+public class axup
+  extends axur
 {
-  public long a;
-  protected axuq a;
-  protected BaseActivity a;
-  protected QQAppInterface a;
-  public String a;
-  public boolean a;
-  public String b;
-  protected boolean b = true;
-  public String c;
-  public String d = "";
+  public axup(ConnectNearbyProcService paramConnectNearbyProcService) {}
   
-  public axup(long paramLong, axuq paramaxuq, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  public Message a(Message paramMessage)
   {
-    this.jdField_a_of_type_Axuq = paramaxuq;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (paramMessage == null) {
+      return null;
+    }
+    return ConnectNearbyProcService.a(this.a, paramMessage);
   }
   
-  protected abstract void a();
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public void a(boolean paramBoolean, long paramLong)
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
   {
-    this.b = paramBoolean;
+    if (paramBasicTypeDataParcel == null) {}
+    Object[] arrayOfObject;
+    do
+    {
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
+      }
+      arrayOfObject = ConnectNearbyProcService.a(this.a, paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
+    } while (arrayOfObject == null);
+    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
   }
   
-  public abstract void a(boolean paramBoolean, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem);
-  
-  public boolean a()
+  public void a(axuy paramaxuy)
   {
-    return true;
+    ConnectNearbyProcService.a(paramaxuy);
+    if (ConnectNearbyProcService.a(this.a) != null) {
+      ConnectNearbyProcService.a(this.a).a();
+    }
   }
-  
-  public abstract void b();
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
 }
 
 

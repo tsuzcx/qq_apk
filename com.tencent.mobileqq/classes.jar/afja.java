@@ -1,26 +1,19 @@
+import android.app.Dialog;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afja
-  implements Animation.AnimationListener
+public class afja
+  implements View.OnClickListener
 {
-  afja(afiz paramafiz) {}
+  public afja(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (this.a.a.a != null)
-    {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.a.mContext, 2130772232);
-      paramAnimation.setAnimationListener(this);
-      this.a.a.a.startAnimation(paramAnimation);
-    }
+    this.a.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

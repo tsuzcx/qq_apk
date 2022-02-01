@@ -1,8 +1,16 @@
-import android.view.View;
+import android.text.TextUtils;
 
-public abstract interface ssp
+public class ssp
 {
-  public abstract void a(int paramInt, View paramView);
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 3) || (paramInt == 7);
+  }
+  
+  public static boolean a(int paramInt, String paramString)
+  {
+    return (paramInt == 2) || ((paramInt == 6) && (!TextUtils.isEmpty(paramString)));
+  }
 }
 
 

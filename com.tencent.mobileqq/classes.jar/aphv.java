@@ -1,28 +1,18 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 
-public class aphv
-  implements View.OnTouchListener
+public final class aphv
+  implements Parcelable.Creator<ARCommonConfigInfo.NativeSoRes>
 {
-  public aphv(ClearEllipsisEditText paramClearEllipsisEditText) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
   {
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {}
-      for (int i = 1; (paramMotionEvent.getAction() == 0) && (i != 0); i = 0)
-      {
-        this.a.setText("");
-        this.a.setClearButtonVisible(false);
-        return true;
-      }
-    }
+    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
+  }
+  
+  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  {
+    return new ARCommonConfigInfo.NativeSoRes[paramInt];
   }
 }
 

@@ -2,16 +2,16 @@ package com.tencent.biz.pubaccount.readinjoy;
 
 import android.view.View;
 import com.tencent.mobileqq.app.BaseActivity;
-import oif;
+import oqb;
 
 public class DailyDynamicHeaderViewController$9
   implements Runnable
 {
-  public DailyDynamicHeaderViewController$9(oif paramoif) {}
+  public DailyDynamicHeaderViewController$9(oqb paramoqb) {}
   
   public void run()
   {
-    oif.a(this.this$0, (BaseActivity)oif.a(this.this$0).getContext(), new DailyDynamicHeaderViewController.9.1(this));
+    oqb.a(this.this$0, (BaseActivity)oqb.a(this.this$0).getContext(), new DailyDynamicHeaderViewController.9.1(this));
   }
 }
 

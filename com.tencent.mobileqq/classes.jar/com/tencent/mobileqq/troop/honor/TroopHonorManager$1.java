@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.honor;
 
-import apub;
-import bepr;
-import beqb;
+import aqxe;
+import bfwu;
+import bfxd;
 
 public class TroopHonorManager$1
   implements Runnable
 {
-  public TroopHonorManager$1(bepr parambepr) {}
+  public TroopHonorManager$1(bfwu parambfwu) {}
   
   public void run()
   {
-    beqb localbeqb = (beqb)apub.a().a(544);
-    this.this$0.a(localbeqb, true);
+    bfxd localbfxd = (bfxd)aqxe.a().a(544);
+    this.this$0.a(localbfxd, true);
   }
 }
 

@@ -1,25 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.reportTaskCompleted.1;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSAppLoader.2;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlClientRedPacketModule$reportTaskCompleted$1$1", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IReportTaskProgressCallback$Stub;", "onReportFailed", "", "errorCode", "", "errorMsg", "", "onReportSucceed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qyz
-  extends qyu
+public class qyz
+  extends qzf
 {
-  public void a()
+  public qyz(PTSAppLoader.2 param2) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    qxx localqxx = this.a.$callback;
-    if (localqxx != null) {
-      localqxx.a();
+    super.loaded(paramString, paramInt);
+    QLog.i("PTSAppLoader", 1, "[updatePTSApp], asyncBack code = " + paramInt + ", param = " + paramString);
+    if ((paramInt == 0) && (paramString == null))
+    {
+      qyy.b(this.a.this$0, this.a.a);
+      QLog.i("PTSAppLoader", 1, "[updatePTSApp], download succeed, bid = " + this.a.a);
     }
   }
   
-  public void a(int paramInt, @Nullable String paramString)
+  public void progress(int paramInt)
   {
-    qxx localqxx = this.a.$callback;
-    if (localqxx != null) {
-      localqxx.a(paramInt, paramString);
-    }
+    super.progress(paramInt);
   }
 }
 

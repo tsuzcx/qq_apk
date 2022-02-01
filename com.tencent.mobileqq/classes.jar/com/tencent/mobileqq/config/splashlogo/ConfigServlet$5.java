@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import aqlw;
+import arph;
 
 public class ConfigServlet$5
   implements Runnable
 {
-  public ConfigServlet$5(aqlw paramaqlw, String paramString1, String paramString2, float paramFloat1, float paramFloat2, float paramFloat3, String paramString3, String paramString4, float paramFloat4, boolean paramBoolean, int paramInt, String paramString5) {}
+  public ConfigServlet$5(arph paramarph, String paramString1, String paramString2, float paramFloat1, float paramFloat2, float paramFloat3, String paramString3, String paramString4, float paramFloat4, boolean paramBoolean, int paramInt, String paramString5) {}
   
   /* Error */
   public void run()
@@ -22,8 +22,8 @@ public class ConfigServlet$5
     //   19: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   22: astore 18
     //   24: aload_0
-    //   25: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Laqlw;
-    //   28: invokevirtual 71	aqlw:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   25: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Larph;
+    //   28: invokevirtual 71	arph:getAppRuntime	()Lmqq/app/AppRuntime;
     //   31: checkcast 73	com/tencent/common/app/AppInterface
     //   34: aload_0
     //   35: getfield 25	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_b_of_type_JavaLangString	Ljava/lang/String;
@@ -40,28 +40,28 @@ public class ConfigServlet$5
     //   62: l2i
     //   63: istore 8
     //   65: aload_0
-    //   66: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Laqlw;
+    //   66: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Larph;
     //   69: aload_0
     //   70: getfield 27	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_Float	F
     //   73: iload 7
     //   75: i2f
-    //   76: invokestatic 96	aqlw:a	(Laqlw;FF)F
+    //   76: invokestatic 96	arph:a	(Larph;FF)F
     //   79: fstore_3
     //   80: aload_0
-    //   81: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Laqlw;
+    //   81: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Larph;
     //   84: aload_0
     //   85: getfield 29	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_b_of_type_Float	F
     //   88: iload 8
     //   90: i2f
     //   91: iload 7
     //   93: i2f
-    //   94: invokestatic 99	aqlw:a	(Laqlw;FFF)F
+    //   94: invokestatic 99	arph:a	(Larph;FFF)F
     //   97: fstore 4
     //   99: aload_0
-    //   100: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Laqlw;
+    //   100: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Larph;
     //   103: aload_0
     //   104: getfield 31	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_c_of_type_Float	F
-    //   107: invokestatic 102	aqlw:a	(Laqlw;F)F
+    //   107: invokestatic 102	arph:a	(Larph;F)F
     //   110: fstore 5
     //   112: aconst_null
     //   113: astore 10
@@ -247,8 +247,8 @@ public class ConfigServlet$5
     //   496: astore 12
     //   498: aload 20
     //   500: aload_0
-    //   501: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Laqlw;
-    //   504: invokevirtual 71	aqlw:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   501: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Larph;
+    //   504: invokevirtual 71	arph:getAppRuntime	()Lmqq/app/AppRuntime;
     //   507: invokevirtual 202	mqq/app/AppRuntime:getApplication	()Lmqq/app/MobileQQ;
     //   510: aload_0
     //   511: getfield 37	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_d_of_type_Float	F
@@ -293,7 +293,7 @@ public class ConfigServlet$5
     //   590: aload 17
     //   592: astore 12
     //   594: aload 20
-    //   596: invokestatic 223	aqlw:a	()Ljava/lang/String;
+    //   596: invokestatic 223	arph:a	()Ljava/lang/String;
     //   599: invokevirtual 227	android/text/TextPaint:measureText	(Ljava/lang/String;)F
     //   602: fload 5
     //   604: fcmpl
@@ -315,9 +315,9 @@ public class ConfigServlet$5
     //   635: new 54	java/lang/StringBuilder
     //   638: dup
     //   639: invokespecial 55	java/lang/StringBuilder:<init>	()V
-    //   642: invokestatic 223	aqlw:a	()Ljava/lang/String;
+    //   642: invokestatic 223	arph:a	()Ljava/lang/String;
     //   645: iconst_0
-    //   646: invokestatic 223	aqlw:a	()Ljava/lang/String;
+    //   646: invokestatic 223	arph:a	()Ljava/lang/String;
     //   649: invokevirtual 232	java/lang/String:length	()I
     //   652: iload 7
     //   654: isub
@@ -473,15 +473,15 @@ public class ConfigServlet$5
     //   966: aload 17
     //   968: astore 12
     //   970: aload_0
-    //   971: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Laqlw;
-    //   974: invokevirtual 71	aqlw:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   971: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Larph;
+    //   974: invokevirtual 71	arph:getAppRuntime	()Lmqq/app/AppRuntime;
     //   977: invokevirtual 202	mqq/app/AppRuntime:getApplication	()Lmqq/app/MobileQQ;
     //   980: aload_0
     //   981: getfield 41	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:jdField_a_of_type_Int	I
     //   984: aload_0
     //   985: getfield 43	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:e	Ljava/lang/String;
-    //   988: getstatic 285	aqlw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   991: invokestatic 290	bfyz:b	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;)V
+    //   988: getstatic 285	arph:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   991: invokestatic 290	bhhr:b	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;)V
     //   994: aload 11
     //   996: astore 15
     //   998: aload 16
@@ -506,7 +506,7 @@ public class ConfigServlet$5
     //   1043: aload 17
     //   1045: astore 12
     //   1047: aload 19
-    //   1049: invokestatic 223	aqlw:a	()Ljava/lang/String;
+    //   1049: invokestatic 223	arph:a	()Ljava/lang/String;
     //   1052: fload_3
     //   1053: fload_1
     //   1054: aload 20
@@ -577,8 +577,8 @@ public class ConfigServlet$5
     //   1205: astore 12
     //   1207: aload 20
     //   1209: aload_0
-    //   1210: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Laqlw;
-    //   1213: invokevirtual 71	aqlw:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   1210: getfield 21	com/tencent/mobileqq/config/splashlogo/ConfigServlet$5:this$0	Larph;
+    //   1213: invokevirtual 71	arph:getAppRuntime	()Lmqq/app/AppRuntime;
     //   1216: invokevirtual 202	mqq/app/AppRuntime:getApplication	()Lmqq/app/MobileQQ;
     //   1219: fload_1
     //   1220: invokestatic 208	com/tencent/mobileqq/util/DisplayUtil:dip2px	(Landroid/content/Context;F)I
@@ -591,7 +591,7 @@ public class ConfigServlet$5
     //   1235: aload 17
     //   1237: astore 12
     //   1239: aload 20
-    //   1241: invokestatic 223	aqlw:a	()Ljava/lang/String;
+    //   1241: invokestatic 223	arph:a	()Ljava/lang/String;
     //   1244: invokevirtual 227	android/text/TextPaint:measureText	(Ljava/lang/String;)F
     //   1247: fstore_2
     //   1248: fload_2
@@ -646,7 +646,7 @@ public class ConfigServlet$5
     //   1343: aload 17
     //   1345: astore 12
     //   1347: aload 19
-    //   1349: invokestatic 223	aqlw:a	()Ljava/lang/String;
+    //   1349: invokestatic 223	arph:a	()Ljava/lang/String;
     //   1352: fload_3
     //   1353: fload_2
     //   1354: fsub
@@ -704,7 +704,7 @@ public class ConfigServlet$5
     //   1467: astore 13
     //   1469: aload 17
     //   1471: astore 12
-    //   1473: invokestatic 223	aqlw:a	()Ljava/lang/String;
+    //   1473: invokestatic 223	arph:a	()Ljava/lang/String;
     //   1476: invokevirtual 232	java/lang/String:length	()I
     //   1479: istore 9
     //   1481: ldc 229
@@ -725,9 +725,9 @@ public class ConfigServlet$5
     //   1509: new 54	java/lang/StringBuilder
     //   1512: dup
     //   1513: invokespecial 55	java/lang/StringBuilder:<init>	()V
-    //   1516: invokestatic 223	aqlw:a	()Ljava/lang/String;
+    //   1516: invokestatic 223	arph:a	()Ljava/lang/String;
     //   1519: iconst_0
-    //   1520: invokestatic 223	aqlw:a	()Ljava/lang/String;
+    //   1520: invokestatic 223	arph:a	()Ljava/lang/String;
     //   1523: invokevirtual 232	java/lang/String:length	()I
     //   1526: iload 8
     //   1528: isub

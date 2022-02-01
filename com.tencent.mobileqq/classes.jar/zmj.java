@@ -1,26 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qrcode.activity.ScannerResult;
 
-class zmj
-  implements View.OnClickListener
+public final class zmj
+  implements Parcelable.Creator<ScannerResult>
 {
-  zmj(zmi paramzmi, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public ScannerResult a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_Int < zmi.a(this.jdField_a_of_type_Zmi).size())
-    {
-      zmi.b(this.jdField_a_of_type_Zmi).remove(this.jdField_a_of_type_Int);
-      ((ArrayList)this.jdField_a_of_type_Zmi.a.a()).remove(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Zmi.notifyDataSetChanged();
-      if (CommodityListView.a(this.jdField_a_of_type_Zmi.a) != null) {
-        CommodityListView.a(this.jdField_a_of_type_Zmi.a).a(zmi.c(this.jdField_a_of_type_Zmi).size());
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new ScannerResult(paramParcel);
+  }
+  
+  public ScannerResult[] a(int paramInt)
+  {
+    return new ScannerResult[paramInt];
   }
 }
 

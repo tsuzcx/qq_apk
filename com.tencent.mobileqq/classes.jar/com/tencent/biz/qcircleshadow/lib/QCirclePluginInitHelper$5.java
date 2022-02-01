@@ -2,7 +2,7 @@ package com.tencent.biz.qcircleshadow.lib;
 
 import android.content.Context;
 import android.content.Intent;
-import blig;
+import bmux;
 import com.tencent.mobileqq.activity.photo.PeakService;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,7 +13,7 @@ final class QCirclePluginInitHelper$5
   
   public void run()
   {
-    if (blig.a(this.val$context)) {}
+    if (bmux.a(this.val$context)) {}
     do
     {
       return;
@@ -32,7 +32,7 @@ final class QCirclePluginInitHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCirclePluginInitHelper.5
  * JD-Core Version:    0.7.0.1
  */

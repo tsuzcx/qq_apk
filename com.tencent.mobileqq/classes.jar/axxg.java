@@ -1,11 +1,18 @@
-class axxg
-  implements axws
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.1.1;
+
+public class axxg
+  implements axxq
 {
   axxg(axxf paramaxxf) {}
   
-  public void a(double paramDouble1, double paramDouble2)
+  public void a(boolean paramBoolean)
   {
-    this.a.a(paramDouble1);
+    if (paramBoolean) {
+      ThreadManagerV2.excute(new ShortVideoShareUtil.1.1.1(this, (axny)this.a.a.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)), 16, null, false);
+    }
   }
 }
 

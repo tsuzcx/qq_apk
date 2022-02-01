@@ -1,50 +1,59 @@
-import UserGrowth.stSimpleGetFeedDetailRsp;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-import java.util.ArrayList;
-import java.util.List;
+import UserGrowth.stSimpleMetaFeed;
+import android.view.ViewGroup;
 
-class vdm
-  implements uqy
+public class vdm
 {
-  vdm(vdl paramvdl, long paramLong, vaa paramvaa) {}
-  
-  public void a(urj paramurj)
+  public static blij<stSimpleMetaFeed> a(int paramInt, ViewGroup paramViewGroup, uyd paramuyd)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    uya.a("weishi-beacon", "小程序播放页请求耗时：" + l + "毫秒");
-    uvw.a().a(l, paramurj.jdField_a_of_type_Urg, "fullscreen_videoplay", true);
-    if (!paramurj.a())
-    {
-      uya.d("WSVerticalForMiniAppPresenter", "GetFeedDetailRequest onTaskResponse failed code:" + paramurj.jdField_a_of_type_Int + ", msg:" + paramurj.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Vaa != null) {
-        this.jdField_a_of_type_Vaa.a(paramurj.jdField_a_of_type_Int, paramurj.jdField_a_of_type_JavaLangString);
-      }
-      uvw.a().a(l, paramurj.jdField_a_of_type_Urg, paramurj.jdField_a_of_type_Int, paramurj.jdField_a_of_type_JavaLangString);
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        if (!(paramurj.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedDetailRsp)) {
-          break;
-        }
-        paramurj = ((stSimpleGetFeedDetailRsp)paramurj.jdField_a_of_type_JavaLangObject).feed;
-        paramurj.isLoop = true;
-        localObject = new ArrayList();
-        ((ArrayList)localObject).add(paramurj);
-        paramurj = WSVerticalDataManager.a().a((List)localObject);
-        localObject = this.jdField_a_of_type_Vdl.a();
-      } while ((localObject == null) || (((uzq)localObject).a() == null) || (((uzq)localObject).a().a() == null));
-      localObject = ((uzq)localObject).a().a().a;
-    } while (!(localObject instanceof vbl));
-    ((vbl)localObject).b((vaq)paramurj.get(0));
-    return;
-    if (this.jdField_a_of_type_Vaa != null) {
-      this.jdField_a_of_type_Vaa.a(paramurj.b, paramurj.jdField_a_of_type_JavaLangString);
-    }
-    uvw.a().a(l, paramurj.jdField_a_of_type_Urg, -1, "数据无法解析或为空");
+    return vdl.a(paramViewGroup, paramuyd, paramInt);
+  }
+  
+  public static vdn a(int paramInt)
+  {
+    vdn localvdn = new vdn();
+    localvdn.jdField_a_of_type_Int = paramInt;
+    localvdn.jdField_a_of_type_Boolean = b(paramInt);
+    localvdn.b = c(paramInt);
+    localvdn.c = d(paramInt);
+    localvdn.d = e(paramInt);
+    localvdn.e = f(paramInt);
+    localvdn.f = g(paramInt);
+    return localvdn;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 3) || (paramInt == 6) || (paramInt == 7) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10);
+  }
+  
+  private static boolean b(int paramInt)
+  {
+    return (paramInt == 6) || (paramInt == 7);
+  }
+  
+  private static boolean c(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 3);
+  }
+  
+  private static boolean d(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  private static boolean e(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 3);
+  }
+  
+  private static boolean f(int paramInt)
+  {
+    return (paramInt == 6) || (paramInt == 7);
+  }
+  
+  private static boolean g(int paramInt)
+  {
+    return (paramInt == 3) || (paramInt == 7) || (paramInt == 8);
   }
 }
 

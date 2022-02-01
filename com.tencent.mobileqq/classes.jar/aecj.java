@@ -1,18 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aecj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aecj(RegisterActivity paramRegisterActivity, String paramString1, String paramString2) {}
+  public aecj(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, amtj.a(2131712457) + amtj.a(2131712478) + this.jdField_a_of_type_JavaLangString + amtj.a(2131712456) + this.b + amtj.a(2131712449));
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, 60000L);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ((bbbq)this.a.app.getManager(QQManagerFactory.MGR_RED_TOUCH)).b("100190.100194");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("set_display_type", 1);
+      PublicFragmentActivity.a(this.a.getActivity(), localIntent, QQSettingMsgClearFragment.class);
+      bdla.b(this.a.app, "CliOper", "", "", "0X800A1F2", "0X800A1F2", 0, 0, "", "", "", "");
+      bdla.b(this.a.app, "CliOper", "", "", "Setting_tab", "My_settab_log", 0, 0, "", "", "", "");
+      continue;
+      GeneralSettingActivity.a(this.a);
+    }
   }
 }
 

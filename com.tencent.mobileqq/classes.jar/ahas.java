@@ -1,20 +1,20 @@
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
 
-public abstract interface ahas
-  extends IInterface
+public class ahas
+  extends afqr
 {
-  public abstract void a();
+  public alvu a;
+  protected ViewGroup a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  protected ETTextView a;
+  protected TextView b;
+  public ETTextView b;
+  public View c;
   
-  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle);
-  
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  public ahas(aham paramaham) {}
 }
 
 

@@ -1,40 +1,111 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import java.util.Iterator;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$SpacesItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "space", "", "firstItemTopSpace", "(II)V", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class arpq
-  extends RecyclerView.ItemDecoration
+public class arpq
 {
-  private final int a;
-  private final int b;
+  public byte a;
+  public int a;
+  public long a;
+  public LebaPluginInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
   
-  public arpq(int paramInt1, int paramInt2)
+  public arpq()
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 2147483647;
   }
   
-  public void getItemOffsets(@NotNull Rect paramRect, @NotNull View paramView, @NotNull RecyclerView paramRecyclerView, @NotNull RecyclerView.State paramState)
+  public static String a(List<arpq> paramList)
   {
-    Intrinsics.checkParameterIsNotNull(paramRect, "outRect");
-    Intrinsics.checkParameterIsNotNull(paramView, "view");
-    Intrinsics.checkParameterIsNotNull(paramRecyclerView, "parent");
-    Intrinsics.checkParameterIsNotNull(paramState, "state");
-    paramRect.bottom = this.a;
-    if (paramRecyclerView.getChildPosition(paramView) == 0) {
-      paramRect.top = this.b;
+    if (paramList == null) {
+      return " print lebaData == null";
     }
+    if (paramList.isEmpty()) {
+      return " print lebaData.isEmpty()";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(" print lebaData size = ").append(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      arpq localarpq = (arpq)paramList.next();
+      if (localarpq == null)
+      {
+        localStringBuilder.append("|item = null");
+      }
+      else
+      {
+        localStringBuilder.append("|item = ").append(localarpq.jdField_a_of_type_Long).append("|").append(localarpq.jdField_a_of_type_JavaLangString).append("|").append(localarpq.jdField_b_of_type_JavaLangString).append("|").append(localarpq.jdField_a_of_type_Int).append("|").append(localarpq.jdField_a_of_type_Byte).append("|").append(localarpq.jdField_b_of_type_Long).append("|").append(localarpq.jdField_a_of_type_Boolean).append("|");
+        if (localarpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) {
+          localStringBuilder.append("info=null");
+        } else {
+          localStringBuilder.append(localarpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.toString());
+        }
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Byte = 0;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Byte == 0;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Byte = 1;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.cCanChangeState != 0);
+  }
+  
+  public boolean c()
+  {
+    return (!b()) || (this.jdField_b_of_type_Int == 2147483647);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramObject == null) || (this.jdField_a_of_type_Long == 0L)) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (this == paramObject);
+      if (!(paramObject instanceof arpq)) {
+        break;
+      }
+      paramObject = (arpq)paramObject;
+      bool1 = bool2;
+    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return Long.valueOf(this.jdField_a_of_type_Long).hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpq
  * JD-Core Version:    0.7.0.1
  */

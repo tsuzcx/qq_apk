@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-
-public class bdlj
-  implements bjog
+final class bdlj
 {
-  public bdlj(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onDismiss()
-  {
-    TribeVideoListPlayerFragment.a(this.a);
-    this.a.e = false;
-  }
+  static final bdlh a = new bdlh(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdlj
  * JD-Core Version:    0.7.0.1
  */

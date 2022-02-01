@@ -1,7 +1,6 @@
-public class ahrc
+public abstract interface ahrc
 {
-  public String a = null;
-  public String b = null;
+  public abstract void a(int paramInt);
 }
 
 

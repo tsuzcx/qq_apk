@@ -1,16 +1,29 @@
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface acjr
+public class acjr
+  implements View.OnClickListener
 {
-  public abstract void onComplete();
+  public acjr(GdtBaseHalfScreenFragment paramGdtBaseHalfScreenFragment) {}
   
-  public abstract void onFailure(int paramInt, String paramString);
-  
-  public abstract void onPermission(int paramInt);
-  
-  public abstract void onSuccess(JSONObject paramJSONObject);
-  
-  public abstract void onTrigger(JSONObject paramJSONObject);
+  public void onClick(View paramView)
+  {
+    if ((GdtBaseHalfScreenFragment.a(this.a) != null) && (GdtBaseHalfScreenFragment.a(this.a).canGoBack())) {
+      GdtBaseHalfScreenFragment.a(this.a).goBack();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.getActivity() != null) {
+        this.a.getActivity().finish();
+      }
+    }
+  }
 }
 
 

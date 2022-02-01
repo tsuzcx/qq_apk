@@ -1,13 +1,15 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityFragment;
 
-class bjdp
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnErrorListener
+public class bjdp
+  implements DialogInterface.OnClickListener
 {
-  bjdp(bjdj parambjdj, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnErrorListener paramOnErrorListener) {}
+  public bjdp(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public boolean onError(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bjdj, paramInt1, paramInt2);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,45 +1,44 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.OperationCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
-class xyy
-  implements View.OnClickListener
+public class xyy
 {
-  xyy(xyv paramxyv) {}
+  private qqstory_struct.OperationCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo;
+  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   
-  public void onClick(View paramView)
+  public xyy(qqstory_struct.OperationCardInfo paramOperationCardInfo)
   {
-    String str;
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Yhm.jdField_a_of_type_JavaLangString))
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo = paramOperationCardInfo;
+  }
+  
+  public xyy(byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo = new qqstory_struct.OperationCardInfo();
+    try
     {
-      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Yhm.jdField_a_of_type_JavaLangString;
-      str = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      if ((str.equals("##")) || (TextUtils.isEmpty(str)) || (!str.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
-      {
-        xzd localxzd = this.a.jdField_a_of_type_Xzd;
-        if (this.a.jdField_a_of_type_Xzd.a())
-        {
-          str = "2";
-          localxzd.a("use_custom_tag", 0, 0, new String[] { str });
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Xzd.a(0);
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.mergeFrom(paramArrayOfByte);
       return;
-      str = "1";
-      break;
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      ykq.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    }
+  }
+  
+  public CardItem.CardVideoInfo a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.card_info.story_video_info.size() == 0) {
+        return null;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.card_info.story_video_info.get(0));
+    }
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   }
 }
 

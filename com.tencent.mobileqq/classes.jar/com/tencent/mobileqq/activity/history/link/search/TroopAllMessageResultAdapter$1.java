@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.history.link.search;
 
-import ajbe;
+import ajwt;
 import android.os.Bundle;
 import android.os.Message;
-import bfvk;
-import bjmp;
+import bhec;
+import bkyc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class TroopAllMessageResultAdapter$1
   implements Runnable
 {
-  public TroopAllMessageResultAdapter$1(ajbe paramajbe, String paramString, int paramInt, long paramLong) {}
+  public TroopAllMessageResultAdapter$1(ajwt paramajwt, String paramString, int paramInt, long paramLong) {}
   
   public void run()
   {
@@ -27,10 +27,10 @@ public class TroopAllMessageResultAdapter$1
     Object localObject4;
     if (this.jdField_a_of_type_Int == 1)
     {
-      ??? = ajbe.a(this.this$0).getMessageFacade().queryAllHistroyByKey(ajbe.a(this.this$0), this.jdField_a_of_type_JavaLangString);
-      bfvk.a(ajbe.b(this.this$0).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+      ??? = ajwt.a(this.this$0).getMessageFacade().queryAllHistroyByKey(ajwt.a(this.this$0), this.jdField_a_of_type_JavaLangString);
+      bhec.a(ajwt.b(this.this$0).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
       localObject2 = new ArrayList();
-      localObject4 = ajbe.a(this.this$0, (ChatHistorySearchData)???, (ArrayList)localObject2);
+      localObject4 = ajwt.a(this.this$0, (ChatHistorySearchData)???, (ArrayList)localObject2);
       if (QLog.isColorLevel()) {
         QLog.i("LinkMessageResultAdapter", 2, "loadMessageResult, get: messageItems[] = " + localObject2);
       }
@@ -39,17 +39,17 @@ public class TroopAllMessageResultAdapter$1
     {
       synchronized (this.this$0.a)
       {
-        if (ajbe.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
+        if (ajwt.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
         {
           if (this.jdField_a_of_type_Int != 1) {
             continue;
           }
-          localajbe = this.this$0;
+          localajwt = this.this$0;
           if (((ArrayList)localObject2).size() < 20)
           {
-            ajbe.a(localajbe, bool);
-            ajbe.a(this.this$0, (ChatHistorySearchData)localObject4);
-            localObject2 = ajbe.a(this.this$0).obtainMessage(2, localObject2);
+            ajwt.a(localajwt, bool);
+            ajwt.a(this.this$0, (ChatHistorySearchData)localObject4);
+            localObject2 = ajwt.a(this.this$0).obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
             localObject4 = new Bundle();
             ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
@@ -64,7 +64,7 @@ public class TroopAllMessageResultAdapter$1
           if (this.jdField_a_of_type_Int != 2) {
             break;
           }
-          ??? = ajbe.c(this.this$0).getMessageFacade().queryAllHistroyByKey(ajbe.b(this.this$0), "");
+          ??? = ajwt.c(this.this$0).getMessageFacade().queryAllHistroyByKey(ajwt.b(this.this$0), "");
           break;
         }
         bool = false;
@@ -72,13 +72,13 @@ public class TroopAllMessageResultAdapter$1
         if (this.jdField_a_of_type_Int != 2) {
           continue;
         }
-        ajbe localajbe = this.this$0;
+        ajwt localajwt = this.this$0;
         if (((ArrayList)localObject2).size() < 20)
         {
           bool = true;
-          ajbe.b(localajbe, bool);
-          ajbe.b(this.this$0, (ChatHistorySearchData)localObject4);
-          localObject2 = ajbe.b(this.this$0).obtainMessage(2, localObject2);
+          ajwt.b(localajwt, bool);
+          ajwt.b(this.this$0, (ChatHistorySearchData)localObject4);
+          localObject2 = ajwt.b(this.this$0).obtainMessage(2, localObject2);
           ((Message)localObject2).arg1 = 2;
           localObject4 = new Bundle();
           ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);

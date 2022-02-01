@@ -1,32 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
 public class tuh
-  implements qdy
+  implements tvf
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public tuh(ViolaFragment paramViolaFragment) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void a(int paramInt)
   {
-    return pzi.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2) {}
-  
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
-  {
-    return false;
+    if (ViolaFragment.access$200(this.a) != null) {
+      ViolaFragment.access$200(this.a).a(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tuh
  * JD-Core Version:    0.7.0.1
  */

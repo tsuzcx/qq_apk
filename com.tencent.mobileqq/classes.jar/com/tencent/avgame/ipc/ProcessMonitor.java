@@ -9,8 +9,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.Foreground;
-import ngu;
-import nhn;
+import nnm;
+import nof;
 
 public class ProcessMonitor
 {
@@ -148,8 +148,8 @@ public class ProcessMonitor
   
   boolean a()
   {
-    nhn localnhn = ngu.b().a();
-    if ((localnhn != null) && (!localnhn.a())) {
+    nof localnof = nnm.b().a();
+    if ((localnof != null) && (!localnof.a())) {
       if (QLog.isColorLevel()) {
         QLog.i("ProcessMonitor", 2, "checkAndExitAVGame, in game now.");
       }

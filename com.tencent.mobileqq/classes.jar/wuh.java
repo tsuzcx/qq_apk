@@ -1,6 +1,18 @@
-public abstract interface wuh
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTranslateToken;
+
+public class wuh
+  extends wfh
 {
-  public abstract boolean a();
+  public long a;
+  public String a;
+  public String c;
+  
+  public wuh(qqstory_service.RspTranslateToken paramRspTranslateToken) {}
+  
+  public String toString()
+  {
+    return "StoryShareTranslateTokenResponse{coverUrl='" + this.c + '\'' + ", dstBuffer='" + this.jdField_a_of_type_JavaLangString + '\'' + ", shootTimeMillis=" + this.jdField_a_of_type_Long + '}';
+  }
 }
 
 

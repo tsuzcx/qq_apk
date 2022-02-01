@@ -1,41 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahol
-  extends ahny
+  implements ahnr
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  
-  public JSONObject a()
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("uin", this.a);
-      localJSONObject2.put("touin", this.b);
-      localJSONObject2.put("appid", this.e);
-      localJSONObject2.put("scene", this.c);
-      localJSONObject2.put("expose_md5s", this.f);
-      localJSONObject2.put("expose_urls", this.g);
-      localJSONObject2.put("click_md5", this.h);
-      localJSONObject2.put("click_url", this.i);
-      localJSONObject2.put("aio_type", this.d);
-      localJSONObject2.put("mobile_type", this.j);
-      localJSONObject2.put("passthough", this.k);
-      localJSONObject1.put("dcId", this.l);
-      localJSONObject1.put("data", localJSONObject2);
-      return localJSONObject1;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ScenesRecReportData", 2, "convert error:" + localException);
-    }
-    return localJSONObject1;
+    paramagtf.a(paramagus.b, paramMessageRecord);
   }
 }
 

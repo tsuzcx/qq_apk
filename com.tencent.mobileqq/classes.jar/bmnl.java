@@ -1,8 +1,18 @@
-public abstract interface bmnl
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.vip.manager.FileBannerTianshuManger.4;
+
+public class bmnl
+  implements View.OnClickListener
 {
-  public abstract void aB_();
+  public bmnl(FileBannerTianshuManger.4 param4) {}
   
-  public abstract void aC_();
+  public void onClick(View paramView)
+  {
+    this.a.this$0.a(this.a.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

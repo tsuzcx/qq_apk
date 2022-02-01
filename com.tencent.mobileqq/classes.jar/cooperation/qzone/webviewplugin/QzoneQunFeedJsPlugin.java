@@ -1,6 +1,5 @@
 package cooperation.qzone.webviewplugin;
 
-import amtj;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -11,11 +10,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bfun;
-import bfur;
-import bgve;
-import bgvh;
-import bhzt;
+import anvx;
+import bhdf;
+import bhdj;
+import bifw;
+import bifz;
+import bjkv;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
@@ -67,14 +67,14 @@ public class QzoneQunFeedJsPlugin
       String str = "";
       if (paramInt1 > 0)
       {
-        str = String.format(localActivity.getString(2131717046), new Object[] { Integer.valueOf(paramInt1) }) + "，";
-        str = str + paramString + amtj.a(2131711397);
+        str = String.format(localActivity.getString(2131717409), new Object[] { Integer.valueOf(paramInt1) }) + "，";
+        str = str + paramString + anvx.a(2131711744);
       }
-      paramString = str + String.format(localActivity.getString(2131717039), new Object[] { Integer.valueOf(paramInt2) });
-      bfur.a(localActivity, 232).setMessage(paramString).setNegativeButton(2131717044, new QzoneQunFeedJsPlugin.5(this)).show();
+      paramString = str + String.format(localActivity.getString(2131717402), new Object[] { Integer.valueOf(paramInt2) });
+      bhdj.a(localActivity, 232).setMessage(paramString).setNegativeButton(2131717407, new QzoneQunFeedJsPlugin.5(this)).show();
       return;
     }
-    bhzt.a().a(localActivity.getString(2131717047) + paramString + amtj.a(2131711396));
+    bjkv.a().a(localActivity.getString(2131717410) + paramString + anvx.a(2131711743));
   }
   
   private void cancelDownload(String paramString)
@@ -249,18 +249,18 @@ public class QzoneQunFeedJsPlugin
     RemoteHandleManager.getInstance().addWebEventListener(new QzoneQunFeedJsPlugin.2(this, paramVarArgs));
     if (!isSdcardWorking())
     {
-      bhzt.a().a(amtj.a(2131711395));
+      bjkv.a().a(anvx.a(2131711742));
       return;
     }
     if (!NetworkState.isNetSupport())
     {
-      bhzt.a().a(amtj.a(2131711392));
+      bjkv.a().a(anvx.a(2131711739));
       return;
     }
     if (!NetworkState.isWifiConn())
     {
       Activity localActivity = this.parentPlugin.mRuntime.a();
-      bfur.a(localActivity, 230).setTitle(localActivity.getString(2131717043)).setMessage(localActivity.getString(2131717045)).setPositiveButton(localActivity.getString(2131717042), new QzoneQunFeedJsPlugin.4(this, paramVarArgs)).setNegativeButton(localActivity.getString(2131717041), new QzoneQunFeedJsPlugin.3(this)).show();
+      bhdj.a(localActivity, 230).setTitle(localActivity.getString(2131717406)).setMessage(localActivity.getString(2131717408)).setPositiveButton(localActivity.getString(2131717405), new QzoneQunFeedJsPlugin.4(this, paramVarArgs)).setNegativeButton(localActivity.getString(2131717404), new QzoneQunFeedJsPlugin.3(this)).show();
       return;
     }
     doDownloadPicture(paramVarArgs[0]);
@@ -282,10 +282,10 @@ public class QzoneQunFeedJsPlugin
         localIntent.putExtra("url", paramVarArgs);
         localIntent.putExtra("fromQZone", true);
         localIntent.putExtra("injectrecommend", true);
-        if (bgvh.a.containsKey("Qzone")) {
+        if (bifz.a.containsKey("Qzone")) {
           localIntent.putExtra("insertPluginsArray", new String[] { "Qzone" });
         }
-        localIntent.putExtra("source_name", this.parentPlugin.mRuntime.a().getString(2131716848));
+        localIntent.putExtra("source_name", this.parentPlugin.mRuntime.a().getString(2131717211));
         localIntent.setData(Uri.parse(paramVarArgs));
         this.parentPlugin.startActivityForResult(localIntent, (byte)0);
         return;
@@ -401,7 +401,7 @@ public class QzoneQunFeedJsPlugin
       try
       {
         int i = new JSONObject(paramVarArgs[0]).getInt("groupCode");
-        i = bfun.a(this.parentPlugin.mRuntime.a().getAccount(), "troop_photo_message", String.valueOf(i));
+        i = bhdf.a(this.parentPlugin.mRuntime.a().getAccount(), "troop_photo_message", String.valueOf(i));
         if (QLog.isDevelopLevel()) {
           QLog.d("QzoneQunFeedJsPlugin", 4, "handleStartQunRedPointNotify data=" + i);
         }

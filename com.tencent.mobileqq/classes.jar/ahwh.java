@@ -1,14 +1,20 @@
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-class ahwh
+public class ahwh
+  extends ahwd
 {
-  public TextView a;
-  
-  public ahwh(View paramView)
+  void b(BaseChatPie paramBaseChatPie)
   {
-    this.a = ((TextView)paramView.findViewById(2131378367));
-    paramView.setTag(this);
+    c(paramBaseChatPie.sessionInfo.curType);
+    a(paramBaseChatPie.sessionInfo.curType, 203);
+    if (avmh.a(paramBaseChatPie.app).b()) {
+      a(paramBaseChatPie.sessionInfo.curType, 204);
+    }
+    a(paramBaseChatPie.sessionInfo.curType, 219);
+    a(paramBaseChatPie.sessionInfo.curType, 205);
+    a(paramBaseChatPie.sessionInfo.curType, 206);
+    a(paramBaseChatPie.sessionInfo.curType, 208);
   }
 }
 

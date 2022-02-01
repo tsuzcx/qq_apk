@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aadf;
+import aasr;
 import android.os.Bundle;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -45,9 +45,9 @@ class ForwardSdkShareProcessor$GetAppInfoStep$1
         if (i == 0)
         {
           paramInt = i;
-          this.this$1.this$0.mAppInfo.sourceIconSmall = aadf.a(localGetAppinfoResponse.iconsURL, 16);
+          this.this$1.this$0.mAppInfo.sourceIconSmall = aasr.a(localGetAppinfoResponse.iconsURL, 16);
           paramInt = i;
-          this.this$1.this$0.mAppInfo.sourceIconBig = aadf.a(localGetAppinfoResponse.iconsURL, 100);
+          this.this$1.this$0.mAppInfo.sourceIconBig = aasr.a(localGetAppinfoResponse.iconsURL, 100);
           paramInt = i;
           if (localGetAppinfoResponse.androidInfo != null)
           {

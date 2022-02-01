@@ -1,11 +1,4 @@
-public class zqp
-{
-  public zqp(zpq paramzpq) {}
-  
-  public void a(zqo paramzqo) {}
-  
-  public void b(zqo paramzqo) {}
-}
+public abstract interface zqp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

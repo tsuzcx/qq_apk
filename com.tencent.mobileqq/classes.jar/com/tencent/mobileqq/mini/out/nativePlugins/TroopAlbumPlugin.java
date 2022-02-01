@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import amtj;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -11,8 +10,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bfur;
-import bhzt;
+import anvx;
+import bhdj;
+import bjkv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
@@ -71,14 +71,14 @@ public class TroopAlbumPlugin
       String str = "";
       if (paramInt1 > 0)
       {
-        str = String.format(paramActivity.getString(2131717046), new Object[] { Integer.valueOf(paramInt1) }) + "，";
-        str = str + paramString + amtj.a(2131714195);
+        str = String.format(paramActivity.getString(2131717409), new Object[] { Integer.valueOf(paramInt1) }) + "，";
+        str = str + paramString + anvx.a(2131714542);
       }
-      paramString = str + String.format(paramActivity.getString(2131717039), new Object[] { Integer.valueOf(paramInt2) });
-      bfur.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131717044, new TroopAlbumPlugin.5(this)).show();
+      paramString = str + String.format(paramActivity.getString(2131717402), new Object[] { Integer.valueOf(paramInt2) });
+      bhdj.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131717407, new TroopAlbumPlugin.5(this)).show();
       return;
     }
-    bhzt.a().a(paramActivity.getString(2131717047) + paramString + amtj.a(2131714194));
+    bjkv.a().a(paramActivity.getString(2131717410) + paramString + anvx.a(2131714541));
   }
   
   private void handleChatAio(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
@@ -98,18 +98,18 @@ public class TroopAlbumPlugin
     RemoteHandleManager.getInstance().addWebEventListener(new TroopAlbumPlugin.2(this, paramJSONObject, paramJSContext));
     if (!isSdcardWorking())
     {
-      bhzt.a().a(amtj.a(2131714190));
+      bjkv.a().a(anvx.a(2131714537));
       return;
     }
     if (!NetworkState.isNetSupport())
     {
-      bhzt.a().a(amtj.a(2131714189));
+      bjkv.a().a(anvx.a(2131714536));
       return;
     }
     if (!NetworkState.isWifiConn())
     {
       paramJSContext = paramJSContext.getActivity();
-      bfur.a(paramJSContext, 230).setTitle(paramJSContext.getString(2131717043)).setMessage(paramJSContext.getString(2131717045)).setPositiveButton(paramJSContext.getString(2131717042), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(paramJSContext.getString(2131717041), new TroopAlbumPlugin.3(this)).show();
+      bhdj.a(paramJSContext, 230).setTitle(paramJSContext.getString(2131717406)).setMessage(paramJSContext.getString(2131717408)).setPositiveButton(paramJSContext.getString(2131717405), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(paramJSContext.getString(2131717404), new TroopAlbumPlugin.3(this)).show();
       return;
     }
     RemoteHandleManager.getInstance().getSender().downloadTroopPhoto(paramJSONObject);

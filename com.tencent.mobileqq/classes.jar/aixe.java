@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
 public class aixe
-  implements aczg
+  implements QQPermissionCallback
 {
-  public aixe(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment) {}
+  public aixe(PublicView paramPublicView, AppActivity paramAppActivity) {}
   
-  public boolean a(boolean paramBoolean)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramBoolean) {
-      bler.a(this.a.getActivity());
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicaccountPublicView.denied();
+    bhdj.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicaccountPublicView.grant();
   }
 }
 

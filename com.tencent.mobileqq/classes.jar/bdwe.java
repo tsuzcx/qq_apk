@@ -1,64 +1,99 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.jungle.videohub.proto.CommProtocolProto.commRequest;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.manager.TicketManager;
+import tencent.im.troop.studyroom.self_study_room_troop.StudyRoomMemberInfoReq;
 
 public class bdwe
+  extends BusinessHandler
 {
-  int jdField_a_of_type_Int;
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bdwf(this);
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  bdxy jdField_a_of_type_Bdxy;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View c;
+  private Map<Integer, CommProtocolProto.commRequest> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(100);
   
-  public bdwe(View paramView, int paramInt)
+  public bdwe(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380062));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380064));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380061));
-    this.c = paramView.findViewById(2131380063);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131380065);
+    super(paramQQAppInterface);
   }
   
-  public void a(Context paramContext, bdxy parambdxy, View.OnClickListener paramOnClickListener)
+  private CommProtocolProto.commRequest a(int paramInt)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    this.jdField_b_of_type_AndroidViewView.setTranslationY(0.0F);
-    this.c.setRotation(0.0F);
-    this.jdField_a_of_type_AndroidViewView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambdxy.b);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(parambdxy.b);
-    this.jdField_a_of_type_Bdxy = parambdxy;
-    if (parambdxy.jdField_a_of_type_Int != 0)
+    CommProtocolProto.commRequest localcommRequest = new CommProtocolProto.commRequest();
+    localcommRequest.seq.set(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+    localcommRequest.cmd.set(paramInt);
+    paramInt = NetworkUtil.getNetworkType(BaseApplicationImpl.getApplication());
+    localcommRequest.network.set(paramInt);
+    String str = ((TicketManager)this.app.getManager(2)).getA2(this.app.getAccount());
+    localcommRequest.auth_type.set(8);
+    localcommRequest.auth_key.set(ByteStringMicro.copyFromUtf8(str));
+    localcommRequest.microtime.set(System.currentTimeMillis());
+    return localcommRequest;
+  }
+  
+  private void a(CommProtocolProto.commRequest paramcommRequest, String paramString)
+  {
+    if (paramcommRequest == null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(parambdxy.jdField_a_of_type_Int);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      if (!parambdxy.jdField_a_of_type_Boolean) {
-        break label142;
+      if (QLog.isColorLevel()) {
+        QLog.d("studyroom.proto", 2, "sendPbRequest. request is null.");
       }
-      this.c.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
       return;
-      if (parambdxy.jdField_a_of_type_Int == 0) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(parambdxy.jdField_a_of_type_Int);
-      break;
-      label142:
-      this.c.setVisibility(8);
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("studyroom.proto", 2, "sendPbRequest. cmd=" + paramcommRequest.cmd.get());
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf((int)paramcommRequest.seq.get()), paramcommRequest);
+    paramString = createToServiceMsg(paramString);
+    paramString.putWupBuffer(paramcommRequest.toByteArray());
+    paramString.extraData.putInt("extra_seq", (int)paramcommRequest.seq.get());
+    paramString.extraData.putLong("extra_start_time", System.currentTimeMillis());
+    super.sendPbReq(paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    self_study_room_troop.StudyRoomMemberInfoReq localStudyRoomMemberInfoReq = new self_study_room_troop.StudyRoomMemberInfoReq();
+    localStudyRoomMemberInfoReq.troop_uin.set(paramString);
+    paramString = a(17101);
+    paramString.body.set(ByteStringMicro.copyFrom(localStudyRoomMemberInfoReq.toByteArray()));
+    a(paramString, "SelfStudyRoomForQQ.17101");
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return bdwf.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    paramObject = paramFromServiceMsg.getServiceCmd();
+    int i = paramToServiceMsg.extraData.getInt("extra_seq");
+    if (QLog.isColorLevel()) {
+      QLog.d("studyroom.proto", 2, "StudyRoomHandler onReceive. cmd=" + paramObject + " seq:" + i);
+    }
+    paramToServiceMsg = (CommProtocolProto.commRequest)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+    if (paramToServiceMsg == null) {
+      QLog.w("studyroom.proto", 1, "can't find request");
+    }
+    while (!"SelfStudyRoomForQQ.17101".equals(paramObject)) {
+      return;
+    }
+    notifyUI(1, true, new Object[] { paramToServiceMsg, paramFromServiceMsg });
   }
 }
 

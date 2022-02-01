@@ -1,38 +1,56 @@
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 
-public class acnl
-  implements View.OnTouchListener
+class acnl
 {
-  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new acnm(this);
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
-  View jdField_a_of_type_AndroidViewView;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
-  public acnl(AccountManageActivity paramAccountManageActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public acnl(acnk paramacnk, MsgInfo paramMsgInfo, String paramString)
   {
-    int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "action = " + i);
+    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public acnl a()
+  {
+    byte[] arrayOfByte = new byte[4];
+    if (this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg.length > 4) {
+      PkgTools.copyData(arrayOfByte, 0, this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg, 0, 4);
     }
-    if (i == 0)
+    this.jdField_a_of_type_Long = PkgTools.getLongData(arrayOfByte, 0);
+    if (this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg.length >= 9)
     {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c == true) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = false;
-      }
+      arrayOfByte = new byte[this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg.length - 9];
+      PkgTools.copyData(arrayOfByte, 0, this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg, 8, arrayOfByte.length);
+      this.jdField_a_of_type_JavaLangString = new String(bcsc.a(arrayOfByte), "utf-8");
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "onTouch return mHasSlide " + this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c);
-    }
-    return false;
+    this.jdField_a_of_type_Int = 1000;
+    this.b = -1000;
+    return this;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 

@@ -1,11 +1,24 @@
-import android.util.Property;
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-public class ytv
+class ytv
+  implements Animation.AnimationListener
 {
-  public float a;
-  public Property<View, Float> a;
-  public float b;
+  ytv(ytt paramytt) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.a.jdField_a_of_type_Yto != null) {
+      this.a.a.jdField_a_of_type_Yto.a(null);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

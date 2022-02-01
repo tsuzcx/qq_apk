@@ -1,76 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerManager.1;
-import java.io.File;
+import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
+import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
 
-public class bmre
-  extends bmqj
+final class bmre
+  implements UploadManager.IUploadStatusListener
 {
-  public static Object a;
-  public static String a;
-  public QIMCaptureBannerConfig a;
+  public void onUploadJobAdded(String paramString, long paramLong) {}
   
-  static
+  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = bmxv.a().getAbsolutePath() + File.separator + "banner_config";
-  }
-  
-  public bmre()
-  {
-    a();
-  }
-  
-  public void a()
-  {
-    ThreadManager.post(new QIMCaptureBannerManager.1(this), 8, null, true);
-  }
-  
-  public boolean a(QIMCaptureBannerConfig.BannerItem paramBannerItem)
-  {
-    if ((paramBannerItem == null) || (TextUtils.isEmpty(paramBannerItem.imgMd5))) {}
-    File localFile;
-    do
+    if (paramBoolean)
     {
-      do
-      {
-        return false;
-        localFile = new File(jdField_a_of_type_JavaLangString, paramBannerItem.imgMd5);
-        if (localFile.exists()) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QIMCaptureBannerManager", 2, "isBannerIconUsable|file is not exist -> " + paramBannerItem.imgUrl);
-      return false;
-      try
-      {
-        String str = FileUtils.calcMd5(localFile.getPath());
-        if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(paramBannerItem.imgMd5))) {
-          break;
-        }
-        return true;
+      if (paramStatusInfo.state != 6) {
+        break label26;
       }
-      catch (UnsatisfiedLinkError paramBannerItem) {}
-    } while (!QLog.isColorLevel());
-    paramBannerItem.printStackTrace();
-    return false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCaptureBannerManager", 2, "isBannerIconUsable|fileMd5 error " + paramBannerItem.imgUrl);
+      bmud.a(paramString, "actFileWyUp", paramStatusInfo, false, paramLong);
     }
-    localFile.delete();
-    return false;
+    label26:
+    while (paramStatusInfo.state != 5) {
+      return;
+    }
+    bmud.a(paramString, "actFileWyUp", paramStatusInfo, true, paramLong);
   }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig = null;
-  }
-  
-  public void onInit() {}
 }
 
 

@@ -1,12 +1,17 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.music.SongInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface awdw
-  extends IInterface
+class awdw
+  implements View.OnClickListener
 {
-  public abstract void onPlaySongChanged(SongInfo paramSongInfo);
+  awdw(awdu paramawdu, awdt paramawdt, awdy paramawdy) {}
   
-  public abstract void onPlayStateChanged(int paramInt);
+  public void onClick(View paramView)
+  {
+    awdu.a(this.jdField_a_of_type_Awdu).b(awdu.a(this.jdField_a_of_type_Awdu), this.jdField_a_of_type_Awdu, this.jdField_a_of_type_Awdt, this.jdField_a_of_type_Awdy);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

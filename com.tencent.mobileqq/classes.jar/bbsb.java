@@ -1,33 +1,29 @@
-import com.tencent.mobileqq.shortvideo.util.ShortVideoTrimmer.ProcessCallBack;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 class bbsb
-  implements ShortVideoTrimmer.ProcessCallBack
+  implements DialogInterface.OnClickListener
 {
-  bbsb(bbrz parambbrz) {}
+  bbsb(bbrz parambbrz, int paramInt, Object paramObject) {}
   
-  public void onDestroy()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onDestroy!");
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
     }
-  }
-  
-  public void onStart(Process paramProcess)
-  {
-    this.a.a = paramProcess;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer Start!");
-    }
-  }
-  
-  public void onStop()
-  {
-    this.a.a = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onStop!");
-    }
+    do
+    {
+      return;
+    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOVideoData));
+    paramDialogInterface = (AIOVideoData)this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_Bbrz.a.a(paramDialogInterface);
+    this.jdField_a_of_type_Bbrz.a.a(paramDialogInterface.jdField_a_of_type_Long, paramDialogInterface.jdField_a_of_type_Int, 2);
+    this.jdField_a_of_type_Bbrz.updateUI();
   }
 }
 

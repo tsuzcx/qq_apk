@@ -2,16 +2,16 @@ package dov.com.qq.im.ae.camera.ui.topbar;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import bltn;
+import bnhq;
 
 public class AEVideoStoryTopBarViewModel
   extends ViewModel
 {
   public final MutableLiveData<AEVideoStoryTopBarViewModel.Ratio> a = new MutableLiveData();
-  private MutableLiveData<bltn> b = new MutableLiveData();
+  private MutableLiveData<bnhq> b = new MutableLiveData();
   private MutableLiveData<Boolean> c = new MutableLiveData();
   
-  public MutableLiveData<bltn> a()
+  public MutableLiveData<bnhq> a()
   {
     return this.b;
   }

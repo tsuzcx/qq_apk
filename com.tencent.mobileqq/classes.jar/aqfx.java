@@ -1,19 +1,12 @@
-import android.content.Context;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-
-class aqfx
-  implements aqey
+public abstract interface aqfx
 {
-  aqfx(aqfw paramaqfw) {}
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2);
   
-  public void a(Context paramContext)
-  {
-    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, aqfw.a(this.a), -1L, null, false, 0);
-  }
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfx
  * JD-Core Version:    0.7.0.1
  */

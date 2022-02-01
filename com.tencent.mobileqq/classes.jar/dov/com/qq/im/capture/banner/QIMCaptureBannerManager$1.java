@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.banner;
 
-import bmre;
-import bmtc;
+import bogw;
+import boiu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -13,11 +13,11 @@ import java.util.Set;
 public class QIMCaptureBannerManager$1
   implements Runnable
 {
-  public QIMCaptureBannerManager$1(bmre parambmre) {}
+  public QIMCaptureBannerManager$1(bogw parambogw) {}
   
   public void run()
   {
-    QIMCaptureBannerConfig localQIMCaptureBannerConfig = QIMCaptureBannerConfig.getBannerConfigFromFile(this.this$0.getApp(), bmre.jdField_a_of_type_JavaLangString);
+    QIMCaptureBannerConfig localQIMCaptureBannerConfig = QIMCaptureBannerConfig.getBannerConfigFromFile(this.this$0.getApp(), bogw.jdField_a_of_type_JavaLangString);
     if ((localQIMCaptureBannerConfig != null) && (localQIMCaptureBannerConfig.mBannerList.size() > 0))
     {
       ??? = localQIMCaptureBannerConfig.mBannerList.entrySet().iterator();
@@ -30,13 +30,13 @@ public class QIMCaptureBannerManager$1
         }
       }
     }
-    synchronized (bmre.jdField_a_of_type_JavaLangObject)
+    synchronized (bogw.jdField_a_of_type_JavaLangObject)
     {
       this.this$0.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig = localQIMCaptureBannerConfig;
       if (QLog.isColorLevel()) {
         QLog.d("QIMCaptureBannerManager", 2, "initBannerFromCache= " + localQIMCaptureBannerConfig);
       }
-      this.this$0.getApp().notifyObservers(bmtc.class, 6, true, null);
+      this.this$0.getApp().notifyObservers(boiu.class, 6, true, null);
       return;
     }
   }

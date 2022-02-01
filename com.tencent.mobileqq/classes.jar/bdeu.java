@@ -1,51 +1,31 @@
-import com.tencent.util.Pair;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class bdeu
+class bdeu
+  extends BroadcastReceiver
 {
-  int jdField_a_of_type_Int;
-  bdfd jdField_a_of_type_Bdfd = new bdfd();
-  bdfg jdField_a_of_type_Bdfg = new bdfg();
-  StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  bdeu(bdet parambdet) {}
   
-  public bdeu(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public bdeu a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Bdfd.jdField_a_of_type_Char = '=';
-    this.jdField_a_of_type_Bdfd.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Bdfd.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Bdfd.b = Math.max(paramInt2, 0);
-    this.jdField_a_of_type_Bdfg.a(this.jdField_a_of_type_Bdfd);
-    return this;
-  }
-  
-  public bdeu a(String paramString, List<Pair<String, String>> paramList, bdef parambdef)
-  {
-    this.jdField_a_of_type_Bdfg.a('+', paramString, paramList, parambdef);
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramString);
-    return this;
-  }
-  
-  public bdeu b(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Bdfd.jdField_a_of_type_Char = '-';
-    this.jdField_a_of_type_Bdfd.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Bdfd.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Bdfd.b = paramInt2;
-    this.jdField_a_of_type_Bdfg.a(this.jdField_a_of_type_Bdfd);
-    return this;
-  }
-  
-  public String toString()
-  {
-    this.jdField_a_of_type_Bdfg.a();
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_Bdfg.a();
-    return bdej.a(this.jdField_a_of_type_Int, i + j, this.jdField_a_of_type_Bdfg.toString(), this.jdField_a_of_type_JavaLangStringBuilder.toString());
+    if (paramIntent.getAction() == null) {}
+    do
+    {
+      do
+      {
+        return;
+        paramContext = this.a.jdField_a_of_type_JavaLangString;
+        this.a.c();
+      } while ((this.a.jdField_a_of_type_Bdev == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
+      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
+      {
+        this.a.b();
+        this.a.jdField_a_of_type_Bdev.a(0, this.a.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
+    this.a.jdField_a_of_type_Bdev.a(1, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

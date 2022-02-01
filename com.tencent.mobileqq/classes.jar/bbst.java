@@ -1,75 +1,27 @@
-import android.annotation.TargetApi;
-import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureResult;
-import android.hardware.camera2.TotalCaptureResult;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@TargetApi(21)
-public class bbst
-  extends CameraCaptureSession.CaptureCallback
+class bbst
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private Camera2Control jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control;
+  bbst(bbss parambbss) {}
   
-  public bbst(Camera2Control paramCamera2Control)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control = paramCamera2Control;
-  }
-  
-  private void a(CaptureResult paramCaptureResult)
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    do
-    {
-      do
-      {
-        Integer localInteger;
-        do
-        {
-          do
-          {
-            return;
-            localInteger = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
-            bbsr.a(1, "[Camera2]process afState:" + localInteger);
-            if (localInteger != null) {
-              break;
-            }
-          } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-          this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-          return;
-        } while ((4 != localInteger.intValue()) && (5 != localInteger.intValue()) && (localInteger.intValue() != 0) && (1 != localInteger.intValue()) && (2 != localInteger.intValue()));
-        paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AE_STATE);
-        if ((paramCaptureResult != null) && (paramCaptureResult.intValue() != 2)) {
-          break;
-        }
-        this.jdField_a_of_type_Int = 4;
-        bbsr.a(1, "[Camera2]process aeState:" + paramCaptureResult);
-      } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-      return;
-      bbsr.a(1, "[Camera2]process preCapture aeState:" + paramCaptureResult);
-    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control == null);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.d();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
-  {
-    a(paramTotalCaptureResult);
-  }
-  
-  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
-  {
-    a(paramCaptureResult);
+    Intent localIntent = new Intent(bbss.a(this.a).mActivity, PublicFragmentActivity.class);
+    localIntent.putExtra("key_uin", bbss.a(this.a).sessionInfo.curFriendUin);
+    localIntent.putExtra("key_uin_name", bbss.a(this.a).sessionInfo.curFriendNick);
+    localIntent.putExtra("key_open_via", "history-liaotian");
+    aeow.a(bbss.a(this.a).mActivity, localIntent, PublicFragmentActivity.class, SignatureHistoryFragment.class);
+    bbss.a(this.a).app.reportClickEvent("CliOper", "0X800A66B");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.io.Serializable;
-import lvw;
+import lwj;
 
 public class AVRedPacketConfig$ExpressionInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ExpressionInfo> CREATOR = new lvw();
+  public static final Parcelable.Creator<ExpressionInfo> CREATOR = new lwj();
   public int coolValue;
   public int id;
   public int perfectValue;

@@ -1,35 +1,22 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public final class atfg
-  implements INetEngine.IBreakDownFix
+class atfg
+  implements bkzq
 {
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
+  atfg(atff paramatff, int paramInt, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-      paramNetResp.mWrittenBlockLen = 0L;
-      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
-      paramNetReq.mReqProperties.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.mReqUrl;
-    } while (!paramNetResp.contains("range="));
-    paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-    paramNetReq.mReqUrl = (paramNetResp + "range=" + paramNetReq.mStartDownOffset);
+    bdla.b(this.jdField_a_of_type_Atff.a, "dc00898", "", "", "0X800A7F3", "0X800A7F3", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    this.jdField_a_of_type_Atff.a.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_Atff.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfg
  * JD-Core Version:    0.7.0.1
  */

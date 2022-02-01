@@ -1,33 +1,54 @@
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class akbh
+class akbh
+  extends anyz
 {
-  int jdField_a_of_type_Int = 0;
-  akbk jdField_a_of_type_Akbk;
-  HashMap<String, PreloadManager.PathResult> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  List<DownloadParam> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
+  akbh(akam paramakam) {}
   
-  public akbh(List<DownloadParam> paramList, akbk paramakbk)
+  public void onPushPCActiveNotice(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_JavaUtilList = paramakbk;
-    Object localObject;
-    this.jdField_a_of_type_Akbk = localObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver_PCActiveNotice", 2, "onPushPCActiveNotice.isSuccess=" + paramBoolean);
+    }
+    if (this.a.a == null) {}
+    Intent localIntent;
+    do
+    {
+      do
+      {
+        return;
+      } while ((!this.a.a.isResume()) || (!paramBoolean));
+      localIntent = new Intent("mqq.intent.action.PCACTIVE_TIPS");
+      localIntent.putExtra("uin", paramString1);
+      localIntent.putExtra("Message", paramString2);
+      localIntent.putExtra("lButton", paramString3);
+      localIntent.putExtra("rButton", paramString4);
+    } while (NotifyPCActiveActivity.a != null);
+    this.a.a.startActivity(localIntent);
   }
   
-  public void a()
+  public void onPushRecommandDevLock(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, String paramString4, ArrayList<String> paramArrayList)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      DownloadParam localDownloadParam = (DownloadParam)localIterator.next();
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(localDownloadParam, new akbi(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.", 2, "onPushRecommandDevLock.isSuccess=" + paramBoolean1 + " canCancel=" + paramBoolean2 + " words=" + paramString1);
     }
+    if (this.a.a == null) {}
+    while ((!this.a.a.isResume()) || (!paramBoolean1)) {
+      return;
+    }
+    Intent localIntent = new Intent(this.a.a, DevlockPushActivity.class);
+    localIntent.putExtra("canCancel", paramBoolean2);
+    localIntent.putExtra("tipMsg", paramString1);
+    localIntent.putExtra("title", paramString2);
+    localIntent.putExtra("secondTitle", paramString3);
+    localIntent.putExtra("thirdTitle", paramString4);
+    localIntent.putStringArrayListExtra("wordsList", paramArrayList);
+    this.a.a.startActivity(localIntent);
   }
 }
 

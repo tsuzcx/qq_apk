@@ -53,8 +53,11 @@ public class GPUParticleFilter
       this.pdBackground.setUniform(this.item.gpuParticleConfig.backgroundConfig.type, this.item.gpuParticleConfig.backgroundConfig.duration, this.item.gpuParticleConfig.backgroundConfig.startSide, this.item.gpuParticleConfig.backgroundConfig.strokeWidth);
     }
     Bitmap localBitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.dataPath + File.separator + ((GPUParticleConfig.Sprite)this.item.gpuParticleConfig.sprites.get(0)).path, 1);
-    this.pdSystem.setImage(((GPUParticleConfig.Sprite)this.item.gpuParticleConfig.sprites.get(0)).path, BitmapUtils.bitmap2RGBA(localBitmap), localBitmap.getWidth(), localBitmap.getHeight());
-    BitmapUtils.recycle(localBitmap);
+    if (BitmapUtils.isLegal(localBitmap))
+    {
+      this.pdSystem.setImage(((GPUParticleConfig.Sprite)this.item.gpuParticleConfig.sprites.get(0)).path, BitmapUtils.bitmap2RGBA(localBitmap), localBitmap.getWidth(), localBitmap.getHeight());
+      BitmapUtils.recycle(localBitmap);
+    }
     if ((!TextUtils.isEmpty(this.item.gpuParticleConfig.startColorReference)) && (!"*".equals(this.item.gpuParticleConfig.startColorReference)))
     {
       localBitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.dataPath + File.separator + this.item.gpuParticleConfig.startColorReference, 1);

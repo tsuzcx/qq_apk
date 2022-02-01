@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import ybe;
-import yfg;
+import ypx;
+import ytz;
 
 public class DoodleLayout$TextFaceLayerTouchListener$1
   implements Runnable
 {
-  public DoodleLayout$TextFaceLayerTouchListener$1(yfg paramyfg) {}
+  public DoodleLayout$TextFaceLayerTouchListener$1(ytz paramytz) {}
   
   public void run()
   {
-    ybe.b(this.a.a.b, false);
+    ypx.b(this.a.a.b, false);
     this.a.a.d(4);
   }
 }

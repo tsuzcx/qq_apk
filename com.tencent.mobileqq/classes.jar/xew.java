@@ -1,101 +1,53 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tribe.async.async.JobContext;
 import java.util.List;
 
-public class xew
-  extends QQUIEventReceiver<StoryPickerFragment, wbh>
+class xew
+  implements wfk<wsp, wsq>
 {
-  public xew(@NonNull StoryPickerFragment paramStoryPickerFragment)
-  {
-    super(paramStoryPickerFragment);
-  }
+  xew(xev paramxev, JobContext paramJobContext, xwc paramxwc) {}
   
-  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull wbh paramwbh)
+  public void a(@NonNull wsp paramwsp, @Nullable wsq paramwsq, @NonNull ErrorMessage paramErrorMessage)
   {
-    boolean bool1 = false;
-    if (!TextUtils.equals(paramStoryPickerFragment.jdField_a_of_type_JavaLangString, paramwbh.jdField_a_of_type_JavaLangString)) {
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      ykq.d("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem cancel on net respond");
       return;
     }
-    boolean bool2 = paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess();
-    Object localObject = new ArrayList(paramwbh.jdField_a_of_type_JavaUtilList.size());
-    List localList = paramwbh.jdField_a_of_type_JavaUtilList;
-    int i = 0;
-    while (i < localList.size())
+    if ((paramErrorMessage.isFail()) || (paramwsq == null))
     {
-      VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)localList.get(i);
-      if (localVideoCollectionItem.collectionType == 1)
-      {
-        int j = 0;
-        if (j < localVideoCollectionItem.collectionVideoUIItemList.size())
-        {
-          xlu localxlu = (xlu)localVideoCollectionItem.collectionVideoUIItemList.get(j);
-          if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localxlu.jdField_a_of_type_JavaLangString))
-          {
-            localxlu.jdField_a_of_type_Boolean = true;
-            if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) {
-              localxlu.b = true;
-            }
-          }
-          for (;;)
-          {
-            j += 1;
-            break;
-            localxlu.jdField_a_of_type_Boolean = false;
-            if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) {
-              localxlu.b = false;
-            } else {
-              localxlu.b = true;
-            }
-          }
-        }
-        ((List)localObject).add(localVideoCollectionItem);
-      }
-      i += 1;
+      ykq.a("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem fail %s", paramErrorMessage.toString());
+      xev.a(this.jdField_a_of_type_Xev, paramErrorMessage);
+      return;
     }
-    if ((bool2) && (paramwbh.e))
+    paramwsp = (yck)wjs.a(11);
+    if (paramwsq.a.size() < 1)
     {
-      if (!((List)localObject).isEmpty()) {
-        break label327;
-      }
-      paramStoryPickerFragment.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(8);
-      if (!paramwbh.c) {
-        break label347;
-      }
-      paramStoryPickerFragment.jdField_a_of_type_Xff.a((List)localObject);
+      ykq.e("Q.qqstory.player.CommentFloatDialogController", "pull feedItem return null. maybe it's a share group feed and it has been dissolved.");
+      paramwsp.a(xep.a(this.jdField_a_of_type_Xev.a));
+      paramwsp = new ErrorMessage(2222, "no feed data back.");
+      xev.b(this.jdField_a_of_type_Xev, paramwsp);
+      return;
+    }
+    paramwsq = (ybu)paramwsq.a.get(0);
+    if ((paramwsq instanceof yeb))
+    {
+      paramErrorMessage = (yeb)paramwsq;
+      this.jdField_a_of_type_Xwc.a = paramwsq.a();
+      this.jdField_a_of_type_Xwc.a(paramwsp.a(xep.a(this.jdField_a_of_type_Xev.a), paramErrorMessage.a(), true), true);
+      ((ycq)wjs.a(12)).a(2, this.jdField_a_of_type_Xwc.a.feedId, this.jdField_a_of_type_Xwc.a().mVideoSeq, this.jdField_a_of_type_Xwc.a(), this.jdField_a_of_type_Xwc.a().mVideoNextCookie, this.jdField_a_of_type_Xwc.a().mIsVideoEnd, this.jdField_a_of_type_Xwc.a().mVideoPullType, true);
     }
     for (;;)
     {
-      if (paramwbh.c) {
-        paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a(bool2);
-      }
-      localObject = paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a;
-      if (!paramwbh.jdField_a_of_type_Boolean) {
-        bool1 = true;
-      }
-      ((yst)localObject).a(bool2, bool1);
-      paramStoryPickerFragment.stopTitleProgress();
+      this.jdField_a_of_type_Xwc.a = ((CommentLikeFeedItem)paramwsp.a(xep.a(this.jdField_a_of_type_Xev.a).a));
+      xev.a(this.jdField_a_of_type_Xev, this.jdField_a_of_type_Xwc);
       return;
-      label327:
-      paramStoryPickerFragment.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(0);
-      break;
-      label347:
-      paramStoryPickerFragment.jdField_a_of_type_Xff.b((List)localObject);
+      this.jdField_a_of_type_Xwc.a = paramwsq.a();
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wbh.class;
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agjt;
-import agrx;
+import ahcj;
+import ahkv;
 
 public class TroopFileItemBuilder$6
   implements Runnable
 {
   public void run()
   {
-    agjt.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, true, true, null);
+    ahcj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, true, true, null);
   }
 }
 

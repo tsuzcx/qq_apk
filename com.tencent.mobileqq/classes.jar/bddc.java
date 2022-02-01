@@ -1,40 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bddc
-  implements BusinessObserver
+class bddc
+  implements View.OnClickListener
 {
-  protected void a() {}
+  bddc(bdcw parambdcw) {}
   
-  protected void a(bddf parambddf, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void a(boolean paramBoolean, bddf parambddf, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    bdcw.a(this.a, bdcw.a(this.a));
+    bdcw.b(this.a, System.currentTimeMillis());
+    if (bdcw.a(this.a) - bdcw.b(this.a) < 300L) {}
+    for (;;)
     {
-    case 2: 
-    default: 
-    case 1: 
-    case 0: 
-    case 3: 
-      do
-      {
-        return;
-        paramObject = (Object[])paramObject;
-        a(paramBoolean, (bddf)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-        return;
-        paramObject = (Object[])paramObject;
-        a((bddf)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue(), paramObject[5]);
-        return;
-      } while (!paramBoolean);
-      a();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      bdcw.a(this.a);
     }
-    a(paramBoolean, (Bundle)paramObject);
   }
 }
 

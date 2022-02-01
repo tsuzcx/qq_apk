@@ -1,53 +1,39 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.DataMigrationService;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
-import java.util.HashMap;
-import org.json.JSONObject;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class antb
-  extends anrh
+  extends WtloginListener
 {
-  public antb(QQAppInterface paramQQAppInterface, Context paramContext)
+  public antb(DataMigrationService paramDataMigrationService, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, WtloginHelper paramWtloginHelper) {}
+  
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    super(paramQQAppInterface, paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| OnException=" + paramErrMsg + ", cmd=" + paramInt);
+    }
+    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
   }
   
-  public boolean a()
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey("params");
-      if (bool) {}
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("params")));
-        if (QLog.isColorLevel()) {
-          QLog.i("QwalletToNotifyAction", 2, "urlParamObj: " + localJSONObject);
-        }
-        if (localJSONObject.optInt("view_type", 0) == 0)
-        {
-          localJSONObject = localJSONObject.optJSONObject("params");
-          if (localJSONObject != null) {
-            ReminderListFragment.a(this.jdField_a_of_type_AndroidContentContext, localJSONObject.optString("notice_time"));
-          }
-        }
-      }
-      catch (Exception localException1)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("QwalletToNotifyAction", 2, "JumpAction parse url throw an exception: " + localException1);
-        return false;
-      }
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| onGetA1WithA1 ret=" + paramInt2);
     }
-    catch (Exception localException2)
+    if (paramInt2 != 0)
     {
-      QLog.e("QwalletToNotifyAction", 1, "doAction error: " + localException2.getMessage());
-      a("QwalletToNotifyAction");
+      DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
+      return;
     }
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| send action");
+    }
+    paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
+    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, paramString, this.jdField_b_of_type_Int);
   }
 }
 

@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aztc;
-import bgve;
+import bazk;
+import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity;
@@ -92,7 +92,7 @@ public class QzonePersonalizeJsPlugin
     }
   }
   
-  private static void handleCustomVipSetting(bgve parambgve, String... paramVarArgs)
+  private static void handleCustomVipSetting(bifw parambifw, String... paramVarArgs)
   {
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
       return;
@@ -108,12 +108,12 @@ public class QzonePersonalizeJsPlugin
       localBundle.putInt("CustomVipId", i);
       localBundle.putString("zipUrl", paramVarArgs);
       localIntent.putExtras(localBundle);
-      QZoneHelper.forwardToQzoneTransluentActivity(parambgve.a(), QZoneHelper.UserInfo.getInstance(), localIntent);
+      QZoneHelper.forwardToQzoneTransluentActivity(parambifw.a(), QZoneHelper.UserInfo.getInstance(), localIntent);
       return;
     }
-    catch (JSONException parambgve)
+    catch (JSONException parambifw)
     {
-      parambgve.printStackTrace();
+      parambifw.printStackTrace();
     }
   }
   
@@ -256,7 +256,7 @@ public class QzonePersonalizeJsPlugin
         QZLog.w("QzonePersonalizeJsPlugin", "tiantai webView == null");
         return;
       }
-      localCustomWebView.setTag(2131375729, Boolean.TRUE);
+      localCustomWebView.setTag(2131375971, Boolean.TRUE);
       QLog.i("QzonePersonalizeJsPlugin", 1, "tiantai webview activity name: " + this.parentPlugin.mRuntime.a().getClass().getSimpleName());
       if (!(this.parentPlugin.mRuntime.a() instanceof QzoneTiantaiTranslucentBrowserActivity))
       {
@@ -270,7 +270,7 @@ public class QzonePersonalizeJsPlugin
       QLog.w("QzonePersonalizeJsPlugin", 1, "tiantai handleNotifyWebviewJsReady: ", localException);
       return;
     }
-    Object localObject2 = localException.getTag(2131375726);
+    Object localObject2 = localException.getTag(2131375968);
     if ((localObject2 != null) && (((Boolean)localObject2).booleanValue())) {}
     for (int i = 1;; i = 0)
     {
@@ -345,7 +345,7 @@ public class QzonePersonalizeJsPlugin
     }
   }
   
-  private static void handlePersonalizeSetting(bgve parambgve, String... paramVarArgs)
+  private static void handlePersonalizeSetting(bifw parambifw, String... paramVarArgs)
   {
     int i = 0;
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
@@ -361,7 +361,7 @@ public class QzonePersonalizeJsPlugin
           if ((paramVarArgs != null) && (paramVarArgs.length() > 0))
           {
             if ((((JSONObject)localObject).has("toast")) && (((JSONObject)localObject).getBoolean("toast"))) {
-              QQToast.a(parambgve.a(), 2, 2131689525, 0).a();
+              QQToast.a(parambifw.a(), 2, 2131689525, 0).a();
             }
             localObject = new long[paramVarArgs.length()];
             while (i < paramVarArgs.length())
@@ -372,20 +372,20 @@ public class QzonePersonalizeJsPlugin
             paramVarArgs = new Intent();
             paramVarArgs.putExtra("key_msg_type", 2);
             paramVarArgs.putExtra("key_friend_list", (long[])localObject);
-            parambgve.a().setResult(-1, paramVarArgs);
-            parambgve.a().finish();
+            parambifw.a().setResult(-1, paramVarArgs);
+            parambifw.a().finish();
             return;
           }
         }
       }
-      catch (JSONException parambgve)
+      catch (JSONException parambifw)
       {
-        parambgve.printStackTrace();
+        parambifw.printStackTrace();
       }
     }
   }
   
-  private void handlePreloadFacade(bgve parambgve, String... paramVarArgs)
+  private void handlePreloadFacade(bifw parambifw, String... paramVarArgs)
   {
     Intent localIntent = new Intent("action_personalize_js2qzone");
     Bundle localBundle = new Bundle();
@@ -395,7 +395,7 @@ public class QzonePersonalizeJsPlugin
     {
       localBundle.putInt("showonfridyn", new JSONObject(paramVarArgs[0]).getInt("showonfridyn"));
       localIntent.putExtras(localBundle);
-      QZoneHelper.forwardToQzoneTransluentActivity(parambgve.a(), QZoneHelper.UserInfo.getInstance(), localIntent);
+      QZoneHelper.forwardToQzoneTransluentActivity(parambifw.a(), QZoneHelper.UserInfo.getInstance(), localIntent);
       return;
     }
     catch (Exception paramVarArgs)
@@ -579,7 +579,7 @@ public class QzonePersonalizeJsPlugin
     }
   }
   
-  private static void handleUpdateMallClicktime(bgve parambgve, String... paramVarArgs)
+  private static void handleUpdateMallClicktime(bifw parambifw, String... paramVarArgs)
   {
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
       return;
@@ -590,12 +590,12 @@ public class QzonePersonalizeJsPlugin
       if (QLog.isColorLevel()) {
         QLog.d("QZoneWebViewPlugin", 2, "handleUpdateMallClicktime: " + i);
       }
-      QZonePersonalizeH5Service.updateCTime(Integer.valueOf(i), Long.valueOf(parambgve.a().getLongAccountUin()));
+      QZonePersonalizeH5Service.updateCTime(Integer.valueOf(i), Long.valueOf(parambifw.a().getLongAccountUin()));
       return;
     }
-    catch (JSONException parambgve)
+    catch (JSONException parambifw)
     {
-      parambgve.printStackTrace();
+      parambifw.printStackTrace();
     }
   }
   
@@ -667,8 +667,8 @@ public class QzonePersonalizeJsPlugin
       localJSONObject2.put("broadcast", true);
       localJSONObject2.put("domains", localJSONArray);
       dispatchEventImpl(paramCustomWebView, "qzRooftop", localJSONObject1, localJSONObject2);
-      paramCustomWebView.setTag(2131375726, Boolean.FALSE);
-      paramCustomWebView.setTag(2131375729, Boolean.FALSE);
+      paramCustomWebView.setTag(2131375968, Boolean.FALSE);
+      paramCustomWebView.setTag(2131375971, Boolean.FALSE);
       return;
     }
     catch (Exception paramCustomWebView)
@@ -677,7 +677,7 @@ public class QzonePersonalizeJsPlugin
     }
   }
   
-  private static void onHandleUpdateMallID(bgve parambgve, String... paramVarArgs)
+  private static void onHandleUpdateMallID(bifw parambifw, String... paramVarArgs)
   {
     int j = 0;
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
@@ -708,7 +708,7 @@ public class QzonePersonalizeJsPlugin
           break;
         }
         new HashMap();
-        localObject = QZonePersonalizeH5Service.getCTime(Long.valueOf(parambgve.a().getLongAccountUin()));
+        localObject = QZonePersonalizeH5Service.getCTime(Long.valueOf(parambifw.a().getLongAccountUin()));
         i = j;
         if (i < paramVarArgs.length)
         {
@@ -718,12 +718,12 @@ public class QzonePersonalizeJsPlugin
           ((Map)localObject).put(Integer.valueOf(paramVarArgs[i]), Long.valueOf(0L));
         }
       }
-      catch (JSONException parambgve)
+      catch (JSONException parambifw)
       {
-        parambgve.printStackTrace();
+        parambifw.printStackTrace();
         return;
       }
-      QZonePersonalizeH5Service.setCTime((Map)localObject, Long.valueOf(parambgve.a().getLongAccountUin()));
+      QZonePersonalizeH5Service.setCTime((Map)localObject, Long.valueOf(parambifw.a().getLongAccountUin()));
       return;
       label191:
       i += 1;
@@ -833,7 +833,7 @@ public class QzonePersonalizeJsPlugin
       } while (paramVarArgs.length != 1);
       bool1 = bool2;
     } while (TextUtils.isEmpty(paramVarArgs[0]));
-    aztc.a().b(paramVarArgs[0]);
+    bazk.a().b(paramVarArgs[0]);
     return true;
     if ("GetRedpocket".equals(paramString3))
     {
@@ -871,7 +871,7 @@ public class QzonePersonalizeJsPlugin
   public void onDestroy()
   {
     super.onDestroy();
-    aztc.a().onDestroy();
+    bazk.a().onDestroy();
   }
 }
 

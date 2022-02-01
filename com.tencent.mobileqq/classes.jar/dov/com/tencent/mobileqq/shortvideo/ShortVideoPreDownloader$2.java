@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bobl;
+import bprd;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -12,7 +12,7 @@ public class ShortVideoPreDownloader$2
     if (!this.this$0.a.get())
     {
       this.this$0.a.set(true);
-      bobl.a("off", "Timer count off, mIsPreDownloaderOpen=" + this.this$0.a.get());
+      bprd.a("off", "Timer count off, mIsPreDownloaderOpen=" + this.this$0.a.get());
     }
   }
 }

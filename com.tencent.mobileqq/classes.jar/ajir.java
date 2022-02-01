@@ -1,115 +1,232 @@
-import android.content.Context;
-import android.support.v4.util.ArraySet;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
+import com.tencent.mobileqq.app.proxy.GroupActionResp;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ajir
-  extends aezn
+  extends anvi
 {
-  public final String a;
+  private ajir(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public ajir(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo, null, null);
-    this.jdField_a_of_type_JavaLangString = "MiniPie.MiniChatAdapter";
-    this.jdField_a_of_type_Agcw = new ajis(paramContext, paramQQAppInterface, paramSessionInfo, null, null);
-    this.jdField_a_of_type_Aezo = null;
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
   }
   
-  public void a(List<ChatMessage> paramList, CharSequence paramCharSequence, int paramInt)
+  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    long l1 = 0L;
-    paramInt = 0;
-    paramCharSequence = null;
-    ChatMessage localChatMessage;
-    boolean bool1;
-    if (paramInt < paramList.size())
-    {
-      localChatMessage = (ChatMessage)paramList.get(paramInt);
-      boolean bool2 = bblk.b(localChatMessage.msgtype);
-      if ((bool2) && ((paramInt == 0) || ((localChatMessage.time < this.b) && (localChatMessage.time - l1 > 300L)) || ((localChatMessage.time >= this.b) && (localChatMessage.time - l1 > 300L) && ((paramCharSequence == null) || (localChatMessage.time - paramCharSequence.time > 60L))) || ((this.jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(Long.valueOf(localChatMessage.uniseq))) && (l1 / 60L != localChatMessage.time / 60L))))
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onGroupDataInited()
+  {
+    AlphabetFriendFragment.a(this.a, 1400L, true);
+  }
+  
+  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.AlphabetFriendFragment", 2, "onSetSpecialCareSwitch_global isSuccess: " + paramBoolean);
+    }
+    if ((this.a.b) && (AlphabetFriendFragment.a(this.a) != null)) {
+      AlphabetFriendFragment.a(this.a).a();
+    }
+    if ((paramBoolean) && (this.a.isResumed())) {
+      try
       {
-        bool1 = true;
-        label165:
-        localChatMessage.mNeedTimeStamp = bool1;
-        if (localChatMessage.mNeedTimeStamp)
+        String[] arrayOfString = (String[])paramArrayOfObject[1];
+        paramArrayOfObject = (boolean[])paramArrayOfObject[2];
+        if (QLog.isColorLevel()) {
+          QLog.d("contacts.fragment.AlphabetFriendFragment", 2, new Object[] { "onSetSpecialCareSwitch_global uinArray=%s stateArray=%s", Arrays.toString(arrayOfString), Arrays.toString(paramArrayOfObject) });
+        }
+        if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
         {
-          long l2 = localChatMessage.time;
-          l1 = l2;
-          if (localChatMessage.time < this.b)
+          if (paramArrayOfObject[0] != 0)
           {
-            afdh.a(localChatMessage);
-            l1 = l2;
+            QQToast.a(this.a.getActivity(), 2, anvx.a(2131699731), 0).a();
+            return;
+          }
+          QQToast.a(this.a.getActivity(), 2, anvx.a(2131699732), 0).a();
+          return;
+        }
+      }
+      catch (Exception paramArrayOfObject)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("contacts.fragment.AlphabetFriendFragment", 2, "onSetSpecialCareSwitch_global fail!", paramArrayOfObject);
+        }
+      }
+    }
+  }
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.AlphabetFriendFragment", 2, "onUpdateAddFriend isSucess= " + paramBoolean1 + ",addSuccess=" + paramBoolean2 + " addDirect=" + paramBoolean3);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && (paramBoolean3)) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      AlphabetFriendFragment.a(this.a, 5000L, false);
+    }
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.AlphabetFriendFragment", 2, "onUpdateDelFriend isSucess= " + paramBoolean);
+    }
+    if (paramBoolean) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AlphabetFriendFragment localAlphabetFriendFragment = this.a;
+    boolean bool;
+    if ((paramBoolean2) || (!paramBoolean1))
+    {
+      bool = true;
+      AlphabetFriendFragment.a(localAlphabetFriendFragment, bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.AlphabetFriendFragment", 2, "onUpdateFriendList isSucess= " + paramBoolean1 + ",isComplete=" + paramBoolean2);
+      }
+      paramBoolean2 = AlphabetFriendFragment.a(this.a);
+      if (AlphabetFriendFragment.a(this.a))
+      {
+        if (AlphabetFriendFragment.b(this.a))
+        {
+          AlphabetFriendFragment.b(this.a, false);
+          if (AlphabetFriendFragment.a(this.a) != null) {
+            AlphabetFriendFragment.b(this.a).a(this.a.b(), paramBoolean1, null);
           }
         }
-        if ((!bool2) || (((localChatMessage instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)localChatMessage).tipParam.b == 1))) {
-          break label362;
+        localAlphabetFriendFragment = this.a;
+        if (!AlphabetFriendFragment.b(this.a)) {
+          break label189;
         }
-        paramCharSequence = localChatMessage;
       }
     }
-    label362:
-    for (;;)
+    label189:
+    for (long l = 0L;; l = 1400L)
     {
-      if (paramInt != paramList.size() - 1) {
-        localChatMessage.isFlowMessage = false;
+      AlphabetFriendFragment.a(localAlphabetFriendFragment, l, true);
+      if ((!paramBoolean2) && (AlphabetFriendFragment.b(this.a))) {
+        AlphabetFriendFragment.a(this.a, 1400L, true);
       }
-      paramInt += 1;
-      break;
-      bool1 = false;
-      break label165;
-      if (paramList.size() > 0) {
-        this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Long.valueOf(((ChatMessage)paramList.get(0)).uniseq));
-      }
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      QLog.d("MiniPie.MiniChatAdapter", 1, "list addr = " + paramList.hashCode() + ",size = " + paramList.size());
-      super.notifyDataSetChanged();
       return;
+      bool = false;
+      break;
     }
   }
   
-  public void a(boolean paramBoolean)
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    ((ajis)this.jdField_a_of_type_Agcw).a(paramBoolean);
+    if ((paramBoolean1) && (paramBoolean2) && (paramBoolean3)) {
+      AlphabetFriendFragment.a(this.a, 0L, true);
+    }
   }
   
-  protected boolean a()
+  protected void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    return false;
+    AlphabetFriendFragment.a(this.a, 1400L, false);
   }
   
-  public void c()
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super.c();
+    if (paramBoolean1) {
+      AlphabetFriendFragment.a(this.a, 1400L, false);
+    }
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    View localView = super.getView(paramInt, paramView, paramViewGroup);
-    if ((localView != null) && ((localView instanceof ajip)))
+    if ((paramString != null) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateOlympicTorchList(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      AlphabetFriendFragment.a(this.a, 1400L, false);
+    }
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, false);
+    }
+  }
+  
+  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.AlphabetFriendFragment", 2, "onUpdateSpecialCareList isSucess= " + paramBoolean1 + ",isComplete=" + paramBoolean2);
+    }
+    if ((this.a.b) && (paramBoolean1) && (AlphabetFriendFragment.a(this.a) != null))
     {
-      ajip localajip = (ajip)localView;
-      localajip.setIsShieldTouchForItem(true);
-      localajip.setFrom(((ajis)this.jdField_a_of_type_Agcw).a);
-      if ((localView instanceof BaseChatItemLayout)) {
-        ((BaseChatItemLayout)localView).d();
-      }
+      AlphabetFriendFragment.a(this.a).a();
+      AlphabetFriendFragment.a(this.a, 0L, true);
     }
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return localView;
-  }
-  
-  public String toString()
-  {
-    return "list.addr = " + this.jdField_a_of_type_JavaUtilList.hashCode();
   }
 }
 

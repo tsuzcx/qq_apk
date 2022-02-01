@@ -1,22 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.18.1;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-public final class adwl
-  implements Parcelable.Creator<ProfileActivity.CardContactInfo>
+public class adwl
+  extends CardObserver
 {
-  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
-  {
-    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
-    localCardContactInfo.a = paramParcel.readString();
-    localCardContactInfo.c = paramParcel.readString();
-    localCardContactInfo.b = paramParcel.readString();
-    return localCardContactInfo;
-  }
+  public adwl(EditInfoActivity paramEditInfoActivity) {}
   
-  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  public void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    return new ProfileActivity.CardContactInfo[paramInt];
+    if (!this.a.j) {}
+    do
+    {
+      return;
+      this.a.j = false;
+      this.a.runOnUiThread(new EditInfoActivity.18.1(this, paramBoolean, paramCard, paramInt));
+    } while (!QLog.isColorLevel());
+    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
   }
 }
 

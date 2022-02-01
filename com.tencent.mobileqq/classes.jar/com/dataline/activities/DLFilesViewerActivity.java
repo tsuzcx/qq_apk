@@ -3,8 +3,6 @@ package com.dataline.activities;
 import Override;
 import af;
 import ah;
-import amqd;
-import amqk;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -14,11 +12,14 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.TextView;
-import anuv;
+import ansr;
+import ansy;
+import aoxv;
 import com.dataline.util.file.DLFileInfo;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -38,7 +39,7 @@ public class DLFilesViewerActivity
   implements Observer
 {
   public static String a;
-  private amqk jdField_a_of_type_Amqk = new ah(this);
+  private ansy jdField_a_of_type_Ansy = new ah(this);
   private DataLineMsgSet jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private dr jdField_a_of_type_Dr;
@@ -60,34 +61,34 @@ public class DLFilesViewerActivity
       localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
       localDLFileInfo = dr.a(localDataLineMsgRecord);
       if (((localDLFileInfo.a != 0) && (localDLFileInfo.a != 3)) || (j != 0)) {
-        break label217;
+        break label218;
       }
       j = 1;
     }
-    label128:
-    label151:
-    label214:
-    label217:
+    label129:
+    label152:
+    label215:
+    label218:
     for (;;)
     {
       int k;
       if ((localDLFileInfo.a == 5) && (localDataLineMsgRecord.strMoloKey != null))
       {
-        amqd localamqd = (amqd)this.app.getBusinessHandler(8);
+        ansr localansr = (ansr)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
         if (!localDataLineMsgRecord.bIsApkFile) {
-          break label151;
+          break label152;
         }
-        if (localamqd.a(localDataLineMsgRecord.strMoloKey))
+        if (localansr.a(localDataLineMsgRecord.strMoloKey))
         {
           k = 1;
-          label122:
+          label123:
           localDataLineMsgRecord.nAppStatus = k;
         }
       }
       else
       {
         if ((localDLFileInfo.a == 5) || (i == 0)) {
-          break label214;
+          break label215;
         }
         i = 0;
       }
@@ -95,18 +96,18 @@ public class DLFilesViewerActivity
       {
         break;
         k = 0;
-        break label122;
+        break label123;
         localDataLineMsgRecord.nAppStatus = 1;
-        break label128;
+        break label129;
         if (i == 0)
         {
           this.rightViewText.setVisibility(0);
           if (j != 0)
           {
-            this.rightViewText.setText(getString(2131693403));
+            this.rightViewText.setText(getString(2131693584));
             return;
           }
-          this.rightViewText.setText(getString(2131693402));
+          this.rightViewText.setText(getString(2131693583));
           return;
         }
         this.rightViewText.setVisibility(8);
@@ -119,16 +120,16 @@ public class DLFilesViewerActivity
   {
     DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getFirstItem();
     if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335) && (localDataLineMsgRecord.bIsApkFile)) {
-      setTitle(2131693404);
+      setTitle(2131693585);
     }
     for (;;)
     {
       this.leftView.setVisibility(0);
-      this.leftView.setText(getString(2131693486));
+      this.leftView.setText(getString(2131693667));
       a();
       this.rightViewText.setOnClickListener(new af(this));
       return;
-      setTitle(2131693428);
+      setTitle(2131693609);
     }
   }
   
@@ -154,19 +155,19 @@ public class DLFilesViewerActivity
       finish();
       return false;
     }
-    getWindow().setBackgroundDrawableResource(2131165437);
-    setContentView(2131559045);
+    getWindow().setBackgroundDrawableResource(2131165443);
+    setContentView(2131559073);
     getWindow().setBackgroundDrawable(null);
     b();
-    findViewById(2131366670);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131366669));
+    findViewById(2131366782);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131366781));
     this.jdField_a_of_type_ComTencentWidgetXListView.setStackFromBottom(true);
     this.jdField_a_of_type_Dr = new dr(this, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet, this, this.app);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dr);
-    paramBundle = LayoutInflater.from(getActivity()).inflate(2131558939, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getActivity().getResources().getDrawable(2130844697));
+    paramBundle = LayoutInflater.from(getActivity()).inflate(2131558966, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getActivity().getResources().getDrawable(2130844766));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(paramBundle);
-    addObserver(this.jdField_a_of_type_Amqk);
+    addObserver(this.jdField_a_of_type_Ansy);
     paramBundle = this.app.getMessageFacade();
     if (paramBundle != null) {
       paramBundle.addObserver(this);
@@ -178,8 +179,8 @@ public class DLFilesViewerActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Amqk != null) {
-      removeObserver(this.jdField_a_of_type_Amqk);
+    if (this.jdField_a_of_type_Ansy != null) {
+      removeObserver(this.jdField_a_of_type_Ansy);
     }
     if (this.app.getMessageFacade() != null) {
       this.app.getMessageFacade().deleteObserver(this);

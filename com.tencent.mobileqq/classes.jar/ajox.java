@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class ajox
+class ajox
 {
-  float jdField_a_of_type_Float;
-  String jdField_a_of_type_JavaLangString;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public ajox(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, String paramString, float paramFloat)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-  }
+  private ajox(ajou paramajou) {}
 }
 
 

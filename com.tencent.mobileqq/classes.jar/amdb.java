@@ -1,18 +1,17 @@
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class amdb
   implements Animation.AnimationListener
 {
-  public amdb(ApolloGameActivity paramApolloGameActivity) {}
+  public amdb(SpecailCareListActivity paramSpecailCareListActivity) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    ApolloGameActivity.a(this.a).d();
-    ApolloGameActivity.a(this.a).setVisibility(4);
-    ApolloGameActivity.d(this.a);
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(8);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

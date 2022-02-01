@@ -1,118 +1,244 @@
-import android.view.View;
-import com.tencent.TMG.utils.QLog;
+import NS_MOBILE_NEWEST_FEEDS.QzoneData;
+import NS_MOBILE_NEWEST_FEEDS.feed_info;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
+import NS_QQ_STORY_META.META.StImage;
+import NS_QQ_STORY_META.META.StStoryFeed;
+import NS_WEISHI_QQ_PROFILE.stGetNewestFeedRspInner;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceInputStream;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bazh
-  extends bazc
+  extends MSFServlet
 {
-  public static final String a;
-  public int a;
-  public CharSequence a;
-  public ArrayList<bazi> a;
-  public int b;
-  protected final String b;
-  protected final String j = "showType";
-  protected final String k = "moreText";
-  protected final String l = "moreUrl";
-  public String m;
-  
-  static
+  private void b(boolean paramBoolean, newest_feeds_rsp paramnewest_feeds_rsp)
   {
-    jdField_a_of_type_JavaLangString = bazh.class.getSimpleName();
+    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    if ((paramBoolean) && (paramnewest_feeds_rsp != null))
+    {
+      a(paramBoolean, paramnewest_feeds_rsp);
+      localQQAppInterface.getContactsFeedManager().a(paramnewest_feeds_rsp);
+      localQQAppInterface.getContactsFeedManager().d();
+      return;
+    }
+    localQQAppInterface.getContactsFeedManager().c();
   }
   
-  public bazh(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  protected void a(boolean paramBoolean, newest_feeds_rsp paramnewest_feeds_rsp)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_b_of_type_JavaLangString = "itemList";
-  }
-  
-  public bazh(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_b_of_type_JavaLangString = "itemList";
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public void a(View paramView) {}
-  
-  public void a(String paramString)
-  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed isSuc=%s last_feed_time=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramnewest_feeds_rsp.last_feed_time) }));
+    }
+    QQAppInterface localQQAppInterface;
+    anvk localanvk;
+    if (paramBoolean)
+    {
+      localQQAppInterface = (QQAppInterface)getAppRuntime();
+      if (localQQAppInterface != null)
+      {
+        localanvk = (anvk)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if (localanvk == null) {}
+      }
+    }
+    ArrayList localArrayList;
+    Object localObject1;
+    Object localObject2;
+    long l;
     for (;;)
     {
-      int i;
-      JSONObject localJSONObject;
-      int n;
+      Object localObject4;
+      Object localObject5;
       try
       {
-        paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_Int = paramString.optInt("showType");
-        this.jdField_a_of_type_JavaLangCharSequence = paramString.optString("moreText");
-        this.m = paramString.optString("moreUrl");
-        JSONArray localJSONArray = paramString.optJSONArray("itemList");
-        if (this.jdField_a_of_type_JavaUtilArrayList == null)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          break label273;
-          if (i < localJSONArray.length())
-          {
-            localJSONObject = localJSONArray.optJSONObject(i);
-            paramString = null;
-            n = localJSONObject.optInt("type");
-          }
+        localArrayList = new ArrayList();
+        localObject1 = paramnewest_feeds_rsp.mapVcByte;
+        if ((localObject1 == null) || (((Map)localObject1).isEmpty())) {
+          break;
         }
-        else
+        localObject2 = ((Map)localObject1).keySet().iterator();
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
+        }
+        Object localObject3 = (Long)((Iterator)localObject2).next();
+        localObject4 = (QzoneData)((Map)localObject1).get(localObject3);
+        localObject3 = localanvk.a(String.valueOf(localObject3));
+        if (localObject3 == null) {
+          continue;
+        }
+        if (((QzoneData)localObject4).iType == 2)
         {
-          switch (n)
+          localObject5 = new JceInputStream();
+          ((JceInputStream)localObject5).wrap(((QzoneData)localObject4).vcByte);
+          ((JceInputStream)localObject5).setServerEncoding("utf-8");
+          localObject4 = new stGetNewestFeedRspInner();
+          ((stGetNewestFeedRspInner)localObject4).readFrom((JceInputStream)localObject5);
+          localObject5 = ((stGetNewestFeedRspInner)localObject4).mapItemInfo;
+          if ((localObject5 == null) || (((Map)localObject5).isEmpty())) {
+            continue;
+          }
+          localObject4 = (String)((Map)localObject5).get("upload_time");
+          localObject5 = (String)((Map)localObject5).get("desc");
+          if (QLog.isColorLevel()) {
+            QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed weishi feed, uploadTime=%s desc=%s", new Object[] { localObject4, localObject5 }));
+          }
+          try
           {
-          case 1: 
-            if (paramString == null) {
-              break label281;
+            l = Long.valueOf((String)localObject4).longValue();
+            if ((((ExtensionInfo)localObject3).feedTime > l) && (((ExtensionInfo)localObject3).feedType != 1)) {
+              continue;
             }
-            this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-            break label281;
-            this.jdField_a_of_type_JavaUtilArrayList.clear();
+            ((ExtensionInfo)localObject3).feedType = 1;
+            ((ExtensionInfo)localObject3).feedTime = l;
+            ((ExtensionInfo)localObject3).feedContent = ((String)localObject5);
+            ((ExtensionInfo)localObject3).feedHasPhoto = false;
+            ((ExtensionInfo)localObject3).feedPhotoUrl = null;
+            localArrayList.add(localObject3);
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            QLog.e("QzoneContactsFeedServlet", 1, "onGetQzoneContactsFeed fail.", localNumberFormatException);
+          }
+          continue;
+          return;
+        }
+      }
+      catch (Exception paramnewest_feeds_rsp)
+      {
+        QLog.e("QzoneContactsFeedServlet", 1, "onGetQzoneContactsFeed fail.", paramnewest_feeds_rsp);
+      }
+      int i = ((QzoneData)localObject4).iType;
+      if (i == 3) {
+        try
+        {
+          localObject5 = new META.StStoryFeed();
+          ((META.StStoryFeed)localObject5).mergeFrom(((QzoneData)localObject4).vcByte);
+          if (QLog.isColorLevel()) {
+            QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed story feed, uploadTime=%s feedPhotoUrl=%s", new Object[] { Long.valueOf(((META.StStoryFeed)localObject5).createTime.get()), ((META.StStoryFeed)localObject5).coverImage.url.get() }));
+          }
+          if (((localNumberFormatException.feedTime <= ((META.StStoryFeed)localObject5).createTime.get()) || (localNumberFormatException.feedType == 2)) && (!TextUtils.isEmpty(((META.StStoryFeed)localObject5).coverImage.url.get())))
+          {
+            localNumberFormatException.feedType = 2;
+            localNumberFormatException.feedTime = ((META.StStoryFeed)localObject5).createTime.get();
+            localNumberFormatException.feedContent = BaseApplicationImpl.getApplication().getString(2131689990);
+            localNumberFormatException.feedHasPhoto = false;
+            localNumberFormatException.feedPhotoUrl = ((META.StStoryFeed)localObject5).coverImage.url.get();
+            localArrayList.add(localNumberFormatException);
+          }
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          QLog.e("QzoneContactsFeedServlet", 1, "onGetQzoneContactsFeed fail.", localInvalidProtocolBufferMicroException);
+        }
+      }
+    }
+    paramnewest_feeds_rsp = paramnewest_feeds_rsp.vec_feed_info;
+    label631:
+    String str;
+    if ((paramnewest_feeds_rsp != null) && (!paramnewest_feeds_rsp.isEmpty()))
+    {
+      paramnewest_feeds_rsp = paramnewest_feeds_rsp.iterator();
+      while (paramnewest_feeds_rsp.hasNext())
+      {
+        localObject1 = (feed_info)paramnewest_feeds_rsp.next();
+        localObject2 = localanvk.a(String.valueOf(((feed_info)localObject1).opuin));
+        if (localObject2 != null)
+        {
+          l = ((feed_info)localObject1).time;
+          str = bazi.a(((feed_info)localObject1).strcontent, localQQAppInterface);
+          if (((feed_info)localObject1).has_pic != 1L) {
+            break label882;
           }
         }
       }
-      catch (JSONException paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 0, "layout 13 parse layout error :" + paramString.toString());
-        }
+    }
+    label882:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed qzone feed, qZoneFeedTime=%s qZoneFeedContent=%s qZoneFeedHasPhoto=%s", new Object[] { Long.valueOf(l), str, Boolean.valueOf(paramBoolean) }));
       }
+      if ((((ExtensionInfo)localObject2).feedTime > l) && (((ExtensionInfo)localObject2).feedType != 0)) {
+        break label631;
+      }
+      ((ExtensionInfo)localObject2).feedType = 0;
+      ((ExtensionInfo)localObject2).feedTime = l;
+      ((ExtensionInfo)localObject2).feedContent = str;
+      ((ExtensionInfo)localObject2).feedHasPhoto = paramBoolean;
+      ((ExtensionInfo)localObject2).feedPhotoUrl = ((feed_info)localObject1).strImgUrl;
+      localArrayList.add(localObject2);
+      break label631;
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneContactsFeedServlet", 2, String.format("onGetQzoneContactsFeed update size=%s", new Object[] { Integer.valueOf(localArrayList.size()) }));
+      }
+      if (localArrayList.size() <= 0) {
+        break;
+      }
+      localanvk.b(localArrayList);
+      paramnewest_feeds_rsp = (FriendListHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      if (paramnewest_feeds_rsp == null) {
+        break;
+      }
+      paramnewest_feeds_rsp.notifyUI(2, true, null);
       return;
-      if ((a() instanceof DynamicSearch.ResultItem))
-      {
-        paramString = new bazk(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, localJSONObject, n, (DynamicSearch.ResultItem)a());
-      }
-      else if ((a() instanceof UnifySearchCommon.ResultItem))
-      {
-        paramString = new bazk(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, localJSONObject, n, (UnifySearchCommon.ResultItem)a());
-        continue;
-        label273:
-        i = 0;
-        continue;
-        continue;
-        label281:
-        i += 1;
-      }
     }
   }
   
-  public int b()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    return 1;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    {
+      paramIntent = bazg.a(paramFromServiceMsg.getWupBuffer());
+      if (paramIntent != null)
+      {
+        b(true, paramIntent);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneContactsFeedServlet", 2, "inform QzoneContactsFeedServlet isSuccess false");
+      }
+      b(false, null);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneContactsFeedServlet", 2, "inform QzoneContactsFeedServlet resultcode fail.");
+    }
+    b(false, null);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null) {
+      return;
+    }
+    byte[] arrayOfByte = new bazg(bazi.a(paramIntent)).encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + "getAIONewestFeeds");
+    paramPacket.putSendData(paramIntent);
   }
 }
 

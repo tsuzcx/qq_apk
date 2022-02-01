@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
 class avxf
-  implements DialogInterface.OnClickListener
 {
-  avxf(avwv paramavwv) {}
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public avxf(avxc paramavxc, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    paramDialogInterface.dismiss();
-    bcef.b(this.a.a, "CliOper", "", "", avwv.b, avwv.b, 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
   }
 }
 

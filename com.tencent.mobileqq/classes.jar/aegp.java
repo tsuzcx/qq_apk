@@ -1,16 +1,23 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.3.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class aegp
-  extends AccessibilityDelegateCompat
+public class aegp
+  extends ayqy
 {
-  aegp(aegn paramaegn) {}
+  public aegp(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setSelected(false);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
+    }
+    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
+    {
+      List localList = ajzy.a().a();
+      this.a.runOnUiThread(new LebaListMgrActivity.3.1(this, localList));
+    }
   }
 }
 

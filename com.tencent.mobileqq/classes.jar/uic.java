@@ -1,531 +1,489 @@
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.ContentObserver;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.FileObserver;
-import android.provider.MediaStore.Images.Media;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialResManager.2;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialResManager.3;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialResManager.4;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialResManager.5;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialResManager.6;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class uic
-  extends ContentObserver
+  extends rmr
+  implements ujb
 {
-  private static final String jdField_a_of_type_JavaLangString = MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString();
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "_data", "date_added" };
-  private static final String jdField_b_of_type_JavaLangString = amtj.a(2131712692);
-  private int jdField_a_of_type_Int;
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
-  private FileObserver jdField_a_of_type_AndroidOsFileObserver;
+  private static String jdField_a_of_type_JavaLangString = "adMaterial";
+  private uib jdField_a_of_type_Uib = new uid(this);
   private uie jdField_a_of_type_Uie;
-  private int jdField_b_of_type_Int;
-  private String c;
   
-  public uic(Context paramContext, int paramInt1, int paramInt2)
+  public uic(AppInterface paramAppInterface)
   {
-    super(null);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if (Build.VERSION.SDK_INT < 23) {
-      if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi"))
+    super(paramAppInterface);
+  }
+  
+  private String a(MaterialData paramMaterialData)
+  {
+    int i = paramMaterialData.res_version;
+    String str1 = paramMaterialData.res_path;
+    String str2 = File.separator + i;
+    paramMaterialData = str1;
+    if (str1 != null)
+    {
+      paramMaterialData = str1;
+      if (str1.endsWith(str2))
       {
-        paramContext = uif.jdField_b_of_type_JavaLangString;
-        this.jdField_a_of_type_AndroidOsFileObserver = new uid(this, paramContext, 256, paramContext);
+        paramMaterialData = str1.substring(0, str1.length() - str2.length());
+        ukq.a("ReadInJoySuperMaskAd", "getRootDirectory = " + paramMaterialData);
       }
     }
-    for (;;)
+    return paramMaterialData;
+  }
+  
+  public static String a(String paramString1, String paramString2, int paramInt)
+  {
+    String str2 = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".readInjoy/resource/");
+    String str1 = str2;
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+      str1 = str2 + jdField_a_of_type_JavaLangString + "/";
+    }
+    return str1 + paramString1 + "_" + paramString2 + "/" + paramInt;
+  }
+  
+  private List<MaterialData> a(boolean paramBoolean)
+  {
+    ArrayList localArrayList = new ArrayList();
+    try
     {
-      b();
-      return;
-      if (Build.MANUFACTURER.equalsIgnoreCase("vivo"))
+      long l = NetConnInfoCenter.getServerTime();
+      String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+      Object localObject = "uin=? and end_time>? and isReady=?";
+      String[] arrayOfString = new String[3];
+      arrayOfString[0] = str;
+      arrayOfString[1] = String.valueOf(l);
+      arrayOfString[2] = String.valueOf(0);
+      if (paramBoolean)
       {
-        paramContext = uif.c;
-        break;
+        localObject = "uin=? and end_time>? and isReady=? and enable_4g=?";
+        arrayOfString = new String[4];
+        arrayOfString[0] = str;
+        arrayOfString[1] = String.valueOf(l);
+        arrayOfString[2] = String.valueOf(0);
+        arrayOfString[3] = String.valueOf(1);
       }
-      paramContext = uif.jdField_a_of_type_JavaLangString;
-      break;
-      this.jdField_a_of_type_AndroidContentContentResolver = paramContext.getContentResolver();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(MaterialData.class, MaterialData.class.getSimpleName(), true, (String)localObject, arrayOfString, null, null, null, null);
+      return localObject;
     }
-  }
-  
-  private boolean a(long paramLong)
-  {
-    return System.currentTimeMillis() - 1000L * paramLong < 1500L;
-  }
-  
-  private boolean a(String paramString)
-  {
-    paramString = paramString.toLowerCase();
-    return (paramString.contains("screenshot")) || (paramString.contains(jdField_b_of_type_JavaLangString));
-  }
-  
-  private void b()
-  {
-    if (Build.VERSION.SDK_INT < 23)
+    catch (Exception localException)
     {
-      this.jdField_a_of_type_AndroidOsFileObserver.startWatching();
+      c("getMaterialDataList query  failed " + QLog.getStackTraceString(localException));
+    }
+    return localArrayList;
+  }
+  
+  public static uic a(QQAppInterface paramQQAppInterface)
+  {
+    return (uic)paramQQAppInterface.getManager(QQManagerFactory.READINJOY_AD_MATERIAL_MANAGER);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, this);
+    ujh.a.a();
+    ujf.a.a();
   }
   
-  private void c()
+  private void a(ArrayList<MaterialData> paramArrayList)
   {
-    if (Build.VERSION.SDK_INT < 23)
-    {
-      this.jdField_a_of_type_AndroidOsFileObserver.stopWatching();
+    long l = NetConnInfoCenter.getServerTime();
+    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
       return;
     }
-    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
+    HashMap localHashMap = a();
+    int i = 0;
+    MaterialData localMaterialData1;
+    while (i < paramArrayList.size())
+    {
+      localMaterialData1 = (MaterialData)paramArrayList.get(i);
+      if (localMaterialData1 == null)
+      {
+        i += 1;
+      }
+      else
+      {
+        localMaterialData1.setStatus(1000);
+        MaterialData localMaterialData2;
+        if (localHashMap.containsKey(localMaterialData1.id))
+        {
+          localMaterialData2 = (MaterialData)localHashMap.get(localMaterialData1.id);
+          if (localMaterialData2 == null)
+          {
+            ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] : local data is empty , replace a new data");
+            label102:
+            b(localMaterialData1);
+            ujh.a.b(localMaterialData1);
+          }
+        }
+        for (;;)
+        {
+          localHashMap.put(localMaterialData1.id, localMaterialData1);
+          break;
+          if (!localMaterialData2.isReady)
+          {
+            ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] : local data is not ready , replace a new data");
+            break label102;
+          }
+          if (localMaterialData2.res_version != localMaterialData1.res_version)
+          {
+            FileUtils.deleteDirectory(a(localMaterialData2));
+            ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] : local data is version check fail , replace a new data");
+            break label102;
+          }
+          if (!uja.a(localMaterialData2))
+          {
+            ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] : local data file not exist , replace a new data");
+            break label102;
+          }
+          if (!uja.b(localMaterialData2))
+          {
+            ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] : local data manifest file not exist , replace a new data");
+            break label102;
+          }
+          ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] : file exist , not need download : " + localMaterialData1.id);
+          break;
+          b(localMaterialData1);
+        }
+      }
+    }
+    paramArrayList = localHashMap.entrySet().iterator();
+    while (paramArrayList.hasNext())
+    {
+      localMaterialData1 = (MaterialData)((Map.Entry)paramArrayList.next()).getValue();
+      if ((localMaterialData1 != null) && (!localMaterialData1.isReady) && (localMaterialData1.end_time >= l)) {
+        b(localMaterialData1);
+      }
+    }
+    a(localHashMap, l);
   }
   
-  public void a()
+  private void a(HashMap<String, MaterialData> paramHashMap, long paramLong)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = paramHashMap.entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      MaterialData localMaterialData = (MaterialData)((Map.Entry)((Iterator)localObject).next()).getValue();
+      if ((localMaterialData != null) && (localMaterialData.end_time < paramLong)) {
+        localArrayList.add(localMaterialData.id);
+      }
+    }
+    if (localArrayList.size() > 0)
+    {
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        localObject = (MaterialData)paramHashMap.get(localArrayList.get(i));
+        if (localObject != null)
+        {
+          QLog.d("ReadInJoySuperMaskAd", 1, "[PRELOAD] : file over time , need clear : " + ((MaterialData)localObject).id + " endTime = " + ((MaterialData)localObject).end_time);
+          ujh.a.b(localObject);
+          d((MaterialData)localObject);
+          FileUtils.deleteDirectory(a((MaterialData)localObject));
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  private boolean a(MaterialData paramMaterialData)
+  {
+    if (paramMaterialData == null) {
+      return false;
+    }
+    JSONObject localJSONObject = paramMaterialData.toJson();
+    Object localObject = new ujp(localJSONObject, new ujq(paramMaterialData.adid, paramMaterialData.ad_source, paramMaterialData.res_version), false, 1);
+    boolean bool = ujt.a.a("[PRELOAD]", new ujc[] { localObject });
+    localObject = localJSONObject.optString("animFileName");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramMaterialData.animFileName = ((String)localObject);
+      ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] : checkFinalResFile, id = " + paramMaterialData.id + " result = " + bool + " fileName = " + (String)localObject);
+    }
+    paramMaterialData.superMaskType = localJSONObject.optInt("superMaskType");
+    return bool;
+  }
+  
+  private boolean a(MaterialData paramMaterialData, File paramFile)
+  {
+    paramMaterialData = new ujm(paramMaterialData, paramFile);
+    return ujt.a.a("[PRELOAD]", new ujc[] { paramMaterialData });
+  }
+  
+  private void b(bhyo parambhyo, MaterialData paramMaterialData, File paramFile)
+  {
+    if ((parambhyo == null) || (paramMaterialData == null))
+    {
+      FileUtils.deleteFile(paramFile);
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.remove(jdField_a_of_type_JavaLangString + "_" + paramMaterialData.id);
+    int i = parambhyo.a;
+    if (i != 0)
+    {
+      ujg.a.a(paramMaterialData.toJson(), false, "errorCode = " + i, "", "resource_download_key");
+      ujg.a.a(paramMaterialData.adid, "downloadFail", paramMaterialData.res_version);
+      FileUtils.deleteFile(paramFile);
+      return;
+    }
+    ujg.a.a(paramMaterialData.adid, "downloadSuccess", paramMaterialData.res_version);
+    if ((paramFile == null) || (!paramFile.exists()))
+    {
+      ujg.a.a(paramMaterialData.adid, "noFile", paramMaterialData.res_version);
+      return;
+    }
+    if (!a(paramMaterialData, paramFile))
+    {
+      ujg.a.a(paramMaterialData.toJson(), false, "check file md5 failed", "", "resource_download_key");
+      ujg.a.a(paramMaterialData.adid, "md5Fail", paramMaterialData.res_version);
+      FileUtils.deleteFile(paramFile);
+      return;
+    }
+    paramMaterialData.res_path = a(paramMaterialData.ad_source, paramMaterialData.adid, paramMaterialData.res_version);
+    try
+    {
+      FileUtils.uncompressZip(paramFile.getAbsolutePath(), paramMaterialData.res_path, false);
+      ujg.a.a(paramMaterialData.adid, "zipSuccess", paramMaterialData.res_version);
+      if (a(paramMaterialData))
+      {
+        ujg.a.a(paramMaterialData.adid, "AllSuccess", paramMaterialData.res_version);
+        ujh.a.a(paramMaterialData);
+        e(paramMaterialData);
+        ujg.a.a(paramMaterialData.toJson(), true, "no error", "", "resource_download_key");
+        FileUtils.deleteFile(paramFile);
+        return;
+      }
+    }
+    catch (IOException parambhyo)
+    {
+      for (;;)
+      {
+        ujg.a.a(paramMaterialData.adid, "zipFail", paramMaterialData.res_version);
+        parambhyo.printStackTrace();
+        continue;
+        FileUtils.deleteDirectory(a(paramMaterialData));
+        ujg.a.a(paramMaterialData.toJson(), false, "res_path file not exist", "", "resource_download_key");
+      }
+    }
+  }
+  
+  private void b(MaterialData paramMaterialData)
+  {
+    if (paramMaterialData.end_time <= NetConnInfoCenter.getServerTime()) {}
+    while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
+      return;
+    }
+    if (NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp()))
+    {
+      ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] netType = wifi");
+      a(jdField_a_of_type_JavaLangString, paramMaterialData, 2);
+      return;
+    }
+    if ((bizo.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp()) == 4) && (paramMaterialData.enable_4g == 1))
+    {
+      ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] : download by 4G : id = " + paramMaterialData.adid);
+      ThreadManager.getSubThreadHandler().postDelayed(new AdMaterialResManager.5(this, paramMaterialData), 10000L);
+      return;
+    }
+    ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] netType = " + bizo.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp()) + " enable_4g = " + paramMaterialData.enable_4g);
+  }
+  
+  private void b(String paramString)
+  {
+    ThreadManagerV2.excute(new AdMaterialResManager.4(this, paramString), 64, null, true);
+  }
+  
+  private boolean b(MaterialData paramMaterialData)
+  {
+    boolean bool = false;
+    if (paramMaterialData.getStatus() == 1000)
+    {
+      c(paramMaterialData);
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramMaterialData);
+      if (paramMaterialData.getStatus() != 1001) {}
+    }
+    for (bool = true;; bool = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramMaterialData)) {
+      do
+      {
+        ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] : persistOrReplaceToDB, id = " + paramMaterialData.id + " result = " + bool);
+        return bool;
+      } while ((paramMaterialData.getStatus() != 1001) && (paramMaterialData.getStatus() != 1002));
+    }
+  }
+  
+  private void c(MaterialData paramMaterialData)
+  {
+    Entity localEntity = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(MaterialData.class, "id = ?", new String[] { paramMaterialData.id });
+    if (localEntity != null)
+    {
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localEntity);
+      ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] : removeEntityIfExistsInDB, id = " + paramMaterialData.id + " result = " + bool);
+    }
+  }
+  
+  private static void c(String paramString)
+  {
+    QLog.d("AdMaterialResManager", 2, paramString);
+  }
+  
+  private void d(MaterialData paramMaterialData)
+  {
+    paramMaterialData.setStatus(1001);
+    int i = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.delete(MaterialData.class.getSimpleName(), "id=? ", new String[] { paramMaterialData.id });
+    ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] : deleteToDB, id = " + paramMaterialData.id + " result = " + i);
+  }
+  
+  private void e(MaterialData paramMaterialData)
+  {
+    paramMaterialData.isReady = true;
+    paramMaterialData.setStatus(1001);
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramMaterialData);
+    ukq.a("ReadInJoySuperMaskAd", "[PRELOAD] : updateToDB , id = " + paramMaterialData.id + "result = " + bool);
+  }
+  
+  public MaterialData a(String paramString)
+  {
+    Object localObject1 = null;
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(MaterialData.class, MaterialData.class.getSimpleName(), true, "id=?", new String[] { paramString }, null, null, null, null);
+    paramString = localObject1;
+    if (localObject2 != null)
+    {
+      paramString = localObject1;
+      if (((List)localObject2).size() > 0)
+      {
+        localObject2 = (Entity)((List)localObject2).get(0);
+        paramString = localObject1;
+        if ((localObject2 instanceof MaterialData)) {
+          paramString = (MaterialData)localObject2;
+        }
+      }
+    }
+    return paramString;
+  }
+  
+  public HashMap<String, MaterialData> a()
+  {
+    List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(MaterialData.class);
+    HashMap localHashMap = new HashMap();
+    if ((localList != null) && (localList.size() > 0))
+    {
+      int i = 0;
+      while (i < localList.size())
+      {
+        Entity localEntity = (Entity)localList.get(i);
+        if ((localEntity instanceof MaterialData)) {
+          localHashMap.put(((MaterialData)localEntity).id, (MaterialData)localEntity);
+        }
+        i += 1;
+      }
+    }
+    return localHashMap;
+  }
+  
+  public void a(Context paramContext, String paramString, BaseResData paramBaseResData) {}
+  
+  public void a(bhyo parambhyo, MaterialData paramMaterialData, File paramFile)
+  {
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      ThreadManagerV2.executeOnSubThread(new AdMaterialResManager.6(this, parambhyo, paramMaterialData, paramFile));
+      return;
+    }
+    b(parambhyo, paramMaterialData, paramFile);
+  }
+  
+  public void a(MaterialData paramMaterialData)
+  {
+    if (paramMaterialData != null) {
+      ujg.a.a(paramMaterialData.adid, "startDownload", paramMaterialData.res_version);
+    }
+  }
+  
+  public void a(String paramString, BaseResData paramBaseResData) {}
+  
+  public void b()
+  {
+    ThreadManagerV2.executeOnSubThread(new AdMaterialResManager.2(this));
+  }
+  
+  public void b(String paramString, BaseResData paramBaseResData) {}
+  
+  public boolean b(String paramString, BaseResData paramBaseResData)
+  {
+    return false;
+  }
+  
+  public void c()
+  {
+    ThreadManagerV2.executeOnSubThread(new AdMaterialResManager.3(this));
+  }
+  
+  public boolean c(String paramString, BaseResData paramBaseResData)
+  {
+    return false;
+  }
+  
+  public void d()
   {
     c();
-    this.jdField_a_of_type_AndroidOsFileObserver = null;
-    this.jdField_a_of_type_AndroidContentContentResolver = null;
-    this.jdField_a_of_type_Uie = null;
   }
   
-  public void a(uie paramuie)
+  public void e()
   {
-    this.jdField_a_of_type_Uie = paramuie;
+    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_Uib != null)) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Uib);
+    }
+    this.jdField_a_of_type_Uie = new uie(this);
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
+      return;
+    }
+    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_Uie);
   }
   
-  public void onChange(boolean paramBoolean)
+  public void onDestroy()
   {
-    super.onChange(paramBoolean);
-    onChange(paramBoolean, null);
-  }
-  
-  /* Error */
-  public void onChange(boolean paramBoolean, Uri paramUri)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aconst_null
-    //   4: astore 7
-    //   6: aconst_null
-    //   7: astore 6
-    //   9: invokestatic 158	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   12: ifeq +30 -> 42
-    //   15: ldc 160
-    //   17: iconst_2
-    //   18: new 162	java/lang/StringBuilder
-    //   21: dup
-    //   22: invokespecial 164	java/lang/StringBuilder:<init>	()V
-    //   25: ldc 166
-    //   27: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: invokestatic 109	java/lang/System:currentTimeMillis	()J
-    //   33: invokevirtual 173	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   36: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   39: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   42: aload_2
-    //   43: ifnonnull +301 -> 344
-    //   46: aload_0
-    //   47: getfield 96	uic:jdField_a_of_type_AndroidContentContentResolver	Landroid/content/ContentResolver;
-    //   50: getstatic 21	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
-    //   53: getstatic 37	uic:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   56: aconst_null
-    //   57: aconst_null
-    //   58: ldc 180
-    //   60: invokevirtual 184	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   63: astore 4
-    //   65: aload 4
-    //   67: ifnull +205 -> 272
-    //   70: aload 4
-    //   72: astore_3
-    //   73: aload 4
-    //   75: invokeinterface 190 1 0
-    //   80: ifle +192 -> 272
-    //   83: aload 4
-    //   85: astore_3
-    //   86: aload 4
-    //   88: invokeinterface 193 1 0
-    //   93: pop
-    //   94: aload 4
-    //   96: astore_3
-    //   97: aload 4
-    //   99: aload 4
-    //   101: ldc 33
-    //   103: invokeinterface 197 2 0
-    //   108: invokeinterface 200 2 0
-    //   113: astore 5
-    //   115: aload 4
-    //   117: astore_3
-    //   118: aload_0
-    //   119: aload 4
-    //   121: aload 4
-    //   123: ldc 35
-    //   125: invokeinterface 197 2 0
-    //   130: invokeinterface 204 2 0
-    //   135: invokespecial 206	uic:a	(J)Z
-    //   138: ifeq +134 -> 272
-    //   141: aload 4
-    //   143: astore_3
-    //   144: aload_0
-    //   145: aload 5
-    //   147: invokespecial 208	uic:a	(Ljava/lang/String;)Z
-    //   150: ifeq +122 -> 272
-    //   153: aload 4
-    //   155: astore_3
-    //   156: invokestatic 211	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   159: ifeq +37 -> 196
-    //   162: aload 4
-    //   164: astore_3
-    //   165: ldc 160
-    //   167: iconst_2
-    //   168: new 162	java/lang/StringBuilder
-    //   171: dup
-    //   172: invokespecial 164	java/lang/StringBuilder:<init>	()V
-    //   175: ldc 213
-    //   177: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   180: aload 5
-    //   182: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   185: ldc 215
-    //   187: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   190: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   193: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   196: aload 5
-    //   198: ifnull +48 -> 246
-    //   201: aload 4
-    //   203: astore_3
-    //   204: aload 5
-    //   206: aload_0
-    //   207: getfield 98	uic:c	Ljava/lang/String;
-    //   210: invokevirtual 71	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   213: istore_1
-    //   214: iload_1
-    //   215: ifeq +22 -> 237
-    //   218: aload 4
-    //   220: ifnull +10 -> 230
-    //   223: aload 4
-    //   225: invokeinterface 218 1 0
-    //   230: return
-    //   231: astore_2
-    //   232: aload_2
-    //   233: invokevirtual 221	java/lang/Exception:printStackTrace	()V
-    //   236: return
-    //   237: aload 4
-    //   239: astore_3
-    //   240: aload_0
-    //   241: aload 5
-    //   243: putfield 98	uic:c	Ljava/lang/String;
-    //   246: aload 4
-    //   248: astore_3
-    //   249: aload_0
-    //   250: getfield 102	uic:jdField_a_of_type_Uie	Luie;
-    //   253: ifnull +19 -> 272
-    //   256: aload 4
-    //   258: astore_3
-    //   259: aload_0
-    //   260: getfield 102	uic:jdField_a_of_type_Uie	Luie;
-    //   263: aload_2
-    //   264: aload 5
-    //   266: iconst_1
-    //   267: invokeinterface 226 4 0
-    //   272: aload 4
-    //   274: ifnull -44 -> 230
-    //   277: aload 4
-    //   279: invokeinterface 218 1 0
-    //   284: return
-    //   285: astore_2
-    //   286: aload_2
-    //   287: invokevirtual 221	java/lang/Exception:printStackTrace	()V
-    //   290: return
-    //   291: astore_2
-    //   292: aconst_null
-    //   293: astore 4
-    //   295: aload 4
-    //   297: astore_3
-    //   298: aload_2
-    //   299: invokevirtual 221	java/lang/Exception:printStackTrace	()V
-    //   302: aload 4
-    //   304: ifnull -74 -> 230
-    //   307: aload 4
-    //   309: invokeinterface 218 1 0
-    //   314: return
-    //   315: astore_2
-    //   316: aload_2
-    //   317: invokevirtual 221	java/lang/Exception:printStackTrace	()V
-    //   320: return
-    //   321: astore_2
-    //   322: aconst_null
-    //   323: astore_3
-    //   324: aload_3
-    //   325: ifnull +9 -> 334
-    //   328: aload_3
-    //   329: invokeinterface 218 1 0
-    //   334: aload_2
-    //   335: athrow
-    //   336: astore_3
-    //   337: aload_3
-    //   338: invokevirtual 221	java/lang/Exception:printStackTrace	()V
-    //   341: goto -7 -> 334
-    //   344: aload 5
-    //   346: astore 4
-    //   348: aload 7
-    //   350: astore_3
-    //   351: aload_2
-    //   352: invokevirtual 27	android/net/Uri:toString	()Ljava/lang/String;
-    //   355: getstatic 29	uic:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   358: invokevirtual 229	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   361: ifeq +306 -> 667
-    //   364: aload 5
-    //   366: astore 4
-    //   368: aload 7
-    //   370: astore_3
-    //   371: aload_0
-    //   372: getfield 96	uic:jdField_a_of_type_AndroidContentContentResolver	Landroid/content/ContentResolver;
-    //   375: aload_2
-    //   376: getstatic 37	uic:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   379: aconst_null
-    //   380: aconst_null
-    //   381: ldc 180
-    //   383: invokevirtual 184	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   386: astore 5
-    //   388: aload 5
-    //   390: astore 6
-    //   392: aload 5
-    //   394: ifnull +273 -> 667
-    //   397: aload 5
-    //   399: astore 6
-    //   401: aload 5
-    //   403: astore 4
-    //   405: aload 5
-    //   407: astore_3
-    //   408: aload 5
-    //   410: invokeinterface 190 1 0
-    //   415: ifle +252 -> 667
-    //   418: aload 5
-    //   420: astore 4
-    //   422: aload 5
-    //   424: astore_3
-    //   425: aload 5
-    //   427: invokeinterface 193 1 0
-    //   432: pop
-    //   433: aload 5
-    //   435: astore 4
-    //   437: aload 5
-    //   439: astore_3
-    //   440: aload 5
-    //   442: aload 5
-    //   444: ldc 33
-    //   446: invokeinterface 197 2 0
-    //   451: invokeinterface 200 2 0
-    //   456: astore 7
-    //   458: aload 5
-    //   460: astore 6
-    //   462: aload 5
-    //   464: astore 4
-    //   466: aload 5
-    //   468: astore_3
-    //   469: aload_0
-    //   470: aload 5
-    //   472: aload 5
-    //   474: ldc 35
-    //   476: invokeinterface 197 2 0
-    //   481: invokeinterface 204 2 0
-    //   486: invokespecial 206	uic:a	(J)Z
-    //   489: ifeq +178 -> 667
-    //   492: aload 5
-    //   494: astore 6
-    //   496: aload 5
-    //   498: astore 4
-    //   500: aload 5
-    //   502: astore_3
-    //   503: aload_0
-    //   504: aload 7
-    //   506: invokespecial 208	uic:a	(Ljava/lang/String;)Z
-    //   509: ifeq +158 -> 667
-    //   512: aload 5
-    //   514: astore 4
-    //   516: aload 5
-    //   518: astore_3
-    //   519: invokestatic 211	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   522: ifeq +45 -> 567
-    //   525: aload 5
-    //   527: astore 4
-    //   529: aload 5
-    //   531: astore_3
-    //   532: ldc 160
-    //   534: iconst_2
-    //   535: new 162	java/lang/StringBuilder
-    //   538: dup
-    //   539: invokespecial 164	java/lang/StringBuilder:<init>	()V
-    //   542: ldc 213
-    //   544: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   547: aload 7
-    //   549: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   552: ldc 231
-    //   554: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   557: aload_2
-    //   558: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   561: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   564: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   567: aload 7
-    //   569: ifnull +56 -> 625
-    //   572: aload 5
-    //   574: astore 4
-    //   576: aload 5
-    //   578: astore_3
-    //   579: aload 7
-    //   581: aload_0
-    //   582: getfield 98	uic:c	Ljava/lang/String;
-    //   585: invokevirtual 71	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   588: istore_1
-    //   589: iload_1
-    //   590: ifeq +22 -> 612
-    //   593: aload 5
-    //   595: ifnull -365 -> 230
-    //   598: aload 5
-    //   600: invokeinterface 218 1 0
-    //   605: return
-    //   606: astore_2
-    //   607: aload_2
-    //   608: invokevirtual 221	java/lang/Exception:printStackTrace	()V
-    //   611: return
-    //   612: aload 5
-    //   614: astore 4
-    //   616: aload 5
-    //   618: astore_3
-    //   619: aload_0
-    //   620: aload 7
-    //   622: putfield 98	uic:c	Ljava/lang/String;
-    //   625: aload 5
-    //   627: astore 6
-    //   629: aload 5
-    //   631: astore 4
-    //   633: aload 5
-    //   635: astore_3
-    //   636: aload_0
-    //   637: getfield 102	uic:jdField_a_of_type_Uie	Luie;
-    //   640: ifnull +27 -> 667
-    //   643: aload 5
-    //   645: astore 4
-    //   647: aload 5
-    //   649: astore_3
-    //   650: aload_0
-    //   651: getfield 102	uic:jdField_a_of_type_Uie	Luie;
-    //   654: aload_2
-    //   655: aload 7
-    //   657: iconst_1
-    //   658: invokeinterface 226 4 0
-    //   663: aload 5
-    //   665: astore 6
-    //   667: aload 6
-    //   669: ifnull -439 -> 230
-    //   672: aload 6
-    //   674: invokeinterface 218 1 0
-    //   679: return
-    //   680: astore_2
-    //   681: aload_2
-    //   682: invokevirtual 221	java/lang/Exception:printStackTrace	()V
-    //   685: return
-    //   686: astore_2
-    //   687: aload 4
-    //   689: astore_3
-    //   690: aload_2
-    //   691: invokevirtual 221	java/lang/Exception:printStackTrace	()V
-    //   694: aload 4
-    //   696: ifnull -466 -> 230
-    //   699: aload 4
-    //   701: invokeinterface 218 1 0
-    //   706: return
-    //   707: astore_2
-    //   708: aload_2
-    //   709: invokevirtual 221	java/lang/Exception:printStackTrace	()V
-    //   712: return
-    //   713: astore_2
-    //   714: aload_3
-    //   715: ifnull +9 -> 724
-    //   718: aload_3
-    //   719: invokeinterface 218 1 0
-    //   724: aload_2
-    //   725: athrow
-    //   726: astore_3
-    //   727: aload_3
-    //   728: invokevirtual 221	java/lang/Exception:printStackTrace	()V
-    //   731: goto -7 -> 724
-    //   734: astore_2
-    //   735: goto -411 -> 324
-    //   738: astore_2
-    //   739: goto -444 -> 295
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	742	0	this	uic
-    //   0	742	1	paramBoolean	boolean
-    //   0	742	2	paramUri	Uri
-    //   72	257	3	localObject1	java.lang.Object
-    //   336	2	3	localException1	java.lang.Exception
-    //   350	369	3	localObject2	java.lang.Object
-    //   726	2	3	localException2	java.lang.Exception
-    //   63	637	4	localObject3	java.lang.Object
-    //   1	663	5	localObject4	java.lang.Object
-    //   7	666	6	localObject5	java.lang.Object
-    //   4	652	7	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   223	230	231	java/lang/Exception
-    //   277	284	285	java/lang/Exception
-    //   46	65	291	java/lang/Exception
-    //   307	314	315	java/lang/Exception
-    //   46	65	321	finally
-    //   328	334	336	java/lang/Exception
-    //   598	605	606	java/lang/Exception
-    //   672	679	680	java/lang/Exception
-    //   351	364	686	java/lang/Exception
-    //   371	388	686	java/lang/Exception
-    //   408	418	686	java/lang/Exception
-    //   425	433	686	java/lang/Exception
-    //   440	458	686	java/lang/Exception
-    //   469	492	686	java/lang/Exception
-    //   503	512	686	java/lang/Exception
-    //   519	525	686	java/lang/Exception
-    //   532	567	686	java/lang/Exception
-    //   579	589	686	java/lang/Exception
-    //   619	625	686	java/lang/Exception
-    //   636	643	686	java/lang/Exception
-    //   650	663	686	java/lang/Exception
-    //   699	706	707	java/lang/Exception
-    //   351	364	713	finally
-    //   371	388	713	finally
-    //   408	418	713	finally
-    //   425	433	713	finally
-    //   440	458	713	finally
-    //   469	492	713	finally
-    //   503	512	713	finally
-    //   519	525	713	finally
-    //   532	567	713	finally
-    //   579	589	713	finally
-    //   619	625	713	finally
-    //   636	643	713	finally
-    //   650	663	713	finally
-    //   690	694	713	finally
-    //   718	724	726	java/lang/Exception
-    //   73	83	734	finally
-    //   86	94	734	finally
-    //   97	115	734	finally
-    //   118	141	734	finally
-    //   144	153	734	finally
-    //   156	162	734	finally
-    //   165	196	734	finally
-    //   204	214	734	finally
-    //   240	246	734	finally
-    //   249	256	734	finally
-    //   259	272	734	finally
-    //   298	302	734	finally
-    //   73	83	738	java/lang/Exception
-    //   86	94	738	java/lang/Exception
-    //   97	115	738	java/lang/Exception
-    //   118	141	738	java/lang/Exception
-    //   144	153	738	java/lang/Exception
-    //   156	162	738	java/lang/Exception
-    //   165	196	738	java/lang/Exception
-    //   204	214	738	java/lang/Exception
-    //   240	246	738	java/lang/Exception
-    //   249	256	738	java/lang/Exception
-    //   259	272	738	java/lang/Exception
+    if ((this.jdField_a_of_type_Uib != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Uib);
+    }
+    if (this.jdField_a_of_type_Uie != null) {
+      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Uie);
+    }
+    super.onDestroy();
   }
 }
 

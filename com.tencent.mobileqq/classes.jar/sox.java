@@ -1,22 +1,29 @@
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import com.tencent.qphone.base.util.QLog;
 
-public class sox
+class sox
   extends Handler
 {
-  public sox(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Looper paramLooper)
+  sox(sow paramsow, Looper paramLooper)
   {
     super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == ReadInjoyXRecyclerView.b) {
-      this.a.b();
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + sow.a(this.a));
+      }
+    } while (!sow.a(this.a));
+    this.a.a(1);
   }
 }
 

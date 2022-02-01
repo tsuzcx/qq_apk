@@ -1,7 +1,7 @@
 package com.tencent.gamecenter.common.util;
 
-import abfg;
-import abfi;
+import abuv;
+import abux;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
@@ -9,24 +9,24 @@ import android.text.TextUtils;
 public class ScreenshotManager$1
   implements Runnable
 {
-  public ScreenshotManager$1(abfg paramabfg, String paramString, abfi paramabfi) {}
+  public ScreenshotManager$1(abuv paramabuv, String paramString, abux paramabux) {}
   
   public void run()
   {
-    abfg localabfg;
+    abuv localabuv;
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      localabfg = this.this$0;
-      if (abfg.a(this.this$0) != null) {
+      localabuv = this.this$0;
+      if (abuv.a(this.this$0) != null) {
         break label80;
       }
     }
     label80:
-    for (Bitmap localBitmap = BitmapFactory.decodeFile(abfg.b + this.jdField_a_of_type_JavaLangString);; localBitmap = abfg.a(this.this$0))
+    for (Bitmap localBitmap = BitmapFactory.decodeFile(abuv.b + this.jdField_a_of_type_JavaLangString);; localBitmap = abuv.a(this.this$0))
     {
-      abfg.a(localabfg, localBitmap);
-      if (this.jdField_a_of_type_Abfi != null) {
-        this.jdField_a_of_type_Abfi.a(304, "load to mem");
+      abuv.a(localabuv, localBitmap);
+      if (this.jdField_a_of_type_Abux != null) {
+        this.jdField_a_of_type_Abux.a(304, "load to mem");
       }
       return;
     }

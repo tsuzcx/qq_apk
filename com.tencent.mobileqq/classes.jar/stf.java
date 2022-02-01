@@ -1,54 +1,21 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.HashSet;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
 public class stf
+  extends stj
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private HashSet<ste> jdField_a_of_type_JavaUtilHashSet;
-  private HashSet<ste> b;
-  private HashSet<ste> c;
-  
-  private void a(ste paramste)
+  public stf(ssz paramssz)
   {
-    if (this.c.contains(paramste)) {}
-    do
-    {
-      return;
-      this.c.add(paramste);
-    } while ((!this.b.contains(paramste)) || (this.jdField_a_of_type_JavaUtilHashSet.contains(paramste)));
-    this.jdField_a_of_type_JavaUtilHashSet.add(paramste);
-    b(paramste);
+    super(paramssz);
   }
   
-  private void b(ste paramste)
+  public void a(int paramInt, Object paramObject)
   {
-    float f = paramste.jdField_a_of_type_Float;
-    long l = paramste.jdField_a_of_type_Long;
-    paramste = paramste.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-    if (paramste == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_HW_DECODE_FAILED");
     }
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    try
-    {
-      localJSONObject1.put("article_id", String.valueOf(paramste.mArticleID));
-      localJSONObject1.put("rowkey", String.valueOf(paramste.mRowKey));
-      paramste.mBusiJson = localJSONObject1;
-      localJSONObject2.put("exposureArea", f);
-      localJSONObject2.put("exposureTime", l);
-      paramste.mReportDataJson = localJSONObject2;
-      tqk.a(false, this.jdField_a_of_type_AndroidContentContext, paramste, obb.aq, obb.b, 2);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        twp.a("ListAdExposeManager", localException.getMessage());
-      }
+    this.a.a.jdField_f_of_type_Boolean = true;
+    if ((paramObject instanceof String)) {
+      this.a.a.jdField_f_of_type_JavaLangString = ((String)paramObject);
     }
   }
 }

@@ -1,32 +1,13 @@
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
+
 public class akey
 {
-  private static volatile akey jdField_a_of_type_Akey;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static akey a()
-  {
-    if (jdField_a_of_type_Akey == null) {}
-    try
-    {
-      if (jdField_a_of_type_Akey == null) {
-        jdField_a_of_type_Akey = new akey();
-      }
-      return jdField_a_of_type_Akey;
-    }
-    finally {}
-  }
-  
-  public void a(akfa paramakfa)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (paramakfa != null) {
-        paramakfa.a(true);
-      }
-      return;
-    }
-    bbzm.a().a("tensorflowlite_jni", new akez(this, paramakfa));
-  }
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

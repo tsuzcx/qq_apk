@@ -1,25 +1,48 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 class qpn
-  implements bjrk
+  implements ViewBase.OnClickListener
 {
-  qpn(qpk paramqpk) {}
+  qpn(qph paramqph, ViewBase paramViewBase, qfw paramqfw) {}
   
-  public void a()
+  public void onClick(ViewBase paramViewBase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FeedItemCell", 2, "onAdComplain");
+    boolean bool = true;
+    paramViewBase = (qut)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getParent().findViewBaseByName("id_pgc_short_content_video_view");
+    Object localObject = this.jdField_a_of_type_Qfw.a();
+    if (((ArticleInfo)localObject).mProteusTemplateBean == null) {
+      QLog.e("PgcShortContentProteusItem", 1, "articleInfo.mProteusTemplateBean is null");
     }
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    ViewBase localViewBase;
+    do
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_from_type", 1);
-      localIntent.putExtra("key_ad_info", ((pvc)this.a.jdField_a_of_type_JavaLangObject).a());
-      PublicFragmentActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+      return;
+      localObject = ((ArticleInfo)localObject).mProteusTemplateBean.getViewBean().findViewFromChild("id_pgc_short_content_video_audio_icon");
+      localViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getParent().findViewBaseByName("id_pgc_short_content_video_audio_icon");
+    } while ((localViewBase == null) || (paramViewBase == null) || (localObject == null));
+    if (!"video_audio_mute".equals(((ViewBean)localObject).valueBean.dynamicValue.get("loadImageWithPath:")))
+    {
+      paramViewBase.a().setMute(bool);
+      if (!bool) {
+        break label140;
+      }
+    }
+    label140:
+    for (paramViewBase = "video_audio_mute";; paramViewBase = "video_audio_speak")
+    {
+      ((ViewBean)localObject).putMapValue("pgc_video_content_audio_icon", paramViewBase);
+      localViewBase.bindDynamicValue((ViewBean)localObject);
+      return;
+      bool = false;
+      break;
     }
   }
 }

@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-
 public class acpa
-  implements bhhv
+  implements acoz
 {
-  public acpa(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  private acny<Integer, acoy> a = new acnz();
   
-  public void a()
+  public acoy a(Integer paramInteger)
   {
-    this.a.onBackPressed();
-    AddFriendLogicActivity.a(this.a).a(null);
+    return (acoy)this.a.a(paramInteger);
+  }
+  
+  public void a(Integer paramInteger, Class<? extends acoy> paramClass)
+  {
+    this.a.a(paramInteger, paramClass);
   }
 }
 

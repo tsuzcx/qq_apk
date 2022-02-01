@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adrh
-  implements View.OnClickListener
+public abstract interface adrh
 {
-  public adrh(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public abstract void a(Activity paramActivity);
   
-  public void onClick(View paramView)
-  {
-    MoveToGroupActivity.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt);
+  
+  public abstract void b(QQAppInterface paramQQAppInterface, int paramInt);
 }
 
 

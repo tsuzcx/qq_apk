@@ -1,8 +1,26 @@
-import UserGrowth.stSimpleMetaFeed;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ukh
+public class ukh
 {
-  public abstract void a(bjwy<stSimpleMetaFeed> parambjwy);
+  public SparseArray<ukg> a = new SparseArray();
+  
+  public ukh()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExposureSupplementUtil", 2, "create ExposureSupplementUtilManager");
+    }
+  }
+  
+  public ukg a(int paramInt)
+  {
+    return (ukg)this.a.get(paramInt);
+  }
+  
+  public void a(int paramInt, ukg paramukg)
+  {
+    this.a.put(paramInt, paramukg);
+  }
 }
 
 

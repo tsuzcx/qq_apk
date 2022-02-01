@@ -1,20 +1,21 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auyk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public Context a;
-  public Drawable a;
-  public View.OnClickListener a;
-  public aqmf a;
-  public auxp a;
-  public QQAppInterface a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public auyk(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    ((awtq)this.a.a.getManager(QQManagerFactory.TEMP_MSG_SETTTING_MANAGER)).a((short)-23310, paramBoolean, true);
+    bdla.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 4, 4, "", "", "", "");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

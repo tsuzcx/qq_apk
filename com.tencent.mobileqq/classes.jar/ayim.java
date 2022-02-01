@@ -1,20 +1,36 @@
-import android.view.animation.Transformation;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ayim
-  implements bfzz<Float>
+  implements View.OnClickListener
 {
-  ayim(ayil paramayil) {}
+  ayim(ayih paramayih) {}
   
-  public void a(bfzt<Float> parambfzt, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void onClick(View paramView)
   {
-    this.a.b = paramFloat1.floatValue();
-    this.a.jdField_a_of_type_Float = (1.1F - (paramFloat1.floatValue() - 1.0F));
-    if (this.a.jdField_a_of_type_Ayir != null)
-    {
-      this.a.jdField_a_of_type_Ayir.b = paramFloat1.floatValue();
-      this.a.jdField_a_of_type_Ayir.jdField_a_of_type_Float = this.a.jdField_a_of_type_Float;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698646);
+      }
     }
-    this.a.a((int)(this.a.jdField_a_of_type_Int * paramFloat1.floatValue()));
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
+      continue;
+      this.a.b();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i == 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698646);
+      } else if (this.a.a()) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698642);
+      } else {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.d();
+      }
+    }
   }
 }
 

@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class uol
-  implements View.OnClickListener
+public class uol
+  implements RadioGroup.OnCheckedChangeListener
 {
-  uol(uok paramuok, uon paramuon, int paramInt) {}
+  public uol(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (uyo.b()) {}
+    ServiceAccountFolderActivityNew.a(this.a, true);
+    if (ServiceAccountFolderActivityNew.a(this.a).getId() == paramInt) {
+      ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(0);
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
       return;
-      uok.a(this.jdField_a_of_type_Uok, this.jdField_a_of_type_Uon);
-      uok.a(this.jdField_a_of_type_Uok, this.jdField_a_of_type_Uon, this.jdField_a_of_type_Int);
+      if (ServiceAccountFolderActivityNew.b(this.a).getId() == paramInt) {
+        ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(1);
+      }
     }
   }
 }

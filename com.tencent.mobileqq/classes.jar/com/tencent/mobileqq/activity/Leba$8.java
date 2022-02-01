@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import bjmp;
+import bkyc;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 
@@ -27,11 +28,11 @@ class Leba$8
       }
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
-        WebProcessManager localWebProcessManager = (WebProcessManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
-        if ((localWebProcessManager != null) && (localWebProcessManager.d()) && (this.this$0.jdField_a_of_type_Bjmp != null))
+        WebProcessManager localWebProcessManager = (WebProcessManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
+        if ((localWebProcessManager != null) && (localWebProcessManager.d()) && (this.this$0.jdField_a_of_type_Bkyc != null))
         {
-          this.this$0.jdField_a_of_type_Bjmp.removeMessages(1134010);
-          this.this$0.jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(1134010, 100L);
+          this.this$0.jdField_a_of_type_Bkyc.removeMessages(1134010);
+          this.this$0.jdField_a_of_type_Bkyc.sendEmptyMessageDelayed(1134010, 100L);
           return;
         }
       }
@@ -44,7 +45,7 @@ class Leba$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.8
  * JD-Core Version:    0.7.0.1
  */

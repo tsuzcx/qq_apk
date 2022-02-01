@@ -1,180 +1,183 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureFilterManager;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 
 public class lpu
 {
-  private String jdField_a_of_type_JavaLangString;
-  private Map<String, Drawable> jdField_a_of_type_JavaUtilMap = new HashMap();
-  public lhp a;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private static float jdField_a_of_type_Float = -1.0F;
+  private static int jdField_a_of_type_Int = -1;
+  private static int b = -1;
   
-  public int a(lor paramlor, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  public static float a()
   {
-    int i = 1;
-    if (4 == paramlor.a())
-    {
-      a(false);
-      return 0;
-    }
-    if ((paramInt > 0) || (!paramBoolean2))
-    {
-      c();
-      if (paramBoolean1) {
-        if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
-        {
-          b(paramString1, paramString2);
-          paramInt = 2;
-        }
-      }
+    if (jdField_a_of_type_Float != -1.0F) {
+      return jdField_a_of_type_Float;
     }
     for (;;)
     {
-      return paramInt;
-      a(true);
-      paramInt = 0;
-      continue;
-      a(false);
-      paramInt = 0;
-      continue;
-      a(false);
-      b();
-      paramInt = i;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
-  public void a(long paramLong)
-  {
-    a(false);
-    c();
-    a("clearState_" + paramLong, null);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject;
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
-    {
-      if (!GestureFilterManager.sGestureType.equals("fivea")) {
-        break label79;
+      try
+      {
+        lon locallon = lon.a();
+        if (locallon == null) {
+          continue;
+        }
+        jdField_a_of_type_Float = locallon.a();
+        if (QLog.isColorLevel()) {
+          QLog.w("LowlightAndDenoiseTools", 1, "getVideodenoiseRatio[" + jdField_a_of_type_Float + "]");
+        }
       }
-      localObject = VideoController.a().a().getResources().getDrawable(2130842151);
+      catch (Exception localException)
+      {
+        QLog.w("LowlightAndDenoiseTools", 1, "getVideoDenoiseRatio, Excpetion", localException);
+        jdField_a_of_type_Float = 15.0F;
+        continue;
+      }
+      return jdField_a_of_type_Float;
+      jdField_a_of_type_Float = 15.0F;
     }
+  }
+  
+  static boolean a()
+  {
+    return lph.a(8, 1800000, -2147483648);
+  }
+  
+  public static boolean b()
+  {
+    if (AudioHelper.a(12) == 1)
+    {
+      AudioHelper.a(anvx.a(2131705867));
+      return true;
+    }
+    if (AudioHelper.a(12) == 0)
+    {
+      AudioHelper.a(anvx.a(2131705869));
+      return true;
+    }
+    if (jdField_a_of_type_Int == -1) {}
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
-      lba.h("TipsInfo", "ProcessGestureSDK pandentInfo.gestureType drawable insert, drawable" + String.valueOf(localObject));
-      return;
-      label79:
-      if (GestureFilterManager.sGestureType.equals("palmup")) {
-        localObject = VideoController.a().a().getResources().getDrawable(2130842152);
-      } else if (GestureFilterManager.sGestureType.equals("qheart")) {
-        localObject = VideoController.a().a().getResources().getDrawable(2130842153);
-      } else {
-        localObject = new BitmapDrawable(FileUtil.getBitmapByPath(bbtk.a() + paramString + ".png"));
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TipsInfo", 1, "setGestureType[" + paramString1 + "], GestureTips[" + this.jdField_a_of_type_JavaLangString + "->" + paramString2 + "]");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("TipsInfo", 1, "hideGestureTips, bGettureShown[" + paramBoolean + "], mCurGestureType[" + this.jdField_a_of_type_JavaLangString + "]");
-    }
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    do
-    {
-      return;
-      a("hideGestureTips", null);
-      if (paramBoolean) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-    } while (this.jdField_a_of_type_Lhp == null);
-    this.jdField_a_of_type_Lhp.b(0);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (!a()) {}
-    while (this.b) {
-      return;
-    }
-    lba.f("TipsInfo", "processTips showfaceTips");
-    if (this.jdField_a_of_type_Lhp != null) {
-      this.jdField_a_of_type_Lhp.a(100);
-    }
-    this.b = true;
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if (!a()) {}
-    do
-    {
-      do
+      try
       {
-        return;
-      } while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString2));
-      lba.f("TipsInfo", "showGestureTips showGestureTips mHasGestureTipsShow[" + this.jdField_a_of_type_Boolean + "]");
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (this.jdField_a_of_type_Lhp != null) {
-          this.jdField_a_of_type_Lhp.a(paramString1);
+        locallon = lon.a();
+        if (locallon == null) {
+          continue;
         }
-        a("showGestureTips1", paramString2);
-        return;
+        if (!locallon.a()) {
+          continue;
+        }
+        jdField_a_of_type_Int = 1;
+        i = 1;
       }
-    } while (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString2));
-    Drawable localDrawable = (Drawable)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
-    if (this.jdField_a_of_type_Lhp != null) {
-      this.jdField_a_of_type_Lhp.a(localDrawable, paramString1);
+      catch (Exception localException)
+      {
+        lon locallon;
+        QLog.w("LowlightAndDenoiseTools", 1, "isSupportLowlight, Excpetion", localException);
+        jdField_a_of_type_Int = 0;
+        continue;
+        int i = 4;
+        jdField_a_of_type_Int = 0;
+        continue;
+        i = 5;
+        jdField_a_of_type_Int = 0;
+        continue;
+        i = 0;
+        continue;
+      }
+      if (jdField_a_of_type_Int == -1)
+      {
+        if (!mtr.b()) {
+          continue;
+        }
+        if (!a()) {
+          continue;
+        }
+        i = 3;
+        jdField_a_of_type_Int = 1;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("LowlightAndDenoiseTools", 1, "isSupportLowlight[" + jdField_a_of_type_Int + "], step[" + i + "]");
+      }
+      if (jdField_a_of_type_Int == 1) {
+        break;
+      }
+      return false;
+      if (!locallon.b()) {
+        continue;
+      }
+      i = 2;
+      jdField_a_of_type_Int = 0;
     }
-    a("showGestureTips2", paramString2);
   }
   
-  public void c()
+  public static boolean c()
   {
-    if (!this.b) {
-      return;
+    if (AudioHelper.a(12) == 1)
+    {
+      AudioHelper.a(anvx.a(2131705866));
+      return true;
     }
-    lba.f("TipsInfo", "processTips hideFaceTips");
-    if (this.jdField_a_of_type_Lhp != null) {
-      this.jdField_a_of_type_Lhp.b(0);
+    if (AudioHelper.a(12) == 0)
+    {
+      AudioHelper.a(anvx.a(2131705868));
+      return true;
     }
-    this.b = false;
+    if (b == -1) {}
+    try
+    {
+      locallon = lon.a();
+      if (locallon == null) {
+        break label187;
+      }
+      if (!locallon.c()) {
+        break label145;
+      }
+      b = 1;
+      jdField_a_of_type_Float = 25.0F;
+      i = 1;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        lon locallon;
+        label70:
+        QLog.w("LowlightAndDenoiseTools", 1, "isSupportVideoDenoiseFlag, Excpetion", localException);
+        b = 0;
+        continue;
+        int i = 0;
+      }
+    }
+    if (b == -1)
+    {
+      if (!a()) {
+        break label161;
+      }
+      b = 1;
+    }
+    for (i = 3;; i = 4)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("LowlightAndDenoiseTools", 1, "isSupportVideoDenoiseFlag[" + b + "], step[" + i + "]");
+      }
+      if (b == 1) {
+        break;
+      }
+      return false;
+      label145:
+      if (!locallon.d()) {
+        break label187;
+      }
+      b = 0;
+      i = 2;
+      break label70;
+      label161:
+      b = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lpu
  * JD-Core Version:    0.7.0.1
  */

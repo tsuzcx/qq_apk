@@ -1,22 +1,59 @@
-import android.app.PendingIntent;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/FallbackJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class axig
-  extends axhx
+public class axig
+  extends axii
 {
-  @NotNull
-  protected PendingIntent a(@NotNull axib paramaxib)
+  public axig(QQAppInterface paramQQAppInterface)
   {
-    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
-    return c(paramaxib);
+    super(paramQQAppInterface);
   }
   
-  protected boolean a()
+  public int a()
   {
-    return true;
+    return 4;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageForArkApp paramMessageForArkApp, boolean paramBoolean)
+  {
+    if (paramMessageForArkApp.istroop == 1) {
+      nty.a().a(paramMessageForArkApp);
+    }
+    if (paramBoolean) {
+      paramQQAppInterface.getMessageFacade().addSendMessage(paramMessageForArkApp);
+    }
+    paramMessageForArkApp.mPendantAnimatable = true;
+    byte[] arrayOfByte = paramQQAppInterface.getProxyManager().a().a(paramMessageForArkApp);
+    if (arrayOfByte == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "step2: sendLongTextMsg pack failed! packData is null.............................");
+      }
+      paramMessageForArkApp.extraflag = 32768;
+      paramQQAppInterface.getMsgCache().a(paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq);
+      String str = paramMessageForArkApp.frienduin;
+      int i = paramMessageForArkApp.istroop;
+      long l = paramMessageForArkApp.uniseq;
+      ((MessageHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).notifyUI(MessageHandler.a(paramMessageForArkApp.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
+    }
+    paramBoolean = ((axii)paramQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageForArkApp.frienduin, paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq, 1035, new axih(this, paramMessageForArkApp, paramQQAppInterface));
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "sendLongTextMsg successful, uploadLongTextMsgPkg start!");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("StructLongTextMsg", 2, "sendLongTextMsg failed! isSuccess:" + paramBoolean);
+    }
+    axii.a(paramQQAppInterface, paramMessageForArkApp);
   }
 }
 

@@ -1,32 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bdfx
-  implements View.OnClickListener
+public class bdfx
 {
-  bdfx(bdfv parambdfv) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public bdfx(String paramString1, String paramString2, String paramString3)
   {
-    switch (((bddb)paramView.getTag()).b)
-    {
-    }
-    for (;;)
-    {
-      this.a.dismiss();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.e();
-      continue;
-      this.a.f();
-      continue;
-      this.a.g();
-      continue;
-      this.a.h();
-      continue;
-      this.a.i();
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

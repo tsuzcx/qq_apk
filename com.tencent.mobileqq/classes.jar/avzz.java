@@ -1,147 +1,131 @@
+import android.app.Activity;
 import android.content.Context;
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.IntimateInfo;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class avzz
-  implements View.OnClickListener, awat, awau, awav
+  extends WebViewPlugin
 {
-  private long jdField_a_of_type_Long;
-  public Context a;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  awas jdField_a_of_type_Awas;
-  MultiCardFragment jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment;
-  private Long jdField_a_of_type_JavaLangLong;
-  public boolean a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
   
-  private void b(boolean paramBoolean)
+  public avzz()
   {
-    View localView;
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379587);
-      if (localView != null) {
-        if (!paramBoolean) {
-          break label33;
-        }
-      }
+    this.mPluginNameSpace = "medalwall";
+  }
+  
+  private Context a()
+  {
+    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
+  private void a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MedalWallMng", 4, "clearRedPoint from web!");
     }
-    label33:
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
-    }
+    aqmz.a().a();
   }
   
-  public View a()
+  private void a(String paramString)
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    a(false);
-  }
-  
-  public void a(long paramLong, ArrayList<Long> paramArrayList)
-  {
-    if (this.jdField_a_of_type_Long != paramLong) {}
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
       return;
-      if ((paramArrayList == null) || (paramArrayList.size() == 0))
+      try
       {
-        b(true);
-        a(null);
+        this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
+        c(this.jdField_a_of_type_JavaLangString);
         return;
       }
-      b(false);
-    } while (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment == null);
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment.a(paramArrayList, null, null);
+      catch (JSONException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("MedalApi", 2, "shareMsg error: " + paramString.toString());
   }
   
-  public void a(long paramLong, HashMap<Long, String> paramHashMap)
+  private void b(String paramString)
   {
-    if ((this.jdField_a_of_type_Long != paramLong) || (paramHashMap == null)) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment.a(null, null, paramHashMap);
-  }
-  
-  public void a(String paramString)
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetTextView != null)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(null);
-    }
-  }
-  
-  public void a(ArrayList<Long> paramArrayList, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramArrayList == null) {}
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      do
+      return;
+      try
       {
+        this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
+        startActivityForResult(new Intent(this.jdField_a_of_type_AndroidContentContext, PermisionPrivacyActivity.class), (byte)100);
         return;
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("onPreLoadData : ");
-          localStringBuilder.append(paramArrayList.size());
-          localStringBuilder.append("  ");
-          Iterator localIterator = paramArrayList.iterator();
-          while (localIterator.hasNext())
-          {
-            localStringBuilder.append((Long)localIterator.next());
-            localStringBuilder.append(" ");
-          }
-          QLog.d("MultiCardContainer", 2, "onPreLoadData : " + localStringBuilder.toString());
-        }
-      } while (this.jdField_a_of_type_Awas == null);
-      if (paramBoolean1) {
-        this.jdField_a_of_type_Awas.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, paramArrayList, this);
       }
-    } while (!paramBoolean2);
-    this.jdField_a_of_type_Awas.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, paramArrayList, this);
+      catch (JSONException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("MedalApi", 2, "shareMsg error: " + paramString.toString());
   }
   
-  public void a(HashMap<Long, IntimateInfo> paramHashMap)
+  private void c(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment.a(null, paramHashMap, null);
+    String str = this.mRuntime.a().getCurrentAccountUin();
+    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("medal_wall_" + str, 4).getBoolean("medal_switch_disable", false);
+    if (!TextUtils.isEmpty(paramString)) {
+      if (!bool) {
+        break label74;
+      }
+    }
+    label74:
+    for (str = "{\"isOn\":0}";; str = "{\"isOn\":1}")
+    {
+      callJs(paramString, new String[] { str });
+      return;
     }
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    long l = SystemClock.elapsedRealtime();
-    if ((this.jdField_a_of_type_JavaLangLong != null) && (l - this.jdField_a_of_type_JavaLangLong.longValue() < 500L)) {}
+    boolean bool = false;
+    if ("medalwall".equals(paramString2))
+    {
+      if ((paramJsBridgeListener != null) && (paramJsBridgeListener.a)) {}
+      addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
+      if (!"getMedalSwitch".equals(paramString3)) {
+        break label54;
+      }
+      a(paramVarArgs[0]);
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(l);
-      switch (paramView.getId())
-      {
-      default: 
-        break;
-      case 2131363264: 
-        a(true);
+      bool = true;
+      return bool;
+      label54:
+      if ("jumpToMedalSettings".equals(paramString3)) {
+        b(paramVarArgs[0]);
+      } else if ("clearRedPoint".equals(paramString3)) {
+        a();
       }
     }
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (paramByte == 100) {
+      c(this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = a();
   }
 }
 

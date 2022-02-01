@@ -1,16 +1,38 @@
-import android.net.Uri;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class atlx
-  implements audf
+class atlx
+  implements atlz
 {
-  public atlx(ForwardFileBaseOption paramForwardFileBaseOption) {}
+  private blkh jdField_a_of_type_Blkh = new blkh();
   
-  public void a(Uri paramUri) {}
-  
-  public void a(String paramString1, String paramString2, long paramLong)
+  public atlx(atlw paramatlw)
   {
-    this.a.a = ForwardFileBaseOption.a(this.a, paramString2, paramLong);
+    this.jdField_a_of_type_Blkh.a();
+  }
+  
+  public int a(long paramLong1, long paramLong2)
+  {
+    int j = this.jdField_a_of_type_Blkh.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
+    int k = blkk.a(BaseApplication.getContext());
+    int i;
+    if (k != 1)
+    {
+      i = j;
+      if (k != 2) {}
+    }
+    else
+    {
+      i = j;
+      if (j > 16384) {
+        i = 16384;
+      }
+    }
+    return i;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Blkh.b();
   }
 }
 

@@ -1,21 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agxs
-  implements aszj
+class agxs
+  extends ahaa
 {
-  public agxs(AIOFileVideoData paramAIOFileVideoData, Context paramContext, ajqd paramajqd) {}
-  
-  public void onNo() {}
-  
-  public void onYes()
+  agxs(agvm paramagvm)
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.e = true;
-      this.jdField_a_of_type_Ajqd.b();
-      this.jdField_a_of_type_Ajqd.f();
-    }
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahbp(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

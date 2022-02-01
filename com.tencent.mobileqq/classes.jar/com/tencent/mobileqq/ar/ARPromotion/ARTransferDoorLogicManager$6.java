@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
 import android.widget.RelativeLayout;
-import anzc;
-import anzg;
+import apce;
+import apci;
 
 public class ARTransferDoorLogicManager$6
   implements Runnable
 {
-  public ARTransferDoorLogicManager$6(anzc paramanzc, String paramString) {}
+  public ARTransferDoorLogicManager$6(apce paramapce, String paramString) {}
   
   public void run()
   {
-    if ((anzc.a(this.this$0) != null) && (anzc.a(this.this$0) != null))
+    if ((apce.a(this.this$0) != null) && (apce.a(this.this$0) != null))
     {
-      anzc.a(this.this$0).setVisibility(0);
-      anzc.a(this.this$0).a(anzc.a(this.this$0));
-      anzc.a(this.this$0).a(this.a);
+      apce.a(this.this$0).setVisibility(0);
+      apce.a(this.this$0).a(apce.a(this.this$0));
+      apce.a(this.this$0).a(this.a);
     }
   }
 }

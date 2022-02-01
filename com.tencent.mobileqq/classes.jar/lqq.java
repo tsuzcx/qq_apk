@@ -1,97 +1,39 @@
-import android.util.Log;
-import java.util.LinkedList;
-import java.util.List;
+import android.opengl.GLES20;
+import javax.microedition.khronos.opengles.GL11;
 
-public abstract class lqq
+public class lqq
+  implements lqr
 {
-  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName() + "-" + Integer.toHexString(hashCode());
-  private List<lqp> jdField_a_of_type_JavaUtilList = new LinkedList();
-  lqs jdField_a_of_type_Lqs;
-  private lqv jdField_a_of_type_Lqv;
-  
-  public lqq()
+  public int a()
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "ImageSource: ");
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = 0;
+    GLES20.glGenTextures(1, arrayOfInt, 0);
+    lsq.a();
+    return arrayOfInt[0];
   }
   
-  public lqq a(lqp paramlqp)
+  public void a(int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "addTarget: " + paramlqp);
-    this.jdField_a_of_type_JavaUtilList.add(paramlqp);
-    paramlqp.a(this.jdField_a_of_type_Lqv);
-    return this;
+    GLES20.glGenBuffers(paramInt1, paramArrayOfInt, paramInt2);
+    lsq.a();
   }
   
-  protected abstract void a();
-  
-  public void a(lqs paramlqs)
+  public void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    this.jdField_a_of_type_Lqs = paramlqs;
+    GLES20.glDeleteTextures(paramInt1, paramArrayOfInt, paramInt2);
+    lsq.a();
   }
   
-  protected abstract void b();
-  
-  protected void b(List<lqt> paramList, long paramLong)
+  public void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    int k = 0;
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      int j;
-      for (;;)
-      {
-        j = k;
-        if (i >= paramList.size()) {
-          break;
-        }
-        ((lqt)paramList.get(i)).a(this.jdField_a_of_type_JavaUtilList.size());
-        i += 1;
-      }
-      while (j < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        ((lqp)this.jdField_a_of_type_JavaUtilList.get(j)).a(paramList, paramLong);
-        j += 1;
-      }
-    }
-  }
-  
-  public void c()
-  {
-    Log.d(this.jdField_a_of_type_JavaLangString, "isolated: ");
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void d()
-  {
-    Log.d(this.jdField_a_of_type_JavaLangString, "init");
-    this.jdField_a_of_type_Lqv = new lqv();
-    this.jdField_a_of_type_Lqv.a = this;
-    a();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((lqp)this.jdField_a_of_type_JavaUtilList.get(i)).a(this.jdField_a_of_type_Lqv);
-      i += 1;
-    }
-  }
-  
-  public void e()
-  {
-    Log.d(this.jdField_a_of_type_JavaLangString, "destroy");
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((lqp)this.jdField_a_of_type_JavaUtilList.get(i)).c();
-      i += 1;
-    }
-    b();
+    GLES20.glDeleteBuffers(paramInt1, paramArrayOfInt, paramInt2);
+    lsq.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lqq
  * JD-Core Version:    0.7.0.1
  */

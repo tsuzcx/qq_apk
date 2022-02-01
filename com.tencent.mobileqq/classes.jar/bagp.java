@@ -1,90 +1,32 @@
-import android.opengl.GLES20;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import android.util.SparseArray;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class bagp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileSettingConstants$Companion;", "", "()V", "ALL_NOT_VISIBLE_STATE", "", "ALL_VISIBLE_STATE", "CLOSE_SWITCH_STATE", "FIELD_ANONYMOUS_ANSWER_SWITCH", "FIELD_PRIVACY_AGE", "FIELD_PRIVACY_BIRTHDAY", "FIELD_PRIVACY_COLLEGE", "FIELD_PRIVACY_COMPANY", "FIELD_PRIVACY_CONSTELLATION", "FIELD_PRIVACY_EMAIL", "FIELD_PRIVACY_HOMETOWN", "FIELD_PRIVACY_LOCATION", "FIELD_PRIVACY_MYIDOL", "FIELD_PRIVACY_PERSONAL_NOTE", "FIELD_PRIVACY_PROFESSION", "FIELD_PRIVACY_SEX", "FIELD_WZ_GAME_CARD_SWITCH", "INVALID_STATE", "INVALID_SWITCH_STATE", "ITEM_TYPE_BASE", "ITEM_TYPE_EMPTY", "ITEM_TYPE_OTHER", "ITEM_TYPE_OTHER_WITH_SECOND_LINE", "ITEM_TYPE_TITLE", "ONLY_FRIEND_VISIBLE_STATE", "OPEN_SWITCH_STATE", "PARAM_SWITCHES_CHANGED", "", "PROFILE_DISPLAY_FIELD_BASE_ITEMS", "", "getPROFILE_DISPLAY_FIELD_BASE_ITEMS", "()[[Ljava/lang/Integer;", "[[Ljava/lang/Integer;", "PROFILE_DISPLAY_FIELD_CONFIG_MAP", "Landroid/util/SparseArray;", "getPROFILE_DISPLAY_FIELD_CONFIG_MAP", "()Landroid/util/SparseArray;", "PROFILE_DISPLAY_FIELD_OTHER_ITEMS", "getPROFILE_DISPLAY_FIELD_OTHER_ITEMS", "PROFILE_DISPLAY_FIELD_OTHER_SPEC_DEFAULT_CLOSE_ITEMS", "getPROFILE_DISPLAY_FIELD_OTHER_SPEC_DEFAULT_CLOSE_ITEMS", "()[Ljava/lang/Integer;", "[Ljava/lang/Integer;", "REQUEST_CODE_SWITCHES", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bagp
 {
-  private volatile int jdField_a_of_type_Int;
-  private GPUBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
-  private Frame[] jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame = new Frame[3];
-  private volatile int b;
-  private int c;
-  private int d;
-  
-  public int a()
+  @NotNull
+  public final SparseArray<Integer> a()
   {
-    if (Math.min(1, this.jdField_a_of_type_Int - this.b) == 1)
-    {
-      int i = this.b;
-      return this.jdField_a_of_type_ArrayOfInt[(i % 3)];
-    }
-    return -1;
+    return bago.a();
   }
   
-  public void a()
+  @NotNull
+  public final Integer[] a()
   {
-    int i = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.destroy();
-    }
-    GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-    while (i < 3)
-    {
-      if (this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i] != null) {
-        this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i].clear();
-      }
-      i += 1;
-    }
+    return bago.a();
   }
   
-  public void a(int paramInt1, int paramInt2)
+  @NotNull
+  public final Integer[][] a()
   {
-    int i = 0;
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = new GPUBaseFilter();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.init();
-    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-    while (i < 3)
-    {
-      this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i] = new Frame();
-      i += 1;
-    }
-    this.c = paramInt1;
-    this.d = paramInt2;
+    return bago.a();
   }
   
-  public void a(boolean paramBoolean, int paramInt)
+  @NotNull
+  public final Integer[][] b()
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Int += paramInt;
-        return;
-      }
-      finally {}
-      this.b += paramInt;
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (Math.min(1, 3 - (this.jdField_a_of_type_Int - this.b)) == 1)
-    {
-      int i = this.jdField_a_of_type_Int % 3;
-      this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i].bindFrame(this.jdField_a_of_type_ArrayOfInt[i], this.c, this.d, 1.0D);
-      GlUtil.checkGlError("bindFrame");
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(paramInt, null, null);
-      GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glFinish();
-      a(true, 1);
-      return true;
-    }
-    return false;
+    return bago.b();
   }
 }
 

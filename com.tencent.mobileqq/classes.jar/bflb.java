@@ -1,45 +1,34 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
-import java.lang.ref.WeakReference;
-import tencent.im.msg.im_msg_body.CustomFace;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgItem;
 
 public class bflb
-  implements ayeo
 {
-  protected WeakReference<TroopPicEffectsEditActivity> a;
+  public int a;
+  public TroopEssenceMsgItem a;
+  public String a;
+  public String b;
   
-  public bflb(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity)
+  public bflb(TroopEssenceMsgItem paramTroopEssenceMsgItem, int paramInt, String paramString1, String paramString2)
   {
-    this.a = new WeakReference(paramTroopPicEffectsEditActivity);
+    this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem = paramTroopEssenceMsgItem;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  public String toString()
   {
-    return null;
-  }
-  
-  public void onSend(ayep paramayep)
-  {
-    TroopPicEffectsEditActivity localTroopPicEffectsEditActivity = (TroopPicEffectsEditActivity)this.a.get();
-    if (localTroopPicEffectsEditActivity == null) {
-      return;
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = localStringBuilder1.append("msgItem:");
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem != null) {}
+    for (String str = this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.toString();; str = "null")
+    {
+      localStringBuilder2.append(str).append(" ");
+      localStringBuilder1.append("graytipmsgseq:").append(this.jdField_a_of_type_Int).append(" ");
+      localStringBuilder1.append("opNickName:").append(this.jdField_a_of_type_JavaLangString).append(" ");
+      localStringBuilder1.append("senderNickName:").append(this.b);
+      return localStringBuilder1.toString();
     }
-    localTroopPicEffectsEditActivity.c();
-    Intent localIntent = new Intent(localTroopPicEffectsEditActivity, SplashActivity.class);
-    localIntent.putExtra("uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("friendUin"));
-    localIntent.putExtra("uintype", 1);
-    localIntent.putExtra("troop_uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("troopUin"));
-    localIntent.putExtra("isFromTroopEffectPic", true);
-    localTroopPicEffectsEditActivity.startActivity(AIOUtils.setOpenAIOIntent(localIntent, new int[] { 1 }));
-    localTroopPicEffectsEditActivity.finish();
-    localTroopPicEffectsEditActivity.a(localTroopPicEffectsEditActivity.a, (im_msg_body.CustomFace)paramayep.a, new bflc(this, localTroopPicEffectsEditActivity));
   }
-  
-  public void updateMsg(ayep paramayep) {}
 }
 
 

@@ -15,6 +15,7 @@ public final class enum_qzone_weisi_recommend_entrance_type
   public static final int _enum_floatview_music_icon = 14;
   public static final int _enum_floatview_other = 99;
   public static final int _enum_floatview_topic_icon = 15;
+  public static final int _enum_frd_like_container_videolayer = 25;
   public static final int _enum_friend_floatview_story_video = 18;
   public static final int _enum_friend_unread_stroy_video_from_banner = 21;
   public static final int _enum_mainpage = 4;

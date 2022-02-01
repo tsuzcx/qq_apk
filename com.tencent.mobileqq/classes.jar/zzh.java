@@ -1,17 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class zzh
-  implements View.OnClickListener
+  implements bkzq
 {
-  zzh(zzf paramzzf) {}
+  zzh(zzf paramzzf, String paramString1, String paramString2, zzq paramzzq, bkzi parambkzi) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    zzf.a(this.a).setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      do
+      {
+        return;
+      } while (aala.a("subScribe_delete_draft"));
+      this.jdField_a_of_type_Zzf.a(this.jdField_a_of_type_JavaLangString, this.b, new zzi(this));
+    }
   }
 }
 

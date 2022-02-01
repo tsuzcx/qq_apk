@@ -1,78 +1,107 @@
-import android.opengl.GLES20;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Observable;
+import mqq.manager.Manager;
 
 public class aokt
+  extends Observable
+  implements Manager
 {
-  private int jdField_a_of_type_Int;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_b_of_type_Int;
-  private int[] jdField_b_of_type_ArrayOfInt;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<String, SoftReference<aokv>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  private void b(int paramInt1, int paramInt2)
+  public aokt(QQAppInterface paramQQAppInterface)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      throw new IllegalArgumentException("width & height should > 0!");
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_ArrayOfInt != null)
-    {
-      GLES20.glDeleteFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
-      this.jdField_a_of_type_ArrayOfInt = null;
-    }
-    if (this.jdField_b_of_type_ArrayOfInt != null)
-    {
-      GLES20.glDeleteTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
-      this.jdField_b_of_type_ArrayOfInt = null;
-    }
-    this.jdField_a_of_type_ArrayOfInt = new int[1];
-    this.jdField_b_of_type_ArrayOfInt = new int[1];
-    GLES20.glGenFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
-    GLES20.glGenTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
-    GLES20.glBindTexture(3553, this.jdField_b_of_type_ArrayOfInt[0]);
-    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10242, 33071.0F);
-    GLES20.glTexParameterf(3553, 10243, 33071.0F);
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.jdField_b_of_type_ArrayOfInt[0], 0);
-    GLES20.glBindTexture(3553, 0);
-    GLES20.glBindFramebuffer(36160, 0);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public int a()
+  private aokv a(String paramString)
   {
-    int i = 0;
-    if (this.jdField_b_of_type_ArrayOfInt != null) {
-      i = this.jdField_b_of_type_ArrayOfInt[0];
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (localObject1 != null)
+        {
+          localObject1 = (aokv)((SoftReference)localObject1).get();
+          Object localObject2 = localObject1;
+          if (localObject1 == null)
+          {
+            localObject2 = new aokv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new aoku(this));
+            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject2));
+          }
+          return localObject2;
+        }
+      }
+      Object localObject1 = null;
     }
-    return i;
+  }
+  
+  public FullMessageSearchResult a(String paramString)
+  {
+    return a(paramString).b();
   }
   
   public void a()
   {
-    if (this.jdField_b_of_type_ArrayOfInt != null)
-    {
-      GLES20.glDeleteTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
-      this.jdField_b_of_type_ArrayOfInt = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.FullMessageSearch", 2, "stopSearch " + this.jdField_a_of_type_JavaUtilHashMap.size());
     }
-    if (this.jdField_a_of_type_ArrayOfInt != null)
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
-      GLES20.glDeleteFramebuffers(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-      this.jdField_a_of_type_ArrayOfInt = null;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (SoftReference)localIterator.next();
+        if (localObject2 != null)
+        {
+          localObject2 = (aokv)((SoftReference)localObject2).get();
+          if (localObject2 != null) {
+            ((aokv)localObject2).b(2);
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.FullMessageSearch", 2, "pauseSearch " + paramString);
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        paramString = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (paramString != null)
+        {
+          paramString = (aokv)paramString.get();
+          if (paramString != null) {
+            paramString.a();
+          }
+          return;
+        }
+      }
+      paramString = null;
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public FullMessageSearchResult b(String paramString)
   {
-    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_b_of_type_ArrayOfInt == null) || (paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int))
-    {
-      long l = System.currentTimeMillis();
-      b(paramInt1, paramInt2);
-      QLog.i("Keying_FrameBuffer", 2, " init need " + (System.currentTimeMillis() - l));
-    }
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
+    return a(paramString).c();
+  }
+  
+  public void onDestroy()
+  {
+    a();
   }
 }
 

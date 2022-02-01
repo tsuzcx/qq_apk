@@ -14,8 +14,8 @@ import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import tei;
-import tej;
+import trt;
+import tru;
 
 public class WordNavView
   extends View
@@ -25,7 +25,7 @@ public class WordNavView
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Map<Float, String> jdField_a_of_type_JavaUtilMap;
-  private tej jdField_a_of_type_Tej;
+  private tru jdField_a_of_type_Tru;
   private float b;
   
   public WordNavView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
@@ -46,7 +46,7 @@ public class WordNavView
     this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#878B99"));
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
     this.b = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().top);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new tei(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new trt(this, null));
   }
   
   private float b(int paramInt)
@@ -84,14 +84,14 @@ public class WordNavView
     invalidate();
   }
   
-  public void setOnTouchingWordChangedListener(tej paramtej)
+  public void setOnTouchingWordChangedListener(tru paramtru)
   {
-    this.jdField_a_of_type_Tej = paramtej;
+    this.jdField_a_of_type_Tru = paramtru;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.WordNavView
  * JD-Core Version:    0.7.0.1
  */

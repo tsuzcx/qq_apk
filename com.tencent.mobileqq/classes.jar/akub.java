@@ -1,29 +1,37 @@
-import android.os.Handler;
+import Wallet.RspWalletConfig;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import mqq.observer.BusinessObserver;
 
 class akub
-  implements HorizontalListView.OnScrollStateChangedListener
+  implements BusinessObserver
 {
-  akub(aktx paramaktx) {}
+  akub(aktz paramaktz) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
-    }
-    if (paramInt == 4097)
+    if (paramInt == 17)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
+      if (!paramBoolean) {}
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("QWalletConfigManager", 2, "setConfigSession fail get rsp:");
+        return;
       }
-      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
+      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QWalletConfigManager", 2, "setConfigSession RspWalletConfig|" + paramBundle);
+        return;
+      }
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
   }
 }
 

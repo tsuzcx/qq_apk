@@ -1,25 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-class besp
-  implements View.OnTouchListener
+public class besp
+  implements DialogInterface.OnClickListener
 {
-  besp(besn parambesn, View paramView1, View paramView2) {}
+  public besp(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {}
-    for (int i = 1; (paramMotionEvent.getAction() == 4) && (AtPanelTouchController.a(this.b, paramMotionEvent)) && ((i == 0) || ((i != 0) && (!AtPanelTouchController.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)))); i = 0) {
-      return true;
-    }
-    return false;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.TipsInfo;
 
-final class acvh
-  implements DialogInterface.OnCancelListener
+public class acvh
+  extends acve
 {
-  acvh(acxb paramacxb, int paramInt, acxa paramacxa) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public int a()
   {
-    if (this.jdField_a_of_type_Acxb.a)
-    {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label59;
-      }
-      bcef.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Acxa != null) {
-        this.jdField_a_of_type_Acxa.onCancel();
-      }
-      return;
-      label59:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        bcef.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
-      }
-    }
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
+  {
+    new bcrt().b(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return paramElem.tips_info.has();
   }
 }
 

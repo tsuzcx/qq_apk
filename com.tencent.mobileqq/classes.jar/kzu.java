@@ -1,14 +1,22 @@
-import android.content.Context;
-import android.util.Pair;
-import java.util.List;
-import org.apache.http.Header;
-
-abstract class kzu
-  extends kzr
+public abstract class kzu
 {
-  public static void a(Context paramContext, Header[] paramArrayOfHeader, List<Pair<String, String>> paramList, kzg paramkzg)
+  private static kzc a;
+  
+  public static kzc a()
   {
-    a().a(paramContext, "https://www.googleapis.com/language/translate/v2", paramArrayOfHeader, paramList, paramkzg);
+    try
+    {
+      if (a == null) {
+        a = new kzc();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public static boolean a()
+  {
+    return a != null;
   }
 }
 

@@ -1,16 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
 
 public class axec
-  extends axdv
+  implements blcb
 {
-  public ImageView e;
-  public ImageView f;
-  public TextView g;
+  public axec(MultiAIOItemFragment paramMultiAIOItemFragment) {}
   
-  public axec(axeb paramaxeb)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    super(paramaxeb);
+    MultiAIOItemFragment.a(this.a).onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 

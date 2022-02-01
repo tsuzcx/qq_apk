@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vpng.view;
 
-import bgrw;
+import bicm;
 
 class VPNGImageView$1
   implements Runnable

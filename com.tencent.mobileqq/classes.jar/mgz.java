@@ -1,24 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.QQLogo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mgz
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public mgz(QQLogo paramQQLogo) {}
+  public mgz(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.setVisibility(8);
+    bhgd.c();
+    bdla.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_call", 0, 0, this.a.b, "", "", "");
+    this.a.d(10);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mgz
  * JD-Core Version:    0.7.0.1
  */

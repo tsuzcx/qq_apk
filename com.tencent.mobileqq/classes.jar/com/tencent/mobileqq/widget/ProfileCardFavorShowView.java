@@ -53,7 +53,7 @@ public class ProfileCardFavorShowView
     if (this.jdField_a_of_type_Int > 0) {
       return this.jdField_a_of_type_Int;
     }
-    return 2131559518;
+    return 2131559551;
   }
   
   public View a(int paramInt)
@@ -69,14 +69,14 @@ public class ProfileCardFavorShowView
   protected void a()
   {
     LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(a(), this, true);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((LinearLayout)findViewById(2131376689));
-    this.b = ((ViewGroup)findViewById(2131364924));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378524));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368384));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131372995));
-    this.c = ((RelativeLayout)findViewById(2131367830));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167012));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839316);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((LinearLayout)findViewById(2131376957));
+    this.b = ((ViewGroup)findViewById(2131365012));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378815));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368541));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131373205));
+    this.c = ((RelativeLayout)findViewById(2131367966));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167026));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839337);
   }
   
   public void a(int paramInt)
@@ -115,7 +115,7 @@ public class ProfileCardFavorShowView
       }
     }
     label50:
-    for (int i = getResources().getDimensionPixelSize(2131297533);; i = 0)
+    for (int i = getResources().getDimensionPixelSize(2131297534);; i = 0)
     {
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
       if (localLayoutParams != null)

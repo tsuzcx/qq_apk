@@ -1,18 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-public class bhtl
-  implements ValueAnimator.AnimatorUpdateListener
+class bhtl
+  implements BusinessObserver
 {
-  public bhtl(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
+  bhtl(bhtj parambhtj) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    this.a.a(paramObject);
   }
 }
 

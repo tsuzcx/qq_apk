@@ -1,68 +1,21 @@
-import UserGrowth.stNewIconStyle;
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.view.ViewStub;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
 
 public class vco
-  extends ukz<vaq>
+  extends RecyclerView.ViewHolder
 {
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private vcp jdField_a_of_type_Vcp;
-  private vct jdField_a_of_type_Vct;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RoundImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView;
+  TextView b;
   
-  public vco(Context paramContext, vct paramvct)
+  vco(View paramView)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Vct = paramvct;
-  }
-  
-  private stSimpleMetaFeed a()
-  {
-    vaq localvaq = (vaq)a();
-    if ((localvaq != null) && ((localvaq.a() instanceof stSimpleMetaFeed))) {
-      return (stSimpleMetaFeed)localvaq.a();
-    }
-    return null;
-  }
-  
-  private void b(vaq paramvaq)
-  {
-    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
-    {
-      if (this.jdField_a_of_type_Vcp == null)
-      {
-        this.jdField_a_of_type_Vcp = new vcp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vct);
-        this.jdField_a_of_type_Vcp.a(this.jdField_a_of_type_AndroidViewViewStub);
-      }
-      this.jdField_a_of_type_Vcp.a(paramvaq);
-    }
-  }
-  
-  protected void a() {}
-  
-  public void a(vaq paramvaq)
-  {
-    super.a(paramvaq);
-    b(paramvaq);
-  }
-  
-  protected int b()
-  {
-    return 2131560041;
-  }
-  
-  protected void b() {}
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_Vcp != null) {
-      this.jdField_a_of_type_Vcp.c();
-    }
-  }
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380430));
+    super(paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)paramView.findViewById(2131363145));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371803));
+    this.b = ((TextView)paramView.findViewById(2131369618));
   }
 }
 

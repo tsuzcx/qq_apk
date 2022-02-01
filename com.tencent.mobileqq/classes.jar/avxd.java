@@ -1,14 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
 class avxd
   implements DialogInterface.OnClickListener
 {
-  avxd(avwv paramavwv) {}
+  avxd(avxc paramavxc, Bundle paramBundle) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
+    QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_open_start", this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Avxc);
   }
 }
 

@@ -1,128 +1,39 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
-import android.support.v7.widget.RecyclerView;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.TopRecommendBannerAdapter.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
-import org.jetbrains.annotations.NotNull;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoDelete;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
-public class zck
-  extends zbw
+class zck
+  extends ntd
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private boolean jdField_a_of_type_Boolean;
-  private List<zcz> b = new ArrayList();
+  zck(zcj paramzcj) {}
   
-  public zck(@NotNull RecyclerView paramRecyclerView)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
-    {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
-        ThreadManager.getUIHandler().postDelayed(new TopRecommendBannerAdapter.1(this), 500L);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "troop story revoke result, code=" + paramInt);
     }
-    else {
-      return;
-    }
-    notifyDataSetChanged();
-  }
-  
-  private void b()
-  {
-    this.b.clear();
-    this.b.addAll(this.jdField_a_of_type_JavaUtilList.subList(0, 10));
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(10, this.jdField_a_of_type_JavaUtilList.size());
-  }
-  
-  public List<zcz> a()
-  {
-    return this.b;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt < this.b.size())
-    {
-      this.b.remove(paramInt);
-      notifyItemRemoved(a() + paramInt);
-      notifyItemRangeChanged(a() + paramInt, this.b.size() - paramInt);
-    }
-  }
-  
-  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<zcz> paramList)
-  {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_JavaUtilList != null)
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      try
       {
-        if (this.jdField_a_of_type_JavaUtilList.size() < 10) {
-          break;
+        paramBundle = new qqstory_group.RspGroupVideoDelete();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
+        if (paramArrayOfByte.error_code.has()) {
+          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "revoke rsp.result.error_code=" + paramArrayOfByte.error_code.get());
         }
-        b();
-        a();
+        return paramArrayOfByte;
       }
-      return;
-      this.jdField_a_of_type_JavaUtilList = paramList;
-    }
-    this.b.addAll(paramList);
-    this.jdField_a_of_type_JavaUtilList.clear();
-    a();
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 10))
-    {
-      b();
-      a();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() < 10);
-  }
-  
-  public boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        this.b.add(this.jdField_a_of_type_JavaUtilList.remove(0));
-        notifyItemInserted(this.b.size());
-        bool1 = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
+        }
       }
     }
-    return bool1;
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.b != null) {
-      return this.b.size() + a();
-    }
-    return a();
+    return null;
   }
 }
 

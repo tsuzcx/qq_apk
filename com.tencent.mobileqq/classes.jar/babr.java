@@ -1,38 +1,30 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class babr
-  implements GLSurfaceView.EGLContextFactory
+class babr
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 12440;
+  babr(babn parambabn, String paramString, int paramInt, View paramView) {}
   
-  public babr(CameraCaptureView paramCameraCaptureView) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 1, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
+    if ((bbwx.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("key_sign_topic_name", this.jdField_a_of_type_JavaLangString);
+      localBundle.putInt("key_sign_topic_id", this.jdField_a_of_type_Int);
+      localBundle.putInt("from_type", 2);
+      if (babn.e(this.jdField_a_of_type_Babn) != null) {
+        SignTextEditFragment.a(babn.f(this.jdField_a_of_type_Babn), null, null, localBundle, -1);
+      }
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      azru.a().c(babn.j(this.jdField_a_of_type_Babn));
+      bdla.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "2", "0", "", "");
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = paramEGLConfig;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  }
-  
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.n();
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
-      QLog.e("CameraCaptureView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

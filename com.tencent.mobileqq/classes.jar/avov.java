@@ -1,57 +1,23 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-public class avov
-  extends Animation
+class avov
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  private final float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private final float b;
-  private final float c;
-  private final float d;
-  private final float e;
+  avov(avor paramavor) {}
   
-  public avov(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-    this.e = paramFloat5;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.b;
-    float f3 = this.c;
-    float f4 = this.d;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    paramTransformation = paramTransformation.getMatrix();
-    localCamera.save();
-    if (this.jdField_a_of_type_Boolean) {
-      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
-    }
-    for (;;)
+    this.a.jdField_a_of_type_Boolean = false;
+    avor.a(this.a, true);
+    if (this.a.c == 3) {}
+    do
     {
-      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f3, -f4);
-      paramTransformation.postTranslate(f3, f4);
       return;
-      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
-    }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+      this.a.c = 2;
+    } while (avor.a(this.a) == null);
+    avor.a(this.a).j();
   }
 }
 

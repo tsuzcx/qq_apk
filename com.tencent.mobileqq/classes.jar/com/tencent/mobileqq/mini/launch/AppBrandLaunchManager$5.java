@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.mini.launch;
 
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+
 class AppBrandLaunchManager$5
   implements Runnable
 {
@@ -7,7 +9,7 @@ class AppBrandLaunchManager$5
   
   public void run()
   {
-    AppBrandLaunchManager.access$300(this.this$0);
+    MiniAppUtils.updateMiniAppList(6);
   }
 }
 

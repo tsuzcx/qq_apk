@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-final class bdgp
-  implements DialogInterface.OnClickListener
+public class bdgp
 {
-  bdgp(QQCustomDialog paramQQCustomDialog, bdgq parambdgq) {}
+  public aqxa[] a = new aqxa[0];
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    StringBuilder localStringBuilder = new StringBuilder("SoLoadConfBean:");
+    if (this.a != null)
+    {
+      aqxa[] arrayOfaqxa = this.a;
+      int j = arrayOfaqxa.length;
+      int i = 0;
+      while (i < j)
+      {
+        aqxa localaqxa = arrayOfaqxa[i];
+        if (localaqxa != null) {
+          localStringBuilder.append("confItem ").append(localaqxa.jdField_a_of_type_Int).append(":").append(localaqxa.jdField_a_of_type_JavaLangString).append("\n");
+        }
+        i += 1;
+      }
     }
-    if (this.jdField_a_of_type_Bdgq != null) {
-      this.jdField_a_of_type_Bdgq.a(paramInt);
-    }
+    return localStringBuilder.toString();
   }
 }
 

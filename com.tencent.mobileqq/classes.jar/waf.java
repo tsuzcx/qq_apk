@@ -1,29 +1,29 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class waf
-  implements View.OnClickListener
+class waf
+  extends anvi
 {
-  public waf(MsgTabStoryNodeView paramMsgTabStoryNodeView, Context paramContext) {}
+  waf(wae paramwae) {}
   
-  public void onClick(View paramView)
+  protected void onAddFriend(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView.a.isShown()) {}
-    for (int i = 1;; i = 0)
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "onAddFriend: invoked.  addUin: " + paramString);
+    }
+    try
     {
-      xwa.a("msg_tab", "clk_all", 0, i, new String[0]);
-      bfvp localbfvp = bfwg.a(QQStoryContext.a(), this.jdField_a_of_type_AndroidContentContext, "qqstory://qstory/open?from=msgTab");
-      yos.a(localbfvp);
-      if (localbfvp != null) {
-        localbfvp.a();
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramString = Long.valueOf(paramString);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramString);
+      this.a.a(3, localArrayList);
+      this.a.a();
       return;
+    }
+    catch (NumberFormatException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("StoryHaloManager", 2, "onAddFriend: failed.  exception: " + paramString);
     }
   }
 }

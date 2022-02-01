@@ -1,13 +1,20 @@
 import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
 
-class xuq
-  implements xqp
+public class xuq
+  extends Handler
 {
-  xuq(xup paramxup) {}
+  private xuq(QQStoryMainController paramQQStoryMainController) {}
   
-  public void a(xpu paramxpu)
+  public void handleMessage(Message paramMessage)
   {
-    xuh.a(this.a.a).sendMessage(xuh.a(this.a.a).obtainMessage(0, paramxpu));
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a.a(false);
   }
 }
 

@@ -1,20 +1,13 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
-class afjn
-  extends axkx
+public class afjn
+  implements DialogInterface.OnClickListener
 {
-  afjn(afiw paramafiw) {}
+  public afjn(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramInt == 0) && (paramBoolean == true))
-    {
-      paramBundle.getInt("gif_ui_show_bid");
-      long l = paramBundle.getLong("gif_ui_show_seq");
-      this.a.refresh(65536);
-      afiw.a(this.a, Long.valueOf(l).longValue());
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

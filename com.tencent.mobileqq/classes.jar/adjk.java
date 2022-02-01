@@ -1,29 +1,55 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity.14.1;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import mqq.os.MqqHandler;
 
 public class adjk
-  implements View.OnClickListener
+  implements bldp
 {
-  public adjk(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public adjk(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void onClick(View paramView)
+  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    if (paramView.getId() == 2131365376)
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      adjx localadjx = this.a.jdField_a_of_type_Adjv.a();
-      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (localadjx != null))
-      {
-        bjnw localbjnw = (bjnw)bjon.a(this.a, null);
-        localbjnw.a(2131693014, 3);
-        localbjnw.c(2131690620);
-        localbjnw.a(new adjl(this, localadjx, localbjnw));
-        localbjnw.show();
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.ai_();
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
   }
+  
+  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+  }
+  
+  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "onViewCompleteVisableAndReleased begin refresh");
+    }
+    if (this.a.c())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
+      this.a.b = true;
+      AssociatedAccountActivity.b(this.a, false, true);
+      return true;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AssociatedAccountActivity.14.1(this), 800L);
+    return true;
+  }
+  
+  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

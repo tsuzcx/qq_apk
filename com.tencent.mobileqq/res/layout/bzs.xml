@@ -11,7 +11,7 @@
         <View android:id="@id/bmt" android:background="#ffebedf5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" android:layout_alignParentBottom="true" />
     </RelativeLayout>
     <RelativeLayout android:id="@id/dre" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="8.669983dip" android:layout_alignParentTop="true">
-        <com.tencent.mobileqq.gamecenter.view.ShadowView android:id="@id/lgr" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true" />
+        <com.tencent.mobileqq.gamecenter.view.ShadowView android:id="@id/lrw" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true" />
         <com.tencent.mobileqq.subaccount.UpArrowView android:id="@id/yw" android:duplicateParentState="true" android:layout_width="12.0dip" android:layout_height="8.0dip" android:layout_marginLeft="34.0dip" android:layout_alignParentBottom="true" />
     </RelativeLayout>
 </RelativeLayout>

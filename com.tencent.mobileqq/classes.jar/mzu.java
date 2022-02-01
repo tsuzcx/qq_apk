@@ -1,42 +1,74 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.wtogether.util.TheadUtils.3;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
 
 public class mzu
-  implements anhg
 {
-  public mzu(GameActivityCenterCtrl paramGameActivityCenterCtrl, String paramString) {}
-  
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public static <V> V a(Handler paramHandler, Callable<V> paramCallable)
   {
-    if (GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl) == null) {}
-    for (Object localObject1 = null;; localObject1 = (Activity)GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl).get())
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = BaseApplicationImpl.getContext();
-      }
-      if ((localObject2 != null) && (GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl) != null) && (GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl).a()))
+    if (paramHandler.getLooper().getThread() == Thread.currentThread()) {
+      try
       {
-        GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl, true);
-        localObject1 = new Intent((Context)localObject2, QQBrowserActivity.class);
-        ((Intent)localObject1).putExtra("url", GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl).b);
-        ((Intent)localObject1).putExtra("avgame_share_link", paramString);
-        ((Intent)localObject1).putExtra("avgame_share_name", this.jdField_a_of_type_JavaLangString);
-        ((Context)localObject2).startActivity((Intent)localObject1);
+        paramHandler = paramCallable.call();
+        return paramHandler;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("GameACCtrl", 2, "getShareLinkCallback, ctx[" + localObject2 + "], entry[" + GameActivityCenterCtrl.a(this.jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl) + "], shareName[" + this.jdField_a_of_type_JavaLangString + "], shareUrl[" + paramString + "]");
+      catch (Exception paramHandler)
+      {
+        throw new RuntimeException(paramHandler);
       }
-      return;
     }
+    mzw localmzw = new mzw();
+    mzv localmzv = new mzv();
+    CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    paramHandler.post(new TheadUtils.3(localmzw, paramCallable, localmzv, localCountDownLatch));
+    a(localCountDownLatch);
+    if (localmzv.a != null)
+    {
+      paramHandler = new RuntimeException(localmzv.a);
+      paramHandler.setStackTrace(a(localmzv.a.getStackTrace(), paramHandler.getStackTrace()));
+      throw paramHandler;
+    }
+    return localmzw.a;
+  }
+  
+  public static void a(Handler paramHandler, Runnable paramRunnable)
+  {
+    a(paramHandler, new mzy(paramRunnable));
+  }
+  
+  public static void a(CountDownLatch paramCountDownLatch)
+  {
+    a(new mzx(paramCountDownLatch));
+  }
+  
+  public static void a(mzz parammzz)
+  {
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        parammzz.a();
+        if (i != 0) {
+          Thread.currentThread().interrupt();
+        }
+        return;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        i = 1;
+      }
+    }
+  }
+  
+  static StackTraceElement[] a(StackTraceElement[] paramArrayOfStackTraceElement1, StackTraceElement[] paramArrayOfStackTraceElement2)
+  {
+    StackTraceElement[] arrayOfStackTraceElement = new StackTraceElement[paramArrayOfStackTraceElement1.length + paramArrayOfStackTraceElement2.length];
+    System.arraycopy(paramArrayOfStackTraceElement1, 0, arrayOfStackTraceElement, 0, paramArrayOfStackTraceElement1.length);
+    System.arraycopy(paramArrayOfStackTraceElement2, 0, arrayOfStackTraceElement, paramArrayOfStackTraceElement1.length, paramArrayOfStackTraceElement2.length);
+    return arrayOfStackTraceElement;
   }
 }
 

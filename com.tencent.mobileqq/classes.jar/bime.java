@@ -1,12 +1,9 @@
-class bime
-  implements bjoy
+import android.view.MotionEvent;
+import android.view.View;
+
+public abstract interface bime
 {
-  bime(bimc parambimc) {}
-  
-  public void a()
-  {
-    this.a.a = null;
-  }
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 

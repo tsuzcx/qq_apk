@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import amtj;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -9,12 +8,13 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bjxd;
-import vpl;
+import anvx;
+import blio;
+import weg;
 
 public class LoadMoreLayout
   extends FrameLayout
-  implements bjxd
+  implements blio
 {
   protected int a;
   protected Context a;
@@ -56,11 +56,11 @@ public class LoadMoreLayout
   
   private void a()
   {
-    this.jdField_a_of_type_JavaLangString = amtj.a(2131705389);
-    this.c = amtj.a(2131705391);
-    this.d = amtj.a(2131705388);
-    this.b = vpl.a(2131698845);
-    this.e = amtj.a(2131705390);
+    this.jdField_a_of_type_JavaLangString = anvx.a(2131705740);
+    this.c = anvx.a(2131705742);
+    this.d = anvx.a(2131705739);
+    this.b = weg.a(2131699196);
+    this.e = anvx.a(2131705741);
   }
   
   private boolean a(int paramInt1, int paramInt2)
@@ -111,9 +111,9 @@ public class LoadMoreLayout
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561807, null));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131373018));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378367));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561875, null));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131373228));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378658));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
     super.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, localLayoutParams);
     c(0);

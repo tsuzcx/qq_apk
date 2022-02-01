@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import bjsd;
+import bldp;
 import com.tencent.mfsdk.collector.DropFrameMonitor;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
@@ -15,21 +15,21 @@ import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.SwipListView;
-import yst;
-import ysx;
-import ysz;
+import zhm;
+import zhq;
+import zhs;
 
 public class QQStoryPullToRefreshListView
   extends SwipListView
-  implements bjsd, AbsListView.OnScrollListener
+  implements bldp, AbsListView.OnScrollListener
 {
   private int jdField_a_of_type_Int = -1;
   private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener;
   private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   private String jdField_a_of_type_JavaLangString;
-  public yst a;
-  private ysx jdField_a_of_type_Ysx = new ysx(this);
-  protected ysz a;
+  public zhm a;
+  private zhq jdField_a_of_type_Zhq = new zhq(this);
+  protected zhs a;
   public PullRefreshHeader b;
   
   public QQStoryPullToRefreshListView(Context paramContext)
@@ -75,7 +75,7 @@ public class QQStoryPullToRefreshListView
   protected void n()
   {
     LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
-    this.jdField_a_of_type_Yst = new yst(localLoadMoreLayout, getContext().getApplicationContext());
+    this.jdField_a_of_type_Zhm = new zhm(localLoadMoreLayout, getContext().getApplicationContext());
     super.addFooterView(localLoadMoreLayout);
   }
   
@@ -94,8 +94,8 @@ public class QQStoryPullToRefreshListView
     {
       return;
       this.jdField_a_of_type_Int = paramInt1;
-    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_a_of_type_Yst.a());
-    this.jdField_a_of_type_Yst.b(true);
+    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_a_of_type_Zhm.a());
+    this.jdField_a_of_type_Zhm.b(true);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
@@ -129,7 +129,7 @@ public class QQStoryPullToRefreshListView
     for (;;)
     {
       return true;
-      this.jdField_a_of_type_Ysz.a();
+      this.jdField_a_of_type_Zhs.a();
     }
   }
   
@@ -161,12 +161,12 @@ public class QQStoryPullToRefreshListView
   
   protected void s()
   {
-    this.b = ((PullRefreshHeader)LayoutInflater.from(super.getContext()).inflate(2131561706, this, false));
+    this.b = ((PullRefreshHeader)LayoutInflater.from(super.getContext()).inflate(2131561774, this, false));
     this.b.setTextColor(-1, -1, -1, -1, -1);
-    this.b.setHeaderBgDrawable(getResources().getDrawable(2130839440));
-    super.setOverScrollHeight(super.getResources().getDimensionPixelSize(2131298826));
+    this.b.setHeaderBgDrawable(getResources().getDrawable(2130839461));
+    super.setOverScrollHeight(super.getResources().getDimensionPixelSize(2131298830));
     super.setOverScrollHeader(this.b);
-    super.setOverScrollListener(this.jdField_a_of_type_Ysx);
+    super.setOverScrollListener(this.jdField_a_of_type_Zhq);
   }
   
   public void setActTAG(String paramString)
@@ -184,9 +184,9 @@ public class QQStoryPullToRefreshListView
     this.jdField_a_of_type_AndroidViewView$OnTouchListener = paramOnTouchListener;
   }
   
-  public void setPullToRefreshListener(ysz paramysz)
+  public void setPullToRefreshListener(zhs paramzhs)
   {
-    this.jdField_a_of_type_Ysz = paramysz;
+    this.jdField_a_of_type_Zhs = paramzhs;
   }
 }
 

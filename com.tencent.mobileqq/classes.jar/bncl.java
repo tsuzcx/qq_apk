@@ -1,17 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-
 public class bncl
-  extends boax
 {
-  public bncl(EditPicActivity paramEditPicActivity) {}
+  public double a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void a()
+  public bncl()
   {
-    xvv.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
-    bnca localbnca = (bnca)this.a.a.a(bnca.class);
-    if (localbnca != null) {
-      localbnca.b();
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = anvx.a(2131715189);
+    this.jdField_b_of_type_JavaLangString = anvx.a(2131715191);
+    this.jdField_a_of_type_Double = 0.8D;
   }
 }
 

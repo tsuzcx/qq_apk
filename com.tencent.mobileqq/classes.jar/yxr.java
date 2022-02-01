@@ -1,196 +1,147 @@
-import android.content.Context;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.text.TextUtils;
-import android.util.Pair;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.ThreadManager;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class yxr
-  implements Handler.Callback
+  extends BaseAdapter
+  implements AdapterView.OnItemClickListener, yxu
 {
-  private aaeh jdField_a_of_type_Aaeh;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private aokb jdField_a_of_type_Aokb;
-  private String jdField_a_of_type_JavaLangString = "QR_CODE";
-  private Handler b;
+  private int jdField_a_of_type_Int;
+  private List<yxt> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public yxr(Context paramContext, aaeh paramaaeh)
+  public yxr(@NonNull List<yxt> paramList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aaeh = paramaaeh;
-    this.jdField_a_of_type_Aokb = aokb.a();
-    this.jdField_a_of_type_Aokb.a(paramContext, hashCode(), "QrImageScan");
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        this.jdField_a_of_type_AndroidOsHandler = null;
-      }
-      if (this.b != null)
-      {
-        this.b.removeCallbacksAndMessages(null);
-        this.b = null;
-      }
-      if (this.jdField_a_of_type_Aokb != null) {
-        this.jdField_a_of_type_Aokb.a(hashCode(), "QrImageScan");
-      }
-      this.jdField_a_of_type_Aaeh = null;
-      this.jdField_a_of_type_AndroidContentContext = null;
-      return;
+    if (paramList.isEmpty()) {
+      ykq.d("Q.qqstory.publish.editPermissionListAdapter", "part list is empty.");
     }
-    finally {}
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    a();
+    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramList.hasNext()) {
+      ((yxt)paramList.next()).a(this);
+    }
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  @NonNull
+  private yxs a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      return;
-    }
-    paramString1 = Uri.parse("file://" + paramString1);
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-      this.b = new Handler(this.jdField_a_of_type_AndroidContentContext.getMainLooper(), this);
-      if (TextUtils.isEmpty(paramString2))
-      {
-        this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramInt, 0, paramString1).sendToTarget();
-        return;
-      }
-    }
-    finally {}
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, paramInt, 0, paramString2).sendToTarget();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int j;
-    Object localObject;
-    switch (paramMessage.what)
+    for (int i = 0; localIterator.hasNext(); i = j)
     {
-    default: 
-      return true;
-    case 1: 
-      j = paramMessage.arg1;
-      localObject = new SparseArray(2);
-      if (!(paramMessage.obj instanceof Uri)) {
-        break;
+      yxt localyxt = (yxt)localIterator.next();
+      j = localyxt.a() + i;
+      if (paramInt <= j - 1) {
+        return new yxs(localyxt, paramInt - i);
       }
     }
-    for (int i = yxi.a((Uri)paramMessage.obj, this.jdField_a_of_type_AndroidContentContext, j, (SparseArray)localObject);; i = 0)
+    throw new IllegalStateException("unable find PermissionPart, position:" + paramInt);
+  }
+  
+  private void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((yxt)localIterator.next()).a() + i) {}
+    this.jdField_a_of_type_Int = i;
+  }
+  
+  @Nullable
+  public yxt a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      boolean bool1 = yxi.a(i);
-      boolean bool2 = yxi.b(i);
-      if ((bool1) || (bool2))
+      yxt localyxt = (yxt)localIterator.next();
+      if (localyxt.a) {
+        return localyxt;
+      }
+    }
+    return null;
+  }
+  
+  public void a(yxt paramyxt)
+  {
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    yxs localyxs = a(paramInt);
+    return localyxs.jdField_a_of_type_Yxt.a(localyxs.jdField_a_of_type_Int);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    yxs localyxs = a(paramInt);
+    yxt localyxt = localyxs.jdField_a_of_type_Yxt;
+    int i = localyxs.jdField_a_of_type_Int;
+    if (paramView == null) {
+      paramView = localyxt.a(i, paramViewGroup);
+    }
+    for (;;)
+    {
+      localyxt.a(i, paramView);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 5;
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    a();
+    super.notifyDataSetChanged();
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    Object localObject = a(paramInt);
+    yxt localyxt1 = ((yxs)localObject).jdField_a_of_type_Yxt;
+    localyxt1.a(((yxs)localObject).jdField_a_of_type_Int);
+    if ((localyxt1 instanceof yxq)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      localyxt1.b(true);
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        if (bool1)
+        yxt localyxt2 = (yxt)((Iterator)localObject).next();
+        if (localyxt2 != localyxt1)
         {
-          paramMessage = (Pair)((SparseArray)localObject).get(1);
-          this.jdField_a_of_type_JavaLangString = String.valueOf(paramMessage.second).trim();
-          if (this.b == null) {
-            break;
-          }
-          this.b.obtainMessage(3, 1, j, paramMessage.first).sendToTarget();
-          return true;
+          localyxt2.b(false);
+          localyxt2.a(false);
         }
-        paramMessage = (String)((SparseArray)localObject).get(2);
-        if (this.b == null) {
-          break;
-        }
-        this.b.obtainMessage(3, 2, j, paramMessage).sendToTarget();
-        return true;
       }
-      if (this.b == null) {
-        break;
-      }
-      this.b.obtainMessage(4, j, 0).sendToTarget();
-      return true;
-      int k = paramMessage.arg1;
-      localObject = null;
-      if ((paramMessage.obj instanceof String)) {
-        localObject = (String)paramMessage.obj;
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (;;)
-      {
-        try
-        {
-          paramMessage = new JSONObject((String)localObject);
-          if ((!yxi.a(k)) || (paramMessage == null)) {
-            break label350;
-          }
-          i = 1;
-          if ((!yxi.b(k)) || (paramMessage == null)) {
-            break label355;
-          }
-          j = 1;
-          if ((i == 0) && (j == 0)) {
-            break label391;
-          }
-          if (i == 0) {
-            break label360;
-          }
-          this.jdField_a_of_type_JavaLangString = paramMessage.optString("scannerType");
-          paramMessage = paramMessage.optString("scannerResult");
-          if (this.b == null) {
-            break;
-          }
-          this.b.obtainMessage(3, 1, k, paramMessage).sendToTarget();
-          return true;
-        }
-        catch (Throwable paramMessage)
-        {
-          paramMessage.printStackTrace();
-        }
-        paramMessage = null;
-        continue;
-        label350:
-        i = 0;
-        continue;
-        label355:
-        j = 0;
-      }
-      label360:
-      paramMessage = paramMessage.optString("strMini");
-      if (this.b == null) {
-        break;
-      }
-      this.b.obtainMessage(3, 2, k, paramMessage).sendToTarget();
-      return true;
-      label391:
-      if (this.b == null) {
-        break;
-      }
-      this.b.obtainMessage(4, k, 0).sendToTarget();
-      return true;
-      i = paramMessage.arg1;
-      j = paramMessage.arg2;
-      if (this.jdField_a_of_type_Aaeh == null) {
-        break;
-      }
-      this.jdField_a_of_type_Aaeh.a(String.valueOf(paramMessage.obj), i, j);
-      return true;
-      i = paramMessage.arg1;
-      if (this.jdField_a_of_type_Aaeh == null) {
-        break;
-      }
-      this.jdField_a_of_type_Aaeh.a(i);
-      return true;
+      notifyDataSetChanged();
     }
   }
 }

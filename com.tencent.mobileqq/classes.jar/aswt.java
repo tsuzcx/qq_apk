@@ -1,22 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aswt
-  implements bjoe
+class aswt
+  implements DialogInterface.OnClickListener
 {
-  public aswt(SimpleFileViewer paramSimpleFileViewer, QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bjnw parambjnw) {}
+  aswt(aswr paramaswr) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    bcua.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-    this.jdField_a_of_type_Bjnw.dismiss();
+    aswr.a(this.a).dismiss();
   }
 }
 

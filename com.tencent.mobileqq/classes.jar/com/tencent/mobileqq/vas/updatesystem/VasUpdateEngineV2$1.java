@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vas.updatesystem;
 
 import android.text.TextUtils;
-import bgkd;
-import bgkj;
+import bhum;
+import bhut;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager.QueryItemVersionCallback;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.vas.update.entity.db.ItemLocalVerPrt;
@@ -12,17 +12,17 @@ import com.tencent.vas.update.wrapper.VasUpdateWrapper;
 public class VasUpdateEngineV2$1
   implements Runnable
 {
-  public VasUpdateEngineV2$1(bgkd parambgkd, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback, int paramInt, String paramString) {}
+  public VasUpdateEngineV2$1(bhum parambhum, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback, int paramInt, String paramString) {}
   
   public void run()
   {
     Object localObject = VasUpdateWrapper.getDbManager();
-    if ((localObject == null) || (!(localObject instanceof bgkj)) || (this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$QueryItemVersionCallback == null))
+    if ((localObject == null) || (!(localObject instanceof bhut)) || (this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$QueryItemVersionCallback == null))
     {
       QLog.e("VasUpdate_VasUpdateEngineV2", 1, "setWeakHandler cmdManager == null or != VasCmdImpl or callback == null");
       return;
     }
-    localObject = ((bgkj)localObject).selectItem(0, CommonUtil.sComposeItemId(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString));
+    localObject = ((bhut)localObject).selectItem(0, CommonUtil.sComposeItemId(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString));
     if (QLog.isColorLevel()) {
       QLog.i("VasUpdate_VasUpdateEngineV2", 2, "queryItemVersion bid = " + this.jdField_a_of_type_Int + " , scid = " + this.jdField_a_of_type_JavaLangString);
     }

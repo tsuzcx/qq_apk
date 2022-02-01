@@ -1,6 +1,22 @@
-public abstract interface afge
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class afge
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  public afge(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
+    if (this.a.d == 11) {
+      bdla.b(this.a.app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

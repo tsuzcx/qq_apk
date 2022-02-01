@@ -1,11 +1,25 @@
+import android.view.View;
+import java.lang.ref.WeakReference;
+
 class afso
-  implements afsr
 {
-  afso(afsn paramafsn) {}
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<afsn> b;
   
-  public void a(int paramInt)
+  public afso(afsl paramafsl, View paramView, afsn paramafsn)
   {
-    this.a.f();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramafsn);
+  }
+  
+  public afsn a()
+  {
+    return (afsn)this.b.get();
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
 }
 

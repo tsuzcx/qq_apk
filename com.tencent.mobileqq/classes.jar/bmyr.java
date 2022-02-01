@@ -1,48 +1,23 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.RecyclerView.SmoothScroller;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.NestedScrollingParentLayout;
+import android.support.v4.view.OnApplyWindowInsetsListener;
+import android.support.v4.view.WindowInsetsCompat;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class bmyr
-  extends RecyclerView.OnScrollListener
+class bmyr
+  implements OnApplyWindowInsetsListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  bmyr(bmyq parambmyq) {}
   
-  public bmyr(NestedScrollingParentLayout paramNestedScrollingParentLayout) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) != NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout)) {}
-    while ((paramInt != 0) || (!this.jdField_a_of_type_Boolean)) {
-      return;
+    if ((paramView instanceof ViewGroup))
+    {
+      paramView = (ViewGroup)paramView.findViewById(2131376947);
+      if (paramView != null) {
+        paramView.setPadding(0, paramWindowInsetsCompat.getSystemWindowInsetTop(), 0, 0);
+      }
     }
-    this.jdField_a_of_type_Boolean = false;
-    paramRecyclerView = NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getLayoutManager();
-    paramRecyclerView = NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).a(paramRecyclerView);
-    NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout, NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getChildAdapterPosition(paramRecyclerView));
-    if (QLog.isColorLevel()) {
-      QLog.d("NestedScrollingParentLayout", 2, "onScrollStateChanged onScrolled dx " + paramInt);
-    }
-    paramRecyclerView = NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).a(NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getLayoutManager());
-    paramRecyclerView.setTargetPosition(NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout));
-    NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getLayoutManager().startSmoothScroll(paramRecyclerView);
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NestedScrollingParentLayout", 2, "onScrolled dx +=" + paramInt1);
-    }
-    if (NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) != NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout)) {}
-    while ((NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) >= 0) || ((paramInt1 == 0) && (paramInt2 == 0))) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    paramInt1 = (int)(paramInt1 * NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout));
-    NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).scrollBy(paramInt1, paramInt2);
+    return paramWindowInsetsCompat;
   }
 }
 

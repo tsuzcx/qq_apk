@@ -1,131 +1,111 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tribe.async.async.JobContext;
-import cooperation.qzone.util.GpsComplementUtil;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class yjv
-  extends yju<yjh, yjh>
+  extends zgz
 {
-  public final String a;
-  private boolean a;
+  public static final String KEY = "PlaceholderSegment";
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private yhc jdField_a_of_type_Yhc;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public yjv(String paramString)
+  public yjv(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this(true, paramString);
+    super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public yjv(boolean paramBoolean)
+  public void P_()
   {
-    this(paramBoolean, null);
+    Q_();
   }
   
-  public yjv(boolean paramBoolean, String paramString)
+  protected void Q_()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void a(JobContext paramJobContext, yjh paramyjh)
-  {
-    boolean bool2 = false;
-    int i = 1;
-    String str = this.jdField_a_of_type_JavaLangString;
-    paramJobContext = str;
-    if (str == null) {
-      paramJobContext = yjx.a(paramyjh.jdField_a_of_type_Int, paramyjh.jdField_b_of_type_JavaLangString, ".jpg");
+    zgz localzgz = a().a(this.jdField_b_of_type_JavaLangString);
+    if ((localzgz == null) || (localzgz.a() == 0))
+    {
+      d_(true);
+      return;
     }
-    if ((this.jdField_a_of_type_Boolean) && (paramyjh.jdField_a_of_type_Boolean)) {
-      xvv.b("Q.qqstory.publish.edit.MergePicSegment", "merge has doodle");
+    d_(false);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, yhc paramyhc, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TextView)paramyhc.a(2131374658);
+    ImageView localImageView = (ImageView)paramyhc.a(2131374659);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      paramViewGroup.setText(anvx.a(2131707647) + vzh.jdField_a_of_type_JavaLangString + "\n拍摄一段小视频，分享眼前的世界");
+      QQStoryContext.a();
+      if (!ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+        break label104;
+      }
+      localImageView.setImageResource(this.jdField_b_of_type_Int);
     }
-    boolean bool1;
     for (;;)
     {
-      try
-      {
-        bool1 = yoy.a(yoy.c(paramyjh.jdField_a_of_type_Yjl.jdField_a_of_type_AndroidGraphicsBitmap, paramyjh.jdField_a_of_type_Yjl.jdField_b_of_type_AndroidGraphicsBitmap), paramJobContext);
-        i = 0;
-        bool2 = true;
-        babc.d = bool2;
-        if ((i != 0) || (bool1)) {
-          break;
-        }
-        xvv.e("Q.qqstory.publish.edit.MergePicSegment", "save err");
-        super.notifyError(new ErrorMessage(-1, amtj.a(2131705674)));
-        return;
-      }
-      catch (Throwable paramJobContext)
-      {
-        xvv.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
-        paramJobContext = null;
-        bool1 = false;
-        continue;
-      }
-      if (paramyjh.jdField_a_of_type_Yjl.jdField_a_of_type_Int > 0)
-      {
-        xvv.b("Q.qqstory.publish.edit.MergePicSegment", "merge use display");
-        try
-        {
-          bool1 = yoy.a(paramyjh.jdField_a_of_type_Yjl.jdField_a_of_type_AndroidGraphicsBitmap, paramJobContext);
-          i = 0;
-          bool2 = true;
-        }
-        catch (Throwable paramJobContext)
-        {
-          for (;;)
-          {
-            xvv.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
-            paramJobContext = null;
-            bool1 = false;
-          }
-        }
-      }
-      else
-      {
-        xvv.b("Q.qqstory.publish.edit.MergePicSegment", "merge use origin");
-        paramJobContext = paramyjh.jdField_a_of_type_Yjl.jdField_a_of_type_JavaLangString;
-        xwb.b("0X80075C9");
-        paramyjh.jdField_a_of_type_Yjl.jdField_b_of_type_Boolean = true;
-        bool1 = false;
-      }
+      return paramyhc.a();
+      paramViewGroup.setText(this.jdField_a_of_type_JavaLangString);
+      break;
+      label104:
+      localImageView.setImageResource(this.jdField_a_of_type_Int);
     }
-    paramyjh.jdField_a_of_type_Yjl.jdField_b_of_type_JavaLangString = paramJobContext;
-    paramyjh.jdField_a_of_type_Yjl.jdField_a_of_type_Boolean = bool1;
-    if ((paramyjh.jdField_a_of_type_Int == 3) && (bool1)) {
-      a(paramyjh, paramyjh.jdField_a_of_type_Yjl.jdField_a_of_type_JavaLangString, paramJobContext);
-    }
-    super.notifyResult(paramyjh);
   }
   
-  public void a(yjh paramyjh, String paramString1, String paramString2)
+  public String a()
   {
-    double d1;
-    double d2;
-    if (((paramyjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditTakePhotoSource)) && (((EditTakePhotoSource)paramyjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource).b != 4.9E-324D) && (((EditTakePhotoSource)paramyjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource).a != 4.9E-324D))
-    {
-      d1 = ((EditTakePhotoSource)paramyjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource).b;
-      d2 = ((EditTakePhotoSource)paramyjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource).a;
-      if (!TextUtils.isEmpty(paramString1)) {
-        if (!GpsComplementUtil.complementByExif(paramString1, paramString2)) {
-          GpsComplementUtil.complementByLocal(paramString2, d2, d1);
-        }
-      }
-    }
+    return "PlaceholderSegment";
+  }
+  
+  public yhc a(int paramInt, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Yhc = new yhc(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561663, paramViewGroup, false));
+    return this.jdField_a_of_type_Yhc;
+  }
+  
+  protected void c()
+  {
+    Q_();
+  }
+  
+  public void e()
+  {
+    super.e();
+    if (this.jdField_a_of_type_Yhc == null) {}
+    ImageView localImageView;
     do
     {
-      do
-      {
-        return;
-        GpsComplementUtil.complementByLocal(paramString2, d2, d1);
-        return;
-      } while ((!(paramyjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditLocalPhotoSource)) || (TextUtils.isEmpty(paramyjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource.getSourcePath())) || (GpsComplementUtil.complementByExif(paramyjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource.getSourcePath(), paramString2)));
-      paramyjh = ((EditLocalPhotoSource)paramyjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource).a;
-    } while (paramyjh == null);
-    GpsComplementUtil.complementByDB(paramString2, paramyjh.longitude / 1000000.0D, paramyjh.latitude / 1000000.0D);
+      return;
+      localImageView = (ImageView)this.jdField_a_of_type_Yhc.a(2131374659);
+    } while (localImageView == null);
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
+    {
+      localImageView.setImageResource(this.jdField_b_of_type_Int);
+      return;
+    }
+    localImageView.setImageResource(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,22 +1,42 @@
-import java.util.ArrayList;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.Switch;
 
-class ouw
-  extends owd
+public class ouw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ouw(ouu paramouu, int paramInt)
-  {
-    super(paramouu, null);
-  }
+  public ouw(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  void a(owg paramowg)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      paramowg.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
+    ReadInJoySettingActivity localReadInJoySettingActivity = this.a;
+    boolean bool;
+    if (!paramBoolean)
+    {
+      bool = true;
+      ReadInJoySettingActivity.a(localReadInJoySettingActivity, bool);
+      if ((!ReadInJoySettingActivity.a(this.a).isPressed()) || (this.a.c)) {
+        break label87;
+      }
+      if (paramBoolean) {
+        break label74;
+      }
+      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
     }
-    while (this.jdField_a_of_type_Int != 2) {
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
+      bool = false;
+      break;
+      label74:
+      ReadInJoySettingActivity.a(this.a).show();
+      continue;
+      label87:
+      this.a.c = false;
     }
-    paramowg.onCommentLoadMore(1, false, new ArrayList(), false, 3);
   }
 }
 

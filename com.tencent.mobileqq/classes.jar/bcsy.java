@@ -1,151 +1,138 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.cs.head.ContentHead;
+import tencent.im.cs.head.Head;
+import tencent.im.cs.head.MsgHead;
+import tencent.im.msg.im_msg_body.MsgBody;
 
 public class bcsy
+  implements bcsk
 {
-  private static bcsy jdField_a_of_type_Bcsy;
-  private long jdField_a_of_type_Long = -1L;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<Long, structmsg.StructMsg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private long b = -1L;
-  
-  public static bcsy a()
+  private void a(MessageHandler paramMessageHandler, String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    if (jdField_a_of_type_Bcsy == null) {
-      jdField_a_of_type_Bcsy = new bcsy();
+    try
+    {
+      new lxx(BaseApplicationImpl.getContext()).a(new bcsz(this, paramArrayOfByte, paramString, paramLong3, paramMessageHandler, paramLong2, paramLong1, paramInt, paramBoolean));
+      return;
     }
-    return jdField_a_of_type_Bcsy;
-  }
-  
-  public int a(QQAppInterface paramQQAppInterface)
-  {
-    int i = 0;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      i = paramQQAppInterface.getInt("sp_unread_friendsys_count", 0);
-    }
-    return i;
-  }
-  
-  public long a()
-  {
-    return this.b;
-  }
-  
-  public long a(QQAppInterface paramQQAppInterface)
-  {
-    long l = 0L;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      l = paramQQAppInterface.getLong("sp_oldest_friendmsg", 0L);
-    }
-    return l;
-  }
-  
-  public structmsg.StructMsg a(Long paramLong)
-  {
-    structmsg.StructMsg localStructMsg = null;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      localStructMsg = (structmsg.StructMsg)this.jdField_a_of_type_JavaUtilHashMap.get(paramLong);
-    }
-    return localStructMsg;
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_Bcsy = null;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.b = paramLong;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendSystemMsgController", 2, "setUnReadFriendSystemMsgNum count = " + paramInt, new Throwable("debug"));
-    }
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putInt("sp_unread_friendsys_count", paramInt).commit();
+    catch (Exception paramMessageHandler)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(paramString, 2, "exception when process qcall offline msg", paramMessageHandler);
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, long paramLong)
+  private byte[] a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putLong("sp_oldest_friendmsg", paramLong).commit();
+    try
+    {
+      Object localObject = new head.Head();
+      byte[] arrayOfByte = new byte[paramInt2];
+      System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, paramInt2);
+      ((head.Head)localObject).mergeFrom(arrayOfByte);
+      int i = ((head.Head)localObject).msg_msg_head.msg_content_head.uint32_type.get();
+      int j = ((head.Head)localObject).msg_msg_head.msg_content_head.uint32_subtype.get();
+      if ((i == 562) && (j == 17))
+      {
+        localObject = new im_msg_body.MsgBody();
+        arrayOfByte = new byte[paramInt3];
+        System.arraycopy(paramArrayOfByte, paramInt1 + paramInt2, arrayOfByte, 0, paramInt3);
+        ((im_msg_body.MsgBody)localObject).mergeFrom(arrayOfByte);
+        return ((im_msg_body.MsgBody)localObject).msg_content.get().toByteArray();
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.d(paramString, 2, "error msgType:" + i + ", or subType:" + j);
+        return null;
+      }
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putBoolean("sp_is_sysmsg_over", paramBoolean).commit();
-    }
-  }
-  
-  public void a(Long paramLong, structmsg.StructMsg paramStructMsg)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    catch (Exception paramArrayOfByte)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("FriendSystemMsgController", 2, "putStructMsgToMap key=" + paramLong);
+        QLog.d(paramString, 2, "error when process qcall offline msg", paramArrayOfByte);
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramLong, paramStructMsg);
     }
+    return null;
   }
   
-  public void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface.execute(new FriendSystemMsgController.1(this, paramQQAppInterface, paramBoolean));
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentAccountUin()))) {
-      this.jdField_a_of_type_Boolean = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("friend_system_msg_nomore_msg", false);
+    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has())) {
+      if (QLog.isColorLevel()) {
+        QLog.e("VideoQCallDecoder", 2, "<---decodeC2CMsgPkg_QCall return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has());
+      }
     }
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public boolean b(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool = false;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      bool = paramQQAppInterface.getBoolean("sp_is_sysmsg_over", false);
-    }
-    return bool;
+    long l1;
+    long l3;
+    long l4;
+    long l2;
+    boolean bool;
+    do
+    {
+      do
+      {
+        int i;
+        int j;
+        do
+        {
+          do
+          {
+            return;
+            l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
+            l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
+            l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
+            l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+            ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
+            paramList = l4 + "-" + l3;
+            if (QLog.isColorLevel()) {
+              QLog.d("decodeC2CMsgPkg_QCall", 2, "<---decodeC2CMsgPkg_QCall :  key:" + paramList);
+            }
+            if (!paramMessageHandler.app.getMsgCache().a(l2, paramList)) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("decodeC2CMsgPkg_QCall", 2, "msg has been pulled");
+          return;
+          l3 = bcrg.a();
+          l4 = Long.valueOf(paramMessageHandler.app.getCurrentAccountUin()).longValue();
+          paramMsg = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
+          paramList = new byte[4];
+          byte[] arrayOfByte = new byte[4];
+          System.arraycopy(paramMsg, 0, paramList, 0, 4);
+          System.arraycopy(paramMsg, 4, arrayOfByte, 0, 4);
+          i = lcx.a(paramList, 4);
+          j = lcx.a(arrayOfByte, 4);
+          if ((i > 0) && (j > 0)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("decodeC2CMsgPkg_QCall", 2, "invalid head length:" + i + " or body length:" + j);
+        return;
+        paramMsg = a("decodeC2CMsgPkg_QCall", paramMsg, 8, i, j);
+        if (paramMsg != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("decodeC2CMsgPkg_QCall", 2, "msg sharp content null, return;");
+      return;
+      bool = llg.a(paramMsg);
+      if (((parambcre.jdField_a_of_type_Boolean) || (parambcre.f)) && ((parambcre.jdField_a_of_type_Long == parambcre.b) && ((parambcre.jdField_a_of_type_Long != parambcre.b) || (bool)))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("decodeC2CMsgPkg_QCall", 2, "<---decodeC2CMsgPkg_QCall return null:,isReaded:" + parambcre.jdField_a_of_type_Boolean + "syncOther:" + parambcre.f + ",isSharpRequest" + bool);
+    return;
+    a(paramMessageHandler, "decodeC2CMsgPkg_QCall", (int)l1, l2, l4, l3 - l1, paramMsg, bool);
   }
 }
 

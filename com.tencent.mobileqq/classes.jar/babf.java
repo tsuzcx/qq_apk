@@ -1,107 +1,145 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
 
 public class babf
+  extends azwn<View>
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[256];
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private int c = 125;
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new babg(this);
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private View jdField_a_of_type_AndroidViewView;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a()
+  public babf(azxt paramazxt, azrb paramazrb)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeChecker", 2, "refreshTimer ");
+    super(paramazxt, paramazrb);
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_JavaLangObject != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getLayoutInflater().inflate(2131561367, (ViewGroup)this.jdField_a_of_type_JavaLangObject);
+      this.jdField_a_of_type_AndroidViewView = ((View)this.jdField_a_of_type_JavaLangObject).findViewById(2131370927);
     }
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, babg parambabg)
+  private void a(Message paramMessage)
   {
-    if ((parambabg == null) || (paramArrayOfByte == null)) {}
-    int[] arrayOfInt;
-    do
+    try
     {
-      do
-      {
-        return;
-        arrayOfInt = ShortVideoUtils.getDarkModeDPCValues();
-      } while (arrayOfInt[0] != 1);
-      this.jdField_a_of_type_Int += 1;
-    } while (this.jdField_a_of_type_Int % 8 != 0);
-    this.jdField_b_of_type_Int = (paramInt1 * paramInt2 * (100 - arrayOfInt[1]) / 100);
-    this.c = arrayOfInt[2];
-    Arrays.fill(this.jdField_a_of_type_ArrayOfInt, 0);
-    int i = 1;
-    while (i < paramInt2)
-    {
-      int j = 1;
-      while (j < paramInt1)
-      {
-        if (i * paramInt1 + j < paramArrayOfByte.length)
-        {
-          arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-          int k = paramArrayOfByte[(i * paramInt1 + j)] & 0xFF;
-          arrayOfInt[k] += 64;
-        }
-        j += 8;
+      if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewView.getWidth() <= 0) || (this.jdField_a_of_type_AndroidViewView.getHeight() <= 0)) {
+        break label254;
       }
-      i += 8;
+      ((MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MEDAL_WALL_MNG)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidViewView, 2, ((azrb)this.b).jdField_a_of_type_ComTencentMobileqqDataCard);
+      bool1 = false;
     }
-    i = 0;
-    paramInt2 = 255;
-    paramInt1 = 255;
-    label172:
-    if (paramInt1 >= 51)
+    catch (Exception paramMessage)
     {
-      i += this.jdField_a_of_type_ArrayOfInt[paramInt1];
-      if (i < this.jdField_b_of_type_Int) {}
-    }
-    for (;;)
-    {
-      if (paramInt1 <= this.c)
+      for (;;)
       {
-        QLog.w("DarkModeChecker", 1, "darkmode = true!");
-        this.jdField_b_of_type_Long = 0L;
-        if (this.jdField_a_of_type_Long == 0L)
+        try
         {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          if (paramMessage.arg1 < 2)
+          {
+            Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+            localMessage.what = paramMessage.what;
+            paramMessage.arg1 += 1;
+            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1000L);
+            bool2 = bool1;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("ProfileMediaWallComponent", 2, String.format("checkMedalGuide needResendMsg=%s", new Object[] { Boolean.valueOf(bool2) }));
+            if (((azrb)this.b).jdField_a_of_type_ComTencentMobileqqDataCard != null)
+            {
+              paramMessage = ((azrb)this.b).jdField_a_of_type_ComTencentMobileqqDataCard;
+              QLog.d("ProfileMediaWallComponent", 2, String.format("checkMedalGuide medalSwitchDisable=%s iMedalCount=%s iNewCount=%s iUpgradeCount=%s", new Object[] { Boolean.valueOf(paramMessage.medalSwitchDisable), Integer.valueOf(paramMessage.iMedalCount), Integer.valueOf(paramMessage.iNewCount), Integer.valueOf(paramMessage.iUpgradeCount) }));
+            }
+          }
           return;
-          paramInt2 = paramInt1;
-          paramInt1 -= 1;
-          break label172;
         }
-        if ((this.jdField_a_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1500L)) {
-          break;
+        catch (Exception paramMessage)
+        {
+          boolean bool2;
+          continue;
         }
-        this.jdField_a_of_type_Long = -1L;
-        QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE on!");
-        this.jdField_b_of_type_Long = 0L;
-        parambabg.a(true);
-        return;
+        paramMessage = paramMessage;
+        boolean bool1 = true;
+        QLog.e("ProfileMediaWallComponent", 1, "checkMedalGuide fail.", paramMessage);
+        bool2 = bool1;
+        continue;
+        label254:
+        bool1 = true;
       }
-      if (this.jdField_a_of_type_Long > 0L) {
-        this.jdField_a_of_type_Long = 0L;
-      }
-      if (this.jdField_b_of_type_Long == 0L)
-      {
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-        return;
-      }
-      if ((this.jdField_b_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_b_of_type_Long < 2000L)) {
-        break;
-      }
-      this.jdField_b_of_type_Long = -1L;
-      QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE off!");
-      this.jdField_a_of_type_Long = 0L;
-      parambabg.a(false);
-      return;
-      paramInt1 = paramInt2;
     }
+    bool2 = bool1;
+    if (bool1) {
+      bool2 = bool1;
+    }
+  }
+  
+  public int a()
+  {
+    return 1025;
+  }
+  
+  public String a()
+  {
+    return "ProfileMediaWallComponent";
+  }
+  
+  public void a(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
+  {
+    super.a(paramBaseActivity, paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
+    a();
+    if (((azrb)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 2000L);
+    }
+  }
+  
+  public void d()
+  {
+    super.d();
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
+  }
+  
+  public void f()
+  {
+    MedalGuideView.a();
+    super.f();
   }
 }
 

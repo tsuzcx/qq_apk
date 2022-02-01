@@ -1,34 +1,29 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.multicard.RecommendPerson;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class awbz
-  implements BusinessObserver
+  extends BroadcastReceiver
 {
-  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap) {}
+  public awbz(UiApiPlugin paramUiApiPlugin) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
-    }
-    switch (paramInt)
+    if ((UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberRecommend.obsever", 2, " default type =" + paramInt);
+      Iterator localIterator = UiApiPlugin.a.iterator();
+      while (localIterator.hasNext())
+      {
+        UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
+        if (localUiApiPlugin != null) {
+          localUiApiPlugin.a(paramContext, paramIntent);
+        }
       }
-      break;
     }
-    do
-    {
-      return;
-    } while (!(paramObject instanceof Object[]));
-    paramObject = (Object[])paramObject;
-    Map localMap = (Map)paramObject[0];
-    a(paramBoolean, (String)paramObject[1], ((Integer)paramObject[2]).intValue(), localMap);
   }
 }
 

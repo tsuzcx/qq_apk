@@ -1,28 +1,25 @@
-public class aslu
-  implements Cloneable
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+class aslu
+  implements assu
 {
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public byte[] a = new byte[16];
-  public long b;
-  public short b;
-  public boolean b;
-  public long c = -1L;
+  aslu(aslo paramaslo) {}
   
-  public aslu a()
+  public void a(boolean paramBoolean, asmo paramasmo)
   {
-    try
+    if (aslo.a(this.a) == null)
     {
-      aslu localaslu = (aslu)super.clone();
-      return localaslu;
+      QLog.e("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo null");
+      return;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      localCloneNotSupportedException.printStackTrace();
+    if (!paramBoolean) {
+      QLog.e("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo NOT suc");
     }
-    return null;
+    int i = asqt.a(aslo.a(this.a));
+    ((aslm)aslo.a(this.a).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).a(i, paramasmo);
+    QLog.i("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo  suc:" + paramBoolean);
   }
 }
 

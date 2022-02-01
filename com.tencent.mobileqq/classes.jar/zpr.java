@@ -1,39 +1,33 @@
-import com.tencent.biz.troop.VideoCombineHelper.2;
-import com.tencent.qphone.base.util.QLog;
-
 public class zpr
-  extends zqp
 {
-  public zpr(VideoCombineHelper.2 param2)
+  public static <T> String a(String paramString, zpq<T> paramzpq)
   {
-    super(param2.this$0);
+    return zps.a().a(paramString, paramzpq);
   }
   
-  public void a(zqo paramzqo)
+  public static void a(String paramString)
   {
-    if ((paramzqo instanceof zqj)) {
-      this.a.jdField_a_of_type_Zpy.a("", false, "download failed! msg = " + paramzqo.d);
-    }
-    do
-    {
-      return;
-      if ((paramzqo instanceof zqb))
-      {
-        this.a.jdField_a_of_type_Zpy.a("", false, "combine failed! msg = " + paramzqo.d);
-        return;
-      }
-    } while (!(paramzqo instanceof zqm));
-    this.a.jdField_a_of_type_Zpy.a("", false, "sending failed! msg = " + paramzqo.d);
+    zps.a().a(paramString);
   }
   
-  public void b(zqo paramzqo)
+  public static <T> void a(String paramString, zpx<T> paramzpx)
   {
-    if ((paramzqo instanceof zqm))
-    {
-      paramzqo = paramzqo.a();
-      this.a.jdField_a_of_type_Zpy.a(paramzqo.e, true, "seding success");
-      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-    }
+    zps.a().a(paramString, paramzpx);
+  }
+  
+  public static void a(Throwable paramThrowable)
+  {
+    ykq.a("PreLoader", "", paramThrowable);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return zps.a().a(paramString);
+  }
+  
+  public static void b(String paramString)
+  {
+    ykq.b("PreLoader", paramString);
   }
 }
 

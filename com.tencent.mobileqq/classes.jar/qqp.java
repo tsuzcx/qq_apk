@@ -1,19 +1,38 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.NativeAd.report.JumpMode;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class qqp
-  implements View.OnTouchListener
+public class qqp
+  implements ViewBase.OnClickListener
 {
-  qqp(qqm paramqqm, LinearLayout paramLinearLayout) {}
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public qqp(BaseArticleInfo paramBaseArticleInfo, Context paramContext)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof AdvertisementInfo))
+    {
+      paramViewBase = (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+      if (paramViewBase.mLocalInfo != null)
+      {
+        Object localObject = paramViewBase.mLocalInfo.b;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = pqx.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject);
+          ois.a(new ufy().a(this.jdField_a_of_type_AndroidContentContext).a(1).b(22).a((JumpMode)localObject).a(paramViewBase).d(33).a());
+        }
+      }
     }
-    return false;
   }
 }
 

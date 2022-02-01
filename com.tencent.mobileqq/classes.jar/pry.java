@@ -1,54 +1,18 @@
+import android.content.Context;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.handlers.DailyHandler.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.ListView;
-import java.util.Map;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class pry
-  extends prx
+final class pry
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 3;
-  }
+  pry(Context paramContext, String paramString, View paramView) {}
   
-  public void a(View paramView, ListView paramListView, long paramLong) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = (ArticleInfo)a((int)paramLong);
-    if (pcl.c(b())) {
-      if (!pay.a(paramAdapterView)) {
-        break label35;
-      }
-    }
-    label35:
-    for (paramInt = 4;; paramInt = 2)
-    {
-      ozh.a(paramInt);
-      return;
-    }
-  }
-  
-  public void a(Map<Long, rcn> paramMap, boolean paramBoolean)
-  {
-    super.a(paramMap, paramBoolean);
-    if (pcl.c(b()))
-    {
-      paramMap = a();
-      if (bkwm.x()) {
-        break label36;
-      }
-      QLog.d("DailyHandler", 1, "detachFromViewGroup,now cmd is 0x68b");
-    }
-    label36:
-    while (paramMap == null) {
-      return;
-    }
-    ThreadManager.executeOnSubThread(new DailyHandler.1(this, paramMap.a()));
+    pqx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    qdc.b(this.jdField_a_of_type_AndroidViewView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

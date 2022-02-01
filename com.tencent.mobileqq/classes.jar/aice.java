@@ -1,25 +1,27 @@
-import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import android.view.View;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.XListView;
+import com.tencent.widget.ListView;
 
-public class aice
-  extends amyh
+class aice
+  implements bldp
 {
-  public aice(PublicView paramPublicView) {}
+  aice(aibs paramaibs) {}
   
-  public void onUpdateRecommendList(boolean paramBoolean)
+  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    if (true == paramBoolean)
-    {
-      PublicView.a(this.a).a(0);
-      PublicView.a(this.a).sendEmptyMessage(1);
-      PublicView.a(this.a).sendEmptyMessage(3);
-      return;
-    }
-    PublicView.a(this.a).springBackOverScrollHeaderView();
-    PublicView.a(this.a, 1, 2131718604);
-    PublicView.a(this.a);
+    aibs.a(this.a).setPullType(0);
+    aibs.a(this.a).c(aibs.c);
+    aibs.a(this.a, 0, this.a.a.a());
   }
+  
+  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView) {}
+  
+  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
+  {
+    return false;
+  }
+  
+  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

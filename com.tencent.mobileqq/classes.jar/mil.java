@@ -1,20 +1,12 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.QavListItemBase;
 
-class mil
-  implements yxp
+public abstract interface mil
 {
-  mil(mik parammik, Activity paramActivity, long paramLong) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Mik.b(this.jdField_a_of_type_AndroidAppActivity);
-    QLog.d("QavSharpnessSVIPHelper", 2, "launchQQPayFunction time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-  }
+  public abstract void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mil
  * JD-Core Version:    0.7.0.1
  */

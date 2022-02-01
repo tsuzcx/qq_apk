@@ -1,72 +1,28 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2.1;
 
-class bmbn
+public class bmbn
+  implements ServiceConnection
 {
-  private static final SharedPreferences a = BaseApplicationImpl.getApplication().getSharedPreferences("ae_camera_multi_process_sp", 4);
+  bmbn(bmbm parambmbm) {}
   
-  static int a(@NonNull String paramString, int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    return a.getInt(paramString, paramInt);
+    this.a.jdField_a_of_type_Bmbi = bmbj.a(paramIBinder);
+    if (this.a.jdField_a_of_type_Bmbi != null)
+    {
+      paramComponentName = new QfavRemoteProxyForQQ.2.1(this);
+      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
+      paramComponentName.start();
+    }
   }
   
-  static long a(@NonNull String paramString, long paramLong)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    return a.getLong(paramString, paramLong);
-  }
-  
-  @Nullable
-  static String a(@NonNull String paramString1, String paramString2)
-  {
-    return a.getString(paramString1, paramString2);
-  }
-  
-  static void a(@NonNull String paramString)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.remove(paramString);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, int paramInt)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putInt(paramString, paramInt);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, long paramLong)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putLong(paramString, paramLong);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString1, String paramString2)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putString(paramString1, paramString2);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putBoolean(paramString, paramBoolean);
-    localEditor.apply();
-  }
-  
-  static boolean a(@NonNull String paramString)
-  {
-    return a.contains(paramString);
-  }
-  
-  static boolean a(@NonNull String paramString, boolean paramBoolean)
-  {
-    return a.getBoolean(paramString, paramBoolean);
+    this.a.jdField_a_of_type_Bmbi = null;
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 

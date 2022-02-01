@@ -1,28 +1,22 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import org.json.JSONObject;
 
-public class oql
-  extends ClickableSpan
+final class oql
+  implements ViewFactory.FoundClickableViewListener
 {
-  public oql(CommentInfo paramCommentInfo1, CommentInfo paramCommentInfo2, BaseActivity paramBaseActivity) {}
+  oql(String paramString, JSONObject paramJSONObject) {}
   
-  public void onClick(View paramView)
+  public void onFound(ViewBase paramViewBase)
   {
-    oto.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.authorUin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    paramView = new otr(this.b.articleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo).a(osu.a).b(this.b.area).c(0).a().a();
-    odq.a(null, oto.a(this.b.articleInfo), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.b.articleInfo.mArticleID), String.valueOf(this.b.articleInfo.mAlgorithmID), this.b.articleInfo.innerUniqueID, paramView, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
-    paramTextPaint.setUnderlineText(false);
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      paramViewBase.setOnClickListener(new oqn(this));
+      return;
+    }
+    paramViewBase.setOnClickListener(new oqm(this));
   }
 }
 

@@ -1,38 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.theme.diy.ResData;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class ardn
-  implements bdbx
+public class ardn
 {
-  ardn(arcu paramarcu) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = 3000L;
   
-  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
+  public static ardn a(String paramString)
   {
-    paramResData = (MessengerService)this.a.a.get();
-    Bundle localBundle;
-    if (paramResData != null)
+    if (paramString == null) {}
+    do
     {
-      localBundle = new Bundle();
-      localBundle.putString("themeId", paramBundle.getString("themeId"));
-      if (paramInt2 != 4) {
-        break label73;
+      return null;
+      try
+      {
+        ardn localardn = new ardn();
+        paramString = new JSONObject(paramString);
+        localardn.jdField_a_of_type_Int = paramString.optInt("pttWithTextSwitch", -1);
+        localardn.jdField_a_of_type_Long = paramString.optLong("aioSttSpliceTimeout", 45000L);
+        return localardn;
       }
-    }
-    label73:
-    for (paramInt1 = 0;; paramInt1 = -2)
-    {
-      localBundle.putInt("themeStatus", paramInt1);
-      paramBundle.putBundle("response", localBundle);
-      paramResData.a(paramBundle);
-      return 1;
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public String toString()
+  {
+    return "open:" + this.jdField_a_of_type_Int + "  |  aioSttSpliceTimeout:" + this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardn
  * JD-Core Version:    0.7.0.1
  */

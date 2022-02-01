@@ -146,6 +146,45 @@ public class ViolaModuleManager
     return (DomModule)sDomModuleMap.get(paramString);
   }
   
+  public static <T> T getModule(String paramString1, String paramString2)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          boolean bool = TextUtils.isEmpty(paramString2);
+          if (!bool) {}
+        }
+        else
+        {
+          paramString1 = null;
+          return paramString1;
+        }
+        IModuleHolder localIModuleHolder = (IModuleHolder)sTypeModuleHolderMap.get(paramString2);
+        if (localIModuleHolder == null)
+        {
+          paramString1 = null;
+        }
+        else
+        {
+          paramString2 = findModule(paramString1, paramString2, localIModuleHolder);
+          if (paramString2 != null)
+          {
+            paramString2.setViolaInstance(ViolaSDKManager.getInstance().getViolaInstance(paramString1));
+            paramString1 = paramString2;
+          }
+          else
+          {
+            paramString1 = null;
+          }
+        }
+      }
+      finally {}
+    }
+  }
+  
   static boolean registerJSModule(String paramString, IModuleHolder paramIModuleHolder)
   {
     HashMap localHashMap = new HashMap();

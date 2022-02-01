@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agyz
-  implements DialogInterface.OnClickListener
+  extends ahaa
 {
-  agyz(agyh paramagyh) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  agyz(agvm paramagvm)
   {
-    if ((this.a.a != null) && (!this.a.a.c())) {
-      this.a.a.f();
-    }
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agrt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
-import cooperation.qwallet.plugin.QWalletPrivacyUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajvq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public ajvq(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
+  public ajvq(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QWalletPrivacyUtils.setHasClickAgree(this.a.getActivity().app);
-    this.a.a();
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

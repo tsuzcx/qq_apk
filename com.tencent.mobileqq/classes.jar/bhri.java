@@ -1,21 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.CardContainer;
+import android.util.Log;
 
 public class bhri
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bhri(CardContainer paramCardContainer) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public final void a(Exception paramException)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.setLayoutParams(paramValueAnimator);
-    this.a.requestLayout();
+    a("e:", paramException);
+  }
+  
+  public void a(String paramString)
+  {
+    Log.i("GLDrawable", paramString);
+  }
+  
+  public void a(String paramString, Exception paramException)
+  {
+    Log.i("GLDrawable", paramString, paramException);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
+  {
+    Log.i("GLDrawable", "event=" + paramString1 + " statusCode=" + paramString2 + " statusMsg=" + paramString3);
   }
 }
 

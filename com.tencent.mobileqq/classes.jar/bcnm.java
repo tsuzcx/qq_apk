@@ -1,17 +1,37 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.ThemeImageView;
 
 public class bcnm
-  implements CompoundButton.OnCheckedChangeListener
+  extends bcnn
 {
-  public bcnm(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
+  public Button a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public bcnm(ViewGroup paramViewGroup, int paramInt)
   {
-    KidModeAdvanceSettingFragment.b(this.a, 8, paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    super(paramViewGroup, paramInt);
+  }
+  
+  public Button a()
+  {
+    return this.a;
+  }
+  
+  protected void a()
+  {
+    this.h = ((TextView)this.b.findViewById(2131371981));
+    this.e = ((ImageView)this.b.findViewById(2131361796));
+    this.i = ((TextView)this.b.findViewById(2131376609));
+    this.k = ((TextView)this.b.findViewById(2131377905));
+    this.a = ((Button)this.b.findViewById(2131376596));
+    this.a.setText(anvx.a(2131689550));
+    this.j = ((TextView)this.b.findViewById(2131376606));
+    if ((this.e instanceof ThemeImageView)) {
+      ((ThemeImageView)this.e).setSupportMaskView(true);
+    }
   }
 }
 

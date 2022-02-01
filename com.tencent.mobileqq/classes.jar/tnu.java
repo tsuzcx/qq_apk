@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageInfo.Sender;
+import android.view.View;
 
-public final class tnu
-  implements Parcelable.Creator<BarrageInfo.Sender>
+public class tnu
+  extends tnt
 {
-  public BarrageInfo.Sender a(Parcel paramParcel)
+  public tnu(String paramString)
   {
-    return new BarrageInfo.Sender(paramParcel);
+    super(-16777216, 0, 0, paramString);
   }
   
-  public BarrageInfo.Sender[] a(int paramInt)
-  {
-    return new BarrageInfo.Sender[paramInt];
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tnu
  * JD-Core Version:    0.7.0.1
  */

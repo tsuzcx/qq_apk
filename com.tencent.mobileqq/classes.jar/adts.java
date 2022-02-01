@@ -1,46 +1,50 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.LocalMultiProcConfig;
+import android.app.Dialog;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
 public class adts
-  implements CompoundButton.OnCheckedChangeListener
+  extends Handler
 {
-  public adts(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adts(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131717792) + this.a.a, paramBoolean);
-    if (AppSetting.c) {
-      NotifyPushSettingActivity.e(this.a).setContentDescription(amtj.a(2131706767));
-    }
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
+    if (paramMessage.what == 1000)
     {
-      i = 1;
-      if (!paramBoolean) {
-        break label119;
+      if (this.a.a()) {
+        break label149;
       }
+      i = paramMessage.arg1 - 1;
+      if (i != 0) {
+        break label39;
+      }
+      ContactSyncJumpActivity.a(this.a);
     }
-    label119:
-    for (String str = "1";; str = "0")
+    label39:
+    while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (this.a.jdField_a_of_type_Int != 2))
     {
-      bcef.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, str, "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      int i;
       return;
-      i = 0;
-      break;
+      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_Int == 2))
+      {
+        paramMessage = "(" + i + ")";
+        ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365673)).setText(String.format(this.a.getResources().getString(2131698377), new Object[] { paramMessage }));
+      }
+      paramMessage = obtainMessage(1000);
+      paramMessage.arg1 = i;
+      sendMessageDelayed(paramMessage, 1000L);
+      return;
     }
+    label149:
+    ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365673)).setText(String.format(this.a.getResources().getString(2131698377), new Object[] { "" }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adts
  * JD-Core Version:    0.7.0.1
  */

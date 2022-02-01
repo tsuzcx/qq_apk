@@ -1,48 +1,48 @@
-import android.content.res.TypedArray;
-
 public class bmei
+  extends blqa
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
-  public int o;
+  public final blpz a;
+  private String d;
   
-  public void a(TypedArray paramTypedArray)
+  public bmei(bmeh parambmeh, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramTypedArray.getDimensionPixelSize(23, 16);
-    this.jdField_b_of_type_Int = paramTypedArray.getColor(21, 255);
-    this.jdField_a_of_type_Boolean = paramTypedArray.getBoolean(22, false);
-    this.jdField_c_of_type_Int = paramTypedArray.getDimensionPixelSize(8, 20);
-    this.h = paramTypedArray.getDimensionPixelSize(9, 20);
-    this.i = paramTypedArray.getDimensionPixelSize(0, 15);
-    this.jdField_d_of_type_Int = paramTypedArray.getDimensionPixelSize(4, 20);
-    this.e = paramTypedArray.getColor(1, 255);
-    this.f = paramTypedArray.getColor(5, 255);
-    this.g = paramTypedArray.getDimensionPixelSize(3, 20);
-    this.j = paramTypedArray.getDimensionPixelSize(15, 40);
-    this.jdField_b_of_type_Boolean = paramTypedArray.getBoolean(11, false);
-    this.k = paramTypedArray.getDimensionPixelSize(7, 10);
-    this.jdField_c_of_type_Boolean = paramTypedArray.getBoolean(6, false);
-    this.jdField_d_of_type_Boolean = paramTypedArray.getBoolean(2, true);
-    this.l = paramTypedArray.getColor(13, 255);
-    this.m = paramTypedArray.getDimensionPixelSize(14, 20);
-    this.n = paramTypedArray.getColor(12, 255);
-    this.o = paramTypedArray.getDimensionPixelSize(25, 0);
+    this.jdField_d_of_type_JavaLangString = "noreason";
+    this.jdField_a_of_type_JavaLangString = "com.tencent.mobileqq:tool";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangString = "qqreaderplugin.apk";
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_JavaLangString = "qqreaderplugin.apk";
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_Blpz = new blpz(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_Blpz.a = new avlg(paramString, "com.tencent.mobileqq:tool", "qqreaderplugin.apk");
+  }
+  
+  protected void a()
+  {
+    this.jdField_d_of_type_JavaLangString = "preload:ok:common";
+    bmeh.a(this.jdField_a_of_type_Bmeh, this.jdField_a_of_type_Blpz, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int);
+  }
+  
+  protected boolean a(blqg paramblqg)
+  {
+    boolean bool = bmeh.a(this.jdField_a_of_type_Bmeh);
+    if (bool) {}
+    for (String str = "preload:ok:dpc";; str = "preload:fail:dpc")
+    {
+      this.jdField_d_of_type_JavaLangString = str;
+      if (paramblqg != null)
+      {
+        paramblqg.jdField_a_of_type_Int = 2;
+        paramblqg.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+      }
+      return bool;
+    }
+  }
+  
+  protected boolean b(blqg paramblqg)
+  {
+    return true;
   }
 }
 

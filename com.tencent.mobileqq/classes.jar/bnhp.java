@@ -1,6 +1,4 @@
-public class bnhp
-  extends vko
-{}
+public class bnhp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

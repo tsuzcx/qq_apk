@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troopgift;
 
-import bcre;
-import bcrg;
-import bcse;
-import bfjg;
-import bfjh;
+import bdyd;
+import bdyf;
+import bdzd;
+import bgrx;
+import bgry;
 
 public class TroopGiftToAllSurfaceView$5
   implements Runnable
@@ -13,13 +13,13 @@ public class TroopGiftToAllSurfaceView$5
   
   public void run()
   {
-    TroopGiftToAllSurfaceView.a(this.this$0, new bcse(this.this$0, this.this$0.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b));
+    TroopGiftToAllSurfaceView.a(this.this$0, new bdzd(this.this$0, this.this$0.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b));
     TroopGiftToAllSurfaceView.a(this.this$0).a(TroopGiftToAllSurfaceView.a(this.this$0).jdField_a_of_type_Int / 2, TroopGiftToAllSurfaceView.a(this.this$0).b * TroopGiftToAllSurfaceView.a(this.this$0).f / 100);
     this.this$0.a(TroopGiftToAllSurfaceView.a(this.this$0));
     TroopGiftToAllSurfaceView.a(this.this$0).jdField_a_of_type_Int = 0;
-    bcrg localbcrg = new bcrg(500);
-    localbcrg.a(new bfjg(this));
-    TroopGiftToAllSurfaceView.a(this.this$0).a(new bcre[] { localbcrg });
+    bdyf localbdyf = new bdyf(500);
+    localbdyf.a(new bgrx(this));
+    TroopGiftToAllSurfaceView.a(this.this$0).a(new bdyd[] { localbdyf });
   }
 }
 

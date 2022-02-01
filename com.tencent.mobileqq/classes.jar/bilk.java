@@ -1,15 +1,27 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class bilk
-  implements FilenameFilter
+  extends Handler
 {
-  bilk(bilj parambilj) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  bilk(bilj parambilj, Looper paramLooper)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".so"));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.arg1;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ((bikt)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).notifyUI(3, true, Integer.valueOf(i));
   }
 }
 

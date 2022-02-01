@@ -1,14 +1,25 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aivw
-  implements ajbl
+class aivw
+  extends LbsManagerService.OnLocationChangeListener
 {
-  public aivw(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
-  
-  public void a(MotionEvent paramMotionEvent)
+  aivw(aivv paramaivv, String paramString)
   {
-    this.a.a.a(paramMotionEvent);
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick tipswording3 grant onLocationFinish info = " + paramSosoLbsInfo);
+    }
+    if (paramInt != 0) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "onclick tipswording3 grant onLocationFinish, errorCode=" + paramInt);
+    }
+    this.a.a.a.a.b(false);
   }
 }
 

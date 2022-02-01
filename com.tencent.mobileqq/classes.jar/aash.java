@@ -1,145 +1,51 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.device.file.DevVideoMsgProcessor.1;
-import com.tencent.device.msg.data.MessageForDevLittleVideo;
-import com.tencent.device.msg.data.MessageForDevShortVideo;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.litetransfersdk.ActionInfo;
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-public class aash
+class aash
+  extends Handler
 {
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2)
+  aash(aasg paramaasg, Looper paramLooper)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {
-      return;
-    }
-    ThreadManager.getFileThreadHandler().post(new DevVideoMsgProcessor.1(paramString1, paramString2, paramQQAppInterface));
+    super(paramLooper);
   }
   
-  public void a(Session paramSession, String paramString, long paramLong, int paramInt, float paramFloat)
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    MessageRecord localMessageRecord;
-    if ((localObject instanceof QQAppInterface))
+    Object localObject;
+    int i;
+    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
     {
-      localObject = (QQAppInterface)localObject;
-      localMessageRecord = ((QQAppInterface)localObject).getMessageFacade().getMsgItemByUniseq(paramString, paramInt, paramLong);
-      if (localMessageRecord != null) {
-        break label43;
+      paramMessage = (Bundle)paramMessage.obj;
+      localObject = paramMessage.getString("url");
+      if ((paramMessage.getInt("req_state", 0) == 2) && (!TextUtils.isEmpty(aasg.a(this.a))) && (!TextUtils.isEmpty(aasg.b(this.a))) && (aasg.b(this.a).equals(localObject)))
+      {
+        i = paramMessage.getInt("result_code");
+        localObject = new JSONObject();
+        if (i != 0) {
+          break label158;
+        }
       }
     }
-    label43:
-    do
+    try
     {
-      MessageForDevShortVideo localMessageForDevShortVideo;
-      do
+      ((JSONObject)localObject).put("code", 0);
+      for (;;)
       {
+        label113:
+        this.a.callJs(aasg.a(this.a) + "(" + ((JSONObject)localObject).toString() + ");");
         return;
-        if (!(localMessageRecord instanceof MessageForDevShortVideo)) {
-          break;
-        }
-        localMessageForDevShortVideo = (MessageForDevShortVideo)localMessageRecord;
-        localMessageForDevShortVideo.videoFileSize = ((int)paramSession.uFileSizeSrc);
-        localMessageForDevShortVideo.fileSessionId = paramSession.uSessionID;
-        localMessageForDevShortVideo.videoFileProgress = ((int)(100.0F * paramFloat));
-        localMessageForDevShortVideo.serial();
-        ((QQAppInterface)localObject).getMessageFacade().updateMsgContentByUniseq(paramString, paramInt, localMessageRecord.uniseq, localMessageForDevShortVideo.msgData);
-      } while (!QLog.isColorLevel());
-      QLog.d("DeviceShortVideo", 2, "updatemsg msg.uniseq:" + localMessageRecord.uniseq + " ===> filesize:" + localMessageForDevShortVideo.videoFileSize);
-      return;
-    } while (!(localMessageRecord instanceof MessageForDevLittleVideo));
-    paramSession = (MessageForDevLittleVideo)localMessageRecord;
-    paramSession.videoFileStatus = 1002;
-    paramSession.videoFileProgress = ((int)(100.0F * paramFloat));
-    paramSession.serial();
-    ((QQAppInterface)localObject).getMessageFacade().updateMsgContentByUniseq(paramString, paramInt, localMessageRecord.uniseq, paramSession.msgData);
-  }
-  
-  public void a(Session paramSession, String paramString, long paramLong, int paramInt, boolean paramBoolean)
-  {
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    MessageRecord localMessageRecord;
-    if ((localObject1 instanceof QQAppInterface))
-    {
-      localObject1 = (QQAppInterface)localObject1;
-      localMessageRecord = ((QQAppInterface)localObject1).getMessageFacade().getMsgItemByUniseq(paramString, paramInt, paramLong);
-      if (localMessageRecord != null) {
-        break label43;
+        label158:
+        ((JSONObject)localObject).put("code", i);
+        ((JSONObject)localObject).put("msg", paramMessage.getString("error_message"));
       }
     }
-    label43:
-    Object localObject2;
-    label173:
-    do
+    catch (Exception paramMessage)
     {
-      do
-      {
-        return;
-        if ((localMessageRecord instanceof MessageForDevShortVideo))
-        {
-          localObject2 = (MessageForDevShortVideo)localMessageRecord;
-          if (!paramSession.bSend) {
-            if (paramSession.actionInfo.strServiceName.equalsIgnoreCase(aavk.e))
-            {
-              Object localObject3 = new aasg();
-              ((aasg)localObject3).a = paramSession.strFilePathSrc;
-              ((aasg)localObject3).a();
-              ((MessageForDevShortVideo)localObject2).md5 = ((aasg)localObject3).jdField_c_of_type_JavaLangString;
-              ((MessageForDevShortVideo)localObject2).videoFileTime = ((int)(((aasg)localObject3).jdField_b_of_type_Long / 1000L));
-              ((MessageForDevShortVideo)localObject2).thumbWidth = ((aasg)localObject3).jdField_b_of_type_Int;
-              ((MessageForDevShortVideo)localObject2).thumbHeight = ((aasg)localObject3).jdField_c_of_type_Int;
-              ((MessageForDevShortVideo)localObject2).thumbMD5 = ((aasg)localObject3).e;
-              if (!paramBoolean) {
-                break label280;
-              }
-              ((MessageForDevShortVideo)localObject2).videoFileStatus = 2003;
-              localObject3 = ShortVideoUtils.getShortVideoSavePath((MessageForShortVideo)localObject2, "mp4");
-              FileUtils.moveFile(paramSession.strFilePathSrc, (String)localObject3);
-            }
-          }
-          for (;;)
-          {
-            ((MessageForDevShortVideo)localObject2).msg = ((MessageForDevShortVideo)localObject2).getSummary();
-            ((MessageForDevShortVideo)localObject2).serial();
-            ((QQAppInterface)localObject1).getMessageFacade().updateMsgContentByUniseq(paramString, paramInt, localMessageRecord.uniseq, ((MessageForDevShortVideo)localObject2).msgData);
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("DeviceShortVideo", 2, "updatemsg msg.uniseq:" + localMessageRecord.uniseq + " ===> fileStatus:" + ShortVideoUtils.getFileStatusStr(((MessageForDevShortVideo)localObject2).videoFileStatus));
-            return;
-            ((MessageForDevShortVideo)localObject2).videoFileStatus = 2005;
-            break label173;
-            ((MessageForDevShortVideo)localObject2).videoFileSize = ((int)paramSession.uFileSizeSrc);
-            localMessageRecord.issend = 1;
-            if (paramBoolean) {
-              ((MessageForDevShortVideo)localObject2).videoFileStatus = 1003;
-            } else {
-              ((MessageForDevShortVideo)localObject2).videoFileStatus = 1005;
-            }
-          }
-        }
-      } while (!(localMessageRecord instanceof MessageForDevLittleVideo));
-      localObject2 = (MessageForDevLittleVideo)localMessageRecord;
-    } while (!paramSession.bSend);
-    label280:
-    if (paramBoolean) {
-      ((MessageForDevLittleVideo)localObject2).videoFileStatus = 1003;
-    }
-    for (((MessageForDevLittleVideo)localObject2).videoFileProgress = 100;; ((MessageForDevLittleVideo)localObject2).videoFileProgress = 0)
-    {
-      ((MessageForDevLittleVideo)localObject2).serial();
-      ((QQAppInterface)localObject1).getMessageFacade().updateMsgContentByUniseq(paramString, paramInt, localMessageRecord.uniseq, localMessageRecord.msgData);
-      return;
-      ((MessageForDevLittleVideo)localObject2).videoFileStatus = 1005;
+      break label113;
     }
   }
 }

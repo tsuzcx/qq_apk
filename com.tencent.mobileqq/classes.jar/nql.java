@@ -1,18 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class nql
-  implements zop
+final class nql
+  implements QQPermissionCallback
 {
-  public nql(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  nql(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void callback(Bundle paramBundle)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramBundle != null)
-    {
-      paramBundle = paramBundle.getString("music");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    }
+    QLog.w(nqi.a, 1, "checkQAVPermission, deny, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.a.onClick(null, 0);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.w(nqi.a, 1, "checkQAVPermission, grant, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.a.onClick(null, 1);
   }
 }
 

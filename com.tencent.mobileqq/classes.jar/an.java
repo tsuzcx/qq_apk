@@ -2,7 +2,7 @@ import android.os.AsyncTask;
 import com.dataline.activities.LiteActivity;
 
 public class an
-  implements aszj
+  implements audq
 {
   public an(LiteActivity paramLiteActivity, AsyncTask paramAsyncTask, int paramInt) {}
   

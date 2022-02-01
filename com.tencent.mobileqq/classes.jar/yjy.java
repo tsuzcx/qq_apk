@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class yjy
-  implements Parcelable.Creator<PublishParam>
+class yjy
+  implements View.OnClickListener
 {
-  public PublishParam a(Parcel paramParcel)
-  {
-    return new PublishParam(paramParcel);
-  }
+  yjy(yjw paramyjw) {}
   
-  public PublishParam[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new PublishParam[paramInt];
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

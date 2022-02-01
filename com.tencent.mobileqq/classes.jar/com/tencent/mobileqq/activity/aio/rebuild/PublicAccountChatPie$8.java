@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
+import aido;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class PublicAccountChatPie$8
   implements Runnable
 {
-  public PublicAccountChatPie$8(ahiu paramahiu) {}
+  public PublicAccountChatPie$8(aido paramaido) {}
   
   public void run()
   {

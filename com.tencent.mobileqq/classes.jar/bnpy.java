@@ -1,15 +1,12 @@
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.widget.QuickSendProgressView;
-import com.tencent.widget.RecentDynamicAvatarView;
 
-public class bnpy
+public final class bnpy
 {
+  public View a;
   public TextView a;
-  public bnpz a;
-  public QuickSendProgressView a;
-  public RecentDynamicAvatarView a;
   
-  public bnpy(bnpt parambnpt) {}
+  public bnpy(bnpw parambnpw) {}
 }
 
 

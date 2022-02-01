@@ -9,13 +9,13 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import qsb;
-import slt;
+import reg;
+import szd;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/rebuild/FeedItemCellTypeRecommendFollow;", "Landroid/view/View;", "context", "Landroid/content/Context;", "faceDecoder", "Lcom/tencent/mobileqq/app/face/FaceDecoder;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "clazz", "Ljava/lang/Class;", "invoke"}, k=3, mv={1, 1, 16})
 public final class CellFactory$recommendFollowFeedItemCellMap$2
   extends Lambda
-  implements Function4<Context, FaceDecoder, slt, Class<? extends View>, qsb<? extends View>>
+  implements Function4<Context, FaceDecoder, szd, Class<? extends View>, reg<? extends View>>
 {
   public static final 2 INSTANCE = new 2();
   
@@ -25,11 +25,11 @@ public final class CellFactory$recommendFollowFeedItemCellMap$2
   }
   
   @NotNull
-  public final qsb<? extends View> invoke(@NotNull Context paramContext, @Nullable FaceDecoder paramFaceDecoder, @Nullable slt paramslt, @NotNull Class<? extends View> paramClass)
+  public final reg<? extends View> invoke(@NotNull Context paramContext, @Nullable FaceDecoder paramFaceDecoder, @Nullable szd paramszd, @NotNull Class<? extends View> paramClass)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramClass, "clazz");
-    return new qsb(paramContext, paramFaceDecoder, paramslt, paramClass);
+    return new reg(paramContext, paramFaceDecoder, paramszd, paramClass);
   }
 }
 

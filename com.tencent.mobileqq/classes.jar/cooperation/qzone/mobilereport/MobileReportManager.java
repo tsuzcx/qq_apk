@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import awfl;
-import blbz;
+import axln;
+import bmoq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
@@ -34,7 +34,7 @@ public class MobileReportManager
     {
       localJSONObject.put("appid", paramString1);
       localJSONObject.put("page_id", paramString2);
-      paramString1 = "&trace_detail=base64-" + awfl.a(localJSONObject.toString());
+      paramString1 = "&trace_detail=base64-" + axln.a(localJSONObject.toString());
       return paramString1;
     }
     catch (Exception paramString1)
@@ -44,10 +44,46 @@ public class MobileReportManager
     return "&trace_detail=base64-";
   }
   
+  public static String getNewDefaultReportInfo(String paramString1, String paramString2, String paramString3)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    if (paramString1.contains("?")) {}
+    for (paramString1 = "&trace_detail=base64-";; paramString1 = "?trace_detail=base64-") {
+      try
+      {
+        localJSONObject.put("appid", paramString2);
+        localJSONObject.put("page_id", paramString3);
+        paramString2 = paramString1 + axln.a(localJSONObject.toString());
+        return paramString2;
+      }
+      catch (Exception paramString2)
+      {
+        QLog.e("MobileReport.Manager", 1, "json exception" + paramString2);
+      }
+    }
+    return paramString1;
+  }
+  
   public static String getNewReportInfo(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
     if (paramAppInfo != null) {
-      return String.format("&trace_detail=base64-%s", new Object[] { awfl.a(MobileReportManager.NewReportKey.build(paramAppInfo).buildTraceDetail()) });
+      return String.format("&trace_detail=base64-%s", new Object[] { axln.a(MobileReportManager.NewReportKey.build(paramAppInfo).buildTraceDetail()) });
+    }
+    return null;
+  }
+  
+  public static String getNewReportInfo(String paramString, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if ((paramAppInfo != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramAppInfo = MobileReportManager.NewReportKey.build(paramAppInfo);
+      if (paramString.contains("?")) {
+        return String.format("&trace_detail=base64-%s", new Object[] { axln.a(paramAppInfo.buildTraceDetail()) });
+      }
+      return String.format("?trace_detail=base64-%s", new Object[] { axln.a(paramAppInfo.buildTraceDetail()) });
     }
     return null;
   }
@@ -61,7 +97,7 @@ public class MobileReportManager
       localJSONObject.put("page_id", paramString2);
       localJSONObject.put("item_id", paramString3);
       localJSONObject.put("item_type", paramString4);
-      paramString1 = "&trace_detail=" + awfl.a(localJSONObject.toString());
+      paramString1 = "&trace_detail=" + axln.a(localJSONObject.toString());
       return paramString1;
     }
     catch (Exception paramString1)
@@ -303,7 +339,7 @@ public class MobileReportManager
     try
     {
       ((JSONObject)localObject).put("jump_url", paramString2);
-      String str = blbz.a(paramString1).getString("adId");
+      String str = bmoq.a(paramString1).getString("adId");
       localObject = new MobileReportManager.ItemInfoBuilder().setItemId(String.valueOf(str)).setBusiInfo(((JSONObject)localObject).toString()).addActionInfo(new MobileReportManager.ActionInfoBuilder(System.currentTimeMillis(), 152, 1L).build()).build();
       if (QLog.isColorLevel()) {
         QLog.d("MobileReport.Manager", 2, "report " + localReportKey.toString() + " opType = " + 152 + " url = " + paramString1 + " jumpUrl = " + paramString2);

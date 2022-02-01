@@ -1,6 +1,8 @@
-class bmlm
+public abstract interface bmlm
 {
-  static final bmlk a = new bmlk(null);
+  public abstract void a(String paramString);
+  
+  public abstract void b(String paramString);
 }
 
 

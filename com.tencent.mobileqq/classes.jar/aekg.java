@@ -1,32 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aekg
-  extends MqqHandler
+  implements DialogInterface.OnCancelListener
 {
-  public aekg(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public aekg(NotificationActivity paramNotificationActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (!this.a.app.isLogin()) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.c();
-      return;
-    }
-    this.a.c();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aekg
  * JD-Core Version:    0.7.0.1
  */

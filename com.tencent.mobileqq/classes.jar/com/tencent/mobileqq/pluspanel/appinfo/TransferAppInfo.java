@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import agwt;
+import ahpt;
+import ahvi;
 import android.content.Intent;
 import android.text.TextUtils;
-import ayfu;
-import bcef;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -28,7 +29,7 @@ public class TransferAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839209;
+    return 2130839230;
   }
   
   public int getAppID()
@@ -57,19 +58,19 @@ public class TransferAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131716278);
+    return BaseApplicationImpl.getContext().getString(2131716639);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    paramayfu.a("chat_tool_qwallettransfer", localQQAppInterface.getCurrentAccountUin());
-    paramayfu.b(paramBaseChatPie);
+    paramahvi.a("chat_tool_qwallettransfer", localQQAppInterface.getCurrentAccountUin());
+    paramahvi.b(paramBaseChatPie);
     Intent localIntent = new Intent(paramBaseChatPie.getActivity(), TransactionActivity.class);
     localIntent.putExtra("come_from", 2);
     int j = 0;
     int i = 0;
-    paramayfu = null;
+    paramahvi = null;
     switch (paramSessionInfo.curType)
     {
     }
@@ -85,31 +86,31 @@ public class TransferAppInfo
           localJSONObject.put("source", j);
         }
         localJSONObject.put("groupType", i);
-        if (!TextUtils.isEmpty(paramayfu)) {
-          localJSONObject.put("groupUin", paramayfu);
+        if (!TextUtils.isEmpty(paramahvi)) {
+          localJSONObject.put("groupUin", paramahvi);
         }
       }
-      catch (JSONException paramayfu)
+      catch (JSONException paramahvi)
       {
         for (;;)
         {
-          paramayfu.printStackTrace();
+          paramahvi.printStackTrace();
         }
       }
       localIntent.putExtra("extra_data", localJSONObject.toString());
       localIntent.putExtra("app_info", "appid#20000001|bargainor_id#1000026901|channel#aio");
       localIntent.putExtra("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "transfer", "click", "sessionType=" + paramSessionInfo.curType, 0, null));
       paramBaseChatPie.getActivity().startActivity(localIntent);
-      bcef.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "transferAIOclick", 0, 0, "", "", "", "");
-      agwt.a(localQQAppInterface, "0X8005CB0", paramSessionInfo.curType);
+      bdla.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "transferAIOclick", 0, 0, "", "", "", "");
+      ahpt.a(localQQAppInterface, "0X8005CB0", paramSessionInfo.curType);
       return;
       j = 5;
       i = 3;
-      paramayfu = paramSessionInfo.troopUin;
+      paramahvi = paramSessionInfo.troopUin;
       continue;
       j = 5;
       i = 4;
-      paramayfu = paramSessionInfo.troopUin;
+      paramahvi = paramSessionInfo.troopUin;
     }
   }
 }

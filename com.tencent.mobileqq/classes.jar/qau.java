@@ -1,19 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
-class qau
-  implements ViewBase.OnClickListener
+public class qau
+  extends AnimatorListenerAdapter
 {
-  qau(qat paramqat, Container paramContainer, pvc parampvc, int paramInt) {}
+  public qau(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    qat.a(this.jdField_a_of_type_Qat, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pvc, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("BiuPgcProteusItem", 2, "click gallery summary for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pvc.a() + " position = " + this.jdField_a_of_type_Int);
-    }
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
   }
 }
 

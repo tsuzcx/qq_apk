@@ -1,505 +1,264 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.widget.SquareImageView;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bcoo
+  extends bcoa
 {
-  private static int jdField_a_of_type_Int;
-  private static String jdField_a_of_type_JavaLangString;
-  private static ArrayList<bcoq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private static boolean jdField_a_of_type_Boolean = true;
-  private static int jdField_b_of_type_Int;
-  private static String jdField_b_of_type_JavaLangString;
-  private static ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private static boolean jdField_b_of_type_Boolean;
-  private static boolean c;
-  private static boolean d;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public ArrayList<bcop> a;
+  public TextView b;
   
-  static
+  public bcoo(ViewGroup paramViewGroup, int paramInt)
   {
-    jdField_a_of_type_Int = -1;
-    jdField_b_of_type_Int = -1;
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static int a()
+  protected void a()
   {
-    try
-    {
-      if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        a();
-      }
-      int i = jdField_a_of_type_Int;
-      return i;
-    }
-    finally {}
+    View localView = a(this.c);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131363026));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368097));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131362727));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362730));
   }
   
-  public static String a()
+  public void a(bcge parambcge)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      bcon localbcon = bcom.a();
-      if (localbcon.jdField_a_of_type_Boolean) {
-        jdField_a_of_type_Boolean = bcon.a(localbcon);
-      }
-      ArrayList localArrayList = bcor.a().jdField_a_of_type_JavaUtilArrayList;
-      if ((localArrayList != null) && (localArrayList.size() > 0))
-      {
-        jdField_b_of_type_JavaUtilArrayList.clear();
-        jdField_b_of_type_JavaUtilArrayList.addAll(localArrayList);
-      }
-      jdField_b_of_type_Boolean = ((Boolean)bfyz.a("study_mode_key_user_switch", Boolean.valueOf(false))).booleanValue();
-      c = ((Boolean)bfyz.a("study_mode_key_student_mask", Boolean.valueOf(false))).booleanValue();
-      jdField_a_of_type_Int = ((Integer)bfyz.a("kid_mode_key_need_verify_phone", Integer.valueOf(-1))).intValue();
-      d = bcox.a.a();
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      if (QLog.isColorLevel()) {
-        QLog.d("StudyModeManager", 2, String.format("init ,sStudyModeConfigSwitch = %b,sStudyModeSwitch = %b,sStudentMask = %b,sBlackIds = %s,configHas = %b,sShowStudyModeSwitchDialog = %b", new Object[] { Boolean.valueOf(jdField_a_of_type_Boolean), Boolean.valueOf(jdField_b_of_type_Boolean), Boolean.valueOf(c), "sBlackIds.toString()", Boolean.valueOf(localbcon.jdField_a_of_type_Boolean), Boolean.valueOf(d) }));
-      }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    if ((parambcge.jdField_a_of_type_JavaUtilList == null) || (parambcge.jdField_a_of_type_JavaUtilList.size() == 0)) {
       return;
     }
-    finally {}
-  }
-  
-  /* Error */
-  public static void a(int paramInt)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6: ifeq +25 -> 31
-    //   9: ldc 133
-    //   11: iconst_1
-    //   12: iconst_2
-    //   13: anewarray 4	java/lang/Object
-    //   16: dup
-    //   17: iconst_0
-    //   18: ldc 149
-    //   20: aastore
-    //   21: dup
-    //   22: iconst_1
-    //   23: iload_0
-    //   24: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   27: aastore
-    //   28: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   31: getstatic 30	bcoo:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   34: invokevirtual 43	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   37: istore_1
-    //   38: iload_1
-    //   39: ifne +7 -> 46
-    //   42: ldc 2
-    //   44: monitorexit
-    //   45: return
-    //   46: getstatic 21	bcoo:jdField_a_of_type_Int	I
-    //   49: iload_0
-    //   50: if_icmpeq -8 -> 42
-    //   53: ldc 103
-    //   55: iload_0
-    //   56: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   59: invokestatic 155	bfyz:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   62: iload_0
-    //   63: putstatic 21	bcoo:jdField_a_of_type_Int	I
-    //   66: goto -24 -> 42
-    //   69: astore_2
-    //   70: ldc 2
-    //   72: monitorexit
-    //   73: aload_2
-    //   74: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	75	0	paramInt	int
-    //   37	2	1	bool	boolean
-    //   69	5	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	31	69	finally
-    //   31	38	69	finally
-    //   46	66	69	finally
-  }
-  
-  public static void a(int paramInt, String paramString1, String paramString2)
-  {
-    try
+    Context localContext = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
+    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
+    int j = 0;
+    label60:
+    Object localObject2;
+    Object localObject1;
+    Object localObject3;
+    label224:
+    label353:
+    Object localObject4;
+    label257:
+    label290:
+    label340:
+    int i;
+    label416:
+    int k;
+    int m;
+    Object localObject5;
+    if (j < parambcge.jdField_a_of_type_JavaUtilList.size())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StudyModeManager", 1, new Object[] { "setIsBindPhone: ", Integer.valueOf(paramInt) });
+      localObject2 = (bcdk)parambcge.jdField_a_of_type_JavaUtilList.get(j);
+      localObject1 = new bcop(this, localContext);
+      if (TextUtils.isEmpty(((bcdk)localObject2).jdField_a_of_type_JavaLangString)) {
+        break label780;
       }
-      if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        a();
+      localObject3 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = DisplayUtil.dip2px(localContext, 18.0F);
+      ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = DisplayUtil.dip2px(localContext, 18.0F);
+      ((URLDrawable.URLDrawableOptions)localObject3).mMemoryCacheKeySuffix = "leftIcon";
+      localObject3 = URLDrawable.getDrawable(((bcdk)localObject2).jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject3);
+      ((URLDrawable)localObject3).setDecodeHandler(bgxc.a);
+      ((bcop)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable((Drawable)localObject3);
+      if ((((URLDrawable)localObject3).getStatus() != 1) && (((URLDrawable)localObject3).getStatus() != 0)) {
+        ((URLDrawable)localObject3).restartDownload();
       }
-      jdField_b_of_type_Int = paramInt;
-      jdField_a_of_type_JavaLangString = paramString1;
-      jdField_b_of_type_JavaLangString = paramString2;
-      return;
-    }
-    finally {}
-  }
-  
-  public static void a(int paramInt, boolean paramBoolean)
-  {
-    Object localObject = null;
-    switch (paramInt)
-    {
-    default: 
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        if (paramBoolean) {
-          break label116;
-        }
+      ((bcop)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(0);
+      if (TextUtils.isEmpty(((bcdk)localObject2).b)) {
+        break label793;
       }
-      break;
-    }
-    label116:
-    for (boolean bool = true;; bool = false)
-    {
-      bfyz.a((String)localObject, Boolean.valueOf(bool));
-      if (QLog.isColorLevel()) {
-        QLog.d("StudyModeManager", 2, "updateAdvanceSettingSwitch, mask: " + paramInt + ", isSupport: " + paramBoolean);
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(((bcdk)localObject2).b);
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (TextUtils.isEmpty(((bcdk)localObject2).c)) {
+        break label806;
       }
-      return;
-      localObject = "search_friend_flag";
-      break;
-      localObject = "search_by_stranger_flag";
-      break;
-      localObject = "invite_to_troop_by_stranger_flag";
-      break;
-    }
-  }
-  
-  public static void a(bcoq parambcoq)
-  {
-    try
-    {
-      if (!jdField_a_of_type_JavaUtilArrayList.contains(parambcoq)) {
-        jdField_a_of_type_JavaUtilArrayList.add(parambcoq);
+      ((bcop)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText(((bcdk)localObject2).c);
+      ((bcop)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (TextUtils.isEmpty(((bcdk)localObject2).d)) {
+        break label831;
       }
-      return;
-    }
-    finally
-    {
-      parambcoq = finally;
-      throw parambcoq;
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    try
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((bcoq)localIterator.next()).a(paramBoolean);
+      ((bcop)localObject1).c.setVisibility(0);
+      if ((((bcdk)localObject2).jdField_a_of_type_JavaUtilList == null) || (((bcdk)localObject2).jdField_a_of_type_JavaUtilList.size() == 0)) {
+        break label819;
       }
+      ((bcop)localObject1).c.setMaxLines(2);
+      ((bcop)localObject1).c.setText(((bcdk)localObject2).d);
+      if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+        break label844;
+      }
+      ((bcop)localObject1).c.setTextColor(Color.parseColor("#737373"));
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4A4A4A"));
+      ((bcop)localObject1).jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4A4A4A"));
+      ((bcop)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundResource(2130842399);
+      if ((((bcdk)localObject2).jdField_a_of_type_JavaUtilList == null) || (((bcdk)localObject2).jdField_a_of_type_JavaUtilList.size() == 0)) {
+        break label1311;
+      }
+      if (((bcdk)localObject2).jdField_a_of_type_JavaUtilList.size() != 1) {
+        break label911;
+      }
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      localObject3 = ((bcop)localObject1).jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView;
+      localObject4 = localContext.getResources();
+      i = ((Resources)localObject4).getDisplayMetrics().widthPixels;
+      float f1 = ((Resources)localObject4).getDimension(2131298385);
+      float f2 = ((Resources)localObject4).getDimension(2131298385);
+      k = DisplayUtil.dip2px(localContext, 2.0F);
+      m = ((bcop)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      i = (int)(i - f1 - f2 - (m - 1) * k) / m;
+      ((SquareImageView)localObject3).setLayoutParams(new FrameLayout.LayoutParams(i, i));
+      localObject2 = (bcfl)((bcdk)localObject2).jdField_a_of_type_JavaUtilList.get(0);
+      localObject4 = ((bcfl)localObject2).jdField_a_of_type_JavaLangString;
+      localObject5 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject5).mFailedDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject5).mLoadingDrawable = localColorDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject5).mRequestWidth = i;
+      ((URLDrawable.URLDrawableOptions)localObject5).mRequestHeight = i;
+      ((URLDrawable.URLDrawableOptions)localObject5).mPlayGifImage = true;
+      localObject4 = URLDrawable.getDrawable((String)localObject4, (URLDrawable.URLDrawableOptions)localObject5);
+      ((SquareImageView)localObject3).setImageDrawable((Drawable)localObject4);
+      if ((((URLDrawable)localObject4).getStatus() != 1) && (((URLDrawable)localObject4).getStatus() != 0)) {
+        ((URLDrawable)localObject4).restartDownload();
+      }
+      if (((bcfl)localObject2).jdField_a_of_type_Int != 2) {
+        break label898;
+      }
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
-    finally {}
-  }
-  
-  /* Error */
-  public static void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6: ifeq +25 -> 31
-    //   9: ldc 133
-    //   11: iconst_2
-    //   12: ldc 221
-    //   14: iconst_1
-    //   15: anewarray 4	java/lang/Object
-    //   18: dup
-    //   19: iconst_0
-    //   20: iload_0
-    //   21: invokestatic 87	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   24: aastore
-    //   25: invokestatic 143	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   28: invokestatic 146	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   31: getstatic 30	bcoo:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   34: invokevirtual 43	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   37: istore_2
-    //   38: iload_2
-    //   39: ifne +7 -> 46
-    //   42: ldc 2
-    //   44: monitorexit
-    //   45: return
-    //   46: getstatic 97	bcoo:jdField_b_of_type_Boolean	Z
-    //   49: iload_0
-    //   50: if_icmpeq -8 -> 42
-    //   53: ldc 81
-    //   55: iload_0
-    //   56: invokestatic 87	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   59: invokestatic 155	bfyz:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   62: iload_0
-    //   63: putstatic 97	bcoo:jdField_b_of_type_Boolean	Z
-    //   66: getstatic 19	bcoo:jdField_a_of_type_Boolean	Z
-    //   69: ifeq +7 -> 76
-    //   72: iload_0
-    //   73: invokestatic 222	bcoo:a	(Z)V
-    //   76: aload_1
-    //   77: ifnull -35 -> 42
-    //   80: aload_1
-    //   81: bipush 87
-    //   83: invokevirtual 228	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   86: checkcast 230	amzu
-    //   89: iconst_1
-    //   90: iconst_0
-    //   91: iconst_0
-    //   92: invokevirtual 233	amzu:a	(ZZI)V
-    //   95: goto -53 -> 42
-    //   98: astore_1
-    //   99: ldc 2
-    //   101: monitorexit
-    //   102: aload_1
-    //   103: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	104	0	paramBoolean	boolean
-    //   0	104	1	paramQQAppInterface	QQAppInterface
-    //   37	2	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   3	31	98	finally
-    //   31	38	98	finally
-    //   46	76	98	finally
-    //   80	95	98	finally
-  }
-  
-  public static boolean a()
-  {
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      a();
-    }
-    if (jdField_a_of_type_Boolean) {
-      return jdField_b_of_type_Boolean;
-    }
-    return false;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      return false;
-    }
-    if (a()) {}
     for (;;)
     {
-      try
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(((bcop)localObject1).jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+      if (j != parambcge.jdField_a_of_type_JavaUtilList.size() - 1)
       {
-        if (jdField_b_of_type_JavaUtilArrayList.size() > 0)
-        {
-          bool = jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
-          if (QLog.isColorLevel()) {
-            QLog.d("StudyModeManager", 2, String.format("init ,studyModeSwitch = %b,notifyID = %d,blackResult = %b,sBlackIds = %s", new Object[] { Boolean.valueOf(jdField_a_of_type_Boolean), Integer.valueOf(paramInt), Boolean.valueOf(bool), jdField_b_of_type_JavaUtilArrayList.toString() }));
-          }
-          return bool;
-        }
+        localObject1 = new View(localContext);
+        ((View)localObject1).setBackgroundResource(2130839458);
+        ((View)localObject1).setLayoutParams(new ViewGroup.LayoutParams(-1, DisplayUtil.dip2px(localContext, 6.0F)));
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
       }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StudyModeManager", 2, localThrowable, new Object[0]);
-        }
-      }
-      boolean bool = false;
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      ((bbyj)paramQQAppInterface.getBusinessHandler(154)).a(false, 0, false, true);
-      QLog.e("StudyModeManager", 1, "[KidMode]checkAbnormalFlag both true");
-      return true;
-    }
-    return false;
-  }
-  
-  public static int b()
-  {
-    return jdField_b_of_type_Int;
-  }
-  
-  public static String b()
-  {
-    return jdField_b_of_type_JavaLangString;
-  }
-  
-  public static void b()
-  {
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("StudyModeManager", 4, new Object[] { "needReportAdvanceSettingStatus : ", Boolean.valueOf(e()) });
-    }
-    if (e())
-    {
-      if (!b(16)) {
-        break label198;
-      }
-      i = 1;
-      bfyz.a("kid_mode_advance_setting", localSimpleDateFormat.format(new Date()));
-      bcef.b(null, "dc00898", "", "", "0X800B3D5", "0X800B3D5", 0, i, "", "", "", "");
-      if (!b(32)) {
-        break label203;
-      }
-      i = 1;
-      label121:
-      bcef.b(null, "dc00898", "", "", "0X800B3D6", "0X800B3D6", 0, i, "", "", "", "");
-      if (!b(8)) {
-        break label208;
-      }
-    }
-    label198:
-    label203:
-    label208:
-    for (int i = 1;; i = 0)
-    {
-      bcef.b(null, "dc00898", "", "", "0X800B3D7", "0X800B3D7", 0, i, "", "", "", "");
-      return;
-      i = 0;
+      j += 1;
+      break label60;
       break;
+      label780:
+      ((bcop)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(8);
+      break label224;
+      label793:
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      break label257;
+      label806:
+      ((bcop)localObject1).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      break label290;
+      label819:
+      ((bcop)localObject1).c.setMaxLines(3);
+      break label340;
+      label831:
+      ((bcop)localObject1).c.setVisibility(8);
+      break label353;
+      label844:
+      ((bcop)localObject1).c.setTextColor(Color.parseColor("#262626"));
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+      ((bcop)localObject1).jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
+      ((bcop)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundResource(2130842396);
+      break label416;
+      label898:
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      continue;
+      label911:
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      int n = ((bcop)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
       i = 0;
-      break label121;
-    }
-  }
-  
-  public static void b(bcoq parambcoq)
-  {
-    try
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.contains(parambcoq)) {
-        jdField_a_of_type_JavaUtilArrayList.remove(parambcoq);
-      }
-      return;
-    }
-    finally
-    {
-      parambcoq = finally;
-      throw parambcoq;
-    }
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyModeManager", 2, String.format("setstudent mask = %b", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    bfyz.a("study_mode_key_student_mask", Boolean.valueOf(paramBoolean));
-  }
-  
-  public static boolean b()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    Object localObject = null;
-    switch (paramInt)
-    {
-    }
-    while (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      boolean bool = ((Boolean)bfyz.a((String)localObject, Boolean.valueOf(true))).booleanValue();
-      if (QLog.isColorLevel()) {
-        QLog.d("StudyModeManager", 2, "getAdvanceSettingSwitch, mask: " + paramInt + ", isChecked: " + bool);
-      }
-      return bool;
-      localObject = "search_friend_flag";
-      continue;
-      localObject = "search_by_stranger_flag";
-      continue;
-      localObject = "invite_to_troop_by_stranger_flag";
-    }
-    return false;
-  }
-  
-  public static void c(boolean paramBoolean)
-  {
-    try
-    {
-      jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static boolean c()
-  {
-    d = bcox.a.a();
-    return d;
-  }
-  
-  public static boolean d()
-  {
-    boolean bool1;
-    if (!a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StudyModeManager", 2, "isBanSearchFriend: it isn't in kid mode");
-      }
-      bool1 = false;
-    }
-    boolean bool2;
-    do
-    {
-      return bool1;
-      bool2 = b(8);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("StudyModeManager", 2, "isBanSearchFriend: " + bool2);
-    return bool2;
-  }
-  
-  public static boolean e()
-  {
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTime(new Date());
-    Object localObject = (String)bfyz.a("kid_mode_advance_setting", "");
-    if (QLog.isDevelopLevel()) {
-      QLog.d("StudyModeManager", 4, new Object[] { "calendar in sp : ", localObject });
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      try
+      k = i;
+      if (i < ((bcdk)localObject2).jdField_a_of_type_JavaUtilList.size())
       {
-        localObject = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE).parse((String)localObject);
-        Calendar localCalendar2 = Calendar.getInstance();
-        localCalendar2.setTime((Date)localObject);
-        if ((localCalendar2.get(0) == localCalendar1.get(0)) && (localCalendar2.get(1) == localCalendar1.get(1)))
+        k = i;
+        if (i < n)
         {
-          int i = localCalendar2.get(6);
-          int j = localCalendar1.get(6);
-          if (i == j) {
-            return false;
+          localObject4 = ((bcop)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+          ((View)localObject4).setVisibility(0);
+          localObject3 = (SquareImageView)((View)localObject4).findViewById(2131368597);
+          localObject4 = (ImageView)((View)localObject4).findViewById(2131369778);
+          localObject5 = (bcfl)((bcdk)localObject2).jdField_a_of_type_JavaUtilList.get(i);
+          Object localObject6 = ((bcfl)localObject5).jdField_a_of_type_JavaLangString;
+          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+          localURLDrawableOptions.mRequestHeight = 200;
+          localURLDrawableOptions.mRequestWidth = 200;
+          localURLDrawableOptions.mFailedDrawable = localColorDrawable;
+          localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
+          localURLDrawableOptions.mPlayGifImage = true;
+          localObject6 = URLDrawable.getDrawable((String)localObject6, localURLDrawableOptions);
+          ((SquareImageView)localObject3).setImageDrawable((Drawable)localObject6);
+          if ((((URLDrawable)localObject6).getStatus() != 1) && (((URLDrawable)localObject6).getStatus() != 0)) {
+            ((URLDrawable)localObject6).restartDownload();
+          }
+          ((SquareImageView)localObject3).setVisibility(0);
+          if (((bcfl)localObject5).jdField_a_of_type_Int == 2)
+          {
+            ((ImageView)localObject4).setVisibility(0);
+            label1141:
+            if ((i != n - 1) || (((bcdk)localObject2).jdField_a_of_type_Int <= n)) {
+              break label1264;
+            }
+            ((ImageView)localObject4).setVisibility(8);
+            ((SquareImageView)localObject3).setFilterColor(Color.parseColor("#66000000"));
+            m = ((bcdk)localObject2).jdField_a_of_type_Int - n;
+            k = m;
+            if (m > 99) {
+              k = 99;
+            }
+            ((SquareImageView)localObject3).setFilterText("+" + k);
+            ((SquareImageView)localObject3).setFilterTextSize(DisplayUtil.dip2px(((SquareImageView)localObject3).getContext(), 20.0F));
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            ((ImageView)localObject4).setVisibility(8);
+            break label1141;
+            label1264:
+            ((SquareImageView)localObject3).setFilterColor(-1);
+            ((SquareImageView)localObject3).setFilterText("");
           }
         }
       }
-      catch (ParseException localParseException)
+      while (k < n)
       {
-        QLog.e("StudyModeManager", 1, new Object[] { "simpleDateFormat parse error : ", localParseException.toString() });
+        ((bcop)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(k).setVisibility(4);
+        k += 1;
       }
+      continue;
+      label1311:
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      ((bcop)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
-    return true;
   }
 }
 

@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.widget.VerticalGallery;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class aprf
-  implements bjut
+class aprf
+  implements apsk
 {
-  private int jdField_a_of_type_Int;
+  aprf(apre paramapre) {}
   
-  public aprf(IphonePickerView paramIphonePickerView, int paramInt)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    ark.VariantWrapper localVariantWrapper = this.a.jdField_a_of_type_Aprb.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
   }
   
-  public void a(VerticalGallery paramVerticalGallery)
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
   {
-    int i = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView)[this.jdField_a_of_type_Int].getSelectedItemPosition();
-    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null) {
-      IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.jdField_a_of_type_Int, i);
-    }
+    apqy.a(this.a.jdField_a_of_type_Aprb.a, this.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

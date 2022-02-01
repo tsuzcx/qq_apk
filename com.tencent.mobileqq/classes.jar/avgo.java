@@ -1,21 +1,31 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.Map;
 
-class avgo
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class avgo
+  implements View.OnClickListener
 {
-  avgo(avgn paramavgn) {}
+  public avgo(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    CameraPosition localCameraPosition = this.a.a.a.getCameraPosition();
-    if (localCameraPosition != null) {
-      MapWidget.a(this.a.a).a(localCameraPosition.target);
+    QQGameFeedWebFragment.a(this.a).setVisibility(8);
+    if (QQGameFeedWebFragment.a(this.a) != null) {
+      QQGameFeedWebFragment.a(this.a).setCurrentItem(0);
     }
+    String str = (String)QQGameFeedWebFragment.a(this.a).getTag();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(Integer.valueOf(2), str);
+    localHashMap.put(Integer.valueOf(4), "20");
+    localHashMap.put(Integer.valueOf(24), "1");
+    abuf.a(amwn.a(), "769", "205031", "", "76901", "1", "160", localHashMap);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

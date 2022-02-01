@@ -1,22 +1,19 @@
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.animation.Transformation;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
 
-class bgyh
-  implements bfzz<Integer>
+final class bgyh
+  extends View.AccessibilityDelegate
 {
-  bgyh(bgyf parambgyf, int paramInt) {}
+  bgyh(CharSequence paramCharSequence, String paramString) {}
   
-  public void a(bfzt<Integer> parambfzt, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    if (!this.jdField_a_of_type_Bgyf.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Bgyf.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
-      this.jdField_a_of_type_Bgyf.jdField_a_of_type_Int = paramInteger.intValue();
-    } while (this.jdField_a_of_type_Bgyf.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bgyf.jdField_a_of_type_Boolean = false;
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    if (this.jdField_a_of_type_JavaLangCharSequence != null) {
+      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
+    }
+    paramAccessibilityNodeInfo.setClassName(this.jdField_a_of_type_JavaLangString);
   }
 }
 

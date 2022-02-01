@@ -12,8 +12,8 @@ import android.os.Build.VERSION;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import bbua;
-import bbub;
+import bdav;
+import bdaw;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager.a;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
@@ -186,7 +186,7 @@ public class CameraSurfaceView
   
   boolean a()
   {
-    return !bbub.d(bbub.a);
+    return !bdaw.d(bdaw.a);
   }
   
   public boolean a(Camera.Parameters paramParameters)
@@ -244,7 +244,7 @@ public class CameraSurfaceView
             bool1 = bool2;
           }
         }
-      } while (!bbua.a().a(paramString));
+      } while (!bdav.a().a(paramString));
       localRuntimeException.setFocusMode(paramString);
       bool2 = a(localRuntimeException);
       bool1 = bool2;
@@ -287,7 +287,7 @@ public class CameraSurfaceView
       {
         a = Camera.open(0);
         int m = 90;
-        if (bbub.d(bbub.g)) {
+        if (bdaw.d(bdaw.g)) {
           m = 270;
         }
         a.setDisplayOrientation(m);

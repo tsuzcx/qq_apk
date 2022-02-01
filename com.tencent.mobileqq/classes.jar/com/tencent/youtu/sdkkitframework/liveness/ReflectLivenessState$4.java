@@ -1,13 +1,16 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
+import com.tencent.youtu.sdkkitframework.common.CommonUtils;
 import java.util.HashMap;
 
 class ReflectLivenessState$4
   extends HashMap<String, Object>
 {
-  ReflectLivenessState$4(ReflectLivenessState paramReflectLivenessState)
+  ReflectLivenessState$4(ReflectLivenessState paramReflectLivenessState, int paramInt)
   {
-    put("ui_tips", "fl_pose_keep");
+    put("process_action", "failed");
+    put("error_code", Integer.valueOf(5242883));
+    put("message", CommonUtils.makeMessageJson(5242883, "msg_param_error", "Init YTReflect SDK failed with " + this.val$initR));
   }
 }
 

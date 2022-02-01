@@ -1,49 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class weh
-  extends vqr<wej>
 {
-  public List<String> a = new ArrayList();
+  public static int a;
+  public static boolean a;
+  public static boolean b;
+  public static boolean c;
   
-  public String a()
+  static
   {
-    return "StorySvc.homepage_batch_feeds_label";
+    jdField_a_of_type_Boolean = false;
+    b = false;
+    c = false;
+    jdField_a_of_type_Int = 725;
   }
   
-  public vqm a(byte[] paramArrayOfByte)
+  public static boolean a()
   {
-    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
-    try
-    {
-      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
-      return new wej(localRspStoryFeedTagInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    return false;
   }
   
-  protected byte[] a()
+  public static boolean b()
   {
-    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    return localReqStoryFeedTagInfo.toByteArray();
+    return true;
   }
 }
 

@@ -1,17 +1,9 @@
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.3;
-import com.tencent.qphone.base.util.QLog;
-
 public class bcyf
-  implements bgso
 {
-  public bcyf(GroupTeamWorkListActivity.3 param3) {}
-  
-  public void onResult(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (QLog.isColorLevel())) {
-      QLog.i("Tag_webView", 1, "Web_qqbrowser_web TeamWorkList preloadWebProcess success! ");
-    }
-  }
+  public int a;
+  public azkb a;
+  public bcxr a;
+  public Object a;
 }
 
 

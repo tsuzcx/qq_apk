@@ -1,68 +1,55 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.animation.AnimatorSet;
+import android.graphics.drawable.Drawable;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Collections;
+import com.tencent.mobileqq.app.face.FaceDrawable;
 import java.util.List;
 
-public class bemu
+class bemu
+  implements Animation.AnimationListener
 {
-  public static String a(List<Integer> paramList)
+  bemu(bemr parambemr, AnimatorSet paramAnimatorSet) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int j = 0;
-    int k = paramList.size();
-    Collections.sort(paramList);
-    if (k == 1) {
-      return String.format(amtj.a(2131704818), new Object[] { Integer.valueOf(((Integer)paramList.get(0)).intValue() + 1) });
-    }
     int i = 0;
-    if (i < k - 1) {
-      if (((Integer)paramList.get(i)).intValue() + 1 == ((Integer)paramList.get(i + 1)).intValue()) {}
-    }
-    for (i = 0;; i = 1)
+    while (i < 3)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("第");
-      if (i != 0) {
-        localStringBuilder.append(((Integer)paramList.get(0)).intValue() + 1).append("-").append(((Integer)paramList.get(k - 1)).intValue() + 1).append("段");
-      }
-      for (;;)
+      paramAnimation = (ImageView)this.jdField_a_of_type_Bemr.a.get(i);
+      paramAnimation.clearAnimation();
+      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject1 != null) && (i < this.jdField_a_of_type_Bemr.b.size()))
       {
-        return localStringBuilder.toString();
-        i += 1;
-        break;
-        while ((j < k) && (j < 3))
-        {
-          localStringBuilder.append(((Integer)paramList.get(j)).intValue() + 1);
-          if ((j + 1 < k) && (j + 1 < 3)) {
-            localStringBuilder.append("、");
-          }
-          j += 1;
+        Object localObject2 = (String)this.jdField_a_of_type_Bemr.b.get(i);
+        Drawable localDrawable = bheg.a(true);
+        localObject1 = FaceDrawable.getFaceDrawable((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
+        localObject2 = paramAnimation.getDrawable();
+        if ((localObject2 != null) && (localObject2 != localObject1) && ((localObject2 instanceof FaceDrawable))) {
+          ((FaceDrawable)localObject2).cancel();
         }
-        if (k > 3) {
-          localStringBuilder.append("等").append(k).append("段");
-        } else {
-          localStringBuilder.append("段");
-        }
+        paramAnimation.setImageDrawable((Drawable)localObject1);
       }
+      i += 1;
     }
+    this.jdField_a_of_type_Bemr.d.clearAnimation();
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+    this.jdField_a_of_type_Bemr.c.setTranslationX(0.0F);
+    this.jdField_a_of_type_Bemr.c.setAlpha(1.0F);
+    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setDuration(200L);
+    paramAnimation.setAnimationListener(new bemv(this));
+    this.jdField_a_of_type_Bemr.d.startAnimation(paramAnimation);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.getCurrentUin(), 0).edit().putBoolean("ReciteGuideTipShow", paramBoolean).commit();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    return paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.getCurrentUin(), 0).getBoolean("ReciteGuideTipShow", false);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,75 +1,85 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class arcn
-  extends bcuz
+  extends aqwt<arcm>
 {
-  public arcn(MessengerService paramMessengerService) {}
-  
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public static arcm a()
   {
-    Bundle localBundle;
-    int i;
-    String str;
-    if (this.a.a != null)
+    return (arcm)aqxe.a().a(426);
+  }
+  
+  public static boolean a()
+  {
+    arcm localarcm = a();
+    if (localarcm != null) {}
+    for (boolean bool = localarcm.b();; bool = false)
     {
-      localBundle = new Bundle();
-      localBundle.putString("url", null);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label115;
-      }
-      i = paramTeamWorkFileImportInfo.f;
-      localBundle.putInt("retCode", i);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label120;
-      }
-      str = paramTeamWorkFileImportInfo.h;
-      label53:
-      localBundle.putString("errorStr", str);
-      if (paramTeamWorkFileImportInfo == null) {
-        break label126;
-      }
-    }
-    label115:
-    label120:
-    label126:
-    for (paramTeamWorkFileImportInfo = paramTeamWorkFileImportInfo.i;; paramTeamWorkFileImportInfo = "")
-    {
-      localBundle.putString("redirectUrl", paramTeamWorkFileImportInfo);
-      this.a.a.putBundle("response", localBundle);
-      this.a.a(this.a.a);
-      this.a.a = null;
-      return;
-      i = 0;
-      break;
-      str = "";
-      break label53;
+      QLog.d("OpenSdkConfProcessor", 1, new Object[] { "isUseThirdTransformPkgName, useThirdTransformPkgName = ", Boolean.valueOf(bool) });
+      return bool;
     }
   }
   
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  @NonNull
+  public arcm a(int paramInt)
+  {
+    return new arcm();
+  }
+  
+  @Nullable
+  public arcm a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      new arcm();
+      return arcm.a(paramArrayOfaqxa);
+    }
+    return null;
+  }
+  
+  public void a(arcm paramarcm)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onFileImportSuccess");
+      QLog.d("OpenSdkConfProcessor", 2, "onUpdate " + paramarcm.toString());
     }
-    if (this.a.a != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("url", paramString);
-      if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d == 10)) {
-        localBundle.putBoolean("needRefresh", true);
-      }
-      this.a.a.putBundle("response", localBundle);
-      this.a.a(this.a.a);
-      this.a.a = null;
-    }
+  }
+  
+  public Class<arcm> clazz()
+  {
+    return arcm.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 426;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcn
  * JD-Core Version:    0.7.0.1
  */

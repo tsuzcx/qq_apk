@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.ocr;
 
-import aohk;
-import aohl;
-import axmu;
-import axmw;
+import apkm;
+import apkn;
+import aytd;
+import aytf;
 
 public class OcrControl$3
   implements Runnable
 {
-  public OcrControl$3(axmu paramaxmu, String paramString, aohk paramaohk) {}
+  public OcrControl$3(aytd paramaytd, String paramString, apkm paramapkm) {}
   
   public void run()
   {
-    aohl localaohl = axmu.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-    if ((localaohl != null) && (axmu.a(this.this$0) != null))
+    apkn localapkn = aytd.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    if ((localapkn != null) && (aytd.a(this.this$0) != null))
     {
       long l1 = System.currentTimeMillis();
-      long l2 = localaohl.c;
-      axmu.a(this.this$0).a(4, null, this.jdField_a_of_type_Aohk.b, l1 - l2);
+      long l2 = localapkn.c;
+      aytd.a(this.this$0).a(4, null, this.jdField_a_of_type_Apkm.b, l1 - l2);
     }
   }
 }

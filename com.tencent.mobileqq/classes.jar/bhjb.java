@@ -1,43 +1,50 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
-import com.tencent.mobileqq.widget.ScrollerRunnable.4;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.io.File;
 
-public class bhjb
-  implements Animator.AnimatorListener
+public final class bhjb
+  implements URLDrawable.URLDrawableListener
 {
-  public bhjb(ScrollerRunnable.4 param4) {}
+  public bhjb(Resources paramResources, String paramString, ImageView paramImageView, Drawable paramDrawable) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.a.a.getParent() != null)
+    int i;
+    if (paramURLDrawable != null)
     {
-      this.a.a.clearAnimation();
-      if (QLog.isColorLevel()) {
-        QLog.i("ScrollerRunnable", 2, "onAnimationEnd-->clearAnimation");
+      i = AIOUtils.dp2px(15.0F, this.jdField_a_of_type_AndroidContentResResources);
+      j = paramURLDrawable.getIntrinsicHeight();
+      if (j == 0)
+      {
+        boolean bool = new File(VasApngUtil.getCacheFilePath(this.jdField_a_of_type_JavaLangString)).delete();
+        QLog.e("VipUtils", 1, "onLoadSuccessed drawableHeight=0, deleteSucc=" + bool + " url=" + this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ScrollerRunnable", 2, "onAnimationEnd:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
+    else
+    {
+      return;
     }
-    if ((besg.a(this.a.this$0.k)) && (this.a.this$0.a != null)) {
-      this.a.this$0.a.obtainMessage(50).sendToTarget();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScrollerRunnable", 2, "onAnimationStart:" + hashCode() + "," + this.a.a.hashCode() + "," + this.a.a.getParent());
-    }
+    int j = paramURLDrawable.getIntrinsicWidth() * i / j;
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    localLayoutParams.height = i;
+    localLayoutParams.width = j;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
   }
 }
 

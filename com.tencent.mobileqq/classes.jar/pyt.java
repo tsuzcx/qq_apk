@@ -1,19 +1,27 @@
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.image.URLImageView;
 
-class pyt
-  implements View.OnClickListener
+public class pyt
+  extends RecyclerView.ViewHolder
 {
-  pyt(pyr parampyr, long paramLong, ArticleInfo paramArticleInfo) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+  URLImageView jdField_b_of_type_ComTencentImageURLImageView;
   
-  public void onClick(View paramView)
+  pyt(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
   {
-    String str = paa.g + bfuc.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
-    pay.a(pyr.a(this.jdField_a_of_type_Pyr), str);
-    pyr.a(1, pay.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramView);
+  }
+  
+  protected int a()
+  {
+    return getAdapterPosition() - 1;
   }
 }
 

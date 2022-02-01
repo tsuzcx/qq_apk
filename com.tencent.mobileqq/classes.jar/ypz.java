@@ -1,14 +1,20 @@
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract class ypz
-  extends yqc
+final class ypz
+  implements Animation.AnimationListener
 {
-  public ypz(yqe paramyqe, View paramView)
+  ypz(View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramyqe, paramView);
+    this.a.setAnimation(null);
   }
   
-  public abstract int a();
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

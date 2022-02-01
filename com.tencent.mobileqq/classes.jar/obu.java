@@ -1,10 +1,15 @@
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class obu
+  implements DialogInterface.OnDismissListener
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  obu(obm paramobm) {}
   
-  obu(obt paramobt) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.f = false;
+  }
 }
 
 

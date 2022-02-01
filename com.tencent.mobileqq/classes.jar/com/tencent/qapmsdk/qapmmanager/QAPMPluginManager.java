@@ -10,6 +10,8 @@ import com.tencent.qapmsdk.base.meta.UserMeta;
 import com.tencent.qapmsdk.base.monitorplugin.PluginController;
 import com.tencent.qapmsdk.base.monitorplugin.QAPMMonitorPlugin;
 import com.tencent.qapmsdk.common.logger.Logger;
+import com.tencent.qapmsdk.common.util.AndroidVersion;
+import com.tencent.qapmsdk.common.util.AndroidVersion.Companion;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -37,16 +39,13 @@ public final class QAPMPluginManager
 {
   @JvmField
   @NotNull
-  public static final List<DefaultPluginConfig> ALL_PLUGIN = CollectionsKt.listOf(new DefaultPluginConfig[] { IO_PLUGIN, DB_PLUGIN, BREAD_CRUMB_PLUGIN, CRASH_PLUGIN, ANR_PLUGIN, DEVICE_PLUGIN, DROP_FRAME_PLUGIN, JS_ERROR_PLUGIN, LOOP_STACK_PLUGIN, CELLING_PLUGIN, LEAK_PLUGIN, RESOURCE_PLUGIN, WEB_VIEW_PLUGIN, HTTP_PLUGIN, BATTERY_PLUGIN, BIGBITMAP_PLUGIN });
+  public static final List<DefaultPluginConfig> ALL_PLUGIN = CollectionsKt.listOf(new DefaultPluginConfig[] { IO_PLUGIN, DB_PLUGIN, BREAD_CRUMB_PLUGIN, CRASH_PLUGIN, ANR_PLUGIN, DEVICE_PLUGIN, DROP_FRAME_PLUGIN, JS_ERROR_PLUGIN, LOOP_STACK_PLUGIN, CELLING_PLUGIN, LEAK_PLUGIN, RESOURCE_PLUGIN, WEB_VIEW_PLUGIN, HTTP_PLUGIN, BIG_BITMAP_PLUGIN });
   @JvmField
   @NotNull
   public static final DefaultPluginConfig ANR_PLUGIN;
   @JvmField
   @NotNull
-  public static final DefaultPluginConfig BATTERY_PLUGIN;
-  @JvmField
-  @NotNull
-  public static final DefaultPluginConfig BIGBITMAP_PLUGIN;
+  public static final DefaultPluginConfig BIG_BITMAP_PLUGIN;
   @JvmField
   @NotNull
   public static final DefaultPluginConfig BREAD_CRUMB_PLUGIN;
@@ -106,8 +105,7 @@ public final class QAPMPluginManager
     RESOURCE_PLUGIN = PluginCombination.resourcePlugin;
     WEB_VIEW_PLUGIN = PluginCombination.webViewPlugin;
     HTTP_PLUGIN = PluginCombination.httpPlugin;
-    BATTERY_PLUGIN = PluginCombination.batteryPlugin;
-    BIGBITMAP_PLUGIN = PluginCombination.bigBitmapPlugin;
+    BIG_BITMAP_PLUGIN = PluginCombination.bigBitmapPlugin;
   }
   
   private final List<QAPMMonitorPlugin> allPlugins()
@@ -211,6 +209,11 @@ public final class QAPMPluginManager
   
   public final void start(int paramInt)
   {
+    if (!AndroidVersion.Companion.isJellyBean())
+    {
+      Logger.INSTANCE.w(new String[] { "QAPM_manager_QAPMPluginManager", "start sdk that must be API 16 which is min!" });
+      return;
+    }
     StringBuffer localStringBuffer = new StringBuffer(256);
     Object localObject3 = ((Iterable)allPlugins()).iterator();
     if (((Iterator)localObject3).hasNext())
@@ -220,22 +223,23 @@ public final class QAPMPluginManager
       if (localDefaultPluginConfig != null)
       {
         if ((localDefaultPluginConfig.mode != 0) && (((PluginController.startedPluginMode & localDefaultPluginConfig.mode) > 0) || ((localDefaultPluginConfig.mode & paramInt) <= 0))) {
-          break label239;
+          break label270;
         }
         PluginController.startedPluginMode |= localDefaultPluginConfig.mode;
         StringsKt.append((Appendable)localStringBuffer, new CharSequence[] { (CharSequence)localDefaultPluginConfig.pluginName, (CharSequence)": true, " });
         if (localDefaultPluginConfig.mode != PluginCombination.resourcePlugin.mode) {
-          break label191;
+          break label222;
         }
         if ((DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_RESOURCE.getValue() & SDKConfig.RES_TYPE) != 0) {
-          break label165;
+          break label196;
         }
         ((QAPMMonitorPlugin)localObject4).stop();
       }
+      label270:
       for (;;)
       {
         break;
-        label165:
+        label196:
         if ((DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_AUTO.getValue() == SDKConfig.RES_TYPE) && (RuntimeConfig.globalMonitorCount <= 0))
         {
           ((QAPMMonitorPlugin)localObject4).start();
@@ -244,7 +248,7 @@ public final class QAPMPluginManager
         {
           try
           {
-            label191:
+            label222:
             if (!this.startedPlugin.contains(localObject4))
             {
               ((QAPMMonitorPlugin)localObject4).start();
@@ -254,7 +258,6 @@ public final class QAPMPluginManager
             continue;
           }
           finally {}
-          label239:
           if ((PluginController.startedPluginMode & localDefaultPluginConfig.mode) > 0) {
             StringsKt.append((Appendable)localObject1, new CharSequence[] { (CharSequence)localDefaultPluginConfig.pluginName, (CharSequence)": true, " });
           } else {

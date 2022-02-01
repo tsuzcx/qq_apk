@@ -1,59 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import java.util.Iterator;
-import java.util.List;
-
 public class oha
-  extends BroadcastReceiver
 {
-  public oha(ShopWebViewFragment paramShopWebViewFragment) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean a()
   {
-    if (paramIntent == null) {}
-    do
-    {
-      Object localObject;
-      do
-      {
-        do
-        {
-          return;
-          paramContext = paramIntent.getAction();
-          localObject = paramIntent.getStringExtra("uin");
-          Bitmap localBitmap = (Bitmap)paramIntent.getParcelableExtra("bitmap");
-          if (!"action_decode_finish".equals(paramContext)) {
-            break;
-          }
-          if ((this.a.jdField_a_of_type_Ogn != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
-            this.a.jdField_a_of_type_Ogn.a((String)localObject, localBitmap);
-          }
-        } while (this.a.jdField_a_of_type_Ogv == null);
-        this.a.jdField_a_of_type_Ogv.a((String)localObject);
-        return;
-      } while (!"action_on_shop_msg_receive".equals(paramContext));
-      this.a.jdField_a_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("datas");
-      paramContext = this.a.getActivity();
-      if ((paramContext instanceof EcshopWebActivity)) {
-        ((EcshopWebActivity)paramContext).jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
-      }
-      paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramIntent.hasNext())
-      {
-        localObject = (RecentShopParcel)paramIntent.next();
-        if ((!TextUtils.isEmpty(((RecentShopParcel)localObject).a)) && (((RecentShopParcel)localObject).a.equals(paramContext))) {
-          ((RecentShopParcel)localObject).b += 1;
-        }
-      }
-    } while ((this.a.b != 1) || (this.a.jdField_a_of_type_Ogv == null));
-    this.a.jdField_a_of_type_Ogv.a(this.a.jdField_a_of_type_JavaUtilList);
+    return this.b == 1;
+  }
+  
+  public String toString()
+  {
+    return "materialId = " + this.jdField_a_of_type_Int + " ,repeatedReqFlag=" + this.b + " kdPos=" + this.c + ",adPosID=" + this.jdField_a_of_type_Long;
   }
 }
 

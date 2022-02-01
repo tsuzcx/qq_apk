@@ -1,21 +1,8 @@
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import android.view.View;
 
-class bbwd
-  implements afym
+public abstract interface bbwd
 {
-  bbwd(bbwb parambbwb, CustomFrameAnimationDrawable paramCustomFrameAnimationDrawable) {}
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bbwb.c > 0) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.h();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.c();
-    bbwb localbbwb = this.jdField_a_of_type_Bbwb;
-    localbbwb.c += 1;
-  }
+  public abstract void a(int paramInt, View paramView);
 }
 
 

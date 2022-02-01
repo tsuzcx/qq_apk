@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import amtj;
 import android.content.Context;
+import anvx;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QCallRecent;
@@ -28,7 +28,7 @@ public class RecentCallItem
     this.mShowTime = "0";
     this.mUnreadNum = 0;
     this.mMenuFlag = 12288;
-    this.mCallingText = amtj.a(2131712263);
+    this.mCallingText = anvx.a(2131712610);
     this.call.isVideo = 1;
   }
   

@@ -11,7 +11,7 @@ import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class FaceOffNoseOcclusionFilter
   {
     if (!this.isTexLoaded)
     {
-      Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(FaceOffUtil.FEATURE_TYPE.NOSE_MASK);
+      Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(FaceOffUtil.FeatureType.NOSE_MASK);
       if (BitmapUtils.isLegal(localBitmap))
       {
         GlUtil.loadTexture(this.texture[0], localBitmap);

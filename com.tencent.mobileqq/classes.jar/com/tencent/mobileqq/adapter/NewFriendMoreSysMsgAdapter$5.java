@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.adapter;
 
-import aigj;
-import aigx;
-import alkj;
-import amqx;
-import amsw;
-import amyk;
+import ajbi;
+import ajbw;
+import amik;
 import android.text.TextUtils;
-import bcsy;
+import antl;
+import anvk;
+import aoay;
+import bdzx;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PhoneContactAdd;
@@ -33,7 +34,7 @@ import tencent.mobileim.structmsg.structmsg.SystemMsg;
 public class NewFriendMoreSysMsgAdapter$5
   implements Runnable
 {
-  public NewFriendMoreSysMsgAdapter$5(alkj paramalkj, boolean paramBoolean) {}
+  public NewFriendMoreSysMsgAdapter$5(amik paramamik, boolean paramBoolean) {}
   
   public void run()
   {
@@ -43,15 +44,15 @@ public class NewFriendMoreSysMsgAdapter$5
     synchronized (this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
     {
       this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      l = bcsy.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      l = bdzx.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAIOList(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, l);
       localArrayList = new ArrayList(localList.size());
       if ((localList == null) || (localList.size() <= 0)) {
-        break label447;
+        break label448;
       }
       int i = localList.size() - 1;
       if (i < 0) {
-        break label447;
+        break label448;
       }
       ??? = (MessageRecord)localList.get(i);
       if ((??? instanceof MessageForSystemMsg))
@@ -60,7 +61,7 @@ public class NewFriendMoreSysMsgAdapter$5
         if (localMessageForSystemMsg.structMsg == null) {
           localMessageForSystemMsg.parse();
         }
-        if ((localMessageForSystemMsg.structMsg.msg.sub_type.get() != 13) || (!alkj.a(this.this$0).b(String.valueOf(localMessageForSystemMsg.structMsg.req_uin.get())))) {}
+        if ((localMessageForSystemMsg.structMsg.msg.sub_type.get() != 13) || (!amik.a(this.this$0).b(String.valueOf(localMessageForSystemMsg.structMsg.req_uin.get())))) {}
       }
       else
       {
@@ -79,9 +80,9 @@ public class NewFriendMoreSysMsgAdapter$5
         ??? = ContactUtils.getDiscussionNameCanNull(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l));
         if (TextUtils.isEmpty((CharSequence)???))
         {
-          localObject3 = (amqx)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(6);
+          localObject3 = (antl)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
           if (localObject3 != null) {
-            ((amqx)localObject3).a(l);
+            ((antl)localObject3).a(l);
           }
         }
       }
@@ -105,24 +106,24 @@ public class NewFriendMoreSysMsgAdapter$5
       if (QLog.isColorLevel()) {
         QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "NewFriendMoreSysMsgAdapter source_flag: %d  discussUin: %d mDiscussName: %s msg_source: %s", new Object[] { Integer.valueOf(localMessageForSystemMsg.structMsg.msg.uint32_source_flag.get()), Long.valueOf(l), ???, str }));
       }
-      localArrayList.add(new aigj(localMessageForSystemMsg));
+      localArrayList.add(new ajbi(localMessageForSystemMsg));
       break;
       localObject3 = ???;
     }
-    label447:
-    ??? = alkj.a(this.this$0).a(true);
+    label448:
+    ??? = amik.a(this.this$0).a(true);
     if (((ArrayList)???).size() > 0) {
       localArrayList.addAll((Collection)???);
     }
-    ??? = alkj.a(this.this$0).c();
+    ??? = amik.a(this.this$0).c();
     if ((??? != null) && (!((ArrayList)???).isEmpty()))
     {
       ??? = ((ArrayList)((ArrayList)???).clone()).iterator();
       while (((Iterator)???).hasNext()) {
-        localArrayList.add(new aigx((PhoneContactAdd)((Iterator)???).next()));
+        localArrayList.add(new ajbw((PhoneContactAdd)((Iterator)???).next()));
       }
     }
-    Collections.sort(localArrayList, alkj.a(this.this$0));
+    Collections.sort(localArrayList, amik.a(this.this$0));
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new NewFriendMoreSysMsgAdapter.5.1(this, localArrayList));
   }
 }

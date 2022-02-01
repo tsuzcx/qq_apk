@@ -33,8 +33,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import ybn;
-import ybp;
+import yqg;
+import yqi;
 
 public class ArtFilterUploadProcessor
   extends BaseUploadProcessor
@@ -59,7 +59,7 @@ public class ArtFilterUploadProcessor
   public static final String TEG_COSTTIME = "teg_Costtime";
   public static final String UPLOAD_FILE_SIZE = "uploadFileSize";
   public static final String WUP_COSTTIME = "wup_Costtime";
-  public ybn artFilterModule = ybn.a();
+  public yqg artFilterModule = yqg.a();
   private int callbackId;
   int currentStep;
   long endAllTime = 0L;
@@ -69,7 +69,7 @@ public class ArtFilterUploadProcessor
   long endRequestTime = 0L;
   String fileOutputPath;
   boolean isCanceld = false;
-  ybp mFilterUploadInfo;
+  yqi mFilterUploadInfo;
   boolean needUploadImg;
   long startAllTime = 0L;
   long startDownloadTime = 0L;
@@ -86,26 +86,26 @@ public class ArtFilterUploadProcessor
     this.mUkey = paramString;
   }
   
-  public void begin(int paramInt1, int paramInt2, String paramString, int paramInt3, ybp paramybp, boolean paramBoolean)
+  public void begin(int paramInt1, int paramInt2, String paramString, int paramInt3, yqi paramyqi, boolean paramBoolean)
   {
     this.callbackId = paramInt1;
     this.styleId = paramInt2;
     this.styleName = paramString;
     this.taskId = paramInt3;
-    this.mFilterUploadInfo = paramybp;
+    this.mFilterUploadInfo = paramyqi;
     this.needUploadImg = paramBoolean;
     if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "FilterUploadInfo:" + paramybp);
+      QLog.d("ArtFilterUploadProcessor", 2, "FilterUploadInfo:" + paramyqi);
     }
-    if (paramybp == null) {
+    if (paramyqi == null) {
       return;
     }
-    this.mFileSize = paramybp.jdField_a_of_type_Long;
-    this.mLocalMd5 = paramybp.jdField_a_of_type_ArrayOfByte;
-    this.mFileName = paramybp.jdField_b_of_type_JavaLangString;
-    this.fileOutputPath = (EditVideoArtFilter.jdField_a_of_type_JavaLangString + paramybp.jdField_b_of_type_Long + "_" + paramInt2 + ".png");
-    this.mHeight = paramybp.jdField_a_of_type_Int;
-    this.mWidth = paramybp.jdField_b_of_type_Int;
+    this.mFileSize = paramyqi.jdField_a_of_type_Long;
+    this.mLocalMd5 = paramyqi.jdField_a_of_type_ArrayOfByte;
+    this.mFileName = paramyqi.jdField_b_of_type_JavaLangString;
+    this.fileOutputPath = (EditVideoArtFilter.jdField_a_of_type_JavaLangString + paramyqi.jdField_b_of_type_Long + "_" + paramInt2 + ".png");
+    this.mHeight = paramyqi.jdField_a_of_type_Int;
+    this.mWidth = paramyqi.jdField_b_of_type_Int;
     this.startAllTime = SystemClock.uptimeMillis();
     if (QLog.isColorLevel()) {
       QLog.d("ArtFilterUploadProcessor", 2, "start()  needUploadImg:" + paramBoolean + " mUky:" + this.mUkey);

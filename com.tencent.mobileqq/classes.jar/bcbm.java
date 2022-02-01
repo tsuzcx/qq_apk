@@ -1,11 +1,18 @@
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.MsgProxyUtils.Proxy;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bcbm
-  implements IMCoreProxyRoute.MsgProxyUtils.Proxy
+class bcbm
+  implements View.OnClickListener
 {
-  public boolean isSaveConversation(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  bcbm(bcbk parambcbk) {}
+  
+  public void onClick(View paramView)
   {
-    return abwz.a(paramString1, paramString2, paramInt1, paramInt2);
+    this.a.a.b(this.a.a.b);
+    this.a.a.e.setVisibility(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

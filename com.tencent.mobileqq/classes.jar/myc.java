@@ -1,14 +1,37 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class myc
-  implements BusinessObserver
+class myc
+  implements View.OnClickListener
 {
-  public void a(int paramInt, boolean paramBoolean, String paramString) {}
+  myc(myb parammyb) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (((paramObject instanceof String)) || (paramObject == null)) {
-      a(paramInt, paramBoolean, (String)paramObject);
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)((mye)paramView.getTag()).a;
+    Object localObject2 = localFileManagerEntity.Uuid;
+    myb localmyb = this.a;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).equalsIgnoreCase(myb.a(this.a))) {
+      localObject1 = null;
+    }
+    myb.a(localmyb, (String)localObject1);
+    this.a.notifyDataSetChanged();
+    if (myb.a(this.a) != null)
+    {
+      localObject2 = myb.a(this.a);
+      if (myb.a(this.a) == null) {
+        break label113;
+      }
+    }
+    label113:
+    for (localObject1 = localFileManagerEntity;; localObject1 = null)
+    {
+      ((myf)localObject2).a((FileManagerEntity)localObject1);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

@@ -1,148 +1,140 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.component.media.image.ImageLoader;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Method;
 
 public class asnw
-  extends asnu
-  implements befu
 {
-  protected befv a;
-  protected String b;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private int jdField_a_of_type_Int = 0;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString = "";
+  private final View jdField_b_of_type_AndroidViewView;
+  private final TextView jdField_b_of_type_AndroidWidgetTextView;
+  private final TextView c;
   
-  public asnw(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, int paramInt, asnv paramasnv)
+  public asnw(View paramView)
   {
-    super(paramQQAppInterface, paramLong1, paramLong2, paramInt, paramasnv);
-  }
-  
-  public static befu a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, String paramString, asnv paramasnv)
-  {
-    if (paramasnv == null)
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131375473);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375475));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131375911);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375910));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375913));
+    this.c = ((TextView)paramView.findViewById(2131375912));
+    try
     {
-      QLog.e("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "getFileDownloader fileInfo is null");
-      return null;
+      ImageLoader.getInstance().downloadImageOnly("https://sola.gtimg.cn/aoi/sola/20200526111437_Jxz3xRir1X.png", null);
+      return;
     }
-    if (TextUtils.isEmpty(paramString))
+    catch (Throwable paramView)
     {
-      QLog.e("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "getFileDownloader strTmpFilePath is err");
-      return null;
+      QLog.w("ExtendEmptyViewDirector", 1, "init: failed to download image", paramView);
     }
-    if (!paramasnv.a())
-    {
-      QLog.e("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "getFileDownloader fileInfo is err");
-      return null;
+  }
+  
+  @Nullable
+  private static Method a(ImageView paramImageView)
+  {
+    if (jdField_a_of_type_JavaLangReflectMethod != null) {
+      return jdField_a_of_type_JavaLangReflectMethod;
     }
-    paramQQAppInterface = new asnw(paramQQAppInterface, paramLong1, paramLong2, 1, paramasnv);
-    paramQQAppInterface.a(paramString);
-    return paramQQAppInterface;
-  }
-  
-  protected ExcitingTransferDownloadConfig a()
-  {
-    return asnp.a().b();
-  }
-  
-  protected String a()
-  {
-    return AppConstants.SDCARD_FILE_SAVE_PATH;
-  }
-  
-  protected void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
-  {
-    super.a(paramInt, paramExcitingTransferDownloadCompletedInfo);
-    if (this.jdField_a_of_type_Befv != null)
+    try
     {
-      Bundle localBundle = new Bundle();
-      if (paramExcitingTransferDownloadCompletedInfo != null) {
-        localBundle.putInt("nSrvReturnCode", paramExcitingTransferDownloadCompletedInfo.m_nSrvReturnCode);
+      jdField_a_of_type_JavaLangReflectMethod = paramImageView.getClass().getMethod("setAsyncImage", new Class[] { String.class });
+      return jdField_a_of_type_JavaLangReflectMethod;
+    }
+    catch (Throwable paramImageView)
+    {
+      for (;;)
+      {
+        QLog.w("ExtendEmptyViewDirector", 1, "getSetAsyncImageMethod: failed", paramImageView);
       }
-      this.jdField_a_of_type_Befv.a(true, a(), paramInt, "", "", localBundle);
     }
   }
   
-  protected void a(long paramLong1, long paramLong2, long paramLong3)
+  private void a(ImageView paramImageView, @NonNull String paramString)
   {
-    super.a(paramLong1, paramLong2, paramLong3);
-    if (this.jdField_a_of_type_Befv != null) {
-      this.jdField_a_of_type_Befv.a(paramLong2, this.jdField_a_of_type_Asnv.a());
+    if (this.jdField_a_of_type_JavaLangString.equals(paramString)) {}
+    Method localMethod;
+    do
+    {
+      return;
+      localMethod = a(paramImageView);
+    } while (localMethod == null);
+    try
+    {
+      localMethod.invoke(paramImageView, new Object[] { paramString });
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    catch (Throwable paramImageView)
+    {
+      QLog.w("ExtendEmptyViewDirector", 1, "setAsyncImage: failed", paramImageView);
     }
   }
   
-  public void a(befv parambefv)
+  public void a()
   {
-    this.jdField_a_of_type_Befv = parambefv;
-  }
-  
-  protected void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
-  {
-    super.a(paramExcitingTransferDownloadCompletedInfo);
-    if (this.jdField_a_of_type_Befv != null) {
-      this.jdField_a_of_type_Befv.a(paramExcitingTransferDownloadCompletedInfo.m_strFileSavePath);
+    if (this.jdField_a_of_type_Int == 0) {
+      return;
     }
-  }
-  
-  protected void a(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public int b()
-  {
-    if (a() != null) {
-      return a().m_uRetryTimes;
-    }
-    return 0;
-  }
-  
-  protected String b()
-  {
-    return this.b;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Int = 0;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    a();
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public int c()
-  {
-    return 0;
+    if (this.jdField_a_of_type_Int == 1) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717430);
+    this.jdField_a_of_type_Int = 1;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Int == 2) {
       return;
     }
-    QLog.i("ExcitingTransfer.GroupDownloader<FileAssistant>", 1, "Id[" + this.d + "] cancelTask");
-    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("刷新失败，请下拉重试");
+    this.jdField_a_of_type_Int = 2;
   }
   
-  public int d()
+  public void d()
   {
-    if (a() != null) {
-      return a().m_uProxyType;
+    if (this.jdField_a_of_type_Int == 3) {
+      return;
     }
-    return 0;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText("什么都没找到哦");
+    this.c.setText("没有搜索到相关内容");
+    a(this.jdField_a_of_type_AndroidWidgetImageView, "https://sola.gtimg.cn/aoi/sola/20200508145045_234LrOf7V4.png");
+    this.jdField_a_of_type_Int = 3;
   }
   
-  public String d()
+  public void e()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String e()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Int == 4) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText("无法连接到互联网");
+    this.c.setText("请关闭飞行模式或检查设备的网络设置");
+    a(this.jdField_a_of_type_AndroidWidgetImageView, "https://sola.gtimg.cn/aoi/sola/20200526111437_Jxz3xRir1X.png");
+    this.jdField_a_of_type_Int = 4;
   }
 }
 

@@ -1,30 +1,45 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.biz.richframework.part.block.MultiViewBlock.1.1;
+import com.tencent.biz.richframework.part.block.MultiViewBlock.1.2;
+import com.tencent.biz.richframework.part.block.MultiViewBlock.1.3;
+import com.tencent.biz.richframework.part.block.MultiViewBlock.1.4;
+import com.tencent.biz.richframework.part.block.MultiViewBlock.1.5;
+import com.tencent.biz.richframework.part.block.MultiViewBlock.1.6;
 
 public class zov
-  extends amua
+  extends RecyclerView.AdapterDataObserver
 {
-  public zov(TroopMemberApiService paramTroopMemberApiService) {}
+  zov(zou paramzou) {}
   
-  public void a(boolean paramBoolean, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
+  public void onChanged()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 1050);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramString, paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayList });
-    localBundle.putSerializable("observer_type", Integer.valueOf(5));
-    this.a.a(3, localBundle);
+    zou.a(this.a).post(new MultiViewBlock.1.1(this));
   }
   
-  public void a(boolean paramBoolean, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", this.a.f);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putStringArrayList("uins", paramArrayList1);
-    localBundle.putStringArrayList("tinyIds", paramArrayList2);
-    this.a.a(102, localBundle);
+    zou.a(this.a).post(new MultiViewBlock.1.2(this, paramInt1, paramInt2));
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  {
+    zou.a(this.a).post(new MultiViewBlock.1.3(this, paramInt1, paramInt2, paramObject));
+  }
+  
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  {
+    zou.a(this.a).post(new MultiViewBlock.1.4(this, paramInt1, paramInt2));
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    zou.a(this.a).post(new MultiViewBlock.1.6(this, paramInt1, paramInt2));
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    zou.a(this.a).post(new MultiViewBlock.1.5(this, paramInt1, paramInt2));
   }
 }
 

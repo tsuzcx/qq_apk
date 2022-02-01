@@ -1,33 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
 
-public class wdw<REQ extends MessageMicro>
-  extends vqr<wfu>
+@TargetApi(14)
+public class wdw
 {
-  public final Bundle a;
-  public final REQ a;
-  public final String a;
+  public volatile int a;
+  public long a;
+  public ErrorMessage a;
+  public List<wdr> a;
+  public int b;
+  public int c;
   
-  public wdw(String paramString, REQ paramREQ, Bundle paramBundle)
+  public wdw()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public String a()
+  public boolean a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return (this.jdField_a_of_type_Int == 6) || (this.jdField_a_of_type_Int == 3);
   }
   
-  public vqm a(byte[] paramArrayOfByte)
+  public boolean b()
   {
-    return new wfu(paramArrayOfByte);
+    return this.jdField_a_of_type_Int == 5;
   }
   
-  protected byte[] a()
+  public String toString()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
+    StringBuffer localStringBuffer = new StringBuffer("BaseTaskInfo{");
+    localStringBuffer.append("status=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", retryTimes=").append(this.b);
+    localStringBuffer.append(", result=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

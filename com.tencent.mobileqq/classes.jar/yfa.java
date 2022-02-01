@@ -1,170 +1,58 @@
-import android.util.SparseBooleanArray;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.ListIterator;
+import java.util.Map.Entry;
+import java.util.WeakHashMap;
 
 public class yfa
-  implements ycw<ycl>
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  int b;
+  private LinkedHashMap<zgo, WeakReference<ImageView>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(10, 0.75F, true);
+  private WeakHashMap<ImageView, zgo> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
   
-  private yfa(DoodleLayout paramDoodleLayout) {}
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public int a()
   {
-    DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, System.currentTimeMillis() + 500L);
-    if (paramBoolean3) {
-      DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout, DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout) + 500L);
-    }
-    Object localObject = new AlphaAnimation(1.0F, 0.0F);
-    ((AlphaAnimation)localObject).setDuration(500L);
-    ((AlphaAnimation)localObject).setFillAfter(true);
-    ((AlphaAnimation)localObject).setAnimationListener(new yfb(this));
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(500L);
-    if (paramBoolean3) {
-      localAlphaAnimation.setStartOffset(500L);
-    }
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new yfc(this));
-    if (paramBoolean2) {
-      localObject = localAlphaAnimation;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.startAnimation((Animation)localObject);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimationEndTime(DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout));
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Yev != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Yev.b((Animation)localObject);
-      }
-      return;
-    }
+    return this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
   }
   
-  public boolean a(ycl paramycl, MotionEvent paramMotionEvent)
+  public ListIterator<Map.Entry<zgo, WeakReference<ImageView>>> a()
   {
-    yna localyna = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.a();
-    if (localyna != null) {}
-    int i;
-    int j;
-    switch (localyna.jdField_a_of_type_Int)
-    {
-    default: 
-      i = Math.round(paramMotionEvent.getY());
-      j = Math.round(paramMotionEvent.getX());
-      switch (paramMotionEvent.getAction())
-      {
-      }
-      break;
+    return new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet()).listIterator(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
+  }
+  
+  public zgo a(ImageView paramImageView)
+  {
+    paramImageView = (zgo)this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
+    if (paramImageView != null) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramImageView);
     }
-    label516:
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          i = localyna.jdField_b_of_type_Int;
-          if (i != yfw.jdField_a_of_type_Int) {
-            this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_b_of_type_AndroidUtilSparseBooleanArray.put(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Int, true);
-          }
-          for (;;)
-          {
-            localObject = (yfw)paramycl.a(101);
-            if (localObject != null) {
-              ((yfw)localObject).a(i);
-            }
-            if (paramycl.b()) {
-              break;
-            }
-            paramycl.e();
-            break;
-            this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_b_of_type_AndroidUtilSparseBooleanArray.put(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Int, false);
-          }
-          if (paramycl.c()) {
-            break;
-          }
-          paramycl.d();
-          break;
-          Object localObject = null;
-          if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getContext() instanceof QQStoryBaseActivity)) {
-            localObject = ((QQStoryBaseActivity)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.getContext()).a;
-          }
-          paramycl.a((AppInterface)localObject, 2, localyna.jdField_b_of_type_Int);
-          break;
-          this.jdField_a_of_type_Int = Math.round(paramMotionEvent.getX());
-          this.jdField_b_of_type_Int = Math.round(paramMotionEvent.getY());
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          return false;
-        } while (((Math.abs(j - this.jdField_a_of_type_Int) < 3) && (Math.abs(i - this.jdField_b_of_type_Int) < 3)) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_b_of_type_Int == 6) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_b_of_type_Int == 5));
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(5);
-        if (DoodleLayout.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout) > System.currentTimeMillis()) {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(5, Boolean.valueOf(false));
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(new View[] { this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout });
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("Personality", 2, "LineLayer draw move hide");
-          return false;
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(5, Boolean.valueOf(true));
-          a(true, false, true);
-        }
-        if (paramycl.a.a() > 0) {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setUndoViewEnable(true);
-        }
-        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_b_of_type_Int != 5) {
-          break label516;
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.d(2);
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(2);
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b(new View[] { this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout });
-        a(true, true, true);
-      } while (!QLog.isColorLevel());
-      QLog.d("Personality", 2, "LineLayer draw up show");
-      return false;
-    } while ((Math.abs(j - this.jdField_a_of_type_Int) >= 3) || (Math.abs(i - this.jdField_b_of_type_Int) >= 3));
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_b_of_type_Int == 6)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(2, Boolean.valueOf(false));
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(2);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b(new View[] { this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout });
-      if (paramycl.a.a() > 0) {}
-      for (bool = true;; bool = false)
-      {
-        a(bool, true, false);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Personality", 2, "LineLayer tap up show");
-        return false;
-      }
+    return paramImageView;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilWeakHashMap.clear();
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+  }
+  
+  public void a(ImageView paramImageView, zgo paramzgo)
+  {
+    zgo localzgo = (zgo)this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, paramzgo);
+    if (localzgo != null) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(localzgo);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.c(6);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.d(6);
-    xwb.b("0X80080E5", xwb.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(new View[] { this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout });
-    if (paramycl.a.a() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool, false, true);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("Personality", 2, "LineLayer tap up hide");
-      return false;
-    }
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramzgo, new WeakReference(paramImageView));
+  }
+  
+  public void a(zgo paramzgo)
+  {
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramzgo);
+  }
+  
+  public zgo b(ImageView paramImageView)
+  {
+    return (zgo)this.jdField_a_of_type_JavaUtilWeakHashMap.get(paramImageView);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import amtj;
 import android.os.Bundle;
-import bhvw;
+import anvx;
+import bjgx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -83,7 +83,7 @@ public abstract class BusinessHandler
       if (QLog.isColorLevel()) {
         QLog.d("msgCmdFilter", 2, "-->report MM:cmd=" + paramFromServiceMsg.getServiceCmd() + ",error code=" + paramFromServiceMsg.getBusinessFailCode() + ",uin=" + getCurrentAccountUin());
       }
-      bhvw.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), getCurrentAccountUin(), 1000277, amtj.a(2131700412) + paramFromServiceMsg.getServiceCmd(), true);
+      bjgx.a().a(paramFromServiceMsg.getServiceCmd(), 100, paramFromServiceMsg.getBusinessFailCode(), getCurrentAccountUin(), 1000277, anvx.a(2131700763) + paramFromServiceMsg.getServiceCmd(), true);
     }
   }
   

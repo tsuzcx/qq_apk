@@ -1,37 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.QQLSActivity;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class aepu
-  extends bfaq
+  extends anyz
 {
-  public aepu(TroopRequestActivity paramTroopRequestActivity) {}
+  public aepu(QQLSActivity paramQQLSActivity) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  protected void onPushReadedNotify(boolean paramBoolean, Object paramObject)
   {
-    if ((paramBoolean) && (paramBundle != null)) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("structMsg");
-        new structmsg.StructMsg().mergeFrom(paramBundle);
-        TroopRequestActivity.a(this.a, 1);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.systemmsg.TroopRequestActivity", 2, "structMsg merge error");
-        }
-        this.a.h();
-        QQToast.a(this.a, this.a.getString(2131696843), 0).b(this.a.getTitleBarHeight());
-        return;
-      }
+    super.onPushReadedNotify(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
     }
-    this.a.h();
-    QQToast.a(this.a, this.a.getString(2131696843), 0).b(this.a.getTitleBarHeight());
+    QQLSActivity.a(this.a);
   }
 }
 

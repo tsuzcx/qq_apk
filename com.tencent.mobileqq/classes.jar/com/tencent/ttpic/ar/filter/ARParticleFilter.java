@@ -353,7 +353,7 @@ public class ARParticleFilter
       this.task.cancel(true);
     }
     GLES20.glDeleteTextures(this.mTextures.length, this.mTextures, 0);
-    this.mCopyFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
     this.mCopyFrame.clear();
     destroyAudioPlayer();
     if (this.mParticleCalculationHandler != null)

@@ -1,16 +1,9 @@
-import android.view.View;
-import com.tencent.avgame.gameroom.stage.StageView;
+import androidx.annotation.NonNull;
 
-public class nel
-  implements nef
+public abstract interface nel
 {
-  public nel(StageView paramStageView) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a().a();
-    bcef.b(null, "dc00898", "", "", "0X800B04A", "0X800B04A", 2, 0, "", "", "", "");
-  }
+  @NonNull
+  public abstract String a();
 }
 
 

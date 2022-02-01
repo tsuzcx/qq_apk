@@ -1,34 +1,26 @@
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
+import mqq.util.WeakReference;
 
-public class nmz
+class nmz
+  implements nhq
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  final WeakReference<nmy> a;
   
-  public byte[] a()
+  nmz(nmy paramnmy)
   {
-    if (TextUtils.isEmpty(this.a)) {}
-    do
-    {
-      return null;
-      try
-      {
-        byte[] arrayOfByte = this.a.getBytes("ISO-8859-1");
-        return arrayOfByte;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AnonymousChatHelper", 2, "getByteAnId UnsupportedEncodingException");
-    return null;
+    this.a = new WeakReference(paramnmy);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AVGameServerIPCModule_GameRC", 2, "GameResultCallback onReslut, playId[" + paramString1 + "], fileType[" + paramInt + "], url[" + paramString2 + "]");
+    }
+    nmy localnmy = (nmy)this.a.get();
+    if (localnmy == null) {
+      return;
+    }
+    localnmy.a(true, paramString1, paramInt, paramString2);
   }
 }
 

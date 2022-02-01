@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import anyw;
-import anyx;
+import apby;
+import apbz;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.superplayer.api.ISuperPlayer;
 
 public class ARPromotionMediaPlayerWrapper$3
   implements Runnable
 {
-  public ARPromotionMediaPlayerWrapper$3(anyw paramanyw) {}
+  public ARPromotionMediaPlayerWrapper$3(apby paramapby) {}
   
   public void run()
   {
-    if (anyw.b(this.this$0)) {
-      anyw.c(this.this$0);
+    if (apby.b(this.this$0)) {
+      apby.c(this.this$0);
     }
-    QLog.d("ARWorldCupMediaPlayerWrapper", 1, "onCompletion, mNeedAddPlayCount=" + anyw.b(this.this$0) + " mCurrentPlayTimes=" + anyw.d(this.this$0) + "|" + anyw.e(this.this$0));
-    if ((anyw.d(this.this$0) < anyw.e(this.this$0)) && (anyw.a(this.this$0) != null) && (!anyw.a(this.this$0))) {}
+    QLog.d("ARWorldCupMediaPlayerWrapper", 1, "onCompletion, mNeedAddPlayCount=" + apby.b(this.this$0) + " mCurrentPlayTimes=" + apby.d(this.this$0) + "|" + apby.e(this.this$0));
+    if ((apby.d(this.this$0) < apby.e(this.this$0)) && (apby.a(this.this$0) != null) && (!apby.a(this.this$0))) {}
     do
     {
       try
       {
-        anyw.a(this.this$0).stop();
-        anyw.a(this.this$0).setOutputMute(anyw.c(this.this$0));
-        anyw.a(this.this$0, anyw.a(this.this$0));
-        anyw.a(this.this$0, false);
-        if ((anyw.d(this.this$0)) && (anyw.a(this.this$0) != null) && (anyw.a(this.this$0) != null)) {
-          anyw.a(this.this$0).a(anyw.b(this.this$0), 1, anyw.e(this.this$0) - anyw.d(this.this$0));
+        apby.a(this.this$0).stop();
+        apby.a(this.this$0).setOutputMute(apby.c(this.this$0));
+        apby.a(this.this$0, apby.a(this.this$0));
+        apby.a(this.this$0, false);
+        if ((apby.d(this.this$0)) && (apby.a(this.this$0) != null) && (apby.a(this.this$0) != null)) {
+          apby.a(this.this$0).a(apby.b(this.this$0), 1, apby.e(this.this$0) - apby.d(this.this$0));
         }
-        QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer. restart remian times:" + (anyw.e(this.this$0) - anyw.d(this.this$0)) + "video resources:" + anyw.a(this.this$0));
+        QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer. restart remian times:" + (apby.e(this.this$0) - apby.d(this.this$0)) + "video resources:" + apby.a(this.this$0));
         return;
       }
       catch (Exception localException)
@@ -41,12 +41,12 @@ public class ARPromotionMediaPlayerWrapper$3
           QLog.d("ARWorldCupMediaPlayerWrapper", 1, "onCompletion, stop, exception=" + localException.getMessage());
         }
       }
-      anyw.a(this.this$0, 0);
-      anyw.b(this.this$0, 1);
-      anyw.a(this.this$0, true);
+      apby.a(this.this$0, 0);
+      apby.b(this.this$0, 1);
+      apby.a(this.this$0, true);
       QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer.onCompletion");
-    } while ((anyw.a(this.this$0) == null) || (anyw.a(this.this$0) == null));
-    anyw.a(this.this$0).a(anyw.b(this.this$0), 1, 0);
+    } while ((apby.a(this.this$0) == null) || (apby.a(this.this$0) == null));
+    apby.a(this.this$0).a(apby.b(this.this$0), 1, 0);
   }
 }
 

@@ -1,33 +1,79 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewPropertyAnimator;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
-import java.util.Iterator;
-import java.util.List;
+import android.opengl.GLES20;
+import com.tencent.qphone.base.util.QLog;
 
 public class apnu
-  implements Animator.AnimatorListener
 {
-  public apnu(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, LinearLayout paramLinearLayout) {}
+  private int jdField_a_of_type_Int;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private int jdField_b_of_type_Int;
+  private int[] jdField_b_of_type_ArrayOfInt;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  private void b(int paramInt1, int paramInt2)
   {
-    ColorNoteSmallScreenRelativeLayout.c(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, false);
-    paramAnimator = ColorNoteSmallScreenRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout).iterator();
-    while (paramAnimator.hasNext()) {
-      ((ColorNote)paramAnimator.next()).animate = false;
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      throw new IllegalArgumentException("width & height should > 0!");
     }
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.f();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.animate().setListener(null).translationX(0.0F).setDuration(200L).start();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    if (this.jdField_a_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
+      this.jdField_a_of_type_ArrayOfInt = null;
+    }
+    if (this.jdField_b_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
+      this.jdField_b_of_type_ArrayOfInt = null;
+    }
+    this.jdField_a_of_type_ArrayOfInt = new int[1];
+    this.jdField_b_of_type_ArrayOfInt = new int[1];
+    GLES20.glGenFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
+    GLES20.glGenTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
+    GLES20.glBindTexture(3553, this.jdField_b_of_type_ArrayOfInt[0]);
+    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.jdField_b_of_type_ArrayOfInt[0], 0);
+    GLES20.glBindTexture(3553, 0);
+    GLES20.glBindFramebuffer(36160, 0);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public int a()
+  {
+    int i = 0;
+    if (this.jdField_b_of_type_ArrayOfInt != null) {
+      i = this.jdField_b_of_type_ArrayOfInt[0];
+    }
+    return i;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a()
+  {
+    if (this.jdField_b_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
+      this.jdField_b_of_type_ArrayOfInt = null;
+    }
+    if (this.jdField_a_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteFramebuffers(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+      this.jdField_a_of_type_ArrayOfInt = null;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_b_of_type_ArrayOfInt == null) || (paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int))
+    {
+      long l = System.currentTimeMillis();
+      b(paramInt1, paramInt2);
+      QLog.i("Keying_FrameBuffer", 2, " init need " + (System.currentTimeMillis() - l));
+    }
+    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
+  }
 }
 
 

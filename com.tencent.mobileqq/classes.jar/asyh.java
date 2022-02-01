@@ -1,15 +1,15 @@
-public class asyh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class asyh
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public byte[] b;
-  public long c;
-  public byte[] c;
-  public long d;
+  asyh(asyf paramasyf) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    audy.a("0X80052CF");
+  }
 }
 
 

@@ -1,61 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import java.lang.ref.WeakReference;
 
 public class aqjj
-  extends aptq<aqji>
 {
-  public static aqji a()
+  public int a;
+  public String a;
+  public WeakReference<aqji> a;
+  public int b = 0;
+  public int c = 0;
+  
+  public aqjj()
   {
-    return (aqji)apub.a().a(486);
-  }
-  
-  @NonNull
-  public aqji a(int paramInt)
-  {
-    return new aqji();
-  }
-  
-  @Nullable
-  public aqji a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqji.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(aqji paramaqji) {}
-  
-  public Class<aqji> clazz()
-  {
-    return aqji.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 486;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqjj
  * JD-Core Version:    0.7.0.1
  */

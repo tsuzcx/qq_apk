@@ -1,9 +1,9 @@
 package com.tencent.sveffects;
 
-import akus;
-import baah;
-import bbxj;
-import bnxl;
+import also;
+import bbgq;
+import bdee;
+import bpnd;
 import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
 
 public class SvEffectSdkInitor$QQArtFilterResource
@@ -11,15 +11,15 @@ public class SvEffectSdkInitor$QQArtFilterResource
 {
   public String getCommonPrefix()
   {
-    return akus.c;
+    return also.c;
   }
   
   public String getFilterResPath()
   {
     if (SvEffectSdkInitor.isDovCapture) {
-      return bnxl.b;
+      return bpnd.b;
     }
-    return baah.b;
+    return bbgq.b;
   }
   
   public String getModelPath()
@@ -34,7 +34,7 @@ public class SvEffectSdkInitor$QQArtFilterResource
   
   public String getSoPathDir()
   {
-    return bbxj.b();
+    return bdee.b();
   }
 }
 

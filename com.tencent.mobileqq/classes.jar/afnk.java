@@ -1,18 +1,10 @@
-import android.view.View;
-
-public abstract class afnk
+public abstract interface afnk
 {
-  private View a;
+  public abstract void a();
   
-  public View a()
-  {
-    return this.a;
-  }
+  public abstract void b(int paramInt, String paramString);
   
-  public void a(View paramView)
-  {
-    this.a = paramView;
-  }
+  public abstract void c(int paramInt, String paramString);
 }
 
 

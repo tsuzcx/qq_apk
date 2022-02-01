@@ -10,14 +10,14 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ytp;
-import ytt;
+import zii;
+import zim;
 
 public class RecyclerViewWithHeaderFooter
   extends RecyclerView
 {
   private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ytt jdField_a_of_type_Ytt;
+  private zim jdField_a_of_type_Zim;
   public boolean a;
   private final List<View> b = new ArrayList();
   
@@ -73,17 +73,17 @@ public class RecyclerViewWithHeaderFooter
     }
     else
     {
-      localObject = new ytp(paramAdapter);
+      localObject = new zii(paramAdapter);
       paramAdapter = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramAdapter.hasNext()) {
-        ((ytp)localObject).a((View)paramAdapter.next());
+        ((zii)localObject).a((View)paramAdapter.next());
       }
       paramAdapter = this.b.iterator();
       while (paramAdapter.hasNext()) {
-        ((ytp)localObject).b((View)paramAdapter.next());
+        ((zii)localObject).b((View)paramAdapter.next());
       }
-      if (this.jdField_a_of_type_Ytt != null) {
-        ((ytp)localObject).a(this.jdField_a_of_type_Ytt);
+      if (this.jdField_a_of_type_Zim != null) {
+        ((zii)localObject).a(this.jdField_a_of_type_Zim);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);

@@ -1,53 +1,45 @@
-import android.os.Bundle;
-import com.tencent.biz.richframework.network.request.QzoneAioStoryFeedRequest;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import msf.msgsvc.msg_svc.AuthTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class acwa
-  extends axkw
+  implements acos
 {
-  public SessionInfo a;
-  public WeakReference<QQAppInterface> a;
-  
-  protected void onGetNewestStoryFeed(boolean paramBoolean, Bundle paramBundle)
+  public int a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    return 1022;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.AuthTmp localAuthTmp = new msg_svc.AuthTmp();
+    localAuthTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramMessageRecord = paramQQAppInterface.getMsgCache().i(paramMessageRecord.frienduin);
+    if (paramMessageRecord != null)
+    {
       if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed appRef==null");
+        QLog.d("FriendValidationRoutingType", 2, "friendValidation------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
       }
+      localAuthTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed app == null || sessionInfo == nul");
-    return;
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = (FromServiceMsg)paramBundle.getParcelable("KEY_FOR_AIO_STORY_FEED_DATA");
-      if (paramBundle != null)
-      {
-        paramBundle = QzoneAioStoryFeedRequest.onResponse(bgau.b(paramBundle.getWupBuffer()));
-        if (paramBundle != null) {
-          acvv.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBundle);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.e("UndealCount.QZoneObserver", 1, "call onGetNewestStoryFeed exception " + paramBundle);
-    }
+    paramRoutingHead.auth_tmp.set(localAuthTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 6013;
   }
 }
 

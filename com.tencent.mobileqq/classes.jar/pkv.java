@@ -1,23 +1,32 @@
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.aladdin.config.utils.AladdinLogger;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-final class pkv
-  extends LbsManagerService.OnLocationChangeListener
+public class pkv
+  implements AladdinLogger
 {
-  pkv(String paramString, boolean paramBoolean)
+  public void d(String paramString1, String paramString2)
   {
-    super(paramString, paramBoolean);
+    QLog.d(paramString1, 2, paramString2);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void e(String paramString1, String paramString2)
   {
-    pku.a(false);
-    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "onLocationFinish errCode = ", Integer.valueOf(paramInt) });
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null)) {
-      ugf.a(100, new ArrayList());
-    }
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public boolean isDebugVersion()
+  {
+    return false;
   }
 }
 

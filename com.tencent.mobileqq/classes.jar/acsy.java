@@ -1,55 +1,33 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity.14.1;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import mqq.os.MqqHandler;
 
 public class acsy
-  implements bjsd
+  implements acpi
 {
-  public acsy(AssociatedAccountActivity paramAssociatedAccountActivity) {}
-  
-  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.ag_();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
-  }
-  
-  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
-  }
-  
-  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return true;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "onViewCompleteVisableAndReleased begin refresh");
+      QLog.d("qqprotect.alert.push", 2, "get a push message for sec svc handler, 0xc6");
     }
-    if (this.a.c())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-      this.a.b = true;
-      AssociatedAccountActivity.b(this.a, false, true);
-      return true;
+    paramQQAppInterface = (aodi)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SEC_SVC_HANDLER);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramMsgType0x210.uSubMsgType, paramMsgType0x210.vProtobuf);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AssociatedAccountActivity.14.1(this), 800L);
-    return true;
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("qqprotect.alert.push", 2, "failed to get sec svc handler, 0xc6");
   }
   
-  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
+  }
 }
 
 

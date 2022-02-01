@@ -10,9 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bgtw;
-import bhkb;
+import bieo;
+import biur;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.qcircleshadow.lib.QCircleHostGlobalInfo;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -24,7 +25,6 @@ import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import cooperation.qqcircle.report.datong.QCircleDTParamBuilder;
 import cooperation.qqcircle.utils.QCircleCommonUtil;
-import vhb;
 
 public class QCircleHybirdFragment
   extends WebViewFragment
@@ -35,8 +35,8 @@ public class QCircleHybirdFragment
   private void initPicTextTitleBarView()
   {
     this.mSwiftTitleUI.titleContainer.setBackgroundColor(-1);
-    this.mSwiftTitleUI.rightViewImg.setImageResource(2130840330);
-    this.mSwiftTitleUI.leftView.setBackgroundResource(2130840324);
+    this.mSwiftTitleUI.rightViewImg.setImageResource(2130840366);
+    this.mSwiftTitleUI.leftView.setBackgroundResource(2130840360);
     this.mSwiftTitleUI.rightViewImg.setVisibility(0);
   }
   
@@ -196,7 +196,7 @@ public class QCircleHybirdFragment
     if (getHostActivity() != null) {
       getHostActivity().sendBroadcast(paramString);
     }
-    reloadMainPage(vhb.a());
+    reloadMainPage(QCircleHostGlobalInfo.getCurrentLoginAccount());
   }
   
   public void sendNativeUserFollowUpdateBroadcast(String paramString1, int paramInt1, int paramInt2, String paramString2)

@@ -1,26 +1,23 @@
-import android.support.annotation.FloatRange;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.webbundle.sdk.WebBundleH5OptionListner;
+import cooperation.comic.VipComicHelper.3.1;
+import mqq.os.MqqHandler;
 
-public class blqr
+public final class blqr
+  implements WebBundleH5OptionListner
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private blqq jdField_a_of_type_Blqq = new blqq();
+  blqr(SharedPreferences paramSharedPreferences) {}
   
-  public blqq a()
+  public void enableWebBundle(boolean paramBoolean)
   {
-    blqq.b(this.jdField_a_of_type_Blqq, this.jdField_a_of_type_Float - blqq.a(this.jdField_a_of_type_Blqq));
-    return this.jdField_a_of_type_Blqq;
-  }
-  
-  public blqr a(@FloatRange(from=0.01D) float paramFloat)
-  {
-    blqq.a(this.jdField_a_of_type_Blqq, paramFloat);
-    return this;
-  }
-  
-  public blqr b(@FloatRange(from=0.01D) float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-    return this;
+    QLog.d("WebBundle.Comic", 2, "handle enable webbundle. enable = " + paramBoolean);
+    this.a.edit().putBoolean("webbundle_enable", paramBoolean).apply();
+    if (!paramBoolean) {
+      ThreadManager.getUIHandler().post(new VipComicHelper.3.1(this));
+    }
   }
 }
 

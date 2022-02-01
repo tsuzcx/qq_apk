@@ -1,18 +1,17 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class pou
-  implements pqe
+class pou
+  extends qdb
 {
-  public pou(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  pou(pob parampob, String paramString, View paramView1, View paramView2, BaseArticleInfo paramBaseArticleInfo, int paramInt)
   {
-    pay.a(this.a.a.getContext(), paa.n);
-    JSONObject localJSONObject = pay.a();
-    odq.a(null, "CliOper", "", "", "0X800845B", "0X800845B", 0, 0, ReadInJoySelfFragment.a(this.a, 13) + "", "", "", localJSONObject.toString(), false);
-    ReadInJoySelfFragment.a(this.a, 13);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_AndroidViewView, this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Int);
   }
 }
 

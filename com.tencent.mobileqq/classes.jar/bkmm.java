@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.RecvMsg;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoPreparedListener;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
 
-public final class bkmm
-  implements Parcelable.Creator<RecvMsg>
+class bkmm
+  implements ISuperPlayer.OnVideoPreparedListener
 {
-  public RecvMsg a(Parcel paramParcel)
-  {
-    return new RecvMsg(paramParcel);
-  }
+  bkmm(bkmk parambkmk, AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener) {}
   
-  public RecvMsg[] a(int paramInt)
+  public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
-    return new RecvMsg[paramInt];
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoPreparedListener.onVideoPrepared(this.jdField_a_of_type_Bkmk);
   }
 }
 

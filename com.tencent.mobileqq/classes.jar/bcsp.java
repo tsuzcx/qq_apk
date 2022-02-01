@@ -1,6 +1,11 @@
-public abstract interface bcsp
+public class bcsp
 {
-  public abstract void a();
+  public boolean a;
+  
+  public bcsp(bcso parambcso)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
 }
 
 

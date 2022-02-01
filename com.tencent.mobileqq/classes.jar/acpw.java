@@ -1,25 +1,42 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x119.SubMsgType0x119.MsgBody;
 
 public class acpw
-  implements bjoe
+  implements acpi
 {
-  public acpw(AddFriendVerifyActivity paramAddFriendVerifyActivity, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  private static void a(acnk paramacnk, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x119, [S2C push for input status]");
     }
-    for (;;)
+    try
     {
-      this.jdField_a_of_type_Bjnw.dismiss();
+      SubMsgType0x119.MsgBody localMsgBody = new SubMsgType0x119.MsgBody();
+      if (paramacnk.a(paramMsgType0x210))
+      {
+        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+        QLog.d("Q.msg.BaseMessageProcessor", 1, "troopFormLog receive c2c" + localMsgBody.toString());
+        if (!becr.a(paramMsgInfo.shMsgSeq))
+        {
+          becr.a(paramacnk.a(), localMsgBody);
+          QLog.d("Q.msg.BaseMessageProcessor", 1, "troopFormLog isPushMessageDuplicated");
+        }
+      }
       return;
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1001));
-      continue;
-      ajpz.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1);
     }
+    catch (Exception paramacnk)
+    {
+      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0x115], errInfo->" + paramacnk.getMessage());
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk, paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

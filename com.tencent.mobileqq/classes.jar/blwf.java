@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.Context;
 
-class blwf
-  implements DialogInterface.OnCancelListener
+public abstract interface blwf
 {
-  blwf(blwd paramblwd) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    bmbx.a("AEGIFStickerListPart", "[mTakeSameLoadingDialog.onCancel]");
-    blwd.a(this.a, null);
-    blut.a().a();
-  }
+  public abstract void a(boolean paramBoolean, Context paramContext, blwh paramblwh);
 }
 
 

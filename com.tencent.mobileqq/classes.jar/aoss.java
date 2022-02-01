@@ -1,25 +1,37 @@
-import android.os.Bundle;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract class aoss
-  implements aosh
+public class aoss
+  extends aoui
 {
-  private final String a;
-  
-  public aoss(String paramString)
+  private aouc a(aouc paramaouc, String paramString)
   {
-    this.a = paramString;
+    paramaouc.a = paramString;
+    paramaouc.b = "avgame";
+    paramaouc.c = "lobby";
+    paramString = paramString.split("\\?");
+    if (paramString.length != 2) {}
+    for (;;)
+    {
+      return paramaouc;
+      paramString = paramString[1].split("&");
+      int i = 0;
+      while (i < paramString.length)
+      {
+        Object localObject = paramString[i];
+        if (localObject.split("=").length == 2)
+        {
+          int j = localObject.indexOf("=");
+          paramaouc.a(localObject.substring(0, j), localObject.substring(j + 1));
+        }
+        i += 1;
+      }
+    }
   }
   
-  public Bundle a()
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("domain", this.a);
-    return localBundle;
-  }
-  
-  public String a()
-  {
-    return "QQ.GetPSKeyAsync";
+    return a(new aosr(paramQQAppInterface, paramContext), paramString);
   }
 }
 

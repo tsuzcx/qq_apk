@@ -4,8 +4,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import bghu;
-import bhfj;
+import bhqp;
+import biqb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
@@ -78,16 +78,16 @@ public class ApolloVasAvatar
     super.setImageDrawable(paramDrawable);
   }
   
-  public void setLoader(AvatarLayout paramAvatarLayout, bghu parambghu)
+  public void setLoader(AvatarLayout paramAvatarLayout, bhqp parambhqp)
   {
-    super.setLoader(paramAvatarLayout, parambghu);
+    super.setLoader(paramAvatarLayout, parambhqp);
   }
   
-  public void setMosaicEffect(bhfj parambhfj) {}
+  public void setMosaicEffect(biqb parambiqb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.apollo.aio.ApolloVasAvatar
  * JD-Core Version:    0.7.0.1
  */

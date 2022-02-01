@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import bfua;
+import bhcs;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.AppConstants;
@@ -70,13 +70,13 @@ public class AvatarPendantDownloader
               paramOutputStream.mkdir();
             }
             long l = Long.valueOf(str.split("/")[1]).longValue();
-            localObject1 = bfua.b(l, 5);
+            localObject1 = bhcs.b(l, 5);
             localObject2 = new File((String)localObject1);
             paramOutputStream = (OutputStream)localObject2;
             if (((File)localObject2).exists()) {
               break;
             }
-            localObject2 = bfua.c(l, 5);
+            localObject2 = bhcs.c(l, 5);
             paramOutputStream = (OutputStream)localObject1;
             localObject1 = localObject2;
           }

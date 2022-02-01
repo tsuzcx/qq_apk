@@ -1,28 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
-public class ajnt
-  implements View.OnClickListener
+class ajnt
+  implements ajnq
 {
-  public ajnt(CameraPreviewActivity paramCameraPreviewActivity) {}
+  ajnt(ajns paramajns) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, int paramInt)
   {
-    if (CameraPreviewActivity.a(this.a, (String)CameraPreviewActivity.a(this.a).get(0))) {}
-    for (;;)
+    ((anyb)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).c(paramString);
+    if (paramInt == 0)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
       return;
-      if (this.a.b) {
-        bcef.b(this.a.app, "CliOper", "", "", "0X8004D96", "0X8004D96", 0, 0, "", "", "", "");
-      }
-      PhotoUtils.sendPhoto(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
-      paramView.setClickable(false);
     }
+    if (this.a.jdField_a_of_type_Ajmw != null) {
+      this.a.jdField_a_of_type_Ajmw.a();
+    }
+    ajns.a(this.a);
   }
 }
 

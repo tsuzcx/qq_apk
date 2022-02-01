@@ -1,32 +1,34 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
 
 public class xcc
+  implements View.OnTouchListener
 {
-  @NonNull
-  private final Bitmap a;
+  float jdField_a_of_type_Float = -1.0F;
+  float b = -1.0F;
   
-  public xcc(Bitmap paramBitmap)
+  public xcc(VideoCoverListBar paramVideoCoverListBar, int paramInt) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBitmap == null) {
-      throw new NullPointerException("bitmap should not be null");
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.b = paramMotionEvent.getY();
+      return false;
     }
-    this.a = paramBitmap;
-  }
-  
-  public int a()
-  {
-    return this.a.getWidth();
-  }
-  
-  public Bitmap a()
-  {
-    return Bitmap.createBitmap(this.a);
-  }
-  
-  public int b()
-  {
-    return this.a.getHeight();
+    if (Math.abs(paramMotionEvent.getY() - this.b) > Math.min(this.jdField_a_of_type_Int, 40)) {
+      ykv.a("play_video", "slide_mini", 0, 0, new String[] { "2", "", "", VideoCoverListBar.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar) });
+    }
+    this.jdField_a_of_type_Float = -1.0F;
+    this.b = -1.0F;
+    return false;
   }
 }
 

@@ -53,6 +53,36 @@ public class FileChooserHelper
     }
   }
   
+  private void doCaptureCorrect(Activity paramActivity, String paramString1, String paramString2)
+  {
+    ActionSheet localActionSheet = ActionSheet.create(paramActivity);
+    localActionSheet.setOnDismissListener(new FileChooserHelper.1(this));
+    localActionSheet.setOnCancelListener(new FileChooserHelper.2(this));
+    if (paramString2.equals("camera"))
+    {
+      localActionSheet.addButton(paramActivity.getString(R.string.mini_sdk_take_a_picture), 0);
+      localActionSheet.addButton(paramActivity.getString(R.string.mini_sdk_file_browser_title), 0);
+      localActionSheet.setOnButtonClickListener(new FileChooserHelper.3(this, paramActivity, paramString1, localActionSheet));
+    }
+    for (;;)
+    {
+      localActionSheet.show();
+      return;
+      if (paramString2.equals("camcorder"))
+      {
+        localActionSheet.addButton(paramActivity.getString(R.string.mini_sdk_send_video_by_camera), 0);
+        localActionSheet.addButton(paramActivity.getString(R.string.mini_sdk_file_browser_title), 0);
+        localActionSheet.setOnButtonClickListener(new FileChooserHelper.4(this, paramActivity, paramString1, localActionSheet));
+      }
+      else if (paramString2.equals("microphone"))
+      {
+        localActionSheet.addButton(paramActivity.getString(R.string.mini_sdk_record_sound), 0);
+        localActionSheet.addButton(paramActivity.getString(R.string.mini_sdk_file_browser_title), 0);
+        localActionSheet.setOnButtonClickListener(new FileChooserHelper.5(this, paramActivity, paramString1, localActionSheet));
+      }
+    }
+  }
+  
   private void openCamcorder(Activity paramActivity)
   {
     Object localObject = new File(ShortVideoUtil.getCameraPath() + "photo/");
@@ -266,61 +296,36 @@ public class FileChooserHelper
     {
       paramInt = 1;
       if (paramInt != 0) {
-        break label409;
+        break label215;
       }
       if (!paramString1.contains("image/")) {
-        break label253;
+        break label171;
       }
       paramValueCallback = "camera";
       paramInt = 1;
     }
-    label409:
+    label171:
+    label215:
     for (;;)
     {
-      label153:
       if (paramInt != 0)
       {
-        paramString2 = ActionSheet.create(paramActivity);
-        paramString2.setOnDismissListener(new FileChooserHelper.1(this));
-        paramString2.setOnCancelListener(new FileChooserHelper.2(this));
-        if (paramValueCallback.equals("camera"))
+        doCaptureCorrect(paramActivity, paramString1, paramValueCallback);
+        return;
+        paramInt = 0;
+        break;
+        if (paramString1.contains("video/"))
         {
-          paramString2.addButton(paramActivity.getString(R.string.mini_sdk_take_a_picture), 0);
-          paramString2.addButton(paramActivity.getString(R.string.mini_sdk_file_browser_title), 0);
-          paramString2.setOnButtonClickListener(new FileChooserHelper.3(this, paramActivity, paramString1, paramString2));
-        }
-        for (;;)
-        {
-          paramString2.show();
-          return;
-          paramInt = 0;
-          break;
-          label253:
-          if (paramString1.contains("video/"))
-          {
-            paramValueCallback = "camcorder";
-            paramInt = 1;
-            break label153;
-          }
-          if (!paramString1.contains("audio/")) {
-            break label409;
-          }
-          paramValueCallback = "microphone";
+          paramValueCallback = "camcorder";
           paramInt = 1;
-          break label153;
-          if (paramValueCallback.equals("camcorder"))
-          {
-            paramString2.addButton(paramActivity.getString(R.string.mini_sdk_send_video_by_camera), 0);
-            paramString2.addButton(paramActivity.getString(R.string.mini_sdk_file_browser_title), 0);
-            paramString2.setOnButtonClickListener(new FileChooserHelper.4(this, paramActivity, paramString1, paramString2));
-          }
-          else if (paramValueCallback.equals("microphone"))
-          {
-            paramString2.addButton(paramActivity.getString(R.string.mini_sdk_record_sound), 0);
-            paramString2.addButton(paramActivity.getString(R.string.mini_sdk_file_browser_title), 0);
-            paramString2.setOnButtonClickListener(new FileChooserHelper.5(this, paramActivity, paramString1, paramString2));
-          }
+          continue;
         }
+        if (!paramString1.contains("audio/")) {
+          break label215;
+        }
+        paramValueCallback = "microphone";
+        paramInt = 1;
+        continue;
       }
       openFileChooser(paramActivity, paramString1);
       return;

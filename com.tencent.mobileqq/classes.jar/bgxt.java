@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.TbsDownloader.TbsDownloaderCallback;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 final class bgxt
-  implements TbsDownloader.TbsDownloaderCallback
+  implements DownloadParams.DecodeHandler
 {
-  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if ((paramBoolean) && (bgxr.a != null))
-    {
-      BrowserAppInterface localBrowserAppInterface = (BrowserAppInterface)bgxr.a.get();
-      if (localBrowserAppInterface != null)
-      {
-        localBrowserAppInterface.a(false);
-        QLog.i("SwiftBrowserIdleTaskHelper", 1, "call downloadX5Kernel on callback:download tbs.");
-      }
+    if (paramBitmap == null) {
+      return null;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    int i;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1)) {
+      i = ((int[])(int[])paramDownloadParams)[0];
+    }
+    for (paramDownloadParams = bheg.a(paramBitmap, i, i, i);; paramDownloadParams = null) {
+      return paramDownloadParams;
     }
   }
 }

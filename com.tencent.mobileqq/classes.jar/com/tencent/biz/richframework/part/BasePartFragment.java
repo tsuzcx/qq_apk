@@ -20,9 +20,9 @@ import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.List;
-import yzf;
-import yzg;
-import zbi;
+import zok;
+import zol;
+import zqn;
 
 public abstract class BasePartFragment
   extends PublicBaseFragment
@@ -31,7 +31,7 @@ public abstract class BasePartFragment
   private LifecycleRegistry jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
   private ViewModelStore jdField_a_of_type_AndroidArchLifecycleViewModelStore;
   protected View a;
-  private yzg jdField_a_of_type_Yzg;
+  private zol jdField_a_of_type_Zol;
   
   private void a()
   {
@@ -56,19 +56,19 @@ public abstract class BasePartFragment
   
   protected abstract int a();
   
-  protected abstract List<yzf> a();
+  protected abstract List<zok> a();
   
-  public yzg a()
+  public zol a()
   {
-    return this.jdField_a_of_type_Yzg;
+    return this.jdField_a_of_type_Zol;
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Yzg != null)
+    if (this.jdField_a_of_type_Zol != null)
     {
-      this.jdField_a_of_type_Yzg.a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Yzg.onActivityCreated(getActivity(), paramBundle);
+      this.jdField_a_of_type_Zol.a(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Zol.onActivityCreated(getActivity(), paramBundle);
     }
     if ((b()) && (c())) {
       getActivity().getWindow().setFlags(1024, 1024);
@@ -95,7 +95,7 @@ public abstract class BasePartFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    if ((zbi.a()) && (a())) {
+    if ((zqn.a()) && (a())) {
       a();
     }
   }
@@ -103,14 +103,14 @@ public abstract class BasePartFragment
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_a_of_type_Yzg != null) {
-      this.jdField_a_of_type_Yzg.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Zol != null) {
+      this.jdField_a_of_type_Zol.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
   public boolean onBackEvent()
   {
-    if (a().a()) {
+    if ((a() != null) && (a().a())) {
       return true;
     }
     return super.onBackEvent();
@@ -119,8 +119,8 @@ public abstract class BasePartFragment
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (this.jdField_a_of_type_Yzg != null) {
-      this.jdField_a_of_type_Yzg.a(paramConfiguration);
+    if (this.jdField_a_of_type_Zol != null) {
+      this.jdField_a_of_type_Zol.a(paramConfiguration);
     }
   }
   
@@ -128,8 +128,8 @@ public abstract class BasePartFragment
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
-    this.jdField_a_of_type_Yzg = new yzg(this, getView());
-    this.jdField_a_of_type_Yzg.a(a());
+    this.jdField_a_of_type_Zol = new zol(this, getView());
+    this.jdField_a_of_type_Zol.a(a());
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
@@ -167,7 +167,7 @@ public abstract class BasePartFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
-      this.jdField_a_of_type_Yzg.onActivityDestroyed(getActivity());
+      this.jdField_a_of_type_Zol.onActivityDestroyed(getActivity());
       if (this.jdField_a_of_type_AndroidArchLifecycleViewModelStore != null) {
         this.jdField_a_of_type_AndroidArchLifecycleViewModelStore.clear();
       }
@@ -188,7 +188,7 @@ public abstract class BasePartFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
-      this.jdField_a_of_type_Yzg.onActivityPaused(getActivity());
+      this.jdField_a_of_type_Zol.onActivityPaused(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -203,7 +203,7 @@ public abstract class BasePartFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
-      this.jdField_a_of_type_Yzg.onActivityResumed(getActivity());
+      this.jdField_a_of_type_Zol.onActivityResumed(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -218,7 +218,7 @@ public abstract class BasePartFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
-      this.jdField_a_of_type_Yzg.onActivityStarted(getActivity());
+      this.jdField_a_of_type_Zol.onActivityStarted(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -233,7 +233,7 @@ public abstract class BasePartFragment
     try
     {
       this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
-      this.jdField_a_of_type_Yzg.onActivityStopped(getActivity());
+      this.jdField_a_of_type_Zol.onActivityStopped(getActivity());
       return;
     }
     catch (Throwable localThrowable)

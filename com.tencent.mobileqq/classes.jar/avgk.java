@@ -1,25 +1,70 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import mqq.app.QQPermissionCallback;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class avgk
-  implements QQPermissionCallback
+  implements View.OnClickListener
 {
-  public avgk(LocationShareFragment paramLocationShareFragment, BaseActivity paramBaseActivity, int paramInt1, String paramString, int paramInt2) {}
+  public avgk(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    paramArrayOfString = bfur.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    if (paramArrayOfString != null) {
-      paramArrayOfString.setOnDismissListener(new avgl(this));
+    String str2 = "";
+    String str1 = "";
+    Object localObject = QQGameFeedWebFragment.a(this.a);
+    int i;
+    if (localObject != null)
+    {
+      str2 = ((QQGameMsgInfo)localObject).gameAppId;
+      if (TextUtils.isEmpty(((QQGameMsgInfo)localObject).paMsgid)) {
+        str1 = "";
+      }
     }
-    avcw.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 1);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment);
+    else
+    {
+      localObject = new HashMap();
+      ((Map)localObject).put(Integer.valueOf(2), str1);
+      ((Map)localObject).put(Integer.valueOf(3), "2");
+      ((Map)localObject).put(Integer.valueOf(4), "20");
+      ((Map)localObject).put(Integer.valueOf(24), "1");
+      abuf.a(amwn.a(), "769", "205037", str2, "76901", "1", "160", (Map)localObject);
+      if (QQGameFeedWebFragment.a(this.a) != null)
+      {
+        if (QQGameFeedWebFragment.a(this.a) != null) {
+          break label201;
+        }
+        i = 0;
+        label152:
+        if (this.a.a < 3) {
+          break label217;
+        }
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(QQGameFeedWebFragment.a(this.a).getCount());
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str1 = ((QQGameMsgInfo)localObject).paMsgid;
+      break;
+      label201:
+      i = QQGameFeedWebFragment.a(this.a).size();
+      break label152;
+      label217:
+      int j = QQGameFeedWebFragment.a(this.a).getCurrentItem();
+      if (j + 1 < i) {
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(j + 1);
+      } else if (j == i - 1) {
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(i);
+      }
+    }
   }
 }
 

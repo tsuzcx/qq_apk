@@ -1,13 +1,13 @@
 package com.tencent.biz.richframework.network.cache;
 
-import bfys;
+import bhhk;
 import com.jakewharton.disklrucache.DiskLruCache;
 import com.jakewharton.disklrucache.DiskLruCache.Editor;
 import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
 import java.io.File;
 import java.io.IOException;
-import udo;
-import xvv;
+import url;
+import ykq;
 
 public abstract class LruCache
   extends Cache
@@ -52,7 +52,7 @@ public abstract class LruCache
     //   10: invokevirtual 63	com/tencent/biz/richframework/network/cache/LruCache:getInstance	()Lcom/jakewharton/disklrucache/DiskLruCache;
     //   13: invokevirtual 72	com/jakewharton/disklrucache/DiskLruCache:isClosed	()Z
     //   16: ifeq +86 -> 102
-    //   19: invokestatic 77	bfys:c	()Z
+    //   19: invokestatic 77	bhhk:c	()Z
     //   22: ifne +10 -> 32
     //   25: aload_0
     //   26: getfield 50	com/tencent/biz/richframework/network/cache/LruCache:INTERNAL_FILE_CACHE_SIZE	J
@@ -82,7 +82,7 @@ public abstract class LruCache
     //   79: invokestatic 106	com/tencent/mobileqq/utils/StringUtil:formatSize	(J)Ljava/lang/String;
     //   82: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   85: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   88: invokestatic 114	xvv:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   88: invokestatic 114	ykq:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   91: aload_2
     //   92: invokevirtual 117	java/io/File:mkdirs	()Z
     //   95: pop
@@ -107,7 +107,7 @@ public abstract class LruCache
     //   131: invokestatic 106	com/tencent/mobileqq/utils/StringUtil:formatSize	(J)Ljava/lang/String;
     //   134: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   137: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   140: invokestatic 126	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   140: invokestatic 126	ykq:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   143: goto -47 -> 96
     //   146: astore_1
     //   147: aload_0
@@ -191,7 +191,7 @@ public abstract class LruCache
     //   100: aload_1
     //   101: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: invokestatic 114	xvv:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   107: invokestatic 114	ykq:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   110: goto -44 -> 66
     //   113: astore 6
     //   115: aload 7
@@ -208,7 +208,7 @@ public abstract class LruCache
     //   137: aload_1
     //   138: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   144: invokestatic 114	xvv:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   144: invokestatic 114	ykq:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   147: iload_2
     //   148: ireturn
     //   149: astore 6
@@ -223,7 +223,7 @@ public abstract class LruCache
     //   168: aload_1
     //   169: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   172: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   175: invokestatic 114	xvv:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   175: invokestatic 114	ykq:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   178: iload_2
     //   179: ireturn
     //   180: astore 6
@@ -322,7 +322,7 @@ public abstract class LruCache
       {
         str2 = str1;
         str3 = str1;
-        paramString = udo.b(localSnapshot.getString(0));
+        paramString = url.b(localSnapshot.getString(0));
         str2 = paramString;
         str3 = paramString;
         localSnapshot.close();
@@ -340,10 +340,10 @@ public abstract class LruCache
   
   public String getCacheDir()
   {
-    if (bfys.c()) {}
-    for (String str = bfys.a() + File.separator + "Android" + File.separator + "data" + File.separator + mPackgeName + File.separator + "cache" + File.separator + getCacheTag();; str = mAppCacheDir + File.separator + "cache" + File.separator + getCacheTag())
+    if (bhhk.c()) {}
+    for (String str = bhhk.a() + File.separator + "Android" + File.separator + "data" + File.separator + mPackgeName + File.separator + "cache" + File.separator + getCacheTag();; str = mAppCacheDir + File.separator + "cache" + File.separator + getCacheTag())
     {
-      xvv.b("LruCache", "Init cache dir: " + str);
+      ykq.b("LruCache", "Init cache dir: " + str);
       return str;
     }
   }
@@ -372,9 +372,9 @@ public abstract class LruCache
       {
         for (;;)
         {
-          xvv.d("LruCache", "Get cache error: Cache name: " + str + ", Url: " + paramString);
+          ykq.d("LruCache", "Get cache error: Cache name: " + str + ", Url: " + paramString);
         }
-        xvv.c("LruCache", "Get cache success: Cache name: " + str + ", Url: " + paramString);
+        ykq.c("LruCache", "Get cache success: Cache name: " + str + ", Url: " + paramString);
         return localCacheInputStream;
       }
       if (localObject != null)
@@ -383,14 +383,14 @@ public abstract class LruCache
         localCacheInputStream.setInputStream(localObject.getInputStream(0));
         if (localCacheInputStream.getInputStream() == null)
         {
-          xvv.d("LruCache", "Get cache error: InputStream is null. Cache name: " + str + ", Url: " + paramString);
+          ykq.d("LruCache", "Get cache error: InputStream is null. Cache name: " + str + ", Url: " + paramString);
           return localCacheInputStream;
         }
       }
-      xvv.d("LruCache", "Get cache error: snapshot is null. Cache name: " + str + ", Url: " + paramString + ",instance hashCode:" + getInstanceHashCode());
+      ykq.d("LruCache", "Get cache error: snapshot is null. Cache name: " + str + ", Url: " + paramString + ",instance hashCode:" + getInstanceHashCode());
       return localCacheInputStream;
     }
-    xvv.d("LruCache", "Get cache error: DiskCache or cacheName is null. Cache name: " + str + ", Url: " + paramString);
+    ykq.d("LruCache", "Get cache error: DiskCache or cacheName is null. Cache name: " + str + ", Url: " + paramString);
     return localCacheInputStream;
   }
   
@@ -407,7 +407,7 @@ public abstract class LruCache
   
   protected boolean open(File paramFile)
   {
-    xvv.b("LruCache", "Open cache dir.");
+    ykq.b("LruCache", "Open cache dir.");
     try
     {
       this.mDiskLruCache = DiskLruCache.open(paramFile, 1, 1, CacheSize);
@@ -459,17 +459,17 @@ public abstract class LruCache
       {
         for (;;)
         {
-          xvv.d("LruCache", "Set cache error: Exception ");
+          ykq.d("LruCache", "Set cache error: Exception ");
         }
       }
       finally {}
       bool1 = bool2;
       if (localObject != null) {
-        xvv.c("LruCache", "name: " + paramString1 + ", Cache name: " + str + ", value length: " + paramString2.length());
+        ykq.c("LruCache", "name: " + paramString1 + ", Cache name: " + str + ", value length: " + paramString2.length());
       }
       try
       {
-        localObject.set(0, udo.a(paramString2));
+        localObject.set(0, url.a(paramString2));
         localObject.commit();
         bool1 = true;
       }
@@ -477,7 +477,7 @@ public abstract class LruCache
       {
         for (;;)
         {
-          xvv.d("LruCache", "Commit cache error: Exception ");
+          ykq.d("LruCache", "Commit cache error: Exception ");
           bool1 = bool2;
         }
       }
@@ -566,7 +566,7 @@ public abstract class LruCache
     //   141: astore 7
     //   143: ldc 37
     //   145: ldc_w 303
-    //   148: invokestatic 306	xvv:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   148: invokestatic 306	ykq:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   151: aload 8
     //   153: astore 7
     //   155: aload 8
@@ -599,7 +599,7 @@ public abstract class LruCache
     //   219: invokespecial 228	com/tencent/biz/richframework/network/cache/LruCache:getInstanceHashCode	()I
     //   222: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   225: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   228: invokestatic 222	xvv:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   228: invokestatic 222	ykq:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   231: aload_0
     //   232: getfield 138	com/tencent/biz/richframework/network/cache/LruCache:mDiskLruCache	Lcom/jakewharton/disklrucache/DiskLruCache;
     //   235: invokevirtual 280	java/lang/Object:notifyAll	()V
@@ -649,7 +649,7 @@ public abstract class LruCache
     //   318: aload_1
     //   319: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   322: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   325: invokestatic 114	xvv:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   325: invokestatic 114	ykq:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   328: aconst_null
     //   329: astore 9
     //   331: goto -253 -> 78
@@ -666,7 +666,7 @@ public abstract class LruCache
     //   358: iload_3
     //   359: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   362: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   365: invokestatic 126	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   365: invokestatic 126	ykq:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   368: aload 8
     //   370: astore 7
     //   372: aload 8
@@ -698,7 +698,7 @@ public abstract class LruCache
     //   428: invokespecial 228	com/tencent/biz/richframework/network/cache/LruCache:getInstanceHashCode	()I
     //   431: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   434: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   437: invokestatic 114	xvv:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   437: invokestatic 114	ykq:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   440: iload 5
     //   442: istore 4
     //   444: aload_2
@@ -743,7 +743,7 @@ public abstract class LruCache
     //   522: aload_1
     //   523: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   526: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   529: invokestatic 114	xvv:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   529: invokestatic 114	ykq:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   532: goto -301 -> 231
     //   535: ldc 37
     //   537: new 91	java/lang/StringBuilder
@@ -758,7 +758,7 @@ public abstract class LruCache
     //   561: aload_1
     //   562: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   565: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   568: invokestatic 114	xvv:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   568: invokestatic 114	ykq:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   571: iload 6
     //   573: istore 5
     //   575: goto -314 -> 261

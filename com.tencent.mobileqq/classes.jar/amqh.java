@@ -1,32 +1,14 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import java.util.Comparator;
 
-class amqh
-  implements INetInfoHandler
+public class amqh
+  implements Comparator<amql>
 {
-  amqh(amqd paramamqd) {}
+  public amqh(ApolloCmdChannel paramApolloCmdChannel) {}
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
+  public int a(amql paramamql1, amql paramamql2)
   {
-    this.a.b();
-  }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.b();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.c();
-  }
-  
-  public void onNetWifi2None()
-  {
-    this.a.c();
+    return paramamql1.a() - paramamql2.a();
   }
 }
 

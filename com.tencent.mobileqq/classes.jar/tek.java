@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class tek
-  implements View.OnClickListener
+public abstract interface tek
 {
-  public tek(BannerAdapter paramBannerAdapter, int paramInt) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.a(this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

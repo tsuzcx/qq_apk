@@ -1,32 +1,35 @@
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.IEventReceiver;
+import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class xdi
-  extends QQUIEventReceiver<IEventReceiver, wcs>
+class xdi
+  extends QQUIEventReceiver<xdh, wqc>
 {
-  public xdi(@NonNull IEventReceiver paramIEventReceiver)
+  public xdi(@NonNull xdh paramxdh)
   {
-    super(paramIEventReceiver);
+    super(paramxdh);
   }
   
-  public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull wcs paramwcs)
+  public void a(@NonNull xdh paramxdh, @NonNull wqc paramwqc)
   {
-    if (paramwcs.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      QQToast.a(wkp.a(), 2, amtj.a(2131710144), 0).a();
-      xwa.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramwcs.jdField_a_of_type_Int), "5" });
+    if ((!TextUtils.equals(xdh.a(paramxdh).mContext, paramwqc.jdField_a_of_type_JavaLangString)) || (xdh.a(paramxdh) == null)) {
       return;
     }
-    QQToast.a(wkp.a(), 1, amtj.a(2131710139), 0).a();
-    xwa.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
+    if (paramwqc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    {
+      ykq.a(this.TAG, "pull feedId list fail %s", paramwqc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
+      xdh.a(paramxdh).a(new ErrorMessage(paramwqc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, paramwqc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg), null, false);
+      return;
+    }
+    xdh.a(paramxdh).mIsEnd = paramwqc.jdField_a_of_type_Boolean;
+    xdh.a(paramxdh).b(new ErrorMessage(), xdh.b(paramwqc.jdField_a_of_type_JavaUtilList), paramwqc.jdField_a_of_type_Boolean);
   }
   
   public Class acceptEventClass()
   {
-    return wcs.class;
+    return wqc.class;
   }
 }
 

@@ -1,17 +1,19 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import aara;
-import afcm;
-import agwt;
-import aszr;
-import aszs;
-import ayfu;
-import ayfx;
-import bcef;
+import abgm;
+import aftr;
+import ahpt;
+import ahvi;
+import audy;
+import audz;
+import azme;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.startup.step.CheckPermission;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -29,7 +31,7 @@ public class FileAppInfo
   private void a(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     localQQAppInterface = paramBaseChatPie.app;
-    localObject = (aara)localQQAppInterface.getBusinessHandler(51);
+    localObject = (abgm)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
     l1 = 0L;
     try
     {
@@ -42,25 +44,25 @@ public class FileAppInfo
       {
         localException.printStackTrace();
         continue;
-        if ((paramSessionInfo.curType == 9501) && (localObject != null) && (((aara)localObject).c(l1)))
+        if ((paramSessionInfo.curType == 9501) && (localObject != null) && (((abgm)localObject).c(l1)))
         {
-          afcm.c(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo);
+          aftr.c(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo);
         }
         else
         {
-          agwt.a(localQQAppInterface, "0X800407C", paramSessionInfo.curType);
-          localObject = new aszs();
-          ((aszs)localObject).b = "send_file";
-          ((aszs)localObject).a = 1;
-          aszr.a(localQQAppInterface.getCurrentAccountUin(), (aszs)localObject);
-          afcm.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo);
+          ahpt.a(localQQAppInterface, "0X800407C", paramSessionInfo.curType);
+          localObject = new audz();
+          ((audz)localObject).b = "send_file";
+          ((audz)localObject).a = 1;
+          audy.a(localQQAppInterface.getCurrentAccountUin(), (audz)localObject);
+          aftr.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo);
         }
       }
     }
     if (paramSessionInfo.curType == 1)
     {
-      bcef.b(localQQAppInterface, "CliOper", "", "", "0X800407E", "0X800407E", 0, 0, "", "", "", "");
-      afcm.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo);
+      bdla.b(localQQAppInterface, "CliOper", "", "", "0X800407E", "0X800407E", 0, 0, "", "", "", "");
+      aftr.a(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo);
       paramBaseChatPie.getActivity().setCanLock(false);
       return;
     }
@@ -68,7 +70,7 @@ public class FileAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839201;
+    return 2130839222;
   }
   
   public int getAppID()
@@ -97,14 +99,14 @@ public class FileAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690719);
+    return BaseApplicationImpl.getContext().getString(2131690796);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     if (!CheckPermission.isHasStoragePermission(paramBaseChatPie.getActivity()))
     {
-      CheckPermission.requestSDCardPermission(paramBaseChatPie.getActivity(), new ayfx(this, paramBaseChatPie, paramSessionInfo));
+      CheckPermission.requestSDCardPermission(paramBaseChatPie.getActivity(), new azme(this, paramBaseChatPie, paramSessionInfo));
       return;
     }
     a(paramBaseChatPie, paramSessionInfo);

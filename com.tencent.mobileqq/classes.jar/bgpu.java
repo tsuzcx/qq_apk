@@ -1,8 +1,29 @@
-import android.content.Intent;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopGameCardView;
 
-public abstract interface bgpu
+public class bgpu
+  implements Animator.AnimatorListener
 {
-  public abstract void a(Intent paramIntent, boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2);
+  public bgpu(TroopGameCardView paramTroopGameCardView, TextView paramTextView, boolean paramBoolean) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    paramAnimator = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramAnimator.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

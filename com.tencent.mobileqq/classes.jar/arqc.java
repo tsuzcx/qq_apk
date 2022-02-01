@@ -1,22 +1,16 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.provider.ContactsContract.RawContacts;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
 
 public class arqc
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public arqc(ExtendFriendSearchBarView paramExtendFriendSearchBarView, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
+  public static final String[] a = { "_id", "sourceid", "contact_id" };
+  public static final String[] b = { "sync1", "sync2", "sync3" };
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static final Uri a(String paramString)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {
-      return;
-    }
-    int i = (int)((1.0F - ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F) * -ExtendFriendSearchBarView.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendSearchBarView));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
+    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqq.account").appendQueryParameter("caller_is_syncadapter", ContactSyncManager.b()).build();
   }
 }
 

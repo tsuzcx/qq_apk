@@ -1,15 +1,15 @@
 package dov.com.qq.im.aeeditor.module.filter;
 
-import bmku;
+import boam;
 
 public class FiltersAdapter$1
   implements Runnable
 {
-  public FiltersAdapter$1(bmku parambmku, int paramInt) {}
+  public FiltersAdapter$1(boam paramboam, int paramInt) {}
   
   public void run()
   {
-    bmku.a(bmku.a(this.this$0), this.a, false);
+    boam.a(boam.a(this.this$0), this.a, false);
   }
 }
 

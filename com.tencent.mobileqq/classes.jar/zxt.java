@@ -1,27 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class zxt
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  public zxt(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public zxt(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

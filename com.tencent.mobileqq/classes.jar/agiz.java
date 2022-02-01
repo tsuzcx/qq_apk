@@ -1,22 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class agiz
-  implements View.OnClickListener
+  implements aqik
 {
   agiz(agiy paramagiy) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
-    if (this.a.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      agiy.a(this.a).onClick(paramView);
-    }
+    agiy.a(this.a);
   }
 }
 

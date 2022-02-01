@@ -1,50 +1,43 @@
-import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.face.FaceDecoder;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.relationx.friendclue.FriendClueManager.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbcy
-  extends bbbc
+  extends CardObserver
 {
-  public bbcy(FaceDecoder paramFaceDecoder, bbbg parambbbg)
-  {
-    super(paramFaceDecoder, parambbbg);
-  }
+  bbcy(bbcx parambbcx) {}
   
-  public void b(bayt parambayt, bbhb parambbhb)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    super.b(parambayt, parambbhb);
-    if (TextUtils.isEmpty(parambayt.c()))
-    {
-      parambbhb.c().setVisibility(8);
-      ((bbis)parambbhb).a().setVisibility(0);
-      if (parambbhb.b() != null)
-      {
-        parambayt = ((bbad)parambayt).d();
-        if (!TextUtils.isEmpty(parambayt)) {
-          break label127;
-        }
-        parambbhb.b().setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendClueManager", 2, String.format("the result of onCardDownload is:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    bbcx.a(this.a).removeMessages(1);
+    bbcx.a(this.a).removeObserver(this.a.a);
+    if (paramBoolean) {
+      if (!(paramObject instanceof Card)) {
+        break label135;
       }
     }
-    for (;;)
+    label135:
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-      parambbhb.d().setVisibility(8);
+      if (paramObject != null)
+      {
+        Message localMessage = new Message();
+        localMessage.obj = paramObject;
+        localMessage.what = 2;
+        bbcx.a(this.a).sendMessage(localMessage);
+      }
       return;
-      parambbhb.c().setVisibility(0);
-      parambbhb.c().setText(parambayt.c());
-      ((bbis)parambbhb).a().setVisibility(8);
-      break;
-      label127:
-      parambbhb.b().setVisibility(0);
-      parambbhb.b().setText(parambayt);
+      bbcx.a(this.a).post(new FriendClueManager.2.1(this));
+      QLog.e("FriendClueManager", 1, "get intimateInfo failed");
+      return;
     }
-  }
-  
-  protected void c(bayt parambayt, bbhb parambbhb)
-  {
-    super.c(parambayt, parambbhb);
-    ((bbis)parambbhb).a().setOnClickListener(new bbcz(this, parambayt));
   }
 }
 

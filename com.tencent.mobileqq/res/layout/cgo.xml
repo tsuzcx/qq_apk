@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/mg2" android:background="#ff8d66ff" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="80.0dip" android:minHeight="80.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="#fffeffff" android:ellipsize="end" android:id="@id/mga" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="21.0dip" android:layout_marginTop="13.0dip" android:text="房间号" android:singleLine="true" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/mgb" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="人数" android:singleLine="true" android:layout_alignBaseline="@id/mga" android:layout_alignParentRight="true" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mg_" android:layout_width="fill_parent" android:layout_height="25.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="15.0dip" android:layout_below="@id/mga" android:layout_alignLeft="@id/mga" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView android:id="@id/m7p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:adjustViewBounds="true" app:fixedRatio="true" app:fixedRatioHeight="36.0" app:fixedRatioWidth="75.0" app:minimumHeight="64.0dip" />
 </RelativeLayout>

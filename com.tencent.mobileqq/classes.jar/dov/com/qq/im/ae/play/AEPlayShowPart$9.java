@@ -3,8 +3,8 @@ package dov.com.qq.im.ae.play;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import bmbk;
-import bmri;
+import bnqu;
+import boha;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -17,7 +17,7 @@ class AEPlayShowPart$9
   {
     AEPlayShowPart.access$1100(this.this$0);
     AEPlayShowPart.access$1200(this.this$0).setVisibility(8);
-    bmbk.a().a("CameraModuleSvc.GetPlayShowCatMatTree", "", 4);
+    bnqu.a().a("CameraModuleSvc.GetPlayShowCatMatTree", "", 4);
     PeakAppInterface.a.a(1010);
     EventCollector.getInstance().onViewClicked(paramView);
   }

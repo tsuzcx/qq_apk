@@ -37,8 +37,11 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
   @TargetApi(11)
   public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
+    if ((getIntent() != null) && (getIntent().getBooleanExtra("flag_hide_float_bar", false))) {
+      this.mUIStyle.mFloatBarRulesFromUrl = 0L;
+    }
     int i = super.doCreateLoopStep_InitUIContent(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167276);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167296);
     if ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView)) {
       ((RefreshView)this.mUIStyleHandler.webviewWrapper).a(false);
     }
@@ -74,7 +77,7 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

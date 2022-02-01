@@ -1,6 +1,24 @@
-public abstract interface atzi
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class atzi
+  implements View.OnClickListener
 {
-  public abstract void a();
+  atzi(atzg paramatzg) {}
+  
+  public void onClick(View paramView)
+  {
+    if (atzg.a(this.a)) {
+      atzg.a(this.a);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      atzg.b(this.a);
+    }
+  }
 }
 
 

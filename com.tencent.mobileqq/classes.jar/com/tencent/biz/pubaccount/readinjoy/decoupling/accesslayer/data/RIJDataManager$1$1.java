@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data;
 
 import java.util.ArrayList;
-import ped;
-import pee;
-import peg;
-import slt;
+import pne;
+import pnf;
+import pnh;
+import szd;
 
 public class RIJDataManager$1$1
   implements Runnable
 {
-  public RIJDataManager$1$1(pee parampee) {}
+  public RIJDataManager$1$1(pnf parampnf) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    this.a.jdField_a_of_type_Ped.a().a().a(this.a.jdField_a_of_type_Int, localArrayList, new ArrayList(), null, true);
+    this.a.jdField_a_of_type_Pne.a().a().a(this.a.jdField_a_of_type_Int, localArrayList, new ArrayList(), null, true);
   }
 }
 

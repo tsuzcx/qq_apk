@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.Advertisement.view;
 import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import nyu;
+import ofu;
 
 public class VideoCoverView$5
   implements Runnable
@@ -14,7 +14,7 @@ public class VideoCoverView$5
   {
     try
     {
-      TVK_SDKMgr.installPlugin(this.a, new nyu(this));
+      TVK_SDKMgr.installPlugin(this.a, new ofu(this));
       return;
     }
     catch (Throwable localThrowable)

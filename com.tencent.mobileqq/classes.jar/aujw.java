@@ -1,41 +1,58 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x87a.RspBody;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.fileviewer.model.DeviceFileModel.1.1;
 
-final class aujw
-  extends axkv
+public class aujw
+  extends abib
 {
-  aujw(Activity paramActivity, String paramString, Runnable paramRunnable) {}
+  aujw(aujv paramaujv) {}
   
-  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  public void a(Session paramSession, float paramFloat)
   {
-    QLog.e("FaceLoginHelper", 1, new Object[] { "cmd : ", paramString1, " code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
-    if (paramInt == 89) {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131698266), 0).a();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
+    FileManagerEntity localFileManagerEntity = aujv.a(this.a).a();
+    if (localFileManagerEntity == null) {}
+    while ((aujv.c(this.a) == null) || (paramSession.uSessionID != aujv.a(this.a))) {
       return;
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, 0).a();
     }
+    localFileManagerEntity.fProgress = paramFloat;
+    aujv.d(this.a).a(paramFloat);
   }
   
-  public void sendSmsCodeSuccess(oidb_0x87a.RspBody paramRspBody)
+  public void a(Session paramSession, boolean paramBoolean)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, AuthDevVerifyCodeActivity.class);
-    localIntent.putExtra("k_from", "f_SetFaceData");
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (paramRspBody = "";; paramRspBody = this.jdField_a_of_type_JavaLangString)
+    FileManagerEntity localFileManagerEntity = aujv.b(this.a).a();
+    if (localFileManagerEntity == null) {}
+    do
     {
-      localIntent.putExtra("phone_num", paramRspBody);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 11);
       return;
+      if ((aujv.a(this.a) != null) && (paramSession.uSessionID == aujv.b(this.a)) && (paramBoolean))
+      {
+        localFileManagerEntity.strThumbPath = paramSession.strFilePathSrc;
+        aujv.b(this.a).a(String.valueOf(localFileManagerEntity.nSessionId), paramSession.strFilePathSrc);
+      }
+    } while ((aujv.e(this.a) == null) || (paramSession.uSessionID != aujv.a(this.a)));
+    if (paramBoolean)
+    {
+      localFileManagerEntity.fProgress = 1.0F;
+      localFileManagerEntity.setFilePath(paramSession.strFilePathSrc);
+      aujv.f(this.a).f();
+      if (this.a.e() == 2)
+      {
+        new Handler(Looper.getMainLooper()).postDelayed(new DeviceFileModel.1.1(this), 1000L);
+        return;
+      }
+      aujv.i(this.a).f();
+      return;
+    }
+    aujv.j(this.a).g();
+  }
+  
+  public void b(Session paramSession)
+  {
+    if ((aujv.a(this.a) != null) && (paramSession.uSessionID == aujv.a(this.a))) {
+      aujv.b(this.a).d();
     }
   }
 }

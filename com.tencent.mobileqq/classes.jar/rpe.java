@@ -1,48 +1,51 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.net.URL;
 
 public class rpe
-  implements bbfe<bayt>
 {
-  private List<rpf> a = new ArrayList();
+  private int jdField_a_of_type_Int;
+  private URL jdField_a_of_type_JavaNetURL;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public List<bayt> a(bbfs parambbfs)
+  public int a()
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      rpf localrpf = (rpf)localIterator.next();
-      if (localrpf.a(parambbfs.a)) {
-        localArrayList.add(localrpf);
-      }
-    }
-    return localArrayList;
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a()
+  public URL a()
   {
-    Iterator localIterator = pkm.a().c().iterator();
-    while (localIterator.hasNext())
-    {
-      rcz localrcz = (rcz)localIterator.next();
-      this.a.add(new rpf(localrcz));
-    }
+    return this.jdField_a_of_type_JavaNetURL;
   }
   
-  public void a(bbfs parambbfs, bbff<bayt> parambbff)
+  public void a(int paramInt)
   {
-    parambbff.a(a(parambbfs), 1);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void b() {}
+  public void a(URL paramURL)
+  {
+    this.jdField_a_of_type_JavaNetURL = paramURL;
+  }
   
-  public void c() {}
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public void d() {}
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
   
-  public void e() {}
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.b = paramInt;
+  }
 }
 
 

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import bjsg;
+import blds;
 
 public class AdapterViewPagerAdapter
   extends PagerAdapter
@@ -17,12 +17,12 @@ public class AdapterViewPagerAdapter
   private AdapterViewPagerAdapter.AdapterViewFactory mAdapterViewFactory;
   private Context mContext;
   private AdapterViewPagerAdapter.PageInflateDelegate mInflateDelegate;
-  private bjsg mPagerBaseAdapter;
+  private blds mPagerBaseAdapter;
   
   public AdapterViewPagerAdapter(Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
     this.mContext = paramContext;
-    this.mPagerBaseAdapter = new bjsg(paramBaseAdapter, paramInt);
+    this.mPagerBaseAdapter = new blds(paramBaseAdapter, paramInt);
     this.mPagerBaseAdapter.registerDataSetObserver(new AdapterViewPagerAdapter.1(this));
   }
   
@@ -73,8 +73,8 @@ public class AdapterViewPagerAdapter
     {
       if (localObject1 != null)
       {
-        localObject2 = new bjsg(this.mPagerBaseAdapter.a(), this.mPagerBaseAdapter.a());
-        ((bjsg)localObject2).a(paramInt);
+        localObject2 = new blds(this.mPagerBaseAdapter.a(), this.mPagerBaseAdapter.a());
+        ((blds)localObject2).a(paramInt);
         ((AdapterView)localObject1).setAdapter((Adapter)localObject2);
         this.mAdapterViewCache.put(paramInt, localObject1);
       }

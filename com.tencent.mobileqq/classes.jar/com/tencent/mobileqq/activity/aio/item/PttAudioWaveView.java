@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agkl;
-import agkp;
+import ahdb;
+import ahdf;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -22,7 +22,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -30,14 +30,14 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Random;
-import vjr;
+import vym;
 
 public class PttAudioWaveView
   extends View
 {
   float jdField_a_of_type_Float = 0.0F;
   int jdField_a_of_type_Int = a(this.jdField_i_of_type_Int, 0.33F);
-  private agkl jdField_a_of_type_Agkl;
+  private ahdb jdField_a_of_type_Ahdb;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
@@ -178,7 +178,7 @@ public class PttAudioWaveView
   
   private void a(View paramView, boolean paramBoolean)
   {
-    if ((paramView != null) && (paramView.isPressed() != paramBoolean) && ((agkp)paramView.getTag() != null))
+    if ((paramView != null) && (paramView.isPressed() != paramBoolean) && ((ahdf)paramView.getTag() != null))
     {
       ChatMessage localChatMessage = AIOUtils.getMessage(paramView);
       if ((localChatMessage != null) && (localChatMessage.vipBubbleID == 0L)) {
@@ -506,10 +506,10 @@ public class PttAudioWaveView
                 this.jdField_d_of_type_Float = paramMotionEvent.getX();
                 invalidate();
                 a(paramMotionEvent.getX(), this.t, this.s);
-                if ((this.jdField_a_of_type_Agkl != null) && (!this.jdField_d_of_type_Boolean))
+                if ((this.jdField_a_of_type_Ahdb != null) && (!this.jdField_d_of_type_Boolean))
                 {
                   this.jdField_d_of_type_Boolean = true;
-                  this.jdField_a_of_type_Agkl.a(this);
+                  this.jdField_a_of_type_Ahdb.a(this);
                 }
               }
               getHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
@@ -546,10 +546,10 @@ public class PttAudioWaveView
         } while (this.jdField_a_of_type_Boolean);
         bool1 = bool2;
       } while (!this.jdField_c_of_type_Boolean);
-      if (this.jdField_a_of_type_Agkl != null)
+      if (this.jdField_a_of_type_Ahdb != null)
       {
-        this.jdField_a_of_type_Agkl.a(this, this.jdField_c_of_type_Float);
-        bcef.b(null, "dc00898", "", "", "0X8009D00", "0X8009D00", 3, 0, "", "", "", "");
+        this.jdField_a_of_type_Ahdb.a(this, this.jdField_c_of_type_Float);
+        bdla.b(null, "dc00898", "", "", "0X8009D00", "0X8009D00", 3, 0, "", "", "", "");
       }
       return true;
       boolean bool1 = bool2;
@@ -632,7 +632,7 @@ public class PttAudioWaveView
           paramArrayOfInt.put("waveMax", String.valueOf(i6));
           paramArrayOfInt.put("waveMin", String.valueOf(i5));
           paramArrayOfInt.put("waveAvg", String.valueOf(i7 / i2));
-          paramArrayOfInt.put("waveVar", String.valueOf(Math.sqrt(vjr.a(arrayOfInt))));
+          paramArrayOfInt.put("waveVar", String.valueOf(Math.sqrt(vym.a(arrayOfInt))));
           if (QLog.isColorLevel()) {
             QLog.d("PttAudioWaveView", 2, "real do report");
           }
@@ -685,9 +685,9 @@ public class PttAudioWaveView
     }
   }
   
-  public void setSeekListener(agkl paramagkl)
+  public void setSeekListener(ahdb paramahdb)
   {
-    this.jdField_a_of_type_Agkl = paramagkl;
+    this.jdField_a_of_type_Ahdb = paramahdb;
   }
   
   public void setShouldDisallowInterceptTouch(boolean paramBoolean)

@@ -1,58 +1,14 @@
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-public class zaf
-  extends StaggeredGridLayoutManager
+public abstract interface zaf
 {
-  public zaf(int paramInt1, int paramInt2)
-  {
-    super(paramInt1, paramInt2);
-  }
+  public abstract void a();
   
-  public int getPosition(View paramView)
-  {
-    try
-    {
-      int i = super.getPosition(paramView);
-      return i;
-    }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
-    }
-    return -1;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    try
-    {
-      super.onLayoutChildren(paramRecycler, paramState);
-      return;
-    }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-      QLog.e("SafeStaggeredGridLayoutManager", 4, paramRecycler, new Object[0]);
-    }
-  }
+  public abstract void a(SlideItemInfo paramSlideItemInfo);
   
-  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    try
-    {
-      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
-    }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-    return 0;
-  }
+  public abstract void a(String paramString);
 }
 
 

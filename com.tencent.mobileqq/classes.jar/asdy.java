@@ -1,23 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import java.util.List;
 
 class asdy
-  implements atev
+  extends anub
 {
-  asdy(asdx paramasdx, asdz paramasdz) {}
+  asdy(asdv paramasdv) {}
   
-  public void a()
+  public void onDelEmoResponse(boolean paramBoolean)
   {
-    QLog.e("FileMultiMsg", 1, "sendDiscFile success");
-    this.jdField_a_of_type_Asdx.a = true;
-    this.jdField_a_of_type_Asdz.a(true);
+    asdv.a(this.a).clear();
   }
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(Object paramObject, int paramInt)
+  protected void onModifyFavData(boolean paramBoolean, Object paramObject)
   {
-    QLog.e("FileMultiMsg", 1, "sendDiscFile faild errCode" + paramInt);
-    this.jdField_a_of_type_Asdz.a(false);
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.e();
+    }
+  }
+  
+  protected void onUpdateFavData(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Integer)) && (asdv.a(this.a) != null)) {
+      asdv.a(this.a).obtainMessage(208, paramObject).sendToTarget();
+    }
+    if ((this.a.a != null) && (paramBoolean)) {
+      this.a.a.e();
+    }
   }
 }
 

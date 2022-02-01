@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.forward;
 
 import android.view.WindowManager;
-import atmx;
+import aurs;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class ForwardNewVersionDialog$8
   implements Runnable
 {
-  public ForwardNewVersionDialog$8(atmx paramatmx) {}
+  public ForwardNewVersionDialog$8(aurs paramaurs) {}
   
   public void run()
   {
-    if (atmx.b(this.this$0)) {
+    if (aurs.b(this.this$0)) {
       return;
     }
-    atmx.a(this.this$0).addView(atmx.a(this.this$0), atmx.a(this.this$0));
-    atmx.a(this.this$0, true);
-    atmx.a(this.this$0).post(new ForwardNewVersionDialog.8.1(this));
+    aurs.a(this.this$0).addView(aurs.a(this.this$0), aurs.a(this.this$0));
+    aurs.a(this.this$0, true);
+    aurs.a(this.this$0).post(new ForwardNewVersionDialog.8.1(this));
   }
 }
 

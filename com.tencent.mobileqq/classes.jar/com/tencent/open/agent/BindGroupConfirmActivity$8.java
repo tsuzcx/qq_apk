@@ -1,8 +1,8 @@
 package com.tencent.open.agent;
 
 import android.text.TextUtils;
-import bfur;
-import bhqx;
+import bhdj;
+import bjbu;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class BindGroupConfirmActivity$8
@@ -13,15 +13,15 @@ public class BindGroupConfirmActivity$8
   public void run()
   {
     if (this.this$0.a == null) {
-      this.this$0.a = bfur.a(this.this$0, 230);
+      this.this$0.a = bhdj.a(this.this$0, 230);
     }
     if (!TextUtils.isEmpty(this.a)) {
       this.this$0.a.setMessage(this.a);
     }
-    bhqx localbhqx = new bhqx(this);
-    this.this$0.a.setTitle(2131719175);
-    this.this$0.a.setPositiveButton(2131690952, localbhqx);
-    this.this$0.a.setNegativeButton(2131690620, localbhqx);
+    bjbu localbjbu = new bjbu(this);
+    this.this$0.a.setTitle(2131719595);
+    this.this$0.a.setPositiveButton(2131691037, localbjbu);
+    this.this$0.a.setNegativeButton(2131690697, localbjbu);
     if (!this.this$0.a.isShowing()) {
       this.this$0.a.show();
     }

@@ -1,54 +1,39 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-final class mqs
-  implements bjoe
+public class mqs
+  extends mri
 {
-  mqs(mup parammup, int[] paramArrayOfInt, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
+  public int a;
+  public lfy a;
+  public boolean a;
+  public boolean b;
   
-  public void OnClick(View paramView, int paramInt)
+  mqs(mqb parammqb)
   {
-    this.jdField_a_of_type_Mup.dismiss();
-    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+    super(parammqb);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Lfy = new mqt(this);
+    parammqb = lfx.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    if (parammqb != null)
     {
-    default: 
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      if (paramInt > 0) {
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A518", "0X800A518", 0, paramInt, "", "", "", "");
-      }
+      parammqb.a(11, this.jdField_a_of_type_Lfy);
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1)
-      {
-        mqq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
-        paramInt = 3;
-      }
-      else
-      {
-        mqq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, this.jdField_a_of_type_Int, null);
-        paramInt = 1;
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1)
-        {
-          mqq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
-          paramInt = 4;
-        }
-        else
-        {
-          mqq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, this.jdField_a_of_type_Int, null);
-          paramInt = 2;
-        }
-      }
+    }
+    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
+  }
+  
+  void a(String paramString)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.i, 1, "resetData[" + paramString + "]");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mqs
  * JD-Core Version:    0.7.0.1
  */

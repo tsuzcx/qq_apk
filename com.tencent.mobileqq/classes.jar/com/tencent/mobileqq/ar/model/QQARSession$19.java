@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import aolr;
+import apos;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class QQARSession$19
@@ -8,25 +8,25 @@ public class QQARSession$19
 {
   public void run()
   {
-    if ((aolr.a(this.this$0) != null) && (!aolr.a(this.this$0).d()))
+    if ((apos.a(this.this$0) != null) && (!apos.a(this.this$0).d()))
     {
-      if (aolr.a(this.this$0).j()) {
-        aolr.c(this.this$0);
+      if (apos.a(this.this$0).j()) {
+        apos.c(this.this$0);
       }
-      if (aolr.a(this.this$0) != 1L) {
+      if (apos.a(this.this$0) != 1L) {
         break label78;
       }
       this.this$0.b(1L);
-      aolr.b(this.this$0);
+      apos.b(this.this$0);
     }
     for (;;)
     {
       this.this$0.m();
       return;
       label78:
-      if (aolr.a(this.this$0) == 2L) {
+      if (apos.a(this.this$0) == 2L) {
         this.this$0.o();
-      } else if (aolr.a(this.this$0) == 2048L) {
+      } else if (apos.a(this.this$0) == 2048L) {
         this.this$0.q();
       }
     }

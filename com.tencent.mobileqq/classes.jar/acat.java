@@ -1,20 +1,62 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Context;
+import com.tencent.gdtad.api.adbox.GdtAdBoxData;
 
 public class acat
-  implements abzb
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  private acav jdField_a_of_type_Acav;
+  private acbd jdField_a_of_type_Acbd;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private GdtAdBoxData jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
+  
+  public static acau a(Context paramContext)
   {
-    ((anan)paramQQAppInterface.getBusinessHandler(24)).a(paramMsgType0x210.vProtobuf);
+    return new acau(paramContext);
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public GdtAdBoxData a()
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    return this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Acav = new acbc(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Acav.a(this);
+    this.jdField_a_of_type_Acav.show();
+  }
+  
+  void a(acbd paramacbd)
+  {
+    this.jdField_a_of_type_Acbd = paramacbd;
+  }
+  
+  void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  void a(GdtAdBoxData paramGdtAdBoxData)
+  {
+    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = paramGdtAdBoxData;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Acav != null) && (this.jdField_a_of_type_Acav.isShowing()))
+    {
+      this.jdField_a_of_type_Acav.dismiss();
+      this.jdField_a_of_type_Acav = null;
+    }
+    this.jdField_a_of_type_Acbd = null;
+    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Acbd != null) {
+      this.jdField_a_of_type_Acbd.a();
+    }
   }
 }
 

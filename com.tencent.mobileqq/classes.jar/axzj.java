@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
-final class axzj
-  implements DialogInterface.OnClickListener
+public class axzj
+  implements View.OnClickListener
 {
-  axzj(Function0 paramFunction0) {}
+  public axzj(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.invoke();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.l();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

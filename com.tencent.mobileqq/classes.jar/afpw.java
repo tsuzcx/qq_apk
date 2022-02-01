@@ -1,14 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.media.AudioManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 
-class afpw
-  implements DialogInterface.OnClickListener
+public class afpw
+  extends Handler
 {
-  afpw(afpu paramafpu) {}
+  public afpw(AudioPlayerBase paramAudioPlayerBase) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
+    if ((paramMessage.what == 1000) && (this.a.d == 0) && (this.a.a()))
+    {
+      int i = this.a.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(this.a.jdField_a_of_type_Bhck.b);
+      int j = this.a.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(this.a.jdField_a_of_type_Bhck.b);
+      if (i / j <= 0.18F) {
+        break label125;
+      }
+      this.a.d = 1;
+      if (this.a.jdField_a_of_type_Afpx != null) {
+        this.a.jdField_a_of_type_Afpx.c(this.a, this.a.d);
+      }
+    }
+    return;
+    label125:
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 200L);
   }
 }
 

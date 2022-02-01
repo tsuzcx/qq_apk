@@ -1,16 +1,24 @@
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
+import android.content.ComponentCallbacks2;
+import android.content.res.Configuration;
+import com.tencent.common.app.ToolRuntimeBase;
 
 public class aauw
+  implements ComponentCallbacks2
 {
-  public int a;
-  public String a;
-  public int b;
+  public aauw(ToolRuntimeBase paramToolRuntimeBase) {}
   
-  private aauw(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
+  
+  public void onLowMemory() {}
+  
+  public void onTrimMemory(int paramInt)
+  {
+    this.a.onTrimMemory(paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aauw
  * JD-Core Version:    0.7.0.1
  */

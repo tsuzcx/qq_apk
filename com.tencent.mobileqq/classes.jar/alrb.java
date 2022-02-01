@@ -1,18 +1,23 @@
-import android.os.Message;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class alrb
-  extends TransProcessorHandler
+  implements bdbk
 {
-  public alrb(HotChatCenterFragment paramHotChatCenterFragment) {}
+  public alrb(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAutoFocusCallback(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "single tap focus " + paramBoolean1);
     }
+    alrr.a(paramBoolean1);
+    if (paramBoolean1)
+    {
+      NewFlowCameraActivity.h(this.a, true);
+      return;
+    }
+    this.a.a.g();
   }
 }
 

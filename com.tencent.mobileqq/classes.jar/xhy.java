@@ -1,36 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class xhy
-  implements View.OnTouchListener
+public class xhy
+  extends xif<StoryVideoItem>
 {
-  xhy(xhw paramxhw) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public xhy(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (xhw.a(this.a)) {
-        break label105;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(xhw.a(this.a), xhw.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, xhw.a(this.a).jdField_a_of_type_Boolean);
-      xhw.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label100;
-      }
-    }
-    label100:
-    for (boolean bool = true;; bool = false)
-    {
-      xhw.a(paramView, bool);
-      return false;
-    }
-    label105:
-    this.a.b();
-    return false;
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    ykq.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

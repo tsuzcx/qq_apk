@@ -1,7 +1,16 @@
-public class azwr
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class azwr
+  implements Handler.Callback
 {
-  public static final String a = amtj.a(2131699235);
-  public static final String b = amtj.a(2131699234);
+  azwr(azwp paramazwp) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    this.a.b(paramMessage);
+    return true;
+  }
 }
 
 

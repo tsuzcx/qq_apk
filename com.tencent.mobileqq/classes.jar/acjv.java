@@ -1,21 +1,39 @@
-import android.support.annotation.NonNull;
-import org.json.JSONObject;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public abstract class acjv
+class acjv
+  implements URLDrawable.URLDrawableListener
 {
-  protected acju a;
+  acjv(acju paramacju) {}
   
-  protected void a() {}
-  
-  public final void a(acju paramacju)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.a = paramacju;
-    a();
+    acju.a(this.a, paramURLDrawable);
+    acho.b("GdtDrawableLoader", "onLoadCanceled " + acju.a(this.a));
+    acju.a(this.a, false);
   }
   
-  public abstract boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull acjr paramacjr);
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    acju.a(this.a, paramURLDrawable);
+    acho.d("GdtDrawableLoader", "onLoadFialed " + acju.a(this.a), paramThrowable);
+    if (!acju.a(this.a)) {
+      acju.a(this.a, false);
+    }
+  }
   
-  public void b() {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    acju.a(this.a, paramURLDrawable);
+    acho.b("GdtDrawableLoader", "onLoadProgressed " + paramInt + " " + acju.a(this.a));
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    acju.a(this.a, paramURLDrawable);
+    acho.b("GdtDrawableLoader", "onLoadSuccessed " + acju.a(this.a));
+    acju.a(this.a, true);
+  }
 }
 
 

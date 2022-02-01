@@ -1,33 +1,40 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class bemg
-  implements TextWatcher
 {
-  public bemg(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  char jdField_a_of_type_Char;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString = "";
+  int b;
   
-  public void afterTextChanged(Editable paramEditable)
+  void a()
   {
-    if (paramEditable.length() == 0)
-    {
-      this.a.e();
-      this.a.a(false);
-      return;
-    }
-    this.a.jdField_a_of_type_Bemp.a();
-    this.a.jdField_a_of_type_Bemp.notifyDataSetChanged();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(false);
-    this.a.b = 0;
-    this.a.a(true);
-    paramEditable = paramEditable.toString();
-    this.a.b(paramEditable);
+    this.jdField_a_of_type_Char = '\000';
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof bemg)) {
+        return false;
+      }
+      paramObject = (bemg)paramObject;
+    } while ((this.jdField_a_of_type_Char == paramObject.jdField_a_of_type_Char) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b) && ((this.jdField_a_of_type_JavaLangString == paramObject.jdField_a_of_type_JavaLangString) || ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)))));
+    return false;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  @NonNull
+  public String toString()
+  {
+    return "[opcode=" + this.jdField_a_of_type_Char + ", chars=" + this.jdField_a_of_type_Int + ",lines=" + this.b + ", attribs=" + this.jdField_a_of_type_JavaLangString + "]";
+  }
 }
 
 

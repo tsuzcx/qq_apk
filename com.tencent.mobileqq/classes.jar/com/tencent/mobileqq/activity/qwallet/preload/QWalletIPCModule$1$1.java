@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import akbx;
+import akxq;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;

@@ -1,58 +1,72 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.InteractContainerLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
-import java.net.URI;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-class whi
-  implements xct
+public class whi
 {
-  whi(whh paramwhh) {}
+  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
+  private static whi jdField_a_of_type_Whi;
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public static whi a()
   {
-    paramString = BaseApplicationImpl.getContext();
-    Object localObject = new InteractContainerLayout(paramString);
-    ((InteractContainerLayout)localObject).a(this.a.a);
-    FrameLayout localFrameLayout = new FrameLayout(paramString);
-    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
-    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
-    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
-    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    ((InteractContainerLayout)localObject).a(this.a.a);
-    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    Canvas localCanvas = new Canvas((Bitmap)localObject);
-    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
-    localFrameLayout.draw(localCanvas);
-    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
-    if (yoy.a((Bitmap)localObject, paramString)) {
-      this.a.a("result", new File(paramString).toURI().toString());
-    }
-    for (;;)
+    if (jdField_a_of_type_Whi == null)
     {
-      ((Bitmap)localObject).recycle();
-      whh.a(this.a, true);
-      return;
-      this.a.a("result", this.a.a.mVideoThumbnailUrl);
+      jdField_a_of_type_Whi = new whi();
+      jdField_a_of_type_JavaUtilHashSet = new HashSet();
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      Iterator localIterator = ((wip)wjs.a(17)).a().iterator();
+      while (localIterator.hasNext())
+      {
+        CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
+        if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+        {
+          jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
+          jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+        }
+      }
     }
+    return jdField_a_of_type_Whi;
   }
   
-  public void a(String paramString, Throwable paramThrowable)
+  public int a(String paramString)
   {
-    this.a.a("result", this.a.a.mVideoThumbnailUrl);
-    whh.b(this.a, true);
+    paramString = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString == null) {
+      return -1;
+    }
+    return paramString.intValue();
+  }
+  
+  public void a()
+  {
+    jdField_a_of_type_JavaUtilHashSet.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    Iterator localIterator = ((wip)wjs.a(17)).a().iterator();
+    while (localIterator.hasNext())
+    {
+      CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
+      if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+      {
+        jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
+        jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+      }
+    }
+    ykq.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
+  }
+  
+  public boolean a(String paramString)
+  {
+    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+  }
+  
+  public void b()
+  {
+    jdField_a_of_type_JavaUtilHashSet.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    jdField_a_of_type_Whi = null;
   }
 }
 

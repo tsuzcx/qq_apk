@@ -1,16 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class agcn
-  implements View.OnTouchListener
+  implements agcd
 {
-  public agcn(HeartCombolEffectView paramHeartCombolEffectView) {}
+  public agcn(DoodlePanel paramDoodlePanel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    return true;
+    DoodlePanel.a(this.a);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 2)
+    {
+      if (!DoodlePanel.a(this.a))
+      {
+        DoodlePanel.a(this.a, true);
+        agco localagco = new agco(this);
+        bhdj.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131689891), null, this.a.getContext().getString(2131689882), localagco, null).show();
+      }
+      return;
+    }
+    QQToast.a(this.a.getContext(), this.a.getContext().getString(2131689884), 0).a();
   }
 }
 

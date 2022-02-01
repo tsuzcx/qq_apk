@@ -1,26 +1,91 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.RichMsg;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class acet
-  extends acew
 {
-  public int a()
+  private String a;
+  private String b;
+  
+  public acet(String paramString1, String paramString2)
   {
-    return super.a() + 6;
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  protected long a(long paramLong)
   {
-    new bblb().f(paramList, paramList1, paramStringBuilder, paramMsg, parambdyi);
-    return true;
+    return NetConnInfoCenter.servetTimeSecondInterv * 1000L + paramLong;
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  protected JSONObject a()
   {
-    return paramElem.rich_msg.has();
+    JSONObject localJSONObject = new JSONObject();
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    try
+    {
+      localJSONObject.put("app", String.valueOf(this.b));
+      localJSONObject.put("pkg", localBaseApplicationImpl.getPackageName());
+      localJSONObject.put("sv", "8.4.10");
+      localJSONObject.put("sdk_st", 2);
+      localJSONObject.put("ov", String.valueOf(Build.VERSION.RELEASE));
+      localJSONObject.put("os", 2);
+      return localJSONObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("GdtMvEndCardWebReportHelper", 1, "buildParams", localThrowable);
+    }
+    return localJSONObject;
+  }
+  
+  public void a(long paramLong)
+  {
+    a(paramLong, null);
+  }
+  
+  public void a(long paramLong, JSONObject paramJSONObject)
+  {
+    if (TextUtils.isEmpty(this.a))
+    {
+      QLog.i("GdtMvEndCardWebReportHelper", 1, "reportWebEndCardLoading traceId is empty");
+      return;
+    }
+    JSONObject localJSONObject1 = a();
+    if (localJSONObject1 == null)
+    {
+      QLog.i("GdtMvEndCardWebReportHelper", 1, "reportWebEndCardLoading local param is null");
+      return;
+    }
+    try
+    {
+      JSONArray localJSONArray = new JSONArray();
+      localJSONObject1.put("events", localJSONArray);
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("seq", 1);
+      localJSONObject2.put("ts", a(System.currentTimeMillis()));
+      localJSONObject2.put("ei", paramLong);
+      JSONObject localJSONObject3 = new JSONObject();
+      localJSONObject2.put("biz", localJSONObject3);
+      localJSONObject3.put("traceid", this.a);
+      if (paramJSONObject != null) {
+        localJSONObject2.put("ext", paramJSONObject);
+      }
+      localJSONArray.put(localJSONObject2);
+    }
+    catch (Throwable paramJSONObject)
+    {
+      for (;;)
+      {
+        QLog.e("GdtMvEndCardWebReportHelper", 1, "reportWebEndCardLoading buildParams", paramJSONObject);
+      }
+    }
+    QLog.i("GdtMvEndCardWebReportHelper", 1, "reportWebEndCardLoading " + localJSONObject1.toString());
+    acic.c(localJSONObject1);
   }
 }
 

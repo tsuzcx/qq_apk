@@ -1,23 +1,66 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.RemoteVideoPreviewCallback;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.2.1;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
 
 public class alnj
-  extends AVVideoCtrl.RemoteVideoPreviewCallback
+  implements TextWatcher
 {
-  alnj(alnh paramalnh) {}
+  public alnj(LoginView paramLoginView) {}
   
-  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  public void afterTextChanged(Editable paramEditable)
   {
-    Object localObject = alvx.a(alng.a(this.a.a));
-    if (localObject == null) {}
-    do
+    LoginView.c(this.a);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Object localObject;
+    if (paramCharSequence.length() > 0) {
+      if (this.a.b != null)
+      {
+        localObject = (alny)this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getAdapter();
+        if ((localObject != null) && (((alny)localObject).getCount() != 0)) {
+          break label139;
+        }
+        localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+        paramInt1 = (int)(15.0F * LoginView.a(this.a) + 0.5F);
+        if (((RelativeLayout.LayoutParams)localObject).rightMargin != paramInt1)
+        {
+          ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
+          this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+        this.a.b.setVisibility(0);
+      }
+    }
+    for (;;)
     {
+      if (paramCharSequence.length() <= 4) {
+        break label237;
+      }
+      this.a.b(paramCharSequence.toString());
       return;
-      localObject = ((alxy)localObject).a();
-    } while (localObject == null);
-    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.2.1(this, paramVideoFrame, (ApolloSurfaceView)localObject));
+      label139:
+      localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+      paramInt1 = (int)(40.0F * LoginView.a(this.a) + 0.5F);
+      if (((RelativeLayout.LayoutParams)localObject).rightMargin == paramInt1) {
+        break;
+      }
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
+      this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      break;
+      if ((this.a.b != null) && (this.a.b.isShown())) {
+        this.a.b.setVisibility(8);
+      }
+    }
+    label237:
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a(false, null);
   }
 }
 

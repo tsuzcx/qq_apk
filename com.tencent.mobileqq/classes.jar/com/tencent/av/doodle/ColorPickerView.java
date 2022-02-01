@@ -12,8 +12,8 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import llf;
-import llm;
+import lls;
+import llz;
 
 public class ColorPickerView
   extends View
@@ -59,29 +59,29 @@ public class ColorPickerView
   
   private void a(Context paramContext)
   {
-    setId(2131373268);
+    setId(2131373481);
     paramContext = paramContext.getResources();
-    this.jdField_a_of_type_Float = paramContext.getDimension(2131297661);
-    this.jdField_b_of_type_Float = paramContext.getDimension(2131297660);
-    this.jdField_c_of_type_Float = paramContext.getDimension(2131297658);
-    this.jdField_d_of_type_Float = paramContext.getDimension(2131297659);
-    this.jdField_e_of_type_Float = paramContext.getDimension(2131297664);
-    this.jdField_f_of_type_Float = paramContext.getDimension(2131297662);
-    this.g = paramContext.getDimension(2131297665);
-    this.h = paramContext.getDimension(2131297663);
-    this.i = paramContext.getDimension(2131297666);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842098);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842099);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842100);
-    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842101);
-    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842103);
-    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842102);
+    this.jdField_a_of_type_Float = paramContext.getDimension(2131297662);
+    this.jdField_b_of_type_Float = paramContext.getDimension(2131297661);
+    this.jdField_c_of_type_Float = paramContext.getDimension(2131297659);
+    this.jdField_d_of_type_Float = paramContext.getDimension(2131297660);
+    this.jdField_e_of_type_Float = paramContext.getDimension(2131297665);
+    this.jdField_f_of_type_Float = paramContext.getDimension(2131297663);
+    this.g = paramContext.getDimension(2131297666);
+    this.h = paramContext.getDimension(2131297664);
+    this.i = paramContext.getDimension(2131297667);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842112);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842113);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842114);
+    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842115);
+    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842117);
+    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842116);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(this.jdField_a_of_type_Int, PorterDuff.Mode.SRC_ATOP);
     this.jdField_e_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)(this.g - this.jdField_e_of_type_Float / 2.0F), (int)(this.jdField_b_of_type_Float / 2.0F), (int)(this.g + this.jdField_e_of_type_Float / 2.0F), (int)(this.jdField_b_of_type_Float / 2.0F + this.jdField_f_of_type_Float));
     this.jdField_f_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)(this.g - this.jdField_e_of_type_Float / 2.0F), (int)(this.jdField_b_of_type_Float / 2.0F + this.jdField_f_of_type_Float + this.h), (int)(this.g + this.jdField_e_of_type_Float / 2.0F), (int)(this.jdField_b_of_type_Float / 2.0F + this.jdField_f_of_type_Float + this.h + this.jdField_e_of_type_Float));
-    paramContext = llf.a();
+    paramContext = lls.a();
     this.jdField_a_of_type_Int = paramContext.jdField_a_of_type_Int;
     this.jdField_b_of_type_Int = paramContext.jdField_b_of_type_Int;
     this.j = paramContext.jdField_a_of_type_Float;
@@ -95,7 +95,7 @@ public class ColorPickerView
     f1 = this.h / 2.0F;
     f1 = (this.j - this.jdField_b_of_type_Float / 2.0F) / this.jdField_f_of_type_Float;
     Bitmap localBitmap = ((BitmapDrawable)this.jdField_e_of_type_AndroidGraphicsDrawableDrawable).getBitmap();
-    int k = llm.a((int)(localBitmap.getHeight() * f1), 0, localBitmap.getHeight() - 1);
+    int k = llz.a((int)(localBitmap.getHeight() * f1), 0, localBitmap.getHeight() - 1);
     this.jdField_a_of_type_Int = ((BitmapDrawable)this.jdField_e_of_type_AndroidGraphicsDrawableDrawable).getBitmap().getPixel(localBitmap.getWidth() / 2, k);
     this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(this.jdField_a_of_type_Int, PorterDuff.Mode.SRC_ATOP);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
@@ -107,7 +107,7 @@ public class ColorPickerView
   {
     getHeight();
     this.jdField_e_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    float f1 = llm.a(this.j, this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F + this.jdField_f_of_type_Float);
+    float f1 = llz.a(this.j, this.jdField_b_of_type_Float / 2.0F, this.jdField_b_of_type_Float / 2.0F + this.jdField_f_of_type_Float);
     Drawable localDrawable2;
     Drawable localDrawable1;
     switch (this.jdField_b_of_type_Int)
@@ -178,7 +178,7 @@ public class ColorPickerView
     {
       this.j = f2;
       a();
-      paramMotionEvent = (DoodleSurfaceView)((View)getParent()).findViewById(2131373278);
+      paramMotionEvent = (DoodleSurfaceView)((View)getParent()).findViewById(2131373491);
       if (paramMotionEvent != null) {
         paramMotionEvent.setColor(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.j);
       }

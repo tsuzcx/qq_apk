@@ -1,19 +1,50 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class attj
-  implements CompoundButton.OnCheckedChangeListener
+final class attj
+  implements View.OnClickListener
 {
-  public attj(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  attj(String paramString, atuw paramatuw) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ((avnl)this.a.a.getManager(303)).a((short)-23166, paramBoolean, true);
-    bcef.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 3, 3, "", "", "", "");
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    for (;;)
+    {
+      try
+      {
+        localattk = new attk(this);
+        localaucx = aucx.a(this.jdField_a_of_type_JavaLangString);
+        if (localaucx != null) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.w("FileOperaterUtils", 2, "error. get filemodel null, filepath[ " + this.jdField_a_of_type_JavaLangString + "]");
+        }
+      }
+      catch (Exception localException)
+      {
+        attk localattk;
+        aucx localaucx;
+        continue;
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (localaucx.a(false))
+      {
+        if (!NetworkUtil.isNetSupportHw(BaseApplicationImpl.getContext())) {
+          audr.a(2131693091);
+        } else if (bixr.a(this.jdField_a_of_type_Atuw.getActivity(), 5, new attl(this, localattk))) {
+          audn.a(this.jdField_a_of_type_Atuw.getActivity(), 2131692476, 2131692479, localattk);
+        }
+      }
+      else {
+        localattk.onYes();
+      }
+    }
   }
 }
 

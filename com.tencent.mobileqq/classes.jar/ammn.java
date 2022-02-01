@@ -1,29 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.data.ApolloActionData;
+import android.os.Bundle;
 import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-public class ammn
-  implements View.OnClickListener
+class ammn
+  extends bhyn
 {
-  public ammn(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData) {}
+  ammn(amme paramamme) {}
   
-  public void onClick(View paramView)
+  public void onDone(bhyo parambhyo)
   {
-    amlu localamlu = new amlu();
-    localamlu.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData;
-    if (ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel) != null) {
-      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).c(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, localamlu);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager", 2, "download panel json done httpCode: " + parambhyo.f + ", status: " + parambhyo.a());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "unlockedpreview", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
+  }
+  
+  public void onDoneFile(bhyo parambhyo)
+  {
+    if (parambhyo == null) {}
+    Bundle localBundle;
+    do
+    {
+      return;
+      localBundle = parambhyo.a();
+    } while (localBundle == null);
+    int i = localBundle.getInt(parambhyo.c);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager", 2, "[onDoneFile], taskType:" + i + ",httpCode: " + parambhyo.f + ", status: " + parambhyo.a() + ",task.currUrl:" + parambhyo.c);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (1 == i) {}
+    try
+    {
+      super.onDone(parambhyo);
+      if (parambhyo.a() != 3) {
+        this.a.jdField_a_of_type_Anlu.a(Boolean.valueOf(false));
+      }
+      this.a.b();
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "json_download_success", 0, 0, new String[0]);
+      return;
+    }
+    catch (Exception parambhyo)
+    {
+      QLog.e("ApolloManager", 1, "read apollo panel json content fail", parambhyo);
+    }
   }
 }
 

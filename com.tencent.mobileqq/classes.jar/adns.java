@@ -1,22 +1,25 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class adns
-  extends adnm
+class adns
+  implements DialogInterface.OnCancelListener
 {
-  public adns(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
+  adns(adnr paramadnr) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.b.d();
+    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adns
  * JD-Core Version:    0.7.0.1
  */

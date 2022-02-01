@@ -1,27 +1,66 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserSimpleInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.mobileqq.text.QQText;
 import java.util.List;
 
 public class wgq
-  extends vqm
+  extends zhi<CommentEntry>
 {
-  public long a;
-  public List<qqstory_struct.UserSimpleInfo> a;
-  public long b;
+  boolean jdField_a_of_type_Boolean;
   
-  public wgq(String paramString, qqstory_service.RspGetFeedVisitor paramRspGetFeedVisitor)
+  public wgq(int paramInt, List<CommentEntry> paramList, boolean paramBoolean)
   {
-    super(paramRspGetFeedVisitor.result);
-    this.b = paramRspGetFeedVisitor.view_total_num.get();
-    this.jdField_a_of_type_JavaUtilList = paramRspGetFeedVisitor.user_list.get();
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilList.size();
+    super(paramList, paramBoolean);
+    boolean bool;
+    this.jdField_a_of_type_Boolean = bool;
   }
   
-  public String toString()
+  public void a(int paramInt, CommentEntry paramCommentEntry, yhc paramyhc)
   {
-    return "GetVideoWatcherListResponse{totalReadTime=" + this.b + "totalWatcherCount=" + this.jdField_a_of_type_Long + ", userList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    if (paramCommentEntry == null) {
+      ykq.e("FeedCommentLego", "FeedComment getView. data is null.");
+    }
+    Object localObject2;
+    Object localObject1;
+    do
+    {
+      do
+      {
+        return;
+        localObject2 = (TextView)paramyhc.a(2131364922);
+        paramyhc = paramCommentEntry.commentId + paramCommentEntry.feedId + paramCommentEntry.status;
+        localObject1 = who.a().a(paramyhc);
+        if ((localObject1 != null) && (this.jdField_a_of_type_Boolean))
+        {
+          ((TextView)localObject2).setText((CharSequence)localObject1);
+          ((TextView)localObject2).setSpannableFactory(QQText.SPANNABLE_FACTORY);
+          ((TextView)localObject2).setOnTouchListener(wgm.a(this.jdField_a_of_type_Wgm));
+          return;
+        }
+        localObject1 = xwj.a(this.jdField_a_of_type_Wgm.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wgm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, paramCommentEntry, wgm.a(this.jdField_a_of_type_Wgm));
+        if (QQStoryContext.a()) {
+          ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(this.jdField_a_of_type_Wgm.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166511)), 0, ((SpannableStringBuilder)localObject1).length(), 33);
+        }
+        ((TextView)localObject2).setText((CharSequence)localObject1);
+        ((TextView)localObject2).setSpannableFactory(QQText.SPANNABLE_FACTORY);
+        ((TextView)localObject2).setOnTouchListener(wgm.a(this.jdField_a_of_type_Wgm));
+        wke localwke = (wke)wjs.a(2);
+        localObject2 = localwke.b(paramCommentEntry.authorUnionId);
+        if (!paramCommentEntry.isReply()) {
+          break;
+        }
+        paramCommentEntry = localwke.b(paramCommentEntry.replierUnionId);
+      } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()) || (paramCommentEntry == null) || (!paramCommentEntry.isAvailable()));
+      who.a().a(paramyhc, (CharSequence)localObject1);
+      return;
+    } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()));
+    who.a().a(paramyhc, (CharSequence)localObject1);
   }
 }
 

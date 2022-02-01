@@ -45,12 +45,12 @@ public class FootNavigationLayout
   
   private void init()
   {
-    LayoutInflater.from(getContext()).inflate(2131562349, this);
-    this.container = ((ViewGroup)findViewById(2131369038));
-    this.items = new ViewGroup[] { (ViewGroup)findViewById(2131366716), (ViewGroup)findViewById(2131376972), (ViewGroup)findViewById(2131378574) };
-    this.arrows = new ImageView[] { (ImageView)findViewById(2131366717), (ImageView)findViewById(2131376973), (ImageView)findViewById(2131378575) };
-    this.texts = new TextView[] { (TextView)findViewById(2131366718), (TextView)findViewById(2131376974), (TextView)findViewById(2131378576) };
-    this.dividers = new View[] { null, findViewById(2131365667), findViewById(2131365668) };
+    LayoutInflater.from(getContext()).inflate(2131562417, this);
+    this.container = ((ViewGroup)findViewById(2131369201));
+    this.items = new ViewGroup[] { (ViewGroup)findViewById(2131366832), (ViewGroup)findViewById(2131377244), (ViewGroup)findViewById(2131378868) };
+    this.arrows = new ImageView[] { (ImageView)findViewById(2131366833), (ImageView)findViewById(2131377245), (ImageView)findViewById(2131378869) };
+    this.texts = new TextView[] { (TextView)findViewById(2131366834), (TextView)findViewById(2131377246), (TextView)findViewById(2131378870) };
+    this.dividers = new View[] { null, findViewById(2131365761), findViewById(2131365762) };
   }
   
   public void setArrowVisible(int paramInt)
@@ -94,7 +94,7 @@ public class FootNavigationLayout
       {
         localObject2 = localObject1[i];
         if (localObject2 != null) {
-          localObject2.setBackgroundResource(2130848378);
+          localObject2.setBackgroundResource(2130848469);
         }
         i += 1;
       }
@@ -118,7 +118,7 @@ public class FootNavigationLayout
     {
       localObject2 = localObject1[i];
       if (localObject2 != null) {
-        localObject2.setBackgroundResource(2130848377);
+        localObject2.setBackgroundResource(2130848468);
       }
       i += 1;
     }

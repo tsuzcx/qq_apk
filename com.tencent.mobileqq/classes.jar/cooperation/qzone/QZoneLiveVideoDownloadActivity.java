@@ -98,7 +98,7 @@ public class QZoneLiveVideoDownloadActivity
     if (paramPluginManagerClient == null)
     {
       QZLog.w("QZoneLiveVideoDownloadActivity", "[onPluginManagerLoaded] pInterface is null");
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131716822);
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131717185);
       QQToast.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
       return;
     }
@@ -113,7 +113,7 @@ public class QZoneLiveVideoDownloadActivity
     if (paramPluginManagerClient == null)
     {
       QLog.w("QZoneLiveVideoDownloadActivity", 2, "[onPluginManagerLoaded] PluginBaseInfo is null, isReady=" + this.mPluginManager.isReady());
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131716822);
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131717185);
       QQToast.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
       return;
     }

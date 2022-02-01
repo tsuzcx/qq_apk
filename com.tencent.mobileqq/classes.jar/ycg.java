@@ -1,83 +1,183 @@
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.view.animation.LinearInterpolator;
-import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class ycg
-  extends ygw
 {
-  public final RectF a;
-  public final Drawable a;
-  public final String d;
-  public final String e;
+  private static ycd jdField_a_of_type_Ycd = new ycd();
+  public int a;
+  private String jdField_a_of_type_JavaLangString = "";
+  public List<ycc> a;
+  public boolean a;
+  private int b;
   
-  public ycg(ycc paramycc, @NonNull Drawable paramDrawable, @NonNull yck paramyck, String paramString1, String paramString2)
+  public ycg()
   {
-    super(paramyck.jdField_a_of_type_AndroidGraphicsPointF, paramyck.jdField_a_of_type_Float, paramyck.jdField_b_of_type_Float, paramyck.c, paramyck.d, paramyck.jdField_a_of_type_Int, paramyck.jdField_b_of_type_Int, true);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_d_of_type_JavaLangString = paramString1;
-    this.e = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramDrawable.getBounds());
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(Canvas paramCanvas)
+  public ycg(ycg paramycg)
   {
-    float f2 = this.n;
-    float f1 = this.o;
-    if (f2 * this.j < 200.0F) {
-      f2 = 200.0F / this.j;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramycg.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_JavaLangString = paramycg.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramycg.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Int = paramycg.jdField_a_of_type_Int;
+    this.b = paramycg.b;
+  }
+  
+  private boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public ych a(int paramInt1, int paramInt2)
+  {
+    boolean bool = true;
+    int i;
+    ArrayList localArrayList;
+    for (;;)
+    {
+      try
+      {
+        ych localych1 = new ych();
+        if (paramInt1 == 0)
+        {
+          localych1.jdField_a_of_type_Boolean = bool;
+          if (this.jdField_a_of_type_JavaUtilList.size() <= paramInt1) {
+            break label330;
+          }
+          i = paramInt2;
+          if (paramInt1 + paramInt2 > this.jdField_a_of_type_JavaUtilList.size()) {
+            i = this.jdField_a_of_type_JavaUtilList.size() - paramInt1;
+          }
+          if ((paramInt1 + i >= this.jdField_a_of_type_JavaUtilList.size()) && (a())) {
+            localych1.b = true;
+          }
+          localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+          localych1.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt1 + i);
+          paramInt2 = paramInt1 + i;
+          if (paramInt2 >= this.jdField_a_of_type_JavaUtilList.size()) {
+            break label309;
+          }
+          ycc localycc1 = (ycc)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
+          Iterator localIterator = localych1.jdField_a_of_type_JavaUtilList.iterator();
+          if (!localycc1.b) {
+            break label309;
+          }
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          ycc localycc2 = (ycc)localIterator.next();
+          if ((!localycc2.b) || (!localycc2.c.equals(localycc1.c))) {
+            continue;
+          }
+          localIterator.remove();
+          ykq.d("Q.qqstory.home.data.FeedListPageLoaderBase", "remove one fail info:%s", new Object[] { localycc2 });
+          continue;
+        }
+        bool = false;
+      }
+      finally {}
     }
-    if (this.j * f1 < 200.0F) {
-      f1 = 200.0F / this.j;
+    if (localych2.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      localych2.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt1 + i);
+      ykq.d("Q.qqstory.home.data.FeedListPageLoaderBase", "bad luck for you have too much fail %s", new Object[] { localych2.jdField_a_of_type_JavaUtilList });
     }
-    paramCanvas.save();
-    paramCanvas.concat(this.b.a.a(this));
-    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.restore();
-    if (this.jdField_d_of_type_Boolean) {
-      DisplayUtil.drawEditRect(paramCanvas, this.b.a, this, 0, 2130844512, 2130844519);
+    for (;;)
+    {
+      label309:
+      this.b = (localych2.jdField_a_of_type_JavaUtilList.size() + paramInt1);
+      return localych2;
+      label330:
+      localych2.b = a();
     }
   }
   
-  public void a(Canvas paramCanvas, boolean paramBoolean)
+  public void a()
   {
-    float f2 = this.n;
-    float f1 = this.o;
-    if (f2 * this.j < 200.0F) {
-      f2 = 200.0F / this.j;
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaLangString = "";
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Int = 0;
+      this.b = 0;
+      return;
     }
-    if (this.j * f1 < 200.0F) {
-      f1 = 200.0F / this.j;
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
-    paramCanvas.save();
-    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.restore();
+  }
+  
+  public void a(List<ycc> paramList, String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      ykq.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId list:set next cookie data count:%d, cookie:%s, isEnd:%b", new Object[] { Integer.valueOf(paramList.size()), paramString, Boolean.valueOf(paramBoolean) });
+      ykq.a("Q.qqstory.home.data.FeedListPageLoaderBase", "add feed list:%s", paramList);
+      return;
+    }
+    finally
+    {
+      paramList = finally;
+      throw paramList;
+    }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+    try
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F, 1.0F });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ych(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new yci(this));
+      this.jdField_a_of_type_Int = this.b;
+      return;
     }
-    if (!this.c) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.c)) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    try
+    {
+      if (ykq.a()) {
+        ykq.a("Q.qqstory.home.data.FeedListPageLoaderBase", "before sort curpos:%d -- %s", Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilList);
+      }
+      Collections.sort(this.jdField_a_of_type_JavaUtilList, jdField_a_of_type_Ycd);
+      if (ykq.a()) {
+        ykq.a("Q.qqstory.home.data.FeedListPageLoaderBase", "after* sort curpos:%d -- %s", Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilList);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public String toString()
+  {
+    try
+    {
+      String str = "FeedIdListCache{mFeedIdListCache=" + this.jdField_a_of_type_JavaUtilList + ", mFeedIdNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mCurFeedIdPosition=" + this.jdField_a_of_type_Int + ", mTempFeedIdPosition=" + this.b + '}';
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }

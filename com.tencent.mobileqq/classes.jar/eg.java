@@ -1,5 +1,6 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
@@ -29,7 +30,7 @@ class eg
     for (;;)
     {
       localDataLineMsgSet.setPaused(true);
-      ((amqd)this.a.a.getBusinessHandler(8)).a(localDataLineMsgSet.getGroupId(), l, false);
+      ((ansr)this.a.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(localDataLineMsgSet.getGroupId(), l, false);
       ee.a(this.a, localek, localDataLineMsgSet);
       break;
       QLog.e("DatalineSessionAdapterUseNewFileBubble", 1, "stop recv but no sessionid");

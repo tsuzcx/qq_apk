@@ -6,8 +6,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import aqsk;
-import bbko;
+import arvy;
+import bcrg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -140,7 +140,7 @@ public class DBFixManager
       paramContext.commit();
       QLog.d(o, 1, new Object[] { "onCorruptionInstant, start activity and write sp ", Integer.valueOf(i1), " onCorrupt: ", Boolean.valueOf(paramBoolean) });
       return;
-      new aqsk(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
+      new arvy(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
     }
   }
   
@@ -207,7 +207,7 @@ public class DBFixManager
       localEditor.remove(str + jdField_e_of_type_JavaLangString);
       localEditor.commit();
     }
-    bbko.j();
+    bcrg.j();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("acc_info" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit().putBoolean("isFriendlistok", false).commit();
     QLog.d(o, 1, "cleared friendlist flag");
   }
@@ -235,7 +235,7 @@ public class DBFixManager
   
   public boolean b()
   {
-    return aqsk.a != null;
+    return arvy.a != null;
   }
   
   public void c()
@@ -261,7 +261,7 @@ public class DBFixManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixManager
  * JD-Core Version:    0.7.0.1
  */

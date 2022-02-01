@@ -20,12 +20,10 @@ public class b
   
   public static void a(String paramString, a parama)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (parama != null))
+    if ((!TextUtils.isEmpty(paramString)) && (parama != null) && (a.get(paramString) == null))
     {
       parama.q = com.tencent.qapmsdk.dns.b.b.b(parama.d);
-      if (a.get(paramString) == null) {
-        a.put(paramString, parama);
-      }
+      a.put(paramString, parama);
     }
   }
   

@@ -5,33 +5,33 @@ import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.os.Looper;
 import com.tencent.avcore.jni.data.SDKConfigInfo;
-import mwc;
-import mwl;
-import mwm;
-import mwn;
-import mwr;
-import mws;
-import mwv;
-import mwx;
+import nbp;
+import nca;
+import ncc;
+import ncd;
+import nch;
+import nci;
+import ncl;
+import ncn;
 
 public class MavEngineJni
-  implements mwr
+  implements nch
 {
   static final String TAG = "MavEngineJni";
-  protected final mwl mAdapter;
+  protected final nca mAdapter;
   private int mAppId;
-  protected mwx mEventCallback;
+  protected ncn mEventCallback;
   protected MavEngineJni.NativeEventHandler mEventHandler;
-  protected mwm mEventListener;
-  protected mws mNetChannel;
-  protected final mwc mSysInfo;
+  protected ncc mEventListener;
+  protected nci mNetChannel;
+  protected final nbp mSysInfo;
   
-  MavEngineJni(mwc parammwc, mwl parammwl)
+  MavEngineJni(nbp paramnbp, nca paramnca)
   {
-    this.mSysInfo = parammwc;
-    this.mAdapter = parammwl;
+    this.mSysInfo = paramnbp;
+    this.mAdapter = paramnca;
     this.mEventCallback = this.mAdapter.getNativeEventProcessor();
-    mwv.c("MavEngineJni", "MavEngineJni, callback[" + this.mEventCallback + "]");
+    ncl.c("MavEngineJni", "MavEngineJni, callback[" + this.mEventCallback + "]");
   }
   
   private String getAppId()
@@ -44,8 +44,8 @@ public class MavEngineJni
     }
     catch (Exception localException)
     {
-      while (!mwv.c()) {}
-      mwv.a("MavEngineJni", "getAppId", localException);
+      while (!ncl.c()) {}
+      ncl.a("MavEngineJni", "getAppId", localException);
     }
     return str;
     return "";
@@ -61,7 +61,7 @@ public class MavEngineJni
   
   private String getDeviceName()
   {
-    return mwc.b();
+    return nbp.b();
   }
   
   private int getOsType()
@@ -138,24 +138,24 @@ public class MavEngineJni
     while (this.mEventHandler == null) {
       return;
     }
-    mwn localmwn = new mwn();
-    localmwn.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    localmwn.jdField_a_of_type_Long = paramLong2;
-    localmwn.jdField_b_of_type_Long = paramLong1;
-    localmwn.c = paramInt2;
-    localmwn.jdField_a_of_type_Int = paramInt3;
-    localmwn.jdField_b_of_type_Int = paramInt4;
+    ncd localncd = new ncd();
+    localncd.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    localncd.jdField_a_of_type_Long = paramLong2;
+    localncd.jdField_b_of_type_Long = paramLong1;
+    localncd.c = paramInt2;
+    localncd.jdField_a_of_type_Int = paramInt3;
+    localncd.jdField_b_of_type_Int = paramInt4;
     if (paramArrayOfByte == null) {}
     for (paramInt2 = 0;; paramInt2 = paramArrayOfByte.length)
     {
-      localmwn.d = paramInt2;
-      localmwn.e = paramInt6;
+      localncd.d = paramInt2;
+      localncd.e = paramInt6;
       paramArrayOfByte = this.mEventHandler.obtainMessage();
       if (paramArrayOfByte == null) {
         break;
       }
       paramArrayOfByte.what = paramInt1;
-      paramArrayOfByte.obj = localmwn;
+      paramArrayOfByte.obj = localncd;
       this.mEventHandler.sendMessage(paramArrayOfByte);
       return;
     }
@@ -168,15 +168,15 @@ public class MavEngineJni
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 33	com/tencent/avcore/jni/mav/MavEngineJni:mAdapter	Lmwl;
+    //   3: getfield 33	com/tencent/avcore/jni/mav/MavEngineJni:mAdapter	Lnca;
     //   6: ifnull +25 -> 31
     //   9: aload_0
-    //   10: getfield 33	com/tencent/avcore/jni/mav/MavEngineJni:mAdapter	Lmwl;
+    //   10: getfield 33	com/tencent/avcore/jni/mav/MavEngineJni:mAdapter	Lnca;
     //   13: invokeinterface 180 1 0
     //   18: astore_1
     //   19: aload_1
-    //   20: invokestatic 185	mwb:a	(Landroid/content/Context;)Lmwb;
-    //   23: invokevirtual 187	mwb:a	()Ljava/lang/String;
+    //   20: invokestatic 185	nbo:a	(Landroid/content/Context;)Lnbo;
+    //   23: invokevirtual 187	nbo:a	()Ljava/lang/String;
     //   26: astore_1
     //   27: aload_0
     //   28: monitorexit
@@ -326,15 +326,15 @@ public class MavEngineJni
   
   native int setAudioOutputMode(int paramInt);
   
-  public void setEventListener(mwm parammwm)
+  public void setEventListener(ncc paramncc)
   {
-    this.mEventListener = parammwm;
+    this.mEventListener = paramncc;
     Looper localLooper2 = Looper.getMainLooper();
     Looper localLooper1 = localLooper2;
     if (localLooper2 == null) {
       localLooper1 = Looper.myLooper();
     }
-    this.mEventHandler = new MavEngineJni.NativeEventHandler(localLooper1, parammwm, this.mEventCallback);
+    this.mEventHandler = new MavEngineJni.NativeEventHandler(localLooper1, paramncc, this.mEventCallback);
   }
   
   native int setHowlingDetectEnable(boolean paramBoolean);
@@ -343,9 +343,9 @@ public class MavEngineJni
   
   native boolean setMicMode(int paramInt);
   
-  public void setNetChannel(mws parammws)
+  public void setNetChannel(nci paramnci)
   {
-    this.mNetChannel = parammws;
+    this.mNetChannel = paramnci;
     this.mNetChannel.a(this);
   }
   

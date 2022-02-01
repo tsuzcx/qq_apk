@@ -1,27 +1,21 @@
-import GROUP.MessageRemindRsp;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class afjr
-  extends anam
 {
-  public afjr(TroopChatPie paramTroopChatPie) {}
+  public int a;
+  public Entity a;
+  public String a;
   
-  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp)
+  public afjr(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, Entity paramEntity)
   {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("vip_pretty." + this.a.tag, 2, "SVIPObserver.onGetBigTroopExpiredInfo, troopUin: " + this.a.sessionInfo.curFriendUin + " iFreezedType=" + paramMessageRemindRsp.iFreezedType + " iLhGroupExpiredTime=" + paramMessageRemindRsp.iLhGroupExpiredTime + " iGroupType=" + paramMessageRemindRsp.iGroupType);
-      }
-      ((TroopManager)this.a.app.getManager(52)).a(this.a.sessionInfo.curFriendUin, paramMessageRemindRsp);
-      TroopManager.a(paramMessageRemindRsp, this.a.app, this.a.sessionInfo.curFriendUin, this.a.mContext, this.a, this.a.mTipsMgr);
-      return;
-    }
-    QLog.e("vip_pretty." + this.a.tag, 2, String.format("SVIPObserver.onGetBigTroopExpiredInfo, troopUin: %s, isSuccess: false", new Object[] { this.a.sessionInfo.curFriendUin }));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

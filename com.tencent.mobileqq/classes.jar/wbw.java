@@ -1,15 +1,6 @@
-import java.util.List;
-
-public class wbw
-  extends vko
+public abstract interface wbw
 {
-  public List<String> a;
-  public List<wfa> b;
-  
-  public String toString()
-  {
-    return "GetStoryPlayerTagInfoEvent{requestVidList=" + this.a + ", tagVidList=" + this.b + '}';
-  }
+  public abstract void a(int paramInt);
 }
 
 

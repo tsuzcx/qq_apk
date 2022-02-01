@@ -1,36 +1,25 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import org.jetbrains.annotations.NotNull;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ous
-  extends ClickableSpan
+public class ous
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ous(ouo paramouo, BaseCommentData paramBaseCommentData, String paramString1, String paramString2) {}
+  public ous(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(@NotNull View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAuthorReply()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage))) {
-      oto.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage, BaseActivity.sTopActivity);
-    }
-    for (;;)
+    String str2 = bmhv.a();
+    if (paramBoolean) {}
+    for (String str1 = "1";; str1 = "0")
     {
-      odq.a(null, oto.a(this.jdField_a_of_type_Ouo.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Ouo.a.mArticleID), String.valueOf(this.jdField_a_of_type_Ouo.a.mAlgorithmID), this.jdField_a_of_type_Ouo.a.innerUniqueID, this.b, false);
+      olh.a(null, "CliOper", "", "", "0X800AFEB", "0X800AFEB", 0, 0, str2, str1, "", pqf.a(), false);
+      bmhv.a((QQAppInterface)this.a.getAppInterface(), paramBoolean, new ouy(this.a, paramBoolean));
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      oto.a(this.jdField_a_of_type_JavaLangString, BaseActivity.sTopActivity);
     }
-  }
-  
-  public void updateDrawState(@NotNull TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#376099"));
-    paramTextPaint.setUnderlineText(false);
   }
 }
 

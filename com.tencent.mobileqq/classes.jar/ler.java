@@ -1,47 +1,33 @@
 import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
-public class ler
+class ler
+  extends BroadcastReceiver
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  ler(leq paramleq) {}
   
-  public ler(VideoAppInterface paramVideoAppInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new let(paramVideoAppInterface, null);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a()
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.qav.notify.accept");
-    localIntentFilter.addAction("com.tencent.qav.notify.refuse");
-    localIntentFilter.addAction("tencent.video.q2v.ptusoDownloadRet");
-    localIntentFilter.addAction("tencent.video.q2v.ptuLibpagDownloadRet");
-    localIntentFilter.addAction("tencent.video.q2v.avReceivePushMsg");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    this.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("QAVNotifyActionMonitor", 2, "register");
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
-    }
+      do
+      {
+        return;
+        paramContext = leq.a(this.a).a();
+      } while (paramContext == null);
+      if (QLog.isColorLevel()) {
+        QLog.d("GVipFunCallMonitor", 2, "recv vipfuncall msg broadcast: " + paramIntent.getAction());
+      }
+    } while (!paramIntent.getAction().equals("tencent.video.q2v.AnnimateDownloadFinish"));
     if (QLog.isColorLevel()) {
-      QLog.i("QAVNotifyActionMonitor", 2, "unRegister");
+      QLog.d("GVipFunCallMonitor", 2, "ACTION_ANNIMATE_DOWNLOAD_FINISH");
     }
+    paramContext.e(paramIntent.getIntExtra("fun_call_id", 0));
   }
 }
 

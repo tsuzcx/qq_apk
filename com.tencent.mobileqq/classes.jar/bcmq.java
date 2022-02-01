@@ -1,27 +1,29 @@
-import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class bcmq
-  extends CountDownTimer.CountDownTimerListener
 {
-  public bcmq(CountdownTextView paramCountdownTextView, long paramLong, bcmr parambcmr)
-  {
-    super(paramLong);
-  }
+  public static final String a = anvx.a(2131702289);
+  public static final String b = anvx.a(2131702316);
+  public static final String c = anvx.a(2131702288);
+  public static final String d = anvx.a(2131702287);
   
-  public void onFinish()
+  public static String a(long paramLong)
   {
-    if (this.jdField_a_of_type_Bcmr != null) {
-      this.jdField_a_of_type_Bcmr.a();
+    long l = System.currentTimeMillis() / 1000L - paramLong;
+    if ((l >= 0L) && (l < 60L)) {
+      return a;
     }
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
-  }
-  
-  public void onTick(long paramLong)
-  {
-    if (this.jdField_a_of_type_Bcmr != null) {
-      this.jdField_a_of_type_Bcmr.a(paramLong);
+    if ((l >= 60L) && (l < 3600L)) {
+      return l / 60L + b;
     }
+    if ((l >= 3600L) && (l < 86400L)) {
+      return l / 3600L + c;
+    }
+    if ((l >= 86400L) && (l < 432000L)) {
+      return l / 86400L + d;
+    }
+    return new SimpleDateFormat("yyyy-MM-dd").format(Long.valueOf(paramLong * 1000L));
   }
 }
 

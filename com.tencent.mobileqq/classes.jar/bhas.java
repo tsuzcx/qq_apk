@@ -1,26 +1,66 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.AnimatorSet;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class bhas
-  extends Handler
+final class bhas
+  implements bhat<T>
 {
-  bhas(bhar parambhar, Looper paramLooper)
+  bhas(AtomicBoolean paramAtomicBoolean, ayvn paramayvn, bhat parambhat, WebView paramWebView, AnimatorSet paramAnimatorSet) {}
+  
+  public T a(Bitmap paramBitmap)
   {
-    super(paramLooper);
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      QLog.e("ScreenShotUtil", 1, "onScreenshotFinish isCanceled");
+      this.jdField_a_of_type_Ayvn.dismiss();
+      return null;
+    }
+    if (paramBitmap == null)
+    {
+      QLog.e("ScreenShotUtil", 1, "onScreenshotFinish bitmap is null");
+      this.jdField_a_of_type_Ayvn.dismiss();
+      return null;
+    }
+    return this.jdField_a_of_type_Bhat.a(paramBitmap);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(Exception paramException)
   {
-    int i = paramMessage.arg1;
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Bhat.a(paramException);
+    this.jdField_a_of_type_Ayvn.dismiss();
+  }
+  
+  public void a(T paramT, Bitmap paramBitmap)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-    default: 
+      QLog.e("ScreenShotUtil", 1, "postBitmap isCanceled");
+      this.jdField_a_of_type_Ayvn.dismiss();
       return;
     }
-    ((bhab)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(107)).notifyUI(3, true, Integer.valueOf(i));
+    if (paramT == null)
+    {
+      QLog.e("ScreenShotUtil", 1, "postBitmap t is null");
+      this.jdField_a_of_type_Ayvn.dismiss();
+      return;
+    }
+    if (paramBitmap == null)
+    {
+      QLog.e("ScreenShotUtil", 1, "postBitmap bitmap is null");
+      this.jdField_a_of_type_Ayvn.dismiss();
+      this.jdField_a_of_type_Bhat.a(new NullPointerException("postBitmap bitmap is null"));
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext() != null) && (this.jdField_a_of_type_Ayvn.isShowing()))
+    {
+      if (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning()) {
+        this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
+      }
+      this.jdField_a_of_type_Ayvn.dismiss();
+    }
+    this.jdField_a_of_type_Bhat.a(paramT, paramBitmap);
   }
 }
 

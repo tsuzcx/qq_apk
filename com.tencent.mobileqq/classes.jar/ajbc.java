@@ -1,139 +1,88 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopLinkFragment;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import com.tencent.mobileqq.activity.history.link.TroopLinkHandler.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetEngineFactory;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import mqq.app.TicketManagerImpl;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.SwipListView;
 
 public class ajbc
-  implements INetEngine.INetEngineListener
+  implements AbsListView.OnScrollListener
 {
-  private long jdField_a_of_type_Long;
-  @NonNull
-  private ajbb jdField_a_of_type_Ajbb;
-  private final ChatHistoryTroopLinkFragment jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+  public ajbc(SystemMsgListView paramSystemMsgListView) {}
   
-  public ajbc(QQAppInterface paramQQAppInterface, ChatHistoryTroopLinkFragment paramChatHistoryTroopLinkFragment, @NonNull ajbb paramajbb)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment = paramChatHistoryTroopLinkFragment;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = ((NetEngineFactory)paramQQAppInterface.getManager(21)).getEngineInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-    this.jdField_a_of_type_Ajbb = paramajbb;
-  }
-  
-  private ArrayList<TroopLinkElement> a(JSONObject paramJSONObject)
-  {
-    paramJSONObject = paramJSONObject.optJSONArray("url_list");
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONObject == null) {
-      return localArrayList;
-    }
-    int i = 0;
-    while (i < paramJSONObject.length())
+    SystemMsgListView.a(this.a, paramInt1);
+    SystemMsgListView.a(this.a, paramInt1 + paramInt2 - 1);
+    if (SystemMsgListView.a(this.a).b() == 23)
     {
-      JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-      localArrayList.add(TroopLinkElement.mergeFromJson(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopLinkFragment.a(), localJSONObject));
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  private void a(NetResp paramNetResp)
-  {
-    try
-    {
-      paramNetResp = new JSONObject(new String(paramNetResp.mRespData));
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopLinkHandler", 2, "resolveResponse: invoked.  json: " + paramNetResp);
+      if (paramInt1 >= 1)
+      {
+        paramAbsListView = (aiyz)SystemMsgListView.a(this.a).getItem(paramInt1 - 1);
+        if ((paramAbsListView instanceof aiyv)) {
+          ((aiyv)paramAbsListView).c();
+        }
       }
-      a(true, a(paramNetResp));
-      a(paramNetResp);
-      return;
+      if (paramInt1 + paramInt2 < paramInt3)
+      {
+        paramAbsListView = (aiyz)SystemMsgListView.a(this.a).getItem(paramInt1 + paramInt2);
+        if ((paramAbsListView instanceof aiyv)) {
+          ((aiyv)paramAbsListView).c();
+        }
+      }
     }
-    catch (Exception paramNetResp)
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    int i = 0;
+    int j;
+    int k;
+    if (SystemMsgListView.a(this.a) != null)
     {
-      QLog.e("TroopLinkHandler", 1, "resolveResponse: failed. ", paramNetResp);
-      a(false, new ArrayList());
+      if ((paramInt == 0) || (paramInt == 1)) {
+        break label240;
+      }
+      SystemMsgListView.a(this.a).e();
+      if (paramInt == 0)
+      {
+        SystemMsgListView.a(this.a).k();
+        j = SystemMsgListView.a(this.a).b();
+        if (SystemMsgListView.a(this.a) >= SystemMsgListView.a(this.a).getCount() - 2)
+        {
+          paramAbsListView = SystemMsgListView.a(this.a).a();
+          if ((paramAbsListView != null) && (paramAbsListView.a()) && (paramAbsListView.a >= 0) && (SystemMsgListView.a(this.a).a(j)))
+          {
+            Bundle localBundle = new Bundle();
+            localBundle.putString("from", "4");
+            SystemMsgListView.a(this.a).b(4, paramAbsListView.a, localBundle);
+          }
+        }
+        k = SystemMsgListView.a(this.a).getFirstVisiblePosition();
+        paramAbsListView = SystemMsgListView.a(this.a).getChildAt(0);
+        if (paramAbsListView != null) {
+          break label263;
+        }
+      }
     }
-  }
-  
-  private void a(String paramString, long paramLong)
-  {
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mReqUrl = "https://qun.qq.com/cgi-bin/groupchat_url_collect/get_url_collect";
-    localHttpNetReq.mHttpMethod = 1;
-    localHttpNetReq.mPrioty = 0;
-    localHttpNetReq.mCallback = this;
-    String str = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-    paramString = String.format("bkn=%s&gc=%s&seq=%s&n=%s&noui=1", new Object[] { Integer.valueOf(TroopUtils.getBknBySkey(str)), paramString, Long.valueOf(paramLong), Integer.valueOf(200) });
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopLinkHandler", 2, "send: invoked.  postData: " + paramString);
-    }
-    str = "uin=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + ";skey=" + str;
-    localHttpNetReq.mSendData = paramString.getBytes();
-    localHttpNetReq.mReqProperties = new HashMap();
-    localHttpNetReq.mReqProperties.put("Cookie", str);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.sendReq(localHttpNetReq);
-  }
-  
-  private void a(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Long = paramJSONObject.optLong("seq");
-    long l = paramJSONObject.optLong("n_all", -1L);
-    if ((this.jdField_a_of_type_Long == 0L) || (l == 0L)) {
-      this.jdField_a_of_type_Ajbb.r();
-    }
-  }
-  
-  @UiThread
-  private void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList)
-  {
-    paramList = new TroopLinkHandler.1(this, paramBoolean, paramList);
-    ThreadManager.getUIHandler().post(paramList);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
+    label263:
+    for (paramInt = i;; paramInt = paramAbsListView.getTop())
     {
-      a(paramString, this.jdField_a_of_type_Long);
+      SystemMsgListView.a(this.a).remove(j);
+      if (SystemMsgListView.a(this.a).isShown())
+      {
+        paramAbsListView = new aiyj(j, k, paramInt);
+        SystemMsgListView.a(this.a).put(j, paramAbsListView);
+      }
       return;
+      label240:
+      SystemMsgListView.a(this.a).f();
+      SystemMsgListView.a(this.a).d();
+      break;
     }
-    a(paramString, 0L);
   }
-  
-  public void onResp(NetResp paramNetResp)
-  {
-    if (paramNetResp.mHttpCode == 200)
-    {
-      a(paramNetResp);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopLinkHandler", 2, "onResp: invoked.  resp: " + paramNetResp);
-    }
-    a(false, new ArrayList());
-  }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

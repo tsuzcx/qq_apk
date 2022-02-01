@@ -1,23 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class wgu
-  extends vqm
+class wgu
+  extends wwa
 {
-  public vlq a = new vlq();
+  wgu(wgt paramwgt) {}
   
-  public wgu(qqstory_service.RspAuthKey paramRspAuthKey)
+  public void a()
   {
-    super(paramRspAuthKey.result);
-    this.a.jdField_a_of_type_JavaLangString = paramRspAuthKey.user_ip.get().toStringUtf8();
-    this.a.b = paramRspAuthKey.server_ip1.get().toStringUtf8();
-    this.a.c = paramRspAuthKey.server_ip2.get().toStringUtf8();
-    this.a.d = paramRspAuthKey.backup_server_ip1.get().toStringUtf8();
-    this.a.e = paramRspAuthKey.backup_server_ip2.get().toStringUtf8();
-    this.a.jdField_a_of_type_ArrayOfByte = paramRspAuthKey.auth_key.get().toByteArray();
-    this.a.jdField_a_of_type_Long = (paramRspAuthKey.expire_time.get() * 1000L);
+    super.a();
+    wgs.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    ykv.a("home_page", "suc_share", 1, paramInt, new String[] { ykv.b(this.a.a.a) + "", ykv.a(this.a.a.a) + "", this.a.a.a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    ykv.a("home_page", "share_chanel", 1, paramInt, new String[] { ykv.b(this.a.a.a) + "", ykv.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 

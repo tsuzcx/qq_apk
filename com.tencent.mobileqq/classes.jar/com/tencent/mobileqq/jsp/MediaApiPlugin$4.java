@@ -92,17 +92,17 @@ class MediaApiPlugin$4
     //   164: invokevirtual 123	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   167: aload_0
     //   168: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   171: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
+    //   171: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
     //   174: ifnull +26 -> 200
     //   177: aload_0
     //   178: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   181: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
-    //   184: invokevirtual 132	bhht:isShowing	()Z
+    //   181: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
+    //   184: invokevirtual 132	bisl:isShowing	()Z
     //   187: ifeq +13 -> 200
     //   190: aload_0
     //   191: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   194: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
-    //   197: invokevirtual 135	bhht:dismiss	()V
+    //   194: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
+    //   197: invokevirtual 135	bisl:dismiss	()V
     //   200: return
     //   201: astore 6
     //   203: aload 4
@@ -186,17 +186,17 @@ class MediaApiPlugin$4
     //   364: invokevirtual 123	com/tencent/mobileqq/jsp/MediaApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   367: aload_0
     //   368: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   371: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
+    //   371: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
     //   374: ifnull -174 -> 200
     //   377: aload_0
     //   378: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   381: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
-    //   384: invokevirtual 132	bhht:isShowing	()Z
+    //   381: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
+    //   384: invokevirtual 132	bisl:isShowing	()Z
     //   387: ifeq -187 -> 200
     //   390: aload_0
     //   391: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   394: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
-    //   397: invokevirtual 135	bhht:dismiss	()V
+    //   394: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
+    //   397: invokevirtual 135	bisl:dismiss	()V
     //   400: return
     //   401: iconst_m1
     //   402: istore_2
@@ -204,19 +204,19 @@ class MediaApiPlugin$4
     //   404: istore_3
     //   405: aload_0
     //   406: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   409: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
+    //   409: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
     //   412: ifnull +30 -> 442
     //   415: iload_2
     //   416: istore_3
     //   417: aload_0
     //   418: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   421: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
-    //   424: invokevirtual 132	bhht:isShowing	()Z
+    //   421: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
+    //   424: invokevirtual 132	bisl:isShowing	()Z
     //   427: ifeq +15 -> 442
     //   430: aload_0
     //   431: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   434: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
-    //   437: invokevirtual 135	bhht:dismiss	()V
+    //   434: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
+    //   437: invokevirtual 135	bisl:dismiss	()V
     //   440: iload_2
     //   441: istore_3
     //   442: aload 4
@@ -270,17 +270,17 @@ class MediaApiPlugin$4
     //   539: astore 4
     //   541: aload_0
     //   542: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   545: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
+    //   545: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
     //   548: ifnull +26 -> 574
     //   551: aload_0
     //   552: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   555: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
-    //   558: invokevirtual 132	bhht:isShowing	()Z
+    //   555: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
+    //   558: invokevirtual 132	bisl:isShowing	()Z
     //   561: ifeq +13 -> 574
     //   564: aload_0
     //   565: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   568: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
-    //   571: invokevirtual 135	bhht:dismiss	()V
+    //   568: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
+    //   571: invokevirtual 135	bisl:dismiss	()V
     //   574: aload 4
     //   576: athrow
     //   577: astore 6
@@ -290,19 +290,19 @@ class MediaApiPlugin$4
     //   582: istore_3
     //   583: aload_0
     //   584: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   587: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
+    //   587: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
     //   590: ifnull -148 -> 442
     //   593: iload_1
     //   594: istore_3
     //   595: aload_0
     //   596: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   599: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
-    //   602: invokevirtual 132	bhht:isShowing	()Z
+    //   599: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
+    //   602: invokevirtual 132	bisl:isShowing	()Z
     //   605: ifeq -163 -> 442
     //   608: aload_0
     //   609: getfield 16	com/tencent/mobileqq/jsp/MediaApiPlugin$4:this$0	Lcom/tencent/mobileqq/jsp/MediaApiPlugin;
-    //   612: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbhht;
-    //   615: invokevirtual 135	bhht:dismiss	()V
+    //   612: getfield 126	com/tencent/mobileqq/jsp/MediaApiPlugin:a	Lbisl;
+    //   615: invokevirtual 135	bisl:dismiss	()V
     //   618: iload_1
     //   619: istore_3
     //   620: goto -178 -> 442

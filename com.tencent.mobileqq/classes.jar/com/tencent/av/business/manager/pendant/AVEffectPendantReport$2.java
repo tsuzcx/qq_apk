@@ -1,14 +1,14 @@
 package com.tencent.av.business.manager.pendant;
 
-import lhl;
+import lhx;
 
 public final class AVEffectPendantReport$2
   implements Runnable
 {
   public void run()
   {
-    lhl.d();
-    lhl.a();
+    lhx.d();
+    lhx.a();
   }
 }
 

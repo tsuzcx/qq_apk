@@ -1,14 +1,17 @@
-import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
-class rvh
-  extends ClickableSpan
+public class rvh
+  implements View.OnTouchListener
 {
-  rvh(rvd paramrvd) {}
+  public rvh(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ruw.j(this.a.a, true);
+    ReadInJoyUgcSearchTopicFragment.a(this.a);
+    return false;
   }
 }
 

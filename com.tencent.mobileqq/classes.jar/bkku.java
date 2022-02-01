@@ -1,16 +1,65 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONObject;
 
-final class bkku
-  implements bkkx
+class bkku
+  implements EIPCResultCallback
 {
-  public void a(boolean paramBoolean, Context paramContext, bkkz parambkkz)
+  bkku(bkks parambkks, RequestEvent paramRequestEvent, String paramString) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
+    try
+    {
+      localJSONObject = new JSONObject();
+      if (paramEIPCResult == null)
+      {
+        if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent == null) {
+          return;
+        }
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("result is null");
+        return;
+      }
+      if (paramEIPCResult.code != 0) {
+        break label143;
+      }
+      j = paramEIPCResult.data.getInt("uin_type");
+      i = -1;
+      if (j != 10009) {
+        break label134;
+      }
+      i = 1;
     }
-    if (paramBoolean) {
-      bkkq.e(paramContext, parambkkz);
+    catch (Throwable paramEIPCResult)
+    {
+      JSONObject localJSONObject;
+      int j;
+      int i;
+      while (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent != null)
+      {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("exceptions!");
+        return;
+        label134:
+        if (j == 0) {
+          i = 2;
+        }
+      }
+      label143:
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent == null) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("result code:" + paramEIPCResult.code);
+    }
+    localJSONObject.put("code", 0);
+    localJSONObject.put("type", i);
+    avdc.a(bkks.a(this.jdField_a_of_type_Bkks).getAttachedActivity(), this.jdField_a_of_type_JavaLangString, j);
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent != null)
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(localJSONObject);
+      return;
     }
   }
 }

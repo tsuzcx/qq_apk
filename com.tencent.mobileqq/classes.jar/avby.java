@@ -1,35 +1,18 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.gamecenter.data.GameNoticeInfo;
+import java.util.Comparator;
 
-final class avby
-  implements INetEngine.IBreakDownFix
+public final class avby
+  implements Comparator<GameNoticeInfo>
 {
-  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
+  public int a(GameNoticeInfo paramGameNoticeInfo1, GameNoticeInfo paramGameNoticeInfo2)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
-      paramNetResp.mWrittenBlockLen = 0L;
-      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
-      paramNetReq.mReqProperties.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.mReqUrl;
-      if (paramNetResp.contains("range="))
-      {
-        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ListenTogether.downloader", 2, "IBreakDownFix, " + paramNetResp);
+    if (paramGameNoticeInfo1.startTime == paramGameNoticeInfo2.startTime) {
+      return paramGameNoticeInfo1.bannerType - paramGameNoticeInfo2.bannerType;
+    }
+    if (paramGameNoticeInfo1.startTime < paramGameNoticeInfo2.startTime) {
+      return -1;
+    }
+    return 1;
   }
 }
 

@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akau
+class akau
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public MessageRecord a;
-  public String a;
+  akau(akat paramakat) {}
   
-  public akau(int paramInt, String paramString, MessageRecord paramMessageRecord)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

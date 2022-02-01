@@ -1,12 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
 
-class akhy
-  implements DialogInterface.OnClickListener
+public class akhy
+  implements Animation.AnimationListener
 {
-  akhy(akhw paramakhw) {}
+  public akhy(CountryActivity paramCountryActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (!this.a.isFinishing())
+    {
+      this.a.jdField_a_of_type_Akie.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

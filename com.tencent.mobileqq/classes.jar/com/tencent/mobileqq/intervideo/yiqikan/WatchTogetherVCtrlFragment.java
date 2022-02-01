@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aush;
-import bfur;
-import bfvf;
+import avyc;
+import bhdj;
+import bhdx;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
@@ -26,10 +26,10 @@ public class WatchTogetherVCtrlFragment
     {
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
-      paramBundle = bfur.a(paramViewGroup, "请下载QQ新版本查看");
-      paramBundle.setPositiveButton(2131694201, new bfvf());
+      paramBundle = bhdj.a(paramViewGroup, "请下载QQ新版本查看");
+      paramBundle.setPositiveButton(2131694399, new bhdx());
       paramBundle.show();
-      paramBundle.setOnDismissListener(new aush(this, paramViewGroup));
+      paramBundle.setOnDismissListener(new avyc(this, paramViewGroup));
     }
   }
 }

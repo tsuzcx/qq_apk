@@ -1,15 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="15.0dip" android:paddingBottom="17.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/nt0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/nug" android:layout_alignParentLeft="true" />
-    <LinearLayout android:gravity="center_vertical" android:id="@id/nug" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
-        <TextView android:textSize="12.0sp" android:textColor="#ccffffff" android:gravity="center" android:id="@id/nuq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="分享" android:drawableTop="@drawable/h4c" />
-        <TextView android:textSize="12.0sp" android:textColor="#ccffffff" android:gravity="center" android:id="@id/ntd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="评论" android:drawableTop="@drawable/h48" />
-        <RelativeLayout android:id="@id/nu8" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="15.0dip">
-            <ImageView android:id="@id/nu_" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/bkq" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
-            <ImageView android:id="@id/nu9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/h4a" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="13.0sp" android:textColor="#ccffffff" android:id="@id/nua" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="赞" android:layout_below="@id/nu_" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-        <ViewStub android:id="@id/nu7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="18.0dip" />
-    </LinearLayout>
-</RelativeLayout>
+<com.tencent.av.wtogether.view.WatchTogetherAdminControlView android:id="@id/ngv" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

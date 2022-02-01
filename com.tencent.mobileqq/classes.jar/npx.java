@@ -1,88 +1,67 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.avgame.util.AVGameNodeReportUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class npx
-  extends WebViewPlugin
+  implements DialogInterface.OnClickListener
 {
-  protected Activity a;
+  public npx(AvGameLoadingActivity paramAvGameLoadingActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, int paramInt) {}
   
-  public npx()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.mPluginNameSpace = "eqq";
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    try
+    int i = -102;
+    if (paramInt == 1)
     {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).getString("uin");
-      localObject = ((JSONObject)localObject).getString("name");
-      Intent localIntent = AIOUtils.setOpenAIOIntent(new Intent(this.a, ChatActivity.class), null);
-      localIntent.putExtra("uin", paramString);
-      localIntent.putExtra("uintype", 1024);
-      localIntent.putExtra("uinname", (String)localObject);
-      localIntent.putExtra("entrance", 0);
-      localIntent.putExtra("aio_msg_source", 999);
-      this.a.startActivity(localIntent);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return;
-      try
+      paramDialogInterface.cancel();
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
-        paramString = new JSONObject(paramString).getString("uin");
-        npt.a(this.a, null, paramString, false, -1, true, -1);
+        Object localObject2 = null;
+        Object localObject1 = null;
+        AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, true);
+        AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, 5);
+        paramDialogInterface = localObject2;
+        if (!this.jdField_a_of_type_Boolean) {
+          if (AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != 3)
+          {
+            paramDialogInterface = localObject2;
+            if (AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != 5) {}
+          }
+          else
+          {
+            paramDialogInterface = localObject1;
+            if (AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != null)
+            {
+              AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, 6);
+              paramDialogInterface = AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity);
+            }
+            QLog.e("AvGameManagerAvGameLoadingActivity", 2, "join failed alert DIALOG change to troop  with  troop UIN " + paramDialogInterface);
+          }
+        }
+        AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity), paramDialogInterface);
         return;
       }
-      catch (JSONException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("EqqWebviewPlugin", 2, "showEqq json error!");
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"eqq".equals(paramString2)) {}
-    do
-    {
-      return false;
-      if ("showEQQ".equals(paramString3))
+      QLog.e("AvGameManagerAvGameLoadingActivity", 2, "alertDialogWithRetCode createAvGameRoom app null ");
+      if (this.jdField_a_of_type_Boolean) {}
+      for (;;)
       {
-        if (paramVarArgs.length > 0) {
-          a(paramVarArgs[0]);
-        }
-        return true;
+        AVGameNodeReportUtil.b(i);
+        AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, false, this.jdField_a_of_type_Int);
+        return;
+        i = -103;
       }
-    } while ((!"showEQQAio".equals(paramString3)) || (paramVarArgs.length != 1));
-    b(paramVarArgs[0]);
-    return false;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    this.a = this.mRuntime.a();
+    }
+    paramDialogInterface.cancel();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      AVGameNodeReportUtil.b(i);
+      AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, false, this.jdField_a_of_type_Int);
+      return;
+      i = -103;
+    }
   }
 }
 

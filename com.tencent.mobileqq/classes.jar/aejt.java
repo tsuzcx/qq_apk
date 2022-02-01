@@ -1,21 +1,30 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class aejt
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public aejt(TranslucentTRansferFragment paramTranslucentTRansferFragment) {}
+  public aejt(NotificationActivity paramNotificationActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.getActivity().finish();
+    if (NotificationActivity.c(this.a))
+    {
+      bkki.a(this.a);
+      NotificationActivity.a(this.a, "0X800B655");
+      return;
+    }
+    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    this.a.startActivity(paramDialogInterface.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejt
  * JD-Core Version:    0.7.0.1
  */

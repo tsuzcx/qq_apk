@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 
 import android.text.TextUtils;
 import java.util.Properties;
-import urq;
-import urv;
-import urw;
-import usk;
+import vfy;
+import vgd;
+import vgh;
+import vgv;
 
 public class WSPlayerWrapper$1
   implements Runnable
 {
-  public WSPlayerWrapper$1(urw paramurw, usk paramusk) {}
+  public WSPlayerWrapper$1(vgh paramvgh, vgv paramvgv) {}
   
   public void run()
   {
@@ -20,13 +20,13 @@ public class WSPlayerWrapper$1
     }
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = urv.a((String)localObject);
+      localObject = vgd.a((String)localObject);
       if (localObject != null)
       {
-        urw.a(this.this$0, Long.valueOf(((Properties)localObject).getProperty("VideoBitRate")).longValue());
-        localObject = urw.a(this.this$0);
+        vgh.a(this.this$0, Long.valueOf(((Properties)localObject).getProperty("VideoBitRate")).longValue());
+        localObject = vgh.a(this.this$0);
         if (localObject != null) {
-          ((urq)localObject).a(this.this$0, urw.a(this.this$0));
+          ((vfy)localObject).a(this.this$0, vgh.a(this.this$0));
         }
       }
     }
@@ -34,7 +34,7 @@ public class WSPlayerWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerWrapper.1
  * JD-Core Version:    0.7.0.1
  */

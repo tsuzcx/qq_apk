@@ -1,143 +1,82 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.CardProfile;
+import QQService.SvcDevLoginInfo;
+import QQService.SvcRspGetDevLoginInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aete
-  extends CardObserver
+  extends anvi
 {
-  public aete(VisitorsActivity paramVisitorsActivity) {}
+  public aete(RecentLoginDevActivity paramRecentLoginDevActivity) {}
   
-  public void onFavoritorsList(boolean paramBoolean, String paramString, ArrayList<CardProfile> paramArrayList, long paramLong1, long paramLong2, byte[] paramArrayOfByte, Card paramCard)
+  protected void onDelHistoryDevResult(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("VisitorsActivity", 2, "onFavoritorsList.isSuccess=" + paramBoolean + ";uin=" + paramString + ";startMid=" + paramLong1 + ";nextMid=" + paramLong2);
-      if (paramArrayList != null) {
-        QLog.d("VisitorsActivity", 2, "onFavoritorsList.voters.size=" + paramArrayList.size());
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onDelHistoryDevResult isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
     }
-    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {
-      return;
-    }
+    RecentLoginDevActivity.b(this.a);
     if (paramBoolean)
     {
-      paramString = this.a.jdField_b_of_type_JavaUtilArrayList;
-      if (this.a.jdField_b_of_type_Boolean) {
-        paramString = new ArrayList();
-      }
-      this.a.jdField_b_of_type_Long = paramLong2;
-      paramArrayOfByte = this.a.jdField_b_of_type_Aetx;
-      if (this.a.jdField_b_of_type_Long != -1L) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      bdla.b(this.a.app, "CliOper", "", "", "My_eq", "Delete_eq", 0, 0, "", "", "", "");
+      if ((paramInt > -1) && (RecentLoginDevActivity.a(this.a) != null) && (paramInt < RecentLoginDevActivity.a(this.a).size()))
       {
-        paramArrayOfByte.a(paramBoolean);
-        paramArrayOfByte = paramString;
-        if (paramArrayList != null) {
-          paramArrayOfByte = bbkk.a(paramString, paramArrayList);
-        }
-        this.a.b(paramArrayOfByte, paramLong1);
-        return;
+        RecentLoginDevActivity.a(this.a).remove(paramInt);
+        RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
       }
-    }
-    this.a.d();
-  }
-  
-  public void onGetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorsActivity", 2, "onGetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ";isOn=" + paramBoolean2);
-    }
-    if (paramBoolean1) {
-      this.a.a(paramBoolean2);
-    }
-  }
-  
-  public void onReqDelVoteRecord(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VisitorsActivity", 2, String.format("onReqDelVoteRecord selfUin:%s targetUin:%d type:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) }));
-    }
-    if (paramLong1 != Long.parseLong(this.a.app.getCurrentAccountUin())) {}
-    while (paramBoolean) {
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131691959), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    this.a.a(1, amtj.a(2131715827));
-  }
-  
-  public void onReqFavoriteResult(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    if (!paramString1.equals(this.a.app.getCurrentAccountUin())) {}
-    do
+    if (TextUtils.isEmpty(paramString))
     {
+      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131694204), 0).b(this.a.getTitleBarHeight());
       return;
-      if (paramInt2 == 1)
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  protected void onGetHistoryDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  {
+    RecentLoginDevActivity.b(this.a);
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult success");
+      }
+      RecentLoginDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo);
+      if (QLog.isColorLevel())
       {
-        if (!paramBoolean)
+        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
+        paramSvcRspGetDevLoginInfo = RecentLoginDevActivity.a(this.a).iterator();
+        while (paramSvcRspGetDevLoginInfo.hasNext())
         {
-          this.a.jdField_a_of_type_Ayro.b(paramString2, paramInt1, true);
-          return;
+          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
+          if (localSvcDevLoginInfo != null) {
+            QLog.d("Q.devlock.RecentLoginDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
+          }
         }
-        this.a.jdField_a_of_type_Ayro.a(paramString2, paramInt1, true);
-        return;
+        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
       }
-    } while (paramInt2 != 0);
-    this.a.jdField_a_of_type_Ayro.a(Long.parseLong(paramString2));
-  }
-  
-  public void onSetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorsActivity", 2, "onSetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ";isOn=" + paramBoolean2);
-    }
-    if (paramBoolean1) {
-      this.a.a(paramBoolean2);
-    }
-  }
-  
-  public void onVoterList(boolean paramBoolean, String paramString, ArrayList<CardProfile> paramArrayList, ArrayList<Long> paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong1, long paramLong2, byte[] paramArrayOfByte, Card paramCard)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("VisitorsActivity", 2, "onVoterList.isSuccess=" + paramBoolean + ";uin=" + paramString + ";startMid=" + paramLong1 + ";nextMid=" + paramLong2 + "todayVoteCount=" + paramInt3 + "todayVoteRank=" + paramInt4 + "totalVoteCount=" + paramInt5);
-      if (paramArrayList != null) {
-        QLog.d("VisitorsActivity", 2, "onVoterList.voters.size=" + paramArrayList.size());
-      }
-    }
-    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {
+      RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
       return;
     }
-    if (paramBoolean)
+    if (QLog.isColorLevel())
     {
-      this.a.jdField_a_of_type_Ayro.a(paramArrayList1, paramInt1, paramInt2, paramLong1);
-      paramString = this.a.jdField_a_of_type_JavaUtilArrayList;
-      if (this.a.jdField_a_of_type_Boolean)
-      {
-        this.a.app.getMessageFacade().setReaded(AppConstants.VOTE_MSG_UIN, 1001);
-        this.a.app.getMessageFacade().setReaded(AppConstants.VOTE_MSG_UIN, 10002);
-        paramString = new ArrayList();
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed isSuccess=" + paramBoolean);
+      if (paramSvcRspGetDevLoginInfo != null) {
+        break label288;
       }
-      this.a.jdField_a_of_type_Long = paramLong2;
-      paramArrayList1 = this.a.jdField_a_of_type_Aetx;
-      if (this.a.jdField_a_of_type_Long != -1L) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramArrayList1.a(paramBoolean);
-        paramArrayList1 = paramString;
-        if (paramArrayList != null) {
-          paramArrayList1 = bbkk.a(paramString, paramArrayList);
-        }
-        this.a.a(paramArrayList1, paramLong1);
-        this.a.a(paramInt3, paramInt4, paramInt5);
-        return;
-      }
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data is null");
     }
-    this.a.c();
+    for (;;)
+    {
+      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131691970), 0).b(this.a.getTitleBarHeight());
+      return;
+      label288:
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
+    }
   }
 }
 

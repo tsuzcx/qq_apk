@@ -1,53 +1,55 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import java.util.Iterator;
 import java.util.List;
 
 public class wnw
-  extends wnr<HomeFeedPlayInfo>
 {
-  private int a;
-  public xnl b = new xnl();
-  
-  public wnw(HomeFeedPlayInfo paramHomeFeedPlayInfo)
+  public static int a(long paramLong1, long paramLong2)
   {
-    super(paramHomeFeedPlayInfo);
-    paramHomeFeedPlayInfo = (xnp)vux.a(11);
-    if (paramHomeFeedPlayInfo.b != null) {
-      this.b = paramHomeFeedPlayInfo.b;
+    if (paramLong1 < paramLong2) {
+      return -1;
     }
+    if (paramLong1 == paramLong2) {
+      return 0;
+    }
+    return 1;
   }
   
-  public xnh a(String paramString)
+  public static wly a(@NonNull List<wly> paramList1, @NonNull List<wly> paramList2, @NonNull String paramString)
   {
-    Iterator localIterator = this.b.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    paramList2.clear();
+    wly localwly = null;
+    Iterator localIterator = paramList1.iterator();
+    paramList1 = localwly;
+    if (localIterator.hasNext())
     {
-      xnh localxnh = (xnh)localIterator.next();
-      if (localxnh.a.equals(paramString)) {
-        return localxnh;
+      localwly = (wly)localIterator.next();
+      if (a(localwly)) {
+        paramList2.add(localwly);
       }
+      if ((paramList1 != null) || (!TextUtils.equals(paramString, localwly.jdField_a_of_type_JavaLangString))) {
+        break label76;
+      }
+      paramList1 = localwly;
     }
-    return null;
+    label76:
+    for (;;)
+    {
+      break;
+      return paramList1;
+    }
   }
   
-  public void a(boolean paramBoolean, int paramInt, woj paramwoj)
+  public static boolean a()
   {
-    Object localObject1 = this.b.jdField_a_of_type_JavaUtilList;
-    if ((paramBoolean) && (((List)localObject1).size() > 0))
-    {
-      localObject2 = b((List)localObject1);
-      paramwoj.a(new ErrorMessage(), (List)localObject2, this.b.jdField_a_of_type_Boolean);
-      xvv.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject1).size()));
-      return;
-    }
-    localObject1 = (xnp)vux.a(11);
-    Object localObject2 = new wex();
-    ((wex)localObject2).a = ((xnp)localObject1).a;
-    ((wex)localObject2).b = this.b.a();
-    xvv.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((wex)localObject2).b);
-    this.a = 0;
-    vqn.a().a((vqr)localObject2, new wnx(this, paramwoj));
+    return Build.VERSION.SDK_INT > 19;
+  }
+  
+  public static boolean a(wly paramwly)
+  {
+    return (paramwly.jdField_a_of_type_Int == 5) || (paramwly.jdField_a_of_type_Int == 6) || (paramwly.jdField_a_of_type_Int == 7) || (paramwly.jdField_a_of_type_Int == 8) || (paramwly.jdField_a_of_type_Int == 9) || (paramwly.jdField_a_of_type_Int == 12) || (paramwly.jdField_a_of_type_Int == 13);
   }
 }
 

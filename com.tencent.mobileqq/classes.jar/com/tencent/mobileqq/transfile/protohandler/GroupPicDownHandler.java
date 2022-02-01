@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
-import bcdo;
+import anza;
+import bdkj;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -38,7 +38,7 @@ public class GroupPicDownHandler
     int j = 0;
     Object localObject = null;
     if (paramGroupPicDownReq.fileType == 65537) {
-      if (bcdo.a()) {
+      if (bdkj.a()) {
         localObject = paramGetImgUrlRsp.bytes_big_thumb_down_para.get().toStringUtf8();
       }
     }
@@ -111,7 +111,7 @@ public class GroupPicDownHandler
     }
     PBUInt32Field localPBUInt32Field;
     if (paramReqCommon.fileType == 65537) {
-      if (bcdo.a())
+      if (bdkj.a())
       {
         localGetImgUrlReq.uint32_url_flag.set(16);
         localGetImgUrlReq.uint32_url_type.set(2);
@@ -189,7 +189,7 @@ public class GroupPicDownHandler
     }
   }
   
-  protected void handleSucResponse(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, amwm paramamwm)
+  protected void handleSucResponse(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, anza paramanza)
   {
     try
     {
@@ -200,7 +200,7 @@ public class GroupPicDownHandler
     }
     catch (Exception paramProtoResp)
     {
-      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramamwm, paramRichProtoResp.resps);
+      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, paramRichProtoResp.resps);
     }
     for (;;)
     {
@@ -226,7 +226,7 @@ public class GroupPicDownHandler
               break label309;
             }
             handleResponse(localGroupPicDownReq, paramProtoResp, localPicDownResp);
-            setResult(0, 0, "", "", paramamwm, localPicDownResp);
+            setResult(0, 0, "", "", paramanza, localPicDownResp);
           }
           catch (Exception paramProtoResp) {}
         }
@@ -238,7 +238,7 @@ public class GroupPicDownHandler
             RichProto.RichProtoResp.PicDownResp localPicDownResp = null;
           }
         }
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramamwm, localPicDownResp);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, localPicDownResp);
         continue;
         label309:
         if (GroupPicUpHandler.shouldRetryByRetCode(i))
@@ -250,7 +250,7 @@ public class GroupPicDownHandler
             return;
           }
         }
-        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), BaseTransProcessor.getUrlReason(i), paramamwm, localPicDownResp);
+        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), BaseTransProcessor.getUrlReason(i), paramanza, localPicDownResp);
       }
     }
   }

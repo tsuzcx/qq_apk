@@ -2,7 +2,8 @@ package com.tencent.ttpic.openapi.model;
 
 public class WMEditItem
 {
-  public static int ITEM_TYPE_COUNTDOWN = 3;
+  public static int ITEM_TYPE_ADDRESS = 4;
+  public static int ITEM_TYPE_COUNTDOWN;
   public static int ITEM_TYPE_SINCE;
   public static int ITEM_TYPE_TEXT = 1;
   public int itemType;
@@ -11,6 +12,7 @@ public class WMEditItem
   static
   {
     ITEM_TYPE_SINCE = 2;
+    ITEM_TYPE_COUNTDOWN = 3;
   }
   
   public WMEditItem(String paramString, int paramInt)

@@ -1,18 +1,28 @@
 package com.tencent.mobileqq.activity.home;
 
-import bcqk;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import bdla;
 
-public class Conversation$54
+class Conversation$54
   implements Runnable
 {
-  Conversation$54(Conversation paramConversation) {}
+  Conversation$54(Conversation paramConversation, Object paramObject) {}
   
   public void run()
   {
-    if ((Conversation.c(this.this$0)) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.b()) && (bcqk.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sub.uin.all"))) {
-      this.this$0.b(new Conversation.54.1(this));
+    if ((this.a instanceof String)) {}
+    for (;;)
+    {
+      try
+      {
+        i = Integer.parseInt((String)this.a);
+        bdla.b(this.this$0.a, "dc00898", "", "", "0X80087C2", "0X80087C2", i, 0, "1", "", "", "");
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
+      int i = 0;
     }
   }
 }

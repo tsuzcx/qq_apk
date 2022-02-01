@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agjt;
+import ahcj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.data.MessageForPic;
 public class PicItemBuilder$3
   implements Runnable
 {
-  public PicItemBuilder$3(agjt paramagjt, MessageForPic paramMessageForPic) {}
+  public PicItemBuilder$3(ahcj paramahcj, MessageForPic paramMessageForPic) {}
   
   public void run()
   {

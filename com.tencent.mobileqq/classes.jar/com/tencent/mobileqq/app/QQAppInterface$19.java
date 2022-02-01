@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import nyd;
-import szr;
+import ofd;
+import tmz;
 
 class QQAppInterface$19
   implements Runnable
@@ -10,13 +10,13 @@ class QQAppInterface$19
   
   public void run()
   {
-    nyd localnyd = (nyd)this.this$0.getManager(238);
-    if (localnyd != null) {
-      localnyd.a(1);
+    ofd localofd = (ofd)this.this$0.getManager(QQManagerFactory.PUBLIC_ACCOUNT_VIDEO_PRELOAD_MANAGER);
+    if (localofd != null) {
+      localofd.a(1);
     }
     this.this$0.setTalkbackSwitch();
     QQAppInterface.access$3700(this.this$0);
-    szr.b();
+    tmz.b();
   }
 }
 

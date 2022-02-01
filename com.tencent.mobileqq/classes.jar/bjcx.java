@@ -1,30 +1,92 @@
-import com.tencent.mobileqq.minigame.manager.FileDownloadManager;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
-import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.WebAudioDownloadListener;
-import java.util.Map;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-@ProxyService(proxy=DownloaderProxy.class)
 public class bjcx
-  extends DownloaderProxy
+  extends bjgn
 {
-  public void abort(String paramString)
+  protected List<Friend> a;
+  
+  public bjcx(List<Friend> paramList)
   {
-    FileDownloadManager.abort(paramString);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public boolean download(String paramString1, Map<String, String> paramMap, String paramString2, int paramInt, DownloaderProxy.DownloadListener paramDownloadListener)
+  public int getCount()
   {
-    return FileDownloadManager.download(paramString1, paramMap, paramString2, paramInt, paramDownloadListener);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void getWebAudioDownloadPath(DownloaderProxy.WebAudioDownloadListener paramWebAudioDownloadListener)
+  public Object getItem(int paramInt)
   {
-    FileDownloadManager.getWebAudioDownloadPath(paramWebAudioDownloadListener);
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
   }
   
-  public void preConnectDownloadHost() {}
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2131562855, paramViewGroup, false);
+      paramView = new bjda();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369417));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131380038));
+      paramView.b = ((TextView)localView.findViewById(2131380172));
+      localView.setTag(paramView);
+    }
+    while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject1 = (bjda)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject1;
+    }
+    Object localObject1 = (Friend)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    label179:
+    Object localObject2;
+    if ((((Friend)localObject1).c == null) || ("".equals(((Friend)localObject1).c)))
+    {
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((Friend)localObject1).b);
+      if ((((Friend)localObject1).d == null) || ("".equals(((Friend)localObject1).d))) {
+        ((Friend)localObject1).d = bjgw.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), ((Friend)localObject1).a);
+      }
+      localObject2 = bjgt.a().a(((Friend)localObject1).d);
+      if (localObject2 != null) {
+        break label319;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840348);
+      localObject2 = paramView.jdField_a_of_type_AndroidWidgetImageView;
+      bjgt.a().a(((Friend)localObject1).d, new bjcy(this, (ImageView)localObject2));
+      label274:
+      if (!this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.a(((Friend)localObject1).a)) {
+        break label331;
+      }
+      paramView.b.setText(2131691733);
+    }
+    for (;;)
+    {
+      break;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((Friend)localObject1).c);
+      break label179;
+      label319:
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject2);
+      break label274;
+      label331:
+      paramView.b.setText("");
+    }
+  }
 }
 
 

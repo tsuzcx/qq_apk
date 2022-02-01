@@ -1,47 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.database.DataSetObserver;
+import android.support.v4.view.ViewPager;
+import com.tencent.mobileqq.now.widget.SimpleCircleIndicator;
 
 public class ayqw
-  implements View.OnClickListener
+  extends DataSetObserver
 {
-  private long jdField_a_of_type_Long;
+  public ayqw(SimpleCircleIndicator paramSimpleCircleIndicator, ViewPager paramViewPager) {}
   
-  public ayqw(QzonePhotoView paramQzonePhotoView) {}
-  
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    long l = System.currentTimeMillis();
-    if (Math.abs(l - this.jdField_a_of_type_Long) < 1000L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Long = l;
-      if ((paramView != null) && ((paramView.getTag() instanceof aykg)))
-      {
-        Object localObject = (aykg)paramView.getTag();
-        if (localObject != null)
-        {
-          int i = ((aykg)localObject).a;
-          localObject = QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).a.a;
-          switch (i)
-          {
-          default: 
-            break;
-          case 25: 
-            bcef.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "2", "", "", "");
-            if (QLog.isColorLevel()) {
-              QLog.i("ProfileCard.QzonePhotoView", 2, "View.OnClickListener click type is photo wall view");
-            }
-            QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView, QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView));
-          }
-        }
-      }
-    }
+    super.onChanged();
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator.setCurrentItem(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
   }
 }
 

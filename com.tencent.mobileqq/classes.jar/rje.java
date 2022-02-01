@@ -1,28 +1,22 @@
-import android.database.DataSetObserver;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation.1.1;
 
 public class rje
-  extends DataSetObserver
+  implements Animation.AnimationListener
 {
-  public rje(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  public rje(ComponentSocialOperation paramComponentSocialOperation) {}
   
-  public void onChanged()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
-    {
-      ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(0);
-      String str = this.a.getString(2131717535, new Object[] { Integer.valueOf(ReadInJoyVideoTagSelectionFragment.a(this.a).getCount()), Integer.valueOf(5) });
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(str);
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-4473925), 5, str.length(), 0);
-      ReadInJoyVideoTagSelectionFragment.a(this.a).setText(localSpannableStringBuilder);
-      return;
-    }
-    ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(8);
+    this.a.a.post(new ComponentSocialOperation.1.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

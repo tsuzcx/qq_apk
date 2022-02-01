@@ -1,50 +1,50 @@
-import com.tencent.jungle.videohub.proto.CommProtocolProto.commRequest;
-import com.tencent.jungle.videohub.proto.CommProtocolProto.commResponse;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import tencent.im.troop.studyroom.self_study_room_troop.StudyRoomMemberInfoReq;
-import tencent.im.troop.studyroom.self_study_room_troop.StudyRoomMenberInfoRsp;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class bcpg
-  implements BusinessObserver
+  extends bcpi
 {
-  public void a(String paramString1, int paramInt, String paramString2) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public void a(String paramString, self_study_room_troop.StudyRoomMenberInfoRsp paramStudyRoomMenberInfoRsp) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public bcpg(ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2)
   {
-    switch (paramInt)
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559295, paramViewGroup, false);
+    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new bcph(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379001));
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131371538));
+    if (paramBoolean2) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131365776);
+    if (paramBoolean1) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-    default: 
+      localView.setVisibility(i);
       return;
     }
-    paramObject = (Object[])paramObject;
-    Object localObject = (CommProtocolProto.commRequest)paramObject[0];
-    paramObject = (FromServiceMsg)paramObject[1];
-    self_study_room_troop.StudyRoomMemberInfoReq localStudyRoomMemberInfoReq = new self_study_room_troop.StudyRoomMemberInfoReq();
-    try
-    {
-      localStudyRoomMemberInfoReq.mergeFrom(((CommProtocolProto.commRequest)localObject).body.get().toByteArray());
-      if ((paramObject.isSuccess()) && (paramObject.getWupBuffer() != null))
-      {
-        localObject = new CommProtocolProto.commResponse();
-        ((CommProtocolProto.commResponse)localObject).mergeFrom(paramObject.getWupBuffer());
-        self_study_room_troop.StudyRoomMenberInfoRsp localStudyRoomMenberInfoRsp = new self_study_room_troop.StudyRoomMenberInfoRsp();
-        localStudyRoomMenberInfoRsp.mergeFrom(((CommProtocolProto.commResponse)localObject).body.get().toByteArray());
-        a(localStudyRoomMemberInfoReq.troop_uin.get(), localStudyRoomMenberInfoRsp);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      localInvalidProtocolBufferMicroException.printStackTrace();
-      a(localStudyRoomMemberInfoReq.troop_uin.get(), paramObject.getResultCode(), paramObject.getBusinessFailMsg());
-    }
+  }
+  
+  public TextView b()
+  {
+    return this.jdField_b_of_type_AndroidWidgetTextView;
   }
 }
 

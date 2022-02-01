@@ -5,9 +5,10 @@ import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.List;
-import oju;
-import oum;
-import oun;
+import orr;
+import pdn;
+import pdo;
+import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.ActivityLevel;
 
 public abstract class BaseCommentData
   implements Serializable
@@ -15,9 +16,10 @@ public abstract class BaseCommentData
   public static final int MAIN_COMMENT = 1;
   public static final int SUB_COMMENT = 2;
   public static final String TAG = "BaseCommentData";
-  public oum accountLevelInfo;
+  public pdn accountLevelInfo;
   public long activityCfgID;
   public String activityJumpUrl;
+  public oidb_cmd0xc46.ActivityLevel activityLevel;
   public String activityPicUrl;
   public AdvertisementInfo advertisementInfo;
   public int anonymous;
@@ -51,8 +53,8 @@ public abstract class BaseCommentData
   public int like;
   public int likeCnt;
   public int maxLine = 9;
-  public oju medalInfo;
-  public List<oun> mediaDataList;
+  public orr medalInfo;
+  public List<pdo> mediaDataList;
   public int myself;
   public String nickName;
   public String passthrough;
@@ -78,9 +80,9 @@ public abstract class BaseCommentData
   {
     if ((this.mediaDataList != null) && (this.mediaDataList.size() > 0))
     {
-      oun localoun = (oun)this.mediaDataList.get(0);
-      if (localoun != null) {
-        return localoun.e;
+      pdo localpdo = (pdo)this.mediaDataList.get(0);
+      if (localpdo != null) {
+        return localpdo.e;
       }
     }
     return 0;

@@ -1,25 +1,47 @@
 public class lkp
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = "";
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = "";
-  int jdField_c_of_type_Int = 0;
-  String jdField_c_of_type_JavaLangString = "";
-  int jdField_d_of_type_Int = 0;
-  String jdField_d_of_type_JavaLangString = "";
-  int jdField_e_of_type_Int = 0;
-  String jdField_e_of_type_JavaLangString = "";
-  int f = 0;
-  int g = 0;
-  int h = 0;
-  int i = 0;
-  int j = 0;
-  int k = 0;
-  int l = 0;
-  int m = 0;
+  private int jdField_a_of_type_Int;
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[512];
+  private int b;
   
-  public lkp(lkf paramlkf) {}
+  public lkp()
+  {
+    int i = 0;
+    while (i < 512)
+    {
+      this.jdField_a_of_type_ArrayOfByte[i] = 0;
+      i += 1;
+    }
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+  }
+  
+  public void a(byte paramByte)
+  {
+    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = paramByte;
+    this.jdField_a_of_type_Int += 1;
+    this.b += 1;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = (byte)(paramInt & 0xFF);
+    int j = (byte)(paramInt >> 8 & 0xFF);
+    int k = (byte)(paramInt >> 16 & 0xFF);
+    int m = (byte)(paramInt >> 24 & 0xFF);
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    paramInt = this.jdField_a_of_type_Int;
+    System.arraycopy(new byte[] { m, k, j, i }, 0, arrayOfByte, paramInt, 4);
+    this.jdField_a_of_type_Int += 4;
+    this.b += 4;
+  }
+  
+  public byte[] a()
+  {
+    byte[] arrayOfByte = new byte[this.b];
+    System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, this.b);
+    return arrayOfByte;
+  }
 }
 
 

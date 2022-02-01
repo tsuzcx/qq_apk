@@ -1,29 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-
-class bend
-  extends bgod
+public abstract interface bend
 {
-  bend(bena parambena, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  public abstract void a();
   
-  public void onDone(bgoe parambgoe)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "downloadUpdate loaded json = " + parambgoe.c + " code = " + parambgoe.jdField_a_of_type_Int);
-    }
-    boolean bool = bena.a(this.jdField_a_of_type_Bena, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "downloadUpdate unCompressOffline " + bool);
-    }
-    bena.b(this.jdField_a_of_type_Bena);
-  }
+  public abstract void b();
   
-  public void onProgress(bgoe parambgoe)
-  {
-    int i = (int)(parambgoe.jdField_a_of_type_Float * 100.0F);
-    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
-      QLog.d("SoLibraryLoader", 2, "downding progress = " + i);
-    }
-  }
+  public abstract void c();
 }
 
 

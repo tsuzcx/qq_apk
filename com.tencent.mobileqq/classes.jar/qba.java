@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-class qba
-  implements View.OnClickListener
+public class qba
+  implements qbc
 {
-  qba(qat paramqat, slt paramslt, pvc parampvc) {}
+  public qba(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    pet localpet = this.jdField_a_of_type_Slt.a().a();
-    if (localpet != null) {
-      localpet.a(null, this.jdField_a_of_type_Pvc.a(), 1);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    ReadInJoySelfFragment.a(this.a);
+    olh.a(null, "CliOper", "", "", "0X8007DB4", "0X8007DB4", 0, 0, "", "", "", pqf.a(), false);
   }
 }
 

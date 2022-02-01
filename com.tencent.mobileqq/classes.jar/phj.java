@@ -1,18 +1,31 @@
-import android.content.Context;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
-final class phj
-  implements View.OnClickListener
+class phj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  phj(Context paramContext, String paramString, View paramView) {}
+  String jdField_a_of_type_JavaLangString = phh.a(this.jdField_a_of_type_Phh).a.commentId;
   
-  public void onClick(View paramView)
+  phj(phh paramphh, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    pay.d(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    psf.b(this.jdField_a_of_type_AndroidViewView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((phh.a(this.jdField_a_of_type_Phh) == null) || (phh.a(this.jdField_a_of_type_Phh).a == null) || (this.jdField_a_of_type_JavaLangString == null))
+    {
+      phh.a(this.jdField_a_of_type_Phh, this.jdField_a_of_type_AndroidViewView);
+      return;
+    }
+    if (!this.jdField_a_of_type_JavaLangString.equals(phh.a(this.jdField_a_of_type_Phh).a.commentId))
+    {
+      phh.a(this.jdField_a_of_type_Phh, this.jdField_a_of_type_AndroidViewView);
+      return;
+    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    phh.a(this.jdField_a_of_type_Phh).setAlpha(i);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(phh.a(this.jdField_a_of_type_Phh));
   }
 }
 

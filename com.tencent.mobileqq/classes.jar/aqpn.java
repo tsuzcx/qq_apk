@@ -1,11 +1,15 @@
-public class aqpn
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+
+class aqpn
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a = -1;
-  public boolean a;
+  aqpn(aqpl paramaqpl) {}
   
-  public aqpn(int paramInt)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    this.a = paramInt;
+    aqpl.a(this.a);
+    return true;
   }
 }
 

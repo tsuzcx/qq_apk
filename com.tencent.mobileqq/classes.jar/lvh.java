@@ -1,36 +1,23 @@
-import com.tencent.av.redpacket.ui.RedPacketShareFragment;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
-
 public class lvh
-  implements WXShareHelper.WXShareListener
+  extends lum
 {
-  public lvh(RedPacketShareFragment.3.1 param1) {}
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void a(long paramLong) {}
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND_CIRCLE onWXShareResp resp.errCode = " + paramBaseResp.errCode);
-    switch (paramBaseResp.errCode)
-    {
-    }
-    for (;;)
-    {
-      WXShareHelper.getInstance().removeObserver(this);
-      return;
-      RedPacketShareFragment.a("0X8008CF8", 4);
-    }
+    paramInt2 = this.b * paramInt1 / 750;
+    paramInt3 = this.c * paramInt1 / 750;
+    a(paramInt2, paramInt3, this.d * paramInt1 / 750 + paramInt2, this.e * paramInt1 / 750 + paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lvh
  * JD-Core Version:    0.7.0.1
  */

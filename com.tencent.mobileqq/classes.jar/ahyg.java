@@ -1,15 +1,35 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-public abstract interface ahyg
+public class ahyg
+  extends ahya
 {
-  public abstract Activity a();
+  public afrp a;
+  public Bitmap a;
+  public boolean a;
+  public Drawable[] a;
   
-  public abstract QQAppInterface a();
+  public ahyg(String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void a();
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      this.jdField_a_of_type_Afrp = paramRedPacketInfo.jdField_a_of_type_Afrp;
+      this.jdField_a_of_type_Boolean = paramRedPacketInfo.b;
+    }
+  }
   
-  public abstract void b();
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) || (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null);
+  }
 }
 
 

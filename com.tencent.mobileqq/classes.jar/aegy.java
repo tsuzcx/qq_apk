@@ -1,18 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class aegy
-  implements CompoundButton.OnCheckedChangeListener
+class aegy
 {
-  public aegy(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView d;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    SoundAndVibrateActivity.a(this.a, paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-  }
+  aegy(aegw paramaegw) {}
 }
 
 

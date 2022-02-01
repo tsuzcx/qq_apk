@@ -1,10 +1,55 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
 
-public abstract interface rsb
+public class rsb
 {
-  public abstract void a(SocializeFeedsInfo.UGCVoiceInfo paramUGCVoiceInfo);
+  public String a;
   
-  public abstract void b(SocializeFeedsInfo.UGCVoiceInfo paramUGCVoiceInfo);
+  public static List<rsb> a(oidb_cmd0xbc9.DynamicBannerItem paramDynamicBannerItem)
+  {
+    localArrayList = new ArrayList();
+    if (!paramDynamicBannerItem.bytes_dynamic_json.has()) {}
+    for (;;)
+    {
+      return localArrayList;
+      Object localObject = paramDynamicBannerItem.bytes_dynamic_json.get().toStringUtf8();
+      try
+      {
+        JSONArray localJSONArray = new JSONArray((String)localObject);
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          rsb localrsb = new rsb();
+          localrsb.a = localJSONArray.get(i).toString();
+          localArrayList.add(localrsb);
+          i += 1;
+        }
+        return localArrayList;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("TopBannerInfo", 4, "" + (String)localObject);
+        localObject = new rsb();
+        ((rsb)localObject).a = paramDynamicBannerItem.bytes_dynamic_json.get().toStringUtf8();
+        localArrayList.add(localObject);
+      }
+    }
+  }
+  
+  public oidb_cmd0xbc9.DynamicBannerItem a()
+  {
+    oidb_cmd0xbc9.DynamicBannerItem localDynamicBannerItem = new oidb_cmd0xbc9.DynamicBannerItem();
+    if (!TextUtils.isEmpty(this.a)) {
+      localDynamicBannerItem.bytes_dynamic_json.set(ByteStringMicro.copyFromUtf8(this.a));
+    }
+    return localDynamicBannerItem;
+  }
 }
 
 

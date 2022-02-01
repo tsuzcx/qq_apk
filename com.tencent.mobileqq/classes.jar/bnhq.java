@@ -1,18 +1,22 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
-import java.util.List;
-
 public class bnhq
-  extends vko
 {
-  public final int a;
-  @NonNull
-  public final List<vwc> a;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
   
-  public bnhq(int paramInt, @NonNull List<vwc> paramList)
+  public bnhq(boolean paramBoolean, int paramInt)
   {
+    this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

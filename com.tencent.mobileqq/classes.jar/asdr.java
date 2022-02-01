@@ -1,38 +1,24 @@
-public class asdr
+import mqq.app.QQPermissionCallback;
+
+class asdr
+  implements QQPermissionCallback
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b = "";
-  public short b;
-  public boolean b;
-  public byte[] b;
-  public int c;
-  public long c;
-  public String c;
-  public byte[] c;
-  public int d;
-  public String d = "";
-  public byte[] d;
-  public String e = "";
-  public byte[] e;
-  public String f = "";
+  asdr(asdl paramasdl) {}
   
-  public asdr(asdm paramasdm)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_JavaLangString = "";
+    bhdj.a(this.a.a);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    asdl.b(this.a);
+    bdla.b(asdl.a(this.a), "CliOper", "", "", "0X800A6D6", "0X800A6D6", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdr
  * JD-Core Version:    0.7.0.1
  */

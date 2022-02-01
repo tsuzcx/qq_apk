@@ -1,368 +1,121 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable.1;
-import com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable.2;
-import com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable.3;
-import com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable.5;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArFeatureInfo;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.locks.ReentrantLock;
-import mqq.os.MqqHandler;
+import java.util.List;
+import tencent.im.oidb.cmd0x438.oidb_0x438.ReqBody;
+import tencent.im.oidb.cmd0x438.oidb_0x438.ReqInfo;
+import tencent.im.oidb.cmd0x438.oidb_0x438.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class aobx
-  implements Handler.Callback, aobb, aobd
+  extends BusinessHandler
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private aobb jdField_a_of_type_Aobb;
-  private aobd jdField_a_of_type_Aobd;
-  aobj jdField_a_of_type_Aobj = null;
-  private aobw jdField_a_of_type_Aobw;
-  private ArVideoResourceInfo jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo;
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-  private boolean jdField_a_of_type_Boolean;
-  private aobb jdField_b_of_type_Aobb;
-  private boolean jdField_b_of_type_Boolean;
-  
-  public aobx(aobd paramaobd, aobw paramaobw)
+  protected aobx(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Aobd = paramaobd;
-    this.jdField_a_of_type_Aobw = paramaobw;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+    super(paramQQAppInterface);
   }
   
-  private aobb a(ArVideoResourceInfo paramArVideoResourceInfo, int paramInt)
+  private static oidb_sso.OIDBSSOPkg a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    aobf localaobf = a(paramArVideoResourceInfo);
-    aobb localaobb = aobh.a(this, localaobf, null);
-    QLog.d("AREngine_MultiFragmentAnimRenderable", 1, "create new render here " + localaobb);
-    boolean bool;
-    if (localaobb != null)
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
+      paramToServiceMsg = null;
+    }
+    for (;;)
     {
-      if ((!TextUtils.isEmpty(paramArVideoResourceInfo.e)) && (FileUtils.fileExists(paramArVideoResourceInfo.e)) && (this.jdField_a_of_type_Aobw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.size() > paramInt + 1))
+      return paramToServiceMsg;
+      paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
+      try
       {
-        paramArVideoResourceInfo = (ArVideoResourceInfo)this.jdField_a_of_type_Aobw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(paramInt + 1);
-        if ((paramArVideoResourceInfo.jdField_d_of_type_Int == 4) && (!TextUtils.isEmpty(paramArVideoResourceInfo.e)) && (!FileUtils.fileExists(paramArVideoResourceInfo.e)))
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.uint32_result.get() == 0))
+        {
+          paramToServiceMsg = paramFromServiceMsg;
+          if (paramFromServiceMsg.bytes_bodybuffer.get() != null) {
+            continue;
+          }
+        }
+        return null;
+      }
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      {
+        for (;;)
         {
           if (QLog.isColorLevel()) {
-            QLog.w("AREngine_MultiFragmentAnimRenderable", 2, "preload next online video, " + paramArVideoResourceInfo.jdField_d_of_type_JavaLangString + ", " + paramArVideoResourceInfo.e);
+            QLog.d("QWalletHandler", 2, "parseSSOPkg: oidb_sso parseFrom byte InvalidProtocolBufferMicroException ");
           }
-          aoma.a(BaseApplicationImpl.getContext(), paramArVideoResourceInfo);
         }
       }
-      if ((localaobf.jdField_a_of_type_Int != 5) || ((localaobf.jdField_a_of_type_Long != 2L) && (localaobf.jdField_a_of_type_Long != 2048L))) {
-        break label292;
-      }
-      bool = true;
-      this.jdField_a_of_type_Aobd.a().a();
-      this.jdField_a_of_type_Aobd.a().a(bool, localaobf);
-      if (localaobf.jdField_a_of_type_Int != 0) {
-        break label297;
-      }
-      paramArVideoResourceInfo = (aobr)localaobf;
-      this.jdField_a_of_type_Aobd.a().a(localaobf.b, localaobf.jdField_a_of_type_Int, paramArVideoResourceInfo.a);
     }
-    label292:
-    label297:
-    do
+  }
+  
+  public void a(int paramInt, List<oidb_0x438.ReqInfo> paramList)
+  {
+    Object localObject = new oidb_0x438.ReqBody();
+    ((oidb_0x438.ReqBody)localObject).stReqInfo.set(paramList);
+    paramList = new oidb_sso.OIDBSSOPkg();
+    paramList.uint32_command.set(1080);
+    paramList.uint32_result.set(0);
+    paramList.uint32_service_type.set(paramInt);
+    paramList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x438.ReqBody)localObject).toByteArray()));
+    localObject = createToServiceMsg("OidbSvc.0x438");
+    ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return aoby.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QWalletHandler", 4, "onReceive");
+    }
+    String str = paramToServiceMsg.getServiceCmd();
+    if (QLog.isDevelopLevel())
     {
-      return localaobb;
-      bool = false;
-      break;
-      if ((localaobf.jdField_a_of_type_Int == 2) || (localaobf.jdField_a_of_type_Int == 3))
-      {
-        paramArVideoResourceInfo = (aoca)localaobf;
-        this.jdField_a_of_type_Aobd.a().a(localaobf.b, localaobf.jdField_a_of_type_Int, paramArVideoResourceInfo.a);
-        return localaobb;
-      }
-    } while (localaobf.jdField_a_of_type_Int != 4);
-    paramArVideoResourceInfo = (aocd)localaobf;
-    this.jdField_a_of_type_Aobd.a().a(localaobf.b, localaobf.jdField_a_of_type_Int, paramArVideoResourceInfo.a);
-    return localaobb;
-  }
-  
-  private aobf a(ArVideoResourceInfo paramArVideoResourceInfo)
-  {
-    ArCloudConfigInfo localArCloudConfigInfo = new ArCloudConfigInfo();
-    localArCloudConfigInfo.jdField_d_of_type_Int = paramArVideoResourceInfo.jdField_d_of_type_Int;
-    if ((QLog.isDebugVersion()) && (paramArVideoResourceInfo.jdField_d_of_type_Int != 2) && (paramArVideoResourceInfo.jdField_d_of_type_Int != 3) && (paramArVideoResourceInfo.jdField_d_of_type_Int != 4))
-    {
-      ThreadManager.getUIHandler().post(new MultiFragmentAnimRenderable.1(this));
-      QLog.i("AREngine_MultiFragmentAnimRenderable", 2, "buildARRenderResourceInfoForFragmentAnim animInfo.type=" + paramArVideoResourceInfo.jdField_d_of_type_Int);
+      QLog.i("QWalletHandler", 4, "cmd=" + str);
+      QLog.i("QWalletHandler", 4, "data length =" + ((byte[])paramObject).length);
     }
-    Object localObject = new ArrayList();
-    ((ArrayList)localObject).add(paramArVideoResourceInfo);
-    localArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-    localObject = new ArFeatureInfo();
-    ((ArFeatureInfo)localObject).jdField_a_of_type_JavaLangString = paramArVideoResourceInfo.c;
-    ((ArFeatureInfo)localObject).jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Aobw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_d_of_type_JavaLangString;
-    localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo = ((ArFeatureInfo)localObject);
-    localArCloudConfigInfo.jdField_c_of_type_Int = this.jdField_a_of_type_Aobw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_c_of_type_Int;
-    return aolr.a(localArCloudConfigInfo, true, this.jdField_a_of_type_Aobw.jdField_a_of_type_Long, this.jdField_a_of_type_Aobw.jdField_c_of_type_Int, this.jdField_a_of_type_Aobw.jdField_a_of_type_Float, this.jdField_a_of_type_Aobw.b, this.jdField_a_of_type_Aobw.jdField_c_of_type_Float);
-  }
-  
-  private void b()
-  {
-    ArVideoResourceInfo localArVideoResourceInfo;
-    aobb localaobb;
-    if ((!this.jdField_a_of_type_Aobw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_a_of_type_Aobw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.size() > this.jdField_a_of_type_Int + 1))
-    {
-      localArVideoResourceInfo = (ArVideoResourceInfo)this.jdField_a_of_type_Aobw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int + 1);
-      localaobb = a(localArVideoResourceInfo, this.jdField_a_of_type_Int + 1);
-      if (localaobb == null) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 100L);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_b_of_type_Aobb = this.jdField_a_of_type_Aobb;
-    this.jdField_a_of_type_Aobb = localaobb;
-    this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo = localArVideoResourceInfo;
-    this.jdField_a_of_type_Int += 1;
-    this.jdField_a_of_type_Aobd.a(new MultiFragmentAnimRenderable.2(this, localaobb));
-  }
-  
-  public Context a()
-  {
-    return this.jdField_a_of_type_Aobd.a();
-  }
-  
-  public aobi a()
-  {
-    return this.jdField_a_of_type_Aobd.a();
-  }
-  
-  public aoly a()
-  {
-    return null;
-  }
-  
-  public Object a(int paramInt)
-  {
-    return this.jdField_a_of_type_Aobd.a(paramInt);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aobd.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(aobb paramaobb, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject) {}
-  
-  public void a(aobj paramaobj)
-  {
-    if (this.jdField_a_of_type_Aobb != null)
-    {
-      if ((!this.jdField_a_of_type_Aobb.e()) && (this.jdField_b_of_type_Aobb != null) && (this.jdField_a_of_type_Aobj != null))
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-        if (this.jdField_b_of_type_Aobb != null) {
-          this.jdField_b_of_type_Aobb.a(this.jdField_a_of_type_Aobj);
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      }
-    }
-    else {
-      return;
-    }
-    if (this.jdField_b_of_type_Aobb != null) {
-      this.jdField_a_of_type_Aobd.a(new MultiFragmentAnimRenderable.3(this));
-    }
-    this.jdField_a_of_type_Aobb.a(paramaobj);
-    this.jdField_a_of_type_Aobj = paramaobj;
-  }
-  
-  public void a(ArVideoResourceInfo paramArVideoResourceInfo)
-  {
-    b();
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public void a(ArVideoResourceInfo paramArVideoResourceInfo, aobd paramaobd) {}
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_Aobd.a(paramRunnable);
-  }
-  
-  public void a(String paramString) {}
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_Aobb != null)
-    {
-      if ((!this.jdField_a_of_type_Aobb.e()) && (this.jdField_b_of_type_Aobb != null)) {
-        return this.jdField_b_of_type_Aobb.b();
-      }
-      return this.jdField_a_of_type_Aobb.b();
-    }
-    return 5;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_MultiFragmentAnimRenderable", 2, "notifyAnimationPlayStatusChange state:" + paramInt1 + " remainTimes:" + paramInt2);
-    }
-    switch (paramInt1)
-    {
-    }
+    if (TextUtils.isEmpty(str)) {}
     do
     {
       do
       {
-        do
-        {
-          do
-          {
-            return;
-          } while (this.jdField_a_of_type_Int != 0);
-          this.jdField_a_of_type_Aobd.b(paramInt1, paramInt2);
-          return;
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-          return;
-          if ((this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo == null) || ((!this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo.c()) && (this.jdField_a_of_type_Aobw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.size() != this.jdField_a_of_type_Int + 1))) {
-            break;
-          }
-        } while (((this.jdField_a_of_type_Aobw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (this.jdField_a_of_type_Aobw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (paramInt2 > 0)) || (this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Aobb != null));
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Aobd.b(paramInt1, 0);
         return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo == null) || (!this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo.b())) {
-          break;
-        }
-      } while (this.jdField_b_of_type_Boolean);
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_Aobd.a(this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo, this);
-      return;
-    } while ((this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo == null) || (!this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo.a()) || (paramInt2 > 0));
-    b();
-  }
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_Aobb != null)
-    {
-      if ((this.jdField_b_of_type_Aobb != null) && (!this.jdField_a_of_type_Aobb.e())) {
-        return this.jdField_b_of_type_Aobb.c();
+      } while (str.compareTo("OidbSvc.0x438") != 0);
+      paramToServiceMsg = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      if (paramToServiceMsg != null) {
+        break;
       }
-      return this.jdField_a_of_type_Aobb.c();
-    }
-    return 2;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_Aobw.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void c()
-  {
-    if (!this.jdField_a_of_type_Aobw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    } while (!QLog.isColorLevel());
+    QLog.d("QWalletHandler", 2, "onReceive: ssoPkg parse failed");
+    return;
+    paramFromServiceMsg = new oidb_0x438.RspBody();
+    try
     {
-      this.jdField_a_of_type_Int = 0;
-      ArVideoResourceInfo localArVideoResourceInfo = (ArVideoResourceInfo)this.jdField_a_of_type_Aobw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Aobb = a(localArVideoResourceInfo, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo = localArVideoResourceInfo;
-    }
-    if (this.jdField_a_of_type_Aobb == null) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 100L);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      this.jdField_a_of_type_Aobb.c();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Aobb != null) {
-      this.jdField_a_of_type_Aobb.d();
-    }
-  }
-  
-  public boolean d()
-  {
-    if (this.jdField_a_of_type_Aobb != null)
-    {
-      if ((!this.jdField_a_of_type_Aobb.e()) && (this.jdField_b_of_type_Aobb != null)) {
-        return this.jdField_b_of_type_Aobb.d();
+      paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+      paramFromServiceMsg = paramFromServiceMsg.PasswdRedBag.get();
+      if (paramFromServiceMsg != null)
+      {
+        notifyUI(paramToServiceMsg.uint32_service_type.get(), true, paramFromServiceMsg);
+        return;
       }
-      return this.jdField_a_of_type_Aobb.d();
     }
-    return false;
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Aobb != null) {
-      this.jdField_a_of_type_Aobb.e();
-    }
-  }
-  
-  public boolean e()
-  {
-    if (this.jdField_a_of_type_Aobb != null)
+    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
     {
-      if ((this.jdField_b_of_type_Aobb != null) && (!this.jdField_a_of_type_Aobb.e())) {
-        return this.jdField_b_of_type_Aobb.e();
-      }
-      return this.jdField_a_of_type_Aobb.e();
-    }
-    return false;
-  }
-  
-  public void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("AREngine_MultiFragmentAnimRenderable", 2, "onDestroy currentRenderable " + this.jdField_a_of_type_Aobb + "  lastRenderable " + this.jdField_b_of_type_Aobb);
-    }
-    if (this.jdField_a_of_type_Aobb != null)
-    {
-      this.jdField_a_of_type_Aobb.f();
-      this.jdField_a_of_type_Aobb = null;
-    }
-    if (this.jdField_b_of_type_Aobb != null)
-    {
-      this.jdField_b_of_type_Aobb.f();
-      this.jdField_b_of_type_Aobb = null;
-    }
-    this.jdField_a_of_type_Aobj = null;
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    aoma.a();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (this.jdField_a_of_type_Aobd != null) {
-        this.jdField_a_of_type_Aobd.a(new MultiFragmentAnimRenderable.5(this));
-      }
+      paramFromServiceMsg.printStackTrace();
+      notifyUI(paramToServiceMsg.uint32_service_type.get(), false, null);
     }
   }
 }

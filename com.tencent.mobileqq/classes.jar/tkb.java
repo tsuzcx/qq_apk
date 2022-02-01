@@ -1,93 +1,53 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StrikethroughSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 
 class tkb
-  implements BusinessObserver
 {
-  tkb(tjz paramtjz, Intent paramIntent, Activity paramActivity) {}
+  int a;
+  private int b;
+  private int c;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static tkb a(int paramInt, Object... paramVarArgs)
   {
-    tjz.a(this.jdField_a_of_type_Tjz).dismiss();
-    if (paramBoolean) {}
-    for (;;)
+    tkb localtkb = new tkb();
+    localtkb.a = paramInt;
+    switch (paramInt)
     {
-      try
-      {
-        Object localObject = paramBundle.getByteArray("data");
-        if (localObject != null)
-        {
-          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-          paramBundle.mergeFrom((byte[])localObject);
-          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
-          {
-            localAndroidInfo = paramBundle.androidInfo;
-            localObject = aadf.a(paramBundle.iconsURL, 16);
-            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.sourceUrl != null) {
-              continue;
-            }
-            paramBundle = "";
-            localIntent.putExtra("struct_share_key_source_url", paramBundle);
-            localIntent = this.jdField_a_of_type_AndroidContentIntent;
-            paramBundle = (Bundle)localObject;
-            if (localObject == null) {
-              paramBundle = "";
-            }
-            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.messagetail != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
-            localObject = this.jdField_a_of_type_AndroidContentIntent;
-            if (localAndroidInfo.packName != null) {
-              continue;
-            }
-            paramBundle = "";
-            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        GetAppInfoProto.AndroidInfo localAndroidInfo;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d(tjz.a, 2, paramBundle.getMessage());
-        continue;
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
-        this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 21);
-      }
-      paramBundle = bchh.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
-      if (paramBundle != null) {
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(tjz.a, 2, "build struct msg fail");
-      }
-      return;
-      paramBundle = localAndroidInfo.sourceUrl.get();
-      continue;
-      paramBundle = localAndroidInfo.messagetail.get();
-      continue;
-      paramBundle = localAndroidInfo.packName.get();
+    case 3: 
+    default: 
+      return localtkb;
+    case 1: 
+    case 2: 
+      localtkb.b = ((Integer)paramVarArgs[0]).intValue();
+      return localtkb;
     }
+    localtkb.c = ((Integer)paramVarArgs[0]).intValue();
+    return localtkb;
+  }
+  
+  public Object a()
+  {
+    switch (this.a)
+    {
+    default: 
+      return null;
+    case 1: 
+      return new tka(this.b);
+    case 2: 
+      return new ForegroundColorSpan(this.b);
+    case 5: 
+      return new StrikethroughSpan();
+    case 4: 
+      return new StyleSpan(this.c);
+    }
+    return new UnderlineSpan();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tkb
  * JD-Core Version:    0.7.0.1
  */

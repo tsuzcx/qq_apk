@@ -5,10 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.Toast;
-import bcdy;
-import bhik;
+import bdkt;
+import bitc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
@@ -29,7 +30,7 @@ public abstract class IQZonePluginManager
       paramPluginParams.mIntent.putExtra("qzone_uin", paramPluginParams.mUin);
     }
     paramPluginParams.mIntent.putExtra("pluginsdk_selfuin", paramPluginParams.mUin);
-    paramPluginParams.mIntent.putExtra("clsUploader", bcdy.class.getName());
+    paramPluginParams.mIntent.putExtra("clsUploader", bdkt.class.getName());
     Object localObject = paramPluginParams.mPluginID;
     localObject = new File(QZonePluginUtils.getPluginInstallDir(paramContext), (String)localObject);
     try
@@ -52,7 +53,7 @@ public abstract class IQZonePluginManager
       paramPluginParams.mIntent.putExtra("qzone_uin", paramPluginParams.mUin);
     }
     paramPluginParams.mIntent.putExtra("pluginsdk_selfuin", paramPluginParams.mUin);
-    paramPluginParams.mIntent.putExtra("clsUploader", bcdy.class.getName());
+    paramPluginParams.mIntent.putExtra("clsUploader", bdkt.class.getName());
     Object localObject = paramPluginParams.mPluginID;
     localObject = new File(QZonePluginUtils.getPluginInstallDir(paramContext), (String)localObject);
     try
@@ -87,12 +88,12 @@ public abstract class IQZonePluginManager
         paramPluginParams.mIntent.putExtra("qzone_uin", paramPluginParams.mUin);
       }
       paramPluginParams.mIntent.putExtra("pluginsdk_selfuin", paramPluginParams.mUin);
-      paramPluginParams.mIntent.putExtra("clsUploader", bcdy.class.getName());
+      paramPluginParams.mIntent.putExtra("clsUploader", bdkt.class.getName());
       try
       {
         File localFile = new File(QZonePluginUtils.getPluginInstallDir(paramActivity), paramPluginParams.mPluginID);
         PluginProxyActivity.openActivityForResult(paramActivity, paramPluginParams.mPluginName, paramPluginParams.mPluginID, localFile.getCanonicalPath(), paramPluginParams.mConponentName, paramPluginParams.mIntent, paramPluginParams.mRequestCode);
-        if ((paramPluginParams.mDialog != null) && ((paramPluginParams.mDialog instanceof bhik)) && (paramActivity != null))
+        if ((paramPluginParams.mDialog != null) && ((paramPluginParams.mDialog instanceof bitc)) && (paramActivity != null))
         {
           paramActivity.overridePendingTransition(2130772106, 2130772106);
           return;
@@ -119,7 +120,7 @@ public abstract class IQZonePluginManager
       handleOtherProcess(paramContext, paramPluginParams, local3);
       return;
     }
-    ((IQZonePluginManager)((QQAppInterface)localAppRuntime).getManager(175)).readyForLaunch(paramContext, paramPluginParams, local3);
+    ((IQZonePluginManager)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.QZONE_PLUGIN_MANAGER)).readyForLaunch(paramContext, paramPluginParams, local3);
   }
   
   public static void launchPluginService(Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
@@ -131,7 +132,7 @@ public abstract class IQZonePluginManager
       handleOtherProcess(paramContext, paramPluginParams, local2);
       return;
     }
-    ((IQZonePluginManager)((QQAppInterface)localAppRuntime).getManager(175)).readyForLaunch(paramContext, paramPluginParams, local2);
+    ((IQZonePluginManager)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.QZONE_PLUGIN_MANAGER)).readyForLaunch(paramContext, paramPluginParams, local2);
   }
   
   public static void openActivityForResult(Activity paramActivity, IQZonePluginManager.PluginParams paramPluginParams)
@@ -152,7 +153,7 @@ public abstract class IQZonePluginManager
       handleOtherProcess(paramActivity, paramPluginParams, (IQZonePluginManager.OnPluginReadyListener)localObject);
       return;
     }
-    ((IQZonePluginManager)((QQAppInterface)localAppRuntime).getManager(175)).readyForLaunch(paramActivity, paramPluginParams, (IQZonePluginManager.OnPluginReadyListener)localObject);
+    ((IQZonePluginManager)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.QZONE_PLUGIN_MANAGER)).readyForLaunch(paramActivity, paramPluginParams, (IQZonePluginManager.OnPluginReadyListener)localObject);
   }
   
   public abstract boolean cancelInstall(String paramString);

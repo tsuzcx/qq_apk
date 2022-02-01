@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import algi;
-import ampt;
+import amee;
+import ansg;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import mqq.app.MobileQQ;
 public class ConfigHandler$3
   implements Runnable
 {
-  public ConfigHandler$3(ampt paramampt, String paramString, algi paramalgi, long paramLong) {}
+  public ConfigHandler$3(ansg paramansg, String paramString, amee paramamee, long paramLong) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class ConfigHandler$3
       QLog.d("weatherManager", 2, "handleWeatherResources download: " + i + ",downloadpath" + localFile.getAbsolutePath());
     }
     if (i == 0) {
-      bool = this.jdField_a_of_type_Algi.a(this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+      bool = this.jdField_a_of_type_Amee.a(this.jdField_a_of_type_Long, localFile.getAbsolutePath());
     }
     this.this$0.notifyUI(9, bool, null);
   }

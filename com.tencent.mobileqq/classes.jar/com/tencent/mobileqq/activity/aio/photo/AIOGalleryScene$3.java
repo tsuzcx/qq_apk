@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agyh;
-import agzn;
-import aham;
-import ahan;
-import ajqd;
-import ajqi;
+import ahri;
+import ahsn;
+import ahtm;
+import ahtn;
+import aklr;
+import aklw;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import com.tencent.image.URLDrawable;
@@ -16,15 +16,15 @@ import mqq.os.MqqHandler;
 public class AIOGalleryScene$3
   implements Runnable
 {
-  public AIOGalleryScene$3(agyh paramagyh) {}
+  public AIOGalleryScene$3(ahri paramahri) {}
   
   public void run()
   {
     Object localObject1;
     Object localObject2;
-    if ((this.this$0.jdField_a_of_type_Agzn.a() != null) && (this.this$0.jdField_a_of_type_Agzn.a().jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null))
+    if ((this.this$0.jdField_a_of_type_Ahsn.a() != null) && (this.this$0.jdField_a_of_type_Ahsn.a().jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null))
     {
-      localObject1 = this.this$0.jdField_a_of_type_Agzn.a().jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+      localObject1 = this.this$0.jdField_a_of_type_Ahsn.a().jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
       if (!(localObject1 instanceof AIOShortVideoData)) {
         break label474;
       }
@@ -32,7 +32,7 @@ public class AIOGalleryScene$3
       if (((AIOShortVideoData)localObject2).b != 0) {
         break label361;
       }
-      if ((this.this$0.jdField_a_of_type_Ajqd != null) && (this.this$0.jdField_a_of_type_Ajqd.c())) {}
+      if ((this.this$0.jdField_a_of_type_Aklr != null) && (this.this$0.jdField_a_of_type_Aklr.c())) {}
     }
     else
     {
@@ -41,15 +41,15 @@ public class AIOGalleryScene$3
     long l1;
     label168:
     long l2;
-    if (this.this$0.jdField_a_of_type_Agzn.a().jdField_a_of_type_Ahan.d)
+    if (this.this$0.jdField_a_of_type_Ahsn.a().jdField_a_of_type_Ahtn.d)
     {
-      l1 = this.this$0.jdField_a_of_type_Ajqd.c();
-      localObject1 = ShortVideoUtils.stringForFileSize(agyh.a(this.this$0), l1 * 1024L);
+      l1 = this.this$0.jdField_a_of_type_Aklr.c();
+      localObject1 = ShortVideoUtils.stringForFileSize(ahri.a(this.this$0), l1 * 1024L);
       this.this$0.e.setText((String)localObject1 + "/s");
-      if ((this.this$0.jdField_a_of_type_Ajqd == null) || (this.this$0.jdField_a_of_type_Ajqd.a == null) || (!this.this$0.jdField_a_of_type_Ajqd.a.a)) {
+      if ((this.this$0.jdField_a_of_type_Aklr == null) || (this.this$0.jdField_a_of_type_Aklr.a == null) || (!this.this$0.jdField_a_of_type_Aklr.a.a)) {
         break label566;
       }
-      l1 = this.this$0.jdField_a_of_type_Ajqd.d();
+      l1 = this.this$0.jdField_a_of_type_Aklr.d();
       l2 = ((AIOShortVideoData)localObject2).h;
     }
     label566:
@@ -64,15 +64,15 @@ public class AIOGalleryScene$3
       {
         this.this$0.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this.this$0.jdField_b_of_type_JavaLangRunnable, 100L);
         return;
-        l1 = this.this$0.jdField_a_of_type_Ajqd.a();
-        int i = (int)(l1 / this.this$0.jdField_a_of_type_Ajqd.b() * 10000.0D);
+        l1 = this.this$0.jdField_a_of_type_Aklr.a();
+        int i = (int)(l1 / this.this$0.jdField_a_of_type_Aklr.b() * 10000.0D);
         this.this$0.c.setText(ShortVideoUtils.stringForTime(l1));
         this.this$0.jdField_b_of_type_AndroidWidgetSeekBar.setProgress(i);
         break label168;
         label361:
         if (((AIOShortVideoData)localObject2).b == 1)
         {
-          localObject2 = agyh.a(this.this$0);
+          localObject2 = ahri.a(this.this$0);
           if (localObject2 != null)
           {
             localObject2 = ((AIOGalleryAdapter.GalleryImageStruct)localObject2).a();
@@ -86,11 +86,11 @@ public class AIOGalleryScene$3
               continue;
               if (AIOFileVideoData.class.isInstance(localObject1))
               {
-                if ((this.this$0.jdField_a_of_type_Ajqd == null) || (!this.this$0.jdField_a_of_type_Ajqd.c())) {
+                if ((this.this$0.jdField_a_of_type_Aklr == null) || (!this.this$0.jdField_a_of_type_Aklr.c())) {
                   break;
                 }
-                l1 = this.this$0.jdField_a_of_type_Ajqd.a();
-                i = (int)(l1 / this.this$0.jdField_a_of_type_Ajqd.b() * 10000.0D);
+                l1 = this.this$0.jdField_a_of_type_Aklr.a();
+                i = (int)(l1 / this.this$0.jdField_a_of_type_Aklr.b() * 10000.0D);
                 this.this$0.c.setText(ShortVideoUtils.stringForTime(l1));
                 this.this$0.jdField_b_of_type_AndroidWidgetSeekBar.setProgress(i);
               }

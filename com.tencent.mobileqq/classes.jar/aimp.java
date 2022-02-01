@@ -1,35 +1,33 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgModel;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
-public class aimp
-  implements View.OnClickListener
+class aimp
+  implements aqon
 {
-  public aimp(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  aimp(aimn paramaimn) {}
   
-  public void onClick(View paramView)
+  public void a(ColorNote paramColorNote)
   {
-    Object localObject;
-    if ((paramView.getTag() instanceof aikn))
-    {
-      localObject = (aikn)paramView.getTag();
-      if (localObject != null) {
-        break label30;
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramColorNote == null) || (!aqoq.d(paramColorNote))) {
       return;
-      label30:
-      localObject = TroopInfoActivity.a(((aikn)localObject).b, 4);
-      ((Bundle)localObject).putInt("t_s_f", 1002);
-      TroopUtils.openTroopInfoActivity(this.a.getActivity(), (Bundle)localObject, 2);
     }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpComingMsgLogic.UpComingMsgManager", 4, "color note add." + paramColorNote);
+    }
+    aimn.a(this.a, paramColorNote, 1001);
+    bdla.b(null, "dc00898", "", "", "0X800AE81", "0X800AE81", aimq.a(paramColorNote).reportType, 0, "", "", "", "");
+  }
+  
+  public void b(ColorNote paramColorNote)
+  {
+    if ((paramColorNote == null) || (!aqoq.d(paramColorNote))) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpComingMsgLogic.UpComingMsgManager", 4, "color note del." + paramColorNote);
+    }
+    aimn.a(this.a, paramColorNote, 1002);
   }
 }
 

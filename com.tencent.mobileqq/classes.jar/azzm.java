@@ -1,55 +1,14 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
-import java.lang.ref.WeakReference;
+import android.graphics.Color;
 
-class azzm
-  extends Handler
+public class azzm
 {
-  final WeakReference<azzj> a;
+  public static final int a;
+  public static final int[] a;
   
-  public azzm(Looper paramLooper, azzj paramazzj)
+  static
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramazzj);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    azzi.a("PTV.RichmediaClient", "handleMessage, msg.what = " + paramMessage.what);
-    azzj localazzj = (azzj)this.a.get();
-    if (localazzj == null) {}
-    do
-    {
-      return;
-      if (paramMessage.getData() != null) {
-        paramMessage.getData().getInt("msg_sub_cmd");
-      }
-      switch (paramMessage.what)
-      {
-      case 1001: 
-      default: 
-        super.handleMessage(paramMessage);
-        return;
-      case 1000: 
-        azzi.a("PTV.RichmediaClient", "handleMessage MSG_S2C_TEST");
-        return;
-      case 1002: 
-        azzi.a("PTV.RichmediaClient", "handleMessage MSG_S2C_VIDEO_SLICE_UPLOAD_FINISH");
-        paramMessage = paramMessage.getData();
-      }
-    } while (paramMessage == null);
-    paramMessage = paramMessage.getString("vidoe_record_uniseq");
-    localazzj.a().a(paramMessage);
-    return;
-    AIOLongCaptureCtrl.a(paramMessage.getData());
-    return;
-    AIOLongCaptureCtrl.b(paramMessage.getData());
-    return;
-    paramMessage = paramMessage.getData();
-    agye.a().a(paramMessage);
+    jdField_a_of_type_Int = Color.parseColor("#FF4D94FF");
+    jdField_a_of_type_ArrayOfInt = new int[] { Color.parseColor("#FFFFDB00"), Color.parseColor("#FF32C5FF"), Color.parseColor("#FFFF7979"), Color.parseColor("#FF64F0BD"), Color.parseColor("#FF9266FF"), Color.parseColor("#FF8FF56F"), Color.parseColor("#FFFFC1A4"), Color.parseColor("#FFFF8C5D"), Color.parseColor("#FF49B3FF"), Color.parseColor("#FFC362FF"), Color.parseColor("#FF629BFF"), Color.parseColor("#FFFE89E1"), Color.parseColor("#FFFFD957"), Color.parseColor("#FF6776FF"), Color.parseColor("#FFEB5FFF"), Color.parseColor("#FFFF63B4"), Color.parseColor("#FF76E4FF"), Color.parseColor("#FFB4E019"), Color.parseColor("#FFFFA967"), Color.parseColor("#FFFF6767") };
   }
 }
 

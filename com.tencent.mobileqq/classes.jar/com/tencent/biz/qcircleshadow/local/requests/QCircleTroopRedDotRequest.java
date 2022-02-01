@@ -1,10 +1,10 @@
 package com.tencent.biz.qcircleshadow.local.requests;
 
+import android.text.TextUtils;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mtt.supportui.utils.struct.ArrayMap;
 import feedcloud.FeedCloudCommon.Entry;
 import feedcloud.FeedCloudCommon.StCommonExt;
 import java.util.Iterator;
@@ -16,26 +16,30 @@ import qqcircle.QQCircleCounter.CountInfoRsp;
 public class QCircleTroopRedDotRequest
   extends QCircleBaseRequest
 {
-  private QQCircleCounter.CountInfoReq mReq;
+  private QQCircleCounter.CountInfoReq mReq = new QQCircleCounter.CountInfoReq();
   
-  public QCircleTroopRedDotRequest(ArrayMap<String, Boolean> paramArrayMap)
+  public QCircleTroopRedDotRequest(Set<String> paramSet)
   {
+    if ((paramSet == null) || (paramSet.size() == 0)) {
+      return;
+    }
     Object localObject1 = new StringBuilder(1024);
-    paramArrayMap = paramArrayMap.keySet().iterator();
-    while (paramArrayMap.hasNext())
+    paramSet = paramSet.iterator();
+    while (paramSet.hasNext())
     {
-      localObject2 = (String)paramArrayMap.next();
+      localObject2 = (String)paramSet.next();
       ((StringBuilder)localObject1).append(',');
       ((StringBuilder)localObject1).append((String)localObject2);
     }
-    ((StringBuilder)localObject1).delete(0, 1);
-    paramArrayMap = ((StringBuilder)localObject1).toString();
-    this.mReq = new QQCircleCounter.CountInfoReq();
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      ((StringBuilder)localObject1).delete(0, 1);
+    }
+    paramSet = ((StringBuilder)localObject1).toString();
     this.mReq.reqType.set(5);
     localObject1 = new FeedCloudCommon.StCommonExt();
     Object localObject2 = new FeedCloudCommon.Entry();
     ((FeedCloudCommon.Entry)localObject2).key.set("group_uins");
-    ((FeedCloudCommon.Entry)localObject2).value.set(paramArrayMap);
+    ((FeedCloudCommon.Entry)localObject2).value.set(paramSet);
     ((FeedCloudCommon.StCommonExt)localObject1).mapInfo.get().add(localObject2);
     this.mReq.extInfo.set((MessageMicro)localObject1);
     this.mReq.reqType.set(5);
@@ -60,7 +64,7 @@ public class QCircleTroopRedDotRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.requests.QCircleTroopRedDotRequest
  * JD-Core Version:    0.7.0.1
  */

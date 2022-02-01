@@ -1,30 +1,44 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ChildDrawingOrderCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class bjwi
-  implements RecyclerView.ChildDrawingOrderCallback
+  implements nuw
 {
-  bjwi(bjwf parambjwf) {}
+  bjwi(bjwh parambjwh, String paramString, boolean paramBoolean) {}
   
-  public int onGetChildDrawingOrder(int paramInt1, int paramInt2)
+  public void loaded(String paramString, int paramInt)
   {
-    if (this.a.mOverdrawChild == null) {}
-    int i;
-    do
+    if (((paramInt != 0) || (paramString == null) || (!paramString.contains("url"))) && (paramInt != 7)) {
+      bjwe.a.set(false);
+    }
+    this.jdField_a_of_type_Bjwh.a = -1;
+    switch (paramInt)
     {
-      return paramInt2;
-      int j = this.a.mOverdrawChildPosition;
-      i = j;
-      if (j == -1)
-      {
-        i = this.a.mRecyclerView.indexOfChild(this.a.mOverdrawChild);
-        this.a.mOverdrawChildPosition = i;
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 6: 
+    default: 
+      this.jdField_a_of_type_Bjwh.a(this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QGDownloader.offline", 2, new Object[] { "onSoDownload loaded. code = ", Integer.valueOf(paramInt), ", param1:", paramString, ", DownloadStatus = " + this.jdField_a_of_type_Bjwh.a });
       }
-      if (paramInt2 == paramInt1 - 1) {
-        return i;
+      return;
+      this.jdField_a_of_type_Bjwh.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      continue;
+      if (paramString == null) {
+        this.jdField_a_of_type_Bjwh.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
       }
-    } while (paramInt2 < i);
-    return paramInt2 + 1;
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    this.jdField_a_of_type_Bjwh.a(this.jdField_a_of_type_JavaLangString, paramInt);
   }
 }
 

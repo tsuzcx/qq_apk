@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Build.VERSION;
 import android.view.animation.AnimationUtils;
-import ayek;
+import azkw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
@@ -409,7 +409,7 @@ public class HttpDownloader
     if ((paramDownloadParams.mHttpDownloaderParams != null) && ((paramDownloadParams.mHttpDownloaderParams instanceof HttpDownloaderParams)))
     {
       localHttpDownloaderParams = (HttpDownloaderParams)paramDownloadParams.mHttpDownloaderParams;
-      if ((localHttpDownloaderParams.businessType != 1001) || (!ayek.a)) {}
+      if ((localHttpDownloaderParams.businessType != 1001) || (!azkw.a)) {}
     }
     try
     {

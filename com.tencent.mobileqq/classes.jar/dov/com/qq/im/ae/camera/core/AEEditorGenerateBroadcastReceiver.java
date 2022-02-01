@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
-import bmbx;
+import bnrh;
 
 public class AEEditorGenerateBroadcastReceiver
   extends BroadcastReceiver
@@ -32,7 +32,7 @@ public class AEEditorGenerateBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     if (paramContext == null) {
-      bmbx.d("AEEditorGenerateBroadcastReceiver", "[onReceive] : action is null");
+      bnrh.d("AEEditorGenerateBroadcastReceiver", "[onReceive] : action is null");
     }
     String str1;
     String str2;
@@ -60,12 +60,12 @@ public class AEEditorGenerateBroadcastReceiver
         f = paramIntent.getFloatExtra("generate_progress", 0.0F);
         j = paramIntent.getIntExtra("generate_errorcode", 0);
         paramIntent = paramIntent.getStringExtra("generate_source_path");
-        bmbx.b("AEEditorGenerateBroadcastReceiver", "[onReceive] action :" + paramContext);
-        bmbx.b("AEEditorGenerateBroadcastReceiver", "[onReceive] mission :" + str5);
-        bmbx.b("AEEditorGenerateBroadcastReceiver", "[onReceive] path :" + str6);
-        bmbx.b("AEEditorGenerateBroadcastReceiver", "[onReceive] thumbPath :" + str7);
-        bmbx.b("AEEditorGenerateBroadcastReceiver", "[onReceive] progress :" + f);
-        bmbx.b("AEEditorGenerateBroadcastReceiver", "[onReceive] errorcode :" + j);
+        bnrh.b("AEEditorGenerateBroadcastReceiver", "[onReceive] action :" + paramContext);
+        bnrh.b("AEEditorGenerateBroadcastReceiver", "[onReceive] mission :" + str5);
+        bnrh.b("AEEditorGenerateBroadcastReceiver", "[onReceive] path :" + str6);
+        bnrh.b("AEEditorGenerateBroadcastReceiver", "[onReceive] thumbPath :" + str7);
+        bnrh.b("AEEditorGenerateBroadcastReceiver", "[onReceive] progress :" + f);
+        bnrh.b("AEEditorGenerateBroadcastReceiver", "[onReceive] errorcode :" + j);
       } while (this.mAETavSessionStatusListener == null);
       if ("AEEDITOR_GENERATE_STATUS_ERROR".equals(paramContext))
       {

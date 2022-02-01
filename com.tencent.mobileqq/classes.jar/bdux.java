@@ -1,69 +1,117 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.troop.aioapp.FullListGroupAppsDbHelper.1;
-import com.tencent.mobileqq.troop.aioapp.data.FullListGroupAppEntity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.studymode.KidModeVerifyFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 
 public class bdux
+  extends bdut
 {
-  private final QQAppInterface a;
+  public bdux(KidModeVerifyFragment paramKidModeVerifyFragment) {}
   
-  bdux(QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = paramQQAppInterface;
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing())) {
+      return;
+    }
+    int i = paramBundle.getInt("REQ_RESULT");
+    if (i != 0)
+    {
+      KidModeVerifyFragment.a(this.a).setEnabled(true);
+      if (i == 85)
+      {
+        bduv.a(localFragmentActivity, anvx.a(2131693427), 1);
+        return;
+      }
+      if (i == 84)
+      {
+        KidModeVerifyFragment.a(this.a, paramBundle.getInt("RESENT_INTERVAL_TIMEOUT", 0));
+        return;
+      }
+      bduv.a(localFragmentActivity, anvx.a(2131716463), 1);
+      return;
+    }
+    bhhr.a("sp_key_count_time", Long.valueOf(NetConnInfoCenter.getServerTime()));
+    if (QLog.isColorLevel()) {
+      QLog.d("KidModeObserver", 2, "KidMode onRecvVerifyCode");
+    }
+    i = paramBundle.getInt("RESENT_INTERVAL_TIMEOUT", 0);
+    if (i > 0) {}
+    for (;;)
+    {
+      KidModeVerifyFragment.b(this.a).setVisibility(0);
+      KidModeVerifyFragment.a(this.a, i);
+      return;
+      i = 60;
+    }
   }
   
-  private void b(FullListGroupAppEntity paramFullListGroupAppEntity)
+  public void d(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramFullListGroupAppEntity == null) || (bdvb.a(paramFullListGroupAppEntity.troopAIOAppInfos)))
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FullListGroupAppsDbHelper", 2, "saveToDb: invoked. empty full list, no need to persist");
+        QLog.d("KidModeObserver", 2, "onVerifyClose activity is finishing.");
       }
       return;
     }
-    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
-    paramFullListGroupAppEntity.setStatus(1000);
-    localEntityManager.delete(FullListGroupAppEntity.class.getSimpleName(), null, null);
-    localEntityManager.persistOrReplace(paramFullListGroupAppEntity);
-    localEntityManager.close();
-  }
-  
-  public void a()
-  {
-    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
-    bduw localbduw = bduw.a(this.a);
-    Object localObject = localEntityManager.query(FullListGroupAppEntity.class);
-    if (!bdvb.a((Collection)localObject))
+    if (!paramBoolean)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        FullListGroupAppEntity localFullListGroupAppEntity = (FullListGroupAppEntity)((Iterator)localObject).next();
-        if (!bdvb.a(localFullListGroupAppEntity.troopAIOAppInfos))
-        {
-          localbduw.a = localFullListGroupAppEntity.troopAIOAppInfos;
-          QLog.i("FullListGroupAppsDbHelper", 1, "buildFullListFromDb: invoked. " + localbduw.a);
-          return;
-        }
-      }
+      bduv.a(localFragmentActivity, anvx.a(2131719899), 1);
+      return;
     }
-    localEntityManager.close();
+    int i = paramBundle.getInt("SMS_TOKEN_TYPE");
+    paramBundle = paramBundle.getByteArray("SMS_TOKEN");
+    if ((paramBundle == null) && (QLog.isColorLevel())) {
+      QLog.d("KidModeObserver", 2, "verifySMSCodeSuccess but token is null");
+    }
+    if (paramBundle == null)
+    {
+      bduv.a(localFragmentActivity, anvx.a(2131719899), 1);
+      return;
+    }
+    bduu.a(KidModeVerifyFragment.a(this.a), "86", "", i, paramBundle);
   }
   
-  void a(FullListGroupAppEntity paramFullListGroupAppEntity)
+  public void e(boolean paramBoolean, Bundle paramBundle)
   {
-    ThreadManagerV2.excute(new FullListGroupAppsDbHelper.1(this, paramFullListGroupAppEntity), 32, null, false);
-  }
-  
-  void b()
-  {
-    this.a.getEntityManagerFactory().createEntityManager().delete(FullListGroupAppEntity.class.getSimpleName(), null, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("KidModeObserver", 1, new Object[] { "sendSmsTokenSuccess: res: ", Boolean.valueOf(paramBoolean) });
+    }
+    paramBundle = this.a.getActivity();
+    if ((paramBundle == null) || (paramBundle.isFinishing()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("KidModeObserver", 2, "onVerifyClose activity is finishing.");
+      }
+      return;
+    }
+    switch (KidModeVerifyFragment.a(this.a))
+    {
+    default: 
+      return;
+    case 0: 
+      if (!paramBoolean)
+      {
+        bduv.a(paramBundle, anvx.a(2131719899), 1);
+        return;
+      }
+      KidModeVerifyFragment.a(this.a);
+      return;
+    }
+    if (!paramBoolean)
+    {
+      bduv.a(paramBundle, anvx.a(2131719899), 1);
+      return;
+    }
+    paramBundle = new Intent();
+    paramBundle.putExtra("ExtraTargetMode", this.a.getActivity().getIntent().getIntExtra("ExtraTargetMode", -1));
+    this.a.getActivity().setResult(-1, paramBundle);
+    this.a.getActivity().finish();
   }
 }
 

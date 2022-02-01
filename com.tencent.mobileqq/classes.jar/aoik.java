@@ -1,39 +1,32 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetConfig;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 
 public class aoik
-  extends aoim
+  extends ResourcePluginListener
 {
-  public float a;
-  public int a;
-  public long a;
-  public ArCloudConfigInfo a;
-  public String a;
-  public float[] a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
+  private aoik(GetConfig paramGetConfig) {}
   
-  public aoik()
+  public void a(byte paramByte)
   {
-    this.jdField_b_of_type_Long = 1L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_ArrayOfFloat = null;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
+    if (this.a.b == 44)
+    {
+      if ((paramByte != 2) && (paramByte == 3)) {}
+      this.a.a.app.removeLebaListener(GetConfig.a(this.a));
+      this.a.a(7);
+    }
   }
   
-  public String toString()
+  public void b(byte paramByte)
   {
-    return "ARLocalMarkerRecogResult{recogType = " + this.jdField_b_of_type_Long + ", frameIdx = " + this.jdField_a_of_type_Long + ", state = " + this.jdField_a_of_type_Int + ", markerName = " + this.jdField_a_of_type_JavaLangString + ", markerType = " + this.jdField_b_of_type_Int + ", markerWidth = " + this.jdField_a_of_type_Float + ", markerHeight = " + this.jdField_b_of_type_Float + ", markerDiameter = " + this.c + ", pose = " + this.jdField_a_of_type_ArrayOfFloat + ", arResourceInfo = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo + '}';
+    if ((paramByte != 2) && (paramByte == 3)) {}
+    this.a.a.app.removeAboutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoik
  * JD-Core Version:    0.7.0.1
  */

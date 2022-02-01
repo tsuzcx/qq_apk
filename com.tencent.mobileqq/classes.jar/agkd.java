@@ -1,9 +1,30 @@
+import com.tencent.qphone.base.util.QLog;
+
 class agkd
+  implements bily
 {
-  int jdField_a_of_type_Int = -1;
-  agkf[] jdField_a_of_type_ArrayOfAgkf;
+  agkd(agkb paramagkb) {}
   
-  agkd(agkc paramagkc) {}
+  public void a()
+  {
+    if ((agkb.a(this.a) != null) && (agkb.a(this.a).a()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel.reportAppShortcutBarItem()");
+      }
+      agkb.a(this.a).e();
+    }
+    for (;;)
+    {
+      if ((agkb.a(this.a) != null) && (agkb.a(this.a).a())) {
+        agkb.a(this.a).e();
+      }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel is null");
+      }
+    }
+  }
 }
 
 

@@ -1,26 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 
 public class akrt
-  implements bjoe
+  implements akxc
 {
-  public akrt(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public akrt(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    switch (paramInt)
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
     {
-    default: 
+      aksd localaksd = new aksd();
+      localaksd.a = (paramPathResult.folderPath + "/" + "original.mp3");
+      localaksd.b = (paramPathResult.folderPath + "/" + "accompany.mp3");
+      localaksd.c = (paramPathResult.folderPath + "/" + "lyrics.qrc");
+      localaksd.d = (paramPathResult.folderPath + "/" + "config.cfg");
+      RedPacketKSongFragment.a(this.a, localaksd);
+      if (this.a.c()) {
+        return;
+      }
+      this.a.getActivity().runOnUiThread(new RedPacketKSongFragment.10.1(this));
       return;
     }
-    if (this.a.a.b.get() == 4) {
-      this.a.a(false);
-    }
-    this.a.a.a("FlowCameraActivity");
-    this.a.b();
-    akrx.b("", "0X800656F", "0");
+    this.a.g();
   }
 }
 

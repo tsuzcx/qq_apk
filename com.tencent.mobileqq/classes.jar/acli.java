@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class acli
-  implements View.OnClickListener
+public abstract interface acli
 {
-  acli(aclf paramaclf) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.jdField_a_of_type_Acju.d();
-    acmy.a(this.a.jdField_a_of_type_Acjr, 4);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(String paramString);
 }
 
 

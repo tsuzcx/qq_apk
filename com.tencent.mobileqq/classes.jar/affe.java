@@ -1,46 +1,25 @@
-import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Map;
 
 public class affe
   implements View.OnClickListener
 {
-  public affe(BusinessEggsAnimation paramBusinessEggsAnimation, affh paramaffh, ChatMessage paramChatMessage) {}
+  public affe(TroopMemberListActivity paramTroopMemberListActivity, int paramInt1, int paramInt2) {}
   
   public void onClick(View paramView)
   {
-    afdr localafdr = (afdr)BusinessEggsAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation).get(Long.valueOf(this.jdField_a_of_type_Affh.a));
-    if (localafdr != null)
-    {
-      if (!"HTML".equals(localafdr.b)) {
-        break label116;
-      }
-      if (!TextUtils.isEmpty(localafdr.a))
-      {
-        Context localContext = paramView.getContext();
-        Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
-        localIntent.putExtra("url", localafdr.a);
-        localContext.startActivity(localIntent);
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) {
-        afed.a(null, "0X800B072", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, localafdr);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label116:
-      QLog.e("BusinessEggsAnimation", 1, "[initElementPathStrategy] jump type not define: " + localafdr.b);
-    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, TroopMemberListActivity.class);
+    localIntent.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b);
+    localIntent.putExtra("param_from", 15);
+    localIntent.putExtra("param_seq_days", TroopMemberListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
+    localIntent.putExtra("param_seq_name", TroopMemberListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
+    localIntent.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.startActivityForResult(localIntent, 4);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, "" + this.b, "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

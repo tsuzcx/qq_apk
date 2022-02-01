@@ -1,214 +1,53 @@
-import android.os.Handler;
-import com.tencent.av.AVFunChat.AVFunChatMessage;
-import com.tencent.av.VideoController;
+import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.support.SupportFace.1;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResUtil;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
 public class lie
-  extends lic
 {
-  private boolean a;
-  private int c = -1;
-  private int d = -1;
-  private int e = -1;
-  private int f = -1;
+  static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString;
+  private static String b = "actAVFunChatDecorate";
   
-  public lie(VideoAppInterface paramVideoAppInterface)
+  public static void a(String paramString, VideoAppInterface paramVideoAppInterface)
   {
-    super(paramVideoAppInterface);
-  }
-  
-  private boolean a()
-  {
-    return lou.c();
-  }
-  
-  private boolean b()
-  {
-    return lou.d();
-  }
-  
-  private boolean c()
-  {
-    return lou.f();
-  }
-  
-  private boolean d()
-  {
-    return lou.d();
-  }
-  
-  public int a(String paramString)
-  {
-    if ("normal".equalsIgnoreCase(paramString)) {
-      return this.c;
-    }
-    if ("interact".equalsIgnoreCase(paramString)) {
-      return this.d;
-    }
-    if ("SUPPORT_SWITCH_FACE".equalsIgnoreCase(paramString)) {
-      return this.e;
-    }
-    if ("creative".equalsIgnoreCase(paramString)) {
-      return this.f;
-    }
-    return -1;
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      bijk.a().postDelayed(new SupportFace.1(this), 1100L);
-    }
-    lba.f("SupportFace", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
-    if (paramString != null)
+    if (paramVideoAppInterface.a(2))
     {
-      if (!paramString.equals("SUPPORT_TRUE")) {
-        break label122;
+      paramVideoAppInterface = (PendantItem)((lid)paramVideoAppInterface.a(2)).a();
+      if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId()))) {
+        a(paramString, null);
       }
-      if (paramInt != 1) {
-        break label83;
-      }
-      this.c = 1;
     }
-    label83:
-    label122:
-    do
-    {
-      return false;
-      if (paramInt == 3)
-      {
-        this.c = 1;
-        this.d = 1;
-        return false;
-      }
-      if (paramInt == 14)
-      {
-        this.f = 1;
-        lba.f("SupportFace", "onReceiveSupportMessage  support reason 1:");
-        return false;
-      }
-      return true;
-      if (paramString.equals("SUPPORT_FALSE"))
-      {
-        if (paramInt == 1)
-        {
-          this.c = 0;
-          this.d = 0;
-        }
-        for (;;)
-        {
-          return true;
-          if (paramInt == 3)
-          {
-            this.d = 0;
-          }
-          else if (paramInt == 14)
-          {
-            this.f = 0;
-            lba.f("SupportFace", "onReceiveSupportMessage not support reason 1:");
-          }
-        }
-      }
-      if (paramString.equals("SUPPORT_SWITCH_FACE"))
-      {
-        if (paramInt == 3) {
-          this.e = 1;
-        }
-        return true;
-      }
-      if (paramString.equals("SUPPORT_CREATIVECOP_TRUE"))
-      {
-        if (paramInt == 14)
-        {
-          this.f = 1;
-          lba.f("SupportFace", "onReceiveSupportMessage  support reason 2:");
-        }
-        return true;
-      }
-    } while (!paramString.equals("SUPPORT_CREATIVECOP_FALSE"));
-    if (paramInt == 14)
-    {
-      this.f = 0;
-      lba.f("SupportFace", "onReceiveSupportMessage  not support reason 2:");
-    }
-    return true;
   }
   
-  public boolean a(String paramString)
+  static void a(String paramString1, String paramString2)
   {
-    boolean bool = false;
-    lba.g("SupportFace", String.format("isSelfSupport| device info:mode=%s,sdkVersion=%d,cpuFreq=%d,cpuCount=%d,memCapacity=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_b_of_type_Long) }));
-    if ("normal".equalsIgnoreCase(paramString)) {
-      bool = a();
-    }
-    do
+    long l1 = System.currentTimeMillis();
+    if (!lsq.a(paramString2, jdField_a_of_type_JavaLangString))
     {
-      return bool;
-      if ("interact".equalsIgnoreCase(paramString)) {
-        return b();
-      }
-      if ("SUPPORT_SWITCH_FACE".equalsIgnoreCase(paramString)) {
-        return d();
-      }
-    } while (!"creative".equalsIgnoreCase(paramString));
-    return c();
-  }
-  
-  public void b()
-  {
-    boolean bool2 = lif.b();
-    if (AEResUtil.getAEResStatus(AEResInfo.AE_RES_ADDITIONAL_PACKAGE) == 1) {}
-    boolean bool3;
-    boolean bool4;
-    boolean bool5;
-    boolean bool6;
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      bool3 = a();
-      if ((bool3) && (bool2)) {
-        localVideoController.a(1, "SUPPORT_TRUE");
-      }
-      bool4 = d();
-      if ((bool4) && (bool2)) {
-        localVideoController.a(3, "SUPPORT_SWITCH_FACE");
-      }
-      bool5 = b();
-      if ((bool5) && (bool2)) {
-        localVideoController.a(3, "SUPPORT_TRUE");
-      }
-      bool6 = c();
-      if ((bool6) && (bool1))
+      if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_Long != 0L))
       {
-        AVFunChat.AVFunChatMessage localAVFunChatMessage = new AVFunChat.AVFunChatMessage();
-        localAVFunChatMessage.uint64_type.set(14L);
-        localAVFunChatMessage.enum_operator.set(1);
-        localAVFunChatMessage.str_msg.set("SUPPORT_CREATIVECOP_TRUE");
-        localVideoController.a(14, localAVFunChatMessage);
+        long l2 = jdField_a_of_type_Long;
+        a(paramString1, jdField_a_of_type_JavaLangString, (l1 - l2) / 1000L);
       }
-      if ((!bool3) || (!bool4) || (!bool5) || (!bool6)) {
-        break;
-      }
-      return;
+      jdField_a_of_type_JavaLangString = paramString2;
+      jdField_a_of_type_Long = l1;
     }
-    QLog.w("SupportFace", 1, "sendSupportMsg, normal[" + bool3 + "], switchfaceStandard[" + bool4 + "], interact[" + bool5 + "], creativePendant[" + bool6 + "], isSOExist[" + bool2 + "],isPagSoExist[" + bool1 + "]");
   }
   
-  public void c()
+  public static void a(String paramString1, String paramString2, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.c = -1;
-    this.d = -1;
-    this.e = -1;
-    this.f = -1;
-    lba.f("SupportFace", "SupportFace restore:");
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      long l = (System.currentTimeMillis() - paramLong) / 1000L;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("tempID", paramString2);
+      localHashMap.put("duration", l + "");
+      UserAction.onUserAction(b, true, -1L, -1L, localHashMap, true);
+      lbd.f(paramString1, "onStateReport, ID: " + paramString2 + "  pendant time: " + paramLong);
+    }
   }
 }
 

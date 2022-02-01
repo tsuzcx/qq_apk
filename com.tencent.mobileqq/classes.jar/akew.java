@@ -1,6 +1,24 @@
-public abstract interface akew
+public class akew
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
+  public int a;
+  private String a;
+  private String b;
+  
+  public akew(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
 }
 
 

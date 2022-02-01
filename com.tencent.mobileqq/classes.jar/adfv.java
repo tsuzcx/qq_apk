@@ -1,22 +1,30 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class adfv
-  implements InputFilter
+  implements URLDrawable.URLDrawableListener
 {
-  Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
+  public adfv(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public adfv(EditInfoActivity paramEditInfoActivity) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).find()) {
-      return "";
+    if (paramURLDrawable != null)
+    {
+      paramURLDrawable = bheg.a(paramURLDrawable);
+      QQAppInterface localQQAppInterface = this.a.app;
+      paramURLDrawable = QQAppInterface.getCircleFaceBitmap(paramURLDrawable, 50, 50);
+      this.a.a.setImageDrawable(new BitmapDrawable(paramURLDrawable));
     }
-    return null;
   }
 }
 

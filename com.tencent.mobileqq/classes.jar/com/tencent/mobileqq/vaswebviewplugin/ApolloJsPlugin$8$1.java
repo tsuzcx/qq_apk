@@ -1,18 +1,42 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import amtj;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import anfk;
+import anfr;
+import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Vector;
 
 class ApolloJsPlugin$8$1
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   ApolloJsPlugin$8$1(ApolloJsPlugin.8 param8) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.this$1.this$0.callbackError(this.this$1.val$callbackId, amtj.a(2131699606));
+    if (ApolloJsPlugin.access$500(this.this$1.this$0).contains(this.this$1.val$param.apolloId))
+    {
+      String str = "";
+      if (this.this$1.val$from == 1) {
+        if (ApolloJsPlugin.access$600(this.this$1.this$0) != null) {
+          str = ApolloJsPlugin.access$600(this.this$1.this$0).a(1, true, this.this$1.val$param);
+        }
+      }
+      for (;;)
+      {
+        this.this$1.this$0.callJs(this.this$1.val$callbackId + "&&" + this.this$1.val$callbackId + "(" + str + ");");
+        return;
+        str = "{\"result\":1, \"msg\": \"终端初始化错误\" }";
+        continue;
+        if (this.this$1.val$from == 0) {
+          if ((this.this$1.val$activity instanceof anfr)) {
+            str = ((anfr)this.this$1.val$activity).a(ApolloJsPlugin.access$700(this.this$1.this$0), this.this$1.val$param);
+          } else {
+            str = "{\"result\":1, \"msg\": \"非商城页面\" }";
+          }
+        }
+      }
+    }
+    QLog.e("ApolloJsPlugin", 1, new Object[] { "[IPC_APOLLO_CHECK_AVATAR_RES] onDownLoadFinish, initAvatar abort, apolloId is detroyed, id=", this.this$1.val$param.apolloId });
   }
 }
 

@@ -1,6 +1,8 @@
 public class bbjo
 {
-  public static final String[] a = { "GroupCare", "FriendClone", "groupnick", "profilelogic", "Face", "RoamWrap", "FontBubbleRecommend", "QCUniBusinessLogin", "ProfileMusicBox", "QcHomePageLogic", "QcUniBusinessUserInfo", "QCUniBusinessLogic" };
+  public String a;
+  public boolean a;
+  public boolean b;
 }
 
 

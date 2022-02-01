@@ -1,19 +1,41 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
-import com.tencent.mobileqq.vas.qvip.view.ImgHeaderView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class bgjn
-  implements View.OnClickListener
 {
-  public bgjn(ImgHeaderView paramImgHeaderView, Activity paramActivity, QQVipMsgInfo paramQQVipMsgInfo, int paramInt) {}
+  public int a;
+  public long a;
+  public ByteStringMicro a;
+  public List<bfif> a;
+  public Map<String, bfif> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public int d = 0;
   
-  public void onClick(View paramView)
+  public bgjn(bgjh parambgjh, long paramLong)
   {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.paMsgid, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo.gameAppId, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    if (paramLong == 0L) {
+      this.c = 0;
+    }
+    for (;;)
+    {
+      this.c = i;
+      return;
+      i = 3;
+    }
   }
 }
 

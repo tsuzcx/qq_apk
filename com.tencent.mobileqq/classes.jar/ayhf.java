@@ -1,13 +1,29 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class ayhf
-  extends ayhc
+class ayhf
+  implements View.OnClickListener
 {
-  void b(BaseChatPie paramBaseChatPie)
+  ayhf(ayhd paramayhd) {}
+  
+  public void onClick(View paramView)
   {
-    a(paramBaseChatPie.sessionInfo.curType, 217);
-    a(paramBaseChatPie.sessionInfo.curType, 218);
+    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    NearbyPeopleProfileActivity localNearbyPeopleProfileActivity = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity;
+    if (i >= NearbyPeopleProfileActivity.c) {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 0, this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131694235), 0).a();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ayhd.c(this.a);
+    }
   }
 }
 

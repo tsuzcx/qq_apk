@@ -1,33 +1,56 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.4.1;
-import java.util.List;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 public class bdzd
-  extends anck
+  extends bdzh
 {
-  bdzd(bdzb parambdzb, MessageRecord paramMessageRecord, bdze parambdze) {}
+  private Paint a;
+  private String b = "";
+  private int g = 20;
+  private int h = -1;
   
-  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
+  public bdzd(SpriteGLView paramSpriteGLView, Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    if (paramBoolean)
-    {
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        bdzb.a(this.jdField_a_of_type_Bdzb, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (TroopAioKeywordTipInfo)paramList.get(0), this.jdField_a_of_type_Bdze);
-        synchronized (this.jdField_a_of_type_Bdzb.b)
-        {
-          this.jdField_a_of_type_Bdzb.b.put(((TroopAioKeywordTipInfo)paramList.get(0)).ruleId, paramList.get(0));
-          ThreadManager.post(new TroopAioKeywordTipManager.4.1(this, paramList), 2, null, true);
-          return;
-        }
-      }
-      bdzb.a(this.jdField_a_of_type_Bdzb, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Bdze);
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    e(paramInt1);
+    f(paramInt2);
+    a(paramSpriteGLView, paramString);
+  }
+  
+  public void a(SpriteGLView paramSpriteGLView, String paramString)
+  {
+    if (paramString.equals(this.b)) {
       return;
     }
-    bdzb.a(this.jdField_a_of_type_Bdzb, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Bdze);
+    this.b = paramString;
+    paramString = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString), this.g, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(paramString);
+    localCanvas.drawColor(-16777216, PorterDuff.Mode.CLEAR);
+    localCanvas.drawText(this.b, 0.0F, this.g * 0.8F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Bdzk != null) {
+      this.jdField_a_of_type_Bdzk.c();
+    }
+    this.jdField_a_of_type_Bdzk = new bdzk(paramSpriteGLView, paramString);
+    g();
+    f();
+  }
+  
+  public void e(int paramInt)
+  {
+    this.h = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
+  }
+  
+  public void f(int paramInt)
+  {
+    this.g = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.g);
   }
 }
 

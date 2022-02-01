@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
 class aiov
-  implements Animation.AnimationListener
+  extends GridLayoutManager.SpanSizeLookup
 {
-  aiov(aiou paramaiou, aara paramaara, View paramView) {}
+  aiov(aiou paramaiou) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int getSpanSize(int paramInt)
   {
-    this.jdField_a_of_type_Aara.a("");
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839437);
+    switch (this.a.getItemViewType(paramInt))
+    {
+    case 1: 
+    default: 
+      return 1;
+    }
+    return 3;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

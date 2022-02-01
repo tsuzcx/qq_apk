@@ -1,8 +1,24 @@
-import android.support.annotation.NonNull;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.ae.view.AECircleCaptureProgressView;
+import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
 
-public abstract interface bnry
+public class bnry
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(@NonNull bnsf parambnsf);
+  public bnry(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (!AEPituCameraCaptureButtonLayout.a(this.a))
+    {
+      this.a.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setCenterScaleValue(f);
+      return;
+    }
+    this.a.jdField_a_of_type_DovComQqImAeViewAECircleCaptureProgressView.setCenterScaleValue(f);
+  }
 }
 
 

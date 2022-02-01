@@ -25,7 +25,7 @@ class MiniGamePublicAccountWebFragment$5
     if (MiniGamePublicAccountWebFragment.access$1400(this.this$0) != null) {
       MiniGamePublicAccountWebFragment.access$1400(this.this$0).setVisibility(8);
     }
-    int i = MiniGamePublicAccountWebFragment.access$600(this.this$0);
+    int i = MiniGamePublicAccountWebFragment.access$500(this.this$0);
     this.this$0.notifyWebHeaderHeight(i);
   }
   

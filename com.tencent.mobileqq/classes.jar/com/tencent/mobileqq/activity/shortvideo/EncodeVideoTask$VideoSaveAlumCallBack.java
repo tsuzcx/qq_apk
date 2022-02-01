@@ -6,7 +6,7 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import ypi;
+import zeb;
 
 public class EncodeVideoTask$VideoSaveAlumCallBack
   implements FFmpegExecuteResponseCallback
@@ -50,7 +50,7 @@ public class EncodeVideoTask$VideoSaveAlumCallBack
   
   public void onSuccess(String paramString)
   {
-    ypi.b(BaseApplication.getContext(), new File(this.videoFinalPath));
+    zeb.b(BaseApplication.getContext(), new File(this.videoFinalPath));
     FileUtils.deleteFile(this.sourcePath);
     EncodeVideoTask.generateTimeReport(System.currentTimeMillis() - this.mStartTime, 3);
   }

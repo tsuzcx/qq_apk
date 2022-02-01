@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.part.QIMTemplateItem;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import org.apache.http.entity.ByteArrayEntity;
 
-public final class bmtn
-  implements Parcelable.Creator<QIMTemplateItem>
+public class bmtn
+  extends ByteArrayEntity
 {
-  public QIMTemplateItem a(Parcel paramParcel)
+  protected final int a;
+  protected final int b;
+  
+  public bmtn(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    return new QIMTemplateItem(paramParcel);
+    super(paramArrayOfByte);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public QIMTemplateItem[] a(int paramInt)
+  public InputStream getContent()
   {
-    return new QIMTemplateItem[paramInt];
+    return new ByteArrayInputStream(this.content, this.a, this.b);
+  }
+  
+  public long getContentLength()
+  {
+    return this.b;
+  }
+  
+  public void writeTo(OutputStream paramOutputStream)
+  {
+    if (paramOutputStream == null) {
+      throw new IllegalArgumentException("Output stream may not be null");
+    }
+    paramOutputStream.write(this.content, this.a, this.b);
+    paramOutputStream.flush();
   }
 }
 

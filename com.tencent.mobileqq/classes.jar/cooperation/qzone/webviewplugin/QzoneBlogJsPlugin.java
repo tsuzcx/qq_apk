@@ -2,7 +2,7 @@ package cooperation.qzone.webviewplugin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bgve;
+import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -15,7 +15,7 @@ public class QzoneBlogJsPlugin
   public static final String NAMESPACE = "Qzone";
   private static final String TAG = "QzoneBlogJsPlugin";
   
-  private static void handleWriteBlog(WebViewPlugin paramWebViewPlugin, bgve parambgve, String[] paramArrayOfString)
+  private static void handleWriteBlog(WebViewPlugin paramWebViewPlugin, bifw parambifw, String[] paramArrayOfString)
   {
     paramWebViewPlugin = new Intent("action_js2qzone");
     paramArrayOfString = new Bundle();
@@ -24,7 +24,7 @@ public class QzoneBlogJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("QzoneBlogJsPlugin", 2, "handleWriteBlog actionString: " + paramWebViewPlugin.getAction());
     }
-    QZoneHelper.forwardToQzoneTransluentActivity(parambgve.a(), QZoneHelper.UserInfo.getInstance(), paramWebViewPlugin);
+    QZoneHelper.forwardToQzoneTransluentActivity(parambifw.a(), QZoneHelper.UserInfo.getInstance(), paramWebViewPlugin);
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)

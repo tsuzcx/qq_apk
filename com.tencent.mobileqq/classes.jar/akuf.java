@@ -1,6 +1,15 @@
-public abstract interface akuf
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbUIFragment;
+
+public class akuf
+  extends akuy
 {
-  public abstract void c(int paramInt);
+  public akuf(BaseHbUIFragment paramBaseHbUIFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    this.a.a();
+  }
 }
 
 

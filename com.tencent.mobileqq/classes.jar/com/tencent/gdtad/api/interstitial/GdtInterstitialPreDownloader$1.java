@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.interstitial;
 
-import abmp;
+import accf;
 import android.content.Context;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.settings.AdSettingsUtil;
@@ -9,7 +9,7 @@ import java.lang.ref.WeakReference;
 public class GdtInterstitialPreDownloader$1
   implements Runnable
 {
-  public GdtInterstitialPreDownloader$1(abmp paramabmp, WeakReference paramWeakReference) {}
+  public GdtInterstitialPreDownloader$1(accf paramaccf, WeakReference paramWeakReference) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class GdtInterstitialPreDownloader$1
     for (Context localContext = (Context)this.a.get();; localContext = null)
     {
       localAdSettingsUtil.update(localContext);
-      abmp.a().a();
+      accf.a().a();
       AdLog.i("GdtInterstitialPreDownloader", "preDownloadAfterToolProcessStartup durationMillis:" + (System.currentTimeMillis() - l));
       return;
     }

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import acwi;
+import admu;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bbko;
+import bcrg;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ChatActivityUtils$14$2
   implements Runnable
 {
-  public ChatActivityUtils$14$2(acwi paramacwi) {}
+  public ChatActivityUtils$14$2(admu paramadmu) {}
   
   public void run()
   {
     Object localObject = BaseApplication.getContext().getSharedPreferences("free_call", 0);
-    long l = bbko.a();
+    long l = bcrg.a();
     localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putString(this.this$0.a, String.valueOf(l * 1000L));
     ((SharedPreferences.Editor)localObject).commit();

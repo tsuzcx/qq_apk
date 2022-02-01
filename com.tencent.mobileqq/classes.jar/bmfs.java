@@ -1,12 +1,37 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqreader.net.BaseCgiTask;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bmfs
-  implements FileFilter
+public class bmfs
 {
-  public boolean accept(File paramFile)
+  private BaseCgiTask jdField_a_of_type_CooperationQqreaderNetBaseCgiTask;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bmfs(BaseCgiTask paramBaseCgiTask, String paramString)
   {
-    return paramFile.getName().endsWith(".json");
+    this.jdField_a_of_type_CooperationQqreaderNetBaseCgiTask = paramBaseCgiTask;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      return localJSONObject2;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("ReaderCgiResponse", 2, "json format error", localJSONException);
+    }
+    return localJSONObject1;
   }
 }
 

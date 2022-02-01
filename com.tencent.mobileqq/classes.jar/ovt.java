@@ -1,14 +1,12 @@
-class ovt
-  extends owd
+public class ovt
 {
-  ovt(ouu paramouu, int paramInt)
-  {
-    super(paramouu, null);
-  }
+  private static Boolean jdField_a_of_type_JavaLangBoolean;
+  private static Integer jdField_a_of_type_JavaLangInteger;
   
-  void a(owg paramowg)
+  public static void a()
   {
-    paramowg.onCommentCreate(false, null, null, this.jdField_a_of_type_Int);
+    jdField_a_of_type_JavaLangBoolean = null;
+    jdField_a_of_type_JavaLangInteger = null;
   }
 }
 

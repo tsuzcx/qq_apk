@@ -1,20 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bgdj
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public bgdj(VisitorTroopCardFragment paramVisitorTroopCardFragment, bkzi parambkzi) {}
   
-  public bgdj(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = paramInt;
-    if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364743));
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.a.isOwnerOrAdim())
+    {
+      bhbu.a("grpProfile", "grpProfile_clk", "search_upgrade_actionsheet_click_cancel", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.a.troopUin });
+      this.jdField_a_of_type_Bkzi.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

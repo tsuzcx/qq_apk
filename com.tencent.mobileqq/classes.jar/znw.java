@@ -1,23 +1,8 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 
-public class znw
-  implements ISuperPlayer.OnCompletionListener
+public abstract interface znw
 {
-  public znw(TribeVideoPlugin paramTribeVideoPlugin, zod paramzod) {}
-  
-  public void onCompletion(ISuperPlayer paramISuperPlayer)
-  {
-    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
-    {
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, zod.a(this.jdField_a_of_type_Zod));
-      paramISuperPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
-      paramISuperPlayer.obj = zod.a(this.jdField_a_of_type_Zod);
-      paramISuperPlayer.what = 6;
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramISuperPlayer);
-    }
-  }
+  public abstract void a(boolean paramBoolean, QQAnimationDrawable paramQQAnimationDrawable);
 }
 
 

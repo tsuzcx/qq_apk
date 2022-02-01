@@ -1,28 +1,69 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetTagList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class wtw
-  implements wuu
+public class wtw
+  extends wfm<wvj>
 {
-  wtw(wtr paramwtr, StoryVideoItem paramStoryVideoItem) {}
+  private static final String jdField_a_of_type_JavaLangString = weg.a("StorySvc.get_label_list");
+  private final boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private final String jdField_b_of_type_JavaLangString;
+  private int c;
+  private final int d;
   
-  public boolean a(wur paramwur, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public wtw(int paramInt1, long paramLong, String paramString, int paramInt2)
   {
-    if (this.jdField_a_of_type_Wtr.isCanceled()) {
-      return true;
-    }
-    xvv.e(this.jdField_a_of_type_Wtr.a.a, "onError, setOnErrorListener [videoView, model=%d, what=%d, position=%d, extra=%s, Info=%s] = ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramObject });
-    if (paramInt2 == 102)
+    this.c = paramInt1;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramInt2;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public wtw(String paramString, int paramInt)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramInt;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wfh a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetTagList localRspGetTagList = new qqstory_service.RspGetTagList();
+    try
     {
-      paramwur.d();
-      return true;
+      localRspGetTagList.mergeFrom(paramArrayOfByte);
+      return new wvj(localRspGetTagList);
     }
-    VideoViewVideoHolder.c(this.jdField_a_of_type_Wtr.a, 7);
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Wtr.a, false);
-    VideoViewVideoHolder.b(this.jdField_a_of_type_Wtr.a, paramInt2);
-    wtr.b(this.jdField_a_of_type_Wtr, new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_Wtr.a), "wht=" + paramInt2 + ", mod=" + paramInt1 + ", " + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid));
-    return true;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetTagList localReqGetTagList = new qqstory_service.ReqGetTagList();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localReqGetTagList.music_type.set(this.c);
+      localReqGetTagList.music_id.set(this.jdField_b_of_type_Long);
+    }
+    localReqGetTagList.start_cookie.set(this.jdField_b_of_type_JavaLangString);
+    localReqGetTagList.size.set(this.d);
+    return localReqGetTagList.toByteArray();
   }
 }
 

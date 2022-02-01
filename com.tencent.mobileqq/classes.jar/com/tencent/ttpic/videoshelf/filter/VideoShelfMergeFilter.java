@@ -231,7 +231,7 @@ public class VideoShelfMergeFilter
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    this.mCopyFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
     this.mRenderFrame.clear();
     int i = 0;
     while (i < this.mCopyFrame.length)

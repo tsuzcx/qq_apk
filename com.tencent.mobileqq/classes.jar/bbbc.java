@@ -1,185 +1,396 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.DisplayMetrics;
+import android.util.SparseArray;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.receipt.ReceiptMsgManager.1;
+import com.tencent.mobileqq.receipt.ReceiptMsgManager.2;
+import com.tencent.mobileqq.receipt.ReceiptMsgManager.3;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nonnull;
 
 public class bbbc
-  extends bbck
 {
-  private bbbg a;
-  protected Set<String> a;
+  private static bbbc jdField_a_of_type_Bbbc;
+  private SparseArray<Bitmap> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(8);
+  public MessageForPtt a;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap;
   
-  public bbbc(FaceDecoder paramFaceDecoder)
+  private Bitmap a(Resources paramResources, int paramInt)
   {
-    super(paramFaceDecoder);
+    int i = AIOUtils.dp2px(10.0F, paramResources);
+    int j = AIOUtils.dp2px(8.0F, paramResources);
+    int k = AIOUtils.dp2px(175.0F, paramResources);
+    int m = AIOUtils.dp2px(240.0F, paramResources);
+    int n = AIOUtils.dp2px(108.0F, paramResources);
+    Bitmap localBitmap1 = c(paramResources, paramInt);
+    Bitmap localBitmap2 = BitmapFactory.decodeResource(paramResources, 2130838288);
+    Canvas localCanvas = new Canvas();
+    Bitmap localBitmap3 = Bitmap.createBitmap(m, n, Bitmap.Config.ARGB_8888);
+    localBitmap3.setDensity(paramResources.getDisplayMetrics().densityDpi);
+    localCanvas.setBitmap(localBitmap3);
+    paramResources = new Paint();
+    localCanvas.drawBitmap(localBitmap2, k, 0.0F, paramResources);
+    localCanvas.drawBitmap(localBitmap1, i, j, paramResources);
+    localBitmap1.recycle();
+    localBitmap2.recycle();
+    return localBitmap3;
   }
   
-  public bbbc(FaceDecoder paramFaceDecoder, bbbg parambbbg)
+  public static bbbc a()
   {
-    super(paramFaceDecoder);
-    this.jdField_a_of_type_Bbbg = parambbbg;
-  }
-  
-  public bbbc(FaceDecoder paramFaceDecoder, bbbg parambbbg, Set<String> paramSet)
-  {
-    super(paramFaceDecoder);
-    this.jdField_a_of_type_Bbbg = parambbbg;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
-  }
-  
-  private void a(Activity paramActivity, String paramString)
-  {
-    Intent localIntent = new Intent(paramActivity, SelectMemberActivity.class);
-    localIntent.putExtra("param_type", 3000);
-    localIntent.putExtra("param_subtype", 0);
-    localIntent.putExtra("param_from", 1002);
-    localIntent.putExtra("param_max", 99);
-    localIntent.putExtra("param_entrance", 29);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(SelectMemberActivity.constructAResultRecord(paramString, "", 0, paramString));
-    localIntent.putExtra("param_selected_records_for_create_discussion", localArrayList);
-    paramActivity.startActivityForResult(localIntent, 1300);
-  }
-  
-  public void a(bayt parambayt, bbhb parambbhb, Bitmap paramBitmap)
-  {
-    if (parambayt.c() == 103)
+    if (jdField_a_of_type_Bbbc == null) {}
+    try
     {
-      if (parambbhb.b() != null) {
-        parambbhb.b().setImageDrawable(bbgk.a(paramBitmap));
+      if (jdField_a_of_type_Bbbc == null) {
+        jdField_a_of_type_Bbbc = new bbbc();
       }
-      return;
+      return jdField_a_of_type_Bbbc;
     }
-    super.a(parambayt, parambbhb, paramBitmap);
+    finally {}
   }
   
-  public void b(bayt parambayt, bbhb parambbhb)
+  private AbsShareMsg a(int paramInt)
   {
-    super.b(parambayt, parambbhb);
-    Object localObject;
-    if (((parambayt instanceof baxn)) && (parambayt.c() == null))
+    AbsShareMsg localAbsShareMsg = new bdnr(StructMsgForGeneralShare.class).c(107).a(BaseApplicationImpl.getContext().getString(2131698216)).a(3).a("viewReceiptMessage", "", null, null, null).a();
+    bdre localbdre = new bdre();
+    bdtd localbdtd = new bdtd();
+    localbdtd.o = paramInt;
+    localbdre.a(localbdtd);
+    localAbsShareMsg.addItem(localbdre);
+    return localAbsShareMsg;
+  }
+  
+  public static String a(MessageRecord paramMessageRecord)
+  {
+    return paramMessageRecord.getExtInfoFromExtStr("receipt_msg_is_read");
+  }
+  
+  private String a(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    try
     {
-      if (parambbhb.c() != null) {
-        parambbhb.c().setVisibility(8);
-      }
-      if (parambbhb.a() != null) {
-        parambbhb.a().setVisibility(8);
-      }
-      if (parambbhb.b() != null) {
-        parambbhb.b().setVisibility(8);
-      }
-      localObject = ((bbgv)parambbhb).e();
-      if (localObject != null)
+      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+      paramString = str1;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
       {
-        ((TextView)localObject).setVisibility(0);
-        ((TextView)localObject).setText(parambayt.a());
-      }
-      localObject = parambbhb.a().findViewById(2131379811);
-      if (localObject != null)
-      {
-        ((View)localObject).setVisibility(8);
-        if ((((parambayt instanceof baxi)) || ((parambayt instanceof baxm)) || ((parambayt instanceof baxe))) && (batb.a(parambayt.b()))) {
-          ((View)localObject).setVisibility(0);
+        paramString = new File(paramString);
+        if (!paramString.exists()) {
+          break;
         }
-      }
-      if (parambbhb.c() != null)
-      {
-        localObject = parambayt.b();
-        if ((this.jdField_a_of_type_JavaUtilSet != null) && (this.jdField_a_of_type_JavaUtilSet.contains(localObject))) {
-          parambbhb.c().setText(amtj.a(2131701711));
-        }
-      }
-      if ((bbgk.a) && (parambbhb.a() != null) && ((parambayt instanceof bayp))) {
-        parambbhb.a().setOnLongClickListener(new bbbd(this, parambayt));
-      }
-      if ((parambbhb.a() != null) && ((parambayt instanceof baxe)))
-      {
-        int i = ((baxe)parambayt).f();
-        if (QLog.isColorLevel()) {
-          QLog.d("ContactSearchResultPresenter", 2, "add from type =" + i);
-        }
-        if ((i == 21) || (i == 1) || (i == 2))
+        try
         {
-          parambbhb = parambbhb.a();
-          parambbhb.setContentDescription(parambbhb.getContext().getString(2131698493));
-          parambbhb.setImageResource(2130845928);
-          parambbhb.setOnClickListener(new bbbe(this, parambayt));
+          String str2 = bkvq.a(paramString);
+          paramString = str2;
+          if (str2 == null) {
+            paramString = "";
+          }
+        }
+        catch (IOException paramString)
+        {
+          paramString = "";
         }
       }
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        paramString = "";
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMsgManager", 2, new Object[] { "calcMD5", "md5:" + paramString + ",cost:" + (System.currentTimeMillis() - l) });
+    }
+    return paramString;
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, int paramInt)
+  {
+    Object localObject = admh.a(paramQQAppInterface, paramSessionInfo, paramString);
+    paramString = new ArrayList(1);
+    if (localObject != null)
+    {
+      paramString.add(localObject);
+      localObject = new Bundle();
+      ((Bundle)localObject).putInt("ReceiptMsgManager.EXTRA_KEY_PHOTO_SIZE_SPEC", paramInt);
+      a(paramQQAppInterface, paramSessionInfo, paramString, (Bundle)localObject);
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    if ((parambbhb.c() != null) && (!TextUtils.isEmpty(parambayt.c())))
+    QLog.w("ReceiptMsgManager", 2, "create pic msg error");
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ArrayList<ChatMessage> paramArrayList, @Nonnull Bundle paramBundle)
+  {
+    ThreadManager.post(new ReceiptMsgManager.2(this, paramArrayList, paramBundle, paramQQAppInterface, paramSessionInfo), 8, null, false);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
+  {
+    if (paramMessageRecord != null)
     {
-      parambbhb.c().setVisibility(0);
-      label411:
-      if (parambbhb.a() != null) {
-        parambbhb.a().setVisibility(0);
+      paramMessageRecord.saveExtInfoToExtStr("receipt_msg_is_read", paramString);
+      paramQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, "extStr", paramMessageRecord.extStr);
+      paramQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, "extLong", Integer.valueOf(paramMessageRecord.extLong));
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, AbsStructMsg paramAbsStructMsg, boolean paramBoolean, ArrayList<ChatMessage> paramArrayList, @Nullable Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMsgManager", 4, " sendReceiptMsg start");
+    }
+    paramString2 = this.jdField_a_of_type_JavaUtilHashMap;
+    paramAbsStructMsg = bhhn.a(paramQQAppInterface, paramString1, paramInt, paramAbsStructMsg);
+    if (paramAbsStructMsg != null)
+    {
+      paramAbsStructMsg.isReMultiMsg = true;
+      if (paramBoolean) {
+        paramQQAppInterface.getMessageFacade().removeMsgByUniseq(paramString1, paramInt, 0L);
       }
-      if ((parambbhb.b() == null) || (parambayt.b() == null)) {
-        break label667;
-      }
-      parambbhb.b().setVisibility(0);
-      if ((!(parambayt instanceof baxe)) && (!(parambayt instanceof baxd)) && (!(parambayt instanceof baxk))) {
-        break label651;
-      }
-      localObject = parambayt.b();
-      if ((TextUtils.isEmpty((CharSequence)localObject)) || (!bftf.b((String)localObject))) {
-        break label635;
-      }
-      localObject = parambbhb.b().getContext().getResources().getDrawable(2130841793);
-      ((Drawable)localObject).setBounds(0, 0, AIOUtils.dp2px(15.0F, parambbhb.b().getContext().getResources()), AIOUtils.dp2px(15.0F, parambbhb.b().getContext().getResources()));
-      ThemeUtil.setThemeFilter((Drawable)localObject, ThemeUtil.curThemeId);
-      parambbhb.b().setCompoundDrawables(null, null, (Drawable)localObject, null);
+      axio.a().a(paramQQAppInterface, paramString1, paramInt, paramArrayList, paramString2, paramAbsStructMsg, 5, paramBundle);
+    }
+  }
+  
+  private void a(MessageForPic paramMessageForPic, int paramInt)
+  {
+    CompressInfo localCompressInfo = new CompressInfo(paramMessageForPic.path, azlg.a(paramInt), 1009);
+    azlg.a(localCompressInfo);
+    paramMessageForPic.path = localCompressInfo.e;
+    paramMessageForPic.size = FileUtil.getFileSize(paramMessageForPic.path);
+  }
+  
+  private Bitmap b(Resources paramResources, int paramInt)
+  {
+    int i = AIOUtils.dp2px(10.0F, paramResources);
+    int j = AIOUtils.dp2px(8.0F, paramResources);
+    int k = AIOUtils.dp2px(245.0F, paramResources);
+    int m = AIOUtils.dp2px(108.0F, paramResources);
+    Bitmap localBitmap1 = c(paramResources, paramInt);
+    Bitmap localBitmap2 = BitmapFactory.decodeResource(paramResources, 2130838287);
+    Canvas localCanvas = new Canvas();
+    Bitmap localBitmap3 = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
+    localBitmap3.setDensity(paramResources.getDisplayMetrics().densityDpi);
+    localCanvas.setBitmap(localBitmap3);
+    paramResources = new Paint();
+    localCanvas.drawBitmap(localBitmap2, 0.0F, 0.0F, paramResources);
+    localCanvas.drawBitmap(localBitmap1, i, j, paramResources);
+    localBitmap1.recycle();
+    localBitmap2.recycle();
+    return localBitmap3;
+  }
+  
+  public static String b(MessageRecord paramMessageRecord)
+  {
+    return paramMessageRecord.getExtInfoFromExtStr("receipt_pic_size_spec");
+  }
+  
+  private void b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    String str = paramMessageRecord.senderuin;
+    switch (paramMessageRecord.istroop)
+    {
     }
     for (;;)
     {
-      localObject = ((bbgv)parambbhb).e();
-      if (localObject == null) {
-        break;
-      }
-      ((TextView)localObject).setVisibility(8);
-      break;
-      if (parambbhb.c() == null) {
-        break label411;
-      }
-      parambbhb.c().setVisibility(8);
-      break label411;
-      label635:
-      parambbhb.b().setCompoundDrawables(null, null, null, null);
+      d(paramQQAppInterface, paramMessageRecord, str);
+      return;
+      str = ContactUtils.getBuddyName(paramQQAppInterface, paramMessageRecord.senderuin, false);
       continue;
-      label651:
-      parambbhb.b().setCompoundDrawables(null, null, null, null);
+      str = ContactUtils.getTroopMemberName(paramQQAppInterface, paramMessageRecord.frienduin, paramMessageRecord.senderuin);
       continue;
-      label667:
-      if (parambbhb.b() != null) {
-        parambbhb.b().setVisibility(8);
-      }
+      str = ContactUtils.getDiscussionMemberName(paramQQAppInterface, paramMessageRecord.frienduin, paramMessageRecord.senderuin);
     }
   }
   
-  protected void c(bayt parambayt, bbhb parambbhb)
+  private Bitmap c(Resources paramResources, int paramInt)
   {
-    if (this.jdField_a_of_type_Bbbg != null)
+    switch (paramInt)
     {
-      if (parambbhb.a() != null) {
-        parambbhb.a().setOnClickListener(new bbbf(this));
+    default: 
+      return BitmapFactory.decodeResource(paramResources, 2130838291);
+    case 2: 
+      return BitmapFactory.decodeResource(paramResources, 2130838289);
+    }
+    return BitmapFactory.decodeResource(paramResources, 2130838290);
+  }
+  
+  private static void c(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
+  {
+    paramMessageRecord.saveExtInfoToExtStr("receipt_pic_size_spec", paramString);
+    paramQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, "extStr", paramMessageRecord.extStr);
+    paramQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, "extLong", Integer.valueOf(paramMessageRecord.extLong));
+  }
+  
+  private void d(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
+  {
+    Object localObject = String.format(BaseApplicationImpl.getContext().getString(2131698231), new Object[] { paramString });
+    paramString = new MessageForUniteGrayTip();
+    localObject = new avhz(paramMessageRecord.frienduin, paramMessageRecord.senderuin, (String)localObject, paramMessageRecord.istroop, -5022, 3211265, paramMessageRecord.time);
+    ((avhz)localObject).f = false;
+    paramString.initGrayTipMsg(paramQQAppInterface, (avhz)localObject);
+    paramString.msgUid = paramMessageRecord.msgUid;
+    paramString.shmsgseq = paramMessageRecord.shmsgseq;
+    avia.a(paramQQAppInterface, paramString);
+    bdla.b(paramQQAppInterface, "CliOper", "", "", "0X800859B", "0X800859B", 0, 0, "", "", "", "");
+  }
+  
+  public Bitmap a(Resources paramResources, boolean paramBoolean, int paramInt)
+  {
+    int i;
+    if (paramBoolean)
+    {
+      i = 1000;
+      i += paramInt;
+    }
+    for (;;)
+    {
+      try
+      {
+        Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+        if (localBitmap != null)
+        {
+          paramResources = localBitmap;
+          return paramResources;
+          i = 2000;
+          break;
+        }
+        if (paramBoolean)
+        {
+          paramResources = a(paramResources, paramInt);
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramResources);
+        }
+        else
+        {
+          paramResources = b(paramResources, paramInt);
+        }
       }
+      finally {}
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
       return;
     }
-    super.c(parambayt, parambbhb);
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, int paramInt1, int paramInt2, QQRecorder.RecorderParam paramRecorderParam, int paramInt3, boolean paramBoolean)
+  {
+    if (!QLog.isColorLevel()) {}
+    for (;;)
+    {
+      ThreadManager.post(new ReceiptMsgManager.1(this, paramInt2, paramInt3, paramRecorderParam, paramString, paramInt1, paramBoolean, paramQQAppInterface, paramSessionInfo), 8, null, false);
+      return;
+      QLog.d("ReceiptMsgManager", 2, "sendPttMsg: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.toString());
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList, admo paramadmo)
+  {
+    ArrayList localArrayList = new ArrayList(1);
+    paramString = admh.a(paramQQAppInterface, paramSessionInfo, paramString, paramArrayList, paramadmo);
+    if (paramString != null)
+    {
+      localArrayList.add(paramString);
+      a(paramQQAppInterface, paramSessionInfo.curFriendUin, paramSessionInfo.curType, paramSessionInfo.troopUin, a(1), false, localArrayList, null);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.w("ReceiptMsgManager", 2, "create text msg error");
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, List<String> paramList, int paramInt)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a(paramQQAppInterface, paramSessionInfo, (String)paramList.next(), paramInt);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    String str = "receipt_gray_tip_showed-" + paramMessageRecord.istroop;
+    if (this.jdField_a_of_type_JavaUtilMap == null) {
+      this.jdField_a_of_type_JavaUtilMap = new HashMap(3);
+    }
+    if (this.jdField_a_of_type_JavaUtilMap.get(paramQQAppInterface.getCurrentAccountUin() + str) != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMsgManager", 2, "mGrayTipsShowedMap has key: " + paramQQAppInterface.getCurrentAccountUin() + str);
+      }
+    }
+    SharedPreferences localSharedPreferences;
+    boolean bool;
+    do
+    {
+      return;
+      localSharedPreferences = paramQQAppInterface.getPreferences();
+      bool = localSharedPreferences.getBoolean(str, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMsgManager", 2, "addGrayTipIfNeeded hasShowed: " + bool + " with key: " + str);
+      }
+    } while (bool);
+    ThreadManager.postImmediately(new ReceiptMsgManager.3(this, paramQQAppInterface, paramMessageRecord), null, false);
+    this.jdField_a_of_type_JavaUtilMap.put(paramQQAppInterface.getCurrentAccountUin() + str, Boolean.valueOf(true));
+    localSharedPreferences.edit().putBoolean(str, true).apply();
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, long paramLong, int paramInt2, azjj paramazjj)
+  {
+    axio.a().a(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramInt1, paramLong, 1035, paramazjj);
   }
 }
 

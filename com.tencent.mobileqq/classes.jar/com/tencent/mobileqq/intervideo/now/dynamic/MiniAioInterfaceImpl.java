@@ -67,7 +67,7 @@ public class MiniAioInterfaceImpl
   {
     int j = paramActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
     int k = ImmersiveUtils.getStatusBarHeight(paramActivity);
-    int m = paramActivity.getApplication().getResources().getDimensionPixelSize(2131297335);
+    int m = paramActivity.getApplication().getResources().getDimensionPixelSize(2131297336);
     int i = j - m * 4 - ViewUtils.dpToPx(47.0F);
     if (this.c != -1) {
       i = j - m * 4 - this.c;
@@ -86,7 +86,7 @@ public class MiniAioInterfaceImpl
     localMiniMsgUserParam.backConversationIntent = a(paramActivity);
     if (this.b == 10026)
     {
-      localMiniMsgUserParam.contentIconResId = 2130850743;
+      localMiniMsgUserParam.contentIconResId = 2130850885;
       localMiniMsgUserParam.colorType = 2;
       return localMiniMsgUserParam;
     }

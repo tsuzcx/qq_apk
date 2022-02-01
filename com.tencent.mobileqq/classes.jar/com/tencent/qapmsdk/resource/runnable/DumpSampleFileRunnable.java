@@ -235,7 +235,6 @@ public class DumpSampleFileRunnable
     }
   }
   
-  @Nullable
   public static DumpSampleFileRunnable getInstance()
   {
     if (instance == null) {}

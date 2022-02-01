@@ -1,15 +1,39 @@
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import android.content.Context;
+import android.view.View;
 
-class ajfb
-  extends ampv
+public abstract class ajfb<T>
+  extends ajdm<T>
+  implements blfg
 {
-  ajfb(ajey paramajey) {}
+  protected ajdz a;
+  protected int d = -1;
   
-  protected void onUpgradeConfig(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public ajfb(Context paramContext, int paramInt)
   {
-    ajey.a(this.a, paramUpgradeDetailWrapper);
-    this.a.e();
+    super(paramContext, paramInt);
+    this.a = new ajdz(paramContext);
   }
+  
+  public void a_(View paramView)
+  {
+    if (paramView == null) {
+      return;
+    }
+    if (paramView != null)
+    {
+      paramView = paramView.getTag(-1);
+      if (!(paramView instanceof Integer)) {}
+    }
+    for (int i = ((Integer)paramView).intValue();; i = -1)
+    {
+      this.d = i;
+      return;
+    }
+  }
+  
+  public void e(boolean paramBoolean) {}
+  
+  public void g() {}
 }
 
 

@@ -1,30 +1,34 @@
-import android.text.TextUtils;
-import android.view.View;
-
-class bald
-  implements bjoe
+public class bald
 {
-  bald(bakw parambakw, bjnw parambjnw) {}
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public float b;
+  public int b;
+  public String b;
+  public float c;
+  public String c;
+  public float d;
+  public float e;
   
-  public void OnClick(View paramView, int paramInt)
+  public static String a(int paramInt)
   {
-    if (paramView == null)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
+    default: 
+      return "";
+    case 1: 
+      return "\"第一个\"";
+    case 2: 
+      return "\"第二个\"";
+    case 3: 
+      return "\"第三个\"";
+    case 4: 
+      return "\"第四个\"";
     }
-    paramView = this.jdField_a_of_type_Bjnw.a(paramInt);
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-    }
-    if (TextUtils.isEmpty(paramView))
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-    }
-    this.jdField_a_of_type_Bjnw.dismiss();
+    return "\"第五个\"";
   }
 }
 

@@ -1,70 +1,45 @@
-import com.tencent.biz.videostory.config.VSConfigManager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
 
 public class zwx
+  implements aqoa
 {
-  private String a = "1";
-  private String b = "1";
-  private String c = VSConfigManager.SUBSCRIBE_ACCOUNT_TITLE_DEFVALUE;
-  private String d = "1";
-  private String e = "1";
+  public zwx(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public static zwx a(String paramString)
+  public ColorNote getColorNote()
   {
-    zwx localzwx = new zwx();
-    if (paramString != null) {}
-    try
+    if ((this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null))
     {
-      paramString = new JSONObject(paramString);
-      if (paramString != null)
-      {
-        localzwx.a = paramString.optString("subscribe_entrance_enable", "1");
-        localzwx.b = paramString.optString("is_open_sharing", "1");
-        localzwx.c = paramString.optString("subscribe_account_title", VSConfigManager.SUBSCRIBE_ACCOUNT_TITLE_DEFVALUE);
-        localzwx.d = paramString.optString("newfollowlist", "1");
-        localzwx.e = paramString.optString("subscribe_publish_entrance_enable", "1");
-      }
-      return localzwx;
+      QLog.e("SubscribeBaseFragment", 1, "initColorNote, shareInfoBean is null");
+      return null;
     }
-    catch (JSONException paramString)
+    byte[] arrayOfByte = zzc.a(new SubscribeColorNoteReserveBean(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.toByteArray(), this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType));
+    zsf localzsf = new zsf();
+    localzsf.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+    localzsf.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+    String str1 = "";
+    String str3 = localzsf.c();
+    String str2 = localzsf.d();
+    String str4 = localzsf.e();
+    switch (localzsf.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
     }
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String d()
-  {
-    return this.d;
-  }
-  
-  public String e()
-  {
-    return this.e;
-  }
-  
-  public String toString()
-  {
-    return "k =subscribe_entrance_enable , value = " + this.a + ",k =is_open_sharing , value = " + this.b + ",k =subscribe_account_title , value = " + this.c + ",k =subscribeAccountNewFollowListSwitch , value = " + this.d + ",k =subscribeAccountPublishEntranceSwitch , value = " + this.e;
+    while (TextUtils.isEmpty(str1))
+    {
+      return null;
+      str2 = localzsf.f();
+      str1 = "" + localzsf.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
+      continue;
+      str1 = "" + localzsf.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+    }
+    return new aqoi().a(16908291).a(str1).b(str3).c(str2).d(str4).a(arrayOfByte).a();
   }
 }
 

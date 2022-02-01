@@ -1,86 +1,80 @@
-import android.support.annotation.NonNull;
-import java.io.File;
+import NS_KING_SOCIALIZE_META.stMetaUgcImage;
+import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
+import UserGrowth.stFloatingLayerCardStyle;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.content.Context;
+import android.text.TextUtils;
+import com.google.gson.Gson;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vno
-  extends vni
 {
-  protected int a;
-  protected int b;
-  
-  public vno(@NonNull String[] paramArrayOfString)
+  public static stSimpleMetaFeed a(String paramString)
   {
-    super(paramArrayOfString);
-    paramArrayOfString = (vuq)vux.a(10);
-    this.jdField_a_of_type_Int = ((Integer)paramArrayOfString.b("StoryMyCacheCountMax", Integer.valueOf(200))).intValue();
-    this.b = ((Integer)paramArrayOfString.b("StoryMyCacheCountNormal", Integer.valueOf(100))).intValue();
-  }
-  
-  protected void a(String[] paramArrayOfString, vnj paramvnj)
-  {
-    int m = paramArrayOfString.length;
-    int i = 0;
-    String str;
-    if (i < m)
+    stSimpleMetaFeed localstSimpleMetaFeed = null;
+    try
     {
-      str = paramArrayOfString[i];
-      if (!a(str, this.jdField_a_of_type_Int)) {}
+      paramString = new JSONObject(paramString);
+      Gson localGson = new Gson();
+      localstSimpleMetaFeed = new stSimpleMetaFeed();
+      if (paramString != null)
+      {
+        localstSimpleMetaFeed.id = paramString.optString("id");
+        localstSimpleMetaFeed.ding_count = paramString.optInt("dingCount");
+        localstSimpleMetaFeed.is_ding = paramString.optInt("isDing");
+        localstSimpleMetaFeed.total_comment_num = paramString.optInt("commentNum");
+        localstSimpleMetaFeed.material_desc = paramString.optString("materialDesc");
+        localstSimpleMetaFeed.material_thumburl = paramString.optString("materialThumburl");
+        localstSimpleMetaFeed.feed_desc = paramString.optString("feedDesc");
+        localstSimpleMetaFeed.video = ((stMetaUgcVideoSeg)localGson.fromJson(paramString.optJSONObject("video").toString(), stMetaUgcVideoSeg.class));
+        localstSimpleMetaFeed.video_url = paramString.optString("videoUrl");
+        ArrayList localArrayList = new ArrayList();
+        stMetaUgcImage localstMetaUgcImage = new stMetaUgcImage();
+        localstMetaUgcImage.url = paramString.optString("coverUrl");
+        localstMetaUgcImage.height = paramString.optInt("coverHeight");
+        localstMetaUgcImage.width = paramString.optInt("coverWidth");
+        localArrayList.add(localstMetaUgcImage);
+        localstSimpleMetaFeed.images = localArrayList;
+        localstSimpleMetaFeed.poster_id = paramString.optString("posterId");
+        localstSimpleMetaFeed.poster = ((stSimpleMetaPerson)localGson.fromJson(paramString.optJSONObject("poster").toString(), stSimpleMetaPerson.class));
+        paramString = new stFloatingLayerCardStyle();
+        paramString.cardType = 3;
+        localstSimpleMetaFeed.floatingLayerCardStyle = paramString;
+      }
+      return localstSimpleMetaFeed;
     }
-    for (;;)
+    catch (JSONException paramString)
     {
-      i += 1;
-      break;
-      File localFile = new File(str);
-      double d = a(localFile);
-      File[] arrayOfFile = localFile.listFiles();
-      ArrayList localArrayList = new ArrayList();
-      int k = arrayOfFile.length;
-      int j = 0;
-      while (j < k)
+      for (;;)
       {
-        localArrayList.add(new vnp(this, arrayOfFile[j]));
-        j += 1;
+        paramString.printStackTrace();
+        paramString = localstSimpleMetaFeed;
       }
-      Collections.sort(localArrayList);
-      int n = localArrayList.size();
-      k = 0;
-      j = 0;
-      while (j < n)
-      {
-        if (j % 150 == 0) {}
-        try
-        {
-          Thread.sleep(100L);
-          if ((j % 20 == 0) && (a(str, this.b))) {
-            return;
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-          a(((vnp)localArrayList.get(j)).a);
-          k += 1;
-          j += 1;
-        }
-      }
-      paramvnj.jdField_a_of_type_Double = (d - a(localFile) + paramvnj.jdField_a_of_type_Double);
-      paramvnj.jdField_a_of_type_Int += k;
     }
   }
   
-  public boolean a(String paramString, int paramInt)
+  public static ArrayList<stSimpleMetaFeed> a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    paramString = new File(paramString).listFiles();
-    if (paramString == null) {}
-    while (paramString.length <= paramInt) {
-      return true;
+    ArrayList localArrayList = new ArrayList();
+    if (paramstSimpleMetaFeed != null) {
+      localArrayList.add(paramstSimpleMetaFeed);
     }
-    return false;
+    return localArrayList;
+  }
+  
+  public static boolean a(stSimpleMetaFeed paramstSimpleMetaFeed, Context paramContext)
+  {
+    if ((paramContext == null) || (paramstSimpleMetaFeed == null)) {
+      return false;
+    }
+    ArrayList localArrayList = a(paramstSimpleMetaFeed);
+    if ((localArrayList != null) && (localArrayList.size() > 0) && (localArrayList.get(0) != null) && (((stSimpleMetaFeed)localArrayList.get(0)).poster != null) && (paramstSimpleMetaFeed.poster != null) && (TextUtils.equals(((stSimpleMetaFeed)localArrayList.get(0)).poster.id, vnd.f()))) {}
+    WSVerticalPageFragment.a(paramContext, "qqchat", "qqchat", localArrayList, 0, true);
+    return true;
   }
 }
 

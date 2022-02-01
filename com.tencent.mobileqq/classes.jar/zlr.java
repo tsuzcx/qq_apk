@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class zlr
-  implements View.OnClickListener
+class zlr
+  implements DialogInterface.OnClickListener
 {
-  public zlr(SubscribeQRCodeShareHelper.3 param3) {}
+  zlr(zlq paramzlq) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    zlp.a(this.a.this$0).dismiss();
-    zlp.a(this.a.this$0, null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((aocn)this.a.a.app.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER)).a(true);
+    bdla.b(null, "dc00898", "", "", "0X800A476", "0X800A476", 0, 0, "", "", "", "");
   }
 }
 

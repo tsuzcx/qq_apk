@@ -1,16 +1,83 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class behs
-  implements DialogInterface.OnClickListener
+class behs
+  implements behq
 {
-  public behs(TroopMoreDetailFragment paramTroopMoreDetailFragment, boolean paramBoolean) {}
+  private IBinder a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  behs(IBinder paramIBinder)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      bcef.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    this.a = paramIBinder;
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void beginSwitch()
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
+      this.a.transact(1, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void doSwitch(String paramString1, String paramString2)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
+      localParcel.writeString(paramString1);
+      localParcel.writeString(paramString2);
+      this.a.transact(3, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void onProgress(long paramLong1, long paramLong2)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
+      localParcel.writeLong(paramLong1);
+      localParcel.writeLong(paramLong2);
+      this.a.transact(2, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void postSwitch(int paramInt)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.theme.ISwitchCallback");
+      localParcel.writeInt(paramInt);
+      this.a.transact(4, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
     }
   }
 }

@@ -1,114 +1,354 @@
-import java.util.Comparator;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1;
+import com.tencent.mobileqq.dinifly.Cancellable;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-public class aqpu<T>
+public class aqpu
+  implements aqpw
 {
-  private int jdField_a_of_type_Int;
-  private final aqpv<T> jdField_a_of_type_Aqpv;
-  private final aqpw jdField_a_of_type_Aqpw;
-  private final Comparator<T> jdField_a_of_type_JavaUtilComparator;
+  private Cancellable a;
   
-  public aqpu(Comparator<T> paramComparator, aqpw<T> paramaqpw)
+  private void a(Context paramContext, aqpk paramaqpk, String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Aqpw = paramaqpw;
-    this.jdField_a_of_type_Aqpv = new aqpv();
-    this.jdField_a_of_type_JavaUtilComparator = paramComparator;
-  }
-  
-  private void a(long paramLong, List<T> paramList, aqpv<T> paramaqpv)
-  {
-    if ((aqnj.a().a().a()) && ((paramList == null) || (paramList.isEmpty())) && (!a()) && ((paramaqpv.jdField_a_of_type_JavaLangObject instanceof aqoa)))
+    if ((paramaqpk.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof aqoe))
     {
-      paramList = (aqoa)paramaqpv.jdField_a_of_type_JavaLangObject;
-      long l = Math.abs(paramList.d() - paramLong);
-      if (l > 60000L) {
-        aqqb.d("DanmakuDataSource", "Danmaku upload to screen fail, deltaTime = " + l + " , curTime = " + paramLong + ", curDanmaku = " + paramList);
+      if (!paramBoolean) {
+        a(paramaqpk);
       }
+      return;
     }
+    ThreadManagerV2.excute(new DefaultItemBuilder.1(this, paramString1, paramContext, paramString2, paramaqpk, paramBoolean), 16, null, true);
   }
   
-  public int a()
+  private void a(aqpk paramaqpk)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_Aqpv.jdField_a_of_type_Aqpv.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public List<T> a(long paramLong, List<T> paramList, int paramInt)
-  {
-    aqpv localaqpv = this.jdField_a_of_type_Aqpv.jdField_a_of_type_Aqpv;
-    int j;
-    for (int i = 0; (i < paramInt) && (localaqpv != this.jdField_a_of_type_Aqpv) && (this.jdField_a_of_type_Aqpw.a(localaqpv.jdField_a_of_type_JavaLangObject, paramLong) <= 0); i = j)
+    if ((paramaqpk == null) || (paramaqpk.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
     {
-      j = i;
-      if (paramList != null)
+      QLog.e("DefaultItemBuilder", 1, "lottie loaded but still null");
+      return;
+    }
+    QLog.d("DefaultItemBuilder", 4, "play animation");
+    LottieDrawable localLottieDrawable = (LottieDrawable)paramaqpk.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localLottieDrawable.setRepeatCount(-1);
+    localLottieDrawable.playAnimation();
+    int i = AIOUtils.dp2px(24.0F, paramaqpk.jdField_a_of_type_AndroidWidgetTextView.getResources());
+    localLottieDrawable.setBounds(new Rect(0, 0, i, i));
+    paramaqpk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramaqpk.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
+  }
+  
+  protected int a(ColorNote paramColorNote)
+  {
+    int i = 2130840348;
+    switch (aqoq.a(paramColorNote.getServiceType()) & 0xFFFF0000)
+    {
+    default: 
+      i = 2130844341;
+    case 17170432: 
+    case 17235968: 
+    case 17301504: 
+      return i;
+    case 16973824: 
+      return 2130844283;
+    case 17039360: 
+      return 2130839279;
+    case 16842752: 
+      return 2130839280;
+    case 16908288: 
+      return 2130839281;
+    }
+    return 2130844080;
+  }
+  
+  public int a(ColorNote paramColorNote, boolean paramBoolean)
+  {
+    int i;
+    switch (paramColorNote.getServiceType() & 0xFFFF0000)
+    {
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      if (aqoq.b(paramColorNote))
       {
-        paramList.add(localaqpv.jdField_a_of_type_JavaLangObject);
-        j = i + 1;
+        if (!paramBoolean) {
+          break;
+        }
+        i = 2130839300;
       }
-      this.jdField_a_of_type_Int -= 1;
-      localaqpv = localaqpv.jdField_a_of_type_Aqpv;
+      return i;
+      if (paramBoolean)
+      {
+        i = 2130839292;
+      }
+      else
+      {
+        i = 2130839293;
+        continue;
+        if (paramBoolean)
+        {
+          i = 2130839286;
+        }
+        else
+        {
+          i = 2130839287;
+          continue;
+          if (paramBoolean)
+          {
+            i = 2130839289;
+          }
+          else
+          {
+            i = 2130839290;
+            continue;
+            if (paramBoolean)
+            {
+              i = 2130839298;
+            }
+            else
+            {
+              i = 2130839299;
+              continue;
+              if (paramBoolean)
+              {
+                i = 2130839295;
+              }
+              else
+              {
+                i = 2130839296;
+                continue;
+                if (paramBoolean) {
+                  i = 2130839302;
+                } else {
+                  i = 2130839303;
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    a(paramLong, paramList, localaqpv);
-    this.jdField_a_of_type_Aqpv.jdField_a_of_type_Aqpv = localaqpv;
-    localaqpv.b = this.jdField_a_of_type_Aqpv;
-    return paramList;
+    return 2130839301;
   }
   
-  public void a()
+  public void a(aqpk paramaqpk, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Aqpv.jdField_a_of_type_Aqpv = this.jdField_a_of_type_Aqpv;
-    this.jdField_a_of_type_Aqpv.b = this.jdField_a_of_type_Aqpv;
-    this.jdField_a_of_type_Int = 0;
+    localColorNote = paramaqpk.a(paramInt);
+    localResources = paramaqpk.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources();
+    paramInt = a(localColorNote);
+    for (;;)
+    {
+      try
+      {
+        localObject = new URL(localColorNote.getPicUrl());
+        bool = "resdrawable".equals(((URL)localObject).getProtocol());
+        if (!bool) {
+          continue;
+        }
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        boolean bool;
+        localObject = localResources.getDrawable(paramInt);
+        QLog.e("DefaultItemBuilder", 1, localMalformedURLException, new Object[0]);
+        continue;
+        if (!"uindrawable".equals(((URL)localObject).getProtocol())) {
+          continue;
+        }
+        localObject = aqpz.a(((URL)localObject).getQuery());
+        continue;
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mRequestWidth = AIOUtils.dp2px(40.0F, localResources);
+        localURLDrawableOptions.mRequestHeight = AIOUtils.dp2px(40.0F, localResources);
+        localURLDrawableOptions.mLoadingDrawable = localResources.getDrawable(paramInt);
+        localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+        localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
+        continue;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        Object localObject = localResources.getDrawable(paramInt);
+        QLog.e("DefaultItemBuilder", 1, localNullPointerException, new Object[0]);
+        continue;
+        paramaqpk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramaqpk.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
+        ((aqod)paramaqpk.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a(300);
+        localObject = paramaqpk.jdField_a_of_type_AndroidViewView;
+        if (!paramBoolean) {
+          continue;
+        }
+        paramInt = 2130839292;
+        ((View)localObject).setBackgroundResource(paramInt);
+        paramaqpk.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839306);
+        continue;
+        paramInt = 2130839293;
+        continue;
+        paramaqpk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+        localObject = paramaqpk.jdField_a_of_type_AndroidViewView;
+        if (!paramBoolean) {
+          continue;
+        }
+        paramInt = 2130839286;
+        ((View)localObject).setBackgroundResource(paramInt);
+        paramaqpk.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839304);
+        continue;
+        paramInt = 2130839287;
+        continue;
+        paramaqpk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+        localObject = paramaqpk.jdField_a_of_type_AndroidViewView;
+        if (!paramBoolean) {
+          continue;
+        }
+        paramInt = 2130839289;
+        ((View)localObject).setBackgroundResource(paramInt);
+        paramaqpk.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839305);
+        continue;
+        paramInt = 2130839290;
+        continue;
+        paramaqpk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+        localObject = paramaqpk.jdField_a_of_type_AndroidViewView;
+        if (!paramBoolean) {
+          continue;
+        }
+        paramInt = 2130839298;
+        ((View)localObject).setBackgroundResource(paramInt);
+        paramaqpk.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839308);
+        continue;
+        paramInt = 2130839299;
+        continue;
+        paramaqpk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+        localObject = paramaqpk.jdField_a_of_type_AndroidViewView;
+        if (!paramBoolean) {
+          continue;
+        }
+        paramInt = 2130839295;
+        ((View)localObject).setBackgroundResource(paramInt);
+        paramaqpk.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839307);
+        continue;
+        paramInt = 2130839296;
+        continue;
+        localObject = paramaqpk.jdField_a_of_type_AndroidViewView;
+        if (!paramBoolean) {
+          continue;
+        }
+        paramInt = 2130839302;
+        ((View)localObject).setBackgroundResource(paramInt);
+        paramaqpk.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839310);
+        if (!aqoq.c(localColorNote)) {
+          continue;
+        }
+        a(paramaqpk.jdField_a_of_type_AndroidWidgetImageView.getContext(), paramaqpk, "colornote/data_black.json", "colornote/images", false);
+        continue;
+        paramInt = 2130839303;
+        continue;
+        paramaqpk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+        continue;
+        paramInt = 2130839301;
+        continue;
+      }
+      try
+      {
+        localObject = localResources.getDrawable(Integer.parseInt(((URL)localObject).getHost()));
+        paramaqpk.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        bool = aqoq.b(localColorNote);
+        switch (aqoq.a(localColorNote.getServiceType() & 0xFFFF0000))
+        {
+        default: 
+          paramaqpk.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+          if (bool)
+          {
+            localObject = paramaqpk.jdField_a_of_type_AndroidViewView;
+            if (paramBoolean)
+            {
+              paramInt = 2130839300;
+              ((View)localObject).setBackgroundResource(paramInt);
+            }
+          }
+          else
+          {
+            paramaqpk.jdField_a_of_type_AndroidWidgetTextView.setText(localColorNote.getMainTitle());
+            paramaqpk.jdField_b_of_type_AndroidWidgetTextView.setText(localColorNote.getSubTitle());
+            return;
+          }
+          break;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        localObject = localResources.getDrawable(paramInt);
+        QLog.e("DefaultItemBuilder", 1, "service type: " + localColorNote.getServiceType() + " url error.", localThrowable);
+      }
+    }
   }
   
-  public boolean a()
+  public void a(ColorNote paramColorNote, View paramView, ImageView paramImageView, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Aqpv.jdField_a_of_type_Aqpv == this.jdField_a_of_type_Aqpv;
-  }
-  
-  public boolean a(T paramT)
-  {
-    if (paramT == null) {
-      return false;
+    i = a(paramColorNote, paramBoolean);
+    if (i != 0) {
+      paramView.setBackgroundResource(i);
     }
-    for (aqpv localaqpv = this.jdField_a_of_type_Aqpv.b; (localaqpv != this.jdField_a_of_type_Aqpv) && (this.jdField_a_of_type_JavaUtilComparator.compare(localaqpv.jdField_a_of_type_JavaLangObject, paramT) > 0); localaqpv = localaqpv.b) {}
-    if (paramT.equals(localaqpv.jdField_a_of_type_JavaLangObject)) {
-      return false;
+    localResources = paramView.getContext().getResources();
+    i = a(paramColorNote);
+    for (;;)
+    {
+      try
+      {
+        paramView = new URL(paramColorNote.getPicUrl());
+        paramBoolean = "resdrawable".equals(paramView.getProtocol());
+        if (!paramBoolean) {
+          continue;
+        }
+      }
+      catch (MalformedURLException paramView)
+      {
+        paramColorNote = localResources.getDrawable(i);
+        QLog.e("DefaultItemBuilder", 1, paramView, new Object[0]);
+        continue;
+        if (!"uindrawable".equals(paramView.getProtocol())) {
+          continue;
+        }
+        paramColorNote = aqpz.a(paramView.getQuery());
+        continue;
+        paramColorNote = URLDrawable.URLDrawableOptions.obtain();
+        paramColorNote.mRequestWidth = AIOUtils.dp2px(40.0F, localResources);
+        paramColorNote.mRequestHeight = AIOUtils.dp2px(40.0F, localResources);
+        paramColorNote.mLoadingDrawable = localResources.getDrawable(i);
+        paramColorNote.mFailedDrawable = paramColorNote.mLoadingDrawable;
+        paramColorNote = URLDrawable.getDrawable(paramView, paramColorNote);
+        continue;
+      }
+      catch (NullPointerException paramView)
+      {
+        paramColorNote = localResources.getDrawable(i);
+        QLog.e("DefaultItemBuilder", 1, paramView, new Object[0]);
+        continue;
+      }
+      try
+      {
+        paramView = localResources.getDrawable(Integer.parseInt(paramView.getHost()));
+        paramColorNote = paramView;
+      }
+      catch (Throwable localThrowable)
+      {
+        paramView = localResources.getDrawable(i);
+        QLog.e("DefaultItemBuilder", 1, "service type: " + paramColorNote.getServiceType() + " url error.", localThrowable);
+        paramColorNote = paramView;
+      }
     }
-    paramT = new aqpv(paramT, localaqpv.jdField_a_of_type_Aqpv, localaqpv);
-    localaqpv.jdField_a_of_type_Aqpv.b = paramT;
-    localaqpv.jdField_a_of_type_Aqpv = paramT;
-    this.jdField_a_of_type_Int += 1;
-    return true;
-  }
-  
-  public T b()
-  {
-    aqpv localaqpv = this.jdField_a_of_type_Aqpv.b;
-    if (localaqpv != this.jdField_a_of_type_Aqpv) {
-      return localaqpv.jdField_a_of_type_JavaLangObject;
-    }
-    return null;
-  }
-  
-  public boolean b(T paramT)
-  {
-    if (paramT == null) {
-      return false;
-    }
-    for (aqpv localaqpv = this.jdField_a_of_type_Aqpv.jdField_a_of_type_Aqpv; (localaqpv != this.jdField_a_of_type_Aqpv) && (this.jdField_a_of_type_JavaUtilComparator.compare(localaqpv.jdField_a_of_type_JavaLangObject, paramT) < 0); localaqpv = localaqpv.jdField_a_of_type_Aqpv) {}
-    if (paramT.equals(localaqpv.jdField_a_of_type_JavaLangObject)) {
-      return false;
-    }
-    paramT = new aqpv(paramT, localaqpv, localaqpv.b);
-    localaqpv.b.jdField_a_of_type_Aqpv = paramT;
-    localaqpv.b = paramT;
-    this.jdField_a_of_type_Int += 1;
-    return true;
+    paramImageView.setImageDrawable(paramColorNote);
   }
 }
 

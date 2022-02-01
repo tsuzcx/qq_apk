@@ -1,32 +1,77 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneNewestFeedRequest;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class bcvq
-  implements View.OnClickListener
+public class bcvq
+  extends MSFServlet
 {
-  bcvq(bcvp parambcvp) {}
-  
-  public void onClick(View paramView)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if ((bcvp.a(this.a) instanceof CustomWebView))
+    paramIntent.getStringExtra("key_cmd_string");
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
     {
-      if (2 != bcvp.a(this.a).c) {
-        break label57;
+      paramIntent = paramFromServiceMsg.getWupBuffer();
+      arrayOfInt = new int[1];
+      paramIntent = QZoneNewestFeedRequest.onResponse(paramIntent, (QQAppInterface)getAppRuntime(), arrayOfInt);
+      if (paramIntent != null)
+      {
+        paramFromServiceMsg = new Bundle();
+        paramFromServiceMsg.putSerializable("data", paramIntent);
+        notifyObserver(null, 1001, true, paramFromServiceMsg, ayrb.class);
       }
-      ((CustomWebView)bcvp.a(this.a)).callJs("openAdvPermissionsMobile()");
-      this.a.dismiss();
     }
-    for (;;)
+    while (paramFromServiceMsg == null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      int[] arrayOfInt;
       return;
-      label57:
-      ((CustomWebView)bcvp.a(this.a)).callJs("openCooperationMobile()");
-      this.a.dismiss();
-      bcef.b(bcvp.a(this.a).app, "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneFeedsServlet", 2, new Object[] { "inform QZoneFeedsServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
+      }
+      notifyObserver(null, 1001, false, new Bundle(), ayrb.class);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneFeedsServlet", 2, "inform QZoneFeedsServlet resultcode fail.");
+    }
+    notifyObserver(null, 1001, false, new Bundle(), ayrb.class);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null) {}
+    long l1;
+    do
+    {
+      return;
+      l1 = paramIntent.getLongExtra("selfuin", 0L);
+      localObject1 = paramIntent.getLongArrayExtra("hostuin");
+    } while (localObject1 == null);
+    Object localObject2 = new ArrayList(localObject1.length);
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      ((ArrayList)localObject2).add(Long.valueOf(localObject1[i]));
+      i += 1;
+    }
+    long l2 = paramIntent.getLongExtra("lasttime", 0L);
+    i = paramIntent.getIntExtra("src", 0);
+    localObject2 = new QZoneNewestFeedRequest(l1, (ArrayList)localObject2, l2, paramIntent.getStringExtra("refer"), i);
+    Object localObject1 = ((QZoneNewestFeedRequest)localObject2).encode();
+    paramIntent.putExtra("key_cmd_string", ((QZoneNewestFeedRequest)localObject2).getCmdString());
+    if (localObject1 == null) {}
+    for (paramIntent = new byte[4];; paramIntent = (Intent)localObject1)
+    {
+      paramPacket.setTimeout(60000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + "getAIONewestFeed");
+      paramPacket.putSendData(paramIntent);
+      return;
     }
   }
 }

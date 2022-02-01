@@ -2,7 +2,7 @@ package com.tencent.av.ui;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import bfvo;
+import bheg;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
@@ -52,7 +52,7 @@ class VideoLayerUIBase$MyRunnable
         {
           QLog.w(this.jdField_a_of_type_JavaLangString, 1, "tryScreenShot, writeBitmapToFile, ret[" + bool + "]");
           if (bool) {
-            bfvo.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
+            bheg.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
           }
           localObject = (VideoLayerUIBase)this.jdField_a_of_type_JavaLangRefWeakReference.get();
           if (localObject != null)

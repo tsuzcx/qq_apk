@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+import mqq.os.MqqHandler;
 
 public class aixo
-  implements DialogInterface.OnClickListener
+  extends MqqHandler
 {
-  public aixo(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, aczg paramaczg) {}
+  public aixo(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Aczg.a(true);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    NewFriendVerifyBlockedListFragment.a(this.a);
   }
 }
 

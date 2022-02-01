@@ -1,16 +1,7 @@
-class wiw
-  extends whn
+public class wiw
+  extends vzj
 {
-  wiw(wif paramwif, String paramString1, String paramString2, boolean paramBoolean, wjo paramwjo)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
-  
-  public boolean b()
-  {
-    this.jdField_a_of_type_Wjo.d = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
-  }
+  public boolean a;
 }
 
 

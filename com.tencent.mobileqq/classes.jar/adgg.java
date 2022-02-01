@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
 
 public class adgg
-  extends areo
+  implements bkzq
 {
-  public adgg(EmosmActivity paramEmosmActivity) {}
+  public adgg(AddFriendVerifyActivity paramAddFriendVerifyActivity, bkzi parambkzi) {}
   
-  public void onCoverComplete(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
-    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
-      return;
+    switch (paramInt)
+    {
     }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1001));
+      continue;
+      akln.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1);
+    }
   }
-  
-  public void onPackageEnd(EmoticonPackage paramEmoticonPackage, int paramInt) {}
-  
-  public void onPackageProgress(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

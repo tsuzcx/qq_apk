@@ -1,22 +1,37 @@
-public abstract interface akhb
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity.10.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
+public class akhb
+  extends anvi
 {
-  public abstract int a();
+  public akhb(BindNumberActivity paramBindNumberActivity) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract boolean c();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public void onGetFriendsHasBindPhone(boolean paramBoolean, int paramInt, List<String> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      if (paramList != null) {
+        break label95;
+      }
+    }
+    label95:
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    {
+      QLog.i("BindNumberActivity", 2, String.format("onGetFriendsHasBindPhone [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), localObject }));
+      if (paramBoolean) {
+        this.a.runOnUiThread(new BindNumberActivity.10.1(this, paramInt, paramList));
+      }
+      this.a.app.removeObserver(this.a.a);
+      this.a.a = null;
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhb
  * JD-Core Version:    0.7.0.1
  */

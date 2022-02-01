@@ -1,48 +1,47 @@
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
 import com.tencent.qphone.base.util.QLog;
 
-class baeh
-  implements bagj
+public class baeh
+  extends GestureDetector.SimpleOnGestureListener
 {
-  baeh(baeg parambaeg, int[] paramArrayOfInt) {}
+  public baeh(VasProfileTagView paramVasProfileTagView) {}
   
-  public void onEncodeError(int paramInt, Throwable arg2)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    String str;
-    if (??? != null) {
-      str = ???.getMessage();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll invoked");
     }
-    for (;;)
+    VasProfileTagView.a(this.a, true);
+    paramFloat1 = paramFloat2;
+    if (paramMotionEvent1 != null)
     {
-      xwa.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
-      xvv.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
-      baeg.a(this.jdField_a_of_type_Baeg, paramInt);
-      synchronized (baeg.a(this.jdField_a_of_type_Baeg))
-      {
-        baeg.a(this.jdField_a_of_type_Baeg, true);
-        baeg.a(this.jdField_a_of_type_Baeg).notifyAll();
-        return;
-        str = "UNKNOWN ERROR";
+      paramFloat1 = paramFloat2;
+      if (paramMotionEvent2 != null) {
+        paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
       }
     }
-  }
-  
-  public void onEncodeFinish(String arg1)
-  {
-    xwa.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
-    synchronized (baeg.a(this.jdField_a_of_type_Baeg))
-    {
-      baeg.a(this.jdField_a_of_type_Baeg, true);
-      baeg.a(this.jdField_a_of_type_Baeg).notifyAll();
-      QLog.w("MergeEditVideo", 1, "mp4ReEncoder encode finish!");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
     }
-  }
-  
-  public void onEncodeFrame() {}
-  
-  public void onEncodeStart()
-  {
-    QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
+    if (Math.abs(paramFloat1) > VasProfileTagView.a(this.a))
+    {
+      if ((paramFloat1 > 0.0F) && (this.a.b)) {
+        if (this.a.a())
+        {
+          this.a.g();
+          VasProfileTagView.a(this.a).b(null);
+        }
+      }
+      while ((paramFloat1 >= 0.0F) || (this.a.b)) {
+        return true;
+      }
+      this.a.a();
+      return true;
+    }
+    return false;
   }
 }
 

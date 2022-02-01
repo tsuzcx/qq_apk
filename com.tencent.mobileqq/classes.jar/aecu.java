@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aecu
-  implements adra
+  implements View.OnClickListener
 {
-  public aecu(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public aecu(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    RegisterPhoneNumActivity.a(this.a).b();
-  }
-  
-  public void b()
-  {
-    RegisterPhoneNumActivity.a(this.a).b();
+    Intent localIntent = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(localIntent, 999);
+    this.a.overridePendingTransition(2130771997, 2130771990);
+    bdla.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

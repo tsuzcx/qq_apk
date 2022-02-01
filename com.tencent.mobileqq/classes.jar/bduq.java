@@ -1,31 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
 
 public class bduq
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public bduq(TroopNickRuleFragment paramTroopNickRuleFragment) {}
+  public bduq(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i;
-    if (paramView == this.a.a)
-    {
-      i = paramMotionEvent.getAction();
-      if (i != 0) {
-        break label32;
-      }
-      paramView.getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    label32:
-    while ((i != 1) && (i != 3)) {
-      return false;
-    }
-    paramView.getParent().requestDisallowInterceptTouchEvent(false);
-    return false;
+    KidModeAdvanceSettingFragment.b(this.a, true);
+    KidModeAdvanceSettingFragment.a(this.a).setEnabled(true);
+    KidModeAdvanceSettingFragment.a(this.a, KidModeAdvanceSettingFragment.a(this.a), false, KidModeAdvanceSettingFragment.a(this.a));
+    ajco.a(this.a.getActivity(), KidModeAdvanceSettingFragment.a(this.a), bdvn.b(), 2002);
   }
 }
 

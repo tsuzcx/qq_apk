@@ -9,34 +9,36 @@ public class QAPMOkHttpInstrumentation
 {
   private static final String TAG = "QAPM_Impl_QAPMOkHttpInstrumentation";
   
+  @QAPMWrapReturn
   public static HttpURLConnection open(HttpURLConnection paramHttpURLConnection)
   {
     Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMOkHttpInstrumentation", "OkHttpInstrumentation - wrapping return of call to open" });
     HttpURLConnection localHttpURLConnection = processControllerDispatch(paramHttpURLConnection);
     if ((localHttpURLConnection instanceof HttpsURLConnection)) {
-      paramHttpURLConnection = new d((HttpsURLConnection)localHttpURLConnection);
+      paramHttpURLConnection = new e((HttpsURLConnection)localHttpURLConnection);
     }
     do
     {
       return paramHttpURLConnection;
       paramHttpURLConnection = localHttpURLConnection;
     } while (localHttpURLConnection == null);
-    return new c(localHttpURLConnection);
+    return new d(localHttpURLConnection);
   }
   
+  @QAPMWrapReturn
   public static HttpURLConnection openWithProxy(HttpURLConnection paramHttpURLConnection)
   {
     Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMOkHttpInstrumentation", "OkHttpInstrumentation -wrapping return of call to openWithProxy" });
     HttpURLConnection localHttpURLConnection = processControllerDispatch(paramHttpURLConnection);
     if ((localHttpURLConnection instanceof HttpsURLConnection)) {
-      paramHttpURLConnection = new d((HttpsURLConnection)localHttpURLConnection);
+      paramHttpURLConnection = new e((HttpsURLConnection)localHttpURLConnection);
     }
     do
     {
       return paramHttpURLConnection;
       paramHttpURLConnection = localHttpURLConnection;
     } while (localHttpURLConnection == null);
-    return new c(localHttpURLConnection);
+    return new d(localHttpURLConnection);
   }
   
   private static HttpURLConnection processControllerDispatch(HttpURLConnection paramHttpURLConnection)
@@ -48,19 +50,20 @@ public class QAPMOkHttpInstrumentation
     return paramHttpURLConnection;
   }
   
+  @QAPMWrapReturn
   public static HttpURLConnection urlFactoryOpen(HttpURLConnection paramHttpURLConnection)
   {
     Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMOkHttpInstrumentation", "OkHttpInstrumentation - wrapping return of call to OkUrlFactory.open..." });
     HttpURLConnection localHttpURLConnection = processControllerDispatch(paramHttpURLConnection);
     if ((localHttpURLConnection instanceof HttpsURLConnection)) {
-      paramHttpURLConnection = new d((HttpsURLConnection)localHttpURLConnection);
+      paramHttpURLConnection = new e((HttpsURLConnection)localHttpURLConnection);
     }
     do
     {
       return paramHttpURLConnection;
       paramHttpURLConnection = localHttpURLConnection;
     } while (localHttpURLConnection == null);
-    return new c(localHttpURLConnection);
+    return new d(localHttpURLConnection);
   }
 }
 

@@ -1,98 +1,80 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.proto.lbsshare.LBSShare.GetShopsByIdsResp;
-import com.tencent.proto.lbsshare.LBSShare.LocationResp;
-import com.tencent.proto.lbsshare.LBSShare.NearByShopsResp;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class adzp
-  extends BroadcastReceiver
+  extends aofu
 {
-  public adzp(QQMapActivity paramQQMapActivity) {}
+  public adzp(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void onGenNewTroopName(String paramString1, String paramString2)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqmap", 2, "activiy.receiver.onReceive:" + paramContext);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    if (paramContext.equals("com.tencent.mobileqq.onGetStreetViewUrl"))
-    {
-      this.a.j = paramIntent.getStringExtra("streetViewUrl");
-      this.a.n();
+  }
+  
+  protected void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void onModifyTroopInfo(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a();
+      }
     }
     do
     {
       do
       {
-        do
-        {
-          return;
-          if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareSearch"))
-          {
-            byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-            localObject = new LBSShare.LocationResp();
-            paramContext = (Context)localObject;
-            if (arrayOfByte != null) {}
-            try
-            {
-              paramContext = (LBSShare.LocationResp)((LBSShare.LocationResp)localObject).mergeFrom(arrayOfByte);
-              paramIntent = paramIntent.getExtras().getBundle("req");
-              this.a.a(paramContext, paramIntent);
-              return;
-            }
-            catch (InvalidProtocolBufferMicroException paramContext)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  paramContext.printStackTrace();
-                }
-                paramContext = null;
-              }
-            }
-          }
-          if (!paramContext.equals("com.tencent.mobileqq.onGetLbsShareShop")) {
-            break;
-          }
-          paramContext = paramIntent.getByteArrayExtra("data");
-        } while (paramContext == null);
-        Object localObject = new LBSShare.NearByShopsResp();
-        try
-        {
-          paramContext = (LBSShare.NearByShopsResp)((LBSShare.NearByShopsResp)localObject).mergeFrom(paramContext);
-          paramIntent = paramIntent.getExtras().getBundle("req");
-          this.a.a(paramContext, paramIntent);
-          return;
+        return;
+        if (paramInt1 != 2) {
+          break;
         }
-        catch (InvalidProtocolBufferMicroException paramContext)
-        {
-          if (QLog.isColorLevel()) {
-            paramContext.printStackTrace();
-          }
-          this.a.a(null, null);
-          return;
-        }
-      } while (!paramContext.equals("com.tencent.mobileqq.onGetShareShopDetail"));
-      paramContext = paramIntent.getByteArrayExtra("data");
-    } while (paramContext == null);
-    paramIntent = new LBSShare.GetShopsByIdsResp();
-    try
-    {
-      paramContext = (LBSShare.GetShopsByIdsResp)paramIntent.mergeFrom(paramContext);
-      this.a.a(paramContext);
+      } while (paramInt2 != 0);
+      this.a.a();
       return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.a();
+  }
+  
+  protected void onUpdateTroopList(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
     }
-    catch (InvalidProtocolBufferMicroException paramContext)
-    {
-      if (QLog.isColorLevel()) {
-        paramContext.printStackTrace();
-      }
-      this.a.a(null);
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().postDelayed(new ForwardTroopListFragment.MyTroopObserver.1(this), 500L);
+    }
+  }
+  
+  protected void onUpdateTroopNickname(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a();
     }
   }
 }

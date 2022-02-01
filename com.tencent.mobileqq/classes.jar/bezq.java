@@ -1,45 +1,19 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import java.lang.ref.WeakReference;
+import android.net.Uri;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
 
 public class bezq
-  extends AsyncTask<Boolean, Void, Bitmap>
+  implements bezj
 {
-  private WeakReference<RollangleImageView> a;
+  public bezq(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public bezq(RollangleImageView paramRollangleImageView)
+  public void a(Uri paramUri)
   {
-    this.a = new WeakReference(paramRollangleImageView);
-  }
-  
-  protected Bitmap a(Boolean... paramVarArgs)
-  {
-    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
-    if (localRollangleImageView != null) {
-      return RollangleImageView.a(localRollangleImageView, paramVarArgs[0].booleanValue());
-    }
-    return null;
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
-    if (localRollangleImageView != null)
-    {
-      if (paramBitmap != null) {
-        localRollangleImageView.setImageBitmap(paramBitmap);
-      }
-    }
-    else {
-      return;
-    }
-    localRollangleImageView.setImageResource(aszt.b(localRollangleImageView.a));
+    this.a.a = paramUri;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezq
  * JD-Core Version:    0.7.0.1
  */

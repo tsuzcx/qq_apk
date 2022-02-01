@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
-class axdz
-  implements View.OnClickListener
+public class axdz
+  implements axfs
 {
-  axdz(axdy paramaxdy, ViewGroup paramViewGroup) {}
+  public axdz(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (axdy.a(this.jdField_a_of_type_Axdy) != null) {
-      axdy.a(this.jdField_a_of_type_Axdy).a(this.jdField_a_of_type_AndroidViewViewGroup);
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    MultiAIOFragment.a(this.a).setViewPagerBusy(true);
+    MultiAIOFragment.a(this.a).c(paramInt);
+    if (MultiAIOFragment.a(this.a).c() == 0) {
+      MultiAIOFragment.a(this.a).setViewPagerBusy(false);
+    }
   }
 }
 

@@ -1,9 +1,7 @@
 class aklz
-  implements bjta
+  extends akmq
 {
-  aklz(aklx paramaklx) {}
-  
-  public void a() {}
+  aklz(akly paramakly) {}
 }
 
 

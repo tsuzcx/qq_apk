@@ -1,18 +1,19 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Comparator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class ajhh
-  implements View.OnTouchListener
+final class ajhh
+  implements Comparator<structmsg.StructMsg>
 {
-  ajhh(ajhb paramajhb) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
+      return 1;
+    }
+    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
+      return -1;
+    }
+    return 0;
   }
 }
 

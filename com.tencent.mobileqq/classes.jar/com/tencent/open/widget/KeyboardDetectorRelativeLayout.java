@@ -10,13 +10,13 @@ import android.view.View.MeasureSpec;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import bigc;
+import bjre;
 
 public class KeyboardDetectorRelativeLayout
   extends RelativeLayout
 {
   protected Rect a;
-  protected bigc a;
+  protected bjre a;
   
   public KeyboardDetectorRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,9 +26,9 @@ public class KeyboardDetectorRelativeLayout
     }
   }
   
-  public void a(bigc parambigc)
+  public void a(bjre parambjre)
   {
-    this.jdField_a_of_type_Bigc = parambigc;
+    this.jdField_a_of_type_Bjre = parambjre;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -38,19 +38,19 @@ public class KeyboardDetectorRelativeLayout
     localActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
     int j = this.jdField_a_of_type_AndroidGraphicsRect.top;
     int k = localActivity.getWindowManager().getDefaultDisplay().getHeight();
-    if ((this.jdField_a_of_type_Bigc != null) && (i != 0))
+    if ((this.jdField_a_of_type_Bjre != null) && (i != 0))
     {
       if (k - j - i <= 100) {
         break label112;
       }
-      this.jdField_a_of_type_Bigc.a(Math.abs(this.jdField_a_of_type_AndroidGraphicsRect.height()) - getPaddingBottom() - getPaddingTop());
+      this.jdField_a_of_type_Bjre.a(Math.abs(this.jdField_a_of_type_AndroidGraphicsRect.height()) - getPaddingBottom() - getPaddingTop());
     }
     for (;;)
     {
       super.onMeasure(paramInt1, paramInt2);
       return;
       label112:
-      this.jdField_a_of_type_Bigc.b();
+      this.jdField_a_of_type_Bjre.b();
     }
   }
 }

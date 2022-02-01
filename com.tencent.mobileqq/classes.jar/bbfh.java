@@ -1,16 +1,41 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.1;
-import java.util.Observable;
-import java.util.Observer;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.theme.SkinnableColorStateList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bbfh
-  implements Observer
+  extends bbfj
 {
-  public bbfh(MessageSearchEngine.1 param1) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public List<bbfb> a(View paramView)
   {
-    this.a.a.a(bbfg.a(this.a.this$0, this.a.this$0.a, (FullMessageSearchResult)paramObject));
+    ArrayList localArrayList = new ArrayList();
+    if ((paramView instanceof ImageView)) {
+      a(((ImageView)paramView).getDrawable(), localArrayList, 1);
+    }
+    do
+    {
+      do
+      {
+        return localArrayList;
+      } while (!(paramView instanceof TextView));
+      localObject = ((TextView)paramView).getCompoundDrawables();
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        a(localObject[i], localArrayList, 2);
+        i += 1;
+      }
+      localObject = ((TextView)paramView).getTextColors();
+    } while (!(localObject instanceof SkinnableColorStateList));
+    paramView = (SkinnableColorStateList)localObject;
+    Object localObject = new bbfb(3, ((SkinnableColorStateList)localObject).skinData);
+    ((bbfb)localObject).jdField_a_of_type_Array2dOfInt = paramView.getStateSpecs();
+    ((bbfb)localObject).jdField_a_of_type_ArrayOfInt = paramView.getColors();
+    localArrayList.add(localObject);
+    return localArrayList;
   }
 }
 

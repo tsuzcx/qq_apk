@@ -1,27 +1,15 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
 
 public class aesn
-  extends WtloginObserver
+  extends ayqy
 {
-  public aesn(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public aesn(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
-      }
-    }
-    if (paramInt2 == 0) {
-      return;
-    }
-    VerifyPhoneNumActivity.a(this.a);
-    VerifyPhoneNumActivity.b(this.a);
+    QQSettingSettingActivity.a(this.a);
+    QQSettingSettingActivity.b(this.a);
   }
 }
 

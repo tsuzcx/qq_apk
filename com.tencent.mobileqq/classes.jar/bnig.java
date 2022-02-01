@@ -1,20 +1,29 @@
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
 
-public abstract interface bnig
+class bnig
+  implements ActionMode.Callback
 {
-  public abstract void a();
+  bnig(bnhy parambnhy) {}
   
-  public abstract void a(int paramInt);
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  {
+    return false;
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
   
-  public abstract void a(DynamicTextItem paramDynamicTextItem, boolean paramBoolean1, int paramInt, boolean paramBoolean2);
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(boolean paramBoolean);
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
 }
 
 

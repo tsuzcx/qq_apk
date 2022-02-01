@@ -2,7 +2,6 @@ package com.tencent.qqmini.sdk.plugins;
 
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import org.json.JSONObject;
 
 class DataJsPlugin$8
@@ -12,18 +11,28 @@ class DataJsPlugin$8
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("DataJsPlugin", "webapi_plugin_login " + paramBoolean + ", " + paramJSONObject);
-    if (paramBoolean)
-    {
-      this.val$req.ok(paramJSONObject);
-      return;
+    if ((paramBoolean) && (paramJSONObject != null)) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        if (DataJsPlugin.access$400(this.this$0)) {
+          localJSONObject.put("data", paramJSONObject);
+        }
+        for (;;)
+        {
+          this.val$req.ok(localJSONObject);
+          return;
+          localJSONObject.put("data", paramJSONObject.toString());
+        }
+        this.val$req.fail();
+      }
+      catch (Throwable paramJSONObject) {}
     }
-    this.val$req.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.DataJsPlugin.8
  * JD-Core Version:    0.7.0.1
  */

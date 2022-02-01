@@ -1,4 +1,21 @@
-public abstract class bmxc {}
+import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+
+class bmxc
+  implements CosFunHelper.CountDownListener
+{
+  bmxc(bmxa parambmxa) {}
+  
+  public void onCountDownEnd()
+  {
+    this.a.T();
+  }
+  
+  public void onCountDownStart(VideoMaterial paramVideoMaterial)
+  {
+    bmxa.a(this.a, paramVideoMaterial.getTipsDrawable());
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

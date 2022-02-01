@@ -1,34 +1,33 @@
-import java.nio.ByteBuffer;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 
-class bdzr
+public class bdzr
+  extends bdzu
+  implements bdxy
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
+  protected String b;
   
-  public bdzr(long paramLong)
+  public bdzr(SpriteNativeView paramSpriteNativeView, String paramString)
   {
-    this.a = 2882377846L;
-    this.b = 1007L;
-    this.c = 0L;
-    this.d = paramLong;
+    super(paramSpriteNativeView);
+    this.b = paramString;
   }
   
-  public bdzr(ByteBuffer paramByteBuffer)
+  protected ImageView a()
   {
-    this.a = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.c = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.d = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    return new PressEffectImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
   }
   
-  public void a(ByteBuffer paramByteBuffer)
+  public String a()
   {
-    paramByteBuffer.putInt((int)(this.a & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.b & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
+    return this.b;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
   }
 }
 

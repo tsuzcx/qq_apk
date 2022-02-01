@@ -1,16 +1,6 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public abstract interface bnbd
 {
-  public abstract Activity a();
-  
-  public abstract SessionInfo a();
-  
-  public abstract QQAppInterface a();
-  
-  public abstract boolean a();
+  public abstract void onFilterReady();
 }
 
 

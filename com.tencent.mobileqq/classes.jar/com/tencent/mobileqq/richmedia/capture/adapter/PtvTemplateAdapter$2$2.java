@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.adapter;
 
-import azzq;
-import azzs;
+import bbfz;
+import bbgb;
 import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateItemView;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -11,12 +11,12 @@ import java.util.ArrayList;
 public class PtvTemplateAdapter$2$2
   implements Runnable
 {
-  public PtvTemplateAdapter$2$2(azzs paramazzs, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt) {}
+  public PtvTemplateAdapter$2$2(bbgb parambbgb, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt) {}
   
   public void run()
   {
-    int j = this.jdField_a_of_type_Azzs.a.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
-    int k = this.jdField_a_of_type_Azzs.a.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
+    int j = this.jdField_a_of_type_Bbgb.a.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
+    int k = this.jdField_a_of_type_Bbgb.a.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
     int i = j;
     Object localObject;
     if (i <= k)
@@ -26,13 +26,13 @@ public class PtvTemplateAdapter$2$2
       {
         i += 1;
         break;
-        localObject = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Azzs.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Bbgb.a.jdField_a_of_type_JavaUtilArrayList.get(i);
       } while ((localObject == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject).id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
       if (QLog.isColorLevel()) {
         QLog.i("CapturePtvTemplateManager", 2, "onProgressUpdate index: " + i + " progress: " + this.jdField_a_of_type_Int);
       }
       ((PtvTemplateManager.PtvTemplateInfo)localObject).downloading = true;
-      localObject = this.jdField_a_of_type_Azzs.a.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
+      localObject = this.jdField_a_of_type_Bbgb.a.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
       if ((localObject instanceof PtvTemplateItemView))
       {
         localObject = (PtvTemplateItemView)localObject;

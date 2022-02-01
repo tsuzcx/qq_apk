@@ -1,14 +1,6 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
-class yzm
-  extends RecyclerView.ViewHolder
-{
-  public yzm(yzj paramyzj, View paramView)
-  {
-    super(paramView);
-  }
-}
+public class yzm
+  extends yzz
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

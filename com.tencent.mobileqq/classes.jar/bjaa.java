@@ -1,74 +1,33 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.open.agent.AgentActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONObject;
 
-class bjaa
-  implements EIPCResultCallback
+public class bjaa
+  extends BroadcastReceiver
 {
-  private RequestEvent jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent;
+  public bjaa(AgentActivity paramAgentActivity, String paramString1, Bundle paramBundle, String paramString2, boolean paramBoolean) {}
   
-  bjaa(bizz parambizz, RequestEvent paramRequestEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent = paramRequestEvent;
-  }
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SetAvatarNativePlugin", 2, "onCallback, result=" + paramEIPCResult);
+    if (paramIntent == null) {
+      QLog.d("SDK_LOGIN.AgentActivity", 1, "registerExpiredReceiver onReceive null == intent");
     }
-    if (paramEIPCResult == null) {}
     do
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("SetAvatarNativePlugin", 2, "onCallback, result.isSuccess=" + paramEIPCResult.isSuccess());
-        }
-        paramEIPCResult = paramEIPCResult.data;
-        if (paramEIPCResult != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SetAvatarNativePlugin", 2, "onCallback, data is null");
       return;
-      localObject = paramEIPCResult.getString("param_action");
-      if (QLog.isColorLevel()) {
-        QLog.d("SetAvatarNativePlugin", 2, "onCallback, action=" + (String)localObject);
-      }
-    } while (!"set_avatar".equals(localObject));
-    int i = paramEIPCResult.getInt("param_result_code", -1);
-    paramEIPCResult = paramEIPCResult.getString("param_result_desc", "null");
-    if (QLog.isColorLevel()) {
-      QLog.d("SetAvatarNativePlugin", 2, "onCallback, errCode=" + i + ", errDesc=" + paramEIPCResult);
-    }
-    Object localObject = new JSONObject();
-    try
-    {
-      ((JSONObject)localObject).put("param_result_code", i);
-      ((JSONObject)localObject).put("param_result_desc", paramEIPCResult);
-      label222:
-      if (i == 0)
-      {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok((JSONObject)localObject);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail((JSONObject)localObject, paramEIPCResult);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label222;
-    }
+      paramContext = paramIntent.getStringExtra("serviceCmd");
+      QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "registerExpiredReceiver onReceive serviceCmd=", paramContext });
+    } while (!"QQConnectLogin.pre_auth".equals(paramContext));
+    AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity);
+    AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjaa
  * JD-Core Version:    0.7.0.1
  */

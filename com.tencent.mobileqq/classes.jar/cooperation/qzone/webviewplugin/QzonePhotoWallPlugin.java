@@ -1,6 +1,5 @@
 package cooperation.qzone.webviewplugin;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,9 +8,10 @@ import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
-import bgve;
-import bhzt;
-import bjkq;
+import anvx;
+import bifw;
+import bjkv;
+import bkwb;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -67,7 +67,7 @@ public class QzonePhotoWallPlugin
     } while ((!((File)localObject).exists()) || (!((File)localObject).canRead()) || (!SharpPUtil.isSharpPFile((File)localObject)));
     try
     {
-      if (!bjkq.a(paramContext))
+      if (!bkwb.a(paramContext))
       {
         QLog.w("QzonePhotoWallPlugin", 1, "------ sharpp is not avaliable.");
         return paramString;
@@ -335,7 +335,7 @@ public class QzonePhotoWallPlugin
                 catch (OutOfMemoryError localOutOfMemoryError)
                 {
                   QLog.e("QzonePhotoWallPlugin", 2, "imageBase64 size=" + str1.length() + ",compressType=" + this.compressType + ",width=" + ((QzoneDynamicAlbumPlugin.Size)localObject).width + ",height=" + ((QzoneDynamicAlbumPlugin.Size)localObject).height + "," + localOutOfMemoryError);
-                  bhzt.a().a(amtj.a(2131711255), 1);
+                  bjkv.a().a(anvx.a(2131711602), 1);
                 }
               }
             }

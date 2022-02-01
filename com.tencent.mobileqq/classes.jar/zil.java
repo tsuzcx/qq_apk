@@ -1,17 +1,12 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class zil
-  implements zas<Object>
+class zil
+  extends RecyclerView.ViewHolder
 {
-  public zil(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack) {}
-  
-  public void a(Object... paramVarArgs)
+  zil(zii paramzii, View paramView)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
-      this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack.onReceive(null, ((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetMainPageRsp)paramVarArgs[3]);
-    }
+    super(paramView);
   }
 }
 

@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
 import Override;
-import aicl;
-import aidp;
-import aidy;
-import aidz;
-import aiej;
-import amtj;
-import amvo;
+import aixk;
+import aiyo;
+import aiyx;
+import aiyy;
+import aizi;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -26,26 +24,29 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bhht;
+import anvx;
+import anyb;
+import bisl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.BaseForwardSelectionActivity;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class NewFriendActivity
   extends BaseForwardSelectionActivity
-  implements aidp, View.OnClickListener
+  implements aiyo, View.OnClickListener
 {
   public static int a;
-  private aidz jdField_a_of_type_Aidz;
-  aiej jdField_a_of_type_Aiej;
+  private aiyy jdField_a_of_type_Aiyy;
+  aizi jdField_a_of_type_Aizi;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bhht a;
+  public bisl a;
   private SystemMsgListView jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   private int jdField_b_of_type_Int;
@@ -83,7 +84,7 @@ public class NewFriendActivity
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839449);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839470);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables();
       this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawablePadding();
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
@@ -94,29 +95,29 @@ public class NewFriendActivity
   
   public void a(int paramInt)
   {
-    if ((!isFinishing()) && (this.jdField_a_of_type_Bhht == null))
+    if ((!isFinishing()) && (this.jdField_a_of_type_Bisl == null))
     {
-      this.jdField_a_of_type_Bhht = new bhht(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bhht.setOnDismissListener(new aidy(this));
-      this.jdField_a_of_type_Bhht.c(paramInt);
-      this.jdField_a_of_type_Bhht.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bhht.setCancelable(false);
-      this.jdField_a_of_type_Bhht.show();
+      this.jdField_a_of_type_Bisl = new bisl(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bisl.setOnDismissListener(new aiyx(this));
+      this.jdField_a_of_type_Bisl.c(paramInt);
+      this.jdField_a_of_type_Bisl.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bisl.setCancelable(false);
+      this.jdField_a_of_type_Bisl.show();
     }
   }
   
   public boolean a()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Aidz.hasMessages(1))
+    if (this.jdField_a_of_type_Aiyy.hasMessages(1))
     {
-      this.jdField_a_of_type_Aidz.removeMessages(1);
+      this.jdField_a_of_type_Aiyy.removeMessages(1);
       bool = true;
     }
-    if (this.jdField_a_of_type_Bhht != null)
+    if (this.jdField_a_of_type_Bisl != null)
     {
-      this.jdField_a_of_type_Bhht.cancel();
-      this.jdField_a_of_type_Bhht = null;
+      this.jdField_a_of_type_Bisl.cancel();
+      this.jdField_a_of_type_Bisl = null;
       return true;
     }
     return bool;
@@ -135,8 +136,8 @@ public class NewFriendActivity
   
   public void c()
   {
-    Message localMessage = this.jdField_a_of_type_Aidz.obtainMessage(1, 2131718142, 0);
-    this.jdField_a_of_type_Aidz.sendMessageDelayed(localMessage, 1000L);
+    Message localMessage = this.jdField_a_of_type_Aiyy.obtainMessage(1, 2131718527, 0);
+    this.jdField_a_of_type_Aiyy.sendMessageDelayed(localMessage, 1000L);
   }
   
   void d()
@@ -179,37 +180,37 @@ public class NewFriendActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    this.jdField_a_of_type_Aidz = new aidz(this);
-    this.jdField_a_of_type_Aiej = ((aiej)this.app.getManager(34));
-    setContentView(2131561235);
-    setContentBackgroundResource(2130838891);
-    paramBundle = (LinearLayout)findViewById(2131376679);
+    this.jdField_a_of_type_Aiyy = new aiyy(this);
+    this.jdField_a_of_type_Aizi = ((aizi)this.app.getManager(QQManagerFactory.NEW_FRIEND_MANAGER));
+    setContentView(2131561296);
+    setContentBackgroundResource(2130838911);
+    paramBundle = (LinearLayout)findViewById(2131376947);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
       paramBundle.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368742));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369115));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369068));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368901));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369278));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369231));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.c = ((TextView)findViewById(2131369099));
+    this.c = ((TextView)findViewById(2131369262));
     this.c.setVisibility(0);
     this.c.setOnClickListener(this);
     this.c.setText(2131689550);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694083);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694274);
     d();
     if (AppSetting.c)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText());
       this.c.setContentDescription(this.c.getText());
-      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131693563) + amtj.a(2131706626));
+      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131693747) + anvx.a(2131706978));
     }
-    paramBundle = (amvo)this.app.getManager(159);
+    paramBundle = (anyb)this.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
     if (paramBundle != null) {
       paramBundle.a(4);
     }
-    aicl.a(this.app).a(this.app.getCurrentAccountUin());
+    aixk.a(this.app).a(this.app.getCurrentAccountUin());
     paramBundle = getIntent().getStringExtra("from");
     int j = getIntent().getIntExtra("fromSubType", -1);
     int i;
@@ -220,17 +221,17 @@ public class NewFriendActivity
         i = jdField_a_of_type_Int;
       }
       if (i != 6) {
-        break label411;
+        break label413;
       }
       a(this.app, "0X800A182");
     }
     for (;;)
     {
-      paramBundle = (aiej)this.app.getManager(34);
+      paramBundle = (aizi)this.app.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
       paramBundle.e = false;
       paramBundle.d = false;
       return true;
-      label411:
+      label413:
       if ((i == 9) || (i == 10) || (i == 1)) {
         a(this.app, "0X8009CBC");
       }
@@ -293,7 +294,7 @@ public class NewFriendActivity
       localIntent.putExtra("entrence_data_report", 3);
       localIntent.putExtra("EntranceId", 6);
       startActivityForResult(localIntent, 221);
-      this.jdField_a_of_type_Aiej.f();
+      this.jdField_a_of_type_Aizi.f();
     }
     for (;;)
     {

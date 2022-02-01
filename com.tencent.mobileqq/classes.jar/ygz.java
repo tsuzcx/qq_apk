@@ -1,39 +1,17 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class ygz<T extends ygy>
+class ygz
+  implements View.OnClickListener
 {
-  protected int a;
-  public final View a;
-  public T a;
+  ygz(ygp paramygp, yjw paramyjw) {}
   
-  protected ygz(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new NullPointerException("onCreateView can not return null");
-    }
-  }
-  
-  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Ygy = null;
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(T paramT, int paramInt)
-  {
-    this.jdField_a_of_type_Ygy = paramT;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Ygy != null) && (this.jdField_a_of_type_Ygy.a());
+    ykv.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.jdField_a_of_type_Yjw.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

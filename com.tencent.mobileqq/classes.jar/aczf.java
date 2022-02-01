@@ -1,37 +1,25 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.MemoryManager;
 
 public class aczf
-  extends asbj
+  extends acyf
 {
-  private aczf(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
-  
-  protected void onFileTransferEnd(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryFIleActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.app.getFileManagerDataCenter().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bleg.a(paramInt2)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
-    }
+    return "ceilingvalue";
   }
   
-  protected void onOfflineSendToWeiYunFaild(int paramInt, long paramLong, String paramString)
-  {
-    if ((bleg.a(paramInt)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
-    }
-  }
+  public void a() {}
   
-  protected void onOfflineSendToWeiYunSuccess(long paramLong, String paramString1, int paramInt, String paramString2)
+  public void b()
   {
-    if ((bleg.a(paramInt)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
+    super.b();
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      MemoryManager.getInstance().checkReportOOMInfo();
+      return;
     }
+    aavb.a().c();
   }
 }
 

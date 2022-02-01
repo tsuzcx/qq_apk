@@ -1,11 +1,37 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.List;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class ashj
-  implements asho
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  ashj(ashf paramashf, boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle) {}
+  ashj(ashe paramashe, Bundle paramBundle, MessengerService paramMessengerService) {}
+  
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  {
+    Bundle localBundle;
+    if (paramBundle != null) {
+      localBundle = new Bundle();
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
+      if (!paramBoolean) {
+        localJSONObject.put("msg", paramBundle.getString("errMsg"));
+      }
+      localBundle.putString("result", localJSONObject.toString());
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    catch (Throwable paramBundle)
+    {
+      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
+    }
+  }
 }
 
 

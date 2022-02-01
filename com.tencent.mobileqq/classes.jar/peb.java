@@ -1,6 +1,24 @@
-public abstract interface peb
+import org.jetbrains.annotations.Nullable;
+
+class peb
+  implements pgx
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  peb(pdv parampdv) {}
+  
+  public void a(long paramLong, boolean paramBoolean1, int paramInt1, int paramInt2, @Nullable String paramString1, @Nullable String paramString2, int paramInt3, boolean paramBoolean2)
+  {
+    if (paramBoolean2) {
+      this.a.a(paramLong, paramBoolean1, paramInt2, paramString1, paramString2, paramInt3);
+    }
+    for (;;)
+    {
+      if (!paramBoolean1) {
+        pgv.a(paramInt1);
+      }
+      return;
+      this.a.a(paramLong, paramBoolean1, paramInt2, paramString1, paramInt3);
+    }
+  }
 }
 
 

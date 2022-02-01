@@ -1,30 +1,14 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public class aegx
-  implements CompoundButton.OnCheckedChangeListener
+class aegx
 {
-  public aegx(SoundAndVibrateActivity paramSoundAndVibrateActivity, SharedPreferences paramSharedPreferences) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    ((SharedPreferences.Editor)localObject).putBoolean("theme_voice_setting_" + this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app.getCurrentAccountUin(), paramBoolean);
-    ((SharedPreferences.Editor)localObject).commit();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      bcef.b((QQAppInterface)localObject, "CliOper", "", "", "ThemeSound", "SwitchTabSound", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
-  }
+  aegx(aegw paramaegw) {}
 }
 
 

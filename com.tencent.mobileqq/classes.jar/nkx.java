@@ -1,16 +1,8 @@
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapClickListener;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.view.View;
 
-public class nkx
-  implements TencentMap.OnMapClickListener
+public abstract interface nkx
 {
-  public nkx(PoiMapActivity paramPoiMapActivity) {}
-  
-  public void onMapClick(LatLng paramLatLng)
-  {
-    this.a.j();
-  }
+  public abstract void onClick(View paramView);
 }
 
 

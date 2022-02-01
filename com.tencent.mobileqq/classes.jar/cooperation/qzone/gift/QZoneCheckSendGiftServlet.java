@@ -2,9 +2,10 @@ package cooperation.qzone.gift;
 
 import NS_MOBILE_TEMPLATE_GIFT.template_gift_get_send_status_rsp;
 import android.content.Intent;
-import aneo;
-import anep;
+import aohe;
+import aohf;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -46,11 +47,11 @@ public class QZoneCheckSendGiftServlet
       {
         long l = paramFromServiceMsg.uin;
         paramFromServiceMsg = paramFromServiceMsg.map_birth_friend_list_state;
-        aneo localaneo = (aneo)getAppRuntime().getManager(85);
-        if (localaneo != null) {
-          localaneo.a(l, paramFromServiceMsg, 2);
+        aohe localaohe = (aohe)getAppRuntime().getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS);
+        if (localaohe != null) {
+          localaohe.a(l, paramFromServiceMsg, 2);
         }
-        notifyObserver(paramIntent, 110, true, null, anep.class);
+        notifyObserver(paramIntent, 110, true, null, aohf.class);
         QLog.i("QZoneCheckSendGiftServlet", 1, "onReceive success, friendMap size =" + paramFromServiceMsg.size());
         return;
       }

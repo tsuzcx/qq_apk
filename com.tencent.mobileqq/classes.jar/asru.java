@@ -1,44 +1,100 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
+import java.math.BigDecimal;
+import mqq.app.QQPermissionCallback;
 
-class asru
-  extends asdv
+public class asru
 {
-  asru(asrt paramasrt, ashw paramashw) {}
-  
-  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle)
+  public static String a(int paramInt)
   {
-    QLog.i("VideoForDisc<QFile>", 2, "[" + this.jdField_a_of_type_Asrt.a.nSessionId + "],[getOnlinePlay Url]  ID[" + paramLong2 + "] OnDiscDownloadInfo");
-    if (paramLong1 == -100001L) {}
-    while ((paramString3 == null) || (paramString3.length() == 0))
+    if (paramInt < 1000) {
+      return paramInt + "m";
+    }
+    float f = new BigDecimal(paramInt / 1000.0F).setScale(1, 1).floatValue();
+    return f + "km";
+  }
+  
+  public static void a(BaseActivity paramBaseActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  {
+    if ((paramBaseActivity != null) && (paramQQPermissionCallback != null)) {
+      paramBaseActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (paramQQAppInterface != null) {
+      bhhr.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").edit().putBoolean("sp_extend_friend_signal_guide", paramBoolean).commit();
+    }
+  }
+  
+  public static boolean a()
+  {
+    if ((Build.VERSION.SDK_INT >= 23) && (BaseApplicationImpl.getApplication().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
     {
-      paramLong2 = 9360L;
-      if (paramLong1 == 0L) {
-        paramLong2 = 9048L;
+      if (QLog.isColorLevel()) {
+        QLog.d("SignalBombHelper", 2, "hasLocationPermission no permission " + Build.VERSION.SDK_INT);
       }
-      this.jdField_a_of_type_Ashw.a((int)paramLong2, BaseApplication.getContext().getResources().getString(2131690858));
-      return;
-      if ((paramLong1 == -25081L) || (paramLong1 == -6101L) || (paramLong1 == -7003L))
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramBaseActivity != null) && (paramQQAppInterface != null) && (!paramBaseActivity.isFinishing()))
+    {
+      if (((aslo)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).j())
       {
-        this.jdField_a_of_type_Asrt.a(true);
-        this.jdField_a_of_type_Ashw.a((int)paramLong1, BaseApplication.getContext().getResources().getString(2131692553));
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("SignalBombHelper", 2, "checkIsSignalBombWaiting waiting");
+        }
+        return false;
       }
-      if (!paramBoolean)
-      {
-        this.jdField_a_of_type_Asrt.a(false);
-        this.jdField_a_of_type_Ashw.a((int)0L, BaseApplication.getContext().getResources().getString(2131690858));
-        return;
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    if ((paramBaseActivity != null) && (paramQQAppInterface != null) && (!paramBaseActivity.isFinishing()))
+    {
+      paramQQAppInterface = (aslo)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      if (!paramQQAppInterface.j()) {
+        break label49;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SignalBombHelper", 2, "checkAndShowSignalBombCardDialogIfNeed waiting");
       }
     }
-    paramString1 = "http://" + paramString3 + ":" + String.valueOf(paramInt1) + "/ftn_handler/" + paramString4;
+    label49:
+    do
+    {
+      return false;
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
     if (QLog.isColorLevel()) {
-      QLog.d("VideoForDisc<QFile>", 1, paramString1);
+      QLog.d("SignalBombHelper", 2, "checkAndShowSignalBombCardDialogIfNeed show dialog");
     }
-    this.jdField_a_of_type_Ashw.a(paramString1, paramString5);
+    asun.a(paramBaseActivity, paramQQAppInterface, paramOnDismissListener);
+    return true;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = false;
+    if (paramQQAppInterface != null) {
+      bool = bhhr.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").getBoolean("sp_extend_friend_signal_guide", false);
+    }
+    return bool;
   }
 }
 

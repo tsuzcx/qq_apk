@@ -1,18 +1,33 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-class belg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface belg
 {
-  belg(bele parambele, boolean paramBoolean) {}
+  public abstract int a();
   
-  public void onGlobalLayout()
-  {
-    bele.a(this.jdField_a_of_type_Bele).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    bele.b(this.jdField_a_of_type_Bele).setVisibility(4);
-    bele.a(this.jdField_a_of_type_Bele, this.jdField_a_of_type_Boolean, bele.a(this.jdField_a_of_type_Bele), bele.c(this.jdField_a_of_type_Bele));
-  }
+  public abstract QQCustomDialog a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, bekh> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt);
+  
+  public abstract void a(Context paramContext, String paramString, int paramInt1, int paramInt2, Bundle paramBundle);
+  
+  public abstract void a(bekh parambekh, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject);
+  
+  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, bekh> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, bekh> paramMap, @Nullable Bundle paramBundle);
+  
+  public abstract boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, bekh> paramMap, @Nullable Bundle paramBundle);
 }
 
 

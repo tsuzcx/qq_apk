@@ -1,35 +1,52 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Friends;
 
 public class aebk
-  extends CardObserver
+  extends anvi
 {
-  public aebk(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public aebk(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
-      QQSettingSettingActivity.a(this.a, (Card)paramObject);
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString1)) || (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {}
+    for (;;)
+    {
+      return;
+      if (paramBoolean)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString2;
+        return;
+      }
+      paramString1 = (anvk)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (paramString1 == null) {}
+      for (paramString1 = null; (paramString1 != null) && (paramString1.remark != null) && (paramString1.isRemark == 1); paramString1 = paramString1.e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString1.remark;
+        return;
+      }
     }
   }
   
-  public void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
+    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != null) && (ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
     {
-      if (paramBoolean1) {
-        this.a.a(this.a.app.getCurrentAccountUin());
+      localObject = (anvk)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (localObject != null) {
+        break label91;
+      }
+    }
+    label91:
+    for (Object localObject = null;; localObject = ((anvk)localObject).e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
+    {
+      if ((localObject != null) && (((Friends)localObject).remark != null) && (((Friends)localObject).isRemark == 1)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = ((Friends)localObject).remark;
       }
       return;
     }
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    QLog.e("QQSetting2Activity", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin " + str);
   }
 }
 

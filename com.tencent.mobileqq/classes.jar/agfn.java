@@ -1,17 +1,56 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class agfn
-  extends aghj
+public class agfn
+  implements agin
 {
-  agfn(agcw paramagcw)
+  private agfp jdField_a_of_type_Agfp;
+  private aocm jdField_a_of_type_Aocm = new agfo(this);
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private volatile AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  
+  agfn(BaseChatPie paramBaseChatPie)
   {
-    super(paramagcw, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(int paramInt)
   {
-    return new agjz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    Object localObject = null;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (localObject != null) {}
+      try
+      {
+        ((Runnable)localObject).run();
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("AIOIconChangeByTimeHelper", 1, localException, new Object[0]);
+      }
+      this.jdField_a_of_type_Agfp = new agfp(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, null);
+      agfp.a(this.jdField_a_of_type_Agfp);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.addObserver(this.jdField_a_of_type_Aocm);
+      localObject = new AIOIconChangeByTimeHelper.1(this);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.removeObserver(this.jdField_a_of_type_Aocm);
+      localObject = new AIOIconChangeByTimeHelper.2(this);
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 4, 8, 14 };
   }
 }
 

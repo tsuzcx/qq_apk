@@ -1,17 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public class smq
-  implements oww
+class smq
+  implements bkzu
 {
-  public smq(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo) {}
+  smq(smg paramsmg) {}
   
-  public void a(int paramInt)
+  public void ad_()
   {
-    if (paramInt != 2) {
-      ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+    if (smg.b(this.a)) {
+      smg.a(this.a).c();
+    }
+    if (smg.a(this.a) != null) {
+      smg.a(this.a).f();
     }
   }
 }

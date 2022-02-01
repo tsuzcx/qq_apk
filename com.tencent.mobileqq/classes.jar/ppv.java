@@ -1,16 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ScrollView;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class ppv
-  implements bjtq
+class ppv
+  implements PopupWindow.OnDismissListener
 {
-  public ppv(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  ppv(ppr paramppr, pne parampne) {}
   
-  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onScrollStateChanged onScrollStateChanged= " + paramInt);
+    ppr.a(this.jdField_a_of_type_Ppr).a(1.0F);
+    if (this.jdField_a_of_type_Pne.a().b())
+    {
+      this.jdField_a_of_type_Pne.a().a().c();
+      this.jdField_a_of_type_Pne.a().f(false);
     }
   }
 }

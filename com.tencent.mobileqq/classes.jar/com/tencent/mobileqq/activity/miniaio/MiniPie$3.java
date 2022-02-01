@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import ajjs;
+import akfg;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class MiniPie$3
   implements Runnable
 {
-  public MiniPie$3(ajjs paramajjs) {}
+  public MiniPie$3(akfg paramakfg) {}
   
   public void run()
   {

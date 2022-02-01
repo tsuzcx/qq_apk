@@ -1,6 +1,6 @@
 public abstract interface xlw
 {
-  public abstract void a(String paramString);
+  public abstract void a(xlu paramxlu);
 }
 
 

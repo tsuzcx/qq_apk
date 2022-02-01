@@ -1,69 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.POIInfo;
 
-public class aqdc
-  extends aptq<aqda>
+public final class aqdc
+  implements Parcelable.Creator<POIInfo>
 {
-  @NonNull
-  public aqda a(int paramInt)
+  public POIInfo a(Parcel paramParcel)
   {
-    return new aqda();
+    return new POIInfo(paramParcel);
   }
   
-  @Nullable
-  public aqda a(aptx[] paramArrayOfaptx)
+  public POIInfo[] a(int paramInt)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      new aqda();
-      return aqda.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(aqda paramaqda)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocsPushProcessor", 2, "onUpdate " + paramaqda.toString());
-    }
-  }
-  
-  public Class<aqda> clazz()
-  {
-    return aqda.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 418;
+    return new POIInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdc
  * JD-Core Version:    0.7.0.1
  */

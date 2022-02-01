@@ -1,38 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
 
 public class aruq
-  implements bjoe
+  implements DialogInterface.OnClickListener
 {
-  public aruq(LocalFileBrowserActivity paramLocalFileBrowserActivity, bjnw parambjnw) {}
+  public aruq(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e != -1)
-      {
-        paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
-        if ((!FileUtil.isFileExists(paramView.c())) || (FileUtil.deleteFile(paramView.c())))
-        {
-          aszt.d(paramView.c());
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
-          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
-        }
-        else
-        {
-          aszk.a(2131692124);
-        }
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

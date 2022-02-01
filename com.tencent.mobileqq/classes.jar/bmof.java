@@ -1,18 +1,50 @@
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import java.io.File;
 
-public abstract interface bmof
+class bmof
+  extends alfx
 {
-  public abstract long a(View paramView, long paramLong);
+  private bmof(bmod parambmod) {}
   
-  public abstract void a();
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    if ((paramBoolean) && (FileUtil.isFileExists(this.c)))
+    {
+      String str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.h.hashCode()));
+      File localFile = new File(this.c);
+      QzoneZipCacheHelper.unzipFile(localFile.getAbsolutePath(), str);
+      if (localFile.exists()) {
+        FileUtil.deleteFile(localFile);
+      }
+      this.c = str;
+      if (QZLog.isColorLevel()) {
+        QZLog.i("QbossADBannerConfigInfo", 2, "zip success = pathDir = " + str);
+      }
+    }
+  }
   
-  public abstract void a(bmod parambmod);
-  
-  public abstract boolean a();
-  
-  public abstract long b(View paramView, long paramLong);
-  
-  public abstract boolean b();
+  public boolean a()
+  {
+    if ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.a.h))) {}
+    String str;
+    Object localObject;
+    do
+    {
+      do
+      {
+        return false;
+        str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.h.hashCode()));
+        localObject = new File(str);
+      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
+      localObject = ((File)localObject).listFiles();
+    } while ((localObject == null) || (localObject.length <= 0));
+    this.c = str;
+    return true;
+  }
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import amrf;
-import aqlw;
-import bfyz;
+import antt;
+import arph;
+import bhhr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 public class ConfigServlet$11
   implements Runnable
 {
-  public ConfigServlet$11(aqlw paramaqlw, ConfigurationService.Config paramConfig) {}
+  public ConfigServlet$11(arph paramarph, ConfigurationService.Config paramConfig) {}
   
   public void run()
   {
@@ -21,12 +21,12 @@ public class ConfigServlet$11
     {
       str = (String)this.a.content_list.get(0);
       i = this.a.version.get();
-      j = bfyz.t(localQQAppInterface.getApp());
+      j = bhhr.t(localQQAppInterface.getApp());
       if (QLog.isColorLevel()) {
         QLog.d("SPLASH_ConfigServlet", 2, "receiveAllConfigs|type: 63,content: " + str + ",version: " + this.a.version.get());
       }
       if (i > j) {
-        amrf.a(localQQAppInterface, str, i);
+        antt.a(localQQAppInterface, str, i);
       }
     }
     while (!QLog.isColorLevel())

@@ -1,19 +1,34 @@
-import com.tencent.mobileqq.tofumsg.TofuItem;
-import org.jetbrains.annotations.NotNull;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfo;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
-
-public abstract interface bdce
+public class bdce
 {
-  public abstract int a();
+  static int jdField_a_of_type_Int = 3;
+  int[] jdField_a_of_type_ArrayOfInt;
+  int b;
+  int c;
   
-  public abstract TofuItem a(@NotNull TofuItem paramTofuItem, long paramLong, int paramInt);
-  
-  public abstract oidb_0xe61.BeancurdCubeInfo a(TofuItem paramTofuItem);
-  
-  public abstract void a();
-  
-  public abstract void a(@NotNull TofuItem paramTofuItem, @NotNull oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult, long paramLong);
+  public bdce(String paramString, int paramInt)
+  {
+    this.c = paramInt;
+    paramString = paramString.split(" ");
+    if (paramString.length != 2) {
+      throw new Exception("data illegal");
+    }
+    if (paramString[1].equals("1")) {}
+    for (this.b = 1;; this.b = 0)
+    {
+      paramString = paramString[0].toCharArray();
+      this.jdField_a_of_type_ArrayOfInt = new int[paramString.length];
+      paramInt = i;
+      while (paramInt < paramString.length)
+      {
+        this.jdField_a_of_type_ArrayOfInt[paramInt] = (Integer.valueOf(paramString[paramInt]).intValue() - Integer.valueOf(48).intValue());
+        paramInt += 1;
+      }
+      if (!paramString[1].equals("0")) {
+        break;
+      }
+    }
+    throw new Exception("data illegal");
+  }
 }
 
 

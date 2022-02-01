@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.data;
 
-import amtj;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class ApolloDress$2
+final class ApolloDress$2
   implements Runnable
 {
-  public ApolloDress$2(int paramInt) {}
+  ApolloDress$2(int paramInt) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), amtj.a(2131699479) + this.a + " 装扮不足7件", 1).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), anvx.a(2131699830) + this.a + " 装扮不足7件", 1).a();
   }
 }
 

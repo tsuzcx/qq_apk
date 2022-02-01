@@ -1,16 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afin
+public class afin
   implements View.OnClickListener
 {
-  afin(afim paramafim) {}
+  public afin(TroopTransferActivity paramTroopTransferActivity) {}
   
   public void onClick(View paramView)
   {
-    agtw.a(this.a.app, this.a.getActivity(), this.a.sessionInfo, 1, false, this.a.app.getCurrentUin(), "");
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
+    this.a.finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

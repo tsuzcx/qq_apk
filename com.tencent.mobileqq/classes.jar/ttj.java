@@ -1,21 +1,27 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
-class ttj
-  implements ViewFactory.FoundClickableViewListener
+public class ttj
+  implements Animation.AnimationListener
 {
-  ttj(tti paramtti, BaseData paramBaseData, Context paramContext) {}
+  public ttj(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt1, int paramInt2) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramViewBase.setOnClickListener(new ttk(this));
+    CommonSuspensionGestureLayout.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).setVisibility(8);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(true, this.jdField_a_of_type_Int, this.b);
+    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, this.b);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ttj
  * JD-Core Version:    0.7.0.1
  */

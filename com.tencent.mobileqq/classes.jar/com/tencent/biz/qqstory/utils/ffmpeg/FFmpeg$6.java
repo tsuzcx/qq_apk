@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import xvv;
+import ykq;
 
 class FFmpeg$6
   extends ExecuteBinResponseCallback
@@ -11,7 +11,7 @@ class FFmpeg$6
   
   public void onFailure(String paramString)
   {
-    xvv.e("Q.qqstory.ffmpeg.FFmpegCmd", paramString);
+    ykq.e("Q.qqstory.ffmpeg.FFmpegCmd", paramString);
     this.val$unitCallback.onFailure(paramString);
   }
   
@@ -29,13 +29,13 @@ class FFmpeg$6
     catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
     {
       this.val$unitCallback.onFailure(localFFmpegCommandAlreadyRunningException.getMessage());
-      xvv.e("Q.qqstory.ffmpeg.FFmpegCmd", localFFmpegCommandAlreadyRunningException.getMessage());
+      ykq.e("Q.qqstory.ffmpeg.FFmpegCmd", localFFmpegCommandAlreadyRunningException.getMessage());
       return;
     }
     catch (IOException localIOException)
     {
       this.val$unitCallback.onFailure(localIOException.getMessage());
-      xvv.e("Q.qqstory.ffmpeg.FFmpegCmd", localIOException.getMessage());
+      ykq.e("Q.qqstory.ffmpeg.FFmpegCmd", localIOException.getMessage());
     }
   }
   

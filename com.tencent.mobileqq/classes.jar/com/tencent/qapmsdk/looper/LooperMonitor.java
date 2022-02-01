@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.Printer;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 import com.tencent.qapmsdk.base.config.PluginCombination;
+import com.tencent.qapmsdk.base.listener.IBaseListener;
 import com.tencent.qapmsdk.base.monitorplugin.PluginController;
 import com.tencent.qapmsdk.base.monitorplugin.QAPMMonitorPlugin;
 import com.tencent.qapmsdk.common.logger.Logger;
@@ -16,12 +17,8 @@ public class LooperMonitor
   extends QAPMMonitorPlugin
 {
   private static final String TAG = "QAPM_looper_LooperMonitor";
-  static ILooperListener looperListener;
-  static LooperPrinter mainThreadLooperPrinter;
   @NonNull
   static HashMap<String, MonitorInfo> monitorMap = new HashMap();
-  @NonNull
-  private static IMonitorCallback sMonitorCallback = new LooperMonitor.1();
   
   private static Printer getMainPrinter()
   {
@@ -40,11 +37,6 @@ public class LooperMonitor
       Logger.INSTANCE.exception("QAPM_looper_LooperMonitor", "getMainPrinter error:", localException);
     }
     return null;
-  }
-  
-  public static void setLooperListener(ILooperListener paramILooperListener)
-  {
-    looperListener = paramILooperListener;
   }
   
   public static boolean setMonitoredThread(@Nullable Thread paramThread, IMonitorCallback paramIMonitorCallback)
@@ -79,21 +71,22 @@ public class LooperMonitor
     finally {}
   }
   
+  public void setListener(@NonNull IBaseListener paramIBaseListener) {}
+  
   public void start()
   {
     if (!PluginController.INSTANCE.canCollect(PluginCombination.loopStackPlugin.plugin)) {
       return;
     }
     Object localObject = Looper.getMainLooper().getThread();
-    setMonitoredThread((Thread)localObject, sMonitorCallback);
-    localObject = new LooperPrinter(((Thread)localObject).getName());
+    LooperPrinter localLooperPrinter = new LooperPrinter(((Thread)localObject).getName());
+    setMonitoredThread((Thread)localObject, localLooperPrinter.monitorCallback);
     LooperPrinter.looperThreshold = PluginCombination.loopStackPlugin.threshold;
-    Printer localPrinter = getMainPrinter();
-    if (localPrinter != null) {
-      ((LooperPrinter)localObject).setOriginalPrinter(localPrinter);
+    localObject = getMainPrinter();
+    if (localObject != null) {
+      localLooperPrinter.setOriginalPrinter((Printer)localObject);
     }
-    Looper.getMainLooper().setMessageLogging((Printer)localObject);
-    mainThreadLooperPrinter = (LooperPrinter)localObject;
+    Looper.getMainLooper().setMessageLogging(localLooperPrinter);
   }
   
   public void stop() {}

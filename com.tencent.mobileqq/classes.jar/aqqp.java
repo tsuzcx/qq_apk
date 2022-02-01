@@ -1,32 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Video;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aqqp
-  implements Parcelable.Creator
+public class aqqp
+  implements View.OnClickListener
 {
-  public IPSiteModel.Video a(Parcel paramParcel)
-  {
-    IPSiteModel.Video localVideo = new IPSiteModel.Video();
-    localVideo.id = paramParcel.readString();
-    localVideo.buttonDesc = paramParcel.readString();
-    localVideo.content = paramParcel.readString();
-    localVideo.cover = paramParcel.readString();
-    localVideo.desc = paramParcel.readString();
-    localVideo.name = paramParcel.readString();
-    localVideo.endTime = paramParcel.readString();
-    localVideo.isShow = paramParcel.readInt();
-    localVideo.newStartTime = paramParcel.readLong();
-    localVideo.newEndTime = paramParcel.readLong();
-    localVideo.redirectUrl = paramParcel.readString();
-    localVideo.videoSource = paramParcel.readString();
-    localVideo.showDate = paramParcel.readString();
-    return localVideo;
-  }
+  public aqqp(HistoryFormItem paramHistoryFormItem) {}
   
-  public IPSiteModel.Video[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new IPSiteModel.Video[paramInt];
+    boolean bool = true;
+    int i;
+    HistoryFormItem localHistoryFormItem;
+    if (aqnv.a())
+    {
+      i = 1;
+      if ((i != 0) && (this.a.a()))
+      {
+        localHistoryFormItem = this.a;
+        if (HistoryFormItem.a(this.a)) {
+          break label119;
+        }
+      }
+    }
+    for (;;)
+    {
+      HistoryFormItem.a(localHistoryFormItem, bool);
+      this.a.a(paramView, HistoryFormItem.a(this.a));
+      if (HistoryFormItem.a(this.a) != null) {
+        HistoryFormItem.a(this.a).a(paramView, HistoryFormItem.a(this.a), HistoryFormItem.a(this.a));
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aqoq.a(paramView.getContext());
+      i = 0;
+      break;
+      label119:
+      bool = false;
+    }
   }
 }
 

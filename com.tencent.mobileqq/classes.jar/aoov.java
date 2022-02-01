@@ -1,49 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Comparator;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
 
 class aoov
-  implements INetInfoHandler
+  implements Comparator<msg_comm.Msg>
 {
-  aoov(aool paramaool) {}
+  aoov(aoou paramaoou) {}
   
-  public void onNetMobile2None()
+  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
   {
-    QLog.e("ark.download.module", 1, "onNetMobile2None");
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    QLog.e("ark.download.module", 1, new Object[] { "onNetMobile2Wifi", paramString });
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    QLog.e("ark.download.module", 1, new Object[] { "ark.dctrl.onNetNone2Mobile", paramString });
-    paramString = BaseActivity.sTopActivity;
-    if ((aool.a(this.a)) && (!aool.b(this.a)) && (paramString != null))
-    {
-      paramString = paramString.getString(2131690145);
-      if (aool.a(this.a, paramString)) {
-        aool.b(this.a, true);
-      }
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    QLog.e("ark.download.module", 1, new Object[] { "onNetNone2Wifi", paramString });
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    QLog.e("ark.download.module", 1, new Object[] { "onNetWifi2Mobile", paramString });
-  }
-  
-  public void onNetWifi2None()
-  {
-    QLog.e("ark.download.module", 1, "onNetWifi2None");
+    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
   }
 }
 

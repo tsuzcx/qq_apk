@@ -1,17 +1,76 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.Now;
 
 public class aelr
-  implements DialogInterface.OnClickListener
+  implements xur
 {
-  public aelr(TroopInfoActivity paramTroopInfoActivity, boolean paramBoolean) {}
+  public aelr(Now paramNow) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public View a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      bcef.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  public ImageView a()
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      zdl.a(bool);
+      return this.a.jdField_a_of_type_AndroidWidgetImageView;
     }
+  }
+  
+  public TextView a()
+  {
+    if (this.a.c != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      zdl.a(bool);
+      return this.a.c;
+    }
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      Now.a(this.a);
+      return;
+    }
+    Now.b(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.a(false);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    this.a.a(true);
   }
 }
 

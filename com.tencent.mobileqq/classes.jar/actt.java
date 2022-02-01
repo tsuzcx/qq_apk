@@ -1,110 +1,45 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xef.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class actt
-  implements CompoundButton.OnCheckedChangeListener
+  implements acpi
 {
-  public actt(AuthDevActivity paramAuthDevActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private static void a(MsgType0x210 paramMsgType0x210)
   {
-    Object localObject;
-    boolean bool;
-    if (paramCompoundButton == AuthDevActivity.a(this.a).a())
-    {
-      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
-      localObject = AuthDevActivity.a(this.a);
-      if (AuthDevActivity.a(this.a).a())
-      {
-        bool = false;
-        ((FormSwitchItem)localObject).setChecked(bool);
-        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-        if (NetworkUtil.isNetSupport(this.a)) {
-          break label127;
-        }
-        QQToast.a(this.a, this.a.getString(2131692035), 0).b(this.a.getTitleBarHeight());
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xef, [linkstar push test]");
     }
-    label127:
+    int i = paramMsgType0x210.vProtobuf.length;
+    if (i < 6) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xef, [linkstar push test]. vProtoBuf.length is " + i);
+    }
+    int j;
+    byte[] arrayOfByte1;
     do
     {
-      do
-      {
-        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-        return;
-        bool = true;
-        break;
-        localObject = (anat)this.a.app.getBusinessHandler(34);
-      } while (localObject == null);
-      if (!AuthDevActivity.a(this.a).a()) {}
-      for (bool = true;; bool = false)
-      {
-        ((anat)localObject).a(bool);
-        break;
+      return;
+      j = (paramMsgType0x210.vProtobuf[0] << 4) + paramMsgType0x210.vProtobuf[1];
+      arrayOfByte1 = new byte[4];
+      System.arraycopy(paramMsgType0x210.vProtobuf, 2, arrayOfByte1, 0, 4);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xef, [linkstar push test]. msgType=" + j);
       }
-      if (paramCompoundButton == AuthDevActivity.b(this.a).a())
-      {
-        if (AuthDevActivity.b(this.a).a())
-        {
-          localObject = "0";
-          bcef.b(null, "dc00898", "", "", "0X800AC54", "0X800AC54", 0, 0, (String)localObject, "", "", "");
-          AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
-          localObject = AuthDevActivity.b(this.a);
-          if (!AuthDevActivity.b(this.a).a()) {
-            break label313;
-          }
-        }
-        for (bool = false;; bool = true)
-        {
-          ((FormSwitchItem)localObject).setChecked(bool);
-          AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-          AuthDevActivity.a(this.a);
-          break;
-          localObject = "1";
-          break label212;
-        }
-      }
-    } while (paramCompoundButton != AuthDevActivity.c(this.a).a());
-    label212:
-    label350:
-    int i;
-    label313:
-    if (AuthDevActivity.c(this.a).a())
-    {
-      localObject = "1";
-      bcef.b(null, "dc00898", "", "", "0X800AC53", "0X800AC53", 0, 0, (String)localObject, "", "", "");
-      localObject = this.a.app;
-      if (!paramBoolean) {
-        break label484;
-      }
-      i = 1;
-      bcef.b((QQAppInterface)localObject, "CliOper", "", "", "Setting_tab", "Mobile_pc_online", 0, i, "", "", "", "");
-      if (!paramBoolean) {
-        break label489;
-      }
-      bcef.b(null, "dc00898", "", "", "0X800A721", "0X800A721", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      label389:
-      SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), "login_accounts", "qqsetting_bothonline_key", paramBoolean);
-      this.a.app.sendRegisterPush();
-      break;
-      localObject = "0";
-      break label350;
-      label484:
-      i = 0;
-      break label389;
-      label489:
-      bcef.b(null, "dc00898", "", "", "0X800A722", "0X800A722", 0, 0, "", "", "", "");
-    }
+      ThreadManager.getUIHandler().post(new SubType0xef.1(j));
+    } while (i <= 6);
+    byte[] arrayOfByte2 = new byte[i - 6];
+    System.arraycopy(paramMsgType0x210.vProtobuf, 6, arrayOfByte2, 0, i - 6);
+    apaa.a(j, arrayOfByte1, arrayOfByte2);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramMsgType0x210);
+    return null;
   }
 }
 

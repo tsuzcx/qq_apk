@@ -1,38 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import java.lang.ref.WeakReference;
 
 public class aesj
-  implements View.OnClickListener
+  implements aavc
 {
-  public aesj(VerifyCodeActivity paramVerifyCodeActivity) {}
+  WeakReference<QQSettingMe> a;
   
-  public void onClick(View paramView)
+  public aesj(QQSettingMe paramQQSettingMe)
   {
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-    if ((str == null) || (str.length() == 0)) {
-      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131691823), 0).show();
+    this.a = new WeakReference(paramQQSettingMe);
+  }
+  
+  public int a()
+  {
+    QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
+    if (localQQSettingMe != null) {
+      return localQQSettingMe.a();
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (str != null)
-      {
-        this.a.a(str);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        VerifyCodeActivity.b(this.a, false);
-      }
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesj
  * JD-Core Version:    0.7.0.1
  */

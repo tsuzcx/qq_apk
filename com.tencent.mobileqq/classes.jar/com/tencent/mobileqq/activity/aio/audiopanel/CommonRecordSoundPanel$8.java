@@ -10,13 +10,13 @@ class CommonRecordSoundPanel$8
   
   public void run()
   {
-    this.this$0.d();
-    QQToast.a(this.this$0.a, this.this$0.a.getString(2131697962), 0).a();
+    this.this$0.a();
+    QQToast.a(this.this$0.a, this.this$0.a.getString(2131698246), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel.8
  * JD-Core Version:    0.7.0.1
  */

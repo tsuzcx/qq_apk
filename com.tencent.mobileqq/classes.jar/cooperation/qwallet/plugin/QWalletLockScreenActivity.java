@@ -20,12 +20,13 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bfyg;
+import bhgy;
 import com.tencent.mobileqq.activity.QQLSUnlockActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.List;
 import mqq.app.AppActivity;
 import mqq.app.Foreground;
@@ -48,6 +49,11 @@ public class QWalletLockScreenActivity
   TextView timeView;
   String title;
   TextView titleView;
+  
+  private void initNavigationBarColor()
+  {
+    ImmersiveUtils.c(getWindow());
+  }
   
   @TargetApi(16)
   private boolean isKeyguardLock()
@@ -140,10 +146,11 @@ public class QWalletLockScreenActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.qwallet.push", 2, "QWalletLockScreenActivity doOnCreate taskId" + getTaskId() + Thread.currentThread().getId());
     }
-    setContentView(2131561956);
+    setContentView(2131562021);
     getWindow().addFlags(524288);
     this.mScreenReceiver = new QWalletLockScreenActivity.ScreenBroadcastReceiver(this, null);
     registerListener();
+    initNavigationBarColor();
     this.app = ((QQAppInterface)getAppRuntime());
     if (this.app == null)
     {
@@ -158,13 +165,13 @@ public class QWalletLockScreenActivity
       this.title = getIntent().getStringExtra("title");
       this.content = getIntent().getStringExtra("content");
       this.time = getIntent().getStringExtra("time");
-      this.titleView = ((TextView)findViewById(2131378719));
-      this.contentView = ((TextView)findViewById(2131374154));
-      this.timeView = ((TextView)findViewById(2131374159));
+      this.titleView = ((TextView)findViewById(2131379013));
+      this.contentView = ((TextView)findViewById(2131374388));
+      this.timeView = ((TextView)findViewById(2131374393));
       this.titleView.setText(this.title);
       this.contentView.setText(this.content);
       this.timeView.setText(this.time);
-      this.mBackBtn = ((RelativeLayout)findViewById(2131363794));
+      this.mBackBtn = ((RelativeLayout)findViewById(2131363866));
       this.mBackBtn.setOnClickListener(this);
       this.contentView.setOnClickListener(this);
     } while (!QLog.isColorLevel());
@@ -209,7 +216,7 @@ public class QWalletLockScreenActivity
   public void doOnStart()
   {
     super.doOnStart();
-    boolean bool = bfyg.a(this);
+    boolean bool = bhgy.a(this);
     if (QLog.isColorLevel()) {
       QLog.d("Q.qwallet.push", 2, "QWalletLockScreenActivity doOnStart isScreenLocked=" + bool);
     }

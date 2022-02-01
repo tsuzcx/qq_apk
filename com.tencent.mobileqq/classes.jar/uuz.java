@@ -1,15 +1,9 @@
-import UserGrowth.stNotificationRsp;
-import UserGrowth.stSimpleMetaFeed;
-import java.util.List;
+import kotlin.Metadata;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ReadInJoyShareHelperV2$OnFontSizeChangeListener;", "", "onFontSizeChange", "", "index", "", "textSizeRatio", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public abstract interface uuz
-  extends uuf<List<stSimpleMetaFeed>>
 {
-  public abstract void a(stNotificationRsp paramstNotificationRsp, uqz paramuqz);
-  
-  public abstract bjwv b();
-  
-  public abstract void b(int paramInt, String paramString);
+  public abstract void a(int paramInt, float paramFloat);
 }
 
 

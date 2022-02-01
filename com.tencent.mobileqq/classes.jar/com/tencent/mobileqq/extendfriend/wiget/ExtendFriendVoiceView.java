@@ -21,19 +21,20 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import arhi;
-import arhr;
-import aror;
-import arpa;
-import arpc;
-import arpd;
-import arpf;
-import arqk;
-import arqs;
+import aslo;
+import aslx;
+import assx;
+import astg;
+import asti;
+import astj;
+import astl;
+import asuq;
+import asuy;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -49,7 +50,7 @@ import mqq.os.MqqHandler;
 
 public class ExtendFriendVoiceView
   extends FrameLayout
-  implements View.OnClickListener, arpc
+  implements View.OnClickListener, asti
 {
   private static Map<String, WeakReference<Bitmap>> jdField_a_of_type_JavaUtilMap = new HashMap();
   private static final int[] jdField_a_of_type_ArrayOfInt = { -13900833, -37464, -12331403, -5544982 };
@@ -59,9 +60,9 @@ public class ExtendFriendVoiceView
   Paint jdField_a_of_type_AndroidGraphicsPaint;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private arpa jdField_a_of_type_Arpa;
-  private arqk jdField_a_of_type_Arqk;
-  private arqs jdField_a_of_type_Arqs;
+  private astg jdField_a_of_type_Astg;
+  private asuq jdField_a_of_type_Asuq;
+  private asuy jdField_a_of_type_Asuy;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
   private String jdField_a_of_type_JavaLangString;
@@ -91,18 +92,18 @@ public class ExtendFriendVoiceView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_c_of_type_Int = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ExtendFriendView).getInteger(0, 0);
-    LayoutInflater.from(paramContext).inflate(2131561088, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131380936);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131368596);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380018));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131368546);
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131368547);
+    LayoutInflater.from(paramContext).inflate(2131561149, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131381288);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131368755);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380353));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131368704);
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131368705);
     this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidViewView.setOnTouchListener(arpf.a);
+    this.jdField_d_of_type_AndroidViewView.setOnTouchListener(astl.a);
     e();
-    this.jdField_a_of_type_Arqs = new arqs();
-    this.jdField_a_of_type_Arqs.a(3000L);
-    this.jdField_a_of_type_Arqs.a(true);
+    this.jdField_a_of_type_Asuy = new asuy();
+    this.jdField_a_of_type_Asuy.a(3000L);
+    this.jdField_a_of_type_Asuy.a(true);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
@@ -110,11 +111,11 @@ public class ExtendFriendVoiceView
   
   private Bitmap a(String paramString)
   {
-    Object localObject = aror.d;
+    Object localObject = assx.d;
     if ((!TextUtils.isEmpty(paramString)) && (localObject != null) && (localObject.length > 0))
     {
       this.jdField_b_of_type_Int = (paramString.toUpperCase().charAt(0) % localObject.length);
-      String str = aror.a(localObject[this.jdField_b_of_type_Int]);
+      String str = assx.a(localObject[this.jdField_b_of_type_Int]);
       paramString = (WeakReference)jdField_a_of_type_JavaUtilMap.get(str);
       if (paramString != null) {}
       for (paramString = (Bitmap)paramString.get();; paramString = null)
@@ -128,7 +129,7 @@ public class ExtendFriendVoiceView
         {
           paramString = new BitmapFactory.Options();
           paramString.inPreferredConfig = Bitmap.Config.RGB_565;
-          localObject = aror.a(str, paramString);
+          localObject = assx.a(str, paramString);
           jdField_a_of_type_JavaUtilMap.put(str, new WeakReference(localObject));
         }
         return localObject;
@@ -142,8 +143,8 @@ public class ExtendFriendVoiceView
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
       int i = AIOUtils.dp2px(50.0F, getResources());
-      GradientDrawable localGradientDrawable1 = arpd.a(paramInt1, i, i, i, i);
-      GradientDrawable localGradientDrawable2 = arpd.a(paramInt2, i, i, i, i);
+      GradientDrawable localGradientDrawable1 = astj.a(paramInt1, i, i, i, i);
+      GradientDrawable localGradientDrawable2 = astj.a(paramInt2, i, i, i, i);
       StateListDrawable localStateListDrawable = new StateListDrawable();
       localStateListDrawable.addState(new int[] { 16842919 }, localGradientDrawable2);
       localStateListDrawable.addState(new int[0], localGradientDrawable1);
@@ -193,13 +194,13 @@ public class ExtendFriendVoiceView
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendVoiceView", 2, String.format("playVoice mVoiceUrl=%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
     }
-    if (this.jdField_a_of_type_Arpa == null) {
-      this.jdField_a_of_type_Arpa = new arpa(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    if (this.jdField_a_of_type_Astg == null) {
+      this.jdField_a_of_type_Astg = new astg(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     try
     {
-      this.jdField_a_of_type_Arpa.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Astg.a(this.jdField_a_of_type_JavaLangString);
       this.jdField_b_of_type_Boolean = true;
       c();
       return;
@@ -216,8 +217,8 @@ public class ExtendFriendVoiceView
       QLog.d("ExtendFriendVoiceView", 2, String.format("playerCompletion mVoiceUrl=%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
     }
     ThreadManager.getUIHandler().post(new ExtendFriendVoiceView.3(this));
-    if (this.jdField_a_of_type_Arpa != null) {
-      this.jdField_a_of_type_Arpa.b();
+    if (this.jdField_a_of_type_Astg != null) {
+      this.jdField_a_of_type_Astg.b();
     }
   }
   
@@ -250,10 +251,10 @@ public class ExtendFriendVoiceView
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendVoiceView", 2, String.format("stopVoice mVoiceUrl=%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
     }
-    if (this.jdField_a_of_type_Arpa != null) {}
+    if (this.jdField_a_of_type_Astg != null) {}
     try
     {
-      this.jdField_a_of_type_Arpa.a();
+      this.jdField_a_of_type_Astg.a();
       this.jdField_b_of_type_Boolean = false;
       d();
       return;
@@ -289,7 +290,7 @@ public class ExtendFriendVoiceView
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           break;
         }
-        localObject1 = new File(aror.a((String)localObject1));
+        localObject1 = new File(assx.a((String)localObject1));
         localObject2 = localObject3;
         if (!((File)localObject1).exists()) {
           break;
@@ -322,13 +323,13 @@ public class ExtendFriendVoiceView
         continue;
         localObject1 = "expand_animate_logo4";
       }
-      if ((localObject2 != null) && (localObject2.length > 0) && (this.jdField_a_of_type_Arqs != null))
+      if ((localObject2 != null) && (localObject2.length > 0) && (this.jdField_a_of_type_Asuy != null))
       {
         if (this.jdField_c_of_type_AndroidViewView != null) {
-          this.jdField_c_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_Arqs);
+          this.jdField_c_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_Asuy);
         }
-        this.jdField_a_of_type_Arqs.a(localObject2);
-        this.jdField_a_of_type_Arqs.a();
+        this.jdField_a_of_type_Asuy.a(localObject2);
+        this.jdField_a_of_type_Asuy.a();
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
@@ -349,8 +350,8 @@ public class ExtendFriendVoiceView
   
   public void d()
   {
-    if (this.jdField_a_of_type_Arqs != null) {
-      this.jdField_a_of_type_Arqs.b();
+    if (this.jdField_a_of_type_Asuy != null) {
+      this.jdField_a_of_type_Asuy.b();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.endAnimation();
@@ -397,10 +398,10 @@ public class ExtendFriendVoiceView
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Arqk != null) {
+      if (this.jdField_a_of_type_Asuq != null) {
         try
         {
-          this.jdField_a_of_type_Arqk.a();
+          this.jdField_a_of_type_Asuq.a();
         }
         catch (Exception localException) {}
       }
@@ -416,7 +417,7 @@ public class ExtendFriendVoiceView
   public void setActivity(BaseActivity paramBaseActivity)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    paramBaseActivity = (arhi)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(264);
+    paramBaseActivity = (aslo)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
     if (paramBaseActivity != null)
     {
       paramBaseActivity = paramBaseActivity.a();
@@ -426,7 +427,7 @@ public class ExtendFriendVoiceView
     }
   }
   
-  public void setDeleteIconEnable(boolean paramBoolean, arqk paramarqk)
+  public void setDeleteIconEnable(boolean paramBoolean, asuq paramasuq)
   {
     View localView;
     if (this.jdField_d_of_type_AndroidViewView != null)
@@ -440,7 +441,7 @@ public class ExtendFriendVoiceView
     for (int i = 0;; i = 8)
     {
       localView.setVisibility(i);
-      this.jdField_a_of_type_Arqk = paramarqk;
+      this.jdField_a_of_type_Asuq = paramasuq;
       return;
     }
   }
@@ -593,7 +594,7 @@ public class ExtendFriendVoiceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView
  * JD-Core Version:    0.7.0.1
  */

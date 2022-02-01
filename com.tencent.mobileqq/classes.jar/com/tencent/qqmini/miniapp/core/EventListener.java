@@ -8,15 +8,20 @@ import com.tencent.qqmini.miniapp.core.service.AppBrandRemoteService;
 import com.tencent.qqmini.miniapp.core.service.IAppBrandService;
 import com.tencent.qqmini.miniapp.core.service.ServiceEventListener;
 import com.tencent.qqmini.sdk.action.AppStateEvent;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.AppBrandUtil;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent.Builder;
 import com.tencent.qqmini.sdk.launcher.core.plugins.engine.IJsPluginEngine;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.utils.ApiUtil;
 import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.manager.ApkgManager;
 import com.tencent.qqmini.sdk.plugins.engine.JsPluginEngine;
 import org.json.JSONObject;
 
@@ -32,6 +37,7 @@ public class EventListener
   public static final String KEY_URL = "url";
   public static final String NAVIGATE_BACK = "navigateBack";
   public static final String NAVIGATE_TO = "navigateTo";
+  public static final String ON_UPDATE_STATUS_CHANGE = "onUpdateStatusChange";
   public static final String REDIRECT_TO = "redirectTo";
   public static final String RELAUNCH = "reLaunch";
   public static final String SWITCH_TAB = "switchTab";
@@ -40,17 +46,55 @@ public class EventListener
   private boolean isFirstDomReady = false;
   protected BaseAppBrandRuntime mRuntime;
   protected boolean mWeixinJSBridgeFinished = false;
+  private MiniAppInfo newVersionMiniAppInfo;
   
   public EventListener(BaseAppBrandRuntime paramBaseAppBrandRuntime)
   {
     this.mRuntime = paramBaseAppBrandRuntime;
   }
   
+  private void checkUpdate()
+  {
+    if (this.mRuntime != null) {}
+    for (Object localObject = this.mRuntime.getMiniAppInfo(); localObject == null; localObject = null)
+    {
+      QMLog.i("EventListener", "checkUpdate -- miniapp is null, return.");
+      return;
+    }
+    if (((MiniAppInfo)localObject).verType != 3)
+    {
+      QMLog.i("EventListener", "checkUpdate -- miniapp is not online, return.");
+      try
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("state", "noUpdate");
+        this.mRuntime.appBrandService.evaluateSubscribeJS("onUpdateStatusChange", ((JSONObject)localObject).toString(), 0);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QMLog.e("EventListener", "updateJSONObject error." + localException);
+        return;
+      }
+    }
+    ThreadManager.executeOnNetworkIOThreadPool(new EventListener.1(this, localException));
+  }
+  
+  private void doDownloadNewVersion(MiniAppInfo paramMiniAppInfo)
+  {
+    ApkgManager.getInstance().getApkgInfoByConfig(paramMiniAppInfo, false, new EventListener.3(this, paramMiniAppInfo));
+  }
+  
+  private void doUpdateMiniAppInfo(MiniAppInfo paramMiniAppInfo)
+  {
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramMiniAppInfo.appId, "", "", new EventListener.2(this, paramMiniAppInfo));
+  }
+  
   private String handleNavigateBack(String paramString1, String paramString2, IAppBrandPageContainer paramIAppBrandPageContainer, RequestEvent paramRequestEvent)
   {
     int i = new JSONObject(paramString2).optInt("delta", 0);
     if (i > 0) {
-      AppBrandTask.runTaskOnUiThread(new EventListener.5(this, paramIAppBrandPageContainer, i, paramRequestEvent));
+      AppBrandTask.runTaskOnUiThread(new EventListener.9(this, paramIAppBrandPageContainer, i, paramRequestEvent));
     }
     return ApiUtil.wrapCallbackOk(paramString1, null).toString();
   }
@@ -64,7 +108,7 @@ public class EventListener
       for (int i = 1; i != 0; i = 0) {
         return ApiUtil.wrapCallbackFail(paramString1, null).toString();
       }
-      AppBrandTask.runTaskOnUiThread(new EventListener.6(this, paramIAppBrandPageContainer, paramString2, paramRequestEvent));
+      AppBrandTask.runTaskOnUiThread(new EventListener.10(this, paramIAppBrandPageContainer, paramString2, paramRequestEvent));
     }
     return ApiUtil.wrapCallbackOk(paramString1, null).toString();
   }
@@ -78,7 +122,7 @@ public class EventListener
       for (int i = 1; i != 0; i = 0) {
         return paramRequestEvent.fail();
       }
-      AppBrandTask.runTaskOnUiThread(new EventListener.7(this, paramIAppBrandPageContainer, paramString2, paramRequestEvent));
+      AppBrandTask.runTaskOnUiThread(new EventListener.11(this, paramIAppBrandPageContainer, paramString2, paramRequestEvent));
     }
     return ApiUtil.wrapCallbackOk(paramString1, null).toString();
   }
@@ -87,7 +131,7 @@ public class EventListener
   {
     paramString2 = new JSONObject(paramString2).optString("url", "");
     if (!TextUtils.isEmpty(paramString2)) {
-      AppBrandTask.runTaskOnUiThread(new EventListener.3(this, paramString2, paramRequestEvent));
+      AppBrandTask.runTaskOnUiThread(new EventListener.7(this, paramString2, paramRequestEvent));
     }
     return ApiUtil.wrapCallbackOk(paramString1, null).toString();
   }
@@ -96,7 +140,7 @@ public class EventListener
   {
     paramString2 = new JSONObject(paramString2).optString("url", "");
     if (!TextUtils.isEmpty(paramString2)) {
-      AppBrandTask.runTaskOnUiThread(new EventListener.4(this, paramIAppBrandPageContainer, paramString2, paramRequestEvent));
+      AppBrandTask.runTaskOnUiThread(new EventListener.8(this, paramIAppBrandPageContainer, paramString2, paramRequestEvent));
     }
     return ApiUtil.wrapCallbackOk(paramString1, null).toString();
   }
@@ -172,40 +216,53 @@ public class EventListener
       str = interruptOnServiceNativeRequest(paramString1, paramString2, paramInt);
       localObject = str;
     } while (str != null);
-    try
+    for (;;)
     {
-      if ("redirectTo".equals(paramString1)) {
-        return handleRedirectTo(paramString1, paramString2, localIAppBrandPageContainer, localApkgInfo, localRequestEvent);
-      }
-      if ("navigateTo".equals(paramString1)) {
-        return handleNavigateTo(paramString1, paramString2, localIAppBrandPageContainer, localApkgInfo, localRequestEvent);
-      }
-      if ("navigateBack".equals(paramString1)) {
-        return handleNavigateBack(paramString1, paramString2, localIAppBrandPageContainer, localRequestEvent);
-      }
-      if ("switchTab".equals(paramString1)) {
-        return handleSwitchTab(paramString1, paramString2, localIAppBrandPageContainer, localRequestEvent);
-      }
-      if ("reLaunch".equals(paramString1)) {
-        return handleRelaunch(paramString1, paramString2, localRequestEvent);
-      }
-      if ("exitMiniProgram".equals(paramString1)) {
-        AppBrandTask.runTaskOnUiThread(new EventListener.1(this));
-      }
-      while (localJsPluginEngine != null)
+      try
       {
-        return localJsPluginEngine.handleNativeRequest(paramString1, paramString2, localIAppBrandService, paramInt);
-        if ("flutter_launch".equals(paramString1)) {
-          AppBrandTask.runTaskOnUiThread(new EventListener.2(this, localIAppBrandPageContainer, paramString1, paramString2, localRequestEvent));
+        if ("redirectTo".equals(paramString1)) {
+          return handleRedirectTo(paramString1, paramString2, localIAppBrandPageContainer, localApkgInfo, localRequestEvent);
+        }
+        if ("navigateTo".equals(paramString1)) {
+          return handleNavigateTo(paramString1, paramString2, localIAppBrandPageContainer, localApkgInfo, localRequestEvent);
+        }
+        if ("navigateBack".equals(paramString1)) {
+          return handleNavigateBack(paramString1, paramString2, localIAppBrandPageContainer, localRequestEvent);
+        }
+        if ("switchTab".equals(paramString1)) {
+          return handleSwitchTab(paramString1, paramString2, localIAppBrandPageContainer, localRequestEvent);
+        }
+        if ("reLaunch".equals(paramString1)) {
+          return handleRelaunch(paramString1, paramString2, localRequestEvent);
+        }
+        if ("exitMiniProgram".equals(paramString1))
+        {
+          AppBrandTask.runTaskOnUiThread(new EventListener.4(this));
+          if (localJsPluginEngine == null) {
+            break;
+          }
+          return localJsPluginEngine.handleNativeRequest(paramString1, paramString2, localIAppBrandService, paramInt);
+        }
+        if ("updateApp".equals(paramString1))
+        {
+          if (this.newVersionMiniAppInfo == null) {
+            continue;
+          }
+          AppBrandTask.runTaskOnUiThread(new EventListener.5(this));
+          continue;
+        }
+        if (!"flutter_launch".equals(paramString1)) {
+          continue;
         }
       }
-      return "";
+      catch (Throwable paramString1)
+      {
+        QMLog.e("EventListener", "", paramString1);
+        return "";
+      }
+      AppBrandTask.runTaskOnUiThread(new EventListener.6(this, localIAppBrandPageContainer, paramString1, paramString2, localRequestEvent));
     }
-    catch (Throwable paramString1)
-    {
-      QMLog.e("EventListener", "", paramString1);
-      return "";
-    }
+    return "";
   }
   
   public void onWebViewEvent(String paramString1, String paramString2, int paramInt)
@@ -216,7 +273,11 @@ public class EventListener
     if (QMLog.isColorLevel()) {
       QMLog.d("EventListener", "EventListener  onWebViewEvent eventName=" + paramString1 + ",pageWebviewId=" + paramInt);
     }
-    if ((paramString2 != null) && (paramString2.contains("__DOMReady"))) {
+    if ((paramString2 != null) && (paramString2.contains("__DOMReady")))
+    {
+      if (!this.isFirstDomReady) {
+        checkUpdate();
+      }
       this.isFirstDomReady = true;
     }
     this.mRuntime.appBrandService.evaluateSubscribeJS(paramString1, paramString2, paramInt);
@@ -230,7 +291,7 @@ public class EventListener
       return "";
     }
     if (QMLog.isColorLevel()) {
-      QMLog.d("EventListener", "EventListener onWebViewNativeRequest eventName=" + paramString1 + ",callbackId=" + paramInt);
+      QMLog.d("EventListener", "EventListener onWebViewNativeRequest eventName=" + paramString1 + ",callbackId=" + paramInt + "  (" + paramIJsService + ")");
     }
     if ((paramString1.equals("remoteDebugInfo")) && ((this.mRuntime.appBrandService instanceof AppBrandRemoteService)))
     {

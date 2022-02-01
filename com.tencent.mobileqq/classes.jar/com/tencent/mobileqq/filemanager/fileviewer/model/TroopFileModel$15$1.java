@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import asts;
+import atxz;
 import com.tencent.mobileqq.app.TroopManager;
 
 public class TroopFileModel$15$1
   implements Runnable
 {
-  public TroopFileModel$15$1(asts paramasts) {}
+  public TroopFileModel$15$1(atxz paramatxz) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class TroopFileModel$15$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.15.1
  * JD-Core Version:    0.7.0.1
  */

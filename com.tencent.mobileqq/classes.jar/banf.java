@@ -1,19 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-
-public class banf
-  implements DialogInterface.OnClickListener
+public abstract interface banf
 {
-  public banf(SignTextEditFragment paramSignTextEditFragment) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.a.clear();
-    SignTextEditFragment.a(this.a);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

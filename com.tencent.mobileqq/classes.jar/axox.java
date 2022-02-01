@@ -1,17 +1,43 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
 public class axox
-  implements ValueAnimator.AnimatorUpdateListener
+  implements BusinessObserver
 {
-  public axox(ScanOcrView paramScanOcrView) {}
+  public axox(NearbyJsInterface paramNearbyJsInterface, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.e = i;
-    this.a.invalidate();
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+          localWebSsoResponseBody.mergeFrom(paramBundle);
+          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.callJs(new JSONObject(this.jdField_a_of_type_JavaLangString).getString("callback"), new String[] { paramBundle.toString() });
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.w("followUser js api", 2, " no data!");
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("followUser js api", 2, " no data! error");
+        }
+      }
+    }
   }
 }
 

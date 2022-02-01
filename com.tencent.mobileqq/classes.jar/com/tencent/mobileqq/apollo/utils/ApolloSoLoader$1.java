@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import amhk;
-import amkk;
+import anis;
+import anmb;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -13,29 +13,29 @@ public final class ApolloSoLoader$1
     long l1 = System.currentTimeMillis();
     try
     {
-      if (!amkk.b())
+      if (!anmb.b())
       {
         QLog.w("ApolloSoLoader", 1, "[main loader], FAIL to load so.");
         return;
       }
-      if (!amkk.c())
+      if (!anmb.c())
       {
         QLog.w("ApolloSoLoader", 1, "[main loader], FAIL to read script.");
         return;
       }
-      if (amkk.d())
+      if (anmb.d())
       {
-        amhk.a(10, 100, 0, new Object[] { "so is complete" });
-        amhk.a(10, 300);
+        anis.a(10, 100, 0, new Object[] { "so is complete" });
+        anis.a(10, 300);
       }
-      amkk.a(true);
-      amkk.a(0);
-      amkk.b();
-      amkk.c();
-      if (amkk.d())
+      anmb.a(true);
+      anmb.a(0);
+      anmb.b();
+      anmb.c();
+      if (anmb.d())
       {
-        amhk.b(10);
-        amhk.a(10, false);
+        anis.b(10);
+        anis.a(10, false);
       }
       QLog.i("ApolloSoLoader", 1, "[main loader], SUCCEED to load script and so.");
       return;
@@ -43,18 +43,18 @@ public final class ApolloSoLoader$1
     catch (Throwable localThrowable)
     {
       QLog.e("ApolloSoLoader", 1, "[main loader]," + localThrowable);
-      amkk.a(1);
+      anmb.a(1);
       return;
     }
     finally
     {
       long l2;
-      if (amkk.e())
+      if (anmb.e())
       {
         l2 = System.currentTimeMillis();
         QLog.i("ApolloSoLoader", 1, "[main loader], cost:" + (l2 - l1));
       }
-      amkk.a().set(false);
+      anmb.a().set(false);
     }
   }
 }

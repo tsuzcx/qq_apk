@@ -39,9 +39,13 @@ public class RemoteProxy$QIPCHandler
     if ((paramString != null) && (paramString.data != null))
     {
       paramBundle = paramString.data.getString("resultType");
-      return RemoteProxy.access$200(paramString.data, paramBundle, "result");
+      if (!paramBundle.endsWith("void")) {}
     }
-    return null;
+    else
+    {
+      return null;
+    }
+    return RemoteProxy.access$200(paramString.data, paramBundle, "result");
   }
   
   void callMainIPCAsync(String paramString, Bundle paramBundle, EIPCResultCallback paramEIPCResultCallback)
@@ -52,9 +56,10 @@ public class RemoteProxy$QIPCHandler
   public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     paramObject = new Bundle();
+    paramObject.setClassLoader(getClass().getClassLoader());
     setMethodAndParameter(paramMethod, paramArrayOfObject, paramObject);
     if (QLog.isColorLevel()) {
-      QLog.d("RemoteProxy", 2, "getReturnType:" + paramMethod.getReturnType());
+      QLog.d("RemoteProxy", 2, "invoke getReturnType:" + paramMethod.getReturnType());
     }
     if ((paramMethod.getReturnType().getName().equals("void")) && ((paramArrayOfObject[(paramArrayOfObject.length - 1)] instanceof EIPCResultCallback)))
     {

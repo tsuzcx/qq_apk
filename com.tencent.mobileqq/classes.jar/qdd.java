@@ -1,22 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
 class qdd
-  implements qug
+  extends AnimatorListenerAdapter
 {
-  qdd(qcy paramqcy, pvc parampvc, Container paramContainer, int paramInt) {}
+  qdd(qdc paramqdc) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Object localObject = this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a;
-    ArrayList localArrayList = ((rfe)localObject).a;
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {
-      return;
+    super.onAnimationEnd(paramAnimator);
+    qdc.a(this.a).setLayerType(0, null);
+    qdc.a(this.a).setVisibility(8);
+    qdc.a(this.a).setAlpha(1.0F);
+    if (this.a.a() != null) {
+      this.a.i();
     }
-    localObject = (rff)((rfe)localObject).a.get(paramInt);
-    qcy.a(this.jdField_a_of_type_Qcy, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pvc.a(), (int)((rff)localObject).a, this.jdField_a_of_type_Pvc.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Pvc.a());
+    qdc.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "trans animation end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 

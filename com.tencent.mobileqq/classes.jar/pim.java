@@ -1,70 +1,38 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qqlive.module.videoreport.VideoReport;
-import kotlin.Metadata;
-import kotlin.jvm.JvmOverloads;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/dt/RIJDtReportHelper;", "", "()V", "configPageParamsWithoutParams", "", "activity", "Landroid/app/Activity;", "pageID", "", "reportCardClickEvent", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pim
+public class pim
+  implements INetInfoHandler
 {
-  public static final pim a = new pim();
+  public void onNetMobile2None() {}
   
-  @JvmOverloads
-  public final void a(@Nullable Activity paramActivity)
+  public void onNetMobile2Wifi(String paramString)
   {
-    a(this, paramActivity, null, 2, null);
+    QLog.d("KBPreDownloadUtils", 2, "[onNetMobile2Wifi] ");
+    AppNetConnInfo.unregisterNetInfoHandler(pik.a());
+    pik.a();
   }
   
-  @JvmOverloads
-  public final void a(@Nullable Activity paramActivity, @NotNull String paramString)
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "pageID");
-    if (paramActivity == null) {
-      return;
-    }
-    VideoReport.addToDetectionWhitelist(paramActivity);
-    VideoReport.setPageId(paramActivity, paramString);
-    VideoReport.setPageParams(paramActivity, new pil().a());
+    QLog.d("KBPreDownloadUtils", 2, "[onNetNone2Wifi] ");
+    AppNetConnInfo.unregisterNetInfoHandler(pik.a());
+    pik.a();
   }
   
-  public final void a(@Nullable BaseArticleInfo paramBaseArticleInfo)
+  public void onNetWifi2Mobile(String paramString)
   {
-    Object localObject2 = null;
-    pil localpil = new pil();
-    Object localObject1;
-    if (paramBaseArticleInfo != null)
-    {
-      localObject1 = paramBaseArticleInfo.innerUniqueID;
-      localpil = pil.a(localpil.e((String)localObject1).a("14"), null, 1, null).b("list");
-      if (paramBaseArticleInfo == null) {
-        break label124;
-      }
-      localObject1 = (Number)Long.valueOf(paramBaseArticleInfo.mChannelID);
-      label59:
-      localpil = localpil.a((Number)localObject1).c("click_contentid");
-      localObject1 = localObject2;
-      if (paramBaseArticleInfo != null) {
-        localObject1 = paramBaseArticleInfo.dtReportBackendInfo;
-      }
-      localObject1 = localpil.g((String)localObject1);
-      if (paramBaseArticleInfo == null) {
-        break label135;
-      }
-    }
-    label135:
-    for (paramBaseArticleInfo = (Number)Integer.valueOf(paramBaseArticleInfo.dtReportContentType);; paramBaseArticleInfo = (Number)Integer.valueOf(5))
-    {
-      VideoReport.reportEvent("clck", ((pil)localObject1).b(paramBaseArticleInfo).a());
-      return;
-      localObject1 = null;
-      break;
-      label124:
-      localObject1 = (Number)Integer.valueOf(0);
-      break label59;
-    }
+    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2Mobile] pause download");
+    bjna.a().a("101480433");
+  }
+  
+  public void onNetWifi2None()
+  {
+    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2None] pause download");
+    bjna.a().a("101480433");
   }
 }
 

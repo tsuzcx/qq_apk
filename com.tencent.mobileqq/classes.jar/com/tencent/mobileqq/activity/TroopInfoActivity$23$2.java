@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aelv;
+import afdd;
 
 public class TroopInfoActivity$23$2
   implements Runnable
 {
-  public TroopInfoActivity$23$2(aelv paramaelv) {}
+  public TroopInfoActivity$23$2(afdd paramafdd) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class TroopInfoActivity$23$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopInfoActivity.23.2
  * JD-Core Version:    0.7.0.1
  */

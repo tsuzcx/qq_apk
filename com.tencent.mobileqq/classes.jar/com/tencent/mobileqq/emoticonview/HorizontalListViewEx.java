@@ -21,7 +21,7 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewParent;
 import android.view.WindowManager;
 import android.widget.ListAdapter;
-import bjse;
+import bldq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -100,7 +100,7 @@ public class HorizontalListViewEx
     this.mRectPaint = new Paint();
     this.mRectPaint.setAntiAlias(true);
     this.mRectPaint.setStyle(Paint.Style.FILL);
-    this.mRectPaint.setColor(getResources().getColor(2131166522));
+    this.mRectPaint.setColor(getResources().getColor(2131166536));
     this.mRoundRect = new RectF();
     this.mIndicatorRoundRectX = ViewUtils.dip2px(18.0F);
   }
@@ -119,7 +119,7 @@ public class HorizontalListViewEx
       if (i < paramInt) {
         try
         {
-          View localView = inflater.inflate(2131559151, null, false);
+          View localView = inflater.inflate(2131559180, null, false);
           if (localView != null) {
             tabCacheViews.add(localView);
           }
@@ -268,7 +268,12 @@ public class HorizontalListViewEx
   
   public void resetCurrentX(int paramInt)
   {
-    this.mCurrentX = (this.mTabWidth * paramInt);
+    int i = this.mTabWidth * paramInt - (getMeasuredWidth() - this.mTabWidth);
+    paramInt = i;
+    if (i < 0) {
+      paramInt = 0;
+    }
+    this.mCurrentX = paramInt;
   }
   
   public int scrollBy(int paramInt)
@@ -401,7 +406,7 @@ public class HorizontalListViewEx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.HorizontalListViewEx
  * JD-Core Version:    0.7.0.1
  */

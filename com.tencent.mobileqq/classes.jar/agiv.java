@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agiv
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  agiv(agiu paramagiu) {}
+  agiv(agit paramagit, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    agiu.a(this.a, true, this.a.a.getCurrentAccountUin());
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    }
   }
 }
 

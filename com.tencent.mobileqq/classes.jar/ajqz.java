@@ -1,22 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajqz
-  implements DialogInterface.OnClickListener
+public class ajqz
+  implements View.OnClickListener
 {
-  ajqz(ajqv paramajqv) {}
+  public ajqz(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
-      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
-    }
+    bdla.b(this.a.a, "dc00898", "", "", "0X800A16A", "0X800A16A", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", "");
+    becr.a(this.a.getActivity(), "s_qq_history_tab", 1121);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

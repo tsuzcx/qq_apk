@@ -1,0 +1,130 @@
+package com.tencent.biz.pubaccount.readinjoyAd.ad.utils;
+
+import android.text.TextUtils;
+import anlq;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+
+class ReadInJoyAdReportUtil$ReportJob
+  implements Runnable
+{
+  private final JSONObject a;
+  
+  public ReadInJoyAdReportUtil$ReportJob(JSONObject paramJSONObject)
+  {
+    this.a = paramJSONObject;
+  }
+  
+  public void run()
+  {
+    label175:
+    label180:
+    HttpURLConnection localHttpURLConnection;
+    for (;;)
+    {
+      try
+      {
+        if ((this.a == null) || (TextUtils.isEmpty(this.a.toString())))
+        {
+          ReadInJoyAdReportUtil.a(" URLConnection_Ping_Runner input requestJsonBody is null: " + this.a);
+          return;
+        }
+        localObject1 = new URL("https://c.mp.qq.com/api/union/report_new");
+        if ((TextUtils.isEmpty("https://c.mp.qq.com/api/union/report_new")) || (!"https://c.mp.qq.com/api/union/report_new".contains("https"))) {
+          break label180;
+        }
+        localObject1 = (HttpsURLConnection)((URL)localObject1).openConnection();
+        localObject2 = anlq.a();
+        localObject3 = new StringBuilder().append(" URLConnection_Ping_Runner https sslContext is not null :");
+        if (localObject2 != null) {
+          break label175;
+        }
+        bool = true;
+        QLog.d("ReadInJoyAdPingUrlUtil", 2, bool);
+        if (localObject2 == null) {
+          break label447;
+        }
+        localObject2 = ((SSLContext)localObject2).getSocketFactory();
+        ((HttpsURLConnection)localObject1).setSSLSocketFactory((SSLSocketFactory)localObject2);
+      }
+      catch (Exception localException)
+      {
+        Object localObject1;
+        ReadInJoyAdReportUtil.a("Exception while ping" + localException);
+        return;
+      }
+      if (localObject1 != null) {
+        break;
+      }
+      ReadInJoyAdReportUtil.a(" conn is null: ");
+      return;
+      boolean bool = false;
+      continue;
+      localHttpURLConnection = (HttpURLConnection)localException.openConnection();
+    }
+    localHttpURLConnection.setConnectTimeout(5000);
+    localHttpURLConnection.setReadTimeout(5000);
+    localHttpURLConnection.setRequestMethod("POST");
+    localHttpURLConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+    Object localObject3 = new StringBuilder();
+    if (this.a.has("uin"))
+    {
+      ((StringBuilder)localObject3).append("sp-cuin=");
+      ((StringBuilder)localObject3).append(this.a.get("uin").toString());
+    }
+    Object localObject2 = new GdtDeviceInfoHelper.Params();
+    ((GdtDeviceInfoHelper.Params)localObject2).businessIdForAidTicketAndTaidTicket = "ce2d9f";
+    localObject2 = GdtDeviceInfoHelper.create(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject2);
+    if (localObject2 != null) {}
+    for (localObject2 = ((GdtDeviceInfoHelper.Result)localObject2).deviceInfo;; localObject2 = null)
+    {
+      if ((localObject2 != null) && (((qq_ad_get.QQAdGet.DeviceInfo)localObject2).client_ipv4.has()))
+      {
+        ((StringBuilder)localObject3).append(";sp-clientip-union=");
+        ((StringBuilder)localObject3).append(((qq_ad_get.QQAdGet.DeviceInfo)localObject2).client_ipv4.get());
+      }
+      for (;;)
+      {
+        localHttpURLConnection.setRequestProperty("Cookie", ((StringBuilder)localObject3).toString());
+        localObject2 = localHttpURLConnection.getOutputStream();
+        localObject3 = new OutputStreamWriter((OutputStream)localObject2, "UTF-8");
+        ((OutputStreamWriter)localObject3).write(this.a.toString());
+        ((OutputStreamWriter)localObject3).flush();
+        ((OutputStreamWriter)localObject3).close();
+        ((OutputStream)localObject2).close();
+        if (localHttpURLConnection.getResponseCode() != 200) {
+          break;
+        }
+        QLog.d("ReadInJoyAdPingUrlUtil", 2, " URLConnection_Ping_Runner change type 25 sso to cgi success");
+        return;
+        if (this.a.has("client_ip"))
+        {
+          ((StringBuilder)localObject3).append(";sp-clientip-union=");
+          ((StringBuilder)localObject3).append(this.a.get("client_ip").toString());
+        }
+      }
+      return;
+      label447:
+      break;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdReportUtil.ReportJob
+ * JD-Core Version:    0.7.0.1
+ */

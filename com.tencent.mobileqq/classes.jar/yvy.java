@@ -1,37 +1,41 @@
-import android.os.CountDownTimer;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
 public class yvy
-  extends CountDownTimer
+  extends yvr
 {
-  public yvy(QRDisplayActivity paramQRDisplayActivity, long paramLong1, long paramLong2)
+  protected EditVideoParams a;
+  public String c;
+  
+  public yvy(int paramInt1, String paramString, int paramInt2)
   {
-    super(paramLong1, paramLong2);
+    super(paramInt1, paramString, paramInt2);
   }
   
-  public void onFinish()
+  public yvy(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
   {
-    QRDisplayActivity.a(this.a, true);
-    if (QRDisplayActivity.a(this.a) == null)
-    {
-      QRDisplayActivity.b(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRDisplayActivity", 4, "enter longclick");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (QRDisplayActivity.a(this.a) == null);
-      QRDisplayActivity.c(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("QRDisplayActivity", 4, "enter longclickstop");
+    super(paramInt1, paramString, paramInt2);
+    this.a = paramEditVideoParams;
   }
   
-  public void onTick(long paramLong) {}
+  @NonNull
+  public Class<? extends yvs> a()
+  {
+    return ywa.class;
+  }
+  
+  @NonNull
+  public yvs a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new ywa(this, paramContext, paramViewGroup, null);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

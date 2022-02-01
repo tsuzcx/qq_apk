@@ -1,26 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.avgame.gameroom.gamelist.GameListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ndh
-  implements View.OnTouchListener
+class ndh
+  implements DialogInterface.OnClickListener
 {
-  public ndh(GameListView paramGameListView) {}
+  ndh(ncz paramncz) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.setCancelPreparePressImage();
-      continue;
-      this.a.setCancelPrepareNorImage();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,49 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.qqwallet.QWalletPubAdReport.QueryRsp;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class ajvm
-  implements BusinessObserver
+public class ajvm
+  implements View.OnTouchListener
 {
-  ajvm(ajvl paramajvl) {}
+  public ajvm(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletGdtAdManager", 2, "onReceive:type:" + paramInt + ",isSuccess:" + paramBoolean + ",bundle:" + paramBundle + ",cost:" + (NetConnInfoCenter.getServerTimeMillis() - this.a.jdField_a_of_type_Long));
-    }
-    try
+    if (paramMotionEvent.getAction() == 4)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if ((paramBundle != null) && (paramBoolean))
-      {
-        QWalletPubAdReport.QueryRsp localQueryRsp = new QWalletPubAdReport.QueryRsp();
-        localQueryRsp.mergeFrom(paramBundle);
-        paramInt = localQueryRsp.ret.get();
-        if (paramInt == 0)
-        {
-          ajvj.a(this.a.jdField_a_of_type_Ajvj, localQueryRsp.pv_flag.get());
-          ajvj.a(this.a.jdField_a_of_type_Ajvj, localQueryRsp);
-          if (QLog.isColorLevel()) {
-            QLog.i("QWalletGdtAdManager", 2, "doReqAdsControl onReceive: retCode:" + localQueryRsp.ret.get() + ",msg:" + localQueryRsp.msg.get());
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.e("QWalletGdtAdManager", 2, "onReceive fail,retCode:" + paramInt);
-          return;
-        }
-      }
+      this.a.a.dismiss();
+      return true;
     }
-    catch (Throwable paramBundle)
-    {
-      paramBundle.printStackTrace();
-      QLog.e("QWalletGdtAdManager", 1, "onReceive fail exception:" + paramBundle.getMessage());
-    }
+    return false;
   }
 }
 

@@ -9,14 +9,18 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.view.animation.AlphaAnimation;
+import bhii;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.utils.OSUtils;
 import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
@@ -38,10 +42,12 @@ public class ImmersiveUtils
   public static boolean d;
   private static int jdField_e_of_type_Int;
   private static boolean jdField_e_of_type_Boolean;
-  private static boolean f;
+  private static int jdField_f_of_type_Int;
+  private static boolean jdField_f_of_type_Boolean;
   
   static
   {
+    jdField_d_of_type_Int = 2147483647;
     String str;
     if (!"Success".equals(BaseApplicationImpl.sInjectResult))
     {
@@ -60,8 +66,8 @@ public class ImmersiveUtils
     {
       jdField_a_of_type_JavaLangString = "ImmersiveUtils";
       jdField_a_of_type_Float = -1.0F;
-      jdField_d_of_type_Int = -1;
       jdField_e_of_type_Int = -1;
+      jdField_f_of_type_Int = -1;
       jdField_a_of_type_Int = -1;
       jdField_a_of_type_Boolean = true;
       jdField_b_of_type_Int = 67108864;
@@ -88,7 +94,7 @@ public class ImmersiveUtils
   public static int a()
   {
     a();
-    return jdField_d_of_type_Int;
+    return jdField_e_of_type_Int;
   }
   
   public static int a(float paramFloat)
@@ -105,16 +111,16 @@ public class ImmersiveUtils
       jdField_a_of_type_Float = localDisplayMetrics.density;
       if (localDisplayMetrics.widthPixels < localDisplayMetrics.heightPixels)
       {
-        jdField_d_of_type_Int = localDisplayMetrics.widthPixels;
-        jdField_e_of_type_Int = localDisplayMetrics.heightPixels;
+        jdField_e_of_type_Int = localDisplayMetrics.widthPixels;
+        jdField_f_of_type_Int = localDisplayMetrics.heightPixels;
       }
     }
     else
     {
       return;
     }
-    jdField_e_of_type_Int = localDisplayMetrics.widthPixels;
-    jdField_d_of_type_Int = localDisplayMetrics.heightPixels;
+    jdField_f_of_type_Int = localDisplayMetrics.widthPixels;
+    jdField_e_of_type_Int = localDisplayMetrics.heightPixels;
   }
   
   @TargetApi(11)
@@ -159,6 +165,23 @@ public class ImmersiveUtils
     paramWindow.addFlags(67108864);
   }
   
+  public static void a(@NonNull Window paramWindow, @ColorInt int paramInt)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "[NavigationBar] setImmersiveNavigationBarColor activity=", paramWindow, " color=", Integer.valueOf(paramInt) });
+    }
+    try
+    {
+      paramWindow.addFlags(-2147483648);
+      paramWindow.setNavigationBarColor(paramInt);
+      return;
+    }
+    catch (Throwable paramWindow)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "[NavigationBar] setNavigationBarColor =", paramWindow);
+    }
+  }
+  
   public static void a(Window paramWindow, boolean paramBoolean)
   {
     if (paramBoolean)
@@ -175,7 +198,7 @@ public class ImmersiveUtils
     {
       return;
     }
-    c(paramWindow);
+    d(paramWindow);
   }
   
   public static boolean a()
@@ -187,10 +210,10 @@ public class ImmersiveUtils
   {
     if (!jdField_e_of_type_Boolean)
     {
-      f = LiuHaiUtils.b(paramActivity);
+      jdField_f_of_type_Boolean = LiuHaiUtils.b(paramActivity);
       jdField_e_of_type_Boolean = true;
     }
-    return f;
+    return jdField_f_of_type_Boolean;
   }
   
   public static boolean a(Window paramWindow)
@@ -255,7 +278,7 @@ public class ImmersiveUtils
   public static int b()
   {
     a();
-    return jdField_e_of_type_Int;
+    return jdField_f_of_type_Int;
   }
   
   public static int b(float paramFloat)
@@ -325,22 +348,35 @@ public class ImmersiveUtils
     }
   }
   
-  private static void c(Window paramWindow)
+  public static void c(@NonNull Window paramWindow)
   {
-    try
+    for (;;)
     {
-      if ((Build.VERSION.SDK_INT >= 23) || (b()))
+      try
       {
-        paramWindow.clearFlags(67108864);
-        paramWindow.getDecorView().setSystemUiVisibility(1280);
-        paramWindow.addFlags(-2147483648);
-        paramWindow.setStatusBarColor(0);
+        boolean bool = bhii.b(BaseApplicationImpl.sApplication, "KEY_DISABLE_NAVIGATION_BAR", true);
+        QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[NavigationBar] enableNavigationBarColor =", Boolean.valueOf(bool) });
+        if (bool) {
+          return;
+        }
+        if ((jdField_d_of_type_Int == 2147483647) && (Build.VERSION.SDK_INT >= 21)) {
+          jdField_d_of_type_Int = paramWindow.getNavigationBarColor();
+        }
+        bool = ThemeUtil.isNowThemeIsNight(null, false, "");
+        QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[NavigationBar] setNavigationBarColor sLightThemeNavigationBarColor=", Integer.valueOf(jdField_d_of_type_Int), " isNightMode=", Boolean.valueOf(bool) });
+        if (bool)
+        {
+          i = -16777216;
+          a(paramWindow, i);
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception paramWindow)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramWindow, new Object[0]);
+      catch (Throwable paramWindow)
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "[NavigationBar] setNavigationBarColor throwable=", paramWindow);
+        return;
+      }
+      int i = jdField_d_of_type_Int;
     }
   }
   
@@ -413,6 +449,25 @@ public class ImmersiveUtils
       }
     }
     return false;
+  }
+  
+  private static void d(Window paramWindow)
+  {
+    try
+    {
+      if ((Build.VERSION.SDK_INT >= 23) || (b()))
+      {
+        paramWindow.clearFlags(67108864);
+        paramWindow.getDecorView().setSystemUiVisibility(1280);
+        paramWindow.addFlags(-2147483648);
+        paramWindow.setStatusBarColor(0);
+      }
+      return;
+    }
+    catch (Exception paramWindow)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, paramWindow, new Object[0]);
+    }
   }
   
   private static boolean d(Window paramWindow, boolean paramBoolean)

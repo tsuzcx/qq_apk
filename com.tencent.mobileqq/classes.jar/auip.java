@@ -1,17 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.upload.UploadManager;
 
 class auip
-  implements DialogInterface.OnClickListener
+  implements bmtz
 {
-  auip(auij paramauij) {}
+  auip(auie paramauie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong, float paramFloat) {}
+  
+  public void a(String paramString)
   {
-    paramDialogInterface.dismiss();
-    auij.a(this.a);
-    QLog.d("PresenceInterfaceImpl", 2, "User allowed downd");
+    auie.b(this.a, false);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    auie.a(this.a, true);
+    auie.b(this.a, false);
+    bmqz.a(auie.a(this.a).getApplication(), true);
+    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
   }
 }
 

@@ -1,9 +1,22 @@
-public class vgc
+public abstract interface vgc
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public abstract void a(vgb paramvgb);
+  
+  public abstract void a(vgb paramvgb, int paramInt);
+  
+  public abstract void a(vgb paramvgb, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(vgb paramvgb, boolean paramBoolean);
+  
+  public abstract void b(vgb paramvgb);
+  
+  public abstract void c(vgb paramvgb);
+  
+  public abstract void d(vgb paramvgb);
+  
+  public abstract void e(vgb paramvgb);
+  
+  public abstract void f(vgb paramvgb);
 }
 
 

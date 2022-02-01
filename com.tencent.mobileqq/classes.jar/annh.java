@@ -1,32 +1,16 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class annh
-  implements Comparator<anni>
+class annh
+  implements View.OnClickListener
 {
-  private int a;
+  annh(anng paramanng) {}
   
-  public annh(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a = paramInt;
-  }
-  
-  public int a(anni paramanni1, anni paramanni2)
-  {
-    if (this.a == 2) {
-      if (paramanni1.b <= paramanni2.b) {}
-    }
-    while (paramanni1.a > paramanni2.a)
-    {
-      return -1;
-      if (paramanni1.b < paramanni2.b) {
-        return 1;
-      }
-      return 0;
-    }
-    if (paramanni1.a < paramanni2.a) {
-      return 1;
-    }
-    return 0;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

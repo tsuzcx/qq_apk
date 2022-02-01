@@ -1,24 +1,24 @@
+body {
+  -webkit-tap-highlight-color: transparent;
+}
 .night {
   background: #282828;
   color: #FFFFFF;
 }
 
-.night .file-wrapper {
-    background-color: #000000;
-}
-.night  .audio-wrapper {
+.night .wrapper {
     background-color: #000000;
 }
 
-.file-wrapper {
-    background-color: #EBEDF5;
-    border-radius: 16px;
-    height: 60px;
-    width: 100%;
-    margin: 10px auto;
-    display: inline-block;
-    box-sizing: border-box;
-    position: relative;
+.wrapper {
+  background-color: #EBEDF5;
+  border-radius: 8px;
+  height: 60px;
+  width: 100%;
+  margin: 10px auto;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .file-summery {
@@ -39,14 +39,6 @@
 }
 
 .audio-wrapper {
-    background-color: #EBEDF5;
-    border-radius: 16px;
-    height: 60px;
-    width: 100%;
-    margin: 10px auto;
-    display: inline-block;
-    box-sizing: border-box;
-    position: relative;
     padding: 0 12px;
 }
 
@@ -58,7 +50,7 @@
     font-size: 18px;
     color: #ffffff;
     border: 1px #19BAFF solid;
-    border-radius: 16px;
+    border-radius: 8px;
     margin: 0px 0px 5px 0px;
 }
 
@@ -117,8 +109,8 @@
 
 .progress-bar-bg span {
     content: " ";
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -126,10 +118,10 @@
     position: absolute;
     left: 0;
     top: 50%;
-    margin-top: -5px;
-    margin-left: -5px;
+    margin-top: -4px;
+    margin-left: -4px;
     cursor: pointer;
-    box-shadow: 0px 0px 10px 1px #19BAFF;
+    box-shadow: 0px 0px 5px 1px #19BAFF;
 }
 
 .vertical-center {
@@ -236,4 +228,16 @@
 button {
   background-color: transparent;
   outline: none;
+}
+
+.location-thumb {
+     width: 42px;
+     height: 42px;
+     right: 14px;
+     border-radius: 7.75px;
+ }
+
+.location-summary {
+    left: 12px;
+    right: 66px;
 }

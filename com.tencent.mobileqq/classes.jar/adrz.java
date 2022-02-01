@@ -1,23 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.NotificationActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class adrz
   implements DialogInterface.OnClickListener
 {
-  public adrz(NotificationActivity paramNotificationActivity) {}
+  public adrz(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new NotificationActivity.1.1(this), 1000L);
+    if (this.jdField_a_of_type_Boolean) {
+      bdla.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrz
  * JD-Core Version:    0.7.0.1
  */

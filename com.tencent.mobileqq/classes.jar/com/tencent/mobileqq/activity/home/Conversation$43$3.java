@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajci;
-import akho;
+import ajxx;
+import aldh;
 import android.os.Message;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,25 +9,25 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class Conversation$43$3
   implements Runnable
 {
-  public Conversation$43$3(ajci paramajci, long paramLong) {}
+  public Conversation$43$3(ajxx paramajxx, long paramLong) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ajci.a.jdField_a_of_type_Akho != null)
+    if (this.jdField_a_of_type_Ajxx.a.jdField_a_of_type_Aldh != null)
     {
-      this.jdField_a_of_type_Ajci.a.jdField_a_of_type_Akho.c();
-      if (this.jdField_a_of_type_Ajci.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().b(this.jdField_a_of_type_Long) == 2)
+      this.jdField_a_of_type_Ajxx.a.jdField_a_of_type_Aldh.c();
+      if (this.jdField_a_of_type_Ajxx.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().b(this.jdField_a_of_type_Long) == 2)
       {
         Message localMessage = new Message();
         localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_Ajci.a.jdField_a_of_type_Akho.a(42, localMessage);
+        this.jdField_a_of_type_Ajxx.a.jdField_a_of_type_Aldh.a(43, localMessage);
       }
     }
     else
     {
       return;
     }
-    this.jdField_a_of_type_Ajci.a.jdField_a_of_type_Akho.a(-1, null);
+    this.jdField_a_of_type_Ajxx.a.jdField_a_of_type_Aldh.a(-1, null);
   }
 }
 

@@ -1,6 +1,20 @@
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 class bgpa
+  extends bgox
 {
-  private static final bgoz a = new bgoz();
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  
+  bgpa(bgoz parambgoz)
+  {
+    super(parambgoz.a);
+  }
 }
 
 

@@ -4,8 +4,8 @@ import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import ausr;
-import bcar;
+import avyq;
+import bdhm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
@@ -90,7 +90,7 @@ public class InitHook
         return;
       }
       finally {}
-      ausr.a();
+      avyq.a();
     }
   }
   
@@ -170,13 +170,13 @@ public class InitHook
     //   133: ldc 207
     //   135: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   138: invokestatic 212	com/tencent/mfsdk/MagnifierSDK:a	()Lcom/tencent/mfsdk/MagnifierSDK;
-    //   141: invokevirtual 215	com/tencent/mfsdk/MagnifierSDK:a	()Lachp;
+    //   141: invokevirtual 215	com/tencent/mfsdk/MagnifierSDK:a	()Lacxx;
     //   144: invokeinterface 218 1 0
     //   149: getstatic 33	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
     //   152: iconst_1
     //   153: if_icmpne -142 -> 11
-    //   156: invokestatic 221	ausm:a	()V
-    //   159: invokestatic 224	ausj:a	()V
+    //   156: invokestatic 221	avyl:a	()V
+    //   159: invokestatic 224	avyi:a	()V
     //   162: getstatic 33	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
     //   165: iconst_1
     //   166: if_icmpne +3 -> 169
@@ -223,7 +223,7 @@ public class InitHook
     {
       b();
       return true;
-      DeviceProfileManager.a(new bcar(null));
+      DeviceProfileManager.a(new bdhm(null));
       continue;
       c();
     }
@@ -231,7 +231,7 @@ public class InitHook
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitHook
  * JD-Core Version:    0.7.0.1
  */

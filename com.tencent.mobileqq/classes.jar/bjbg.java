@@ -1,15 +1,16 @@
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCompletionListener;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityControlFragment;
+import java.util.List;
 
-class bjbg
-  implements ISuperPlayer.OnCompletionListener
+public class bjbg
+  implements DialogInterface.OnClickListener
 {
-  bjbg(bjbd parambjbd, AbsVideoPlayer.OnCompletionListener paramOnCompletionListener) {}
+  public bjbg(AuthorityControlFragment paramAuthorityControlFragment, List paramList) {}
   
-  public void onCompletion(ISuperPlayer paramISuperPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCompletionListener.onCompletion(this.jdField_a_of_type_Bjbd);
+    AuthorityControlFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlFragment).a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

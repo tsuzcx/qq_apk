@@ -1,8 +1,20 @@
-public abstract interface aytn
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import mqq.app.QQPermissionCallback;
+
+public class aytn
+  implements QQPermissionCallback
 {
-  public abstract void a();
+  public aytn(ScanOcrActivity paramScanOcrActivity) {}
   
-  public abstract void a(String paramString);
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhdj.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.grant();
+  }
 }
 
 

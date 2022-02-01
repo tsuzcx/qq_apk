@@ -18,11 +18,11 @@ class QQCustomDialogWtihInputAndChoose$2
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       if (this.this$0.viewSelected != null) {
-        this.this$0.viewSelected.findViewById(2131370010).setVisibility(8);
+        this.this$0.viewSelected.findViewById(2131370181).setVisibility(8);
       }
-      TextView localTextView = (TextView)paramView.findViewById(2131370011);
+      TextView localTextView = (TextView)paramView.findViewById(2131370182);
       this.this$0.setInputValue(localTextView.getText().toString());
-      paramView.findViewById(2131370010).setVisibility(0);
+      paramView.findViewById(2131370181).setVisibility(0);
       this.this$0.viewSelected = paramView;
     }
   }

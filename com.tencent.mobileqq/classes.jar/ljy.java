@@ -1,84 +1,56 @@
-import com.tencent.mobileqq.text.QQText.EmoticonSpan;
-import java.util.Comparator;
-import java.util.List;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class ljy
+  extends ljm
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public static final Object a;
-  public static final Comparator<ljy> a;
-  private static ljy b;
-  private static int c;
-  public int a;
-  public QQText.EmoticonSpan a;
-  private ljy a;
-  public int b;
-  
-  static
+  public ljy(ljk paramljk, ljl paramljl)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaUtilComparator = new ljz();
+    super(paramljk, paramljl);
   }
   
-  private ljy(QQText.EmoticonSpan paramEmoticonSpan, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTextQQText$EmoticonSpan = paramEmoticonSpan;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
+  public void a() {}
   
-  public static ljy a(QQText.EmoticonSpan paramEmoticonSpan, int paramInt1, int paramInt2)
+  public void a(long paramLong, SurfaceTexture paramSurfaceTexture)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Ljy != null)
-      {
-        ljy localljy = jdField_b_of_type_Ljy;
-        jdField_b_of_type_Ljy = localljy.jdField_a_of_type_Ljy;
-        localljy.a(paramEmoticonSpan, paramInt1, paramInt2);
-        c -= 1;
-        return localljy;
-      }
-      return new ljy(paramEmoticonSpan, paramInt1, paramInt2);
+    if (paramSurfaceTexture != null) {
+      paramSurfaceTexture.setOnFrameAvailableListener(this);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("SurfaceTag", 2, "setPreviewCallback, seq[" + paramLong + "], surfaceTexture[" + paramSurfaceTexture + "]");
     }
   }
   
-  private void a(QQText.EmoticonSpan paramEmoticonSpan, int paramInt1, int paramInt2)
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    this.jdField_a_of_type_Ljy = null;
-    this.jdField_a_of_type_ComTencentMobileqqTextQQText$EmoticonSpan = paramEmoticonSpan;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static void a(List<ljy> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    lox.a(paramSurfaceTexture);
+    a(this.jdField_a_of_type_Ljn);
+    int i = ljk.a;
+    int j = ljk.b;
+    this.jdField_a_of_type_Ljz.a(this.jdField_a_of_type_Ljn.a, this.jdField_a_of_type_Ljk.f, ljk.d, this.jdField_a_of_type_Ljk.e, this.jdField_a_of_type_Ljn.c, this.jdField_a_of_type_Ljn.d, this.jdField_a_of_type_Ljn.b, 0, i, j);
+    lox locallox;
+    long l;
+    int k;
+    int m;
+    int n;
+    if (this.jdField_a_of_type_Ljl != null)
     {
-      return;
-      int i = paramList.size() - 1;
-      while (i >= 0)
-      {
-        ljy localljy = (ljy)paramList.remove(i);
-        if (localljy != null) {
-          localljy.a();
-        }
-        i -= 1;
+      locallox = lox.a();
+      l = this.jdField_a_of_type_Ljz.j;
+      k = ljk.c;
+      m = this.jdField_a_of_type_Ljn.a;
+      n = this.jdField_a_of_type_Ljn.b;
+      if (this.jdField_a_of_type_Ljk.f != 1) {
+        break label171;
       }
     }
-  }
-  
-  public void a()
-  {
-    a(null, -1, -1);
-    synchronized (jdField_a_of_type_JavaLangObject)
+    label171:
+    for (boolean bool = true;; bool = false)
     {
-      if (c < 50)
-      {
-        this.jdField_a_of_type_Ljy = jdField_b_of_type_Ljy;
-        jdField_b_of_type_Ljy = this;
-        c += 1;
-      }
+      locallox.a(l, paramSurfaceTexture, i, j, k, m, n, bool, ljk.d, System.currentTimeMillis());
+      this.jdField_a_of_type_Ljl.a(locallox);
       return;
     }
   }

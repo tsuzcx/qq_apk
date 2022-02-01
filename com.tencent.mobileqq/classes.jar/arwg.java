@@ -1,8 +1,15 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class arwg
+  implements DialogInterface.OnClickListener
 {
-  View[] a = new View[12];
+  arwg(arvy paramarvy) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.cancel();
+  }
 }
 
 

@@ -1,27 +1,24 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
+import java.util.concurrent.ConcurrentHashMap;
 
-class alum
-  extends alve
+public class alum
+  implements Comparable<alum>
 {
-  public QQAppInterface a;
+  public int a;
+  public long a;
+  public int b;
   
-  alum(QQAppInterface paramQQAppInterface)
+  public alum(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
   {
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
+    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
   }
   
-  public void a(int paramInt)
+  public int a(alum paramalum)
   {
-    super.a(paramInt);
-    aluk.a(((alnr)this.a.getManager(153)).a(), paramInt);
-  }
-  
-  public void b(String paramString, int paramInt1, int paramInt2)
-  {
-    QLog.i("CmGameTemp_CmGameAudioManager", 0, "[onQueryAudioRoomId] friUin:" + paramString + ",roomID:" + paramInt1);
-    super.b(paramString, paramInt1, paramInt2);
-    ((alnr)this.a.getManager(153)).a().a(paramString, String.valueOf(paramInt1), paramInt2);
+    return -(int)(this.jdField_a_of_type_Long - paramalum.jdField_a_of_type_Long);
   }
 }
 

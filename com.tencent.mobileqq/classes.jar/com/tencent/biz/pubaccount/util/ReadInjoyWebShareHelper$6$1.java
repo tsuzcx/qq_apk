@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util;
 
-import uhk;
+import uvh;
 
 class ReadInjoyWebShareHelper$6$1
   implements Runnable
@@ -9,12 +9,12 @@ class ReadInjoyWebShareHelper$6$1
   
   public void run()
   {
-    uhk.c(this.a.this$0);
+    uvh.c(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.6.1
  * JD-Core Version:    0.7.0.1
  */

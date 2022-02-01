@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
-import amov;
-import bfvo;
+import anri;
+import bheg;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -10,11 +10,11 @@ public final class ProfileCardUtil$1
 {
   public void run()
   {
-    String str1 = amov.a(this.a, amov.b(BaseApplication.getContext()));
-    int i = amov.c(BaseApplication.getContext());
-    String str2 = amov.a(this.a, i);
-    bfvo.a(this.b, str1);
-    bfvo.a(this.b, str2, i, i);
+    String str1 = anri.a(this.a, anri.b(BaseApplication.getContext()));
+    int i = anri.c(BaseApplication.getContext());
+    String str2 = anri.a(this.a, i);
+    bheg.a(this.b, str1);
+    bheg.a(this.b, str2, i, i);
     FileUtils.delete(this.b, true);
   }
 }

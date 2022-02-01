@@ -1,86 +1,33 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.IEventReceiver;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bndh
-  extends bnec
-  implements IEventReceiver
+class bndh
+  implements Observer<bnpr>
 {
-  private bndi a;
+  bndh(bnda parambnda) {}
   
-  public bndh(@NonNull bnee parambnee)
+  public void a(@Nullable bnpr parambnpr)
   {
-    super(parambnee);
-    this.jdField_a_of_type_Bndi = new bndi(this.jdField_a_of_type_Bnee);
-  }
-  
-  public void a()
-  {
-    bncx localbncx = (bncx)a(bncx.class);
-    if (localbncx != null) {
-      localbncx.aI_();
-    }
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    if (parambnpr == null) {}
+    do
     {
-    }
-    for (;;)
-    {
-      return super.a(paramMessage);
-      int i;
-      DynamicTextConfigManager localDynamicTextConfigManager;
-      DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean;
-      try
+      return;
+      this.a.jdField_a_of_type_Bmxa.e();
+      bnda.a(this.a, parambnpr.b);
+      if (bnda.a(this.a) == AECaptureMode.NORMAL)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("EditVideoAblumList", 2, "handle message MESSAGE_DOODLE_LAYOUT_LOADED");
-        }
-        Object localObject = (EditVideoParams)this.jdField_a_of_type_Bnew.getActivity().getIntent().getParcelableExtra(EditVideoParams.class.getName());
-        i = ((EditVideoParams)localObject).a("extra_slide_sticker_id", -1);
-        localObject = ((EditVideoParams)localObject).a("extra_slide_sticker_str");
-        if ((TextUtils.isEmpty((CharSequence)localObject)) || (i == -1)) {
-          continue;
-        }
-        localDynamicTextConfigManager = (DynamicTextConfigManager)bmql.a(7);
-        if (!localDynamicTextConfigManager.a()) {
-          localDynamicTextConfigManager.a();
-        }
-        localDynamicTextConfigBean = localDynamicTextConfigManager.a(i + "");
-        if (localDynamicTextConfigBean == null) {
-          continue;
-        }
-        if (!localDynamicTextConfigManager.a(localDynamicTextConfigBean)) {
-          break label226;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EditVideoAblumList", 2, "isDynamicTextUsable, addSticker : " + localDynamicTextConfigBean.text_id);
-        }
-        this.jdField_a_of_type_Bnee.a(i, (String)localObject);
+        bnda.a(this.a);
+        return;
       }
-      catch (Exception localException) {}
-      if (QLog.isColorLevel())
+      if (bnda.a(this.a) == AECaptureMode.GIF)
       {
-        QLog.d("EditVideoAblumList", 2, bjna.a(localException));
-        continue;
-        label226:
-        if (QLog.isColorLevel()) {
-          QLog.d("EditVideoAblumList", 2, "configBean has not downloaded, start download : " + localDynamicTextConfigBean.text_id);
-        }
-        this.jdField_a_of_type_Bndi.a(i);
-        this.jdField_a_of_type_Bndi.a(localException);
-        localDynamicTextConfigManager.a(localDynamicTextConfigBean, this.jdField_a_of_type_Bndi);
+        this.a.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.setVisibility(8);
+        return;
       }
-    }
+    } while (bnda.a(this.a) != AECaptureMode.PLAY);
+    this.a.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.setVisibility(8);
   }
 }
 

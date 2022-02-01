@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import com.tencent.mobileqq.utils.NetworkUtil;
-
 public class ajlk
-  implements DialogInterface.OnKeyListener
 {
-  public ajlk(BaseActivityView paramBaseActivityView) {}
+  public long a;
+  public boolean a;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public ajlk()
   {
-    return (paramInt == 4) && (this.a.a.f()) && (NetworkUtil.isNetSupport(this.a.getContext()));
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 300000L;
+  }
+  
+  public String toString()
+  {
+    return "{isEnable=" + this.jdField_a_of_type_Boolean + ",interval=" + this.jdField_a_of_type_Long + "}";
   }
 }
 

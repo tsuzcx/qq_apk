@@ -13,11 +13,13 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class MiniAppSearch$StSearchAppRsp
   extends MessageMicro<StSearchAppRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34 }, new String[] { "extInfo", "appList", "isFinished", "highlightWords" }, new Object[] { null, null, Integer.valueOf(0), "" }, StSearchAppRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50 }, new String[] { "extInfo", "appList", "isFinished", "highlightWords", "searchExtInfo", "rcmdList" }, new Object[] { null, null, Integer.valueOf(0), "", null, null }, StSearchAppRsp.class);
   public final PBRepeatMessageField<STORE_APP_CLIENT.StoreAppInfo> appList = PBField.initRepeatMessage(STORE_APP_CLIENT.StoreAppInfo.class);
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBRepeatField<String> highlightWords = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBInt32Field isFinished = PBField.initInt32(0);
+  public final PBRepeatMessageField<STORE_APP_CLIENT.StoreAppInfo> rcmdList = PBField.initRepeatMessage(STORE_APP_CLIENT.StoreAppInfo.class);
+  public final PBRepeatMessageField<MiniAppSearch.SearchExtInfo> searchExtInfo = PBField.initRepeatMessage(MiniAppSearch.SearchExtInfo.class);
 }
 
 

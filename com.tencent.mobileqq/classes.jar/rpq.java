@@ -1,21 +1,18 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$handleVideoAddToTopicResult$1$1"}, k=3, mv={1, 1, 16})
 public final class rpq
-  implements View.OnClickListener
+  implements Parcelable.Creator<MultiBiuSameContent>
 {
-  public rpq(FragmentActivity paramFragmentActivity, int paramInt) {}
-  
-  public final void onClick(View paramView)
+  public MultiBiuSameContent a(Parcel paramParcel)
   {
-    String str = rha.a() + this.jdField_a_of_type_Int;
-    tgc.a((Context)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "", str, null, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new MultiBiuSameContent(paramParcel);
+  }
+  
+  public MultiBiuSameContent[] a(int paramInt)
+  {
+    return new MultiBiuSameContent[paramInt];
   }
 }
 

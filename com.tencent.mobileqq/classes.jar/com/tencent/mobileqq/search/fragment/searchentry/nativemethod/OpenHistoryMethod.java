@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.fragment.searchentry.nativemethod;
 
-import anaq;
 import android.content.Context;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
-import bbgh;
-import bbgk;
-import bjnd;
+import aodf;
+import bcmz;
+import bcnc;
+import bkyp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean;
 import com.tencent.mtt.hippy.common.HippyMap;
@@ -26,7 +26,7 @@ class OpenHistoryMethod
   @Nullable
   private TKDSearchHistoryBean getTargetHistoryBean(@NonNull HippyMap paramHippyMap)
   {
-    Object localObject = anaq.a().a();
+    Object localObject = aodf.a().a();
     int i = paramHippyMap.getInt("id");
     int j = paramHippyMap.getInt("fromWhere");
     paramHippyMap = ((List)localObject).iterator();
@@ -52,14 +52,14 @@ class OpenHistoryMethod
     if (!TextUtils.isEmpty(str2))
     {
       str1 = str2;
-      if (bjnd.a(str2)) {}
+      if (bkyp.a(str2)) {}
     }
     else
     {
-      str1 = bbgh.b(10);
-      str1 = bbgh.a(paramTKDSearchHistoryBean.getTitle(), 5, str1);
+      str1 = bcmz.b(10);
+      str1 = bcmz.a(paramTKDSearchHistoryBean.getTitle(), 5, str1);
     }
-    bbgk.a(this.app, this.context, str1);
+    bcnc.a(this.app, this.context, str1);
   }
   
   public String getFuncName()
@@ -76,7 +76,7 @@ class OpenHistoryMethod
       return;
     }
     openHistory(paramHippyMap);
-    anaq.a().a(paramHippyMap);
+    aodf.a().a(paramHippyMap);
     paramPromise.resolve("");
   }
 }

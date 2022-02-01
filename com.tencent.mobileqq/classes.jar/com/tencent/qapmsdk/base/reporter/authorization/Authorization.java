@@ -23,7 +23,6 @@ import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.Unit;
 import kotlin.io.CloseableKt;
-import kotlin.jvm.JvmField;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.text.Charsets;
 import org.jetbrains.annotations.NotNull;
@@ -35,8 +34,6 @@ public final class Authorization
 {
   public static final Authorization.Companion Companion = new Authorization.Companion(null);
   private static final String TAG = "QAPM_base_Authorization";
-  @JvmField
-  public static boolean isAuthorize = true;
   @NotNull
   private String appKey = "";
   

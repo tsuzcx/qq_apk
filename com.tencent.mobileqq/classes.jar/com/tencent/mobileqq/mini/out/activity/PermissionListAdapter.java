@@ -3,11 +3,14 @@ package com.tencent.mobileqq.mini.out.activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import anvx;
 import com.tencent.mobileqq.mini.app.AuthorizeCenter;
 import com.tencent.mobileqq.mini.app.AuthorizeCenter.AuthorizeInfo;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.Switch;
@@ -19,15 +22,20 @@ import java.util.List;
 public class PermissionListAdapter
   extends BaseAdapter
 {
+  public static final int VIEW_TYPE_COUNT = 2;
+  public static final int VIEW_TYPE_FORM_SIMPLE_ITEM = 1;
+  public static final int VIEW_TYPE_FORM_SWITCH_ITEM = 0;
   CompoundButton.OnCheckedChangeListener checkedChangeListener;
   Context context;
   protected LayoutInflater mInflater;
   List<AuthorizeCenter.AuthorizeInfo> scopeList;
+  View.OnClickListener subMsgPermissionClickListener;
   
-  public PermissionListAdapter(Context paramContext, CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
+  public PermissionListAdapter(Context paramContext, CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener, View.OnClickListener paramOnClickListener)
   {
     this.context = paramContext;
     this.checkedChangeListener = paramOnCheckedChangeListener;
+    this.subMsgPermissionClickListener = paramOnClickListener;
     this.mInflater = LayoutInflater.from(paramContext);
     this.scopeList = new ArrayList();
   }
@@ -68,70 +76,77 @@ public class PermissionListAdapter
     return paramInt;
   }
   
+  public int getItemViewType(int paramInt)
+  {
+    AuthorizeCenter.AuthorizeInfo localAuthorizeInfo = getItem(paramInt);
+    if ((localAuthorizeInfo != null) && ("setting.appMsgSubscribed".equals(localAuthorizeInfo.scopeName))) {
+      return 1;
+    }
+    return 0;
+  }
+  
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AuthorizeCenter.AuthorizeInfo localAuthorizeInfo = getItem(paramInt);
-    FormSwitchItem localFormSwitchItem;
-    boolean bool;
-    label50:
-    String str;
+    Object localObject;
     if (localAuthorizeInfo != null) {
-      if ((paramView instanceof FormSwitchItem))
+      if ("setting.appMsgSubscribed".equals(localAuthorizeInfo.scopeName))
       {
-        localFormSwitchItem = (FormSwitchItem)paramView;
-        localFormSwitchItem.a().setTag(localAuthorizeInfo.scopeName);
-        if (localAuthorizeInfo.authFlag != 2) {
-          break label127;
-        }
-        bool = true;
-        localFormSwitchItem.setChecked(bool);
-        str = (String)AuthorizeCenter.settingScopeTitleMap.get(localAuthorizeInfo.scopeName);
-        if (str == null) {
-          break label133;
-        }
-        label78:
-        localFormSwitchItem.setText(str);
+        localObject = new FormSimpleItem(this.context);
+        ((FormSimpleItem)localObject).a(true);
+        ((FormSimpleItem)localObject).setLeftText(anvx.a(2131693982));
+        ((FormSimpleItem)localObject).setOnClickListener(this.subMsgPermissionClickListener);
       }
     }
     for (;;)
     {
       EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localFormSwitchItem;
-      localFormSwitchItem = new FormSwitchItem(this.context);
-      localFormSwitchItem.setOnCheckedChangeListener(this.checkedChangeListener);
-      break;
-      label127:
-      bool = false;
-      break label50;
-      label133:
-      str = localAuthorizeInfo.scopeName;
-      break label78;
-      localFormSwitchItem = null;
+      return localObject;
+      label93:
+      boolean bool;
+      label118:
+      String str;
+      if ((paramView instanceof FormSwitchItem))
+      {
+        localObject = (FormSwitchItem)paramView;
+        ((FormSwitchItem)localObject).a().setTag(localAuthorizeInfo.scopeName);
+        if (localAuthorizeInfo.authFlag != 2) {
+          break label181;
+        }
+        bool = true;
+        ((FormSwitchItem)localObject).setChecked(bool);
+        ((FormSwitchItem)localObject).setOnCheckedChangeListener(this.checkedChangeListener);
+        str = (String)AuthorizeCenter.settingScopeTitleMap.get(localAuthorizeInfo.scopeName);
+        if (str == null) {
+          break label187;
+        }
+      }
+      for (;;)
+      {
+        ((FormSwitchItem)localObject).setText(str);
+        break;
+        localObject = new FormSwitchItem(this.context);
+        break label93;
+        label181:
+        bool = false;
+        break label118;
+        label187:
+        str = localAuthorizeInfo.scopeName;
+      }
+      localObject = null;
     }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
   }
   
   public void setScopeList(List<AuthorizeCenter.AuthorizeInfo> paramList)
   {
     this.scopeList.clear();
-    int i;
     if (paramList != null) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < paramList.size())
-      {
-        AuthorizeCenter.AuthorizeInfo localAuthorizeInfo = (AuthorizeCenter.AuthorizeInfo)paramList.get(i);
-        if ("setting.appMsgSubscribed".equals(localAuthorizeInfo.scopeName)) {
-          paramList.remove(localAuthorizeInfo);
-        }
-      }
-      else
-      {
-        this.scopeList.addAll(paramList);
-        return;
-      }
-      i += 1;
+      this.scopeList.addAll(paramList);
     }
   }
 }

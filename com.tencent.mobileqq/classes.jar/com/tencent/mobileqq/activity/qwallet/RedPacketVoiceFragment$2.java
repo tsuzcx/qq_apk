@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akgs;
+import alcl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 
@@ -13,7 +13,7 @@ class RedPacketVoiceFragment$2
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     if (localQQAppInterface != null) {
-      akgs.a().a(localQQAppInterface);
+      alcl.a().a(localQQAppInterface);
     }
   }
 }

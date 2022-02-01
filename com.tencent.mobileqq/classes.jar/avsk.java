@@ -1,21 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.qphone.base.util.QLog;
 
-public class avsk
-  extends bgok
+class avsk
+  implements avxb
 {
-  public avsk(ChatBackgroundManager paramChatBackgroundManager, String paramString, int paramInt1, int paramInt2) {}
+  avsk(avsj paramavsj) {}
   
-  public void a(long paramLong, int paramInt, Bundle paramBundle)
+  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    super.a(paramLong, paramInt, paramBundle);
-    paramBundle = ChatBackgroundManager.a(true, paramLong + "");
-    if (new File(paramBundle).exists()) {
-      aezp.a(this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getCurrentUin(), this.jdField_a_of_type_JavaLangString, paramBundle, this.jdField_a_of_type_Int, this.b);
-    }
+    QLog.i("GroupVideoManager|Communicate", 2, "receive startWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    avsj.a(this.a, paramNewTogetherRoomMessageData, 1);
+  }
+  
+  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    QLog.i("GroupVideoManager|Communicate", 2, "receive switchWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    avsj.a(this.a, paramNewTogetherRoomMessageData, 3);
+  }
+  
+  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    QLog.i("GroupVideoManager|Communicate", 2, "receive closeWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    avsj.a(this.a, paramNewTogetherRoomMessageData, 2);
   }
 }
 

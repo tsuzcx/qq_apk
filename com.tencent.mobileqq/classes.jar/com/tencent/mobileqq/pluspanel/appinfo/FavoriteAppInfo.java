@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import afcm;
-import agwt;
-import ayfu;
+import aftr;
+import ahpt;
+import ahvi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -22,7 +23,7 @@ public class FavoriteAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130844081;
+    return 2130844144;
   }
   
   public int getAppID()
@@ -51,17 +52,17 @@ public class FavoriteAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697909);
+    return BaseApplicationImpl.getContext().getString(2131698192);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    paramayfu.a("chat_tool_qfav", localQQAppInterface.getCurrentAccountUin());
-    paramayfu.b(paramBaseChatPie);
-    afcm.b(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo);
+    paramahvi.a("chat_tool_qfav", localQQAppInterface.getCurrentAccountUin());
+    paramahvi.b(paramBaseChatPie);
+    aftr.b(localQQAppInterface, paramBaseChatPie.getActivity(), paramSessionInfo);
     paramBaseChatPie.getActivity().setCanLock(false);
-    agwt.a(localQQAppInterface, "0X8005CB1", paramSessionInfo.curType);
+    ahpt.a(localQQAppInterface, "0X8005CB1", paramSessionInfo.curType);
   }
 }
 

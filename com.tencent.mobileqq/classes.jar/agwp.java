@@ -1,30 +1,17 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPoke;
 
-class agwp
-  implements View.OnTouchListener
+final class agwp
+  implements ahab
 {
-  agwp(agwl paramagwl) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    paramQQAppInterface = (MessageForPoke)paramChatMessage;
+    if ((paramQQAppInterface.interactType == 126) && (!ahcw.a(paramQQAppInterface.minVersion))) {
+      return 0;
     }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
-    }
+    return 62;
   }
 }
 

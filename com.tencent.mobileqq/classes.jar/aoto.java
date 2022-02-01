@@ -1,84 +1,70 @@
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aoto
-  extends BaseAdapter
+public class aoto
+  extends aouc
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<aouk> jdField_a_of_type_JavaUtilList;
-  
-  public aoto(aotj paramaotj, Context paramContext)
+  public aoto(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramQQAppInterface, paramContext);
   }
   
-  public aouk a(int paramInt)
+  private boolean C()
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
-    }
-    return (aouk)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a(List<aouk> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    if (paramView == null)
+    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("roomcode");
+    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromid");
+    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("isgroupcode");
+    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("backtype");
+    String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("open_type");
+    String str6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("extra");
+    avsv localavsv = (avsv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER);
+    try
     {
-      paramView = new aotq(this);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844784);
-      localObject1 = new ViewGroup.LayoutParams(MessageForArkApp.dp2px(50.0F), -1);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      localObject1 = new RelativeLayout.LayoutParams(MessageForArkApp.dp2px(28.0F), MessageForArkApp.dp2px(25.0F));
-      ((RelativeLayout.LayoutParams)localObject1).addRule(13);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramView.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
-      localObject1 = paramView.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      ((View)localObject1).setTag(paramView);
+      i = Integer.parseInt(str3);
+      QLog.i("GroupVideoAction", 1, "[goToGroupVideoPlugin], roomId:" + str1 + ",fromId:" + str2 + " isGroupCode:" + str3);
+      localavsv.a(this.jdField_a_of_type_AndroidContentContext, str1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), i, "download", str2, str4, str5, str6);
+      return true;
     }
-    for (;;)
+    catch (Exception localException)
     {
-      Object localObject2 = a(paramInt);
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((aouk)localObject2).d))) {
-        ArkAppCacheMgr.getAppIcon(((aouk)localObject2).a, new aotp(this, paramView));
+      for (;;)
+      {
+        int i = 1;
       }
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject2 = (aotq)paramView.getTag();
-      localObject1 = paramView;
-      paramView = (View)localObject2;
     }
+  }
+  
+  private boolean D()
+  {
+    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromid");
+    localObject = (avsv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER);
+    QLog.i("GroupVideoAction", 1, "[goToPreLoadGroupVideoPlugin]");
+    ((avsv)localObject).a(null, 10L);
+    return true;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      if ("openroom".equals(this.c)) {
+        return C();
+      }
+      if ("preload".equals(this.c))
+      {
+        boolean bool = D();
+        return bool;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("GroupVideoAction", 1, "doAction error: " + localException.getMessage());
+      a("GroupVideoAction");
+    }
+    return false;
   }
 }
 

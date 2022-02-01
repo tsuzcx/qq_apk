@@ -1,20 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-
-public class bizf
-  implements DialogInterface.OnClickListener
+public abstract interface bizf
 {
-  public bizf(OpenSDKAppInterface paramOpenSDKAppInterface) {}
+  public abstract Object decode(Object paramObject);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract Object encode(Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bizf
  * JD-Core Version:    0.7.0.1
  */

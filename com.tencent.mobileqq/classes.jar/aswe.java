@@ -1,20 +1,48 @@
+import android.content.res.Resources;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aswe
+public class aswe
   implements View.OnClickListener
 {
-  aswe(aswb paramaswb) {}
+  public aswe(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
   
   public void onClick(View paramView)
   {
-    aswb.a(this.a, true);
-    this.a.jdField_a_of_type_Asxe.f(true);
-    this.a.jdField_a_of_type_Asxe.d(false);
-    aswb.a(this.a);
-    this.a.jdField_a_of_type_Asst.f();
-    EventCollector.getInstance().onViewClicked(paramView);
+    long l;
+    if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
+    {
+      l = System.currentTimeMillis();
+      if ((l - this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b < Face2FaceAddFriendActivity.jdField_a_of_type_Long) && (l > this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b)) {
+        if (QLog.isColorLevel()) {
+          QLog.e(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "click too offen,please try again later ");
+        }
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b = l;
+      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendDetailView.d();
+      Object localObject = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
+      ((Message)localObject).what = 2;
+      ((Message)localObject).arg1 = 2;
+      ((Message)localObject).obj = this.jdField_a_of_type_JavaLangString;
+      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage((Message)localObject);
+      bdla.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 2, 0, "", "", "", "");
+      continue;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131692084);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, (CharSequence)localObject, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
+    }
   }
 }
 

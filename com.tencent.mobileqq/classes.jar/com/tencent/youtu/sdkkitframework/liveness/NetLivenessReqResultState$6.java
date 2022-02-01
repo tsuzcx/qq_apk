@@ -1,25 +1,19 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
+import com.tencent.youtu.sdkkitframework.common.YtLogger;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
-import com.tencent.youtu.ytagreflectlivecheck.requester.UploadVideoRequesterV3.UploadVideoResponse;
 import java.util.HashMap;
 
 class NetLivenessReqResultState$6
   implements YtSDKKitFramework.IYtSDKKitNetResponseParser
 {
-  NetLivenessReqResultState$6(NetLivenessReqResultState paramNetLivenessReqResultState, UploadVideoRequesterV3.UploadVideoResponse paramUploadVideoResponse) {}
+  NetLivenessReqResultState$6(NetLivenessReqResultState paramNetLivenessReqResultState) {}
   
   public void onNetworkResponseEvent(HashMap<String, String> paramHashMap, Exception paramException)
   {
-    if (paramException != null) {
-      this.val$uploadVideoResponseV3.onFailed(1, paramException.getLocalizedMessage());
-    }
-    for (;;)
-    {
-      NetLivenessReqResultState.access$200(this.this$0);
-      return;
-      this.val$uploadVideoResponseV3.onSuccess((String)paramHashMap.get("response"));
-    }
+    YtLogger.i(NetLivenessReqResultState.access$000(), "Handle action response");
+    NetLivenessReqResultState.access$100(this.this$0, paramHashMap, paramException);
+    NetLivenessReqResultState.access$200(this.this$0);
   }
 }
 

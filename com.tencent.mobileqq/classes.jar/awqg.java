@@ -1,38 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
+import android.util.Log;
+import java.util.ArrayList;
 
-public final class awqg
-  implements Parcelable.Creator<LocalMediaInfo>
+public class awqg
 {
-  public LocalMediaInfo a(Parcel paramParcel)
+  public static awpy a(String paramString, boolean paramBoolean)
   {
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_d_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_e_of_type_Long = paramParcel.readLong();
-    localLocalMediaInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.h = paramParcel.readInt();
-    localLocalMediaInfo.i = paramParcel.readInt();
-    localLocalMediaInfo.j = paramParcel.readInt();
-    localLocalMediaInfo.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramParcel.readInt());
-    localLocalMediaInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localLocalMediaInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localLocalMediaInfo.g = paramParcel.readInt();
-    localLocalMediaInfo.f = paramParcel.readInt();
-    return localLocalMediaInfo;
-  }
-  
-  public LocalMediaInfo[] a(int paramInt)
-  {
-    return new LocalMediaInfo[0];
+    if ((paramString != null) && (paramString.length() >= 0))
+    {
+      if (paramBoolean) {}
+      for (;;)
+      {
+        try
+        {
+          paramString = new awqk(paramString).a();
+          if ((paramString == null) || (paramString.a.size() <= 0)) {
+            break;
+          }
+          return paramString;
+        }
+        catch (Exception paramString)
+        {
+          Log.e("LyricParseHelper", "parse exception:", paramString);
+        }
+        paramString = new awqh(paramString).a();
+      }
+    }
+    return null;
   }
 }
 

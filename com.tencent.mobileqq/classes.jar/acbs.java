@@ -1,22 +1,29 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.gdtad.api.banner.rectangle.GdtBannerViewWithRectangleStyle;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acbs
-  implements abzb
+  implements View.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
-  {
-    ((anwf)paramQQAppInterface.getBusinessHandler(62)).a(paramMsgType0x210.vProtobuf);
-    bblf.a(paramMessageHandler, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
-  }
+  public acbs(GdtBannerViewWithRectangleStyle paramGdtBannerViewWithRectangleStyle) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(View paramView)
   {
-    a(paramabxc.a(), paramabxc.a().getMsgHandler(), paramMsgInfo, paramMsgType0x210);
-    return null;
+    int i = 8;
+    if (!GdtBannerViewWithRectangleStyle.a(this.a)) {
+      acho.d("GdtBannerViewWithRectangleStyle", "optionsContainerOnClickListener.OnClickListener error");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (GdtBannerViewWithRectangleStyle.a(this.a).getVisibility() == 8) {
+        i = 0;
+      }
+      GdtBannerViewWithRectangleStyle.a(this.a).setVisibility(i);
+    }
   }
 }
 

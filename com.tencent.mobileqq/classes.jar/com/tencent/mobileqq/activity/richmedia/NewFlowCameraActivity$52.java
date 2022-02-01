@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import akxm;
+import alvi;
 import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
@@ -28,7 +28,7 @@ class NewFlowCameraActivity$52
       for (long l = 1500L;; l = 3000L)
       {
         if (this.jdField_a_of_type_Int == 3) {
-          l = akxm.a();
+          l = alvi.a();
         }
         if (this.jdField_a_of_type_JavaLangString == null) {
           break;

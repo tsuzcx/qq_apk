@@ -1,9 +1,10 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import amxz;
 import android.os.Handler;
 import android.text.TextUtils;
+import aoan;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class PublicAccountImageCollectionMainActivity$16
   implements Runnable
@@ -13,19 +14,19 @@ class PublicAccountImageCollectionMainActivity$16
   public void run()
   {
     if (TextUtils.isEmpty(this.this$0.a)) {}
-    amxz localamxz;
+    aoan localaoan;
     do
     {
       return;
-      localamxz = (amxz)this.this$0.app.getManager(56);
-    } while (localamxz == null);
-    PublicAccountImageCollectionMainActivity.c(this.this$0, localamxz.a(Long.valueOf(this.this$0.a)));
+      localaoan = (aoan)this.this$0.app.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+    } while (localaoan == null);
+    PublicAccountImageCollectionMainActivity.c(this.this$0, localaoan.a(Long.valueOf(this.this$0.a)));
     PublicAccountImageCollectionMainActivity.a(this.this$0).postDelayed(new PublicAccountImageCollectionMainActivity.16.1(this), 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.16
  * JD-Core Version:    0.7.0.1
  */

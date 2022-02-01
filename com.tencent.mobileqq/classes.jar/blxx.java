@@ -1,24 +1,18 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.SendMsg;
 
-public class blxx
-  extends RecyclerView.ViewHolder
+public final class blxx
+  implements Parcelable.Creator<SendMsg>
 {
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  ImageView b;
-  
-  public blxx(View paramView)
+  public SendMsg a(Parcel paramParcel)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362269));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362265));
-    this.b = ((ImageView)paramView.findViewById(2131362271));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131362270));
+    return new SendMsg(paramParcel);
+  }
+  
+  public SendMsg[] a(int paramInt)
+  {
+    return new SendMsg[paramInt];
   }
 }
 

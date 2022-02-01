@@ -1,66 +1,30 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.GalleryProteusItem.1;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONObject;
-import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class qcb
-  implements qdy
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public qcb(VideoView paramVideoView) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void onGlobalLayout()
   {
-    if (paramInt == 103) {
-      return pzp.a(paramBaseArticleInfo);
-    }
-    if (paramInt == 102) {
-      return pzn.a(paramBaseArticleInfo);
-    }
-    return pzo.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
-  {
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    Object localObject = (qgt)localViewBase.findViewBaseByName("id_info_avator");
-    if (localObject != null)
+    if ((VideoView.access$400(this.a) == VideoView.PLAYMODE_AUTO) && (!this.a.needInterceptGlobalLayoutChanged))
     {
-      ((qgt)localObject).a(parampvc, false);
-      parampvc = parampvc.a();
-      localObject = (NativeAvatarView)((qgt)localObject).getNativeView();
-      if ((pay.b(parampvc)) && (parampvc.mGalleryFeedsInfo.uint32_is_account_derelict.has()) && (parampvc.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1)) {
-        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130846273));
+      if ((this.a.isShown()) && (VideoView.access$500(this.a).get() != 3))
+      {
+        VideoView.access$500(this.a).set(3);
+        QLog.d("gifvideo.VideoView", 1, "show to play");
+        this.a.startPlay();
+      }
+      if ((!this.a.isShown()) && (VideoView.access$500(this.a).get() != 5))
+      {
+        VideoView.access$500(this.a).set(5);
+        QLog.d("gifvideo.VideoView", 1, "unshow to stop");
+        this.a.stop();
       }
     }
-    paramContainer = (NativeText)localViewBase.findViewBaseByName("id_nickname");
-    parampvc = localViewBase.findViewBaseByName("id_view_nickname");
-    if ((paramContainer != null) && (parampvc != null))
-    {
-      paramContainer = (NativeTextImp)paramContainer.getNativeView();
-      parampvc = parampvc.getNativeView();
-      if ((paramContainer != null) && (parampvc != null)) {
-        parampvc.post(new GalleryProteusItem.1(this, parampvc, paramContainer));
-      }
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
-  {
-    return false;
   }
 }
 

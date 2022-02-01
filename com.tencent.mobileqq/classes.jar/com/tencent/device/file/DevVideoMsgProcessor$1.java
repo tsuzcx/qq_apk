@@ -1,9 +1,9 @@
 package com.tencent.device.file;
 
 import android.content.Intent;
-import bbqf;
-import bbqx;
-import bbrp;
+import bcwz;
+import bcxr;
+import bcyj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,7 +14,7 @@ public final class DevVideoMsgProcessor$1
   
   public void run()
   {
-    bbqx localbbqx = bbqf.a(0, 1);
+    bcxr localbcxr = bcwz.a(0, 1);
     Object localObject = new Intent();
     ((Intent)localObject).addFlags(603979776);
     ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_JavaLangString);
@@ -22,12 +22,12 @@ public final class DevVideoMsgProcessor$1
     ((Intent)localObject).putExtra("file_send_business_type", 1);
     ((Intent)localObject).putExtra("file_send_path", this.b);
     long l = System.currentTimeMillis();
-    localObject = bbqf.a(1, localObject, localbbqx);
+    localObject = bcwz.a(1, localObject, localbcxr);
     if (QLog.isColorLevel()) {
       QLog.i("DeviceShortVideo", 2, "createShortVideoUploadInfo cost:" + (System.currentTimeMillis() - l));
     }
-    localbbqx.a((bbrp)localObject);
-    bbqf.a(localbbqx, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    localbcxr.a((bcyj)localObject);
+    bcwz.a(localbcxr, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

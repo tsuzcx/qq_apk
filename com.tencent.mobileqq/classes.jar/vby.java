@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class vby
-  implements View.OnClickListener
 {
-  vby(vbw paramvbw) {}
-  
-  public void onClick(View paramView)
-  {
-    vbw.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  private static final vbw a = new vbw(null);
 }
 
 

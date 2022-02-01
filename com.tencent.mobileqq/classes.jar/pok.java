@@ -1,11 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class pok
-  implements bjta
+class pok
+  extends qdb
 {
-  public pok(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
+  pok(pob parampob, String paramString1, Context paramContext, ArticleInfo paramArticleInfo, String paramString2, int paramInt)
+  {
+    super(paramString1);
+  }
   
-  public void a() {}
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
 }
 
 

@@ -1,13 +1,31 @@
-import android.os.IInterface;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public abstract interface aofp
-  extends IInterface
+public class aofp
 {
-  public abstract void a();
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", arju.c().a(paramString2, paramString1));
+    localIntent.putExtra("hide_operation_bar", true);
+    paramContext.startActivity(localIntent);
+  }
   
-  public abstract void a(int paramInt);
+  public static boolean a(int paramInt)
+  {
+    return paramInt != 0;
+  }
   
-  public abstract void b();
+  public static boolean b(int paramInt)
+  {
+    return (paramInt & 0x1) != 0;
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt & 0x2) != 0;
+  }
 }
 
 

@@ -1,17 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agyx
-  implements bhhk
+  extends ahaa
 {
-  agyx(agyh paramagyh) {}
-  
-  public void onProgressChanged(bhhi parambhhi, int paramInt1, int paramInt2) {}
-  
-  public void onProgressCompleted(bhhi parambhhi)
+  agyx(agvm paramagvm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambhhi);
-    }
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agrl(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

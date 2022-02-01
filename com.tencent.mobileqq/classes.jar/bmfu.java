@@ -1,24 +1,38 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+import android.os.Bundle;
+import cooperation.qqreader.proxy.ReaderInterfacePluginProxy;
 
 public class bmfu
-  implements Animator.AnimatorListener
 {
-  public bmfu(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  private static bmfu a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static bmfu a()
   {
-    AEEditorAILoadingView.c(this.a).setVisibility(8);
-    AEEditorAILoadingView.d(this.a).playAnimation();
+    try
+    {
+      if (a == null) {
+        a = new bmfu();
+      }
+      bmfu localbmfu = a;
+      return localbmfu;
+    }
+    finally {}
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public boolean a(String paramString, Bundle paramBundle)
+  {
+    if (!bmef.a().a())
+    {
+      bmgm.d("ReaderInterfacePlugin", "plugin is not Ready, launch it");
+      bmef.a().a();
+    }
+    ReaderInterfacePluginProxy localReaderInterfacePluginProxy;
+    do
+    {
+      return false;
+      localReaderInterfacePluginProxy = bmef.a().a();
+    } while (localReaderInterfacePluginProxy == null);
+    return localReaderInterfacePluginProxy.handleEvent(paramString, paramBundle);
+  }
 }
 
 

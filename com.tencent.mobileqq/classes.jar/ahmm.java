@@ -1,39 +1,22 @@
-import android.graphics.Rect;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleImageView;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class ahmm
-  implements ahmn
+  implements agrc
 {
-  public ahmm(StickerBubbleListView paramStickerBubbleListView) {}
+  public ahmm(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void a(View paramView)
+  public void a()
   {
-    if (((paramView instanceof StickerBubbleImageView)) && (paramView.getVisibility() == 0))
+    UnlimitedBladeWorks.a(this.a).b = true;
+    UnlimitedBladeWorks.a(this.a).a = false;
+    if (UnlimitedBladeWorks.a(this.a) != null)
     {
-      ((StickerBubbleImageView)paramView).a();
-      if ((StickerBubbleListView.a(this.a) == null) || (StickerBubbleListView.a(this.a).get() != paramView)) {
-        StickerBubbleListView.a(this.a, new WeakReference((StickerBubbleImageView)paramView));
-      }
-      paramView = (View)paramView.getParent();
-      View localView = (View)paramView.getParent();
-      if (StickerBubbleListView.a(this.a) == null) {
-        StickerBubbleListView.a(this.a, new Rect());
-      }
-      Rect localRect = StickerBubbleListView.a(this.a);
-      int i = localView.getLeft();
-      int j = paramView.getLeft();
-      int k = localView.getTop();
-      int m = paramView.getTop();
-      int n = localView.getLeft();
-      int i1 = paramView.getRight();
-      int i2 = localView.getTop();
-      localRect.set(i + j, k + m, n + i1, paramView.getBottom() + i2);
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleListView", 2, "notifyItemViewTouchDown with rect: " + StickerBubbleListView.a(this.a));
+      UnlimitedBladeWorks.a(this.a).a();
+      if (UnlimitedBladeWorks.b(this.a))
+      {
+        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
+        UnlimitedBladeWorks.a(this.a, 0);
       }
     }
   }

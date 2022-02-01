@@ -1,58 +1,17 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aizr
-  extends amrc
+  implements View.OnClickListener
 {
-  public aizr(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public aizr(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
   
-  protected void onCollectDiscussion(boolean paramBoolean, Long paramLong)
+  public void onClick(View paramView)
   {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
-    }
-  }
-  
-  protected void onGetDiscAtAllRemianCount(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
-  {
-    this.a.getActivity().runOnUiThread(new ChatHistoryTroopMemberFragment.40.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
-  }
-  
-  protected void onKickoutDiscussionMember(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    if (paramBoolean)
-    {
-      bcef.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
-      this.a.a(paramLong2 + "");
-      if (this.a.jdField_a_of_type_Ajae != null) {
-        this.a.jdField_a_of_type_Ajae.a();
-      }
-      if (this.a.k)
-      {
-        this.a.d(paramLong2 + "");
-        if (this.a.jdField_a_of_type_Ajag != null) {
-          this.a.jdField_a_of_type_Ajag.notifyDataSetChanged();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.c != null) {
-        this.a.c.dismiss();
-      }
-      return;
-      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131693246), 0).b(this.a.getActivity().getTitleBarHeight());
-    }
-  }
-  
-  protected void onUncollectDiscussion(boolean paramBoolean, Long paramLong)
-  {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
-    }
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,55 +1,126 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.transfile.BaseDownloadProcessor;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 
-class ahto
-  extends Handler
+public class ahto
+  implements afsn
 {
-  ahto(ahtj paramahtj, Looper paramLooper)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private ahts jdField_a_of_type_Ahts;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+  private String jdField_a_of_type_JavaLangString;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int b;
+  private int c;
+  
+  public ahto(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, ahts paramahts, long paramLong, int paramInt1, int paramInt2)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+    this.jdField_a_of_type_Ahts = paramahts;
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
-  public void handleMessage(Message paramMessage)
+  private void a(FileMsg paramFileMsg)
   {
-    switch (paramMessage.what)
+    switch (paramFileMsg.status)
     {
     }
-    int i;
     do
     {
       do
       {
         do
         {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+              } while (!QLog.isColorLevel());
+              QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_RECV_FINISHED");
+              return;
+              this.jdField_a_of_type_Int = paramFileMsg.errorCode;
+            } while (!QLog.isColorLevel());
+            QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_RECV_ERROR  error = " + this.jdField_a_of_type_Int);
+            return;
+            this.jdField_a_of_type_Int = paramFileMsg.errorCode;
+          } while (!QLog.isColorLevel());
+          QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_FILE_UNSAFE  error = " + this.jdField_a_of_type_Int);
           return;
-          paramMessage = (ahua)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituManager", 2, ahtj.a(paramMessage.d, "main handler", paramMessage.a, "all img process is finished, now is in main thread"));
-          }
-          this.a.e(paramMessage);
-          return;
-          paramMessage = (String)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituManager", 2, "response is empty, errorMsg is " + paramMessage);
-          }
-        } while (this.a.jdField_a_of_type_Ahtv == null);
-        this.a.jdField_a_of_type_Ahtv.a(paramMessage);
+          this.jdField_a_of_type_Int = paramFileMsg.errorCode;
+        } while (!QLog.isColorLevel());
+        QLog.d("carverW GetUrlAction", 2, "handleMessage STATUS_FILE_EXPIRED  error = " + this.jdField_a_of_type_Int);
         return;
-        i = paramMessage.arg1;
-        paramMessage = (String)paramMessage.obj;
-        if (paramMessage.equals(this.a.a())) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d("carverW GetUrlAction", 2, "STATUS_RECV_PROCESS: get url finished urls=" + paramFileMsg.urls + " domain =" + paramFileMsg.domain + " mMsg=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("ZhituManager", 2, ahtj.a(paramMessage, "main handler", "reqKey is outdated, skip"));
-      return;
-      if (this.a.jdField_a_of_type_Ahty != null) {
-        this.a.jdField_a_of_type_Ahty.a(i, paramMessage);
+      } while (paramFileMsg.urls == null);
+      this.jdField_a_of_type_ArrayOfJavaLangString = paramFileMsg.urls;
+      this.jdField_a_of_type_JavaLangString = paramFileMsg.domain;
+      int i = 0;
+      while (i < 1)
+      {
+        if (!StringUtil.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          localObject = new StringBuilder();
+          String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+          arrayOfString[i] = (arrayOfString[i] + "&txhost=" + this.jdField_a_of_type_JavaLangString);
+        }
+        i += 1;
       }
-    } while (this.a.jdField_a_of_type_Ahtv == null);
-    this.a.jdField_a_of_type_Ahtv.a(i, paramMessage);
+    } while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (!MessageForShortVideo.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo)) || (this.jdField_a_of_type_Ahts == null));
+    Object localObject = ShortVideoUtils.getShortVideoSavePath(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
+    this.jdField_a_of_type_Ahts.a(this.jdField_a_of_type_Long, this.b, this.c, (String)localObject, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, paramFileMsg.fileType, null);
+  }
+  
+  public void a()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin;
+    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq;
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().findProcessor((String)localObject, l);
+    if ((localObject != null) && ((localObject instanceof BaseDownloadProcessor))) {
+      ((BaseDownloadProcessor)localObject).cancel();
+    }
+    localObject = new View(BaseApplicationImpl.getApplication());
+    afsl localafsl = afsl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (localafsl != null) {
+      localafsl.a((View)localObject, this);
+    }
+    localObject = bcwz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, 1);
+    if (localObject != null) {
+      bcwz.a((bcxr)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+  }
+  
+  public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq != paramFileMsg.uniseq)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("carverW GetUrlAction", 2, " handleMessage return file.uniseq=" + paramFileMsg.uniseq);
+      }
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("carverW GetUrlAction", 2, " handleMessage what==" + paramInt1 + ", arg1:" + paramInt2 + " fileType=" + paramFileMsg.fileType + " status=" + paramFileMsg.status + " msg.id=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+      }
+    } while ((paramFileMsg.fileType != 6) && (paramFileMsg.fileType != 17) && (paramFileMsg.fileType != 9) && (paramFileMsg.fileType != 20));
+    a(paramFileMsg);
   }
 }
 

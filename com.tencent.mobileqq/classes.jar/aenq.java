@@ -1,40 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
 
-public class aenq
-  implements View.OnClickListener
+public final class aenq
+  implements Parcelable.Creator<ProfileActivity.CardContactInfo>
 {
-  public aenq(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
+  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
   {
-    Object localObject = new Intent();
-    ((Intent)localObject).putExtra("troop_uin", this.a.b);
-    List localList = (List)this.a.jdField_a_of_type_Aeoz.a.get(TroopMemberListActivity.a(this.a));
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < localList.size())
-    {
-      localArrayList.add(((aeox)localList.get(i)).a);
-      i += 1;
-    }
-    ((Intent)localObject).putExtra("members_uin", localArrayList);
-    PublicFragmentActivity.a(paramView.getContext(), (Intent)localObject, TroopMemberHistoryFragment.class);
-    localObject = ((TroopManager)this.a.app.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.app.getCurrentAccountUin());
-    bftc.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bftc.a((TroopMemberInfo)localObject) });
-    EventCollector.getInstance().onViewClicked(paramView);
+    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
+    localCardContactInfo.a = paramParcel.readString();
+    localCardContactInfo.c = paramParcel.readString();
+    localCardContactInfo.b = paramParcel.readString();
+    return localCardContactInfo;
+  }
+  
+  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  {
+    return new ProfileActivity.CardContactInfo[paramInt];
   }
 }
 

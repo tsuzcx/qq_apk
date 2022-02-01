@@ -25,15 +25,15 @@ public class ReadinjoyFormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131165351);
+      return paramResources.getColorStateList(2131165357);
     case 0: 
-      return paramResources.getColorStateList(2131165351);
+      return paramResources.getColorStateList(2131165357);
     case 2: 
-      return paramResources.getColorStateList(2131165695);
+      return paramResources.getColorStateList(2131165704);
     case 1: 
-      return paramResources.getColorStateList(2131165387);
+      return paramResources.getColorStateList(2131165393);
     }
-    return paramResources.getColorStateList(2131165695);
+    return paramResources.getColorStateList(2131165704);
   }
   
   public Drawable a(Resources paramResources, int paramInt)
@@ -41,32 +41,32 @@ public class ReadinjoyFormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130846296);
+      return paramResources.getDrawable(2130846392);
     case 0: 
       if (b) {
-        return paramResources.getDrawable(2130846296);
+        return paramResources.getDrawable(2130846392);
       }
-      return paramResources.getDrawable(2130846290);
+      return paramResources.getDrawable(2130846386);
     case 1: 
       if (b) {
-        return paramResources.getDrawable(2130846299);
+        return paramResources.getDrawable(2130846395);
       }
-      return paramResources.getDrawable(2130846295);
+      return paramResources.getDrawable(2130846391);
     case 2: 
       if (b) {
-        return paramResources.getDrawable(2130846298);
+        return paramResources.getDrawable(2130846394);
       }
-      return paramResources.getDrawable(2130846293);
+      return paramResources.getDrawable(2130846389);
     }
     if (b) {
-      return paramResources.getDrawable(2130846297);
+      return paramResources.getDrawable(2130846393);
     }
-    return paramResources.getDrawable(2130846291);
+    return paramResources.getDrawable(2130846387);
   }
   
   public void a()
   {
-    setArrowIcon(getResources().getDrawable(2130847160));
+    setArrowIcon(getResources().getDrawable(2130847258));
     super.a();
   }
 }

@@ -1,26 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.view.ViewPropertyAnimator;
-import com.tencent.mobileqq.webview.webso.WebSoService.12;
+import android.view.Choreographer.FrameCallback;
 
-public class bgyv
-  implements Animator.AnimatorListener
+class bgyv
+  implements Choreographer.FrameCallback
 {
-  public bgyv(WebSoService.12 param12, ViewPropertyAnimator paramViewPropertyAnimator) {}
+  bgyv(bgyu parambgyu) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void doFrame(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$12.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$12.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$12.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewViewPropertyAnimator.setListener(null);
+    bgyu.a(this.a, paramLong);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

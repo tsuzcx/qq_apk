@@ -1,24 +1,11 @@
-import android.graphics.RectF;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class ahlt
+  extends ahlr
 {
-  public int a;
-  public ahlu a;
-  public ahlv a;
-  public RectF a;
-  
-  public ahlt()
-  {
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_Ahlv = new ahlv(0.0D, 0.0D);
-    this.jdField_a_of_type_Ahlu = new ahlu(0.0D, 0.0D);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public String toString()
-  {
-    return "ItemStatus{rect=" + this.jdField_a_of_type_AndroidGraphicsRectF + ", velocity=" + this.jdField_a_of_type_Ahlv + ", acceleration=" + this.jdField_a_of_type_Ahlu + '}';
-  }
+  public EllipsizingTextView a;
+  public BubbleImageView a;
 }
 
 

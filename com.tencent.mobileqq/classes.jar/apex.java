@@ -1,45 +1,33 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-class apex
-  extends AnimatorListenerAdapter
+public class apex
+  extends apeh
 {
-  apex(apet paramapet, apfd paramapfd) {}
+  public ArCloudConfigInfo a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public apex(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if ((this.jdField_a_of_type_Apet.d != null) && (this.jdField_a_of_type_Apet.e != null))
-    {
-      this.jdField_a_of_type_Apet.d.setVisibility(4);
-      this.jdField_a_of_type_Apet.e.setVisibility(0);
-      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Apet.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
-      paramAnimator.jdField_a_of_type_Long = -1L;
-      this.jdField_a_of_type_Apet.a("show pendant, " + this.jdField_a_of_type_Apet.jdField_a_of_type_Long);
-      paramAnimator.b();
-    }
-    if (this.jdField_a_of_type_Apet.c != null) {
-      this.jdField_a_of_type_Apet.c.setVisibility(0);
-    }
+    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public String toString()
   {
-    if ((this.jdField_a_of_type_Apet.d != null) && (this.jdField_a_of_type_Apet.e != null))
-    {
-      this.jdField_a_of_type_Apet.d.setVisibility(0);
-      this.jdField_a_of_type_Apet.e.setVisibility(4);
-      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Apet.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
-      this.jdField_a_of_type_Apet.a("stop show pendant, " + this.jdField_a_of_type_Apet.jdField_a_of_type_Long);
-      paramAnimator.jdField_a_of_type_Long = this.jdField_a_of_type_Apet.jdField_a_of_type_Long;
-      paramAnimator.a();
-    }
-    if ((this.jdField_a_of_type_Apet.c != null) && (TextUtils.isEmpty(this.jdField_a_of_type_Apfd.e))) {
-      this.jdField_a_of_type_Apet.c.setVisibility(4);
-    }
+    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
+    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

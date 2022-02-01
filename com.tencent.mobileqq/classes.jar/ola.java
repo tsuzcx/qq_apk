@@ -1,19 +1,12 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ola
-  extends Editable.Factory
+class ola
+  implements DialogInterface.OnClickListener
 {
-  public ola(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  ola(okn paramokn) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
-  {
-    if ((paramCharSequence instanceof oog)) {
-      return (Editable)paramCharSequence;
-    }
-    return new oog(paramCharSequence, 3, 20);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

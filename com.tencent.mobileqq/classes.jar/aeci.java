@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeci
-  implements DialogInterface.OnClickListener
+  extends aodj
 {
-  public aeci(RegisterActivity paramRegisterActivity, String paramString) {}
+  public aeci(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.a.sendEmptyMessage(1);
+    if (QLog.isColorLevel()) {
+      QLog.i("SecSvcObserver", 2, "onGetPhoneUnityInfo isSuc: " + paramBoolean);
+    }
+    String str;
+    if ((this.a.isResume()) && (paramBundle != null))
+    {
+      str = paramBundle.getString("phone");
+      paramBundle = paramBundle.getString("mibao_set_url");
+      if (!StringUtil.isEmpty(str)) {
+        break label78;
+      }
+    }
+    label78:
+    for (int i = 1;; i = 0)
+    {
+      bdvn.a(i, str, paramBundle);
+      return;
+    }
   }
 }
 

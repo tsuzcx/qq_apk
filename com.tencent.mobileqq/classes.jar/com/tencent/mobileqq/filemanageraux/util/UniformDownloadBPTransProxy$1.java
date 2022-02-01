@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanageraux.util;
 
-import atgm;
+import aukt;
 
 public class UniformDownloadBPTransProxy$1
   implements Runnable
 {
-  public UniformDownloadBPTransProxy$1(atgm paramatgm, UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity) {}
+  public UniformDownloadBPTransProxy$1(aukt paramaukt, UniformDownloadBPTransEntity paramUniformDownloadBPTransEntity) {}
   
   public void run()
   {
     try
     {
-      atgm.a(this.this$0, this.a, null);
+      aukt.a(this.this$0, this.a, null);
       return;
     }
     catch (Exception localException)

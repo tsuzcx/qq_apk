@@ -1,63 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class amdu
-  extends bgod
+public class amdu
+  implements View.OnClickListener
 {
-  amdu(File paramFile) {}
+  public amdu(SessionClearFragment paramSessionClearFragment) {}
   
-  public void onDone(bgoe parambgoe)
+  public void onClick(View paramView)
   {
-    super.onDone(parambgoe);
-    if ((3 == parambgoe.a()) && (this.a.exists())) {}
-    try
+    if (SessionClearFragment.a(this.a) == 0)
     {
-      npo.a(this.a, this.a.getParent() + File.separator);
-      label166:
+      SessionClearFragment.a(this.a).setText(anvx.a(2131713295));
+      SessionClearFragment.a(this.a, 1);
+      SessionClearFragment.a(this.a).b();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (Exception parambgoe)
-    {
-      parambgoe = parambgoe;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + parambgoe.getMessage());
-      }
-      try
-      {
-        this.a.delete();
-        return;
-      }
-      catch (Exception parambgoe)
-      {
-        return;
-      }
-    }
-    catch (OutOfMemoryError parambgoe)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + parambgoe.getMessage());
-      }
-      try
-      {
-        this.a.delete();
-        return;
-      }
-      catch (Exception parambgoe)
-      {
-        return;
-      }
-    }
-    finally
-    {
-      try
-      {
-        this.a.delete();
-        throw parambgoe;
-      }
-      catch (Exception localException)
-      {
-        break label166;
-      }
+      SessionClearFragment.a(this.a).setText(anvx.a(2131713293));
+      SessionClearFragment.a(this.a, 0);
+      SessionClearFragment.a(this.a).c();
     }
   }
 }

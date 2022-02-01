@@ -1,46 +1,32 @@
-import java.util.concurrent.atomic.AtomicLong;
+import android.content.Intent;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-class azdk
-  implements azfz
+public class azdk
 {
-  azdk(azdj paramazdj) {}
-  
-  public int a()
+  private static double a(double paramDouble)
   {
-    return 1920000;
+    return 3.141592653589793D * paramDouble / 180.0D;
   }
   
-  public void a(long paramLong)
+  private static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
-    azeu.a("AudioNewController", "onRecordFinish, Duration:" + paramLong + ", CacheSize:" + azdj.a(this.a).a());
-    if (paramLong > 0L) {
-      azdj.a(this.a).set(paramLong);
-    }
+    paramDouble1 = a(paramDouble1);
+    paramDouble3 = a(paramDouble3);
+    paramDouble2 = a(paramDouble2);
+    paramDouble4 = a(paramDouble4);
+    double d = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
+    return Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d)) * 2.0D * 6378137.0D;
   }
   
-  public void a(String paramString)
+  public static double a(LatLng paramLatLng1, LatLng paramLatLng2)
   {
-    azeu.a("AudioNewController", paramString);
+    return a(paramLatLng1.latitude, paramLatLng1.longitude, paramLatLng2.latitude, paramLatLng2.longitude);
   }
   
-  public void a(byte[] paramArrayOfByte, long paramLong)
+  public static void a(int paramInt, Intent paramIntent, azdn paramazdn)
   {
-    if (paramLong > 0L) {
-      azdj.a(this.a).set(paramLong);
-    }
-    int i = azdj.a(this.a, paramArrayOfByte);
-    azdj.a(this.a, azdj.a(this.a), i);
-  }
-  
-  public int b()
-  {
-    return 60000;
-  }
-  
-  public void b(long paramLong)
-  {
-    azeu.a("AudioNewController", "IRecordEventListener, onRecordStart:" + paramLong);
-    azdj.b(this.a, azdj.a(this.a), b());
+    SosoInterface.startLocation(new azdl(paramInt, paramIntent, paramazdn));
   }
 }
 

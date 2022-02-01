@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adch;
+import adtj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -24,7 +24,7 @@ public class ChatTextSizeSettingActivity
 {
   private static int jdField_b_of_type_Int;
   public int a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adch(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adtj(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ArrayList<ViewGroup> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
@@ -86,7 +86,7 @@ public class ChatTextSizeSettingActivity
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localObject = (ImageView)((ViewGroup)this.jdField_a_of_type_JavaUtilArrayList.get(i)).findViewById(2131378510);
+      localObject = (ImageView)((ViewGroup)this.jdField_a_of_type_JavaUtilArrayList.get(i)).findViewById(2131378801);
       if (i == paramInt) {
         ((ImageView)localObject).setVisibility(0);
       }
@@ -122,12 +122,12 @@ public class ChatTextSizeSettingActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131558881);
-    setTitle(getString(2131694526));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378513));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378512));
-    this.c = ((ViewGroup)findViewById(2131378511));
-    this.d = ((ViewGroup)findViewById(2131378509));
+    super.setContentView(2131558908);
+    setTitle(getString(2131694727));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378804));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131378803));
+    this.c = ((ViewGroup)findViewById(2131378802));
+    this.d = ((ViewGroup)findViewById(2131378800));
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidViewViewGroup);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_AndroidViewViewGroup);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.c);
@@ -146,7 +146,7 @@ public class ChatTextSizeSettingActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatTextSizeSettingActivity
  * JD-Core Version:    0.7.0.1
  */

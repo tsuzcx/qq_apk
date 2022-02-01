@@ -1,27 +1,24 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
 
-class alzw
-  implements Animation.AnimationListener
+public class alzw
+  extends zpo
 {
-  alzw(alzv paramalzv, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public alzw(ShoppingFragment paramShoppingFragment, Bundle paramBundle)
   {
-    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimation.leftMargin = this.jdField_a_of_type_Alzv.e;
-    paramAnimation.topMargin = this.jdField_a_of_type_Alzv.f;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Alzv.a = false;
+    super(paramBundle);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected BaseWidgetView a(ViewGroup paramViewGroup, zou paramzou)
+  {
+    return ShoppingFragment.a(this.a);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(Bundle paramBundle) {}
+  
+  public void a(zoz paramzoz) {}
 }
 
 

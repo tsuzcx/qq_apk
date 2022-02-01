@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.gamecenter.util.QQGameHelper.3;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atzh
-  implements nnv
+class atzh
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public atzh(QQGameHelper.3 param3) {}
+  atzh(atzg paramatzg) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameHelper", 2, "load 4235 html web resource finish code:" + paramInt);
+    if ((paramBoolean) && (this.a.a != null))
+    {
+      this.a.a.a(paramInt);
+      this.a.b(paramInt);
     }
   }
   
-  public void progress(int paramInt) {}
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    atzg.a(this.a, false);
+    if ((this.a.a != null) && (!this.a.a.b(atzg.a(this.a)))) {
+      this.a.a.d();
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    atzg.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+  }
 }
 
 

@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class amcx
-  implements DialogInterface.OnClickListener
+  extends amdf
 {
-  public amcx(ApolloGameActivity paramApolloGameActivity, amjz paramamjz, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amcx(SpecailCareListActivity paramSpecailCareListActivity)
   {
-    if (this.jdField_a_of_type_Amjz != null) {
-      this.jdField_a_of_type_Amjz.a(1);
+    super(paramSpecailCareListActivity, null);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if (this.a.d != 0) {
+      this.a.b = true;
     }
-    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, 1, new String[] { String.valueOf(this.jdField_a_of_type_Int) });
-    paramDialogInterface.dismiss();
+    while ((paramInt2 != 200) || (paramBitmap == null)) {
+      return;
+    }
+    this.a.a.notifyDataSetChanged();
   }
 }
 

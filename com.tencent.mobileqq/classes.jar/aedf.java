@@ -1,57 +1,46 @@
-import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.app.proxy.GroupActionResp;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
 
 public class aedf
-  extends AccountObserver
+  extends anvi
 {
-  public aedf(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public aedf(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    RegisterSendUpSms.c(this.a, paramInt1);
     if (QLog.isColorLevel()) {
-      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
+      QLog.d("GroupManagerActivity", 2, "onAddGroupResp isSuccess = " + paramBoolean);
     }
-    if (paramInt1 == 4) {}
-    for (;;)
-    {
-      RegisterSendUpSms.a(this.a, 0);
-      return;
-      RegisterSendUpSms.a(this.a).setEnabled(true);
-      if (paramInt1 == 0)
-      {
-        RegisterSendUpSms.a(this.a).setText(amtj.a(2131712477));
-        RegisterSendUpSms.a(this.a, paramString1);
-        RegisterSendUpSms.b(this.a, paramString2);
-        RegisterSendUpSms.c(this.a, paramString3);
-        RegisterSendUpSms.d(this.a, paramString5);
-        RegisterSendUpSms.a(this.a);
-        continue;
-      }
-      paramString1 = paramString4;
-      if (paramInt1 == -1) {}
-      try
-      {
-        paramString1 = new String(paramArrayOfByte, "utf-8");
-        paramArrayOfByte = paramString1;
-        if (TextUtils.isEmpty(paramString1)) {
-          paramArrayOfByte = this.a.getString(2131716118);
-        }
-        QQToast.a(this.a, paramArrayOfByte.trim(), 0).b(this.a.getTitleBarHeight());
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          paramString1 = paramString4;
-        }
-      }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
     }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onRenameGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onResortGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(true);
+    GroupManagerActivity.c(this.a, true);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas.avatar;
 
-import aezf;
+import afqr;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bght;
-import bghu;
+import bhqo;
+import bhqp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
@@ -69,16 +69,16 @@ public class AvatarLayout
     int i = 0;
     label7:
     Object localObject;
-    aezf localaezf;
+    afqr localafqr;
     ChatMessage localChatMessage;
     if (i < paramListView.getChildCount())
     {
       localObject = paramListView.getChildAt(i);
       if ((localObject != null) && ((localObject instanceof BaseChatItemLayout)))
       {
-        localaezf = (aezf)AIOUtils.getHolder((View)localObject);
+        localafqr = (afqr)AIOUtils.getHolder((View)localObject);
         localChatMessage = AIOUtils.getMessage((View)localObject);
-        if ((localaezf != null) && (localChatMessage != null) && (localChatMessage.senderuin != null) && (paramCollection.contains(localChatMessage.senderuin)))
+        if ((localafqr != null) && (localChatMessage != null) && (localChatMessage.senderuin != null) && (paramCollection.contains(localChatMessage.senderuin)))
         {
           if ((localChatMessage.istroop != 1000) && (localChatMessage.istroop != 1020) && (localChatMessage.istroop != 1004)) {
             break label186;
@@ -94,7 +94,7 @@ public class AvatarLayout
     }
     for (;;)
     {
-      localaezf.a.setHeaderIcon(localObject);
+      localafqr.a.setHeaderIcon(localObject);
       i += 1;
       break label7;
       break;
@@ -103,8 +103,8 @@ public class AvatarLayout
       break label124;
       label196:
       FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(paramQQAppInterface, 1, (String)localObject);
-      localObject = new bghu((String)localObject, -1, "small", localChatMessage.uniseq);
-      ((bghu)localObject).a = localFaceDrawable;
+      localObject = new bhqp((String)localObject, -1, "small", localChatMessage.uniseq);
+      ((bhqp)localObject).a = localFaceDrawable;
     }
   }
   
@@ -131,7 +131,7 @@ public class AvatarLayout
       localVasAvatar1 = new VasAvatar(getContext());
       a(1, localVasAvatar1, true);
     }
-    localVasAvatar1.setLoader(this, new bghu(paramInt1, paramInt2, paramString, false));
+    localVasAvatar1.setLoader(this, new bhqp(paramInt1, paramInt2, paramString, false));
     localVasAvatar1.setScaleType(paramScaleType);
     localVasAvatar1.setVisibility(0);
   }
@@ -154,7 +154,7 @@ public class AvatarLayout
     }
     for (;;)
     {
-      localVasAvatar.setLoader(this, new bghu(paramString1, paramInt, paramString2, 0L));
+      localVasAvatar.setLoader(this, new bhqp(paramString1, paramInt, paramString2, 0L));
       localVasAvatar.setScaleType(paramScaleType);
       localVasAvatar.setVisibility(0);
       return;
@@ -164,7 +164,7 @@ public class AvatarLayout
   public void setFaceDrawable(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, FaceDrawable.OnLoadingStateChangeListener paramOnLoadingStateChangeListener, int paramInt4, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt5)
   {
     DynamicAvatarView localDynamicAvatarView = (DynamicAvatarView)a(0);
-    localDynamicAvatarView.setFaceDrawable(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramInt4, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, bght.a(paramInt5));
+    localDynamicAvatarView.setFaceDrawable(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, paramOnLoadingStateChangeListener, paramInt4, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, bhqo.a(paramInt5));
     if (VasAvatar.a(paramInt1, paramInt2)) {
       a(paramString, paramInt5, VasAvatar.a(paramInt4), localDynamicAvatarView.getScaleType());
     }
@@ -185,7 +185,7 @@ public class AvatarLayout
   public void setFaceDrawable(AppInterface paramAppInterface, Drawable paramDrawable, int paramInt1, int paramInt2, String paramString, int paramInt3, boolean paramBoolean1, DynamicAvatar paramDynamicAvatar, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt4)
   {
     DynamicAvatarView localDynamicAvatarView = (DynamicAvatarView)a(0);
-    localDynamicAvatarView.setFaceDrawable(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, paramBoolean1, paramDynamicAvatar, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, bght.a(paramInt4));
+    localDynamicAvatarView.setFaceDrawable(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, paramBoolean1, paramDynamicAvatar, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, bhqo.a(paramInt4));
     if (VasAvatar.a(paramInt1, paramInt2)) {
       a(paramString, paramInt4, VasAvatar.a(paramInt3), localDynamicAvatarView.getScaleType());
     }

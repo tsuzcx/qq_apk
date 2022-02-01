@@ -1,29 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
 
-class axwi
-  extends BroadcastReceiver
+public final class axwi
+  implements Parcelable.Creator<LocalMediaInfo>
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public LocalMediaInfo a(Parcel paramParcel)
   {
-    paramContext = null;
-    if (paramIntent != null) {
-      paramContext = paramIntent.getAction();
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoStatusManager", 2, "[status][autoMgr] ScreenBroadcastReceiver ACTION_SCREEN_OFF");
-      }
-      paramContext = (axvk)BaseApplicationImpl.getApplication().getRuntime().getManager(369);
-      if (paramContext != null) {
-        paramContext.a().d("screenOff");
-      }
-    }
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_d_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_e_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.h = paramParcel.readInt();
+    localLocalMediaInfo.i = paramParcel.readInt();
+    localLocalMediaInfo.j = paramParcel.readInt();
+    localLocalMediaInfo.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramParcel.readInt());
+    localLocalMediaInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_d_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.g = paramParcel.readInt();
+    localLocalMediaInfo.f = paramParcel.readInt();
+    return localLocalMediaInfo;
+  }
+  
+  public LocalMediaInfo[] a(int paramInt)
+  {
+    return new LocalMediaInfo[0];
   }
 }
 

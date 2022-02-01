@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class adsm
-  implements DialogInterface.OnClickListener
+  implements azyj
 {
-  public adsm(NotificationActivity paramNotificationActivity) {}
+  public adsm(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    this.a.finish();
+    bdla.b(this.a.app, "grp_set", "", "", "grp_data", "grp_set_copy", 0, 0, paramString, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsm
  * JD-Core Version:    0.7.0.1
  */

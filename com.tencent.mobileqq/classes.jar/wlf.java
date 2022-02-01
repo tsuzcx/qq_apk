@@ -1,17 +1,42 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wlf
-  extends vko
 {
-  public StoryVideoItem a;
+  @zef(a="gametype")
+  public int a;
+  @zef(a="gameid")
   public String a;
+  @zef(a="name")
   public String b;
+  @zef(a="result")
+  public String c;
   
-  public wlf(ErrorMessage paramErrorMessage, String paramString)
+  public static wlf a(String paramString)
   {
-    this.a = paramErrorMessage;
-    this.b = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = (wlf)JsonORM.a(new JSONObject(paramString), wlf.class);
+      return paramString;
+    }
+    catch (JsonORM.JsonParseException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
   }
 }
 

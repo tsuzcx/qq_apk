@@ -1,43 +1,21 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class tib
-  implements bjoe
+  implements ViewFactory.FoundClickableViewListener
 {
-  tib(tia paramtia, String paramString) {}
+  tib(tia paramtia, Context paramContext, ProteusItemData paramProteusItemData) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onFound(ViewBase paramViewBase)
   {
-    paramView = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        paramView.put("index", paramInt);
-        if ((!this.jdField_a_of_type_Tia.a) || (paramInt != 0)) {
-          continue;
-        }
-        paramView.put("type", 2);
-        if (tia.a(this.jdField_a_of_type_Tia) != null) {
-          ((BridgeModule)tia.a(this.jdField_a_of_type_Tia).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramView);
-        }
-      }
-      catch (JSONException paramView)
-      {
-        continue;
-      }
-      tia.a(this.jdField_a_of_type_Tia).dismiss();
-      return;
-      paramView.put("type", 0);
-    }
+    paramViewBase.setOnClickListener(new tic(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tib
  * JD-Core Version:    0.7.0.1
  */

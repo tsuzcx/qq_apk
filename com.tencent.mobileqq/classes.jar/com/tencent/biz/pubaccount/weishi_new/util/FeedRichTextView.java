@@ -17,19 +17,19 @@ import android.widget.TextView.BufferType;
 import com.tencent.biz.subscribe.widget.textview.SafeTextView;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
-import uxb;
-import uxf;
-import uxg;
-import uxh;
+import vlq;
+import vlu;
+import vlv;
+import vlw;
 
 public class FeedRichTextView
   extends SafeTextView
   implements Handler.Callback
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private ArrayList<uxh> jdField_a_of_type_JavaUtilArrayList;
-  private uxb jdField_a_of_type_Uxb;
-  private ArrayList<uxg> b;
+  private ArrayList<vlw> jdField_a_of_type_JavaUtilArrayList;
+  private vlq jdField_a_of_type_Vlq;
+  private ArrayList<vlv> b;
   
   public FeedRichTextView(Context paramContext)
   {
@@ -51,17 +51,17 @@ public class FeedRichTextView
   
   private void a(AttributeSet paramAttributeSet) {}
   
-  public ArrayList<uxh> a()
+  public ArrayList<vlw> a()
   {
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
-  protected void a(CharSequence paramCharSequence, uxb paramuxb, Drawable.Callback paramCallback)
+  protected void a(CharSequence paramCharSequence, vlq paramvlq, Drawable.Callback paramCallback)
   {
-    ThreadManager.post(new FeedRichTextView.1(this, paramCharSequence, paramuxb, paramCallback), 8, null, true);
+    ThreadManager.post(new FeedRichTextView.1(this, paramCharSequence, paramvlq, paramCallback), 8, null, true);
   }
   
-  public ArrayList<uxg> b()
+  public ArrayList<vlv> b()
   {
     return this.b;
   }
@@ -74,10 +74,10 @@ public class FeedRichTextView
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage == null) {}
-    while ((paramMessage.what != 1001) || (!(paramMessage.obj instanceof uxf))) {
+    while ((paramMessage.what != 1001) || (!(paramMessage.obj instanceof vlu))) {
       return false;
     }
-    paramMessage = (uxf)paramMessage.obj;
+    paramMessage = (vlu)paramMessage.obj;
     this.jdField_a_of_type_JavaUtilArrayList = paramMessage.a();
     this.b = paramMessage.b();
     super.setText(paramMessage, null);
@@ -104,24 +104,24 @@ public class FeedRichTextView
     super.setOnClickListener(paramOnClickListener);
   }
   
-  public void setOnElementClickListener(uxb paramuxb)
+  public void setOnElementClickListener(vlq paramvlq)
   {
-    this.jdField_a_of_type_Uxb = paramuxb;
+    this.jdField_a_of_type_Vlq = paramvlq;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    if ((TextUtils.isEmpty(paramCharSequence)) || ((!TextUtils.isEmpty(paramCharSequence)) && ((paramCharSequence instanceof uxf))))
+    if ((TextUtils.isEmpty(paramCharSequence)) || ((!TextUtils.isEmpty(paramCharSequence)) && ((paramCharSequence instanceof vlu))))
     {
       super.setText(paramCharSequence, paramBufferType);
       return;
     }
-    a(paramCharSequence, this.jdField_a_of_type_Uxb, null);
+    a(paramCharSequence, this.jdField_a_of_type_Vlq, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.FeedRichTextView
  * JD-Core Version:    0.7.0.1
  */

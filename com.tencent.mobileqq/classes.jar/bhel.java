@@ -1,24 +1,22 @@
-import android.widget.BaseAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginActivity;
 
-public abstract class bhel
-  extends BaseAdapter
+class bhel
+  implements DialogInterface.OnDismissListener
 {
-  protected int a = 0;
+  bhel(bheh parambheh) {}
   
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
-  
-  public void a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = paramInt;
+    if ((this.a.a instanceof LoginActivity)) {
+      ((LoginActivity)this.a.a).finish();
+    }
   }
-  
-  public abstract int b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhel
  * JD-Core Version:    0.7.0.1
  */

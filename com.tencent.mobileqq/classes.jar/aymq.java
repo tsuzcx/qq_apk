@@ -1,50 +1,46 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import okhttp3.ConnectionPool;
+import okhttp3.Dispatcher;
+import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
+import okhttp3.Protocol;
 
-class aymq
-  extends BroadcastReceiver
+public class aymq
 {
-  aymq(aymp paramaymp) {}
+  private static final ConnectionPool jdField_a_of_type_Okhttp3ConnectionPool = new ConnectionPool(10, 60L, TimeUnit.SECONDS);
+  private static final Dispatcher jdField_a_of_type_Okhttp3Dispatcher = new Dispatcher();
+  private static volatile OkHttpClient jdField_a_of_type_Okhttp3OkHttpClient;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      paramContext = this.a.mRuntime.a();
-    } while ((paramContext == null) || (paramContext.isFinishing()));
-    paramIntent = this.a.mRuntime.a(this.a.mRuntime.a());
-    if ((paramIntent != null) && ((paramIntent instanceof bgzu)))
-    {
-      paramIntent = ((bgzu)paramIntent).getCurrentUrl();
-      if ((TextUtils.isEmpty(paramIntent)) || (!paramIntent.contains("entryId"))) {
-        break label232;
-      }
+    jdField_a_of_type_Okhttp3Dispatcher.setMaxRequests(64);
+    jdField_a_of_type_Okhttp3Dispatcher.setMaxRequestsPerHost(8);
+    a(30000L);
+  }
+  
+  private static OkHttpClient.Builder a(long paramLong, boolean paramBoolean)
+  {
+    OkHttpClient.Builder localBuilder = new OkHttpClient.Builder();
+    if (paramBoolean) {}
+    for (List localList = Arrays.asList(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 });; localList = Arrays.asList(new Protocol[] { Protocol.HTTP_1_1 })) {
+      return localBuilder.protocols(localList).connectTimeout(paramLong, TimeUnit.MILLISECONDS).readTimeout(paramLong, TimeUnit.MILLISECONDS).writeTimeout(paramLong, TimeUnit.MILLISECONDS).connectionPool(jdField_a_of_type_Okhttp3ConnectionPool).dispatcher(jdField_a_of_type_Okhttp3Dispatcher);
     }
-    label232:
-    for (this.a.a = bjnd.a(bjnd.a(paramIntent), "entryId", 2);; this.a.a = 2)
-    {
-      paramContext.finish();
-      paramContext = new Intent(this.a.mRuntime.a(), FriendProfileCardActivity.class);
-      paramIntent = new ProfileActivity.AllInOne(this.a.mRuntime.a().getCurrentAccountUin(), 0);
-      if (this.a.a == 0) {
-        paramContext.setFlags(67108864);
-      }
-      paramContext.putExtra("AllInOne", paramIntent);
-      this.a.mRuntime.a().startActivity(paramContext);
-      paramContext = new Intent();
-      paramContext.putExtra("closeSpecialLogic", true);
-      this.a.mRuntime.a().setResult(-1, paramContext);
-      this.a.mRuntime.a().finish();
-      return;
+  }
+  
+  public static OkHttpClient a()
+  {
+    if (jdField_a_of_type_Okhttp3OkHttpClient == null) {
+      a(30000L);
     }
+    return jdField_a_of_type_Okhttp3OkHttpClient;
+  }
+  
+  private static void a(long paramLong)
+  {
+    jdField_a_of_type_Okhttp3OkHttpClient = a(paramLong, GameWnsUtils.enableHttp2()).build();
   }
 }
 

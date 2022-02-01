@@ -1,62 +1,103 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import org.json.JSONObject;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class bcut
-  extends bcup
 {
-  private asdv jdField_a_of_type_Asdv = new bcuu(this);
-  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  
-  public bcut(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public static String a(Map<Integer, String> paramMap)
   {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
-  }
-  
-  private boolean a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    while (TextUtils.isEmpty(paramJSONObject.optString("discussuin"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = paramMap.keySet().iterator();
+    if (localIterator.hasNext())
     {
-      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int != 3000) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString))) {
-        break label250;
+      Object localObject = (Integer)localIterator.next();
+      if (localStringBuilder.length() > 0) {
+        localStringBuilder.append("&");
       }
-      MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
-      if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForFile))) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = aszt.a(paramQQAppInterface, (MessageForFile)localMessageRecord);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.getFileManagerDataCenter().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid)) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin))) {
-        break label250;
-      }
-      paramQQAppInterface.getFileTransferHandler().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_Asdv);
-    }
-    label250:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
+      String str = (String)paramMap.get(localObject);
+      if (localObject != null) {}
+      for (;;)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Bcum.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+        try
+        {
+          localObject = URLEncoder.encode(localObject + "", "UTF-8");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("=");
+          if (str == null) {
+            break label147;
+          }
+          localObject = URLEncoder.encode(str, "UTF-8");
+          localStringBuilder.append((String)localObject);
+        }
+        catch (UnsupportedEncodingException paramMap)
+        {
+          throw new RuntimeException("This method requires UTF-8 encoding support", paramMap);
+        }
+        localObject = "";
+        continue;
+        label147:
+        localObject = "";
       }
-      this.jdField_a_of_type_Bcum.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      return;
     }
+    return localStringBuilder.toString();
+  }
+  
+  public static Map<Integer, String> a(String paramString)
+  {
+    int i = 0;
+    HashMap localHashMap = new HashMap();
+    paramString = paramString.split("&");
+    int j = paramString.length;
+    if (i < j)
+    {
+      String[] arrayOfString = paramString[i].split("=");
+      if (arrayOfString.length != 2) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), URLDecoder.decode(arrayOfString[1], "UTF-8"));
+        }
+        catch (UnsupportedEncodingException paramString)
+        {
+          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
+        }
+      }
+    }
+    return localHashMap;
+  }
+  
+  public static Map<String, String> b(String paramString)
+  {
+    int i = 0;
+    HashMap localHashMap = new HashMap();
+    paramString = paramString.split("&");
+    int j = paramString.length;
+    if (i < j)
+    {
+      String[] arrayOfString = paramString[i].split("=");
+      if (arrayOfString.length != 2) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          localHashMap.put(URLDecoder.decode(arrayOfString[0], "UTF-8"), URLDecoder.decode(arrayOfString[1], "UTF-8"));
+        }
+        catch (UnsupportedEncodingException paramString)
+        {
+          throw new RuntimeException("This method requires UTF-8 encoding support", paramString);
+        }
+      }
+    }
+    return localHashMap;
   }
 }
 

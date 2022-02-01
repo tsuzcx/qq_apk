@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class ahhf
-  implements DialogInterface.OnClickListener
+public class ahhf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahhf(ahhd paramahhd) {}
+  public ahhf(SixCombolEffectView paramSixCombolEffectView, ahhr paramahhr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.jdField_a_of_type_Ahhr.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
+  }
 }
 
 

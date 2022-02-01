@@ -1,21 +1,19 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.smartdevice.SmartDevicePluginProxyActivity;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie.26.1;
+import mqq.os.MqqHandler;
 
-class agbf
-  implements atah
+public class agbf
+  implements nuc
 {
-  agbf(agap paramagap) {}
+  public agbf(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, String paramString2)
   {
-    paramView = new Intent();
-    paramView.putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
-    paramView.putExtra("uinname", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendNick);
-    bkxa.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceGroupChatConfirmActivity", -1, null, SmartDevicePluginProxyActivity.class);
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.sessionInfo.curFriendUin))) {
+      this.a.uiHandler.post(new TroopChatPie.26.1(this, paramString2));
+    }
   }
 }
 

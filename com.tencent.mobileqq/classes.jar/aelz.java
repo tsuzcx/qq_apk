@@ -1,28 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.pb.troop.bindgame.GCBindGroup.GCBindGroupSsoServerRsp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aelz
-  extends nmf
+  extends anvi
 {
-  public aelz(TroopInfoActivity paramTroopInfoActivity) {}
+  public aelz(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle = new GCBindGroup.GCBindGroupSsoServerRsp();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.a.a(paramBundle);
-      return;
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.e("Q.troopinfo", 1, "parse game bind status failed");
+  }
+  
+  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1) {
+      this.a.a(2131718593, 1);
     }
+    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
   }
 }
 

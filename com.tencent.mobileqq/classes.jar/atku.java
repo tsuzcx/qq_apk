@@ -1,19 +1,24 @@
-public abstract interface atku
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
+class atku
+  extends atib
 {
-  public static final Integer a = Integer.valueOf(0);
-  public static final Integer b = Integer.valueOf(1);
-  public static final Integer c = Integer.valueOf(2);
-  public static final Integer d = Integer.valueOf(3);
-  public static final Integer e = Integer.valueOf(4);
-  public static final Integer f = Integer.valueOf(5);
-  public static final Integer g = Integer.valueOf(6);
-  public static final Integer h = Integer.valueOf(8);
-  public static final Integer i = Integer.valueOf(9);
-  public static final Integer j = Integer.valueOf(10);
-  public static final Integer k = Integer.valueOf(11);
-  public static final Integer l = Integer.valueOf(12);
-  public static final Integer m = Integer.valueOf(13);
-  public static final Integer n = Integer.valueOf(14);
+  atku(atkt paramatkt) {}
+  
+  protected void a(boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
+  {
+    QLog.i("DiscPicThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong2 + "] OnDiscDownloadInfo");
+    atkt.a(this.a, paramLong1, paramString1, paramString2, paramByteStringMicro, paramBoolean2, paramString3, paramShort, paramString4, paramString6, paramLong2, paramBundle);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle)
+  {
+    QLog.i("DiscPicThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong2 + "] OnDiscDownloadInfo");
+    this.a.a(paramBoolean, paramLong1, paramString1, paramString3, paramInt1, paramString4, paramString5, paramInt2, paramLong2, paramBundle);
+  }
 }
 
 

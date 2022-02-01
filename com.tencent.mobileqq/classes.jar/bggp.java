@@ -1,45 +1,71 @@
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.13.1;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
 
 public class bggp
+  implements bdyy
 {
-  private static final Comparator<bggn> jdField_a_of_type_JavaUtilComparator = new bggq();
-  private List<bggn> jdField_a_of_type_JavaUtilList;
+  bggp(bggl parambggl) {}
   
-  public List<bggn> a()
+  public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return null;
-    }
-    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public void a(int[] paramArrayOfInt, int paramInt)
-  {
-    Object localObject = new bggo();
-    int i = 0;
-    while (i < paramArrayOfInt.length)
+    this.a.jdField_a_of_type_Int = 1;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) && (this.a.jdField_a_of_type_AndroidAppActivity == null) && (!bggl.jdField_a_of_type_JavaLangString.equals(this.a.jdField_b_of_type_JavaLangString))) {}
+    String str1;
+    List localList;
+    do
     {
-      ((bggo)localObject).a(paramArrayOfInt[i]);
-      while (((bggo)localObject).jdField_a_of_type_JavaUtilList.size() > paramInt) {
-        ((bggo)localObject).a();
+      return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {
+        break;
       }
-      i += 1;
-    }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramArrayOfInt = ((bggo)localObject).jdField_a_of_type_JavaUtilList.iterator();
-    while (paramArrayOfInt.hasNext())
+      str1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin;
+      localList = (List)this.a.jdField_b_of_type_JavaUtilHashMap.get(str1);
+    } while ((bglb.a(localList)) || (localList == null));
+    if (localList != null) {}
+    for (;;)
     {
-      localObject = (bggn)paramArrayOfInt.next();
-      ((bggn)localObject).jdField_a_of_type_Long = ((int)((float)((bggn)localObject).jdField_a_of_type_Long / ((bggn)localObject).jdField_a_of_type_Int));
-      ((bggn)localObject).b = ((int)((float)((bggn)localObject).b / ((bggn)localObject).jdField_a_of_type_Int));
-      ((bggn)localObject).c = ((int)((float)((bggn)localObject).c / ((bggn)localObject).jdField_a_of_type_Int));
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
+      try
+      {
+        Object localObject3 = (bggz)localList.remove(0);
+        if ((localObject3 instanceof MessageForDeliverGiftTips))
+        {
+          localObject3 = (MessageForDeliverGiftTips)localObject3;
+          String str2 = bglb.b((MessageForDeliverGiftTips)localObject3);
+          ((MessageForDeliverGiftTips)localObject3).hasFetchButFailed = false;
+          if (QLog.isColorLevel()) {
+            QLog.d("AIOAnimationControlManager", 2, "onMagicPlayEnd id:" + str2);
+          }
+          if (this.a.jdField_a_of_type_Bgha != null) {
+            this.a.jdField_a_of_type_Bgha.a(str1, str2);
+          }
+        }
+        if (localList.size() == 0) {
+          break label250;
+        }
+        Collections.sort(localList, this.a.jdField_a_of_type_JavaUtilComparator);
+        this.a.jdField_a_of_type_AndroidOsHandler.post(new AIOAnimationControlManager.13.1(this));
+        return;
+      }
+      finally {}
+      Object localObject2 = this.a.jdField_b_of_type_JavaLangString;
+      break;
+      label250:
+      this.a.jdField_a_of_type_Bgrg.a(null);
+      bggl.a(this.a, false);
+      localObject2 = ChatActivityUtils.a((String)localObject2, this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      if ((bggl.jdField_a_of_type_Boolean) && (localObject2 != null) && (-1 == ((Integer)localObject2).intValue()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)) {
+        bggl.jdField_a_of_type_Boolean = false;
+      }
     }
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, jdField_a_of_type_JavaUtilComparator);
   }
 }
 

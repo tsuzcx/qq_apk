@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.media.ExifInterface;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.util.Log;
 import com.tencent.ttpic.audio.LocalAudioDataManager;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
@@ -105,6 +106,7 @@ public final class LogicDataManager
   public static final String DATE_yy = "[date:yy]";
   public static final String DATE_yyyy = "[date:yyyy]";
   public static final String DB = "[db]";
+  public static final String KEY_PREFIX_SPECIFIC_LOCATION = "specific_location_";
   public static final String LOCATION = "[location]";
   public static final String NUMBER = "[number]";
   public static final String NUMBER_d0 = "[number:0]";
@@ -147,9 +149,10 @@ public final class LogicDataManager
   private static LogicDataManager mInstance;
   private String mAltitude = "无网络";
   private List<WMElement> mEditableWMElements = new ArrayList();
-  public HashMap<String, String> mFollowData = new HashMap();
+  public final HashMap<String, String> mFollowData = new HashMap();
   private LogicDataManager.OnGetQQNumberEventListener mGetQQNumberEventListener;
   private String mLocation = "我在这里";
+  private LogicDataManager.IOnClickWatermarkListener mOnClickWatermarkListener;
   private int mPeoplenumber = 0;
   private String mPictureDate;
   private Map<String, LogicDataManager.LogicValueProvider> mProviderMap = new HashMap();
@@ -821,6 +824,11 @@ public final class LogicDataManager
     return this.mLocation;
   }
   
+  public String getLocationForSpecificMaterial(String paramString)
+  {
+    return (String)this.mFollowData.get("specific_location_" + paramString);
+  }
+  
   public String getValue(String paramString)
   {
     String str = paramString;
@@ -885,6 +893,14 @@ public final class LogicDataManager
     return "大风";
   }
   
+  public void onClickWatermark()
+  {
+    Log.i(TAG, "onClickWatermark");
+    if (this.mOnClickWatermarkListener != null) {
+      this.mOnClickWatermarkListener.onClickWatermark();
+    }
+  }
+  
   public void putTypeface(@NonNull String paramString, @NonNull Typeface paramTypeface)
   {
     WMTextDrawer.putTypeface(paramString, paramTypeface);
@@ -899,6 +915,13 @@ public final class LogicDataManager
       return;
     }
     VideoPrefsUtil.getDefaultPrefs().edit().putString("prefs_key_watermark_countdown_" + paramString2, paramString3).apply();
+  }
+  
+  public void recordLocationForSpecificMaterial(String paramString1, String paramString2)
+  {
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.mFollowData.put("specific_location_" + paramString1, paramString2);
+    }
   }
   
   public void removeEditableWMElement(WMElement paramWMElement)
@@ -960,6 +983,11 @@ public final class LogicDataManager
   public void setLocation(String paramString)
   {
     this.mLocation = paramString;
+  }
+  
+  public void setOnClickWatermarkListener(LogicDataManager.IOnClickWatermarkListener paramIOnClickWatermarkListener)
+  {
+    this.mOnClickWatermarkListener = paramIOnClickWatermarkListener;
   }
   
   public void setOnGetQQNumberEventListener(LogicDataManager.OnGetQQNumberEventListener paramOnGetQQNumberEventListener)

@@ -1,88 +1,74 @@
-import UserGrowth.stFriendFeed;
-import UserGrowth.stFriendFeedRsp;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-import java.util.List;
+import android.text.Editable;
+import android.text.SpannableStringBuilder;
+import android.text.TextWatcher;
+import com.tencent.biz.subscribe.comment.CommentEditText;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class vah
+class vah
+  implements TextWatcher
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public static vah a()
-  {
-    return vaj.a();
-  }
+  vah(vab paramvab) {}
   
-  private void a(urj paramurj, vaa paramvaa)
+  public void afterTextChanged(Editable paramEditable)
   {
-    boolean bool = true;
-    if (!paramurj.a())
-    {
-      uya.d("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] failed code:" + paramurj.jdField_a_of_type_Int + ", msg:" + paramurj.jdField_a_of_type_JavaLangString);
-      if (paramvaa != null) {
-        paramvaa.a(paramurj.jdField_a_of_type_Int, paramurj.jdField_a_of_type_JavaLangString);
-      }
+    vab.a(this.jdField_a_of_type_Vab).a();
+    if (paramEditable == null) {
+      return;
     }
-    label214:
-    do
+    vab.a(this.jdField_a_of_type_Vab).removeTextChangedListener(this);
+    if (paramEditable.length() > vab.b(this.jdField_a_of_type_Vab))
     {
-      do
+      QQToast.a(this.jdField_a_of_type_Vab.getContext(), anvx.a(2131701680) + vab.b(this.jdField_a_of_type_Vab) + anvx.a(2131701681), 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
+      vab.a(this.jdField_a_of_type_Vab).addTextChangedListener(this);
+      return;
+    }
+    Object localObject1 = paramEditable.toString().substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.b);
+    int i = ((String)localObject1).indexOf('/');
+    if ((i >= 0) && (i < ((String)localObject1).length() - 1))
+    {
+      localObject1 = new SpannableStringBuilder(paramEditable.toString());
+      zvw.a(vab.a(this.jdField_a_of_type_Vab).getContext(), (SpannableStringBuilder)localObject1);
+    }
+    for (;;)
+    {
+      for (;;)
       {
-        return;
-        if (!(paramurj.jdField_a_of_type_JavaLangObject instanceof stFriendFeedRsp)) {
-          break;
+        if (localObject1 != null) {
+          i = vab.a(this.jdField_a_of_type_Vab).getSelectionEnd();
         }
-        Object localObject = (stFriendFeedRsp)paramurj.jdField_a_of_type_JavaLangObject;
-        if (((stFriendFeedRsp)localObject).isFinished == 1) {}
-        for (;;)
+        try
         {
-          this.jdField_a_of_type_Boolean = bool;
-          localObject = ((stFriendFeedRsp)localObject).friendFeed;
-          if (localObject == null) {
-            break label214;
-          }
-          this.jdField_a_of_type_JavaLangString = ((stFriendFeed)localObject).attachInfo;
-          paramurj = ((stFriendFeed)localObject).friendFeeds;
-          paramurj = WSVerticalDataManager.a().a(paramurj, "", this.jdField_a_of_type_Boolean);
-          uya.e("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] itemDataList size:" + paramurj.size() + ", mAttachInfo:" + this.jdField_a_of_type_JavaLangString + ", mIsFinished:" + this.jdField_a_of_type_Boolean);
-          if (paramvaa == null) {
-            break;
-          }
-          paramvaa.a(paramurj, false, false, null);
-          return;
-          bool = false;
+          vab.a(this.jdField_a_of_type_Vab).setText((CharSequence)localObject1);
+          vab.a(this.jdField_a_of_type_Vab).setSelection(i);
+          this.b = 0;
+          this.jdField_a_of_type_Int = 0;
         }
-        uya.d("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] stFriendFeed is null!");
-      } while (paramvaa == null);
-      paramvaa.a(paramurj.b, "stFriendFeed is null!");
-      return;
-      uya.d("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] mResultBean instanceof stFriendFeedRsp: false!");
-    } while (paramvaa == null);
-    paramvaa.a(paramurj.b, paramurj.jdField_a_of_type_JavaLangString);
+        catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
+        {
+          for (;;)
+          {
+            vab.a(this.jdField_a_of_type_Vab).setText(paramEditable.toString());
+            i = paramEditable.toString().length();
+          }
+        }
+      }
+      Object localObject2 = null;
+    }
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(String paramString)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    uya.e("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][setAttachInfo] attachInfo:" + paramString);
-  }
-  
-  public void a(vaa paramvaa)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      uya.e("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] finished!");
+    if (paramCharSequence == null) {
       return;
     }
-    paramvaa = new vai(this, paramvaa);
-    uya.e("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][fetchData] attachInfo:" + this.jdField_a_of_type_JavaLangString);
-    paramvaa = new urj(new uwh(this.jdField_a_of_type_JavaLangString), null, paramvaa, 4012);
-    urc.a().a(paramvaa);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt3;
   }
 }
 

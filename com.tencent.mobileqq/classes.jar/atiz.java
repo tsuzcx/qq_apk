@@ -1,86 +1,34 @@
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.MethodCodec;
-import io.flutter.plugin.common.StandardMethodCodec;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class atiz
-  implements MethodChannel.MethodCallHandler
+final class atiz
+  extends aahn
 {
-  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  atiz(String paramString, atju paramatju, long paramLong) {}
   
-  protected abstract void a(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  protected abstract void a(String paramString, Integer paramInteger, Boolean paramBoolean, MethodChannel.Result paramResult);
-  
-  protected abstract void b(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void b(String paramString, Boolean paramBoolean, MethodChannel.Result paramResult);
-  
-  protected abstract void b(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  protected abstract void c(String paramString, MethodChannel.Result paramResult);
-  
-  protected abstract void c(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
-  
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
+  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
   {
-    String str = paramMethodCall.method;
-    if ("setSpecialCare".equals(str))
+    if (!paramBoolean)
     {
-      a((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isSpecialCare"), paramResult);
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Atju.a(atiy.a(this.jdField_a_of_type_Long, false), true);
       return;
     }
-    if ("setQzoneNotify".equals(str))
+    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
+    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
+    if (paramInt1 == 0)
     {
-      b((String)paramMethodCall.argument("uin"), (Boolean)paramMethodCall.argument("isQzoneNotify"), paramResult);
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Atju.a(this.jdField_a_of_type_JavaLangString, paramBundle);
       return;
     }
-    if ("getSCFSwitchs".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), paramResult);
-      return;
-    }
-    if ("getSpecialRing".equals(str))
-    {
-      b((String)paramMethodCall.argument("uin"), paramResult);
-      return;
-    }
-    if ("openSpecialRingMall".equals(str))
-    {
-      c((String)paramMethodCall.argument("uin"), paramResult);
-      return;
-    }
-    if ("onPageShowReport".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
-      return;
-    }
-    if ("onBellShowReport".equals(str))
-    {
-      b((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
-      return;
-    }
-    if ("onBellClickReport".equals(str))
-    {
-      c((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), paramResult);
-      return;
-    }
-    if ("onSpecialCareSwitchReport".equals(str))
-    {
-      a((String)paramMethodCall.argument("uin"), (Integer)paramMethodCall.argument("from"), (Boolean)paramMethodCall.argument("isChecked"), paramResult);
-      return;
-    }
-    paramResult.notImplemented();
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Atju.a(atiy.a(this.jdField_a_of_type_Long, false), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atiz
  * JD-Core Version:    0.7.0.1
  */

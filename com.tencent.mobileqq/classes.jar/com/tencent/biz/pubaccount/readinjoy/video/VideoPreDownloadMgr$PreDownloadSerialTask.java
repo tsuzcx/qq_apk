@@ -4,15 +4,15 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import sdr;
-import sds;
+import spv;
+import spw;
 
 class VideoPreDownloadMgr$PreDownloadSerialTask
   implements Runnable
 {
-  private List<sds> a;
+  private List<spw> a;
   
-  public VideoPreDownloadMgr$PreDownloadSerialTask(List<sds> paramList)
+  public VideoPreDownloadMgr$PreDownloadSerialTask(List<spw> paramList)
   {
     Object localObject;
     this.a = localObject;
@@ -27,9 +27,9 @@ class VideoPreDownloadMgr$PreDownloadSerialTask
       int j;
       for (int i = 0; i < this.a.size(); i = j + 1)
       {
-        localObject1 = (sds)this.a.get(i);
+        localObject1 = (spw)this.a.get(i);
         j = i;
-        if (VideoPreDownloadMgr.a(this.this$0).contains(((sds)localObject1).jdField_a_of_type_JavaLangString))
+        if (VideoPreDownloadMgr.a(this.this$0).contains(((spw)localObject1).jdField_a_of_type_JavaLangString))
         {
           this.a.remove(i);
           j = i - 1;
@@ -39,7 +39,7 @@ class VideoPreDownloadMgr$PreDownloadSerialTask
         for (i = 0; i < this.a.size(); i = j + 1)
         {
           j = i;
-          if (!((sds)this.a.get(i)).jdField_a_of_type_Boolean)
+          if (!((spw)this.a.get(i)).jdField_a_of_type_Boolean)
           {
             this.a.remove(i);
             j = i - 1;
@@ -49,14 +49,14 @@ class VideoPreDownloadMgr$PreDownloadSerialTask
       if (QLog.isColorLevel())
       {
         localObject2 = this.a.iterator();
-        sds localsds;
-        for (localObject1 = ""; ((Iterator)localObject2).hasNext(); localObject1 = (String)localObject1 + localsds.jdField_a_of_type_JavaLangString + " | ") {
-          localsds = (sds)((Iterator)localObject2).next();
+        spw localspw;
+        for (localObject1 = ""; ((Iterator)localObject2).hasNext(); localObject1 = (String)localObject1 + localspw.jdField_a_of_type_JavaLangString + " | ") {
+          localspw = (spw)((Iterator)localObject2).next();
         }
         QLog.i(VideoPreDownloadMgr.a(), 2, "当前预下载列表: " + (String)localObject1);
       }
     } while (this.a.size() == 0);
-    Object localObject1 = (sds)this.a.get(0);
+    Object localObject1 = (spw)this.a.get(0);
     Object localObject2 = VideoPreDownloadMgr.a(this.this$0);
     if (localObject2 == null)
     {
@@ -67,7 +67,7 @@ class VideoPreDownloadMgr$PreDownloadSerialTask
       VideoPreDownloadMgr.b(this.this$0);
       return;
     }
-    if (((String)localObject2).equals(((sds)localObject1).jdField_a_of_type_JavaLangString))
+    if (((String)localObject2).equals(((spw)localObject1).jdField_a_of_type_JavaLangString))
     {
       if (QLog.isColorLevel()) {
         QLog.i(VideoPreDownloadMgr.a(), 2, "当前预下载与list第一项一致");

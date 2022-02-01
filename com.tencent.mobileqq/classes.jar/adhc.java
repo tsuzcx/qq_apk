@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class adhc
-  extends amsu
+  implements DialogInterface.OnClickListener
 {
-  public adhc(ForwardRecentActivity paramForwardRecentActivity) {}
+  public adhc(AddRequestActivity paramAddRequestActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      ForwardRecentActivity.f(this.a);
-    }
+    AddRequestActivity.a(this.a).dismiss();
+    AddRequestActivity.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhc
  * JD-Core Version:    0.7.0.1
  */

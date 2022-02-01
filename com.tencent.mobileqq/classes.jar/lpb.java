@@ -1,143 +1,223 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
-import java.io.FileOutputStream;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class lpb
+public class lpb
 {
-  private int jdField_a_of_type_Int;
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  private int d;
+  private static float jdField_a_of_type_Float = -1.0F;
+  private static int jdField_a_of_type_Int;
+  private static final String jdField_a_of_type_JavaLangString = lbh.h() + "SKINCOLOR" + File.separator;
   
-  public lpb(String paramString)
+  public static float a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.d = 0;
-    this.c = 0;
+    if (jdField_a_of_type_Float != -1.0F) {
+      return jdField_a_of_type_Float;
+    }
+    for (;;)
+    {
+      try
+      {
+        lol locallol = lol.a();
+        if (locallol == null) {
+          continue;
+        }
+        jdField_a_of_type_Float = locallol.a();
+        lbd.f("EffectBeautyTools", "mBeautyRatio:" + jdField_a_of_type_Float);
+      }
+      catch (Exception localException)
+      {
+        lbd.f("EffectBeautyTools", "getNewBeautyRatio Exception:" + localException);
+        jdField_a_of_type_Float = 1.0F;
+        continue;
+      }
+      return jdField_a_of_type_Float;
+      jdField_a_of_type_Float = 1.0F;
+    }
   }
   
-  private void b()
+  private static lpd a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
+    if (TextUtils.isEmpty(paramString))
+    {
+      lbd.f("EffectBeautyTools", "parseConfig|content is empty.");
+      return null;
+    }
+    for (;;)
+    {
+      try
+      {
+        localJSONObject = new JSONObject(paramString).getJSONObject("skinColorFilter");
+      }
+      catch (JSONException localJSONException3)
+      {
+        JSONObject localJSONObject;
+        int i;
+        String str1;
+        String str2;
+        locallpd = null;
+        continue;
+      }
+      try
+      {
+        i = Integer.valueOf(localJSONObject.getString("filterid")).intValue();
+        str1 = localJSONObject.getString("resurl");
+        str2 = localJSONObject.getString("md5");
+        locallpd = new lpd(i, str1, str2);
+        try
+        {
+          lbd.f("EffectBeautyTools", "parseConfig:" + i + "|" + str1 + "|" + str2);
+          return locallpd;
+        }
+        catch (JSONException localJSONException1) {}
+      }
+      catch (JSONException localJSONException4)
+      {
+        locallpd = null;
+        continue;
+      }
+      try
+      {
+        localJSONException1.printStackTrace();
+        lbd.f("EffectBeautyTools", "parseConfig failed. info = " + localJSONObject);
+        return locallpd;
+      }
+      catch (JSONException localJSONException2)
+      {
+        localJSONException2.printStackTrace();
+        lbd.f("EffectBeautyTools", "parseConfig|parse failed.context = " + paramString);
+        return locallpd;
+      }
+    }
+  }
+  
+  private static void a()
+  {
+    SharedPreferences.Editor localEditor = EffectConfigBase.a(180, EffectConfigBase.c).edit();
+    localEditor.putInt("qav_effect_beauty_config_first_launch", 1);
+    localEditor.commit();
+  }
+  
+  public static void a(Context paramContext)
+  {
     try
     {
-      this.jdField_a_of_type_JavaIoFileOutputStream.flush();
-      try
+      if (b())
       {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        return;
-      }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FilterProcessTest", 4, "DebugFile-save close fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable1);
-          }
+        a();
+        if (new File(jdField_a_of_type_JavaLangString).exists()) {
+          FileUtils.deleteDirectory(jdField_a_of_type_JavaLangString);
         }
       }
-      try
+      paramContext = a(EffectConfigBase.b(180, EffectConfigBase.c));
+      if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.jdField_a_of_type_JavaLangString)))
       {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        throw localObject;
-      }
-      catch (Throwable localThrowable4)
-      {
-        for (;;)
+        Object localObject = new File(jdField_a_of_type_JavaLangString + "params.json");
+        lbd.f("EffectBeautyTools", "preDownloadResource :" + ((File)localObject).exists());
+        if (!((File)localObject).exists())
         {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FilterProcessTest", 4, "DebugFile-save close fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable4);
-          }
+          localObject = new HttpNetReq();
+          ((HttpNetReq)localObject).mCallback = new lpc();
+          ((HttpNetReq)localObject).mReqUrl = paramContext.jdField_a_of_type_JavaLangString;
+          ((HttpNetReq)localObject).mHttpMethod = 0;
+          ((HttpNetReq)localObject).mOutPath = (lbh.h() + "skin_color.zip");
+          ((HttpNetReq)localObject).setUserData(paramContext);
+          lbf.a().sendReq((NetReq)localObject);
         }
       }
-    }
-    catch (Throwable localThrowable2)
-    {
-      localThrowable2 = localThrowable2;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FilterProcessTest", 4, "DebugFile-save flush fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable2);
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        return;
-      }
-      catch (Throwable localThrowable3)
-      {
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FilterProcessTest", 4, "DebugFile-save close fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable3);
-          }
-        }
-      }
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FilterProcessTest", 4, String.format("DebugFile-end size[%s, %s], fmt[%s], frame[%s], path[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), Integer.valueOf(this.d), this.jdField_b_of_type_JavaLangString }));
-    }
-    b();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.d = 0;
-    this.c = 0;
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramArrayOfByte == null) || (paramInt2 == 0) || (paramInt3 == 0)) {
       return;
     }
-    if ((this.jdField_a_of_type_JavaIoFileOutputStream == null) || (this.jdField_a_of_type_Int != paramInt2) || (this.jdField_b_of_type_Int != paramInt3) || (this.c != paramInt1))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FilterProcessTest", 4, String.format("DebugFile-save pre_size[%s,%s], cur_size[%s,%s], pre_fmt[%s], cur_fmt[%s], count[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(this.c), Integer.valueOf(paramInt1), Integer.valueOf(this.d) }));
-      }
-      b();
-      this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "_" + lpa.a(paramInt2, paramInt3, paramInt1) + ".yuv");
-      File localFile = new File(this.jdField_b_of_type_JavaLangString);
-      if ((localFile.exists()) && (localFile.isFile()) && (!localFile.delete()) && (QLog.isDevelopLevel())) {
-        QLog.i("FilterProcessTest", 4, "DebugFile-save del fail path: " + this.jdField_b_of_type_JavaLangString);
-      }
+    catch (Exception paramContext) {}
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
+  {
+    a(paramContext, paramString, EffectConfigBase.b(180, EffectConfigBase.c));
+    EffectConfigBase.a(180, EffectConfigBase.c, paramInt, paramString);
+    if (paramBoolean) {
+      a(paramContext);
     }
-    try
+  }
+  
+  private static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    Object localObject = null;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    for (paramContext = a(paramString1);; paramContext = null)
     {
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_Int = paramInt2;
-      this.jdField_b_of_type_Int = paramInt3;
-      this.d = 0;
-      this.c = paramInt1;
-      this.d += 1;
-      lpa.a(this.jdField_a_of_type_JavaIoFileOutputStream, paramArrayOfByte);
+      paramString1 = localObject;
+      if (!TextUtils.isEmpty(paramString2)) {
+        paramString1 = a(paramString2);
+      }
+      if (paramContext == null) {
+        FileUtils.deleteDirectory(jdField_a_of_type_JavaLangString);
+      }
+      while ((paramString1 == null) || (paramContext.b.equals(paramString1.b))) {
+        return;
+      }
+      FileUtils.deleteDirectory(jdField_a_of_type_JavaLangString);
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("FilterProcessTest", 4, "DebugFile-save create FileOutputStream fail path: " + this.jdField_b_of_type_JavaLangString);
-        }
-      }
+  }
+  
+  public static boolean a()
+  {
+    if (jdField_a_of_type_Int != 0) {
+      return jdField_a_of_type_Int == 2;
     }
+    for (;;)
+    {
+      try
+      {
+        lol locallol = lol.a();
+        if ((locallol == null) || (!locallol.a()) || (!c())) {
+          continue;
+        }
+        jdField_a_of_type_Int = 2;
+        lbd.f("EffectBeautyTools", "mIsSupportFlag:" + jdField_a_of_type_Int);
+      }
+      catch (Exception localException)
+      {
+        lbd.f("EffectBeautyTools", "isSupportNewBeauty Exception:" + localException);
+        jdField_a_of_type_Int = 1;
+        continue;
+      }
+      if (jdField_a_of_type_Int == 2) {
+        break;
+      }
+      return false;
+      jdField_a_of_type_Int = 1;
+    }
+  }
+  
+  private static boolean b()
+  {
+    boolean bool = false;
+    int i = EffectConfigBase.a(180, EffectConfigBase.c).getInt("qav_effect_beauty_config_first_launch", 0);
+    lbd.f("EffectBeautyTools", "getIsFirstLauncher:" + i);
+    if (i == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private static boolean c()
+  {
+    int i = EffectConfigBase.c(180, EffectConfigBase.c);
+    return (new File(jdField_a_of_type_JavaLangString + "params.json").exists()) && (i != 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lpb
  * JD-Core Version:    0.7.0.1
  */

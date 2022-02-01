@@ -1,14 +1,47 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.qqshare.CustomizedShareForQQ;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class auph
-  implements CustomizedShareForQQ
+  extends BroadcastReceiver
 {
-  auph(aupc paramaupc) {}
+  auph(aupf paramaupf) {}
   
-  public void shareToQQ(Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    auqe.a().c(paramBundle);
+    int j = 0;
+    if ((paramIntent == null) || (!"com.tencent.qqhead.changed".equals(paramIntent.getAction()))) {}
+    for (;;)
+    {
+      return;
+      paramContext = paramIntent.getStringExtra("uin");
+      int k = paramIntent.getIntExtra("faceType", -1);
+      QLog.i("QFlutter.qqface", 1, String.format("mQQFaceChangeReceiver.onReceive uin=%s", new Object[] { paramContext }));
+      if (!TextUtils.isEmpty(paramContext))
+      {
+        paramIntent = aupb.a(k, paramContext);
+        int m = paramIntent.length;
+        int i = 0;
+        while (i < m)
+        {
+          Object localObject = paramIntent[i];
+          aupf.b(this.a).remove(localObject);
+          i += 1;
+        }
+        paramContext = aupb.b(k, paramContext);
+        k = paramContext.length;
+        i = j;
+        while (i < k)
+        {
+          paramIntent = paramContext[i];
+          aupf.a(this.a).remove(paramIntent);
+          i += 1;
+        }
+      }
+    }
   }
 }
 

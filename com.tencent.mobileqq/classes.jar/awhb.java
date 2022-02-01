@@ -1,32 +1,34 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import com.tencent.mobileqq.mvvm.LifeCycleFragment;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"LIFE_CYCLE_FRAGMENT_TAG", "", "checkAndAddLifeCycleFragment", "Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;", "Landroid/support/v4/app/FragmentActivity;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class awhb
+class awhb
+  implements Animator.AnimatorListener
 {
-  @NotNull
-  public static final LifeCycleFragment a(@NotNull FragmentActivity paramFragmentActivity)
+  awhb(awgx paramawgx, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Intrinsics.checkParameterIsNotNull(paramFragmentActivity, "$this$checkAndAddLifeCycleFragment");
-    Object localObject = paramFragmentActivity.getSupportFragmentManager().findFragmentByTag("fragment_tag_life_cycle_fragment");
-    if ((localObject instanceof LifeCycleFragment)) {
-      return (LifeCycleFragment)localObject;
-    }
-    paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager().beginTransaction();
-    if (localObject != null) {
-      paramFragmentActivity.remove((Fragment)localObject);
-    }
-    localObject = new LifeCycleFragment();
-    paramFragmentActivity.add((Fragment)localObject, "fragment_tag_life_cycle_fragment");
-    paramFragmentActivity.commitAllowingStateLoss();
-    return localObject;
+    this.jdField_a_of_type_Awgx.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Awgx.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
+    this.jdField_a_of_type_Awgx.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
+    this.jdField_a_of_type_Awgx.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    this.jdField_a_of_type_Awgx.jdField_a_of_type_AndroidAnimationValueAnimator = null;
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Awgx.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Awgx.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
+    this.jdField_a_of_type_Awgx.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
+    this.jdField_a_of_type_Awgx.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
+    this.jdField_a_of_type_Awgx.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

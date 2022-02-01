@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Paint;
 
-class aipg
-  implements View.OnClickListener
+public class aipg
 {
-  aipg(aipe paramaipe) {}
+  public final Paint a;
+  public final float[] a;
+  public final String[] a;
+  public final Paint b;
   
-  public void onClick(View paramView)
+  public aipg(float[] paramArrayOfFloat, String[] paramArrayOfString, Paint paramPaint1, Paint paramPaint2)
   {
-    GroupManagerActivity.a(this.a.a);
-    bcef.b(aipe.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint1;
+    this.b = paramPaint2;
   }
 }
 

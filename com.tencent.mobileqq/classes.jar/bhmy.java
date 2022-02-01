@@ -1,7 +1,6 @@
-abstract class bhmy
+class bhmy
 {
-  public int a;
-  public byte[] a;
+  private static final bhmx a = new bhmx(null);
 }
 
 

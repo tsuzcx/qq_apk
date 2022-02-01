@@ -1,66 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
 
 class zyj
-  extends Handler
+  implements Animator.AnimatorListener
 {
-  private WeakReference<zyh> a;
+  zyj(zyh paramzyh, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public zyj(zyh paramzyh, Looper paramLooper)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramzyh);
+    paramAnimator = (FrameLayout.LayoutParams)zyh.b(this.jdField_a_of_type_Zyh).getLayoutParams();
+    paramAnimator.height = this.jdField_a_of_type_Int;
+    paramAnimator.width = this.b;
+    paramAnimator.setMargins(this.c, this.d, 0, 0);
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    Object localObject2 = null;
-    if (this.a.get() != null) {}
-    for (zyh localzyh = (zyh)this.a.get();; localzyh = null)
-    {
-      Object localObject1 = localObject2;
-      if (paramMessage.obj != null)
-      {
-        localObject1 = localObject2;
-        if ((paramMessage.obj instanceof zyi)) {
-          localObject1 = (zyi)paramMessage.obj;
-        }
-      }
-      switch (paramMessage.what)
-      {
-      }
-      for (;;)
-      {
-        super.handleMessage(paramMessage);
-        return;
-        if ((localzyh != null) && (localObject1 != null))
-        {
-          ((zyh)this.a.get()).d();
-          continue;
-          if ((localzyh != null) && (localObject1 != null))
-          {
-            ((zyh)this.a.get()).e();
-            continue;
-            if ((localzyh != null) && (localObject1 != null))
-            {
-              ((zyh)this.a.get()).c(((zyi)localObject1).a);
-              continue;
-              if ((localzyh != null) && (localObject1 != null))
-              {
-                ((zyh)this.a.get()).f();
-                continue;
-                if ((localzyh != null) && (localObject1 != null)) {
-                  ((zyh)this.a.get()).b(((zyi)localObject1).a);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,20 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
-public class bfog
-  implements DialogInterface.OnClickListener
+class bfog
+  extends aahi
 {
-  public bfog(UpgradeActivity paramUpgradeActivity) {}
+  bfog(bfoe parambfoe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    bcef.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
-    if (UpgradeActivity.a(this.a)) {
-      bcef.b(this.a.app, "CliOper", "", "", "0X800714C", "0X800714C", 0, 0, "", "", "", "");
-    }
-    UpgradeActivity.a(this.a, false);
-    bcef.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, bfnf.b(), String.valueOf(2), bfng.a(), "");
+    if ((!paramBoolean) || (paramFileInfo == null)) {}
+    Object localObject2;
+    Object localObject1;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            localObject2 = paramFileInfo.str_file_id.get();
+          } while (TextUtils.isEmpty((CharSequence)localObject2));
+          localObject1 = localObject2;
+          if (!((String)localObject2).startsWith("/")) {
+            localObject1 = "/" + (String)localObject2;
+          }
+        } while (!((String)localObject1).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath));
+        bfmf.c("TroopFileUploadFeedsSender", bfmf.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onGetOneFileResult. bus_id:" + paramFileInfo.uint32_bus_id.get() + " dead_time:" + paramFileInfo.uint32_dead_time.get());
+        localObject2 = bfmd.a(this.a.d);
+      } while (localObject2 == null);
+      localObject1 = ((bgjh)localObject2).a((String)localObject1);
+    } while (localObject1 == null);
+    ((bfif)localObject1).a = paramFileInfo.uint32_bus_id.get();
+    ((bfif)localObject1).c = paramFileInfo.uint32_dead_time.get();
+    ((bgjh)localObject2).d((bfif)localObject1);
   }
 }
 

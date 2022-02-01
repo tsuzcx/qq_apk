@@ -1,22 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.content.Intent;
+import android.text.TextUtils;
 
-public class awai
-  extends AnimatorListenerAdapter
+class awai
+  implements awar
 {
-  public awai(MultiCardFragment paramMultiCardFragment) {}
+  awai(awah paramawah) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onSharMsgcallback(String paramString1, String paramString2)
   {
-    super.onAnimationCancel(paramAnimator);
-    MultiCardFragment.c(this.a);
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      this.a.callJs(paramString1, new String[] { paramString2 });
+      return;
+    }
+    this.a.callJs4OpenApiIfNeeded("shareMsg", 0, paramString2);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void startActivityForResult(Intent paramIntent, byte paramByte)
   {
-    super.onAnimationEnd(paramAnimator);
-    MultiCardFragment.c(this.a);
+    this.a.startActivityForResult(paramIntent, paramByte);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import odq;
+import olh;
 
 class ReadInJoySelectMemberAQFragment$3
   implements Runnable
@@ -15,7 +15,7 @@ class ReadInJoySelectMemberAQFragment$3
     while (localIterator.hasNext())
     {
       ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-      odq.a(null, "", "0X8009543", "0X8009543", 0, 0, "", "", "", ReadInJoySelectMemberAQFragment.a(this.this$0, localResultRecord, this.jdField_a_of_type_JavaLangString), false);
+      olh.a(null, "", "0X8009543", "0X8009543", 0, 0, "", "", "", ReadInJoySelectMemberAQFragment.a(this.this$0, localResultRecord, this.jdField_a_of_type_JavaLangString), false);
     }
   }
 }

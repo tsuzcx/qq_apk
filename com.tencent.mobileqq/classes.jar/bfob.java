@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScanTask;
 
-public class bfob
-  implements DialogInterface.OnClickListener
+public abstract interface bfob
 {
-  public bfob(UpgradeActivity paramUpgradeActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    UpgradeActivity.a(this.a, true);
-    bcef.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, bfnf.b(), String.valueOf(0), bfng.a(), "");
-  }
+  public abstract void a(long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask);
 }
 
 

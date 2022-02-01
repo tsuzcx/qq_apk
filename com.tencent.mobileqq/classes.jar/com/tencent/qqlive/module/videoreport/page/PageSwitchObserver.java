@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.os.Looper;
 import android.os.MessageQueue;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,6 @@ public class PageSwitchObserver
   implements AppEventReporter.IAppEventListener
 {
   private static final String TAG = "PageSwitchObserver";
-  private PageInfo mCurrentPageInfo;
   private PageSwitchObserver.DetectionIdleHandler mDetectionIdleHandler = new PageSwitchObserver.DetectionIdleHandler(this, null);
   private boolean mIsAppForeground = true;
   private final ListenerMgr<PageSwitchObserver.IPageSwitchListener> mListenerMgr = new ListenerMgr();
@@ -55,17 +55,18 @@ public class PageSwitchObserver
   
   private boolean checkPageDisappear(View paramView)
   {
-    if (this.mCurrentPageInfo == null) {}
-    while (!needNotifyPageDisappear(this.mCurrentPageInfo.getPageView(), paramView)) {
+    if (paramView == null) {
       return false;
     }
-    onPageDisappear();
-    return true;
+    return notifyPageDestroyed(paramView);
   }
   
   private boolean checkPageDisappear(Window paramWindow)
   {
-    return (paramWindow != null) && (checkPageDisappear(paramWindow.getDecorView()));
+    if (paramWindow != null) {
+      return checkPageDisappear(paramWindow.getDecorView());
+    }
+    return false;
   }
   
   private void detectActivePage(Activity paramActivity)
@@ -143,23 +144,9 @@ public class PageSwitchObserver
       postAppearDetectionTask(paramActivity);
       return;
     }
-    paramView.getViewTreeObserver().addOnGlobalLayoutListener(new PageSwitchObserver.1(this, paramActivity, paramView));
-  }
-  
-  private boolean needNotifyPageDisappear(View paramView1, View paramView2)
-  {
-    if (paramView1 != null)
-    {
-      if (paramView1 == paramView2) {
-        return true;
-      }
-      paramView1 = paramView1.getParent();
-      if ((paramView1 instanceof View)) {}
-      for (paramView1 = (View)paramView1;; paramView1 = null) {
-        break;
-      }
-    }
-    return false;
+    paramActivity = new PageSwitchObserver.1(this, paramActivity, paramView);
+    paramView.getViewTreeObserver().addOnGlobalLayoutListener(paramActivity);
+    paramView.addOnAttachStateChangeListener(new PageSwitchObserver.2(this, paramView, paramActivity));
   }
   
   private void notifyPageAppear(PageInfo paramPageInfo)
@@ -169,40 +156,31 @@ public class PageSwitchObserver
       if (VideoReportInner.getInstance().isDebugMode()) {
         Log.d("PageSwitchObserver", "notifyPageAppear: page = " + paramPageInfo + ", view = " + paramPageInfo.getPageView());
       }
-      this.mListenerMgr.startNotify(new PageSwitchObserver.2(this, paramPageInfo));
+      this.mListenerMgr.startNotify(new PageSwitchObserver.3(this, paramPageInfo));
     }
   }
   
-  private void notifyPageDisappear(PageInfo paramPageInfo, boolean paramBoolean)
+  private boolean notifyPageDestroyed(@NonNull View paramView)
   {
-    if (paramPageInfo != null)
-    {
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("PageSwitchObserver", "notifyPageDisappear: page = " + paramPageInfo + ", view = " + paramPageInfo.getPageView());
-      }
-      this.mListenerMgr.startNotify(new PageSwitchObserver.3(this, paramPageInfo, paramBoolean));
+    if (VideoReportInner.getInstance().isDebugMode()) {
+      Log.d("PageSwitchObserver", "notifyPageDestroyed");
     }
+    paramView = new PageSwitchObserver.PageDestroyCallback(paramView);
+    this.mListenerMgr.startNotify(paramView);
+    return PageSwitchObserver.PageDestroyCallback.access$200(paramView);
+  }
+  
+  private void notifyPageDisappear()
+  {
+    if (VideoReportInner.getInstance().isDebugMode()) {
+      Log.d("PageSwitchObserver", "notifyPageDisappear");
+    }
+    this.mListenerMgr.startNotify(new PageSwitchObserver.4(this));
   }
   
   private void onActivePageFound(PageInfo paramPageInfo)
   {
-    this.mCurrentPageInfo = paramPageInfo;
     notifyPageAppear(paramPageInfo);
-  }
-  
-  private void onPageDisappear()
-  {
-    onPageDisappear(false);
-  }
-  
-  private void onPageDisappear(boolean paramBoolean)
-  {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageSwitchObserver", "notifyPageDisappear: mCurrentPageInfo = " + this.mCurrentPageInfo);
-    }
-    PageInfo localPageInfo = this.mCurrentPageInfo;
-    this.mCurrentPageInfo = null;
-    notifyPageDisappear(localPageInfo, paramBoolean);
   }
   
   public boolean detectActivePage(View paramView)
@@ -213,8 +191,8 @@ public class PageSwitchObserver
       if (VideoReportInner.getInstance().isDebugMode()) {
         Log.d("PageSwitchObserver", "detectActivePage: no active page found");
       }
-      if ((this.mCurrentPageInfo != null) && (VideoReportInner.getInstance().getConfiguration().isIndependentPageOut())) {
-        onPageDisappear();
+      if (VideoReportInner.getInstance().getConfiguration().isIndependentPageOut()) {
+        notifyPageDisappear();
       }
       return false;
     }
@@ -279,7 +257,6 @@ public class PageSwitchObserver
       Log.i("PageSwitchObserver", "onAppOut: ");
     }
     this.mIsAppForeground = false;
-    onPageDisappear(paramBoolean);
   }
   
   public void onDialogHide(Activity paramActivity, Dialog paramDialog)

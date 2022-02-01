@@ -1,44 +1,12 @@
-import com.tencent.common.app.BaseApplicationImpl;
-
 public class lny
 {
-  private static lny a;
+  public long a;
+  public long b;
   
-  public static lny a()
+  public lny(long paramLong1, long paramLong2)
   {
-    if (a != null) {
-      return a;
-    }
-    try
-    {
-      a = new lny();
-      lny locallny = a;
-      return locallny;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  public float a()
-  {
-    float f;
-    try
-    {
-      f = Float.parseFloat(lfi.a(BaseApplicationImpl.getContext()).a("sharp/beauty_3/ratio", "1.0"));
-      if (f <= 0.0F) {
-        return 1.0F;
-      }
-    }
-    catch (Exception localException)
-    {
-      return 1.0F;
-    }
-    return f;
-  }
-  
-  public boolean a()
-  {
-    return lfi.a(BaseApplicationImpl.getContext()).a("sharp/beauty_3/flag", 0) == 1;
+    this.a = paramLong1;
+    this.b = paramLong2;
   }
 }
 

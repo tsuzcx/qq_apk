@@ -1,90 +1,95 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.utils.FileUtils;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
 
 public class zoz
-  extends amop
 {
-  public zoz(TroopMemberApiService paramTroopMemberApiService) {}
+  private volatile int jdField_a_of_type_Int = 4;
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private String jdField_a_of_type_JavaLangString;
+  private volatile boolean jdField_a_of_type_Boolean = true;
+  private String b;
   
-  protected void a(Object paramObject)
+  public COMM.StCommonExt a()
   {
-    paramObject = (becp)paramObject;
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("ProgressTotal", paramObject.jdField_c_of_type_Long);
-    localBundle.putLong("ProgressValue", paramObject.jdField_d_of_type_Long);
-    localBundle.putString("FileName", paramObject.g);
-    localBundle.putString("FilePath", paramObject.e);
-    localBundle.putString("LocalFile", paramObject.a);
-    localBundle.putString("ThumbnailFile_Middle", paramObject.jdField_d_of_type_JavaLangString);
-    localBundle.putString("ThumbnailFile_Large", paramObject.jdField_c_of_type_JavaLangString);
-    localBundle.putInt("Status", paramObject.b);
-    if ((paramObject.b == 8) || ((paramObject.b == 11) && (FileUtils.fileExists(paramObject.e)))) {
-      this.a.a(57, localBundle);
-    }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(paramObject.jdField_c_of_type_JavaLangString))
-      {
-        localBundle.putInt("size", 640);
-        this.a.a(58, localBundle);
-        return;
-      }
-    } while (TextUtils.isEmpty(paramObject.jdField_d_of_type_JavaLangString));
-    localBundle.putInt("size", 383);
-    this.a.a(58, localBundle);
+    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
   }
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public String a()
   {
-    if ((paramObject instanceof Object[]))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("type", 36);
-      localBundle.putBoolean("isSuccess", paramBoolean);
-      localBundle.putSerializable("data", (Object[])paramObject);
-      localBundle.putSerializable("observer_type", Integer.valueOf(4));
-      this.a.a(3, localBundle);
+    if (this.b == null) {
+      this.b = SharePreferenceUtils.get(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache");
     }
+    return this.b;
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 30);
-    localBundle.putBoolean("isSuccess", paramBoolean1);
-    localBundle.putSerializable("data", Boolean.valueOf(paramBoolean2));
-    localBundle.putSerializable("observer_type", Integer.valueOf(4));
-    localBundle.putString("processName", "com.tencent.mobileqq:troopmanage");
-    this.a.a(3, localBundle);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public void a(COMM.StCommonExt paramStCommonExt)
   {
-    if ((paramObject instanceof Object[]))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("type", 44);
-      localBundle.putBoolean("isSuccess", paramBoolean);
-      localBundle.putSerializable("data", (Object[])paramObject);
-      localBundle.putSerializable("observer_type", Integer.valueOf(4));
-      this.a.a(3, localBundle);
-    }
+    this.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
   }
   
-  protected void c(boolean paramBoolean, Object paramObject)
+  public void a(String paramString)
   {
-    if ((paramObject instanceof Object[]))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("type", 45);
-      localBundle.putBoolean("isSuccess", paramBoolean);
-      localBundle.putSerializable("data", (Object[])paramObject);
-      localBundle.putSerializable("observer_type", Integer.valueOf(4));
-      this.a.a(3, localBundle);
+    if (paramString != null) {
+      SharePreferenceUtils.set(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
     }
+    this.b = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public COMM.StCommonExt b()
+  {
+    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  }
+  
+  public String b()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = SharePreferenceUtils.get(BaseApplicationImpl.getContext(), "subscribe_ad_livePageInfo_cache");
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void b(String paramString)
+  {
+    if (paramString != null) {
+      SharePreferenceUtils.set(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int != 4;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Int == 2;
+  }
+  
+  public boolean e()
+  {
+    return this.jdField_a_of_type_Int == 3;
   }
 }
 

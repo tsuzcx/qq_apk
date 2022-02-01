@@ -1,415 +1,314 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.AppFileMsgInfo;
-import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.CheckShareExtensionReq;
-import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.ImgInfo;
-import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.TextInfo;
-import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.VideoInfo;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
 
 public class aucw
+  implements aucs
 {
-  aucz a;
-  public BaseActivity a;
-  public WeakReference<audr> a;
-  public HashSet<String> a;
+  long jdField_a_of_type_Long;
+  atib jdField_a_of_type_Atib;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  String c;
   
-  public aucw(BaseActivity paramBaseActivity, audr paramaudr)
+  public long a(NetResp paramNetResp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_JavaUtilHashSet = bfwf.a(paramBaseActivity);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaudr);
-  }
-  
-  public Uri a(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.get("android.intent.extra.STREAM");
-    if (paramBundle != null)
+    paramNetResp = new ByteArrayInputStream(paramNetResp.mRespData);
+    DataInputStream localDataInputStream = new DataInputStream(paramNetResp);
+    try
     {
-      if ((paramBundle instanceof Uri)) {
-        return (Uri)paramBundle;
-      }
-      if ((paramBundle instanceof String)) {
-        return Uri.parse((String)paramBundle);
+      localDataInputStream.skip(4L);
+      if (localDataInputStream.readInt() != 0) {
+        b();
       }
     }
-    return null;
-  }
-  
-  public ArrayList<String> a(Bundle paramBundle)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramBundle = paramBundle.get("android.intent.extra.STREAM");
-    if ((paramBundle != null) && ((paramBundle instanceof ArrayList)))
+    catch (IOException localIOException)
     {
-      paramBundle = (ArrayList)paramBundle;
-      aucz localaucz = new aucz(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false, null);
-      int i = 0;
-      while (i < paramBundle.size())
+      int i;
+      int j;
+      long l;
+      localIOException.printStackTrace();
+    }
+    finally
+    {
+      try
       {
-        String str = localaucz.a((Uri)paramBundle.get(i), false);
-        if (!TextUtils.isEmpty(str)) {
-          localArrayList.add(str);
-        }
-        i += 1;
-      }
-    }
-    return localArrayList;
-  }
-  
-  public oidb_cmd0xc78.CheckShareExtensionReq a()
-  {
-    oidb_cmd0xc78.CheckShareExtensionReq localCheckShareExtensionReq = new oidb_cmd0xc78.CheckShareExtensionReq();
-    localCheckShareExtensionReq.uin.set(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin()).longValue());
-    if ((this.jdField_a_of_type_JavaUtilHashSet != null) && (!this.jdField_a_of_type_JavaUtilHashSet.isEmpty()))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localCheckShareExtensionReq.android_package_names.add(str);
-      }
-    }
-    int i = 0;
-    if (aucy.a())
-    {
-      localCheckShareExtensionReq.user_flag1.set(1L);
-      i = aucy.a();
-      localCheckShareExtensionReq.user_flag2.set(i);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CheckForward.Security", 2, "setRequestCommonFiled flag =" + i + " ,pkg: ");
-    }
-    return localCheckShareExtensionReq;
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CheckForward.Security", 2, "sendCheckTextShareReq text " + paramString);
-    }
-    audo localaudo = (audo)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(311);
-    oidb_cmd0xc78.CheckShareExtensionReq localCheckShareExtensionReq = a();
-    localCheckShareExtensionReq.content_type.set(1);
-    oidb_cmd0xc78.TextInfo localTextInfo = new oidb_cmd0xc78.TextInfo();
-    localTextInfo.text_content.set(paramString);
-    localCheckShareExtensionReq.texts.add(localTextInfo);
-    paramString = (audr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramString != null) {
-      localaudo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, localCheckShareExtensionReq, "android.intent.action.SEND", paramString);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {}
-    audo localaudo;
-    oidb_cmd0xc78.CheckShareExtensionReq localCheckShareExtensionReq;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("CheckForward.Security", 2, "sendCheckVideoShareReq path = " + paramString1 + ",action= " + paramString2);
-      }
-      localaudo = (audo)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(311);
-      localCheckShareExtensionReq = a();
-      localCheckShareExtensionReq.content_type.set(3);
-      if ((!TextUtils.isEmpty(paramString1)) && (new File(paramString1).exists()))
-      {
-        oidb_cmd0xc78.VideoInfo localVideoInfo = new oidb_cmd0xc78.VideoInfo();
-        String str = HexUtil.bytes2HexStr(aszt.e(paramString1));
-        localVideoInfo.md5.set(str);
-        long l = ShortVideoUtils.getDurationOfVideo(paramString1);
-        if (QLog.isColorLevel()) {
-          QLog.d("CheckForward.Security", 2, "sendCheckVideoShareReq md5= " + str + ",du=" + l);
-        }
-        localVideoInfo.sha1.set(aucy.a(paramString1));
-        localVideoInfo.play_duration.set((int)l);
-        localCheckShareExtensionReq.videos.add(localVideoInfo);
-      }
-      paramString1 = (audr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (paramString1 == null);
-    localaudo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, localCheckShareExtensionReq, paramString2, paramString1);
-  }
-  
-  public void a(ArrayList<String> paramArrayList, String paramString)
-  {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
-    audo localaudo;
-    oidb_cmd0xc78.CheckShareExtensionReq localCheckShareExtensionReq;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("CheckForward.Security", 2, "sendCheckImgShareReq path len= " + paramArrayList.size() + ", action=" + paramString);
-      }
-      localaudo = (audo)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(311);
-      localCheckShareExtensionReq = a();
-      localCheckShareExtensionReq.content_type.set(2);
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        Object localObject2 = (String)paramArrayList.next();
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          Object localObject1 = new File((String)localObject2);
-          if (((File)localObject1).exists())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("CheckForward.Security", 2, "sendCheckImgShareReq path " + (String)localObject2);
-            }
-            oidb_cmd0xc78.ImgInfo localImgInfo = new oidb_cmd0xc78.ImgInfo();
-            String str = HexUtil.bytes2HexStr(aszt.e((String)localObject2));
-            if (QLog.isColorLevel()) {
-              QLog.d("CheckForward.Security", 2, "sendCheckImgShareReq md5= " + str);
-            }
-            localImgInfo.md5.set(str);
-            localImgInfo.sha1.set(aucy.a((String)localObject2));
-            localObject2 = aucy.a((String)localObject2);
-            if (localObject2 != null)
-            {
-              localImgInfo.width.set(((Integer)((Pair)localObject2).first).intValue());
-              localImgInfo.height.set(((Integer)((Pair)localObject2).second).intValue());
-            }
-            localObject1 = aucy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (File)localObject1);
-            if (localObject1 != null)
-            {
-              if (!TextUtils.isEmpty((CharSequence)((Pair)localObject1).first)) {
-                localImgInfo.qr_code_result.set(((StringBuilder)((Pair)localObject1).first).toString());
-              }
-              if (!TextUtils.isEmpty((CharSequence)((Pair)localObject1).second)) {
-                localImgInfo.qr_decode_type.set(((StringBuilder)((Pair)localObject1).second).toString());
-              }
-            }
-            localCheckShareExtensionReq.imgs.add(localImgInfo);
-          }
-        }
-      }
-      paramArrayList = (audr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (paramArrayList == null);
-    localaudo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, localCheckShareExtensionReq, paramString, paramArrayList);
-  }
-  
-  public boolean a(Intent paramIntent, String paramString)
-  {
-    for (int i = 3;; i = 4) {
-      for (;;)
-      {
+        paramNetResp.close();
+        localDataInputStream.close();
+        return -1L;
+        localObject = finally;
         try
         {
-          if (!audj.a().d()) {
-            return false;
-          }
-          Bundle localBundle = paramIntent.getExtras();
-          String str = paramIntent.getType();
-          if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramString))) {
-            break label405;
-          }
-          if ((paramString.equals("android.intent.action.SEND")) || (paramString.equals("android.intent.action.SEND_MULTIPLE")))
-          {
-            if ((str.startsWith("text/")) && (!localBundle.containsKey("android.intent.extra.STREAM")))
-            {
-              a(localBundle.getString("android.intent.extra.TEXT"));
-              return true;
-            }
-            if (str.startsWith("message/"))
-            {
-              paramIntent = (SpannableString)localBundle.get("android.intent.extra.TEXT");
-              if (paramIntent != null)
-              {
-                a(paramIntent.toString());
-                return true;
-              }
-            }
-            else if (str.startsWith("image/"))
-            {
-              if (paramString.equals("android.intent.action.SEND"))
-              {
-                paramIntent = a(localBundle);
-                if ((paramIntent != null) && (a(paramIntent, 2, paramString))) {
-                  return true;
-                }
-              }
-              else
-              {
-                paramIntent = a(localBundle);
-                if ((paramIntent != null) && (paramIntent.size() > 0))
-                {
-                  a(paramIntent, paramString);
-                  return true;
-                }
-              }
-            }
-            else if (paramString.equals("android.intent.action.SEND"))
-            {
-              localBundle.get("android.intent.extra.STREAM");
-              paramIntent = a(localBundle);
-              if (paramIntent != null)
-              {
-                if (("text/x-vcard".equals(str)) && ("content".equals(paramIntent.getScheme()))) {
-                  return false;
-                }
-                if (!str.startsWith("video/")) {
-                  break;
-                }
-                if (a(paramIntent, i, paramString)) {
-                  return true;
-                }
-              }
-            }
-            else
-            {
-              paramIntent = a(localBundle);
-              if ((paramIntent != null) && (paramIntent.size() > 0))
-              {
-                b(paramIntent, paramString);
-                return true;
-              }
-            }
-          }
-          else if (paramString.equals("android.intent.action.VIEW"))
-          {
-            paramIntent = paramIntent.getData();
-            if (paramIntent == null) {
-              return false;
-            }
-            if ((str != null) && (str.startsWith("image/")))
-            {
-              if (a(paramIntent, 2, paramString)) {
-                return true;
-              }
-            }
-            else
-            {
-              if (!str.startsWith("video/")) {
-                break label395;
-              }
-              boolean bool = a(paramIntent, i, paramString);
-              if (bool) {
-                return true;
-              }
-            }
-          }
+          paramNetResp.close();
+          localDataInputStream.close();
+          throw localObject;
         }
-        catch (Throwable paramIntent)
+        catch (Exception paramNetResp)
         {
-          QLog.e("CheckForward.Security", 1, "system share.prepareSecurityCheck exception=", paramIntent);
+          break label187;
         }
-        return false;
-        label395:
-        i = 4;
+      }
+      catch (Exception paramNetResp)
+      {
+        break label172;
       }
     }
-    label405:
-    return false;
+    try
+    {
+      paramNetResp.close();
+      localDataInputStream.close();
+      return 0L;
+    }
+    catch (Exception paramNetResp) {}
+    localDataInputStream.skip(8L);
+    i = localDataInputStream.readByte();
+    if (i == 0)
+    {
+      i = localDataInputStream.readInt();
+      j = localDataInputStream.readInt();
+      l = j;
+      l = i | l << 32;
+      try
+      {
+        paramNetResp.close();
+        localDataInputStream.close();
+        return l;
+      }
+      catch (Exception paramNetResp)
+      {
+        return l;
+      }
+    }
+    if (i == 1)
+    {
+      a();
+      try
+      {
+        paramNetResp.close();
+        localDataInputStream.close();
+        return 0L;
+      }
+      catch (Exception paramNetResp)
+      {
+        return 0L;
+      }
+    }
+    b();
+    try
+    {
+      paramNetResp.close();
+      localDataInputStream.close();
+      return 0L;
+    }
+    catch (Exception paramNetResp)
+    {
+      return 0L;
+    }
+    label172:
+    label187:
+    return 0L;
   }
   
-  public boolean a(Uri paramUri, int paramInt, String paramString)
+  public void a()
   {
-    if (this.jdField_a_of_type_Aucz == null) {
-      this.jdField_a_of_type_Aucz = new aucz(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false, new aucx(this, paramInt, paramString));
-    }
-    String str = this.jdField_a_of_type_Aucz.a(paramUri);
-    QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : uri= " + paramUri + ", path= " + str);
-    if (TextUtils.isEmpty(str)) {}
-    long l;
-    do
-    {
-      return false;
-      if ((this.jdField_a_of_type_Aucz.b) || (this.jdField_a_of_type_Aucz.a)) {
-        return true;
-      }
-      paramUri = new File(str);
-      l = paramUri.length();
-    } while ((!this.jdField_a_of_type_Aucz.b) && (!this.jdField_a_of_type_Aucz.a) && (l == 0L));
-    if ((ForwardFileBaseOption.b(str)) || (!paramUri.canRead()))
-    {
-      QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : can not Read");
-      return false;
-    }
-    if (paramInt == 2)
-    {
-      paramUri = new ArrayList();
-      paramUri.add(str);
-      a(paramUri, paramString);
-    }
-    for (;;)
-    {
-      return true;
-      if (paramInt == 4)
-      {
-        paramUri = new ArrayList();
-        paramUri.add(str);
-        b(paramUri, paramString);
-      }
-      else if (paramInt == 3)
-      {
-        a(str, paramString);
-      }
-    }
+    this.jdField_a_of_type_Atib.aw_();
   }
   
-  public void b(ArrayList<String> paramArrayList, String paramString)
+  public void a(long paramLong1, long paramLong2)
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
-    audo localaudo;
-    oidb_cmd0xc78.CheckShareExtensionReq localCheckShareExtensionReq;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("CheckForward.Security", 2, "sendCheckFileShareReq path len= " + paramArrayList.size() + ", action=" + paramString);
-      }
-      localaudo = (audo)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(311);
-      localCheckShareExtensionReq = a();
-      localCheckShareExtensionReq.content_type.set(4);
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        String str1 = (String)paramArrayList.next();
-        if (!TextUtils.isEmpty(str1))
-        {
-          File localFile = new File(str1);
-          if (localFile.exists())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("CheckForward.Security", 2, "sendCheckFileShareReq path " + str1);
-            }
-            oidb_cmd0xc78.AppFileMsgInfo localAppFileMsgInfo = new oidb_cmd0xc78.AppFileMsgInfo();
-            String str2 = HexUtil.bytes2HexStr(aszt.e(str1));
-            if (QLog.isColorLevel()) {
-              QLog.d("CheckForward.Security", 2, "sendCheckFileShareReq md5= " + str2);
-            }
-            localAppFileMsgInfo.md5.set(str2);
-            localAppFileMsgInfo.sha1.set(aucy.a(str1));
-            localAppFileMsgInfo.file_size.set((int)localFile.length());
-            localCheckShareExtensionReq.files.add(localAppFileMsgInfo);
-          }
-        }
-      }
-      paramArrayList = (audr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (paramArrayList == null);
-    localaudo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, localCheckShareExtensionReq, paramString, paramArrayList);
+    this.jdField_a_of_type_Atib.a(paramLong1, paramLong2);
   }
+  
+  public void a(boolean paramBoolean) {}
+  
+  /* Error */
+  public byte[] a(byte[] paramArrayOfByte, long paramLong)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 79	aucw:b	Ljava/lang/String;
+    //   4: astore 6
+    //   6: aload 6
+    //   8: astore 5
+    //   10: aload 6
+    //   12: ifnonnull +9 -> 21
+    //   15: aload_0
+    //   16: getfield 81	aucw:c	Ljava/lang/String;
+    //   19: astore 5
+    //   21: aload_0
+    //   22: getfield 83	aucw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   25: ifnull +26 -> 51
+    //   28: aload 5
+    //   30: ifnull +21 -> 51
+    //   33: aload_0
+    //   34: getfield 83	aucw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   37: invokevirtual 88	java/lang/String:length	()I
+    //   40: ifeq +11 -> 51
+    //   43: aload 5
+    //   45: invokevirtual 88	java/lang/String:length	()I
+    //   48: ifne +23 -> 71
+    //   51: invokestatic 94	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   54: ifeq +11 -> 65
+    //   57: new 96	java/lang/NullPointerException
+    //   60: dup
+    //   61: invokespecial 98	java/lang/NullPointerException:<init>	()V
+    //   64: athrow
+    //   65: aload_0
+    //   66: invokevirtual 47	aucw:b	()V
+    //   69: aconst_null
+    //   70: areturn
+    //   71: aload 5
+    //   73: invokestatic 104	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
+    //   76: astore 7
+    //   78: aload_0
+    //   79: getfield 83	aucw:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   82: invokestatic 104	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
+    //   85: astore 8
+    //   87: aload 8
+    //   89: arraylength
+    //   90: iconst_2
+    //   91: iadd
+    //   92: iconst_2
+    //   93: iadd
+    //   94: aload 7
+    //   96: arraylength
+    //   97: iadd
+    //   98: bipush 20
+    //   100: iadd
+    //   101: aload_1
+    //   102: arraylength
+    //   103: iadd
+    //   104: istore 4
+    //   106: new 106	java/io/ByteArrayOutputStream
+    //   109: dup
+    //   110: iload 4
+    //   112: bipush 16
+    //   114: iadd
+    //   115: invokespecial 109	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   118: astore 5
+    //   120: new 111	java/io/DataOutputStream
+    //   123: dup
+    //   124: aload 5
+    //   126: invokespecial 114	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   129: astore 6
+    //   131: aload 6
+    //   133: ldc 115
+    //   135: invokevirtual 118	java/io/DataOutputStream:writeInt	(I)V
+    //   138: aload 6
+    //   140: sipush 1007
+    //   143: invokevirtual 118	java/io/DataOutputStream:writeInt	(I)V
+    //   146: aload 6
+    //   148: iconst_0
+    //   149: invokevirtual 118	java/io/DataOutputStream:writeInt	(I)V
+    //   152: aload 6
+    //   154: iload 4
+    //   156: invokevirtual 118	java/io/DataOutputStream:writeInt	(I)V
+    //   159: aload 6
+    //   161: aload 8
+    //   163: arraylength
+    //   164: invokevirtual 121	java/io/DataOutputStream:writeShort	(I)V
+    //   167: aload 6
+    //   169: aload 8
+    //   171: invokevirtual 124	java/io/DataOutputStream:write	([B)V
+    //   174: aload 6
+    //   176: aload 7
+    //   178: arraylength
+    //   179: invokevirtual 121	java/io/DataOutputStream:writeShort	(I)V
+    //   182: aload 6
+    //   184: aload 7
+    //   186: invokevirtual 124	java/io/DataOutputStream:write	([B)V
+    //   189: aload 6
+    //   191: aload_0
+    //   192: getfield 126	aucw:jdField_a_of_type_Long	J
+    //   195: ldc2_w 127
+    //   198: land
+    //   199: l2i
+    //   200: invokevirtual 118	java/io/DataOutputStream:writeInt	(I)V
+    //   203: aload 6
+    //   205: lload_2
+    //   206: ldc2_w 127
+    //   209: land
+    //   210: l2i
+    //   211: invokevirtual 118	java/io/DataOutputStream:writeInt	(I)V
+    //   214: aload 6
+    //   216: aload_1
+    //   217: arraylength
+    //   218: invokevirtual 118	java/io/DataOutputStream:writeInt	(I)V
+    //   221: aload 6
+    //   223: aload_0
+    //   224: getfield 126	aucw:jdField_a_of_type_Long	J
+    //   227: bipush 32
+    //   229: lshr
+    //   230: l2i
+    //   231: invokevirtual 118	java/io/DataOutputStream:writeInt	(I)V
+    //   234: aload 6
+    //   236: lload_2
+    //   237: bipush 32
+    //   239: lshr
+    //   240: l2i
+    //   241: invokevirtual 118	java/io/DataOutputStream:writeInt	(I)V
+    //   244: aload 6
+    //   246: aload_1
+    //   247: iconst_0
+    //   248: aload_1
+    //   249: arraylength
+    //   250: invokevirtual 131	java/io/DataOutputStream:write	([BII)V
+    //   253: aload 5
+    //   255: invokevirtual 135	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   258: astore_1
+    //   259: aload 5
+    //   261: invokevirtual 136	java/io/ByteArrayOutputStream:close	()V
+    //   264: aload 6
+    //   266: invokevirtual 137	java/io/DataOutputStream:close	()V
+    //   269: aload_1
+    //   270: areturn
+    //   271: astore 5
+    //   273: aload_1
+    //   274: areturn
+    //   275: astore_1
+    //   276: aload_0
+    //   277: invokevirtual 47	aucw:b	()V
+    //   280: aload 5
+    //   282: invokevirtual 136	java/io/ByteArrayOutputStream:close	()V
+    //   285: aload 6
+    //   287: invokevirtual 137	java/io/DataOutputStream:close	()V
+    //   290: aconst_null
+    //   291: areturn
+    //   292: astore_1
+    //   293: aload 5
+    //   295: invokevirtual 136	java/io/ByteArrayOutputStream:close	()V
+    //   298: aload 6
+    //   300: invokevirtual 137	java/io/DataOutputStream:close	()V
+    //   303: aload_1
+    //   304: athrow
+    //   305: astore 5
+    //   307: goto -4 -> 303
+    //   310: astore_1
+    //   311: goto -21 -> 290
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	314	0	this	aucw
+    //   0	314	1	paramArrayOfByte	byte[]
+    //   0	314	2	paramLong	long
+    //   104	51	4	i	int
+    //   8	252	5	localObject1	Object
+    //   271	23	5	localException1	Exception
+    //   305	1	5	localException2	Exception
+    //   4	295	6	localObject2	Object
+    //   76	109	7	arrayOfByte1	byte[]
+    //   85	85	8	arrayOfByte2	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   259	269	271	java/lang/Exception
+    //   131	259	275	java/io/IOException
+    //   131	259	292	finally
+    //   276	280	292	finally
+    //   293	303	305	java/lang/Exception
+    //   280	290	310	java/lang/Exception
+  }
+  
+  public void b() {}
 }
 
 

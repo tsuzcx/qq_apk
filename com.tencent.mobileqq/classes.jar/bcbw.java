@@ -1,29 +1,18 @@
-import com.google.gson.Gson;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.tfm.metrics.api.MetricsLogBean;
-import com.tencent.tfm.metrics.api.Reporter;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
 
-public class bcbw
-  implements Reporter
+public final class bcbw
+  implements Parcelable.Creator<AssociateSearchWordsFragment.AssociateItem>
 {
-  private Gson jdField_a_of_type_ComGoogleGsonGson = new Gson();
-  private StatisticCollector jdField_a_of_type_ComTencentMobileqqStatisticsStatisticCollector;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public bcbw(BaseApplicationImpl paramBaseApplicationImpl)
+  public AssociateSearchWordsFragment.AssociateItem a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqStatisticsStatisticCollector = StatisticCollector.getInstance(paramBaseApplicationImpl);
-    this.jdField_a_of_type_JavaLangString = paramBaseApplicationImpl.getRuntime().getAccount();
+    return new AssociateSearchWordsFragment.AssociateItem(paramParcel);
   }
   
-  public void report(MetricsLogBean paramMetricsLogBean)
+  public AssociateSearchWordsFragment.AssociateItem[] a(int paramInt)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("monitor", this.jdField_a_of_type_ComGoogleGsonGson.toJson(paramMetricsLogBean) + ";");
-    this.jdField_a_of_type_ComTencentMobileqqStatisticsStatisticCollector.collectPerformance(this.jdField_a_of_type_JavaLangString, "rqd_tfm_metrics", true, 0L, 0L, localHashMap, null);
+    return new AssociateSearchWordsFragment.AssociateItem[paramInt];
   }
 }
 

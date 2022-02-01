@@ -1,40 +1,12 @@
-import android.app.Activity;
-import java.util.ArrayList;
+import java.io.File;
 
 public class bnsp
 {
-  public double a;
-  public int a;
-  public akry a;
-  public Activity a;
-  public String a;
-  public ArrayList<String> a;
-  public boolean a;
-  public double b;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  public static final String a = bmwx.a + File.separator + "ae_editor" + File.separator + "lottie/aiscene";
+  public static final String b = a + File.separator + "res";
+  public static final String c = b + File.separator + "AutoAISceneAni";
+  public static final String d = c + File.separator + "AILottie";
+  public static final String e = c + File.separator + "AILottie" + File.separator + "ProcessAnimation.zip";
 }
 
 

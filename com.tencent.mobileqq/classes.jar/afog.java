@@ -1,117 +1,73 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
-class afog
-  extends afnz
+public class afog
 {
-  private void c(long paramLong1, long paramLong2)
+  private static afog a;
+  public int a;
+  private int b = -1;
+  
+  private afog()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOrderManager", 2, "ForwardOrder realMapUniSeq newSeq -> " + paramLong1 + ", originSeq -> " + paramLong2 + ", forwardID -> " + this.jdField_a_of_type_Int);
-    }
-    if ((this.b != null) && (!this.b.isEmpty()) && (a(paramLong2, this.b)) && (this.jdField_a_of_type_JavaUtilHashMap != null))
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  /* Error */
+  public static afog a()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 20	afog:jdField_a_of_type_Afog	Lafog;
+    //   6: ifnonnull +22 -> 28
+    //   9: new 2	afog
+    //   12: dup
+    //   13: invokespecial 21	afog:<init>	()V
+    //   16: putstatic 20	afog:jdField_a_of_type_Afog	Lafog;
+    //   19: getstatic 20	afog:jdField_a_of_type_Afog	Lafog;
+    //   22: astore_0
+    //   23: ldc 2
+    //   25: monitorexit
+    //   26: aload_0
+    //   27: areturn
+    //   28: getstatic 20	afog:jdField_a_of_type_Afog	Lafog;
+    //   31: iconst_1
+    //   32: putfield 14	afog:jdField_a_of_type_Int	I
+    //   35: goto -16 -> 19
+    //   38: astore_0
+    //   39: ldc 2
+    //   41: monitorexit
+    //   42: aload_0
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   22	5	0	localafog	afog
+    //   38	5	0	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	19	38	finally
+    //   19	23	38	finally
+    //   28	35	38	finally
+  }
+  
+  public int a()
+  {
+    if (-1 == this.b)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOrderManager", 2, "ForwardOrder realMapUniSeq map do put, forwardID -> " + this.jdField_a_of_type_Int);
+      if ((DeviceInfoUtil.getSystemTotalMemory() >>> 20 <= 1390L) || (DeviceInfoUtil.getCpuNumber() <= 3) || (DeviceInfoUtil.getCpuFrequency() <= 1433L)) {
+        break label48;
+      }
+      this.b = 1;
+    }
+    for (;;)
+    {
+      return this.b;
+      label48:
+      if ((DeviceInfoUtil.getSystemTotalMemory() >>> 20 > 926L) && (DeviceInfoUtil.getCpuNumber() > 1) && (DeviceInfoUtil.getCpuFrequency() > 961L)) {
+        this.b = 2;
+      } else {
+        this.b = 3;
       }
     }
-  }
-  
-  void a(long paramLong1, long paramLong2)
-  {
-    if (a(paramLong2, this.b))
-    {
-      c(paramLong1, paramLong2);
-      return;
-    }
-    a(paramLong1);
-    c(paramLong1, paramLong1);
-  }
-  
-  void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramMessageRecord.uniseq)) != null))
-    {
-      paramMessageRecord = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramMessageRecord.uniseq));
-      if ((paramMessageRecord != null) && (a(paramMessageRecord.longValue(), this.b)))
-      {
-        this.b.remove(paramMessageRecord);
-        if ((this.b.size() <= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
-        {
-          paramQQAppInterface = acvv.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_JavaLangString = "";
-          if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
-            this.jdField_a_of_type_Long = paramQQAppInterface[0];
-          }
-        }
-      }
-    }
-  }
-  
-  boolean a(long paramLong, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (Object localObject = this.b; (localObject != null) && (((Set)localObject).size() > 0); localObject = this.jdField_a_of_type_JavaUtilSet)
-    {
-      localObject = ((Set)localObject).iterator();
-      long l;
-      Long localLong;
-      do
-      {
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          l = ((Long)((Iterator)localObject).next()).longValue();
-        } while ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)) == null));
-        localLong = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      } while ((localLong == null) || (localLong.longValue() <= 0L) || (localLong.longValue() != l));
-      return true;
-    }
-    return false;
-  }
-  
-  boolean a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)) != null))
-      {
-        Object localObject = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-        if ((localObject != null) && (a(((Long)localObject).longValue(), this.jdField_a_of_type_JavaUtilSet)))
-        {
-          this.jdField_a_of_type_JavaUtilSet.remove(localObject);
-          if (QLog.isColorLevel()) {
-            QLog.d("ForwardOrderManager", 2, "SeparateForwardOrder onSendResult mChatMsgListAfter remove originUniSeq " + localObject + "， mChatMsgListAfter.size() -> " + this.jdField_a_of_type_JavaUtilSet.size() + ", forwardID -> " + this.jdField_a_of_type_Int);
-          }
-          if ((this.jdField_a_of_type_JavaUtilSet.size() <= 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_Long > 0L))
-          {
-            localObject = paramQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_Long);
-            if (localObject != null)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ForwardOrderManager", 2, "SeparateForwardOrder onSendResult query msg and send, newSeq -> " + paramLong + ", forwardID -> " + this.jdField_a_of_type_Int);
-              }
-              paramQQAppInterface.getMessageFacade().sendMessage((MessageRecord)localObject, null, false);
-              this.jdField_a_of_type_Long = 0L;
-              a();
-              return true;
-            }
-          }
-        }
-      }
-      return false;
-    }
-    finally {}
   }
 }
 

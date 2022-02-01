@@ -1,7 +1,30 @@
+import com.tencent.mobileqq.app.BusinessObserver;
+
 public class amzw
+  implements BusinessObserver
 {
-  public int a;
-  public long a;
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    case 3: 
+    default: 
+      return;
+    case 2: 
+      a(paramBoolean, paramObject);
+      return;
+    case 1: 
+      b(paramBoolean, paramObject);
+      return;
+    }
+    c(paramBoolean, paramObject);
+  }
 }
 
 

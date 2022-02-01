@@ -1,26 +1,24 @@
-public class apup
+import eipc.EIPCResult;
+
+class apup
+  implements apvk
 {
-  @ausx(a="poll_interval")
-  public int a;
-  @ausx(a="jump_url")
-  public String a;
-  @ausx(a="search_empty_show_troop_recommend")
-  public int b;
+  apup(apuj paramapuj, apvj paramapvj) {}
   
-  public apup()
+  public void a(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_Int = 10;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public static apup a(String paramString)
-  {
-    return (apup)ausy.a(paramString, apup.class);
+    apvj localapvj = this.jdField_a_of_type_Apvj;
+    if (paramEIPCResult.code == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localapvj.a(bool, paramEIPCResult.data);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apup
  * JD-Core Version:    0.7.0.1
  */

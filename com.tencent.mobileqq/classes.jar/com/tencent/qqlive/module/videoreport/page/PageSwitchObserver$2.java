@@ -1,15 +1,20 @@
 package com.tencent.qqlive.module.videoreport.page;
 
-import com.tencent.qqlive.module.videoreport.utils.ListenerMgr.INotifyCallback;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 class PageSwitchObserver$2
-  implements ListenerMgr.INotifyCallback<PageSwitchObserver.IPageSwitchListener>
+  implements View.OnAttachStateChangeListener
 {
-  PageSwitchObserver$2(PageSwitchObserver paramPageSwitchObserver, PageInfo paramPageInfo) {}
+  PageSwitchObserver$2(PageSwitchObserver paramPageSwitchObserver, View paramView, ViewTreeObserver.OnGlobalLayoutListener paramOnGlobalLayoutListener) {}
   
-  public void onNotify(PageSwitchObserver.IPageSwitchListener paramIPageSwitchListener)
+  public void onViewAttachedToWindow(View paramView) {}
+  
+  public void onViewDetachedFromWindow(View paramView)
   {
-    paramIPageSwitchListener.onPageAppear(this.val$pageInfo);
+    this.val$view.getViewTreeObserver().removeGlobalOnLayoutListener(this.val$onGlobalLayoutListener);
   }
 }
 

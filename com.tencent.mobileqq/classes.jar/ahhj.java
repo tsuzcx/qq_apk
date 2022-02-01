@@ -1,16 +1,16 @@
-class ahhj
-  implements zuj
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+
+public class ahhj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahhj(ahgz paramahgz) {}
+  public ahhj(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a.a(false, false, 4);
-  }
-  
-  public void b()
-  {
-    this.a.a.a();
+    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

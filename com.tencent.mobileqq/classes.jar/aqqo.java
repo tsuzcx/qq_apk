@@ -1,25 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import cooperation.qqreader.QRBridgeActivity;
 
-public final class aqqo
-  implements Parcelable.Creator
+public class aqqo
+  implements aqqr
 {
-  public IPSiteModel.Gxzb a(Parcel paramParcel)
+  public String a()
   {
-    IPSiteModel.Gxzb localGxzb = new IPSiteModel.Gxzb();
-    localGxzb.appid = paramParcel.readInt();
-    localGxzb.appName = paramParcel.readString();
-    localGxzb.cover = paramParcel.readString();
-    localGxzb.feeType = paramParcel.readInt();
-    localGxzb.id = paramParcel.readString();
-    localGxzb.name = paramParcel.readString();
-    return localGxzb;
+    return anvx.a(2131716409);
   }
   
-  public IPSiteModel.Gxzb[] a(int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    return new IPSiteModel.Gxzb[paramInt];
+    if (paramView == null) {}
+    Context localContext;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramInt != 16908289);
+      localContext = paramView.getContext();
+    } while (localContext == null);
+    paramView = new Intent(paramView.getContext(), QRBridgeActivity.class);
+    paramView.putExtra("readtype", "18");
+    paramView.addFlags(268435456);
+    localContext.startActivity(paramView);
+    bdla.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 3, 0, "", "", "", "");
   }
 }
 

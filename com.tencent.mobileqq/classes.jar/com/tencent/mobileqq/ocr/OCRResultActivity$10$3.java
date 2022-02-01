@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ocr;
 
-import amtj;
-import axln;
-import axpc;
+import anvx;
+import ayrw;
+import ayvn;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class OCRResultActivity$10$3
   implements Runnable
 {
-  public OCRResultActivity$10$3(axln paramaxln) {}
+  public OCRResultActivity$10$3(ayrw paramayrw) {}
   
   public void run()
   {
     OCRResultActivity.a(this.a.a).dismiss();
     OCRResultActivity.a(this.a.a).a(0);
     OCRResultActivity.d(this.a.a, false);
-    QQToast.a(this.a.a, 1, amtj.a(2131706927), 0).a();
+    QQToast.a(this.a.a, 1, anvx.a(2131707273), 0).a();
   }
 }
 

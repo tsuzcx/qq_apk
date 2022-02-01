@@ -1,17 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
-import java.util.concurrent.Callable;
+import android.net.Uri;
+import com.tencent.mobileqq.forward.ForwardFileBaseOption;
 
 public class auqs
-  implements Callable<aumc>
+  implements aviz
 {
-  public auqs(ODLoadingActivity paramODLoadingActivity, String paramString) {}
+  public auqs(ForwardFileBaseOption paramForwardFileBaseOption) {}
   
-  public aumc a()
+  public void a(Uri paramUri) {}
+  
+  public void a(String paramString1, String paramString2, long paramLong)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    return auml.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoOdODLoadingActivity, this.jdField_a_of_type_JavaLangString, localQQAppInterface.getCurrentUin());
+    this.a.a = ForwardFileBaseOption.a(this.a, paramString2, paramLong);
   }
 }
 

@@ -69,7 +69,7 @@ public class QQCustomDialogWtihInput
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.inputView = ((ClearableEditText)findViewById(2131368750));
+    this.inputView = ((ClearableEditText)findViewById(2131368909));
   }
   
   public void setInitInputValue(String paramString)

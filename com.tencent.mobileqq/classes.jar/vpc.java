@@ -1,9 +1,6 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
-
-public abstract interface vpc
+class vpc
 {
-  public abstract void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage);
+  private static final vpa a = new vpa(null);
 }
 
 

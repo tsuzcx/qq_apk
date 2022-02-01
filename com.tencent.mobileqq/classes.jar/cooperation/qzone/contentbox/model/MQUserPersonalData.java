@@ -2,7 +2,7 @@ package cooperation.qzone.contentbox.model;
 
 import NS_QZONE_MQMSG.UserPersonalData;
 import NS_QZONE_MQMSG.UserPersonalProfile;
-import bkys;
+import bmkb;
 import cooperation.qzone.util.QZLog;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -69,7 +69,7 @@ public class MQUserPersonalData
     {
       return null;
       localHashMap = new HashMap();
-      paramJSONObject = bkys.a(paramJSONObject.toString());
+      paramJSONObject = bmkb.a(paramJSONObject.toString());
     } while (paramJSONObject == null);
     paramJSONObject = paramJSONObject.entrySet().iterator();
     while (paramJSONObject.hasNext())

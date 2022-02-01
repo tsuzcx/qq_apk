@@ -1,16 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aecs
   implements View.OnClickListener
 {
-  public aecs(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  public aecs(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.onBackEvent();
+    this.a.finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

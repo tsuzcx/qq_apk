@@ -1,28 +1,12 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.face.FaceDecoder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class qrx
-  extends qpk
+class qrx
+  implements DialogInterface.OnDismissListener
 {
-  public qrx(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
-  {
-    super(paramContext, paramFaceDecoder, paramslt);
-  }
+  qrx(qrw paramqrw) {}
   
-  public qpk a()
-  {
-    return this;
-  }
-  
-  public qpk d()
-  {
-    return this;
-  }
-  
-  public qpk e()
-  {
-    return null;
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

@@ -1,41 +1,27 @@
-public class anoc
-  implements anny
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class anoc
+  implements View.OnClickListener
 {
-  public void a(amwl paramamwl, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, amwm paramamwm)
+  anoc(anob paramanob, ApolloActionData paramApolloActionData) {}
+  
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 6008: 
-      paramamwl.refreshRecentListFinish(paramBoolean);
-      return;
-    case 8015: 
-      paramamwl.roamMessageSearchInCloud(paramBoolean, paramObject);
-      return;
-    case 6014: 
-      paramamwl.iPadOnlinesStatus(paramArrayOfObject);
-      return;
-    case 6016: 
-      paramamwl.pushUpdateLoginDevStatus(paramArrayOfObject);
-      return;
-    case 8003: 
-      paramamwl.subaccountGetMsg(paramBoolean, paramObject);
-      return;
-    case 8011: 
-      paramamwl.subaccountMsgNumReadedConfirm(paramBoolean, paramObject);
-      return;
-    case 8004: 
-      paramamwl.subaccountPushMsg(paramBoolean, paramObject);
-      return;
-    case 8007: 
-      paramamwl.recommandDevLock(paramBoolean, paramArrayOfObject);
-      return;
-    case 8013: 
-      paramamwl.pcActiveNotify(paramBoolean, paramArrayOfObject);
-      return;
+    if (anob.a(this.jdField_a_of_type_Anob) != null) {
+      anob.a(this.jdField_a_of_type_Anob).a(3, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId);
     }
-    paramamwl.receiptRead((Long[])paramObject);
+    for (;;)
+    {
+      this.jdField_a_of_type_Anob.a();
+      anob.a(this.jdField_a_of_type_Anob, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, "unlockeddownload");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.e("ApolloNewActionFloatViewController", 1, "showKapuLockActionView mAppController null");
+    }
   }
 }
 

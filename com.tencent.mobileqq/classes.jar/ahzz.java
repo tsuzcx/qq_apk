@@ -1,117 +1,60 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import java.util.List;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 
-public class ahzz
-  implements BusinessObserver
+class ahzz
+  implements View.OnClickListener
 {
-  private void a(boolean paramBoolean, Object paramObject)
+  ahzz(ahzx paramahzx) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length >= 8) {
-        a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Integer)paramObject[3]).intValue(), (String)paramObject[4], ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Boolean)paramObject[7]).booleanValue());
-      }
-      return;
-    }
-    if ((paramObject != null) && ((paramObject instanceof Object[])))
-    {
-      Object[] arrayOfObject = (Object[])paramObject;
-      if (arrayOfObject.length >= 2)
-      {
-        paramObject = (String)arrayOfObject[0];
-        paramBoolean = ((Boolean)arrayOfObject[1]).booleanValue();
+    if (this.a.sessionInfo.curFriendUin.equals(AppConstants.SMARTDEVICE_SEARCH_UIN)) {
+      if (this.a.a.booleanValue()) {
+        this.a.finish();
       }
     }
     for (;;)
     {
-      a(false, paramObject, 0, null, 0, null, 60, 1200, paramBoolean);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      paramBoolean = false;
-      paramObject = null;
-    }
-  }
-  
-  private void b(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length >= 3) {
-        a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+      Object localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("nickname", this.a.app.getCurrentNickname());
+      ((Intent)localObject1).putExtra("bitmap", this.a.app.getFaceBitmap(this.a.app.getCurrentAccountUin(), (byte)2, false));
+      Object localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4).getString("square_url_" + this.a.app.getCurrentAccountUin(), "");
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        ((Intent)localObject1).putExtra("url", (String)localObject2);
       }
-      return;
-    }
-    if ((paramObject != null) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length <= 0) {}
-    }
-    for (paramObject = (String)paramObject[0];; paramObject = null)
-    {
-      a(false, paramObject, 0, null);
-      return;
-    }
-  }
-  
-  private void c(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length >= 4) {
-        a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (List)paramObject[3]);
+      for (;;)
+      {
+        bmij.a().a(this.a.getActivity(), this.a.app, this.a.app.getAccount(), (Intent)localObject1, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
+        break;
+        ((Intent)localObject1).putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
       }
-      return;
-    }
-    if ((paramObject != null) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length <= 0) {}
-    }
-    for (paramObject = (String)paramObject[0];; paramObject = null)
-    {
-      a(false, paramObject, 0, null, null);
-      return;
-    }
-  }
-  
-  private void d(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (paramObject != null))
-    {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length >= 3) {
-        a((String)paramObject[0], (String)paramObject[1], (List)paramObject[2]);
+      localObject1 = (abgm)this.a.app.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+      localObject2 = ((abgm)localObject1).a(Long.parseLong(this.a.sessionInfo.curFriendUin));
+      if (this.a.a.booleanValue())
+      {
+        if (ahzx.a(this.a)) {
+          ((abgm)localObject1).a(this.a.mActivity, (DeviceInfo)localObject2, false);
+        }
+        this.a.finish();
+      }
+      else
+      {
+        ((abgm)localObject1).a(this.a.mActivity, (DeviceInfo)localObject2, false);
       }
     }
-  }
-  
-  public void a(String paramString1, String paramString2, List<aiag> paramList) {}
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
-  
-  public void a(boolean paramBoolean1, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, int paramInt4, boolean paramBoolean2) {}
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, List<String> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      b(paramBoolean, paramObject);
-      return;
-    case 3: 
-      c(paramBoolean, paramObject);
-      return;
-    }
-    d(paramBoolean, paramObject);
   }
 }
 

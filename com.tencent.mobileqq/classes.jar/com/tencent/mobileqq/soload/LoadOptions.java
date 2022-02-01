@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.soload;
 
-import akgd;
-import bbzd;
-import bbzl;
+import albw;
+import bdfy;
+import bdgg;
 import java.io.Serializable;
 
 public class LoadOptions
@@ -14,7 +14,7 @@ public class LoadOptions
   static final int FLAG_NO_NEED_LOAD_SO = 1;
   static final int FLAG_RETURN_SO_PATH = 2;
   static final int FLAG_WEAK_RELATED = 4;
-  public static LoadOptions sDefault = new bbzd().a();
+  public static LoadOptions sDefault = new bdfy().a();
   public int flag = 0;
   public boolean isLoadLastSuccWhenFail = false;
   String oldSoPathFor32Bit;
@@ -22,7 +22,7 @@ public class LoadOptions
   
   public String getOldSoPath()
   {
-    if (bbzl.a()) {
+    if (bdgg.a()) {
       return this.oldSoPathFor64Bit;
     }
     return this.oldSoPathFor32Bit;
@@ -31,7 +31,7 @@ public class LoadOptions
   public boolean isSame(LoadOptions paramLoadOptions)
   {
     if (paramLoadOptions == null) {}
-    while ((this.isLoadLastSuccWhenFail != paramLoadOptions.isLoadLastSuccWhenFail) || (!akgd.c(this.oldSoPathFor32Bit, paramLoadOptions.oldSoPathFor32Bit)) || (!akgd.c(this.oldSoPathFor64Bit, paramLoadOptions.oldSoPathFor64Bit))) {
+    while ((this.isLoadLastSuccWhenFail != paramLoadOptions.isLoadLastSuccWhenFail) || (!albw.c(this.oldSoPathFor32Bit, paramLoadOptions.oldSoPathFor32Bit)) || (!albw.c(this.oldSoPathFor64Bit, paramLoadOptions.oldSoPathFor64Bit))) {
       return false;
     }
     return true;
@@ -44,7 +44,7 @@ public class LoadOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.soload.LoadOptions
  * JD-Core Version:    0.7.0.1
  */

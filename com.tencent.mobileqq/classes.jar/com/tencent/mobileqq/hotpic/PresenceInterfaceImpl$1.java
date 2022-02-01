@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.os.Handler;
-import auij;
+import avod;
 
 public class PresenceInterfaceImpl$1
   implements Runnable
 {
-  public PresenceInterfaceImpl$1(auij paramauij) {}
+  public PresenceInterfaceImpl$1(avod paramavod) {}
   
   public void run()
   {

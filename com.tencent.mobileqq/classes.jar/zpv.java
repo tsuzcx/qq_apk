@@ -1,25 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-
-class zpv
-  extends zql
+public abstract interface zpv<T>
 {
-  zpv(zpq paramzpq, zpy paramzpy, String paramString)
-  {
-    super(paramzpq);
-  }
+  public abstract void a(zpx<T> paramzpx);
   
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "splitVideoUnit end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "splitVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Zpq.a));
-      this.jdField_a_of_type_Zpq.a = System.currentTimeMillis();
-    }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Zpy.a(this.jdField_a_of_type_JavaLangString, false, "splitVideo done.");
-    }
-  }
+  public abstract void b();
 }
 
 

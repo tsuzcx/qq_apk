@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.transfile;
 
-import amtk;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import aptw;
-import bgfa;
+import anvy;
+import aqwz;
+import bhnu;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.JobQueue;
 import com.tencent.image.URLDrawableHandler;
@@ -49,7 +49,7 @@ public class NearbyImgDownloader
     if (paramString != null)
     {
       long l = SystemClock.elapsedRealtime();
-      boolean bool = amtk.a().a();
+      boolean bool = anvy.a().a();
       k = NetConnInfoCenter.getActiveNetIpFamily(true);
       if (k != 3) {
         break label348;
@@ -80,7 +80,7 @@ public class NearbyImgDownloader
         if (!"p.qpic.cn".equals(paramString)) {
           break label417;
         }
-        localObject = aptw.a(2);
+        localObject = aqwz.a(2);
       }
     }
     for (;;)
@@ -123,31 +123,31 @@ public class NearbyImgDownloader
       }
       label417:
       if ("p.qlogo.cn".equals(paramString)) {
-        localObject = aptw.a(1);
+        localObject = aqwz.a(1);
       } else if ("ugc.qpic.cn".equals(paramString)) {
-        localObject = aptw.b(8);
+        localObject = aqwz.b(8);
       } else if (isQQHeadHost(paramString)) {
-        localObject = aptw.a(0);
+        localObject = aqwz.a(0);
       } else if ("i.gtimg.cn".equals(paramString)) {
-        localObject = aptw.b();
+        localObject = aqwz.b();
       } else if ("imgcache.qq.com".equals(paramString)) {
-        localObject = aptw.a();
+        localObject = aqwz.a();
       } else if (isAQpicCn(paramString)) {
-        localObject = aptw.b(9);
+        localObject = aqwz.b(9);
       } else if (isQzsQqCom(paramString)) {
-        localObject = aptw.b(11);
+        localObject = aqwz.b(11);
       } else if (isQzoneStyleGtimgCn(paramString)) {
-        localObject = aptw.b(10);
+        localObject = aqwz.b(10);
       } else if ("pgdt.gtimg.cn".equals(paramString)) {
-        localObject = aptw.a(3);
+        localObject = aqwz.a(3);
       } else if ("sqimg.qq.com".equals(paramString)) {
-        localObject = aptw.a(4);
+        localObject = aqwz.a(4);
       } else if ("download.wegame.qq.com".equals(paramString)) {
-        localObject = aptw.a(5);
+        localObject = aqwz.a(5);
       } else if ("wfqqreader.3g.qq.com".equals(paramString)) {
-        localObject = aptw.a(6);
+        localObject = aqwz.a(6);
       } else if ("buluo.qq.com".equals(paramString)) {
-        localObject = aptw.a(7);
+        localObject = aqwz.a(7);
       }
     }
   }
@@ -411,7 +411,7 @@ public class NearbyImgDownloader
       paramURLDrawableHandler = paramURLDrawableHandler.getValue();
       float f = paramDownloadParams.mGifRoundCorner;
       if ((!TextUtils.isEmpty(paramURLDrawableHandler)) && (paramURLDrawableHandler.equals("1"))) {
-        return new bgfa(paramFile, true, f, 1);
+        return new bhnu(paramFile, true, f, 1);
       }
     }
     return null;
@@ -669,14 +669,14 @@ public class NearbyImgDownloader
     //   528: iconst_0
     //   529: sipush 10000
     //   532: sipush 20000
-    //   535: invokestatic 444	com/tencent/mobileqq/utils/HttpDownloadUtil:queryDownloadInfo	(Ljava/lang/String;Lbfvl;Ljava/util/List;IZII)Lardx;
+    //   535: invokestatic 444	com/tencent/mobileqq/utils/HttpDownloadUtil:queryDownloadInfo	(Ljava/lang/String;Lbhed;Ljava/util/List;IZII)Lasid;
     //   538: astore 8
     //   540: aload 8
-    //   542: getfield 448	ardx:b	I
+    //   542: getfield 448	asid:b	I
     //   545: ifne +32 -> 577
     //   548: aload_3
     //   549: aload 8
-    //   551: getfield 451	ardx:e	I
+    //   551: getfield 451	asid:e	I
     //   554: i2l
     //   555: invokeinterface 382 3 0
     //   560: aload_0
@@ -684,7 +684,7 @@ public class NearbyImgDownloader
     //   562: getfield 338	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
     //   565: iconst_1
     //   566: aload 8
-    //   568: getfield 451	ardx:e	I
+    //   568: getfield 451	asid:e	I
     //   571: i2l
     //   572: invokespecial 384	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadEnd	(Ljava/lang/String;ZJ)V
     //   575: aconst_null
@@ -710,14 +710,14 @@ public class NearbyImgDownloader
     //   618: invokestatic 160	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   621: aload_3
     //   622: aload 8
-    //   624: getfield 448	ardx:b	I
+    //   624: getfield 448	asid:b	I
     //   627: invokeinterface 387 2 0
     //   632: aload_0
     //   633: aload_2
     //   634: getfield 338	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
     //   637: iconst_0
     //   638: aload 8
-    //   640: getfield 448	ardx:b	I
+    //   640: getfield 448	asid:b	I
     //   643: i2l
     //   644: invokespecial 384	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadEnd	(Ljava/lang/String;ZJ)V
     //   647: aconst_null
@@ -727,14 +727,14 @@ public class NearbyImgDownloader
     //   652: if_icmpne +31 -> 683
     //   655: aload_3
     //   656: aload 8
-    //   658: getfield 448	ardx:b	I
+    //   658: getfield 448	asid:b	I
     //   661: invokeinterface 387 2 0
     //   666: aload_0
     //   667: aload_2
     //   668: getfield 338	com/tencent/image/DownloadParams:urlStr	Ljava/lang/String;
     //   671: iconst_0
     //   672: aload 8
-    //   674: getfield 448	ardx:b	I
+    //   674: getfield 448	asid:b	I
     //   677: i2l
     //   678: invokespecial 384	com/tencent/mobileqq/transfile/NearbyImgDownloader:logDownloadEnd	(Ljava/lang/String;ZJ)V
     //   681: aconst_null

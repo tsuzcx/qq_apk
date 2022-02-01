@@ -1,8 +1,49 @@
-public abstract interface axqj
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+
+public class axqj
 {
-  public abstract void a(String paramString1, String paramString2, Object paramObject, int paramInt, String paramString3);
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    String str = "*S1*" + bgyk.a(paramString.getBytes(), 11);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("NearbyURLSafeUtil", 4, "encode:" + paramString + " to:" + str);
+    }
+    return str;
+  }
   
-  public abstract void a(String paramString1, String paramString2, Object paramObject, long paramLong1, long paramLong2);
+  public static boolean a(String paramString)
+  {
+    if (paramString == null) {
+      throw new NullPointerException("isBase64 src should not be null");
+    }
+    return paramString.startsWith("*S1*");
+  }
+  
+  public static String b(String paramString)
+  {
+    if (paramString == null) {
+      throw new NullPointerException("decode src should not be null");
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("NearbyURLSafeUtil", 4, "decode src:" + paramString);
+    }
+    String str = paramString;
+    if (a(paramString))
+    {
+      paramString = new String(bgyk.a(paramString.substring("*S1*".length()), 11));
+      str = paramString;
+      if (QLog.isDevelopLevel())
+      {
+        QLog.i("NearbyURLSafeUtil", 4, "decode result:" + paramString);
+        str = paramString;
+      }
+    }
+    return str;
+  }
 }
 
 

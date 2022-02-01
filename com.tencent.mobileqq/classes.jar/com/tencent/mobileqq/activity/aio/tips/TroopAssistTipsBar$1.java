@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import ahqs;
-import ahqx;
+import ailr;
+import ailw;
 import android.widget.Toast;
-import avnu;
-import bcef;
+import awtz;
+import bdla;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -12,17 +12,17 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopAssistTipsBar$1
   implements Runnable
 {
-  public TroopAssistTipsBar$1(ahqx paramahqx) {}
+  public TroopAssistTipsBar$1(ailw paramailw) {}
   
   public void run()
   {
-    if ((ahqx.a(this.this$0).getTroopMask(ahqx.a(this.this$0).curFriendUin) != 2) && (ahqx.a(this.this$0).getTroopMask(ahqx.a(this.this$0).curFriendUin) != 3)) {}
+    if ((ailw.a(this.this$0).getTroopMask(ailw.a(this.this$0).curFriendUin) != 2) && (ailw.a(this.this$0).getTroopMask(ailw.a(this.this$0).curFriendUin) != 3)) {}
     do
     {
       do
       {
         return;
-        if (avnu.a().c(ahqx.a(this.this$0), ahqx.a(this.this$0).curFriendUin)) {
+        if (awtz.a().c(ailw.a(this.this$0), ailw.a(this.this$0).curFriendUin)) {
           break;
         }
       } while (!QLog.isColorLevel());
@@ -31,9 +31,9 @@ public class TroopAssistTipsBar$1
       if (this.this$0.a != null) {
         this.this$0.a.cancel();
       }
-    } while (!ahqx.a(this.this$0).a(this.this$0, new Object[0]));
-    avnu.a().c(ahqx.a(this.this$0), ahqx.a(this.this$0).curFriendUin);
-    bcef.b(ahqx.a(this.this$0), "CliOper", "", "", "Grp_helper", "Aio_grp_banner", 0, 0, "", "", "", "");
+    } while (!ailw.a(this.this$0).a(this.this$0, new Object[0]));
+    awtz.a().c(ailw.a(this.this$0), ailw.a(this.this$0).curFriendUin);
+    bdla.b(ailw.a(this.this$0), "CliOper", "", "", "Grp_helper", "Aio_grp_banner", 0, 0, "", "", "", "");
   }
 }
 

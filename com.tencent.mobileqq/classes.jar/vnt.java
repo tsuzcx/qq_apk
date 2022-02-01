@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.Iterator;
-import java.util.List;
+import UserGrowth.stSimpleMetaFeed;
 
 final class vnt
-  implements DialogInterface.OnClickListener
+  extends vdu
 {
-  vnt(List paramList) {}
+  vnt(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt1, int paramInt2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      vns.a((String)localIterator.next());
-    }
-    paramDialogInterface.dismiss();
+    super.a();
+    vnr.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000003);
+    vnr.a("videolay_tag_clk_ws", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+  }
+  
+  public void c()
+  {
+    super.c();
+    vnr.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000004);
+    vnr.a("videolay_tag_clk_h5", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+  }
+  
+  public void d()
+  {
+    super.d();
+    vnr.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000002);
+    vnr.a("videolay_tag_dl_ws", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
 }
 

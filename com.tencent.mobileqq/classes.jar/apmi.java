@@ -1,28 +1,12 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class apmi
-  implements View.OnClickListener
+public abstract interface apmi
 {
-  apmi(apmh paramapmh) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if ((apmh.a(this.a) != null) && (apmh.a(this.a).getVisibility() == 0) && (apmh.a(this.a).hasFocus())) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      apmh.a(this.a);
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("start_from", 1);
-      ColorNoteSettingFragment.a(apmh.a(this.a), ColorNoteSettingFragment.class, localBundle);
-      bcef.b(null, "dc00898", "", "", "0X800A8AF", "0X800A8AF", 0, 0, "", "", "", "");
-    }
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(boolean paramBoolean, apmj paramapmj);
+  
+  public abstract void b();
 }
 
 

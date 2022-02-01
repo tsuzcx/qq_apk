@@ -1,91 +1,36 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.AddCommentNoFilterResp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager.InternalTaskEntry.1;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
+import java.util.concurrent.ScheduledFuture;
 
-class awpw
-  extends nme
+public class awpw
 {
-  awpw(awpu paramawpu, awpt paramawpt, Comments.Comment paramComment) {}
+  private long jdField_a_of_type_Long = -9223372036854775808L;
+  private TimerTaskManager.TimerTaskRunnable jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new TimerTaskManager.InternalTaskEntry.1(this);
+  private String jdField_a_of_type_JavaLangString;
+  private ScheduledFuture<?> jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static awpw a(TimerTaskManager.TimerTaskRunnable paramTimerTaskRunnable)
   {
-    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
-    paramBundle = "";
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    awpw localawpw = new awpw();
+    TimerTaskManager.TimerTaskRunnable.a(paramTimerTaskRunnable, true);
+    localawpw.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = paramTimerTaskRunnable;
+    return localawpw;
+  }
+  
+  public String toString()
+  {
+    boolean bool2 = false;
+    long l = this.jdField_a_of_type_Long;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable != null)
     {
-      oidb_0xada.RspBody localRspBody = new oidb_0xada.RspBody();
-      for (;;)
-      {
-        try
-        {
-          localRspBody.mergeFrom(paramArrayOfByte);
-          if (QLog.isColorLevel()) {
-            QLog.i("CommentsDataSource", 2, "err_msg:   " + localRspBody.err_msg.get());
-          }
-          if (!localRspBody.busi_buf.has())
-          {
-            QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
-            this.jdField_a_of_type_Awpt.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1, "");
-            return;
-          }
-          localAddCommentNoFilterResp = new NowNearbyVideoCommentProto.AddCommentNoFilterResp();
-          localAddCommentNoFilterResp.mergeFrom(localRspBody.busi_buf.get().toByteArray());
-          if (!localAddCommentNoFilterResp.wording.has()) {
-            continue;
-          }
-          paramArrayOfByte = localAddCommentNoFilterResp.wording.get().toStringUtf8();
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          NowNearbyVideoCommentProto.AddCommentNoFilterResp localAddCommentNoFilterResp;
-          paramArrayOfByte = paramBundle;
-          continue;
-          paramArrayOfByte = "";
-          continue;
-        }
-        try
-        {
-          QLog.d("CommentsDataSource", 1, "id: " + localAddCommentNoFilterResp.comment_id.get() + ",ret:" + localAddCommentNoFilterResp.result.get() + ", tip=" + paramArrayOfByte);
-          if (localAddCommentNoFilterResp.result.get() == 0L) {
-            continue;
-          }
-          QLog.i("CommentsDataSource", 1, "error code :" + localAddCommentNoFilterResp.result.get());
-          this.jdField_a_of_type_Awpt.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)localAddCommentNoFilterResp.result.get(), paramArrayOfByte);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramBundle) {}
-      }
-      QLog.i("CommentsDataSource", 1, "merge publish resp data error");
-      this.jdField_a_of_type_Awpt.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1, paramArrayOfByte);
-      return;
-      if (localAddCommentNoFilterResp.comment_id.get() > 0L)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a = localAddCommentNoFilterResp.comment_id.get();
-        this.jdField_a_of_type_Awpt.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-        awpu.a(this.jdField_a_of_type_Awpu).add(Long.valueOf(localAddCommentNoFilterResp.comment_id.get()));
-        paramBundle = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramBundle != null) {
-          ((axen)paramBundle.getManager(263)).e(awpu.a(this.jdField_a_of_type_Awpu).a);
-        }
+      bool1 = bool2;
+      if (TimerTaskManager.TimerTaskRunnable.a(this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable)) {
+        bool1 = true;
       }
     }
-    else
-    {
-      QLog.i("CommentsDataSource", 1, "publishComment failed");
-      this.jdField_a_of_type_Awpt.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1, "");
-      return;
-    }
+    return String.format("Period = %d; IsValid = %b;", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1) });
   }
 }
 

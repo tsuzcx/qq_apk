@@ -1,88 +1,87 @@
-import android.media.MediaMetadataRetriever;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import com.tencent.mobileqq.vpng.view.VPNGImageView;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.MsgBody;
 
 public class bcsw
-  extends bcsu
+  implements bcsk
 {
-  protected VPNGImageView a;
-  
-  public bcsw(SpriteNativeView paramSpriteNativeView, String paramString)
+  private long a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView = new VPNGImageView(paramSpriteNativeView.getContext());
-    paramSpriteNativeView = new MediaMetadataRetriever();
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopSystemMessageDecoder", 2, "<---decodeC2CMsgPkg_GroupSys");
+    }
+    long l2;
+    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()))
     {
-      paramSpriteNativeView.setDataSource(paramString);
-      paramString = paramSpriteNativeView.extractMetadata(18);
-      String str = paramSpriteNativeView.extractMetadata(19);
-      this.jdField_a_of_type_Float = (Integer.parseInt(paramString) / 2);
-      this.b = Integer.parseInt(str);
-      paramString = new FrameLayout.LayoutParams((int)this.jdField_a_of_type_Float, (int)this.b);
-      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setLayoutParams(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotX(this.jdField_a_of_type_Float / 2.0F);
-      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotY(this.b / 2.0F);
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopSystemMessageDecoder", 2, "<---decodeC2CMsgPkg_GroupSys return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has() + ",isReaded:" + paramBoolean1 + "syncOther:" + paramBoolean2);
+      }
+      l2 = 0L;
+      return l2;
+    }
+    Long.valueOf(paramMessageHandler.app.getCurrentAccountUin()).longValue();
+    long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+    int i = (short)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_type.get();
+    byte[] arrayOfByte = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
+    if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {}
+    for (long l1 = PkgTools.getLongData(arrayOfByte, 0);; l1 = 0L)
+    {
+      Object localObject = (msg_comm.MsgHead)paramMsg.msg_head.get();
+      if (localObject != null)
+      {
+        localObject = ((msg_comm.MsgHead)localObject).group_name.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopSystemMessageDecoder.sysnick", 2, "TroopCode:" + l1 + "TroopName:" + (String)localObject);
+        }
+        paramMessageHandler.c("" + l1, (String)localObject);
+      }
+      l2 = l1;
+      if (paramBoolean1) {
+        break;
+      }
+      l2 = l1;
+      if (paramBoolean2) {
+        break;
+      }
+      l2 = l1;
+      if (paramBoolean3) {
+        break;
+      }
+      paramMessageHandler.a().a(i, arrayOfByte, l3, ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get(), (msg_comm.MsgHead)paramMsg.msg_head.get());
+      return l1;
+    }
+  }
+  
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
+  {
+    paramList = (msg_comm.MsgHead)paramMsg.msg_head.get();
+    long l1 = paramList.from_uin.get();
+    long l2 = paramList.msg_time.get();
+    int i = paramList.msg_type.get();
+    if ((i == 85) || (i == 36)) {}
+    for (i = 1;; i = 0)
+    {
+      if ((!parambcre.c) && (i == 0)) {
+        paramMessageHandler.a().a(3, 1, false);
+      }
+      parambcre.e = 9998L;
+      a(paramMessageHandler, paramMsg, parambcre.a, parambcre.f, parambcre.d);
+      if (i == 0) {
+        bdzy.a().a(l1, l2, paramMessageHandler.app);
+      }
       return;
     }
-    catch (Exception paramString)
-    {
-      QLog.e("VideoSprite", 2, "MediaMetadataRetriever exception " + paramString);
-      return;
-    }
-    finally
-    {
-      paramSpriteNativeView.release();
-    }
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setVideo(paramString, paramBoolean);
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onPause();
-  }
-  
-  public void c()
-  {
-    super.c();
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onResume();
-  }
-  
-  public boolean c()
-  {
-    boolean bool = super.c();
-    a(this.jdField_a_of_type_Bcrd);
-    float f1 = this.jdField_a_of_type_Bcrd.jdField_a_of_type_Float;
-    float f2 = b();
-    float f3 = this.jdField_a_of_type_Float / 2.0F;
-    float f4 = this.f;
-    float f5 = this.jdField_a_of_type_Bcrd.b;
-    float f6 = b();
-    float f7 = this.b / 2.0F;
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setX(f1 * f2 - f3);
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setY(f4 - f5 * f6 - f7);
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleX(this.e * b());
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleY(this.e * b());
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setRotation(this.g);
-    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
-    return bool;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView);
   }
 }
 

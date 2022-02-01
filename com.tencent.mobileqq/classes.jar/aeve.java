@@ -1,71 +1,56 @@
-import Wallet.AcsQueryRsp;
-import android.os.Bundle;
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.io.Serializable;
-import mqq.observer.BusinessObserver;
-import mqq.util.WeakReference;
+import java.lang.ref.WeakReference;
 
 public class aeve
-  implements EIPCResultCallback, BusinessObserver
+  extends ClickableSpan
 {
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private WeakReference<aevk> jdField_a_of_type_MqqUtilWeakReference;
+  private final QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+  private final String jdField_a_of_type_JavaLangString;
+  private final WeakReference<FragmentActivity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public aeve(aevk paramaevk, Bundle paramBundle)
+  public aeve(String paramString, QQCustomDialog paramQQCustomDialog, WeakReference<FragmentActivity> paramWeakReference)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaevk);
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = paramQQCustomDialog;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    aevk localaevk = (aevk)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localaevk == null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_JavaLangRefWeakReference == null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQNotifyObserver", 2, " onCallback mRef is empty");
-      }
+      QLog.e("RiskHintDlgFragment", 1, "RiskLinkClickableSpan onClick: params invalid");
       return;
     }
-    if ((paramEIPCResult != null) && (paramEIPCResult.code == 0)) {}
-    for (paramEIPCResult = paramEIPCResult.data;; paramEIPCResult = aevj.a(-100, "client_unknown_error"))
+    paramView = (FragmentActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramView == null)
     {
-      localaevk.queryHasSetNotify(paramEIPCResult, this.jdField_a_of_type_AndroidOsBundle);
+      QLog.e("RiskHintDlgFragment", 1, "RiskLinkClickableSpan error: activity == null");
       return;
     }
+    bcpn.a().a(paramView.app.getCurrentAccountUin());
+    if (this.jdField_a_of_type_JavaLangString.contains("1108149324")) {
+      bdla.b(paramView.app, "dc00898", "", "", "0X800B259", "0X800B259", 0, 0, "", "", "", "");
+    }
+    QLog.d("RiskHintDlgFragment", 1, "RiskLinkClickableSpan onClick: startMiniApp");
+    MiniAppLauncher.startMiniApp(paramView, this.jdField_a_of_type_JavaLangString, 4010, null);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQNotifyObserver", 2, "type:" + paramInt + " isSuccess:" + paramBoolean);
-    }
-    aevk localaevk = (aevk)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localaevk == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQNotifyObserver", 2, " mRef is empty");
-      }
-      return;
-    }
-    paramInt = -1;
-    Serializable localSerializable = paramBundle.getSerializable("rsp");
-    int i;
-    if ((localSerializable instanceof AcsQueryRsp))
-    {
-      paramBundle = ((AcsQueryRsp)localSerializable).err_str;
-      i = ((AcsQueryRsp)localSerializable).ret_code;
-      paramInt = ((AcsQueryRsp)localSerializable).subscribed;
-    }
-    for (;;)
-    {
-      localaevk.queryHasSetNotify(aevj.a(i, paramBundle, paramInt), this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      i = -100;
-      paramBundle = "client_unknown_error";
-    }
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
   }
 }
 

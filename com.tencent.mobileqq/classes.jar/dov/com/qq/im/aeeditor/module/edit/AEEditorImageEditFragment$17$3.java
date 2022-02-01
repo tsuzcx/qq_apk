@@ -1,12 +1,12 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bmhz;
+import bnxr;
 import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
 
 public class AEEditorImageEditFragment$17$3
   implements Runnable
 {
-  public AEEditorImageEditFragment$17$3(bmhz parambmhz) {}
+  public AEEditorImageEditFragment$17$3(bnxr parambnxr) {}
   
   public void run()
   {

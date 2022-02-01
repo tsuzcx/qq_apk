@@ -1,27 +1,33 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class aiza
-  implements View.OnClickListener
+class aiza
+  extends blfn
 {
-  public aiza(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, int paramInt1, int paramInt2) {}
-  
-  public void onClick(View paramView)
+  aiza(aiyz paramaiyz, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), TroopMemberListActivity.class);
-    localIntent.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.c);
-    localIntent.putExtra("param_from", 15);
-    localIntent.putExtra("param_seq_days", ChatHistoryTroopMemberFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment));
-    localIntent.putExtra("param_seq_name", ChatHistoryTroopMemberFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment));
-    localIntent.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.startActivityForResult(localIntent, 4);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.c, "" + this.b, "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public void a(int paramInt, Object paramObject, blfm[] paramArrayOfblfm)
+  {
+    paramInt = 1;
+    if ((paramArrayOfblfm == null) || (paramArrayOfblfm.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      int i = this.a.a();
+      if ((paramArrayOfblfm.length < 0) && ((i & 0xF) == 1))
+      {
+        paramArrayOfblfm[0].b = 0;
+        paramArrayOfblfm[0].a = 0;
+      }
+      while (paramInt < paramArrayOfblfm.length)
+      {
+        paramArrayOfblfm[paramInt].b = -1;
+        paramArrayOfblfm[paramInt].a = -1;
+        paramInt += 1;
+        continue;
+        paramInt = 0;
+      }
+    }
   }
 }
 

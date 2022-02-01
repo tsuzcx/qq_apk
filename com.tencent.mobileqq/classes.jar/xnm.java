@@ -1,11 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class xnm
+public abstract interface xnm
 {
-  public List<xnh> a = new ArrayList(0);
-  public boolean a;
-  public boolean b;
+  public abstract void a();
 }
 
 

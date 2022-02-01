@@ -1,27 +1,6 @@
-import com.tencent.mobileqq.qipc.QIPCModule;
-
-public class bbwn
+public abstract interface bbwn
 {
-  private static volatile bbwn jdField_a_of_type_Bbwn;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new bbwo(this, "Module_VideoPlayIPCServer");
-  
-  public static bbwn a()
-  {
-    if (jdField_a_of_type_Bbwn == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bbwn == null) {
-        jdField_a_of_type_Bbwn = new bbwn();
-      }
-      return jdField_a_of_type_Bbwn;
-    }
-    finally {}
-  }
-  
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
-  }
+  public abstract void k();
 }
 
 

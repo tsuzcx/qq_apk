@@ -1,18 +1,14 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import Wallet.AcsMsg;
+import java.util.List;
 
 class afns
-  extends afbj
+  implements afnv
 {
-  afns(afnr paramafnr, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
-  {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
-  }
+  afns(afno paramafno) {}
   
-  public void k()
+  public void a(List<AcsMsg> paramList)
   {
-    this.a.a(true);
+    afno.a(this.a, paramList);
   }
 }
 

@@ -1,37 +1,87 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhrv
-  implements AdapterView.OnItemClickListener
+  extends bhro
 {
-  public bhrv(FriendChooser paramFriendChooser) {}
+  public static bhrv a = new bhrv();
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static String a(Context paramContext, int paramInt)
   {
-    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_Bhvo.a(paramAdapterView.a))) {
-      return;
+    paramContext = a.getDir(paramContext, "specialRing." + paramInt);
+    return paramContext + File.separator + paramInt + ".wav";
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bhog parambhog, boolean paramBoolean)
+  {
+    a.download(paramQQAppInterface, "specialRing." + paramInt, parambhog, paramBoolean);
+  }
+  
+  public static boolean a(Context paramContext, int paramInt)
+  {
+    Object localObject = "specialRing." + paramInt;
+    paramContext = a.getDir(paramContext, (String)localObject);
+    if (!new File(paramContext).exists()) {
+      return false;
     }
-    if (this.a.jdField_a_of_type_Bhvo.c() >= this.a.jdField_a_of_type_Int)
+    localObject = new String[3];
+    localObject[0] = ".wav";
+    localObject[1] = ".json";
+    localObject[2] = ".jpg";
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
     {
-      this.a.h();
-      return;
+      String str = localObject[i];
+      if (!new File(paramContext, paramInt + str).exists())
+      {
+        QLog.e("RingUpdateCallback", 1, "missing: " + paramInt + str);
+        return false;
+      }
+      i += 1;
     }
-    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
-    this.a.b.add(paramAdapterView);
-    this.a.jdField_a_of_type_Bhvo.a(paramAdapterView.a);
-    this.a.e();
-    paramView.g();
-    this.a.b(false);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    return true;
+  }
+  
+  public static String b(Context paramContext, int paramInt)
+  {
+    paramContext = a.getDir(paramContext, "specialRing." + paramInt);
+    paramContext = FileUtils.readFileContent(new File(paramContext + File.separator + paramInt + ".json"));
+    if (!TextUtils.isEmpty(paramContext)) {
+      try
+      {
+        paramContext = new JSONObject(paramContext).optString("name", null);
+        return paramContext;
+      }
+      catch (JSONException paramContext)
+      {
+        QLog.e("RingUpdateCallback", 1, "getName error", paramContext);
+        return null;
+      }
+    }
+    QLog.e("RingUpdateCallback", 1, "getName missing json: " + paramInt);
+    return null;
+  }
+  
+  public long getBID()
+  {
+    return 37L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "ring";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "specialRing.";
   }
 }
 

@@ -1,22 +1,24 @@
-import java.util.Comparator;
-
-class mbe
-  implements Comparator<lno>
+public abstract interface mbe
 {
-  mbe(mbd parammbd) {}
+  public abstract void a();
   
-  public int a(lno paramlno1, lno paramlno2)
-  {
-    if (paramlno1.a) {}
-    while (paramlno2.a) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(mbh parammbh);
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean b(mbh parammbh);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mbe
  * JD-Core Version:    0.7.0.1
  */

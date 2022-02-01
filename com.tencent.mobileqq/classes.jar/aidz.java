@@ -1,33 +1,14 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import java.lang.ref.WeakReference;
 
-public class aidz
-  extends Handler
+class aidz
+  implements olc
 {
-  private WeakReference<NewFriendActivity> a;
+  aidz(aido paramaido) {}
   
-  public aidz(NewFriendActivity paramNewFriendActivity)
+  public void a()
   {
-    this.a = new WeakReference(paramNewFriendActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
-    if (localNewFriendActivity == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      localNewFriendActivity.a(paramMessage.arg1);
-      return;
-    }
-    localNewFriendActivity.finish();
+    aido.b(this.a, false);
+    this.a.a.sendEmptyMessage(1);
   }
 }
 

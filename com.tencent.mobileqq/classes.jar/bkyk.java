@@ -1,6 +1,19 @@
-public abstract interface bkyk
+public class bkyk
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  private static ThreadLocal<StringBuilder> a = new ThreadLocal();
+  
+  public static StringBuilder a()
+  {
+    StringBuilder localStringBuilder = (StringBuilder)a.get();
+    if (localStringBuilder == null)
+    {
+      localStringBuilder = new StringBuilder();
+      a.set(localStringBuilder);
+      return localStringBuilder;
+    }
+    localStringBuilder.setLength(0);
+    return localStringBuilder;
+  }
 }
 
 

@@ -1,12 +1,10 @@
-import java.util.HashMap;
-
-public class aqil
+public abstract interface aqil
 {
-  public HashMap<String, aqim> a = new HashMap();
+  public abstract void onMeasure();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqil
  * JD-Core Version:    0.7.0.1
  */

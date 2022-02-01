@@ -1,24 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
 
 public class ajlz
-  implements ajms
+  implements Handler.Callback
 {
-  public ajlz(BindVerifyActivity paramBindVerifyActivity) {}
+  public ajlz(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramBoolean) {}
-    for (paramContext = "permission_denied_by_user";; paramContext = "permission_denied")
+    switch (paramMessage.what)
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("bind_mobile", this.a.a());
-      localIntent.putExtra("check_permission_result", paramContext);
-      localIntent.putExtra("kSrouce", BindVerifyActivity.a(this.a));
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
-      return;
+    }
+    for (;;)
+    {
+      return true;
+      this.a.i();
     }
   }
 }

@@ -1,33 +1,17 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
-
-class bgho
-  implements Observer
+public class bgho
 {
-  bgho(bghn parambghn) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureFontAdapter", 2, "SignatureFontAdapter type = " + paramObject);
-    }
-    if ((paramObject instanceof Integer))
-    {
-      switch (((Integer)paramObject).intValue())
-      {
-      default: 
-        return;
-      case 1: 
-        this.a.a.a().sendEmptyMessage(10003);
-        return;
-      }
-      this.a.a.a().sendEmptyMessage(10002);
-      return;
-    }
-    this.a.a.a().sendEmptyMessage(10003);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 

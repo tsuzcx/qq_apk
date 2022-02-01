@@ -1,6 +1,8 @@
-public abstract interface blpp
+public class blpp
 {
-  public abstract void a();
+  public int a;
+  public long a;
+  public byte[] a;
 }
 
 

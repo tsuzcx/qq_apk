@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import azkd;
+import baql;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 
@@ -13,9 +14,9 @@ public class GetQZonePhotoGuideCheck
   public int a()
   {
     jdField_a_of_type_Boolean = true;
-    azkd localazkd = (azkd)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(104);
-    if (localazkd != null) {
-      localazkd.c();
+    baql localbaql = (baql)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(QQManagerFactory.QZONE_ALBUM_RED_TOUCH);
+    if (localbaql != null) {
+      localbaql.c();
     }
     return 7;
   }

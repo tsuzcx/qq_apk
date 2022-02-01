@@ -1,19 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.1;
-
-public class acio
-  implements DialogInterface.OnClickListener
-{
-  public acio(MemoryDumpHelper.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    acin.a(this.a.this$0);
-    acin.a(this.a.this$0, false, null, this.a.b, this.a.a, false);
-    acin.b(this.a.this$0);
-  }
-}
+public class acio {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

@@ -1,16 +1,17 @@
-import java.util.HashSet;
-import rx.functions.Action0;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class azyp
-  implements Action0
+public class azyp
+  implements View.OnClickListener
 {
-  azyp(azym paramazym, azyr paramazyr, HashSet paramHashSet) {}
+  public azyp(AbsProfileHeaderView paramAbsProfileHeaderView, azrb paramazrb) {}
   
-  public void call()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Azyr != null) {
-      this.jdField_a_of_type_Azyr.a(this.jdField_a_of_type_JavaUtilHashSet);
-    }
+    AbsProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView, this.jdField_a_of_type_Azrb);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

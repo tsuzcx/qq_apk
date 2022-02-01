@@ -1,76 +1,45 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class apvc
-  extends aptq<apvd>
+class apvc
+  implements WtTicketPromise
 {
-  @NonNull
-  public apvd a(int paramInt)
-  {
-    return new apvd();
-  }
+  apvc(apva paramapva, TicketManager paramTicketManager, QQAppInterface paramQQAppInterface, String paramString, apvd paramapvd) {}
   
-  @Nullable
-  public apvd a(aptx[] paramArrayOfaptx)
+  public void Done(Ticket paramTicket)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed");
+      QLog.i("ArkApp.GetPSKeyAsyncHandler", 2, "--- pskey async done---  ");
     }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      paramArrayOfaptx = paramArrayOfaptx[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed, content:" + paramArrayOfaptx);
-      }
-      return apvd.a(paramArrayOfaptx);
-    }
-    return new apvd();
-  }
-  
-  public void a(apvd paramapvd)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoPlayConfigProcessor", 2, "onUpdate");
-    }
-    bcgr.a().a(paramapvd);
-  }
-  
-  public Class clazz()
-  {
-    return apvd.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOVideoPlayConfigProcessor", 2, "onReqFailed");
+    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Apvd != null) {
+      this.jdField_a_of_type_Apvd.a(paramTicket);
     }
   }
   
-  public int type()
+  public void Failed(ErrMsg paramErrMsg)
   {
-    return 537;
+    QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "--- pskey async failed---  " + paramErrMsg.getMessage());
+    if (this.jdField_a_of_type_Apvd != null) {
+      this.jdField_a_of_type_Apvd.a(null);
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "--- pskey async timeout---  " + paramErrMsg.getMessage());
+    if (this.jdField_a_of_type_Apvd != null) {
+      this.jdField_a_of_type_Apvd.a(null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvc
  * JD-Core Version:    0.7.0.1
  */

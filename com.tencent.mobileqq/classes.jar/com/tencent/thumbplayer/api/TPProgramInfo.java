@@ -4,6 +4,12 @@ public class TPProgramInfo
 {
   public long bandwidth;
   public String name;
+  public String resolution;
+  
+  public String toString()
+  {
+    return "TPProgramInfo{bandwidth=" + this.bandwidth + ", name='" + this.name + '\'' + ", resolution='" + this.resolution + '\'' + '}';
+  }
 }
 
 

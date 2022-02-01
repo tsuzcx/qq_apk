@@ -1,12 +1,12 @@
 package com.tencent.av.ui.guide;
 
-import mor;
-import mou;
+import mpo;
+import mpr;
 
 public class GuideHelper$LottieDrawableHelper$2
   implements Runnable
 {
-  public GuideHelper$LottieDrawableHelper$2(mor parammor, mou parammou) {}
+  public GuideHelper$LottieDrawableHelper$2(mpo parammpo, mpr parammpr) {}
   
   public void run()
   {

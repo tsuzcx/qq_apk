@@ -1,88 +1,53 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
-class bnme
-  implements URLDrawableDownListener
+public class bnme
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
-  private final WeakReference<ProgressBar> b;
+  public int a;
+  public String a;
+  public List<String> a;
+  public int b = 6;
   
-  public bnme(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
+  public bnme()
   {
+    this.jdField_a_of_type_JavaLangString = "default";
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public bnme(List<String> paramList, String paramString, JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_JavaLangString = "default";
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-    this.b = new WeakReference(paramProgressBar);
-  }
-  
-  private boolean a(ImageView paramImageView)
-  {
-    paramImageView = (String)paramImageView.getTag(2131378207);
-    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
-  {
-    xvv.b("LocationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    if (paramJSONObject != null)
     {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131378172, Boolean.valueOf(false));
+      a(paramJSONObject);
       return;
     }
-    xvv.b("LocationFaceAdapter", "onLoadCanceled error.");
+    this.jdField_a_of_type_Int = 3;
+    this.b = 6;
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(JSONObject paramJSONObject)
   {
-    xvv.b("LocationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    try
     {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131378172, Boolean.valueOf(false));
+      if (this.jdField_a_of_type_JavaLangString != null) {}
+      for (paramJSONObject = paramJSONObject.getJSONObject(this.jdField_a_of_type_JavaLangString);; paramJSONObject = paramJSONObject.getJSONObject("default"))
+      {
+        this.jdField_a_of_type_Int = paramJSONObject.getInt("wordNum");
+        this.b = paramJSONObject.getInt("pendantNum");
+        return;
+      }
       return;
     }
-    xvv.b("LocationFaceAdapter", "onLoadFialed error.");
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    xvv.b("LocationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    catch (Exception paramJSONObject)
     {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131378172, Boolean.valueOf(false));
-      return;
+      paramJSONObject.printStackTrace();
     }
-    xvv.b("LocationFaceAdapter", "onLoadProgressed error.");
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    xvv.b("LocationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131378172, Boolean.valueOf(true));
-      return;
-    }
-    xvv.b("LocationFaceAdapter", "onLoadSuccessed error.");
   }
 }
 

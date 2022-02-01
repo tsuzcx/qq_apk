@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/e2a" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/b64" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik">
-        <View android:id="@id/icon" android:background="@drawable/qq_profilecard_item_qqcircle" style="@style/bw" />
-        <LinearLayout android:orientation="horizontal" style="@style/by">
-            <TextView android:textSize="@dimen/uj" android:textColor="@color/skin_black_theme_version2" android:ellipsize="middle" android:id="@id/jj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x_3" android:singleLine="true" android:includeFontPadding="false" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/dec" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/skin_tips_newmessage" />
-            <FrameLayout android:gravity="center|right" android:orientation="horizontal" android:id="@id/moy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <TextView android:textSize="@dimen/ayk" android:textColor="#ff878b99" android:layout_gravity="center|right" android:id="@id/nlc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            </FrameLayout>
-        </LinearLayout>
-        <ImageView android:id="@id/dcv" style="@style/bv" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/mtz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a06" android:layout_marginRight="@dimen/a03" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/mu0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a03" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/a03" />
+    <include layout="@layout/is" />
+    <FrameLayout android:background="@drawable/skin_setting_strip_bg_unpressed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip">
+        <EditText android:textSize="16.0sp" android:textColor="@color/skin_input" android:textColorHint="@color/skin_hint_input" android:gravity="top" android:id="@id/c30" android:background="@color/ajr" android:padding="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="6.0dip" android:ems="10" android:singleLine="false" android:maxLength="36" android:lineSpacingExtra="2.0dip" />
+    </FrameLayout>
+    <TextView android:textSize="13.0sp" android:textColor="@color/skin_gray2" android:layout_gravity="right" android:id="@id/nz6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="10.0dip" android:text="0/36" />
 </LinearLayout>

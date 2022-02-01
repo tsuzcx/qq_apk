@@ -29,9 +29,9 @@ public class StoryTextToastView
   
   protected void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131560849, this, true);
-    this.a = ((TextView)findViewById(2131378892));
-    this.b = ((TextView)findViewById(2131378893));
+    LayoutInflater.from(paramContext).inflate(2131560909, this, true);
+    this.a = ((TextView)findViewById(2131379185));
+    this.b = ((TextView)findViewById(2131379186));
   }
 }
 

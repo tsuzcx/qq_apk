@@ -15,7 +15,7 @@ class AppBrandLaunchManager$StartMiniAppReceiver$3
     {
       MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramJSONObject.opt("appInfo");
       paramJSONObject = paramJSONObject.optString("shareTicket", "");
-      AppBrandLaunchManager.access$800(localMiniAppInfo, this.val$scene, paramJSONObject);
+      AppBrandLaunchManager.access$500(localMiniAppInfo, this.val$scene, paramJSONObject);
     }
   }
 }

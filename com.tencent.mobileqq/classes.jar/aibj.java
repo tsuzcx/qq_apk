@@ -1,24 +1,19 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 
-public class aibj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aibj
+  extends BroadcastReceiver
 {
-  public aibj(TroopView paramTroopView) {}
+  aibj(aiav paramaiav) {}
   
-  public void onGlobalLayout()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (this.a.a != null) {
+      this.a.a.a(paramContext);
     }
-    for (;;)
-    {
-      TroopView.a(this.a);
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    this.a.mActivity.finish();
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rvn;
-import rwv;
-import scs;
+import six;
+import sow;
+import swm;
 
 public class VideoFeedsVideoUIDelegate$3
   implements Runnable
 {
-  public VideoFeedsVideoUIDelegate$3(scs paramscs) {}
+  public VideoFeedsVideoUIDelegate$3(sow paramsow) {}
   
   public void run()
   {
-    rwv.a(this.this$0.a.c, 8, 0);
+    six.a(this.this$0.a.c, 8, 0);
   }
 }
 

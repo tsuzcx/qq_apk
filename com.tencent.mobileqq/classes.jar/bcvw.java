@@ -1,34 +1,30 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import cooperation.qzone.QZoneMsfPushAckRequest;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class bcvw
-  implements WtTicketPromise
+public class bcvw
+  extends MSFServlet
 {
-  bcvw(bcvv parambcvv, Runnable paramRunnable) {}
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
   
-  public void Done(Ticket paramTicket)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TenDocOCRExportHandler", 2, "--- pskey invalid retry ---  ");
+    if (paramIntent == null) {
+      return;
     }
-    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+    long l = paramIntent.getLongExtra("timestamp", 0L);
+    byte[] arrayOfByte = new QZoneMsfPushAckRequest(paramIntent.getLongExtra("hostuin", 0L), l, paramIntent.getStringExtra("refer"), paramIntent.getLongExtra("flag", 0L), paramIntent.getStringExtra("mark")).encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramIntent = new byte[4];
     }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
-    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + "wns.pushrsp");
+    paramPacket.putSendData(paramIntent);
+    QLog.d("MessageSvc.WNSQzone.Push", 2, "发送push ack 时间:" + l);
   }
 }
 

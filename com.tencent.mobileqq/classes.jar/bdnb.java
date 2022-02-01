@@ -1,46 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-
 public class bdnb
-  extends vow
+  extends bdmz
 {
-  public String a;
-  public voi a;
+  public String e = "";
+  public String f = "";
+  public String g = "";
   
-  public bdnb(String paramString)
+  public bdnb()
   {
-    this.jdField_a_of_type_Voi = new voi();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = "";
+    this.b = "";
+    this.c = "";
+    this.d = "";
   }
   
-  private void c()
+  public String a(int paramInt)
   {
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.mUpCallBack = new bdnc(this);
-    localTransferRequest.mLocalPath = this.jdField_a_of_type_JavaLangString;
-    localTransferRequest.mIsUp = true;
-    localTransferRequest.mFileType = 327681;
-    QQStoryContext.a();
-    localTransferRequest.mSelfUin = QQStoryContext.a().getCurrentUin();
-    localTransferRequest.mPeerUin = "";
-    localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    QQStoryContext.a();
-    QQStoryContext.a().getTransFileController().transferAsync(localTransferRequest);
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append(this.a).append("|");
+    localStringBuilder.append(this.b).append("|");
+    localStringBuilder.append(this.c).append("|");
+    localStringBuilder.append(this.d).append("|");
+    localStringBuilder.append(this.e).append("|");
+    localStringBuilder.append(this.f).append("|");
+    localStringBuilder.append(this.g).append("|");
+    return localStringBuilder.toString();
   }
   
-  protected void a()
+  public String toString()
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!ypi.c(this.jdField_a_of_type_JavaLangString)))
-    {
-      xvv.d("tribe_publish_TribeVideoFileObject", "end composite success but file not exist:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
-      super.notifyResult(new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.jdField_a_of_type_JavaLangString })));
-      return;
-    }
-    c();
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.a).append("|");
+    localStringBuffer.append(this.b).append("|");
+    localStringBuffer.append(this.c).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    return localStringBuffer.toString();
   }
 }
 

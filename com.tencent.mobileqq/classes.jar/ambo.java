@@ -1,39 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public final class ambo
-  implements EIPCResultCallback
+public class ambo
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ambo(amkm paramamkm) {}
+  public ambo(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onGlobalLayout()
   {
-    CmShowRenderView.a(true);
-    paramEIPCResult = paramEIPCResult.data;
-    if (paramEIPCResult == null)
-    {
-      this.a.a(1);
-      QLog.i("CmShow_CmShowRenderView", 1, "initSdk resp == null");
-      return;
-    }
-    amip.au = paramEIPCResult.getString("sApolloBaseScriptId");
-    alnr.q = paramEIPCResult.getBoolean("sDisableCreateRenderThread");
-    alnr.r = paramEIPCResult.getBoolean("sApolloEngineLockEnable");
-    amip.av = amip.a + "/script/" + amip.au + "/";
-    if (amkk.a()) {
-      this.a.a(0);
-    }
-    for (;;)
-    {
-      QLog.i("CmShow_CmShowRenderView", 1, "initSdk");
-      return;
-      amkk.b(this.a);
-      amkk.a(this.a);
-      amkk.a("sdk");
-    }
+    ThreadManager.post(this.a, 8, null, false);
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

@@ -1,51 +1,63 @@
-import androidx.annotation.UiThread;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
-class bkjq
-  extends bkjn
+public class bkjq
 {
-  bkjq(bkjp parambkjp) {}
+  private static bkjq jdField_a_of_type_Bkjq;
+  long jdField_a_of_type_Long = 1L;
+  Map<Long, bkjr> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void a()
+  public static bkjq a()
   {
-    bkjp.a(this.a, null);
-    if (!this.a.c()) {
-      bkjp.a(this.a);
+    if (jdField_a_of_type_Bkjq == null) {
+      jdField_a_of_type_Bkjq = new bkjq();
+    }
+    return jdField_a_of_type_Bkjq;
+  }
+  
+  long a()
+  {
+    return this.jdField_a_of_type_Long % 1000L + 1L;
+  }
+  
+  public void a(int paramInt, bkjr parambkjr)
+  {
+    long l = a();
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), parambkjr);
+    parambkjr = amwn.a();
+    if (parambkjr != null) {
+      parambkjr.a("apollo_game_av.get_av_ctrl_param", paramInt, l);
     }
   }
   
-  @UiThread
-  public void a(String paramString, bkjt parambkjt)
+  public void a(long paramLong, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    if (parambkjt == null)
+    bkjr localbkjr;
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
     {
-      QLog.i("IliveGroupTipsBarHelper", 1, "handleIliveGroupData entity request error");
-      return;
-    }
-    bkjp.a(this.a, parambkjt);
-    StringBuilder localStringBuilder = new StringBuilder().append("handleIliveGroupData ");
-    if (bkjp.a(this.a) == null)
-    {
-      parambkjt = " data = null";
-      QLog.i("IliveGroupTipsBarHelper", 1, parambkjt + " source = " + paramString);
-      if ((bkjp.a(this.a) == null) || (!bkjp.a(this.a).a)) {
-        break label151;
+      localbkjr = (bkjr)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      if (!paramBoolean) {
+        break label62;
       }
+      localbkjr.a(paramArrayOfByte);
     }
-    label151:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      bkjp.a(this.a, bool);
-      if (bool) {
-        break label156;
-      }
-      this.a.c();
+      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
       return;
-      parambkjt = " value = " + bkjp.a(this.a).toString();
-      break;
+      label62:
+      localbkjr.a(1, "Event");
     }
-    label156:
-    this.a.b();
+  }
+  
+  public void a(byte[] paramArrayOfByte, String paramString1, String paramString2, int paramInt1, int paramInt2, long paramLong, bkjr parambkjr)
+  {
+    long l = a();
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), parambkjr);
+    paramString1 = amwn.a();
+    if (paramString1 != null) {
+      paramString1.a("apollo_game_av.join_av_room", paramInt1, paramInt2, paramLong, paramString2, paramArrayOfByte, l);
+    }
   }
 }
 

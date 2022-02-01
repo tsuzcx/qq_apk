@@ -1,13 +1,8 @@
 package com.tencent.biz.qrcode.activity;
 
 import Override;
-import aafb;
-import aisw;
-import amqx;
-import amrb;
-import amrc;
-import amsw;
-import amtj;
+import aaun;
+import ajol;
 import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.content.Context;
@@ -31,8 +26,10 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.os.ResultReceiver;
+import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
+import android.text.method.LinkMovementMethod;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -48,24 +45,31 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aqbv;
-import aqbx;
-import aqby;
-import aqxc;
-import aqxj;
-import aqxk;
-import aytm;
-import bcef;
-import bcek;
-import bftc;
-import bftt;
-import bfur;
-import bfvo;
-import bgff;
-import bhht;
-import binf;
-import bjnw;
-import bjon;
+import anrc;
+import antl;
+import antp;
+import antq;
+import anvk;
+import anvx;
+import arey;
+import arfa;
+import arfb;
+import asbm;
+import asbt;
+import asbu;
+import azyi;
+import bdla;
+import bdlf;
+import bhbu;
+import bhcl;
+import bhdj;
+import bheg;
+import bhnz;
+import bisl;
+import biyn;
+import bjyh;
+import bkzi;
+import bkzz;
 import com.tencent.biz.qrcode.CodeMaskManager;
 import com.tencent.chirp.ChirpWrapper;
 import com.tencent.chirp.PcmPlayer;
@@ -82,8 +86,10 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.DiscussionInfo;
@@ -101,7 +107,6 @@ import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
 import com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -112,68 +117,71 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import lzb;
+import lzr;
 import mqq.os.MqqHandler;
-import yuu;
-import yuw;
-import yvm;
-import yvn;
-import yvo;
-import yvp;
-import yvq;
-import yvr;
-import yvs;
-import yvt;
-import yvu;
-import yvv;
-import yvw;
-import yvy;
-import yvz;
-import ywa;
-import ywb;
-import ywc;
-import ywd;
-import ywe;
-import ywf;
-import ywg;
-import ywh;
-import ywi;
-import ywj;
-import yyi;
+import zjn;
+import zjp;
+import zkg;
+import zkh;
+import zki;
+import zkj;
+import zkk;
+import zkl;
+import zkm;
+import zkn;
+import zko;
+import zkp;
+import zkq;
+import zkr;
+import zkt;
+import zku;
+import zkv;
+import zkw;
+import zkx;
+import zky;
+import zkz;
+import zla;
+import zlb;
+import zlc;
+import zld;
+import zle;
+import zlf;
+import znl;
 
 public class QRDisplayActivity
   extends IphoneTitleBarActivity
-  implements aafb, Handler.Callback, View.OnClickListener, AdapterView.OnItemClickListener, CompoundButton.OnCheckedChangeListener, aqxk, yuu, yuw
+  implements aaun, Handler.Callback, View.OnClickListener, AdapterView.OnItemClickListener, CompoundButton.OnCheckedChangeListener, asbu, zjn, zjp
 {
   public static final String j;
   public int a;
   protected long a;
-  public amqx a;
-  amrc jdField_a_of_type_Amrc = new ywc(this);
   public Bitmap a;
   protected Drawable a;
   public Bundle a;
-  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer = new yvy(this, 1000L, 200L);
+  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer = new zkt(this, 1000L, 200L);
   protected Handler a;
   protected View a;
   public ImageView a;
   public TextView a;
-  protected aqbv a;
-  private aqxj jdField_a_of_type_Aqxj;
-  bhht jdField_a_of_type_Bhht;
-  binf jdField_a_of_type_Binf = new ywf(this);
-  bjnw jdField_a_of_type_Bjnw;
+  anrc jdField_a_of_type_Anrc = new zko(this);
+  public antl a;
+  antq jdField_a_of_type_Antq = new zlb(this);
+  protected arey a;
+  private asbt jdField_a_of_type_Asbt;
+  bisl jdField_a_of_type_Bisl;
+  biyn jdField_a_of_type_Biyn;
+  bjyh jdField_a_of_type_Bjyh = new zlc(this);
+  bkzi jdField_a_of_type_Bkzi;
   protected CodeMaskManager a;
   private PcmPlayer jdField_a_of_type_ComTencentChirpPcmPlayer;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   private ShareActionSheetBuilder jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder;
-  WXShareHelper.WXShareListener jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener;
   public gr a;
   public Runnable a;
   public String a;
   List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  ywi jdField_a_of_type_Ywi = new yvm(this);
-  private ywj jdField_a_of_type_Ywj;
+  zle jdField_a_of_type_Zle = new zkg(this);
+  private zlf jdField_a_of_type_Zlf;
   public boolean a;
   protected int b;
   public long b;
@@ -182,7 +190,7 @@ public class QRDisplayActivity
   public View b;
   public ImageView b;
   public TextView b;
-  public bjnw b;
+  public bkzi b;
   public Runnable b;
   public String b;
   public List<String> b;
@@ -245,7 +253,7 @@ public class QRDisplayActivity
   
   static
   {
-    jdField_j_of_type_JavaLangString = amtj.a(2131710310);
+    jdField_j_of_type_JavaLangString = anvx.a(2131710657);
   }
   
   public QRDisplayActivity()
@@ -256,10 +264,10 @@ public class QRDisplayActivity
     this.jdField_e_of_type_Boolean = true;
     this.jdField_h_of_type_Int = -1;
     this.jdField_g_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRunnable = new QRDisplayActivity.4(this);
-    this.jdField_b_of_type_JavaLangRunnable = new QRDisplayActivity.5(this);
-    this.jdField_c_of_type_JavaLangRunnable = new QRDisplayActivity.6(this);
-    this.jdField_d_of_type_JavaLangRunnable = new QRDisplayActivity.8(this);
+    this.jdField_a_of_type_JavaLangRunnable = new QRDisplayActivity.6(this);
+    this.jdField_b_of_type_JavaLangRunnable = new QRDisplayActivity.7(this);
+    this.jdField_c_of_type_JavaLangRunnable = new QRDisplayActivity.8(this);
+    this.jdField_d_of_type_JavaLangRunnable = new QRDisplayActivity.10(this);
     this.jdField_i_of_type_Int = -1;
   }
   
@@ -267,22 +275,22 @@ public class QRDisplayActivity
   {
     Bitmap localBitmap1;
     if (TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString)) {
-      localBitmap1 = BitmapFactory.decodeResource(getResources(), 2130846860);
+      localBitmap1 = BitmapFactory.decodeResource(getResources(), 2130846957);
     }
     for (;;)
     {
-      paramBundle = yyi.a(this, localBitmap1, this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, paramArrayList, paramBundle.getInt("nameClr"), this.jdField_a_of_type_JavaLangString, String.format(getString(2131698464), new Object[] { this.jdField_c_of_type_JavaLangString }), paramBundle.getInt("tipsClr"), this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_Boolean, this.jdField_h_of_type_JavaLangString, true);
+      paramBundle = znl.a(this, localBitmap1, this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, paramArrayList, paramBundle.getInt("nameClr"), this.jdField_a_of_type_JavaLangString, String.format(getString(2131698760), new Object[] { this.jdField_c_of_type_JavaLangString }), paramBundle.getInt("tipsClr"), this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_Boolean, this.jdField_h_of_type_JavaLangString, true);
       if (this.jdField_b_of_type_AndroidGraphicsBitmap == null)
       {
         this.jdField_g_of_type_AndroidWidgetImageView.setImageBitmap(paramBundle[0]);
         this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-        int i1 = bgff.a();
-        int i2 = bgff.b();
-        paramArrayList = bgff.a(i1, i2, false, String.format(getString(2131698464), new Object[] { this.jdField_c_of_type_JavaLangString }));
+        int i1 = bhnz.a();
+        int i2 = bhnz.b();
+        paramArrayList = bhnz.a(i1, i2, String.format(getString(2131698760), new Object[] { this.jdField_c_of_type_JavaLangString }), this.jdField_c_of_type_JavaLangString);
         this.jdField_e_of_type_AndroidWidgetTextView.setText(paramArrayList);
-        bgff.a(this.jdField_e_of_type_AndroidWidgetTextView, i1, i2);
-        bgff.a("0X800B239", i1, i2);
-        this.jdField_f_of_type_AndroidWidgetTextView.setText(getString(2131698473));
+        bhnz.a(this.jdField_e_of_type_AndroidWidgetTextView, i1, i2);
+        bhnz.a("0X800B239", i1, i2);
+        this.jdField_f_of_type_AndroidWidgetTextView.setText(getString(2131698769));
         this.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
         w();
       }
@@ -296,21 +304,21 @@ public class QRDisplayActivity
       return;
       try
       {
-        localBitmap1 = bfvo.b(URLDrawable.getDrawable(this.jdField_i_of_type_JavaLangString).getCurrDrawable().mutate());
+        localBitmap1 = bheg.b(URLDrawable.getDrawable(this.jdField_i_of_type_JavaLangString).getCurrDrawable().mutate());
       }
       catch (Exception localException)
       {
-        Bitmap localBitmap2 = BitmapFactory.decodeResource(getResources(), 2130846860);
+        Bitmap localBitmap2 = BitmapFactory.decodeResource(getResources(), 2130846957);
       }
     }
   }
   
-  private void a(aqbx paramaqbx, int paramInt, boolean paramBoolean)
+  private void a(arfa paramarfa, int paramInt, boolean paramBoolean)
   {
-    if ("default_bg".equals(paramaqbx.jdField_a_of_type_JavaLangString))
+    if ("default_bg".equals(paramarfa.jdField_a_of_type_JavaLangString))
     {
-      b(paramaqbx, paramInt, paramBoolean);
-      this.jdField_i_of_type_AndroidViewView.setBackgroundResource(2130846860);
+      b(paramarfa, paramInt, paramBoolean);
+      this.jdField_i_of_type_AndroidViewView.setBackgroundResource(2130846957);
       return;
     }
     int i1;
@@ -325,29 +333,29 @@ public class QRDisplayActivity
         if (i1 == 0) {
           break label238;
         }
-        localDrawable = getResources().getDrawable(2130846860);
+        localDrawable = getResources().getDrawable(2130846957);
         localURLDrawableOptions.mFailedDrawable = localDrawable;
-        this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramaqbx.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+        this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramarfa.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
         if (QLog.isColorLevel()) {
           QLog.d("QRDisplayActivity", 2, "setURLDrawable: urlDrawable = " + this.jdField_a_of_type_ComTencentImageURLDrawable + " status = " + this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus());
         }
         if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) {
           break label250;
         }
-        b(paramaqbx, paramInt, paramBoolean);
+        b(paramarfa, paramInt, paramBoolean);
         this.jdField_i_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
         return;
       }
-      catch (IllegalArgumentException paramaqbx)
+      catch (IllegalArgumentException paramarfa)
       {
-        QLog.d("QRDisplayActivity", 1, "bkgURL is illegal please check manage info e =" + paramaqbx);
-        QQToast.a(this, getString(2131695942), 0).a();
+        QLog.d("QRDisplayActivity", 1, "bkgURL is illegal please check manage info e =" + paramarfa);
+        QQToast.a(this, getString(2131696194), 0).a();
         w();
       }
       if (i1 == 0) {
         break;
       }
-      this.jdField_i_of_type_AndroidViewView.setBackgroundResource(2130846860);
+      this.jdField_i_of_type_AndroidViewView.setBackgroundResource(2130846957);
       return;
       i1 = 0;
       continue;
@@ -356,39 +364,67 @@ public class QRDisplayActivity
     }
     label250:
     if (i1 != 0) {
-      this.jdField_i_of_type_AndroidViewView.setBackgroundResource(2130846860);
+      this.jdField_i_of_type_AndroidViewView.setBackgroundResource(2130846957);
     }
-    a(paramaqbx, paramInt, paramBoolean, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    a(paramarfa, paramInt, paramBoolean, this.jdField_a_of_type_ComTencentImageURLDrawable);
     v();
     this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
     this.jdField_a_of_type_ComTencentImageURLDrawable.setAutoDownload(true);
   }
   
-  private void a(aqbx paramaqbx, int paramInt, boolean paramBoolean, URLDrawable paramURLDrawable)
+  private void a(arfa paramarfa, int paramInt, boolean paramBoolean, URLDrawable paramURLDrawable)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "setDrawableListener(): ud = " + paramURLDrawable + " bkgURL = " + paramaqbx.jdField_a_of_type_JavaLangString);
+      QLog.d("QRDisplayActivity", 2, "setDrawableListener(): ud = " + paramURLDrawable + " bkgURL = " + paramarfa.jdField_a_of_type_JavaLangString);
     }
-    paramURLDrawable.setURLDrawableListener(new ywd(this, paramaqbx, paramInt, paramBoolean));
+    paramURLDrawable.setURLDrawableListener(new zky(this, paramarfa, paramInt, paramBoolean));
   }
   
-  private void a(aqbx paramaqbx, boolean paramBoolean)
+  private void a(arfa paramarfa, boolean paramBoolean)
   {
-    if (paramaqbx == null) {
+    if (paramarfa == null) {
       QLog.i("QRDisplayActivity", 2, "switchMyQrTheme() qrCodeList is null just return");
     }
     do
     {
       return;
-      this.jdField_h_of_type_Int = this.jdField_a_of_type_Aqbv.jdField_a_of_type_JavaUtilList.indexOf(paramaqbx);
+      this.jdField_h_of_type_Int = this.jdField_a_of_type_Arey.jdField_a_of_type_JavaUtilList.indexOf(paramarfa);
       if (QLog.isColorLevel()) {
-        QLog.i("QRDisplayActivity", 2, "switchMyQrTheme().qrCodeList:" + paramaqbx.toString());
+        QLog.i("QRDisplayActivity", 2, "switchMyQrTheme().qrCodeList:" + paramarfa.toString());
       }
-    } while (TextUtils.isEmpty(paramaqbx.jdField_a_of_type_JavaLangString));
-    this.jdField_h_of_type_JavaLangString = paramaqbx.jdField_b_of_type_JavaLangString;
-    this.jdField_e_of_type_Boolean = paramaqbx.c();
-    this.jdField_i_of_type_JavaLangString = paramaqbx.jdField_a_of_type_JavaLangString;
-    a(paramaqbx, this.jdField_h_of_type_Int, paramBoolean);
+    } while (TextUtils.isEmpty(paramarfa.jdField_a_of_type_JavaLangString));
+    this.jdField_h_of_type_JavaLangString = paramarfa.jdField_b_of_type_JavaLangString;
+    this.jdField_e_of_type_Boolean = paramarfa.c();
+    this.jdField_i_of_type_JavaLangString = paramarfa.jdField_a_of_type_JavaLangString;
+    a(paramarfa, this.jdField_h_of_type_Int, paramBoolean);
+  }
+  
+  private void a(TroopInfo paramTroopInfo)
+  {
+    boolean bool = paramTroopInfo.isOwnerOrAdmin(getCurrentAccountUin());
+    if (QLog.isColorLevel()) {
+      QLog.d("QRDisplayActivity", 2, "updateBottomTroopInfoAndTips isOwnerOrAdmin = " + bool);
+    }
+    TextView localTextView = (TextView)findViewById(2131367908);
+    localTextView.setVisibility(0);
+    bhbu.a("Grp_QR", "search_upgrade", "search_upgrade_exp", 0, 0, new String[] { paramTroopInfo.troopuin });
+    if (bool) {}
+    String str;
+    for (int i1 = 2131716565;; i1 = 2131716564)
+    {
+      str = paramTroopInfo.troopuin;
+      str = String.format(getResources().getString(i1), new Object[] { str });
+      if (!bool) {
+        break;
+      }
+      SpannableString localSpannableString = new SpannableString(str);
+      localSpannableString.setSpan(new zla(this, paramTroopInfo), str.length() - 6, str.length(), 33);
+      localTextView.setText(localSpannableString);
+      localTextView.setMovementMethod(LinkMovementMethod.getInstance());
+      localTextView.setHighlightColor(0);
+      return;
+    }
+    localTextView.setText(str);
   }
   
   private static void a(short[] paramArrayOfShort, byte[] paramArrayOfByte)
@@ -406,81 +442,81 @@ public class QRDisplayActivity
   private boolean a(String paramString)
   {
     // Byte code:
-    //   0: new 452	java/io/File
+    //   0: new 526	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 455	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 529	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_1
     //   9: aload_1
-    //   10: invokevirtual 458	java/io/File:exists	()Z
+    //   10: invokevirtual 532	java/io/File:exists	()Z
     //   13: ifne +187 -> 200
-    //   16: new 460	com/tencent/chirp/ChirpWrapper
+    //   16: new 534	com/tencent/chirp/ChirpWrapper
     //   19: dup
-    //   20: invokespecial 461	com/tencent/chirp/ChirpWrapper:<init>	()V
+    //   20: invokespecial 535	com/tencent/chirp/ChirpWrapper:<init>	()V
     //   23: astore 5
     //   25: aload 5
-    //   27: invokevirtual 462	com/tencent/chirp/ChirpWrapper:a	()I
+    //   27: invokevirtual 536	com/tencent/chirp/ChirpWrapper:a	()I
     //   30: ifne +298 -> 328
     //   33: aload_0
-    //   34: getfield 466	com/tencent/biz/qrcode/activity/QRDisplayActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   37: invokevirtual 471	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   34: getfield 540	com/tencent/biz/qrcode/activity/QRDisplayActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   37: invokevirtual 543	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   40: astore_3
-    //   41: new 201	java/lang/String
+    //   41: new 207	java/lang/String
     //   44: dup
-    //   45: ldc_w 473
-    //   48: invokespecial 474	java/lang/String:<init>	(Ljava/lang/String;)V
+    //   45: ldc_w 545
+    //   48: invokespecial 546	java/lang/String:<init>	(Ljava/lang/String;)V
     //   51: astore 4
-    //   53: new 277	java/lang/StringBuilder
+    //   53: new 283	java/lang/StringBuilder
     //   56: dup
-    //   57: invokespecial 278	java/lang/StringBuilder:<init>	()V
-    //   60: ldc_w 476
-    //   63: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: invokespecial 284	java/lang/StringBuilder:<init>	()V
+    //   60: ldc_w 548
+    //   63: invokevirtual 290	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   66: aload 4
     //   68: iconst_0
     //   69: bipush 14
     //   71: aload_3
-    //   72: invokevirtual 479	java/lang/String:length	()I
+    //   72: invokevirtual 499	java/lang/String:length	()I
     //   75: isub
-    //   76: invokevirtual 483	java/lang/String:substring	(II)Ljava/lang/String;
-    //   79: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   76: invokevirtual 552	java/lang/String:substring	(II)Ljava/lang/String;
+    //   79: invokevirtual 290	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   82: aload_3
-    //   83: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: invokevirtual 291	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   83: invokevirtual 290	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: invokevirtual 297	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   89: astore_3
-    //   90: invokestatic 273	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   90: invokestatic 279	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   93: ifeq +30 -> 123
-    //   96: ldc_w 275
+    //   96: ldc_w 281
     //   99: iconst_2
-    //   100: new 277	java/lang/StringBuilder
+    //   100: new 283	java/lang/StringBuilder
     //   103: dup
-    //   104: invokespecial 278	java/lang/StringBuilder:<init>	()V
-    //   107: ldc_w 485
-    //   110: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: invokespecial 284	java/lang/StringBuilder:<init>	()V
+    //   107: ldc_w 554
+    //   110: invokevirtual 290	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   113: aload_3
-    //   114: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: invokevirtual 291	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   120: invokestatic 294	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   114: invokevirtual 290	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 297	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokestatic 300	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   123: aload 5
     //   125: aload_3
-    //   126: invokevirtual 488	com/tencent/chirp/ChirpWrapper:a	(Ljava/lang/String;)Landroid/util/Pair;
+    //   126: invokevirtual 557	com/tencent/chirp/ChirpWrapper:a	(Ljava/lang/String;)Landroid/util/Pair;
     //   129: astore_3
     //   130: aload_3
-    //   131: getfield 494	android/util/Pair:first	Ljava/lang/Object;
-    //   134: checkcast 496	java/lang/Integer
-    //   137: invokevirtual 499	java/lang/Integer:intValue	()I
+    //   131: getfield 563	android/util/Pair:first	Ljava/lang/Object;
+    //   134: checkcast 565	java/lang/Integer
+    //   137: invokevirtual 568	java/lang/Integer:intValue	()I
     //   140: istore_2
     //   141: aload_3
-    //   142: getfield 502	android/util/Pair:second	Ljava/lang/Object;
-    //   145: checkcast 504	[S
+    //   142: getfield 571	android/util/Pair:second	Ljava/lang/Object;
+    //   145: checkcast 573	[S
     //   148: astore 4
     //   150: iload_2
     //   151: ifne +137 -> 288
     //   154: aload 4
     //   156: ifnull +132 -> 288
-    //   159: new 506	java/io/FileOutputStream
+    //   159: new 575	java/io/FileOutputStream
     //   162: dup
     //   163: aload_1
-    //   164: invokespecial 509	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   164: invokespecial 578	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   167: astore_3
     //   168: aload 4
     //   170: arraylength
@@ -490,16 +526,16 @@ public class QRDisplayActivity
     //   175: astore_1
     //   176: aload 4
     //   178: aload_1
-    //   179: invokestatic 511	com/tencent/biz/qrcode/activity/QRDisplayActivity:a	([S[B)V
+    //   179: invokestatic 580	com/tencent/biz/qrcode/activity/QRDisplayActivity:a	([S[B)V
     //   182: aload_3
     //   183: aload_1
-    //   184: invokevirtual 515	java/io/FileOutputStream:write	([B)V
+    //   184: invokevirtual 584	java/io/FileOutputStream:write	([B)V
     //   187: aload_3
     //   188: ifnull +7 -> 195
     //   191: aload_3
-    //   192: invokevirtual 518	java/io/FileOutputStream:close	()V
+    //   192: invokevirtual 587	java/io/FileOutputStream:close	()V
     //   195: aload 5
-    //   197: invokevirtual 520	com/tencent/chirp/ChirpWrapper:a	()V
+    //   197: invokevirtual 589	com/tencent/chirp/ChirpWrapper:a	()V
     //   200: iconst_1
     //   201: ireturn
     //   202: astore_1
@@ -507,33 +543,33 @@ public class QRDisplayActivity
     //   204: athrow
     //   205: astore_1
     //   206: aload 5
-    //   208: invokevirtual 520	com/tencent/chirp/ChirpWrapper:a	()V
+    //   208: invokevirtual 589	com/tencent/chirp/ChirpWrapper:a	()V
     //   211: aload_1
     //   212: athrow
     //   213: astore_3
     //   214: aconst_null
     //   215: astore_1
-    //   216: invokestatic 273	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   216: invokestatic 279	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   219: ifeq +14 -> 233
-    //   222: ldc_w 275
+    //   222: ldc_w 281
     //   225: iconst_2
-    //   226: ldc_w 522
+    //   226: ldc_w 591
     //   229: aload_3
-    //   230: invokestatic 525	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   230: invokestatic 594	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   233: aload_1
     //   234: astore_3
     //   235: aload_1
     //   236: ifnull +9 -> 245
     //   239: aload_1
-    //   240: invokevirtual 518	java/io/FileOutputStream:close	()V
+    //   240: invokevirtual 587	java/io/FileOutputStream:close	()V
     //   243: aconst_null
     //   244: astore_3
     //   245: aload_3
     //   246: ifnull +7 -> 253
     //   249: aload_3
-    //   250: invokevirtual 518	java/io/FileOutputStream:close	()V
+    //   250: invokevirtual 587	java/io/FileOutputStream:close	()V
     //   253: aload 5
-    //   255: invokevirtual 520	com/tencent/chirp/ChirpWrapper:a	()V
+    //   255: invokevirtual 589	com/tencent/chirp/ChirpWrapper:a	()V
     //   258: iconst_0
     //   259: ireturn
     //   260: astore_1
@@ -549,7 +585,7 @@ public class QRDisplayActivity
     //   272: aload_3
     //   273: ifnull +7 -> 280
     //   276: aload_3
-    //   277: invokevirtual 518	java/io/FileOutputStream:close	()V
+    //   277: invokevirtual 587	java/io/FileOutputStream:close	()V
     //   280: aload_1
     //   281: athrow
     //   282: astore_1
@@ -558,25 +594,25 @@ public class QRDisplayActivity
     //   285: astore_1
     //   286: aload_1
     //   287: athrow
-    //   288: invokestatic 273	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   288: invokestatic 279	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   291: ifeq +30 -> 321
-    //   294: ldc_w 275
+    //   294: ldc_w 281
     //   297: iconst_4
-    //   298: new 277	java/lang/StringBuilder
+    //   298: new 283	java/lang/StringBuilder
     //   301: dup
-    //   302: invokespecial 278	java/lang/StringBuilder:<init>	()V
-    //   305: ldc_w 527
-    //   308: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   302: invokespecial 284	java/lang/StringBuilder:<init>	()V
+    //   305: ldc_w 596
+    //   308: invokevirtual 290	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   311: iload_2
-    //   312: invokevirtual 370	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   315: invokevirtual 291	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   318: invokestatic 294	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   312: invokevirtual 376	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   315: invokevirtual 297	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   318: invokestatic 300	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   321: aload 5
-    //   323: invokevirtual 520	com/tencent/chirp/ChirpWrapper:a	()V
+    //   323: invokevirtual 589	com/tencent/chirp/ChirpWrapper:a	()V
     //   326: iconst_0
     //   327: ireturn
     //   328: aload 5
-    //   330: invokevirtual 520	com/tencent/chirp/ChirpWrapper:a	()V
+    //   330: invokevirtual 589	com/tencent/chirp/ChirpWrapper:a	()V
     //   333: iconst_0
     //   334: ireturn
     //   335: astore_1
@@ -642,28 +678,28 @@ public class QRDisplayActivity
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131695878);
-    localActionSheetItem.icon = 2130839126;
+    localActionSheetItem.label = paramContext.getString(2131696130);
+    localActionSheetItem.icon = 2130839146;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 0;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131695891);
-    localActionSheetItem.icon = 2130839127;
+    localActionSheetItem.label = paramContext.getString(2131696143);
+    localActionSheetItem.icon = 2130839147;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 1;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131695898);
-    localActionSheetItem.icon = 2130839130;
+    localActionSheetItem.label = paramContext.getString(2131696150);
+    localActionSheetItem.icon = 2130839150;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131695881);
-    localActionSheetItem.icon = 2130839124;
+    localActionSheetItem.label = paramContext.getString(2131696133);
+    localActionSheetItem.icon = 2130839144;
     localActionSheetItem.action = 3;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
@@ -674,12 +710,12 @@ public class QRDisplayActivity
   {
     try
     {
-      ThreadManager.post(new QRDisplayActivity.29(this, "temp_qrcode_share_" + paramString + ".png", paramInt, paramString), 8, null, true);
+      ThreadManager.post(new QRDisplayActivity.31(this, "temp_qrcode_share_" + paramString + ".png", paramInt, paramString), 8, null, true);
       return;
     }
     catch (OutOfMemoryError paramString)
     {
-      yyi.a(1, 2131695957);
+      znl.a(1, 2131696209);
     }
   }
   
@@ -695,11 +731,11 @@ public class QRDisplayActivity
     String str3;
     if (TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString))
     {
-      localBitmap1 = BitmapFactory.decodeResource(getResources(), 2130846860);
+      localBitmap1 = BitmapFactory.decodeResource(getResources(), 2130846957);
       localBitmap3 = this.jdField_a_of_type_AndroidGraphicsBitmap;
       i1 = paramBundle.getInt("nameClr");
       str1 = this.jdField_a_of_type_JavaLangString;
-      str2 = String.format(getString(2131698746), new Object[] { this.jdField_c_of_type_JavaLangString });
+      str2 = String.format(getString(2131699069), new Object[] { this.jdField_c_of_type_JavaLangString });
       i2 = paramBundle.getInt("tipsClr");
       paramBundle = this.jdField_b_of_type_JavaLangString;
       bool2 = this.jdField_e_of_type_Boolean;
@@ -713,13 +749,13 @@ public class QRDisplayActivity
     {
       for (;;)
       {
-        paramBundle = yyi.a(this, localBitmap1, localBitmap3, paramBitmap, paramArrayList, i1, str1, str2, i2, paramBundle, bool2, str3, bool1);
+        paramBundle = znl.a(this, localBitmap1, localBitmap3, paramBitmap, paramArrayList, i1, str1, str2, i2, paramBundle, bool2, str3, bool1);
         if (this.jdField_b_of_type_AndroidGraphicsBitmap == null)
         {
           this.jdField_i_of_type_AndroidWidgetImageView.setImageBitmap(paramBundle[0]);
           this.jdField_h_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-          this.jdField_i_of_type_AndroidWidgetTextView.setText(String.format(getString(2131698746), new Object[] { this.jdField_c_of_type_JavaLangString }));
-          this.jdField_j_of_type_AndroidWidgetTextView.setText(getString(2131698473));
+          this.jdField_i_of_type_AndroidWidgetTextView.setText(String.format(getString(2131699069), new Object[] { this.jdField_c_of_type_JavaLangString }));
+          this.jdField_j_of_type_AndroidWidgetTextView.setText(getString(2131698769));
           this.jdField_h_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
         }
         this.jdField_b_of_type_AndroidGraphicsBitmap = paramBundle[1];
@@ -727,94 +763,95 @@ public class QRDisplayActivity
         return;
         try
         {
-          localBitmap1 = bfvo.b(URLDrawable.getDrawable(this.jdField_i_of_type_JavaLangString).getCurrDrawable().mutate());
+          localBitmap1 = bheg.b(URLDrawable.getDrawable(this.jdField_i_of_type_JavaLangString).getCurrDrawable().mutate());
         }
         catch (Exception localException)
         {
-          Bitmap localBitmap2 = BitmapFactory.decodeResource(getResources(), 2130846860);
+          Bitmap localBitmap2 = BitmapFactory.decodeResource(getResources(), 2130846957);
         }
       }
       break;
     }
   }
   
-  private void b(aqbx paramaqbx, int paramInt, boolean paramBoolean)
+  private void b(arfa paramarfa, int paramInt, boolean paramBoolean)
   {
     int i1 = -1;
     if (paramBoolean) {
       h();
     }
     w();
-    yyi.a(this.app, paramInt);
+    znl.a(this.app, paramInt);
     Object localObject;
-    if (!paramaqbx.a())
+    if (!paramarfa.a())
     {
       paramBoolean = true;
       ImmersiveUtils.a(paramBoolean, getWindow());
-      localObject = getResources().getDrawable(2130843732);
-      if (!paramaqbx.b()) {
-        break label168;
+      localObject = getResources().getDrawable(2130843770);
+      if (!paramarfa.b()) {
+        break label176;
       }
       paramInt = -1;
       label63:
       ((Drawable)localObject).setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
-      this.jdField_e_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
-      localObject = getResources().getDrawable(2130850593);
-      if (!paramaqbx.b()) {
-        break label175;
+      this.jdField_e_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+      this.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      localObject = getResources().getDrawable(2130850724);
+      if (!paramarfa.b()) {
+        break label183;
       }
       paramInt = -1;
-      label102:
+      label110:
       ((Drawable)localObject).setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
       this.leftView.setBackgroundDrawable((Drawable)localObject);
       localObject = this.centerView;
-      if (!paramaqbx.b()) {
-        break label182;
+      if (!paramarfa.b()) {
+        break label190;
       }
     }
-    label168:
-    label175:
-    label182:
+    label176:
+    label183:
+    label190:
     for (paramInt = i1;; paramInt = -16777216)
     {
       ((TextView)localObject).setTextColor(paramInt);
-      this.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130844793);
-      this.jdField_g_of_type_AndroidViewView.setBackgroundResource(2130844793);
+      this.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130844867);
+      this.jdField_g_of_type_AndroidViewView.setBackgroundResource(2130844867);
       return;
       paramBoolean = false;
       break;
       paramInt = -16777216;
       break label63;
       paramInt = -16777216;
-      break label102;
+      break label110;
     }
   }
   
-  private void b(aqbx paramaqbx, int paramInt, boolean paramBoolean, URLDrawable paramURLDrawable)
+  private void b(arfa paramarfa, int paramInt, boolean paramBoolean, URLDrawable paramURLDrawable)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener(): ud = " + paramURLDrawable + " bkgURL = " + paramaqbx.jdField_a_of_type_JavaLangString);
+      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener(): ud = " + paramURLDrawable + " bkgURL = " + paramarfa.jdField_a_of_type_JavaLangString);
     }
-    paramURLDrawable.setURLDrawableListener(new ywe(this, paramaqbx, paramInt, paramBoolean));
+    paramURLDrawable.setURLDrawableListener(new zkz(this, paramarfa, paramInt, paramBoolean));
   }
   
-  private void b(aqbx paramaqbx, boolean paramBoolean)
+  private void b(arfa paramarfa, boolean paramBoolean)
   {
-    if (paramaqbx == null) {
+    if (paramarfa == null) {
       QLog.i("QRDisplayActivity", 2, "switchMyQrTheme() qrCodeList is null just return");
     }
     do
     {
       return;
-      this.jdField_h_of_type_Int = this.jdField_a_of_type_Aqbv.jdField_a_of_type_JavaUtilList.indexOf(paramaqbx);
+      this.jdField_h_of_type_Int = this.jdField_a_of_type_Arey.jdField_a_of_type_JavaUtilList.indexOf(paramarfa);
       if (QLog.isColorLevel()) {
-        QLog.i("QRDisplayActivity", 2, "switchMyQrTheme().qrCodeList:" + paramaqbx.toString());
+        QLog.i("QRDisplayActivity", 2, "switchMyQrTheme().qrCodeList:" + paramarfa.toString());
       }
-    } while (TextUtils.isEmpty(paramaqbx.jdField_a_of_type_JavaLangString));
-    this.jdField_h_of_type_JavaLangString = paramaqbx.jdField_b_of_type_JavaLangString;
-    this.jdField_e_of_type_Boolean = paramaqbx.c();
-    this.jdField_i_of_type_JavaLangString = paramaqbx.jdField_a_of_type_JavaLangString;
-    c(paramaqbx, this.jdField_h_of_type_Int, paramBoolean);
+    } while (TextUtils.isEmpty(paramarfa.jdField_a_of_type_JavaLangString));
+    this.jdField_h_of_type_JavaLangString = paramarfa.jdField_b_of_type_JavaLangString;
+    this.jdField_e_of_type_Boolean = paramarfa.c();
+    this.jdField_i_of_type_JavaLangString = paramarfa.jdField_a_of_type_JavaLangString;
+    c(paramarfa, this.jdField_h_of_type_Int, paramBoolean);
   }
   
   private void b(boolean paramBoolean)
@@ -823,21 +860,21 @@ public class QRDisplayActivity
       QLog.d("QRDisplayActivity", 2, "sendIsResumeBroadcast isNeedSend = " + this.jdField_g_of_type_Boolean + " ,isResume = " + paramBoolean);
     }
     if (this.jdField_g_of_type_Boolean) {
-      lzb.a(BaseApplicationImpl.getContext(), paramBoolean);
+      lzr.a(BaseApplicationImpl.getContext(), paramBoolean);
     }
   }
   
-  private void c(aqbx paramaqbx, int paramInt, boolean paramBoolean)
+  private void c(arfa paramarfa, int paramInt, boolean paramBoolean)
   {
-    if (paramaqbx == null)
+    if (paramarfa == null)
     {
       QLog.i("QRDisplayActivity", 2, "setTroopURLDrawable() qrCodeList is null just return");
       return;
     }
-    if ("default_bg".equals(paramaqbx.jdField_a_of_type_JavaLangString))
+    if ("default_bg".equals(paramarfa.jdField_a_of_type_JavaLangString))
     {
-      d(paramaqbx, paramInt, paramBoolean);
-      this.l.setBackgroundResource(2130846860);
+      d(paramarfa, paramInt, paramBoolean);
+      this.l.setBackgroundResource(2130846957);
       return;
     }
     int i1;
@@ -852,9 +889,9 @@ public class QRDisplayActivity
         if (i1 == 0) {
           break label274;
         }
-        localObject = getResources().getDrawable(2130846860);
+        localObject = getResources().getDrawable(2130846957);
         localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-        this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramaqbx.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+        this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramarfa.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
         if (QLog.isColorLevel())
         {
           if ("setTroopURLDrawable: urlDrawable = " + this.jdField_a_of_type_ComTencentImageURLDrawable + " status = " + this.jdField_a_of_type_ComTencentImageURLDrawable == null) {
@@ -866,20 +903,20 @@ public class QRDisplayActivity
         if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) {
           break label286;
         }
-        d(paramaqbx, paramInt, paramBoolean);
+        d(paramarfa, paramInt, paramBoolean);
         this.l.setBackgroundDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
         return;
       }
-      catch (IllegalArgumentException paramaqbx)
+      catch (IllegalArgumentException paramarfa)
       {
-        QLog.d("QRDisplayActivity", 1, "setTroopURLDrawable bkgURL is illegal please check manage info e =" + paramaqbx);
-        QQToast.a(this, getString(2131695942), 0).a();
+        QLog.d("QRDisplayActivity", 1, "setTroopURLDrawable bkgURL is illegal please check manage info e =" + paramarfa);
+        QQToast.a(this, getString(2131696194), 0).a();
         w();
       }
       if (i1 == 0) {
         break;
       }
-      this.l.setBackgroundResource(2130846860);
+      this.l.setBackgroundResource(2130846957);
       return;
       i1 = 0;
       continue;
@@ -888,9 +925,9 @@ public class QRDisplayActivity
       continue;
       label286:
       if (i1 != 0) {
-        this.l.setBackgroundResource(2130846860);
+        this.l.setBackgroundResource(2130846957);
       }
-      b(paramaqbx, paramInt, paramBoolean, this.jdField_a_of_type_ComTencentImageURLDrawable);
+      b(paramarfa, paramInt, paramBoolean, this.jdField_a_of_type_ComTencentImageURLDrawable);
       v();
       this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
       this.jdField_a_of_type_ComTencentImageURLDrawable.setAutoDownload(true);
@@ -900,21 +937,21 @@ public class QRDisplayActivity
     }
   }
   
-  private void d(aqbx paramaqbx, int paramInt, boolean paramBoolean)
+  private void d(arfa paramarfa, int paramInt, boolean paramBoolean)
   {
     int i1 = -1;
     if (paramBoolean) {
       h();
     }
     w();
-    yyi.b(this.app, paramInt);
+    znl.b(this.app, paramInt);
     Object localObject;
-    if (!paramaqbx.a())
+    if (!paramarfa.a())
     {
       paramBoolean = true;
       ImmersiveUtils.a(paramBoolean, getWindow());
-      localObject = getResources().getDrawable(2130850593);
-      if (!paramaqbx.b()) {
+      localObject = getResources().getDrawable(2130850724);
+      if (!paramarfa.b()) {
         break label129;
       }
       paramInt = -1;
@@ -922,7 +959,7 @@ public class QRDisplayActivity
       ((Drawable)localObject).setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
       this.leftView.setBackgroundDrawable((Drawable)localObject);
       localObject = this.centerView;
-      if (!paramaqbx.b()) {
+      if (!paramarfa.b()) {
         break label136;
       }
     }
@@ -931,8 +968,8 @@ public class QRDisplayActivity
     for (paramInt = i1;; paramInt = -16777216)
     {
       ((TextView)localObject).setTextColor(paramInt);
-      this.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130844793);
-      this.jdField_h_of_type_AndroidViewView.setBackgroundResource(2130844793);
+      this.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130844867);
+      this.jdField_h_of_type_AndroidViewView.setBackgroundResource(2130844867);
       return;
       paramBoolean = false;
       break;
@@ -950,42 +987,42 @@ public class QRDisplayActivity
     getTitleBarView().setBackgroundColor(0);
     ImmersiveUtils.a(true, getWindow());
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131374553).setBackgroundDrawable(null);
+    findViewById(2131374791).setBackgroundDrawable(null);
     this.jdField_d_of_type_AndroidViewView.setVisibility(8);
     this.jdField_i_of_type_AndroidViewView = findViewById(16908290);
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369082));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369245));
     this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_e_of_type_AndroidWidgetImageView.setContentDescription(getString(2131696989));
+    this.jdField_e_of_type_AndroidWidgetImageView.setContentDescription(getString(2131697263));
     this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.leftView.setContentDescription(getString(2131718238));
-    this.jdField_j_of_type_AndroidViewView = findViewById(2131374574);
+    this.leftView.setContentDescription(getString(2131718624));
+    this.jdField_j_of_type_AndroidViewView = findViewById(2131374812);
     this.jdField_j_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_k_of_type_AndroidViewView = this.jdField_j_of_type_AndroidViewView.findViewById(2131374530);
+    this.jdField_k_of_type_AndroidViewView = this.jdField_j_of_type_AndroidViewView.findViewById(2131374768);
     this.jdField_k_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_k_of_type_AndroidViewView.setContentDescription(getString(2131698473));
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_j_of_type_AndroidViewView.findViewById(2131369309));
+    this.jdField_k_of_type_AndroidViewView.setContentDescription(getString(2131698769));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_j_of_type_AndroidViewView.findViewById(2131369475));
     this.jdField_f_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_j_of_type_AndroidViewView.findViewById(2131369338));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_j_of_type_AndroidViewView.findViewById(2131379729));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_j_of_type_AndroidViewView.findViewById(2131379906));
-    localObject1 = amtj.a(2131695944);
+    this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_j_of_type_AndroidViewView.findViewById(2131369505));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_j_of_type_AndroidViewView.findViewById(2131380043));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_j_of_type_AndroidViewView.findViewById(2131380243));
+    localObject1 = anvx.a(2131696196);
     Object localObject2 = this.jdField_c_of_type_JavaLangString;
-    localObject1 = aytm.a(this.jdField_e_of_type_AndroidWidgetTextView, (String)localObject1, (String)localObject2);
+    localObject1 = azyi.a(this.jdField_e_of_type_AndroidWidgetTextView, (String)localObject1, (String)localObject2);
     if (localObject1 != null) {
-      ((aytm)localObject1).a(new yvv(this));
+      ((azyi)localObject1).a(new zkw(this));
     }
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_j_of_type_AndroidViewView.findViewById(2131379873));
-    this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(getString(2131716068));
-    this.jdField_b_of_type_JavaLangString = getString(2131716206);
-    localObject1 = findViewById(2131367771);
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_j_of_type_AndroidViewView.findViewById(2131380206));
+    this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(getString(2131716416));
+    this.jdField_b_of_type_JavaLangString = getString(2131716567);
+    localObject1 = findViewById(2131367907);
     ((View)localObject1).setVisibility(0);
-    this.jdField_f_of_type_AndroidViewView = findViewById(2131374564);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374563));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374565));
-    this.jdField_g_of_type_AndroidViewView = findViewById(2131374579);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374578));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374580));
-    int i1 = (getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131297983) * 3) / 8;
+    this.jdField_f_of_type_AndroidViewView = findViewById(2131374802);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374801));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374803));
+    this.jdField_g_of_type_AndroidViewView = findViewById(2131374817);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374816));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374818));
+    int i1 = (getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131297986) * 3) / 8;
     localObject2 = (ViewGroup.MarginLayoutParams)((View)localObject1).getLayoutParams();
     if (localObject2 != null)
     {
@@ -993,34 +1030,35 @@ public class QRDisplayActivity
       ((ViewGroup.MarginLayoutParams)localObject2).rightMargin = i1;
       ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     }
-    this.jdField_a_of_type_Ywj = new ywj(this, null);
+    this.jdField_a_of_type_Zlf = new zlf(this, null);
     this.jdField_f_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_f_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_Ywj);
+    this.jdField_f_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_Zlf);
     this.jdField_g_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_g_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_Ywj);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839449);
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374191));
-    this.jdField_a_of_type_Aqbv = aqby.a();
-    if ((this.jdField_a_of_type_Aqbv.jdField_a_of_type_JavaUtilList.size() <= 0) || (TextUtils.isEmpty(((aqbx)this.jdField_a_of_type_Aqbv.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString))) {
+    this.jdField_g_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_Zlf);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839470);
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374426));
+    this.jdField_a_of_type_Arey = arfb.a();
+    if ((this.jdField_a_of_type_Arey.jdField_a_of_type_JavaUtilList.size() <= 0) || (TextUtils.isEmpty(((arfa)this.jdField_a_of_type_Arey.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString))) {
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    this.jdField_h_of_type_Int = yyi.a(this.app);
-    if ((this.jdField_h_of_type_Int < 0) || (this.jdField_h_of_type_Int >= this.jdField_a_of_type_Aqbv.jdField_a_of_type_JavaUtilList.size()))
+    this.jdField_h_of_type_Int = znl.a(this.app);
+    if ((this.jdField_h_of_type_Int < 0) || (this.jdField_h_of_type_Int >= this.jdField_a_of_type_Arey.jdField_a_of_type_JavaUtilList.size()))
     {
-      this.jdField_i_of_type_AndroidViewView.setBackgroundResource(2130846860);
-      localObject1 = getResources().getDrawable(2130843732);
+      this.jdField_i_of_type_AndroidViewView.setBackgroundResource(2130846957);
+      localObject1 = getResources().getDrawable(2130843770);
       ((Drawable)localObject1).setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
-      this.jdField_e_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject1);
-      localObject1 = getResources().getDrawable(2130850593);
+      this.jdField_e_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+      this.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+      localObject1 = getResources().getDrawable(2130850724);
       ((Drawable)localObject1).setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
       this.leftView.setBackgroundDrawable((Drawable)localObject1);
       this.centerView.setTextColor(-16777216);
     }
     for (;;)
     {
-      bcef.b(this.app, "CliOper", "", "", "0X800AEAB", "0X800AEAB", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X800AEAB", "0X800AEAB", 0, 0, "", "", "", "");
       return;
-      a((aqbx)this.jdField_a_of_type_Aqbv.jdField_a_of_type_JavaUtilList.get(this.jdField_h_of_type_Int), false);
+      a((arfa)this.jdField_a_of_type_Arey.jdField_a_of_type_JavaUtilList.get(this.jdField_h_of_type_Int), false);
     }
   }
   
@@ -1029,7 +1067,7 @@ public class QRDisplayActivity
     String str1;
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      QQToast.a(this, getString(2131692035), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131692125), 0).b(getTitleBarHeight());
       if (QLog.isColorLevel()) {
         QLog.i("QRDisplayActivity", 2, "tryToGetShareLink: net is not supported");
       }
@@ -1050,7 +1088,7 @@ public class QRDisplayActivity
           continue;
           str1 = "qr_wechat";
         }
-        bftc.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
+        bhbu.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
       }
       this.jdField_i_of_type_Int = -1;
       return;
@@ -1064,17 +1102,17 @@ public class QRDisplayActivity
     case 3: 
       try
       {
-        ThreadManager.post(new QRDisplayActivity.22(this, "temp_qrcode_share_" + this.jdField_c_of_type_JavaLangString + ".png"), 8, null, true);
+        ThreadManager.post(new QRDisplayActivity.24(this, "temp_qrcode_share_" + this.jdField_c_of_type_JavaLangString + ".png"), 8, null, true);
         if (this.jdField_c_of_type_Int != 2) {
           break;
         }
-        bcef.b(this.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_qq", 0, 0, this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int), "");
+        bdla.b(this.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_qq", 0, 0, this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int), "");
         return;
       }
       catch (OutOfMemoryError localOutOfMemoryError2)
       {
         int i1;
-        yyi.a(1, 2131695957);
+        znl.a(1, 2131696209);
       }
       i1 = -1;
     }
@@ -1082,10 +1120,10 @@ public class QRDisplayActivity
     {
       try
       {
-        if (WXShareHelper.getInstance().isWXinstalled()) {
+        if (WXShareHelper.a().a()) {
           break label474;
         }
-        i1 = 2131719722;
+        i1 = 2131720175;
         if (i1 == -1) {
           break label490;
         }
@@ -1096,14 +1134,14 @@ public class QRDisplayActivity
             break label789;
           }
           str1 = "qr_wechat";
-          bftc.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
+          bhbu.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
         }
         this.jdField_i_of_type_Int = -1;
         return;
       }
       catch (OutOfMemoryError localOutOfMemoryError1)
       {
-        yyi.a(1, 2131695957);
+        znl.a(1, 2131696209);
       }
       if (this.jdField_c_of_type_Int != 2) {
         break;
@@ -1111,46 +1149,46 @@ public class QRDisplayActivity
       if (this.jdField_i_of_type_Int == 2) {}
       for (String str2 = "qr_wechat";; str2 = "qr_circle")
       {
-        bftc.a("Grp_share", "grpData_admin", str2, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
+        bhbu.a("Grp_share", "grpData_admin", str2, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
         return;
         label474:
-        if (WXShareHelper.getInstance().isWXsupportApi()) {
+        if (WXShareHelper.a().b()) {
           break;
         }
-        i1 = 2131719723;
+        i1 = 2131720176;
         break;
         label490:
-        if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
+        if (this.jdField_a_of_type_Biyn == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new yvw(this);
-          WXShareHelper.getInstance().addObserver(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+          this.jdField_a_of_type_Biyn = new zkr(this);
+          WXShareHelper.a().a(this.jdField_a_of_type_Biyn);
         }
-        ThreadManager.post(new QRDisplayActivity.21(this), 8, null, true);
+        ThreadManager.post(new QRDisplayActivity.23(this), 8, null, true);
         return;
       }
       if (this.jdField_c_of_type_Int != 2) {
         break;
       }
-      bftc.a("Grp_share", "grpData_admin", "qr_qq", 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
+      bhbu.a("Grp_share", "grpData_admin", "qr_qq", 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
       return;
       if (this.jdField_c_of_type_Int != 5) {
         break;
       }
-      bcef.b(this.app, "CliOper", "", "", "0X8006674", "0X8006674", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X8006674", "0X8006674", 0, 0, "", "", "", "");
       return;
       g();
       if ((this.jdField_g_of_type_Int & 0x1) != 0) {
-        bcef.b(this.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
+        bdla.b(this.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
       }
       if (this.jdField_c_of_type_Int == 2)
       {
-        bcef.b(this.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_qzone", 0, 0, this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int), "");
+        bdla.b(this.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_qzone", 0, 0, this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int), "");
         return;
       }
       if (this.jdField_c_of_type_Int != 5) {
         break;
       }
-      bcef.b(this.app, "CliOper", "", "", "0X8006675", "0X8006675", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X8006675", "0X8006675", 0, 0, "", "", "", "");
       return;
       label789:
       String str3 = "qr_circle";
@@ -1177,13 +1215,13 @@ public class QRDisplayActivity
   
   private void r()
   {
-    bjnw localbjnw = (bjnw)bjon.a(this, null);
-    localbjnw.a(2131695943, 1, 7);
-    localbjnw.a(2131695949, 1, 8);
-    localbjnw.c(2131690620);
-    localbjnw.a(new yvz(this, localbjnw));
-    if (!localbjnw.isShowing()) {
-      localbjnw.show();
+    bkzi localbkzi = (bkzi)bkzz.a(this, null);
+    localbkzi.a(2131696195, 1, 7);
+    localbkzi.a(2131696201, 1, 8);
+    localbkzi.c(2131690697);
+    localbkzi.a(new zku(this, localbkzi));
+    if (!localbkzi.isShowing()) {
+      localbkzi.show();
     }
   }
   
@@ -1204,8 +1242,8 @@ public class QRDisplayActivity
     ((List)localObject2).add(ShareActionSheetBuilder.ActionSheetItem.build(26));
     ((List)localObject2).add(ShareActionSheetBuilder.ActionSheetItem.build(2));
     ((List)localObject2).add(ShareActionSheetBuilder.ActionSheetItem.build(3));
-    boolean bool1 = WXShareHelper.getInstance().isWXinstalled();
-    boolean bool2 = WXShareHelper.getInstance().isWXsupportApi();
+    boolean bool1 = WXShareHelper.a().a();
+    boolean bool2 = WXShareHelper.a().b();
     if (QLog.isColorLevel()) {
       QLog.d("QRDisplayActivity", 2, " showMyQrCodeActionSheet() isWxInstalled = " + bool1 + " isWxSupportApi =" + bool2);
     }
@@ -1218,7 +1256,7 @@ public class QRDisplayActivity
     localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(39));
     localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(1));
     ((ShareActionSheet)localObject1).setActionSheetItems((List)localObject2, localArrayList);
-    ((ShareActionSheet)localObject1).setItemClickListenerV2(new ywa(this));
+    ((ShareActionSheet)localObject1).setItemClickListenerV2(new zkv(this));
     ((ShareActionSheet)localObject1).show();
   }
   
@@ -1239,8 +1277,8 @@ public class QRDisplayActivity
     ((List)localObject2).add(ShareActionSheetBuilder.ActionSheetItem.build(26));
     ((List)localObject2).add(ShareActionSheetBuilder.ActionSheetItem.build(2));
     ((List)localObject2).add(ShareActionSheetBuilder.ActionSheetItem.build(3));
-    boolean bool1 = WXShareHelper.getInstance().isWXinstalled();
-    boolean bool2 = WXShareHelper.getInstance().isWXsupportApi();
+    boolean bool1 = WXShareHelper.a().a();
+    boolean bool2 = WXShareHelper.a().b();
     if (QLog.isColorLevel()) {
       QLog.d("QRDisplayActivity", 2, " showMyQrCodeActionSheet() isWxInstalled = " + bool1 + " isWxSupportApi =" + bool2);
     }
@@ -1252,7 +1290,7 @@ public class QRDisplayActivity
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(39));
     ((ShareActionSheet)localObject1).setActionSheetItems((List)localObject2, localArrayList);
-    ((ShareActionSheet)localObject1).setItemClickListenerV2(new ywb(this));
+    ((ShareActionSheet)localObject1).setItemClickListenerV2(new zkx(this));
     ((ShareActionSheet)localObject1).show();
   }
   
@@ -1267,7 +1305,7 @@ public class QRDisplayActivity
     }
     for (;;)
     {
-      QQToast.a(this, 2, getString(2131690006), 0).b(getTitleBarHeight());
+      QQToast.a(this, 2, getString(2131690035), 0).b(getTitleBarHeight());
       this.jdField_i_of_type_Int = -1;
       return;
       ((android.content.ClipboardManager)getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("my_qr_url", str));
@@ -1312,7 +1350,7 @@ public class QRDisplayActivity
         QLog.d("QRDisplayActivity", 2, "getPrefMatrix uin: " + paramString + " type: " + paramInt1 + " data: " + str);
       }
     } while (str == null);
-    return yyi.a(str, paramInt2);
+    return znl.a(str, paramInt2);
   }
   
   public String a()
@@ -1362,16 +1400,16 @@ public class QRDisplayActivity
     switch (paramInt)
     {
     default: 
-      str = amtj.a(2131710308);
+      str = anvx.a(2131710655);
     }
     for (;;)
     {
-      a(2130839615, str);
+      a(2130839636, str);
       finish();
       return;
-      str = amtj.a(2131710309);
+      str = anvx.a(2131710656);
       continue;
-      str = amtj.a(2131710306);
+      str = anvx.a(2131710653);
     }
   }
   
@@ -1400,7 +1438,7 @@ public class QRDisplayActivity
       i1 = paramBundle.getInt("qrsz");
       localObject = a();
       if (localObject != null) {
-        this.jdField_a_of_type_Gr = yyi.a((String)localObject, i1);
+        this.jdField_a_of_type_Gr = znl.a((String)localObject, i1);
       }
     }
     int i6 = this.jdField_a_of_type_Gr.a();
@@ -1428,7 +1466,7 @@ public class QRDisplayActivity
     if ((this.jdField_a_of_type_Long & 0x800) != 0L)
     {
       if (this.jdField_b_of_type_Int == 2) {
-        i1 = 2130843871;
+        i1 = 2130843910;
       }
     }
     else
@@ -1456,7 +1494,7 @@ public class QRDisplayActivity
       if (this.jdField_b_of_type_Int != 1) {
         break;
       }
-      i1 = 2130843871;
+      i1 = 2130843910;
       break;
       label378:
       if (this.jdField_c_of_type_Int == 2)
@@ -1464,14 +1502,14 @@ public class QRDisplayActivity
         b(paramBundle, localArrayList, localBitmap3);
         break label332;
       }
-      this.jdField_b_of_type_AndroidGraphicsBitmap = yyi.a(this, localBitmap1, this.jdField_a_of_type_AndroidGraphicsBitmap, paramBundle.getInt("nameClr"), this.jdField_a_of_type_JavaLangString, localBitmap2, localBitmap3, paramBundle.getInt("head"), paramBundle.getInt("tipsClr"), this.jdField_b_of_type_JavaLangString, localRect, localArrayList, i1);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = znl.a(this, localBitmap1, this.jdField_a_of_type_AndroidGraphicsBitmap, paramBundle.getInt("nameClr"), this.jdField_a_of_type_JavaLangString, localBitmap2, localBitmap3, paramBundle.getInt("head"), paramBundle.getInt("tipsClr"), this.jdField_b_of_type_JavaLangString, localRect, localArrayList, i1);
       break label332;
       label451:
       if (super.isResume())
       {
-        paramBundle = bfur.a(this, 230);
-        paramBundle.setMessage(2131717816);
-        paramBundle.setPositiveButton(2131694201, new yvp(this));
+        paramBundle = bhdj.a(this, 230);
+        paramBundle.setMessage(2131718199);
+        paramBundle.setPositiveButton(2131694399, new zkk(this));
         paramBundle.show();
       }
       else
@@ -1568,37 +1606,37 @@ public class QRDisplayActivity
     getTitleBarView().setBackgroundColor(0);
     ImmersiveUtils.a(true, getWindow());
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131374553).setBackgroundDrawable(null);
+    findViewById(2131374791).setBackgroundDrawable(null);
     this.jdField_d_of_type_AndroidViewView.setVisibility(8);
     this.l = findViewById(16908290);
-    this.m = findViewById(2131374585);
+    this.m = findViewById(2131374823);
     this.m.setVisibility(0);
-    this.n = this.m.findViewById(2131374529);
+    this.n = this.m.findViewById(2131374767);
     this.n.setOnClickListener(this);
-    this.n.setContentDescription(getString(2131698473));
-    this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)this.m.findViewById(2131374521));
+    this.n.setContentDescription(getString(2131698769));
+    this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)this.m.findViewById(2131374759));
     this.jdField_h_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)this.m.findViewById(2131374522));
-    this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.m.findViewById(2131374526));
+    this.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)this.m.findViewById(2131374760));
+    this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.m.findViewById(2131374764));
     this.jdField_h_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
     this.jdField_h_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)this.m.findViewById(2131374528));
-    this.jdField_j_of_type_AndroidWidgetImageView = ((ImageView)this.m.findViewById(2131374523));
-    this.jdField_k_of_type_AndroidWidgetTextView = ((TextView)this.m.findViewById(2131374525));
-    Object localObject2 = amtj.a(2131695945);
+    this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)this.m.findViewById(2131374766));
+    this.jdField_j_of_type_AndroidWidgetImageView = ((ImageView)this.m.findViewById(2131374761));
+    this.jdField_k_of_type_AndroidWidgetTextView = ((TextView)this.m.findViewById(2131374763));
+    Object localObject2 = anvx.a(2131696197);
     Object localObject3 = this.jdField_c_of_type_JavaLangString;
-    aytm.a(this.jdField_i_of_type_AndroidWidgetTextView, (String)localObject2, (String)localObject3);
-    this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)this.m.findViewById(2131374527));
-    this.jdField_i_of_type_AndroidWidgetTextView.setContentDescription(getString(2131716067));
-    localObject2 = findViewById(2131367772);
+    azyi.a(this.jdField_i_of_type_AndroidWidgetTextView, (String)localObject2, (String)localObject3);
+    this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)this.m.findViewById(2131374765));
+    this.jdField_i_of_type_AndroidWidgetTextView.setContentDescription(getString(2131716415));
+    localObject2 = findViewById(2131367909);
     ((View)localObject2).setVisibility(0);
-    this.jdField_f_of_type_AndroidViewView = findViewById(2131374567);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374566));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374568));
-    this.jdField_h_of_type_AndroidViewView = findViewById(2131374587);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374586));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374588));
-    localObject3 = (TroopManager)this.app.getManager(52);
+    this.jdField_f_of_type_AndroidViewView = findViewById(2131374805);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374804));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374806));
+    this.jdField_h_of_type_AndroidViewView = findViewById(2131374825);
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374824));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374826));
+    localObject3 = (TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER);
     if (localObject3 != null)
     {
       localObject3 = ((TroopManager)localObject3).b(this.jdField_c_of_type_JavaLangString);
@@ -1606,6 +1644,7 @@ public class QRDisplayActivity
       {
         if (((TroopInfo)localObject3).isNewTroop)
         {
+          a((TroopInfo)localObject3);
           this.jdField_f_of_type_Boolean = true;
           this.jdField_i_of_type_AndroidWidgetTextView.setVisibility(8);
           RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_i_of_type_AndroidWidgetTextView.getLayoutParams();
@@ -1616,21 +1655,21 @@ public class QRDisplayActivity
           this.n.setLayoutParams((ViewGroup.LayoutParams)localObject1);
         }
         if ((((TroopInfo)localObject3).cGroupOption != 3) || ((TroopInfo.hasPayPrivilege(((TroopInfo)localObject3).troopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(((TroopInfo)localObject3).troopPrivilegeFlag, 512)))) {
-          break label920;
+          break label927;
         }
         if (QLog.isColorLevel()) {
           QLog.d("QRDisplayActivity", 2, "initTroopQrCodeUI: not allow join mask");
         }
         this.jdField_j_of_type_AndroidWidgetImageView.setVisibility(0);
         this.jdField_k_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_k_of_type_AndroidWidgetTextView.setText(getString(2131695958));
+        this.jdField_k_of_type_AndroidWidgetTextView.setText(getString(2131696210));
         this.jdField_f_of_type_AndroidViewView.setVisibility(8);
         this.jdField_h_of_type_AndroidViewView.setVisibility(8);
       }
     }
     for (;;)
     {
-      int i1 = (getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131297983) * 3) / 8;
+      int i1 = (getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131297986) * 3) / 8;
       localObject1 = (ViewGroup.MarginLayoutParams)((View)localObject2).getLayoutParams();
       if (localObject1 != null)
       {
@@ -1638,30 +1677,30 @@ public class QRDisplayActivity
         ((ViewGroup.MarginLayoutParams)localObject1).rightMargin = i1;
         ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
       }
-      this.jdField_a_of_type_Ywj = new ywj(this, null);
+      this.jdField_a_of_type_Zlf = new zlf(this, null);
       this.jdField_f_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_f_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_Ywj);
+      this.jdField_f_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_Zlf);
       this.jdField_h_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_h_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_Ywj);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839449);
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374191));
-      this.jdField_b_of_type_JavaLangString = getString(2131716173);
-      this.leftView.setContentDescription(getString(2131697171));
-      this.jdField_a_of_type_Aqbv = aqby.a();
-      if ((this.jdField_a_of_type_Aqbv.jdField_a_of_type_JavaUtilList.size() <= 0) || (TextUtils.isEmpty(((aqbx)this.jdField_a_of_type_Aqbv.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString))) {
+      this.jdField_h_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_Zlf);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839470);
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374426));
+      this.jdField_b_of_type_JavaLangString = getString(2131716529);
+      this.leftView.setContentDescription(getString(2131697448));
+      this.jdField_a_of_type_Arey = arfb.a();
+      if ((this.jdField_a_of_type_Arey.jdField_a_of_type_JavaUtilList.size() <= 0) || (TextUtils.isEmpty(((arfa)this.jdField_a_of_type_Arey.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString))) {
         this.jdField_j_of_type_AndroidWidgetTextView.setVisibility(8);
       }
-      this.jdField_h_of_type_Int = yyi.b(this.app);
-      if ((this.jdField_h_of_type_Int >= 0) && (this.jdField_h_of_type_Int < this.jdField_a_of_type_Aqbv.jdField_a_of_type_JavaUtilList.size())) {
+      this.jdField_h_of_type_Int = znl.b(this.app);
+      if ((this.jdField_h_of_type_Int >= 0) && (this.jdField_h_of_type_Int < this.jdField_a_of_type_Arey.jdField_a_of_type_JavaUtilList.size())) {
         break;
       }
-      this.l.setBackgroundResource(2130846860);
-      localObject1 = getResources().getDrawable(2130850593);
+      this.l.setBackgroundResource(2130846957);
+      localObject1 = getResources().getDrawable(2130850724);
       ((Drawable)localObject1).setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
       this.leftView.setBackgroundDrawable((Drawable)localObject1);
       this.centerView.setTextColor(-16777216);
       return;
-      label920:
+      label927:
       if (((((TroopInfo)localObject3).dwGroupFlagExt & 0x80) != 0L) && (!((TroopInfo)localObject3).isAdmin()))
       {
         if (QLog.isColorLevel()) {
@@ -1669,12 +1708,12 @@ public class QRDisplayActivity
         }
         this.jdField_j_of_type_AndroidWidgetImageView.setVisibility(0);
         this.jdField_k_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_k_of_type_AndroidWidgetTextView.setText(getString(2131695959));
+        this.jdField_k_of_type_AndroidWidgetTextView.setText(getString(2131696211));
         this.jdField_f_of_type_AndroidViewView.setVisibility(8);
         this.jdField_h_of_type_AndroidViewView.setVisibility(8);
       }
     }
-    b((aqbx)this.jdField_a_of_type_Aqbv.jdField_a_of_type_JavaUtilList.get(this.jdField_h_of_type_Int), false);
+    b((arfa)this.jdField_a_of_type_Arey.jdField_a_of_type_JavaUtilList.get(this.jdField_h_of_type_Int), false);
   }
   
   public void c(int paramInt)
@@ -1697,20 +1736,20 @@ public class QRDisplayActivity
   
   protected void d()
   {
-    if (this.jdField_b_of_type_Bjnw == null)
+    if (this.jdField_b_of_type_Bkzi == null)
     {
-      this.jdField_b_of_type_Bjnw = ((bjnw)bjon.a(this, null));
-      this.jdField_b_of_type_Bjnw.a(2131716159, 1);
-      this.jdField_b_of_type_Bjnw.a(2131716161, 1);
-      this.jdField_b_of_type_Bjnw.a(2131716158, 1);
-      this.jdField_b_of_type_Bjnw.c(2131690620);
-      this.jdField_b_of_type_Bjnw.setOnDismissListener(new ywg(this));
-      this.jdField_b_of_type_Bjnw.a(new yvn(this));
+      this.jdField_b_of_type_Bkzi = ((bkzi)bkzz.a(this, null));
+      this.jdField_b_of_type_Bkzi.a(2131716515, 1);
+      this.jdField_b_of_type_Bkzi.a(2131716517, 1);
+      this.jdField_b_of_type_Bkzi.a(2131716514, 1);
+      this.jdField_b_of_type_Bkzi.c(2131690697);
+      this.jdField_b_of_type_Bkzi.setOnDismissListener(new zkh(this));
+      this.jdField_b_of_type_Bkzi.a(new zki(this));
     }
-    if (!this.jdField_b_of_type_Bjnw.isShowing())
+    if (!this.jdField_b_of_type_Bkzi.isShowing())
     {
       this.jdField_h_of_type_Boolean = false;
-      this.jdField_b_of_type_Bjnw.show();
+      this.jdField_b_of_type_Bkzi.show();
     }
   }
   
@@ -1740,7 +1779,7 @@ public class QRDisplayActivity
         if (paramInt2 == -1)
         {
           localObject2 = "0";
-          bftc.a("Grp_share", "grpData_admin", (String)localObject1, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), localObject2 });
+          bhbu.a("Grp_share", "grpData_admin", (String)localObject1, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), localObject2 });
         }
       }
       else
@@ -1756,12 +1795,12 @@ public class QRDisplayActivity
           if (paramInt1 != 1) {
             break label232;
           }
-          a(0, getString(2131716160));
+          a(0, getString(2131716516));
           if (QLog.isColorLevel()) {
             QLog.i("QRDisplayActivity", 2, "shareQRCode success");
           }
           if ((this.jdField_g_of_type_Int & 0x1) != 0) {
-            bcef.b(this.app, "P_CliOper", "flag1", "", "0X800416F", "0X800416F", 0, 0, "", "", "", "");
+            bdla.b(this.app, "P_CliOper", "flag1", "", "0X800416F", "0X800416F", 0, 0, "", "", "", "");
           }
         }
       }
@@ -1806,7 +1845,7 @@ public class QRDisplayActivity
     }
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    super.setContentView(2131560409);
+    super.setContentView(2131560459);
     paramBundle = super.getIntent();
     this.jdField_f_of_type_JavaLangString = paramBundle.getStringExtra("from");
     this.jdField_g_of_type_Int = paramBundle.getIntExtra("reportFlag", 0);
@@ -1819,10 +1858,10 @@ public class QRDisplayActivity
     this.jdField_a_of_type_Long = paramBundle.getLongExtra("GroupFlagExt", 0L);
     this.jdField_b_of_type_Int = ((int)paramBundle.getLongExtra("AuthGroupType", 0L));
     this.jdField_c_of_type_Boolean = paramBundle.getBooleanExtra("isQidianPrivateTroop", false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131374554));
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131374582);
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131374572);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131374589);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131374792));
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131374820);
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131374810);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131374827);
     if (this.jdField_c_of_type_Int == 1) {
       n();
     }
@@ -1830,28 +1869,28 @@ public class QRDisplayActivity
     int i1;
     for (;;)
     {
-      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131374570);
-      this.jdField_e_of_type_AndroidViewView = findViewById(2131373661);
-      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131695948));
+      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131374808);
+      this.jdField_e_of_type_AndroidViewView = findViewById(2131373878);
+      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131696200));
       if (QLog.isDevelopLevel()) {
         QLog.d("QRDisplayActivity", 4, "display qrcode, type: " + this.jdField_c_of_type_Int);
       }
       if (this.jdField_c_of_type_Int != 5) {
-        break label1200;
+        break label1204;
       }
       getIntent().getStringExtra("discussion_shorturl");
-      addObserver(this.jdField_a_of_type_Amrc);
+      addObserver(this.jdField_a_of_type_Antq);
       if (this.app != null)
       {
-        this.jdField_a_of_type_Amqx = ((amqx)this.app.getBusinessHandler(6));
-        this.app.registObserver(this.jdField_a_of_type_Ywi);
+        this.jdField_a_of_type_Antl = ((antl)this.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER));
+        this.app.registObserver(this.jdField_a_of_type_Zle);
       }
-      this.leftView.setContentDescription(getString(2131695580));
-      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131695581));
+      this.leftView.setContentDescription(getString(2131695832));
+      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131695833));
       setResult(-1, getIntent());
-      paramBundle = (amsw)this.app.getManager(51);
-      localObject2 = (amrb)this.app.getManager(53);
-      localObject1 = ((amrb)localObject2).a(this.jdField_c_of_type_JavaLangString);
+      paramBundle = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      localObject2 = (antp)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      localObject1 = ((antp)localObject2).a(this.jdField_c_of_type_JavaLangString);
       if (localObject1 != null) {
         break;
       }
@@ -1865,7 +1904,7 @@ public class QRDisplayActivity
         this.jdField_c_of_type_AndroidViewView.post(this.jdField_a_of_type_JavaLangRunnable);
       }
       if ((this.jdField_g_of_type_Int & 0x1) != 0) {
-        bcef.b(this.app, "P_CliOper", "flag1", "", "0X800416D", "0X800416D", 0, 0, "", "", "", "");
+        bdla.b(this.app, "P_CliOper", "flag1", "", "0X800416D", "0X800416D", 0, 0, "", "", "", "");
       }
       this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
       this.jdField_b_of_type_AndroidOsHandler.obtainMessage(1004, 1, 0).sendToTarget();
@@ -1877,22 +1916,22 @@ public class QRDisplayActivity
       }
       else if (this.jdField_c_of_type_Int == 5)
       {
-        findViewById(2131373660).setVisibility(0);
-        findViewById(2131367770).setVisibility(0);
-        findViewById(2131374561).setOnClickListener(this);
-        findViewById(2131374562).setOnClickListener(this);
-        this.jdField_b_of_type_JavaLangString = getString(2131716169);
+        findViewById(2131373877).setVisibility(0);
+        findViewById(2131367906).setVisibility(0);
+        findViewById(2131374799).setOnClickListener(this);
+        findViewById(2131374800).setOnClickListener(this);
+        this.jdField_b_of_type_JavaLangString = getString(2131716525);
       }
       else if (this.jdField_c_of_type_Int == 11)
       {
-        findViewById(2131373660).setVisibility(0);
-        findViewById(2131367770).setVisibility(0);
-        findViewById(2131374561).setOnClickListener(this);
-        findViewById(2131374562).setOnClickListener(this);
-        this.jdField_b_of_type_JavaLangString = getString(2131716197);
+        findViewById(2131373877).setVisibility(0);
+        findViewById(2131367906).setVisibility(0);
+        findViewById(2131374799).setOnClickListener(this);
+        findViewById(2131374800).setOnClickListener(this);
+        this.jdField_b_of_type_JavaLangString = getString(2131716554);
       }
     }
-    Object localObject2 = ((amrb)localObject2).a(this.jdField_c_of_type_JavaLangString);
+    Object localObject2 = ((antp)localObject2).a(this.jdField_c_of_type_JavaLangString);
     if (localObject2 != null)
     {
       this.jdField_f_of_type_Int = ((List)localObject2).size();
@@ -1911,7 +1950,7 @@ public class QRDisplayActivity
       for (;;)
       {
         if (!((Iterator)localObject1).hasNext()) {
-          break label1029;
+          break label1032;
         }
         localObject2 = (DiscussionMemberInfo)((Iterator)localObject1).next();
         if (this.app.getAccount().equals(((DiscussionMemberInfo)localObject2).memberUin))
@@ -1930,9 +1969,9 @@ public class QRDisplayActivity
           this.jdField_a_of_type_JavaUtilList.add(((DiscussionMemberInfo)localObject2).memberUin);
         }
       }
-      label1029:
+      label1032:
       if ((this.jdField_b_of_type_JavaUtilList.size() >= 5) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break label1299;
+        break label1311;
       }
       if (QLog.isDevelopLevel()) {
         QLog.d("QRDisplayActivity", 4, "fetch nicks from server");
@@ -1945,29 +1984,30 @@ public class QRDisplayActivity
         paramBundle[i1] = ((String)((Iterator)localObject1).next());
         i1 += 1;
       }
-      ((amqx)this.app.getBusinessHandler(6)).a(new String[] { "20002" }, paramBundle);
+      ((antl)this.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).a(new String[] { "20002" }, paramBundle);
     }
-    label1299:
+    label1311:
     for (int i2 = 0;; i2 = 1)
     {
       i1 = i2;
       if (this.jdField_b_of_type_JavaUtilList.size() <= 0) {
         break;
       }
-      Collections.sort(this.jdField_b_of_type_JavaUtilList, new ywh(this));
+      Collections.sort(this.jdField_b_of_type_JavaUtilList, new zld(this));
       this.jdField_a_of_type_JavaLangString = a(this.jdField_b_of_type_JavaUtilList);
       i1 = i2;
       break;
-      label1200:
+      label1204:
       if (this.jdField_c_of_type_Int == 2)
       {
-        this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131716171, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
-        addObserver(this.jdField_a_of_type_Binf);
+        this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131716527, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+        addObserver(this.jdField_a_of_type_Bjyh);
+        addObserver(this.jdField_a_of_type_Anrc);
         i1 = 1;
         break;
       }
       if (this.jdField_c_of_type_Int == 11) {
-        this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131716171, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+        this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131716527, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
       }
       i1 = 1;
       break;
@@ -1986,23 +2026,25 @@ public class QRDisplayActivity
     this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.a();
     if (this.jdField_c_of_type_Int == 5)
     {
-      removeObserver(this.jdField_a_of_type_Amrc);
-      this.app.unRegistObserver(this.jdField_a_of_type_Ywi);
+      removeObserver(this.jdField_a_of_type_Antq);
+      this.app.unRegistObserver(this.jdField_a_of_type_Zle);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null)
+      if (this.jdField_a_of_type_Biyn != null)
       {
-        WXShareHelper.getInstance().removeObserver(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-        this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = null;
+        WXShareHelper.a().b(this.jdField_a_of_type_Biyn);
+        this.jdField_a_of_type_Biyn = null;
       }
-      if (this.jdField_a_of_type_Aqxj != null) {
-        this.jdField_a_of_type_Aqxj.b(this);
+      if (this.jdField_a_of_type_Asbt != null) {
+        this.jdField_a_of_type_Asbt.b(this);
       }
       super.doOnDestroy();
       return;
-      if (this.jdField_c_of_type_Int == 2) {
-        removeObserver(this.jdField_a_of_type_Binf);
+      if (this.jdField_c_of_type_Int == 2)
+      {
+        removeObserver(this.jdField_a_of_type_Bjyh);
+        removeObserver(this.jdField_a_of_type_Anrc);
       }
     }
   }
@@ -2034,7 +2076,7 @@ public class QRDisplayActivity
     {
       if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
       {
-        requestPermissions(new yvo(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+        requestPermissions(new zkj(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
         return;
       }
       f();
@@ -2045,7 +2087,7 @@ public class QRDisplayActivity
   
   public void f()
   {
-    ThreadManager.executeOnFileThread(new QRDisplayActivity.12(this));
+    ThreadManager.executeOnFileThread(new QRDisplayActivity.14(this));
     String str = null;
     if (this.jdField_c_of_type_Int == 1) {
       str = "saveConsumerQRcard";
@@ -2068,7 +2110,7 @@ public class QRDisplayActivity
   
   public void g()
   {
-    ThreadManager.executeOnFileThread(new QRDisplayActivity.13(this));
+    ThreadManager.executeOnFileThread(new QRDisplayActivity.15(this));
     String str = null;
     if (this.jdField_c_of_type_Int == 1) {
       str = "shareConsumerQRcard";
@@ -2149,14 +2191,14 @@ public class QRDisplayActivity
           }
           if (!bool1)
           {
-            if (this.jdField_a_of_type_Aqxj == null) {
-              this.jdField_a_of_type_Aqxj = ((aqxj)((aqxc)this.app.getManager(77)).a("qq.android.system.chirp"));
+            if (this.jdField_a_of_type_Asbt == null) {
+              this.jdField_a_of_type_Asbt = ((asbt)((asbm)this.app.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER)).a("qq.android.system.chirp"));
             }
-            if (this.jdField_a_of_type_Aqxj == null) {
-              break label698;
+            if (this.jdField_a_of_type_Asbt == null) {
+              break label699;
             }
-            this.jdField_a_of_type_Aqxj.a(this);
-            this.jdField_a_of_type_Aqxj.a(true);
+            this.jdField_a_of_type_Asbt.a(this);
+            this.jdField_a_of_type_Asbt.a(true);
             bool1 = false;
           }
         }
@@ -2165,13 +2207,13 @@ public class QRDisplayActivity
     }
     for (;;)
     {
-      BaseApplicationImpl.sUiHandler.post(new QRDisplayActivity.24(this, bool1));
+      BaseApplicationImpl.sUiHandler.post(new QRDisplayActivity.26(this, bool1));
       break;
       boolean bool2 = true;
       bool1 = bool2;
       if (!this.jdField_k_of_type_Boolean)
       {
-        BaseApplicationImpl.sUiHandler.post(new QRDisplayActivity.23(this));
+        BaseApplicationImpl.sUiHandler.post(new QRDisplayActivity.25(this));
         this.jdField_k_of_type_Boolean = true;
         bool1 = bool2;
         continue;
@@ -2188,10 +2230,10 @@ public class QRDisplayActivity
         }
         if (!localFile.exists()) {
           if (a(str)) {
-            break label537;
+            break label538;
           }
         }
-        label537:
+        label538:
         for (bool1 = true;; bool1 = false)
         {
           this.jdField_j_of_type_Boolean = bool1;
@@ -2199,21 +2241,21 @@ public class QRDisplayActivity
             QLog.d("QRDisplayActivity", 2, "playQRCodeFailed = " + this.jdField_j_of_type_Boolean);
           }
           if (this.jdField_j_of_type_Boolean) {
-            break label542;
+            break label543;
           }
           if (this.jdField_a_of_type_ComTencentChirpPcmPlayer == null)
           {
             this.jdField_a_of_type_ComTencentChirpPcmPlayer = new PcmPlayer(this, this, 44100, str);
             this.jdField_a_of_type_ComTencentChirpPcmPlayer.a();
-            bftt.a(this, true);
+            bhcl.a(this, true);
           }
           if (paramMessage.arg1 != 5) {
             break;
           }
-          bcef.b(this.app, "CliOper", "", "", "0X8007099", "0X8007099", 0, 0, "", "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "0X8007099", "0X8007099", 0, 0, "", "", "", "");
           break;
         }
-        label542:
+        label543:
         this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(1003);
         break;
         if (this.jdField_a_of_type_ComTencentChirpPcmPlayer == null) {
@@ -2222,12 +2264,12 @@ public class QRDisplayActivity
         this.jdField_a_of_type_ComTencentChirpPcmPlayer.b();
         this.jdField_a_of_type_ComTencentChirpPcmPlayer = null;
         if (paramMessage.arg1 == 5) {
-          bcef.b(this.app, "CliOper", "", "", "0X8007099", "0X8007099", 1, 0, "", "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "0X8007099", "0X8007099", 1, 0, "", "", "", "");
         }
         if (paramMessage.arg1 == 3) {
-          bcef.b(this.app, "CliOper", "", "", "0X8007099", "0X8007099", 1, 0, "", "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "0X8007099", "0X8007099", 1, 0, "", "", "", "");
         }
-        bftt.a(this, false);
+        bhcl.a(this, false);
         break;
         if (this.jdField_a_of_type_ComTencentChirpPcmPlayer == null) {
           break;
@@ -2236,7 +2278,7 @@ public class QRDisplayActivity
         break;
         QQAppInterface.speak(jdField_j_of_type_JavaLangString);
         break;
-        label698:
+        label699:
         bool1 = false;
       }
     }
@@ -2247,9 +2289,9 @@ public class QRDisplayActivity
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_d_of_type_JavaLangRunnable);
     if (super.isResume())
     {
-      QQCustomDialog localQQCustomDialog = bfur.a(this, 230);
-      localQQCustomDialog.setMessage(2131717814);
-      localQQCustomDialog.setPositiveButton(2131694201, new yvq(this));
+      QQCustomDialog localQQCustomDialog = bhdj.a(this, 230);
+      localQQCustomDialog.setMessage(2131718197);
+      localQQCustomDialog.setPositiveButton(2131694399, new zkl(this));
       localQQCustomDialog.show();
       return;
     }
@@ -2260,14 +2302,14 @@ public class QRDisplayActivity
   {
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
     {
-      yvs localyvs = new yvs(this);
-      yvt localyvt = new yvt(this);
+      zkn localzkn = new zkn(this);
+      zkp localzkp = new zkp(this);
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(this);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(getString(2131718400));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(getString(2131718786));
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setOnDismissListener(localyvt);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setCancelListener(new yvu(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(localyvs);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setOnDismissListener(localzkp);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setCancelListener(new zkq(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(localzkn);
     }
     try
     {
@@ -2288,13 +2330,13 @@ public class QRDisplayActivity
   public void k()
   {
     if (this.jdField_c_of_type_Int == 1) {
-      bcef.b(this.app, "CliOper", "", "", "0X800AEAF", "0X800AEAF", 0, 0, "", "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X800AEAF", "0X800AEAF", 0, 0, "", "", "", "");
     }
-    bcef.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "scan_QR_code", "code_click", 0, 0, "", "", "", "");
+    bdla.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "scan_QR_code", "code_click", 0, 0, "", "", "", "");
     if ("ScannerActivity".equals(this.jdField_f_of_type_JavaLangString))
     {
       if (isInMultiWindow()) {
-        QQToast.a(this, amtj.a(2131710305), 0).a();
+        QQToast.a(this, anvx.a(2131710652), 0).a();
       }
       setResult(-1);
       finish();
@@ -2302,7 +2344,7 @@ public class QRDisplayActivity
     }
     if (isInMultiWindow())
     {
-      QQToast.a(this, amtj.a(2131710307), 0).a();
+      QQToast.a(this, anvx.a(2131710654), 0).a();
       return;
     }
     Intent localIntent = new Intent(this, ScannerActivity.class);
@@ -2330,7 +2372,7 @@ public class QRDisplayActivity
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       this.jdField_c_of_type_Long = l1;
-      if (paramView.getId() == 2131374572)
+      if (paramView.getId() == 2131374810)
       {
         if (this.jdField_a_of_type_Boolean) {
           continue;
@@ -2341,89 +2383,89 @@ public class QRDisplayActivity
           if ((this.jdField_g_of_type_Int & 0x1) == 0) {
             continue;
           }
-          bcef.b(this.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
+          bdla.b(this.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
           continue;
         }
         if ((this.jdField_c_of_type_Int == 5) || (this.jdField_c_of_type_Int == 11))
         {
           h();
-          bcef.b(this.app, "CliOper", "", "", "0X8006671", "0X8006671", 0, 0, "", "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "0X8006671", "0X8006671", 0, 0, "", "", "", "");
           continue;
         }
         d();
         continue;
       }
-      if (paramView.getId() == 2131374556) {
-        if (this.jdField_a_of_type_Bjnw == null) {
-          this.jdField_a_of_type_Bjnw = new aisw(this).a(this);
+      if (paramView.getId() == 2131374794) {
+        if (this.jdField_a_of_type_Bkzi == null) {
+          this.jdField_a_of_type_Bkzi = new ajol(this).a(this);
         }
       }
       try
       {
-        this.jdField_a_of_type_Bjnw.show();
+        this.jdField_a_of_type_Bkzi.show();
         label217:
-        bcef.b(this.app, "CliOper", "", "", "0X80040F6", "0X80040F6", 0, 0, "", "", "", "");
+        bdla.b(this.app, "CliOper", "", "", "0X80040F6", "0X80040F6", 0, 0, "", "", "", "");
         continue;
-        if (paramView.getId() == 2131374561)
+        if (paramView.getId() == 2131374799)
         {
           if (this.jdField_a_of_type_Boolean) {
             continue;
           }
           e();
           if ((this.jdField_g_of_type_Int & 0x1) != 0) {
-            bcef.b(this.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
+            bdla.b(this.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
           }
           if (this.jdField_c_of_type_Int == 5) {
-            bcef.b(this.app, "CliOper", "", "", "0X8006672", "0X8006672", 0, 0, "", "", "", "");
+            bdla.b(this.app, "CliOper", "", "", "0X8006672", "0X8006672", 0, 0, "", "", "", "");
           }
           if (this.jdField_c_of_type_Int != 2) {
             continue;
           }
-          new bcek(this.app).a("P_CliOper").b("Grp_set").c("Grp_data").d("qr_save").a(new String[] { this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int) }).a();
+          new bdlf(this.app).a("P_CliOper").b("Grp_set").c("Grp_data").d("qr_save").a(new String[] { this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int) }).a();
           continue;
         }
-        if (paramView.getId() == 2131374562)
+        if (paramView.getId() == 2131374800)
         {
           j();
           if (this.jdField_c_of_type_Int != 5) {
             continue;
           }
-          bcef.b(this.app, "CliOper", "", "", "0X8006673", "0X8006673", 0, 0, "", "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "0X8006673", "0X8006673", 0, 0, "", "", "", "");
           continue;
         }
-        if ((paramView.getId() == 2131374578) || (paramView.getId() == 2131374580))
+        if ((paramView.getId() == 2131374816) || (paramView.getId() == 2131374818))
         {
           k();
           continue;
         }
-        if (paramView.getId() == 2131374564)
+        if (paramView.getId() == 2131374802)
         {
-          bcef.b(this.app, "CliOper", "", "", "0X800AEAD", "0X800AEAD", 0, 0, "", "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "0X800AEAD", "0X800AEAD", 0, 0, "", "", "", "");
           s();
           continue;
         }
-        if (paramView.getId() == 2131374567)
+        if (paramView.getId() == 2131374805)
         {
           t();
           continue;
         }
-        if (paramView.getId() == 2131374587)
+        if (paramView.getId() == 2131374825)
         {
           e();
           continue;
         }
-        if (paramView.getId() == 2131374579)
+        if (paramView.getId() == 2131374817)
         {
           k();
           continue;
         }
-        if (paramView.getId() == 2131369082)
+        if (paramView.getId() == 2131369245)
         {
-          bcef.b(this.app, "CliOper", "", "", "0X800AEB5", "0X800AEB5", 0, 0, "", "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "0X800AEB5", "0X800AEB5", 0, 0, "", "", "", "");
           r();
           continue;
         }
-        if (paramView.getId() == 2131374530)
+        if (paramView.getId() == 2131374768)
         {
           if (QLog.isColorLevel()) {
             QLog.d("QRDisplayActivity", 2, "onClick qr_code_white_bg isLoading =" + this.jdField_a_of_type_Boolean);
@@ -2431,11 +2473,11 @@ public class QRDisplayActivity
           if (this.jdField_a_of_type_Boolean) {
             continue;
           }
-          bcef.b(this.app, "CliOper", "", "", "0X800AEB4", "0X800AEB4", 0, 0, "", "", "", "");
-          a(yyi.a(this.app, this.jdField_a_of_type_Aqbv, this.jdField_h_of_type_Int), true);
+          bdla.b(this.app, "CliOper", "", "", "0X800AEB4", "0X800AEB4", 0, 0, "", "", "", "");
+          a(znl.a(this.app, this.jdField_a_of_type_Arey, this.jdField_h_of_type_Int), true);
           continue;
         }
-        if (paramView.getId() != 2131374529) {
+        if (paramView.getId() != 2131374767) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -2444,7 +2486,7 @@ public class QRDisplayActivity
         if (this.jdField_a_of_type_Boolean) {
           continue;
         }
-        b(yyi.a(this.app, this.jdField_a_of_type_Aqbv, this.jdField_h_of_type_Int), true);
+        b(znl.a(this.app, this.jdField_a_of_type_Arey, this.jdField_h_of_type_Int), true);
       }
       catch (Exception localException)
       {
@@ -2467,29 +2509,29 @@ public class QRDisplayActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bjnw.dismiss();
+      this.jdField_a_of_type_Bkzi.dismiss();
       EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
       return;
       int i1 = -1;
-      if (!WXShareHelper.getInstance().isWXinstalled()) {
-        i1 = 2131719722;
+      if (!WXShareHelper.a().a()) {
+        i1 = 2131720175;
       }
       for (;;)
       {
         if (i1 == -1) {
           break label104;
         }
-        yyi.a(1, i1);
+        znl.a(1, i1);
         break;
-        if (!WXShareHelper.getInstance().isWXsupportApi()) {
-          i1 = 2131719723;
+        if (!WXShareHelper.a().b()) {
+          i1 = 2131720176;
         }
       }
       label104:
-      if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
+      if (this.jdField_a_of_type_Biyn == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new yvr(this);
-        WXShareHelper.getInstance().addObserver(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+        this.jdField_a_of_type_Biyn = new zkm(this);
+        WXShareHelper.a().a(this.jdField_a_of_type_Biyn);
       }
       Object localObject = this.app;
       String str1;
@@ -2500,13 +2542,13 @@ public class QRDisplayActivity
       if (paramInt == 2)
       {
         str1 = "1";
-        bcef.b((QQAppInterface)localObject, "CliOper", "", "", "discuss", "share_discuss_to", 0, 0, str1, "", "", "");
+        bdla.b((QQAppInterface)localObject, "CliOper", "", "", "discuss", "share_discuss_to", 0, 0, str1, "", "", "");
         this.jdField_g_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
-        str1 = String.format(getString(2131691646), new Object[] { this.jdField_a_of_type_JavaLangString });
+        str1 = String.format(getString(2131691731), new Object[] { this.jdField_a_of_type_JavaLangString });
         if (this.jdField_c_of_type_Int == 11) {
-          str1 = getString(2131692900);
+          str1 = getString(2131693006);
         }
-        localObject = WXShareHelper.getInstance();
+        localObject = WXShareHelper.a();
         str2 = this.jdField_g_of_type_JavaLangString;
         localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
         str3 = this.jdField_d_of_type_JavaLangString;
@@ -2517,18 +2559,18 @@ public class QRDisplayActivity
       label293:
       for (i1 = 0;; i1 = 1)
       {
-        ((WXShareHelper)localObject).shareWebPage(str2, str1, localBitmap, "", str3, i1);
+        ((WXShareHelper)localObject).b(str2, str1, localBitmap, "", str3, i1);
         break;
         str1 = "0";
         break label149;
       }
-      if (this.jdField_a_of_type_Bhht == null)
+      if (this.jdField_a_of_type_Bisl == null)
       {
-        this.jdField_a_of_type_Bhht = new bhht(this, getTitleBarHeight());
-        this.jdField_a_of_type_Bhht.c(2131694279);
-        this.jdField_a_of_type_Bhht.c(false);
+        this.jdField_a_of_type_Bisl = new bisl(this, getTitleBarHeight());
+        this.jdField_a_of_type_Bisl.c(2131694477);
+        this.jdField_a_of_type_Bisl.c(false);
       }
-      DiscussionInfoCardActivity.a(this.app, this, 2, this.jdField_e_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_f_of_type_Int, this.jdField_a_of_type_Bhht);
+      DiscussionInfoCardActivity.a(this.app, this, 2, this.jdField_e_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_f_of_type_Int, this.jdField_a_of_type_Bisl);
       continue;
       DiscussionInfoCardActivity.a(this.app, this, this.jdField_d_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
       continue;

@@ -1,21 +1,28 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-class airo
-  extends amsu
+public class airo
+  implements AbsListView.OnScrollListener
 {
-  airo(airj paramairj) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  public airo(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
+    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Airt.getCount();
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.c) || (this.b <= 0)) {}
+    while ((paramInt != 0) || (this.b > this.jdField_a_of_type_Int)) {
+      return;
     }
-    if (paramBoolean)
-    {
-      airj.a(this.a, true);
-      airj.a(this.a);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a(21);
   }
 }
 

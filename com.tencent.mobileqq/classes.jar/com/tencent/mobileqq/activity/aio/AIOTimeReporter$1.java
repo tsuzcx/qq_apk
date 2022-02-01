@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acjp;
-import aewv;
-import aeww;
+import aczy;
+import afog;
+import afoh;
 import android.os.Build;
-import bfzg;
+import bhhy;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -13,30 +13,30 @@ import java.util.HashMap;
 public class AIOTimeReporter$1
   implements Runnable
 {
-  public AIOTimeReporter$1(aeww paramaeww) {}
+  public AIOTimeReporter$1(afoh paramafoh) {}
   
   public void run()
   {
-    Object localObject = aewv.a();
-    aeww.a(this.this$0, ((aewv)localObject).a());
-    if (bfzg.a <= 0L)
+    Object localObject = afog.a();
+    afoh.a(this.this$0, ((afog)localObject).a());
+    if (bhhy.a <= 0L)
     {
-      aeww.a(this.this$0);
+      afoh.a(this.this$0);
       return;
     }
     String str = "";
-    switch (aeww.a(this.this$0))
+    switch (afoh.a(this.this$0))
     {
     default: 
       return;
     case 1: 
-      switch (((aewv)localObject).a)
+      switch (((afog)localObject).a)
       {
       default: 
-        if (acjp.a().a())
+        if (aczy.a().a())
         {
           localObject = new HashMap();
-          ((HashMap)localObject).put("hcState", String.valueOf(acjp.a().a()));
+          ((HashMap)localObject).put("hcState", String.valueOf(aczy.a().a()));
           ((HashMap)localObject).put("model", Build.MODEL);
         }
         break;
@@ -45,65 +45,65 @@ public class AIOTimeReporter$1
     }
     for (;;)
     {
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, true, bfzg.a, 0L, (HashMap)localObject, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, true, bhhy.a, 0L, (HashMap)localObject, "");
       if (QLog.isDevelopLevel()) {
-        QLog.d("Q.aio.AIOTimeReporter", 4, "reportAIOTime: " + str + " cost : " + bfzg.a);
+        QLog.d("Q.aio.AIOTimeReporter", 4, "reportAIOTime: " + str + " cost : " + bhhy.a);
       }
-      aeww.a(this.this$0);
+      afoh.a(this.this$0);
       return;
-      if (!aeww.a(this.this$0).equalsIgnoreCase("0"))
+      if (!afoh.a(this.this$0).equalsIgnoreCase("0"))
       {
-        str = aeww.a();
+        str = afoh.a();
         break;
       }
-      str = aeww.b();
+      str = afoh.b();
       break;
-      if (!aeww.a(this.this$0).equalsIgnoreCase("0"))
+      if (!afoh.a(this.this$0).equalsIgnoreCase("0"))
       {
-        str = aeww.c();
+        str = afoh.c();
         break;
       }
-      str = aeww.d();
+      str = afoh.d();
       break;
-      switch (((aewv)localObject).a)
+      switch (((afog)localObject).a)
       {
       }
       for (;;)
       {
         break;
-        if (!aeww.a(this.this$0).equalsIgnoreCase("0"))
+        if (!afoh.a(this.this$0).equalsIgnoreCase("0"))
         {
-          str = aeww.e();
+          str = afoh.e();
         }
         else
         {
-          str = aeww.f();
+          str = afoh.f();
           continue;
-          if (!aeww.a(this.this$0).equalsIgnoreCase("0")) {
-            str = aeww.g();
+          if (!afoh.a(this.this$0).equalsIgnoreCase("0")) {
+            str = afoh.g();
           } else {
-            str = aeww.h();
+            str = afoh.h();
           }
         }
       }
-      switch (((aewv)localObject).a)
+      switch (((afog)localObject).a)
       {
       }
       for (;;)
       {
         break;
-        if (!aeww.a(this.this$0).equalsIgnoreCase("0"))
+        if (!afoh.a(this.this$0).equalsIgnoreCase("0"))
         {
-          str = aeww.i();
+          str = afoh.i();
         }
         else
         {
-          str = aeww.j();
+          str = afoh.j();
           continue;
-          if (!aeww.a(this.this$0).equalsIgnoreCase("0")) {
-            str = aeww.k();
+          if (!afoh.a(this.this$0).equalsIgnoreCase("0")) {
+            str = afoh.k();
           } else {
-            str = aeww.l();
+            str = afoh.l();
           }
         }
       }
@@ -113,7 +113,7 @@ public class AIOTimeReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOTimeReporter.1
  * JD-Core Version:    0.7.0.1
  */

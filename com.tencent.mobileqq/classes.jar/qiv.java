@@ -1,142 +1,123 @@
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.ImageView.ScaleType;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.ImageCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.ImageBase;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.articlesummary.articlesummary.ArticleSummary;
+import tencent.im.oidb.cmd0xbbd.oidb_cmd0xbbd.ReqBody;
+import tencent.im.oidb.cmd0xbbd.oidb_cmd0xbbd.ReqFeedsInfo;
+import tencent.im.oidb.cmd0xbbd.oidb_cmd0xbbd.ReqPara;
+import tencent.im.oidb.cmd0xbbd.oidb_cmd0xbbd.RspBody;
+import tencent.im.oidb.cmd0xbbd.oidb_cmd0xbbd.RspFeedsData;
+import tencent.im.oidb.cmd0xbbd.oidb_cmd0xbbd.RspFeedsInfo;
 
 public class qiv
-  extends ImageBase
+  extends qii
 {
-  private Drawable a;
-  protected NativeReadInjoyImageView a;
-  
-  public qiv(VafContext paramVafContext)
+  public qiv(qep paramqep, Handler paramHandler, AppInterface paramAppInterface, EntityManager paramEntityManager, qxn paramqxn, ExecutorService paramExecutorService)
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = new NativeReadInjoyImageView(paramVafContext.getContext());
+    super(paramqep, paramHandler, paramAppInterface, paramEntityManager, paramqxn, paramExecutorService);
   }
   
-  private boolean a()
+  private void a(ArrayList<ArticleInfo> paramArrayList, rpb paramrpb)
   {
-    if (this.mSrc == null) {}
-    int i;
-    int j;
-    do
+    paramrpb = paramrpb.a;
+    paramArrayList = paramArrayList.iterator();
+    for (;;)
     {
-      return false;
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredWidth();
-      j = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredHeight();
-    } while ((i <= 0) || (j <= 0));
-    this.mSrc = pay.a(this.mSrc, i, j);
-    return true;
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
-  }
-  
-  public void loadImage(String paramString)
-  {
-    QLog.d("ReadInjoyImageView", 2, "loadImage: path is " + paramString);
-    if ((paramString != null) && (!paramString.equals("-1")))
-    {
-      if ((!paramString.startsWith("http")) && (!paramString.startsWith("pubaccount"))) {
-        break label84;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImagePlaceHolder(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      if (a()) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageSrc(paramString);
-      }
-    }
-    return;
-    label84:
-    paramString = ImageCommon.getDrawableResourceId(paramString);
-    if (paramString != null)
-    {
-      QLog.d("ReadInjoyImageView", 2, "loadImage: cant find in offline dir, try to load from resources");
-      try
-      {
-        paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getResources().getDrawable(paramString.intValue());
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(paramString);
+      if (!paramArrayList.hasNext()) {
         return;
       }
-      catch (Resources.NotFoundException paramString)
+      ArticleInfo localArticleInfo = (ArticleInfo)paramArrayList.next();
+      Iterator localIterator = paramrpb.iterator();
+      if (localIterator.hasNext())
       {
-        QLog.d("ReadInjoyImageView", 2, "loadImage: cant find in resources dir, do nothing");
-        return;
+        rpc localrpc = (rpc)localIterator.next();
+        if (localArticleInfo.mFeedId != localrpc.jdField_a_of_type_Long) {
+          break;
+        }
+        localArticleInfo.mRecommendSeq = localrpc.c;
+        localArticleInfo.mFeedType = localrpc.jdField_a_of_type_Int;
+        localArticleInfo.mAlgorithmID = localrpc.jdField_b_of_type_Long;
+        localArticleInfo.mStrategyId = localrpc.jdField_b_of_type_Int;
       }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageSrc("");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImagePlaceHolder(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
-  public void onComDraw(Canvas paramCanvas)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((this.mSrc != null) && (!this.mSrc.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.a())))
+    Object localObject1 = new oidb_cmd0xbbd.RspBody();
+    int i = qxp.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject1);
+    if (i == 0)
     {
-      a();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageSrc(this.mSrc);
+      if (((oidb_cmd0xbbd.RspBody)localObject1).msg_rsp_feeds_data.rpt_feeds_info_list.has())
+      {
+        paramObject = ((oidb_cmd0xbbd.RspBody)localObject1).msg_rsp_feeds_data.rpt_feeds_info_list.get();
+        paramFromServiceMsg = new ArrayList();
+        paramObject = paramObject.iterator();
+        while (paramObject.hasNext())
+        {
+          localObject1 = (oidb_cmd0xbbd.RspFeedsInfo)paramObject.next();
+          if ((((oidb_cmd0xbbd.RspFeedsInfo)localObject1).msg_article_summary.has()) && (((oidb_cmd0xbbd.RspFeedsInfo)localObject1).uint32_feeds_type.has()))
+          {
+            localObject2 = qxm.a((articlesummary.ArticleSummary)((oidb_cmd0xbbd.RspFeedsInfo)localObject1).msg_article_summary.get(), 70, 0, null);
+            if ((localObject2 != null) && (((ArticleInfo)localObject2).mArticleID != -1L))
+            {
+              ((ArticleInfo)localObject2).mFeedType = ((oidb_cmd0xbbd.RspFeedsInfo)localObject1).uint32_feeds_type.get();
+              paramFromServiceMsg.add(localObject2);
+            }
+          }
+        }
+        paramObject = (ArticleInfo)paramToServiceMsg.getAttribute("ArticleInfo");
+        a(paramFromServiceMsg, paramObject.mExtraBiuBriefInfo);
+        localObject1 = (Integer)paramToServiceMsg.getAttribute("channelID");
+        Object localObject2 = (Long)paramToServiceMsg.getAttribute(qhj.d);
+        paramObject.isExtraBiuExpanded = true;
+        this.a.a().a((Integer)localObject1, paramObject, true);
+        this.a.a(true, ((Integer)localObject1).intValue(), false, paramFromServiceMsg, ((Long)localObject2).longValue(), -1L, null, null, paramToServiceMsg);
+      }
+      return;
     }
-    super.onComDraw(paramCanvas);
+    QLog.e("RIJGetMoreBiuHandler", 1, "handle0xbbdGetMoreBiuList result ==" + i);
   }
   
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(rpb paramrpb, ArticleInfo paramArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(this.mScaleType, ImageView.ScaleType.CENTER_CROP));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setCorner(this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
-    loadImage(this.mSrc);
-    refresh();
-  }
-  
-  public void reset()
-  {
-    super.reset();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageSrc(null);
-    this.mSrc = null;
-  }
-  
-  public void setBitmap(Bitmap paramBitmap, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageBitmap(paramBitmap);
-  }
-  
-  public void setImageDrawable(Drawable paramDrawable, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(paramDrawable);
+    Object localObject = new oidb_cmd0xbbd.ReqBody();
+    long l = Long.valueOf(pkh.a()).longValue();
+    ((oidb_cmd0xbbd.ReqBody)localObject).uint64_uin.set(l);
+    ((oidb_cmd0xbbd.ReqBody)localObject).uint32_network_type.set(qer.a());
+    oidb_cmd0xbbd.ReqPara localReqPara = new oidb_cmd0xbbd.ReqPara();
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramrpb.a.iterator();
+    while (localIterator.hasNext())
+    {
+      rpc localrpc = (rpc)localIterator.next();
+      oidb_cmd0xbbd.ReqFeedsInfo localReqFeedsInfo = new oidb_cmd0xbbd.ReqFeedsInfo();
+      localReqFeedsInfo.uint64_feeds_id.set(localrpc.jdField_a_of_type_Long);
+      localReqFeedsInfo.uint32_feeds_type.set(localrpc.jdField_a_of_type_Int);
+      localArrayList.add(localReqFeedsInfo);
+    }
+    localReqPara.rpt_req_feeds_info.set(localArrayList);
+    ((oidb_cmd0xbbd.ReqBody)localObject).msg_req_para.set(localReqPara);
+    localObject = qxp.a("OidbSvc.0xbbd", 3005, 0, ((oidb_cmd0xbbd.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).getAttributes().put(qhj.c, Integer.valueOf(15));
+    ((ToServiceMsg)localObject).getAttributes().put("channelID", Integer.valueOf(70));
+    ((ToServiceMsg)localObject).getAttributes().put(qhj.d, Long.valueOf(((rpc)paramrpb.a.get(0)).c));
+    ((ToServiceMsg)localObject).getAttributes().put(qhj.e, Integer.valueOf(-1));
+    ((ToServiceMsg)localObject).getAttributes().put("ArticleInfo", paramArticleInfo);
+    this.a.a((ToServiceMsg)localObject);
   }
 }
 

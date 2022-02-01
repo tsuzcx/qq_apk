@@ -1,26 +1,62 @@
-import android.annotation.SuppressLint;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeProvider;
-import com.tencent.biz.qrcode.CustomAccessibilityDelegate.1;
+import android.graphics.drawable.Drawable;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-@SuppressLint({"NewApi"})
 public class yuv
-  extends View.AccessibilityDelegate
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CustomAccessibilityDelegate.1(this);
-  private yuw jdField_a_of_type_Yuw;
+  public Drawable a;
+  public String a;
+  public yuw a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public yuv(View paramView, yuw paramyuw)
+  public yuv()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Yuw = paramyuw;
+    this.jdField_a_of_type_Yuw = new yuw();
   }
   
-  public AccessibilityNodeProvider getAccessibilityNodeProvider(View paramView)
+  public boolean a()
   {
-    return new yux(this);
+    if (this.jdField_a_of_type_Yuw == null) {
+      this.jdField_a_of_type_Yuw = new yuw();
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.e);
+      int i = localJSONObject.getInt("align");
+      Object localObject = localJSONObject.getJSONArray("picture_margin");
+      int j = ((JSONArray)localObject).getInt(0);
+      int k = ((JSONArray)localObject).getInt(1);
+      int m = ((JSONArray)localObject).getInt(2);
+      int n = ((JSONArray)localObject).getInt(3);
+      localObject = localJSONObject.getString("text_color");
+      int i1 = localJSONObject.getInt("text_size");
+      int i2 = localJSONObject.getInt("picture_width");
+      int i3 = localJSONObject.getInt("picture_height");
+      int i4 = localJSONObject.getInt("standard_width");
+      int i5 = localJSONObject.getInt("standard_height");
+      this.jdField_a_of_type_Yuw.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_Yuw.jdField_a_of_type_ArrayOfInt = new int[] { j, k, m, n };
+      this.jdField_a_of_type_Yuw.jdField_a_of_type_JavaLangString = ((String)localObject);
+      this.jdField_a_of_type_Yuw.b = i1;
+      this.jdField_a_of_type_Yuw.c = i2;
+      this.jdField_a_of_type_Yuw.d = i3;
+      this.jdField_a_of_type_Yuw.e = i4;
+      this.jdField_a_of_type_Yuw.f = i5;
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Item{thumbUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", desc='" + this.c + '\'' + ", imageUrl='" + this.d + '\'' + ", imageDrawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", layoutJson='" + this.e + '\'' + ", params=" + this.jdField_a_of_type_Yuw + '}';
   }
 }
 

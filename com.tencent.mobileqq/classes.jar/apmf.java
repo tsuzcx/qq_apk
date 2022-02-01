@@ -1,8 +1,15 @@
-import android.view.View;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public abstract interface apmf
+class apmf
+  implements INetEngine.INetEngineListener
 {
-  public abstract void a(View paramView);
+  apmf(apmd paramapmd) {}
+  
+  public void onResp(NetResp paramNetResp) {}
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

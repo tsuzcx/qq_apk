@@ -1,122 +1,87 @@
+import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ConversationInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.message.TinyInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.utils.FileUtils;
 
-public class atyh
+public abstract class atyh
+  extends atyn
 {
-  public static atyh a()
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public atyh(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    return atyj.a;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private boolean a(ConversationInfo paramConversationInfo)
+  protected abstract int a();
+  
+  protected abstract long a();
+  
+  public SessionInfo a()
   {
-    if (TextUtils.isEmpty(paramConversationInfo.extString))
-    {
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "isValid() called, info is invalid!" + paramConversationInfo);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  public ChatMessage a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+  }
+  
+  protected abstract String a();
+  
+  public void a(SessionInfo paramSessionInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+  }
+  
+  public void a(ChatMessage paramChatMessage)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected abstract String b();
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    String str = a();
+    long l = a();
+    if (FileUtils.fileExistsAndNotEmpty(b())) {
       return false;
     }
-    if ((paramConversationInfo.tinyInfo == null) || (TextUtils.isEmpty(paramConversationInfo.tinyInfo.fromRoleId)) || (TextUtils.isEmpty(paramConversationInfo.tinyInfo.toRoleId)))
-    {
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "isValid() called, info is invalid!" + paramConversationInfo);
+    int i = a();
+    if ((i == 2) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1) && (i == 8))) {
       return false;
     }
-    return true;
-  }
-  
-  @Nullable
-  public ConversationInfo a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (paramQQAppInterface == null)
-    {
-      paramQQAppInterface = null;
-      return paramQQAppInterface;
+    if (auea.a(str) != 2) {
+      return false;
     }
-    ConversationInfo localConversationInfo = paramQQAppInterface.getConversationFacade().a(paramString, paramInt);
-    if (localConversationInfo != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.getMessageProxy(10007).a(paramString, paramInt);
-      if (paramQQAppInterface == null) {
-        break label116;
-      }
-      paramString = paramQQAppInterface.getExtInfoFromExtStr("ext_key_game_msg_info");
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localConversationInfo.tinyInfo = new TinyInfo(paramString, paramQQAppInterface.isSend());
-        localConversationInfo.extString = paramString;
-      }
+    if (!auea.a()) {
+      return false;
     }
-    for (;;)
-    {
-      paramQQAppInterface = localConversationInfo;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfo info = " + localConversationInfo);
-      return localConversationInfo;
-      label116:
-      if (!TextUtils.isEmpty(localConversationInfo.extString)) {
-        localConversationInfo.tinyInfo = new TinyInfo(localConversationInfo.extString);
-      }
+    if ((!TextUtils.isEmpty(str)) && (l > 0L) && (l > ((atix)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QFILE_CONFIG_MANAGER)).a(bghd.a(str)).b)) {
+      return true;
     }
-  }
-  
-  public List<ConversationInfo> a(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = paramQQAppInterface.getConversationFacade().a();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((Set)localObject).iterator();
-    label241:
-    while (((Iterator)localObject).hasNext())
-    {
-      ConversationInfo localConversationInfo = (ConversationInfo)((Iterator)localObject).next();
-      if (localConversationInfo.type == 10007)
-      {
-        MessageRecord localMessageRecord = paramQQAppInterface.getMessageProxy(10007).a(localConversationInfo.uin, localConversationInfo.type);
-        if (localMessageRecord != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList item = " + localMessageRecord.getBaseInfoString());
-          }
-          String str = localMessageRecord.getExtInfoFromExtStr("ext_key_game_msg_info");
-          if (!TextUtils.isEmpty(str))
-          {
-            localConversationInfo.extString = str;
-            localConversationInfo.tinyInfo = new TinyInfo(str, localMessageRecord.isSend());
-          }
-        }
-        for (;;)
-        {
-          if (!a(localConversationInfo)) {
-            break label241;
-          }
-          localArrayList.add(localConversationInfo);
-          break;
-          if (!TextUtils.isEmpty(localConversationInfo.extString))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList info = " + localConversationInfo);
-            }
-            localConversationInfo.tinyInfo = new TinyInfo(localConversationInfo.extString);
-          }
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList mock before = " + localArrayList);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList size = " + localArrayList.size());
-    }
-    return localArrayList;
+    return l > 1048576L;
   }
 }
 

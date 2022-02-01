@@ -1,133 +1,31 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
 
-public class bmhk
-  extends ReportDialog
+public abstract class bmhk
 {
-  float jdField_a_of_type_Float = 1.0F;
-  private final int jdField_a_of_type_Int = getContext().getResources().getColor(2131165351);
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bmhm jdField_a_of_type_Bmhm;
-  HashMap<Float, TextView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final int jdField_b_of_type_Int = getContext().getResources().getColor(2131165485);
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int jdField_c_of_type_Int = bnnl.b(getContext(), 212.0F);
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private int jdField_d_of_type_Int = bnnl.b(getContext(), 12.0F);
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private int jdField_e_of_type_Int = 85;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
+  protected final int a;
+  public String a;
+  protected final int b;
+  public String b;
+  public int c = -9999999;
+  public int d;
   
-  public bmhk(Context paramContext, int paramInt)
+  public bmhk()
   {
-    super(paramContext, 2131755189);
-    a();
+    this.jdField_a_of_type_Int = -9999999;
+    this.jdField_b_of_type_Int = 0;
   }
   
-  private void a()
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558571, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379917));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379839));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379843));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379773));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379916));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(zau.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(zau.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_c_of_type_AndroidWidgetTextView.setTypeface(zau.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_d_of_type_AndroidWidgetTextView.setTypeface(zau.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_e_of_type_AndroidWidgetTextView.setTypeface(zau.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bmhl(this, 0.5F));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bmhl(this, 0.75F));
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new bmhl(this, 1.0F));
-    this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new bmhl(this, 1.5F));
-    this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(new bmhl(this, 2.0F));
-    this.jdField_a_of_type_JavaUtilHashMap.put(Float.valueOf(0.5F), this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Float.valueOf(0.75F), this.jdField_b_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Float.valueOf(1.0F), this.jdField_c_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Float.valueOf(1.5F), this.jdField_d_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Float.valueOf(2.0F), this.jdField_e_of_type_AndroidWidgetTextView);
+    paramBundle.putInt("_mqqpay_baseresp_retcode", this.c);
+    paramBundle.putString("_mqqpay_baseresp_retmsg", this.jdField_a_of_type_JavaLangString);
+    paramBundle.putString("_mqqpay_baseapi_apiname", this.jdField_b_of_type_JavaLangString);
+    paramBundle.putInt("_mqqpay_baseapi_apimark", this.d);
   }
   
-  private void b()
+  public boolean a()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-      if (localIterator.hasNext())
-      {
-        Object localObject = (Map.Entry)localIterator.next();
-        boolean bool = bmke.a(((Float)((Map.Entry)localObject).getKey()).floatValue(), this.jdField_a_of_type_Float);
-        ((TextView)((Map.Entry)localObject).getValue()).setSelected(bool);
-        localObject = (TextView)((Map.Entry)localObject).getValue();
-        if (bool) {}
-        for (int i = this.jdField_b_of_type_Int;; i = this.jdField_a_of_type_Int)
-        {
-          ((TextView)localObject).setTextColor(i);
-          break;
-        }
-      }
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-    b();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void a(bmhm parambmhm)
-  {
-    this.jdField_a_of_type_Bmhm = parambmhm;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-  }
-  
-  public void show()
-  {
-    setCancelable(true);
-    setCanceledOnTouchOutside(true);
-    super.show();
-    Window localWindow = getWindow();
-    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-    localWindow.setGravity(this.jdField_e_of_type_Int);
-    localLayoutParams.y = this.jdField_c_of_type_Int;
-    localLayoutParams.x = this.jdField_d_of_type_Int;
-    localLayoutParams.dimAmount = 0.1F;
-    localWindow.setAttributes(localLayoutParams);
-    localWindow.setLayout(bnnl.b(getContext(), 65.0F), -2);
-    localWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
+    return this.c == 0;
   }
 }
 

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="39.0dip"
+<LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="26.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="horizontal" android:id="@id/nik" android:layout_width="wrap_content" android:layout_height="29.0dip" android:layout_marginTop="10.0dip">
-            <TextView android:textSize="14.0dip" android:layout_gravity="center_vertical" android:id="@id/nin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="5.0dip" android:text="更多" android:singleLine="true" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/nil" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/gte" />
-        </LinearLayout>
-        <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/nid" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="-12.0dip" android:layout_marginTop="5.0dip" android:text="7" android:includeFontPadding="false" />
-    </LinearLayout>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/nh0" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gw3" />
+    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/ngz" android:padding="3.0dip" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/htn" />
+    <TextView android:textSize="17.0dip" android:textColor="@drawable/e7i" android:layout_gravity="center_vertical" android:id="@id/nh1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/lp1" />
 </LinearLayout>

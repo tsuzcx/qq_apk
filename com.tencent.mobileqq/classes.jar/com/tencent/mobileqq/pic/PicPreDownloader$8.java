@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.pic;
 
-import aydj;
-import ayds;
+import azjv;
+import azke;
 
 class PicPreDownloader$8
   implements Runnable
 {
-  PicPreDownloader$8(PicPreDownloader paramPicPreDownloader, ayds paramayds) {}
+  PicPreDownloader$8(PicPreDownloader paramPicPreDownloader, azke paramazke) {}
   
   public void run()
   {
-    aydj.a(this.a, PicPreDownloader.a(this.this$0));
+    azjv.a(this.a, PicPreDownloader.a(this.this$0));
   }
 }
 

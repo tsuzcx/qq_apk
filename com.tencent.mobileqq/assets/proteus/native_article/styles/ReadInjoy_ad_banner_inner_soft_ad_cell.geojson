@@ -97,10 +97,12 @@
                                 "view_type": "ReadInJoyAdDownloadView",
                                 "view_id": "id_view_AdDownloadView",
                                 "height": {
-                                    "type": "wrap_content"
+                                    "type": "relative",
+                                    "value": "25"
                                 },
                                 "width": {
-                                    "type": "wrap_content"
+                                    "type": "relative",
+                                    "value": "62"
                                 },
                                 "align_parent_center_vertical": "YES",
                                 "event_type": "cmd_native_inner_game_button_click",

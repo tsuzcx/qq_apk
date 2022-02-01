@@ -1,17 +1,50 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aosu
-  implements aosh
+class aosu
+  implements aojw
 {
-  public Bundle a()
+  aosu(aost paramaost) {}
+  
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3)
   {
-    return new Bundle();
+    Intent localIntent;
+    if (paramBoolean)
+    {
+      QLog.d("AVGameShareJoinRoomAction", 1, "doAction success, roomId: " + paramLong1 + " shareUin: " + paramLong2);
+      localIntent = aojq.a().a(this.a.a);
+      if (localIntent == null) {
+        QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: intent is null");
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (paramLong3 != 3L)
+      {
+        localIntent.putExtra("thridparty_av_game_type_key", "thridparty_av_game_type_join_room");
+        localIntent.putExtra("thridparty_av_game_share_uin", paramLong2);
+        localIntent.putExtra("thridparty_av_game_room_id", paramLong1);
+        this.a.a.startActivity(localIntent);
+      }
+      while ((this.a.a instanceof JumpActivity))
+      {
+        ((JumpActivity)this.a.a).finish();
+        ((JumpActivity)this.a.a).overridePendingTransition(0, 0);
+        return;
+        localIntent.putExtra("thridparty_av_game_type_key", "thridparty_av_game_type_create_room");
+        localIntent.putExtra("avgame_create_game_type_key", Integer.valueOf(String.valueOf(1)));
+        localIntent.putExtra("avgame_from_type_key", 4);
+        this.a.a.startActivity(localIntent);
+        continue;
+        QLog.e("AVGameShareJoinRoomAction", 1, "doAction fail");
+      }
+    }
   }
   
-  public String a()
-  {
-    return "QQ.GetUin";
-  }
+  public void a(boolean paramBoolean, String paramString) {}
 }
 
 

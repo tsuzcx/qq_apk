@@ -2,8 +2,8 @@ package cooperation.qlink;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
-import bkkq;
-import bkkz;
+import blvy;
+import blwh;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.PluginInfo;
@@ -17,15 +17,15 @@ public class QlinkPluginProxyService
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), QlinkPluginProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
     localIntent.putExtra("userQqResources", 2);
-    bkkz localbkkz = new bkkz(0);
-    localbkkz.b = QlinkPluginProxyActivity.a();
-    localbkkz.d = PluginInfo.c;
-    localbkkz.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localbkkz.e = "com.tencent.qlink.service.QlinkService";
-    localbkkz.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localbkkz.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    blwh localblwh = new blwh(0);
+    localblwh.b = QlinkPluginProxyActivity.a();
+    localblwh.d = PluginInfo.c;
+    localblwh.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localblwh.e = "com.tencent.qlink.service.QlinkService";
+    localblwh.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localblwh.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
     QLog.d("QLinkLog", 4, "Bind Qlink Service");
-    bkkq.c(paramAppRuntime.getApplication(), localbkkz);
+    blvy.c(paramAppRuntime.getApplication(), localblwh);
   }
 }
 

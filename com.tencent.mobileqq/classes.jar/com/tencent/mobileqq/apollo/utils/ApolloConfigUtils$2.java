@@ -1,17 +1,20 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import alnr;
+import ankc;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public final class ApolloConfigUtils$2
   implements Runnable
 {
-  public ApolloConfigUtils$2(QQAppInterface paramQQAppInterface, Map paramMap) {}
+  public ApolloConfigUtils$2(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    ((alnr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a(this.jdField_a_of_type_JavaUtilMap);
+    ankc localankc = (ankc)this.a.getManager(QQManagerFactory.APOOLO_DAO_MANAGER);
+    if (localankc.a) {
+      localankc.a(false);
+    }
   }
 }
 

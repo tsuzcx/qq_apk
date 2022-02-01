@@ -1,19 +1,25 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.widget.BubblePopupWindow;
+import kotlin.Metadata;
 
-class phu
-  implements pen
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "clickedView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "which", "", "OnClick"}, k=3, mv={1, 1, 16})
+final class phu
+  implements bkzq
 {
-  phu(phl paramphl) {}
+  phu(phs paramphs, bkzi parambkzi) {}
   
-  public void onClick(View paramView)
+  public final void OnClick(View paramView, int paramInt)
   {
-    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramView.getTag();
-    if (localBaseArticleInfo == null) {
-      return;
+    switch (paramInt)
+    {
     }
-    phy.a(localBaseArticleInfo, phl.a(this.a).a().a(), phl.a(this.a).a().b());
-    psf.a(paramView);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      phs.a(this.jdField_a_of_type_Phs).a().b(phs.a(this.jdField_a_of_type_Phs), phs.a(this.jdField_a_of_type_Phs).b());
+      phs.a(this.jdField_a_of_type_Phs).a();
+    }
   }
 }
 

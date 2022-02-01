@@ -1,42 +1,90 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aikm
-  implements bjsz
+  implements ailp, View.OnClickListener
 {
-  public aikm(TroopActivity paramTroopActivity) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(bjsy parambjsy)
+  public aikm(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
   {
-    switch (parambjsy.a)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidAppActivity = paramBaseActivity;
+  }
+  
+  public int a()
+  {
+    return 40;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-        bcef.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_create", 0, 0, "", "", "", "");
-        bcef.b(this.a.app, "CliOper", "", "", "0X8006622", "0X8006622", 0, 0, "", "", "", "");
-        parambjsy = (bdzw)this.a.app.getManager(32);
-      } while (parambjsy == null);
-      parambjsy.a(this.a, 0);
-      return;
-    case 1: 
-      bcef.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_join", 0, 0, "", "", "", "");
-      bcef.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_join", 47, 0, "", "", "", "");
-      AddContactsActivity.a(this.a, 1);
-      return;
-    case 2: 
-      bcef.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_msgset", 0, 0, "", "", "", "");
-      bcef.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_setting", 0, 0, "", "", "", "");
-      parambjsy = new Intent(this.a, TroopAssisSettingActivity.class);
-      this.a.startActivity(parambjsy);
-      return;
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559229, null);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367539)).setOnClickListener(this);
+      paramVarArgs = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379948);
+      if ((paramVarArgs != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        paramVarArgs.setText(this.jdField_a_of_type_JavaLangString);
+      }
     }
-    TroopActivity.a(this.a);
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a()
+  {
+    QLog.i("GameMsgTipsBar", 1, "[onDestory]");
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_AndroidAppActivity = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameMsgTipsBar", 0, "[updateTips], tips:" + paramString);
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 2003;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      }
+    }
   }
 }
 

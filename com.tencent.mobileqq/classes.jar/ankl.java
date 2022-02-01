@@ -1,123 +1,33 @@
-public abstract class ankl
+import com.tencent.TMG.utils.QLog;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.beacon.upload.TunnelInfo;
+import com.tencent.common.config.AppSetting;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/utils/ApolloDtReportUtil;", "", "()V", "APOLLO_DEBUG_KEY", "", "APOLLO_EVEMT_ROTATE", "APOLLO_EVENT_CHANGE_DRESS", "APOLLO_EVENT_EXPOSE", "APOLLO_EVENT_STAY", "APOLLO_KEY", "APOLLO_MODE_HPME_PAGE", "APOLLO_MODE_MODEL", "APOLLO_PAGE_CODE", "APOLLO_PARAMS_KEY_DURATION", "APOLLO_PARAMS_KEY_ITEMIDS", "TAG", "report", "", "pageCode", "modeCode", "eventCode", "params", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ankl
 {
-  protected final byte a;
-  protected final int a;
-  private final int b;
-  private final int c;
-  private final int d;
+  public static final ankl a = new ankl();
   
-  protected ankl(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  static
   {
-    this.jdField_a_of_type_Byte = 61;
-    this.b = paramInt1;
-    this.c = paramInt2;
-    if ((paramInt3 > 0) && (paramInt4 > 0)) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if (paramInt1 != 0) {
-        i = paramInt3 / paramInt2 * paramInt2;
-      }
-      this.jdField_a_of_type_Int = i;
-      this.d = paramInt4;
-      return;
-    }
+    UserAction.registerTunnel(new TunnelInfo("0AND0FB8I14UU93I", AppSetting.f(), "1000"));
   }
   
-  private byte[] a(ankm paramankm)
+  @JvmStatic
+  public static final void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @Nullable Map<String, String> paramMap)
   {
-    if (paramankm.jdField_a_of_type_ArrayOfByte == null)
-    {
-      paramankm.jdField_a_of_type_ArrayOfByte = new byte[a()];
-      paramankm.b = 0;
-      paramankm.c = 0;
-    }
-    for (;;)
-    {
-      return paramankm.jdField_a_of_type_ArrayOfByte;
-      byte[] arrayOfByte = new byte[paramankm.jdField_a_of_type_ArrayOfByte.length * 2];
-      System.arraycopy(paramankm.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, paramankm.jdField_a_of_type_ArrayOfByte.length);
-      paramankm.jdField_a_of_type_ArrayOfByte = arrayOfByte;
-    }
-  }
-  
-  protected int a()
-  {
-    return 8192;
-  }
-  
-  int a(ankm paramankm)
-  {
-    if (paramankm.jdField_a_of_type_ArrayOfByte != null) {
-      return paramankm.b - paramankm.c;
-    }
-    return 0;
-  }
-  
-  int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, ankm paramankm)
-  {
-    if (paramankm.jdField_a_of_type_ArrayOfByte != null)
-    {
-      paramInt2 = Math.min(a(paramankm), paramInt2);
-      System.arraycopy(paramankm.jdField_a_of_type_ArrayOfByte, paramankm.c, paramArrayOfByte, paramInt1, paramInt2);
-      paramankm.c += paramInt2;
-      if (paramankm.c >= paramankm.b) {
-        paramankm.jdField_a_of_type_ArrayOfByte = null;
-      }
-      return paramInt2;
-    }
-    if (paramankm.jdField_a_of_type_Boolean) {
-      return -1;
-    }
-    return 0;
-  }
-  
-  abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, ankm paramankm);
-  
-  protected abstract boolean a(byte paramByte);
-  
-  protected boolean a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {}
-    for (;;)
-    {
-      return false;
-      int j = paramArrayOfByte.length;
-      int i = 0;
-      while (i < j)
-      {
-        byte b1 = paramArrayOfByte[i];
-        if ((61 == b1) || (a(b1))) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  protected byte[] a(int paramInt, ankm paramankm)
-  {
-    if ((paramankm.jdField_a_of_type_ArrayOfByte == null) || (paramankm.jdField_a_of_type_ArrayOfByte.length < paramankm.b + paramInt)) {
-      return a(paramankm);
-    }
-    return paramankm.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public byte[] a(byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return paramArrayOfByte;
-    }
-    ankm localankm = new ankm();
-    a(paramArrayOfByte, 0, paramArrayOfByte.length, localankm);
-    a(paramArrayOfByte, 0, -1, localankm);
-    paramArrayOfByte = new byte[localankm.b];
-    a(paramArrayOfByte, 0, paramArrayOfByte.length, localankm);
-    return paramArrayOfByte;
-  }
-  
-  public byte[] b(String paramString)
-  {
-    return a(paramString.getBytes());
+    Intrinsics.checkParameterIsNotNull(paramString1, "pageCode");
+    Intrinsics.checkParameterIsNotNull(paramString2, "modeCode");
+    Intrinsics.checkParameterIsNotNull(paramString3, "eventCode");
+    paramString1 = paramString1 + "#" + paramString2 + "#" + paramString3;
+    QLog.d("ApolloDtReportUtil", 1, "report " + paramString1);
+    UserAction.onUserActionToTunnel("0AND0FB8I14UU93I", paramString1, paramMap, true, true);
   }
 }
 

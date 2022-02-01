@@ -1,132 +1,152 @@
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.item.AddressItem;
 import com.tribe.async.async.JobContext;
 import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class vxt
-  extends JobSegment<vxd, List<wkm>>
+  extends JobSegment<List<vxh>, List<vxh>>
+  implements vxj, vxn
 {
-  public String a;
-  public wor a;
-  public boolean a;
-  public String b = "";
-  public String c;
+  private HashMap<String, vxf> jdField_a_of_type_JavaUtilHashMap;
+  private vxu jdField_a_of_type_Vxu;
   
-  public vxt(String paramString)
+  public vxt(vxu paramvxu)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.c = paramString;
+    this.jdField_a_of_type_Vxu = paramvxu;
   }
   
-  public vxt(String paramString1, String paramString2, String paramString3, wor paramwor)
+  public void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap)
   {
-    this(paramString1);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString3;
-    this.jdField_a_of_type_Wor = paramwor;
-  }
-  
-  public static List<wkm> a(List<vxv> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "handlePOIResult errorMessage=%s", new Object[] { paramErrorMessage.toString() });
+    if (paramErrorMessage.isFail())
     {
-      vxv localvxv = (vxv)paramList.next();
-      if ((!TextUtils.isEmpty(localvxv.b)) && (!TextUtils.isEmpty(localvxv.jdField_a_of_type_JavaLangString)))
+      notifyError(new ErrorMessage(paramErrorMessage.errorCode, "request POI list error:" + paramErrorMessage.getErrorMessage()));
+      return;
+    }
+    Object localObject;
+    if ((paramHashMap != null) && (paramHashMap.size() > 0))
+    {
+      paramErrorMessage = paramHashMap.entrySet().iterator();
+      while (paramErrorMessage.hasNext())
       {
-        wkm localwkm = new wkm();
-        localwkm.jdField_a_of_type_JavaLangString = localvxv.b;
-        localwkm.b = localvxv.jdField_a_of_type_JavaLangString;
-        localwkm.jdField_a_of_type_Long = localvxv.jdField_a_of_type_Long;
-        localwkm.jdField_a_of_type_Boolean = localvxv.jdField_a_of_type_Boolean;
-        localArrayList.add(localwkm);
+        paramHashMap = (Map.Entry)paramErrorMessage.next();
+        localObject = (String)paramHashMap.getKey();
+        paramHashMap = (AddressItem)paramHashMap.getValue();
+        localObject = (vxf)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+        ((vxf)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = paramHashMap;
+        localObject = ((vxf)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((vxh)((Iterator)localObject).next()).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = paramHashMap;
+        }
       }
     }
-    return localArrayList;
+    paramErrorMessage = new ArrayList();
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      paramHashMap = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (paramHashMap.hasNext())
+      {
+        localObject = (vxf)((Map.Entry)paramHashMap.next()).getValue();
+        paramErrorMessage.addAll(((vxf)localObject).jdField_a_of_type_JavaUtilList);
+        if (((vxh)((vxf)localObject).jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem == null) {
+          ykq.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "后台返回的POI数据里缺少了 ：" + ((vxf)localObject).jdField_a_of_type_Vyl);
+        }
+      }
+    }
+    ykq.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "this segment is finish  : result=%s", paramErrorMessage);
+    notifyResult(paramErrorMessage);
   }
   
-  protected void a(JobContext paramJobContext, vxd paramvxd)
+  public void a(ErrorMessage paramErrorMessage, List<String> paramList)
   {
-    if (paramvxd == null)
+    String str = paramErrorMessage.toString();
+    if (paramList == null) {}
+    for (int i = 0;; i = paramList.size())
     {
-      xvv.d("Q.qqstory.msgTab.jobPullVidList", "(0) runSegment() from: nodeInfo is null!");
-      yos.a("nodeInfo is null!", new Object[0]);
+      ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "handleBlackResult errorMessage=%s, blackGeohash count=%d", new Object[] { str, Integer.valueOf(i) });
+      if (!paramErrorMessage.isFail()) {
+        break;
+      }
+      notifyError(new ErrorMessage(paramErrorMessage.errorCode, "request black list error:" + paramErrorMessage.getErrorMessage()));
+      return;
+    }
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramErrorMessage = paramList.iterator();
+      while (paramErrorMessage.hasNext())
+      {
+        paramList = (String)paramErrorMessage.next();
+        this.jdField_a_of_type_JavaUtilHashMap.remove(paramList);
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)
+    {
       notifyResult(new ArrayList());
       return;
     }
-    xvv.b("Q.qqstory.msgTab.jobPullVidList", "(1) runSegment() from: %s, uid: %s, cookie: %s, startVid: %s, groupdId: %s, nodeInfoList.size: %d, passthrough: %s", new Object[] { this.c, paramvxd.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Wor, Integer.valueOf(paramvxd.jdField_a_of_type_JavaUtilList.size()), paramvxd.k });
-    if (TextUtils.isEmpty(paramvxd.jdField_a_of_type_JavaLangString))
+    if ((this.jdField_a_of_type_JavaUtilHashMap.size() == 1) && (this.jdField_a_of_type_JavaUtilHashMap.get("EMPTY") != null))
     {
-      notifyError(new ErrorMessage(100, "nodeInfo not valid"));
+      a(new ErrorMessage(), null);
       return;
     }
-    if ((paramvxd.jdField_a_of_type_JavaUtilList.size() == 0) && (paramvxd.jdField_a_of_type_Int != 12))
+    paramErrorMessage = new vxi();
+    paramErrorMessage.a(this.jdField_a_of_type_JavaUtilHashMap);
+    paramErrorMessage.a(this);
+    paramErrorMessage.a();
+    ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "sendPOIRequest total count:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
+  }
+  
+  protected void a(JobContext paramJobContext, List<vxh> paramList)
+  {
+    ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "start PreProcessSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
+    if (paramList.isEmpty())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, new Object[] { "skip, nodeInfo has no video, info=%s", paramvxd });
-      }
-      if (paramvxd.jdField_a_of_type_Int == 5)
+      notifyResult(paramList);
+      return;
+    }
+    int i = ((vwv)wjs.a(30)).a().b();
+    ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "PreProcessSegment geohashlevel=%d", new Object[] { Integer.valueOf(i) });
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    paramJobContext = paramList.iterator();
+    while (paramJobContext.hasNext())
+    {
+      paramList = (vxh)paramJobContext.next();
+      if ((paramList.jdField_a_of_type_Double == 0.0D) && (paramList.b == 0.0D)) {}
+      for (paramList.c = "EMPTY";; paramList.c = vyk.a(paramList.jdField_a_of_type_Double, paramList.b, i))
       {
-        notifyResult(new ArrayList());
-        return;
+        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramList.c)) {
+          break label192;
+        }
+        ((vxf)this.jdField_a_of_type_JavaUtilHashMap.get(paramList.c)).jdField_a_of_type_JavaUtilList.add(paramList);
+        break;
       }
-      notifyError(new ErrorMessage(100, "vid is 0"));
+      label192:
+      vxf localvxf = new vxf(paramList.c);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramList);
+      localvxf.jdField_a_of_type_JavaUtilList = localArrayList;
+      if ((!TextUtils.isEmpty(localvxf.jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(localvxf.jdField_a_of_type_JavaLangString, "EMPTY"))) {
+        localvxf.jdField_a_of_type_Vyl = vyk.a(localvxf.jdField_a_of_type_JavaLangString);
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramList.c, localvxf);
+    }
+    ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "group by geohash count:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
+    if ((this.jdField_a_of_type_JavaUtilHashMap.size() == 1) && (this.jdField_a_of_type_JavaUtilHashMap.get("EMPTY") != null))
+    {
+      a(new ErrorMessage(), null);
       return;
     }
-    if ((paramvxd.a()) && (paramvxd.jdField_a_of_type_Int != 12))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, new Object[] { "video list had preloaded, info=%s", paramvxd });
-      }
-      notifyResult(a(paramvxd.jdField_a_of_type_JavaUtilList));
-      return;
-    }
-    paramJobContext = null;
-    if (paramvxd.jdField_a_of_type_Int != 12) {
-      paramJobContext = vxw.a(paramvxd);
-    }
-    if (paramJobContext != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "get succeed from db, info=" + paramvxd);
-      }
-      xvv.b("Q.qqstory.msgTab.jobPullVidList", "(2) runSegment(), try decode cached rsp from DB");
-      paramJobContext = vyj.a(paramvxd, paramJobContext);
-      if (paramJobContext != null)
-      {
-        paramJobContext = a(paramJobContext.a.jdField_a_of_type_JavaUtilList);
-        notifyResult(paramJobContext);
-        xvv.a("Q.qqstory.msgTab.jobPullVidList", "(end) runSegment(), Segment notifyResult(), size=%d", Integer.valueOf(paramJobContext.size()));
-        return;
-      }
-      xvv.b("Q.qqstory.msgTab.jobPullVidList", "(2-1) runSegment(), decode cached rsp from DB fail, start to pull vid list instead");
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      xvv.b("Q.qqstory.msgTab.jobPullVidList", "(2) runSegment(), isLocal Only return null");
-      notifyResult(new ArrayList());
-      return;
-    }
-    if ((this.jdField_a_of_type_Wor != null) && (this.jdField_a_of_type_Wor.jdField_a_of_type_Boolean))
-    {
-      xvv.b("Q.qqstory.msgTab.jobPullVidList", "(2) runSegment(), groupId is end, won't request anymore!");
-      notifyResult(new ArrayList());
-      return;
-    }
-    xvv.b("Q.qqstory.msgTab.jobPullVidList", "(2) runSegment(), start to pull vid list");
-    paramJobContext = new vyj(paramvxd, this.jdField_a_of_type_JavaLangString, this.b);
-    xvv.a("Q.qqstory.msgTab.jobPullVidList", "(3) runSegment(), sendCmd: %s", paramJobContext);
-    if ((paramvxd.jdField_a_of_type_Int == 12) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      xvv.b("Q.qqstory.msgTab.jobPullVidList", "(3-1) runSegment() weishi node, cookie is empty, clear list");
-      paramvxd.jdField_a_of_type_JavaUtilList.clear();
-    }
-    vqn.a().a(paramJobContext, new vxu(this, paramvxd));
+    paramJobContext = new vxm();
+    paramJobContext.a(this.jdField_a_of_type_JavaUtilHashMap);
+    paramJobContext.a(this);
+    paramJobContext.a();
   }
 }
 

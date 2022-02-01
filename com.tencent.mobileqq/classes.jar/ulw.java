@@ -1,22 +1,27 @@
-import UserGrowth.stPostCommentReplyV2Rsp;
-import UserGrowth.stSimpleMetaReply;
-import com.tribe.async.dispatch.Dispatcher;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class ulw
-  implements uqy
+  extends Handler
 {
-  ulw(uls paramuls, stSimpleMetaReply paramstSimpleMetaReply) {}
-  
-  public void a(urj paramurj)
+  ulw(ulv paramulv, Looper paramLooper)
   {
-    if ((paramurj.jdField_a_of_type_JavaLangObject instanceof stPostCommentReplyV2Rsp))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      stPostCommentReplyV2Rsp localstPostCommentReplyV2Rsp = (stPostCommentReplyV2Rsp)paramurj.jdField_a_of_type_JavaLangObject;
-      paramurj = this.jdField_a_of_type_Uls.a(new Object[] { Integer.valueOf(4), Integer.valueOf(paramurj.b), paramurj.jdField_a_of_type_JavaLangString, localstPostCommentReplyV2Rsp, this.jdField_a_of_type_UserGrowthStSimpleMetaReply, this.jdField_a_of_type_UserGrowthStSimpleMetaReply.id, Integer.valueOf(this.jdField_a_of_type_Uls.hashCode()) });
-      vli.a().dispatch(paramurj);
+    default: 
       return;
     }
-    uya.d(uls.a(), "添加回复失败new！");
+    ulv.a(this.a, ulv.a(this.a) + 500L);
+    QLog.d("VideoAdVVAdloadStrategyManager", 2, "start record playDurationTime:  " + ulv.a(this.a));
+    this.a.a();
+    ulv.a(this.a, ulv.a(this.a), false);
   }
 }
 

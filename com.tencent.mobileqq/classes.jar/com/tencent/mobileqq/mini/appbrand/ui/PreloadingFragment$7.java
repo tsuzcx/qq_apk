@@ -3,11 +3,10 @@ package com.tencent.mobileqq.mini.appbrand.ui;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bhpc;
+import bizw;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.app.AuthorizeCenter;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
@@ -22,28 +21,28 @@ class PreloadingFragment$7
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    long l1;
+    long l;
     Object localObject1;
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      l1 = paramJSONObject.optLong("retCode");
+      l = paramJSONObject.optLong("retCode");
       localObject1 = paramJSONObject.optString("errMsg");
-      QLog.d("PreloadingFragment", 2, "getAppInfoByLink, retCode = " + l1 + ",errMsg = " + (String)localObject1);
-      if (l1 != 0L) {
+      QLog.d("PreloadingFragment", 2, "getAppInfoByLink, retCode = " + l + ",errMsg = " + (String)localObject1);
+      if (l != 0L) {
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label763;
+          break label746;
         }
       }
     }
     label298:
-    label455:
-    label763:
-    for (paramJSONObject = this.this$0.getString(2131717686);; paramJSONObject = (JSONObject)localObject1)
+    label438:
+    label746:
+    for (paramJSONObject = this.this$0.getString(2131718057);; paramJSONObject = (JSONObject)localObject1)
     {
       if (PreloadingFragment.access$300(this.this$0) != null)
       {
         localObject1 = new Bundle();
-        ((Bundle)localObject1).putLong("retCode", l1);
+        ((Bundle)localObject1).putLong("retCode", l);
         ((Bundle)localObject1).putString("errMsg", paramJSONObject);
         PreloadingFragment.access$300(this.this$0).send(1, (Bundle)localObject1);
       }
@@ -52,7 +51,7 @@ class PreloadingFragment$7
       return;
       Object localObject2 = (MiniAppInfo)paramJSONObject.opt("appInfo");
       String str = paramJSONObject.optString("shareTicket", "");
-      if ((l1 == 0L) && (localObject2 != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject2).appId)))
+      if ((l == 0L) && (localObject2 != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject2).appId)))
       {
         paramJSONObject = new MiniAppConfig((MiniAppInfo)localObject2);
         if (this.val$param == null)
@@ -65,20 +64,14 @@ class PreloadingFragment$7
             paramJSONObject.launchParam.scene = 1044;
           }
           if (!TextUtils.isEmpty(paramJSONObject.launchParam.reportData)) {
-            break label455;
+            break label438;
           }
           paramJSONObject.launchParam.reportData = ((MiniAppInfo)localObject2).reportData;
           if ((((MiniAppInfo)localObject2).verType != 3) && (((MiniAppInfo)localObject2).verType != 1)) {
             paramJSONObject.forceReroad = 3;
           }
-          if (((MiniAppInfo)localObject2).clearAuths == 1)
-          {
-            long l2 = bhpc.a().a();
-            if (l2 > 0L)
-            {
-              AuthorizeCenter.clearAuth(((MiniAppInfo)localObject2).appId, String.valueOf(l2));
-              paramJSONObject.config.clearAuths = 0;
-            }
+          if ((((MiniAppInfo)localObject2).clearAuths == 1) && (bizw.a().a() > 0L)) {
+            paramJSONObject.config.clearAuths = 0;
           }
         }
       }
@@ -90,7 +83,7 @@ class PreloadingFragment$7
           if (PreloadingFragment.access$300(this.this$0) != null)
           {
             localObject2 = new Bundle();
-            ((Bundle)localObject2).putLong("retCode", l1);
+            ((Bundle)localObject2).putLong("retCode", l);
             ((Bundle)localObject2).putString("errMsg", (String)localObject1);
             PreloadingFragment.access$300(this.this$0).send(0, (Bundle)localObject2);
           }
@@ -111,7 +104,7 @@ class PreloadingFragment$7
         paramJSONObject.launchParam.reportData = (paramJSONObject.launchParam.reportData + "&" + ((MiniAppInfo)localObject2).reportData);
         break label298;
         if (localObject2 == null) {
-          QLog.e("PreloadingFragment", 1, "getAppInfoByLink  onCmdListener appinfo==null retCode= " + l1);
+          QLog.e("PreloadingFragment", 1, "getAppInfoByLink  onCmdListener appinfo==null retCode= " + l);
         }
         for (;;)
         {
@@ -120,11 +113,11 @@ class PreloadingFragment$7
             break;
           }
           paramJSONObject = new Bundle();
-          paramJSONObject.putLong("retCode", l1);
+          paramJSONObject.putLong("retCode", l);
           paramJSONObject.putString("errMsg", (String)localObject1);
           PreloadingFragment.access$300(this.this$0).send(1, paramJSONObject);
           break;
-          QLog.e("PreloadingFragment", 1, "getAppInfoByLink  onCmdListener retCode= " + l1 + " appid=" + ((MiniAppInfo)localObject2).appId);
+          QLog.e("PreloadingFragment", 1, "getAppInfoByLink  onCmdListener retCode= " + l + " appid=" + ((MiniAppInfo)localObject2).appId);
         }
         ThreadManager.getUIHandler().post(new PreloadingFragment.7.2(this, paramJSONObject));
         if (PreloadingFragment.access$300(this.this$0) != null)

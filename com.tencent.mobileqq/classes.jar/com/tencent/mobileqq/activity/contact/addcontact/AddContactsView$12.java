@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import amvo;
+import anyb;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
@@ -13,9 +14,9 @@ class AddContactsView$12
   
   public void run()
   {
-    Object localObject = (amvo)this.this$0.a.getManager(159);
-    int i = ((amvo)localObject).a();
-    localObject = ((amvo)localObject).b();
+    Object localObject = (anyb)this.this$0.a.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
+    int i = ((anyb)localObject).a();
+    localObject = ((anyb)localObject).b();
     ThreadManager.getUIHandler().post(new AddContactsView.12.1(this, i, (ArrayList)localObject));
   }
 }

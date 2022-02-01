@@ -1,316 +1,154 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.forward.ForwardSDKB77AIOHelper.4;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import java.util.Map;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
 
-public class atoe
-  implements afrc, Handler.Callback
+class atoe
+  extends atob
 {
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private final DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new atoh(this);
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bjmp(Looper.getMainLooper(), this);
-  private volatile boolean jdField_a_of_type_Boolean;
-  
-  public atoe(BaseChatPie paramBaseChatPie)
+  public atoe(atno paramatno)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    super(paramatno);
   }
   
-  private int a()
+  protected String a()
   {
-    return this.jdField_a_of_type_AndroidContentIntent.getIntExtra("req_type", 2147483647);
+    return "StateExcepInvalidWhenRecv";
   }
   
-  private void a()
+  protected void a(int paramInt)
   {
-    b();
-    String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_b77_sdk_share");
-    if (TextUtils.isEmpty(str))
+    int i = 1;
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
     {
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "showB77ResultDialog cachedKey empty");
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]. onFileRequestBeHandledByPC entity is null");
       return;
     }
-    this.jdField_a_of_type_AndroidContentIntent.removeExtra("key_b77_sdk_share");
-    Map localMap = ((atph)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(350)).a(str);
-    if (localMap == null)
+    if (5 != paramInt)
     {
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "initBroadcastReceiver");
-      b(str);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(93), 500L);
-      return;
-    }
-    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "showB77ResultDialog_parseB77Result");
-    a(localMap);
-  }
-  
-  private void a(int paramInt, String paramString1, String paramString2)
-  {
-    atqa.a("KEY_STAGE_2_TOTAL", false);
-    atpn.a(this.jdField_a_of_type_AndroidOsBundle, a(), this.jdField_a_of_type_Long, false);
-    if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_mini_program_ark_from_sdk", false))) {
-      bcef.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "dc00898", "", "", "0X8009F7C", "0X8009F7C", 0, 0, "2", String.valueOf(paramInt), "", "");
-    }
-    atlt.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, new atof(this, paramInt, paramString2));
-  }
-  
-  public static void a(Activity paramActivity, afqw paramafqw)
-  {
-    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "doSdkShare");
-    if (TextUtils.isEmpty(paramActivity.getIntent().getStringExtra("key_b77_sdk_share")))
-    {
-      paramafqw = (atpn)paramafqw.a(13);
-      if (paramafqw != null) {
-        paramafqw.a(paramActivity.getIntent());
+      this.jdField_a_of_type_Atno.d();
+      switch (paramInt)
+      {
+      default: 
+        label63:
+        QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfile session[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]  is not foud . handledbypc type error:" + paramInt);
+        paramInt = 0;
       }
     }
-    do
+    while (paramInt != 0)
     {
+      this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 0, null);
       return;
-      paramActivity = (atoe)paramafqw.a(57);
-    } while (paramActivity == null);
-    paramActivity.a();
+      this.jdField_a_of_type_Atno.b();
+      break label63;
+      atno.b(this.jdField_a_of_type_Atno, 11, 5);
+      atno.c(this.jdField_a_of_type_Atno, 11, 5);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateAcceptByPC)");
+      this.jdField_a_of_type_Atnt = new atnq(this.jdField_a_of_type_Atno);
+      paramInt = i;
+      continue;
+      atno.b(this.jdField_a_of_type_Atno, 11, 6);
+      atno.c(this.jdField_a_of_type_Atno, 11, 6);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateRefuseByPC)");
+      this.jdField_a_of_type_Atnt = new atoj(this.jdField_a_of_type_Atno);
+      paramInt = i;
+      continue;
+      atno.b(this.jdField_a_of_type_Atno, 11, 8);
+      atno.c(this.jdField_a_of_type_Atno, 11, 8);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateSenderCancelSend)");
+      this.jdField_a_of_type_Atnt = new atoq(this.jdField_a_of_type_Atno);
+      paramInt = i;
+      continue;
+      atno.b(this.jdField_a_of_type_Atno, 11, 7);
+      atno.c(this.jdField_a_of_type_Atno, 11, 7);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateSaveToWeiYunByPC)");
+      this.jdField_a_of_type_Atnt = new aton(this.jdField_a_of_type_Atno);
+      paramInt = i;
+      continue;
+      atno.a(this.jdField_a_of_type_Atno);
+      atno.b(this.jdField_a_of_type_Atno, 11, 11);
+      atno.c(this.jdField_a_of_type_Atno, 11, 14);
+      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateUploadingWhenChangeToOff)");
+      this.jdField_a_of_type_Atnt = new atot(this.jdField_a_of_type_Atno);
+      paramInt = 0;
+    }
   }
   
-  private void a(String paramString)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      a(paramString, this.jdField_a_of_type_AndroidAppActivity);
-    }
-    atqa.a("KEY_STAGE_2_TOTAL", false);
-    atpn.a(this.jdField_a_of_type_AndroidOsBundle, a(), this.jdField_a_of_type_Long, false);
-  }
-  
-  private void a(String paramString, Context paramContext)
-  {
-    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, new Object[] { "jumpToErrorWeb: invoked. info: jumpUrl = ", paramString });
-    if ((!TextUtils.isEmpty(paramString)) && (paramContext != null)) {}
-    try
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
     {
-      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramString);
-      paramContext.startActivity(localIntent);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "jumpToErrorWeb: Failed. info: exception = ", paramString);
-    }
-  }
-  
-  private void a(Map<String, Object> paramMap)
-  {
-    Integer localInteger1 = (Integer)paramMap.get("key_b77_error_code");
-    Integer localInteger2 = (Integer)paramMap.get("key_b77_jump_result");
-    String str1 = (String)paramMap.get("key_b77_jump_url");
-    String str2 = (String)paramMap.get("key_b77_wording");
-    paramMap = (String)paramMap.get("key_b77_develop_msg");
-    if ((localInteger1 != null) && (localInteger1.intValue() != 0))
-    {
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, new Object[] { "errorCode=", localInteger1 });
-      a(localInteger1.intValue(), str2, paramMap);
-      return;
-    }
-    if ((localInteger2 != null) && (localInteger2.intValue() != 0))
-    {
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, new Object[] { "jumpResult=", localInteger2 });
-      a(str1);
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
-    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "handleSendSuccess");
-    c();
+    b(paramInt1, paramInt2);
+    atno.b(this.jdField_a_of_type_Atno, 9, 11);
+    atno.c(this.jdField_a_of_type_Atno, 9, 11);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateLocalFailedWhenRecv)");
+    this.jdField_a_of_type_Atnt = new atoi(this.jdField_a_of_type_Atno);
+    this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 6, null);
   }
   
-  public static boolean a(MessageForArkApp paramMessageForArkApp)
+  protected void a(int paramInt, String paramString)
   {
-    paramMessageForArkApp = paramMessageForArkApp.getExtInfoFromExtStr(bbkv.w);
-    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, new Object[] { "resend forbid msg openSdkShareState=", paramMessageForArkApp });
-    return 25201 == ForwardUtils.parseInt(paramMessageForArkApp);
+    if (this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atno.a(this.jdField_a_of_type_Atno, 9, 12, true);
+    a("StateExcepInvalidWhenRecv");
+    this.jdField_a_of_type_Atnt = new atoe(this.jdField_a_of_type_Atno);
   }
   
-  public static boolean a(MessageForArkApp paramMessageForArkApp, Context paramContext)
+  protected boolean a(int paramInt, String paramString, long paramLong)
   {
-    String str = paramMessageForArkApp.getExtInfoFromExtStr(bbkv.w);
-    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, new Object[] { "resend forbid msg openSdkShareState=", str, ", uinseq=", Long.valueOf(paramMessageForArkApp.uniseq) });
-    int i = ForwardUtils.parseInt(str);
-    if ((i == 0) || (i == 25201) || (i == -2)) {
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return false;
     }
-    str = paramMessageForArkApp.getExtInfoFromExtStr(bbkv.y);
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "resendSdkFakeMsg fakeShareInfo empty");
-      return false;
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((auea.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity, 5);
     }
-    atoi localatoi = new atoi();
-    try
-    {
-      localatoi.a(paramMessageForArkApp, paramContext, new JSONObject(str));
-      return true;
-    }
-    catch (Exception paramMessageForArkApp)
-    {
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "Exception", paramMessageForArkApp);
-    }
-    return false;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
-    {
-      this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mActivity;
-      this.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-      this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-      if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id");
-      }
-    }
-    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, new Object[] { " updateCurrentInfo mExtra=", this.jdField_a_of_type_AndroidOsBundle, ", mShareAppId=", Long.valueOf(this.jdField_a_of_type_Long) });
-  }
-  
-  private void b(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
-    {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new atog(this, paramString);
-      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("action_notify_aio_activity_by_b77"));
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsBundle != null)
-    {
-      String str = this.jdField_a_of_type_AndroidOsBundle.getString("app_name");
-      Object localObject = bchh.a(this.jdField_a_of_type_AndroidOsBundle);
-      if ((localObject instanceof AbsShareMsg))
-      {
-        localObject = (AbsShareMsg)localObject;
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = atpn.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, ((AbsShareMsg)localObject).mSourceAppid, ((AbsShareMsg)localObject).mMsgServiceID, str);
-      }
-    }
-    atpn.a(this.jdField_a_of_type_AndroidOsBundle, a(), this.jdField_a_of_type_Long, true);
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(94);
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(93);
-    f();
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
-    {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-    }
-  }
-  
-  private void e()
-  {
-    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "showWaitDialog");
-    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "showWaitDialog mActivity status invalid");
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidAppDialog == null) {
-        break;
-      }
-    } while (this.jdField_a_of_type_AndroidAppDialog.isShowing());
-    this.jdField_a_of_type_AndroidAppDialog.show();
-    return;
-    this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this.jdField_a_of_type_AndroidAppActivity, 2131755826);
-    this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559574);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372546)).setText(2131694451);
-    this.jdField_a_of_type_AndroidAppDialog.show();
-  }
-  
-  private void f()
-  {
-    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "hideWaiteDialog");
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new ForwardSDKB77AIOHelper.4(this));
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 6: 
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onMoveToState SHOW_FIRST_BEGIN");
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    d();
-    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onMoveToState DESTROY");
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 6, 13 };
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 93: 
-      do
-      {
-        return true;
-      } while (!this.jdField_a_of_type_Boolean);
-      e();
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(94), 10000L);
-      return true;
-    }
-    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.jdField_a_of_type_Boolean))
-    {
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "msg_sdk_share_request_timeout_status mActivity == null || mActivity.isFinishing()");
-      return true;
-    }
-    bcef.b(null, "dc00898", "", "", "0X8009CF9", "0X8009CF9", 0, 0, "", "", "", "");
-    f();
-    atlt.a(this.jdField_a_of_type_AndroidAppActivity, amtj.a(2131703918), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    localFileManagerEntity.setCloudType(1);
+    atno.b(this.jdField_a_of_type_Atno, 1, 0);
+    atno.c(this.jdField_a_of_type_Atno, 1, 0);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateGotoOffFileProcess)");
+    this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Atnt = new atof(this.jdField_a_of_type_Atno);
     return true;
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
+    }
+    atno.a(this.jdField_a_of_type_Atno, 11, 9, true);
+    a("StateCancelUploadWhenRecv");
+    this.jdField_a_of_type_Atnt = new atnw(this.jdField_a_of_type_Atno);
+  }
+  
+  protected void d()
+  {
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]. onFailedOfLocalSomeThingHappen entity is null");
+      return;
+    }
+    atno.a(this.jdField_a_of_type_Atno);
+    atno.a(this.jdField_a_of_type_Atno, 9, 11, true);
+    a("StateLocalFailedWhenRecv");
+    this.jdField_a_of_type_Atnt = new atoi(this.jdField_a_of_type_Atno);
+    this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 12, null, 6, null);
   }
 }
 

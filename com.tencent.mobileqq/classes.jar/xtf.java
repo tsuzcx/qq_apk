@@ -1,19 +1,10 @@
 import android.view.View;
 
-class xtf
-  extends xqa
+public abstract interface xtf
 {
-  xtf(xss paramxss) {}
+  public abstract void a(View paramView);
   
-  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    this.a.l();
-  }
+  public abstract void b(View paramView);
 }
 
 

@@ -1,22 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.BaseVMPeakActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class blyd
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
   blyd(blyb paramblyb) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    blyb.a(this.a).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (blyb.a(this.a) != null))
+    {
+      blyb.a(this.a).dismiss();
+      blyb.a(this.a, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blyd
  * JD-Core Version:    0.7.0.1
  */

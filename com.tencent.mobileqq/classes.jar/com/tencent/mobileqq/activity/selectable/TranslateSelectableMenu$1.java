@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import akyu;
+import alwq;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.mobileqq.widget.ContainerView;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.widget.ContainerView;
 public class TranslateSelectableMenu$1
   implements Runnable
 {
-  public TranslateSelectableMenu$1(akyu paramakyu, ContainerView paramContainerView) {}
+  public TranslateSelectableMenu$1(alwq paramalwq, ContainerView paramContainerView) {}
   
   public void run()
   {

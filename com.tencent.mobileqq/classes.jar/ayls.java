@@ -1,71 +1,59 @@
-import android.graphics.Bitmap;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.1;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.2;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.3;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ayls
-  implements AdapterView.OnItemClickListener
+  extends ayjt
 {
-  ayls(aylr paramaylr) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public ayls(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().isShowing()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().dismiss();
-    }
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.getInstance().isWXinstalled()) {
-        i = 2131719722;
-      }
-    }
-    for (;;)
+    super(paramContext, paramQQAppInterface);
+  }
+  
+  public int a(ayka paramayka)
+  {
+    return 5;
+  }
+  
+  public View a(ViewGroup paramViewGroup, ayka paramayka)
+  {
+    paramViewGroup = (aylt)paramayka;
+    paramayka = new TextView(this.a);
+    paramayka.setTextColor(this.a.getResources().getColor(2131165357));
+    paramayka.setTextSize(1, 16.0F);
+    paramayka.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    paramViewGroup.g = paramayka;
+    return paramayka;
+  }
+  
+  public ayka a()
+  {
+    return new aylt(this);
+  }
+  
+  public void f(ayka paramayka)
+  {
+    paramayka = (aylt)paramayka;
+    Object localObject = (aymb)paramayka.a;
+    String str = ((aymb)localObject).n;
+    localObject = bhif.a(this.a, ((aymb)localObject).a, str);
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      if (i != -1) {
-        yyi.a(1, i);
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-        return;
-        if (WXShareHelper.getInstance().isWXsupportApi()) {
-          break label233;
-        }
-        i = 2131719723;
-        break;
-        if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-        {
-          yyi.a(1, 2131698430);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_Aylu.a(true);
-          switch ((int)paramLong)
-          {
-          default: 
-            break;
-          case 0: 
-            ThreadManager.postImmediately(new ShareHelper.1.1(this), null, true);
-            break;
-          case 1: 
-            ThreadManager.postImmediately(new ShareHelper.1.2(this), null, true);
-            break;
-          case 2: 
-          case 3: 
-            ThreadManager.postImmediately(new ShareHelper.1.3(this, paramLong), null, true);
-          }
-        }
-      }
-      label233:
-      i = -1;
+      paramayka.g.setVisibility(8);
+      return;
     }
+    paramayka.g.setVisibility(0);
+    if ((localObject instanceof SpannableString)) {
+      paramayka.g.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+    paramayka.g.setText((CharSequence)localObject);
   }
 }
 

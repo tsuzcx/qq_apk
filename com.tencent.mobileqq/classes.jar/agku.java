@@ -1,20 +1,26 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.qcircleshadow.local.widgets.QCircleAvatarView;
-import com.tencent.biz.qcircleshadow.local.widgets.QCircleFollowView;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 class agku
-  extends aexg
+  extends aofu
 {
-  public FrameLayout a;
-  public LinearLayout a;
-  public QCircleAvatarView a;
-  public QCircleFollowView a;
-  public View b;
-  public LinearLayout b;
-  public TextView b;
+  agku(agkt paramagkt) {}
+  
+  protected void onModifyTroopGameCardSwitch(boolean paramBoolean, long paramLong1, long paramLong2, String paramString)
+  {
+    if (this.a.b == null) {}
+    while ((!this.a.b.equals(String.valueOf(paramLong1))) || (paramBoolean)) {
+      return;
+    }
+    String str = paramString;
+    if (" onModifyTroopGameCardSwitch fail. errCode = " + paramLong2 + ", errInfo = " + paramString == null) {
+      str = "";
+    }
+    QLog.e("TroopGameGuideHelper", 2, str);
+    QQToast.a(agkt.a(this.a).getActivity(), 1, anvx.a(2131697148), 0).b(agkt.a(this.a).getActivity().getTitleBarHeight());
+  }
 }
 
 

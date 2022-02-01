@@ -1,56 +1,56 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
-import java.util.List;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import java.util.HashMap;
 
 public class axld
-  implements BusinessObserver
+  implements ServiceConnection
 {
-  public void a(int paramInt, String paramString, axmn paramaxmn) {}
+  public axld(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult) {}
-  
-  public void a(boolean paramBoolean, String paramString, List<OCRTextSearchInfo.SougouSearchInfo> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    switch (paramInt)
+    MusicPlayerActivity.a(this.a, axkc.a(paramIBinder));
+    try
     {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      if ((paramObject != null) && (paramObject.length == 2))
+      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
+      paramComponentName = MusicPlayerActivity.a(this.a).a();
+      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
+      if (paramComponentName != null)
       {
-        a(paramBoolean, (String)paramObject[0], (List)paramObject[1]);
-        return;
-      }
-      a(false, "", null);
-      return;
-    case 2: 
-      Object localObject = (Object[])paramObject;
-      if ((paramObject != null) && (localObject.length == 2))
-      {
-        paramObject = (Integer)localObject[0];
-        localObject = (TranslateResult)localObject[1];
-        if (localObject != null)
-        {
-          a(paramBoolean, paramObject.intValue(), (TranslateResult)localObject);
-          return;
+        String str = MusicPlayerActivity.a(this.a, paramComponentName);
+        if (MusicPlayerActivity.b().containsKey(str)) {
+          MusicPlayerActivity.a(this.a, (axlk)MusicPlayerActivity.b().get(str), paramIBinder);
         }
-        a(false, paramObject.intValue(), null);
-        return;
+        for (;;)
+        {
+          int i = MusicPlayerActivity.a(this.a).a();
+          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
+          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.c, paramComponentName.h, paramComponentName.g, String.valueOf(paramComponentName.a), paramComponentName.d, MusicPlayerActivity.a(this.a).c());
+          return;
+          MusicPlayerActivity.a(this.a, paramComponentName.c, paramComponentName.h, paramComponentName.e, paramIBinder, false, false);
+        }
       }
-      a(false, -1, null);
       return;
     }
-    paramObject = (Object[])paramObject;
-    if ((paramObject != null) && (paramObject.length == 3))
+    catch (Exception paramComponentName) {}
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    paramComponentName = MusicPlayerActivity.a(this.a);
+    if (paramComponentName != null) {}
+    try
     {
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (axmn)paramObject[2]);
+      paramComponentName.b(MusicPlayerActivity.a(this.a));
       return;
     }
-    a(-1, "", null);
+    catch (RemoteException paramComponentName) {}
   }
 }
 

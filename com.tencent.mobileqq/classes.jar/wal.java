@@ -1,76 +1,59 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.CallSuper;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views.RoundBorderImageView;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.util.List;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.utils.HexUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wal
-  extends vtf<vxd>
 {
-  private Drawable a;
-  public StoryMsgNodeFrameLayout a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public wal(ViewGroup paramViewGroup, int paramInt)
+  public wal()
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout = ((StoryMsgNodeFrameLayout)this.itemView);
+    this.jdField_a_of_type_ArrayOfByte = new byte[1];
   }
   
-  @CallSuper
-  public void a(vxd paramvxd)
+  public void a()
   {
-    super.a(paramvxd);
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setTag(paramvxd.jdField_a_of_type_JavaLangString);
-    b(paramvxd);
-  }
-  
-  protected void b(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a().getResources().getDrawable(2130846526);
-    }
-    UIUtils.setImageByURLDrawable(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView, paramString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_Int, "msg_tab_thumb");
-  }
-  
-  protected void b(vxd paramvxd)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setDisplayState(0);
-    if ((paramvxd.jdField_a_of_type_JavaUtilList != null) && (!paramvxd.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(paramvxd.jdField_a_of_type_JavaUtilList.size(), paramvxd.jdField_a_of_type_JavaUtilList.size() - paramvxd.b);
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(paramvxd);
-  }
-  
-  protected void c(String paramString)
-  {
-    Drawable localDrawable = a().getResources().getDrawable(2130846526);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mMemoryCacheKeySuffix = "msg_tab_thumb";
-    localURLDrawableOptions.mPlayGifImage = true;
-    localURLDrawableOptions.mGifRoundCorner = UIUtils.dip2px(a(), 3.0F);
-    localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_Int;
-    localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b;
-    localURLDrawableOptions.mLoadingDrawable = localDrawable;
-    localURLDrawableOptions.mFailedDrawable = localDrawable;
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramString.setURLDrawableListener(new wam(this));
-    if ((paramString.getStatus() == 1) && (paramString.getCurrDrawable() != null)) {}
-    for (;;)
+    try
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageDrawable(paramString);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("t", this.jdField_a_of_type_Long);
+      localJSONObject.put("ak", HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
+      ((wjl)wjs.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", localJSONObject.toString());
+      ykq.a("Q.qqstory.publish:VideoServerInfoManager", "save -> %s", localJSONObject);
       return;
-      if ((paramString.getStatus() == 3) || (paramString.getStatus() == 2)) {
-        paramString.restartDownload();
-      } else {
-        paramString.startDownload();
-      }
     }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis())
+    {
+      ykq.b("Q.qqstory.publish:VideoServerInfoManager", "server inf validate %s", this);
+      return true;
+    }
+    ykq.d("Q.qqstory.publish:VideoServerInfoManager", "server inf invalidate %s", new Object[] { this });
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Long <= NetConnInfoCenter.getServerTimeMillis() + 600000L;
+  }
+  
+  public String toString()
+  {
+    return "ServerInfo{, userIp='" + this.jdField_a_of_type_JavaLangString + '\'' + ", serverIp1='" + this.b + '\'' + ", serverIp2='" + this.c + '\'' + ", backupServerIp1='" + this.d + '\'' + ", backupServerIp2='" + this.e + '\'' + ", expireTime=" + this.jdField_a_of_type_Long + "" + '\'' + '}';
   }
 }
 

@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import beim;
+import bfpp;
 import com.tencent.biz.qqstory.utils.UIUtils;
 
 public class DotStyleNavBar
@@ -38,7 +38,7 @@ public class DotStyleNavBar
     {
       ImageView localImageView = new ImageView(getContext());
       if (i == this.b) {
-        localImageView.setImageResource(2130848899);
+        localImageView.setImageResource(2130848991);
       }
       for (;;)
       {
@@ -48,7 +48,7 @@ public class DotStyleNavBar
         addView(localImageView, localLayoutParams);
         i += 1;
         break;
-        localImageView.setImageResource(2130848900);
+        localImageView.setImageResource(2130848992);
       }
     }
   }
@@ -67,13 +67,13 @@ public class DotStyleNavBar
     {
       ImageView localImageView = (ImageView)getChildAt(i);
       if (i == this.b) {
-        localImageView.setImageResource(2130848899);
+        localImageView.setImageResource(2130848991);
       }
       for (;;)
       {
         i += 1;
         break;
-        localImageView.setImageResource(2130848900);
+        localImageView.setImageResource(2130848992);
       }
     }
     postInvalidate();
@@ -105,7 +105,7 @@ public class DotStyleNavBar
   {
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
     a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter().getCount());
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new beim(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new bfpp(this));
   }
 }
 

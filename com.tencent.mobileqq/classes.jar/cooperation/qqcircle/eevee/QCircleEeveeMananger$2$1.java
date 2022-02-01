@@ -9,7 +9,7 @@ class QCircleEeveeMananger$2$1
   
   public void run()
   {
-    QCircleEeveeMananger.access$000(this.this$1.this$0, this.val$fcUndealMsgsRsp, this.this$1.val$visitScene);
+    QCircleEeveeMananger.access$100(this.this$1.this$0, this.val$fcUndealMsgsRsp, this.this$1.val$visitScene);
   }
 }
 

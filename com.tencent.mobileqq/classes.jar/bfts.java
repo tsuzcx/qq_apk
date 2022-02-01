@@ -1,32 +1,80 @@
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
+
 public class bfts
+  extends BaseAdapter
 {
-  public int a;
-  public boolean a;
-  public int b;
+  protected SearchReciteArticleFragment a;
+  protected String a;
+  protected List<bftr> a;
   
-  public bfts(int paramInt1, int paramInt2, boolean paramBoolean)
+  public bfts(SearchReciteArticleFragment paramSearchReciteArticleFragment)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment = paramSearchReciteArticleFragment;
   }
   
-  public boolean equals(Object paramObject)
+  public bftr a(int paramInt)
   {
-    if (paramObject == this) {}
-    do
+    return (bftr)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void a(bftr parambftr)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(parambftr);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
     {
-      return true;
-      if (paramObject == null) {
-        return false;
-      }
-      if (!(paramObject instanceof bfts)) {
-        break;
-      }
-      paramObject = (bfts)paramObject;
-    } while ((paramObject.b == this.b) && (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_Boolean == this.jdField_a_of_type_Boolean));
-    return false;
-    return false;
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560707, null, false);
+      paramView = new bftt(this);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131380210));
+      paramView.b = ((TextView)localView.findViewById(2131379855));
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      paramView.jdField_a_of_type_Int = paramInt;
+      Object localObject = a(paramInt);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(SearchReciteArticleFragment.a(this.jdField_a_of_type_JavaLangString, ((bftr)localObject).jdField_a_of_type_JavaLangString, Color.parseColor("#00B6F9")));
+      paramView.b.setText(((bftr)localObject).b);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (bftt)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+    }
   }
 }
 

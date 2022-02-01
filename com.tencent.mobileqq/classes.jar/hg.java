@@ -124,7 +124,7 @@ public class hg
     try
     {
       List localList = paramParameters.getSupportedFocusModes();
-      if ((localList.contains("continuous-video")) && (aoel.a().b)) {
+      if ((localList.contains("continuous-video")) && (aphn.a().b)) {
         str = "continuous-video";
       }
       for (;;)

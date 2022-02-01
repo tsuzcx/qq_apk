@@ -3,7 +3,7 @@ import com.dataline.activities.LiteActivity;
 import com.tencent.widget.ListView;
 
 public class bt
-  implements bjsd
+  implements bldp
 {
   public bt(LiteActivity paramLiteActivity) {}
   

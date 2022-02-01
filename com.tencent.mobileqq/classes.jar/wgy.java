@@ -1,20 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 public class wgy
-  extends vqm
+  extends vzj
 {
-  public int b;
+  public final int a;
+  public CommentLikeFeedItem a;
+  public final String a;
+  public int b = 0;
+  public int c;
   
-  public wgy(qqstory_service.RspWatchVideo paramRspWatchVideo)
+  public wgy(int paramInt1, String paramString, int paramInt2)
   {
-    super(paramRspWatchVideo.result);
-    this.b = paramRspWatchVideo.unread_count.get();
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
+  
+  public wgy(int paramInt1, String paramString, int paramInt2, CommentLikeFeedItem paramCommentLikeFeedItem)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
   }
   
   public String toString()
   {
-    return "WatchVideoResponse{unReadCount=" + this.b + '}';
+    return "InteractionInfoChangeEvent{, feedId=" + this.jdField_a_of_type_JavaLangString + ", what=" + this.b + ", commentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem + ", commentId=" + this.c + '}';
   }
 }
 

@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
-final class aexk
-  implements aeya
+public class aexk
+  implements DialogInterface.OnDismissListener
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public aexk(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 2);
-    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
-    return paramQQAppInterface;
+    this.a.finish();
   }
 }
 

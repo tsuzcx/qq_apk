@@ -1,17 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahzb
+class ahzb
   implements View.OnClickListener
 {
-  public ahzb(SearchContactsActivity paramSearchContactsActivity) {}
+  ahzb(ahyl paramahyl) {}
   
   public void onClick(View paramView)
   {
-    this.a.setResult(0);
-    this.a.finish();
+    paramView.setVisibility(8);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

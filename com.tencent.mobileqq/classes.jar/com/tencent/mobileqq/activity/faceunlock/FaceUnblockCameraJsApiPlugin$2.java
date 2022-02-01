@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import aiuu;
+import ajqj;
 import android.util.Base64;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -10,7 +10,7 @@ import mqq.os.MqqHandler;
 public class FaceUnblockCameraJsApiPlugin$2
   implements Runnable
 {
-  public FaceUnblockCameraJsApiPlugin$2(aiuu paramaiuu, String paramString) {}
+  public FaceUnblockCameraJsApiPlugin$2(ajqj paramajqj, String paramString) {}
   
   public void run()
   {

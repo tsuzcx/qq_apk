@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import kotlin.Metadata;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
-final class bcok
-  implements DialogInterface.OnClickListener
+class bcok
 {
-  bcok(bcof parambcof, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
+  public View a;
+  public TextView a;
+  public URLImageView a;
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bcok(bcoj parambcoj, Context paramContext)
   {
-    if ((paramDialogInterface instanceof QQCustomDialog)) {
-      ((QQCustomDialog)paramDialogInterface).setOnDismissListener(null);
-    }
-    bcof.a(this.jdField_a_of_type_Bcof, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559859, parambcoj.b, false);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368501));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365513));
   }
 }
 

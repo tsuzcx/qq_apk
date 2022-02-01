@@ -1,6 +1,45 @@
-public abstract interface amym
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.4;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+
+public class amym
+  implements biyn
 {
-  public abstract void a();
+  public amym(CmGameCommonShare.4 param4) {}
+  
+  public void onWXShareResp(BaseResp paramBaseResp)
+  {
+    if (paramBaseResp == null) {
+      return;
+    }
+    QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
+    if (paramBaseResp.errCode == 0) {
+      if (this.a.a == 0) {
+        amyk.a(this.a.this$0, 0, 2);
+      }
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      amyk.a(this.a.this$0, 0, 3);
+      continue;
+      if (paramBaseResp.errCode == -2)
+      {
+        if (this.a.a == 0) {
+          amyk.a(this.a.this$0, 2, 2);
+        } else {
+          amyk.a(this.a.this$0, 2, 3);
+        }
+      }
+      else if (this.a.a == 0) {
+        amyk.a(this.a.this$0, 1, 2);
+      } else {
+        amyk.a(this.a.this$0, 1, 3);
+      }
+    }
+  }
 }
 
 

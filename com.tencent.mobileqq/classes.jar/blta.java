@@ -1,47 +1,17 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.TextView;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class blta
-  extends blny
+class blta
+  extends AVAudioCtrl.EnableSpeakerCompleteCallback
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  blta(blsw paramblsw) {}
   
-  public blta(ViewStub paramViewStub)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    super(paramViewStub);
-  }
-  
-  protected void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366255);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366254));
-  }
-  
-  public void b()
-  {
-    a();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692333);
-  }
-  
-  public void c()
-  {
-    if (a())
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.b(paramBoolean, paramInt);
     }
-  }
-  
-  public void d()
-  {
-    if (!a()) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

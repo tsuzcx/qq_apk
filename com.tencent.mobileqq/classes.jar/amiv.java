@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.widget.SquareImageView;
 
-class amiv
-  implements Comparator<ApolloActionData>
+public class amiv
 {
-  amiv(amir paramamir) {}
-  
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
-  {
-    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
-      return 0;
-    }
-    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
-      return 1;
-    }
-    return -1;
-  }
+  public View a;
+  public SquareImageView a;
 }
 
 

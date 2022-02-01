@@ -1,22 +1,16 @@
-class aoxb
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aoxb
+  extends aoui
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  
-  public void a()
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    this.a = null;
-    this.b = null;
-    this.c = null;
-    this.d = null;
-    this.e = null;
-    this.f = null;
-    this.g = null;
+    paramQQAppInterface = new aoxa(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "teamwork";
+    paramQQAppInterface.c = "opendoclist";
+    return paramQQAppInterface;
   }
 }
 

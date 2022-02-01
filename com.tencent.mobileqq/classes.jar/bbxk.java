@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import mqq.app.QQPermissionCallback;
 
 public class bbxk
+  implements QQPermissionCallback
 {
-  private static final String[] a = { "libgnustl_shared.so", "libSNPE.so", "libQMCF_snpe.so" };
+  public bbxk(ScreenShotFragment paramScreenShotFragment) {}
   
-  private static boolean b()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    String str = bbxj.b();
-    synchronized (bbxj.a())
-    {
-      boolean bool1 = FileUtils.fileExists(str + "libQMCF.so");
-      boolean bool2 = FileUtils.fileExists(str + a[2]);
-      if (QLog.isColorLevel()) {
-        QLog.i("SVAF_SoLoad", 2, String.format("isArtFilterSoExist, qmcfso[%s], snpeso[%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      }
-      return bool1;
-    }
+    bhdj.a(ScreenShotFragment.a(this.a), this.a.getString(2131698610));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    ScreenShotFragment.a(this.a);
   }
 }
 

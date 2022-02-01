@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.proxyimpl.ColorNotePlugin.1;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 
-public class bjcv
-  implements DialogInterface.OnClickListener
+class bjcv
+  implements bjgv
 {
-  public bjcv(ColorNotePlugin.1 param1) {}
+  bjcv(bjcu parambjcu, ImageView paramImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    this.a.a.fail();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
   }
 }
 

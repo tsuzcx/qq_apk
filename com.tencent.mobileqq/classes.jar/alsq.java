@@ -1,29 +1,44 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView.2.1;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 
-public class alsq
-  implements Animation.AnimationListener
+class alsq
+  implements INetEngine.INetEngineListener
 {
-  public alsq(CmGameDebugView paramCmGameDebugView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onResp(NetResp paramNetResp)
   {
-    if (CmGameDebugView.a(this.a))
+    Object localObject = (alst)paramNetResp.mReq.getUserData();
+    lbd.f("VideoFilterTools", "download file call back. file = " + ((alst)localObject).a);
+    if (paramNetResp.mResult != 0)
     {
-      CmGameDebugView.a(this.a).postDelayed(new CmGameDebugView.2.1(this), 0L);
-      CmGameDebugView.a(this.a, false);
+      lbd.f("VideoFilterTools", "download file faild. errcode = " + paramNetResp.mErrCode);
+      return;
     }
-    if (CmGameDebugView.b(this.a)) {
-      CmGameDebugView.b(this.a, 0);
+    if (!((alst)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.mReq.mOutPath)))
+    {
+      lbd.f("VideoFilterTools", "download file faild : md5 is not match.");
+      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
+      return;
+    }
+    lbd.f("VideoFilterTools", "download file successed.");
+    try
+    {
+      localObject = also.a();
+      FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, (String)localObject, false);
+      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
+      return;
+    }
+    catch (IOException paramNetResp)
+    {
+      paramNetResp.printStackTrace();
+      lbd.f("VideoFilterTools", "BEAUTY_ZIP unzip file faild.");
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

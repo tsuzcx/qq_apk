@@ -1,33 +1,41 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.view.TextHeaderView;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.qphone.base.util.QLog;
 
-public class auah
-  implements View.OnClickListener
+class auah
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public auah(TextHeaderView paramTextHeaderView, Activity paramActivity, MessageRecord paramMessageRecord, MessageForStructing paramMessageForStructing) {}
+  auah(auaa paramauaa) {}
   
-  public void onClick(View paramView)
+  public void onAudioFocusChange(int paramInt)
   {
-    if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
-    {
-      Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult((Intent)localObject, 0);
-      localObject = atzc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 0);
-      abet.a(alvx.a(), "769", "205019", (String)localObject, "76901", "1", "160", new String[] { atzc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "", "20" });
-      ((VasExtensionHandler)alvx.a().getBusinessHandler(71)).a(3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("pa_msgId"), TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+    if (auaa.a(this.a) != null) {
+      QLog.w("FileBrowserPresenter<FileAssistant>", 1, "onAudioFocusChange:mVideoView null!");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    boolean bool;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          bool = auaa.a(this.a).isPlaying();
+          if (paramInt != -2) {
+            break;
+          }
+        } while (!bool);
+        auaa.a(this.a);
+        return;
+        if (paramInt != 1) {
+          break;
+        }
+      } while ((bool) || (this.a.a == null) || (!(this.a.a instanceof FileBrowserActivity)) || (!((FileBrowserActivity)this.a.a).isResume()));
+      auaa.c(this.a);
+      return;
+    } while ((paramInt != -1) || (!bool));
+    auaa.a(this.a);
   }
 }
 

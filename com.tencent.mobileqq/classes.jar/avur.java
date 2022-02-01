@@ -1,65 +1,48 @@
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
 
 public class avur
-  extends avtg
 {
-  public avur(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
-  
-  public void a(boolean paramBoolean)
+  public static long a(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmTokenResponse:  isSuccess: " + paramBoolean);
-    }
-    super.a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean, avuk paramavuk)
-  {
-    if (paramBoolean) {
-      this.a.a(paramavuk);
-    }
-    super.a(paramBoolean, paramavuk);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
-    }
-    Object localObject;
-    if ((paramBoolean) && ((paramObject instanceof avue)))
+    if (paramBundle == null) {}
+    do
     {
-      localObject = (avue)paramObject;
-      this.a.a((avue)localObject);
+      return 0L;
+      paramBundle = paramBundle.getString("roomid", "");
+    } while (TextUtils.isEmpty(paramBundle));
+    return Long.parseLong(paramBundle);
+  }
+  
+  public static String a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      paramBundle = "";
     }
-    for (;;)
+    String str;
+    do
     {
-      super.a(paramBoolean, paramObject);
-      return;
-      if ((paramObject instanceof Integer))
-      {
-        localObject = (Integer)paramObject;
-        this.a.a((Integer)localObject);
-      }
-    }
+      return paramBundle;
+      str = paramBundle.getString("roomtype");
+      paramBundle = str;
+    } while (!TextUtils.isEmpty(str));
+    return "0";
   }
   
-  public void b(boolean paramBoolean)
+  public static String b(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onRejectQRResponse:  isSuccess: " + paramBoolean);
+    if (paramBundle == null) {
+      return "";
     }
-    super.b(paramBoolean);
+    return paramBundle.getString("fromid", "");
   }
   
-  public void b(boolean paramBoolean, Object paramObject)
+  public static String c(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    if (paramBundle == null) {
+      return "";
     }
-    this.a.a(paramBoolean, paramObject);
-    super.b(paramBoolean, paramObject);
+    return paramBundle.getString("shakespearetime", "");
   }
 }
 

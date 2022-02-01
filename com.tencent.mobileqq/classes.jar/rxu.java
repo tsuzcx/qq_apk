@@ -1,20 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView;
-
-public class rxu
-  extends AnimatorListenerAdapter
+final class rxu
+  extends rxs<rxx, rxw, rxv>
 {
-  public rxu(VideoFeedsLikeAnimate.LikeExplosionCenterView paramLikeExplosionCenterView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(rxx paramrxx, rxw paramrxw, int paramInt, rxv paramrxv)
   {
-    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
+    switch (paramInt)
+    {
+    default: 
+      paramrxx.a(paramrxw);
+      return;
+    case 1: 
+      paramrxx.a(paramrxw, paramrxv.a, paramrxv.b);
+      return;
+    case 2: 
+      paramrxx.b(paramrxw, paramrxv.a, paramrxv.b);
+      return;
+    case 3: 
+      paramrxx.a(paramrxw, paramrxv.a, paramrxv.c, paramrxv.b);
+      return;
+    }
+    paramrxx.c(paramrxw, paramrxv.a, paramrxv.b);
   }
 }
 

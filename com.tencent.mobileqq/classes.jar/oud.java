@@ -1,21 +1,15 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.view.View;
+import android.view.animation.Animation;
 
 class oud
-  implements AbsListView.OnScrollListener
+  extends bkxp
 {
-  oud(ouc paramouc) {}
+  oud(ouc paramouc, View paramView) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a != null)
-    {
-      paramInt1 = ouc.a(this.a, paramInt1);
-      this.a.a.onScroll(paramInt1);
-    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

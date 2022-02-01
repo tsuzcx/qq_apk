@@ -1,17 +1,33 @@
-import com.tencent.image.URLDrawable.DownloadListener;
+import androidx.annotation.Nullable;
 
-class belh
-  implements URLDrawable.DownloadListener
+public class belh
 {
-  belh(bele parambele) {}
+  public String a;
+  public String b;
   
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public belh(String paramString1, String paramString2)
   {
-    bele.a(this.a);
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof belh)) {
+        return false;
+      }
+      paramObject = (belh)paramObject;
+    } while ((bemq.a(this.a, paramObject.a)) && (bemq.a(this.b, paramObject.b)));
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "AText{text='" + this.a + '\'' + ", attribs='" + this.b + '\'' + '}';
   }
 }
 

@@ -10,8 +10,8 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.R.styleable;
-import mvi;
-import mvj;
+import mwg;
+import mwh;
 
 public class RatingBar
   extends LinearLayout
@@ -20,7 +20,7 @@ public class RatingBar
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private Object jdField_a_of_type_JavaLangObject;
-  private mvj jdField_a_of_type_Mvj;
+  private mwh jdField_a_of_type_Mwh;
   private boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
@@ -38,7 +38,7 @@ public class RatingBar
     while (i < this.jdField_a_of_type_Int)
     {
       localObject = a(paramContext, paramAttributeSet);
-      ((ImageView)localObject).setOnClickListener(new mvi(this));
+      ((ImageView)localObject).setOnClickListener(new mwg(this));
       addView((View)localObject);
       i += 1;
     }
@@ -65,9 +65,9 @@ public class RatingBar
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnRatingListener(mvj parammvj)
+  public void setOnRatingListener(mwh parammwh)
   {
-    this.jdField_a_of_type_Mvj = parammvj;
+    this.jdField_a_of_type_Mwh = parammwh;
   }
   
   public void setStar(int paramInt, boolean paramBoolean)

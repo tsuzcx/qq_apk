@@ -1,63 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class tik
-  implements INetInfoHandler
+class tik
+  implements tir
 {
-  public tik(BridgeModule paramBridgeModule, String paramString) {}
+  tik(tia paramtia) {}
   
-  public void onNetMobile2None()
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_NONE");
+    if ((paramProteusItemData instanceof AuthorData))
+    {
+      paramViewBase = (AuthorData)paramProteusItemData;
+      if (!TextUtils.isEmpty(paramViewBase.jdField_a_of_type_JavaLangString)) {
+        break label23;
+      }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_WIFI,ssid=" + paramString);
+    label23:
+    while (paramViewBase.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_XG,ssid=" + paramString);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_WIFI,ssid=" + paramString);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_XG,ssid=" + paramString);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_NONE");
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
+    paramContext = paramViewBase.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    pqx.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramContext;
+    paramProteusItemData = ((AuthorData)paramProteusItemData).c;
+    tjg.a(this.a.a.getContext(), paramContext, paramProteusItemData, paramViewBase.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tik
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.ecshopassit.view;
 
 import android.os.Bundle;
-import bgxy;
+import biiq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import ohz;
+import opv;
 
 public class EcshopWebviewPool$1
   implements Runnable
@@ -16,11 +16,11 @@ public class EcshopWebviewPool$1
     {
       Object localObject = new Bundle();
       ((Bundle)localObject).putInt("_accelerator_mode_", 3);
-      bgxy.a().a((Bundle)localObject);
+      biiq.a().a((Bundle)localObject);
       localObject = EcshopWebview.a(BaseApplicationImpl.sApplication);
-      ohz.a(this.this$0).put(this.a, localObject);
+      opv.a(this.this$0).put(this.a, localObject);
       if (QLog.isColorLevel()) {
-        QLog.i("Ecshop_EcshopWebviewPool", 2, "【init】webViewLinkedList.size: " + ohz.a(this.this$0).size());
+        QLog.i("Ecshop_EcshopWebviewPool", 2, "【init】webViewLinkedList.size: " + opv.a(this.this$0).size());
       }
     }
   }

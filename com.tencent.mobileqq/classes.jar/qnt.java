@@ -1,13 +1,15 @@
-import android.view.View;
-import com.tencent.pts.utils.PTSNodeVirtualUtil.INodeVirtualOnViewClick;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-final class qnt
-  implements PTSNodeVirtualUtil.INodeVirtualOnViewClick
+class qnt
+  implements ViewBase.OnClickListener
 {
-  public void onViewClicked(View paramView)
+  qnt(qnp paramqnp, qfw paramqfw, Container paramContainer) {}
+  
+  public void onClick(ViewBase paramViewBase)
   {
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Qnp.a(this.jdField_a_of_type_Qfw, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
   }
 }
 

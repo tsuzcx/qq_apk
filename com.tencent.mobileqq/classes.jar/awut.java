@@ -1,21 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.10.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
 public class awut
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  awut(awur paramawur) {}
+  public awut(MedalGuideView paramMedalGuideView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.f(paramView);
-    new awrs().h("video").i("playpage_fw_click").a().a(this.a.a);
-    ThreadManagerV2.excute(new PlayOperationViewModel.10.1(this, (awhw)this.a.a.getManager(106)), 16, null, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
+    f = ((Float)paramValueAnimator.getAnimatedValue("scale")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleX(f);
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleY(f);
+    f = ((Float)paramValueAnimator.getAnimatedValue("translationX")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationX(f);
+    f = ((Float)paramValueAnimator.getAnimatedValue("translationY")).floatValue();
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
+    f = paramValueAnimator.getAnimatedFraction();
+    if ((!this.a.jdField_a_of_type_Boolean) && (f >= 1.0F))
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_Bkys.sendEmptyMessage(3);
+    }
+    if (f >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
+    }
   }
 }
 

@@ -1,54 +1,53 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ColumnTwoVideoProteusItem.ColumnSubscriptionCallback.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.RspBody;
-import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnRsp;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ClipLayout;
 
 public class qbm
-  extends nmf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  private rdl jdField_a_of_type_Rdl;
+  public qbm(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt1, int paramInt2) {}
   
-  qbm(rdl paramrdl, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Rdl = paramrdl;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (paramInt == 0)
+    float f2 = paramValueAnimator.getAnimatedFraction();
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).setAlpha(f2 * 0.5F + 0.5F);
+    if (f2 <= 0.26F) {
+      ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).a(ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment), ReadInjoyIMAXAdFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment), ReadInjoyIMAXAdFragment.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment), ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment));
+    }
+    float f1;
+    while (f2 <= 0.22F)
     {
-      paramInt = this.jdField_a_of_type_Rdl.d;
-      if (this.jdField_a_of_type_Int == 1) {
-        paramInt += 1;
-      }
-      for (;;)
-      {
-        pkp.a().a(this.jdField_a_of_type_Rdl.jdField_a_of_type_Int, this.jdField_a_of_type_Int, paramInt);
-        oidb_0xd4b.RspBody localRspBody = new oidb_0xd4b.RspBody();
-        try
-        {
-          localRspBody.mergeFrom(paramArrayOfByte);
-          paramInt = ((oidb_0xd4b.SubscribeVideoColumnRsp)((oidb_0xd4b.RspBody)localRspBody.get()).msg_subscribe_video_column_rsp.get()).uint32_guide_type.get();
-          QLog.i("ColumnTwoVideoProteusItem", 1, "ColumnSubscriptionCallback " + paramInt);
-          ThreadManager.getUIHandler().post(new ColumnTwoVideoProteusItem.ColumnSubscriptionCallback.1(this, paramBundle, paramInt));
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          QLog.e("ColumnTwoVideoProteusItem", 1, paramArrayOfByte.toString());
-          return;
-        }
-        paramInt -= 1;
+      ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).setVisibility(0);
+      f1 = 0.97F - f2 / 0.22F * 0.4F;
+      ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).setScaleX(f1);
+      ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).setScaleY(f1);
+      ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).setAlpha(f1);
+      return;
+      if (f2 <= 0.866F) {
+        ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).a((int)(ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment) * (1.0F - f2 / 0.866F)), (int)(ReadInjoyIMAXAdFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment) * (1.0F - f2)), (int)(ReadInjoyIMAXAdFragment.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment) + (this.jdField_a_of_type_Int - ReadInjoyIMAXAdFragment.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment)) * (f2 / 0.866F)), (int)(ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment) + (this.b - ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment)) * f2));
+      } else {
+        ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).a(0, (int)(ReadInjoyIMAXAdFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment) * (1.0F - f2)), this.jdField_a_of_type_Int, (int)(ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment) + (this.b - ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment)) * f2));
       }
     }
-    QLog.e("ColumnTwoVideoProteusItem", 1, "ColumnTwoVideoProteusItem subscribe column fail. columnId:" + this.jdField_a_of_type_Rdl.jdField_a_of_type_Int + " subscribeAction:" + this.jdField_a_of_type_Int);
+    if (f2 <= 2.0F * 0.22F)
+    {
+      f1 = (f2 - 0.22F) / 0.22F;
+      f2 = (f2 - 0.22F) / 0.22F * 0.3F + 0.5700001F;
+      ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).setScaleX(f2);
+      ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).setScaleY(f2);
+      ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).setAlpha(0.5700001F - 0.3F * f1);
+      return;
+    }
+    if (f2 <= 0.68F)
+    {
+      f1 = (f2 - 0.52F) / 0.16F;
+      ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).setAlpha(0.4F - f1 * 0.4F);
+      return;
+    }
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).setAlpha(0.0F);
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).setVisibility(8);
   }
 }
 

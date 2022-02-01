@@ -1,82 +1,28 @@
-public final class akur
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qphone.base.util.QLog;
+
+public class akur
+  implements View.OnFocusChangeListener
 {
-  public final int a;
-  public final int b;
+  public akur(LingHbFragment paramLingHbFragment) {}
   
-  public akur(int paramInt1, int paramInt2)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static akur a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
-    }
-    int i = paramString.indexOf('*');
-    if (i < 0) {
-      i = paramString.indexOf('x');
+    if (paramBoolean) {
+      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
     }
     for (;;)
     {
-      if (i < 0) {
-        throw a(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
       }
-      try
-      {
-        akur localakur = new akur(Integer.parseInt(paramString.substring(0, i)), Integer.parseInt(paramString.substring(i + 1)));
-        return localakur;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        throw a(paramString);
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        throw a(paramString);
-      }
+      return;
+      LingHbFragment.a(this.a).a();
     }
-  }
-  
-  private static NumberFormatException a(String paramString)
-  {
-    throw new NumberFormatException("Invalid SizeF: \"" + paramString + "\"");
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool = true;
-    if (paramObject == null) {}
-    do
-    {
-      return false;
-      if (this == paramObject) {
-        return true;
-      }
-    } while (!(paramObject instanceof akur));
-    paramObject = (akur)paramObject;
-    if ((this.a == paramObject.a) && (this.b == paramObject.b)) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public String toString()
-  {
-    return this.a + "x" + this.b;
   }
 }
 

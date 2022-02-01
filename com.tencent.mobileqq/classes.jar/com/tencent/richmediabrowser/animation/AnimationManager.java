@@ -69,10 +69,10 @@ public class AnimationManager
   
   public void init()
   {
-    this.recyclerView = this.mContext.findViewById(2131376172);
-    this.animationView = ((AnimationView)this.mContext.findViewById(2131362699));
-    this.rootView = this.mContext.findViewById(2131376679);
-    this.bgView = this.mContext.findViewById(2131363274);
+    this.recyclerView = this.mContext.findViewById(2131376421);
+    this.animationView = ((AnimationView)this.mContext.findViewById(2131362714));
+    this.rootView = this.mContext.findViewById(2131376947);
+    this.bgView = this.mContext.findViewById(2131363339);
   }
   
   public void onDestroy()

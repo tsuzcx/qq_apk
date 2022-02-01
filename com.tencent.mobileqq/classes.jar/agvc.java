@@ -1,14 +1,11 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
 
 public class agvc
-  implements agut
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramagap.a(paramMessageRecord, paramLinearLayout, paramafce, paramagcc, paramString);
-  }
+  public int a;
+  public String a;
+  
+  public agvc(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
 }
 
 

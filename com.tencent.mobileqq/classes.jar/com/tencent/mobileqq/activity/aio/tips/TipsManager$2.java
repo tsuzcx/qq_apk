@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aewx;
-import ahqs;
+import afoi;
+import ailr;
 import java.util.List;
 
 public class TipsManager$2
   implements Runnable
 {
-  public TipsManager$2(ahqs paramahqs) {}
+  public TipsManager$2(ailr paramailr) {}
   
   public void run()
   {
-    if (ahqs.a(this.this$0) != null) {
-      ahqs.a(this.this$0).a(ahqs.a(this.this$0));
+    if (ailr.a(this.this$0) != null) {
+      ailr.a(this.this$0).a(ailr.a(this.this$0));
     }
-    ahqs.a(this.this$0, null);
+    ailr.a(this.this$0, null);
     if (this.this$0.a != null) {
       this.this$0.a.clear();
     }

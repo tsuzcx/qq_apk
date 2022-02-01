@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ark.API;
 
-import aopa;
-import aopc;
-import aope;
+import apsb;
+import apsd;
+import apsf;
 
 public class ArkAppEventObserverManager$ArkConnectionHandler$2
   implements Runnable
 {
-  public ArkAppEventObserverManager$ArkConnectionHandler$2(aopc paramaopc) {}
+  public ArkAppEventObserverManager$ArkConnectionHandler$2(apsd paramapsd) {}
   
   public void run()
   {
-    if ((aopa.a(this.a.a) != null) && (!"cellular".equals(aopa.b(this.a.a))))
+    if ((apsb.a(this.a.a) != null) && (!"cellular".equals(apsb.b(this.a.a))))
     {
-      aopa.a(this.a.a).a(true, "cellular");
-      aopa.a(this.a.a, "cellular");
+      apsb.a(this.a.a).a(true, "cellular");
+      apsb.a(this.a.a, "cellular");
     }
   }
 }

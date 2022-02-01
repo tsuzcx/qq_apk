@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.utils;
 
-import yqa;
-import yqe;
+import zet;
+import zex;
 
 public class PollWidgetUtils$WidgetWrapper$3
   implements Runnable
 {
   public void run()
   {
-    if (yqe.a(this.this$0))
+    if (zex.a(this.this$0))
     {
-      yqe.a(this.this$0, false);
+      zex.a(this.this$0, false);
       this.this$0.a.e_(false);
     }
   }

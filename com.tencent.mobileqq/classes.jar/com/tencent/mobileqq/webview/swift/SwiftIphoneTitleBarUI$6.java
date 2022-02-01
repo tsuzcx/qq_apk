@@ -2,12 +2,12 @@ package com.tencent.mobileqq.webview.swift;
 
 import android.text.TextUtils;
 import android.widget.TextView;
-import bgtw;
+import bieo;
 
 public class SwiftIphoneTitleBarUI$6
   implements Runnable
 {
-  public SwiftIphoneTitleBarUI$6(bgtw parambgtw, TextView paramTextView1, TextView paramTextView2, String paramString) {}
+  public SwiftIphoneTitleBarUI$6(bieo parambieo, TextView paramTextView1, TextView paramTextView2, String paramString) {}
   
   public void run()
   {

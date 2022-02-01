@@ -1,57 +1,85 @@
-import UserGrowth.stGlobalConfig;
-import UserGrowth.stPopWindowsConfig;
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import java.net.URLDecoder;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskDataMgr.receiveAd.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-class uje
-  implements uyv
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskDataMgr;", "", "()V", "adData", "getAdData", "()Ljava/lang/Object;", "setAdData", "(Ljava/lang/Object;)V", "adResData", "Lorg/json/JSONObject;", "getAdResData", "()Lorg/json/JSONObject;", "setAdResData", "(Lorg/json/JSONObject;)V", "resCheckInfo", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "getResCheckInfo", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "setResCheckInfo", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;)V", "isNormalMask", "", "receiveAd", "", "adInfo", "resetDataMgr", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class uje
 {
-  uje(ujd paramujd, Context paramContext) {}
+  @Nullable
+  private static volatile Object jdField_a_of_type_JavaLangObject;
+  @Nullable
+  private static volatile JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  public static final uje a;
+  @Nullable
+  private static volatile ujq jdField_a_of_type_Ujq;
   
-  public void a(String paramString, int paramInt)
+  static
   {
-    uyc.a(ujd.a(this.jdField_a_of_type_Ujd), "biz_src_jc_gzh_weishi", paramString, 1, ujd.a(this.jdField_a_of_type_Ujd).link_strategy_type, ujd.a(this.jdField_a_of_type_Ujd));
-    uvi.a(114, ujd.b(this.jdField_a_of_type_Ujd), ujd.c(this.jdField_a_of_type_Ujd), this.jdField_a_of_type_Ujd.a.windowsid);
-    ujd.a(this.jdField_a_of_type_Ujd, 114, "popup_clk_ws");
-    WSPublicAccReport.getInstance().reportClickRichBlockPop(1000003, this.jdField_a_of_type_Ujd.a.windowsid, this.jdField_a_of_type_Ujd.a.trace_id, ujd.a(this.jdField_a_of_type_Ujd));
+    jdField_a_of_type_Uje = new uje();
   }
   
-  public void b(String paramString, int paramInt)
+  @Nullable
+  public final Object a()
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    return jdField_a_of_type_JavaLangObject;
+  }
+  
+  @Nullable
+  public final JSONObject a()
+  {
+    return jdField_a_of_type_OrgJsonJSONObject;
+  }
+  
+  @Nullable
+  public final ujq a()
+  {
+    return jdField_a_of_type_Ujq;
+  }
+  
+  public final void a()
+  {
+    jdField_a_of_type_JavaLangObject = null;
+    jdField_a_of_type_OrgJsonJSONObject = (JSONObject)null;
+    jdField_a_of_type_Ujq = (ujq)null;
+    QLog.d("ReadInJoySuperMaskAd", 1, "resetDataMgr");
+  }
+  
+  public final void a(@Nullable Object paramObject)
+  {
+    if (((paramObject instanceof AdvertisementInfo)) && (uks.j((AdvertisementInfo)paramObject)))
     {
-      paramString = URLDecoder.decode(paramString);
-      pay.d(ujd.a(this.jdField_a_of_type_Ujd), paramString);
-      uya.a("weishi-813", "阻断rich弹窗:" + paramString);
-      uvi.a(140, ujd.b(this.jdField_a_of_type_Ujd), ujd.c(this.jdField_a_of_type_Ujd), this.jdField_a_of_type_Ujd.a.windowsid);
-      uvr.c(140, this.jdField_a_of_type_Ujd.a.type, this.jdField_a_of_type_Ujd.a.windowsid);
-      WSPublicAccReport.getInstance().reportClickRichBlockPop(1000004, this.jdField_a_of_type_Ujd.a.windowsid, this.jdField_a_of_type_Ujd.a.trace_id, ujd.a(this.jdField_a_of_type_Ujd));
-      return;
+      QLog.d("ReadInJoySuperMaskAd", 1, "receiveAd");
+      ujj.a.a(1);
+      ujg.a.b();
+      jdField_a_of_type_JavaLangObject = paramObject;
+      ujg.a(ujg.a, "recviceMask", null, 2, null);
+      ThreadManagerV2.post((Runnable)new SuperMaskDataMgr.receiveAd.1(paramObject), 10, null, false);
     }
-    uya.c("weishi-813", "阻断rich弹窗:context 不是Activity");
   }
   
-  public void c(String paramString, int paramInt)
+  public final void a(@Nullable JSONObject paramJSONObject)
   {
-    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = 1;
-    localWSDownloadParams.mLinkStrategyType = ujd.a(this.jdField_a_of_type_Ujd).link_strategy_type;
-    paramInt = 401;
-    if (!ujd.a(this.jdField_a_of_type_Ujd)) {
-      paramInt = 402;
-    }
-    localWSDownloadParams.mEventId = paramInt;
-    localWSDownloadParams.mTestId = uvr.b();
-    localWSDownloadParams.mScheme = paramString;
-    unq.a((Activity)ujd.a(this.jdField_a_of_type_Ujd), localWSDownloadParams, false);
-    ujd.a(this.jdField_a_of_type_Ujd, 115, "popup_dl_ws");
-    WSPublicAccReport.getInstance().reportClickRichBlockPop(1000002, this.jdField_a_of_type_Ujd.a.windowsid, this.jdField_a_of_type_Ujd.a.trace_id, ujd.a(this.jdField_a_of_type_Ujd));
+    jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
   }
   
-  public void d(String paramString, int paramInt) {}
+  public final void a(@Nullable ujq paramujq)
+  {
+    jdField_a_of_type_Ujq = paramujq;
+  }
+  
+  public final boolean a()
+  {
+    Object localObject2 = jdField_a_of_type_JavaLangObject;
+    Object localObject1 = localObject2;
+    if (!(localObject2 instanceof AdvertisementInfo)) {
+      localObject1 = null;
+    }
+    return uks.k((AdvertisementInfo)localObject1);
+  }
 }
 
 

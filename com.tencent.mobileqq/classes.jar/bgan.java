@@ -1,225 +1,136 @@
-import QQService.EVIPSPEC;
 import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.business.qvip.QVipBigClubSVIP9Config;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.io.File;
-import mqq.app.AppRuntime;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.support.annotation.RequiresApi;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import com.tencent.qphone.base.util.QLog;
 
 public class bgan
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private static long[] a = { 0L, 0L };
+  public static int a;
+  public static boolean a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private bgao jdField_a_of_type_Bgao;
+  private int b = 1;
+  private int c;
   
-  public static int a(bgao parambgao)
+  public bgan(Activity paramActivity)
   {
-    if ((parambgao == bgao.b) || (parambgao == bgao.c)) {}
-    do
-    {
-      return 2130846978;
-      if (parambgao == bgao.d) {
-        return 2130846977;
-      }
-      if (parambgao == bgao.e) {
-        return 2130846979;
-      }
-    } while ((parambgao != bgao.f) && (parambgao != bgao.g));
-    return 2130846975;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public static String a(int paramInt1, int paramInt2, long paramLong)
+  public static int a(Activity paramActivity)
   {
-    return a(paramInt1, paramInt2, paramLong, false);
-  }
-  
-  private static String a(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    for (String str = aqgq.c().mAPngIconUrl;; str = aqgq.c().mAPngIconUrlNewGray)
-    {
-      if (paramBoolean) {
-        paramLong = 0L;
-      }
-      return String.format(str, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
+    paramActivity = paramActivity.getWindow().getDecorView();
+    int i = paramActivity.getHeight();
+    if (a(paramActivity) > i * 3 / 4) {
+      return 2;
     }
+    return 1;
   }
   
-  public static String a(String paramString1, String paramString2)
+  public static int a(View paramView)
   {
-    return paramString1 + File.separator + paramString2 + ".png";
+    Rect localRect = new Rect();
+    paramView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
   }
   
-  public static String a(AppRuntime paramAppRuntime, String paramString, EVIPSPEC paramEVIPSPEC)
+  public static void a(Activity paramActivity)
   {
-    Object localObject = (amsw)paramAppRuntime.getManager(51);
-    if (localObject != null)
+    jdField_a_of_type_Int = a(paramActivity.getWindow().getDecorView());
+    jdField_a_of_type_Boolean = a(paramActivity);
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    Rect localRect = new Rect();
+    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    if (QLog.isColorLevel()) {
+      QLog.d("AtPanelStatus", 2, "onGlobalLayout, top=" + localRect.top + " bottom=" + localRect.bottom);
+    }
+    return localRect.top == 0;
+  }
+  
+  @RequiresApi(api=16)
+  public void a()
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
     {
-      localObject = ((amsw)localObject).e(paramString);
-      if (localObject != null)
-      {
-        int i;
-        if (paramEVIPSPEC == EVIPSPEC.E_SP_BIGCLUB)
-        {
-          i = VipUtils.a(paramAppRuntime, paramString, EVIPSPEC.E_SP_BIGCLUB);
-          return a((i & 0xF) << 8 | i >> 8, ((Friends)localObject).getServiceLevel(paramEVIPSPEC), ((Friends)localObject).bigClubTemplateId, false);
-        }
-        if (paramEVIPSPEC == EVIPSPEC.E_SP_SUPERVIP)
-        {
-          i = VipUtils.a(paramAppRuntime, paramString, EVIPSPEC.E_SP_SUPERVIP);
-          return a((i & 0xF) << 8 | i >> 8, ((Friends)localObject).getServiceLevel(paramEVIPSPEC), ((Friends)localObject).superVipTemplateId, false);
-        }
-        if (paramEVIPSPEC == EVIPSPEC.E_SP_QQVIP)
-        {
-          i = VipUtils.a(paramAppRuntime, paramString, EVIPSPEC.E_SP_QQVIP);
-          return a((i & 0xF) << 8 | i >> 8, ((Friends)localObject).getServiceLevel(paramEVIPSPEC), 0L, false);
-        }
-      }
-    }
-    return a(0, 0, 0L, false);
-  }
-  
-  public static String a(AppRuntime paramAppRuntime, String paramString, bgao parambgao, boolean paramBoolean)
-  {
-    paramAppRuntime = (amsw)paramAppRuntime.getManager(51);
-    if (paramAppRuntime != null)
-    {
-      paramAppRuntime = paramAppRuntime.e(paramString);
-      if (paramAppRuntime != null)
-      {
-        int i;
-        if ((parambgao == bgao.f) || (parambgao == bgao.g))
-        {
-          i = paramAppRuntime.getServiceLevel(EVIPSPEC.E_SP_BIGCLUB);
-          return a(parambgao.a, i, paramAppRuntime.bigClubTemplateId, paramBoolean);
-        }
-        if ((parambgao == bgao.d) || (parambgao == bgao.e))
-        {
-          i = paramAppRuntime.getServiceLevel(EVIPSPEC.E_SP_SUPERVIP);
-          return a(parambgao.a, i, paramAppRuntime.superVipTemplateId, paramBoolean);
-        }
-        if ((parambgao == bgao.b) || (parambgao == bgao.c))
-        {
-          i = paramAppRuntime.getServiceLevel(EVIPSPEC.E_SP_QQVIP);
-          return a(parambgao.a, i, 0L, paramBoolean);
-        }
-      }
-    }
-    return a(0, 0, 0L, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
-  {
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    paramString = aqgq.c().getVipIconSettingsUrl(paramString);
-    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("uin", paramQQAppInterface);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, paramString, 256L, localIntent, false, -1);
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return paramInt > 0;
-  }
-  
-  public static int[] a(AppRuntime paramAppRuntime, String paramString)
-  {
-    paramAppRuntime = (amsw)paramAppRuntime.getManager(51);
-    if (paramAppRuntime != null)
-    {
-      paramAppRuntime = paramAppRuntime.e(paramString);
-      if (paramAppRuntime != null) {
-        return new int[] { paramAppRuntime.nameplateVipType, paramAppRuntime.grayNameplateFlag };
-      }
-    }
-    return new int[] { 0, 0 };
-  }
-  
-  private static String b(arjk paramarjk)
-  {
-    int i = VipUtils.a(paramarjk);
-    i = (i & 0xF) << 8 | i >> 8;
-    if ((i & 0xFF) == 3) {
-      return a(i, paramarjk.mBigVipLevel, paramarjk.mTemplateId, false);
-    }
-    if ((i & 0xFF) == 2) {
-      return a(i, paramarjk.mVipLevel, paramarjk.mTemplateId, false);
-    }
-    return null;
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return paramInt == 1;
-  }
-  
-  private static void c(String paramString, int paramInt, boolean paramBoolean)
-  {
-    long l;
-    if ("VIA_SETTINGME".equals(paramString))
-    {
-      l = System.currentTimeMillis();
-      if (Math.abs(l - a[0]) >= 3000L) {}
-    }
-    do
-    {
-      do
-      {
-        return;
-        a[0] = l;
-        e("0X800AA99", paramInt, paramBoolean);
-        return;
-        if (!"VIA_PROFILECARD".equals(paramString)) {
-          break;
-        }
-        l = System.currentTimeMillis();
-      } while (Math.abs(l - a[1]) < 3000L);
-      a[1] = l;
-      e("0X800AA9A", paramInt, paramBoolean);
+      this.b = 1;
+      this.jdField_a_of_type_Bgao = null;
+      this.c = 0;
       return;
-      if ("VIA_AIO_TITLE".equals(paramString))
-      {
-        e("0X800AA9B", paramInt, paramBoolean);
-        return;
-      }
-    } while (!"VIA_AIO_CHATSETTINGS".equals(paramString));
-    e("0X800AA9C", paramInt, paramBoolean);
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
   }
   
-  private static void d(String paramString, int paramInt, boolean paramBoolean)
+  public void a(View paramView)
   {
-    if ("VIA_SETTINGME".equals(paramString)) {
-      e("0X800AA9D", paramInt, paramBoolean);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(bgao parambgao)
+  {
+    if (parambgao != null) {
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(this);
     }
+    this.b = 1;
+    this.jdField_a_of_type_Bgao = parambgao;
+    this.c = 0;
+  }
+  
+  public void onGlobalLayout()
+  {
+    View localView = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
+    if (localView == null) {}
+    int i;
+    int j;
+    int k;
     do
     {
       return;
-      if ("VIA_PROFILECARD".equals(paramString))
+      i = localView.getHeight();
+      j = a(localView);
+      k = i - j;
+      if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        e("0X800AA9E", paramInt, paramBoolean);
-        return;
+        int m = this.jdField_a_of_type_AndroidViewView.getHeight();
+        if ((m != this.c) && (this.jdField_a_of_type_Bgao != null)) {
+          this.jdField_a_of_type_Bgao.b(this.b, j, this.c);
+        }
+        this.c = m;
       }
-      if ("VIA_AIO_TITLE".equals(paramString))
-      {
-        e("0X800AA9F", paramInt, paramBoolean);
-        return;
-      }
-    } while (!"VIA_AIO_CHATSETTINGS".equals(paramString));
-    e("0X800AAA0", paramInt, paramBoolean);
-  }
-  
-  private static void e(String paramString, int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 9;; i = 0)
+    } while (j == this.c);
+    if (k > i / 4)
     {
-      bcef.b(null, "dc00898", "", "", "qq_vip", paramString, i, 1, paramInt, "", "", "", "");
+      this.b = 1;
+      if (this.jdField_a_of_type_Bgao != null) {
+        this.jdField_a_of_type_Bgao.a(this.b, j, k);
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AtPanelStatus", 2, "onGlobalLayout, screenHeight=" + i + " visibleHeight=" + j + " differHeight=" + k + " mode=" + this.b);
+      }
+      this.c = j;
       return;
+      if (k < i * 3 / 4)
+      {
+        this.b = 2;
+        if (this.jdField_a_of_type_Bgao != null) {
+          this.jdField_a_of_type_Bgao.a(this.b, j, k);
+        }
+      }
     }
   }
 }

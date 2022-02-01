@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import amtj;
+import ahvi;
 import android.os.Bundle;
-import ayfu;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -14,7 +15,7 @@ public class BulkSendMsgAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130843717;
+    return 2130843755;
   }
   
   public int getAppID()
@@ -27,16 +28,16 @@ public class BulkSendMsgAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131696738);
+    return BaseApplicationImpl.getContext().getString(2131697005);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("extra.GROUP_UIN", paramSessionInfo.curFriendUin);
-    localBundle.putString("selfSet_leftViewText", amtj.a(2131714733));
+    localBundle.putString("selfSet_leftViewText", anvx.a(2131715081));
     BulkSendMessageFragment.a(paramBaseChatPie.getActivity(), localBundle);
-    paramayfu.a(paramBaseChatPie.app, getAppID(), paramSessionInfo.curFriendUin);
+    paramahvi.a(paramBaseChatPie.app, getAppID(), paramSessionInfo.curFriendUin);
   }
 }
 

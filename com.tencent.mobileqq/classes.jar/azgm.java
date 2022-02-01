@@ -1,55 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class azgm
+  implements BusinessObserver
 {
-  public static boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(BaseApplicationImpl.getContext().getString(2131719583)));
-  }
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public static boolean a(List<azfv> paramList)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        azfv localazfv = (azfv)paramList.next();
-        if ((localazfv.jdField_a_of_type_Int == 0) && (!TextUtils.isEmpty(localazfv.jdField_a_of_type_JavaLangString)) && (localazfv.jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getContext().getString(2131718126)))) {
-          return true;
-        }
-      }
+    if (paramInt == 1) {
+      a(paramBoolean, paramBundle);
     }
-    return false;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(BaseApplicationImpl.getContext().getString(2131719584)));
-  }
-  
-  public static boolean c(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(BaseApplicationImpl.getContext().getString(2131719587)));
-  }
-  
-  public static boolean d(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(BaseApplicationImpl.getContext().getString(2131719581)));
-  }
-  
-  public static boolean e(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(BaseApplicationImpl.getContext().getString(2131719580)));
-  }
-  
-  public static boolean f(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(BaseApplicationImpl.getContext().getString(2131718126)));
   }
 }
 

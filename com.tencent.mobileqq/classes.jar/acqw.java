@@ -1,18 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acqw
-  implements View.OnClickListener
+  implements acpi
 {
-  public acqw(AddRequestActivity paramAddRequestActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    bcef.b(this.a.app, "CliOper", "", "", "0X800AA46", "0X800AA46", 0, 0, "", "", "", "");
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((bdtt)paramQQAppInterface.getManager(QQManagerFactory.STT_MANAGER)).a(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

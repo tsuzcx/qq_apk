@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import acxa;
+import adnm;
 
 class SelectMemberActivity$11
-  implements acxa
+  implements adnm
 {
   SelectMemberActivity$11(SelectMemberActivity paramSelectMemberActivity) {}
   

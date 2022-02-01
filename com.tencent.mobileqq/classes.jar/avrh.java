@@ -1,12 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 
 class avrh
-  implements DialogInterface.OnClickListener
+  implements TextWatcher
 {
-  avrh(avre paramavre) {}
+  avrh(avrg paramavrg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (avrg.a(this.a) != null)
+    {
+      if (TextUtils.isEmpty(paramCharSequence)) {
+        break label45;
+      }
+      if (!avrg.b(this.a))
+      {
+        avrg.b(this.a, true);
+        avrg.a(this.a, 1);
+      }
+    }
+    return;
+    label45:
+    this.a.c();
+  }
 }
 
 

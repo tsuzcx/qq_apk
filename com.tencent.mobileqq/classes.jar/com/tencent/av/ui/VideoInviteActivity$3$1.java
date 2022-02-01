@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mjz;
+import mkw;
 
 public class VideoInviteActivity$3$1
   implements Runnable
 {
-  public VideoInviteActivity$3$1(mjz parammjz) {}
+  public VideoInviteActivity$3$1(mkw parammkw) {}
   
   public void run()
   {

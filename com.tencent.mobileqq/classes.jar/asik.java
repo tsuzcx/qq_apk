@@ -1,28 +1,99 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 class asik
-  implements asir
+  extends bhyn
 {
-  asik(asii paramasii, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
+  asik(asih paramasih, String paramString1, String paramString2)
   {
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] onCheckResult. nSessionId=" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + " errCode:" + paramInt1);
-    if ((paramInt1 == 0) && (paramInt2 != 0) && (paramInt2 != 4))
+    super(paramString1, paramString2);
+  }
+  
+  public void onDone(bhyo parambhyo)
+  {
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeLevel = paramInt2;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeMsg = paramString1;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeDetailUrl = paramString2;
-      if (this.jdField_a_of_type_Asii.a != null) {
-        this.jdField_a_of_type_Asii.a.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      super.onDone(parambhyo);
+      Bundle localBundle = parambhyo.a();
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
+      this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localEmoticonPackage.epId);
+      int i = localBundle.getInt("businessType");
+      if (parambhyo.a() != 3) {}
+      for (boolean bool = true;; bool = false)
+      {
+        long l1 = parambhyo.h;
+        long l2 = parambhyo.g;
+        this.a.a(localBundle, parambhyo, bool, parambhyo.jdField_a_of_type_Int, parambhyo.d, l1 - l2, i);
+        return;
+      }
+      return;
+    }
+    catch (Exception parambhyo)
+    {
+      QLog.e(asih.a(), 1, "onDone failed", parambhyo);
+    }
+  }
+  
+  public void onDoneFile(bhyo parambhyo)
+  {
+    int i;
+    EmoticonPackage localEmoticonPackage;
+    try
+    {
+      Object localObject = parambhyo.a();
+      i = ((Bundle)localObject).getInt(parambhyo.c);
+      localEmoticonPackage = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+      if (localEmoticonPackage == null) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(asih.a(), 2, "emotionDownloadListener | onDoneFile epId=" + localEmoticonPackage.epId + ",task:" + parambhyo);
+      }
+      asih.jdField_a_of_type_Asig.b(localEmoticonPackage, (int)parambhyo.jdField_a_of_type_Long, (int)parambhyo.b);
+      if (i == 9)
+      {
+        localObject = ((Bundle)localObject).getString(parambhyo.c + "emoticonId");
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          asih.a(this.a, localEmoticonPackage.epId, (String)localObject, parambhyo.jdField_a_of_type_Int);
+        }
+      }
+      if (parambhyo.jdField_a_of_type_Int != 0)
+      {
+        QLog.e(asih.a(), 1, "onDoneFile : ondone error , reportCode = " + parambhyo.jdField_a_of_type_Int);
+        if (asih.a(i)) {
+          asih.jdField_a_of_type_Asig.a(localEmoticonPackage, i, -1, parambhyo.jdField_a_of_type_Int);
+        }
+        bhpl.a("emotionType", "emotionActionDownload", "10", localEmoticonPackage.epId, "", "", parambhyo.jdField_a_of_type_Int + "", "", "", "");
+        return;
       }
     }
-    if (this.jdField_a_of_type_Asii.a != null) {
-      this.jdField_a_of_type_Asii.a.getFileManagerNotifyCenter().a(true, 200, new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramBundle });
+    catch (Exception parambhyo)
+    {
+      QLog.e(asih.a(), 1, "onDoneFile failed", parambhyo);
+      return;
     }
+    if (asih.a(i)) {
+      asih.jdField_a_of_type_Asig.a(localEmoticonPackage, i, 0, 0);
+    }
+    while ((localEmoticonPackage.jobType == 3) || (localEmoticonPackage.jobType == 5))
+    {
+      this.a.b(parambhyo);
+      return;
+      if (i == 7) {
+        this.a.a(parambhyo);
+      }
+    }
+  }
+  
+  public boolean onStart(bhyo parambhyo)
+  {
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)parambhyo.a().getSerializable("emoticonPackage");
+    asih.jdField_a_of_type_Asig.a(localEmoticonPackage);
+    super.onStart(parambhyo);
+    return true;
   }
 }
 

@@ -1,23 +1,45 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class ayst
-  implements bjoe
+public class ayst
+  implements bkzq
 {
-  ayst(aysl paramaysl, PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean, bjnw parambjnw) {}
+  public ayst(OCRResultFragmentNew paramOCRResultFragmentNew, List paramList, ayru paramayru) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
+      paramView = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (!paramView.equalsIgnoreCase(this.jdField_a_of_type_Ayru.a)) {
+        break label108;
+      }
+      QLog.i("OCRResultFragmentNew", 2, "lanCode equals, return, selectedLan:" + paramView);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bjnw.e();
+      if ((this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.isShowing())) {
+        this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.dismiss();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a = null;
       return;
-      aysl.c(this.jdField_a_of_type_Aysl);
-      continue;
-      aysl.a(this.jdField_a_of_type_Aysl, this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp, this.jdField_a_of_type_Boolean);
+      label108:
+      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 0, 2131698696, 0).a();
+      ayrt.a.a(paramView);
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("OCRResultFragmentNew", 2, "requestOcr lan:" + paramView + ", ctx:" + ayrt.a.a());
+        }
+        OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, ayrt.a);
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
     }
   }
 }

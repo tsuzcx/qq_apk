@@ -1,7 +1,7 @@
 package com.tencent.qapmsdk.impl.instrumentation.a;
 
-import com.tencent.qapmsdk.impl.instrumentation.b;
-import com.tencent.qapmsdk.impl.instrumentation.g;
+import com.tencent.qapmsdk.impl.instrumentation.c;
+import com.tencent.qapmsdk.impl.instrumentation.h;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ResponseHandler;
 
@@ -9,22 +9,22 @@ public class e<T>
   implements ResponseHandler<T>
 {
   private final ResponseHandler<T> a;
-  private final g b;
+  private final h b;
   
-  private e(ResponseHandler<T> paramResponseHandler, g paramg)
+  private e(ResponseHandler<T> paramResponseHandler, h paramh)
   {
     this.a = paramResponseHandler;
-    this.b = paramg;
+    this.b = paramh;
   }
   
-  public static <T> ResponseHandler<? extends T> a(ResponseHandler<? extends T> paramResponseHandler, g paramg)
+  public static <T> ResponseHandler<? extends T> a(ResponseHandler<? extends T> paramResponseHandler, h paramh)
   {
-    return new e(paramResponseHandler, paramg);
+    return new e(paramResponseHandler, paramh);
   }
   
   public T handleResponse(HttpResponse paramHttpResponse)
   {
-    b.a(this.b, paramHttpResponse);
+    c.a(this.b, paramHttpResponse);
     return this.a.handleResponse(paramHttpResponse);
   }
 }

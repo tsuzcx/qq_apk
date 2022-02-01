@@ -1,28 +1,32 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-final class alyn
-  implements EIPCResultCallback
+class alyn
+  implements View.OnClickListener
 {
-  alyn(String paramString, long paramLong) {}
+  alyn(alym paramalym) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("type");
-    if (i == 1)
+    alyo localalyo = (alyo)paramView.getTag();
+    if (this.a.a.a.contains(localalyo.jdField_a_of_type_ComTencentMobileqqDataGroups))
     {
-      paramEIPCResult = paramEIPCResult.getString("nickName");
-      alvx.a().callbackGetNick(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
+      this.a.a.a.remove(localalyo.jdField_a_of_type_ComTencentMobileqqDataGroups);
+      localalyo.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      this.a.a.a(localalyo.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
     }
-    while (i != 2) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      this.a.a.a.add(localalyo.jdField_a_of_type_ComTencentMobileqqDataGroups);
+      localalyo.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+      this.a.a.a(localalyo.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
     }
-    paramEIPCResult = (Bitmap)paramEIPCResult.getParcelable("head");
-    alvx.a().callbackGetHead(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
   }
 }
 

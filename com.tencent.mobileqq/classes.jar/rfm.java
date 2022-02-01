@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
-public final class rfm
-  implements Parcelable.Creator<SocializeFeedsInfo.UGCVoiceInfo>
+public class rfm
+  extends rfo
 {
-  public SocializeFeedsInfo.UGCVoiceInfo a(Parcel paramParcel)
+  public rfm(Context paramContext, FaceDecoder paramFaceDecoder, szd paramszd)
   {
-    return new SocializeFeedsInfo.UGCVoiceInfo(paramParcel);
+    super(paramContext, paramFaceDecoder, paramszd);
   }
   
-  public SocializeFeedsInfo.UGCVoiceInfo[] a(int paramInt)
+  public rbp g()
   {
-    return new SocializeFeedsInfo.UGCVoiceInfo[paramInt];
+    this.jdField_a_of_type_Rbo = new ComponentContentUgcImage(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

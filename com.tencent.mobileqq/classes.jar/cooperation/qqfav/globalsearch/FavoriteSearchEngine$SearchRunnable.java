@@ -1,27 +1,27 @@
 package cooperation.qqfav.globalsearch;
 
-import bbff;
-import bbfs;
-import bkpu;
+import bclx;
+import bcmk;
+import bmbc;
 import java.util.List;
 
 class FavoriteSearchEngine$SearchRunnable
   implements Runnable
 {
-  bbff<bkpu> jdField_a_of_type_Bbff;
-  bbfs jdField_a_of_type_Bbfs;
+  bclx<bmbc> jdField_a_of_type_Bclx;
+  bcmk jdField_a_of_type_Bcmk;
   
   private FavoriteSearchEngine$SearchRunnable(FavoriteSearchEngine paramFavoriteSearchEngine) {}
   
   public void run()
   {
-    bbfs localbbfs = this.jdField_a_of_type_Bbfs;
-    String str = this.jdField_a_of_type_Bbfs.a;
-    List localList = this.this$0.a(localbbfs);
+    bcmk localbcmk = this.jdField_a_of_type_Bcmk;
+    String str = this.jdField_a_of_type_Bcmk.a;
+    List localList = this.this$0.a(localbcmk);
     try
     {
-      if ((this.jdField_a_of_type_Bbff != null) && (localbbfs == this.jdField_a_of_type_Bbfs) && (str.equals(this.jdField_a_of_type_Bbfs.a))) {
-        this.jdField_a_of_type_Bbff.a(localList, 1);
+      if ((this.jdField_a_of_type_Bclx != null) && (localbcmk == this.jdField_a_of_type_Bcmk) && (str.equals(this.jdField_a_of_type_Bcmk.a))) {
+        this.jdField_a_of_type_Bclx.a(localList, 1);
       }
       return;
     }

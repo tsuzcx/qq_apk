@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
 class anvm
-  implements View.OnClickListener
+  implements Comparator<SpecialCareInfo>
 {
-  anvm(anvl paramanvl, String paramString) {}
+  anvm(anvk paramanvk) {}
   
-  public void onClick(View paramView)
+  private String a(SpecialCareInfo paramSpecialCareInfo)
   {
-    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString), 120);
-    localOpenPlayerBuilder.a();
-    wmu.a(this.jdField_a_of_type_Anvl.a, localOpenPlayerBuilder.a(), null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    Friends localFriends = this.a.b(paramSpecialCareInfo.uin);
+    if (localFriends == null) {
+      return paramSpecialCareInfo.uin;
+    }
+    return ContactUtils.getFriendName(localFriends) + localFriends.uin;
+  }
+  
+  public int a(SpecialCareInfo paramSpecialCareInfo1, SpecialCareInfo paramSpecialCareInfo2)
+  {
+    return ansk.a(a(paramSpecialCareInfo1), a(paramSpecialCareInfo2));
   }
 }
 

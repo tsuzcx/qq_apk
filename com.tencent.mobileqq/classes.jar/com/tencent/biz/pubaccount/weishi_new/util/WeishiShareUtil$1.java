@@ -36,7 +36,7 @@ public final class WeishiShareUtil$1
             double d1 = Math.sqrt(8000.0D / (j * k));
             localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, (int)(j * d1), (int)(k * d1), true);
             ((Bitmap)localObject2).recycle();
-            localObject2 = WXShareHelper.getInstance();
+            localObject2 = WXShareHelper.a();
             str1 = this.b;
             str2 = this.c;
             str3 = this.d;
@@ -49,7 +49,7 @@ public final class WeishiShareUtil$1
       }
       for (;;)
       {
-        ((WXShareHelper)localObject2).shareWebPage(str1, str2, (Bitmap)localObject1, str3, str4, i);
+        ((WXShareHelper)localObject2).b(str1, str2, (Bitmap)localObject1, str3, str4, i);
         ((Bitmap)localObject1).recycle();
         return;
         label168:
@@ -66,7 +66,7 @@ public final class WeishiShareUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WeishiShareUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import mqq.os.MqqHandler;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class bnwk
-  implements DialogInterface.OnClickListener
+public class bnwk
+  extends bnwn
 {
-  bnwk(bnwj parambnwj) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bnwk(TAVCutVideoSession paramTAVCutVideoSession)
   {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.b, this.a.a.a, this.a.a.g + ".mp4", true));
+    super(paramTAVCutVideoSession);
+  }
+  
+  protected bnwd a(List<bnwc> paramList)
+  {
+    bnwo localbnwo = new bnwo();
+    ArrayList localArrayList = new ArrayList();
+    bnwc localbnwc;
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      String str = a(paramList);
+      paramList = paramList.iterator();
+      do
+      {
+        if (!paramList.hasNext()) {
+          break;
+        }
+        localbnwc = (bnwc)paramList.next();
+      } while (!localbnwc.jdField_a_of_type_JavaLangString.equals(str));
+    }
+    for (paramList = localbnwc.jdField_a_of_type_JavaUtilList;; paramList = localArrayList)
+    {
+      localbnwo.jdField_a_of_type_JavaUtilList = paramList;
+      return localbnwo;
+    }
+  }
+  
+  protected List<Long> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((this.a != null) && (this.a.getDuration() != null))
+    {
+      long l1 = this.a.getDuration().getTimeUs() / 1000L;
+      int i = 3000;
+      if (l1 > 30000L) {
+        i = 6000;
+      }
+      int j = 0;
+      while ((j <= l1 / i) && (j < 3))
+      {
+        long l2 = j * i;
+        if (l2 < l1) {
+          localArrayList.add(Long.valueOf(l2));
+        }
+        j += 1;
+      }
+    }
+    return localArrayList;
   }
 }
 

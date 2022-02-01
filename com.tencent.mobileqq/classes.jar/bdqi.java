@@ -1,31 +1,49 @@
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.view.animation.DecelerateInterpolator;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdqi
-  implements View.OnClickListener
+class bdqi
+  implements View.OnTouchListener
 {
-  public bdqi(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  bdqi(bdqg parambdqg, View paramView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramView.getId())
+    switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bjnw localbjnw = (bjnw)bjon.a(this.a, null);
-      localbjnw.a(2131693014, 3);
-      localbjnw.c(2131690620);
-      localbjnw.a(new bdqj(this, localbjnw));
-      localbjnw.show();
-      continue;
-      TroopAvatarWallPreviewActivity.c(this.a);
-      continue;
-      TroopAvatarWallPreviewActivity.i(this.a);
+      return false;
+      if (!this.jdField_a_of_type_Bdqg.b)
+      {
+        this.jdField_a_of_type_Bdqg.b = true;
+        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131374404);
+        paramMotionEvent = localObjectAnimator;
+        if (localObjectAnimator == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("StructMsgItemLayout12", 2, "animator is null");
+          }
+          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
+          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
+          paramMotionEvent.setDuration(100L);
+          paramView.setTag(2131374404, paramMotionEvent);
+        }
+        paramMotionEvent.start();
+      }
+      return true;
+      this.jdField_a_of_type_Bdqg.a.onClick(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Bdqg.b = false;
+      paramView = (ObjectAnimator)paramView.getTag(2131374404);
+      if (paramView != null) {
+        paramView.reverse();
+      }
     }
   }
 }

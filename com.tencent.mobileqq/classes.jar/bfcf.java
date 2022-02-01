@@ -1,16 +1,45 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import java.util.Collection;
+import java.util.Iterator;
+
 public class bfcf
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  
-  public bfcf(bfbz parambfbz, String paramString1, boolean paramBoolean, String paramString2, long paramLong)
+  public static String a(Collection<TroopAIOAppInfo> paramCollection)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (bfce.a(paramCollection))
+    {
+      localStringBuilder.append("empty apps");
+      return localStringBuilder.toString();
+    }
+    localStringBuilder.append("[gray+ red*]");
+    paramCollection = paramCollection.iterator();
+    label41:
+    TroopAIOAppInfo localTroopAIOAppInfo;
+    if (paramCollection.hasNext())
+    {
+      localTroopAIOAppInfo = (TroopAIOAppInfo)paramCollection.next();
+      if (localTroopAIOAppInfo.isGray) {
+        localStringBuilder.append("+");
+      }
+      if (localTroopAIOAppInfo.redPoint) {
+        localStringBuilder.append("*");
+      }
+      if (TextUtils.isEmpty(localTroopAIOAppInfo.name)) {
+        break label117;
+      }
+      localStringBuilder.append(localTroopAIOAppInfo.name);
+    }
+    for (;;)
+    {
+      localStringBuilder.append(" ");
+      break label41;
+      break;
+      label117:
+      localStringBuilder.append("id:");
+      localStringBuilder.append(localTroopAIOAppInfo.appid);
+    }
   }
 }
 

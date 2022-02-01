@@ -10,8 +10,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import ayom;
-import bghg;
+import azth;
+import bhqb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -26,9 +26,9 @@ public class ZanBannerView
   private static String jdField_a_of_type_JavaLangString = "spKeyZanBannerIndex";
   private int jdField_a_of_type_Int = -1;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private ayom jdField_a_of_type_Ayom;
-  private bghg jdField_a_of_type_Bghg;
-  private List<ayom> jdField_a_of_type_JavaUtilList;
+  private azth jdField_a_of_type_Azth;
+  private bhqb jdField_a_of_type_Bhqb;
+  private List<azth> jdField_a_of_type_JavaUtilList;
   
   public ZanBannerView(Context paramContext)
   {
@@ -48,7 +48,7 @@ public class ZanBannerView
     a(paramContext);
   }
   
-  private ayom a()
+  private azth a()
   {
     if (a()) {
       return null;
@@ -56,15 +56,15 @@ public class ZanBannerView
     List localList = this.jdField_a_of_type_JavaUtilList;
     int i = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_Int = (i + 1);
-    this.jdField_a_of_type_Ayom = ((ayom)localList.get(i % this.jdField_a_of_type_JavaUtilList.size()));
+    this.jdField_a_of_type_Azth = ((azth)localList.get(i % this.jdField_a_of_type_JavaUtilList.size()));
     BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int).commit();
-    return this.jdField_a_of_type_Ayom;
+    return this.jdField_a_of_type_Azth;
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131561893, null));
-    this.jdField_a_of_type_Bghg = new bghg(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131561961, null));
+    this.jdField_a_of_type_Bhqb = new bhqb(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     this.jdField_a_of_type_Int = BaseApplicationImpl.getApplication().getRuntime().getPreferences().getInt(jdField_a_of_type_JavaLangString, 0);
     if (this.jdField_a_of_type_Int > 100) {
@@ -72,18 +72,18 @@ public class ZanBannerView
     }
   }
   
-  private void a(bghg parambghg)
+  private void a(bhqb parambhqb)
   {
     Object localObject = a();
     int i;
     URLDrawable.URLDrawableOptions localURLDrawableOptions;
     if (localObject != null)
     {
-      parambghg.jdField_a_of_type_AndroidWidgetTextView.setText(((ayom)localObject).jdField_a_of_type_JavaLangString);
-      parambghg.jdField_b_of_type_AndroidWidgetTextView.setText(((ayom)localObject).b);
-      if (((ayom)localObject).jdField_a_of_type_JavaUtilVector != null)
+      parambhqb.jdField_a_of_type_AndroidWidgetTextView.setText(((azth)localObject).jdField_a_of_type_JavaLangString);
+      parambhqb.jdField_b_of_type_AndroidWidgetTextView.setText(((azth)localObject).b);
+      if (((azth)localObject).jdField_a_of_type_JavaUtilVector != null)
       {
-        i = ((ayom)localObject).jdField_a_of_type_JavaUtilVector.size();
+        i = ((azth)localObject).jdField_a_of_type_JavaUtilVector.size();
         localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         int j = ViewUtils.dpToPx(36.0F);
         localURLDrawableOptions.mRequestWidth = j;
@@ -91,20 +91,20 @@ public class ZanBannerView
         if (i != 1) {
           break label118;
         }
-        localURLDrawable = URLDrawable.getDrawable((String)((ayom)localObject).jdField_a_of_type_JavaUtilVector.get(0), localURLDrawableOptions);
-        parambghg.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
-        parambghg.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+        localURLDrawable = URLDrawable.getDrawable((String)((azth)localObject).jdField_a_of_type_JavaUtilVector.get(0), localURLDrawableOptions);
+        parambhqb.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+        parambhqb.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       }
     }
     label118:
     while (i <= 1) {
       return;
     }
-    URLDrawable localURLDrawable = URLDrawable.getDrawable((String)((ayom)localObject).jdField_a_of_type_JavaUtilVector.get(0), localURLDrawableOptions);
-    localObject = URLDrawable.getDrawable((String)((ayom)localObject).jdField_a_of_type_JavaUtilVector.get(1), localURLDrawableOptions);
-    parambghg.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
-    parambghg.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    parambghg.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    URLDrawable localURLDrawable = URLDrawable.getDrawable((String)((azth)localObject).jdField_a_of_type_JavaUtilVector.get(0), localURLDrawableOptions);
+    localObject = URLDrawable.getDrawable((String)((azth)localObject).jdField_a_of_type_JavaUtilVector.get(1), localURLDrawableOptions);
+    parambhqb.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+    parambhqb.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    parambhqb.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
   private boolean a()
@@ -114,24 +114,24 @@ public class ZanBannerView
   
   public String a()
   {
-    if (this.jdField_a_of_type_Ayom != null) {
-      return this.jdField_a_of_type_Ayom.c;
+    if (this.jdField_a_of_type_Azth != null) {
+      return this.jdField_a_of_type_Azth.c;
     }
     return null;
   }
   
   public String b()
   {
-    if (this.jdField_a_of_type_Ayom != null) {
-      return this.jdField_a_of_type_Ayom.d;
+    if (this.jdField_a_of_type_Azth != null) {
+      return this.jdField_a_of_type_Azth.d;
     }
     return "";
   }
   
-  public void setInfoList(List<ayom> paramList)
+  public void setInfoList(List<azth> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    a(this.jdField_a_of_type_Bghg);
+    a(this.jdField_a_of_type_Bhqb);
   }
 }
 

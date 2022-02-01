@@ -1,33 +1,33 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnHoverListener;
+import android.view.accessibility.AccessibilityManager;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class awlj
-  implements bhai<oidb_0x8e4.RspBody>
+  implements View.OnHoverListener
 {
-  public awlj(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public awlj(LocationPickFragment paramLocationPickFragment) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt == 0)
+    paramMotionEvent = (AccessibilityManager)this.a.getActivity().getSystemService("accessibility");
+    if ((paramMotionEvent != null) && (paramMotionEvent.isTouchExplorationEnabled()))
     {
-      GameRoomInviteActivity localGameRoomInviteActivity = this.a;
-      String str = paramRspBody.string_invite_id.get().toStringUtf8();
-      localGameRoomInviteActivity.jdField_b_of_type_JavaLangString = str;
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
-      this.a.jdField_b_of_type_Long = paramRspBody.uint64_leader_uin.get();
-      this.a.e();
-      bfyz.a(this.a, this.a.app.getCurrentAccountUin(), true, System.currentTimeMillis());
-      if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_b_of_type_Boolean)) {
-        GameRoomInviteActivity.a(this.a, "" + this.a.jdField_a_of_type_Long, 1);
+      if (paramView.requestFocus()) {
+        ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(paramView, 1);
       }
-      return;
+      if (!LocationPickFragment.a(this.a).b())
+      {
+        LocationPickFragment.a(this.a).setDisplayFromType(3);
+        LocationPickFragment.a(this.a).a();
+      }
+      bdla.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
     }
-    this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    return false;
   }
 }
 

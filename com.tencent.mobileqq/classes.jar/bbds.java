@@ -1,88 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class bbds
 {
-  private int jdField_a_of_type_Int = 1;
-  private String jdField_a_of_type_JavaLangString = "";
-  private String b = "";
+  private int jdField_a_of_type_Int;
+  private bbdu jdField_a_of_type_Bbdu;
+  private bbdv jdField_a_of_type_Bbdv = new bbdt(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
   
-  public static String a(int paramInt, boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public bbds(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    int i = 1;
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("entry", paramInt);
-      if (paramBoolean1)
-      {
-        paramInt = 1;
-        localJSONObject.put("match", paramInt);
-        localJSONObject.put("keyword", paramString);
-        if (!paramBoolean2) {
-          break label74;
-        }
-      }
-      label74:
-      for (paramInt = i;; paramInt = 0)
-      {
-        localJSONObject.put("nightmode", paramInt);
-        paramString = localJSONObject.toString();
-        return paramString;
-        paramInt = 0;
-        break;
-      }
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("OneWayFriendHelper", 0, String.format("OneWayFriendHelper app=%s curType=%s friendUin=%s", new Object[] { paramQQAppInterface, Integer.valueOf(paramInt), paramString }));
     }
-    catch (JSONException paramString)
-    {
-      QLog.e("RichMetaData", 2, "setLayout101ExtraData exception:" + paramString);
-    }
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("serverdata", new JSONObject(this.jdField_a_of_type_JavaLangString));
-      localJSONObject2.put("state", this.jdField_a_of_type_Int);
-      if (!TextUtils.isEmpty(this.b)) {
-        localJSONObject2.put("extradata", new JSONObject(this.b));
-      }
-      localJSONObject1.put("data", localJSONObject2);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("RichMetaData", 2, "convertMetaData exception : " + localJSONException);
-      }
-    }
-    return localJSONObject1.toString();
-  }
-  
-  public void a(String paramString)
-  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bbdv);
   }
   
-  public void a(boolean paramBoolean)
+  private void a(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("OneWayFriendHelper", 0, String.format("notifyOneWayFriend friendUin=%s oneWayFriend=%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+    }
+    if (this.jdField_a_of_type_Bbdu != null) {
+      this.jdField_a_of_type_Bbdu.a(paramString, paramBoolean);
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    paramQQAppInterface = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    return (paramInt == 0) && (!paramQQAppInterface.b(paramString));
+  }
+  
+  public void a()
+  {
+    if (a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Int = 1;
+      bbdr localbbdr = (bbdr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ONE_WAY_FRIEND_HANDLER);
+      if (localbbdr != null) {
+        localbbdr.a(Long.parseLong(this.jdField_a_of_type_JavaLangString));
+      }
       return;
     }
-    this.jdField_a_of_type_Int = 0;
+    a(this.jdField_a_of_type_JavaLangString, false);
   }
   
-  public void b(String paramString)
+  public void a(bbdu parambbdu)
   {
-    this.b = paramString;
+    this.jdField_a_of_type_Bbdu = parambbdu;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bbdu = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Bbdv);
   }
 }
 

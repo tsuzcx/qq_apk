@@ -1,63 +1,31 @@
-import com.tencent.mobileqq.app.AppConstants;
+import android.os.Handler;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class bhwc
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public static int a(int paramInt)
-  {
-    int i = 1;
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 4)) {
-      i = 2;
-    }
-    while (paramInt == 5) {
-      return i;
-    }
-    return 3;
-  }
+  public bhwc(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public static int a(int paramInt, String paramString)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    int i = 1;
-    if (paramInt == 0) {
-      i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "onVideoPrepared video");
     }
-    while (paramInt == 1) {
-      return i;
-    }
-    if (paramInt == 3000) {
-      return 2;
-    }
-    if (AppConstants.QZONE_UIN.equals(paramString)) {
-      return 3;
-    }
-    if (AppConstants.FAVORITES_UIN.equals(paramString)) {
-      return 4;
-    }
-    if (AppConstants.DATALINE_IPAD_UIN.equals(paramString)) {
-      return 5;
-    }
-    return -1;
-  }
-  
-  public static int b(int paramInt)
-  {
-    switch (paramInt)
+    if (this.a.jdField_a_of_type_Boolean)
     {
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return -1;
-    case 1: 
-      return 0;
-    case 2: 
-      return 1;
-    case 3: 
-      return 2;
-    case 4: 
-      return 3;
+      paramTVK_IMediaPlayer.pause();
+      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.b);
     }
-    return 4;
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+      return;
+      paramTVK_IMediaPlayer.start();
+    }
   }
 }
 

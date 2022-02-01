@@ -1,13 +1,26 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class alwx
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+public class alwx
+  implements View.OnClickListener
 {
-  alwx(alwt paramalwt) {}
+  public alwx(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {}
+    if (this.a.c) {
+      bdla.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      bdla.b(this.a.app, "dc00899", "Grp_create_new", "", "suc_create", "clk_cancel", 0, 0, "", "" + this.a.h, "", "");
+      this.a.finish();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdla.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
+    }
   }
 }
 

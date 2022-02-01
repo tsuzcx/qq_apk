@@ -1,19 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class aiwp
-  implements View.OnClickListener
+public abstract interface aiwp
 {
-  aiwp(aiwo paramaiwo, aiwr paramaiwr) {}
-  
-  public void onClick(View paramView)
-  {
-    String str = String.valueOf(this.jdField_a_of_type_Aiwr.a.getText());
-    aiwo.a(this.jdField_a_of_type_Aiwo, str);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(String paramString);
 }
 
 

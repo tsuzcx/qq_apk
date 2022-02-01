@@ -1,26 +1,65 @@
-import android.util.Property;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-class bnqp
-  extends Property<bnqm, Integer>
+public class bnqp
 {
-  bnqp(bnqm parambnqm, Class paramClass, String paramString)
+  public static String a()
   {
-    super(paramClass, paramString);
+    Date localDate = new Date();
+    return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(localDate);
   }
   
-  public Integer a(bnqm parambnqm)
+  public static String a(int paramInt)
   {
-    if (parambnqm != null) {
-      return Integer.valueOf(bnqm.a(parambnqm));
+    if (paramInt == 1) {
+      return "1";
     }
-    return Integer.valueOf(0);
+    return "2";
   }
   
-  public void a(bnqm parambnqm, Integer paramInteger)
+  public static String a(Long paramLong)
   {
-    if (parambnqm != null) {
-      bnqm.a(parambnqm, paramInteger.intValue());
+    float f = (float)paramLong.longValue() / 1000.0F;
+    return new DecimalFormat("0.00").format(f);
+  }
+  
+  public static HashMap<String, String> a(HashMap<String, String> paramHashMap1, HashMap<String, String> paramHashMap2)
+  {
+    paramHashMap1 = new HashMap(paramHashMap1);
+    Iterator localIterator = paramHashMap2.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      paramHashMap1.put(str, paramHashMap2.get(str));
     }
+    return paramHashMap1;
+  }
+  
+  public static void a()
+  {
+    bnqu.a().a("AEKIT_CAMERA_FIRST_LAUNCH", 1, 0);
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = false;
+    if (bnqu.a().a("AEKIT_CAMERA_FIRST_LAUNCH", 0, 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static boolean b()
+  {
+    if (bnqu.a().a("sp_key_ae_camera_launch_mark", 0)) {
+      return false;
+    }
+    bnqu.a().a("sp_key_ae_camera_launch_mark", true, 0);
+    return true;
   }
 }
 

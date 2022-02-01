@@ -1,7 +1,7 @@
 package com.tencent.hippy.qq.update;
 
 import android.text.TextUtils;
-import bbzm;
+import bdgh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -207,7 +207,7 @@ public class HippyQQLibraryManager
     int i = 0;
     while (i < this.SO_NAME.length)
     {
-      String str2 = bbzm.a().a(this.SO_NAME[i]);
+      String str2 = bdgh.a().a(this.SO_NAME[i]);
       if (TextUtils.isEmpty(str2)) {
         return 0;
       }
@@ -232,7 +232,7 @@ public class HippyQQLibraryManager
     int i = 0;
     while (i < this.SO_NAME.length)
     {
-      if (TextUtils.isEmpty(bbzm.a().a(this.SO_NAME[i]))) {
+      if (TextUtils.isEmpty(bdgh.a().a(this.SO_NAME[i]))) {
         return false;
       }
       i += 1;
@@ -250,7 +250,7 @@ public class HippyQQLibraryManager
       return;
       this.mLoadState = 1;
       addLibraryLoadListener(paramLibraryLoadListener);
-      bbzm.a().a(this.SO_NAME, new HippyQQLibraryManager.2(this));
+      bdgh.a().a(this.SO_NAME, new HippyQQLibraryManager.2(this));
       return;
       addLibraryLoadListener(paramLibraryLoadListener);
       return;
@@ -260,7 +260,7 @@ public class HippyQQLibraryManager
   
   public void preDownload()
   {
-    bbzm.a().b(this.SO_NAME, new HippyQQLibraryManager.1(this));
+    bdgh.a().b(this.SO_NAME, new HippyQQLibraryManager.1(this));
   }
   
   protected void updateSoVersions(LoadExtResult paramLoadExtResult)

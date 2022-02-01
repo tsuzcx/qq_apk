@@ -1,89 +1,60 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qqfav.widget.LocationDetailActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.RequestProxy.RequestListener;
+import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
-public class bkqv
-  extends bkqo
+class bkqv
+  implements Callback
 {
-  private WeakReference<LocationDetailActivity> a;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public bkqv(LocationDetailActivity paramLocationDetailActivity)
-  {
-    this.a = new WeakReference(paramLocationDetailActivity);
-  }
+  bkqv(bkqu parambkqu, String paramString, RequestProxy.RequestListener paramRequestListener) {}
   
-  public int a()
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return 0;
-    }
-    return LocationDetailActivity.a(localLocationDetailActivity);
-  }
-  
-  public void a()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    localLocationDetailActivity.b(true);
-    bkpf.a(null, "User_Modify", 7, 0, localLocationDetailActivity.getIntent().getIntExtra("category", 1));
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    localLocationDetailActivity.a(paramBundle);
-  }
-  
-  public void b()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    LocationDetailActivity.a(localLocationDetailActivity);
-  }
-  
-  public void c()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {}
-    while (!localLocationDetailActivity.d()) {
-      return;
-    }
-    localLocationDetailActivity.finish();
-  }
-  
-  public void d()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    localLocationDetailActivity.A();
-  }
-  
-  public void e()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    Intent localIntent = LocationDetailActivity.a(localLocationDetailActivity);
-    if (localIntent != null)
+    QLog.e("RequestProxyImpl", 1, "httpConnect err url:" + this.jdField_a_of_type_JavaLangString, paramIOException);
+    if ("Canceled".equals(paramIOException.getLocalizedMessage()))
     {
-      atky.a(localLocationDetailActivity, localIntent, 103);
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(-5, "request error:cancel");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkqu.a.remove(this.jdField_a_of_type_JavaLangString);
+      return;
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(bkoh.a(paramIOException, -1), "request error:network");
+    }
+  }
+  
+  public void onResponse(Call paramCall, Response paramResponse)
+  {
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    QQToast.a(localLocationDetailActivity, 2131692057, 1, 2000).b(5);
+    int i = paramResponse.code();
+    Map localMap = paramResponse.headers().toMultimap();
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestHeadersReceived(i, localMap);
+    paramCall = null;
+    try
+    {
+      paramResponse = paramResponse.body().bytes();
+      paramCall = paramResponse;
+    }
+    catch (IOException paramResponse)
+    {
+      for (;;)
+      {
+        paramResponse.printStackTrace();
+      }
+    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestSucceed(i, paramCall, localMap);
+    this.jdField_a_of_type_Bkqu.a.remove(this.jdField_a_of_type_JavaLangString);
   }
 }
 

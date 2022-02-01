@@ -1,20 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
-class qfk
-  implements pwf
+public abstract interface qfk
 {
-  qfk(qfj paramqfj, QQAppInterface paramQQAppInterface, String paramString) {}
-  
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
-  {
-    qfj.a(this.jdField_a_of_type_Qfj, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "", true);
-  }
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    qfj.a(this.jdField_a_of_type_Qfj, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, paramReadInJoyUserInfo.faceUrl + "140", true);
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo);
 }
 
 

@@ -1,13 +1,18 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class agvf
-  implements agut
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public agvf(HeartCombolEffectView paramHeartCombolEffectView, agvg paramagvg) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramagap.a(paramagcc, paramString);
+    this.jdField_a_of_type_Agvg.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Agvg.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Agvg.jdField_b_of_type_Float > 0.0F)) {
+      this.jdField_a_of_type_Agvg.jdField_b_of_type_Boolean = true;
+    }
   }
 }
 

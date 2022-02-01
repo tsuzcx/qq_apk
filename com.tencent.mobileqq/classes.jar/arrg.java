@@ -1,24 +1,63 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
+import java.lang.ref.WeakReference;
 
-class arrg
-  implements Animator.AnimatorListener
+public class arrg
+  implements Handler.Callback
 {
-  arrg(arrf paramarrf) {}
+  private WeakReference<DanmakuManager> a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  private arrg(DanmakuManager paramDanmakuManager)
   {
-    SignalBombAnimationView.b(this.a.a.a).setTranslationY(0.0F);
-    SignalBombAnimationView.a(this.a.a.a, false);
+    this.a = new WeakReference(paramDanmakuManager);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public boolean handleMessage(Message paramMessage)
+  {
+    DanmakuManager localDanmakuManager = (DanmakuManager)this.a.get();
+    if (localDanmakuManager == null) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      DanmakuManager.a(localDanmakuManager, paramMessage);
+      DanmakuManager.a(localDanmakuManager);
+      return false;
+    case 2: 
+      DanmakuManager.a(localDanmakuManager);
+      return false;
+    case 4: 
+      DanmakuManager.b(localDanmakuManager);
+      return false;
+    case 3: 
+      DanmakuManager.c(localDanmakuManager);
+      return false;
+    case 5: 
+      DanmakuManager.b(localDanmakuManager, paramMessage);
+      return false;
+    case 6: 
+      DanmakuManager.d(localDanmakuManager);
+      return false;
+    case 7: 
+      DanmakuManager.e(localDanmakuManager);
+      return false;
+    case 8: 
+      DanmakuManager.f(localDanmakuManager);
+      return false;
+    case 9: 
+      DanmakuManager.g(localDanmakuManager);
+      return false;
+    case 10: 
+      DanmakuManager.h(localDanmakuManager);
+      return false;
+    }
+    DanmakuManager.i(localDanmakuManager);
+    return false;
+  }
 }
 
 

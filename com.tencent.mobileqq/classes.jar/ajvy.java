@@ -1,17 +1,60 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.4.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
 
 public class ajvy
-  implements akbj
+  extends amgz
 {
-  public ajvy(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  public View a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public TroopMemberListSlideItem a;
+  public boolean a;
+  public View b;
+  public TextView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
+  public View e;
+  public TextView e;
+  public View f;
+  public TextView f;
+  public TextView g;
+  public TextView h;
+  public TextView i;
+  public TextView j;
+  public TextView k;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public ajvy(View paramView, boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.4.1(this, paramInt, paramPathResult));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379927));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379987));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem = ((TroopMemberListSlideItem)paramView.findViewById(2131379533));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131377832);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365473);
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131365474);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369417));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380027));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380028));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380038));
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131380136);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369460));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379762));
+    this.g = ((TextView)paramView.findViewById(2131363940));
+    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131376721);
+    this.h = ((TextView)paramView.findViewById(2131380495));
+    this.i = ((TextView)paramView.findViewById(2131362985));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364608));
+    this.j = ((TextView)paramView.findViewById(2131379961));
+    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131362167);
+    if (paramBoolean) {
+      this.k = ((TextView)paramView.findViewById(2131376507));
+    }
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

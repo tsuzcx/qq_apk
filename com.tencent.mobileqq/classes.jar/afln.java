@@ -1,51 +1,22 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import java.io.OutputStream;
-import msg.aio_doodle.DoodleMsgProto.DoodleData;
-import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
 
 public class afln
-  implements afle
+  extends ClickableSpan
 {
-  public afln(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
+  public afln(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
+  public void onClick(View paramView)
   {
-    if (paramDoodleData == null) {
-      return false;
-    }
-    paramDoodleData = paramDoodleData.toByteArray();
-    byte[] arrayOfByte = afld.a(paramDoodleData.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleData)
-    {
-      break label33;
-    }
+    this.a.b();
   }
   
-  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (paramDoodleHeader == null) {
-      return false;
-    }
-    paramDoodleHeader = paramDoodleHeader.toByteArray();
-    byte[] arrayOfByte = afld.a(paramDoodleHeader.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleHeader)
-    {
-      break label33;
-    }
+    paramTextPaint.setColor(Color.rgb(0, 165, 224));
   }
 }
 

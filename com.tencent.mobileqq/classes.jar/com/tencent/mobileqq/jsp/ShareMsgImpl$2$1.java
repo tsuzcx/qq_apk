@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
-import auun;
-import bhht;
+import awam;
+import bisl;
 
 class ShareMsgImpl$2$1
   implements Runnable

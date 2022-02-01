@@ -1,8 +1,44 @@
-import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface auis
+public class auis
+  extends atlv
 {
-  public abstract void a(HotPicData paramHotPicData);
+  atfq jdField_a_of_type_Atfq = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  
+  public auis(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    b();
+  }
+  
+  public int a()
+  {
+    return 4;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Atfq != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_Atfq);
+    }
+  }
+  
+  public boolean a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().c(this.jdField_a_of_type_JavaLangString, this.b);
+    return true;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Atfq = new auit(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_Atfq);
+  }
 }
 
 

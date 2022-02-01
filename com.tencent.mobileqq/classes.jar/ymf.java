@@ -1,41 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ymf
-  extends vqq<wfb, wgo>
+  implements EIPCResultCallback
 {
-  ymf(yme paramyme) {}
+  public ymf(EditVideoArtFilter paramEditVideoArtFilter, yqh paramyqh) {}
   
-  public void a(@NonNull wfb paramwfb, @Nullable wgo paramwgo, @NonNull ErrorMessage paramErrorMessage)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    xvv.b("EditVideoTagPresenter", "refresh onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramwgo != null))
+    if (paramEIPCResult.data == null) {}
+    int j;
+    Object localObject;
+    do
     {
-      xvv.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramwgo.toString());
-      paramwfb = paramwgo.jdField_a_of_type_JavaUtilList;
-      if (paramwfb.contains(yme.a(this.a)))
-      {
-        int i = paramwfb.indexOf(yme.a(this.a));
-        yme.a(this.a, (ymk)paramwfb.get(i));
-        yme.a(this.a).clear();
-        yme.a(this.a).addAll(paramwfb);
-        yme.a(this.a, paramwgo.jdField_a_of_type_JavaLangString);
-        yme.a(this.a, paramwgo.b);
-        ThreadManager.executeOnSubThread(new EditVideoTagPresenter.1.1(this));
-      }
-    }
-    for (;;)
-    {
-      yme.a(this.a).a(paramErrorMessage.errorCode, yme.a(this.a), this.a.a());
       return;
-      yme.a(this.a, null);
-      break;
-      xvv.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
+      int i = paramEIPCResult.data.getInt("param_art_filter_task_id");
+      j = paramEIPCResult.data.getInt("param_art_filter_style_id");
+      localObject = paramEIPCResult.data.getString("param_art_filter_resource_path");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "QIPCResult: resultFilterTaskId:" + i + " currentFilterTaskId:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " currentStyleId:" + EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter) + " resultFilterStyleId:" + j + " resultFilterOriginImgPath:" + (String)localObject);
+      }
+    } while ((EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter) != j) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.d == null) || (!((String)localObject).equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.d)) || (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_Boolean));
+    if (paramEIPCResult.data.getInt("param_art_filter_task_result") == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("param_art_filter_output_path");
+      localObject = EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(34);
+      ((Message)localObject).obj = paramEIPCResult;
+      ((Message)localObject).arg1 = this.jdField_a_of_type_Yqh.a;
+      EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage((Message)localObject);
+      return;
     }
+    paramEIPCResult = EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(37);
+    EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage(paramEIPCResult);
   }
 }
 

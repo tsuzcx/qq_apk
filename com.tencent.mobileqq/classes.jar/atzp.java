@@ -1,18 +1,40 @@
-import android.app.Activity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import android.view.View;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public abstract interface atzp
+class atzp
+  implements AdapterView.OnItemClickListener
 {
-  public abstract String a();
+  atzp(atzm paramatzm) {}
   
-  public abstract void a();
-  
-  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
-  
-  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt);
-  
-  public abstract void b();
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = this.a;
+    boolean bool;
+    if (!atzm.a(this.a))
+    {
+      bool = true;
+      atzm.a(paramAdapterView, bool);
+      if (this.a.jdField_a_of_type_Atux != null) {
+        this.a.jdField_a_of_type_Atux.a(atzm.a(this.a));
+      }
+      if (!atzm.a(this.a)) {
+        break label110;
+      }
+      this.a.jdField_a_of_type_Auay.a(false);
+      this.a.jdField_a_of_type_Auay.b(false);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Auay.e(atzm.a(this.a));
+      return;
+      bool = false;
+      break;
+      label110:
+      this.a.jdField_a_of_type_Auay.a(true);
+      this.a.h();
+    }
+  }
 }
 
 

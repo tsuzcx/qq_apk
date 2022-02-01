@@ -1,14 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import android.view.View;
 
-public class ppl
-  implements pqe
+class ppl
+  implements pnq
 {
-  public ppl(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  ppl(ppk paramppk) {}
   
-  public void a()
-  {
-    ReadInJoySelfFragment.i(this.a);
-  }
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import ayeb;
-import ayeu;
-import bflb;
+import azkn;
+import azlg;
+import bgts;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.pic.CompressInfo;
@@ -13,14 +13,14 @@ import com.tencent.mobileqq.transfile.TransferRequest.PicUpExtraInfo;
 class TroopPicEffectsEditActivity$3
   implements Runnable
 {
-  TroopPicEffectsEditActivity$3(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity, ayeb paramayeb) {}
+  TroopPicEffectsEditActivity$3(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity, azkn paramazkn) {}
   
   public void run()
   {
     this.this$0.app.getHwEngine().preConnect();
     Object localObject = new CompressInfo(this.a.g, 0);
     ((CompressInfo)localObject).f = 0;
-    ayeu.a((CompressInfo)localObject);
+    azlg.a((CompressInfo)localObject);
     TransferRequest localTransferRequest = new TransferRequest();
     localTransferRequest.mSelfUin = this.this$0.app.getAccount();
     localTransferRequest.mPeerUin = this.this$0.b;
@@ -34,7 +34,7 @@ class TroopPicEffectsEditActivity$3
     localObject = new TransferRequest.PicUpExtraInfo();
     localTransferRequest.mExtraObj = localObject;
     ((TransferRequest.PicUpExtraInfo)localObject).mIsRaw = false;
-    localTransferRequest.mUpCallBack = new bflb(this.this$0);
+    localTransferRequest.mUpCallBack = new bgts(this.this$0);
     localTransferRequest.mIsPresend = this.a.c;
     localTransferRequest.myPresendInvalid = this.a.e;
     localTransferRequest.mFileType = 55;

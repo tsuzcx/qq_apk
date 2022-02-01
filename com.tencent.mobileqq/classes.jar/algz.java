@@ -1,33 +1,107 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import mqq.app.QQPermissionCallback;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel$requestAdCode$1", "Lmqq/app/QQPermissionCallback;", "deny", "", "i", "", "strings", "", "", "ints", "", "(I[Ljava/lang/String;[I)V", "grant", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class algz
-  implements QQPermissionCallback
+public class algz
+  extends algv
 {
-  algz(String paramString) {}
-  
-  public void deny(int paramInt, @NotNull String[] paramArrayOfString, @NotNull int[] paramArrayOfInt)
+  private static void a(Context paramContext, View paramView)
   {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfString, "strings");
-    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "ints");
-    QLog.i("WeatherWebArkViewModel", 1, "requestAdCode deny");
-    if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Algx.a().postValue(new alhe(3, null, null, null, 0, 0, 62, null));
+    Animation localAnimation = AnimationUtils.loadAnimation(paramContext, 2130772128);
+    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772127);
+    localAnimation.setAnimationListener(new alha(paramView, paramContext));
+    paramContext.setAnimationListener(new alhb(paramView, localAnimation));
+    paramView.startAnimation(localAnimation);
+  }
+  
+  public View a(int paramInt, Object paramObject, algy paramalgy, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alje paramalje)
+  {
+    alhc localalhc;
+    if ((paramView == null) || (!(paramView.getTag() instanceof alhc)))
+    {
+      localalhc = new alhc(null);
+      View localView = a(paramContext, 2131562770, localalhc);
+      localalhc.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)localView.findViewById(2131368381));
+      localalhc.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131380501));
+      localalhc.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131379001));
+      localalhc.b = ((SingleLineTextView)localView.findViewById(2131365538));
+      localalhc.b.setGravity(16);
+      localalhc.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131362706));
+      localalhc.c = ((ImageView)localView.findViewById(2131362705));
+      Object localObject = paramContext.getResources();
+      float f = DeviceInfoUtil.getDesity();
+      paramView = ((Resources)localObject).getColorStateList(2131167110);
+      ColorStateList localColorStateList = ((Resources)localObject).getColorStateList(2131167033);
+      localObject = ((Resources)localObject).getColorStateList(2131167111);
+      localalhc.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(localColorStateList);
+      if (ThemeUtil.isNowThemeIsDefault(null, false, null))
+      {
+        localalhc.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject, 0);
+        localalhc.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
+        localalhc.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
+        localalhc.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
+        localalhc.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
+        localalhc.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 2);
+        localalhc.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
+        localalhc.b.setTextColor(paramView);
+        localalhc.b.setExtendTextPadding((int)(f * 2.0F), 1);
+        localalhc.b.setExtendTextSize(14.0F, 1);
+        localView.setTag(localalhc);
+        paramView = localView;
+        if (this.a != null)
+        {
+          localalhc.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.a.a());
+          paramView = localView;
+        }
+      }
+    }
+    for (;;)
+    {
+      return super.a(paramInt, paramObject, paramalgy, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramalje);
+      localalhc.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
+      break;
     }
   }
   
-  public void grant(int paramInt, @NotNull String[] paramArrayOfString, @NotNull int[] paramArrayOfInt)
+  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
   {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfString, "strings");
-    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "ints");
-    QLog.i("WeatherWebArkViewModel", 1, "requestAdCode grant");
-    this.jdField_a_of_type_Algx.a(this.jdField_a_of_type_JavaLangString);
+    if ((paramView == null) || (paramRecentBaseData == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "bindView|param invalidate");
+      }
+    }
+    alhc localalhc;
+    do
+    {
+      return;
+      localalhc = null;
+      if ((paramView.getTag() instanceof alhc)) {
+        localalhc = (alhc)paramView.getTag();
+      }
+      if (localalhc != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.recent", 2, "bindView|holder is null, tag = " + paramView.getTag());
+    return;
+    super.a(paramView, paramRecentBaseData, paramContext, paramDrawable);
+    a(paramContext, localalhc.c);
   }
 }
 

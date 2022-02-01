@@ -1,42 +1,36 @@
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x5e1.UdcUinData;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.c2c.msgtype0x210.submsgtype0xeb.submsgtype0xeb.MsgBody;
 
 public class actr
-  extends axkv
+  implements acpi
 {
-  public actr(AuthDevActivity paramAuthDevActivity) {}
-  
-  public void getFaceStateSuccess(oidb_0x5e1.RspBody paramRspBody)
+  private static void a(acnk paramacnk, MsgType0x210 paramMsgType0x210)
   {
-    super.getFaceStateSuccess(paramRspBody);
-    AuthDevActivity.a(this.a, paramRspBody);
-    int i = ((oidb_0x5e1.UdcUinData)AuthDevActivity.a(this.a).rpt_msg_uin_data.get(0)).user_login_guard_face.get();
-    FormSimpleItem localFormSimpleItem = AuthDevActivity.a(this.a);
-    if (i == 1)
-    {
-      paramRspBody = this.a.getString(2131691998);
-      localFormSimpleItem.setRightText(paramRspBody);
-      if (i != 1) {
-        break label111;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xeb");
     }
-    label111:
-    for (paramRspBody = "1";; paramRspBody = "0")
+    try
     {
-      bcef.b(null, "dc00898", "", "", "0X800AA7C", "0X800AA7C", 0, 0, paramRspBody, "", "", "");
+      submsgtype0xeb.MsgBody localMsgBody = new submsgtype0xeb.MsgBody();
+      if (paramacnk.a(paramMsgType0x210)) {
+        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      }
+      aohe.a(paramacnk.a(), localMsgBody);
       return;
-      paramRspBody = this.a.getString(2131692003);
-      break;
+    }
+    catch (Exception paramacnk)
+    {
+      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0xeb], errInfo->" + paramacnk.getMessage());
     }
   }
   
-  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    super.onFailedResponse(paramString1, paramInt, paramString2);
+    a(paramacnk, paramMsgType0x210);
+    return null;
   }
 }
 

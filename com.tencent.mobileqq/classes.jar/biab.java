@@ -1,55 +1,64 @@
-import android.content.ContentValues;
-import android.os.Parcel;
-import com.tencent.open.base.MD5Utils;
-import com.tencent.open.component.cache.database.DbCacheData;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.app.AppRuntime;
+import mqq.manager.AccountManager;
+import mqq.manager.WtloginManager;
 
 public class biab
-  extends DbCacheData
 {
-  public static final DbCacheData.DbCreator<biab> a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
+  private AppRuntime a;
   
-  static
+  public biab(AppRuntime paramAppRuntime)
   {
-    jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = new biac();
+    this.a = paramAppRuntime;
   }
   
-  protected biab(String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3)
+  public void a(Intent paramIntent, String paramString, biae parambiae)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.c = paramString3;
-  }
-  
-  biab(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
-  {
-    this.jdField_a_of_type_JavaLangString = MD5Utils.encodeHexStr(paramString1);
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.c = paramString3;
-    this.d = paramString4;
-  }
-  
-  public void writeTo(ContentValues paramContentValues)
-  {
-    paramContentValues.put("urlKey", this.jdField_a_of_type_JavaLangString);
-    paramContentValues.put("ETag", this.jdField_b_of_type_JavaLangString);
-    paramContentValues.put("lastModify", Long.valueOf(this.jdField_a_of_type_Long));
-    paramContentValues.put("cacheTime", Long.valueOf(this.jdField_b_of_type_Long));
-    Parcel localParcel = Parcel.obtain();
-    localParcel.writeString(this.c);
-    byte[] arrayOfByte = localParcel.marshall();
-    localParcel.recycle();
-    paramContentValues.put("response", arrayOfByte);
+    if ((paramIntent == null) || (TextUtils.isEmpty(paramString))) {
+      if (parambiae != null) {
+        parambiae.a(paramIntent, false, paramString, null, null);
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (QLog.isDevelopLevel()) {
+        biaf.a("LHLoginMng -- lockLH", paramIntent);
+      }
+      Object localObject2 = paramIntent.getStringExtra("key_register_smscode");
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      Object localObject3 = paramIntent.getStringExtra("key_register_nick");
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = "";
+      }
+      String str = paramIntent.getStringExtra("key_register_password");
+      localObject3 = str;
+      if (str == null) {
+        localObject3 = "";
+      }
+      boolean bool = paramIntent.getBooleanExtra("key_register_chose_bind_phone", false);
+      if (bool)
+      {
+        paramIntent = new biad(paramIntent, paramString, parambiae);
+        ((WtloginManager)this.a.getManager(1)).regGetSMSVerifyLoginAccountWithLH(((String)localObject1).getBytes(), ((String)localObject2).getBytes(), paramString, "8.4.10", paramIntent);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "lockLH, lhUin: %s, isBindPhoneNum: %s", new Object[] { paramString, Boolean.valueOf(bool) }));
+        return;
+        paramIntent = new biac(paramIntent, paramString, parambiae);
+        parambiae = (AccountManager)this.a.getManager(0);
+        azit.a().a(this.a, false);
+        parambiae.sendRegisterBySetPassWithLH((String)localObject3, (String)localObject2, (String)localObject1, paramString, false, "8.4.10", paramIntent);
+      }
+    }
   }
 }
 

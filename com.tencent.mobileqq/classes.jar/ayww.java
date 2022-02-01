@@ -1,30 +1,52 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
 
-class ayww
-  implements View.OnClickListener
+public class ayww
+  implements INetInfoHandler
 {
-  ayww(ayws paramayws, String paramString, int paramInt, View paramView) {}
+  private ayww(OlympicToolAppInterface paramOlympicToolAppInterface) {}
   
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    if ((baqi.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("key_sign_topic_name", this.jdField_a_of_type_JavaLangString);
-      localBundle.putInt("key_sign_topic_id", this.jdField_a_of_type_Int);
-      localBundle.putInt("from_type", 2);
-      if (ayws.e(this.jdField_a_of_type_Ayws) != null) {
-        SignTextEditFragment.a(ayws.f(this.jdField_a_of_type_Ayws), null, null, localBundle, -1);
-      }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      aymz.a().c(ayws.j(this.jdField_a_of_type_Ayws));
-      bcef.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "2", "0", "", "");
+    if (OlympicToolAppInterface.i(this.a) != null) {
+      OlympicToolAppInterface.j(this.a).onNetMobile2None();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (OlympicToolAppInterface.g(this.a) != null) {
+      OlympicToolAppInterface.h(this.a).onNetMobile2Wifi(paramString);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (OlympicToolAppInterface.a(this.a) != null) {
+      OlympicToolAppInterface.b(this.a).onNetNone2Mobile(paramString);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (OlympicToolAppInterface.e(this.a) != null) {
+      OlympicToolAppInterface.f(this.a).onNetNone2Wifi(paramString);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (OlympicToolAppInterface.c(this.a) != null) {
+      OlympicToolAppInterface.d(this.a).onNetWifi2Mobile(paramString);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (OlympicToolAppInterface.k(this.a) != null) {
+      OlympicToolAppInterface.l(this.a).onNetWifi2None();
+    }
   }
 }
 

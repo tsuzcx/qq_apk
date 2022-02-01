@@ -1,23 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awlf
-  implements ValueAnimator.AnimatorUpdateListener
+public class awlf
+  implements View.OnClickListener
 {
-  awlf(awlc paramawlc, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
+  public awlf(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Awlc.b)
-    {
-      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = i;
-      this.jdField_a_of_type_Awlc.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Awlc.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      return;
-    }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    bdla.b(null, "CliOper", "", "", "0X800A963", "0X800A963", 0, 0, "0", "0", "0", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

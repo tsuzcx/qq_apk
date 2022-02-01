@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.friend;
 
-import aipe;
+import ajkt;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -11,7 +11,7 @@ import mqq.os.MqqHandler;
 public class BuddyListAdapter$1
   implements Runnable
 {
-  public BuddyListAdapter$1(aipe paramaipe) {}
+  public BuddyListAdapter$1(ajkt paramajkt) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class BuddyListAdapter$1
     SparseIntArray localSparseIntArray = new SparseIntArray();
     try
     {
-      aipe.a(this.this$0, localArrayList, localSparseArray, localSparseIntArray);
+      ajkt.a(this.this$0, localArrayList, localSparseArray, localSparseIntArray);
       if (QLog.isColorLevel()) {
         QLog.d("BuddyListAdapter", 2, "notifyDataSetChanged in ThreadManager");
       }

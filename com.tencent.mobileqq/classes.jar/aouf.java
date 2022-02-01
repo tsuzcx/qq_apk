@@ -1,31 +1,27 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aouf
+class aouf
+  implements bdhi
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  aouf(aoue paramaoue) {}
   
   public void a()
   {
-    this.e = null;
-    this.f = null;
-    this.g = null;
+    QLog.i("JumpActivityHelper", 1, "system share.doShare show self dialog grant");
+    HashMap localHashMap = new HashMap();
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "noSDPermissionShareSelftGrant", true, 0L, 0L, localHashMap, "");
   }
   
-  public boolean a()
+  public void b()
   {
-    return (this.jdField_a_of_type_Int >= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d));
-  }
-  
-  public boolean b()
-  {
-    return (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g));
+    QLog.i("JumpActivityHelper", 1, "system share.doShare show self dialog denied");
+    HashMap localHashMap = new HashMap();
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "noSDPermissionShareSelftDeny", true, 0L, 0L, localHashMap, "");
+    this.a.a.finish();
   }
 }
 

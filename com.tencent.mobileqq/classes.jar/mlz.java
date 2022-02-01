@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.beauty.BeautyView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.widget.RotateLayout;
 
 public class mlz
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public mlz(BeautyView paramBeautyView) {}
+  private mlz(VideoLayerUI paramVideoLayerUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
+    VideoLayerUI.a(this.a).setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mlz
  * JD-Core Version:    0.7.0.1
  */

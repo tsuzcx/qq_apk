@@ -1,8 +1,55 @@
-public abstract class bgqx
+import android.os.Bundle;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+
+public class bgqx
+  extends bgqy
 {
-  public void a() {}
+  public bgqx(bgqv parambgqv, int paramInt)
+  {
+    super(parambgqv, paramInt);
+  }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3) {}
+  public void a()
+  {
+    if (a(this.jdField_a_of_type_Bgqv.a)) {
+      return;
+    }
+    e();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      c();
+    }
+  }
+  
+  public void c()
+  {
+    boolean bool = true;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("isVideo", 0);
+    if (this.b != null)
+    {
+      localBundle.putInt("result", 1);
+      localBundle.putString("url", this.b);
+    }
+    for (;;)
+    {
+      bgqw.a().a(bool, this.jdField_a_of_type_Int, localBundle);
+      return;
+      localBundle.putInt("result", 0);
+      localBundle.putString("error", "");
+      bool = false;
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
+      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+    }
+  }
 }
 
 

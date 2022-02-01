@@ -1,42 +1,18 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.EncryptUinInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nzs
-  extends nzt
+public class nzs
+  implements View.OnClickListener
 {
-  nzs(nzr paramnzr) {}
+  public nzs(EqqAccountDetailActivity paramEqqAccountDetailActivity, boolean paramBoolean1, String paramString, boolean paramBoolean2, oji paramoji) {}
   
-  protected void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = (EncryptUinInfo)paramList.get(0);
-      if ((paramList.jdField_a_of_type_Int != 0) || (paramList.jdField_a_of_type_Long != this.a.mApp.getLongAccountUin()) || (TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString))) {
-        break label113;
-      }
-      nzr.a(this.a, paramList.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: " + nzr.a(this.a));
-      }
-    }
-    label113:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: failed，code=" + paramList.jdField_a_of_type_Int);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt == 1)
-    {
-      super.onUpdate(paramInt, paramBoolean, paramObject);
-      this.a.mApp.removeObserver(nzr.a(this.a));
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.b);
+    EqqAccountDetailActivity.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Oji.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

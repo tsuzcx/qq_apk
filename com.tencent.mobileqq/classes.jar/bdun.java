@@ -1,17 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import qqcircle.QQCircleSwitch.GetCircleSwitchRsp;
+import qqcircle.QQCircleSwitch.StSwitch;
 
 public class bdun
-  implements View.OnTouchListener
+  implements VSDispatchObserver.onVSRspCallBack<QQCircleSwitch.GetCircleSwitchRsp>
 {
-  public bdun(TroopNickRuleFragment paramTroopNickRuleFragment) {}
+  public bdun(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleSwitch.GetCircleSwitchRsp paramGetCircleSwitchRsp)
   {
-    this.a.a(paramMotionEvent.getX(), paramMotionEvent.getY());
-    return false;
+    if ((paramBoolean) && (paramLong == 0L))
+    {
+      paramVSBaseRequest = paramGetCircleSwitchRsp.sw.value.get();
+      QLog.d("leba_study", 1, "requestEntertainCount GetCircleSwitch success" + paramVSBaseRequest);
+      QzoneConfig.getInstance().updateOneConfig("qqcircle", "qqcircle_entrance_enable", paramVSBaseRequest);
+    }
+    for (;;)
+    {
+      KidModeAdvanceSettingFragment.b(this.a);
+      return;
+      QLog.d("leba_study", 1, "requestEntertainCount GetCircleSwitch error retcode= " + paramLong);
+    }
   }
 }
 

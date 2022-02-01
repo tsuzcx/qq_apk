@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbyp;
+import bdfk;
 
 class GeneralSettingActivity$19
   implements Runnable
@@ -10,15 +10,15 @@ class GeneralSettingActivity$19
   public void run()
   {
     if (this.this$0.isFinishing()) {}
-    while ((!bbyp.b()) || (this.this$0.a())) {
+    while ((!bdfk.b()) || (this.this$0.a())) {
       return;
     }
-    this.this$0.a(true, bbyp.c());
+    this.this$0.a(true, bdfk.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.19
  * JD-Core Version:    0.7.0.1
  */

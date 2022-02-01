@@ -1,21 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.handlers.FrameworkHandler.3.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class psb
-  implements View.OnClickListener
-{
-  psb(prz paramprz) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(false);
-    ThreadManager.executeOnSubThread(new FrameworkHandler.3.1(this));
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/decoupling/uilayer/video/RIJVideoViewInterceptor$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class psb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

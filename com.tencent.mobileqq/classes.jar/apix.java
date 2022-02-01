@@ -1,10 +1,6 @@
 public abstract interface apix
 {
-  public abstract void a(int paramInt, aphw paramaphw);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract void c();
+  public abstract void a(int paramInt, String paramString, apki paramapki);
 }
 
 

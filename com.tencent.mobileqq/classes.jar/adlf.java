@@ -1,20 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class adlf
-  implements View.OnClickListener
+class adlf
+  implements biav
 {
-  public adlf(GeneralSettingActivity paramGeneralSettingActivity) {}
+  private final WeakReference<adlb> a;
   
-  public void onClick(View paramView)
+  adlf(adlb paramadlb)
   {
-    PublicFragmentActivity.a(this.a.getActivity(), QQSettingAutoDownloadAndSaveFragment.class);
-    bcef.b(null, "CliOper", "", "", "0X800A2DB", "0X800A2DB", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = new WeakReference(paramadlb);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("AutoLoginHelper", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
+      }
+    }
+    adlb localadlb;
+    do
+    {
+      return;
+      localadlb = (adlb)this.a.get();
+    } while (localadlb == null);
+    localadlb.a(paramString, paramBoolean);
   }
 }
 

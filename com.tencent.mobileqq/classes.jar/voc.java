@@ -1,56 +1,20 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tencent.mobileqq.transfile.StoryUploadProcessor;
-import java.util.ArrayList;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class voc
-  extends vko
+class voc
+  implements View.OnClickListener
 {
-  public StoryVideoItem a;
-  public GeneralFeedItem a;
-  public ArrayList<vob> a;
-  public final boolean a;
-  public StoryVideoItem b;
-  public boolean b;
-  public boolean c;
+  voc(vob paramvob) {}
   
-  public voc(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 940006) || (paramInt == 940007) || (paramInt == 940017) || (paramInt == 940018) || (paramInt == 941001) || (paramInt == 941002) || (paramInt == StoryUploadProcessor.makeStoryErrorCoder(940017)) || (paramInt == StoryUploadProcessor.makeStoryErrorCoder(9042)) || (paramInt == StoryUploadProcessor.makeStoryErrorCoder(9070)) || (paramInt == StoryUploadProcessor.makeStoryErrorCoder(9071)) || (paramInt / 100 == StoryUploadProcessor.makeStoryErrorCoder(999000) / 100) || ((paramInt >= 5100) && (paramInt <= 5108));
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 941001) || (paramInt == 941002);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-      return false;
+    if (vob.a(this.a).getActivity() != null) {
+      vob.a(this.a).getActivity().doOnBackPressed();
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isTroopLocalVideoOnly();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0);
-  }
-  
-  public String toString()
-  {
-    return "StoryVideoPublishStatusEvent{mFakeStoryVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mSucStoryVideoItem=" + this.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", mCommentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem + ", mShareGroupFakeItems=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

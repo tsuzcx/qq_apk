@@ -1,20 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-class blyz
+public class blyz
   implements DialogInterface.OnClickListener
 {
-  blyz(blys paramblys) {}
+  public blyz(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    blys.a(this.a).dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blyz
  * JD-Core Version:    0.7.0.1
  */

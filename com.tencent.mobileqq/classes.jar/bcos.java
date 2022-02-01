@@ -1,64 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public final class bcos
+public class bcos
+  extends bcoa
 {
-  public String a;
-  public ArrayList<Integer> a;
+  public ImageView a;
+  public TextView a;
+  public URLImageView a;
+  public TextView b;
+  public TextView c;
   
-  public bcos()
+  public bcos(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramViewGroup, paramInt);
   }
   
-  public static bcos a(aptx[] paramArrayOfaptx)
+  protected void a()
   {
-    bcos localbcos = new bcos();
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      int i = 0;
-      for (;;)
-      {
-        if (i >= paramArrayOfaptx.length) {
-          break label187;
-        }
-        String str = paramArrayOfaptx[i].jdField_a_of_type_JavaLangString;
-        try
-        {
-          str = new JSONObject(str).optString("black_ids");
-          ArrayList localArrayList = new ArrayList();
-          if (!TextUtils.isEmpty(str))
-          {
-            String[] arrayOfString = str.split(",");
-            int k = arrayOfString.length;
-            int j = 0;
-            while (j < k)
-            {
-              localArrayList.add(Integer.valueOf(Integer.parseInt(arrayOfString[j].trim())));
-              j += 1;
-            }
-            localbcos.jdField_a_of_type_JavaLangString = str;
-            localbcos.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("StudyModePushConfigProcessor", 2, "[study mode push config], :" + str);
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            QLog.e("StudyModePushConfigProcessor", 1, localThrowable, new Object[0]);
-          }
-        }
-        i += 1;
-      }
-    }
-    label187:
-    return localbcos;
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131379046));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366845));
+    this.b = ((TextView)localView.findViewById(2131371581));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131371553));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377256));
   }
 }
 

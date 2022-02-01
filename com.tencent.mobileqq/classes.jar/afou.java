@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class afou
-  implements afpa
+final class afou
+  implements afpm
 {
-  public afou(AIOLongShotHelper paramAIOLongShotHelper) {}
-  
-  public void a()
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    this.a.b();
-  }
-  
-  public void b()
-  {
-    this.a.b();
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 76);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

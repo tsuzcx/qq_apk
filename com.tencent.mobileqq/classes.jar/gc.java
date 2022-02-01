@@ -1,11 +1,11 @@
 class gc
-  implements avtc<Void, Void>
+  implements awzd<Void, Void>
 {
-  gc(gb paramgb, amsw paramamsw, String paramString) {}
+  gc(gb paramgb, anvk paramanvk, String paramString) {}
   
   public Void a(Void paramVoid)
   {
-    this.jdField_a_of_type_Amsw.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Anvk.a(this.jdField_a_of_type_JavaLangString);
     return null;
   }
 }

@@ -1,208 +1,245 @@
-import android.os.SystemClock;
-import com.tencent.avgame.gamelogic.data.Player;
-import com.tencent.avgame.gamelogic.data.RoomInfo;
-import com.tencent.avgame.gamelogic.data.UserScore;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.GradientDrawable;
+import android.text.TextPaint;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public abstract class nbm
-  implements BusinessObserver
+public class nbm
+  implements View.OnClickListener, View.OnTouchListener
 {
-  public static String a(int paramInt)
+  private int jdField_a_of_type_Int = -1;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private myj jdField_a_of_type_Myj;
+  private nbn jdField_a_of_type_Nbn;
+  private final float[] jdField_a_of_type_ArrayOfFloat = { 0.5F, 1.0F, 1.25F, 1.5F, 2.0F };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131377954, 2131377956, 2131377955, 2131377953, 2131377952 };
+  private final TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[this.jdField_a_of_type_ArrayOfInt.length];
+  private TextView b;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  
+  public nbm(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 0: 
-      return "NT_CMD_GAME_PLAY_START_REQ";
-    case 1: 
-      return "NT_CMD_GAME_PLAY_SWITCH_TOPIC_REQ";
-    case 2: 
-      return "NT_PUSH_GAME_PLAY_START";
-    case 3: 
-      return "NT_PUSH_GAME_PLAY_OVER";
-    case 4: 
-      return "NT_PUSH_GAME_PLAY_PLAYER_CHANGE";
-    case 5: 
-      return "NT_PUSH_GAME_PLAY_TOPIC_CHANGE";
-    case 6: 
-      return "NT_PUSH_GAME_PLAY_NEXT_PLAYER_TIP";
-    case 7: 
-      return "NT_PUSH_GAME_PLAY_ANSWER_RIGHT";
-    case 8: 
-      return "NT_PUSH_GAME_PLAY_ANSWER_TIMEOUT";
-    case 9: 
-      return "NT_PUSH_GAME_PLAY_ANSWER_GIVEOUT_BYPLAYER";
-    case 10: 
-      return "NT_CMD_GAME_PLAY_GET_RANKING_REQ";
-    case 11: 
-      return "NT_RC_GAME_RESULT_UPLOAD";
-    case 12: 
-      return "NT_PUSH_GAME_PLAY_TRANSLATION_INFO";
-    }
-    return "NT_CMD_GAME_PLAY_PULL_TOPICS_REQ";
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    c();
+    d();
   }
   
-  public abstract void a(long paramLong1, long paramLong2, String paramString);
-  
-  public abstract void a(long paramLong1, long paramLong2, String paramString, int paramInt1, int paramInt2, mzq parammzq, Player paramPlayer, long paramLong3);
-  
-  protected void a(long paramLong1, long paramLong2, String paramString1, long paramLong3, int paramInt, String paramString2, String paramString3) {}
-  
-  public abstract void a(long paramLong1, long paramLong2, String paramString1, String paramString2, Player paramPlayer);
-  
-  public abstract void a(long paramLong1, long paramLong2, String paramString1, String paramString2, mzq parammzq);
-  
-  public abstract void a(long paramLong1, long paramLong2, String paramString, mzq parammzq);
-  
-  public abstract void a(long paramLong1, long paramLong2, String paramString, mzq parammzq, Player paramPlayer);
-  
-  public abstract void a(long paramLong1, long paramLong2, String paramString1, mzq parammzq, String paramString2);
-  
-  public abstract void a(long paramLong1, long paramLong2, String paramString, naj paramnaj, Player paramPlayer, mzq parammzq);
-  
-  public abstract void a(long paramLong1, String paramString, long paramLong2, mzq parammzq);
-  
-  public abstract void a(long paramLong, String paramString1, String paramString2);
-  
-  public abstract void a(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2, RoomInfo paramRoomInfo, List<Long> paramList);
-  
-  public abstract void a(String paramString1, long paramLong1, int paramInt, long paramLong2, String paramString2, naj paramnaj, Player paramPlayer, mzq parammzq);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(String paramString1, String paramString2, List<UserScore> paramList);
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
-  
-  public abstract void b(long paramLong1, String paramString, long paramLong2, mzq parammzq);
-  
-  public abstract void b(long paramLong, String paramString1, String paramString2);
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  private void a(boolean paramBoolean)
   {
-    paramObject = (Object[])paramObject;
-    long l2 = SystemClock.elapsedRealtime();
-    if (paramInt == 0) {
-      if (paramBoolean)
+    float f = 17.0F;
+    int i = AIOUtils.dp2px(8.0F, this.jdField_a_of_type_AndroidViewView.getResources());
+    Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(2130842343);
+    if (paramBoolean)
+    {
+      f = 24.0F;
+      localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(2130842342);
+      i = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidViewView.getResources());
+    }
+    TextView[] arrayOfTextView = this.jdField_a_of_type_ArrayOfAndroidWidgetTextView;
+    int k = arrayOfTextView.length;
+    int j = 0;
+    if (j < k)
+    {
+      TextView localTextView = arrayOfTextView[j];
+      TextPaint localTextPaint = localTextView.getPaint();
+      if (paramBoolean) {}
+      for (boolean bool = true;; bool = false)
       {
-        a((String)paramObject[0], ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Long)paramObject[3]).longValue(), (String)paramObject[4], (naj)paramObject[5], (Player)paramObject[6], (mzq)paramObject[7]);
-        l1 = 0L;
-        if (QLog.isColorLevel())
+        localTextPaint.setFakeBoldText(bool);
+        localTextView.setTextSize(f);
+        localTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable.getConstantState().newDrawable());
+        localTextView.setCompoundDrawablePadding(i);
+        j += 1;
+        break;
+      }
+    }
+    e();
+  }
+  
+  private void b(int paramInt)
+  {
+    int i = 0;
+    if (i < this.jdField_a_of_type_ArrayOfInt.length)
+    {
+      TextView localTextView = this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i];
+      GradientDrawable localGradientDrawable = (GradientDrawable)localTextView.getCompoundDrawables()[3];
+      if (i == paramInt)
+      {
+        localTextView.setTextColor(-16725252);
+        localGradientDrawable.setColor(-16725252);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localTextView.setTextColor(-1);
+        localGradientDrawable.setColor(0);
+      }
+    }
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377954));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = this.jdField_a_of_type_AndroidWidgetTextView;
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377956));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = this.b;
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377955));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = this.c;
+    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377953));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = this.d;
+    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377952));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[4] = this.e;
+    a(false);
+    b(this.jdField_a_of_type_Int);
+  }
+  
+  private void d()
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    {
+      TextView localTextView = this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i];
+      localTextView.setOnClickListener(this);
+      localTextView.setOnTouchListener(this);
+      i += 1;
+    }
+  }
+  
+  private void e()
+  {
+    if ((this.jdField_a_of_type_Myj != null) && (this.jdField_a_of_type_Myj.b()))
+    {
+      float f = this.jdField_a_of_type_Myj.a();
+      int i = 0;
+      for (;;)
+      {
+        if (i < this.jdField_a_of_type_ArrayOfFloat.length)
         {
-          paramObject = a(paramInt);
-          if (l1 <= 0L) {
-            break label1054;
+          if (f == this.jdField_a_of_type_ArrayOfFloat[i]) {
+            b(i);
+          }
+        }
+        else {
+          return;
+        }
+        i += 1;
+      }
+    }
+    b(-1);
+  }
+  
+  public void a()
+  {
+    e();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public void a(int paramInt)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if (paramInt == 2)
+    {
+      paramInt = (int)(ImmersiveUtils.a() * 400.0F / 1334.0F);
+      a(true);
+    }
+    for (;;)
+    {
+      localMarginLayoutParams.leftMargin = (paramInt / 2);
+      localMarginLayoutParams.rightMargin = (paramInt / 2);
+      if (this.jdField_a_of_type_AndroidViewView.isShown()) {
+        this.jdField_a_of_type_AndroidViewView.requestLayout();
+      }
+      return;
+      paramInt = AIOUtils.dp2px(100.0F, this.jdField_a_of_type_AndroidViewView.getResources());
+      a(false);
+    }
+  }
+  
+  public void a(myj parammyj)
+  {
+    this.jdField_a_of_type_Myj = parammyj;
+  }
+  
+  public void a(nbn paramnbn)
+  {
+    this.jdField_a_of_type_Nbn = paramnbn;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      this.jdField_a_of_type_Int = 0;
+    }
+    for (;;)
+    {
+      b(this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Nbn != null) {
+        this.jdField_a_of_type_Nbn.g();
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Int = 0;
+      if (this.jdField_a_of_type_Myj != null)
+      {
+        this.jdField_a_of_type_Myj.a(0.5F);
+        continue;
+        this.jdField_a_of_type_Int = 1;
+        if (this.jdField_a_of_type_Myj != null)
+        {
+          this.jdField_a_of_type_Myj.a(1.0F);
+          continue;
+          this.jdField_a_of_type_Int = 2;
+          if (this.jdField_a_of_type_Myj != null)
+          {
+            this.jdField_a_of_type_Myj.a(1.25F);
+            continue;
+            this.jdField_a_of_type_Int = 3;
+            if (this.jdField_a_of_type_Myj != null)
+            {
+              this.jdField_a_of_type_Myj.a(1.5F);
+              continue;
+              this.jdField_a_of_type_Int = 4;
+              if (this.jdField_a_of_type_Myj != null) {
+                this.jdField_a_of_type_Myj.a(2.0F);
+              }
+            }
           }
         }
       }
     }
-    label1054:
-    for (long l1 = l2 - l1;; l1 = 0L)
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
     {
-      QLog.i("GamePlayObserver.cost", 2, String.format("onUpdate()=[%s] pushCost=[%dms] handleCost=[%dms]", new Object[] { paramObject, Long.valueOf(l1), Long.valueOf(SystemClock.elapsedRealtime() - l2) }));
-      return;
-      a((String)paramObject[0], ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (RoomInfo)paramObject[5], (List)paramObject[6]);
-      l1 = 0L;
-      break;
-      if (paramInt == 1)
-      {
-        if (paramBoolean)
-        {
-          a(((Long)paramObject[0]).longValue(), (String)paramObject[1], ((Long)paramObject[2]).longValue(), (mzq)paramObject[3]);
-          l1 = 0L;
-          break;
-        }
-        a(((Long)paramObject[0]).longValue(), (String)paramObject[1], (String)paramObject[2]);
-        l1 = 0L;
-        break;
-      }
-      if (paramInt == 2)
-      {
-        l1 = ((Long)paramObject[6]).longValue();
-        a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), (String)paramObject[2], (naj)paramObject[3], (Player)paramObject[4], (mzq)paramObject[5]);
-        break;
-      }
-      if (paramInt == 3)
-      {
-        l1 = ((Long)paramObject[3]).longValue();
-        a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), (String)paramObject[2]);
-        break;
-      }
-      if (paramInt == 6)
-      {
-        l1 = ((Long)paramObject[5]).longValue();
-        a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), (String)paramObject[2], (String)paramObject[3], (Player)paramObject[4]);
-        break;
-      }
-      if (paramInt == 4)
-      {
-        l1 = ((Long)paramObject[5]).longValue();
-        a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), (String)paramObject[2], (mzq)paramObject[3], (Player)paramObject[4]);
-        break;
-      }
-      if (paramInt == 5)
-      {
-        l1 = ((Long)paramObject[5]).longValue();
-        a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), (String)paramObject[2], (mzq)paramObject[3], (String)paramObject[4]);
-        break;
-      }
-      if (paramInt == 7)
-      {
-        l1 = ((Long)paramObject[8]).longValue();
-        a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), (mzq)paramObject[5], (Player)paramObject[6], ((Long)paramObject[7]).longValue());
-        break;
-      }
-      if (paramInt == 8)
-      {
-        l1 = ((Long)paramObject[4]).longValue();
-        a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), (String)paramObject[2], (mzq)paramObject[3]);
-        break;
-      }
-      if (paramInt == 9)
-      {
-        l1 = ((Long)paramObject[5]).longValue();
-        a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), (String)paramObject[2], (String)paramObject[3], (mzq)paramObject[4]);
-        break;
-      }
-      if (paramInt == 10)
-      {
-        if (paramBoolean)
-        {
-          a((String)paramObject[0], (String)paramObject[1], (List)paramObject[2]);
-          l1 = 0L;
-          break;
-        }
-        a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2]);
-        l1 = 0L;
-        break;
-      }
-      if (paramInt == 11)
-      {
-        a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-        l1 = 0L;
-        break;
-      }
-      if (paramInt == 12)
-      {
-        l1 = ((Long)paramObject[7]).longValue();
-        a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue(), (String)paramObject[5], (String)paramObject[6]);
-        break;
-      }
-      if (paramInt == 13)
-      {
-        if (paramBoolean)
-        {
-          b(((Long)paramObject[0]).longValue(), (String)paramObject[1], ((Long)paramObject[2]).longValue(), (mzq)paramObject[3]);
-          l1 = 0L;
-          break;
-        }
-        b(((Long)paramObject[0]).longValue(), (String)paramObject[1], (String)paramObject[2]);
-      }
-      l1 = 0L;
-      break;
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

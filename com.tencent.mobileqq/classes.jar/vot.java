@@ -1,94 +1,99 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.IOException;
-import java.net.URLEncoder;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.json.JSONException;
-import org.json.JSONObject;
+import UserGrowth.stFeedStatus;
+import UserGrowth.stGetPersonalFeedListRsp;
+import UserGrowth.stSimpleMetaFeed;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vot
-  extends vow
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  private volatile String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
   
-  public vot(String paramString)
+  private ArrayList<String> a(List<vpj> paramList)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private ErrorMessage a()
-  {
-    Object localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { QQStoryContext.a().a(), URLEncoder.encode(this.jdField_a_of_type_JavaLangString) });
-    long l = System.currentTimeMillis();
-    localObject = HttpUtil.openRequest(QQStoryContext.a().a(), (String)localObject, null, "GET", null, null, 5000, 5000);
-    if ((localObject != null) && (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200))
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
     {
-      localObject = HttpUtil.readHttpResponse((HttpResponse)localObject);
-      xvv.a("Q.qqstory.publish.upload.LinkRichObject", "http resp %s", localObject);
-      localObject = new JSONObject((String)localObject);
-      this.jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject).getString("ret"));
-      if (this.jdField_a_of_type_Int != 0) {
-        return new ErrorMessage(96000002, "server error code:" + this.jdField_a_of_type_Int);
-      }
-    }
-    else
-    {
-      xvv.d("Q.qqstory.publish.upload.LinkRichObject", "");
-      if (localObject != null) {}
-      for (localObject = "http code:" + ((HttpResponse)localObject).getStatusLine();; localObject = "response is null") {
-        return new ErrorMessage(96000003, (String)localObject);
-      }
-    }
-    String str = ((JSONObject)localObject).getString("title");
-    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.b))) {
-      this.b = str;
-    }
-    str = ((JSONObject)localObject).getString("abstract");
-    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.c))) {
-      this.c = str;
-    }
-    localObject = ((JSONObject)localObject).getString("thumbUrl");
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(this.d))) {
-      this.d = ((String)localObject);
-    }
-    xvv.d("Q.qqstory.publish.upload.LinkRichObject", "request take time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    return new ErrorMessage();
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      if (a().isSuccess())
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        b();
-        notifyResult(new ErrorMessage());
-        return;
+        vpj localvpj = (vpj)paramList.next();
+        if ((localvpj != null) && ((localvpj.a() instanceof stSimpleMetaFeed))) {
+          localArrayList.add(((stSimpleMetaFeed)localvpj.a()).id);
+        }
       }
     }
-    catch (JSONException localJSONException)
+    return localArrayList;
+  }
+  
+  public static vot a()
+  {
+    return vow.a();
+  }
+  
+  private void a(stGetPersonalFeedListRsp paramstGetPersonalFeedListRsp, vos paramvos)
+  {
+    if ((paramvos instanceof vrx))
     {
-      xvv.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localJSONException);
-      new ErrorMessage(96000001, localJSONException.getMessage());
-      b();
-      notifyResult(new ErrorMessage());
+      paramvos = ((vrx)paramvos).a();
+      if (!(paramvos instanceof WSVerticalPageFragment)) {
+        break label62;
+      }
+    }
+    label62:
+    for (paramvos = (WSVerticalPageFragment)paramvos;; paramvos = null)
+    {
+      if ((paramvos != null) && (paramvos.getActivity() != null) && (!paramvos.getActivity().isFinishing())) {
+        vau.a().a(10007, paramstGetPersonalFeedListRsp.config);
+      }
       return;
     }
-    catch (IOException localIOException)
+  }
+  
+  private void a(stGetPersonalFeedListRsp paramstGetPersonalFeedListRsp, vov paramvov)
+  {
+    if (paramstGetPersonalFeedListRsp.contextFeedStatus != null)
     {
-      for (;;)
+      paramvov.jdField_a_of_type_JavaLangString = paramstGetPersonalFeedListRsp.contextFeedStatus.feedId;
+      paramvov.b = paramstGetPersonalFeedListRsp.contextFeedStatus.msg;
+      vmp.e("WSArkCardDataManagerLog", "[WSArkCardDataManager.java][setExtParams] extParams:" + paramvov);
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<vpj> paramList, vos paramvos, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      vmp.e("WSArkCardDataManagerLog", "[WSArkCardDataManager.java][onTaskResponse] finished!");
+      return;
+    }
+    ArrayList localArrayList = a(paramList);
+    vou localvou = new vou(this, System.currentTimeMillis(), paramBoolean2, paramvos, paramBoolean1);
+    if (paramBoolean1) {}
+    for (paramList = "";; paramList = this.jdField_a_of_type_JavaLangString)
+    {
+      paramObject = "";
+      paramvos = paramObject;
+      if (localArrayList != null)
       {
-        xvv.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localIOException);
-        new ErrorMessage(96000000, localIOException.getMessage());
+        paramvos = paramObject;
+        if (localArrayList.size() > 0) {
+          paramvos = (String)localArrayList.get(0);
+        }
       }
+      vmp.d("terry_d", "[WSVerticalDataManager.java] PersonalFeedListRequest isFirst = " + paramBoolean2 + " feedId = " + paramvos + " attachInfo = " + paramList);
+      paramString = new vfr(new vlc(paramString, paramList, paramBoolean2, localArrayList, paramInt), null, localvou, 4013);
+      vfk.a().a(paramString);
+      return;
     }
   }
 }

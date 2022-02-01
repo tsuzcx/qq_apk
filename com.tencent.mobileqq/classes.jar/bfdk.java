@@ -1,10 +1,46 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bfdk
+class bfdk
+  implements View.OnClickListener
 {
-  public int a;
-  public ArrayList<bfdl> a;
-  public ArrayList<bfdl> b;
+  bfdk(bfdj parambfdj) {}
+  
+  public void onClick(View paramView)
+  {
+    Object localObject = (bffb)paramView.getTag();
+    String str;
+    if (((bffb)localObject).b == 1)
+    {
+      this.a.a.a.a(((bffb)localObject).a, null);
+      if (((bffb)localObject).a == null) {}
+      for (str = "";; str = ((bffb)localObject).a)
+      {
+        bdla.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, str, "", "", "");
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
+    }
+    this.a.a.a.a(((bffb)localObject).d, ((bffb)localObject).a);
+    if (((bffb)localObject).d == null)
+    {
+      str = "";
+      label114:
+      if (((bffb)localObject).a != null) {
+        break label157;
+      }
+    }
+    label157:
+    for (localObject = "";; localObject = ((bffb)localObject).a)
+    {
+      bdla.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, str, (String)localObject, "", "");
+      break;
+      str = ((bffb)localObject).d;
+      break label114;
+    }
+  }
 }
 
 

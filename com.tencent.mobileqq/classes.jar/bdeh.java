@@ -1,33 +1,78 @@
-import android.support.v4.util.ArrayMap;
-import android.support.v4.util.SparseArrayCompat;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.tencent.util.Pair;
-import java.lang.reflect.Type;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
+import java.util.concurrent.atomic.AtomicInteger;
 
-final class bdeh
-  implements JsonDeserializer<bdef>
+public class bdeh
 {
-  public bdef a(JsonElement paramJsonElement, Type paramType, JsonDeserializationContext paramJsonDeserializationContext)
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private bdei jdField_a_of_type_Bdei = new bdei(0);
+  private bdei b = new bdei(1);
+  
+  public bdei a()
   {
-    paramType = paramJsonElement.getAsJsonObject();
-    paramJsonElement = new bdef();
-    paramJsonElement.jdField_a_of_type_Int = paramType.get("nextNum").getAsInt();
-    paramType = paramType.get("numToAttrib").getAsJsonObject();
-    int i = 0;
-    while (i < paramJsonElement.jdField_a_of_type_Int)
-    {
-      Object localObject = paramType.get(i + "").getAsJsonArray();
-      paramJsonDeserializationContext = ((JsonArray)localObject).get(0).getAsString();
-      localObject = ((JsonArray)localObject).get(1).getAsString();
-      paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(i, new Pair(paramJsonDeserializationContext, localObject));
-      paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(bdef.a(paramJsonDeserializationContext, (String)localObject), Integer.valueOf(i));
-      i += 1;
+    if (bdei.a(this.jdField_a_of_type_Bdei).getAndSet(1) == 0) {
+      return this.jdField_a_of_type_Bdei;
     }
-    return paramJsonElement;
+    if (bdei.a(this.b).getAndSet(1) == 0) {
+      return this.b;
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    bdei.a(this.jdField_a_of_type_Bdei).getAndSet(0);
+    bdei.a(this.b).getAndSet(0);
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bdei.a(this.jdField_a_of_type_Bdei).getAndAdd(0) == 0)
+    {
+      bool1 = bool2;
+      if (bdei.a(this.b).getAndAdd(0) == 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("SharedMemoryCacheProcessor");
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    {
+      PtvFilterUtils.a(this.jdField_a_of_type_AndroidOsHandlerThread);
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
   }
 }
 

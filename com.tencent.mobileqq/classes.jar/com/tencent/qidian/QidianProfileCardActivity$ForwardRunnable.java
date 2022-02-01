@@ -2,8 +2,8 @@ package com.tencent.qidian;
 
 import android.content.Intent;
 import android.os.Bundle;
-import atky;
-import aymg;
+import aupt;
+import azrb;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
@@ -51,7 +51,7 @@ class QidianProfileCardActivity$ForwardRunnable
       localBundle.putString("forward_extra", (String)localObject);
       localObject = new Intent();
       ((Intent)localObject).putExtras(localBundle);
-      atky.a(localQidianProfileCardActivity, (Intent)localObject, 21);
+      aupt.a(localQidianProfileCardActivity, (Intent)localObject, 21);
       return;
     }
     catch (IOException localIOException)

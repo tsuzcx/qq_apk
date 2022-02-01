@@ -1,23 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr.DragViewIcon;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.tavcut.session.TAVCutImageSession;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
 public class bnxy
-  extends AnimatorListenerAdapter
+  implements View.OnTouchListener
 {
-  public bnxy(DragAnimationMgr paramDragAnimationMgr) {}
+  public bnxy(AEEditorImageEditFragment paramAEEditorImageEditFragment, GestureDetector paramGestureDetector) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = DragAnimationMgr.a(this.a).a();
-    DragAnimationMgr.a(this.a, DragAnimationMgr.a(this.a), i);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    int i = DragAnimationMgr.a(this.a).a();
-    DragAnimationMgr.a(this.a, DragAnimationMgr.a(this.a), i);
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+    {
+      AEEditorImageEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment).toggleAEKit(AEEditorImageEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment), true);
+      bnrh.a("AEEditorImageEditFragment", "[onTouch] onTouch/ACTION_CANCEL ");
+    }
+    bnrh.a("AEEditorImageEditFragment", "[onTouch] Action: " + paramMotionEvent.getAction());
+    return (paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment.a == null);
   }
 }
 

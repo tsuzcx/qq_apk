@@ -1,16 +1,17 @@
 package cooperation.qqcircle.report;
 
+import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
 import java.util.List;
-import qqcircle.QQCircleReport.SingleDcData;
 
 class QCircleReporter$8
   implements Runnable
 {
-  QCircleReporter$8(QCircleReporter paramQCircleReporter, QQCircleReport.SingleDcData paramSingleDcData) {}
+  QCircleReporter$8(QCircleReporter paramQCircleReporter, APP_REPORT_TRANSFER.SingleDcData paramSingleDcData) {}
   
   public void run()
   {
-    QCircleReporter.access$200(this.this$0).add(this.val$singleDcData);
+    QCircleReporter.access$800(this.this$0).add(this.val$singleDcData);
+    QCircleReporter.access$000(this.this$0);
   }
 }
 

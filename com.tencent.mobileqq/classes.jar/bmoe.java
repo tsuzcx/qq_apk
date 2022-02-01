@@ -1,7 +1,4 @@
-public abstract interface bmoe
-{
-  public abstract void a(bmod parambmod, boolean paramBoolean);
-}
+class bmoe {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

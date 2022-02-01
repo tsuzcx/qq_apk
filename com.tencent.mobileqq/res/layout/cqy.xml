@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/aao" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.ark.open.ArkView android:id="@id/lfy" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+<RelativeLayout android:orientation="horizontal" android:background="@drawable/e8_" android:paddingLeft="24.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="68.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="17.0dip" android:textColor="#ff03081a" android:id="@id/ntn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <Button android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/jbu" android:paddingLeft="16.0dip" android:paddingTop="7.5dip" android:paddingRight="16.0dip" android:paddingBottom="7.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

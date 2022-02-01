@@ -1,73 +1,59 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogReq;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgve
 {
-  public WeakReference<CustomWebView> a;
-  WeakReference<AppInterface> b;
-  WeakReference<Activity> c;
-  WeakReference<bguj> d = null;
-  WeakReference<WebViewFragment> e = null;
+  public QQAppInterface a;
+  public BusinessObserver a;
   
-  public bgve(Activity paramActivity, AppInterface paramAppInterface)
+  public bgve(QQAppInterface paramQQAppInterface)
   {
-    this.c = new WeakReference(paramActivity);
-    this.b = new WeakReference(paramAppInterface);
-    if ((paramActivity instanceof bguj)) {
-      this.d = new WeakReference((bguj)paramActivity);
-    }
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new bgvf(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public Activity a()
+  public String a(int paramInt, JSONObject paramJSONObject)
   {
-    return (Activity)this.c.get();
-  }
-  
-  public bguj a(Activity paramActivity)
-  {
-    if (this.d != null) {
-      return (bguj)this.d.get();
-    }
-    return null;
-  }
-  
-  public CustomWebView a()
-  {
-    if (this.a != null) {
-      return (CustomWebView)this.a.get();
-    }
-    return null;
-  }
-  
-  public AppInterface a()
-  {
-    return (AppInterface)this.b.get();
-  }
-  
-  public WebViewFragment a()
-  {
-    if (this.e != null) {
-      return (WebViewFragment)this.e.get();
-    }
-    return null;
-  }
-  
-  public void a(bguj parambguj)
-  {
-    if (parambguj != null) {
-      this.d = new WeakReference(parambguj);
-    }
-  }
-  
-  public void a(WebViewFragment paramWebViewFragment)
-  {
-    if (paramWebViewFragment != null)
+    JSONObject localJSONObject2 = new JSONObject();
+    try
     {
-      this.e = new WeakReference(paramWebViewFragment);
-      this.d = new WeakReference(paramWebViewFragment);
+      localJSONObject2.put("status", paramInt);
+      JSONObject localJSONObject1 = paramJSONObject;
+      if (paramJSONObject == null) {
+        localJSONObject1 = new JSONObject();
+      }
+      localJSONObject2.put("data", localJSONObject1);
+    }
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("UnifiedDebugReporter", 2, "reportStatus: exception=" + paramJSONObject.getMessage());
+        }
+      }
+    }
+    return localJSONObject2.toString();
+  }
+  
+  public void a(long paramLong, int paramInt, JSONObject paramJSONObject)
+  {
+    RemoteDebugReportMsg.RemoteLogReq localRemoteLogReq = new RemoteDebugReportMsg.RemoteLogReq();
+    localRemoteLogReq.str_seq.set(String.valueOf(paramLong));
+    localRemoteLogReq.str_data.set(a(paramInt, paramJSONObject));
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), bgvd.class);
+    localNewIntent.putExtra("extra_cmd", "ClubDebugging.report");
+    localNewIntent.putExtra("extra_data", localRemoteLogReq.toByteArray());
+    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("UnifiedDebugReporter", 2, "reportStatus: seq=" + paramLong + ", statusCode=" + paramInt + ", data=" + paramJSONObject);
     }
   }
 }

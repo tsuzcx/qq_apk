@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.jsp;
 
-import beqn;
+import bfxp;
 import com.tencent.smtt.sdk.WebView;
 
 public class TroopNoticeJsHandler$4
   implements Runnable
 {
-  public TroopNoticeJsHandler$4(beqn parambeqn, WebView paramWebView, String paramString1, String paramString2) {}
+  public TroopNoticeJsHandler$4(bfxp parambfxp, WebView paramWebView, String paramString1, String paramString2) {}
   
   public void run()
   {

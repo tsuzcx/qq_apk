@@ -1,15 +1,27 @@
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import com.tencent.mobileqq.activity.AuthDevActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class actu
-  extends CharacterStyle
+  implements acpi
 {
-  public actu(AuthDevActivity paramAuthDevActivity) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    paramTextPaint.setColor(-5855578);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "handleC2COnlinePushMsg0x210Resp invoked. info: AIO story feed. msg0x210.uSubMsgType: " + paramMsgType0x210.uSubMsgType);
+    }
+    paramQQAppInterface = (vzt)paramQQAppInterface.getManager(QQManagerFactory.QQ_STORY_FEED_MANAGER);
+    long l = paramMsgInfo.lFromUin;
+    paramQQAppInterface.a(paramQQAppInterface.a(paramMsgType0x210.vProtobuf, String.valueOf(l)));
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

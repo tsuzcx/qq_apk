@@ -1,25 +1,24 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-class aaem
-  implements View.OnClickListener
+public class aaem
+  extends anvi
 {
-  aaem(aael paramaael, DialogInterface.OnClickListener paramOnClickListener) {}
+  public aaem(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Aael, 0);
-    }
-    this.jdField_a_of_type_Aael.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 30);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString });
+    localBundle.putSerializable("observer_type", Integer.valueOf(2));
+    this.a.a(3, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaem
  * JD-Core Version:    0.7.0.1
  */

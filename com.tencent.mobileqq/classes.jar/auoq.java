@@ -1,45 +1,23 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
 
-public class auoq
+class auoq
+  implements auoi
 {
-  public long a;
-  private DownloaderTask a;
-  public String a;
-  public String b;
-  public String c;
-  public String d = "now_for_qq";
-  public String e = "now_appid_2";
-  public String f = "now";
-  public String g;
-  public String h;
+  auoq(auop paramauop, String paramString1, String paramString2) {}
   
-  public static auoq a(String paramString1, String paramString2, String paramString3)
-  {
-    auoq localauoq = new auoq();
-    localauoq.jdField_a_of_type_JavaLangString = "2";
-    localauoq.g = paramString3.substring(0, paramString3.lastIndexOf("/") + 1);
-    localauoq.h = paramString3.substring(paramString3.lastIndexOf("/") + 1);
-    localauoq.b = paramString1;
-    localauoq.c = paramString2;
-    localauoq.jdField_a_of_type_Long = System.currentTimeMillis();
-    QLog.i("NowDownloadTaskInfo", 4, localauoq.toString());
-    return localauoq;
-  }
+  public void onProgress(int paramInt) {}
   
-  public DownloaderTask a()
+  public void onResult(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
-    return this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask;
-  }
-  
-  public void a(DownloaderTask paramDownloaderTask)
-  {
-    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloaderTask = paramDownloaderTask;
-  }
-  
-  public String toString()
-  {
-    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
+    QLog.d("FlutterMainQIPCModule", 1, String.format("onResult, isSuccess: %s, installDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("KEY_INSTALL_RESULT", paramBoolean1);
+    localBundle.putString("KEY_INSTALL_DIR", paramString);
+    localBundle.putBoolean("KEY_IS_APP_EXIST", paramBoolean3);
+    localBundle.putBoolean("KEY_IS_ENGINE_EXIST", paramBoolean2);
+    QIPCServerHelper.getInstance().callClient(this.jdField_a_of_type_JavaLangString, "FlutterSubQIPCModule", this.b, localBundle, new auor(this));
   }
 }
 

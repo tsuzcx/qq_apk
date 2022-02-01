@@ -1,13 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
+import com.tencent.mobileqq.data.QCallRecord;
+import java.util.Comparator;
 
-public class bapq
-  implements View.OnClickListener
+class bapq
+  implements Comparator<QCallRecord>
 {
-  public bapq(LikesView paramLikesView) {}
+  bapq(bapo parambapo) {}
   
-  public void onClick(View paramView) {}
+  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  {
+    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+  }
 }
 
 

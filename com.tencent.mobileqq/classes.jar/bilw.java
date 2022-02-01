@@ -1,12 +1,19 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class bilw
+  implements Animation.AnimationListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  bilw(bilu parambilu) {}
   
-  bilw(bilv parambilv) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    bilu.a(this.a, true);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

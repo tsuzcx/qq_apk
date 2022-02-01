@@ -1,13 +1,8 @@
-import com.tencent.ttpic.video.AECoderFactory.AEEncoderFactory;
-import com.tencent.ttpic.video.AEEncoder;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-final class bljf
-  implements AECoderFactory.AEEncoderFactory
+public abstract interface bljf
 {
-  public AEEncoder createEncoder(String paramString, int paramInt1, int paramInt2)
-  {
-    return new baee(paramString, paramInt1, paramInt2);
-  }
+  public abstract void a(RecyclerView.Adapter paramAdapter);
 }
 
 

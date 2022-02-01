@@ -1,26 +1,28 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment;
 
-class akrb
-  implements aeyl
+public class akrb
+  extends BroadcastReceiver
 {
-  akrb(akra paramakra) {}
+  public akrb(QWalletFullWindowActivity.QWalletFullWindowFragment paramQWalletFullWindowFragment) {}
   
-  public void a(AudioPlayerBase paramAudioPlayerBase)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (akra.a(this.a))
+    if (paramIntent == null) {}
+    do
     {
-      akra.a(this.a, false);
-      akra.a(this.a);
-    }
+      return;
+      if ("action_close_camera".equals(paramIntent.getAction()))
+      {
+        QWalletFullWindowActivity.QWalletFullWindowFragment.a(this.a).finish();
+        return;
+      }
+    } while ((!"cn.abel.action.broadcast".equals(paramIntent.getAction())) || (paramIntent.getBooleanExtra("isOpen", false)));
+    QWalletFullWindowActivity.QWalletFullWindowFragment.b(this.a).finish();
   }
-  
-  public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
-  
-  public void b(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
-  
-  public void c(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
-  
-  public void d(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
 }
 
 

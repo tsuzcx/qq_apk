@@ -1,88 +1,80 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import android.text.TextUtils;
+import android.util.Pair;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class pre
-  implements sgw
 {
-  public pre(VideoView paramVideoView) {}
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(@NotNull sgx arg1)
+  public static String a(String paramString, int paramInt1, int paramInt2)
   {
-    for (;;)
+    if (!bmhv.b(pnn.a())) {
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJSmartCropUtils", 2, "smart crop switch is false ! url : " + paramString);
+      }
+    }
+    Object localObject2;
+    do
     {
-      synchronized (this.a)
+      do
       {
-        if (VideoView.access$1300(this.a))
+        do
         {
-          VideoView.access$000(this.a, 6);
-          VideoView.access$1402(this.a, VideoView.access$1500(this.a));
-          VideoView.access$1602(this.a, "");
-          VideoView.access$1700(this.a);
-          if (VideoView.access$1800(this.a) != null) {
-            this.a.mProgressHandler.postDelayed(this.a, 500L);
+          return paramString;
+        } while ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("http://qqpublic.qpic.cn")));
+        localObject2 = paramString.split("/");
+      } while (localObject2.length < 2);
+      localObject1 = localObject2[(localObject2.length - 2)].split("_");
+    } while (localObject1.length < 1);
+    Object localObject3 = localObject1[(localObject1.length - 1)];
+    if ("open".equals(localObject3)) {}
+    for (Object localObject1 = pjj.a;; localObject1 = pjj.b)
+    {
+      localObject1 = pqa.a((Pair[])localObject1, paramInt1, paramInt2);
+      if (localObject1 == null) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJSmartCropUtils", 2, "the picture size : w : " + paramInt1 + " h : " + paramInt2 + ", select scale : " + ((Pair)localObject1).first + ":" + ((Pair)localObject1).second);
+      }
+      localObject2 = localObject2[(localObject2.length - 1)];
+      return paramString.replace(String.format("_%s/%s", new Object[] { localObject3, localObject2 }), String.format("_%s_%d_%d/%s", new Object[] { localObject3, ((Pair)localObject1).first, ((Pair)localObject1).second, localObject2 }));
+      if (!"vsmcut".equals(localObject3)) {
+        break;
+      }
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      bool1 = bool2;
+      if (paramString.startsWith("http://qqpublic.qpic.cn"))
+      {
+        paramString = paramString.split("/");
+        bool1 = bool2;
+        if (paramString.length >= 2)
+        {
+          paramString = paramString[(paramString.length - 2)].split("_");
+          bool1 = bool2;
+          if (paramString.length >= 1)
+          {
+            paramString = paramString[(paramString.length - 1)];
+            if (!TextUtils.equals("open", paramString))
+            {
+              bool1 = bool2;
+              if (!TextUtils.equals("vsmcut", paramString)) {}
+            }
+            else
+            {
+              bool1 = true;
+            }
           }
-          return;
-        }
-        QLog.d("gifvideo.VideoView", 1, "invalid state");
-        VideoView.access$1602(this.a, "");
-        if (VideoView.access$500(this.a).get() == 5) {
-          VideoView.access$1900(this.a);
         }
       }
-      if (VideoView.access$500(this.a).get() == 4) {
-        VideoView.access$2000(this.a);
-      }
     }
-  }
-  
-  public void a(@NotNull sgx paramsgx, int paramInt1, int paramInt2) {}
-  
-  public void a(@NotNull sgx paramsgx, int paramInt1, int paramInt2, int paramInt3, @Nullable Bitmap paramBitmap) {}
-  
-  public boolean a(@NotNull sgx paramsgx, int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString)
-  {
-    QLog.e("gifvideo.VideoView", 1, "TVK_IMediaPlayer.OnErrorListener model = " + paramInt1 + " errorType = " + paramInt2 + " errorCode = " + paramInt3 + " extra = " + paramString);
-    return false;
-  }
-  
-  public boolean a(@NotNull sgx paramsgx, int paramInt, @Nullable Object paramObject)
-  {
-    return false;
-  }
-  
-  public void b(@NotNull sgx arg1)
-  {
-    synchronized (this.a)
-    {
-      VideoView.access$000(this.a, 10);
-      this.a.displayCover();
-      if (VideoView.access$2100(this.a) != null) {
-        VideoView.access$2100(this.a).c();
-      }
-      VideoView.access$2200(this.a);
-      return;
-    }
-  }
-  
-  public void c(@NotNull sgx arg1)
-  {
-    synchronized (this.a)
-    {
-      if (VideoView.access$900(this.a) != null) {
-        VideoView.access$900(this.a).a();
-      }
-      if (VideoView.access$1800(this.a) != null) {
-        this.a.mProgressHandler.postDelayed(this.a, 500L);
-      }
-      return;
-    }
+    return bool1;
   }
 }
 

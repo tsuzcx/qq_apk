@@ -1,44 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment.UrlNotauthorizedError;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ackk
-  extends SimpleObserver<avro>
+public class ackk
+  implements View.OnClickListener
 {
-  ackk(ackg paramackg, ackq paramackq) {}
+  public ackk(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
   
-  public void a(avro paramavro)
+  public void onClick(View paramView)
   {
-    ackq localackq = this.jdField_a_of_type_Ackq;
-    if (paramavro.c == 1) {}
-    for (int i = 2;; i = 3)
-    {
-      localackq.a(paramavro, i);
-      return;
+    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
+      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
     }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
-    }
-    int i;
-    if ((paramError instanceof VerifyUrlJobSegment.UrlNotauthorizedError)) {
-      i = 4;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ackq.a(null, i);
-      return;
-      if ((paramError instanceof AppInfoError)) {
-        i = ((AppInfoError)paramError).type;
-      } else {
-        i = 0;
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

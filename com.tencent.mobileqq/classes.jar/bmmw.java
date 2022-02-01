@@ -1,8 +1,19 @@
-import com.tencent.tavcut.bean.TextEditorData;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
 
-public abstract interface bmmw
+public final class bmmw
+  implements Parcelable.Creator<AlumBasicData>
 {
-  public abstract void a(TextEditorData paramTextEditorData);
+  public AlumBasicData a(Parcel paramParcel)
+  {
+    return new AlumBasicData(paramParcel);
+  }
+  
+  public AlumBasicData[] a(int paramInt)
+  {
+    return new AlumBasicData[paramInt];
+  }
 }
 
 

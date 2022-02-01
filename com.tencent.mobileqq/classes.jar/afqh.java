@@ -1,36 +1,21 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
 public class afqh
-  implements afrc
+  extends View.AccessibilityDelegate
 {
-  private BaseChatPie a;
+  public afqh(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  public afqh(BaseChatPie paramBaseChatPie)
+  @TargetApi(16)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  private void a()
-  {
-    if ((this.a != null) && (this.a.app != null)) {
-      ((awdi)this.a.app.getManager(324)).onDestroy();
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramAccessibilityNodeInfo.setVisibleToUser(false);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 13 };
   }
 }
 

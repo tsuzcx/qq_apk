@@ -1,21 +1,11 @@
-import android.view.View;
-import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bapm
-  extends bapi
+class bapm
+  extends antq
 {
-  public bapm(CommentsView paramCommentsView, int paramInt, String paramString)
-  {
-    super(paramInt);
-  }
+  bapm(bapk parambapk) {}
   
-  public void onClick(View paramView)
+  protected void onQuitDiscussion(boolean paramBoolean, String paramString)
   {
-    if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
-      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_JavaLangString);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.b(paramString, 3000);
   }
 }
 

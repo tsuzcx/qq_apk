@@ -3,29 +3,29 @@ package com.tencent.avgame.gamelogic.controller;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.SystemClock;
-import anha;
+import aojq;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.util.WeakReference;
-import mzl;
-import mzu;
-import mzv;
-import naf;
-import nai;
-import nbe;
-import nbn;
-import nht;
+import nfc;
+import nfl;
+import nfm;
+import nfv;
+import nfy;
+import ngu;
+import nhd;
+import nom;
 
 public class GameActivityCenterCtrl
 {
   private static GameActivityCenterCtrl jdField_a_of_type_ComTencentAvgameGamelogicControllerGameActivityCenterCtrl;
   private long jdField_a_of_type_Long;
   private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
-  private nai jdField_a_of_type_Nai;
-  private nbn jdField_a_of_type_Nbn = new mzv(this);
+  private nfy jdField_a_of_type_Nfy;
+  private nhd jdField_a_of_type_Nhd = new nfm(this);
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -76,12 +76,12 @@ public class GameActivityCenterCtrl
       }
       if ((localObject != null) && (bool))
       {
-        ((AVGameAppInterface)localObject).addObserver(this.jdField_a_of_type_Nbn, true);
-        localObject = (nbe)((AVGameAppInterface)localObject).a(1);
+        ((AVGameAppInterface)localObject).addObserver(this.jdField_a_of_type_Nhd, true);
+        localObject = (ngu)((AVGameAppInterface)localObject).a(1);
         if (localObject != null)
         {
           this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          ((nbe)localObject).a();
+          ((ngu)localObject).a();
         }
       }
       return;
@@ -101,7 +101,7 @@ public class GameActivityCenterCtrl
     }
     this.b = false;
     this.jdField_a_of_type_Boolean = true;
-    nht.a().b().post(new GameActivityCenterCtrl.RefreshEntryTask());
+    nom.a().b().post(new GameActivityCenterCtrl.RefreshEntryTask());
     if (QLog.isDevelopLevel()) {
       QLog.i("GameACCtrl", 4, "enterGameRoom, activity[" + paramActivity + "]");
     }
@@ -115,8 +115,8 @@ public class GameActivityCenterCtrl
     paramActivity = a();
     if (paramActivity != null)
     {
-      paramActivity.addObserver(this.jdField_a_of_type_Nbn, true);
-      paramActivity = (nbe)paramActivity.a(1);
+      paramActivity.addObserver(this.jdField_a_of_type_Nhd, true);
+      paramActivity = (ngu)paramActivity.a(1);
       if (paramActivity != null) {
         paramActivity.a(paramString);
       }
@@ -142,21 +142,21 @@ public class GameActivityCenterCtrl
     if (paramActivity != null) {
       this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
     }
-    AVGameAppInterface localAVGameAppInterface = mzl.a().a();
+    AVGameAppInterface localAVGameAppInterface = nfc.a().a();
     String str2 = localAVGameAppInterface.getCurrentAccountUin();
-    naf localnaf = mzl.a().a();
+    nfv localnfv = nfc.a().a();
     long l;
     String str1;
-    if (localnaf != null)
+    if (localnfv != null)
     {
-      l = localnaf.a();
-      str1 = localnaf.a().getNick(str2);
+      l = localnfv.a();
+      str1 = localnfv.a().getNick(str2);
     }
-    for (int i = localnaf.d();; i = 0)
+    for (int i = localnfv.d();; i = 0)
     {
-      anha.a().a(localAVGameAppInterface, l, Long.valueOf(str2).longValue(), str1, 3, "", i, new mzu(this, str1));
+      aojq.a().a(localAVGameAppInterface, l, Long.valueOf(str2).longValue(), str1, 3, "", i, new nfl(this, str1));
       if (QLog.isColorLevel()) {
-        QLog.i("GameACCtrl", 2, "openGameActivityCenter, ctx[" + paramActivity + "], entry[" + this.jdField_a_of_type_Nai + "]");
+        QLog.i("GameACCtrl", 2, "openGameActivityCenter, ctx[" + paramActivity + "], entry[" + this.jdField_a_of_type_Nfy + "]");
       }
       return;
       l = 0L;

@@ -1,16 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
-import java.util.List;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class riq
-  extends pkt
+  extends ClickableSpan
 {
-  public riq(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  public riq(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
   
-  public void a(List<String> paramList, List<TopicInfo> paramList1)
+  public void onClick(View paramView)
   {
-    ReadInJoyUgcSearchTopicFragment.a(this.a, paramList, paramList1);
-    rgz.g();
+    pqx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.a(), 4, false, 7, false);
+    pqb.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.e());
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(AIOUtils.sp2TextSize(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getResources()));
   }
 }
 

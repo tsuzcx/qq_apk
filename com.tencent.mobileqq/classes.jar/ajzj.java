@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajzj
+  extends ajzq
 {
-  public int a;
-  public BaseHbFragment a;
-  public String a;
-  
-  public ajzj(int paramInt, String paramString, BaseHbFragment paramBaseHbFragment)
+  public ajzj(MainFragment paramMainFragment)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment = paramBaseHbFragment;
+    super(null);
+  }
+  
+  public void onClick(View paramView)
+  {
+    anun localanun = this.a.b();
+    if ((localanun instanceof ReadinjoyTabFrame)) {
+      ((ReadinjoyTabFrame)localanun).j();
+    }
+    pvj.a().l();
+    MainFragment.a(MainFragment.a(this.a), MainFragment.a(this.a));
+    super.onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

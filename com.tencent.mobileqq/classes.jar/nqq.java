@@ -1,29 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class nqq
-  implements nnv
 {
-  public nqq(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  private static final AtomicInteger a = new AtomicInteger(1);
   
-  public void loaded(String paramString, int paramInt)
+  public static int a()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString))) {}
-    try
+    int k;
+    int i;
+    do
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+      k = a.get();
+      int j = k + 1;
+      i = j;
+      if (j > 16777215) {
+        i = 1;
+      }
+    } while (!a.compareAndSet(k, i));
+    return k;
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

@@ -1,19 +1,23 @@
-import com.tencent.viola.ui.dom.style.FlexNode;
-import com.tencent.viola.ui.dom.style.FlexNode.MeasureFunction;
-import com.tencent.viola.ui.dom.style.MeasureOutput;
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "flexNode", "Lcom/tencent/viola/ui/dom/style/FlexNode;", "kotlin.jvm.PlatformType", "fl", "", "measureOutput", "Lcom/tencent/viola/ui/dom/style/MeasureOutput;", "measure"}, k=3, mv={1, 1, 16})
-final class tno
-  implements FlexNode.MeasureFunction
+class tno
+  implements OnCompositionLoadedListener
 {
-  tno(tnm paramtnm) {}
+  tno(tnn paramtnn, Runnable paramRunnable) {}
   
-  public final void measure(FlexNode paramFlexNode, float paramFloat, MeasureOutput paramMeasureOutput) {}
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  {
+    RefreshAnimView.a(this.jdField_a_of_type_Tnn.a, paramLottieComposition);
+    if (paramLottieComposition != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tno
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ class C2CMessageManager$2$1
   
   public void run()
   {
-    QQToast.a(this.a.a, 2131697163, 0).b(this.a.a.getTitleBarHeight());
+    QQToast.a(this.a.a, 2131697440, 0).b(this.a.a.getTitleBarHeight());
   }
 }
 

@@ -1,22 +1,29 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahik;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import axhv;
-import bcef;
+import aidd;
+import bdla;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class NearbyChatPie$9
   implements Runnable
 {
-  public NearbyChatPie$9(ahik paramahik) {}
+  public NearbyChatPie$9(aidd paramaidd, String paramString) {}
   
   public void run()
   {
-    String[] arrayOfString = axhv.a(this.this$0.app);
-    String str = this.this$0.mActivity.getIntent().getStringExtra("uin");
-    bcef.b(this.this$0.app, "CliOper", "", "", "0X80055FE", "0X80055FE", 0, 0, arrayOfString[0], str, "", "");
-    this.this$0.b = false;
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.this$0.tag, 4, "0X80052C5, " + this.a);
+    }
+    bdla.b(this.this$0.app, "CliOper", "", "", "0X80052C5", "0X80052C5", 0, 0, this.this$0.sessionInfo.curFriendUin, "", this.a, "");
+    QQAppInterface localQQAppInterface = this.this$0.app;
+    if (this.this$0.sessionInfo.curType == 1001) {}
+    for (String str = "0";; str = "1")
+    {
+      bdla.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_send", 0, 0, str, "", "", "");
+      return;
+    }
   }
 }
 

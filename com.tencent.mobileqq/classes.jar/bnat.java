@@ -1,31 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import dov.com.qq.im.ae.album.nocropper.AECropperGridView;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
+import dov.com.qq.im.ae.album.nocropper.AECropperView;
 
-class bnat
-  implements EIPCOnGetConnectionListener
+public class bnat
+  implements bnao
 {
-  bnat(bnar parambnar) {}
+  private bnat(AECropperView paramAECropperView) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void a()
   {
-    if (paramEIPCConnection != null) {
-      bnar.a(this.a, paramEIPCConnection.procName);
+    boolean bool = true;
+    AECropperView.a(this.a, true);
+    AECropperGridView localAECropperGridView;
+    if (AECropperView.a(this.a) != null)
+    {
+      localAECropperGridView = AECropperView.a(this.a);
+      if (((AECropperView.a(this.a) != null) && (!AECropperView.a(this.a).a())) || (this.a.a == null) || (!this.a.a.b())) {
+        break label83;
+      }
     }
-    bnar.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "onConnectBind!");
+    for (;;)
+    {
+      localAECropperGridView.setShowGrid(bool);
+      return;
+      label83:
+      bool = false;
     }
   }
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  public void b()
   {
-    if (paramEIPCConnection != null) {
-      bnar.a(this.a, paramEIPCConnection.procName);
-    }
-    bnar.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakIpcModuleClient", 2, "onConnectUnbind:" + bnar.a(this.a));
+    boolean bool2 = false;
+    AECropperView.a(this.a, false);
+    if (AECropperView.a(this.a) != null)
+    {
+      AECropperGridView localAECropperGridView = AECropperView.a(this.a);
+      boolean bool1 = bool2;
+      if (AECropperView.a(this.a) != null)
+      {
+        bool1 = bool2;
+        if (AECropperView.a(this.a).b()) {
+          bool1 = true;
+        }
+      }
+      localAECropperGridView.setShowGrid(bool1);
     }
   }
 }

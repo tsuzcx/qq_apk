@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import amtj;
-import blsh;
+import anvx;
+import bnfq;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AEMaterialAdapter$3
   implements Runnable
 {
-  public AEMaterialAdapter$3(blsh paramblsh) {}
+  public AEMaterialAdapter$3(bnfq parambnfq) {}
   
   public void run()
   {
-    QQToast.a(blsh.a(this.this$0), amtj.a(2131708932), 0).a();
+    QQToast.a(bnfq.a(this.this$0), anvx.a(2131709279), 0).a();
   }
 }
 

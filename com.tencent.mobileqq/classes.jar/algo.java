@@ -1,70 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.weather.webpage.WeatherArkNotify.viewModel.2;
-import com.tencent.mobileqq.mvvm.LifeCycleFragment;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Lazy;
-import kotlin.LazyKt;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import com.tencent.widget.SingleLineTextView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkNotify;", "Lcom/tencent/mobileqq/ark/API/ArkAppNotifyCenter$INotifyReg;", "fragment", "Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;", "(Lcom/tencent/mobileqq/mvvm/LifeCycleFragment;)V", "viewModel", "Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel;", "getViewModel", "()Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel;", "viewModel$delegate", "Lkotlin/Lazy;", "notify", "", "appName", "", "eventName", "params", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class algo
-  implements aopx
+public class algo
+  extends algv
 {
-  public static final algp a;
-  private final Lazy a;
-  
-  static
+  public View a(int paramInt, Object paramObject, algy paramalgy, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alje paramalje)
   {
-    jdField_a_of_type_Algp = new algp(null);
-  }
-  
-  public algo(@NotNull LifeCycleFragment paramLifeCycleFragment)
-  {
-    this.jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new WeatherArkNotify.viewModel.2(paramLifeCycleFragment));
-  }
-  
-  private final algx a()
-  {
-    return (algx)this.jdField_a_of_type_KotlinLazy.getValue();
-  }
-  
-  public boolean notify(@Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeatherArkNotify", 2, "notify --->  appName: " + paramString1 + ", eventName: " + paramString2 + ", params: " + paramString3);
-    }
-    try
-    {
-      if (!TextUtils.equals((CharSequence)paramString1, (CharSequence)"com.tencent.weather_v2")) {
-        break label150;
-      }
-      if (paramString2 == null) {
-        return true;
-      }
-      switch (paramString2.hashCode())
-      {
-      case 6648771: 
-        if (!paramString2.equals("notify_client_msg")) {
-          break label150;
-        }
-        a().c(paramString3);
-        return true;
-      }
-    }
-    catch (Throwable paramString1)
-    {
-      QLog.d("WeatherArkNotify", 1, paramString1, new Object[0]);
-      return true;
-    }
-    if (paramString2.equals("notify_web_msg")) {
-      a().b(paramString3);
-    }
-    label150:
-    return true;
-    return true;
+    if ((paramView != null) && ((paramView.getTag() instanceof algw))) {}
+    paramObject = super.a(paramInt, paramObject, paramalgy, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramalje);
+    paramalgy = (algw)paramObject.getTag();
+    paramViewGroup = paramContext.getResources();
+    paramView = paramViewGroup.getColorStateList(2131167106);
+    paramViewGroup = paramViewGroup.getColorStateList(2131167026);
+    paramalgy.a.setTextColor(paramViewGroup);
+    paramalgy.b.setTextColor(paramView);
+    paramalgy.a.setExtendTextColor(paramView, 0);
+    paramObject.findViewById(2131376501).setBackgroundResource(2130839455);
+    return paramObject;
   }
 }
 

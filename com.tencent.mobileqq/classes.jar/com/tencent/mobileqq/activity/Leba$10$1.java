@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import ajef;
-import aqmf;
+import ajzt;
+import arpq;
 import com.tencent.mobileqq.data.LebaPluginInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -21,20 +21,20 @@ class Leba$10$1
     Iterator localIterator1 = Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$10.this$0).iterator();
     while (localIterator1.hasNext())
     {
-      aqmf localaqmf1 = (aqmf)localIterator1.next();
-      if ((localaqmf1 != null) && (localaqmf1.b != null) && (localaqmf1.a != null))
+      arpq localarpq1 = (arpq)localIterator1.next();
+      if ((localarpq1 != null) && (localarpq1.b != null) && (localarpq1.a != null))
       {
         Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator2.hasNext())
         {
-          aqmf localaqmf2 = (aqmf)localIterator2.next();
-          if ((localaqmf2 != null) && (localaqmf2.a != null) && (localaqmf2.a.strPkgName.equals(localaqmf1.a.strPkgName))) {
-            localaqmf2.b = localaqmf1.b;
+          arpq localarpq2 = (arpq)localIterator2.next();
+          if ((localarpq2 != null) && (localarpq2.a != null) && (localarpq2.a.strPkgName.equals(localarpq1.a.strPkgName))) {
+            localarpq2.b = localarpq1.b;
           }
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityLeba$10.this$0.X_();
+    this.jdField_a_of_type_ComTencentMobileqqActivityLeba$10.this$0.Z_();
     Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$10.this$0).clear();
     Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$10.this$0).addAll(this.jdField_a_of_type_JavaUtilList);
     QLog.i("Q.lebatab.leba", 1, "refreshLebaConfig. lebaData size=" + Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$10.this$0).size());
@@ -51,7 +51,7 @@ class Leba$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.10.1
  * JD-Core Version:    0.7.0.1
  */

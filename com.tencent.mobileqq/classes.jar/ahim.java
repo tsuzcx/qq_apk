@@ -1,84 +1,30 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ahim
-  extends anax
+public class ahim
+  implements View.OnClickListener
 {
-  ahim(ahik paramahik) {}
+  public ahim(StructingMsgItemBuilder paramStructingMsgItemBuilder, AbsShareMsg paramAbsShareMsg) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public void onClick(View paramView)
   {
-    ChatActivityUtils.b();
-    Object localObject = this.a.mContext;
-    Context localContext = this.a.mContext;
-    int i;
-    if (paramBoolean)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData;
+    int i = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uinType;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      i = 2131718430;
-      QQToast.a((Context)localObject, 2, localContext.getString(i), 0).b(this.a.getTitleBarHeight());
-      if (this.a.sessionInfo != null) {
-        break label69;
+      localObject = bhey.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, (String)localObject);
+      if (localObject != null)
+      {
+        ((bheh)localObject).b("webview");
+        ((bheh)localObject).a("uin_type", i + "");
+        ((bheh)localObject).a();
       }
     }
-    label69:
-    do
-    {
-      int k;
-      do
-      {
-        return;
-        i = 2131718419;
-        break;
-        localObject = this.a.sessionInfo.curFriendUin;
-        if (paramList == null) {}
-        for (i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          k = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (bftf.a(String.valueOf(paramList.get(j)), localObject)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.a(this.a.mActivity, paramBoolean, false);
-    } while (!paramBoolean);
-    this.a.updateAddFriendAndShieldView();
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    int k = 0;
-    ChatActivityUtils.b();
-    if (this.a.sessionInfo == null) {}
-    do
-    {
-      do
-      {
-        return;
-        String str = this.a.sessionInfo.curFriendUin;
-        if (paramList == null) {}
-        for (int i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (bftf.a(String.valueOf(paramList.get(j)), str)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.b();
-    } while (!paramBoolean);
-    this.a.updateAddFriendAndShieldView();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

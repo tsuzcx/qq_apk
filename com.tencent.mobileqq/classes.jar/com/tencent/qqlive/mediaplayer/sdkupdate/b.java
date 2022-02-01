@@ -1039,7 +1039,7 @@ public class b
     //   4: isub
     //   5: istore 4
     //   7: iload_3
-    //   8: ifle +3447 -> 3455
+    //   8: ifle +3439 -> 3447
     //   11: aload_0
     //   12: getfield 55	com/tencent/qqlive/mediaplayer/sdkupdate/b:c	Landroid/content/Context;
     //   15: invokestatic 342	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(Landroid/content/Context;)Z
@@ -1079,79 +1079,79 @@ public class b
     //   87: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   90: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   93: aconst_null
-    //   94: astore 21
+    //   94: astore 22
     //   96: aconst_null
-    //   97: astore 20
+    //   97: astore 11
     //   99: aconst_null
-    //   100: astore 22
+    //   100: astore 21
     //   102: aconst_null
     //   103: astore 18
     //   105: aconst_null
-    //   106: astore 9
+    //   106: astore 17
     //   108: aconst_null
-    //   109: astore 16
+    //   109: astore 9
     //   111: aconst_null
-    //   112: astore 17
+    //   112: astore 16
     //   114: aconst_null
-    //   115: astore 23
+    //   115: astore 20
     //   117: aconst_null
-    //   118: astore 10
+    //   118: astore 23
     //   120: aconst_null
     //   121: astore 19
-    //   123: aload 23
+    //   123: aload 20
     //   125: astore 15
-    //   127: aload 21
+    //   127: aload 22
     //   129: astore 14
-    //   131: aload 20
+    //   131: aload 11
     //   133: astore 13
-    //   135: aload 10
-    //   137: astore 11
-    //   139: aload 22
+    //   135: aload 23
+    //   137: astore 10
+    //   139: aload 21
     //   141: astore 12
     //   143: new 91	java/io/File
     //   146: dup
     //   147: aload_2
     //   148: invokespecial 94	java/io/File:<init>	(Ljava/lang/String;)V
     //   151: invokestatic 97	com/tencent/qqlive/mediaplayer/sdkupdate/d:b	(Ljava/io/File;)V
-    //   154: aload 23
+    //   154: aload 20
     //   156: astore 15
-    //   158: aload 21
+    //   158: aload 22
     //   160: astore 14
-    //   162: aload 20
+    //   162: aload 11
     //   164: astore 13
-    //   166: aload 10
-    //   168: astore 11
-    //   170: aload 22
+    //   166: aload 23
+    //   168: astore 10
+    //   170: aload 21
     //   172: astore 12
     //   174: new 91	java/io/File
     //   177: dup
     //   178: aload_2
     //   179: ldc 99
     //   181: invokespecial 102	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   184: astore 24
-    //   186: aload 23
+    //   184: astore 25
+    //   186: aload 20
     //   188: astore 15
-    //   190: aload 21
+    //   190: aload 22
     //   192: astore 14
-    //   194: aload 20
+    //   194: aload 11
     //   196: astore 13
-    //   198: aload 10
-    //   200: astore 11
-    //   202: aload 22
+    //   198: aload 23
+    //   200: astore 10
+    //   202: aload 21
     //   204: astore 12
-    //   206: aload 24
+    //   206: aload 25
     //   208: invokevirtual 106	java/io/File:getParentFile	()Ljava/io/File;
     //   211: invokevirtual 110	java/io/File:mkdirs	()Z
     //   214: pop
-    //   215: aload 23
+    //   215: aload 20
     //   217: astore 15
-    //   219: aload 21
+    //   219: aload 22
     //   221: astore 14
-    //   223: aload 20
+    //   223: aload 11
     //   225: astore 13
-    //   227: aload 10
-    //   229: astore 11
-    //   231: aload 22
+    //   227: aload 23
+    //   229: astore 10
+    //   231: aload 21
     //   233: astore 12
     //   235: new 279	java/net/URL
     //   238: dup
@@ -1160,18 +1160,18 @@ public class b
     //   243: invokespecial 280	java/net/URL:<init>	(Ljava/lang/String;)V
     //   246: invokevirtual 284	java/net/URL:openConnection	()Ljava/net/URLConnection;
     //   249: checkcast 286	java/net/HttpURLConnection
-    //   252: astore 25
-    //   254: aload 25
+    //   252: astore 24
+    //   254: aload 24
     //   256: ifnonnull +237 -> 493
-    //   259: aload 23
+    //   259: aload 20
     //   261: astore 15
-    //   263: aload 21
+    //   263: aload 22
     //   265: astore 14
-    //   267: aload 20
+    //   267: aload 11
     //   269: astore 13
-    //   271: aload 10
-    //   273: astore 11
-    //   275: aload 22
+    //   271: aload 23
+    //   273: astore 10
+    //   275: aload 21
     //   277: astore 12
     //   279: iconst_5
     //   280: ldc 64
@@ -1269,30 +1269,30 @@ public class b
     //   487: iload 4
     //   489: istore_3
     //   490: goto -488 -> 2
-    //   493: aload 23
+    //   493: aload 20
     //   495: astore 15
-    //   497: aload 21
+    //   497: aload 22
     //   499: astore 14
-    //   501: aload 20
+    //   501: aload 11
     //   503: astore 13
-    //   505: aload 10
-    //   507: astore 11
-    //   509: aload 22
+    //   505: aload 23
+    //   507: astore 10
+    //   509: aload 21
     //   511: astore 12
     //   513: new 231	java/io/FileOutputStream
     //   516: dup
-    //   517: aload 24
+    //   517: aload 25
     //   519: invokespecial 233	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   522: astore 10
+    //   522: astore 11
     //   524: aload 18
-    //   526: astore 11
-    //   528: aload 9
-    //   530: astore 13
-    //   532: aload 16
-    //   534: astore 12
-    //   536: aload 17
-    //   538: astore 14
-    //   540: aload 25
+    //   526: astore 13
+    //   528: aload 17
+    //   530: astore 12
+    //   532: aload 9
+    //   534: astore 14
+    //   536: aload 16
+    //   538: astore 10
+    //   540: aload 24
     //   542: invokevirtual 357	java/net/HttpURLConnection:getResponseCode	()I
     //   545: istore_3
     //   546: iload_3
@@ -1301,13 +1301,13 @@ public class b
     //   553: iload 4
     //   555: ifne +145 -> 700
     //   558: aload 18
-    //   560: astore 11
-    //   562: aload 9
-    //   564: astore 13
-    //   566: aload 16
-    //   568: astore 12
-    //   570: aload 17
-    //   572: astore 14
+    //   560: astore 13
+    //   562: aload 17
+    //   564: astore 12
+    //   566: aload 9
+    //   568: astore 14
+    //   570: aload 16
+    //   572: astore 10
     //   574: iconst_5
     //   575: ldc 64
     //   577: ldc 66
@@ -1328,9 +1328,9 @@ public class b
     //   612: dup
     //   613: invokespecial 244	java/lang/NullPointerException:<init>	()V
     //   616: athrow
-    //   617: aload 10
+    //   617: aload 11
     //   619: ifnull -578 -> 41
-    //   622: aload 10
+    //   622: aload 11
     //   624: invokevirtual 239	java/io/FileOutputStream:close	()V
     //   627: bipush 102
     //   629: ireturn
@@ -1366,13 +1366,13 @@ public class b
     //   694: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   697: goto -80 -> 617
     //   700: aload 18
-    //   702: astore 11
-    //   704: aload 9
-    //   706: astore 13
-    //   708: aload 16
-    //   710: astore 12
-    //   712: aload 17
-    //   714: astore 14
+    //   702: astore 13
+    //   704: aload 17
+    //   706: astore 12
+    //   708: aload 9
+    //   710: astore 14
+    //   712: aload 16
+    //   714: astore 10
     //   716: iconst_3
     //   717: ldc 64
     //   719: ldc 66
@@ -1391,9 +1391,9 @@ public class b
     //   751: dup
     //   752: invokespecial 244	java/lang/NullPointerException:<init>	()V
     //   755: athrow
-    //   756: aload 10
+    //   756: aload 11
     //   758: ifnull +2800 -> 3558
-    //   761: aload 10
+    //   761: aload 11
     //   763: invokevirtual 239	java/io/FileOutputStream:close	()V
     //   766: iload 4
     //   768: istore_3
@@ -1431,14 +1431,14 @@ public class b
     //   845: istore_3
     //   846: goto -844 -> 2
     //   849: aload 18
-    //   851: astore 11
-    //   853: aload 9
-    //   855: astore 13
-    //   857: aload 16
-    //   859: astore 12
-    //   861: aload 17
-    //   863: astore 14
-    //   865: aload 25
+    //   851: astore 13
+    //   853: aload 17
+    //   855: astore 12
+    //   857: aload 9
+    //   859: astore 14
+    //   861: aload 16
+    //   863: astore 10
+    //   865: aload 24
     //   867: ldc_w 363
     //   870: invokevirtual 367	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   873: invokestatic 371	java/lang/Integer:parseInt	(Ljava/lang/String;)I
@@ -1449,13 +1449,13 @@ public class b
     //   882: lcmp
     //   883: ifne +238 -> 1121
     //   886: aload 18
-    //   888: astore 11
-    //   890: aload 9
-    //   892: astore 13
-    //   894: aload 16
-    //   896: astore 12
-    //   898: aload 17
-    //   900: astore 14
+    //   888: astore 13
+    //   890: aload 17
+    //   892: astore 12
+    //   894: aload 9
+    //   896: astore 14
+    //   898: aload 16
+    //   900: astore 10
     //   902: iconst_5
     //   903: ldc 64
     //   905: ldc 66
@@ -1471,9 +1471,9 @@ public class b
     //   928: dup
     //   929: invokespecial 244	java/lang/NullPointerException:<init>	()V
     //   932: athrow
-    //   933: aload 10
+    //   933: aload 11
     //   935: ifnull -894 -> 41
-    //   938: aload 10
+    //   938: aload 11
     //   940: invokevirtual 239	java/io/FileOutputStream:close	()V
     //   943: bipush 103
     //   945: ireturn
@@ -1514,9 +1514,9 @@ public class b
     //   1023: dup
     //   1024: invokespecial 244	java/lang/NullPointerException:<init>	()V
     //   1027: athrow
-    //   1028: aload 10
+    //   1028: aload 11
     //   1030: ifnull +2528 -> 3558
-    //   1033: aload 10
+    //   1033: aload 11
     //   1035: invokevirtual 239	java/io/FileOutputStream:close	()V
     //   1038: iload 4
     //   1040: istore_3
@@ -1556,14 +1556,14 @@ public class b
     //   1121: lconst_0
     //   1122: lstore 5
     //   1124: aload 18
-    //   1126: astore 11
-    //   1128: aload 9
-    //   1130: astore 13
-    //   1132: aload 16
-    //   1134: astore 12
-    //   1136: aload 17
-    //   1138: astore 14
-    //   1140: aload 25
+    //   1126: astore 13
+    //   1128: aload 17
+    //   1130: astore 12
+    //   1132: aload 9
+    //   1134: astore 14
+    //   1136: aload 16
+    //   1138: astore 10
+    //   1140: aload 24
     //   1142: invokevirtual 305	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   1145: astore 9
     //   1147: aload 9
@@ -1571,13 +1571,13 @@ public class b
     //   1152: iload 4
     //   1154: ifne +126 -> 1280
     //   1157: aload 9
-    //   1159: astore 11
+    //   1159: astore 13
     //   1161: aload 9
-    //   1163: astore 13
+    //   1163: astore 12
     //   1165: aload 9
-    //   1167: astore 12
+    //   1167: astore 14
     //   1169: aload 9
-    //   1171: astore 14
+    //   1171: astore 10
     //   1173: iconst_5
     //   1174: ldc 64
     //   1176: ldc 66
@@ -1589,9 +1589,9 @@ public class b
     //   1189: ifnull +8 -> 1197
     //   1192: aload 9
     //   1194: invokevirtual 325	java/io/InputStream:close	()V
-    //   1197: aload 10
+    //   1197: aload 11
     //   1199: ifnull -1158 -> 41
-    //   1202: aload 10
+    //   1202: aload 11
     //   1204: invokevirtual 239	java/io/FileOutputStream:close	()V
     //   1207: bipush 103
     //   1209: ireturn
@@ -1630,9 +1630,9 @@ public class b
     //   1282: ifnull +8 -> 1290
     //   1285: aload 9
     //   1287: invokevirtual 325	java/io/InputStream:close	()V
-    //   1290: aload 10
+    //   1290: aload 11
     //   1292: ifnull +2266 -> 3558
-    //   1295: aload 10
+    //   1295: aload 11
     //   1297: invokevirtual 239	java/io/FileOutputStream:close	()V
     //   1300: iload 4
     //   1302: istore_3
@@ -1670,24 +1670,24 @@ public class b
     //   1379: istore_3
     //   1380: goto -1378 -> 2
     //   1383: aload 9
-    //   1385: astore 11
+    //   1385: astore 13
     //   1387: aload 9
-    //   1389: astore 13
+    //   1389: astore 12
     //   1391: aload 9
-    //   1393: astore 12
+    //   1393: astore 14
     //   1395: aload 9
-    //   1397: astore 14
+    //   1397: astore 10
     //   1399: sipush 8192
     //   1402: newarray byte
     //   1404: astore 15
     //   1406: aload 9
-    //   1408: astore 11
+    //   1408: astore 13
     //   1410: aload 9
-    //   1412: astore 13
+    //   1412: astore 12
     //   1414: aload 9
-    //   1416: astore 12
+    //   1416: astore 14
     //   1418: aload 9
-    //   1420: astore 14
+    //   1420: astore 10
     //   1422: aload 9
     //   1424: aload 15
     //   1426: iconst_0
@@ -1696,16 +1696,16 @@ public class b
     //   1433: istore_3
     //   1434: iload_3
     //   1435: iconst_m1
-    //   1436: if_icmple +188 -> 1624
+    //   1436: if_icmple +184 -> 1620
     //   1439: aload 9
-    //   1441: astore 11
+    //   1441: astore 13
     //   1443: aload 9
-    //   1445: astore 13
+    //   1445: astore 12
     //   1447: aload 9
-    //   1449: astore 12
+    //   1449: astore 14
     //   1451: aload 9
-    //   1453: astore 14
-    //   1455: aload 10
+    //   1453: astore 10
+    //   1455: aload 11
     //   1457: aload 15
     //   1459: iconst_0
     //   1460: iload_3
@@ -1716,13 +1716,13 @@ public class b
     //   1468: ladd
     //   1469: lstore 5
     //   1471: aload 9
-    //   1473: astore 11
+    //   1473: astore 13
     //   1475: aload 9
-    //   1477: astore 13
+    //   1477: astore 12
     //   1479: aload 9
-    //   1481: astore 12
+    //   1481: astore 14
     //   1483: aload 9
-    //   1485: astore 14
+    //   1485: astore 10
     //   1487: aload_0
     //   1488: lload 5
     //   1490: l2d
@@ -1733,921 +1733,921 @@ public class b
     //   1496: invokevirtual 386	com/tencent/qqlive/mediaplayer/sdkupdate/b:a	(F)V
     //   1499: goto -93 -> 1406
     //   1502: astore 12
-    //   1504: aload 10
-    //   1506: astore 11
-    //   1508: aload 9
-    //   1510: astore 10
-    //   1512: aload 11
-    //   1514: astore 9
-    //   1516: aload 12
-    //   1518: astore 11
-    //   1520: aload_0
-    //   1521: bipush 101
-    //   1523: putfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
-    //   1526: iload 4
-    //   1528: ifne +782 -> 2310
-    //   1531: iconst_5
-    //   1532: ldc 64
-    //   1534: ldc 66
-    //   1536: new 68	java/lang/StringBuilder
-    //   1539: dup
-    //   1540: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   1543: ldc_w 388
-    //   1546: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1549: aload 11
-    //   1551: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   1554: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1557: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1560: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1563: bipush 101
-    //   1565: istore_3
-    //   1566: aload 10
-    //   1568: ifnull +8 -> 1576
-    //   1571: aload 10
-    //   1573: invokevirtual 325	java/io/InputStream:close	()V
-    //   1576: aload 9
-    //   1578: ifnull -1537 -> 41
-    //   1581: aload 9
-    //   1583: invokevirtual 239	java/io/FileOutputStream:close	()V
-    //   1586: bipush 101
-    //   1588: ireturn
-    //   1589: astore_1
-    //   1590: iconst_5
-    //   1591: ldc 64
-    //   1593: ldc 66
-    //   1595: new 68	java/lang/StringBuilder
-    //   1598: dup
-    //   1599: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   1602: ldc_w 352
-    //   1605: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1608: aload_1
-    //   1609: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   1612: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1615: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1618: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1621: bipush 101
-    //   1623: ireturn
+    //   1504: aload 9
+    //   1506: astore 10
+    //   1508: aload 11
+    //   1510: astore 9
+    //   1512: aload 12
+    //   1514: astore 11
+    //   1516: aload_0
+    //   1517: bipush 101
+    //   1519: putfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
+    //   1522: iload 4
+    //   1524: ifne +782 -> 2306
+    //   1527: iconst_5
+    //   1528: ldc 64
+    //   1530: ldc 66
+    //   1532: new 68	java/lang/StringBuilder
+    //   1535: dup
+    //   1536: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   1539: ldc_w 388
+    //   1542: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1545: aload 11
+    //   1547: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1550: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1553: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1556: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1559: bipush 101
+    //   1561: istore_3
+    //   1562: aload 10
+    //   1564: ifnull +8 -> 1572
+    //   1567: aload 10
+    //   1569: invokevirtual 325	java/io/InputStream:close	()V
+    //   1572: aload 9
+    //   1574: ifnull -1533 -> 41
+    //   1577: aload 9
+    //   1579: invokevirtual 239	java/io/FileOutputStream:close	()V
+    //   1582: bipush 101
+    //   1584: ireturn
+    //   1585: astore_1
+    //   1586: iconst_5
+    //   1587: ldc 64
+    //   1589: ldc 66
+    //   1591: new 68	java/lang/StringBuilder
+    //   1594: dup
+    //   1595: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   1598: ldc_w 352
+    //   1601: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1604: aload_1
+    //   1605: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1608: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1611: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1614: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1617: bipush 101
+    //   1619: ireturn
+    //   1620: aload 9
+    //   1622: astore 13
     //   1624: aload 9
-    //   1626: astore 11
+    //   1626: astore 12
     //   1628: aload 9
-    //   1630: astore 13
+    //   1630: astore 14
     //   1632: aload 9
-    //   1634: astore 12
-    //   1636: aload 9
-    //   1638: astore 14
-    //   1640: aload 10
-    //   1642: invokevirtual 389	java/io/FileOutputStream:flush	()V
+    //   1634: astore 10
+    //   1636: aload 11
+    //   1638: invokevirtual 389	java/io/FileOutputStream:flush	()V
+    //   1641: aload 9
+    //   1643: astore 13
     //   1645: aload 9
-    //   1647: astore 11
+    //   1647: astore 12
     //   1649: aload 9
-    //   1651: astore 13
+    //   1651: astore 14
     //   1653: aload 9
-    //   1655: astore 12
-    //   1657: aload 9
-    //   1659: astore 14
-    //   1661: aload 10
-    //   1663: invokevirtual 239	java/io/FileOutputStream:close	()V
-    //   1666: aconst_null
-    //   1667: astore 10
-    //   1669: aconst_null
-    //   1670: astore 16
+    //   1655: astore 10
+    //   1657: aload 11
+    //   1659: invokevirtual 239	java/io/FileOutputStream:close	()V
+    //   1662: aconst_null
+    //   1663: astore 11
+    //   1665: aconst_null
+    //   1666: astore 16
+    //   1668: aload 9
+    //   1670: astore 15
     //   1672: aload 9
-    //   1674: astore 15
+    //   1674: astore 14
     //   1676: aload 9
-    //   1678: astore 14
-    //   1680: aload 9
-    //   1682: astore 13
-    //   1684: aload 10
-    //   1686: astore 11
-    //   1688: aload 9
-    //   1690: astore 12
-    //   1692: aload 25
-    //   1694: invokevirtual 328	java/net/HttpURLConnection:disconnect	()V
+    //   1678: astore 13
+    //   1680: aload 11
+    //   1682: astore 10
+    //   1684: aload 9
+    //   1686: astore 12
+    //   1688: aload 24
+    //   1690: invokevirtual 328	java/net/HttpURLConnection:disconnect	()V
+    //   1693: aload 9
+    //   1695: astore 15
     //   1697: aload 9
-    //   1699: astore 15
+    //   1699: astore 14
     //   1701: aload 9
-    //   1703: astore 14
-    //   1705: aload 9
-    //   1707: astore 13
-    //   1709: aload 10
-    //   1711: astore 11
-    //   1713: aload 9
-    //   1715: astore 12
-    //   1717: iconst_3
-    //   1718: ldc 64
-    //   1720: ldc 66
-    //   1722: new 68	java/lang/StringBuilder
-    //   1725: dup
-    //   1726: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   1729: ldc_w 391
-    //   1732: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1735: lload 7
-    //   1737: invokevirtual 394	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1740: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1743: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1703: astore 13
+    //   1705: aload 11
+    //   1707: astore 10
+    //   1709: aload 9
+    //   1711: astore 12
+    //   1713: iconst_3
+    //   1714: ldc 64
+    //   1716: ldc 66
+    //   1718: new 68	java/lang/StringBuilder
+    //   1721: dup
+    //   1722: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   1725: ldc_w 391
+    //   1728: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1731: lload 7
+    //   1733: invokevirtual 394	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1736: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1739: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1742: aload 9
+    //   1744: astore 15
     //   1746: aload 9
-    //   1748: astore 15
+    //   1748: astore 14
     //   1750: aload 9
-    //   1752: astore 14
-    //   1754: aload 9
-    //   1756: astore 13
-    //   1758: aload 10
-    //   1760: astore 11
-    //   1762: aload 9
-    //   1764: astore 12
-    //   1766: aload_0
-    //   1767: aload_0
-    //   1768: aload 24
-    //   1770: aload_1
-    //   1771: aload_2
-    //   1772: invokespecial 155	com/tencent/qqlive/mediaplayer/sdkupdate/b:a	(Ljava/io/File;Lcom/tencent/qqlive/mediaplayer/sdkupdate/SDKLocalConfig;Ljava/lang/String;)I
-    //   1775: putfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
+    //   1752: astore 13
+    //   1754: aload 11
+    //   1756: astore 10
+    //   1758: aload 9
+    //   1760: astore 12
+    //   1762: aload_0
+    //   1763: aload_0
+    //   1764: aload 25
+    //   1766: aload_1
+    //   1767: aload_2
+    //   1768: invokespecial 155	com/tencent/qqlive/mediaplayer/sdkupdate/b:a	(Ljava/io/File;Lcom/tencent/qqlive/mediaplayer/sdkupdate/SDKLocalConfig;Ljava/lang/String;)I
+    //   1771: putfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
+    //   1774: aload 9
+    //   1776: astore 15
     //   1778: aload 9
-    //   1780: astore 15
+    //   1780: astore 14
     //   1782: aload 9
-    //   1784: astore 14
-    //   1786: aload 9
-    //   1788: astore 13
-    //   1790: aload 10
-    //   1792: astore 11
-    //   1794: aload 9
-    //   1796: astore 12
-    //   1798: aload_0
-    //   1799: getfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
-    //   1802: ifeq +379 -> 2181
-    //   1805: iload 4
-    //   1807: ifne +149 -> 1956
+    //   1784: astore 13
+    //   1786: aload 11
+    //   1788: astore 10
+    //   1790: aload 9
+    //   1792: astore 12
+    //   1794: aload_0
+    //   1795: getfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
+    //   1798: ifeq +379 -> 2177
+    //   1801: iload 4
+    //   1803: ifne +149 -> 1952
+    //   1806: aload 9
+    //   1808: astore 15
     //   1810: aload 9
-    //   1812: astore 15
+    //   1812: astore 14
     //   1814: aload 9
-    //   1816: astore 14
-    //   1818: aload 9
-    //   1820: astore 13
-    //   1822: aload 10
-    //   1824: astore 11
-    //   1826: aload 9
-    //   1828: astore 12
-    //   1830: iconst_5
-    //   1831: ldc 64
-    //   1833: ldc 66
-    //   1835: new 68	java/lang/StringBuilder
-    //   1838: dup
-    //   1839: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   1842: ldc_w 396
-    //   1845: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1848: aload_0
-    //   1849: getfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
-    //   1852: invokevirtual 152	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1855: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1858: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1861: bipush 101
-    //   1863: istore_3
-    //   1864: aload 9
-    //   1866: ifnull +8 -> 1874
-    //   1869: aload 9
-    //   1871: invokevirtual 325	java/io/InputStream:close	()V
-    //   1874: iconst_0
-    //   1875: ifeq -1834 -> 41
-    //   1878: new 243	java/lang/NullPointerException
-    //   1881: dup
-    //   1882: invokespecial 244	java/lang/NullPointerException:<init>	()V
-    //   1885: athrow
-    //   1886: astore_1
-    //   1887: iconst_5
-    //   1888: ldc 64
-    //   1890: ldc 66
-    //   1892: new 68	java/lang/StringBuilder
-    //   1895: dup
-    //   1896: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   1899: ldc_w 352
-    //   1902: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1905: aload_1
-    //   1906: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   1909: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1912: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1915: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1918: bipush 101
-    //   1920: ireturn
-    //   1921: astore_1
-    //   1922: iconst_5
-    //   1923: ldc 64
-    //   1925: ldc 66
-    //   1927: new 68	java/lang/StringBuilder
-    //   1930: dup
-    //   1931: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   1934: ldc_w 354
-    //   1937: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1940: aload_1
-    //   1941: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   1944: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1947: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1950: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1953: goto -79 -> 1874
+    //   1816: astore 13
+    //   1818: aload 11
+    //   1820: astore 10
+    //   1822: aload 9
+    //   1824: astore 12
+    //   1826: iconst_5
+    //   1827: ldc 64
+    //   1829: ldc 66
+    //   1831: new 68	java/lang/StringBuilder
+    //   1834: dup
+    //   1835: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   1838: ldc_w 396
+    //   1841: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1844: aload_0
+    //   1845: getfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
+    //   1848: invokevirtual 152	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1851: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1854: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1857: bipush 101
+    //   1859: istore_3
+    //   1860: aload 9
+    //   1862: ifnull +8 -> 1870
+    //   1865: aload 9
+    //   1867: invokevirtual 325	java/io/InputStream:close	()V
+    //   1870: iconst_0
+    //   1871: ifeq -1830 -> 41
+    //   1874: new 243	java/lang/NullPointerException
+    //   1877: dup
+    //   1878: invokespecial 244	java/lang/NullPointerException:<init>	()V
+    //   1881: athrow
+    //   1882: astore_1
+    //   1883: iconst_5
+    //   1884: ldc 64
+    //   1886: ldc 66
+    //   1888: new 68	java/lang/StringBuilder
+    //   1891: dup
+    //   1892: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   1895: ldc_w 352
+    //   1898: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1901: aload_1
+    //   1902: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1905: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1908: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1911: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1914: bipush 101
+    //   1916: ireturn
+    //   1917: astore_1
+    //   1918: iconst_5
+    //   1919: ldc 64
+    //   1921: ldc 66
+    //   1923: new 68	java/lang/StringBuilder
+    //   1926: dup
+    //   1927: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   1930: ldc_w 354
+    //   1933: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1936: aload_1
+    //   1937: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1940: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1943: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1946: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1949: goto -79 -> 1870
+    //   1952: aload 9
+    //   1954: astore 15
     //   1956: aload 9
-    //   1958: astore 15
+    //   1958: astore 14
     //   1960: aload 9
-    //   1962: astore 14
-    //   1964: aload 9
-    //   1966: astore 13
-    //   1968: aload 10
-    //   1970: astore 11
-    //   1972: aload 9
-    //   1974: astore 12
-    //   1976: aload_0
-    //   1977: getfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
-    //   1980: istore_3
-    //   1981: bipush 103
-    //   1983: iload_3
-    //   1984: if_icmpne +98 -> 2082
-    //   1987: bipush 103
-    //   1989: istore_3
-    //   1990: aload 9
-    //   1992: ifnull +8 -> 2000
-    //   1995: aload 9
-    //   1997: invokevirtual 325	java/io/InputStream:close	()V
-    //   2000: iconst_0
-    //   2001: ifeq -1960 -> 41
-    //   2004: new 243	java/lang/NullPointerException
-    //   2007: dup
-    //   2008: invokespecial 244	java/lang/NullPointerException:<init>	()V
-    //   2011: athrow
-    //   2012: astore_1
-    //   2013: iconst_5
-    //   2014: ldc 64
-    //   2016: ldc 66
-    //   2018: new 68	java/lang/StringBuilder
-    //   2021: dup
-    //   2022: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2025: ldc_w 352
-    //   2028: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2031: aload_1
-    //   2032: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2035: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2038: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2041: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2044: bipush 103
-    //   2046: ireturn
-    //   2047: astore_1
-    //   2048: iconst_5
-    //   2049: ldc 64
-    //   2051: ldc 66
-    //   2053: new 68	java/lang/StringBuilder
-    //   2056: dup
-    //   2057: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2060: ldc_w 354
-    //   2063: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2066: aload_1
-    //   2067: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2070: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2073: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2076: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2079: goto -79 -> 2000
-    //   2082: aload 9
-    //   2084: ifnull +8 -> 2092
-    //   2087: aload 9
-    //   2089: invokevirtual 325	java/io/InputStream:close	()V
-    //   2092: iconst_0
-    //   2093: ifeq +1465 -> 3558
-    //   2096: new 243	java/lang/NullPointerException
-    //   2099: dup
-    //   2100: invokespecial 244	java/lang/NullPointerException:<init>	()V
-    //   2103: athrow
-    //   2104: astore 9
-    //   2106: iconst_5
-    //   2107: ldc 64
-    //   2109: ldc 66
-    //   2111: new 68	java/lang/StringBuilder
-    //   2114: dup
-    //   2115: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2118: ldc_w 354
-    //   2121: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2124: aload 9
-    //   2126: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2129: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2132: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2135: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2138: goto -46 -> 2092
-    //   2141: astore 9
-    //   2143: iconst_5
-    //   2144: ldc 64
-    //   2146: ldc 66
-    //   2148: new 68	java/lang/StringBuilder
-    //   2151: dup
-    //   2152: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2155: ldc_w 352
-    //   2158: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2161: aload 9
-    //   2163: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2166: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2169: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2172: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2175: iload 4
-    //   2177: istore_3
-    //   2178: goto -2176 -> 2
-    //   2181: aload 9
-    //   2183: ifnull +8 -> 2191
-    //   2186: aload 9
-    //   2188: invokevirtual 325	java/io/InputStream:close	()V
-    //   2191: iconst_0
-    //   2192: ifeq +11 -> 2203
-    //   2195: new 243	java/lang/NullPointerException
-    //   2198: dup
-    //   2199: invokespecial 244	java/lang/NullPointerException:<init>	()V
-    //   2202: athrow
-    //   2203: iconst_0
-    //   2204: ireturn
-    //   2205: astore_1
-    //   2206: iconst_5
-    //   2207: ldc 64
-    //   2209: ldc 66
-    //   2211: new 68	java/lang/StringBuilder
-    //   2214: dup
-    //   2215: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2218: ldc_w 354
-    //   2221: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2224: aload_1
-    //   2225: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2228: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2231: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2234: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2237: goto -46 -> 2191
-    //   2240: astore_1
-    //   2241: iconst_5
-    //   2242: ldc 64
-    //   2244: ldc 66
-    //   2246: new 68	java/lang/StringBuilder
-    //   2249: dup
-    //   2250: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2253: ldc_w 352
-    //   2256: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2259: aload_1
-    //   2260: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2263: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2266: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2269: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2272: goto -69 -> 2203
-    //   2275: astore_1
-    //   2276: iconst_5
-    //   2277: ldc 64
-    //   2279: ldc 66
-    //   2281: new 68	java/lang/StringBuilder
-    //   2284: dup
-    //   2285: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2288: ldc_w 354
-    //   2291: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2294: aload_1
-    //   2295: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2298: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2301: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2304: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2307: goto -731 -> 1576
-    //   2310: iconst_5
-    //   2311: ldc 64
-    //   2313: ldc 66
-    //   2315: new 68	java/lang/StringBuilder
-    //   2318: dup
-    //   2319: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2322: ldc_w 398
-    //   2325: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2328: aload 11
-    //   2330: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2333: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2336: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2339: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2342: aload 10
-    //   2344: ifnull +8 -> 2352
-    //   2347: aload 10
-    //   2349: invokevirtual 325	java/io/InputStream:close	()V
-    //   2352: aload 9
-    //   2354: ifnull +1204 -> 3558
-    //   2357: aload 9
-    //   2359: invokevirtual 239	java/io/FileOutputStream:close	()V
-    //   2362: iload 4
-    //   2364: istore_3
-    //   2365: goto -2363 -> 2
-    //   2368: astore 10
-    //   2370: iconst_5
-    //   2371: ldc 64
-    //   2373: ldc 66
-    //   2375: new 68	java/lang/StringBuilder
-    //   2378: dup
-    //   2379: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2382: ldc_w 354
-    //   2385: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2388: aload 10
-    //   2390: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2393: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2396: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2399: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2402: goto -50 -> 2352
-    //   2405: astore 9
-    //   2407: iconst_5
-    //   2408: ldc 64
-    //   2410: ldc 66
-    //   2412: new 68	java/lang/StringBuilder
-    //   2415: dup
-    //   2416: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2419: ldc_w 352
-    //   2422: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2425: aload 9
-    //   2427: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2430: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2433: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2436: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2439: iload 4
-    //   2441: istore_3
-    //   2442: goto -2440 -> 2
-    //   2445: aconst_null
-    //   2446: astore 9
+    //   1962: astore 13
+    //   1964: aload 11
+    //   1966: astore 10
+    //   1968: aload 9
+    //   1970: astore 12
+    //   1972: aload_0
+    //   1973: getfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
+    //   1976: istore_3
+    //   1977: bipush 103
+    //   1979: iload_3
+    //   1980: if_icmpne +98 -> 2078
+    //   1983: bipush 103
+    //   1985: istore_3
+    //   1986: aload 9
+    //   1988: ifnull +8 -> 1996
+    //   1991: aload 9
+    //   1993: invokevirtual 325	java/io/InputStream:close	()V
+    //   1996: iconst_0
+    //   1997: ifeq -1956 -> 41
+    //   2000: new 243	java/lang/NullPointerException
+    //   2003: dup
+    //   2004: invokespecial 244	java/lang/NullPointerException:<init>	()V
+    //   2007: athrow
+    //   2008: astore_1
+    //   2009: iconst_5
+    //   2010: ldc 64
+    //   2012: ldc 66
+    //   2014: new 68	java/lang/StringBuilder
+    //   2017: dup
+    //   2018: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2021: ldc_w 352
+    //   2024: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2027: aload_1
+    //   2028: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2031: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2034: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2037: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2040: bipush 103
+    //   2042: ireturn
+    //   2043: astore_1
+    //   2044: iconst_5
+    //   2045: ldc 64
+    //   2047: ldc 66
+    //   2049: new 68	java/lang/StringBuilder
+    //   2052: dup
+    //   2053: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2056: ldc_w 354
+    //   2059: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2062: aload_1
+    //   2063: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2066: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2069: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2072: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2075: goto -79 -> 1996
+    //   2078: aload 9
+    //   2080: ifnull +8 -> 2088
+    //   2083: aload 9
+    //   2085: invokevirtual 325	java/io/InputStream:close	()V
+    //   2088: iconst_0
+    //   2089: ifeq +1469 -> 3558
+    //   2092: new 243	java/lang/NullPointerException
+    //   2095: dup
+    //   2096: invokespecial 244	java/lang/NullPointerException:<init>	()V
+    //   2099: athrow
+    //   2100: astore 9
+    //   2102: iconst_5
+    //   2103: ldc 64
+    //   2105: ldc 66
+    //   2107: new 68	java/lang/StringBuilder
+    //   2110: dup
+    //   2111: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2114: ldc_w 354
+    //   2117: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2120: aload 9
+    //   2122: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2125: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2128: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2131: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2134: goto -46 -> 2088
+    //   2137: astore 9
+    //   2139: iconst_5
+    //   2140: ldc 64
+    //   2142: ldc 66
+    //   2144: new 68	java/lang/StringBuilder
+    //   2147: dup
+    //   2148: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2151: ldc_w 352
+    //   2154: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2157: aload 9
+    //   2159: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2162: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2165: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2168: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2171: iload 4
+    //   2173: istore_3
+    //   2174: goto -2172 -> 2
+    //   2177: aload 9
+    //   2179: ifnull +8 -> 2187
+    //   2182: aload 9
+    //   2184: invokevirtual 325	java/io/InputStream:close	()V
+    //   2187: iconst_0
+    //   2188: ifeq +11 -> 2199
+    //   2191: new 243	java/lang/NullPointerException
+    //   2194: dup
+    //   2195: invokespecial 244	java/lang/NullPointerException:<init>	()V
+    //   2198: athrow
+    //   2199: iconst_0
+    //   2200: ireturn
+    //   2201: astore_1
+    //   2202: iconst_5
+    //   2203: ldc 64
+    //   2205: ldc 66
+    //   2207: new 68	java/lang/StringBuilder
+    //   2210: dup
+    //   2211: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2214: ldc_w 354
+    //   2217: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2220: aload_1
+    //   2221: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2224: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2227: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2230: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2233: goto -46 -> 2187
+    //   2236: astore_1
+    //   2237: iconst_5
+    //   2238: ldc 64
+    //   2240: ldc 66
+    //   2242: new 68	java/lang/StringBuilder
+    //   2245: dup
+    //   2246: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2249: ldc_w 352
+    //   2252: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2255: aload_1
+    //   2256: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2259: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2262: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2265: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2268: goto -69 -> 2199
+    //   2271: astore_1
+    //   2272: iconst_5
+    //   2273: ldc 64
+    //   2275: ldc 66
+    //   2277: new 68	java/lang/StringBuilder
+    //   2280: dup
+    //   2281: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2284: ldc_w 354
+    //   2287: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2290: aload_1
+    //   2291: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2294: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2297: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2300: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2303: goto -731 -> 1572
+    //   2306: iconst_5
+    //   2307: ldc 64
+    //   2309: ldc 66
+    //   2311: new 68	java/lang/StringBuilder
+    //   2314: dup
+    //   2315: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2318: ldc_w 398
+    //   2321: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2324: aload 11
+    //   2326: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2329: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2332: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2335: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2338: aload 10
+    //   2340: ifnull +8 -> 2348
+    //   2343: aload 10
+    //   2345: invokevirtual 325	java/io/InputStream:close	()V
+    //   2348: aload 9
+    //   2350: ifnull +1208 -> 3558
+    //   2353: aload 9
+    //   2355: invokevirtual 239	java/io/FileOutputStream:close	()V
+    //   2358: iload 4
+    //   2360: istore_3
+    //   2361: goto -2359 -> 2
+    //   2364: astore 10
+    //   2366: iconst_5
+    //   2367: ldc 64
+    //   2369: ldc 66
+    //   2371: new 68	java/lang/StringBuilder
+    //   2374: dup
+    //   2375: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2378: ldc_w 354
+    //   2381: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2384: aload 10
+    //   2386: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2389: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2392: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2395: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2398: goto -50 -> 2348
+    //   2401: astore 9
+    //   2403: iconst_5
+    //   2404: ldc 64
+    //   2406: ldc 66
+    //   2408: new 68	java/lang/StringBuilder
+    //   2411: dup
+    //   2412: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2415: ldc_w 352
+    //   2418: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2421: aload 9
+    //   2423: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2426: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2429: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2432: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2435: iload 4
+    //   2437: istore_3
+    //   2438: goto -2436 -> 2
+    //   2441: aconst_null
+    //   2442: astore 9
+    //   2444: astore 11
+    //   2446: aload 9
     //   2448: astore 10
     //   2450: aload 15
-    //   2452: astore 14
-    //   2454: aload 9
-    //   2456: astore 11
-    //   2458: aload 14
-    //   2460: astore 12
-    //   2462: aload_0
-    //   2463: bipush 100
-    //   2465: putfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
-    //   2468: iload 4
-    //   2470: ifne +139 -> 2609
-    //   2473: aload 9
-    //   2475: astore 11
-    //   2477: aload 14
-    //   2479: astore 12
-    //   2481: iconst_5
-    //   2482: ldc 64
-    //   2484: ldc 66
-    //   2486: new 68	java/lang/StringBuilder
-    //   2489: dup
-    //   2490: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2493: ldc_w 400
+    //   2452: astore 12
+    //   2454: aload_0
+    //   2455: bipush 100
+    //   2457: putfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
+    //   2460: iload 4
+    //   2462: ifne +139 -> 2601
+    //   2465: aload 9
+    //   2467: astore 10
+    //   2469: aload 15
+    //   2471: astore 12
+    //   2473: iconst_5
+    //   2474: ldc 64
+    //   2476: ldc 66
+    //   2478: new 68	java/lang/StringBuilder
+    //   2481: dup
+    //   2482: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2485: ldc_w 400
+    //   2488: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2491: aload 11
+    //   2493: invokevirtual 401	java/lang/NoSuchMethodError:toString	()Ljava/lang/String;
     //   2496: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2499: aload 10
-    //   2501: invokevirtual 401	java/lang/NoSuchMethodError:toString	()Ljava/lang/String;
-    //   2504: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2507: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2510: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2513: bipush 100
-    //   2515: istore_3
-    //   2516: aload 14
-    //   2518: ifnull +8 -> 2526
-    //   2521: aload 14
-    //   2523: invokevirtual 325	java/io/InputStream:close	()V
-    //   2526: aload 9
-    //   2528: ifnull -2487 -> 41
-    //   2531: aload 9
-    //   2533: invokevirtual 239	java/io/FileOutputStream:close	()V
-    //   2536: bipush 100
-    //   2538: ireturn
-    //   2539: astore_1
-    //   2540: iconst_5
-    //   2541: ldc 64
-    //   2543: ldc 66
-    //   2545: new 68	java/lang/StringBuilder
-    //   2548: dup
-    //   2549: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2552: ldc_w 352
-    //   2555: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2558: aload_1
-    //   2559: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2562: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2565: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2568: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2571: bipush 100
-    //   2573: ireturn
-    //   2574: astore_1
-    //   2575: iconst_5
-    //   2576: ldc 64
-    //   2578: ldc 66
-    //   2580: new 68	java/lang/StringBuilder
-    //   2583: dup
-    //   2584: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2587: ldc_w 354
-    //   2590: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2593: aload_1
-    //   2594: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2597: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2600: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2603: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2606: goto -80 -> 2526
-    //   2609: aload 9
-    //   2611: astore 11
-    //   2613: aload 14
-    //   2615: astore 12
-    //   2617: iconst_5
-    //   2618: ldc 64
-    //   2620: ldc 66
-    //   2622: new 68	java/lang/StringBuilder
-    //   2625: dup
-    //   2626: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2629: ldc_w 403
+    //   2499: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2502: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2505: bipush 100
+    //   2507: istore_3
+    //   2508: aload 15
+    //   2510: ifnull +8 -> 2518
+    //   2513: aload 15
+    //   2515: invokevirtual 325	java/io/InputStream:close	()V
+    //   2518: aload 9
+    //   2520: ifnull -2479 -> 41
+    //   2523: aload 9
+    //   2525: invokevirtual 239	java/io/FileOutputStream:close	()V
+    //   2528: bipush 100
+    //   2530: ireturn
+    //   2531: astore_1
+    //   2532: iconst_5
+    //   2533: ldc 64
+    //   2535: ldc 66
+    //   2537: new 68	java/lang/StringBuilder
+    //   2540: dup
+    //   2541: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2544: ldc_w 352
+    //   2547: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2550: aload_1
+    //   2551: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2554: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2557: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2560: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2563: bipush 100
+    //   2565: ireturn
+    //   2566: astore_1
+    //   2567: iconst_5
+    //   2568: ldc 64
+    //   2570: ldc 66
+    //   2572: new 68	java/lang/StringBuilder
+    //   2575: dup
+    //   2576: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2579: ldc_w 354
+    //   2582: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2585: aload_1
+    //   2586: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2589: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2592: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2595: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2598: goto -80 -> 2518
+    //   2601: aload 9
+    //   2603: astore 10
+    //   2605: aload 15
+    //   2607: astore 12
+    //   2609: iconst_5
+    //   2610: ldc 64
+    //   2612: ldc 66
+    //   2614: new 68	java/lang/StringBuilder
+    //   2617: dup
+    //   2618: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2621: ldc_w 403
+    //   2624: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2627: aload 11
+    //   2629: invokevirtual 401	java/lang/NoSuchMethodError:toString	()Ljava/lang/String;
     //   2632: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2635: aload 10
-    //   2637: invokevirtual 401	java/lang/NoSuchMethodError:toString	()Ljava/lang/String;
-    //   2640: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2643: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2646: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2649: aload 14
-    //   2651: ifnull +8 -> 2659
-    //   2654: aload 14
-    //   2656: invokevirtual 325	java/io/InputStream:close	()V
-    //   2659: aload 9
-    //   2661: ifnull +897 -> 3558
-    //   2664: aload 9
-    //   2666: invokevirtual 239	java/io/FileOutputStream:close	()V
-    //   2669: iload 4
-    //   2671: istore_3
-    //   2672: goto -2670 -> 2
-    //   2675: astore 10
-    //   2677: iconst_5
-    //   2678: ldc 64
-    //   2680: ldc 66
-    //   2682: new 68	java/lang/StringBuilder
-    //   2685: dup
-    //   2686: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2689: ldc_w 354
+    //   2635: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2638: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2641: aload 15
+    //   2643: ifnull +8 -> 2651
+    //   2646: aload 15
+    //   2648: invokevirtual 325	java/io/InputStream:close	()V
+    //   2651: aload 9
+    //   2653: ifnull +905 -> 3558
+    //   2656: aload 9
+    //   2658: invokevirtual 239	java/io/FileOutputStream:close	()V
+    //   2661: iload 4
+    //   2663: istore_3
+    //   2664: goto -2662 -> 2
+    //   2667: astore 10
+    //   2669: iconst_5
+    //   2670: ldc 64
+    //   2672: ldc 66
+    //   2674: new 68	java/lang/StringBuilder
+    //   2677: dup
+    //   2678: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2681: ldc_w 354
+    //   2684: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2687: aload 10
+    //   2689: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
     //   2692: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2695: aload 10
-    //   2697: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2700: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2703: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2706: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2709: goto -50 -> 2659
-    //   2712: astore 9
-    //   2714: iconst_5
-    //   2715: ldc 64
-    //   2717: ldc 66
-    //   2719: new 68	java/lang/StringBuilder
-    //   2722: dup
-    //   2723: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2726: ldc_w 352
+    //   2695: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2698: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2701: goto -50 -> 2651
+    //   2704: astore 9
+    //   2706: iconst_5
+    //   2707: ldc 64
+    //   2709: ldc 66
+    //   2711: new 68	java/lang/StringBuilder
+    //   2714: dup
+    //   2715: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2718: ldc_w 352
+    //   2721: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2724: aload 9
+    //   2726: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
     //   2729: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2732: aload 9
-    //   2734: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2737: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2740: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2743: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2746: iload 4
-    //   2748: istore_3
-    //   2749: goto -2747 -> 2
-    //   2752: aconst_null
-    //   2753: astore 9
-    //   2755: astore 10
-    //   2757: aload 9
-    //   2759: astore 11
-    //   2761: aload 14
-    //   2763: astore 12
-    //   2765: aload_0
-    //   2766: bipush 101
-    //   2768: putfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
-    //   2771: iload 4
-    //   2773: ifne +139 -> 2912
-    //   2776: aload 9
-    //   2778: astore 11
-    //   2780: aload 14
-    //   2782: astore 12
-    //   2784: iconst_5
-    //   2785: ldc 64
-    //   2787: ldc 66
-    //   2789: new 68	java/lang/StringBuilder
-    //   2792: dup
-    //   2793: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2796: ldc_w 405
+    //   2732: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2735: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2738: iload 4
+    //   2740: istore_3
+    //   2741: goto -2739 -> 2
+    //   2744: aconst_null
+    //   2745: astore 9
+    //   2747: astore 11
+    //   2749: aload 9
+    //   2751: astore 10
+    //   2753: aload 14
+    //   2755: astore 12
+    //   2757: aload_0
+    //   2758: bipush 101
+    //   2760: putfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
+    //   2763: iload 4
+    //   2765: ifne +139 -> 2904
+    //   2768: aload 9
+    //   2770: astore 10
+    //   2772: aload 14
+    //   2774: astore 12
+    //   2776: iconst_5
+    //   2777: ldc 64
+    //   2779: ldc 66
+    //   2781: new 68	java/lang/StringBuilder
+    //   2784: dup
+    //   2785: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2788: ldc_w 405
+    //   2791: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2794: aload 11
+    //   2796: invokevirtual 406	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
     //   2799: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2802: aload 10
-    //   2804: invokevirtual 406	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   2807: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2810: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2813: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2816: bipush 101
-    //   2818: istore_3
-    //   2819: aload 14
-    //   2821: ifnull +8 -> 2829
-    //   2824: aload 14
-    //   2826: invokevirtual 325	java/io/InputStream:close	()V
-    //   2829: aload 9
-    //   2831: ifnull -2790 -> 41
-    //   2834: aload 9
-    //   2836: invokevirtual 239	java/io/FileOutputStream:close	()V
-    //   2839: bipush 101
-    //   2841: ireturn
-    //   2842: astore_1
-    //   2843: iconst_5
-    //   2844: ldc 64
-    //   2846: ldc 66
-    //   2848: new 68	java/lang/StringBuilder
-    //   2851: dup
-    //   2852: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2855: ldc_w 352
-    //   2858: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2861: aload_1
-    //   2862: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2865: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2868: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2871: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2874: bipush 101
-    //   2876: ireturn
-    //   2877: astore_1
-    //   2878: iconst_5
-    //   2879: ldc 64
-    //   2881: ldc 66
-    //   2883: new 68	java/lang/StringBuilder
-    //   2886: dup
-    //   2887: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2890: ldc_w 354
-    //   2893: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2896: aload_1
-    //   2897: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   2900: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2903: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2906: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2909: goto -80 -> 2829
-    //   2912: aload 9
-    //   2914: astore 11
-    //   2916: aload 14
-    //   2918: astore 12
-    //   2920: iconst_5
-    //   2921: ldc 64
-    //   2923: ldc 66
-    //   2925: new 68	java/lang/StringBuilder
-    //   2928: dup
-    //   2929: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2932: ldc_w 408
+    //   2802: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2805: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2808: bipush 101
+    //   2810: istore_3
+    //   2811: aload 14
+    //   2813: ifnull +8 -> 2821
+    //   2816: aload 14
+    //   2818: invokevirtual 325	java/io/InputStream:close	()V
+    //   2821: aload 9
+    //   2823: ifnull -2782 -> 41
+    //   2826: aload 9
+    //   2828: invokevirtual 239	java/io/FileOutputStream:close	()V
+    //   2831: bipush 101
+    //   2833: ireturn
+    //   2834: astore_1
+    //   2835: iconst_5
+    //   2836: ldc 64
+    //   2838: ldc 66
+    //   2840: new 68	java/lang/StringBuilder
+    //   2843: dup
+    //   2844: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2847: ldc_w 352
+    //   2850: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2853: aload_1
+    //   2854: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2857: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2860: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2863: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2866: bipush 101
+    //   2868: ireturn
+    //   2869: astore_1
+    //   2870: iconst_5
+    //   2871: ldc 64
+    //   2873: ldc 66
+    //   2875: new 68	java/lang/StringBuilder
+    //   2878: dup
+    //   2879: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2882: ldc_w 354
+    //   2885: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2888: aload_1
+    //   2889: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   2892: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2895: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2898: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2901: goto -80 -> 2821
+    //   2904: aload 9
+    //   2906: astore 10
+    //   2908: aload 14
+    //   2910: astore 12
+    //   2912: iconst_5
+    //   2913: ldc 64
+    //   2915: ldc 66
+    //   2917: new 68	java/lang/StringBuilder
+    //   2920: dup
+    //   2921: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2924: ldc_w 408
+    //   2927: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2930: aload 11
+    //   2932: invokevirtual 406	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
     //   2935: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2938: aload 10
-    //   2940: invokevirtual 406	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   2943: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2946: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2949: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   2952: aload 14
-    //   2954: ifnull +8 -> 2962
-    //   2957: aload 14
-    //   2959: invokevirtual 325	java/io/InputStream:close	()V
-    //   2962: aload 9
-    //   2964: ifnull +594 -> 3558
-    //   2967: aload 9
-    //   2969: invokevirtual 239	java/io/FileOutputStream:close	()V
-    //   2972: iload 4
-    //   2974: istore_3
-    //   2975: goto -2973 -> 2
-    //   2978: astore 10
-    //   2980: iconst_5
-    //   2981: ldc 64
-    //   2983: ldc 66
-    //   2985: new 68	java/lang/StringBuilder
-    //   2988: dup
-    //   2989: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   2992: ldc_w 354
+    //   2938: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2941: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2944: aload 14
+    //   2946: ifnull +8 -> 2954
+    //   2949: aload 14
+    //   2951: invokevirtual 325	java/io/InputStream:close	()V
+    //   2954: aload 9
+    //   2956: ifnull +602 -> 3558
+    //   2959: aload 9
+    //   2961: invokevirtual 239	java/io/FileOutputStream:close	()V
+    //   2964: iload 4
+    //   2966: istore_3
+    //   2967: goto -2965 -> 2
+    //   2970: astore 10
+    //   2972: iconst_5
+    //   2973: ldc 64
+    //   2975: ldc 66
+    //   2977: new 68	java/lang/StringBuilder
+    //   2980: dup
+    //   2981: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   2984: ldc_w 354
+    //   2987: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2990: aload 10
+    //   2992: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
     //   2995: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2998: aload 10
-    //   3000: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   3003: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3006: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3009: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   3012: goto -50 -> 2962
-    //   3015: astore 9
-    //   3017: iconst_5
-    //   3018: ldc 64
-    //   3020: ldc 66
-    //   3022: new 68	java/lang/StringBuilder
-    //   3025: dup
-    //   3026: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   3029: ldc_w 352
+    //   2998: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3001: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   3004: goto -50 -> 2954
+    //   3007: astore 9
+    //   3009: iconst_5
+    //   3010: ldc 64
+    //   3012: ldc 66
+    //   3014: new 68	java/lang/StringBuilder
+    //   3017: dup
+    //   3018: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   3021: ldc_w 352
+    //   3024: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3027: aload 9
+    //   3029: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
     //   3032: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3035: aload 9
-    //   3037: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   3040: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3043: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3046: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   3049: iload 4
-    //   3051: istore_3
-    //   3052: goto -3050 -> 2
-    //   3055: aconst_null
-    //   3056: astore 9
-    //   3058: astore 10
-    //   3060: aload 9
-    //   3062: astore 11
-    //   3064: aload 13
-    //   3066: astore 12
-    //   3068: aload_0
-    //   3069: bipush 101
-    //   3071: putfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
-    //   3074: iload 4
-    //   3076: ifne +139 -> 3215
-    //   3079: aload 9
-    //   3081: astore 11
-    //   3083: aload 13
-    //   3085: astore 12
-    //   3087: iconst_5
-    //   3088: ldc 64
-    //   3090: ldc 66
-    //   3092: new 68	java/lang/StringBuilder
-    //   3095: dup
-    //   3096: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   3099: ldc_w 410
+    //   3035: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3038: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   3041: iload 4
+    //   3043: istore_3
+    //   3044: goto -3042 -> 2
+    //   3047: aconst_null
+    //   3048: astore 9
+    //   3050: astore 11
+    //   3052: aload 9
+    //   3054: astore 10
+    //   3056: aload 13
+    //   3058: astore 12
+    //   3060: aload_0
+    //   3061: bipush 101
+    //   3063: putfield 37	com/tencent/qqlive/mediaplayer/sdkupdate/b:d	I
+    //   3066: iload 4
+    //   3068: ifne +139 -> 3207
+    //   3071: aload 9
+    //   3073: astore 10
+    //   3075: aload 13
+    //   3077: astore 12
+    //   3079: iconst_5
+    //   3080: ldc 64
+    //   3082: ldc 66
+    //   3084: new 68	java/lang/StringBuilder
+    //   3087: dup
+    //   3088: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   3091: ldc_w 410
+    //   3094: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3097: aload 11
+    //   3099: invokevirtual 166	java/lang/Throwable:toString	()Ljava/lang/String;
     //   3102: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3105: aload 10
-    //   3107: invokevirtual 166	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   3110: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3113: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3116: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   3119: bipush 101
-    //   3121: istore_3
-    //   3122: aload 13
-    //   3124: ifnull +8 -> 3132
-    //   3127: aload 13
-    //   3129: invokevirtual 325	java/io/InputStream:close	()V
-    //   3132: aload 9
-    //   3134: ifnull -3093 -> 41
-    //   3137: aload 9
-    //   3139: invokevirtual 239	java/io/FileOutputStream:close	()V
-    //   3142: bipush 101
-    //   3144: ireturn
-    //   3145: astore_1
-    //   3146: iconst_5
-    //   3147: ldc 64
-    //   3149: ldc 66
-    //   3151: new 68	java/lang/StringBuilder
-    //   3154: dup
-    //   3155: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   3158: ldc_w 352
-    //   3161: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3164: aload_1
-    //   3165: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   3168: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3171: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3174: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   3177: bipush 101
-    //   3179: ireturn
-    //   3180: astore_1
-    //   3181: iconst_5
-    //   3182: ldc 64
-    //   3184: ldc 66
-    //   3186: new 68	java/lang/StringBuilder
-    //   3189: dup
-    //   3190: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   3193: ldc_w 354
-    //   3196: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3199: aload_1
-    //   3200: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   3203: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3206: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3209: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   3212: goto -80 -> 3132
-    //   3215: aload 9
-    //   3217: astore 11
-    //   3219: aload 13
-    //   3221: astore 12
-    //   3223: iconst_5
-    //   3224: ldc 64
-    //   3226: ldc 66
-    //   3228: new 68	java/lang/StringBuilder
-    //   3231: dup
-    //   3232: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   3235: ldc_w 412
+    //   3105: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3108: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   3111: bipush 101
+    //   3113: istore_3
+    //   3114: aload 13
+    //   3116: ifnull +8 -> 3124
+    //   3119: aload 13
+    //   3121: invokevirtual 325	java/io/InputStream:close	()V
+    //   3124: aload 9
+    //   3126: ifnull -3085 -> 41
+    //   3129: aload 9
+    //   3131: invokevirtual 239	java/io/FileOutputStream:close	()V
+    //   3134: bipush 101
+    //   3136: ireturn
+    //   3137: astore_1
+    //   3138: iconst_5
+    //   3139: ldc 64
+    //   3141: ldc 66
+    //   3143: new 68	java/lang/StringBuilder
+    //   3146: dup
+    //   3147: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   3150: ldc_w 352
+    //   3153: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3156: aload_1
+    //   3157: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   3160: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3163: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3166: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   3169: bipush 101
+    //   3171: ireturn
+    //   3172: astore_1
+    //   3173: iconst_5
+    //   3174: ldc 64
+    //   3176: ldc 66
+    //   3178: new 68	java/lang/StringBuilder
+    //   3181: dup
+    //   3182: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   3185: ldc_w 354
+    //   3188: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3191: aload_1
+    //   3192: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   3195: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3198: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3201: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   3204: goto -80 -> 3124
+    //   3207: aload 9
+    //   3209: astore 10
+    //   3211: aload 13
+    //   3213: astore 12
+    //   3215: iconst_5
+    //   3216: ldc 64
+    //   3218: ldc 66
+    //   3220: new 68	java/lang/StringBuilder
+    //   3223: dup
+    //   3224: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   3227: ldc_w 412
+    //   3230: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3233: aload 11
+    //   3235: invokevirtual 166	java/lang/Throwable:toString	()Ljava/lang/String;
     //   3238: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3241: aload 10
-    //   3243: invokevirtual 166	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   3246: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3249: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3252: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   3255: aload 13
-    //   3257: ifnull +8 -> 3265
-    //   3260: aload 13
-    //   3262: invokevirtual 325	java/io/InputStream:close	()V
-    //   3265: aload 9
-    //   3267: ifnull +291 -> 3558
-    //   3270: aload 9
-    //   3272: invokevirtual 239	java/io/FileOutputStream:close	()V
-    //   3275: iload 4
-    //   3277: istore_3
-    //   3278: goto -3276 -> 2
-    //   3281: astore 10
-    //   3283: iconst_5
-    //   3284: ldc 64
-    //   3286: ldc 66
-    //   3288: new 68	java/lang/StringBuilder
-    //   3291: dup
-    //   3292: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   3295: ldc_w 354
+    //   3241: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3244: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   3247: aload 13
+    //   3249: ifnull +8 -> 3257
+    //   3252: aload 13
+    //   3254: invokevirtual 325	java/io/InputStream:close	()V
+    //   3257: aload 9
+    //   3259: ifnull +299 -> 3558
+    //   3262: aload 9
+    //   3264: invokevirtual 239	java/io/FileOutputStream:close	()V
+    //   3267: iload 4
+    //   3269: istore_3
+    //   3270: goto -3268 -> 2
+    //   3273: astore 10
+    //   3275: iconst_5
+    //   3276: ldc 64
+    //   3278: ldc 66
+    //   3280: new 68	java/lang/StringBuilder
+    //   3283: dup
+    //   3284: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   3287: ldc_w 354
+    //   3290: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3293: aload 10
+    //   3295: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
     //   3298: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3301: aload 10
-    //   3303: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   3306: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3309: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3312: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   3315: goto -50 -> 3265
-    //   3318: astore 9
-    //   3320: iconst_5
-    //   3321: ldc 64
-    //   3323: ldc 66
-    //   3325: new 68	java/lang/StringBuilder
-    //   3328: dup
-    //   3329: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   3332: ldc_w 352
+    //   3301: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3304: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   3307: goto -50 -> 3257
+    //   3310: astore 9
+    //   3312: iconst_5
+    //   3313: ldc 64
+    //   3315: ldc 66
+    //   3317: new 68	java/lang/StringBuilder
+    //   3320: dup
+    //   3321: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   3324: ldc_w 352
+    //   3327: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3330: aload 9
+    //   3332: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
     //   3335: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3338: aload 9
-    //   3340: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   3343: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3346: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3349: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   3352: iload 4
-    //   3354: istore_3
-    //   3355: goto -3353 -> 2
-    //   3358: astore_1
-    //   3359: aload 11
-    //   3361: astore 9
-    //   3363: aload 12
-    //   3365: ifnull +8 -> 3373
-    //   3368: aload 12
-    //   3370: invokevirtual 325	java/io/InputStream:close	()V
-    //   3373: aload 9
-    //   3375: ifnull +8 -> 3383
-    //   3378: aload 9
-    //   3380: invokevirtual 239	java/io/FileOutputStream:close	()V
-    //   3383: aload_1
-    //   3384: athrow
-    //   3385: astore_2
-    //   3386: iconst_5
-    //   3387: ldc 64
-    //   3389: ldc 66
-    //   3391: new 68	java/lang/StringBuilder
-    //   3394: dup
-    //   3395: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   3398: ldc_w 354
-    //   3401: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3404: aload_2
-    //   3405: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   3408: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3411: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3414: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   3417: goto -44 -> 3373
-    //   3420: astore_2
-    //   3421: iconst_5
-    //   3422: ldc 64
-    //   3424: ldc 66
-    //   3426: new 68	java/lang/StringBuilder
-    //   3429: dup
-    //   3430: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   3433: ldc_w 352
-    //   3436: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3439: aload_2
-    //   3440: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
-    //   3443: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3446: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3449: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   3452: goto -69 -> 3383
-    //   3455: bipush 100
-    //   3457: ireturn
-    //   3458: astore_1
-    //   3459: aload 10
-    //   3461: astore 9
-    //   3463: aload 11
+    //   3338: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3341: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   3344: iload 4
+    //   3346: istore_3
+    //   3347: goto -3345 -> 2
+    //   3350: astore_1
+    //   3351: aload 10
+    //   3353: astore 9
+    //   3355: aload 12
+    //   3357: ifnull +8 -> 3365
+    //   3360: aload 12
+    //   3362: invokevirtual 325	java/io/InputStream:close	()V
+    //   3365: aload 9
+    //   3367: ifnull +8 -> 3375
+    //   3370: aload 9
+    //   3372: invokevirtual 239	java/io/FileOutputStream:close	()V
+    //   3375: aload_1
+    //   3376: athrow
+    //   3377: astore_2
+    //   3378: iconst_5
+    //   3379: ldc 64
+    //   3381: ldc 66
+    //   3383: new 68	java/lang/StringBuilder
+    //   3386: dup
+    //   3387: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   3390: ldc_w 354
+    //   3393: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3396: aload_2
+    //   3397: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   3400: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3403: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3406: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   3409: goto -44 -> 3365
+    //   3412: astore_2
+    //   3413: iconst_5
+    //   3414: ldc 64
+    //   3416: ldc 66
+    //   3418: new 68	java/lang/StringBuilder
+    //   3421: dup
+    //   3422: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   3425: ldc_w 352
+    //   3428: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3431: aload_2
+    //   3432: invokevirtual 256	java/lang/Exception:toString	()Ljava/lang/String;
+    //   3435: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3438: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3441: invokestatic 89	com/tencent/qqlive/mediaplayer/sdkupdate/d:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   3444: goto -69 -> 3375
+    //   3447: bipush 100
+    //   3449: ireturn
+    //   3450: astore_1
+    //   3451: aload 11
+    //   3453: astore 9
+    //   3455: aload 13
+    //   3457: astore 12
+    //   3459: goto -104 -> 3355
+    //   3462: astore_1
+    //   3463: aload 10
     //   3465: astore 12
-    //   3467: goto -104 -> 3363
-    //   3470: astore_1
-    //   3471: aload 10
-    //   3473: astore 12
-    //   3475: goto -112 -> 3363
+    //   3467: goto -112 -> 3355
+    //   3470: astore 10
+    //   3472: aload 11
+    //   3474: astore 9
+    //   3476: aload 10
     //   3478: astore 11
-    //   3480: aload 10
-    //   3482: astore 9
-    //   3484: aload 11
-    //   3486: astore 10
-    //   3488: goto -428 -> 3060
-    //   3491: astore 11
+    //   3480: aload 12
+    //   3482: astore 13
+    //   3484: goto -432 -> 3052
+    //   3487: astore 10
+    //   3489: aload 11
+    //   3491: astore 9
     //   3493: aload 10
-    //   3495: astore 9
-    //   3497: aload 11
-    //   3499: astore 10
-    //   3501: aload 12
-    //   3503: astore 14
-    //   3505: goto -748 -> 2757
+    //   3495: astore 11
+    //   3497: goto -748 -> 2749
+    //   3500: astore 12
+    //   3502: aload 11
+    //   3504: astore 9
+    //   3506: aload 12
     //   3508: astore 11
     //   3510: aload 10
-    //   3512: astore 9
-    //   3514: aload 11
-    //   3516: astore 10
-    //   3518: goto -1064 -> 2454
-    //   3521: astore 11
-    //   3523: aconst_null
-    //   3524: astore 10
-    //   3526: aload 19
-    //   3528: astore 9
-    //   3530: goto -2010 -> 1520
-    //   3533: astore 11
-    //   3535: aload 10
-    //   3537: astore 9
-    //   3539: aconst_null
-    //   3540: astore 10
-    //   3542: goto -2022 -> 1520
+    //   3512: astore 15
+    //   3514: goto -1068 -> 2446
+    //   3517: astore 11
+    //   3519: aconst_null
+    //   3520: astore 10
+    //   3522: aload 19
+    //   3524: astore 9
+    //   3526: goto -2010 -> 1516
+    //   3529: astore 12
+    //   3531: aload 11
+    //   3533: astore 9
+    //   3535: aconst_null
+    //   3536: astore 10
+    //   3538: aload 12
+    //   3540: astore 11
+    //   3542: goto -2026 -> 1516
     //   3545: astore 11
     //   3547: aload 9
     //   3549: astore 10
     //   3551: aload 16
     //   3553: astore 9
-    //   3555: goto -2035 -> 1520
+    //   3555: goto -2039 -> 1516
     //   3558: iload 4
     //   3560: istore_3
     //   3561: goto -3559 -> 2
@@ -2659,60 +2659,65 @@ public class b
     //   1	3560	3	n	int
     //   5	3554	4	i1	int
     //   1122	367	5	l1	long
-    //   877	859	7	l2	long
-    //   106	1	9	localObject1	Object
+    //   877	855	7	l2	long
+    //   109	1	9	localObject1	Object
     //   416	21	9	localException1	Exception
-    //   453	252	9	localException2	Exception
+    //   453	256	9	localException2	Exception
     //   772	21	9	localException3	Exception
-    //   809	82	9	localException4	Exception
+    //   809	86	9	localException4	Exception
     //   1044	21	9	localException5	Exception
-    //   1081	48	9	localException6	Exception
+    //   1081	52	9	localException6	Exception
     //   1145	141	9	localInputStream	java.io.InputStream
     //   1306	21	9	localException7	Exception
-    //   1343	166	9	localException8	Exception
-    //   1514	574	9	localObject2	Object
-    //   2104	21	9	localException9	Exception
-    //   2141	217	9	localException10	Exception
-    //   2405	21	9	localException11	Exception
-    //   2446	219	9	localObject3	Object
-    //   2712	21	9	localException12	Exception
-    //   2753	215	9	localObject4	Object
-    //   3015	21	9	localException13	Exception
-    //   3056	215	9	localObject5	Object
-    //   3318	21	9	localException14	Exception
-    //   3361	193	9	localObject6	Object
-    //   118	2230	10	localObject7	Object
-    //   2368	21	10	localException15	Exception
-    //   2448	188	10	localNoSuchMethodError1	java.lang.NoSuchMethodError
-    //   2675	21	10	localException16	Exception
-    //   2755	184	10	localOutOfMemoryError1	OutOfMemoryError
-    //   2978	21	10	localException17	Exception
-    //   3058	184	10	localThrowable1	Throwable
-    //   3281	200	10	localException18	Exception
-    //   3486	64	10	localObject8	Object
-    //   137	3327	11	localObject9	Object
-    //   3478	7	11	localThrowable2	Throwable
-    //   3491	7	11	localOutOfMemoryError2	OutOfMemoryError
-    //   3508	7	11	localNoSuchMethodError2	java.lang.NoSuchMethodError
-    //   3521	1	11	localException19	Exception
-    //   3533	1	11	localException20	Exception
-    //   3545	1	11	localException21	Exception
-    //   141	1341	12	localObject10	Object
-    //   1502	15	12	localException22	Exception
-    //   1634	1868	12	localObject11	Object
-    //   133	3128	13	localObject12	Object
-    //   129	3375	14	localObject13	Object
-    //   125	2326	15	localObject14	Object
-    //   109	3443	16	localObject15	Object
-    //   112	1025	17	localObject16	Object
-    //   103	1022	18	localObject17	Object
-    //   121	3406	19	localObject18	Object
-    //   97	405	20	localObject19	Object
-    //   94	404	21	localObject20	Object
-    //   100	410	22	localObject21	Object
-    //   115	379	23	localObject22	Object
-    //   184	1585	24	localFile	File
-    //   252	1441	25	localHttpURLConnection	java.net.HttpURLConnection
+    //   1343	162	9	localException8	Exception
+    //   1510	574	9	localObject2	Object
+    //   2100	21	9	localException9	Exception
+    //   2137	217	9	localException10	Exception
+    //   2401	21	9	localException11	Exception
+    //   2442	215	9	localObject3	Object
+    //   2704	21	9	localException12	Exception
+    //   2745	215	9	localObject4	Object
+    //   3007	21	9	localException13	Exception
+    //   3048	215	9	localObject5	Object
+    //   3310	21	9	localException14	Exception
+    //   3353	201	9	localObject6	Object
+    //   137	2207	10	localObject7	Object
+    //   2364	21	10	localException15	Exception
+    //   2448	156	10	localObject8	Object
+    //   2667	21	10	localException16	Exception
+    //   2751	156	10	localObject9	Object
+    //   2970	21	10	localException17	Exception
+    //   3054	156	10	localObject10	Object
+    //   3273	191	10	localException18	Exception
+    //   3470	7	10	localThrowable1	Throwable
+    //   3487	24	10	localOutOfMemoryError1	OutOfMemoryError
+    //   3520	30	10	localObject11	Object
+    //   97	2228	11	localObject12	Object
+    //   2444	184	11	localNoSuchMethodError1	java.lang.NoSuchMethodError
+    //   2747	184	11	localOutOfMemoryError2	OutOfMemoryError
+    //   3050	423	11	localThrowable2	Throwable
+    //   3478	31	11	localObject13	Object
+    //   3517	15	11	localException19	Exception
+    //   3540	1	11	localObject14	Object
+    //   3545	1	11	localException20	Exception
+    //   141	1337	12	localObject15	Object
+    //   1502	11	12	localException21	Exception
+    //   1626	1855	12	localObject16	Object
+    //   3500	7	12	localNoSuchMethodError2	java.lang.NoSuchMethodError
+    //   3529	10	12	localException22	Exception
+    //   133	3350	13	localObject17	Object
+    //   129	2821	14	localObject18	Object
+    //   125	3388	15	localObject19	Object
+    //   112	3440	16	localObject20	Object
+    //   106	1023	17	localObject21	Object
+    //   103	1022	18	localObject22	Object
+    //   121	3402	19	localObject23	Object
+    //   115	379	20	localObject24	Object
+    //   100	410	21	localObject25	Object
+    //   94	404	22	localObject26	Object
+    //   118	388	23	localObject27	Object
+    //   252	1437	24	localHttpURLConnection	java.net.HttpURLConnection
+    //   184	1581	25	localFile	File
     // Exception table:
     //   from	to	target	type
     //   314	322	322	java/lang/Exception
@@ -2736,164 +2741,164 @@ public class b
     //   1422	1434	1502	java/lang/Exception
     //   1455	1464	1502	java/lang/Exception
     //   1487	1499	1502	java/lang/Exception
-    //   1640	1645	1502	java/lang/Exception
-    //   1661	1666	1502	java/lang/Exception
-    //   1581	1586	1589	java/lang/Exception
-    //   1878	1886	1886	java/lang/Exception
-    //   1869	1874	1921	java/lang/Exception
-    //   2004	2012	2012	java/lang/Exception
-    //   1995	2000	2047	java/lang/Exception
-    //   2087	2092	2104	java/lang/Exception
-    //   2096	2104	2141	java/lang/Exception
-    //   2186	2191	2205	java/lang/Exception
-    //   2195	2203	2240	java/lang/Exception
-    //   1571	1576	2275	java/lang/Exception
-    //   2347	2352	2368	java/lang/Exception
-    //   2357	2362	2405	java/lang/Exception
-    //   143	154	2445	java/lang/NoSuchMethodError
-    //   174	186	2445	java/lang/NoSuchMethodError
-    //   206	215	2445	java/lang/NoSuchMethodError
-    //   235	254	2445	java/lang/NoSuchMethodError
-    //   279	290	2445	java/lang/NoSuchMethodError
-    //   513	524	2445	java/lang/NoSuchMethodError
-    //   1692	1697	2445	java/lang/NoSuchMethodError
-    //   1717	1746	2445	java/lang/NoSuchMethodError
-    //   1766	1778	2445	java/lang/NoSuchMethodError
-    //   1798	1805	2445	java/lang/NoSuchMethodError
-    //   1830	1861	2445	java/lang/NoSuchMethodError
-    //   1976	1981	2445	java/lang/NoSuchMethodError
-    //   2531	2536	2539	java/lang/Exception
-    //   2521	2526	2574	java/lang/Exception
-    //   2654	2659	2675	java/lang/Exception
-    //   2664	2669	2712	java/lang/Exception
-    //   143	154	2752	java/lang/OutOfMemoryError
-    //   174	186	2752	java/lang/OutOfMemoryError
-    //   206	215	2752	java/lang/OutOfMemoryError
-    //   235	254	2752	java/lang/OutOfMemoryError
-    //   279	290	2752	java/lang/OutOfMemoryError
-    //   513	524	2752	java/lang/OutOfMemoryError
-    //   1692	1697	2752	java/lang/OutOfMemoryError
-    //   1717	1746	2752	java/lang/OutOfMemoryError
-    //   1766	1778	2752	java/lang/OutOfMemoryError
-    //   1798	1805	2752	java/lang/OutOfMemoryError
-    //   1830	1861	2752	java/lang/OutOfMemoryError
-    //   1976	1981	2752	java/lang/OutOfMemoryError
-    //   2834	2839	2842	java/lang/Exception
-    //   2824	2829	2877	java/lang/Exception
-    //   2957	2962	2978	java/lang/Exception
-    //   2967	2972	3015	java/lang/Exception
-    //   143	154	3055	java/lang/Throwable
-    //   174	186	3055	java/lang/Throwable
-    //   206	215	3055	java/lang/Throwable
-    //   235	254	3055	java/lang/Throwable
-    //   279	290	3055	java/lang/Throwable
-    //   513	524	3055	java/lang/Throwable
-    //   1692	1697	3055	java/lang/Throwable
-    //   1717	1746	3055	java/lang/Throwable
-    //   1766	1778	3055	java/lang/Throwable
-    //   1798	1805	3055	java/lang/Throwable
-    //   1830	1861	3055	java/lang/Throwable
-    //   1976	1981	3055	java/lang/Throwable
-    //   3137	3142	3145	java/lang/Exception
-    //   3127	3132	3180	java/lang/Exception
-    //   3260	3265	3281	java/lang/Exception
-    //   3270	3275	3318	java/lang/Exception
-    //   143	154	3358	finally
-    //   174	186	3358	finally
-    //   206	215	3358	finally
-    //   235	254	3358	finally
-    //   279	290	3358	finally
-    //   513	524	3358	finally
-    //   1692	1697	3358	finally
-    //   1717	1746	3358	finally
-    //   1766	1778	3358	finally
-    //   1798	1805	3358	finally
-    //   1830	1861	3358	finally
-    //   1976	1981	3358	finally
-    //   2462	2468	3358	finally
-    //   2481	2513	3358	finally
-    //   2617	2649	3358	finally
-    //   2765	2771	3358	finally
-    //   2784	2816	3358	finally
-    //   2920	2952	3358	finally
-    //   3068	3074	3358	finally
-    //   3087	3119	3358	finally
-    //   3223	3255	3358	finally
-    //   3368	3373	3385	java/lang/Exception
-    //   3378	3383	3420	java/lang/Exception
-    //   540	546	3458	finally
-    //   574	602	3458	finally
-    //   716	744	3458	finally
-    //   865	879	3458	finally
-    //   902	913	3458	finally
-    //   1140	1147	3458	finally
-    //   1173	1184	3458	finally
-    //   1399	1406	3458	finally
-    //   1422	1434	3458	finally
-    //   1455	1464	3458	finally
-    //   1487	1499	3458	finally
-    //   1640	1645	3458	finally
-    //   1661	1666	3458	finally
-    //   1520	1526	3470	finally
-    //   1531	1563	3470	finally
-    //   2310	2342	3470	finally
-    //   540	546	3478	java/lang/Throwable
-    //   574	602	3478	java/lang/Throwable
-    //   716	744	3478	java/lang/Throwable
-    //   865	879	3478	java/lang/Throwable
-    //   902	913	3478	java/lang/Throwable
-    //   1140	1147	3478	java/lang/Throwable
-    //   1173	1184	3478	java/lang/Throwable
-    //   1399	1406	3478	java/lang/Throwable
-    //   1422	1434	3478	java/lang/Throwable
-    //   1455	1464	3478	java/lang/Throwable
-    //   1487	1499	3478	java/lang/Throwable
-    //   1640	1645	3478	java/lang/Throwable
-    //   1661	1666	3478	java/lang/Throwable
-    //   540	546	3491	java/lang/OutOfMemoryError
-    //   574	602	3491	java/lang/OutOfMemoryError
-    //   716	744	3491	java/lang/OutOfMemoryError
-    //   865	879	3491	java/lang/OutOfMemoryError
-    //   902	913	3491	java/lang/OutOfMemoryError
-    //   1140	1147	3491	java/lang/OutOfMemoryError
-    //   1173	1184	3491	java/lang/OutOfMemoryError
-    //   1399	1406	3491	java/lang/OutOfMemoryError
-    //   1422	1434	3491	java/lang/OutOfMemoryError
-    //   1455	1464	3491	java/lang/OutOfMemoryError
-    //   1487	1499	3491	java/lang/OutOfMemoryError
-    //   1640	1645	3491	java/lang/OutOfMemoryError
-    //   1661	1666	3491	java/lang/OutOfMemoryError
-    //   540	546	3508	java/lang/NoSuchMethodError
-    //   574	602	3508	java/lang/NoSuchMethodError
-    //   716	744	3508	java/lang/NoSuchMethodError
-    //   865	879	3508	java/lang/NoSuchMethodError
-    //   902	913	3508	java/lang/NoSuchMethodError
-    //   1140	1147	3508	java/lang/NoSuchMethodError
-    //   1173	1184	3508	java/lang/NoSuchMethodError
-    //   1399	1406	3508	java/lang/NoSuchMethodError
-    //   1422	1434	3508	java/lang/NoSuchMethodError
-    //   1455	1464	3508	java/lang/NoSuchMethodError
-    //   1487	1499	3508	java/lang/NoSuchMethodError
-    //   1640	1645	3508	java/lang/NoSuchMethodError
-    //   1661	1666	3508	java/lang/NoSuchMethodError
-    //   143	154	3521	java/lang/Exception
-    //   174	186	3521	java/lang/Exception
-    //   206	215	3521	java/lang/Exception
-    //   235	254	3521	java/lang/Exception
-    //   279	290	3521	java/lang/Exception
-    //   513	524	3521	java/lang/Exception
-    //   540	546	3533	java/lang/Exception
-    //   574	602	3533	java/lang/Exception
-    //   716	744	3533	java/lang/Exception
-    //   865	879	3533	java/lang/Exception
-    //   902	913	3533	java/lang/Exception
-    //   1140	1147	3533	java/lang/Exception
-    //   1692	1697	3545	java/lang/Exception
-    //   1717	1746	3545	java/lang/Exception
-    //   1766	1778	3545	java/lang/Exception
-    //   1798	1805	3545	java/lang/Exception
-    //   1830	1861	3545	java/lang/Exception
-    //   1976	1981	3545	java/lang/Exception
+    //   1636	1641	1502	java/lang/Exception
+    //   1657	1662	1502	java/lang/Exception
+    //   1577	1582	1585	java/lang/Exception
+    //   1874	1882	1882	java/lang/Exception
+    //   1865	1870	1917	java/lang/Exception
+    //   2000	2008	2008	java/lang/Exception
+    //   1991	1996	2043	java/lang/Exception
+    //   2083	2088	2100	java/lang/Exception
+    //   2092	2100	2137	java/lang/Exception
+    //   2182	2187	2201	java/lang/Exception
+    //   2191	2199	2236	java/lang/Exception
+    //   1567	1572	2271	java/lang/Exception
+    //   2343	2348	2364	java/lang/Exception
+    //   2353	2358	2401	java/lang/Exception
+    //   143	154	2441	java/lang/NoSuchMethodError
+    //   174	186	2441	java/lang/NoSuchMethodError
+    //   206	215	2441	java/lang/NoSuchMethodError
+    //   235	254	2441	java/lang/NoSuchMethodError
+    //   279	290	2441	java/lang/NoSuchMethodError
+    //   513	524	2441	java/lang/NoSuchMethodError
+    //   1688	1693	2441	java/lang/NoSuchMethodError
+    //   1713	1742	2441	java/lang/NoSuchMethodError
+    //   1762	1774	2441	java/lang/NoSuchMethodError
+    //   1794	1801	2441	java/lang/NoSuchMethodError
+    //   1826	1857	2441	java/lang/NoSuchMethodError
+    //   1972	1977	2441	java/lang/NoSuchMethodError
+    //   2523	2528	2531	java/lang/Exception
+    //   2513	2518	2566	java/lang/Exception
+    //   2646	2651	2667	java/lang/Exception
+    //   2656	2661	2704	java/lang/Exception
+    //   143	154	2744	java/lang/OutOfMemoryError
+    //   174	186	2744	java/lang/OutOfMemoryError
+    //   206	215	2744	java/lang/OutOfMemoryError
+    //   235	254	2744	java/lang/OutOfMemoryError
+    //   279	290	2744	java/lang/OutOfMemoryError
+    //   513	524	2744	java/lang/OutOfMemoryError
+    //   1688	1693	2744	java/lang/OutOfMemoryError
+    //   1713	1742	2744	java/lang/OutOfMemoryError
+    //   1762	1774	2744	java/lang/OutOfMemoryError
+    //   1794	1801	2744	java/lang/OutOfMemoryError
+    //   1826	1857	2744	java/lang/OutOfMemoryError
+    //   1972	1977	2744	java/lang/OutOfMemoryError
+    //   2826	2831	2834	java/lang/Exception
+    //   2816	2821	2869	java/lang/Exception
+    //   2949	2954	2970	java/lang/Exception
+    //   2959	2964	3007	java/lang/Exception
+    //   143	154	3047	java/lang/Throwable
+    //   174	186	3047	java/lang/Throwable
+    //   206	215	3047	java/lang/Throwable
+    //   235	254	3047	java/lang/Throwable
+    //   279	290	3047	java/lang/Throwable
+    //   513	524	3047	java/lang/Throwable
+    //   1688	1693	3047	java/lang/Throwable
+    //   1713	1742	3047	java/lang/Throwable
+    //   1762	1774	3047	java/lang/Throwable
+    //   1794	1801	3047	java/lang/Throwable
+    //   1826	1857	3047	java/lang/Throwable
+    //   1972	1977	3047	java/lang/Throwable
+    //   3129	3134	3137	java/lang/Exception
+    //   3119	3124	3172	java/lang/Exception
+    //   3252	3257	3273	java/lang/Exception
+    //   3262	3267	3310	java/lang/Exception
+    //   143	154	3350	finally
+    //   174	186	3350	finally
+    //   206	215	3350	finally
+    //   235	254	3350	finally
+    //   279	290	3350	finally
+    //   513	524	3350	finally
+    //   1688	1693	3350	finally
+    //   1713	1742	3350	finally
+    //   1762	1774	3350	finally
+    //   1794	1801	3350	finally
+    //   1826	1857	3350	finally
+    //   1972	1977	3350	finally
+    //   2454	2460	3350	finally
+    //   2473	2505	3350	finally
+    //   2609	2641	3350	finally
+    //   2757	2763	3350	finally
+    //   2776	2808	3350	finally
+    //   2912	2944	3350	finally
+    //   3060	3066	3350	finally
+    //   3079	3111	3350	finally
+    //   3215	3247	3350	finally
+    //   3360	3365	3377	java/lang/Exception
+    //   3370	3375	3412	java/lang/Exception
+    //   540	546	3450	finally
+    //   574	602	3450	finally
+    //   716	744	3450	finally
+    //   865	879	3450	finally
+    //   902	913	3450	finally
+    //   1140	1147	3450	finally
+    //   1173	1184	3450	finally
+    //   1399	1406	3450	finally
+    //   1422	1434	3450	finally
+    //   1455	1464	3450	finally
+    //   1487	1499	3450	finally
+    //   1636	1641	3450	finally
+    //   1657	1662	3450	finally
+    //   1516	1522	3462	finally
+    //   1527	1559	3462	finally
+    //   2306	2338	3462	finally
+    //   540	546	3470	java/lang/Throwable
+    //   574	602	3470	java/lang/Throwable
+    //   716	744	3470	java/lang/Throwable
+    //   865	879	3470	java/lang/Throwable
+    //   902	913	3470	java/lang/Throwable
+    //   1140	1147	3470	java/lang/Throwable
+    //   1173	1184	3470	java/lang/Throwable
+    //   1399	1406	3470	java/lang/Throwable
+    //   1422	1434	3470	java/lang/Throwable
+    //   1455	1464	3470	java/lang/Throwable
+    //   1487	1499	3470	java/lang/Throwable
+    //   1636	1641	3470	java/lang/Throwable
+    //   1657	1662	3470	java/lang/Throwable
+    //   540	546	3487	java/lang/OutOfMemoryError
+    //   574	602	3487	java/lang/OutOfMemoryError
+    //   716	744	3487	java/lang/OutOfMemoryError
+    //   865	879	3487	java/lang/OutOfMemoryError
+    //   902	913	3487	java/lang/OutOfMemoryError
+    //   1140	1147	3487	java/lang/OutOfMemoryError
+    //   1173	1184	3487	java/lang/OutOfMemoryError
+    //   1399	1406	3487	java/lang/OutOfMemoryError
+    //   1422	1434	3487	java/lang/OutOfMemoryError
+    //   1455	1464	3487	java/lang/OutOfMemoryError
+    //   1487	1499	3487	java/lang/OutOfMemoryError
+    //   1636	1641	3487	java/lang/OutOfMemoryError
+    //   1657	1662	3487	java/lang/OutOfMemoryError
+    //   540	546	3500	java/lang/NoSuchMethodError
+    //   574	602	3500	java/lang/NoSuchMethodError
+    //   716	744	3500	java/lang/NoSuchMethodError
+    //   865	879	3500	java/lang/NoSuchMethodError
+    //   902	913	3500	java/lang/NoSuchMethodError
+    //   1140	1147	3500	java/lang/NoSuchMethodError
+    //   1173	1184	3500	java/lang/NoSuchMethodError
+    //   1399	1406	3500	java/lang/NoSuchMethodError
+    //   1422	1434	3500	java/lang/NoSuchMethodError
+    //   1455	1464	3500	java/lang/NoSuchMethodError
+    //   1487	1499	3500	java/lang/NoSuchMethodError
+    //   1636	1641	3500	java/lang/NoSuchMethodError
+    //   1657	1662	3500	java/lang/NoSuchMethodError
+    //   143	154	3517	java/lang/Exception
+    //   174	186	3517	java/lang/Exception
+    //   206	215	3517	java/lang/Exception
+    //   235	254	3517	java/lang/Exception
+    //   279	290	3517	java/lang/Exception
+    //   513	524	3517	java/lang/Exception
+    //   540	546	3529	java/lang/Exception
+    //   574	602	3529	java/lang/Exception
+    //   716	744	3529	java/lang/Exception
+    //   865	879	3529	java/lang/Exception
+    //   902	913	3529	java/lang/Exception
+    //   1140	1147	3529	java/lang/Exception
+    //   1688	1693	3545	java/lang/Exception
+    //   1713	1742	3545	java/lang/Exception
+    //   1762	1774	3545	java/lang/Exception
+    //   1794	1801	3545	java/lang/Exception
+    //   1826	1857	3545	java/lang/Exception
+    //   1972	1977	3545	java/lang/Exception
   }
   
   private String b(File paramFile, String paramString)

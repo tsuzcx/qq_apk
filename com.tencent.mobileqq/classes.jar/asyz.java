@@ -1,50 +1,31 @@
-import com.tencent.mobileqq.filemanager.settings.FMSettings.4;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class asyz
-  implements asyx
+  implements View.OnLongClickListener
 {
-  public asyz(FMSettings.4 param4) {}
+  public asyz(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    synchronized (this.a.this$0)
-    {
-      asyy localasyy2 = this.a.this$0;
-      localasyy2.jdField_a_of_type_Int += 1;
-      asyy.a(1, "onMovedOver,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
-      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
-      {
-        asyy.a(1, "moveFileToDefaultPath,move over!");
-        this.a.jdField_a_of_type_Asyx.a();
-      }
-      return;
+    if (paramView == null) {
+      return false;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.a.this$0)
+    if (!this.a.b())
     {
-      asyy localasyy2 = this.a.this$0;
-      localasyy2.jdField_a_of_type_Int += 1;
-      asyy.a(1, "onMoveFail,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
-      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
-      {
-        asyy.a(1, "moveFileToDefaultPath,move over!");
-        this.a.jdField_a_of_type_Asyx.a(16);
-      }
-      return;
+      this.a.jdField_a_of_type_Atpx.a(null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.resetSlideStatus();
+      return false;
     }
+    paramView.setSelected(true);
+    bhjq localbhjq = new bhjq();
+    localbhjq.a(2131365469, paramView.getContext().getString(2131691448));
+    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bhcw.a(paramView, localbhjq, new asza(this, paramView), new aszb(this, paramView));
+    return true;
   }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    asyy localasyy = this.a.this$0;
-    localasyy.jdField_a_of_type_Long += paramLong1;
-    this.a.jdField_a_of_type_Asyx.a(this.a.this$0.jdField_a_of_type_Long, this.a.this$0.b);
-  }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 

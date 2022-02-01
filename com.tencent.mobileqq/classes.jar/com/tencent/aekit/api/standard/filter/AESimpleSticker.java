@@ -109,8 +109,8 @@ public class AESimpleSticker
   public void clear(boolean paramBoolean)
   {
     Log.i("VideoMemoryManager", "AESticker clear! isClearMemory = " + paramBoolean);
-    this.mCopyFilter.ClearGLSL();
-    this.mSplitFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
+    this.mSplitFilter.clearGLSL();
     if (this.mVideoFilters != null)
     {
       this.mVideoFilters.destroy();
@@ -171,8 +171,9 @@ public class AESimpleSticker
       }
     }
     BenchUtil.benchStart(BenchUtil.SHOWPREVIEW_BENCH_TAG + "updateAndRender - DO_NOT_RENDER_FACE_OFF_FILTER");
-    paramPTSegAttr = this.mVideoFilters.updateAndRenderDynamicStickers(paramFrame, paramPTFaceAttr, paramAIAttr);
+    paramFrame = this.mVideoFilters.updateAndRenderDynamicStickers(paramFrame, paramPTFaceAttr, paramAIAttr);
     BenchUtil.benchEnd(BenchUtil.SHOWPREVIEW_BENCH_TAG + "updateAndRender - DO_NOT_RENDER_FACE_OFF_FILTER");
+    paramPTSegAttr = this.mVideoFilters.UKYOGameRender(paramFrame);
     paramFrame = paramPTSegAttr;
     if (!this.mVideoFilters.renderStaticStickerFirst())
     {

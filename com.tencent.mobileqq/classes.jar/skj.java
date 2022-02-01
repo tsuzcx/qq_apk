@@ -1,27 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
-class skj
-  implements Animator.AnimatorListener
+public class skj
+  implements aqrq
 {
-  skj(ski paramski, boolean paramBoolean) {}
+  public skj(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onColorNoteAnimFinish()
   {
-    ski.a(this.jdField_a_of_type_Ski, this.jdField_a_of_type_Boolean);
+    this.a.d();
+    if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).c())) {
+      this.a.overridePendingTransition(0, 0);
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ski.a(this.jdField_a_of_type_Ski, this.jdField_a_of_type_Boolean);
-    ski.a(this.jdField_a_of_type_Ski);
-    this.jdField_a_of_type_Ski.b.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

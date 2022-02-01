@@ -5,18 +5,18 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import pua;
+import qeu;
 
 public class ArticleReadInfoModule$1
   implements Runnable
 {
-  public ArticleReadInfoModule$1(pua parampua) {}
+  public ArticleReadInfoModule$1(qeu paramqeu) {}
   
   public void run()
   {
     List localList = this.this$0.a.query(ArticleReadInfo.class, true, null, null, null, null, null, null);
-    pua.a(this.this$0, localList);
-    pua.a(this.this$0).set(true);
+    qeu.a(this.this$0, localList);
+    qeu.a(this.this$0).set(true);
     QLog.d("ArticleReadInfoModule", 1, "article info read load from db finish");
   }
 }

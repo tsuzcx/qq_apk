@@ -1,16 +1,21 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import aght;
+import agih;
+import aioi;
+import com.tencent.widget.XEditTextEx;
 
 class BaseChatPie$13
   implements Runnable
 {
-  BaseChatPie$13(BaseChatPie paramBaseChatPie, Intent paramIntent) {}
+  BaseChatPie$13(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    ForwardUtils.handleAppShareAction(this.this$0.app, this.this$0.mContext, this.this$0.sessionInfo, this.val$intent);
+    if (aioi.a(this.this$0.app).a(this.this$0.input.getText())) {
+      this.this$0.showZhituAfterDraft();
+    }
+    ((aght)this.this$0.helperProvider.a(24)).a();
   }
 }
 

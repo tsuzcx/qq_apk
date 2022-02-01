@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/mm" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/bf3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/xb"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/bed" android:textStyle="bold" android:textColor="@color/afx" android:gravity="center_horizontal" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wsk" />
-    <TextView android:textSize="@dimen/bek" android:textColor="@color/afx" android:gravity="left" android:id="@id/bgz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="40.0dip" />
-    <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textSize="@dimen/bed" android:textStyle="bold" android:textColor="@color/afx" android:gravity="center" android:id="@id/mrt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginBottom="17.0dip" android:text="@string/wlf" />
+    <com.tencent.biz.qqstory.widget.OverScrollRecyclerView android:id="@id/i4m" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

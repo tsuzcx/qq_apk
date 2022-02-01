@@ -1,37 +1,35 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.ad.tangram.log.AdLogAdapter;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x11b.submsgtype0x11b.MsgBody;
 
-public class abzr
-  implements abzb
+public final class abzr
+  implements AdLogAdapter
 {
-  private static void a(abxc paramabxc, MsgType0x210 paramMsgType0x210)
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x11b");
-    }
-    try
-    {
-      submsgtype0x11b.MsgBody localMsgBody = new submsgtype0x11b.MsgBody();
-      if (paramabxc.a(paramMsgType0x210))
-      {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        avth.a().a(localMsgBody);
-      }
-      return;
-    }
-    catch (Exception paramabxc)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0x11b], errInfo->" + paramabxc.getMessage());
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
     }
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    a(paramabxc, paramMsgType0x210);
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+    }
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2, paramThrowable);
+    }
   }
 }
 

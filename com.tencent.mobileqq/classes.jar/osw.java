@@ -1,30 +1,48 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class osw
-  implements AbsListView.OnScrollListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public osw(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  public osw(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onGlobalLayout()
   {
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (!ReadInJoyCommentListFragment.a(this.a).a().a().a()) {
-      ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
-    }
-    for (;;)
+    Rect localRect = new Rect();
+    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getWindowVisibleDisplayFrame(localRect);
+    int j = this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getRootView().getHeight();
+    int i = j - localRect.height();
+    if (i > 100) {}
+    for (boolean bool = true;; bool = false)
     {
-      if ((ReadInJoyCommentListFragment.a(this.a) != null) && (ReadInJoyCommentListFragment.a(this.a).a() != null)) {
-        ReadInJoyCommentListFragment.a(this.a).a().a(ReadInJoyCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoyCommentListFragment.a(this.a).getLastVisiblePosition());
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout screenHeight:" + j + ", ExternalPanelheight:" + i + ", isShowKeybroad:" + bool);
       }
+      if (bool != this.a.k)
+      {
+        if (i > this.a.e) {
+          this.a.e = i;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + this.a.e);
+        }
+        i = ViewUtils.dpToPx(this.a.f);
+        j = j - ImmersiveUtils.getStatusBarHeight(this.a) - this.a.getTitleBarHeight() - this.a.e;
+        int k = j - i;
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout contentHeight:" + j + ", fixedHeight:" + i + ", maxHeight:" + k);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setMaxHeight(k);
+      }
+      this.a.k = bool;
       return;
-      ((ReadInJoyCommentListView)paramAbsListView).d();
     }
   }
 }

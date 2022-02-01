@@ -1,64 +1,96 @@
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.text.QQText.SmallEmojiSpan;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class bdad
-  extends bdae
+public class bdad
 {
-  private QQText.SmallEmojiSpan a;
+  int jdField_a_of_type_Int = 0;
+  DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
+  ArrayList<bczz> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  bdad(@NonNull String paramString, int paramInt1, int paramInt2)
+  bdad()
   {
-    super(3, paramString);
-    if (paramString.length() >= 6)
+    a(BaseApplicationImpl.getApplication());
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+    this.jdField_a_of_type_Int = bdaf.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+    QLog.d("QavGesture", 1, String.format("GestureMgr, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+  }
+  
+  void a(boolean paramBoolean, bczz parambczz)
+  {
+    localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (paramBoolean) {}
+    for (;;)
     {
-      char[] arrayOfChar = new char[3];
-      arrayOfChar[0] = paramString.charAt(3);
-      arrayOfChar[1] = paramString.charAt(4);
-      arrayOfChar[2] = ((char)(paramString.charAt(5) & 0xFF));
-      int i = 0;
-      if (i < 3)
+      try
       {
-        if (arrayOfChar[i] == 'ú') {
-          arrayOfChar[i] = '\n';
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (arrayOfChar[i] == 'þ') {
-            arrayOfChar[i] = '\r';
-          }
-        }
+        this.jdField_a_of_type_JavaUtilArrayList.add(parambczz);
+        return;
       }
-      if (paramInt1 == 511) {
-        bool = true;
-      }
-      this.a = new QQText.SmallEmojiSpan(arrayOfChar, paramInt2, true, bool);
+      finally {}
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parambczz);
     }
   }
   
-  float a(@NonNull Paint paramPaint)
+  boolean a()
   {
-    if (this.a != null)
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+    this.jdField_a_of_type_Int = bdaf.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGesture", 4, String.format("checkResReady, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    }
+    return 11 != this.jdField_a_of_type_Int;
+  }
+  
+  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGesture", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.video.gesturemgr.notify");
+    return paramBaseApplicationImpl.registerReceiver(new bdae(this), localIntentFilter) != null;
+  }
+  
+  boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  boolean c()
+  {
+    boolean bool = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
+      return false;
+    }
+    if ((this.jdField_a_of_type_Int == 1) && (bdaf.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))) {}
+    for (;;)
     {
-      paramPaint = this.a.getDrawable();
-      if (paramPaint != null)
-      {
-        float f = paramPaint.getBounds().width();
-        if (QLog.isColorLevel()) {
-          QLog.d("NickWrapper", 2, "getWidth small span width " + f);
-        }
-        return f;
+      return bool;
+      bool = false;
+    }
+  }
+  
+  boolean d()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = bdaf.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+    if (this.jdField_a_of_type_Int == 11)
+    {
+      this.jdField_a_of_type_Int = 12;
+      BusinessCommonConfig.notifyQQDownload(1, null, 0);
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavGesture", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGesture[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
       }
+      return bool;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("NickWrapper", 2, "getWidth with error drawable");
-    }
-    return 0.0F;
   }
 }
 

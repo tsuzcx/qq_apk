@@ -1,13 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import android.graphics.drawable.Drawable;
+import android.widget.TextView;
 
-public class azbn
-  implements View.OnClickListener
+public abstract interface azbn
 {
-  public azbn(LSRecordPanel paramLSRecordPanel) {}
+  public abstract TextView a();
   
-  public void onClick(View paramView) {}
+  public abstract void a(Drawable paramDrawable, String paramString);
+  
+  public abstract void a(String paramString, Drawable paramDrawable);
 }
 
 

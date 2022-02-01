@@ -1,18 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
 
-class axbx
+public class axbx
   implements DialogInterface.OnClickListener
 {
-  axbx(axax paramaxax, QQCustomDialog paramQQCustomDialog) {}
+  public axbx(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Axax.a.h();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

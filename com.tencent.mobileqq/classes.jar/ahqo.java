@@ -1,99 +1,44 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.XPanelContainer;
 
 public class ahqo
-  implements ahqq, View.OnClickListener
+  implements ahqf<View>
 {
-  View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  private View jdField_a_of_type_AndroidViewView;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   
-  public ahqo(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  ahqo(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
   
   public int a()
   {
-    return 2;
+    return 37;
   }
   
-  public View a(Object... paramVarArgs)
+  public View a()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131560934, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377909));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    }
-    a();
     return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public void a()
+  public View a(Context paramContext)
   {
-    int i = ((bcpa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(362)).a(this.jdField_a_of_type_JavaLangString);
-    if (i > 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131718630, new Object[] { i + "" }));
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("StudyRoomTipsBar", 4, "update. member count :" + i + " with troopUin:" + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidViewView = ((aggg)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(72)).a();
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public void a(int paramInt, Object... paramVarArgs) {}
+  public void a() {}
   
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public void a(int paramInt1, int paramInt2) {}
   
-  public int[] a()
-  {
-    return null;
-  }
+  public void a(XPanelContainer paramXPanelContainer) {}
   
-  public int b()
+  public boolean a()
   {
-    return 28;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131696687, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject = new HashMap();
-      ((HashMap)localObject).put("groupId", this.jdField_a_of_type_JavaLangString);
-      ((bcpa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(362)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (HashMap)localObject);
-      int i = ((bcpa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(362)).a(this.jdField_a_of_type_JavaLangString);
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("action", "click");
-      ((Bundle)localObject).putString("page", "group_page");
-      ((Bundle)localObject).putString("module", "banner");
-      ((Bundle)localObject).putString("entry_type", "1");
-      ((Bundle)localObject).putString("study_number", "" + i);
-      bcqg.a((Bundle)localObject);
-    }
+    return false;
   }
 }
 

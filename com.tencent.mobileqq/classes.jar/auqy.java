@@ -1,19 +1,18 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auqy
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2) {}
+  public auqy(ForwardFileOption paramForwardFileOption, String paramString1, String paramString2, String paramString3) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, paramBundle.getInt("appId"), paramBundle.getLong("uin", 0L), paramBundle.getString("openId"), paramBundle.getString("error_msg"));
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption.l = true;
+    ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

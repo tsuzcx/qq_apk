@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
-import ardu;
+import ashz;
 
 public class WebIPCOperator$3
   implements Runnable
 {
-  public WebIPCOperator$3(ardu paramardu, Bundle paramBundle) {}
+  public WebIPCOperator$3(ashz paramashz, Bundle paramBundle) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class WebIPCOperator$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.WebIPCOperator.3
  * JD-Core Version:    0.7.0.1
  */

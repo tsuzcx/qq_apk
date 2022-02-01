@@ -1,16 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class aeua
-  implements View.OnClickListener
+public class aeua
+  extends MqqHandler
 {
-  aeua(aetx paramaetx, aetu paramaetu) {}
+  public aeua(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Aetx.a.a(this.jdField_a_of_type_Aetu);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      this.a.finish();
+      return;
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
   }
 }
 

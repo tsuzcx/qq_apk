@@ -1,13 +1,25 @@
 package com.tencent.mobileqq.activity.aio.core;
 
+import com.tencent.imcore.message.QQMessageFacade.RefreshMessageContext;
+
 class BaseChatPie$34
   implements Runnable
 {
-  BaseChatPie$34(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$34(BaseChatPie paramBaseChatPie, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext) {}
   
   public void run()
   {
-    this.this$0.refresh(196615);
+    if (this.val$refreshMessageContext.needAutoNavigateTop)
+    {
+      if (this.val$refreshMessageContext.isSuccess)
+      {
+        this.this$0.refresh(131079);
+        return;
+      }
+      this.this$0.refresh(131078);
+      return;
+    }
+    this.this$0.refresh(131076);
   }
 }
 

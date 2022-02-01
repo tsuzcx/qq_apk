@@ -1,100 +1,82 @@
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.ArrayList;
-import java.util.Collections;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.IconInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UsrIcon;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class wqz
-  extends wrz
+class wqz
+  extends SimpleJob<Void>
 {
-  public int a;
-  @NonNull
-  public final View a;
-  protected String a;
-  public List<wsk> a;
-  public wod a;
-  protected wra a;
-  protected boolean a;
-  private final String b = "Q.qqstory.playernew." + getClass().getSimpleName();
-  
-  public wqz(@NonNull View paramView)
+  wqz(wqy paramwqy, String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = Collections.emptyList();
-    this.jdField_a_of_type_JavaLangString = (this.b + System.identityHashCode(this));
-    if ((paramView instanceof ViewGroup))
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = this.a.a.icon_info.get();
+    HashMap localHashMap = new HashMap();
+    wke localwke = (wke)wjs.a(2);
+    Iterator localIterator = paramJobContext.iterator();
+    String str;
+    QQUserUIItem localQQUserUIItem;
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidViewView = a((ViewGroup)paramView);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public wqz(@NonNull ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = Collections.emptyList();
-    this.jdField_a_of_type_JavaLangString = (this.b + System.identityHashCode(this));
-    this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidViewView.getVisibility();
-  }
-  
-  protected abstract View a(ViewGroup paramViewGroup);
-  
-  public wqz a(Class<? extends wqz> paramClass)
-  {
-    if (this.jdField_a_of_type_Wra != null) {
-      return this.jdField_a_of_type_Wra.b(paramClass);
-    }
-    return null;
-  }
-  
-  public wra a()
-  {
-    return this.jdField_a_of_type_Wra;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
-  }
-  
-  public void a(int paramInt, woe paramwoe, @NonNull ArrayList<wsk> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.b + System.identityHashCode(this) + "[" + paramInt + "]");
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Wod = paramwoe.jdField_a_of_type_Wod;
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      wsk localwsk = (wsk)localIterator.next();
-      if ((paramwoe.jdField_a_of_type_Wod instanceof wor)) {
-        localwsk.a = ((wor)paramwoe.jdField_a_of_type_Wod).a;
-      } else {
-        localwsk.a = null;
+      if (localIterator.hasNext())
+      {
+        paramJobContext = (qqstory_struct.IconInfo)localIterator.next();
+        str = paramJobContext.union_id.get().toStringUtf8();
+        localQQUserUIItem = localwke.b(str);
+        if (localQQUserUIItem != null) {
+          if ((paramJobContext.err_code.get() == 0) && (paramJobContext.usr_icon_list.has()) && (paramJobContext.usr_icon_list.size() > 0))
+          {
+            paramVarArgs = (qqstory_struct.UsrIcon)paramJobContext.usr_icon_list.get(0);
+            paramJobContext = paramVarArgs.icon_postfix.get().toStringUtf8();
+            paramVarArgs = paramVarArgs.jmp_postfix.get().toStringUtf8();
+            if (TextUtils.isEmpty(paramJobContext)) {
+              break label309;
+            }
+            paramJobContext = "https://pub.idqqimg.com/pc/misc/qqstory_icon/" + paramJobContext;
+          }
+        }
       }
     }
-    this.jdField_a_of_type_JavaUtilList = paramArrayList;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  void a(wra paramwra)
-  {
-    this.jdField_a_of_type_Wra = paramwra;
-  }
-  
-  protected void b() {}
-  
-  public void c()
-  {
-    xvv.a(this.jdField_a_of_type_JavaLangString, "onUnBind, position=%d, data.size=%d, groupId=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()), this.jdField_a_of_type_Wod.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Boolean = false;
+    label309:
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramVarArgs)) {
+        paramVarArgs = "https://story.now.qq.com/mobile/pages/medal.html?_bid=2473&_wv=1031" + paramVarArgs;
+      }
+      for (;;)
+      {
+        localHashMap.put(str, new String[] { paramJobContext, paramVarArgs });
+        localQQUserUIItem.setUserIcon(paramJobContext, paramVarArgs);
+        for (;;)
+        {
+          localQQUserUIItem.iconUrlCacheTime = System.currentTimeMillis();
+          localwke.a(localQQUserUIItem);
+          break;
+          localHashMap.put(str, new String[] { "", "" });
+          localQQUserUIItem.setUserIcon("", "");
+        }
+        paramJobContext = new wra();
+        paramJobContext.a = localHashMap;
+        wad.a().dispatch(paramJobContext);
+        return null;
+      }
+    }
   }
 }
 

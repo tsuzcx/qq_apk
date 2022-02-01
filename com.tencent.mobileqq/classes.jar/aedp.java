@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aedp
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aedp(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public aedp(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a(this.a.a);
+    H5MagicPlayerActivity.a(this.a);
+    if ((this.a.d.equals(this.a.c)) && (this.a.a != null)) {
+      bdla.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdla.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
+    }
   }
 }
 

@@ -1,18 +1,52 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
-public final class aure
-  implements Parcelable.Creator<NewTogetherRoomMessageData>
+public class aure
+  implements View.OnTouchListener
 {
-  public NewTogetherRoomMessageData a(Parcel paramParcel)
-  {
-    return new NewTogetherRoomMessageData(paramParcel);
-  }
+  public aure(ForwardFileOption paramForwardFileOption) {}
   
-  public NewTogetherRoomMessageData[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new NewTogetherRoomMessageData[paramInt];
+    int i = ForwardFileOption.b(this.a);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      paramMotionEvent = paramView.findViewById(2131367219);
+      if (paramMotionEvent != null) {
+        paramMotionEvent.setBackgroundColor(Color.argb(25, 0, 0, 0));
+      }
+      if (i != 1) {}
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return false;
+            } while (i != 3);
+            paramView = (ImageView)paramView.findViewById(2131367225);
+          } while (paramView == null);
+          paramView.setImageResource(2130840186);
+          return false;
+        } while (paramMotionEvent.getAction() != 1);
+        paramMotionEvent = paramView.findViewById(2131367219);
+        if (paramMotionEvent != null) {
+          paramMotionEvent.setBackgroundColor(Color.argb(0, 0, 0, 0));
+        }
+      } while ((i == 1) || (i != 3));
+      paramView = (ImageView)paramView.findViewById(2131367225);
+    } while (paramView == null);
+    paramView.setImageResource(2130840185);
+    return false;
   }
 }
 

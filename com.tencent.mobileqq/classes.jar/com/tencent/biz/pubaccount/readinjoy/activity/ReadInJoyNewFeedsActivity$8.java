@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class ReadInJoyNewFeedsActivity$8
   implements Runnable
@@ -11,10 +12,10 @@ class ReadInJoyNewFeedsActivity$8
   {
     if ("operation_guide".equals(this.a.business))
     {
-      this.this$0.a(271, this.a.business, this.a);
+      this.this$0.a(QQManagerFactory.READ_IN_JOY_OPERATION_MANAGER, this.a.business, this.a);
       return;
     }
-    this.this$0.a(261, "", this.a);
+    this.this$0.a(QQManagerFactory.READ_INJOY_SKIN_MANAGER, "", this.a);
   }
 }
 

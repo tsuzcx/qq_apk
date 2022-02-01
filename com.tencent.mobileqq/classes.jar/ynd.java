@@ -1,89 +1,19 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.1.1;
 
 public class ynd
-  extends BaseAdapter
+  implements wis<wkj>
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ynf jdField_a_of_type_Ynf;
-  private int b;
-  private int c;
+  ynd(ync paramync) {}
   
-  public ynd(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  public void a(boolean paramBoolean, wkj paramwkj)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public Bitmap a(int paramInt)
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Ynf = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-  }
-  
-  public void a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    if (this.jdField_a_of_type_Ynf == null) {
-      return;
-    }
-    this.jdField_a_of_type_Ynf.a(paramLocalMediaInfo);
-  }
-  
-  public void a(ynf paramynf)
-  {
-    this.jdField_a_of_type_Ynf = paramynf;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
+    ykq.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramwkj != null))
     {
-      localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      int i = (int)(ybe.a(this.jdField_a_of_type_AndroidContentContext.getResources()) * this.b);
-      paramView = new ViewGroup.LayoutParams(this.b, i);
-      ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_CROP);
-      ((ImageView)localObject).setLayoutParams(paramView);
-      paramView = new yne();
-      paramView.a = ((ImageView)localObject);
-      paramView.a.setImageDrawable(new ColorDrawable(-12303292));
-      ((View)localObject).setTag(paramView);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ynf.a(paramView.a, Integer.valueOf(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      yne localyne = (yne)paramView.getTag();
-      localObject = paramView;
-      paramView = localyne;
+      ykq.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramwkj.a));
+      int i = paramwkj.a;
+      ync.a(this.a).post(new EditVideoFilterNeo.1.1(this, i));
     }
   }
 }

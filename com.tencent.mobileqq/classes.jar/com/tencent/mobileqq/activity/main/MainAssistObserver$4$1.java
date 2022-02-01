@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.main;
 
-import ajfv;
+import akbj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import cooperation.qzone.QZoneHelper;
 
 public class MainAssistObserver$4$1
   implements Runnable
 {
-  public MainAssistObserver$4$1(ajfv paramajfv, QQAppInterface paramQQAppInterface) {}
+  public MainAssistObserver$4$1(akbj paramakbj, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

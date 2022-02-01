@@ -1,249 +1,138 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import mqq.manager.Manager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class vxx
-  implements Manager
+  extends vxv<vyf>
 {
-  public byte a;
-  public int a;
-  amqq jdField_a_of_type_Amqq = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final vlc jdField_a_of_type_Vlc = new vxz(this);
-  private vyb jdField_a_of_type_Vyb;
-  public boolean a;
-  public boolean b;
-  public boolean c = true;
-  public boolean d;
-  private boolean e;
-  private boolean f;
-  private boolean g;
-  private boolean h;
-  
-  public vxx(QQAppInterface paramQQAppInterface)
+  public vxx()
   {
-    this.jdField_a_of_type_Byte = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_b_of_type_Boolean = ((Boolean)((vuq)vux.a(10)).b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
-    this.c = a();
-    c();
-    DeviceProfileManager.a(this.jdField_a_of_type_Amqq);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Vlc);
-    this.d = ((vla)paramQQAppInterface.getManager(181)).f();
-    b(false);
-    paramQQAppInterface = vuq.e();
-    if (!TextUtils.isEmpty(paramQQAppInterface))
-    {
-      this.jdField_a_of_type_Vyb = a(paramQQAppInterface);
-      if (this.jdField_a_of_type_Vyb != null) {
-        this.jdField_a_of_type_Vyb.jdField_b_of_type_Boolean = vuq.f();
-      }
-    }
+    a(new vyf());
   }
   
-  private vyb a(String paramString)
+  private List<vxg> a(vyi paramvyi, int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    if (TextUtils.isEmpty(paramString))
+    if (((paramInt1 != -1) && (paramvyi.jdField_a_of_type_Vyj.jdField_a_of_type_Int >= paramInt1)) || (paramvyi.jdField_a_of_type_JavaUtilList.size() <= 0))
     {
-      xvv.c("Q.qqstory.config.takevideo", "parseTakeVideoConfig is null");
+      if (paramvyi.a() >= ((vyf)a()).b)
+      {
+        localObject1 = new vxg(((vyf)a()).jdField_a_of_type_Int);
+        ((vxg)localObject1).a(this.a);
+        ((vxg)localObject1).d = paramvyi.jdField_a_of_type_Vyj.jdField_a_of_type_JavaLangString;
+        ((vxg)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+        localObject2 = paramvyi.a().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (vyi)((Iterator)localObject2).next();
+          ((vxg)localObject1).jdField_a_of_type_JavaUtilList.add(((vyi)localObject3).jdField_a_of_type_Vyj.jdField_a_of_type_JavaLangString);
+        }
+        paramvyi.a();
+        ykq.a("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "find leaf album=%s", localObject1);
+        paramvyi = new ArrayList(1);
+        paramvyi.add(localObject1);
+        return paramvyi;
+      }
       return null;
     }
-    try
+    Object localObject1 = new ArrayList();
+    Object localObject2 = new ArrayList();
+    Object localObject3 = paramvyi.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 0;
+    Object localObject4;
+    Object localObject5;
+    if (((Iterator)localObject3).hasNext())
     {
-      vyb localvyb = new vyb();
-      JSONObject localJSONObject = new JSONObject(paramString);
-      localvyb.jdField_a_of_type_Long = localJSONObject.optLong("startTime", -1L);
-      localvyb.jdField_b_of_type_Long = localJSONObject.optLong("endTime", -1L);
-      localvyb.jdField_a_of_type_JavaLangString = localJSONObject.optString("imageUrl", "");
-      localvyb.jdField_b_of_type_JavaLangString = localJSONObject.optString("desc", "");
-      localvyb.c = localJSONObject.optString("jumpUrl", "");
-      localvyb.d = localJSONObject.optString("contentId", "");
-      if (localJSONObject.optInt("oneTimeUse", 0) == 1) {}
+      localObject4 = (vyi)((Iterator)localObject3).next();
+      localObject5 = a((vyi)localObject4, paramInt1, paramInt2);
+      if ((localObject5 != null) && (((List)localObject5).size() > 0)) {
+        ((List)localObject1).addAll((Collection)localObject5);
+      }
       for (;;)
       {
-        localvyb.jdField_a_of_type_Boolean = bool;
-        return localvyb;
-        bool = false;
-      }
-      return null;
-    }
-    catch (JSONException localJSONException)
-    {
-      xvv.c("Q.qqstory.config.takevideo", "parseTakeVideoConfig config error config=" + paramString, localJSONException);
-    }
-  }
-  
-  private void b()
-  {
-    if ((!this.jdField_b_of_type_Boolean) || (!this.c) || (this.jdField_a_of_type_Byte != 0) || (this.h) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return;
-    }
-    xvv.b("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", "startCheckActivity request!");
-    this.h = true;
-    Object localObject = SosoInterface.getSosoInfo();
-    if ((localObject != null) && (((SosoInterface.SosoLbsInfo)localObject).mLocation != null)) {}
-    long l1;
-    long l2;
-    for (localObject = new vyd(((SosoInterface.SosoLbsInfo)localObject).mLocation.cityCode);; localObject = new vyd(null))
-    {
-      vla localvla = (vla)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(181);
-      vxy localvxy = new vxy(this, (vkz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(98), localvla);
-      l1 = localvla.a();
-      l2 = NetConnInfoCenter.getServerTime();
-      if (l2 <= l1) {
         break;
-      }
-      vqn.a().a((vqr)localObject, localvxy);
-      xvv.b("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", "startCheckActivity request sent");
-      return;
-    }
-    xvv.a("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", "startCheckActivity request not send, check next time! %d, %d", Long.valueOf(l2), Long.valueOf(l1));
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "update cfg svr=" + this.jdField_b_of_type_Boolean + ", dpc=" + this.c + ", user=" + this.d);
-    }
-    boolean bool2 = this.jdField_a_of_type_Boolean;
-    boolean bool1;
-    if ((this.jdField_b_of_type_Boolean) && (this.c) && (this.d))
-    {
-      bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_Int = 52;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label113;
+        ((ArrayList)localObject2).add(localObject4);
+        i = ((vyi)localObject4).a() + i;
       }
     }
-    label113:
-    while ((!paramBoolean) || (bool2 == this.jdField_a_of_type_Boolean))
+    if ((((ArrayList)localObject2).size() > 0) && (i >= ((vyf)a()).b) && (paramvyi.jdField_a_of_type_Vyj.jdField_a_of_type_Int >= paramInt2))
     {
-      return;
-      bool1 = false;
-      break;
+      localObject3 = new vxg(((vyf)a()).jdField_a_of_type_Int);
+      ((vxg)localObject3).a(this.a);
+      ((vxg)localObject3).d = paramvyi.jdField_a_of_type_Vyj.jdField_a_of_type_JavaLangString;
+      ((vxg)localObject3).jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject2 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject4 = ((vyi)((Iterator)localObject2).next()).a().iterator();
+        while (((Iterator)localObject4).hasNext())
+        {
+          localObject5 = (vyi)((Iterator)localObject4).next();
+          ((vxg)localObject3).jdField_a_of_type_JavaUtilList.add(((vyi)localObject5).jdField_a_of_type_Vyj.jdField_a_of_type_JavaLangString);
+        }
+      }
+      paramvyi.a();
+      ykq.a("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "find children album=%s", localObject3);
+      ((List)localObject1).add(localObject3);
     }
-    ((nmj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(43)).notifyUI(105, true, null);
-    ((vkz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(98)).notifyUI(1020, true, Boolean.valueOf(this.jdField_a_of_type_Boolean));
+    return localObject1;
   }
   
-  private void c()
+  private vyh a(HashMap<String, List<vxh>> paramHashMap)
   {
-    if (this.jdField_a_of_type_Amqq == null) {
-      this.jdField_a_of_type_Amqq = new vya(this);
-    }
+    paramHashMap = new vyh(paramHashMap);
+    paramHashMap.a();
+    return paramHashMap;
   }
   
-  private void d()
+  protected List<vxg> a(List<vxh> paramList)
   {
-    if ((this.e) && (this.g) && (this.f)) {
-      b();
-    }
-  }
-  
-  private void e()
-  {
-    vkz localvkz;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    HashMap localHashMap = new HashMap();
+    paramList = paramList.iterator();
+    Object localObject1;
+    Object localObject2;
+    while (paramList.hasNext())
     {
-      localvkz = (vkz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(98);
-      if ((!this.jdField_b_of_type_Boolean) || (!this.c)) {
-        break label49;
+      localObject1 = (vxh)paramList.next();
+      if (localHashMap.containsKey(((vxh)localObject1).c))
+      {
+        ((List)localHashMap.get(((vxh)localObject1).c)).add(localObject1);
+      }
+      else
+      {
+        localObject2 = new ArrayList();
+        ((ArrayList)localObject2).add(localObject1);
+        localHashMap.put(((vxh)localObject1).c, localObject2);
       }
     }
-    label49:
-    for (boolean bool = true;; bool = false)
+    paramList = a(localHashMap);
+    ykq.b("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "start findAlbums node=%s, minGatherLevel=%d, maxGatherLevel=%s", paramList.a(), Integer.valueOf(((vyf)a()).d), Integer.valueOf(((vyf)a()).e));
+    paramList = a(paramList.a(), ((vyf)a()).d, ((vyf)a()).e);
+    if (paramList != null)
     {
-      localvkz.notifyUI(1022, true, Boolean.valueOf(bool));
-      return;
-    }
-  }
-  
-  public vyb a()
-  {
-    return this.jdField_a_of_type_Vyb;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Vyb = null;
-    vuq.e(false);
-    vuq.f("");
-    xvv.c("Q.qqstory.config.takevideo", "configManager.clearMsgTabTakeVideoConfig");
-    vyc localvyc = new vyc();
-    vli.a().dispatch(localvyc);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    vla localvla = (vla)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(181);
-    this.d = paramBoolean;
-    localvla.i(paramBoolean);
-    b(true);
-  }
-  
-  public boolean a()
-  {
-    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.StoryCfg.name(), "1");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "getMsgTabDPC:" + str);
-    }
-    Integer[] arrayOfInteger;
-    if (!TextUtils.isEmpty(str))
-    {
-      arrayOfInteger = new Integer[1];
-      arrayOfInteger[0] = Integer.valueOf(0);
-    }
-    return (DeviceProfileManager.a(str, arrayOfInteger, new amqv()) < 0) || (arrayOfInteger[0].intValue() == 1);
-  }
-  
-  public boolean a(String paramString)
-  {
-    vyb localvyb = a(paramString);
-    if (localvyb != null)
-    {
-      if (TextUtils.isEmpty(localvyb.d)) {
-        xvv.e("Q.qqstory.config.takevideo", "configManager.handleMsgTabTakeVideoConfig contentId is null", new Object[] { paramString });
+      localObject1 = paramList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (vxg)((Iterator)localObject1).next();
+        if ((((vxg)localObject2).jdField_a_of_type_JavaUtilList == null) || (((vxg)localObject2).jdField_a_of_type_JavaUtilList.size() == 0))
+        {
+          ykq.e("Q.qqstory.recommendAlbum.logic_GeoHashSplitStrategy", "check why? album:" + localObject2);
+          zdl.a("check why? album:", new Object[0]);
+        }
+        else
+        {
+          ArrayList localArrayList = new ArrayList();
+          Iterator localIterator = ((vxg)localObject2).jdField_a_of_type_JavaUtilList.iterator();
+          while (localIterator.hasNext()) {
+            localArrayList.addAll((Collection)localHashMap.get((String)localIterator.next()));
+          }
+          ((vxg)localObject2).a(localArrayList);
+          ((vxg)localObject2).a(a());
+        }
       }
     }
-    else {
-      return false;
-    }
-    if ((this.jdField_a_of_type_Vyb != null) && (TextUtils.equals(this.jdField_a_of_type_Vyb.d, localvyb.d)))
-    {
-      xvv.d("Q.qqstory.config.takevideo", "configManager.handleMsgTabTakeVideoConfig same config ignore, config=%s", new Object[] { paramString });
-      return false;
-    }
-    xvv.b("Q.qqstory.config.takevideo", "configManager.handleMsgTabTakeVideoConfig old config=%s, new config=%s", this.jdField_a_of_type_Vyb, paramString);
-    this.jdField_a_of_type_Vyb = localvyb;
-    vuq.e(false);
-    vuq.f(paramString);
-    paramString = new vyc();
-    vli.a().dispatch(paramString);
-    return true;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Vlc);
-    }
-    DeviceProfileManager.b(this.jdField_a_of_type_Amqq);
-    this.jdField_a_of_type_Amqq = null;
+    return paramList;
   }
 }
 

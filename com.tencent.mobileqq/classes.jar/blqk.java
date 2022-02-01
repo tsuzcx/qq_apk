@@ -1,11 +1,16 @@
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.os.Bundle;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public abstract interface blqk<T extends RecyclerView.ViewHolder>
+final class blqk
+  implements EIPCResultCallback
 {
-  public abstract void a(@Nullable T paramT, int paramInt);
-  
-  public abstract void a(@Nullable T paramT, boolean paramBoolean);
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if (paramEIPCResult.isSuccess()) {
+      blqj.a(paramEIPCResult.data.getString("config_json"));
+    }
+  }
 }
 
 

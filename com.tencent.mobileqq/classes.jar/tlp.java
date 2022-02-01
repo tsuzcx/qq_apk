@@ -1,20 +1,68 @@
-import kotlin.Metadata;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "callBackId", "", "kotlin.jvm.PlatformType", "json", "Lorg/json/JSONObject;", "callJsMethod", "com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/PublicAccountNewBridgeInvokeHandler$showReadInJoyNativeCommentView$1$1"}, k=3, mv={1, 1, 16})
-final class tlp
-  implements tiu
+class tlp
+  implements tma<Bitmap>
 {
-  tlp(tlm paramtlm, String paramString) {}
+  tlp(tlo paramtlo) {}
   
-  public final void a(String paramString, JSONObject paramJSONObject)
+  public void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Tlm.a(paramString, paramJSONObject);
+    if (paramBitmap == null) {
+      return;
+    }
+    tmd.a(tlo.a, "recycle:" + paramBitmap);
+    if (!tmd.a())
+    {
+      paramBitmap.recycle();
+      return;
+    }
+    for (;;)
+    {
+      synchronized (this.a.b)
+      {
+        ArrayList localArrayList = new ArrayList();
+        i = 0;
+        if (i >= this.a.b.size()) {
+          break label226;
+        }
+        Bitmap localBitmap = (Bitmap)((SoftReference)this.a.b.get(i)).get();
+        if (localBitmap != null)
+        {
+          if (localBitmap != paramBitmap) {
+            break label231;
+          }
+          i = 1;
+          if (!localArrayList.isEmpty()) {
+            this.a.b.removeAll(localArrayList);
+          }
+          if (i == 0)
+          {
+            paramBitmap = new SoftReference(paramBitmap);
+            this.a.b.add(paramBitmap);
+          }
+        }
+        else
+        {
+          localArrayList.add(this.a.b.get(i));
+        }
+      }
+      QLog.e(tlo.a, 1, "reuse same bitmap " + paramBitmap);
+      return;
+      label226:
+      int i = 0;
+      continue;
+      label231:
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tlp
  * JD-Core Version:    0.7.0.1
  */

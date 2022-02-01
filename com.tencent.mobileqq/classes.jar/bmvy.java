@@ -1,23 +1,50 @@
-import android.text.Spanned;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import dov.com.qq.im.ae.view.TabLayout;
+import mqq.util.WeakReference;
 
-class bmvy
-  extends bnij
+final class bmvy
+  extends BroadcastReceiver
 {
-  bmvy(bmvw parambmvw, int paramInt)
+  private TabLayout a;
+  
+  public void a(TabLayout paramTabLayout)
   {
-    super(paramInt);
+    this.a = ((TabLayout)new WeakReference(paramTabLayout).get());
   }
   
-  public int a(CharSequence paramCharSequence)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return 0;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    this.jdField_a_of_type_Int = (str.length() - bfby.b(str).length() + 20);
-    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    int i = 0;
+    paramContext = paramIntent.getAction();
+    if (TextUtils.isEmpty(paramContext)) {}
+    boolean bool;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (!"ae_editor_bottom_tab_show_hide".equals(paramContext)) {
+            break;
+          }
+          bool = paramIntent.getBooleanExtra("is_show", true);
+        } while (this.a == null);
+        paramContext = this.a;
+        if (bool) {}
+        for (;;)
+        {
+          paramContext.setVisibility(i);
+          return;
+          i = 8;
+        }
+      } while (!"ae_editor_bottom_tab_change_style".equals(paramContext));
+      bool = paramIntent.getBooleanExtra("is_full_screen_capture", false);
+    } while (this.a == null);
+    this.a.a(bool);
   }
 }
 

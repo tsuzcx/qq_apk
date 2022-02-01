@@ -1,10 +1,14 @@
 public class oas
 {
+  public int a;
   public String a;
+  public int b;
   public String b;
+  public int c;
   public String c;
+  public int d;
   public String d;
-  public String e;
+  public int e;
 }
 
 

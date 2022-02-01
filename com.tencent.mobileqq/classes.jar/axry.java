@@ -1,27 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.QQBroadcastReceiver;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.21.1.1;
+import java.util.List;
 
 public class axry
-  extends QQBroadcastReceiver
+  implements axtg
 {
-  public axry(ScanTorchActivity paramScanTorchActivity) {}
+  axry(axrx paramaxrx) {}
   
-  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
+  public void a(List<axth> paramList, boolean paramBoolean)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      paramAppRuntime = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
-      }
-    } while (!"com.tencent.mobileqq__alive".equals(paramAppRuntime));
-    ScanTorchActivity.a(this.a);
+    this.a.a.b = paramList;
+    this.a.a.g = paramBoolean;
+    this.a.a.runOnUiThread(new GameRoomInviteActivity.21.1.1(this, paramList, paramBoolean));
   }
 }
 

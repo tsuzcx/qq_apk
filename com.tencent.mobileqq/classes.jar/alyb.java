@@ -1,27 +1,75 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.utils.ContactUtils;
 
-class alyb
-  implements amkm
+public class alyb
+  extends afgr
 {
-  alyb(alxy paramalxy) {}
+  public CheckBox a;
+  public PhoneContact a;
+  public boolean a;
+  public View b;
+  public TextView c;
+  public TextView d;
   
-  public void a(int paramInt)
+  public static int a(String paramString)
   {
-    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
-    amkk.b(alxy.a(this.a));
-    Activity localActivity = this.a.a();
-    if (paramInt == 0) {
-      if ((localActivity != null) && (!alxy.c(this.a)))
-      {
-        alxy.a(this.a, true);
-        alxy.c(this.a);
-      }
+    if (TextUtils.isEmpty(paramString)) {}
+    while ("0".equals(paramString)) {
+      return 11;
     }
-    while (localActivity == null) {
+    return 1;
+  }
+  
+  public static View a(ViewGroup paramViewGroup, LayoutInflater paramLayoutInflater, int paramInt)
+  {
+    paramViewGroup = paramLayoutInflater.inflate(paramInt, paramViewGroup, false);
+    paramLayoutInflater = new alyb();
+    paramViewGroup.setTag(paramLayoutInflater);
+    paramLayoutInflater.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131376837));
+    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379987));
+    paramLayoutInflater.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131364612));
+    paramLayoutInflater.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368381));
+    paramLayoutInflater.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379978));
+    paramLayoutInflater.d = ((TextView)paramViewGroup.findViewById(2131380055));
+    paramLayoutInflater.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371803));
+    paramLayoutInflater.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131365712);
+    return paramViewGroup;
+  }
+  
+  public static void a(amgf paramamgf, alyb paramalyb, PhoneContact paramPhoneContact)
+  {
+    paramalyb.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    paramalyb.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    paramalyb.jdField_c_of_type_Int = a(paramPhoneContact.uin);
+    if (TextUtils.isEmpty(paramPhoneContact.uin))
+    {
+      paramalyb.jdField_a_of_type_JavaLangString = ("pstn" + paramPhoneContact.mobileNo);
+      paramalyb.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130842118);
+      paramalyb.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramalyb.jdField_c_of_type_AndroidWidgetTextView.setText(ContactUtils.getHeaderText(paramPhoneContact.name));
+      paramalyb.jdField_a_of_type_Boolean = true;
       return;
     }
-    localActivity.finish();
+    if (!"0".equals(paramPhoneContact.uin))
+    {
+      paramalyb.jdField_a_of_type_JavaLangString = paramPhoneContact.uin;
+      paramalyb.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramamgf.a(paramalyb.jdField_a_of_type_JavaLangString, 1, (byte)0));
+      paramalyb.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramalyb.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    paramalyb.jdField_a_of_type_JavaLangString = (paramPhoneContact.nationCode + paramPhoneContact.mobileCode);
+    paramalyb.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramamgf.a(paramalyb.jdField_a_of_type_JavaLangString, 11, (byte)0));
+    paramalyb.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    paramalyb.jdField_a_of_type_Boolean = false;
   }
 }
 

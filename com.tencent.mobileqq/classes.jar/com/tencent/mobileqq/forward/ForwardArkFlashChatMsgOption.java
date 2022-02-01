@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.forward;
 
-import acvv;
+import admh;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import atky;
+import aupt;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.data.ArkFlashChatMessage;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ForwardArkFlashChatMsgOption
-  extends atky
+  extends aupt
 {
   public ForwardArkFlashChatMsgOption(Intent paramIntent)
   {
@@ -58,7 +58,7 @@ public class ForwardArkFlashChatMsgOption
     paramString2 = new ArkFlashChatMessage();
     paramString2.fromAppXml(paramString1);
     paramInt = this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_MSG_FORWARD_ID");
-    acvv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString2, paramInt);
+    admh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString2, paramInt);
     return true;
   }
   
@@ -74,11 +74,11 @@ public class ForwardArkFlashChatMsgOption
       }
       return super.c();
     }
-    h_();
+    i_();
     return super.c();
   }
   
-  protected boolean h_()
+  protected boolean i_()
   {
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
     return a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), i, this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin"));

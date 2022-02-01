@@ -34,7 +34,7 @@ public class MutliSeletedBottomLine
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165289));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165292));
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     float f1;
     int i;

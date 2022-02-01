@@ -1,10 +1,52 @@
-public abstract class bilb
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.TextView;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+
+public class bilb
+  extends Handler
 {
-  long a;
+  public bilb()
+  {
+    super(Looper.getMainLooper());
+  }
   
-  public abstract void a();
-  
-  public abstract void b();
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    paramMessage = (String[])paramMessage.obj;
+    Object localObject = paramMessage[0];
+    CharSequence localCharSequence = paramMessage[1];
+    WeakReference localWeakReference = (WeakReference)bikt.a.remove(localObject);
+    if ((localWeakReference != null) && (localWeakReference.get() != null))
+    {
+      if (!(((TextView)localWeakReference.get()).getTag() instanceof String[])) {
+        break label142;
+      }
+      paramMessage = (String[])((TextView)localWeakReference.get()).getTag();
+    }
+    for (;;)
+    {
+      if ((paramMessage != null) && (paramMessage.length == 2) && (paramMessage[0].equals(localObject))) {}
+      try
+      {
+        ((TextView)localWeakReference.get()).setText(String.format(paramMessage[1], new Object[] { localCharSequence }));
+        ((TextView)localWeakReference.get()).setText(localCharSequence);
+        return;
+        label142:
+        paramMessage = null;
+      }
+      catch (Exception paramMessage)
+      {
+        for (;;)
+        {
+          ((TextView)localWeakReference.get()).setText(localCharSequence);
+        }
+      }
+    }
+  }
 }
 
 

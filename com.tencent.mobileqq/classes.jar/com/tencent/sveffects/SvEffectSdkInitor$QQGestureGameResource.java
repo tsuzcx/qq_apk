@@ -1,7 +1,7 @@
 package com.tencent.sveffects;
 
-import bbtd;
-import bbtk;
+import bczy;
+import bdaf;
 import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
 
 public class SvEffectSdkInitor$QQGestureGameResource
@@ -9,12 +9,12 @@ public class SvEffectSdkInitor$QQGestureGameResource
 {
   public String getGameModelPath()
   {
-    return bbtk.c();
+    return bdaf.c();
   }
   
   public boolean isGestureGameEnable()
   {
-    return bbtd.a().d();
+    return bczy.a().d();
   }
 }
 

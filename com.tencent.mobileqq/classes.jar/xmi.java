@@ -1,29 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
 
-public class xmi
-  extends QQUIEventReceiver<xmf, wrl>
+class xmi
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public xmi(@NonNull xmf paramxmf)
-  {
-    super(paramxmf);
-  }
+  xmi(xme paramxme, xma paramxma) {}
   
-  public void a(@NonNull xmf paramxmf, @NonNull wrl paramwrl)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    xvv.a("Q.qqstory.memories.MemoriesVideoListSegment", "play video groupId=%s, %s", paramwrl.jdField_a_of_type_Wod, paramwrl.b);
-    if ((xmf.a(paramxmf).equals(paramwrl.jdField_a_of_type_JavaLangString)) && ((paramwrl.jdField_a_of_type_Wod instanceof woo)))
-    {
-      xnh localxnh = ((woo)paramwrl.jdField_a_of_type_Wod).a;
-      if (localxnh != null) {
-        paramxmf.a(localxnh.jdField_a_of_type_JavaLangString, paramwrl.b, true);
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wrl.class;
+    this.jdField_a_of_type_Xma.a(this.jdField_a_of_type_Xme);
   }
 }
 

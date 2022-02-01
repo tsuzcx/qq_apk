@@ -1,24 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class phr
-  implements pen
+public class phr
+  implements ViewBase.IBuilder
 {
-  phr(phl paramphl) {}
-  
-  public void onClick(View paramView)
+  public ViewBase build(VafContext paramVafContext)
   {
-    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramView.getTag();
-    if (localBaseArticleInfo == null) {
-      return;
-    }
-    if (paramView.getId() == 2131369853) {}
-    for (boolean bool = true;; bool = false)
-    {
-      phy.a(bool, localBaseArticleInfo, phl.a(this.a).a().a(), phl.a(this.a).a().b(), phl.a(this.a).a().a());
-      psf.a(paramView);
-      return;
-    }
+    return new phq(paramVafContext);
   }
 }
 

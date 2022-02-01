@@ -1,44 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class uij
+  implements qqa
 {
-  private amqk jdField_a_of_type_Amqk;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public uij(AppInterface paramAppInterface)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Amqk = new uik(this);
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Amqk);
-    }
+    return null;
   }
   
-  public long a(String paramString)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0L;
-    }
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    return qmc.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    if ((paramqfw != null) && (paramqfw.a() != null) && (AdvertisementInfo.isAdvertisementInfo(paramqfw.a())))
     {
-      amqd localamqd = (amqd)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(8);
-      if (localamqd != null)
-      {
-        this.jdField_a_of_type_JavaLangString = paramString;
-        return localamqd.a(paramString, 0).longValue();
+      ViewBase localViewBase = paramContainer.findViewBaseByName("id_view_AdDownloadView");
+      if ((localViewBase != null) && ((localViewBase instanceof una))) {
+        ((una)localViewBase).a(paramqfw, true);
+      }
+      paramContainer = paramContainer.findViewBaseByName("id_article_double_image");
+      if ((paramContainer != null) && ((paramContainer instanceof unz))) {
+        ((unz)paramContainer).a(paramqfw);
       }
     }
-    return 0L;
   }
   
-  public void a()
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Amqk);
-    }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+    return false;
   }
 }
 

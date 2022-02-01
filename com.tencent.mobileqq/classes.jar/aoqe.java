@@ -1,19 +1,9 @@
-class aoqe
-  implements zkl
+public class aoqe
 {
-  aoqe(aoqa paramaoqa, long paramLong) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    aoqa localaoqa = this.jdField_a_of_type_Aoqa;
-    long l = this.jdField_a_of_type_Long;
-    if (paramBoolean1) {}
-    for (int i = 1;; i = 0)
-    {
-      localaoqa.a(l, paramBoolean1, paramString, i);
-      return;
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
 }
 
 

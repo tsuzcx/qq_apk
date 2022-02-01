@@ -1,18 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class alxv
-  implements View.OnClickListener
+public class alxv
+  extends azip
 {
-  alxv(alxu paramalxu) {}
+  public alxv(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    alxu.a(this.a, true);
-    this.a.a();
-    alxu.a(this.a, -1, -1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.unRegistObserver(this);
+    switch (PhoneContactTabView.a(this.a).d())
+    {
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      PhoneContactTabView.b(this.a);
+      return;
+    case 9: 
+      this.a.d();
+      return;
+    case 0: 
+    case 1: 
+    case 5: 
+    case 7: 
+      PhoneContactTabView.a(this.a);
+      return;
+    }
+    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
+    {
+      this.a.d();
+      return;
+    }
+    PhoneContactTabView.a(this.a);
   }
 }
 

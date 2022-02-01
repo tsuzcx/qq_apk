@@ -1,16 +1,19 @@
 package com.tencent.qapmsdk.base.reporter.ab;
 
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/reporter/ab/AbType;", "", "()V", "createTime", "", "timeOutMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "value", "", "getValue", "()Ljava/lang/String;", "setValue", "(Ljava/lang/String;)V", "active", "", "canReportWith", "", "perfType", "getDescription", "initValue", "setPerfTimeout", "timeoutMills", "unActive", "qapmbase_release"}, k=1, mv={1, 1, 15})
 public abstract class AbType
 {
-  public static final int PERF_TYPE_CPU = 1;
-  public static final int PERF_TYPE_MEMORY = 4;
-  public static final int PERF_TYPE_SMOOTH = 2;
-  public static final String TAG = "QAPM.ABType";
-  public long createTime = 9223372036854775807L;
-  public ConcurrentHashMap<Integer, Long> timeOutMap = new ConcurrentHashMap();
-  public String value = "";
+  private long createTime = 9223372036854775807L;
+  private final ConcurrentHashMap<Integer, Long> timeOutMap = new ConcurrentHashMap();
+  @NotNull
+  private String value = "";
   
   public abstract void active();
   
@@ -23,12 +26,20 @@ public abstract class AbType
     return false;
   }
   
+  @Nullable
   public abstract String getDescription();
   
-  public void initValue(String paramString1, String paramString2)
+  @NotNull
+  public final String getValue()
   {
+    return this.value;
+  }
+  
+  public void initValue(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "value");
     this.createTime = System.currentTimeMillis();
-    this.value = paramString1;
+    this.value = paramString;
   }
   
   public void setPerfTimeout(int paramInt, long paramLong)
@@ -37,7 +48,13 @@ public abstract class AbType
     if (paramLong != 9223372036854775807L) {
       l = paramLong + (System.currentTimeMillis() - this.createTime);
     }
-    this.timeOutMap.put(Integer.valueOf(paramInt), Long.valueOf(l));
+    ((Map)this.timeOutMap).put(Integer.valueOf(paramInt), Long.valueOf(l));
+  }
+  
+  public final void setValue(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.value = paramString;
   }
   
   public abstract void unActive();

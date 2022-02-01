@@ -1,13 +1,12 @@
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
+
 public class bgey
 {
-  public String a;
-  public String b;
-  
-  public bgey(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
+  public View a;
+  public CheckBox a;
+  public TextView a;
 }
 
 

@@ -1,18 +1,49 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
 
-public final class bbjy
-  implements Parcelable.Creator<FriendGroupListInfo>
+public class bbjy
+  extends Handler
 {
-  public FriendGroupListInfo a(Parcel paramParcel)
+  public bbjy(LiteTcpConnection paramLiteTcpConnection, Looper paramLooper)
   {
-    return new FriendGroupListInfo(paramParcel);
+    super(paramLooper);
   }
   
-  public FriendGroupListInfo[] a(int paramInt)
+  public void a()
   {
-    return new FriendGroupListInfo[paramInt];
+    if (LiteTcpConnection.a(this.a) != null) {
+      LiteTcpConnection.a(this.a).sendEmptyMessage(3);
+    }
+  }
+  
+  public void b()
+  {
+    bbjy localbbjy = LiteTcpConnection.a(this.a);
+    if (localbbjy != null) {
+      localbbjy.sendEmptyMessage(2);
+    }
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      LiteTcpConnection.a(this.a, LiteTcpConnection.a(this.a));
+    }
+    do
+    {
+      return;
+      if (paramMessage.what == 2)
+      {
+        LiteTcpConnection.a(this.a);
+        return;
+      }
+    } while (paramMessage.what != 3);
+    LiteTcpConnection.a(this.a).quit();
+    LiteTcpConnection.a(this.a, null);
+    LiteTcpConnection.a(this.a, null);
   }
 }
 

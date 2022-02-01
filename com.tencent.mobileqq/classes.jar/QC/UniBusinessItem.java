@@ -8,26 +8,32 @@ public final class UniBusinessItem
   extends JceStruct
 {
   public int appid;
+  public String hashid = "";
   public int itemid;
   
   public UniBusinessItem() {}
   
-  public UniBusinessItem(int paramInt1, int paramInt2)
+  public UniBusinessItem(int paramInt1, int paramInt2, String paramString)
   {
     this.appid = paramInt1;
     this.itemid = paramInt2;
+    this.hashid = paramString;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.appid = paramJceInputStream.read(this.appid, 0, false);
     this.itemid = paramJceInputStream.read(this.itemid, 1, false);
+    this.hashid = paramJceInputStream.readString(2, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.appid, 0);
     paramJceOutputStream.write(this.itemid, 1);
+    if (this.hashid != null) {
+      paramJceOutputStream.write(this.hashid, 2);
+    }
   }
 }
 

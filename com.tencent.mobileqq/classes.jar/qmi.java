@@ -1,54 +1,33 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
-class qmi
-  extends DefaultPTSLiteEventListener
+public class qmi
 {
-  qmi(qmh paramqmh) {}
-  
-  public void onExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    qmh.a(this.a, paramString, paramHashMap, paramView, "[onExposureTriggered]");
-  }
-  
-  public void onSwiperDragTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer)
-  {
-    qmh.a(this.a, paramString, paramHashMap, paramView, "[onSwiperItemExposureTriggered]");
-    if (qmh.a(this.a) == null)
-    {
-      QLog.e("PTSLiteItemViewBuilder", 1, "[onSwiperDragTriggered], ptsLiteSwiperEventDispatcher is null.");
-      return;
-    }
-    qmh.a(this.a).a(paramString, paramHashMap, paramView);
-  }
-  
-  public void onSwiperItemExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer)
-  {
-    qmh.a(this.a, paramString, paramHashMap, paramView, "[onSwiperItemExposureTriggered]");
-    if (qmh.a(this.a) == null)
-    {
-      QLog.e("PTSLiteItemViewBuilder", 1, "[onSwiperItemExposureTriggered], ptsLiteSwiperEventDispatcher is null.");
-      return;
-    }
-    qmh.a(this.a).a(paramString, paramHashMap, paramView, pay.e(qmh.a(this.a).a()));
-  }
-  
-  public void onTapEventTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer)
-  {
-    qmh.a(this.a, paramString, paramHashMap, paramView, "[onTapEventTriggered]");
-    if ((paramHashMap == null) || (TextUtils.isEmpty(paramString)) || (qmh.a(this.a) == null)) {
-      return;
-    }
-    if (qmh.a(this.a) == null)
-    {
-      QLog.i("PTSLiteItemViewBuilder", 1, "[onTapEventTriggered], ptsLiteTapEventDispatcher is null.");
-      return;
-    }
-    qmh.a(this.a).a(paramString, paramHashMap, paramView, paramPTSComposer);
+    JSONObject localJSONObject1 = new JSONObject();
+    qmm.z(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_summary_wrapper", new JSONObject());
+    localJSONObject1.put("id_info_wrapper", new JSONObject());
+    qmm.d(paramBaseArticleInfo, localJSONObject1);
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("summary_text", anvx.a(2131712289));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    localJSONObject1.put("id_image_content", new JSONObject());
+    localJSONObject2 = new JSONObject();
+    localJSONObject2.put("article_small_imge_url", paramBaseArticleInfo.mSinglePicture.getFile());
+    localJSONObject1.put("id_article_small_imge", localJSONObject2);
+    qmm.a(paramBaseArticleInfo, localJSONObject1, true);
+    qmm.g(paramBaseArticleInfo, localJSONObject1);
+    qmm.n(paramBaseArticleInfo, localJSONObject1);
+    qmm.F(paramBaseArticleInfo, localJSONObject1);
+    qmm.G(paramBaseArticleInfo, localJSONObject1);
+    qmm.b(localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_big_cell");
+    return localJSONObject1;
   }
 }
 

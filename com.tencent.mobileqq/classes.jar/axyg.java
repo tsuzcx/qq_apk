@@ -1,60 +1,79 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.JvmField;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.10.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/constellation/ConstellationLauncher;", "", "()V", "DEFAULT_CONSTELLATION", "", "REQUEST_CODE_BIRTHDAY", "launchMiniProgram", "", "activity", "Landroid/app/Activity;", "url", "", "launchScene", "launchSelectAge", "launchFrom", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class axyg
+public class axyg
+  implements AbsListView.OnScrollListener
 {
-  @JvmField
-  public static final int a = 1001;
-  public static final axyg a;
-  @JvmField
-  public static final int b = 0;
+  public axyg(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  static
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    jdField_a_of_type_Axyg = new axyg();
-    jdField_a_of_type_Int = 1001;
-  }
-  
-  public final void a(@NotNull Activity paramActivity, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    Intrinsics.checkParameterIsNotNull(paramString, "launchFrom");
-    Intent localIntent = new Intent((Context)paramActivity, AgeSelectionActivity.class);
-    Object localObject = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
-    localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    if (paramInt1 == 0)
     {
-      int i = (int)bfrj.a((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin()).lBirthday;
-      if (QLog.isColorLevel()) {
-        QLog.d("ConstellationLauncher", 2, new Object[] { "launchSelectAge: called. ", "{card.lBirthday}: " + i });
+      paramAbsListView = ShortVideoCommentsView.a(this.a).getChildAt(0);
+      if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0))
+      {
+        ShortVideoCommentsView.a(this.a, true);
+        return;
       }
-      localIntent.putExtra("param_birthday", i);
-      localIntent.putExtra("param_launch_from", paramString);
-      paramActivity.startActivityForResult(localIntent, jdField_a_of_type_Int);
+      ShortVideoCommentsView.a(this.a, false);
+      return;
     }
+    ShortVideoCommentsView.a(this.a, false);
   }
   
-  public final void a(@NotNull Activity paramActivity, @Nullable String paramString, int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    if (QLog.isColorLevel()) {
-      QLog.d("ConstellationLauncher", 2, new Object[] { "launchMiniProgram: called. ", "url: " + paramString + "  launchScene: " + paramInt });
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    if (paramInt == 0)
+    {
+      if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.a.a.a.size() > 0) && (!ShortVideoCommentsView.b(this.a)) && (!ShortVideoCommentsView.c(this.a))) {
+        ShortVideoCommentsView.c(this.a);
+      }
+      if (ShortVideoCommentsView.a(this.a) == null) {
+        break label277;
+      }
+      paramAbsListView = ShortVideoCommentsView.a(this.a).jdField_a_of_type_JavaLangString;
+      if (ShortVideoCommentsView.a(this.a) != null) {
+        long l = ShortVideoCommentsView.a(this.a).jdField_a_of_type_Long;
+      }
+      paramInt = ShortVideoCommentsView.a(this.a);
+      if ((paramInt < ShortVideoCommentsView.b(this.a)) || (paramInt < mvk.a(this.a.getContext(), 40.0F))) {
+        break label280;
+      }
+      if (!ShortVideoCommentsView.d(this.a))
+      {
+        ShortVideoCommentsView.a(this.a, true);
+        if (ShortVideoCommentsView.a(this.a).j != 4) {}
+      }
+      this.a.f();
     }
-    MiniAppLauncher.startMiniApp((Context)paramActivity, paramString, paramInt, null, null);
+    for (;;)
+    {
+      ShortVideoCommentsView.a(this.a, paramInt);
+      if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0) && (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() == 0) && (!ShortVideoCommentsView.e(this.a)))
+      {
+        ShortVideoCommentsView.b(this.a, true);
+        this.a.postDelayed(new ShortVideoCommentsView.10.1(this), 100L);
+      }
+      return;
+      label277:
+      break;
+      label280:
+      if (!ShortVideoCommentsView.e(this.a))
+      {
+        this.a.j();
+        ShortVideoCommentsView.a(this.a, 2);
+      }
+    }
   }
 }
 

@@ -1,247 +1,88 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
-import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTaskManager.1;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import java.util.ArrayList;
-import java.util.Iterator;
+import UserGrowth.stFriendFeed;
+import UserGrowth.stFriendFeedRsp;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
 import java.util.List;
 
-public abstract class vpa<T extends vpb>
-  extends vtt
-  implements vpc
+public class vpa
 {
-  public BasePublishTask<T> a;
-  public ArrayList<T> a;
-  public ArrayList<T> b = new ArrayList();
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public vpa()
+  public static vpa a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    return vpc.a();
   }
   
-  private void a(ErrorMessage paramErrorMessage)
+  private void a(vfr paramvfr, vos paramvos)
   {
-    try
+    boolean bool = true;
+    if (!paramvfr.a())
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      vmp.d("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] failed code:" + paramvfr.jdField_a_of_type_Int + ", msg:" + paramvfr.jdField_a_of_type_JavaLangString);
+      if (paramvos != null) {
+        paramvos.a(paramvfr.jdField_a_of_type_Int, paramvfr.jdField_a_of_type_JavaLangString);
+      }
+    }
+    label214:
+    do
+    {
+      do
       {
-        vpb localvpb = (vpb)localIterator.next();
-        localvpb.jdField_a_of_type_Int = 6;
-        localvpb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-        this.b.add(localvpb);
-        a(localvpb);
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    finally {}
-  }
-  
-  protected abstract BasePublishTask a(T paramT);
-  
-  public void a() {}
-  
-  protected void a(BasePublishTask<T> paramBasePublishTask)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask == paramBasePublishTask) {
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask = null;
-      }
-      return;
-    }
-    finally
-    {
-      paramBasePublishTask = finally;
-      throw paramBasePublishTask;
-    }
-  }
-  
-  public final void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage)
-  {
-    if (paramBasePublishTask == null)
-    {
-      xvv.e("Q.qqstory.publish.upload:BasePublishTaskManager", "running publish task is null, when finish publish");
-      return;
-    }
-    vpb localvpb = paramBasePublishTask.a();
-    paramBasePublishTask.a().jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    if ((localvpb.jdField_a_of_type_Int == 6) || (localvpb.jdField_a_of_type_Int == 5) || (localvpb.jdField_a_of_type_Int == 3) || (localvpb.jdField_a_of_type_Int == 7))
-    {
-      xvv.c("Q.qqstory.publish.upload:BasePublishTaskManager", "finish task:" + paramBasePublishTask);
-      if (localvpb.jdField_a_of_type_Int != 5) {
-        xvv.d("Q.qqstory.publish.upload:BasePublishTaskManager", "task fail:" + paramBasePublishTask);
-      }
-      if (paramErrorMessage.errorCode != 10406) {
-        break label147;
-      }
-      a(paramBasePublishTask);
-      a(paramErrorMessage);
-    }
-    for (;;)
-    {
-      b(localvpb, paramErrorMessage);
-      a(localvpb);
-      return;
-      label147:
-      a(paramBasePublishTask);
-      d();
-    }
-  }
-  
-  public void a(List<T> paramList)
-  {
-    try
-    {
-      this.b.addAll(paramList);
-      return;
-    }
-    finally
-    {
-      paramList = finally;
-      throw paramList;
-    }
-  }
-  
-  protected abstract void a(T paramT);
-  
-  protected abstract void a(T paramT, ErrorMessage paramErrorMessage);
-  
-  public void b()
-  {
-    super.b();
-    c();
-  }
-  
-  /* Error */
-  protected void b(T paramT)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 24	vpa:b	Ljava/util/ArrayList;
-    //   6: aload_1
-    //   7: invokevirtual 131	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
-    //   10: pop
-    //   11: aload_0
-    //   12: getfield 22	vpa:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   15: aload_1
-    //   16: invokevirtual 134	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
-    //   19: ifeq +13 -> 32
-    //   22: ldc 67
-    //   24: ldc 136
-    //   26: invokestatic 104	xvv:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: return
-    //   32: aload_0
-    //   33: getfield 22	vpa:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   36: aload_1
-    //   37: invokevirtual 52	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   40: pop
-    //   41: goto -12 -> 29
-    //   44: astore_1
-    //   45: aload_0
-    //   46: monitorexit
-    //   47: aload_1
-    //   48: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	49	0	this	vpa
-    //   0	49	1	paramT	T
-    // Exception table:
-    //   from	to	target	type
-    //   2	29	44	finally
-    //   32	41	44	finally
-  }
-  
-  protected void b(T paramT, ErrorMessage paramErrorMessage)
-  {
-    if (b())
-    {
-      xvv.c("Q.qqstory.publish.upload:BasePublishTaskManager", "manager had stopped");
-      return;
-    }
-    try
-    {
-      this.b.add(paramT);
-      a(paramT, paramErrorMessage);
-      return;
-    }
-    finally {}
-  }
-  
-  protected void c()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.b();
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  protected void c(T paramT)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramT);
-      this.b.remove(paramT);
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask != null) && (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.a().equals(paramT))) {
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.a();
-      }
-      return;
-    }
-    finally
-    {
-      paramT = finally;
-      throw paramT;
-    }
-  }
-  
-  protected void d()
-  {
-    Bosses.get().postLightWeightJob(new BasePublishTaskManager.1(this), 10);
-  }
-  
-  public void e()
-  {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask != null)
+        return;
+        if (!(paramvfr.jdField_a_of_type_JavaLangObject instanceof stFriendFeedRsp)) {
+          break;
+        }
+        Object localObject = (stFriendFeedRsp)paramvfr.jdField_a_of_type_JavaLangObject;
+        if (((stFriendFeedRsp)localObject).isFinished == 1) {}
+        for (;;)
         {
-          xvv.c("Q.qqstory.publish.upload:BasePublishTaskManager", "task waiting list size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+          this.jdField_a_of_type_Boolean = bool;
+          localObject = ((stFriendFeedRsp)localObject).friendFeed;
+          if (localObject == null) {
+            break label214;
+          }
+          this.jdField_a_of_type_JavaLangString = ((stFriendFeed)localObject).attachInfo;
+          paramvfr = ((stFriendFeed)localObject).friendFeeds;
+          paramvfr = WSVerticalDataManager.a().a(paramvfr, "", this.jdField_a_of_type_Boolean);
+          vmp.e("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] itemDataList size:" + paramvfr.size() + ", mAttachInfo:" + this.jdField_a_of_type_JavaLangString + ", mIsFinished:" + this.jdField_a_of_type_Boolean);
+          if (paramvos == null) {
+            break;
+          }
+          paramvos.a(paramvfr, false, false, null);
           return;
+          bool = false;
         }
-        if (b())
-        {
-          xvv.c("Q.qqstory.publish.upload:BasePublishTaskManager", "manager had stopped");
-          continue;
-        }
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-          break label137;
-        }
-      }
-      finally {}
-      vpb localvpb = (vpb)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask = a(localvpb);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.a(this);
-      xvv.c("Q.qqstory.publish.upload:BasePublishTaskManager", "start publish task:" + localvpb);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.run();
-      continue;
-      label137:
-      xvv.c("Q.qqstory.publish.upload:BasePublishTaskManager", "--- no feeds need to post");
+        vmp.d("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] stFriendFeed is null!");
+      } while (paramvos == null);
+      paramvos.a(paramvfr.b, "stFriendFeed is null!");
+      return;
+      vmp.d("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] mResultBean instanceof stFriendFeedRsp: false!");
+    } while (paramvos == null);
+    paramvos.a(paramvfr.b, paramvfr.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    vmp.e("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][setAttachInfo] attachInfo:" + paramString);
+  }
+  
+  public void a(vos paramvos)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      vmp.e("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] finished!");
+      return;
     }
+    paramvos = new vpb(this, paramvos);
+    vmp.e("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][fetchData] attachInfo:" + this.jdField_a_of_type_JavaLangString);
+    paramvos = new vfr(new vkv(this.jdField_a_of_type_JavaLangString), null, paramvos, 4012);
+    vfk.a().a(paramvos);
   }
 }
 

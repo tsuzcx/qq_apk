@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.model;
 
-import aolr;
+import apos;
 
 public class QQARSession$5
   implements Runnable
 {
-  public QQARSession$5(aolr paramaolr) {}
+  public QQARSession$5(apos paramapos) {}
   
   public void run()
   {
-    aolr.a(this.this$0, true);
+    apos.a(this.this$0, true);
   }
 }
 

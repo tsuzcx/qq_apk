@@ -1,21 +1,96 @@
-class asdc
-  extends ased
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionBase;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.manager.Manager;
+
+public abstract class asdc<T extends CustomEmotionBase>
+  implements Manager
 {
-  asdc(asda paramasda, asdf paramasdf) {}
+  protected QQAppInterface a;
+  protected String a;
+  protected CopyOnWriteArrayList<WeakReference<asft>> a;
+  protected AtomicBoolean a;
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
+  public asdc(QQAppInterface paramQQAppInterface)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Asdf.a(paramString2, paramString3);
-      return;
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+  }
+  
+  protected abstract int a();
+  
+  protected abstract ansq<T> a();
+  
+  protected abstract asda<T> a();
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+  }
+  
+  public void a(asft paramasft)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      if (((WeakReference)localIterator.next()).get() == paramasft) {
+        return;
+      }
     }
-    this.jdField_a_of_type_Asdf.a(paramInt, paramString1);
+    paramasft = new WeakReference(paramasft);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramasft);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    ansq localansq;
+    do
+    {
+      return;
+      localansq = a();
+    } while (localansq == null);
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomEmotionRoamingManagerBase", 2, "------------start syncRoaming----------");
+    }
+    localansq.a();
+  }
+  
+  public void b(asft paramasft)
+  {
+    if (paramasft == null) {}
+    WeakReference localWeakReference;
+    do
+    {
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext()) {
+        localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      }
+      localWeakReference = (WeakReference)localIterator.next();
+    } while (localWeakReference.get() != paramasft);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localWeakReference);
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdc
  * JD-Core Version:    0.7.0.1
  */

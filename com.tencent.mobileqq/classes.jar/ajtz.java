@@ -1,23 +1,22 @@
 import android.content.Context;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
-import com.tencent.mobileqq.activity.photo.album.preview.VideoPreviewPresent;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class ajtz
-  extends VideoPreviewPresent
+  extends bgjg
 {
-  public ajtz(PreviewBean paramPreviewBean)
+  public ajtz(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, Context paramContext, bgjf parambgjf, QQAppInterface paramQQAppInterface)
   {
-    super(paramPreviewBean);
+    super(paramContext, parambgjf, paramQQAppInterface);
   }
   
-  public BaseVideoView generateVideoView(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
+  protected void b(Object paramObject)
   {
-    paramVideoPlayParam.mSceneId = 105;
-    paramVideoPlayParam.mSceneName = azjn.a(105);
-    return (BaseVideoView)azjm.b(paramContext, paramLong, paramVideoPlayParam, paramImageView);
+    super.b(paramObject);
+    if (this.a.a != null) {
+      this.a.a.sendEmptyMessage(102);
+    }
   }
 }
 

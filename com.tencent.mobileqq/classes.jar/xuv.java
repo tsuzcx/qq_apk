@@ -1,45 +1,25 @@
-import android.view.View;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
 
 class xuv
-  extends xqa
+  extends SimpleObserver<Void>
 {
-  xuv(xuh paramxuh) {}
+  xuv(xut paramxut, xux paramxux) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
+  public void a(Void paramVoid)
   {
-    boolean bool;
-    switch (paramView.getId())
-    {
-    default: 
-      if (xuh.a(this.a).a().size() <= 0) {
-        break label149;
-      }
-      paramView = this.a;
-      if (!xuh.a(this.a))
-      {
-        bool = true;
-        xuh.a(paramView, bool);
-        xuh.a(this.a);
-        if (!xuh.a(this.a)) {
-          break label143;
-        }
-      }
-      break;
-    }
-    label143:
-    for (paramView = "1";; paramView = "2")
-    {
-      xwa.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
-      xwa.a("home_page", "exp_share_day", 0, 0, new String[0]);
-      return;
-      xuh.a(this.a, xuh.a(this.a), paramView);
-      return;
-      bool = false;
-      break;
-    }
-    label149:
-    xuh.a(this.a, xuh.a(this.a), paramView);
+    super.onNext(paramVoid);
+    ykq.b("QQStoryTakeVideoHelper", "generate video manifest success.");
+    this.jdField_a_of_type_Xut.a = 2;
+    this.jdField_a_of_type_Xux.a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    ykq.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
+    this.jdField_a_of_type_Xut.a = -1;
+    this.jdField_a_of_type_Xux.b();
   }
 }
 

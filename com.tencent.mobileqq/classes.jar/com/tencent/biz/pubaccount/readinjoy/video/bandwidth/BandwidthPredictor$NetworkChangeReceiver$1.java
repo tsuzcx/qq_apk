@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video.bandwidth;
 
-import sfc;
-import sff;
+import srh;
+import srk;
 
 public class BandwidthPredictor$NetworkChangeReceiver$1
   implements Runnable
 {
-  public BandwidthPredictor$NetworkChangeReceiver$1(sff paramsff) {}
+  public BandwidthPredictor$NetworkChangeReceiver$1(srk paramsrk) {}
   
   public void run()
   {
-    sfc.a(this.a.a);
+    srh.a(this.a.a);
   }
 }
 

@@ -38,7 +38,7 @@ class VideoLayerUIBase$MoveSmallViewAnimation
       }
       this.this$0.a.a().postDelayed(this, 10L);
       return;
-      this.this$0.b((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+      this.this$0.d((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
     }
     label99:
     this.this$0.s();

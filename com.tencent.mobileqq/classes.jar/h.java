@@ -194,7 +194,7 @@ public class h
             i1 = 0;
             break label565;
             label694:
-            if (((localCharacterStyle instanceof QQText.EmoticonSpan)) || ((localCharacterStyle instanceof bank))) {
+            if (((localCharacterStyle instanceof QQText.EmoticonSpan)) || ((localCharacterStyle instanceof bbtz))) {
               a(localCharacterStyle);
             } else if ((localCharacterStyle instanceof RelativeSizeSpan)) {
               a((RelativeSizeSpan)localCharacterStyle, fn.a(paramCharSequence, i4, i2), i4, (int)f2, 3, this.jdField_l_of_type_Int);
@@ -286,11 +286,11 @@ public class h
       ((w)localObject).jdField_a_of_type_Int = 2;
       this.jdField_c_of_type_JavaUtilList.add(localObject);
       return true;
-      if ((paramCharacterStyle instanceof bank))
+      if ((paramCharacterStyle instanceof bbtz))
       {
-        localObject = (bank)paramCharacterStyle;
-        i1 = ((bank)localObject).a();
-        n = ((bank)localObject).b();
+        localObject = (bbtz)paramCharacterStyle;
+        i1 = ((bbtz)localObject).a();
+        n = ((bbtz)localObject).b();
       }
       else
       {
@@ -563,11 +563,11 @@ public class h
       {
         ((QQText.EmoticonSpan)((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6 + i4, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
-      else if ((((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bank))
+      else if ((((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbtz))
       {
-        localObject = (bank)((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        ((bank)localObject).jdField_a_of_type_Boolean = false;
-        ((bank)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        localObject = (bbtz)((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        ((bbtz)localObject).jdField_a_of_type_Boolean = false;
+        ((bbtz)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
     }
   }

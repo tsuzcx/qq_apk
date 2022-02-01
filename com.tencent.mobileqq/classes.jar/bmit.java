@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import android.app.Activity;
 
-public class bmit
-  implements View.OnClickListener
+public final class bmit
+  implements blwe
 {
-  public bmit(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  public bmit(Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    AEEditorVideoEditFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!paramBoolean) {
+      this.a.finish();
+    }
   }
 }
 

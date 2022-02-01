@@ -4,19 +4,19 @@ import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import bluy;
-import bmah;
-import bmbg;
+import bnkb;
+import bnpr;
+import bnqq;
 import dov.com.qq.im.ae.mode.AECaptureMode;
 
 class AEPlayShowPart$7
-  implements Observer<bmah>
+  implements Observer<bnpr>
 {
   AEPlayShowPart$7(AEPlayShowPart paramAEPlayShowPart) {}
   
-  public void onChanged(@Nullable bmah parambmah)
+  public void onChanged(@Nullable bnpr parambnpr)
   {
-    if (parambmah == null) {}
+    if (parambnpr == null) {}
     do
     {
       do
@@ -24,29 +24,29 @@ class AEPlayShowPart$7
         do
         {
           return;
-          parambmah = parambmah.b;
-          if (parambmah != AECaptureMode.NORMAL) {
+          parambnpr = parambnpr.b;
+          if (parambnpr != AECaptureMode.NORMAL) {
             break;
           }
-          if ((AEPlayShowGridAdapter.selectedMaterial == null) || (AEPlayShowGridAdapter.selectedMaterial != bluy.a())) {
-            bmbg.a().g("none");
+          if ((AEPlayShowGridAdapter.selectedMaterial == null) || (AEPlayShowGridAdapter.selectedMaterial != bnkb.a())) {
+            bnqq.a().g("none");
           }
         } while (!this.this$0.hasInflated());
         AEPlayShowPart.access$800(this.this$0).setVisibility(8);
         return;
-        if (parambmah != AECaptureMode.GIF) {
+        if (parambnpr != AECaptureMode.GIF) {
           break;
         }
       } while (!this.this$0.hasInflated());
       AEPlayShowPart.access$800(this.this$0).setVisibility(8);
       return;
-    } while (parambmah != AECaptureMode.PLAY);
+    } while (parambnpr != AECaptureMode.PLAY);
     AEPlayShowPart.access$900(this.this$0);
     if (AEPlayShowPart.access$700(this.this$0) != null)
     {
-      parambmah = AEPlayShowPart.access$700(this.this$0).getLastMaterialTabId();
-      if ((!TextUtils.isEmpty(parambmah)) && (!"-1".equals(parambmah))) {
-        bmbg.a().g(parambmah);
+      parambnpr = AEPlayShowPart.access$700(this.this$0).getLastMaterialTabId();
+      if ((!TextUtils.isEmpty(parambnpr)) && (!"-1".equals(parambnpr))) {
+        bnqq.a().g(parambnpr);
       }
     }
     AEPlayShowPart.access$800(this.this$0).setVisibility(0);

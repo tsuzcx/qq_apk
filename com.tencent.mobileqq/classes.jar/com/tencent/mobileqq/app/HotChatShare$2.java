@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import amsw;
-import amud;
+import anvk;
+import anwr;
 
 public class HotChatShare$2
   implements Runnable
 {
-  public HotChatShare$2(amud paramamud, QQAppInterface paramQQAppInterface) {}
+  public HotChatShare$2(anwr paramanwr, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     if (this.a != null) {
-      ((amsw)this.a.getManager(51)).g();
+      ((anvk)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).g();
     }
   }
 }

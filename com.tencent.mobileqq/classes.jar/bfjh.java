@@ -1,17 +1,22 @@
-public class bfjh
+import java.util.List;
+
+public abstract interface bfjh
 {
-  public float a;
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public abstract void a(int paramInt);
+  
+  public abstract void a(bfif parambfif);
+  
+  public abstract void a(bfif parambfif, String paramString);
+  
+  public abstract void a(List<bfif> paramList, boolean paramBoolean, String paramString, long paramLong);
+  
+  public abstract void b(bfif parambfif);
+  
+  public abstract void c(bfif parambfif);
+  
+  public abstract void d(bfif parambfif);
+  
+  public abstract void e(bfif parambfif);
 }
 
 

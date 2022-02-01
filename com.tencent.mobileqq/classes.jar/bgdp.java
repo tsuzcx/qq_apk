@@ -1,10 +1,18 @@
-import android.text.SpannableString;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
 
-class bgdp
+public class bgdp
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  SpannableString jdField_a_of_type_AndroidTextSpannableString;
-  int b;
+  public bgdp(VisitorTroopCardFragment paramVisitorTroopCardFragment, boolean paramBoolean) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      bgef.a(2, new Object());
+    }
+  }
 }
 
 

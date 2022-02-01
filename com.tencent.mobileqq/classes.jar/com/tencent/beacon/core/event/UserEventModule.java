@@ -115,7 +115,7 @@ public class UserEventModule
     localHashMap.put("A33", locale.k(this.mContext));
     localHashMap.put("A133", locale.a(this.mContext));
     localHashMap.put("A63", "Y");
-    if (a.i(this.mContext))
+    if (a.j(this.mContext))
     {
       localHashMap.put("A21", "Y");
       if (!StrategyQueryModule.getInstance(this.mContext).isAppFirstRun()) {
@@ -123,7 +123,7 @@ public class UserEventModule
       }
       localHashMap.put("A45", "Y");
       label164:
-      if (!a.g(this.mContext)) {
+      if (!a.h(this.mContext)) {
         break label365;
       }
       localHashMap.put("A66", "F");

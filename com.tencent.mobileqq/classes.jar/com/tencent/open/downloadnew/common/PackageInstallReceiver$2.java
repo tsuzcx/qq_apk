@@ -1,7 +1,7 @@
 package com.tencent.open.downloadnew.common;
 
-import bhzm;
-import biby;
+import bjko;
+import bjna;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 class PackageInstallReceiver$2
@@ -11,9 +11,9 @@ class PackageInstallReceiver$2
   
   public void run()
   {
-    bhzm.c(this.this$0.a, "ACTION_PACKAGE_REPLACED >> " + this.a);
+    bjko.c(this.this$0.a, "ACTION_PACKAGE_REPLACED >> " + this.a);
     DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    biby.a().a(13, localDownloadInfo);
+    bjna.a().a(13, localDownloadInfo);
   }
 }
 

@@ -1,28 +1,37 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
-class ouq
-  extends ClickableSpan
+public class ouq
+  implements bisn
 {
-  ouq(ouo paramouo, SubCommentData paramSubCommentData) {}
+  public ouq(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    oto.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
-    paramView = new osa(this.jdField_a_of_type_Ouo).a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin).a();
-    odq.a(null, oto.a(this.jdField_a_of_type_Ouo.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Ouo.a.mArticleID), String.valueOf(this.jdField_a_of_type_Ouo.a.mAlgorithmID), this.jdField_a_of_type_Ouo.a.innerUniqueID, paramView, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#737373"));
-    paramTextPaint.setUnderlineText(false);
+    boolean bool2 = true;
+    Object localObject;
+    if (this.a.a)
+    {
+      localObject = this.a;
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label61;
+      }
+      bool1 = true;
+      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
+      localObject = ReadInJoySettingActivity.a(this.a);
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label66;
+      }
+    }
+    label61:
+    label66:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      ((Switch)localObject).setChecked(bool1);
+      return;
+      bool1 = false;
+      break;
+    }
   }
 }
 

@@ -1,39 +1,16 @@
-import com.idlefish.flutterboost.FlutterBoost;
-import com.idlefish.flutterboost.FlutterBoost.BoostLifecycleListener;
-import com.tencent.qphone.base.util.QLog;
-import io.flutter.embedding.engine.FlutterEngine;
-import io.flutter.plugins.GeneratedPluginRegistrant;
+import android.os.Bundle;
 
-class atkg
-  implements FlutterBoost.BoostLifecycleListener
+public abstract interface atkg
 {
-  atkg(atke paramatke) {}
+  public abstract void a(long paramLong, int paramInt, String paramString);
   
-  public void beforeCreateEngine()
-  {
-    QLog.d("QFlutter.launcher", 1, "beforeCreateEngine");
-  }
+  public abstract void a(long paramLong, String paramString);
   
-  public void onEngineCreated()
-  {
-    QLog.d("QFlutter.launcher", 1, "onEngineCreated");
-    FlutterEngine localFlutterEngine = FlutterBoost.instance().engineProvider();
-    GeneratedPluginRegistrant.registerWith(localFlutterEngine);
-    atii.a().a(localFlutterEngine.getDartExecutor(), localFlutterEngine.getRenderer());
-    atke.a(this.a).e();
-    atke.a(this.a, 0, true);
-  }
-  
-  public void onEngineDestroy()
-  {
-    QLog.d("QFlutter.launcher", 1, "onEngineDestroy");
-  }
-  
-  public void onPluginsRegistered() {}
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atkg
  * JD-Core Version:    0.7.0.1
  */

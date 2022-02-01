@@ -1,19 +1,36 @@
-import com.tencent.mobileqq.activity.NearbyActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class adrn
-  implements QQPermissionCallback
+  implements bmiz
 {
-  public adrn(NearbyActivity paramNearbyActivity) {}
+  public adrn(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt)
   {
-    bfur.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a();
+    boolean bool;
+    View localView;
+    if (paramInt == 0)
+    {
+      this.a.b = true;
+      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim();
+      localView = this.a.jdField_a_of_type_ArrayOfAndroidViewView[5];
+      if (localView != null) {
+        if (!bool) {
+          break label81;
+        }
+      }
+    }
+    label81:
+    for (paramInt = 0;; paramInt = 8)
+    {
+      localView.setVisibility(paramInt);
+      if (bool) {
+        bhbu.a("Grp_set_new", "grpData_admin", "manageGrp_exp", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin });
+      }
+      return;
+    }
   }
 }
 

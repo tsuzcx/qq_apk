@@ -1,21 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
 
-final class acve
-  implements DialogInterface.OnClickListener
+public class acve
+  implements acoo
 {
-  acve(acxa paramacxa, acxb paramacxb) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    if (this.jdField_a_of_type_Acxa != null) {
-      this.jdField_a_of_type_Acxa.onCancel();
-    }
-    mrd.e(true, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    mrd.b(this.jdField_a_of_type_Acxb.a);
+    return 0;
+  }
+  
+  public void a(List<acoo> paramList) {}
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
+  {
+    return false;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return false;
   }
 }
 

@@ -1,12 +1,27 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
-public abstract interface aurg
+public class aurg
+  implements View.OnTouchListener
 {
-  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
+  public aurg(ForwardFileOption paramForwardFileOption, View paramView) {}
   
-  public abstract void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
-  
-  public abstract void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0) {
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(25, 0, 0, 0));
+      }
+    }
+    while ((paramMotionEvent.getAction() != 1) || (this.jdField_a_of_type_AndroidViewView == null)) {
+      return false;
+    }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(0, 0, 0, 0));
+    return false;
+  }
 }
 
 

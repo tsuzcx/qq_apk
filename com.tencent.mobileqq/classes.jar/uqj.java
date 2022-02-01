@@ -1,26 +1,35 @@
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+
 class uqj
-  implements upr
+  implements View.OnTouchListener
 {
-  uqj(uqi paramuqi) {}
+  uqj(uqg paramuqg, uqf paramuqf, boolean paramBoolean) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    uqi.a(this.a, uqi.a(this.a), 1000003);
-  }
-  
-  public void b()
-  {
-    uqi.a(this.a, uqi.a(this.a), 1000007);
-  }
-  
-  public void c()
-  {
-    uqi.a(this.a, uqi.a(this.a), 1000004);
-  }
-  
-  public void d()
-  {
-    uqi.a(this.a, uqi.a(this.a), 1000002);
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_Uqg.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.a.getResources().getColor(2131166102));
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Uqg.c.setBackgroundResource(2130843280);
+        return false;
+      }
+      this.jdField_a_of_type_Uqg.c.setBackgroundResource(2130843281);
+      return false;
+    }
+    this.jdField_a_of_type_Uqg.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Uqg.jdField_a_of_type_Uqf.a.getResources().getColor(2131166101));
+    this.jdField_a_of_type_Uqg.c.setBackgroundResource(2130843289);
+    return false;
   }
 }
 

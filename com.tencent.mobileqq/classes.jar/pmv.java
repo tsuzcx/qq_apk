@@ -1,36 +1,23 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class pmv
-  implements ots
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public pmv(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  public pmv(DailyTipsFoldUtils.1 param1, View paramView, int paramInt) {}
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!paramBoolean)
-    {
-      this.a.onBackEvent();
-      return;
-    }
-    this.a.a(this.a.a);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.onBackEvent();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
+    int i = (int)(this.jdField_a_of_type_Int * f);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.getHeaderViewsCount(), -i, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("DailyTipsFoldUtils", 2, "percent = " + f + ", scrollHeight = " + i);
     }
   }
 }

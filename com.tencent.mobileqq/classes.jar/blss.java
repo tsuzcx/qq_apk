@@ -1,27 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.comic.webbundle.WebBundleReportUtils.1;
 
 public class blss
-  implements Animation.AnimationListener
 {
-  public blss(AEProviderContainerView paramAEProviderContainerView) {}
+  public static String a = "0";
+  public static String b = "1";
+  public static String c = "2";
+  public static String d = "3";
+  public static String e = "4";
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    this.a.setAlpha(1.0F);
-    this.a.setVisibility(8);
-    if (AEProviderContainerView.a(this.a) != null) {
-      AEProviderContainerView.a(this.a).a(false, 150);
-    }
-    if (AEProviderContainerView.a(this.a) != null) {
-      AEProviderContainerView.a(this.a).a(131075, new Object[0]);
-    }
+    ThreadManager.post(new WebBundleReportUtils.1(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramString3, paramString4, paramString5, paramString6), 5, null, false);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public static void a(String paramString1, boolean paramBoolean, String paramString2)
+  {
+    String str = "0";
+    if (paramBoolean) {
+      str = "1";
+    }
+    a("hybrid", "webBundle_open", 0, 0, 0, 0, paramString1, str, paramString2, "");
+  }
 }
 
 

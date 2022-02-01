@@ -1,36 +1,63 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.mini.util.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.text.Editable;
+import android.text.Spanned;
+import android.widget.EditText;
+import com.tencent.open.agent.SendStoryActivity;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Arrays;
 
-class bjfu
-  implements URLDrawable.URLDrawableListener
+public class bjfu
+  extends bjkn
 {
-  bjfu(bjft parambjft, String paramString) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public bjfu(SendStoryActivity paramSendStoryActivity, EditText paramEditText, int paramInt)
   {
-    QLog.e("AppBrandRuntime", 1, "startShareToWeChat. onLoadCanceled get an exception when handling URLbmp:");
+    super(paramEditText, paramInt);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    QLog.e("AppBrandRuntime", 1, "startShareToWeChat. onLoadFialed when handling URLbmp");
-    bjfp.a(this.jdField_a_of_type_Bjft.jdField_a_of_type_Bjfp, this.jdField_a_of_type_Bjft.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_Bjft.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bjft.jdField_a_of_type_Int, this.jdField_a_of_type_Bjft.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bjft.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    QLog.e("AppBrandRuntime", 1, "startShareToWeChat. onLoadProgressed get an exception when handling URLbmp:");
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = ImageUtil.drawableToBitmap(paramURLDrawable.getCurrDrawable());
-    if (paramURLDrawable != null) {
-      bjfp.a(this.jdField_a_of_type_Bjft.jdField_a_of_type_Bjfp, this.jdField_a_of_type_Bjft.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_Bjft.jdField_a_of_type_Int, this.jdField_a_of_type_Bjft.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bjft.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name, bjfp.a(this.jdField_a_of_type_Bjft.jdField_a_of_type_Bjfp, paramURLDrawable), this.jdField_a_of_type_JavaLangString);
+    paramInt3 = 0;
+    paramSpanned = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText();
+    StringBuilder localStringBuilder = new StringBuilder(paramSpanned.toString());
+    Friend[] arrayOfFriend = (Friend[])paramSpanned.getSpans(0, paramSpanned.length(), Friend.class);
+    Arrays.sort(arrayOfFriend, new bjfv(this, paramSpanned));
+    paramInt4 = arrayOfFriend.length;
+    while (paramInt3 < paramInt4)
+    {
+      Friend localFriend = arrayOfFriend[paramInt3];
+      localStringBuilder.delete(paramSpanned.getSpanStart(localFriend), paramSpanned.getSpanEnd(localFriend));
+      paramInt3 += 1;
     }
+    paramInt4 = this.jdField_a_of_type_Int - bjkr.a(localStringBuilder.toString());
+    paramInt3 = bjkr.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
+    if (paramInt4 <= 0) {
+      return "";
+    }
+    if (paramInt4 >= paramInt3) {
+      return null;
+    }
+    paramInt3 = paramInt1;
+    if (paramInt3 < paramInt2)
+    {
+      int j;
+      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
+        j = bjkr.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
+      }
+      for (int i = 2;; i = 1)
+      {
+        paramInt4 -= j;
+        if (paramInt4 < 0) {
+          break label257;
+        }
+        paramInt3 = i + paramInt3;
+        break;
+        j = bjkr.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
+      }
+    }
+    label257:
+    if (paramInt3 == paramInt1) {
+      return "";
+    }
+    return paramCharSequence.subSequence(paramInt1, paramInt3);
   }
 }
 

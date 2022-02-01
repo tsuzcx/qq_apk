@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPoke;
-
-final class agdy
-  implements aghk
+public abstract interface agdy
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    paramQQAppInterface = (MessageForPoke)paramChatMessage;
-    if ((paramQQAppInterface.interactType == 126) && (!agkg.a(paramQQAppInterface.minVersion))) {
-      return 0;
-    }
-    return 62;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
 }
 
 

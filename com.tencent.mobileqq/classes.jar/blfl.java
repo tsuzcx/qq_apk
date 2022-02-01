@@ -1,8 +1,9 @@
-public abstract interface blfl<T>
+import android.view.View;
+
+public class blfl
 {
-  public abstract void a(int paramInt, String paramString, T paramT);
-  
-  public abstract void a(T paramT);
+  public blfm[] a;
+  public View g;
 }
 
 

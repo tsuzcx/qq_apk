@@ -1,16 +1,10 @@
-public class nbu
+import android.content.Context;
+
+public abstract interface nbu
 {
-  String jdField_a_of_type_JavaLangString;
-  nbt jdField_a_of_type_Nbt;
-  public boolean a;
-  public String b;
-  public boolean b = false;
-  boolean c = false;
+  public abstract Context getContext();
   
-  private nbu(nbr paramnbr)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public abstract ncn getNativeEventProcessor();
 }
 
 

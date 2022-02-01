@@ -1,27 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import dov.com.qq.im.ae.camera.ui.poi.AESelectLocationFragment.4.1.1;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class bngs
-  implements ValueAnimator.AnimatorUpdateListener
+public class bngs
+  implements wlq
 {
-  bngs(bngq parambngq) {}
+  bngs(bngr parambngr) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, wlr paramwlr, List<TroopBarPOI> paramList)
   {
-    if (this.a.a.b == null) {
-      return;
-    }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.s = (this.a.d + this.a.f * (1.0F - f));
-    this.a.t = (this.a.e + this.a.g * (1.0F - f));
-    this.a.q = (this.a.b + this.a.h * (1.0F - f));
-    this.a.r = (this.a.c + this.a.i * (1.0F - f));
-    if (f == 1.0F)
+    paramwlr = new ArrayList();
+    if ((paramInt == 0) && (paramList != null))
     {
-      this.a.a.b = null;
-      this.a.a.a(4);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        TroopBarPOI localTroopBarPOI = (TroopBarPOI)paramList.next();
+        if (localTroopBarPOI != null) {
+          paramwlr.add(new bngw(localTroopBarPOI.c, 0));
+        }
+      }
     }
-    bngn.b(this.a.a);
+    ThreadManager.getUIHandler().post(new AESelectLocationFragment.4.1.1(this, paramInt, paramwlr));
   }
 }
 

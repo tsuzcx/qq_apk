@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.data.troop.TroopInfo;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import java.util.List;
 
 class nkt
-  extends andd
+  implements Animator.AnimatorListener
 {
-  nkt(nkr paramnkr) {}
+  nkt(nkp paramnkp) {}
   
-  protected void onOIDB0X88D_1_Ret(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramLong != this.a.jdField_a_of_type_Long) {
-      return;
-    }
-    this.a.jdField_a_of_type_Long = 0L;
-    nkr.a(this.a, false);
-    if (paramBoolean)
-    {
-      nkr.a(this.a, paramTroopInfo);
-      return;
-    }
-    nkr.a(this.a, 2131718115, 1);
-    this.a.jdField_a_of_type_Nku.a();
+    nkp.a(this.a).remove(paramAnimator);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    nkp.a(this.a).remove(paramAnimator);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    nkp.a(this.a).add(paramAnimator);
   }
 }
 

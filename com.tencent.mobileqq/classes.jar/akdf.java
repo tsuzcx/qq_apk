@@ -1,23 +1,37 @@
-import org.json.JSONArray;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.XListView;
 
-public class akdf
+class akdf
+  implements AbsListView.OnScrollListener
 {
-  public int a;
-  public String a;
-  public JSONArray a;
-  public int b;
-  public String b;
-  public JSONArray b;
-  public int c;
-  public String c;
-  public JSONArray c;
-  public String d;
-  public JSONArray d;
-  public String e;
-  public JSONArray e;
-  public String f;
-  public String g;
-  public String h;
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  
+  akdf(akda paramakda) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    this.b = paramInt3;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.jdField_a_of_type_Akda.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.jdField_a_of_type_Akda.jdField_a_of_type_Akdk) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i(akda.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
+      }
+    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
+    if (QLog.isColorLevel()) {
+      QLog.i(akda.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
+    }
+    akda.a(this.jdField_a_of_type_Akda);
+  }
 }
 
 

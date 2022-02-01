@@ -1,25 +1,10 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
-
-public class akzm
-  extends Handler
+public abstract interface akzm
 {
-  public akzm(FriendListInnerFrame paramFriendListInnerFrame) {}
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.a.setPadding(0, 0, 40, 0);
-      return;
-    }
-    this.a.a.setPadding(0, 0, 0, 0);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

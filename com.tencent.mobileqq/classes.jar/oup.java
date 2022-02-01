@@ -1,33 +1,13 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
-class oup
-  extends ClickableSpan
+public class oup
+  implements bkzs
 {
-  oup(ouo paramouo, SubCommentData paramSubCommentData) {}
+  public oup(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    oto.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.uin, BaseActivity.sTopActivity);
-    paramView = new osa(this.jdField_a_of_type_Ouo).a().a();
-    odq.a(null, oto.a(this.jdField_a_of_type_Ouo.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Ouo.a.mArticleID), String.valueOf(this.jdField_a_of_type_Ouo.a.mAlgorithmID), this.jdField_a_of_type_Ouo.a.innerUniqueID, paramView, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.isAuthorSelection()) {}
-    for (String str = "#FF8444";; str = "#737373")
-    {
-      paramTextPaint.setColor(Color.parseColor(str));
-      paramTextPaint.setUnderlineText(false);
-      return;
-    }
+    ReadInJoySettingActivity.c(this.a).cancel();
   }
 }
 

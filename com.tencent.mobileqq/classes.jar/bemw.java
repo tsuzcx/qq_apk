@@ -1,60 +1,56 @@
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import android.os.Looper;
+import android.os.Handler.Callback;
 import android.os.Message;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
-import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import java.util.ArrayList;
 import java.util.List;
 
 class bemw
-  extends Handler
+  implements Handler.Callback
 {
-  bemw(bemv parambemv, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bemw(bemr parambemr) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_Bemy == null) {}
-    WordInfo localWordInfo;
-    do
+    switch (paramMessage.what)
     {
-      return;
-      switch (paramMessage.what)
+    default: 
+      return false;
+    case 1: 
+      if (this.a.b.size() == 0)
       {
-      default: 
-        return;
-      case 0: 
-        localWordInfo = (WordInfo)paramMessage.obj;
-        this.a.jdField_a_of_type_Bemy.a(localWordInfo);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo == null) {
-          this.a.a(localWordInfo);
-        }
-        break;
+        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
+        return false;
       }
-    } while ((!localWordInfo.isDetected) || (localWordInfo.paragraphPos != this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size() - 1));
-    paramMessage = ((ParagraphInfo)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.get(localWordInfo.paragraphPos)).generateOrGetWordInfoList(localWordInfo.paragraphPos);
-    int i = localWordInfo.wordPos + 1;
-    label148:
-    if (i < paramMessage.size())
-    {
-      localWordInfo = (WordInfo)paramMessage.get(i);
-      if ((localWordInfo == null) || (!localWordInfo.isNormalWord())) {}
-    }
-    for (i = 0; i != 0; i = 1)
-    {
       this.a.b();
-      return;
-      i += 1;
-      break label148;
-      this.a.jdField_a_of_type_Bemy.g();
-      return;
-      this.a.jdField_a_of_type_Bemy.a(this.a.jdField_a_of_type_Int, this.a.b, this.a.c);
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.c = 0;
-      return;
+      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      }
+      if ((this.a.b != null) && (this.a.b.size() > 3))
+      {
+        paramMessage = (String)this.a.b.get(3);
+        Drawable localDrawable = bheg.a(true);
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (localQQAppInterface != null) {
+          FaceDrawable.getFaceDrawable(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
+        }
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
+      return false;
     }
+    paramMessage = (ArrayList)paramMessage.obj;
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      return false;
+    }
+    bemr.a(this.a, paramMessage);
+    return false;
   }
 }
 

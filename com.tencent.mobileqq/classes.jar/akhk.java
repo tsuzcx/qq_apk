@@ -1,38 +1,67 @@
-import android.view.View;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.BindNumberFromPcActivity;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class akhk
+  extends azip
 {
-  public int a;
-  public View a;
-  public boolean a;
-  public int b;
+  public akhk(BindNumberFromPcActivity paramBindNumberFromPcActivity) {}
   
-  public akhk(int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return paramInt >= 2;
-  }
-  
-  public boolean a()
-  {
-    return this.b >= 2;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer(20);
-    localStringBuffer.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.jdField_a_of_type_AndroidViewView).append("]");
-    return localStringBuffer.toString();
+    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.a.b();
+    int i;
+    if (paramBoolean)
+    {
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0))
+      {
+        paramBundle = new Intent(this.a, BindVerifyActivity.class);
+        paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+        paramBundle.putExtra("k_country_code", this.a.b);
+        if ((paramBundle != null) && (!this.a.isFinishing()))
+        {
+          paramBundle.addFlags(536870912);
+          this.a.startActivityForResult(paramBundle, 1);
+        }
+      }
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(BindNumberFromPcActivity.a(this.a));
+      BindNumberFromPcActivity.a(this.a, null);
+      return;
+      if (i == 107)
+      {
+        Intent localIntent = new Intent(this.a, RebindActivity.class);
+        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
+        localIntent.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("k_country_code", this.a.b);
+        paramBundle = localIntent;
+        break;
+      }
+      if (i == 106)
+      {
+        this.a.setResult(-1);
+        this.a.finish();
+        paramBundle = null;
+        break;
+      }
+      this.a.a(a(i));
+      paramBundle = null;
+      break;
+      this.a.a(2131718057);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhk
  * JD-Core Version:    0.7.0.1
  */

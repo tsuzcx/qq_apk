@@ -1,19 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
 
 class asvl
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
   asvl(asvk paramasvk) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i = ataw.b(this.a.a.e());
-    bcef.b(null, "dc00898", "", "", "0X800A689", "0X800A689", 0, 0, i + "", "", "", "");
-    this.a.a.g();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramAnimator = ObjectAnimator.ofFloat(SignalBombAnimationView.b(this.a.a), "alpha", new float[] { 1.0F, 0.0F });
+    paramAnimator.setDuration(280L);
+    paramAnimator.addListener(new asvm(this));
+    paramAnimator.start();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

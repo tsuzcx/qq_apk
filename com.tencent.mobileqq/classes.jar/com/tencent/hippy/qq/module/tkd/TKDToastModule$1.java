@@ -7,11 +7,11 @@ import com.tencent.mtt.hippy.modules.Promise;
 class TKDToastModule$1
   implements Runnable
 {
-  TKDToastModule$1(TKDToastModule paramTKDToastModule, String paramString, int paramInt, Promise paramPromise) {}
+  TKDToastModule$1(TKDToastModule paramTKDToastModule, int paramInt1, String paramString, int paramInt2, Promise paramPromise) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), this.val$message, this.val$duration).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), TKDToastModule.access$000(this.this$0, this.val$type), this.val$message, this.val$duration).a();
     this.val$promise.resolve("");
   }
 }

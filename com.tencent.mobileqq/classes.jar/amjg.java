@@ -1,8 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public abstract interface amjg
+class amjg
+  implements AbsListView.OnScrollListener
 {
-  public abstract void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3);
+  amjg(amjc paramamjc) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    amjc.a(this.a, paramInt);
+    if (paramInt == 0)
+    {
+      amjc.a(this.a, null, null);
+      amjc.a(this.a).resume();
+      return;
+    }
+    amjc.a(this.a).pause();
+    amjc.a(this.a).cancelPendingRequests();
+  }
 }
 
 

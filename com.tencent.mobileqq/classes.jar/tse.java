@@ -1,62 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
 public class tse
+  implements URLDrawableDownListener
 {
-  private static int jdField_a_of_type_Int;
-  private static final String jdField_a_of_type_JavaLangString = tse.class.getSimpleName();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String b;
+  public tse(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public tse(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = pay.a();
-    jdField_a_of_type_Int = 0;
-  }
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
   
-  private int c()
-  {
-    int i = 0;
-    boolean bool = bkwm.G(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (!bool) {
-      bkwm.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0));
-    }
-    if (bool) {
-      i = ((Integer)bkwm.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0))).intValue();
-    }
-    return i;
-  }
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public int a()
-  {
-    return jdField_a_of_type_Int;
-  }
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
   
-  public void a()
-  {
-    try
-    {
-      int i = c();
-      jdField_a_of_type_Int += 1;
-      bkwm.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(i + 1));
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "解析引流条出现的条件出错: " + localException.getMessage());
-    }
-  }
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
   
-  public int b()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return c();
+    ColorBandVideoEntranceButton.a(this.a, paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tse
  * JD-Core Version:    0.7.0.1
  */

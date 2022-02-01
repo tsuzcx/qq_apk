@@ -1,13 +1,25 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.msgbox.FilterMessageBoxFragment;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 
 public class alls
+  implements ThreadExcutor.IThreadListener
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
+  public alls(FilterMessageBoxFragment paramFilterMessageBoxFragment) {}
+  
+  public void onAdded()
+  {
+    FilterMessageBoxFragment.a(this.a, true);
+  }
+  
+  public void onPostRun()
+  {
+    FilterMessageBoxFragment.a(this.a, false);
+  }
+  
+  public void onPreRun()
+  {
+    FilterMessageBoxFragment.a(this.a, true);
+  }
 }
 
 

@@ -1,17 +1,32 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.settings.QGSettingFragment;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class xbk
-  implements CompoundButton.OnCheckedChangeListener
+class xbk
+  implements View.OnClickListener
 {
-  public xbk(QGSettingFragment paramQGSettingFragment) {}
+  xbk(xbg paramxbg) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    QGSettingFragment.c(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    Context localContext = xbg.a(this.a).a();
+    if (!NetworkUtil.isNetworkAvailable(localContext)) {
+      QQToast.a(localContext, 1, 2131694253, 0).a();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ykq.d("Q.qqstory.playernew.StoryPlayerImpl", "updateData error, retry, requestGroupData, currentInfo = %s", new Object[] { xbg.a(this.a) });
+      xbg.a(this.a).setVisibility(0);
+      xbg.a(this.a).removeCallbacks(xbg.a(this.a));
+      xbg.a(this.a).postDelayed(xbg.a(this.a), 500L);
+    }
   }
 }
 

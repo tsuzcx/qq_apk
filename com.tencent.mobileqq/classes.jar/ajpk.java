@@ -1,19 +1,20 @@
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class ajpk
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  ajpk(ajpd paramajpd) {}
+  ajpk(ajpi paramajpi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt == 0)
+    if (paramInt == 4)
     {
-      this.a.b();
-      ajpd.a(this.a).moveTaskToBack(true);
+      ajpi.a(this.a, ajpi.a(this.a), Long.valueOf(ajpi.a(this.a)).longValue());
+      ajpi.a(this.a);
     }
+    return true;
   }
 }
 

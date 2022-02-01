@@ -1,14 +1,16 @@
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface awtw
+class awtw
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt);
+  awtw(awtu paramawtu) {}
   
-  public abstract void a(String paramString1, String paramString2, long paramLong);
-  
-  public abstract void a(String paramString1, String paramString2, long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString1, String paramString2, File paramFile);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    bdla.b(awtu.a(this.a), "dc00898", "", "", "0X80085DB", "0X80085DB", 0, 0, "", "", "", "");
+  }
 }
 
 

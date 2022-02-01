@@ -1,36 +1,23 @@
-import android.opengl.Matrix;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
 
 public class baer
+  extends AnimatorListenerAdapter
 {
-  public static float[] a = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-  public static final float[] b = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+  public baer(VasProfileTagView paramVasProfileTagView, boolean paramBoolean, VipTagView paramVipTagView) {}
   
-  public static float[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    float f1 = paramInt3 / paramInt4;
-    float f2 = paramInt1 / paramInt2;
-    if (f1 < f2)
+    if ((this.jdField_a_of_type_Boolean) && (VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).a.a != 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131375042) != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131375042).equals(Boolean.valueOf(true))))
     {
-      f2 = paramInt4 * f2 / paramInt3;
-      f1 = 1.0F;
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTag(2131375042, Boolean.valueOf(false));
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, ((Long)this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131375044)).longValue());
+      return;
     }
-    for (;;)
-    {
-      float[] arrayOfFloat = new float[16];
-      Matrix.setIdentityM(arrayOfFloat, 0);
-      Matrix.scaleM(arrayOfFloat, 0, f2, f1, 1.0F);
-      return arrayOfFloat;
-      if (f1 > f2)
-      {
-        f1 = paramInt3 / (f2 * paramInt4);
-        f2 = 1.0F;
-      }
-      else
-      {
-        f1 = 1.0F;
-        f2 = 1.0F;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setShakingState(true);
   }
 }
 

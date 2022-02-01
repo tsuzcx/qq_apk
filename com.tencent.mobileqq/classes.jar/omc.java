@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
 
-public class omc
-  implements rbk
+public final class omc
+  implements Parcelable.Creator<VideoInfo.AdTagInfo>
 {
-  public omc(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
-  
-  public void a(int paramInt, String paramString, BaseResData paramBaseResData)
+  public VideoInfo.AdTagInfo a(Parcel paramParcel)
   {
-    this.a.a(paramInt, paramString, paramBaseResData);
+    return new VideoInfo.AdTagInfo(paramParcel);
+  }
+  
+  public VideoInfo.AdTagInfo[] a(int paramInt)
+  {
+    return new VideoInfo.AdTagInfo[paramInt];
   }
 }
 

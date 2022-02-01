@@ -1,22 +1,24 @@
-import android.widget.ImageView;
+import com.tencent.mobileqq.search.fragment.searchresult.KDSearchResultFragment;
+import com.tencent.mobileqq.search.fragment.searchresult.KDSearchResultFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public final class bccq
-  implements bcab
+public class bccq
+  implements ValueCallback<String>
 {
-  public bccq(ImageView paramImageView1, ImageView paramImageView2) {}
+  public bccq(KDSearchResultFragment paramKDSearchResultFragment) {}
   
-  public void a()
+  public void a(String paramString)
   {
-    if ((this.a != null) && (this.b != null))
-    {
-      this.a.setVisibility(8);
-      this.b.setVisibility(8);
+    QLog.d("KDSearchResultFragment", 2, "onReceiveValue: " + paramString);
+    if (!KDSearchResultFragment.a(this.a, paramString)) {
+      bkyq.a(new KDSearchResultFragment.3.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bccq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,21 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
 
-class sba
-  extends sif
+public class sba
+  implements View.OnKeyListener
 {
-  sba(sab paramsab) {}
+  public sba(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    sab.a(this.a, paramVideoInfo);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public int c()
-  {
-    return 1;
+    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0) && (TextUtils.isEmpty(ReadInJoySelectMemberFragment.a(this.a).getText()))) {
+      ReadInJoySelectMemberFragment.a(this.a).a();
+    }
+    return false;
   }
 }
 

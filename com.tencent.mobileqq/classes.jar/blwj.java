@@ -1,86 +1,108 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.ttpic.baseutils.collection.CollectionUtils;
-import dov.com.qq.im.ae.data.AEGifCategoryWrapper;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.IPluginAdapter;
+import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.startup.step.InitSkin;
+import com.tencent.theme.SkinEngine;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
-class blwj
-  implements Observer<blvg>
+public class blwj
+  implements IPluginAdapter
 {
-  blwj(blwd paramblwd) {}
+  public static HashMap<String, Integer> a = new HashMap();
   
-  public void a(@Nullable blvg paramblvg)
+  static
   {
-    label4:
-    Object localObject1;
-    Object localObject2;
-    if (paramblvg == null)
-    {
-      return;
+    a.put("qzone_plugin.apk", Integer.valueOf(2));
+  }
+  
+  public static int a(String paramString)
+  {
+    if ((Integer)a.get(paramString) == null) {
+      return 1;
     }
-    else
+    return ((Integer)a.get(paramString)).intValue();
+  }
+  
+  public void initSkin(Context paramContext)
+  {
+    InitSkin.initSkin(paramContext);
+  }
+  
+  public void initSkinEngine(Context paramContext)
+  {
+    SkinEngine.init(paramContext, 8191, 2130837504, 2130850980, 1264, 2131165184, 2131167414, null);
+  }
+  
+  public Object invoke(int paramInt, Object paramObject)
+  {
+    int i = 4;
+    boolean bool = false;
+    String str;
+    switch (paramInt)
     {
-      boolean bool = blwd.a(this.a);
-      if (bool) {
-        blwd.a(this.a, null);
-      }
-      localObject1 = blwd.a(this.a).iterator();
-      while (((Iterator)localObject1).hasNext())
+    default: 
+      return null;
+    case 1: 
+      paramObject = BaseApplicationImpl.getApplication();
+      str = IPluginAdapterProxy.getProxy().currentUin;
+      if (!TextUtils.isEmpty(str))
       {
-        localObject2 = (blvd)((Iterator)localObject1).next();
-        if (((blvd)localObject2).jdField_a_of_type_JavaLangString.equals(paramblvg.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id))
+        if (Build.VERSION.SDK_INT > 10) {}
+        for (;;)
         {
-          if (((blvd)localObject2).jdField_a_of_type_Int != paramblvg.jdField_a_of_type_Int)
-          {
-            ((blvd)localObject2).jdField_a_of_type_Int = paramblvg.jdField_a_of_type_Int;
-            blwd.a(this.a).a((blvd)localObject2, bool);
+          paramObject = paramObject.getSharedPreferences(str, i).getString("currentThemeId_6.3.5", "1000");
+          if ((!"1103".equals(paramObject)) && (!"2920".equals(paramObject))) {
+            break;
           }
-          if ((((blvd)localObject2).jdField_a_of_type_Int == 2) && (((blvd)localObject2).jdField_a_of_type_JavaLangString.equals(blwd.b(this.a))) && (!bool)) {
-            blwd.a(this.a).b((blvd)localObject2);
+          return Boolean.valueOf(true);
+          i = 0;
+        }
+      }
+      return Boolean.valueOf(false);
+    case 3: 
+      paramObject = BaseApplicationImpl.getApplication();
+      str = IPluginAdapterProxy.getProxy().currentUin;
+      if (!TextUtils.isEmpty(str))
+      {
+        if (Build.VERSION.SDK_INT > 10) {}
+        for (;;)
+        {
+          paramObject = paramObject.getSharedPreferences(str, i).getString("currentThemeId_6.3.5", "1000");
+          if ((!"1000".equals(paramObject)) && (!"999".equals(paramObject))) {
+            break;
           }
+          return Boolean.valueOf(true);
+          i = 0;
         }
       }
-      localObject2 = blwd.b(this.a).iterator();
+      return Boolean.valueOf(false);
+    case 2: 
+      return ThreadManager.getSubThreadLooper();
+    case 4: 
+      if (a((String)paramObject) > 1) {
+        bool = true;
+      }
+      return Boolean.valueOf(bool);
     }
-    label293:
-    for (;;)
-    {
-      if (!((Iterator)localObject2).hasNext()) {
-        break label4;
-      }
-      localObject1 = (AEGifCategoryWrapper)((Iterator)localObject2).next();
-      if ((localObject1 == null) || (CollectionUtils.isEmpty(((AEGifCategoryWrapper)localObject1).materialWrapperList))) {
-        break;
-      }
-      Iterator localIterator = ((AEGifCategoryWrapper)localObject1).materialWrapperList.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject1 = (blvd)localIterator.next();
-      } while ((localObject1 == null) || (TextUtils.isEmpty(((blvd)localObject1).jdField_a_of_type_JavaLangString)) || (!((blvd)localObject1).jdField_a_of_type_JavaLangString.equals(paramblvg.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)));
-      for (;;)
-      {
-        if (localObject1 == null) {
-          break label293;
-        }
-        if (((blvd)localObject1).jdField_a_of_type_Int == paramblvg.jdField_a_of_type_Int) {
-          break;
-        }
-        ((blvd)localObject1).jdField_a_of_type_Int = paramblvg.jdField_a_of_type_Int;
-        return;
-        localObject1 = null;
-      }
-    }
+    return Integer.valueOf(ImmersiveUtils.isSupporImmersive());
+  }
+  
+  public boolean isBuiltinPluginAndUpToDay(String paramString, PluginBaseInfo paramPluginBaseInfo)
+  {
+    return blvs.a(MobileQQ.sMobileQQ).a(paramString, paramPluginBaseInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blwj
  * JD-Core Version:    0.7.0.1
  */

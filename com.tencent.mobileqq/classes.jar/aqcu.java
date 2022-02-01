@@ -1,99 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class aqcu
+class aqcu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private aqcv[] a = new aqcv[0];
+  aqcu(aqcq paramaqcq, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  public static aqcu a(String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = 0;
-    aqcu localaqcu = new aqcu();
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SingTogetherConfigBean", 0, "parse content is empty");
-      }
-    }
-    for (;;)
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
     {
-      return localaqcu;
-      try
-      {
-        paramString = new JSONObject(paramString).getJSONArray("array");
-        if ((paramString != null) && (paramString.length() > 0))
-        {
-          localaqcu.a = new aqcv[paramString.length()];
-          while (i < paramString.length())
-          {
-            aqcv localaqcv = aqcv.a(paramString.getJSONObject(i));
-            localaqcu.a[i] = localaqcv;
-            i += 1;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("SingTogetherConfigBean", 0, "parse config=" + localaqcu);
-            return localaqcu;
-          }
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return localaqcu;
-  }
-  
-  public aqcv a(int paramInt)
-  {
-    Object localObject;
-    if ((this.a == null) || (this.a.length <= 0))
-    {
-      localObject = null;
-      return localObject;
-    }
-    aqcv[] arrayOfaqcv = this.a;
-    int j = arrayOfaqcv.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label64;
-      }
-      aqcv localaqcv = arrayOfaqcv[i];
-      localObject = localaqcv;
-      if (localaqcv.a == paramInt) {
-        break;
-      }
-      i += 1;
-    }
-    label64:
-    return null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(super.toString()).append(" ");
-    if ((this.a != null) && (this.a.length > 0))
-    {
-      aqcv[] arrayOfaqcv = this.a;
-      int j = arrayOfaqcv.length;
-      int i = 0;
-      while (i < j)
-      {
-        localStringBuilder.append(arrayOfaqcv[i]).append(" ");
-        i += 1;
-      }
-    }
-    return localStringBuilder.toString();
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-this.jdField_a_of_type_Aqcq.a * (1.0F - f));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Aqcq.e);
+    this.b.setAlpha(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqcu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.AccountDetail.activity;
 
-import nsj;
+import nzk;
 
 public class EqqAccountDetailActivity$12$1
   implements Runnable
 {
-  public EqqAccountDetailActivity$12$1(nsj paramnsj) {}
+  public EqqAccountDetailActivity$12$1(nzk paramnzk) {}
   
   public void run()
   {

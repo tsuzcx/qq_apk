@@ -3,8 +3,8 @@ package com.tencent.mobileqq.ark.API;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import aopk;
-import aoqa;
+import apsl;
+import aptb;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -12,11 +12,11 @@ import java.util.ArrayList;
 public class ArkAppQQModule$17
   implements Runnable
 {
-  public ArkAppQQModule$17(aoqa paramaoqa, int paramInt, ArrayList paramArrayList) {}
+  public ArkAppQQModule$17(aptb paramaptb, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
-    Activity localActivity = aopk.a();
+    Activity localActivity = apsl.a();
     if (localActivity != null)
     {
       Intent localIntent = new Intent(localActivity, TroopAvatarWallPreviewActivity.class);

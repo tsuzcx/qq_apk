@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.transfile.TransFileController.OnCancelListener;
-import java.util.ArrayList;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class afzo
-  implements TransFileController.OnCancelListener
+class afzo
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public afzo(FlashPicItemBuilder paramFlashPicItemBuilder) {}
+  afzo(afzn paramafzn) {}
   
-  public void onCancel(ArrayList<MessageRecord> paramArrayList)
+  public void onGlobalLayout()
   {
-    this.a.b();
+    if (this.a.b)
+    {
+      this.a.b = false;
+      this.a.uiHandler.sendEmptyMessageDelayed(23, 100L);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, " doOnCreate_initUI onGlobalLayout");
+      }
+    }
   }
 }
 

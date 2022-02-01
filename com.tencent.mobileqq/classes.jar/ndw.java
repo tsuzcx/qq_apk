@@ -1,9 +1,8 @@
-import com.tencent.avgame.gamelogic.data.Player;
-
-public class ndw
+public abstract interface ndw
 {
-  public int a = -1;
-  public Player a;
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 

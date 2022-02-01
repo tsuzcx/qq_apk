@@ -1,52 +1,29 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentAccountSummary;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.widget.ImageView;
 
-public class qtw
-  extends ClickableSpan
-  implements som
+class qtw
+  implements Animator.AnimatorListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  protected String a;
-  boolean jdField_a_of_type_Boolean;
+  qtw(qtv paramqtv) {}
   
-  public qtw(ComponentAccountSummary paramComponentAccountSummary, String paramString, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    qtv.a(this.a).setSelected(this.a.isSelected());
   }
   
-  public void a(boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
-    }
+    qtv.a(this.a).setSelected(this.a.isSelected());
+    qtv.a(this.a).start();
   }
   
-  public void onClick(View paramView)
-  {
-    pay.a = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.a.a.a();
-    paramView = paa.k + bfuc.encodeToString(String.valueOf(this.jdField_a_of_type_JavaLangString).getBytes(), 2);
-    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.getContext(), paramView);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = 16119285)
-    {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
-    }
+    qtv.a(this.a, true);
   }
 }
 

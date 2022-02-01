@@ -1,23 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-final class bdal
-  implements DialogInterface.OnClickListener
+public abstract interface bdal
 {
-  bdal(bdan parambdan) {}
+  public abstract bdaq a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bdai.a("0X800A5CB");
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "showThemeDarkModeTips");
-    }
-    bdai.a(false);
-    if (this.a != null) {
-      this.a.onConfirm();
-    }
-  }
+  public abstract bdaq a(int paramInt);
 }
 
 

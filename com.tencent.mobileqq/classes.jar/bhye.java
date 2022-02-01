@@ -1,28 +1,52 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.open.applist.QZoneAppListActivity;
-import com.tencent.open.applist.QZoneAppListActivity.1.1;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnControllerClickListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo.RecommadInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
 
 public class bhye
-  extends OnPluginInstallListener.Stub
+  implements TVK_IMediaPlayer.OnControllerClickListener
 {
-  public bhye(QZoneAppListActivity paramQZoneAppListActivity) {}
+  public bhye(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public void onInstallBegin(String paramString) {}
+  public void onAttationClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
   
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    this.a.a(paramInt1 / paramInt2 * 100);
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onBackClick");
+    }
+    this.a.setResult(0);
+    this.a.finish();
   }
   
-  public void onInstallError(String paramString, int paramInt)
+  public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    this.a.runOnUiThread(new QZoneAppListActivity.1.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onBackOnFullScreenClick");
+    }
+    if (this.a.getRequestedOrientation() == 0)
+    {
+      this.a.setRequestedOrientation(1);
+      return;
+    }
+    this.a.setResult(0);
+    this.a.finish();
   }
   
-  public void onInstallFinish(String paramString)
+  public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onFeedbackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    QZoneAppListActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onFullScreenClick--------------");
+    }
+    this.a.setRequestedOrientation(0);
   }
+  
+  public void onReopenClick(TVK_NetVideoInfo.RecommadInfo paramRecommadInfo) {}
 }
 
 

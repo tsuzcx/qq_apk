@@ -17,18 +17,18 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import bmbx;
-import bmby;
-import bmda;
-import bmkn;
-import bmml;
-import bmmn;
-import bmmo;
-import bmmq;
-import bmmr;
-import bmnb;
-import bmnd;
-import bmne;
+import bnrh;
+import bnri;
+import bnss;
+import boaf;
+import bocd;
+import bocf;
+import bocg;
+import boci;
+import bocj;
+import boct;
+import bocv;
+import bocw;
 import com.microrapid.opencv.ImageMainColorData;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.imcore.constants.AppSetting;
@@ -45,17 +45,17 @@ import mqq.os.MqqHandler;
 
 public class AEEditorTextControlPanel
   extends FrameLayout
-  implements View.OnClickListener, bmml, bmnd, bmne
+  implements View.OnClickListener, bocd, bocv, bocw
 {
-  private static final String jdField_a_of_type_JavaLangString = bmda.jdField_b_of_type_JavaLangString + File.separator + "text_sticker_thumb" + File.separator;
+  private static final String jdField_a_of_type_JavaLangString = bnss.jdField_b_of_type_JavaLangString + File.separator + "text_sticker_thumb" + File.separator;
   private int jdField_a_of_type_Int = -1;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bmmr jdField_a_of_type_Bmmr;
-  private bmnb jdField_a_of_type_Bmnb;
+  private bocj jdField_a_of_type_Bocj;
+  private boct jdField_a_of_type_Boct;
   private AEEditorColorSelectorView jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView;
   private List<AEEditorTextBean> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = bmby.a();
+  private boolean jdField_a_of_type_Boolean = bnri.a();
   private boolean[] jdField_a_of_type_ArrayOfBoolean = new boolean[9];
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
@@ -86,14 +86,14 @@ public class AEEditorTextControlPanel
   
   private void a(@NonNull Context paramContext)
   {
-    View localView = View.inflate(paramContext, 2131558563, this);
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView = ((AEEditorColorSelectorView)localView.findViewById(2131364766));
+    View localView = View.inflate(paramContext, 2131558574, this);
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView = ((AEEditorColorSelectorView)localView.findViewById(2131364853));
     this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView.setColorSelectedListener(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131377793));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)localView.findViewById(2131378075));
     paramContext = new GridLayoutManager(paramContext, 5, 1, false);
     paramContext.setAutoMeasureEnabled(false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369051));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369214));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
   }
   
@@ -101,7 +101,7 @@ public class AEEditorTextControlPanel
   {
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramTextView, "translationY", new float[] { 0.0F, 40.0F });
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramTextView, "alpha", new float[] { 1.0F, 0.0F });
-    localObjectAnimator1.addListener(new bmmq(this, paramTextView));
+    localObjectAnimator1.addListener(new boci(this, paramTextView));
     paramTextView = new AnimatorSet();
     paramTextView.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
     paramTextView.setInterpolator(new DecelerateInterpolator());
@@ -150,7 +150,7 @@ public class AEEditorTextControlPanel
       {
         if (this.jdField_d_of_type_Boolean)
         {
-          bmbx.a("AEEditorTextControlPanel", "[animationUp], mOnAnimating=" + this.jdField_d_of_type_Boolean);
+          bnrh.a("AEEditorTextControlPanel", "[animationUp], mOnAnimating=" + this.jdField_d_of_type_Boolean);
           return;
         }
         this.jdField_d_of_type_Boolean = true;
@@ -163,7 +163,7 @@ public class AEEditorTextControlPanel
           AnimatorSet localAnimatorSet = new AnimatorSet();
           localAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2);
           localAnimatorSet.setDuration(200L);
-          localAnimatorSet.addListener(new bmmn(this));
+          localAnimatorSet.addListener(new bocf(this));
           localAnimatorSet.start();
         }
         else
@@ -183,7 +183,7 @@ public class AEEditorTextControlPanel
       {
         if (this.e)
         {
-          bmbx.a("AEEditorTextControlPanel", "[animationDown], mOnAnimating=" + this.e);
+          bnrh.a("AEEditorTextControlPanel", "[animationDown], mOnAnimating=" + this.e);
           return;
         }
         this.e = true;
@@ -196,7 +196,7 @@ public class AEEditorTextControlPanel
           AnimatorSet localAnimatorSet = new AnimatorSet();
           localAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2);
           localAnimatorSet.setDuration(200L);
-          localAnimatorSet.addListener(new bmmo(this));
+          localAnimatorSet.addListener(new bocg(this));
           localAnimatorSet.start();
         }
         else
@@ -215,8 +215,8 @@ public class AEEditorTextControlPanel
       this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView.a(null);
       this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView.setVisibility(8);
     }
-    if (this.jdField_a_of_type_Bmnb != null) {
-      this.jdField_a_of_type_Bmnb.d(-1);
+    if (this.jdField_a_of_type_Boct != null) {
+      this.jdField_a_of_type_Boct.d(-1);
     }
     if (this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView != null) {
       this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView.d();
@@ -247,9 +247,9 @@ public class AEEditorTextControlPanel
         break;
       }
       return localInteger.intValue();
-      bmbx.d("AEEditorTextControlPanel", "[getTextLightnessByAEEditorTextBean] position is default");
+      bnrh.d("AEEditorTextControlPanel", "[getTextLightnessByAEEditorTextBean] position is default");
     }
-    bmbx.d("AEEditorTextControlPanel", "[getColorByAEEditorTextBean] error !!!!");
+    bnrh.d("AEEditorTextControlPanel", "[getColorByAEEditorTextBean] error !!!!");
     return paramAEEditorTextBean.backgroundColor;
   }
   
@@ -263,7 +263,7 @@ public class AEEditorTextControlPanel
         return localAEEditorTextBean.type;
       }
     }
-    bmbx.d("AEEditorTextControlPanel", "[getTypeByID] ERROR !!!!");
+    bnrh.d("AEEditorTextControlPanel", "[getTypeByID] ERROR !!!!");
     return 0;
   }
   
@@ -271,7 +271,7 @@ public class AEEditorTextControlPanel
   public Integer a(int paramInt, @Nullable AEEditorTextBean paramAEEditorTextBean)
   {
     Float localFloat = (Float)this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView.c().get(paramInt);
-    bmbx.a("AEEditorTextControlPanel", "[getTextColorByAEEditorTextBean] lightness:" + localFloat);
+    bnrh.a("AEEditorTextControlPanel", "[getTextColorByAEEditorTextBean] lightness:" + localFloat);
     if (localFloat != null)
     {
       if (localFloat.floatValue() <= 0.8F) {
@@ -325,7 +325,7 @@ public class AEEditorTextControlPanel
       this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView.a(Integer.valueOf(paramInt));
       return;
     }
-    bmbx.d("AEEditorTextControlPanel", "[selectColor] mAEEditorColorSelectorView null");
+    bnrh.d("AEEditorTextControlPanel", "[selectColor] mAEEditorColorSelectorView null");
   }
   
   public void a(int paramInt, @NonNull AEEditorTextBean paramAEEditorTextBean)
@@ -335,17 +335,17 @@ public class AEEditorTextControlPanel
     default: 
       return;
     }
-    if (this.jdField_a_of_type_Bmnb != null) {
-      this.jdField_a_of_type_Bmnb.d(paramInt);
+    if (this.jdField_a_of_type_Boct != null) {
+      this.jdField_a_of_type_Boct.d(paramInt);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bmmr.a(paramInt, paramAEEditorTextBean);
+      this.jdField_a_of_type_Bocj.a(paramInt, paramAEEditorTextBean);
       return;
       if (AppSetting.isPublicVersion) {
         throw new RuntimeException("mTextStickerAdapter null");
       }
-      bmbx.d("AEEditorTextControlPanel", "[onTextStickerClick] mTextStickerAdapter null");
+      bnrh.d("AEEditorTextControlPanel", "[onTextStickerClick] mTextStickerAdapter null");
     }
   }
   
@@ -365,8 +365,8 @@ public class AEEditorTextControlPanel
   {
     if (paramTextEditorData == null)
     {
-      if (this.jdField_a_of_type_Bmnb != null) {
-        this.jdField_a_of_type_Bmnb.a(null);
+      if (this.jdField_a_of_type_Boct != null) {
+        this.jdField_a_of_type_Boct.a(null);
       }
       if (this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView != null) {
         this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorColorSelectorView.a(null);
@@ -375,8 +375,8 @@ public class AEEditorTextControlPanel
     for (;;)
     {
       return;
-      if (this.jdField_a_of_type_Bmnb != null) {
-        this.jdField_a_of_type_Bmnb.a(paramTextEditorData.getItemID());
+      if (this.jdField_a_of_type_Boct != null) {
+        this.jdField_a_of_type_Boct.a(paramTextEditorData.getItemID());
       }
       Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       AEEditorTextBean localAEEditorTextBean;
@@ -387,7 +387,7 @@ public class AEEditorTextControlPanel
         }
         localAEEditorTextBean = (AEEditorTextBean)((Iterator)localObject).next();
       } while (!localAEEditorTextBean.id.equals(paramTextEditorData.getItemID()));
-      for (localObject = AEEditorTextBean.updateTextBeanByStickerConfig(localAEEditorTextBean, bmkn.a().a(bmkn.a().d(paramTextEditorData.getItemID()))); localObject != null; localObject = null)
+      for (localObject = AEEditorTextBean.updateTextBeanByStickerConfig(localAEEditorTextBean, boaf.a().a(boaf.a().d(paramTextEditorData.getItemID()))); localObject != null; localObject = null)
       {
         if (((AEEditorTextBean)localObject).type == 0)
         {
@@ -406,7 +406,7 @@ public class AEEditorTextControlPanel
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.jdField_a_of_type_Bmmr.a(paramString1, paramInt1, paramInt2, paramString2);
+    this.jdField_a_of_type_Bocj.a(paramString1, paramInt1, paramInt2, paramString2);
   }
   
   public void a(boolean paramBoolean, String paramString)
@@ -465,7 +465,7 @@ public class AEEditorTextControlPanel
         break;
       }
       return paramAEEditorTextBean.textColor;
-      bmbx.d("AEEditorTextControlPanel", "[getTextLightnessByAEEditorTextBean] position is default");
+      bnrh.d("AEEditorTextControlPanel", "[getTextLightnessByAEEditorTextBean] position is default");
     }
     return localInteger.intValue();
   }
@@ -474,13 +474,13 @@ public class AEEditorTextControlPanel
   {
     if (!this.jdField_c_of_type_Boolean)
     {
-      if ((bmkn.a().c()) && (this.jdField_b_of_type_Boolean)) {
+      if ((boaf.a().c()) && (this.jdField_b_of_type_Boolean)) {
         setIsNeedCreateThumbImage(1);
       }
       for (;;)
       {
         this.jdField_a_of_type_JavaUtilList.clear();
-        Iterator localIterator = ((AEEditorPagStickerGroup)bmkn.a().a().get(0)).stickerInfoList.iterator();
+        Iterator localIterator = ((AEEditorPagStickerGroup)boaf.a().a().get(0)).stickerInfoList.iterator();
         while (localIterator.hasNext())
         {
           AEEditorTextBean localAEEditorTextBean = AEEditorTextBean.createTextBeanByStickerInfo((AEEditorPagStickerInfo)localIterator.next());
@@ -497,8 +497,8 @@ public class AEEditorTextControlPanel
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bmnb = new bmnb(this.jdField_a_of_type_JavaUtilList, this, this);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bmnb);
+      this.jdField_a_of_type_Boct = new boct(this.jdField_a_of_type_JavaUtilList, this, this);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Boct);
       this.jdField_c_of_type_Boolean = true;
       return;
       label157:
@@ -533,7 +533,7 @@ public class AEEditorTextControlPanel
       k();
       return;
     }
-    bmbx.a("AEEditorTextControlPanel", "[hide] not need hide");
+    bnrh.a("AEEditorTextControlPanel", "[hide] not need hide");
   }
   
   public void e()
@@ -543,20 +543,20 @@ public class AEEditorTextControlPanel
       j();
       return;
     }
-    bmbx.a("AEEditorTextControlPanel", "[show] not need show");
+    bnrh.a("AEEditorTextControlPanel", "[show] not need show");
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Bmnb != null) {
-      this.jdField_a_of_type_Bmnb.a();
+    if (this.jdField_a_of_type_Boct != null) {
+      this.jdField_a_of_type_Boct.a();
     }
   }
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131369051) && (this.jdField_a_of_type_Bmmr != null)) {
-      this.jdField_a_of_type_Bmmr.q();
+    if ((paramView.getId() == 2131369214) && (this.jdField_a_of_type_Bocj != null)) {
+      this.jdField_a_of_type_Bocj.q();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -584,21 +584,21 @@ public class AEEditorTextControlPanel
   public void setIsNeedCreateThumbImage(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Bmnb != null) {
-      this.jdField_a_of_type_Bmnb.a(paramInt);
+    if (this.jdField_a_of_type_Boct != null) {
+      this.jdField_a_of_type_Boct.a(paramInt);
     }
   }
   
   public void setStickerCount(int paramInt)
   {
-    if (this.jdField_a_of_type_Bmnb != null) {
-      this.jdField_a_of_type_Bmnb.c(paramInt);
+    if (this.jdField_a_of_type_Boct != null) {
+      this.jdField_a_of_type_Boct.c(paramInt);
     }
   }
   
-  public void setTextStickerControlListener(bmmr parambmmr)
+  public void setTextStickerControlListener(bocj parambocj)
   {
-    this.jdField_a_of_type_Bmmr = parambmmr;
+    this.jdField_a_of_type_Bocj = parambocj;
   }
 }
 

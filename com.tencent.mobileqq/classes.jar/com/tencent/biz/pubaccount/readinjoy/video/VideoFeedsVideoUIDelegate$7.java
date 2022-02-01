@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import scs;
+import sow;
 
 public class VideoFeedsVideoUIDelegate$7
   implements Runnable
 {
-  public VideoFeedsVideoUIDelegate$7(scs paramscs, int paramInt, String paramString) {}
+  public VideoFeedsVideoUIDelegate$7(sow paramsow, int paramInt, String paramString) {}
   
   public void run()
   {
-    scs.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    sow.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

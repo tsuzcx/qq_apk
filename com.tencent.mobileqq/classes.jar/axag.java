@@ -1,15 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
-class axag
-  implements DialogInterface.OnClickListener
+public class axag
 {
-  axag(awzr paramawzr) {}
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public axag(String paramString1, String paramString2, String paramString3, MsgBackupUserData paramMsgBackupUserData, int paramInt)
   {
-    this.a.d(true);
-    bcef.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupGetQrRsp--");
+    localStringBuilder.append(",qr_sig:").append(this.jdField_a_of_type_JavaLangString).append(",token:").append(this.b).append(",encryptKey:").append(this.c).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

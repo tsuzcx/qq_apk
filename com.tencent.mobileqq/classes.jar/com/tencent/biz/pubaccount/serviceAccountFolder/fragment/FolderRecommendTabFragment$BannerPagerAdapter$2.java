@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
-import ubf;
+import upc;
 
 public class FolderRecommendTabFragment$BannerPagerAdapter$2
   implements Runnable
 {
-  public FolderRecommendTabFragment$BannerPagerAdapter$2(ubf paramubf) {}
+  public FolderRecommendTabFragment$BannerPagerAdapter$2(upc paramupc) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class FolderRecommendTabFragment$BannerPagerAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.BannerPagerAdapter.2
  * JD-Core Version:    0.7.0.1
  */

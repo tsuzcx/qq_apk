@@ -1,6 +1,6 @@
 package com.etrump.mixlayout;
 
-import bgae;
+import bhiw;
 import ga;
 import gb;
 
@@ -12,7 +12,7 @@ public class FontManager$9
   public void run()
   {
     if (gb.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ga, this.jdField_a_of_type_Int)) {
-      bgae.a(this.this$0.a);
+      bhiw.a(this.this$0.a);
     }
   }
 }

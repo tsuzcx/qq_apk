@@ -1,23 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.MemoryManager;
 
 public class aejn
-  implements axpe
+  implements DialogInterface.OnClickListener
 {
-  public aejn(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public aejn(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
   
-  public void a(int paramInt, axpf paramaxpf)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramaxpf != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.b(this.a))) && (!TextPreviewTranslateActivity.b(this.a).equals(paramaxpf.b)))
+    try
     {
-      TextPreviewTranslateActivity.b(this.a, paramaxpf.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
+      if (this.jdField_a_of_type_Boolean != bool) {
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
+      }
+      MemoryManager.getInstance().clearTopAppMemory(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app);
+      return;
+    }
+    catch (Exception paramDialogInterface) {}finally
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejn
  * JD-Core Version:    0.7.0.1
  */

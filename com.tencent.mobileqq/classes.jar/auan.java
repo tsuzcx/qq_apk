@@ -1,17 +1,18 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class auan
-  implements View.OnTouchListener
+class auan
+  implements View.OnClickListener
 {
-  public auan(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  auan(auai paramauai) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return QQGameFeedWebFragment.a(this.a).onTouchEvent(paramMotionEvent);
+    if (this.a.a.a() != null) {
+      this.a.a.a().a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

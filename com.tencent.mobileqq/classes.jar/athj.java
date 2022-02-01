@@ -1,20 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
 class athj
-  extends AnimatorListenerAdapter
+  extends atij
 {
-  athj(athi paramathi) {}
+  athj(athh paramathh, athm paramathm) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
   {
-    this.a.a.setVisibility(8);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Athm.a(paramString2, paramString3);
+      return;
+    }
+    this.jdField_a_of_type_Athm.a(paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     athj
  * JD-Core Version:    0.7.0.1
  */

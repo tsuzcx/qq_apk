@@ -1,34 +1,13 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
+import com.dataline.util.widget.AsyncImageView;
+import com.tencent.mobileqq.customviews.MessageProgressTextView;
 
-class agro
-  extends agrp
+public class agro
+  extends afqr
 {
-  agro(agrl paramagrl) {}
+  public AsyncImageView a;
+  public MessageProgressTextView a;
   
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeShortVideoItemBuilder", 2, "get video download finish,vid=" + paramString1);
-    }
-    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
-  }
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeShortVideoItemBuilder", 2, "Download video failed,vid=" + paramString1);
-    }
-    this.jdField_a_of_type_Agrl.a(this.jdField_a_of_type_Agrq, this.jdField_a_of_type_Long);
-  }
-  
-  public void b(String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeShortVideoItemBuilder", 2, "Download video onPause,vid=" + paramString1);
-    }
-    this.jdField_a_of_type_Agrl.a(this.jdField_a_of_type_Agrq, this.jdField_a_of_type_Long);
-  }
+  public agro(agrl paramagrl) {}
 }
 
 

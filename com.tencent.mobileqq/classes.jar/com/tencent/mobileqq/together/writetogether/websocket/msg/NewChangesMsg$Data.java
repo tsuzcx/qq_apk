@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.together.writetogether.websocket.msg;
 
-import bdef;
+import beli;
 
 public class NewChangesMsg$Data
   implements Comparable<Data>
 {
-  public bdef apool;
+  public beli apool;
   public String author;
   public String changeset;
   public long commitId;

@@ -1,42 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
 
-public class ajqi
+class ajqi
+  extends RecyclerView.ViewHolder
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public MessageForShortVideo a;
-  public String a;
-  public ArrayList<String> a;
-  public boolean a;
-  public String[] a;
-  public int b = -1;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  public boolean c;
-  public long d;
-  public boolean d;
-  public long e;
-  public boolean e;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public ajqi()
+  ajqi(ajqh paramajqh, View paramView)
   {
-    this.jdField_a_of_type_Long = -1L;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaLangString = ShortVideoUtils.getShortVideoSavePath(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-    return this.jdField_a_of_type_JavaLangString;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377976));
   }
 }
 

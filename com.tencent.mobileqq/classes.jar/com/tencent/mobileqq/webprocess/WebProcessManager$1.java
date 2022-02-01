@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.webprocess;
 
-import bgso;
+import bide;
 
 class WebProcessManager$1
   implements Runnable
 {
-  WebProcessManager$1(WebProcessManager paramWebProcessManager, bgso parambgso) {}
+  WebProcessManager$1(WebProcessManager paramWebProcessManager, bide parambide) {}
   
   public void run()
   {

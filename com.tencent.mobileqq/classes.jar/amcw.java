@@ -1,22 +1,44 @@
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
-class amcw
-  implements amka
+public class amcw
+  implements bldp
 {
-  amcw(amcv paramamcv) {}
+  public amcw(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void a(int paramInt)
+  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.b, 2, new Object[] { "createShortcut result:", Integer.valueOf(paramInt) });
-    }
-    if (this.a.jdField_a_of_type_Amjz != null) {
-      this.a.jdField_a_of_type_Amjz.a(paramInt);
-    }
-    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, paramInt, new String[] { String.valueOf(this.a.jdField_a_of_type_Int) });
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
   }
+  
+  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+  }
+  
+  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
+    if (NetworkUtil.isNetSupport(this.a))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.getFriendGroupList(true);
+      this.a.jdField_a_of_type_Boolean = true;
+      ((bazf)this.a.app.getManager(QQManagerFactory.QZONE_CONTACTS_FEED_MANAGER)).a();
+      return true;
+    }
+    paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 1000L);
+    return true;
+  }
+  
+  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

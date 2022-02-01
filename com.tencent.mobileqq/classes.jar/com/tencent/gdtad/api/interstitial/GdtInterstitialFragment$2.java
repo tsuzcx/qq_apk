@@ -1,17 +1,17 @@
 package com.tencent.gdtad.api.interstitial;
 
-import absa;
+import acid;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 
 class GdtInterstitialFragment$2
   implements Runnable
 {
-  GdtInterstitialFragment$2(GdtInterstitialFragment paramGdtInterstitialFragment, int paramInt1, int paramInt2) {}
+  GdtInterstitialFragment$2(GdtInterstitialFragment paramGdtInterstitialFragment, int paramInt) {}
   
   public void run()
   {
     GdtInterstitialFragment.a(this.this$0).b = ArkAppCenter.d();
-    absa.a(this.this$0.getActivity(), GdtInterstitialFragment.a(this.this$0), GdtInterstitialFragment.a(this.this$0), this.a, this.b);
+    acid.a(this.this$0.getActivity(), GdtInterstitialFragment.a(this.this$0), GdtInterstitialFragment.a(this.this$0), this.a);
   }
 }
 

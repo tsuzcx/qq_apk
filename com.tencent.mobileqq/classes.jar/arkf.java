@@ -1,64 +1,67 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.config.business.qvip.QVipFeatureConfig;
+import com.tencent.qphone.base.util.QLog;
 
 public class arkf
-  implements GestureDetector.OnGestureListener
+  extends arjj<QVipFeatureConfig>
 {
-  public arkf(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
+  @NonNull
+  public QVipFeatureConfig a()
   {
-    return false;
+    return new QVipFeatureConfig();
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  @NonNull
+  public QVipFeatureConfig a(@NonNull aqxa[] paramArrayOfaqxa)
   {
-    int j = 1;
-    if ((paramMotionEvent1 != null) && (paramMotionEvent2 != null)) {
-      if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 50.0F) {
-        break label102;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.SDK.QVipFeatureProcessor", 1, paramArrayOfaqxa[0].a);
     }
-    label102:
-    for (int i = 1;; i = 0)
+    try
     {
-      if (paramMotionEvent2.getY() - paramMotionEvent1.getY() > 50.0F) {
-        i = j;
-      }
-      for (;;)
+      paramArrayOfaqxa = paramArrayOfaqxa[0].a;
+      if (!TextUtils.isEmpty(paramArrayOfaqxa))
       {
-        if ((i != 0) && (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment != null))
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.a();
-          ExtendFriendEditFragment.a(this.a).setVisibility(8);
-          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        }
-        return false;
+        paramArrayOfaqxa = (QVipFeatureConfig)avyx.a(paramArrayOfaqxa, QVipFeatureConfig.class);
+        a(paramArrayOfaqxa.enableSplashAnim);
+        return paramArrayOfaqxa;
       }
     }
+    catch (Exception paramArrayOfaqxa)
+    {
+      paramArrayOfaqxa.printStackTrace();
+    }
+    return new QVipFeatureConfig();
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a(boolean paramBoolean)
   {
-    return false;
+    BaseApplicationImpl.getApplication().getSharedPreferences("banner_and_splash", 4).edit().putBoolean("splashAnim", paramBoolean).commit();
   }
   
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  @NonNull
+  public QVipFeatureConfig b()
   {
-    return false;
+    return new QVipFeatureConfig();
+  }
+  
+  public Class<QVipFeatureConfig> clazz()
+  {
+    return QVipFeatureConfig.class;
+  }
+  
+  public int type()
+  {
+    return 690;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkf
  * JD-Core Version:    0.7.0.1
  */

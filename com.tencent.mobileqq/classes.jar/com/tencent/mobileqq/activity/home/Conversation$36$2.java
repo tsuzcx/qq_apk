@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajcc;
-import amtj;
+import ajxr;
 import android.content.res.Resources;
+import anvx;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class Conversation$36$2
   implements Runnable
 {
-  public Conversation$36$2(ajcc paramajcc) {}
+  public Conversation$36$2(ajxr paramajxr) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a(), 2, amtj.a(2131701742), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299076));
+    QQToast.a(this.a.a.a(), 2, anvx.a(2131702093), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299080));
   }
 }
 

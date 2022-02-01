@@ -1,26 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aemg
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aemg(TroopInfoActivity paramTroopInfoActivity) {}
+  public aemg(PermisionPrivacyActivity paramPermisionPrivacyActivity, SharedPreferences paramSharedPreferences, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
-    {
-      bcef.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "1", "");
-      paramDialogInterface.dismiss();
-      this.a.k();
-      return;
-    }
+    String str = bhnp.a("gameIconSetupH5Url");
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), QQBrowserActivity.class);
+    localIntent.setFlags(268435456);
+    localIntent.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), str, -1L, localIntent, false, -1);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app, "CliOper", "", "", "Setting_tab", "0X8009C07", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

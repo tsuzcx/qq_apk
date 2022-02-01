@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel;
 
-class anoq
-  implements View.OnClickListener
+public class anoq
+  implements DialogInterface.OnClickListener
 {
-  anoq(anon paramanon) {}
+  public anoq(ApolloPanel paramApolloPanel) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bcef.b(null, "dc00898", "", "", "0X8009ACD", "0X8009ACD", 0, 0, "", "", "", "");
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.n();
   }
 }
 

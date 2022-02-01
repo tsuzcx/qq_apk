@@ -1,64 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class affl
-  extends aptq<affk>
+  implements View.OnClickListener
 {
-  @NonNull
-  public affk a(int paramInt)
-  {
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "migrateOldOrDefaultContent, type = " + paramInt);
-    return new affk();
-  }
+  public affl(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  @Nullable
-  public affk a(aptx[] paramArrayOfaptx)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "onParsed");
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.a.b.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
     }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return affk.a(paramArrayOfaptx[0].a);
-    }
-    return null;
-  }
-  
-  public void a(affk paramaffk) {}
-  
-  public Class<affk> clazz()
-  {
-    return affk.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 609;
+    TroopMemberListActivity.a(this.a, localArrayList);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

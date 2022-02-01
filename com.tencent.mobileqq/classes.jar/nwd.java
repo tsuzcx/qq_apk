@@ -1,13 +1,24 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.app.Activity;
+import android.view.View;
 
-public class nwd
-  implements ntk
+class nwd
+  implements bkzq
 {
-  public nwd(AccountDetailActivity paramAccountDetailActivity) {}
+  nwd(nvz paramnvz, Activity paramActivity, String paramString, bkzi parambkzi) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a(this.a.a);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      nvz.b(this.jdField_a_of_type_Nvz, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      nvz.a(this.jdField_a_of_type_Nvz, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.data.Friends;
 
 class sbj
-  extends uha
 {
-  sbj(sab paramsab) {}
+  public int a;
+  public Friends a;
   
-  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public sbj(Friends paramFriends, int paramInt)
   {
-    return this.a.a(paramInt, paramActionSheetItem);
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

@@ -1,156 +1,113 @@
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeBiuCommentView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.GetNumApproveStateReqBody;
+import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.GetNumApproveStateRspBody;
+import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.NumApproveStateItem;
+import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.ReqBody;
+import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.RspBody;
 
 public class qgv
-  extends qgr
+  extends qhj
 {
-  private NativeBiuCommentView a;
+  private qgw a;
   
-  public qgv(VafContext paramVafContext)
+  public qgv(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qxn paramqxn, Handler paramHandler)
   {
-    super(paramVafContext);
-    this.mTextSize = Utils.dp2px(16.0D);
-    this.mLineSpaceExtra = Utils.rp2px(5.0D);
-    this.a = new NativeBiuCommentView(paramVafContext.getContext());
-    this.a.setTextColor(-16578534);
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqxn, paramHandler);
   }
   
-  public void a(pvc parampvc)
+  private ToServiceMsg a(long paramLong)
   {
-    this.a.setModel(parampvc);
+    oidb_cmd0xb57.ReqBody localReqBody = new oidb_cmd0xb57.ReqBody();
+    localReqBody.uint32_oper.set(2);
+    List localList = Arrays.asList(new Long[] { Long.valueOf(paramLong) });
+    oidb_cmd0xb57.GetNumApproveStateReqBody localGetNumApproveStateReqBody = new oidb_cmd0xb57.GetNumApproveStateReqBody();
+    localGetNumApproveStateReqBody.rpt_uint64_query_num.set(localList);
+    localReqBody.msg_get_num_approve_state_req.set(localGetNumApproveStateReqBody);
+    return qxp.a("OidbSvc.0xb57", 2903, 16, localReqBody.toByteArray());
   }
   
-  public int getComMeasuredHeight()
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.a.setTextSize(0, this.mTextSize);
-    this.a.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
-    this.a.setIncludeFontPadding(false);
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    switch (paramInt)
+    Object localObject = new oidb_cmd0xb57.RspBody();
+    int i = qxp.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+    QLog.d("RIJUserApproveModule", 1, new Object[] { "handle0xb57UserInfo result = ", Integer.valueOf(i) });
+    if ((i == 0) && (((oidb_cmd0xb57.RspBody)localObject).msg_get_num_approve_state_rsp.has()))
     {
-    default: 
-      return super.setAttribute(paramInt, paramString);
-    case 1172: 
-      try
+      paramFromServiceMsg = ((oidb_cmd0xb57.RspBody)localObject).msg_get_num_approve_state_rsp.rpt_msg_num_approve_state_items.get();
+      if (paramFromServiceMsg != null)
       {
-        this.a.setPreBlankNum(Integer.valueOf(paramString).intValue());
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("BiuCommentView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1173: 
-      try
-      {
-        this.a.setPreAccountUin(Long.parseLong(paramString));
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("BiuCommentView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1174: 
-      try
-      {
-        this.a.a("1".equals(paramString));
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("BiuCommentView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1188: 
-      try
-      {
-        paramInt = Color.parseColor(paramString);
-        this.a.setTextColor(paramInt);
-        QLog.d("BiuCommentView", 1, "setEmotionFontColor: " + paramInt);
-        return true;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("BiuCommentView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1187: 
-      try
-      {
-        this.mTextSize = Utils.dp2px(Integer.valueOf(paramString).intValue());
-        QLog.d("BiuCommentView", 1, "setEmotionFontSize: " + this.mTextSize);
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("BiuCommentView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1189: 
-      try
-      {
-        this.mLineSpaceExtra = Utils.rp2px(Float.valueOf(String.valueOf(paramString)).floatValue());
-        QLog.d("BiuCommentView", 1, "setEmotionlineSpace: " + this.mLineSpaceExtra);
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("BiuCommentView", 1, paramString, new Object[0]);
-        return false;
+        paramFromServiceMsg = paramFromServiceMsg.iterator();
+        while (paramFromServiceMsg.hasNext())
+        {
+          paramObject = (oidb_cmd0xb57.NumApproveStateItem)paramFromServiceMsg.next();
+          if ((paramObject != null) && (paramObject.uint64_query_num.has()))
+          {
+            localObject = (Long)paramToServiceMsg.getAttribute("KEY_USER_APPROVE_UIN");
+            long l = paramObject.uint64_query_num.get();
+            if ((l == ((Long)localObject).longValue()) && (paramObject.uint32_is_approve.has()))
+            {
+              QLog.d("RIJUserApproveModule", 1, "handle0xb57UserInfo state = " + paramObject.uint32_is_approve.get());
+              localObject = ReadInJoyUserInfoModule.a(l, null);
+              if (localObject != null) {
+                ((ReadInJoyUserInfo)localObject).isApproved = paramObject.uint32_is_approve.get();
+              }
+              if (this.a != null) {
+                this.a.a(paramObject.uint32_is_approve.get());
+              }
+            }
+          }
+        }
       }
     }
-    try
-    {
-      paramInt = Color.parseColor(paramString);
-      this.a.setLinkedTextColor(paramInt);
-      QLog.d("BiuCommentView", 1, "BiuCommentView | setLinkTextColor: " + paramInt);
-      return true;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("BiuCommentView", 1, paramString, new Object[0]);
-    }
-    return false;
   }
   
-  public void setTextColor(int paramInt)
+  public void a()
   {
-    this.a.setTextColor(paramInt);
+    this.a = null;
+  }
+  
+  public void a(long paramLong, qgw paramqgw)
+  {
+    QLog.d("RIJUserApproveModule", 1, "requestUserApproveInfo uin: " + paramLong);
+    if (paramqgw != null) {
+      this.a = paramqgw;
+    }
+    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, null);
+    if ((localReadInJoyUserInfo != null) && (localReadInJoyUserInfo.isApproved != -1)) {
+      if (paramqgw != null) {
+        paramqgw.a(localReadInJoyUserInfo.isApproved);
+      }
+    }
+    do
+    {
+      return;
+      paramqgw = a(paramLong);
+    } while (paramqgw == null);
+    paramqgw.addAttribute("KEY_USER_APPROVE_UIN", Long.valueOf(paramLong));
+    a(paramqgw);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xb57")) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

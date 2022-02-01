@@ -4,27 +4,27 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bkti;
-import bktl;
+import bmer;
+import bmeu;
 
 public class ReaderSplashImpl$3$1
   implements Runnable
 {
-  public ReaderSplashImpl$3$1(bktl parambktl, View paramView) {}
+  public ReaderSplashImpl$3$1(bmeu parambmeu, View paramView) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      RelativeLayout localRelativeLayout = new RelativeLayout(bkti.a(this.jdField_a_of_type_Bktl.a));
+      RelativeLayout localRelativeLayout = new RelativeLayout(bmer.a(this.jdField_a_of_type_Bmeu.a));
       localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(13);
       localRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-      bkti.a(this.jdField_a_of_type_Bktl.a, localRelativeLayout);
+      bmer.a(this.jdField_a_of_type_Bmeu.a, localRelativeLayout);
       return;
     }
-    bkti.a(this.jdField_a_of_type_Bktl.a, bkti.a(this.jdField_a_of_type_Bktl.a));
+    bmer.a(this.jdField_a_of_type_Bmeu.a, bmer.a(this.jdField_a_of_type_Bmeu.a));
   }
 }
 

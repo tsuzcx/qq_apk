@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aqqq;
+import arub;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -16,7 +16,7 @@ import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.OneGroupInfo;
 public class IntimateInfo$CommonTroopInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CommonTroopInfo> CREATOR = new aqqq();
+  public static final Parcelable.Creator<CommonTroopInfo> CREATOR = new arub();
   public long recentMsgTime;
   public String troopCode;
   public String troopName;
@@ -132,7 +132,7 @@ public class IntimateInfo$CommonTroopInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo
  * JD-Core Version:    0.7.0.1
  */

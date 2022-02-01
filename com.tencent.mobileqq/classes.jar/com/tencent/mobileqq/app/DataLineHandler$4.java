@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import amqd;
+import ansr;
 import java.util.TimerTask;
 
 public class DataLineHandler$4
   extends TimerTask
 {
-  public DataLineHandler$4(amqd paramamqd) {}
+  public DataLineHandler$4(ansr paramansr) {}
   
   public void run()
   {

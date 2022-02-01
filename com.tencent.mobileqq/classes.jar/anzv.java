@@ -1,66 +1,23 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class anzv
+  extends BroadcastReceiver
 {
-  static anzx a;
-  public static String a;
+  public anzv(PeakAppInterface paramPeakAppInterface) {}
   
-  static
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    jdField_a_of_type_JavaLangString = "AREngine_ARPromotion";
-  }
-  
-  public static anzo a(AppInterface paramAppInterface)
-  {
-    if ((paramAppInterface instanceof QQAppInterface)) {
-      return (anzo)((QQAppInterface)paramAppInterface).getManager(279);
-    }
-    if (AudioHelper.e()) {
-      throw new IllegalArgumentException(amtj.a(2131707629));
-    }
-    return null;
-  }
-  
-  public static anzx a(AppInterface paramAppInterface)
-  {
-    if (((paramAppInterface instanceof QQAppInterface)) && (AudioHelper.e())) {
-      throw new IllegalArgumentException(amtj.a(2131707627));
-    }
-    if (jdField_a_of_type_Anzx == null) {}
-    try
+    if ((paramIntent != null) && ("tencent.peak.q2v.AudioTransPush".equals(paramIntent.getAction())))
     {
-      if (jdField_a_of_type_Anzx == null) {
-        jdField_a_of_type_Anzx = new anzx(paramAppInterface);
-      }
-      return jdField_a_of_type_Anzx;
+      int i = paramIntent.getIntExtra("rsptype", 0);
+      paramContext = paramIntent.getByteArrayExtra("rspbody");
+      QLog.d("PeakAppInterface", 2, "ACTION_AUDIO_TRANS_PUSH rsptype=" + i + "|" + paramContext.length);
+      ((bbov)this.a.a(0)).a(i, paramContext);
     }
-    finally {}
-  }
-  
-  public static void a(AppInterface paramAppInterface)
-  {
-    if ((paramAppInterface instanceof QQAppInterface))
-    {
-      a(paramAppInterface).a(paramAppInterface);
-      BusinessCommonConfig.getInstance(paramAppInterface).doOnReconnect();
-      return;
-    }
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "doOnReconnect, 不是主进程");
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong < AudioHelper.a();
-  }
-  
-  public static boolean a(long paramLong1, long paramLong2)
-  {
-    long l = AudioHelper.a();
-    return (paramLong1 < l) && (paramLong2 > l);
   }
 }
 

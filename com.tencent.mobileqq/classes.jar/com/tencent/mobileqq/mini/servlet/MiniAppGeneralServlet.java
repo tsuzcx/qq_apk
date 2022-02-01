@@ -4,7 +4,7 @@ import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportReq;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgau;
+import bhjl;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -33,7 +33,7 @@ public class MiniAppGeneralServlet
       {
         if (paramFromServiceMsg.isSuccess())
         {
-          paramFromServiceMsg = bgau.b(paramFromServiceMsg.getWupBuffer());
+          paramFromServiceMsg = bhjl.b(paramFromServiceMsg.getWupBuffer());
           localBundle.putLong("retCode", 0L);
           localBundle.putString("errMsg", "");
           localBundle.putByteArray("key_response_data", paramFromServiceMsg);
@@ -92,7 +92,7 @@ public class MiniAppGeneralServlet
       }
       QLog.e("MiniAppGetLoginCodeServlet", 2, "wesley: cmdString:" + str1 + "  traceId:" + str2);
       paramPacket.setSSOCommand(str1);
-      paramPacket.putSendData(bgau.a((byte[])localObject));
+      paramPacket.putSendData(bhjl.a((byte[])localObject));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

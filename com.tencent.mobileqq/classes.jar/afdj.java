@@ -1,37 +1,76 @@
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PAMessage;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity.30.1;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
 public class afdj
+  implements Observer
 {
-  public static LruCache<String, PAMessage> a = new LruCache(50);
+  public afdj(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public static PAMessage a(MessageRecord paramMessageRecord)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    return a(paramMessageRecord.frienduin, paramMessageRecord.shmsgseq, paramMessageRecord.msgUid, paramMessageRecord.msgData);
-  }
-  
-  public static PAMessage a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
-  {
-    String str = a(paramString, paramLong1, paramLong2);
-    PAMessage localPAMessage = (PAMessage)a.get(str);
-    paramString = localPAMessage;
-    if (localPAMessage == null)
+    if (this.a.isFinishing()) {
+      break label10;
+    }
+    label10:
+    label271:
+    for (;;)
     {
-      paramArrayOfByte = ueg.a(paramArrayOfByte);
-      paramString = paramArrayOfByte;
-      if (paramArrayOfByte != null)
+      return;
+      if ((paramObject instanceof bgmj))
       {
-        a.put(str, paramArrayOfByte);
-        paramString = paramArrayOfByte;
+        paramObservable = (bgmj)paramObject;
+        if (paramObservable.a != 1) {
+          break;
+        }
+        boolean bool;
+        if (paramObservable.d == 1)
+        {
+          bool = true;
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.troopinfo", 2, String.format("update isAvatar=%b", new Object[] { Boolean.valueOf(bool) }));
+          }
+          if (!bool) {
+            break label236;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopHead = true;
+          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName) {
+            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop = false;
+          }
+          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isUseClassAvatar) {
+            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isUseClassAvatar = false;
+          }
+          if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null)
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.hasSetNewTroopHead = true;
+            this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop;
+            if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isUseClassAvatar()) {
+              this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.setUseClassAvatar(false);
+            }
+            this.a.d();
+          }
+        }
+        for (;;)
+        {
+          if (!this.a.isResume()) {
+            break label271;
+          }
+          this.a.runOnUiThread(new TroopInfoActivity.30.1(this, paramObservable));
+          return;
+          bool = false;
+          break;
+          label236:
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.troopinfo", 2, "pullAvatarList");
+          }
+          this.a.jdField_a_of_type_Bgio.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+        }
       }
     }
-    return paramString;
-  }
-  
-  private static String a(String paramString, long paramLong1, long paramLong2)
-  {
-    return paramString + "&" + paramLong1 + "&" + paramLong2;
   }
 }
 

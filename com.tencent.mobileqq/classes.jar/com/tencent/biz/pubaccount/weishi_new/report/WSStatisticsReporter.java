@@ -3,13 +3,14 @@ package com.tencent.biz.pubaccount.weishi_new.report;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.HashMap;
+import java.util.Map;
 import mqq.os.MqqHandler;
-import urc;
-import urj;
-import uvr;
-import uvv;
-import uvw;
-import uwd;
+import vfk;
+import vfr;
+import vkf;
+import vkj;
+import vkk;
+import vkr;
 
 public class WSStatisticsReporter
 {
@@ -23,6 +24,7 @@ public class WSStatisticsReporter
   private String mEventName;
   private boolean mFlush;
   private boolean mIsImmediatelyUpload;
+  private boolean mIsSendServer;
   private HashMap<String, String> mReportParams = new HashMap();
   
   private WSStatisticsReporter() {}
@@ -32,14 +34,39 @@ public class WSStatisticsReporter
     this.mEventName = WSStatisticsReporter.Builder.access$000(paramBuilder);
     this.mFlush = WSStatisticsReporter.Builder.access$100(paramBuilder);
     this.mIsImmediatelyUpload = WSStatisticsReporter.Builder.access$200(paramBuilder);
-    this.mBaseCollector = WSStatisticsReporter.Builder.access$300(paramBuilder);
+    this.mIsSendServer = WSStatisticsReporter.Builder.access$300(paramBuilder);
+    this.mBaseCollector = WSStatisticsReporter.Builder.access$400(paramBuilder);
     this.mBuilder = paramBuilder;
+  }
+  
+  private void addGeneralExtParams(Map<String, String> paramMap)
+  {
+    paramMap.put("scenes_channel_from", getEnterPublicAccFrom());
+    paramMap.put("last_test_id", WSPublicAccReport.getInstance().getLocalTestId());
   }
   
   private void beaconData2Server()
   {
-    urj localurj = new urj(new uwd(this.mEventName, this.mReportParams), null, new uvv(this), 4009);
-    urc.a().a(localurj);
+    vfr localvfr = new vfr(new vkr(this.mEventName, this.mReportParams), null, new vkj(this), 4009);
+    vfk.a().a(localvfr);
+  }
+  
+  private static String getEnterPublicAccFrom()
+  {
+    String str = WSPublicAccReport.getInstance().getEnterPublicAccFrom();
+    if (TextUtils.equals(str, "from_search_rzh_ws")) {
+      return "2";
+    }
+    if (TextUtils.equals(str, "from_user_contacts")) {
+      return "3";
+    }
+    if (TextUtils.equals(str, "from_audio_assistant")) {
+      return "5";
+    }
+    if (TextUtils.equals(str, "from_qq_chat")) {
+      return "6";
+    }
+    return "0";
   }
   
   private void reportRequestFailure(String paramString1, String paramString2, String paramString3)
@@ -67,8 +94,8 @@ public class WSStatisticsReporter
     localHashMap.put("err_type", paramString1);
     localHashMap.put("err_code", paramString2);
     localHashMap.put("err_msg", paramString3);
-    uvr.a(localHashMap);
-    uvw.a().a(localHashMap);
+    vkf.a(localHashMap);
+    vkk.a().a(localHashMap);
   }
   
   public void report()
@@ -78,7 +105,7 @@ public class WSStatisticsReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,126 +1,136 @@
-import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.currentTask.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.currentTask.2;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.dailyMissionCount.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.enable.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.getTaskProgress.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.hasRead.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.isNowInKanDianTab.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.lastTask.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.lastTask.2;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.maxTaskTimeForArticleInMs.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.maxTaskTimeWhenArticleStationaryInMs.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.missionCompletedTimeInMs.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.reportTaskCompleted.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.rijAidlInterfaceForRewardTask.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.setRead.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.taskCompletedToday.1;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.updateTaskProgress.1;
-import kotlin.Metadata;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.functions.Function0;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSAppLoader.1;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSAppLoader.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlClientRedPacketModule;", "", "()V", "TAG", "", "value", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "currentTask", "currentTask$annotations", "getCurrentTask", "()Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "setCurrentTask", "(Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;)V", "dailyMissionCount", "", "dailyMissionCount$annotations", "getDailyMissionCount", "()I", "enable", "", "enable$annotations", "getEnable", "()Z", "isNowInKanDianTab", "isNowInKanDianTab$annotations", "lastTask", "lastTask$annotations", "getLastTask", "setLastTask", "maxTaskTimeForArticleInMs", "maxTaskTimeForArticleInMs$annotations", "getMaxTaskTimeForArticleInMs", "maxTaskTimeWhenArticleStationaryInMs", "maxTaskTimeWhenArticleStationaryInMs$annotations", "getMaxTaskTimeWhenArticleStationaryInMs", "missionCompletedTimeInMs", "missionCompletedTimeInMs$annotations", "getMissionCompletedTimeInMs", "rijAidlInterfaceForRewardTask", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterfaceForRewardTask;", "getRijAidlInterfaceForRewardTask", "()Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterfaceForRewardTask;", "getTaskProgress", "hasRead", "rowKey", "reportTaskCompleted", "", "type", "callback", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTaskRemoteRepo$IReportTaskProgressCallback;", "setRead", "taskCompletedToday", "updateTaskProgress", "timeInMx", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qyy
+public class qyy
 {
-  public static final qyy a = new qyy();
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile qyy jdField_a_of_type_Qyy;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  @JvmStatic
-  public static final int a()
+  public static qyy a()
   {
-    return ((Number)qza.a((Function0)RIJAidlClientRedPacketModule.getTaskProgress.1.INSTANCE, Integer.valueOf(0))).intValue();
+    if (jdField_a_of_type_Qyy == null) {}
+    try
+    {
+      if (jdField_a_of_type_Qyy == null) {
+        jdField_a_of_type_Qyy = new qyy();
+      }
+      return jdField_a_of_type_Qyy;
+    }
+    finally {}
   }
   
-  @Nullable
-  public static final RIJRewardTask a()
+  private void a(String paramString)
   {
-    return (RIJRewardTask)qza.a((Function0)RIJAidlClientRedPacketModule.currentTask.2.INSTANCE, null);
+    ThreadManager.excute(new PTSAppLoader.2(this, paramString), 128, null, true);
   }
   
-  private final qyq a()
+  private void b(String paramString)
   {
-    return (qyq)qza.a((Function0)RIJAidlClientRedPacketModule.rijAidlInterfaceForRewardTask.1.INSTANCE, null);
+    int j = 0;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    String str1 = a(paramString);
+    boolean bool2 = FileUtils.fileExists(str1);
+    boolean bool3 = qze.a(str1, paramString);
+    String str2 = str1 + "/" + "pts_app_config.json";
+    boolean bool4 = qze.a(str2);
+    boolean bool1;
+    if ((bool2) && (bool3) && (bool4)) {
+      bool1 = true;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool1;
+      jdField_a_of_type_JavaLangString = qze.b(str2);
+      Object localObject1 = str1 + File.separator + "pages";
+      try
+      {
+        localObject1 = new File((String)localObject1);
+        if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+        {
+          localObject1 = ((File)localObject1).listFiles();
+          int k = localObject1.length;
+          i = 0;
+          while (i < k)
+          {
+            Object localObject2 = localObject1[i];
+            String str3 = localObject2.getName();
+            if ((localObject2.isDirectory()) && (!TextUtils.isEmpty(str3))) {
+              this.jdField_a_of_type_JavaUtilList.add(str3);
+            }
+            i += 1;
+            continue;
+            bool1 = false;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("PTSAppLoader", 1, "[checkPTSApp], e = " + localException);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[checkPTSApp], bid = ").append(paramString).append("\n").append(", appPath = ").append(str1).append("\n").append(", ptsAppVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isAppExists = ").append(bool2).append("\n").append(", isAppValid = ").append(bool3).append("\n").append(", configPath = ").append(str2).append("\n").append(", isAppVersionValid = ").append(bool4).append("\n").append(", isAppOfflineDirValid = ").append(this.jdField_a_of_type_Boolean).append("\n").append(", appNameList = ");
+        int i = j;
+        while (i < this.jdField_a_of_type_JavaUtilList.size())
+        {
+          localStringBuilder.append("[").append(i).append("]: ").append((String)this.jdField_a_of_type_JavaUtilList.get(i)).append("\n");
+          i += 1;
+        }
+        QLog.i("PTSAppLoader", 1, localStringBuilder.toString());
+      }
+    }
   }
   
-  @JvmStatic
-  public static final void a(int paramInt)
+  public String a()
   {
-    qza.a((Function0)new RIJAidlClientRedPacketModule.updateTaskProgress.1(paramInt));
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public static final void a(@Nullable RIJRewardTask paramRIJRewardTask)
+  public String a(String paramString)
   {
-    qza.a((Function0)new RIJAidlClientRedPacketModule.currentTask.1(paramRIJRewardTask));
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    String str = nvf.a(paramString) + paramString;
+    QLog.i("PTSAppLoader", 1, "[getPTSAppDownloadPath], bid = " + paramString + ", path = " + str);
+    return str;
   }
   
-  @JvmStatic
-  public static final void a(@NotNull String paramString)
+  public void a()
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
-    qza.a((Function0)new RIJAidlClientRedPacketModule.setRead.1(paramString));
+    b();
+    PTSAppLoader.1 local1 = new PTSAppLoader.1(this);
+    ThreadManager.getSubThreadHandler().postDelayed(local1, 10000L);
   }
   
-  @JvmStatic
-  public static final void a(@Nullable String paramString, int paramInt, @Nullable qxx paramqxx)
+  public boolean a(String paramString)
   {
-    qza.a((Function0)new RIJAidlClientRedPacketModule.reportTaskCompleted.1(paramString, paramInt, paramqxx));
+    boolean bool = this.jdField_a_of_type_JavaUtilList.contains(paramString);
+    QLog.i("PTSAppLoader", 1, "[isPTSAppReady], appName = " + paramString + ", isAppExists = " + bool + ", isAppOfflineDirValid = " + this.jdField_a_of_type_Boolean);
+    return (this.jdField_a_of_type_Boolean) && (bool);
   }
   
-  public static final boolean a()
+  public void b()
   {
-    return ((Boolean)qza.a((Function0)RIJAidlClientRedPacketModule.isNowInKanDianTab.1.INSTANCE, Boolean.valueOf(false))).booleanValue();
-  }
-  
-  @JvmStatic
-  public static final boolean a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
-    return ((Boolean)qza.a((Function0)new RIJAidlClientRedPacketModule.hasRead.1(paramString), Boolean.valueOf(false))).booleanValue();
-  }
-  
-  @JvmStatic
-  public static final int b()
-  {
-    return ((Number)qza.a((Function0)RIJAidlClientRedPacketModule.taskCompletedToday.1.INSTANCE, Integer.valueOf(0))).intValue();
-  }
-  
-  @Nullable
-  public static final RIJRewardTask b()
-  {
-    return (RIJRewardTask)qza.a((Function0)RIJAidlClientRedPacketModule.lastTask.2.INSTANCE, null);
-  }
-  
-  public static final void b(@Nullable RIJRewardTask paramRIJRewardTask)
-  {
-    qza.a((Function0)new RIJAidlClientRedPacketModule.lastTask.1(paramRIJRewardTask));
-  }
-  
-  public static final boolean b()
-  {
-    return ((Boolean)qza.a((Function0)RIJAidlClientRedPacketModule.enable.1.INSTANCE, Boolean.valueOf(false))).booleanValue();
-  }
-  
-  public static final int c()
-  {
-    return ((Number)qza.a((Function0)RIJAidlClientRedPacketModule.missionCompletedTimeInMs.1.INSTANCE, Integer.valueOf(0))).intValue();
-  }
-  
-  public static final int d()
-  {
-    return ((Number)qza.a((Function0)RIJAidlClientRedPacketModule.dailyMissionCount.1.INSTANCE, Integer.valueOf(0))).intValue();
-  }
-  
-  public static final int e()
-  {
-    return ((Number)qza.a((Function0)RIJAidlClientRedPacketModule.maxTaskTimeForArticleInMs.1.INSTANCE, Integer.valueOf(0))).intValue();
-  }
-  
-  public static final int f()
-  {
-    return ((Number)qza.a((Function0)RIJAidlClientRedPacketModule.maxTaskTimeWhenArticleStationaryInMs.1.INSTANCE, Integer.valueOf(0))).intValue();
+    try
+    {
+      this.jdField_a_of_type_Boolean = false;
+      b("3978");
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

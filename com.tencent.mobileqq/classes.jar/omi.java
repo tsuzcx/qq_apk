@@ -1,30 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdDownloadInfo;
 
-public class omi
-  implements snk
+public final class omi
+  implements Parcelable.Creator<VideoInfo.GameAdDownloadInfo>
 {
-  private WeakReference<ReadInJoyNewBaseActivity> a;
-  
-  public omi(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity)
+  public VideoInfo.GameAdDownloadInfo a(Parcel paramParcel)
   {
-    this.a = new WeakReference(paramReadInJoyNewBaseActivity);
+    return new VideoInfo.GameAdDownloadInfo(paramParcel);
   }
   
-  public void a()
+  public VideoInfo.GameAdDownloadInfo[] a(int paramInt)
   {
-    ReadInJoyNewFeedsActivity localReadInJoyNewFeedsActivity = (ReadInJoyNewFeedsActivity)this.a.get();
-    if (localReadInJoyNewFeedsActivity == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNewFeedsActivity", 2, "NaviMaskTouchListenerImpl. activity has destoryed");
-      }
-    }
-    while ((ReadInJoyNewFeedsActivity.a(localReadInJoyNewFeedsActivity) != 0) || (localReadInJoyNewFeedsActivity.a == null)) {
-      return;
-    }
-    localReadInJoyNewFeedsActivity.a.a(null);
+    return new VideoInfo.GameAdDownloadInfo[paramInt];
   }
 }
 

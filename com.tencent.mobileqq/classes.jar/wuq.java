@@ -1,33 +1,32 @@
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wuq
-  implements Animation.AnimationListener
+  extends wfh
 {
-  public wuq(ExploreAnimalView paramExploreAnimalView) {}
+  public List<QQUserUIItem> a = new ArrayList();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public wuq(qqstory_service.RspConvertUinAndUnionId paramRspConvertUinAndUnionId)
   {
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(600L);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatCount(-1);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatMode(2);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-    paramAnimation = (ImageView)this.a.findViewById(2131365715);
-    ImageView localImageView1 = (ImageView)this.a.findViewById(2131365716);
-    ImageView localImageView2 = (ImageView)this.a.findViewById(2131362968);
-    this.a.a(paramAnimation, 100L);
-    this.a.a(localImageView1, 240L);
-    this.a.a(localImageView2, 360L);
+    super(paramRspConvertUinAndUnionId.result);
+    paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.user_list.get();
+    if (paramRspConvertUinAndUnionId != null)
+    {
+      paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.iterator();
+      while (paramRspConvertUinAndUnionId.hasNext())
+      {
+        qqstory_struct.UserInfo localUserInfo = (qqstory_struct.UserInfo)paramRspConvertUinAndUnionId.next();
+        QQUserUIItem localQQUserUIItem = new QQUserUIItem();
+        localQQUserUIItem.convertFrom(localUserInfo);
+        this.a.add(localQQUserUIItem);
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aiej;
+import aizi;
 
 public class NewFriendManager$6
   implements Runnable
 {
-  public NewFriendManager$6(aiej paramaiej) {}
+  public NewFriendManager$6(aizi paramaizi) {}
   
   public void run()
   {

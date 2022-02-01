@@ -1,15 +1,12 @@
-class askk
-  extends asjv
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+public class askk
 {
-  public askk(asji paramasji)
-  {
-    super(paramasji);
-  }
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  protected String a()
-  {
-    return "StateSenderCancelSend";
-  }
+  public askk(askg paramaskg) {}
 }
 
 

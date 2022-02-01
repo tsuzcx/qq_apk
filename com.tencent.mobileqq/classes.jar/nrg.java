@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import android.os.Handler;
 
-public class nrg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class nrg
+  extends nrn
 {
-  public nrg(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  nrg(nrf paramnrf) {}
   
-  public void onGlobalLayout()
+  public boolean a(int paramInt, String paramString, nfv paramnfv)
   {
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int i = this.a.getWindow().getDecorView().getBottom();
-    int j = this.a.getWindow().getDecorView().getTop();
-    LebaSearchPluginManagerActivity.a(this.a, i - j);
+    bjuc.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
+    nrf.a(this.a).removeCallbacksAndMessages(null);
+    nrf.a(this.a).sendEmptyMessage(2);
+    return true;
   }
 }
 

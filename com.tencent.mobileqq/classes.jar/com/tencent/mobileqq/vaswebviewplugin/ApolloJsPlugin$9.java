@@ -1,25 +1,30 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bgve;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import anex;
+import anfg;
+import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class ApolloJsPlugin$9
-  implements Runnable
+  implements anfg
 {
-  ApolloJsPlugin$9(ApolloJsPlugin paramApolloJsPlugin, int paramInt) {}
+  ApolloJsPlugin$9(ApolloJsPlugin paramApolloJsPlugin, ApolloWebAvatarParam paramApolloWebAvatarParam, Activity paramActivity, AtomicInteger paramAtomicInteger, ArrayList paramArrayList, String paramString) {}
   
-  public void run()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if ((this.this$0.mRuntime != null) && (this.this$0.mRuntime.a() != null))
-    {
-      TouchWebView localTouchWebView = (TouchWebView)this.this$0.mRuntime.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloJsPlugin", 2, "[IPC_APOLLO_DOWNLOAD_GAME] callJs: window.onGameDownloadProgress(" + this.val$percent + ")");
-      }
-      if (localTouchWebView != null) {
-        localTouchWebView.callJs("window.onGameDownloadProgress &&　window.onGameDownloadProgress(" + this.val$percent + ")");
-      }
+    if ((this.val$param.dressIds == null) || (this.val$param.dressIds.length == 0)) {
+      this.val$param.dressIds = anex.a(this.val$param.roleId);
+    }
+    paramString = new ArrayList();
+    paramString.add(this.val$param);
+    if (this.val$activity != null) {
+      this.val$activity.runOnUiThread(new ApolloJsPlugin.9.1(this, paramString));
+    }
+    this.val$counter.getAndIncrement();
+    if (this.val$counter.get() == this.val$avatarParams.size()) {
+      this.this$0.callbackOk(this.val$callbackId);
     }
   }
 }

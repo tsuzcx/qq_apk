@@ -1,8 +1,6 @@
 package com.tencent.biz.qrcode.activity;
 
 import Override;
-import aaeh;
-import amtj;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -12,15 +10,20 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
-import aonx;
-import aszt;
-import bcef;
-import bhht;
+import android.widget.RelativeLayout;
+import anvx;
+import apqy;
+import auea;
+import bdla;
+import bhcl;
+import bisl;
 import com.tencent.biz.qrcode.ipc.ScannerParams;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.ar.ARScanAR;
 import com.tencent.mobileqq.minicode.RecogUtil;
 import com.tencent.mobileqq.nearby.NearbyFakeActivity;
@@ -35,35 +38,41 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qwallet.plugin.QWalletHelper;
 import java.io.File;
-import ocw;
+import okn;
 import org.json.JSONObject;
-import yxc;
-import yxe;
-import yxf;
-import yxg;
-import yxi;
-import yxn;
-import yxq;
-import yxr;
-import yxs;
+import zma;
+import zmc;
+import zmd;
+import zme;
+import zmf;
+import zmh;
+import zmi;
+import zmk;
+import zmp;
+import zms;
+import zmt;
+import zmu;
+import zmv;
 
 public class ScannerActivity
   extends BaseActivity
 {
   public static boolean a;
   private long jdField_a_of_type_Long;
-  private aaeh jdField_a_of_type_Aaeh = new yxc(this);
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new yxg(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new zme(this);
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
-  private bhht jdField_a_of_type_Bhht;
+  private bisl jdField_a_of_type_Bisl;
+  private ScannerMultiResultSelectView jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView;
   public ScannerParams a;
   public ARScanAR a;
   public OcrConfig a;
   private String jdField_a_of_type_JavaLangString;
-  private yxn jdField_a_of_type_Yxn;
-  private yxq jdField_a_of_type_Yxq = new yxe(this);
-  private yxr jdField_a_of_type_Yxr;
+  private zmi jdField_a_of_type_Zmi = new zmf(this);
+  private zmp jdField_a_of_type_Zmp;
+  private zms jdField_a_of_type_Zms = new zmc(this);
+  private zmt jdField_a_of_type_Zmt;
+  private zmu jdField_a_of_type_Zmu = new zma(this);
   private long b;
   public boolean b;
   private boolean c;
@@ -120,7 +129,7 @@ public class ScannerActivity
       if ((TextUtils.isEmpty(((JSONObject)localObject2).optString("md5"))) && (!TextUtils.isEmpty(str)) && (new File(str).exists()))
       {
         long l = System.currentTimeMillis();
-        localObject1 = HexUtil.bytes2HexStr(aszt.e(str));
+        localObject1 = HexUtil.bytes2HexStr(auea.e(str));
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           ((JSONObject)localObject2).put("md5", ((String)localObject1).toUpperCase());
         }
@@ -146,7 +155,7 @@ public class ScannerActivity
       QLog.i("ScannerActivity", 1, "handleScannerResult scannerResult:" + paramString2 + "  scannerType:" + paramString1 + " resultType:" + paramInt1 + " reqType:" + paramInt2);
     }
     if ((paramInt1 & 0x1) == 1) {
-      if (ocw.class.getName().equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
+      if (okn.class.getName().equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
       {
         localIntent = new Intent("com.tencent.biz.pubaccount.scanResultAction");
         if (paramString1 != null)
@@ -160,7 +169,7 @@ public class ScannerActivity
           localIntent.putExtra("com.tencent.biz.pubaccount.scanResultData", paramString2);
           sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
           if (!this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_Boolean) {
-            break label394;
+            break label397;
           }
           getIntent().putExtra("scanResult", paramString2);
           setResult(-1, getIntent());
@@ -168,7 +177,7 @@ public class ScannerActivity
         }
       }
     }
-    label321:
+    label323:
     while ((paramInt1 & 0x2) != 2)
     {
       do
@@ -178,7 +187,7 @@ public class ScannerActivity
           return;
           localIntent.putExtra("com.tencent.biz.pubaccount.scanResultType", 1);
           continue;
-          if (!aonx.class.getName().equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString)) {
+          if (!apqy.class.getName().equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString)) {
             break;
           }
           localIntent = new Intent("com.tencent.mobileqq.ark.API.scanResultAction");
@@ -193,7 +202,7 @@ public class ScannerActivity
           if (paramString1 != null)
           {
             if (!paramString1.equalsIgnoreCase("QR_CODE")) {
-              break label321;
+              break label323;
             }
             localIntent.putExtra("com.tencent.mobileqq.microapp.out.plugins.scanResultType", 2);
           }
@@ -213,25 +222,124 @@ public class ScannerActivity
       sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
       finish();
       return;
-      yxi.a(paramString1, paramString2, this, this.app, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams, this.jdField_a_of_type_Yxq);
+      zmk.a(paramString1, paramString2, this, this.app, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams, this.jdField_a_of_type_Zms);
       return;
     }
-    label394:
+    label397:
     RecogUtil.jumpMiniCode(paramString2, this);
     finish();
   }
   
-  private void a(String paramString1, int paramInt, String paramString2)
+  private void a(ScannerResult paramScannerResult, int paramInt)
   {
-    if (this.jdField_a_of_type_Yxr == null) {
-      this.jdField_a_of_type_Yxr = new yxr(this, this.jdField_a_of_type_Aaeh);
+    if (QLog.isColorLevel()) {
+      QLog.d("ScannerActivity", 2, "handleScannerResult requestType:" + paramInt + " scannerResult:" + paramScannerResult);
+    }
+    if (paramScannerResult == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (paramScannerResult.a())
+        {
+          b(paramScannerResult, paramInt);
+          return;
+        }
+        if (!paramScannerResult.d()) {
+          break;
+        }
+        paramScannerResult = paramScannerResult.a();
+      } while (paramScannerResult == null);
+      a(1, ((StringBuilder)paramScannerResult.second).toString(), ((StringBuilder)paramScannerResult.first).toString(), paramInt);
+      return;
+    } while (!paramScannerResult.c());
+    a(2, "", paramScannerResult.a(), paramInt);
+  }
+  
+  private void a(String paramString, int paramInt)
+  {
+    if (this.jdField_a_of_type_Zmt == null) {
+      this.jdField_a_of_type_Zmt = new zmt(this, this.jdField_a_of_type_Zmu);
     }
     int j = paramInt;
     if (paramInt == 0) {
       j = 3;
     }
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Yxr.a(paramString1, j, paramString2);
+    this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_e_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Zmt.a(paramString, j);
+  }
+  
+  private boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScannerActivity", 2, "handlePreResult detectType:" + this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_Int + " preResult:" + this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_JavaLangString + " preScanResult:" + this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult);
+    }
+    if ((this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult != null) && (this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult.b()))
+    {
+      a(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult, this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_Int);
+      return true;
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_JavaLangString)) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_JavaLangString);
+        m = this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_Int;
+        if ((zmk.a(m)) && (localJSONObject != null))
+        {
+          j = 1;
+          if ((!zmk.b(m)) || (localJSONObject == null)) {
+            break label224;
+          }
+          k = 1;
+          if (j == 0) {
+            break label229;
+          }
+          a(1, localJSONObject.optString("scannerType"), localJSONObject.optString("scannerResult"), m);
+          return true;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        int m;
+        int k;
+        Object localObject;
+        for (;;)
+        {
+          localThrowable.printStackTrace();
+          localObject = null;
+          continue;
+          int j = 0;
+          continue;
+          label224:
+          k = 0;
+        }
+        label229:
+        if (k != 0)
+        {
+          a(2, "", localObject.optString("strMini"), m);
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  private void b(ScannerResult paramScannerResult, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView == null)
+    {
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView = new ScannerMultiResultSelectView(this);
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView.setMultiSelectListener(this.jdField_a_of_type_Zmi);
+    }
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131377074);
+    zmh localzmh = new zmh();
+    localzmh.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_e_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerMultiResultSelectView.a(localRelativeLayout, paramScannerResult, paramInt, localzmh, 2);
+    if ((!this.app.isRingerVibrate()) && (!this.app.isRingerSilent()) && (!this.app.isRingEqualsZero())) {
+      bhcl.b(2131230757, false);
+    }
   }
   
   private void e()
@@ -245,19 +353,21 @@ public class ScannerActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e = localIntent.getBooleanExtra("QRDecode", false);
-      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_Int = localIntent.getIntExtra("detectType", 1);
+      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_e_of_type_Boolean = localIntent.getBooleanExtra("QRDecode", false);
+      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_Int = localIntent.getIntExtra("detectType", 3);
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_JavaLangString = localIntent.getStringExtra("preResult");
+      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult = ((ScannerResult)localIntent.getParcelableExtra("preScanResult"));
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.h = "qlink".equalsIgnoreCase(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.g = super.getPackageManager().hasSystemFeature("android.hardware.camera");
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString = localIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString;
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString)) {
         this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_Boolean = true;
       }
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("scanForResult", false);
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_b_of_type_Boolean = localIntent.getBooleanExtra("finishAfterSucc", false);
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i = false;
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131376804);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131377073);
       ViewCompat.setImportantForAccessibility(this.jdField_a_of_type_AndroidViewView, 2);
       if (("Conversation".equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString)) || ("web-ar".equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))) {
         this.h = true;
@@ -294,31 +404,31 @@ public class ScannerActivity
   {
     long l = System.currentTimeMillis();
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.e = NearbyFakeActivity.a();
+    this.jdField_e_of_type_Boolean = NearbyFakeActivity.a();
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
     }
-    if (this.jdField_a_of_type_Yxn == null) {
-      this.jdField_a_of_type_Yxn = new yxn(this);
+    if (this.jdField_a_of_type_Zmp == null) {
+      this.jdField_a_of_type_Zmp = new zmp(this);
     }
     QLog.d("ScannerActivity", 2, "launchAr time pre: " + (System.currentTimeMillis() - l));
-    this.jdField_a_of_type_Yxn.a("qr", 5000L, new yxf(this, l));
+    this.jdField_a_of_type_Zmp.a("qr", 5000L, new zmd(this, l));
   }
   
   public void b()
   {
     QLog.d("ScannerActivity", 2, String.format("doLaunchAr", new Object[0]));
-    if (this.jdField_a_of_type_Yxn != null)
+    if (this.jdField_a_of_type_Zmp != null)
     {
-      this.jdField_a_of_type_Yxn.a();
-      this.jdField_a_of_type_Yxn = null;
+      this.jdField_a_of_type_Zmp.a();
+      this.jdField_a_of_type_Zmp = null;
     }
     Object localObject;
     if ((this.app instanceof QQAppInterface))
     {
-      localObject = (WebProcessManager)this.app.getManager(13);
+      localObject = (WebProcessManager)this.app.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
       if (localObject != null) {
         ((WebProcessManager)localObject).e();
       }
@@ -332,14 +442,14 @@ public class ScannerActivity
     localIntent.putExtra("click_time", this.jdField_a_of_type_Long);
     localIntent.putExtra("launch_time", System.currentTimeMillis());
     localIntent.putExtra("first_click", jdField_a_of_type_Boolean);
-    localIntent.putExtra("proc_exist", this.e);
+    localIntent.putExtra("proc_exist", this.jdField_e_of_type_Boolean);
     localIntent.putExtra("software", getSharedPreferences("immerse_ar", 0).getBoolean("software", false));
     jdField_a_of_type_Boolean = false;
     localIntent.putExtra("log_on", ScanTorchActivity.h);
     if (this.jdField_a_of_type_ComTencentMobileqqArARScanAR != null)
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArARScanAR.e)) {
-        break label607;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArARScanAR.jdField_e_of_type_JavaLangString)) {
+        break label608;
       }
       localIntent.putExtra("icon_text", "QQ-AR");
     }
@@ -382,8 +492,8 @@ public class ScannerActivity
       overridePendingTransition(0, 0);
       this.jdField_b_of_type_Boolean = true;
       return;
-      label607:
-      localIntent.putExtra("icon_text", this.jdField_a_of_type_ComTencentMobileqqArARScanAR.e);
+      label608:
+      localIntent.putExtra("icon_text", this.jdField_a_of_type_ComTencentMobileqqArARScanAR.jdField_e_of_type_JavaLangString);
     }
   }
   
@@ -398,14 +508,14 @@ public class ScannerActivity
       return;
       try
       {
-        if (this.jdField_a_of_type_Bhht == null)
+        if (this.jdField_a_of_type_Bisl == null)
         {
-          this.jdField_a_of_type_Bhht = new bhht(this, getTitleBarHeight());
-          this.jdField_a_of_type_Bhht.a(amtj.a(2131712625));
-          this.jdField_a_of_type_Bhht.c(false);
+          this.jdField_a_of_type_Bisl = new bisl(this, getTitleBarHeight());
+          this.jdField_a_of_type_Bisl.a(anvx.a(2131712972));
+          this.jdField_a_of_type_Bisl.c(false);
         }
         this.jdField_d_of_type_Boolean = true;
-        this.jdField_a_of_type_Bhht.show();
+        this.jdField_a_of_type_Bisl.show();
         return;
       }
       catch (Exception localException) {}
@@ -423,8 +533,8 @@ public class ScannerActivity
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
       }
-      if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
-        this.jdField_a_of_type_Bhht.dismiss();
+      if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
+        this.jdField_a_of_type_Bisl.dismiss();
       }
       this.jdField_d_of_type_Boolean = false;
       return;
@@ -492,19 +602,23 @@ public class ScannerActivity
         overridePendingTransition(0, 0);
         return;
       case 13: 
-        paramInt1 = paramIntent.getIntExtra("detectType", 1);
-        String str1 = paramIntent.getStringExtra("scannerResult");
-        String str2 = paramIntent.getStringExtra("scannerType");
         this.jdField_a_of_type_JavaLangString = null;
         if (paramIntent.hasExtra("filePath")) {
           this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("filePath");
+        }
+        this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+        paramInt1 = paramIntent.getIntExtra("detectType", 1);
+        String str = paramIntent.getStringExtra("scannerResult");
+        paramIntent = paramIntent.getStringExtra("scannerType");
+        if (QLog.isColorLevel()) {
+          QLog.d("ScannerActivity", 2, "doOnActivityResult  scannerResult:" + str + " scannerType：" + paramIntent + " photoPathForMd5:" + this.jdField_a_of_type_JavaLangString);
         }
         if (paramInt1 == 2)
         {
           finish();
           return;
         }
-        a(paramInt1, str2, str1, 3);
+        a(paramInt1, paramIntent, str, 3);
         return;
       }
       paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
@@ -514,11 +628,12 @@ public class ScannerActivity
       if (TextUtils.isEmpty(paramIntent)) {
         break;
       }
+      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_e_of_type_JavaLangString = paramIntent;
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString = paramIntent;
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_Boolean = true;
     } while (!isResume());
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    a(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_JavaLangString);
+    a(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString, 3);
     this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString = null;
     return;
     finish();
@@ -538,7 +653,7 @@ public class ScannerActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560418);
+    super.setContentView(2131560468);
     e();
     this.f = false;
     this.jdField_c_of_type_Boolean = false;
@@ -558,16 +673,16 @@ public class ScannerActivity
       if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString)) && (j == 0)) {
         a();
       }
-      paramBundle = (yxs)this.app.getManager(243);
+      paramBundle = (zmv)this.app.getManager(QQManagerFactory.QR_MAIN_PROC_MANAGER);
       if (paramBundle != null) {
         paramBundle.a(getApplicationContext(), this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams);
       }
-      yxi.a(this.app);
+      zmk.a(this.app);
       return true;
       if (getIntent().getBooleanExtra("from_+", false)) {
-        bcef.b(null, "dc00898", "", "", "0X80085A9", "0X80085A9", 0, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", "0X80085A9", "0X80085A9", 0, 0, "", "", "", "");
       } else {
-        bcef.b(null, "dc00898", "", "", "0X80085AA", "0X80085AA", 0, 0, "", "", this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString, "");
+        bdla.b(null, "dc00898", "", "", "0X80085AA", "0X80085AA", 0, 0, "", "", this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString, "");
       }
     }
   }
@@ -579,35 +694,35 @@ public class ScannerActivity
     }
     if ((!this.jdField_b_of_type_Boolean) || (this.f))
     {
-      if (aonx.class.getName().equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
+      if (apqy.class.getName().equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
       {
         localObject = new Intent("com.tencent.mobileqq.ark.API.scanResultAction");
         ((Intent)localObject).putExtra("com.tencent.ark.scanResultData", "");
         ((Intent)localObject).putExtra("com.tencent.ark.scanResultType", "");
         sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
       }
-      Object localObject = (yxs)this.app.getManager(243);
+      Object localObject = (zmv)this.app.getManager(QQManagerFactory.QR_MAIN_PROC_MANAGER);
       if (localObject != null) {
-        ((yxs)localObject).a();
+        ((zmv)localObject).a();
       }
       if (QLog.isColorLevel()) {
         QLog.d("ScannerActivity", 2, "doOnDestroy in onScannerDestroy");
       }
     }
-    if (this.jdField_a_of_type_Yxr != null)
+    if (this.jdField_a_of_type_Zmt != null)
     {
-      this.jdField_a_of_type_Yxr.a();
-      this.jdField_a_of_type_Yxr = null;
+      this.jdField_a_of_type_Zmt.a();
+      this.jdField_a_of_type_Zmt = null;
     }
-    if (this.jdField_a_of_type_Yxn != null)
+    if (this.jdField_a_of_type_Zmp != null)
     {
-      this.jdField_a_of_type_Yxn.a();
-      this.jdField_a_of_type_Yxn = null;
+      this.jdField_a_of_type_Zmp.a();
+      this.jdField_a_of_type_Zmp = null;
     }
-    if (this.jdField_a_of_type_Bhht != null)
+    if (this.jdField_a_of_type_Bisl != null)
     {
-      this.jdField_a_of_type_Bhht.dismiss();
-      this.jdField_a_of_type_Bhht = null;
+      this.jdField_a_of_type_Bisl.dismiss();
+      this.jdField_a_of_type_Bisl = null;
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
@@ -615,7 +730,7 @@ public class ScannerActivity
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
     super.doOnDestroy();
-    yxi.a(this);
+    zmk.a(this);
     this.app = null;
   }
   
@@ -647,8 +762,11 @@ public class ScannerActivity
     super.doOnResume();
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString))
     {
+      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString;
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      a(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_JavaLangString);
+      if (!a()) {
+        a(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_Int);
+      }
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString = null;
     }
     if ((QLog.isColorLevel()) && (this.g) && (this.jdField_b_of_type_Long > 0L))

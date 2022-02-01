@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
 import android.text.TextUtils;
+import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -120,7 +120,7 @@ public class C2CPicUpHandler
     }
   }
   
-  protected void handleSucResp(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, amwm paramamwm, ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  protected void handleSucResp(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, anza paramanza, ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
     try
     {
@@ -131,7 +131,7 @@ public class C2CPicUpHandler
     }
     catch (Exception paramFromServiceMsg)
     {
-      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramFromServiceMsg.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramamwm, paramRichProtoResp.resps);
+      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramFromServiceMsg.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, paramRichProtoResp.resps);
     }
     for (;;)
     {
@@ -156,7 +156,7 @@ public class C2CPicUpHandler
               break label298;
             }
             parseResp(paramProtoResp, localC2CPicUpResp);
-            setResult(0, 0, "", "", paramamwm, localC2CPicUpResp);
+            setResult(0, 0, "", "", paramanza, localC2CPicUpResp);
           }
           catch (Exception paramProtoResp) {}
         }
@@ -168,7 +168,7 @@ public class C2CPicUpHandler
             RichProto.RichProtoResp.C2CPicUpResp localC2CPicUpResp = null;
           }
         }
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramamwm, localC2CPicUpResp);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, localC2CPicUpResp);
         continue;
         label298:
         if (shouldRetryByRetCode(i))
@@ -180,7 +180,7 @@ public class C2CPicUpHandler
             return;
           }
         }
-        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", paramamwm, localC2CPicUpResp);
+        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", paramanza, localC2CPicUpResp);
       }
     }
   }

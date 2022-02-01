@@ -1,21 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import java.util.List;
 
-class puj
-  implements Comparator<ChannelInfo>
+public class puj
 {
-  puj(puh parampuh) {}
+  public void a(int paramInt, List<DynamicChannelDataModel> paramList) {}
   
-  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
-  {
-    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
-      return 0;
-    }
-    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
-      return -1;
-    }
-    return 1;
-  }
+  public void a(int paramInt1, boolean paramBoolean, List<puq> paramList, int paramInt2) {}
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
+  
+  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
 }
 
 

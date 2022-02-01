@@ -1,43 +1,47 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class ajwn
-  extends Handler
+class ajwn
+  implements View.OnClickListener
 {
-  public ajwn(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
+  ajwn(ajwl paramajwl, TroopLinkElement paramTroopLinkElement, ajwp paramajwp) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.b()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RedPacketKuaKuaFragment", 2, "handleMessage:getActivity() == null || getActivity().isFinishing()");
-      }
-    }
-    do
+    Object localObject;
+    if (!ajwl.a(this.jdField_a_of_type_Ajwl))
     {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("RedPacketKuaKuaFragment", 2, "handleMessage() returned:输入完成");
-      }
-    } while (NetConnInfoCenter.getServerTime() - RedPacketKuaKuaFragment.b(this.a) < RedPacketKuaKuaFragment.c(this.a));
-    if (TextUtils.isEmpty(RedPacketKuaKuaFragment.a(this.a).getText().toString()))
-    {
-      this.a.a(amtj.a(2131705098));
+      localObject = new Intent(ajwl.a(this.jdField_a_of_type_Ajwl), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement.url);
+      ajwl.a(this.jdField_a_of_type_Ajwl).startActivity((Intent)localObject);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    bkvx.a(this.a.getActivity().app, "tenpay.com", new ajwo(this));
+    boolean bool = ajwp.a(this.jdField_a_of_type_Ajwp).isChecked();
+    if (bool)
+    {
+      ajwl.a(this.jdField_a_of_type_Ajwl).remove(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+      label92:
+      localObject = ajwp.a(this.jdField_a_of_type_Ajwp);
+      if (bool) {
+        break label134;
+      }
+    }
+    label134:
+    for (bool = true;; bool = false)
+    {
+      ((CheckBox)localObject).setChecked(bool);
+      break;
+      ajwl.a(this.jdField_a_of_type_Ajwl).add(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+      break label92;
+    }
   }
 }
 

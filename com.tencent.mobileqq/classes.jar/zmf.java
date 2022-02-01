@@ -1,26 +1,36 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView.1.1;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
+import com.tencent.biz.qrcode.activity.QMiniResult;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.qbar.QBarResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class zmf
-  implements ImageLoader.ImageLoadListener
+  implements zmi
 {
-  public zmf(CommodityItemView paramCommodityItemView) {}
+  public zmf(ScannerActivity paramScannerActivity) {}
   
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
+  public void a()
   {
-    if (CommodityItemView.a(this.a) != null) {
-      this.a.post(new CommodityItemView.1.1(this, paramDrawable));
+    if (QLog.isColorLevel()) {
+      QLog.d("ScannerActivity", 2, "onMultiCancel");
     }
+    this.a.doOnBackPressed();
   }
   
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
+  public void a(QMiniResult paramQMiniResult, int paramInt, zmh paramzmh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScannerActivity", 2, "onMultiSelectMini result:" + paramQMiniResult + " " + paramInt);
+    }
+    ScannerActivity.a(this.a, 2, "", paramQMiniResult.a, paramInt);
+  }
+  
+  public void a(QBarResult paramQBarResult, int paramInt, zmh paramzmh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScannerActivity", 2, "onMultiSelectQr result:" + paramQBarResult + " " + paramInt);
+    }
+    ScannerActivity.a(this.a, 1, paramQBarResult.a, paramQBarResult.b, paramInt);
+  }
 }
 
 

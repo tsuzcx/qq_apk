@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.play;
 
-import blur;
+import bnju;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 class AETakeFacePhotoPreviewFragment$2
-  extends blur
+  extends bnju
 {
   AETakeFacePhotoPreviewFragment$2(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
   

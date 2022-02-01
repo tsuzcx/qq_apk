@@ -1,21 +1,20 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troopreward.OrientationAdapterImageView;
+import com.tencent.qphone.base.util.QLog;
 
-class bgty
-  implements TouchWebView.OnScrollChangedListener
+public class bgty
+  extends Handler
 {
-  bgty(bgtw parambgtw) {}
+  public bgty(OrientationAdapterImageView paramOrientationAdapterImageView) {}
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.mScrollPos = paramInt2;
-    this.a.updateTitleBar(this.a.mScrollPos, this.a.mIsShade);
-    paramView = this.a.mUIStyleHandler.getWebView();
-    if ((paramView != null) && (!TextUtils.isEmpty(this.a.mWebViewScrollChangeCb))) {
-      paramView.callJs(this.a.mWebViewScrollChangeCb, new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2), String.valueOf(paramInt3), String.valueOf(paramInt4) });
+    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.a.invalidate();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OrientationAdapterImageView", 2, "handleMessage:" + this.a.jdField_a_of_type_Int + "," + this.a.jdField_a_of_type_AndroidGraphicsBitmap);
     }
   }
 }

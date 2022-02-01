@@ -1,52 +1,73 @@
-import com.tencent.mobileqq.emotionintegrate.SearchEmoticonFragment;
-import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class argf
-  extends WebViewPlugin
+  extends aqwt<argg>
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  @NonNull
+  public argg a(int paramInt)
   {
-    boolean bool = false;
-    if ((!"emoticon".equals(paramString2)) || (("showEmoticon".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))) {}
-    try
-    {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-      paramString1 = new SearchEmoticonWebBean();
-      paramString1.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("emt_name", "");
-      paramString1.jdField_b_of_type_JavaLangString = paramJsBridgeListener.optString("emt_oriUrl", "");
-      paramString1.jdField_c_of_type_JavaLangString = paramJsBridgeListener.optString("emt_oriMd5", "");
-      paramString1.jdField_a_of_type_Int = paramJsBridgeListener.optInt("emt_oriFileSize", 0);
-      paramString1.jdField_b_of_type_Int = paramJsBridgeListener.optInt("emt_oriWidth", 0);
-      paramString1.jdField_c_of_type_Int = paramJsBridgeListener.optInt("emt_oriHeight", 0);
-      paramString1.jdField_d_of_type_Int = paramJsBridgeListener.optInt("emt_type", 0);
-      paramString1.jdField_d_of_type_JavaLangString = paramJsBridgeListener.optString("emt_packCoverUrl", "");
-      paramString1.e = paramJsBridgeListener.optString("emt_packId", "");
-      paramString1.f = paramJsBridgeListener.optString("emt_packName", "");
-      paramString1.g = paramJsBridgeListener.optString("emt_miniId", "");
-      paramString1.h = paramJsBridgeListener.optString("emt_miniName", "");
-      SearchEmoticonFragment.a(this.mRuntime.a(), paramString1);
-      bool = true;
-      return bool;
+    return new argg();
+  }
+  
+  @Nullable
+  public argg a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0) && (paramArrayOfaqxa[0] != null)) {
+      return argg.a(paramArrayOfaqxa[0].a);
     }
-    catch (JSONException paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonPlugin", 2, "showEmoticon error : " + bjna.a(paramJsBridgeListener));
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountConfProcessor", 2, "onParsed is null");
     }
+    return null;
+  }
+  
+  public void a(argg paramargg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountConfProcessor", 2, "onUpdate " + paramargg.toString());
+    }
+  }
+  
+  public Class<argg> clazz()
+  {
+    return argg.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 607;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argf
  * JD-Core Version:    0.7.0.1
  */

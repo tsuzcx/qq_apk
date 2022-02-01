@@ -1,19 +1,8 @@
-import mqq.app.QQPermissionCallback;
-
-class balc
-  implements QQPermissionCallback
+public class balc
 {
-  balc(bakw parambakw) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bfur.a(this.a.mContext);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bakw.a(this.a);
-  }
+  public int a;
+  public String a;
+  public int b;
 }
 
 

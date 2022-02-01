@@ -1,23 +1,16 @@
-import java.util.Comparator;
-
-class berj
-  implements Comparator<Long>
+public abstract interface berj
 {
-  public int a(Long paramLong1, Long paramLong2)
-  {
-    int i = 0;
-    if (paramLong1.longValue() - paramLong2.longValue() > 0L) {
-      i = 1;
-    }
-    while (paramLong1.longValue() - paramLong2.longValue() >= 0L) {
-      return i;
-    }
-    return -1;
-  }
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     berj
  * JD-Core Version:    0.7.0.1
  */

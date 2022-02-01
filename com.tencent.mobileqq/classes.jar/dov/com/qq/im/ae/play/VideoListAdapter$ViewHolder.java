@@ -22,14 +22,14 @@ public class VideoListAdapter$ViewHolder
   public VideoListAdapter$ViewHolder(VideoListAdapter paramVideoListAdapter, View paramView)
   {
     super(paramView);
-    this.outFrameLayout = ((FrameLayout)paramView.findViewById(2131380610));
-    this.internFrameLayout = ((RoundCorneredFrameLayout)paramView.findViewById(2131368890));
-    this.thumb = ((ImageView)paramView.findViewById(2131368941));
+    this.outFrameLayout = ((FrameLayout)paramView.findViewById(2131380956));
+    this.internFrameLayout = ((RoundCorneredFrameLayout)paramView.findViewById(2131369048));
+    this.thumb = ((ImageView)paramView.findViewById(2131369102));
     this.thumb.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.hover = ((ImageView)paramView.findViewById(2131368216));
-    this.index = ((TextView)paramView.findViewById(2131368944));
-    this.hover_selected = ((ImageView)paramView.findViewById(2131368217));
-    this.index_selected = ((TextView)paramView.findViewById(2131368945));
+    this.hover = ((ImageView)paramView.findViewById(2131368360));
+    this.index = ((TextView)paramView.findViewById(2131369105));
+    this.hover_selected = ((ImageView)paramView.findViewById(2131368361));
+    this.index_selected = ((TextView)paramView.findViewById(2131369106));
   }
   
   public void autoClick()

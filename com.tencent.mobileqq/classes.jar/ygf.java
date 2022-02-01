@@ -1,16 +1,41 @@
-import java.io.File;
-import java.io.FileFilter;
-
-class ygf
-  implements FileFilter
+public class ygf<T>
+  extends yge
 {
-  ygf(yge paramyge) {}
+  public T a;
+  public String a;
+  public ygh<T> a;
   
-  public boolean accept(File paramFile)
+  public ygf(ygh<T> paramygh)
   {
-    paramFile = paramFile.getName();
-    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp"));
+    this.jdField_a_of_type_JavaLangString = "GetResultSimpleStep";
+    this.jdField_a_of_type_Ygh = paramygh;
   }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Ygh != null) {
+      this.jdField_a_of_type_Ygh.a(this.jdField_a_of_type_JavaLangObject);
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

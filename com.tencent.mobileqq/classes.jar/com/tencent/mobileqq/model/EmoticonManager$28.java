@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.model;
 
-import avsq;
+import awyr;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.persistence.EntityManager;
 
 public class EmoticonManager$28
   implements Runnable
 {
-  public EmoticonManager$28(avsq paramavsq, Emoticon paramEmoticon) {}
+  public EmoticonManager$28(awyr paramawyr, Emoticon paramEmoticon) {}
   
   public void run()
   {

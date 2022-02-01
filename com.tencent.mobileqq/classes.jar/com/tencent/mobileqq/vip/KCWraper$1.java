@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vip;
 
-import bgom;
-import bgoy;
+import bhyw;
+import bhzi;
 
 public class KCWraper$1
   implements Runnable
 {
-  public KCWraper$1(bgom parambgom, bgoy parambgoy) {}
+  public KCWraper$1(bhyw parambhyw, bhzi parambhzi) {}
   
   public void run()
   {

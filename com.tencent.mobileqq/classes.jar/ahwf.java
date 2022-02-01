@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class ahwf
-  implements ahwm
+  extends ahwd
 {
-  public ahwf(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
-  
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  void b(BaseChatPie paramBaseChatPie)
   {
-    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
-    {
-      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
-      if (QLog.isColorLevel()) {
-        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
-      }
-    }
-    do
-    {
-      return;
-      this.a.a = null;
-    } while (!QLog.isColorLevel());
-    QLog.i("chatHistory.troop.portal", 2, "no media data found");
+    a(paramBaseChatPie.sessionInfo.curType, 201);
+    a(paramBaseChatPie.sessionInfo.curType, 202);
+    a(paramBaseChatPie.sessionInfo.curType, 205);
   }
 }
 

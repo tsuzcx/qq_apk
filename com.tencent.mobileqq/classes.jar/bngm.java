@@ -1,16 +1,105 @@
-public abstract interface bngm
+import android.view.View;
+import android.view.ViewStub;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import dov.com.qq.im.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder.1;
+import dov.com.qq.im.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder.2;
+import dov.com.qq.im.ae.mode.AECaptureMode;
+
+public class bngm
+  extends bnbj
 {
-  public abstract void a(bnno parambnno);
+  private AEProviderContainerView a;
   
-  public abstract void a(bnno parambnno, int paramInt1, int paramInt2);
+  public bngm(ViewStub paramViewStub)
+  {
+    super(paramViewStub);
+  }
   
-  public abstract void a(bnno parambnno, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2);
+  protected void a(View paramView)
+  {
+    this.a = ((AEProviderContainerView)paramView.findViewById(2131363465));
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
+  public void a(bbhb parambbhb)
+  {
+    a(new BeautyAndFilterPanelViewStubHolder.1(this, parambbhb));
+  }
   
-  public abstract void b(bnno parambnno);
+  public void a(bnbg parambnbg, bnqc parambnqc)
+  {
+    a(new BeautyAndFilterPanelViewStubHolder.2(this, parambnbg, parambnqc));
+  }
   
-  public abstract void b(bnno parambnno, int paramInt1, int paramInt2);
+  public void a(AECaptureMode paramAECaptureMode)
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.setCaptureMode(paramAECaptureMode);
+  }
+  
+  public void b()
+  {
+    a();
+    this.a.setVisibility(0);
+    this.a.b();
+  }
+  
+  public boolean b()
+  {
+    if (!a()) {
+      return false;
+    }
+    return this.a.c();
+  }
+  
+  public void c()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.a();
+  }
+  
+  public void d()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.d();
+  }
+  
+  public void e()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.f();
+  }
+  
+  public void f()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.c();
+  }
+  
+  public void g()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.g();
+  }
+  
+  public void h()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.h();
+  }
 }
 
 

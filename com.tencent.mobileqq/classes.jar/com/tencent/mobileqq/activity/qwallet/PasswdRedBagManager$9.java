@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import ajuj;
-import ajuk;
-import ajul;
+import akqc;
+import akqd;
+import akqe;
 import java.util.Iterator;
 import java.util.List;
 
 public class PasswdRedBagManager$9
   implements Runnable
 {
-  public PasswdRedBagManager$9(ajul paramajul) {}
+  public PasswdRedBagManager$9(akqe paramakqe) {}
   
   public void run()
   {
-    Iterator localIterator = ajul.a(this.this$0).a().iterator();
+    Iterator localIterator = akqe.a(this.this$0).a().iterator();
     while (localIterator.hasNext())
     {
-      ajuk localajuk = (ajuk)localIterator.next();
-      ajul.a(this.this$0, localajuk);
-      this.this$0.a(false, localajuk.a, localajuk.b);
+      akqd localakqd = (akqd)localIterator.next();
+      akqe.a(this.this$0, localakqd);
+      this.this$0.a(false, localakqd.a, localakqd.b);
     }
   }
 }

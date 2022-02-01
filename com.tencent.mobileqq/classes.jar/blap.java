@@ -1,18 +1,18 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.ImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.CirclePageIndicator.SavedState;
 
-public class blap
-  extends blan
+public final class blap
+  implements Parcelable.Creator<CirclePageIndicator.SavedState>
 {
-  public blap(String paramString, View paramView)
+  public CirclePageIndicator.SavedState a(Parcel paramParcel)
   {
-    super(paramString, paramView);
+    return new CirclePageIndicator.SavedState(paramParcel, null);
   }
   
-  protected void a(String paramString)
+  public CirclePageIndicator.SavedState[] a(int paramInt)
   {
-    ((ImageView)this.a).setBackgroundColor(Color.parseColor(paramString));
+    return new CirclePageIndicator.SavedState[paramInt];
   }
 }
 

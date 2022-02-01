@@ -1,59 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class tue
-  implements qdy
+  implements HippyQQEngine.HippyQQEngineListener
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public tue(ViolaFragment paramViolaFragment, Bundle paramBundle, ViewGroup paramViewGroup) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void onError(int paramInt, String paramString)
   {
-    return pzv.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
-  {
-    paramContainer = paramContainer.getVirtualView();
-    Object localObject;
-    if ((parampvc != null) && (parampvc.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampvc.a())))
-    {
-      localObject = paramContainer.findViewBaseByName("id_article_brand_optimization");
-      TemplateBean localTemplateBean = parampvc.a().mProteusTemplateBean;
-      paramContainer = null;
-      if (localTemplateBean != null) {
-        paramContainer = localTemplateBean.findViewById("id_top_left_mask");
-      }
-      if ((localObject instanceof tyr))
-      {
-        localObject = (tyr)localObject;
-        ((tyr)localObject).a(parampvc);
-        if (paramContainer == null) {
-          break label96;
-        }
-        ((tyr)localObject).a(true);
-      }
+    QLog.d("Hippy", 1, "Hippy: initHippy error statusCode=" + paramInt + ", msg=" + paramString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.mViolaUiDelegate.b();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.onHippyPageLoad(false, paramString)) {}
+    while (paramInt == -11) {
+      return;
     }
-    return;
-    label96:
-    ((tyr)localObject).a(false);
+    ViolaFragment.access$000(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_AndroidViewViewGroup);
   }
   
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  public void onSuccess()
   {
-    return false;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.mViolaUiDelegate.b();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.mViolaUiDelegate.d();
+    QLog.d("Hippy", 1, "Hippy: initHippy success!");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.onHippyPageLoad(true, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tue
  * JD-Core Version:    0.7.0.1
  */

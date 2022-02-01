@@ -1,11 +1,19 @@
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.ScrollView;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
+
 public class bfkp
+  implements bdyv
 {
-  public int a = 1;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public bfkp(TroopEnterEffectController.3 param3) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.this$0.a.getLayoutParams();
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = paramInt2;
+    this.a.this$0.a.setLayoutParams(localLayoutParams);
+  }
 }
 
 

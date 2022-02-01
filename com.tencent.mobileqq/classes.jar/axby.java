@@ -1,20 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
 
-class axby
+public class axby
   implements DialogInterface.OnClickListener
 {
-  axby(axax paramaxax, QQCustomDialog paramQQCustomDialog) {}
+  public axby(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    }
-    while (paramInt != 0) {
+    awzs.a().a().c();
+    awzs.a().d();
+    if (this.a.a)
+    {
+      this.a.g();
       return;
     }
+    this.a.a(this.a.getActivity());
   }
 }
 

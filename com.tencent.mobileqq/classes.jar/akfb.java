@@ -1,43 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.text.DecimalFormat;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 public class akfb
+  implements akfe
 {
-  public static String a;
-  public static DecimalFormat a;
-  private static boolean a;
-  public static String b;
-  public static String c;
-  private static String d;
-  public int a;
-  public long a;
-  public int b;
-  public long b;
+  public akfb(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  static
+  public void a(RecentBaseData paramRecentBaseData)
   {
-    jdField_a_of_type_JavaLangString = "https://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
-    jdField_b_of_type_JavaLangString = "https://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
-    c = jdField_a_of_type_JavaLangString;
-    d = jdField_b_of_type_JavaLangString;
-    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
-  }
-  
-  public static String a()
-  {
-    if (!jdField_a_of_type_Boolean)
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (paramRecentBaseData.getRecentUserUin().equals("0"))
     {
-      QQAppInterface localQQAppInterface = akgd.a();
-      if (localQQAppInterface != null) {
-        d = ((ajyg)localQQAppInterface.getManager(245)).a("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
+      MiniMsgTabFragment.a(this.a).findViewById(2131379172).performClick();
+      return;
+    }
+    MiniChatActivity.a(localFragmentActivity, paramRecentBaseData.getRecentUserType(), paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getTitleName(), false, MiniMsgTabFragment.b(this.a));
+    akej.a("0X8009C2D");
+    if (MiniMsgTabFragment.a(this.a) == null) {
+      MiniMsgTabFragment.a(this.a, AnimationUtils.loadAnimation(this.a.getActivity(), 2130771995));
+    }
+    MiniMsgTabFragment.b(this.a).startAnimation(MiniMsgTabFragment.a(this.a));
+    MiniMsgTabFragment.a(this.a).setAnimationListener(new akfc(this, localFragmentActivity));
+    MiniMsgTabFragment.b(this.a).setVisibility(8);
+    int i = paramRecentBaseData.getRecentUserType();
+    if (acnh.d(i)) {
+      i = 1;
+    }
+    for (;;)
+    {
+      bdla.b(null, "dc00898", "", "", "0X800A0F7", "0X800A0F7", MiniMsgTabFragment.b(this.a), 1, "" + i, "", "", "");
+      return;
+      if (i == 1) {
+        i = 2;
+      } else if (i == 3000) {
+        i = 4;
+      } else {
+        i = 5;
       }
     }
-    return d;
-  }
-  
-  public String toString()
-  {
-    return "SpecifyAnimInfo{aId=" + this.jdField_a_of_type_Int + ", minPrice=" + this.jdField_a_of_type_Long + ", maxPrice=" + this.jdField_b_of_type_Long + ", skinId=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

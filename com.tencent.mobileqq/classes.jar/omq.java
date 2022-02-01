@@ -1,19 +1,18 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.TopBarInfo;
 
-public class omq
-  implements bjoe
+public final class omq
+  implements Parcelable.Creator<VideoInfo.TopBarInfo>
 {
-  public omq(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public VideoInfo.TopBarInfo a(Parcel paramParcel)
   {
-    ReadInJoySettingActivity.c(this.a).d(paramInt);
-    ((TextView)this.a.findViewById(2131372638)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
-    pay.a(Integer.toString(paramInt));
-    odq.a(null, "", "0X8007416", "0X8007416", 0, 0, Integer.toString(paramInt), "", "", "", false);
-    ReadInJoySettingActivity.c(this.a).cancel();
+    return new VideoInfo.TopBarInfo(paramParcel);
+  }
+  
+  public VideoInfo.TopBarInfo[] a(int paramInt)
+  {
+    return new VideoInfo.TopBarInfo[paramInt];
   }
 }
 

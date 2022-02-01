@@ -2,13 +2,13 @@ package com.tencent.mfsdk.config;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import aptq;
-import aptx;
+import aqwt;
+import aqxa;
 import com.google.gson.Gson;
 import com.tencent.qphone.base.util.QLog;
 
 public class QConfigAPMProcessor
-  extends aptq<APMConfRoot>
+  extends aqwt<APMConfRoot>
 {
   public static final int CONFIG_ID = 255;
   public static final String TAG = "QAPM.Processor";
@@ -48,17 +48,17 @@ public class QConfigAPMProcessor
   }
   
   @Nullable
-  public APMConfRoot onParsed(aptx[] paramArrayOfaptx)
+  public APMConfRoot onParsed(aqxa[] paramArrayOfaqxa)
   {
     APMConfRoot localAPMConfRoot = null;
-    if (paramArrayOfaptx.length > 0) {
-      localAPMConfRoot = (APMConfRoot)new Gson().fromJson(paramArrayOfaptx[0].a, APMConfRoot.class);
+    if (paramArrayOfaqxa.length > 0) {
+      localAPMConfRoot = (APMConfRoot)new Gson().fromJson(paramArrayOfaqxa[0].a, APMConfRoot.class);
     }
-    paramArrayOfaptx = localAPMConfRoot;
+    paramArrayOfaqxa = localAPMConfRoot;
     if (localAPMConfRoot == null) {
-      paramArrayOfaptx = new APMConfRoot();
+      paramArrayOfaqxa = new APMConfRoot();
     }
-    return paramArrayOfaptx;
+    return paramArrayOfaqxa;
   }
   
   public void onReqFailed(int paramInt) {}

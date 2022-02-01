@@ -1,49 +1,52 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.pluspanel.appinfo.PlusPanelAppInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class aygp
-  extends aygw
+class aygp
+  implements View.OnClickListener
 {
-  public ayfo a(BaseChatPie paramBaseChatPie, PlusPanelAppInfo paramPlusPanelAppInfo, int paramInt)
+  aygp(ayfx paramayfx) {}
+  
+  public void onClick(View paramView)
   {
-    ayfo localayfo = new ayfo();
-    if (paramPlusPanelAppInfo.getAppID() == 213) {
-      this.jdField_a_of_type_Int = (paramInt / 8);
+    if (this.a.p)
+    {
+      ayfx.b(this.a);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    localayfo.jdField_b_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localayfo.jdField_a_of_type_Int = paramPlusPanelAppInfo.getAppID();
-    localayfo.jdField_a_of_type_JavaLangString = paramPlusPanelAppInfo.getAppName();
-    localayfo.e = paramPlusPanelAppInfo.actionType;
-    localayfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramBaseChatPie.app, paramPlusPanelAppInfo);
-    if (localayfo.jdField_b_of_type_Int == 204) {
-      if (!ShortVideoUtils.isHotPicConfiginitied) {
-        ShortVideoUtils.isHotPicConfiginitied = true;
-      }
+    PicInfo localPicInfo = (PicInfo)paramView.getTag();
+    Object localObject = aavz.a(paramView);
+    int i = 0;
+    label41:
+    if (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (localPicInfo.jdField_a_of_type_Int != ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int) {}
     }
     for (;;)
     {
-      localayfo.jdField_b_of_type_JavaLangString = (paramPlusPanelAppInfo.getAppName() + amtj.a(2131707420));
-      return localayfo;
-      if (localayfo.jdField_b_of_type_Int == 209) {
-        localayfo.jdField_a_of_type_Boolean = agxo.a(paramBaseChatPie.app).b();
-      } else if (paramPlusPanelAppInfo.getAppID() == 101761547) {
-        localayfo.jdField_a_of_type_Boolean = auzn.a(paramBaseChatPie.app, "listen_together_c2c_aio_red_dot_show", true, false);
-      } else {
-        localayfo.jdField_a_of_type_Boolean = false;
+      this.a.a.a(i, (Rect)localObject);
+      bdla.b(this.a.a.app, "CliOper", "", "", "0X800482A", "0X800482A", 0, 0, "", "", "", "");
+      if (this.a.a.e == 3) {}
+      for (localObject = "2";; localObject = "1")
+      {
+        bdla.b(null, "dc00899", "grp_lbs", "", "data_card", "clk_pic", 0, 0, (String)localObject, "", "", "");
+        if (!axpp.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, this.a.a.e)) {
+          break;
+        }
+        this.a.a.app.getNearbyProxy().b(localPicInfo.jdField_a_of_type_JavaLangString);
+        break;
+        i += 1;
+        break label41;
       }
+      i = 0;
     }
   }
-  
-  public void a(BaseChatPie paramBaseChatPie)
-  {
-    super.a(paramBaseChatPie);
-    b(paramBaseChatPie);
-    a(paramBaseChatPie.app, paramBaseChatPie.sessionInfo.curType, paramBaseChatPie.sessionInfo.curFriendUin);
-  }
-  
-  protected void b(BaseChatPie paramBaseChatPie) {}
 }
 
 

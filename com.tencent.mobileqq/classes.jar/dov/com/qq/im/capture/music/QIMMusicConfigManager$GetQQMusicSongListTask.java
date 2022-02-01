@@ -52,8 +52,8 @@ final class QIMMusicConfigManager$GetQQMusicSongListTask
     long l = System.currentTimeMillis() / 1000L;
     String str = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2)).getSkey(this.c);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("app_id", "2000000025");
-    localHashMap.put("app_key", "SApgehUTVGxZKBQZTt");
+    localHashMap.put("app_id", "2000000228");
+    localHashMap.put("app_key", "TCOHANTCNlddnsTY");
     localHashMap.put("device_id", DeviceInfoUtil.getIMEI());
     localHashMap.put("timestamp", String.valueOf(l));
     localHashMap.put("sign", a(l));

@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import java.util.Comparator;
+import android.util.SparseArray;
 
 public class alml
-  implements Comparator<TroopInfo>
 {
-  public int a(TroopInfo paramTroopInfo1, TroopInfo paramTroopInfo2)
+  public static final SparseArray<almk> a = new SparseArray();
+  
+  static
   {
-    if (paramTroopInfo1.lastMsgTime > paramTroopInfo2.lastMsgTime) {
-      return -1;
+    a.put(1000, new almk(2, 0));
+    a.put(1004, new almk(2, 1));
+    a.put(1006, new almk(1, 130));
+    a.put(1023, new almk(1, 133));
+    a.put(1022, new almk(1, 134));
+    a.put(10010, new almk(1, 167));
+  }
+  
+  public static boolean a(int paramInt, almk paramalmk)
+  {
+    almk localalmk = (almk)a.get(paramInt);
+    if ((localalmk != null) && (paramalmk != null)) {
+      return (localalmk.a == paramalmk.a) && (localalmk.b == paramalmk.b);
     }
-    if (paramTroopInfo1.lastMsgTime < paramTroopInfo2.lastMsgTime) {
-      return 1;
-    }
-    return ampx.a(paramTroopInfo1.mComparePartInt, paramTroopInfo1.mCompareSpell, paramTroopInfo2.mComparePartInt, paramTroopInfo2.mCompareSpell);
+    return false;
   }
 }
 

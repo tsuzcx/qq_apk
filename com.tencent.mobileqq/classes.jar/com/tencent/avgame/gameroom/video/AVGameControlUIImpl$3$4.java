@@ -1,12 +1,12 @@
 package com.tencent.avgame.gameroom.video;
 
 import com.tencent.mobileqq.utils.AudioHelper;
-import nfk;
+import nmc;
 
 public class AVGameControlUIImpl$3$4
   implements Runnable
 {
-  public AVGameControlUIImpl$3$4(nfk paramnfk) {}
+  public AVGameControlUIImpl$3$4(nmc paramnmc) {}
   
   public void run()
   {

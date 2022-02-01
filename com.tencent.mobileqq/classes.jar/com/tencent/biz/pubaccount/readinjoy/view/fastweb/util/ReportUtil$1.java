@@ -3,9 +3,9 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 import android.os.Parcel;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import odq;
-import sid;
-import sie;
+import olh;
+import sut;
+import suu;
 
 public final class ReportUtil$1
   implements Runnable
@@ -14,33 +14,46 @@ public final class ReportUtil$1
   
   public void run()
   {
-    try
+    label53:
+    for (;;)
     {
-      Object localObject = Parcel.obtain();
-      ((Parcel)localObject).unmarshall(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
-      ((Parcel)localObject).setDataPosition(0);
-      localObject = new VideoInfo((Parcel)localObject);
-      if (localObject == null) {
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      VideoInfo localVideoInfo;
-      for (;;)
+      try
       {
-        localException.printStackTrace();
+        Parcel localParcel = Parcel.obtain();
+        localParcel.unmarshall(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
+        localParcel.setDataPosition(0);
+        localVideoInfo = new VideoInfo(localParcel);
+        localException1.printStackTrace();
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          localParcel.recycle();
+          if (localVideoInfo != null) {
+            break;
+          }
+          return;
+        }
+        catch (Exception localException2)
+        {
+          VideoInfo localVideoInfo;
+          long l1;
+          long l2;
+          break label53;
+        }
+        localException1 = localException1;
         localVideoInfo = null;
       }
-      long l1 = NetConnInfoCenter.getServerTime();
-      long l2 = this.jdField_a_of_type_Long;
-      odq.a(null, null, "0X800A732", "0X800A732", 0, 0, "", "", "", new sie(localVideoInfo).i(localVideoInfo.g).n(3).i(l1 - l2).a().a(), false);
     }
+    l1 = NetConnInfoCenter.getServerTime();
+    l2 = this.jdField_a_of_type_Long;
+    olh.a(null, null, "0X800A732", "0X800A732", 0, 0, "", "", "", new suu(localVideoInfo).i(localVideoInfo.g).n(3).i(l1 - l2).a().a(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

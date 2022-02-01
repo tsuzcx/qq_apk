@@ -8,6 +8,7 @@ import com.tencent.qqlive.tvkplayer.vinfo.TVKVideoInfo;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.api.TVideoNetInfo;
 import com.tencent.superplayer.api.TVideoNetInfo.DefinitionInfo;
+import com.tencent.superplayer.utils.LogUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -25,19 +26,27 @@ class TVideoImpl$TVKPlayerCGICallback
   
   public void onGetLiveInfoSuccess(int paramInt, TVKPlaybackInfo.RequestInfo paramRequestInfo, TVKLiveVideoInfo paramTVKLiveVideoInfo)
   {
+    if (paramTVKLiveVideoInfo == null)
+    {
+      LogUtil.e(TVideoImpl.TAG, "onGetLiveInfoSuccess() reqType " + paramInt + ", liveInfo == null");
+      return;
+    }
     paramRequestInfo = (SuperPlayerVideoInfo)paramRequestInfo.tag();
-    paramInt = 403;
+    int i = 403;
     if (paramTVKLiveVideoInfo.getStream() == 2) {
-      paramInt = 401;
+      i = 401;
     }
     TVideoNetInfo localTVideoNetInfo;
     ArrayList localArrayList;
     for (;;)
     {
       paramRequestInfo.setPlayUrl(paramTVKLiveVideoInfo.getPlayUrl());
-      paramRequestInfo.setFormat(paramInt);
+      paramRequestInfo.setFormat(i);
       localTVideoNetInfo = new TVideoNetInfo();
       localArrayList = new ArrayList();
+      if (paramTVKLiveVideoInfo.getDefinitionList() == null) {
+        break;
+      }
       Iterator localIterator = paramTVKLiveVideoInfo.getDefinitionList().iterator();
       while (localIterator.hasNext())
       {
@@ -45,9 +54,10 @@ class TVideoImpl$TVKPlayerCGICallback
         localArrayList.add(new TVideoNetInfo.DefinitionInfo(localDefnInfo.getDefn(), localDefnInfo.getDefnName(), localDefnInfo.getDefnRate(), localDefnInfo.getDefnShowName()));
       }
       if (paramTVKLiveVideoInfo.getStream() == 1) {
-        paramInt = 402;
+        i = 402;
       }
     }
+    LogUtil.e(TVideoImpl.TAG, "onGetLiveInfoSuccess() reqType:" + paramInt + "  liveInfo.getDefinitionList() == null");
     localTVideoNetInfo.setDefinitionList(localArrayList);
     localTVideoNetInfo.setCurrentDefinition(new TVideoNetInfo.DefinitionInfo(paramTVKLiveVideoInfo.getCurDefinition().getDefn(), paramTVKLiveVideoInfo.getCurDefinition().getDefnName(), paramTVKLiveVideoInfo.getCurDefinition().getDefnRate(), paramTVKLiveVideoInfo.getCurDefinition().getDefnShowName()));
     localTVideoNetInfo.setUpdateTimeMillis(System.currentTimeMillis());
@@ -57,9 +67,10 @@ class TVideoImpl$TVKPlayerCGICallback
       localTVideoNetInfo.setHasWatermark(bool);
       paramRequestInfo.setTVideoNetInfo(localTVideoNetInfo);
       VInfoCacheMgr.saveVInfoToCache(paramRequestInfo);
-      if (TVideoImpl.access$100(this.this$0) != null) {
-        TVideoImpl.access$100(this.this$0).onGetVInfoSuccess(paramRequestInfo);
+      if (TVideoImpl.access$100(this.this$0) == null) {
+        break;
       }
+      TVideoImpl.access$100(this.this$0).onGetVInfoSuccess(paramRequestInfo);
       return;
     }
   }

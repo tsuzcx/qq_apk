@@ -6,8 +6,11 @@ import android.content.res.AssetManager;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import com.tencent.qapmsdk.athena.BreadCrumb;
+import com.tencent.qapmsdk.athena.BreadCrumbConfig;
+import com.tencent.qapmsdk.athena.eventcon.core.EventCon;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
 import com.tencent.qapmsdk.base.meta.UrlMeta;
 import com.tencent.qapmsdk.base.meta.UserMeta;
@@ -79,19 +82,25 @@ public class QAPMJavaScriptBridge
           }
           if ((paramObject instanceof WebView))
           {
+            ((WebView)paramObject).getSettings().setDomStorageEnabled(true);
             WebViewX5Proxy.getInstance().setCodeTypeIsX5(false);
             paramObject = (WebView)paramObject;
             paramObject.evaluateJavascript(this.js, null);
             paramObject.evaluateJavascript("javascript:window.QAPM.qapmJsStart()", null);
             return;
           }
-          Method localMethod = WebViewX5Proxy.getInstance().getX5EvaluateJavascript();
-          if (localMethod != null) {
+          Method localMethod1 = WebViewX5Proxy.getInstance().getX5EvaluateJavascript();
+          Method localMethod2 = WebViewX5Proxy.getInstance().getX5GetSettingst();
+          Method localMethod3 = WebViewX5Proxy.getInstance().getX5SetDomStorageEnabled();
+          if ((localMethod2 != null) && (localMethod3 != null)) {
+            localMethod3.invoke(localMethod2.invoke(paramObject, new Object[0]), new Object[] { Boolean.valueOf(true) });
+          }
+          if (localMethod1 != null) {
             try
             {
               WebViewX5Proxy.getInstance().setCodeTypeIsX5(true);
-              localMethod.invoke(paramObject, new Object[] { this.js, null });
-              localMethod.invoke(paramObject, new Object[] { "javascript:window.QAPM.qapmJsStart()", null });
+              localMethod1.invoke(paramObject, new Object[] { this.js, null });
+              localMethod1.invoke(paramObject, new Object[] { "javascript:window.QAPM.qapmJsStart()", null });
               return;
             }
             catch (Exception paramObject)
@@ -123,6 +132,12 @@ public class QAPMJavaScriptBridge
   }
   
   @JavascriptInterface
+  public String getBreadCrumbBuckets()
+  {
+    return EventCon.getInstance().getBucketInfo();
+  }
+  
+  @JavascriptInterface
   public boolean getBreadCrumbEnable()
   {
     return BreadCrumb.getInstance().isEnable();
@@ -131,6 +146,12 @@ public class QAPMJavaScriptBridge
   public String getBreadCrumbId()
   {
     return this.breadCrumbId;
+  }
+  
+  @JavascriptInterface
+  public int getBreadCrumbUploadInterval()
+  {
+    return BreadCrumbConfig.UPLOAD_MIN_INTERVAL;
   }
   
   @JavascriptInterface
@@ -155,6 +176,12 @@ public class QAPMJavaScriptBridge
   public String getUin()
   {
     return BaseInfo.userMeta.uin;
+  }
+  
+  @JavascriptInterface
+  public String getVersion()
+  {
+    return BaseInfo.userMeta.version;
   }
   
   @JavascriptInterface

@@ -86,7 +86,7 @@ public final class ModeInfoLayoutKt
       localObject = new TextView(localViewGroup.getContext());
       ((TextView)localObject).setTag(localViewGroup);
       paramContext = Unit.INSTANCE;
-      ((TextView)localObject).setId(2131371045);
+      ((TextView)localObject).setId(2131371237);
       paramContext = (View)localObject;
       localLayoutParams = paramContext.getLayoutParams();
       if (localLayoutParams == null) {
@@ -121,14 +121,14 @@ public final class ModeInfoLayoutKt
         paramContext = Unit.INSTANCE;
       }
       ((TextView)localObject).setTextSize(12.0F);
-      ((TextView)localObject).setTextColor(((TextView)localObject).getResources().getColor(2131167096));
+      ((TextView)localObject).setTextColor(((TextView)localObject).getResources().getColor(2131167110));
       localViewGroup.addView((View)localObject);
       paramContext = Unit.INSTANCE;
       localViewGroup = (ViewGroup)localRelativeLayout;
       localObject = new ImageView(localViewGroup.getContext());
       ((ImageView)localObject).setTag(localViewGroup);
       paramContext = Unit.INSTANCE;
-      ((ImageView)localObject).setId(2131371044);
+      ((ImageView)localObject).setId(2131371236);
       paramContext = (View)localObject;
       j = LayoutAttrsKt.getDp(30);
       localLayoutParams = paramContext.getLayoutParams();
@@ -155,7 +155,7 @@ public final class ModeInfoLayoutKt
       paramContext.getLayoutParams().width = i;
       paramContext.getLayoutParams().height = -1;
       label564:
-      ((ImageView)localObject).setImageResource(2130850066);
+      ((ImageView)localObject).setImageResource(2130850159);
       localLayoutParams = ((View)localObject).getLayoutParams();
       paramContext = localLayoutParams;
       if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {

@@ -1,12 +1,12 @@
 package com.tencent.hippy.qq.utils;
 
-import adxr;
+import aeow;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bijk;
+import bjum;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hippy.qq.app.HippyQQPreloadEngine;
 import com.tencent.hippy.qq.fragment.BaseHippyFragment;
@@ -64,7 +64,7 @@ public class HippyAccessHelper
         break label97;
       }
       if (bool1) {
-        bijk.a(new HippyAccessHelper.1(paramBundle));
+        bjum.a(new HippyAccessHelper.1(paramBundle));
       }
     }
     for (;;)
@@ -75,7 +75,7 @@ public class HippyAccessHelper
       label97:
       if (bool2)
       {
-        bijk.a(new HippyAccessHelper.2(paramBundle));
+        bjum.a(new HippyAccessHelper.2(paramBundle));
       }
       else
       {
@@ -139,7 +139,7 @@ public class HippyAccessHelper
           continue;
         }
         int i = UpdateSetting.getInstance().getModuleVersion(paramString);
-        if (localHippyQQPreloadEngine.getModuleVersion() == i) {
+        if (localHippyQQPreloadEngine.getPreloadModuleVersion() == i) {
           return localHippyQQPreloadEngine;
         }
       }
@@ -166,7 +166,7 @@ public class HippyAccessHelper
     {
       localIntent.putExtra("public_fragment_window_feature", 1);
       if (bool4) {
-        adxr.a(paramContext, localIntent, PublicTransFragmentActivityForTool.class, CommonHippyFragment.class);
+        aeow.a(paramContext, localIntent, PublicTransFragmentActivityForTool.class, CommonHippyFragment.class);
       }
     }
     for (;;)
@@ -179,9 +179,9 @@ public class HippyAccessHelper
       if (!(paramContext instanceof Activity)) {
         break;
       }
-      ((Activity)paramContext).overridePendingTransition(2130772011, 2130772224);
+      ((Activity)paramContext).overridePendingTransition(2130772011, 2130772223);
       return true;
-      adxr.a(paramContext, localIntent, PublicTransFragmentActivity.class, CommonHippyFragment.class);
+      aeow.a(paramContext, localIntent, PublicTransFragmentActivity.class, CommonHippyFragment.class);
       continue;
       if (bool4) {
         PublicFragmentActivityForTool.b(paramContext, localIntent, CommonHippyFragment.class);
@@ -210,6 +210,7 @@ public class HippyAccessHelper
       }
       while (((ArrayList)localObject2).size() < 1)
       {
+        System.currentTimeMillis();
         ??? = BaseHippyFragment.getJSInitData(BaseApplicationImpl.getApplication().getRuntime(), paramString1, null);
         localObject2 = new HippyQQPreloadEngine(null, paramString1, paramString2);
         ((HippyQQPreloadEngine)localObject2).setDebugMode(false);

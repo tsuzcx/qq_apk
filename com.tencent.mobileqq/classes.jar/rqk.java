@@ -1,13 +1,11 @@
-import android.text.TextUtils;
+import tencent.im.oidb.articlesummary.articlesummary.LongContentInfo;
 
-class rqk
-  implements rqd<rgo>
+public final class rqk
+  implements qdt<articlesummary.LongContentInfo, rre>
 {
-  rqk(rqj paramrqj) {}
-  
-  public boolean a(rgo paramrgo)
+  public rre a(articlesummary.LongContentInfo paramLongContentInfo)
   {
-    return TextUtils.equals("video/mp4", paramrgo.a);
+    return new rre(paramLongContentInfo);
   }
 }
 

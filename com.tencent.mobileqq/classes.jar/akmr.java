@@ -1,38 +1,40 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import NS_MOBILE_OPERATION.PicInfo;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData;
+import java.util.HashMap;
 
 public class akmr
+  extends PhotoPreviewBaseData
 {
-  private BaseActivity a;
-  public QQAppInterface a;
-  
-  public akmr(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a(RecentBaseData paramRecentBaseData, boolean paramBoolean)
-  {
-    if (paramRecentBaseData == null) {
-      return;
-    }
-    avnu.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    String str = paramRecentBaseData.getRecentUserUin();
-    if (paramBoolean) {}
-    for (paramRecentBaseData = "1";; paramRecentBaseData = "0")
-    {
-      bcef.b(localQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_top_right", 0, 0, str, "4", paramRecentBaseData, "");
-      return;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
+  public int a;
+  public String a;
+  public HashMap<String, PhotoSendParams> a;
+  public zad a;
+  public boolean a;
+  public int b;
+  public String b;
+  public HashMap<String, PhotoSendParams> b;
+  public boolean b;
+  public int c;
+  public String c;
+  public HashMap<String, PicInfo> c;
+  public boolean c;
+  public int d;
+  public HashMap<String, PicInfo> d;
+  public boolean d;
+  public int e;
+  public HashMap<String, byte[]> e;
+  public boolean e;
+  public int f = 1052;
+  public boolean f;
+  public int g;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
 }
 
 

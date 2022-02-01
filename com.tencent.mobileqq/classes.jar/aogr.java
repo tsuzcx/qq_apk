@@ -1,76 +1,29 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+
 public class aogr
-  extends aohh
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public aogs[] a;
-  public int b = -1;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 0;
+  public aogr(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2) {}
   
-  public aogr()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAogs = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-  }
-  
-  public static boolean a(aogr paramaogr)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramaogr != null)
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramInt = this.jdField_a_of_type_Int;
+    int i = this.jdField_b_of_type_Int;
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
     {
-      bool1 = bool2;
-      if (paramaogr.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramaogr.b == 0)
-        {
-          bool1 = bool2;
-          if (paramaogr.jdField_a_of_type_ArrayOfAogs != null)
-          {
-            bool1 = bool2;
-            if (paramaogr.jdField_a_of_type_ArrayOfAogs[0].jdField_c_of_type_Int == 0)
-            {
-              bool1 = bool2;
-              if (paramaogr.jdField_a_of_type_ArrayOfAogs[0].a != null) {
-                bool1 = true;
-              }
-            }
-          }
-        }
+      VideoMsgTools.a(localQQAppInterface, paramInt, i, bool, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, null, true, new Object[0]);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.dismiss();
       }
+      msa.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause, this.jdField_a_of_type_Boolean);
+      return;
     }
-    return bool1;
-  }
-  
-  public String toString()
-  {
-    if (this.jdField_a_of_type_ArrayOfAogs != null)
-    {
-      String str1 = "ImageTags{";
-      int i = 0;
-      for (;;)
-      {
-        str2 = str1;
-        if (i >= this.jdField_a_of_type_ArrayOfAogs.length) {
-          break;
-        }
-        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAogs[i];
-        i += 1;
-      }
-    }
-    String str2 = "null";
-    return "ARCloudMarkerRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

@@ -1,14 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public abstract class vrq
+class vrq
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry);
+  vrq(vrp paramvrp) {}
   
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    return false;
+    vmp.b("WSVerticalVideoItemView", "itemView onDoubleTap");
+    vrp.a(this.a, paramMotionEvent);
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    vmp.b("WSVerticalVideoItemView", "itemView onSingleTapConfirmed");
+    vrp.a(this.a);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

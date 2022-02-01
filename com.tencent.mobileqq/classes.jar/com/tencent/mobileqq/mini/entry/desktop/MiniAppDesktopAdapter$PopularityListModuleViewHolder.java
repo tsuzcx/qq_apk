@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
@@ -49,19 +50,19 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
   public MiniAppDesktopAdapter$PopularityListModuleViewHolder(View paramView)
   {
     super(paramView);
-    this.rootView = paramView.findViewById(2131371085);
-    this.titleIconImg = ((ImageView)paramView.findViewById(2131371093));
-    this.titleTv = ((TextView)paramView.findViewById(2131371092));
-    this.moreAppImg = ((ImageView)paramView.findViewById(2131371084));
-    this.firstAppIconImg = ((ImageView)paramView.findViewById(2131371081));
-    this.secondAppIconImg = ((ImageView)paramView.findViewById(2131371086));
-    this.thirdAppIconImg = ((ImageView)paramView.findViewById(2131371089));
-    this.firstAppTitleTv = ((TextView)paramView.findViewById(2131371083));
-    this.secondAppTitleTv = ((TextView)paramView.findViewById(2131371088));
-    this.thirdAppTitleTv = ((TextView)paramView.findViewById(2131371091));
-    this.firstAppOpenImg = ((ImageView)paramView.findViewById(2131371082));
-    this.secondAppOpenImg = ((ImageView)paramView.findViewById(2131371087));
-    this.thirdAppOpenImg = ((ImageView)paramView.findViewById(2131371090));
+    this.rootView = paramView.findViewById(2131371277);
+    this.titleIconImg = ((ImageView)paramView.findViewById(2131371285));
+    this.titleTv = ((TextView)paramView.findViewById(2131371284));
+    this.moreAppImg = ((ImageView)paramView.findViewById(2131371276));
+    this.firstAppIconImg = ((ImageView)paramView.findViewById(2131371273));
+    this.secondAppIconImg = ((ImageView)paramView.findViewById(2131371278));
+    this.thirdAppIconImg = ((ImageView)paramView.findViewById(2131371281));
+    this.firstAppTitleTv = ((TextView)paramView.findViewById(2131371275));
+    this.secondAppTitleTv = ((TextView)paramView.findViewById(2131371280));
+    this.thirdAppTitleTv = ((TextView)paramView.findViewById(2131371283));
+    this.firstAppOpenImg = ((ImageView)paramView.findViewById(2131371274));
+    this.secondAppOpenImg = ((ImageView)paramView.findViewById(2131371279));
+    this.thirdAppOpenImg = ((ImageView)paramView.findViewById(2131371282));
     this.firstAppIconImg.setOnClickListener(this);
     this.secondAppIconImg.setOnClickListener(this);
     this.thirdAppIconImg.setOnClickListener(this);
@@ -160,7 +161,7 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
       this.titleTv.setText(paramDesktopPopularModuleInfo.title);
     }
     paramActivity = URLDrawable.URLDrawableOptions.obtain();
-    Object localObject = this.itemView.getContext().getResources().getDrawable(2130848318);
+    Object localObject = this.itemView.getContext().getResources().getDrawable(2130848409);
     paramActivity.mFailedDrawable = ((Drawable)localObject);
     paramActivity.mLoadingDrawable = ((Drawable)localObject);
     paramActivity.mPlayGifImage = false;
@@ -181,7 +182,7 @@ class MiniAppDesktopAdapter$PopularityListModuleViewHolder
       }
     }
     label490:
-    for (paramActivity = (MiniAppExposureManager)paramActivity.getManager(322);; paramActivity = null)
+    for (paramActivity = (MiniAppExposureManager)paramActivity.getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);; paramActivity = null)
     {
       if (paramActivity != null)
       {

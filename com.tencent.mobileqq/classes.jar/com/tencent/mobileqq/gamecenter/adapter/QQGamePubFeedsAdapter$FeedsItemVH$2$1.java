@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.gamecenter.adapter;
 
 import android.widget.TextView;
-import atwj;
-import atwm;
+import avbk;
+import avbn;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 public class QQGamePubFeedsAdapter$FeedsItemVH$2$1
   implements Runnable
 {
-  public QQGamePubFeedsAdapter$FeedsItemVH$2$1(atwm paramatwm, int paramInt) {}
+  public QQGamePubFeedsAdapter$FeedsItemVH$2$1(avbn paramavbn, int paramInt) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 5))
     {
-      atwj.a(this.jdField_a_of_type_Atwm.a).setVisibility(8);
-      this.jdField_a_of_type_Atwm.a.a.setVisibility(4);
-      this.jdField_a_of_type_Atwm.a.b.setVisibility(4);
-      this.jdField_a_of_type_Atwm.a.c.setVisibility(4);
+      avbk.a(this.jdField_a_of_type_Avbn.a).setVisibility(8);
+      this.jdField_a_of_type_Avbn.a.a.setVisibility(4);
+      this.jdField_a_of_type_Avbn.a.b.setVisibility(4);
+      this.jdField_a_of_type_Avbn.a.c.setVisibility(4);
     }
-    while (atwj.a(this.jdField_a_of_type_Atwm.a).type == 1) {
+    while (avbk.a(this.jdField_a_of_type_Avbn.a).type == 1) {
       return;
     }
   }

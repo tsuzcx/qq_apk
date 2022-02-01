@@ -1,50 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.column.VideoColumnGuideManager.startGuideAnimate.1;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class ssc
-  implements apkw
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$startGuideAnimate$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ssc
+  extends AnimatorListenerAdapter
 {
-  public ssc(FastWebActivity paramFastWebActivity) {}
-  
-  public ColorNote getColorNote()
+  public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (FastWebActivity.a(this.a) != null)
-    {
-      str1 = str2;
-      if (FastWebActivity.a(this.a).g != null) {
-        str1 = FastWebActivity.a(this.a).g;
-      }
+    if (srv.a(this.a.this$0)) {
+      return;
     }
-    aple localaple = new aple().a(16908290);
-    StringBuilder localStringBuilder = new StringBuilder().append(aplx.b);
-    if (this.a.a == null)
+    if (srv.a(this.a.this$0) >= 1)
     {
-      str2 = "";
-      localaple = localaple.a(str2);
-      if (this.a.a != null) {
-        break label165;
-      }
-      str2 = "";
-      label109:
-      localaple = localaple.b(str2);
-      if (this.a.a != null) {
-        break label179;
-      }
+      srv.a(this.a.this$0);
+      return;
     }
-    label165:
-    label179:
-    for (str2 = "";; str2 = this.a.a.mSubscribeName)
-    {
-      return localaple.c(str2).d(str1).a(FastWebActivity.a(this.a)).a();
-      str2 = this.a.a.innerUniqueID;
-      break;
-      str2 = this.a.a.mTitle;
-      break label109;
-    }
+    paramAnimator = this.a.this$0;
+    srv.a(paramAnimator, srv.a(paramAnimator) + 1);
+    srv.c(this.a.this$0);
   }
 }
 

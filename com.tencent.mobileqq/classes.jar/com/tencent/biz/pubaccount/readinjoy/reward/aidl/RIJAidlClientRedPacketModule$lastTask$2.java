@@ -5,8 +5,8 @@ import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
-import qyq;
-import qyy;
+import rkw;
+import rle;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJAidlClientRedPacketModule$lastTask$2
@@ -23,9 +23,9 @@ public final class RIJAidlClientRedPacketModule$lastTask$2
   @Nullable
   public final RIJRewardTask invoke()
   {
-    qyq localqyq = qyy.a(qyy.a);
-    if (localqyq != null) {
-      return localqyq.b();
+    rkw localrkw = rle.a(rle.a);
+    if (localrkw != null) {
+      return localrkw.b();
     }
     return null;
   }

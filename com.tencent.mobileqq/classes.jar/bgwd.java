@@ -1,44 +1,84 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.upgrade.NewUpgradeConfig;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import mqq.manager.Manager;
 
-public final class bgwd
-  implements WtTicketPromise
+public class bgwd
+  implements Manager
 {
-  public bgwd(String paramString, long paramLong) {}
+  private final QQAppInterface a;
   
-  public void Done(Ticket paramTicket)
+  public bgwd(QQAppInterface paramQQAppInterface)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    this.a = paramQQAppInterface;
+  }
+  
+  public static bgwd a(QQAppInterface paramQQAppInterface)
+  {
+    return (bgwd)paramQQAppInterface.getManager(QQManagerFactory.UPGRADE_MANAGER);
+  }
+  
+  public boolean a()
+  {
+    if (bgvx.a().a() == 4) {}
+    for (boolean bool = true;; bool = false)
     {
-      localStringBuilder = new StringBuilder().append("pt4_token response received for ").append(this.jdField_a_of_type_JavaLangString).append(", cost=").append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      if (paramTicket == null) {
-        break label64;
+      if (QLog.isColorLevel()) {
+        QLog.d("UpgradeManager", 2, new Object[] { "hasNewApkDownloaded: invoked. ", " hasDl: ", Boolean.valueOf(bool) });
       }
+      return bool;
     }
-    label64:
-    for (paramTicket = "";; paramTicket = ". But result was null!")
+  }
+  
+  public boolean a(UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  {
+    if ((paramUpgradeDetailWrapper == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog == null)) {}
+    int i;
+    int j;
+    int k;
+    long l1;
+    long l2;
+    do
     {
-      QLog.d("SwiftBrowserCookieMonster", 2, paramTicket);
-      return;
-    }
+      return false;
+      i = bhhr.aO(this.a.getApp(), this.a.getCurrentUin());
+      j = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.c;
+      k = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.d;
+      l1 = bhhr.k(this.a.getApp(), this.a.getCurrentUin());
+      l2 = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("UpgradeManager", 2, new Object[] { "needShowDownloadDialog: invoked. ", " downloadDialogMaxTimes: ", Integer.valueOf(j), " downloadDialogShownTimes: ", Integer.valueOf(i), " downloadDialogDayRate: ", Integer.valueOf(k), " downloadDialogShownTimestamp: ", Long.valueOf(l1), " now: ", Long.valueOf(l2) });
+      }
+    } while ((i >= j) || (l2 - l1 < k * 86400000L));
+    return true;
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public boolean b(UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("SwiftBrowserCookieMonster", 2, "Get pt4_token failed for " + this.jdField_a_of_type_JavaLangString + " because " + paramErrMsg + ", cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
+    if ((paramUpgradeDetailWrapper == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog == null)) {}
+    int i;
+    int j;
+    int k;
+    long l1;
+    long l2;
+    do
+    {
+      return false;
+      i = bhhr.aP(this.a.getApp(), this.a.getCurrentUin());
+      j = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.e;
+      k = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.f;
+      l1 = bhhr.l(this.a.getApp(), this.a.getCurrentUin());
+      l2 = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("UpgradeManager", 2, new Object[] { "needShowInstallDialog: invoked. ", " installDialogMaxTimes: ", Integer.valueOf(j), " installDialogShownTimes: ", Integer.valueOf(i), " installDialogDayRate: ", Integer.valueOf(k), " installDialogShownTimestamp: ", Long.valueOf(l1), " now: ", Long.valueOf(l2) });
+      }
+    } while ((i >= j) || (l2 - l1 < k * 86400000L));
+    return true;
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("SwiftBrowserCookieMonster", 2, "Get pt4_token timeout for " + this.jdField_a_of_type_JavaLangString + " because " + paramErrMsg + ", cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-  }
+  public void onDestroy() {}
 }
 
 

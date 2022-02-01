@@ -13,7 +13,7 @@ class AEPlayShowGridViewHolder$4
   {
     AEPlayShowGridViewHolder.access$200(this.this$0).setVisibility(8);
     if (!this.val$isSuccess) {
-      QQToast.a(AEPlayShowGridViewHolder.access$300(), AEPlayShowGridViewHolder.access$300().getString(2131717242), 0).a();
+      QQToast.a(AEPlayShowGridViewHolder.access$300(), AEPlayShowGridViewHolder.access$300().getString(2131717606), 0).a();
     }
   }
 }

@@ -1,18 +1,18 @@
 package com.tencent.biz.webviewplugin;
 
-import aadf;
-import aadi;
+import aasr;
+import aasu;
 import android.app.Activity;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 
 public class Share$7$1
   implements Runnable
 {
-  public Share$7$1(aadi paramaadi, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
+  public Share$7$1(aasu paramaasu, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aadi.a.a(this.jdField_a_of_type_Aadi.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
+    this.jdField_a_of_type_Aasu.a.a(this.jdField_a_of_type_Aasu.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
   }
 }
 

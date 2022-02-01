@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aduy;
+import aemd;
 import com.tencent.mobileqq.contactsync.ContactSyncManager;
 
 public class PermisionPrivacyActivity$16$1
   implements Runnable
 {
-  public PermisionPrivacyActivity$16$1(aduy paramaduy, ContactSyncManager paramContactSyncManager, boolean paramBoolean) {}
+  public PermisionPrivacyActivity$16$1(aemd paramaemd, ContactSyncManager paramContactSyncManager, boolean paramBoolean) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class PermisionPrivacyActivity$16$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.16.1
  * JD-Core Version:    0.7.0.1
  */

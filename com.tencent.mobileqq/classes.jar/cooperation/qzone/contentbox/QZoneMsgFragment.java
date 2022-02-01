@@ -1,6 +1,5 @@
 package cooperation.qzone.contentbox;
 
-import amtj;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -19,12 +18,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import bfvp;
-import bfwg;
-import bhzt;
+import anvx;
+import bheh;
+import bhey;
+import bjkv;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -126,8 +127,8 @@ public class QZoneMsgFragment
     this.viewFooterContainer.setGravity(1);
     this.listView.addFooterView(this.viewFooterContainer);
     this.viewListFooter = new MsgFootTips(getActivity(), this.handler);
-    this.viewListFooter.setLoadingDataText(getString(2131692097));
-    this.viewListFooter.setLoadingMoreDataText(getString(2131692098));
+    this.viewListFooter.setLoadingDataText(getString(2131692187));
+    this.viewListFooter.setLoadingMoreDataText(getString(2131692188));
     if (!paramBoolean) {
       setFooterState(5);
     }
@@ -145,7 +146,7 @@ public class QZoneMsgFragment
   private void loadMoreFinish(boolean paramBoolean)
   {
     if ((!paramBoolean) && (this.manual)) {
-      bhzt.a().a(amtj.a(2131711140));
+      bjkv.a().a(anvx.a(2131711487));
     }
     setMoreFootState(paramBoolean);
     this.requestState = 0;
@@ -233,7 +234,7 @@ public class QZoneMsgFragment
   private void refresh()
   {
     this.requestState = 2;
-    ((QZoneMsgManager)this.app.getManager(293)).refreshQZoneMsg();
+    ((QZoneMsgManager)this.app.getManager(QQManagerFactory.QZONE_MSG_MANAGER)).refreshQZoneMsg();
     if (QLog.isColorLevel()) {
       QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "refresh ，requestState=" + this.requestState);
     }
@@ -282,8 +283,8 @@ public class QZoneMsgFragment
     if (paramQZoneMsgEntityNew == null)
     {
       paramQZoneMsgEntityNew = new ArrayList();
-      paramQZoneMsgEntityNew.add(new BottomItem(amtj.a(2131718769), "mqqzone://arouse/activefeed"));
-      paramQZoneMsgEntityNew.add(new BottomItem(amtj.a(2131711136), "mqqzone://arouse/albumlist"));
+      paramQZoneMsgEntityNew.add(new BottomItem(anvx.a(2131719159), "mqqzone://arouse/activefeed"));
+      paramQZoneMsgEntityNew.add(new BottomItem(anvx.a(2131711483), "mqqzone://arouse/albumlist"));
     }
     for (;;)
     {
@@ -338,7 +339,7 @@ public class QZoneMsgFragment
           QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updateMQMsg: mqMsg.msgBody.photolist==null");
         }
       }
-    } while (((localMQMsg.msgBody.photolist != null) && (!localMQMsg.msgBody.photolist.isEmpty()) && (!StringUtil.isEmpty(((MQPhotoCell)localMQMsg.msgBody.photolist.get(0)).coverUrl))) || (localMQMsg.msgType != 9));
+    } while (((localMQMsg.msgBody != null) && (localMQMsg.msgBody.photolist != null) && (!localMQMsg.msgBody.photolist.isEmpty()) && (!StringUtil.isEmpty(((MQPhotoCell)localMQMsg.msgBody.photolist.get(0)).coverUrl))) || (localMQMsg.msgType != 9));
     localMQMsg.uniKey = this.mLocalPhotoGroupData.unikey;
     localMQMsg.eventTitle = this.mLocalPhotoGroupData.title;
     localMQMsg.capTime = this.mLocalPhotoGroupData.capTime;
@@ -390,10 +391,10 @@ public class QZoneMsgFragment
     Object localObject;
     if ((paramMQMsg != null) && (!TextUtils.isEmpty(paramMQMsg.jumpUrlToDetail)))
     {
-      localObject = bfwg.a(this.app, getActivity(), paramMQMsg.jumpUrlToDetail);
+      localObject = bhey.a(this.app, getActivity(), paramMQMsg.jumpUrlToDetail);
       if (localObject != null)
       {
-        ((bfvp)localObject).a();
+        ((bheh)localObject).a();
         return;
       }
       localObject = new Intent(getActivity(), QQBrowserActivity.class);
@@ -426,7 +427,7 @@ public class QZoneMsgFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    ThreadManagerV2.excute(new QZoneMsgFragment.5(this, (QZoneMsgManager)this.app.getManager(293)), 32, null, true);
+    ThreadManagerV2.excute(new QZoneMsgFragment.5(this, (QZoneMsgManager)this.app.getManager(QQManagerFactory.QZONE_MSG_MANAGER)), 32, null, true);
     refresh();
     this.handler.sendEmptyMessage(1001);
     QZoneLoginReportHelper.reportLoginFromQZoneMsgBox();
@@ -484,7 +485,7 @@ public class QZoneMsgFragment
     }
     for (;;)
     {
-      paramLayoutInflater = paramLayoutInflater.inflate(2131562350, paramViewGroup, false);
+      paramLayoutInflater = paramLayoutInflater.inflate(2131562418, paramViewGroup, false);
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
       paramViewGroup.setBackgroundColor(-1380874);
@@ -539,8 +540,8 @@ public class QZoneMsgFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.listView = ((ListView)paramView.findViewById(2131371439));
-    paramBundle = paramView.findViewById(2131375235);
+    this.listView = ((ListView)paramView.findViewById(2131371625));
+    paramBundle = paramView.findViewById(2131375477);
     this.listView.setEmptyView(paramBundle);
     paramBundle = getActivity();
     if ((this.mShowFeeds) && (paramBundle != null))
@@ -556,7 +557,7 @@ public class QZoneMsgFragment
       this.adapter.setMsgOnClickListener(this.msgOnClickListener);
       this.listView.setOnScrollListener(this.onScrollListener);
       this.listView.setAdapter(this.adapter);
-      this.mFootNavigationLayout = ((FootNavigationLayout)paramView.findViewById(2131371433));
+      this.mFootNavigationLayout = ((FootNavigationLayout)paramView.findViewById(2131371619));
       paramBundle = this.mFootNavigationLayout;
       if (!this.mUseNewUI) {
         break label249;

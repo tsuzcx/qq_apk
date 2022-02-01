@@ -174,14 +174,6 @@ public class BaseFilter
   @SoInfo(libName="image_filter_common")
   private native boolean nativeUpdateMatrix(long paramLong, float[] paramArrayOfFloat);
   
-  public void ClearGLSL()
-  {
-    clearGLSLSelf();
-    if (this.mNextFilter != null) {
-      this.mNextFilter.ClearGLSL();
-    }
-  }
-  
   public void OnDrawFrameGLSL()
   {
     GLES20.glUseProgram(this.mProgramIds);
@@ -431,6 +423,14 @@ public class BaseFilter
   }
   
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void clearGLSL()
+  {
+    clearGLSLSelf();
+    if (this.mNextFilter != null) {
+      this.mNextFilter.clearGLSL();
+    }
+  }
   
   public void clearGLSLSelf()
   {

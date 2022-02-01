@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import cooperation.qzone.RDMEtraMsgCollector;
+import android.os.Bundle;
 
-public class akqx
-  implements bjog
+public abstract interface akqx
 {
-  public akqx(EditLocalVideoActivity paramEditLocalVideoActivity) {}
-  
-  public void onDismiss()
-  {
-    String str = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + amtj.a(2131702775);
-    RDMEtraMsgCollector.getInstance().addUserAction(str);
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 

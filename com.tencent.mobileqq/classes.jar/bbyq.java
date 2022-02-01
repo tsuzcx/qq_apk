@@ -1,36 +1,18 @@
-import QC.GetConciseThemeRsp;
-import QC.ItemDisDetail;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BusinessObserver;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-final class bbyq
-  implements BusinessObserver
+class bbyq
+  implements View.OnClickListener
 {
-  bbyq(String paramString, AppInterface paramAppInterface, boolean paramBoolean) {}
+  bbyq(bbyp parambbyp) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && ((paramObject instanceof GetConciseThemeRsp)))
-    {
-      paramObject = (GetConciseThemeRsp)paramObject;
-      bbyp.a.clear();
-      paramInt = 0;
-      while (paramInt < paramObject.vItems.size())
-      {
-        ItemDisDetail localItemDisDetail = (ItemDisDetail)paramObject.vItems.get(paramInt);
-        bbyp.a.add(localItemDisDetail.itemId + "");
-        if (TextUtils.equals("2920", localItemDisDetail.itemId + "")) {
-          bbyp.c = paramInt;
-        }
-        paramInt += 1;
-      }
-      paramInt = bbyp.a(this.jdField_a_of_type_JavaLangString);
-      bbyp.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Boolean, 1);
-      bbyp.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt, 1);
-    }
+    int i = ((Integer)paramView.getTag(-1)).intValue();
+    bbyp.a(this.a).onItemClick(this.a.a, paramView, i, 0L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

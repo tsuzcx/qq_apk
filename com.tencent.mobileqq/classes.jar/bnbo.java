@@ -1,6 +1,6 @@
 public abstract interface bnbo
 {
-  public abstract void a(int paramInt);
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

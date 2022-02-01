@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.List;
+import com.tencent.widget.Gallery;
 
 class ahrj
-  implements ahrw
+  implements audq
 {
-  ahrj(ahrg paramahrg, List paramList1, List paramList2) {}
+  ahrj(ahri paramahri) {}
   
-  public void a(long paramLong)
+  public void onNo()
   {
-    ahrg.a(this.jdField_a_of_type_Ahrg, this.jdField_a_of_type_JavaUtilList, paramLong, 2);
-    ahrg.a(this.jdField_a_of_type_Ahrg).setLeftCheckBoxVisible(false, (ChatMessage)this.b.get(0), false);
+    this.a.a(false);
+    this.a.c(true);
+  }
+  
+  public void onYes()
+  {
+    try
+    {
+      this.a.a(true);
+      this.a.jdField_a_of_type_Ahtp.a(this.a.jdField_a_of_type_Ahsh.jdField_a_of_type_Long, this.a.jdField_a_of_type_Ahsh.jdField_a_of_type_Int, 20);
+      ahri.a(this.a).b(true);
+      ahri.b(this.a).a(true);
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

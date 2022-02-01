@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.ptt.player;
 
-import android.content.Context;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
@@ -10,9 +9,9 @@ import android.os.Build.VERSION;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import azch;
-import azci;
-import bjng;
+import bahv;
+import bahw;
+import bkys;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -21,28 +20,16 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class AmrPlayer
-  implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener, Handler.Callback, azch
+  implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener, Handler.Callback, bahv
 {
   private int jdField_a_of_type_Int = -1;
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private azci jdField_a_of_type_Azci;
-  private bjng jdField_a_of_type_Bjng;
+  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+  private bahw jdField_a_of_type_Bahw;
+  private bkys jdField_a_of_type_Bkys = new bkys(Looper.getMainLooper(), this);
   private AmrPlayer.AmrPlayerThread jdField_a_of_type_ComTencentMobileqqPttPlayerAmrPlayer$AmrPlayerThread;
   Runnable jdField_a_of_type_JavaLangRunnable = new AmrPlayer.1(this);
   private String jdField_a_of_type_JavaLangString;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  
-  public AmrPlayer()
-  {
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-    this.jdField_a_of_type_Bjng = new bjng(Looper.getMainLooper(), this);
-  }
-  
-  public AmrPlayer(Context paramContext, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = MediaPlayer.create(paramContext, paramInt);
-    this.jdField_a_of_type_Bjng = new bjng(this);
-  }
   
   public int a()
   {
@@ -79,9 +66,9 @@ public final class AmrPlayer
   
   public void a(int paramInt, byte paramByte) {}
   
-  public void a(azci paramazci)
+  public void a(bahw parambahw)
   {
-    this.jdField_a_of_type_Azci = paramazci;
+    this.jdField_a_of_type_Bahw = parambahw;
   }
   
   public void a(String paramString)
@@ -172,9 +159,9 @@ public final class AmrPlayer
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1) {
-      if (this.jdField_a_of_type_Azci != null)
+      if (this.jdField_a_of_type_Bahw != null)
       {
-        this.jdField_a_of_type_Azci.a(this, 0, 0);
+        this.jdField_a_of_type_Bahw.a(this, 0, 0);
         paramMessage = new HashMap();
         paramMessage.put("param_succ_flag", "0");
         paramMessage.put("errCode", "0");
@@ -183,10 +170,10 @@ public final class AmrPlayer
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttAmrPlaryerError", true, 0L, 0L, paramMessage, null);
       }
     }
-    while ((paramMessage.what != 2) || (this.jdField_a_of_type_Azci == null)) {
+    while ((paramMessage.what != 2) || (this.jdField_a_of_type_Bahw == null)) {
       return true;
     }
-    this.jdField_a_of_type_Azci.a();
+    this.jdField_a_of_type_Bahw.a();
     return true;
   }
   
@@ -196,8 +183,8 @@ public final class AmrPlayer
       QLog.d("AmrPlayer", 2, "playAmr onCompletion");
     }
     this.jdField_a_of_type_ComTencentMobileqqPttPlayerAmrPlayer$AmrPlayerThread = null;
-    if (this.jdField_a_of_type_Azci != null) {
-      this.jdField_a_of_type_Azci.a();
+    if (this.jdField_a_of_type_Bahw != null) {
+      this.jdField_a_of_type_Bahw.a();
     }
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
   }
@@ -208,8 +195,8 @@ public final class AmrPlayer
       QLog.d("AmrPlayer", 2, "playAmr onError");
     }
     this.jdField_a_of_type_ComTencentMobileqqPttPlayerAmrPlayer$AmrPlayerThread = null;
-    if (this.jdField_a_of_type_Azci != null) {
-      this.jdField_a_of_type_Azci.a(this, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Bahw != null) {
+      this.jdField_a_of_type_Bahw.a(this, paramInt1, paramInt2);
     }
     paramMediaPlayer = new HashMap();
     paramMediaPlayer.put("param_succ_flag", "0");

@@ -1,33 +1,57 @@
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
-class arhn
-  implements aroo
+public class arhn
 {
-  arhn(arhi paramarhi) {}
+  @SerializedName("enable")
+  private int jdField_a_of_type_Int = 0;
+  @SerializedName("troopType")
+  private long[] jdField_a_of_type_ArrayOfLong = { -1L };
   
-  public void a(boolean paramBoolean, arii paramarii)
+  public static arhn a(String paramString)
   {
-    if (arhi.a(this.a) == null)
+    if (paramString == null) {
+      return null;
+    }
+    return (arhn)new Gson().fromJson(paramString, arhn.class);
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    Object localObject = (arhn)aqxe.a().a(653);
+    if (((arhn)localObject).jdField_a_of_type_Int == 1)
     {
-      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo null");
-      return;
+      localObject = ((arhn)localObject).jdField_a_of_type_ArrayOfLong;
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        long l = localObject[i];
+        if (l == -1L) {
+          return true;
+        }
+        if (l == paramLong) {
+          return true;
+        }
+        i += 1;
+      }
     }
-    if (!paramBoolean) {
-      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT suc");
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null) {
+      return a(((bfox)paramQQAppInterface.getManager(QQManagerFactory.TROOP_CLASS_CONTROLLER_MANAGER)).a());
     }
-    if (this.a.k())
-    {
-      ((arhg)arhi.a(this.a).getBusinessHandler(127)).a(paramarii);
-      QLog.i("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT suc:" + paramBoolean);
-      return;
-    }
-    QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT In extendfriend");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arhn
  * JD-Core Version:    0.7.0.1
  */

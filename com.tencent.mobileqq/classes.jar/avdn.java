@@ -1,24 +1,6 @@
-import android.view.View;
-
-class avdn
-  implements bjoe
+public abstract interface avdn
 {
-  avdn(avdm paramavdm, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.e();
-      return;
-      avdm.a(this.jdField_a_of_type_Avdm);
-      continue;
-      avdm.b(this.jdField_a_of_type_Avdm);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

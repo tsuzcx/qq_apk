@@ -1,81 +1,76 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.ContactRefreshHeader;
-import java.lang.ref.WeakReference;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.PatchedButton;
+import com.tencent.widget.XEditTextEx;
+import com.tencent.widget.XPanelContainer;
+import java.util.HashMap;
 
-public class aibn
-  extends Handler
+class aibn
+  implements View.OnClickListener
 {
-  public WeakReference<TroopView> a;
+  aibn(aiav paramaiav) {}
   
-  public aibn(TroopView paramTroopView)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramTroopView);
-  }
-  
-  public void a()
-  {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {}
-    do
+    if (this.a.jdField_a_of_type_Bilj == null) {}
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (TroopView.a(localTroopView) != null) {
-        TroopView.a(localTroopView).setRefreshing(false);
-      }
-    } while (TroopView.a(localTroopView) == null);
-    TroopView.a(localTroopView).setRefresh(false);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {
-      return;
-    }
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      TroopView.c(localTroopView);
-      TroopView.a(localTroopView, 1, 2131694064);
-      return;
-    case 4: 
-      TroopView.a(localTroopView, true);
-      return;
-    case 5: 
-      TroopView.a(localTroopView, false);
-      return;
-    case 13: 
-      TroopView.a(localTroopView, 1, 2131694064);
-      a();
-      return;
-    case 14: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
+      Object localObject = this.a.jdField_a_of_type_Bilj.a();
+      if (localObject != null)
       {
-        if (i == 0) {
-          break label178;
+        HashMap localHashMap = ((bili)localObject).b();
+        localObject = ((bili)localObject).a();
+        if (paramView == this.a.jdField_a_of_type_AndroidWidgetImageView)
+        {
+          if (this.a.input.getVisibility() != 0)
+          {
+            if (localHashMap != null) {
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
+            }
+            this.a.input.setVisibility(0);
+            this.a.mFunBtn.setVisibility(0);
+            this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+            aiav.a(this.a).a(25);
+            if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel != null) && (localObject != null)) {
+              this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.setBackgroundColor(((Integer)((HashMap)localObject).get("quickWordBgColor")).intValue());
+            }
+          }
+          else
+          {
+            if (localHashMap != null) {
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localHashMap.get("textIcon"));
+            }
+            this.a.input.setVisibility(4);
+            this.a.mFunBtn.setVisibility(4);
+            this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+            this.a.hideAllPanels();
+          }
         }
-        TroopView.d(localTroopView);
-        if (TroopView.a(localTroopView) == null) {
-          break;
+        else if (paramView == this.a.b) {
+          if (aiav.b(this.a).a() != 3)
+          {
+            this.a.onPanelIconClick(Integer.valueOf(3));
+            if (localHashMap != null) {
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
+            }
+            this.a.input.setVisibility(0);
+            this.a.mFunBtn.setVisibility(0);
+            this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+          }
+          else
+          {
+            this.a.hideAllPanels();
+          }
         }
-        TroopView.a(localTroopView).a(0);
-        TroopView.a(localTroopView).sendEmptyMessageDelayed(15, 800L);
-        return;
       }
-      label178:
-      a();
-      TroopView.a(localTroopView, 1, 2131718604);
-      return;
     }
-    a();
   }
 }
 

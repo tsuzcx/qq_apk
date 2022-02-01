@@ -1,18 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.widget.RoundImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqsz
-  implements View.OnClickListener
+class aqsz
+  implements URLDrawable.URLDrawableListener
 {
-  public aqsz(DataReportSettingFragment paramDataReportSettingFragment) {}
+  aqsz(aqsx paramaqsx, RoundImageView paramRoundImageView, arrt paramarrt, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    bfur.a(this.a.getActivity(), 0, 2131559610, amtj.a(2131701913), "", amtj.a(2131701908), amtj.a(2131701914), new aqta(this), new aqtb(this)).show();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentDanmakuRender", 2, "onLoadCanceled : " + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentDanmakuRender", 2, "onLoadFailed : " + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(paramURLDrawable);
+      this.jdField_a_of_type_Arrt.c(true);
+    }
   }
 }
 

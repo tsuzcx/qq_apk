@@ -1,24 +1,34 @@
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
 import android.view.View;
-import android.widget.ImageView;
 
 class bmle
-  extends RecyclerView.ViewHolder
+  extends View
 {
-  final GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
-  final LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private View jdField_a_of_type_AndroidViewView;
   
-  bmle(View paramView)
+  public bmle(bmld parambmld, Context paramContext, View paramView, Drawable paramDrawable)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380336);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368513));
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable());
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131362266));
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    setBackgroundDrawable(paramDrawable);
+  }
+  
+  public void invalidateDrawable(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+  }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    long l = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_AndroidViewView.postDelayed(paramRunnable, paramLong - l);
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramRunnable);
   }
 }
 

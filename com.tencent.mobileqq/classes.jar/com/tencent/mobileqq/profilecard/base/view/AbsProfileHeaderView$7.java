@@ -1,26 +1,27 @@
 package com.tencent.mobileqq.profilecard.base.view;
 
-import amsw;
 import android.os.Message;
-import aymg;
-import bfua;
-import bjmp;
+import anvk;
+import azrb;
+import bhcs;
+import bkyc;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
 
 class AbsProfileHeaderView$7
   implements Runnable
 {
-  AbsProfileHeaderView$7(AbsProfileHeaderView paramAbsProfileHeaderView, aymg paramaymg, boolean paramBoolean) {}
+  AbsProfileHeaderView$7(AbsProfileHeaderView paramAbsProfileHeaderView, azrb paramazrb, boolean paramBoolean) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((amsw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_Aymg.a.a);
-    Message localMessage = this.this$0.jdField_a_of_type_Bjmp.obtainMessage(1003, localExtensionInfo);
-    this.this$0.jdField_a_of_type_Bjmp.sendMessage(localMessage);
-    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bfua.b(localExtensionInfo.pendantId))) {
-      bfua.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aymg.a.a);
+    ExtensionInfo localExtensionInfo = ((anvk)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_Azrb.a.a);
+    Message localMessage = this.this$0.jdField_a_of_type_Bkyc.obtainMessage(1003, localExtensionInfo);
+    this.this$0.jdField_a_of_type_Bkyc.sendMessage(localMessage);
+    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bhcs.b(localExtensionInfo.pendantId))) {
+      bhcs.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azrb.a.a);
     }
   }
 }

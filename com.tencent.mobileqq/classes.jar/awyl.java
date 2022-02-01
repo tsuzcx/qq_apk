@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
 public class awyl
-  implements View.OnClickListener
+  extends bhyu
 {
-  awyl(awyf paramawyf) {}
+  public awyl(ChatBackgroundManager paramChatBackgroundManager, String paramString, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong, int paramInt, Bundle paramBundle)
   {
-    bjnw localbjnw = bjnw.a(this.a.a);
-    localbjnw.a(2131716953, 1);
-    localbjnw.c(2131690620);
-    localbjnw.a(new awym(this, localbjnw));
-    localbjnw.show();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.a(paramLong, paramInt, paramBundle);
+    paramBundle = ChatBackgroundManager.a(true, paramLong + "");
+    if (new File(paramBundle).exists()) {
+      afrb.a(this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getCurrentUin(), this.jdField_a_of_type_JavaLangString, paramBundle, this.jdField_a_of_type_Int, this.b);
+    }
   }
 }
 

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
 import Override;
-import amtj;
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.content.Intent;
@@ -10,12 +9,10 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.Toast;
-import apkn;
+import anvx;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.mini.app.AppLoaderFactory;
-import com.tencent.mobileqq.mini.fake.FakeBrandUI;
 import com.tencent.mobileqq.mini.fake.FakeSdkBrandUI;
 import com.tencent.mobileqq.mini.fake.IFakeBrandUI;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -91,19 +88,19 @@ public class AppBrandUI
       int i = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_process_mem_alert_mode", 0);
       if (i == 0)
       {
-        Toast.makeText(this, 2131693805, 0).show();
+        Toast.makeText(this, 2131693993, 0).show();
         return;
       }
       if (i == 1)
       {
         if (this.mRestartDialog == null)
         {
-          this.mRestartDialog = new QQCustomDialog(this, 2131755826);
-          this.mRestartDialog.setContentView(2131558992);
-          this.mRestartDialog.setTitle(2131693770);
-          this.mRestartDialog.setMessage(2131693805);
-          this.mRestartDialog.setPositiveButton(amtj.a(2131705017), new AppBrandUI.6(this));
-          this.mRestartDialog.setNegativeButton(amtj.a(2131705014), new AppBrandUI.7(this));
+          this.mRestartDialog = new QQCustomDialog(this, 2131755829);
+          this.mRestartDialog.setContentView(2131559019);
+          this.mRestartDialog.setTitle(2131693954);
+          this.mRestartDialog.setMessage(2131693993);
+          this.mRestartDialog.setPositiveButton(anvx.a(2131705368), new AppBrandUI.6(this));
+          this.mRestartDialog.setNegativeButton(anvx.a(2131705365), new AppBrandUI.7(this));
           this.mRestartDialog.setCanceledOnTouchOutside(true);
         }
         if (!this.mRestartDialog.isShowing())
@@ -158,7 +155,6 @@ public class AppBrandUI
   public boolean doOnCreate(Bundle paramBundle)
   {
     QLog.i("miniapp-start_AppBrandUI", 1, "doOnCreate");
-    AppLoaderFactory.initLaunchMode(getIntent());
     setRequestedOrientation(1);
     this.mActNeedImmersive = false;
     getFakeBrandUI().doBeforeOnCreate(this, paramBundle);
@@ -229,24 +225,13 @@ public class AppBrandUI
     super.finish();
   }
   
-  public apkn getColorNoteController()
-  {
-    IFakeBrandUI localIFakeBrandUI = getFakeBrandUI();
-    if ((localIFakeBrandUI instanceof FakeBrandUI)) {
-      return ((FakeBrandUI)localIFakeBrandUI).getColorNoteController();
-    }
-    return null;
-  }
-  
   public IFakeBrandUI getFakeBrandUI()
   {
     if (this.mFakeBrandUI != null) {
       return this.mFakeBrandUI;
     }
-    if (AppLoaderFactory.isSDKMode()) {}
-    for (this.mFakeBrandUI = new FakeSdkBrandUI();; this.mFakeBrandUI = new FakeBrandUI()) {
-      return this.mFakeBrandUI;
-    }
+    this.mFakeBrandUI = new FakeSdkBrandUI();
+    return this.mFakeBrandUI;
   }
   
   public boolean isWrapContent()
@@ -257,9 +242,7 @@ public class AppBrandUI
   public boolean moveTaskToBack(boolean paramBoolean)
   {
     QLog.i("miniapp-start_AppBrandUI", 1, "moveTaskToBack nonRoot=" + paramBoolean);
-    if (AppLoaderFactory.isSDKMode()) {
-      getFakeBrandUI().moveTaskToBack(this, paramBoolean, true);
-    }
+    getFakeBrandUI().moveTaskToBack(this, paramBoolean, true);
     return super.moveTaskToBack(paramBoolean);
   }
   
@@ -300,11 +283,6 @@ public class AppBrandUI
   public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
-  }
-  
-  public void setColorNoteWithOutMoveTaskToBackThisTime()
-  {
-    getFakeBrandUI().setColorNoteWithOutMoveTaskToBackThisTime();
   }
 }
 

@@ -1,49 +1,114 @@
-import android.text.TextUtils;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class amen
-  implements Comparable<amen>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WaterfallArk;", "", "appName", "", "appMeta", "appVersion", "appView", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAppMeta", "()Ljava/lang/String;", "setAppMeta", "(Ljava/lang/String;)V", "getAppName", "getAppVersion", "getAppView", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amen
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public short b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e = -1;
-  public long e;
-  public String e;
-  public int f;
-  public String f;
-  public int g = 0;
-  public String g;
-  public int h;
+  @NotNull
+  private final String a;
+  @NotNull
+  private String b;
+  @NotNull
+  private final String c;
+  @NotNull
+  private final String d;
   
-  public int a(amen paramamen)
+  public amen(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4)
   {
-    if (paramamen == null) {}
-    do
-    {
-      return -1;
-      if (this.jdField_a_of_type_Boolean == paramamen.jdField_a_of_type_Boolean) {
-        return -(int)(this.c - paramamen.c);
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    return 0;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
   }
   
-  public boolean a(String paramString)
+  @NotNull
+  public final String a()
   {
-    return (this.jdField_a_of_type_Long == this.b) || ((!TextUtils.isEmpty(paramString)) && (paramString.equals(String.valueOf(this.jdField_a_of_type_Long))));
+    return this.a;
+  }
+  
+  public final void a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.b = paramString;
+  }
+  
+  @NotNull
+  public final String b()
+  {
+    return this.b;
+  }
+  
+  @NotNull
+  public final String c()
+  {
+    return this.c;
+  }
+  
+  @NotNull
+  public final String d()
+  {
+    return this.d;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
+    {
+      if ((paramObject instanceof amen))
+      {
+        paramObject = (amen)paramObject;
+        if ((!Intrinsics.areEqual(this.a, paramObject.a)) || (!Intrinsics.areEqual(this.b, paramObject.b)) || (!Intrinsics.areEqual(this.c, paramObject.c)) || (!Intrinsics.areEqual(this.d, paramObject.d))) {}
+      }
+    }
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int m = 0;
+    String str = this.a;
+    int i;
+    int j;
+    if (str != null)
+    {
+      i = str.hashCode();
+      str = this.b;
+      if (str == null) {
+        break label95;
+      }
+      j = str.hashCode();
+      label37:
+      str = this.c;
+      if (str == null) {
+        break label100;
+      }
+    }
+    label95:
+    label100:
+    for (int k = str.hashCode();; k = 0)
+    {
+      str = this.d;
+      if (str != null) {
+        m = str.hashCode();
+      }
+      return (k + (j + i * 31) * 31) * 31 + m;
+      i = 0;
+      break;
+      j = 0;
+      break label37;
+    }
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "WaterfallArk(appName=" + this.a + ", appMeta=" + this.b + ", appVersion=" + this.c + ", appView=" + this.d + ")";
   }
 }
 

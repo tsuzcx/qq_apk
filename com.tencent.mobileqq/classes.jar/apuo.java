@@ -1,74 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import java.util.ArrayList;
 
-public class apuo
-  extends aptq<apup>
+final class apuo
+  extends apvz
 {
-  public static apup a()
+  apuo(String paramString, ArrayList paramArrayList)
   {
-    return (apup)apub.a().a(457);
+    super(paramString);
   }
   
-  @NonNull
-  public apup a(int paramInt)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    return new apup();
-  }
-  
-  @Nullable
-  public apup a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0)) {
-      return null;
-    }
-    paramArrayOfaptx = paramArrayOfaptx[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor onParsed, content:" + paramArrayOfaptx);
-    }
-    return apup.a(paramArrayOfaptx);
-  }
-  
-  public void a(apup paramapup)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor update.");
-    }
-    ((amvo)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(159)).a();
-  }
-  
-  public Class<apup> clazz()
-  {
-    return apup.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 457;
+    this.a.add(Boolean.valueOf(paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apuo
  * JD-Core Version:    0.7.0.1
  */

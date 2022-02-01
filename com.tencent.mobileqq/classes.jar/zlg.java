@@ -1,25 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class zlg
-  implements View.OnClickListener
+  implements zjt
 {
-  public zlg(VideoPlayerView paramVideoPlayerView) {}
+  public int a;
+  public String a;
+  public WeakReference<QRDisplayActivity> a;
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (zvo.a("mLLSkipBackWrapper", 500L))
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    QRDisplayActivity localQRDisplayActivity;
+    do
     {
-      VideoPlayerView.e(this.a);
-      VideoPlayerView.a(this.a, VideoPlayerView.b(this.a), 0, 1, true);
-      if (this.a.a() != null) {
-        this.a.a(this.a.a().getCurrentPositionMs() - 10000L);
+      do
+      {
+        return;
+        localQRDisplayActivity = (QRDisplayActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while (localQRDisplayActivity == null);
+      if (QLog.isColorLevel()) {
+        QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
       }
+    } while ((localQRDisplayActivity.b) || (localQRDisplayActivity.isFinishing()));
+    if (!paramBoolean)
+    {
+      localQRDisplayActivity.i();
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    localQRDisplayActivity.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
+    paramString = znl.a(paramString, -1);
+    if (paramString != null)
+    {
+      localQRDisplayActivity.a = paramString;
+      localQRDisplayActivity.h();
+      return;
+    }
+    localQRDisplayActivity.i();
   }
 }
 

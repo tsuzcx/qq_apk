@@ -18,17 +18,17 @@ import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.List;
-import rkb;
-import rkc;
-import rki;
-import rkj;
-import rkn;
-import rko;
-import rku;
+import rwo;
+import rwp;
+import rwv;
+import rww;
+import rxa;
+import rxb;
+import rxh;
 
 public class VideoCaptureFragment
   extends PublicBaseFragment
-  implements rkb
+  implements rwo
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
@@ -37,9 +37,9 @@ public class VideoCaptureFragment
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private CaptureOperateTouchLayout jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout;
   private VideoMeasureScaleView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView;
-  private rkc jdField_a_of_type_Rkc;
-  private rkj jdField_a_of_type_Rkj;
-  private rko jdField_a_of_type_Rko;
+  private rwp jdField_a_of_type_Rwp;
+  private rww jdField_a_of_type_Rww;
+  private rxb jdField_a_of_type_Rxb;
   private TextView b;
   
   public static VideoCaptureFragment a(String paramString, float paramFloat)
@@ -65,7 +65,7 @@ public class VideoCaptureFragment
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout.setup(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetTextView, this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView, a());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout.setEnabled(false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout.setOnCaptureOperateCallback(new rkn(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout.setOnCaptureOperateCallback(new rxa(this));
   }
   
   public float a()
@@ -90,7 +90,7 @@ public class VideoCaptureFragment
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Rkj.notifyItemChanged(paramInt);
+    this.jdField_a_of_type_Rww.notifyItemChanged(paramInt);
   }
   
   public void a(long paramLong)
@@ -101,25 +101,25 @@ public class VideoCaptureFragment
   public void a(Bitmap paramBitmap)
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-    if (this.jdField_a_of_type_Rkc != null) {
-      this.jdField_a_of_type_Rkc.a(paramBitmap);
+    if (this.jdField_a_of_type_Rwp != null) {
+      this.jdField_a_of_type_Rwp.a(paramBitmap);
     }
   }
   
-  public void a(List<rku> paramList)
+  public void a(List<rxh> paramList)
   {
-    this.jdField_a_of_type_Rkj = new rkj(this.jdField_a_of_type_AndroidAppActivity, paramList);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Rkj);
+    this.jdField_a_of_type_Rww = new rww(this.jdField_a_of_type_AndroidAppActivity, paramList);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Rww);
   }
   
-  public void a(rkc paramrkc)
+  public void a(rwp paramrwp)
   {
-    this.jdField_a_of_type_Rkc = paramrkc;
+    this.jdField_a_of_type_Rwp = paramrwp;
   }
   
-  public void a(rki paramrki)
+  public void a(rwv paramrwv)
   {
-    this.jdField_a_of_type_Rko.a(paramrki);
+    this.jdField_a_of_type_Rxb.a(paramrwv);
   }
   
   public int b()
@@ -133,13 +133,13 @@ public class VideoCaptureFragment
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout.setEnabled(true);
   }
   
-  public void b(List<rku> paramList)
+  public void b(List<rxh> paramList)
   {
-    if (this.jdField_a_of_type_Rkj != null)
+    if (this.jdField_a_of_type_Rww != null)
     {
-      this.jdField_a_of_type_Rkj.b();
-      this.jdField_a_of_type_Rkj.b(paramList);
-      this.jdField_a_of_type_Rkj.notifyDataSetChanged();
+      this.jdField_a_of_type_Rww.b();
+      this.jdField_a_of_type_Rww.b(paramList);
+      this.jdField_a_of_type_Rww.notifyDataSetChanged();
     }
   }
   
@@ -151,7 +151,7 @@ public class VideoCaptureFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559989, null);
+    paramLayoutInflater = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560033, null);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -159,39 +159,39 @@ public class VideoCaptureFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Rko.c();
+    this.jdField_a_of_type_Rxb.c();
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Rko.e();
+    this.jdField_a_of_type_Rxb.e();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Rko.d();
+    this.jdField_a_of_type_Rxb.d();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131380499));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131380493));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout = ((CaptureOperateTouchLayout)paramView.findViewById(2131380497));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380494));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380498));
-    this.b = ((TextView)paramView.findViewById(2131380500));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView = ((VideoMeasureScaleView)paramView.findViewById(2131380496));
-    this.jdField_a_of_type_Rko = new rko(this.jdField_a_of_type_AndroidAppActivity, getArguments(), this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131380839));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131380833));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout = ((CaptureOperateTouchLayout)paramView.findViewById(2131380837));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380834));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380838));
+    this.b = ((TextView)paramView.findViewById(2131380840));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView = ((VideoMeasureScaleView)paramView.findViewById(2131380836));
+    this.jdField_a_of_type_Rxb = new rxb(this.jdField_a_of_type_AndroidAppActivity, getArguments(), this);
     paramView = new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutParams().height = b();
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
     a();
     b();
-    this.jdField_a_of_type_Rko.a();
+    this.jdField_a_of_type_Rxb.a();
   }
 }
 

@@ -1,52 +1,18 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat.TabLayoutOnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
 
-public class tdv
-  extends DataSetObserver
+public final class tdv
+  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.EntranceIconInfo>
 {
-  private boolean jdField_a_of_type_Boolean;
-  
-  public tdv(TabLayoutCompat paramTabLayoutCompat) {}
-  
-  void a()
+  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo a(Parcel paramParcel)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a != null) && (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null))
-    {
-      int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a.getCurrentItem();
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == i) {
-        TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).b(i, 300);
-      }
-    }
-    if (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null) {
-      TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).a();
-    }
+    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo(paramParcel);
   }
   
-  public void a(boolean paramBoolean)
+  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo[] a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onChanged()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
-      return;
-    }
-    a();
-  }
-  
-  public void onInvalidated()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
-      return;
-    }
-    a();
+    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo[paramInt];
   }
 }
 

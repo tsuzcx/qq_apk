@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.model;
 
-import aogc;
-import aoln;
+import apje;
+import apoo;
 import com.tencent.qphone.base.util.QLog;
 
 public class CameraProxy$1
   implements Runnable
 {
-  public CameraProxy$1(aoln paramaoln, int paramInt) {}
+  public CameraProxy$1(apoo paramapoo, int paramInt) {}
   
   public void run()
   {
-    if ((aoln.a(this.this$0) != 1) || (aoln.a(this.this$0) == null))
+    if ((apoo.a(this.this$0) != 1) || (apoo.a(this.this$0) == null))
     {
-      QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + aoln.a(this.this$0));
+      QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + apoo.a(this.this$0));
       return;
     }
     int i;
@@ -28,22 +28,22 @@ public class CameraProxy$1
         {
           QLog.i("CameraProxy", 2, "openCameraAync.");
           i = -3;
-          if (aoln.b(this.this$0) >= 10) {
+          if (apoo.b(this.this$0) >= 10) {
             break;
           }
-          aoln.c(this.this$0);
+          apoo.c(this.this$0);
           System.currentTimeMillis();
-          if (aoln.b(this.this$0) == 1)
+          if (apoo.b(this.this$0) == 1)
           {
-            i = aoln.a(this.this$0).a(this.a);
-            QLog.i("CameraProxy", 2, "try to open camera. mCurOpenCameraTryTimes = " + aoln.b(this.this$0) + ", MAX_OPEN_CAMERA_TRY_TIMES = " + 10);
-            if (aoln.a(this.this$0) == null) {
+            i = apoo.a(this.this$0).a(this.a);
+            QLog.i("CameraProxy", 2, "try to open camera. mCurOpenCameraTryTimes = " + apoo.b(this.this$0) + ", MAX_OPEN_CAMERA_TRY_TIMES = " + 10);
+            if (apoo.a(this.this$0) == null) {
               break label474;
             }
-            if (aoln.a(this.this$0) == 1) {
+            if (apoo.a(this.this$0) == 1) {
               break label480;
             }
-            QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + aoln.a(this.this$0));
+            QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + apoo.a(this.this$0));
             return;
           }
         }
@@ -51,33 +51,33 @@ public class CameraProxy$1
         {
           localInterruptedException.printStackTrace();
           QLog.i("CameraProxy", 1, "InterruptedException = " + localInterruptedException.getMessage());
-          aoln.a(this.this$0, 0);
-          QLog.i("CameraProxy", 2, "openCameraAync failed. mCurCameraState = " + aoln.a(this.this$0));
+          apoo.a(this.this$0, 0);
+          QLog.i("CameraProxy", 2, "openCameraAync failed. mCurCameraState = " + apoo.a(this.this$0));
           return;
         }
-        i = aoln.a(this.this$0).e();
+        i = apoo.a(this.this$0).e();
       }
       if (i != 0) {
         break;
       }
-      aoln.a(this.this$0, 2);
-      QLog.i("CameraProxy", 2, "openCameraAync successfully. mCurCameraState = " + aoln.a(this.this$0));
+      apoo.a(this.this$0, 2);
+      QLog.i("CameraProxy", 2, "openCameraAync successfully. mCurCameraState = " + apoo.a(this.this$0));
       return;
       Thread.currentThread();
-      Thread.sleep(aoln.a(this.this$0));
-    } while (aoln.a(this.this$0) == 1);
-    QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + aoln.a(this.this$0));
+      Thread.sleep(apoo.a(this.this$0));
+    } while (apoo.a(this.this$0) == 1);
+    QLog.i("CameraProxy", 2, "cancel to open camera. next mCurCameraState = " + apoo.a(this.this$0));
     return;
-    aoln.a(this.this$0, 0);
-    QLog.i("CameraProxy", 2, "openCameraAync failed. retCode = " + i + ", mCurCameraState = " + aoln.a(this.this$0));
+    apoo.a(this.this$0, 0);
+    QLog.i("CameraProxy", 2, "openCameraAync failed. retCode = " + i + ", mCurCameraState = " + apoo.a(this.this$0));
     if (i == -1)
     {
-      aoln.a(this.this$0, false, 0, 1);
+      apoo.a(this.this$0, false, 0, 1);
       return;
     }
     for (;;)
     {
-      aoln.a(this.this$0, false, 0, 2);
+      apoo.a(this.this$0, false, 0, 2);
       return;
       label474:
       i = -3;

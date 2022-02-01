@@ -1,66 +1,75 @@
 import android.content.Context;
-import android.graphics.PointF;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.util.DisplayMetrics;
-import android.view.View;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.tianshu.TianShuAdPosItemData;
+import cooperation.vip.tianshu.TianShuManager;
+import cooperation.vip.tianshu.TianShuReportData;
+import java.util.ArrayList;
+import java.util.List;
 
-final class bmkw
-  extends LinearSmoothScroller
+public class bmkw
 {
-  bmkw(Context paramContext, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean)
+  public static List<TianShuAdPosItemData> a()
   {
-    super(paramContext);
+    ArrayList localArrayList = new ArrayList();
+    TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
+    localTianShuAdPosItemData.mNeedCnt = 1;
+    localTianShuAdPosItemData.mPosId = 339;
+    localArrayList.add(localTianShuAdPosItemData);
+    localTianShuAdPosItemData = new TianShuAdPosItemData();
+    localTianShuAdPosItemData.mNeedCnt = 1;
+    localTianShuAdPosItemData.mPosId = 340;
+    localArrayList.add(localTianShuAdPosItemData);
+    localTianShuAdPosItemData = new TianShuAdPosItemData();
+    localTianShuAdPosItemData.mNeedCnt = 1;
+    localTianShuAdPosItemData.mPosId = 341;
+    localArrayList.add(localTianShuAdPosItemData);
+    return localArrayList;
   }
   
-  public int calculateDtToFit(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2)
   {
-    return (paramInt4 + paramInt3) / 2 - (paramInt2 + paramInt1) / 2;
+    TianShuReportData localTianShuReportData = new TianShuReportData();
+    long l = System.currentTimeMillis() / 1000L;
+    localTianShuReportData.mTraceId = (String.valueOf(paramQQAppInterface.getCurrentAccountUin()) + '_' + l);
+    localTianShuReportData.mActionId = paramInt;
+    localTianShuReportData.mActionValue = 1;
+    localTianShuReportData.mItemId = String.valueOf(paramString1);
+    localTianShuReportData.mOperTime = l;
+    localTianShuReportData.mTraceNum = 1;
+    localTianShuReportData.mAppId = "tianshu.31";
+    localTianShuReportData.mModuleId = "";
+    localTianShuReportData.mTriggerInfo = paramString2;
+    TianShuManager.getInstance().report(localTianShuReportData);
   }
   
-  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
   {
-    return 50.0F / paramDisplayMetrics.densityDpi;
-  }
-  
-  public int calculateTimeForScrolling(int paramInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return 100;
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("TianshuAdUtils", 2, "url empty");
     }
-    return Math.min(200, super.calculateTimeForScrolling(paramInt));
-  }
-  
-  public PointF computeScrollVectorForPosition(int paramInt)
-  {
-    int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
-    int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
-    float f;
-    if (paramInt < i) {
-      f = -1.0F;
-    }
-    for (;;)
+    do
     {
-      return new PointF(f, 0.0F);
-      if (paramInt > j)
+      return;
+      if (MiniAppLauncher.isMiniAppUrl(paramString))
       {
-        f = 1.0F;
+        MiniAppLauncher.startMiniApp(paramContext, paramString, paramInt, null);
+        return;
       }
-      else
-      {
-        View localView = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(paramInt);
-        if (localView != null)
-        {
-          f = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.getWidth() / 2.0F;
-          paramInt = localView.getLeft();
-          f -= (localView.getRight() + paramInt) / 2.0F;
-        }
-        else
-        {
-          f = 0.0F;
-        }
+      if ((!paramString.startsWith("mqqapi://")) || (paramQQAppInterface == null)) {
+        break;
       }
-    }
+      paramQQAppInterface = bhey.a(paramQQAppInterface, paramContext, paramString);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.a();
+    return;
+    paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
+    paramQQAppInterface.putExtra("url", paramString);
+    paramContext.startActivity(paramQQAppInterface);
   }
 }
 

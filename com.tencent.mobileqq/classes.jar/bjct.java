@@ -1,39 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.minigame.ui.GameActivity1;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import android.widget.HorizontalScrollView;
+import com.tencent.open.agent.FriendChooser;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.ColorNotePlugin.1;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 
 public class bjct
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public bjct(ColorNotePlugin.1 param1) {}
+  public bjct(FriendChooser paramFriendChooser) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramDialogInterface != null) {}
-    try
+    switch (paramMessage.what)
     {
-      paramDialogInterface.dismiss();
-      this.a.jdField_a_of_type_Apkn.e();
-      if (bjcs.a(this.a.this$0))
-      {
-        paramDialogInterface = new bjcu(this);
-        if ((bjcs.b(this.a.this$0).getAttachedActivity() != null) && ((bjcs.c(this.a.this$0).getAttachedActivity() instanceof GameActivity1))) {
-          ((GameActivity1)bjcs.d(this.a.this$0).getAttachedActivity()).setColorSignAddListener(paramDialogInterface);
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
-        return;
-      }
     }
-    catch (Exception paramDialogInterface)
+    for (;;)
     {
-      QLog.e("ColorNotePlugin", 1, "show modalView error." + paramDialogInterface);
+      super.handleMessage(paramMessage);
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
+      if (QLog.isColorLevel()) {
+        QLog.e("qqBaseActivity", 2, "" + this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width);
+      }
     }
   }
 }

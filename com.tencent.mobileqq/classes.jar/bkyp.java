@@ -1,65 +1,196 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import cooperation.troop_homework.outer.TroopHWRecordArrangeActivity;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
-public class bkyp
-  extends Handler
+public abstract class bkyp
 {
-  public bkyp(TroopHWRecordArrangeActivity paramTroopHWRecordArrangeActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static int a(Map<String, String> paramMap, String paramString, int paramInt)
   {
-    switch (paramMessage.what)
+    try
     {
-    default: 
-      return;
-    case 3: 
-      this.a.jdField_a_of_type_Boolean = true;
-      return;
-    case 101: 
-      this.a.setResult(0);
-      this.a.finish();
-      return;
+      int i = Integer.parseInt((String)paramMap.get(paramString));
+      return i;
     }
-    paramMessage = paramMessage.obj.toString();
-    Object localObject = new File(paramMessage);
-    long l;
-    if (((File)localObject).exists()) {
-      l = ((File)localObject).length();
+    catch (Exception paramMap) {}
+    return paramInt;
+  }
+  
+  public static String a(String paramString)
+  {
+    try
+    {
+      paramString = URLEncoder.encode(paramString, "UTF-8");
+      return paramString;
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      throw new IllegalArgumentException(paramString);
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(paramString1);
+    int j = 0;
+    int i = -1;
+    int k;
+    if (j < localStringBuilder.length())
+    {
+      if (localStringBuilder.charAt(j) != '?')
+      {
+        k = i;
+        if (localStringBuilder.charAt(j) != '&') {}
+      }
+      else
+      {
+        if (!paramString2.equals(localStringBuilder.substring(j + 1, j + 1 + paramString2.length()))) {
+          break label86;
+        }
+        k = j + 1;
+      }
+      label86:
+      do
+      {
+        j += 1;
+        i = k;
+        break;
+        k = i;
+      } while (i <= 0);
+      j += 1;
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
-      paramMessage = new JSONObject();
+      if (i < 0) {
+        return paramString1;
+      }
+      int m = j;
+      k = i;
+      if (j < 0)
+      {
+        k = i - 1;
+        m = localStringBuilder.length();
+      }
+      return localStringBuilder.substring(0, k) + localStringBuilder.substring(m, localStringBuilder.length());
+      j = -1;
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    char c = '?';
+    int i = paramString1.indexOf('?');
+    int j = paramString1.indexOf('#');
+    if (i == -1) {}
+    for (;;)
+    {
+      paramString2 = c + a(paramString2) + '=' + a(paramString3);
+      if (j != -1) {
+        break;
+      }
+      return paramString1 + paramString2;
+      c = '&';
+    }
+    return paramString1.substring(0, j) + paramString2 + paramString1.substring(j);
+  }
+  
+  public static Map<String, String> a(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramString != null)
+    {
+      int i = paramString.indexOf("?");
+      localObject1 = localObject2;
+      if (-1 != i) {
+        localObject1 = b(paramString.substring(i + 1));
+      }
+    }
+    paramString = (String)localObject1;
+    if (localObject1 == null) {
+      paramString = new HashMap();
+    }
+    return paramString;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((paramString == null) || (paramString.equals(""))) {}
+    for (;;)
+    {
+      return false;
       try
       {
-        paramMessage.put("webid", TroopHWRecordArrangeActivity.a(this.a));
-        paramMessage.put("type", "record");
-        paramMessage.put("state", "stop");
-        paramMessage.put("time", Math.round(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.duration / 1000.0F));
-        paramMessage.put("size", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.size);
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("jscallback", paramMessage.toString());
-        ((Intent)localObject).putExtra("localPath", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
-        this.a.setResult(-1, (Intent)localObject);
-        this.a.finish();
-        return;
-        l = 0L;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
+        paramString = new URI(paramString);
+        if ((paramString.getHost() != null) && ((paramString.getScheme().equalsIgnoreCase("http")) || (paramString.getScheme().equalsIgnoreCase("https")))) {
+          return true;
         }
       }
+      catch (URISyntaxException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return false;
+  }
+  
+  public static String b(String paramString)
+  {
+    try
+    {
+      paramString = URLDecoder.decode(paramString, "UTF-8");
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      throw new IllegalArgumentException(paramString);
+    }
+  }
+  
+  public static String b(String paramString1, String paramString2, String paramString3)
+  {
+    char c = '?';
+    int i = paramString1.indexOf('?');
+    int j = paramString1.indexOf('#');
+    if (i == -1) {}
+    for (;;)
+    {
+      paramString2 = c + paramString2 + '=' + paramString3;
+      if (j != -1) {
+        break;
+      }
+      return paramString1 + paramString2;
+      c = '&';
+    }
+    return paramString1.substring(0, j) + paramString2 + paramString1.substring(j);
+  }
+  
+  public static Map<String, String> b(String paramString)
+  {
+    int i = 0;
+    HashMap localHashMap = new HashMap();
+    for (;;)
+    {
+      try
+      {
+        paramString = paramString.split("&");
+        int j = paramString.length;
+        if (i < j)
+        {
+          String[] arrayOfString = paramString[i].split("=");
+          if ((arrayOfString == null) || (arrayOfString.length != 2)) {
+            break label72;
+          }
+          localHashMap.put(arrayOfString[0], URLDecoder.decode(arrayOfString[1]));
+        }
+      }
+      catch (Exception paramString) {}
+      return localHashMap;
+      label72:
+      i += 1;
     }
   }
 }

@@ -1,26 +1,99 @@
-import android.app.Activity;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.4.1;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class zdl
-  implements yyq
 {
-  zdl(zdg paramzdg) {}
-  
-  public void a(boolean paramBoolean, Drawable paramDrawable)
+  public static <T> T a(T paramT)
   {
-    if ((paramBoolean) && ((paramDrawable instanceof AnimationDrawable)))
+    if (paramT == null) {
+      ykq.e("Q.qqstory.AssertUtils", "checkNotNull failed:" + a(2));
+    }
+    return paramT;
+  }
+  
+  public static String a(int paramInt)
+  {
+    for (;;)
     {
-      paramDrawable = (AnimationDrawable)paramDrawable;
-      if (zdg.g(this.a) != null) {
-        zdg.m(this.a).runOnUiThread(new DetailBaseBlock.4.1(this, paramDrawable));
+      try
+      {
+        localObject = new RuntimeException("getStackTrace").getStackTrace();
+        localStringBuilder = new StringBuilder();
+        i = paramInt;
+        if (localObject.length > paramInt) {
+          break label87;
+        }
+        i = localObject.length;
       }
+      catch (Exception localException)
+      {
+        Object localObject;
+        StringBuilder localStringBuilder;
+        int i;
+        return "";
+      }
+      if (paramInt < i)
+      {
+        localStringBuilder.append("\n" + localObject[paramInt].toString());
+        paramInt += 1;
+      }
+      else
+      {
+        localObject = localStringBuilder.toString();
+        return localObject;
+        label87:
+        paramInt = 2;
+      }
+    }
+  }
+  
+  public static void a() {}
+  
+  public static <T> void a(T paramT)
+  {
+    if (paramT == null)
+    {
+      paramT = zfc.a("StoryAssertUtils Exception!");
+      bdjw.a(paramT, "StoryAssertUtils assertNotNull_DEBUG()");
+      ykq.c("Q.qqstory.AssertUtils", "assertNotNull_DEBUG failed: ", paramT);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
       return;
     }
-    QLog.d(zdg.a, 2, "showFollowTipView error, create animationDrawable error");
+    ykq.e("Q.qqstory.AssertUtils", "checkNotEmpty failed :" + a(2));
   }
+  
+  public static void a(String paramString, Object... paramVarArgs)
+  {
+    if (paramVarArgs.length == 0) {}
+    for (;;)
+    {
+      ykq.e("Q.qqstory.AssertUtils", paramString);
+      return;
+      paramString = String.format(paramString, paramVarArgs);
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      ykq.e("Q.qqstory.AssertUtils", "assertTrue failed:" + a(4));
+    }
+  }
+  
+  public static void a(boolean paramBoolean, @NonNull String paramString)
+  {
+    if (paramBoolean) {
+      return;
+    }
+    ykq.e("Q.qqstory.AssertUtils", paramString);
+  }
+  
+  public static void b() {}
 }
 
 

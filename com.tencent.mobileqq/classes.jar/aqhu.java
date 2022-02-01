@@ -1,70 +1,47 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqhu
-  extends aqgc<aqht>
+  extends bhyn
 {
-  public static aqht a = new aqht();
-  
-  public static aqht c()
+  public aqhu(BubbleManager paramBubbleManager, String paramString1, String paramString2)
   {
-    aqht localaqht2 = (aqht)apub.a().a(423);
-    aqht localaqht1 = localaqht2;
-    if (localaqht2 == null) {
-      localaqht1 = new aqht();
+    super(paramString1, paramString2);
+  }
+  
+  public void onCancel(bhyo parambhyo)
+  {
+    String str = parambhyo.a().getString("name");
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleManager", 2, "bubbleDownloadListener onCancel pkgName = " + str);
     }
-    return localaqht1;
+    this.a.a("Bubble_download_cancel", parambhyo.b(), str, 0L);
   }
   
-  @NonNull
-  public aqht a()
+  public void onDone(bhyo parambhyo)
   {
-    return a;
-  }
-  
-  @NonNull
-  public aqht a(aptx[] paramArrayOfaptx)
-  {
-    boolean bool = true;
-    localaqht = new aqht();
-    paramArrayOfaptx = paramArrayOfaptx[0].a;
-    try
-    {
-      if (new JSONObject(paramArrayOfaptx).optInt("show_red_name_card", 0) == 1) {}
-      for (;;)
-      {
-        localaqht.a = bool;
-        return localaqht;
-        bool = false;
-      }
-      return localaqht;
+    long l = parambhyo.h - parambhyo.g;
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleManager", 2, "bubbleDownloadListener onDone downloadTime = " + l);
     }
-    catch (JSONException paramArrayOfaptx)
-    {
-      xvv.e("QVipRedNameCardProcessor", "QVipRedNameCardConfig onParsed exception :" + paramArrayOfaptx.getMessage());
+    this.a.a("Bubble_download_succ", parambhyo.b(), "pkgName", l);
+  }
+  
+  public boolean onStart(bhyo parambhyo)
+  {
+    String str = parambhyo.a().getString("name");
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleManager", 2, "bubbleDownloadListener onStart pkgName = " + str);
     }
-  }
-  
-  @NonNull
-  public aqht b()
-  {
-    return a;
-  }
-  
-  public Class<aqht> clazz()
-  {
-    return aqht.class;
-  }
-  
-  public int type()
-  {
-    return 423;
+    this.a.a("Bubble_download", parambhyo.b(), str, 0L);
+    super.onStart(parambhyo);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhu
  * JD-Core Version:    0.7.0.1
  */

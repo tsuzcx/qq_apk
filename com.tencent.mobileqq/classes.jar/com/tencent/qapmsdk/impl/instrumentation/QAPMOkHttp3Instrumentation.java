@@ -1,6 +1,7 @@
 package com.tencent.qapmsdk.impl.instrumentation;
 
 import com.tencent.qapmsdk.common.logger.Logger;
+import com.tencent.qapmsdk.impl.c.c;
 import com.tencent.qapmsdk.impl.g.b;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -25,11 +26,13 @@ public class QAPMOkHttp3Instrumentation
     return new OkHttpClient.Builder().addInterceptor(new com.tencent.qapmsdk.impl.c.d()).build();
   }
   
+  @QAPMReplaceCallSite
   public static Call newCall(OkHttpClient paramOkHttpClient, Request paramRequest)
   {
-    return new com.tencent.qapmsdk.impl.c.c(paramOkHttpClient, paramRequest);
+    return new c(paramOkHttpClient, paramRequest);
   }
   
+  @QAPMReplaceCallSite
   public static HttpURLConnection open(OkUrlFactory paramOkUrlFactory, URL paramURL)
   {
     try
@@ -56,12 +59,12 @@ public class QAPMOkHttp3Instrumentation
         } while (!b.c());
         Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMOkHttp3Instrumentation", "okhttp3  open gather  begin !!" });
         if ((paramURL instanceof HttpsURLConnection)) {
-          return new d((HttpsURLConnection)paramURL);
+          return new e((HttpsURLConnection)paramURL);
         }
         paramOkUrlFactory = paramURL;
       } while (!(paramURL instanceof HttpURLConnection));
     }
-    return new c(paramURL);
+    return new d(paramURL);
   }
 }
 

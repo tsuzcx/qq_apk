@@ -1,21 +1,45 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
 public class asrp
-  extends asrn
 {
-  public asrp(asqs paramasqs)
+  public int a;
+  protected asqt a;
+  protected asro a;
+  
+  public asrp(asro paramasro, asqt paramasqt)
   {
-    super(paramasqs);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Asqt = paramasqt;
+    this.jdField_a_of_type_Asro = paramasro;
   }
   
-  public boolean a(String paramString)
+  public void a()
   {
-    FileManagerEntity localFileManagerEntity = this.a.a();
-    if (localFileManagerEntity == null) {}
-    while ((localFileManagerEntity.strTroopFilePath == null) || (!localFileManagerEntity.strTroopFilePath.equalsIgnoreCase(paramString))) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onEnd");
     }
-    return true;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onStart subinfo:" + paramInt);
+    }
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " start handle event " + paramInt1 + ", subEvent " + paramInt2);
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onForceEnd");
+    }
   }
 }
 

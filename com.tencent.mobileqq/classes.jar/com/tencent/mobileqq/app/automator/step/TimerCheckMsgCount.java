@@ -5,8 +5,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Environment;
 import android.text.TextUtils;
-import bjnn;
-import bkwm;
+import bkyz;
+import bmhv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -53,7 +53,7 @@ public class TimerCheckMsgCount
       this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp();
     }
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.f = bkwm.b(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
+    this.f = bmhv.b(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
     long l = System.currentTimeMillis();
     Object localObject4 = c(b);
     Object localObject3 = c(jdField_c_of_type_JavaLangString);
@@ -171,7 +171,7 @@ public class TimerCheckMsgCount
     }
     localObject1 = new Date();
     localObject2 = new SimpleDateFormat("yyyy.MM.dd");
-    bkwm.c(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, ((DateFormat)localObject2).format((Date)localObject1));
+    bmhv.c(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, ((DateFormat)localObject2).format((Date)localObject1));
     localObject1 = ((DateFormat)localObject2).format((Date)localObject1);
     localObject2 = new HashMap();
     ((HashMap)localObject2).put("uin", this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin());
@@ -230,7 +230,7 @@ public class TimerCheckMsgCount
   {
     try
     {
-      paramString = bjnn.a(BaseApplicationImpl.getContext(), paramString);
+      paramString = bkyz.a(BaseApplicationImpl.getContext(), paramString);
       if (paramString != null)
       {
         paramString = paramString.versionName;

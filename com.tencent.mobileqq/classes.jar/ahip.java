@@ -1,24 +1,33 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View;
+import android.view.ViewGroup;
+import java.lang.ref.SoftReference;
 
-class ahip
-  implements zuj
+public class ahip
 {
-  ahip(ahik paramahik) {}
+  public String a;
+  SoftReference<View> a;
+  SoftReference<ViewGroup> b;
   
-  public void a()
+  public ahip(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    awng localawng = this.a.a;
-    if (this.a.sessionInfo.curType == 10002) {}
-    for (int i = 8;; i = 6)
-    {
-      localawng.a(false, true, i);
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
+    this.b = new SoftReference(paramViewGroup);
   }
   
-  public void b()
+  public View a()
   {
-    this.a.a.a();
+    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+  }
+  
+  public ViewGroup a()
+  {
+    return (ViewGroup)this.b.get();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.b = new SoftReference(paramViewGroup);
   }
 }
 

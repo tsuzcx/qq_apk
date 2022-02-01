@@ -1,37 +1,45 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-public class bkmc
-  extends RemoteCommand
+class bkmc
+  implements TVK_SDKMgr.OnLogListener
 {
-  private QQAppInterface a;
+  bkmc(bkmb parambkmb) {}
   
-  public bkmc(QQAppInterface paramQQAppInterface)
+  public int d(String paramString1, String paramString2)
   {
-    super("common.get_qq_app_interface_data");
-    this.a = paramQQAppInterface;
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppVideoPlayer_TVK_IMediaPlayer", 2, paramString2);
+    }
+    return 0;
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public int e(String paramString1, String paramString2)
   {
-    int i = paramBundle.getInt("param_data_type", 0);
-    paramOnInvokeFinishLinstener = new Bundle();
-    switch (i)
-    {
-    default: 
-      return paramOnInvokeFinishLinstener;
-    case 1: 
-      paramBundle = paramBundle.getString("param_uin");
-      paramOnInvokeFinishLinstener.putString("result_key", ContactUtils.getAccountNickName(this.a, paramBundle));
-      return paramOnInvokeFinishLinstener;
+    QLog.e("MiniAppVideoPlayer_TVK_IMediaPlayer", 1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniAppVideoPlayer_TVK_IMediaPlayer", 2, paramString2);
     }
-    String str = paramBundle.getString("param_uin");
-    boolean bool = paramBundle.getBoolean("param_fetch_if_not_exist", false);
-    paramOnInvokeFinishLinstener.putString("result_key", ContactUtils.getBuddyName(this.a, str, bool));
-    return paramOnInvokeFinishLinstener;
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppVideoPlayer_TVK_IMediaPlayer", 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    QLog.w("MiniAppVideoPlayer_TVK_IMediaPlayer", 1, paramString2);
+    return 0;
   }
 }
 

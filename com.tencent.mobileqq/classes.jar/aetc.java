@@ -1,45 +1,23 @@
+import QQService.SvcDevLoginInfo;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class aetc
   implements View.OnClickListener
 {
-  public aetc(VisitorsActivity paramVisitorsActivity, CardProfile paramCardProfile, ayon paramayon, int paramInt) {}
+  public aetc(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    int i = 1;
-    int j;
-    int k;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
-    {
-      j = 1;
-      k = this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bIsLastVoteCharged;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type != 3) {
-        break label143;
-      }
-      if (!((awiz)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getManager(207)).c(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID)) {
-        break label138;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(this.jdField_a_of_type_Ayon, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bVoteCnt, i);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app, "CliOper", "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID), "like_mall", "like_list_view", j, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      j = 0;
-      break;
-      label138:
-      i = 0;
-      continue;
-      label143:
-      i = k;
-    }
+    SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(localSvcDevLoginInfo.stDeviceItemDes);
+    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, localSvcDevLoginInfo.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

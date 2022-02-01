@@ -1,64 +1,25 @@
-import java.util.List;
+import UserGrowth.stSimpleMetaPerson;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.common.util.NetworkUtil;
 
-public class vjv
-  extends vjw<vim>
+class vjv
+  implements bkzq
 {
-  private int a = 200;
+  vjv(vju paramvju) {}
   
-  protected double a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return 0.3D;
-  }
-  
-  protected int a()
-  {
-    return this.a;
-  }
-  
-  protected long a(vim paramvim1, vim paramvim2)
-  {
-    if ((paramvim1 != paramvim2) && (paramvim1.b == paramvim2.b)) {
-      return 1L;
-    }
-    return Math.abs(paramvim1.b - paramvim2.b);
-  }
-  
-  protected vim a(List<vim> paramList)
-  {
-    long l = 0L;
-    int i = 0;
-    while (i < paramList.size())
+    if (!NetworkUtil.isNetworkAvailable(vju.a(this.a)))
     {
-      l += ((vim)paramList.get(i)).b;
-      i += 1;
+      bjkv.a().a(2131720145);
+      return;
     }
-    vim localvim = new vim();
-    localvim.b = (l / paramList.size());
-    return localvim;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  protected boolean a(long paramLong)
-  {
-    int i = b();
-    if (i > 0) {
-      if (paramLong / i >= 1500L) {}
-    }
-    while (paramLong < 200L)
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  protected boolean a(vim paramvim1, vim paramvim2)
-  {
-    return paramvim1.b == paramvim2.b;
+    vju.a(this.a).b(vju.a(this.a).id, 2);
+    vju.a(this.a).followStatus = 2;
+    vju.a(this.a).setVisibility(0);
+    vju.b(this.a).setVisibility(8);
+    vka.a("follow", vju.a(this.a) + 1, vju.a(this.a).id, vkh.r);
   }
 }
 

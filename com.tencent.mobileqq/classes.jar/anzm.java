@@ -1,65 +1,58 @@
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.List;
+import tencent.im.nearfield_group.nearfield_group.BusiRespHead;
 
 public class anzm
+  implements BusinessObserver
 {
-  public final int a;
-  long jdField_a_of_type_Long = 0L;
-  apaf jdField_a_of_type_Apaf = null;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  boolean jdField_a_of_type_Boolean = true;
-  public int b;
-  long b;
-  public String b;
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long = 0L;
-  public String c;
-  int d;
-  public String d;
-  public final String e;
+  public void a(asxl paramasxl) {}
   
-  public anzm(String paramString, int paramInt)
-  {
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_d_of_type_Int = -1;
-    this.e = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public void a(asxp paramasxp) {}
   
-  void a()
+  public void a(nearfield_group.BusiRespHead paramBusiRespHead) {}
+  
+  public void a(nearfield_group.BusiRespHead paramBusiRespHead, String paramString) {}
+  
+  public void a(nearfield_group.BusiRespHead paramBusiRespHead, List<asxl> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    switch (paramInt)
     {
-      if (this.jdField_c_of_type_Int == 1) {
+    }
+    do
+    {
+      do
+      {
         return;
-      }
-      if (this.jdField_c_of_type_Int == -1) {
-        QLog.w(PromotionConfigInfo.TAG, 1, "clearDownladFlag, ZipItem[" + this + "]");
-      }
-      a(0);
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_b_of_type_Long = 0L;
-      this.jdField_c_of_type_Long = 0L;
+        if ((paramBoolean) && (paramObject != null))
+        {
+          paramObject = (Object[])paramObject;
+          a((nearfield_group.BusiRespHead)paramObject[0], (List)paramObject[1]);
+          return;
+        }
+        a(null, null);
+        return;
+        if ((paramBoolean) && (paramObject != null))
+        {
+          a((nearfield_group.BusiRespHead)((Object[])(Object[])paramObject)[0]);
+          return;
+        }
+        a(null);
+        return;
+        if ((paramBoolean) && (paramObject != null))
+        {
+          paramObject = (Object[])paramObject;
+          a((nearfield_group.BusiRespHead)paramObject[0], (String)paramObject[1]);
+          return;
+        }
+        a(null, "");
+        return;
+      } while ((!paramBoolean) || (paramObject == null));
+      a((asxl)((Object[])(Object[])paramObject)[0]);
       return;
-    }
-  }
-  
-  void a(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_c_of_type_Int = paramInt;
-      return;
-    }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_Int + ", id[" + this.e + "], index[" + this.jdField_a_of_type_Int + "], net_type[" + this.jdField_b_of_type_Int + "], url[" + this.jdField_a_of_type_JavaLangString + "], md5[" + this.jdField_b_of_type_JavaLangString + "], zipFilePath[" + this.jdField_c_of_type_JavaLangString + "], unzipDirPath[" + this.jdField_d_of_type_JavaLangString + "], callByPreDownload[" + this.jdField_a_of_type_Boolean + "], downloadType[" + this.jdField_c_of_type_Int + "]";
+    } while ((!paramBoolean) || (paramObject == null));
+    a((asxp)((Object[])(Object[])paramObject)[0]);
   }
 }
 

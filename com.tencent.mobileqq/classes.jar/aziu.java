@@ -1,106 +1,51 @@
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.QCallDetailActivity.1.1;
-import com.tencent.mobileqq.qcall.QCallDetailActivity.1.2;
-import com.tencent.qphone.base.util.QLog;
-import friendlist.GetOnlineInfoResp;
-import java.util.Map;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.net.URLEncoder;
 
-public class aziu
-  extends amsu
+class aziu
+  implements DialogInterface.OnClickListener
 {
-  public aziu(QCallDetailActivity paramQCallDetailActivity) {}
+  aziu(azit paramazit, String paramString, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, QCallDetailActivity.a(this.a))))
+    try
     {
-      QCallDetailActivity.a(this.a);
-      this.a.runOnUiThread(new QCallDetailActivity.1.1(this));
-    }
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead isSuccess | " + paramBoolean + ", uin | " + paramString);
-    }
-    Object localObject;
-    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000) && (!bftf.a(paramString, this.a.app.getCurrentAccountUin())))
-    {
-      localObject = (amrb)this.a.app.getManager(53);
-      if (localObject != null) {
-        break label109;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead dm is null  ====");
-      }
-    }
-    label109:
-    do
-    {
-      do
-      {
-        return;
-        if (((amrb)localObject).a(QCallDetailActivity.a(this.a)) != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead info is null ====");
+      paramDialogInterface.dismiss();
+      paramDialogInterface = new StringBuilder("https://accounts.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
+      paramDialogInterface.append("?");
+      paramDialogInterface.append("uin=");
+      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.append("&plat=1");
+      paramDialogInterface.append("&app=1");
+      paramDialogInterface.append("&version=8.4.10.4875");
+      paramDialogInterface.append("&device=" + URLEncoder.encode(Build.DEVICE));
+      paramDialogInterface.append("&system=" + Build.VERSION.RELEASE);
+      paramDialogInterface.append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
+      paramDialogInterface = paramDialogInterface.toString();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("portraitOnly", true);
+      localIntent.putExtra("url", paramDialogInterface);
+      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("hide_more_button", true);
+      VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, 32768L, localIntent, false, -1);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Mobile_signup", "Setiing_pw_tips", 0, 0, "", "", "", "");
       return;
-      if (TextUtils.isEmpty(paramString))
-      {
-        QLog.i("QCallDetailActivity", 1, " === onUpdateCustomHead uin is null ====");
-        return;
-      }
-      localObject = ((amrb)localObject).a(QCallDetailActivity.a(this.a));
-    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
-    this.a.a(QCallDetailActivity.a(this.a));
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    Object localObject;
-    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000))
+    }
+    catch (Exception paramDialogInterface)
     {
-      localObject = (amrb)this.a.app.getManager(53);
-      if (localObject != null) {
-        break label52;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QCallDetailActivity", 2, " === onUpdateFriendInfo dm is null  ====");
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
       }
     }
-    label52:
-    do
-    {
-      DiscussionInfo localDiscussionInfo;
-      do
-      {
-        return;
-        localDiscussionInfo = ((amrb)localObject).a(QCallDetailActivity.a(this.a));
-        if (localDiscussionInfo == null)
-        {
-          QLog.i("QCallDetailActivity", 1, " ===onUpdateFriendInfo info is null ====");
-          return;
-        }
-        if (TextUtils.isEmpty(paramString))
-        {
-          QLog.i("QCallDetailActivity", 1, " === onUpdateFriendInfo uin is null ====");
-          return;
-        }
-      } while (localDiscussionInfo.hasRenamed());
-      localObject = ((amrb)localObject).a(QCallDetailActivity.a(this.a));
-    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
-    this.a.a(QCallDetailActivity.a(this.a));
-  }
-  
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    QCallDetailActivity.a(this.a);
-    this.a.runOnUiThread(new QCallDetailActivity.1.2(this));
   }
 }
 

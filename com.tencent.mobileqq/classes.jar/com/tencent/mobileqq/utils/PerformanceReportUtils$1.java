@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.utils;
 
-import aewu;
-import amxv;
-import anbx;
+import afof;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.SystemClock;
-import bcad;
-import bfwz;
-import bfyg;
+import aoaj;
+import aoem;
+import bdgy;
+import bhfr;
+import bhgy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -27,7 +27,7 @@ public final class PerformanceReportUtils$1
   
   public void run()
   {
-    Object localObject1 = bfyg.a(ServerConfigManager.ConfigType.common, bfwz.b());
+    Object localObject1 = bhgy.a(ServerConfigManager.ConfigType.common, bhfr.b());
     if (QLog.isDevelopLevel()) {
       QLog.d("PerformanceReportUtils", 4, "reportUISwitch openStr ：" + (String)localObject1);
     }
@@ -49,11 +49,11 @@ public final class PerformanceReportUtils$1
           }
           i = 0;
           localHashMap.put("actloginTypt", String.valueOf(i));
-          localHashMap.put("param_threadOpId", String.valueOf(anbx.a().a()));
+          localHashMap.put("param_threadOpId", String.valueOf(aoem.a().a()));
           if ((!QQAppInterface.AIO_HAD_OPEN) && (this.jdField_a_of_type_Int != 10))
           {
             QQAppInterface.AIO_HAD_OPEN = true;
-            localHashMap.put("aio_preloaded", String.valueOf(aewu.jdField_a_of_type_Int));
+            localHashMap.put("aio_preloaded", String.valueOf(afof.jdField_a_of_type_Int));
           }
           localObject1 = BaseApplicationImpl.getApplication().getRuntime();
           if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface)))
@@ -70,10 +70,10 @@ public final class PerformanceReportUtils$1
             localHashMap.put("param_syncing_msg", String.valueOf(bool));
             localHashMap.put("inActionLoginB", String.valueOf(((QQAppInterface)localObject1).mAutomator.a()));
           }
-          localHashMap.put("param_cpu_core_num", String.valueOf(amxv.a()));
+          localHashMap.put("param_cpu_core_num", String.valueOf(aoaj.a()));
           localHashMap.put("param_ram", String.valueOf(DeviceInfoUtil.getSystemTotalMemory()));
           localHashMap.put("suspend_thread_switch", String.valueOf(SuspendThreadManager.jdField_a_of_type_Int));
-          if (bcad.l)
+          if (bdgy.l)
           {
             localObject2 = "-1";
             str1 = "-1";
@@ -84,19 +84,19 @@ public final class PerformanceReportUtils$1
               continue;
             }
             localObject1 = "-1";
-            if (bcad.e != 0L) {
-              localObject2 = String.valueOf(l1 - bcad.e);
+            if (bdgy.e != 0L) {
+              localObject2 = String.valueOf(l1 - bdgy.e);
             }
-            if (bcad.d != 0L) {
-              str1 = String.valueOf(l1 - bcad.d);
+            if (bdgy.d != 0L) {
+              str1 = String.valueOf(l1 - bdgy.d);
             }
-            if (bcad.g != 0L) {
-              str2 = String.valueOf(l1 - bcad.g);
+            if (bdgy.g != 0L) {
+              str2 = String.valueOf(l1 - bdgy.g);
             }
-            if (bcad.f != 0L) {
-              str3 = String.valueOf(l1 - bcad.f);
+            if (bdgy.f != 0L) {
+              str3 = String.valueOf(l1 - bdgy.f);
             }
-            localHashMap.put("perfConfigReportValue", String.valueOf(bcad.c));
+            localHashMap.put("perfConfigReportValue", String.valueOf(bdgy.c));
             localHashMap.put("automatorFinishtime", localObject1);
             localHashMap.put("qZoneInterval", localObject2);
             localHashMap.put("miniInterval", str1);
@@ -109,13 +109,13 @@ public final class PerformanceReportUtils$1
         switch (this.jdField_a_of_type_Int)
         {
         case 0: 
-          localObject2 = bfwz.a();
+          localObject2 = bhfr.a();
           if ((localObject1 == null) || (this.jdField_a_of_type_Long <= 0L)) {
             break;
           }
           l2 = ((SharedPreferences)localObject2).getLong((String)localObject1, 0L);
-          l1 = bfwz.a();
-          str1 = bfyg.a(ServerConfigManager.ConfigType.common, bfwz.n());
+          l1 = bhfr.a();
+          str1 = bhgy.a(ServerConfigManager.ConfigType.common, bhfr.n());
           if (str1 != null) {
             if (QLog.isDevelopLevel()) {
               QLog.d("PerformanceReportUtils", 4, "reportUISwitch  server time：" + str1);
@@ -138,45 +138,45 @@ public final class PerformanceReportUtils$1
           }
           catch (Exception localException2)
           {
-            l1 = bfwz.a();
+            l1 = bhfr.a();
             continue;
           }
           if (QLog.isDevelopLevel()) {
-            QLog.d("PerformanceReportUtils", 4, "reportUISwitch report_time ：" + l1 + ",lastRp" + l2 + ",aioBusiness=" + bfwz.a());
+            QLog.d("PerformanceReportUtils", 4, "reportUISwitch report_time ：" + l1 + ",lastRp" + l2 + ",aioBusiness=" + bhfr.a());
           }
           if ((l2 != 0L) && (SystemClock.uptimeMillis() >= l2) && (SystemClock.uptimeMillis() - l2 < l1)) {
             break;
           }
           if (QLog.isDevelopLevel()) {
-            QLog.d("PerformanceReportUtils", 4, "reportUISwitch timeConsumed ：" + this.jdField_a_of_type_Long + ",aioBusiness=" + bfwz.a());
+            QLog.d("PerformanceReportUtils", 4, "reportUISwitch timeConsumed ：" + this.jdField_a_of_type_Long + ",aioBusiness=" + bhfr.a());
           }
-          localHashMap.put("aioBusiness", bfwz.a());
-          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_JavaLangString, (String)localObject1, true, this.jdField_a_of_type_Long, 0L, localHashMap, bfwz.o());
+          localHashMap.put("aioBusiness", bhfr.a());
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_JavaLangString, (String)localObject1, true, this.jdField_a_of_type_Long, 0L, localHashMap, bhfr.o());
           ((SharedPreferences)localObject2).edit().putLong((String)localObject1, SystemClock.uptimeMillis()).commit();
           return;
           localObject1 = String.valueOf(l1 - AutomatorFinish.jdField_a_of_type_Long);
           continue;
-          localObject1 = bfwz.c();
+          localObject1 = bhfr.c();
           continue;
-          localObject1 = bfwz.d();
+          localObject1 = bhfr.d();
           continue;
-          localObject1 = bfwz.e();
+          localObject1 = bhfr.e();
           continue;
-          localObject1 = bfwz.f();
+          localObject1 = bhfr.f();
           continue;
-          localObject1 = bfwz.g();
+          localObject1 = bhfr.g();
           continue;
-          localObject1 = bfwz.h();
+          localObject1 = bhfr.h();
           continue;
-          localObject1 = bfwz.i();
+          localObject1 = bhfr.i();
           continue;
-          localObject1 = bfwz.j();
+          localObject1 = bhfr.j();
           continue;
-          localObject1 = bfwz.k();
+          localObject1 = bhfr.k();
           continue;
-          localObject1 = bfwz.l();
+          localObject1 = bhfr.l();
           continue;
-          localObject1 = bfwz.m();
+          localObject1 = bhfr.m();
           break;
         }
         int i = 1;

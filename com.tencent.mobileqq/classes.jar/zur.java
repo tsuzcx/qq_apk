@@ -1,79 +1,47 @@
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashSet;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.subscribe.comment.CommentEditText;
+import com.tencent.qphone.base.util.QLog;
 
 public class zur
-  extends bjuw
+  implements TextWatcher
 {
-  private HashSet<Integer> a = new HashSet();
+  int jdField_a_of_type_Int = -1;
+  String jdField_a_of_type_JavaLangString = null;
   
-  private void a(View paramView)
+  public zur(CommentEditText paramCommentEditText) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((paramView instanceof ProteusItemView))
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    try
     {
-      paramView = ((ProteusItemView)paramView).a();
-      localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
-      localValueAnimator.setDuration(300L);
-      localValueAnimator.addUpdateListener(new zut(this, paramView));
-      localValueAnimator.start();
-    }
-    do
-    {
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setText(this.jdField_a_of_type_JavaLangString);
+      if (i > this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length()) {
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setSelection(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length());
+      }
       return;
-      paramView = paramView.findViewById(2131376679);
-    } while (paramView == null);
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
-    localValueAnimator.setDuration(500L);
-    localValueAnimator.addUpdateListener(new zuu(this, paramView));
-    localValueAnimator.start();
-  }
-  
-  protected View a(View paramView, int paramInt)
-  {
-    View localView;
-    if (paramView == null) {
-      localView = null;
     }
-    do
+    catch (Exception paramEditable)
     {
-      return localView;
-      localView = paramView;
-    } while (!this.a.contains(Integer.valueOf(paramInt)));
-    this.a.remove(Integer.valueOf(paramInt));
-    paramView.getViewTreeObserver().addOnPreDrawListener(new zus(this, paramView));
-    return paramView;
+      QLog.e("CommentInputPopupWindow", 1, "setTextError");
+    }
   }
   
-  public void c(int paramInt)
-  {
-    this.a.add(Integer.valueOf(paramInt));
-    notifyDataSetChanged();
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public int getCount()
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return null;
+    paramInt2 = paramCharSequence.toString().indexOf("[/", paramInt1);
+    int i = paramCharSequence.toString().indexOf(']', paramInt1);
+    if ((paramInt2 >= paramInt1) && (paramInt2 < paramInt1 + paramInt3) && ((i > paramInt1 + paramInt3) || (i == -1)))
+    {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getSelectionEnd();
+      this.jdField_a_of_type_JavaLangString = (paramCharSequence.subSequence(0, paramInt2).toString() + paramCharSequence.subSequence(paramInt1 + paramInt3, paramCharSequence.length()));
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = null;
   }
 }
 

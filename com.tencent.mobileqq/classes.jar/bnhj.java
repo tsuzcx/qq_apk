@@ -1,14 +1,19 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.view.AECompoundButton;
 
 class bnhj
-  implements FilenameFilter
+  implements Observer<Boolean>
 {
-  bnhj(bnhh parambnhh) {}
+  bnhj(bnhf parambnhf) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
+    bnrh.a("AEVideoStoryTopBarPart", "【抠背开关】-> observe ->更新按钮状态:" + paramBoolean);
+    if (paramBoolean == null) {
+      return;
+    }
+    bnhf.f(this.a).setSelected(paramBoolean.booleanValue());
   }
 }
 

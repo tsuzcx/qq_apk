@@ -8,27 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import lsn;
-import lso;
-import lsp;
-import lsq;
-import lsr;
-import lss;
+import lta;
+import ltb;
+import ltc;
+import ltd;
+import lte;
+import ltf;
 
 public class RandomWebProtocol
 {
   private static String jdField_a_of_type_JavaLangString;
   public int a;
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  List<lsn> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<lta> jdField_a_of_type_JavaUtilList = new ArrayList();
   private Map<String, RandomWebProtocol.MatchTask> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private lso jdField_a_of_type_Lso;
+  private ltb jdField_a_of_type_Ltb;
   
   RandomWebProtocol(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_Lso = new lso(this);
+    this.jdField_a_of_type_Ltb = new ltb(this);
   }
   
   /* Error */
@@ -195,7 +195,7 @@ public class RandomWebProtocol
       if (b()) {
         QLog.w("RandomWebProtocol", 2, "[randomWeb]In Test Env");
       }
-      paramString = new lss(this, paramInt1, paramLong, paramInt2, paramString);
+      paramString = new ltf(this, paramInt1, paramLong, paramInt2, paramString);
       if ((RandomWebProtocol.MatchTask)this.jdField_a_of_type_JavaUtilMap.get(paramString.d) == null)
       {
         if (QLog.isColorLevel()) {
@@ -301,7 +301,7 @@ public class RandomWebProtocol
     //   116: new 142	java/lang/StringBuilder
     //   119: dup
     //   120: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   123: invokestatic 269	mrz:a	()Ljava/lang/String;
+    //   123: invokestatic 269	msw:a	()Ljava/lang/String;
     //   126: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: aload_2
     //   130: invokestatic 274	com/tencent/mobileqq/mqsafeedit/MD5:toMD5	(Ljava/lang/String;)Ljava/lang/String;
@@ -482,7 +482,7 @@ public class RandomWebProtocol
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Lso.b = paramInt;
+    this.jdField_a_of_type_Ltb.b = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, String... paramVarArgs)
@@ -497,7 +497,7 @@ public class RandomWebProtocol
     if (bool) {}
     for (Object localObject = "https://play.mobile.qq.com/dchat_test/cgi-bin/chatplay/onechat";; localObject = "https://play.mobile.qq.com/dchat/cgi-bin/chatplay/onechat")
     {
-      paramVarArgs = new lsp(this, this.jdField_a_of_type_Lso, (String)localObject, paramInt1, paramInt2, paramInt3, paramVarArgs);
+      paramVarArgs = new ltc(this, this.jdField_a_of_type_Ltb, (String)localObject, paramInt1, paramInt2, paramInt3, paramVarArgs);
       localObject = (RandomWebProtocol.MatchTask)this.jdField_a_of_type_JavaUtilMap.get(paramVarArgs.d);
       if (localObject != null)
       {
@@ -525,15 +525,15 @@ public class RandomWebProtocol
     if (bool) {}
     for (Object localObject = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/grouppull";; localObject = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/grouppull")
     {
-      localObject = new lsr(this, this.jdField_a_of_type_Lso, (String)localObject, paramInt1, paramInt2, paramString, paramInt3, paramLong);
-      if ((RandomWebProtocol.MatchTask)this.jdField_a_of_type_JavaUtilMap.get(((lsr)localObject).d) != null) {
+      localObject = new lte(this, this.jdField_a_of_type_Ltb, (String)localObject, paramInt1, paramInt2, paramString, paramInt3, paramLong);
+      if ((RandomWebProtocol.MatchTask)this.jdField_a_of_type_JavaUtilMap.get(((lte)localObject).d) != null) {
         break;
       }
       if (QLog.isColorLevel()) {
         QLog.d("RandomWebProtocol", 2, "[randomWeb][pullhead] ====== pullMulti ====== type(" + paramInt2 + "), uin(" + paramString + "), groupId(" + paramLong + "), gender(" + paramInt3 + ")");
       }
-      paramString = new RandomWebProtocol.MatchTask(this, (lso)localObject);
-      this.jdField_a_of_type_JavaUtilMap.put(((lsr)localObject).d, paramString);
+      paramString = new RandomWebProtocol.MatchTask(this, (ltb)localObject);
+      this.jdField_a_of_type_JavaUtilMap.put(((lte)localObject).d, paramString);
       paramString.start();
       return;
     }
@@ -564,8 +564,8 @@ public class RandomWebProtocol
     if (bool) {}
     for (Object localObject = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/groupchat";; localObject = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/groupchat")
     {
-      localObject = new lsq(this, this.jdField_a_of_type_Lso, (String)localObject, paramBoolean, paramInt);
-      RandomWebProtocol.MatchTask localMatchTask = (RandomWebProtocol.MatchTask)this.jdField_a_of_type_JavaUtilMap.get(((lsq)localObject).d);
+      localObject = new ltd(this, this.jdField_a_of_type_Ltb, (String)localObject, paramBoolean, paramInt);
+      RandomWebProtocol.MatchTask localMatchTask = (RandomWebProtocol.MatchTask)this.jdField_a_of_type_JavaUtilMap.get(((ltd)localObject).d);
       if (localMatchTask != null)
       {
         if (QLog.isColorLevel()) {
@@ -573,8 +573,8 @@ public class RandomWebProtocol
         }
         localMatchTask.a();
       }
-      localMatchTask = new RandomWebProtocol.MatchTask(this, (lso)localObject);
-      this.jdField_a_of_type_JavaUtilMap.put(((lsq)localObject).d, localMatchTask);
+      localMatchTask = new RandomWebProtocol.MatchTask(this, (ltb)localObject);
+      this.jdField_a_of_type_JavaUtilMap.put(((ltd)localObject).d, localMatchTask);
       localMatchTask.start();
       return;
     }
@@ -582,7 +582,7 @@ public class RandomWebProtocol
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Lso.b != -1;
+    return this.jdField_a_of_type_Ltb.b != -1;
   }
   
   public void b()

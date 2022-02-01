@@ -1,26 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 class awjb
-  implements DialogInterface.OnClickListener
+  extends anvi
 {
-  awjb(awiz paramawiz, Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString) {}
+  awjb(awiz paramawiz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface = this.jdField_a_of_type_Awiz.a;
-    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.b)))
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramDialogInterface.b);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    if ((paramBoolean) && ((paramObject instanceof Long))) {
+      awlt.a(this.a.app, 0, String.valueOf(paramObject));
     }
-    awiz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_up", this.jdField_a_of_type_JavaLangString);
   }
 }
 

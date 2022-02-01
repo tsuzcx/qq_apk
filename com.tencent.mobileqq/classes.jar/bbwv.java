@@ -1,19 +1,30 @@
-import com.tencent.maxvideo.common.AVIOStruct;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import java.util.concurrent.atomic.AtomicReference;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.richstatus.topic.TopicEditTextView;
 
 public class bbwv
+  implements ActionMode.Callback
 {
-  public int a;
-  public bbux a;
-  public bbxm a;
-  public AVIOStruct a;
-  public AtomicReference<SVHwEncoder> a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public bbwv(TopicEditTextView paramTopicEditTextView) {}
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  {
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return TopicEditTextView.a(this.a);
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
 }
 
 

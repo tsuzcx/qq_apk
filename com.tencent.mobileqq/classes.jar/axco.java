@@ -1,33 +1,37 @@
-class axco
-  implements apri
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+public class axco
 {
-  axco(axcb paramaxcb) {}
+  private boolean a;
   
-  public int a()
+  public static axco a(String paramString)
   {
-    return 1;
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      axco localaxco = new axco();
+      if (new JSONObject(paramString).optInt("isChatMigrateEnable", 0) == 1) {}
+      for (;;)
+      {
+        localaxco.a = bool;
+        return localaxco;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("MsgBackupConfigProcessor", 2, "MsgBackupConfigData parse error", paramString);
+    }
   }
   
-  public int a(int paramInt)
+  public boolean a()
   {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 0)
-    {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
-    }
-    else
-    {
-      paramInt1 = 0;
-    }
-    if (paramInt1 == 0) {
-      return amtj.a(2131706387);
-    }
-    return amtj.a(2131706488);
+    return this.a;
   }
 }
 

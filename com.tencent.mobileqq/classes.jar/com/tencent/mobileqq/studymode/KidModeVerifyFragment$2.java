@@ -13,7 +13,7 @@ class KidModeVerifyFragment$2
   {
     if (KidModeVerifyFragment.a <= 1)
     {
-      KidModeVerifyFragment.a(this.this$0).setText(2131693270);
+      KidModeVerifyFragment.a(this.this$0).setText(2131693450);
       KidModeVerifyFragment.a(this.this$0).setEnabled(true);
       KidModeVerifyFragment.a(this.this$0).setClickable(true);
     }
@@ -28,7 +28,7 @@ class KidModeVerifyFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeVerifyFragment.2
  * JD-Core Version:    0.7.0.1
  */

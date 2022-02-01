@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import anbm;
+import aoeb;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Stranger;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -10,7 +10,7 @@ import java.util.List;
 public class StrangerHandler$1
   implements Runnable
 {
-  public StrangerHandler$1(anbm paramanbm) {}
+  public StrangerHandler$1(aoeb paramaoeb) {}
   
   public void run()
   {

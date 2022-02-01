@@ -1,16 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qlc
-  extends RecyclerView.ViewHolder
+class qlc
+  implements View.OnClickListener
 {
-  public TemplateBean a;
+  qlc(qkw paramqkw, String paramString1, String paramString2) {}
   
-  public qlc(qks paramqks, Container paramContainer, TemplateBean paramTemplateBean)
+  public void onClick(View paramView)
   {
-    super(paramContainer);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = paramTemplateBean;
+    qkw.a(2, this.jdField_a_of_type_JavaLangString);
+    pkh.a(qkw.a(this.jdField_a_of_type_Qkw), this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

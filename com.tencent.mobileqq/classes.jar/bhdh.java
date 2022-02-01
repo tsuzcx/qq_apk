@@ -1,47 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class bhdh
-  implements View.OnClickListener, View.OnLongClickListener
+  implements ThreadExcutor.IThreadListener
 {
   private int jdField_a_of_type_Int;
+  ConcurrentLinkedQueue<Runnable> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   private int b;
+  private int c;
   
-  public bhdh(DraggableGridView paramDraggableGridView, int paramInt1, int paramInt2)
+  public bhdh(int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.c = paramInt2;
+    this.b = 0;
   }
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView) != null) {
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(paramView, this.jdField_a_of_type_Int, this.b);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    if (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView) != null) {
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, this.b);
-    }
-    if ((DraggableGridView.c(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)) && (!DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)))
+    if (this.b < this.jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.a((View)paramView.getParent(), paramView);
-      paramView.setVisibility(4);
-      paramView.setPressed(false);
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.jdField_a_of_type_Int);
-      DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.b);
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x = DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView);
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y = DraggableGridView.c(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView);
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, true);
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      if (localRunnable != null)
+      {
+        this.b += 1;
+        ThreadManager.excute(localRunnable, this.c, this, false);
+      }
     }
-    return true;
   }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramRunnable);
+    a();
+  }
+  
+  public void onAdded() {}
+  
+  public void onPostRun()
+  {
+    this.b -= 1;
+    a();
+  }
+  
+  public void onPreRun() {}
 }
 
 

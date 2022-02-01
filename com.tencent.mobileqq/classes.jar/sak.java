@@ -1,25 +1,16 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.util.ArrayList;
+import java.util.List;
 
 class sak
-  implements URLDrawable.URLDrawableListener
+  implements sam
 {
-  sak(sab paramsab) {}
+  sak(sad paramsad, long paramLong, sal paramsal) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a()
   {
-    if ((sab.a(this.a) != null) && (sab.a(this.a).getStatus() == 1) && ((sab.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
-    {
-      paramURLDrawable = (RegionDrawable)sab.a(this.a).getCurrDrawable();
-      sab.a(this.a, paramURLDrawable.getBitmap());
-    }
+    List localList = sad.a(this.jdField_a_of_type_Sad, this.jdField_a_of_type_Long, sad.a(this.jdField_a_of_type_Sad));
+    this.jdField_a_of_type_Sal.a(localList);
+    sad.b(this.jdField_a_of_type_Sad).remove(this);
   }
 }
 

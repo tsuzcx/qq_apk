@@ -1,19 +1,21 @@
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
 
-class axtz
+public class axtz
   implements Animation.AnimationListener
 {
-  axtz(axtr paramaxtr, int paramInt) {}
+  public axtz(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    axtr.a(this.jdField_a_of_type_Axtr, this.jdField_a_of_type_Int);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    ChooseInterestTagActivity.a(this.a).fullScroll(66);
+  }
 }
 
 

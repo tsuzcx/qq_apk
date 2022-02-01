@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import bkwm;
+import bmhv;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
-import pay;
-import pbo;
-import sid;
-import sie;
+import pkh;
+import pkp;
+import sut;
+import suu;
 
 public final class WeishiReportUtil$3
   implements Runnable
@@ -21,8 +21,8 @@ public final class WeishiReportUtil$3
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg == null) {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.parse();
     }
-    String str = new sie(null, null, null, null).a("folder_status", pbo.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("algorithm_id", pbo.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("reddot_style", pbo.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData)).a("is_jump_to_video_content", Integer.valueOf(bkwm.F(pay.a()))).a("EnterType", pbo.c(this.jdField_a_of_type_Int)).a().a();
-    pbo.a(pbo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pbo.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "0X8009290", str);
+    String str = new suu(null, null, null, null).a("folder_status", pkp.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("algorithm_id", pkp.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing)).a("reddot_style", pkp.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData)).a("is_jump_to_video_content", Integer.valueOf(bmhv.F(pkh.a()))).a("EnterType", pkp.c(this.jdField_a_of_type_Int)).a().a();
+    pkp.a(pkp.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pkp.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "0X8009290", str);
   }
 }
 

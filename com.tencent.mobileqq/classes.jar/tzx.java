@@ -1,43 +1,28 @@
-public class tzx
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
+
+final class tzx
+  implements sal
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
+  tzx(BridgeModule paramBridgeModule, long paramLong, String paramString) {}
   
-  public tzx(float paramFloat1, float paramFloat2)
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-  }
-  
-  public tzx(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-  }
-  
-  public tzx(tzx paramtzx)
-  {
-    this.a = paramtzx.a;
-    this.b = paramtzx.b;
-  }
-  
-  public void a(tzx paramtzx)
-  {
-    float f = this.a;
-    this.a = paramtzx.a;
-    paramtzx.a = f;
-    f = this.b;
-    this.b = paramtzx.b;
-    paramtzx.b = f;
+    if (!paramList.isEmpty()) {
+      tzr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_Long, paramList, this.jdField_a_of_type_JavaLangString, 0, "");
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i(tzr.jdField_a_of_type_JavaLangString, 2, "getUploadingVideoList,ugcVideoList.isEmpty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzx
  * JD-Core Version:    0.7.0.1
  */

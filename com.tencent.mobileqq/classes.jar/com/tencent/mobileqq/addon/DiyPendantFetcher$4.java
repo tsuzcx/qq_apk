@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.addon;
 
-import almr;
+import amks;
 import android.graphics.Typeface;
-import bfua;
+import bhcs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LRULinkedHashMap;
@@ -14,11 +15,11 @@ import mqq.app.AppRuntime;
 public class DiyPendantFetcher$4
   implements Runnable
 {
-  public DiyPendantFetcher$4(almr paramalmr, int paramInt, String paramString) {}
+  public DiyPendantFetcher$4(amks paramamks, int paramInt, String paramString) {}
   
   public void run()
   {
-    if (bfua.a(String.valueOf(this.jdField_a_of_type_Int))) {
+    if (bhcs.a(String.valueOf(this.jdField_a_of_type_Int))) {
       if (this.jdField_a_of_type_Int == 1) {}
     }
     AppRuntime localAppRuntime;
@@ -39,7 +40,7 @@ public class DiyPendantFetcher$4
       }
       localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     } while (!(localAppRuntime instanceof QQAppInterface));
-    ((VasQuickUpdateManager)((QQAppInterface)localAppRuntime).getManager(184)).downloadItem(4L, "faceAddon.stickerFont.android." + this.jdField_a_of_type_Int, "DiyPendantFetcher");
+    ((VasQuickUpdateManager)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER)).downloadItem(4L, "faceAddon.stickerFont.android." + this.jdField_a_of_type_Int, "DiyPendantFetcher");
   }
 }
 

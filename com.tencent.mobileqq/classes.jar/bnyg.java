@@ -1,6 +1,21 @@
-public abstract interface bnyg
+import com.tencent.tavcut.bean.TextEditorData;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+
+public class bnyg
+  implements bocs
 {
-  public abstract void a();
+  public bnyg(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  
+  public void a()
+  {
+    this.a.b(true);
+  }
+  
+  public void a(TextEditorData paramTextEditorData)
+  {
+    this.a.a(true);
+    this.a.a = paramTextEditorData;
+  }
 }
 
 

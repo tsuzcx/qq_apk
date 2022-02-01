@@ -8,10 +8,10 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import apoh;
-import bhlx;
-import bkkq;
-import bkkz;
+import aqrl;
+import biwn;
+import blvy;
+import blwh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyFragmentActivity;
@@ -49,21 +49,21 @@ public class QzoneVerticalVideoPluginProxyActivity
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", false);
     paramIntent.putExtra("param_plugin_gesturelock", false);
-    bkkz localbkkz = new bkkz(0);
-    localbkkz.jdField_a_of_type_JavaLangString = paramString;
-    localbkkz.e = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
-    localbkkz.jdField_a_of_type_JavaLangClass = localClass;
-    localbkkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbkkz.jdField_b_of_type_Int = paramInt;
-    localbkkz.c = 15000;
-    localbkkz.f = null;
-    localbkkz.jdField_b_of_type_Boolean = false;
-    localbkkz.jdField_b_of_type_JavaLangString = "qzone_vertical_video_plugin.apk";
-    localbkkz.d = "QZoneVerticalVideo";
+    blwh localblwh = new blwh(0);
+    localblwh.jdField_a_of_type_JavaLangString = paramString;
+    localblwh.e = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
+    localblwh.jdField_a_of_type_JavaLangClass = localClass;
+    localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localblwh.jdField_b_of_type_Int = paramInt;
+    localblwh.c = 15000;
+    localblwh.f = null;
+    localblwh.jdField_b_of_type_Boolean = false;
+    localblwh.jdField_b_of_type_JavaLangString = "qzone_vertical_video_plugin.apk";
+    localblwh.d = "QZoneVerticalVideo";
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "加载原始插件");
     }
-    bkkq.a(paramActivity, localbkkz);
+    blvy.a(paramActivity, localblwh);
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "QzoneVerticalVideoPluginProxyActivity.launchPluginActivityForResult");
     }
@@ -118,13 +118,13 @@ public class QzoneVerticalVideoPluginProxyActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bhlx.a(BaseApplicationImpl.getContext(), false, 5);
-    apoh.a(BaseApplicationImpl.getContext(), 2, false);
+    biwn.a(BaseApplicationImpl.getContext(), false, 5);
+    aqrl.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void onDestroy()
   {
-    apoh.a(BaseApplicationImpl.getContext(), 2, true);
+    aqrl.a(BaseApplicationImpl.getContext(), 2, true);
     super.onDestroy();
   }
 }

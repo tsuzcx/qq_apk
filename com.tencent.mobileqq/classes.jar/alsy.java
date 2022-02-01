@@ -1,19 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
 
 public class alsy
-  extends RecyclerView.ViewHolder
+  implements yxa
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public alsy(P2VEditMusicDialog paramP2VEditMusicDialog) {}
   
-  public alsy(alsx paramalsx, View paramView)
+  public void a() {}
+  
+  public void a(yxk paramyxk)
   {
-    super(paramView);
-    if (paramView == alsx.a(paramalsx)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364670));
+    this.a.b(paramyxk);
+  }
+  
+  public void b()
+  {
+    this.a.a();
   }
 }
 

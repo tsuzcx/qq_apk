@@ -1,69 +1,18 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.SubscribeGetRecommendUserListRequest;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import android.os.Handler;
 
-public class zco
-  implements zcm
+class zco
+  extends anyz
 {
-  private static String jdField_a_of_type_JavaLangString = "TopPanelPresenter";
-  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private zcn jdField_a_of_type_Zcn;
+  zco(zcm paramzcm) {}
   
-  public zco(zcn paramzcn)
+  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, anza paramanza)
   {
-    this.jdField_a_of_type_Zcn = paramzcn;
-    this.jdField_a_of_type_Zcn.setPresenter(this);
-  }
-  
-  private List<zcz> a(CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramStGetRecommendUserListRsp.expType.get() == 0)
+    paramanza = this.a.a;
+    if (paramBoolean) {}
+    for (int i = 4;; i = 5)
     {
-      if (paramStGetRecommendUserListRsp.vecUser.has())
-      {
-        paramStGetRecommendUserListRsp = paramStGetRecommendUserListRsp.vecUser.get().iterator();
-        while (paramStGetRecommendUserListRsp.hasNext()) {
-          localArrayList.add(new zcz((CertifiedAccountMeta.StUser)paramStGetRecommendUserListRsp.next()));
-        }
-      }
-    }
-    else if ((paramStGetRecommendUserListRsp.expType.get() == 1) && (paramStGetRecommendUserListRsp.vecUserWithFeed.has()))
-    {
-      paramStGetRecommendUserListRsp = paramStGetRecommendUserListRsp.vecUserWithFeed.get().iterator();
-      while (paramStGetRecommendUserListRsp.hasNext()) {
-        localArrayList.add(new zcz((CertifiedAccountMeta.StFeed)paramStGetRecommendUserListRsp.next()));
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    long l = System.currentTimeMillis();
-    localObject = new SubscribeGetRecommendUserListRequest((String)localObject, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 100, 0);
-    ((SubscribeGetRecommendUserListRequest)localObject).setEnableCache(false);
-    VSNetworkHelper.getInstance().sendRequest((VSBaseRequest)localObject, new zcp(this, l));
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Zcn != null)
-    {
-      this.jdField_a_of_type_Zcn.setPresenter(null);
-      this.jdField_a_of_type_Zcn = null;
+      paramanza.sendEmptyMessage(i);
+      return;
     }
   }
 }

@@ -1,5 +1,6 @@
 package com.tencent.thumbplayer.tplayer;
 
+import com.tencent.qqlive.module.videoreport.dtreport.video.playback.ReportThumbPlayer;
 import com.tencent.thumbplayer.api.ITPPlayer;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnAudioFrameOutputListener;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnAudioProcessFrameOutputListener;
@@ -38,21 +39,25 @@ class TPPlayerListeners$TPPlayerListenersEmptyImpl
   
   public void onCompletion(ITPPlayer paramITPPlayer)
   {
+    ReportThumbPlayer.getInstance().onCompletion(paramITPPlayer);
     TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onCompletion");
   }
   
   public void onError(ITPPlayer paramITPPlayer, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
+    ReportThumbPlayer.getInstance().onError(paramITPPlayer, paramInt1, paramInt2);
     TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onError");
   }
   
   public void onInfo(ITPPlayer paramITPPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
+    ReportThumbPlayer.getInstance().onInfo(paramITPPlayer, paramInt, paramLong1, paramLong2);
     TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onInfo");
   }
   
   public void onPrepared(ITPPlayer paramITPPlayer)
   {
+    ReportThumbPlayer.getInstance().onPrepared(paramITPPlayer);
     TPLogUtil.i(TPPlayerListeners.access$100(), " empty player listener , notify , onPrepared");
   }
   

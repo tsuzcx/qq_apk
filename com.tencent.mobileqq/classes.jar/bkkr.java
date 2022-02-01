@@ -1,22 +1,43 @@
-import android.content.Context;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class bkkr
-  implements bkkx
+class bkkr
+  implements EIPCResultCallback
 {
-  bkkr(bkkw parambkkw) {}
+  bkkr(bkkq parambkkq, RequestEvent paramRequestEvent) {}
   
-  public void a(boolean paramBoolean, Context paramContext, bkkz parambkkz)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    QLog.d("DeviceInfoPlugin", 1, "ACTION_GET_GUID_INFO onCallback");
+    if (paramEIPCResult == null)
+    {
+      QLog.e("DeviceInfoPlugin", 1, "ACTION_GET_GUID_INFO error, result is null");
+      return;
     }
-    if (paramBoolean) {
-      bkkq.d(paramContext, parambkkz);
+    if (paramEIPCResult.code == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("guid", "");
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("guid", paramEIPCResult);
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(localJSONObject);
+        return;
+      }
+      catch (JSONException paramEIPCResult)
+      {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramEIPCResult.getMessage());
+        QLog.e("DeviceInfoPlugin", 1, new Object[] { "evaluateCallback error : ", paramEIPCResult.getMessage() });
+        return;
+      }
     }
-    if (this.a != null) {
-      this.a.a(paramBoolean);
-    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(String.valueOf(-102));
+    QLog.e("DeviceInfoPlugin", 1, "ACTION_GET_GUID_INFO failed, code return error");
   }
 }
 

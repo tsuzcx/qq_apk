@@ -91,7 +91,7 @@ public class MiniGdtReporter
         catch (Exception localException1) {}
         try
         {
-          str = paramMiniAppInfo.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("1.8.0", "utf-8"));
+          str = paramMiniAppInfo.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("1.9.0", "utf-8"));
           paramMiniAppInfo = str;
           paramInt = 1;
           if (paramInt == 0) {

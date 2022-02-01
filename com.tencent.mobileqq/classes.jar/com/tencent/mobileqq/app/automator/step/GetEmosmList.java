@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amrg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import arao;
-import avsq;
+import antu;
+import asey;
+import awyr;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.EmoticonPackage;
@@ -26,7 +28,7 @@ public class GetEmosmList
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "getEmosmList start int QQInitHandler...");
     }
-    ((arao)this.a.app.getManager(259)).a();
+    ((asey)this.a.app.getManager(QQManagerFactory.EMOFROMGROUP_DB_MANAGER)).a();
     Object localObject1 = this.a.app.getApp().getSharedPreferences("sticker_pref", 0);
     Object localObject2 = this.a.app.getCurrentAccountUin();
     if ((((SharedPreferences)localObject1).getBoolean("sticker_switch_" + (String)localObject2, true)) && (EmojiStickerManager.a())) {}
@@ -44,24 +46,24 @@ public class GetEmosmList
         ((SharedPreferences)localObject1).edit().putLong("sticker_update_version_time_" + (String)localObject2, l).apply();
         EmojiStickerManager.d = l;
       }
-      localObject2 = (avsq)this.a.app.getManager(14);
+      localObject2 = (awyr)this.a.app.getManager(QQManagerFactory.EMOTICON_MANAGER);
       localObject1 = this.a.app.getApplication().getSharedPreferences("mobileQQ", 0);
       if (Boolean.valueOf(((SharedPreferences)localObject1).getBoolean("emosm_has_set_emosmpackage_valid_" + this.a.app.getCurrentAccountUin(), false)).booleanValue()) {
-        break label501;
+        break label502;
       }
-      localObject3 = ((avsq)localObject2).a();
+      localObject3 = ((awyr)localObject2).a();
       if (localObject3 == null) {
-        break label454;
+        break label455;
       }
       Iterator localIterator = ((List)localObject3).iterator();
       while (localIterator.hasNext()) {
         ((EmoticonPackage)localIterator.next()).valid = true;
       }
     }
-    ((avsq)localObject2).a((List)localObject3);
-    label454:
+    ((awyr)localObject2).a((List)localObject3);
+    label455:
     ((SharedPreferences)localObject1).edit().putBoolean("emosm_has_set_emosmpackage_valid_" + this.a.app.getCurrentAccountUin(), true).commit();
-    label501:
+    label502:
     localObject2 = Boolean.valueOf(((SharedPreferences)localObject1).getBoolean("emosm_has_download_emosmpackage_tag_" + this.a.app.getCurrentAccountUin(), false));
     localObject1 = Boolean.valueOf(((SharedPreferences)localObject1).getBoolean("emosm_has_download_emosmpackage_kandian_tag_" + this.a.app.getCurrentAccountUin(), false));
     if (QLog.isColorLevel()) {
@@ -70,22 +72,22 @@ public class GetEmosmList
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "kandianOidbFlag kandianOidbFlag int kandianOidbFlag..." + localObject1);
     }
-    Object localObject3 = (amrg)this.a.app.getBusinessHandler(12);
+    Object localObject3 = (antu)this.a.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM);
     if (((Boolean)localObject2).booleanValue())
     {
-      ((amrg)localObject3).a(0, 0);
+      ((antu)localObject3).a(0, 0);
       if (!((Boolean)localObject1).booleanValue()) {
-        break label708;
+        break label710;
       }
-      ((amrg)localObject3).a(0, 0, 1, 0);
+      ((antu)localObject3).a(0, 0, 1, 0);
     }
     for (;;)
     {
       return 7;
-      ((amrg)localObject3).d(0);
+      ((antu)localObject3).d(0);
       break;
-      label708:
-      ((amrg)localObject3).d(1);
+      label710:
+      ((antu)localObject3).d(1);
     }
   }
 }

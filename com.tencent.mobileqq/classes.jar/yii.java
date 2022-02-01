@@ -1,24 +1,29 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yii
-  implements yih
+  extends QQUIEventReceiver<yhn, xgg>
 {
-  public yii(EditVideoMusicDialog paramEditVideoMusicDialog) {}
-  
-  public void a()
+  public yii(@NonNull yhn paramyhn)
   {
-    this.a.a.c(true);
+    super(paramyhn);
   }
   
-  public void a(yir paramyir)
+  public void a(@NonNull yhn paramyhn, @NonNull xgg paramxgg)
   {
-    this.a.b(paramyir);
+    ykq.a(this.TAG, "play video groupId=%s, %s", paramxgg.jdField_a_of_type_Xcy, paramxgg.b);
+    if ((yhn.a(paramyhn).equals(paramxgg.jdField_a_of_type_JavaLangString)) && ((paramxgg.jdField_a_of_type_Xcy instanceof xcn)))
+    {
+      ycc localycc = ((xcn)paramxgg.jdField_a_of_type_Xcy).a;
+      if (localycc != null) {
+        paramyhn.a(localycc.jdField_a_of_type_JavaLangString, paramxgg.b, true);
+      }
+    }
   }
   
-  public void b()
+  public Class acceptEventClass()
   {
-    this.a.a();
+    return xgg.class;
   }
 }
 

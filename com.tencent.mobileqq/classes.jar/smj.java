@@ -1,10 +1,17 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public abstract interface smj
+class smj
+  implements DialogInterface.OnShowListener
 {
-  public abstract boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
+  smj(smg paramsmg) {}
+  
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    smg.a(this.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
+    smg.a(this.a).getWindow().clearFlags(8);
+  }
 }
 
 

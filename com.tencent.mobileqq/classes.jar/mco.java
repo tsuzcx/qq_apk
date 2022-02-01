@@ -1,24 +1,24 @@
-import com.tencent.av.ui.DoubleVideoCtrlUI;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.SeekBar;
+import com.tencent.av.ui.BeautyToolbar;
 
 public class mco
-  implements mho
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public mco(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public mco(BeautyToolbar paramBeautyToolbar) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    this.a.j = true;
-    this.a.M();
-  }
-  
-  public void b()
-  {
-    this.a.j = false;
+    if ((this.a.mIs1stShow) && (this.a.mSeek != null) && (this.a.mSeek.getWidth() > 0))
+    {
+      this.a.mIs1stShow = false;
+      this.a.updateTip(this.a.mSeek.getProgress());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mco
  * JD-Core Version:    0.7.0.1
  */

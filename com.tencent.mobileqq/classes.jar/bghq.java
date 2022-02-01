@@ -1,174 +1,55 @@
-import android.content.Context;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Process;
-import android.text.TextUtils;
-import com.etrump.mixlayout.ETEngine;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.minigame.utils.AppUtil;
-import com.tencent.mobileqq.vas.adapter.ThemeFontAdapter.2;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.util.LruCache;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.TextHook;
-import java.io.File;
-import mqq.app.AppRuntime;
 
 public class bghq
-  extends bghn
+  extends Handler
 {
-  static bbyo jdField_a_of_type_Bbyo = new bghr();
-  private static bghs jdField_a_of_type_Bghs = new bghs();
-  private static int b;
-  private static int c = 10;
-  private static int d;
-  
-  public bghq(bggs parambggs, AppRuntime paramAppRuntime, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    super(parambggs, paramAppRuntime, paramInt);
-  }
-  
-  public static String a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("theme", 4).getString("theme_font_root_pre", null);
-  }
-  
-  public static void a(Context paramContext)
-  {
-    paramContext = paramContext.getSharedPreferences("theme", 4);
-    paramContext.edit().remove("theme_font_root_pre").commit();
-    paramContext.edit().remove("theme_font_root").commit();
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getSharedPreferences("theme", 4);
-    paramContext.edit().putString("theme_font_root_pre", paramString).commit();
-    paramContext.edit().remove("theme_font_root").commit();
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      a(BaseApplicationImpl.getApplication().getApplicationContext());
-    }
-    if (!TextHook.getInstance().isDefault())
+    if (paramMessage.what == 1001) {}
+    try
     {
-      QLog.d("ThemeFontAdapter", 1, "resetDefaultFont");
-      TextHook.getInstance().switchDefault();
-      TextHook.getInstance().update(BaseApplicationImpl.getApplication().getApplicationContext());
-    }
-    b = 0;
-    d = 0;
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    boolean bool1 = false;
-    boolean bool2 = bool1;
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      if (!TextUtils.isEmpty(paramString2)) {
-        break label22;
+      paramMessage = (String)paramMessage.obj;
+      if (QLog.isColorLevel()) {
+        QLog.d("NonMainAppListViewFaceLoader", 2, "DecodeHandler handle MSG_DECODE_FACE_BITMAP uin:" + paramMessage);
       }
-      bool2 = bool1;
-    }
-    for (;;)
-    {
-      return bool2;
-      label22:
-      String str = paramString2 + "." + Process.myPid() + ".tmp";
-      try
+      Bitmap localBitmap1 = bheg.a((String)this.a.b.get(paramMessage), null);
+      if (localBitmap1 != null)
       {
-        ETEngine.getInstanceForSpace();
-        bool1 = ETEngine.native_ftf2ttf(paramString1, str);
-        if (bool1)
+        Bitmap localBitmap2 = this.a.a(localBitmap1);
+        if (localBitmap2 != null)
         {
-          paramString1 = new File(str);
-          paramString2 = new File(paramString2);
-          if (!paramString2.exists()) {
-            bool1 = paramString1.renameTo(paramString2);
+          Message localMessage = Message.obtain();
+          Bundle localBundle = new Bundle();
+          localBundle.putParcelable("bmp", localBitmap2);
+          localBundle.putString("uin", paramMessage);
+          localMessage.obj = localBundle;
+          localMessage.what = 1002;
+          this.a.a.sendMessage(localMessage);
+          if (QLog.isColorLevel()) {
+            QLog.d("NonMainAppListViewFaceLoader", 2, "decodeFile, uin:" + paramMessage);
           }
-          bool2 = bool1;
-          if (bool1) {
-            continue;
-          }
-          QLog.e("ThemeFontAdapter", 1, "failed to move trueType font file, from path = " + paramString1.getAbsolutePath());
-          return bool1;
         }
-      }
-      catch (Throwable paramString1)
-      {
-        QLog.e("ThemeFontAdapter", 1, "call native_ftf2ttf error, errMsg = " + paramString1.toString());
-        return false;
-      }
-    }
-    QLog.e("ThemeFontAdapter", 1, "call native_ftf2ttf error");
-    return bool1;
-  }
-  
-  public static void b(int paramInt)
-  {
-    b((int)gb.a(paramInt), gb.b(paramInt));
-  }
-  
-  public static void b(int paramInt1, int paramInt2)
-  {
-    QLog.d("ThemeFontAdapter", 1, "switchFont  fontId:" + paramInt1 + " fontType:" + paramInt2);
-    if (b == paramInt1)
-    {
-      QLog.d("ThemeFontAdapter", 1, "switchFont already set fontId:" + paramInt1 + " fontType:" + paramInt2);
-      return;
-    }
-    if (paramInt1 == 0)
-    {
-      a(true);
-      return;
-    }
-    ThreadManagerV2.executeOnFileThread(new ThemeFontAdapter.2(paramInt1, paramInt2));
-  }
-  
-  public static void b(Context paramContext)
-  {
-    TextHook.setSupportProcess(true);
-    paramContext.registerReceiver(jdField_a_of_type_Bghs, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
-  }
-  
-  public static void c(Context paramContext)
-  {
-    paramContext.unregisterReceiver(jdField_a_of_type_Bghs);
-  }
-  
-  public static void d()
-  {
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).addObserver(jdField_a_of_type_Bbyo);
-  }
-  
-  private static void d(int paramInt1, int paramInt2)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    bggs localbggs = new bggs(localAppRuntime, paramInt1);
-    localbggs.a(new bghq(localbggs, localAppRuntime, paramInt2));
-  }
-  
-  public void b()
-  {
-    if (AppUtil.isMainProcess()) {}
-    for (ga localga = a(this.jdField_a_of_type_Bggu.a(), this.jdField_a_of_type_Int);; localga = gf.a().a(this.jdField_a_of_type_Bggu.a(), this.jdField_a_of_type_Int))
-    {
-      QLog.e("ThemeFontAdapter", 2, "load   fontInfo:" + localga + " sCurrentTryNumber:" + d);
-      if (localga != null)
-      {
-        int i = d;
-        d = i + 1;
-        if (i < c)
-        {
-          b(localga.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-          c();
+        if ((localBitmap1 != null) && (!localBitmap1.isRecycled())) {
+          localBitmap1.recycle();
         }
       }
       return;
+    }
+    catch (OutOfMemoryError paramMessage)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, OutOfMemoryError");
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, exception:" + paramMessage.toString());
     }
   }
 }

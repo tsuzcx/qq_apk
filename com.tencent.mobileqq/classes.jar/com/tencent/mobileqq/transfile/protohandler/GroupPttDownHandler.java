@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
+import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -144,7 +144,7 @@ public class GroupPttDownHandler
     byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    amwm localamwm = paramProtoResp.statisInfo;
+    anza localanza = paramProtoResp.statisInfo;
     int i;
     if (localFromServiceMsg.getResultCode() != 1000)
     {
@@ -157,7 +157,7 @@ public class GroupPttDownHandler
         if (paramProtoReq == null) {
           paramProtoResp = "";
         }
-        setResult(-1, 9311, (String)localObject1, paramProtoResp, localamwm, localRichProtoResp.resps);
+        setResult(-1, 9311, (String)localObject1, paramProtoResp, localanza, localRichProtoResp.resps);
       }
     }
     for (;;)
@@ -170,7 +170,7 @@ public class GroupPttDownHandler
       if (paramProtoReq == null) {
         paramProtoResp = "";
       }
-      setResult(-1, 9044, (String)localObject1, paramProtoResp, localamwm, localRichProtoResp.resps);
+      setResult(-1, 9044, (String)localObject1, paramProtoResp, localanza, localRichProtoResp.resps);
       continue;
       try
       {
@@ -182,7 +182,7 @@ public class GroupPttDownHandler
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localamwm, localRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, localRichProtoResp.resps);
       }
       continue;
       label272:
@@ -258,12 +258,12 @@ public class GroupPttDownHandler
           if (paramProtoResp.rpt_str_domain.has()) {
             ((RichProto.RichProtoResp.GroupPttDownResp)localObject1).domainV4V6 = paramProtoResp.rpt_str_domain.get();
           }
-          setResult(0, 0, "", "", localamwm, (RichProto.RichProtoResp.RespCommon)localObject1);
+          setResult(0, 0, "", "", localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
         }
         catch (Exception paramProtoResp) {}
         if (localObject1 != null)
         {
-          setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localamwm, (RichProto.RichProtoResp.RespCommon)localObject1);
+          setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
           continue;
           if (paramProtoResp.uint32_allow_retry.get() == 1)
           {
@@ -281,7 +281,7 @@ public class GroupPttDownHandler
               return;
             }
           }
-          setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localamwm, (RichProto.RichProtoResp.RespCommon)localObject1);
+          setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
         }
       }
     }

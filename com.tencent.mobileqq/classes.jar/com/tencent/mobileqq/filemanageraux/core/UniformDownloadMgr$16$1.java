@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanageraux.core;
 
-import atdo;
-import atgn;
+import auhv;
+import auku;
 
 public class UniformDownloadMgr$16$1
   implements Runnable
 {
-  public UniformDownloadMgr$16$1(atdo paramatdo, String paramString) {}
+  public UniformDownloadMgr$16$1(auhv paramauhv, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      atgn.a(this.jdField_a_of_type_Atdo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atdo.b);
+      auku.a(this.jdField_a_of_type_Auhv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Auhv.b);
       return;
     }
-    atgn.b(this.jdField_a_of_type_Atdo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atdo.b);
+    auku.b(this.jdField_a_of_type_Auhv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Auhv.b);
   }
 }
 

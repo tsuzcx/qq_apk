@@ -1,12 +1,27 @@
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
+import android.content.Context;
+import android.view.View;
 
-public abstract interface zzn
+final class zzn
+  implements bkzq
 {
-  public abstract void a(int paramInt, VsMusicItemInfo paramVsMusicItemInfo);
+  zzn(Context paramContext, String paramString, zzq paramzzq, bkzi parambkzi) {}
   
-  public abstract void a(int paramInt, zzr paramzzr);
-  
-  public abstract void a(VsMusicItemInfo paramVsMusicItemInfo, int paramInt, boolean paramBoolean);
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (zzk.a()) {
+      return;
+    }
+    zzk.a(true);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      zzk.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Zzq);
+    }
+  }
 }
 
 

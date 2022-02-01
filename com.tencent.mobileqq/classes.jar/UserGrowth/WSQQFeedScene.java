@@ -15,6 +15,7 @@ public final class WSQQFeedScene
   public static final int QQ_FEED_SCENE_MINI_VIDEO_PAGE = 10002;
   public static final int QQ_FEED_SCENE_MSG_LIST = 7;
   public static final int QQ_FEED_SCENE_NOTIFY = 4;
+  public static final int QQ_FEED_SCENE_OPERATE_OPERATION = 10008;
   public static final int QQ_FEED_SCENE_PERSON_WEISHI = 6;
   public static final int QQ_FEED_SCENE_PLAY_COMMENT_LIST = 10003;
   public static final int QQ_FEED_SCENE_PUBLISHER = 10004;

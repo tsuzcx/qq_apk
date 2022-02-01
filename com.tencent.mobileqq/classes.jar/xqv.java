@@ -1,40 +1,36 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPhotographyGuide;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 public class xqv
-  extends vqr
+  extends JobSegment<List<Bitmap>, Bitmap>
 {
-  public static final String a = vpl.a("StorySvc.get_photography_guide");
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString = "story.icon.BitmapListToIconSegment";
   
-  public String a()
+  public xqv(Context paramContext, String paramString, int paramInt)
   {
-    return a;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public vqm a(byte[] paramArrayOfByte)
+  protected void a(JobContext paramJobContext, List<Bitmap> paramList)
   {
-    qqstory_service.RspGetPhotographyGuide localRspGetPhotographyGuide = new qqstory_service.RspGetPhotographyGuide();
-    try
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      localRspGetPhotographyGuide.mergeFrom(paramArrayOfByte);
-      return new xqw(localRspGetPhotographyGuide);
+      notifyError(new ErrorMessage(-1, "bitmap list should not be empty"));
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      xvv.d("Q.qqstory:GetPhotographyGuideRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetPhotographyGuideRequest{}";
+    paramJobContext = (Bitmap[])paramList.toArray(new Bitmap[paramList.size()]);
+    paramList = bhac.a(this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888, paramJobContext);
+    xqw.b(this.jdField_a_of_type_JavaLangString, "result bitmap = %s, child count = %d", paramList, Integer.valueOf(paramJobContext.length));
+    notifyResult(paramList);
   }
 }
 

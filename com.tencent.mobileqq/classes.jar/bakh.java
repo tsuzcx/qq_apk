@@ -1,30 +1,67 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.utils.StringUtil;
 
 public class bakh
+  extends bakd
 {
-  public int a;
-  public long a;
-  public MessageForShortVideo a;
-  String jdField_a_of_type_JavaLangString;
-  public String[] a;
-  
-  public bakh(bake parambake, String[] paramArrayOfString, long paramLong, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  protected String a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (StringUtil.isEmpty(this.f)) {
+      paramQQAppInterface = "";
+    }
+    aquz localaquz;
+    do
+    {
+      String str;
+      do
+      {
+        return paramQQAppInterface;
+        if (this.f.equalsIgnoreCase("qqgame")) {
+          return bhnp.a("vipGameCenter");
+        }
+        if (!this.f.equalsIgnoreCase("confessmsg")) {
+          break;
+        }
+        localaquz = ((aqvd)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).b();
+        str = "https://ti.qq.com/honest-say/main.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&adtag=message_box";
+        paramQQAppInterface = str;
+      } while (localaquz == null);
+      paramQQAppInterface = str;
+    } while (TextUtils.isEmpty(localaquz.l));
+    return localaquz.l;
+    if (this.f.equalsIgnoreCase("qinterest"))
+    {
+      paramQQAppInterface = bhhr.c(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
+      if (!TextUtils.isEmpty(paramQQAppInterface)) {
+        return paramQQAppInterface.trim();
+      }
+      return anxl.a;
+    }
+    return "";
   }
   
-  public boolean a()
+  protected void a(bheh parambheh, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
-    BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "UrlsCacheBean, now=  " + l1 + ", mGetTime" + this.jdField_a_of_type_Long + " diff=" + l2 + " urlTimeValidDiff=" + bake.a());
-    return l2 < bake.a();
+    if (this.f.equalsIgnoreCase("qqgame")) {
+      parambheh.e("platformId=qq_m");
+    }
+  }
+  
+  protected void a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    paramQQAppInterface = a(paramQQAppInterface);
+    if (StringUtil.isEmpty(paramQQAppInterface)) {
+      return;
+    }
+    this.b = paramQQAppInterface;
+  }
+  
+  protected boolean b(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    return !StringUtil.isEmpty(this.b);
   }
 }
 

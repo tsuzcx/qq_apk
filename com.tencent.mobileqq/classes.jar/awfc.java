@@ -1,44 +1,104 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager.RunnableShowForKey;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class awfc
-  extends awdx
+  implements awhn
 {
-  public awfc(MusicPlayerActivity paramMusicPlayerActivity) {}
+  public awfc(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void onPlaySongChanged(SongInfo paramSongInfo)
+  public void a(String paramString, int paramInt)
   {
-    if (paramSongInfo != null)
+    QLog.d("ListenTogether.Manager", 1, new Object[] { "onPlayStateChanged: " + awhi.a(paramInt), " songId:", paramString, " curSongID:", QQMusicPlayService.a().a() });
+    HashMap localHashMap = new HashMap();
+    if (paramInt == 8)
     {
-      localObject = MusicPlayerActivity.a(this.a, paramSongInfo);
-      if (!MusicPlayerActivity.b().containsKey(localObject)) {
-        break label64;
+      ListenTogetherManager.a(this.a);
+      if (paramInt != 2) {
+        break label302;
       }
-      localObject = (awfi)MusicPlayerActivity.b().get(localObject);
-      paramSongInfo = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, ((awfi)localObject).a);
-      MusicPlayerActivity.a(this.a, (awfi)localObject, paramSongInfo);
+      if (ListenTogetherManager.a(this.a).c())
+      {
+        ListenTogetherManager.a(this.a).n();
+        ListenTogetherManager.a(this.a).p();
+      }
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      localHashMap.put("status", String.valueOf(paramInt));
+      label190:
+      if (paramInt != 2) {
+        break label381;
+      }
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, awes.a().a);
     }
-    label64:
-    while (MusicPlayerActivity.a().containsKey(localObject)) {
-      return;
-    }
-    Object localObject = MusicPlayerActivity.a(this.a);
-    if (localObject != null) {}
-    for (int i = ((awdz)localObject).c();; i = 0)
+    for (;;)
     {
-      localObject = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, -1L);
-      MusicPlayerActivity.a(this.a, paramSongInfo.c, paramSongInfo.h, paramSongInfo.e, (String)localObject, false, false);
-      MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.c, paramSongInfo.h, paramSongInfo.g, String.valueOf(paramSongInfo.a), paramSongInfo.d, i);
+      ListenTogetherManager.a(this.a, paramString, paramInt);
+      if (!localHashMap.isEmpty()) {
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "listen_together_player_status", true, 0L, 0L, localHashMap, "");
+      }
+      if (QQMusicPlayService.a() != null) {
+        azfe.a().a(paramInt);
+      }
       return;
+      if ((paramInt != 5) && (paramInt != 7)) {
+        break;
+      }
+      localHashMap.put("status", String.valueOf(paramInt));
+      break;
+      label302:
+      if ((paramInt != 4) && (paramInt != 5) && (paramInt != 7)) {
+        break label190;
+      }
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      break label190;
+      label381:
+      ListenTogetherManager.a(this.a).removeMessages(1001);
     }
   }
   
-  public void onPlayStateChanged(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    Message.obtain(MusicPlayerActivity.a(this.a), 50, paramInt, 0).sendToTarget();
+    QLog.i("ListenTogether.Manager", 1, "onNetChanged: " + paramBoolean);
+    if (paramBoolean) {
+      ListenTogetherManager.b(this.a);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    QLog.i("ListenTogether.Manager", 1, "onFocusChanged: " + paramBoolean1 + " isTransient:" + paramBoolean2);
+    ListenTogetherManager.a(this.a, paramBoolean1);
+    if (paramBoolean1)
+    {
+      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
+      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.a(this.a, 0L);
+      return;
+    }
+    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
+    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
+    ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
+    ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+    if (paramBoolean2)
+    {
+      ListenTogetherManager.a(this.a, 0L);
+      return;
+    }
+    ListenTogetherManager.a(this.a, SystemClock.elapsedRealtime());
   }
 }
 

@@ -1,64 +1,29 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
-import eipc.EIPCClient;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.open.agent.AgentActivity;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
-@JsPlugin(secondary=true)
 public class bizz
-  extends BaseJsPlugin
+  implements bjqi
 {
-  private JSONObject a(RequestEvent paramRequestEvent)
+  public bizz(AgentActivity paramAgentActivity, String paramString1, Bundle paramBundle, String paramString2, String paramString3) {}
+  
+  public void a(bjpl parambjpl)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("SetAvatarNativePlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
-    }
-    return null;
+    auuv.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", parambjpl);
+    AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity).a().a(this.b, parambjpl);
+    AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b, false);
   }
   
-  @JsEvent({"uploadAvatar"})
-  public void uploadAvatar(RequestEvent paramRequestEvent)
+  public void a(String paramString, Bundle paramBundle)
   {
-    try
-    {
-      Object localObject = a(paramRequestEvent);
-      QLog.i("SetAvatarNativePlugin", 1, "onInvoke, param=" + localObject);
-      localObject = ((JSONObject)localObject).optJSONObject("data");
-      if (localObject == null)
-      {
-        paramRequestEvent.fail(new JSONObject("empty data"), "empty data");
-        return;
-      }
-      localObject = ((JSONObject)localObject).optString("path", null);
-      localObject = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath((String)localObject);
-      QLog.d("SetAvatarNativePlugin", 1, (String)localObject);
-      Bundle localBundle = new Bundle();
-      localBundle.putString("param_avatar_path", (String)localObject);
-      QIPCClientHelper.getInstance().getClient().callServer("CommonModule", "set_avatar", localBundle, new bjaa(this, paramRequestEvent));
-      return;
-    }
-    catch (Throwable paramRequestEvent)
-    {
-      QLog.e("SetAvatarNativePlugin", 1, "setAvatar err", paramRequestEvent);
-    }
+    auuv.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", "", false);
+    AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b, false, true);
+    bjhg.a(this.c, "0X800B65D");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bizz
  * JD-Core Version:    0.7.0.1
  */

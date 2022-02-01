@@ -1,22 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.graphics.RectF;
 
 public class aplu
-  implements aplr
 {
-  public void launch(Context paramContext, ColorNote paramColorNote)
-  {
-    String str = paramColorNote.getSubType();
-    Object localObject = str.split("-");
-    if (localObject.length > 0) {
-      str = localObject[0];
-    }
-    if (localObject.length > 1) {
-      localObject = localObject[1];
-    }
-    paramColorNote = paramColorNote.getReserve();
-    bkox.a(paramContext, "", Long.parseLong(str), paramColorNote);
-  }
+  public double a;
+  public RectF a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
 }
 
 

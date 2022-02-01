@@ -1,21 +1,22 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-class zdf
-  implements View.OnClickListener
+public class zdf
 {
-  zdf(zde paramzde, CertifiedAccountMeta.StUser paramStUser) {}
+  public TextView a;
+  public TextView b;
   
-  public void onClick(View paramView)
+  public zdf(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    zxp.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + zlv.a(this.jdField_a_of_type_Zde.a()), "clk_shop", 0, 0, new String[0]);
-    zbh.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381637));
+    this.b = ((TextView)paramView.findViewById(2131380857));
+  }
+  
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(zdu.c(paramTroopStoryItemInfo.publishTime));
   }
 }
 

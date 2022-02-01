@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-
-class aqsu
-  implements DialogInterface.OnKeyListener
+public abstract interface aqsu
 {
-  aqsu(aqst paramaqst) {}
+  public abstract void a();
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    return (paramInt == 84) || (paramInt == 4);
-  }
+  public abstract void b();
 }
 
 

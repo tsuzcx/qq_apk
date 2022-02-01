@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mik;
+import mjg;
 
 public class QavSharpnessSVIPHelper$1
   implements Runnable
 {
-  public QavSharpnessSVIPHelper$1(mik parammik) {}
+  public QavSharpnessSVIPHelper$1(mjg parammjg) {}
   
   public void run()
   {

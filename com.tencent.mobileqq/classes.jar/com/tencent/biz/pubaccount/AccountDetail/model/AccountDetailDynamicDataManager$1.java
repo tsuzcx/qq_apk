@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.AccountDetail.model;
 
 import com.tencent.qphone.base.util.QLog;
-import ntx;
+import oay;
 
 public class AccountDetailDynamicDataManager$1
   implements Runnable
 {
-  public AccountDetailDynamicDataManager$1(ntx paramntx, long paramLong, byte[] paramArrayOfByte) {}
+  public AccountDetailDynamicDataManager$1(oay paramoay, long paramLong, byte[] paramArrayOfByte) {}
   
   public void run()
   {

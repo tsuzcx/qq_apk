@@ -1,26 +1,19 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.struct.LebaKDCellInfo;
+import java.util.List;
 
 class pnd
-  implements ViewTreeObserver.OnPreDrawListener
 {
-  pnd(pnc parampnc, ReadInJoyStaticGridView paramReadInJoyStaticGridView) {}
-  
-  public boolean onPreDraw()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getChildAt(0);
-    Object localObject2 = new int[2];
-    ((View)localObject1).getLocationOnScreen((int[])localObject2);
-    localObject2 = this.jdField_a_of_type_Pnc.a.a(pnc.a(this.jdField_a_of_type_Pnc), (int[])localObject2);
-    ReadInJoyChannelPanelFragment.a(localObject2[0], 0.0F, localObject2[1], 0.0F, (View)localObject1);
-    localObject1 = (ViewTreeObserver.OnPreDrawListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getTag(2131375910);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)localObject1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.setTag(2131375910, null);
-    return false;
-  }
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  Pair<Object, String> jdField_a_of_type_AndroidUtilPair = null;
+  LebaKDCellInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructLebaKDCellInfo = null;
+  String jdField_a_of_type_JavaLangString = null;
+  List<Long> jdField_a_of_type_JavaUtilList = null;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = -1;
+  long jdField_b_of_type_Long = 0L;
+  boolean jdField_b_of_type_Boolean = false;
 }
 
 

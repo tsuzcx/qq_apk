@@ -1,19 +1,45 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-public abstract interface aueb<T>
+final class aueb
+  implements auem
 {
-  public abstract int a();
+  aueb(String paramString1, String paramString2) {}
   
-  public abstract String a(Context paramContext);
-  
-  public abstract String a(FontBubble paramFontBubble);
-  
-  public abstract List<FontBubble> a(QQAppInterface paramQQAppInterface, T paramT);
-  
-  public abstract void a(anaj paramanaj);
+  public void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      return;
+    }
+    try
+    {
+      FileUtil.writeBitmapToFile(paramBitmap, this.a);
+      paramBitmap.recycle();
+      int i = ff.a(this.b);
+      ff.a(this.a, i);
+      return;
+    }
+    catch (FileNotFoundException paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
+      return;
+    }
+    catch (IOException paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
+      return;
+    }
+    catch (OutOfMemoryError paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
+    }
+  }
 }
 
 

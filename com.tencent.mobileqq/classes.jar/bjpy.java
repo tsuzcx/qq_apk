@@ -1,21 +1,21 @@
-import com.tencent.widget.DynamicGridView;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 public class bjpy
-  implements bjpz
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  public bjpy(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  public static SharedPreferences a(Context paramContext, String paramString)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
-    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
+    String str;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramString.length() != 0) {}
+    }
+    else
+    {
+      str = "sdk_preference";
+    }
+    return paramContext.getSharedPreferences(str, 4);
   }
 }
 

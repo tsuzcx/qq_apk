@@ -1,18 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.gaudio.GaInviteLockActivity;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.gaudio.BaseGaInvite;
 
+@SuppressLint({"HandlerLeak"})
 public class lnj
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public lnj(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public lnj(BaseGaInvite paramBaseGaInvite) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    mrd.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.b();
+      return;
     }
+    this.a.a("Msg");
+    super.sendEmptyMessageDelayed(1, 2000L);
   }
 }
 

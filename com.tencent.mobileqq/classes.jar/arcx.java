@@ -1,47 +1,98 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
 
-class arcx
-  extends WtloginObserver
+public class arcx
+  extends aqwt<arcu>
 {
-  arcx(arcu paramarcu, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
-  
-  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public static arcu b(int paramInt)
   {
-    boolean bool2 = true;
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+    arcu localarcu = (arcu)aqxe.a().a(paramInt);
+    if (localarcu != null) {
+      return localarcu;
+    }
+    return new arcu();
+  }
+  
+  @NonNull
+  public arcu a(int paramInt)
+  {
+    return new arcu();
+  }
+  
+  @Nullable
+  public arcu a(aqxa[] paramArrayOfaqxa)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaqxa != null)
     {
-      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
-      if (paramDevlockInfo.AllowSet != 1) {
-        break label85;
-      }
-      bool1 = true;
-      paramWUserSigInfo.putBoolean("hasSecurityPhoneNumber", bool1);
-      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
-      if (paramDevlockInfo.DevSetup != 1) {
-        break label91;
+      localObject1 = localObject2;
+      if (paramArrayOfaqxa.length > 0)
+      {
+        localObject1 = paramArrayOfaqxa[0].a;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label125;
+        }
+        QLog.d("OpenSdkRandomProcessor", 1, "OpenVirtual.[onParsed] type=" + type() + ", content = " + (String)localObject1);
       }
     }
-    label85:
-    label91:
-    for (boolean bool1 = bool2;; bool1 = false)
+    try
     {
-      paramWUserSigInfo.putBoolean("devlockIsOpen", bool1);
-      this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-      return;
-      bool1 = false;
-      break;
+      paramArrayOfaqxa = (arcv)aqxo.a(localObject1, arcv.class);
+      localObject1 = new arcu((String)localObject1, paramArrayOfaqxa);
+      return localObject1;
     }
+    catch (QStorageInstantiateException paramArrayOfaqxa)
+    {
+      for (;;)
+      {
+        QLog.i("OpenSdkRandomProcessor", 1, "readJsonOrXml:" + (String)localObject1 + "fail", paramArrayOfaqxa);
+        paramArrayOfaqxa = null;
+      }
+    }
+    label125:
+    QLog.d("OpenSdkRandomProcessor", 1, "OpenVirtual.[onParsed] content is empty, config type = " + type());
+    return null;
+  }
+  
+  public void a(arcu paramarcu)
+  {
+    QLog.d("OpenSdkRandomProcessor", 1, "OpenVirtual.[onUpdate] type=" + type() + ", content = " + paramarcu.a());
+  }
+  
+  public Class<arcu> clazz()
+  {
+    return arcu.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 466;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcx
  * JD-Core Version:    0.7.0.1
  */

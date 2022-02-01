@@ -1,59 +1,253 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.PicMessageExtraData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aijb
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131691363 };
-  private static final int[] b = { 2130839549 };
-  private static final int[] c = { 2131370711 };
-  Context jdField_a_of_type_AndroidContentContext;
-  private bjty jdField_a_of_type_Bjty;
-  
-  public aijb(Context paramContext)
+  public int a(SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    int i = 1;
+    if (paramSessionInfo == null) {
+      i = 0;
+    }
+    int j;
+    do
+    {
+      return i;
+      j = paramSessionInfo.curType;
+    } while (j == 1);
+    if (j == 0) {
+      return 2;
+    }
+    if (ChatActivityUtils.a(j)) {
+      return 3;
+    }
+    return 4;
   }
   
-  public View a(Context paramContext, int paramInt, bjtz parambjtz)
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, azke paramazke)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
-    return this.jdField_a_of_type_Bjty.a(paramContext, localView, parambjtz, -1);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramazke == null)) {}
+    while ((paramazke.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData == null) || (paramazke.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.imageBizType != 9)) {
       return;
     }
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298791);
-    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298792);
-    int[] arrayOfInt1 = c;
-    int[] arrayOfInt2 = jdField_a_of_type_ArrayOfInt;
-    int[] arrayOfInt3 = b;
-    this.jdField_a_of_type_Bjty = new aijc(this, 1, 2, new int[] { i, j }, -1, arrayOfInt1, arrayOfInt2, arrayOfInt3);
-  }
-  
-  public void a(Context paramContext, View paramView, int paramInt1, Object paramObject, bjtz parambjtz, View.OnClickListener paramOnClickListener, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Bjty != null) {}
-    for (int i = this.jdField_a_of_type_Bjty.a(paramContext, paramView, paramInt1, paramObject, parambjtz, paramOnClickListener);; i = 0)
+    String str2 = "";
+    String str1 = str2;
+    if (paramazke.jdField_a_of_type_Azjz != null)
     {
-      if (paramInt2 != -1)
+      str1 = str2;
+      if (paramazke.jdField_a_of_type_Azjz.a != null)
       {
-        if (paramInt1 != paramInt2) {
-          paramView.scrollTo(0, 0);
+        str1 = str2;
+        if (paramazke.jdField_a_of_type_Azjz.a.f != null) {
+          str1 = paramazke.jdField_a_of_type_Azjz.a.f;
         }
       }
-      else {
-        return;
-      }
-      paramView.scrollTo(i, 0);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportForwardSingleAdEmo ");
+    }
+    a(paramQQAppInterface, paramSessionInfo.curFriendUin, "0X800B128", "0X800B128", 1, "", str1, "");
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForPic paramMessageForPic)
+  {
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramMessageForPic == null)) {}
+    while (bhbz.a().a(paramMessageForPic, "0X800B126")) {
       return;
     }
+    bhbz.a().a(paramMessageForPic, "0X800B126");
+    String str2 = paramMessageForPic.picExtraData.mAdEmoDescStr;
+    String str1 = paramMessageForPic.md5;
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportTailShow, picMsg.uniseq = " + paramMessageForPic.uniseq);
+    }
+    paramMessageForPic = paramSessionInfo.curFriendUin;
+    int i = a(paramSessionInfo);
+    paramSessionInfo = str1;
+    if (str1 == null) {
+      paramSessionInfo = "";
+    }
+    a(paramQQAppInterface, paramMessageForPic, "0X800B126", "0X800B126", i, "", paramSessionInfo, str2);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
+  {
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramString == null)) {
+      return;
+    }
+    int i = a(paramSessionInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportHitKeyWord, keyword = " + paramString + ", sessionType = " + i);
+    }
+    a(paramQQAppInterface, paramSessionInfo.curFriendUin, "0X800B123", "0X800B123", i, "", "", paramString);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportAdEmoShow, imgUrl = " + paramString1 + " , index = " + paramInt + " , imgMd5 = " + paramString2 + " , keyWord = " + paramString3);
+    }
+    a(paramQQAppInterface, paramSessionInfo.curFriendUin, "0X800B124", paramString1, a(paramSessionInfo), String.valueOf(paramInt + 1), paramString2, paramString3);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, String paramString6)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("doReport, fromUin = ");
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.getCurrentAccountUin() == null)) {
+        break label145;
+      }
+    }
+    label145:
+    for (String str = paramQQAppInterface.getCurrentAccountUin();; str = "")
+    {
+      QLog.d("AdEmoReportUtil", 2, str + ", toUin = " + paramString1 + " , subAction = " + paramString2 + ", actionName = " + paramString3 + " , fromType = " + paramInt + " ,r2 = " + paramString4 + " , r4 = " + paramString5 + " , r5 = " + paramString6);
+      bdla.b(paramQQAppInterface, "dc00898", "", paramString1, paramString2, paramString3, paramInt, 0, paramString4, "", paramString5, paramString6);
+      return;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, ArrayList<ChatMessage> paramArrayList, int paramInt)
+  {
+    if ((paramQQAppInterface == null) || (paramString == null) || (paramArrayList == null)) {
+      return;
+    }
+    Iterator localIterator = paramArrayList.iterator();
+    label19:
+    int i;
+    while (localIterator.hasNext())
+    {
+      paramArrayList = (ChatMessage)localIterator.next();
+      if (a(paramArrayList))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdEmoReportUtil", 2, "reportForwardAdEmoMulti, picMsg.uniseq = " + paramArrayList.uniseq);
+        }
+        i = 0;
+        if (paramInt != 0) {
+          break label133;
+        }
+        i = 3;
+      }
+    }
+    for (;;)
+    {
+      String str = ((MessageForPic)paramArrayList).md5;
+      paramArrayList = str;
+      if (str == null) {
+        paramArrayList = "";
+      }
+      a(paramQQAppInterface, paramString, "0X800B128", "0X800B128", i, "", paramArrayList, "");
+      break label19;
+      break;
+      label133:
+      if (paramInt == 1) {
+        i = 2;
+      }
+    }
+  }
+  
+  public boolean a(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage == null) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!(paramChatMessage instanceof MessageForPic));
+      paramChatMessage = (MessageForPic)paramChatMessage;
+    } while ((paramChatMessage.picExtraData == null) || (paramChatMessage.picExtraData.imageBizType != 9));
+    return true;
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForPic paramMessageForPic)
+  {
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramMessageForPic == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportTailClick, picMsg.uniseq = " + paramMessageForPic.uniseq);
+    }
+    String str1 = paramMessageForPic.md5;
+    paramMessageForPic = paramMessageForPic.picExtraData.mAdEmoDescStr;
+    String str2 = paramSessionInfo.curFriendUin;
+    int i = a(paramSessionInfo);
+    paramSessionInfo = str1;
+    if (str1 == null) {
+      paramSessionInfo = "";
+    }
+    a(paramQQAppInterface, str2, "0X800B127", "0X800B127", i, "", paramSessionInfo, paramMessageForPic);
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportAdEmoSend, imgUrl = " + paramString1 + " , index = " + paramInt + " , imgMd5 = " + paramString2 + " , keyWord = " + paramString3);
+    }
+    a(paramQQAppInterface, paramSessionInfo.curFriendUin, "0X800B125", paramString1, a(paramSessionInfo), String.valueOf(paramInt + 1), paramString2, paramString3);
+  }
+  
+  public void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForPic paramMessageForPic)
+  {
+    if ((paramQQAppInterface == null) || (paramMessageForPic == null)) {}
+    while (!a(paramMessageForPic)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportAdEmoAddFav, picMsg.uniseq = " + paramMessageForPic.uniseq);
+    }
+    paramMessageForPic = paramMessageForPic.md5;
+    if (paramSessionInfo == null)
+    {
+      paramSessionInfo = paramMessageForPic;
+      if (paramMessageForPic == null) {
+        paramSessionInfo = "";
+      }
+      a(paramQQAppInterface, "", "0X800B129", "0X800B129", 0, "", paramSessionInfo, "");
+      return;
+    }
+    String str = paramSessionInfo.curFriendUin;
+    int i = a(paramSessionInfo);
+    paramSessionInfo = paramMessageForPic;
+    if (paramMessageForPic == null) {
+      paramSessionInfo = "";
+    }
+    a(paramQQAppInterface, str, "0X800B129", "0X800B129", i, "", paramSessionInfo, "");
+  }
+  
+  public void d(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForPic paramMessageForPic)
+  {
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramMessageForPic == null)) {}
+    while (!a(paramMessageForPic)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportEnterAdEmo, picMsg.uniseq = " + paramMessageForPic.uniseq);
+    }
+    paramMessageForPic = paramMessageForPic.md5;
+    String str = paramSessionInfo.curFriendUin;
+    int i = a(paramSessionInfo);
+    paramSessionInfo = paramMessageForPic;
+    if (paramMessageForPic == null) {
+      paramSessionInfo = "";
+    }
+    a(paramQQAppInterface, str, "0X800B12A", "0X800B12A", i, "", paramSessionInfo, "");
   }
 }
 

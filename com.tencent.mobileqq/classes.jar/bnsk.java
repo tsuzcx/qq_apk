@@ -1,20 +1,9 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class bnsk
-  implements Handler.Callback
+public class bnsk
 {
-  bnsk(bnsj parambnsj) {}
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
-    }
-    bnsj.a(this.a, false, null, paramMessage.what);
-    return false;
-  }
+  public static final String a = "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/" + "https://downv6.qq.com/shadow_qqcamera/Android/lottie/MusicWave_8e84b13bfc72dd3c86c70617db423aef.zip".hashCode() + ".zip";
+  public static final String b = "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/" + "https://downv6.qq.com/shadow_qqcamera/Android/lottie/MusicWave_8e84b13bfc72dd3c86c70617db423aef.zip".hashCode() + File.separator;
 }
 
 

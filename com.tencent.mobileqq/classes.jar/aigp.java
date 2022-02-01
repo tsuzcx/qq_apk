@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.data.NewFriendMoreInfo;
-
 public class aigp
-  extends aigo
 {
-  public NewFriendMoreInfo a;
+  public double a;
+  public double b;
   
-  public aigp(NewFriendMoreInfo paramNewFriendMoreInfo)
+  public aigp(double paramDouble1, double paramDouble2)
   {
-    this.a = paramNewFriendMoreInfo;
+    this.a = paramDouble1;
+    this.b = paramDouble2;
   }
   
-  public boolean a()
+  public aigp(aigp paramaigp)
   {
-    return true;
+    a(paramaigp);
+  }
+  
+  public void a(aigp paramaigp)
+  {
+    this.a = paramaigp.a;
+    this.b = paramaigp.b;
+  }
+  
+  public String toString()
+  {
+    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
   }
 }
 

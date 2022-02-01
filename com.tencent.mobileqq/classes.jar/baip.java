@@ -1,49 +1,33 @@
-import android.app.Activity;
-import android.app.KeyguardManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-public class baip
-  extends BroadcastReceiver
+class baip
+  extends ClickableSpan
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  boolean jdField_a_of_type_Boolean = true;
+  baip(bain parambain, String paramString1, String paramString2, String paramString3) {}
   
-  public baip(Activity paramActivity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    new bais(bain.a(this.jdField_a_of_type_Bain).mContext).a(this.jdField_a_of_type_JavaLangString).a();
+    bdla.b(bain.a(this.jdField_a_of_type_Bain).getApp(), "dc00898", "", "", "0X800A4BB", "0X800A4BB", 0, 0, "", "", "", "");
   }
   
-  public boolean a(Context paramContext)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    boolean bool = true;
-    paramIntent = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
-      if (!a(paramContext)) {
-        this.jdField_a_of_type_Boolean = bool;
-      }
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setTextSize(DisplayUtil.dip2px(bain.a(this.jdField_a_of_type_Bain).mContext, 14.0F));
+    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
+    if (!TextUtils.isEmpty(this.b)) {
+      paramTextPaint.setColor(Color.parseColor(this.b));
     }
-    for (;;)
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-      return;
-      bool = false;
-      break;
-      if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
-        this.jdField_a_of_type_Boolean = false;
-      } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
-        this.jdField_a_of_type_Boolean = true;
-      }
+    if (!TextUtils.isEmpty(this.c)) {
+      paramTextPaint.setTextSize(Float.valueOf(this.c).floatValue());
     }
   }
 }

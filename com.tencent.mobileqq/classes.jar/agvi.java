@@ -1,13 +1,23 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class agvi
-  implements agut
+class agvi
+  implements avkx
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  agvi(agvh paramagvh) {}
+  
+  public void a(View paramView)
   {
-    paramagap.a(paramagcc);
+    if (QLog.isColorLevel()) {
+      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
+    }
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    if (this.a.a()) {
+      return;
+    }
+    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import aymg;
+import azrb;
 
 class QidianProfileCardActivity$3
   implements Runnable
@@ -29,7 +29,7 @@ class QidianProfileCardActivity$3
         if (this.this$0.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo != null)
         {
           i = j;
-          if (this.this$0.jdField_a_of_type_Aymg.a != null) {}
+          if (this.this$0.jdField_a_of_type_Azrb.a != null) {}
         }
         else
         {

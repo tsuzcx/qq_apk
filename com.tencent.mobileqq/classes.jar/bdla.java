@@ -1,353 +1,447 @@
-import android.content.Context;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
-import com.tencent.mobileqq.app.AppConstants;
+import android.content.Intent;
+import android.telephony.TelephonyManager;
+import android.view.MotionEvent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AuthDevUgActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pluginsdk.PluginRuntime;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.ROMUtil;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class bdla
 {
-  private static int a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public static final HashMap<String, bdlc> a = new HashMap();
+  
+  static
   {
-    int j = 0;
-    Object localObject = null;
-    QQMessageFacade localQQMessageFacade = paramQQAppInterface.getMessageFacade();
-    abwp localabwp = paramQQAppInterface.getConversationFacade();
-    paramQQAppInterface = localObject;
-    if (localQQMessageFacade != null) {
-      paramQQAppInterface = localQQMessageFacade.getLastMessage(paramMessageRecord.senderuin, paramMessageRecord.istroop);
-    }
-    int i = j;
-    if (paramQQAppInterface != null)
-    {
-      i = j;
-      if (localabwp != null) {
-        i = localabwp.a(paramQQAppInterface.frienduin, paramQQAppInterface.istroop);
-      }
-    }
-    return i;
+    a.put("dc01160", new pmx());
   }
   
-  private static final JSONObject a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
+  private static String a()
   {
-    Object localObject = paramQQAppInterface.getMessageProxy(1001).a(AppConstants.LBS_SAY_HELLO_LIST_UIN, 1001);
-    if (localObject == null)
-    {
-      QLog.i("SayHiMessageHelper", 1, "getSayHiBoxInnerMessages, no tribe say hi info");
-      return null;
+    int i = DeviceInfoUtil.getCpuNumber();
+    long l = DeviceInfoUtil.getSystemTotalMemory() / 1024L / 1024L;
+    long[] arrayOfLong = DeviceInfoUtil.getRomMemroy();
+    String str2 = ((TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone")).getNetworkOperator();
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    JSONObject localJSONObject = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-      if (localMessageRecord.istroop == 10002) {
-        localArrayList.add(localMessageRecord);
-      }
-    }
-    paramInt2 = Math.min(paramInt1 + paramInt2, localArrayList.size());
-    for (;;)
-    {
-      if (paramInt1 < paramInt2) {}
-      try
-      {
-        localJSONArray.put(a(paramContext, paramQQAppInterface, (MessageRecord)localArrayList.get(paramInt1)));
-        paramInt1 += 1;
-      }
-      catch (JSONException paramContext)
-      {
-        QLog.e("SayHiMessageHelper", 1, "getSayHiBoxInnerMessages Exception:", paramContext);
-      }
-    }
-    localJSONObject.put("msgArray", localJSONArray);
-    if (paramInt2 < localArrayList.size()) {
-      localJSONObject.put("isEnd", 0);
-    }
-    while (QLog.isColorLevel())
-    {
-      QLog.i("SayHiMessageHelper", 1, "getSayHiBoxInnerMessages, jsonResult = " + localJSONObject.toString());
-      break;
-      localJSONObject.put("isEnd", 1);
-    }
-    return localJSONObject;
-  }
-  
-  public static final JSONObject a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (((paramInt2 != 1) && (paramInt2 != 2)) || (paramInt1 < 0) || (paramInt3 < 1))
-    {
-      QLog.e("SayHiMessageHelper", 1, "getTribeSayHelloInfo, invalid parameters viewIndex =" + paramInt2 + " start = " + paramInt1 + " count = " + paramInt3);
-      return null;
-    }
+    str2 = String.format("%.2f", new Object[] { Double.valueOf(DeviceInfoUtil.getScreenSize()) });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(i).append(";").append(l).append(";").append(arrayOfLong[0]).append(";").append(arrayOfLong[1]).append(";").append(str1.replaceAll(";", "")).append(";").append(str2).append(";").append(bptp.a).append(";").append(bptp.b).append(";");
+    str1 = localStringBuilder.toString();
     if (QLog.isColorLevel()) {
-      QLog.i("SayHiMessageHelper", 1, "getTribeSayHelloInfo, viewIndex =" + paramInt2 + " start = " + paramInt1 + " count = " + paramInt3);
+      QLog.d("ReportController", 2, "getExtraDeviceInfo=" + str1);
     }
-    switch (paramInt2)
-    {
-    default: 
-      return null;
-    case 1: 
-      return b(paramContext, paramQQAppInterface, paramInt1, paramInt3);
-    }
-    return a(paramContext, paramQQAppInterface, paramInt1, paramInt3);
+    return str1;
   }
   
-  private static JSONObject a(Context paramContext, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  private static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, int paramInt2, int paramInt3, String paramString7, String paramString8, String paramString9, String paramString10)
   {
-    JSONObject localJSONObject = new JSONObject();
-    paramMessageRecord = new RecentSayHelloListItem(paramMessageRecord);
-    paramMessageRecord.a(paramQQAppInterface, paramContext);
-    try
-    {
-      localJSONObject.put("uin", paramMessageRecord.getRecentUserUin());
-      localJSONObject.put("content", paramMessageRecord.mLastMsg);
-      localJSONObject.put("time", paramMessageRecord.mShowTime);
-      localJSONObject.put("nickName", paramMessageRecord.mTitleName);
-      localJSONObject.put("redPointCount", paramMessageRecord.getUnreadNum());
-      return localJSONObject;
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    if ((paramString2 != null) && (paramString2.length() > 0)) {
+      localStringBuilder.append(paramString2).append('|');
     }
-    catch (JSONException paramContext)
-    {
-      QLog.e("SayHiMessageHelper", 1, "getNormalTribeSayHiMsg Exception:", paramContext);
+    if (paramString1.equals("dc01440")) {
+      localStringBuilder.append("0").append('|');
     }
-    return localJSONObject;
+    localStringBuilder.append(paramString3).append('|');
+    localStringBuilder.append(paramString4).append('|');
+    localStringBuilder.append(paramString5).append('|');
+    localStringBuilder.append(paramString6).append('|');
+    localStringBuilder.append(paramInt1).append('|');
+    localStringBuilder.append("${count_unknown}").append('|');
+    localStringBuilder.append(paramInt3).append('|');
+    localStringBuilder.append(paramString7).append('|');
+    localStringBuilder.append(paramString8).append('|');
+    localStringBuilder.append(paramString9).append('|');
+    localStringBuilder.append(paramString10).append('|');
+    return localStringBuilder.toString();
   }
   
-  private static final void a(QQAppInterface paramQQAppInterface)
+  private static String a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14)
   {
-    Object localObject1 = paramQQAppInterface.getMessageProxy(1001).a(AppConstants.LBS_SAY_HELLO_LIST_UIN, 1001);
-    if (localObject1 == null) {
-      QLog.i("SayHiMessageHelper", 1, "deleteSayHiBox, no tribe say hi info");
+    String str = "";
+    if (paramBoolean) {
+      str = NetConnInfoCenter.getSystemNetStateString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(NetConnInfoCenter.getServerTime()).append("|").append(AppSetting.a()).append("|").append("android").append("|").append(paramString1).append("|").append(paramString2).append("|").append(paramString3).append("|").append(paramString4).append("|").append(paramString5).append("|").append(paramInt).append("|").append(paramString6).append("|").append(DeviceInfoUtil.getIMEI()).append("|").append("|").append(DeviceInfoUtil.getManufactureInfo()).append("|").append(DeviceInfoUtil.getModel()).append("|").append(str).append("|").append(DeviceInfoUtil.getDeviceOSVersion()).append("|").append(ROMUtil.getRomDetailInfo()).append("|").append(paramString7).append("|").append(paramString8).append("|").append(paramString9).append("|").append(paramString10).append("|").append(paramString11).append("|").append(paramString12).append("|").append(paramString13).append("|").append(paramString14).append("|");
+    paramString1 = localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportController", 2, "getDC04272ReportDetail=" + paramString1);
+    }
+    return paramString1;
+  }
+  
+  public static void a(MotionEvent paramMotionEvent)
+  {
+    beab.a().a(paramMotionEvent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportController", 2, "stopReportLooper");
+    }
+    paramQQAppInterface = paramQQAppInterface.getReportController();
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.b();
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    Object localObject = paramString2;
+    if (paramString2.contains("${uin_unknown}"))
+    {
+      String str = paramQQAppInterface.getCurrentAccountUin();
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+      localObject = paramString2.replace("${uin_unknown}", (CharSequence)localObject);
+    }
+    paramString2 = ((String)localObject).replace("${count_unknown}", Integer.toString(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportController", 2, "ReportRuntime: " + paramString1 + ", " + paramString2);
     }
     for (;;)
     {
+      localObject = new NewIntent(paramQQAppInterface.getApplication(), bcwd.class);
+      ((NewIntent)localObject).putExtra("sendType", 2);
+      ((NewIntent)localObject).putExtra("tag", paramString1);
+      ((NewIntent)localObject).putExtra("content", paramString2);
+      ((NewIntent)localObject).setWithouLogin(true);
+      paramQQAppInterface.startServlet((NewIntent)localObject);
       return;
-      Object localObject2 = new ArrayList();
-      Iterator localIterator = ((List)localObject1).iterator();
-      while (localIterator.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-        if (localMessageRecord.istroop == 10002) {
-          ((ArrayList)localObject2).add(localMessageRecord.senderuin);
-        }
-      }
-      if (((List)localObject1).size() == ((ArrayList)localObject2).size())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("SayHiMessageHelper", 1, "deleteSayHiBox, delete total box");
-        }
-        paramQQAppInterface.getMessageFacade().removeMsgFromMsgBox(AppConstants.LBS_HELLO_UIN, 1001, AppConstants.LBS_SAY_HELLO_LIST_UIN, paramQQAppInterface.getCurrentAccountUin());
-        return;
-      }
-      localObject1 = ((ArrayList)localObject2).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (String)((Iterator)localObject1).next();
-        if (QLog.isColorLevel()) {
-          QLog.i("SayHiMessageHelper", 1, "deleteSayHiBox, delete uin = " + (String)localObject2);
-        }
-        paramQQAppInterface.getMessageFacade().removeMsgFromMsgBox(AppConstants.LBS_SAY_HELLO_LIST_UIN, 1001, (String)localObject2, paramQQAppInterface.getCurrentAccountUin());
+      if (!paramQQAppInterface.isLogin()) {
+        QLog.d("ReportController", 1, "ReportRuntime: " + paramString1 + ", " + paramString2);
       }
     }
   }
   
-  private static final void a(QQAppInterface paramQQAppInterface, String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
   {
-    paramQQAppInterface.getMessageFacade().setReaded(paramString, 1001);
+    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, "", "", "", "", "", "", "", "");
   }
   
-  public static final void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
   {
-    if (((paramInt2 != 1) && (paramInt2 != 2) && (paramInt1 == 1)) || ((paramInt1 != 1) && (paramInt1 != 2))) {
-      QLog.e("SayHiMessageHelper", 1, "clearTribeSayHiNodeUnread, invalid parameters viewIndex =" + paramInt2 + " clearType = " + paramInt1 + " clearUin = " + paramString);
+    b(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, a(), paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
+  {
+    QQAppInterface localQQAppInterface = paramQQAppInterface;
+    if (paramQQAppInterface == null)
+    {
+      localQQAppInterface = paramQQAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+        localQQAppInterface = paramQQAppInterface;
+        if (localAppRuntime != null)
+        {
+          localQQAppInterface = paramQQAppInterface;
+          if ((localAppRuntime instanceof QQAppInterface)) {
+            localQQAppInterface = (QQAppInterface)localAppRuntime;
+          }
+        }
+      }
+    }
+    if (localQQAppInterface == null)
+    {
+      paramQQAppInterface = a(true, "${uin_unknown}", paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
+      paramString1 = new Intent();
+      paramString1.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramString1.putExtra("reporting_tag", "dc04272");
+      paramString1.putExtra("reporting_detail", paramQQAppInterface);
+      paramString1.putExtra("reporting_count", paramInt);
+      paramString1.putExtra("is_runtime", 1);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
+      return;
+    }
+    a(localQQAppInterface, "dc04272", a(true, localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13), paramInt);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3, String paramString6, String paramString7, String paramString8, String paramString9)
+  {
+    QQAppInterface localQQAppInterface = paramQQAppInterface;
+    Object localObject;
+    if (paramQQAppInterface == null)
+    {
+      localQQAppInterface = paramQQAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
+        localQQAppInterface = paramQQAppInterface;
+        if (localObject != null)
+        {
+          localQQAppInterface = paramQQAppInterface;
+          if ((localObject instanceof QQAppInterface)) {
+            localQQAppInterface = (QQAppInterface)localObject;
+          }
+        }
+      }
+    }
+    if (localQQAppInterface == null)
+    {
+      paramQQAppInterface = a(paramString1, paramString2, "${uin_unknown}", paramString3, paramString4, paramString5, paramInt1, paramInt3, paramInt2, paramString6, paramString7, paramString8, paramString9);
+      paramString2 = new Intent();
+      paramString2.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramString2.putExtra("reporting_tag", paramString1);
+      paramString2.putExtra("reporting_detail", paramQQAppInterface);
+      paramString2.putExtra("reporting_count", paramInt3);
+      paramString2.putExtra("is_runtime", 1);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramString2);
+      if (!"CliOper".equals(paramString1)) {
+        bmie.a().a(paramString4, paramQQAppInterface);
+      }
+      return;
+    }
+    if ((NotificationActivity.a.contains(paramString4)) || (AuthDevUgActivity.a.contains(paramString4))) {
+      paramQQAppInterface = "";
+    }
+    for (;;)
+    {
+      paramQQAppInterface = a(paramString1, paramString2, paramString3, paramQQAppInterface, paramString4, paramString5, paramInt1, paramInt3, paramInt2, paramString6, paramString7, paramString8, paramString9);
+      a(localQQAppInterface, paramString1, paramQQAppInterface, paramInt3);
+      if ("CliOper".equals(paramString1)) {
+        break;
+      }
+      bmie.a().a(paramString4, paramQQAppInterface);
+      return;
+      localObject = localQQAppInterface.getCurrentAccountUin();
+      paramQQAppInterface = paramString3;
+      paramString3 = (String)localObject;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
+  {
+    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, 1, paramString6, paramString7, paramString8, paramString9);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
+  {
+    QQAppInterface localQQAppInterface = paramQQAppInterface;
+    if (paramQQAppInterface == null)
+    {
+      localQQAppInterface = paramQQAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+        localQQAppInterface = paramQQAppInterface;
+        if (localAppRuntime != null)
+        {
+          localQQAppInterface = paramQQAppInterface;
+          if ((localAppRuntime instanceof QQAppInterface)) {
+            localQQAppInterface = (QQAppInterface)localAppRuntime;
+          }
+        }
+      }
+    }
+    if (localQQAppInterface == null)
+    {
+      paramQQAppInterface = a(paramBoolean, "${uin_unknown}", paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
+      paramString1 = new Intent();
+      paramString1.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramString1.putExtra("reporting_tag", "dc04272");
+      paramString1.putExtra("reporting_detail", paramQQAppInterface);
+      paramString1.putExtra("reporting_count", paramInt);
+      paramString1.putExtra("is_runtime", 1);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
+      return;
+    }
+    a(localQQAppInterface, "dc04272", a(paramBoolean, localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13), paramInt);
+  }
+  
+  public static void a(PluginRuntime paramPluginRuntime)
+  {
+    paramPluginRuntime.setClickEventReportor(new bdlb());
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportController", 2, "startReportLooper");
+    }
+    paramQQAppInterface = paramQQAppInterface.getReportController();
+    if (paramQQAppInterface != null) {
+      if (paramBoolean) {
+        break label37;
+      }
+    }
+    label37:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramQQAppInterface.a(paramBoolean);
+      return true;
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool = false;
+    if (("P_CliOper".equals(paramString)) || ("CliOper".equals(paramString)) || ("on_off".equals(paramString)) || ("CliStatus".equals(paramString))) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    if (paramString2 != null)
+    {
+      bdla localbdla = paramQQAppInterface.getReportController();
+      if (localbdla != null)
+      {
+        String str = paramString2;
+        if (paramString2.contains("${uin_unknown}")) {
+          str = paramString2.replace("${uin_unknown}", paramQQAppInterface.getCurrentAccountUin());
+        }
+        localbdla.a(paramString1, str, paramInt);
+      }
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
+  {
+    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, a(), "", "", "", "", "", "", "");
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
+  {
+    QQAppInterface localQQAppInterface = paramQQAppInterface;
+    if (paramQQAppInterface == null)
+    {
+      localQQAppInterface = paramQQAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+        localQQAppInterface = paramQQAppInterface;
+        if (localAppRuntime != null)
+        {
+          localQQAppInterface = paramQQAppInterface;
+          if ((localAppRuntime instanceof QQAppInterface)) {
+            localQQAppInterface = (QQAppInterface)localAppRuntime;
+          }
+        }
+      }
+    }
+    if (localQQAppInterface == null)
+    {
+      paramQQAppInterface = a(true, "${uin_unknown}", paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
+      paramString1 = new Intent();
+      paramString1.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramString1.putExtra("reporting_tag", "dc04272");
+      paramString1.putExtra("reporting_detail", paramQQAppInterface);
+      paramString1.putExtra("reporting_count", paramInt);
+      paramString1.putExtra("is_runtime", 0);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
+      return;
+    }
+    b(localQQAppInterface, "dc04272", a(true, localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13), paramInt);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3, String paramString6, String paramString7, String paramString8, String paramString9)
+  {
+    QQAppInterface localQQAppInterface = paramQQAppInterface;
+    if (paramQQAppInterface == null)
+    {
+      localQQAppInterface = paramQQAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+        localQQAppInterface = paramQQAppInterface;
+        if (localAppRuntime != null)
+        {
+          localQQAppInterface = paramQQAppInterface;
+          if ((localAppRuntime instanceof QQAppInterface)) {
+            localQQAppInterface = (QQAppInterface)localAppRuntime;
+          }
+        }
+      }
+    }
+    if (localQQAppInterface == null)
+    {
+      paramQQAppInterface = a(paramString1, paramString2, "${uin_unknown}", paramString3, paramString4, paramString5, paramInt1, paramInt2, paramInt3, paramString6, paramString7, paramString8, paramString9);
+      paramString2 = new Intent();
+      paramString2.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramString2.putExtra("reporting_tag", paramString1);
+      paramString2.putExtra("reporting_detail", paramQQAppInterface);
+      paramString2.putExtra("reporting_count", paramInt2);
+      paramString2.putExtra("is_runtime", 0);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramString2);
+      if (!"CliOper".equals(paramString1)) {
+        bmie.a().a(paramString4, paramQQAppInterface);
+      }
     }
     do
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("SayHiMessageHelper", 1, "clearTribeSayHiNodeUnread, viewIndex =" + paramInt2 + " clearUin = " + paramString + " clearType = " + paramInt1);
-      }
-    } while (paramInt1 != 1);
-    switch (paramInt2)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramQQAppInterface, paramString);
-      return;
-    }
-    a(paramQQAppInterface, paramString);
+      paramQQAppInterface = a(paramString1, paramString2, localQQAppInterface.getCurrentAccountUin(), paramString3, paramString4, paramString5, paramInt1, paramInt2, paramInt3, paramString6, paramString7, paramString8, paramString9);
+      b(localQQAppInterface, paramString1, paramQQAppInterface, paramInt2);
+    } while ("CliOper".equals(paramString1));
+    bmie.a().a(paramString4, paramQQAppInterface);
   }
   
-  private static final void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    paramQQAppInterface.getMessageFacade().removeMsgFromMsgBox(paramString2, 1001, paramString1, paramQQAppInterface.getCurrentAccountUin());
+    b(paramQQAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, 1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject)
+  protected bdlc a(String paramString)
   {
-    Object localObject = paramQQAppInterface.getMessageProxy(1001).a(AppConstants.LBS_SAY_HELLO_LIST_UIN, 1001);
-    paramQQAppInterface = paramQQAppInterface.getConversationFacade();
-    int i;
-    int j;
-    label47:
-    int m;
-    int k;
-    if (localObject == null)
-    {
-      i = 0;
-      if (i <= 0) {
-        break label127;
-      }
-      localObject = ((List)localObject).iterator();
-      j = 0;
-      i = 0;
-      m = j;
-      k = i;
-      if (!((Iterator)localObject).hasNext()) {
-        break label133;
-      }
-      MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-      if (localMessageRecord.istroop != 10002) {
-        break label168;
-      }
-      j = i + paramQQAppInterface.a(localMessageRecord.senderuin, localMessageRecord.istroop);
-      i = 1;
+    if (a.containsKey(paramString)) {
+      return (bdlc)a.get(paramString);
     }
-    for (;;)
+    return null;
+  }
+  
+  protected void a()
+  {
+    Iterator localIterator = a.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      k = j;
-      j = i;
-      i = k;
-      break label47;
-      i = ((List)localObject).size();
-      break;
-      label127:
-      m = 0;
-      k = 0;
-      label133:
-      if (m != 0) {}
-      try
-      {
-        paramJSONObject.put("redPointCount", k);
-        paramJSONObject.put("status", 1);
-        return;
+      Object localObject = (String)localIterator.next();
+      localObject = (bdlc)a.get(localObject);
+      if (localObject != null) {
+        ((bdlc)localObject).a();
       }
-      catch (JSONException paramQQAppInterface)
-      {
-        QLog.e("SayHiMessageHelper", 1, "handleTribeSayHiBox Exception:", paramQQAppInterface);
-        return;
-      }
-      label168:
-      k = i;
-      i = j;
-      j = k;
     }
   }
   
-  private static final JSONObject b(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    Object localObject = paramQQAppInterface.getMessageProxy(1001).a(AppConstants.LBS_HELLO_UIN, 1001);
-    if (localObject == null)
-    {
-      QLog.i("SayHiMessageHelper", 1, "getNewSayHiMessages, no tribe say hi info");
-      return null;
-    }
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    try
-    {
-      localJSONObject2.put("redPointCount", 0);
-      localJSONObject2.put("status", 0);
-      ArrayList localArrayList = new ArrayList();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-        if (AppConstants.LBS_SAY_HELLO_LIST_UIN.equals(localMessageRecord.senderuin))
-        {
-          a(paramQQAppInterface, localJSONObject2);
-          break label403;
-        }
-        if ((!AppConstants.MSG_BOX_INTERACT_UIN.equals(localMessageRecord.senderuin)) && (!AppConstants.MSG_BOX_FOLLOW_UIN.equals(localMessageRecord.senderuin)) && (!AppConstants.MSG_BOX_MYMOMMENT_UIN.equals(localMessageRecord.senderuin)) && (!AppConstants.MSG_BOX_DAREN_ASSISTANT_UIN.equals(localMessageRecord.senderuin)) && (!AppConstants.MSG_BOX_YANZHI_UIN.equals(localMessageRecord.senderuin)))
-        {
-          localArrayList.add(localMessageRecord);
-          i = a(paramQQAppInterface, localMessageRecord) + i;
-          break label403;
-        }
-      }
-      paramInt2 = Math.min(paramInt1 + paramInt2, localArrayList.size());
-      while (paramInt1 < paramInt2)
-      {
-        localJSONArray.put(a(paramContext, paramQQAppInterface, (MessageRecord)localArrayList.get(paramInt1)));
-        paramInt1 += 1;
-      }
-      localJSONObject1.put("greetingNodeInfo", localJSONObject2);
-      localJSONObject1.put("msgArray", localJSONArray);
-      localJSONObject1.put("redPointCount", i);
-      if (paramInt2 < localArrayList.size()) {
-        localJSONObject1.put("isEnd", 0);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("SayHiMessageHelper", 1, "getNewSayHiMessages, jsonResult = " + localJSONObject1.toString());
-        break;
-        localJSONObject1.put("isEnd", 1);
-      }
-    }
-    catch (JSONException paramContext)
-    {
-      label403:
-      for (;;)
-      {
-        QLog.e("SayHiMessageHelper", 1, "getNewSayHiMessages Exception:", paramContext);
-        break;
-      }
-    }
-    return localJSONObject1;
-  }
+  protected void a(String paramString1, String paramString2, int paramInt) {}
   
-  public static final void b(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean) {}
+  
+  protected void b() {}
+  
+  protected boolean b(String paramString)
   {
-    if (((paramInt2 != 1) && (paramInt2 != 2) && (paramInt1 == 1)) || ((paramInt1 != 1) && (paramInt1 != 2)))
-    {
-      QLog.e("SayHiMessageHelper", 1, "deleteTribeSayHiNode, invalid parameters msgType =" + paramInt2 + " deleteType = " + paramInt1 + " deleteUin = " + paramString);
-      return;
+    if ("dc01160".equals(paramString)) {
+      return pme.a();
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("SayHiMessageHelper", 1, "deleteTribeSayHiNode, msgType =" + paramInt2 + " deleteUin = " + paramString + " deleteType = " + paramInt1);
-    }
-    if (paramInt1 == 1)
-    {
-      switch (paramInt2)
-      {
-      default: 
-        return;
-      case 1: 
-        a(paramQQAppInterface, paramString, AppConstants.LBS_HELLO_UIN);
-        return;
-      }
-      a(paramQQAppInterface, paramString, AppConstants.LBS_SAY_HELLO_LIST_UIN);
-      return;
-    }
-    a(paramQQAppInterface);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdla
  * JD-Core Version:    0.7.0.1
  */

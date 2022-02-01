@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import behl;
-import behm;
-import bfay;
-import bfdy;
+import bfoo;
+import bfop;
+import bgje;
+import bgme;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
 public class TroopFileUploadWorker$1$1
   implements Runnable
 {
-  public TroopFileUploadWorker$1$1(behm parambehm, long paramLong) {}
+  public TroopFileUploadWorker$1$1(bfop parambfop, long paramLong) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Behm.a.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Bfop.a.jdField_a_of_type_Boolean) {
       return;
     }
-    bfay localbfay = new bfay(this.jdField_a_of_type_Behm.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 3, 210);
-    this.jdField_a_of_type_Behm.a.jdField_a_of_type_Been.c = 1;
-    this.jdField_a_of_type_Behm.a.jdField_a_of_type_Been.d = -36;
-    this.jdField_a_of_type_Behm.a.a(false, bfdy.c, -36, localbfay);
+    bgje localbgje = new bgje(this.jdField_a_of_type_Bfop.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 3, 210);
+    this.jdField_a_of_type_Bfop.a.jdField_a_of_type_Bflq.c = 1;
+    this.jdField_a_of_type_Bfop.a.jdField_a_of_type_Bflq.d = -36;
+    this.jdField_a_of_type_Bfop.a.a(false, bgme.c, -36, localbgje);
   }
 }
 

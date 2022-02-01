@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 
 public class xmo
-  implements DialogInterface.OnClickListener
+  extends xgs
 {
-  public xmo(StoryMessageListActivity paramStoryMessageListActivity) {}
+  public xmo(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void g()
   {
-    paramDialogInterface.dismiss();
-    xwa.a(this.a.a(), "clk_sure", 0, 0, new String[] { "1", "", "", "" });
+    super.g();
+    if (this.a.jdField_b_of_type_Boolean)
+    {
+      AbsVideoInfoWidget.a(this.a);
+      ykq.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
+    }
   }
 }
 

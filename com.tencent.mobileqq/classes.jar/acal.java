@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.observer.SubAccountObserver;
+import android.text.TextUtils;
 
-final class acal
-  extends SubAccountObserver
+public final class acal
 {
-  acal(abxc paramabxc, bcqt parambcqt) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public boolean a()
   {
-    if ((paramString3 == null) || (this.jdField_a_of_type_Abxc.a() == null) || (paramString1 == null)) {}
-    while (!paramString1.equalsIgnoreCase(this.jdField_a_of_type_Abxc.a().getAccount())) {
-      return;
-    }
-    this.jdField_a_of_type_Bcqt.a(paramString2, paramString3, true);
-    bcqk.a(this.jdField_a_of_type_Abxc.a(), (byte)1, paramString2);
-    bcqk.a(this.jdField_a_of_type_Abxc.a(), paramString2, false);
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0) && (this.b >= 0);
   }
 }
 

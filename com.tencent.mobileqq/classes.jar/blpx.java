@@ -1,22 +1,66 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.pluginsdk.ActivityLifecycle.ActivityLifecycleCallback;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.buscard.BuscardHelper;
+import mqq.app.AppActivity;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class blpx
-  implements Animation.AnimationListener
+public class blpx
+  implements ActivityLifecycle.ActivityLifecycleCallback
 {
-  blpx(blpr paramblpr) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onNewIntent(Activity paramActivity, Intent paramIntent)
   {
-    if ((this.a.a != null) && (blpr.b(this.a)))
+    if ((paramIntent != null) && ("android.nfc.action.TECH_DISCOVERED".equals(paramIntent.getAction()))) {
+      BuscardHelper.a("", paramActivity, paramIntent);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "NFCActivityLifecycleCallback onNewIntent " + MobileQQ.processName);
+    }
+  }
+  
+  public void onPause(Activity paramActivity)
+  {
+    try
     {
-      this.a.a.setAlpha(1.0F);
-      this.a.a.setVisibility(0);
+      BuscardHelper.a(paramActivity, true, "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("", 2, "NFCActivityLifecycleCallback onPause " + MobileQQ.processName);
+      }
+      return;
+    }
+    catch (Throwable paramActivity)
+    {
+      for (;;)
+      {
+        paramActivity.printStackTrace();
+      }
+    }
+  }
+  
+  public void onResume(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "NFCActivityLifecycleCallback onResume " + MobileQQ.processName);
+    }
+    try
+    {
+      if ((paramActivity instanceof AppActivity))
+      {
+        AppRuntime localAppRuntime = ((AppActivity)paramActivity).getAppRuntime();
+        if ((localAppRuntime != null) && (localAppRuntime.isLogin()))
+        {
+          BuscardHelper.a(paramActivity, true, "", "", null);
+          return;
+        }
+        BuscardHelper.a(paramActivity, true, "", "");
+        return;
+      }
+    }
+    catch (Throwable paramActivity)
+    {
+      paramActivity.printStackTrace();
     }
   }
 }

@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class bdkl
-  implements DialogInterface.OnClickListener
+  implements FilenameFilter
 {
-  public bdkl(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
+  public bdkl(LocalCrashCollector paramLocalCrashCollector) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean accept(File paramFile, String paramString)
   {
-    paramDialogInterface.dismiss();
+    return !paramString.contains("CrashInfoSummary.txt");
   }
 }
 

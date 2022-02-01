@@ -1,13 +1,36 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidPollInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
 
-public final class wck
-  extends vko
+class wck
+  implements Comparable<wck>
 {
-  public List<qqstory_struct.VidPollInfo> a = new ArrayList();
-  public List<qqstory_struct.VidRateInfo> b = new ArrayList();
+  public long a;
+  public final File a;
+  
+  public wck(wcj paramwcj, File paramFile)
+  {
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    paramwcj = paramFile.getName();
+    try
+    {
+      this.jdField_a_of_type_Long = Long.parseLong(paramwcj);
+      return;
+    }
+    catch (Exception paramFile)
+    {
+      ykq.d("Q.qqstory.cleaner:MyVideoCleanStep", "Parse %s error , %s", new Object[] { paramwcj, paramFile.getMessage() });
+    }
+  }
+  
+  public int a(wck paramwck)
+  {
+    if (this.jdField_a_of_type_Long < paramwck.jdField_a_of_type_Long) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_Long == paramwck.jdField_a_of_type_Long) {
+      return 0;
+    }
+    return 1;
+  }
 }
 
 

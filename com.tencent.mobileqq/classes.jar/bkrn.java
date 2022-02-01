@@ -1,82 +1,87 @@
-import android.os.IBinder;
+import android.app.Activity;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ForegroundColorSpan;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
 
-class bkrn
-  implements bkrl
+public class bkrn
+  extends QQCustomDialog
 {
-  private IBinder a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  bkrn(IBinder paramIBinder)
+  public bkrn(Activity paramActivity, int paramInt)
   {
-    this.a = paramIBinder;
+    super(paramActivity, paramInt);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    a();
   }
   
-  /* Error */
-  public void a(int paramInt, android.os.Bundle paramBundle)
+  public static bkrn a(Activity paramActivity, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore 4
-    //   9: aload_3
-    //   10: ldc 25
-    //   12: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   15: aload_3
-    //   16: iload_1
-    //   17: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   20: aload_2
-    //   21: ifnull +44 -> 65
-    //   24: aload_3
-    //   25: iconst_1
-    //   26: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   29: aload_2
-    //   30: aload_3
-    //   31: iconst_0
-    //   32: invokevirtual 39	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
-    //   35: aload_0
-    //   36: getfield 15	bkrn:a	Landroid/os/IBinder;
-    //   39: iconst_1
-    //   40: aload_3
-    //   41: aload 4
-    //   43: iconst_0
-    //   44: invokeinterface 45 5 0
-    //   49: pop
-    //   50: aload 4
-    //   52: invokevirtual 48	android/os/Parcel:readException	()V
-    //   55: aload 4
-    //   57: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   60: aload_3
-    //   61: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   64: return
-    //   65: aload_3
-    //   66: iconst_0
-    //   67: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   70: goto -35 -> 35
-    //   73: astore_2
-    //   74: aload 4
-    //   76: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   79: aload_3
-    //   80: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   83: aload_2
-    //   84: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	85	0	this	bkrn
-    //   0	85	1	paramInt	int
-    //   0	85	2	paramBundle	android.os.Bundle
-    //   3	77	3	localParcel1	android.os.Parcel
-    //   7	68	4	localParcel2	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   9	20	73	finally
-    //   24	35	73	finally
-    //   35	55	73	finally
-    //   65	70	73	finally
+    paramActivity = new bkrn(paramActivity, 2131755829);
+    paramActivity.setTitle(paramString1);
+    paramActivity.setNegativeButton(paramString2, paramOnClickListener2);
+    paramActivity.setPositiveButton(paramString3, paramOnClickListener1);
+    paramActivity.setCanceledOnTouchOutside(false);
+    return paramActivity;
   }
   
-  public IBinder asBinder()
+  public static boolean a()
   {
-    return this.a;
+    boolean bool = StorageUtil.getPreference().getBoolean("mini_shortcut_dialog_hide", false);
+    QLog.i("Shortcut", 1, "load dialog hide config:" + bool);
+    return !bool;
+  }
+  
+  public CharSequence a()
+  {
+    String str1 = anvx.a(2131713456);
+    String str2 = anvx.a(2131713460);
+    SpannableString localSpannableString = new SpannableString(str1 + str2);
+    localSpannableString.setSpan(new bkrp(this), str1.length(), str1.length() + str2.length(), 33);
+    localSpannableString.setSpan(new ForegroundColorSpan(-15505507), str1.length(), str1.length() + str2.length(), 33);
+    return localSpannableString;
+  }
+  
+  public void a()
+  {
+    setContentView(2131559034);
+    this.text.setMovementMethod(LinkMovementMethod.getInstance());
+    this.text.setText(a());
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369820));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131379297));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380306));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bkro(this));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localViewGroup.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void dismiss()
+  {
+    boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
+    QLog.i("Shortcut", 1, "save dialog hide config:" + bool);
+    StorageUtil.getPreference().edit().putBoolean("mini_shortcut_dialog_hide", bool).commit();
+    super.dismiss();
   }
 }
 

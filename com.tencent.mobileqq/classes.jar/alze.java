@@ -1,8 +1,18 @@
-public abstract interface alze
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+class alze
+  extends aofu
 {
-  public abstract void a();
+  alze(alzc paramalzc) {}
   
-  public abstract void d(String paramString);
+  protected void onUpdateNewTroopFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    Bitmap localBitmap = this.a.a.getFaceBitmap(113, paramString, false, 0);
+    if (localBitmap != null) {
+      alzc.a(this.a, paramString, localBitmap);
+    }
+  }
 }
 
 

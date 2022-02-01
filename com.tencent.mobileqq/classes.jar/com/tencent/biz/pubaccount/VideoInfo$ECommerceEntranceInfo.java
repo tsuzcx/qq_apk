@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 import java.util.Arrays;
-import oeo;
+import omf;
 
 public class VideoInfo$ECommerceEntranceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ECommerceEntranceInfo> CREATOR = new oeo();
+  public static final Parcelable.Creator<ECommerceEntranceInfo> CREATOR = new omf();
   public int a;
   public UrlJumpInfo a;
   public String a;

@@ -1,29 +1,28 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
 
-public class bdqq
-  implements View.OnClickListener
+class bdqq
+  extends aoav
 {
-  public bdqq(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  bdqp jdField_a_of_type_Bdqp = null;
   
-  public void onClick(View paramView)
+  public bdqq(bdqo parambdqo, bdqp parambdqp)
   {
-    switch (paramView.getId())
+    this.jdField_a_of_type_Bdqp = parambdqp;
+  }
+  
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_a_of_type_Bdqp != null)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      TroopAvatarWallPreviewActivity.e(this.a);
-      continue;
-      TroopAvatarWallPreviewActivity.f(this.a);
-      continue;
-      TroopAvatarWallPreviewActivity.g(this.a);
-      continue;
-      TroopAvatarWallPreviewActivity.h(this.a);
+      this.jdField_a_of_type_Bdqp.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Bdqp.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_Bdqp.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+        this.jdField_a_of_type_Bdqp.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131713985));
+        this.jdField_a_of_type_Bdqp.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      }
     }
   }
 }

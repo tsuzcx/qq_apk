@@ -1,71 +1,42 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.1.1;
+import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ttz
-  implements bjrp
+public class ttz
+  implements HippyQQEngine.HippyQQEngineListener
 {
-  ttz(tty paramtty, int paramInt, VideoInfo paramVideoInfo) {}
+  public ttz(ViolaFragment paramViolaFragment) {}
   
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public void onError(int paramInt, String paramString)
   {
-    int i = 0;
-    if (paramInt == this.jdField_a_of_type_Int)
+    if (this.a.getActivity() != null) {}
+    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
     {
-      QQToast.a(tty.a(this.jdField_a_of_type_Tty), 0, 2131694737, 0).a();
-      if (tty.a(this.jdField_a_of_type_Tty) != null) {
-        tty.a(this.jdField_a_of_type_Tty).d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+      new Handler(localLooper).postDelayed(new ViolaFragment.1.1(this), 1000L);
+      if (QLog.isColorLevel()) {
+        QLog.e("ViolaFragment", 2, "initHippy error statusCode=" + paramInt + ", msg=" + paramString);
       }
-      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
-        break label359;
-      }
+      return;
     }
-    label356:
-    label359:
-    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
-    {
-      paramView = "";
-      paramInt = i;
-      if (paramInt < paramArrayList.size())
-      {
-        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
-        if (paramObject == null) {
-          break label356;
-        }
-        paramObject = paramView + paramObject.a;
-        paramView = paramObject;
-        if (paramInt != paramArrayList.size() - 1) {
-          paramView = paramObject + ",";
-        }
-      }
-      for (;;)
-      {
-        paramInt += 1;
-        break;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a != null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f = l;
-          paramArrayList = obb.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
-          if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a(tty.a(this.jdField_a_of_type_Tty))) {
-            obb.a(new trn().a(tty.a(this.jdField_a_of_type_Tty)).a(obb.c).b(obb.R).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
-          }
-        }
-        else
-        {
-          return;
-        }
-        obb.a(new trn().a(tty.a(this.jdField_a_of_type_Tty)).a(obb.c).b(obb.P).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
-        return;
-      }
+  }
+  
+  public void onSuccess()
+  {
+    this.a.mViolaUiDelegate.b();
+    this.a.mViolaUiDelegate.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage success!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ttz
  * JD-Core Version:    0.7.0.1
  */

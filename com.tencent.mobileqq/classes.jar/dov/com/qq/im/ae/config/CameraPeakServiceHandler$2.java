@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.config;
 
-import blup;
+import bnjs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class CameraPeakServiceHandler$2
   implements Runnable
 {
-  public CameraPeakServiceHandler$2(blup paramblup) {}
+  public CameraPeakServiceHandler$2(bnjs parambnjs) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), 2131689774, 1).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), 2131689783, 1).a();
   }
 }
 

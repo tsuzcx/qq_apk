@@ -1,66 +1,40 @@
-public class nms
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
+
+public final class nms
 {
-  public static int a()
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ClipDrawable jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
+  
+  public nms(Activity paramActivity)
   {
-    aqdy localaqdy = (aqdy)apub.a().a(207);
-    if (localaqdy != null) {
-      return localaqdy.jdField_a_of_type_Int;
-    }
-    return 0;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    a();
   }
   
-  public static String a()
+  private void a()
   {
-    aqdy localaqdy = (aqdy)apub.a().a(207);
-    if (localaqdy != null) {
-      return localaqdy.jdField_a_of_type_JavaLangString;
-    }
-    return null;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838760);
+    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable = ((ClipDrawable)this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838761));
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable });
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(0, 0, 0, 0, 0);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(1, 0, 0, 0, 0);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
   }
   
-  public static int b()
+  public Drawable a()
   {
-    aqdy localaqdy = (aqdy)apub.a().a(207);
-    if (localaqdy != null) {
-      return localaqdy.b;
-    }
-    return -1;
+    return this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
   }
   
-  public static String b()
+  public void a(int paramInt)
   {
-    aqdy localaqdy = (aqdy)apub.a().a(207);
-    if (localaqdy != null) {
-      return localaqdy.c;
-    }
-    return null;
-  }
-  
-  public static String c()
-  {
-    aqdy localaqdy = (aqdy)apub.a().a(207);
-    if (localaqdy != null) {
-      return localaqdy.d;
-    }
-    return null;
-  }
-  
-  public static String d()
-  {
-    aqdy localaqdy = (aqdy)apub.a().a(207);
-    if (localaqdy != null) {
-      return localaqdy.e;
-    }
-    return null;
-  }
-  
-  public static String e()
-  {
-    aqdy localaqdy = (aqdy)apub.a().a(207);
-    if (localaqdy != null) {
-      return localaqdy.f;
-    }
-    return null;
+    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel(paramInt);
   }
 }
 

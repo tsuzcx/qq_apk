@@ -1,20 +1,49 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aekv
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aekv(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
+  public aekv(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    int i = 1;
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.c(this.a).setContentDescription(anvx.a(2131718176));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131718176), "qqsetting_notify_blncontrol_key", paramBoolean);
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
+    {
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 1);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label157;
+      }
+      label89:
+      if (!paramBoolean) {
+        break label162;
+      }
+    }
+    label157:
+    label162:
+    for (String str = "1";; str = "0")
+    {
+      bdla.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Led_blinking", 0, i, str, "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 0);
+      break;
+      i = 0;
+      break label89;
+    }
   }
 }
 

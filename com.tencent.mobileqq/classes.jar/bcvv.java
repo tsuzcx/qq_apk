@@ -1,50 +1,92 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.TenDocOCRExportHandler.1;
+import QMF_PROTOCAL.QmfDownstream;
+import QzoneCombine.ClientOnlineNotfiyRsp;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.manager.TicketManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.ClientOnlineRequest;
+import cooperation.qzone.WNSStream;
+import java.io.IOException;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcvv
-  extends BusinessHandler
-  implements Handler.Callback
+  extends MSFServlet
 {
-  private String[] a = { "docs.qq.com" };
-  
-  public bcvv(QQAppInterface paramQQAppInterface)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramQQAppInterface);
-  }
-  
-  private void a(Runnable paramRunnable)
-  {
-    if (this.app == null) {}
-    while (((TicketManager)this.app.getManager(2)).getPskey(this.app.getCurrentAccountUin(), 16L, this.a, new bcvw(this, paramRunnable)) == null) {
-      return;
+    if (paramFromServiceMsg == null) {
+      QLog.e("NotifyQZoneServer", 1, "fromServiceMsg==null");
     }
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
+    for (;;)
+    {
+      return;
+      if (paramFromServiceMsg.getResultCode() != 1000) {
+        break label192;
+      }
+      Object localObject = new WNSStream();
+      paramFromServiceMsg = bhjl.b(paramFromServiceMsg.getWupBuffer());
+      try
+      {
+        paramFromServiceMsg = ((WNSStream)localObject).unpack(paramFromServiceMsg);
+        if (paramFromServiceMsg != null)
+        {
+          paramFromServiceMsg = (ClientOnlineNotfiyRsp)blpn.a(ClientOnlineNotfiyRsp.class, paramFromServiceMsg.BusiBuff);
+          if (paramFromServiceMsg != null)
+          {
+            localObject = paramFromServiceMsg.AttachInfo;
+            paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).edit();
+            localObject = HexUtil.bytes2HexStr((byte[])localObject);
+            paramIntent = paramIntent.getStringExtra("key_uin");
+            paramFromServiceMsg.putString("key_attach_info" + paramIntent, (String)localObject);
+            if (QLog.isDevelopLevel()) {
+              QLog.d("NotifyQZoneServer", 4, "onReceive attachinfo:" + (String)localObject);
+            }
+            if (Build.VERSION.SDK_INT >= 9)
+            {
+              paramFromServiceMsg.apply();
+              return;
+            }
+          }
+        }
+      }
+      catch (IOException paramIntent)
+      {
+        QLog.e("NotifyQZoneServer", 1, paramIntent, new Object[0]);
+        return;
+      }
+    }
+    paramFromServiceMsg.commit();
+    return;
+    label192:
+    QLog.e("NotifyQZoneServer", 1, "onReceive fromServiceMsg.getResultCode():" + paramFromServiceMsg.getResultCode());
   }
   
-  public void a(String paramString)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    a(new TenDocOCRExportHandler.1(this, paramString));
+    long l = paramIntent.getLongExtra("lastPushMsgTime", 0L);
+    paramIntent = paramIntent.getStringExtra("key_uin");
+    paramIntent = BaseApplication.getContext().getSharedPreferences("QZoneOnLineServlet", 0).getString("key_attach_info" + paramIntent, "");
+    byte[] arrayOfByte = HexUtil.hexStr2Bytes(paramIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("NotifyQZoneServer", 4, "onSend lastPushMsgTime:" + l + ",attachinfo:" + paramIntent);
+    }
+    ClientOnlineRequest localClientOnlineRequest = new ClientOnlineRequest(l, arrayOfByte);
+    arrayOfByte = localClientOnlineRequest.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null)
+    {
+      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localClientOnlineRequest.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(30000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localClientOnlineRequest.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
-  }
-  
-  public Class<? extends BusinessObserver> observerClass()
-  {
-    return bcvx.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

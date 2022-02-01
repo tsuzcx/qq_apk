@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import ahpt;
-import ahpu;
+import aiks;
+import aikt;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 
 public class HomeworkTroopSurveyBar$1$1
   implements Runnable
 {
-  public HomeworkTroopSurveyBar$1$1(ahpu paramahpu, TroopMemberInfo paramTroopMemberInfo) {}
+  public HomeworkTroopSurveyBar$1$1(aikt paramaikt, TroopMemberInfo paramTroopMemberInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ahpu.jdField_a_of_type_Ahpt.a(this.jdField_a_of_type_Ahpu.jdField_a_of_type_ComTencentMobileqqAppTroopManager, this.jdField_a_of_type_Ahpu.jdField_a_of_type_Ahqs, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo);
+    this.jdField_a_of_type_Aikt.jdField_a_of_type_Aiks.a(this.jdField_a_of_type_Aikt.jdField_a_of_type_ComTencentMobileqqAppTroopManager, this.jdField_a_of_type_Aikt.jdField_a_of_type_Ailr, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo);
   }
 }
 

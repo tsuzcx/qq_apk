@@ -1,50 +1,21 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class zrf
-  implements TextWatcher
+  implements zyw
 {
-  public zrf(MoveFileActivity paramMoveFileActivity, EditText paramEditText, aady paramaady) {}
+  public zrf(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(boolean paramBoolean)
   {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    TextView localTextView = this.jdField_a_of_type_Aady.getBtnight();
-    if (bfby.b(paramEditable))
+    if (paramBoolean)
     {
-      localTextView.setEnabled(false);
-      localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165621));
+      SimpleEventBus.getInstance().dispatchEvent(new RecommendFeedbackEvent(RecommendBannerFeedItemView.a(this.a)));
       return;
     }
-    localTextView.setEnabled(true);
-    localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165616));
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt3 > 0)
-    {
-      paramCharSequence = paramCharSequence.toString();
-      String str = bfby.b(paramCharSequence);
-      if ((paramCharSequence == null) || (paramCharSequence.equals(str))) {
-        break label57;
-      }
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
-    }
-    label57:
-    while (!this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = false;
+    QQToast.a(this.a.getContext(), 2131719120, 0).a();
   }
 }
 

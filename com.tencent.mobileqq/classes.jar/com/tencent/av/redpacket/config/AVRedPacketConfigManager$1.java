@@ -1,30 +1,30 @@
 package com.tencent.av.redpacket.config;
 
-import apac;
+import aqdg;
 import com.tencent.av.service.AVRedPacketConfig;
 import com.tencent.qphone.base.util.QLog;
-import ltv;
-import lvz;
+import lui;
+import lwm;
 
 public class AVRedPacketConfigManager$1
   implements Runnable
 {
-  public AVRedPacketConfigManager$1(ltv paramltv, lvz paramlvz) {}
+  public AVRedPacketConfigManager$1(lui paramlui, lwm paramlwm) {}
   
   public void run()
   {
     StringBuilder localStringBuilder = new StringBuilder().append("downloadRes, threadName[").append(Thread.currentThread().getName()).append("], threadId[").append(Thread.currentThread().getId()).append("], resDownloadManager[");
-    if (this.this$0.jdField_a_of_type_Apac != null) {}
+    if (this.this$0.jdField_a_of_type_Aqdg != null) {}
     for (boolean bool = true;; bool = false)
     {
       QLog.w("AVRedPacketConfigManger", 1, bool + "]");
-      this.this$0.jdField_b_of_type_Lvz = this.a;
+      this.this$0.jdField_b_of_type_Lwm = this.a;
       this.this$0.jdField_b_of_type_Boolean = false;
       this.this$0.c = false;
-      if (this.this$0.jdField_a_of_type_Apac != null)
+      if (this.this$0.jdField_a_of_type_Aqdg != null)
       {
-        this.this$0.jdField_a_of_type_Apac.a(this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL, this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resMD5, ".zip", true, 4, Integer.valueOf(1));
-        this.this$0.jdField_a_of_type_Apac.a(this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl, this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResMd5, ".zip", true, 4, Integer.valueOf(2));
+        this.this$0.jdField_a_of_type_Aqdg.a(this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL, this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resMD5, ".zip", true, 4, Integer.valueOf(1));
+        this.this$0.jdField_a_of_type_Aqdg.a(this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl, this.this$0.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResMd5, ".zip", true, 4, Integer.valueOf(2));
       }
       return;
     }

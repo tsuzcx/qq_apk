@@ -16,21 +16,27 @@ public class FilamentJNI
   }
   
   @NonNull
-  public static FilamentJNI create(@NonNull Object paramObject1, Object paramObject2, int paramInt1, int paramInt2, String paramString1, String paramString2, byte[] paramArrayOfByte)
+  public static FilamentJNI create(@NonNull Object paramObject1, Object paramObject2, int paramInt1, int paramInt2, String paramString1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean, int paramInt3)
   {
     if (paramObject2 == null) {
-      return new FilamentJNI(nCreateFilamentAsset(paramObject1, 0L, paramInt1, paramInt2, paramString1, paramString2, paramArrayOfByte));
+      return new FilamentJNI(nCreateFilamentAsset(paramObject1, 0L, paramInt1, paramInt2, paramString1, paramString2, paramArrayOfByte, paramBoolean, paramInt3));
     }
-    return new FilamentJNI(nCreateFilamentAsset(paramObject1, Platform.get().getSharedContextNativeHandle(paramObject2), paramInt1, paramInt2, paramString1, paramString2, paramArrayOfByte));
+    return new FilamentJNI(nCreateFilamentAsset(paramObject1, Platform.get().getSharedContextNativeHandle(paramObject2), paramInt1, paramInt2, paramString1, paramString2, paramArrayOfByte, paramBoolean, paramInt3));
   }
+  
+  private static native void nAdjustKapuModelView(long paramLong, int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat);
   
   private static native boolean nCanUseShareContext(long paramLong);
   
   private static native void nChangeAssetsDynamic(long paramLong, int[] paramArrayOfInt1, int paramInt1, int[] paramArrayOfInt2, int paramInt2);
   
-  private static native long nCreateFilamentAsset(Object paramObject, long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, byte[] paramArrayOfByte);
+  private static native long nCreateFilamentAsset(Object paramObject, long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean, int paramInt3);
   
   private static native void nDestroy(long paramLong);
+  
+  private static native void nFitIntoUnitCube(long paramLong);
+  
+  private static native boolean nGetAnimationOver(long paramLong);
   
   private static native float[] nGetAnimationTime(long paramLong, String paramString);
   
@@ -52,11 +58,15 @@ public class FilamentJNI
   
   private static native void nLoadAllData(long paramLong);
   
+  private static native void nLoadData(long paramLong);
+  
   private static native void nNewFurLayers(long paramLong, int paramInt);
   
   private static native void nPauseAnimation(long paramLong);
   
   private static native void nPlayAnimation(long paramLong, String paramString, int paramInt);
+  
+  private static native void nPlayKapuAnimation(long paramLong);
   
   private static native void nRegisterAnimation(long paramLong, String[] paramArrayOfString);
   
@@ -70,27 +80,49 @@ public class FilamentJNI
   
   private static native void nRotateArModelToFront(long paramLong, int paramInt);
   
+  private static native void nSetAssetRotate(long paramLong, float[] paramArrayOfFloat);
+  
   private static native void nSetAverageL(long paramLong, float paramFloat);
   
   private static native void nSetBaseColorImage(long paramLong1, String paramString1, String paramString2, long paramLong2);
   
+  private static native void nSetCameraAnimation(long paramLong, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat, int paramInt);
+  
+  private static native void nSetDisplayMaterialTypeList(long paramLong, int paramInt, String[] paramArrayOfString);
+  
   private static native void nSetDynamicTexture(long paramLong, String[] paramArrayOfString, long[] paramArrayOfLong);
   
-  private static native void nSetFilamentAssetScale(long paramLong, float paramFloat, float[] paramArrayOfFloat);
+  private static native void nSetFilamentAssetRotate(long paramLong, int paramInt, float[] paramArrayOfFloat);
+  
+  private static native void nSetFilamentAssetScale(long paramLong, int paramInt, float paramFloat, float[] paramArrayOfFloat);
   
   private static native boolean nSetGlbData(long paramLong, String paramString, byte[] paramArrayOfByte);
   
   private static native void nSetHeadCount(long paramLong, int paramInt);
   
-  private static native void nSetHitTestAfterUnprojection(long paramLong, float[] paramArrayOfFloat);
+  private static native void nSetHitTestAfterUnprojection(long paramLong, int paramInt, float[] paramArrayOfFloat);
   
   private static native void nSetImage(long paramLong1, long paramLong2);
   
+  private static native void nSetKapuAnimation(long paramLong);
+  
+  private static native void nSetKapuHeadTransform(long paramLong, int paramInt, float[] paramArrayOfFloat);
+  
+  private static native void nSetKapuMorphWeights(long paramLong, int paramInt, String[] paramArrayOfString, float[] paramArrayOfFloat);
+  
   private static native void nSetMaterialImage(long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, boolean paramBoolean);
   
-  private static native void nSetMaterialTransform(long paramLong, int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
+  private static native void nSetMaterialTransform(long paramLong, int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3);
   
   private static native void nSetMorphWeights(long paramLong, String paramString, float[] paramArrayOfFloat, int paramInt1, int paramInt2);
+  
+  private static native void nSetMvpMatrix(long paramLong, float[] paramArrayOfFloat, float paramFloat);
+  
+  private static native void nSetOutputPath(long paramLong, String paramString);
+  
+  private static native void nSetupKapuModelTransform(long paramLong);
+  
+  private static native void nSetupLoaders(long paramLong, long[] paramArrayOfLong);
   
   private static native void nShowArShadowPlane(long paramLong, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
   
@@ -100,13 +132,22 @@ public class FilamentJNI
   
   private static native void nStopAnimation(long paramLong, String paramString);
   
+  private static native void nUpdateAnimationTrigger(long paramLong, String[] paramArrayOfString);
+  
   private static native void nUpdateEyeNodeEuler(long paramLong, String paramString, float[] paramArrayOfFloat, int paramInt1, int paramInt2);
+  
+  private static native void nUpdateFaceVertices(long paramLong, int paramInt, float[] paramArrayOfFloat);
   
   private static native void nUpdateMesh(long paramLong, String paramString, float[] paramArrayOfFloat);
   
   private static native void nUpdateMeshMorph(long paramLong, String paramString, int paramInt, float[] paramArrayOfFloat);
   
   private static native void nUpdateMeshMorphBase(long paramLong, String paramString, float[] paramArrayOfFloat);
+  
+  public void adjustKapuModelView(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat)
+  {
+    nAdjustKapuModelView(this.mNativeObject, paramInt, paramArrayOfFloat1, paramArrayOfFloat2, paramFloat);
+  }
   
   public boolean canUseShareContext()
   {
@@ -121,6 +162,16 @@ public class FilamentJNI
   public void destroy()
   {
     nDestroy(this.mNativeObject);
+  }
+  
+  public void fitIntoUnitCube()
+  {
+    nFitIntoUnitCube(this.mNativeObject);
+  }
+  
+  public boolean getAnimationOver()
+  {
+    return nGetAnimationOver(this.mNativeObject);
   }
   
   public float[] getAnimationTime(String paramString)
@@ -177,6 +228,11 @@ public class FilamentJNI
     return this.view;
   }
   
+  public void initKapuModelPosition()
+  {
+    nSetupKapuModelTransform(this.mNativeObject);
+  }
+  
   public boolean isAnimationRunning(String paramString)
   {
     return nIsAnimationRunning(this.mNativeObject, paramString);
@@ -187,6 +243,11 @@ public class FilamentJNI
     nLoadAllData(this.mNativeObject);
   }
   
+  public void loadDataForCMShow()
+  {
+    nLoadData(this.mNativeObject);
+  }
+  
   public void pauseAnimation()
   {
     nPauseAnimation(this.mNativeObject);
@@ -195,6 +256,11 @@ public class FilamentJNI
   public void playAnimation(String paramString, int paramInt)
   {
     nPlayAnimation(this.mNativeObject, paramString, paramInt);
+  }
+  
+  public void playKapuAnimation()
+  {
+    nPlayKapuAnimation(this.mNativeObject);
   }
   
   public void registerAnimation(String[] paramArrayOfString)
@@ -232,9 +298,19 @@ public class FilamentJNI
     nRotateArModelToFront(this.mNativeObject, paramInt);
   }
   
+  public void setAssetRotate(float[] paramArrayOfFloat)
+  {
+    nSetAssetRotate(this.mNativeObject, paramArrayOfFloat);
+  }
+  
   public void setAverageL(float paramFloat)
   {
     nSetAverageL(this.mNativeObject, paramFloat);
+  }
+  
+  public void setCameraAnimation(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat, int paramInt)
+  {
+    nSetCameraAnimation(this.mNativeObject, paramArrayOfFloat1, paramArrayOfFloat2, paramFloat, paramInt);
   }
   
   public void setDynamicTexture(String[] paramArrayOfString, long[] paramArrayOfLong)
@@ -242,9 +318,14 @@ public class FilamentJNI
     nSetDynamicTexture(this.mNativeObject, paramArrayOfString, paramArrayOfLong);
   }
   
-  public void setFilamentAssetScale(float paramFloat, float[] paramArrayOfFloat)
+  public void setFilamentAssetRotate(int paramInt, float[] paramArrayOfFloat)
   {
-    nSetFilamentAssetScale(this.mNativeObject, paramFloat, paramArrayOfFloat);
+    nSetFilamentAssetRotate(this.mNativeObject, paramInt, paramArrayOfFloat);
+  }
+  
+  public void setFilamentAssetScale(int paramInt, float paramFloat, float[] paramArrayOfFloat)
+  {
+    nSetFilamentAssetScale(this.mNativeObject, paramInt, paramFloat, paramArrayOfFloat);
   }
   
   public boolean setGlbData(String paramString, byte[] paramArrayOfByte)
@@ -257,14 +338,34 @@ public class FilamentJNI
     nSetHeadCount(this.mNativeObject, paramInt);
   }
   
-  public void setHitTestAfterUnprojection(float[] paramArrayOfFloat)
+  public void setHitTestAfterUnprojection(int paramInt, float[] paramArrayOfFloat)
   {
-    nSetHitTestAfterUnprojection(this.mNativeObject, paramArrayOfFloat);
+    nSetHitTestAfterUnprojection(this.mNativeObject, paramInt, paramArrayOfFloat);
   }
   
   public void setImage(Texture paramTexture)
   {
     nSetImage(this.mNativeObject, paramTexture.getNativeObject());
+  }
+  
+  public void setKapuAnimation()
+  {
+    nSetKapuAnimation(this.mNativeObject);
+  }
+  
+  public void setKapuDisplayMaterialTypeList(int paramInt, String[] paramArrayOfString)
+  {
+    nSetDisplayMaterialTypeList(this.mNativeObject, paramInt, paramArrayOfString);
+  }
+  
+  public void setKapuHeadTransform(int paramInt, float[] paramArrayOfFloat)
+  {
+    nSetKapuHeadTransform(this.mNativeObject, paramInt, paramArrayOfFloat);
+  }
+  
+  public void setKapuWeights(int paramInt, String[] paramArrayOfString, float[] paramArrayOfFloat)
+  {
+    nSetKapuMorphWeights(this.mNativeObject, paramInt, paramArrayOfString, paramArrayOfFloat);
   }
   
   public void setMaterialImage(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
@@ -277,9 +378,9 @@ public class FilamentJNI
     nSetBaseColorImage(this.mNativeObject, paramString1, paramString2, paramTexture.getNativeObject());
   }
   
-  public void setMaterialTransform(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public void setMaterialTransform(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3)
   {
-    nSetMaterialTransform(this.mNativeObject, paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
+    nSetMaterialTransform(this.mNativeObject, paramInt, paramArrayOfFloat1, paramArrayOfFloat2, paramArrayOfFloat3);
   }
   
   public void setMorphWeights(String paramString, float[] paramArrayOfFloat, int paramInt1, int paramInt2)
@@ -287,9 +388,24 @@ public class FilamentJNI
     nSetMorphWeights(this.mNativeObject, paramString, paramArrayOfFloat, paramInt1, paramInt2);
   }
   
+  public void setMvpMatrix(float[] paramArrayOfFloat, float paramFloat)
+  {
+    nSetMvpMatrix(this.mNativeObject, paramArrayOfFloat, paramFloat);
+  }
+  
   public void setNewFurLayers(int paramInt)
   {
     nNewFurLayers(this.mNativeObject, paramInt);
+  }
+  
+  public void setOutputPath(String paramString)
+  {
+    nSetOutputPath(this.mNativeObject, paramString);
+  }
+  
+  public void setupLoaders(long[] paramArrayOfLong)
+  {
+    nSetupLoaders(this.mNativeObject, paramArrayOfLong);
   }
   
   public void showArShadowPlane(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
@@ -312,9 +428,19 @@ public class FilamentJNI
     nStopAnimation(this.mNativeObject, paramString);
   }
   
+  public void updateAnimationTrigger(String[] paramArrayOfString)
+  {
+    nUpdateAnimationTrigger(this.mNativeObject, paramArrayOfString);
+  }
+  
   public void updateEyeNodeEuler(String paramString, float[] paramArrayOfFloat, int paramInt1, int paramInt2)
   {
     nUpdateEyeNodeEuler(this.mNativeObject, paramString, paramArrayOfFloat, paramInt1, paramInt2);
+  }
+  
+  public void updateFaceVertices(int paramInt, float[] paramArrayOfFloat)
+  {
+    nUpdateFaceVertices(this.mNativeObject, paramInt, paramArrayOfFloat);
   }
   
   public void updateMesh(String paramString, float[] paramArrayOfFloat)
@@ -334,7 +460,7 @@ public class FilamentJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.google.android.filament.FilamentJNI
  * JD-Core Version:    0.7.0.1
  */

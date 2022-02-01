@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aifr;
-import aifw;
+import ajaq;
+import ajav;
 
 class QIMNotifyAddFriendBuilder$1$1
   implements Runnable

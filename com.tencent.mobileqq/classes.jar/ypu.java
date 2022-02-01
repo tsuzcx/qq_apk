@@ -1,36 +1,26 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface ypu
+public class ypu
+  extends QQUIEventReceiver<QQStoryTakeVideoCloseAnimationActivity, yie>
 {
-  public abstract int a();
+  public ypu(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity)
+  {
+    super(paramQQStoryTakeVideoCloseAnimationActivity);
+  }
   
-  public abstract View a();
+  public void a(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity, @NonNull yie paramyie)
+  {
+    if (paramyie != null) {
+      paramQQStoryTakeVideoCloseAnimationActivity.a(paramyie.a, paramyie.b, paramyie.c, paramyie.d);
+    }
+  }
   
-  public abstract ypz a(int paramInt);
-  
-  public abstract yqa a();
-  
-  public abstract void a();
-  
-  public abstract void a(List<QQUserUIItem> paramList, int paramInt);
-  
-  public abstract void a(vwh paramvwh, float paramFloat1, float paramFloat2);
-  
-  public abstract void a(ypw paramypw);
-  
-  public abstract void a(ypy paramypy);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(int[] paramArrayOfInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d(boolean paramBoolean);
+  public Class acceptEventClass()
+  {
+    return yie.class;
+  }
 }
 
 

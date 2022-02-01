@@ -1,5 +1,6 @@
 package com.tencent.av.opengl;
 
+import bnky;
 import com.tencent.av.opengl.texture.YUVTexture;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.startup.step.AVSoUtils;
@@ -7,10 +8,9 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.download.AEResUtil;
 import java.nio.ByteBuffer;
-import lnv;
-import lou;
+import loi;
+import lph;
 
 public class GraphicRenderMgr
 {
@@ -21,7 +21,7 @@ public class GraphicRenderMgr
   public static boolean soloaded;
   public static boolean soloadedPTV;
   public int decoderPtrRef;
-  private lnv mAutoFocusCallback;
+  private loi mAutoFocusCallback;
   private Object mAutoFocusCallbackLock = new Object();
   
   private GraphicRenderMgr()
@@ -46,13 +46,13 @@ public class GraphicRenderMgr
   
   public static void loadPtuSO()
   {
-    if (lou.b())
+    if (lph.b())
     {
-      soloadedPTV = AEResUtil.loadAEBaseSo();
-      ptuSoVersion = AEResUtil.isFilterFaceSoVersionOK();
+      soloadedPTV = bnky.c();
+      ptuSoVersion = bnky.b();
     }
     if (QLog.isColorLevel()) {
-      QLog.w("GraphicRenderMgr", 1, "loadPtuSO, soloadedPTV[" + soloadedPTV + "], ptuSoVersion[" + ptuSoVersion + "], isSupported[" + lou.b() + "]");
+      QLog.w("GraphicRenderMgr", 1, "loadPtuSO, soloadedPTV[" + soloadedPTV + "], ptuSoVersion[" + ptuSoVersion + "], isSupported[" + lph.b() + "]");
     }
   }
   
@@ -188,11 +188,11 @@ public class GraphicRenderMgr
   
   public native void setFocusConfig(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2);
   
-  public void setFocusDetectCallback(lnv paramlnv)
+  public void setFocusDetectCallback(loi paramloi)
   {
     synchronized (this.mAutoFocusCallbackLock)
     {
-      this.mAutoFocusCallback = paramlnv;
+      this.mAutoFocusCallback = paramloi;
       return;
     }
   }

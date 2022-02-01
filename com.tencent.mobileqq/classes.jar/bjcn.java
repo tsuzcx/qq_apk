@@ -1,53 +1,27 @@
-import com.tencent.mobileqq.mini.servlet.MiniAppSendSmsCodeObserver;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONObject;
-import tencent.im.oidb.oidb_0x87c.RspBody;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.open.agent.DeviceFriendListOpenFrame;
 
-class bjcn
-  extends MiniAppSendSmsCodeObserver
+public class bjcn
+  extends Handler
 {
-  bjcn(bjce parambjce, AsyncResult paramAsyncResult) {}
+  public bjcn(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame) {}
   
-  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    super.onFailedResponse(paramString1, paramInt, paramString2);
-    QLog.e("ChannelProxyImpl", 1, "verify onFailedResponse cmd : " + paramString1 + ", code : " + paramInt + "; message : " + paramString2);
-    try
+    switch (paramMessage.what)
     {
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("message", paramString2);
-        localJSONObject.put("code", paramInt);
-        localJSONObject.put("cmd", paramString1);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, localJSONObject);
-      }
+    default: 
+      return;
+    case 1: 
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
+      return;
+    case 2: 
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
       return;
     }
-    catch (Throwable paramString1)
-    {
-      QLog.e("ChannelProxyImpl", 1, "onFailedResponse error,", paramString1);
-    }
-  }
-  
-  public void verifySmsCodeSuccess(oidb_0x87c.RspBody paramRspBody)
-  {
-    super.verifySmsCodeSuccess(paramRspBody);
-    QLog.d("ChannelProxyImpl", 1, "verify success");
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
-      {
-        paramRspBody = new JSONObject();
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramRspBody);
-      }
-      return;
-    }
-    catch (Throwable paramRspBody)
-    {
-      QLog.e("ChannelProxyImpl", 1, "onFailedResponse error,", paramRspBody);
-    }
+    this.a.jdField_a_of_type_Bjco.notifyDataSetChanged();
   }
 }
 

@@ -1,14 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.3.1;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Timer;
 
-final class aszh
-  implements DialogInterface.OnClickListener
+public class aszh
+  implements View.OnClickListener
 {
-  aszh(aszj paramaszj) {}
+  public aszh(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.onYes();
+    if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext())) {
+      audr.a(BaseApplicationImpl.getContext().getString(2131694253));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      audr.a(BaseApplicationImpl.getContext().getString(2131694065));
+      ansr localansr = (ansr)MPFileVerifyPwdView.a(this.a).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      MPFileVerifyPwdView.a(this.a, localansr.a().a(3));
+      MPFileVerifyPwdView.b(this.a).setEnabled(false);
+      MPFileVerifyPwdView.b(this.a).setTextColor(-7829368);
+      MPFileVerifyPwdView.a(this.a).schedule(new MPFileVerifyPwdView.3.1(this), 15000L);
+      if (MPFileVerifyPwdView.a(this.a) != null) {
+        MPFileVerifyPwdView.a(this.a).a(MPFileVerifyPwdView.a(this.a));
+      }
+    }
   }
 }
 

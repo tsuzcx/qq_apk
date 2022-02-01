@@ -1,30 +1,36 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
-import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class beht
 {
-  protected ImageView a;
-  protected SessionInfo a;
-  protected QQAppInterface a;
-  protected RedDotAnimateView a;
-  protected WeakReference<BaseActivity> a;
+  public int a;
+  public String a;
+  private JSONObject a;
   
-  public void a() {}
+  public beht(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean1, TroopChatPie paramTroopChatPie, boolean paramBoolean2) {}
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c() {}
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("result", this.jdField_a_of_type_Int);
+      localJSONObject.put("message", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("data", this.jdField_a_of_type_OrgJsonJSONObject);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
 }
 
 

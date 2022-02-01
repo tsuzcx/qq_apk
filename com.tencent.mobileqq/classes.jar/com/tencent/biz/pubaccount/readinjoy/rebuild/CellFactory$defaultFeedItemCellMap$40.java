@@ -8,13 +8,13 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import qtb;
-import slt;
+import red;
+import szd;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/rebuild/FeedItemCellTypeTopicSingle;", "context", "Landroid/content/Context;", "faceDecoder", "Lcom/tencent/mobileqq/app/face/FaceDecoder;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "invoke"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/rebuild/FeedItemCellTypeRecommendBig;", "context", "Landroid/content/Context;", "faceDecoder", "Lcom/tencent/mobileqq/app/face/FaceDecoder;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "invoke"}, k=3, mv={1, 1, 16})
 public final class CellFactory$defaultFeedItemCellMap$40
   extends Lambda
-  implements Function3<Context, FaceDecoder, slt, qtb>
+  implements Function3<Context, FaceDecoder, szd, red>
 {
   public static final 40 INSTANCE = new 40();
   
@@ -24,10 +24,10 @@ public final class CellFactory$defaultFeedItemCellMap$40
   }
   
   @NotNull
-  public final qtb invoke(@NotNull Context paramContext, @Nullable FaceDecoder paramFaceDecoder, @Nullable slt paramslt)
+  public final red invoke(@NotNull Context paramContext, @Nullable FaceDecoder paramFaceDecoder, @Nullable szd paramszd)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return new qtb(paramContext, paramFaceDecoder, paramslt);
+    return new red(paramContext, paramFaceDecoder, paramszd);
   }
 }
 

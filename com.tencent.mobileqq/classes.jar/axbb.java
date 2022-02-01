@@ -1,19 +1,31 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class axbb
-  implements TextWatcher
+public class axbb
+  implements RadioGroup.OnCheckedChangeListener
 {
-  axbb(axax paramaxax) {}
+  public axbb(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    awkj.a(this.a.a, 30);
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "checkedId = " + paramInt);
+    }
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      MsgBackupDateFragment.a(this.a, 1);
+      continue;
+      MsgBackupDateFragment.a(this.a, 2);
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -3,10 +3,10 @@ package com.tencent.mobileqq.ark.API;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.media.AudioManager;
-import aopv;
-import aopx;
-import aopy;
-import aopz;
+import apsw;
+import apsy;
+import apsz;
+import apta;
 import com.tencent.ark.ark;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,16 +30,16 @@ public class ArkAppNotifyCenter
   public static final String TAG = "ark.ArkAppNotifyCenter";
   public static ArkAppNotifyCenter.ArkClickListener arkClickListener;
   private static int callbackId;
-  private static HashMap<String, aopx> notifyRegs = new HashMap();
-  private static aopz receiver;
+  private static HashMap<String, apsy> notifyRegs = new HashMap();
+  private static apta receiver;
   
   static
   {
     callbackId = -1;
-    Object localObject = new aopy();
+    Object localObject = new apsz();
     notifyRegs.put("com.tencent.troopapp", localObject);
     notifyRegs.put("com.tencent.test.troopapp", localObject);
-    localObject = new aopv();
+    localObject = new apsw();
     notifyRegs.put("com.tencent.yundong", localObject);
     notifyRegs.put("com.tencent.gdt.gouwu", localObject);
     notifyRegs.put("com.tencent.gdt.label", localObject);
@@ -163,10 +163,10 @@ public class ArkAppNotifyCenter
   
   public static boolean notify(String paramString1, String paramString2, String paramString3)
   {
-    aopx localaopx = (aopx)notifyRegs.get(paramString1);
-    if (localaopx != null)
+    apsy localapsy = (apsy)notifyRegs.get(paramString1);
+    if (localapsy != null)
     {
-      ThreadManager.getSubThreadHandler().post(new ArkAppNotifyCenter.1(localaopx, paramString1, paramString2, paramString3));
+      ThreadManager.getSubThreadHandler().post(new ArkAppNotifyCenter.1(localapsy, paramString1, paramString2, paramString3));
       return true;
     }
     return false;
@@ -175,7 +175,7 @@ public class ArkAppNotifyCenter
   public static void registVolumnReceiver()
   {
     if (receiver == null) {
-      receiver = new aopz(null);
+      receiver = new apta(null);
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
@@ -185,7 +185,7 @@ public class ArkAppNotifyCenter
     BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(receiver, localIntentFilter);
   }
   
-  public static void setNotify(String paramString, WeakReference<aopx> paramWeakReference)
+  public static void setNotify(String paramString, WeakReference<apsy> paramWeakReference)
   {
     if ((paramWeakReference != null) && (paramWeakReference.get() != null))
     {

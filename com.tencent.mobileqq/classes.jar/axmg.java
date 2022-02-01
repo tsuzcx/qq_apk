@@ -1,55 +1,15 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public class axmg
-  implements View.OnTouchListener
+class axmg
+  implements INetEngine.INetEngineListener
 {
-  public axmg(OCRResultFragmentNew paramOCRResultFragmentNew) {}
+  axmg(axmf paramaxmf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    paramView = (EditText)paramView;
-    int j = paramMotionEvent.getAction();
-    if (j == 1)
-    {
-      Object localObject = paramView.getText();
-      int m = (int)paramMotionEvent.getX();
-      i = (int)paramMotionEvent.getY();
-      int n = paramView.getTotalPaddingLeft();
-      int k = paramView.getTotalPaddingTop();
-      m = m - n + paramView.getScrollX();
-      n = paramView.getScrollY();
-      Layout localLayout = paramView.getLayout();
-      i = localLayout.getLineForVertical(i - k + n);
-      float f = localLayout.getLineWidth(i);
-      if (m <= f)
-      {
-        i = localLayout.getOffsetForHorizontal(i, m);
-        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
-        if (localObject.length != 0)
-        {
-          localObject[0].onClick(paramView);
-          bcef.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
-        }
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        return true;
-      }
-      if ((j == 1) && (!paramView.isFocused())) {
-        bcef.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
-      }
-      return paramView.onTouchEvent(paramMotionEvent);
-    }
-  }
+  public void onResp(NetResp paramNetResp) {}
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

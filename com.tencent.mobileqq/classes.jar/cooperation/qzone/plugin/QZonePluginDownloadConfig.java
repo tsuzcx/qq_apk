@@ -1,6 +1,6 @@
 package cooperation.qzone.plugin;
 
-import aafr;
+import aavd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.module.base.inter.IDownloadConfig;
 import com.tencent.qphone.base.util.QLog;
@@ -94,7 +94,7 @@ class QZonePluginDownloadConfig
   
   public int getOperator()
   {
-    int i = aafr.a();
+    int i = aavd.a();
     if (QLog.isColorLevel()) {
       QLog.i("QZonePluginDownloadConfig", 2, "QzoneDownloadConfig ():WiFiCrarryType=" + i);
     }

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
-import azwx;
-import azwy;
+import bbdg;
+import bbdh;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class IceBreakingMng$2
   implements Runnable
 {
-  public IceBreakingMng$2(azwy paramazwy, List paramList) {}
+  public IceBreakingMng$2(bbdh parambbdh, List paramList, int paramInt) {}
   
   public void run()
   {
-    if ((azwy.b(this.this$0) != null) && (azwy.b(this.this$0).get() != null)) {
-      ((azwx)azwy.b(this.this$0).get()).a(true, this.a);
+    if ((bbdh.b(this.this$0) != null) && (bbdh.b(this.this$0).get() != null)) {
+      ((bbdg)bbdh.b(this.this$0).get()).a(true, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int);
     }
   }
 }

@@ -1,16 +1,21 @@
-class beyk
-  implements bfja
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+
+public class beyk
+  implements DialogInterface.OnClickListener
 {
-  beyk(beyh parambeyh) {}
+  public beyk(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.e();
+    this.a.setResult(-1, null);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyk
  * JD-Core Version:    0.7.0.1
  */

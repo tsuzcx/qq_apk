@@ -2,6 +2,7 @@ package com.tencent.autotemplate;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import com.tencent.autotemplate.utils.JsonUtils;
 import java.io.File;
@@ -33,6 +34,21 @@ public class TAVAutomaticTemplateParse
     paramString2 = (TAVAutomaticTemplate)JsonUtils.parseObjectFromFile(null, paramString1 + "/" + paramString2, TAVAutomaticTemplate.class);
     paramString2.setTemplateDir(paramString1);
     return paramString2;
+  }
+  
+  public static TAVRhythmAutomaticTemplate parseRhythmAutomaticTemplate(@Nullable Context paramContext, @NonNull String paramString1, @NonNull String paramString2)
+  {
+    paramContext = (TAVRhythmAutomaticTemplate)JsonUtils.parseObjectFromFile(paramContext, paramString1 + "/" + paramString2, TAVRhythmAutomaticTemplate.class);
+    if (paramContext == null) {
+      return null;
+    }
+    paramContext.setTemplateDir(paramString1);
+    return paramContext;
+  }
+  
+  public static TAVRhythmAutomaticTemplate parseRhythmAutomaticTemplate(@NonNull String paramString)
+  {
+    return (TAVRhythmAutomaticTemplate)JsonUtils.parseObjectFromFile(null, paramString, TAVRhythmAutomaticTemplate.class);
   }
   
   public static TAVRhythmAutomaticTemplate parseRhythmAutomaticTemplate(@NonNull String paramString1, @NonNull String paramString2)

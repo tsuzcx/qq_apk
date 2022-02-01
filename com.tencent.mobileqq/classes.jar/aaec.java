@@ -1,600 +1,364 @@
-import android.content.Context;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.MapView;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLngBounds.Builder;
-import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+@SuppressLint({"InlinedApi"})
 public class aaec
-  implements bjoe
+  extends WebViewPlugin
+  implements aaea
 {
-  protected int a;
-  protected aaee a;
-  protected Context a;
-  protected Handler a;
-  protected bjnw a;
-  protected GeoPoint a;
+  aady jdField_a_of_type_Aady = null;
+  aafb jdField_a_of_type_Aafb = null;
   protected String a;
-  protected HashMap<String, Integer> a;
-  protected HashSet<String> a;
-  protected LinkedHashMap<String, String> a;
-  protected int[] a;
-  protected GeoPoint b;
-  protected String b;
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
-  public aaec(Context paramContext)
+  public aaec()
   {
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ArrayOfInt = new int[6];
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("com.tencent.map", amtj.a(2131709558));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("com.google.android.apps.maps", "Google地图");
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("com.autonavi.minimap", amtj.a(2131709556));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("com.baidu.BaiduMap", amtj.a(2131709557));
-    this.jdField_a_of_type_JavaUtilHashMap.put("com.tencent.map", Integer.valueOf(2));
-    this.jdField_a_of_type_JavaUtilHashMap.put("com.google.android.apps.maps", Integer.valueOf(5));
-    this.jdField_a_of_type_JavaUtilHashMap.put("com.autonavi.minimap", Integer.valueOf(4));
-    this.jdField_a_of_type_JavaUtilHashMap.put("com.baidu.BaiduMap", Integer.valueOf(3));
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.mPluginNameSpace = "TroopMemberApiPlugin";
   }
   
-  public static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
+  private void a(String paramString)
   {
-    paramDouble2 = 3.141592653589793D * paramDouble2 / 180.0D;
-    paramDouble4 = 3.141592653589793D * paramDouble4 / 180.0D;
-    paramDouble3 = (paramDouble1 - paramDouble3) * 3.141592653589793D / 180.0D;
-    paramDouble1 = Math.sin((paramDouble2 - paramDouble4) / 2.0D);
-    paramDouble3 = Math.sin(paramDouble3 / 2.0D);
-    return 6378137.0D * 2.0D * Math.asin(Math.sqrt(Math.cos(paramDouble2) * Math.cos(paramDouble4) * paramDouble3 * paramDouble3 + paramDouble1 * paramDouble1));
-  }
-  
-  public static String a(double paramDouble)
-  {
-    if (paramDouble < 1000.0D) {
-      return String.format(amtj.a(2131709564), new Object[] { Double.valueOf(paramDouble) });
-    }
-    return String.format(amtj.a(2131709563), new Object[] { Double.valueOf(paramDouble / 1000.0D) });
-  }
-  
-  protected static List<LatLng> a(List<Float> paramList)
-  {
-    if ((paramList == null) || (paramList.size() < 2)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new LatLng(((Float)paramList.get(0)).floatValue(), ((Float)paramList.get(1)).floatValue()));
-    int i = 2;
-    while (i < paramList.size())
-    {
-      float f3 = (float)((LatLng)localArrayList.get(i / 2 - 1)).getLatitude();
-      float f4 = Float.valueOf(((Float)paramList.get(i)).floatValue()).floatValue() / 1000000.0F;
-      float f1 = (float)((LatLng)localArrayList.get(i / 2 - 1)).getLongitude();
-      float f2 = Float.valueOf(((Float)paramList.get(i + 1)).floatValue()).floatValue() / 1000000.0F;
-      f3 = (float)(Math.round((f3 + f4) * 1000000.0D) / 1000000.0D);
-      f1 = (float)(Math.round((f2 + f1) * 1000000.0D) / 1000000.0D);
-      localArrayList.add(new LatLng(f3, f1));
-      i += 2;
-    }
-    paramList = new ArrayList();
-    i = 0;
-    if (i < localArrayList.size())
-    {
-      if (paramList.size() >= 1) {
-        if (!((LatLng)paramList.get(paramList.size() - 1)).equals(localArrayList.get(i))) {
-          paramList.add(localArrayList.get(i));
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        paramList.add(localArrayList.get(i));
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqmap", 2, "parseRoutes: rawPoints=" + localArrayList.size() + ", resultPoints=" + paramList.size());
-    }
-    return paramList;
-  }
-  
-  public static void a(String paramString)
-  {
-    a(paramString, "");
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    bcef.b(null, "dc00899", "Pb_account_lifeservice", "", "rec_locate_android", paramString1, 0, 0, paramString2, paramString3, "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqmap.report", 2, "opName=" + paramString1 + ",extra1=" + paramString2 + ",extra2=" + paramString3);
-    }
-  }
-  
-  public static void a(List<LatLng> paramList, MapView paramMapView, int paramInt)
-  {
-    if ((paramList == null) || (paramList.size() < 2)) {
-      return;
-    }
-    LatLngBounds.Builder localBuilder = new LatLngBounds.Builder();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localBuilder.include((LatLng)paramList.next());
-    }
-    paramMapView.getMap().moveCamera(CameraUpdateFactory.newLatLngBounds(localBuilder.build(), paramInt));
-  }
-  
-  public static double[] a(double paramDouble1, double paramDouble2)
-  {
-    double d = Math.sqrt(paramDouble2 * paramDouble2 + paramDouble1 * paramDouble1) + 2.E-005D * Math.sin(paramDouble1 * 3.141592653589793D);
-    paramDouble1 = Math.atan2(paramDouble1, paramDouble2);
-    paramDouble2 = Math.cos(3.141592653589793D * paramDouble2) * 3.E-006D + paramDouble1;
-    paramDouble1 = Math.cos(paramDouble2) * d + 0.0065D;
-    paramDouble2 = Math.sin(paramDouble2) * d + 0.006D;
-    System.out.println("bd_lat:" + paramDouble2);
-    System.out.println("bd_lon:" + paramDouble1);
-    return new double[] { paramDouble2, paramDouble1 };
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", paramString1, 0, 0, paramString2, "", "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqmap.report", 2, "opName=" + paramString1 + ",extra1=" + paramString2);
-    }
-  }
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bjnw.isShowing()) {
-        this.jdField_a_of_type_Bjnw.dismiss();
-      }
-      return;
-      if (this.jdField_a_of_type_Aaee != null) {
-        if (!this.jdField_a_of_type_Aaee.b())
-        {
-          a(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint, this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint);
-          a("show_route");
-        }
-        else
-        {
-          this.jdField_a_of_type_Aaee.l();
-          a("hide_route");
-          continue;
-          b();
-          a("didi_click");
-          continue;
-          c();
-          continue;
-          f();
-          a("baidumap_open");
-          b("click_navig", "4");
-          continue;
-          e();
-          a("gaodemap_open");
-          b("click_navig", "3");
-          continue;
-          d();
-          a("googlemap_open");
-          b("click_navig", "6");
-        }
-      }
-    }
-  }
-  
-  protected void a()
-  {
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (bjnn.a(this.jdField_a_of_type_AndroidContentContext, str)) {
-        this.jdField_a_of_type_JavaUtilHashSet.add(str);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqmap", 2, "checkInstalledMapApp: time=" + (System.currentTimeMillis() - l));
-    }
-  }
-  
-  public void a(aaee paramaaee)
-  {
-    this.jdField_a_of_type_Aaee = paramaaee;
-  }
-  
-  public void a(GeoPoint paramGeoPoint1, GeoPoint paramGeoPoint2)
-  {
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
-    {
-      paramGeoPoint1 = this.jdField_a_of_type_AndroidContentContext.getResources();
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramGeoPoint1.getString(2131694064), 1).b(paramGeoPoint1.getDimensionPixelSize(2131299076));
-      return;
-    }
-    Bundle localBundle1 = new Bundle();
-    Bundle localBundle2 = new Bundle();
-    String str;
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      str = "https://apis.map.qq.com/ws/direction/v1/driving/";
-      localBundle1.putString("get_mp", "0");
-      localBundle1.putString("get_speed", "0");
-      localBundle2.putInt("mode", 0);
-    }
-    for (;;)
-    {
-      localBundle1.putString("from", paramGeoPoint1.getLatitudeE6() / 1000000.0D + "," + paramGeoPoint1.getLongitudeE6() / 1000000.0D);
-      localBundle1.putString("to", paramGeoPoint2.getLatitudeE6() / 1000000.0D + "," + paramGeoPoint2.getLongitudeE6() / 1000000.0D);
-      localBundle1.putString("output", "json");
-      localBundle1.putString("callback", "cb");
-      localBundle1.putString("key", "UZVBZ-TYEKV-N6OPT-UFMDO-VYNG7-3MB7J");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqmap", 2, "getRoute:" + str);
-      }
-      paramGeoPoint1 = new HashMap();
-      paramGeoPoint1.put("BUNDLE", localBundle1);
-      paramGeoPoint1.put("CONTEXT", BaseApplication.getContext());
-      new bezc(str, "GET", new aaed(this), 1000, localBundle2, true).execute(new HashMap[] { paramGeoPoint1 });
-      return;
-      str = "https://apis.map.qq.com/ws/direction/v1/walking/";
-      localBundle2.putInt("routeMode", 1);
-    }
-  }
-  
-  public void a(GeoPoint paramGeoPoint1, GeoPoint paramGeoPoint2, String paramString1, String paramString2)
-  {
-    if ((paramGeoPoint1 == null) || (paramGeoPoint2 == null))
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 0, amtj.a(2131709561), 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299076));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = paramGeoPoint1;
-    this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint = paramGeoPoint2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = amtj.a(2131709559);
-    }
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_JavaLangString = amtj.a(2131709555);
-    }
-    double d = a(paramGeoPoint1.getLongitudeE6() / 1000000.0D, paramGeoPoint1.getLatitudeE6() / 1000000.0D, paramGeoPoint2.getLongitudeE6() / 1000000.0D, paramGeoPoint2.getLatitudeE6() / 1000000.0D);
-    if (d > 1000.0D)
-    {
-      this.jdField_a_of_type_Int = 1;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqmap", 2, "showActionSheet: self=" + paramGeoPoint1.toString() + ",to=" + paramGeoPoint2.toString() + ",selfPoi=" + paramString1 + ",toPoi=" + paramString2 + ",distance=" + d);
-      }
-      a();
-      this.jdField_a_of_type_Bjnw = bjnw.a(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_Bjnw.a(this);
-      if ((this.jdField_a_of_type_Aaee == null) || (this.jdField_a_of_type_Aaee.b())) {
-        break label469;
-      }
-      this.jdField_a_of_type_Bjnw.c(amtj.a(2131709562));
-      label295:
-      this.jdField_a_of_type_ArrayOfInt[0] = 0;
-      this.jdField_a_of_type_Bjnw.c(amtj.a(2131709560));
-      this.jdField_a_of_type_ArrayOfInt[1] = 1;
-      this.jdField_a_of_type_Bjnw.c((CharSequence)this.jdField_a_of_type_JavaUtilLinkedHashMap.get("com.tencent.map"));
-      this.jdField_a_of_type_ArrayOfInt[2] = 2;
-      paramGeoPoint1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-      int i = 3;
-      label364:
-      if (!paramGeoPoint1.hasNext()) {
-        break label485;
-      }
-      paramString1 = (Map.Entry)paramGeoPoint1.next();
-      paramGeoPoint2 = (String)paramString1.getKey();
-      paramString1 = (String)paramString1.getValue();
-      if ((paramGeoPoint2.equals("com.tencent.map")) || (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramGeoPoint2))) {
-        break label503;
-      }
-      this.jdField_a_of_type_Bjnw.c(paramString1);
-      this.jdField_a_of_type_ArrayOfInt[i] = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramGeoPoint2)).intValue();
-      i += 1;
-    }
-    label469:
-    label485:
-    label503:
-    for (;;)
-    {
-      break label364;
-      this.jdField_a_of_type_Int = 0;
-      break;
-      this.jdField_a_of_type_Bjnw.c(amtj.a(2131709554));
-      break label295;
-      this.jdField_a_of_type_Bjnw.c(2131690620);
-      this.jdField_a_of_type_Bjnw.show();
-      return;
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject, int paramInt)
-  {
-    int k = 0;
-    int j = 0;
-    StringBuilder localStringBuilder;
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("parseRoutes: mode=").append(paramInt).append(", ");
-      if (paramJSONObject != null)
-      {
-        localObject = paramJSONObject.toString();
-        QLog.d("Q.qqmap", 2, (String)localObject);
-      }
-    }
-    else
-    {
-      localStringBuilder = null;
-      if (paramJSONObject == null) {
-        break label334;
-      }
-    }
-    for (;;)
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
       for (;;)
       {
+        return;
         try
         {
-          if (paramJSONObject.getInt("status") != 0) {
-            continue;
-          }
-          paramJSONObject = paramJSONObject.getJSONObject("result").getJSONArray("routes");
-          if (paramJSONObject.length() <= 0) {
-            continue;
-          }
-          paramJSONObject = paramJSONObject.getJSONObject(0);
-          i = paramJSONObject.getInt("distance");
-        }
-        catch (Exception localException1)
-        {
-          int i = 0;
-          paramInt = i;
-          paramJSONObject = localStringBuilder;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.w("Q.qqmap", 2, "parseRoutes:", localException1);
-          paramInt = i;
-          paramJSONObject = localStringBuilder;
-          continue;
-          paramInt = 0;
-          paramJSONObject = null;
-          continue;
-        }
-        try
-        {
-          paramJSONObject.getInt("duration");
-          if (paramInt != 0) {
-            continue;
-          }
-          paramJSONObject = paramJSONObject.getJSONArray("polyline");
-          localObject = new ArrayList();
-          paramInt = j;
-          if (paramInt < paramJSONObject.length())
+          Object localObject = new JSONObject(paramString);
+          paramString = ((JSONObject)localObject).optString("gcode");
+          localObject = ((JSONObject)localObject).optString("id");
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramString)))
           {
-            ((List)localObject).add(Float.valueOf((float)paramJSONObject.getDouble(paramInt)));
-            paramInt += 1;
-            continue;
-            localObject = "";
-            break;
+            this.jdField_a_of_type_Aady.b(paramString, (String)localObject);
+            return;
           }
-          paramJSONObject = a((List)localObject);
-          paramInt = i;
         }
-        catch (Exception localException2)
+        catch (JSONException paramString)
         {
-          continue;
-          paramJSONObject = null;
-          paramInt = i;
+          paramString.printStackTrace();
         }
       }
-      if (this.jdField_a_of_type_Aaee != null) {
-        this.jdField_a_of_type_Aaee.a(paramJSONObject, paramInt);
-      }
+    } while (!QLog.isColorLevel());
+    QLog.i(this.TAG, 2, "anonymousReport exception" + paramString.getMessage());
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    {
+      this.jdField_a_of_type_Aady = aady.a();
+      this.jdField_a_of_type_Aady.a();
+    }
+  }
+  
+  public void callback(Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    String str;
+    do
+    {
       return;
-      if (paramInt == 1)
+      if ("changeAnonymousNick".equals(paramBundle.getString("method")))
       {
-        paramJSONObject = paramJSONObject.getJSONArray("polyline");
-        localObject = new ArrayList();
-        paramInt = k;
-        if (paramInt < paramJSONObject.length())
-        {
-          ((List)localObject).add(Float.valueOf((float)paramJSONObject.getDouble(paramInt)));
-          paramInt += 1;
+        boolean bool = paramBundle.getBoolean("result");
+        callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{result : " + bool + "}" });
+        return;
+      }
+      str = paramBundle.getString("callback");
+    } while (TextUtils.isEmpty(str));
+    callJs(str, new String[] { paramBundle.getString("data") });
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("anonymousReport".equals(paramString3))
+    {
+      a(paramVarArgs[0]);
+      return true;
+    }
+    int i;
+    if ("anonymousNickChanged".equals(paramString3)) {
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        paramString1 = paramJsBridgeListener.optString("troopUin");
+        long l = paramJsBridgeListener.optLong("bubbleId");
+        i = paramJsBridgeListener.optInt("headId");
+        paramString2 = paramJsBridgeListener.optString("nickName");
+        int j = paramJsBridgeListener.optInt("expireTime");
+        paramString3 = paramJsBridgeListener.optString("rankColor");
+        this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
+        if (QLog.isColorLevel()) {
+          QLog.d(this.TAG, 2, "TroopMemberApiPlugin, anonymousNickChanged, json : " + paramJsBridgeListener);
         }
-        else
+        this.jdField_a_of_type_Aady.a(paramString1, l, i, paramString2, j, paramString3, this);
+        return true;
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(this.TAG, 2, "TroopMemberApiPlugin, anonymousNickChanged, JSONException :" + paramJsBridgeListener);
+        }
+      }
+    }
+    for (;;)
+    {
+      return false;
+      if ("getUploadInfo".equals(paramString3)) {
+        try
         {
-          paramJSONObject = a((List)localObject);
-          paramInt = i;
+          callJs(new JSONObject(paramVarArgs[0]).optString("callback"), new String[] { "{stateus:0}" });
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            paramJsBridgeListener.printStackTrace();
+          }
+        }
+      }
+      if ("cleanDynamicRedPoint".equals(paramString3)) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+          this.jdField_a_of_type_Aady.c(paramJsBridgeListener, this);
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            paramJsBridgeListener.printStackTrace();
+          }
+        }
+      }
+      Object localObject1;
+      Object localObject2;
+      if (("selectedTribe".endsWith(paramString3)) && (paramVarArgs.length == 1))
+      {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          paramVarArgs = this.mRuntime.a();
+          paramString3 = paramJsBridgeListener.optString("name");
+          paramString2 = paramJsBridgeListener.optString("bid");
+          localObject1 = paramJsBridgeListener.optJSONObject("condition");
+          paramString1 = paramJsBridgeListener.optString("tribeList");
+          localObject2 = new Intent();
+          paramJsBridgeListener = paramString3;
+          if (TextUtils.isEmpty(paramString3)) {
+            paramJsBridgeListener = "";
+          }
+          ((Intent)localObject2).putExtra("tribeName", paramJsBridgeListener);
+          paramJsBridgeListener = paramString2;
+          if (TextUtils.isEmpty(paramString2)) {
+            paramJsBridgeListener = "";
+          }
+          ((Intent)localObject2).putExtra("bid", paramJsBridgeListener);
+          paramJsBridgeListener = paramString1;
+          if (TextUtils.isEmpty(paramString1)) {
+            paramJsBridgeListener = "";
+          }
+          ((Intent)localObject2).putExtra("tribeList", paramJsBridgeListener);
+          i = ((JSONObject)localObject1).optInt("optionType", -1);
+          if (i != -1) {
+            ((Intent)localObject2).putExtra("optionType", i);
+          }
+          paramVarArgs.setResult(-1, (Intent)localObject2);
+          paramVarArgs.finish();
+        }
+        catch (JSONException paramJsBridgeListener) {}
+        if (QLog.isColorLevel()) {
+          QLog.e(this.TAG, 2, "JSONException:" + paramJsBridgeListener.toString());
+        }
+      }
+      else if ("getTroopBarPublishInfo".equals(paramString3))
+      {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+          if (this.jdField_a_of_type_Aady == null)
+          {
+            this.jdField_a_of_type_Aady = aady.a();
+            this.jdField_a_of_type_Aady.a();
+          }
+          this.jdField_a_of_type_Aady.a(new aaed(this, paramJsBridgeListener));
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
         }
       }
       else
       {
-        label334:
-        paramInt = 0;
-        paramJSONObject = localStringBuilder;
+        if (("createVideoAndSend".equals(paramString3)) || ("prepareVideoResources".equals(paramString3))) {
+          try
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i(this.TAG, 2, paramString3 + "json:" + paramVarArgs[0]);
+            }
+            paramVarArgs = new JSONObject(paramVarArgs[0]);
+            paramString1 = paramVarArgs.optString("troopUin");
+            paramString2 = paramVarArgs.optString("wording");
+            localObject1 = paramVarArgs.optString("bgMusic");
+            i = paramVarArgs.optInt("tailType");
+            paramJsBridgeListener = paramVarArgs.optString("callback");
+            paramVarArgs = paramVarArgs.optJSONArray("videos");
+            if ((("createVideoAndSend".equals(paramString3)) && (TextUtils.isEmpty(paramString1))) || (TextUtils.isEmpty(paramString2)) || (paramVarArgs == null) || (paramVarArgs.length() == 0))
+            {
+              paramString3 = new JSONObject();
+              paramString3.put("retCode", 1);
+              paramString3.put("errorMsg", "params error: troopUin = " + paramString1 + " wroding = " + paramString2 + " array = " + paramVarArgs);
+              callJs(paramJsBridgeListener, new String[] { paramString3.toString() });
+              return true;
+            }
+            if (this.jdField_a_of_type_Aafb == null) {
+              this.jdField_a_of_type_Aafb = new aafb((BaseActivity)this.mRuntime.a());
+            }
+            localObject2 = this.jdField_a_of_type_Aafb;
+            localObject2.getClass();
+            localObject2 = new aafl((aafb)localObject2);
+            ((aafl)localObject2).jdField_a_of_type_JavaLangString = paramString1;
+            ((aafl)localObject2).b = ((String)localObject1);
+            ((aafl)localObject2).c = paramString2;
+            ((aafl)localObject2).jdField_a_of_type_Int = i;
+            i = 0;
+            while (i < paramVarArgs.length())
+            {
+              paramString1 = paramVarArgs.getString(i);
+              ((aafl)localObject2).jdField_a_of_type_JavaUtilArrayList.add(paramString1);
+              i += 1;
+            }
+            if ("createVideoAndSend".equals(paramString3)) {
+              this.jdField_a_of_type_Aafb.a((aafl)localObject2, new aaee(this, paramJsBridgeListener));
+            } else {
+              this.jdField_a_of_type_Aafb.a((aafl)localObject2, new aaef(this, paramJsBridgeListener));
+            }
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            QLog.e(this.TAG, 1, "invoke createVideoAndSend failed", paramJsBridgeListener);
+          }
+        }
+        if ("checkVideoLib".equals(paramString3))
+        {
+          try
+          {
+            paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+            paramString1 = new JSONObject();
+            if (!VideoEnvironment.checkAVCodecLoadIsOK(this.mRuntime.a())) {
+              break label1112;
+            }
+            paramString1.put("retCode", 0);
+            callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            paramJsBridgeListener.printStackTrace();
+          }
+          continue;
+          label1112:
+          paramString1.put("retCode", -1);
+          callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+          if (this.jdField_a_of_type_Aady == null)
+          {
+            this.jdField_a_of_type_Aady = aady.a();
+            this.jdField_a_of_type_Aady.a();
+          }
+          this.jdField_a_of_type_Aady.d();
+        }
+        else if (("setTribePublishTopic".equals(paramString3)) && (paramVarArgs.length == 1))
+        {
+          try
+          {
+            paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+            paramString2 = paramJsBridgeListener.optString("callback");
+            paramString3 = new JSONObject();
+            paramVarArgs = this.mRuntime.a();
+            i = paramJsBridgeListener.optInt("theme_id", -1);
+            paramString1 = paramJsBridgeListener.optString("theme_name");
+            localObject1 = new Intent();
+            if ((i == -1) || (paramString1 != null)) {
+              break label1384;
+            }
+            paramVarArgs.setResult(0, (Intent)localObject1);
+            paramString3.put("retCode", -1);
+            if (QLog.isColorLevel()) {
+              QLog.d(this.TAG, 2, "setTribePublishTopic JSAPI mThemeID = " + i + " mThemeName = " + paramString1);
+            }
+            callJs(paramString2, new String[] { paramString3.toString() });
+          }
+          catch (JSONException paramJsBridgeListener) {}
+          if (QLog.isColorLevel())
+          {
+            QLog.e(this.TAG, 2, "selectedTheme JSONException:" + paramJsBridgeListener.toString());
+            continue;
+            label1384:
+            ((Intent)localObject1).putExtra("theme_id", i);
+            if (TextUtils.isEmpty(paramString1)) {}
+            for (paramJsBridgeListener = "";; paramJsBridgeListener = paramString1)
+            {
+              ((Intent)localObject1).putExtra("theme_name", paramJsBridgeListener);
+              paramVarArgs.setResult(-1, (Intent)localObject1);
+              paramString3.put("retCode", 0);
+              break;
+            }
+          }
+        }
+        else if (("enableShortVideoPublish".equals(paramString3)) && (paramVarArgs.length == 1))
+        {
+          try
+          {
+            paramJsBridgeListener = new JSONObject();
+            paramJsBridgeListener.put("enableShortVideoPublish", bbhm.a());
+            if (QLog.isColorLevel()) {
+              QLog.d(this.TAG, 2, "retJson=" + paramJsBridgeListener);
+            }
+            callJs(new JSONObject(paramVarArgs[0]).optString("callback"), new String[] { paramJsBridgeListener.toString() });
+          }
+          catch (Exception paramJsBridgeListener) {}
+          if (QLog.isColorLevel()) {
+            QLog.e(this.TAG, 2, "enableShortVideoPublish exp:" + paramJsBridgeListener.toString());
+          }
+        }
       }
     }
+    return true;
   }
   
-  protected void b()
+  public void onCreate()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    String str = String.format("https://common.diditaxi.com.cn/general/webEntry?channel=72778&source=mqq&tolat=%f&tolng=%f&fromlat=%f&fromlng=%f&maptype=soso&_wv=1039", new Object[] { Double.valueOf(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D), Double.valueOf(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D), Double.valueOf(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D), Double.valueOf(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D) });
-    localIntent.putExtra("url", str);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqmap", 2, "openDiDi:" + str);
-    }
-  }
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_JavaUtilHashSet.contains("com.tencent.map"))
-    {
-      localObject = "drive";
-      if (this.jdField_a_of_type_Int == 0) {
-        localObject = "walk";
-      }
-      localObject = String.format("qqmap://map/routeplan?type=%s&from=%s&fromcoord=%f,%f&to=%s&tocoord=%f,%f&policy=1&referer=qq", new Object[] { localObject, this.jdField_a_of_type_JavaLangString, Double.valueOf(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D), Double.valueOf(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D), this.jdField_b_of_type_JavaLangString, Double.valueOf(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D), Double.valueOf(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D) });
-      try
-      {
-        Intent localIntent = Intent.parseUri((String)localObject, 0);
-        localIntent.addCategory("android.intent.category.BROWSABLE");
-        localIntent.setComponent(null);
-        if (Build.VERSION.SDK_INT >= 15) {
-          localIntent.setSelector(null);
-        }
-        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqmap", 2, "openQQMapForRoute:" + (String)localObject);
-        }
-        a("tencentmap_click", "open");
-        b("click_navig", "1");
-        return;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqmap", 2, "openQQMapForRoute:" + (String)localObject, localException);
-        }
-      }
-    }
-    Object localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", "https://3gimg.qq.com/map_site_cms/download/index.html?appid=mobilemap&logid=map_app&ch=appdownload");
-    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqmap", 2, "openQQMapForRoute, download=https://3gimg.qq.com/map_site_cms/download/index.html?appid=mobilemap&logid=map_app&ch=appdownload");
-    }
-    a("tencentmap_click", "dl");
-    b("click_navig", "2");
-  }
-  
-  protected void d()
-  {
-    String str = "http://maps.google.com/maps?f=d&source=s_d&saddr=%f,%f&daddr=%f,%f&hl=zh";
-    if (this.jdField_a_of_type_Int == 0) {
-      str = "http://maps.google.com/maps?f=d&source=s_d&saddr=%f,%f&daddr=%f,%f&hl=zh" + "&dirflg=w";
-    }
-    str = String.format(str, new Object[] { Double.valueOf(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D), Double.valueOf(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D), Double.valueOf(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D), Double.valueOf(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D) });
-    try
-    {
-      Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(str));
-      localIntent.addFlags(0);
-      localIntent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqmap", 2, "openGoogleMapForRoute:" + str);
-      }
+    AppInterface localAppInterface = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.a();
+    if ((localAppInterface == null) || (localActivity == null)) {
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("Q.qqmap", 2, "openGoogleMapForRoute:" + str, localException);
-    }
+    a();
   }
   
-  protected void e()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_Int == 0) {}
-    for (int i = 4;; i = 2)
-    {
-      String str = String.format("androidamap://route?sourceApplication=qq&slat=%f&slon=%f&sname=%s&dlat=%f&dlon=%f&dname=%s&dev=0&m=0&t=%d", new Object[] { Double.valueOf(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D), Double.valueOf(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D), this.jdField_a_of_type_JavaLangString, Double.valueOf(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D), Double.valueOf(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D), this.jdField_b_of_type_JavaLangString, Integer.valueOf(i) });
-      try
-      {
-        Intent localIntent = new Intent("android.intent.action.VIEW");
-        localIntent.setData(Uri.parse(str));
-        localIntent.setPackage("com.autonavi.minimap");
-        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqmap", 2, "openGaodeMapForRoute:" + str);
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.w("Q.qqmap", 2, "openGaodeMapForRoute:" + str, localException);
-        return;
-      }
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      this.jdField_a_of_type_Aady.b();
     }
-  }
-  
-  protected void f()
-  {
-    String str = "driving";
-    if (this.jdField_a_of_type_Int == 0) {
-      str = "walking";
-    }
-    Object localObject2 = "";
-    Object localObject1 = localObject2;
-    try
-    {
-      double[] arrayOfDouble1 = a(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D);
-      localObject1 = localObject2;
-      double[] arrayOfDouble2 = a(this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D);
-      localObject1 = localObject2;
-      str = String.format("intent://map/direction?origin=latlng:%f,%f|name:%s&destination=latlng:%f,%f|name:%s&mode=%s&src=src=thirdapp.navi.yourCompanyName.yourAppName#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end", new Object[] { Double.valueOf(arrayOfDouble1[0]), Double.valueOf(arrayOfDouble1[1]), this.jdField_a_of_type_JavaLangString, Double.valueOf(arrayOfDouble2[0]), Double.valueOf(arrayOfDouble2[1]), this.jdField_b_of_type_JavaLangString, str });
-      localObject1 = str;
-      localObject2 = Intent.getIntent(str);
-      localObject1 = str;
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
-      localObject1 = str;
-      if (QLog.isColorLevel())
-      {
-        localObject1 = str;
-        QLog.d("Q.qqmap", 2, "openBaiduMapForRoute:" + str);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("Q.qqmap", 2, "openBaiduMapForRoute:" + (String)localObject1, localException);
-    }
+    this.jdField_a_of_type_Aafb = null;
   }
 }
 

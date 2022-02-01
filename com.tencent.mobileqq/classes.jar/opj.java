@@ -1,51 +1,9 @@
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.google.gson.reflect.TypeToken;
+import java.util.List;
 
-public class opj
-  extends bndj
-{
-  public opj(@NonNull bnee parambnee, int paramInt)
-  {
-    super(parambnee, paramInt);
-  }
-  
-  private void d()
-  {
-    a(2131378952).setVisibility(8);
-    ((TextView)a(2131365136)).setText(amtj.a(2131711972));
-  }
-  
-  public void a()
-  {
-    super.a();
-    d();
-  }
-  
-  public void onClick(View paramView)
-  {
-    super.onClick(paramView);
-    int i = paramView.getId();
-    Long localLong = (Long)this.a.get(i);
-    if (localLong != null) {
-      switch ((int)localLong.longValue())
-      {
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      odq.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "3", "", "", "", false);
-      continue;
-      odq.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "1", "", "", "", false);
-      continue;
-      odq.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "2", "", "", "", false);
-    }
-  }
-}
+final class opj
+  extends TypeToken<List<oon>>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

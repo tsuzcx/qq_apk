@@ -1,69 +1,23 @@
-import android.os.Bundle;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.coremedia.CMTimeRange;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+import android.support.annotation.NonNull;
+import com.tencent.util.Pair;
+import cooperation.qqreader.net.BusinessTask;
 
-public class bmhe
-  implements bmnl
+public final class bmhe
 {
-  public bmhe(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
+  public static final Pair<Integer, Integer> a = new Pair(Integer.valueOf(1154), Integer.valueOf(1));
+  public static final Pair<Integer, Integer> b = new Pair(Integer.valueOf(1529), Integer.valueOf(2));
+  public static final Pair<Integer, Integer> c = new Pair(Integer.valueOf(1201), Integer.valueOf(1));
   
-  public void aB_()
+  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bmfq parambmfq)
   {
-    this.a.a().a(this.a.getActivity(), true);
+    a(paramPair, parambmfq, false);
   }
   
-  public void aC_()
+  public static void a(@NonNull Pair<Integer, Integer> paramPair, @NonNull bmfq parambmfq, boolean paramBoolean)
   {
-    bmbc.a().a(1);
-    Object localObject;
-    String str1;
-    label33:
-    String str2;
-    if (AEEditorVideoClipFragment.a(this.a))
-    {
-      localObject = "video_edit_clip_start_time";
-      if (!AEEditorVideoClipFragment.a(this.a)) {
-        break label190;
-      }
-      str1 = "video_edit_clip_end_time";
-      if (!AEEditorVideoClipFragment.a(this.a)) {
-        break label196;
-      }
-      str2 = "video_edit_clip_speed";
-      label46:
-      if (AEEditorVideoClipFragment.a(this.a) == null) {
-        break label202;
-      }
-      this.a.getArguments().putLong((String)localObject, AEEditorVideoClipFragment.a(this.a).getStartUs());
-      this.a.getArguments().putLong(str1, AEEditorVideoClipFragment.a(this.a).getEndUs());
-    }
-    for (;;)
-    {
-      localObject = new Bundle(this.a.getArguments());
-      ((Bundle)localObject).putString("select_path", AEEditorVideoClipFragment.a(this.a));
-      if (this.a.a != null) {
-        ((Bundle)localObject).putFloat(str2, this.a.a.floatValue());
-      }
-      this.a.getArguments().putString("editor_filter_id", "");
-      this.a.a().c(this.a.a(), (Bundle)localObject);
-      return;
-      localObject = "starttime";
-      break;
-      label190:
-      str1 = "endtime";
-      break label33;
-      label196:
-      str2 = "speed";
-      break label46;
-      label202:
-      if (AEEditorVideoClipFragment.a(this.a) != null)
-      {
-        this.a.getArguments().putLong((String)localObject, 0L);
-        this.a.getArguments().putLong(str1, Math.min(60000000L, AEEditorVideoClipFragment.a(this.a).getDuration().getTimeUs()));
-      }
-    }
+    paramPair = new BusinessTask("ZzConfigDataTask", paramPair);
+    paramPair.a(parambmfq, paramBoolean);
+    paramPair.a();
   }
 }
 

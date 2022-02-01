@@ -1,23 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 
 public class teb
-  implements tdu
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private final ViewPagerCompat a;
+  public teb(SlideActiveAnimController paramSlideActiveAnimController, Runnable paramRunnable) {}
   
-  public teb(ViewPagerCompat paramViewPagerCompat)
+  public void onGlobalLayout()
   {
-    this.a = paramViewPagerCompat;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a();
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
-  
-  public void a(tdz paramtdz)
-  {
-    this.a.setCurrentItem(paramtdz.a());
-  }
-  
-  public void b(tdz paramtdz) {}
-  
-  public void c(tdz paramtdz) {}
 }
 
 

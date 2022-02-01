@@ -1,16 +1,15 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
+import android.os.IInterface;
 
-public class behq
-  implements bfey
+public abstract interface behq
+  extends IInterface
 {
-  public behq(TroopMoreDetailFragment paramTroopMoreDetailFragment) {}
+  public abstract void beginSwitch();
   
-  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
-  {
-    paramView.setVisibility(8);
-  }
+  public abstract void doSwitch(String paramString1, String paramString2);
+  
+  public abstract void onProgress(long paramLong1, long paramLong2);
+  
+  public abstract void postSwitch(int paramInt);
 }
 
 

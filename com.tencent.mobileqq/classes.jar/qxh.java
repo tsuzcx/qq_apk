@@ -1,25 +1,16 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+
 public class qxh
+  extends RecyclerView.ViewHolder
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
+  public TemplateBean a;
   
-  public qxh(qxg paramqxg) {}
-  
-  public String toString()
+  public qxh(qwx paramqwx, Container paramContainer, TemplateBean paramTemplateBean)
   {
-    return "\nFeedExpInfo{feedID='" + this.jdField_a_of_type_JavaLangString + '\'' + ", recReason='" + this.jdField_b_of_type_JavaLangString + '\'' + ", style=" + this.jdField_a_of_type_Int + ", wordCnt=" + this.jdField_b_of_type_Int + ", viewHeight=" + this.jdField_c_of_type_Int + ", isFirstScreen=" + this.jdField_a_of_type_Boolean + ", isLastScreen=" + this.jdField_b_of_type_Boolean + ", expPosition=" + this.jdField_d_of_type_Int + ", isClick=" + this.jdField_c_of_type_Boolean + ", readDuration=" + this.jdField_a_of_type_Long + ", expDuration=" + this.jdField_b_of_type_Long + ", expInAZDuration=" + this.jdField_c_of_type_Long + ", gyroscopeData='" + this.jdField_c_of_type_JavaLangString + '\'' + ", articleID='" + this.jdField_d_of_type_JavaLangString + '\'' + '}';
+    super(paramContainer);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = paramTemplateBean;
   }
 }
 

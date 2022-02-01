@@ -16,12 +16,12 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
-import ngb;
+import nmt;
 
 public class GameRedPacketFragment
   extends WebViewFragment
 {
-  public BroadcastReceiver a = new ngb(this);
+  public BroadcastReceiver a = new nmt(this);
   
   public int doCreateLoopStep_Final(Bundle paramBundle)
   {
@@ -42,7 +42,7 @@ public class GameRedPacketFragment
   public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
     int i = super.doCreateLoopStep_InitUIContent(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167276);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167296);
     if ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView)) {
       ((RefreshView)this.mUIStyleHandler.webviewWrapper).a(false);
     }

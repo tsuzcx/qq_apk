@@ -1,47 +1,18 @@
-import Wallet.RedPackGrapInfo;
-import android.animation.Animator;
-import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
-import java.util.List;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajxu
-  implements IRedPacket.OnGetAvailableListListener
+  extends atfq
 {
-  public ajxu(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public ajxu(Conversation paramConversation) {}
   
-  public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null)
-      {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
-        TroopUnAccalimedRedPacketList.a(this.a).setText(amtj.a(2131714813));
-      }
-    }
-    do
-    {
-      return;
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).a(paramList);
-      }
-    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
-    TroopUnAccalimedRedPacketList.a(this.a).start();
+    this.a.a(8, paramString, -2147483648);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a(8, paramString1, -2147483648);
   }
 }
 

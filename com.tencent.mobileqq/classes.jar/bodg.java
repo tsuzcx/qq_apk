@@ -1,35 +1,29 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
 
-public class bodg
+final class bodg
+  implements bnuy
 {
-  public static void a(int paramInt)
+  bodg(AEEditorTextBean paramAEEditorTextBean, bodi parambodi) {}
+  
+  public void a(int paramInt)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("crashKind", "" + paramInt);
-    StatisticCollector.getInstance(VideoEnvironment.getContext()).collectPerformance(null, "sv_filter_egl_crash_exp", true, 0L, 0L, localHashMap, "");
+    if (this.jdField_a_of_type_Bodi != null) {
+      this.jdField_a_of_type_Bodi.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, (int)(0.66D * paramInt));
+    }
   }
   
-  public static void a(String paramString, long paramLong)
+  public void a(boolean paramBoolean)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("time", "" + paramLong);
-    localHashMap.put("filter_id", bodh.jdField_a_of_type_JavaLangString);
-    localHashMap.put("front_camera", String.valueOf(bodh.jdField_a_of_type_Boolean));
-    StatisticCollector.getInstance(VideoEnvironment.getContext()).collectPerformance(null, paramString, true, paramLong, bobu.c, localHashMap, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("PerformenceDataTag", 2, "reportPerformance : tag = " + paramString + " ; duration = " + paramLong + " ; filter_id = " + bodh.jdField_a_of_type_JavaLangString + " ; front_camera = " + bodh.jdField_a_of_type_Boolean);
+    if (paramBoolean)
+    {
+      bodf.b(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Bodi);
+      bodf.c(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Bodi);
+      return;
     }
+    if (this.jdField_a_of_type_Bodi != null) {
+      this.jdField_a_of_type_Bodi.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, paramBoolean, "ERROR_PAG_ZIP_DOWNLOAD_FAILED");
+    }
+    bnrh.a("AEEditorPagStickerUtil", "[downloadPagZip] download pag zip failed");
   }
 }
 

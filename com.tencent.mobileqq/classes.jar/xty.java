@@ -1,17 +1,8 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.view.View;
 
-class xty
-  implements xud
+public abstract interface xty
 {
-  xty(xtx paramxtx, ImageView paramImageView) {}
-  
-  public void a(Drawable paramDrawable)
-  {
-    if (paramDrawable != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-    }
-  }
+  public abstract void a(String paramString, int paramInt, View paramView, yap paramyap);
 }
 
 

@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import java.util.List;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
-
-public class bdcn
-  implements BusinessObserver
+public abstract interface bdcn
 {
-  public void a(boolean paramBoolean, String paramString1, String paramString2, List<oidb_0xe61.BeancurdCubeInfoResult> paramList) {}
+  public abstract void a(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt == 0)
-    {
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], (String)paramObject[1], (List)paramObject[2]);
-    }
-  }
+  public abstract void a(long paramLong, int paramInt1, float paramFloat1, float paramFloat2, int paramInt2);
+  
+  public abstract boolean a(long paramLong, int paramInt);
 }
 
 

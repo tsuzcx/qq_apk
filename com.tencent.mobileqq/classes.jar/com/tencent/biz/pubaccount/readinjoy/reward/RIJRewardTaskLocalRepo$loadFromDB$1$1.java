@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
-import qxt;
+import rjz;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 final class RIJRewardTaskLocalRepo$loadFromDB$1$1
@@ -18,10 +18,10 @@ final class RIJRewardTaskLocalRepo$loadFromDB$1$1
     while (localIterator.hasNext())
     {
       Object localObject = (RedPacketTaskData)localIterator.next();
-      qxt localqxt = this.this$0.this$0;
+      rjz localrjz = this.this$0.this$0;
       localObject = ((RedPacketTaskData)localObject).rowKey;
       Intrinsics.checkExpressionValueIsNotNull(localObject, "taskData.rowKey");
-      qxt.a(localqxt, (String)localObject);
+      rjz.a(localrjz, (String)localObject);
     }
   }
 }

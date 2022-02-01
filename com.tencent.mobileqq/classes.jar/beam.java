@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.teamwork.DocsGrayTipsInfo;
 
-final class beam
-  extends amsu
+public final class beam
+  implements Parcelable.Creator<DocsGrayTipsInfo>
 {
-  WeakReference<beaj> a;
-  
-  private beam(beaj parambeaj)
+  public DocsGrayTipsInfo a(Parcel paramParcel)
   {
-    this.a = new WeakReference(parambeaj);
+    return new DocsGrayTipsInfo(paramParcel);
   }
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public DocsGrayTipsInfo[] a(int paramInt)
   {
-    beaj localbeaj = (beaj)this.a.get();
-    if ((localbeaj != null) && (paramBoolean) && (paramString != null) && (localbeaj.a != null) && (localbeaj.a.size() > 0) && (paramString.equals(((TroopInfo)localbeaj.a.get(0)).troopuin))) {
-      localbeaj.c();
-    }
+    return new DocsGrayTipsInfo[paramInt];
   }
 }
 

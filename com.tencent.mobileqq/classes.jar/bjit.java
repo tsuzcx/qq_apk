@@ -1,6 +1,15 @@
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.List;
+
 public abstract interface bjit
+  extends DownloadListener
 {
-  public abstract void a(int paramInt, bjis parambjis, bjiu parambjiu);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(DownloadInfo paramDownloadInfo, int paramInt);
+  
+  public abstract void a(List<DownloadInfo> paramList);
 }
 
 

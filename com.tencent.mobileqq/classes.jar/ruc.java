@@ -1,29 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.DeliverData;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$performAnim$1$1"}, k=3, mv={1, 1, 16})
-final class ruc
-  implements ValueAnimator.AnimatorUpdateListener
+public final class ruc
+  implements Parcelable.Creator<ReadInJoyDeliverUGCActivity.DeliverData>
 {
-  ruc(rvs paramrvs, ValueAnimator paramValueAnimator) {}
-  
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ReadInJoyDeliverUGCActivity.DeliverData a(Parcel paramParcel)
   {
-    Object localObject = this.jdField_a_of_type_Rvs.j;
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "videoHolder.columnBanner");
-    localObject = ((ViewGroup)localObject).getLayoutParams();
-    Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if (paramValueAnimator == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
-    }
-    ((ViewGroup.LayoutParams)localObject).height = ((Integer)paramValueAnimator).intValue();
-    this.jdField_a_of_type_Rvs.j.requestLayout();
+    return new ReadInJoyDeliverUGCActivity.DeliverData(paramParcel);
+  }
+  
+  public ReadInJoyDeliverUGCActivity.DeliverData[] a(int paramInt)
+  {
+    return new ReadInJoyDeliverUGCActivity.DeliverData[paramInt];
   }
 }
 

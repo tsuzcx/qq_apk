@@ -1,29 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.qphone.base.util.QLog;
 
 class asjp
-  extends asjn
+  implements DialogInterface.OnDismissListener
 {
-  public asjp(asji paramasji)
-  {
-    super(paramasji);
-  }
+  asjp(asjo paramasjo) {}
   
-  protected String a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return "StateCancelUploadWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func onDismiss begins, mCurTaskId:" + this.a.a);
     }
-    asji.b(this.jdField_a_of_type_Asji, 11, 9);
-    asji.c(this.jdField_a_of_type_Asji, 11, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Asjn = new asjq(this.jdField_a_of_type_Asji);
+    this.a.a(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func onDismiss ends");
+    }
   }
 }
 

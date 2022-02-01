@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aduq;
-import adur;
-import amtj;
+import aelv;
+import aelw;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bcef;
-import bfur;
+import anvx;
+import bdla;
+import bhdj;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -33,7 +33,7 @@ public class PCActiveNoticeActiviy
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559523);
+    super.setContentView(2131559556);
     if ((getIntent() != null) && (getIntent().getExtras() != null)) {}
     for (this.jdField_a_of_type_JavaLangString = getIntent().getExtras().getString("uin"); TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString); this.jdField_a_of_type_JavaLangString = null)
     {
@@ -43,15 +43,15 @@ public class PCActiveNoticeActiviy
     if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
-    paramBundle = amtj.a(2131707021);
+    paramBundle = anvx.a(2131707368);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131558992);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(null).setMessage(getString(2131694313)).setPositiveButton(2131694312, new aduq(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this, 230);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131559019);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(null).setMessage(getString(2131694514)).setPositiveButton(2131694513, new aelv(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTextContentDescription(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnKeyListener(new adur(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnKeyListener(new aelw(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    bcef.b(null, "CliOper", "", "", "0X8004973", "0X8004973", 0, 0, "", "", "", "");
+    bdla.b(null, "CliOper", "", "", "0X8004973", "0X8004973", 0, 0, "", "", "", "");
     return false;
   }
   
@@ -75,7 +75,7 @@ public class PCActiveNoticeActiviy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PCActiveNoticeActiviy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/b8q" android:background="@drawable/dwi" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/gns" />
-        <TextView android:textSize="13.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/mdl" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:text="深圳大学" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/mxc" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/gnu" android:scaleType="centerInside" />
-    </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/jvk" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginBottom="-22.0dip" android:text="测试弹幕1" android:maxEms="10" android:singleLine="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/jvr" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginBottom="-22.0dip" android:text="测试弹幕2" android:maxEms="10" android:singleLine="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/jwu" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginBottom="-22.0dip" android:text="测试弹幕3" android:maxEms="10" android:singleLine="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -1,12 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
 
-final class agcy
-  implements aghk
+public class agcy
+  implements agda
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public agcy(DoodleView paramDoodleView) {}
+  
+  public void a()
   {
-    return 18;
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    }
   }
 }
 

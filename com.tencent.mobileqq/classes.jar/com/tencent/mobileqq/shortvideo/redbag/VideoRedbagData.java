@@ -3,6 +3,7 @@ package com.tencent.mobileqq.shortvideo.redbag;
 import android.content.ContentValues;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.ConflictClause;
@@ -42,7 +43,7 @@ public class VideoRedbagData
     if ((paramString != null) && ((paramString instanceof QQAppInterface)))
     {
       paramString = (QQAppInterface)paramString;
-      ((ProxyManager)paramString.getManager(18)).addMsgQueue(paramString.getAccount(), 0, localVideoRedbagData.getTableName(), localVideoRedbagData, 3, null);
+      ((ProxyManager)paramString.getManager(QQManagerFactory.PROXY_MANAGER)).addMsgQueue(paramString.getAccount(), 0, localVideoRedbagData.getTableName(), localVideoRedbagData, 3, null);
     }
   }
   
@@ -105,7 +106,7 @@ public class VideoRedbagData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData
  * JD-Core Version:    0.7.0.1
  */

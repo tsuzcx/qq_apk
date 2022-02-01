@@ -1,19 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class sbs
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  sbs(sbp paramsbp, rvv paramrvv) {}
+  sbs(sbr paramsbr) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Sbp.b(this.jdField_a_of_type_Rvv);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    sbp.a(this.jdField_a_of_type_Sbp).setRepeatCount(0);
+    sbr.a(this.a).onAction(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

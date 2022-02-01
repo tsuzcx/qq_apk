@@ -1,17 +1,17 @@
 package com.tencent.avgame.gameroom.video;
 
 import com.tencent.superplayer.api.ISuperPlayer;
-import nfq;
+import nmi;
 
 public class AVGameMediaPlayerWrapper$5
   implements Runnable
 {
-  public AVGameMediaPlayerWrapper$5(nfq paramnfq) {}
+  public AVGameMediaPlayerWrapper$5(nmi paramnmi) {}
   
   public void run()
   {
-    if ((nfq.a(this.this$0) != null) && (nfq.a(this.this$0).isPlaying())) {
-      nfq.a(this.this$0).stop();
+    if ((nmi.a(this.this$0) != null) && (nmi.a(this.this$0).isPlaying())) {
+      nmi.a(this.this$0).stop();
     }
   }
 }

@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import android.os.Bundle;
 
-public class aixm
-  implements aczg
+class aixm
+  extends anvi
 {
-  public aixm(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
+  aixm(aixk paramaixk) {}
   
-  public boolean a(boolean paramBoolean)
+  protected void onAddFriendSecCheck(boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (paramBoolean) {
-      bler.a(this.a.getActivity());
-    }
-    return false;
+    aixk.a(this.a, paramBoolean2, paramBundle);
   }
 }
 

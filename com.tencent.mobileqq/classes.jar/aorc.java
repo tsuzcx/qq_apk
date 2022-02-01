@@ -1,19 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aorc
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  aorc(aoqz paramaoqz, String paramString1, String paramString2, DownloadInfo paramDownloadInfo, boolean paramBoolean, int paramInt) {}
+  aorc(aora paramaora) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("ArkApp.downloadyyb.module", 1, new Object[] { "ark.dctrl [doDownloadAction] dialog callback appid=", this.jdField_a_of_type_JavaLangString, ",name=", this.b, ",which:", Integer.valueOf(paramInt) });
-    if (paramInt == 1) {
-      aoqz.a(this.jdField_a_of_type_Aoqz, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
-    }
+    bdla.b(null, "CliOper", "", "", "0X8006B16", "0X8006B16", 0, 0, "", "", "", "");
+    bdla.b(null, "dc00898", "", "", "0X8009AC9", "0X8009AC9", 0, 0, "", "", "", "");
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(aora.a(this.a));
+    int i = ((SharedPreferences)localObject).getInt("push_msg_notify_cancle", 0);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_cancle", i + 1);
+    ((SharedPreferences.Editor)localObject).commit();
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import com.tencent.qphone.base.util.QLog;
 
-public class acfb
-  extends acew
+class acfb
+  implements acfq
 {
-  public int a()
+  acfb(acey paramacey) {}
+  
+  public void a()
   {
-    return super.a() + 1;
+    QLog.i("GdtMvViewController", 1, "onLoadFail,show native");
+    acey.b(this.a);
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  public void b()
   {
-    apsz.a(paramList, paramList1, paramStringBuilder, paramMsg);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (21 == paramElem.common_elem.uint32_service_type.get()) && (3 == paramElem.common_elem.uint32_business_type.get());
+    QLog.i("GdtMvViewController", 1, "onLoadSuccess");
+    acey.a(this.a).d = true;
   }
 }
 

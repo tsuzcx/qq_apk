@@ -1,90 +1,52 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.view.ViewGroup;
+import java.util.Properties;
 
-public class vgv
+public abstract interface vgv<U, V>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
+  public abstract int a();
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public abstract long a();
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public abstract String a();
   
-  public vgv a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = BaseApplicationImpl.context.getSharedPreferences("QCircle_crash_share", 0).getInt("QCircle_crash_count_" + paramInt, 0);
-    return this;
-  }
+  public abstract Properties a();
   
-  public vgv a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
+  public abstract void a();
   
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
+  public abstract void a(int paramInt);
   
-  public vgv b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
+  public abstract void a(Context paramContext, long paramLong, int paramInt, vgu<U, V> paramvgu);
   
-  public String c()
-  {
-    return this.d;
-  }
+  public abstract void a(vgx paramvgx);
   
-  public vgv c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
+  public abstract void a(vhc paramvhc);
   
-  public String d()
-  {
-    if ("Q_CIRCLE_PLUGIN_ASSET".equals(this.d)) {
-      return "A";
-    }
-    if ("Q_CIRCLE_PLUGIN_NETWORK".equals(this.d)) {
-      return "N";
-    }
-    if ("Q_CIRCLE_PLUGIN_TEST".equals(this.d)) {
-      return "T";
-    }
-    return "U";
-  }
+  public abstract void a(vhc paramvhc, ViewGroup paramViewGroup);
   
-  public vgv d(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public vgv e(String paramString)
-  {
-    return this;
-  }
+  public abstract boolean a();
   
-  public String toString()
-  {
-    return "QCircleSampleInfo{mType='" + this.d + '\'' + ", mVersionCode=" + this.jdField_a_of_type_Int + ", mCrashCount=" + this.jdField_b_of_type_Int + ", HOST_SUPPORT_MINI =" + 1000 + '}';
-  }
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

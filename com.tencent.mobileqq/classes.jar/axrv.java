@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupMenu;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-class axrv
-  implements View.OnClickListener
+public class axrv
+  implements DialogInterface.OnClickListener
 {
-  axrv(axrr paramaxrr) {}
+  public axrv(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PopupMenu localPopupMenu = new PopupMenu(axrr.a(this.a), paramView);
-    this.a.a(axrr.a(this.a).b, localPopupMenu);
-    localPopupMenu.show();
-    EventCollector.getInstance().onViewClicked(paramView);
+    axss.a(this.a, 10);
+    GameRoomInviteActivity.b(this.a);
   }
 }
 

@@ -1,17 +1,18 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession;
 
-class avww
-  implements WXShareHelper.WXShareListener
+public final class avww
+  implements Parcelable.Creator<SingTogetherSession>
 {
-  avww(avwv paramavwv) {}
-  
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public SingTogetherSession a(Parcel paramParcel)
   {
-    QLog.d("AIOShareActionSheet", 1, "WXShareResult trans:" + paramBaseResp.transaction + " ,errCode:" + paramBaseResp.errCode + " ,errStr:" + paramBaseResp.errStr);
-    WXShareHelper.getInstance().removeObserver(this);
+    return new SingTogetherSession(paramParcel, null);
+  }
+  
+  public SingTogetherSession[] a(int paramInt)
+  {
+    return new SingTogetherSession[paramInt];
   }
 }
 

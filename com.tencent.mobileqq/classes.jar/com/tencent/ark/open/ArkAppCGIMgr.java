@@ -12,6 +12,7 @@ import com.tencent.ark.open.delegate.IArkDelegateNet;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.PublicKey;
+import java.security.Signature;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -168,7 +169,7 @@ public class ArkAppCGIMgr
     // Local variable table:
     //   start	length	slot	name	signature
     //   12	38	0	localObject1	Object
-    //   53	20	0	localException	java.lang.Exception
+    //   53	20	0	localException	Exception
     //   88	5	0	localObject2	Object
     // Exception table:
     //   from	to	target	type
@@ -201,6 +202,47 @@ public class ArkAppCGIMgr
         }
       }
       return false;
+    }
+  }
+  
+  protected static void onDownloadAppPackage(ArkAppCGIMgr.QueryTask_DownloadAppPackage paramQueryTask_DownloadAppPackage, boolean paramBoolean, byte[] paramArrayOfByte)
+  {
+    byte[] arrayOfByte;
+    int i;
+    label34:
+    ArkAppCGIMgr.ArkAppCGICallback localArkAppCGICallback;
+    if (!paramBoolean)
+    {
+      ENV.logI("ArkApp.ArkAppCGIMgr", String.format("onDownloadAppPackage: net fail, url=%s", new Object[] { paramQueryTask_DownloadAppPackage.url }));
+      arrayOfByte = null;
+      i = 0;
+      if (i >= paramQueryTask_DownloadAppPackage.callback.size()) {
+        return;
+      }
+      paramArrayOfByte = paramQueryTask_DownloadAppPackage.userdata.get(i);
+      localArkAppCGICallback = (ArkAppCGIMgr.ArkAppCGICallback)paramQueryTask_DownloadAppPackage.callback.get(i);
+      if (localArkAppCGICallback != null) {
+        if (arrayOfByte == null) {
+          break label147;
+        }
+      }
+    }
+    label147:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localArkAppCGICallback.onDownloadAppPackage(paramBoolean, arrayOfByte, paramArrayOfByte);
+      i += 1;
+      break label34;
+      if (paramQueryTask_DownloadAppPackage.appSign != null)
+      {
+        arrayOfByte = paramArrayOfByte;
+        if (verifyAppPackage(paramArrayOfByte, paramQueryTask_DownloadAppPackage.appSign)) {
+          break;
+        }
+      }
+      ENV.logI("ArkApp.ArkAppCGIMgr", String.format("onDownloadAppPackage: verifyAppPackage fail, url=%s", new Object[] { paramQueryTask_DownloadAppPackage.url }));
+      arrayOfByte = null;
+      break;
     }
   }
   
@@ -451,6 +493,254 @@ public class ArkAppCGIMgr
     }
   }
   
+  /* Error */
+  static boolean verifyAppPackage(File paramFile, byte[] paramArrayOfByte)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 590	java/io/File:exists	()Z
+    //   4: istore 4
+    //   6: iload 4
+    //   8: ifne +58 -> 66
+    //   11: iconst_0
+    //   12: ifeq +11 -> 23
+    //   15: new 592	java/lang/NullPointerException
+    //   18: dup
+    //   19: invokespecial 593	java/lang/NullPointerException:<init>	()V
+    //   22: athrow
+    //   23: iconst_0
+    //   24: ireturn
+    //   25: astore_0
+    //   26: getstatic 40	com/tencent/ark/open/ArkAppCGIMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   29: ldc 24
+    //   31: new 85	java/lang/StringBuilder
+    //   34: dup
+    //   35: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   38: ldc_w 595
+    //   41: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: aload_0
+    //   45: invokevirtual 279	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   48: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   54: iconst_0
+    //   55: anewarray 4	java/lang/Object
+    //   58: invokestatic 133	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   61: invokevirtual 234	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   64: iconst_0
+    //   65: ireturn
+    //   66: new 597	java/io/BufferedInputStream
+    //   69: dup
+    //   70: new 599	java/io/FileInputStream
+    //   73: dup
+    //   74: aload_0
+    //   75: invokespecial 602	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   78: invokespecial 605	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   81: astore 6
+    //   83: aload 6
+    //   85: astore 5
+    //   87: aload_0
+    //   88: invokevirtual 607	java/io/File:length	()J
+    //   91: l2i
+    //   92: newarray byte
+    //   94: astore_0
+    //   95: aload 6
+    //   97: astore 5
+    //   99: aload 6
+    //   101: aload_0
+    //   102: invokevirtual 611	java/io/BufferedInputStream:read	([B)I
+    //   105: istore_3
+    //   106: aload 6
+    //   108: astore 5
+    //   110: aload_0
+    //   111: arraylength
+    //   112: istore_2
+    //   113: iload_3
+    //   114: iload_2
+    //   115: if_icmpeq +56 -> 171
+    //   118: aload 6
+    //   120: ifnull -97 -> 23
+    //   123: aload 6
+    //   125: invokevirtual 614	java/io/BufferedInputStream:close	()V
+    //   128: iconst_0
+    //   129: ireturn
+    //   130: astore_0
+    //   131: getstatic 40	com/tencent/ark/open/ArkAppCGIMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   134: ldc 24
+    //   136: new 85	java/lang/StringBuilder
+    //   139: dup
+    //   140: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   143: ldc_w 595
+    //   146: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: aload_0
+    //   150: invokevirtual 279	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   153: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   159: iconst_0
+    //   160: anewarray 4	java/lang/Object
+    //   163: invokestatic 133	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   166: invokevirtual 234	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   169: iconst_0
+    //   170: ireturn
+    //   171: aload 6
+    //   173: astore 5
+    //   175: aload_0
+    //   176: aload_1
+    //   177: invokestatic 337	com/tencent/ark/open/ArkAppCGIMgr:verifyAppPackage	([B[B)Z
+    //   180: istore 4
+    //   182: aload 6
+    //   184: ifnull +8 -> 192
+    //   187: aload 6
+    //   189: invokevirtual 614	java/io/BufferedInputStream:close	()V
+    //   192: iload 4
+    //   194: ireturn
+    //   195: astore_0
+    //   196: getstatic 40	com/tencent/ark/open/ArkAppCGIMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   199: ldc 24
+    //   201: new 85	java/lang/StringBuilder
+    //   204: dup
+    //   205: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   208: ldc_w 595
+    //   211: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: aload_0
+    //   215: invokevirtual 279	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   218: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   224: iconst_0
+    //   225: anewarray 4	java/lang/Object
+    //   228: invokestatic 133	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   231: invokevirtual 234	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   234: goto -42 -> 192
+    //   237: astore_1
+    //   238: aconst_null
+    //   239: astore_0
+    //   240: aload_0
+    //   241: astore 5
+    //   243: getstatic 40	com/tencent/ark/open/ArkAppCGIMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   246: ldc 24
+    //   248: new 85	java/lang/StringBuilder
+    //   251: dup
+    //   252: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   255: ldc_w 616
+    //   258: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: aload_1
+    //   262: invokevirtual 279	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   265: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   271: iconst_0
+    //   272: anewarray 4	java/lang/Object
+    //   275: invokestatic 133	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   278: invokevirtual 234	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   281: aload_0
+    //   282: ifnull +7 -> 289
+    //   285: aload_0
+    //   286: invokevirtual 614	java/io/BufferedInputStream:close	()V
+    //   289: iconst_1
+    //   290: ireturn
+    //   291: astore_0
+    //   292: getstatic 40	com/tencent/ark/open/ArkAppCGIMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   295: ldc 24
+    //   297: new 85	java/lang/StringBuilder
+    //   300: dup
+    //   301: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   304: ldc_w 595
+    //   307: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   310: aload_0
+    //   311: invokevirtual 279	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   314: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   317: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   320: iconst_0
+    //   321: anewarray 4	java/lang/Object
+    //   324: invokestatic 133	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   327: invokevirtual 234	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   330: goto -41 -> 289
+    //   333: astore_0
+    //   334: aconst_null
+    //   335: astore 5
+    //   337: aload 5
+    //   339: ifnull +8 -> 347
+    //   342: aload 5
+    //   344: invokevirtual 614	java/io/BufferedInputStream:close	()V
+    //   347: aload_0
+    //   348: athrow
+    //   349: astore_1
+    //   350: getstatic 40	com/tencent/ark/open/ArkAppCGIMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   353: ldc 24
+    //   355: new 85	java/lang/StringBuilder
+    //   358: dup
+    //   359: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   362: ldc_w 595
+    //   365: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   368: aload_1
+    //   369: invokevirtual 279	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   372: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   375: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   378: iconst_0
+    //   379: anewarray 4	java/lang/Object
+    //   382: invokestatic 133	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   385: invokevirtual 234	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   388: goto -41 -> 347
+    //   391: astore_0
+    //   392: goto -55 -> 337
+    //   395: astore_1
+    //   396: aload 6
+    //   398: astore_0
+    //   399: goto -159 -> 240
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	402	0	paramFile	File
+    //   0	402	1	paramArrayOfByte	byte[]
+    //   112	4	2	i	int
+    //   105	11	3	j	int
+    //   4	189	4	bool	boolean
+    //   85	258	5	localObject	Object
+    //   81	316	6	localBufferedInputStream	java.io.BufferedInputStream
+    // Exception table:
+    //   from	to	target	type
+    //   15	23	25	java/lang/Exception
+    //   123	128	130	java/lang/Exception
+    //   187	192	195	java/lang/Exception
+    //   0	6	237	java/lang/Exception
+    //   66	83	237	java/lang/Exception
+    //   285	289	291	java/lang/Exception
+    //   0	6	333	finally
+    //   66	83	333	finally
+    //   342	347	349	java/lang/Exception
+    //   87	95	391	finally
+    //   99	106	391	finally
+    //   110	113	391	finally
+    //   175	182	391	finally
+    //   243	281	391	finally
+    //   87	95	395	java/lang/Exception
+    //   99	106	395	java/lang/Exception
+    //   110	113	395	java/lang/Exception
+    //   175	182	395	java/lang/Exception
+  }
+  
+  static boolean verifyAppPackage(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    if (paramArrayOfByte1 == null) {
+      return false;
+    }
+    PublicKey localPublicKey = getArkAppPackagePubliceKey();
+    if (localPublicKey == null) {
+      return true;
+    }
+    try
+    {
+      Signature localSignature = Signature.getInstance("SHA1withRSA");
+      localSignature.initVerify(localPublicKey);
+      localSignature.update(paramArrayOfByte1);
+      boolean bool = localSignature.verify(paramArrayOfByte2);
+      ENV.logI("ArkApp.ArkAppCGIMgr", String.format("verifyAppPackage, verify result is " + bool, new Object[0]));
+      return bool;
+    }
+    catch (Exception paramArrayOfByte1)
+    {
+      ENV.logI("ArkApp.ArkAppCGIMgr", String.format("verifyAppPackage, verify Exception:" + paramArrayOfByte1.getMessage(), new Object[0]));
+    }
+    return true;
+  }
+  
   public void downloadAppIcon(String paramString, Object paramObject, ArkAppCGIMgr.ArkAppCGICallback paramArkAppCGICallback)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramArkAppCGICallback != null))
@@ -490,43 +780,6 @@ public class ArkAppCGIMgr
     runTask(localQueryTask, new ArkAppCGIMgr.3(this));
   }
   
-  protected void onDownloadAppPackage(ArkAppCGIMgr.QueryTask_DownloadAppPackage paramQueryTask_DownloadAppPackage, boolean paramBoolean, byte[] paramArrayOfByte)
-  {
-    int i;
-    label34:
-    Object localObject;
-    ArkAppCGIMgr.ArkAppCGICallback localArkAppCGICallback;
-    if (!paramBoolean)
-    {
-      ENV.logI("ArkApp.ArkAppCGIMgr", String.format("onDownloadAppPackage: net fail, url=%s", new Object[] { paramQueryTask_DownloadAppPackage.url }));
-      paramArrayOfByte = null;
-      i = 0;
-      if (i >= paramQueryTask_DownloadAppPackage.callback.size()) {
-        return;
-      }
-      localObject = paramQueryTask_DownloadAppPackage.userdata.get(i);
-      localArkAppCGICallback = (ArkAppCGIMgr.ArkAppCGICallback)paramQueryTask_DownloadAppPackage.callback.get(i);
-      if (localArkAppCGICallback != null) {
-        if (paramArrayOfByte == null) {
-          break label152;
-        }
-      }
-    }
-    label152:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localArkAppCGICallback.onDownloadAppPackage(paramBoolean, paramArrayOfByte, localObject);
-      i += 1;
-      break label34;
-      if ((paramQueryTask_DownloadAppPackage.appSign != null) && (verifyAppPackage(paramQueryTask_DownloadAppPackage.rspFile, paramQueryTask_DownloadAppPackage.appSign))) {
-        break;
-      }
-      ENV.logI("ArkApp.ArkAppCGIMgr", String.format("onDownloadAppPackage: verifyAppPackage fail, url=%s", new Object[] { paramQueryTask_DownloadAppPackage.url }));
-      paramArrayOfByte = null;
-      break;
-    }
-  }
-  
   public void queryAppInfoByAppNameBatch(ArrayList<ArkAppCGIMgr.AppNameVersion> paramArrayList, Object paramObject, ArkAppCGIMgr.ArkAppCGICallback paramArkAppCGICallback)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
@@ -546,211 +799,6 @@ public class ArkAppCGIMgr
       return;
     }
     ENV.logE("ArkApp.ArkAppCGIMgr", String.format("ArkTemp.queryAppInfoByAppNameBatch. sso request, req=%s", new Object[] { paramArrayList }));
-  }
-  
-  /* Error */
-  public boolean verifyAppPackage(File paramFile, byte[] paramArrayOfByte)
-  {
-    // Byte code:
-    //   0: invokestatic 656	com/tencent/ark/open/ArkAppCGIMgr:getArkAppPackagePubliceKey	()Ljava/security/PublicKey;
-    //   3: astore 5
-    //   5: aload 5
-    //   7: ifnonnull +5 -> 12
-    //   10: iconst_1
-    //   11: ireturn
-    //   12: sipush 1024
-    //   15: newarray byte
-    //   17: astore 6
-    //   19: ldc_w 658
-    //   22: invokestatic 663	java/security/Signature:getInstance	(Ljava/lang/String;)Ljava/security/Signature;
-    //   25: astore 7
-    //   27: aload 7
-    //   29: aload 5
-    //   31: invokevirtual 667	java/security/Signature:initVerify	(Ljava/security/PublicKey;)V
-    //   34: new 669	java/io/BufferedInputStream
-    //   37: dup
-    //   38: new 671	java/io/FileInputStream
-    //   41: dup
-    //   42: aload_1
-    //   43: invokespecial 674	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   46: invokespecial 677	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   49: astore 5
-    //   51: aload 5
-    //   53: astore_1
-    //   54: aload 5
-    //   56: aload 6
-    //   58: iconst_0
-    //   59: sipush 1024
-    //   62: invokevirtual 681	java/io/BufferedInputStream:read	([BII)I
-    //   65: istore_3
-    //   66: iconst_m1
-    //   67: iload_3
-    //   68: if_icmpeq +117 -> 185
-    //   71: aload 5
-    //   73: astore_1
-    //   74: aload 7
-    //   76: aload 6
-    //   78: iconst_0
-    //   79: iload_3
-    //   80: invokevirtual 685	java/security/Signature:update	([BII)V
-    //   83: goto -32 -> 51
-    //   86: astore_1
-    //   87: aload 5
-    //   89: astore_2
-    //   90: aload_1
-    //   91: astore 5
-    //   93: aload_2
-    //   94: astore_1
-    //   95: getstatic 40	com/tencent/ark/open/ArkAppCGIMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   98: ldc 24
-    //   100: new 85	java/lang/StringBuilder
-    //   103: dup
-    //   104: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   107: ldc_w 687
-    //   110: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: aload 5
-    //   115: invokevirtual 279	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   118: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   124: iconst_0
-    //   125: anewarray 4	java/lang/Object
-    //   128: invokestatic 133	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   131: invokevirtual 234	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   134: aload_2
-    //   135: ifnull -125 -> 10
-    //   138: aload_2
-    //   139: invokevirtual 690	java/io/BufferedInputStream:close	()V
-    //   142: iconst_1
-    //   143: ireturn
-    //   144: astore_1
-    //   145: getstatic 40	com/tencent/ark/open/ArkAppCGIMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   148: ldc 24
-    //   150: new 85	java/lang/StringBuilder
-    //   153: dup
-    //   154: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   157: ldc_w 692
-    //   160: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   163: aload_1
-    //   164: invokevirtual 279	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   167: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   173: iconst_0
-    //   174: anewarray 4	java/lang/Object
-    //   177: invokestatic 133	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   180: invokevirtual 234	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   183: iconst_1
-    //   184: ireturn
-    //   185: aload 5
-    //   187: astore_1
-    //   188: aload 7
-    //   190: aload_2
-    //   191: invokevirtual 696	java/security/Signature:verify	([B)Z
-    //   194: istore 4
-    //   196: iload 4
-    //   198: ifeq +58 -> 256
-    //   201: ldc_w 698
-    //   204: astore_2
-    //   205: aload 5
-    //   207: astore_1
-    //   208: getstatic 40	com/tencent/ark/open/ArkAppCGIMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   211: ldc 24
-    //   213: new 85	java/lang/StringBuilder
-    //   216: dup
-    //   217: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   220: ldc_w 700
-    //   223: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   226: aload_2
-    //   227: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   233: iconst_0
-    //   234: anewarray 4	java/lang/Object
-    //   237: invokestatic 133	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   240: invokevirtual 234	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   243: aload 5
-    //   245: ifnull +8 -> 253
-    //   248: aload 5
-    //   250: invokevirtual 690	java/io/BufferedInputStream:close	()V
-    //   253: iload 4
-    //   255: ireturn
-    //   256: ldc_w 702
-    //   259: astore_2
-    //   260: goto -55 -> 205
-    //   263: astore_1
-    //   264: getstatic 40	com/tencent/ark/open/ArkAppCGIMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   267: ldc 24
-    //   269: new 85	java/lang/StringBuilder
-    //   272: dup
-    //   273: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   276: ldc_w 692
-    //   279: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   282: aload_1
-    //   283: invokevirtual 279	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   286: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   289: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   292: iconst_0
-    //   293: anewarray 4	java/lang/Object
-    //   296: invokestatic 133	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   299: invokevirtual 234	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   302: goto -49 -> 253
-    //   305: astore_2
-    //   306: aconst_null
-    //   307: astore_1
-    //   308: aload_1
-    //   309: ifnull +7 -> 316
-    //   312: aload_1
-    //   313: invokevirtual 690	java/io/BufferedInputStream:close	()V
-    //   316: aload_2
-    //   317: athrow
-    //   318: astore_1
-    //   319: getstatic 40	com/tencent/ark/open/ArkAppCGIMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   322: ldc 24
-    //   324: new 85	java/lang/StringBuilder
-    //   327: dup
-    //   328: invokespecial 86	java/lang/StringBuilder:<init>	()V
-    //   331: ldc_w 692
-    //   334: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   337: aload_1
-    //   338: invokevirtual 279	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   341: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   344: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   347: iconst_0
-    //   348: anewarray 4	java/lang/Object
-    //   351: invokestatic 133	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   354: invokevirtual 234	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   357: goto -41 -> 316
-    //   360: astore_2
-    //   361: goto -53 -> 308
-    //   364: astore 5
-    //   366: aconst_null
-    //   367: astore_2
-    //   368: goto -275 -> 93
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	371	0	this	ArkAppCGIMgr
-    //   0	371	1	paramFile	File
-    //   0	371	2	paramArrayOfByte	byte[]
-    //   65	15	3	i	int
-    //   194	60	4	bool	boolean
-    //   3	246	5	localObject	Object
-    //   364	1	5	localException	java.lang.Exception
-    //   17	60	6	arrayOfByte	byte[]
-    //   25	164	7	localSignature	java.security.Signature
-    // Exception table:
-    //   from	to	target	type
-    //   54	66	86	java/lang/Exception
-    //   74	83	86	java/lang/Exception
-    //   188	196	86	java/lang/Exception
-    //   208	243	86	java/lang/Exception
-    //   138	142	144	java/lang/Exception
-    //   248	253	263	java/lang/Exception
-    //   19	51	305	finally
-    //   312	316	318	java/lang/Exception
-    //   54	66	360	finally
-    //   74	83	360	finally
-    //   95	134	360	finally
-    //   188	196	360	finally
-    //   208	243	360	finally
-    //   19	51	364	java/lang/Exception
   }
 }
 

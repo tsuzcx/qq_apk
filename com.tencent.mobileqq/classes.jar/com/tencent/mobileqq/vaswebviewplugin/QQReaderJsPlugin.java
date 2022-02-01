@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
-import bgve;
+import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
 

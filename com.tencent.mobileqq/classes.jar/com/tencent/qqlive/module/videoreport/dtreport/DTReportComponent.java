@@ -9,9 +9,10 @@ import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.dtreport.api.IDTParamProvider;
 import com.tencent.qqlive.module.videoreport.dtreport.constants.DTConfigConstants.ElementFormatMode;
 import com.tencent.qqlive.module.videoreport.dtreport.formatter.DTParamsFlattenFormatter;
-import com.tencent.qqlive.module.videoreport.dtreport.formatter.DTParamsNonFlattenFormatter;
+import com.tencent.qqlive.module.videoreport.dtreport.formatter.DTParamsNewsFlattenFormatter;
 import com.tencent.qqlive.module.videoreport.dtreport.formatter.maphandler.DTHandleEventFormatFactory;
 import com.tencent.qqlive.module.videoreport.dtreport.reportchannel.DTAdditionalReportHandler;
+import com.tencent.qqlive.module.videoreport.dtreport.reportchannel.DTDebugChannel;
 import com.tencent.qqlive.module.videoreport.dtreport.reportchannel.DTEventDynamicParams;
 import com.tencent.qqlive.module.videoreport.dtreport.reportchannel.DTReportChannel;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
@@ -22,14 +23,15 @@ public class DTReportComponent
 {
   private static final String TAG = "DTReportComponent";
   private static final long VISIT_BACKGROUND_TIME = 900000L;
-  private Configuration mConfiguration = createDefaultConfiguration(paramBuilder);
+  private Configuration mConfiguration;
   
   private DTReportComponent(DTReportComponent.Builder paramBuilder)
   {
-    initVideoReport(paramBuilder);
     DTHandleEventFormatFactory.setElementFormatMode(DTReportComponent.Builder.access$000(paramBuilder));
     DTReportChannel.getInstance().setReport(DTReportComponent.Builder.access$100(paramBuilder));
     DTEventDynamicParams.getInstance().setDTCommonParams(DTReportComponent.Builder.access$200(paramBuilder));
+    this.mConfiguration = createDefaultConfiguration(paramBuilder);
+    initVideoReport(paramBuilder);
     if (VideoReportInner.getInstance().isDebugMode())
     {
       paramBuilder = checkInputs();
@@ -46,7 +48,7 @@ public class DTReportComponent
   
   private Configuration createDefaultConfiguration(DTReportComponent.Builder paramBuilder)
   {
-    return DTReportComponent.Builder.access$300(paramBuilder).visitBackgroundTime(900000L).formatter(getFormatter(DTReportComponent.Builder.access$000(paramBuilder))).build();
+    return DTReportComponent.Builder.access$400(paramBuilder).visitBackgroundTime(900000L).formatter(getFormatter(DTReportComponent.Builder.access$000(paramBuilder))).enablePageLink(DTReportComponent.Builder.access$300(paramBuilder)).build();
   }
   
   private IFormatter getFormatter(@DTConfigConstants.ElementFormatMode int paramInt)
@@ -54,16 +56,19 @@ public class DTReportComponent
     switch (paramInt)
     {
     default: 
-      return new DTParamsNonFlattenFormatter();
+      return new DTParamsFlattenFormatter();
     }
-    return new DTParamsFlattenFormatter();
+    return new DTParamsNewsFlattenFormatter();
   }
   
   private void initVideoReport(DTReportComponent.Builder paramBuilder)
   {
-    VideoReport.setDebugMode(DTReportComponent.Builder.access$400(paramBuilder));
+    VideoReport.setDebugMode(DTReportComponent.Builder.access$500(paramBuilder));
     VideoReport.addReporter(DTReportChannel.getInstance());
     VideoReportInner.getInstance().addInnerReporter(DTReportChannel.getInstance());
+    if (DTReportComponent.Builder.access$500(paramBuilder)) {
+      VideoReportInner.getInstance().addReporter(new DTDebugChannel());
+    }
     VideoReport.registerEventDynamicParams(DTEventDynamicParams.getInstance());
     VideoReport.setEventAdditionalReport(DTAdditionalReportHandler.getInstance());
   }

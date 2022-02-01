@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
-import anxn;
+import apap;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class QQMessagePageMiniAppEntryManager$2
@@ -11,14 +12,14 @@ class QQMessagePageMiniAppEntryManager$2
   public void run()
   {
     if (this.val$app == null) {}
-    anxn localanxn;
+    apap localapap;
     do
     {
       return;
-      localanxn = (anxn)this.val$app.getBusinessHandler(148);
-    } while (localanxn == null);
-    localanxn.a();
-    localanxn.c();
+      localapap = (apap)this.val$app.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
+    } while (localapap == null);
+    localapap.a();
+    localapap.c();
   }
 }
 

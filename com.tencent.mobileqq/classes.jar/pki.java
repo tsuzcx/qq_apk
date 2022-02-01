@@ -1,43 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class pki
-  implements pwf
 {
-  public pki(KandianSubscribeManager paramKandianSubscribeManager) {}
-  
-  public void onLoadUserInfoFailed(String paramString1, String paramString2) {}
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public static int a(BaseArticleInfo paramBaseArticleInfo)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
-    if (localQQAppInterface == null) {}
-    QQMessageFacade localQQMessageFacade;
-    MessageRecord localMessageRecord;
-    do
+    int j = 0;
+    int i = j;
+    if (b(paramBaseArticleInfo))
     {
-      return;
-      localQQMessageFacade = localQQAppInterface.getMessageFacade();
-      localMessageRecord = localQQMessageFacade.getLastMsgForMsgTab(AppConstants.KANDIAN_SUBSCRIBE_UIN, 1008);
-    } while ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForText)) || (TextUtils.isEmpty(localMessageRecord.msg)) || (!localMessageRecord.msg.contains(ReadInJoyUserInfoModule.a())) || (!TextUtils.equals(localMessageRecord.extStr, paramString)));
-    localMessageRecord.msg = localMessageRecord.msg.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
-    localMessageRecord.createMessageUniseq();
-    localQQMessageFacade.updateMsgFieldByUniseq(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq, "msg", localMessageRecord.msg);
-    paramReadInJoyUserInfo = localQQAppInterface.getHandler(Conversation.class);
-    if (paramReadInJoyUserInfo != null) {
-      paramReadInJoyUserInfo.sendEmptyMessage(1009);
+      i = j;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a.b != null) {
+        i = paramBaseArticleInfo.mSocialFeedInfo.a.b.intValue();
+      }
     }
-    QLog.d(KandianSubscribeManager.a, 2, "update msg bref, uin : " + paramString + ", msg : " + localMessageRecord);
+    return i;
+  }
+  
+  public static void a(Context paramContext, View paramView, RoundAngleFrameLayout paramRoundAngleFrameLayout)
+  {
+    int j = paramView.getPaddingTop();
+    int k = paramView.getPaddingBottom();
+    if (pqt.j()) {
+      paramRoundAngleFrameLayout.setRadius(DisplayUtil.dip2px(paramContext, 8.0F));
+    }
+    for (int i = DisplayUtil.dip2px(paramContext, 14.0F);; i = DisplayUtil.dip2px(paramContext, 6.0F))
+    {
+      paramView.setPadding(i, j, i, k);
+      return;
+      paramRoundAngleFrameLayout.setRadius(DisplayUtil.dip2px(paramContext, 0.0F));
+    }
+  }
+  
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return (paramBaseArticleInfo.mFeedType == 25) || ((paramBaseArticleInfo.mFeedType == 1) && (a(paramBaseArticleInfo) == 25));
+  }
+  
+  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a != null);
   }
 }
 

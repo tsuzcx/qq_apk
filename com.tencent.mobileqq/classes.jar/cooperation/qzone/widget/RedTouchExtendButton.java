@@ -2,13 +2,11 @@ package cooperation.qzone.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
@@ -17,9 +15,6 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class RedTouchExtendButton
   extends ExtendButton
@@ -70,7 +65,7 @@ public class RedTouchExtendButton
       int i = getStartX() - dipToPixels(2);
       if (this.redType == 0)
       {
-        this.currentDrawable = getResources().getDrawable(2130850321);
+        this.currentDrawable = getResources().getDrawable(2130850427);
         this.currentDrawable.setBounds(i, j, this.realRedSizePix + i, this.realRedSizePix + j);
         this.currentDrawable.draw(paramCanvas);
       }
@@ -92,7 +87,7 @@ public class RedTouchExtendButton
         localRect.right = (m + j);
         float f1 = dipToPixels(0) + k;
         float f2 = ((Paint.FontMetrics)localObject2).top;
-        localObject2 = getResources().getDrawable(2130850321);
+        localObject2 = getResources().getDrawable(2130850427);
         ((Drawable)localObject2).getBounds();
         ((Drawable)localObject2).setBounds(j, k, localRect.right, localRect.bottom);
         ((Drawable)localObject2).draw(paramCanvas);
@@ -101,7 +96,7 @@ public class RedTouchExtendButton
       }
       if (this.redType == 3)
       {
-        localObject1 = getResources().getDrawable(2130848413);
+        localObject1 = getResources().getDrawable(2130848505);
         i += dipToPixels(2);
         j = getHeight() / 2 - ((Drawable)localObject1).getIntrinsicHeight() / 2;
         ((Drawable)localObject1).setBounds(i, j, ((Drawable)localObject1).getIntrinsicWidth() + i, ((Drawable)localObject1).getIntrinsicHeight() + j);
@@ -267,23 +262,126 @@ public class RedTouchExtendButton
     return this.appInfo;
   }
   
-  protected Bitmap getIconFromFile(File paramFile)
+  /* Error */
+  protected android.graphics.Bitmap getIconFromFile(java.io.File paramFile)
   {
-    try
-    {
-      paramFile = new BitmapDrawable(new FileInputStream(paramFile)).getBitmap();
-      return paramFile;
-    }
-    catch (FileNotFoundException paramFile)
-    {
-      paramFile.printStackTrace();
-      return null;
-    }
-    catch (OutOfMemoryError paramFile)
-    {
-      paramFile.printStackTrace();
-    }
-    return null;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: new 276	java/io/FileInputStream
+    //   6: dup
+    //   7: aload_1
+    //   8: invokespecial 279	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   11: astore_2
+    //   12: aload_2
+    //   13: astore_1
+    //   14: new 281	android/graphics/drawable/BitmapDrawable
+    //   17: dup
+    //   18: aload_2
+    //   19: invokespecial 284	android/graphics/drawable/BitmapDrawable:<init>	(Ljava/io/InputStream;)V
+    //   22: invokevirtual 288	android/graphics/drawable/BitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
+    //   25: astore_3
+    //   26: aload_3
+    //   27: astore_1
+    //   28: aload_2
+    //   29: ifnull +9 -> 38
+    //   32: aload_2
+    //   33: invokevirtual 291	java/io/FileInputStream:close	()V
+    //   36: aload_3
+    //   37: astore_1
+    //   38: aload_1
+    //   39: areturn
+    //   40: astore_1
+    //   41: aload_1
+    //   42: invokevirtual 294	java/io/IOException:printStackTrace	()V
+    //   45: aload_3
+    //   46: areturn
+    //   47: astore_3
+    //   48: aconst_null
+    //   49: astore_2
+    //   50: aload_2
+    //   51: astore_1
+    //   52: aload_3
+    //   53: invokevirtual 295	java/io/FileNotFoundException:printStackTrace	()V
+    //   56: aload 4
+    //   58: astore_1
+    //   59: aload_2
+    //   60: ifnull -22 -> 38
+    //   63: aload_2
+    //   64: invokevirtual 291	java/io/FileInputStream:close	()V
+    //   67: aconst_null
+    //   68: areturn
+    //   69: astore_1
+    //   70: aload_1
+    //   71: invokevirtual 294	java/io/IOException:printStackTrace	()V
+    //   74: aconst_null
+    //   75: areturn
+    //   76: astore_3
+    //   77: aconst_null
+    //   78: astore_2
+    //   79: aload_2
+    //   80: astore_1
+    //   81: aload_3
+    //   82: invokevirtual 296	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   85: aload 4
+    //   87: astore_1
+    //   88: aload_2
+    //   89: ifnull -51 -> 38
+    //   92: aload_2
+    //   93: invokevirtual 291	java/io/FileInputStream:close	()V
+    //   96: aconst_null
+    //   97: areturn
+    //   98: astore_1
+    //   99: aload_1
+    //   100: invokevirtual 294	java/io/IOException:printStackTrace	()V
+    //   103: aconst_null
+    //   104: areturn
+    //   105: astore_2
+    //   106: aconst_null
+    //   107: astore_1
+    //   108: aload_1
+    //   109: ifnull +7 -> 116
+    //   112: aload_1
+    //   113: invokevirtual 291	java/io/FileInputStream:close	()V
+    //   116: aload_2
+    //   117: athrow
+    //   118: astore_1
+    //   119: aload_1
+    //   120: invokevirtual 294	java/io/IOException:printStackTrace	()V
+    //   123: goto -7 -> 116
+    //   126: astore_2
+    //   127: goto -19 -> 108
+    //   130: astore_3
+    //   131: goto -52 -> 79
+    //   134: astore_3
+    //   135: goto -85 -> 50
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	138	0	this	RedTouchExtendButton
+    //   0	138	1	paramFile	java.io.File
+    //   11	82	2	localFileInputStream	java.io.FileInputStream
+    //   105	12	2	localObject1	Object
+    //   126	1	2	localObject2	Object
+    //   25	21	3	localBitmap	android.graphics.Bitmap
+    //   47	6	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   76	6	3	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   130	1	3	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   134	1	3	localFileNotFoundException2	java.io.FileNotFoundException
+    //   1	85	4	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   32	36	40	java/io/IOException
+    //   3	12	47	java/io/FileNotFoundException
+    //   63	67	69	java/io/IOException
+    //   3	12	76	java/lang/OutOfMemoryError
+    //   92	96	98	java/io/IOException
+    //   3	12	105	finally
+    //   112	116	118	java/io/IOException
+    //   14	26	126	finally
+    //   52	56	126	finally
+    //   81	85	126	finally
+    //   14	26	130	java/lang/OutOfMemoryError
+    //   14	26	134	java/io/FileNotFoundException
   }
   
   public void invalidateDrawable(Drawable paramDrawable)

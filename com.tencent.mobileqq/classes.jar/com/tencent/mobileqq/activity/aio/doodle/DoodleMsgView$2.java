@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import afku;
+import agby;
 import java.util.TimerTask;
 
 class DoodleMsgView$2
@@ -12,8 +12,8 @@ class DoodleMsgView$2
   {
     try
     {
-      afku localafku = DoodleMsgView.a(this.this$0);
-      if (localafku == null)
+      agby localagby = DoodleMsgView.a(this.this$0);
+      if (localagby == null)
       {
         this.this$0.a(new DoodleMsgView.2.1(this));
         return;
@@ -24,16 +24,16 @@ class DoodleMsgView$2
       if (DoodleMsgView.a(this.this$0) < this.a) {
         DoodleMsgView.a(this.this$0, DoodleMsgView.a(this.this$0) + this.b);
       }
-      if (localafku != null) {
-        localafku.a(DoodleMsgView.a(this.this$0), true);
+      if (localagby != null) {
+        localagby.a(DoodleMsgView.a(this.this$0), true);
       }
       if (DoodleMsgView.a(this.this$0) >= this.a)
       {
         DoodleMsgView.a(this.this$0);
         return;
       }
-      if ((!DoodleMsgView.a(this.this$0)) && (localafku != null)) {
-        localafku.a(this.a, true);
+      if ((!DoodleMsgView.a(this.this$0)) && (localagby != null)) {
+        localagby.a(this.a, true);
       }
       return;
     }

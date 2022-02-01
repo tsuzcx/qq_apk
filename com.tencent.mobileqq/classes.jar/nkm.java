@@ -1,48 +1,32 @@
-import android.os.Handler;
-import com.tencent.av.opengl.ui.GLRootView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.avgame.gameroom.seat.background.SurvivalMemberItemView;
 
-class nkm
-  implements nhb
+public class nkm
+  implements Animator.AnimatorListener
 {
-  nkm(nkk paramnkk) {}
+  public nkm(SurvivalMemberItemView paramSurvivalMemberItemView) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    bija.c(this.a.a, "notifyCameraNoData ");
-  }
-  
-  public void a(long paramLong)
-  {
-    bija.c(this.a.a, "onBeforeCloseCamera ");
-    if (this.a.d()) {
-      this.a.a(true);
+    if (this.a.a != null) {
+      this.a.a.a(2);
     }
   }
   
-  public void a(long paramLong, boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    bija.c(this.a.a, "onBeforeOpenCamera ");
-  }
-  
-  public void b(long paramLong) {}
-  
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    bija.c(this.a.a, "onAfterOpenCamera ");
-    nkk.a(this.a, true);
-    if (this.a.d()) {
-      nkk.a(this.a).sendEmptyMessageDelayed(6, 200L);
+    if (this.a.a != null) {
+      this.a.a.a(2);
     }
   }
   
-  public void c(long paramLong, boolean paramBoolean)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    bija.c(this.a.a, "onAfterCloseCamera ");
-    nkk.a(this.a, false);
-    if ((this.a.d()) && (nkk.a(this.a) != null) && (nkk.a(this.a).a() != null))
-    {
-      nkk.a(this.a).a().requestRender();
-      nkk.a(this.a).sendEmptyMessageDelayed(3, 50L);
+    if (this.a.a != null) {
+      this.a.a.a(1);
     }
   }
 }

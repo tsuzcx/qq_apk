@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.statistics;
 
-import abvg;
-import achk;
-import amxq;
-import amxy;
+import acln;
+import acxs;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
@@ -17,8 +15,10 @@ import android.os.Build.VERSION;
 import android.os.Process;
 import android.system.Os;
 import android.text.TextUtils;
-import bbpj;
-import bgby;
+import aoae;
+import aoam;
+import bcwd;
+import bhkp;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.biz.richframework.network.cache.Cache;
 import com.tencent.biz.richframework.network.cache.CacheHelper;
@@ -98,6 +98,7 @@ public class StatisticCollector
   public static final String CAPTURE_CUSTOM_HUMMING_DISTANCE = "sv_capture_custom_humming_distance";
   public static final String CAPTURE_CUSTOM_MISMATCH = "sv_capture_custom_mismatch";
   public static final String CAPTURE_PHOTO_SEND = "sv_capture_photo_send";
+  public static final String CMSHOW_3D_FACE_UPLOAD = "cmshow3DFace";
   public static final String CRASH_INFO_DIR_PATH = "/data/data/com.tencent.mobileqq/files/";
   public static final String CRASH_INFO_FILE_NAME = "CrashInfoSummary.txt";
   public static final int CRASH_MAX_RECORD_COUNT = 10;
@@ -235,6 +236,7 @@ public class StatisticCollector
   public static final String PTT_STT_FRIST_SHOW_TIME_COST = "PttSttFristShowTimeCost";
   public static final String PTT_STT_PART_TIME_INTERVAL = "PttShardSttReveivePartTimeInterval";
   public static final String PTT_STT_RESULT_ERROR = "PttSttResultError";
+  public static final String PTT_STT_RESULT_MONITOR = "PttSttResultMonitor";
   public static final String PTT_USER_WAITING_STATISTIC_TAG = "actPttUserWaiting";
   public static final String PTV_GUIDE_TAG = "ptvGuideReportTag";
   public static final String PTV_TEACH_GUIDE_TAG = "ptvTeachGuideReportTag";
@@ -410,15 +412,15 @@ public class StatisticCollector
   
   public static boolean SQLite3OptimizeReport()
   {
-    if ("8.4.8".startsWith("7.1.")) {}
+    if ("8.4.10".startsWith("7.1.")) {}
     return false;
   }
   
   public static void appendReceiverInfo(Context paramContext, StringBuilder paramStringBuilder)
   {
-    Object localObject1 = bgby.a("android.app.ActivityThread", "currentActivityThread", new Object[0], new Class[0]);
+    Object localObject1 = bhkp.a("android.app.ActivityThread", "currentActivityThread", new Object[0], new Class[0]);
     paramContext = paramContext.getPackageName();
-    paramContext = (Map)bgby.a("android.app.LoadedApk", ((WeakReference)((Map)bgby.a("android.app.ActivityThread", localObject1, "mPackages")).get(paramContext)).get(), "mReceivers");
+    paramContext = (Map)bhkp.a("android.app.LoadedApk", ((WeakReference)((Map)bhkp.a("android.app.ActivityThread", localObject1, "mPackages")).get(paramContext)).get(), "mReceivers");
     localObject1 = paramContext.keySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
@@ -597,7 +599,7 @@ public class StatisticCollector
       {
         if (self == null)
         {
-          if (amxq.a()) {
+          if (aoae.a()) {
             self = new StatisticCollector(BaseApplicationImpl.getApplication(), paramLong);
           }
         }
@@ -606,7 +608,7 @@ public class StatisticCollector
       finally {}
       try
       {
-        if ((amxq.a()) && ((self instanceof StatisticCollector.EmptyStatisticCollector))) {
+        if ((aoae.a()) && ((self instanceof StatisticCollector.EmptyStatisticCollector))) {
           self = new StatisticCollector(BaseApplicationImpl.getApplication(), paramLong);
         }
         return self;
@@ -852,10 +854,10 @@ public class StatisticCollector
   
   public void collectPerformance(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString4, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (!amxq.a()) {
+    if (!aoae.a()) {
       return;
     }
-    achk.a(paramString3, paramHashMap);
+    acxs.a(paramString3, paramHashMap);
     if (paramString2 == null) {
       paramString2 = "10000";
     }
@@ -945,22 +947,22 @@ public class StatisticCollector
   public void dumpThreadInfo(StringBuilder paramStringBuilder)
   {
     // Byte code:
-    //   0: new 1021	java/lang/StringBuilder
+    //   0: new 1027	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 1198	java/lang/StringBuilder:<init>	()V
-    //   7: ldc_w 1811
-    //   10: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13: invokestatic 1816	android/os/Process:myPid	()I
-    //   16: invokevirtual 1304	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   19: ldc_w 1818
-    //   22: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: invokevirtual 1213	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4: invokespecial 1204	java/lang/StringBuilder:<init>	()V
+    //   7: ldc_w 1817
+    //   10: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: invokestatic 1822	android/os/Process:myPid	()I
+    //   16: invokevirtual 1310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   19: ldc_w 1824
+    //   22: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokevirtual 1219	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   28: astore 11
     //   30: aload_1
-    //   31: ldc_w 1820
-    //   34: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: ldc_w 1822
-    //   40: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: ldc_w 1826
+    //   34: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: ldc_w 1828
+    //   40: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: pop
     //   44: aconst_null
     //   45: astore 8
@@ -968,25 +970,25 @@ public class StatisticCollector
     //   48: astore 9
     //   50: aconst_null
     //   51: astore 5
-    //   53: invokestatic 1531	java/lang/System:currentTimeMillis	()J
+    //   53: invokestatic 1537	java/lang/System:currentTimeMillis	()J
     //   56: lstore_3
     //   57: aload 8
     //   59: astore 7
     //   61: aload 9
     //   63: astore 6
-    //   65: new 1362	java/io/File
+    //   65: new 1368	java/io/File
     //   68: dup
     //   69: aload 11
-    //   71: invokespecial 1365	java/io/File:<init>	(Ljava/lang/String;)V
-    //   74: invokevirtual 1826	java/io/File:list	()[Ljava/lang/String;
+    //   71: invokespecial 1371	java/io/File:<init>	(Ljava/lang/String;)V
+    //   74: invokevirtual 1832	java/io/File:list	()[Ljava/lang/String;
     //   77: astore 10
     //   79: aload 8
     //   81: astore 7
     //   83: aload 9
     //   85: astore 6
-    //   87: new 1032	java/util/HashMap
+    //   87: new 1038	java/util/HashMap
     //   90: dup
-    //   91: invokespecial 1710	java/util/HashMap:<init>	()V
+    //   91: invokespecial 1716	java/util/HashMap:<init>	()V
     //   94: astore 8
     //   96: iconst_0
     //   97: istore_2
@@ -1002,80 +1004,80 @@ public class StatisticCollector
     //   115: astore 7
     //   117: aload 5
     //   119: astore 6
-    //   121: new 1362	java/io/File
+    //   121: new 1368	java/io/File
     //   124: dup
-    //   125: new 1021	java/lang/StringBuilder
+    //   125: new 1027	java/lang/StringBuilder
     //   128: dup
-    //   129: invokespecial 1198	java/lang/StringBuilder:<init>	()V
+    //   129: invokespecial 1204	java/lang/StringBuilder:<init>	()V
     //   132: aload 11
-    //   134: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: ldc_w 1828
-    //   140: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: ldc_w 1834
+    //   140: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: aload 10
     //   145: iload_2
     //   146: aaload
-    //   147: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: ldc_w 1830
-    //   153: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: invokevirtual 1213	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   159: invokespecial 1365	java/io/File:<init>	(Ljava/lang/String;)V
+    //   147: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: ldc_w 1836
+    //   153: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: invokevirtual 1219	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   159: invokespecial 1371	java/io/File:<init>	(Ljava/lang/String;)V
     //   162: astore 9
     //   164: aload 5
     //   166: astore 7
     //   168: aload 5
     //   170: astore 6
-    //   172: invokestatic 1531	java/lang/System:currentTimeMillis	()J
+    //   172: invokestatic 1537	java/lang/System:currentTimeMillis	()J
     //   175: lload_3
     //   176: lsub
-    //   177: ldc2_w 1831
+    //   177: ldc2_w 1837
     //   180: lcmp
     //   181: ifle +188 -> 369
     //   184: aload 5
     //   186: astore 7
     //   188: aload 5
     //   190: astore 6
-    //   192: invokestatic 1476	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   192: invokestatic 1482	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   195: ifeq +35 -> 230
     //   198: aload 5
     //   200: astore 7
     //   202: aload 5
     //   204: astore 6
-    //   206: ldc_w 765
+    //   206: ldc_w 771
     //   209: iconst_2
     //   210: iconst_2
     //   211: anewarray 4	java/lang/Object
     //   214: dup
     //   215: iconst_0
-    //   216: ldc_w 1834
+    //   216: ldc_w 1840
     //   219: aastore
     //   220: dup
     //   221: iconst_1
     //   222: aload_1
-    //   223: invokevirtual 1213	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   223: invokevirtual 1219	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   226: aastore
-    //   227: invokestatic 1492	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   227: invokestatic 1498	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   230: aload 5
     //   232: astore 7
     //   234: aload 5
     //   236: astore 6
     //   238: aload 8
-    //   240: invokevirtual 1837	java/util/HashMap:entrySet	()Ljava/util/Set;
-    //   243: invokeinterface 1181 1 0
+    //   240: invokevirtual 1843	java/util/HashMap:entrySet	()Ljava/util/Set;
+    //   243: invokeinterface 1187 1 0
     //   248: astore 8
     //   250: aload 5
     //   252: astore 7
     //   254: aload 5
     //   256: astore 6
     //   258: aload 8
-    //   260: invokeinterface 1186 1 0
+    //   260: invokeinterface 1192 1 0
     //   265: ifeq +274 -> 539
     //   268: aload 5
     //   270: astore 7
     //   272: aload 5
     //   274: astore 6
     //   276: aload 8
-    //   278: invokeinterface 1189 1 0
-    //   283: checkcast 1839	java/util/Map$Entry
+    //   278: invokeinterface 1195 1 0
+    //   283: checkcast 1845	java/util/Map$Entry
     //   286: astore 9
     //   288: aload 5
     //   290: astore 7
@@ -1083,89 +1085,89 @@ public class StatisticCollector
     //   294: astore 6
     //   296: aload_1
     //   297: aload 9
-    //   299: invokeinterface 1842 1 0
-    //   304: checkcast 1071	java/lang/String
-    //   307: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   310: ldc_w 1844
-    //   313: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: invokeinterface 1848 1 0
+    //   304: checkcast 1077	java/lang/String
+    //   307: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   310: ldc_w 1850
+    //   313: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   316: aload 9
-    //   318: invokeinterface 1847 1 0
-    //   323: invokevirtual 1210	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   326: ldc_w 1849
-    //   329: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   332: ldc_w 1851
-    //   335: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   318: invokeinterface 1853 1 0
+    //   323: invokevirtual 1216	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   326: ldc_w 1855
+    //   329: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: ldc_w 1857
+    //   335: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   338: pop
     //   339: goto -89 -> 250
     //   342: astore_1
     //   343: aload 7
     //   345: astore 6
-    //   347: ldc_w 765
+    //   347: ldc_w 771
     //   350: iconst_2
-    //   351: ldc_w 1853
+    //   351: ldc_w 1859
     //   354: aload_1
-    //   355: invokestatic 1399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   355: invokestatic 1405	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   358: aload 7
     //   360: ifnull +8 -> 368
     //   363: aload 7
-    //   365: invokevirtual 1858	java/io/BufferedReader:close	()V
+    //   365: invokevirtual 1864	java/io/BufferedReader:close	()V
     //   368: return
     //   369: aload 5
     //   371: astore 7
     //   373: aload 5
     //   375: astore 6
     //   377: aload 9
-    //   379: invokevirtual 1368	java/io/File:exists	()Z
+    //   379: invokevirtual 1374	java/io/File:exists	()Z
     //   382: ifeq +364 -> 746
     //   385: aload 5
     //   387: astore 7
     //   389: aload 5
     //   391: astore 6
-    //   393: new 1855	java/io/BufferedReader
+    //   393: new 1861	java/io/BufferedReader
     //   396: dup
-    //   397: new 1860	java/io/FileReader
+    //   397: new 1866	java/io/FileReader
     //   400: dup
     //   401: aload 9
-    //   403: invokespecial 1863	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   403: invokespecial 1869	java/io/FileReader:<init>	(Ljava/io/File;)V
     //   406: bipush 64
-    //   408: invokespecial 1866	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   408: invokespecial 1872	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   411: astore 5
     //   413: aload 5
-    //   415: invokevirtual 1869	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   415: invokevirtual 1875	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   418: astore 6
     //   420: aload 6
     //   422: ifnull +327 -> 749
     //   425: aload 6
-    //   427: ldc_w 1871
-    //   430: invokevirtual 1075	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   427: ldc_w 1877
+    //   430: invokevirtual 1081	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   433: ifeq -20 -> 413
     //   436: aload 6
-    //   438: ldc_w 1207
-    //   441: invokevirtual 1461	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   438: ldc_w 1213
+    //   441: invokevirtual 1467	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   444: iconst_1
     //   445: aaload
-    //   446: invokevirtual 1874	java/lang/String:trim	()Ljava/lang/String;
+    //   446: invokevirtual 1880	java/lang/String:trim	()Ljava/lang/String;
     //   449: astore 6
     //   451: aload 8
     //   453: aload 6
-    //   455: invokevirtual 1722	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   455: invokevirtual 1728	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   458: ifeq +49 -> 507
     //   461: aload 8
     //   463: aload 6
     //   465: aload 8
     //   467: aload 6
-    //   469: invokevirtual 1723	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   472: checkcast 1463	java/lang/Integer
-    //   475: invokevirtual 1469	java/lang/Integer:intValue	()I
+    //   469: invokevirtual 1729	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   472: checkcast 1469	java/lang/Integer
+    //   475: invokevirtual 1475	java/lang/Integer:intValue	()I
     //   478: iconst_1
     //   479: iadd
-    //   480: invokestatic 1481	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   483: invokevirtual 1595	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   480: invokestatic 1487	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   483: invokevirtual 1601	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   486: pop
     //   487: aload 5
     //   489: ifnull +47 -> 536
     //   492: aload 5
-    //   494: invokevirtual 1858	java/io/BufferedReader:close	()V
+    //   494: invokevirtual 1864	java/io/BufferedReader:close	()V
     //   497: aconst_null
     //   498: astore 5
     //   500: iload_2
@@ -1176,33 +1178,33 @@ public class StatisticCollector
     //   507: aload 8
     //   509: aload 6
     //   511: iconst_1
-    //   512: invokestatic 1481	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   515: invokevirtual 1595	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   512: invokestatic 1487	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   515: invokevirtual 1601	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   518: pop
     //   519: goto -32 -> 487
     //   522: astore 6
-    //   524: ldc_w 765
+    //   524: ldc_w 771
     //   527: iconst_2
-    //   528: ldc_w 1853
+    //   528: ldc_w 1859
     //   531: aload 6
-    //   533: invokestatic 1399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   533: invokestatic 1405	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   536: goto -36 -> 500
     //   539: aload 5
     //   541: astore 7
     //   543: aload 5
     //   545: astore 6
     //   547: aload_1
-    //   548: ldc_w 1876
-    //   551: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   548: ldc_w 1882
+    //   551: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   554: aload 10
     //   556: arraylength
-    //   557: invokevirtual 1304	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   557: invokevirtual 1310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   560: pop
     //   561: aload 5
     //   563: astore 7
     //   565: aload 5
     //   567: astore 6
-    //   569: invokestatic 1881	com/tencent/mobileqq/app/ThreadLog:needRecordJob	()Z
+    //   569: invokestatic 1887	com/tencent/mobileqq/app/ThreadLog:needRecordJob	()Z
     //   572: ifeq +36 -> 608
     //   575: aload 5
     //   577: astore 7
@@ -1217,76 +1219,76 @@ public class StatisticCollector
     //   596: aload 5
     //   598: astore 6
     //   600: aload_1
-    //   601: invokestatic 1884	com/tencent/mobileqq/app/ThreadManager:reportCurrentState	()Ljava/lang/String;
-    //   604: invokevirtual 1195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   601: invokestatic 1890	com/tencent/mobileqq/app/ThreadManager:reportCurrentState	()Ljava/lang/String;
+    //   604: invokevirtual 1201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   607: pop
     //   608: aload 5
     //   610: astore 7
     //   612: aload 5
     //   614: astore 6
-    //   616: invokestatic 1476	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   616: invokestatic 1482	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   619: ifeq +52 -> 671
     //   622: aload 5
     //   624: astore 7
     //   626: aload 5
     //   628: astore 6
-    //   630: ldc_w 765
+    //   630: ldc_w 771
     //   633: iconst_2
     //   634: iconst_4
     //   635: anewarray 4	java/lang/Object
     //   638: dup
     //   639: iconst_0
-    //   640: ldc_w 1886
+    //   640: ldc_w 1892
     //   643: aastore
     //   644: dup
     //   645: iconst_1
-    //   646: invokestatic 1531	java/lang/System:currentTimeMillis	()J
+    //   646: invokestatic 1537	java/lang/System:currentTimeMillis	()J
     //   649: lload_3
     //   650: lsub
-    //   651: invokestatic 1891	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   651: invokestatic 1897	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   654: aastore
     //   655: dup
     //   656: iconst_2
-    //   657: ldc_w 1893
+    //   657: ldc_w 1899
     //   660: aastore
     //   661: dup
     //   662: iconst_3
     //   663: aload_1
-    //   664: invokevirtual 1213	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   664: invokevirtual 1219	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   667: aastore
-    //   668: invokestatic 1492	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   668: invokestatic 1498	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   671: aload 5
     //   673: ifnull -305 -> 368
     //   676: aload 5
-    //   678: invokevirtual 1858	java/io/BufferedReader:close	()V
+    //   678: invokevirtual 1864	java/io/BufferedReader:close	()V
     //   681: return
     //   682: astore_1
-    //   683: ldc_w 765
+    //   683: ldc_w 771
     //   686: iconst_2
-    //   687: ldc_w 1853
+    //   687: ldc_w 1859
     //   690: aload_1
-    //   691: invokestatic 1399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   691: invokestatic 1405	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   694: return
     //   695: astore_1
-    //   696: ldc_w 765
+    //   696: ldc_w 771
     //   699: iconst_2
-    //   700: ldc_w 1853
+    //   700: ldc_w 1859
     //   703: aload_1
-    //   704: invokestatic 1399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   704: invokestatic 1405	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   707: return
     //   708: astore_1
     //   709: aload 6
     //   711: ifnull +8 -> 719
     //   714: aload 6
-    //   716: invokevirtual 1858	java/io/BufferedReader:close	()V
+    //   716: invokevirtual 1864	java/io/BufferedReader:close	()V
     //   719: aload_1
     //   720: athrow
     //   721: astore 5
-    //   723: ldc_w 765
+    //   723: ldc_w 771
     //   726: iconst_2
-    //   727: ldc_w 1853
+    //   727: ldc_w 1859
     //   730: aload 5
-    //   732: invokestatic 1399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   732: invokestatic 1405	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   735: goto -16 -> 719
     //   738: astore_1
     //   739: aload 5
@@ -1446,7 +1448,7 @@ public class StatisticCollector
       return;
     }
     paramString1 = paramString2 + "|" + paramInt;
-    paramString2 = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+    paramString2 = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
     paramString2.putExtra("sendType", 2);
     paramString2.putExtra("tag", "mqq_tab");
     paramString2.putExtra("content", paramString1);
@@ -1460,7 +1462,7 @@ public class StatisticCollector
       return;
     }
     paramString1 = paramString2 + "|" + paramString3;
-    paramString2 = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+    paramString2 = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
     paramString2.putExtra("sendType", 2);
     paramString2.putExtra("tag", "mqq_tab");
     paramString2.putExtra("content", paramString1);
@@ -1495,7 +1497,7 @@ public class StatisticCollector
     }
     paramString8 = new StringBuilder(128);
     paramString8.append(paramAppRuntime.getAccount()).append('|').append(paramString1).append('|').append(paramString2).append('|').append(paramString3).append('|').append(paramInt1).append('|').append(paramInt2).append('|').append(str).append('|').append(paramString4).append('|').append(paramString5).append('|').append(paramString6).append('|').append(paramString7).append('|');
-    paramString1 = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+    paramString1 = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
     paramString1.putExtra("sendType", 2);
     paramString1.putExtra("tag", "CliOper");
     paramString1.putExtra("content", paramString8.toString());
@@ -1513,7 +1515,7 @@ public class StatisticCollector
       localStringBuilder = new StringBuilder(128);
       localStringBuilder.append(paramString1).append('|').append(paramString2).append('|').append(paramString3).append('|').append(paramString4).append('|').append(paramInt1).append('|').append(paramInt2).append('|').append(paramInt3);
       localStringBuilder.append('|').append('|').append('|').append('|').append('|');
-      paramString1 = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+      paramString1 = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
       paramString1.putExtra("sendType", 2);
       paramString1.putExtra("tag", "CliOper");
       paramString1.putExtra("content", localStringBuilder.toString());
@@ -1532,7 +1534,7 @@ public class StatisticCollector
       return;
       localStringBuilder = new StringBuilder(128);
       localStringBuilder.append(paramString1).append('|').append(paramString2).append('|').append(paramString3).append('|').append(paramString4).append('|').append(paramInt1).append('|').append(paramInt2).append('|').append(paramInt3).append('|').append(paramInt4).append('|').append('|').append('|').append('|');
-      paramString1 = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+      paramString1 = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
       paramString1.putExtra("sendType", 2);
       paramString1.putExtra("tag", "CliOper");
       paramString1.putExtra("content", localStringBuilder.toString());
@@ -1544,7 +1546,7 @@ public class StatisticCollector
   @Deprecated
   public void reportActionCountMsgOper(AppRuntime paramAppRuntime, String paramString)
   {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
     localNewIntent.putExtra("sendType", 2);
     localNewIntent.putExtra("tag", "MsgOper");
     localNewIntent.putExtra("content", paramString);
@@ -1565,7 +1567,7 @@ public class StatisticCollector
       localStringBuilder = new StringBuilder(128);
       localStringBuilder.append(paramString3).append('|').append(paramString1).append('|').append("").append('|').append(paramString4).append('|').append(paramString5).append('|').append(paramInt1).append('|').append(paramInt2).append('|').append(paramInt3);
       localStringBuilder.append('|').append(paramString2).append('|').append('|').append('|').append('|');
-      paramString1 = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+      paramString1 = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
       paramString1.putExtra("sendType", 2);
       paramString1.putExtra("tag", "P_CliOper");
       paramString1.putExtra("content", localStringBuilder.toString());
@@ -1598,7 +1600,7 @@ public class StatisticCollector
     }
     paramString8 = new StringBuilder(128);
     paramString8.append(paramString1).append('|').append(paramString2).append('|').append(paramString3).append('|').append(paramString4).append('|').append(paramInt1).append('|').append(paramInt2).append('|').append(paramInt3).append('|').append(str).append('|').append(paramString5).append('|').append(paramString6).append('|').append(paramString7).append('|');
-    paramString1 = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+    paramString1 = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
     paramString1.putExtra("sendType", 2);
     paramString1.putExtra("tag", "CliOper");
     paramString1.putExtra("content", paramString8.toString());
@@ -1615,7 +1617,7 @@ public class StatisticCollector
     } while (paramString == null);
     paramString = paramString + '|';
     paramString = paramString + "1|";
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
     localNewIntent.putExtra("sendType", 2);
     localNewIntent.putExtra("tag", "AndroidQQUseApp");
     localNewIntent.putExtra("content", paramString);
@@ -1644,7 +1646,7 @@ public class StatisticCollector
       paramString.add(localStringBuilder.toString());
       localStringBuilder.delete(0, localStringBuilder.length());
     }
-    paramMap = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+    paramMap = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
     paramMap.putExtra("sendType", 6);
     paramMap.putExtra("tag", "custom_set");
     paramMap.putExtra("content", paramString);
@@ -1668,7 +1670,7 @@ public class StatisticCollector
     } while (l2 < l1);
     bReportingDailyUser = true;
     ((SharedPreferences)localObject).edit().putLong("next_reportTime_" + paramAppRuntime.getAccount(), 1L + l2).commit();
-    Object localObject = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+    Object localObject = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
     ((NewIntent)localObject).putExtra("sendType", 2);
     ((NewIntent)localObject).putExtra("tag", "mqq_dailyUse");
     ((NewIntent)localObject).putExtra("content", "");
@@ -1736,7 +1738,7 @@ public class StatisticCollector
       paramString.add(localStringBuilder.toString());
       localStringBuilder.delete(0, localStringBuilder.length());
     }
-    paramMap = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+    paramMap = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
     paramMap.putExtra("sendType", 6);
     paramMap.putExtra("tag", "on_off");
     paramMap.putExtra("content", paramString);
@@ -1766,7 +1768,7 @@ public class StatisticCollector
     {
       return;
       paramString1 = paramString1 + "|" + paramString2 + "|" + paramString3 + "|" + paramInt + "|" + paramString4;
-      paramString2 = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+      paramString2 = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
       paramString2.putExtra("sendType", 2);
       paramString2.putExtra("tag", "appPlug");
       paramString2.putExtra("content", paramString1);
@@ -1786,7 +1788,7 @@ public class StatisticCollector
   @Deprecated
   public void reportToPCliOper(AppRuntime paramAppRuntime, String paramString)
   {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bbpj.class);
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bcwd.class);
     localNewIntent.putExtra("sendType", 2);
     localNewIntent.putExtra("tag", "P_CliOper");
     localNewIntent.putExtra("content", paramString);
@@ -1838,15 +1840,15 @@ public class StatisticCollector
       CrashReport.setUserId(ctx, paramString);
       CrashReport.putUserData(ctx, "TbsSdkVersion", String.valueOf(WebView.getTbsSDKVersion(ctx)));
       CrashReport.putUserData(ctx, "X5CoreVersion", String.valueOf(QbSdk.getTbsVersion(ctx)));
-      CrashReport.putUserData(ctx, "PatchInstallStatus", String.valueOf(abvg.jdField_a_of_type_Int));
-      if (!TextUtils.isEmpty(abvg.jdField_a_of_type_JavaLangString)) {
-        CrashReport.putUserData(ctx, "PatchNameInstalled", abvg.jdField_a_of_type_JavaLangString);
+      CrashReport.putUserData(ctx, "PatchInstallStatus", String.valueOf(acln.jdField_a_of_type_Int));
+      if (!TextUtils.isEmpty(acln.jdField_a_of_type_JavaLangString)) {
+        CrashReport.putUserData(ctx, "PatchNameInstalled", acln.jdField_a_of_type_JavaLangString);
       }
       CrashReport.putUserData(ctx, "Revision", AppSetting.g());
-      CrashReport.putUserData(ctx, "Version.buildNum", "8.4.8.4810");
+      CrashReport.putUserData(ctx, "Version.buildNum", "8.4.10.4875");
       CrashReport.putUserData(ctx, "AboutSubVersionLog", AppSetting.b());
       CrashReport.putUserData(ctx, "appid", String.valueOf(AppSetting.a()));
-      CrashReport.putUserData(ctx, "topActivity", amxy.a());
+      CrashReport.putUserData(ctx, "topActivity", aoam.a());
       this.threadInfo.append("Current process id=").append(Process.myPid()).append(", Name=").append(BaseApplicationImpl.processName).append("\n");
       sRdmInitTime = System.currentTimeMillis();
       if (1 == BaseApplicationImpl.sProcessId)

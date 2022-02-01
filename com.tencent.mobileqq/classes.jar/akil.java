@@ -1,26 +1,40 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.util.Pair;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import java.lang.ref.WeakReference;
 
-class akil
-  implements View.OnClickListener
+public class akil
+  extends Handler
 {
-  akil(akho paramakho) {}
+  private WeakReference<DialogBaseActivity> a;
   
-  public void onClick(View paramView)
+  public akil(DialogBaseActivity paramDialogBaseActivity)
   {
-    Intent localIntent = new Intent(akho.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("uin", ((QQAppInterface)akho.a(this.a).getAppRuntime()).getCurrentAccountUin());
-    Pair localPair = (Pair)paramView.getTag();
-    if (localPair != null) {
-      akho.a(this.a).startActivity(localIntent.putExtra("url", "https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=" + ((Long)localPair.first).longValue() + "&deviceRemark=" + (String)localPair.second));
+    this.a = new WeakReference(paramDialogBaseActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
+    if (localDialogBaseActivity == null) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localDialogBaseActivity.a(i, bool);
+        return;
+        bool = false;
+      }
+    }
+    localDialogBaseActivity.finish();
   }
 }
 

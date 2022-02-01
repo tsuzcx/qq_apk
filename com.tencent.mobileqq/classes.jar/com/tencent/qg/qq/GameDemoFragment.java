@@ -1,6 +1,6 @@
 package com.tencent.qg.qq;
 
-import acjz;
+import adai;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Display;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import bili;
+import bjwk;
 import com.tencent.mobileqq.miniapp.ui.MiniAppBaseFragment;
 import com.tencent.qg.sdk.QGGLSurfaceView;
 import com.tencent.qg.sdk.doraemon.DoraemonApiWrapper;
@@ -28,10 +28,10 @@ public class GameDemoFragment
     this.jdField_a_of_type_ArrayOfJavaLangString = getArguments().getStringArray("key_run_js");
     getActivity().getWindowManager().getDefaultDisplay().getWidth();
     getActivity().getWindowManager().getDefaultDisplay().getHeight();
-    acjz.a(getActivity(), 3, a());
+    adai.a(getActivity(), 3, a());
     this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView = new QGGLSurfaceView(getActivity());
     this.jdField_a_of_type_ComTencentQgSdkDoraemonDoraemonApiWrapper = new DoraemonApiWrapperMockImpl(this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView);
-    this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView.setQGEventListener(new bili(this));
+    this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView.setQGEventListener(new bjwk(this));
     paramLayoutInflater = this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;

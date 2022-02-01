@@ -1,25 +1,18 @@
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
 
-public class aphw
+public final class aphw
+  implements Parcelable.Creator<ARScanStarFaceActInfo>
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<aphx> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  
-  public String toString()
+  public ARScanStarFaceActInfo a(Parcel paramParcel)
   {
-    return "C2CShortcutAppInfo{appId=" + this.jdField_a_of_type_JavaLangString + ", type=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", jumpUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", desc='" + this.e + '\'' + ", cmdTrace='" + this.f + '\'' + ", redPoint=" + this.jdField_a_of_type_Int + ", showFrame=" + this.jdField_b_of_type_Int + ", playingNum=" + this.jdField_c_of_type_Int + ", canSendArkMsg=" + this.jdField_a_of_type_Boolean + ", arkLabelWording=" + this.g + ", labels=" + this.jdField_a_of_type_JavaUtilArrayList + ", jumpType=" + this.jdField_d_of_type_Int + '}';
+    return new ARScanStarFaceActInfo(paramParcel);
+  }
+  
+  public ARScanStarFaceActInfo[] a(int paramInt)
+  {
+    return new ARScanStarFaceActInfo[paramInt];
   }
 }
 

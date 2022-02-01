@@ -1,14 +1,21 @@
-class appp
-  implements aqot
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+
+public class appp
+  implements DialogInterface.OnClickListener
 {
-  appp(appn paramappn) {}
+  public appp(ARScanEntryView paramARScanEntryView) {}
   
-  public long a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (appn.a(this.a) != null) {
-      return appn.a(this.a).a();
-    }
-    return 0L;
+    Activity localActivity = (Activity)this.a.a;
+    Intent localIntent = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
+    localActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

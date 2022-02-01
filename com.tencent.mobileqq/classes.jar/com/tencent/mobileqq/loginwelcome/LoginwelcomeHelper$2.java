@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.loginwelcome;
 
-import avji;
+import awpl;
 import com.tencent.mobileqq.activity.home.Conversation;
 
 public class LoginwelcomeHelper$2
   implements Runnable
 {
-  public LoginwelcomeHelper$2(avji paramavji) {}
+  public LoginwelcomeHelper$2(awpl paramawpl) {}
   
   public void run()
   {

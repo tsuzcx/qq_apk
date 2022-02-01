@@ -1,12 +1,37 @@
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyCardViewCostBall;
 
-class pji
-  extends bjwy
+public class pji
+  implements View.OnTouchListener
 {
-  pji(pjg parampjg, View paramView)
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  
+  private pji(ReadInJoyCardViewCostBall paramReadInJoyCardViewCostBall) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramView);
-    paramView.setTag(this);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_Int = ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).x;
+      this.jdField_b_of_type_Int = ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).y;
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
+      continue;
+      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).x = (this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float - paramMotionEvent.getRawX()));
+      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).y = (this.jdField_b_of_type_Int + (int)(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float));
+      ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall).updateViewLayout(paramView, ReadInJoyCardViewCostBall.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyCardViewCostBall));
+    }
   }
 }
 

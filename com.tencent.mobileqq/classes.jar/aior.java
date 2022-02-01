@@ -1,6 +1,39 @@
-public abstract interface aior
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+
+public class aior
+  implements BusinessObserver
 {
-  public abstract void b(int paramInt);
+  private Handler a;
+  
+  aior(Handler paramHandler)
+  {
+    this.a = paramHandler;
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    paramInt = paramBundle.getInt("ErrorCode");
+    String str1 = paramBundle.getString("UniqueKey");
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituObserver", 2, aioi.a(str1, "onReceive", "observer onReceive with code: " + paramInt));
+    }
+    String str2 = aioi.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if (!str2.equals(str1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituObserver", 2, aioi.a(str1, "onReceive", "response with " + str1 + " but the last one is " + str2 + ", skip."));
+      }
+    }
+    while (this.a == null) {
+      return;
+    }
+    paramBundle = this.a.obtainMessage(2, paramBundle);
+    this.a.sendMessage(paramBundle);
+  }
 }
 
 

@@ -1,204 +1,123 @@
-import NearbyGroup.Attr;
-import NearbyGroup.Cell;
-import NearbyGroup.GPS;
-import NearbyGroup.LBSInfo;
-import NearbyGroup.Wifi;
-import appoint.define.appoint_define.Cell;
-import appoint.define.appoint_define.GPS;
-import appoint.define.appoint_define.LBSInfo;
-import appoint.define.appoint_define.Wifi;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class awhp
+class awhp
+  implements ServiceConnection
 {
-  public static LBSInfo a()
+  awhp(awho paramawho) {}
+  
+  /* Error */
+  public void onServiceConnected(ComponentName arg1, android.os.IBinder paramIBinder)
   {
-    return a(false, SosoInterface.getRawSosoInfo());
+    // Byte code:
+    //   0: invokestatic 28	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +22 -> 25
+    //   6: ldc 30
+    //   8: iconst_2
+    //   9: ldc 32
+    //   11: iconst_1
+    //   12: anewarray 4	java/lang/Object
+    //   15: dup
+    //   16: iconst_0
+    //   17: aload_1
+    //   18: aastore
+    //   19: invokestatic 38	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   22: invokestatic 42	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   25: aload_0
+    //   26: getfield 12	awhp:a	Lawho;
+    //   29: invokestatic 47	awho:a	(Lawho;)Landroid/os/Messenger;
+    //   32: ifnull +95 -> 127
+    //   35: aload_0
+    //   36: getfield 12	awhp:a	Lawho;
+    //   39: new 49	android/os/Messenger
+    //   42: dup
+    //   43: aload_2
+    //   44: invokespecial 52	android/os/Messenger:<init>	(Landroid/os/IBinder;)V
+    //   47: invokestatic 55	awho:a	(Lawho;Landroid/os/Messenger;)Landroid/os/Messenger;
+    //   50: pop
+    //   51: aconst_null
+    //   52: iconst_1
+    //   53: invokestatic 61	android/os/Message:obtain	(Landroid/os/Handler;I)Landroid/os/Message;
+    //   56: astore_1
+    //   57: aload_1
+    //   58: new 63	android/os/Bundle
+    //   61: dup
+    //   62: invokespecial 64	android/os/Bundle:<init>	()V
+    //   65: invokevirtual 68	android/os/Message:setData	(Landroid/os/Bundle;)V
+    //   68: aload_1
+    //   69: aload_0
+    //   70: getfield 12	awhp:a	Lawho;
+    //   73: invokestatic 47	awho:a	(Lawho;)Landroid/os/Messenger;
+    //   76: putfield 72	android/os/Message:replyTo	Landroid/os/Messenger;
+    //   79: aload_0
+    //   80: getfield 12	awhp:a	Lawho;
+    //   83: invokestatic 75	awho:b	(Lawho;)Landroid/os/Messenger;
+    //   86: aload_1
+    //   87: invokevirtual 79	android/os/Messenger:send	(Landroid/os/Message;)V
+    //   90: aload_0
+    //   91: getfield 12	awhp:a	Lawho;
+    //   94: astore_1
+    //   95: aload_1
+    //   96: monitorenter
+    //   97: aload_0
+    //   98: getfield 12	awhp:a	Lawho;
+    //   101: invokestatic 82	awho:a	(Lawho;)Ljava/util/concurrent/atomic/AtomicInteger;
+    //   104: iconst_1
+    //   105: invokevirtual 88	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   108: aload_1
+    //   109: monitorexit
+    //   110: aload_0
+    //   111: getfield 12	awhp:a	Lawho;
+    //   114: aload_0
+    //   115: getfield 12	awhp:a	Lawho;
+    //   118: invokestatic 82	awho:a	(Lawho;)Ljava/util/concurrent/atomic/AtomicInteger;
+    //   121: invokevirtual 92	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   124: invokestatic 95	awho:a	(Lawho;I)V
+    //   127: return
+    //   128: astore_1
+    //   129: ldc 30
+    //   131: iconst_1
+    //   132: ldc 97
+    //   134: aload_1
+    //   135: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   138: goto -48 -> 90
+    //   141: astore_1
+    //   142: ldc 30
+    //   144: iconst_1
+    //   145: ldc 102
+    //   147: aload_1
+    //   148: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   151: goto -61 -> 90
+    //   154: astore_2
+    //   155: aload_1
+    //   156: monitorexit
+    //   157: aload_2
+    //   158: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	159	0	this	awhp
+    //   0	159	2	paramIBinder	android.os.IBinder
+    // Exception table:
+    //   from	to	target	type
+    //   79	90	128	android/os/RemoteException
+    //   79	90	141	java/lang/Throwable
+    //   97	110	154	finally
+    //   155	157	154	finally
   }
   
-  public static LBSInfo a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    Attr localAttr = null;
-    if (paramSosoLbsInfo == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1;
-    Object localObject2;
-    if (paramSosoLbsInfo.mCells != null)
+    synchronized (this.a)
     {
-      localObject1 = paramSosoLbsInfo.mCells.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (SosoInterface.SosoCell)((Iterator)localObject1).next();
-        localArrayList.add(new Cell((short)((SosoInterface.SosoCell)localObject2).mMcc, (short)((SosoInterface.SosoCell)localObject2).mMnc, ((SosoInterface.SosoCell)localObject2).mLac, ((SosoInterface.SosoCell)localObject2).mCellId, (short)((SosoInterface.SosoCell)localObject2).mRss));
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        if (paramSosoLbsInfo.mLocation == null) {
-          break label313;
-        }
-        if (!paramBoolean) {
-          continue;
-        }
-        localObject1 = new GPS((int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D), (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D), -1, 1);
-      }
-      catch (Exception localException)
-      {
-        Iterator localIterator;
-        SosoInterface.SosoWifi localSosoWifi;
-        localGPS = null;
-        continue;
-        if (paramSosoLbsInfo.mAttr == null) {
-          continue;
-        }
-        localAttr = new Attr(paramSosoLbsInfo.mAttr.mImei, paramSosoLbsInfo.mAttr.mImsi, paramSosoLbsInfo.mAttr.mPhoneNum);
-        return new LBSInfo(localGPS, (ArrayList)localObject2, localArrayList, localAttr);
-      }
-      localObject2 = new ArrayList();
-      if (paramSosoLbsInfo.mWifis != null)
-      {
-        localIterator = paramSosoLbsInfo.mWifis.iterator();
-        if (localIterator.hasNext())
-        {
-          localSosoWifi = (SosoInterface.SosoWifi)localIterator.next();
-          if (localSosoWifi == null) {
-            continue;
-          }
-          ((ArrayList)localObject2).add(new Wifi(localSosoWifi.mMac, (short)localSosoWifi.mRssi));
-          continue;
-          localObject1 = new GPS((int)(paramSosoLbsInfo.mLocation.mLat84 * 1000000.0D), (int)(paramSosoLbsInfo.mLocation.mLon84 * 1000000.0D), -1, 0);
-          continue;
-        }
-      }
-      label313:
-      GPS localGPS = null;
-    }
-  }
-  
-  public static appoint_define.LBSInfo a(String paramString)
-  {
-    Object localObject1 = SosoInterface.getRawSosoInfo();
-    if ((localObject1 == null) || (((SosoInterface.SosoLbsInfo)localObject1).mLocation == null) || (((SosoInterface.SosoLbsInfo)localObject1).mLocation.mLat02 == 0.0D) || (((SosoInterface.SosoLbsInfo)localObject1).mLocation.mLon02 == 0.0D)) {
-      SosoInterface.reqRawLbsData(60000L, paramString);
-    }
-    for (paramString = SosoInterface.getRawSosoInfo();; paramString = (String)localObject1)
-    {
-      if (paramString != null)
-      {
-        localObject1 = new appoint_define.LBSInfo();
-        Object localObject2;
-        Object localObject3;
-        Object localObject4;
-        if (paramString.mWifis != null)
-        {
-          localObject2 = paramString.mWifis.iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = (SosoInterface.SosoWifi)((Iterator)localObject2).next();
-            if (localObject3 != null)
-            {
-              localObject4 = new appoint_define.Wifi();
-              ((appoint_define.Wifi)localObject4).uint64_mac.set(((SosoInterface.SosoWifi)localObject3).mMac);
-              ((appoint_define.Wifi)localObject4).int32_rssi.set(((SosoInterface.SosoWifi)localObject3).mRssi);
-              ((appoint_define.LBSInfo)localObject1).rpt_msg_wifis.add((MessageMicro)localObject4);
-            }
-          }
-        }
-        if (paramString.mCells != null)
-        {
-          localObject2 = paramString.mCells.iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = (SosoInterface.SosoCell)((Iterator)localObject2).next();
-            if (localObject3 != null)
-            {
-              localObject4 = new appoint_define.Cell();
-              ((appoint_define.Cell)localObject4).int32_cellid.set(((SosoInterface.SosoCell)localObject3).mCellId);
-              ((appoint_define.Cell)localObject4).int32_lac.set(((SosoInterface.SosoCell)localObject3).mLac);
-              ((appoint_define.Cell)localObject4).int32_rssi.set(((SosoInterface.SosoCell)localObject3).mRss);
-              ((appoint_define.Cell)localObject4).int32_mcc.set(((SosoInterface.SosoCell)localObject3).mMcc);
-              ((appoint_define.Cell)localObject4).int32_mnc.set(((SosoInterface.SosoCell)localObject3).mMnc);
-              ((appoint_define.LBSInfo)localObject1).rpt_msg_cells.add((MessageMicro)localObject4);
-            }
-          }
-        }
-        if (paramString.mLocation != null)
-        {
-          localObject2 = new appoint_define.GPS();
-          ((appoint_define.GPS)localObject2).int32_lon.set((int)(paramString.mLocation.mLon84 * 1000000.0D));
-          ((appoint_define.GPS)localObject2).int32_lat.set((int)(paramString.mLocation.mLat84 * 1000000.0D));
-          ((appoint_define.GPS)localObject2).int32_type.set(0);
-          ((appoint_define.LBSInfo)localObject1).msg_gps.set((MessageMicro)localObject2);
-          return localObject1;
-        }
-      }
-      else
-      {
-        awkj.a("getLbsInfo", new Object[] { "lbs is null" });
-        return null;
-      }
-      return localObject1;
-    }
-  }
-  
-  public static String a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (paramSosoLbsInfo == null) {
-      return null;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    JSONArray localJSONArray;
-    Object localObject;
-    try
-    {
-      localJSONObject.put("lat", (int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D));
-      localJSONObject.put("lon", (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
-      localJSONArray = new JSONArray();
-      localObject = paramSosoLbsInfo.mWifis.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        SosoInterface.SosoWifi localSosoWifi = (SosoInterface.SosoWifi)((Iterator)localObject).next();
-        localJSONArray.put(new JSONObject().put("mac", localSosoWifi.mMac).put("rssi", localSosoWifi.mRssi));
-        continue;
-        return localJSONObject.toString();
-      }
-    }
-    catch (JSONException paramSosoLbsInfo)
-    {
+      awho.a(this.a).set(-1);
+      awho.a(this.a, null);
+      awho.a(this.a, awho.a(this.a).get());
       if (QLog.isColorLevel()) {
-        QLog.d("LbsUtils", 2, "lbsInfo to json exception", paramSosoLbsInfo);
+        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->onServiceDisconnected %s", new Object[] { paramComponentName }));
       }
-    }
-    for (;;)
-    {
-      localJSONObject.put("wifis", localJSONArray);
-      localJSONArray = new JSONArray();
-      paramSosoLbsInfo = paramSosoLbsInfo.mCells.iterator();
-      while (paramSosoLbsInfo.hasNext())
-      {
-        localObject = (SosoInterface.SosoCell)paramSosoLbsInfo.next();
-        localJSONArray.put(new JSONObject().put("mcc", ((SosoInterface.SosoCell)localObject).mMcc).put("mnc", ((SosoInterface.SosoCell)localObject).mMnc).put("lac", ((SosoInterface.SosoCell)localObject).mLac).put("cellid", ((SosoInterface.SosoCell)localObject).mCellId).put("rssi", ((SosoInterface.SosoCell)localObject).mRss));
-      }
-      localJSONObject.put("cells", localJSONArray);
+      return;
     }
   }
 }

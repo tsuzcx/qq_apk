@@ -1,30 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
 
 public class amdj
-  implements View.OnTouchListener
+  extends Handler
 {
-  public amdj(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public amdj(VipSpecialCareHandler.1 param1, Looper paramLooper)
   {
-    switch (paramMotionEvent.getAction())
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
+    default: 
+      return;
     }
-    for (;;)
-    {
-      return true;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.a.jdField_a_of_type_AndroidWidgetButton.performClick();
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.5F);
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-    }
+    amdi.a(this.a.this$0, "-->request timeout");
+    amdi.a(this.a.this$0, -2);
   }
 }
 

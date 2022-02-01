@@ -1,24 +1,21 @@
-public class vbh
+import UserGrowth.stBlockRecommPersonRsp;
+
+class vbh
+  implements vfg
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c;
-  public int d;
+  vbh(vbg paramvbg) {}
   
-  public vbh(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(vfr paramvfr)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    if (!(paramvfr.a instanceof stBlockRecommPersonRsp)) {
+      vmp.b("WSUserBusiness", "[actionBlockRecommendPerson] data error: " + paramvfr.a);
+    }
+    do
+    {
+      return;
+      paramvfr = (stBlockRecommPersonRsp)paramvfr.a;
+    } while (paramvfr == null);
+    vmp.b("WSUserBusiness", "[actionBlockRecommendPerson] data success resultBean.ret:" + paramvfr.ret);
   }
 }
 

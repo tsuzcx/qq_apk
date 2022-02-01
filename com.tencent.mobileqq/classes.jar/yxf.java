@@ -1,15 +1,22 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog.6.1;
 
 public class yxf
-  implements yxp
+  implements wis<win>
 {
-  public yxf(ScannerActivity paramScannerActivity, long paramLong) {}
+  public yxf(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void a()
+  public void a(boolean paramBoolean, win paramwin)
   {
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.b();
-    QLog.d("ScannerActivity", 2, "launchAr time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    ykq.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
+    if ((paramBoolean) && (paramwin != null))
+    {
+      ykq.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramwin);
+      this.a.a.post(new EditVideoMusicDialog.6.1(this, paramwin));
+      return;
+    }
+    ykq.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
   }
 }
 

@@ -1,25 +1,36 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.album.view.AlbumImageView;
+import android.text.TextUtils;
+import com.google.gson.Gson;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-class vkc
-  implements Animation.AnimationListener
+public class vkc
 {
-  vkc(vkb paramvkb) {}
+  private ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static vkc a()
   {
-    if (vjx.a(this.a.a) == 1)
-    {
-      this.a.a.b.setVisibility(8);
-      vjx.a(this.a.a).sendEmptyMessage(1);
-    }
+    return vke.a();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public String a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return (String)this.a.get(paramString);
+    }
+    return "";
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(String paramString, Map<String, String> paramMap)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramMap != null)) {
+      this.a.put(paramString, new Gson().toJson(paramMap));
+    }
+  }
 }
 
 

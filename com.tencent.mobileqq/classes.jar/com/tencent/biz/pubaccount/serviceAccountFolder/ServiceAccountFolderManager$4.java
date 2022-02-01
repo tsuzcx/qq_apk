@@ -4,23 +4,23 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import uaq;
-import uaw;
+import uon;
+import uot;
 
 public class ServiceAccountFolderManager$4
   implements Runnable
 {
-  public ServiceAccountFolderManager$4(uaw paramuaw, QQAppInterface paramQQAppInterface, long paramLong) {}
+  public ServiceAccountFolderManager$4(uot paramuot, QQAppInterface paramQQAppInterface, long paramLong) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(uaw.a(this.this$0));
+    localArrayList.addAll(uot.a(this.this$0));
     Iterator localIterator = localArrayList.iterator();
     while (localIterator.hasNext())
     {
-      uaq localuaq = (uaq)localIterator.next();
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localuaq, false);
+      uon localuon = (uon)localIterator.next();
+      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localuon, false);
     }
     localArrayList.clear();
     this.this$0.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
@@ -30,7 +30,7 @@ public class ServiceAccountFolderManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager.4
  * JD-Core Version:    0.7.0.1
  */

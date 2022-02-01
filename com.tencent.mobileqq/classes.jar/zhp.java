@@ -1,6 +1,7 @@
-public abstract interface zhp
+public abstract class zhp
+  implements zho
 {
-  public abstract void a(int paramInt);
+  public void a() {}
 }
 
 

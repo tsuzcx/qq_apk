@@ -1,23 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
 public class atcz
-  implements CompoundButton.OnCheckedChangeListener
+  implements bdhi
 {
-  public atcz(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  public atcz(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    QFileDebugSettingFragment.a(this.a).a().a = paramBoolean;
-    QFileDebugSettingFragment.a(this.a).a(QFileDebugSettingFragment.a(this.a).a());
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    FileAssistantActivity.c(this.a);
+  }
+  
+  public void b()
+  {
+    FileAssistantActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcz
  * JD-Core Version:    0.7.0.1
  */

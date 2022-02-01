@@ -1,143 +1,112 @@
-public class anwm
-  extends bgod
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+final class anwm
+  implements AdapterView.OnItemClickListener
 {
-  /* Error */
-  public void onDone(bgoe parambgoe)
+  anwm(ShareActionSheetBuilder paramShareActionSheetBuilder, int paramInt, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_1
-    //   2: invokespecial 17	bgod:onDone	(Lbgoe;)V
-    //   5: iconst_3
-    //   6: aload_1
-    //   7: invokevirtual 23	bgoe:a	()I
-    //   10: if_icmpne +107 -> 117
-    //   13: aload_1
-    //   14: getfield 26	bgoe:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   17: invokeinterface 31 1 0
-    //   22: iconst_1
-    //   23: if_icmpne +94 -> 117
-    //   26: aload_1
-    //   27: getfield 34	bgoe:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   30: aload_1
-    //   31: getfield 37	bgoe:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   34: invokeinterface 43 2 0
-    //   39: checkcast 45	java/io/File
-    //   42: astore 4
-    //   44: aload 4
-    //   46: invokevirtual 49	java/io/File:exists	()Z
-    //   49: ifeq +68 -> 117
-    //   52: aload 4
-    //   54: new 51	java/lang/StringBuilder
-    //   57: dup
-    //   58: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   61: aload 4
-    //   63: invokevirtual 56	java/io/File:getParent	()Ljava/lang/String;
-    //   66: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: getstatic 63	java/io/File:separator	Ljava/lang/String;
-    //   72: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: invokestatic 71	npo:a	(Ljava/io/File;Ljava/lang/String;)V
-    //   81: aload_1
-    //   82: invokevirtual 74	bgoe:a	()Landroid/os/Bundle;
-    //   85: astore_1
-    //   86: aload_1
-    //   87: ifnull +20 -> 107
-    //   90: aload_1
-    //   91: ldc 76
-    //   93: invokevirtual 82	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   96: lstore_2
-    //   97: lconst_0
-    //   98: lload_2
-    //   99: lcmp
-    //   100: ifeq +7 -> 107
-    //   103: lload_2
-    //   104: invokestatic 88	anwk:b	(J)V
-    //   107: iconst_1
-    //   108: invokestatic 93	alnr:b	(Z)V
-    //   111: aload 4
-    //   113: invokevirtual 96	java/io/File:delete	()Z
-    //   116: pop
-    //   117: return
-    //   118: astore_1
-    //   119: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   122: ifeq +31 -> 153
-    //   125: ldc 103
-    //   127: iconst_2
-    //   128: new 51	java/lang/StringBuilder
-    //   131: dup
-    //   132: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   135: ldc 105
-    //   137: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: aload_1
-    //   141: invokevirtual 108	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   144: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   150: invokestatic 112	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   153: aload 4
-    //   155: invokevirtual 96	java/io/File:delete	()Z
-    //   158: pop
-    //   159: return
-    //   160: astore_1
-    //   161: return
-    //   162: astore_1
-    //   163: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   166: ifeq +31 -> 197
-    //   169: ldc 103
-    //   171: iconst_2
-    //   172: new 51	java/lang/StringBuilder
-    //   175: dup
-    //   176: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   179: ldc 114
-    //   181: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   184: aload_1
-    //   185: invokevirtual 115	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   188: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   194: invokestatic 112	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   197: aload 4
-    //   199: invokevirtual 96	java/io/File:delete	()Z
-    //   202: pop
-    //   203: return
-    //   204: astore_1
-    //   205: return
-    //   206: astore_1
-    //   207: aload 4
-    //   209: invokevirtual 96	java/io/File:delete	()Z
-    //   212: pop
-    //   213: aload_1
-    //   214: athrow
-    //   215: astore_1
-    //   216: return
-    //   217: astore 4
-    //   219: goto -6 -> 213
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	222	0	this	anwm
-    //   0	222	1	parambgoe	bgoe
-    //   96	8	2	l	long
-    //   42	166	4	localFile	java.io.File
-    //   217	1	4	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   52	86	118	java/lang/Exception
-    //   90	97	118	java/lang/Exception
-    //   103	107	118	java/lang/Exception
-    //   107	111	118	java/lang/Exception
-    //   153	159	160	java/lang/Exception
-    //   52	86	162	java/lang/OutOfMemoryError
-    //   90	97	162	java/lang/OutOfMemoryError
-    //   103	107	162	java/lang/OutOfMemoryError
-    //   107	111	162	java/lang/OutOfMemoryError
-    //   197	203	204	java/lang/Exception
-    //   52	86	206	finally
-    //   90	97	206	finally
-    //   103	107	206	finally
-    //   107	111	206	finally
-    //   119	153	206	finally
-    //   163	197	206	finally
-    //   111	117	215	java/lang/Exception
-    //   207	213	217	java/lang/Exception
+    Object localObject = paramView.getTag();
+    if (localObject == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
+      int j = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).sheetItem.action;
+      localObject = "";
+      label59:
+      label120:
+      int i;
+      if (1 == this.jdField_a_of_type_Int)
+      {
+        localObject = "0X8005D50";
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+        switch (j)
+        {
+        case 4: 
+        case 5: 
+        case 6: 
+        case 7: 
+        case 8: 
+        default: 
+          if ((j != 9) && (j != 10)) {
+            break label358;
+          }
+          i = -1;
+          if (!WXShareHelper.a().a()) {
+            i = 2131720175;
+          }
+          break;
+        }
+      }
+      for (;;)
+      {
+        if (i == -1) {
+          break label358;
+        }
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(i), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimensionPixelSize(2131299080));
+        break;
+        if (2 == this.jdField_a_of_type_Int)
+        {
+          localObject = "0X8005D51";
+          break label59;
+        }
+        if (3 != this.jdField_a_of_type_Int) {
+          break label59;
+        }
+        localObject = "";
+        break label59;
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "1", "", "", "");
+        break label120;
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "2", "", "", "");
+        break label120;
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "3", "", "", "");
+        break label120;
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "4", "", "", "");
+        break label120;
+        if (!WXShareHelper.a().b()) {
+          i = 2131720176;
+        }
+      }
+      label358:
+      localObject = "邀请加入QQ热聊：" + this.jdField_a_of_type_JavaLangString;
+      switch (j)
+      {
+      case 4: 
+      case 5: 
+      case 6: 
+      case 7: 
+      case 8: 
+      default: 
+        break;
+      case 2: 
+        localObject = anvx.a(2131705030) + this.jdField_a_of_type_JavaLangString + anvx.a(2131705031);
+        anwf.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, (String)localObject, this.b, this.c, this.d, this.e, false);
+        break;
+      case 3: 
+        anwf.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, (String)localObject, this.b, this.c, this.e);
+        break;
+      case 9: 
+        anwf.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, (String)localObject, "立即加入，一起热聊！\nQQ热聊有上百个热门话题，与同兴趣的人一起群聊。", this.f, this.c, this.g);
+        break;
+      case 10: 
+        anwf.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, (String)localObject, this.b, this.f, this.c, this.g);
+      }
+    }
   }
 }
 

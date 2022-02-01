@@ -1,52 +1,41 @@
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.TextView;
-import com.tencent.avgame.gameroom.stage.guesssong.GuessSongStageView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class nex
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public nex(GuessSongStageView paramGuessSongStageView, String paramString) {}
-  
-  public void onGlobalLayout()
+  public <VH extends new<?>> VH a(int paramInt, @NonNull ViewGroup paramViewGroup, @NonNull Class<VH> paramClass)
   {
-    int i = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getWidth() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getPaddingLeft() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getPaddingRight();
-    if (QLog.isColorLevel())
+    try
     {
-      QLog.d("GuessSongStageView", 2, "onShowGameTopicTips tip = " + this.jdField_a_of_type_JavaLangString);
-      QLog.d("GuessSongStageView", 2, "onShowGameTopicTips tipWidth  = " + this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getWidth());
-      QLog.d("GuessSongStageView", 2, "onShowGameTopicTips caluWidth  = " + i);
+      Constructor localConstructor = paramClass.getDeclaredConstructor(new Class[] { View.class });
+      localConstructor.setAccessible(true);
+      paramViewGroup = (new)localConstructor.newInstance(new Object[] { LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false) });
+      return paramViewGroup;
     }
-    ViewGroup.LayoutParams localLayoutParams;
-    if (i > 0)
+    catch (NoSuchMethodException paramViewGroup)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      if (nju.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.b) <= 1) {
-        break label282;
-      }
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_New.a().b());
-      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.getWidth();
-      localLayoutParams.height = (localLayoutParams.width * 130 / 478);
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuessSongStageView", 2, "onShowMosaicImageGameTopicTips 130 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
-      }
+      paramViewGroup.printStackTrace();
+      throw new RuntimeException(paramClass.getName() + " has no match constructor!");
     }
-    label282:
-    do
+    catch (IllegalAccessException paramViewGroup)
     {
-      return;
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_New.a().a());
-      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.getWidth();
-      localLayoutParams.height = (localLayoutParams.width * 110 / 478);
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongGuessSongStageView.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    } while (!QLog.isColorLevel());
-    QLog.d("GuessSongStageView", 2, "onShowMosaicImageGameTopicTips 110 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
+      paramViewGroup.printStackTrace();
+      return null;
+    }
+    catch (InstantiationException paramViewGroup)
+    {
+      paramViewGroup.printStackTrace();
+      return null;
+    }
+    catch (InvocationTargetException paramViewGroup)
+    {
+      paramViewGroup.printStackTrace();
+    }
+    return null;
   }
 }
 

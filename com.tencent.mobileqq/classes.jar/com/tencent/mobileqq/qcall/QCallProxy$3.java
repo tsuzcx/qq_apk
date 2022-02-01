@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.qcall;
 
 import android.database.Cursor;
-import azjg;
+import bapo;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.utils.SecurityUtile;
 
 public class QCallProxy$3
   implements Runnable
 {
-  public QCallProxy$3(azjg paramazjg, String paramString) {}
+  public QCallProxy$3(bapo parambapo, String paramString) {}
   
   public void run()
   {
-    Cursor localCursor = azjg.a(this.this$0, this.a);
+    Cursor localCursor = bapo.a(this.this$0, this.a);
     if (localCursor != null)
     {
       int i = localCursor.getColumnIndex("name");
       while (localCursor.moveToNext())
       {
         String str = SecurityUtile.encode(localCursor.getString(i));
-        int j = azjg.a(this.this$0, str);
+        int j = bapo.a(this.this$0, str);
         if (j != -1) {
-          azjg.a(this.this$0).addMsgQueue(this.a, j, str, null, null, 2, null);
+          bapo.a(this.this$0).addMsgQueue(this.a, j, str, null, null, 2, null);
         }
       }
       localCursor.close();

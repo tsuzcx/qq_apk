@@ -1,18 +1,33 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.6;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$dismissGuideRootView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "isReverse", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sfs
-  extends AnimatorListenerAdapter
+public class sfs
+  implements bghi
 {
-  sfs(View paramView) {}
+  public sfs(ReadInJoyWebDataManager.6 param6) {}
   
-  public void onAnimationEnd(@Nullable Animator paramAnimator, boolean paramBoolean)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.setVisibility(8);
+    QLog.w("ReadInJoyWebDataManager", 2, Long.toString(Thread.currentThread().getId()));
+    if (paramJSONObject != null) {}
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("ReadInJoyWebDataManager", 2, "sendLog result:" + paramJSONObject.toString());
+        }
+        return;
+      }
+      catch (Exception paramJSONObject)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.w("ReadInJoyWebDataManager", 2, "sendLog result Exception :" + paramJSONObject);
+        return;
+      }
+    }
+    QLog.w("ReadInJoyWebDataManager", 2, "sendLog result null");
   }
 }
 

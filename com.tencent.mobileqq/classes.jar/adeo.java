@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class adeo
+  extends azby
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public adeo(AccountManageActivity paramAccountManageActivity) {}
   
-  private adeo(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    AccountManageActivity.b(this.a);
+  }
 }
 
 

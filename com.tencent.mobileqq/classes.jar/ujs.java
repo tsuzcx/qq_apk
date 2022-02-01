@@ -1,18 +1,19 @@
-import UserGrowth.stPublisherRsp;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class ujs
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ShowIntervalCheckStep;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "channelID", "", "(I)V", "getChannelID", "()I", "doStep", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ujs
+  extends ujc
 {
-  public ujs(WSHomeFragment paramWSHomeFragment, stPublisherRsp paramstPublisherRsp) {}
+  private final int a;
   
-  public void onClick(View paramView)
+  public ujs(int paramInt)
   {
-    WSHomeFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSHomeFragment, this.jdField_a_of_type_UserGrowthStPublisherRsp);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

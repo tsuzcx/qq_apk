@@ -1,71 +1,69 @@
-import android.view.View;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class wri
-  implements wui
+  implements IEventReceiver
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int = UIUtils.getWindowScreenHeight(BaseApplication.getContext());
-  private int b = -1;
-  private int c = -1;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private wrj jdField_a_of_type_Wrj;
+  private wrk jdField_a_of_type_Wrk;
+  private wrl jdField_a_of_type_Wrl;
   
-  public wri(wrg paramwrg) {}
-  
-  public void a(int paramInt)
+  public wri(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_Wrg.a() != 0) {
-      return;
-    }
-    this.c = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
   }
   
-  public void a(int paramInt1, float paramFloat, int paramInt2)
+  private void b()
   {
-    if (this.jdField_a_of_type_Wrg.a() != 0) {
-      return;
-    }
-    if (this.b == -1) {
-      this.b = paramInt1;
-    }
-    if (this.b != paramInt1)
-    {
-      this.b = paramInt1;
-      this.jdField_a_of_type_Float = paramFloat;
-    }
-    if (this.jdField_a_of_type_Float > 0.5D)
-    {
-      this.jdField_a_of_type_Wrg.a.setTranslationY(this.jdField_a_of_type_Int - paramInt2);
-      return;
-    }
-    this.jdField_a_of_type_Wrg.a.setTranslationY(-paramInt2);
+    this.jdField_a_of_type_Wrk = new wrk(this);
+    this.jdField_a_of_type_Wrl = new wrl(this);
+    wad.a().registerSubscriber(this.jdField_a_of_type_Wrk);
+    wad.a().registerSubscriber(this.jdField_a_of_type_Wrl);
   }
   
-  public void b(int paramInt)
+  private void c()
   {
-    xvv.a("Q.qqstory.playernew.LoadingMoreWidget", "onPageScrollStateChanged newState=%d visible=%d", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Wrg.a()));
-    if (this.jdField_a_of_type_Wrg.a() != 0) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt == 1)
-        {
-          this.jdField_a_of_type_Float = -1.0F;
-          this.b = -1;
-          this.c = -1;
-          this.jdField_a_of_type_Wrg.a.clearAnimation();
-          return;
-        }
-      } while (paramInt != 0);
-      if (this.jdField_a_of_type_Float < 0.5D)
-      {
-        this.jdField_a_of_type_Wrg.a.setTranslationY(0.0F);
-        return;
-      }
-    } while (this.c == -1);
-    this.jdField_a_of_type_Wrg.a.setTranslationY(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "invalidateHalo: invoked.  mCallback: " + this.jdField_a_of_type_Wrj);
+    }
+    if (this.jdField_a_of_type_Wrj != null) {
+      this.jdField_a_of_type_Wrj.a();
+    }
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "destroy: invoked. ");
+    }
+    wad.a().unRegisterSubscriber(this.jdField_a_of_type_Wrk);
+    wad.a().unRegisterSubscriber(this.jdField_a_of_type_Wrl);
+    this.jdField_a_of_type_Wrj = null;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void a(wrj paramwrj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "setCallback: invoked. Message: callback: " + paramwrj);
+    }
+    this.jdField_a_of_type_Wrj = paramwrj;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public boolean isValidate()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 

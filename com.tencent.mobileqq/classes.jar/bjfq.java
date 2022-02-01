@@ -1,30 +1,15 @@
-import android.app.Activity;
-import com.tencent.mobileqq.mini.share.MiniProgramShareUtils.OnShareListener;
-import com.tencent.qqmini.sdk.launcher.model.InnerShareData;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class bjfq
-  implements MiniProgramShareUtils.OnShareListener
+public class bjfq
+  implements bjak
 {
-  bjfq(bjfp parambjfp, InnerShareData paramInnerShareData) {}
+  public bjfq(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public void onShared(boolean paramBoolean1, boolean paramBoolean2)
+  public void a()
   {
-    InnerShareData localInnerShareData;
-    Activity localActivity;
-    if (paramBoolean1)
-    {
-      localInnerShareData = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData;
-      localActivity = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.fromActivity;
-      if (!paramBoolean2) {
-        break label35;
-      }
-    }
-    label35:
-    for (int i = 0;; i = 1)
-    {
-      localInnerShareData.notifyShareResult(localActivity, i, true);
-      return;
-    }
+    bdla.b(null, "dc00898", "", "", "0X800A7BD", "0X800A7BD", QuickLoginAuthorityActivity.b(this.a), 0, "", "", "", "");
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "report-dc00898-0X800A7BD-fromType=" + QuickLoginAuthorityActivity.b(this.a));
   }
 }
 

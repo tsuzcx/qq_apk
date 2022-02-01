@@ -1,22 +1,11 @@
-public final class ayan
+class ayan
+  implements xlz
 {
-  public int a;
-  public String a;
-  public int b;
+  ayan(ayaj paramayaj, ayab paramayab) {}
   
-  public ayan(int paramInt1, int paramInt2, String paramString)
+  public void a_(xlu paramxlu)
   {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public ayan(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = 100;
-    this.b = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Ayab.a(this.jdField_a_of_type_Ayaj);
   }
 }
 

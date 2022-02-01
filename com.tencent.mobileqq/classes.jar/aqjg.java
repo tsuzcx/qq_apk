@@ -1,21 +1,24 @@
-import org.jetbrains.annotations.NotNull;
-
 public class aqjg
 {
   public int a;
+  long a;
   public String a;
+  public int b;
+  public String b;
+  public String c = "0";
   
-  @NotNull
-  public String toString()
+  public aqjg()
   {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("topicId: ").append(this.jdField_a_of_type_Int).append(",topicName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "0";
+    this.jdField_b_of_type_JavaLangString = "0";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqjg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.data.OpenID;
 
 class bgdz
-  implements DialogInterface.OnClickListener
+  extends nwk
 {
-  bgdz(bgdv parambgdv) {}
+  bgdz(bgdy parambgdy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  {
+    if ((bgdy.a(this.a) == null) || (bgdy.a(this.a) == null) || (bgdy.a(this.a) == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((bgdy.a(this.a).isFinishing()) || (bgdy.a(this.a)));
+      bgdy.a(this.a).d();
+      if (bgdy.a(this.a) != null) {
+        bgdy.a(this.a).removeCallbacksAndMessages(null);
+      }
+    } while ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null) || (paramOpenID.openID.equals(bgdy.a(this.a))));
+    bgdy.a(this.a).b();
+  }
 }
 
 

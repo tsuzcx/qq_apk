@@ -1,24 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.widget.ListView;
+import java.util.List;
 
-public class peh
-  implements sly
+class peh
+  extends pfe
 {
-  ped a;
-  
-  peh(ped paramped1, ped paramped2)
+  peh(pdv parampdv, boolean paramBoolean, List paramList)
   {
-    this.a = paramped2;
+    super(parampdv, null);
   }
   
-  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
+  void a(pfh parampfh)
   {
-    if (!this.b.a().c()) {
-      return;
-    }
-    this.b.a().e(false);
-    this.b.a().a().a(paramReadInJoyBaseListView);
-    this.b.a().a().a(this.b.a().a().a().getLastVisiblePosition() + 1, this.b.a().a().a(), this.a);
+    parampfh.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, pdv.a(this.jdField_a_of_type_Pdv), 3);
   }
 }
 

@@ -1,17 +1,21 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afkx;
-import aflp;
-import android.graphics.Bitmap;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 
 class BaseChatPie$64
-  implements aflp
+  implements DialogInterface.OnClickListener
 {
   BaseChatPie$64(BaseChatPie paramBaseChatPie) {}
   
-  public void onSend(Bitmap paramBitmap, afkx paramafkx, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.this$0.hidePanel();
+    Intent localIntent = new Intent(this.this$0.mContext, FavEmosmManageActivity.class);
+    this.this$0.mContext.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

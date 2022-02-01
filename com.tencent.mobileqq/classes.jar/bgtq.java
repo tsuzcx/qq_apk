@@ -1,10 +1,18 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-
 public class bgtq
 {
-  public static bgtr a(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  
+  public bgtq(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
   {
-    return new bgtr(paramSwiftBrowserUIStyleHandler);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_JavaLangString = ("https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effects_item_" + paramInt1 + ".png");
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

@@ -1,263 +1,278 @@
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.weather.webpage.WeatherPreloadHelperKt.preloadWebProcessAsync.1;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.RecentConfig;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.text.StringsKt;
-import mqq.app.AppRuntime;
-import mqq.manager.Manager;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.util.concurrent.ConcurrentHashMap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"MAX_PRELOAD_TIME", "", "PRELOAD_FROM_CONVERSATION", "PRELOAD_FROM_FORGROUND", "PRELOAD_FROM_TEST", "PRELOAD_RESULT_ERROR_CANNOT_GET_APP", "PRELOAD_RESULT_ERROR_HAS_NO_UNREAD", "PRELOAD_RESULT_ERROR_HAS_WEB_PROCESS", "PRELOAD_RESULT_ERROR_LOW_PERF_DEVICE", "PRELOAD_RESULT_ERROR_NOT_NEW", "PRELOAD_RESULT_ERROR_NOT_OPEN_THREE_DAY", "PRELOAD_RESULT_ERROR_OTHER_WHEN_START_PROCESS", "PRELOAD_RESULT_ERROR_PARAM_WPM", "PRELOAD_RESULT_ERROR_PRELOAD_CLOSE", "PRELOAD_RESULT_ERROR_TODAY_PRELOAD_TO_MUCH", "PRELOAD_RESULT_NEVER", "PRELOAD_RESULT_SUCCESS", "PRELOAD_TIME_ZERO", "SP_PRELOAD_DATA_INDEX", "SP_PRELOAD_INFO_INDEX", "SP_PRELOAD_INFO_LIST_SIZE", "SP_PRELOAD_INFO_SPLIT", "", "START_WEB_PROCESS_DEFAULT_FROM", "STEP_ARK_LOAD", "STEP_CLICK", "STEP_GET_MESSAGE", "STEP_ON_CREATE", "STEP_TAG", "STEP_WEB_LOAD_END", "STEP_WEB_LOAD_START", "TAG", "THREE_DAY", "checkNeedPreload", "context", "Landroid/content/Context;", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "getTodayLastPreloadResult", "getTodayPreloadTimes", "hasUnreadArkMsg", "", "isToady", "dateString", "logInfo", "", "msg", "preloadWebProcess", "preloadWebProcessAsync", "from", "recordStep", "step", "ext", "saveAndReportPreloadResult", "preloadResult", "saveTodayPreloadTimes", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class algs
+public class algs
 {
-  private static final int a(Context paramContext, QQAppInterface paramQQAppInterface)
+  private static algs jdField_a_of_type_Algs;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private RecentConfig jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentConfig;
+  public String a;
+  public final List<RecentBaseData> a;
+  private ConcurrentHashMap<String, RecentBaseData> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(109);
+  public boolean a;
+  public List<RecentBaseData> b;
+  private boolean b;
+  
+  private algs()
   {
-    if (!algu.a.a()) {
-      return -3001;
-    }
-    if (!a(paramQQAppInterface)) {
-      return -3004;
-    }
-    if (DeviceInfoUtil.isLowPerfDevice())
-    {
-      algh.a().a(paramQQAppInterface, "new_folder_noprestart_lowsystem");
-      return -3003;
-    }
-    paramContext = (Long)bfyz.b(paramContext, paramQQAppInterface.getCurrentAccountUin(), "key_last_open_weather_page", Long.valueOf(0L));
-    long l = System.currentTimeMillis();
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "lastOpenTime");
-    if (l - paramContext.longValue() > 259200000)
-    {
-      b("lastOpenTime unable lastOpenTime ：" + paramContext);
-      return -3002;
-    }
-    if (b(paramQQAppInterface) >= 3) {
-      return -3005;
-    }
-    return 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(99);
   }
   
-  public static final int a(@Nullable QQAppInterface paramQQAppInterface)
+  public static algs a()
   {
-    if (paramQQAppInterface == null) {
-      return -5000;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Algs == null) {
+        jdField_a_of_type_Algs = new algs();
+      }
+      return jdField_a_of_type_Algs;
     }
-    paramQQAppInterface = (String)bfyz.b((Context)BaseApplicationImpl.context, paramQQAppInterface.getCurrentAccountUin(), "key_last_preload_web_result", "");
-    b("getTodayLastPreloadResult ：" + paramQQAppInterface);
-    if (TextUtils.isEmpty((CharSequence)paramQQAppInterface)) {
-      return -1000;
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    return paramString + "-" + paramInt;
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, List<RecentUser> paramList)
+  {
+    blfz.a("splitRecents");
+    ArrayList localArrayList1 = new ArrayList(4);
+    ArrayList localArrayList2 = new ArrayList(4);
+    ArrayList localArrayList3 = new ArrayList(4);
+    localArrayList1.add(paramQQAppInterface.getCurrentAccountUin());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      RecentUser localRecentUser = (RecentUser)paramList.next();
+      switch (localRecentUser.getType())
+      {
+      default: 
+        break;
+      case 0: 
+        localArrayList1.add(localRecentUser.uin);
+        break;
+      case 1: 
+        localArrayList2.add(localRecentUser.uin);
+        break;
+      case 3000: 
+        localArrayList3.add(localRecentUser.uin);
+      }
     }
-    Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "preloadString");
-    Object localObject = StringsKt.split$default((CharSequence)paramQQAppInterface, new String[] { "|" }, false, 0, 6, null);
-    if ((((List)localObject).size() != 2) || (TextUtils.isEmpty((CharSequence)((List)localObject).get(0))) || (TextUtils.isEmpty((CharSequence)((List)localObject).get(1)))) {
-      return -1000;
+    blfz.a();
+    if (localArrayList1.size() > 2) {
+      ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(localArrayList1);
     }
-    if (!a((String)((List)localObject).get(0))) {
-      return -1000;
+    if (localArrayList3.size() > 2) {
+      ((antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(localArrayList3);
     }
-    paramQQAppInterface = (Integer)null;
+    if (localArrayList2.size() > 2) {
+      ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(localArrayList2);
+    }
+  }
+  
+  public RecentBaseData a(String paramString)
+  {
     try
     {
-      localObject = Integer.valueOf((String)((List)localObject).get(1));
-      paramQQAppInterface = (QQAppInterface)localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
       {
-        QLog.i("WeatherPreloadHelper", 1, "getTodayLastPreloadResult", localThrowable);
+        paramString = (RecentBaseData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        return paramString;
       }
     }
-    if (paramQQAppInterface == null) {
-      return -1000;
-    }
-    return paramQQAppInterface.intValue();
-  }
-  
-  public static final void a(int paramInt)
-  {
-    b("preloadWebProcessAsync from = " + paramInt);
-    ThreadManager.excute((Runnable)WeatherPreloadHelperKt.preloadWebProcessAsync.1.a, 128, null, false);
-  }
-  
-  public static final void a(int paramInt, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "ext");
-    QLog.i("WeatherStep", 1, "step = " + paramInt + ' ' + paramString);
-  }
-  
-  private static final boolean a(QQAppInterface paramQQAppInterface)
-  {
-    int j = paramQQAppInterface.getConversationFacade().a("2658655094", 1008);
-    if (j > 0)
+    catch (Exception paramString)
     {
-      paramQQAppInterface = paramQQAppInterface.getMessageFacade().getAIOList("2658655094", 1008);
-      int i = paramQQAppInterface.size() - 1;
-      j = Math.max(0, paramQQAppInterface.size() - j);
-      if (i >= j) {
-        for (;;)
-        {
-          if (alhb.a((MessageRecord)paramQQAppInterface.get(i))) {
-            return true;
-          }
-          if (i == j) {
-            break;
-          }
-          i -= 1;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, paramString.toString());
       }
     }
-    return false;
+    return null;
   }
   
-  private static final boolean a(String paramString)
+  public RecentConfig a()
   {
-    if (TextUtils.isEmpty((CharSequence)paramString)) {
-      return false;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentConfig == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentConfig = new alis();
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentConfig;
     }
-    Object localObject = (Calendar)null;
-    Calendar localCalendar = (Calendar)null;
-    label146:
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      }
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        this.jdField_a_of_type_JavaUtilList.clear();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)) && (paramRecentBaseData != null)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramRecentBaseData);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString))) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    }
+  }
+  
+  public void a(List<RecentBaseData> paramList, String paramString)
+  {
+    this.jdField_b_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentDataListManager", 2, new Object[] { "preloadRecentBaseData, isPreloaded= ", Boolean.valueOf(this.jdField_b_of_type_Boolean), ", forUI=", Boolean.valueOf(paramBoolean2), ", loadMore=", Boolean.valueOf(paramBoolean1) });
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      return true;
+    }
+    if (paramBoolean2) {
+      this.jdField_b_of_type_Boolean = true;
+    }
+    bhhy.a(null, "Recent_LoadData_getManagers");
+    Object localObject1;
+    if (paramQQAppInterface == null)
+    {
+      localObject1 = null;
+      bhhy.a("Recent_LoadData_getManagers", null);
+      if (localObject1 == null) {
+        break label635;
+      }
+      bhhy.a(null, "Recent_LoadData_query_recent_list");
+      localObject1 = ((aoxz)localObject1).getRecentList(true);
+      bhhy.a("Recent_LoadData_query_recent_list", null);
+    }
     for (;;)
     {
-      try
+      label131:
+      int k;
+      int j;
+      label206:
+      Object localObject2;
+      if (localObject1 == null)
       {
-        Date localDate = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE).parse(paramString);
-        paramString = Calendar.getInstance();
-        localObject = localCalendar;
-        QLog.i("WeatherPreloadHelper", 1, "isToady", localThrowable1);
+        i = 0;
+        k = Math.min(10, i);
+        if (k <= 0) {
+          break label558;
+        }
+        bhhy.a(null, "Recent_LoadData_preloadData");
+        if (!alht.a(paramQQAppInterface)) {
+          a(paramQQAppInterface, (List)localObject1);
+        }
+        bhhy.a("Recent_LoadData_preloadData", "Recent_LoadData_convert");
+        this.jdField_b_of_type_JavaUtilList = new ArrayList(k);
+        this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentUin();
+        if (!alht.a(paramQQAppInterface)) {
+          break label487;
+        }
+        i = 0;
+        j = 0;
+        if ((i >= ((List)localObject1).size()) || (i >= 10)) {
+          break label326;
+        }
+        localObject2 = (RecentUser)((List)localObject1).get(i);
+        RecentBaseData localRecentBaseData = alht.a(paramQQAppInterface, paramContext, (RecentUser)localObject2);
+        if (localRecentBaseData == null) {
+          break label301;
+        }
+        this.jdField_b_of_type_JavaUtilList.add(localRecentBaseData);
+        j += 1;
       }
-      catch (Throwable localThrowable1)
+      for (;;)
       {
-        try
+        i += 1;
+        break label206;
+        localObject1 = paramQQAppInterface.getRecentUserProxy();
+        break;
+        i = ((List)localObject1).size();
+        break label131;
+        label301:
+        localObject2 = alfm.a((RecentUser)localObject2, paramQQAppInterface, paramContext, true);
+        this.jdField_b_of_type_JavaUtilList.add(localObject2);
+      }
+      label326:
+      alht.a(((List)localObject1).size(), ((List)localObject1).size() - j);
+      QLog.d("RecentDataListManager", 1, new Object[] { "Recover from parcel, success size=", Integer.valueOf(j), " RU size=", Integer.valueOf(((List)localObject1).size()) });
+      for (;;)
+      {
+        bhhy.a("Recent_LoadData_convert", null);
+        bhhy.a(null, "Recent_LoadMoreData_getFaceDrawable");
+        paramContext = new algy(paramQQAppInterface);
+        if ((paramQQAppInterface.isLogin()) && (Friends.isValidUin(paramQQAppInterface.getCurrentAccountUin()))) {
+          paramContext.a(0, paramQQAppInterface.getCurrentAccountUin());
+        }
+        i = 0;
+        while (i < k)
         {
-          Intrinsics.checkExpressionValueIsNotNull(paramString, "calendarLast");
-          localObject = localCalendar;
-          paramString.setTime(localDate);
-          localObject = localCalendar;
-          localCalendar = Calendar.getInstance();
-          localObject = localCalendar;
-          Intrinsics.checkExpressionValueIsNotNull(localCalendar, "calendarNow");
-          localObject = localCalendar;
-          localCalendar.setTime(new Date());
-          localObject = localCalendar;
-          if ((paramString == null) || (localObject == null) || (paramString.get(0) != ((Calendar)localObject).get(0)) || (paramString.get(1) != ((Calendar)localObject).get(1)) || (paramString.get(6) != ((Calendar)localObject).get(6))) {
-            break;
+          paramQQAppInterface = (RecentUser)((List)localObject1).get(i);
+          if (paramQQAppInterface != null) {
+            paramContext.a(paramQQAppInterface.getType(), paramQQAppInterface.uin);
           }
-          return true;
+          i += 1;
         }
-        catch (Throwable localThrowable2)
-        {
-          break label146;
-        }
-        localThrowable1 = localThrowable1;
-        paramString = (String)localObject;
-        localObject = localCalendar;
+        label487:
+        alfm.a((List)localObject1, paramQQAppInterface, paramContext, this.jdField_b_of_type_JavaUtilList, k);
+        QLog.d("RecentDataListManager", 1, new Object[] { "Recover from old way, success size= RU size=", Integer.valueOf(((List)localObject1).size()), " limit=", Integer.valueOf(k) });
       }
-    }
-    return false;
-  }
-  
-  private static final int b(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = (String)bfyz.b((Context)BaseApplicationImpl.context, paramQQAppInterface.getCurrentAccountUin(), "key_last_preload_web_process", "");
-    b("getTodayPreInfoTimes ：" + paramQQAppInterface);
-    if (TextUtils.isEmpty((CharSequence)paramQQAppInterface)) {}
-    do
-    {
-      Object localObject;
-      do
+      this.jdField_a_of_type_Boolean = true;
+      bhhy.a("Recent_LoadMoreData_getFaceDrawable", null);
+      label558:
+      paramQQAppInterface = this.jdField_b_of_type_JavaUtilList;
+      if (QLog.isColorLevel())
       {
-        return 0;
-        Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "preloadString");
-        localObject = StringsKt.split$default((CharSequence)paramQQAppInterface, new String[] { "|" }, false, 0, 6, null);
-      } while ((((List)localObject).size() != 2) || (TextUtils.isEmpty((CharSequence)((List)localObject).get(0))) || (TextUtils.isEmpty((CharSequence)((List)localObject).get(1))) || (!a((String)((List)localObject).get(0))));
-      paramQQAppInterface = (Integer)null;
-      try
-      {
-        localObject = Integer.valueOf((String)((List)localObject).get(1));
-        paramQQAppInterface = (QQAppInterface)localObject;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QLog.i("WeatherPreloadHelper", 1, "getPreInfoTimes", localThrowable);
+        paramContext = new StringBuilder().append("preloadRecentBaseData end: ").append(this.jdField_b_of_type_Boolean);
+        if (paramQQAppInterface == null) {
+          break label629;
         }
       }
-    } while (paramQQAppInterface == null);
-    return paramQQAppInterface.intValue();
-  }
-  
-  private static final void b()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl == null)
-    {
-      b("preloadWebProcess context error");
-      return;
+      label629:
+      for (int i = paramQQAppInterface.size();; i = 0)
+      {
+        QLog.d("RecentDataListManager", 2, i);
+        paramBoolean1 = bool;
+        if (k > 0) {
+          paramBoolean1 = true;
+        }
+        return paramBoolean1;
+      }
+      label635:
+      localObject1 = null;
     }
-    Object localObject = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
-    localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    if ((localObject == null) || (!(localObject instanceof QQAppInterface)))
-    {
-      b("preloadWebProcess app error");
-      return;
-    }
-    Manager localManager = ((AppRuntime)localObject).getManager(13);
-    if ((localManager == null) || (!(localManager instanceof WebProcessManager)))
-    {
-      b("preloadWebProcess wpm error");
-      b((QQAppInterface)localObject, -2000);
-      return;
-    }
-    int i = a((Context)localBaseApplicationImpl, (QQAppInterface)localObject);
-    if (i != 0)
-    {
-      b("preloadWebProcess no need result " + i);
-      b((QQAppInterface)localObject, i);
-      return;
-    }
-    b("preloadWebProcess");
-    boolean bool = WebProcessManager.c();
-    ((WebProcessManager)localManager).a(-1, (bgso)new algt((AppRuntime)localObject, bool));
-  }
-  
-  private static final void b(QQAppInterface paramQQAppInterface)
-  {
-    int i = b(paramQQAppInterface);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
-    bfyz.a((Context)BaseApplicationImpl.context, paramQQAppInterface.getCurrentAccountUin(), true, "key_last_preload_web_process", localSimpleDateFormat.format(new Date()) + '|' + (i + 1));
-  }
-  
-  private static final void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
-    bfyz.a((Context)BaseApplicationImpl.context, paramQQAppInterface.getCurrentAccountUin(), true, "key_last_preload_web_result", localSimpleDateFormat.format(new Date()) + '|' + paramInt);
-    if ((paramInt == -2000) || (paramInt == -3005) || (paramInt == -4001)) {
-      algh.a().a(paramQQAppInterface, "new_folder_prestart_fail_others", Integer.valueOf(paramInt));
-    }
-  }
-  
-  private static final void b(String paramString)
-  {
-    QLog.i("WeatherPreloadHelper", 1, paramString);
   }
 }
 

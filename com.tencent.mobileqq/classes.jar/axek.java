@@ -1,31 +1,70 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class axek
-  implements URLDrawable.URLDrawableListener
+  extends aqwt<axej>
 {
-  public axek(NearbyMomentFragment paramNearbyMomentFragment) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  @NonNull
+  public axej a(int paramInt)
   {
-    if (NearbyMomentFragment.a(this.a) == 2) {
-      NearbyMomentFragment.a(this.a).setVisibility(8);
+    return new axej();
+  }
+  
+  @Nullable
+  public axej a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOEntranceConfigProcessor", 2, "onParsed : " + paramArrayOfaqxa[0].a);
+      }
+      return axej.a(paramArrayOfaqxa[0].a);
+    }
+    return new axej();
+  }
+  
+  public void a(axej paramaxej)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramaxej);
+    }
+    ((axel)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.AIO_MULTI_WINDOW_MANAGER)).a(paramaxej);
+  }
+  
+  public Class<axej> clazz()
+  {
+    return axej.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramInt);
     }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public int type()
   {
-    if (NearbyMomentFragment.a(this.a) == 2)
-    {
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
-      NearbyMomentFragment.a(this.a).setVisibility(0);
-    }
+    return 478;
   }
 }
 

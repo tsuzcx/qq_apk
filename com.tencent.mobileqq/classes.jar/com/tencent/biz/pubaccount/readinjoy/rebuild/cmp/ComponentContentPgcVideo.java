@@ -25,7 +25,7 @@ public class ComponentContentPgcVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560125, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560172, this, true);
   }
   
   /* Error */
@@ -35,17 +35,17 @@ public class ComponentContentPgcVideo
     //   0: iconst_0
     //   1: istore 5
     //   3: aload_0
-    //   4: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Qtr	Lqtr;
-    //   7: getfield 40	qtr:a	Lpvc;
+    //   4: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Rfw	Lrfw;
+    //   7: getfield 40	rfw:a	Lqfw;
     //   10: ifnull +314 -> 324
     //   13: aload_0
-    //   14: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Qtr	Lqtr;
-    //   17: getfield 40	qtr:a	Lpvc;
+    //   14: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Rfw	Lrfw;
+    //   17: getfield 40	rfw:a	Lqfw;
     //   20: invokeinterface 45 1 0
     //   25: ifnull +299 -> 324
     //   28: aload_0
-    //   29: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Qtr	Lqtr;
-    //   32: getfield 40	qtr:a	Lpvc;
+    //   29: getfield 35	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:jdField_a_of_type_Rfw	Lrfw;
+    //   32: getfield 40	rfw:a	Lqfw;
     //   35: invokeinterface 45 1 0
     //   40: astore 7
     //   42: aload 7
@@ -109,7 +109,7 @@ public class ComponentContentPgcVideo
     //   174: astore 8
     //   176: iload_2
     //   177: iload_1
-    //   178: invokestatic 133	pay:a	(II)Z
+    //   178: invokestatic 133	pqw:a	(II)Z
     //   181: ifne +6 -> 187
     //   184: iconst_1
     //   185: istore 5
@@ -199,7 +199,7 @@ public class ComponentContentPgcVideo
     //   356: iload_3
     //   357: aload_0
     //   358: invokevirtual 94	com/tencent/biz/pubaccount/readinjoy/rebuild/cmp/ComponentContentPgcVideo:getResources	()Landroid/content/res/Resources;
-    //   361: invokestatic 202	pai:a	(ILandroid/content/res/Resources;)I
+    //   361: invokestatic 202	pjr:a	(ILandroid/content/res/Resources;)I
     //   364: istore_1
     //   365: ldc 135
     //   367: iconst_2

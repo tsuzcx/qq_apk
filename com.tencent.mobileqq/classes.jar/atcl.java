@@ -1,33 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
 
 public class atcl
-  implements View.OnClickListener
+  implements blbw
 {
-  public atcl(SendBottomBar paramSendBottomBar) {}
+  public atcl(QfileFavFileTabView paramQfileFavFileTabView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (SendBottomBar.a(this.a).isChecked())
+    if ((paramInt == this.a.jdField_a_of_type_Atab.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
     {
-      SendBottomBar.a(this.a).d();
-      SendBottomBar.a(this.a).setText(amtj.a(2131712910));
+      if (!this.a.b()) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    else {
       return;
-      SendBottomBar.a(this.a).e();
-      SendBottomBar.a(this.a).setText(amtj.a(2131712922));
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcl
  * JD-Core Version:    0.7.0.1
  */

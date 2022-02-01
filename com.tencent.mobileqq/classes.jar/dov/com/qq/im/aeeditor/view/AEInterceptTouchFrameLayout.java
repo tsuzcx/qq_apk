@@ -6,12 +6,12 @@ import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import bmob;
+import bodt;
 
 public class AEInterceptTouchFrameLayout
   extends FrameLayout
 {
-  private bmob a;
+  private bodt a;
   
   public AEInterceptTouchFrameLayout(@NonNull Context paramContext)
   {
@@ -44,9 +44,9 @@ public class AEInterceptTouchFrameLayout
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setInterceptTouchEventHandler(bmob parambmob)
+  public void setInterceptTouchEventHandler(bodt parambodt)
   {
-    this.a = parambmob;
+    this.a = parambodt;
   }
 }
 

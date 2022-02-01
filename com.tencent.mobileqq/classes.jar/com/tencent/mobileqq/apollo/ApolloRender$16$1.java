@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo;
 
-import alov;
+import amnm;
 
 public class ApolloRender$16$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$16$1(alov paramalov, String paramString) {}
+  public ApolloRender$16$1(amnm paramamnm, String paramString) {}
   
   public String a()
   {

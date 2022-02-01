@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class aomq
-  implements DialogInterface.OnDismissListener
+class aomq
+  extends BroadcastReceiver
 {
-  public aomq(ARScanEntryView paramARScanEntryView) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ARScanEntryView.a(this.a, null);
-    ARScanEntryView.a(this.a).g();
-    ARScanEntryView.a(this.a, true);
+    paramIntent = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    aomk.a().b(paramIntent);
+    bdla.b(paramIntent, "dc00898", "", "", "0X800B278", "0X800B278", 0, 0, "", "", "", "");
+    try
+    {
+      paramContext.unregisterReceiver(this);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.d("AccountIdentityManager", 1, new Object[] { "unregisterReceiver error : ", paramContext.getMessage() });
+    }
   }
 }
 

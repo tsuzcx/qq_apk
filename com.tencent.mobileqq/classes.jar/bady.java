@@ -1,27 +1,30 @@
-import java.util.HashMap;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileWZRYView;
 
 public class bady
-  extends badz
+  extends badm
 {
-  public int a;
-  public boolean a;
-  
-  public bady()
+  public bady(azxt paramazxt, azrb paramazrb)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
+    super(paramazxt, paramazrb);
   }
   
-  public HashMap<String, String> a(String paramString)
+  public String a()
   {
-    if ("RealShortVideo.Record".equals(paramString))
+    return "VasProfileHeaderWZRYComponent";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
     {
-      paramString = new HashMap();
-      paramString.put("param_cameraID", String.valueOf(this.jdField_a_of_type_Int));
-      paramString.put("param_hasMultiSegments", String.valueOf(this.jdField_a_of_type_Boolean));
-      return paramString;
+      VasProfileWZRYView localVasProfileWZRYView = new VasProfileWZRYView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azrb)this.b);
+      localVasProfileWZRYView.setClickListener(this);
+      localVasProfileWZRYView.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileWZRYView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
     }
-    return null;
   }
 }
 

@@ -2,12 +2,11 @@ package com.tencent.qqmini.sdk.core.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.io.File;
 
@@ -211,34 +210,11 @@ public class DeviceUtil
     if (!TextUtils.isEmpty(location)) {
       return location;
     }
-    Object localObject1 = AppLoaderFactory.g().getContext();
-    if (localObject1 == null) {
+    Context localContext = AppLoaderFactory.g().getContext();
+    if (localContext == null) {
       return "";
     }
-    try
-    {
-      localObject1 = (LocationManager)((Context)localObject1).getSystemService("location");
-      Object localObject2 = new Criteria();
-      ((Criteria)localObject2).setCostAllowed(false);
-      ((Criteria)localObject2).setAccuracy(2);
-      localObject2 = ((LocationManager)localObject1).getBestProvider((Criteria)localObject2, true);
-      if (localObject2 != null)
-      {
-        localObject1 = ((LocationManager)localObject1).getLastKnownLocation((String)localObject2);
-        if (localObject1 == null) {
-          return "";
-        }
-        double d1 = ((Location)localObject1).getLatitude();
-        double d2 = ((Location)localObject1).getLongitude();
-        localObject1 = d1 + "*" + d2;
-        return localObject1;
-      }
-    }
-    catch (Exception localException)
-    {
-      QMLog.e("getLocation", "getLocation>>>", localException);
-    }
-    return "";
+    return ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getLocation(localContext);
   }
   
   private static final int getNumCoresOldPhones()
@@ -280,7 +256,7 @@ public class DeviceUtil
     //   9: ifne +138 -> 147
     //   12: new 45	java/io/FileReader
     //   15: dup
-    //   16: ldc 231
+    //   16: ldc 197
     //   18: invokespecial 66	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   21: astore_1
     //   22: new 43	java/io/BufferedReader
@@ -295,12 +271,12 @@ public class DeviceUtil
     //   39: aload_2
     //   40: ifnull +24 -> 64
     //   43: aload_2
-    //   44: ldc 233
-    //   46: invokevirtual 239	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   44: ldc 199
+    //   46: invokevirtual 205	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   49: iconst_1
     //   50: aaload
-    //   51: invokestatic 243	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   54: invokevirtual 246	java/lang/Long:longValue	()J
+    //   51: invokestatic 209	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   54: invokevirtual 212	java/lang/Long:longValue	()J
     //   57: ldc2_w 79
     //   60: lmul
     //   61: putstatic 25	com/tencent/qqmini/sdk/core/utils/DeviceUtil:cachedTotalMemory	J
@@ -311,12 +287,12 @@ public class DeviceUtil
     //   72: aload_1
     //   73: ifnull +7 -> 80
     //   76: aload_1
-    //   77: invokevirtual 247	java/io/FileReader:close	()V
+    //   77: invokevirtual 213	java/io/FileReader:close	()V
     //   80: getstatic 25	com/tencent/qqmini/sdk/core/utils/DeviceUtil:cachedTotalMemory	J
     //   83: lconst_0
     //   84: lcmp
     //   85: ifne +62 -> 147
-    //   88: ldc2_w 248
+    //   88: ldc2_w 214
     //   91: lreturn
     //   92: astore_1
     //   93: aconst_null
@@ -334,7 +310,7 @@ public class DeviceUtil
     //   111: aload_1
     //   112: ifnull -32 -> 80
     //   115: aload_1
-    //   116: invokevirtual 247	java/io/FileReader:close	()V
+    //   116: invokevirtual 213	java/io/FileReader:close	()V
     //   119: goto -39 -> 80
     //   122: astore_0
     //   123: goto -43 -> 80
@@ -348,7 +324,7 @@ public class DeviceUtil
     //   137: aload_1
     //   138: ifnull +7 -> 145
     //   141: aload_1
-    //   142: invokevirtual 247	java/io/FileReader:close	()V
+    //   142: invokevirtual 213	java/io/FileReader:close	()V
     //   145: aload_0
     //   146: athrow
     //   147: getstatic 25	com/tencent/qqmini/sdk/core/utils/DeviceUtil:cachedTotalMemory	J
@@ -424,7 +400,7 @@ public class DeviceUtil
     //   5: istore_1
     //   6: iload_1
     //   7: iload_2
-    //   8: if_icmpge +313 -> 321
+    //   8: if_icmpge +312 -> 320
     //   11: new 45	java/io/FileReader
     //   14: dup
     //   15: new 47	java/lang/StringBuilder
@@ -434,7 +410,7 @@ public class DeviceUtil
     //   24: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: iload_1
     //   28: invokevirtual 57	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   31: ldc 252
+    //   31: ldc 218
     //   33: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   36: aload_0
     //   37: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -455,7 +431,7 @@ public class DeviceUtil
     //   72: invokevirtual 72	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   75: astore 8
     //   77: aload 8
-    //   79: ifnull +112 -> 191
+    //   79: ifnull +111 -> 190
     //   82: aload 5
     //   84: astore 7
     //   86: aload 6
@@ -482,156 +458,156 @@ public class DeviceUtil
     //   128: aload 6
     //   130: astore 9
     //   132: ldc 121
-    //   134: invokestatic 258	java/util/Locale:getDefault	()Ljava/util/Locale;
-    //   137: ldc_w 260
-    //   140: iconst_2
-    //   141: anewarray 4	java/lang/Object
-    //   144: dup
-    //   145: iconst_0
-    //   146: iload_1
-    //   147: invokestatic 265	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   150: aastore
-    //   151: dup
-    //   152: iconst_1
-    //   153: lload_3
-    //   154: invokestatic 268	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   157: aastore
-    //   158: invokestatic 272	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   161: invokestatic 96	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   164: aload 5
-    //   166: ifnull +8 -> 174
-    //   169: aload 5
-    //   171: invokevirtual 83	java/io/BufferedReader:close	()V
-    //   174: aload 6
-    //   176: ifnull +8 -> 184
-    //   179: aload 6
-    //   181: invokevirtual 247	java/io/FileReader:close	()V
-    //   184: iload_1
-    //   185: iconst_1
-    //   186: iadd
-    //   187: istore_1
-    //   188: goto -182 -> 6
-    //   191: lconst_0
-    //   192: lstore_3
-    //   193: goto -97 -> 96
-    //   196: astore 5
-    //   198: aload 5
-    //   200: invokevirtual 275	java/lang/Exception:printStackTrace	()V
-    //   203: goto -29 -> 174
-    //   206: astore 5
-    //   208: aload 5
-    //   210: invokevirtual 275	java/lang/Exception:printStackTrace	()V
-    //   213: goto -29 -> 184
-    //   216: astore 8
-    //   218: aload 5
-    //   220: astore 7
-    //   222: aload 6
-    //   224: astore 9
-    //   226: aload 8
-    //   228: invokevirtual 275	java/lang/Exception:printStackTrace	()V
-    //   231: aload 5
-    //   233: ifnull +8 -> 241
-    //   236: aload 5
-    //   238: invokevirtual 83	java/io/BufferedReader:close	()V
-    //   241: aload 6
-    //   243: ifnull -59 -> 184
-    //   246: aload 6
-    //   248: invokevirtual 247	java/io/FileReader:close	()V
-    //   251: goto -67 -> 184
-    //   254: astore 5
-    //   256: aload 5
-    //   258: invokevirtual 275	java/lang/Exception:printStackTrace	()V
-    //   261: goto -77 -> 184
-    //   264: astore 5
-    //   266: aload 5
-    //   268: invokevirtual 275	java/lang/Exception:printStackTrace	()V
-    //   271: goto -30 -> 241
-    //   274: astore_0
-    //   275: aload 9
-    //   277: astore 6
-    //   279: aload 7
-    //   281: ifnull +8 -> 289
-    //   284: aload 7
-    //   286: invokevirtual 83	java/io/BufferedReader:close	()V
-    //   289: aload 6
-    //   291: ifnull +8 -> 299
-    //   294: aload 6
-    //   296: invokevirtual 247	java/io/FileReader:close	()V
-    //   299: aload_0
-    //   300: athrow
-    //   301: astore 5
-    //   303: aload 5
-    //   305: invokevirtual 275	java/lang/Exception:printStackTrace	()V
-    //   308: goto -19 -> 289
-    //   311: astore 5
-    //   313: aload 5
-    //   315: invokevirtual 275	java/lang/Exception:printStackTrace	()V
-    //   318: goto -19 -> 299
-    //   321: return
-    //   322: astore_0
-    //   323: aconst_null
-    //   324: astore 7
-    //   326: aconst_null
-    //   327: astore 6
-    //   329: goto -50 -> 279
-    //   332: astore_0
-    //   333: aconst_null
-    //   334: astore 7
-    //   336: goto -57 -> 279
-    //   339: astore 8
-    //   341: aconst_null
-    //   342: astore 5
-    //   344: aconst_null
-    //   345: astore 6
-    //   347: goto -129 -> 218
-    //   350: astore 8
-    //   352: aconst_null
-    //   353: astore 5
-    //   355: goto -137 -> 218
+    //   134: invokestatic 224	java/util/Locale:getDefault	()Ljava/util/Locale;
+    //   137: ldc 226
+    //   139: iconst_2
+    //   140: anewarray 4	java/lang/Object
+    //   143: dup
+    //   144: iconst_0
+    //   145: iload_1
+    //   146: invokestatic 231	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   149: aastore
+    //   150: dup
+    //   151: iconst_1
+    //   152: lload_3
+    //   153: invokestatic 234	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   156: aastore
+    //   157: invokestatic 238	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   160: invokestatic 96	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   163: aload 5
+    //   165: ifnull +8 -> 173
+    //   168: aload 5
+    //   170: invokevirtual 83	java/io/BufferedReader:close	()V
+    //   173: aload 6
+    //   175: ifnull +8 -> 183
+    //   178: aload 6
+    //   180: invokevirtual 213	java/io/FileReader:close	()V
+    //   183: iload_1
+    //   184: iconst_1
+    //   185: iadd
+    //   186: istore_1
+    //   187: goto -181 -> 6
+    //   190: lconst_0
+    //   191: lstore_3
+    //   192: goto -96 -> 96
+    //   195: astore 5
+    //   197: aload 5
+    //   199: invokevirtual 241	java/lang/Exception:printStackTrace	()V
+    //   202: goto -29 -> 173
+    //   205: astore 5
+    //   207: aload 5
+    //   209: invokevirtual 241	java/lang/Exception:printStackTrace	()V
+    //   212: goto -29 -> 183
+    //   215: astore 8
+    //   217: aload 5
+    //   219: astore 7
+    //   221: aload 6
+    //   223: astore 9
+    //   225: aload 8
+    //   227: invokevirtual 241	java/lang/Exception:printStackTrace	()V
+    //   230: aload 5
+    //   232: ifnull +8 -> 240
+    //   235: aload 5
+    //   237: invokevirtual 83	java/io/BufferedReader:close	()V
+    //   240: aload 6
+    //   242: ifnull -59 -> 183
+    //   245: aload 6
+    //   247: invokevirtual 213	java/io/FileReader:close	()V
+    //   250: goto -67 -> 183
+    //   253: astore 5
+    //   255: aload 5
+    //   257: invokevirtual 241	java/lang/Exception:printStackTrace	()V
+    //   260: goto -77 -> 183
+    //   263: astore 5
+    //   265: aload 5
+    //   267: invokevirtual 241	java/lang/Exception:printStackTrace	()V
+    //   270: goto -30 -> 240
+    //   273: astore_0
+    //   274: aload 9
+    //   276: astore 6
+    //   278: aload 7
+    //   280: ifnull +8 -> 288
+    //   283: aload 7
+    //   285: invokevirtual 83	java/io/BufferedReader:close	()V
+    //   288: aload 6
+    //   290: ifnull +8 -> 298
+    //   293: aload 6
+    //   295: invokevirtual 213	java/io/FileReader:close	()V
+    //   298: aload_0
+    //   299: athrow
+    //   300: astore 5
+    //   302: aload 5
+    //   304: invokevirtual 241	java/lang/Exception:printStackTrace	()V
+    //   307: goto -19 -> 288
+    //   310: astore 5
+    //   312: aload 5
+    //   314: invokevirtual 241	java/lang/Exception:printStackTrace	()V
+    //   317: goto -19 -> 298
+    //   320: return
+    //   321: astore_0
+    //   322: aconst_null
+    //   323: astore 7
+    //   325: aconst_null
+    //   326: astore 6
+    //   328: goto -50 -> 278
+    //   331: astore_0
+    //   332: aconst_null
+    //   333: astore 7
+    //   335: goto -57 -> 278
+    //   338: astore 8
+    //   340: aconst_null
+    //   341: astore 5
+    //   343: aconst_null
+    //   344: astore 6
+    //   346: goto -129 -> 217
+    //   349: astore 8
+    //   351: aconst_null
+    //   352: astore 5
+    //   354: goto -137 -> 217
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	358	0	paramString	String
-    //   5	183	1	i	int
+    //   0	357	0	paramString	String
+    //   5	182	1	i	int
     //   3	6	2	j	int
-    //   95	98	3	l	long
-    //   60	110	5	localBufferedReader	java.io.BufferedReader
-    //   196	3	5	localException1	Exception
-    //   206	31	5	localException2	Exception
-    //   254	3	5	localException3	Exception
-    //   264	3	5	localException4	Exception
-    //   301	3	5	localException5	Exception
-    //   311	3	5	localException6	Exception
-    //   342	12	5	localObject1	Object
-    //   46	300	6	localObject2	Object
-    //   64	271	7	localObject3	Object
+    //   95	97	3	l	long
+    //   60	109	5	localBufferedReader	java.io.BufferedReader
+    //   195	3	5	localException1	Exception
+    //   205	31	5	localException2	Exception
+    //   253	3	5	localException3	Exception
+    //   263	3	5	localException4	Exception
+    //   300	3	5	localException5	Exception
+    //   310	3	5	localException6	Exception
+    //   341	12	5	localObject1	Object
+    //   46	299	6	localObject2	Object
+    //   64	270	7	localObject3	Object
     //   75	16	8	str	String
-    //   216	11	8	localException7	Exception
-    //   339	1	8	localException8	Exception
-    //   350	1	8	localException9	Exception
-    //   68	208	9	localObject4	Object
+    //   215	11	8	localException7	Exception
+    //   338	1	8	localException8	Exception
+    //   349	1	8	localException9	Exception
+    //   68	207	9	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   169	174	196	java/lang/Exception
-    //   179	184	206	java/lang/Exception
-    //   70	77	216	java/lang/Exception
-    //   90	96	216	java/lang/Exception
-    //   104	112	216	java/lang/Exception
-    //   120	124	216	java/lang/Exception
-    //   132	164	216	java/lang/Exception
-    //   246	251	254	java/lang/Exception
-    //   236	241	264	java/lang/Exception
-    //   70	77	274	finally
-    //   90	96	274	finally
-    //   104	112	274	finally
-    //   120	124	274	finally
-    //   132	164	274	finally
-    //   226	231	274	finally
-    //   284	289	301	java/lang/Exception
-    //   294	299	311	java/lang/Exception
-    //   11	48	322	finally
-    //   48	62	332	finally
-    //   11	48	339	java/lang/Exception
-    //   48	62	350	java/lang/Exception
+    //   168	173	195	java/lang/Exception
+    //   178	183	205	java/lang/Exception
+    //   70	77	215	java/lang/Exception
+    //   90	96	215	java/lang/Exception
+    //   104	112	215	java/lang/Exception
+    //   120	124	215	java/lang/Exception
+    //   132	163	215	java/lang/Exception
+    //   245	250	253	java/lang/Exception
+    //   235	240	263	java/lang/Exception
+    //   70	77	273	finally
+    //   90	96	273	finally
+    //   104	112	273	finally
+    //   120	124	273	finally
+    //   132	163	273	finally
+    //   225	230	273	finally
+    //   283	288	300	java/lang/Exception
+    //   293	298	310	java/lang/Exception
+    //   11	48	321	finally
+    //   48	62	331	finally
+    //   11	48	338	java/lang/Exception
+    //   48	62	349	java/lang/Exception
   }
   
   private static void initCpuMaxFreq()
@@ -641,7 +617,7 @@ public class DeviceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.DeviceUtil
  * JD-Core Version:    0.7.0.1
  */

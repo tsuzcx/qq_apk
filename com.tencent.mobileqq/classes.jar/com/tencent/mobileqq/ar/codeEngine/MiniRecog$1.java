@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import aokg;
-import aokh;
-import java.util.List;
+import apnh;
+import apni;
 
 public class MiniRecog$1
   implements Runnable
 {
-  public MiniRecog$1(aokg paramaokg, List paramList, long paramLong) {}
+  public MiniRecog$1(apnh paramapnh, long paramLong) {}
   
   public void run()
   {
     if (this.this$0.a != null) {
-      this.this$0.a.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long);
+      this.this$0.a.a(this.a);
     }
-    this.this$0.b = false;
   }
 }
 

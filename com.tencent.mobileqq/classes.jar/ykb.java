@@ -1,28 +1,18 @@
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import com.tencent.widget.HorizontalListView.OnItemScrollEventListener;
+
 public class ykb
+  implements HorizontalListView.OnItemScrollEventListener
 {
-  public static String a(String paramString)
-  {
-    return "Q.qqstory.record.RMW." + paramString;
-  }
+  public ykb(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public static void a(String paramString1, String paramString2)
+  public void onItemScrollNonVisible(int paramInt, boolean paramBoolean)
   {
-    xvv.a(a(paramString1), paramString2);
-  }
-  
-  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    xvv.c(a(paramString1), String.format(paramString2, paramVarArgs));
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    xvv.b(a(paramString1), paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    xvv.c(a(paramString1), paramString2);
+    if (StoryHomeHorizontalListView.a(this.a) != null) {
+      StoryHomeHorizontalListView.a(this.a).onItemScrollNonVisible(paramInt, paramBoolean);
+    }
+    ykq.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
+    this.a.a();
   }
 }
 

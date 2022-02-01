@@ -1,26 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-final class ozq
-  implements ViewFactory.FoundClickableViewListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initExposeSubCommentTwoClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ozq
+  implements oyp
 {
-  ozq(VafContext paramVafContext, TemplateBean paramTemplateBean) {}
-  
-  public void onFound(ViewBase paramViewBase)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pcf parampcf, @NotNull pdp parampdp, @NotNull ViewBase paramViewBase)
   {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-    {
-    default: 
-      paramViewBase.setOnClickListener(new ozt(this, paramViewBase));
-      return;
-    case 1129: 
-      paramViewBase.setOnClickListener(new ozr(this));
-      return;
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampcf, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampdp, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new ozr(parampcf, parampdp));
+    parampdp = paramViewBase.findViewBaseByName("id_comment_expose_subcomment_two");
+    if ((parampdp instanceof pha)) {
+      ((pha)parampdp).a(parampcf, (View)paramContainer, 1);
     }
-    paramViewBase.setOnClickListener(new ozs(this));
   }
 }
 

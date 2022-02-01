@@ -1,26 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahzv
-  implements View.OnClickListener
+class ahzv
+  extends anyz
 {
-  public ahzv(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
+  ahzv(ahzq paramahzq) {}
   
-  public void onClick(View paramView)
+  protected void onSendResult_confess(boolean paramBoolean, String paramString, int paramInt1, long paramLong, int paramInt2)
   {
-    int i = Face2FaceAddContactFragment.a(this.a).length();
-    if (i >= 4) {}
-    for (;;)
+    if ((paramString == null) || (!paramString.equals(this.a.sessionInfo.curFriendUin)) || (paramInt1 != this.a.sessionInfo.curType) || (paramInt2 != this.a.sessionInfo.topicId))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "onSendResult_confess err uin " + paramString + " type " + paramInt1 + " uniseq " + paramLong + " topicId " + paramInt2);
+      }
       return;
-      Face2FaceAddContactFragment.a(this.a, paramView, i);
-      i = Face2FaceAddContactFragment.a(this.a).length();
-      Face2FaceAddContactFragment.a(this.a, i);
-      Face2FaceAddContactFragment.b(this.a, i);
     }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "onSendResult_confess uin " + paramString + " type " + paramInt1 + " uniseq " + paramLong + " topicId " + paramInt2);
+    }
+    this.a.hasSentRecvMsg = true;
+    this.a.refresh(262144, null, paramLong);
+  }
+  
+  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
+  {
+    this.a.refresh(65536);
+  }
+  
+  protected void onUpdateSendMsgError_confess(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2, int paramInt3)
+  {
+    if ((paramString1 == null) || (!paramString1.equals(this.a.sessionInfo.curFriendUin)) || (paramInt1 != this.a.sessionInfo.curType) || (paramInt3 != this.a.sessionInfo.topicId))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "onUpdateSendMsgError_confess err uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " topicId " + paramInt3);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "onUpdateSendMsgError_confess uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " errorCode " + paramInt2 + " topicId " + paramInt3);
+    }
+    this.a.refresh(196608);
   }
 }
 

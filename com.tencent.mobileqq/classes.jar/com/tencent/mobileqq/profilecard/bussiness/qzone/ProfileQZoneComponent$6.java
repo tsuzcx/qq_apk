@@ -1,33 +1,34 @@
 package com.tencent.mobileqq.profilecard.bussiness.qzone;
 
-import amsw;
 import android.os.Message;
-import aymg;
-import ayxd;
-import bjng;
+import anvk;
+import azrb;
+import baca;
+import bkys;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
 
 public class ProfileQZoneComponent$6
   implements Runnable
 {
-  public ProfileQZoneComponent$6(ayxd paramayxd) {}
+  public ProfileQZoneComponent$6(baca parambaca) {}
   
   public void run()
   {
     int j = 0;
-    aymg localaymg = (aymg)ayxd.a(this.this$0);
-    Object localObject = (amsw)ayxd.a(this.this$0).getManager(51);
+    azrb localazrb = (azrb)baca.a(this.this$0);
+    Object localObject = (anvk)baca.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localObject == null)
     {
       localObject = null;
       if (localObject != null) {
-        break label161;
+        break label162;
       }
       localObject = new Card();
     }
-    label161:
+    label162:
     for (int i = 1;; i = 0)
     {
       ((Card)localObject).feedPreviewTime = System.currentTimeMillis();
@@ -37,16 +38,16 @@ public class ProfileQZoneComponent$6
       if (i != 0) {}
       for (localMessage.what = 6;; localMessage.what = 5)
       {
-        if (ayxd.a(this.this$0) != null) {
-          ayxd.a(this.this$0).sendMessage(localMessage);
+        if (baca.a(this.this$0) != null) {
+          baca.a(this.this$0).sendMessage(localMessage);
         }
         i = j;
-        if (localaymg.a != null) {
-          i = localaymg.a.h;
+        if (localazrb.a != null) {
+          i = localazrb.a.h;
         }
-        ayxd.a(this.this$0, i);
+        baca.a(this.this$0, i);
         return;
-        localObject = ((amsw)localObject).b(localaymg.a.a);
+        localObject = ((anvk)localObject).b(localazrb.a.a);
         break;
       }
     }

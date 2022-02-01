@@ -1,21 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.HashMap;
-import pay;
-import ruw;
+import pkh;
+import pqe;
+import shl;
 
 public class VideoFeedsAdapter$2
   implements Runnable
 {
-  public VideoFeedsAdapter$2(ruw paramruw, long paramLong) {}
+  public VideoFeedsAdapter$2(shl paramshl, long paramLong) {}
   
   public void run()
   {
-    if (ruw.a(this.this$0) != null)
+    if (shl.a(this.this$0) != null)
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_scrollInterval", String.valueOf(this.a));
-      pay.e(ruw.a(this.this$0), pay.a(), true, localHashMap);
+      pqe.e(shl.a(this.this$0), pkh.a(), true, localHashMap);
     }
   }
 }

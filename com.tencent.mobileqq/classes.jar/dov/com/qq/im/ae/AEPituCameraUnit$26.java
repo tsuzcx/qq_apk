@@ -1,23 +1,28 @@
 package dov.com.qq.im.ae;
 
-import bljy;
-import bloc;
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.ImageView;
+import bmxa;
+import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
 
 public class AEPituCameraUnit$26
   implements Runnable
 {
-  public AEPituCameraUnit$26(bljy parambljy) {}
+  public AEPituCameraUnit$26(bmxa parambmxa, LazyLoadAnimationDrawable paramLazyLoadAnimationDrawable) {}
   
   public void run()
   {
-    bloc localbloc = this.this$0.a;
-    if (this.this$0.b == AECaptureMode.NORMAL) {}
-    for (boolean bool = true;; bool = false)
+    if (bmxa.a(this.this$0) == null)
     {
-      localbloc.d(bool);
-      return;
+      ViewStub localViewStub = (ViewStub)this.this$0.jdField_a_of_type_AndroidViewView.findViewById(2131378167);
+      bmxa.a(this.this$0, (ImageView)localViewStub.inflate().findViewById(2131362713));
     }
+    this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(bmxa.a(this.this$0), this.a.getTotalDuration());
+    bmxa.a(this.this$0).setVisibility(0);
+    bmxa.a(this.this$0).setImageDrawable(this.a);
+    this.a.start();
   }
 }
 

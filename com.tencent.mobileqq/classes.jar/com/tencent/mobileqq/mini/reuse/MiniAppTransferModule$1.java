@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.text.TextUtils;
-import apyt;
+import arbw;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.qphone.base.util.QLog;
@@ -15,10 +16,10 @@ class MiniAppTransferModule$1
   
   public void run()
   {
-    DesktopDataManager localDesktopDataManager = (DesktopDataManager)this.val$runtime.getManager(336);
+    DesktopDataManager localDesktopDataManager = (DesktopDataManager)this.val$runtime.getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
     if ((localDesktopDataManager != null) && (!TextUtils.isEmpty(this.val$appid)))
     {
-      if ((this.val$topType != 1) || (localDesktopDataManager.getTopMiniAppNumber() < apyt.a())) {
+      if ((this.val$topType != 1) || (localDesktopDataManager.getTopMiniAppNumber() < arbw.a())) {
         break label64;
       }
       this.this$0.callbackResult(this.val$callbackId, EIPCResult.createResult(-100, null));

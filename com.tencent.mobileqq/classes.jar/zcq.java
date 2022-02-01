@@ -1,24 +1,18 @@
-import android.os.Handler;
-import com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
 public class zcq
-  implements zct
+  implements View.OnLongClickListener
 {
-  public zcq(PopViewAnimationDrawableHelper paramPopViewAnimationDrawableHelper) {}
+  public zcq(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    if (PopViewAnimationDrawableHelper.a(this.a) != null) {
-      PopViewAnimationDrawableHelper.a(this.a).b();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
+      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
     }
-    if ((PopViewAnimationDrawableHelper.a(this.a) != null) && (PopViewAnimationDrawableHelper.a(this.a) != null)) {
-      PopViewAnimationDrawableHelper.a(this.a).removeCallbacks(PopViewAnimationDrawableHelper.a(this.a));
-    }
-  }
-  
-  public void b()
-  {
-    PopViewAnimationDrawableHelper.a(this.a);
+    return true;
   }
 }
 

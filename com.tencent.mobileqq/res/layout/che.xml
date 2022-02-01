@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel android:id="@id/emoview" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.emoticonview.EmotionPanelListView android:id="@id/mna" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageButton android:id="@id/bfq" android:background="@drawable/ho" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_marginBottom="7.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="@string/br7" />
-</com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel>
+    <TextView android:textSize="40.0dip" android:textColor="@color/al3" android:id="@id/o0t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wiq" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="24.0dip" android:textColor="@color/al3" android:id="@id/o0s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wip" android:layout_below="@id/o0t" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="21.0dip" android:textColor="@color/al3" android:id="@id/o0r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/wio" android:layout_below="@id/o0s" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -1,65 +1,63 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAdLoader.1;
-import com.tencent.gdtad.aditem.GdtAdLoader.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.lang.ref.WeakReference;
-import tencent.gdt.qq_ad_get.QQAdGet;
-import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.av.widget.shimmer.ShimmerTextView;
+import com.tencent.device.msg.activities.DeviceTipActivity;
 
 public class abkp
+  implements View.OnTouchListener
 {
-  private abkr jdField_a_of_type_Abkr;
-  private WeakReference<abkq> jdField_a_of_type_JavaLangRefWeakReference;
+  public abkp(DeviceTipActivity paramDeviceTipActivity) {}
   
-  public abkp(abkr paramabkr, WeakReference<abkq> paramWeakReference)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Abkr = paramabkr;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-  }
-  
-  private void a()
-  {
-    new Handler(Looper.getMainLooper()).post(new GdtAdLoader.2(this));
-  }
-  
-  private void b(WeakReference<Context> paramWeakReference)
-  {
-    if ((this.jdField_a_of_type_Abkr == null) || (this.jdField_a_of_type_Abkr.a == null))
+    switch (paramMotionEvent.getAction())
     {
-      abrl.d("GdtAdLoader", "reportForAnalysis error");
-      return;
     }
-    int i = 0;
-    label27:
-    if (i < this.jdField_a_of_type_Abkr.a.position_info.size()) {
-      if (paramWeakReference == null) {
-        break label90;
+    for (;;)
+    {
+      return true;
+      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
+      DeviceTipActivity.c(this.a);
+      continue;
+      int i = (int)paramMotionEvent.getRawX() - this.a.jdField_b_of_type_Int;
+      if (i > 2)
+      {
+        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+      }
+      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.left += i;
+      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.right = (i + paramView.right);
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right >= this.a.d)
+      {
+        this.a.jdField_a_of_type_AndroidGraphicsRect.right = this.a.d;
+        this.a.jdField_a_of_type_AndroidGraphicsRect.left = (this.a.jdField_a_of_type_AndroidGraphicsRect.right - this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+      }
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.left <= this.a.e)
+      {
+        this.a.jdField_a_of_type_AndroidGraphicsRect.left = this.a.e;
+        this.a.jdField_a_of_type_AndroidGraphicsRect.right = (this.a.jdField_a_of_type_AndroidGraphicsRect.left + this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_a_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
+      this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left - this.a.e, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
+      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
+      continue;
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right == this.a.d)
+      {
+        this.a.b();
+      }
+      else if (this.a.jdField_a_of_type_AndroidGraphicsRect.right < this.a.d)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_b_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_b_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
+        this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_c_of_type_AndroidGraphicsRect.left, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
+        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       }
     }
-    label90:
-    for (Context localContext = (Context)paramWeakReference.get();; localContext = null)
-    {
-      AdReporterForAnalysis.reportForLoadAd(localContext, ((qq_ad_get.QQAdGet.PositionInfo)this.jdField_a_of_type_Abkr.a.position_info.get(i)).pos_id.get());
-      i += 1;
-      break label27;
-      break;
-    }
-  }
-  
-  public abkr a()
-  {
-    return this.jdField_a_of_type_Abkr;
-  }
-  
-  public void a(WeakReference<Context> paramWeakReference)
-  {
-    ThreadManager.post(new GdtAdLoader.1(this, paramWeakReference), 5, null, true);
-    b(paramWeakReference);
   }
 }
 

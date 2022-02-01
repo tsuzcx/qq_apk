@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amrg;
-import amtj;
-import anaj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,16 +15,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import aqyy;
-import areb;
-import arfl;
-import bcef;
-import bjmp;
+import antu;
+import anvx;
+import aocy;
+import asdi;
+import asih;
+import asjr;
+import bdla;
+import bkyc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -57,7 +59,7 @@ public class EmotionDownloadOrUpdateAdapter
   protected EmotionDownloadOrUpdateAdapter.EmotionDownloadOrUpdateViewHolder holder;
   protected boolean isSmallEmotion;
   protected boolean isUpdatePanel;
-  private MqqHandler mUiHandler = new bjmp(Looper.getMainLooper(), this, true);
+  private MqqHandler mUiHandler = new bkyc(Looper.getMainLooper(), this, true);
   
   public EmotionDownloadOrUpdateAdapter(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, EmoticonCallback paramEmoticonCallback, int paramInt4)
   {
@@ -91,37 +93,37 @@ public class EmotionDownloadOrUpdateAdapter
       }
       isAuthorized();
     } while (this.authType != 2);
-    areb localareb = (areb)this.app.getManager(43);
+    asih localasih = (asih)this.app.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
     if ((this.emotionPkg.epId != null) && (this.emotionPkg.epId.equals("10278")))
     {
-      ((amrg)this.app.getBusinessHandler(12)).a(this.emotionPkg.epId, this.businessType);
-      bcef.b(this.app, "CliOper", "", "", "ep_mall", "Ep_endoffer_click", 0, 0, "", "", "", "");
+      ((antu)this.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).a(this.emotionPkg.epId, this.businessType);
+      bdla.b(this.app, "CliOper", "", "", "ep_mall", "Ep_endoffer_click", 0, 0, "", "", "", "");
     }
     localProgressButton.setProgressDrawable(localProgressButton.a(-16745986));
-    float f = localareb.a(this.emotionPkg.epId);
+    float f = localasih.a(this.emotionPkg.epId);
     int i;
     if (this.downBtnStatus == 2)
     {
-      localProgressButton.setText(amtj.a(2131703249));
+      localProgressButton.setText(anvx.a(2131703600));
       localProgressButton.setProgress((int)f);
-      localareb.a(this.emotionPkg, true, this.businessType);
+      localasih.a(this.emotionPkg, true, this.businessType);
       this.downBtnStatus = 1;
       i = 1;
     }
     for (;;)
     {
-      bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X80057B1", 0, 0, "", this.emotionPkg.epId, i + "", "");
+      bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X80057B1", 0, 0, "", this.emotionPkg.epId, i + "", "");
       return;
       if (this.downBtnStatus == 1)
       {
-        String str = amtj.a(2131703244);
+        String str = anvx.a(2131703595);
         if (this.isUpdatePanel) {
-          str = amtj.a(2131703241);
+          str = anvx.a(2131703592);
         }
         localProgressButton.setText(str);
         localProgressButton.setProgress(0);
         this.downBtnStatus = 2;
-        localareb.a(this.emotionPkg.epId);
+        localasih.a(this.emotionPkg.epId);
         this.mContext.getSharedPreferences("mobileQQ", 0).edit().remove("LAST_ADD_EMO_PACKAGE").commit();
         i = 2;
       }
@@ -137,7 +139,7 @@ public class EmotionDownloadOrUpdateAdapter
     if (this.emotionPkg == null) {
       return;
     }
-    int i = ((anaj)this.app.getBusinessHandler(13)).g();
+    int i = ((aocy)this.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
     if (this.emotionPkg.mobileFeetype == 4)
     {
       if ((i == 1) || (i == 3))
@@ -235,18 +237,18 @@ public class EmotionDownloadOrUpdateAdapter
           if (QLog.isColorLevel()) {
             QLog.d(TAG, 2, "handleMessage refreshCover epid = " + this.emotionPkg.epId);
           }
-          paramMessage = aqyy.a(2, this.emotionPkg.epId);
+          paramMessage = asdi.a(2, this.emotionPkg.epId);
         }
       } while (paramMessage == null);
       this.holder.cover.setImageDrawable(paramMessage);
       return true;
-      paramMessage = areb.a(((BaseActivity)this.mContext).getAppRuntime(), localEmoticonPackage.epId);
+      paramMessage = asih.a(((BaseActivity)this.mContext).getAppRuntime(), localEmoticonPackage.epId);
     } while (paramMessage == null);
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "handleMessage refreshprogress epid = " + this.emotionPkg.epId);
     }
     int i = (int)paramMessage.a();
-    this.holder.downloadBtn.setText(amtj.a(2131703239));
+    this.holder.downloadBtn.setText(anvx.a(2131703590));
     this.downBtnStatus = 1;
     this.holder.downloadBtn.setProgressDrawable(this.holder.downloadBtn.a(-16745986));
     this.holder.downloadBtn.setProgress(i);
@@ -255,9 +257,9 @@ public class EmotionDownloadOrUpdateAdapter
       QLog.d(TAG, 2, "handleMessage packageDownloadEnd epid = " + this.emotionPkg.epId);
     }
     if (this.isUpdatePanel) {
-      this.holder.downloadBtn.setText(amtj.a(2131703240));
+      this.holder.downloadBtn.setText(anvx.a(2131703591));
     }
-    this.holder.downloadBtn.setText(amtj.a(2131703238));
+    this.holder.downloadBtn.setText(anvx.a(2131703589));
     this.holder.downloadBtn.setProgress(0);
     this.downBtnStatus = 2;
     return true;
@@ -283,28 +285,28 @@ public class EmotionDownloadOrUpdateAdapter
     } while (this.authType != 2);
     while (this.emotionPkg.valid)
     {
-      areb localareb = (areb)this.app.getManager(43);
-      if ((localareb.a(this.emotionPkg.epId) >= 0.0F) || (!EmoticonUtils.isWifi())) {
+      asih localasih = (asih)this.app.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
+      if ((localasih.a(this.emotionPkg.epId) >= 0.0F) || (!EmoticonUtils.isWifi())) {
         break;
       }
       if (QLog.isColorLevel()) {
         QLog.d(TAG, 2, "wifi auto download emotion , epid = " + this.emotionPkg.epId);
       }
-      localareb.a(this.emotionPkg, false, this.businessType);
+      localasih.a(this.emotionPkg, false, this.businessType);
       if ((this.holder != null) && (this.holder.downloadBtn != null))
       {
         this.holder.downloadBtn.setVisibility(0);
-        this.holder.downloadBtn.setText(amtj.a(2131703246));
+        this.holder.downloadBtn.setText(anvx.a(2131703597));
         this.downBtnStatus = 1;
       }
-      bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X80057B1", 0, 0, this.emotionPkg.epId, "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X80057B1", 0, 0, this.emotionPkg.epId, "", "", "");
       return;
     }
   }
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() != 2131365275) || (this.emotionPkg == null)) {}
+    if ((paramView.getId() != 2131365369) || (this.emotionPkg == null)) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
@@ -328,7 +330,7 @@ public class EmotionDownloadOrUpdateAdapter
           if (this.isSmallEmotion) {
             continue;
           }
-          bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X80057B3", 0, 0, this.emotionPkg.epId, "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X80057B3", 0, 0, this.emotionPkg.epId, "", "", "");
         }
       }
       else if (!this.emotionPkg.valid)
@@ -367,7 +369,7 @@ public class EmotionDownloadOrUpdateAdapter
       {
         doDownloadOpr(true);
         if ((this.isSmallEmotion) && (this.emotionPkg != null)) {
-          bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X80057AD", 0, 0, this.emotionPkg.epId, "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X80057AD", 0, 0, this.emotionPkg.epId, "", "", "");
         }
       }
     }
@@ -407,14 +409,14 @@ public class EmotionDownloadOrUpdateAdapter
     }
     paramEmotionDownloadOrUpdateViewHolder.name.setText(this.emotionPkg.name);
     paramEmotionDownloadOrUpdateViewHolder.name.setVisibility(0);
-    Object localObject = aqyy.a(2, this.emotionPkg.epId);
+    Object localObject = asdi.a(2, this.emotionPkg.epId);
     String str;
     for (;;)
     {
       try
       {
-        localDrawable1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838035);
-        localDrawable2 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843781);
+        localDrawable1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838049);
+        localDrawable2 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843819);
         if (!FileUtils.fileExists((String)localObject)) {
           continue;
         }
@@ -429,20 +431,20 @@ public class EmotionDownloadOrUpdateAdapter
         Drawable localDrawable1;
         Drawable localDrawable2;
         float f;
-        paramEmotionDownloadOrUpdateViewHolder.cover.setImageResource(2130843781);
+        paramEmotionDownloadOrUpdateViewHolder.cover.setImageResource(2130843819);
         continue;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        paramEmotionDownloadOrUpdateViewHolder.cover.setImageResource(2130843781);
+        paramEmotionDownloadOrUpdateViewHolder.cover.setImageResource(2130843819);
         continue;
-        str = amtj.a(2131703248);
+        str = anvx.a(2131703599);
         if (!this.isUpdatePanel) {
           break;
         }
       }
       paramEmotionDownloadOrUpdateViewHolder.cover.setVisibility(0);
-      f = ((areb)this.app.getManager(43)).a(this.emotionPkg.epId);
+      f = ((asih)this.app.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER)).a(this.emotionPkg.epId);
       if (QLog.isColorLevel()) {
         QLog.d(TAG, 2, "Ep id=" + this.emotionPkg.epId + ", progress=" + f);
       }
@@ -450,25 +452,25 @@ public class EmotionDownloadOrUpdateAdapter
       {
         paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setVisibility(0);
         paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setProgress((int)(f * 100.0F));
-        paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setText(amtj.a(2131703242));
+        paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setText(anvx.a(2131703593));
         this.downBtnStatus = 1;
         paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setOnClickListener(this);
         return;
         if (this.isSmallEmotion)
         {
-          localObject = aqyy.b(19, this.emotionPkg.epId);
+          localObject = asdi.b(19, this.emotionPkg.epId);
           localObject = URLDrawableHelper.getDrawable((String)localObject, localDrawable1, localDrawable2);
         }
         else
         {
-          localObject = aqyy.b(2, this.emotionPkg.epId);
+          localObject = asdi.b(2, this.emotionPkg.epId);
           continue;
-          paramEmotionDownloadOrUpdateViewHolder.cover.setImageResource(2130843781);
+          paramEmotionDownloadOrUpdateViewHolder.cover.setImageResource(2130843819);
         }
       }
       else
       {
-        str = amtj.a(2131703245);
+        str = anvx.a(2131703596);
       }
     }
     for (;;)
@@ -486,19 +488,19 @@ public class EmotionDownloadOrUpdateAdapter
       {
         isAuthorized();
         if (this.authType != 2) {
-          str = amtj.a(2131703247);
+          str = anvx.a(2131703598);
         }
       }
       else if (!this.emotionPkg.valid)
       {
-        str = amtj.a(2131703243);
+        str = anvx.a(2131703594);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionDownloadOrUpdateAdapter
  * JD-Core Version:    0.7.0.1
  */

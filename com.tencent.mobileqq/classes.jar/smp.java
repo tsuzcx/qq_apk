@@ -1,53 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class smp
-  implements ViewBase.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  smp(smo paramsmo) {}
+  smp(smg paramsmg) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    for (;;)
+    if ((smg.a(this.a) != null) && (smg.a(this.a).getStatus() == 1) && ((smg.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
     {
-      FastWebArticleInfo localFastWebArticleInfo;
-      try
-      {
-        String str = paramViewBase.getEventAttachedData();
-        int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-        paramViewBase = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b;
-        localFastWebArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
-        switch (i)
-        {
-        case 1004: 
-          if (TextUtils.isEmpty(str)) {
-            return;
-          }
-          pay.d(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, str);
-          return;
-        }
-      }
-      catch (Exception paramViewBase)
-      {
-        QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "findClickableViewListener error!  msg=" + paramViewBase);
-        return;
-      }
-      ReadInJoyFastWebBottomSocialViewNew.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
-      return;
-      ReadInJoyFastWebBottomSocialViewNew.b(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
-      return;
-      ReadInJoyFastWebBottomSocialViewNew.c(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
-      return;
-      ReadInJoyFastWebBottomSocialViewNew.d(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
-      return;
-      ReadInJoyFastWebBottomSocialViewNew.e(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
-      return;
+      paramURLDrawable = (RegionDrawable)smg.a(this.a).getCurrDrawable();
+      smg.a(this.a, paramURLDrawable.getBitmap());
     }
   }
 }

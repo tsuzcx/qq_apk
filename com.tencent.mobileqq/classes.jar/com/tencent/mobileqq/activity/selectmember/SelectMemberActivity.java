@@ -1,16 +1,9 @@
 package com.tencent.mobileqq.activity.selectmember;
 
 import Override;
-import acxa;
-import aeex;
-import ahux;
-import amrb;
-import amrc;
-import amsu;
-import amsw;
-import amtj;
-import anca;
-import andd;
+import adnm;
+import aewf;
+import aipw;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Dialog;
@@ -44,26 +37,34 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import baxb;
-import baxd;
-import baxe;
-import baxj;
-import baxk;
-import baxl;
-import baxo;
-import bayp;
-import bbbg;
-import bcef;
-import bdzw;
-import beaf;
-import beah;
-import bftf;
-import bfur;
-import bfvf;
-import bfvo;
-import bhht;
-import bhig;
-import bkik;
+import antp;
+import antq;
+import anvi;
+import anvk;
+import anvx;
+import aoep;
+import aofu;
+import bbcp;
+import bcdr;
+import bcdt;
+import bcdu;
+import bcdz;
+import bcea;
+import bceb;
+import bcee;
+import bcff;
+import bchy;
+import bdla;
+import bfgz;
+import bfhi;
+import bfhk;
+import bhbx;
+import bhdj;
+import bhdx;
+import bheg;
+import bisl;
+import bisy;
+import bltw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.common.config.AppSetting;
@@ -71,8 +72,10 @@ import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.app.TroopManager;
@@ -105,18 +108,18 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import lxk;
-import lzb;
+import lxx;
+import lzr;
 import mqq.app.MobileQQ;
-import mrf;
-import mst;
-import muk;
+import msc;
+import mtq;
+import mvi;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SelectMemberActivity
   extends FragmentActivity
-  implements View.OnClickListener, bbbg, beaf
+  implements View.OnClickListener, bchy, bfhi
 {
   public static final int ENTRANCE_ADD_FORBID_STORY_FRIEND = 24;
   public static final int ENTRANCE_ASSIGN_HB = 25;
@@ -243,12 +246,12 @@ public class SelectMemberActivity
   boolean mAddPassedMembersToResultSet;
   private Drawable mAnimationDrawable;
   int mBackButtonSide;
-  public ahux mBlessManager;
+  public aipw mBlessManager;
   protected Button mCreateTroopButton;
   protected View mCreateTroopButtonLayout;
   Bitmap mDefaultAvatar;
   protected float mDensity;
-  private amrc mDiscussionObserver;
+  private antq mDiscussionObserver;
   String mDoneBtnText;
   String mDoneBtnText_x;
   public boolean mDonotNeedContacts;
@@ -259,18 +262,18 @@ public class SelectMemberActivity
   int mExitAnimation;
   FaceDecoder mFaceDecoder;
   public boolean mFilterRobot;
-  protected acxa mFinishActivityCallback = new SelectMemberActivity.11(this);
-  private amsu mFriendlistObserver;
+  protected adnm mFinishActivityCallback = new SelectMemberActivity.11(this);
+  private anvi mFriendlistObserver;
   protected int mFrom;
   protected TextView mGVideoTextView;
-  private bkik mGVideoWrapper;
+  private bltw mGVideoWrapper;
   String mGroupCode;
   ArrayList<Entity> mGroupmembers;
   final Handler mHandler = new SelectMemberActivity.16(this, Looper.getMainLooper());
   protected InnerFrameManager mInnerFrameManager;
   public Intent mIntent;
   protected long mInviteNoAuthLimitNum = 9223372036854775807L;
-  String mInviteSuccToastWording = amtj.a(2131712867);
+  String mInviteSuccToastWording = anvx.a(2131713214);
   protected List<String> mInvitedUinList = new ArrayList();
   public boolean mIsForbidOnlyChooseMySelf;
   protected boolean mIsLimitToInviteByTroopMaxLimit;
@@ -296,15 +299,15 @@ public class SelectMemberActivity
   boolean mOnlyTroopMember;
   boolean mOverloadTipsIncludeDefaultCount;
   private long mOverloadToastLastShowTime;
-  protected bhht mQQProgressDialog;
-  protected bhig mQQTH;
-  private lxk mQavWrapper;
+  protected bisl mQQProgressDialog;
+  protected bisy mQQTH;
+  private lxx mQavWrapper;
   protected ArrayList<ResultRecord> mResultList = new ArrayList();
   protected TextView mRightBtn;
   protected View mSearchResultLayout;
   protected boolean mSearchTextEmpty = true;
   public SelectedAndSearchBar mSelectedAndSearchBar;
-  private aeex mSelectedAndSearchBarCallback = new SelectMemberActivity.9(this);
+  private aewf mSelectedAndSearchBarCallback = new SelectMemberActivity.9(this);
   protected boolean mShowMyself;
   public int mSubType;
   protected TextView mTitle;
@@ -315,7 +318,7 @@ public class SelectMemberActivity
   public ArrayList<String> mTopayTips;
   protected Bitmap mTransparentFace;
   protected int mTroopMemberNum;
-  private andd mTroopObserver;
+  private aofu mTroopObserver;
   public int mType;
   public ArrayList<String> mUinsSelectedDefault;
   public ArrayList<String> mUinsSelectedFriends;
@@ -335,7 +338,7 @@ public class SelectMemberActivity
     if (QLog.isColorLevel()) {
       QLog.i("SelectMemberActivity", 2, "afterCreateTroopSucc, troop[" + paramString + "], entrance[" + this.mEntrance + "]");
     }
-    Object localObject = ((TroopManager)this.app.getManager(52)).c(paramString);
+    Object localObject = ((TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
     ArrayList localArrayList;
     Iterator localIterator;
     if (localObject == null)
@@ -347,7 +350,7 @@ public class SelectMemberActivity
     for (;;)
     {
       if (!localIterator.hasNext()) {
-        break label218;
+        break label219;
       }
       ResultRecord localResultRecord = (ResultRecord)localIterator.next();
       if (localResultRecord.type == 5)
@@ -364,7 +367,7 @@ public class SelectMemberActivity
         localArrayList.add(localResultRecord.uin);
       }
     }
-    label218:
+    label219:
     this.mIntent.putExtra("roomId", paramString);
     this.mIntent.putExtra("discussName", (String)localObject);
     this.mIntent.putExtra("qqPhoneUserList", localArrayList);
@@ -406,7 +409,7 @@ public class SelectMemberActivity
     {
     default: 
       if ((this.mEntrance == 11) || (this.mEntrance == 36)) {
-        str = getString(2131695116);
+        str = getString(2131695332);
       }
       break;
     }
@@ -415,15 +418,15 @@ public class SelectMemberActivity
       this.mHandler.obtainMessage(1, str).sendToTarget();
       QLog.w("SelectMemberActivity", 1, "handleTroopInviteGroupFailed, result[" + paramInt + "], errStr[" + str + "]");
       return;
-      str = getString(2131693195);
+      str = getString(2131693373);
       continue;
-      str = getString(2131693194);
+      str = getString(2131693372);
       continue;
-      str = getString(2131693197);
+      str = getString(2131693375);
       continue;
-      str = getString(2131693196);
+      str = getString(2131693374);
       continue;
-      str = getString(2131693198);
+      str = getString(2131693376);
     }
   }
   
@@ -461,13 +464,13 @@ public class SelectMemberActivity
       this.pd.dismiss();
       this.pd = null;
     }
-    this.pd = new ReportDialog(this, 2131755826);
-    this.pd.setContentView(2131562728);
-    this.tipsDialogText = ((TextView)this.pd.findViewById(2131365552));
-    this.tipsDialogText.setText(getString(2131718142));
-    this.tipsDialogPb = ((ProgressBar)this.pd.findViewById(2131367022));
+    this.pd = new ReportDialog(this, 2131755829);
+    this.pd.setContentView(2131562799);
+    this.tipsDialogText = ((TextView)this.pd.findViewById(2131365644));
+    this.tipsDialogText.setText(getString(2131718527));
+    this.tipsDialogPb = ((ProgressBar)this.pd.findViewById(2131367140));
     this.tipsDialogPb.setVisibility(0);
-    this.tipsFlagImage = ((ImageView)this.pd.findViewById(2131380190));
+    this.tipsFlagImage = ((ImageView)this.pd.findViewById(2131380525));
     this.tipsFlagImage.setVisibility(4);
   }
   
@@ -518,7 +521,7 @@ public class SelectMemberActivity
       QLog.d("SelectMemberActivity", 2, "sendIsResumeBroadcast isNeedSend = " + this.mIsNeedSendIsResumeBroadcast + " ,isResume = " + paramBoolean);
     }
     if (this.mIsNeedSendIsResumeBroadcast) {
-      lzb.a(BaseApplicationImpl.getContext(), paramBoolean);
+      lzr.a(BaseApplicationImpl.getContext(), paramBoolean);
     }
   }
   
@@ -556,7 +559,7 @@ public class SelectMemberActivity
         if (!AppSetting.c) {
           break label292;
         }
-        this.mRightBtn.setContentDescription(this.mDoneBtnText + amtj.a(2131712860) + i + amtj.a(2131712851));
+        this.mRightBtn.setContentDescription(this.mDoneBtnText + anvx.a(2131713207) + i + anvx.a(2131713198));
         return;
         if (((this.mEntrance == 25) && (i == 1)) || ((isCreateNewTypeTroop()) && (i == 1)))
         {
@@ -699,21 +702,21 @@ public class SelectMemberActivity
   protected void createNewTypeDiscussion()
   {
     if (System.currentTimeMillis() - this.lastCreateTimeStamp < 1500L) {}
-    bdzw localbdzw;
+    bfgz localbfgz;
     do
     {
       return;
       this.lastCreateTimeStamp = System.currentTimeMillis();
-      localbdzw = (bdzw)this.app.getManager(32);
-    } while (localbdzw == null);
+      localbfgz = (bfgz)this.app.getManager(QQManagerFactory.MGR_TROOP_CREATE);
+    } while (localbfgz == null);
     Object localObject = new JSONObject();
-    label542:
+    label543:
     for (;;)
     {
       try
       {
         ((JSONObject)localObject).put("group_type", 1);
-        ((JSONObject)localObject).put("name", ContactUtils.getAccountNickName(this.app, this.app.getCurrentAccountUin()) + amtj.a(2131712850));
+        ((JSONObject)localObject).put("name", ContactUtils.getAccountNickName(this.app, this.app.getCurrentAccountUin()) + anvx.a(2131713197));
         ((JSONObject)localObject).put("classify", 10010);
         if ((this.mEntrance != 12) && (this.mEntrance != 36)) {
           ((JSONObject)localObject).put("isJumpAio", 1);
@@ -734,8 +737,8 @@ public class SelectMemberActivity
         try
         {
           ((JSONObject)localObject).put("create_source", i);
-          localbdzw.a(((JSONObject)localObject).toString(), 5);
-          bcef.b(this.app, "dc00899", "Grp_create_new", "", "create_page", "clk_now", 0, 0, "", "" + i, "", "");
+          localbfgz.a(((JSONObject)localObject).toString(), 5);
+          bdla.b(this.app, "dc00899", "Grp_create_new", "", "create_page", "clk_now", 0, 0, "", "" + i, "", "");
           localArrayList = new ArrayList(this.mResultList.size());
           localArrayList.addAll(this.mResultList);
           if (this.mUinsSelectedDefault == null) {
@@ -769,7 +772,7 @@ public class SelectMemberActivity
             continue;
           }
           if (this.mEntrance != 27) {
-            break label542;
+            break label543;
           }
           i = getIntent().getIntExtra("create_source", 0);
           continue;
@@ -783,14 +786,14 @@ public class SelectMemberActivity
         }
         QLog.e("SelectMemberActivity", 1, "createNewTypeDiscussion json error!", localJSONException1);
         continue;
-        localbdzw.a(this, this, localJSONException1);
+        localbfgz.a(this, this, localJSONException1);
         if (this.mFrom == 1003)
         {
-          bcef.b(this.app, "dc00899", "Grp_create", "", "choose_cre", "clk_cre_main", 0, 0, "", "", "", "");
+          bdla.b(this.app, "dc00899", "Grp_create", "", "choose_cre", "clk_cre_main", 0, 0, "", "", "", "");
           return;
         }
       }
-      bcef.b(this.app, "dc00899", "Grp_create", "", "choose_cre", "clk_cre_conta", 0, 0, "", "", "", "");
+      bdla.b(this.app, "dc00899", "Grp_create", "", "choose_cre", "clk_cre_conta", 0, 0, "", "", "", "");
       return;
     }
   }
@@ -818,7 +821,7 @@ public class SelectMemberActivity
     if (paramInt != -1)
     {
       if (!this.mShowMyself) {
-        break label259;
+        break label261;
       }
       j = paramInt - 1;
     }
@@ -831,11 +834,11 @@ public class SelectMemberActivity
       return;
       if (this.mOnlyDiscussionMember)
       {
-        amrb localamrb = (amrb)this.app.getManager(53);
-        if (localamrb == null) {
-          break label254;
+        antp localantp = (antp)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+        if (localantp == null) {
+          break label256;
         }
-        i = localamrb.a((String)localObject);
+        i = localantp.a((String)localObject);
       }
       for (;;)
       {
@@ -844,18 +847,18 @@ public class SelectMemberActivity
         i = j;
         if (this.mOnlyTroopMember)
         {
-          localObject = ((TroopManager)this.app.getManager(52)).c((String)localObject);
+          localObject = ((TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER)).c((String)localObject);
           i = j;
           if (localObject != null)
           {
             i = ((TroopInfo)localObject).wMemberNum;
             continue;
-            label254:
+            label256:
             i = 0;
           }
         }
       }
-      label259:
+      label261:
       j = paramInt;
     }
   }
@@ -869,12 +872,12 @@ public class SelectMemberActivity
       }
       if (!canInvite())
       {
-        QQToast.a(this, 2131694121, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131694318, 0).b(getTitleBarHeight());
         return;
       }
       if (this.mTroopMemberNum <= 0)
       {
-        Object localObject = (TroopManager)this.app.getManager(52);
+        Object localObject = (TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER);
         if (localObject != null)
         {
           localObject = ((TroopManager)localObject).b(this.mGroupCode);
@@ -885,11 +888,11 @@ public class SelectMemberActivity
       }
       if ((this.mInviteNoAuthLimitNum > 0L) && (paramArrayList.size() + this.mTroopMemberNum > this.mInviteNoAuthLimitNum))
       {
-        bfur.a(this, amtj.a(2131712861), 2131690620, 2131693192, new SelectMemberActivity.7(this, paramArrayList), new bfvf()).show();
+        bhdj.a(this, anvx.a(2131713208), 2131690697, 2131693370, new SelectMemberActivity.7(this, paramArrayList), new bhdx()).show();
         reportInviteFriend("exp_msgbox");
         return;
       }
-      ((anca)this.app.getBusinessHandler(20)).a(this.mGroupCode, paramArrayList, "");
+      ((aoep)this.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(this.mGroupCode, paramArrayList, "");
       initOnProgressDialog();
       this.pd.show();
       reportInviteFriend("Clk_invite");
@@ -940,7 +943,7 @@ public class SelectMemberActivity
       initInnerFrameManager();
       if ((this.mType == 1) && (this.mSubType == 1))
       {
-        paramBundle = (TroopManager)this.app.getManager(52);
+        paramBundle = (TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER);
         if (paramBundle != null)
         {
           paramBundle = paramBundle.b(this.mGroupCode);
@@ -951,7 +954,7 @@ public class SelectMemberActivity
         ThreadManager.post(new SelectMemberActivity.1(this), 8, null, true);
       }
       this.mTransparentFace = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
-      this.mDefaultAvatar = bfvo.a();
+      this.mDefaultAvatar = bheg.a();
       if (this.videoMsgReceiver == null)
       {
         this.videoMsgReceiver = new SelectMemberActivity.VideoMsgReceiver(this);
@@ -963,14 +966,14 @@ public class SelectMemberActivity
         toggleSelectMode(true, true);
       }
       if ((this.mType != 9003) && (8998 != this.mType)) {
-        break label415;
+        break label417;
       }
-      this.mBlessManager = ((ahux)this.app.getManager(138));
+      this.mBlessManager = ((aipw)this.app.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER));
       Object localObject = this.mBlessManager.a();
       if ((localObject == null) || (((ArrayList)localObject).size() <= 0)) {
-        break label415;
+        break label417;
       }
-      paramBundle = (amsw)this.app.getManager(51);
+      paramBundle = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
       localArrayList = new ArrayList();
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
@@ -983,22 +986,22 @@ public class SelectMemberActivity
       }
     }
     addFriendResults(localArrayList, false);
-    label415:
+    label417:
     paramBundle = getIntent().getParcelableArrayListExtra("param_selected_records_for_create_discussion");
     if (paramBundle != null) {
       addFriendResults(paramBundle, false);
     }
     if (this.mFrom == 1003) {
-      bcef.b(this.app, "dc00899", "Grp_create", "", "f2f", "clk_f2f_main", 0, 0, "", "", "", "");
+      bdla.b(this.app, "dc00899", "Grp_create", "", "f2f", "clk_f2f_main", 0, 0, "", "", "", "");
     }
     for (;;)
     {
       if (this.mEntrance == 33) {
-        bcef.b(this.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.askaio.payershowfriendpay.askaio.payershowfriendpay.askaio.payerclickfriendpay.selectpage.show", 0, 0, "", "", "", "");
+        bdla.b(this.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.askaio.payershowfriendpay.askaio.payershowfriendpay.askaio.payerclickfriendpay.selectpage.show", 0, 0, "", "", "", "");
       }
       return true;
       if (this.mFrom == 1002) {
-        bcef.b(this.app, "dc00899", "Grp_create", "", "f2f", "clk_f2f_conta", 0, 0, "", "", "", "");
+        bdla.b(this.app, "dc00899", "Grp_create", "", "f2f", "clk_f2f_conta", 0, 0, "", "", "", "");
       }
     }
   }
@@ -1021,9 +1024,9 @@ public class SelectMemberActivity
       unregisterReceiver(this.videoMsgReceiver);
       this.videoMsgReceiver = null;
     }
-    bdzw localbdzw = (bdzw)this.app.getManager(32);
-    if (localbdzw != null) {
-      localbdzw.a(this);
+    bfgz localbfgz = (bfgz)this.app.getManager(QQManagerFactory.MGR_TROOP_CREATE);
+    if (localbfgz != null) {
+      localbfgz.a(this);
     }
   }
   
@@ -1065,7 +1068,7 @@ public class SelectMemberActivity
   @TargetApi(14)
   protected void findViews()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131376679);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131376947);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       if (Build.VERSION.SDK_INT >= 14) {
@@ -1073,31 +1076,31 @@ public class SelectMemberActivity
       }
       localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.mTitleBar = findViewById(2131378727);
-    this.mTitle = ((TextView)findViewById(2131369115));
-    this.mLeftBackBtn = ((TextView)findViewById(2131369068));
-    this.mLeftCancelBtn = ((TextView)findViewById(2131369070));
-    this.mRightBtn = ((TextView)findViewById(2131369099));
-    this.mSelectedAndSearchBar = ((SelectedAndSearchBar)findViewById(2131377049));
-    this.mListPanel = ((LinearLayout)findViewById(2131370041));
-    this.mInnerFrameManager = ((InnerFrameManager)findViewById(2131380787));
-    this.mSearchResultLayout = findViewById(2131376347);
+    this.mTitleBar = findViewById(2131379020);
+    this.mTitle = ((TextView)findViewById(2131369278));
+    this.mLeftBackBtn = ((TextView)findViewById(2131369231));
+    this.mLeftCancelBtn = ((TextView)findViewById(2131369233));
+    this.mRightBtn = ((TextView)findViewById(2131369262));
+    this.mSelectedAndSearchBar = ((SelectedAndSearchBar)findViewById(2131377323));
+    this.mListPanel = ((LinearLayout)findViewById(2131370213));
+    this.mInnerFrameManager = ((InnerFrameManager)findViewById(2131381138));
+    this.mSearchResultLayout = findViewById(2131376602);
     this.mSearchResultLayout.setVisibility(8);
-    this.mTooManyMembersTipsBar = findViewById(2131378910);
+    this.mTooManyMembersTipsBar = findViewById(2131379203);
     if (this.mTooManyMembersTipsBar != null)
     {
       this.mTooManyMembersTipsBar.setVisibility(8);
       this.mTooManyMembersTipsBar.setOnClickListener(this);
     }
-    this.mTooManyMembersTipsClose = findViewById(2131378911);
+    this.mTooManyMembersTipsClose = findViewById(2131379204);
     if (this.mTooManyMembersTipsClose != null) {
       this.mTooManyMembersTipsClose.setOnClickListener(this);
     }
-    this.mCreateTroopButtonLayout = findViewById(2131365229);
+    this.mCreateTroopButtonLayout = findViewById(2131365320);
     if (isShowDoneButtonInBottom())
     {
       this.mCreateTroopButtonLayout.setVisibility(0);
-      this.mCreateTroopButton = ((Button)findViewById(2131365228));
+      this.mCreateTroopButton = ((Button)findViewById(2131365319));
       if (this.mEntrance != 35) {
         break label481;
       }
@@ -1114,20 +1117,20 @@ public class SelectMemberActivity
       if (isCreateNewTroopEntrance())
       {
         int i = getIntent().getIntExtra("create_source", 0);
-        bcef.b(this.app, "dc00899", "Grp_create_new", "", "create_page", "exp_chose", 0, 0, "", "" + i, "", "");
+        bdla.b(this.app, "dc00899", "Grp_create_new", "", "create_page", "exp_chose", 0, 0, "", "" + i, "", "");
       }
       for (;;)
       {
-        this.mMultiSearchView = findViewById(2131377050);
-        this.mMultiAddContainerV = findViewById(2131366775);
-        this.mMultiAddBtn = ((Button)findViewById(2131363884));
+        this.mMultiSearchView = findViewById(2131377324);
+        this.mMultiAddContainerV = findViewById(2131366892);
+        this.mMultiAddBtn = ((Button)findViewById(2131363956));
         if (this.mMultiAddBtn != null) {
           this.mMultiAddBtn.setOnClickListener(this);
         }
         return;
         if (isInviteTroopMember())
         {
-          this.mCreateTroopButton.setText(amtj.a(2131712831));
+          this.mCreateTroopButton.setText(anvx.a(2131713178));
           refreshInviteTipsBar();
         }
       }
@@ -1167,25 +1170,25 @@ public class SelectMemberActivity
   
   public int getCheckPhoneNumberResId(String paramString)
   {
-    switch (mst.a(paramString.substring("pstn".length()), true))
+    switch (mtq.a(paramString.substring("pstn".length()), true))
     {
     case 0: 
     default: 
       return 0;
     case -1: 
-      return 2131718102;
+      return 2131718487;
     case 1: 
-      return 2131718096;
+      return 2131718481;
     case 2: 
-      return 2131718097;
+      return 2131718482;
     case 3: 
-      return 2131718098;
+      return 2131718483;
     case 4: 
-      return 2131718099;
+      return 2131718484;
     case 5: 
-      return 2131718100;
+      return 2131718485;
     }
-    return 2131718101;
+    return 2131718486;
   }
   
   protected void getIntentExtras()
@@ -1203,7 +1206,7 @@ public class SelectMemberActivity
       this.mUinsToHide = new ArrayList();
     }
     this.mUinsToHide.add(AppConstants.BABY_Q_UIN);
-    Object localObject2 = (TroopManager)this.app.getManager(52);
+    Object localObject2 = (TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER);
     Object localObject1 = null;
     if (localObject2 != null) {
       localObject1 = ((TroopManager)localObject2).a();
@@ -1255,11 +1258,11 @@ public class SelectMemberActivity
     this.mOverloadTipsIncludeDefaultCount = this.mIntent.getBooleanExtra("param_overload_tips_include_default_count", false);
     this.mTitleString = this.mIntent.getStringExtra("param_title");
     if (this.mTitleString == null) {
-      this.mTitleString = getString(2131718077);
+      this.mTitleString = getString(2131718462);
     }
     this.mDoneBtnText = this.mIntent.getStringExtra("param_done_button_wording");
     if (this.mDoneBtnText == null) {
-      this.mDoneBtnText = getString(2131718089);
+      this.mDoneBtnText = getString(2131718474);
     }
     this.mDoneBtnText_x = this.mIntent.getStringExtra("param_done_button_highlight_wording");
     if (this.mDoneBtnText_x == null) {
@@ -1298,10 +1301,10 @@ public class SelectMemberActivity
                 localObject2 = new ResultRecord();
                 ((ResultRecord)localObject2).uin = ((String)this.mUinsSelectedFriends.get(i));
                 if (!this.mOnlyDiscussionMember) {
-                  break label1020;
+                  break label1021;
                 }
               }
-              label1020:
+              label1021:
               for (int j = 2;; j = 1)
               {
                 ((ResultRecord)localObject2).type = j;
@@ -1330,12 +1333,13 @@ public class SelectMemberActivity
       }
     }
     this.isSupportSelectFriendGroup = this.mIntent.getBooleanExtra("is_support_select_from_friend_groups", false);
+    QLog.d("SelectMemberActivity", 1, String.format("getIntentExtras [%d,%d,%d,%d,%s]", new Object[] { Integer.valueOf(this.mType), Integer.valueOf(this.mSubType), Integer.valueOf(this.mFrom), Integer.valueOf(this.mEntrance), this.mGroupCode }));
   }
   
   int getNotAdminInviteMemberCount()
   {
     int j = 0;
-    long l = bftf.a();
+    long l = bhbx.a();
     Object localObject = this.app.getApp().getSharedPreferences(this.app.getAccount(), 0).getString("not_admin_invite_member_count", null);
     int i = j;
     if (localObject != null) {}
@@ -1425,7 +1429,7 @@ public class SelectMemberActivity
   
   protected String getTroopCodeFromTroopUin(String paramString)
   {
-    TroopManager localTroopManager = (TroopManager)this.app.getManager(52);
+    TroopManager localTroopManager = (TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER);
     if (localTroopManager != null)
     {
       paramString = localTroopManager.b(paramString);
@@ -1508,14 +1512,14 @@ public class SelectMemberActivity
     this.mLeftBackBtn.setVisibility(0);
     this.mLeftCancelBtn.setVisibility(8);
     this.mRightBtn.setVisibility(0);
-    this.mLeftBackBtn.setText(2131718082);
+    this.mLeftBackBtn.setText(2131718467);
     this.mLeftBackBtn.setBackgroundResource(0);
     this.mLeftBackBtn.setPadding(0, 0, 0, 0);
     this.mTitle.setText(this.mTitleString);
     if (AppSetting.c)
     {
       this.mTitle.setContentDescription(this.mTitleString);
-      this.mLeftBackBtn.setContentDescription(getString(2131718082));
+      this.mLeftBackBtn.setContentDescription(getString(2131718467));
     }
     if (isShowDoneButtonInBottom())
     {
@@ -1523,7 +1527,7 @@ public class SelectMemberActivity
       if (isCreateNewTroopEntrance())
       {
         this.mLeftBackBtn.setText("");
-        this.mLeftBackBtn.setBackgroundResource(2130850593);
+        this.mLeftBackBtn.setBackgroundResource(2130850724);
         this.mLeftCancelBtn.setVisibility(8);
       }
     }
@@ -1536,8 +1540,8 @@ public class SelectMemberActivity
         if (this.mEntrance != 35) {
           break label262;
         }
-        this.mRightBtn.setText(2131718080);
-        mrf.f();
+        this.mRightBtn.setText(2131718465);
+        msc.f();
       }
     }
     for (;;)
@@ -1546,15 +1550,15 @@ public class SelectMemberActivity
       return;
       if (isInviteTroopMember())
       {
-        this.mLeftBackBtn.setText(2131690620);
+        this.mLeftBackBtn.setText(2131690697);
         this.mLeftBackBtn.setBackgroundDrawable(null);
         break;
       }
       this.mLeftBackBtn.setText("");
-      this.mLeftBackBtn.setBackgroundResource(2130850593);
+      this.mLeftBackBtn.setBackgroundResource(2130850724);
       break;
       label262:
-      this.mRightBtn.setText(2131718081);
+      this.mRightBtn.setText(2131718466);
     }
   }
   
@@ -1625,44 +1629,44 @@ public class SelectMemberActivity
           }
         } while (this.mResultList.size() < this.mMaxSelectNumber);
         if ((this.mEntrance == 12) && (this.mMaxSelectNumber == 1)) {
-          showMemberOverloadToast(2131691670);
+          showMemberOverloadToast(2131691755);
         }
         for (;;)
         {
           return true;
-          showMemberOverloadToast(2131691665);
+          showMemberOverloadToast(2131691750);
         }
         if (this.mType != 1) {
-          break label711;
+          break label712;
         }
         if ((this.mIsLimitToInviteByTroopMaxLimit) && (this.mResultList.size() >= this.mMaxSelectNumber))
         {
-          showMemberOverloadToast(amtj.a(2131712843));
+          showMemberOverloadToast(anvx.a(2131713190));
           return true;
         }
         if (this.mSubType != 0) {
           break;
         }
       } while (this.mResultList.size() < this.mMaxSelectNumber);
-      showMemberOverloadToast(getString(2131719324));
+      showMemberOverloadToast(getString(2131719747));
       return true;
       if (this.mSubType != 1) {
         break;
       }
       if (this.mResultList.size() >= this.mMaxSelectNumber)
       {
-        showMemberOverloadToast(2131719324);
+        showMemberOverloadToast(2131719747);
         return true;
       }
     } while ((this.mEntrance != 11) || (this.mGroupmembers == null));
     int k = this.mGroupmembers.size() + 1;
-    TroopManager localTroopManager = (TroopManager)this.app.getManager(52);
+    TroopManager localTroopManager = (TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER);
     String str = this.mIntent.getStringExtra("group_uin");
     int i = localTroopManager.c(str).getMemNumForAutoInviteIntoGroup(this.app);
     if (i > k)
     {
       i -= k;
-      label276:
+      label277:
       int j = getOutGroupMem().size();
       int m = this.mResultList.size();
       paramBoolean = isGroupMember(paramString2);
@@ -1674,23 +1678,23 @@ public class SelectMemberActivity
         paramInt = j + 1;
       }
       if (paramInt <= i) {
-        break label928;
+        break label929;
       }
       paramBoolean = true;
-      showMemberOverloadToast(2131719293);
+      showMemberOverloadToast(2131719716);
     }
     for (;;)
     {
       return paramBoolean;
       i = 0;
-      break label276;
+      break label277;
       if (this.mSubType == 3)
       {
         if (this.mResultList.size() < this.mMaxSelectNumber) {
           break;
         }
-        showMemberOverloadToast(getString(2131719292));
-        bcef.b(null, "dc00899", "Grp_video", "", "invite", "toast_over", 0, 0, this.mGroupCode, muk.a(this.app, this.app.getCurrentAccountUin(), this.mGroupCode) + "", "", "");
+        showMemberOverloadToast(getString(2131719715));
+        bdla.b(null, "dc00899", "Grp_video", "", "invite", "toast_over", 0, 0, this.mGroupCode, mvi.a(this.app, this.app.getCurrentAccountUin(), this.mGroupCode) + "", "", "");
         return true;
       }
       if (this.mSubType == 4)
@@ -1698,21 +1702,21 @@ public class SelectMemberActivity
         if (this.mResultList.size() < this.mMaxSelectNumber) {
           break;
         }
-        showMemberOverloadToast(getString(2131719097, new Object[] { Integer.valueOf(this.mMaxSelectNumber) }));
+        showMemberOverloadToast(getString(2131719502, new Object[] { Integer.valueOf(this.mMaxSelectNumber) }));
         return true;
       }
       if (this.mResultList.size() < this.mMaxSelectNumber) {
         break;
       }
       if (this.mEntrance == 35) {
-        showMemberOverloadToast(2131719324);
+        showMemberOverloadToast(2131719747);
       }
       for (;;)
       {
         return true;
-        showMemberOverloadToast(2131719292);
+        showMemberOverloadToast(2131719715);
       }
-      label711:
+      label712:
       if (this.mType == 9003)
       {
         if (this.mEntrance == 15)
@@ -1721,7 +1725,7 @@ public class SelectMemberActivity
           if (this.mResultList.size() < paramInt) {
             break;
           }
-          showMemberOverloadToast(String.format(getString(2131690580), new Object[] { Integer.valueOf(this.mBlessManager.e()) }));
+          showMemberOverloadToast(String.format(getString(2131690655), new Object[] { Integer.valueOf(this.mBlessManager.e()) }));
           return true;
         }
         if (this.mEntrance != 32) {
@@ -1731,7 +1735,7 @@ public class SelectMemberActivity
         if (this.mResultList.size() < paramInt) {
           break;
         }
-        showMemberOverloadToast(String.format(getString(2131690580), new Object[] { Integer.valueOf(this.mBlessManager.h()) }));
+        showMemberOverloadToast(String.format(getString(2131690655), new Object[] { Integer.valueOf(this.mBlessManager.h()) }));
         return true;
       }
       if (this.mResultList.size() < this.mMaxSelectNumber) {
@@ -1746,9 +1750,9 @@ public class SelectMemberActivity
           paramInt = this.mUinsSelectedDefault.size();
         }
       }
-      showMemberOverloadToast(String.format(getString(2131694283), new Object[] { Integer.valueOf(paramInt + this.mMaxSelectNumber) }));
+      showMemberOverloadToast(String.format(getString(2131694481), new Object[] { Integer.valueOf(paramInt + this.mMaxSelectNumber) }));
       return true;
-      label928:
+      label929:
       paramBoolean = false;
     }
   }
@@ -1758,7 +1762,7 @@ public class SelectMemberActivity
     if (this.mType == 9003)
     {
       if ((this.mEntrance == 15) && (!this.mBlessManager.a(paramString1)) && (this.mUnblessedUinCount >= this.mBlessManager.d())) {
-        showMemberOverloadToast(String.format(getString(2131690581), new Object[] { Integer.valueOf(this.mBlessManager.c()) }));
+        showMemberOverloadToast(String.format(getString(2131690656), new Object[] { Integer.valueOf(this.mBlessManager.c()) }));
       }
       for (boolean bool1 = true;; bool1 = false)
       {
@@ -1771,7 +1775,7 @@ public class SelectMemberActivity
             bool2 = bool1;
             if (this.mUnblessedUinCount >= this.mBlessManager.j())
             {
-              showMemberOverloadToast(String.format(getString(2131719618), new Object[] { Integer.valueOf(this.mBlessManager.i()) }));
+              showMemberOverloadToast(String.format(getString(2131720071), new Object[] { Integer.valueOf(this.mBlessManager.i()) }));
               bool2 = true;
             }
           }
@@ -1823,47 +1827,47 @@ public class SelectMemberActivity
   
   public void onAction(View paramView)
   {
-    Object localObject2 = (bayp)paramView.getTag(2131380831);
+    Object localObject2 = (bcff)paramView.getTag(2131381183);
     if (localObject2 == null) {}
     String str;
     Object localObject1;
-    label232:
+    label235:
     do
     {
       return;
       if (this.mEntrance == 33) {
-        bcef.b(this.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.searchclick", 0, 0, "", "", "", "");
+        bdla.b(this.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.searchclick", 0, 0, "", "", "", "");
       }
-      paramView = ((bayp)localObject2).b();
-      str = ((bayp)localObject2).a().toString();
+      paramView = ((bcff)localObject2).b();
+      str = ((bcff)localObject2).a().toString();
       localObject1 = "-1";
-      if ((localObject2 instanceof baxd))
+      if ((localObject2 instanceof bcdt))
       {
-        localObject1 = ((baxd)localObject2).e();
-        if ((localObject2 instanceof baxl))
+        localObject1 = ((bcdt)localObject2).e();
+        if ((localObject2 instanceof bceb))
         {
-          paramView = ((baxl)localObject2).a;
+          paramView = ((bceb)localObject2).a;
           if (!TextUtils.isEmpty(paramView.uin)) {
-            break label232;
+            break label235;
           }
           paramView = "pstn" + paramView.mobileNo;
         }
       }
       for (;;)
       {
-        if (!(localObject2 instanceof baxb)) {
-          break label281;
+        if (!(localObject2 instanceof bcdr)) {
+          break label284;
         }
         paramView = new Bundle();
-        paramView.putString("group_uin", ((baxb)localObject2).b());
-        paramView.putString("group_name", ((baxb)localObject2).c());
+        paramView.putString("group_uin", ((bcdr)localObject2).b());
+        paramView.putString("group_name", ((bcdr)localObject2).c());
         this.mInnerFrameManager.a(7, paramView);
         quitSearchState();
         return;
-        if (!(localObject2 instanceof baxk)) {
+        if (!(localObject2 instanceof bcea)) {
           break;
         }
-        localObject1 = ((baxk)localObject2).a;
+        localObject1 = ((bcea)localObject2).a;
         break;
         if (paramView.uin.equals("0")) {
           paramView = paramView.nationCode + paramView.mobileCode;
@@ -1871,13 +1875,13 @@ public class SelectMemberActivity
           paramView = paramView.uin;
         }
       }
-      if ((localObject2 instanceof baxj))
+      if ((localObject2 instanceof bcdz))
       {
-        paramView = (baxj)localObject2;
+        paramView = (bcdz)localObject2;
         localObject1 = paramView.a();
         if ((!((TroopInfo)localObject1).isAllowCreateDiscuss()) && (!((TroopInfo)localObject1).isTroopOwner(this.app.getCurrentAccountUin())) && (!((TroopInfo)localObject1).isTroopAdmin(this.app.getCurrentAccountUin())))
         {
-          QQToast.a(this, 0, getResources().getString(2131697089), 0).b(getResources().getDimensionPixelSize(2131299076));
+          QQToast.a(this, 0, getResources().getString(2131697366), 0).b(getResources().getDimensionPixelSize(2131299080));
           return;
         }
         localObject1 = new Bundle();
@@ -1887,13 +1891,13 @@ public class SelectMemberActivity
         quitSearchState();
         return;
       }
-      if ((localObject2 instanceof baxo))
+      if ((localObject2 instanceof bcee))
       {
-        paramView = (baxo)localObject2;
+        paramView = (bcee)localObject2;
         localObject1 = paramView.a();
         if ((!((TroopInfo)localObject1).isAllowCreateDiscuss()) && (!((TroopInfo)localObject1).isTroopOwner(this.app.getCurrentAccountUin())) && (!((TroopInfo)localObject1).isTroopAdmin(this.app.getCurrentAccountUin())))
         {
-          QQToast.a(this, 0, getResources().getString(2131697089), 0).b(getResources().getDimensionPixelSize(2131299076));
+          QQToast.a(this, 0, getResources().getString(2131697366), 0).b(getResources().getDimensionPixelSize(2131299080));
           return;
         }
         localObject1 = new Bundle();
@@ -1905,24 +1909,24 @@ public class SelectMemberActivity
       }
       if (isInvitedListContainFriend(paramView))
       {
-        QQToast.a(this, 1, amtj.a(2131712854), 0).b(getTitleBarHeight());
-        bcef.b(this.app, "dc00899", "invite_friend", "", "friend_list", "exp_toast_tobechecked", 0, 0, (String)localObject1, "", "", "");
+        QQToast.a(this, 1, anvx.a(2131713201), 0).b(getTitleBarHeight());
+        bdla.b(this.app, "dc00899", "invite_friend", "", "friend_list", "exp_toast_tobechecked", 0, 0, (String)localObject1, "", "", "");
         return;
       }
     } while (((this.mUinsSelectedDefault != null) && (this.mUinsSelectedDefault.contains(paramView))) || (isResultListContainFriend(paramView)) || (isMemberOverLoad("onAction", false, paramView, str, -1, (String)localObject1)) || (isMemberOverload(paramView, str)));
-    label281:
+    label284:
     SelectMemberInnerFrame localSelectMemberInnerFrame = (SelectMemberInnerFrame)this.mInnerFrameManager.getCurrentView();
     int i;
     if ((this.mInnerFrameManager.a() == 5) || (this.mInnerFrameManager.a() == 0) || (this.mInnerFrameManager.a() == 4) || (this.mInnerFrameManager.a() == 3) || (this.mInnerFrameManager.a() == 8))
     {
       i = -1;
-      if ((localObject2 instanceof baxd))
+      if ((localObject2 instanceof bcdt))
       {
         i = 2;
         if (i != -1) {
           this.mResultList.add(constructAResultRecord(paramView, str, i, (String)localObject1));
         }
-        label752:
+        label774:
         onResultListChanged();
         setupDoneBtn();
         localSelectMemberInnerFrame.f();
@@ -1930,28 +1934,28 @@ public class SelectMemberActivity
         this.mSelectedAndSearchBar.a();
         if (this.mType == 9003) {
           if ((this.mEntrance != 15) || (this.mBlessManager.a(paramView))) {
-            break label1148;
+            break label1235;
           }
         }
       }
     }
     for (this.mUnblessedUinCount += 1;; this.mUnblessedUinCount += 1) {
-      label1148:
+      label1235:
       do
       {
         startRelationFriendAndTroopSearch(false);
         return;
-        if ((localObject2 instanceof baxk))
+        if ((localObject2 instanceof bcea))
         {
           i = 1;
           break;
         }
-        if ((localObject2 instanceof baxe))
+        if ((localObject2 instanceof bcdu))
         {
           i = 0;
           break;
         }
-        if (!(localObject2 instanceof baxl)) {
+        if (!(localObject2 instanceof bceb)) {
           break;
         }
         if ((paramView.startsWith("pstn")) && (preAddPstnNumber(paramView, str, 5, (String)localObject1)))
@@ -1961,44 +1965,49 @@ public class SelectMemberActivity
         }
         if (paramView.startsWith("+"))
         {
-          i = 4;
-          break;
+          boolean bool = bbcp.a().a();
+          if (bool) {}
+          for (i = 1006;; i = 4)
+          {
+            QLog.d("SelectMemberActivity", 1, String.format("onAction type=%d useNewUinType=%b curPage=%d", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(this.mInnerFrameManager.a()) }));
+            break;
+          }
         }
         i = 0;
         break;
         if (this.mInnerFrameManager.a() == 6)
         {
           this.mResultList.add(constructAResultRecord(paramView, str, 1, localSelectMemberInnerFrame.a()));
-          break label752;
+          break label774;
         }
         if (this.mInnerFrameManager.a() == 7)
         {
           this.mResultList.add(constructAResultRecord(paramView, str, 2, localSelectMemberInnerFrame.a()));
-          break label752;
+          break label774;
         }
         if (this.mInnerFrameManager.a() == 1)
         {
           if ((paramView.startsWith("pstn")) && (preAddPstnNumber(paramView, str, 5, localSelectMemberInnerFrame.a())))
           {
             this.mResultList.add(constructAResultRecord(paramView, str, 5, localSelectMemberInnerFrame.a()));
-            break label752;
+            break label774;
           }
           if (paramView.startsWith("+"))
           {
             this.mResultList.add(constructAResultRecord(paramView, str, 4, localSelectMemberInnerFrame.a()));
-            break label752;
+            break label774;
           }
           this.mResultList.add(constructAResultRecord(paramView, str, 0, localSelectMemberInnerFrame.a()));
-          break label752;
+          break label774;
         }
         if (this.mInnerFrameManager.a() != 9) {
-          break label752;
+          break label774;
         }
         localObject1 = constructAResultRecord(paramView, str, 1, localSelectMemberInnerFrame.a());
         localObject2 = new ArrayList(1);
         ((List)localObject2).add(localObject1);
         addFriendResults((List)localObject2, false);
-        break label752;
+        break label774;
       } while ((this.mEntrance != 32) || (this.mBlessManager.b(paramView)));
     }
   }
@@ -2071,35 +2080,35 @@ public class SelectMemberActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131378911: 
+    case 2131379204: 
       for (;;)
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
         this.mTooManyMembersTipsBar.setVisibility(8);
         this.isClosed = true;
-        bcef.b(this.app, "dc00899", "invite_friend", "", "friend_list", "Clk_close", 0, 0, this.mGroupCode, muk.a(this.app, this.app.getCurrentAccountUin(), this.mGroupCode) + "", "", "");
+        bdla.b(this.app, "dc00899", "invite_friend", "", "friend_list", "Clk_close", 0, 0, this.mGroupCode, mvi.a(this.app, this.app.getCurrentAccountUin(), this.mGroupCode) + "", "", "");
       }
-    case 2131365228: 
+    case 2131365319: 
       if (this.mEntrance == 35)
       {
         if (this.mResultList.size() >= 1)
         {
           localObject1 = "1";
-          bcef.b(this.app, "CliOper", "", "", "0X8009E2B", "0X8009E2B", 0, 0, (String)localObject1, "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "0X8009E2B", "0X8009E2B", 0, 0, (String)localObject1, "", "", "");
         }
       }
       else
       {
         if ((this.mEntrance != 12) || (this.mResultList.size() != 1)) {
-          break label468;
+          break label469;
         }
         localResultRecord = (ResultRecord)this.mResultList.get(0);
         localIntent = new Intent();
         localIntent.putExtra("select_memeber_single_friend", true);
         localIntent.putExtra("select_memeber_single_friend_type", localResultRecord.type);
         if ((localResultRecord.type == 0) && (localResultRecord.type != 1)) {
-          break label815;
+          break label816;
         }
         i = 1000;
       }
@@ -2119,7 +2128,7 @@ public class SelectMemberActivity
         }
         for (;;)
         {
-          Object localObject2 = ((amsw)this.app.getManager(51)).e(localResultRecord.uin);
+          Object localObject2 = ((anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(localResultRecord.uin);
           int j = i;
           if (localObject2 != null)
           {
@@ -2143,7 +2152,7 @@ public class SelectMemberActivity
           {
             i = 1006;
             continue;
-            label468:
+            label469:
             if (isCreateNewTroopEntrance())
             {
               createNewTypeDiscussion();
@@ -2156,7 +2165,7 @@ public class SelectMemberActivity
                 localObject1 = getOutGroupMem();
                 if (((ArrayList)localObject1).size() > 0)
                 {
-                  bfur.a(this, 230, getString(2131695219), getString(2131695099), 2131694952, 2131694964, new SelectMemberActivity.17(this, (ArrayList)localObject1), new SelectMemberActivity.18(this)).show();
+                  bhdj.a(this, 230, getString(2131695436), getString(2131695315), 2131695168, 2131695180, new SelectMemberActivity.17(this, (ArrayList)localObject1), new SelectMemberActivity.18(this)).show();
                   break;
                 }
                 afterCreateTroopSucc(this.mIntent.getStringExtra("group_uin"), false);
@@ -2200,7 +2209,7 @@ public class SelectMemberActivity
           }
         }
       }
-      label815:
+      label816:
       i = 0;
     }
   }
@@ -2215,12 +2224,12 @@ public class SelectMemberActivity
   public void onCreateTroopCompletely(int paramInt, String paramString)
   {
     if ((paramInt == 0) && (!TextUtils.isEmpty(paramString))) {
-      bcef.b(this.app, "dc00899", "Grp_create", "", "choose_cre", "cre_suc", 0, 0, paramString, "", "", "");
+      bdla.b(this.app, "dc00899", "Grp_create", "", "choose_cre", "cre_suc", 0, 0, paramString, "", "", "");
     }
     do
     {
       return;
-      paramInt = beah.a(paramInt);
+      paramInt = bfhk.a(paramInt);
     } while (paramInt == 0);
     QQToast.a(this, 1, paramInt, 0).b(getTitleBarHeight());
   }
@@ -2237,7 +2246,7 @@ public class SelectMemberActivity
       afterCreateTroopSucc(paramString, false);
       return;
     }
-    QQToast.a(this, getString(2131691636), 2000).b(this.mTitleBar.getHeight());
+    QQToast.a(this, getString(2131691721), 2000).b(this.mTitleBar.getHeight());
   }
   
   public boolean onListViewItemClick(String paramString1, String paramString2, int paramInt, String paramString3)
@@ -2253,8 +2262,8 @@ public class SelectMemberActivity
       if (isInvitedListContainFriend(paramString1))
       {
         removeFriendFromResultList(paramString1);
-        QQToast.a(this, 1, amtj.a(2131712863), 0).b(getTitleBarHeight());
-        bcef.b(this.app, "dc00899", "invite_friend", "", "friend_list", "exp_toast_tobechecked", 0, 0, paramString3, "", "", "");
+        QQToast.a(this, 1, anvx.a(2131713210), 0).b(getTitleBarHeight());
+        bdla.b(this.app, "dc00899", "invite_friend", "", "friend_list", "exp_toast_tobechecked", 0, 0, paramString3, "", "", "");
         bool1 = false;
       }
       this.mSelectedAndSearchBar.a(bool1);
@@ -2308,8 +2317,8 @@ public class SelectMemberActivity
       if (isInvitedListContainFriend(paramString1))
       {
         removeFriendFromResultList(paramString1);
-        QQToast.a(this, 1, amtj.a(2131712828), 0).b(getTitleBarHeight());
-        bcef.b(this.app, "dc00899", "invite_friend", "", "friend_list", "exp_toast_tobechecked", 0, 0, paramString3, "", "", "");
+        QQToast.a(this, 1, anvx.a(2131713175), 0).b(getTitleBarHeight());
+        bdla.b(this.app, "dc00899", "invite_friend", "", "friend_list", "exp_toast_tobechecked", 0, 0, paramString3, "", "", "");
         bool = false;
       }
       this.mSelectedAndSearchBar.a(bool);
@@ -2407,7 +2416,7 @@ public class SelectMemberActivity
       str = str + "、" + localResultRecord.name;
       break label196;
       if (isCreateNewTroopEntrance()) {}
-      for (str = amtj.a(2131712864);; str = amtj.a(2131712841))
+      for (str = anvx.a(2131713211);; str = anvx.a(2131713188))
       {
         str = MessageFormat.format(str, new Object[] { Integer.valueOf(i) });
         break;
@@ -2426,9 +2435,9 @@ public class SelectMemberActivity
         if (this.mEntrance == 40) {
           str = this.mDoneBtnText;
         } else if (isCreateNewTroopEntrance()) {
-          str = amtj.a(2131712832);
+          str = anvx.a(2131713179);
         } else {
-          str = amtj.a(2131712866);
+          str = anvx.a(2131713213);
         }
       }
     }
@@ -2450,7 +2459,7 @@ public class SelectMemberActivity
     {
       bool = isNotMaxOfPSTN();
       if (!bool) {
-        QQToast.a(this, 2131718103, 1).b(getTitleBarHeight());
+        QQToast.a(this, 2131718488, 1).b(getTitleBarHeight());
       }
       i = getCheckPhoneNumberResId(paramString1);
       if (i != 0) {
@@ -2537,11 +2546,11 @@ public class SelectMemberActivity
   {
     if (this.mSubType == 3)
     {
-      this.mGVideoTextView = ((TextView)findViewById(2131377025));
+      this.mGVideoTextView = ((TextView)findViewById(2131377298));
       if ((paramBoolean) && (getIntent().getIntExtra("param_member_show_type", 1) == 2))
       {
         this.mGVideoTextView.setVisibility(0);
-        this.mGVideoTextView.setText(getString(2131697279, new Object[] { Integer.valueOf(Math.min(paramInt, this.mMaxSelectNumber)) }));
+        this.mGVideoTextView.setText(getString(2131697556, new Object[] { Integer.valueOf(Math.min(paramInt, this.mMaxSelectNumber)) }));
       }
     }
     else
@@ -2549,17 +2558,17 @@ public class SelectMemberActivity
       return;
     }
     this.mGVideoTextView.setVisibility(0);
-    this.mGVideoTextView.setText(getString(2131697281, new Object[] { Integer.valueOf(this.mMaxSelectNumber) }));
+    this.mGVideoTextView.setText(getString(2131697558, new Object[] { Integer.valueOf(this.mMaxSelectNumber) }));
   }
   
   protected void refreshInviteTipsBar()
   {
-    Object localObject = ((TroopManager)this.app.getManager(52)).c(this.mGroupCode);
+    Object localObject = ((TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.mGroupCode);
     boolean bool1;
     if (localObject != null)
     {
       if ((((TroopInfo)localObject).troopPrivilegeFlag & 0x6100000) != 0L) {
-        break label230;
+        break label231;
       }
       bool1 = true;
     }
@@ -2574,18 +2583,18 @@ public class SelectMemberActivity
       }
       else
       {
-        label54:
+        label55:
         if (((TroopInfo)localObject).maxInviteMemNum <= 0) {
-          break label475;
+          break label476;
         }
         if (((TroopInfo)localObject).wMemberNum + this.mResultList.size() <= ((TroopInfo)localObject).maxInviteMemNum) {
-          break label339;
+          break label340;
         }
         bool1 = true;
       }
       for (;;)
       {
-        label82:
+        label83:
         if (QLog.isColorLevel()) {
           QLog.d("SelectMemberActivity", 2, "refreshInviteTipsBar needAdminCheck = " + bool2 + " needAgree = " + bool1);
         }
@@ -2593,20 +2602,20 @@ public class SelectMemberActivity
         {
           this.needShowYellowTips = false;
           if ((this.mEntrance == 11) || (this.mEntrance == 36)) {
-            this.mInviteSuccToastWording = getString(2131695117);
+            this.mInviteSuccToastWording = getString(2131695333);
           }
         }
         for (;;)
         {
           if ((this.isClosed) || (!this.needShowYellowTips) || (TextUtils.isEmpty(this.mYellowTipsWording))) {
-            break label465;
+            break label466;
           }
           this.mTooManyMembersTipsBar.setVisibility(0);
-          localObject = (TextView)this.mTooManyMembersTipsBar.findViewById(2131378912);
+          localObject = (TextView)this.mTooManyMembersTipsBar.findViewById(2131379205);
           ((TextView)localObject).setText(this.mYellowTipsWording);
           ((TextView)localObject).setContentDescription(this.mYellowTipsWording);
           return;
-          label230:
+          label231:
           if ((((TroopInfo)localObject).troopPrivilegeFlag & 0x2000000) == 33554432L)
           {
             if (((TroopInfo)localObject).wMemberNum + this.mResultList.size() > 50)
@@ -2628,43 +2637,43 @@ public class SelectMemberActivity
             break;
           }
           if ((((TroopInfo)localObject).troopPrivilegeFlag & 0x100000) != 1048576L) {
-            break label480;
+            break label481;
           }
           bool1 = false;
           break;
           bool2 = false;
-          break label54;
-          label339:
+          break label55;
+          label340:
           bool1 = false;
-          break label82;
-          this.mInviteSuccToastWording = amtj.a(2131712858);
+          break label83;
+          this.mInviteSuccToastWording = anvx.a(2131713205);
           continue;
           if ((!bool2) && (bool1))
           {
             this.needShowYellowTips = true;
-            this.mYellowTipsWording = amtj.a(2131712839);
-            this.mInviteSuccToastWording = amtj.a(2131712868);
+            this.mYellowTipsWording = anvx.a(2131713186);
+            this.mInviteSuccToastWording = anvx.a(2131713215);
           }
           else if ((bool2) && (bool1))
           {
             this.needShowYellowTips = true;
-            this.mYellowTipsWording = amtj.a(2131712855);
-            this.mInviteSuccToastWording = amtj.a(2131712844);
+            this.mYellowTipsWording = anvx.a(2131713202);
+            this.mInviteSuccToastWording = anvx.a(2131713191);
           }
           else if ((bool2) && (!bool1))
           {
             this.needShowYellowTips = true;
-            this.mYellowTipsWording = amtj.a(2131712835);
-            this.mInviteSuccToastWording = amtj.a(2131712846);
+            this.mYellowTipsWording = anvx.a(2131713182);
+            this.mInviteSuccToastWording = anvx.a(2131713193);
           }
         }
-        label465:
+        label466:
         this.mTooManyMembersTipsBar.setVisibility(8);
         return;
-        label475:
+        label476:
         bool1 = false;
       }
-      label480:
+      label481:
       bool1 = false;
     }
   }
@@ -2736,7 +2745,7 @@ public class SelectMemberActivity
   {
     try
     {
-      setContentView(2131562781);
+      setContentView(2131562852);
       return;
     }
     catch (IllegalStateException localIllegalStateException)
@@ -2752,7 +2761,7 @@ public class SelectMemberActivity
   
   void setNotAdminInviteMemberCount(int paramInt)
   {
-    long l = bftf.a();
+    long l = bhbx.a();
     SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences(this.app.getAccount(), 0).edit();
     localEditor.putString("not_admin_invite_member_count", l + ":" + paramInt);
     localEditor.commit();
@@ -2783,7 +2792,7 @@ public class SelectMemberActivity
       this.mLeftBackBtn.setVisibility(0);
       this.mLeftBackBtn.setText(paramString1);
       this.mLeftBackBtn.setOnClickListener(new SelectMemberActivity.2(this));
-      this.mLeftBackBtn.setBackgroundResource(2130850593);
+      this.mLeftBackBtn.setBackgroundResource(2130850724);
       this.mLeftCancelBtn.setVisibility(8);
       IphoneTitleBarActivity.setLayerType(this.mLeftBackBtn);
       if ((this.mEntrance != 14) && (this.mEntrance != 21) && (this.mEntrance != 25) && (this.mEntrance != 35)) {
@@ -2804,7 +2813,7 @@ public class SelectMemberActivity
       }
     }
     label395:
-    for (paramString1 = amtj.a(2131712856);; paramString1 = this.mLeftBackBtn.getText())
+    for (paramString1 = anvx.a(2131713203);; paramString1 = this.mLeftBackBtn.getText())
     {
       paramString2.setContentDescription(paramString1);
       this.mLeftBackBtn.postDelayed(new SelectMemberActivity.4(this), 1000L);
@@ -2817,7 +2826,7 @@ public class SelectMemberActivity
       label206:
       if (this.mSubType == 3)
       {
-        this.mTitle.setText(getString(2131697280));
+        this.mTitle.setText(getString(2131697557));
         break label118;
       }
       if (this.mFrom == 30)
@@ -2839,7 +2848,7 @@ public class SelectMemberActivity
           break label118;
         }
         this.mTitle.setContentDescription(this.mTitleString);
-        this.mLeftBackBtn.setContentDescription(getString(2131718082));
+        this.mLeftBackBtn.setContentDescription(getString(2131718467));
         break label118;
       }
       this.mTitle.setText(paramString2);
@@ -2858,7 +2867,7 @@ public class SelectMemberActivity
       {
         return;
       } while (!this.mIntent.getBooleanExtra("param_enable_all_select", false));
-      localRelativeLayout = (RelativeLayout)findViewById(2131376609);
+      localRelativeLayout = (RelativeLayout)findViewById(2131376871);
     } while (localRelativeLayout == null);
     if (this.mIsSelectAllMembers) {}
     for (;;)
@@ -2877,7 +2886,7 @@ public class SelectMemberActivity
       return;
     }
     Object localObject1;
-    label167:
+    label168:
     Object localObject2;
     Object localObject3;
     int i;
@@ -2890,9 +2899,9 @@ public class SelectMemberActivity
       {
         this.mIntent.putExtra("group_uin", (String)localObject1);
         if (!this.mOnlyTroopMember) {
-          break label705;
+          break label707;
         }
-        localObject1 = ((TroopManager)this.app.getManager(52)).c((String)localObject1);
+        localObject1 = ((TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER)).c((String)localObject1);
         this.mIntent.putExtra("group_type", 4);
         if (localObject1 != null)
         {
@@ -2925,12 +2934,12 @@ public class SelectMemberActivity
           }
         }
       }
-      localObject1 = (amsw)this.app.getManager(51);
+      localObject1 = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
       this.mResultList.size();
       localObject2 = this.mResultList.iterator();
       i = 0;
       j = 0;
-      label371:
+      label373:
       if (((Iterator)localObject2).hasNext())
       {
         localObject3 = (ResultRecord)((Iterator)localObject2).next();
@@ -2945,34 +2954,34 @@ public class SelectMemberActivity
           }
         }
       }
-      label415:
+      label417:
       break;
     }
     for (;;)
     {
       if (j != 0)
       {
-        bcef.b(this.app, "CliOper", "", "", "Network_circle", "Mutichat_start", 0, 0, "0", "", "", "");
-        label463:
+        bdla.b(this.app, "CliOper", "", "", "Network_circle", "Mutichat_start", 0, 0, "0", "", "", "");
+        label465:
         if (this.mSubType != 0) {
-          break label650;
+          break label652;
         }
-        bcef.b(this.app, "CliOper", "", "", "0X8005446", "0X8005446", 0, 0, "", "", "", "");
-        label506:
+        bdla.b(this.app, "CliOper", "", "", "0X8005446", "0X8005446", 0, 0, "", "", "", "");
+        label508:
         if (this.mSubType != 0) {
-          break label689;
+          break label691;
         }
       }
-      label650:
-      label689:
-      for (j = 2131691638;; j = 2131691635)
+      label652:
+      label691:
+      for (j = 2131691723;; j = 2131691720)
       {
-        this.mQQProgressDialog = new bhht(this, getResources().getDimensionPixelSize(2131299076));
+        this.mQQProgressDialog = new bisl(this, getResources().getDimensionPixelSize(2131299080));
         this.mQQProgressDialog.c(j);
         this.mQQProgressDialog.show();
         if ((this.mSubType == 0) || (i != 0))
         {
-          localObject1 = new SelectMemberActivity.12(this, (amsw)localObject1);
+          localObject1 = new SelectMemberActivity.12(this, (anvk)localObject1);
           ((Thread)localObject1).setName("SelectMemberActivity_addDiscussion");
           ThreadManager.postImmediately((Runnable)localObject1, null, false);
         }
@@ -2985,28 +2994,28 @@ public class SelectMemberActivity
         }
         finish();
         return;
-        break label371;
-        bcef.b(this.app, "CliOper", "", "", "Network_circle", "Mutichat_start", 0, 0, "1", "", "", "");
-        break label463;
-        bcef.b(this.app, "CliOper", "", "", "0X800674C", "0X800674C", 0, 0, "", "", "", "");
-        break label506;
+        break label373;
+        bdla.b(this.app, "CliOper", "", "", "Network_circle", "Mutichat_start", 0, 0, "1", "", "", "");
+        break label465;
+        bdla.b(this.app, "CliOper", "", "", "0X800674C", "0X800674C", 0, 0, "", "", "", "");
+        break label508;
       }
       doInviteTroopMember(this.mResultList);
       return;
-      label705:
+      label707:
       if (!this.mOnlyDiscussionMember) {
-        break label167;
+        break label168;
       }
-      localObject2 = (amrb)this.app.getManager(53);
-      localObject3 = ((amrb)localObject2).a((String)localObject1);
+      localObject2 = (antp)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      localObject3 = ((antp)localObject2).a((String)localObject1);
       this.mIntent.putExtra("group_type", 8);
-      this.mIntent.putExtra("group_member_type", ((amrb)localObject2).a((String)localObject1));
+      this.mIntent.putExtra("group_member_type", ((antp)localObject2).a((String)localObject1));
       if (localObject3 == null) {
-        break label167;
+        break label168;
       }
       this.mIntent.putExtra("group_name", ((DiscussionInfo)localObject3).discussionName);
-      break label167;
-      break label415;
+      break label168;
+      break label417;
     }
   }
   
@@ -3014,7 +3023,7 @@ public class SelectMemberActivity
   {
     if ((this.mTitle != null) && (this.mAnimationDrawable == null))
     {
-      this.mAnimationDrawable = getResources().getDrawable(2130839449);
+      this.mAnimationDrawable = getResources().getDrawable(2130839470);
       this.mTitle.setCompoundDrawablePadding(10);
       this.mTitle.setCompoundDrawablesWithIntrinsicBounds(this.mAnimationDrawable, null, null, null);
       ((Animatable)this.mAnimationDrawable).start();
@@ -3062,7 +3071,7 @@ public class SelectMemberActivity
       if (!this.mResultList.isEmpty()) {
         break label245;
       }
-      localObject = getString(2131690972);
+      localObject = getString(2131691057);
       label89:
       if (this.mMultiAddBtn != null) {
         this.mMultiAddBtn.setText((CharSequence)localObject);
@@ -3101,7 +3110,7 @@ public class SelectMemberActivity
       i = 8;
       break label38;
       label245:
-      localObject = getString(2131690973, new Object[] { Integer.valueOf(this.mResultList.size()) });
+      localObject = getString(2131691058, new Object[] { Integer.valueOf(this.mResultList.size()) });
       break label89;
       label274:
       this.mSearchResultLayout.setVisibility(8);
@@ -3120,7 +3129,7 @@ public class SelectMemberActivity
     }
     if (this.mResultList.isEmpty())
     {
-      paramResultRecord = getString(2131690972);
+      paramResultRecord = getString(2131691057);
       label46:
       if (this.mMultiAddBtn == null) {
         break label110;
@@ -3137,7 +3146,7 @@ public class SelectMemberActivity
     {
       paramResultRecord.setEnabled(paramBoolean);
       return;
-      paramResultRecord = getString(2131690973, new Object[] { Integer.valueOf(this.mResultList.size()) });
+      paramResultRecord = getString(2131691058, new Object[] { Integer.valueOf(this.mResultList.size()) });
       break label46;
       break;
     }

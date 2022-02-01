@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnVideoSizeChangedListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+import tv.danmaku.ijk.media.player.IMediaPlayer.OnVideoSizeChangedListener;
 
 class bkqm
-  implements ShareActionSheet.OnItemClickListener
+  implements IMediaPlayer.OnVideoSizeChangedListener
 {
-  bkqm(bkql parambkql) {}
+  bkqm(bkqg parambkqg, ReliableVideoPlayer.OnVideoSizeChangedListener paramOnVideoSizeChangedListener) {}
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public void onVideoSizeChanged(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.a.a.dismiss();
-    int i = paramActionSheetItem.action;
-    this.a.a(i, paramActionSheetItem);
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnVideoSizeChangedListener != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnVideoSizeChangedListener.onVideoSizeChanged(this.jdField_a_of_type_Bkqg, paramInt1, paramInt2);
+    }
   }
 }
 

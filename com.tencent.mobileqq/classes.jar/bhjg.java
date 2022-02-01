@@ -1,40 +1,52 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.SlideTabWidget;
-
 public class bhjg
-  extends Handler
 {
-  public bhjg(SlideTabWidget paramSlideTabWidget) {}
+  static final bhjg jdField_a_of_type_Bhjg = new bhjg(0);
+  static final bhjg b = new bhjg(1);
+  static final bhjg c = new bhjg(257);
+  static final bhjg d = new bhjg(2);
+  static final bhjg e = new bhjg(258);
+  static final bhjg f = new bhjg(3);
+  static final bhjg g = new bhjg(259);
+  final int jdField_a_of_type_Int;
   
-  public void handleMessage(Message paramMessage)
+  public bhjg(int paramInt)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static bhjg a(int paramInt)
+  {
+    switch (paramInt)
     {
     default: 
-      return;
-    case 0: 
-      SlideTabWidget.a(this.a, 0.0F);
-      SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
-      return;
+      return jdField_a_of_type_Bhjg;
     case 1: 
-      if (SlideTabWidget.a(this.a) < 1.0F)
-      {
-        SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
-        if (SlideTabWidget.a(this.a) >= 1.0F) {
-          SlideTabWidget.a(this.a, false);
-        }
-        this.a.invalidate();
-        sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(2), 10L);
-      return;
+      return b;
+    case 2: 
+      return d;
+    case 3: 
+      return f;
+    case 257: 
+      return c;
+    case 258: 
+      return e;
     }
-    SlideTabWidget.a(this.a, 1.0F);
-    SlideTabWidget.a(this.a, SlideTabWidget.a(this.a));
+    return g;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int & 0xF) == 1;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Int & 0xF) == 3;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Int > 15;
   }
 }
 

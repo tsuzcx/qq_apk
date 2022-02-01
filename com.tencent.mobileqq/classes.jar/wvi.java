@@ -1,28 +1,47 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseVidList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wvi
-  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener
+  extends wfh
 {
-  public void OnDownloadCallback(String paramString) {}
+  public final List<wtv> a = new ArrayList();
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
-  
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public wvi(qqstory_service.RspStoryPlayerTagInfo paramRspStoryPlayerTagInfo)
   {
-    return false;
+    super(paramRspStoryPlayerTagInfo.result);
+    Iterator localIterator = paramRspStoryPlayerTagInfo.tag_info.get().iterator();
+    Object localObject;
+    String str;
+    qqstory_struct.TagInfoBase localTagInfoBase;
+    if (localIterator.hasNext())
+    {
+      localObject = (qqstory_struct.TagInfoBaseVidList)localIterator.next();
+      str = ((qqstory_struct.TagInfoBaseVidList)localObject).vid.get().toStringUtf8();
+      localTagInfoBase = (qqstory_struct.TagInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).tag_info.get();
+      if (!((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.has()) {
+        break label163;
+      }
+    }
+    label163:
+    for (paramRspStoryPlayerTagInfo = new zaw((qqstory_struct.CompInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.get());; paramRspStoryPlayerTagInfo = null)
+    {
+      if (((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.has()) {}
+      for (localObject = ((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.get().toStringUtf8();; localObject = null)
+      {
+        this.a.add(new wtv(str, new zbe(localTagInfoBase), paramRspStoryPlayerTagInfo, (String)localObject));
+        break;
+        return;
+      }
+    }
   }
-  
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
-  {
-    return false;
-  }
-  
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
 }
 
 

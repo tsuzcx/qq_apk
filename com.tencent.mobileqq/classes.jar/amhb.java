@@ -1,87 +1,31 @@
-import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
-import com.tencent.TMG.channel.KSAppChannel;
-import com.tencent.TMG.sdk.AVContext.StartParam;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.adapter.ForwardRecentItemView;
 
 public class amhb
-  extends KSAppChannel
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static String a;
-  public AVContext.StartParam a;
+  public amhb(ForwardRecentItemView paramForwardRecentItemView, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  static
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    jdField_a_of_type_JavaLangString = "SSOChannel";
-  }
-  
-  public long getTinyId()
-  {
-    try
-    {
-      long l = Long.valueOf(this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier).longValue();
-      return l;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b);
+    if (AppSetting.c) {
+      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString);
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return 0L;
-  }
-  
-  public boolean loginWithParam(AVContext.StartParam paramStartParam)
-  {
-    this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam = paramStartParam;
-    return true;
-  }
-  
-  public boolean requestAppCmd(byte[] paramArrayOfByte, int paramInt, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    try
-    {
-      com.tencent.qphone.base.util.QLog.e(jdField_a_of_type_JavaLangString, 1, "requestAppCmd enter");
-      if ((this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam instanceof amgn))
-      {
-        biyo.a().a(paramArrayOfByte, "", this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, ((amgn)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int, ((amgn)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long, new amhc(this, paramArrayOfByte, paramCsCmdCallback));
-        return true;
-      }
-      return false;
-    }
-    catch (NumberFormatException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return false;
-  }
-  
-  public boolean requestAppCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    return requestCmd("0", paramArrayOfByte, paramCsCmdCallback);
-  }
-  
-  public boolean requestCmd(String paramString, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    if (paramString.equals("VideoCCSvc.opensdk")) {
-      return super.requestCmd(paramString, paramArrayOfByte, paramCsCmdCallback);
-    }
-    return super.requestCmd(paramString, paramArrayOfByte, paramCsCmdCallback);
-  }
-  
-  public boolean requestInfoCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    return requestCmd("1", paramArrayOfByte, paramCsCmdCallback);
-  }
-  
-  public boolean requestReportCmd(int paramInt, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    if (paramArrayOfByte.length >= 0) {
-      return requestCmd("3", nativeConvertToIMReportData(paramArrayOfByte, paramInt, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, getTinyId(), (int)System.currentTimeMillis() / 1000), paramCsCmdCallback);
-    }
-    com.tencent.TMG.utils.QLog.e(jdField_a_of_type_JavaLangString, 0, "requestReportCmd reportData == NULL");
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amhb
  * JD-Core Version:    0.7.0.1
  */

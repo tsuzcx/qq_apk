@@ -1,12 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
 
-class qfu
-  implements DialogInterface.OnDismissListener
+final class qfu
+  extends CharacterStyle
 {
-  qfu(qft paramqft) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.parseColor("#FF3DB8FF"));
+  }
 }
 
 

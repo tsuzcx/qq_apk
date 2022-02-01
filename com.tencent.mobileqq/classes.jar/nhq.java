@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.avgame.ui.AVGameActivity;
-import com.tencent.avgame.ui.AVGameActivity.5;
-
-public class nhq
-  implements DialogInterface.OnClickListener
+public abstract interface nhq
 {
-  public nhq(AVGameActivity.5 param5) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.this$0.finish();
-  }
+  public abstract void a(String paramString1, int paramInt, String paramString2);
 }
 
 

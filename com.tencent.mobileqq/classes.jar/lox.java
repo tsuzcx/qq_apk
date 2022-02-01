@@ -1,162 +1,233 @@
-import android.graphics.PointF;
-import com.tencent.ttpic.openapi.PTFaceAttr;
-import java.nio.ByteBuffer;
-import java.util.List;
+import android.graphics.SurfaceTexture;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
 
 public class lox
 {
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static lox jdField_b_of_type_Lox;
+  static long d;
+  static long e;
+  private static long g;
+  private static int h;
+  private static int i;
   public int a;
-  public List<PointF> a;
-  public short a;
+  public long a;
+  public SurfaceTexture a;
+  private lox jdField_a_of_type_Lox;
+  public msh a;
   public boolean a;
   public byte[] a;
-  public float[] a;
   public int b;
-  public short b;
-  public byte[] b;
+  public long b;
+  private boolean jdField_b_of_type_Boolean;
   public int c;
-  public byte[] c;
+  public long c;
+  private boolean c;
+  public int d;
+  public int e;
+  public int f;
+  private long f;
+  public int g;
   
-  public lox()
+  private lox()
   {
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_ArrayOfFloat = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_b_of_type_ArrayOfByte = null;
-    this.jdField_c_of_type_ArrayOfByte = null;
+    this.jdField_c_of_type_Boolean = false;
   }
   
-  private byte[] a(int paramInt1, int paramInt2, float paramFloat)
+  public static lox a()
   {
-    PointF localPointF = null;
-    Object localObject = localPointF;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      localObject = localPointF;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      if (jdField_b_of_type_Lox != null)
       {
-        localObject = localPointF;
-        if (paramInt1 != 0)
-        {
-          localObject = localPointF;
-          if (paramInt2 != 0)
-          {
-            localObject = localPointF;
-            if (paramFloat > 0.0001D)
-            {
-              float f = 240.0F / (paramInt1 * paramFloat);
-              paramFloat = 320.0F / (paramInt2 * paramFloat);
-              lba.f("FaceData", "getFaceFeature:" + paramInt1 + "|" + paramInt2 + "|" + f);
-              localObject = ByteBuffer.allocate(this.jdField_a_of_type_JavaUtilList.size() * 4);
-              paramInt1 = 0;
-              while (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
-              {
-                localPointF = (PointF)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
-                short s1 = (short)(int)(localPointF.x * f);
-                short s2 = (short)(int)(localPointF.y * paramFloat);
-                ((ByteBuffer)localObject).putShort(s1);
-                ((ByteBuffer)localObject).putShort(s2);
-                paramInt1 += 1;
-              }
-              localObject = ((ByteBuffer)localObject).array();
-            }
-          }
-        }
+        lox locallox = jdField_b_of_type_Lox;
+        jdField_b_of_type_Lox = locallox.jdField_a_of_type_Lox;
+        locallox.jdField_a_of_type_Lox = null;
+        h -= 1;
+        locallox.jdField_c_of_type_Boolean = false;
+        return locallox;
       }
+      return new lox();
     }
-    return localObject;
   }
   
-  private byte[] b(int paramInt1, int paramInt2, float paramFloat)
+  public static void a(SurfaceTexture paramSurfaceTexture)
   {
-    PointF localPointF = null;
-    Object localObject = localPointF;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      localObject = localPointF;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        localObject = localPointF;
-        if (paramInt1 != 0)
-        {
-          localObject = localPointF;
-          if (paramInt2 != 0)
-          {
-            localObject = localPointF;
-            if (paramFloat > 0.0001D)
-            {
-              float f = 2.4E+008F / (paramInt1 * paramFloat);
-              paramFloat = 3.2E+008F / (paramInt2 * paramFloat);
-              lba.f("FaceData", "getFaceFeature2:" + paramInt1 + "|" + paramInt2 + "|" + f);
-              localObject = ByteBuffer.allocate(this.jdField_a_of_type_JavaUtilList.size() * 8);
-              paramInt1 = 0;
-              while (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
-              {
-                localPointF = (PointF)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
-                paramInt2 = (int)(localPointF.x * f);
-                int i = (int)(localPointF.y * paramFloat);
-                ((ByteBuffer)localObject).putInt(paramInt2);
-                ((ByteBuffer)localObject).putInt(i);
-                paramInt1 += 1;
-              }
-              localObject = ((ByteBuffer)localObject).array();
-            }
-          }
-        }
-      }
-    }
-    return localObject;
+    jdField_d_of_type_Long += 1L;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  static void a(String paramString)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_ArrayOfFloat = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_b_of_type_ArrayOfByte = null;
-    this.jdField_c_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_JavaLangString = paramString;
+    i = 0;
+    jdField_g_of_type_Long = 0L;
   }
   
-  public void a(PTFaceAttr paramPTFaceAttr, float paramFloat, boolean paramBoolean)
+  public static boolean a(SurfaceTexture paramSurfaceTexture)
   {
-    if (paramPTFaceAttr != null)
+    if (jdField_d_of_type_Long == jdField_e_of_type_Long) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Int = paramPTFaceAttr.getFaceCount();
-      if ((this.jdField_a_of_type_Int > 0) && (paramPTFaceAttr != null))
-      {
-        if (paramBoolean) {
-          break label104;
-        }
-        this.jdField_a_of_type_JavaUtilList = ((List)paramPTFaceAttr.getAllFacePoints().get(0));
-        this.jdField_a_of_type_ArrayOfFloat = ((float[])paramPTFaceAttr.getAllFaceAngles().get(0));
-        this.jdField_a_of_type_ArrayOfByte = a(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, paramFloat);
-        this.jdField_b_of_type_ArrayOfByte = b(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, paramFloat);
+      if (QLog.isColorLevel()) {
+        QLog.i("SurfaceTag", 2, "checkFrameDealRight, count[" + jdField_d_of_type_Long + "," + jdField_e_of_type_Long + "], surfaceTexture[" + paramSurfaceTexture + "]");
       }
+      return bool;
     }
-    label104:
-    do
+  }
+  
+  public static void b(SurfaceTexture paramSurfaceTexture)
+  {
+    jdField_e_of_type_Long += 1L;
+  }
+  
+  public static void c(SurfaceTexture paramSurfaceTexture)
+  {
+    jdField_d_of_type_Long = 0L;
+    jdField_e_of_type_Long = 0L;
+    if (QLog.isColorLevel()) {
+      QLog.i("SurfaceTag", 2, "clearFrameCount, count[" + jdField_d_of_type_Long + "," + jdField_e_of_type_Long + "], surfaceTexture[" + paramSurfaceTexture + "]");
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_ArrayOfByte == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_ArrayOfByte.length;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (!this.jdField_b_of_type_Boolean)) {}
+    try
     {
+      a(null);
+      if (QLog.isColorLevel()) {
+        QLog.i("SurfaceTag", 2, "checkAfterFilterRender, not deal by filter render.");
+      }
       return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.i("SurfaceTag", 1, "checkAfterFilterRender", localThrowable);
+      }
+    }
+  }
+  
+  public void a(long paramLong1, SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, long paramLong2, long paramLong3)
+  {
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
+    this.jdField_e_of_type_Int = paramInt5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Long = paramLong3;
+    this.jdField_c_of_type_Long = paramLong1;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_g_of_type_Int = 0;
+    this.jdField_f_of_type_Long = SystemClock.elapsedRealtime();
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public void a(long paramLong1, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, long paramLong2, long paramLong3)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
+    this.jdField_e_of_type_Int = paramInt5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Long = paramLong3;
+    this.jdField_c_of_type_Long = paramLong1;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_g_of_type_Int = 0;
+    this.jdField_f_of_type_Long = SystemClock.elapsedRealtime();
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public void a(float[] paramArrayOfFloat)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+      if (paramArrayOfFloat != null) {
+        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(paramArrayOfFloat);
+      }
+      this.jdField_b_of_type_Boolean = true;
+      b(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ArrayOfByte == null) && (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture == null);
+  }
+  
+  public void b()
+  {
+    long l;
+    if ((QLog.isDevelopLevel()) && (this.jdField_f_of_type_Long != 0L))
+    {
+      l = SystemClock.elapsedRealtime() - this.jdField_f_of_type_Long;
+      i += 1;
+      if (i != 1) {
+        break label135;
+      }
+      jdField_g_of_type_Long = l;
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (!this.jdField_b_of_type_Boolean) && (QLog.isColorLevel())) {
+        QLog.i("SurfaceTag", 2, "recycle when tex not updated.");
+      }
+      this.jdField_a_of_type_ArrayOfByte = null;
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
       this.jdField_a_of_type_Int = 0;
-      break;
-      paramPTFaceAttr = paramPTFaceAttr.genOrigFaceData();
-    } while (paramPTFaceAttr == null);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramPTFaceAttr.getBytes().length + 4);
-    this.jdField_a_of_type_Short = ((short)(int)(this.jdField_c_of_type_Int * paramFloat));
-    this.jdField_b_of_type_Short = ((short)(int)(this.jdField_b_of_type_Int * paramFloat));
-    localByteBuffer.put(new byte[] { (byte)(this.jdField_b_of_type_Short >> 8), (byte)(this.jdField_b_of_type_Short >> 0), (byte)(this.jdField_a_of_type_Short >> 8), (byte)(this.jdField_a_of_type_Short >> 0) });
-    localByteBuffer.put(paramPTFaceAttr.getBytes());
-    this.jdField_c_of_type_ArrayOfByte = localByteBuffer.array();
+      this.jdField_b_of_type_Int = 0;
+      this.jdField_c_of_type_Long = 0L;
+      this.jdField_a_of_type_Long = 0L;
+      this.jdField_f_of_type_Long = 0L;
+      this.jdField_b_of_type_Boolean = false;
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_c_of_type_Boolean) {
+          QLog.i("SurfaceTag", 2, "recycle, error.");
+        }
+        label135:
+        do
+        {
+          return;
+          jdField_g_of_type_Long = (l + jdField_g_of_type_Long) / 2L;
+          break;
+          this.jdField_c_of_type_Boolean = true;
+        } while (h >= 4);
+        this.jdField_a_of_type_Lox = jdField_b_of_type_Lox;
+        jdField_b_of_type_Lox = this;
+        h += 1;
+      }
+    }
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture == null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lox
  * JD-Core Version:    0.7.0.1
  */

@@ -56,7 +56,7 @@ public class GaussianMaskFilter
       {
         localObject = (GaussianMaskFilter)sRadiusFilter.remove(Float.valueOf(paramFloat));
         if (localObject != null) {
-          ((GaussianMaskFilter)localObject).ClearGLSL();
+          ((GaussianMaskFilter)localObject).clearGLSL();
         }
       }
       return;
@@ -81,7 +81,7 @@ public class GaussianMaskFilter
     {
       GaussianMaskFilter localGaussianMaskFilter = (GaussianMaskFilter)localIterator.next();
       if (localGaussianMaskFilter != null) {
-        localGaussianMaskFilter.ClearGLSL();
+        localGaussianMaskFilter.clearGLSL();
       }
     }
     sRadiusFilter.clear();
@@ -224,15 +224,6 @@ public class GaussianMaskFilter
     }
   }
   
-  public void ClearGLSL()
-  {
-    this.mIsInited = false;
-    if (this.gaussianMaskFilterVertic != null) {
-      this.gaussianMaskFilterVertic.ClearGLSL();
-    }
-    super.ClearGLSL();
-  }
-  
   public Frame RenderProcess(Frame paramFrame1, Frame paramFrame2)
   {
     if (!this.mNeedBlur) {
@@ -274,7 +265,16 @@ public class GaussianMaskFilter
       clearGaussianFilterWithRadius(this.mRadiusInPixels);
       return;
     }
-    ClearGLSL();
+    clearGLSL();
+  }
+  
+  public void clearGLSL()
+  {
+    this.mIsInited = false;
+    if (this.gaussianMaskFilterVertic != null) {
+      this.gaussianMaskFilterVertic.clearGLSL();
+    }
+    super.clearGLSL();
   }
   
   public void setMaskTextureId(int paramInt)

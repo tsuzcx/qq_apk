@@ -1,67 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class arfl
 {
-  private float jdField_a_of_type_Float;
-  private final bgoe jdField_a_of_type_Bgoe;
-  private String jdField_a_of_type_JavaLangString;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
-  
-  public arfl(String paramString, bgoe parambgoe)
+  public void a(aqxa[] paramArrayOfaqxa)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bgoe = parambgoe;
-  }
-  
-  public float a()
-  {
-    if (this.jdField_a_of_type_Bgoe != null) {
-      return this.jdField_a_of_type_Bgoe.jdField_a_of_type_Float;
+    QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[handleReadInJoyResetAllConfig] " + paramArrayOfaqxa);
+    if (paramArrayOfaqxa != null) {
+      try
+      {
+        if (paramArrayOfaqxa.length > 0)
+        {
+          new pmf();
+          int j = paramArrayOfaqxa.length;
+          int i = 0;
+          while (i < j)
+          {
+            boolean bool = TextUtils.isEmpty(paramArrayOfaqxa[i].a);
+            if (bool) {}
+            i += 1;
+          }
+        }
+        return;
+      }
+      catch (Exception paramArrayOfaqxa)
+      {
+        QLog.e("ReadinjoyResetFunctionConfProcessor", 1, "[handleReadInJoyResetAllConfig] ", paramArrayOfaqxa);
+      }
     }
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public Bundle a(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_Bgoe != null) {
-      return this.jdField_a_of_type_Bgoe.a();
-    }
-    return (Bundle)((bgga)paramQQAppInterface.getManager(235)).a.a.get(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    if (this.jdField_a_of_type_Bgoe != null) {
-      this.jdField_a_of_type_Bgoe.a(true);
-    }
-    String str;
-    do
-    {
-      return;
-      str = "bqmall.android.h5magic." + this.jdField_a_of_type_JavaLangString + ".zip";
-      paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.cancelDwonloadItem(1004L, str);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfl
  * JD-Core Version:    0.7.0.1
  */

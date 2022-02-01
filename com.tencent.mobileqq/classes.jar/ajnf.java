@@ -1,24 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.PhoneFrame;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
 public class ajnf
-  implements View.OnClickListener
 {
-  public ajnf(PhoneFrameActivity paramPhoneFrameActivity) {}
+  public int a;
+  public short a;
+  public short b;
   
-  public void onClick(View paramView)
+  public JSONObject a()
   {
-    atky localatky = this.a.a.a();
-    if (localatky != null) {
-      localatky.a(false);
+    try
+    {
+      localJSONObject = new JSONObject();
+      localException1.printStackTrace();
     }
-    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = false;
-    this.a.setResult(1);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Exception localException1)
+    {
+      try
+      {
+        localJSONObject.put("entryId", this.jdField_a_of_type_Int);
+        localJSONObject.put("flagId", this.jdField_a_of_type_Short);
+        localJSONObject.put("flagValue", this.b);
+        return localJSONObject;
+      }
+      catch (Exception localException2)
+      {
+        JSONObject localJSONObject;
+        break label46;
+      }
+      localException1 = localException1;
+      localJSONObject = null;
+    }
+    label46:
+    return localJSONObject;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryId");
+      this.jdField_a_of_type_Short = ((short)paramJSONObject.optInt("flagId"));
+      this.b = ((short)paramJSONObject.optInt("flagValue"));
+    }
+  }
+  
+  boolean a()
+  {
+    return (this.jdField_a_of_type_Short != 0) && (this.b == 1);
   }
 }
 

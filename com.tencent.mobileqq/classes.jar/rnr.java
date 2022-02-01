@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.AdReport;
 
-class rnr
-  implements DialogInterface.OnDismissListener
+public class rnr
 {
-  rnr(rno paramrno) {}
+  public String a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static rnr a(oidb_0x5bd.AdReport paramAdReport)
   {
-    rno.b(this.a, false);
+    rnr localrnr = new rnr();
+    localrnr.a = paramAdReport.bytes_report_url.get().toStringUtf8();
+    return localrnr;
   }
 }
 

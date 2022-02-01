@@ -1,102 +1,86 @@
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.ark.ArkAppPanelList.AppDetail;
+import com.tencent.ark.ArkAppPanelList.RespBody;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class apzj
+  implements BusinessObserver
 {
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public apzj(ArkMessageServerLogic.1 param1) {}
   
-  public static apzj a(aptx[] paramArrayOfaptx)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    apzj localapzj = new apzj();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    for (;;)
+    if ((paramBoolean) && (paramObject != null))
     {
+      localObject1 = new ArkAppPanelList.RespBody();
       try
       {
-        if (i >= paramArrayOfaptx.length) {
-          break label187;
-        }
-        String str = paramArrayOfaptx[i].a;
-        if (TextUtils.isEmpty(str))
+        ((ArkAppPanelList.RespBody)localObject1).mergeFrom((byte[])paramObject);
+        localArrayList = new ArrayList();
+        if (((ArkAppPanelList.RespBody)localObject1).apps.has())
         {
-          QLog.d("OpenSdkConfProcessor", 1, "parse, content empty");
-        }
-        else
-        {
-          JSONObject localJSONObject = new JSONObject(str);
-          if (localJSONObject.has("enable_third_app_share_big_image_by_server"))
-          {
-            if (localJSONObject.optInt("enable_third_app_share_big_image_by_server", 0) == 1)
-            {
-              bool = true;
-              localapzj.jdField_a_of_type_Boolean = bool;
-            }
+          paramObject = ((ArkAppPanelList.RespBody)localObject1).apps.get();
+          if ((paramObject == null) || (paramObject.size() <= 0)) {
+            break label234;
           }
-          else
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
           {
-            if (localJSONObject.has("sdk_share_verify_appinfo_timeout_duration")) {
-              localapzj.jdField_a_of_type_Long = localJSONObject.optInt("sdk_share_verify_appinfo_timeout_duration", 0);
-            }
-            if (localJSONObject.has("sdk_login_use_third_transform_pkg_name"))
+            localObject2 = (ArkAppPanelList.AppDetail)paramObject.next();
+            if (localObject2 != null)
             {
-              if (localJSONObject.optInt("sdk_login_use_third_transform_pkg_name", 0) != 1) {
-                break label182;
+              localObject1 = ((ArkAppPanelList.AppDetail)localObject2).appName.get();
+              str = ((ArkAppPanelList.AppDetail)localObject2).cnName.get();
+              localObject2 = ((ArkAppPanelList.AppDetail)localObject2).iconUrl.get();
+              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+              {
+                localArrayList.add(new apyt((String)localObject1, str, (String)localObject2));
+                continue;
+                return;
               }
-              bool = true;
-              localapzj.b = bool;
             }
-            localStringBuilder.append("config: ").append(str).append(",");
           }
         }
       }
-      catch (Exception paramArrayOfaptx)
+      catch (InvalidProtocolBufferMicroException paramObject)
       {
-        QLog.e("OpenSdkConfProcessor", 1, "parse, failed!", paramArrayOfaptx);
-        return null;
+        ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList mergeFrom exception=" + paramObject);
+        if (this.a.a != null) {
+          this.a.a.b(null);
+        }
       }
-      boolean bool = false;
-      continue;
-      label182:
-      bool = false;
-      continue;
-      label187:
-      QLog.d("OpenSdkConfProcessor", 1, "parse, content:" + localStringBuilder.toString());
-      return localapzj;
-      i += 1;
     }
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("serverShareImageEnable:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("timeout_duration:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("useThirdTransformPkgName:").append(this.b);
-    return super.toString();
+    label234:
+    while (this.a.a == null)
+    {
+      ArrayList localArrayList;
+      do
+      {
+        for (;;)
+        {
+          Object localObject1;
+          Object localObject2;
+          String str;
+          paramObject = null;
+        }
+      } while (this.a.a == null);
+      this.a.a.b(localArrayList);
+      return;
+    }
+    this.a.a.b(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apzj
  * JD-Core Version:    0.7.0.1
  */

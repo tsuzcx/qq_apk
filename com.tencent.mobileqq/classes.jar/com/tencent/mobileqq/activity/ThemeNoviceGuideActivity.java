@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aejq;
-import amtj;
+import afay;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -14,12 +13,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
-import azvi;
-import bcef;
-import bftf;
-import bgev;
+import anvx;
+import bbbq;
+import bdla;
+import bhbx;
+import bhnp;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -29,12 +30,12 @@ public class ThemeNoviceGuideActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  Handler a = new aejq(this, Looper.getMainLooper());
+  Handler a = new afay(this, Looper.getMainLooper());
   
   private void a()
   {
-    setLeftButton(2131690768, null);
-    ((Button)findViewById(2131378067)).setOnClickListener(this);
+    setLeftButton(2131690845, null);
+    ((Button)findViewById(2131378355)).setOnClickListener(this);
   }
   
   @Override
@@ -50,9 +51,9 @@ public class ThemeNoviceGuideActivity
   {
     getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562879);
+    super.setContentView(2131562951);
     a();
-    setTitle(amtj.a(2131713957));
+    setTitle(anvx.a(2131714304));
     this.a.sendMessageDelayed(Message.obtain(this.a, 0, null), 5L);
     return true;
   }
@@ -60,7 +61,7 @@ public class ThemeNoviceGuideActivity
   public void doOnResume()
   {
     super.doOnResume();
-    ((WebProcessManager)this.app.getManager(13)).e();
+    ((WebProcessManager)this.app.getManager(QQManagerFactory.WEBPROCESS_MANAGER)).e();
   }
   
   public boolean onBackEvent()
@@ -72,28 +73,28 @@ public class ThemeNoviceGuideActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131378067)
+    if (paramView.getId() == 2131378355)
     {
-      if (!bftf.a()) {
-        break label128;
+      if (!bhbx.a()) {
+        break label129;
       }
       finish();
       Intent localIntent = new Intent(this, QQBrowserActivity.class);
       localIntent.putExtra("FromWhere", "FromThemeNoviceGuide");
-      VasWebviewUtil.openQQBrowserWithoutAD(this, bgev.a(this, "theme", "mvip.gongneng.android.theme.index_dynamic_tab"), 32L, localIntent, false, -1);
+      VasWebviewUtil.openQQBrowserWithoutAD(this, bhnp.a(this, "theme", "mvip.gongneng.android.theme.index_dynamic_tab"), 32L, localIntent, false, -1);
       if (this.app != null) {
-        ((azvi)this.app.getManager(36)).b("100005.100002");
+        ((bbbq)this.app.getManager(QQManagerFactory.MGR_RED_TOUCH)).b("100005.100002");
       }
     }
     for (;;)
     {
       if (this.app != null) {
-        bcef.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "theme_popup_click", 0, 0, "", "", "", "");
+        bdla.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "theme_popup_click", 0, 0, "", "", "", "");
       }
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      label128:
-      Toast.makeText(getApplicationContext(), getString(2131717955), 0).show();
+      label129:
+      Toast.makeText(getApplicationContext(), getString(2131718340), 0).show();
     }
   }
   
@@ -106,12 +107,12 @@ public class ThemeNoviceGuideActivity
   
   public String setLastActivityName()
   {
-    return getString(2131690599);
+    return getString(2131690676);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ThemeNoviceGuideActivity
  * JD-Core Version:    0.7.0.1
  */

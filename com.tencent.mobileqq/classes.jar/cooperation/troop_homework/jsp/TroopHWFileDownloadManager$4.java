@@ -1,6 +1,6 @@
 package cooperation.troop_homework.jsp;
 
-import bkxy;
+import bmjh;
 import com.tencent.tmdownloader.TMAssistantDownloadSettingClient;
 
 public class TroopHWFileDownloadManager$4
@@ -8,7 +8,7 @@ public class TroopHWFileDownloadManager$4
 {
   public void run()
   {
-    bkxy.a(this.this$0).setDownloadSDKWifiOnly(this.a);
+    bmjh.a(this.this$0).setDownloadSDKWifiOnly(this.a);
   }
 }
 

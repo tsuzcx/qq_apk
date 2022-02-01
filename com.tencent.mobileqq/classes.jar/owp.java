@@ -1,98 +1,94 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-class owp
-  implements BusinessObserver
+public class owp
+  extends pvq
 {
-  owp(owm paramowm, BaseCommentData paramBaseCommentData) {}
+  public owp(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2, String paramString3)
   {
-    int i = 1;
-    String str = "";
-    if (paramBoolean) {}
+    super.a(paramInt1, paramLong, paramString1, paramInt2, paramString2, paramString3);
+    ReadInJoyDeliverBiuActivity.b(this.a, true);
+    ReadInJoyDeliverBiuActivity.b(this.a);
+    QLog.d("ReadInJoyDeliverBiuActivity", 2, "onDeliverUGCResult retCode=" + paramInt1 + ", feedsId=" + paramLong + ", rowkey=" + paramString1 + ", status=" + paramInt2 + ", comment=" + paramString2);
+    if (paramInt1 == 0)
+    {
+      QQToast.a(this.a, 2, this.a.getString(2131717695), 0).b(this.a.getTitleBarHeight());
+      ReadInJoyDeliverBiuActivity.e(this.a, -1);
+      ReadInJoyDeliverBiuActivity.c(this.a);
+      this.a.getIntent().putExtra("KEY_VIDEO_BIU_SUCCESS", true);
+      this.a.finish();
+      if (ReadInJoyDeliverBiuActivity.o(this.a) != 14) {
+        pvj.a().b(true);
+      }
+    }
     for (;;)
     {
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        if (arrayOfByte == null) {
-          break label229;
-        }
-        paramBundle = new WebSsoBody.WebSsoResponseBody();
-        try
-        {
-          paramBundle.mergeFrom(arrayOfByte);
-          paramInt = paramBundle.ret.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadInJoyCommentSSOModule", 2, "commentReport ret=" + paramBundle.data.get());
-          }
-          if (paramInt == 0) {
-            break label179;
-          }
-          try
-          {
-            paramBundle = new JSONObject(paramBundle.data.get()).optString("msg");
-            paramInt = 0;
-          }
-          catch (JSONException paramBundle)
-          {
-            paramBundle.printStackTrace();
-            paramInt = 0;
-            paramBundle = str;
-            continue;
-          }
-          if ((paramInt == 0) && (owm.a(this.jdField_a_of_type_Owm) != null)) {
-            owm.a(this.jdField_a_of_type_Owm).b(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, paramBundle);
-          }
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          localInvalidProtocolBufferMicroException.printStackTrace();
-          continue;
-        }
-        paramBundle.printStackTrace();
+      if ((paramInt1 != 0) && (ReadInJoyDeliverBiuActivity.b(this.a))) {
+        this.a.finish();
       }
-      catch (Exception paramBundle)
-      {
-        paramInt = 0;
+      return;
+      QQToast.a(this.a, 1, paramString3, 0).b(this.a.getTitleBarHeight());
+    }
+  }
+  
+  public void a(long paramLong, int paramInt, String paramString)
+  {
+    boolean bool = true;
+    QLog.i("ReadInJoyDeliverBiuActivity", 1, "onBiuResult: retCode = " + paramInt + " errorMsg = " + paramString);
+    ReadInJoyDeliverBiuActivity.c(this.a, true);
+    ReadInJoyDeliverBiuActivity.d(this.a);
+    paramLong = NetConnInfoCenter.getServerTimeMillis() - ReadInJoyDeliverBiuActivity.a(this.a);
+    if (paramInt == 0)
+    {
+      paramString = this.a.getString(2131717695);
+      if (ReadInJoyDeliverBiuActivity.g(this.a)) {
+        paramString = this.a.getString(2131717689);
       }
-      for (;;)
-      {
-        for (;;)
-        {
-          paramBundle = str;
-          break;
-          label179:
-          paramBundle = str;
-          paramInt = i;
-          try
-          {
-            if (owm.a(this.jdField_a_of_type_Owm) == null) {
-              break;
-            }
-            owm.a(this.jdField_a_of_type_Owm).b(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
-            paramBundle = str;
-            paramInt = i;
-          }
-          catch (Exception paramBundle)
-          {
-            paramInt = 1;
-          }
-        }
+      ReadInJoyDeliverBiuActivity.d(this.a, false);
+      if (!this.a.getIntent().getBooleanExtra("hideSuccessToast", false)) {
+        QQToast.a(this.a, 2, paramString, 0).b(this.a.getTitleBarHeight());
       }
-      label229:
-      paramInt = 0;
-      paramBundle = str;
+      ReadInJoyDeliverBiuActivity.f(this.a, -1);
+      ReadInJoyDeliverBiuActivity.c(this.a);
+      this.a.getIntent().putExtra("KEY_VIDEO_BIU_SUCCESS", true);
+      this.a.finish();
+      if (ReadInJoyDeliverBiuActivity.o(this.a) != 14) {
+        pvj.a().b(true);
+      }
+      if (paramInt != 0) {
+        break label417;
+      }
+    }
+    for (;;)
+    {
+      paramString = new HashMap();
+      paramString.put("param_FailCode", paramInt + "");
+      paramString.put("param_FromType", ReadInJoyDeliverBiuActivity.o(this.a) + "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actMultiBiuResult", bool, paramLong, 0L, paramString, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "doStatisticReport-->success:" + bool + ", costTime:" + paramLong + ", retcode:" + paramInt);
+      }
+      if (bool) {
+        ReadInJoyDeliverBiuActivity.a(this.a, bool);
+      }
+      if ((paramInt != 0) && (ReadInJoyDeliverBiuActivity.b(this.a))) {
+        this.a.finish();
+      }
+      return;
+      QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
+      break;
+      label417:
+      bool = false;
     }
   }
 }

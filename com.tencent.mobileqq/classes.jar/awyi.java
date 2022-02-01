@@ -1,27 +1,31 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
 
 class awyi
-  implements URLDrawable.URLDrawableListener
+  extends anyz
 {
-  awyi(awyf paramawyf) {}
+  awyi(awyg paramawyg, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, String paramString, int paramInt) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, anza paramanza)
   {
-    paramURLDrawable = paramURLDrawable.getCurrDrawable();
-    if ((paramURLDrawable instanceof RegionDrawable))
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().notifyUI(6003, true, new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq + "" });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgContentByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData);
+    if (paramBoolean)
     {
-      paramURLDrawable = ((RegionDrawable)paramURLDrawable).getBitmap();
-      awyf.a(this.a).setImageBitmap(paramURLDrawable);
-      awyf.a(this.a).setVisibility(0);
+      awyg.a(this.jdField_a_of_type_Awyg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
+      return;
+    }
+    awyg localawyg = this.jdField_a_of_type_Awyg;
+    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
+    StringBuilder localStringBuilder = new StringBuilder().append("sendStructLongMsg fail : errCode = ");
+    if (paramanza != null) {}
+    for (paramanza = Integer.valueOf(paramanza.b);; paramanza = "")
+    {
+      awyg.a(localawyg, localMessageForMixedMsg, true, paramanza);
+      return;
     }
   }
 }

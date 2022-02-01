@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import amtj;
+import anvx;
 import java.util.Arrays;
 
 public class LoopQueue<T>
@@ -52,7 +52,7 @@ public class LoopQueue<T>
     try
     {
       if ((this.rear == this.front) && (this.elementData[this.front] != null)) {
-        throw new IndexOutOfBoundsException(amtj.a(2131705506));
+        throw new IndexOutOfBoundsException(anvx.a(2131705857));
       }
     }
     finally {}
@@ -92,7 +92,7 @@ public class LoopQueue<T>
     try
     {
       if (isEmpty()) {
-        throw new IndexOutOfBoundsException(amtj.a(2131705505));
+        throw new IndexOutOfBoundsException(anvx.a(2131705856));
       }
     }
     finally {}
@@ -190,7 +190,7 @@ public class LoopQueue<T>
     try
     {
       if (isEmpty()) {
-        throw new IndexOutOfBoundsException(amtj.a(2131705507));
+        throw new IndexOutOfBoundsException(anvx.a(2131705858));
       }
     }
     finally {}

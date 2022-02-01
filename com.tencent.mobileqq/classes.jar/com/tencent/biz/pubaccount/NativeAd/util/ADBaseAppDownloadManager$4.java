@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
 import android.text.TextUtils;
-import bhyo;
+import bjjq;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import oau;
-import txh;
+import oil;
+import ule;
 
 public class ADBaseAppDownloadManager$4
   implements Runnable
@@ -15,7 +15,7 @@ public class ADBaseAppDownloadManager$4
     Object localObject = this.a.c;
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = bhyo.a().a((String)localObject);
+      localObject = bjjq.a().a((String)localObject);
       if (localObject != null)
       {
         int i = (int)((float)((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen / (float)((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen * 100.0F);

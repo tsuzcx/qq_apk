@@ -1,19 +1,61 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import java.util.List;
 
-public class axcz
-  extends bfch
+class axcz
+  implements axji
 {
-  public axcz(NearbyProfileFragment paramNearbyProfileFragment) {}
+  axcz(axcx paramaxcx, axjb paramaxjb, axjk paramaxjk, List paramList) {}
   
-  public void a(long paramLong)
+  public void a()
   {
-    if (paramLong > 0L)
-    {
-      NearbyProfileFragment.a(this.a).setText(String.format(amtj.a(2131706443), new Object[] { Long.valueOf(paramLong) }));
-      return;
+    this.jdField_a_of_type_Axjb.a(new axda(this));
+    this.jdField_a_of_type_Axjb.show();
+  }
+  
+  public void a(axjg paramaxjg)
+  {
+    if ((paramaxjg != null) && (axcx.a(this.jdField_a_of_type_Axcx) != null) && (axcx.a(this.jdField_a_of_type_Axcx).isActivityResume())) {
+      switch (paramaxjg.a)
+      {
+      }
     }
-    NearbyProfileFragment.a(this.a).setText(amtj.a(2131706405));
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Axjb.isShowing()) {
+        this.jdField_a_of_type_Axjb.dismiss();
+      }
+      if (axcx.a(this.jdField_a_of_type_Axcx) != null) {
+        axcx.a(this.jdField_a_of_type_Axcx).setLeftCheckBoxVisible(false, null, false);
+      }
+      this.jdField_a_of_type_Axjk.b();
+      return;
+      axjh.a(axcx.a(this.jdField_a_of_type_Axcx));
+      continue;
+      axjh.b(axcx.a(this.jdField_a_of_type_Axcx));
+      continue;
+      axjh.c(axcx.a(this.jdField_a_of_type_Axcx));
+    }
+  }
+  
+  public void a(axjg paramaxjg, int paramInt)
+  {
+    this.jdField_a_of_type_Axjb.a(paramInt);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Axjb.isShowing()) {
+      this.jdField_a_of_type_Axjb.dismiss();
+    }
+    if (axcx.a(this.jdField_a_of_type_Axcx) != null) {
+      axcx.a(this.jdField_a_of_type_Axcx).setLeftCheckBoxVisible(false, null, false);
+    }
+    this.jdField_a_of_type_Axjk.b();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Axjk.a(axcx.a(this.jdField_a_of_type_Axcx), this.jdField_a_of_type_JavaUtilList);
   }
 }
 

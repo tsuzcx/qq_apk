@@ -1,37 +1,36 @@
 package com.tencent.av;
 
-import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lcp;
+import lcu;
+import lny;
 
 class VideoController$30
   implements Runnable
 {
-  VideoController$30(VideoController paramVideoController) {}
+  VideoController$30(VideoController paramVideoController, ArrayList paramArrayList, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
-    long l = AudioHelper.a() / 1000L;
-    Iterator localIterator = VideoController.a(this.this$0).iterator();
+    VideoController.a(this.this$0).clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      lcp locallcp = (lcp)localIterator.next();
-      if ((locallcp.h) || (locallcp.d + 60L > l)) {
-        localArrayList.add(locallcp);
+      lny locallny = (lny)localIterator.next();
+      lcu locallcu = new lcu();
+      locallcu.jdField_d_of_type_Int = 0;
+      locallcu.jdField_a_of_type_Long = locallny.jdField_a_of_type_Long;
+      locallcu.h = false;
+      locallcu.jdField_d_of_type_Long = locallny.b;
+      VideoController.a(this.this$0).add(locallcu);
+      if (QLog.isColorLevel()) {
+        QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "InviteMemberList saveInviteMembers add: member uin:=" + locallcu.jdField_a_of_type_Long);
       }
     }
-    if (localArrayList.size() != VideoController.a(this.this$0).size())
-    {
-      VideoController.a(this.this$0, localArrayList);
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(708), Long.valueOf(1L), Long.valueOf(1L), VideoController.a(this.this$0) });
-    }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(VideoController.a(this.this$0), 10000L);
-    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "InviteMemberList call mRemoveUnAttenedMember");
+    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(708), Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), VideoController.a(this.this$0) });
+    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "InviteMemberList saveInviteMembers + mIviteMemberLists size=" + VideoController.a(this.this$0).size());
   }
 }
 

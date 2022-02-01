@@ -1,35 +1,45 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
-class aczm
-  implements aszj
+public class aczm
+  extends SQLiteOpenHelper
 {
-  aczm(aczk paramaczk, FileManagerEntity paramFileManagerEntity) {}
+  private static aczm a;
   
-  public void onNo() {}
-  
-  public void onYes()
+  private aczm(Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Aczk.a.a.getOnlineFileSessionCenter().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    amqd localamqd;
-    ArrayList localArrayList;
-    do
+    super(paramContext, "sdk_db", null, 3);
+  }
+  
+  public static aczm a(Context paramContext)
+  {
+    if (a == null) {}
+    try
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
+      if (a == null) {
+        a = new aczm(paramContext);
       }
-      localamqd = (amqd)this.jdField_a_of_type_Aczk.a.a.getBusinessHandler(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localamqd.a(localArrayList));
-    aszk.a(2131692366);
-    return;
-    this.jdField_a_of_type_Aczk.a.a.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return a;
+    }
+    finally {}
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL("CREATE TABLE result_objects (_id INTEGER PRIMARY KEY AUTOINCREMENT,params TEXT,is_real_time TINYINT,uin BIGINT,status TINYINT,occur_time BIGINT);");
+    paramSQLiteDatabase.execSQL("CREATE TABLE upload_errors (_id INTEGER PRIMARY KEY AUTOINCREMENT,uin BIGINT,plugin SMALLINT,uploadtime BIGINT,error_code SMALLINT,error_msg TEXT,http_get TEXT,status TINYINT);");
+    paramSQLiteDatabase.execSQL("CREATE TABLE drop_frame (_id INTEGER PRIMARY KEY AUTOINCREMENT,uin BIGINT,scene TEXT,state TINYINT,drop_duration LONG,drop_count LONG,range_0 INT,range_1 INT,range_2_4 INT,range_4_8 INT,range_8_15 INT,range_over_15 INT,status TINYINT);");
+    paramSQLiteDatabase.execSQL("CREATE TABLE configs (_id INTEGER PRIMARY KEY AUTOINCREMENT,plugin SMALLINT,user_sample_ratio INT,threshold FLOAT,max_report_num INT,event_sample_ratio FLOAT,stack_depth INT);");
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    paramSQLiteDatabase.execSQL("Drop table if exists result_objects");
+    paramSQLiteDatabase.execSQL("Drop table if exists upload_errors");
+    paramSQLiteDatabase.execSQL("Drop table if exists drop_frame");
+    paramSQLiteDatabase.execSQL("Drop table if exists configs");
+    onCreate(paramSQLiteDatabase);
   }
 }
 

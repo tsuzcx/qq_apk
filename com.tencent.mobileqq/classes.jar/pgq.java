@@ -1,30 +1,7 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-class pgq
-  implements bjrk
-{
-  pgq(pgn parampgn, ped paramped, BaseArticleInfo paramBaseArticleInfo) {}
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJDislikeManager", 2, "onAdComplain");
-    }
-    if ((this.jdField_a_of_type_Ped.a().a() instanceof Activity))
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_from_type", 1);
-      localIntent.putExtra("key_ad_info", (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-      PublicFragmentActivity.a((Activity)this.jdField_a_of_type_Ped.a().a(), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentStickyData$Companion;", "", "()V", "OP_TYPE_RESTORE", "", "OP_TYPE_STICKY", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pgq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,46 +1,13 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.DownloadTask.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import protocol.KQQConfig.GetResourceRespInfo;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
-public class ampp
-  extends AbsPreDownloadTask
+public abstract interface ampp
 {
-  public File a;
-  public GetResourceRespInfo a;
+  public abstract EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject);
   
-  public ampp(QQAppInterface paramQQAppInterface, String paramString, GetResourceRespInfo paramGetResourceRespInfo, File paramFile)
-  {
-    super(paramQQAppInterface, paramString);
-    this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo = paramGetResourceRespInfo;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-  }
-  
-  public void realCancel()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realCancel");
-    }
-  }
-  
-  public void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realStart");
-    }
-    String str = this.key;
-    QQAppInterface localQQAppInterface = this.app;
-    GetResourceRespInfo localGetResourceRespInfo = this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo;
-    ThreadManagerV2.excute(new ConditionSearchManager.DownloadTask.1(this, str, this.jdField_a_of_type_JavaIoFile, localQQAppInterface, localGetResourceRespInfo), 128, null, true);
-  }
-  
-  public String toString()
-  {
-    return "[DownloadTask] url=" + this.key;
-  }
+  public abstract void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface);
 }
 
 

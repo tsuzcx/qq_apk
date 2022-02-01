@@ -39,9 +39,9 @@ public class fm
       this.jdField_a_of_type_Int = paramInt;
       this.e = 2;
       return;
-      if ((paramCharacterStyle instanceof bank))
+      if ((paramCharacterStyle instanceof bbtz))
       {
-        paramCharacterStyle = (bank)paramCharacterStyle;
+        paramCharacterStyle = (bbtz)paramCharacterStyle;
         this.b = paramCharacterStyle.a();
         this.c = paramCharacterStyle.b();
       }
@@ -63,14 +63,14 @@ public class fm
       paramInt2 += ((QQText.EmoticonSpan)localObject).getDrawable().getBounds().height();
       ((QQText.EmoticonSpan)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2, paramPaint);
     }
-    while (!(this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bank)) {
+    while (!(this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbtz)) {
       return;
     }
     paramPaint.setTextSize(a());
-    Object localObject = (bank)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-    int i = ((bank)localObject).b();
-    ((bank)localObject).a = false;
-    ((bank)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2 + i, paramPaint);
+    Object localObject = (bbtz)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+    int i = ((bbtz)localObject).b();
+    ((bbtz)localObject).a = false;
+    ((bbtz)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2 + i, paramPaint);
   }
   
   private void a(Canvas paramCanvas, Paint paramPaint, ETFont paramETFont, int paramInt1, int paramInt2)

@@ -1,14 +1,14 @@
 import com.tencent.mobileqq.data.ChatMessage;
 
 class gd
-  implements avtb<Void>
+  implements awzc<Void>
 {
   gd(gb paramgb, ChatMessage paramChatMessage) {}
   
   public void a(Void paramVoid)
   {
     if (this.jdField_a_of_type_Gb.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage) != null) {
-      bgae.a(this.jdField_a_of_type_Gb.a);
+      bhiw.a(this.jdField_a_of_type_Gb.a);
     }
   }
 }

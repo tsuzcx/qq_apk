@@ -1,10 +1,20 @@
+import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+
 public class afds
+  implements ajgu
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public afds(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
+  
+  public void a(Object... paramVarArgs)
+  {
+    TroopRequestActivity.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, null, this.a.jdField_a_of_type_Ajfr);
+    if (this.a.jdField_a_of_type_Bisl != null)
+    {
+      this.a.jdField_a_of_type_Bisl.c(2131718527);
+      this.a.jdField_a_of_type_Bisl.show();
+    }
+  }
 }
 
 

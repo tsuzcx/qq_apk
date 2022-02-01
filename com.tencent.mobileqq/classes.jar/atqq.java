@@ -1,189 +1,90 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class atqq
-  extends anxo
+  implements bcfi
 {
-  public atqq(AppletsSettingFragment paramAppletsSettingFragment) {}
+  public static final String a;
+  public static final String b = anvx.a(2131704865);
+  int jdField_a_of_type_Int = -1;
+  List<bcfj> jdField_a_of_type_JavaUtilList;
+  String c;
   
-  protected void onGetAppletsSettingSwitch(boolean paramBoolean, List<anxx> paramList)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsSettingFragment", 2, "onGetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      HashSet localHashSet = new HashSet();
-      if ((paramList != null) && (paramBoolean) && (paramList.size() > 0))
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          Object localObject1 = (anxx)paramList.next();
-          Object localObject2;
-          if ((((anxx)localObject1).jdField_a_of_type_JavaUtilList != null) && (((anxx)localObject1).jdField_a_of_type_JavaUtilList.size() > 0) && (((anxx)localObject1).jdField_a_of_type_JavaUtilList.get(0) != null) && (((AppletItem)((anxx)localObject1).jdField_a_of_type_JavaUtilList.get(0)).a() == 1L))
-          {
-            AppletsSettingFragment.a(this.a, (AppletItem)((anxx)localObject1).jdField_a_of_type_JavaUtilList.get(0));
-            if (!TextUtils.isEmpty(AppletsSettingFragment.a(this.a).a()))
-            {
-              AppletsSettingFragment.a(this.a).setText(AppletsSettingFragment.a(this.a).a());
-              this.a.a.e(AppletsSettingFragment.a(this.a).a());
-            }
-            localObject2 = AppletsSettingFragment.a(this.a);
-            if (AppletsSettingFragment.a(this.a).b() == 1)
-            {
-              paramBoolean = true;
-              label247:
-              ((Switch)localObject2).setChecked(paramBoolean);
-              localObject2 = this.a.a;
-              if (AppletsSettingFragment.a(this.a).b() != 1) {
-                break label333;
-              }
-            }
-            label333:
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              ((akhg)localObject2).a(paramBoolean);
-              if (TextUtils.isEmpty(((anxx)localObject1).jdField_a_of_type_JavaLangString)) {
-                break;
-              }
-              AppletsSettingFragment.b(this.a).setText(((anxx)localObject1).jdField_a_of_type_JavaLangString);
-              this.a.a.a(((anxx)localObject1).jdField_a_of_type_JavaLangString);
-              break;
-              paramBoolean = false;
-              break label247;
-            }
-          }
-          if (!TextUtils.isEmpty(((anxx)localObject1).jdField_a_of_type_JavaLangString))
-          {
-            AppletsSettingFragment.c(this.a).setText(((anxx)localObject1).jdField_a_of_type_JavaLangString);
-            this.a.a.b(((anxx)localObject1).jdField_a_of_type_JavaLangString);
-          }
-          if ((((anxx)localObject1).jdField_a_of_type_JavaUtilList != null) && (((anxx)localObject1).jdField_a_of_type_JavaUtilList.size() > 0))
-          {
-            AppletsSettingFragment.a(this.a).clear();
-            localObject1 = ((anxx)localObject1).jdField_a_of_type_JavaUtilList.iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (AppletItem)((Iterator)localObject1).next();
-              AppletsSettingFragment.a(this.a).put(AppletsSettingFragment.a(this.a, (AppletItem)localObject2), localObject2);
-              if ((((AppletItem)localObject2).a() != 1L) && (((AppletItem)localObject2).b() != 1)) {
-                localHashSet.add(String.valueOf(((AppletItem)localObject2).a()));
-              }
-            }
-            AppletsSettingFragment.a(this.a, new ArrayList(AppletsSettingFragment.a(this.a).values()));
-          }
-        }
-      }
-      this.a.a.a(localHashSet);
-      return;
-    }
-    this.a.a(2131690093);
+    jdField_a_of_type_JavaLangString = atqq.class.getSimpleName();
   }
   
-  protected void onSetAppletsSettingSwitch(boolean paramBoolean, List<AppletItem> paramList)
+  public atqq(List<bcfj> paramList, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsSettingFragment", 2, "onSetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
-    }
-    if (paramList != null)
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public String a()
+  {
+    return anvx.a(2131704847);
+  }
+  
+  public List<bcfj> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    bbzr localbbzr;
+    QQAppInterface localQQAppInterface;
+    JSONObject localJSONObject;
+    if (((paramView.getContext() instanceof UniteSearchActivity)) && (bbzq.b.containsKey(this)))
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      localbbzr = (bbzr)bbzq.b.get(this);
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("project", bcjs.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", localbbzr.jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "native");
+      bcjs.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localbbzr.jdField_a_of_type_Long + "").obj2(localbbzr.b).ver1(localbbzr.jdField_a_of_type_JavaLangString).ver2(bcjs.a(UniteSearchActivity.d)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + bbzq.jdField_a_of_type_Long));
+      bcnc.a(this.c, 100, 0, paramView);
+      audy.a("0X8006061");
+      bcjs.a(null, 0, this.jdField_a_of_type_Int, "0x8009D5B", 0, 0, null, null);
+      FileSearchActivity.a(paramView.getContext(), this.c, this.jdField_a_of_type_JavaUtilList, true, this.jdField_a_of_type_Int);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        Object localObject1 = (AppletItem)paramList.next();
-        this.a.a(false);
-        if (!paramBoolean) {
-          this.a.a(2131690094);
-        }
-        Object localObject2;
-        int i;
-        if (((AppletItem)localObject1).a() == 1L)
-        {
-          localObject2 = AppletsSettingFragment.a(this.a);
-          if (paramBoolean)
-          {
-            i = ((AppletItem)localObject1).b();
-            label112:
-            ((AppletItem)localObject2).a(i);
-            localObject1 = AppletsSettingFragment.a(this.a);
-            if (AppletsSettingFragment.a(this.a).b() != 1) {
-              break label216;
-            }
-            bool = true;
-            label144:
-            ((Switch)localObject1).setChecked(bool);
-            if (this.a.a == null) {
-              continue;
-            }
-            localObject1 = this.a.a;
-            if (AppletsSettingFragment.a(this.a).b() != 1) {
-              break label222;
-            }
-          }
-          label216:
-          label222:
-          for (boolean bool = true;; bool = false)
-          {
-            ((akhg)localObject1).a(bool);
-            break;
-            if (((AppletItem)localObject1).b() == 1)
-            {
-              i = 0;
-              break label112;
-            }
-            i = 1;
-            break label112;
-            bool = false;
-            break label144;
-          }
-        }
-        else
-        {
-          localObject2 = AppletsSettingFragment.a(this.a, (AppletItem)localObject1);
-          localObject2 = (AppletItem)AppletsSettingFragment.a(this.a).get(localObject2);
-          if (localObject2 != null)
-          {
-            if (!paramBoolean) {
-              break label352;
-            }
-            i = ((AppletItem)localObject1).b();
-          }
-          for (;;)
-          {
-            ((AppletItem)localObject2).a(i);
-            AppletsSettingFragment.a(this.a);
-            AppletsSettingFragment.a(this.a, new ArrayList(AppletsSettingFragment.a(this.a).values()));
-            if ((this.a.a == null) || (localObject2 == null)) {
-              break;
-            }
-            if (((AppletItem)localObject2).b() != 0) {
-              break label371;
-            }
-            this.a.a.c(String.valueOf(((AppletItem)localObject2).a()));
-            break;
-            label352:
-            if (((AppletItem)localObject1).b() == 1) {
-              i = 0;
-            } else {
-              i = 1;
-            }
-          }
-          label371:
-          this.a.a.d(String.valueOf(((AppletItem)localObject2).a()));
-        }
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
       }
     }
+  }
+  
+  public String b()
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() > a()) {
+      bcjs.a(null, 0, this.jdField_a_of_type_Int, "0x8009D5A", 0, 0, null, null);
+    }
+    return this.c;
   }
 }
 

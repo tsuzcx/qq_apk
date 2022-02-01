@@ -1,33 +1,6 @@
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import java.lang.ref.WeakReference;
-import java.util.Deque;
-
-public class ammv
-  implements PopupWindow.OnDismissListener
+public abstract interface ammv
 {
-  public ammv(ApolloPanel paramApolloPanel) {}
-  
-  public void onDismiss()
-  {
-    View.OnClickListener localOnClickListener = null;
-    this.a.a = null;
-    if ((ApolloPanel.a(this.a) != null) && (ApolloPanel.a(this.a).size() > 0))
-    {
-      amna localamna = (amna)ApolloPanel.a(this.a).poll();
-      if (ApolloPanel.a(this.a).size() == 0) {
-        ApolloPanel.a(this.a, null);
-      }
-      if (localamna != null)
-      {
-        if (localamna.jdField_a_of_type_JavaLangRefWeakReference != null) {
-          localOnClickListener = (View.OnClickListener)localamna.jdField_a_of_type_JavaLangRefWeakReference.get();
-        }
-        ApolloPanel.a(this.a, localamna.jdField_a_of_type_AndroidViewView, localamna.jdField_a_of_type_Int, localamna.jdField_a_of_type_JavaLangString, localamna.b, localOnClickListener);
-      }
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

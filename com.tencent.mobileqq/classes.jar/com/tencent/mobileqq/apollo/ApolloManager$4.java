@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import alnr;
-import amip;
+import amme;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -12,7 +11,7 @@ import org.json.JSONObject;
 public class ApolloManager$4
   implements Runnable
 {
-  public ApolloManager$4(alnr paramalnr) {}
+  public ApolloManager$4(amme paramamme) {}
   
   public void run()
   {
@@ -20,7 +19,7 @@ public class ApolloManager$4
     try
     {
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-        break label152;
+        break label151;
       }
       localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
     }
@@ -45,7 +44,7 @@ public class ApolloManager$4
         }
       } while (localException != null);
     }
-    localObject = new File(amip.a);
+    localObject = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo");
     ((File)localObject).mkdirs();
     localObject = new File((File)localObject, "apollo_res_version_info.json");
     if (((File)localObject).exists())
@@ -60,7 +59,7 @@ public class ApolloManager$4
       this.this$0.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
       return;
     }
-    label152:
+    label151:
   }
 }
 

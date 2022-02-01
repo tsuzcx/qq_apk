@@ -2,26 +2,26 @@ package com.tencent.mobileqq.ocr;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
-import axmz;
+import ayti;
 import com.tencent.mobileqq.ocr.data.TranslateResult;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class TranslateFragment$1$1
   implements Runnable
 {
-  public TranslateFragment$1$1(axmz paramaxmz, boolean paramBoolean, TranslateResult paramTranslateResult) {}
+  public TranslateFragment$1$1(ayti paramayti, boolean paramBoolean, TranslateResult paramTranslateResult) {}
   
   public void run()
   {
-    TranslateFragment.a(this.jdField_a_of_type_Axmz.a, false);
-    TranslateFragment.a(this.jdField_a_of_type_Axmz.a);
+    TranslateFragment.a(this.jdField_a_of_type_Ayti.a, false);
+    TranslateFragment.a(this.jdField_a_of_type_Ayti.a);
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.b()) && (!this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a()))
     {
-      TranslateFragment.a(this.jdField_a_of_type_Axmz.a, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
-      TranslateFragment.a(this.jdField_a_of_type_Axmz.a, 2, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
+      TranslateFragment.a(this.jdField_a_of_type_Ayti.a, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
+      TranslateFragment.a(this.jdField_a_of_type_Ayti.a, 2, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
       return;
     }
-    String str2 = this.jdField_a_of_type_Axmz.a.getResources().getString(2131698411);
+    String str2 = this.jdField_a_of_type_Ayti.a.getResources().getString(2131698707);
     String str1 = str2;
     if (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult != null)
     {
@@ -32,12 +32,12 @@ public class TranslateFragment$1$1
     }
     for (;;)
     {
-      QQToast.a(TranslateFragment.a(this.jdField_a_of_type_Axmz.a), 1, str1, 0).a();
+      QQToast.a(TranslateFragment.a(this.jdField_a_of_type_Ayti.a), 1, str1, 0).a();
       return;
       label154:
       str1 = str2;
       if (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a()) {
-        str1 = this.jdField_a_of_type_Axmz.a.getResources().getString(2131698398);
+        str1 = this.jdField_a_of_type_Ayti.a.getResources().getString(2131698694);
       }
     }
   }

@@ -1,59 +1,115 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stFloatingLayerCardStyle;
+import UserGrowth.stNewIconStyle;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class vrj
-  extends vsz
+  extends uyw<vpj>
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  public final String a;
-  String b;
+  private stNewIconStyle jdField_a_of_type_UserGrowthStNewIconStyle;
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
+  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private View b;
   
-  public vrj(vrd paramvrd, String paramString, int paramInt)
+  public vrj(Context paramContext, vrn paramvrn)
   {
-    this.jdField_a_of_type_JavaLangString = vpl.a("StorySvc.get_comment_list");
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramContext);
+    if (paramvrn != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramvrn.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+    }
   }
   
-  public String a()
+  private void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public vta a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetCommentList localRspGetCommentList = new qqstory_service.RspGetCommentList();
-    try
+    if ((paramBoolean) && (this.jdField_a_of_type_UserGrowthStNewIconStyle != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStNewIconStyle.title)))
     {
-      localRspGetCommentList.mergeFrom(paramArrayOfByte);
-      return new vrk(this.jdField_a_of_type_Vrd, localRspGetCommentList);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
+      this.b.setVisibility(0);
+      Object localObject = this.b;
+      if (a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed)) {}
+      for (int i = 2130842736;; i = 2130842735)
+      {
+        ((View)localObject).setBackgroundResource(i);
+        if ((a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed)) && (TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStNewIconStyle.iconUrl))) {
+          this.jdField_a_of_type_UserGrowthStNewIconStyle.iconUrl = "https://isee.weishi.qq.com/news/wesee_logo_yunying.png";
+        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStNewIconStyle.title);
+        if (TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStNewIconStyle.iconUrl)) {
+          break;
+        }
+        localObject = BaseApplicationImpl.getContext().getResources().getDrawable(2130843257);
+        vnd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.jdField_a_of_type_UserGrowthStNewIconStyle.iconUrl, (Drawable)localObject);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130843257);
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.b.setVisibility(8);
+  }
+  
+  private boolean a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    return (paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.floatingLayerCardStyle != null) && ((paramstSimpleMetaFeed.floatingLayerCardStyle.cardType == 1) || (paramstSimpleMetaFeed.floatingLayerCardStyle.cardType == 3));
+  }
+  
+  protected void a()
+  {
+    vpj localvpj = (vpj)a();
+    if ((localvpj != null) && ((localvpj.a() instanceof stSimpleMetaFeed)))
     {
-      xvv.d("Q.qqstory:GetCommentListRequest", "" + paramArrayOfByte);
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)localvpj.a());
+      this.jdField_a_of_type_UserGrowthStNewIconStyle = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.new_icon;
     }
-    return null;
   }
   
-  protected byte[] a()
+  protected int b()
   {
-    qqstory_service.ReqGetCommentList localReqGetCommentList = new qqstory_service.ReqGetCommentList();
-    localReqGetCommentList.vid.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqGetCommentList.latest_comment_id.set(this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory:GetCommentListRequest", 2, "getCommentListData by latest_comment_id: " + this.jdField_a_of_type_Int);
-    }
-    return localReqGetCommentList.toByteArray();
+    return 2131560086;
   }
   
-  public String toString()
+  protected void b()
   {
-    return "GetCommentListRequest{ vid=" + this.b + ", startCommentID=" + this.jdField_a_of_type_Int + '}';
+    if ((this.jdField_a_of_type_UserGrowthStNewIconStyle != null) && (this.jdField_a_of_type_UserGrowthStNewIconStyle.tag_type == 0))
+    {
+      a(true);
+      return;
+    }
+    a(false);
+  }
+  
+  protected void c() {}
+  
+  protected void e()
+  {
+    this.b = a(2131380773);
+    this.b.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131380775));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380774));
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131380773) {
+      vnr.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

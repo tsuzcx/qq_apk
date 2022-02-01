@@ -1,8 +1,26 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.List;
 
 public class uib
+  implements BusinessObserver
 {
-  private View a;
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, List<MaterialData> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, (String)paramObject);
+      return;
+    }
+    a(paramBoolean, (List)paramObject);
+  }
 }
 
 

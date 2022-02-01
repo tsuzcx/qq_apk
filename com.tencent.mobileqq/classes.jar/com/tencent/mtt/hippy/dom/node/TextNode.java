@@ -261,23 +261,38 @@ public class TextNode
         paramList.add(new TextNode.a(k, m, paramCharSequence));
       }
     }
+    b localb;
+    TextNode localTextNode;
     if (paramBoolean)
     {
       i = 0;
-      while (i < paramTextNode.getChildCount())
+      if (i < paramTextNode.getChildCount())
       {
-        paramCharSequence = paramTextNode.getChildAt(i);
-        if ((paramCharSequence instanceof TextNode))
+        localb = paramTextNode.getChildAt(i);
+        if ((localb instanceof TextNode))
         {
-          createSpanOperations(paramList, paramSpannableStringBuilder, (TextNode)paramCharSequence, ((TextNode)paramCharSequence).mText, paramBoolean);
-          paramCharSequence.markUpdateSeen();
-          i += 1;
-        }
-        else
-        {
-          throw new RuntimeException(paramCharSequence.getViewClass() + "is not support in Text");
+          localTextNode = (TextNode)localb;
+          paramCharSequence = localTextNode.mText;
+          if ((this.mFontScaleAdapter == null) || (TextUtils.isEmpty(paramCharSequence))) {
+            break label690;
+          }
+          CharSequence localCharSequence = this.mFontScaleAdapter.getEmoticonText(paramCharSequence, localTextNode.mFontSize);
+          if (localCharSequence == null) {
+            break label690;
+          }
+          paramCharSequence = localCharSequence;
         }
       }
+    }
+    label690:
+    for (;;)
+    {
+      createSpanOperations(paramList, paramSpannableStringBuilder, localTextNode, paramCharSequence, paramBoolean);
+      localb.markUpdateSeen();
+      i += 1;
+      break;
+      throw new RuntimeException(localb.getViewClass() + "is not support in Text");
+      return;
     }
   }
   

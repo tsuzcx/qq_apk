@@ -2,9 +2,9 @@ package cooperation.groupvideo;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import auoj;
-import bcef;
-import bgtw;
+import avue;
+import bdla;
+import bieo;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
@@ -44,11 +44,11 @@ public class GVideoTranslucentBrowerActivity$GVideoBrowserFragment
   public void onDestroy()
   {
     super.onDestroy();
-    auoj.a("2729128");
+    avue.a("2729128");
     if (!this.a)
     {
-      auoj.a("2489207");
-      bcef.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "8.4.8", "", "");
+      avue.a("2489207");
+      bdla.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "8.4.10", "", "");
     }
   }
   

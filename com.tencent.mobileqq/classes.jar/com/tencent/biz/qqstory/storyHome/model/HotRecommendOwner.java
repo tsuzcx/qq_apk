@@ -1,14 +1,14 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
-import amtj;
+import anvx;
 import com.tencent.biz.qqstory.model.BaseUIItem;
-import vwb;
+import wkw;
 
 public class HotRecommendOwner
   extends BaseUIItem
-  implements vwb
+  implements wkw
 {
-  public String mName = amtj.a(2131704742);
+  public String mName = anvx.a(2131705093);
   public long mRecommendId;
   
   public String getName()

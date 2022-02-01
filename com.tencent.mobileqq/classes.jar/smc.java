@@ -1,41 +1,13 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class smc
-  implements slj
+class smc
+  implements syy
 {
-  public smc(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
+  smc(sma paramsma) {}
   
-  public void a(Bundle paramBundle)
+  public void a(View paramView)
   {
-    String str = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, str);
-    rgs.b(paramBundle);
-  }
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    paramString = this.a.a();
-    Intent localIntent;
-    if ((paramBundle != null) && (paramString != null))
-    {
-      localIntent = new Intent();
-      localIntent.putExtras(paramBundle);
-      localIntent.setClass(paramString, KandianVideoUploadService.class);
-    }
-    try
-    {
-      paramString.startService(localIntent);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.d("KandianVideoUpload", 1, "Kandian retryFail", paramString);
-    }
+    paramView.setTag(new swt(paramView));
   }
 }
 

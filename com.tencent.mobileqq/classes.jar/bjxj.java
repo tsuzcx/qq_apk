@@ -1,52 +1,42 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.support.v7.widget.RecyclerView.SmoothScroller.Action;
-import android.support.v7.widget.RecyclerView.State;
-import android.util.DisplayMetrics;
 import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-class bjxj
-  extends LinearSmoothScroller
+public class bjxj
+  implements bkzq
 {
-  bjxj(bjxh parambjxh, Context paramContext, LinearLayoutManager paramLinearLayoutManager)
-  {
-    super(paramContext);
-  }
+  public bjxj(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
   
-  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
+  public void OnClick(View paramView, int paramInt)
   {
-    return bjxh.a(this.jdField_a_of_type_Bjxh) / paramDisplayMetrics.densityDpi;
-  }
-  
-  public int calculateTimeForDeceleration(int paramInt)
-  {
-    return super.calculateTimeForDeceleration(paramInt);
-  }
-  
-  public int calculateTimeForScrolling(int paramInt)
-  {
-    return super.calculateTimeForScrolling(paramInt);
-  }
-  
-  public PointF computeScrollVectorForPosition(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.computeScrollVectorForPosition(paramInt);
-  }
-  
-  public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
-  {
-    paramView = bjxh.a(this.jdField_a_of_type_Bjxh, this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager, paramView);
-    int i = paramView[0];
-    int j = paramView[1];
-    int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
-    if (k > 0)
-    {
-      paramAction.update(i, j, k, this.mDecelerateInterpolator);
-      return;
+    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
+      if (paramInt == 0) {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+      }
     }
-    bjxn.a(bjxh.a(this.jdField_a_of_type_Bjxh));
+    for (;;)
+    {
+      QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
+      return;
+      if (paramInt == 1)
+      {
+        if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Bjxa.d(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Azrb.a.jdField_a_of_type_JavaLangString)) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
+        } else {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
+        }
+      }
+      else if (paramInt == 2)
+      {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
+        continue;
+        if (paramInt == 0) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+        } else if (paramInt == 1) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
   }
 }
 

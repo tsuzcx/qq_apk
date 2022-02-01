@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aphp;
+import aqkt;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.json.JSONException;
 public class CardOCRInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CardOCRInfo> CREATOR = new aphp();
+  public static final Parcelable.Creator<CardOCRInfo> CREATOR = new aqkt();
   public float a;
   public int a;
   public String a;

@@ -1,14 +1,14 @@
 package cooperation.qqdataline.ipc;
 
 import android.os.Bundle;
-import bkoi;
-import bkok;
+import blzq;
+import blzs;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class DatalineRemoteManager$12
   implements Runnable
 {
-  public DatalineRemoteManager$12(bkok parambkok) {}
+  public DatalineRemoteManager$12(blzs paramblzs) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class DatalineRemoteManager$12
     localBundle.putBoolean("string_uin", false);
     localBundle.putLong("device_din", 0L);
     localBundle.putInt("sTitleID", 0);
-    bkoi.a(BaseActivity.sTopActivity, localBundle, "com.qqdataline.activity.LiteWifiphotoActivity");
+    blzq.a(BaseActivity.sTopActivity, localBundle, "com.qqdataline.activity.LiteWifiphotoActivity");
     BaseActivity.sTopActivity.overridePendingTransition(2130771997, 0);
   }
 }

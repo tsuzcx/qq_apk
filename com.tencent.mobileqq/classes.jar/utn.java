@@ -1,124 +1,49 @@
-public class utn
-  implements urk
+import android.os.Bundle;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+class utn
+  implements aaea
 {
-  private uou jdField_a_of_type_Uou;
-  private boolean jdField_a_of_type_Boolean;
+  utn(uta paramuta, String paramString, boolean paramBoolean) {}
   
-  private void a()
+  public void callback(Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Uou != null) && (!this.jdField_a_of_type_Boolean))
+    if (paramBundle != null)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Uou.c();
-    }
-  }
-  
-  public void a(upp paramupp)
-  {
-    if ((paramupp instanceof uou)) {
-      this.jdField_a_of_type_Uou = ((uou)paramupp);
-    }
-  }
-  
-  public void a(urt paramurt) {}
-  
-  public void a(urt paramurt, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void a(urt paramurt, int paramInt, boolean paramBoolean) {}
-  
-  public void a(urt paramurt, long paramLong1, long paramLong2)
-  {
-    if (paramLong1 > 2000L) {
-      a();
-    }
-  }
-  
-  public void a(urt paramurt, boolean paramBoolean) {}
-  
-  public void a(urt paramurt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((this.jdField_a_of_type_Uou != null) && (paramBoolean1) && (paramBoolean2)) {
-      this.jdField_a_of_type_Uou.a(8, 400);
-    }
-    uya.e("WS_VIDEO_PRE_PLAY", "[WSFollowFeedUIDelegate.java][onPrePlayFinished] title:" + paramurt.jdField_a_of_type_Urx.d + "\nisPreOutputFirstFrame:" + paramBoolean1 + ", isFirstFrameDrawSuccess:" + paramBoolean2 + "\nmFollowPlayableHolder:" + this.jdField_a_of_type_Uou);
-  }
-  
-  public boolean a(urt paramurt)
-  {
-    return false;
-  }
-  
-  public void b(urt paramurt) {}
-  
-  public void c(urt paramurt)
-  {
-    if ((this.jdField_a_of_type_Uou != null) && (paramurt != null) && (paramurt.jdField_a_of_type_Urw != null))
-    {
-      boolean bool = paramurt.jdField_a_of_type_Urw.b();
-      this.jdField_a_of_type_Uou.b(bool);
-      paramurt = this.jdField_a_of_type_Uou;
-      if (!bool) {
-        break label57;
+      if (this.jdField_a_of_type_Uta.a != null) {
+        this.jdField_a_of_type_Uta.l();
+      }
+      String str = paramBundle.getString("pic_server_id");
+      this.jdField_a_of_type_Uta.a(paramBundle);
+      if ("-1".equals(str)) {
+        paramBundle = new JSONObject();
       }
     }
-    label57:
-    for (int i = 8;; i = 0)
+    else
     {
-      paramurt.a(i, 0);
-      a();
-      return;
+      try
+      {
+        paramBundle.put("retCode", -1);
+        paramBundle.put("msg", "fail");
+        this.jdField_a_of_type_Uta.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+        if (this.jdField_a_of_type_Boolean)
+        {
+          olh.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+        bdla.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, -1, "1", "", "", "");
+        return;
+      }
     }
-  }
-  
-  public void d(urt paramurt)
-  {
-    if (this.jdField_a_of_type_Uou != null)
-    {
-      this.jdField_a_of_type_Uou.b(true);
-      this.jdField_a_of_type_Uou.a(8, 400);
-      this.jdField_a_of_type_Uou.c(true);
-      uya.a("WS_VIDEO_PLAYER", "[WSFollowFeedUIDelegate.java][onVideoStart] title:" + paramurt.jdField_a_of_type_Urx.d);
-    }
-  }
-  
-  public void e(urt paramurt)
-  {
-    if (this.jdField_a_of_type_Uou != null)
-    {
-      this.jdField_a_of_type_Uou.b(false);
-      this.jdField_a_of_type_Uou.d(true);
-    }
-  }
-  
-  public void f(urt paramurt)
-  {
-    if (this.jdField_a_of_type_Uou != null)
-    {
-      this.jdField_a_of_type_Uou.b(true);
-      this.jdField_a_of_type_Uou.d(false);
-    }
-  }
-  
-  public void g(urt paramurt)
-  {
-    if (this.jdField_a_of_type_Uou != null)
-    {
-      this.jdField_a_of_type_Uou.b(false);
-      this.jdField_a_of_type_Uou.a(0, 0);
-      this.jdField_a_of_type_Uou.c(false);
-    }
-    a();
-  }
-  
-  public void h(urt paramurt) {}
-  
-  public void i(urt paramurt) {}
-  
-  public void j(urt paramurt)
-  {
-    if (this.jdField_a_of_type_Uou != null) {
-      this.jdField_a_of_type_Uou.a(0, 100);
-    }
+    this.jdField_a_of_type_Uta.a(localJSONException, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
 }
 

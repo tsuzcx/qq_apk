@@ -1,20 +1,35 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
-import rx.functions.Func1;
-
-public class vdw
-  implements Func1<Bitmap, Bitmap>
+class vdw
+  implements vmb
 {
-  public vdw(RoundImageView paramRoundImageView, Drawable paramDrawable) {}
+  vdw(vdv paramvdv, vdt paramvdt, vmb paramvmb) {}
   
-  public Bitmap a(Bitmap paramBitmap)
+  public void a()
   {
-    Canvas localCanvas = new Canvas(paramBitmap);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(localCanvas);
-    return paramBitmap;
+    vdv.a(this.jdField_a_of_type_Vdv, this.jdField_a_of_type_Vdt);
+    if (this.jdField_a_of_type_Vmb != null) {
+      this.jdField_a_of_type_Vmb.a();
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Vmb != null) {
+      this.jdField_a_of_type_Vmb.b();
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Vmb != null) {
+      this.jdField_a_of_type_Vmb.c();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Vmb != null) {
+      this.jdField_a_of_type_Vmb.d();
+    }
   }
 }
 

@@ -1,41 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 public class arwx
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public arwx(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public arwx(DataReportViewer paramDataReportViewer) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramView == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseCloudFileTabView.b, 2, "qfilebaserecenttabview del error, tag is null");
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramView.getTag();
-      if (localWeiYunFileInfo != null)
-      {
-        if (this.a.a != null) {
-          this.a.a.a(null);
-        }
-        QfileBaseCloudFileTabView.a(this.a).getFileManagerEngine().a(localWeiYunFileInfo);
-      }
-      this.a.a.a(Integer.valueOf(-1));
-      paramView.setVisibility(4);
-      this.a.setListFooter();
-      this.a.al_();
-    }
+    this.a.a.setVisibility(0);
+    paramAnimator = new AlphaAnimation(0.0F, 1.0F);
+    paramAnimator.setFillAfter(true);
+    paramAnimator.setDuration(200L);
+    this.a.a.startAnimation(paramAnimator);
+    paramAnimator.setAnimationListener(new arwy(this));
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

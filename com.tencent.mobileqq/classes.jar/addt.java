@@ -1,25 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class addt
-  implements DialogInterface.OnClickListener
+public class addt
+  implements View.OnTouchListener
 {
-  addt(addr paramaddr, String paramString) {}
+  private GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new addu(this);
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
+  View jdField_a_of_type_AndroidViewView;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public addt(AccountManageActivity paramAccountManageActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    DiscussionInfoCardActivity.a(this.jdField_a_of_type_Addr.a).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Addr.a.app.getProxyManager().a();
-    paramDialogInterface.delRecentUser((RecentUser)paramDialogInterface.findRecentUserByUin(this.jdField_a_of_type_JavaLangString, 3000));
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_Addr.a.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_Addr.a.finish();
+    int i = paramMotionEvent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "action = " + i);
+    }
+    if (i == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c == true) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = false;
+      }
+    }
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "onTouch return mHasSlide " + this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c);
+    }
+    return false;
   }
 }
 

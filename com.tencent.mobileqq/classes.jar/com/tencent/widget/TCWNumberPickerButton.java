@@ -28,10 +28,10 @@ public class TCWNumberPickerButton
   
   private void a()
   {
-    if (2131368641 == getId()) {
+    if (2131368800 == getId()) {
       this.a.a();
     }
-    while (2131365359 != getId()) {
+    while (2131365452 != getId()) {
       return;
     }
     this.a.b();

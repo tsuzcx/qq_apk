@@ -1,35 +1,54 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class sed
-  implements SeekBar.OnSeekBarChangeListener
+  extends TransProcessorHandler
 {
-  sed(sdy paramsdy) {}
+  sed(sec paramsec) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public void handleMessage(Message paramMessage)
   {
-    int i = paramSeekBar.getProgress();
-    int j = sdy.a(this.a).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + sdi.a(j));
-    }
-    if (j == 3) {
-      sdy.a(this.a).a(i * 1000, sdy.a(this.a));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((localFileMsg == null) || (localFileMsg.fileType != 24) || (localFileMsg.commandId != 10)) {}
+    while ((localFileMsg.uniseq != this.a.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mUniseq) || (TextUtils.equals(localFileMsg.fileMd5, sec.a(this.a)))) {
       return;
-      if (j == 5) {
-        sdy.a(this.a).c(i * 1000);
-      }
     }
+    switch (paramMessage.what)
+    {
+    case 1002: 
+    case 1004: 
+    default: 
+      return;
+    case 1001: 
+      if (this.a.jdField_a_of_type_Seb != null) {
+        this.a.jdField_a_of_type_Seb.a();
+      }
+      sec.a(this.a, System.currentTimeMillis());
+      return;
+    case 1003: 
+      sec.b(this.a, System.currentTimeMillis());
+      olh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008180", "0X8008180", 0, 0, String.valueOf(sec.a(this.a)), String.valueOf(sec.b(this.a)), String.valueOf(sec.a(this.a) - sec.b(this.a)), String.valueOf(sec.c(this.a) - sec.d(this.a)));
+      if (QLog.isColorLevel()) {
+        QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler send finished!");
+      }
+      sec.a(this.a, localFileMsg.fileMd5);
+      sec.b(this.a, localFileMsg.fileUrl);
+      if (QLog.isColorLevel()) {
+        QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler mImageMd5=" + sec.a(this.a) + ", mImageUrl=" + sec.b(this.a));
+      }
+      sec.a(this.a, 0, sec.b(this.a), sec.a(this.a), null);
+      return;
+    }
+    sec.b(this.a, System.currentTimeMillis());
+    olh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008180", "0X8008180", 0, 1, String.valueOf(sec.a(this.a)), String.valueOf(sec.b(this.a)), String.valueOf(sec.a(this.a) - sec.b(this.a)), String.valueOf(sec.c(this.a) - sec.d(this.a)));
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler send error:" + localFileMsg.errorCode);
+    }
+    sec.a(this.a, 1004, null, null, null);
   }
 }
 

@@ -1,103 +1,33 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.net.URL;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.2;
+import java.util.Iterator;
+import java.util.List;
 
-class bfgf
-  implements URLDrawableDownListener
+public class bfgf
+  extends aofa
 {
-  bfgf(bfge parambfge, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
+  public bfgf(TroopAioKeywordTipManager.2 param2) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    SparseArray localSparseArray;
+    if (paramBoolean)
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
+      localSparseArray = this.a.this$0.b;
+      if (paramList != null) {
+        try
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)paramList.next();
+            this.a.this$0.b.put(localTroopAioKeywordTipInfo.ruleId, localTroopAioKeywordTipInfo);
+          }
+        }
+        finally {}
       }
     }
-    QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadCancelled urlStr : " + paramView);
-    bcef.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    if (paramThrowable == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
-    {
-      QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadFailed urlStr : " + paramView + "; errorMsg : " + paramURLDrawable);
-      bcef.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    if (paramInterruptedException == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
-    {
-      QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadInterrupted urlStr : " + paramView + "; errorMsg : " + paramURLDrawable);
-      bcef.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
-    if ((this.jdField_a_of_type_Bfge.a != null) && (this.jdField_a_of_type_Bfge.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_Bfge.a.get()).setText(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.a());
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Bfge.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    if ((this.jdField_a_of_type_Bfge.a != null) && (this.jdField_a_of_type_Bfge.a.get() != null)) {
-      ((TextView)this.jdField_a_of_type_Bfge.a.get()).setVisibility(8);
-    }
-    this.jdField_a_of_type_Bfge.a = null;
-    this.jdField_a_of_type_Bfge.c = false;
-    bcef.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
   }
 }
 

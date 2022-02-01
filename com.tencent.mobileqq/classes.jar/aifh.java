@@ -1,76 +1,42 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ThemeImageView;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aifh
-  extends aiea
-  implements View.OnClickListener
+class aifh
+  implements BusinessObserver
 {
-  public aifh(Context paramContext, QQAppInterface paramQQAppInterface, aifw paramaifw, aigo paramaigo)
-  {
-    super(paramContext, paramQQAppInterface, paramaifw, paramaigo);
-  }
+  aifh(aifg paramaifg) {}
   
-  public View a(int paramInt, View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    View localView;
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof aifi)))
-    {
-      paramView = new aifi();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561244, null);
-      localObject = new Rect();
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      a(localView, ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299076) - ViewUtils.dip2px(80.0F));
-      paramView.a = ((Button)localView.findViewById(2131367794));
-      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        paramView.a.setBackgroundResource(2130839348);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a.tag, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
+        localSendMenuEventResponse.mergeFrom(paramBundle);
+        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.a.tag, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
+        }
+        if (paramInt == 0)
+        {
+          this.a.a.x = true;
+          this.a.a.q();
+          this.a.a.b();
+          return;
+        }
       }
-      localObject = (ThemeImageView)localView.findViewById(2131367790);
-      ((ThemeImageView)localObject).setSupportMaskView(true);
-      ((ThemeImageView)localObject).setMaskShape(bjuk.b);
-      localView.setTag(paramView);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D3", "0X800A5D3", 0, 0, "1", "", "", "");
-      localObject = paramView;
+      catch (Exception paramBundle) {}
     }
-    for (;;)
-    {
-      ((aifi)localObject).a.setOnClickListener(this);
-      return localView;
-      localObject = (aifi)paramView.getTag();
-      localView = paramView;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D4", "0X800A5D4", 0, 0, "1", "", "", "");
-    if (NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
-    {
-      airj localairj = (airj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(295);
-      if (localairj != null) {
-        localairj.b(true);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692035), 0).a();
-    }
+    this.a.a.b(2131694983);
+    this.a.a.b();
   }
 }
 

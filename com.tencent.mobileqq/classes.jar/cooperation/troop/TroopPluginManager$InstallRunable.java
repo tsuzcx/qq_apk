@@ -2,24 +2,25 @@ package cooperation.troop;
 
 import android.os.Handler;
 import android.os.Looper;
-import bkkq;
-import bkxo;
-import bkxp;
-import bkxq;
+import blvy;
+import bmix;
+import bmiy;
+import bmiz;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import java.lang.ref.WeakReference;
 
 public class TroopPluginManager$InstallRunable
   implements Runnable
 {
   public Handler a;
-  public bkxq a;
+  public bmiz a;
   public String a;
   
-  public TroopPluginManager$InstallRunable(TroopPluginManager paramTroopPluginManager, bkxq parambkxq, String paramString)
+  public TroopPluginManager$InstallRunable(TroopPluginManager paramTroopPluginManager, bmiz parambmiz, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bkxo(this, Looper.getMainLooper());
-    this.jdField_a_of_type_Bkxq = parambkxq;
+    this.jdField_a_of_type_AndroidOsHandler = new bmix(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Bmiz = parambmiz;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -30,9 +31,9 @@ public class TroopPluginManager$InstallRunable
     do
     {
       return;
-      localObject = (bkkq)((QQAppInterface)localObject).getManager(27);
+      localObject = (blvy)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_PLUGIN);
     } while (localObject == null);
-    ((bkkq)localObject).a(this.jdField_a_of_type_JavaLangString, false, new bkxp(this));
+    ((blvy)localObject).a(this.jdField_a_of_type_JavaLangString, false, new bmiy(this));
   }
 }
 

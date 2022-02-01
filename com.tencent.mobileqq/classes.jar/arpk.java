@@ -1,10 +1,16 @@
-import kotlin.Metadata;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/ColdPalaceTipDialog$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class arpk {}
+public abstract interface arpk
+{
+  public abstract int a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(List<String> paramList);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arpk
  * JD-Core Version:    0.7.0.1
  */

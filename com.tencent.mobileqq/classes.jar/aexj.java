@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
-final class aexj
-  implements aeya
+public class aexj
+  implements adnm
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public aexj(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  
+  public void onAfterStartActivity()
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 47);
-    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
-    paramQQAppInterface.e = paramSessionInfo.troopUin;
-    return paramQQAppInterface;
+    this.a.finish();
+  }
+  
+  public void onBeforeStartActivity() {}
+  
+  public void onCancel()
+  {
+    this.a.finish();
   }
 }
 

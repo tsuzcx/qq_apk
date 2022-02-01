@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import olx;
+import otu;
 
 public class ReadInJoyNewFeedsActivity$17$1
   implements Runnable
 {
-  public ReadInJoyNewFeedsActivity$17$1(olx paramolx) {}
+  public ReadInJoyNewFeedsActivity$17$1(otu paramotu) {}
   
   public void run()
   {

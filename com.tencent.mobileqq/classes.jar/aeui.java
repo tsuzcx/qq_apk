@@ -1,68 +1,32 @@
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_dc00518;
+import java.lang.ref.WeakReference;
 
 public class aeui
-  implements bjoe
+  implements biav
 {
-  public aeui(ActivateFriendActivity paramActivateFriendActivity, bjnw parambjnw) {}
+  private final WeakReference<RegisterQQNumberActivity> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public aeui(RegisterQQNumberActivity paramRegisterQQNumberActivity)
   {
-    switch (paramInt)
-    {
+    this.a = new WeakReference(paramRegisterQQNumberActivity);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("RegisterQQNumberActivity", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
+      }
     }
-    for (;;)
+    RegisterQQNumberActivity localRegisterQQNumberActivity;
+    do
     {
-      this.jdField_a_of_type_Bjnw.dismiss();
       return;
-      if (ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity) == null) {
-        ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity, (aneo)this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app.getManager(85));
-      }
-      if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity))
-      {
-        paramView = ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity);
-        boolean bool;
-        if (!ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity))
-        {
-          bool = true;
-          label91:
-          paramView.a(bool, true);
-          if (!ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity)) {
-            break label219;
-          }
-          paramInt = 2;
-          label109:
-          LpReportInfo_dc00518.report(100, paramInt, paramInt);
-          if (!ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity)) {
-            break label224;
-          }
-        }
-        label219:
-        label224:
-        for (paramView = "QQnotice.aio.detail.seton";; paramView = "QQnotice.aio.detail.setoff")
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ActivateFriends.MainActivity", 2, "do report: " + paramView);
-          }
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app, "P_CliOper", "QQnotice", "", "", paramView, 0, 0, "", "", "", "");
-          aevc.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app, "remindpage_click", null, null, String.valueOf(1), String.valueOf(paramInt));
-          break;
-          bool = false;
-          break label91;
-          paramInt = 1;
-          break label109;
-        }
-      }
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity != null)) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity, 1, this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.getResources().getString(2131694064), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.getTitleBarHeight());
-      }
-    }
+      localRegisterQQNumberActivity = (RegisterQQNumberActivity)this.a.get();
+    } while (localRegisterQQNumberActivity == null);
+    localRegisterQQNumberActivity.a(paramString, paramBoolean);
   }
 }
 

@@ -1,31 +1,43 @@
-import com.qq.android.dexposed.XC_MethodHook;
-import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
-import com.tencent.mobileqq.config.QConfigureException;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
 
 final class apui
-  extends XC_MethodHook
+  implements aqbe
 {
-  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
+  public void a()
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkCommonUtil", 2, "ArkSafe.report onDisableReport");
+    }
+    aqba.a().a(null);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp.ArkCommonUtil", 2, new Object[] { "ArkSafe.report onReportUrlCheck content=", paramString });
+    }
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      paramMethodHookParam = apue.a();
-      if ((paramMethodHookParam.contains("QConfigManager.save")) && (paramMethodHookParam.contains("onParsed"))) {
-        apue.a(new QConfigureException(paramMethodHookParam), "Can not switch thread when parsing config.", "QConfigWatchDog_threadswitch");
+      if (localObject != null)
+      {
+        localObject = ((ArkAppCenter)((QQAppInterface)localObject).getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER)).a();
+        if (localObject != null) {
+          ((apxp)localObject).a(paramString);
+        }
       }
       return;
-    }
-    catch (Exception paramMethodHookParam)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QConfigWatchDog", 2, "hook thread exception.", paramMethodHookParam);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apui
  * JD-Core Version:    0.7.0.1
  */

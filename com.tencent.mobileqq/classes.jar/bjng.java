@@ -1,51 +1,33 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadManager.5.1;
+import com.tencent.open.downloadnew.DownloadManager.5.2;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import mqq.os.MqqHandler;
 
 public class bjng
-  extends Handler
+  implements ITMAssistantDownloadClientListener
 {
-  private WeakReference<Handler.Callback> a;
+  bjng(bjna parambjna) {}
   
-  public bjng(Handler.Callback paramCallback)
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    this.a = new WeakReference(paramCallback);
+    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.2(this, paramLong1, paramLong2, paramString));
   }
   
-  public bjng(Looper paramLooper, Handler.Callback paramCallback)
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
+    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.1(this, paramTMAssistantDownloadClient, paramInt1, paramString1, paramInt2, paramString2));
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
   {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("WeakReferenceHandler", 2, "handleMessage cb is null! handler = " + this);
-  }
-  
-  public String toString()
-  {
-    Object localObject = (Handler.Callback)this.a.get();
-    StringBuilder localStringBuilder = new StringBuilder().append("WH");
-    if (localObject != null) {}
-    for (localObject = localObject.toString();; localObject = "None callback") {
-      return (String)localObject;
-    }
+    bjko.e("DownloadManager_", "OnDwonloadSDKServiceInvalid");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjng
  * JD-Core Version:    0.7.0.1
  */

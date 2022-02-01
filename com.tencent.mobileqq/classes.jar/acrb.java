@@ -1,74 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acrb
-  extends ClickableSpan
+  implements acpi
 {
-  public int a;
-  public Bundle a;
-  public String a;
-  
-  public acrb(AddRequestActivity paramAddRequestActivity, int paramInt, String paramString, Bundle paramBundle)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    ((aodc)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SAFECENTER_PUSH_HANDLER)).a(paramMsgType0x210.vProtobuf);
   }
   
-  public void onClick(View paramView)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    if (paramView != null) {}
-    for (paramView = paramView.getContext(); paramView == null; paramView = null) {
-      return;
-    }
-    Object localObject;
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 1: 
-      TroopUtils.openTroopInfoActivity(paramView, this.jdField_a_of_type_AndroidOsBundle, 2);
-      return;
-    case 2: 
-      try
-      {
-        localObject = new Intent(paramView, DiscussionInfoCardActivity.class);
-        ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        paramView.startActivity((Intent)localObject);
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
-    }
-    try
-    {
-      localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_AndroidOsBundle.getString("key_profile_uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_pa", 25));
-      ((ProfileActivity.AllInOne)localObject).h = 109;
-      ((ProfileActivity.AllInOne)localObject).d = this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_chatability");
-      ProfileActivity.b(paramView, (ProfileActivity.AllInOne)localObject);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

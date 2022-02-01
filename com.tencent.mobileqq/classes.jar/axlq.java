@@ -1,52 +1,7 @@
-import android.text.TextUtils;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
-import com.tencent.mobileqq.widget.QQToast;
-
 public class axlq
-  implements ActionMode.Callback
 {
-  public axlq(OCRResultActivity paramOCRResultActivity, EditText paramEditText) {}
-  
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
-  {
-    if (paramMenuItem.getItemId() == 2131371981)
-    {
-      paramActionMode = OCRResultActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, this.jdField_a_of_type_AndroidWidgetEditText);
-      if (TextUtils.isEmpty(paramActionMode)) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, 1, amtj.a(2131706926), 0).a();
-      }
-    }
-    else
-    {
-      return false;
-    }
-    OCRTextSearchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, paramActionMode);
-    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity.overridePendingTransition(2130771992, 0);
-    return true;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramActionMode = paramActionMode.getMenuInflater();
-    if (paramActionMode != null) {
-      paramActionMode.inflate(2131623939, paramMenu);
-    }
-    return true;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
+  public static final long[] a = { 1L, 2L, 3L, 26L };
+  public static final long[] b = { 1L, 2L, 3L, 26L, 4L, 5L, 6L, 7L, 8L, 12L, 16L, 17L, 19L, 20L, 21L, 28L };
 }
 
 

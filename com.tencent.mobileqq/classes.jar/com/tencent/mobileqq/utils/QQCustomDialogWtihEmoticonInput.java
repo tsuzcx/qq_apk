@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import abem;
+import abty;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -33,9 +33,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import bfzd;
-import bfzf;
-import bjmm;
+import bhhv;
+import bhhx;
+import bkxz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
@@ -58,7 +58,7 @@ public class QQCustomDialogWtihEmoticonInput
   private static final String TAG = "QQCustomDialogWtihEmoticonInput";
   EditText inputView;
   private int keyboardHeight;
-  private bfzd keyboardHeightProxy;
+  private bhhv keyboardHeightProxy;
   int mEmotionType = 1;
   Handler mHandler = new Handler();
   boolean mIsWindowAdded;
@@ -71,7 +71,7 @@ public class QQCustomDialogWtihEmoticonInput
   EmoticonMainPanel mViewEmoSpace = null;
   WindowManager mWindowManager;
   WindowManager.LayoutParams mWindowParams;
-  bfzf softHeightListener = new QQCustomDialogWtihEmoticonInput.1(this);
+  bhhx softHeightListener = new QQCustomDialogWtihEmoticonInput.1(this);
   SoftReference<Context> softRefContext;
   boolean useAIOStyle = true;
   
@@ -96,7 +96,7 @@ public class QQCustomDialogWtihEmoticonInput
       }
     }
     label194:
-    for (paramInt = bfzd.a(0);; paramInt = (int)(150.0F * this.mResources.getDisplayMetrics().density))
+    for (paramInt = bhhv.a(0);; paramInt = (int)(150.0F * this.mResources.getDisplayMetrics().density))
     {
       this.mWindowParams = new WindowManager.LayoutParams(-1, paramInt, 2, 32, -1);
       this.mWindowParams.gravity = 81;
@@ -129,8 +129,8 @@ public class QQCustomDialogWtihEmoticonInput
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface))
     {
-      int i = getContext().getResources().getDimensionPixelSize(2131299076);
-      this.mViewEmoSpace = ((EmoticonMainPanel)View.inflate(getContext(), 2131559130, null));
+      int i = getContext().getResources().getDimensionPixelSize(2131299080);
+      this.mViewEmoSpace = ((EmoticonMainPanel)View.inflate(getContext(), 2131559158, null));
       this.mViewEmoSpace.setCallBack(local7);
       paramContext = this.mViewEmoSpace;
       if (this.mEmotionType == 7) {}
@@ -221,7 +221,7 @@ public class QQCustomDialogWtihEmoticonInput
     if (this.useAIOStyle)
     {
       localObject1 = this.mViewEmoSpace;
-      if (paramView.getId() != 2131365953) {
+      if (paramView.getId() != 2131366054) {
         break label269;
       }
       if (localObject1 != null)
@@ -232,8 +232,8 @@ public class QQCustomDialogWtihEmoticonInput
         resetRootViewHeight();
         this.mWindowManager.removeView((View)localObject1);
         this.mIsWindowAdded = false;
-        this.mViewEmoBtn.setImageResource(2130840169);
-        this.mViewEmoBtn.setTag(Integer.valueOf(2130840169));
+        this.mViewEmoBtn.setImageResource(2130840191);
+        this.mViewEmoBtn.setTag(Integer.valueOf(2130840191));
         this.mHandler.postDelayed(new QQCustomDialogWtihEmoticonInput.8(this), 200L);
         localObject1 = getWindow().getAttributes();
         ((WindowManager.LayoutParams)localObject1).y = 0;
@@ -248,20 +248,20 @@ public class QQCustomDialogWtihEmoticonInput
       break;
       label131:
       Object localObject2 = this.mViewEmoBtn.getTag();
-      if ((localObject2 != null) && ((localObject2 instanceof Integer)) && (((Integer)localObject2).intValue() == 2130840170))
+      if ((localObject2 != null) && ((localObject2 instanceof Integer)) && (((Integer)localObject2).intValue() == 2130840192))
       {
-        bjmm.a(this.inputView);
-        this.mViewEmoBtn.setImageResource(2130840169);
-        this.mViewEmoBtn.setTag(Integer.valueOf(2130840169));
+        bkxz.a(this.inputView);
+        this.mViewEmoBtn.setImageResource(2130840191);
+        this.mViewEmoBtn.setTag(Integer.valueOf(2130840191));
         this.mIsWindowAdded = false;
       }
       else
       {
-        bjmm.b(this.inputView);
-        this.mViewEmoBtn.setImageResource(2130840170);
-        this.mViewEmoBtn.setTag(Integer.valueOf(2130840170));
+        bkxz.b(this.inputView);
+        this.mViewEmoBtn.setImageResource(2130840192);
+        this.mViewEmoBtn.setTag(Integer.valueOf(2130840192));
         if (this.useAIOStyle) {
-          ((View)localObject1).setMinimumHeight(bfzd.a(0));
+          ((View)localObject1).setMinimumHeight(bhhv.a(0));
         }
         this.mHandler.postDelayed(new QQCustomDialogWtihEmoticonInput.9(this, (View)localObject1), 200L);
         continue;
@@ -275,7 +275,7 @@ public class QQCustomDialogWtihEmoticonInput
         localObject1 = getWindow().getAttributes();
         ((WindowManager.LayoutParams)localObject1).y = 0;
         getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
-        bjmm.b(this.inputView);
+        bkxz.b(this.inputView);
       }
     }
   }
@@ -309,7 +309,7 @@ public class QQCustomDialogWtihEmoticonInput
       localLayoutParams.y = 0;
       getWindow().setAttributes(localLayoutParams);
       resetRootViewHeight();
-      bjmm.b(this.inputView);
+      bkxz.b(this.inputView);
       super.onTouchEvent(paramMotionEvent);
       return true;
       label86:
@@ -321,11 +321,11 @@ public class QQCustomDialogWtihEmoticonInput
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.mRoot = ((RelativeLayout)findViewById(2131365548));
-    this.inputView = ((EditText)findViewById(2131368750));
-    this.mViewEmoBtn = ((ImageView)findViewById(2131365953));
+    this.mRoot = ((RelativeLayout)findViewById(2131365640));
+    this.inputView = ((EditText)findViewById(2131368909));
+    this.mViewEmoBtn = ((ImageView)findViewById(2131366054));
     this.mViewEmoBtn.setOnClickListener(this);
-    findViewById(2131376867).setOnClickListener(this);
+    findViewById(2131377139).setOnClickListener(this);
     this.inputView.setEditableFactory(QQTextBuilder.EMOTION_INPUT_FACTORY);
     this.inputView.setSingleLine(this.mSingleLine);
     this.inputView.setOnTouchListener(new QQCustomDialogWtihEmoticonInput.2(this));
@@ -333,26 +333,26 @@ public class QQCustomDialogWtihEmoticonInput
     if (localObject == null) {
       return;
     }
-    abem.a((Context)localObject, this.inputView);
+    abty.a((Context)localObject, this.inputView);
     if (this.useAIOStyle)
     {
-      this.keyboardHeightProxy = new bfzd(((ViewGroup)getWindow().getDecorView().findViewById(16908290)).getChildAt(0), this.mWindowManager.getDefaultDisplay().getHeight(), this.softHeightListener);
+      this.keyboardHeightProxy = new bhhv(((ViewGroup)getWindow().getDecorView().findViewById(16908290)).getChildAt(0), this.mWindowManager.getDefaultDisplay().getHeight(), this.softHeightListener);
       this.keyboardHeight = this.keyboardHeightProxy.a();
-      this.keyboardHeight = bfzd.a(this.keyboardHeight);
+      this.keyboardHeight = bhhv.a(this.keyboardHeight);
       setOnDismissListener(this);
       addEmoticonPanel((Context)localObject);
       this.mViewEmoSpace.setDispatchKeyEventListener(new QQCustomDialogWtihEmoticonInput.3(this));
     }
     for (;;)
     {
-      localObject = this.mRoot.findViewById(2131376860);
+      localObject = this.mRoot.findViewById(2131377132);
       if ((localObject instanceof ScrollView)) {
         this.mRootScrollView = ((ScrollView)localObject);
       }
       this.mRoot.getViewTreeObserver().addOnGlobalLayoutListener(new QQCustomDialogWtihEmoticonInput.5(this));
       return;
       addEmoticonPanel((Context)localObject);
-      this.mOldViewEmoSpace.setBackgroundResource(2130838034);
+      this.mOldViewEmoSpace.setBackgroundResource(2130838048);
       this.mOldViewEmoSpace.setMinimumHeight(AIOUtils.dp2px(150.0F, this.mResources));
       this.mOldViewEmoSpace.setDispatchKeyEventListener(new QQCustomDialogWtihEmoticonInput.4(this));
     }
@@ -393,7 +393,7 @@ public class QQCustomDialogWtihEmoticonInput
     }
     hideSoftInputFromWindow();
     this.lBtn.setText(paramInt);
-    this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691002));
+    this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691087));
     this.lBtn.setVisibility(0);
     this.lBtn.setOnClickListener(new QQCustomDialogWtihEmoticonInput.10(this, paramOnClickListener));
     setSeperatorState();

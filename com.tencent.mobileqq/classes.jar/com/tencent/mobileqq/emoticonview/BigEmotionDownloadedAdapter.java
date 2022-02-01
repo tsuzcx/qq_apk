@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -18,14 +17,16 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import avsp;
-import avsq;
-import bcef;
-import bgae;
+import anvx;
+import awyq;
+import awyr;
+import bdla;
+import bhiw;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.data.IPSiteModel.Book;
@@ -105,7 +106,7 @@ public class BigEmotionDownloadedAdapter
             ImageView localImageView;
             QLog.e("BigEmotionDownloadedAdapter", 1, "fillIPSiteViewPagerMode ipId error = " + localException2);
             continue;
-            ((TextView)localObject10).setText(amtj.a(2131700248));
+            ((TextView)localObject10).setText(anvx.a(2131700599));
             localImageView.setVisibility(8);
             localObject3 = localException2;
             if (localException2 == null) {
@@ -116,7 +117,7 @@ public class BigEmotionDownloadedAdapter
             ((TextView)localObject7).setMaxWidth(AIOUtils.dp2px(126.0F, this.mContext.getResources()));
             ((TextView)localObject8).setMaxWidth(AIOUtils.dp2px(126.0F, this.mContext.getResources()));
             continue;
-            ((TextView)localObject10).setText(amtj.a(2131700241));
+            ((TextView)localObject10).setText(anvx.a(2131700592));
             localImageView.setVisibility(0);
             localObject3 = localException2;
             if (localException2 == null) {
@@ -134,20 +135,20 @@ public class BigEmotionDownloadedAdapter
         localObject1 = paramVipIPSiteInfo.strType;
         if ("comic".equals(localObject1))
         {
-          localObject4 = LayoutInflater.from(this.mContext).inflate(2131559142, null, false);
-          localObject1 = (TextView)((View)localObject4).findViewById(2131362413);
-          localObject3 = (TextView)((View)localObject4).findViewById(2131362394);
-          ((RelativeLayout)((View)localObject4).findViewById(2131362409)).setOnClickListener((View.OnClickListener)localObject5);
-          localObject5 = (RelativeLayout)((View)localObject4).findViewById(2131362386);
-          localObject6 = (ImageView)((View)localObject4).findViewById(2131362390);
-          localObject7 = (TextView)((View)localObject4).findViewById(2131362392);
-          localObject8 = (TextView)((View)localObject4).findViewById(2131362387);
-          localObject9 = (Button)((View)localObject4).findViewById(2131362415);
-          localObject10 = (TextView)((View)localObject4).findViewById(2131362393);
-          localRelativeLayout = (RelativeLayout)((View)localObject4).findViewById(2131362388);
-          localImageView = (ImageView)((View)localObject4).findViewById(2131362389);
-          ((TextView)localObject1).setText(paramVipIPSiteInfo.ipName + amtj.a(2131700243));
-          ((TextView)localObject3).setText(bgae.a(paramVipIPSiteInfo.ipContent));
+          localObject4 = LayoutInflater.from(this.mContext).inflate(2131559171, null, false);
+          localObject1 = (TextView)((View)localObject4).findViewById(2131362419);
+          localObject3 = (TextView)((View)localObject4).findViewById(2131362400);
+          ((RelativeLayout)((View)localObject4).findViewById(2131362415)).setOnClickListener((View.OnClickListener)localObject5);
+          localObject5 = (RelativeLayout)((View)localObject4).findViewById(2131362392);
+          localObject6 = (ImageView)((View)localObject4).findViewById(2131362396);
+          localObject7 = (TextView)((View)localObject4).findViewById(2131362398);
+          localObject8 = (TextView)((View)localObject4).findViewById(2131362393);
+          localObject9 = (Button)((View)localObject4).findViewById(2131362421);
+          localObject10 = (TextView)((View)localObject4).findViewById(2131362399);
+          localRelativeLayout = (RelativeLayout)((View)localObject4).findViewById(2131362394);
+          localImageView = (ImageView)((View)localObject4).findViewById(2131362395);
+          ((TextView)localObject1).setText(paramVipIPSiteInfo.ipName + anvx.a(2131700594));
+          ((TextView)localObject3).setText(bhiw.a(paramVipIPSiteInfo.ipContent));
           if (paramVipIPSiteInfo.ipList != null)
           {
             i = 0;
@@ -165,7 +166,7 @@ public class BigEmotionDownloadedAdapter
               switch (localComic.comicType)
               {
               default: 
-                ((ImageView)localObject6).setImageDrawable(bgae.a(localComic.cover, this.mURLDrawableListener, this.mDefaultDrawable));
+                ((ImageView)localObject6).setImageDrawable(bhiw.a(localComic.cover, this.mURLDrawableListener, this.mDefaultDrawable));
                 ((TextView)localObject7).setText(localComic.name);
                 ((TextView)localObject8).setText(localComic.desc);
                 ((Button)localObject9).setOnClickListener(local4);
@@ -200,17 +201,17 @@ public class BigEmotionDownloadedAdapter
         Object localObject2;
         if ("game".equals(localException2))
         {
-          localObject2 = LayoutInflater.from(this.mContext).inflate(2131559140, null, false);
-          localObject8 = (TextView)((View)localObject2).findViewById(2131362413);
-          localObject9 = (TextView)((View)localObject2).findViewById(2131362394);
-          ((RelativeLayout)((View)localObject2).findViewById(2131362407)).setOnClickListener((View.OnClickListener)localObject5);
-          localObject3 = (RelativeLayout)((View)localObject2).findViewById(2131362396);
-          localObject4 = (ImageView)((View)localObject2).findViewById(2131362398);
-          localObject5 = (TextView)((View)localObject2).findViewById(2131362400);
-          localObject6 = (TextView)((View)localObject2).findViewById(2131362397);
-          localObject7 = (Button)((View)localObject2).findViewById(2131362416);
-          ((TextView)localObject8).setText(paramVipIPSiteInfo.ipName + amtj.a(2131700246));
-          ((TextView)localObject9).setText(bgae.a(paramVipIPSiteInfo.ipContent));
+          localObject2 = LayoutInflater.from(this.mContext).inflate(2131559169, null, false);
+          localObject8 = (TextView)((View)localObject2).findViewById(2131362419);
+          localObject9 = (TextView)((View)localObject2).findViewById(2131362400);
+          ((RelativeLayout)((View)localObject2).findViewById(2131362413)).setOnClickListener((View.OnClickListener)localObject5);
+          localObject3 = (RelativeLayout)((View)localObject2).findViewById(2131362402);
+          localObject4 = (ImageView)((View)localObject2).findViewById(2131362404);
+          localObject5 = (TextView)((View)localObject2).findViewById(2131362406);
+          localObject6 = (TextView)((View)localObject2).findViewById(2131362403);
+          localObject7 = (Button)((View)localObject2).findViewById(2131362422);
+          ((TextView)localObject8).setText(paramVipIPSiteInfo.ipName + anvx.a(2131700597));
+          ((TextView)localObject9).setText(bhiw.a(paramVipIPSiteInfo.ipContent));
           if (paramVipIPSiteInfo.ipList != null)
           {
             i = 0;
@@ -221,7 +222,7 @@ public class BigEmotionDownloadedAdapter
               {
                 localObject8 = (IPSiteModel.Game)localObject8;
                 localObject9 = new BigEmotionDownloadedAdapter.5(this, (IPSiteModel.Game)localObject8, str2, str3);
-                ((ImageView)localObject4).setImageDrawable(bgae.a(((IPSiteModel.Game)localObject8).cover, this.mURLDrawableListener, this.mDefaultDrawable));
+                ((ImageView)localObject4).setImageDrawable(bhiw.a(((IPSiteModel.Game)localObject8).cover, this.mURLDrawableListener, this.mDefaultDrawable));
                 ((TextView)localObject5).setText(((IPSiteModel.Game)localObject8).name);
                 ((TextView)localObject6).setText(((IPSiteModel.Game)localObject8).recommDesc);
                 ((Button)localObject7).setOnClickListener((View.OnClickListener)localObject9);
@@ -235,13 +236,13 @@ public class BigEmotionDownloadedAdapter
         }
         else if ("goods".equals(localObject2))
         {
-          localObject2 = LayoutInflater.from(this.mContext).inflate(2131559139, null, false);
-          localObject3 = (TextView)((View)localObject2).findViewById(2131362413);
-          localObject4 = (TextView)((View)localObject2).findViewById(2131362394);
-          ((RelativeLayout)((View)localObject2).findViewById(2131362406)).setOnClickListener((View.OnClickListener)localObject5);
-          ((TextView)localObject3).setText(paramVipIPSiteInfo.ipName + amtj.a(2131700239));
-          ((TextView)localObject4).setText(bgae.a(paramVipIPSiteInfo.ipContent));
-          localObject3 = (HorizontalListView)((View)localObject2).findViewById(2131362411);
+          localObject2 = LayoutInflater.from(this.mContext).inflate(2131559168, null, false);
+          localObject3 = (TextView)((View)localObject2).findViewById(2131362419);
+          localObject4 = (TextView)((View)localObject2).findViewById(2131362400);
+          ((RelativeLayout)((View)localObject2).findViewById(2131362412)).setOnClickListener((View.OnClickListener)localObject5);
+          ((TextView)localObject3).setText(paramVipIPSiteInfo.ipName + anvx.a(2131700590));
+          ((TextView)localObject4).setText(bhiw.a(paramVipIPSiteInfo.ipContent));
+          localObject3 = (HorizontalListView)((View)localObject2).findViewById(2131362417);
           if (paramVipIPSiteInfo.ipList != null)
           {
             paramVipIPSiteInfo = new IPSiteListGoodsAdapter(this.mContext, paramVipIPSiteInfo.ipList, this.mURLDrawableListener, this.mDefaultDrawable, this.app.getCurrentUin(), str3, str2);
@@ -253,17 +254,17 @@ public class BigEmotionDownloadedAdapter
         }
         else if ("video".equals(localObject2))
         {
-          localObject3 = LayoutInflater.from(this.mContext).inflate(2131559141, null, false);
-          localObject2 = (TextView)((View)localObject3).findViewById(2131362413);
-          localObject9 = (TextView)((View)localObject3).findViewById(2131362394);
-          ((RelativeLayout)((View)localObject3).findViewById(2131362408)).setOnClickListener((View.OnClickListener)localObject5);
-          localObject4 = (RelativeLayout)((View)localObject3).findViewById(2131362418);
-          localObject5 = (ImageView)((View)localObject3).findViewById(2131362421);
-          localObject6 = (TextView)((View)localObject3).findViewById(2131362423);
-          localObject7 = (TextView)((View)localObject3).findViewById(2131362419);
-          localObject8 = (Button)((View)localObject3).findViewById(2131362417);
-          ((TextView)localObject2).setText(paramVipIPSiteInfo.ipName + amtj.a(2131700247));
-          ((TextView)localObject9).setText(bgae.a(paramVipIPSiteInfo.ipContent));
+          localObject3 = LayoutInflater.from(this.mContext).inflate(2131559170, null, false);
+          localObject2 = (TextView)((View)localObject3).findViewById(2131362419);
+          localObject9 = (TextView)((View)localObject3).findViewById(2131362400);
+          ((RelativeLayout)((View)localObject3).findViewById(2131362414)).setOnClickListener((View.OnClickListener)localObject5);
+          localObject4 = (RelativeLayout)((View)localObject3).findViewById(2131362424);
+          localObject5 = (ImageView)((View)localObject3).findViewById(2131362427);
+          localObject6 = (TextView)((View)localObject3).findViewById(2131362429);
+          localObject7 = (TextView)((View)localObject3).findViewById(2131362425);
+          localObject8 = (Button)((View)localObject3).findViewById(2131362423);
+          ((TextView)localObject2).setText(paramVipIPSiteInfo.ipName + anvx.a(2131700598));
+          ((TextView)localObject9).setText(bhiw.a(paramVipIPSiteInfo.ipContent));
           if (paramVipIPSiteInfo.ipList != null)
           {
             i = 0;
@@ -277,9 +278,9 @@ public class BigEmotionDownloadedAdapter
                 if (!TextUtils.isEmpty(((IPSiteModel.Video)localObject9).buttonDesc)) {
                   break label1874;
                 }
-                localObject2 = amtj.a(2131700238);
+                localObject2 = anvx.a(2131700589);
                 label1736:
-                ((ImageView)localObject5).setImageDrawable(bgae.a(((IPSiteModel.Video)localObject9).cover, this.mURLDrawableListener, this.mDefaultDrawable));
+                ((ImageView)localObject5).setImageDrawable(bhiw.a(((IPSiteModel.Video)localObject9).cover, this.mURLDrawableListener, this.mDefaultDrawable));
                 ((TextView)localObject6).setText(((IPSiteModel.Video)localObject9).name);
                 if (!TextUtils.isEmpty(((IPSiteModel.Video)localObject9).showDate)) {
                   break label1884;
@@ -287,18 +288,18 @@ public class BigEmotionDownloadedAdapter
                 ((TextView)localObject7).setText(((IPSiteModel.Video)localObject9).desc);
                 label1788:
                 ((Button)localObject8).setText((CharSequence)localObject2);
-                if (!((String)localObject2).equals(amtj.a(2131700244))) {
+                if (!((String)localObject2).equals(anvx.a(2131700595))) {
                   break label1919;
                 }
-                j = 2130839665;
+                j = 2130839686;
                 label1813:
                 ((Button)localObject8).setBackgroundResource(j);
-                if (!((String)localObject2).equals(amtj.a(2131700237))) {
+                if (!((String)localObject2).equals(anvx.a(2131700588))) {
                   break label1926;
                 }
               }
               label1926:
-              for (int j = this.mContext.getResources().getColor(2131165436);; j = this.mContext.getResources().getColor(2131165491))
+              for (int j = this.mContext.getResources().getColor(2131165442);; j = this.mContext.getResources().getColor(2131165497))
               {
                 ((Button)localObject8).setTextColor(j);
                 ((Button)localObject8).setOnClickListener((View.OnClickListener)localObject10);
@@ -309,10 +310,10 @@ public class BigEmotionDownloadedAdapter
                 localObject2 = ((IPSiteModel.Video)localObject9).buttonDesc;
                 break label1736;
                 label1884:
-                ((TextView)localObject7).setText(((IPSiteModel.Video)localObject9).showDate + amtj.a(2131700236));
+                ((TextView)localObject7).setText(((IPSiteModel.Video)localObject9).showDate + anvx.a(2131700587));
                 break label1788;
                 label1919:
-                j = 2130839664;
+                j = 2130839685;
                 break label1813;
               }
             }
@@ -322,17 +323,17 @@ public class BigEmotionDownloadedAdapter
         }
         else if ("book".equals(localObject2))
         {
-          localObject2 = LayoutInflater.from(this.mContext).inflate(2131559143, null, false);
-          localObject8 = (TextView)((View)localObject2).findViewById(2131362413);
-          localObject9 = (TextView)((View)localObject2).findViewById(2131362394);
-          ((RelativeLayout)((View)localObject2).findViewById(2131362410)).setOnClickListener((View.OnClickListener)localObject5);
-          localObject3 = (RelativeLayout)((View)localObject2).findViewById(2131362380);
-          localObject4 = (ImageView)((View)localObject2).findViewById(2131362382);
-          localObject5 = (TextView)((View)localObject2).findViewById(2131362384);
-          localObject6 = (TextView)((View)localObject2).findViewById(2131362381);
-          localObject7 = (Button)((View)localObject2).findViewById(2131362414);
-          ((TextView)localObject8).setText(paramVipIPSiteInfo.ipName + amtj.a(2131700245));
-          ((TextView)localObject9).setText(bgae.a(paramVipIPSiteInfo.ipContent));
+          localObject2 = LayoutInflater.from(this.mContext).inflate(2131559172, null, false);
+          localObject8 = (TextView)((View)localObject2).findViewById(2131362419);
+          localObject9 = (TextView)((View)localObject2).findViewById(2131362400);
+          ((RelativeLayout)((View)localObject2).findViewById(2131362416)).setOnClickListener((View.OnClickListener)localObject5);
+          localObject3 = (RelativeLayout)((View)localObject2).findViewById(2131362386);
+          localObject4 = (ImageView)((View)localObject2).findViewById(2131362388);
+          localObject5 = (TextView)((View)localObject2).findViewById(2131362390);
+          localObject6 = (TextView)((View)localObject2).findViewById(2131362387);
+          localObject7 = (Button)((View)localObject2).findViewById(2131362420);
+          ((TextView)localObject8).setText(paramVipIPSiteInfo.ipName + anvx.a(2131700596));
+          ((TextView)localObject9).setText(bhiw.a(paramVipIPSiteInfo.ipContent));
           if (paramVipIPSiteInfo.ipList != null)
           {
             i = 0;
@@ -343,7 +344,7 @@ public class BigEmotionDownloadedAdapter
               {
                 localObject8 = (IPSiteModel.Book)localObject8;
                 localObject9 = new BigEmotionDownloadedAdapter.7(this, (IPSiteModel.Book)localObject8, str2, str3);
-                ((ImageView)localObject4).setImageDrawable(bgae.a(((IPSiteModel.Book)localObject8).cover, this.mURLDrawableListener, this.mDefaultDrawable));
+                ((ImageView)localObject4).setImageDrawable(bhiw.a(((IPSiteModel.Book)localObject8).cover, this.mURLDrawableListener, this.mDefaultDrawable));
                 ((TextView)localObject5).setText(((IPSiteModel.Book)localObject8).name);
                 ((TextView)localObject6).setText(((IPSiteModel.Book)localObject8).recommDesc);
                 ((Button)localObject7).setOnClickListener((View.OnClickListener)localObject9);
@@ -390,7 +391,7 @@ public class BigEmotionDownloadedAdapter
     if (getItemViewType(paramInt) == 0)
     {
       if (paramView != null) {
-        break label1080;
+        break label1081;
       }
       paramView = EmotionPanelViewPool.getInstance().getView(this.panelType);
       if (paramView == null)
@@ -461,10 +462,10 @@ public class BigEmotionDownloadedAdapter
           paramViewGroup = (EmotionPanelData)this.data.get(j);
           if (paramView != null)
           {
-            if (paramViewGroup == paramView.getTag(2131380831)) {
+            if (paramViewGroup == paramView.getTag(2131381183)) {
               paramView.setVisibility(0);
             } else {
-              paramView.setTag(2131380831, paramViewGroup);
+              paramView.setTag(2131381183, paramViewGroup);
             }
           }
           else
@@ -485,11 +486,11 @@ public class BigEmotionDownloadedAdapter
         return paramViewHolder;
         paramViewHolder = paramView;
       } while (paramView != null);
-      paramViewGroup = (avsp)this.app.getManager(200);
-      Object localObject2 = (avsq)this.app.getManager(14);
+      paramViewGroup = (awyq)this.app.getManager(QQManagerFactory.COMMERCIAL_DRAINAGE_MANAGER);
+      Object localObject2 = (awyr)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER);
       paramViewHolder = this.emotionPkg.ipSiteInfo;
       if ((paramViewHolder == null) && (this.emotionPkg.ipSiteInfoBytes != null) && (this.emotionPkg.ipSiteInfoBytes.length > 0)) {
-        paramViewHolder = ((avsq)localObject2).a(this.emotionPkg.ipSiteInfoBytes);
+        paramViewHolder = ((awyr)localObject2).a(this.emotionPkg.ipSiteInfoBytes);
       }
       for (;;)
       {
@@ -521,8 +522,8 @@ public class BigEmotionDownloadedAdapter
           localTextView.setTextSize(14.0F);
           if (paramViewGroup.hasRecommendDressup)
           {
-            paramViewHolder = amtj.a(2131700240);
-            label826:
+            paramViewHolder = anvx.a(2131700591);
+            label827:
             localTextView.setText(paramViewHolder);
             localTextView.setTextColor(-8947849);
             ((LinearLayout)localObject2).addView(localTextView, (ViewGroup.LayoutParams)localObject3);
@@ -530,32 +531,32 @@ public class BigEmotionDownloadedAdapter
             paramViewHolder.leftMargin = ((int)(5.0F * this.density));
             paramViewHolder.gravity = 16;
             localObject3 = new ImageView(this.mContext);
-            ((ImageView)localObject3).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130847025));
+            ((ImageView)localObject3).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130847123));
             ((LinearLayout)localObject2).addView((View)localObject3, paramViewHolder);
             paramView.addView((View)localObject2);
             ((BigEmotionDownloadedAdapter.BigEmotionHolder)localObject1).linearLayout = ((LinearLayout)localObject2);
             ((BigEmotionDownloadedAdapter.BigEmotionHolder)localObject1).linearLayout.setOnClickListener(new BigEmotionDownloadedAdapter.2(this, paramViewGroup));
             ((BigEmotionDownloadedAdapter.BigEmotionHolder)localObject1).linearLayout.setVisibility(0);
             paramView.setTag(localObject1);
-            bcef.b(this.app, "CliOper", "", "", "ep_mall", "exp_bq_detail", 0, 0, "", this.emotionPkg.epId, "", "");
+            bdla.b(this.app, "CliOper", "", "", "ep_mall", "exp_bq_detail", 0, 0, "", this.emotionPkg.epId, "", "");
             localObject1 = this.app.getCurrentAccountUin();
             localObject2 = this.emotionPkg.epId;
             if (!paramViewGroup.hasRecommendDressup) {
-              break label1064;
+              break label1065;
             }
           }
-          label1064:
+          label1065:
           for (paramViewHolder = "1";; paramViewHolder = "2")
           {
             VasWebviewUtil.reportCommercialDrainage((String)localObject1, "ep_mall", "exp_bq_detail", null, 1, 0, 0, null, (String)localObject2, paramViewHolder);
             paramViewHolder = paramView;
             break;
-            paramViewHolder = amtj.a(2131700242);
-            break label826;
+            paramViewHolder = anvx.a(2131700593);
+            break label827;
           }
         }
       }
-      label1080:
+      label1081:
       paramViewHolder = paramView;
     }
   }
@@ -584,7 +585,7 @@ public class BigEmotionDownloadedAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter
  * JD-Core Version:    0.7.0.1
  */

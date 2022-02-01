@@ -1,11 +1,8 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
-
-class aujg
-  implements TVK_IMediaPlayer.OnDownloadCallbackListener
+public abstract interface aujg
 {
-  aujg(auix paramauix) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void OnDownloadCallback(String paramString) {}
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

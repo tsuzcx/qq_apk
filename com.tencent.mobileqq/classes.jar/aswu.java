@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aswu
-  implements athm
+class aswu
+  implements DialogInterface.OnDismissListener
 {
-  public aswu(SimpleFileViewer paramSimpleFileViewer) {}
+  aswu(aswr paramaswr) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.e();
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.i(paramString);
+    aswr.a(this.a).dismiss();
   }
 }
 

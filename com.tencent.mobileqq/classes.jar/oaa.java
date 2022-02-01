@@ -1,26 +1,25 @@
-public class oaa
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class oaa
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  oaa(nzu paramnzu) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return this.b == 1;
-  }
-  
-  public String toString()
-  {
-    return "materialId = " + this.jdField_a_of_type_Int + " ,repeatedReqFlag=" + this.b + " kdPos=" + this.c + ",adPosID=" + this.jdField_a_of_type_Long;
+    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).E();
+    String str2 = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
+    for (String str1 = "02";; str1 = "01")
+    {
+      olh.a(null, str2, "0X8007CA4", "0X8007CA4", 0, 0, str1, String.valueOf(nzu.a(this.a)), "", "", false);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

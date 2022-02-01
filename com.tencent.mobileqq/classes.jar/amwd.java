@@ -1,114 +1,242 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.CmGameClientQIPCModule.1;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgsvc.msg_svc.PbSendMsgResp;
+import eipc.EIPCResult;
+import java.util.HashMap;
 
 public class amwd
+  extends QIPCModule
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private FromServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-  private ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
-  private String jdField_a_of_type_JavaLangString;
-  private msg_svc.PbSendMsgResp jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp;
-  private boolean jdField_a_of_type_Boolean;
-  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
+  public static boolean a;
   
-  public amwd(MessageHandler paramMessageHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, String paramString, msg_svc.PbSendMsgResp paramPbSendMsgResp, int paramInt1, long paramLong1, long paramLong2, boolean paramBoolean, Object[] paramArrayOfObject, int paramInt2)
+  public amwd(String paramString)
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp = paramPbSendMsgResp;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-    this.jdField_b_of_type_Int = paramInt2;
+    super(paramString);
   }
   
-  public amwd a()
+  public static amwd a()
   {
-    Object localObject;
-    if ((this.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_Int == 34))
+    return amwe.a();
+  }
+  
+  public static void a()
+  {
+    amwd localamwd = a();
+    if (!a)
     {
-      this.jdField_b_of_type_Boolean = true;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_Long);
-      if (MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, (MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.removeMessageObserver(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg)))
+      QIPCClientHelper.getInstance().register(localamwd);
+      a = true;
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (3112 == paramInt) {
+      return;
+    }
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      ThreadManagerV2.excute(new CmGameClientQIPCModule.1(paramInt), 16, null, false);
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("gameId", paramInt);
+    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_close_game", localBundle, null);
+  }
+  
+  public amyo a()
+  {
+    amyx localamyx = amwn.a();
+    if (localamyx != null) {
+      return localamyx.a();
+    }
+    return null;
+  }
+  
+  public void callbackResult(int paramInt, EIPCResult paramEIPCResult)
+  {
+    super.callbackResult(paramInt, paramEIPCResult);
+  }
+  
+  public void onAccountChange()
+  {
+    super.onAccountChange();
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameClientQIPCModule", 2, "onCall main server action=" + paramString);
+    }
+    boolean bool;
+    try
+    {
+      if ("action_close_game".equals(paramString))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_Boolean = true;
-        return this;
+        amwn.a(paramBundle.getInt("gameId"));
+      }
+      else if ("action_update_audio_status".equals(paramString))
+      {
+        bool = paramBundle.getBoolean("isOpen");
+        paramString = paramBundle.getString("key_game_friUin");
+        paramBundle = a();
+        if (paramBundle == null) {
+          break label761;
+        }
+        paramBundle = paramBundle.a();
+        if ((paramBundle == null) || (!(paramBundle instanceof ApolloGameActivity))) {
+          break label761;
+        }
+        ((ApolloGameActivity)paramBundle).a(bool, paramString);
       }
     }
-    long l2;
-    long l1;
-    if (this.jdField_a_of_type_Int == 299)
+    catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "<---handleSendTroopMessageRespPB MessageRecord send fail uinseq = " + this.jdField_b_of_type_Long + ", msgseq = " + this.jdField_a_of_type_Long);
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_Long);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getMsgCache().a(this.jdField_a_of_type_JavaLangString, 1, this.jdField_b_of_type_Long);
-      if (localObject == null) {
-        break label401;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "<---handleSendTroopMessageRespPB MessageRecord send fail, MessageRecord=" + ((MessageRecord)localObject).toString());
-      }
-      l2 = ((MessageRecord)localObject).shmsgseq;
-      l1 = ((MessageRecord)localObject).time;
+      QLog.e("cmgame_process.CmGameClientQIPCModule", 1, paramString, new Object[0]);
     }
-    for (;;)
+    if ("action_dress_changed".equals(paramString))
     {
-      localObject = new MessageForUniteGrayTip();
-      aucf localaucf = new aucf(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangObject[6].toString(), 1, -5040, 131082, l1);
-      ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, localaucf);
-      ((MessageForUniteGrayTip)localObject).isread = true;
-      ((MessageForUniteGrayTip)localObject).shmsgseq = l2;
-      aucg.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, (MessageForUniteGrayTip)localObject);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ArrayOfJavaLangObject, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getUin(), this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(3002, false, this.jdField_a_of_type_ArrayOfJavaLangObject);
-      this.jdField_a_of_type_Boolean = false;
-      return this;
-      label401:
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "<---handleSendTroopMessageRespPB MessageRecord send fail, uniseq not match !");
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getMessageFacade().getMsgList(this.jdField_a_of_type_JavaLangString, 1);
-      if ((localObject != null) && (!((List)localObject).isEmpty()) && (((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).shmsgseq > 0L))
+      CmShowRenderView.a(paramBundle.getStringArrayList("key_dress_change_uin"));
+    }
+    else if ("action_check_game_running".equals(paramString))
+    {
+      paramString = a();
+      if (paramString != null)
       {
-        l2 = ((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).shmsgseq;
-        l1 = ((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).time;
+        paramString = paramString.a();
+        if (paramString != null)
+        {
+          if ((paramString.src == 319) || (paramString.src == 318))
+          {
+            paramBundle = new Bundle();
+            paramBundle.putString("key_game_friUin", paramString.mTempAIOUin);
+            callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
+          }
+        }
+        else
+        {
+          paramString = new EIPCResult();
+          paramString.code = -1;
+          callbackResult(paramInt, paramString);
+        }
       }
       else
       {
-        l1 = bbko.a();
-        l2 = 0L;
+        paramString = new EIPCResult();
+        paramString.code = -1;
+        callbackResult(paramInt, paramString);
       }
     }
+    else if ("action_show_audio_dialog".equals(paramString))
+    {
+      paramString = a();
+      if (paramString != null)
+      {
+        paramString = paramString.a();
+        if ((paramString != null) && ((paramString instanceof ApolloGameActivity))) {
+          ((ApolloGameActivity)paramString).a(paramBundle.getString("key_dialog_type"));
+        }
+      }
+    }
+    else if ("action_set_sso_rule".equals(paramString))
+    {
+      paramString = (CmGameStartChecker.StartCheckParam)paramBundle.getSerializable("StartCheckParam");
+      paramBundle = paramBundle.getString("rule");
+      if ((paramString == null) || (TextUtils.isEmpty(paramBundle))) {
+        break label763;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameClientQIPCModule", 2, new Object[] { "ACTION_SET_SSO_RULE startCheckParam:", paramString, " rule:", paramBundle });
+      }
+      amyx localamyx = amwn.a();
+      if (localamyx != null) {
+        localamyx.a(paramString.gameId, paramBundle);
+      }
+    }
+    else
+    {
+      bool = "action_start_cmgame_direct".equals(paramString);
+      if (bool)
+      {
+        try
+        {
+          long l = paramBundle.getLong("startTime", 0L);
+          paramString = (CmGameStartChecker.StartCheckParam)paramBundle.getSerializable("StartCheckParam");
+          if (paramString == null) {
+            return null;
+          }
+          paramInt = paramString.gameId;
+          int i = paramString.src;
+          l = System.currentTimeMillis() - l;
+          QLog.d("CmGameStat", 1, new Object[] { "cmgame_ipc_start_receive, duration=", Long.valueOf(l), ", gameId=", Integer.valueOf(paramInt), ", src=", Integer.valueOf(i) });
+          if (l >= 0L)
+          {
+            paramBundle = new HashMap();
+            paramBundle.put("param_gameId", String.valueOf(paramInt));
+            paramBundle.put("param_src", String.valueOf(i));
+            StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "cmgame_ipc_start_receive", true, l, 0L, paramBundle, "", false);
+          }
+          amwn.a(paramString);
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("cmgame_process.CmGameClientQIPCModule", 1, paramString, new Object[0]);
+        }
+      }
+      else if ("action_check_game_data".equals(paramString))
+      {
+        paramString = (CmGameStartChecker.StartCheckParam)paramBundle.getSerializable("StartCheckParam");
+        if (paramString == null) {
+          return null;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameClientQIPCModule", 2, new Object[] { "ACTION_CHECK_GAME_DATA startCheckParam", paramString });
+        }
+        paramString = amwn.a(paramString.gameId);
+        if (paramString != null) {
+          paramString.a(paramBundle);
+        }
+      }
+      else if ("action_game_loading_closed".equals(paramString))
+      {
+        paramString = (CmGameStartChecker.StartCheckParam)paramBundle.getSerializable("StartCheckParam");
+        if (paramString == null) {
+          return null;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameClientQIPCModule", 2, new Object[] { "ACTION_GAME_LOADING_CLOSED startCheckParam", paramString });
+        }
+        paramString = amwn.a(paramString.gameId);
+        if (paramString != null)
+        {
+          paramString = paramString.a();
+          if (paramString != null) {
+            paramString.finish();
+          }
+        }
+      }
+    }
+    label761:
+    return null;
+    label763:
+    return null;
   }
   
-  public boolean a()
+  public void onReceiveMsg(int paramInt, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    super.onReceiveMsg(paramInt, paramBundle);
   }
 }
 

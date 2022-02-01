@@ -1,25 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.Surface;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
-class apdw
-  implements View.OnClickListener
+public class apdw
 {
-  apdw(apdv paramapdv, int paramInt) {}
+  private bbml jdField_a_of_type_Bbml;
+  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = (EGL10)EGLContext.getEGL();
+  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext();
+  private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentDisplay();
+  private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentSurface(12377);
   
-  public void onClick(View paramView)
+  public apdw(bbmk parambbmk, Surface paramSurface)
   {
-    if (apdv.a(this.jdField_a_of_type_Apdv) != this.jdField_a_of_type_Int)
+    this.jdField_a_of_type_Bbml = new bbml(parambbmk);
+    this.jdField_a_of_type_Bbml.a(paramSurface);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Bbml.a(paramLong);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bbml.b();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Bbml.a();
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Bbml != null)
     {
-      apdv.a(this.jdField_a_of_type_Apdv, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Apdv.notifyDataSetChanged();
+      this.jdField_a_of_type_Bbml.a();
+      this.jdField_a_of_type_Bbml = null;
     }
-    axvz.a("0X800ADEB");
-    if (QLog.isColorLevel()) {
-      QLog.d("[BrowserOpt] RecommendBrowserAdapter", 2, new Object[] { "[action] bindItemClickListener: invoked. ", " position: ", Integer.valueOf(this.jdField_a_of_type_Int) });
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

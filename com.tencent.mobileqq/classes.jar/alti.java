@@ -1,37 +1,152 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import android.os.Handler;
+import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.1;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.3;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 
 public class alti
+  extends altj
 {
-  public String a;
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
   
-  public alti(String paramString)
+  private void d()
   {
-    this.a = paramString;
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [startRecordVideo]Lock.CAPTURE_LOCK=" + bdbt.jdField_a_of_type_Boolean);
+    }
+    if (!bdbt.jdField_a_of_type_Boolean) {}
+    synchronized (bdbt.jdField_a_of_type_JavaLangObject)
+    {
+      bdbt.jdField_a_of_type_Boolean = true;
+      bdbt.jdField_a_of_type_JavaLangObject.notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] [startRecordVideo]Lock.CAPTURE_LOCK=" + bdbt.jdField_a_of_type_Boolean);
+      }
+      AVCodec.get().startCapture();
+      localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.startCapture();
+      if (localRMVideoStateMgr.b(2)) {
+        localRMVideoStateMgr.f();
+      }
+      if ((localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) && (localRMVideoStateMgr.i())) {
+        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.h();
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      return;
+    }
   }
   
-  public void a(ambl paramambl, Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
+  public void a()
   {
-    int i = alnr.a(paramQQAppInterface);
-    if ((paramambl == null) || (paramContext == null) || (paramQQAppInterface == null) || (i == 1)) {}
-    SharedPreferences localSharedPreferences;
-    do
-    {
-      return;
-      paramContext = "apollo_friend_profile_drawer_first" + paramQQAppInterface.getCurrentAccountUin();
-      localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
-    } while (!localSharedPreferences.getBoolean(paramContext, true));
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    localRMVideoStateMgr.jdField_a_of_type_Altr.l();
+    localRMVideoStateMgr.k();
     if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileBubble", 2, "onBubbleShow first");
+      QLog.d("RMRecordState", 2, "[@] [RMFileEventNotify]stopWatching");
     }
-    ambc.a(paramambl, paramString, 3, 0);
-    localSharedPreferences.edit().putBoolean(paramContext, false).commit();
-    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "Guide_bubbles_show", 0, 0, new String[] { "", "", "", this.a });
+    this.jdField_a_of_type_Boolean = false;
+    d();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] initState end");
+    }
+  }
+  
+  public void a(bczu parambczu, boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    parambczu = RMVideoStateMgr.a();
+    if (parambczu.jdField_b_of_type_Boolean) {}
+    for (parambczu.jdField_a_of_type_Double = (System.currentTimeMillis() - parambczu.jdField_a_of_type_Long);; parambczu.jdField_a_of_type_Double = paramInt1)
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        if ((parambczu.h()) && (!parambczu.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.e) && (!parambczu.h)) {
+          parambczu.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.2(this));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("RMRecordState", 2, "[@] timeExpire: mIsRecordOver=" + this.jdField_a_of_type_Boolean + " mStateMgr.mTotalTime=" + parambczu.jdField_a_of_type_Double);
+        }
+        parambczu.jdField_a_of_type_Altr.a((int)(parambczu.jdField_a_of_type_Double + bdbv.a().a().a()), this.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_Boolean) {
+          parambczu.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.3(this));
+        }
+      }
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    c();
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    localRMVideoStateMgr.a(2);
+    localRMVideoStateMgr.j();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [RMFileEventNotify]startWatching");
+    }
+  }
+  
+  public void c()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [stopRecordVideo]Lock.CAPTURE_LOCK = " + bdbt.jdField_a_of_type_Boolean);
+    }
+    if (bdbt.jdField_a_of_type_Boolean)
+    {
+      bdbt.jdField_a_of_type_Boolean = false;
+      long l1 = System.currentTimeMillis();
+      this.jdField_a_of_type_Long = (l1 - this.jdField_a_of_type_Long);
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] [stopRecordVideo] current=" + l1 + " timestamp=" + this.jdField_a_of_type_Long);
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        localRMVideoStateMgr.jdField_a_of_type_Double = CodecParam.RECORD_MAX_TIME;
+      }
+      localRMVideoStateMgr.jdField_a_of_type_Altr.q();
+      localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.stopCapture();
+      if (localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) {
+        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.i();
+      }
+      if (localRMVideoStateMgr.b(3))
+      {
+        if (localRMVideoStateMgr.jdField_a_of_type_Bddk != null) {
+          localRMVideoStateMgr.jdField_b_of_type_JavaLangString = localRMVideoStateMgr.jdField_a_of_type_Bddk.a(localRMVideoStateMgr);
+        }
+        localRMVideoStateMgr.g();
+      }
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new RMVideoRecordState.1(this, localRMVideoStateMgr));
+      AVCodec.get().stopCapture();
+      long l2 = localRMVideoStateMgr.jdField_a_of_type_Altr.d();
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] [stopRecordVideo] timeLimit=" + l2 + " timestamp=" + this.jdField_a_of_type_Long);
+      }
+      l1 = l2;
+      if (l2 == -1L) {
+        l1 = this.jdField_a_of_type_Long;
+      }
+      if ((l1 < 500L) && (!this.jdField_a_of_type_Boolean))
+      {
+        localRMVideoStateMgr.jdField_a_of_type_Altr.g(true);
+        localRMVideoStateMgr.a(true);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] stopRecordVideo end Lock.CAPTURE_LOCK = " + bdbt.jdField_a_of_type_Boolean);
+      }
+    }
+  }
+  
+  public void f()
+  {
+    b();
   }
 }
 

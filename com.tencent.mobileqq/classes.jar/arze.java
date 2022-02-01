@@ -1,24 +1,29 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
 
-public class arze
-  implements View.OnLongClickListener
+public final class arze
 {
-  public arze(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
-  
-  public boolean onLongClick(View paramView)
+  public static arzf a(QQAppInterface paramQQAppInterface)
   {
-    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
-      return false;
+    paramQQAppInterface = new arzf();
+    arnr localarnr = arns.a();
+    paramQQAppInterface.jdField_a_of_type_Boolean = localarnr.a();
+    paramQQAppInterface.jdField_a_of_type_JavaLangString = localarnr.a();
+    paramQQAppInterface.b = localarnr.b();
+    paramQQAppInterface.jdField_a_of_type_Int = localarnr.a();
+    paramQQAppInterface.c = localarnr.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocEntryUtils", 2, "getGrayTipsInfo " + paramQQAppInterface.toString());
     }
-    paramView.setSelected(true);
-    bgaz localbgaz = new bgaz();
-    localbgaz.a(2131367097, paramView.getContext().getString(2131692448));
-    localbgaz.a(2131365376, paramView.getContext().getString(2131691363));
-    this.a.a = bfue.a(paramView, localbgaz, new arzf(this, paramView), new arzh(this, paramView));
-    return true;
+    return paramQQAppInterface;
+  }
+  
+  public static Pair<Boolean, Integer> a(AppInterface paramAppInterface)
+  {
+    paramAppInterface = arnc.a();
+    return new Pair(Boolean.valueOf(paramAppInterface.a()), Integer.valueOf(paramAppInterface.a()));
   }
 }
 

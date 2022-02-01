@@ -1,69 +1,59 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.1;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.2;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awvc
-  implements awrb
+class awvc
+  implements AdapterView.OnItemClickListener
 {
-  awvc(awur paramawur) {}
+  awvc(awvb paramawvb) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    if (this.a.a.getActionSheet().isShowing()) {
+      this.a.a.getActionSheet().dismiss();
+    }
+    int i;
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131720175;
+      }
+    }
+    for (;;)
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
+      if (i != -1) {
+        znl.a(1, i);
+      }
+      for (;;)
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + awur.c(this.a));
+        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+        return;
+        if (WXShareHelper.a().b()) {
+          break label175;
         }
-        if (paramBundle.busi_buf.has())
+        i = 2131720176;
+        break;
+        switch ((int)paramLong)
         {
-          paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + awur.c(this.a));
-          }
-          if (paramArrayOfByte.ret.get() == 0)
-          {
-            awur.c(this.a, true);
-            if (awur.d(this.a))
-            {
-              ThreadManager.getUIHandler().post(new PlayOperationViewModel.20.1(this));
-              awur.d(this.a, false);
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a = true;
-            new awrs().h("video").i("playpage_focus").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            ThreadManagerV2.excute(new PlayOperationViewModel.20.2(this, (awhw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
-            return;
-          }
-          if (!TextUtils.isEmpty(paramArrayOfByte.msg.get()))
-          {
-            QQToast.a(BaseApplication.getContext(), 1, paramArrayOfByte.msg.get(), 0).a();
-            return;
-          }
+        default: 
+          break;
+        case 0: 
+          awvb.a(this.a);
+          break;
+        case 1: 
+          awvb.b(this.a);
+          break;
+        case 2: 
+          awvb.c(this.a);
+          break;
+        case 3: 
+          awvb.d(this.a);
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      label175:
+      i = -1;
     }
   }
 }

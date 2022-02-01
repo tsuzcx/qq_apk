@@ -1,33 +1,36 @@
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
-import android.view.View;
-import java.util.ArrayList;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 
 class yyz
-  extends yzd
+  implements ServiceConnection
 {
-  yyz(yyu paramyyu, yzb paramyzb, ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat, View paramView)
+  private yyx a;
+  
+  public yyz(yyx paramyyx)
   {
-    super(null);
+    this.a = paramyyx;
   }
   
-  public void onAnimationEnd(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
-    ViewCompat.setAlpha(this.jdField_a_of_type_AndroidViewView, 1.0F);
-    ViewCompat.setTranslationX(this.jdField_a_of_type_AndroidViewView, 0.0F);
-    ViewCompat.setTranslationY(this.jdField_a_of_type_AndroidViewView, 0.0F);
-    ViewCompat.setScaleX(this.jdField_a_of_type_AndroidViewView, 1.0F);
-    ViewCompat.setScaleY(this.jdField_a_of_type_AndroidViewView, 1.0F);
-    this.jdField_a_of_type_Yyu.dispatchChangeFinished(this.jdField_a_of_type_Yzb.b, false);
-    yyu.g(this.jdField_a_of_type_Yyu).remove(this.jdField_a_of_type_Yzb.b);
-    yyu.a(this.jdField_a_of_type_Yyu);
+    this.a = null;
   }
   
-  public void onAnimationStart(View paramView)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Yyu.dispatchChangeStarting(this.jdField_a_of_type_Yzb.b, false);
+    yyx localyyx = this.a;
+    if (localyyx != null) {
+      localyyx.a(paramComponentName, paramIBinder);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    yyx localyyx = this.a;
+    if (localyyx != null) {
+      localyyx.a(paramComponentName);
+    }
   }
 }
 

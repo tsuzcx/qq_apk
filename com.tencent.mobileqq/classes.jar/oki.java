@@ -1,11 +1,17 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
-class oki
-  extends pkt
+public class oki
+  implements DialogInterface.OnClickListener
 {
-  oki(okh paramokh) {}
+  public oki(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
-  public void a_(List<ucy> paramList) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+  }
 }
 
 

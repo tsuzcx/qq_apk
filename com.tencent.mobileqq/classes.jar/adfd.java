@@ -1,52 +1,156 @@
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.activity.AddAccountActivity.4.1;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class adfd
-  implements View.OnClickListener
+  extends AccountObserver
 {
-  public adfd(EditInfoActivity paramEditInfoActivity) {}
+  public adfd(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckQuickRegisterAccount(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte)
   {
-    EditInfoActivity localEditInfoActivity = this.a;
-    boolean bool;
-    if (!this.a.jdField_a_of_type_Boolean)
+    super.onCheckQuickRegisterAccount(paramBoolean, paramInt, paramArrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_AddAccountActivity", 2, "onCheckQuickRegisterAccount|isSuccess= " + paramBoolean + ",code=" + paramInt);
+    }
+    if (!this.a.isFinishing()) {}
+    try
     {
-      bool = true;
-      localEditInfoActivity.jdField_a_of_type_Boolean = bool;
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label137;
-      }
-      this.a.b();
-      if (this.a.getIntent().getBooleanExtra("key_need_hide_couser_when_emoj", false)) {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838108);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131702765));
-      if ((!this.a.b) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
-        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.dismissDialog(1);
+      if ((paramBoolean) && (paramInt == 0))
+      {
+        paramArrayOfByte = new Intent(this.a, RegisterByNicknameAndPwdActivity.class);
+        paramArrayOfByte.putExtra("key_register_binduin", this.a.app.getCurrentAccountUin());
+        paramArrayOfByte.putExtra("key_register_from_quick_register", true);
+        paramArrayOfByte.putExtra("key_register_is_phone_num_registered", true);
+        paramArrayOfByte.putExtra("not_need_verify_sms", true);
+        this.a.startActivity(paramArrayOfByte);
+        return;
       }
     }
-    for (;;)
+    catch (Exception paramArrayOfByte)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bool = false;
-      break;
-      label137:
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
       }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847816);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131702755));
-      this.a.a();
+      paramArrayOfByte = new Intent(this.a, RegisterPhoneNumActivity.class);
+      paramArrayOfByte.putExtra("key_register_from", 1);
+      this.a.startActivity(paramArrayOfByte);
+    }
+  }
+  
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, String paramString4)
+  {
+    QLog.d("AddAccountActivity", 1, "onLoginFailed ret=" + paramInt1);
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      this.a.runOnUiThread(new AddAccountActivity.4.1(this));
+      if (QLog.isColorLevel()) {
+        QLog.d("AddAccountActivity", 2, "onLoginFailed errorMsg = " + paramString2 + " ret=" + paramInt1);
+      }
+      if ((paramString2 == null) || (paramString2.equals("")))
+      {
+        QQToast.a(this.a, 2131694253, 0).a();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+      if (!TextUtils.isEmpty(paramString3))
+      {
+        Intent localIntent = new Intent(this.a, NotificationActivity.class);
+        localIntent.putExtra("type", 8);
+        if (paramInt1 == 40)
+        {
+          localIntent.putExtra("msg", paramString2);
+          localIntent.putExtra("errorver", paramInt2);
+          localIntent.putExtra("tlverror", paramArrayOfByte2);
+          localIntent.putExtra("errortitle", paramString4);
+        }
+        for (;;)
+        {
+          localIntent.putExtra("loginalias", paramString1);
+          localIntent.putExtra("loginret", paramInt1);
+          localIntent.putExtra("errorUrl", paramString3);
+          localIntent.putExtra("expiredSig", paramArrayOfByte1);
+          localIntent.putExtra("keyFromAddAccount", true);
+          localIntent.putExtra("title", paramString4);
+          if (aojy.a().a(paramArrayOfByte2) == 1)
+          {
+            localIntent.putExtra("uin", this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString());
+            localIntent.putExtra("passwd", this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().toString());
+            localIntent.putExtra("is_from_login", false);
+            localIntent.putExtra("keyTipsScenesId", 1);
+          }
+          this.a.startActivity(localIntent);
+          return;
+          localIntent.putExtra("msg", paramString2 + " " + paramString3);
+        }
+      }
+      if (paramInt1 == 2008)
+      {
+        bhdj.a(this.a, 230, anvx.a(2131699321), anvx.a(2131699322), "OK", null, new adfe(this), null).show();
+        QQToast.a(this.a, 2131692890, 0).a();
+        return;
+      }
+      bhdj.a(this.a, 230, anvx.a(2131699325), paramString2, new adff(this), null).show();
+    }
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    QLog.d("AddAccountActivity", 1, "onLoginSuccess");
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    QLog.d("AddAccountActivity", 1, "onLoginTimeout");
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      QQToast.a(this.a, 2131694253, 0).a();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (!this.a.isFinishing()) {}
+    try
+    {
+      this.a.dismissDialog(0);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

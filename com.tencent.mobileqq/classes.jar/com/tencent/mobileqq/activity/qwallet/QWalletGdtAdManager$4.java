@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import ajvj;
+import akrc;
 import com.tencent.qphone.base.util.QLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -8,7 +8,7 @@ import java.net.URL;
 public class QWalletGdtAdManager$4
   implements Runnable
 {
-  public QWalletGdtAdManager$4(ajvj paramajvj, String paramString) {}
+  public QWalletGdtAdManager$4(akrc paramakrc, String paramString) {}
   
   public void run()
   {

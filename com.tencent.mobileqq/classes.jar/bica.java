@@ -1,18 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadManager.17;
-
 public class bica
-  implements DialogInterface.OnClickListener
 {
-  public bica(DownloadManager.17 param17) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c = 2;
+  public int d;
+  public int e;
+  public int f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bica(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bibw.r, false);
-    bibs.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
   }
 }
 

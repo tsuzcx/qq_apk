@@ -1,44 +1,44 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchDetailFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class atql
-  extends atqm
+public class atql
+  extends bcbd<bcfj, bcnt>
 {
-  public ImageView a;
-  public TextView a;
-  
-  public atql(View paramView)
+  public atql(FileSearchDetailFragment paramFileSearchDetailFragment, ListView paramListView, FaceDecoder paramFaceDecoder, bcfj parambcfj, String paramString, QQAppInterface paramQQAppInterface)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = atqf.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368605));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380035));
-    paramView.setTag(this);
+    super(paramListView, paramFaceDecoder);
+    paramFileSearchDetailFragment = (atqj)parambcfj;
+    if (paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.size() > 1)
+    {
+      paramListView = new ArrayList();
+      paramFaceDecoder = paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramFaceDecoder.hasNext())
+      {
+        parambcfj = (FileManagerEntity)paramFaceDecoder.next();
+        paramString = new atqj();
+        paramString.jdField_a_of_type_JavaLangString = paramFileSearchDetailFragment.jdField_a_of_type_JavaLangString;
+        paramString.jdField_a_of_type_JavaUtilList.add(parambcfj);
+        paramListView.add(paramString);
+      }
+      a(paramListView);
+    }
   }
   
-  public void a(String paramString1, String paramString2, FaceDecoder paramFaceDecoder)
+  protected bcif<bcfj, bcnt> a(int paramInt)
   {
-    Object localObject = paramString2;
-    if (paramString2 == null) {
-      localObject = paramString1;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(new QQText((CharSequence)localObject, 2));
-    localObject = paramFaceDecoder.getBitmapFromCache(1, paramString1);
-    paramString2 = (String)localObject;
-    if (localObject == null)
-    {
-      localObject = bfvo.a();
-      paramString2 = (String)localObject;
-      if (!paramFaceDecoder.isPausing())
-      {
-        paramFaceDecoder.requestDecodeFace(paramString1, 1, false);
-        paramString2 = (String)localObject;
-      }
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
+    return new atqo(this.a.a);
+  }
+  
+  protected bcnu a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new atqp(paramViewGroup);
   }
 }
 

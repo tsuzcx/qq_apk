@@ -1,29 +1,31 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class alzg
-  implements BusinessObserver
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public int a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public int b;
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public alzg(alzc paramalzc, int paramInt, DiscussionInfo paramDiscussionInfo)
   {
-    switch (paramInt)
-    {
-    case 3: 
-    default: 
-      return;
-    case 2: 
-      a(paramBoolean, paramObject);
-      return;
-    case 1: 
-      b(paramBoolean, paramObject);
-      return;
-    }
-    c(paramBoolean, paramObject);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+  }
+  
+  public alzg(alzc paramalzc, int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+    this.b = paramInt2;
+  }
+  
+  public alzg(alzc paramalzc, int paramInt, Entity paramEntity)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = ((TroopInfo)paramEntity);
   }
 }
 

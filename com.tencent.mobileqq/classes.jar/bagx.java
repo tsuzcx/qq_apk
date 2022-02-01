@@ -1,16 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 public class bagx
-  extends bagv
+  implements Animation.AnimationListener
 {
-  private static String a = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230752);
+  public void a(Animation paramAnimation, float paramFloat) {}
   
-  public bagx()
-  {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", a);
-    this.mFilterType = 7;
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

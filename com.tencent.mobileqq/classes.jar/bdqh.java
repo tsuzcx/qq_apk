@@ -1,19 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bdqh
-  extends BroadcastReceiver
+class bdqh
+  implements View.OnClickListener
 {
-  public bdqh(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  bdqh(bdqg parambdqg) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent != null) && (paramIntent.getAction().equals("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete"))) {
-      this.a.finish();
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

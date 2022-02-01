@@ -1,26 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bacj
-  extends Animation
+class bacj
+  implements View.OnClickListener
 {
-  public bacj(CircleBarView paramCircleBarView) {}
+  bacj(baci parambaci, int paramInt) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onClick(View paramView)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
-    CircleBarView.b(this.a, 30.0F);
-    if (CircleBarView.a(this.a) != null)
-    {
-      if (CircleBarView.a(this.a) != null) {
-        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
-      }
-      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
-    }
-    this.a.postInvalidate();
+    this.jdField_a_of_type_Baci.a(this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

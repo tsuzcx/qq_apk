@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import avtf;
-import avtq;
+import awzh;
+import awzs;
 
 class MsgBackupQRFragment$7
   implements Runnable
@@ -10,7 +10,7 @@ class MsgBackupQRFragment$7
   
   public void run()
   {
-    avtq.a().a().a(false);
+    awzs.a().a().a(false);
   }
 }
 

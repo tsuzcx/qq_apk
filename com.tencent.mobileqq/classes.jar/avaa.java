@@ -1,23 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import android.util.Log;
+import java.nio.charset.Charset;
 
 public class avaa
-  implements DialogInterface.OnClickListener
+  implements auzz
 {
-  public avaa(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  public static final Charset a = Charset.forName("UTF-8");
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    if (FloatingScreenPermission.requestPermission(BaseApplicationImpl.getContext()))
+    a(paramString1, paramString2, paramString3, null);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  {
+    if ("d".equals(paramString2))
     {
-      ListenTogetherOverlayFragment.a(this.a, true);
+      Log.d(paramString1, paramString3, paramThrowable);
       return;
     }
-    ListenTogetherOverlayFragment.a(this.a).finish();
+    if ("e".equals(paramString2))
+    {
+      Log.e(paramString1, paramString3, paramThrowable);
+      return;
+    }
+    if ("w".equals(paramString2))
+    {
+      Log.w(paramString1, paramString3, paramThrowable);
+      return;
+    }
+    if ("i".equals(paramString2))
+    {
+      Log.i(paramString1, paramString3, paramThrowable);
+      return;
+    }
+    Log.i(paramString1, paramString3, paramThrowable);
   }
 }
 

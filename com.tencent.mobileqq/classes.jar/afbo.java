@@ -1,33 +1,27 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.widget.ImageView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
-import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class afbo
-  implements FaceDecoder.DecodeTaskCompletionListener
+public class afbo
+  extends MqqHandler
 {
-  afbo(afbj paramafbj) {}
+  public afbo(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void handleMessage(Message paramMessage)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    for (;;)
-    {
+    if (!this.a.app.isLogin()) {
       return;
-      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-        afbj.b(this.a).setImageBitmap(paramBitmap);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
-        return;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-          afbj.a(this.a).setImageBitmap(paramBitmap);
-        }
-      }
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.c();
+      return;
+    }
+    this.a.c();
   }
 }
 

@@ -1,28 +1,14 @@
-import android.view.View;
-import com.tencent.avgame.ui.AVGameRoomCenterFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class nik
-  implements mzi
+class nik
+  implements DialogInterface.OnClickListener
 {
-  public nik(AVGameRoomCenterFragment paramAVGameRoomCenterFragment) {}
+  nik(nii paramnii) {}
   
-  public void a(View paramView, myy parammyy, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (parammyy == null) {
-      return;
-    }
-    switch (((myx)parammyy).e())
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.d();
-      return;
-    case 2: 
-      this.a.b();
-      return;
-    }
-    this.a.c();
+    this.a.a.e();
   }
 }
 

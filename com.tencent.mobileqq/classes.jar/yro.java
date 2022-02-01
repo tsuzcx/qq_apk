@@ -1,52 +1,157 @@
-import android.app.Dialog;
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.biz.qqstory.view.AnimationPoint;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.os.Looper;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public class yro
-  extends ReportDialog
+public abstract class yro
+  implements yrs
 {
-  protected TextView a;
-  protected AnimationPoint a;
+  protected float a;
+  public Context a;
+  public Rect a;
+  protected DoodleView a;
+  protected yrp a;
+  protected boolean b;
+  protected Paint e;
+  protected Paint f;
+  protected int l;
+  protected int m;
+  protected int n;
+  protected int o;
   
-  public yro(Context paramContext)
+  public yro(DoodleView paramDoodleView)
   {
-    super(paramContext, 2131755016);
-    View localView = LayoutInflater.from(paramContext).inflate(2131561670, null);
-    localView.setOnTouchListener(new yrp(this));
-    super.setContentView(localView);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362697));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367832));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setRadius(UIUtils.dip2px(paramContext, 25.0F));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setLoopTime(2000L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(4000L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new yrq(this, paramContext));
+    if (paramDoodleView == null) {
+      throw new IllegalStateException("DoodleView can not be null.");
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView = paramDoodleView;
+    b();
   }
   
-  public void a(String paramString)
+  private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.e = new Paint();
+    this.e.setAntiAlias(true);
+    this.f = new Paint();
+    this.f.setAntiAlias(true);
+    this.f.setStyle(Paint.Style.STROKE);
+    this.f.setStrokeWidth(5.0F);
+    this.f.setColor(-16776961);
+    this.b = false;
   }
   
-  public void a(boolean paramBoolean)
+  public abstract String a();
+  
+  public void a(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setIsVertical(paramBoolean);
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public void dismiss()
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
-    super.dismiss();
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      throw new IllegalArgumentException("illegal width or height, width=" + paramInt1 + ",height=" + paramInt2);
+    }
+    ykq.b("BaseLayer", "layer size,width=" + paramInt1 + ",height=" + paramInt2);
+    this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
+    this.jdField_a_of_type_AndroidGraphicsRect.right = paramInt1;
+    this.jdField_a_of_type_AndroidGraphicsRect.top = 0;
+    this.jdField_a_of_type_AndroidGraphicsRect.bottom = paramInt2;
+    this.n = this.jdField_a_of_type_AndroidGraphicsRect.left;
+    this.o = this.jdField_a_of_type_AndroidGraphicsRect.right;
+    this.l = this.jdField_a_of_type_AndroidGraphicsRect.top;
+    this.m = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
   }
   
-  public void show()
+  protected abstract void a(Canvas paramCanvas);
+  
+  public void a(yrp paramyrp)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
-    super.show();
+    this.jdField_a_of_type_Yrp = paramyrp;
+  }
+  
+  protected abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRect.width();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.setActiveLayer(this);
+    }
+    for (;;)
+    {
+      g();
+      return;
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.d();
+    }
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsRect.height();
+  }
+  
+  public abstract boolean c(MotionEvent paramMotionEvent);
+  
+  public final void d(Canvas paramCanvas)
+  {
+    a(paramCanvas);
+  }
+  
+  public boolean d()
+  {
+    return this.b;
+  }
+  
+  public boolean d(MotionEvent paramMotionEvent)
+  {
+    return f(paramMotionEvent);
+  }
+  
+  public void f()
+  {
+    ykq.b("BaseLayer", getClass().getName() + " onDestroy.");
+  }
+  
+  public final boolean f(MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Yrp != null) {
+      this.jdField_a_of_type_Yrp.a(this, paramMotionEvent);
+    }
+    g();
+    return a(paramMotionEvent);
+  }
+  
+  public void g()
+  {
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.postInvalidate();
+  }
+  
+  public void h()
+  {
+    ykq.b("BaseLayer", getClass().getName() + " onPause.");
+    this.b = false;
+  }
+  
+  public void i()
+  {
+    ykq.b("BaseLayer", getClass().getName() + " onResume.");
+    this.b = true;
   }
 }
 

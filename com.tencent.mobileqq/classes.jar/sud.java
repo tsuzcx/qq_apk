@@ -1,63 +1,58 @@
 import android.content.Context;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class sud
-  extends stg
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/superplayer/SuperPlayerSDKMgr;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKMgr;", "Lcom/tencent/mobileqq/videoplatform/SDKInitListener;", "()V", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKEventListener;", "initSDK", "", "installPlugin", "isInstalled", "", "onSDKInited", "success", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sud
+  implements SDKInitListener, stu
 {
-  private ProteusItemData jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  private static stt a;
+  public static final sud a;
   
-  public sud(suc paramsuc, View paramView, BaseData paramBaseData)
+  static
   {
-    super(paramView, paramBaseData);
-    if ((paramView instanceof Container)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
+    jdField_a_of_type_Sud = new sud();
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.readinjoy.video", 2, "initSuperPlayerSDK() finish");
     }
   }
   
-  private void a(Context paramContext, JSONObject paramJSONObject)
+  public void a(@NotNull stt paramstt)
   {
-    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new sue(this, paramContext));
+    Intrinsics.checkParameterIsNotNull(paramstt, "listener");
+    jdField_a_of_type_Stt = paramstt;
+    bapt.a((Context)BaseApplicationImpl.getContext(), (SDKInitListener)this);
   }
   
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  public boolean a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
-    do
+    return bapt.a();
+  }
+  
+  public void onSDKInited(boolean paramBoolean)
+  {
+    stt localstt;
+    if (paramBoolean)
     {
-      do
-      {
-        return;
-      } while (!(paramBaseData2 instanceof ProteusItemData));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData = ((ProteusItemData)paramBaseData2);
-      paramBaseData1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
-    } while (paramBaseData1 == null);
-    suc.a(this.jdField_a_of_type_Suc, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-    if ((paramBaseData2 instanceof RecommendAdData)) {
-      suc.a(this.jdField_a_of_type_Suc, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, (RecommendAdData)paramBaseData2);
-    }
-    try
-    {
-      paramBaseData1.bindData(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.c);
-      ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a.getViewBean());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
-      a(suc.a(this.jdField_a_of_type_Suc), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.c);
-      return;
-    }
-    catch (Exception paramBaseData1)
-    {
-      for (;;)
-      {
-        twp.a("WebFastProteusViewAdCreator", paramBaseData1.getMessage());
+      localstt = jdField_a_of_type_Stt;
+      if (localstt != null) {
+        localstt.a();
       }
     }
+    do
+    {
+      return;
+      localstt = jdField_a_of_type_Stt;
+    } while (localstt == null);
+    localstt.a(0);
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qqcircle.report;
 
-import bhpc;
+import bizw;
 import cooperation.qzone.QUA;
 
 public class QCirclePluginQualityReporter$ReportData
@@ -15,7 +15,7 @@ public class QCirclePluginQualityReporter$ReportData
   private String qua = QUA.getQUA3();
   private long retCode;
   private String timeCost = "";
-  private String uin = String.valueOf(bhpc.a().a());
+  private String uin = String.valueOf(bizw.a().a());
   
   public String getClient_time()
   {

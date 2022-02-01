@@ -1,27 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-class aiuc
-  implements DialogInterface.OnKeyListener
+public class aiuc
+  extends SosoInterface.OnLocationListener
 {
-  aiuc(aitt paramaitt, int paramInt) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public aiuc(SearchContactsFragment paramSearchContactsFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (paramInt == 4)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0)
     {
-      if (!aitt.a(this.jdField_a_of_type_Aitt)) {
-        break label28;
-      }
-      aitt.a(this.jdField_a_of_type_Aitt, this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      return true;
-      label28:
-      aitt.a(this.jdField_a_of_type_Aitt, aitt.a(this.jdField_a_of_type_Aitt), Long.valueOf(aitt.a(this.jdField_a_of_type_Aitt)).longValue());
-      aitt.a(this.jdField_a_of_type_Aitt);
+      SearchContactsFragment.a(this.a, paramSosoLbsInfo.mLocation.mLat02);
+      SearchContactsFragment.b(this.a, paramSosoLbsInfo.mLocation.mLon02);
     }
   }
 }

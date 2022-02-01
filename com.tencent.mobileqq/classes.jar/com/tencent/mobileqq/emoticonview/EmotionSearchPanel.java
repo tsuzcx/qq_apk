@@ -185,24 +185,32 @@ public class EmotionSearchPanel
   
   private void initView()
   {
-    this.emotionInput = ((EditText)findViewById(2131366036));
-    this.emotionCancelBtn = ((TextView)findViewById(2131366035));
-    this.emotionSearchRoot = ((RelativeLayout)findViewById(2131366037));
-    this.emotionSearchBar = ((RelativeLayout)findViewById(2131366034));
-    this.maskBtmView = findViewById(2131370607);
-    this.maskBtmView.setBackgroundColor(getContext().getResources().getColor(2131165631));
-    this.emotionSearchBar.setBackgroundColor(getContext().getResources().getColor(2131165631));
-    this.emotionInputAnimLayout = ((RelativeLayout)findViewById(2131366023));
-    this.searchCleanImg = ((ImageView)findViewById(2131369368));
+    this.emotionInput = ((EditText)findViewById(2131366137));
+    this.emotionCancelBtn = ((TextView)findViewById(2131366136));
+    this.emotionSearchRoot = ((RelativeLayout)findViewById(2131366138));
+    this.emotionSearchBar = ((RelativeLayout)findViewById(2131366135));
+    this.maskBtmView = findViewById(2131370790);
+    this.maskBtmView.setBackgroundColor(getContext().getResources().getColor(2131165637));
+    this.emotionSearchBar.setBackgroundColor(getContext().getResources().getColor(2131165637));
+    this.emotionInputAnimLayout = ((RelativeLayout)findViewById(2131366124));
+    this.searchCleanImg = ((ImageView)findViewById(2131369534));
     this.searchCleanImg.setOnClickListener(this);
-    this.mask = ((FrameLayout)findViewById(2131370601));
+    this.mask = ((FrameLayout)findViewById(2131370784));
     this.emotionCancelBtn.setOnClickListener(this);
     this.mask.setOnClickListener(this);
     this.decorView = ((Activity)getContext()).getWindow().getDecorView();
     this.emotionInput.setBackgroundDrawable(getShapeDrawable(18));
     this.emotionInputAnimLayout.setBackgroundDrawable(getShapeDrawable(18));
-    this.emotionInput.setOnEditorActionListener(new EmotionSearchPanel.1(this));
-    this.emotionInput.addTextChangedListener(new EmotionSearchPanel.2(this));
+    if (ThemeUtil.isNowThemeIsNight(this.app, false, null)) {
+      this.emotionInput.setTextColor(Color.parseColor("#B0B3BF"));
+    }
+    for (;;)
+    {
+      this.emotionInput.setOnEditorActionListener(new EmotionSearchPanel.1(this));
+      this.emotionInput.addTextChangedListener(new EmotionSearchPanel.2(this));
+      return;
+      this.emotionInput.setTextColor(Color.parseColor("#03081A"));
+    }
   }
   
   private boolean isNeedDoCenterMove(boolean paramBoolean)
@@ -509,7 +517,7 @@ public class EmotionSearchPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionSearchPanel
  * JD-Core Version:    0.7.0.1
  */

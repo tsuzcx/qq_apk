@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.doodle.control;
 
-import afnb;
-import afnc;
+import agef;
+import ageg;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -15,7 +15,7 @@ public class ColorView
   extends View
 {
   private int jdField_a_of_type_Int;
-  private afnc jdField_a_of_type_Afnc;
+  private ageg jdField_a_of_type_Ageg;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private int b = AIOUtils.dp2px(4.0F, getResources());
@@ -65,10 +65,10 @@ public class ColorView
     invalidate();
   }
   
-  public void setListener(afnc paramafnc)
+  public void setListener(ageg paramageg)
   {
-    this.jdField_a_of_type_Afnc = paramafnc;
-    setOnClickListener(new afnb(this));
+    this.jdField_a_of_type_Ageg = paramageg;
+    setOnClickListener(new agef(this));
   }
 }
 

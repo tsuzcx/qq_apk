@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.content.res.Resources;
-import bfre;
+import bgzv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
@@ -36,35 +36,35 @@ public class MessageForTofuBaseProfile
     default: 
       return "";
     case 20002: 
-      return line(2131694638, paramJSONObject.optString("key_profile_nickname", ""));
+      return line(2131694839, paramJSONObject.optString("key_profile_nickname", ""));
     case 20031: 
       i = paramJSONObject.optInt("key_profile_birthday", 0);
-      return line(2131694580, String.format(Locale.getDefault(), "%d-%d-%d", new Object[] { Integer.valueOf((0xFFFF0000 & i) >>> 16), Integer.valueOf((0xFF00 & i) >>> 8), Integer.valueOf(i & 0xFF) }));
+      return line(2131694781, String.format(Locale.getDefault(), "%d-%d-%d", new Object[] { Integer.valueOf((0xFFFF0000 & i) >>> 16), Integer.valueOf((0xFF00 & i) >>> 8), Integer.valueOf(i & 0xFF) }));
     case 27264: 
-      return line(2131694582, paramJSONObject.optString("key_profile_education", ""));
+      return line(2131694783, paramJSONObject.optString("key_profile_education", ""));
     case 20032: 
-      return line(2131694634, paramJSONObject.optString("key_profile_location_desc", ""));
+      return line(2131694835, paramJSONObject.optString("key_profile_location_desc", ""));
     case 24002: 
-      return line(2131694628, paramJSONObject.optString("key_profile_location_desc", ""));
+      return line(2131694829, paramJSONObject.optString("key_profile_location_desc", ""));
     case 24008: 
-      return line(2131694591, paramJSONObject.optString("key_profile_company", ""));
+      return line(2131694792, paramJSONObject.optString("key_profile_company", ""));
     case 27037: 
       i = paramJSONObject.optInt("key_profile_occupation", -1);
       String str = "";
       paramJSONObject = str;
-      if (i < bfre.e.length - 1) {
+      if (i < bgzv.e.length - 1) {
         if (i > 0) {
           break label267;
         }
       }
-      for (paramJSONObject = str;; paramJSONObject = bfre.e[i]) {
-        return line(2131694683, paramJSONObject);
+      for (paramJSONObject = str;; paramJSONObject = bgzv.e[i]) {
+        return line(2131694886, paramJSONObject);
       }
     case 20011: 
       label267:
-      return line(2131694621, paramJSONObject.optString("key_profile_email", ""));
+      return line(2131694822, paramJSONObject.optString("key_profile_email", ""));
     }
-    return line(2131694652, paramJSONObject.optString("key_profile_introduction", ""));
+    return line(2131694853, paramJSONObject.optString("key_profile_introduction", ""));
   }
   
   protected void doParse()
@@ -116,7 +116,7 @@ public class MessageForTofuBaseProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTofuBaseProfile
  * JD-Core Version:    0.7.0.1
  */

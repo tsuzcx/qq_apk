@@ -1,52 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahnj
+  implements ahnr
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static ahnj a(String paramString)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    ahnj localahnj = new ahnj();
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if ((paramString.has("useRecommendedSticker")) && (paramString.has("maxMatchLength")))
-      {
-        localahnj.a(paramString.getBoolean("useRecommendedSticker"));
-        localahnj.a(paramString.getInt("maxMatchLength"));
-      }
-      return localahnj;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("StickerRecConfigBean", 2, paramString.getMessage());
-    }
-    return localahnj;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    paramagtf.b(paramMessageRecord, paramagus);
   }
 }
 

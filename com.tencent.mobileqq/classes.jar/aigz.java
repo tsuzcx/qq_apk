@@ -1,31 +1,8 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
-
-public class aigz
-  extends aigo
+public abstract interface aigz
 {
-  public QIMNotifyAddFriend a;
+  public abstract void a();
   
-  public aigz(QIMNotifyAddFriend paramQIMNotifyAddFriend)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend = paramQIMNotifyAddFriend;
-    this.jdField_a_of_type_Long = paramQIMNotifyAddFriend.pushTime;
-  }
-  
-  public String a()
-  {
-    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.uin);
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return "getMessage";
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.hasRead;
-  }
+  public abstract void b();
 }
 
 

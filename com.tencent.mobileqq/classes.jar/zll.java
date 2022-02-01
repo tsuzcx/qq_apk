@@ -1,21 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.subscribe.widget.AlphaLoadingView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 
 public class zll
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public zll(AlphaLoadingView paramAlphaLoadingView) {}
+  public zll(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if (!AlphaLoadingView.a(this.a))
-    {
-      this.a.invalidate();
-      sendEmptyMessageDelayed(1, AlphaLoadingView.a(this.a));
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

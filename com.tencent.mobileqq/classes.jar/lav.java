@@ -1,94 +1,88 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
 import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class lav
   extends QIPCModule
 {
-  private lax a;
-  
   private lav()
   {
-    super("AioShareMusicIPCWebClient");
+    super("AioShareMusicIPCMainClient");
   }
   
   public static lav a()
   {
-    return lay.a();
+    return lax.a();
   }
   
-  public static void a(JSONObject paramJSONObject, String paramString, EIPCResultCallback paramEIPCResultCallback)
+  private void a(Bundle paramBundle)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("data", paramJSONObject.toString());
-    QIPCClientHelper.getInstance().getClient().callServer("AioShareMusicIPCMainClient", paramString, localBundle, paramEIPCResultCallback);
-  }
-  
-  public void a()
-  {
+    QQAppInterface localQQAppInterface = null;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (localQQAppInterface != null) {}
     try
     {
-      this.a = null;
-      if (QIPCClientHelper.getInstance().getClient() != null)
-      {
-        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-        if (QLog.isColorLevel()) {
-          QLog.d("AioShareMusic.AioShareMusicIPCWebClient", 2, "unregister real");
-        }
-      }
+      ((ListenTogetherManager)localQQAppInterface.getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).c(new JSONObject(paramBundle.getString("data")));
       return;
     }
-    catch (Exception localException)
+    catch (JSONException paramBundle)
     {
-      QLog.e("AioShareMusic.AioShareMusicIPCWebClient", 1, "unregister ipc module error.", localException);
+      paramBundle.printStackTrace();
     }
   }
   
-  public void a(lax paramlax)
+  public static void a(JSONObject paramJSONObject, String paramString)
   {
-    if (this.a != null) {}
-    for (;;)
+    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+    if (QLog.isColorLevel()) {
+      QLog.d("AioShareMusic.AioShareMusicIPCMainClient", 2, "callWebClient data:" + paramJSONObject.toString() + "  isToolRunning:" + bool);
+    }
+    if (bool)
     {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("data", paramJSONObject.toString());
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "AioShareMusicIPCWebClient", paramString, localBundle, null);
+    }
+  }
+  
+  private void b(Bundle paramBundle)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (localQQAppInterface != null) {}
+    try
+    {
+      ((ListenTogetherManager)localQQAppInterface.getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).b(new JSONObject(paramBundle.getString("data")));
       return;
-      try
-      {
-        lav locallav = a();
-        this.a = paramlax;
-        QIPCClientHelper.getInstance().register(locallav);
-        if (QLog.isColorLevel())
-        {
-          QLog.d("AioShareMusic.AioShareMusicIPCWebClient", 2, "register real");
-          return;
-        }
-      }
-      catch (Exception paramlax)
-      {
-        QLog.e("AioShareMusic.AioShareMusicIPCWebClient", 1, "register ipc module error.", paramlax);
-      }
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
     }
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    try
-    {
-      paramBundle = new JSONObject(paramBundle.getString("data"));
-      if (this.a != null) {
-        this.a.a(paramString, paramBundle);
-      }
-      return null;
+    if ("checkAioShareMusic".equals(paramString)) {
+      b(paramBundle);
     }
-    catch (JSONException paramString)
+    for (;;)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
+      return null;
+      if ("startListenAioShareMusic".equals(paramString)) {
+        a(paramBundle);
       }
     }
   }

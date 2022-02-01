@@ -1,93 +1,57 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-public abstract class pmb
+public class pmb
+  implements AladdinConfigHandler
 {
-  @NotNull
-  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  @NotNull
-  private pmc jdField_a_of_type_Pmc;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private static final Set<String> a = ;
   
-  public pmb(@NotNull pmc parampmc, @NotNull String paramString)
+  public static Set<String> a()
   {
-    this.jdField_a_of_type_Pmc = parampmc;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return a;
   }
   
-  public pmc a()
+  private static Set<String> b()
   {
-    return this.jdField_a_of_type_Pmc;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onCreate");
+    HashSet localHashSet = new HashSet();
+    Object localObject = (String)bmhv.a("default_feeds_aladdin_keys", "");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return localHashSet;
     }
-  }
-  
-  @UiThread
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Pmc.a(this, paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onDestroy");
+    localObject = ((String)localObject).split("\\|");
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      localHashSet.add(localObject[i]);
+      i += 1;
     }
+    return localHashSet;
   }
   
-  public void c()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onResume");
+    QLog.d("WhiteListBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pku.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("WhiteListBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      bmhv.a("default_feeds_aladdin_keys", str2);
     }
+    return true;
   }
   
-  public void d()
+  public void onWipeConfig(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onPause");
-    }
-  }
-  
-  public void e()
-  {
-    this.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onShowSelf");
-    }
-  }
-  
-  public void f()
-  {
-    this.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("BasePopupStep", 2, "(" + this.jdField_a_of_type_JavaLangString + ") onHideSelf");
-    }
-  }
-  
-  protected abstract void g();
-  
-  protected abstract void h();
-  
-  @NonNull
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    QLog.d("WhiteListBidConfigHandler", 1, "[onWipeConfig]");
   }
 }
 

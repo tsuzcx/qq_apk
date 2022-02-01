@@ -1,13 +1,13 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-class bjxt
-  extends RecyclerView.ViewHolder
+public class bjxt
+  implements bimf
 {
-  bjxt(bjxq parambjxq, View paramView)
-  {
-    super(paramView);
-  }
+  public bjxt(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
 }
 
 

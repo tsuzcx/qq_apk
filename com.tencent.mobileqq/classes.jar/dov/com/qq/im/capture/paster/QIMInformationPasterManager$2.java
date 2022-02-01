@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.paster;
 
 import android.text.TextUtils;
-import bmug;
-import bmuh;
-import bmuk;
-import bnli;
+import bojy;
+import bojz;
+import bokc;
+import bpba;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -14,15 +14,15 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class QIMInformationPasterManager$2
   implements Runnable
 {
-  public QIMInformationPasterManager$2(bmug parambmug, List paramList) {}
+  public QIMInformationPasterManager$2(bojy parambojy, List paramList) {}
   
   public void run()
   {
-    bmug.a(this.this$0).clear();
+    bojy.a(this.this$0).clear();
     if (QLog.isColorLevel()) {
       QLog.d("QIMInformationPasterManager", 2, "patch pull res");
     }
-    if (!NetworkUtil.isNetworkAvailable(bmug.a(this.this$0))) {
+    if (!NetworkUtil.isNetworkAvailable(bojy.a(this.this$0))) {
       if (QLog.isColorLevel()) {
         QLog.d("QIMInformationPasterManager", 2, "network is unavailable");
       }
@@ -31,22 +31,22 @@ public class QIMInformationPasterManager$2
     {
       return;
       Iterator localIterator = this.a.iterator();
-      bnli localbnli;
+      bpba localbpba;
       while (localIterator.hasNext())
       {
-        localbnli = (bnli)localIterator.next();
-        if ((!TextUtils.isEmpty(localbnli.e)) && (!this.this$0.a(localbnli)) && (localbnli.b != 2)) {
-          bmug.a(this.this$0).add(localbnli);
+        localbpba = (bpba)localIterator.next();
+        if ((!TextUtils.isEmpty(localbpba.e)) && (!this.this$0.a(localbpba)) && (localbpba.b != 2)) {
+          bojy.a(this.this$0).add(localbpba);
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "need download size:" + bmug.a(this.this$0).size());
+        QLog.d("QIMInformationPasterManager", 2, "need download size:" + bojy.a(this.this$0).size());
       }
-      localIterator = bmug.a(this.this$0).iterator();
+      localIterator = bojy.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        localbnli = (bnli)localIterator.next();
-        this.this$0.a.a(localbnli, new bmuh(this));
+        localbpba = (bpba)localIterator.next();
+        this.this$0.a.a(localbpba, new bojz(this));
       }
     }
   }

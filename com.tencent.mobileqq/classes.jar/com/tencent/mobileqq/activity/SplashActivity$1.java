@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aehp;
+import aeyx;
 import android.content.IntentFilter;
-import bbox;
-import bjnm;
+import bcvr;
+import bkyy;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class SplashActivity$1
   implements Runnable
@@ -18,9 +19,9 @@ public class SplashActivity$1
     {
       QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
       localQQNotificationManager.cancel("SplashActivity", 241);
-      bbox localbbox = (bbox)this.this$0.app.getManager(10);
-      if (localbbox != null) {
-        localbbox.a(1, 0);
+      bcvr localbcvr = (bcvr)this.this$0.app.getManager(QQManagerFactory.QZONE_MANAGER);
+      if (localbcvr != null) {
+        localbcvr.a(1, 0);
       }
       localQQNotificationManager.cancel("SplashActivity", 265);
       localQQNotificationManager.cancel("SplashActivity", 267);
@@ -31,8 +32,8 @@ public class SplashActivity$1
       localQQNotificationManager.cancel("SplashActivity", 269);
       localQQNotificationManager.cancel("SplashActivity", 239);
       localQQNotificationManager.cancel("SplashActivity", 527);
-      bjnm.a(this.this$0.app).a();
-      SplashActivity.a(this.this$0, new aehp(this));
+      bkyy.a(this.this$0.app).a();
+      SplashActivity.a(this.this$0, new aeyx(this));
       this.this$0.registerReceiver(SplashActivity.a(this.this$0), new IntentFilter("before_account_change"));
       return;
     }

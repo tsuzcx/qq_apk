@@ -1,41 +1,28 @@
-import com.tencent.weseevideo.model.MediaModel;
-import dov.com.qq.im.aeeditor.module.export.AEEditorGenerateRunnable;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.2.1;
 
 public class bmdf
+  implements ServiceConnection
 {
-  public float a;
-  public int a;
-  public long a;
-  public MediaModel a;
-  public AEEditorGenerateRunnable a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
+  bmdf(bmde parambmde) {}
   
-  public bmdf(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, MediaModel paramMediaModel)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.g = paramString1;
-    this.h = paramString2;
-    this.i = paramString3;
-    this.j = paramString4;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString6;
-    this.c = paramString7;
-    this.f = paramString5;
-    this.d = paramString8;
-    this.jdField_a_of_type_ComTencentWeseevideoModelMediaModel = paramMediaModel;
-    this.e = "AEEDITOR_GENERATE_STATUS_WAIT";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
+    this.a.jdField_a_of_type_Bmcu = bmcv.a(paramIBinder);
+    if (this.a.jdField_a_of_type_Bmcu != null)
+    {
+      paramComponentName = new QQIndividualityRemoteProxy.2.1(this);
+      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
+      paramComponentName.start();
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    this.a.jdField_a_of_type_Bmcu = null;
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 

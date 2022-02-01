@@ -1,6 +1,6 @@
 package com.tencent.youtu.ytagreflectlivecheck.requester;
 
-import com.tencent.youtu.ytcommon.tools.YTLogger;
+import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
 import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
 
 public class LiveStyleResponse
@@ -27,7 +27,7 @@ public class LiveStyleResponse
     {
       this.responseParsed = null;
       this.originResponse = null;
-      YTLogger.w(TAG, "[LiveStyleResponse.onGetLiveStyle] parse response failed. error: " + localException + " response: " + paramString);
+      YTAGReflectLiveCheckJNIInterface.nativeLog(TAG, "[LiveStyleResponse.onGetLiveStyle] parse response failed. error: " + localException + " response: " + paramString);
     }
   }
 }

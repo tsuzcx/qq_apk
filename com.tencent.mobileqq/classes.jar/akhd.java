@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class akhd
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public MessageRecord a;
-  public String a;
-  public byte[] a;
+  public akhd(BindNumberActivity paramBindNumberActivity) {}
   
-  public akhd(MessageRecord paramMessageRecord, long paramLong, byte[] paramArrayOfByte, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    paramDialogInterface.dismiss();
+    BindNumberActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,141 +1,91 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ThemeImageView;
-import java.util.ArrayList;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.widget.ScrollerRunnable;
+import java.util.Observable;
+import java.util.Observer;
 
-public class bffq
+public abstract class bffq
+  extends Observable
 {
-  public final int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public final String a;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int c;
+  public static int a;
+  public static int b;
+  public static int c = 3;
+  public afqz a;
+  public Context a;
+  protected View a;
+  public RelativeLayout a;
+  public SessionInfo a;
+  public QQAppInterface a;
+  public ChatXListView a;
+  public ScrollerRunnable a;
+  public Observer a;
+  public boolean a;
+  public Observer b;
   
-  public bffq(Context paramContext, String paramString)
+  static
   {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaLangString = "RobotMemberFormItem";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    b();
-    a(paramString);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131561505, null);
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369869));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376469));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363149));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376186));
-    }
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298837);
-    this.c = this.jdField_b_of_type_Int;
+    jdField_a_of_type_Int = 1;
+    jdField_b_of_type_Int = 2;
   }
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return null;
   }
   
-  public void a() {}
-  
-  public void a(AppInterface paramAppInterface, ArrayList<bfdl> paramArrayList)
+  public void a()
   {
-    QLog.d("RobotMemberFormItem", 2, "setMemberUinList!");
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      if (this.jdField_b_of_type_AndroidWidgetTextView != null)
-      {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694110));
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        }
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      d();
     }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      }
-      int i = 0;
-      while ((i < paramArrayList.size()) && (i < 3))
-      {
-        bfdl localbfdl = (bfdl)paramArrayList.get(i);
-        String str = String.valueOf(localbfdl.a());
-        Object localObject = bfvo.a();
-        localObject = FaceDrawable.getFaceDrawableFrom(paramAppInterface, 1, str, 3, (Drawable)localObject, (Drawable)localObject, 4);
-        ThemeImageView localThemeImageView = new ThemeImageView(this.jdField_a_of_type_AndroidContentContext);
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, this.c);
-        localLayoutParams.leftMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298838);
-        if (localbfdl.b()) {
-          ((FaceDrawable)localObject).setAlpha(50);
-        }
-        localThemeImageView.setTag(localbfdl);
-        localThemeImageView.setLayoutParams(localLayoutParams);
-        localThemeImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        localThemeImageView.setBackgroundDrawable((Drawable)localObject);
-        if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
-        {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localThemeImageView);
-          QLog.d("RobotMemberFormItem", 2, "add AvatarViews task  " + str);
-        }
-        i += 1;
-      }
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      }
-    } while (this.jdField_b_of_type_AndroidWidgetTextView == null);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_Boolean = false;
+    deleteObservers();
   }
   
-  public void a(String paramString)
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, Observer paramObserver, SessionInfo paramSessionInfo, RelativeLayout paramRelativeLayout, afqz paramafqz, ChatXListView paramChatXListView, ScrollerRunnable paramScrollerRunnable)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if (paramString != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374261);
     }
-    else {
+    this.jdField_a_of_type_Afqz = paramafqz;
+    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramChatXListView;
+    this.jdField_a_of_type_JavaUtilObserver = paramObserver;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = paramScrollerRunnable;
+    deleteObservers();
+    addObserver(paramObserver);
+    paramQQAppInterface = (HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+    if ((paramSessionInfo.curType == 1) || (paramSessionInfo.curType == 3000))
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        c();
+      }
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(boolean paramBoolean)
+  public void b()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-    {
-      if (paramBoolean) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-      for (;;)
-      {
-        QLog.d("RobotMemberFormItem", 2, "setRobotRedDot" + paramBoolean);
-        return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
+    if (this.jdField_b_of_type_JavaUtilObserver != null) {
+      this.jdField_b_of_type_JavaUtilObserver.update(null, null);
     }
-    QLog.d("RobotMemberFormItem", 2, "mImgRobotRedDoterr");
   }
+  
+  protected abstract void c();
+  
+  protected abstract void d();
 }
 
 

@@ -6,15 +6,15 @@ import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.part.block.BlockContainer;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
-import yzn;
-import zee;
-import zhq;
+import zos;
+import ztj;
+import zwv;
 
 public class SubscribePersonalBottomDraftsFragment
   extends SubscribeBaseBottomPersonalFragment
 {
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private zee jdField_a_of_type_Zee;
+  private ztj jdField_a_of_type_Ztj;
   
   ExtraTypeInfo a()
   {
@@ -37,24 +37,24 @@ public class SubscribePersonalBottomDraftsFragment
   
   protected void a()
   {
-    this.jdField_a_of_type_Zee = new zee(null);
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_Zee);
+    this.jdField_a_of_type_Ztj = new ztj(null);
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.a(this.jdField_a_of_type_Ztj);
     this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBlockContainer.c();
-    this.jdField_a_of_type_Zee.c();
-    if (this.jdField_a_of_type_Zhq != null) {
-      this.jdField_a_of_type_Zee.b("share_key_subscribe_opus", new yzn(this.jdField_a_of_type_Zhq));
+    this.jdField_a_of_type_Ztj.c();
+    if (this.jdField_a_of_type_Zwv != null) {
+      this.jdField_a_of_type_Ztj.b("share_key_subscribe_opus", new zos(this.jdField_a_of_type_Zwv));
     }
   }
   
   public void a(int paramInt) {}
   
-  public void a(String paramString, zhq paramzhq)
+  public void a(String paramString, zwv paramzwv)
   {
     if ("share_key_subscribe_opus".equals(paramString))
     {
-      this.jdField_a_of_type_Zhq = paramzhq;
-      if (this.jdField_a_of_type_Zee != null) {
-        this.jdField_a_of_type_Zee.b("share_key_subscribe_opus", new yzn(this.jdField_a_of_type_Zhq));
+      this.jdField_a_of_type_Zwv = paramzwv;
+      if (this.jdField_a_of_type_Ztj != null) {
+        this.jdField_a_of_type_Ztj.b("share_key_subscribe_opus", new zos(this.jdField_a_of_type_Zwv));
       }
     }
   }

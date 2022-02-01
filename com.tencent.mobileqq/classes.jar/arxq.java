@@ -1,59 +1,41 @@
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileBaseFavFileTabView;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import com.tencent.mobileqq.nearby.home.NearbyTabInfo;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class arxq
+  extends aocm
 {
-  public int a;
-  public boolean a;
-  public int b = 0;
-  int c = 0;
-  int d = 0;
-  int e = 0;
-  int f = 0;
+  public arxq(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public arxq(QfileBaseFavFileTabView paramQfileBaseFavFileTabView)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public String a()
-  {
-    return " startCount:" + this.jdField_a_of_type_Int + " targetCount:" + this.b + " ReqSeq:" + this.c + " continueCount:" + this.d + " mNoNewDataCount:" + this.e + " mLastRecordSize:" + this.f;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.d = 0;
-    this.e = 0;
-    this.f = 0;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.d += 1;
-    if (paramInt == this.f) {
-      this.e += 1;
+    super.a(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg_box", 2, "mRedpointObserver.onDataChange(): isSucc=" + paramBoolean);
     }
-    this.f = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c += 1;
-    this.d = 0;
-    this.e = 0;
-    this.f = paramInt1;
-  }
-  
-  public boolean a()
-  {
-    return (this.e < 5) || (this.d > 10);
+    if ((!this.a.d) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView == null) || (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {}
+    label141:
+    for (;;)
+    {
+      return;
+      int i = 0;
+      if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).tabType != 7) {}
+      }
+      for (;;)
+      {
+        if (i < 0) {
+          break label141;
+        }
+        BaseMsgBoxActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(i));
+        return;
+        i += 1;
+        break;
+        i = -1;
+      }
+    }
   }
 }
 

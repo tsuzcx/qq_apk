@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.proxy;
 
-import anuv;
+import aoxv;
 
 public class DataLineMsgProxy$11
   implements Runnable
 {
-  public DataLineMsgProxy$11(anuv paramanuv, long paramLong) {}
+  public DataLineMsgProxy$11(aoxv paramaoxv, long paramLong) {}
   
   public void run()
   {
-    anuv.b(this.this$0, this.a);
+    aoxv.b(this.this$0, this.a);
   }
 }
 

@@ -192,8 +192,11 @@ public class ZoomInfo
     int j;
     do
     {
-      return;
-      localObject = paramPTFaceAttr.getOrigFrame();
+      do
+      {
+        return;
+        localObject = paramPTFaceAttr.getOrigFrame();
+      } while (localObject == null);
       i = ((Frame)localObject).width;
       j = ((Frame)localObject).height;
       localObject = (List)paramPTFaceAttr.getAllFacePoints().get(0);

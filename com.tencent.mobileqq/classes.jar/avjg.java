@@ -1,10 +1,6 @@
-import com.tencent.image.URLDrawable;
-
-public abstract interface avjg
+class avjg
 {
-  public abstract void a(avjd paramavjd);
-  
-  public abstract void a(URLDrawable paramURLDrawable);
+  private static final avjd a = new avjd(null);
 }
 
 

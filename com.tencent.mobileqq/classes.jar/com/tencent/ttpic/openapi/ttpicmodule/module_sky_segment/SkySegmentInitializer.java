@@ -34,7 +34,9 @@ public class SkySegmentInitializer
   {
     this.useSmallModel = false;
     this.useCPULib = false;
-    return FeatureManager.Features.RAPID_NET_SEG_GPU.loadRapidModelFrom(getFinalResourcesDir(), "sky_58k_320x320_1106.onnx.opt.onnx", false, true, 0, 1, 2);
+    boolean bool = FeatureManager.Features.RAPID_NET_SEG_GPU.loadRapidModelFrom(getFinalResourcesDir(), "sky_58k_320x320_1106.onnx.opt.onnx", false, true, 0, 1, 2);
+    FeatureManager.Features.RAPID_NET_SEG_GPU.setMode(2, 2);
+    return bool;
   }
   
   private boolean initModelSync()
@@ -87,7 +89,9 @@ public class SkySegmentInitializer
   {
     this.useSmallModel = true;
     this.useCPULib = true;
-    return FeatureManager.Features.RAPID_NET_SEG_CPU.loadRapidModelFrom(getFinalResourcesDir(), "sky_small_192x256_20191128.onnx.opt.onnx", false, true, 0, 0, 2);
+    boolean bool = FeatureManager.Features.RAPID_NET_SEG_CPU.loadRapidModelFrom(getFinalResourcesDir(), "sky_small_192x256_20191128.onnx.opt.onnx", false, true, 0, 0, 2);
+    FeatureManager.Features.RAPID_NET_SEG_CPU.setMode(2, 2);
+    return bool;
   }
   
   public boolean destroyImpl()

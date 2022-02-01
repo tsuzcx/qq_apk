@@ -1,10 +1,14 @@
-import android.graphics.Bitmap;
+import android.widget.TextView;
 
-public abstract interface xpo
+class xpo
+  implements wdb
 {
-  public abstract Bitmap a(Bitmap paramBitmap);
+  xpo(xpn paramxpn) {}
   
-  public abstract String a();
+  public void a(String paramString, int paramInt)
+  {
+    xpn.a(this.a).setText(anvx.a(2131715289) + paramInt + "%");
+  }
 }
 
 

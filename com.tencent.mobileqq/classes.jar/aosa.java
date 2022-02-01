@@ -1,39 +1,49 @@
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.utils.ContactUtils;
 
-class aosa
-  implements WtTicketPromise
+public class aosa
+  extends aosi
 {
-  aosa(aory paramaory, TicketManager paramTicketManager, QQAppInterface paramQQAppInterface, String paramString, aosb paramaosb) {}
-  
-  public void Done(Ticket paramTicket)
+  protected aosa(QQAppInterface paramQQAppInterface, aosm paramaosm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkApp.GetPSKeyAsyncHandler", 2, "--- pskey async done---  ");
-    }
-    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Aosb != null) {
-      this.jdField_a_of_type_Aosb.a(paramTicket);
-    }
+    super(paramQQAppInterface, paramaosm);
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public int a(QQMessageFacade.Message paramMessage)
   {
-    QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "--- pskey async failed---  " + paramErrMsg.getMessage());
-    if (this.jdField_a_of_type_Aosb != null) {
-      this.jdField_a_of_type_Aosb.a(null);
-    }
+    return -113;
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public aosm a(QQMessageFacade.Message paramMessage)
   {
-    QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "--- pskey async timeout---  " + paramErrMsg.getMessage());
-    if (this.jdField_a_of_type_Aosb != null) {
-      this.jdField_a_of_type_Aosb.a(null);
+    Object localObject1;
+    if (("device_groupchat".equals(paramMessage.extStr)) && ((paramMessage.msgtype == -4501) || (paramMessage.msgtype == -4508)))
+    {
+      Object localObject2 = ContactUtils.getBuddyName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.senderuin, true);
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty(paramMessage.senderuin))
+      {
+        localObject1 = localObject2;
+        if (paramMessage.senderuin.equals(paramMessage.frienduin)) {
+          localObject1 = absz.a(((abgm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(paramMessage.senderuin)));
+        }
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = "";
+      }
+      localObject1 = (String)localObject2 + ": " + c();
+      this.jdField_a_of_type_Aosm.d((String)localObject1);
+    }
+    for (;;)
+    {
+      b(paramMessage);
+      return this.jdField_a_of_type_Aosm;
+      localObject1 = c();
+      this.jdField_a_of_type_Aosm.d((String)localObject1);
     }
   }
 }

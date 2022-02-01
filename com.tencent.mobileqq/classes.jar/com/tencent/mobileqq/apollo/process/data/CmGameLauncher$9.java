@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import alxu;
-import alxy;
+import amyk;
+import amyo;
 
 public class CmGameLauncher$9
   implements Runnable
 {
-  public CmGameLauncher$9(alxy paramalxy, String paramString, boolean paramBoolean) {}
+  public CmGameLauncher$9(amyo paramamyo, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    alxy.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, alxy.a(this.this$0), this.jdField_a_of_type_Boolean);
-    alxy.b(this.this$0, false);
+    amyo.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, amyo.a(this.this$0), this.jdField_a_of_type_Boolean);
+    amyo.b(this.this$0, false);
   }
 }
 

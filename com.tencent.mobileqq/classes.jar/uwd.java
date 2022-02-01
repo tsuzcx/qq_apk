@@ -1,43 +1,18 @@
-import UserGrowth.stWeishiDengtaReportReq;
-import UserGrowth.stWeishiDengtaReportRsp;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.net.Uri;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class uwd
-  extends urg<stWeishiDengtaReportRsp>
+  implements uwb
 {
-  public uwd(String paramString, Map<String, String> paramMap)
+  public void a(Uri paramUri, String paramString, int paramInt)
   {
-    super("WeishiDengtaReport");
-    stWeishiDengtaReportReq localstWeishiDengtaReportReq = new stWeishiDengtaReportReq();
-    localstWeishiDengtaReportReq.eventName = paramString;
-    localstWeishiDengtaReportReq.params = a(paramMap);
-    this.a = localstWeishiDengtaReportReq;
-    uya.b("BeaconSendRequest", "BeaconSendRequest = " + localstWeishiDengtaReportReq.toString());
-  }
-  
-  private Map<String, String> a(Map<String, String> paramMap)
-  {
-    Object localObject;
-    if (paramMap == null)
+    paramUri = BaseActivity.sTopActivity;
+    if (paramUri != null) {}
+    for (paramUri = paramUri.getClass().getSimpleName();; paramUri = "unkonw")
     {
-      localObject = new HashMap();
-      return localObject;
-    }
-    Iterator localIterator = paramMap.entrySet().iterator();
-    for (;;)
-    {
-      localObject = paramMap;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localObject = (Map.Entry)localIterator.next();
-      if (((Map.Entry)localObject).getValue() == null) {
-        ((Map.Entry)localObject).setValue("");
-      }
+      bdla.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8009815", "0X8009815", 0, 0, "", "", paramUri, zei.c(BaseApplicationImpl.getContext()));
+      return;
     }
   }
 }

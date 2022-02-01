@@ -1,47 +1,20 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.BaseSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public abstract interface sca
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "BEAN", "HOLDER", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/BaseSelectAdapter$BaseSelectViewHolder;", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+public final class sca
+  implements View.OnClickListener
 {
-  public abstract int a();
+  public sca(BaseSelectView paramBaseSelectView) {}
   
-  public abstract CharSequence a();
-  
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(double paramDouble);
-  
-  public abstract void a(VideoInfo paramVideoInfo);
-  
-  public abstract void a(VideoInfo paramVideoInfo, rvv paramrvv);
-  
-  public abstract void a(rvv paramrvv);
-  
-  public abstract void a(sbz paramsbz);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(VideoInfo paramVideoInfo);
-  
-  public abstract boolean a(VideoInfo paramVideoInfo, rvv paramrvv, double paramDouble, long paramLong);
-  
-  public abstract String b();
-  
-  public abstract void b(rvv paramrvv);
-  
-  public abstract boolean b();
-  
-  public abstract String c();
-  
-  public abstract void c(rvv paramrvv);
-  
-  public abstract boolean c();
-  
-  public abstract String d();
-  
-  public abstract void onClick(View paramView);
+  public final void onClick(View paramView)
+  {
+    BaseSelectView.a(this.a).b();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

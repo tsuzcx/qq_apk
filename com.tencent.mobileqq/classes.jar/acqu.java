@@ -1,30 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x35.Submsgtype0x35.MsgBody;
 
 public class acqu
-  implements bjoe
+  implements acpi
 {
-  public acqu(AddRequestActivity paramAddRequestActivity, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  private static void a(MsgType0x210 paramMsgType0x210)
   {
-    switch (paramInt)
+    try
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-        aabc.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a, null, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getCurrentAccountUin(), 20010, null);
-      } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694064, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+      int i = ((Submsgtype0x35.MsgBody)new Submsgtype0x35.MsgBody().mergeFrom(paramMsgType0x210.vProtobuf)).uint32_bubble_timestamp.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.BaseMessageProcessor", 2, "bubble push timestamp=" + i);
       }
+      return;
     }
+    catch (Exception paramMsgType0x210)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.msg.BaseMessageProcessor", 2, "<---decodeC2CMsgPkg_SecretfileReport parse failed.", paramMsgType0x210);
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramMsgType0x210);
+    return null;
   }
 }
 

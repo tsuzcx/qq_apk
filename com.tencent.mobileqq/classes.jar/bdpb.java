@@ -1,23 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.LinearLayout.LayoutParams;
 
-class bdpb
-  extends BroadcastReceiver
+public class bdpb
+  extends Animation
 {
-  bdpb(bdpa parambdpa) {}
+  int jdField_a_of_type_Int;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bdpb(ViewGroup paramViewGroup)
   {
-    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("CommentSendSuccess".equals(paramIntent.getStringExtra("event"))))
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * (1.0F - paramFloat)));
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+    if (paramFloat == 1.0F)
     {
-      this.a.a = true;
-      this.a.dismiss();
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicCommentPopupWindow", 2, "web call finish----------------");
-      }
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      paramTransformation.height = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
     }
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 

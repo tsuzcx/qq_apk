@@ -1,45 +1,115 @@
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.utils.UIUtils;
 
-public class ywe
-  implements URLDrawable.URLDrawableListener
+class ywe
+  extends yvs<ywd>
 {
-  public ywe(QRDisplayActivity paramQRDisplayActivity, aqbx paramaqbx, int paramInt, boolean paramBoolean) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  protected ywe(ywd paramywd, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener onLoadCanceled:" + this.jdField_a_of_type_Aqbx.a);
+    super(paramContext, paramViewGroup);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131378571));
+  }
+  
+  private void a(int paramInt)
+  {
+    char[] arrayOfChar = String.valueOf(paramInt).toCharArray();
+    paramInt = 0;
+    Object localObject1;
+    while (paramInt < arrayOfChar.length)
+    {
+      Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+        localObject2 = new RelativeLayout.LayoutParams(UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 40.0F), UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 62.0F));
+        if (paramInt != 0) {
+          ((RelativeLayout.LayoutParams)localObject2).leftMargin = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 1.0F);
+        }
+        ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_CENTER);
+        ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
+      }
+      a((ImageView)localObject1, arrayOfChar[paramInt]);
+      paramInt += 1;
+    }
+    paramInt = arrayOfChar.length;
+    while (paramInt < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
+    {
+      localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeView((View)localObject1);
+      paramInt += 1;
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  private void a(ImageView paramImageView, char paramChar)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener onLoadFialed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Aqbx.a);
+    if (paramImageView == null) {
+      return;
     }
-    if (paramURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.l.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
+    switch (paramChar)
+    {
+    case '.': 
+    case '/': 
+    default: 
+      return;
+    case '-': 
+      paramImageView.setImageResource(2130846861);
+      return;
+    case '0': 
+      paramImageView.setImageResource(2130846862);
+      return;
+    case '1': 
+      paramImageView.setImageResource(2130846863);
+      return;
+    case '2': 
+      paramImageView.setImageResource(2130846864);
+      return;
+    case '3': 
+      paramImageView.setImageResource(2130846865);
+      return;
+    case '4': 
+      paramImageView.setImageResource(2130846866);
+      return;
+    case '5': 
+      paramImageView.setImageResource(2130846867);
+      return;
+    case '6': 
+      paramImageView.setImageResource(2130846868);
+      return;
+    case '7': 
+      paramImageView.setImageResource(2130846869);
+      return;
+    case '8': 
+      paramImageView.setImageResource(2130846870);
+      return;
     }
-    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
-    QQToast.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.getString(2131695942), 0).a();
+    paramImageView.setImageResource(2130846871);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    QRDisplayActivity.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_Aqbx, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "setTroopDrawableListener onLoadSuccessed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Aqbx.a);
-    }
-    if (paramURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.l.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
+    return LayoutInflater.from(paramContext).inflate(2131561871, paramViewGroup, false);
+  }
+  
+  public void a(ywd paramywd, int paramInt)
+  {
+    super.a(paramywd, paramInt);
+    if (paramywd != null) {
+      a(paramywd.c);
     }
   }
 }

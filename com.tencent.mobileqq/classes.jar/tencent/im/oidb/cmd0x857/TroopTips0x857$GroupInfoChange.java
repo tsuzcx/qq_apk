@@ -8,13 +8,14 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class TroopTips0x857$GroupInfoChange
   extends MessageMicro<GroupInfoChange>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 56, 64 }, new String[] { "uint32_group_honor_switch", "uint32_group_member_level_switch", "uint32_group_flagext4", "uint32_appeal_deadline", "uint32_group_flag", "uint32_group_flagext3", "uint32_group_class_ext" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, GroupInfoChange.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 56, 64, 72 }, new String[] { "uint32_group_honor_switch", "uint32_group_member_level_switch", "uint32_group_flagext4", "uint32_appeal_deadline", "uint32_group_flag", "uint32_group_flagext3", "uint32_group_class_ext", "uint32_group_info_ext_seq" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, GroupInfoChange.class);
   public final PBUInt32Field uint32_appeal_deadline = PBField.initUInt32(0);
   public final PBUInt32Field uint32_group_class_ext = PBField.initUInt32(0);
   public final PBUInt32Field uint32_group_flag = PBField.initUInt32(0);
   public final PBUInt32Field uint32_group_flagext3 = PBField.initUInt32(0);
   public final PBUInt32Field uint32_group_flagext4 = PBField.initUInt32(0);
   public final PBUInt32Field uint32_group_honor_switch = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_group_info_ext_seq = PBField.initUInt32(0);
   public final PBUInt32Field uint32_group_member_level_switch = PBField.initUInt32(0);
 }
 

@@ -1,22 +1,28 @@
-public class bbre
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
+import com.tencent.richmediabrowser.listener.IGalleryImageListener;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+
+class bbre
+  implements IGalleryImageListener
 {
-  public volatile int a = 0;
-  public int b;
-  public int c = 0;
-  public int d;
+  bbre(bbra parambbra, RichMediaBrowserInfo paramRichMediaBrowserInfo, String paramString, URLDrawable paramURLDrawable, AIOFilePictureData paramAIOFilePictureData) {}
   
-  public String a()
+  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    switch (this.a)
+    this.jdField_a_of_type_Bbra.b.setVisibility(8);
+    if (paramBoolean)
     {
-    default: 
-      return "UNKNOWN_STATUS";
-    case 0: 
-      return "CONFIG_REQUEST_OK";
-    case 1: 
-      return "CONFIG_START_SERVLET";
+      bbra.a(this.jdField_a_of_type_Bbra, this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
+      return;
     }
-    return "CONFIG_SEND_REQ";
+    if ((!bbra.a(this.jdField_a_of_type_Bbra, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData, this.jdField_a_of_type_Bbra.a)) && (!bbra.b(this.jdField_a_of_type_Bbra, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData, this.jdField_a_of_type_Bbra.a))) {
+      bbra.a(this.jdField_a_of_type_Bbra, this.jdField_a_of_type_Bbra.a);
+    }
+    bbra.a(this.jdField_a_of_type_Bbra, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Int, 18);
   }
 }
 

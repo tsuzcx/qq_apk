@@ -1,12 +1,12 @@
-import android.content.Intent;
-import java.util.HashSet;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.ExpandableListAdapter;
 
 public abstract interface bleb
+  extends ExpandableListAdapter
 {
-  public abstract HashSet<String> getFilterCmds();
+  public abstract int a();
   
-  public abstract void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject);
+  public abstract void a(View paramView, int paramInt);
 }
 
 

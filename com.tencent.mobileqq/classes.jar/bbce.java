@@ -1,16 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bbce
-  implements View.OnClickListener
+public class bbce
 {
-  bbce(bbcd parambbcd, bays parambays) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  String jdField_c_of_type_JavaLangString;
+  boolean jdField_c_of_type_Boolean;
+  String jdField_d_of_type_JavaLangString;
+  boolean jdField_d_of_type_Boolean;
+  String jdField_e_of_type_JavaLangString;
+  boolean jdField_e_of_type_Boolean;
+  String f;
   
-  public void onClick(View paramView)
+  public bbce(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4, int paramInt, String paramString5, String paramString6, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
-    this.jdField_a_of_type_Bays.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_d_of_type_JavaLangString = paramString4;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_e_of_type_JavaLangString = paramString5;
+    this.f = paramString6;
+    this.jdField_c_of_type_Boolean = paramBoolean3;
+    this.jdField_d_of_type_Boolean = paramBoolean4;
+    this.jdField_e_of_type_Boolean = paramBoolean5;
   }
 }
 

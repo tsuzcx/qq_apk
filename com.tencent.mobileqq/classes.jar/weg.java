@@ -1,57 +1,73 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBatchFeedFeature;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class weg
-  extends vqr<wgd>
 {
-  public static final String a;
-  public List<String> a;
-  
-  static
+  public static int a(int paramInt)
   {
-    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.feed_feature_775");
+    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
   }
   
-  public String a()
+  public static Boolean a(int paramInt)
   {
-    return jdField_a_of_type_JavaLangString;
+    return Boolean.valueOf(BaseApplicationImpl.getApplication().getResources().getBoolean(paramInt));
   }
   
-  public vqm a(byte[] paramArrayOfByte)
+  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
   {
-    qqstory_service.RspGetBatchFeedFeature localRspGetBatchFeedFeature = new qqstory_service.RspGetBatchFeedFeature();
-    try
-    {
-      localRspGetBatchFeedFeature.mergeFrom(paramArrayOfByte);
-      return new wgd(localRspGetBatchFeedFeature);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    return wet.a(paramClass, paramVarArgs);
   }
   
-  protected byte[] a()
+  public static String a(int paramInt)
   {
-    qqstory_service.ReqGetBatchFeedFeature localReqGetBatchFeedFeature = new qqstory_service.ReqGetBatchFeedFeature();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (!TextUtils.isEmpty(str)) {
-        localReqGetBatchFeedFeature.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
-      }
-    }
-    return localReqGetBatchFeedFeature.toByteArray();
+    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
+  }
+  
+  public static String a(int paramInt, Object... paramVarArgs)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getString(paramInt, paramVarArgs);
+  }
+  
+  public static String a(String paramString)
+  {
+    return paramString;
+  }
+  
+  public static <T extends Activity> wep<T> a(Class<? extends wep<T>> paramClass, Class<wep<T>> paramClass1, Object... paramVarArgs)
+  {
+    return (wep)wet.a(paramClass, paramClass1, paramVarArgs);
+  }
+  
+  public static zgz a(Context paramContext, int paramInt)
+  {
+    return wew.a(paramContext, paramInt);
+  }
+  
+  public static void a(Context paramContext, int paramInt, long paramLong)
+  {
+    wez.a(paramContext, paramInt, paramLong);
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    wez.a(paramContext, paramInt, paramString);
+  }
+  
+  public static void a(Object paramObject)
+  {
+    wex.a(paramObject);
+  }
+  
+  public static boolean a()
+  {
+    return wey.a();
+  }
+  
+  public static String[] a(int paramInt)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getStringArray(paramInt);
   }
 }
 

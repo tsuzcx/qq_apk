@@ -1,10 +1,12 @@
-public abstract interface aokf
+class aokf
+  extends antq
 {
-  public abstract void a(int paramInt);
+  private aokf(aoke paramaoke) {}
   
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
+  protected void onUpdateDiscussionFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    this.a.b(1007, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
+  }
 }
 
 

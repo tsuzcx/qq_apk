@@ -1,28 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
 
-final class bfov
-  implements DownloadParams.DecodeHandler
+public class bfov
+  implements DialogInterface.OnClickListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public bfov(TroopMoreDetailFragment paramTroopMoreDetailFragment, boolean paramBoolean) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
+    if (this.jdField_a_of_type_Boolean) {
+      bdla.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 2);
-    paramDownloadParams = (int[])localObject;
-    return bfvo.d(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

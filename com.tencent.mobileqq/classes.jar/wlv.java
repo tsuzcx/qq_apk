@@ -1,12 +1,20 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class wlv
+public class wlv
 {
-  public ImageView a;
-  public TextView a;
+  public final int a;
+  public final String a;
+  public final wlu a;
   
-  wlv(wlu paramwlu) {}
+  public wlv(wlu paramwlu, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Wlu = paramwlu;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "Output{intput=" + this.jdField_a_of_type_Wlu + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMessage='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+  }
 }
 
 

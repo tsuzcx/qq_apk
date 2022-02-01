@@ -1,11 +1,15 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
-
-public class ahce
+class ahce
+  extends afos
 {
-  public int a;
-  public Drawable a;
-  public RedDotImageView a;
+  public Object a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  
+  ahce(ahcc paramahcc) {}
 }
 
 

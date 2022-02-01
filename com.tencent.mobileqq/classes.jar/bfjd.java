@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public class bfjd
-  implements bcrf
+class bfjd
+  implements DialogInterface.OnClickListener
 {
-  public bfjd(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  bfjd(bfis parambfis, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
-      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
-    }
-    for (;;)
-    {
-      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
-        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
-      }
-      return;
-      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
     }
   }
 }

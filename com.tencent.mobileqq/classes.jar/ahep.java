@@ -1,3 +1,4 @@
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -5,11 +6,18 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class ahep
   implements View.OnClickListener
 {
-  ahep(ahek paramahek) {}
+  ahep(aheo paramaheo) {}
   
   public void onClick(View paramView)
   {
-    this.a.c(true);
+    String str = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(str))
+    {
+      albv.b(this.a.jdField_a_of_type_AndroidContentContext, str);
+      if ((this.a.m > 0) && ((this.a.n == 2) || (this.a.n == 3))) {
+        bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "wrap.aiotail.click", 0, 0, "" + this.a.m, "", "", "");
+      }
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.biz.qcircleshadow.lib;
 
-import abwp;
-import abwz;
+import acmw;
+import acnh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import cooperation.qqcircle.utils.QCircleCommonUtil;
@@ -19,12 +19,12 @@ public class QCircleHostChatHelper
   
   public static boolean isOneWayBoxConversation(MessageRecord paramMessageRecord)
   {
-    return abwz.d(paramMessageRecord);
+    return acnh.d(paramMessageRecord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostChatHelper
  * JD-Core Version:    0.7.0.1
  */

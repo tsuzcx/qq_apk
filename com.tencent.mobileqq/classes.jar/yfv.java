@@ -1,35 +1,38 @@
-import android.graphics.Matrix;
-import android.graphics.Path;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class yfv
-  extends yfj
+  extends wfm<yfw>
 {
-  public Path a;
-  public int b;
-  public int c;
+  public static final String a = weg.a("StorySvc.get_user_guide");
   
-  public yfv(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
+  public String a()
   {
-    super(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    return a;
   }
   
-  public yfv(yfj paramyfj, float paramFloat)
+  public yfw a(byte[] paramArrayOfByte)
   {
-    super(paramyfj.jdField_a_of_type_Int);
-    if ((paramyfj instanceof yfv))
+    qqstory_service.RspGetUserGuide localRspGetUserGuide = new qqstory_service.RspGetUserGuide();
+    try
     {
-      paramyfj = (yfv)paramyfj;
-      Matrix localMatrix = new Matrix();
-      localMatrix.postScale(paramFloat, paramFloat);
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramyfj.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-      this.jdField_a_of_type_Int = paramyfj.jdField_a_of_type_Int;
-      this.b = paramyfj.b;
-      this.c = ((int)(paramyfj.c * paramFloat));
+      localRspGetUserGuide.mergeFrom(paramArrayOfByte);
+      return new yfw(localRspGetUserGuide);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        ykq.c("Q.qqstory.home.GetUserGuideInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetUserGuide().toByteArray();
   }
 }
 

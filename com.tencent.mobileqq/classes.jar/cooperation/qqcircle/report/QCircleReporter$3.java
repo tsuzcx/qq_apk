@@ -1,26 +1,29 @@
 package cooperation.qqcircle.report;
 
-import android.text.TextUtils;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCircleReport.StDataReportRsp;
+import java.util.Iterator;
+import java.util.List;
+import qqcircle.QQCircleReport.SingleDcData;
 
 class QCircleReporter$3
-  implements VSDispatchObserver.onVSRspCallBack<QQCircleReport.StDataReportRsp>
+  implements Runnable
 {
-  QCircleReporter$3(QCircleReporter paramQCircleReporter) {}
+  QCircleReporter$3(QCircleReporter paramQCircleReporter, byte[] paramArrayOfByte) {}
   
-  public void onReceive(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleReport.StDataReportRsp paramStDataReportRsp)
+  public void run()
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDataReportRsp == null))
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        QLog.e("QCircleReporter", 1, "performClientReport error:" + paramString + ",traceId:" + paramVSBaseRequest.getTraceId());
-      }
+    if (QCircleReporter.access$200(this.this$0).size() == 0) {
       return;
     }
-    QLog.d("QCircleReporter", 2, "performClientReport success!");
+    QLog.w("QCircleReporter", 1, "reportCacheDataListToServer size:" + QCircleReporter.access$200(this.this$0).size());
+    QLog.d("QCircleReporter", 1, "reportCacheDataListToServerWithSession called");
+    Iterator localIterator = QCircleReporter.access$200(this.this$0).iterator();
+    while (localIterator.hasNext()) {
+      ((QQCircleReport.SingleDcData)localIterator.next()).byteExtinfo.add(QCircleReportHelper.newEntry("SessionID", this.val$session));
+    }
+    QCircleReporter.access$300(this.this$0, QCircleReporter.access$200(this.this$0));
+    QCircleReporter.access$200(this.this$0).clear();
   }
 }
 

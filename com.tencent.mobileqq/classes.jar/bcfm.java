@@ -1,99 +1,104 @@
 import android.text.TextUtils;
+import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.startup.step.RecordTracer;
-import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadScheduler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.text.SimpleDateFormat;
 
 public class bcfm
-  extends bcfl
+  extends bcfk
 {
-  private static bcfm jdField_a_of_type_Bcfm;
-  private boolean jdField_a_of_type_Boolean;
+  private static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy/MM/dd");
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  private RecentUser jdField_a_of_type_ComTencentMobileqqDataRecentUser;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String jdField_a_of_type_JavaLangString;
+  private CharSequence b;
+  private CharSequence c;
   
-  public static bcfm a()
+  public bcfm(QQAppInterface paramQQAppInterface, String paramString, RecentUser paramRecentUser, MessageRecord paramMessageRecord)
   {
-    if (jdField_a_of_type_Bcfm != null) {
-      return jdField_a_of_type_Bcfm;
-    }
-    try
-    {
-      if (jdField_a_of_type_Bcfm == null) {
-        jdField_a_of_type_Bcfm = new bcfm();
-      }
-      bcfm localbcfm = jdField_a_of_type_Bcfm;
-      return localbcfm;
-    }
-    finally {}
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqDataRecentUser = paramRecentUser;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
   }
   
-  public void a()
+  public CharSequence a()
   {
-    if ((BaseApplicationImpl.sProcessId != 4) && (BaseApplicationImpl.sProcessId != 1) && (bbnx.a(BaseApplicationImpl.sProcessId, BaseApplicationImpl.processName))) {}
-    for (;;)
+    if (this.b == null) {
+      if (!nty.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
+        break label60;
+      }
+    }
+    label60:
+    SessionInfo localSessionInfo;
+    for (this.b = (BaseApplicationImpl.sApplication.getString(2131696965) + nty.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).b);; this.b = ContactUtils.getNicknameInSession(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin))
     {
-      try
-      {
-        QLog.d("RecordTracer", 1, "SDK Init, processId:" + BaseApplicationImpl.sProcessId + ", processName:" + BaseApplicationImpl.processName);
-        RecordTracer.a().step();
-        Object localObject = MagnifierSDK.a().a().a().split("\\|");
-        if ((localObject.length < 11) || (TextUtils.isEmpty(localObject[10]))) {
-          break label173;
-        }
-        localObject = localObject[10];
-        bcfj.a().a((String)localObject);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        continue;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.i("RecordTracer", 2, "not init, processId:" + BaseApplicationImpl.sProcessId + ", processName:" + BaseApplicationImpl.processName);
-        continue;
-        label173:
-        String str = "0.1;0.0002;10;5;10;5;2;0;500;1";
-      }
+      return this.b;
+      localSessionInfo = new SessionInfo();
+      localSessionInfo.curType = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType();
+      localSessionInfo.curFriendUin = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
     }
   }
   
-  public void b()
+  public String a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject != null)
-    {
-      localObject = (PreDownloadScheduler)((QQAppInterface)localObject).getManager(233);
-      if (localObject != null) {
-        ((PreDownloadScheduler)localObject).onAppBackground();
-      }
-    }
-    bcfj.a().a();
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void c()
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    bcfj.a().b();
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject != null)
-    {
-      localObject = (PreDownloadScheduler)((QQAppInterface)localObject).getManager(233);
-      if (localObject != null) {
-        ((PreDownloadScheduler)localObject).onAppForground();
-      }
+    alik.jdField_a_of_type_Boolean = true;
+    alik.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    alik.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType(), ContactUtils.getNick(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType()), false);
+    aode.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    bcnc.a(this.jdField_a_of_type_JavaLangString, 40, paramView, true);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence b()
+  {
+    if (this.c == null) {
+      this.c = bcnc.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg, this.jdField_a_of_type_JavaLangString);
     }
+    return this.c;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public CharSequence c()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
+      this.jdField_a_of_type_JavaLangCharSequence = bhid.a(BaseApplicationImpl.sApplication, 3, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time * 1000L);
+    }
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  public CharSequence d()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcfm
  * JD-Core Version:    0.7.0.1
  */

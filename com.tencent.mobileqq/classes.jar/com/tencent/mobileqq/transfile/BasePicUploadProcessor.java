@@ -5,17 +5,17 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import aucy;
-import audj;
-import avsq;
-import aycl;
-import aycm;
-import baho;
-import bcel;
-import bcjc;
-import bfvo;
-import bjng;
-import bkkh;
+import avis;
+import avjd;
+import awyr;
+import azix;
+import aziy;
+import bbod;
+import bdlg;
+import bdqa;
+import bheg;
+import bkys;
+import blvp;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -38,7 +38,7 @@ import msf.msgsvc.msg_ctrl.MsgCtrl;
 
 public class BasePicUploadProcessor
   extends BaseUploadProcessor
-  implements Handler.Callback, baho
+  implements Handler.Callback, bbod
 {
   public static final int DELAY_SHOW_PROGRESS_TIME = 2000;
   public static final int SEND_PIC_AREA_LIMIT = 200000000;
@@ -46,15 +46,15 @@ public class BasePicUploadProcessor
   private static final int SHOW_PROGRESS = -255;
   private static final String TAG = "BasePicUploadProcessor";
   Handler handler;
-  protected aycm mQuickSendObject;
+  protected aziy mQuickSendObject;
   
   public BasePicUploadProcessor() {}
   
   public BasePicUploadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
     super(paramBaseTransFileController, paramTransferRequest);
-    this.handler = new bjng(Looper.getMainLooper(), this);
-    this.mQuickSendObject = aycl.a(paramTransferRequest.mRec, paramTransferRequest);
+    this.handler = new bkys(Looper.getMainLooper(), this);
+    this.mQuickSendObject = azix.a(paramTransferRequest.mRec, paramTransferRequest);
   }
   
   private void handleQuickSendFailed()
@@ -72,7 +72,7 @@ public class BasePicUploadProcessor
   {
     try
     {
-      if ((!audj.a().f()) && (!audj.a().h()) && (!audj.a().g()))
+      if ((!avjd.a().f()) && (!avjd.a().h()) && (!avjd.a().g()))
       {
         if (com.tencent.TMG.utils.QLog.isColorLevel()) {
           com.tencent.TMG.utils.QLog.d("BasePicUploadProcessor", 0, "a , s close !");
@@ -80,7 +80,7 @@ public class BasePicUploadProcessor
       }
       else if ((this.mUiRequest != null) && (this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForPic)))
       {
-        msg_ctrl.MsgCtrl localMsgCtrl = aucy.a(this.mUiRequest.mLocalPath);
+        msg_ctrl.MsgCtrl localMsgCtrl = avis.a(this.mUiRequest.mLocalPath);
         if (localMsgCtrl != null)
         {
           ((MessageForPic)this.mUiRequest.mRec).msgCtrl = localMsgCtrl;
@@ -164,7 +164,7 @@ public class BasePicUploadProcessor
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
       localOptions.inSampleSize = 1;
-      bfvo.a(this.mUiRequest.mLocalPath, localOptions);
+      bheg.a(this.mUiRequest.mLocalPath, localOptions);
       this.mHeight = localOptions.outHeight;
       this.mWidth = localOptions.outWidth;
       Object localObject = this.mUiRequest.mExtraObj;
@@ -222,7 +222,7 @@ public class BasePicUploadProcessor
     while (ConfigManager.mUseHardCodeIp != 1) {
       return;
     }
-    bcel.a("BDH_UPLOAD_USE_HARDCORD_IP", (String)this.mReportInfo.get("serverip"));
+    bdlg.a("BDH_UPLOAD_USE_HARDCORD_IP", (String)this.mReportInfo.get("serverip"));
     ConfigManager.mUseHardCodeIp = 0;
   }
   
@@ -230,11 +230,11 @@ public class BasePicUploadProcessor
   {
     int[] arrayOfInt = new int[5];
     arrayOfInt[0] = ((int)this.mFileSize);
-    arrayOfInt[1] = bkkh.a(this.mUiRequest.mLocalPath);
+    arrayOfInt[1] = blvp.a(this.mUiRequest.mLocalPath);
     arrayOfInt[2] = this.mWidth;
     arrayOfInt[3] = this.mHeight;
     arrayOfInt[4] = 0;
-    int i = bfvo.a(this.mUiRequest.mLocalPath);
+    int i = bheg.a(this.mUiRequest.mLocalPath);
     if ((i == 90) || (270 == i))
     {
       arrayOfInt[2] = this.mHeight;
@@ -265,7 +265,7 @@ public class BasePicUploadProcessor
       if (localObject == null) {
         break;
       }
-      localMessageForPic = ((bcjc)localObject).a;
+      localMessageForPic = ((bdqa)localObject).a;
       localObject = localMessageForPic;
     } while (localMessageForPic != null);
     return null;
@@ -351,16 +351,16 @@ public class BasePicUploadProcessor
     this.handler.removeMessages(-255);
     if (this.mUiRequest != null)
     {
-      if (!avsq.b(this.mUiRequest.mRec)) {
+      if (!awyr.b(this.mUiRequest.mRec)) {
         break label67;
       }
-      avsq.b(String.valueOf(this.errCode), 3);
+      awyr.b(String.valueOf(this.errCode), 3);
     }
     label67:
-    while (!avsq.a(this.mUiRequest.mRec)) {
+    while (!awyr.a(this.mUiRequest.mRec)) {
       return;
     }
-    avsq.b(String.valueOf(this.errCode), 2);
+    awyr.b(String.valueOf(this.errCode), 2);
   }
   
   public void onSendBegin(MessageRecord paramMessageRecord)
@@ -407,15 +407,15 @@ public class BasePicUploadProcessor
       label155:
       if (this.mUiRequest != null)
       {
-        if (!avsq.b(this.mUiRequest.mRec)) {
+        if (!awyr.b(this.mUiRequest.mRec)) {
           break label243;
         }
-        avsq.b("0", 3);
+        awyr.b("0", 3);
       }
       label183:
       label236:
       label243:
-      while (!avsq.a(this.mUiRequest.mRec))
+      while (!awyr.a(this.mUiRequest.mRec))
       {
         return;
         URL localURL = URLDrawableHelper.getURL(this.mQuickSendObject.jdField_a_of_type_JavaLangString, 65537);
@@ -433,7 +433,7 @@ public class BasePicUploadProcessor
         handleQuickSendFailed();
         break label155;
       }
-      avsq.b("0", 2);
+      awyr.b("0", 2);
       return;
     }
   }

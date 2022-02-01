@@ -1,96 +1,196 @@
-import android.content.Intent;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import java.util.List;
+import java.util.Set;
 
 public class bcdz
+  extends bcdv
 {
-  public static boolean a;
+  private CharSequence c;
   
-  private static String a(QQAppInterface paramQQAppInterface)
+  public bcdz(QQAppInterface paramQQAppInterface, int paramInt, String paramString, List<bcdx> paramList)
   {
-    if (paramQQAppInterface == null) {
-      return "unknown";
-    }
-    switch (NetworkUtil.getNetworkType(paramQQAppInterface.getApp()))
-    {
-    default: 
-      return "unknown";
-    case 0: 
-      return "none";
-    case 1: 
-      return "Wi-Fi";
-    case 2: 
-      return "2G";
-    case 3: 
-      return "3G";
-    case 4: 
-      return "4G";
-    }
-    return "5G";
+    super(paramQQAppInterface, paramInt, paramString, paramList);
   }
   
-  private static String a(QQAppInterface paramQQAppInterface, bcea parambcea)
+  public TroopInfo a()
   {
-    parambcea.a = DeviceInfoUtil.getDeviceModel();
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.getSosoInfo();
-    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null)) {
-      parambcea.c = localSosoLbsInfo.mLocation.city;
-    }
-    parambcea.b = a(paramQQAppInterface);
-    return parambcea.toString();
+    return this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, bcea parambcea)
+  public CharSequence a()
   {
-    parambcea = a(paramQQAppInterface, parambcea);
-    if (QLog.isColorLevel()) {
-      QLog.i("PushReportController", 1, "reportPushEvent detail=" + parambcea);
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop()) && (!this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.hasSetTroopName())) {
+      return c();
     }
-    if (paramQQAppInterface == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PushReportController", 1, "not Rumtime");
-      }
-      paramQQAppInterface = new Intent();
-      paramQQAppInterface.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramQQAppInterface.putExtra("reporting_tag", "dc03266");
-      paramQQAppInterface.putExtra("reporting_detail", parambcea);
-      paramQQAppInterface.putExtra("reporting_count", 1);
-      paramQQAppInterface.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("PushReportController", 1, " Rumtime");
-    }
-    bcef.b(paramQQAppInterface, "dc03266", parambcea, 1);
+    return super.a();
   }
   
-  public static void a(String paramString, bcea parambcea)
+  protected void a()
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.contains("&")))
+    int j;
+    int i;
+    int k;
+    label54:
+    int m;
+    if (bcnc.a(this.jdField_b_of_type_Int))
     {
-      paramString = paramString.split("&");
-      int i = 0;
-      while (i < paramString.length)
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      if (this.jdField_a_of_type_JavaUtilList != null)
       {
-        if (paramString[i].contains("pushfrom"))
+        localSpannableStringBuilder.append("包含: ");
+        j = this.jdField_b_of_type_JavaUtilList.size() - 1;
+        i = 0;
+        if (j >= 0)
         {
-          String[] arrayOfString = paramString[i].split("=");
-          if ((arrayOfString != null) && (arrayOfString.length >= 2)) {
-            parambcea.g = arrayOfString[1];
+          k = 1;
+          if (i >= 10) {
+            break label132;
           }
         }
-        i += 1;
+        label132:
+        for (m = 1;; m = 0)
+        {
+          if ((m & k) == 0) {
+            break label138;
+          }
+          localSpannableStringBuilder.append(bcnc.a((String)this.jdField_b_of_type_JavaUtilList.get(j), (String)this.jdField_c_of_type_JavaUtilList.get(j), 6, false));
+          i += 1;
+          localSpannableStringBuilder.append("、");
+          j -= 1;
+          break;
+          k = 0;
+          break label54;
+        }
+        label138:
+        k = 0;
+        j = i;
+        i = k;
+        if (i < this.jdField_a_of_type_JavaUtilList.size())
+        {
+          k = 1;
+          label159:
+          if (j >= 10) {
+            break label284;
+          }
+          m = 1;
+          label168:
+          if ((m & k) == 0) {
+            break label336;
+          }
+          localObject = (bcdx)this.jdField_a_of_type_JavaUtilList.get(i);
+          k = j;
+          if (!this.jdField_a_of_type_JavaUtilSet.contains(localObject))
+          {
+            if (this.jdField_c_of_type_JavaUtilList.size() != 1) {
+              break label290;
+            }
+            m = ((bcdx)localObject).a;
+            label226:
+            if (m != 66) {
+              break label300;
+            }
+            localObject = ((bcdx)localObject).c;
+          }
+        }
+        for (;;)
+        {
+          label240:
+          k = j;
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            k = j + 1;
+            localSpannableStringBuilder.append((CharSequence)localObject);
+            localSpannableStringBuilder.append("、");
+          }
+          label284:
+          label290:
+          label300:
+          do
+          {
+            i += 1;
+            j = k;
+            break;
+            k = 0;
+            break label159;
+            m = 0;
+            break label168;
+            m = ((bcdx)localObject).jdField_b_of_type_Int;
+            break label226;
+            if (m == 88)
+            {
+              localObject = ((bcdx)localObject).jdField_b_of_type_JavaLangString;
+              break label240;
+            }
+            k = j;
+          } while (m != 99);
+          localObject = ((bcdx)localObject).d;
+        }
+      }
+      label336:
+      if ((localSpannableStringBuilder.length() > 0) && (localSpannableStringBuilder.charAt(localSpannableStringBuilder.length() - 1) == '、')) {}
+      for (this.jdField_a_of_type_JavaLangCharSequence = localSpannableStringBuilder.subSequence(0, localSpannableStringBuilder.length() - 1);; this.jdField_a_of_type_JavaLangCharSequence = localSpannableStringBuilder)
+      {
+        this.jdField_c_of_type_JavaLangCharSequence = (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.wMemberNum + anvx.a(2131702044));
+        return;
       }
     }
+    this.jdField_a_of_type_JavaLangCharSequence = anvx.a(2131702053);
+    Object localObject = new SpannableStringBuilder();
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.hasSetTroopName()) {
+      ((SpannableStringBuilder)localObject).append(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.wMemberNum));
+    }
+    label593:
+    label597:
+    for (;;)
+    {
+      this.jdField_c_of_type_JavaLangCharSequence = ((CharSequence)localObject);
+      return;
+      if ((!this.jdField_a_of_type_JavaUtilSet.isEmpty()) && (this.jdField_a_of_type_JavaUtilList != null))
+      {
+        j = this.jdField_b_of_type_JavaUtilList.size() - 1;
+        i = 0;
+        if (j >= 0)
+        {
+          k = 1;
+          label511:
+          if (i >= 10) {
+            break label593;
+          }
+        }
+        for (m = 1;; m = 0)
+        {
+          if ((m & k) == 0) {
+            break label597;
+          }
+          ((SpannableStringBuilder)localObject).append(bcnc.a((String)this.jdField_b_of_type_JavaUtilList.get(j), (String)this.jdField_c_of_type_JavaUtilList.get(j), 6, false));
+          if (j > 0) {
+            ((SpannableStringBuilder)localObject).append("、");
+          }
+          j -= 1;
+          i += 1;
+          break;
+          k = 0;
+          break label511;
+        }
+      }
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    if (!bcnc.a(this.jdField_b_of_type_Int)) {
+      bcnc.a(paramView, this);
+    }
+  }
+  
+  public String d()
+  {
+    return this.jdField_c_of_type_JavaLangCharSequence.toString();
   }
 }
 

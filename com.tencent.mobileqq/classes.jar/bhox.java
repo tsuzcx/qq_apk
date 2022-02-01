@@ -1,158 +1,73 @@
-import android.os.Bundle;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.Login;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
-import mqq.manager.VerifyCodeManager;
-import mqq.manager.WtloginManager;
-import mqq.os.MqqHandler;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bhox
-  extends QIPCModule
+  extends MSFServlet
 {
-  private static boolean a;
-  
-  public bhox(String paramString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramString);
-  }
-  
-  public static bhox a()
-  {
-    return bhpa.a;
-  }
-  
-  public static void a()
-  {
-    QLog.i("Q.quicklogin.OpenSdkQIPCClient", 1, "registerModule isRegisterModule=" + a);
-    if (!a)
+    long l = 0L;
+    if (QLog.isColorLevel())
     {
-      QIPCClientHelper.getInstance().getClient().registerModule(a());
-      QIPCClientHelper.getInstance().getClient().connect(new bhoy());
-      a = true;
+      l = System.currentTimeMillis();
+      QLog.d("VasExtensionServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
     }
-  }
-  
-  private void a(Bundle paramBundle)
-  {
-    QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "submitPuzzleVerifyCode");
-    if (paramBundle == null)
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
     {
-      QLog.e("Q.quicklogin.OpenSdkQIPCClient", 1, "submitPuzzleVerifyCode params==null");
-      return;
-    }
-    int i = paramBundle.getInt("seq");
-    paramBundle = paramBundle.getString("ticket");
-    Object localObject = (AppInterface)BaseApplicationImpl.sApplication.peekAppRuntime();
-    VerifyCodeManager localVerifyCodeManager = (VerifyCodeManager)((AppInterface)localObject).getManager(6);
-    if (localVerifyCodeManager == null)
-    {
-      QLog.e("Q.quicklogin.OpenSdkQIPCClient", 1, "submitPuzzleVerifyCode verifyCodeManager==null");
-      return;
-    }
-    localObject = ((AppInterface)localObject).getHandler(Login.class);
-    if (localObject != null) {
-      ((MqqHandler)localObject).sendEmptyMessage(8);
-    }
-    localVerifyCodeManager.submitPuzzleVerifyCodeTicket(i, paramBundle);
-  }
-  
-  private void a(Bundle paramBundle, int paramInt)
-  {
-    if (paramBundle == null)
-    {
-      QLog.e("Q.quicklogin.OpenSdkQIPCClient", 1, "doWtLogin params==null");
-      a("", paramInt, 1005, -102);
-      return;
-    }
-    String str1 = paramBundle.getString("key_uin");
-    String str2 = paramBundle.getString("key_passwd");
-    String str3 = paramBundle.getString("key_appid");
-    if (TextUtils.isEmpty(str2)) {}
-    for (paramBundle = "empty";; paramBundle = "****")
-    {
-      QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "doWtLogin uin=" + bhwf.a(str1) + ", maskPasswd=" + paramBundle + ", appId=" + str3);
-      bize.a(str3, str1, str2, new bhoz(this, paramInt));
-      return;
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    Object localObject = BaseApplicationImpl.sApplication.peekAppRuntime();
-    if (!(localObject instanceof OpenSDKAppInterface))
-    {
-      QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "clearLoginData !(app instanceof OpenSDKAppInterface)");
-      return;
-    }
-    ((OpenSDKAppInterface)localObject).a().a(paramString);
-    if (bhwf.a(paramString, (AppRuntime)localObject, true) != null) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = bhwf.a(paramString, (AppRuntime)localObject);
-      QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "clearLoginData hasA2=" + bool1 + ", hasD2=" + bool2);
-      if ((!bool1) && (!bool2)) {
-        break;
-      }
-      localObject = (WtloginManager)((AppRuntime)localObject).getManager(1);
-      ((WtloginManager)localObject).clearUserFastLoginData(paramString, 16L);
-      ((WtloginManager)localObject).refreshMemorySig();
-      return;
-    }
-  }
-  
-  private void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "backToMainProcess uin=" + bhwf.a(paramString) + ", ssoResult=" + paramInt2 + ", epicCode=" + paramInt3);
-    try
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("key_uin", paramString);
-      localBundle.putInt("key_sso_ret", paramInt2);
-      callbackResult(paramInt1, EIPCResult.createResult(paramInt3, localBundle));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("Q.quicklogin.OpenSdkQIPCClient", 1, "Exception", paramString);
-    }
-  }
-  
-  public static void b()
-  {
-    QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "unRegisterModule isRegisterModule=" + a);
-    if (a)
-    {
-      QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-      a = false;
-    }
-  }
-  
-  public static void c()
-  {
-    QLog.i("Q.quicklogin.OpenSdkQIPCClient", 1, "doPtloginCancel");
-    QIPCClientHelper.getInstance().callServer("open_sdk_qipc_module", "action_ptlogin_cancel", new Bundle());
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "onCall action=" + paramString);
-    if ("action_to_wt_login".equals(paramString)) {
-      a(paramBundle, paramInt);
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
     for (;;)
     {
-      return null;
-      if ("action_submit_puzzle_verify_code".equals(paramString)) {
-        a(paramBundle);
+      VasExtensionHandler localVasExtensionHandler = (VasExtensionHandler)((QQAppInterface)super.getAppRuntime()).getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER);
+      if (localVasExtensionHandler != null) {
+        localVasExtensionHandler.a(paramIntent, paramFromServiceMsg, arrayOfByte);
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("VasExtensionServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
+      }
+      return;
+      arrayOfByte = null;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label117;
+      }
+      paramIntent = new byte[arrayOfByte.length + 4];
+      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
+      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VasExtensionServlet", 2, "onSend exit cmd=" + str);
+      }
+      return;
+      label117:
+      paramIntent = new byte[4];
+      PkgTools.DWord2Byte(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
     }
   }
 }

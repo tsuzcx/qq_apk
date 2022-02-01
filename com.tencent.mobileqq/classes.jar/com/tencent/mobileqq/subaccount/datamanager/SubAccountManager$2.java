@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.subaccount.datamanager;
 
-import bcqt;
+import bdxs;
 import com.tencent.mobileqq.data.SubAccountInfo;
 
 public class SubAccountManager$2
   implements Runnable
 {
-  public SubAccountManager$2(bcqt parambcqt, SubAccountInfo paramSubAccountInfo) {}
+  public SubAccountManager$2(bdxs parambdxs, SubAccountInfo paramSubAccountInfo) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class SubAccountManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.datamanager.SubAccountManager.2
  * JD-Core Version:    0.7.0.1
  */

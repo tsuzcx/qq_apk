@@ -1,26 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorComicLoadingView;
-import dov.com.qq.im.aeeditor.module.aifilter.AEEditorComicLoadingView.2;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
 
 public class bmge
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public bmge(AEEditorComicLoadingView.2 param2) {}
+  public bmge(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.this$0.a();
+    ForceUserUpdateActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.this$0.a();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

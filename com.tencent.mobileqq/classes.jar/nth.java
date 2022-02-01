@@ -1,13 +1,6 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class nth
+public abstract interface nth
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  
-  nth(nst paramnst) {}
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 

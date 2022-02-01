@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.5;
 
 public class acza
-  implements aszj
+  implements acyb
 {
-  public acza(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, asdg paramasdg) {}
+  public acza(MemoryDumpHelper.5 param5) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        this.jdField_a_of_type_Asdg.b(localFileManagerEntity);
-      }
-    }
+    acyw.c(this.a.this$0);
   }
 }
 

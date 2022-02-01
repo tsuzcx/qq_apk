@@ -1,128 +1,85 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.face.FaceDecoder;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.File;
+import java.io.OutputStream;
+import org.apache.http.Header;
 
 public class bbbs
-  extends bbch
+  extends AbsDownloader
 {
-  public bbbs(FaceDecoder paramFaceDecoder)
+  protected BaseApplicationImpl a;
+  
+  public bbbs(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    super(paramFaceDecoder);
+    this.a = paramBaseApplicationImpl;
   }
   
-  protected bbbm<bayt, bbhb> a(FaceDecoder paramFaceDecoder)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return new bbbt(paramFaceDecoder);
-  }
-  
-  public void a(bayr parambayr, bbha parambbha)
-  {
-    parambayr = (bays)parambayr;
-    LinearLayout localLinearLayout = ((bbhf)parambbha).a();
-    List localList;
-    int k;
-    int i;
-    bayp localbayp;
-    Object localObject2;
-    Object localObject1;
-    if (localLinearLayout != null)
+    if ((paramDownloadParams != null) && (paramFile != null))
     {
-      localList = parambayr.a();
-      if (localList != null)
+      paramDownloadParams = paramDownloadParams.getHeader("isCircle");
+      if (paramDownloadParams != null)
       {
-        localLinearLayout.removeAllViews();
-        k = Math.min(localList.size(), 3);
-        i = 0;
-        if (i < k)
+        paramDownloadParams = paramDownloadParams.getValue();
+        if (!TextUtils.isEmpty(paramDownloadParams))
         {
-          parambayr = (bayt)localList.get(i);
-          if ((parambayr instanceof bayp))
+          int j = Integer.valueOf(paramDownloadParams).intValue();
+          int i = 90;
+          if (this.a != null) {
+            i = DisplayUtil.dip2px(this.a, 30.0F);
+          }
+          paramDownloadParams = bheg.a(paramFile.getAbsolutePath(), i, i);
+          paramFile = paramDownloadParams;
+          if (j == 1)
           {
-            localbayp = (bayp)parambayr;
-            localObject2 = null;
-            if (bbae.a(localbayp.e()) == 1)
-            {
-              localObject2 = LayoutInflater.from(parambbha.a().getContext()).inflate(2131562755, null);
-              parambayr = ((View)localObject2).findViewById(2131368891);
-              localObject1 = new bbgv((View)localObject2);
+            if (paramDownloadParams != null) {
+              paramFile = bheg.a(paramDownloadParams, paramDownloadParams.getWidth(), paramDownloadParams.getWidth(), paramDownloadParams.getHeight());
             }
+          }
+          else {
+            return paramFile;
           }
         }
       }
     }
-    for (;;)
+    return null;
+  }
+  
+  public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if ((paramDownloadParams != null) && (paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
     {
-      label137:
-      int j;
-      if ((localObject2 != null) && (parambayr != null))
+      paramOutputStream = (String)paramDownloadParams.tag;
+      paramDownloadParams = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_IMG_SAVE);
+      try
       {
-        ((View)localObject2).setTag(2131380831, localbayp);
-        ((View)localObject2).setTag(2131380836, localObject1);
-        ((View)localObject2).setTag(2131380832, Integer.valueOf(i));
-        ((View)localObject2).setTag(2131380830, Integer.valueOf(localList.size()));
-        ((View)localObject2).setTag(2131380833, this.a);
-        bdvp.a((View)localObject2, localbayp.d(), localbayp.b(), 1);
-        bbgn.a(localbayp, k, i);
-        int m = localbayp.a();
-        int n = localbayp.b();
-        if ((localbayp instanceof bayu))
-        {
-          j = localbayp.u;
-          label256:
-          bbgn.a(m, n, (View)localObject2, j);
-          localLinearLayout.addView((View)localObject2);
-          this.a.a(localbayp, (bbhc)localObject1);
+        paramDownloadParams = new File(paramDownloadParams);
+        paramDownloadParams.mkdirs();
+        paramDownloadParams = new File(paramDownloadParams, Utils.Crc64String(paramOutputStream));
+        if (paramDownloadParams.exists()) {
+          return paramDownloadParams;
+        }
+        int i = bhyq.a(new bhyo(paramOutputStream, paramDownloadParams), null);
+        if (i == 0) {
+          return paramDownloadParams;
         }
       }
-      for (;;)
+      catch (Exception paramOutputStream)
       {
-        i += 1;
-        break;
-        if (bbae.a(localbayp.e()) != 2) {
-          break label554;
-        }
-        localObject2 = LayoutInflater.from(parambbha.a().getContext()).inflate(2131562762, null);
-        parambayr = ((View)localObject2).findViewById(2131368891);
-        localObject1 = new bbhe((View)localObject2);
-        break label137;
-        j = 0;
-        break label256;
-        QLog.e("MostUseResultGroupPresenter", 2, "unresolved id type" + localbayp.e());
-        continue;
-        if ((parambayr instanceof baxr))
-        {
-          parambayr = (baxr)parambayr;
-          localObject1 = new bbij(localLinearLayout, parambayr.d());
-          localObject2 = ((bbij)localObject1).a();
-          ((View)localObject2).setTag(2131380831, parambayr);
-          ((View)localObject2).setTag(2131380836, localObject1);
-          ((View)localObject2).setTag(2131380832, Integer.valueOf(i));
-          ((View)localObject2).setTag(2131380830, Integer.valueOf(localList.size()));
-          ((View)localObject2).setTag(2131380833, this.a);
-          bbgn.a(parambayr, k, i);
-          localObject2 = new LinearLayout.LayoutParams(-1, -2);
-          localLinearLayout.addView(((bbij)localObject1).a(), (ViewGroup.LayoutParams)localObject2);
-          this.a.a(parambayr, (bbhc)localObject1);
-        }
-        else
-        {
-          QLog.e("MostUseResultGroupPresenter", 2, "unknown type in MOST USED GROUP P");
-        }
+        QLog.e("AbsDownloader", 1, "download exception " + paramOutputStream);
       }
-      if (parambbha.b() != null) {
-        parambbha.b().setVisibility(8);
-      }
-      return;
-      label554:
-      parambayr = null;
-      localObject1 = null;
     }
+    return null;
   }
 }
 

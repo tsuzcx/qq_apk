@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ayfu;
-import bcef;
-import bdav;
+import ahvi;
+import bdla;
+import behu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ExitAnonymousChatAppInfo
@@ -14,7 +15,7 @@ public class ExitAnonymousChatAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130843687;
+    return 2130843725;
   }
   
   public int getAppID()
@@ -27,16 +28,16 @@ public class ExitAnonymousChatAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131691942);
+    return BaseApplicationImpl.getContext().getString(2131692032);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     if ((paramBaseChatPie instanceof TroopChatPie))
     {
-      ((TroopChatPie)paramBaseChatPie).b(false);
-      bdav.a().b(false);
-      bcef.a(null, "P_CliOper", "Grp_anon", "", "norm_aio", "Clk_quit", 0, 0, String.valueOf(paramSessionInfo.curFriendUin), "", "", "");
+      ((TroopChatPie)paramBaseChatPie).c(false);
+      behu.a().d(false);
+      bdla.a(null, "P_CliOper", "Grp_anon", "", "norm_aio", "Clk_quit", 0, 0, String.valueOf(paramSessionInfo.curFriendUin), "", "", "");
     }
   }
 }

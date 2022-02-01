@@ -1,14 +1,27 @@
-public abstract interface boen
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import dov.com.qq.im.aeeditor.view.timebar.ScaleView;
+
+public class boen
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public abstract boeo a(int paramInt1, int paramInt2);
+  public boen(ScaleView paramScaleView) {}
   
-  public abstract void a();
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    this.a.a.a(paramScaleGestureDetector.getScaleFactor());
+    if (ScaleView.a(this.a) != null) {
+      ScaleView.a(this.a).a();
+    }
+    return true;
+  }
   
-  public abstract void a(int paramInt);
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return true;
+  }
   
-  public abstract void a(Throwable paramThrowable);
-  
-  public abstract void b();
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

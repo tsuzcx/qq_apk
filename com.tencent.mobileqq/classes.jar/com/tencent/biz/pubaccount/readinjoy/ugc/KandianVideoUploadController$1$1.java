@@ -1,19 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
-import rgt;
-import rgu;
+import rta;
+import rtb;
 
 public class KandianVideoUploadController$1$1
   implements Runnable
 {
-  public KandianVideoUploadController$1$1(rgu paramrgu) {}
+  public KandianVideoUploadController$1$1(rtb paramrtb) {}
   
   public void run()
   {
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.a.getManager(13);
+    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.a.getManager(QQManagerFactory.WEBPROCESS_MANAGER);
     if ((localWebProcessManager != null) && (localWebProcessManager.d()))
     {
       localWebProcessManager.a(-1, null);

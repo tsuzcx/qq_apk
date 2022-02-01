@@ -26,9 +26,9 @@ import com.tencent.qqlive.module.videoreport.collect.notifier.ListScrollNotifier
 import com.tencent.qqlive.module.videoreport.collect.notifier.RecyclerViewScrollPositionNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ViewClickNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ViewReuseNotifier;
-import com.tencent.qqlive.module.videoreport.dtreport.lazy.LazyInitObserver;
 import com.tencent.qqlive.module.videoreport.inject.fragment.FragmentCompat;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
+import com.tencent.qqlive.module.videoreport.lazy.LazyInitObserver;
 import com.tencent.qqlive.module.videoreport.page.DialogListUtil;
 import com.tencent.qqlive.module.videoreport.task.ThreadUtils;
 import com.tencent.qqlive.module.videoreport.utils.BaseUtils;
@@ -212,7 +212,6 @@ public class EventCollector
       Log.i("EventCollector", "onActivityResumed: activity = " + paramActivity.getClass().getName());
     }
     Log.d("LazyInitSequence", "act resumed");
-    LazyInitObserver.getInstance().onActivityResumed(paramActivity);
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
     }

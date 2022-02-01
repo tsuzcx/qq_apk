@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class advu
-  extends aycd
+  implements TextWatcher
 {
-  public advu(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  private advu(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super.a(paramBoolean);
-    PhoneUnityBindInfoActivity.b(this.a);
-    this.a.app.unRegistObserver(this);
-    PhoneUnityBindInfoActivity.a(this.a);
-    if (paramBoolean) {
-      this.a.a(false);
-    }
-    for (;;)
-    {
-      PhoneUnityBindInfoActivity.c(this.a);
-      return;
-      this.a.a(true);
-    }
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

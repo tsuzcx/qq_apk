@@ -1,76 +1,19 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
 
 public class osl
-  implements EmoticonCallback
+  implements bigp
 {
-  public osl(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  public osl(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
   
-  public void delete()
+  public Object a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart() == 0) {}
-    for (;;)
+    switch (paramInt)
     {
-      return;
-      try
-      {
-        Editable localEditable = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText();
-        int i = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+    default: 
+      return null;
     }
+    return new osn(this.a);
   }
-  
-  public void emoticonMall() {}
-  
-  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
-  
-  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
-  {
-    return true;
-  }
-  
-  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public void send() {}
-  
-  public void send(EmoticonInfo paramEmoticonInfo)
-  {
-    if ((paramEmoticonInfo instanceof PicEmoticonInfo))
-    {
-      paramEmoticonInfo = (PicEmoticonInfo)paramEmoticonInfo;
-      Context localContext = ReadInJoyCommentComponentFragment.a(this.a).getApplicationContext();
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramEmoticonInfo.getBigDrawable(localContext, localContext.getResources().getDisplayMetrics().density));
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      ReadInJoyCommentComponentFragment.a(this.a);
-      return;
-    }
-    ReadInJoyBaseDeliverActivity.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramEmoticonInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText);
-  }
-  
-  public void setting() {}
 }
 
 

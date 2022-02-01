@@ -1,43 +1,30 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aomd
+public class aomd
+  extends anvi
 {
-  public long a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
+  public aomd(HiddenChatFragment paramHiddenChatFragment) {}
   
-  public aomd()
+  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "0";
-    this.jdField_c_of_type_JavaLangString = "0";
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public abstract void a(AppInterface paramAppInterface, Bundle paramBundle);
-  
-  public final void b(AppInterface paramAppInterface, Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
+      QLog.e("tag_hidden_chat", 1, "data not right");
     }
-    this.jdField_a_of_type_Long = paramBundle.getLong("RecoglizeMask", 0L);
-    this.jdField_b_of_type_JavaLangString = paramBundle.getString("H5Source", "0");
-    this.jdField_c_of_type_JavaLangString = paramBundle.getString("version", "0");
-    if (!paramBundle.getBoolean("disablecloud", false)) {}
-    for (boolean bool = true;; bool = false)
+    do
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_c_of_type_Boolean = paramBundle.getBoolean("is_from_h5_entry", false);
-      this.jdField_b_of_type_Boolean = false;
-      a(paramAppInterface, paramBundle);
-      return;
-    }
+      do
+      {
+        return;
+        String[] arrayOfString = (String[])paramArrayOfObject[0];
+        paramArrayOfObject = (boolean[])paramArrayOfObject[1];
+        if (QLog.isColorLevel()) {
+          QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(arrayOfString.length), " len2:", Integer.valueOf(paramArrayOfObject.length) });
+        }
+      } while (!paramBoolean);
+      this.a.a();
+    } while (!QLog.isColorLevel());
+    QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
   }
 }
 

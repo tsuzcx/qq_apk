@@ -1,43 +1,75 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class wry
+public class wry
+  extends wpw
+  implements wfk<wui, wvr>
 {
-  public abstract Activity a();
+  protected String a;
+  protected List<wrz> a;
   
-  public abstract OpenPlayerBuilder.Data a();
+  public wry(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
-  public abstract XViewPager a();
+  public void a()
+  {
+    wui localwui = new wui();
+    localwui.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    localwui.b = this.jdField_a_of_type_JavaLangString;
+    wfi.a().a(localwui, this);
+  }
   
-  public abstract String a(String paramString);
+  public void a(List<wrz> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
   
-  public abstract wod a();
-  
-  public abstract wog a();
-  
-  public abstract wrq a();
-  
-  public abstract wsj a();
-  
-  public abstract void a();
-  
-  public abstract void a(Intent paramIntent);
-  
-  public abstract void a(vlc paramvlc);
-  
-  public abstract void a(wqo paramwqo);
-  
-  public abstract void a(wsr paramwsr);
-  
-  public abstract boolean a();
-  
-  public abstract void b(vlc paramvlc);
-  
-  public abstract void b(wqo paramwqo);
-  
-  public abstract boolean b();
+  public void a(@NonNull wui paramwui, @Nullable wvr paramwvr, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if ((paramErrorMessage.isSuccess()) && (paramwvr != null))
+    {
+      paramwui = new wqf(1);
+      paramErrorMessage = (wjf)wjs.a(19);
+      paramwvr = paramwvr.jdField_a_of_type_JavaUtilList;
+      Object localObject1 = paramwvr.iterator();
+      Object localObject2;
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = new wqe(2, paramErrorMessage.a((VideoCollectionItem)((Iterator)localObject1).next()));
+        paramwui.a.add(localObject2);
+      }
+      paramErrorMessage = (yck)wjs.a(11);
+      localObject1 = new ArrayList(paramwvr.size());
+      paramwvr = paramwvr.iterator();
+      while (paramwvr.hasNext())
+      {
+        localObject2 = (VideoCollectionItem)paramwvr.next();
+        if (!TextUtils.isEmpty(((VideoCollectionItem)localObject2).feedId))
+        {
+          VideoListFeedItem localVideoListFeedItem = (VideoListFeedItem)paramErrorMessage.a(((VideoCollectionItem)localObject2).feedId);
+          if (localVideoListFeedItem != null)
+          {
+            localVideoListFeedItem.mViewTotalTime = ((VideoCollectionItem)localObject2).viewTimes;
+            ((ArrayList)localObject1).add(localVideoListFeedItem);
+          }
+        }
+      }
+      paramErrorMessage.a((List)localObject1);
+      wad.a().dispatch(paramwui);
+    }
+  }
 }
 
 

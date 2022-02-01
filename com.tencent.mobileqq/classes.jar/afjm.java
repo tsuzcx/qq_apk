@@ -1,24 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.core.FriendChatPie.6.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import java.util.List;
 
 public class afjm
-  implements View.OnClickListener
+  extends anvi
 {
-  afjm(afiw paramafiw) {}
+  public afjm(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public void onClick(View paramView)
+  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
   {
-    if (this.a.freeTalkImg.getVisibility() == 0) {
-      ThreadManager.post(new FriendChatPie.6.1(this), 5, null, false);
+    if (paramBoolean)
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+      return;
     }
-    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
-    bcef.b(this.a.app, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
-    afcm.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a(2131718554, 1);
+  }
+  
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if (paramBoolean)
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      this.a.a(2131691434, 2);
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if ((paramBoolean1) && (paramBoolean3))
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

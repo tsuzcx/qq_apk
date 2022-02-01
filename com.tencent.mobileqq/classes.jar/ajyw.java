@@ -1,23 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 public class ajyw
-  implements View.OnClickListener
+  extends aocm
 {
-  public ajyw(LingHbFragment paramLingHbFragment) {}
+  private WeakReference<Conversation> a;
   
-  public void onClick(View paramView)
+  public ajyw(Conversation paramConversation)
   {
-    QLog.i("LingHbFragment", 2, "change others...");
-    if (this.a.channel == 65536) {}
-    for (String str = "yyhongbao.word.change";; str = "klhongbao.word.change")
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "cameraRedTouchObserver notify dataChanged");
+    }
+    Conversation localConversation = (Conversation)this.a.get();
+    if (localConversation != null)
     {
-      this.a.addUploadData(str, "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      localConversation.f(false);
+      Conversation.k(localConversation);
+      localConversation.q();
     }
   }
 }

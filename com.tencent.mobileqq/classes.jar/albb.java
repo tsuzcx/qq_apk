@@ -1,20 +1,8 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-
-public class albb
-  extends aliz
+public abstract interface albb
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public TroopInfo a;
-  public ImageView b;
-  public TextView b;
+  public abstract void a(int paramInt);
   
-  public albb(alay paramalay) {}
+  public abstract void b(int paramInt);
 }
 
 

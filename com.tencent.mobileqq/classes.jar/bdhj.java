@@ -1,6 +1,16 @@
-public abstract interface bdhj
+import android.app.Activity;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.utils.IDetectionInterceptor;
+
+public final class bdhj
+  implements IDetectionInterceptor
 {
-  public abstract void a(boolean paramBoolean);
+  public boolean ignoreAppEvent(Activity paramActivity)
+  {
+    QLog.d("DtSdkInitStep", 1, "848QQDT [ignoreAppEvent] activity: " + paramActivity.toString());
+    return paramActivity instanceof QQLSActivity;
+  }
 }
 
 

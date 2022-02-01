@@ -1,31 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import kotlin.Metadata;
-import kotlin.jvm.internal.Ref.BooleanRef;
-import kotlin.jvm.internal.Ref.ObjectRef;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "clickedView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "which", "", "OnClick"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
 final class oys
-  implements bjoe
+  implements ViewBase.OnClickListener
 {
-  oys(oyn paramoyn, Ref.ObjectRef paramObjectRef, Ref.BooleanRef paramBooleanRef, bjnw parambjnw) {}
+  oys(pcf parampcf) {}
   
-  public final void OnClick(View paramView, int paramInt)
+  public final void onClick(ViewBase paramViewBase)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-    }
-    ouu localouu = (ouu)this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element;
-    paramView = oyn.a(this.jdField_a_of_type_Oyn).a;
-    if (paramView != null) {}
-    for (paramView = paramView.commentId;; paramView = null)
-    {
-      localouu.b(paramView, this.jdField_a_of_type_KotlinJvmInternalRef$BooleanRef.element);
-      oyn.a(this.jdField_a_of_type_Oyn, 6);
-      break;
+    paramViewBase = this.a;
+    if (paramViewBase != null) {
+      paramViewBase.i();
     }
   }
 }

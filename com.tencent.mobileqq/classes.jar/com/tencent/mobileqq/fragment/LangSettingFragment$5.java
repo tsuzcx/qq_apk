@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.fragment;
 
-import amvi;
 import android.support.v4.app.FragmentActivity;
+import anxv;
 
 class LangSettingFragment$5
   implements Runnable
@@ -10,7 +10,7 @@ class LangSettingFragment$5
   
   public void run()
   {
-    amvi.a(this.this$0.getActivity(), this.jdField_a_of_type_Int);
+    anxv.a(this.this$0.getActivity(), this.jdField_a_of_type_Int);
     this.this$0.getActivity().runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
   }
 }

@@ -1,120 +1,84 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
+import android.opengl.GLES20;
 import com.tencent.av.opengl.program.TextureProgram;
-import com.tencent.av.opengl.texture.YUVTexture;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import java.util.List;
+import com.tencent.av.opengl.program.YUVTextureAliasingProgram;
+import com.tencent.av.opengl.program.YUVTextureProgram;
+import java.util.HashMap;
+import java.util.Map;
 
 public class lrn
-  extends YUVTexture
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static String b;
-  private static boolean e;
-  private static boolean f;
-  public static int n = 480;
-  private static int o = 1;
-  private lrh jdField_a_of_type_Lrh;
-  private mdy jdField_a_of_type_Mdy;
+  static Map<String, TextureProgram> a = new HashMap();
   
-  public lrn(Context paramContext, mdy parammdy, String paramString, long paramLong)
+  public static TextureProgram a(int paramInt)
   {
-    super(paramContext, paramString, paramLong);
-    this.jdField_a_of_type_Mdy = parammdy;
-  }
-  
-  private static void a(Context paramContext)
-  {
-    int i = 0;
-    if (e) {}
+    int j = 1;
     for (;;)
     {
-      return;
-      e = true;
-      if (jdField_a_of_type_JavaLangString == null) {
-        jdField_a_of_type_JavaLangString = DeviceInfoUtil.getQQVersion();
-      }
-      paramContext = lob.a();
-      f = false;
-      if ((paramContext == null) || (paramContext.jdField_a_of_type_Int != 1)) {
-        continue;
-      }
-      n = paramContext.b;
-      o = paramContext.c;
-      jdField_b_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
+      int i;
       try
       {
-        if ((TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))) {
+        String str = paramInt + "_" + Thread.currentThread().getId();
+        localObject1 = (TextureProgram)a.get(str);
+        if (localObject1 == null)
+        {
+          i = 1;
+          if (i != 0) {
+            break label173;
+          }
+          GLES20.glUseProgram(((TextureProgram)localObject1).a());
+          if (lsq.a() != 0)
+          {
+            i = j;
+            break label173;
+            localObject1 = new TextureProgram();
+            a.put(str, localObject1);
+            return localObject1;
+          }
+        }
+        else
+        {
+          i = 0;
           continue;
         }
-        paramContext = jdField_b_of_type_JavaLangString.split("\\.");
-        String[] arrayOfString = jdField_a_of_type_JavaLangString.split("\\.");
-        while ((i < 3) && (i < paramContext.length) && (i < arrayOfString.length))
+        i = 0;
+      }
+      finally {}
+      Object localObject1 = new YUVTextureProgram();
+      continue;
+      Object localObject3 = new YUVTextureAliasingProgram();
+      continue;
+      localObject3 = new lrm();
+      continue;
+      localObject3 = new lrl();
+      continue;
+      localObject3 = new lrk();
+      continue;
+      label173:
+      if (i != 0) {
+        switch (paramInt)
         {
-          if (Integer.valueOf(arrayOfString[i]).intValue() > Integer.valueOf(paramContext[i]).intValue())
-          {
-            f = true;
-            return;
-          }
-          if (Integer.valueOf(arrayOfString[i]).intValue() < Integer.valueOf(paramContext[i]).intValue())
-          {
-            f = false;
-            return;
-          }
-          if (i == 2) {
-            f = true;
-          }
-          i += 1;
         }
-        return;
       }
-      catch (Exception paramContext) {}
     }
   }
   
-  public lrc[] a(lqb paramlqb)
+  public static void a()
   {
-    if (a() > b())
+    try
     {
-      i = a();
-      a(this.jdField_a_of_type_AndroidContentContext);
-      if ((!f) || (getImgWidth() > n) || (i <= ((lqc)paramlqb).c() / 3 * 2) || (getImgWidth() >= i) || (getImgWidth() == 0) || (this.jdField_a_of_type_Mdy.a().size() != 0) || (VideoController.a().a().d != 2)) {
-        break label211;
-      }
+      a.clear();
+      return;
     }
-    label211:
-    for (int i = 1;; i = 0)
+    finally
     {
-      if (i != 0)
-      {
-        if (this.jdField_a_of_type_Lrh == null) {
-          this.jdField_a_of_type_Lrh = lrh.a();
-        }
-        super.a(paramlqb);
-        if (super.a() != null) {
-          this.jdField_a_of_type_Lrh.a(paramlqb, getImgWidth(), getImgHeight(), ((lqc)paramlqb).c(), ((lqc)paramlqb).d(), a()[0], a()[1], a()[2], this.jdField_b_of_type_ArrayOfFloat, this.k, o);
-        }
-        return lra.a(0).a();
-        i = b();
-        break;
-      }
-      return super.a(paramlqb);
+      localObject = finally;
+      throw localObject;
     }
-  }
-  
-  public void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_Lrh != null) {
-      this.jdField_a_of_type_Lrh.a();
-    }
-    e = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lrn
  * JD-Core Version:    0.7.0.1
  */

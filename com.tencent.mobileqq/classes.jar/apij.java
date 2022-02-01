@@ -1,15 +1,56 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-class apij
-  implements apip
+public abstract class apij
+  extends Binder
+  implements apii
 {
-  apij(apii paramapii, BaseChatPie paramBaseChatPie) {}
-  
-  public void a(int paramInt, aphw paramaphw)
+  public apij()
   {
-    this.jdField_a_of_type_Apii.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, paramaphw, false);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "dc00898", "", "", "0X800B32D", "0X800B32D", apil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin), 0, paramaphw.a, paramInt + "", "", "");
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+  }
+  
+  public static apii a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+    if ((localIInterface != null) && ((localIInterface instanceof apii))) {
+      return (apii)localIInterface;
+    }
+    return new apik(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+    paramParcel1 = a();
+    paramParcel2.writeNoException();
+    if (paramParcel1 != null)
+    {
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+      return true;
+    }
+    paramParcel2.writeInt(0);
+    return true;
   }
 }
 

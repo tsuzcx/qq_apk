@@ -1,43 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class behr
-  extends andd
+public abstract class behr
+  extends Binder
+  implements behq
 {
-  public behr(TroopMoreDetailFragment paramTroopMoreDetailFragment) {}
+  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.ISwitchCallback";
+  static final int TRANSACTION_beginSwitch = 1;
+  static final int TRANSACTION_doSwitch = 3;
+  static final int TRANSACTION_onProgress = 2;
+  static final int TRANSACTION_postSwitch = 4;
   
-  protected void onGetTroopTagResult(boolean paramBoolean, String paramString)
+  public behr()
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags = TroopInfo.getTags(paramString);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.setTroopInfoData(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.b();
-    }
+    attachInterface(this, "com.tencent.mobileqq.theme.ISwitchCallback");
   }
   
-  protected void onOIDB0X899_1_Ret(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
+  public static behq asInterface(IBinder paramIBinder)
   {
-    super.onOIDB0X899_1_Ret(paramBoolean, paramLong1, paramInt1, paramList, paramLong2, paramInt2, paramString);
-    if ((this.a.b) || (!TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, String.valueOf(paramLong1))) || (paramInt1 != 2)) {}
-    do
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof behq))) {
+      return (behq)localIInterface;
+    }
+    return new behs(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      do
-      {
-        return;
-        if (!paramBoolean) {
-          break;
-        }
-      } while ((paramList == null) || (paramList.isEmpty()) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView == null));
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.a(paramList);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.e("TroopMoreDetailFragment", 2, "onOIDB0X899_0_Ret, result = " + paramInt2 + "strErrorMsg = " + paramString);
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.theme.ISwitchCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+      beginSwitch();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+      onProgress(paramParcel1.readLong(), paramParcel1.readLong());
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+      doSwitch(paramParcel1.readString(), paramParcel1.readString());
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
+    postSwitch(paramParcel1.readInt());
+    return true;
   }
 }
 

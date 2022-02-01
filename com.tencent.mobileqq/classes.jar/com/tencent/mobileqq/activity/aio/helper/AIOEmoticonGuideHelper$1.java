@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afoi;
+import agfm;
 import android.os.Message;
 import android.text.TextUtils;
-import apub;
-import aqbt;
-import aqbu;
+import aqxe;
+import arew;
+import arex;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.emoticon.QQEmojiUtil;
@@ -18,15 +18,15 @@ import mqq.os.MqqHandler;
 public class AIOEmoticonGuideHelper$1
   implements Runnable
 {
-  public AIOEmoticonGuideHelper$1(afoi paramafoi) {}
+  public AIOEmoticonGuideHelper$1(agfm paramagfm) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("aio_emoticon_guide.helper", 2, "showGuideBubble start loadConObj.");
     }
-    aqbu localaqbu = (aqbu)apub.a().a(545);
-    if (localaqbu == null) {
+    arex localarex = (arex)aqxe.a().a(545);
+    if (localarex == null) {
       if (QLog.isColorLevel()) {
         QLog.d("aio_emoticon_guide.helper", 2, "config bean is null.");
       }
@@ -34,17 +34,17 @@ public class AIOEmoticonGuideHelper$1
     for (;;)
     {
       return;
-      if (afoi.a(this.this$0) == null)
+      if (agfm.a(this.this$0) == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("aio_emoticon_guide.helper", 2, "chat pie is null.");
         }
       }
-      else if (afoi.a(this.this$0, localaqbu))
+      else if (agfm.a(this.this$0, localarex))
       {
-        Object localObject = localaqbu.a.a;
-        if (ThemeUtil.isNowThemeIsNight(afoi.a(this.this$0).app, false, null)) {
-          localObject = localaqbu.a.b;
+        Object localObject = localarex.a.a;
+        if (ThemeUtil.isNowThemeIsNight(agfm.a(this.this$0).app, false, null)) {
+          localObject = localarex.a.b;
         }
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
@@ -56,8 +56,8 @@ public class AIOEmoticonGuideHelper$1
             URLDrawable.getDrawable((String)localObject).startDownload(false);
             return;
           }
-          int i = localaqbu.a.c;
-          int j = localaqbu.a.d;
+          int i = localarex.a.c;
+          int j = localarex.a.d;
           boolean bool;
           if (j == 1) {
             bool = QQSysFaceUtil.isEmoReady(i);
@@ -66,8 +66,8 @@ public class AIOEmoticonGuideHelper$1
           {
             localObject = Message.obtain();
             ((Message)localObject).what = 2;
-            ((Message)localObject).obj = localaqbu;
-            afoi.a(this.this$0).sendMessage((Message)localObject);
+            ((Message)localObject).obj = localarex;
+            agfm.a(this.this$0).sendMessage((Message)localObject);
             return;
             if (j == 2) {
               bool = QQEmojiUtil.isEmoReady(QQEmojiUtil.getEmojiLocalId(i));

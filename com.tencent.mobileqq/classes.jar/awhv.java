@@ -1,52 +1,32 @@
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.qphone.base.util.QLog;
 
 public class awhv
-  implements INetInfoHandler
+  extends BroadcastReceiver
 {
-  private awhv(NearbyAppInterface paramNearbyAppInterface) {}
+  private awhv(QQMusicPlayService paramQQMusicPlayService) {}
   
-  public void onNetMobile2None()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (NearbyAppInterface.i(this.a) != null) {
-      NearbyAppInterface.j(this.a).onNetMobile2None();
+    if (paramIntent != null)
+    {
+      QLog.d("QQMusicPlay.QQMusicPlayService", 1, "QQMusicPlayBroadcastReceiver onReceive,action:" + paramIntent.getAction());
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("QQMusicPlay_exit_action"))))
+      {
+        if (QQMusicPlayService.a(this.a) == null) {
+          break label150;
+        }
+        QQMusicPlayService.a(this.a).sendEmptyMessage(11);
+      }
     }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (NearbyAppInterface.g(this.a) != null) {
-      NearbyAppInterface.h(this.a).onNetMobile2Wifi(paramString);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (NearbyAppInterface.a(this.a) != null) {
-      NearbyAppInterface.b(this.a).onNetNone2Mobile(paramString);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (NearbyAppInterface.e(this.a) != null) {
-      NearbyAppInterface.f(this.a).onNetNone2Wifi(paramString);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (NearbyAppInterface.c(this.a) != null) {
-      NearbyAppInterface.d(this.a).onNetWifi2Mobile(paramString);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (NearbyAppInterface.k(this.a) != null) {
-      NearbyAppInterface.l(this.a).onNetWifi2None();
-    }
+    return;
+    label150:
+    this.a.stopSelf();
   }
 }
 

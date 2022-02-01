@@ -1,30 +1,23 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
 public class aoia
-  extends aoim
+  implements Comparator<File>
 {
-  public long a;
-  public ArrayList<aodj> a;
-  public boolean a;
+  public aoia(CleanCache paramCleanCache) {}
   
-  public aoia()
+  public int a(File paramFile1, File paramFile2)
   {
-    this.b = 4L;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("ARLocalFaceRecogResult{recogType = ").append(this.b).append(",isTimeOut = ").append(this.jdField_a_of_type_Boolean).append(",frameIdx = ").append(this.jdField_a_of_type_Long).append(", faceDatas.size = ");
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
-    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size();; i = 0) {
-      return i + '}';
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoia
  * JD-Core Version:    0.7.0.1
  */

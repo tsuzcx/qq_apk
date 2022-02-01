@@ -1,51 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class adie
-  implements aeex
+  implements View.OnClickListener
 {
-  public adie(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public adie(AssistantSettingActivity paramAssistantSettingActivity, ArrayList paramArrayList) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable)) {
-      ForwardTroopListFragment.a(this.a).setVisibility(8);
-    }
-    for (;;)
-    {
-      if (ForwardTroopListFragment.a(this.a) != null) {
-        ForwardTroopListFragment.a(this.a).a(paramEditable);
-      }
-      return;
-      ForwardTroopListFragment.a(this.a).setVisibility(0);
-    }
-  }
-  
-  public void onEditTextFocusChanged(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (ForwardTroopListFragment.a(this.a) == null))
-    {
-      ForwardTroopListFragment.a(this.a, ContactSearchFragment.a(8, 2097176, null, null, ForwardTroopListFragment.a(this.a)));
-      FragmentTransaction localFragmentTransaction = this.a.getActivity().getSupportFragmentManager().beginTransaction();
-      localFragmentTransaction.add(2131376347, ForwardTroopListFragment.a(this.a));
-      localFragmentTransaction.commitAllowingStateLoss();
-    }
-  }
-  
-  public void onItemDeleted(ResultRecord paramResultRecord)
-  {
-    if (paramResultRecord != null) {
-      ForwardTroopListFragment.a(this.a, paramResultRecord.uin, paramResultRecord.getUinType());
-    }
-    this.a.a.notifyDataSetChanged();
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity, ArkAppListActivity.class);
+    localIntent.putExtra("intent_extra_authority_app_list", (String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

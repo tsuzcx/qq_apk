@@ -1,36 +1,84 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Iterator;
+import java.util.List;
 
 public class bchr
-  implements View.OnClickListener
+  extends bchu
 {
-  public bchr(StructMsgForGeneralShare paramStructMsgForGeneralShare, PopupWindow paramPopupWindow, Context paramContext) {}
+  private List<PhoneContact> a;
   
-  public void onClick(View paramView)
+  public bchr(FaceDecoder paramFaceDecoder, bchy parambchy, List<PhoneContact> paramList)
   {
-    QLog.d(StructMsgForGeneralShare.access$000(), 1, "delete_ad");
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    }
-    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().startDelAnimAndDelMsg((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    ((oge)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(139)).a(8, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692096), 1).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramFaceDecoder, parambchy);
+    this.a = paramList;
   }
+  
+  public void b(bcfj parambcfj, bcnt parambcnt)
+  {
+    boolean bool = true;
+    super.b(parambcfj, parambcnt);
+    int i;
+    int j;
+    if (parambcnt.c() != null)
+    {
+      parambcfj = (bceb)parambcfj;
+      if (this.a != null)
+      {
+        Iterator localIterator = this.a.iterator();
+        i = 0;
+        j = i;
+        if (!localIterator.hasNext()) {
+          break label101;
+        }
+        if (((PhoneContact)localIterator.next()).contactID != parambcfj.a.contactID) {
+          break label197;
+        }
+        parambcnt.c().setText(anvx.a(2131702011));
+        i = 1;
+      }
+    }
+    label191:
+    label197:
+    for (;;)
+    {
+      break;
+      j = 0;
+      label101:
+      if (!TextUtils.isEmpty(parambcfj.c()))
+      {
+        parambcnt.c().setText(parambcfj.c());
+        j = 1;
+      }
+      parambcfj = parambcnt.c();
+      if (j != 0)
+      {
+        i = 0;
+        parambcfj.setVisibility(i);
+        parambcfj = parambcnt.a();
+        if (j != 0) {
+          break label191;
+        }
+      }
+      for (;;)
+      {
+        parambcfj.setClickable(bool);
+        if (parambcnt.a() != null) {
+          parambcnt.a().setVisibility(8);
+        }
+        return;
+        i = 8;
+        break;
+        bool = false;
+      }
+    }
+  }
+  
+  public void d(bcfj parambcfj, bcnt parambcnt) {}
 }
 
 

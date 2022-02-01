@@ -1,11 +1,32 @@
-import java.util.Observable;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
-public class aubr
-  extends Observable
+class aubr
+  implements audq
 {
-  public void setChanged()
+  aubr(aubq paramaubq, List paramList, athn paramathn, aubv paramaubv) {}
+  
+  public void onNo()
   {
-    super.setChanged();
+    if (this.jdField_a_of_type_Aubv != null) {
+      this.jdField_a_of_type_Aubv.a(1, 1);
+    }
+  }
+  
+  public void onYes()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Athn.b(localFileManagerEntity);
+      }
+    }
+    if (this.jdField_a_of_type_Aubv != null) {
+      this.jdField_a_of_type_Aubv.a(1, 0);
+    }
   }
 }
 

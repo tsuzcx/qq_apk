@@ -17,8 +17,8 @@ import android.view.View.OnTouchListener;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bmbc;
-import bmbz;
+import bnqm;
+import bnrj;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.ttpic.videoshelf.ImagePositonManager;
 import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
@@ -71,9 +71,9 @@ public class ScaleMoveImageViewer
     this.mActivity = ((Activity)paramContext);
     setOnClickListener(this);
     clearSeclected();
-    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2130837661));
-    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2131368422);
-    this.mMaskCoverImage = getResources().getDrawable(2130837669);
+    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2130837676));
+    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2131368579);
+    this.mMaskCoverImage = getResources().getDrawable(2130837684);
   }
   
   private void drawAnimationIfNeed(Canvas paramCanvas)
@@ -171,8 +171,8 @@ public class ScaleMoveImageViewer
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       activeSelected();
-      bmbc.a().h();
-      bmbz.b(this.mActivity, this.mNodeItem.nodeID);
+      bnqm.a().h();
+      bnrj.b(this.mActivity, this.mNodeItem.nodeID);
     }
   }
   

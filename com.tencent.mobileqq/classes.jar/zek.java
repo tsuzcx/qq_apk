@@ -1,27 +1,17 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class zek
-  implements View.OnClickListener
+public class zek
 {
-  zek(zei paramzei) {}
-  
-  public void onClick(View paramView)
+  public static long a(String paramString, long paramLong)
   {
-    if (!zdg.e())
+    try
     {
-      CertifiedAccountMeta.StFeed localStFeed = zei.a(this.a);
-      if (localStFeed != null)
-      {
-        this.a.d(localStFeed);
-        if (this.a.a() != null) {
-          this.a.a().c(localStFeed);
-        }
-      }
+      long l = Long.valueOf(paramString).longValue();
+      return l;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (NumberFormatException localNumberFormatException)
+    {
+      ykq.d("NumberUtils", "Invalid num string " + paramString + ", return default number " + paramLong);
+    }
+    return paramLong;
   }
 }
 

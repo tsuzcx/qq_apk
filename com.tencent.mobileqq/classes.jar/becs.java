@@ -1,78 +1,103 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils.ProcessTDFileScheduler.1;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.Player;
 
 public class becs
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
+  public static becs a;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private ConcurrentLinkedQueue<MessageRecord> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
-  public becs() {}
-  
-  public becs(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString)
+  private becs(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  public becs(oidb_0x6c2.Player paramPlayer)
+  public static becs a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Long = paramPlayer.uint64_uin.get();
-    this.jdField_b_of_type_Long = paramPlayer.uint64_time.get();
-    this.jdField_a_of_type_Int = paramPlayer.int32_amount.get();
-    this.jdField_b_of_type_Int = paramPlayer.int32_index.get();
-    this.jdField_a_of_type_JavaLangString = paramPlayer.bytes_tips.get().toStringUtf8();
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
+    if (jdField_a_of_type_Becs == null) {}
     try
     {
-      localJSONObject.put("uin", this.jdField_a_of_type_Long);
-      localJSONObject.put("time", this.jdField_b_of_type_Long);
-      localJSONObject.put("amount", this.jdField_a_of_type_Int);
-      localJSONObject.put("index", this.jdField_b_of_type_Int);
-      localJSONObject.put("tips", this.jdField_a_of_type_JavaLangString);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e(".troop.send_gift", 2, getClass().getSimpleName() + " toJson error. e=" + localJSONException);
+      if (jdField_a_of_type_Becs == null) {
+        jdField_a_of_type_Becs = new becs(paramQQAppInterface);
       }
+      return jdField_a_of_type_Becs;
     }
+    finally {}
   }
   
-  public void a(String paramString)
+  public void a()
   {
-    paramString = new String(paramString);
-    try
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() <= 0) {}
+    QQAppInterface localQQAppInterface;
+    do
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Long = paramString.optLong("uin");
-      this.jdField_b_of_type_Long = paramString.optLong("time");
-      this.jdField_a_of_type_Int = paramString.optInt("amount");
-      this.jdField_b_of_type_Int = paramString.optInt("index");
-      this.jdField_a_of_type_JavaLangString = paramString.optString("tips");
       return;
-    }
-    catch (JSONException paramString)
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while ((localQQAppInterface == null) || (localQQAppInterface.mAutomator.a() != 1));
+    ThreadManager.postImmediately(new TeamWorkUtils.ProcessTDFileScheduler.1(this, localQQAppInterface), null, true);
+  }
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {}
+    label190:
+    do
     {
-      QLog.e(".troop.send_gift", 2, getClass().getSimpleName() + " fromJson error. e=" + paramString);
-    }
+      do
+      {
+        for (;;)
+        {
+          return;
+          Object localObject1;
+          if ((paramMessageRecord instanceof MessageForStructing))
+          {
+            localObject1 = (MessageForStructing)paramMessageRecord;
+            if ((((MessageForStructing)localObject1).structingMsg != null) && (!TextUtils.isEmpty(((MessageForStructing)localObject1).structingMsg.mMsgUrl)) && (atpk.a(((MessageForStructing)localObject1).structingMsg.mMsgUrl))) {
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
+            }
+          }
+          else
+          {
+            if (!(paramMessageRecord instanceof MessageForArkApp)) {
+              break label190;
+            }
+            localObject1 = (MessageForArkApp)paramMessageRecord;
+            Object localObject2 = ((MessageForArkApp)localObject1).ark_app_message.metaList;
+            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+              try
+              {
+                localObject2 = new JSONObject(new JSONObject((String)localObject2).getString(((MessageForArkApp)localObject1).ark_app_message.appView));
+                localObject1 = ((JSONObject)localObject2).optString("appid");
+                localObject2 = ((JSONObject)localObject2).optString("qqdocurl");
+                if (((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals(String.valueOf(becr.a)))) || ((!TextUtils.isEmpty((CharSequence)localObject2)) && (atpk.a((String)localObject2))))
+                {
+                  this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
+                  return;
+                }
+              }
+              catch (JSONException paramMessageRecord) {}
+            }
+          }
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e(beay.i, 2, paramMessageRecord.getMessage());
+      return;
+    } while ((!(paramMessageRecord instanceof MessageForText)) || (!atpk.a(((MessageForText)paramMessageRecord).msg)));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
   }
 }
 

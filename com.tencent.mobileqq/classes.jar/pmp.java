@@ -1,28 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class pmp
-  implements View.OnClickListener
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  public pmp(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
-  
-  public void onClick(View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.a.doOnBackEvent();
-    if (ReadInJoyAdIMAXBrowserFragment.a(this.a)) {}
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("ViolaSusAutoPlayConfig", 1, "[onReceiveConfig] " + paramString);
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ReadInJoyAdIMAXBrowserFragment.a(this.a, true);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("stat_src", "5");
-      obb.a(new trn().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(obb.u).b(obb.ag).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(obb.a(localHashMap)).a());
+      String str1;
+      try
+      {
+        paramString = pku.a(paramString);
+        Iterator localIterator = paramString.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          str1 = (String)localIterator.next();
+          String str2 = (String)paramString.get(str1);
+          if (!TextUtils.isEmpty(str2))
+          {
+            QLog.d("ViolaSusAutoPlayConfig", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+            if (!TextUtils.equals(str1, "autoplay_disable")) {
+              continue;
+            }
+            bmhv.o(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ViolaSusAutoPlayConfig", 2, "error in parse video_feeds_Type config: " + paramString.getMessage());
+        }
+      }
+      QLog.d("ViolaSusAutoPlayConfig", 2, "key: " + str1 + " of value is null");
     }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bmhv.o(0);
   }
 }
 

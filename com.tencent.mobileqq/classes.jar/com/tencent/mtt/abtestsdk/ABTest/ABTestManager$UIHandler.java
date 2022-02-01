@@ -41,7 +41,7 @@ class ABTestManager$UIHandler
           ABTestLog.debug("get experiments success, resInfo =" + paramMessage.obj, new Object[0]);
           paramMessage = new JSONObject((String)paramMessage.obj);
           if (paramMessage.optInt("code") == 0) {
-            ABTestManager.access$700().put("cache", paramMessage);
+            ABTestManager.access$500().put("cache", paramMessage);
           }
           if (this.mListener != null)
           {

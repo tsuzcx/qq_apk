@@ -1,26 +1,21 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.subscribe.network.GetSubscribeFeedDetailRequest;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class zir
-  extends zal
+public abstract interface zir
 {
-  private CertifiedAccountMeta.StFeed a;
+  public abstract void a(int paramInt);
   
-  public zir(CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    this.a = paramStFeed;
-  }
+  public abstract void a(View paramView, float paramFloat);
   
-  public void a() {}
+  public abstract void a(View paramView, float paramFloat, MotionEvent paramMotionEvent);
   
-  public void a(zar paramzar)
-  {
-    GetSubscribeFeedDetailRequest localGetSubscribeFeedDetailRequest = new GetSubscribeFeedDetailRequest(this.a, null);
-    paramzar = new zis(this, paramzar);
-    localGetSubscribeFeedDetailRequest.setEnableCache(false);
-    VSNetworkHelper.getInstance().sendRequest(localGetSubscribeFeedDetailRequest, paramzar);
-  }
+  public abstract void a(View paramView, zio paramzio);
+  
+  public abstract boolean a(View paramView);
+  
+  public abstract boolean a(View paramView, ziu paramziu, MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(View paramView);
 }
 
 

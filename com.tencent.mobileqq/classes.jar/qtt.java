@@ -1,79 +1,145 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGifView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.qphone.base.util.QLog;
 
 public class qtt
-  extends ClickableSpan
-  implements som
+  extends ViewBase
 {
-  private int jdField_a_of_type_Int = -1;
-  protected long a;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private qtr jdField_a_of_type_Qtr;
-  boolean jdField_a_of_type_Boolean;
+  private NativeGifView a;
   
-  public qtt(long paramLong, int paramInt, qtr paramqtr)
+  public qtt(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Qtr = paramqtr;
+    super(paramVafContext);
+    this.a = new NativeGifView(paramVafContext.getContext());
   }
   
-  private void a(long paramLong, Context paramContext)
+  private boolean a()
   {
-    if ((this.jdField_a_of_type_Qtr.a == null) || (this.jdField_a_of_type_Qtr.a.a() == null) || (this.jdField_a_of_type_Qtr.a.a().mSocialFeedInfo == null) || (this.jdField_a_of_type_Qtr.a.a().mSocialFeedInfo.jdField_a_of_type_Rfj == null)) {
-      return;
-    }
-    Object localObject = paa.g + bfuc.encodeToString(String.valueOf(paramLong).getBytes(), 2);
-    pay.a(paramContext, (String)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonBasicComponent", 2, "personal url =" + (String)localObject);
-    }
-    localObject = this.jdField_a_of_type_Qtr.a.a();
-    pay.a = (ArticleInfo)localObject;
-    String str = pay.a("3", (ArticleInfo)localObject, paramLong);
-    if (uhv.a(this.jdField_a_of_type_Qtr.a.e())) {}
-    for (paramContext = "0X800935C";; paramContext = "0X8007BA3")
+    return this.mParams.mLayoutHeight * this.mParams.mLayoutWidth > 2000000;
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setGifHeight(this.mParams.mLayoutHeight);
+    this.a.setGifWidth(this.mParams.mLayoutWidth);
+    this.a.setIsBigImg(a());
+    this.a.setBackgroundColor(this.mBackground);
+    this.a.displayGif(this.mParams.mLayoutWidth, this.mParams.mLayoutHeight);
+    this.a.invalidate();
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      odq.a(null, String.valueOf(((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Rer.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(this.jdField_a_of_type_Qtr.a.a().mFeedId), "0", "" + ((ArticleInfo)localObject).mStrategyId, str, false);
-      pgw.b((ArticleInfo)localObject, this.jdField_a_of_type_Qtr.a.e());
-      return;
+    default: 
+      return super.setAttribute(paramInt, paramObject);
+    case 59: 
+      try
+      {
+        this.mParams.mLayoutWidth = ((Integer)paramObject).intValue();
+        this.a.requestLayout();
+        return true;
+      }
+      catch (Exception paramObject)
+      {
+        for (;;)
+        {
+          QLog.d("ReadInJoyGifView", 2, paramObject.getMessage());
+        }
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView != null) {
-      a(this.jdField_a_of_type_Long, paramView.getContext());
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = -1)
+    try
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
+      this.mParams.mLayoutHeight = ((Integer)paramObject).intValue();
+      this.a.requestLayout();
+      return true;
     }
+    catch (Exception paramObject)
+    {
+      for (;;)
+      {
+        QLog.d("ReadInJoyGifView", 2, paramObject.getMessage());
+      }
+    }
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
+    {
+    default: 
+      bool1 = super.setAttribute(paramInt, paramString);
+    case 1150: 
+    case 1159: 
+    case 51: 
+      for (;;)
+      {
+        return bool1;
+        this.a.setGifUrl(paramString);
+        return true;
+        this.a.setCoverUrl(paramString);
+        return true;
+        try
+        {
+          paramString = Utils.toInteger(paramString);
+          bool1 = bool2;
+          if (this.a != null)
+          {
+            bool1 = bool2;
+            if (paramString != null)
+            {
+              this.a.setScaleType(paramString.intValue());
+              return true;
+            }
+          }
+        }
+        catch (Exception paramString)
+        {
+          QLog.d("ReadInJoyGifView", 2, paramString.getMessage());
+          return true;
+        }
+      }
+    }
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.a.setNeedGifUrl("yes".equals(paramString.toLowerCase()));
+      return true;
+    }
+    return false;
   }
 }
 

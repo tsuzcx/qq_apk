@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_width="fill_parent" android:layout_height="60.0dip" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.widget.pull2refresh.XRecyclerView android:orientation="vertical" android:id="@id/nxy" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <include android:id="@id/mt8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/acb" />
-        <include android:id="@id/eep" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/acc" />
-        <FrameLayout android:id="@id/muo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/be8" android:paddingTop="@dimen/be8" android:paddingRight="@dimen/be8" android:paddingBottom="@dimen/be8" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:layout_gravity="center" android:id="@id/c2a" android:layout_width="173.0dip" android:layout_height="205.0dip" android:src="@drawable/gf7" android:scaleType="fitXY" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+        <ImageView android:id="@id/n78" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/gf_" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:layout_gravity="center_horizontal" android:id="@id/nmj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="暂无数据，请刷新页面" />
+    </LinearLayout>
 </LinearLayout>

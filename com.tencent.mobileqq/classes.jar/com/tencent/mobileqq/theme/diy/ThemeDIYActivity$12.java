@@ -11,7 +11,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
-import bcef;
+import bdla;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -59,7 +59,7 @@ class ThemeDIYActivity$12
         }
         for (;;)
         {
-          bcef.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", (String)localObject1, 0, 0, String.valueOf(this.this$0.mCurrentPageIndex), localBgSuit.id, "" + localBgSuit.from, "");
+          bdla.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", (String)localObject1, 0, 0, String.valueOf(this.this$0.mCurrentPageIndex), localBgSuit.id, "" + localBgSuit.from, "");
           break;
           this.this$0.mPageView.mData.tryOnBgRSD = localBgSuit;
           this.this$0.setListItemStatus(this.this$0.bgResHListView, this.this$0.mPageView.mData.tryOnBgRSD, this.this$0.mPageView.mData.usedBgRSD, null);
@@ -113,7 +113,7 @@ class ThemeDIYActivity$12
         for (this.this$0.mStyleSetStatus = 2;; this.this$0.mStyleSetStatus = 0)
         {
           this.this$0.mAdapter.tryOnStyleRSD = this.this$0.tryOnStyleRSD;
-          bcef.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", "diy_style", 0, 0, String.valueOf(this.this$0.mCurrentPageIndex), ((ResSuitData.StyleSuit)localObject1).id, "", "");
+          bdla.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", "diy_style", 0, 0, String.valueOf(this.this$0.mCurrentPageIndex), ((ResSuitData.StyleSuit)localObject1).id, "", "");
           if (this.this$0.mCurrentPageIndex != 0) {
             break;
           }

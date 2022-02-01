@@ -1,12 +1,11 @@
-class wrs
-  implements bgso
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
+
+public class wrs
+  extends wfh
 {
-  wrs(wrr paramwrr) {}
-  
-  public void onResult(boolean paramBoolean)
+  public wrs(wrq paramwrq, qqstory_service.RspForbidVideo paramRspForbidVideo)
   {
-    xvv.a("PromoteWidgetController", "preloadSonicSession() doStartProcess=%b", Boolean.valueOf(paramBoolean));
-    this.a.a = true;
+    super(paramRspForbidVideo.result);
   }
 }
 

@@ -1,17 +1,23 @@
-import android.app.Activity;
 import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.widget.QQToast;
+import eipc.EIPCResult;
 
 class bjfj
-  extends apkq
+  extends QIPCModule
 {
-  bjfj(bjfh parambjfh, Activity paramActivity) {}
-  
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  bjfj(bjfi parambjfi, String paramString)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("QIPC_SHOW_TOAST_ACTION".equals(paramString)) {
+      QQToast.a(BaseApplicationImpl.context, anvx.a(2131710646), 1).a();
     }
+    return null;
   }
 }
 

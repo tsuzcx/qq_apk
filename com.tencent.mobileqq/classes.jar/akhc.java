@@ -1,24 +1,29 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+
 public class akhc
+  implements DialogInterface.OnClickListener
 {
-  float a;
-  public String a;
-  public boolean a;
+  public akhc(BindNumberActivity paramBindNumberActivity) {}
   
-  public akhc()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    return "RecogResult{isRecog=" + this.jdField_a_of_type_Boolean + ", cfd=" + this.jdField_a_of_type_Float + ", scoreId='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    BindNumberActivity.a(this.a);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.getIntent();
+    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
+      this.a.a("CliOper", "0X8005DE9", 1);
+    }
+    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
+      this.a.a("CliOper", "0X8005DE9", 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhc
  * JD-Core Version:    0.7.0.1
  */

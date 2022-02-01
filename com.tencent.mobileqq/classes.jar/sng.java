@@ -1,8 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public abstract interface sng
+class sng
+  extends suv
 {
-  public abstract void a(ChannelCoverInfo paramChannelCoverInfo);
+  sng(smg paramsmg) {}
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    this.a.a.d(paramString);
+  }
 }
 
 

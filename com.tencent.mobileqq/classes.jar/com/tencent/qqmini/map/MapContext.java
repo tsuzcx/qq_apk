@@ -126,7 +126,7 @@ public class MapContext
     this.markerMaxSize = ((int)(this.density * 50.0F + 0.5D));
     try
     {
-      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130841199);
+      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130841211);
       this.markerSparseArray = new SparseArray();
       this.circleArrayList = new ArrayList();
       this.polylineArrayList = new ArrayList();
@@ -239,17 +239,19 @@ public class MapContext
     }
     double d1 = paramJSONObject.optDouble("latitude", 0.0D);
     double d2 = paramJSONObject.optDouble("longitude", 0.0D);
-    paramJSONObject = paramJSONObject.optString("iconPath", "");
+    Object localObject = paramJSONObject.optString("iconPath", "");
+    int i = paramJSONObject.optInt("width", -2);
+    int j = paramJSONObject.optInt("height", -2);
     MarkerOptions localMarkerOptions = new MarkerOptions(new LatLng(d1, d2));
-    ImageView localImageView = createMarkerView();
-    if (!TextUtils.isEmpty(paramJSONObject)) {}
-    for (paramJSONObject = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramJSONObject);; paramJSONObject = null) {
+    ImageView localImageView = createMarkerView(i, j);
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+    for (paramJSONObject = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath((String)localObject);; paramJSONObject = null) {
       try
       {
         paramJSONObject = Drawable.createFromPath(paramJSONObject);
-        Object localObject = paramJSONObject;
+        localObject = paramJSONObject;
         if (paramJSONObject == null) {
-          localObject = this.context.getResources().getDrawable(2130841260);
+          localObject = this.context.getResources().getDrawable(2130841272);
         }
         localImageView.setImageDrawable((Drawable)localObject);
         if (this.mTencentMap == null) {
@@ -313,9 +315,9 @@ public class MapContext
           localObject1 = Drawable.createFromPath((String)localObject1);
           localObject3 = localObject1;
           if (localObject1 == null) {
-            localObject3 = this.context.getResources().getDrawable(2130841260);
+            localObject3 = this.context.getResources().getDrawable(2130841272);
           }
-          localObject1 = createMarkerView();
+          localObject1 = createMarkerView(k, m);
           ((ImageView)localObject1).setLayoutParams(new ViewGroup.LayoutParams(k, m));
           ((ImageView)localObject1).setImageDrawable((Drawable)localObject3);
           localMarkerOptions.icon(BitmapDescriptorFactory.fromView((View)localObject1));
@@ -443,9 +445,18 @@ public class MapContext
     }
   }
   
-  private ImageView createMarkerView()
+  private ImageView createMarkerView(int paramInt1, int paramInt2)
   {
-    return new ImageView(this.context);
+    ImageView localImageView = new ImageView(this.context);
+    if ((paramInt1 > 0) && (paramInt2 > 0))
+    {
+      localImageView.setMinimumWidth((int)(this.density * paramInt1 + 0.5D));
+      localImageView.setMinimumHeight((int)(this.density * paramInt2 + 0.5D));
+      return localImageView;
+    }
+    localImageView.setMinimumWidth(this.markerMinSize);
+    localImageView.setMinimumHeight(this.markerMinSize);
+    return localImageView;
   }
   
   private void location()

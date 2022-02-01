@@ -1,4 +1,5 @@
 import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.util.SharePreferenceUtils;
 import java.util.ArrayList;
@@ -7,8 +8,8 @@ import java.util.List;
 
 public class dk
 {
-  private aaqz jdField_a_of_type_Aaqz;
-  private amqk jdField_a_of_type_Amqk;
+  private abgl jdField_a_of_type_Abgl;
+  private ansy jdField_a_of_type_Ansy;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public dj a;
   private dn jdField_a_of_type_Dn;
@@ -18,15 +19,15 @@ public class dk
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Amqk = new dl(this);
-    this.jdField_a_of_type_Aaqz = new dm(this);
+    this.jdField_a_of_type_Ansy = new dl(this);
+    this.jdField_a_of_type_Abgl = new dm(this);
   }
   
   public static DeviceInfo a(QQAppInterface paramQQAppInterface, long paramLong)
   {
     if (paramLong != 0L)
     {
-      paramQQAppInterface = (aara)paramQQAppInterface.getBusinessHandler(51);
+      paramQQAppInterface = (abgm)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
       if (paramQQAppInterface.a())
       {
         DeviceInfo[] arrayOfDeviceInfo = paramQQAppInterface.a();
@@ -99,10 +100,10 @@ public class dk
   public List<dj> a()
   {
     this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject = (amqd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8);
-    if (((amqd)localObject).a.jdField_a_of_type_JavaUtilList != null)
+    Object localObject = (ansr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    if (((ansr)localObject).a.jdField_a_of_type_JavaUtilList != null)
     {
-      localObject = ((amqd)localObject).a.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = ((ansr)localObject).a.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
         dj localdj = a((String)((Iterator)localObject).next());
@@ -116,8 +117,8 @@ public class dk
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amqk);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aaqz);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ansy);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Abgl);
     }
     this.jdField_a_of_type_Dn = null;
   }
@@ -126,8 +127,8 @@ public class dk
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amqk);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aaqz);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ansy);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Abgl);
     }
     this.jdField_a_of_type_Dn = paramdn;
   }
@@ -143,7 +144,7 @@ public class dk
   
   public boolean a()
   {
-    return ((amzy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(10)).a() != 0;
+    return ((aocn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER)).a() != 0;
   }
   
   public boolean a(String paramString)
@@ -152,7 +153,7 @@ public class dk
     boolean bool1 = bool2;
     if (paramString != null)
     {
-      int i = aszt.a(paramString);
+      int i = auea.a(paramString);
       if ((i != 3) && (i != 0) && (i != 7) && (i != 6) && (i != 9))
       {
         bool1 = bool2;

@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
-class zgt
-  implements View.OnClickListener
+public class zgt
+  implements zhs
 {
-  zgt(zgs paramzgs, int paramInt) {}
+  public zgt(SegmentList paramSegmentList) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_Zgs.a.a(this.jdField_a_of_type_Int, zgs.a(this.jdField_a_of_type_Zgs));
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.a(false);
   }
 }
 

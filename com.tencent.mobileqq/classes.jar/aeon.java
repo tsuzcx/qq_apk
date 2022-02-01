@@ -1,21 +1,33 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class aeon
-  implements View.OnClickListener
 {
-  public aeon(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public void onClick(View paramView)
+  public aeon(PublicAccountInfo paramPublicAccountInfo)
   {
-    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    this.a.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

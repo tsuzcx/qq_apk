@@ -1,17 +1,44 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 class agfj
-  extends aghj
+  extends anyz
 {
-  agfj(agcw paramagcw)
+  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  private agfj(agfg paramagfg, BaseActivity paramBaseActivity)
   {
-    super(paramagcw, null);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onMsgRevokeNotice(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
-    return new afyj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    super.onMsgRevokeNotice(paramBoolean1, paramList, paramBoolean2);
+    if ((agfg.a(this.jdField_a_of_type_Agfg, paramList)) && (paramBoolean1)) {}
+    for (paramBoolean2 = true;; paramBoolean2 = false)
+    {
+      paramList = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("MergeForwardRevokeHelper", 2, "onMsgRevokeNotice  hasMsgRevoked:" + paramBoolean2 + "; isSuccess:" + paramBoolean1);
+      }
+      if ((paramBoolean2) && (paramList != null))
+      {
+        if (!this.jdField_a_of_type_Agfg.a) {
+          break;
+        }
+        paramList.finish();
+      }
+      return;
+    }
+    if (agfg.a() == paramList)
+    {
+      agfg.a(this.jdField_a_of_type_Agfg, paramList);
+      return;
+    }
+    paramList.finish();
   }
 }
 

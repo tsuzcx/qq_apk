@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
 import android.text.TextUtils;
-import bfro;
+import bhaf;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
@@ -9,17 +9,17 @@ import com.tencent.mobileqq.data.Setting;
 public class QQAvatarFHDDecoder$2
   implements Runnable
 {
-  public QQAvatarFHDDecoder$2(bfro parambfro, String paramString, boolean paramBoolean) {}
+  public QQAvatarFHDDecoder$2(bhaf parambhaf, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    if (bfro.a(this.this$0)) {
+    if (bhaf.a(this.this$0)) {
       return;
     }
-    Setting localSetting = bfro.a(this.this$0).getQQHeadSettingFromDB(this.jdField_a_of_type_JavaLangString);
+    Setting localSetting = bhaf.a(this.this$0).getQQHeadSettingFromDB(this.jdField_a_of_type_JavaLangString);
     if ((this.jdField_a_of_type_Boolean) || (localSetting == null) || (TextUtils.isEmpty(localSetting.url)) || (System.currentTimeMillis() - localSetting.updateTimestamp > 86400000L))
     {
-      bfro.a(this.this$0).getCustomHead(this.jdField_a_of_type_JavaLangString);
+      bhaf.a(this.this$0).getCustomHead(this.jdField_a_of_type_JavaLangString);
       return;
     }
     this.this$0.a(localSetting);

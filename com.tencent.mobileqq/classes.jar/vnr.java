@@ -1,78 +1,133 @@
-import android.support.annotation.NonNull;
+import UserGrowth.stCollection;
+import UserGrowth.stNewIconStyle;
+import UserGrowth.stSchema;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
 import android.text.TextUtils;
-import java.io.File;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vnr
-  extends vni
 {
-  public vnr(@NonNull String[] paramArrayOfString)
+  private static stSchema a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    super(paramArrayOfString);
-  }
-  
-  protected void a(String[] paramArrayOfString, vnj paramvnj)
-  {
-    int k = paramArrayOfString.length;
-    int i = 0;
-    for (;;)
+    String str3 = paramstSimpleMetaFeed.new_icon.h5_url;
+    String str2 = paramstSimpleMetaFeed.new_icon.schema_url;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str3))
     {
-      if (i < k)
-      {
-        paramvnj = new File(paramArrayOfString[i]).listFiles();
-        if (paramvnj == null)
-        {
-          i += 1;
-        }
-        else
-        {
-          int m = paramvnj.length;
-          int j = 0;
-          while (j < m)
-          {
-            if (j % 150 == 0) {}
-            try
-            {
-              Thread.sleep(100L);
-              File localFile = paramvnj[j];
-              if (a(localFile)) {
-                a(localFile);
-              }
-              j += 1;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              for (;;)
-              {
-                xvv.e("Q.qqstory.cleaner:UploadTmpVideoCleanStep", "sleep error ,InterruptedException");
-              }
-            }
-          }
-        }
+      str1 = str2;
+      if (!vmr.a(str2)) {
+        str1 = vmr.a(paramstSimpleMetaFeed);
       }
     }
+    paramstSimpleMetaFeed = new stSchema();
+    paramstSimpleMetaFeed.schema = str1;
+    paramstSimpleMetaFeed.H5Url = str3;
+    return paramstSimpleMetaFeed;
   }
   
-  protected boolean a(File paramFile)
+  private static WSDownloadParams a(WSVerticalPageFragment paramWSVerticalPageFragment, int paramInt, String paramString)
   {
-    if (!paramFile.isDirectory()) {}
-    while (System.currentTimeMillis() - paramFile.lastModified() <= 86400000L) {
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = voq.a(paramWSVerticalPageFragment.a());
+    localWSDownloadParams.mLinkStrategyType = vau.a().a();
+    localWSDownloadParams.mEventId = paramInt;
+    localWSDownloadParams.mTestId = vnd.a(localWSDownloadParams.mScene);
+    localWSDownloadParams.mScheme = paramString;
+    return localWSDownloadParams;
+  }
+  
+  public static void a(WSVerticalPageFragment paramWSVerticalPageFragment, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    if ((paramWSVerticalPageFragment == null) || (paramstSimpleMetaFeed == null) || (paramstSimpleMetaFeed.collection == null)) {
+      return;
+    }
+    String str1 = paramWSVerticalPageFragment.a();
+    String str2 = paramWSVerticalPageFragment.b();
+    if ((paramstSimpleMetaFeed.collection.click_action == 2) && (a(paramstSimpleMetaFeed.collection.schema)))
+    {
+      new vea(paramWSVerticalPageFragment.getActivity()).a(paramstSimpleMetaFeed.collection.schema).a(a(paramWSVerticalPageFragment, 16, paramstSimpleMetaFeed.collection.schema.schema)).a(new vns(str1, str2, paramstSimpleMetaFeed)).a();
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramstSimpleMetaFeed);
+    WSVerticalPageFragment.a(paramWSVerticalPageFragment.getActivity(), "vertical_layer_collection", str2, localArrayList, 0);
+    c(str1, str2, paramstSimpleMetaFeed, 1000001);
+  }
+  
+  public static void a(String paramString, WSVerticalPageFragment paramWSVerticalPageFragment, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    
+    if ((paramWSVerticalPageFragment == null) || (paramstSimpleMetaFeed == null) || (paramstSimpleMetaFeed.poster == null) || (paramstSimpleMetaFeed.poster.avatarSchema == null)) {
+      return;
+    }
+    String str1 = paramWSVerticalPageFragment.a();
+    String str2 = paramWSVerticalPageFragment.b();
+    stSimpleMetaPerson localstSimpleMetaPerson = paramstSimpleMetaFeed.poster;
+    new vea(paramWSVerticalPageFragment.getActivity()).a(localstSimpleMetaPerson.avatarSchema).a(a(paramWSVerticalPageFragment, 1, localstSimpleMetaPerson.avatarSchema.schema)).a(new vnu(str1, str2, paramString, paramstSimpleMetaFeed)).a();
+  }
+  
+  private static boolean a(stSchema paramstSchema)
+  {
+    if (paramstSchema == null) {}
+    while ((TextUtils.isEmpty(paramstSchema.miniAppSchema)) && (TextUtils.isEmpty(paramstSchema.schema)) && (TextUtils.isEmpty(paramstSchema.H5Url))) {
       return false;
     }
-    paramFile = paramFile.listFiles();
-    int j = paramFile.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label60;
-      }
-      if (TextUtils.equals(paramFile[i].getName(), "dont_delete.txt")) {
-        break;
-      }
-      i += 1;
-    }
-    label60:
     return true;
+  }
+  
+  public static void b(WSVerticalPageFragment paramWSVerticalPageFragment, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    if ((paramWSVerticalPageFragment == null) || (paramstSimpleMetaFeed == null)) {}
+    while (vnd.b()) {
+      return;
+    }
+    if (vmr.a(paramstSimpleMetaFeed.feed_material_jump_url)) {}
+    for (paramstSimpleMetaFeed = paramstSimpleMetaFeed.feed_material_jump_url; zfn.a(BaseApplicationImpl.getContext()); paramstSimpleMetaFeed = vmr.a(paramstSimpleMetaFeed))
+    {
+      vmr.a(paramWSVerticalPageFragment.getActivity(), "biz_src_jc_gzh_weishi", paramstSimpleMetaFeed);
+      return;
+    }
+    vbq.a(paramWSVerticalPageFragment.getActivity(), a(paramWSVerticalPageFragment, 3, paramstSimpleMetaFeed), true);
+  }
+  
+  private static void b(String paramString, int paramInt1, int paramInt2)
+  {
+    vkq.a(paramString, paramInt1, paramInt2);
+  }
+  
+  private static void b(String paramString1, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
+  {
+    vsj.a(paramString1, paramString2, paramString3, paramInt, paramstSimpleMetaFeed);
+  }
+  
+  public static void c(WSVerticalPageFragment paramWSVerticalPageFragment, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    if ((paramWSVerticalPageFragment == null) || (paramstSimpleMetaFeed == null) || (paramstSimpleMetaFeed.new_icon == null)) {}
+    while (vnd.b()) {
+      return;
+    }
+    String str1 = paramWSVerticalPageFragment.a();
+    String str2 = paramWSVerticalPageFragment.b();
+    Object localObject = paramstSimpleMetaFeed.new_icon;
+    int i = ((stNewIconStyle)localObject).tag_type;
+    int j = ((stNewIconStyle)localObject).id;
+    localObject = a(paramstSimpleMetaFeed);
+    new vea(paramWSVerticalPageFragment.getActivity()).a((stSchema)localObject).a(true).a(a(paramWSVerticalPageFragment, 4, ((stSchema)localObject).schema)).a(new vnt(str1, str2, paramstSimpleMetaFeed, i, j)).a();
+  }
+  
+  private static void c(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
+  {
+    vsj.a(paramString1, paramString2, paramstSimpleMetaFeed, paramInt);
+  }
+  
+  private static void d(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
+  {
+    vsj.d(paramString1, paramString2, paramInt, paramstSimpleMetaFeed);
   }
 }
 

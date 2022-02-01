@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
+import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -182,7 +182,7 @@ public class BDHCommonUpHandler
     }
   }
   
-  protected void handleSucResp(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, amwm paramamwm, ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  protected void handleSucResp(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, anza paramanza, ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
     try
     {
@@ -193,7 +193,7 @@ public class BDHCommonUpHandler
     }
     catch (Exception paramFromServiceMsg)
     {
-      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramFromServiceMsg.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramamwm, paramRichProtoResp.resps);
+      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramFromServiceMsg.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, paramRichProtoResp.resps);
     }
     for (;;)
     {
@@ -218,7 +218,7 @@ public class BDHCommonUpHandler
               break label296;
             }
             handleBusSuc(localBDHCommonUpResp, paramProtoResp);
-            setResult(0, 0, "", "", paramamwm, localBDHCommonUpResp);
+            setResult(0, 0, "", "", paramanza, localBDHCommonUpResp);
           }
           catch (Exception paramProtoResp) {}
         }
@@ -230,7 +230,7 @@ public class BDHCommonUpHandler
             RichProto.RichProtoResp.BDHCommonUpResp localBDHCommonUpResp = null;
           }
         }
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramamwm, localBDHCommonUpResp);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, localBDHCommonUpResp);
         continue;
         label296:
         if (shouldRetryByRetCode(i))
@@ -242,7 +242,7 @@ public class BDHCommonUpHandler
             return;
           }
         }
-        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", paramamwm, localBDHCommonUpResp);
+        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", paramanza, localBDHCommonUpResp);
       }
     }
   }

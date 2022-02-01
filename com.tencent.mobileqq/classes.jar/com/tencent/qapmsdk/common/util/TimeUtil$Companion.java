@@ -12,7 +12,7 @@ import kotlin.jvm.JvmStatic;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/TimeUtil$Companion;", "", "()V", "DEFAULT_DATE_FORMAT", "", "DEFAULT_TIMESTAMP_FORMAT", "TAG", "formatDateByUtc", "formatDateByUtc$annotations", "getFormatDateByUtc", "()Ljava/lang/String;", "formatDateByZone", "formatDateByZone$annotations", "getFormatDateByZone", "formatDateMs", "formatDateMs$annotations", "getFormatDateMs", "beforeTime", "", "firstTime", "secondTime", "getForwardHour", "what", "", "getUtcDateFormat", "date", "Ljava/util/Date;", "common_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/TimeUtil$Companion;", "", "()V", "DEFAULT_DATE_FORMAT", "", "DEFAULT_TIMESTAMP_FORMAT", "TAG", "formatDateByUtc", "formatDateByUtc$annotations", "getFormatDateByUtc", "()Ljava/lang/String;", "formatDateByZone", "formatDateByZone$annotations", "getFormatDateByZone", "formatDateMs", "formatDateMs$annotations", "getFormatDateMs", "beforeTime", "", "firstTime", "secondTime", "getForwardHour", "what", "", "getForwardMinute", "getUtcDateFormat", "date", "Ljava/util/Date;", "common_release"}, k=1, mv={1, 1, 15})
 public final class TimeUtil$Companion
 {
   @JvmStatic
@@ -20,7 +20,7 @@ public final class TimeUtil$Companion
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "firstTime");
     Intrinsics.checkParameterIsNotNull(paramString2, "secondTime");
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMddHH", Locale.US);
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMddHHmm", Locale.US);
     try
     {
       boolean bool = localSimpleDateFormat.parse(paramString1).before(localSimpleDateFormat.parse(paramString2));
@@ -63,9 +63,22 @@ public final class TimeUtil$Companion
   @NotNull
   public final String getForwardHour(int paramInt)
   {
-    Object localObject = new SimpleDateFormat("yyyyMMddHH", Locale.US);
+    Object localObject = new SimpleDateFormat("yyyyMMddHHmm", Locale.US);
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.add(10, paramInt);
+    Intrinsics.checkExpressionValueIsNotNull(localCalendar, "calendar");
+    localObject = ((SimpleDateFormat)localObject).format(localCalendar.getTime());
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "dateFormat.format(dateFrom)");
+    return localObject;
+  }
+  
+  @JvmStatic
+  @NotNull
+  public final String getForwardMinute(int paramInt)
+  {
+    Object localObject = new SimpleDateFormat("yyyyMMddHHmm", Locale.US);
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.add(12, paramInt);
     Intrinsics.checkExpressionValueIsNotNull(localCalendar, "calendar");
     localObject = ((SimpleDateFormat)localObject).format(localCalendar.getTime());
     Intrinsics.checkExpressionValueIsNotNull(localObject, "dateFormat.format(dateFrom)");

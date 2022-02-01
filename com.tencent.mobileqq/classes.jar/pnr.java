@@ -1,17 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class pnr
-  implements View.OnClickListener
 {
-  public pnr(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  protected pnt a;
+  protected pnu a;
+  protected pnv a;
+  protected pnw a;
   
-  public void onClick(View paramView)
+  public pnr a(pnt parampnt)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Pnt = parampnt;
+    return this;
+  }
+  
+  public pnr a(pnu parampnu)
+  {
+    this.jdField_a_of_type_Pnu = parampnu;
+    return this;
+  }
+  
+  public pnr a(pnv parampnv)
+  {
+    this.jdField_a_of_type_Pnv = parampnv;
+    return this;
+  }
+  
+  public pnr a(pnw parampnw)
+  {
+    this.jdField_a_of_type_Pnw = parampnw;
+    return this;
+  }
+  
+  public pnt a()
+  {
+    return this.jdField_a_of_type_Pnt;
+  }
+  
+  public pnu a()
+  {
+    return this.jdField_a_of_type_Pnu;
+  }
+  
+  public pnv a()
+  {
+    return this.jdField_a_of_type_Pnv;
+  }
+  
+  public pnw a()
+  {
+    return this.jdField_a_of_type_Pnw;
   }
 }
 

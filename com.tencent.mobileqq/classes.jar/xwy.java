@@ -1,18 +1,16 @@
-import com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class xwy
-  extends bbpx
+public abstract interface xwy
 {
-  public xwy(EditPicActivity paramEditPicActivity) {}
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    xvv.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
-    xwj localxwj = (xwj)this.a.a.a(xwj.class);
-    if (localxwj != null) {
-      localxwj.S_();
-    }
-  }
+  public abstract void a(CommentEntry paramCommentEntry);
+  
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void b(CommentEntry paramCommentEntry);
+  
+  public abstract void c(CommentEntry paramCommentEntry);
 }
 
 

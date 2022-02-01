@@ -1,23 +1,15 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.PagerAdapter;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class yra
-  extends DataSetObserver
+class yra
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public yra(EmptySupportViewPager paramEmptySupportViewPager) {}
+  yra(yqz paramyqz) {}
   
-  public void onChanged()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    PagerAdapter localPagerAdapter = this.a.getAdapter();
-    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
-    {
-      this.a.a(8);
-      EmptySupportViewPager.a(this.a, 0);
-      return;
-    }
-    this.a.a(0);
-    EmptySupportViewPager.b(this.a, 8);
+    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.g();
   }
 }
 

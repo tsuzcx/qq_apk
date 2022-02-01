@@ -1,31 +1,53 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class bbxz
-  extends BroadcastReceiver
+public class bbxz
+  extends Handler
 {
-  bbxz(bbxy parambbxy) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bbxz(ScribbleResMgr paramScribbleResMgr, Looper paramLooper)
   {
-    if (paramIntent.getAction() == null) {}
-    do
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScribbleResMgr", 2, "handleMessage  status: " + paramMessage.what + " type: " + paramMessage.arg1);
+    }
+    if (paramMessage.what == 1001) {
+      ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, true);
+    }
+    for (;;)
     {
-      do
+      return;
+      if (paramMessage.what == 1002)
       {
-        return;
-        paramContext = this.a.jdField_a_of_type_JavaLangString;
-        this.a.c();
-      } while ((this.a.jdField_a_of_type_Bbya == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
-      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
-      {
-        this.a.b();
-        this.a.jdField_a_of_type_Bbya.a(0, this.a.jdField_a_of_type_JavaLangString);
+        ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, false);
         return;
       }
-    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
-    this.a.jdField_a_of_type_Bbya.a(1, this.a.jdField_a_of_type_JavaLangString);
+      Iterator localIterator = ScribbleResMgr.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (bbyd)localIterator.next();
+        if (localObject != null)
+        {
+          View localView = ((bbyd)localObject).a();
+          localObject = ((bbyd)localObject).a();
+          if ((localView != null) && (localObject != null)) {
+            ((bbye)localObject).a(localView, paramMessage.arg1, (ScribbleResMgr.ResInfo)paramMessage.obj, paramMessage.what);
+          } else {
+            localIterator.remove();
+          }
+        }
+      }
+    }
   }
 }
 

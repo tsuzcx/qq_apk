@@ -1,8 +1,17 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
-public abstract interface adpk
+public class adpk
+  implements bkzq
 {
-  public abstract void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs);
+  public adpk(ChatHistoryFileActivity paramChatHistoryFileActivity, bkzi parambkzi) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(3, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.d)) || (this.jdField_a_of_type_Bkzi.isShowing())) {
+      this.jdField_a_of_type_Bkzi.dismiss();
+    }
+  }
 }
 
 

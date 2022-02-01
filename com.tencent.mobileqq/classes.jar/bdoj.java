@@ -1,28 +1,16 @@
-import com.tencent.mobileqq.data.troop.TroopInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-class bdoj
-  extends andd
+public class bdoj
+  implements View.OnTouchListener
 {
-  bdoj(bdoi parambdoi) {}
+  public bdoj(StructMsgForGeneralShare paramStructMsgForGeneralShare, aftk paramaftk) {}
   
-  protected void onGetAddTroopWebInfo(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    bdoi.a(this.a, paramString);
-  }
-  
-  protected void onOIDB0X88D_1_Ret(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    bdoi.a(this.a, paramBoolean, paramLong, paramTroopInfo);
-  }
-  
-  protected void onTroopManagerFailed(int paramInt1, int paramInt2)
-  {
-    bdoi.a(this.a, false, paramInt1, paramInt2, null);
-  }
-  
-  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
-  {
-    bdoi.a(this.a, true, paramInt1, paramInt2, paramString);
+    return this.jdField_a_of_type_Aftk.onTouch(paramView, paramMotionEvent);
   }
 }
 

@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity.2;
-import mqq.app.QQPermissionCallback;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class apqo
-  implements QQPermissionCallback
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public apqo(LocationSelectActivity.2 param2) {}
+  public apqo(QRScanEntryView paramQRScanEntryView) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    bfur.a(this.a.this$0, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    LocationSelectActivity.a(this.a.this$0);
+    com.tencent.mobileqq.minicode.RecogUtil.SAVE_DETECT_IMAGE = paramBoolean;
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

@@ -1,35 +1,19 @@
-import android.text.SpannableStringBuilder;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import java.util.List;
 
-public class uxf
-  extends SpannableStringBuilder
+class uxf
+  implements vgo
 {
-  private ArrayList<uxh> a;
-  private ArrayList<uxg> b;
+  uxf(uxe paramuxe) {}
   
-  uxf(CharSequence paramCharSequence)
+  public List<vgp> a(int paramInt, boolean paramBoolean)
   {
-    super(paramCharSequence);
+    return vmg.a(this.a.b(), paramInt, paramBoolean);
   }
   
-  public ArrayList<uxh> a()
+  public boolean a()
   {
-    return this.a;
-  }
-  
-  public void a(ArrayList<uxh> paramArrayList)
-  {
-    this.a = paramArrayList;
-  }
-  
-  public ArrayList<uxg> b()
-  {
-    return this.b;
-  }
-  
-  public void b(ArrayList<uxg> paramArrayList)
-  {
-    this.b = paramArrayList;
+    return AppNetConnInfo.isWifiConn();
   }
 }
 

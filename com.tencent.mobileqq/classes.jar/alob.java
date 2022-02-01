@@ -1,6 +1,18 @@
-public abstract interface alob
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.annotation.TargetApi;
+
+@TargetApi(11)
+public class alob
+  implements Animator.AnimatorListener
 {
-  public abstract void a();
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

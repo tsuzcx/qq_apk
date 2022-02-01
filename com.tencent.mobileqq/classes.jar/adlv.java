@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adlv
-  implements View.OnClickListener
+final class adlv
+  implements DialogInterface.OnClickListener
 {
-  public adlv(GroupManagerActivity paramGroupManagerActivity) {}
+  adlv(adnm paramadnm) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a != null) {
+      this.a.onCancel();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

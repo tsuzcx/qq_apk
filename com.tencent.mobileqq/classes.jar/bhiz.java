@@ -1,8 +1,13 @@
-import com.tencent.mobileqq.widget.ObservableScrollView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bhiz
+public final class bhiz
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(ObservableScrollView paramObservableScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bdla.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+  }
 }
 
 

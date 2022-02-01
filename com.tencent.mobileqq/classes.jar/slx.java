@@ -1,69 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.VideoReport;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public class slx
-  implements AbsListView.OnScrollListener
+public abstract interface slx
 {
-  List<AbsListView.OnScrollListener> a = new ArrayList();
+  public abstract void A_();
   
-  public void a()
-  {
-    this.a.clear();
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
   
-  public void a(AbsListView.OnScrollListener paramOnScrollListener)
-  {
-    if (!this.a.contains(paramOnScrollListener)) {
-      this.a.add(paramOnScrollListener);
-    }
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
   
-  public void b(AbsListView.OnScrollListener paramOnScrollListener)
-  {
-    this.a.remove(paramOnScrollListener);
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      AbsListView.OnScrollListener localOnScrollListener = (AbsListView.OnScrollListener)localIterator.next();
-      try
-      {
-        localOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-      }
-      catch (Throwable localThrowable) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("ReadInJoyBaseListView", 2, "onScroll exp", localThrowable);
-      }
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      AbsListView.OnScrollListener localOnScrollListener = (AbsListView.OnScrollListener)localIterator.next();
-      try
-      {
-        localOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
-      }
-      catch (Throwable localThrowable) {}
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, "onScrollStateChanged exp", localThrowable);
-      }
-    }
-    if (paramInt == 0) {
-      VideoReport.traverseExposure();
-    }
-  }
+  public abstract void b(RecyclerView.ViewHolder paramViewHolder);
 }
 
 

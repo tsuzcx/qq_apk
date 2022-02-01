@@ -1,38 +1,15 @@
+import com.tencent.av.gaudio.GaInviteDialogActivity;
+
 public class lno
+  implements adnl
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
+  public lno(GaInviteDialogActivity paramGaInviteDialogActivity) {}
   
-  public lno()
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 4L;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject != null) && ((paramObject instanceof lno)))
-    {
-      paramObject = (lno)paramObject;
-      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return "Uin[" + this.jdField_a_of_type_Long + "], VideoSrcType[" + this.jdField_a_of_type_Int + "], isBig[" + this.jdField_a_of_type_Boolean + "], isRender[" + this.jdField_b_of_type_Boolean + "], isNeedRequest[" + this.c + "], hasRecvData[" + this.d + "], inviteId[" + this.jdField_a_of_type_JavaLangString + "], isMirror[" + this.f + "]";
+    this.a.g = paramInt1;
+    this.a.h = paramInt2;
+    GaInviteDialogActivity.a(this.a);
   }
 }
 

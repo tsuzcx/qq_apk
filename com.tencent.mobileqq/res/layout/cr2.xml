@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ff737373" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
-        <com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText android:textSize="16.0dip" android:textColor="#ff262626" android:textColorHint="#ffe5e5e5" android:id="@id/byx" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:singleLine="false" android:layout_toLeftOf="@id/nqd" />
-        <TextView android:textSize="12.0dip" android:textColor="#ffa6a6a6" android:id="@id/nqd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cqz" />
+    <com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:id="@id/noj" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" qzone:ptrCoverMode="true" />
+</FrameLayout>

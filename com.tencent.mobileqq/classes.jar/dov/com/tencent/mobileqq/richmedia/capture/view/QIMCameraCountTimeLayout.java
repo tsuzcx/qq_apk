@@ -40,15 +40,15 @@ public class QIMCameraCountTimeLayout
   {
     setOrientation(0);
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844342);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844409);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(ViewUtils.dip2px(6.0F), ViewUtils.dip2px(6.0F));
     localLayoutParams.gravity = 16;
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView.setText("0秒");
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 0.0F, 0.0F, 2131165364);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167337));
+    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 0.0F, 0.0F, 2131165370);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167363));
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.leftMargin = ViewUtils.dip2px(4.0F);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
@@ -81,7 +81,7 @@ public class QIMCameraCountTimeLayout
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 0.0F, 0.0F, 2131165364);
+      this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 0.0F, 0.0F, 2131165370);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
@@ -96,7 +96,7 @@ public class QIMCameraCountTimeLayout
       }
     }
     label35:
-    for (Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772226);; localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772007))
+    for (Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772225);; localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772007))
     {
       this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimation);
       return;

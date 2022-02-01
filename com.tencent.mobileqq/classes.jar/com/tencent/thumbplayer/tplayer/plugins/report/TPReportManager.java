@@ -13,6 +13,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import com.tencent.qqlive.module.videoreport.dtreport.video.playback.ReportThumbPlayer;
 import com.tencent.thumbplayer.api.report.ITPBusinessReportManager;
 import com.tencent.thumbplayer.api.report.TPDefaultReportInfo;
 import com.tencent.thumbplayer.api.report.TPLiveReportInfo;
@@ -1457,6 +1458,7 @@ public class TPReportManager
   
   public void setReportInfoGetter(TPDefaultReportInfo paramTPDefaultReportInfo)
   {
+    ReportThumbPlayer.getInstance().setReportInfo(this, paramTPDefaultReportInfo);
     this.mReportInfoGetter = paramTPDefaultReportInfo;
   }
 }

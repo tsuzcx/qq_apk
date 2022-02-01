@@ -1,21 +1,38 @@
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.open.agent.BindGroupConfirmActivity.8;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 
-class bjbu
-  implements AdExposureChecker.ExposureCallback
+public class bjbu
+  implements DialogInterface.OnClickListener
 {
-  bjbu(bjbr parambjbr) {}
+  public bjbu(BindGroupConfirmActivity.8 param8) {}
   
-  public void onExposure(WeakReference<View> paramWeakReference)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("AdProxyImpl", 1, "bannerad onExposure");
-    if ((this.a.a != null) && (this.a.a.report_info != null) && (this.a.a.report_info.exposure_url != null)) {
-      bjbr.a(this.a, this.a.a.report_info.exposure_url.get());
+    if (paramInt == 1)
+    {
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
+      return;
+    }
+    try
+    {
+      ForwardSdkShareOption.a(this.a.this$0, true, "action_game_bind_group", Long.valueOf(this.a.this$0.c).longValue(), -1, this.a.a);
+      this.a.this$0.a.cancel();
+      BindGroupConfirmActivity.a(this.a.this$0, -1);
+      BindGroupConfirmActivity.a(this.a.this$0);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("BindGroupConfirmActivity", 1, "showAlertDlg error = " + paramDialogInterface);
+      }
     }
   }
 }

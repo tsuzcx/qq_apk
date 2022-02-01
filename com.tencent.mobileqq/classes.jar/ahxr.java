@@ -1,26 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.AnimationView;
 
 public class ahxr
-  implements View.OnTouchListener
+  extends afqr
 {
-  public ahxr(ClassificationSearchActivity paramClassificationSearchActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
-    if (paramMotionEvent.isActive()) {
-      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    }
-    this.a.a.clearFocus();
-    paramView = this.a.a.getText().toString();
-    this.a.a.setSelection(paramView.length());
-    return false;
-  }
+  public long a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public AnimationView a;
+  public RelativeLayout b;
+  public TextView b;
+  public AnimationView b;
+  public String b = "";
+  public RelativeLayout c;
+  public RelativeLayout d;
+  public RelativeLayout e;
+  public RelativeLayout f;
+  public RelativeLayout g;
 }
 
 

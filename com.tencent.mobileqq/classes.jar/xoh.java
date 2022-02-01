@@ -1,44 +1,104 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.HashMap;
+import java.util.Map;
 
-class xoh
-  implements vqp<wex, wey>
+public class xoh
+  extends xms
 {
-  xoh(xog paramxog, JobContext paramJobContext, AtomicBoolean paramAtomicBoolean, Integer paramInteger) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private wlh jdField_a_of_type_Wlh;
+  private xhf jdField_a_of_type_Xhf;
+  private boolean c;
   
-  public void a(@NonNull wex paramwex, @Nullable wey paramwey, @NonNull ErrorMessage paramErrorMessage)
+  public Map<Subscriber, String> a()
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(new xoi(this), "");
+    return localHashMap;
+  }
+  
+  public boolean a(View paramView)
+  {
+    if ((this.jdField_a_of_type_Wlh == null) || (this.jdField_a_of_type_Wlh.jdField_a_of_type_Int != 1)) {
+      return false;
+    }
+    if (!super.a(paramView)) {
+      return false;
+    }
+    if (this.jdField_a_of_type_Wlh.jdField_a_of_type_JavaLangString.startsWith("mqqapi:"))
     {
-      xvv.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId pull segment cancel on net respond");
+      paramView = bhey.a(QQStoryContext.a(), this.jdField_a_of_type_Xmp.b(), this.jdField_a_of_type_Wlh.jdField_a_of_type_JavaLangString);
+      if (paramView != null) {
+        paramView.a();
+      }
+      return true;
+    }
+    paramView = new Intent(this.jdField_a_of_type_Xmp.b(), QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Wlh.a());
+    this.jdField_a_of_type_Xmp.b().startActivity(paramView);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Wlh.d)) {}
+    for (paramView = "2";; paramView = "1")
+    {
+      ykv.a("play_video", "clk_linkbar", 0, 0, new String[] { paramView, "", "", this.jdField_a_of_type_JavaLangString });
+      return true;
+    }
+  }
+  
+  public void b(xmt paramxmt, xhf paramxhf)
+  {
+    this.jdField_a_of_type_Xhf = paramxhf;
+    StoryVideoItem localStoryVideoItem = paramxhf.a();
+    wlh localwlh = localStoryVideoItem.getVideoLinkInfo();
+    if ((localwlh == null) || (localwlh.jdField_a_of_type_Int != 1))
+    {
+      this.jdField_a_of_type_Xmp.k();
+      this.jdField_a_of_type_Xhf = null;
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramwey == null))
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramxhf.jdField_a_of_type_JavaLangString))
     {
-      xvv.a("Q.qqstory.home.data.HomeFeedListPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      xog.a(this.jdField_a_of_type_Xog, paramErrorMessage);
+      this.c = false;
+      this.jdField_a_of_type_Wlh = localwlh;
+      this.jdField_a_of_type_Xmp.j();
+      paramxmt.b.setVisibility(0);
+      paramxmt.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramxmt.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      if (TextUtils.isEmpty(localwlh.e)) {
+        break label184;
+      }
+      paramxmt.b.setText(localwlh.e);
+    }
+    for (;;)
+    {
+      paramxmt.jdField_a_of_type_AndroidWidgetTextView.setText(localwlh.b());
+      paramxmt.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(null);
+      if ((localwlh.b != 1) || (!localStoryVideoItem.isUploading())) {
+        break label196;
+      }
+      paramxmt.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846641);
+      return;
+      this.c = true;
+      this.jdField_a_of_type_JavaLangString = paramxhf.jdField_a_of_type_JavaLangString;
+      break;
+      label184:
+      paramxmt.b.setVisibility(8);
+    }
+    label196:
+    if (TextUtils.isEmpty(localwlh.d))
+    {
+      paramxmt.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839677);
       return;
     }
-    xog.a(this.jdField_a_of_type_Xog);
-    xog.a(this.jdField_a_of_type_Xog).a(paramwey.jdField_a_of_type_JavaUtilList, paramwey.jdField_a_of_type_JavaLangString, paramwey.jdField_a_of_type_Boolean);
-    ((xnp)vux.a(11)).a(paramwey.jdField_a_of_type_JavaUtilList);
-    boolean bool = xog.a(paramwey, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
-    xvv.d("Q.qqstory.home.data.HomeFeedListPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramwey.b), Integer.valueOf(xog.b(this.jdField_a_of_type_Xog)), Boolean.valueOf(bool) });
-    if ((!paramwey.jdField_a_of_type_Boolean) && (xog.b(this.jdField_a_of_type_Xog) < 10) && ((!paramwey.b) || (bool)))
-    {
-      xvv.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId list not end, pull more");
-      paramwex.b = xog.a(this.jdField_a_of_type_Xog).a();
-      vqn.a().a(paramwex, this);
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) {
-      xog.a(this.jdField_a_of_type_Xog).c();
-    }
-    paramwex = xog.a(this.jdField_a_of_type_Xog).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    xog.a(this.jdField_a_of_type_Xog, paramwex);
+    xmp.a(localwlh.d, paramxmt.jdField_a_of_type_AndroidWidgetImageView, paramxmt.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramxmt.jdField_a_of_type_Int, paramxmt.jdField_a_of_type_Int);
   }
 }
 

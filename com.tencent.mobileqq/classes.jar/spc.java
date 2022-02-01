@@ -1,8 +1,13 @@
-import android.view.MotionEvent;
-
-public abstract interface spc
+public class spc
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  int jdField_a_of_type_Int;
+  ses jdField_a_of_type_Ses;
+  
+  public spc(ses paramses, int paramInt)
+  {
+    this.jdField_a_of_type_Ses = paramses;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

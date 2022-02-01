@@ -1,57 +1,48 @@
-import android.graphics.drawable.Drawable;
+import android.util.SparseArray;
 
 public class mao
-  extends mam
 {
-  protected Drawable a;
-  protected String b;
-  protected int k = 0;
+  public short a;
+  public byte[] a;
+  public short b = 240;
+  public short c;
+  public short d;
   
-  public mao(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  public mao(byte[] paramArrayOfByte)
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    this.jdField_a_of_type_Short = 320;
+    paramArrayOfByte = lok.a(paramArrayOfByte);
+    loj localloj = (loj)paramArrayOfByte.get(4);
+    if (localloj != null) {
+      this.jdField_a_of_type_ArrayOfByte = localloj.a();
+    }
+    if (this.jdField_a_of_type_ArrayOfByte != null)
+    {
+      paramArrayOfByte = (loj)paramArrayOfByte.get(3);
+      if (paramArrayOfByte != null)
+      {
+        paramArrayOfByte = paramArrayOfByte.a();
+        this.b = ((short)(paramArrayOfByte[0] << 8 | paramArrayOfByte[1] & 0xFF));
+        this.jdField_a_of_type_Short = ((short)(paramArrayOfByte[2] << 8 | paramArrayOfByte[3] & 0xFF));
+        this.c = ((short)(paramArrayOfByte[4] << 8 | paramArrayOfByte[5] & 0xFF));
+        int i = paramArrayOfByte[6];
+        this.d = ((short)(paramArrayOfByte[7] & 0xFF | i << 8));
+      }
+    }
   }
   
-  public mao(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2)
+  public String toString()
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString1);
-    this.b = paramString2;
-    this.k = paramInt5;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public Drawable a()
-  {
-    return this.a;
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    this.a = paramDrawable;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.k = paramInt;
-  }
-  
-  public int k()
-  {
-    return this.k;
+    StringBuilder localStringBuilder = new StringBuilder().append("SwitchFaceItem face.length = ");
+    if (this.jdField_a_of_type_ArrayOfByte != null) {}
+    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
+      return i + ", width = " + this.jdField_a_of_type_Short + ", height = " + this.b + ", fameWidth = " + this.c + ", frameHeight = " + this.d;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mao
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,16 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 
-public class afpx
-  implements afrc
+public abstract interface afpx
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public abstract void a(AudioPlayerBase paramAudioPlayerBase);
   
-  public afpx(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.app;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.mContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.mActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.sessionInfo;
-  }
+  public abstract void a(AudioPlayerBase paramAudioPlayerBase, int paramInt);
   
-  private void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext instanceof Activity)) {
-      amls.a(false, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getTipManager(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin, new afpy(this));
-    }
-    ((alnn)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(211)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.listView, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.listAdapter);
-    amgf.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app);
-    ((alnn)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(211)).a(1, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType);
-  }
+  public abstract void b(AudioPlayerBase paramAudioPlayerBase, int paramInt);
   
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 13: 
-    default: 
-      return;
-    }
-    a();
-  }
+  public abstract void c(AudioPlayerBase paramAudioPlayerBase, int paramInt);
   
-  public int[] a()
-  {
-    return new int[] { 13, 7 };
-  }
+  public abstract void d(AudioPlayerBase paramAudioPlayerBase, int paramInt);
 }
 
 

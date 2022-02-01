@@ -1,44 +1,15 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.2;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.3;
-import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class svm
+class svm
+  extends suv
 {
-  public static void a(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      return;
-    }
-    TextView localTextView1 = (TextView)paramActivity.findViewById(2131369068);
-    TextView localTextView2 = (TextView)paramActivity.findViewById(2131369074);
-    ImageView localImageView = (ImageView)paramActivity.findViewById(2131369073);
-    new Handler().postDelayed(new FastWebAnimationUtils.1(paramActivity, localTextView1), 500L);
-    new Handler().postDelayed(new FastWebAnimationUtils.2(localTextView2, paramActivity), 2500L);
-    new Handler().postDelayed(new FastWebAnimationUtils.3(paramActivity, localTextView2, localImageView), 4200L);
-  }
+  svm(suw paramsuw) {}
   
-  private static AnimationSet b(View paramView, Context paramContext)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    paramView = new TranslateAnimation(0.0F, -(paramView.getX() - ViewUtils.dpToPx(40.0F)), 0.0F, 0.0F);
-    paramView.setFillAfter(true);
-    paramView.setDuration(200L);
-    paramContext = (AlphaAnimation)AnimationUtils.loadAnimation(paramContext, 2130772194);
-    AnimationSet localAnimationSet = new AnimationSet(false);
-    localAnimationSet.addAnimation(paramContext);
-    localAnimationSet.addAnimation(paramView);
-    localAnimationSet.setFillAfter(true);
-    return localAnimationSet;
+    sug.a(suw.a(this.a), paramBaseArticleInfo, suw.a(this.a).a(paramBaseArticleInfo.getInnerUniqueID()), 0, 1);
+    sug.a(paramBaseArticleInfo.getInnerUniqueID(), 0, 1);
   }
 }
 

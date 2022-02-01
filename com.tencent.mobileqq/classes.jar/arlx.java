@@ -1,29 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class arlx
-  extends amsu
 {
-  public arlx(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSquareFragment", 2, String.format("onUpdateAddFriend isSuccess=%s addSuccess=%s reqestUin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
-    }
-    paramString = this.a.a.a(this.a.c);
-    if ((paramString != null) && (!paramString.mAddFriendVerified))
-    {
-      paramString.mAddFriendVerified = true;
-      ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.2.1(this));
-    }
-  }
+  public HashMap<String, String> a = new HashMap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arlx
  * JD-Core Version:    0.7.0.1
  */

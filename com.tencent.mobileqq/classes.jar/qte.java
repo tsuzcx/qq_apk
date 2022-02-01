@@ -1,55 +1,102 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
-import com.tencent.mobileqq.app.face.FaceDecoder;
+import android.graphics.Typeface;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
 public class qte
-  extends qtg
+  extends TextBase
 {
-  public qte(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
+  private TickerView a;
+  
+  public qte(VafContext paramVafContext)
   {
-    super(paramContext, paramFaceDecoder, paramslt);
+    super(paramVafContext);
+    this.a = new TickerView(paramVafContext.getContext());
+    this.a.setCharacterLists(new String[] { "1234567890" });
+    this.a.setAnimationDuration(500L);
   }
   
-  public qpk g()
+  public int getComMeasuredHeight()
   {
-    this.jdField_a_of_type_Qpj = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    return this.a.getMeasuredHeight();
   }
   
-  public qpk o()
+  public int getComMeasuredWidth()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
+    return this.a.getMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measure(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    super.onParseValueFinished();
+    this.a.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
+    this.a.setTextSize(this.mTextSize);
+    this.a.setBackgroundColor(this.mBackground);
+    this.a.setTextColor(this.mTextColor);
+    if ((this.mTextStyle & 0x2) != 0) {
+      this.a.setTypeface(Typeface.create(Typeface.DEFAULT, 2));
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_Qpj != null)
+    int i = 0;
+    int j;
+    if ((this.mGravity & 0x4) != 0)
     {
-      if ((this.jdField_a_of_type_Qpj instanceof ComponentContentGridImage)) {
-        ((ComponentContentGridImage)this.jdField_a_of_type_Qpj).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
+      i = 1;
+      if ((this.mGravity & 0x20) == 0) {
+        break label187;
       }
-      this.jdField_a_of_type_Qpj.a(ComponentContentGridImage.a(((pvc)this.jdField_a_of_type_JavaLangObject).a()));
+      j = i | 0x10;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
+    for (;;)
+    {
+      this.a.setGravity(j);
+      if ((TextUtils.isEmpty(this.mText)) || (!(this.mText instanceof String))) {
+        break label225;
+      }
+      this.a.setText((String)this.mText);
+      return;
+      if ((this.mGravity & 0x1) != 0)
+      {
+        i = 3;
+        break;
+      }
+      if ((this.mGravity & 0x2) == 0) {
+        break;
+      }
+      i = 5;
+      break;
+      label187:
+      if ((this.mGravity & 0x8) != 0)
+      {
+        j = i | 0x30;
+      }
+      else
+      {
+        j = i;
+        if ((this.mGravity & 0x10) != 0) {
+          j = i | 0x50;
+        }
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    return this;
+    label225:
+    this.a.setText("");
   }
 }
 

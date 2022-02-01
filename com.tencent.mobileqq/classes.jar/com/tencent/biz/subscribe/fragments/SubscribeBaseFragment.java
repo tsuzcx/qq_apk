@@ -2,6 +2,8 @@ package com.tencent.biz.subscribe.fragments;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import aaba;
+import aanb;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,9 +17,9 @@ import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import apkn;
-import bfys;
-import bkov;
+import aqnr;
+import bhhk;
+import bmad;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.videostory.config.VSConfigManager;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
@@ -31,48 +33,46 @@ import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.io.File;
 import java.util.HashMap;
-import zbb;
-import zbi;
-import zda;
-import zhr;
-import zhs;
-import zht;
-import zhu;
-import zjc;
-import zjk;
-import zlv;
-import zxp;
+import zqg;
+import zqn;
+import zsf;
+import zww;
+import zwx;
+import zwy;
+import zwz;
+import zyh;
+import zyp;
 
 public abstract class SubscribeBaseFragment
   extends IphoneTitleBarFragment
-  implements zjk
+  implements zyp
 {
   public CertifiedAccountMeta.StFeed a;
+  public aaba a;
   private Handler a;
-  protected apkn a;
+  protected aqnr a;
   public ExtraTypeInfo a;
-  protected zjc a;
-  public zlv a;
+  protected zyh a;
   public boolean a;
   protected boolean b;
   
   private void a(int paramInt, ExtraTypeInfo paramExtraTypeInfo)
   {
     if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && (!StringUtil.isEmpty(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()))) {
-      zxp.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "exp_" + zlv.a(paramExtraTypeInfo), paramInt, 0, new String[0]);
+      aanb.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "exp_" + aaba.a(paramExtraTypeInfo), paramInt, 0, new String[0]);
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Apkn != null) {
+    if (this.jdField_a_of_type_Aqnr != null) {
       return;
     }
-    this.jdField_a_of_type_Apkn = new apkn(getActivity(), false, true);
-    this.jdField_a_of_type_Apkn.a(getActivity());
-    this.jdField_a_of_type_Apkn.a(new zhs(this));
-    this.jdField_a_of_type_Apkn.a(new zht(this));
-    this.jdField_a_of_type_Apkn.a(new zhu(this));
+    this.jdField_a_of_type_Aqnr = new aqnr(getActivity(), false, true);
+    this.jdField_a_of_type_Aqnr.a(getActivity());
+    this.jdField_a_of_type_Aqnr.a(new zwx(this));
+    this.jdField_a_of_type_Aqnr.a(new zwy(this));
+    this.jdField_a_of_type_Aqnr.a(new zwz(this));
   }
   
   private void c()
@@ -92,7 +92,7 @@ public abstract class SubscribeBaseFragment
     }
     for (;;)
     {
-      zxp.a(str, zxp.a(0L, System.currentTimeMillis() - l));
+      aanb.a(str, aanb.a(0L, System.currentTimeMillis() - l));
       return;
       str = "subscribe_open_video_detail_page_time";
       continue;
@@ -112,19 +112,19 @@ public abstract class SubscribeBaseFragment
   
   private void e()
   {
-    File localFile = new File(zbi.a());
-    if ((localFile.exists()) || (bfys.a() == null))
+    File localFile = new File(zqn.a());
+    if ((localFile.exists()) || (bhhk.a() == null))
     {
       QLog.i("DownLoadZipFile", 1, "DownLoadZipFile Save file is exist");
       return;
     }
-    zbi.a(localFile, (String)VSConfigManager.getInstance().getValue("KEY_SUBSCRIBE_LOADING_VIEW_DOWNLOAD_URL", "https://down.qq.com/video_story/certified_account/certified_account_download_pics.zip"));
+    zqn.a(localFile, (String)VSConfigManager.getInstance().getValue("KEY_SUBSCRIBE_LOADING_VIEW_DOWNLOAD_URL", "https://down.qq.com/video_story/certified_account/certified_account_download_pics.zip"));
   }
   
   private void f()
   {
     QLog.i("SubscribeBaseFragment", 1, "downloadAnimationPic");
-    String[] arrayOfString = zbb.jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = zqg.jdField_a_of_type_ArrayOfJavaLangString;
     int j = arrayOfString.length;
     int i = 0;
     for (;;)
@@ -133,7 +133,7 @@ public abstract class SubscribeBaseFragment
       if (i < j)
       {
         str1 = arrayOfString[i];
-        str2 = (String)zbb.b.get(str1);
+        str2 = (String)zqg.b.get(str1);
         localFile = new File(str2);
         if ((localFile.exists()) && (localFile.isDirectory())) {
           QLog.i("DownLoadZipFile", 1, "DownLoadZipFile " + str2 + " Save file is exist");
@@ -143,9 +143,9 @@ public abstract class SubscribeBaseFragment
       {
         return;
       }
-      String str2 = (String)zbb.jdField_c_of_type_JavaUtilHashMap.get(str1);
-      String str1 = (String)zbb.jdField_a_of_type_JavaUtilHashMap.get(str1);
-      zbi.a(localFile, (String)VSConfigManager.getInstance().getValue(str2, str1), zbb.jdField_c_of_type_JavaLangString);
+      String str2 = (String)zqg.jdField_c_of_type_JavaUtilHashMap.get(str1);
+      String str1 = (String)zqg.jdField_a_of_type_JavaUtilHashMap.get(str1);
+      zqn.a(localFile, (String)VSConfigManager.getInstance().getValue(str2, str1), zqg.jdField_c_of_type_JavaLangString);
       i += 1;
     }
   }
@@ -169,7 +169,7 @@ public abstract class SubscribeBaseFragment
   
   protected void a()
   {
-    if (zbi.a()) {
+    if (zqn.a()) {
       d();
     }
     a(this.mContentView);
@@ -179,22 +179,22 @@ public abstract class SubscribeBaseFragment
   
   protected abstract void a(View paramView);
   
-  public void a(zda paramzda)
+  public void a(zsf paramzsf)
   {
-    if (paramzda != null)
+    if (paramzsf != null)
     {
-      if ((paramzda.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)) {
-        paramzda.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+      if ((paramzsf.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)) {
+        paramzsf.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
       }
-      if ((paramzda.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null)) {
-        paramzda.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+      if ((paramzsf.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null)) {
+        paramzsf.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
       }
-      if (this.jdField_a_of_type_Zlv != null)
+      if (this.jdField_a_of_type_Aaba != null)
       {
-        a(paramzda.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-        this.jdField_a_of_type_Zlv.a(paramzda, this.jdField_a_of_type_Apkn);
+        a(paramzsf.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
+        this.jdField_a_of_type_Aaba.a(paramzsf, this.jdField_a_of_type_Aqnr);
       }
-      if ((isNeedMiniMsg()) && (a() != null) && (paramzda.jdField_a_of_type_Int == 1) && (a().getVisibility() == 0) && (getMiniMsgUser() != null)) {
+      if ((isNeedMiniMsg()) && (a() != null) && (paramzsf.jdField_a_of_type_Int == 1) && (a().getVisibility() == 0) && (getMiniMsgUser() != null)) {
         getMiniMsgUser().onClick(a());
       }
     }
@@ -227,18 +227,18 @@ public abstract class SubscribeBaseFragment
       if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null) {
         this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = new ExtraTypeInfo();
       }
-      this.jdField_a_of_type_Zlv = new zlv(getActivity(), new zhr(this));
+      this.jdField_a_of_type_Aaba = new aaba(getActivity(), new zww(this));
       if (getActivity().getIntent().hasExtra("bundle_key_parms_extra"))
       {
         paramLayoutInflater = getActivity().getIntent().getBundleExtra("bundle_key_parms_extra");
-        if (zjc.a(paramLayoutInflater))
+        if (zyh.a(paramLayoutInflater))
         {
-          this.jdField_a_of_type_Zjc = new zjc(paramLayoutInflater, this);
-          if (this.jdField_a_of_type_Zjc.a() != null)
+          this.jdField_a_of_type_Zyh = new zyh(paramLayoutInflater, this);
+          if (this.jdField_a_of_type_Zyh.a() != null)
           {
             paramLayoutInflater = new RelativeLayout.LayoutParams(-1, -1);
-            paramLayoutInflater.addRule(3, 2131376501);
-            this.titleRoot.addView(this.jdField_a_of_type_Zjc.a(), paramLayoutInflater);
+            paramLayoutInflater.addRule(3, 2131376760);
+            this.titleRoot.addView(this.jdField_a_of_type_Zyh.a(), paramLayoutInflater);
           }
         }
       }
@@ -301,7 +301,7 @@ public abstract class SubscribeBaseFragment
       a(localStFeed);
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
       return;
-      bkov.a(super.getActivity(), paramIntent);
+      bmad.a(super.getActivity(), paramIntent);
       return;
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
@@ -316,7 +316,7 @@ public abstract class SubscribeBaseFragment
   public boolean onBackEvent()
   {
     if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
-      zxp.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + zlv.a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo), "clk_return", 0, 0, new String[] { "", "" });
+      aanb.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + aaba.a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo), "clk_return", 0, 0, new String[] { "", "" });
     }
     if ((getActivity() != null) && (getActivity().getIntent() != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.sourceType == 9001))
     {
@@ -329,21 +329,21 @@ public abstract class SubscribeBaseFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Apkn != null) {
-      this.jdField_a_of_type_Apkn.c();
+    if (this.jdField_a_of_type_Aqnr != null) {
+      this.jdField_a_of_type_Aqnr.c();
     }
     this.b = true;
     a().removeCallbacksAndMessages(null);
-    if (this.jdField_a_of_type_Zlv != null) {
-      this.jdField_a_of_type_Zlv.a();
+    if (this.jdField_a_of_type_Aaba != null) {
+      this.jdField_a_of_type_Aaba.a();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Apkn != null) {
-      this.jdField_a_of_type_Apkn.b();
+    if (this.jdField_a_of_type_Aqnr != null) {
+      this.jdField_a_of_type_Aqnr.b();
     }
   }
   
@@ -351,8 +351,8 @@ public abstract class SubscribeBaseFragment
   {
     super.onResume();
     b();
-    if (this.jdField_a_of_type_Apkn != null) {
-      this.jdField_a_of_type_Apkn.a();
+    if (this.jdField_a_of_type_Aqnr != null) {
+      this.jdField_a_of_type_Aqnr.a();
     }
   }
 }

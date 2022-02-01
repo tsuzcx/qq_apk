@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae;
 
-import bljy;
-import bljz;
+import bmxa;
+import bmxb;
 
 public class AEPituCameraUnit$1$1
   implements Runnable
 {
-  public AEPituCameraUnit$1$1(bljz parambljz) {}
+  public AEPituCameraUnit$1$1(bmxb parambmxb) {}
   
   public void run()
   {
-    this.a.a.u();
+    this.a.a.y();
   }
 }
 

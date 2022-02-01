@@ -1,18 +1,12 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-
-public class bdcb
-  implements ImageAssetDelegate
+final class bdcb
+  extends bdcd
 {
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public double a(int paramInt1, int paramInt2)
   {
-    if (BaseApplicationImpl.sImageCache != null) {
-      return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
+    if (paramInt1 > paramInt2) {
+      return paramInt2 / (paramInt1 + paramInt2);
     }
-    return null;
+    return paramInt1 / (paramInt1 + paramInt2);
   }
 }
 

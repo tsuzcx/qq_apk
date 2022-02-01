@@ -1,233 +1,59 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItemExtMsg;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.util.WeakReference;
-import org.json.JSONObject;
-import tencent.im.oidb.redInfo.RedInfo;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
 
 public class axfx
-  implements axgg
+  implements axfd
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  WeakReference<axfy> jdField_a_of_type_MqqUtilWeakReference;
+  public static float a = 0.85F;
+  private static float b = 1.0F;
+  private static float c = 0.75F;
+  private float d = 3.4028235E+38F;
+  private float e = 3.4028235E+38F;
   
-  public axfx(QQAppInterface paramQQAppInterface, axfy paramaxfy)
+  public void a(@NonNull View paramView, float paramFloat)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaxfy);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public static String a(int paramInt)
-  {
-    return "file_redpoint_handler_" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_" + paramInt;
-  }
-  
-  public axfy a()
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
-      return null;
-    }
-    return (axfy)this.jdField_a_of_type_MqqUtilWeakReference.get();
-  }
-  
-  public void a(RedTouchItem paramRedTouchItem, int paramInt)
-  {
-    if ((paramInt == 10016) || (paramInt == 10015)) {
-      paramRedTouchItem.isClosed = true;
-    }
-    do
+    paramView.getWidth();
+    paramView.getHeight();
+    Object localObject1 = (MultiAIOBaseViewPager)paramView.getParent();
+    int i = ((MultiAIOBaseViewPager)localObject1).getMeasuredWidth() - ((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - ((MultiAIOBaseViewPager)localObject1).getPaddingRight();
+    float f1 = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft() / i;
+    float f2 = (((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - i - ((MultiAIOBaseViewPager)localObject1).b()) / i;
+    int j = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft();
+    float f3 = (((MultiAIOBaseViewPager)localObject1).b() + (j + i)) / i;
+    if (paramFloat < f2)
     {
-      return;
-      if (paramInt == 100601)
-      {
-        if (!axgj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
-        for (bool1 = true;; bool1 = false)
-        {
-          paramRedTouchItem.isClosed = bool1;
-          return;
-        }
-      }
-    } while (!axge.a(paramInt));
-    Object localObject1 = "";
-    Object localObject2;
-    Object localObject4;
-    boolean bool2;
-    if (paramRedTouchItem.extMsgs.size() > 0)
-    {
-      RedTouchItemExtMsg localRedTouchItemExtMsg2 = (RedTouchItemExtMsg)paramRedTouchItem.extMsgs.get(0);
-      if ((localRedTouchItemExtMsg2.bytesData == null) || (localRedTouchItemExtMsg2.bytesData.length <= 0)) {
-        break label438;
-      }
-      try
-      {
-        localObject2 = new redInfo.RedInfo();
-      }
-      catch (Throwable localThrowable1)
-      {
-        label175:
-        localObject2 = null;
-      }
-    }
-    try
-    {
-      ((redInfo.RedInfo)localObject2).mergeFrom(localRedTouchItemExtMsg2.bytesData);
-      localObject4 = localObject2;
-      if ((localObject4 == null) || (!localObject4.uint64_from_uin.has())) {
-        break label428;
-      }
-      localObject2 = localObject4.uint64_from_uin.get() + "";
-      bool2 = true;
-    }
-    catch (Throwable localThrowable2)
-    {
-      break label323;
-      bool2 = false;
-      localObject2 = localObject1;
-      break label175;
-    }
-    localObject1 = localObject2;
-    boolean bool1 = bool2;
-    if (localRedTouchItemExtMsg2.bytesData.length > 102400)
-    {
-      QLog.d("DefaultRedPointPrePostHandler", 1, String.format("onPreHandle() id=[%d] msgs.size=%d bytes_data.len=%d too large !!", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramRedTouchItem.extMsgs.size()), Integer.valueOf(localRedTouchItemExtMsg2.bytesData.length) }));
-      bool1 = bool2;
-      localObject1 = localObject2;
+      paramFloat = this.d;
+      f1 = this.e;
     }
     for (;;)
     {
-      RedTouchItemExtMsg localRedTouchItemExtMsg1 = localRedTouchItemExtMsg2;
-      localObject2 = localObject1;
-      bool2 = bool1;
-      label323:
-      Object localObject3;
-      if (paramRedTouchItem.extMsgs.size() > 1)
-      {
-        paramInt = paramRedTouchItem.extMsgs.size() - 1;
-        for (;;)
-        {
-          localRedTouchItemExtMsg1 = localRedTouchItemExtMsg2;
-          localObject2 = localObject1;
-          bool2 = bool1;
-          if (paramInt <= 0) {
-            break;
-          }
-          paramRedTouchItem.extMsgs.remove(paramInt);
-          paramInt -= 1;
-        }
-        localObject4 = localObject2;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("DefaultRedPointPrePostHandler", 2, localThrowable1.getMessage(), localThrowable1);
-        localObject4 = localObject2;
-        break;
-        localObject3 = null;
-        bool2 = false;
-        localObject2 = localObject1;
-      }
-      if (bool2) {
-        FileUtils.writeObject(a(-4), localObject3);
-      }
-      for (;;)
-      {
-        QLog.d("DefaultRedPointPrePostHandler", 1, new Object[] { "isQQSettingMeBubbleMsg show=", Boolean.valueOf(bool2), " uin=", StringUtil.getSimpleUinForPrint((String)localObject2) });
-        return;
-        paramRedTouchItem.count = 0;
-      }
-      label428:
-      label438:
-      bool1 = false;
-    }
-  }
-  
-  public void a(List<RedTouchItem> paramList)
-  {
-    axfy localaxfy = a();
-    if ((paramList == null) || (localaxfy == null)) {
-      return;
-    }
-    Object localObject2 = null;
-    Object localObject3 = paramList.iterator();
-    while (((Iterator)localObject3).hasNext())
-    {
+      paramView.setScaleX(paramFloat);
+      paramView.setScaleY(paramFloat);
+      Object localObject2 = paramView.getTag(2131371690);
       localObject1 = localObject2;
-      if (((RedTouchItem)((Iterator)localObject3).next()).taskId == 10005) {
-        localObject1 = "0X800761B";
-      }
-      localObject2 = localObject1;
-      if (localObject1 != null)
+      if (localObject2 == null)
       {
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
-        localObject2 = localObject1;
+        localObject1 = paramView.findViewById(2131371690);
+        paramView.setTag(2131371690, localObject1);
       }
-    }
-    localObject3 = localaxfy.a(10015);
-    Object localObject1 = localObject2;
-    if (localObject3 != null)
-    {
-      localObject1 = localObject2;
-      if (paramList.contains(localObject3))
-      {
-        localObject1 = "0X8007391";
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007391", "0X8007391", 0, 0, "", "", "", "");
-        ((MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(250)).b();
-      }
-    }
-    localObject2 = localaxfy.a(10016);
-    if ((localObject2 != null) && (paramList.contains(localObject2)) && (((RedTouchItem)localObject2).bytes != null) && (((RedTouchItem)localObject2).bytes.length > 0)) {}
-    for (;;)
-    {
-      try
-      {
-        int i = new JSONObject(new String(((RedTouchItem)localObject2).bytes, "utf-8")).optInt("type", 1);
-        switch (i)
-        {
-        default: 
-          localObject2 = localObject1;
-        }
-      }
-      catch (Exception localException)
-      {
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("DefaultRedPointPrePostHandler", 2, localException, new Object[0]);
-        localObject2 = localObject1;
-        continue;
-        paramList.a((RedTouchItem)localObject1);
-      }
-      if (localObject2 != null) {
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
-      }
-      localObject1 = localaxfy.a(10018);
-      if ((localObject1 == null) || (!paramList.contains(localObject1)) || (((RedTouchItem)localObject1).extMsgs == null) || (((RedTouchItem)localObject1).extMsgs.size() <= 0) || (!((RedTouchItem)localObject1).unReadFlag)) {
-        break;
-      }
-      paramList = (apsa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(269);
-      localObject2 = paramList.a();
-      if ((localObject2 != null) && (((aprw)localObject2).c())) {
-        continue;
-      }
-      ((RedTouchItem)localObject1).unReadFlag = false;
-      localaxfy.c();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("DefaultRedPointPrePostHandler", 2, "onPostDealReachedRedPoints frdRecMsgSwitch is off");
+      paramView = (View)localObject1;
+      paramView.setAlpha(1.0F - f1);
+      paramView.setBackgroundColor(-16777216);
       return;
-      localObject2 = "0X8007396";
-      continue;
-      localObject2 = "0X80073B5";
+      if (paramFloat <= f3)
+      {
+        f1 = Math.abs(paramFloat - f1);
+        paramFloat = (float)(a + Math.cos(f1 * 1.570796326794897D) * (b - a));
+        this.d = Math.min(paramFloat, this.d);
+        f1 = (float)(c + Math.cos(f1 * 1.570796326794897D) * (1.0F - c));
+        this.e = Math.min(f1, this.e);
+      }
+      else
+      {
+        paramFloat = this.d;
+        f1 = this.e;
+      }
     }
   }
 }

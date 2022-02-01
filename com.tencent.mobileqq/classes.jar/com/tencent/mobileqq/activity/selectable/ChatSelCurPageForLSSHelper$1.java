@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import aezn;
-import akyb;
-import amat;
+import afqz;
+import alvx;
+import ancb;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
@@ -15,17 +15,17 @@ import java.util.List;
 public class ChatSelCurPageForLSSHelper$1
   implements Runnable
 {
-  public ChatSelCurPageForLSSHelper$1(akyb paramakyb) {}
+  public ChatSelCurPageForLSSHelper$1(alvx paramalvx) {}
   
   public void run()
   {
-    int i = akyb.a(this.this$0).listView.getHeaderViewsCount();
-    int j = akyb.a(this.this$0).listView.getFirstVisiblePosition();
+    int i = alvx.a(this.this$0).listView.getHeaderViewsCount();
+    int j = alvx.a(this.this$0).listView.getFirstVisiblePosition();
     List localList;
     if (j >= i)
     {
       j -= i;
-      localList = akyb.a(this.this$0).listAdapter.a();
+      localList = alvx.a(this.this$0).listAdapter.a();
       if (j < localList.size()) {
         break label115;
       }
@@ -43,16 +43,16 @@ public class ChatSelCurPageForLSSHelper$1
         return;
         j = 0;
         break;
-        k = akyb.a(this.this$0).listView.getLastVisiblePosition() - i;
+        k = alvx.a(this.this$0).listView.getLastVisiblePosition() - i;
         i = k;
         if (k >= localList.size()) {
           i = localList.size() - 1;
         }
         k = i;
-        if (akyb.a(this.this$0).mAIORootView != null)
+        if (alvx.a(this.this$0).mAIORootView != null)
         {
-          Object localObject3 = akyb.a(this.this$0).mAIORootView.findViewById(2131367340);
-          localObject1 = akyb.a(this.this$0).listView.getChildAt(akyb.a(this.this$0).listView.getChildCount() - 1);
+          Object localObject3 = alvx.a(this.this$0).mAIORootView.findViewById(2131367464);
+          localObject1 = alvx.a(this.this$0).listView.getChildAt(alvx.a(this.this$0).listView.getChildCount() - 1);
           k = i;
           if (localObject3 != null)
           {
@@ -82,10 +82,10 @@ public class ChatSelCurPageForLSSHelper$1
         }
       } while ((j < 0) || (k < j));
       Object localObject1 = (ChatMessage)localList.get(j);
-      localObject2 = (AIOLongShotHelper)akyb.a(this.this$0).getHelper(15);
+      localObject2 = (AIOLongShotHelper)alvx.a(this.this$0).getHelper(15);
       ((AIOLongShotHelper)localObject2).a((ChatMessage)localObject1);
-      akyb.a(this.this$0).hideTroopFCView(true);
-      amat.a(akyb.a(this.this$0).app, "select_more_msg", true);
+      alvx.a(this.this$0).hideTroopFCView(true);
+      ancb.a(alvx.a(this.this$0).app, "select_more_msg", true);
     } while (k <= j);
     ((AIOLongShotHelper)localObject2).a((ChatMessage)localList.get(k), null, true);
   }

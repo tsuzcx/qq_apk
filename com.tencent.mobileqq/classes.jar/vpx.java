@@ -1,11 +1,17 @@
-public class vpx
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class vpx
+  implements View.OnTouchListener
 {
-  public static int[][] a;
+  vpx(vpv paramvpv) {}
   
-  static
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int[] arrayOfInt = { -1, 248 };
-    a = new int[][] { { -1, 243 }, arrayOfInt };
+    vpv.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

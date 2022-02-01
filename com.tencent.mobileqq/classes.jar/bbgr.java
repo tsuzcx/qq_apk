@@ -1,14 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class bbgr
-  implements DialogInterface.OnClickListener
+class bbgr
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    com.tencent.mobileqq.search.util.VADHelper.c = false;
-    paramDialogInterface.dismiss();
-  }
+  private static final bbgq a = new bbgq(null);
 }
 
 

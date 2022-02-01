@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
-import afia;
+import afzf;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
-import bgtw;
-import bgvt;
-import bgzx;
+import bieo;
+import bigl;
+import bikp;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -23,9 +23,9 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
   private int jdField_a_of_type_Int;
   private boolean jdField_a_of_type_Boolean;
   
-  public bgvt createComponentsProvider()
+  public bigl createComponentsProvider()
   {
-    return new bgvt(this, 127, new afia(this));
+    return new bigl(this, 127, new afzf(this));
   }
   
   public int doCreateLoopStep_Final(Bundle paramBundle)
@@ -40,7 +40,7 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
   {
     this.mUIStyle.mFloatBarRulesFromUrl = 0L;
     int i = super.doCreateLoopStep_InitUIContent(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167276);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167296);
     if ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView)) {
       ((RefreshView)this.mUIStyleHandler.webviewWrapper).a(false);
     }
@@ -57,7 +57,7 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
       QLog.d("WebLog_WebViewFragment", 2, "ConfessBrowserFragment doOnCreate = ");
     }
     boolean bool = super.doOnCreate(paramBundle);
-    this.mPluginEngine.a(new String[] { "sayHonest", bgzx.a, "QQApi", "ui", "share", "PublicAccountJs" });
+    this.mPluginEngine.a(new String[] { "sayHonest", bikp.a, "QQApi", "ui", "share", "PublicAccountJs" });
     return bool;
   }
   
@@ -80,7 +80,7 @@ public class ConfessHalfScreenActivity$ConfessBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

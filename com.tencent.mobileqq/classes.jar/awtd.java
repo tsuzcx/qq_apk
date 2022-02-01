@@ -1,28 +1,47 @@
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan.1;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan.2;
 
 public class awtd
-  implements View.OnLayoutChangeListener
+  extends ClickableSpan
 {
-  public awtd(StuffContainerView paramStuffContainerView) {}
+  public final int a;
+  final Context jdField_a_of_type_AndroidContentContext;
+  final String jdField_a_of_type_JavaLangString;
+  final int jdField_b_of_type_Int;
+  final String jdField_b_of_type_JavaLangString;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public awtd(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = StuffContainerView.a(this.a);
-    if ((StuffContainerView.a(this.a) > 0L) && (l1 - l2 < 500L)) {}
-    do
-    {
-      return;
-      StuffContainerView.a(this.a, l1);
-      if (QLog.isColorLevel()) {
-        QLog.d("StuffContainerView", 2, "VideoInfoListenerImpl onLayoutChange");
-      }
-    } while (this.a.a == null);
-    this.a.a.l();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_Int = Color.parseColor("#00a5e0");
+    ThreadManager.post(new CUOpenCardGuideMng.CUOpenCardClickableSpan.1(this), 5, null, false);
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("uin", this.jdField_b_of_type_JavaLangString);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("hide_more_button", true);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    ThreadManager.post(new CUOpenCardGuideMng.CUOpenCardClickableSpan.2(this), 5, null, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(this.jdField_b_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

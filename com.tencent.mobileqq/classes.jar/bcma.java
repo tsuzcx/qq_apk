@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import com.tencent.mobileqq.search.searchengine.MiniProgramSearchEngine;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-class bcma
-  implements bcmr
+public class bcma
+  implements Comparator<bcfo>
 {
-  bcma(bclz parambclz, CountdownTextView paramCountdownTextView) {}
+  public bcma(MiniProgramSearchEngine paramMiniProgramSearchEngine) {}
   
-  public void a()
+  public int a(bcfo parambcfo1, bcfo parambcfo2)
   {
-    this.jdField_a_of_type_Bclz.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_Bclz.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bclz.a(this.jdField_a_of_type_Bclz, 0L));
-  }
-  
-  public void a(long paramLong)
-  {
-    paramLong /= 1000L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bclz.a(this.jdField_a_of_type_Bclz, paramLong));
-    this.jdField_a_of_type_Bclz.jdField_d_of_type_Long = paramLong;
+    int i = parambcfo2.a[2] - parambcfo1.a[2];
+    if (i != 0) {}
+    int j;
+    do
+    {
+      return i;
+      j = parambcfo1.a[0] - parambcfo2.a[0];
+      i = j;
+    } while (j != 0);
+    parambcfo1 = parambcfo1.c().substring(parambcfo1.a[0] + parambcfo1.a[1]);
+    parambcfo2 = parambcfo2.c().substring(parambcfo2.a[0] + parambcfo2.a[1]);
+    return ChnToSpell.a(parambcfo1, 2).compareTo(ChnToSpell.a(parambcfo2, 2));
   }
 }
 

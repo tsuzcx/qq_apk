@@ -1,10 +1,8 @@
-public class beic
+public abstract interface beic
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
+  public abstract void k();
+  
+  public abstract void l();
 }
 
 

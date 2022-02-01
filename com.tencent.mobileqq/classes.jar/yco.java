@@ -1,12 +1,36 @@
-import android.graphics.PointF;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract interface yco
+public final class yco
+  extends QQUIEventReceiver<yck, wqh>
 {
-  public abstract void a(ygw paramygw);
+  public yco(@NonNull yck paramyck)
+  {
+    super(paramyck);
+  }
   
-  public abstract void a(ygw paramygw, int paramInt1, int paramInt2);
+  public void a(@NonNull yck paramyck, @NonNull wqh paramwqh)
+  {
+    ykq.a(this.TAG, "receive feature event. %s.", paramwqh.toString());
+    if ((paramwqh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwqh.jdField_a_of_type_JavaUtilList != null))
+    {
+      paramwqh = paramwqh.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwqh.hasNext())
+      {
+        wkv localwkv = (wkv)paramwqh.next();
+        yck.a(paramyck).put(localwkv.a, localwkv);
+      }
+    }
+  }
   
-  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
+  public Class acceptEventClass()
+  {
+    return wqh.class;
+  }
 }
 
 

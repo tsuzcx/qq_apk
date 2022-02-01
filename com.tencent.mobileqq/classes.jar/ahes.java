@@ -1,12 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 class ahes
-  implements DialogInterface.OnClickListener
+  extends akwo
 {
-  ahes(ahek paramahek) {}
+  ahes(aheq paramaheq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(aheq.jdField_a_of_type_JavaLangString, 2, "onNotifyMsg btype:" + paramInt + " bid:" + paramString);
+    }
+    if ((paramInt == 1) && (!TextUtils.isEmpty(paramString)) && (paramBundle != null))
+    {
+      SparseArray localSparseArray = (SparseArray)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (localSparseArray != null)
+      {
+        paramInt = 0;
+        while (paramInt < localSparseArray.size())
+        {
+          Object localObject = (WeakReference)localSparseArray.valueAt(paramInt);
+          paramBundle = null;
+          if (localObject != null) {
+            paramBundle = (ahet)((WeakReference)localObject).get();
+          }
+          if ((paramBundle != null) && ((paramBundle.a instanceof MessageForQQWalletMsg)))
+          {
+            localObject = (MessageForQQWalletMsg)paramBundle.a;
+            if ((localObject != null) && (((MessageForQQWalletMsg)localObject).messageType == 16) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg != null) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId != null) && (paramString.equals(((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId))) {
+              this.a.a(paramBundle, (MessageForQQWalletMsg)localObject, ((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.elem);
+            }
+          }
+          paramInt += 1;
+        }
+      }
+    }
+  }
 }
 
 

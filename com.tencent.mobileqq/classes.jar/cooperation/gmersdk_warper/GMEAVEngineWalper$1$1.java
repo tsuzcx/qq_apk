@@ -1,17 +1,17 @@
 package cooperation.gmersdk_warper;
 
-import bkhk;
-import bkhl;
-import bkhr;
+import blsw;
+import blsx;
+import bltd;
 
 public class GMEAVEngineWalper$1$1
   implements Runnable
 {
-  public GMEAVEngineWalper$1$1(bkhl parambkhl) {}
+  public GMEAVEngineWalper$1$1(blsx paramblsx) {}
   
   public void run()
   {
-    bkhr.a(this.a.a.a).a(bkhk.a(this.a.a));
+    bltd.a(this.a.a.a).a(blsw.a(this.a.a));
   }
 }
 

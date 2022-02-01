@@ -1,30 +1,51 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import android.text.TextUtils;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aysn
-  implements Handler.Callback
+public class aysn
+  implements ActionMode.Callback
 {
-  aysn(aysl paramaysl) {}
+  public aysn(OCRResultFragmentNew paramOCRResultFragmentNew, EditText paramEditText) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (paramMessage.what == 100)
+    if (paramMenuItem.getItemId() == 2131372172)
     {
-      paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-      if (aysl.a(this.a) == null)
-      {
-        View localView = aysl.a(this.a, aysl.b(this.a), 5, 0, 5, 0);
-        if (localView != null) {
-          aysl.a(this.a, new RedTouch(aysl.a(this.a), localView).a(53).d(5).a());
-        }
-      }
-      if (aysl.a(this.a) != null) {
-        aysl.a(this.a).a(paramMessage);
+      paramActionMode = ayrt.a(this.jdField_a_of_type_AndroidWidgetEditText);
+      if (TextUtils.isEmpty(paramActionMode)) {
+        QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 1, anvx.a(2131707272), 0).a();
       }
     }
+    else
+    {
+      return false;
+    }
+    OCRTextSearchActivity.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), paramActionMode);
+    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew).overridePendingTransition(2130771992, 0);
+    return true;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramActionMode = paramActionMode.getMenuInflater();
+    if (paramActionMode != null) {
+      paramActionMode.inflate(2131623939, paramMenu);
+    }
+    return true;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
     return false;
   }
 }

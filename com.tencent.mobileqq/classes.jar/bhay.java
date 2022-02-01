@@ -1,56 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
+import android.app.Dialog;
+import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.widget.ADView;
-import com.tencent.mobileqq.widget.WorkSpaceView;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bhay
-  extends Handler
+class bhay
+  implements View.OnClickListener
 {
-  private ADView jdField_a_of_type_ComTencentMobileqqWidgetADView;
-  private WeakReference<ADView> jdField_a_of_type_JavaLangRefWeakReference;
+  bhay(bhav parambhav, QQAppInterface paramQQAppInterface, Context paramContext, Dialog paramDialog) {}
   
-  public bhay(ADView paramADView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramADView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView = ((ADView)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a == null));
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildCount() > 1) && (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getWidth() > 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a() + 1);
-      }
-      try
-      {
-        bcgq localbcgq = (bcgq)this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a()).getTag();
-        i = localbcgq.a;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.setContentDescription(localbcgq.n);
-        i *= 1000;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          int i = 5000;
-        }
-      }
-      sendEmptyMessageDelayed(0, i);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetADView = null;
-      continue;
-      removeMessages(0);
-    }
+    bhav.a(this.jdField_a_of_type_Bhav, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 1);
+    bhav.b(this.jdField_a_of_type_Bhav, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidAppDialog);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B0C7", "0X800B0C7", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -4,15 +4,15 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
-import blzl;
-import blzm;
+import bnov;
+import bnow;
 
 public class VideoPlayView
   extends GLSurfaceView
 {
   private static final String jdField_a_of_type_JavaLangString = VideoPlayView.class.getSimpleName();
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private final blzm jdField_a_of_type_Blzm;
+  private final bnow jdField_a_of_type_Bnow;
   
   public VideoPlayView(Context paramContext)
   {
@@ -24,8 +24,8 @@ public class VideoPlayView
     super(paramContext, paramAttributeSet);
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 0, 0);
-    this.jdField_a_of_type_Blzm = new blzm(this);
-    setRenderer(this.jdField_a_of_type_Blzm);
+    this.jdField_a_of_type_Bnow = new bnow(this);
+    setRenderer(this.jdField_a_of_type_Bnow);
     setRenderMode(0);
   }
   
@@ -40,7 +40,7 @@ public class VideoPlayView
       this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
     }
     this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
-    this.jdField_a_of_type_Blzm.a(paramMediaPlayer);
+    this.jdField_a_of_type_Bnow.a(paramMediaPlayer);
     return this;
   }
   
@@ -49,17 +49,17 @@ public class VideoPlayView
     queueEvent(new VideoPlayView.1(this));
   }
   
-  public void setFrameRenderCallback(blzl paramblzl)
+  public void setFrameRenderCallback(bnov parambnov)
   {
-    if (this.jdField_a_of_type_Blzm != null) {
-      this.jdField_a_of_type_Blzm.a(paramblzl);
+    if (this.jdField_a_of_type_Bnow != null) {
+      this.jdField_a_of_type_Bnow.a(parambnov);
     }
   }
   
   public void setNeedComposeAlpha(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Blzm != null) {
-      this.jdField_a_of_type_Blzm.a(paramBoolean);
+    if (this.jdField_a_of_type_Bnow != null) {
+      this.jdField_a_of_type_Bnow.a(paramBoolean);
     }
   }
 }

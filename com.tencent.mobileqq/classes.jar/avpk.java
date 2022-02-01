@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
-
-public final class avpk
-  implements Parcelable.Creator<MediaFocusStackItem>
+public abstract interface avpk
 {
-  public MediaFocusStackItem a(Parcel paramParcel)
-  {
-    return new MediaFocusStackItem(paramParcel);
-  }
-  
-  public MediaFocusStackItem[] a(int paramInt)
-  {
-    return new MediaFocusStackItem[paramInt];
-  }
+  public abstract void a(yzo paramyzo);
 }
 
 

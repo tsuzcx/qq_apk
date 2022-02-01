@@ -1,84 +1,138 @@
-import ConfigPush.DomainIpChannel;
-import ConfigPush.DomainIpInfo;
-import ConfigPush.DomainIpList;
-import ConfigPush.FileStoragePushFSSvcList;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.minigame.ui.GameActivity1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.action.ActionBridge.FavoritesActionBridge;
+import com.tencent.qqmini.sdk.launcher.action.ActionBridge.RestartActionBridge;
+import com.tencent.qqmini.sdk.launcher.action.ActionBridge.ShareActionBridge;
+import com.tencent.qqmini.sdk.launcher.action.ActionBridge.UpdateUIActionBridge;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.IProxyManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.PageGestureProxy;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.utils.DebugUtil;
 
-public class bkpi
+class bkpi
+  implements Handler.Callback
 {
-  protected String a;
-  protected String b;
-  protected String c;
+  bkpi(bkpb parambkpb) {}
   
-  public void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList)
+  public boolean handleMessage(Message paramMessage)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    int i;
-    if (Build.VERSION.SDK_INT > 10)
-    {
-      i = 4;
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavSrvAddrList", i);
-      if (localObject != null) {
-        break label32;
+    if (paramMessage == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("MiniAppProxyImpl", 1, "handleMessage error, msg is null.");
       }
     }
-    label32:
-    while ((paramFileStoragePushFSSvcList == null) || (paramFileStoragePushFSSvcList.domainIpChannel == null) || (paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists == null))
+    label480:
+    do
     {
-      return;
-      i = 0;
-      break;
-    }
-    paramFileStoragePushFSSvcList = paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists.iterator();
-    while (paramFileStoragePushFSSvcList.hasNext())
-    {
-      DomainIpList localDomainIpList = (DomainIpList)paramFileStoragePushFSSvcList.next();
-      StringBuilder localStringBuilder = new StringBuilder();
-      if ((localDomainIpList.uDomain_type == 4) || (localDomainIpList.uDomain_type == 5) || (localDomainIpList.uDomain_type == 6))
+      do
       {
-        if ((localDomainIpList.vIplist != null) && (localDomainIpList.vIplist.size() != 0))
+        do
         {
-          i = 0;
-          while (i < localDomainIpList.vIplist.size())
+          do
           {
-            DomainIpInfo localDomainIpInfo = (DomainIpInfo)localDomainIpList.vIplist.get(i);
-            localStringBuilder.append(NetworkUtil.IntAddr2Ip(localDomainIpInfo.uIp)).append(":").append(localDomainIpInfo.uPort);
-            if (i < localDomainIpList.vIplist.size() - 1) {
-              localStringBuilder.append("|");
+            do
+            {
+              return false;
+              if (bkpb.a(this.a) == null)
+              {
+                QLog.e("MiniAppProxyImpl", 1, "handleMessage error, MiniAppContext is null.");
+                return false;
+              }
+              switch (paramMessage.what)
+              {
+              case 4: 
+              case 10: 
+              default: 
+                return false;
+              case 2: 
+                bkpb.a(this.a).performAction(ActionBridge.ShareActionBridge.obtain(1, null));
+                return false;
+              case 1000: 
+                this.a.a();
+                return false;
+              case 6: 
+                bkpb.a(this.a).performAction(ActionBridge.ShareActionBridge.obtain(2, null));
+                return false;
+              case 7: 
+                bkpb.a(this.a).performAction(ActionBridge.ShareActionBridge.obtain(3, null));
+                return false;
+              case 8: 
+                bkpb.a(this.a).performAction(ActionBridge.ShareActionBridge.obtain(4, null));
+                return false;
+              case 13: 
+                bkpb.a(this.a).performAction(ActionBridge.ShareActionBridge.obtain(5, paramMessage.getData()));
+                return false;
+              case 18: 
+                bkpb.a(this.a).performAction(ActionBridge.FavoritesActionBridge.obtain(1, null));
+                return false;
+              case 3: 
+                paramMessage = bkpb.a(this.a).getMiniAppInfo();
+              }
+            } while (paramMessage == null);
+            if (DebugUtil.getDebugEnabled(paramMessage)) {
+              DebugUtil.setDebugEnabled(paramMessage, false);
             }
-            i += 1;
+            for (;;)
+            {
+              bkpb.a(bkpb.a(this.a));
+              return false;
+              DebugUtil.setDebugEnabled(paramMessage, true);
+            }
+            bkpb.a(ActionBridge.UpdateUIActionBridge.toggleMonitorPanel(bkpb.a(this.a)).booleanValue());
+            return false;
+            paramMessage = bkpb.a(this.a).getMiniAppInfo();
+          } while (paramMessage == null);
+          int i;
+          bkpb localbkpb;
+          IMiniAppContext localIMiniAppContext;
+          if (paramMessage.topType == 0)
+          {
+            i = 1;
+            paramMessage.topType = i;
+            bkpb.a(this.a, paramMessage);
+            localbkpb = this.a;
+            localIMiniAppContext = bkpb.a(this.a);
+            if (paramMessage.topType != 1) {
+              break label480;
+            }
           }
+          for (paramMessage = "settop_on";; paramMessage = "settop_off")
+          {
+            bkpb.a(localbkpb, localIMiniAppContext, paramMessage);
+            return false;
+            i = 0;
+            break;
+          }
+          paramMessage = bkpb.a(this.a).getAttachedActivity();
+        } while ((paramMessage == null) || (bkpb.a(this.a).getMiniAppInfo() == null));
+        bkrh.a(paramMessage, bkpb.a(this.a).getMiniAppInfo());
+        bkpb.a(this.a, bkpb.a(this.a), "add_desktop");
+        return false;
+        bkpb.a(this.a, bkpb.a(this.a));
+        return false;
+        paramMessage = bkpb.a(this.a).getMiniAppInfo();
+        if ((paramMessage == null) || (!paramMessage.isEngineTypeMiniApp())) {
+          break;
         }
-      }
-      else {
-        switch (localDomainIpList.uDomain_type)
-        {
-        default: 
-          break;
-        case 4: 
-          this.a = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_FavIp", this.a).commit();
-          break;
-        case 5: 
-          this.c = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_UploadPicIp", this.c).commit();
-          break;
-        case 6: 
-          this.b = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_PicPlatformIp", this.b).commit();
-        }
-      }
-    }
-    paramFileStoragePushFSSvcList = new Intent("com.tencent.receiver.qfav.srvaddr");
-    paramFileStoragePushFSSvcList.putExtra("com.tencent.receiver.qfav.srvaddr.type", 0);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramFileStoragePushFSSvcList);
+        paramMessage = (PageGestureProxy)AppLoaderFactory.g().getProxyManager().get(PageGestureProxy.class);
+      } while (!(paramMessage instanceof bkqp));
+      paramMessage = (bkqp)paramMessage;
+      bkpb.a(this.a, paramMessage.a());
+      return false;
+    } while (!(bkpb.a(this.a).getAttachedActivity() instanceof GameActivity1));
+    paramMessage = ((GameActivity1)bkpb.a(this.a).getAttachedActivity()).getColorNoteController();
+    bkpb.a(this.a, paramMessage);
+    return false;
+    bkpb.a(this.a).performAction(ActionBridge.RestartActionBridge.obtain());
+    return false;
+    bkpb.b(this.a, bkpb.a(this.a));
+    return false;
+    bkpb.c(this.a, bkpb.a(this.a));
+    return false;
   }
 }
 

@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class adpb
-  extends arht
 {
-  public adpb(Leba paramLeba) {}
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  public String a;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
   
-  protected void l_(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.lebatab.leba", 2, "onUpdateRedPoint " + paramInt);
-    }
-    if (Leba.a(this.a) != null) {
-      Leba.a(this.a).b();
-    }
-  }
+  protected adpb(ChatHistory paramChatHistory) {}
 }
 
 

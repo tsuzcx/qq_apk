@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.RelativeLayout.LayoutParams;
-import bjnw;
+import bkzi;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import java.util.List;
 
@@ -21,7 +21,7 @@ public abstract interface ShareActionSheet
   
   public abstract View findViewById(int paramInt);
   
-  public abstract bjnw getActionSheet();
+  public abstract bkzi getActionSheet();
   
   public abstract int getActionSheetPanelViewHeight();
   

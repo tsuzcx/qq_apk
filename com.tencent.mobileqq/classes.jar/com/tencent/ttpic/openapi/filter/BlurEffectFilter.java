@@ -15,31 +15,19 @@ public class BlurEffectFilter
   private Frame mBlurFrame2 = new Frame();
   private double mStrength;
   
-  public void ApplyGLSLFilter()
+  public void applyGLSLFilter()
   {
     this.mBlurFilter.apply();
     this.mBlendFilter.apply();
   }
   
-  public void ClearGLSL()
+  public void clearGLSL()
   {
     this.mBlurFilter.clearGLSLSelf();
     this.mBlendFilter.clearGLSLSelf();
     this.mBlurFrame1.clear();
     this.mBlurFrame2.clear();
     this.mBlendFrame.clear();
-  }
-  
-  public Frame RenderProcess(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int i = paramInt3 * 300 / paramInt2;
-    this.mBlurFilter.updateTextureSize(1.0F / 300, 0.0F);
-    this.mBlurFilter.RenderProcess(paramInt1, 300, i, -1, 0.0D, this.mBlurFrame1);
-    this.mBlurFilter.updateTextureSize(0.0F, 1.0F / i);
-    this.mBlurFilter.RenderProcess(this.mBlurFrame1.getTextureId(), 300, i, -1, 0.0D, this.mBlurFrame2);
-    this.mBlendFilter.updateTexture(paramInt1);
-    this.mBlendFilter.RenderProcess(this.mBlurFrame2.getTextureId(), paramInt2, paramInt3, -1, 0.0D, this.mBlendFrame);
-    return this.mBlendFrame;
   }
   
   public double getStrength()
@@ -49,7 +37,19 @@ public class BlurEffectFilter
   
   public Frame render(Frame paramFrame)
   {
-    return RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+    return renderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+  }
+  
+  public Frame renderProcess(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int i = paramInt3 * 300 / paramInt2;
+    this.mBlurFilter.updateTextureSize(1.0F / 300, 0.0F);
+    this.mBlurFilter.RenderProcess(paramInt1, 300, i, -1, 0.0D, this.mBlurFrame1);
+    this.mBlurFilter.updateTextureSize(0.0F, 1.0F / i);
+    this.mBlurFilter.RenderProcess(this.mBlurFrame1.getTextureId(), 300, i, -1, 0.0D, this.mBlurFrame2);
+    this.mBlendFilter.updateTexture(paramInt1);
+    this.mBlendFilter.RenderProcess(this.mBlurFrame2.getTextureId(), paramInt2, paramInt3, -1, 0.0D, this.mBlendFrame);
+    return this.mBlendFrame;
   }
   
   public void updateFilterBlurStrength(double paramDouble)

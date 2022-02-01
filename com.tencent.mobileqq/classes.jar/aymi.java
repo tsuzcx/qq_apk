@@ -2,17 +2,9 @@ public class aymi
 {
   public int a;
   public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  
-  public aymi(aymh paramaymh, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public int b;
+  public int c;
+  public int d;
 }
 
 

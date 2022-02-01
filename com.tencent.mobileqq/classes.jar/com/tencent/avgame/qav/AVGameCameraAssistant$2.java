@@ -3,7 +3,7 @@ package com.tencent.avgame.qav;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import nhb;
+import nnt;
 
 class AVGameCameraAssistant$2
   implements Runnable
@@ -17,9 +17,9 @@ class AVGameCameraAssistant$2
       Iterator localIterator = AVGameCameraAssistant.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        nhb localnhb = (nhb)localIterator.next();
-        if (localnhb != null) {
-          localnhb.a();
+        nnt localnnt = (nnt)localIterator.next();
+        if (localnnt != null) {
+          localnnt.a();
         }
       }
       return;

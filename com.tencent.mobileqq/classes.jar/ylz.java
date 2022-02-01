@@ -1,18 +1,18 @@
-import android.app.Activity;
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public class ylz
-  extends ylw
+class ylz
+  implements bisc
 {
-  public int a;
-  public Activity a;
-  public Handler a;
-  public String a;
-  public List<SlideItemInfo> a;
-  public yma a;
-  public int b;
+  ylz(ylw paramylw) {}
+  
+  public void onProgressChanged(bisa parambisa, int paramInt1, int paramInt2) {}
+  
+  public void onProgressCompleted(bisa parambisa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambisa);
+    }
+  }
 }
 
 

@@ -1,127 +1,93 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.util.List;
-import mqq.util.WeakReference;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-final class alkg
-  extends amsu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/recent/guidebanner/NewerGuideBannerPreloadWebProcessConfigProcessor;", "Lcom/tencent/mobileqq/config/IQConfigProcessor;", "Lcom/tencent/mobileqq/activity/recent/guidebanner/NewerGuideBannerPreloadWebProcessConfigProcessor$Config;", "()V", "clazz", "Ljava/lang/Class;", "isAccountRelated", "", "isNeedCompressed", "isNeedStoreLargeFile", "isNeedUpgradeReset", "migrateOldOrDefaultContent", "type", "", "migrateOldVersion", "onParsed", "confFiles", "", "Lcom/tencent/mobileqq/config/QConfItem;", "([Lcom/tencent/mobileqq/config/QConfItem;)Lcom/tencent/mobileqq/activity/recent/guidebanner/NewerGuideBannerPreloadWebProcessConfigProcessor$Config;", "onReqFailed", "", "failCode", "onUpdate", "newConf", "Companion", "Config", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class alkg
+  extends aqwt<alki>
 {
-  WeakReference<aljz> a;
+  public static final alkh a = new alkh(null);
   
-  alkg(aljz paramaljz)
+  @NotNull
+  public alki a(int paramInt)
   {
-    this.a = new WeakReference(paramaljz);
+    return new alki();
   }
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  @Nullable
+  public alki a(@Nullable aqxa[] paramArrayOfaqxa)
   {
-    aljz localaljz;
-    if (paramBoolean)
-    {
-      localaljz = (aljz)this.a.get();
-      if (localaljz == null) {
-        break label71;
-      }
-      paramString = aljz.a(localaljz, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("MayKnowAdapter", 2, "onCancelMayKnowRecommend target：" + paramString);
-      }
-      if (paramString != null) {
-        aljz.a(localaljz, paramString);
-      }
-    }
-    else
-    {
-      return;
-    }
-    aljz.a(localaljz);
-    return;
-    label71:
-    QLog.d("MayKnowAdapter", 1, "onCancelMayKnowRecommend  adapter is null!");
-  }
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBoolean)
-    {
-      paramBundle = (aljz)this.a.get();
-      if (paramBundle != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MayKnowAdapter", 2, "onGetMayKnowRecommend ");
-        }
-        aljz.a(paramBundle);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.d("MayKnowAdapter", 1, "onGetMayKnowRecommend adapter is null!");
-  }
-  
-  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
-  {
-    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    int j = 1;
     if (QLog.isColorLevel()) {
-      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushAdd");
+      QLog.d("NewerBannerGuidePreloadWebProcessConfigProcessor", 2, "onParsed");
     }
-    if (paramBoolean)
+    alki localalki = new alki();
+    if (paramArrayOfaqxa != null)
     {
-      paramList = (aljz)this.a.get();
-      if (paramList != null) {
-        aljz.a(paramList);
+      if (paramArrayOfaqxa.length != 0) {
+        break label68;
+      }
+      i = 1;
+      if (i != 0) {
+        break label73;
       }
     }
-    else
+    label68:
+    label73:
+    for (int i = j;; i = 0)
     {
-      return;
-    }
-    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushAdd adapter is null!");
-  }
-  
-  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
-  {
-    super.onMayKnowListPushDel(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushDel");
-    }
-    if (paramBoolean)
-    {
-      paramList = (aljz)this.a.get();
-      if (paramList != null) {
-        aljz.a(paramList);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushDel adapter is null!");
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      aljz localaljz = (aljz)this.a.get();
-      if (localaljz == null) {
-        break label60;
-      }
-      if (aljz.a(localaljz) != null)
+      if (i != 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MayKnowAdapter", 2, "onMayknowStateChanged");
-        }
-        localaljz.notifyDataSetChanged();
-        aljz.a(localaljz).postDelayed(localaljz.a, 1600L);
+        paramArrayOfaqxa = paramArrayOfaqxa[0].a;
+        Intrinsics.checkExpressionValueIsNotNull(paramArrayOfaqxa, "confFiles[0].content");
+        localalki.a(paramArrayOfaqxa);
       }
+      return localalki;
+      i = 0;
+      break;
     }
-    return;
-    label60:
-    QLog.d("MayKnowAdapter", 1, "onMayknowStateChanged adapter is null!");
+  }
+  
+  public void a(@Nullable alki paramalki) {}
+  
+  @NotNull
+  public Class<alki> clazz()
+  {
+    return alki.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 699;
   }
 }
 

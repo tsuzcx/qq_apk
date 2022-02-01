@@ -1,70 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyTelePhoneUtils.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppActivity;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class twz
+final class twz
+  extends LbsManagerService.OnLocationChangeListener
 {
-  public static JSONObject a(int paramInt1, int paramInt2, String paramString, AdvertisementInfo paramAdvertisementInfo)
+  twz(String paramString1, BridgeModule paramBridgeModule, String paramString2)
   {
-    try
+    super(paramString1);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("perstatus", paramInt1);
-      localJSONObject.put("callact", paramInt2);
-      localJSONObject.put("callnum", paramString);
-      if (paramAdvertisementInfo != null) {
-        localJSONObject.put("phone_cmpt_id", String.valueOf(paramAdvertisementInfo.mPhoneComponetId));
-      }
-      paramString = new JSONObject();
-      paramString.put("comp_stat_src", "");
-      paramString.put("phone_component_info", localJSONObject.toString());
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo)
-  {
-    if ((paramAdvertisementInfo == null) || (paramAdvertisementInfo.mAdRl == null)) {
+      twu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, paramSosoLbsInfo, this.jdField_a_of_type_JavaLangString);
       return;
     }
-    ThreadManager.excute(new ReadInJoyTelePhoneUtils.1(paramAdvertisementInfo, paramContext), 128, null, true);
-  }
-  
-  public static void a(Context paramContext, String paramString, AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (!(paramContext instanceof AppActivity)) {
-      return;
-    }
-    b(paramContext, paramString, paramAdvertisementInfo);
-  }
-  
-  public static boolean a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.mPhoneComponetId != 0) && (twq.e(paramAdvertisementInfo));
-  }
-  
-  public static void b(Context paramContext, String paramString, AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    paramContext.startActivity(new Intent("android.intent.action.DIAL", Uri.parse("tel:" + paramString)));
-    obb.a(new trn().a(paramContext).a(obb.x).b(obb.ah).a(paramAdvertisementInfo).e(a(2, 1, paramString, paramAdvertisementInfo)).a());
+    twu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_JavaLangString, "errorCode: " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     twz
  * JD-Core Version:    0.7.0.1
  */

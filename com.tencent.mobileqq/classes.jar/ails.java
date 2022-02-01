@@ -1,79 +1,44 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.9.1;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.9.2;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.9.3;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class ails
-  extends amwl
+class ails
+  implements Animation.AnimationListener
 {
-  public ails(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  ails(ailr paramailr) {}
   
-  protected void onGetSuspiciousSystemMsgFin(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopNotifyAndRecommendView", 2, "onGetSuspiciousSystemMsgFin.bengin");
-    }
-    if (((Activity)this.a.jdField_a_of_type_AndroidContentContext).isFinishing()) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        if (this.a.jdField_a_of_type_Aiiz != null)
-        {
-          this.a.jdField_a_of_type_Aiiz.a(new TroopNotifyAndRecommendView.9.1(this, paramBoolean1, paramBoolean2, paramList));
-          return;
-        }
-      }
-      catch (Exception paramList)
-      {
-        paramList.printStackTrace();
-        QLog.d("TroopNotifyAndRecommendView", 1, "onGetSuspiciousSystemMsgFin failed", paramList);
-      }
-    }
-  }
-  
-  protected void onGetSystemMsgFin(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopNotifyAndRecommendView", 2, "onGetSystemMsgFin.bengin");
-    }
     try
     {
-      if (this.a.jdField_a_of_type_Aiiz != null) {
-        this.a.jdField_a_of_type_Aiiz.a(new TroopNotifyAndRecommendView.9.2(this, paramBoolean1, paramList));
+      if ((this.a.jdField_b_of_type_AndroidViewAnimationAnimation != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAnimation))
+      {
+        paramAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2130772263);
+        paramAnimation.setInterpolator(new LinearInterpolator());
+        this.a.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367065));
+        this.a.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367066));
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
+        return;
       }
-      return;
+      if ((paramAnimation == this.a.c) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout) != -1))
+      {
+        this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+        return;
+      }
     }
-    catch (Exception paramList)
-    {
-      paramList.printStackTrace();
-    }
+    catch (Throwable paramAnimation) {}
   }
   
-  protected void onSendSystemMsgActionError(String paramString)
-  {
-    if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing()))
-    {
-      this.a.jdField_a_of_type_Bhht.dismiss();
-      paramString = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718765);
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, paramString, 0).b(this.a.a());
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void onSendSystemMsgActionFin(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
-  {
-    if (this.a.jdField_a_of_type_Aiiz != null) {
-      this.a.jdField_a_of_type_Aiiz.a(new TroopNotifyAndRecommendView.9.3(this, paramString1, paramBoolean, paramString3, paramInt3, paramString2, paramString4, paramInt1, paramInt2));
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

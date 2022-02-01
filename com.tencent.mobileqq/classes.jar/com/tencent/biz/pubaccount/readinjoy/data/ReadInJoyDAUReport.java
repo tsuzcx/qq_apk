@@ -24,315 +24,315 @@ public class ReadInJoyDAUReport
     //   26: aload_0
     //   27: getfield 16	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyDAUReport:a	Lcom/tencent/mobileqq/app/automator/Automator;
     //   30: getfield 22	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
-    //   33: bipush 51
-    //   35: invokevirtual 46	com/tencent/common/app/AppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   38: checkcast 48	amsw
-    //   41: astore 5
-    //   43: aload 5
-    //   45: ifnull +602 -> 647
-    //   48: aload 5
-    //   50: aload_0
-    //   51: getfield 16	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyDAUReport:a	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   54: getfield 22	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
-    //   57: invokevirtual 52	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   60: invokevirtual 56	amsw:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
-    //   63: astore 5
-    //   65: aload 5
-    //   67: ifnull +580 -> 647
-    //   70: aload 5
-    //   72: getfield 62	com/tencent/mobileqq/data/Card:shGender	S
-    //   75: istore_2
-    //   76: aload 5
-    //   78: getfield 66	com/tencent/mobileqq/data/Card:age	B
-    //   81: istore_1
-    //   82: aload_3
-    //   83: ifnull +550 -> 633
-    //   86: aload_3
-    //   87: invokeinterface 71 1 0
-    //   92: ifle +541 -> 633
-    //   95: aload_3
-    //   96: invokeinterface 75 1 0
-    //   101: astore_3
-    //   102: aload_3
-    //   103: invokeinterface 81 1 0
-    //   108: ifeq +525 -> 633
-    //   111: aload_3
-    //   112: invokeinterface 85 1 0
-    //   117: checkcast 36	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo
-    //   120: astore 5
-    //   122: new 87	java/util/HashMap
-    //   125: dup
-    //   126: iconst_2
-    //   127: invokespecial 90	java/util/HashMap:<init>	(I)V
-    //   130: astore 6
-    //   132: aload 6
-    //   134: ldc 92
-    //   136: aload 5
-    //   138: getfield 95	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activityName	Ljava/lang/String;
-    //   141: invokevirtual 99	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   144: pop
-    //   145: aload 6
-    //   147: ldc 101
-    //   149: aload 5
-    //   151: getfield 104	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:count	I
-    //   154: invokestatic 110	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   157: invokevirtual 99	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   160: pop
-    //   161: aload 6
-    //   163: ldc 112
-    //   165: iload_2
-    //   166: invokestatic 110	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   169: invokevirtual 99	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   172: pop
-    //   173: aload 6
-    //   175: ldc 113
-    //   177: iload_1
-    //   178: invokestatic 110	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   181: invokevirtual 99	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   184: pop
-    //   185: aload 6
-    //   187: ldc 115
-    //   189: aload 5
-    //   191: getfield 117	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:preActivityList	Ljava/lang/String;
-    //   194: invokevirtual 99	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   197: pop
-    //   198: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   201: ifeq +86 -> 287
-    //   204: ldc 124
-    //   206: iconst_2
-    //   207: new 126	java/lang/StringBuilder
-    //   210: dup
-    //   211: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   214: ldc 129
-    //   216: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: aload_0
-    //   220: getfield 16	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyDAUReport:a	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   223: getfield 22	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
-    //   226: invokevirtual 52	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   229: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   232: ldc 135
-    //   234: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: aload 5
-    //   239: getfield 138	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activeDate	Ljava/lang/String;
-    //   242: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   245: ldc 140
-    //   247: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   250: ldc 142
-    //   252: iconst_1
-    //   253: anewarray 144	java/lang/Object
-    //   256: dup
-    //   257: iconst_0
-    //   258: invokestatic 149	com/tencent/common/config/AppSetting:f	()Ljava/lang/String;
-    //   261: aastore
-    //   262: invokestatic 153	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   265: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: ldc 155
-    //   270: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   273: aload 5
-    //   275: getfield 159	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:showTime	J
-    //   278: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   281: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   284: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   287: aconst_null
-    //   288: ldc 171
-    //   290: ldc 173
-    //   292: ldc 173
-    //   294: ldc 175
-    //   296: ldc 175
-    //   298: iconst_0
+    //   33: getstatic 48	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
+    //   36: invokevirtual 52	com/tencent/common/app/AppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   39: checkcast 54	anvk
+    //   42: astore 5
+    //   44: aload 5
+    //   46: ifnull +602 -> 648
+    //   49: aload 5
+    //   51: aload_0
+    //   52: getfield 16	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyDAUReport:a	Lcom/tencent/mobileqq/app/automator/Automator;
+    //   55: getfield 22	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
+    //   58: invokevirtual 58	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   61: invokevirtual 62	anvk:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   64: astore 5
+    //   66: aload 5
+    //   68: ifnull +580 -> 648
+    //   71: aload 5
+    //   73: getfield 68	com/tencent/mobileqq/data/Card:shGender	S
+    //   76: istore_2
+    //   77: aload 5
+    //   79: getfield 72	com/tencent/mobileqq/data/Card:age	B
+    //   82: istore_1
+    //   83: aload_3
+    //   84: ifnull +550 -> 634
+    //   87: aload_3
+    //   88: invokeinterface 77 1 0
+    //   93: ifle +541 -> 634
+    //   96: aload_3
+    //   97: invokeinterface 81 1 0
+    //   102: astore_3
+    //   103: aload_3
+    //   104: invokeinterface 87 1 0
+    //   109: ifeq +525 -> 634
+    //   112: aload_3
+    //   113: invokeinterface 91 1 0
+    //   118: checkcast 36	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo
+    //   121: astore 5
+    //   123: new 93	java/util/HashMap
+    //   126: dup
+    //   127: iconst_2
+    //   128: invokespecial 96	java/util/HashMap:<init>	(I)V
+    //   131: astore 6
+    //   133: aload 6
+    //   135: ldc 98
+    //   137: aload 5
+    //   139: getfield 101	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activityName	Ljava/lang/String;
+    //   142: invokevirtual 105	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   145: pop
+    //   146: aload 6
+    //   148: ldc 107
+    //   150: aload 5
+    //   152: getfield 109	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:count	I
+    //   155: invokestatic 115	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   158: invokevirtual 105	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   161: pop
+    //   162: aload 6
+    //   164: ldc 117
+    //   166: iload_2
+    //   167: invokestatic 115	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   170: invokevirtual 105	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   173: pop
+    //   174: aload 6
+    //   176: ldc 118
+    //   178: iload_1
+    //   179: invokestatic 115	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   182: invokevirtual 105	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   185: pop
+    //   186: aload 6
+    //   188: ldc 120
+    //   190: aload 5
+    //   192: getfield 122	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:preActivityList	Ljava/lang/String;
+    //   195: invokevirtual 105	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   198: pop
+    //   199: invokestatic 127	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   202: ifeq +86 -> 288
+    //   205: ldc 129
+    //   207: iconst_2
+    //   208: new 131	java/lang/StringBuilder
+    //   211: dup
+    //   212: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   215: ldc 134
+    //   217: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: aload_0
+    //   221: getfield 16	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyDAUReport:a	Lcom/tencent/mobileqq/app/automator/Automator;
+    //   224: getfield 22	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
+    //   227: invokevirtual 58	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   230: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   233: ldc 140
+    //   235: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: aload 5
+    //   240: getfield 143	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activeDate	Ljava/lang/String;
+    //   243: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   246: ldc 145
+    //   248: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   251: ldc 147
+    //   253: iconst_1
+    //   254: anewarray 149	java/lang/Object
+    //   257: dup
+    //   258: iconst_0
+    //   259: invokestatic 154	com/tencent/common/config/AppSetting:f	()Ljava/lang/String;
+    //   262: aastore
+    //   263: invokestatic 158	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   266: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: ldc 160
+    //   271: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   274: aload 5
+    //   276: getfield 164	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:showTime	J
+    //   279: invokevirtual 167	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   282: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   285: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   288: aconst_null
+    //   289: ldc 176
+    //   291: ldc 178
+    //   293: ldc 178
+    //   295: ldc 180
+    //   297: ldc 180
     //   299: iconst_0
-    //   300: aload 5
-    //   302: getfield 159	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:showTime	J
-    //   305: invokestatic 180	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   308: aload 5
-    //   310: getfield 138	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activeDate	Ljava/lang/String;
-    //   313: ldc 142
-    //   315: iconst_1
-    //   316: anewarray 144	java/lang/Object
-    //   319: dup
-    //   320: iconst_0
-    //   321: invokestatic 149	com/tencent/common/config/AppSetting:f	()Ljava/lang/String;
-    //   324: aastore
-    //   325: invokestatic 153	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   328: aconst_null
-    //   329: invokestatic 186	bcef:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   332: aload_0
-    //   333: aload 5
-    //   335: getfield 117	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:preActivityList	Ljava/lang/String;
-    //   338: invokevirtual 189	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyDAUReport:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   341: astore 6
-    //   343: aload 5
-    //   345: getfield 95	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activityName	Ljava/lang/String;
-    //   348: invokestatic 195	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   351: ifne +152 -> 503
-    //   354: aload 5
-    //   356: getfield 95	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activityName	Ljava/lang/String;
-    //   359: ldc 197
-    //   361: invokevirtual 201	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   364: ifeq +139 -> 503
-    //   367: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   370: ifeq +86 -> 456
-    //   373: ldc 124
-    //   375: iconst_2
-    //   376: new 126	java/lang/StringBuilder
-    //   379: dup
-    //   380: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   383: ldc 203
-    //   385: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   388: aload_0
-    //   389: getfield 16	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyDAUReport:a	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   392: getfield 22	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
-    //   395: invokevirtual 52	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   398: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   401: ldc 135
-    //   403: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   406: aload 5
-    //   408: getfield 138	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activeDate	Ljava/lang/String;
-    //   411: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   414: ldc 140
-    //   416: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   419: ldc 142
-    //   421: iconst_1
-    //   422: anewarray 144	java/lang/Object
-    //   425: dup
-    //   426: iconst_0
-    //   427: invokestatic 149	com/tencent/common/config/AppSetting:f	()Ljava/lang/String;
-    //   430: aastore
-    //   431: invokestatic 153	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   434: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   437: ldc 155
-    //   439: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   442: aload 5
-    //   444: getfield 159	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:showTime	J
-    //   447: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   450: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   453: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   456: aconst_null
-    //   457: ldc 171
-    //   459: ldc 173
-    //   461: ldc 173
-    //   463: ldc 205
-    //   465: ldc 205
-    //   467: iconst_0
+    //   300: iconst_0
+    //   301: aload 5
+    //   303: getfield 164	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:showTime	J
+    //   306: invokestatic 185	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   309: aload 5
+    //   311: getfield 143	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activeDate	Ljava/lang/String;
+    //   314: ldc 147
+    //   316: iconst_1
+    //   317: anewarray 149	java/lang/Object
+    //   320: dup
+    //   321: iconst_0
+    //   322: invokestatic 154	com/tencent/common/config/AppSetting:f	()Ljava/lang/String;
+    //   325: aastore
+    //   326: invokestatic 158	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   329: aconst_null
+    //   330: invokestatic 191	bdla:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   333: aload_0
+    //   334: aload 5
+    //   336: getfield 122	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:preActivityList	Ljava/lang/String;
+    //   339: invokevirtual 194	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyDAUReport:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   342: astore 6
+    //   344: aload 5
+    //   346: getfield 101	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activityName	Ljava/lang/String;
+    //   349: invokestatic 200	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   352: ifne +152 -> 504
+    //   355: aload 5
+    //   357: getfield 101	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activityName	Ljava/lang/String;
+    //   360: ldc 202
+    //   362: invokevirtual 206	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   365: ifeq +139 -> 504
+    //   368: invokestatic 127	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   371: ifeq +86 -> 457
+    //   374: ldc 129
+    //   376: iconst_2
+    //   377: new 131	java/lang/StringBuilder
+    //   380: dup
+    //   381: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   384: ldc 208
+    //   386: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   389: aload_0
+    //   390: getfield 16	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyDAUReport:a	Lcom/tencent/mobileqq/app/automator/Automator;
+    //   393: getfield 22	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
+    //   396: invokevirtual 58	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   399: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   402: ldc 140
+    //   404: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   407: aload 5
+    //   409: getfield 143	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activeDate	Ljava/lang/String;
+    //   412: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   415: ldc 145
+    //   417: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   420: ldc 147
+    //   422: iconst_1
+    //   423: anewarray 149	java/lang/Object
+    //   426: dup
+    //   427: iconst_0
+    //   428: invokestatic 154	com/tencent/common/config/AppSetting:f	()Ljava/lang/String;
+    //   431: aastore
+    //   432: invokestatic 158	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   435: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   438: ldc 160
+    //   440: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   443: aload 5
+    //   445: getfield 164	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:showTime	J
+    //   448: invokevirtual 167	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   451: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   454: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   457: aconst_null
+    //   458: ldc 176
+    //   460: ldc 178
+    //   462: ldc 178
+    //   464: ldc 210
+    //   466: ldc 210
     //   468: iconst_0
-    //   469: aload 5
-    //   471: getfield 159	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:showTime	J
-    //   474: invokestatic 180	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   477: aload 5
-    //   479: getfield 138	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activeDate	Ljava/lang/String;
-    //   482: ldc 142
-    //   484: iconst_1
-    //   485: anewarray 144	java/lang/Object
-    //   488: dup
-    //   489: iconst_0
-    //   490: invokestatic 149	com/tencent/common/config/AppSetting:f	()Ljava/lang/String;
-    //   493: aastore
-    //   494: invokestatic 153	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   497: invokestatic 208	pay:f	()Ljava/lang/String;
-    //   500: invokestatic 186	bcef:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   503: aload 5
-    //   505: getfield 95	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activityName	Ljava/lang/String;
-    //   508: invokestatic 195	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   511: ifne -409 -> 102
-    //   514: aload 6
-    //   516: ifnull -414 -> 102
-    //   519: aload 6
-    //   521: ldc 197
-    //   523: invokevirtual 201	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   526: ifeq -424 -> 102
-    //   529: aload 5
-    //   531: getfield 95	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activityName	Ljava/lang/String;
-    //   534: ldc 210
-    //   536: invokevirtual 213	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   539: ifeq -437 -> 102
-    //   542: aconst_null
-    //   543: ldc 171
-    //   545: ldc 173
-    //   547: ldc 173
-    //   549: ldc 205
-    //   551: ldc 205
-    //   553: iconst_0
+    //   469: iconst_0
+    //   470: aload 5
+    //   472: getfield 164	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:showTime	J
+    //   475: invokestatic 185	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   478: aload 5
+    //   480: getfield 143	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activeDate	Ljava/lang/String;
+    //   483: ldc 147
+    //   485: iconst_1
+    //   486: anewarray 149	java/lang/Object
+    //   489: dup
+    //   490: iconst_0
+    //   491: invokestatic 154	com/tencent/common/config/AppSetting:f	()Ljava/lang/String;
+    //   494: aastore
+    //   495: invokestatic 158	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   498: invokestatic 214	pqf:a	()Ljava/lang/String;
+    //   501: invokestatic 191	bdla:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   504: aload 5
+    //   506: getfield 101	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activityName	Ljava/lang/String;
+    //   509: invokestatic 200	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   512: ifne -409 -> 103
+    //   515: aload 6
+    //   517: ifnull -414 -> 103
+    //   520: aload 6
+    //   522: ldc 202
+    //   524: invokevirtual 206	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   527: ifeq -424 -> 103
+    //   530: aload 5
+    //   532: getfield 101	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activityName	Ljava/lang/String;
+    //   535: ldc 216
+    //   537: invokevirtual 219	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   540: ifeq -437 -> 103
+    //   543: aconst_null
+    //   544: ldc 176
+    //   546: ldc 178
+    //   548: ldc 178
+    //   550: ldc 210
+    //   552: ldc 210
     //   554: iconst_0
-    //   555: aload 5
-    //   557: getfield 159	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:showTime	J
-    //   560: invokestatic 180	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   563: aload 5
-    //   565: getfield 138	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activeDate	Ljava/lang/String;
-    //   568: ldc 142
-    //   570: iconst_1
-    //   571: anewarray 144	java/lang/Object
-    //   574: dup
-    //   575: iconst_0
-    //   576: invokestatic 149	com/tencent/common/config/AppSetting:f	()Ljava/lang/String;
-    //   579: aastore
-    //   580: invokestatic 153	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   583: invokestatic 208	pay:f	()Ljava/lang/String;
-    //   586: invokestatic 186	bcef:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   589: goto -487 -> 102
-    //   592: astore_3
-    //   593: ldc 36
-    //   595: monitorexit
-    //   596: aload_3
-    //   597: athrow
-    //   598: astore_3
-    //   599: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   602: ifeq +52 -> 654
-    //   605: ldc 124
-    //   607: iconst_2
-    //   608: new 126	java/lang/StringBuilder
-    //   611: dup
-    //   612: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   615: ldc 215
-    //   617: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   620: aload_3
-    //   621: invokevirtual 218	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   624: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   627: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   630: goto +24 -> 654
-    //   633: aload 4
-    //   635: ldc 36
-    //   637: invokevirtual 222	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
-    //   640: pop
-    //   641: ldc 36
-    //   643: monitorexit
-    //   644: bipush 7
-    //   646: ireturn
-    //   647: iconst_m1
-    //   648: istore_1
-    //   649: iconst_m1
-    //   650: istore_2
-    //   651: goto -569 -> 82
-    //   654: aconst_null
-    //   655: astore_3
-    //   656: goto -630 -> 26
+    //   555: iconst_0
+    //   556: aload 5
+    //   558: getfield 164	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:showTime	J
+    //   561: invokestatic 185	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   564: aload 5
+    //   566: getfield 143	com/tencent/biz/pubaccount/readinjoy/data/ReadInJoyActivityDAUInfo:activeDate	Ljava/lang/String;
+    //   569: ldc 147
+    //   571: iconst_1
+    //   572: anewarray 149	java/lang/Object
+    //   575: dup
+    //   576: iconst_0
+    //   577: invokestatic 154	com/tencent/common/config/AppSetting:f	()Ljava/lang/String;
+    //   580: aastore
+    //   581: invokestatic 158	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   584: invokestatic 214	pqf:a	()Ljava/lang/String;
+    //   587: invokestatic 191	bdla:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   590: goto -487 -> 103
+    //   593: astore_3
+    //   594: ldc 36
+    //   596: monitorexit
+    //   597: aload_3
+    //   598: athrow
+    //   599: astore_3
+    //   600: invokestatic 127	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   603: ifeq +52 -> 655
+    //   606: ldc 129
+    //   608: iconst_2
+    //   609: new 131	java/lang/StringBuilder
+    //   612: dup
+    //   613: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   616: ldc 221
+    //   618: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   621: aload_3
+    //   622: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   625: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   628: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   631: goto +24 -> 655
+    //   634: aload 4
+    //   636: ldc 36
+    //   638: invokevirtual 228	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
+    //   641: pop
+    //   642: ldc 36
+    //   644: monitorexit
+    //   645: bipush 7
+    //   647: ireturn
+    //   648: iconst_m1
+    //   649: istore_1
+    //   650: iconst_m1
+    //   651: istore_2
+    //   652: goto -569 -> 83
+    //   655: aconst_null
+    //   656: astore_3
+    //   657: goto -631 -> 26
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	659	0	this	ReadInJoyDAUReport
-    //   81	568	1	i	int
-    //   75	576	2	j	int
-    //   25	87	3	localObject1	java.lang.Object
-    //   592	5	3	localObject2	java.lang.Object
-    //   598	23	3	localException	java.lang.Exception
-    //   655	1	3	localObject3	java.lang.Object
-    //   13	621	4	localEntityManager	com.tencent.mobileqq.persistence.EntityManager
-    //   41	523	5	localObject4	java.lang.Object
-    //   130	390	6	localObject5	java.lang.Object
+    //   0	660	0	this	ReadInJoyDAUReport
+    //   82	568	1	i	int
+    //   76	576	2	j	int
+    //   25	88	3	localObject1	java.lang.Object
+    //   593	5	3	localObject2	java.lang.Object
+    //   599	23	3	localException	java.lang.Exception
+    //   656	1	3	localObject3	java.lang.Object
+    //   13	622	4	localEntityManager	com.tencent.mobileqq.persistence.EntityManager
+    //   42	523	5	localObject4	java.lang.Object
+    //   131	390	6	localObject5	java.lang.Object
     // Exception table:
     //   from	to	target	type
-    //   18	26	592	finally
-    //   26	43	592	finally
-    //   48	65	592	finally
-    //   70	82	592	finally
-    //   86	102	592	finally
-    //   102	287	592	finally
-    //   287	456	592	finally
-    //   456	503	592	finally
-    //   503	514	592	finally
-    //   519	589	592	finally
-    //   593	596	592	finally
-    //   599	630	592	finally
-    //   633	644	592	finally
-    //   18	26	598	java/lang/Exception
+    //   18	26	593	finally
+    //   26	44	593	finally
+    //   49	66	593	finally
+    //   71	83	593	finally
+    //   87	103	593	finally
+    //   103	288	593	finally
+    //   288	457	593	finally
+    //   457	504	593	finally
+    //   504	515	593	finally
+    //   520	590	593	finally
+    //   594	597	593	finally
+    //   600	631	593	finally
+    //   634	645	593	finally
+    //   18	26	599	java/lang/Exception
   }
   
   public String a(String paramString)

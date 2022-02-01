@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
+import android.os.Handler;
+import android.os.Looper;
 
-class bntr
-  implements DialogInterface.OnClickListener
+final class bntr
+  extends bntt<Handler, Void>
 {
-  bntr(bntl parambntl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected Handler a(Void paramVoid)
   {
-    paramDialogInterface.dismiss();
-    bntl.a(this.a).p = false;
-    bntl.b(this.a).setSelected(false);
+    return new Handler(Looper.getMainLooper());
   }
 }
 

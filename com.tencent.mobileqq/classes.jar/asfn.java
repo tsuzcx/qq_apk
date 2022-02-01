@@ -1,37 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.2.1;
+import java.util.List;
 
-class asfn
-  implements asfo
+public class asfn
+  extends anub
 {
-  asfn(asfm paramasfm, ases paramases, MessageRecord paramMessageRecord) {}
+  asfn(asfl paramasfl) {}
   
-  public void a(String paramString, Bundle paramBundle)
+  public void onDelEmoResponse(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask success, multiUniseq[ " + this.jdField_a_of_type_Asfm.jdField_a_of_type_JavaLangString + "] uuid[" + paramString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "]");
+    if (asfl.e(this.a) == null) {}
+    while (!paramBoolean) {
+      return;
     }
-    this.jdField_a_of_type_Asfm.b = 2;
-    ases.a(this.jdField_a_of_type_Asfm.jdField_a_of_type_Ases, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramBundle);
-    ases.b(this.jdField_a_of_type_Asfm.jdField_a_of_type_Ases, this.jdField_a_of_type_Asfm.jdField_a_of_type_JavaLangString);
+    this.a.b();
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onUploadReq(List<CustomEmotionData> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask fail, multiUniseq[ " + this.jdField_a_of_type_Asfm.jdField_a_of_type_JavaLangString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "] canResume[" + paramBoolean + "] retMsg[" + paramString + "]");
-    }
-    if (paramBoolean) {}
-    for (this.jdField_a_of_type_Asfm.b = 4;; this.jdField_a_of_type_Asfm.b = 3)
-    {
-      ases.b(this.jdField_a_of_type_Asfm.jdField_a_of_type_Ases, this.jdField_a_of_type_Asfm.jdField_a_of_type_JavaLangString);
+    if (asfl.f(this.a) == null) {
       return;
-      String str = amtj.a(2131708804) + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-      paramString = str + "\n" + paramString;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFaildReason", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "2");
     }
+    asfl.g(this.a).removeObserver(asfl.a(this.a));
+    ThreadManager.excute(new FavroamingManager.2.1(this, paramList), 128, null, true);
   }
 }
 

@@ -17,8 +17,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
-import baiz;
-import bjvx;
+import bbpo;
+import blhi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -28,7 +28,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import mum;
+import mvk;
 
 public class LiuHaiUtils
 {
@@ -175,8 +175,8 @@ public class LiuHaiUtils
     }
     if (!jdField_c_of_type_Boolean)
     {
-      jdField_b_of_type_Int = mum.b(BaseApplicationImpl.getApplication());
-      jdField_c_of_type_Int = mum.a(BaseApplicationImpl.getApplication());
+      jdField_b_of_type_Int = mvk.b(BaseApplicationImpl.getApplication());
+      jdField_c_of_type_Int = mvk.a(BaseApplicationImpl.getApplication());
       jdField_a_of_type_Boolean = false;
     }
     try
@@ -412,9 +412,9 @@ public class LiuHaiUtils
       }
       return new int[] { paramContext.widthPixels, paramContext.heightPixels };
     }
-    boolean bool = bjvx.a(paramContext);
+    boolean bool = blhi.a(paramContext);
     if (bool) {}
-    for (int i = bjvx.a(paramContext);; i = 0)
+    for (int i = blhi.a(paramContext);; i = 0)
     {
       if (QLog.isColorLevel()) {
         QLog.i("LiuHaiUtils", 1, "getRealDisplay[none] manufacturer:" + Build.MANUFACTURER + " width:" + localDisplayMetrics.widthPixels + " height:" + localDisplayMetrics.heightPixels + " mNavigationBarHeight:" + i + " hasNavBar:" + bool);
@@ -720,7 +720,7 @@ public class LiuHaiUtils
       bool1 = bool2;
       if (!bool2)
       {
-        if (!baiz.a().a(Build.MANUFACTURER, Build.BRAND, Build.MODEL)) {
+        if (!bbpo.a().a(Build.MANUFACTURER, Build.BRAND, Build.MODEL)) {
           break label272;
         }
         bool1 = true;

@@ -1,9 +1,34 @@
-import com.tencent.mobileqq.utils.ViewUtils;
+import android.graphics.Matrix;
+import android.view.ViewDebug.ExportedProperty;
 
 public class blcg
 {
-  public static final int a = (int)(40.0F * ViewUtils.getDensity());
-  public static final int b = (int)(24.0F * ViewUtils.getDensity());
+  @ViewDebug.ExportedProperty
+  public float a;
+  private final Matrix a;
+  public boolean a;
+  @ViewDebug.ExportedProperty
+  public float b;
+  private boolean b;
+  @ViewDebug.ExportedProperty
+  public float c = 0.0F;
+  @ViewDebug.ExportedProperty
+  public float d = 1.0F;
+  @ViewDebug.ExportedProperty
+  public float e = 1.0F;
+  @ViewDebug.ExportedProperty
+  public float f = 0.0F;
+  @ViewDebug.ExportedProperty
+  public float g = 0.0F;
+  
+  public blcg()
+  {
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+  }
 }
 
 

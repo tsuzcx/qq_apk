@@ -1,20 +1,51 @@
-import com.tencent.biz.qcircleshadow.local.widgets.QCircleFollowView;
-import feedcloud.FeedCloudMeta.StUser;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.TroopEggLottieAnimHelper.1;
+import com.tencent.widget.XEditTextEx;
 
-class agks
-  implements vhi
+public class agks
+  implements agin
 {
-  agks(agkr paramagkr, agku paramagku) {}
+  private BaseChatPie a;
   
-  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
+  public agks(BaseChatPie paramBaseChatPie)
   {
-    paramStUser = this.jdField_a_of_type_Agku.a;
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    this.a = paramBaseChatPie;
+  }
+  
+  private void a()
+  {
+    if (this.a == null) {}
+    String str;
+    do
     {
-      paramStUser.setClickable(paramBoolean);
+      return;
+      str = this.a.mActivity.getIntent().getStringExtra("chat_inputBarContent");
+    } while ((str == null) || (str.isEmpty()));
+    this.a.input.setText(str);
+    this.a.input.requestFocus();
+    InputMethodManager localInputMethodManager = (InputMethodManager)this.a.mActivity.getSystemService("input_method");
+    if (localInputMethodManager != null) {
+      localInputMethodManager.showSoftInput(this.a.input, 1);
+    }
+    this.a.input.post(new TroopEggLottieAnimHelper.1(this, str));
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
       return;
     }
+    a();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 7 };
   }
 }
 

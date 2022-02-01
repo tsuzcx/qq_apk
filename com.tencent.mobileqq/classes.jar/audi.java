@@ -1,63 +1,44 @@
-import android.util.Base64;
-import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
+import android.app.Activity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.1;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.2;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.3;
 
 public class audi
+  implements aude
 {
-  static final String a = 'W' + 't' + 'R' + 'x' + 'K' + 'b' + 'L' + 'k';
+  audi(audh paramaudh) {}
   
-  public static String a(String paramString)
+  public void a()
   {
-    return a(paramString, a);
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    if (paramString1 == null) {
-      throw new XorCipherException("null input");
-    }
-    try
+    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.3(this));
+    audf.a(this.a.a.this$0);
+    audy.a("0X8005BE2");
+    synchronized (BaseApplicationImpl.getContext())
     {
-      paramString1 = new String(Base64.encode(a(paramString1.getBytes(), paramString2.getBytes()), 0));
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      throw new XorCipherException(paramString1);
+      this.a.a.this$0.b = false;
+      return;
     }
   }
   
-  private static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public void a(int paramInt)
   {
-    byte[] arrayOfByte = new byte[paramArrayOfByte1.length];
-    int i = 0;
-    while (i < paramArrayOfByte1.length)
+    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.2(this));
+    audf.a(this.a.a.this$0);
+    synchronized (BaseApplicationImpl.getContext())
     {
-      arrayOfByte[i] = ((byte)(paramArrayOfByte1[i] ^ paramArrayOfByte2[(i % paramArrayOfByte2.length)]));
-      i += 1;
+      this.a.a.this$0.b = false;
+      return;
     }
-    return arrayOfByte;
   }
   
-  public static String b(String paramString)
+  public void a(long paramLong1, long paramLong2)
   {
-    return b(paramString, a);
+    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.1(this, paramLong1, paramLong2));
   }
   
-  public static String b(String paramString1, String paramString2)
-  {
-    if (paramString1 == null) {
-      throw new XorCipherException("null input");
-    }
-    try
-    {
-      paramString1 = new String(a(Base64.decode(paramString1, 0), paramString2.getBytes()));
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      throw new XorCipherException(paramString1);
-    }
-  }
+  public void a(String paramString1, String paramString2) {}
 }
 
 

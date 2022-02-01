@@ -1,42 +1,20 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.common.app.AppInterface;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
-class zue
-  implements TextView.OnEditorActionListener
+public class zue
+  implements Animation.AnimationListener
 {
-  zue(zuc paramzuc, TroopGiftPanel paramTroopGiftPanel) {}
+  public zue(CommentBottomBar paramCommentBottomBar) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 6)
-    {
-      this.jdField_a_of_type_Zuc.c();
-      paramTextView = this.jdField_a_of_type_Zuc.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
-      if (!TextUtils.isEmpty(paramTextView))
-      {
-        this.jdField_a_of_type_Zuc.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(paramTextView);
-        this.jdField_a_of_type_Zuc.b();
-        if (!nmy.a().a(this.jdField_a_of_type_Zuc.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a())) {
-          break label194;
-        }
-      }
-      label194:
-      for (paramInt = 2;; paramInt = 1)
-      {
-        bcef.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numok", paramInt, 0, this.jdField_a_of_type_Zuc.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_Zuc.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + muk.a((AppInterface)this.jdField_a_of_type_Zuc.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_Zuc.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_Zuc.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
-        return true;
-        this.jdField_a_of_type_Zuc.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a("1");
-        break;
-      }
-    }
-    return false;
+    CommentBottomBar.a(this.a, true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

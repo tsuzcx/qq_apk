@@ -1,8 +1,20 @@
-public class rcu
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+
+class rcu
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public String a;
+  rcu(rcr paramrcr, LinearLayout paramLinearLayout) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
+  }
 }
 
 

@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.album.logic;
 
-import blmm;
+import bmzv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AEPhotoListLogicBase$18$2
   implements Runnable
 {
-  public AEPhotoListLogicBase$18$2(blmm paramblmm) {}
+  public AEPhotoListLogicBase$18$2(bmzv parambmzv) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 2131719465, 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 2131719917, 1).a();
   }
 }
 

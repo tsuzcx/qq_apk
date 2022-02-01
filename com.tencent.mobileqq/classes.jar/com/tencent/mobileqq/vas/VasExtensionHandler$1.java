@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import altz;
+import amta;
 import org.json.JSONArray;
 
 class VasExtensionHandler$1
@@ -10,7 +10,7 @@ class VasExtensionHandler$1
   
   public void run()
   {
-    altz.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray);
+    amta.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
+import aido;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -13,7 +13,7 @@ import java.util.List;
 public class PublicAccountChatPie$36
   implements Runnable
 {
-  public PublicAccountChatPie$36(ahiu paramahiu, String paramString, int paramInt, long paramLong1, long paramLong2) {}
+  public PublicAccountChatPie$36(aido paramaido, String paramString, int paramInt, long paramLong1, long paramLong2) {}
   
   public void run()
   {

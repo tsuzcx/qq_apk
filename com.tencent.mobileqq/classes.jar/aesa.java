@@ -1,43 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 
 public class aesa
-  extends CardObserver
+  extends ansi
 {
-  public aesa(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public aesa(QQSettingMe paramQQSettingMe) {}
   
-  public void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void onUpgradeConfig(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    if (!paramBoolean) {
-      return;
-    }
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)))
-      {
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        aesg localaesg;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localaesg = (aesg)localIterator.next();
-        } while ((localaesg.a == null) || (!(localaesg.a instanceof Friends)) || (!paramObject.uin.equals(((Friends)localaesg.a).uin)));
-      }
-      for (int i = 1; i != 0; i = 0)
-      {
-        UncommonlyUsedContactsActivity.a(this.a);
-        this.a.jdField_a_of_type_Aese.notifyDataSetChanged();
-        return;
-      }
-      break;
+    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
+    if (this.a.c) {
+      this.a.n();
     }
   }
 }

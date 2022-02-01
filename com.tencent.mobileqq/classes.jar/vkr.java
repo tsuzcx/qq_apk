@@ -1,19 +1,44 @@
-import android.support.v4.util.LruCache;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import UserGrowth.stWeishiDengtaReportReq;
+import UserGrowth.stWeishiDengtaReportRsp;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class vkr
-  extends LruCache<KEY, VALUE>
+public class vkr
+  extends vfo<stWeishiDengtaReportRsp>
 {
-  vkr(vkq paramvkq, int paramInt)
+  public vkr(String paramString, Map<String, String> paramMap)
   {
-    super(paramInt);
+    super("WeishiDengtaReport");
+    stWeishiDengtaReportReq localstWeishiDengtaReportReq = new stWeishiDengtaReportReq();
+    localstWeishiDengtaReportReq.eventName = paramString;
+    localstWeishiDengtaReportReq.params = a(paramMap);
+    this.a = localstWeishiDengtaReportReq;
+    vmp.b("BeaconSendRequest", "BeaconSendRequest = " + localstWeishiDengtaReportReq.toString());
   }
   
-  protected void a(boolean paramBoolean, KEY paramKEY, VALUE paramVALUE1, VALUE paramVALUE2)
+  private Map<String, String> a(Map<String, String> paramMap)
   {
-    this.a.a.put(paramKEY, new WeakReference(paramVALUE1));
-    this.a.a();
+    Object localObject;
+    if (paramMap == null)
+    {
+      localObject = new HashMap();
+      return localObject;
+    }
+    Iterator localIterator = paramMap.entrySet().iterator();
+    for (;;)
+    {
+      localObject = paramMap;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localObject = (Map.Entry)localIterator.next();
+      if (((Map.Entry)localObject).getValue() == null) {
+        ((Map.Entry)localObject).setValue("");
+      }
+    }
   }
 }
 

@@ -1,13 +1,19 @@
-import UserGrowth.stRedDotReq;
-import UserGrowth.stRedDotRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class uwu
-  extends urg<stRedDotRsp>
+  implements BusinessObserver
 {
-  public uwu()
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super("RedDot", 10001);
-    this.a = new stRedDotReq(111, 1, null);
+    if (paramObject != null)
+    {
+      a(paramBoolean, (Bundle)paramObject);
+      return;
+    }
+    a(paramBoolean, null);
   }
 }
 

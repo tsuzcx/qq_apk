@@ -1,14 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 
-class omh
-  extends bjmc
+public final class omh
+  implements Parcelable.Creator<VideoInfo.GameAdComData>
 {
-  omh(omf paramomf, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public VideoInfo.GameAdComData a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return new VideoInfo.GameAdComData(paramParcel);
+  }
+  
+  public VideoInfo.GameAdComData[] a(int paramInt)
+  {
+    return new VideoInfo.GameAdComData[paramInt];
   }
 }
 

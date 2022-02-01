@@ -1,9 +1,36 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract interface sfy
+class sfy
+  extends Handler
 {
-  public abstract void a(View paramView, DiscoveryBannerInfo paramDiscoveryBannerInfo);
+  sfy(sfx paramsfx, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+    }
+    do
+    {
+      return;
+      paramMessage = this.a.a(false);
+    } while (paramMessage == null);
+    sfx.a(this.a).remove(Integer.valueOf(paramMessage.jdField_a_of_type_Int));
+    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramMessage.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+    if (localAdvertisementInfo != null) {
+      localAdvertisementInfo.isShowingGuide = false;
+    }
+    this.a.a(null, paramMessage);
+  }
 }
 
 

@@ -1,38 +1,58 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.List;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-class wlk
-  extends PagerAdapter
+public class wlk
 {
-  private List<View> jdField_a_of_type_JavaUtilList;
+  public final int a;
+  public final int b;
+  public final int c;
   
-  public wlk(List<View> paramList)
+  public wlk(int paramInt1, int paramInt2)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = 1;
   }
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public wlk(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public int getCount()
+  public static wlk a(SosoInterface.SosoLocation paramSosoLocation)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if (paramSosoLocation != null) {
+      return new wlk((int)(paramSosoLocation.mLat02 * 1000000.0D), (int)(paramSosoLocation.mLon02 * 1000000.0D));
+    }
+    return new wlk(0, 0);
   }
   
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  public boolean equals(Object paramObject)
   {
-    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (wlk)paramObject;
+      if (this.a != paramObject.a) {
+        return false;
+      }
+    } while (this.b == paramObject.b);
+    return false;
   }
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
+  public int hashCode()
   {
-    return paramView == paramObject;
+    return this.a * 31 + this.b;
+  }
+  
+  public String toString()
+  {
+    return "GpsMsg{latitude=" + this.a + ", longitude=" + this.b + '}';
   }
 }
 

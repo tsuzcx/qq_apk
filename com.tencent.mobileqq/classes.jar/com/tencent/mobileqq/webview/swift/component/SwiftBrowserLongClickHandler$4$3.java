@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bgwg;
-import bjnw;
+import bigy;
+import bkzi;
+import com.tencent.biz.qrcode.activity.ScannerResult;
 import com.tencent.qphone.base.util.QLog;
-import yxi;
 
 class SwiftBrowserLongClickHandler$4$3
   implements Runnable
 {
-  SwiftBrowserLongClickHandler$4$3(SwiftBrowserLongClickHandler.4 param4, int paramInt) {}
+  SwiftBrowserLongClickHandler$4$3(SwiftBrowserLongClickHandler.4 param4, ScannerResult paramScannerResult) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("SwiftBrowserLongClickHandler", 2, "showQR Button");
     }
-    if (yxi.a(this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b(2131693021);
+    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult.d()) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b(2131693157);
     }
-    if (yxi.b(this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b(2131693020);
+    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerResult.c()) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b(2131693156);
     }
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.b();
   }

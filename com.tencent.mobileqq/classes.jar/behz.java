@@ -1,18 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.2.1;
+import com.tencent.qphone.base.util.QLog;
 
-public final class behz
-  implements Parcelable.Creator<HWGuideItem>
+public class behz
+  extends bhow
 {
-  public HWGuideItem a(Parcel paramParcel)
-  {
-    return new HWGuideItem(paramParcel);
-  }
+  behz(behx parambehx) {}
   
-  public HWGuideItem[] a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new HWGuideItem[paramInt];
+    if ((paramInt == 36) && ((paramObject instanceof Integer)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FloatViewSkin", 2, "mMusicBusinessObserver: isSuccess" + paramBoolean + "  music player id:" + paramObject);
+      }
+      paramInt = ((Integer)paramObject).intValue();
+      behx.a(this.a, paramInt);
+      if (paramInt > 0)
+      {
+        this.a.a(true);
+        bhrr.a.download(null, behx.a(this.a), behx.a(this.a), false);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.a(false);
+    ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.2.1(this));
   }
 }
 

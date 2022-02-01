@@ -1,42 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
 public class bimh
-  implements bjoe
+  extends Handler
 {
-  public bimh(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
+  public bimh(CircleProgressBar paramCircleProgressBar) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
-      if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Bily.d(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Aymg.a.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-        } else {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
-        }
-      }
-      else if (paramInt == 2)
-      {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
-        continue;
-        if (paramInt == 0) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-        } else if (paramInt == 1) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
-        }
-      }
     }
+    do
+    {
+      return;
+      paramMessage = this.a;
+      paramMessage.i += 3;
+      this.a.postInvalidate();
+    } while (!this.a.a);
+    sendEmptyMessageDelayed(10000, 50L);
   }
 }
 

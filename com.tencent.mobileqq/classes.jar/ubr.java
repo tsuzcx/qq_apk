@@ -1,34 +1,21 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 
-public class ubr
-  implements nnv
+class ubr
+  implements View.OnLayoutChangeListener
 {
-  public ubr(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  ubr(ubq paramubq) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptFeedsActivity", 2, "HtmlOffline.checkUpByBusinessId businessId=2278, code=" + paramInt);
-    }
-    this.a.app.getApplication();
-    int i = NetworkUtil.getSystemNetwork(MobileQQ.getContext());
-    paramString = new HashMap();
-    paramString.put("network", "" + i);
-    paramString.put("status_code", "" + paramInt);
-    StatisticCollector.getInstance(this.a).collectPerformance(null, "subscription_htmloffline", true, 0L, 0L, paramString, "", false);
+    paramView.removeOnLayoutChangeListener(this);
+    paramView.setTranslationX(ubq.a(this.a)[0]);
+    paramView.setTranslationY(ubq.a(this.a)[1]);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ubr
  * JD-Core Version:    0.7.0.1
  */

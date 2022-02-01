@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
-import xvv;
+import ykq;
 
 class FFmpeg$4
   extends ExecuteBinResponseCallback
@@ -9,13 +9,13 @@ class FFmpeg$4
   
   public void onFailure(String paramString)
   {
-    xvv.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
+    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
     this.val$endCallback.onFailure(paramString);
   }
   
   public void onSuccess(String paramString)
   {
-    xvv.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
+    ykq.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
   }
 }
 

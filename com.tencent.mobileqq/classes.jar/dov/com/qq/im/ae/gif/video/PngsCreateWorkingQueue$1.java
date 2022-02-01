@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.gif.video;
 
-import blzq;
-import blzt;
+import bnpa;
+import bnpd;
 
 public class PngsCreateWorkingQueue$1
   implements Runnable
 {
-  public PngsCreateWorkingQueue$1(blzt paramblzt, blzq paramblzq) {}
+  public PngsCreateWorkingQueue$1(bnpd parambnpd, bnpa parambnpa) {}
   
   public void run()
   {
-    blzt.a(this.this$0, this.a);
+    bnpd.a(this.this$0, this.a);
   }
 }
 

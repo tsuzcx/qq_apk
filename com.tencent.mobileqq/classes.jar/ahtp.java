@@ -1,71 +1,56 @@
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-class ahtp
-  implements INetEngine.INetEngineListener
+public abstract interface ahtp
+  extends IInterface
 {
-  private Handler a;
+  public abstract int a(long paramLong, int paramInt);
   
-  ahtp(Handler paramHandler)
-  {
-    this.a = paramHandler;
-  }
+  public abstract Intent a(long paramLong, int paramInt);
   
-  public void onResp(NetResp paramNetResp)
-  {
-    Object localObject = this.a.obtainMessage(8);
-    ((Message)localObject).obj = paramNetResp.mReq;
-    this.a.sendMessage((Message)localObject);
-    Bundle localBundle = (Bundle)paramNetResp.mReq.getUserData();
-    localObject = localBundle.getString("ReqUniqueKey");
-    int i = localBundle.getInt("IdxInRes");
-    if (QLog.isColorLevel())
-    {
-      long l = localBundle.getLong("StartTs");
-      QLog.d("ZhituManager", 2, ahtj.a((String)localObject, "onResp", i, " zhitu img download onResp result fileSize = " + paramNetResp.mTotalFileLen + " file.path = " + paramNetResp.mReq.mOutPath + " resp.result = " + paramNetResp.mResult + " take time: " + Long.toString(System.currentTimeMillis() - l)));
-    }
-    if (paramNetResp.mResult == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, ahtj.a((String)localObject, "OnResp", i, "result downloading, "));
-      }
-      return;
-    }
-    if (paramNetResp.mResult == 0)
-    {
-      ZhituImgResponse localZhituImgResponse = (ZhituImgResponse)localBundle.getParcelable("ImgResponse");
-      ahtj.a(paramNetResp.mReq.mOutPath);
-      if (localZhituImgResponse != null)
-      {
-        paramNetResp = this.a.obtainMessage(3);
-        paramNetResp.obj = localBundle;
-        this.a.sendMessage(paramNetResp);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, ahtj.a((String)localObject, "onResp", "download succ but md5 is mismatched"));
-      }
-      paramNetResp = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", 99999);
-      paramNetResp.obj = localBundle;
-    }
-    for (;;)
-    {
-      break;
-      localObject = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", paramNetResp.mErrCode);
-      ((Message)localObject).obj = localBundle;
-      paramNetResp = (NetResp)localObject;
-    }
-  }
+  public abstract Intent a(long paramLong, int paramInt1, int paramInt2);
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public abstract MessageForShortVideo a(long paramLong);
+  
+  public abstract String a(String paramString1, String paramString2);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, int paramInt);
+  
+  public abstract void a(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(long paramLong, int paramInt, Bundle paramBundle);
+  
+  public abstract void a(ahts paramahts);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(long[] paramArrayOfLong);
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void b(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void b(String paramString, int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(long paramLong);
+  
+  public abstract void d(long paramLong);
+  
+  public abstract void e(long paramLong);
 }
 
 

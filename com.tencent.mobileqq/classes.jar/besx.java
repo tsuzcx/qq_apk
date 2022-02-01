@@ -1,65 +1,67 @@
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.SeekBar;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.superplayer.api.ISuperPlayer;
+import java.util.ArrayList;
 
-class besx
-  implements Comparator<ajac>
+public class besx
+  extends Handler
 {
-  private final TroopInfo a;
-  
-  besx(TroopInfo paramTroopInfo)
+  public besx(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, Looper paramLooper)
   {
-    this.a = paramTroopInfo;
+    super(paramLooper);
   }
   
-  public int a(ajac paramajac1, ajac paramajac2)
+  public void handleMessage(Message paramMessage)
   {
-    int j = 5;
-    int i;
-    if (best.b(paramajac1.jdField_a_of_type_JavaLangString, this.a)) {
-      i = 5;
-    }
-    for (;;)
+    super.handleMessage(paramMessage);
+    paramMessage = (betg)paramMessage.obj;
+    long l1;
+    long l2;
+    betx localbetx;
+    if (this.a.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying())
     {
-      if (best.b(paramajac2.jdField_a_of_type_JavaLangString, this.a)) {}
-      for (;;)
+      l1 = this.a.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs();
+      l2 = this.a.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs();
+      paramMessage.jdField_a_of_type_AndroidWidgetSeekBar.setMax((int)l1);
+      paramMessage.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)l2);
+      this.a.b(paramMessage);
+      paramMessage = (betu)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramMessage.jdField_a_of_type_Int);
+      if ((paramMessage instanceof betx))
       {
-        if (i != j)
+        localbetx = (betx)paramMessage;
+        if ((!this.a.d) && (l2 >= l1 * 0.8D))
         {
-          return j - i;
-          if (best.a(paramajac1.jdField_a_of_type_JavaLangString, this.a))
-          {
-            i = 3;
-            break;
+          this.a.d = true;
+          if (localbetx.h == 0) {
+            break label271;
           }
-          if (!paramajac1.jdField_a_of_type_Boolean) {
-            break label134;
+          paramMessage = "" + localbetx.h;
+          if (localbetx.c != 31) {
+            break label277;
           }
-          i = 1;
-          break;
-          if (best.a(paramajac2.jdField_a_of_type_JavaLangString, this.a))
-          {
-            j = 3;
-            continue;
-          }
-          if (!paramajac2.jdField_a_of_type_Boolean) {
-            break label128;
-          }
-          j = 1;
-          continue;
         }
-        return ChnToSpell.a(best.c(paramajac1), 1).compareToIgnoreCase(ChnToSpell.a(best.c(paramajac2), 1));
-        label128:
-        j = 0;
       }
-      label134:
-      i = 0;
+    }
+    label271:
+    label277:
+    for (String str = "1";; str = "2")
+    {
+      bdla.b(null, "dc00899", "Grp_tribe", "", "video_player", "vv_active", this.a.c, 0, localbetx.d, "" + localbetx.b, paramMessage, str);
+      if (this.a.h < l1 - 100L) {
+        this.a.h = ((int)l2);
+      }
+      return;
+      paramMessage = "";
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besx
  * JD-Core Version:    0.7.0.1
  */

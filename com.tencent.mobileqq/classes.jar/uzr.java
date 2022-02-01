@@ -1,42 +1,24 @@
-import android.content.Context;
+import UserGrowth.stSimpleMetaFeed;
 import android.view.View;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uzr
-  extends ukz
+class uzr
+  implements View.OnClickListener
 {
-  private WSVerticalPageFragment a;
+  uzr(uzq paramuzq, int paramInt) {}
   
-  public uzr(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public void onClick(View paramView)
   {
-    super(paramContext);
-    this.a = paramWSVerticalPageFragment;
-  }
-  
-  private void f()
-  {
-    if (this.a != null)
+    if (uzq.a(this.jdField_a_of_type_Uzq) != null)
     {
-      this.a.a(false, true);
-      this.a.g();
-      this.a.c();
+      String str = uzq.a(this.jdField_a_of_type_Uzq);
+      if (uzq.a(this.jdField_a_of_type_Uzq) != null) {
+        str = uzq.a(this.jdField_a_of_type_Uzq).id;
+      }
+      uzq.a(this.jdField_a_of_type_Uzq).a(paramView, 12, this.jdField_a_of_type_Int, str);
     }
-  }
-  
-  protected void a() {}
-  
-  protected int b()
-  {
-    return 2131560005;
-  }
-  
-  protected void b() {}
-  
-  protected void c() {}
-  
-  protected void e()
-  {
-    a(2131380404).setOnClickListener(new uzs(this));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

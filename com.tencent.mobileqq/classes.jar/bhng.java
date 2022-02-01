@@ -1,28 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 
-final class bhng
-  implements DialogInterface.OnClickListener
+public class bhng
+  extends bhnj
 {
-  bhng(bhnm parambhnm, int paramInt) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c = 20;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bhng()
   {
-    this.jdField_a_of_type_Bhnm.a(2);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Int == 1) {
-      bhnb.a("0X80094F8");
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 100;
+  }
+  
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.a)) {
+      return "";
     }
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 5))
-      {
-        bhnb.a("0X80094F7");
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 3);
-    bhnb.a("0X80094F9");
+    return this.a;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import abws;
-import abwt;
+import acna;
+import acnb;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class QQMessageFacade$RefreshMessageContext
   public boolean isLocalOnly;
   public boolean isOpInMIniAIo;
   public boolean isSuccess = true;
-  public abws msgRefresher;
+  public acna msgRefresher;
   public boolean needAutoNavigateTop;
   public boolean needNotifyUI = true;
   public boolean needRefreshAIO = true;
@@ -27,7 +27,7 @@ public class QQMessageFacade$RefreshMessageContext
   public int repullStickerMsgIndex;
   public List<MessageRecord> resultMsgList;
   public int retryIndex;
-  public abwt roamMsgFetcher;
+  public acnb roamMsgFetcher;
   public volatile boolean searchedMessageRefresh;
   public int topicId;
   public String uin;

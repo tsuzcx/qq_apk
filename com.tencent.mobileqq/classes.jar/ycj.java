@@ -1,10 +1,38 @@
-public abstract interface ycj
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
+
+public class ycj
+  extends SimpleObserver<T>
 {
-  public abstract void a(int paramInt);
+  public ycj(yce paramyce) {}
   
-  public abstract void a(ycd paramycd);
+  public void a(T paramT)
+  {
+    super.onNext(paramT);
+    this.a.b();
+    ykq.b("Q.qqstory.home.data.FeedListPageLoaderBase", "refresh data finish %s", paramT);
+    paramT.d = this.a.jdField_a_of_type_Boolean;
+    this.a.a(paramT.a, paramT.c);
+    this.a.jdField_a_of_type_Ycg.b();
+    this.a.jdField_a_of_type_Yci.a(paramT);
+    this.a.a("Q.qqstory.home.data.FeedListPageLoaderBase");
+  }
   
-  public abstract boolean a(ycg paramycg);
+  public void onCancel()
+  {
+    super.onCancel();
+    ykq.d("Q.qqstory.home.data.FeedListPageLoaderBase", "refresh data cancel");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    paramError = (ErrorMessage)paramError;
+    paramError = this.a.a(paramError);
+    paramError.d = this.a.jdField_a_of_type_Boolean;
+    this.a.jdField_a_of_type_Yci.a(paramError);
+  }
 }
 
 

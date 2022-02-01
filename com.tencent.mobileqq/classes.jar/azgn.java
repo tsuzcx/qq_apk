@@ -1,59 +1,46 @@
-import android.content.Context;
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.qassistant.view.AssistantBackView;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.openapi.OpenApiManager;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class azgn
-  implements OnCompositionLoadedListener
+  extends anyz
 {
-  public azgn(AssistantBackView paramAssistantBackView) {}
+  public azgn(OpenApiManager paramOpenApiManager) {}
   
-  public void onCompositionLoaded(LottieComposition arg1)
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
   {
-    if ((??? == null) || (AssistantBackView.a(this.a)))
+    Intent localIntent;
+    if (OpenApiManager.access$300(this.a).containsKey(Long.valueOf(paramLong)))
     {
-      azeu.a("AssistantBackView", "onCompositionLoaded lottieComposition is null or mIsDestroyed:" + AssistantBackView.a(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("OpenApi.Manager", 2, "onSendResult, isSuccess = " + paramBoolean + ", uniseq = " + paramLong);
+      }
+      paramString = (String)OpenApiManager.access$300(this.a).remove(Long.valueOf(paramLong));
+      paramString = (azgr)OpenApiManager.access$200(this.a).get(paramString);
+      if (paramString != null)
+      {
+        localIntent = new Intent("com.tencent.mobileqq.openapi.ACTION_MSG_SENDED." + paramString.b);
+        localIntent.putExtra("msgid", paramString.a(String.valueOf(paramLong)));
+        if (!paramBoolean) {
+          break label171;
+        }
+      }
+    }
+    label171:
+    for (int i = 0;; i = -9)
+    {
+      localIntent.putExtra("rs_code", i);
+      BaseApplicationImpl.sApplication.sendBroadcast(localIntent, paramString.c);
       return;
     }
-    int i = AIOUtils.dp2px(70.0F, this.a.getResources());
-    int j = AIOUtils.dp2px(70.0F, this.a.getResources());
-    Object localObject1 = ???.getBounds();
-    float f1 = i / ((Rect)localObject1).width();
-    float f2 = j / ((Rect)localObject1).height();
-    azeu.a("AssistantBackView", "onCompositionLoaded iw:" + i + ", ih:" + j + ": : rw:" + ((Rect)localObject1).width() + ", rh:" + ((Rect)localObject1).height());
-    localObject1 = new LottieDrawable();
-    ((LottieDrawable)localObject1).setImageAssetDelegate(new akpd(this.a.getContext().getApplicationContext()));
-    ((LottieDrawable)localObject1).setComposition(???);
-    ((LottieDrawable)localObject1).setScale(f1, f2);
-    ((LottieDrawable)localObject1).loop(true);
-    ??? = ((LottieDrawable)localObject1).getBounds();
-    azeu.a("AssistantBackView", "onCompositionLoaded rw:" + ???.width() + ", rh:" + ???.height() + " mIsDestroyed:" + AssistantBackView.a(this.a));
-    AssistantBackView.a(this.a, (LottieDrawable)localObject1);
-    if (AssistantBackView.a(this.a))
-    {
-      ((LottieDrawable)localObject1).cancelAnimation();
-      ((LottieDrawable)localObject1).recycleBitmaps();
-      ((LottieDrawable)localObject1).clearComposition();
-      ((LottieDrawable)localObject1).setImageAssetDelegate(null);
-      AssistantBackView.a(this.a, null);
-    }
-    for (;;)
-    {
-      synchronized (AssistantBackView.a(this.a))
-      {
-        AssistantBackView.a(this.a, null);
-        AssistantBackView.a(this.a, null);
-        return;
-      }
-      if (this.a.isEnabled())
-      {
-        this.a.removeCallbacks(AssistantBackView.a(this.a));
-        this.a.post(AssistantBackView.a(this.a));
-      }
-    }
+  }
+  
+  protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  {
+    onSendResult(false, paramString1, paramLong2);
   }
 }
 

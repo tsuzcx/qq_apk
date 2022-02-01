@@ -1,277 +1,318 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.inputstatus.InputStatusHelper.2;
+import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
-import mqq.app.AppRuntime.Status;
-import mqq.manager.Manager;
+import mqq.app.MobileQQ;
 
 public class aull
-  implements afrc
+  extends aulk
+  implements aulb
 {
-  private static final String jdField_a_of_type_JavaLangString = aull.class.getSimpleName();
-  private int jdField_a_of_type_Int;
-  public long a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new aulm(this);
+  public static String a;
+  long jdField_a_of_type_Long = 0L;
+  private aulc jdField_a_of_type_Aulc;
   private aulo jdField_a_of_type_Aulo;
-  private aulp jdField_a_of_type_Aulp;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new InputStatusHelper.2(this);
-  private boolean jdField_a_of_type_Boolean = true;
-  public long b;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  private Object d = new Object();
   
-  public aull(BaseChatPie paramBaseChatPie)
+  static
   {
-    this.jdField_a_of_type_Long = 5000L;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    jdField_a_of_type_JavaLangString = "UniformDownloaderGen<FileAssistant>";
   }
   
-  private Handler a()
+  public aull(long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    return this.jdField_a_of_type_AndroidOsHandler;
+    super(paramLong);
   }
   
-  private aulp a()
+  private aulo a()
   {
-    if (this.jdField_a_of_type_Aulp == null)
+    synchronized (this.d)
     {
-      Manager localManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(316);
-      if ((localManager instanceof aulp)) {
-        this.jdField_a_of_type_Aulp = ((aulp)localManager);
-      }
+      aulo localaulo = this.jdField_a_of_type_Aulo;
+      return localaulo;
     }
-    return this.jdField_a_of_type_Aulp;
   }
   
-  private boolean a()
+  private void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof ahhp))) {
-      return c();
-    }
-    return b();
-  }
-  
-  private void b(int paramInt)
-  {
-    if ((e()) && (f()) && (a())) {}
-    try
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] killWoker. ");
+    aulo localaulo = a();
+    if (localaulo != null)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin);
-      aulk localaulk = (aulk)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getBusinessHandler(150);
-      if (localaulk != null) {
-        localaulk.a(paramInt, l);
-      }
+      localaulo.a();
+      a(null);
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] killWoker. not worker");
   }
   
-  private boolean b()
+  private void a(aulo paramaulo)
   {
-    try
+    synchronized (this.d)
     {
-      aulj localaulj = (aulj)apub.a().a(445);
-      if (localaulj != null)
-      {
-        boolean bool = localaulj.jdField_a_of_type_Boolean;
-        return bool;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
-    return false;
-  }
-  
-  private boolean c()
-  {
-    try
-    {
-      aulj localaulj = (aulj)apub.a().a(445);
-      if (localaulj != null)
-      {
-        boolean bool = localaulj.jdField_b_of_type_Boolean;
-        return bool;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
-    return true;
-  }
-  
-  private boolean d()
-  {
-    AppRuntime.Status localStatus = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getOnlineStatus();
-    return (localStatus != AppRuntime.Status.away) && (localStatus != AppRuntime.Status.busy) && (localStatus != AppRuntime.Status.dnd) && (localStatus != AppRuntime.Status.invisiable);
-  }
-  
-  private void e()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (f()) && (a())) {}
-    try
-    {
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin);
-      aulk localaulk = (aulk)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getBusinessHandler(150);
-      if (localaulk != null) {
-        localaulk.a(2, l);
-      }
+      this.jdField_a_of_type_Aulo = paramaulo;
       return;
     }
-    catch (Exception localException)
+  }
+  
+  private boolean a(long paramLong)
+  {
+    aulo localaulo = a();
+    if (localaulo != null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] runWorker. before worker be stoped");
+      localaulo.a();
     }
+    localaulo = new aulo(this.jdField_c_of_type_Long, auht.a().a(), this.jdField_c_of_type_JavaLangString, this.b, this.g, new aulm(this));
+    a(localaulo);
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] runWorker. start ,mTempStrFilePath=" + this.f);
+    return localaulo.a(this.f, paramLong);
   }
   
-  private boolean e()
+  private void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof ahhp)) {
-      return true;
-    }
-    return d();
-  }
-  
-  private boolean f()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof ahhp))) {
-      return true;
-    }
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void a()
-  {
-    if (!this.d)
+    String str = aukz.a(1);
+    QQAppInterface localQQAppInterface = auht.a().a();
+    if (localQQAppInterface != null)
     {
-      this.d = true;
-      if ((f()) && (a())) {
-        a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+      auea.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownload", this.jdField_a_of_type_Long, "", "", "", "", 1, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      auea.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 1, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      bdlq.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
+      return;
+    }
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 9");
+  }
+  
+  public int a()
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    QQAppInterface localQQAppInterface = auht.a().a();
+    if (localQQAppInterface != null) {
+      bdlq.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Start_download_2-3_3-1");
+    }
+    if (!a())
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. not inited");
+      b();
+      if (this.jdField_a_of_type_Aulc != null) {
+        this.jdField_a_of_type_Aulc.a(1, aukz.a(1), null);
       }
+      return -1;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    d();
-    switch (paramInt)
+    String str;
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-    default: 
-    case 7: 
-      do
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. but net is broken. failed drictly");
+      a();
+      c(5);
+      str = aukz.a(2);
+      if (localQQAppInterface != null)
       {
-        do
-        {
-          return;
-        } while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (!a()));
-        if (this.jdField_a_of_type_Aulo == null) {
-          this.jdField_a_of_type_Aulo = new auln(this, null);
+        auea.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownload", this.jdField_a_of_type_Long, "", "", "", "", 2, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+        auea.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 2, str, 0L, h() * this.b, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+        bdlq.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Aulc != null) {
+          this.jdField_a_of_type_Aulc.a(2, "net broken", null);
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.addObserver(this.jdField_a_of_type_Aulo);
-        this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getVisibilityForInputStatus(true);
-      } while (!f());
-      if (a() != null) {
-        a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+        return -2;
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 11");
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-      return;
     }
-    if (a() != null) {
-      a().onDestroy();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
+    int i = e();
+    if (2 == i)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. is runing");
+      return 0;
+    }
+    if ((1 != i) && (6 != i) && (8 != i))
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. before status is error:" + i);
+      return -1;
+    }
+    long l2 = auea.a(this.f);
+    if (l2 > this.b)
+    {
+      a(0);
+      long l1 = 0L;
+      if (SystemUtil.isExistSDCard()) {
+        l1 = SystemUtil.getSDCardAvailableSize() * 1024L;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.removeObserver(this.jdField_a_of_type_Aulo);
+      if (l1 >= this.b - l2) {
+        break label777;
+      }
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. sd card space is no enough:[" + this.b + " " + l2 + " " + l1 + "]");
+      a();
+      c(5);
+      if (localQQAppInterface == null) {
+        break label740;
+      }
+      str = aukz.a(9);
+      auea.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownload", this.jdField_a_of_type_Long, "", "", "", "", 9, str, 0L, l2, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      auea.a(localQQAppInterface, this.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 9, str, 0L, l2, this.b, this.jdField_c_of_type_JavaLangString, "", 0, str, null);
+      bdlq.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    e();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    if (!this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.onShowSubTitleText(this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaLangString);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {}
     for (;;)
     {
-      localBaseChatPie.onShowSubTitleText(paramBoolean, paramString);
-      return;
-      paramString = this.jdField_b_of_type_JavaLangString;
+      if (this.jdField_a_of_type_Aulc != null) {
+        this.jdField_a_of_type_Aulc.a(9, "no space", null);
+      }
+      return -2;
+      a((int)(l2 / this.b));
+      break;
+      label740:
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "].report failed - 5");
+    }
+    for (;;)
+    {
+      try
+      {
+        label777:
+        a(l2);
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] start. ST:" + i + " PGR:" + h());
+        if (1 == i)
+        {
+          i = 1;
+          c(2);
+          if ((i != 0) && (this.jdField_a_of_type_Aulc != null)) {
+            this.jdField_a_of_type_Aulc.a(h(), null);
+          }
+          return 0;
+        }
+      }
+      finally {}
+      i = 0;
     }
   }
   
-  public int[] a()
+  public int a(aulc paramaulc)
   {
-    return new int[] { 7, 13 };
+    this.jdField_a_of_type_Aulc = paramaulc;
+    return 0;
   }
   
-  public void b()
+  public int a(String paramString, Bundle paramBundle)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.onShowSubTitleText(this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaLangString);
-    if (a() != null) {
-      a().a();
+    super.a(paramString, paramBundle);
+    paramBundle = aukr.a().a(paramString);
+    if (paramBundle != null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] >>>init. HAPPY.have a BreakpointTransInfo,tempPath:" + paramBundle.b);
+      if (auea.b(paramBundle.b)) {
+        this.f = paramBundle.b;
+      }
+    }
+    for (;;)
+    {
+      return 0;
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] >>>init. no exsit");
+      continue;
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] >>>init. NO HAPPY. Not BreakpointTransInfo,add it:");
+      aukr.a().a(paramString, null, this.b, this.f, this.e);
     }
   }
   
-  public void c()
+  public int b()
   {
-    a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    if ((f()) && (a())) {}
+    if (!a())
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] stop. not inited");
+      return -1;
+    }
     try
     {
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin);
-      aulk localaulk = (aulk)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getBusinessHandler(150);
-      if (localaulk != null) {
-        localaulk.a(2, l);
-      }
-      return;
+      a();
+      int i = e();
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] stop. ST:" + i + " PGR:" + h());
+      b(0);
+      c(7);
+      return 0;
     }
-    catch (Exception localException)
+    finally {}
+  }
+  
+  public int c()
+  {
+    int i = 0;
+    if (!a())
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] pause. not inited");
+      b();
+      if (this.jdField_a_of_type_Aulc != null) {
+        this.jdField_a_of_type_Aulc.a(1, aukz.a(1), null);
+      }
+      i = -1;
+    }
+    for (;;)
+    {
+      return i;
+      int j = e();
+      if ((3 == j) || (7 == j))
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] pause. had be paused");
+        return 0;
+      }
+      try
+      {
+        a();
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] pause. ST:" + j + " PGR:" + h());
+        c(3);
+        if (this.jdField_a_of_type_Aulc == null) {
+          continue;
+        }
+        this.jdField_a_of_type_Aulc.c(h(), null);
+        return 0;
+      }
+      finally {}
     }
   }
   
-  public void d()
+  public int d()
   {
-    this.d = false;
-    this.c = false;
+    int i = 0;
+    if (!a())
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] resume. not inited");
+      b();
+      if (this.jdField_a_of_type_Aulc != null) {
+        this.jdField_a_of_type_Aulc.a(1, aukz.a(1), null);
+      }
+      i = -1;
+    }
+    do
+    {
+      return i;
+      int j = e();
+      if ((6 == j) || (2 == j) || (4 == j))
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] resume. had be resumed");
+        return 0;
+      }
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] resume. ST:" + j + " PGR:" + h());
+      c(6);
+    } while (this.jdField_a_of_type_Aulc == null);
+    this.jdField_a_of_type_Aulc.d(h(), null);
+    return 0;
+  }
+  
+  public int e()
+  {
+    return super.e();
+  }
+  
+  public int f()
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] resume. ST:" + e() + " PGR:" + h());
+    c(8);
+    aulo localaulo = a();
+    if (localaulo != null) {
+      localaulo.b();
+    }
+    return 0;
   }
 }
 

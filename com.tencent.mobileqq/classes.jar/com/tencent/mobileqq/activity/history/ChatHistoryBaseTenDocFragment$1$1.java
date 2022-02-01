@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import aivh;
+import ajqw;
 import android.os.Message;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
@@ -13,17 +13,17 @@ import mqq.os.MqqHandler;
 public class ChatHistoryBaseTenDocFragment$1$1
   implements Runnable
 {
-  public ChatHistoryBaseTenDocFragment$1$1(aivh paramaivh, List paramList) {}
+  public ChatHistoryBaseTenDocFragment$1$1(ajqw paramajqw, List paramList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.jdField_a_of_type_Aivh.a.a.getMessageFacade().removeMsgByMessageRecord(((TencentDocItem)this.jdField_a_of_type_JavaUtilList.get(0)).mRecord, false);
+      this.jdField_a_of_type_Ajqw.a.a.getMessageFacade().removeMsgByMessageRecord(((TencentDocItem)this.jdField_a_of_type_JavaUtilList.get(0)).mRecord, false);
     }
     for (;;)
     {
-      Object localObject = ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_Aivh.a).obtainMessage(5678, this.jdField_a_of_type_JavaUtilList);
-      ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_Aivh.a).sendMessage((Message)localObject);
+      Object localObject = ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_Ajqw.a).obtainMessage(5678, this.jdField_a_of_type_JavaUtilList);
+      ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_Ajqw.a).sendMessage((Message)localObject);
       return;
       if (this.jdField_a_of_type_JavaUtilList.size() > 1)
       {
@@ -32,7 +32,7 @@ public class ChatHistoryBaseTenDocFragment$1$1
         while (localIterator.hasNext()) {
           ((List)localObject).add(((TencentDocItem)localIterator.next()).mRecord);
         }
-        this.jdField_a_of_type_Aivh.a.a.getMessageFacade().removeMultiMsgByMessageRecord((List)localObject, false);
+        this.jdField_a_of_type_Ajqw.a.a.getMessageFacade().removeMultiMsgByMessageRecord((List)localObject, false);
       }
     }
   }

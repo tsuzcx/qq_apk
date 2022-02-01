@@ -1,32 +1,31 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerTriplePicItemData;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
 public class tth
-  extends tsx
+  implements Animation.AnimationListener
 {
-  public int a(BaseData paramBaseData)
+  public tth(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = -1;
-    if ((paramBaseData instanceof ProteusBannerTriplePicItemData)) {
-      i = twh.a((ProteusBannerTriplePicItemData)paramBaseData);
-    }
-    return i;
+    CommonSuspensionGestureLayout.c(this.a).setLayerType(0, null);
+    CommonSuspensionGestureLayout.a(this.a).c();
+    CommonSuspensionGestureLayout.a(this.a).a();
+    CommonSuspensionGestureLayout.b(this.a);
   }
   
-  protected stg a(View paramView, BaseData paramBaseData)
-  {
-    return new tti(this, paramView, paramBaseData, this.a);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean a(BaseData paramBaseData)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return (paramBaseData != null) && (paramBaseData.r == 24);
+    CommonSuspensionGestureLayout.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tth
  * JD-Core Version:    0.7.0.1
  */

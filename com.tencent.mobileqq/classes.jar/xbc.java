@@ -1,27 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
 
 public class xbc
-  extends QQUIEventReceiver<xba, wci>
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public xbc(@NonNull xba paramxba)
-  {
-    super(paramxba);
-  }
+  public xbc(StoryPlayerFragment paramStoryPlayerFragment, View paramView) {}
   
-  public void a(@NonNull xba paramxba, @NonNull wci paramwci)
+  public boolean onPreDraw()
   {
-    if (paramwci.a.isSuccess())
-    {
-      xvv.a(this.TAG, "receive user info event. %s.", paramwci.toString());
-      paramxba.i();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wci.class;
+    xfl.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a, new xbd(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    return false;
   }
 }
 

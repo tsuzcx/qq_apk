@@ -1,37 +1,17 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azue
-  extends azuw<ReceiptMessageDetailFragment>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public azue(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
-  {
-    super(paramReceiptMessageDetailFragment);
-  }
+  public azue(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReceiptMessageDetailFragment", 4, "mTroopSendReadReportCallback onRes: " + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopSendReadReportCallback succ");
-      }
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
-      return;
-    }
-    if (paramInt != 1281)
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "mTroopSendReadReportCallback fatal error: " + paramInt);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
-      return;
-    }
-    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+    StickyNotePublishFragment.a(this.a, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

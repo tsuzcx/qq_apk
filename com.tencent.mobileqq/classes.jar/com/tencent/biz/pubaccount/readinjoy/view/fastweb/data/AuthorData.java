@@ -7,13 +7,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import org.json.JSONObject;
-import psx;
-import puw;
-import puy;
-import rcz;
-import svu;
-import svv;
-import syz;
+import qdu;
+import qfq;
+import qfs;
+import rpf;
+import tjf;
+import tjg;
+import tmh;
 
 public class AuthorData
   extends ProteusItemData
@@ -73,27 +73,27 @@ public class AuthorData
           localJSONObject.put("avatar_uin", this.jdField_c_of_type_JavaLangString);
           localJSONObject.put("nickname_text", this.b);
           localJSONObject.put("timestamp_text", this.d);
-          svu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, localJSONObject);
+          tjf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, localJSONObject);
           a(paramBoolean1, paramBoolean2, localJSONObject);
-          psx.a(localJSONObject, "ringUrl", this.f, "");
-          psx.a(localJSONObject, "liveStatusUrl", this.g, "");
-          Object localObject1 = this.P;
+          qdu.a(localJSONObject, "ringUrl", this.f, "");
+          qdu.a(localJSONObject, "liveStatusUrl", this.g, "");
+          Object localObject1 = this.T;
           if (localObject1 != null)
           {
             try
             {
-              localObject1 = new JSONObject(this.P);
+              localObject1 = new JSONObject(this.T);
               Iterator localIterator = ((JSONObject)localObject1).keys();
               if (localIterator == null) {
-                break label277;
+                break label305;
               }
               if (!localIterator.hasNext()) {
-                break label277;
+                break label305;
               }
               String str = (String)localIterator.next();
               localJSONObject.put(str, ((JSONObject)localObject1).opt(str));
               continue;
-              localObject2 = syz.a("native_article", true);
+              localObject2 = tmh.a("native_article", true);
             }
             catch (Exception localException1)
             {
@@ -103,14 +103,15 @@ public class AuthorData
           else
           {
             if (localObject2 == null) {
-              break label309;
+              break label337;
             }
-            Object localObject2 = ((syz)localObject2).getTemplateBean(localJSONObject);
+            Object localObject2 = ((tmh)localObject2).getTemplateBean(localJSONObject);
             if (localObject2 == null) {
-              break label315;
+              break label343;
             }
             this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = ((TemplateBean)localObject2);
             this.jdField_c_of_type_OrgJsonJSONObject = localJSONObject;
+            QLog.d("AuthorData", 1, "bindAuthorData: " + this.jdField_c_of_type_OrgJsonJSONObject);
           }
         }
         else
@@ -125,12 +126,12 @@ public class AuthorData
         localException2.printStackTrace();
         return;
       }
-      label277:
+      label305:
       continue;
-      label309:
+      label337:
       Object localObject3 = null;
       continue;
-      label315:
+      label343:
       return;
       i = 0;
     }
@@ -138,13 +139,13 @@ public class AuthorData
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, JSONObject paramJSONObject)
   {
-    svu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramJSONObject, paramBoolean1);
+    tjf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramJSONObject, paramBoolean1);
     this.jdField_a_of_type_Boolean = paramBoolean1;
   }
   
   public void a()
   {
-    a(puw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.getSubscribeUin(), null), false);
+    a(qfq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.getSubscribeUin(), null), false);
   }
   
   public void a(String paramString)
@@ -153,10 +154,10 @@ public class AuthorData
     a();
   }
   
-  public void a(Map<Long, rcz> paramMap)
+  public void a(Map<Long, rpf> paramMap)
   {
     boolean bool = true;
-    int i = svv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.getSubscribeUin(), paramMap);
+    int i = tjg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.getSubscribeUin(), paramMap);
     if (i != -1) {
       if (i != 1) {
         break label30;
@@ -171,10 +172,10 @@ public class AuthorData
     }
   }
   
-  public void a(puy parampuy)
+  public void a(qfs paramqfs)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
-      c(puw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.getSubscribeUin(), parampuy));
+      c(qfq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.getSubscribeUin(), paramqfs));
     }
   }
   
@@ -194,7 +195,7 @@ public class AuthorData
     if (!this.jdField_a_of_type_Boolean)
     {
       a(true);
-      svv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, a(), this.jdField_a_of_type_JavaLangString, paramBoolean);
+      tjg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, a(), this.jdField_a_of_type_JavaLangString, paramBoolean);
     }
   }
   
@@ -207,7 +208,7 @@ public class AuthorData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData
  * JD-Core Version:    0.7.0.1
  */

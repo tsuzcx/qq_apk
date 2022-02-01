@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import amov;
+import anri;
 
 public class CardHandler$5
   implements Runnable
 {
   public void run()
   {
-    amov.a(this.this$0);
+    anri.a(this.this$0);
   }
 }
 

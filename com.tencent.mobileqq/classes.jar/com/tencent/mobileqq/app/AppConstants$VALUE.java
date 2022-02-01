@@ -58,6 +58,7 @@ public abstract interface AppConstants$VALUE
   public static final int UIN_TYPE_DISCUSSION = 3000;
   public static final int UIN_TYPE_DISCUSSION_FRIEND = 1004;
   public static final int UIN_TYPE_EC_SHOP_ASSIST = 7120;
+  public static final int UIN_TYPE_FILTER_MSG = 10012;
   public static final int UIN_TYPE_FRIEND = 0;
   public static final int UIN_TYPE_FRIEND_VALIDATION = 1022;
   public static final int UIN_TYPE_FUN_CALL = 8998;
@@ -122,6 +123,7 @@ public abstract interface AppConstants$VALUE
   public static final int UIN_TYPE_TEMP_AUDIOROOM = 10010;
   public static final int UIN_TYPE_TEMP_CIRCLE = 10008;
   public static final int UIN_TYPE_TEMP_GAME_MSG = 10007;
+  public static final int UIN_TYPE_TEMP_MSG_BOX = 10011;
   public static final int UIN_TYPE_TENCENT_DOCS_ASSISTANT = 6004;
   public static final int UIN_TYPE_TRIBE_TEMP = 10002;
   public static final int UIN_TYPE_TROOP = 1;

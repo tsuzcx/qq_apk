@@ -1,147 +1,90 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPAccoutRelation;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPClientRsp;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPNewUserRecmd;
 
-public class ooh
+class ooh
+  implements BusinessObserver
 {
-  private ooj a = new ooj();
+  ooh(oog paramoog) {}
   
-  public static ooh a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return ook.a();
-  }
-  
-  public static ooj a(opd paramopd, boolean paramBoolean)
-  {
-    ooj localooj = new ooj();
-    if (paramopd == null) {
-      return localooj;
-    }
-    QLog.d("RIJNewBiuCardTransformManager", 1, "convertRespToBiuInfo | respData : " + paramopd.toString() + " ,isFromRecommentFeeds:" + paramBoolean);
-    localooj.jdField_a_of_type_Boolean = paramBoolean;
-    localooj.jdField_a_of_type_Long = paramopd.a();
-    localooj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramopd.a();
-    localooj.jdField_a_of_type_JavaLangString = paramopd.c();
-    localooj.b = paramopd.d();
-    localooj.e = paramopd.f();
-    localooj.c = paramopd.g();
-    localooj.d = paramopd.b();
-    localooj.jdField_a_of_type_Int = paramopd.e();
-    return localooj;
-  }
-  
-  public static boolean a(ArticleInfo paramArticleInfo)
-  {
-    if (paramArticleInfo == null) {
-      return false;
-    }
-    int i = pgb.a(paramArticleInfo, 0);
-    QLog.d("RIJNewBiuCardTransformManager", 2, "checkBiuCardWhiteList | type : " + i);
-    if ((i == 0) || (i == 3) || (i == 1) || (i == 5) || (i == 6) || (i == 126) || (b(paramArticleInfo)))
+    Object localObject = paramBundle.getString("extra_cmd");
+    if (paramBoolean)
     {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "checkBiuCardWhiteList | valid type : " + i);
-      return true;
+      if (!"SQQShopFolderSvc.GetShopBindUin".equals(localObject)) {
+        break label205;
+      }
+      paramBundle = paramBundle.getByteArray("extra_data");
+      localObject = new qqshop.SQQSHPClientRsp();
     }
-    QLog.d("RIJNewBiuCardTransformManager", 2, "checkBiuCardWhiteList not in white list");
-    return false;
-  }
-  
-  public static boolean b(ArticleInfo paramArticleInfo)
-  {
-    if (paramArticleInfo == null)
-    {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "checkShortContentType articleInfo is null");
-      return false;
-    }
-    if (!paramArticleInfo.isPGCShortContent())
-    {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "checkShortContentType | is not pgcShortContent");
-      return false;
-    }
-    if ((paramArticleInfo.mSocialFeedInfo == null) || (paramArticleInfo.mSocialFeedInfo.a == null))
-    {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "checkShortContentType | socialFeedsInfo is null");
-      return true;
-    }
-    int i = paramArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Int;
-    if ((i == 1) || (i == 3) || (i == 4) || (i == 2) || (i == 5))
-    {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "checkShortContentType | longContent out");
-      return false;
-    }
-    QLog.d("RIJNewBiuCardTransformManager", 2, "checkShortContentType | valid shortContent type");
-    return true;
-  }
-  
-  public void a()
-  {
-    if (this.a == null)
-    {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "transformCard | mBiuInfo is null");
-      return;
-    }
-    pkm.a().a(this.a);
-    QLog.d("RIJNewBiuCardTransformManager", 1, " transformCard | mBiuInfo " + this.a);
-  }
-  
-  public void a(ooj paramooj)
-  {
-    if (paramooj != null)
-    {
-      this.a = paramooj;
-      QLog.d("RIJNewBiuCardTransformManager", 2, "updateBiuInfo | mBiuInfo  : " + this.a);
-      b();
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = true;
-    if (this.a == null)
-    {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | false, biuInfo is null");
-      return false;
-    }
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null)
-    {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | false, articleInfo is null");
-      return false;
-    }
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | should refresh when out from related articles");
-      return true;
-    }
-    if (!pkm.a().a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
     for (;;)
     {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | shouldRefresh: " + bool);
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public void b()
-  {
-    QQAppInterface localQQAppInterface = pay.a();
-    if (localQQAppInterface != null)
-    {
-      Object localObject = (pks)localQQAppInterface.getManager(163);
-      if (localObject != null)
+      label205:
+      try
       {
-        localObject = ((pks)localObject).a().a();
-        if (localObject != null) {
-          ((pvu)localObject).a(localQQAppInterface.getLongAccountUin(), new ooi(this));
+        ((qqshop.SQQSHPClientRsp)localObject).mergeFrom(paramBundle);
+        paramBundle = ((qqshop.SQQSHPClientRsp)localObject).bindlist.get();
+        paramInt = 0;
+        if (paramInt < paramBundle.size())
+        {
+          localObject = (qqshop.SQQSHPAccoutRelation)paramBundle.get(paramInt);
+          String str = String.valueOf(((qqshop.SQQSHPAccoutRelation)localObject).puin.get());
+          long l = ((qqshop.SQQSHPAccoutRelation)localObject).binduin.get();
+          this.a.c.put(str, Integer.valueOf(((qqshop.SQQSHPAccoutRelation)localObject).distance.get()));
+          this.a.d.put(str, String.valueOf(l));
+          paramInt += 1;
+          continue;
         }
+        if ((this.a.a != null) && (this.a.a.a != null) && (this.a.a.b == 1)) {
+          this.a.a.a.notifyDataSetChanged();
+        }
+        return;
       }
-    }
-  }
-  
-  public void c()
-  {
-    if (this.a != null) {
-      this.a.a();
+      catch (Exception paramBundle) {}
+      if ("SQQShopFolderSvc.GetFolderInfo".equals(localObject))
+      {
+        paramBundle = paramBundle.getByteArray("extra_data");
+        localObject = new qqshop.SQQSHPClientRsp();
+        try
+        {
+          ((qqshop.SQQSHPClientRsp)localObject).mergeFrom(paramBundle);
+          if (((qqshop.SQQSHPClientRsp)localObject).newusrrecmd.has())
+          {
+            paramBundle = (qqshop.SQQSHPNewUserRecmd)((qqshop.SQQSHPClientRsp)localObject).newusrrecmd.get();
+            if ((paramBundle.recmdflag.has()) && (paramBundle.recmdflag.get() == 1))
+            {
+              paramBundle = paramBundle.recmdurl.get();
+              if ((!TextUtils.isEmpty(paramBundle)) && (this.a.a != null))
+              {
+                QLog.i("EcshopCacheTool", 2, "newusrrecmd url:" + paramBundle);
+                localObject = new Intent(this.a.a.getActivity(), QQBrowserActivity.class);
+                ((Intent)localObject).putExtra("url", paramBundle);
+                ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+                this.a.a.startActivity((Intent)localObject);
+                this.a.a.getActivity().overridePendingTransition(2130771979, 0);
+                bdla.b(null, "CliOper", "", "", "Shop_newuser", "Pv_shopnewuserpage", 0, 0, "", "", "", "");
+                return;
+              }
+            }
+          }
+        }
+        catch (Exception paramBundle) {}
+      }
     }
   }
 }

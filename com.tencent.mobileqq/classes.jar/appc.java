@@ -1,11 +1,20 @@
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import java.util.List;
+import android.os.Bundle;
 
-public abstract interface appc
+public final class appc
 {
-  public abstract void a(long paramLong, String paramString, int paramInt, List<DanmuItemBean> paramList);
-  
-  public abstract void a(long paramLong, String paramString, DanmuItemBean paramDanmuItemBean);
+  public static Bundle a(Bundle paramBundle)
+  {
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    paramBundle = new apph(localBundle);
+    paramBundle.a(10L);
+    paramBundle.b(true);
+    paramBundle.a(true);
+    paramBundle.b(4096L);
+    return paramBundle.a();
+  }
 }
 
 

@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.TranslateFragment;
 
 public class aytj
-  implements aytk
+  implements ayvp
 {
-  public aytj(ComponentCenter paramComponentCenter) {}
+  public aytj(TranslateFragment paramTranslateFragment, ayru paramayru) {}
   
-  public void a(aysw paramaysw)
+  public void a(int paramInt, ayvq paramayvq)
   {
-    ComponentCenter.a(this.a, ComponentCenter.a(this.a) | paramaysw.a());
+    if ((paramayvq != null) && (!TextUtils.isEmpty(paramayvq.b)))
+    {
+      if (!this.jdField_a_of_type_Ayru.b.equalsIgnoreCase(paramayvq.b)) {
+        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, paramayvq.b, this.jdField_a_of_type_Ayru.b(paramayvq.b));
+      }
+      ayrt.a("0X800AD30", ayrt.a(paramayvq.b));
+    }
   }
 }
 

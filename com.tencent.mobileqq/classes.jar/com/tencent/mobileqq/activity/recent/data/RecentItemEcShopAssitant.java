@@ -1,20 +1,21 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import afdj;
-import amtj;
+import afuo;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.text.TextUtils;
-import apyt;
-import bfwr;
+import anvx;
+import arbw;
+import bhfj;
 import com.tencent.biz.pubaccount.ecshopassit.EcShopData;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
 import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.mobileqq.data.PAMessage.Item;
@@ -23,7 +24,7 @@ import com.tencent.mobileqq.text.QQText;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import ofx;
+import onq;
 
 public class RecentItemEcShopAssitant
   extends AbsRecentUserBusinessBaseData
@@ -38,12 +39,12 @@ public class RecentItemEcShopAssitant
   
   private void a()
   {
-    if ((this.mExtraInfo != null) && (amtj.a(2131712281).equalsIgnoreCase(this.mExtraInfo.toString()))) {
+    if ((this.mExtraInfo != null) && (anvx.a(2131712628).equalsIgnoreCase(this.mExtraInfo.toString()))) {
       this.mExtraInfo = "";
     }
   }
   
-  private void a(Context paramContext, ofx paramofx, MsgSummary paramMsgSummary, SharedPreferences paramSharedPreferences, int paramInt)
+  private void a(Context paramContext, onq paramonq, MsgSummary paramMsgSummary, SharedPreferences paramSharedPreferences, int paramInt)
   {
     if ((paramInt > this.mDisplayTime) || ((TextUtils.isEmpty(paramMsgSummary.strContent)) && (TextUtils.isEmpty(paramMsgSummary.suffix))))
     {
@@ -56,14 +57,14 @@ public class RecentItemEcShopAssitant
       String str = paramSharedPreferences.getString("str_ecshop_diy", null);
       if (!TextUtils.isEmpty(str))
       {
-        paramofx.d = true;
+        paramonq.d = true;
         paramMsgSummary.strContent = str;
         paramMsgSummary.suffix = null;
         paramMsgSummary.strPrefix = null;
       }
       for (;;)
       {
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167124);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131167138);
         if (paramSharedPreferences.contains("PUSH_TYPE_COLOR")) {}
         try
         {
@@ -79,7 +80,7 @@ public class RecentItemEcShopAssitant
             {
               if ((n >= j) && (n <= k) && (n - i < m))
               {
-                paramofx.e = true;
+                paramonq.e = true;
                 if (paramInt > this.mDisplayTime) {
                   this.mDisplayTime = paramInt;
                 }
@@ -92,7 +93,7 @@ public class RecentItemEcShopAssitant
               if (!TextUtils.isEmpty(paramMsgSummary.suffix)) {
                 continue;
               }
-              paramMsgSummary.strContent = paramContext.getString(2131691719);
+              paramMsgSummary.strContent = paramContext.getString(2131691807);
               paramMsgSummary.strPrefix = null;
             }
           }
@@ -102,12 +103,12 @@ public class RecentItemEcShopAssitant
           for (;;)
           {
             QLog.e("RecentItemEcShopAssitant", 1, "parse color exception.");
-            this.mExtraInfoColor = paramContext.getResources().getColor(2131167124);
+            this.mExtraInfoColor = paramContext.getResources().getColor(2131167138);
           }
           if (QLog.isColorLevel()) {
             QLog.i("EcShopAssistantActivity", 2, "reddot out of date!");
           }
-          paramofx.e = false;
+          paramonq.e = false;
           this.mUnreadNum = 0;
           this.mMsgExtroInfo = "";
           return;
@@ -119,23 +120,23 @@ public class RecentItemEcShopAssitant
     a(paramContext);
   }
   
-  private void a(QQAppInterface paramQQAppInterface, Context paramContext, QQMessageFacade.Message paramMessage, ofx paramofx, MsgSummary paramMsgSummary)
+  private void a(QQAppInterface paramQQAppInterface, Context paramContext, QQMessageFacade.Message paramMessage, onq paramonq, MsgSummary paramMsgSummary)
   {
     if (paramMessage != null)
     {
-      this.mUnreadNum = paramofx.a(paramQQAppInterface);
+      this.mUnreadNum = paramonq.a(paramQQAppInterface);
       this.mDisplayTime = paramMessage.time;
-      paramofx = paramofx.a(paramQQAppInterface, paramMessage.frienduin);
+      paramonq = paramonq.a(paramQQAppInterface, paramMessage.frienduin);
       if (paramMessage != null)
       {
-        bfwr.a(paramContext, paramQQAppInterface, paramMessage, this.mUser.getType(), paramMsgSummary, paramofx, true, false);
+        bhfj.a(paramContext, paramQQAppInterface, paramMessage, this.mUser.getType(), paramMsgSummary, paramonq, true, false);
         int i = paramMessage.msgtype;
         if ((i == -3006) || (i == -5004))
         {
           paramMsgSummary.suffix = "";
           paramMsgSummary.strContent = "";
-          paramofx = afdj.a(paramMessage);
-          if ((paramofx != null) && (paramofx.items != null) && (paramofx.items.size() != 0)) {
+          paramonq = afuo.a(paramMessage);
+          if ((paramonq != null) && (paramonq.items != null) && (paramonq.items.size() != 0)) {
             break label140;
           }
           a(paramMessage, this.mUser.getType(), paramQQAppInterface, paramContext, paramMsgSummary);
@@ -143,9 +144,9 @@ public class RecentItemEcShopAssitant
       }
       return;
       label140:
-      paramQQAppInterface = ((PAMessage.Item)paramofx.items.get(0)).title;
-      if ((((PAMessage.Item)paramofx.items.get(0)).cover == null) && (((PAMessage.Item)paramofx.items.get(0)).digestList != null)) {
-        paramQQAppInterface = paramQQAppInterface + "：" + (String)((PAMessage.Item)paramofx.items.get(0)).digestList.get(0);
+      paramQQAppInterface = ((PAMessage.Item)paramonq.items.get(0)).title;
+      if ((((PAMessage.Item)paramonq.items.get(0)).cover == null) && (((PAMessage.Item)paramonq.items.get(0)).digestList != null)) {
+        paramQQAppInterface = paramQQAppInterface + "：" + (String)((PAMessage.Item)paramonq.items.get(0)).digestList.get(0);
       }
       for (;;)
       {
@@ -157,7 +158,7 @@ public class RecentItemEcShopAssitant
     this.mDisplayTime = 0L;
   }
   
-  private void a(ofx paramofx)
+  private void a(onq paramonq)
   {
     StringBuilder localStringBuilder;
     int i;
@@ -167,8 +168,8 @@ public class RecentItemEcShopAssitant
       localStringBuilder.append(this.mTitleName).append(",");
       if (this.mUnreadNum > 0)
       {
-        i = paramofx.a();
-        if ((i != 0) && (!paramofx.e)) {
+        i = paramonq.a();
+        if ((i != 0) && (!paramonq.e)) {
           break label112;
         }
       }
@@ -216,29 +217,29 @@ public class RecentItemEcShopAssitant
       return;
     }
     super.a(paramQQAppInterface, paramContext);
-    if (apyt.a("MiniAppEcShopNumMsgEnable", 1) == 1) {}
+    if (arbw.a("MiniAppEcShopNumMsgEnable", 1) == 1) {}
     for (this.mUnreadFlag = 1;; this.mUnreadFlag = 2)
     {
       if (TextUtils.isEmpty(this.mTitleName)) {
-        this.mTitleName = paramContext.getString(2131691721);
+        this.mTitleName = paramContext.getString(2131691809);
       }
-      if (!TextUtils.isEmpty(ofx.c)) {
-        this.mTitleName = ofx.c;
+      if (!TextUtils.isEmpty(onq.c)) {
+        this.mTitleName = onq.c;
       }
       String str = null;
-      ofx localofx = (ofx)paramQQAppInterface.getManager(88);
+      onq localonq = (onq)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
       Object localObject2 = paramQQAppInterface.getMessageFacade();
       Object localObject1 = str;
       if (localObject2 != null)
       {
-        EcShopData localEcShopData = localofx.a();
+        EcShopData localEcShopData = localonq.a();
         localObject1 = str;
         if (localEcShopData != null) {
           localObject1 = ((QQMessageFacade)localObject2).getLastMessage(localEcShopData.mUin, 1008);
         }
       }
       localObject2 = super.getMsgSummaryTemp();
-      a(paramQQAppInterface, paramContext, (QQMessageFacade.Message)localObject1, localofx, (MsgSummary)localObject2);
+      a(paramQQAppInterface, paramContext, (QQMessageFacade.Message)localObject1, localonq, (MsgSummary)localObject2);
       str = paramQQAppInterface.getCurrentAccountUin();
       localObject1 = str;
       if (TextUtils.isEmpty(str)) {
@@ -246,15 +247,15 @@ public class RecentItemEcShopAssitant
       }
       localObject1 = paramContext.getSharedPreferences("ecshop_sp" + (String)localObject1, 0);
       int i = ((SharedPreferences)localObject1).getInt("last_show_time1", 0);
-      localofx.d = false;
-      a(paramContext, localofx, (MsgSummary)localObject2, (SharedPreferences)localObject1, i);
+      localonq.d = false;
+      a(paramContext, localonq, (MsgSummary)localObject2, (SharedPreferences)localObject1, i);
       a();
       a(paramQQAppInterface, (MsgSummary)localObject2);
       a(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-      if ((this.mUnreadNum == 0) && (localofx.e)) {
+      if ((this.mUnreadNum == 0) && (localonq.e)) {
         this.mUnreadNum = 1;
       }
-      a(localofx);
+      a(localonq);
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -276,15 +277,15 @@ public class RecentItemEcShopAssitant
     if (localObject == null) {}
     do
     {
-      ofx localofx;
+      onq localonq;
       do
       {
         do
         {
           return;
-          localofx = (ofx)paramQQAppInterface.getManager(88);
-          if (localofx != null) {
-            localEcShopData = localofx.a();
+          localonq = (onq)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
+          if (localonq != null) {
+            localEcShopData = localonq.a();
           }
         } while ((localEcShopData == null) || (TextUtils.isEmpty(localEcShopData.mUin)) || (this.mDisplayTime >= localEcShopData.mLastDraftTime) || (this.newStrTime > localEcShopData.mLastDraftTime));
         this.mStatus = 4;
@@ -292,7 +293,7 @@ public class RecentItemEcShopAssitant
       } while ((localObject == null) || (TextUtils.isEmpty(((DraftSummaryInfo)localObject).getSummary())));
       this.mDisplayTime = ((DraftSummaryInfo)localObject).getTime();
       localObject = ((DraftSummaryInfo)localObject).getSummary();
-      paramQQAppInterface = localofx.a(paramQQAppInterface, localEcShopData.mUin);
+      paramQQAppInterface = localonq.a(paramQQAppInterface, localEcShopData.mUin);
     } while (paramMsgSummary == null);
     paramMsgSummary.bShowDraft = true;
     paramMsgSummary.mDraft = new QQText(paramQQAppInterface + ": " + (String)localObject, 3, 16);

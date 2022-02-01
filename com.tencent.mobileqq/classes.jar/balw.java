@@ -1,4 +1,10 @@
-public class balw {}
+public class balw
+{
+  public static boolean a()
+  {
+    return false;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

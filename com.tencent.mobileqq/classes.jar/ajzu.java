@@ -1,16 +1,17 @@
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fpsreport.FPSXListView;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ajzu
 {
-  public long a;
-  public List<String> a;
-  
-  public ajzu()
-  {
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_Long = 0L;
-  }
+  public Context a;
+  public View a;
+  public awdg a;
+  public QQAppInterface a;
+  public FPSXListView a;
+  public List<arpq> a;
 }
 
 

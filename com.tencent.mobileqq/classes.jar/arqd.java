@@ -1,25 +1,8 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
-
 public class arqd
-  implements Animator.AnimatorListener
 {
-  public arqd(ExtendFriendSearchBarView paramExtendFriendSearchBarView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.c();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.c();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public int a;
+  public long a;
+  public String a;
 }
 
 

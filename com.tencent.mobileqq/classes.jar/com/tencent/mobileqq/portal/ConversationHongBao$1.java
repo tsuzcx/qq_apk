@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.portal;
 
-import ayhx;
+import azms;
 import com.tencent.widget.HongBaoListView;
 
 public class ConversationHongBao$1
   implements Runnable
 {
-  public ConversationHongBao$1(ayhx paramayhx) {}
+  public ConversationHongBao$1(azms paramazms) {}
   
   public void run()
   {

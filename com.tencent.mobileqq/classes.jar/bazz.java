@@ -1,106 +1,77 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
+import eipc.EIPCResult;
 
 public class bazz
-  extends bazc
+  extends QIPCModule
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int d;
-  private String j;
+  private static bazz jdField_a_of_type_Bazz;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public bazz(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  private bazz(String paramString)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    super(paramString);
   }
   
-  public void a(int paramInt)
+  public static bazz a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return;
+    if (jdField_a_of_type_Bazz != null) {
+      return jdField_a_of_type_Bazz;
     }
-    try
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      this.d = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("appid");
-      return;
+      if (jdField_a_of_type_Bazz == null) {
+        jdField_a_of_type_Bazz = new bazz("REAL_NAME");
+      }
+      bazz localbazz = jdField_a_of_type_Bazz;
+      return localbazz;
     }
-    catch (JSONException paramString)
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RealName", 2, "onCall s: " + paramString);
+    }
+    if (paramBundle == null) {}
+    do
     {
-      QLog.e(c, 2, "parseLayoutExtensions exception:" + paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(String paramString)
-  {
-    this.j = paramString;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public String d()
-  {
-    return this.j;
-  }
-  
-  public String e()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int f()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int g()
-  {
-    return this.d;
-  }
-  
-  public int h()
-  {
-    return this.jdField_b_of_type_Int;
+      return null;
+      paramInt = paramBundle.getInt("result");
+      paramBundle = paramBundle.getString("source");
+      if (QLog.isColorLevel()) {
+        QLog.i("RealName", 2, "result is : " + paramInt);
+      }
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramBundle != null) && (paramString != null) && ((TextUtils.equals(paramBundle, "avgame")) || (TextUtils.equals(paramBundle, "watchtogether"))))
+      {
+        paramBundle = (ansg)paramString.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
+        if (paramBundle != null)
+        {
+          if (paramInt == 0) {}
+          for (boolean bool = true;; bool = false)
+          {
+            if (bool) {
+              paramString.getPreferences().edit().putBoolean("has_auth_real_name_av", bool).commit();
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("RealName", 2, "notifyUI");
+            }
+            paramBundle.notifyUI(15, true, new Object[] { Boolean.valueOf(bool) });
+            return null;
+          }
+        }
+      }
+    } while ((paramInt == 0) || (paramString == null));
+    ((ansg)paramString.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).f();
+    return null;
   }
 }
 

@@ -1,35 +1,108 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class ardq
-  implements bggg<atie>
+public class ardq
+  extends aqwt<ardp>
 {
-  ardq(arcu paramarcu, int paramInt, anaj paramanaj, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
-  
-  public void a(atie paramatie, Object paramObject)
+  public static int a(Context paramContext, String paramString)
   {
-    paramObject = new Bundle();
-    paramObject.putInt("id", this.jdField_a_of_type_Int);
-    if ((paramatie != null) || (this.jdField_a_of_type_Int == 0))
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
+    paramContext.apply();
+  }
+  
+  @NonNull
+  public ardp a(int paramInt)
+  {
+    return new ardp(0);
+  }
+  
+  @Nullable
+  public ardp a(aqxa[] paramArrayOfaqxa)
+  {
+    j = 0;
+    i = j;
+    if (paramArrayOfaqxa != null)
     {
-      paramObject.putInt("result", 0);
-      this.jdField_a_of_type_Anaj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int);
+      i = j;
+      if (paramArrayOfaqxa.length > 0) {
+        paramArrayOfaqxa = paramArrayOfaqxa[0].a;
+      }
     }
-    for (;;)
+    try
     {
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      bggk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_colorscreen_set_fail", "0", "", Integer.toString(this.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
-      bggj.a("individual_v2_colorscreen_set_fail", "id:" + this.jdField_a_of_type_Int);
-      paramObject.putInt("result", 1);
+      if (QLog.isColorLevel()) {
+        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfaqxa);
+      }
+      i = new JSONObject(paramArrayOfaqxa).getInt("isPushSwitchShow");
     }
+    catch (Exception paramArrayOfaqxa)
+    {
+      for (;;)
+      {
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfaqxa);
+          i = j;
+        }
+      }
+    }
+    return new ardp(i);
+  }
+  
+  public void a(ardp paramardp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramardp.a);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramardp.a);
+  }
+  
+  public Class clazz()
+  {
+    return ardp.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 439;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardq
  * JD-Core Version:    0.7.0.1
  */

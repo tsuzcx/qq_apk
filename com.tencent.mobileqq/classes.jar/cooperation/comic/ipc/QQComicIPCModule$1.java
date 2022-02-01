@@ -1,7 +1,7 @@
 package cooperation.comic.ipc;
 
 import android.os.Bundle;
-import bkfy;
+import blrk;
 import com.tencent.mobileqq.config.business.QQComicConfBean;
 import com.tencent.mobileqq.config.business.QQComicConfBean.IPExpressionConfig;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import eipc.EIPCResult;
 public class QQComicIPCModule$1
   implements Runnable
 {
-  public QQComicIPCModule$1(bkfy parambkfy, int paramInt) {}
+  public QQComicIPCModule$1(blrk paramblrk, int paramInt) {}
   
   public void run()
   {

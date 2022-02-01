@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import nwo;
+import odo;
 
 public class AccountDetailActivity$9$1
   implements Runnable
 {
-  public AccountDetailActivity$9$1(nwo paramnwo) {}
+  public AccountDetailActivity$9$1(odo paramodo) {}
   
   public void run()
   {

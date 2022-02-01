@@ -1,17 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import android.text.TextUtils;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 
-class afzb
-  implements aszj
+public class afzb
 {
-  afzb(afyz paramafyz, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct) {}
-  
-  public void onNo() {}
-  
-  public void onYes()
+  public static boolean a(Object paramObject)
   {
-    ((aavk)this.jdField_a_of_type_Afyz.a.getBusinessHandler(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
-    afyz.b(this.jdField_a_of_type_Afyz, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+    if (!(paramObject instanceof MessageForUniteGrayTip)) {}
+    do
+    {
+      return false;
+      paramObject = (MessageForUniteGrayTip)paramObject;
+    } while (!TextUtils.equals(paramObject.getExtInfoFromExtStr("uint64_busi_type"), "12"));
+    return TextUtils.equals(paramObject.getExtInfoFromExtStr("uint64_busi_id"), "1061");
+  }
+  
+  public static boolean b(Object paramObject)
+  {
+    if (!(paramObject instanceof MessageForUniteGrayTip)) {}
+    do
+    {
+      return false;
+      paramObject = (MessageForUniteGrayTip)paramObject;
+    } while ((paramObject.tipParam == null) || (paramObject.tipParam.b != 656396));
+    return true;
   }
 }
 

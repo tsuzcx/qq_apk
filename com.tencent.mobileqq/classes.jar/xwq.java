@@ -1,18 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class xwq
-  implements Parcelable.Creator<EditLocalGifSource>
+public class xwq
+  extends wpt
 {
-  public EditLocalGifSource a(Parcel paramParcel)
+  public FeedVideoInfo a;
+  public String a;
+  public List<StoryVideoItem> a;
+  public String b;
+  
+  public xwq(ErrorMessage paramErrorMessage, String paramString)
   {
-    return new EditLocalGifSource(paramParcel);
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public EditLocalGifSource[] a(int paramInt)
+  public String toString()
   {
-    return new EditLocalGifSource[paramInt];
+    return "GetVideoListEvent{mVideoItems=" + this.jdField_a_of_type_JavaUtilList.size() + ", feedId=" + this.jdField_a_of_type_JavaLangString + ", mUnionId=" + this.b + '}' + super.toString();
   }
 }
 

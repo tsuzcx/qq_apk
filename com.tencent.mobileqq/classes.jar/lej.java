@@ -1,38 +1,133 @@
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Process;
+import android.text.TextUtils;
+import android.text.format.Time;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.Foreground;
+import mqq.app.MobileQQ;
 
-class lej
-  extends BroadcastReceiver
+public class lej
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lek(this);
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public lej(VideoAppInterface paramVideoAppInterface)
   {
-    if (paramIntent == null) {}
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+  }
+  
+  private String a(Context paramContext)
+  {
+    try
+    {
+      int i = Process.myPid();
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+      while (paramContext.hasNext())
+      {
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+        if (localRunningAppProcessInfo.pid == i)
+        {
+          paramContext = localRunningAppProcessInfo.processName;
+          return paramContext;
+        }
+      }
+    }
+    catch (Exception paramContext) {}
+    return null;
+  }
+  
+  private String a(ArrayList<String> paramArrayList, boolean paramBoolean)
+  {
+    Time localTime = new Time();
+    localTime.setToNow();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("com.tencent.process.exit");
+    localStringBuilder.append(localTime.year).append(localTime.month + 1).append(localTime.monthDay);
+    localStringBuilder.append(localTime.hour);
+    if (paramBoolean)
+    {
+      localStringBuilder.append(localTime.minute - 1);
+      if (paramArrayList != null) {
+        break label142;
+      }
+    }
+    label142:
+    for (paramArrayList = "null";; paramArrayList = paramArrayList.toString())
+    {
+      localStringBuilder.append(paramArrayList);
+      paramArrayList = MD5.toMD5(localStringBuilder.toString());
+      return MD5.toMD5(paramArrayList + localStringBuilder.toString());
+      localStringBuilder.append(localTime.minute);
+      break;
+    }
+  }
+  
+  private boolean a(String paramString, ArrayList<String> paramArrayList)
+  {
+    if (Foreground.sCountActivity > 0) {}
+    while ((paramString == null) || (paramString.length() == 0) || ((!paramString.equals(a(paramArrayList, false))) && (!paramString.equals(a(paramArrayList, true))))) {
+      return false;
+    }
+    return true;
+  }
+  
+  private boolean a(ArrayList<String> paramArrayList)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      bool1 = true;
+    }
+    String str;
     do
     {
-      return;
-      paramContext = paramIntent.getAction();
-      if (paramContext.equals("android.intent.action.SCREEN_ON"))
-      {
-        QLog.d("GScreenActionMonitor", 1, "avideo ACTION_SCREEN_ON");
-        return;
+      return bool1;
+      str = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication());
+      bool1 = bool2;
+    } while (TextUtils.isEmpty(str));
+    int i = 0;
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i >= paramArrayList.size()) {
+        break;
       }
-      if (paramContext.equals("android.intent.action.SCREEN_OFF"))
-      {
-        QLog.d("GScreenActionMonitor", 1, "avideo ACTION_SCREEN_OFF");
-        lhw.a(19, 1L);
-        return;
+      if (str.equals(paramArrayList.get(i))) {
+        return true;
       }
-      if (paramContext.equals("android.intent.action.USER_PRESENT"))
-      {
-        QLog.d("GScreenActionMonitor", 1, "avideACTION_USER_PRESENT");
-        lhw.a(19, 2L);
-        return;
-      }
-    } while (!paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
-    paramContext = paramIntent.getStringExtra("reason");
-    QLog.d("GScreenActionMonitor", 1, "avideo ACTION_CLOSE_SYSTEM_DIALOGS, reason[" + paramContext + "]");
+      i += 1;
+    }
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GKillProcessMonitor", 2, "regist QQ Process Exit Receiver");
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.process.exit");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
+    }
   }
 }
 

@@ -1,287 +1,109 @@
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.graphics.Bitmap;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.widget.RemoteViews;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.open.downloadnew.common.NoticeParam;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
+import android.support.v4.util.ArrayMap;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.extension.proxy.ProxyWebViewClientExtension;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 
-public class bidk
+final class bidk
+  extends ProxyWebViewClientExtension
 {
-  protected static bidk a;
-  protected bidm a;
-  protected QQNotificationManager a;
-  protected final ConcurrentHashMap<String, bidl> a;
+  private ArrayMap<String, Object> jdField_a_of_type_AndroidSupportV4UtilArrayMap;
+  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
   
-  protected bidk()
+  public bidk(bidf parambidf, TouchWebView paramTouchWebView)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager = QQNotificationManager.getInstance();
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
   }
   
-  private int a(String paramString)
+  private void a(Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    bhzm.b("AppNotificationManager", ">genNextNotificationId key:" + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      return 378;
-    }
-    int i = Math.abs(paramString.hashCode()) % 99;
-    bhzm.b("AppNotificationManager", ">genNextNotificationId mod:" + i);
-    i += 378;
-    bhzm.b("AppNotificationManager", ">genNextNotificationId id:" + i);
-    return i;
-  }
-  
-  public static bidk a()
-  {
-    if (jdField_a_of_type_Bidk == null) {
-      jdField_a_of_type_Bidk = new bidk();
-    }
-    return jdField_a_of_type_Bidk;
-  }
-  
-  public int a(String paramString1, int paramInt, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2)))
+    WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
+    if (localWebViewPluginEngine != null)
     {
-      bhzm.e("AppNotificationManager", ">getNotificationId param error, return invalid id.");
-      return -1;
-    }
-    bhzm.b("AppNotificationManager", ">getNotificationId " + paramString1 + ", " + paramString2);
-    String str = paramString1;
-    if (TextUtils.isEmpty(paramString1)) {
-      str = paramString2;
-    }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
-    {
-      paramString1 = new bidl(this);
-      paramString1.jdField_a_of_type_JavaLangString = str;
-      paramString1.jdField_a_of_type_Int = a(str);
-      paramString1.jdField_b_of_type_Int = paramInt;
-      paramString1.jdField_b_of_type_JavaLangString = paramString2;
-      paramString1.jdField_a_of_type_Long = (System.currentTimeMillis() + paramString1.jdField_a_of_type_Int);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramString1);
-    }
-    return ((bidl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).jdField_a_of_type_Int;
-  }
-  
-  public long a(String paramString1, int paramInt, String paramString2)
-  {
-    bhzm.b("AppNotificationManager", ">getNotificationWhen " + paramString1 + ", " + paramString2);
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString1))
-    {
-      bidl localbidl = new bidl(this);
-      localbidl.jdField_a_of_type_JavaLangString = paramString1;
-      localbidl.jdField_a_of_type_Int = a(paramString1);
-      localbidl.jdField_b_of_type_Int = paramInt;
-      localbidl.jdField_b_of_type_JavaLangString = paramString2;
-      localbidl.jdField_a_of_type_Long = (System.currentTimeMillis() + localbidl.jdField_a_of_type_Int);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, localbidl);
-    }
-    return ((bidl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1)).jdField_a_of_type_Long;
-  }
-  
-  public Notification a(NoticeParam paramNoticeParam)
-  {
-    if ((bhpc.a().a() == null) || (paramNoticeParam == null))
-    {
-      bhzm.e("AppNotificationManager", "getNotification context == null");
-      return null;
-    }
-    Notification localNotification = new Notification();
-    localNotification.tickerText = paramNoticeParam.jdField_b_of_type_JavaLangString;
-    localNotification.when = paramNoticeParam.jdField_a_of_type_Long;
-    RemoteViews localRemoteViews = new RemoteViews(bhpc.a().a().getPackageName(), 2131559661);
-    Object localObject = bido.a(1, paramNoticeParam);
-    a(localRemoteViews);
-    localRemoteViews.setInt(2131371926, "setBackgroundColor", -1);
-    localRemoteViews.setInt(2131371928, "setTextColor", -16777216);
-    localRemoteViews.setInt(2131371922, "setTextColor", -12303292);
-    localRemoteViews.setInt(2131371916, "setTextColor", -12303292);
-    localRemoteViews.setTextViewText(2131371928, bhzp.a(paramNoticeParam.jdField_b_of_type_JavaLangString, 18, true, true));
-    if (paramNoticeParam.jdField_b_of_type_Int == 1)
-    {
-      localNotification.icon = 2130844273;
-      localRemoteViews.setImageViewResource(2131371917, 2130844269);
-      localRemoteViews.setViewVisibility(2131371916, 8);
-      localRemoteViews.setViewVisibility(2131371911, 0);
-      if (Build.VERSION.SDK_INT > 10) {
-        localRemoteViews.setOnClickPendingIntent(2131371926, (PendingIntent)localObject);
+      if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap == null) {
+        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(4);
+      }
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("performanceData", paramObject1);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("requestData", paramObject2);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("responseData", paramObject3);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("errorCode", paramObject4);
+      localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 64L, this.jdField_a_of_type_AndroidSupportV4UtilArrayMap);
+      if (QLog.isColorLevel()) {
+        QLog.i("WebCoreDump", 2, "Take web core dump for " + nwo.b(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), new String[0]));
       }
     }
-    for (;;)
-    {
-      localNotification.contentView = localRemoteViews;
-      QQNotificationManager.addChannelIfNeed(localNotification, "CHANNEL_ID_HIDE_BADGE");
-      return localNotification;
-      localNotification.contentIntent = ((PendingIntent)localObject);
-      continue;
-      if ((paramNoticeParam.jdField_b_of_type_Int == 0) || (paramNoticeParam.jdField_b_of_type_Int == 2) || (paramNoticeParam.jdField_b_of_type_Int == 3))
-      {
-        localNotification.icon = 2130844273;
-        if (paramNoticeParam.jdField_b_of_type_Int == 0)
-        {
-          localRemoteViews.setTextViewText(2131371916, bhpc.a().a().getString(2131694134));
-          localNotification.flags |= 0x10;
-          localNotification.defaults |= 0x1;
-          localNotification.defaults |= 0x4;
-          localRemoteViews.setImageViewResource(2131371917, 2130844269);
-        }
-        if (paramNoticeParam.jdField_b_of_type_Int == 2)
-        {
-          localRemoteViews.setTextViewText(2131371916, bhpc.a().a().getString(2131694137));
-          localObject = biam.a(paramNoticeParam.d);
-          if (localObject != null) {
-            localRemoteViews.setImageViewBitmap(2131371917, (Bitmap)localObject);
-          }
-          localNotification.flags |= 0x10;
-          localNotification.defaults |= 0x1;
-          localNotification.defaults |= 0x4;
-          localObject = bido.a(6, paramNoticeParam);
-        }
-        if (paramNoticeParam.jdField_b_of_type_Int == 3)
-        {
-          localRemoteViews.setTextViewText(2131371916, bhpc.a().a().getString(2131694134));
-          localObject = bido.a(4, paramNoticeParam);
-          Bitmap localBitmap = bhzk.a(paramNoticeParam.jdField_a_of_type_JavaLangString);
-          if (localBitmap == null) {
-            break label476;
-          }
-          localRemoteViews.setImageViewBitmap(2131371917, localBitmap);
-        }
-        for (;;)
-        {
-          if (paramNoticeParam.jdField_b_of_type_Int == 0)
-          {
-            if (Build.VERSION.SDK_INT > 10)
-            {
-              localRemoteViews.setOnClickPendingIntent(2131371926, (PendingIntent)localObject);
-              break;
-              label476:
-              bhzm.b("AppNotificationManager", ">>download icon fail,so we use default notification icon");
-              localRemoteViews.setImageViewResource(2131371917, 2130844269);
-              continue;
-            }
-            localNotification.contentIntent = ((PendingIntent)localObject);
-            break;
-          }
-        }
-        localNotification.contentIntent = ((PendingIntent)localObject);
-      }
-      else if (paramNoticeParam.jdField_b_of_type_Int == 4)
-      {
-        localNotification.icon = 2130844273;
-        localRemoteViews.setImageViewResource(2131371917, 2130844269);
-        localRemoteViews.setTextViewText(2131371916, bhpc.a().a().getString(2131694133));
-        localRemoteViews.setViewVisibility(2131371916, 0);
-        localRemoteViews.setViewVisibility(2131371911, 8);
-        paramNoticeParam = bido.a(5, paramNoticeParam);
-        localNotification.flags |= 0x10;
-        localNotification.contentIntent = paramNoticeParam;
-      }
-      else
-      {
-        localNotification.icon = 2130841887;
-        localRemoteViews.setImageViewResource(2131371917, 2130841888);
-        localRemoteViews.setTextViewText(2131371916, paramNoticeParam.c);
-        localNotification.contentIntent = ((PendingIntent)localObject);
-      }
-    }
-  }
-  
-  public ConcurrentHashMap<String, bidl> a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  }
-  
-  public void a(int paramInt, Notification paramNotification)
-  {
-    if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {}
-    try
-    {
-      bjmf.a(bhpc.a().a(), 0, paramNotification);
-      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify("AppNotificationManagernotify2", paramInt, paramNotification);
+    while (!QLog.isColorLevel()) {
       return;
     }
-    catch (Exception paramNotification)
-    {
-      bhzm.c("AppNotificationManager", "notify>>>", paramNotification);
-    }
+    QLog.i("WebCoreDump", 2, "No JS plugin engine to handle web core dump");
   }
   
-  public void a(RemoteViews paramRemoteViews)
+  public void computeScroll(View paramView)
   {
-    if ((this.jdField_a_of_type_Bidm == null) || (this.jdField_a_of_type_Bidm.a() == null)) {
-      this.jdField_a_of_type_Bidm = new bidm(this, bhpc.a().a());
-    }
-    bhzm.b("notificationtest", "title color:" + this.jdField_a_of_type_Bidm.b());
-    if (this.jdField_a_of_type_Bidm.b() != null) {
-      paramRemoteViews.setTextColor(2131371928, this.jdField_a_of_type_Bidm.b().intValue());
-    }
-    bhzm.b("notificationtest", "text color:" + this.jdField_a_of_type_Bidm.a());
-    if (this.jdField_a_of_type_Bidm.a() != null) {
-      paramRemoteViews.setTextColor(2131371916, this.jdField_a_of_type_Bidm.a().intValue());
-    }
-    if (this.jdField_a_of_type_Bidm.a() != null) {
-      paramRemoteViews.setTextColor(2131371922, this.jdField_a_of_type_Bidm.a().intValue());
-    }
-    bhzm.b("notificationtest", "text size:" + this.jdField_a_of_type_Bidm.a());
-    if (this.jdField_a_of_type_Bidm.a() > 0.0F) {
-      paramRemoteViews.setFloat(2131371916, "setTextSize", this.jdField_a_of_type_Bidm.a());
-    }
-    if (this.jdField_a_of_type_Bidm.a() > 0.0F) {
-      paramRemoteViews.setFloat(2131371922, "setTextSize", this.jdField_a_of_type_Bidm.a());
-    }
-    if (this.jdField_a_of_type_Bidm.b() > 0.0F) {
-      paramRemoteViews.setFloat(2131371928, "setTextSize", this.jdField_a_of_type_Bidm.b());
-    }
-    ApplicationInfo localApplicationInfo = bhpc.a().a().getApplicationInfo();
-    if ((localApplicationInfo != null) && (localApplicationInfo.targetSdkVersion < 10) && (Build.VERSION.SDK_INT > 10)) {}
-    try
-    {
-      int i = this.jdField_a_of_type_Bidm.b().intValue();
-      paramRemoteViews.setInt(2131371926, "setBackgroundColor", (i & 0xFF000000) + (-1 - i));
-      return;
-    }
-    catch (Exception paramRemoteViews) {}
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.computeScroll(paramView);
   }
   
-  public void a(NoticeParam paramNoticeParam)
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null)
-    {
-      Notification localNotification = a(paramNoticeParam);
-      if (localNotification != null)
-      {
-        bjmf.a(bhpc.a().a(), 0, localNotification);
-        this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify("AppNotificationManagernotify1", a(paramNoticeParam.f, paramNoticeParam.jdField_b_of_type_Int, paramNoticeParam.jdField_a_of_type_JavaLangString), localNotification);
-      }
-    }
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.dispatchTouchEvent(paramMotionEvent, paramView);
   }
   
-  public void a(String paramString)
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    bhzm.a("AppNotificationManager", "cancelBySendTime:" + paramString);
-    if ((this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null))
-    {
-      bidl localbidl = (bidl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (localbidl != null) {
-        this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("AppNotificationManager_cancelBySendTime", localbidl.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    }
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onInterceptTouchEvent(paramMotionEvent, paramView);
   }
   
-  public void b(String paramString)
+  public Object onMiscCallBack(String paramString, Bundle paramBundle)
   {
-    bhzm.a("AppNotificationManager", "cancelBySendTime:" + paramString);
-    if ((this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {
-      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("AppNotificationManager_cancelNotRemoveId", ((bidl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bidf.onMiscCallBack(paramString, paramBundle);
+    return null;
+  }
+  
+  public Object onMiscCallBack(String paramString, Bundle paramBundle, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  {
+    if ((paramString.equalsIgnoreCase("onReportResourceInfo")) || (paramString.equalsIgnoreCase("onResourcesPerformance"))) {
+      a(paramObject1, paramObject2, paramObject3, paramObject4);
     }
+    return null;
+  }
+  
+  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
+  }
+  
+  public void onResponseReceived(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt)
+  {
+    a(null, paramWebResourceRequest, paramWebResourceResponse, Integer.valueOf(paramInt));
+  }
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onTouchEvent(paramMotionEvent, paramView);
+  }
+  
+  public void onUrlChange(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AbsWebView", 2, "onUrlChange detect 302 url: " + paramString2);
+    }
+    SwiftBrowserCookieMonster.d();
+  }
+  
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
   }
 }
 

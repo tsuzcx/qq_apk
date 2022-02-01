@@ -1,6 +1,6 @@
 package com.tencent.qqmini.miniapp.core.page;
 
-import android.support.v4.widget.SwipeRefreshLayout;
+import com.tencent.qqmini.miniapp.core.page.widget.MiniSwipeRefreshLayout;
 import com.tencent.qqmini.sdk.launcher.core.action.NativeViewRequestEvent;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 

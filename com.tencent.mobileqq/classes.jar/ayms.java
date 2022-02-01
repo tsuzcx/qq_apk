@@ -1,8 +1,25 @@
-public class ayms
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+class ayms
+  implements Callback
 {
-  public long a;
-  public long b;
-  public long c;
+  ayms(aymr paramaymr) {}
+  
+  public void onFailure(Call paramCall, IOException paramIOException)
+  {
+    QLog.e("TurtleReportCenter", 4, paramIOException, new Object[0]);
+  }
+  
+  public void onResponse(Call paramCall, Response paramResponse)
+  {
+    if ((paramResponse != null) && (paramResponse.code() == 200)) {
+      QLog.i("TurtleReportCenter", 4, "data report success.");
+    }
+  }
 }
 
 

@@ -1,24 +1,47 @@
-import android.os.Bundle;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage;
-import com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage.2.1;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.observer.BusinessObserver;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class aevm
-  implements BusinessObserver
+  extends RecyclerView.Adapter<aevn>
 {
-  public aevm(ReminderCardItemPage paramReminderCardItemPage) {}
+  aevk jdField_a_of_type_Aevk;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aevm(ScoreQAVFragment paramScoreQAVFragment) {}
+  
+  public aevn a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramBundle = new ReminderCardItemPage.2.1(this, paramInt, paramBoolean, paramBundle);
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      paramBundle.run();
-      return;
+    return new aevn(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559808, paramViewGroup, false), this.jdField_a_of_type_Aevk);
+  }
+  
+  public void a(aevk paramaevk)
+  {
+    this.jdField_a_of_type_Aevk = paramaevk;
+  }
+  
+  public void a(aevn paramaevn, int paramInt)
+  {
+    paramaevn.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt)) {
+      paramaevn.a.setSelected(true);
     }
-    ReminderCardItemPage.a(this.a).runOnUiThread(paramBundle);
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramaevn, paramInt, getItemId(paramInt));
+      return;
+      paramaevn.a.setSelected(false);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

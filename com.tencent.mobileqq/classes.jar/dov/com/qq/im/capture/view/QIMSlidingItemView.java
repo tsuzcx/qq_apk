@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bmzm;
+import bope;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class QIMSlidingItemView
@@ -16,7 +16,7 @@ public class QIMSlidingItemView
 {
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bmzm jdField_a_of_type_Bmzm;
+  bope jdField_a_of_type_Bope;
   
   public QIMSlidingItemView(@NonNull Context paramContext)
   {
@@ -71,20 +71,20 @@ public class QIMSlidingItemView
       }
     }
     label41:
-    for (paramInt = this.jdField_a_of_type_Bmzm.b;; paramInt = this.jdField_a_of_type_Bmzm.jdField_a_of_type_Int)
+    for (paramInt = this.jdField_a_of_type_Bope.b;; paramInt = this.jdField_a_of_type_Bope.jdField_a_of_type_Int)
     {
       localImageView.setImageResource(paramInt);
       return;
     }
   }
   
-  public void setData(bmzm parambmzm)
+  public void setData(bope parambope)
   {
-    this.jdField_a_of_type_Bmzm = parambmzm;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bmzm.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Bmzm.jdField_a_of_type_Int != 0)
+    this.jdField_a_of_type_Bope = parambope;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bope.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Bope.jdField_a_of_type_Int != 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_Bmzm.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_Bope.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
   }

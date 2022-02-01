@@ -1,10 +1,20 @@
-import android.widget.ImageView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class alic
+final class alic
+  implements Animation.AnimationListener
 {
-  public int a = 1;
-  public ImageView a;
-  public String a;
+  alic(View paramView, Animation paramAnimation) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

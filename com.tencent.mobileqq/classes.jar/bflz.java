@@ -1,26 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.appinfo.data.AppDetail;
 
-public class bflz
-  extends BroadcastReceiver
+class bflz
+  implements atiw
 {
-  public bflz(SnapshotService paramSnapshotService) {}
+  bflz(bfly parambfly) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    long l = paramIntent.getLongExtra("id", -1L);
-    int i = paramIntent.getIntExtra("action", -1);
-    if ((l == 0L) && (i == 1) && (SnapshotService.a(this.a) > 0L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(SnapshotService.a(), 2, "receive broadcast: destroy snapshot service");
-      }
-      SnapshotService.a(false);
-      this.a.finish();
+    QLog.i("TroopFileTransferMgr", 1, "waterTest, onGetAppDetailTimeLimit. apkName[" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkName + "]");
+    if (NetworkUtil.getSystemNetwork(BaseApplication.getContext()) == 0) {
+      this.a.jdField_a_of_type_Bflv.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, 106);
     }
+    bfoh.a().a(bflv.e(this.a.jdField_a_of_type_Bflv), this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, null);
+  }
+  
+  public void a(boolean paramBoolean, AppDetail paramAppDetail)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkPackageName = paramAppDetail.packageName;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkName = paramAppDetail.appName;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkIconUrl = paramAppDetail.iconUrl;
   }
 }
 

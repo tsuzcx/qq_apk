@@ -1,10 +1,76 @@
-import kotlin.Metadata;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/VBarrage$Companion;", "", "()V", "EVENT_BARRAGE_DIDAPPEAR", "", "EVENT_BARRAGE_ONCLICK", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class toa {}
+public class toa
+  extends qvo
+{
+  private final long jdField_a_of_type_Long;
+  private final ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private final String jdField_a_of_type_JavaLangString;
+  
+  public toa(long paramLong, String paramString, ArticleInfo paramArticleInfo)
+  {
+    super(-15504151, 13421772, 860716207);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public toa(long paramLong, String paramString, ArticleInfo paramArticleInfo, int paramInt)
+  {
+    super(paramInt, 13421772, 860716207);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  private void a(long paramLong, Context paramContext)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null)) {}
+    ArticleInfo localArticleInfo;
+    String str;
+    do
+    {
+      return;
+      QLog.d("UserSpan", 1, new Object[] { "openPersonUrl, uin = ", Long.valueOf(paramLong) });
+      pkh.a(paramContext, pjj.g + bhcu.encodeToString(String.valueOf(paramLong).getBytes(), 2));
+      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+      pqx.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = localArticleInfo;
+      str = pqf.a(this.jdField_a_of_type_JavaLangString, localArticleInfo, paramLong);
+      if (uvs.a(localArticleInfo.mChannelID)) {}
+      for (paramContext = "0X800935C"; TextUtils.equals(this.jdField_a_of_type_JavaLangString, "3"); paramContext = "0X8007BA3")
+      {
+        olh.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rqy.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
+        pqb.b(localArticleInfo, (int)localArticleInfo.mChannelID);
+        return;
+      }
+      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "5"))
+      {
+        if (rfw.a(localArticleInfo))
+        {
+          olh.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
+          pqb.b(localArticleInfo, (int)localArticleInfo.mChannelID);
+          return;
+        }
+        olh.a(null, localArticleInfo.mSubscribeID, paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), "" + localArticleInfo.mStrategyId, str, false);
+        return;
+      }
+    } while (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "2"));
+    olh.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rqy.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
+  }
+  
+  public void onClick(View paramView)
+  {
+    a(this.jdField_a_of_type_Long, paramView.getContext());
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     toa
  * JD-Core Version:    0.7.0.1
  */

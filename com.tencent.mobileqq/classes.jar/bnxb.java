@@ -1,22 +1,17 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
 
 public class bnxb
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnClickListener
 {
-  public bnxb(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bnxb(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f = this.a.a.getWidth();
-    this.a.g = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.f + ",mSurfaceViewHeight:" + this.a.g);
-    }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    AEEditorVideoClipFragment.b(this.a);
+    AEEditorVideoClipFragment.c(this.a);
+    this.a.a().a(this.a.getActivity());
   }
 }
 

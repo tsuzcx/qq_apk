@@ -1,37 +1,25 @@
+import com.tencent.mobileqq.app.MessageHandler;
+
 public class bcrj
-  extends bcre
 {
-  private int f;
-  private int g;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
   
-  public bcrj(int paramInt1, int paramInt2, int paramInt3)
+  public bcrj(bcrg parambcrg, String paramString, int paramInt, long paramLong1, long paramLong2)
   {
-    super(paramInt1, 16, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
-  }
-  
-  protected void a(int paramInt, float paramFloat)
-  {
-    this.b = ((int)(this.f + (this.g - this.f) * paramFloat));
-    if (this.g - this.f > 0) {
-      if (this.b >= this.g) {
-        this.b = this.g;
-      }
-    }
-    for (;;)
-    {
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.b <= this.g) {
-        this.b = this.g;
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Int = MessageHandler.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcrj
  * JD-Core Version:    0.7.0.1
  */

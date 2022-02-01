@@ -1,27 +1,15 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class afxp
-  extends aezf
+class afxp
+  implements bdye
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
-  public String b;
-  private View jdField_c_of_type_AndroidViewView;
-  private String jdField_c_of_type_JavaLangString;
-  public int e = 544;
-  public int f = 960;
+  afxp(afxn paramafxn) {}
   
-  public afxp()
+  public void a()
   {
-    this.jdField_b_of_type_JavaLangString = "https://v.qqstory.qq.com/shg_1206944563_50009_a1390c0bd23148e29d598d780ad1vid.f30.mp4";
+    bdyk localbdyk = new bdyk(3000, 360, 0);
+    localbdyk.a = true;
+    this.a.a.e.a(new bdyd[] { localbdyk });
   }
 }
 

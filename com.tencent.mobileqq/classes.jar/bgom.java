@@ -1,136 +1,258 @@
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
+import android.content.Context;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.KCWraper.1;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import dualsim.common.OrderCheckResult;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
 public class bgom
+  extends BaseAdapter
 {
-  private static SharedPreferences a()
+  int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  Setting jdField_a_of_type_ComTencentMobileqqDataSetting = null;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<TextView> jdField_a_of_type_JavaLangRefWeakReference = null;
+  protected List<String> a;
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString = null;
+  protected List<String> b;
+  boolean jdField_b_of_type_Boolean = true;
+  boolean c = false;
+  
+  public bgom(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_sdk", 4);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = ((int)paramContext.getResources().getDimension(2131297492));
   }
   
-  protected static Pair<Boolean, Integer> a()
+  private URL a(URL paramURL)
   {
-    SharedPreferences localSharedPreferences = a();
-    return new Pair(Boolean.valueOf(localSharedPreferences.getBoolean("kingCard", false)), Integer.valueOf(localSharedPreferences.getInt("kingCardProduct", 0)));
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    a().edit().putBoolean("supportActivationView", paramBoolean).apply();
-  }
-  
-  protected static boolean a(@NonNull String paramString, @NonNull OrderCheckResult paramOrderCheckResult)
-  {
-    Object localObject = a();
-    boolean bool;
-    int j;
-    int i;
-    if (((SharedPreferences)localObject).getInt("kingCardProduct", -1) != paramOrderCheckResult.product)
+    URL localURL = paramURL;
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      localObject = ((SharedPreferences)localObject).edit().putInt("kingCardProduct", paramOrderCheckResult.product);
-      if (paramOrderCheckResult.kingcard > 0)
+      localURL = paramURL;
+      if ("2000".equals(this.jdField_b_of_type_JavaLangString))
       {
-        bool = true;
-        ((SharedPreferences.Editor)localObject).putBoolean("kingCard", bool).apply();
+        localURL = paramURL;
+        if (paramURL.getProtocol().startsWith("http")) {
+          localURL = usq.a(paramURL.toString(), 2);
+        }
       }
     }
-    else
+    return localURL;
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return (this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > paramInt) && (!TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_JavaUtilList.get(paramInt))) && (AbsDownloader.getFile((String)this.jdField_b_of_type_JavaUtilList.get(paramInt)) != null);
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < getCount())) {
+      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public void a(int paramInt, bgoo parambgoo)
+  {
+    if ((parambgoo == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
+    URLImageView localURLImageView;
+    ImageProgressCircle localImageProgressCircle;
+    label67:
+    Object localObject;
+    label83:
+    label217:
+    label219:
+    do
     {
-      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + paramString, 4);
-      j = paramString.getInt("kingCardSdk", -1);
-      if (paramOrderCheckResult.kingcard != 0) {
-        break label163;
+      return;
+      localURLImageView = parambgoo.jdField_a_of_type_ComTencentImageURLImageView;
+      localImageProgressCircle = parambgoo.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+      parambgoo = a(paramInt);
+      if ((this.c) || (a(paramInt)))
+      {
+        parambgoo = (String)this.jdField_b_of_type_JavaUtilList.get(paramInt);
+        QLog.d("TroopAvatarBigPhotoAdapter", 2, "load origin");
+        if (TextUtils.isEmpty(parambgoo)) {
+          break label217;
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          break label219;
+        }
+        localObject = parambgoo;
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAvatarBigPhotoAdapter", 2, "loadThumbImage() path = " + (String)localObject);
+        }
+        String str = Uri.parse((String)localObject).getScheme();
+        if ((!TextUtils.isEmpty(str)) && ((str.equals("http")) || (str.equals("https")))) {
+          break label294;
+        }
       }
-      i = -1;
+      for (;;)
+      {
+        try
+        {
+          localObject = new File((String)localObject).toURL();
+          localObject = a((URL)localObject);
+          if (((this.jdField_a_of_type_ComTencentMobileqqDataSetting != null) && (this.jdField_a_of_type_ComTencentMobileqqDataSetting.bHeadType != 0)) || (parambgoo == null) || (!parambgoo.equals(akjf.jdField_a_of_type_JavaLangString))) {
+            break label324;
+          }
+          localURLImageView.setImageResource(2130842540);
+          return;
+        }
+        catch (MalformedURLException parambgoo) {}
+        QLog.d("TroopAvatarBigPhotoAdapter", 2, "load current");
+        break label67;
+        break;
+        if (bghb.b(parambgoo))
+        {
+          if ((parambgoo != null) && (parambgoo.equals(akjf.jdField_a_of_type_JavaLangString)))
+          {
+            localObject = bghb.a(parambgoo, this.jdField_a_of_type_JavaLangString, 0);
+            localObject = bghb.b((String)localObject);
+            break label83;
+          }
+          localObject = bghb.a(parambgoo, this.jdField_a_of_type_JavaLangString, 1);
+          continue;
+        }
+        localObject = parambgoo;
+        break label83;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("TroopAvatarBigPhotoAdapter", 2, parambgoo.toString());
+        return;
+        try
+        {
+          localObject = new URL((String)localObject);
+        }
+        catch (MalformedURLException parambgoo) {}
+      }
+    } while (!QLog.isColorLevel());
+    label294:
+    QLog.i("TroopAvatarBigPhotoAdapter", 2, parambgoo.toString());
+    return;
+    label324:
+    parambgoo = URLDrawable.URLDrawableOptions.obtain();
+    parambgoo.mRequestWidth = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
+    parambgoo.mRequestHeight = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
+    parambgoo.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+    if (this.jdField_b_of_type_Boolean) {
+      parambgoo.mPlayGifImage = true;
+    }
+    localURLImageView.setImageDrawable(URLDrawable.getDrawable((URL)localObject, parambgoo));
+    a(localImageProgressCircle);
+    localURLImageView.setURLDrawableDownListener(new bgon(this, localImageProgressCircle, localURLImageView));
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTextView);
+  }
+  
+  public void a(ImageProgressCircle paramImageProgressCircle)
+  {
+    if (paramImageProgressCircle == null) {}
+    while (paramImageProgressCircle.getVisibility() == 4) {
+      return;
+    }
+    paramImageProgressCircle.setVisibility(4);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, Setting paramSetting)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqDataSetting = paramSetting;
+  }
+  
+  public void a(List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(List<String> paramList)
+  {
+    this.jdField_b_of_type_JavaUtilList = paramList;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558959, null);
+      paramView = new bgoo(this);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368501));
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle = ((ImageProgressCircle)localView.findViewById(2131368600));
+      localView.setTag(paramView);
     }
     for (;;)
     {
-      if (j == i) {
-        break label195;
-      }
-      paramString.edit().putInt("kingCardSdk", i).putInt("toast_version", 0).putInt("popup_version_v2", 0).commit();
-      return true;
-      bool = false;
-      break;
-      label163:
-      if (paramOrderCheckResult.kingcard == 1)
-      {
-        if (paramOrderCheckResult.product == 90155946) {
-          i = 2;
-        } else {
-          i = 1;
-        }
-      }
-      else {
-        i = 0;
-      }
+      a(paramView.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+      a(paramInt, paramView);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      bgoo localbgoo = (bgoo)paramView.getTag();
+      localView = paramView;
+      paramView = localbgoo;
     }
-    label195:
-    return false;
-  }
-  
-  protected static boolean c()
-  {
-    return a().getBoolean("supportActivationView", false);
-  }
-  
-  String a()
-  {
-    return "KC.KCWraper";
-  }
-  
-  void a(ViewGroup paramViewGroup) {}
-  
-  void a(bgoy parambgoy, boolean paramBoolean)
-  {
-    if (parambgoy != null)
-    {
-      if (paramBoolean) {
-        ThreadManager.getUIHandler().post(new KCWraper.1(this, parambgoy));
-      }
-    }
-    else {
-      return;
-    }
-    parambgoy.a(false, false, 0);
-  }
-  
-  void a(Runnable paramRunnable)
-  {
-    a("tryLoad : disable kingcard");
-  }
-  
-  public final void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(a(), 2, paramString);
-    }
-  }
-  
-  boolean a()
-  {
-    a("isReady : disable kingcard");
-    return false;
-  }
-  
-  boolean a(Activity paramActivity)
-  {
-    return false;
-  }
-  
-  boolean b()
-  {
-    return false;
   }
 }
 

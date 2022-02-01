@@ -1,15 +1,19 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class adfu
-  implements View.OnLongClickListener
+  implements View.OnTouchListener
 {
-  public adfu(EditInfoActivity paramEditInfoActivity) {}
+  public adfu(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return true;
+    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.leftView.getWindowToken(), 2);
+    return false;
   }
 }
 

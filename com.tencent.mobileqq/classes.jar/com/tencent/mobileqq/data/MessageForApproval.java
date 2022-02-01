@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import amtj;
+import anvx;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -70,8 +70,8 @@ public class MessageForApproval
           {
             String str3 = ((String)localObject).substring(3);
             localObject = str3;
-            if (amtj.a(2131705731).equalsIgnoreCase(str3)) {
-              localObject = amtj.a(2131705690);
+            if (anvx.a(2131706082).equalsIgnoreCase(str3)) {
+              localObject = anvx.a(2131706041);
             }
             localStringBuilder.append((String)localObject);
           }
@@ -89,7 +89,7 @@ public class MessageForApproval
       }
       for (;;)
       {
-        return amtj.a(2131705710) + localStringBuilder.toString();
+        return anvx.a(2131706061) + localStringBuilder.toString();
         if (((String)localObject).startsWith("002"))
         {
           localStringBuilder.append(((String)localObject).substring(3));
@@ -110,12 +110,12 @@ public class MessageForApproval
   
   public String getSummaryMsg()
   {
-    return amtj.a(2131705726);
+    return anvx.a(2131706077);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForApproval
  * JD-Core Version:    0.7.0.1
  */

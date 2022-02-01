@@ -3,16 +3,16 @@ package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import pjn;
+import puk;
 
 public class DynamicChannelDataModule$10
   implements Runnable
 {
-  public DynamicChannelDataModule$10(pjn parampjn, int paramInt) {}
+  public DynamicChannelDataModule$10(puk parampuk, int paramInt) {}
   
   public void run()
   {
-    boolean bool = pjn.a(this.this$0).execSQL("DELETE FROM " + DynamicChannelDataModel.class.getSimpleName() + " WHERE channelID = " + this.a);
+    boolean bool = puk.a(this.this$0).execSQL("DELETE FROM " + DynamicChannelDataModel.class.getSimpleName() + " WHERE channelID = " + this.a);
     QLog.d("DynamicChannelDataModule", 2, new Object[] { "clear dataModel from db, channelID = ", Integer.valueOf(this.a), ", res = ", Boolean.valueOf(bool) });
   }
 }

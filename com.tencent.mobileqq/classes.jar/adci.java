@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
 public class adci
-  implements DialogInterface.OnClickListener
+  extends adae
 {
-  public adci(ContactBindedActivity paramContactBindedActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adaa paramadaa)
   {
-    ContactBindedActivity.a(this.a, null);
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    addh.a(paramadaa, adac.a);
+    return true;
   }
 }
 

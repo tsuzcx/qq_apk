@@ -1,55 +1,48 @@
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.1.1;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import mqq.app.NewIntent;
 
 public class ahib
-  extends MqqHandler
+  implements blel
 {
-  ahib(ahia paramahia) {}
+  public ahib(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Activity paramActivity, AbsStructMsg paramAbsStructMsg) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(blek paramblek)
   {
-    switch (paramMessage.what)
-    {
+    if (StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
+      return;
     }
-    do
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("msg_template_id");
+    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, oln.class);
+    localNewIntent.putExtra("cmd", "PubAccountFollowSvc.subscribe");
+    mobileqq_mp.SubscribeRequest localSubscribeRequest = new mobileqq_mp.SubscribeRequest();
+    localSubscribeRequest.msg_id.set(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
+    localSubscribeRequest.index.set(paramblek.a);
+    long l1 = 0L;
+    try
     {
-      do
-      {
-        return;
-      } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof List)));
-      this.a.a((List)paramMessage.obj);
-      if ((ahia.a(this.a) == null) || (ahia.a(this.a).size() == 0))
-      {
-        ahia.a(this.a, System.currentTimeMillis());
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.doOnCreate, start requestReceiveMultiMsg");
-        }
-        this.a.a();
-        this.a.jdField_a_of_type_JavaLangRunnable = new MultiForwardChatPie.1.1(this);
-        ahia.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 60000L);
-        ThreadRegulator.a().b(1);
-        awcm.a().a(this.a.app, this.a.b, this.a.app.getCurrentAccountUin(), this.a.sessionInfo.curFriendUin, this.a.sessionInfo.curFriendUin, this.a.sessionInfo.curType, this.a.jdField_a_of_type_Long, 1035, this.a.a(ahia.a(this.a)));
-        return;
-      }
-      paramMessage = ChatActivityUtils.a(ahia.a(this.a), this.a.sessionInfo, this.a.app);
-      paramMessage = ChatActivityUtils.a(this.a.app, BaseApplicationImpl.getContext(), this.a.sessionInfo, paramMessage, -1L);
-      ahia.a(this.a).setVisibility(8);
-      ahia.a(this.a).setVisibility(0);
-      ahia.a(this.a).setVisibility(0);
-      ahia.a(this.a).a(ahia.a(this.a), paramMessage);
-    } while (!QLog.isColorLevel());
-    QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.doOnCreate, MultiMsg has been downloaded");
+      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
+      l1 = l2;
+    }
+    catch (Exception paramblek)
+    {
+      label108:
+      break label108;
+    }
+    localSubscribeRequest.template_id.set(str);
+    localSubscribeRequest.puin.set(l1);
+    localNewIntent.setObserver(new ahic(this, str));
+    localNewIntent.putExtra("data", localSubscribeRequest.toByteArray());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a.startServlet(localNewIntent);
+    StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
   }
 }
 

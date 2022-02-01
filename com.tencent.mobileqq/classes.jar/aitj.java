@@ -1,32 +1,61 @@
-import android.support.v4.view.ViewPager;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class aitj
-  implements View.OnClickListener
+  extends ReportDialog
 {
-  public aitj(ImgPreviewAdapter paramImgPreviewAdapter) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public aitj(Context paramContext)
   {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
-    if (localEmoticonFromGroupEntity != null) {
-      if (localEmoticonFromGroupEntity.msg != null) {
-        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
+    super(paramContext, 2131755403);
+  }
+  
+  public aitj(Context paramContext, String paramString)
+  {
+    super(paramContext, 2131755403);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public View a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+    }
+    return null;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = LayoutInflater.from(getContext()).inflate(2131561614, null);
+    Object localObject = getWindow();
+    ((Window)localObject).setContentView(paramBundle);
+    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
+    localLayoutParams.width = -2;
+    localLayoutParams.height = -2;
+    localLayoutParams.gravity = 48;
+    localLayoutParams.y += getContext().getResources().getDimensionPixelOffset(2131299167);
+    ((Window)localObject).setAttributes(localLayoutParams);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      localObject = (TextView)paramBundle.findViewById(2131371603);
+      if (localObject != null) {
+        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
-      continue;
-      QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
-    }
+    this.jdField_a_of_type_AndroidViewView = paramBundle;
+    setCanceledOnTouchOutside(false);
   }
 }
 

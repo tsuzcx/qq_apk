@@ -1,362 +1,215 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.soload.DownSoLoader.2;
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.soload.LoadOptions;
-import com.tencent.mobileqq.soload.LoadParam;
-import com.tencent.mobileqq.soload.LoadParam.LoadItem;
-import com.tencent.mobileqq.soload.SoLoadInfo;
-import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
 import java.util.Map;
-import java.util.Set;
 
-public class bbyt
-  implements bbzb
+class bbyt
+  implements AdapterView.OnItemClickListener
 {
-  private static HashMap<String, SoLoadInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static Map<String, bbys> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private static Set<String> jdField_a_of_type_JavaUtilSet = new DownSoLoader.2();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private bbzh jdField_a_of_type_Bbzh;
-  private LoadParam.LoadItem jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem;
-  private LoadParam jdField_a_of_type_ComTencentMobileqqSoloadLoadParam;
-  private SoLoadInfo jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo = SoLoadInfo.sDefault;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  bbyt(bbyp parambbyp) {}
   
-  private int a(LoadParam.LoadItem paramLoadItem, @NonNull SoLoadInfo paramSoLoadInfo)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = 0;
-    int j = a(paramSoLoadInfo.soPathToLoad, paramLoadItem);
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.DownSoLoader", 2, "[loadConfigSo] res=" + j + ",filePath=" + paramSoLoadInfo.soPathToLoad);
-    }
-    boolean bool;
-    if (j == 0)
+    bhbr.a(true);
+    SearchHistory localSearchHistory;
+    label278:
+    int i;
+    if ((paramAdapterView == this.a.jdField_a_of_type_ComTencentWidgetXListView) && (this.a.jdField_a_of_type_Amgq != null))
     {
-      bool = true;
-      a(bool, this.jdField_a_of_type_JavaLangString, paramSoLoadInfo.soPathToLoad, paramLoadItem);
-      if (j != 0) {
-        break label116;
+      bcnc.a("home_page", "clk_history", new String[] { "" + paramInt });
+      paramAdapterView = (bbzc)this.a.jdField_a_of_type_Amgq.getItem(paramInt);
+      if (!(paramAdapterView instanceof bbyk)) {
+        break label1251;
       }
-      bbzk.a(paramLoadItem, paramSoLoadInfo.soPathToLoad);
-      bbzk.a(paramLoadItem, paramSoLoadInfo);
-      bbzk.a(paramLoadItem.name);
-      i = j;
-    }
-    label116:
-    while (b(paramLoadItem))
-    {
-      return i;
-      bool = false;
-      break;
-    }
-    return j;
-  }
-  
-  private int a(@NonNull SoLoadInfo paramSoLoadInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo = paramSoLoadInfo;
-    int j = this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.curCode;
-    int i;
-    if (j == 0) {
-      i = a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem, this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo);
-    }
-    do
-    {
-      do
+      localSearchHistory = ((bbyk)paramAdapterView).a();
+      QLog.d("searchUtils", 2, "on serarch history click, " + localSearchHistory.toString());
+      switch (localSearchHistory.type)
       {
-        return i;
-        i = j;
-      } while (j != 2);
-      i = j;
-    } while (!a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem));
-    return 0;
-  }
-  
-  private int a(String paramString, LoadParam.LoadItem paramLoadItem)
-  {
-    int j = 0;
-    int i;
-    if ((!new File(paramString).exists()) && (b(paramString))) {
-      i = 5;
+      default: 
+        paramInt = 1;
+        if (paramInt != 0)
+        {
+          bcnc.a(bbyp.a(this.a), localSearchHistory.displayName, localSearchHistory.uin, localSearchHistory.troopUin, localSearchHistory.type);
+          if (localSearchHistory.type != 1) {
+            break label1176;
+          }
+          i = 2;
+        }
+        break;
+      }
     }
     for (;;)
     {
-      return i;
-      if ((paramLoadItem.lops.flag & 0x1) != 0)
+      label324:
+      paramInt = 0;
+      if (this.a.b == 2)
       {
-        i = j;
-        if ((paramLoadItem.lops.flag & 0x2) != 0)
+        paramInt = 3;
+        label339:
+        bdla.b(null, "CliOper", "", "", "Search", "May_find", paramInt, 0, String.valueOf(i), "", "", "");
+        if (localSearchHistory.type != 0) {
+          break label1226;
+        }
+        paramInt = 1;
+      }
+      for (;;)
+      {
+        bcjs.a(bbyp.a(this.a), 0, SearchEntryFragment.a(this.a.jdField_a_of_type_Int), "0X8009D19", paramInt, 0, null, null);
+        return;
+        paramAdapterView = new ProfileActivity.AllInOne(localSearchHistory.uin, 29);
+        paramAdapterView.k = localSearchHistory.displayName;
+        paramAdapterView.g = 3;
+        ProfileActivity.b(paramView.getContext(), paramAdapterView);
+        paramInt = 1;
+        break label278;
+        paramAdapterView = new ProfileActivity.AllInOne(localSearchHistory.uin, 34);
+        paramAdapterView.k = localSearchHistory.displayName;
+        paramAdapterView.g = 3;
+        ProfileActivity.b(paramView.getContext(), paramAdapterView);
+        paramInt = 1;
+        break label278;
+        paramAdapterView = new ProfileActivity.AllInOne(localSearchHistory.uin, 53);
+        paramAdapterView.k = localSearchHistory.displayName;
+        paramAdapterView.g = 3;
+        ProfileActivity.b(paramView.getContext(), paramAdapterView);
+        paramInt = 1;
+        break label278;
+        paramAdapterView = new ProfileActivity.AllInOne(localSearchHistory.uin, 53);
+        paramAdapterView.k = localSearchHistory.displayName;
+        paramAdapterView.g = 3;
+        ProfileActivity.b(paramView.getContext(), paramAdapterView);
+        paramInt = 1;
+        break label278;
+        ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(localSearchHistory.uin, 33);
+        localAllInOne.a = new ArrayList();
+        localAllInOne.k = localSearchHistory.displayName;
+        if (!TextUtils.isEmpty(localSearchHistory.uin))
         {
-          i = j;
-          if (!jdField_a_of_type_JavaUtilSet.contains(paramLoadItem.name))
+          String[] arrayOfString = localSearchHistory.uin.split("\\|");
+          if (arrayOfString != null)
           {
-            paramString = paramLoadItem.lops;
-            paramString.flag &= 0xFFFFFFFD;
-            return 0;
+            paramInt = 0;
+            if (paramInt < arrayOfString.length)
+            {
+              ArrayList localArrayList = localAllInOne.a;
+              StringBuilder localStringBuilder = new StringBuilder().append(anvx.a(2131704963));
+              if (arrayOfString.length > 0) {}
+              for (paramAdapterView = Integer.valueOf(paramInt + 1);; paramAdapterView = "")
+              {
+                localArrayList.add(new ProfileActivity.CardContactInfo(paramAdapterView, arrayOfString[paramInt], null));
+                paramInt += 1;
+                break;
+              }
+            }
           }
         }
-      }
-      else
-      {
-        try
+        localAllInOne.g = 3;
+        ProfileActivity.b(paramView.getContext(), localAllInOne);
+        paramInt = 1;
+        break label278;
+        paramAdapterView = (anvk)bbyp.a(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if (paramAdapterView != null)
         {
-          System.load(paramString);
-          paramString = paramLoadItem.lops;
-          paramString.flag |= 0x2;
-          i = j;
-          if (b())
+          paramAdapterView = paramAdapterView.e(localSearchHistory.uin);
+          if (paramAdapterView != null)
           {
-            jdField_a_of_type_JavaUtilHashMap.put(paramLoadItem.name, this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo);
-            return 0;
+            alik.a = true;
+            alik.a(paramView.getContext(), bbyp.a(this.a), localSearchHistory.uin, 0, ContactUtils.getFriendName(paramAdapterView), false);
+          }
+          paramInt = 1;
+          break label278;
+        }
+        paramInt = 0;
+        break label278;
+        paramAdapterView = (antp)bbyp.a(this.a).getManager(QQManagerFactory.DISCUSSION_MANAGER);
+        if (paramAdapterView != null)
+        {
+          paramAdapterView = paramAdapterView.a(localSearchHistory.troopUin);
+          if (paramAdapterView != null)
+          {
+            paramAdapterView = (DiscussionMemberInfo)paramAdapterView.get(localSearchHistory.uin);
+            if (paramAdapterView != null)
+            {
+              alik.a = true;
+              alik.a(paramView.getContext(), localSearchHistory.uin, localSearchHistory.troopUin, localSearchHistory.type, paramAdapterView.memberName, false, null);
+              paramInt = 1;
+              break label278;
+            }
           }
         }
-        catch (Throwable paramString)
+        alik.a = true;
+        alik.a(paramView.getContext(), localSearchHistory.uin, localSearchHistory.troopUin, localSearchHistory.type, localSearchHistory.displayName, false, null);
+        paramInt = 1;
+        break label278;
+        alik.a = true;
+        boolean bool = false;
+        if ((paramView.getContext() instanceof UniteSearchActivity)) {
+          bool = bbzq.a(localSearchHistory.uin);
+        }
+        if (!bool)
         {
-          QLog.e("SoLoadWidget.DownSoLoader", 1, paramString, new Object[0]);
-          this.jdField_a_of_type_JavaLangString = akgd.a(paramString);
+          alik.a(paramView.getContext(), localSearchHistory.uin, localSearchHistory.troopUin, localSearchHistory.type, localSearchHistory.displayName, false, null);
+          paramInt = 1;
+          break label278;
+        }
+        bghs.a(paramView.getContext(), null, localSearchHistory.uin);
+        paramInt = 1;
+        break label278;
+        alik.a = true;
+        alik.a(paramView.getContext(), bbyp.a(this.a), localSearchHistory.uin, localSearchHistory.type, localSearchHistory.displayName, false);
+        paramInt = 1;
+        break label278;
+        if (!TextUtils.equals(localSearchHistory.uin, AppConstants.NEW_KANDIAN_UIN)) {
+          break;
+        }
+        olh.a(null, "CliOper", "", "", "0X800671B", "0X800671B", 0, 0, "", "", "", "", false);
+        osg.a(paramView.getContext(), null, -1L, 1);
+        paramInt = 1;
+        break label278;
+        olh.a(null, "CliOper", "", "", "0X800671B", "0X800671B", 0, 0, "", "", "", "", false);
+        osg.a(bbyp.a(this.a), paramView.getContext(), 1, 0);
+        break;
+        label1176:
+        if (localSearchHistory.type != 3000) {
+          break label1256;
+        }
+        i = 3;
+        break label324;
+        if (this.a.b == 10)
+        {
+          paramInt = 2;
+          break label339;
+        }
+        if (this.a.b != 1) {
+          break label339;
+        }
+        paramInt = 1;
+        break label339;
+        label1226:
+        if ((localSearchHistory.type == 1) || (localSearchHistory.type == 3000)) {
+          paramInt = 2;
+        } else {
+          label1251:
+          paramInt = 0;
         }
       }
+      label1256:
+      i = 1;
     }
-    return 6;
-  }
-  
-  private LoadExtResult a(int paramInt)
-  {
-    String str = null;
-    if (paramInt == 6) {
-      str = this.jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
-    {
-      return a(paramInt, str);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.failDetail)) {
-        str = this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.failDetail;
-      }
-    }
-  }
-  
-  private LoadExtResult a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    bbzi.a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq, "ver=" + this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.getVer(), "load.item.load", this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, paramInt, paramString);
-    LoadExtResult localLoadExtResult = LoadExtResult.create(paramInt, 1, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.lops);
-    int i;
-    if ((paramInt != 0) && (this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType == LoadParam.CALL_TYPE_ASYNC_BY_SYNC))
-    {
-      bbys localbbys = (bbys)jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name);
-      paramString = localbbys;
-      if (localbbys == null) {
-        paramString = new bbys();
-      }
-      boolean bool = NetworkUtil.isNetSupport(BaseApplicationImpl.getApplication());
-      long l3 = NetConnInfoCenter.getServerTimeMillis();
-      i = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getApplication());
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.DownSoLoader", 2, "[onLoadResult]AsyncFailInfo:" + paramString + ",name:" + this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name + ",isNetSupport:" + bool + ",curTime=" + l3 + ",netType=" + i);
-      }
-      if (bool)
-      {
-        paramString.jdField_a_of_type_Int = paramInt;
-        paramString.c = i;
-        paramString.jdField_a_of_type_Long = l3;
-        paramString.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.subErrCode;
-        jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, paramString);
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType == LoadParam.CALL_TYPE_SYNC) {
-      localLoadExtResult.failInfo = ((bbys)jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name));
-    }
-    if (this.jdField_a_of_type_Bbzh != null) {
-      this.jdField_a_of_type_Bbzh.onLoadResult(paramInt, localLoadExtResult);
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.isFirstlyLoad) {
-      i = 3;
-    }
-    for (;;)
-    {
-      if (!LoadParam.isCloseReport(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam)) {
-        bcef.b(null, "dc00899", "SoLoad", "", "resSingle", this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType, paramInt, this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.getVer(), i + "", l1 - l2 + "", this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.subErrCode + "");
-      }
-      return localLoadExtResult;
-      if (this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.isNeedDownload) {
-        i = 1;
-      } else {
-        i = 2;
-      }
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    paramString = (SoLoadInfo)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString == null) {
-      return "";
-    }
-    return paramString.getVer();
-  }
-  
-  @Deprecated
-  public static List<String> a()
-  {
-    return new LinkedList(jdField_a_of_type_JavaUtilHashMap.keySet());
-  }
-  
-  private void a(boolean paramBoolean, String paramString1, String paramString2, LoadParam.LoadItem paramLoadItem)
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name).append("_").append(this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.soDetailInfo.ver).append("_").append(this.c).append("_").append(this.d).append("_").append(this.jdField_b_of_type_Int).append("_").append(paramBoolean).append("_").append(this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.soDetailInfo.testFlag).append("_").append(paramLoadItem.lops.flag).append("_").append(this.jdField_a_of_type_Int);
-      paramLoadItem = new StringBuilder();
-      paramLoadItem.append(BaseApplicationImpl.processName).append("_").append(akgd.c(paramString2));
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.DownSoLoader", 2, "[testNoExist] skey=" + localStringBuilder + ",step=" + paramLoadItem);
-      }
-      VACDReportUtil.a(localStringBuilder.toString(), "qqwallet", "SoLoadNotExist", paramLoadItem.toString(), null, this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.soDetailInfo.testFlag, paramString1);
-    }
-  }
-  
-  private boolean a()
-  {
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo = ((SoLoadInfo)jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name));
-      this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.isFirstlyLoad = false;
-      LoadOptions localLoadOptions = this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.lops;
-      localLoadOptions.flag |= 0x2;
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean a(LoadParam.LoadItem paramLoadItem)
-  {
-    boolean bool2 = false;
-    String str = paramLoadItem.lops.getOldSoPath();
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(str))
-    {
-      bool1 = bool2;
-      if (new File(str).exists())
-      {
-        int i = a(str, paramLoadItem);
-        bbzi.a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq, null, "load.item.load.oldpath", null, i, null);
-        bool1 = bool2;
-        if (i == 0) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private void b(LoadParam paramLoadParam, bbzh parambbzh)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam = paramLoadParam;
-    this.jdField_a_of_type_Bbzh = parambbzh;
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem = ((LoadParam.LoadItem)paramLoadParam.mLoadItems.get(0));
-    bbzi.a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq, null, "load.item.start", this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, 0, null);
-  }
-  
-  private boolean b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.soDetailInfo.relatedFileInfo == null) {}
-    while (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.rFileFolder)) {
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean b(LoadParam.LoadItem paramLoadItem)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramLoadItem.lops.isLoadLastSuccWhenFail)
-    {
-      String str = bbzk.a(paramLoadItem);
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(str))
-      {
-        int i = a(str, paramLoadItem);
-        bbzi.a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq, null, "load.item.load.last", null, i, null);
-        bool1 = bool2;
-        if (i == 0) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private boolean b(String paramString)
-  {
-    return true;
-  }
-  
-  public LoadExtResult a(LoadParam paramLoadParam)
-  {
-    b(paramLoadParam, null);
-    if (a()) {
-      return a(0);
-    }
-    return a(a(new bbza(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem).a()));
-  }
-  
-  public void a(LoadParam paramLoadParam, bbzh parambbzh)
-  {
-    b(paramLoadParam, parambbzh);
-    if (a())
-    {
-      a(0);
-      return;
-    }
-    new bbyv(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem).a(new bbyu(this));
-  }
-  
-  public void a(String paramString)
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType != LoadParam.CALL_TYPE_SYNC)) {
-      a(8, paramString);
-    }
-    for (;;)
-    {
-      bbzj.a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.getVer(), 0);
-      return;
-      VACDReportUtil.a("ver=" + this.jdField_a_of_type_ComTencentMobileqqSoloadSoLoadInfo.getVer(), "SoLoadModule", "SoLoadSingle", "Exception", this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, 2, paramString);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str1;
-    String str2;
-    do
-    {
-      return false;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name;
-      str2 = this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.soFileName;
-    } while ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (!paramString.contains(str2)));
-    return true;
   }
 }
 

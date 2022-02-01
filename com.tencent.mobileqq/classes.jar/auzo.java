@@ -1,56 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.widget.ThemeImageView;
 
-final class auzo
-  implements DialogInterface.OnClickListener
+public class auzo
+  extends RecyclerView.ViewHolder
 {
-  auzo(int paramInt1, String paramString1, String paramString2, int paramInt2) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
+  private TextView b;
+  private TextView c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  auzo(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (paramInt == 1)
-    {
-      ((auyv)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(156)).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int);
-      paramDialogInterface.dismiss();
-      if (this.jdField_b_of_type_Int == 1)
-      {
-        paramDialogInterface = "clk_openframe_open";
-        if (this.jdField_a_of_type_Int != 1) {
-          break label88;
-        }
-        auzn.a(bool1, paramDialogInterface, this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    label88:
-    while (paramInt != 0) {
-      for (;;)
-      {
-        return;
-        paramDialogInterface = "clk_joinbar_open";
-        continue;
-        bool1 = false;
-      }
-    }
-    paramDialogInterface.dismiss();
-    if (this.jdField_b_of_type_Int == 1)
-    {
-      paramDialogInterface = "clk_openframe_cancel";
-      if (this.jdField_a_of_type_Int != 1) {
-        break label141;
-      }
-    }
-    label141:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      auzn.a(bool1, paramDialogInterface, this.jdField_a_of_type_JavaLangString);
-      return;
-      paramDialogInterface = "clk_joinbar_cancel";
-      break;
-    }
+    super(paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368969));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368971));
+    this.b = ((TextView)paramView.findViewById(2131368974));
+    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131368967));
+    this.c = ((TextView)paramView.findViewById(2131368973));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368972));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368968);
+  }
+  
+  View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  Button a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetButton;
+  }
+  
+  TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  URLImageView a()
+  {
+    return this.jdField_a_of_type_ComTencentImageURLImageView;
+  }
+  
+  public ThemeImageView a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetThemeImageView;
+  }
+  
+  TextView b()
+  {
+    return this.c;
   }
 }
 

@@ -1,11 +1,21 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class ajnc
+class ajnc
+  implements awza
 {
-  public ImageView a;
-  public TextView a;
-  public bfxc a;
+  ajnc(ajmy paramajmy) {}
+  
+  public void a(int paramInt)
+  {
+    this.a.c(false);
+    ajmy.a(this.a);
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 

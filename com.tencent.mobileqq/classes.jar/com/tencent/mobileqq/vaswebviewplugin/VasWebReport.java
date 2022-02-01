@@ -7,14 +7,14 @@ import android.content.SharedPreferences;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcef;
-import bgfs;
-import bguf;
-import bguj;
-import bgve;
-import bgxd;
-import bgzw;
-import bhov;
+import bdla;
+import bhon;
+import biex;
+import bifb;
+import bifw;
+import bihv;
+import biko;
+import bizo;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
@@ -31,7 +31,7 @@ import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import npn;
+import nwo;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -49,7 +49,7 @@ public class VasWebReport
   private Map<String, Integer> errorMap = new HashMap();
   private JSONObject mFirstScreenPerformanceObject;
   private JSONObject mIndexPerformanceObject;
-  bgfs mURLInterceptManager;
+  bhon mURLInterceptManager;
   private int mWebCoreDumpFlags;
   private int mWebCoreDumpHandlePolicy;
   private Map<String, Long> startTimeMap = new HashMap();
@@ -95,10 +95,10 @@ public class VasWebReport
               long l5 = paramString.optLong("recv_end");
               QLog.d("Web_X5_Performance", 1, "Web_X5_Load_Index, dns start: " + l1 + ", connect start: " + l2 + ", send start: " + l3 + ", receive first packet start: " + l4 + ", receive last packet end: " + l5);
               paramJSONObject = this.mRuntime.a(this.mRuntime.a());
-              if ((paramJSONObject == null) || (!(paramJSONObject instanceof bgzw))) {
+              if ((paramJSONObject == null) || (!(paramJSONObject instanceof biko))) {
                 break label420;
               }
-              ((bgzw)paramJSONObject).setX5Performance(paramString);
+              ((biko)paramJSONObject).setX5Performance(paramString);
               this.mIndexPerformanceObject = null;
               this.mFirstScreenPerformanceObject = null;
               return;
@@ -134,8 +134,8 @@ public class VasWebReport
             }
           }
         }
-      } while (!(this.mRuntime.a() instanceof bguf));
-      paramJSONObject = (bgxd)super.getBrowserComponent(-2);
+      } while (!(this.mRuntime.a() instanceof biex));
+      paramJSONObject = (bihv)super.getBrowserComponent(-2);
     } while (paramJSONObject == null);
     paramJSONObject.a = paramString;
     this.mIndexPerformanceObject = null;
@@ -172,11 +172,11 @@ public class VasWebReport
         localJSONObject.optLong("connect_end");
         localJSONObject.optLong("recv_start");
         localJSONObject.optLong("recv_end");
-        bguj localbguj = this.mRuntime.a(this.mRuntime.a());
-        if ((localbguj == null) || (!(localbguj instanceof bgzw))) {
+        bifb localbifb = this.mRuntime.a(this.mRuntime.a());
+        if ((localbifb == null) || (!(localbifb instanceof biko))) {
           break label298;
         }
-        ((bgzw)localbguj).setX5Performance(localJSONObject);
+        ((biko)localbifb).setX5Performance(localJSONObject);
       }
       catch (Exception paramJSONObject)
       {
@@ -240,9 +240,9 @@ public class VasWebReport
             k = (int)(l6 - l5);
             m = paramJSONObject.optInt("errorcode");
             localObject = paramJSONObject.optString("website_address");
-            int n = bhov.a(null);
+            int n = bizo.a(null);
             if (QLog.isColorLevel()) {
-              QLog.i("PublicAccountWebReport", 2, "urlStr: " + str3 + ",errorcode:" + m + ",netType:" + n + ",DNSCost" + i + ",connectCost:" + j + ",receiveCost:" + k + ",website_address:" + (String)localObject + ",AppSetting.subVersion:" + "8.4.8,3,4810");
+              QLog.i("PublicAccountWebReport", 2, "urlStr: " + str3 + ",errorcode:" + m + ",netType:" + n + ",DNSCost" + i + ",connectCost:" + j + ",receiveCost:" + k + ",website_address:" + (String)localObject + ",AppSetting.subVersion:" + "8.4.10,3,4875");
             }
           }
           if (!str2.equalsIgnoreCase(str1)) {
@@ -447,7 +447,7 @@ public class VasWebReport
           if (!this.errorMap.containsKey(paramString)) {
             break label984;
           }
-          bcef.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 1, "errocode:" + this.errorMap.get(paramString), paramMap, npn.b(paramString, new String[0]), "8.4.8--android--" + Build.VERSION.SDK_INT);
+          bdla.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 1, "errocode:" + this.errorMap.get(paramString), paramMap, nwo.b(paramString, new String[0]), "8.4.10--android--" + Build.VERSION.SDK_INT);
           this.errorMap.remove(paramString);
           this.startTimeMap.remove(paramString);
           paramString = this.mRuntime.a();
@@ -455,7 +455,7 @@ public class VasWebReport
           if ((paramMap == null) || (paramMap.browserApp == null) || (paramMap.browserApp.a != null)) {
             break;
           }
-          paramMap.browserApp.a = new bgfs(paramString);
+          paramMap.browserApp.a = new bhon(paramString);
           break;
           if (3 == NetworkUtil.getSystemNetwork((Context)localObject1)) {
             paramMap = "3G";
@@ -469,7 +469,7 @@ public class VasWebReport
         if (this.startTimeMap.containsKey(paramString)) {}
         for (paramLong = System.currentTimeMillis() - ((Long)this.startTimeMap.get(paramString)).longValue();; paramLong = -1L)
         {
-          bcef.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 0, "" + paramLong, paramMap, npn.b(paramString, new String[0]), "8.4.8--android--" + Build.VERSION.SDK_INT);
+          bdla.a(null, "P_CliOper", "vasweb", "", "load", "finish", 0, 0, "" + paramLong, paramMap, nwo.b(paramString, new String[0]), "8.4.10--android--" + Build.VERSION.SDK_INT);
           break;
           if (QLog.isColorLevel()) {
             QLog.e("VasWebReport", 2, "VasWebReport--EVENT_LOAD_FINISH:report erro,there is not starttime for " + paramString);
@@ -493,7 +493,7 @@ public class VasWebReport
   {
     if (("debug".equalsIgnoreCase(paramString2)) && ("log".equalsIgnoreCase(paramString3)))
     {
-      paramJsBridgeListener = (bgxd)super.getBrowserComponent(-2);
+      paramJsBridgeListener = (bihv)super.getBrowserComponent(-2);
       if (paramJsBridgeListener != null)
       {
         if (QLog.isColorLevel()) {

@@ -576,6 +576,11 @@ public class ViolaInstance
     return this.mMaxVDomDeepLayer;
   }
   
+  public <T> T getModule(String paramString)
+  {
+    return ViolaModuleManager.getModule(this.mInstanceId, paramString);
+  }
+  
   public NativeInvokeHelper getNativeInvokeHelper()
   {
     return this.mNativeInvokeHelper;

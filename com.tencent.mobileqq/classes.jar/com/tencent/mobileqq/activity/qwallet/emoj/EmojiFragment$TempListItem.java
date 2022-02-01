@@ -54,7 +54,7 @@ class EmojiFragment$TempListItem
     this.mCornerImageView.getLayoutParams().width = UIUtils.dip2px(paramContext, 66.0F);
     this.mCornerImageView.getLayoutParams().height = UIUtils.dip2px(paramContext, 66.0F);
     this.mCornerImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.mCornerImageView.setImageResource(2130843387);
+    this.mCornerImageView.setImageResource(2130843424);
     this.mCornerImageView.setVisibility(8);
     this.mLoadingView = new View(paramContext);
     paramEmojiFragment.addView(this.mLoadingView);
@@ -95,7 +95,7 @@ class EmojiFragment$TempListItem
       if (QLog.isColorLevel()) {
         QLog.i("EmojiFragment", 2, "模板url: " + (String)localObject1);
       }
-      Object localObject2 = getResources().getDrawable(2130843480);
+      Object localObject2 = getResources().getDrawable(2130843517);
       this.mLoadingView.setBackgroundDrawable((Drawable)localObject2);
       ((Animatable)localObject2).start();
       localObject2 = new Bundle();
@@ -127,7 +127,7 @@ class EmojiFragment$TempListItem
       break;
       label252:
       this.mImageView.setImageDrawable(null);
-      this.mLoadingView.setBackgroundDrawable(getResources().getDrawable(2130843557));
+      this.mLoadingView.setBackgroundDrawable(getResources().getDrawable(2130843594));
       this.mCornerImageView.setVisibility(8);
     }
   }

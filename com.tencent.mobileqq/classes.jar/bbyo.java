@@ -1,45 +1,28 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.List;
 
 public class bbyo
-  implements BusinessObserver
 {
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
+  public int a;
+  public String a;
+  public List<String> a;
+  public String b;
+  public String c;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3, String paramString, long paramLong) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public bbyo(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramObject = (Object[])paramObject;
-          } while ((paramObject == null) || (paramObject.length != 4));
-          a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
-          return;
-          paramObject = (Object[])paramObject;
-        } while ((paramObject == null) || (paramObject.length != 5));
-        a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3], ((Long)paramObject[4]).longValue());
-        return;
-        paramObject = (Object[])paramObject;
-      } while ((paramObject == null) || (paramObject.length != 3));
-      a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue());
-      return;
-      paramObject = (Object[])paramObject;
-    } while ((paramObject == null) || (paramObject.length != 3));
-    a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public bbyo(int paramInt, String paramString1, String paramString2, String paramString3, List<String> paramList)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 

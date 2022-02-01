@@ -1,14 +1,9 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
 
 public class agvl
-  implements agut
+  extends afqr
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramagap.e(paramagcc, paramString);
-  }
+  public HiBoomTextView a;
 }
 
 

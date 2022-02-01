@@ -1,26 +1,27 @@
 package com.tencent.mobileqq.statistics;
 
-import abvh;
-import anes;
-import anln;
-import auod;
-import auog;
-import avif;
-import bahf;
-import bcau;
-import bcdh;
-import bcdn;
-import bcel;
-import bgya;
+import aclo;
+import aohi;
+import aoog;
+import avty;
+import avub;
+import awoi;
+import bbnu;
+import bdhp;
+import bdkc;
+import bdki;
+import bdlg;
+import biis;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 import com.tencent.mobileqq.activity.aio.ChatItemAnimLayout;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerInitialler;
+import com.tencent.mobileqq.javahook.BGLocateMonitor;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.widget.SingleLineTextView;
 import java.util.HashSet;
-import yqj;
+import zfc;
 
 public final class CaughtExceptionReport$1
   extends HashSet<String>
@@ -29,25 +30,26 @@ public final class CaughtExceptionReport$1
   {
     super(paramInt);
     add(BaseActivity.class.getName());
-    add(bcdh.class.getName());
-    add(bgya.class.getName());
-    add(bcau.class.getName());
-    add(yqj.class.getName());
-    add(bahf.class.getName());
-    add(abvh.class.getName());
+    add(bdkc.class.getName());
+    add(biis.class.getName());
+    add(bdhp.class.getName());
+    add(zfc.class.getName());
+    add(bbnu.class.getName());
+    add(aclo.class.getName());
     add(SingleLineTextView.class.getName());
     add(BaseBubbleBuilder.class.getName());
     add(ChatItemAnimLayout.class.getName());
     add(SecurityUtile.class.getName());
-    add(anln.class.getName());
-    add(auog.class.getName());
-    add(auod.class.getName());
-    add(avif.class.getName());
-    add(bcdn.class.getName());
+    add(aoog.class.getName());
+    add(avub.class.getName());
+    add(avty.class.getName());
+    add(awoi.class.getName());
+    add(bdki.class.getName());
     add(ThreadManagerInitialler.class.getName());
-    add(bcel.class.getName());
+    add(bdlg.class.getName());
     add(MD5Utils.class.getName());
-    add(anes.class.getName());
+    add(aohi.class.getName());
+    add(BGLocateMonitor.class.getName());
   }
 }
 

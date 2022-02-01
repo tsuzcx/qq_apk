@@ -1,19 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.AppInfo;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
 
-public final class biem
-  implements Parcelable.Creator<AppInfo>
+class biem
+  implements Animation.AnimationListener
 {
-  public AppInfo a(Parcel paramParcel)
+  biem(biel parambiel, View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new AppInfo(paramParcel);
+    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimation.leftMargin = this.jdField_a_of_type_Biel.e;
+    paramAnimation.topMargin = this.jdField_a_of_type_Biel.f;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_Biel.a = false;
   }
   
-  public AppInfo[] a(int paramInt)
-  {
-    return new AppInfo[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

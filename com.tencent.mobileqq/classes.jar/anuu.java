@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class anuu
-  extends anuv
+  implements aoba
 {
-  public anuu(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  public anuu(FrameHelperActivity paramFrameHelperActivity) {}
+  
+  public void a()
   {
-    super(paramQQAppInterface, paramProxyManager);
-    this.a = DataLineMsgRecord.tableName(0);
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
+    }
+    this.a.a.sendEmptyMessage(17);
   }
 }
 

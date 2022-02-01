@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import atqa;
-import bhwf;
+import auuv;
+import bjhh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -29,7 +29,7 @@ class ForwardSdkShareProcessor$GetSKeyStep
   protected void process()
   {
     String str = this.this$0.app.getCurrentAccountUin();
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|process|account=" + bhwf.a(str) + ",refresh=" + ForwardSdkShareProcessor.access$100(this.this$0));
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|process|account=" + bjhh.a(str) + ",refresh=" + ForwardSdkShareProcessor.access$100(this.this$0));
     if (this.isCancelled.get()) {
       doCancel();
     }
@@ -57,8 +57,8 @@ class ForwardSdkShareProcessor$GetSKeyStep
       }
       while (i != 0)
       {
-        if (this.this$0.mForwardType == 11) {
-          atqa.a("KEY_SSO_GET_TICKET_NO_PASSWD");
+        if (this.this$0.isSdkShare()) {
+          auuv.a("KEY_SSO_GET_TICKET_NO_PASSWD");
         }
         this.this$0.app.ssoGetTicketNoPasswd(this.this$0.app.getCurrentAccountUin(), 4096, this.mAccountObserver);
         return;

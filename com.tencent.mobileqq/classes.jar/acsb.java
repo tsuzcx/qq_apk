@@ -1,35 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acsb
-  extends Handler
+  implements acpi
 {
-  public acsb(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (!this.a.isFinishing())
-      {
-        this.a.jdField_a_of_type_Bhht.a(this.a.getString(2131690749));
-        this.a.jdField_a_of_type_Bhht.d(2130849594);
-        this.a.jdField_a_of_type_Bhht.b(false);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.jdField_a_of_type_Bhht == null) || (!this.a.jdField_a_of_type_Bhht.isShowing()));
-    this.a.jdField_a_of_type_Bhht.cancel();
-    this.a.jdField_a_of_type_Bhht.a(this.a.getString(2131690751));
-    this.a.jdField_a_of_type_Bhht.c(true);
-    this.a.jdField_a_of_type_Bhht.a(false);
-    this.a.jdField_a_of_type_Bhht.b(true);
+    ((abgm)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

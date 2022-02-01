@@ -1,21 +1,31 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
-import com.tencent.mfsdk.collector.DropFrameMonitor;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class qly
-  extends RecyclerView.OnScrollListener
 {
-  public qly(PTSFragment paramPTSFragment) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (paramInt == 0)
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    if (paramBaseArticleInfo.mSinglePicture != null) {}
+    for (String str = paramBaseArticleInfo.mSinglePicture.getFile();; str = null)
     {
-      DropFrameMonitor.getInstance().stopMonitorScene("list_kandian_daily_new", false);
-      return;
+      localJSONObject2.put("article_small_imge_url", str);
+      localJSONObject1.put("id_article_small_imge", localJSONObject2);
+      qmm.a(paramBaseArticleInfo, localJSONObject1, true);
+      qmm.a(paramBaseArticleInfo, localJSONObject1);
+      qmm.d(paramBaseArticleInfo, localJSONObject1);
+      qmm.g(paramBaseArticleInfo, localJSONObject1);
+      qmm.n(paramBaseArticleInfo, localJSONObject1);
+      qmm.h(paramBaseArticleInfo, localJSONObject1);
+      qmm.Z(paramBaseArticleInfo, localJSONObject1);
+      qmm.ad(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
+      qmm.a(localJSONObject1, paramBaseArticleInfo);
+      qmm.ac(paramBaseArticleInfo, localJSONObject1);
+      return localJSONObject1;
     }
-    DropFrameMonitor.getInstance().startMonitorScene("list_kandian_daily_new");
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus.view;
 
-import adxr;
+import aeow;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import axvz;
+import azcl;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -30,7 +30,7 @@ public class AutoStatusHintFragment
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.setClass(paramContext, PublicTransFragmentActivity.class);
     localIntent.putExtra("public_fragment_class", AutoStatusHintFragment.class.getName());
-    adxr.a(localIntent, PublicTransFragmentActivity.class, AutoStatusHintFragment.class);
+    aeow.a(localIntent, PublicTransFragmentActivity.class, AutoStatusHintFragment.class);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -64,7 +64,7 @@ public class AutoStatusHintFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      axvz.a("0X800B0F4");
+      azcl.a("0X800B0F4");
       getActivity().finish();
     }
   }
@@ -72,11 +72,11 @@ public class AutoStatusHintFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558416, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558417, null);
     paramLayoutInflater.setOnClickListener(this);
-    this.a = ((Button)paramLayoutInflater.findViewById(2131372868));
+    this.a = ((Button)paramLayoutInflater.findViewById(2131373062));
     this.a.setOnClickListener(this);
-    axvz.a("0X800B0F3");
+    azcl.a("0X800B0F3");
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }

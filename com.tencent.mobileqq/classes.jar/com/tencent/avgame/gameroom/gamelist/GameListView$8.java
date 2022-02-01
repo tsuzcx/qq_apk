@@ -1,9 +1,9 @@
 package com.tencent.avgame.gameroom.gamelist;
 
-import mzl;
-import naf;
-import ncz;
-import ndl;
+import nfc;
+import nfv;
+import nix;
+import njj;
 
 class GameListView$8
   implements Runnable
@@ -12,7 +12,7 @@ class GameListView$8
   
   public void run()
   {
-    if ((GameListView.a(this.this$0) != null) && (mzl.a().a().a() == 0)) {
+    if ((GameListView.a(this.this$0) != null) && (nfc.a().a().a() == 0)) {
       GameListView.a(this.this$0).a(this.this$0.a.a(), this.this$0.a.a(), this.this$0.a.a());
     }
   }

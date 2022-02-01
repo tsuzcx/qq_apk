@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import akgd;
+import albw;
 import android.text.TextUtils;
 import java.io.Serializable;
 
@@ -40,7 +40,7 @@ public class PreloadManager$PathResult
     }
     try
     {
-      akgd.a(this.folderPath);
+      albw.a(this.folderPath);
       boolean bool = PreloadResource.unzipAtomically(this.filePath, this.folderPath);
       return bool;
     }

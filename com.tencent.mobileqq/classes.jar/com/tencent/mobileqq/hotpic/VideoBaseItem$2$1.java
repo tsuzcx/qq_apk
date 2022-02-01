@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.hotpic;
 
-import auix;
-import auiz;
-import aujh;
+import avor;
+import avot;
+import avpb;
 
 public class VideoBaseItem$2$1
   implements Runnable
 {
-  public VideoBaseItem$2$1(auiz paramauiz) {}
+  public VideoBaseItem$2$1(avot paramavot) {}
   
   public void run()
   {
     this.a.a.c = 4;
-    if (auix.a(this.a.a) != null) {
-      auix.a(this.a.a).d(auix.a(this.a.a));
+    if (avor.a(this.a.a) != null) {
+      avor.a(this.a.a).d(avor.a(this.a.a));
     }
   }
 }

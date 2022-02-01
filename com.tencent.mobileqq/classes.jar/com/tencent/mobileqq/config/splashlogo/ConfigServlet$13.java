@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.config.splashlogo;
 
 import android.text.TextUtils;
-import aqlw;
-import axsb;
-import bfyz;
+import arph;
+import ayym;
+import bhhr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
@@ -20,14 +20,14 @@ import java.io.UnsupportedEncodingException;
 public class ConfigServlet$13
   implements Runnable
 {
-  public ConfigServlet$13(aqlw paramaqlw, ConfigurationService.Config paramConfig, QQAppInterface paramQQAppInterface) {}
+  public ConfigServlet$13(arph paramarph, ConfigurationService.Config paramConfig, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     boolean bool2 = false;
     ScribbleResMgr localScribbleResMgr = ScribbleResMgr.a();
     int k = this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get();
-    int j = bfyz.y(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+    int j = bhhr.y(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
     if (this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.msg_content_list != null) {}
     for (int i = this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.msg_content_list.size();; i = -1)
     {
@@ -58,7 +58,7 @@ public class ConfigServlet$13
         m = ((ConfigurationService.Content)localObject1).task_id.get();
         if (((ConfigurationService.Content)localObject1).compress.get() == 1)
         {
-          arrayOfByte = axsb.a(((ConfigurationService.Content)localObject1).content.get().toByteArray());
+          arrayOfByte = ayym.a(((ConfigurationService.Content)localObject1).content.get().toByteArray());
           if (arrayOfByte == null)
           {
             QLog.d("handleScribbleConfigSPLASH_ConfigServlet", 2, "解压错误");
@@ -127,7 +127,7 @@ public class ConfigServlet$13
         bool2 = bool3;
         continue;
         if ((bool2) && (bool1)) {
-          bfyz.p(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), k);
+          bhhr.p(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), k);
         }
         for (;;)
         {

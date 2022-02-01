@@ -1,6 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class bmbb
+  implements View.OnClickListener
 {
-  public static bmba a = new bmba();
+  bmbb(bmba parambmba, bmbe parambmbe) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Bmbe.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

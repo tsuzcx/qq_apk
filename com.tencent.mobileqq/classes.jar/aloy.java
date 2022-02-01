@@ -1,31 +1,115 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import org.json.JSONObject;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
 
-public final class aloy
-  implements acjr
+class aloy
+  implements altb
 {
-  public aloy(View paramView, acju paramacju, long paramLong, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6) {}
+  aloy(alow paramalow) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public yxk a()
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed");
+    if (alow.a(this.a) != null) {
+      QZLog.d("EditLocalVideoMusicMixe", 2, "getCurFragmentMusic: " + alow.a(this.a).a());
+    }
+    return alow.a(this.a);
   }
   
-  public void onPermission(int paramInt)
+  public void a()
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed permission");
+    QZLog.d("EditLocalVideoMusicMixe", 2, "onPauseCurFragmentMusic: ");
+    if (alow.a(this.a) != null) {
+      alow.a(this.a, alow.a(this.a).c());
+    }
+    alow.a(this.a, true);
   }
   
-  public void onSuccess(JSONObject paramJSONObject)
+  public void a(int paramInt)
   {
-    paramJSONObject = paramJSONObject.optString("city", "");
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, paramJSONObject, 0, "location success");
+    QZLog.d("EditLocalVideoMusicMixe", 2, "onChangeMusicBtnType: " + paramInt);
+    if (alow.a(this.a) != null)
+    {
+      if (paramInt == 0) {
+        alow.a(this.a).setImageResource(2130846670);
+      }
+    }
+    else {
+      return;
+    }
+    if (paramInt == 3)
+    {
+      alow.a(this.a).setImageResource(2130846669);
+      return;
+    }
+    alow.a(this.a).setImageResource(2130846663);
   }
   
-  public void onTrigger(JSONObject paramJSONObject) {}
+  public void a(String paramString)
+  {
+    QZLog.d("EditLocalVideoMusicMixe", 2, "onGetCurFragmentMusicPath: " + paramString);
+    if (alow.a(this.a) != null) {
+      alow.a(this.a).g = paramString;
+    }
+  }
+  
+  public void a(yxk paramyxk)
+  {
+    if (paramyxk != null)
+    {
+      QZLog.d("EditLocalVideoMusicMixe", 2, "onChangeCurFragmentMusic: " + paramyxk.a() + " " + paramyxk.d + " to " + paramyxk.e);
+      if (paramyxk.b == 0)
+      {
+        alow.a(this.a, false);
+        alow.b(this.a, true);
+      }
+    }
+    for (;;)
+    {
+      alow.a(this.a, paramyxk);
+      return;
+      if (paramyxk.b == 1)
+      {
+        alow.a(this.a, false);
+        alow.b(this.a, false);
+        continue;
+        alow.a(this.a, false);
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    QZLog.d("EditLocalVideoMusicMixe", 2, "onStopCurFragmentMusic: ");
+    alow.a(this.a, 0);
+    alow.a(this.a, false);
+  }
+  
+  public boolean b()
+  {
+    return (alow.a(this.a) == null) || (!alow.a(this.a).hasMusic());
+  }
+  
+  public void c()
+  {
+    QZLog.d("EditLocalVideoMusicMixe", 2, "onPlayCurFragmentMusic: ");
+    alow.a(this.a);
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
+  
+  public void d()
+  {
+    alow.b(this.a, false);
+  }
 }
 
 

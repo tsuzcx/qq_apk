@@ -1,63 +1,16 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
-class yaq
-  extends SimpleObserver<yjh>
+public class yaq
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  yaq(yap paramyap, yjh paramyjh) {}
+  public yaq(MemoriesInnerListView paramMemoriesInnerListView) {}
   
-  public void a(yjh paramyjh)
+  public void onScrollStateChanged(int paramInt)
   {
-    super.onNext(paramyjh);
-    this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.b();
-    this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.getActivity().overridePendingTransition(0, 0);
-    this.jdField_a_of_type_Yap.o();
-    this.jdField_a_of_type_Yap.jdField_b_of_type_Boolean = false;
-    Iterator localIterator = this.jdField_a_of_type_Yap.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((xzb)localIterator.next()).b(paramyjh);
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(MemoriesInnerListView.a(this.a).a);
     }
-    this.jdField_a_of_type_Yap.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.b();
-    paramyjh = (xzp)this.jdField_a_of_type_Yap.a(xzp.class);
-    if (paramyjh != null) {
-      paramyjh.i();
-    }
-    if (this.jdField_a_of_type_Yap.jdField_b_of_type_JavaUtilList.isEmpty())
-    {
-      paramyjh = this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.getActivity();
-      if (paramyjh != null)
-      {
-        ((EditWebVideoActivity)paramyjh).a(amtj.a(2131703096));
-        yap.a(this.jdField_a_of_type_Yap, paramyjh, this.jdField_a_of_type_Yap.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource, this.jdField_a_of_type_Yjh.a);
-      }
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.a(), amtj.a(2131703095), 0).a();
-    this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.getActivity().finish();
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    this.jdField_a_of_type_Yap.jdField_b_of_type_JavaUtilList.add(paramError);
-    if (QLog.isColorLevel()) {
-      QLog.e("EditWebVideoActivity", 2, "publish error:", paramError);
-    }
-    QQToast.a(this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.a(), amtj.a(2131703099), 0).a();
-    this.jdField_a_of_type_Yap.jdField_a_of_type_Yan.getActivity().finish();
   }
 }
 

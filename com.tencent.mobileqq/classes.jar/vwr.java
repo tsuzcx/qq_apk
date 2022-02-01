@@ -1,39 +1,40 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class vwr
-  extends SosoInterface.OnLocationListener
+public class vwr
 {
-  vwr(vwq paramvwq, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public List<String> a;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public int g;
+  
+  public vwr(int paramInt)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_e_of_type_Int = paramInt;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public vwr a(JSONObject paramJSONObject, int paramInt)
   {
-    xvv.b("LbsManager", "onLocationFinish.");
-    boolean bool;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    this.d = paramJSONObject.optString("transId", "");
+    this.g = paramJSONObject.optInt("min_limit", paramInt);
+    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("wording");
+    this.f = paramJSONObject.optInt("text_id", -1);
+    paramJSONObject = paramJSONObject.optJSONArray("transList");
+    if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
     {
-      bool = true;
-      if (!bool) {
-        break label114;
+      this.a = new ArrayList();
+      paramInt = 0;
+      while (paramInt < paramJSONObject.length())
+      {
+        this.a.add(paramJSONObject.getString(paramInt));
+        paramInt += 1;
       }
-      this.a.b = vwp.a(paramSosoLbsInfo.mLocation);
-      xvv.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
     }
-    for (;;)
-    {
-      if (!vwq.a(this.a)) {
-        this.a.a(bool, this.a.b);
-      }
-      this.a.a = false;
-      return;
-      bool = false;
-      break;
-      label114:
-      xvv.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
-    }
+    return this;
   }
 }
 

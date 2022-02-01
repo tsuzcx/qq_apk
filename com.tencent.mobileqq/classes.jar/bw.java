@@ -23,7 +23,7 @@ public class bw
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams().height = -2;
     ((FrameLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams()).setMargins(AIOUtils.dp2px(14.0F, this.a.app.getApplication().getResources()), 0, 0, 0);
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMaxLines(6);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130849760);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130849853);
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setGravity(16);
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setPadding(AIOUtils.dp2px(11.0F, this.a.app.getApplication().getResources()), AIOUtils.dp2px(6.0F, this.a.app.getApplication().getResources()), AIOUtils.dp2px(11.0F, this.a.app.getApplication().getResources()), AIOUtils.dp2px(6.0F, this.a.app.getApplication().getResources()));
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestLayout();

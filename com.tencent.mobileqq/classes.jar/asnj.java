@@ -1,16 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import org.json.JSONObject;
 
 class asnj
-  implements View.OnClickListener
+  implements MiniAppCmdInterface
 {
-  asnj(asni paramasni, bayt parambayt) {}
+  asnj(asni paramasni, asnk paramasnk) {}
   
-  public void onClick(View paramView)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Bayt.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramBoolean) && (paramJSONObject != null))
+    {
+      paramJSONObject = paramJSONObject.opt("data");
+      if ((paramJSONObject instanceof MiniAppRecommInfo))
+      {
+        asni.a(this.jdField_a_of_type_Asni, (MiniAppRecommInfo)paramJSONObject);
+        this.jdField_a_of_type_Asni.a(asni.a(this.jdField_a_of_type_Asni));
+        if (this.jdField_a_of_type_Asnk != null) {
+          this.jdField_a_of_type_Asnk.a(true, asni.a(this.jdField_a_of_type_Asni));
+        }
+      }
+    }
+    while (this.jdField_a_of_type_Asnk == null) {
+      return;
+    }
+    this.jdField_a_of_type_Asnk.a(false, null);
   }
 }
 

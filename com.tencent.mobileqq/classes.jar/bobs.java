@@ -1,17 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.voicechanger.common.audio.VoiceTextRecognizer.VRErrorListener;
+import android.support.annotation.Nullable;
 
-class bobs
-  implements VoiceTextRecognizer.VRErrorListener
+public abstract interface bobs
 {
-  bobs(bobr parambobr) {}
+  public abstract void B();
   
-  public void onError(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShortVideoVoiceRecognizer", 1, "VoiceTextRecognizer error! errorCode = " + paramInt);
-    }
-  }
+  public abstract void C();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(@Nullable bobg parambobg, int paramInt);
+  
+  public abstract void b(float paramFloat);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void e(boolean paramBoolean);
 }
 
 

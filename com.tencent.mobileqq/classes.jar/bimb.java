@@ -1,56 +1,51 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qidian.QidianProfileCardActivity;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.widget.DraggableGridView;
 
-public class bimb
-  extends amsu
+public abstract class bimb
 {
-  public bimb(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public DraggableGridView a;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt1, int paramInt2, ViewGroup paramViewGroup);
+  
+  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup);
+  
+  public abstract Object a(int paramInt);
+  
+  public abstract Object a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  
+  public int b()
   {
-    super.onUpdateCustomHead(paramBoolean, paramString);
-    if (paramBoolean)
-    {
-      if (!paramString.equals(this.a.jdField_a_of_type_Aymg.a.jdField_a_of_type_JavaLangString)) {
-        break label86;
-      }
-      if (!bbyp.b()) {
-        break label64;
-      }
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.app.getFaceBitmap(paramString, (byte)2, false);
-      this.a.c();
-    }
-    label64:
-    label86:
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.app.getFaceBitmap(paramString, false);
-      break;
-      paramString = (bimw)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    } while (paramString == null);
-    this.a.a(paramString.jdField_a_of_type_Int, (URLImageView)paramString.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString.jdField_a_of_type_JavaLangString, true);
+    return 1;
   }
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public int b(int paramInt)
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Aymg.a.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramObject)))) {
-      this.a.b();
-    }
+    return 0;
   }
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void b(int paramInt1, int paramInt2)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_Aymg.a.jdField_a_of_type_JavaLangString != null) && (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_Aymg.a)) && (this.a.jdField_a_of_type_Amsw != null) && (this.a.jdField_a_of_type_Amsw.b(this.a.jdField_a_of_type_Aymg.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_Aymg.a.jdField_a_of_type_JavaLangString.equals(this.a.app.getCurrentAccountUin())))
-    {
-      this.a.jdField_a_of_type_Aymg.a.jdField_a_of_type_Int = 1;
-      QidianProfileCardActivity.b(this.a, this.a.jdField_a_of_type_Aymg.a.jdField_a_of_type_JavaLangString);
-      this.a.b();
-    }
+    this.a.a(paramInt1, paramInt2);
+  }
+  
+  public void c()
+  {
+    ((bioa)this.a.a()).notifyDataSetChanged();
   }
 }
 

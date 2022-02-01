@@ -1,18 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class aisn
-  extends andd
+  implements MessageQueue.IdleHandler
 {
-  public aisn(ContactsTroopAdapter paramContactsTroopAdapter) {}
+  public aisn(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void onUpdateNewTroopFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public boolean queueIdle()
   {
-    Bitmap localBitmap = this.a.a.getFaceBitmap(113, paramString, false, 0);
-    if (localBitmap != null) {
-      ContactsTroopAdapter.a(this.a, paramString, localBitmap);
-    }
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 

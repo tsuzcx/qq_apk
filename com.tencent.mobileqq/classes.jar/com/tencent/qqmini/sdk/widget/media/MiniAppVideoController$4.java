@@ -13,25 +13,25 @@ class MiniAppVideoController$4
   
   public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (MiniAppVideoController.access$600(this.this$0) == null)) {
+    if ((!paramBoolean) || (MiniAppVideoController.access$200(this.this$0) == null)) {
       return;
     }
-    this.position = (MiniAppVideoController.access$600(this.this$0).getDuration() * paramInt / paramSeekBar.getMax());
-    MiniAppVideoController.access$100(this.this$0).onProgressChanged(MiniAppVideoController.access$1300(paramInt));
+    this.position = (MiniAppVideoController.access$200(this.this$0).getDuration() * paramInt / paramSeekBar.getMax());
+    MiniAppVideoController.access$300(this.this$0).onProgressChanged(MiniAppVideoController.access$1300(paramInt));
   }
   
   public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    MiniAppVideoController.access$100(this.this$0).onStartTrackingTouch(MiniAppVideoController.access$800(this.this$0));
+    MiniAppVideoController.access$300(this.this$0).onStartTrackingTouch(MiniAppVideoController.access$000(this.this$0));
   }
   
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    if (MiniAppVideoController.access$600(this.this$0) != null) {
+    if (MiniAppVideoController.access$200(this.this$0) != null) {
       this.this$0.seekTo((int)this.position);
     }
-    MiniAppVideoController.access$100(this.this$0).onStopTrackingTouch(MiniAppVideoController.access$800(this.this$0));
-    MiniAppVideoController.access$100(this.this$0).setProgressByPlayingTime(MiniAppVideoController.access$600(this.this$0).getDuration(), MiniAppVideoController.access$600(this.this$0).getCurrentPostion());
+    MiniAppVideoController.access$300(this.this$0).onStopTrackingTouch(MiniAppVideoController.access$000(this.this$0));
+    MiniAppVideoController.access$300(this.this$0).setProgressByPlayingTime(MiniAppVideoController.access$200(this.this$0).getDuration(), MiniAppVideoController.access$200(this.this$0).getCurrentPostion());
     EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }

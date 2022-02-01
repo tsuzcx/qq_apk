@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.script;
 
-import amaq;
+import anby;
 import com.tencent.mobileqq.apollo.ApolloTextureView;
 
 public class SpriteBackgroundManager$3
   implements Runnable
 {
-  public SpriteBackgroundManager$3(amaq paramamaq, ApolloTextureView paramApolloTextureView, int paramInt) {}
+  public SpriteBackgroundManager$3(anby paramanby, ApolloTextureView paramApolloTextureView, int paramInt) {}
   
   public void run()
   {

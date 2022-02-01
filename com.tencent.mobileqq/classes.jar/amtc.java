@@ -1,45 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import java.io.File;
-import java.io.OutputStream;
-import org.apache.http.Header;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public class amtc
-  extends AbsDownloader
+class amtc
+  implements ValueCallback<String>
 {
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramURLDrawableHandler = paramDownloadParams.getHeader("funnypic_type");
-    if (paramURLDrawableHandler != null)
-    {
-      paramURLDrawableHandler = paramURLDrawableHandler.getValue();
-      float f = paramDownloadParams.mGifRoundCorner;
-      if ((!TextUtils.isEmpty(paramURLDrawableHandler)) && (Integer.valueOf(paramURLDrawableHandler).intValue() == 2)) {
-        return new bgfa(paramFile, true, f, 3);
-      }
-    }
-    return null;
-  }
+  amtc(amtb paramamtb) {}
   
-  public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void a(String paramString)
   {
-    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
-    {
-      paramOutputStream = (String)paramDownloadParams.tag;
-      paramDownloadParams = AppConstants.SDCARD_IMG_FAVORITE;
-      paramDownloadParams = new File(paramDownloadParams + Utils.Crc64String(paramOutputStream));
-      if (paramDownloadParams.exists()) {
-        return paramDownloadParams;
-      }
-      if (bgog.a(new bgoe(paramOutputStream, paramDownloadParams), null) == 0) {
-        return paramDownloadParams;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloJSContext", 2, "[onReceiveValue] s " + paramString);
     }
-    return null;
   }
 }
 

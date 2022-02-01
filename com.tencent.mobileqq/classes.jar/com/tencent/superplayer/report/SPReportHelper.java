@@ -26,6 +26,7 @@ public class SPReportHelper
   private SPReportEvent mEvent;
   private boolean mHasReported = false;
   private boolean mIsPrePlay = false;
+  private long mLastPlayPosition = 0L;
   private SuperPlayerMgr mPlayer;
   private boolean mPrePlayViewShowCalled = false;
   private boolean mPrepared = false;
@@ -51,6 +52,7 @@ public class SPReportHelper
   private void doBeforeReport()
   {
     parseConfigMapToJson();
+    this.mEvent.stopPosition = this.mPlayer.getCurrentPositionMs();
     float f = (float)this.mEvent.duration / 1000.0F;
     if (f != 0.0F) {
       this.mEvent.bitrate = ((float)this.mEvent.fileSize / 1024.0F * 8.0F / f);
@@ -62,10 +64,10 @@ public class SPReportHelper
     }
     for (;;)
     {
+      this.mEvent.totalBufferDuration = (this.mEvent.realPrepareDuration + this.mEvent.secondBufferDuration);
+      this.mEvent.totalBufferCount = (this.mEvent.secondBufferCount + 1);
       SPReportEvent localSPReportEvent = this.mEvent;
-      localSPReportEvent.totalBufferDuration += this.mEvent.secondBufferDuration;
-      localSPReportEvent = this.mEvent;
-      localSPReportEvent.totalBufferCount += 1;
+      localSPReportEvent.playDuration += this.mEvent.stopPosition - this.mLastPlayPosition;
       checkAndWarning();
       return;
       if (this.mEvent.prePlay == 2)
@@ -94,6 +96,16 @@ public class SPReportHelper
   public void addConfigExt(String paramString, Object paramObject)
   {
     this.mConfigMap.put(paramString, paramObject);
+  }
+  
+  public void addExtReportData(String paramString1, String paramString2)
+  {
+    this.mEvent.extReportData.put(paramString1, paramString2);
+  }
+  
+  public void addExtReportData(Map<String, String> paramMap)
+  {
+    this.mEvent.extReportData.putAll(paramMap);
   }
   
   public void init(SuperPlayerMgr paramSuperPlayerMgr, int paramInt)
@@ -161,7 +173,16 @@ public class SPReportHelper
   {
     this.mEvent.errCode = paramString1;
     this.mEvent.errDetailInfo = paramString2;
-    report();
+    long l = this.mPlayer.getCurrentPositionMs();
+    paramString1 = this.mEvent;
+    if (l > 0L) {}
+    for (;;)
+    {
+      paramString1.stopPosition = l;
+      report();
+      return;
+      l = this.mEvent.stopPosition;
+    }
   }
   
   public void onFirstVideoFrameRendered()
@@ -183,6 +204,8 @@ public class SPReportHelper
     this.mEvent.vid = paramSuperPlayerVideoInfo.getVid();
     this.mEvent.url = paramSuperPlayerVideoInfo.getPlayUrl();
     this.mEvent.startPosition = paramLong;
+    this.mEvent.playDuration = 0L;
+    this.mLastPlayPosition = paramLong;
     this.mStartPrepareTime = SystemClock.uptimeMillis();
   }
   
@@ -220,10 +243,31 @@ public class SPReportHelper
     }
   }
   
+  public void onSeek(long paramLong1, long paramLong2)
+  {
+    SPReportEvent localSPReportEvent = this.mEvent;
+    localSPReportEvent.playDuration += paramLong1 - this.mLastPlayPosition;
+    this.mEvent.hadSeek = true;
+    this.mLastPlayPosition = paramLong2;
+  }
+  
+  public void onStart()
+  {
+    this.mEvent.hadStart = true;
+  }
+  
   public void onStop()
   {
-    this.mEvent.stopPosition = this.mPlayer.getCurrentPositionMs();
-    report();
+    long l = this.mPlayer.getCurrentPositionMs();
+    SPReportEvent localSPReportEvent = this.mEvent;
+    if (l > 0L) {}
+    for (;;)
+    {
+      localSPReportEvent.stopPosition = l;
+      report();
+      return;
+      l = this.mEvent.stopPosition;
+    }
   }
   
   public void onVideoBufferEnd()
@@ -264,26 +308,80 @@ public class SPReportHelper
     LogUtil.d("SPReportHelper", "report dataMap:" + localMap);
   }
   
+  /* Error */
   public void reset()
   {
-    try
-    {
-      report();
-      this.mStartPrepareTime = 0L;
-      this.mStartBufferTime = 0L;
-      this.mVisibleStartPrepareTime = 0L;
-      this.mIsPrePlay = false;
-      this.mPrepared = false;
-      this.mPrePlayViewShowCalled = false;
-      int i = this.mEvent.sceneId;
-      init(this.mPlayer, i);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 92	com/tencent/superplayer/report/SPReportHelper:mPlayer	Lcom/tencent/superplayer/player/SuperPlayerMgr;
+    //   6: invokevirtual 98	com/tencent/superplayer/player/SuperPlayerMgr:getCurrentPositionMs	()J
+    //   9: lstore_2
+    //   10: aload_0
+    //   11: getfield 90	com/tencent/superplayer/report/SPReportHelper:mEvent	Lcom/tencent/superplayer/report/SPReportEvent;
+    //   14: astore 4
+    //   16: lload_2
+    //   17: lconst_0
+    //   18: lcmp
+    //   19: ifle +63 -> 82
+    //   22: aload 4
+    //   24: lload_2
+    //   25: putfield 103	com/tencent/superplayer/report/SPReportEvent:stopPosition	J
+    //   28: aload_0
+    //   29: invokevirtual 324	com/tencent/superplayer/report/SPReportHelper:report	()V
+    //   32: aload_0
+    //   33: lconst_0
+    //   34: putfield 36	com/tencent/superplayer/report/SPReportHelper:mStartPrepareTime	J
+    //   37: aload_0
+    //   38: lconst_0
+    //   39: putfield 40	com/tencent/superplayer/report/SPReportHelper:mStartBufferTime	J
+    //   42: aload_0
+    //   43: lconst_0
+    //   44: putfield 38	com/tencent/superplayer/report/SPReportHelper:mVisibleStartPrepareTime	J
+    //   47: aload_0
+    //   48: iconst_0
+    //   49: putfield 44	com/tencent/superplayer/report/SPReportHelper:mIsPrePlay	Z
+    //   52: aload_0
+    //   53: iconst_0
+    //   54: putfield 46	com/tencent/superplayer/report/SPReportHelper:mPrepared	Z
+    //   57: aload_0
+    //   58: iconst_0
+    //   59: putfield 50	com/tencent/superplayer/report/SPReportHelper:mPrePlayViewShowCalled	Z
+    //   62: aload_0
+    //   63: getfield 90	com/tencent/superplayer/report/SPReportHelper:mEvent	Lcom/tencent/superplayer/report/SPReportEvent;
+    //   66: getfield 195	com/tencent/superplayer/report/SPReportEvent:sceneId	I
+    //   69: istore_1
+    //   70: aload_0
+    //   71: aload_0
+    //   72: getfield 92	com/tencent/superplayer/report/SPReportHelper:mPlayer	Lcom/tencent/superplayer/player/SuperPlayerMgr;
+    //   75: iload_1
+    //   76: invokevirtual 464	com/tencent/superplayer/report/SPReportHelper:init	(Lcom/tencent/superplayer/player/SuperPlayerMgr;I)V
+    //   79: aload_0
+    //   80: monitorexit
+    //   81: return
+    //   82: aload_0
+    //   83: getfield 90	com/tencent/superplayer/report/SPReportHelper:mEvent	Lcom/tencent/superplayer/report/SPReportEvent;
+    //   86: getfield 103	com/tencent/superplayer/report/SPReportEvent:stopPosition	J
+    //   89: lstore_2
+    //   90: goto -68 -> 22
+    //   93: astore 4
+    //   95: aload_0
+    //   96: monitorexit
+    //   97: aload 4
+    //   99: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	100	0	this	SPReportHelper
+    //   69	7	1	i	int
+    //   9	81	2	l	long
+    //   14	9	4	localSPReportEvent	SPReportEvent
+    //   93	5	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	16	93	finally
+    //   22	79	93	finally
+    //   82	90	93	finally
   }
 }
 

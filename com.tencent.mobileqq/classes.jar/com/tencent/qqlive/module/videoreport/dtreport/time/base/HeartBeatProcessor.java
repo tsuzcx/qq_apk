@@ -19,7 +19,7 @@ public class HeartBeatProcessor
   {
     this.mIsInForeground = paramBoolean;
     this.mTimePinInterval = paramLong;
-    this.mCurrentTimePinProcessor = new TimePinProcessor(this.mIsInForeground);
+    this.mCurrentTimePinProcessor = new TimePinProcessor(this.mIsInForeground, paramLong);
     reset();
   }
   
@@ -44,13 +44,13 @@ public class HeartBeatProcessor
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 39	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mCurrentTimePinProcessor	Lcom/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor;
+    //   3: getfield 38	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mCurrentTimePinProcessor	Lcom/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor;
     //   6: invokevirtual 70	com/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor:stop	()V
     //   9: aload_0
     //   10: aload_0
     //   11: getfield 55	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mForegroundDuration	J
     //   14: aload_0
-    //   15: getfield 39	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mCurrentTimePinProcessor	Lcom/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor;
+    //   15: getfield 38	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mCurrentTimePinProcessor	Lcom/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor;
     //   18: invokevirtual 74	com/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor:getForegroundDuration	()J
     //   21: ladd
     //   22: putfield 55	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mForegroundDuration	J
@@ -58,12 +58,12 @@ public class HeartBeatProcessor
     //   26: aload_0
     //   27: getfield 57	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mBackgroundDuration	J
     //   30: aload_0
-    //   31: getfield 39	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mCurrentTimePinProcessor	Lcom/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor;
+    //   31: getfield 38	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mCurrentTimePinProcessor	Lcom/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor;
     //   34: invokevirtual 77	com/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor:getBackgroundDuration	()J
     //   37: ladd
     //   38: putfield 57	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mBackgroundDuration	J
     //   41: aload_0
-    //   42: getfield 39	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mCurrentTimePinProcessor	Lcom/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor;
+    //   42: getfield 38	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mCurrentTimePinProcessor	Lcom/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor;
     //   45: invokevirtual 78	com/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor:reset	()V
     //   48: iload_1
     //   49: ifne +10 -> 59
@@ -76,7 +76,7 @@ public class HeartBeatProcessor
     //   60: getfield 28	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mProcessorState	I
     //   63: ifne -7 -> 56
     //   66: aload_0
-    //   67: getfield 39	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mCurrentTimePinProcessor	Lcom/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor;
+    //   67: getfield 38	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:mCurrentTimePinProcessor	Lcom/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor;
     //   70: invokevirtual 83	com/tencent/qqlive/module/videoreport/dtreport/time/base/TimePinProcessor:start	()V
     //   73: aload_0
     //   74: invokespecial 85	com/tencent/qqlive/module/videoreport/dtreport/time/base/HeartBeatProcessor:notifySaveHeartBeatInfo	()V

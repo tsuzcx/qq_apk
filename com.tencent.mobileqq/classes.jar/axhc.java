@@ -1,20 +1,22 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class axhc
-  extends axhd
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public axhc(String paramString, axhl paramaxhl)
-  {
-    super(paramString, paramaxhl);
-  }
+  public axhc(MultiCardPageIndicator paramMultiCardPageIndicator) {}
   
-  public void a()
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    super.a();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839326);
-    this.jdField_a_of_type_Int = -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    }
+    if (MultiCardPageIndicator.a(this.a) != null) {
+      this.a.performClick();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

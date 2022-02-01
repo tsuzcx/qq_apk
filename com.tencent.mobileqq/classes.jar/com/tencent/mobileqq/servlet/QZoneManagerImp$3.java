@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.servlet;
 
-import aafu;
+import aavg;
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import bbox;
+import bcvr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import cooperation.qzone.UndealCount.QZoneCountInfo;
 import mqq.app.MobileQQ;
@@ -11,19 +11,19 @@ import mqq.app.MobileQQ;
 public class QZoneManagerImp$3
   implements Runnable
 {
-  public QZoneManagerImp$3(bbox parambbox, QZoneCountInfo paramQZoneCountInfo, int paramInt) {}
+  public QZoneManagerImp$3(bcvr parambcvr, QZoneCountInfo paramQZoneCountInfo, int paramInt) {}
   
   public void run()
   {
-    if (bbox.a(this.this$0) == null) {
+    if (bcvr.a(this.this$0) == null) {
       return;
     }
     ContentValues localContentValues = this.jdField_a_of_type_CooperationQzoneUndealCountQZoneCountInfo.convertToContentValues();
-    localContentValues.put("own_uin", bbox.a(this.this$0).getAccount());
+    localContentValues.put("own_uin", bcvr.a(this.this$0).getAccount());
     localContentValues.put("type", Integer.valueOf(this.jdField_a_of_type_Int));
     try
     {
-      bbox.a(this.this$0).getApplication().getContentResolver().insert(aafu.h, localContentValues);
+      bcvr.a(this.this$0).getApplication().getContentResolver().insert(aavg.h, localContentValues);
       return;
     }
     catch (Exception localException)

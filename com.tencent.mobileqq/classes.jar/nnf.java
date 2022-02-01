@@ -1,99 +1,177 @@
-import android.os.Bundle;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.text.TextUtils;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.ipc.AVGameBroadcastReceiver;
+import com.tencent.avgame.ipc.AccountReceiver;
+import com.tencent.avgame.ipc.ExitReceiver;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.util.WeakReference;
 
 public class nnf
 {
-  zon a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private AccountReceiver jdField_a_of_type_ComTencentAvgameIpcAccountReceiver;
+  private ExitReceiver jdField_a_of_type_ComTencentAvgameIpcExitReceiver;
+  private final WeakReference<AppRuntime> jdField_a_of_type_MqqUtilWeakReference;
   
-  public nnf(zon paramzon)
+  public nnf(AppRuntime paramAppRuntime)
   {
-    this.a = paramzon;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAppRuntime);
+  }
+  
+  private void a(nne paramnne, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = new AccountReceiver(paramnne, paramString);
+    paramnne = new IntentFilter();
+    String[] arrayOfString = this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver.a();
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      if (!TextUtils.isEmpty(str)) {
+        paramnne.addAction(str);
+      }
+      i += 1;
+    }
+    try
+    {
+      paramnne = BaseApplicationImpl.getApplication().registerReceiver(this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver, paramnne, "com.tencent.msg.permission.pushnotify", null);
+      if (paramnne == null) {
+        this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = null;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("BroadcastCenter", 2, "registerAccountReceiver, packageName[" + paramString + "], intent[" + paramnne + "]");
+      }
+      return;
+    }
+    catch (Throwable paramnne)
+    {
+      QLog.i("BroadcastCenter", 1, "register2", paramnne);
+    }
   }
   
   public void a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(nng.a, 2);
-    this.a.a(8, localBundle);
-  }
-  
-  public void a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(nng.a, 5);
-    localBundle.putInt("mode", paramInt);
-    this.a.a(8, localBundle);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-    zop localzop;
-    do
+    AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    CharSequence localCharSequence = null;
+    AVGameBroadcastReceiver localAVGameBroadcastReceiver = new AVGameBroadcastReceiver(localAppRuntime);
+    String[] arrayOfString = localAVGameBroadcastReceiver.a();
+    Object localObject1 = localCharSequence;
+    int j;
+    int i;
+    if (arrayOfString != null)
     {
-      int i;
-      do
+      localObject1 = localCharSequence;
+      if (arrayOfString.length > 0)
       {
-        return;
-        i = paramBundle.getInt("seq", -1);
-      } while (i == -1);
-      localzop = this.a.a(i);
-    } while (localzop == null);
-    localzop.callback(paramBundle);
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(nng.a, 1);
-    localBundle.putString("music", paramString);
-    this.a.a(8, localBundle);
-  }
-  
-  public void a(zop paramzop)
-  {
-    if (paramzop == null) {
+        localObject1 = new IntentFilter();
+        j = arrayOfString.length;
+        i = 0;
+        while (i < j)
+        {
+          localCharSequence = arrayOfString[i];
+          if (!TextUtils.isEmpty(localCharSequence)) {
+            ((IntentFilter)localObject1).addAction(localCharSequence);
+          }
+          i += 1;
+        }
+        this.jdField_a_of_type_AndroidContentBroadcastReceiver = localAVGameBroadcastReceiver;
+      }
+    }
+    if ((this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) && (localObject1 != null)) {
+      try
+      {
+        BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject1);
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder(100);
+          ((StringBuilder)localObject1).append("register, actions[");
+          j = arrayOfString.length;
+          i = 0;
+          while (i < j)
+          {
+            ((StringBuilder)localObject1).append(arrayOfString[i]).append(",");
+            i += 1;
+          }
+        }
+      }
+      catch (Throwable localThrowable1)
+      {
+        for (;;)
+        {
+          QLog.i("BroadcastCenter", 1, "register", localThrowable1);
+        }
+        localThrowable1.append("]");
+        QLog.i("BroadcastCenter", 2, localThrowable1.toString());
+      }
+    }
+    Object localObject2;
+    if ((localAppRuntime instanceof AVGameAppInterface))
+    {
+      localObject2 = (AVGameAppInterface)localAppRuntime;
+      a((nne)localObject2, ((AVGameAppInterface)localObject2).getApp().getPackageName());
+    }
+    if ((this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver == null) && ((localAppRuntime instanceof AppInterface)))
+    {
+      this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver = new ExitReceiver((AppInterface)localAppRuntime);
+      localObject2 = new IntentFilter();
+      ((IntentFilter)localObject2).addAction("com.tencent.process.exit");
+    }
+    try
+    {
+      BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver, (IntentFilter)localObject2);
       return;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(nng.a, 4);
-    localBundle.putInt("seq", this.a.a(paramzop));
-    this.a.a(8, localBundle);
+    catch (Throwable localThrowable2)
+    {
+      QLog.i("BroadcastCenter", 1, "register", localThrowable2);
+    }
   }
   
   public void b()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(nng.a, 3);
-    this.a.a(8, localBundle);
-  }
-  
-  public void b(zop paramzop)
-  {
-    if (paramzop == null) {
-      return;
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
+    try
+    {
+      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver == null) {}
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(nng.a, 6);
-    localBundle.putInt("seq", this.a.a(paramzop));
-    this.a.a(8, localBundle);
-  }
-  
-  public void c()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(nng.a, 8);
-    this.a.a(8, localBundle);
-  }
-  
-  public void c(zop paramzop)
-  {
-    if (paramzop == null) {
-      return;
+    catch (Throwable localThrowable1)
+    {
+      try
+      {
+        BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver);
+        this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = null;
+        if (this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver != null) {}
+        try
+        {
+          BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver);
+          this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver = null;
+          return;
+        }
+        catch (Throwable localThrowable3)
+        {
+          QLog.i("BroadcastCenter", 1, "unregister2", localThrowable3);
+        }
+        localThrowable1 = localThrowable1;
+        QLog.i("BroadcastCenter", 1, "unregister", localThrowable1);
+      }
+      catch (Throwable localThrowable2)
+      {
+        for (;;)
+        {
+          QLog.i("BroadcastCenter", 1, "unregister2", localThrowable2);
+        }
+      }
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(nng.a, 7);
-    localBundle.putInt("seq", this.a.a(paramzop));
-    this.a.a(8, localBundle);
   }
 }
 

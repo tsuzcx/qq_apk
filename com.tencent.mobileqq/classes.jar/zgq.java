@@ -1,8 +1,16 @@
-public abstract interface zgq
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+
+public class zgq
+  implements Handler.Callback
 {
-  public abstract boolean a();
+  public zgq(SegmentList paramSegmentList) {}
   
-  public abstract boolean a(String paramString);
+  public boolean handleMessage(Message paramMessage)
+  {
+    return SegmentList.a(this.a, paramMessage);
+  }
 }
 
 

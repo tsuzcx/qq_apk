@@ -1,7 +1,6 @@
 package com.tencent.biz.qqstory.takevideo.shareto;
 
 import Override;
-import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,10 +9,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import anuz;
+import anvx;
+import aoxz;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.RecentUser;
@@ -29,24 +30,24 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import wkp;
-import xwa;
-import ykk;
-import ykl;
-import ykm;
-import ykn;
+import wzk;
+import ykv;
+import yzd;
+import yze;
+import yzf;
+import yzg;
 
 public class ShareToActivity
   extends QQStoryBaseActivity
-  implements View.OnClickListener, AdapterView.OnItemClickListener, ykm
+  implements View.OnClickListener, AdapterView.OnItemClickListener, yzf
 {
   protected XListView a;
-  protected ykl a;
+  protected yze a;
   
   private ArrayList<TroopInfo> a()
   {
-    QQAppInterface localQQAppInterface = wkp.a();
-    Object localObject2 = (TroopManager)localQQAppInterface.getManager(52);
+    QQAppInterface localQQAppInterface = wzk.a();
+    Object localObject2 = (TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     Object localObject1 = ((TroopManager)localObject2).b();
     ArrayList localArrayList = new ArrayList(((ArrayList)localObject1).size());
     Object localObject4 = localQQAppInterface.getProxyManager().a().getRecentList(false);
@@ -59,7 +60,7 @@ public class ShareToActivity
         ((ArrayList)localObject3).add(localRecentUser);
       }
     }
-    Collections.sort((List)localObject3, new ykk(this));
+    Collections.sort((List)localObject3, new yzd(this));
     localObject3 = ((ArrayList)localObject3).iterator();
     while (((Iterator)localObject3).hasNext())
     {
@@ -95,15 +96,15 @@ public class ShareToActivity
   {
     Object localObject = paramArrayList;
     if (paramArrayList == null) {
-      localObject = this.jdField_a_of_type_Ykl.a();
+      localObject = this.jdField_a_of_type_Yze.a();
     }
     int i = ((ArrayList)localObject).size();
     if (i > 0)
     {
-      this.rightViewText.setText(amtj.a(2131713071) + i + ")");
+      this.rightViewText.setText(anvx.a(2131713418) + i + ")");
       return;
     }
-    this.rightViewText.setText(amtj.a(2131713072));
+    this.rightViewText.setText(anvx.a(2131713419));
   }
   
   public void a(ArrayList<String> paramArrayList)
@@ -111,11 +112,11 @@ public class ShareToActivity
     b(paramArrayList);
   }
   
-  public boolean a(ArrayList<String> paramArrayList, ykn paramykn)
+  public boolean a(ArrayList<String> paramArrayList, yzg paramyzg)
   {
-    if ((!paramykn.a) && (paramArrayList.size() >= 10))
+    if ((!paramyzg.a) && (paramArrayList.size() >= 10))
     {
-      QQToast.a(wkp.a(), 0, "最多只能选择10个群", 0).a();
+      QQToast.a(wzk.a(), 0, "最多只能选择10个群", 0).a();
       return false;
     }
     return true;
@@ -132,15 +133,15 @@ public class ShareToActivity
   
   public boolean onBackEvent()
   {
-    xwa.a("story_grp", "share_return", 0, 0, new String[] { "", "", "", "" });
+    ykv.a("story_grp", "share_return", 0, 0, new String[] { "", "", "", "" });
     return super.onBackEvent();
   }
   
   public void onClick(View paramView)
   {
-    xwa.a("story_grp", "share_suc", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Ykl.a().size()), "", "", "" });
+    ykv.a("story_grp", "share_suc", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Yze.a().size()), "", "", "" });
     Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("share_to_group_key", this.jdField_a_of_type_Ykl.a());
+    localIntent.putStringArrayListExtra("share_to_group_key", this.jdField_a_of_type_Yze.a());
     setResult(1, localIntent);
     finish();
     EventCollector.getInstance().onViewClicked(paramView);
@@ -156,9 +157,9 @@ public class ShareToActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131561703);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377272));
-    paramBundle = getLayoutInflater().inflate(2131561704, null);
+    setContentView(2131561771);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377545));
+    paramBundle = getLayoutInflater().inflate(2131561772, null);
     if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
     {
       paramBundle.setBackgroundColor(-16444373);
@@ -167,17 +168,17 @@ public class ShareToActivity
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(paramBundle);
     paramBundle = getIntent().getStringArrayListExtra("share_to_group_key");
     ArrayList localArrayList = a();
-    this.jdField_a_of_type_Ykl = new ykl(getBaseContext(), localArrayList, paramBundle);
-    this.jdField_a_of_type_Ykl.a(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ykl);
+    this.jdField_a_of_type_Yze = new yze(getBaseContext(), localArrayList, paramBundle);
+    this.jdField_a_of_type_Yze.a(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Yze);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    super.setTitle(amtj.a(2131713073));
-    super.a(amtj.a(2131713070), this);
+    super.setTitle(anvx.a(2131713420));
+    super.a(anvx.a(2131713417), this);
     b(null);
     if ((localArrayList == null) || (localArrayList.isEmpty())) {}
     for (paramBundle = "2";; paramBundle = "1")
     {
-      xwa.a("story_grp", "exp_share", 0, 0, new String[] { paramBundle, "", "", "" });
+      ykv.a("story_grp", "exp_share", 0, 0, new String[] { paramBundle, "", "", "" });
       return;
     }
   }
@@ -189,10 +190,10 @@ public class ShareToActivity
     {
       return;
       paramInt = (int)paramLong;
-      paramAdapterView = (ykn)this.jdField_a_of_type_Ykl.getItem(paramInt);
+      paramAdapterView = (yzg)this.jdField_a_of_type_Yze.getItem(paramInt);
     } while (paramAdapterView == null);
-    this.jdField_a_of_type_Ykl.a(paramAdapterView);
-    xwa.a("story_grp", "clk_share", 0, 0, new String[] { "", "", "", "" });
+    this.jdField_a_of_type_Yze.a(paramAdapterView);
+    ykv.a("story_grp", "clk_share", 0, 0, new String[] { "", "", "", "" });
   }
 }
 

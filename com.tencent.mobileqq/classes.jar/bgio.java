@@ -1,148 +1,307 @@
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper.1;
-import com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper.2;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.transfile.SosoSrvAddrProvider;
+import com.tencent.mobileqq.troop.utils.TroopAvatarManger.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import kotlin.jvm.functions.Function0;
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Observer;
+import java.util.Random;
 
 public class bgio
 {
-  private static bgil jdField_a_of_type_Bgil;
-  private static bgio jdField_a_of_type_Bgio = new bgio();
-  private static boolean jdField_a_of_type_Boolean;
-  private static boolean b;
-  private bgip jdField_a_of_type_Bgip = new bgip(this);
+  protected static final List<String> a;
+  protected static Map<String, bgmn> a;
+  protected aoep a;
+  protected final String a;
+  protected final String b = "5520";
+  protected final String c = "3";
+  protected final String d = "5";
+  protected final String e = "cgi-bin/httpconn";
+  public String f;
   
   static
   {
-    jdField_a_of_type_Bgil = new bgic();
-    jdField_a_of_type_Boolean = aqhy.c().a(Build.VERSION.SDK_INT);
-    b = true;
-    ThreadManagerV2.executeOnSubThread(new GLDrawableWraper.1());
+    jdField_a_of_type_JavaUtilList = new ArrayList();
+    jdField_a_of_type_JavaUtilList.add("2408:8756:3af0:10::107");
+    jdField_a_of_type_JavaUtilList.add("240e:ff:f101:10::104");
+    jdField_a_of_type_JavaUtilList.add("2402:4e00:8010::132");
+    jdField_a_of_type_JavaUtilList.add("2402:4e00:8010::22");
+    jdField_a_of_type_JavaUtilList.add("2408:80f1:31:50::21");
+    jdField_a_of_type_JavaUtilList.add("240e:e1:a900:50::3d");
+    jdField_a_of_type_JavaUtilList.add("2402:4e00:8020:2::86");
+    jdField_a_of_type_JavaUtilList.add("2409:8c1e:8fd0:50::1c");
+    jdField_a_of_type_JavaUtilList.add("2408:8711:10:10::13");
+    jdField_a_of_type_JavaUtilList.add("240e:928:1400:10::23");
+    jdField_a_of_type_JavaUtilList.add("2402:4e00:8030:1::a0");
+    jdField_a_of_type_JavaUtilList.add("2409:8702:4860:10::41");
   }
   
-  private bgio()
+  public bgio(String paramString, Class<? extends bgmn> paramClass, aoep paramaoep)
   {
-    ThreadManagerV2.executeOnSubThread(new GLDrawableWraper.2(this));
-  }
-  
-  public static bgil a()
-  {
-    return jdField_a_of_type_Bgil;
-  }
-  
-  public static bgio a()
-  {
-    return jdField_a_of_type_Bgio;
-  }
-  
-  private void a()
-  {
-    if ((!bgih.a()) && (!bgih.b()) && (!jdField_a_of_type_Bgil.a()) && (!jdField_a_of_type_Bgil.b())) {
-      jdField_a_of_type_Bgil.a();
+    this.jdField_a_of_type_JavaLangString = "0x6ff0072";
+    this.jdField_a_of_type_Aoep = paramaoep;
+    this.f = paramString;
+    if (jdField_a_of_type_JavaUtilMap == null) {
+      jdField_a_of_type_JavaUtilMap = new HashMap();
     }
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean a(Drawable paramDrawable)
-  {
-    if (d(paramDrawable)) {
-      return true;
-    }
-    return bgih.a(paramDrawable);
-  }
-  
-  public static boolean b()
-  {
-    return b;
-  }
-  
-  public static boolean b(Drawable paramDrawable)
-  {
-    return bgih.a(paramDrawable);
-  }
-  
-  public static boolean c(Drawable paramDrawable)
-  {
-    return bgih.b(paramDrawable);
-  }
-  
-  private static boolean d(Drawable paramDrawable)
-  {
-    if ((paramDrawable instanceof URLDrawable))
+    if ((bgmn)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
     {
-      paramDrawable = ((URLDrawable)paramDrawable).getExtraInfo();
-      if ((paramDrawable instanceof Bundle)) {
-        return ((Bundle)paramDrawable).getBoolean("key_use_gldrawable", false);
+      paramClass = bgmm.a(paramClass);
+      jdField_a_of_type_JavaUtilMap.put(paramString, paramClass);
+    }
+  }
+  
+  private String a(String paramString1, String paramString2, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString2)) {
+      return null;
+    }
+    try
+    {
+      paramString1 = new URL("http", paramString2, paramInt, "cgi-bin/httpconn").toString();
+      return paramString1;
+    }
+    catch (MalformedURLException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return null;
+  }
+  
+  private String a(boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    Object localObject2;
+    Object localObject1;
+    if (!paramBoolean)
+    {
+      bool1 = true;
+      localObject2 = a("htdata3.qq.com", "cgi-bin/httpconn", bool1);
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        if (paramBoolean) {
+          break label77;
+        }
       }
     }
-    return false;
-  }
-  
-  public Drawable a(File paramFile, boolean paramBoolean)
-  {
-    if (!jdField_a_of_type_Boolean) {
-      return null;
+    label77:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localObject1 = a("htdata4.qq.com", "cgi-bin/httpconn", bool1);
+      localObject2 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = a("cgi-bin/httpconn", paramBoolean);
+      }
+      return localObject2;
+      bool1 = false;
+      break;
     }
-    a();
-    return bgih.a().a(paramFile, ThreadManagerV2.getFileThreadLooper(), paramBoolean);
   }
   
-  public Drawable a(String paramString, Handler paramHandler, boolean paramBoolean)
+  public String a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (!jdField_a_of_type_Boolean) {
-      return null;
+    int i = 0;
+    for (;;)
+    {
+      Object localObject1;
+      try
+      {
+        localObject1 = InetAddress.getAllByName(paramString1);
+        if (localObject1 == null) {
+          break label150;
+        }
+        int j = localObject1.length;
+        if (i >= j) {
+          break label150;
+        }
+        localObject2 = localObject1[i];
+        if (((localObject2 instanceof Inet4Address)) && (paramBoolean))
+        {
+          localObject1 = localObject2.getHostAddress();
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            break label145;
+          }
+          paramString2 = a(paramString2, (String)localObject1, 80);
+        }
+      }
+      catch (UnknownHostException paramString1)
+      {
+        Object localObject2;
+        paramString2 = null;
+        QLog.i("TroopAvatarManger", 1, "UnknownHostException", paramString1);
+        return paramString2;
+      }
+      try
+      {
+        QLog.i("TroopAvatarManger", 1, String.format("tryGetIpByHost host[%s] %s", new Object[] { paramString1, localObject1 }));
+        return paramString2;
+      }
+      catch (UnknownHostException paramString1)
+      {
+        continue;
+      }
+      if (((localObject2 instanceof Inet6Address)) && (!paramBoolean))
+      {
+        localObject1 = localObject2.getHostAddress();
+      }
+      else
+      {
+        i += 1;
+        continue;
+        label145:
+        paramString2 = null;
+        continue;
+        label150:
+        localObject1 = null;
+      }
     }
-    a();
-    return bgih.a().a(paramString, paramHandler, paramBoolean);
   }
   
-  public bghx a(bgig parambgig, boolean paramBoolean, Function0<Drawable> paramFunction0)
+  public String a(String paramString, boolean paramBoolean)
   {
-    if (!jdField_a_of_type_Boolean) {
-      return null;
+    int i = new Random().nextInt(100);
+    String str;
+    if (paramBoolean)
+    {
+      int j = jdField_a_of_type_JavaUtilList.size();
+      str = (String)jdField_a_of_type_JavaUtilList.get(Math.abs(i) % j);
     }
-    return bgih.a().a(parambgig, ThreadManagerV2.getFileThreadLooper(), paramBoolean, paramFunction0);
-  }
-  
-  public bghx a(File paramFile, boolean paramBoolean, Function0<Drawable> paramFunction0)
-  {
-    if (!jdField_a_of_type_Boolean) {
-      return null;
+    for (;;)
+    {
+      paramString = a(paramString, str, 80);
+      QLog.i("TroopAvatarManger", 1, String.format("tryGetIpByRandomIp ip=%s bIpv6=%b", new Object[] { str, Boolean.valueOf(paramBoolean) }));
+      return paramString;
+      if (Math.abs(i) % 2 == 0) {
+        str = "14.17.18.20";
+      } else {
+        str = "112.90.139.96";
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("GLDrawable", 1, "use Async-GLDrawable : " + paramFile.getAbsolutePath());
+  }
+  
+  public ArrayList<bgml> a()
+  {
+    return ((bgmn)jdField_a_of_type_JavaUtilMap.get(this.f)).a();
+  }
+  
+  public List<String> a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    ArrayList localArrayList = new ArrayList();
+    boolean bool2 = anvy.a().a();
+    int i = NetConnInfoCenter.getActiveNetIpFamily(true);
+    SosoSrvAddrProvider localSosoSrvAddrProvider = SosoSrvAddrProvider.getInstance();
+    localSosoSrvAddrProvider.init();
+    if (i == 3)
+    {
+      String str = localSosoSrvAddrProvider.getSrvAddrHttps(paramAppInterface, 0, bool2, true);
+      if (!TextUtils.isEmpty(str)) {
+        localArrayList.add(str + "cgi-bin/httpconn");
+      }
+      if (!bool2) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        paramAppInterface = localSosoSrvAddrProvider.getSrvAddrHttps(paramAppInterface, 0, bool1, true);
+        if (!TextUtils.isEmpty(paramAppInterface)) {
+          localArrayList.add(paramAppInterface + "cgi-bin/httpconn");
+        }
+        if (localArrayList.size() < 2)
+        {
+          paramAppInterface = a(false);
+          if (!TextUtils.isEmpty(paramAppInterface)) {
+            localArrayList.add(paramAppInterface);
+          }
+        }
+        paramAppInterface = a("cgi-bin/httpconn", "htdata3.qq.com", 80);
+        if (!TextUtils.isEmpty(paramAppInterface)) {
+          localArrayList.add(paramAppInterface);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAvatarManger", 2, String.format("getSrvAddr type=%d prefV6=%b getUrl=%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2), Arrays.toString(localArrayList.toArray()) }));
+        }
+        i = 0;
+        while (i < localArrayList.size())
+        {
+          localArrayList.set(i, (String)localArrayList.get(i) + "?htcmd=" + "0x6ff0072" + "&ver=" + "5520" + "&ukey=" + paramString5 + "&range=" + paramString2 + "&uin=" + paramString4 + "&seq=23&groupuin=" + paramString3 + "&filetype=" + "3" + "&imagetype=" + "5" + "&userdata=" + paramString1);
+          i += 1;
+        }
+      }
     }
-    return bgih.a().a(paramFile, ThreadManagerV2.getFileThreadLooper(), paramBoolean, paramFunction0);
+    if (i == 2)
+    {
+      bool1 = true;
+      label422:
+      paramAppInterface = localSosoSrvAddrProvider.getSrvAddrHttps(paramAppInterface, 0, bool1, true);
+      if (!TextUtils.isEmpty(paramAppInterface)) {
+        localArrayList.add(paramAppInterface + "cgi-bin/httpconn");
+      }
+      if (i != 2) {
+        break label535;
+      }
+    }
+    label535:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      paramAppInterface = a(bool1);
+      if (!TextUtils.isEmpty(paramAppInterface)) {
+        localArrayList.add(paramAppInterface);
+      }
+      paramAppInterface = a("cgi-bin/httpconn", "htdata3.qq.com", 80);
+      if (TextUtils.isEmpty(paramAppInterface)) {
+        break;
+      }
+      localArrayList.add(paramAppInterface);
+      break;
+      bool1 = false;
+      break label422;
+    }
+    return localArrayList;
   }
   
-  public bgip a()
+  public void a()
   {
-    return this.jdField_a_of_type_Bgip;
+    this.jdField_a_of_type_Aoep = null;
   }
   
-  public void a(Drawable paramDrawable)
+  public void a(Class<? extends Thread> paramClass, AppInterface paramAppInterface, ArrayList<TroopClipPic> paramArrayList, String paramString1, String paramString2, String paramString3, HashMap<String, String> paramHashMap)
   {
-    bgih.a().a(paramDrawable);
+    ThreadManager.executeOnNetWorkThread(new TroopAvatarManger.1(this, paramAppInterface, paramString1, paramString3, paramString2, (bgmn)jdField_a_of_type_JavaUtilMap.get(this.f), paramClass, paramArrayList, paramHashMap));
   }
   
-  public void a(Drawable paramDrawable, boolean paramBoolean)
+  public void a(String paramString)
   {
-    bgih.a().a(paramDrawable, paramBoolean);
+    if (this.jdField_a_of_type_Aoep != null) {
+      this.jdField_a_of_type_Aoep.e(paramString);
+    }
   }
   
-  public boolean a(Drawable paramDrawable, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void a(String paramString, int paramInt, ArrayList<Integer> paramArrayList)
   {
-    return bgih.a().a(paramDrawable, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    if (this.jdField_a_of_type_Aoep != null) {
+      this.jdField_a_of_type_Aoep.a(paramString, paramInt, paramArrayList);
+    }
+  }
+  
+  public void a(Observer paramObserver)
+  {
+    ((bgmn)jdField_a_of_type_JavaUtilMap.get(this.f)).addObserver(paramObserver);
+  }
+  
+  public void b(Observer paramObserver)
+  {
+    ((bgmn)jdField_a_of_type_JavaUtilMap.get(this.f)).a(paramObserver);
   }
 }
 

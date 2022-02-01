@@ -1,20 +1,8 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.List;
+import android.os.Bundle;
 
 public abstract interface avtl
 {
-  public abstract avty a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
-  
-  public abstract boolean a(MessageRecord paramMessageRecord);
-  
-  public abstract boolean a(MsgBackupResEntity paramMsgBackupResEntity);
-  
-  public abstract void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
+  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 

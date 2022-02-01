@@ -9,21 +9,21 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import zka;
-import zke;
+import zzf;
+import zzj;
 
 public class SubscribeDraftManager$2
   implements Runnable
 {
-  public SubscribeDraftManager$2(zka paramzka, String paramString, zke paramzke) {}
+  public SubscribeDraftManager$2(zzf paramzzf, String paramString, zzj paramzzj) {}
   
   public void run()
   {
-    Object localObject1 = new File(zka.a(this.this$0) + Md5Utils.getMD5(this.jdField_a_of_type_JavaLangString));
+    Object localObject1 = new File(zzf.a(this.this$0) + Md5Utils.getMD5(this.jdField_a_of_type_JavaLangString));
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
       localObject1 = ((File)localObject1).listFiles();
-      QLog.d(zka.jdField_a_of_type_JavaLangString, 4, "qureyAllSimpleDraft count:" + localObject1.length);
+      QLog.d(zzf.jdField_a_of_type_JavaLangString, 4, "qureyAllSimpleDraft count:" + localObject1.length);
       localArrayList = new ArrayList();
       j = localObject1.length;
       i = 0;
@@ -35,7 +35,7 @@ public class SubscribeDraftManager$2
         localObject2 = localObject1[i];
         try
         {
-          localObject2 = zka.a(this.this$0, ((File)localObject2).getAbsolutePath());
+          localObject2 = zzf.a(this.this$0, ((File)localObject2).getAbsolutePath());
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
             localObject2 = (SubscribeDraftBean)JsonBinder.getInstance().fromJson((String)localObject2, SubscribeDraftBean.class);
@@ -48,7 +48,7 @@ public class SubscribeDraftManager$2
         {
           for (;;)
           {
-            QLog.d(zka.jdField_a_of_type_JavaLangString, 4, "readString failed:");
+            QLog.d(zzf.jdField_a_of_type_JavaLangString, 4, "readString failed:");
           }
         }
         i += 1;
@@ -56,12 +56,12 @@ public class SubscribeDraftManager$2
       label181:
       Collections.sort(localArrayList);
       if (!localArrayList.isEmpty()) {
-        if (this.jdField_a_of_type_Zke != null) {
-          this.jdField_a_of_type_Zke.a(4, true, "", new Object[] { localArrayList });
+        if (this.jdField_a_of_type_Zzj != null) {
+          this.jdField_a_of_type_Zzj.a(4, true, "", new Object[] { localArrayList });
         }
       }
     }
-    while (this.jdField_a_of_type_Zke == null)
+    while (this.jdField_a_of_type_Zzj == null)
     {
       ArrayList localArrayList;
       int j;
@@ -70,11 +70,11 @@ public class SubscribeDraftManager$2
       do
       {
         return;
-      } while (this.jdField_a_of_type_Zke == null);
-      this.jdField_a_of_type_Zke.a(4, false, "", null);
+      } while (this.jdField_a_of_type_Zzj == null);
+      this.jdField_a_of_type_Zzj.a(4, false, "", null);
       return;
     }
-    this.jdField_a_of_type_Zke.a(4, false, "", null);
+    this.jdField_a_of_type_Zzj.a(4, false, "", null);
   }
 }
 

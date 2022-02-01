@@ -1,15 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqpim.QQPimBridgeActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.2;
 
 public class bkrz
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public bkrz(QQPimBridgeActivity paramQQPimBridgeActivity) {}
+  public bkrz(VideoJsProxyImpl.2 param2) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    bkrw.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

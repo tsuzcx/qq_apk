@@ -1,122 +1,155 @@
-import Wallet.JudgeDownloadRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadFlowControlConfig;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.messagesearch.BaseMessageSearchDialog.1;
+import com.tencent.mobileqq.activity.messagesearch.BaseMessageSearchDialog.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.widget.BubblePopupWindow;
+import com.tencent.widget.XListView;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import mqq.os.MqqHandler;
 
 public class akbr
-  implements BusinessObserver
+  extends ReportDialog
+  implements Handler.Callback
 {
-  public akbr(PreloadResource paramPreloadResource, WeakReference paramWeakReference, bgod parambgod, PreloadModule paramPreloadModule) {}
+  protected int a;
+  akcy jdField_a_of_type_Akcy;
+  protected Context a;
+  EditText jdField_a_of_type_AndroidWidgetEditText;
+  bisl jdField_a_of_type_Bisl;
+  protected bkyc a;
+  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected MessageRecord a;
+  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  public XListView a;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new BaseMessageSearchDialog.2(this);
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle arg3)
+  public akbr(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    int i = 60;
-    PreloadManager localPreloadManager1;
-    label83:
-    JudgeDownloadRsp localJudgeDownloadRsp;
-    if (paramInt == 1)
+    super(paramContext, 16973834);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Bkyc = new bkyc(Looper.getMainLooper(), this);
+    requestWindowFeature(1);
+    getWindow().setSoftInputMode(2);
+    getWindow().setBackgroundDrawable(new ColorDrawable());
+    setContentView(2131559391);
+    paramContext = getWindow().getAttributes();
+    paramContext.x = 0;
+    paramContext.y = 0;
+    paramContext.width = -1;
+    paramContext.windowAnimations = 16973824;
+    paramContext.gravity = 51;
+    e();
+  }
+  
+  private void e()
+  {
+    View localView;
+    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration().orientation == 1))
     {
-      try
-      {
-        localPreloadManager1 = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (!PreloadManager.a(localPreloadManager1)) {
-          return;
-        }
-        if (paramBoolean) {
-          break label83;
-        }
-        localPreloadManager1.c();
-        return;
-      }
-      catch (Throwable ???)
-      {
-        if (!QLog.isColorLevel()) {
-          break label572;
-        }
-      }
-      QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " startFlowControlReq onReceive exception:" + ???);
-      return;
-      localJudgeDownloadRsp = (JudgeDownloadRsp)???.getSerializable("rsp");
-      if (localJudgeDownloadRsp == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadResource", 2, "onReceive rsp is null:" + localJudgeDownloadRsp);
-        }
-        localPreloadManager1.c();
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + "FlowControlRsp|" + localJudgeDownloadRsp.iDownloadStatus + "|" + localJudgeDownloadRsp.iSegTime + "|" + localJudgeDownloadRsp.iFailedRetryMax);
+      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      localView = findViewById(2131370488);
+      if (LiuHaiUtils.b(localActivity)) {
+        localView.post(new BaseMessageSearchDialog.1(this, localView, localActivity));
       }
     }
-    for (;;)
+    else
     {
-      synchronized (PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource))
-      {
-        switch (localJudgeDownloadRsp.iDownloadStatus)
-        {
-        case 1: 
-          PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource).mDownloadStatus = 2;
-          localPreloadFlowControlConfig = PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource);
-          if (localJudgeDownloadRsp.iSegTime > 60) {
-            i = localJudgeDownloadRsp.iSegTime;
-          }
-          localPreloadFlowControlConfig.mNextCanReqTime = (i * 1000 + NetConnInfoCenter.getServerTimeMillis());
-          if (localJudgeDownloadRsp.iDownloadStatus != 0) {
-            PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource).mRetryReqTimes = 0;
-          }
-          PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource).saveConfig();
-          if (localJudgeDownloadRsp.iDownloadStatus != 2) {
-            break label520;
-          }
-          localPreloadManager1.c();
-          if (this.jdField_a_of_type_Bgod == null) {
-            break label572;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.notifyListenerDownloadFailInFlowControl(this.jdField_a_of_type_Bgod, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, localPreloadManager1);
-          return;
-          PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource).mDownloadStatus = 1;
-          localPreloadFlowControlConfig = PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource);
-          if (localJudgeDownloadRsp.iFailedRetryMax > 0)
-          {
-            paramInt = localJudgeDownloadRsp.iFailedRetryMax;
-            localPreloadFlowControlConfig.mRetryDownloadTimes = paramInt;
-            localPreloadFlowControlConfig = PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource);
-            if (localJudgeDownloadRsp.iSegTime > 60) {
-              i = localJudgeDownloadRsp.iSegTime;
-            }
-            localPreloadFlowControlConfig.mValidDownloadTime = (i * 1000 + NetConnInfoCenter.getServerTimeMillis());
-          }
-          break;
-        }
-      }
-      paramInt = 3;
-      continue;
-      PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource).mDownloadStatus = 0;
-      PreloadFlowControlConfig localPreloadFlowControlConfig = PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource);
-      if (localJudgeDownloadRsp.iSegTime > 60) {
-        i = localJudgeDownloadRsp.iSegTime;
-      }
-      localPreloadFlowControlConfig.mNextRetryReqTime = (i * 1000 + NetConnInfoCenter.getServerTimeMillis());
-      continue;
-      label520:
-      if (localJudgeDownloadRsp.iDownloadStatus == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.handleFlowConfig(localPreloadManager2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, this.jdField_a_of_type_Bgod);
-        return;
-      }
-      if (localJudgeDownloadRsp.iDownloadStatus == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.handleFlowConfig(localPreloadManager2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, this.jdField_a_of_type_Bgod);
-      }
-      label572:
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseMessageSearchDialog", 2, "has no Notch, setPaddingTop 0");
+    }
+    localView.setPadding(localView.getPaddingLeft(), 0, localView.getPaddingRight(), localView.getPaddingBottom());
+    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  protected void a() {}
+  
+  protected void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Bisl == null) {
+      this.jdField_a_of_type_Bisl = new bisl(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299080));
+    }
+    this.jdField_a_of_type_Bisl.setCancelable(false);
+    this.jdField_a_of_type_Bisl.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Bisl.c(paramInt);
+    this.jdField_a_of_type_Bisl.show();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected void b()
+  {
+    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
+      this.jdField_a_of_type_Bisl.dismiss();
+    }
+  }
+  
+  protected void c()
+  {
+    if (getContext().getResources().getConfiguration().orientation == 2) {
+      this.jdField_a_of_type_Bkyc.sendEmptyMessageDelayed(1, 0L);
+    }
+  }
+  
+  protected void d()
+  {
+    if (isShowing())
+    {
+      long l = SystemClock.uptimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
+      this.jdField_a_of_type_AndroidWidgetEditText.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
+      this.jdField_a_of_type_AndroidWidgetEditText.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+    }
+  }
+  
+  public void dismiss()
+  {
+    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    super.dismiss();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
   }
 }
 

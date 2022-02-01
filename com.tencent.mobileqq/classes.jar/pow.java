@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 
-public class pow
-  implements pqe
+class pow
+  extends qdb
 {
-  public pow(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  pow(pob parampob, String paramString, ReadInJoyBaseListView paramReadInJoyBaseListView)
   {
-    ReadInJoySelfFragment.a(this.a, 12);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView);
   }
 }
 

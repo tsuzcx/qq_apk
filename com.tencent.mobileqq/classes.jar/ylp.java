@@ -1,39 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
 
-class ylp
-  implements bagj
+public final class ylp
+  implements Parcelable.Creator<EditLocalVideoSource>
 {
-  ylp(ylo paramylo) {}
-  
-  public void onEncodeError(int paramInt, Throwable arg2)
+  public EditLocalVideoSource a(Parcel paramParcel)
   {
-    synchronized (ylo.a(this.a))
-    {
-      ylo.b(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d(ylo.a, 2, "onEncodeError, errorCode= " + paramInt);
-      }
-      ylo.a(this.a).notifyAll();
-      return;
-    }
+    return new EditLocalVideoSource(paramParcel);
   }
   
-  public void onEncodeFinish(String paramString)
+  public EditLocalVideoSource[] a(int paramInt)
   {
-    synchronized (ylo.a(this.a))
-    {
-      ylo.a(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d(ylo.a, 2, "onEncodeFinish, filePath= " + paramString);
-      }
-      ylo.a(this.a).notifyAll();
-      return;
-    }
+    return new EditLocalVideoSource[paramInt];
   }
-  
-  public void onEncodeFrame() {}
-  
-  public void onEncodeStart() {}
 }
 
 

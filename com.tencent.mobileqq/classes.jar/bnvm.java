@@ -1,9 +1,24 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+
 public class bnvm
+  implements Animator.AnimatorListener
 {
-  public static boolean a(int paramInt)
+  public bnvm(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return paramInt == 180;
+    AEEditorAILoadingView.c(this.a).setVisibility(8);
+    AEEditorAILoadingView.d(this.a).playAnimation();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

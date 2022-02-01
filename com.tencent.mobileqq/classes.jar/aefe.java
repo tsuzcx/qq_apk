@@ -1,28 +1,22 @@
-import android.os.Handler;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aefe
-  implements INetEventHandler
+  extends aeer
 {
-  aefe(aeey paramaeey) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
+  public aefe(JumpActivity paramJumpActivity)
   {
-    if (!paramBoolean)
-    {
-      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131694072), 1).show();
-      SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
-      new Handler().postDelayed(local1, 3000L);
-    }
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aefe
  * JD-Core Version:    0.7.0.1
  */

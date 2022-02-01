@@ -1,17 +1,18 @@
-import android.support.annotation.Nullable;
-import com.tribe.async.async.FutureListener.SimpleFutureListener;
-import com.tribe.async.async.JobController.DoneEvent;
-import com.tribe.async.async.Worker;
-import com.tribe.async.dispatch.Dispatcher;
+import UserGrowth.stPostFeedCommentV2Req;
+import UserGrowth.stPostFeedCommentV2Rsp;
+import UserGrowth.stSimpleMetaComment;
+import UserGrowth.stSimpleMetaFeed;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
 
-class vlf
-  extends FutureListener.SimpleFutureListener<Progress, Result>
+public class vlf
+  extends vfo<stPostFeedCommentV2Rsp>
 {
-  vlf(vle paramvle, Worker paramWorker) {}
-  
-  public void onFutureDone(@Nullable Result paramResult)
+  public vlf(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment)
   {
-    vli.a().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
+    super("PostFeedCommentV2", 10003);
+    this.a = new stPostFeedCommentV2Req(paramstSimpleMetaFeed.id, paramstSimpleMetaComment, new ArrayList(), 0);
+    vmp.c("WsCommentBusiness", "stPostFeedCommentV2Req:" + this.a.toString());
   }
 }
 

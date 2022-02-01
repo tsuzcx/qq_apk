@@ -1,75 +1,20 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
+import android.content.Context;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-public class ooy
+public abstract interface ooy
 {
-  private static AladdinConfig a()
-  {
-    return Aladdin.getConfig(278);
-  }
+  public abstract void a(Context paramContext);
   
-  public static String a()
-  {
-    return a().getString("comment_guide_wording", "");
-  }
+  public abstract void a(MessageRecord paramMessageRecord);
   
-  public static boolean a()
-  {
-    return a().getIntegerFromString("comment_and_biu_combine_switch", 0) == 1;
-  }
+  public abstract void a(List<ChatMessage> paramList, ooz paramooz);
   
-  public static String b()
-  {
-    return a().getString("biu_editor_guide_wording", "");
-  }
+  public abstract boolean a(Context paramContext, RelativeLayout paramRelativeLayout);
   
-  public static boolean b()
-  {
-    return a().getIntegerFromString("biu_editor_checkbox_default_status", 0) == 1;
-  }
-  
-  public static String c()
-  {
-    return a().getString("biu_editor_confirm_btn_wording", "");
-  }
-  
-  public static boolean c()
-  {
-    return a().getIntegerFromString("biu_editor_checkbox_enable_remember", 0) == 1;
-  }
-  
-  public static String d()
-  {
-    return a().getString("biu_editor_checkbox_wording", "");
-  }
-  
-  public static boolean d()
-  {
-    return a().getIntegerFromString("biu_editor_checkbox_hidden", 0) == 1;
-  }
-  
-  public static String e()
-  {
-    if (a()) {
-      return a().getString("operate_cell_aladding_keys", "");
-    }
-    return "";
-  }
-  
-  public static boolean e()
-  {
-    return a().getIntegerFromString("biu_feed_card_white_jump", 1) == 1;
-  }
-  
-  public static boolean f()
-  {
-    return a().getIntegerFromString("biu_feed_card_gray_jump", 1) == 1;
-  }
-  
-  public static boolean g()
-  {
-    return a().getIntegerFromString("biu_feed_card_btn_jump", 1) == 1;
-  }
+  public abstract boolean a(RelativeLayout paramRelativeLayout);
 }
 
 

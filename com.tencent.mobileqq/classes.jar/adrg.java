@@ -1,38 +1,13 @@
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.app.proxy.GroupActionResp;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class adrg
-  extends amsu
+  implements DialogInterface.OnClickListener
 {
-  public adrg(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public adrg(ChatSettingActivity paramChatSettingActivity) {}
   
-  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MoveToGroupActivity", 2, "onAddGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(paramBoolean);
-    MoveToGroupActivity.a(this.a, true);
-  }
-  
-  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
-  {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    MoveToGroupActivity.a(this.a);
-    if (paramString == null) {
-      QQToast.a(this.a, this.a.getString(2131693865), 0).b(this.a.getTitleBarHeight());
-    }
-    for (;;)
-    {
-      MoveToGroupActivity.b(this.a);
-      return;
-      QQToast.a(this.a, 2, this.a.getString(2131693867), 0).b(this.a.getTitleBarHeight());
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

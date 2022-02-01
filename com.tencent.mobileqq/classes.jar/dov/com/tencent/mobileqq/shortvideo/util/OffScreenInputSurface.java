@@ -8,7 +8,7 @@ import android.opengl.EGLDisplay;
 import android.opengl.EGLSurface;
 import android.os.Build.VERSION;
 import android.util.Log;
-import bbub;
+import bdaw;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(17)
@@ -33,7 +33,6 @@ public class OffScreenInputSurface
   
   public static int a(EGLContext paramEGLContext)
   {
-    if (Build.VERSION.SDK_INT >= 17) {}
     return 0;
   }
   
@@ -65,7 +64,7 @@ public class OffScreenInputSurface
     EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
     int[] arrayOfInt2 = new int[1];
     arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
-    boolean bool = bbub.e(bbub.v);
+    boolean bool = bdaw.e(bdaw.v);
     if (bool) {
       arrayOfInt1 = jdField_b_of_type_ArrayOfInt;
     }

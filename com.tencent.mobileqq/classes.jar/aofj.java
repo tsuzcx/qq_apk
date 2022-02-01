@@ -1,13 +1,10 @@
-import android.os.IInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface aofj
-  extends IInterface
+public final class aofj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

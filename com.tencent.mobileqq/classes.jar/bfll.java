@@ -1,22 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import java.util.UUID;
 
 class bfll
-  implements DialogInterface.OnDismissListener
+  implements ProxyListener
 {
-  bfll(bflj parambflj) {}
+  bfll(bflk parambflk, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onDeleteFinish(String paramString, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_Int == -1) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)))
-    {
-      ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopShareUtility", 2, "mShareActionSheet noItemClick, onDismiss");
-      }
-    }
+    bfmf.d("TroopFileDataBaseProxy", bfmf.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[del]. table:" + paramString);
+  }
+  
+  public void onInsertFinish(String paramString)
+  {
+    bfmf.d("TroopFileDataBaseProxy", bfmf.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish. table:" + paramString);
+  }
+  
+  public void onUpdateFinish(String paramString, int paramInt)
+  {
+    bfmf.d("TroopFileDataBaseProxy", bfmf.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[up]. table:" + paramString);
   }
 }
 

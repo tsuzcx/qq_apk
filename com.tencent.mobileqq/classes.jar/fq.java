@@ -146,10 +146,10 @@ public class fq
         this.g = 0;
         this.e += 1;
         return;
-        if (!(paramCharacterStyle instanceof bank)) {
+        if (!(paramCharacterStyle instanceof bbtz)) {
           break label196;
         }
-        i = ((bank)paramCharacterStyle).a();
+        i = ((bbtz)paramCharacterStyle).a();
         break label26;
         if (this.g == 0)
         {

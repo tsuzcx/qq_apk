@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import bfvo;
+import bheg;
 import com.tencent.image.URLDrawable;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -33,23 +33,23 @@ class QidianProfileCardActivity$SavePhotoRunnable
         if (str1 == null) {
           continue;
         }
-        bfvo.a(localQidianProfileCardActivity, str1);
-        str1 = localQidianProfileCardActivity.getString(2131694485) + " " + str1;
+        bheg.a(localQidianProfileCardActivity, str1);
+        str1 = localQidianProfileCardActivity.getString(2131694686) + " " + str1;
       }
       catch (IOException localIOException)
       {
         String str1;
-        String str2 = localQidianProfileCardActivity.getString(2131694483);
+        String str2 = localQidianProfileCardActivity.getString(2131694684);
         continue;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        String str3 = localQidianProfileCardActivity.getString(2131694483);
+        String str3 = localQidianProfileCardActivity.getString(2131694684);
         continue;
       }
       localQidianProfileCardActivity.runOnUiThread(new QidianProfileCardActivity.SavePhotoRunnable.1(this, localQidianProfileCardActivity, str1));
       return;
-      str1 = localQidianProfileCardActivity.getString(2131694483);
+      str1 = localQidianProfileCardActivity.getString(2131694684);
     }
   }
 }

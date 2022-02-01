@@ -1,60 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-class aczv
-  implements View.OnClickListener
+public class aczv
+  extends RecyclablePool.Recyclable
 {
-  aczv(aczu paramaczu) {}
+  public int a;
+  public long a;
+  public String a;
+  public int[] a;
+  public int b;
+  public long b;
+  public int[] b;
+  public int c;
+  public long c;
+  public int d;
+  public long d;
+  public int e;
+  long e;
+  public int f;
+  public long f;
+  public int g;
+  public long g;
+  int h = 0;
+  int i = 0;
   
-  public void onClick(View paramView)
+  public aczv()
   {
-    if ((paramView.getTag() instanceof String))
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    Object localObject1 = (ChatMessage)((alik)paramView.getTag()).a;
-    if (this.a.b()) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a((ChatMessage)localObject1)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c((ChatMessage)localObject1);
-      }
-    }
-    while ((!(localObject1 instanceof MessageForStructing)) || (((MessageForStructing)localObject1).structingMsg == null) || (!(((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg))) {
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Alij.notifyDataSetChanged();
-        break;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a()) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b((ChatMessage)localObject1);
-      }
-    }
-    localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
-    Object localObject2;
-    if ((localObject1 instanceof StructMsgForGeneralShare))
-    {
-      localObject2 = (StructMsgForGeneralShare)localObject1;
-      bcht localbcht = new bcht(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (StructMsgForGeneralShare)localObject2);
-      StructMsgForGeneralShare.onClickEvent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForGeneralShare)localObject2, paramView, localbcht);
-    }
-    for (;;)
-    {
-      ((AbsShareMsg)localObject1).getOnClickListener().onClick(paramView);
-      break;
-      if ((localObject1 instanceof StructMsgForAudioShare))
-      {
-        localObject2 = (StructMsgForAudioShare)localObject1;
-        StructMsgForAudioShare.onClickEvent(this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForAudioShare)localObject2);
-      }
-    }
+    this.jdField_e_of_type_Long = 0L;
+    this.jdField_a_of_type_ArrayOfInt = new int[aczu.a().length];
+    this.jdField_b_of_type_ArrayOfInt = new int[aczu.b().length];
+  }
+  
+  public String a(long paramLong)
+  {
+    return String.format("h:%x[%d,%d,%d][%d,%d][%d,%d,%d][%d,%d,%d][%s]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.jdField_c_of_type_Long - paramLong), Long.valueOf(this.jdField_b_of_type_Long - paramLong), Long.valueOf(this.jdField_d_of_type_Long - paramLong), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.f), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.g), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_d_of_type_Int), Integer.valueOf(this.jdField_e_of_type_Int), this.jdField_a_of_type_JavaLangString });
   }
 }
 

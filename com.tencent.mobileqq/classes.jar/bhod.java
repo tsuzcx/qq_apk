@@ -1,19 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
+import eipc.EIPCResult;
 
-final class bhod
-  extends BroadcastReceiver
+public class bhod
+  implements bhob
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bhod(QuickUpdateIPCModule paramQuickUpdateIPCModule, int paramInt) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramIntent.getIntExtra("type", 0) == 0)) {
-      return;
-    }
-    bhoa.a(paramIntent.getStringExtra("account"));
-    bhoa.b(bhoa.a());
+    QuickUpdateIPCModule.Params localParams = new QuickUpdateIPCModule.Params(null);
+    localParams.intVal = paramInt;
+    localParams.strVal1 = paramString1;
+    localParams.strVal2 = paramString2;
+    paramString1 = new Bundle();
+    paramString1.putSerializable("params", localParams);
+    paramString1 = EIPCResult.createResult(0, paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqVasQuickUpdateIPCModule.callbackResult(this.jdField_a_of_type_Int, paramString1);
   }
 }
 

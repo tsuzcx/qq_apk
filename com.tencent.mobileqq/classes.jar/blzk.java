@@ -1,59 +1,23 @@
-import com.tencent.aekit.openrender.internal.Frame;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class blzk
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private blwv jdField_a_of_type_Blwv = new blwv();
-  private blzl jdField_a_of_type_Blzl;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b;
+  public blzk(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, String paramString1, String paramString2) {}
   
-  public Frame a(Frame paramFrame, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Frame localFrame = paramFrame;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Blwv.a(paramFrame, paramInt1, paramInt2, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      localFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-    }
-    if (this.jdField_a_of_type_Blzl != null) {
-      this.jdField_a_of_type_Blzl.a(localFrame);
-    }
-    return localFrame;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Blwv.apply();
-    if (this.jdField_a_of_type_Blzl != null) {
-      this.jdField_a_of_type_Blzl.a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void a(blzl paramblzl)
-  {
-    this.jdField_a_of_type_Blzl = paramblzl;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Blwv.ClearGLSL();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    if (this.jdField_a_of_type_Blzl != null) {
-      this.jdField_a_of_type_Blzl.b();
-    }
+    Intent localIntent = AddFriendLogicActivity.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.app.getApp().getApplicationContext(), 1, this.jdField_a_of_type_JavaLangString, null, 3002, 14, this.b, null, null, anvx.a(2131709482), null);
+    localIntent.putExtra("_FROM_QLINK_", true);
+    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
   }
 }
 

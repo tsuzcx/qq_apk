@@ -1,29 +1,16 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.picload.Option;
+import cooperation.qqcircle.picload.QCircleFeedPicLoader.QCirclePicStateListener;
 
-public class ahdn
-  extends ahdi
+class ahdn
+  extends QCircleFeedPicLoader.QCirclePicStateListener
 {
-  public AnimationView.AnimationInfo a;
-  public String b;
+  ahdn(ahdl paramahdl) {}
   
-  public ahdn(String paramString)
+  public void onStateChang(int paramInt, Option paramOption)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.b = paramRedPacketInfo.background;
-      this.a = paramRedPacketInfo.animInfo;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.b != null) || (this.a != null);
+    super.onStateChang(paramInt, paramOption);
+    QLog.d("QCircleFeedItemBuilder", 1, paramOption.getUrl() + ", \nstate callback:" + paramInt);
   }
 }
 

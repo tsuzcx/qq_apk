@@ -1,16 +1,40 @@
-import android.graphics.drawable.Drawable;
-import android.os.Looper;
-import java.io.File;
-import kotlin.jvm.functions.Function0;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bgij
-  implements Function0<Drawable>
+public class bgij
 {
-  bgij(bgih parambgih, File paramFile, Looper paramLooper, boolean paramBoolean) {}
+  public static bgij[] a;
+  public String a;
   
-  public Drawable a()
+  static
   {
-    return this.jdField_a_of_type_Bgih.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_AndroidOsLooper, this.jdField_a_of_type_Boolean);
+    jdField_a_of_type_ArrayOfBgij = new bgij[] { new bgij("BulkChatMessageConfig") };
+  }
+  
+  public bgij(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  final JSONObject a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      return a(paramString);
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString = new JSONObject();
+      }
+    }
+  }
+  
+  JSONObject a(JSONObject paramJSONObject)
+  {
+    return paramJSONObject;
   }
 }
 

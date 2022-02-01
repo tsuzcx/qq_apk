@@ -1,32 +1,24 @@
 package com.tencent.av.ui;
 
-import android.app.Activity;
-import com.tencent.av.widget.ChildLockCircle;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import lfe;
 
 class DoubleVideoCtrlUI$16
   implements Runnable
 {
-  DoubleVideoCtrlUI$16(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  DoubleVideoCtrlUI$16(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
   
   public void run()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.this$0.a != null)
+    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
     {
-      localObject1 = localObject2;
-      if (this.this$0.a.get() != null) {
-        localObject1 = (ChildLockCircle)((Activity)this.this$0.a.get()).findViewById(2131373264);
-      }
-    }
-    if (localObject1 != null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.w(this.this$0.d, 1, "timtest HideChildLockUIRunnable");
-      }
-      ((ChildLockCircle)localObject1).setVisibility(8);
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().d, 233);
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(233);
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().d, 9);
+      QLog.d(this.this$0.d, 1, "exit when onBackPressed");
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a, 1008);
     }
   }
 }

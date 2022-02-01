@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import bfdx;
+import bgmd;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -28,7 +28,7 @@ class ChatHistoryBubbleListFragment$2
       ThreadManager.getUIHandler().post(new ChatHistoryBubbleListFragment.2.1(this, (List)localObject));
       return;
     }
-    bfdx.a("chat_history", "target_404", String.valueOf(this.this$0.jdField_c_of_type_Long), String.valueOf(this.this$0.jdField_c_of_type_Int), "", "");
+    bgmd.a("chat_history", "target_404", String.valueOf(this.this$0.jdField_c_of_type_Long), String.valueOf(this.this$0.jdField_c_of_type_Int), "", "");
     if (QLog.isColorLevel()) {
       QLog.e("chatHistory.troop.msgList", 2, "msg not found, fallback to loadData");
     }

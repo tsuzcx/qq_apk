@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.content.Context;
-import anoh;
+import aora;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
@@ -13,10 +13,10 @@ class MessageForGrayTips$HightlightClickableSpan$3
   
   public void run()
   {
-    anoh.a((QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.this$0).get());
+    aora.a((QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.this$0).get());
     try
     {
-      MessageForGrayTips.HightlightClickableSpan.access$100(this.this$0).startActivity(anoh.a);
+      MessageForGrayTips.HightlightClickableSpan.access$100(this.this$0).startActivity(aora.a);
       return;
     }
     catch (Exception localException)
@@ -28,7 +28,7 @@ class MessageForGrayTips$HightlightClickableSpan$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan.3
  * JD-Core Version:    0.7.0.1
  */

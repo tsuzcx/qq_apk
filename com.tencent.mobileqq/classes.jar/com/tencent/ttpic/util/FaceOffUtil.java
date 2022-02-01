@@ -33,6 +33,7 @@ public class FaceOffUtil
   public static final int[] FaceMeshTriangles;
   public static final int[] FaceMeshTrianglesFaceAverage;
   public static final int[] FaceMeshTrianglesFaceAverageForTypeOne;
+  public static final int[] FaceMeshTriangles_disableFaceCrop_v2;
   public static final int[] FaceMeshTriangles_v2;
   public static String GRAY_CRAZY_SKIN_MERGE_MASK_NAME;
   private static String GRAY_FILE_CRAZY_FACE;
@@ -47,12 +48,14 @@ public class FaceOffUtil
   public static final int IRIS_TRIANGLE_COUNT = 8;
   public static final int[] IrisMeshTriangles = { 0, 1, 2, 0, 2, 3, 0, 3, 4, 0, 4, 1, 5, 6, 7, 5, 7, 8, 5, 8, 9, 5, 9, 6 };
   public static final int NO_HOLE_TRIANGLE_COUNT = 230;
+  public static int NO_HOLE_TRIANGLE_COUNT_4_SMOOTH = 0;
   public static final int NO_HOLE_TRIANGLE_COUNT_FACE_AVERAGE = 184;
   public static final int NO_HOLE_TRIANGLE_COUNT_V2;
   public static final int NO_HOLE_VERTEX_COUNT_V2 = 135;
   public static int[] Select3DIndices = { 359, 365, 364, 388, 2082, 393, 11, 21, 2161, 33, 466, 464, 1771, 874, 2085, 802, 2081, 782, 2591, 1203, 231, 2667, 2086, 162, 1071, 1059, 167, 1204, 664, 2669, 2091, 595, 1072, 1060, 600, 200, 214, 213, 253, 181, 191, 1454, 3034, 3023, 397, 633, 647, 646, 685, 614, 624, 1455, 3035, 3027, 811, 2649, 2894, 3144, 93, 3038, 530, 3147, 2895, 2652, 3432, 1586, 3309, 3059, 264, 411, 693, 3060, 1427, 3375, 1426, 314, 3176, 3208, 3178, 735, 3173, 1600, 1450, 211, 2361, 185, 182, 198, 2584, 2778, 1041, 2780, 194, 644, 2365, 618, 615, 631, 2587, 2783, 1042, 2785, 627 };
   private static final String TAG = FaceOffUtil.class.getSimpleName();
   private static Bitmap crazySkinMergeBitmap;
+  public static final int[] faceMesh4Smooth;
   public static final int[] faceMeshNoseLastTriangles;
   
   static
@@ -73,8 +76,11 @@ public class FaceOffUtil
     FaceMeshTrianglesFaceAverage = new int[] { 0, 1, 35, 1, 35, 36, 35, 36, 42, 20, 35, 42, 19, 20, 35, 19, 20, 26, 19, 26, 96, 19, 90, 96, 26, 95, 96, 25, 26, 95, 21, 25, 26, 20, 21, 26, 20, 21, 42, 21, 41, 42, 41, 42, 43, 36, 42, 43, 36, 37, 43, 36, 37, 57, 2, 36, 57, 2, 3, 57, 3, 4, 65, 4, 5, 65, 5, 65, 67, 5, 6, 67, 6, 7, 67, 7, 67, 68, 7, 8, 68, 8, 68, 69, 68, 69, 73, 68, 73, 74, 67, 68, 74, 65, 67, 74, 65, 75, 82, 57, 58, 75, 58, 75, 76, 75, 76, 82, 65, 74, 82, 74, 81, 82, 73, 74, 81, 70, 72, 73, 69, 70, 73, 10, 69, 70, 9, 10, 69, 8, 9, 69, 10, 11, 70, 12, 13, 71, 13, 66, 71, 13, 14, 66, 14, 15, 66, 60, 61, 79, 59, 60, 64, 59, 60, 78, 59, 77, 78, 76, 77, 81, 59, 76, 77, 58, 59, 76, 58, 59, 64, 56, 58, 64, 56, 57, 58, 37, 38, 43, 38, 40, 43, 38, 39, 40, 38, 39, 56, 39, 55, 56, 23, 39, 55, 56, 62, 64, 47, 61, 62, 46, 47, 61, 15, 16, 61, 17, 45, 46, 17, 18, 45, 27, 28, 45, 28, 45, 52, 28, 29, 52, 29, 51, 52, 29, 50, 51, 50, 51, 53, 48, 50, 53, 48, 49, 50, 31, 49, 63, 47, 48, 62, 47, 48, 53, 45, 46, 52, 51, 52, 53, 30, 31, 32, 31, 32, 94, 32, 92, 94, 32, 33, 92, 29, 30, 50, 27, 28, 34, 27, 34, 93, 27, 91, 93, 34, 92, 93, 33, 34, 92, 23, 31, 94, 23, 24, 94, 22, 23, 24, 21, 22, 24, 40, 41, 43, 22, 39, 40, 22, 23, 39, 21, 24, 25, 24, 25, 95, 24, 94, 95, 76, 81, 82, 78, 79, 80, 66, 72, 80, 66, 79, 80, 66, 71, 72, 70, 71, 72, 60, 78, 79, 1, 2, 36, 95, 96, 99, 92, 93, 105, 91, 104, 105, 14, 103, 104, 11, 102, 103, 7, 101, 102, 4, 100, 101, 90, 99, 100, 0, 1, 100, 1, 2, 100, 2, 3, 100, 3, 4, 100, 4, 5, 101, 5, 6, 101, 6, 7, 101, 7, 8, 102, 8, 9, 102, 9, 10, 102, 10, 11, 102, 11, 12, 103, 12, 13, 103, 13, 14, 103, 14, 15, 104, 15, 16, 104, 16, 17, 104, 17, 18, 104, 18, 91, 104, 91, 93, 105, 92, 105, 106, 92, 94, 106, 94, 95, 106, 95, 99, 106, 90, 96, 99, 0, 90, 100, 21, 40, 41, 21, 22, 40, 23, 31, 83, 23, 55, 83, 31, 63, 83, 55, 56, 83, 56, 62, 83, 62, 63, 83, 49, 62, 63, 48, 49, 62, 30, 31, 49, 30, 49, 50, 29, 30, 32, 29, 32, 33, 29, 33, 34, 28, 29, 34, 46, 52, 53, 46, 47, 53, 37, 38, 56, 37, 56, 57, 60, 62, 64, 60, 61, 62, 16, 46, 61, 16, 17, 46, 77, 78, 81, 78, 80, 81, 72, 80, 81, 72, 73, 81, 11, 70, 71, 11, 12, 71, 0, 19, 90, 0, 19, 35, 18, 27, 91, 18, 27, 45, 3, 57, 65, 57, 65, 75, 61, 66, 79, 15, 61, 66 };
     FaceMeshTrianglesFaceAverageForTypeOne = new int[] { 0, 35, 1, 1, 35, 36, 35, 42, 36, 20, 42, 35, 19, 20, 35, 19, 26, 20, 19, 96, 26, 19, 90, 96, 26, 96, 95, 25, 26, 95, 21, 26, 25, 20, 26, 21, 20, 21, 42, 21, 41, 42, 41, 43, 42, 36, 42, 43, 36, 43, 37, 36, 37, 57, 2, 36, 57, 2, 57, 3, 3, 65, 4, 4, 65, 5, 5, 65, 67, 5, 67, 6, 6, 67, 7, 7, 67, 68, 7, 68, 8, 8, 68, 69, 68, 73, 69, 68, 74, 73, 67, 74, 68, 65, 74, 67, 65, 75, 82, 57, 58, 75, 58, 76, 75, 75, 76, 82, 65, 82, 74, 74, 82, 81, 73, 74, 81, 70, 73, 72, 69, 73, 70, 10, 69, 70, 9, 69, 10, 8, 69, 9, 10, 70, 11, 12, 71, 13, 13, 71, 66, 13, 66, 14, 14, 66, 15, 60, 61, 79, 59, 64, 60, 59, 60, 78, 59, 78, 77, 76, 77, 81, 59, 77, 76, 58, 59, 76, 58, 64, 59, 56, 64, 58, 56, 58, 57, 37, 43, 38, 38, 43, 40, 38, 40, 39, 38, 39, 56, 39, 55, 56, 23, 55, 39, 56, 62, 64, 47, 61, 62, 46, 61, 47, 15, 61, 16, 17, 46, 45, 17, 45, 18, 27, 45, 28, 28, 45, 52, 28, 52, 29, 29, 52, 51, 30, 51, 50, 50, 51, 53, 48, 50, 53, 48, 49, 50, 31, 49, 63, 47, 62, 48, 47, 48, 53, 45, 46, 52, 51, 52, 53, 30, 31, 32, 31, 94, 32, 32, 94, 92, 32, 92, 33, 29, 51, 30, 27, 28, 34, 27, 34, 93, 27, 93, 91, 34, 92, 93, 33, 92, 34, 23, 94, 31, 23, 24, 94, 22, 24, 23, 21, 24, 22, 40, 43, 41, 22, 40, 41, 22, 23, 40, 21, 25, 24, 24, 25, 95, 24, 95, 94, 76, 81, 82, 78, 79, 80, 66, 72, 80, 66, 80, 79, 66, 71, 72, 70, 72, 71, 60, 79, 78, 1, 36, 2, 95, 96, 99, 92, 105, 93, 91, 105, 104, 14, 104, 103, 11, 103, 102, 7, 102, 101, 4, 101, 100, 90, 100, 99, 0, 1, 100, 1, 2, 100, 2, 3, 100, 3, 4, 100, 4, 5, 101, 5, 6, 101, 6, 7, 101, 7, 8, 102, 8, 9, 102, 9, 10, 102, 10, 11, 102, 11, 12, 103, 12, 13, 103, 13, 14, 103, 14, 15, 104, 15, 16, 104, 16, 17, 104, 17, 18, 104, 18, 91, 104, 91, 93, 105, 92, 106, 105, 92, 94, 106, 94, 95, 106, 95, 99, 106, 90, 99, 96, 0, 100, 90, 23, 39, 40, 21, 22, 41, 23, 31, 83, 23, 83, 55, 31, 63, 83, 55, 83, 56, 56, 83, 62, 62, 83, 63, 49, 62, 63, 48, 62, 49, 30, 50, 31, 31, 50, 49, 29, 30, 32, 29, 32, 33, 29, 33, 34, 28, 29, 34, 46, 53, 52, 46, 47, 53, 37, 38, 56, 37, 56, 57, 60, 64, 62, 60, 62, 61, 16, 61, 46, 16, 46, 17, 77, 78, 81, 78, 80, 81, 72, 81, 80, 72, 73, 81, 11, 70, 71, 11, 71, 12, 0, 90, 19, 0, 19, 35, 18, 27, 91, 18, 45, 27, 3, 57, 65, 57, 75, 65, 61, 66, 79, 15, 66, 61 };
     FaceMeshTriangles = new int[] { 19, 118, 111, 118, 19, 20, 7, 67, 68, 67, 7, 6, 1, 0, 111, 56, 109, 114, 109, 56, 57, 2, 1, 109, 69, 8, 68, 8, 69, 9, 3, 2, 107, 58, 76, 75, 76, 58, 59, 4, 3, 107, 65, 75, 82, 65, 67, 74, 65, 82, 74, 5, 4, 107, 67, 6, 5, 109, 107, 2, 107, 109, 57, 114, 55, 56, 55, 114, 115, 8, 7, 68, 114, 113, 38, 113, 114, 109, 10, 9, 69, 11, 10, 70, 12, 11, 71, 36, 113, 112, 113, 36, 37, 13, 12, 66, 41, 119, 40, 119, 41, 117, 14, 13, 108, 37, 41, 38, 41, 37, 42, 15, 14, 108, 42, 118, 120, 118, 42, 35, 16, 15, 108, 1, 111, 112, 17, 16, 110, 109, 112, 113, 112, 109, 1, 18, 17, 121, 25, 20, 26, 20, 25, 21, 96, 26, 19, 26, 96, 95, 107, 57, 65, 19, 111, 90, 20, 19, 26, 21, 25, 22, 58, 64, 59, 64, 58, 57, 20, 21, 120, 33, 29, 30, 29, 33, 28, 51, 129, 127, 129, 51, 50, 21, 22, 117, 22, 24, 23, 24, 22, 25, 121, 17, 122, 22, 23, 116, 52, 128, 45, 128, 52, 130, 121, 128, 27, 128, 121, 45, 23, 24, 84, 92, 33, 32, 33, 92, 34, 24, 25, 95, 24, 95, 94, 25, 26, 95, 121, 91, 18, 91, 121, 27, 84, 94, 32, 94, 84, 24, 27, 93, 91, 93, 27, 34, 27, 28, 34, 28, 27, 128, 32, 30, 31, 30, 32, 33, 28, 33, 34, 29, 28, 130, 110, 122, 17, 122, 110, 123, 32, 31, 84, 30, 29, 127, 47, 52, 46, 52, 47, 51, 31, 30, 129, 84, 31, 126, 92, 32, 94, 93, 34, 92, 42, 36, 35, 36, 42, 37, 35, 112, 111, 112, 35, 36, 120, 117, 41, 117, 120, 21, 38, 41, 40, 114, 38, 39, 22, 116, 119, 61, 64, 62, 64, 61, 60, 37, 38, 113, 116, 39, 40, 39, 116, 115, 61, 108, 66, 108, 61, 110, 39, 38, 40, 63, 84, 126, 84, 63, 83, 119, 117, 22, 120, 41, 42, 120, 118, 20, 45, 122, 46, 122, 45, 121, 46, 52, 45, 127, 130, 51, 130, 127, 29, 123, 46, 122, 46, 123, 47, 48, 51, 47, 51, 48, 50, 124, 48, 123, 48, 124, 49, 64, 60, 59, 48, 47, 123, 71, 11, 70, 31, 129, 126, 48, 49, 50, 84, 116, 23, 116, 84, 55, 49, 126, 50, 126, 49, 125, 127, 129, 30, 51, 130, 52, 128, 130, 28, 115, 114, 39, 83, 56, 55, 56, 83, 62, 64, 57, 56, 65, 57, 75, 5, 107, 65, 10, 69, 70, 57, 58, 75, 60, 79, 78, 79, 60, 61, 61, 66, 79, 108, 13, 66, 16, 108, 110, 59, 60, 78, 124, 123, 110, 110, 62, 124, 62, 110, 61, 124, 63, 125, 63, 124, 62, 56, 62, 64, 124, 125, 49, 63, 62, 83, 83, 55, 84, 5, 65, 67, 66, 12, 71, 74, 68, 67, 68, 74, 73, 68, 73, 69, 73, 70, 69, 70, 73, 72, 66, 71, 72, 66, 79, 80, 66, 80, 72, 71, 70, 72, 59, 78, 77, 72, 73, 80, 81, 80, 73, 80, 81, 78, 73, 74, 81, 82, 81, 74, 81, 82, 76, 75, 76, 82, 76, 59, 77, 77, 81, 76, 81, 77, 78, 78, 79, 80, 19, 90, 96, 0, 90, 111, 35, 111, 118, 55, 115, 116, 116, 40, 119, 125, 63, 126, 50, 126, 129, 99, 106, 96, 106, 105, 93, 105, 104, 91, 104, 103, 14, 103, 102, 11, 102, 101, 7, 101, 100, 4, 100, 99, 90, 0, 1, 100, 1, 2, 100, 2, 3, 100, 3, 4, 100, 4, 5, 101, 5, 6, 101, 6, 7, 101, 7, 8, 102, 8, 9, 102, 9, 10, 102, 10, 11, 102, 11, 12, 103, 12, 13, 103, 13, 14, 103, 14, 15, 104, 15, 16, 104, 16, 17, 104, 17, 18, 104, 18, 91, 104, 91, 93, 105, 93, 92, 106, 92, 94, 106, 94, 95, 106, 95, 96, 106, 96, 90, 99, 90, 0, 100 };
+    faceMesh4Smooth = new int[] { 131, 19, 26, 131, 26, 25, 131, 25, 133, 99, 131, 134, 106, 131, 133, 106, 131, 99, 19, 134, 131, 132, 105, 135, 106, 132, 105, 106, 132, 133, 132, 33, 133, 132, 34, 33, 132, 27, 34, 132, 27, 135, 133, 25, 24, 133, 24, 84, 133, 32, 84, 133, 33, 32, 0, 19, 134, 99, 134, 100, 100, 134, 0, 104, 18, 135, 105, 104, 135, 18, 27, 135, 19, 118, 111, 118, 19, 20, 7, 67, 68, 67, 7, 6, 1, 0, 111, 56, 109, 114, 109, 56, 57, 2, 1, 109, 69, 8, 68, 8, 69, 9, 3, 2, 107, 58, 76, 75, 76, 58, 59, 4, 3, 107, 65, 75, 82, 65, 67, 74, 65, 82, 74, 5, 4, 107, 67, 6, 5, 109, 107, 2, 107, 109, 57, 114, 55, 56, 55, 114, 115, 8, 7, 68, 114, 113, 38, 113, 114, 109, 10, 9, 69, 11, 10, 70, 12, 11, 71, 36, 113, 112, 113, 36, 37, 13, 12, 66, 41, 119, 40, 119, 41, 117, 14, 13, 108, 37, 41, 38, 41, 37, 42, 15, 14, 108, 42, 118, 120, 118, 42, 35, 16, 15, 108, 1, 111, 112, 17, 16, 110, 109, 112, 113, 112, 109, 1, 18, 17, 121, 25, 20, 26, 20, 25, 21, 107, 57, 65, 20, 19, 26, 21, 25, 22, 20, 21, 120, 33, 29, 30, 29, 33, 28, 51, 129, 127, 129, 51, 50, 21, 22, 117, 22, 24, 23, 24, 22, 25, 121, 17, 122, 22, 23, 116, 52, 128, 45, 128, 52, 130, 121, 128, 27, 128, 121, 45, 23, 24, 84, 27, 28, 34, 28, 27, 128, 32, 30, 31, 30, 32, 33, 28, 33, 34, 29, 28, 130, 110, 122, 17, 122, 110, 123, 32, 31, 84, 30, 29, 127, 47, 52, 46, 52, 47, 51, 31, 30, 129, 84, 31, 126, 42, 36, 35, 36, 42, 37, 35, 112, 111, 112, 35, 36, 120, 117, 41, 117, 120, 21, 38, 41, 40, 114, 38, 39, 22, 116, 119, 37, 38, 113, 116, 39, 40, 39, 116, 115, 61, 108, 66, 108, 61, 110, 39, 38, 40, 63, 84, 126, 119, 117, 22, 120, 41, 42, 120, 118, 20, 45, 122, 46, 122, 45, 121, 46, 52, 45, 127, 130, 51, 130, 127, 29, 123, 46, 122, 46, 123, 47, 48, 51, 47, 51, 48, 50, 124, 48, 123, 48, 124, 49, 48, 47, 123, 71, 11, 70, 31, 129, 126, 48, 49, 50, 84, 116, 23, 116, 84, 55, 49, 126, 50, 126, 49, 125, 127, 129, 30, 51, 130, 52, 128, 130, 28, 115, 114, 39, 65, 57, 75, 5, 107, 65, 10, 69, 70, 57, 58, 75, 60, 79, 78, 79, 60, 61, 61, 66, 79, 108, 13, 66, 16, 108, 110, 59, 60, 78, 124, 123, 110, 110, 62, 124, 62, 110, 61, 124, 63, 125, 63, 124, 62, 124, 125, 49, 5, 65, 67, 66, 12, 71, 74, 68, 67, 68, 74, 73, 68, 73, 69, 73, 70, 69, 70, 73, 72, 66, 71, 72, 66, 79, 80, 66, 80, 72, 71, 70, 72, 59, 78, 77, 72, 73, 80, 81, 80, 73, 80, 81, 78, 73, 74, 81, 82, 81, 74, 81, 82, 76, 75, 76, 82, 76, 59, 77, 77, 81, 76, 81, 77, 78, 78, 79, 80, 35, 111, 118, 55, 115, 116, 116, 40, 119, 125, 63, 126, 50, 126, 129, 84, 63, 83, 83, 56, 55, 56, 83, 62, 63, 62, 83, 83, 55, 84, 58, 64, 59, 64, 58, 57, 61, 64, 62, 64, 61, 60, 64, 60, 59, 64, 57, 56, 56, 62, 64, 0, 111, 19, 18, 121, 27, 100, 0, 1, 100, 1, 2, 100, 2, 3, 100, 3, 4, 100, 101, 4, 101, 4, 5, 101, 5, 6, 101, 6, 7, 101, 102, 7, 102, 7, 8, 102, 8, 9, 102, 9, 10, 102, 10, 11, 102, 103, 11, 103, 11, 12, 103, 12, 13, 103, 13, 14, 103, 104, 14, 104, 14, 15, 104, 15, 16, 104, 16, 17, 104, 17, 18 };
+    NO_HOLE_TRIANGLE_COUNT_4_SMOOTH = faceMesh4Smooth.length / 3;
     faceMeshNoseLastTriangles = new int[] { 19, 118, 111, 118, 19, 20, 7, 67, 68, 67, 7, 6, 1, 0, 111, 56, 109, 114, 109, 56, 57, 2, 1, 109, 69, 8, 68, 8, 69, 9, 3, 2, 107, 58, 76, 75, 76, 58, 59, 4, 3, 107, 65, 75, 82, 65, 67, 74, 65, 82, 74, 5, 4, 107, 67, 6, 5, 109, 107, 2, 107, 109, 57, 114, 55, 56, 55, 114, 115, 8, 7, 68, 114, 113, 38, 113, 114, 109, 10, 9, 69, 11, 10, 70, 12, 11, 71, 36, 113, 112, 113, 36, 37, 13, 12, 66, 41, 119, 40, 119, 41, 117, 14, 13, 108, 37, 41, 38, 41, 37, 42, 15, 14, 108, 42, 118, 120, 118, 42, 35, 16, 15, 108, 1, 111, 112, 17, 16, 110, 109, 112, 113, 112, 109, 1, 18, 17, 121, 25, 20, 26, 20, 25, 21, 96, 26, 19, 26, 96, 95, 107, 57, 65, 19, 111, 90, 20, 19, 26, 21, 25, 22, 20, 21, 120, 33, 29, 30, 29, 33, 28, 51, 129, 127, 129, 51, 50, 21, 22, 117, 22, 24, 23, 24, 22, 25, 121, 17, 122, 22, 23, 116, 52, 128, 45, 128, 52, 130, 121, 128, 27, 128, 121, 45, 23, 24, 84, 92, 33, 32, 33, 92, 34, 24, 25, 95, 24, 95, 94, 25, 26, 95, 121, 91, 18, 91, 121, 27, 84, 94, 32, 94, 84, 24, 27, 93, 91, 93, 27, 34, 27, 28, 34, 28, 27, 128, 32, 30, 31, 30, 32, 33, 28, 33, 34, 29, 28, 130, 110, 122, 17, 122, 110, 123, 32, 31, 84, 30, 29, 127, 47, 52, 46, 52, 47, 51, 31, 30, 129, 84, 31, 126, 92, 32, 94, 93, 34, 92, 42, 36, 35, 36, 42, 37, 35, 112, 111, 112, 35, 36, 120, 117, 41, 117, 120, 21, 38, 41, 40, 114, 38, 39, 22, 116, 119, 37, 38, 113, 116, 39, 40, 39, 116, 115, 61, 108, 66, 108, 61, 110, 39, 38, 40, 63, 84, 126, 119, 117, 22, 120, 41, 42, 120, 118, 20, 45, 122, 46, 122, 45, 121, 46, 52, 45, 127, 130, 51, 130, 127, 29, 123, 46, 122, 46, 123, 47, 48, 51, 47, 51, 48, 50, 124, 48, 123, 48, 124, 49, 48, 47, 123, 71, 11, 70, 31, 129, 126, 48, 49, 50, 84, 116, 23, 116, 84, 55, 49, 126, 50, 126, 49, 125, 127, 129, 30, 51, 130, 52, 128, 130, 28, 115, 114, 39, 65, 57, 75, 5, 107, 65, 10, 69, 70, 57, 58, 75, 60, 79, 78, 79, 60, 61, 61, 66, 79, 108, 13, 66, 16, 108, 110, 59, 60, 78, 124, 123, 110, 110, 62, 124, 62, 110, 61, 124, 63, 125, 63, 124, 62, 124, 125, 49, 5, 65, 67, 66, 12, 71, 74, 68, 67, 68, 74, 73, 68, 73, 69, 73, 70, 69, 70, 73, 72, 66, 71, 72, 66, 79, 80, 66, 80, 72, 71, 70, 72, 59, 78, 77, 72, 73, 80, 81, 80, 73, 80, 81, 78, 73, 74, 81, 82, 81, 74, 81, 82, 76, 75, 76, 82, 76, 59, 77, 77, 81, 76, 81, 77, 78, 78, 79, 80, 19, 90, 96, 0, 90, 111, 35, 111, 118, 55, 115, 116, 116, 40, 119, 125, 63, 126, 50, 126, 129, 99, 106, 96, 106, 105, 93, 105, 104, 91, 104, 103, 14, 103, 102, 11, 102, 101, 7, 101, 100, 4, 100, 99, 90, 0, 1, 100, 1, 2, 100, 2, 3, 100, 3, 4, 100, 4, 5, 101, 5, 6, 101, 6, 7, 101, 7, 8, 102, 8, 9, 102, 9, 10, 102, 10, 11, 102, 11, 12, 103, 12, 13, 103, 13, 14, 103, 14, 15, 104, 15, 16, 104, 16, 17, 104, 17, 18, 104, 18, 91, 104, 91, 93, 105, 93, 92, 106, 92, 94, 106, 94, 95, 106, 95, 96, 106, 96, 90, 99, 90, 0, 100, 84, 63, 83, 83, 56, 55, 56, 83, 62, 63, 62, 83, 83, 55, 84, 58, 64, 59, 64, 58, 57, 61, 64, 62, 64, 61, 60, 64, 60, 59, 64, 57, 56, 56, 62, 64 };
-    FaceMeshTriangles_v2 = new int[] { 108, 14, 13, 108, 13, 12, 108, 12, 11, 134, 11, 66, 134, 11, 108, 71, 11, 66, 71, 11, 70, 107, 4, 5, 107, 5, 6, 107, 6, 7, 133, 7, 65, 133, 7, 107, 67, 7, 65, 67, 7, 68, 19, 118, 111, 118, 19, 20, 69, 8, 68, 8, 69, 9, 58, 76, 75, 76, 58, 59, 65, 75, 82, 65, 67, 74, 65, 82, 74, 114, 55, 56, 55, 114, 115, 8, 7, 68, 114, 113, 38, 10, 9, 69, 11, 10, 70, 36, 113, 112, 113, 36, 37, 41, 119, 40, 119, 41, 117, 37, 41, 38, 41, 37, 42, 42, 118, 120, 118, 42, 35, 25, 20, 26, 20, 25, 21, 96, 26, 19, 26, 96, 95, 19, 111, 90, 20, 19, 26, 21, 25, 22, 20, 21, 120, 33, 29, 30, 29, 33, 28, 51, 129, 127, 129, 51, 50, 21, 22, 117, 22, 24, 23, 24, 22, 25, 22, 23, 116, 52, 128, 45, 128, 52, 130, 121, 128, 27, 128, 121, 45, 23, 24, 84, 92, 33, 32, 33, 92, 34, 24, 25, 95, 24, 95, 94, 25, 26, 95, 121, 91, 18, 91, 121, 27, 84, 94, 32, 94, 84, 24, 27, 93, 91, 93, 27, 34, 27, 28, 34, 28, 27, 128, 32, 30, 31, 30, 32, 33, 28, 33, 34, 29, 28, 130, 32, 31, 84, 30, 29, 127, 47, 52, 46, 52, 47, 51, 31, 30, 129, 84, 31, 126, 92, 32, 94, 93, 34, 92, 42, 36, 35, 36, 42, 37, 35, 112, 111, 112, 35, 36, 120, 117, 41, 117, 120, 21, 38, 41, 40, 114, 38, 39, 22, 116, 119, 37, 38, 113, 116, 39, 40, 39, 116, 115, 39, 38, 40, 63, 84, 126, 119, 117, 22, 120, 41, 42, 120, 118, 20, 45, 122, 46, 122, 45, 121, 46, 52, 45, 127, 130, 51, 130, 127, 29, 123, 46, 122, 46, 123, 47, 48, 51, 47, 51, 48, 50, 124, 48, 123, 48, 124, 49, 48, 47, 123, 31, 129, 126, 48, 49, 50, 84, 116, 23, 116, 84, 55, 49, 126, 50, 126, 49, 125, 127, 129, 30, 51, 130, 52, 128, 130, 28, 115, 114, 39, 65, 57, 75, 10, 69, 70, 57, 58, 75, 60, 79, 78, 79, 60, 61, 61, 66, 79, 59, 60, 78, 124, 63, 125, 63, 124, 62, 124, 125, 49, 74, 68, 67, 68, 74, 73, 68, 73, 69, 73, 70, 69, 70, 73, 72, 66, 71, 72, 66, 79, 80, 66, 80, 72, 71, 70, 72, 59, 78, 77, 72, 73, 80, 81, 80, 73, 80, 81, 78, 73, 74, 81, 82, 81, 74, 81, 82, 76, 75, 76, 82, 76, 59, 77, 77, 81, 76, 81, 77, 78, 78, 79, 80, 19, 90, 96, 0, 90, 111, 35, 111, 118, 55, 115, 116, 116, 40, 119, 125, 63, 126, 50, 126, 129, 99, 106, 96, 106, 105, 93, 105, 104, 91, 104, 103, 14, 103, 102, 11, 102, 101, 7, 101, 100, 4, 100, 99, 90, 0, 1, 100, 1, 2, 100, 2, 3, 100, 3, 4, 100, 4, 5, 101, 5, 6, 101, 6, 7, 101, 7, 8, 102, 8, 9, 102, 9, 10, 102, 10, 11, 102, 11, 12, 103, 12, 13, 103, 13, 14, 103, 14, 15, 104, 15, 16, 104, 16, 17, 104, 17, 18, 104, 18, 91, 104, 91, 93, 105, 93, 92, 106, 92, 94, 106, 94, 95, 106, 95, 96, 106, 96, 90, 99, 90, 0, 100, 0, 109, 111, 109, 112, 111, 131, 109, 112, 131, 112, 113, 131, 113, 114, 131, 114, 56, 0, 1, 109, 1, 2, 109, 2, 109, 107, 2, 107, 3, 3, 107, 4, 131, 56, 57, 133, 57, 65, 131, 57, 107, 131, 107, 109, 57, 107, 133, 18, 110, 121, 110, 122, 121, 132, 110, 122, 132, 122, 123, 132, 123, 124, 132, 124, 62, 18, 17, 110, 17, 16, 110, 16, 110, 108, 16, 108, 15, 15, 108, 14, 132, 62, 61, 134, 61, 66, 132, 61, 108, 132, 108, 110, 61, 108, 134, 84, 63, 83, 83, 56, 55, 56, 83, 62, 63, 62, 83, 83, 55, 84, 58, 64, 59, 64, 58, 57, 61, 64, 62, 64, 61, 60, 64, 60, 59, 64, 57, 56, 56, 62, 64 };
+    FaceMeshTriangles_disableFaceCrop_v2 = new int[] { 108, 14, 13, 108, 13, 12, 108, 12, 11, 134, 11, 66, 134, 11, 108, 71, 11, 66, 71, 11, 70, 107, 4, 5, 107, 5, 6, 107, 6, 7, 133, 7, 65, 133, 7, 107, 67, 7, 65, 67, 7, 68, 19, 118, 111, 118, 19, 20, 69, 8, 68, 8, 69, 9, 58, 76, 75, 76, 58, 59, 65, 75, 82, 65, 67, 74, 65, 82, 74, 114, 55, 56, 55, 114, 115, 8, 7, 68, 114, 113, 38, 10, 9, 69, 11, 10, 70, 36, 113, 112, 113, 36, 37, 41, 119, 40, 119, 41, 117, 37, 41, 38, 41, 37, 42, 42, 118, 120, 118, 42, 35, 25, 20, 26, 20, 25, 21, 96, 26, 19, 26, 96, 95, 19, 111, 90, 20, 19, 26, 21, 25, 22, 20, 21, 120, 33, 29, 30, 29, 33, 28, 51, 129, 127, 129, 51, 50, 21, 22, 117, 22, 24, 23, 24, 22, 25, 22, 23, 116, 52, 128, 45, 128, 52, 130, 121, 128, 27, 128, 121, 45, 23, 24, 84, 92, 33, 32, 33, 92, 34, 24, 25, 95, 24, 95, 94, 25, 26, 95, 121, 91, 18, 91, 121, 27, 84, 94, 32, 94, 84, 24, 27, 93, 91, 93, 27, 34, 27, 28, 34, 28, 27, 128, 32, 30, 31, 30, 32, 33, 28, 33, 34, 29, 28, 130, 32, 31, 84, 30, 29, 127, 47, 52, 46, 52, 47, 51, 31, 30, 129, 84, 31, 126, 92, 32, 94, 93, 34, 92, 42, 36, 35, 36, 42, 37, 35, 112, 111, 112, 35, 36, 120, 117, 41, 117, 120, 21, 38, 41, 40, 114, 38, 39, 22, 116, 119, 37, 38, 113, 116, 39, 40, 39, 116, 115, 39, 38, 40, 63, 84, 126, 119, 117, 22, 120, 41, 42, 120, 118, 20, 45, 122, 46, 122, 45, 121, 46, 52, 45, 127, 130, 51, 130, 127, 29, 123, 46, 122, 46, 123, 47, 48, 51, 47, 51, 48, 50, 124, 48, 123, 48, 124, 49, 48, 47, 123, 31, 129, 126, 48, 49, 50, 84, 116, 23, 116, 84, 55, 49, 126, 50, 126, 49, 125, 127, 129, 30, 51, 130, 52, 128, 130, 28, 115, 114, 39, 65, 57, 75, 10, 69, 70, 57, 58, 75, 60, 79, 78, 79, 60, 61, 61, 66, 79, 59, 60, 78, 124, 63, 125, 63, 124, 62, 124, 125, 49, 74, 68, 67, 68, 74, 73, 68, 73, 69, 73, 70, 69, 70, 73, 72, 66, 71, 72, 66, 79, 80, 66, 80, 72, 71, 70, 72, 59, 78, 77, 72, 73, 80, 81, 80, 73, 80, 81, 78, 73, 74, 81, 82, 81, 74, 81, 82, 76, 75, 76, 82, 76, 59, 77, 77, 81, 76, 81, 77, 78, 78, 79, 80, 19, 90, 96, 0, 90, 111, 35, 111, 118, 55, 115, 116, 116, 40, 119, 125, 63, 126, 50, 126, 129, 99, 106, 96, 106, 105, 93, 105, 104, 91, 104, 103, 14, 103, 102, 11, 102, 101, 7, 101, 100, 4, 100, 99, 90, 0, 1, 100, 1, 2, 100, 2, 3, 100, 3, 4, 100, 4, 5, 101, 5, 6, 101, 6, 7, 101, 7, 8, 102, 8, 9, 102, 9, 10, 102, 10, 11, 102, 11, 12, 103, 12, 13, 103, 13, 14, 103, 14, 15, 104, 15, 16, 104, 16, 17, 104, 17, 18, 104, 18, 91, 104, 91, 93, 105, 93, 92, 106, 92, 94, 106, 94, 95, 106, 95, 96, 106, 96, 90, 99, 90, 0, 100, 131, 109, 112, 131, 112, 113, 131, 113, 114, 131, 114, 56, 0, 1, 111, 1, 111, 112, 1, 112, 109, 1, 2, 109, 2, 109, 107, 2, 107, 3, 3, 107, 4, 131, 56, 57, 133, 57, 65, 131, 57, 133, 131, 107, 109, 131, 107, 133, 17, 110, 122, 17, 121, 122, 121, 17, 18, 132, 110, 122, 132, 122, 123, 132, 123, 124, 132, 124, 62, 17, 16, 110, 16, 110, 108, 16, 108, 15, 15, 108, 14, 132, 62, 61, 134, 61, 66, 132, 61, 134, 132, 108, 110, 132, 108, 134, 84, 63, 83, 83, 56, 55, 56, 83, 62, 63, 62, 83, 83, 55, 84, 58, 64, 59, 64, 58, 57, 61, 64, 62, 64, 61, 60, 64, 60, 59, 64, 57, 56, 56, 62, 64 };
+    FaceMeshTriangles_v2 = new int[] { 108, 14, 13, 108, 13, 12, 108, 12, 11, 134, 11, 66, 134, 11, 108, 71, 11, 66, 71, 11, 70, 107, 4, 5, 107, 5, 6, 107, 6, 7, 133, 7, 65, 133, 7, 107, 67, 7, 65, 67, 7, 68, 19, 118, 111, 118, 19, 20, 69, 8, 68, 8, 69, 9, 58, 76, 75, 76, 58, 59, 65, 75, 82, 65, 67, 74, 65, 82, 74, 114, 55, 56, 55, 114, 115, 8, 7, 68, 114, 113, 38, 10, 9, 69, 11, 10, 70, 36, 113, 112, 113, 36, 37, 41, 119, 40, 119, 41, 117, 37, 41, 38, 41, 37, 42, 42, 118, 120, 118, 42, 35, 25, 20, 26, 20, 25, 21, 96, 26, 19, 26, 96, 95, 19, 111, 90, 20, 19, 26, 21, 25, 22, 20, 21, 120, 33, 29, 30, 29, 33, 28, 51, 129, 127, 129, 51, 50, 21, 22, 117, 22, 24, 23, 24, 22, 25, 22, 23, 116, 52, 128, 45, 128, 52, 130, 121, 128, 27, 128, 121, 45, 23, 24, 84, 92, 33, 32, 33, 92, 34, 24, 25, 95, 24, 95, 94, 25, 26, 95, 121, 91, 18, 91, 121, 27, 84, 94, 32, 94, 84, 24, 27, 93, 91, 93, 27, 34, 27, 28, 34, 28, 27, 128, 32, 30, 31, 30, 32, 33, 28, 33, 34, 29, 28, 130, 32, 31, 84, 30, 29, 127, 47, 52, 46, 52, 47, 51, 31, 30, 129, 84, 31, 126, 92, 32, 94, 93, 34, 92, 42, 36, 35, 36, 42, 37, 35, 112, 111, 112, 35, 36, 120, 117, 41, 117, 120, 21, 38, 41, 40, 114, 38, 39, 22, 116, 119, 37, 38, 113, 116, 39, 40, 39, 116, 115, 39, 38, 40, 63, 84, 126, 119, 117, 22, 120, 41, 42, 120, 118, 20, 45, 122, 46, 122, 45, 121, 46, 52, 45, 127, 130, 51, 130, 127, 29, 123, 46, 122, 46, 123, 47, 48, 51, 47, 51, 48, 50, 124, 48, 123, 48, 124, 49, 48, 47, 123, 31, 129, 126, 48, 49, 50, 84, 116, 23, 116, 84, 55, 49, 126, 50, 126, 49, 125, 127, 129, 30, 51, 130, 52, 128, 130, 28, 115, 114, 39, 65, 57, 75, 10, 69, 70, 57, 58, 75, 60, 79, 78, 79, 60, 61, 61, 66, 79, 59, 60, 78, 124, 63, 125, 63, 124, 62, 124, 125, 49, 74, 68, 67, 68, 74, 73, 68, 73, 69, 73, 70, 69, 70, 73, 72, 66, 71, 72, 66, 79, 80, 66, 80, 72, 71, 70, 72, 59, 78, 77, 72, 73, 80, 81, 80, 73, 80, 81, 78, 73, 74, 81, 82, 81, 74, 81, 82, 76, 75, 76, 82, 76, 59, 77, 77, 81, 76, 81, 77, 78, 78, 79, 80, 19, 90, 96, 0, 90, 111, 35, 111, 118, 55, 115, 116, 116, 40, 119, 125, 63, 126, 50, 126, 129, 99, 106, 96, 106, 105, 93, 105, 104, 91, 104, 103, 14, 103, 102, 11, 102, 101, 7, 101, 100, 4, 100, 99, 90, 0, 1, 100, 1, 2, 100, 2, 3, 100, 3, 4, 100, 4, 5, 101, 5, 6, 101, 6, 7, 101, 7, 8, 102, 8, 9, 102, 9, 10, 102, 10, 11, 102, 11, 12, 103, 12, 13, 103, 13, 14, 103, 14, 15, 104, 15, 16, 104, 16, 17, 104, 17, 18, 104, 18, 91, 104, 91, 93, 105, 93, 92, 106, 92, 94, 106, 94, 95, 106, 95, 96, 106, 96, 90, 99, 90, 0, 100, 0, 109, 111, 112, 109, 111, 131, 109, 112, 131, 112, 113, 131, 113, 114, 131, 114, 56, 0, 1, 109, 1, 2, 109, 2, 109, 107, 2, 107, 3, 3, 107, 4, 131, 56, 57, 133, 57, 65, 131, 57, 133, 131, 107, 109, 131, 107, 133, 18, 110, 121, 110, 121, 122, 132, 110, 122, 132, 122, 123, 132, 123, 124, 132, 124, 62, 18, 17, 110, 17, 16, 110, 16, 110, 108, 16, 108, 15, 15, 108, 14, 132, 62, 61, 134, 61, 66, 132, 61, 134, 132, 108, 110, 132, 108, 134, 84, 63, 83, 83, 56, 55, 56, 83, 62, 63, 62, 83, 83, 55, 84, 58, 64, 59, 64, 58, 57, 61, 64, 62, 64, 61, 60, 64, 60, 59, 64, 57, 56, 56, 62, 64 };
     NO_HOLE_TRIANGLE_COUNT_V2 = FaceMeshTriangles_v2.length / 3;
   }
   
@@ -285,20 +291,61 @@ public class FaceOffUtil
     }
   }
   
-  public static FaceOffUtil.FEATURE_TYPE getFeatureType(int paramInt)
+  public static List<PointF> getFacePoints4Smooth(List<PointF> paramList)
   {
-    FaceOffUtil.FEATURE_TYPE[] arrayOfFEATURE_TYPE = FaceOffUtil.FEATURE_TYPE.values();
-    int j = arrayOfFEATURE_TYPE.length;
+    List localList = getFullCoordsForNoseAndOutline(paramList);
+    float f1 = ((PointF)paramList.get(35)).x;
+    float f2 = ((PointF)paramList.get(83)).x;
+    float f3 = ((PointF)paramList.get(59)).x;
+    float f4 = ((PointF)paramList.get(35)).y;
+    PointF localPointF3 = new PointF(f1 + (f2 - f3) * 1.5F, (((PointF)paramList.get(83)).y - ((PointF)paramList.get(59)).y) * 1.5F + f4);
+    f1 = ((PointF)paramList.get(45)).x;
+    f2 = ((PointF)paramList.get(83)).x;
+    f3 = ((PointF)paramList.get(59)).x;
+    f4 = ((PointF)paramList.get(45)).y;
+    PointF localPointF1 = new PointF(f1 + (f2 - f3) * 1.5F, (((PointF)paramList.get(83)).y - ((PointF)paramList.get(59)).y) * 1.5F + f4);
+    PointF localPointF4 = (PointF)localList.get(0);
+    PointF localPointF2 = (PointF)localList.get(18);
+    localList.add(localPointF3);
+    localList.add(localPointF1);
+    PointF localPointF5 = AlgoUtils.middlePoint(localPointF3, localPointF1);
+    f1 = AlgoUtils.getDistance((PointF)localList.get(83), localPointF3) * 0.5F + AlgoUtils.getDistance((PointF)localList.get(83), localPointF1) * 0.5F;
+    f2 = AlgoUtils.getDistance((PointF)localList.get(83), localPointF5);
+    f3 = ((PointF)paramList.get(83)).x;
+    f4 = (localPointF5.x - ((PointF)paramList.get(83)).x) * f1 / (f2 + 1.0E-004F);
+    float f5 = ((PointF)paramList.get(83)).y;
+    localList.add(new PointF(f3 + f4, (localPointF5.y - ((PointF)paramList.get(83)).y) * f1 / (f2 + 1.0E-004F) + f5));
+    localPointF5 = AlgoUtils.middlePoint(localPointF3, localPointF4);
+    f1 = AlgoUtils.getDistance((PointF)localList.get(83), localPointF3) * 0.5F + AlgoUtils.getDistance((PointF)localList.get(83), localPointF4) * 0.5F;
+    f2 = AlgoUtils.getDistance((PointF)localList.get(83), localPointF5);
+    f3 = ((PointF)paramList.get(83)).x;
+    f4 = (localPointF5.x - ((PointF)paramList.get(83)).x) * f1 / (f2 + 1.0E-004F);
+    f5 = ((PointF)paramList.get(83)).y;
+    localList.add(new PointF(f3 + f4, (localPointF5.y - ((PointF)paramList.get(83)).y) * f1 / (f2 + 1.0E-004F) + f5));
+    localPointF3 = AlgoUtils.middlePoint(localPointF2, localPointF1);
+    f1 = AlgoUtils.getDistance((PointF)localList.get(83), localPointF2) * 0.5F + AlgoUtils.getDistance((PointF)localList.get(83), localPointF1) * 0.5F;
+    f2 = AlgoUtils.getDistance((PointF)localList.get(83), localPointF3);
+    f3 = ((PointF)paramList.get(83)).x;
+    f4 = (localPointF3.x - ((PointF)paramList.get(83)).x) * f1 / (f2 + 1.0E-004F);
+    f5 = ((PointF)paramList.get(83)).y;
+    localList.add(new PointF(f3 + f4, (localPointF3.y - ((PointF)paramList.get(83)).y) * f1 / (f2 + 1.0E-004F) + f5));
+    return localList;
+  }
+  
+  public static FaceOffUtil.FeatureType getFeatureType(int paramInt)
+  {
+    FaceOffUtil.FeatureType[] arrayOfFeatureType = FaceOffUtil.FeatureType.values();
+    int j = arrayOfFeatureType.length;
     int i = 0;
     while (i < j)
     {
-      FaceOffUtil.FEATURE_TYPE localFEATURE_TYPE = arrayOfFEATURE_TYPE[i];
-      if (localFEATURE_TYPE.value == paramInt) {
-        return localFEATURE_TYPE;
+      FaceOffUtil.FeatureType localFeatureType = arrayOfFeatureType[i];
+      if (localFeatureType.value == paramInt) {
+        return localFeatureType;
       }
       i += 1;
     }
-    return FaceOffUtil.FEATURE_TYPE.NO_EYE;
+    return FaceOffUtil.FeatureType.NO_EYE;
   }
   
   public static List<PointF> getFullCoords(List<PointF> paramList)
@@ -736,110 +783,110 @@ public class FaceOffUtil
     if (paramList.size() > 90) {
       localObject1 = paramList.subList(0, 90);
     }
-    PointF localPointF2 = (PointF)((List)localObject1).get(0);
-    PointF localPointF8 = (PointF)((List)localObject1).get(1);
-    PointF localPointF5 = (PointF)((List)localObject1).get(9);
-    PointF localPointF6 = (PointF)((List)localObject1).get(17);
-    paramList = (PointF)((List)localObject1).get(18);
-    PointF localPointF3 = (PointF)((List)localObject1).get(35);
-    PointF localPointF1 = (PointF)((List)localObject1).get(45);
-    Object localObject2 = (PointF)((List)localObject1).get(59);
-    PointF localPointF4 = (PointF)((List)localObject1).get(83);
-    PointF localPointF7 = new PointF(localPointF4.x, localPointF4.y);
-    float f3 = localPointF4.x - localPointF5.x;
-    float f4 = localPointF4.y - localPointF5.y;
+    PointF localPointF1 = (PointF)((List)localObject1).get(0);
+    paramList = (PointF)((List)localObject1).get(1);
+    PointF localPointF3 = (PointF)((List)localObject1).get(9);
+    PointF localPointF2 = (PointF)((List)localObject1).get(83);
+    float f3 = localPointF2.x - localPointF3.x;
+    float f4 = localPointF2.y - localPointF3.y;
     float f2 = (float)Math.sqrt(f3 * f3 + f4 * f4);
     float f1 = -f4 / f2;
     f2 = f3 / f2;
     f3 = (float)(Math.atan2(f3, f4) + 3.141592653589793D);
-    localPointF5 = new PointF();
-    f4 = AlgoUtils.getDistance(localPointF2, localPointF8);
-    localPointF8.x += 2.0F * f4 * f2;
-    localPointF8.y -= f4 * 2.0F * f1;
+    localPointF3 = new PointF();
+    f4 = AlgoUtils.getDistance(localPointF1, paramList);
+    paramList.x += 2.0F * f4 * f2;
+    paramList.y -= f4 * 2.0F * f1;
+    ((List)localObject1).add(localPointF3);
+    PointF localPointF5 = new PointF();
+    PointF localPointF4 = (PointF)((List)localObject1).get(17);
+    paramList = (PointF)((List)localObject1).get(18);
+    f4 = AlgoUtils.getDistance(localPointF4, paramList);
+    localPointF4.x += 2.0F * f4 * f2;
+    localPointF4.y -= f4 * 2.0F * f1;
     ((List)localObject1).add(localPointF5);
-    localPointF8 = new PointF();
-    f4 = AlgoUtils.getDistance(localPointF6, paramList);
-    localPointF6.x += 2.0F * f4 * f2;
-    localPointF6.y -= f4 * 2.0F * f1;
-    ((List)localObject1).add(localPointF8);
-    localPointF6 = new PointF();
-    f4 = AlgoUtils.getDistance((PointF)localObject2, localPointF7) * 1.2F;
-    localPointF6.x = (f2 * (2.0F * f4) + ((PointF)localObject2).x);
-    localPointF6.y = (((PointF)localObject2).y - f4 * 2.0F * f1);
+    localPointF4 = new PointF();
+    Object localObject2 = (PointF)((List)localObject1).get(59);
+    PointF localPointF6 = new PointF(localPointF2.x, localPointF2.y);
+    f4 = AlgoUtils.getDistance((PointF)localObject2, localPointF6) * 1.2F;
+    localPointF4.x = (f2 * (2.0F * f4) + ((PointF)localObject2).x);
+    localPointF4.y = (((PointF)localObject2).y - 2.0F * f4 * f1);
     localObject2 = new android.graphics.Matrix();
     ((android.graphics.Matrix)localObject2).reset();
-    ((android.graphics.Matrix)localObject2).postTranslate(-localPointF7.x, -localPointF7.y);
+    ((android.graphics.Matrix)localObject2).postTranslate(-localPointF6.x, -localPointF6.y);
     ((android.graphics.Matrix)localObject2).postRotate((float)Math.toDegrees(-f3));
-    ((android.graphics.Matrix)localObject2).postTranslate(localPointF7.x, localPointF7.y);
+    ((android.graphics.Matrix)localObject2).postTranslate(localPointF6.x, localPointF6.y);
     int i = 2;
     while (i >= 1)
     {
       f1 = (float)Math.toRadians(i * 30.0F);
-      localPointF7 = new PointF();
-      f2 = AlgoUtils.getDistance(localPointF6, localPointF4);
-      f4 = AlgoUtils.getDistance(localPointF8, localPointF4);
-      localPointF7.x = ((float)(localPointF4.x + f4 * Math.cos(f1)));
-      localPointF7.y = ((float)(localPointF4.y - f2 * Math.sin(f1)));
-      localPointF7 = AlgoUtils.mapPoint(localPointF7, (android.graphics.Matrix)localObject2);
-      ((List)localObject1).add(new PointF(localPointF7.x, localPointF7.y));
+      localPointF6 = new PointF();
+      f2 = AlgoUtils.getDistance(localPointF4, localPointF2);
+      f4 = AlgoUtils.getDistance(localPointF5, localPointF2);
+      localPointF6.x = ((float)(localPointF2.x + f4 * Math.cos(f1)));
+      localPointF6.y = ((float)(localPointF2.y - f2 * Math.sin(f1)));
+      localPointF6 = AlgoUtils.mapPoint(localPointF6, (android.graphics.Matrix)localObject2);
+      ((List)localObject1).add(new PointF(localPointF6.x, localPointF6.y));
       i -= 1;
     }
-    ((List)localObject1).add(localPointF6);
+    ((List)localObject1).add(localPointF4);
     i = 2;
     while (i >= 1)
     {
       f1 = (float)Math.toRadians(i * 30.0F);
-      localPointF7 = new PointF();
-      f2 = AlgoUtils.getDistance(localPointF6, localPointF4);
-      f4 = AlgoUtils.getDistance(localPointF5, localPointF4);
-      localPointF7.x = ((float)(localPointF4.x - f4 * Math.cos(f1)));
-      localPointF7.y = ((float)(localPointF4.y - f2 * Math.sin(f1)));
-      localPointF7 = AlgoUtils.mapPoint(localPointF7, (android.graphics.Matrix)localObject2);
-      ((List)localObject1).add(new PointF(localPointF7.x, localPointF7.y));
+      localPointF5 = new PointF();
+      f2 = AlgoUtils.getDistance(localPointF4, localPointF2);
+      f4 = AlgoUtils.getDistance(localPointF3, localPointF2);
+      localPointF5.x = ((float)(localPointF2.x - f4 * Math.cos(f1)));
+      localPointF5.y = ((float)(localPointF2.y - f2 * Math.sin(f1)));
+      localPointF5 = AlgoUtils.mapPoint(localPointF5, (android.graphics.Matrix)localObject2);
+      ((List)localObject1).add(new PointF(localPointF5.x, localPointF5.y));
       i -= 1;
     }
     ((List)localObject1).add(new PointF(0.0F, 0.0F));
     ((List)localObject1).add(new PointF(0.0F, 0.0F));
-    localPointF4 = (PointF)((List)localObject1).get(64);
-    localPointF5 = (PointF)((List)localObject1).get(54);
-    localPointF6 = (PointF)((List)localObject1).get(44);
-    localPointF5 = new PointF(localPointF5.x - localPointF6.x, localPointF5.y - localPointF6.y);
-    localPointF5 = new PointF(localPointF5.x * paramFloat, localPointF5.y * paramFloat);
-    localPointF6 = new PointF(-localPointF5.y, localPointF5.x);
-    ((List)localObject1).add(new PointF(localPointF4.x - localPointF5.x - localPointF6.x, localPointF4.y - localPointF5.y - localPointF6.y));
-    ((List)localObject1).add(new PointF(localPointF4.x - localPointF5.x, localPointF4.y - localPointF5.y));
-    ((List)localObject1).add(new PointF(localPointF4.x - localPointF5.x + localPointF6.x, localPointF4.y - localPointF5.y + localPointF6.y));
-    ((List)localObject1).add(new PointF(localPointF4.x + localPointF6.x, localPointF4.y + localPointF6.y));
-    ((List)localObject1).add(new PointF(localPointF4.x + localPointF5.x + localPointF6.x, localPointF4.y + localPointF5.y + localPointF6.y));
-    ((List)localObject1).add(new PointF(localPointF4.x + localPointF5.x, localPointF4.y + localPointF5.y));
-    paramFloat = localPointF4.x;
-    f1 = localPointF5.x;
-    f2 = localPointF6.x;
-    f4 = localPointF4.y;
-    ((List)localObject1).add(new PointF(paramFloat + f1 - f2, localPointF5.y + f4 - localPointF6.y));
-    ((List)localObject1).add(new PointF(localPointF4.x - localPointF6.x, localPointF4.y - localPointF6.y));
-    localPointF6 = (PointF)((List)localObject1).get(3);
-    localPointF4 = (PointF)((List)localObject1).get(15);
-    localPointF7 = (PointF)((List)localObject1).get(65);
-    localPointF5 = (PointF)((List)localObject1).get(66);
-    localPointF6 = AlgoUtils.middlePoint(localPointF6, localPointF7);
-    ((List)localObject1).add(new PointF(localPointF6.x, localPointF6.y));
+    localPointF2 = (PointF)((List)localObject1).get(64);
+    localPointF3 = (PointF)((List)localObject1).get(54);
+    localPointF4 = (PointF)((List)localObject1).get(44);
+    localPointF3 = new PointF(localPointF3.x - localPointF4.x, localPointF3.y - localPointF4.y);
+    localPointF3 = new PointF(localPointF3.x * paramFloat, localPointF3.y * paramFloat);
+    localPointF4 = new PointF(-localPointF3.y, localPointF3.x);
+    ((List)localObject1).add(new PointF(localPointF2.x - localPointF3.x - localPointF4.x, localPointF2.y - localPointF3.y - localPointF4.y));
+    ((List)localObject1).add(new PointF(localPointF2.x - localPointF3.x, localPointF2.y - localPointF3.y));
+    ((List)localObject1).add(new PointF(localPointF2.x - localPointF3.x + localPointF4.x, localPointF2.y - localPointF3.y + localPointF4.y));
+    ((List)localObject1).add(new PointF(localPointF2.x + localPointF4.x, localPointF2.y + localPointF4.y));
+    ((List)localObject1).add(new PointF(localPointF2.x + localPointF3.x + localPointF4.x, localPointF2.y + localPointF3.y + localPointF4.y));
+    ((List)localObject1).add(new PointF(localPointF2.x + localPointF3.x, localPointF2.y + localPointF3.y));
+    paramFloat = localPointF2.x;
+    f1 = localPointF3.x;
+    f2 = localPointF4.x;
+    f4 = localPointF2.y;
+    ((List)localObject1).add(new PointF(paramFloat + f1 - f2, localPointF3.y + f4 - localPointF4.y));
+    ((List)localObject1).add(new PointF(localPointF2.x - localPointF4.x, localPointF2.y - localPointF4.y));
+    localPointF4 = (PointF)((List)localObject1).get(3);
+    localPointF2 = (PointF)((List)localObject1).get(15);
+    localPointF5 = (PointF)((List)localObject1).get(65);
+    localPointF3 = (PointF)((List)localObject1).get(66);
     localPointF4 = AlgoUtils.middlePoint(localPointF4, localPointF5);
     ((List)localObject1).add(new PointF(localPointF4.x, localPointF4.y));
-    localPointF5 = (PointF)((List)localObject1).get(39);
-    localPointF4 = (PointF)((List)localObject1).get(49);
-    localPointF7 = (PointF)((List)localObject1).get(57);
-    localPointF6 = (PointF)((List)localObject1).get(61);
-    localPointF7 = AlgoUtils.middlePoint(localPointF3, localPointF7);
-    ((List)localObject1).add(new PointF(localPointF7.x, localPointF7.y));
-    localPointF6 = AlgoUtils.middlePoint(localPointF1, localPointF6);
-    ((List)localObject1).add(new PointF(localPointF6.x, localPointF6.y));
-    localPointF6 = (PointF)((List)localObject1).get(43);
-    localPointF7 = (PointF)((List)localObject1).get(55);
-    localPointF8 = (PointF)((List)localObject1).get(41);
-    localObject2 = (PointF)((List)localObject1).get(37);
-    paramFloat = AlgoUtils.getDistance(localPointF3, localPointF5);
-    AlgoUtils.getDistance(localPointF8, (PointF)localObject2);
+    localPointF2 = AlgoUtils.middlePoint(localPointF2, localPointF3);
+    ((List)localObject1).add(new PointF(localPointF2.x, localPointF2.y));
+    localPointF4 = (PointF)((List)localObject1).get(39);
+    localPointF2 = (PointF)((List)localObject1).get(49);
+    localPointF3 = (PointF)((List)localObject1).get(57);
+    localObject2 = (PointF)((List)localObject1).get(61);
+    localPointF5 = (PointF)((List)localObject1).get(35);
+    localPointF3 = AlgoUtils.middlePoint(localPointF5, localPointF3);
+    ((List)localObject1).add(new PointF(localPointF3.x, localPointF3.y));
+    localPointF3 = (PointF)((List)localObject1).get(45);
+    localObject2 = AlgoUtils.middlePoint(localPointF3, (PointF)localObject2);
+    ((List)localObject1).add(new PointF(((PointF)localObject2).x, ((PointF)localObject2).y));
+    localObject2 = (PointF)((List)localObject1).get(43);
+    localPointF6 = (PointF)((List)localObject1).get(55);
+    PointF localPointF7 = (PointF)((List)localObject1).get(41);
+    PointF localPointF8 = (PointF)((List)localObject1).get(37);
+    paramFloat = AlgoUtils.getDistance(localPointF5, localPointF4);
+    AlgoUtils.getDistance(localPointF7, localPointF8);
     f4 = paramFloat / 50.0F;
     i = 35;
     float f5;
@@ -848,14 +895,14 @@ public class FaceOffUtil
     double d2;
     if (i < 39)
     {
-      localPointF3 = (PointF)((List)localObject1).get(i);
+      localPointF5 = (PointF)((List)localObject1).get(i);
       f1 = (float)(Math.sin((2.0F - Math.abs(i - 37)) * 3.141592653589793D / 4.0D) * 0.3D);
       if (i == 35)
       {
-        f2 = (localPointF3.y - localPointF6.y) / (localPointF3.x - localPointF6.x);
-        f1 = (float)(localPointF3.x + (localPointF3.x - localPointF6.x) * 0.9D);
-        f5 = localPointF6.x;
-        f6 = localPointF6.y;
+        f2 = (localPointF5.y - ((PointF)localObject2).y) / (localPointF5.x - ((PointF)localObject2).x);
+        f1 = (float)(localPointF5.x + (localPointF5.x - ((PointF)localObject2).x) * 0.9D);
+        f5 = ((PointF)localObject2).x;
+        f6 = ((PointF)localObject2).y;
         paramFloat = f1;
       }
       for (f1 = (f1 - f5) * f2 + f6;; f1 = (float)(Math.cos(f3 + f2) * d2 + d1))
@@ -864,52 +911,56 @@ public class FaceOffUtil
         if (i == 35)
         {
           f2 = paramFloat;
-          if (paramFloat < localPointF2.x) {
-            f2 = localPointF2.x;
+          if (paramFloat < localPointF1.x) {
+            f2 = localPointF1.x;
           }
         }
         ((List)localObject1).add(new PointF(f2, f1));
         i += 1;
         break;
         f2 = (float)Math.toRadians(60.0F * (i - 37));
-        paramFloat = (float)(localPointF3.x + 10.0F * f4 * (1.0F + f1) * Math.sin(f3 + f2));
-        d1 = localPointF3.y;
+        paramFloat = (float)(localPointF5.x + 10.0F * f4 * (1.0F + f1) * Math.sin(f3 + f2));
+        d1 = localPointF5.y;
         d2 = 10.0F * f4 * (f1 + 1.0F);
       }
     }
-    localPointF2 = AlgoUtils.middlePoint(localPointF5, localPointF7);
-    ((List)localObject1).add(new PointF(localPointF2.x, localPointF2.y));
+    localPointF1 = AlgoUtils.middlePoint(localPointF4, localPointF6);
+    ((List)localObject1).add(new PointF(localPointF1.x, localPointF1.y));
     int j = ((List)localObject1).size();
     i = 40;
     while (i < 43)
     {
-      localPointF2 = (PointF)((List)localObject1).get(i);
+      localPointF1 = (PointF)((List)localObject1).get(i);
       paramFloat = (float)Math.toRadians(60.0F * (i - 41));
       f1 = (float)(Math.sin((3.0F - Math.abs(i - 41)) * 3.141592653589793D / 2.0D) * 0.3D);
-      ((List)localObject1).add(new PointF((float)(localPointF2.x - 16.0F * f4 * (1.0F + f1) * Math.sin(f3 + paramFloat)), (float)(localPointF2.y - 16.0F * f4 * (f1 + 1.0F) * Math.cos(f3 + paramFloat))));
+      f2 = (float)(localPointF1.x - 16.0F * f4 * (1.0F + f1) * Math.sin(f3 + paramFloat));
+      d1 = localPointF1.y;
+      d2 = 16.0F * f4 * (f1 + 1.0F);
+      ((List)localObject1).add(new PointF(f2, (float)(d1 - Math.cos(f3 + paramFloat) * d2)));
       i += 1;
     }
-    localPointF2 = (PointF)((List)localObject1).get(j);
-    localPointF3 = (PointF)((List)localObject1).get(j + 1);
+    localPointF1 = (PointF)((List)localObject1).get(j);
+    localPointF4 = (PointF)((List)localObject1).get(j + 1);
     localPointF5 = (PointF)((List)localObject1).get(j + 2);
-    ((List)localObject1).add(AlgoUtils.middlePoint(localPointF2, localPointF3));
-    ((List)localObject1).add(AlgoUtils.middlePoint(localPointF5, localPointF3));
-    localPointF2 = (PointF)((List)localObject1).get(51);
-    localPointF2 = (PointF)((List)localObject1).get(47);
-    localPointF2 = (PointF)((List)localObject1).get(53);
-    localPointF3 = (PointF)((List)localObject1).get(63);
-    f4 = AlgoUtils.getDistance(localPointF1, localPointF4) / 50.0F;
+    ((List)localObject1).add(AlgoUtils.middlePoint(localPointF1, localPointF4));
+    ((List)localObject1).add(AlgoUtils.middlePoint(localPointF5, localPointF4));
+    localPointF1 = (PointF)((List)localObject1).get(51);
+    localPointF1 = (PointF)((List)localObject1).get(47);
+    localPointF1 = (PointF)((List)localObject1).get(53);
+    localPointF4 = (PointF)((List)localObject1).get(63);
+    f4 = AlgoUtils.getDistance(localPointF3, localPointF2) / 50.0F;
     i = 45;
     if (i < 49)
     {
-      localPointF1 = (PointF)((List)localObject1).get(i);
+      localPointF3 = (PointF)((List)localObject1).get(i);
       f1 = (float)(Math.sin((2.0F - Math.abs(i - 47)) * 3.141592653589793D / 4.0D) * 0.3D);
       if (i == 45)
       {
-        f2 = (localPointF1.y - localPointF2.y) / (localPointF1.x - localPointF2.x);
-        f1 = (float)(localPointF1.x + (localPointF1.x - localPointF2.x) * 0.9D);
-        f5 = localPointF2.x;
-        f6 = localPointF2.y;
+        f2 = (localPointF3.y - localPointF1.y) / (localPointF3.x - localPointF1.x);
+        d1 = localPointF3.x;
+        f1 = (float)((localPointF3.x - localPointF1.x) * 0.9D + d1);
+        f5 = localPointF1.x;
+        f6 = localPointF1.y;
         paramFloat = f1;
       }
       for (f1 = (f1 - f5) * f2 + f6;; f1 = (float)(Math.cos(f3 - f2) * d2 + d1))
@@ -926,12 +977,12 @@ public class FaceOffUtil
         i += 1;
         break;
         f2 = (float)Math.toRadians(60.0F * (i - 47));
-        paramFloat = (float)(localPointF1.x + 10.0F * f4 * (1.0F + f1) * Math.sin(f3 - f2));
-        d1 = localPointF1.y;
+        paramFloat = (float)(localPointF3.x + 10.0F * f4 * (1.0F + f1) * Math.sin(f3 - f2));
+        d1 = localPointF3.y;
         d2 = 10.0F * f4 * (f1 + 1.0F);
       }
     }
-    paramList = AlgoUtils.middlePoint(localPointF4, localPointF3);
+    paramList = AlgoUtils.middlePoint(localPointF2, localPointF4);
     ((List)localObject1).add(new PointF(paramList.x, paramList.y));
     j = ((List)localObject1).size();
     i = 50;
@@ -1036,90 +1087,88 @@ public class FaceOffUtil
     paramList.add(new PointF(localPointF2.x, localPointF2.y));
     localPointF2 = (PointF)paramList.get(2);
     localPointF2 = (PointF)paramList.get(16);
-    localPointF4 = (PointF)paramList.get(39);
-    localPointF2 = (PointF)paramList.get(49);
+    localPointF2 = (PointF)paramList.get(39);
     localPointF3 = (PointF)paramList.get(57);
     localPointF3 = (PointF)paramList.get(61);
-    PointF localPointF5 = (PointF)paramList.get(35);
-    localPointF3 = (PointF)paramList.get(45);
-    PointF localPointF6 = AlgoUtils.middlePoint((PointF)paramList.get(35), (PointF)paramList.get(57));
-    paramList.add(new PointF(localPointF6.x, localPointF6.y));
-    localPointF6 = AlgoUtils.middlePoint((PointF)paramList.get(45), (PointF)paramList.get(61));
-    paramList.add(new PointF(localPointF6.x, localPointF6.y));
-    localPointF6 = (PointF)paramList.get(43);
-    PointF localPointF7 = (PointF)paramList.get(55);
-    localPointF7 = (PointF)paramList.get(41);
-    PointF localPointF8 = (PointF)paramList.get(37);
-    paramFloat = AlgoUtils.getDistance(localPointF5, localPointF4);
-    AlgoUtils.getDistance(localPointF7, localPointF8);
+    localPointF3 = (PointF)paramList.get(35);
+    localPointF4 = AlgoUtils.middlePoint((PointF)paramList.get(35), (PointF)paramList.get(57));
+    paramList.add(new PointF(localPointF4.x, localPointF4.y));
+    localPointF4 = AlgoUtils.middlePoint((PointF)paramList.get(45), (PointF)paramList.get(61));
+    paramList.add(new PointF(localPointF4.x, localPointF4.y));
+    localPointF4 = (PointF)paramList.get(43);
+    PointF localPointF5 = (PointF)paramList.get(55);
+    localPointF5 = (PointF)paramList.get(41);
+    PointF localPointF6 = (PointF)paramList.get(37);
+    paramFloat = AlgoUtils.getDistance(localPointF3, localPointF2);
+    AlgoUtils.getDistance(localPointF5, localPointF6);
     f2 = paramFloat / 50.0F;
     i = 35;
     if (i < 39)
     {
-      localPointF4 = (PointF)paramList.get(i);
+      localPointF2 = (PointF)paramList.get(i);
       f1 = (float)(Math.sin((2.0F - Math.abs(i - 37)) * 3.141592653589793D / 4.0D) * 0.3D);
       if (i == 35)
       {
-        f1 = (localPointF4.y - localPointF6.y) / (localPointF4.x - localPointF6.x);
-        paramFloat = localPointF4.x + (localPointF4.x - localPointF6.x) * 0.9F;
-        f1 = (paramFloat - localPointF6.x) * f1 + localPointF6.y;
-        label1815:
+        f1 = (localPointF2.y - localPointF4.y) / (localPointF2.x - localPointF4.x);
+        paramFloat = localPointF2.x + (localPointF2.x - localPointF4.x) * 0.9F;
+        f1 = (paramFloat - localPointF4.x) * f1 + localPointF4.y;
+        label1789:
         if ((i != 35) || (paramFloat >= ((PointF)paramList.get(0)).x)) {
-          break label3008;
+          break label3000;
         }
         paramFloat = ((PointF)paramList.get(0)).x;
       }
     }
-    label2481:
-    label3005:
-    label3008:
+    label2473:
+    label2997:
+    label3000:
     for (;;)
     {
       paramList.add(new PointF(paramFloat, f1));
       i += 1;
       break;
       f3 = (float)Math.toRadians(60.0F * (i - 37));
-      paramFloat = (float)(localPointF4.x + 10.0F * f2 * (1.0F + f1) * Math.sin(f3 + 0.0D));
-      f1 = (float)(localPointF4.y + 10.0F * f2 * (f1 + 1.0F) * Math.cos(f3 + 0.0D));
-      break label1815;
-      localPointF4 = AlgoUtils.middlePoint((PointF)paramList.get(39), (PointF)paramList.get(55));
-      paramList.add(new PointF(localPointF4.x, localPointF4.y));
+      paramFloat = (float)(localPointF2.x + 10.0F * f2 * (1.0F + f1) * Math.sin(f3 + 0.0D));
+      f1 = (float)(localPointF2.y + 10.0F * f2 * (f1 + 1.0F) * Math.cos(f3 + 0.0D));
+      break label1789;
+      localPointF2 = AlgoUtils.middlePoint((PointF)paramList.get(39), (PointF)paramList.get(55));
+      paramList.add(new PointF(localPointF2.x, localPointF2.y));
       int j = paramList.size();
       i = 40;
       while (i < 43)
       {
-        localPointF4 = (PointF)paramList.get(i);
+        localPointF2 = (PointF)paramList.get(i);
         paramFloat = (float)Math.toRadians(60.0F * (i - 41));
         f1 = (float)(Math.sin((3.0F - Math.abs(i - 41)) * 3.141592653589793D / 2.0D) * 0.3D);
-        paramList.add(new PointF((float)(localPointF4.x - 16.0F * f2 * (1.0F + f1) * Math.sin(paramFloat + 0.0D)), (float)(localPointF4.y - 16.0F * f2 * (f1 + 1.0F) * Math.cos(paramFloat + 0.0D))));
+        paramList.add(new PointF((float)(localPointF2.x - 16.0F * f2 * (1.0F + f1) * Math.sin(paramFloat + 0.0D)), (float)(localPointF2.y - 16.0F * f2 * (f1 + 1.0F) * Math.cos(paramFloat + 0.0D))));
         i += 1;
       }
-      localPointF6 = (PointF)paramList.get(j);
-      localPointF4 = (PointF)paramList.get(j + 1);
-      localPointF5 = (PointF)paramList.get(j + 2);
-      localPointF6 = AlgoUtils.middlePoint(localPointF6, localPointF4);
-      localPointF4 = AlgoUtils.middlePoint(localPointF5, localPointF4);
-      paramList.add(new PointF(localPointF6.x, localPointF6.y));
+      localPointF4 = (PointF)paramList.get(j);
+      localPointF2 = (PointF)paramList.get(j + 1);
+      localPointF3 = (PointF)paramList.get(j + 2);
+      localPointF4 = AlgoUtils.middlePoint(localPointF4, localPointF2);
+      localPointF2 = AlgoUtils.middlePoint(localPointF3, localPointF2);
       paramList.add(new PointF(localPointF4.x, localPointF4.y));
-      localPointF5 = (PointF)paramList.get(51);
-      localPointF6 = (PointF)paramList.get(47);
-      localPointF4 = (PointF)paramList.get(54);
-      localPointF7 = (PointF)paramList.get(63);
-      paramFloat = AlgoUtils.getDistance(localPointF3, localPointF2);
-      AlgoUtils.getDistance(localPointF5, localPointF6);
+      paramList.add(new PointF(localPointF2.x, localPointF2.y));
+      localPointF3 = (PointF)paramList.get(51);
+      localPointF4 = (PointF)paramList.get(47);
+      localPointF2 = (PointF)paramList.get(54);
+      localPointF5 = (PointF)paramList.get(63);
+      paramFloat = AlgoUtils.getDistance((PointF)paramList.get(45), (PointF)paramList.get(49));
+      AlgoUtils.getDistance(localPointF3, localPointF4);
       f2 = paramFloat / 50.0F;
       i = 45;
       if (i < 49)
       {
-        localPointF2 = (PointF)paramList.get(i);
+        localPointF3 = (PointF)paramList.get(i);
         f1 = (float)(Math.sin((2.0F - Math.abs(i - 47)) * 3.141592653589793D / 4.0D) * 0.3D);
         if (i == 45)
         {
-          f1 = (localPointF2.y - localPointF4.y) / (localPointF2.x - localPointF4.x);
-          paramFloat = localPointF2.x + (localPointF2.x - localPointF4.x) * 0.9F;
-          f1 = (paramFloat - localPointF4.x) * f1 + localPointF4.y;
+          f1 = (localPointF3.y - localPointF2.y) / (localPointF3.x - localPointF2.x);
+          paramFloat = localPointF3.x + (localPointF3.x - localPointF2.x) * 0.9F;
+          f1 = (paramFloat - localPointF2.x) * f1 + localPointF2.y;
           if ((i != 45) || (paramFloat <= ((PointF)paramList.get(18)).x)) {
-            break label3005;
+            break label2997;
           }
           paramFloat = ((PointF)paramList.get(18)).x;
         }
@@ -1130,9 +1179,9 @@ public class FaceOffUtil
         i += 1;
         break;
         f3 = (float)Math.toRadians(60.0F * (i - 47));
-        paramFloat = (float)(localPointF2.x + 10.0F * f2 * (1.0F + f1) * Math.sin(0.0D - f3));
-        f1 = (float)(localPointF2.y + 10.0F * f2 * (f1 + 1.0F) * Math.cos(0.0D - f3));
-        break label2481;
+        paramFloat = (float)(localPointF3.x + 10.0F * f2 * (1.0F + f1) * Math.sin(0.0D - f3));
+        f1 = (float)(localPointF3.y + 10.0F * f2 * (f1 + 1.0F) * Math.cos(0.0D - f3));
+        break label2473;
         localPointF2 = AlgoUtils.middlePoint((PointF)paramList.get(49), (PointF)paramList.get(63));
         paramList.add(new PointF(localPointF2.x, localPointF2.y));
         j = paramList.size();
@@ -1232,55 +1281,55 @@ public class FaceOffUtil
     }
     paramList.add(EMPTY_POINT);
     paramList.add(EMPTY_POINT);
-    PointF localPointF1 = (PointF)paramList.get(64);
-    PointF localPointF2 = (PointF)paramList.get(54);
-    PointF localPointF3 = (PointF)paramList.get(44);
-    localPointF2 = new PointF(localPointF2.x - localPointF3.x, localPointF2.y - localPointF3.y);
-    localPointF2 = new PointF(localPointF2.x, localPointF2.y);
-    localPointF3 = new PointF(-localPointF2.y, localPointF2.x);
-    f1 = AlgoUtils.getDistance(localPointF2, new PointF(0.0F, 0.0F));
-    f2 = AlgoUtils.getDistance(localPointF3, new PointF(0.0F, 0.0F));
-    localPointF2.x /= f1;
-    localPointF2.y /= f1;
-    localPointF3.x /= f2;
-    localPointF3.y /= f2;
-    f1 = localPointF2.x;
+    PointF localPointF1 = (PointF)paramList.get(54);
+    PointF localPointF2 = (PointF)paramList.get(44);
+    localPointF1 = new PointF(localPointF1.x - localPointF2.x, localPointF1.y - localPointF2.y);
+    localPointF1 = new PointF(localPointF1.x, localPointF1.y);
+    localPointF2 = new PointF(-localPointF1.y, localPointF1.x);
+    f1 = AlgoUtils.getDistance(localPointF1, new PointF(0.0F, 0.0F));
+    f2 = AlgoUtils.getDistance(localPointF2, new PointF(0.0F, 0.0F));
+    localPointF1.x /= f1;
+    localPointF1.y /= f1;
+    localPointF2.x /= f2;
+    localPointF2.y /= f2;
+    PointF localPointF3 = (PointF)paramList.get(64);
+    f1 = localPointF1.x;
     f2 = ((PointF)paramList.get(17)).x;
     f3 = ((PointF)paramList.get(56)).x;
-    f4 = localPointF2.y;
+    f4 = localPointF1.y;
     f1 = 2.0F * Math.abs((((PointF)paramList.get(17)).y - ((PointF)paramList.get(56)).y) * f4 + f1 * (f2 - f3));
-    f2 = localPointF2.x;
+    f2 = localPointF1.x;
     f3 = ((PointF)paramList.get(1)).x;
     f4 = ((PointF)paramList.get(62)).x;
-    float f5 = localPointF2.y;
+    float f5 = localPointF1.y;
     f4 = 2.0F * Math.abs((((PointF)paramList.get(1)).y - ((PointF)paramList.get(62)).y) * f5 + f2 * (f3 - f4));
-    f2 = localPointF3.x;
+    f2 = localPointF2.x;
     f3 = ((PointF)paramList.get(9)).x;
-    f5 = localPointF1.x;
-    float f6 = localPointF3.y;
-    f2 = 2.0F * Math.abs((((PointF)paramList.get(9)).y - localPointF1.y) * f6 + f2 * (f3 - f5));
-    f3 = localPointF3.x;
+    f5 = localPointF3.x;
+    float f6 = localPointF2.y;
+    f2 = 2.0F * Math.abs((((PointF)paramList.get(9)).y - localPointF3.y) * f6 + f2 * (f3 - f5));
+    f3 = localPointF2.x;
     f5 = ((PointF)paramList.get(87)).x;
-    f6 = localPointF1.x;
-    float f7 = localPointF3.y;
-    f3 = Math.abs((((PointF)paramList.get(87)).y - localPointF1.y) * f7 + f3 * (f5 - f6)) * 2.0F;
-    paramList.add(new PointF(localPointF1.x - localPointF2.x * f4 - localPointF3.x * f3, localPointF1.y - localPointF2.y * f4 - localPointF3.y * f3));
-    paramList.add(new PointF(localPointF1.x - localPointF2.x * f4, localPointF1.y - localPointF2.y * f4));
-    paramList.add(new PointF(localPointF1.x - localPointF2.x * f4 + localPointF3.x * f2, localPointF1.y - f4 * localPointF2.y + localPointF3.y * f2));
-    paramList.add(new PointF(localPointF1.x + localPointF3.x * f2, localPointF1.y + localPointF3.y * f2));
+    f6 = localPointF3.x;
+    float f7 = localPointF2.y;
+    f3 = Math.abs((((PointF)paramList.get(87)).y - localPointF3.y) * f7 + f3 * (f5 - f6)) * 2.0F;
+    paramList.add(new PointF(localPointF3.x - localPointF1.x * f4 - localPointF2.x * f3, localPointF3.y - localPointF1.y * f4 - localPointF2.y * f3));
+    paramList.add(new PointF(localPointF3.x - localPointF1.x * f4, localPointF3.y - localPointF1.y * f4));
+    paramList.add(new PointF(localPointF3.x - localPointF1.x * f4 + localPointF2.x * f2, localPointF3.y - f4 * localPointF1.y + localPointF2.y * f2));
+    paramList.add(new PointF(localPointF3.x + localPointF2.x * f2, localPointF3.y + localPointF2.y * f2));
+    f4 = localPointF3.x;
+    f5 = localPointF1.x;
+    f6 = localPointF2.x;
+    f7 = localPointF3.y;
+    float f8 = localPointF1.y;
+    paramList.add(new PointF(f4 + f5 * f1 + f6 * f2, f2 * localPointF2.y + (f7 + f8 * f1)));
+    paramList.add(new PointF(localPointF3.x + localPointF1.x * f1, localPointF3.y + localPointF1.y * f1));
+    f2 = localPointF3.x;
     f4 = localPointF1.x;
     f5 = localPointF2.x;
-    f6 = localPointF3.x;
-    f7 = localPointF1.y;
-    float f8 = localPointF2.y;
-    paramList.add(new PointF(f4 + f5 * f1 + f6 * f2, f2 * localPointF3.y + (f7 + f8 * f1)));
-    paramList.add(new PointF(localPointF1.x + localPointF2.x * f1, localPointF1.y + localPointF2.y * f1));
-    f2 = localPointF1.x;
-    f4 = localPointF2.x;
-    f5 = localPointF3.x;
-    f6 = localPointF1.y;
-    paramList.add(new PointF(f2 + f4 * f1 - f5 * f3, localPointF2.y * f1 + f6 - localPointF3.y * f3));
-    paramList.add(new PointF(localPointF1.x - localPointF3.x * f3, localPointF1.y - f3 * localPointF3.y));
+    f6 = localPointF3.y;
+    paramList.add(new PointF(f2 + f4 * f1 - f5 * f3, localPointF1.y * f1 + f6 - localPointF2.y * f3));
+    paramList.add(new PointF(localPointF3.x - localPointF2.x * f3, localPointF3.y - f3 * localPointF2.y));
     localPointF1 = (PointF)paramList.get(3);
     localPointF1 = (PointF)paramList.get(15);
     localPointF1 = (PointF)paramList.get(65);
@@ -1291,90 +1340,88 @@ public class FaceOffUtil
     paramList.add(new PointF(localPointF1.x, localPointF1.y));
     localPointF1 = (PointF)paramList.get(2);
     localPointF1 = (PointF)paramList.get(16);
-    localPointF3 = (PointF)paramList.get(39);
-    localPointF1 = (PointF)paramList.get(49);
+    localPointF1 = (PointF)paramList.get(39);
     localPointF2 = (PointF)paramList.get(57);
     localPointF2 = (PointF)paramList.get(61);
-    PointF localPointF4 = (PointF)paramList.get(35);
-    localPointF2 = (PointF)paramList.get(45);
-    PointF localPointF5 = AlgoUtils.middlePoint((PointF)paramList.get(35), (PointF)paramList.get(57));
-    paramList.add(new PointF(localPointF5.x, localPointF5.y));
-    localPointF5 = AlgoUtils.middlePoint((PointF)paramList.get(45), (PointF)paramList.get(61));
-    paramList.add(new PointF(localPointF5.x, localPointF5.y));
-    localPointF5 = (PointF)paramList.get(43);
-    PointF localPointF6 = (PointF)paramList.get(55);
-    localPointF6 = (PointF)paramList.get(41);
-    PointF localPointF7 = (PointF)paramList.get(37);
-    f1 = AlgoUtils.getDistance(localPointF4, localPointF3);
-    AlgoUtils.getDistance(localPointF6, localPointF7);
+    localPointF2 = (PointF)paramList.get(35);
+    localPointF3 = AlgoUtils.middlePoint((PointF)paramList.get(35), (PointF)paramList.get(57));
+    paramList.add(new PointF(localPointF3.x, localPointF3.y));
+    localPointF3 = AlgoUtils.middlePoint((PointF)paramList.get(45), (PointF)paramList.get(61));
+    paramList.add(new PointF(localPointF3.x, localPointF3.y));
+    localPointF3 = (PointF)paramList.get(43);
+    PointF localPointF4 = (PointF)paramList.get(55);
+    localPointF4 = (PointF)paramList.get(41);
+    PointF localPointF5 = (PointF)paramList.get(37);
+    f1 = AlgoUtils.getDistance(localPointF2, localPointF1);
+    AlgoUtils.getDistance(localPointF4, localPointF5);
     f3 = f1 / 50.0F;
     int i = 35;
     if (i < 39)
     {
-      localPointF3 = (PointF)paramList.get(i);
+      localPointF1 = (PointF)paramList.get(i);
       f2 = (float)(Math.sin((2.0F - Math.abs(i - 37)) * 3.141592653589793D / 4.0D) * 0.3D);
       if (i == 35)
       {
-        f2 = (localPointF3.y - localPointF5.y) / (localPointF3.x - localPointF5.x);
-        f1 = localPointF3.x + (localPointF3.x - localPointF5.x) * 0.9F;
-        f2 = (f1 - localPointF5.x) * f2 + localPointF5.y;
-        label2395:
+        f2 = (localPointF1.y - localPointF3.y) / (localPointF1.x - localPointF3.x);
+        f1 = localPointF1.x + (localPointF1.x - localPointF3.x) * 0.9F;
+        f2 = (f1 - localPointF3.x) * f2 + localPointF3.y;
+        label2369:
         if ((i != 35) || (f1 >= ((PointF)paramList.get(0)).x)) {
-          break label3606;
+          break label3598;
         }
         f1 = ((PointF)paramList.get(0)).x;
       }
     }
-    label3072:
-    label3603:
-    label3606:
+    label3595:
+    label3598:
     for (;;)
     {
       paramList.add(new PointF(f1, f2));
       i += 1;
       break;
       f4 = (float)Math.toRadians(60.0F * (i - 37));
-      f1 = (float)(localPointF3.x + 10.0F * f3 * (1.0F + f2) * Math.sin(f4 + 0.0D));
-      f2 = (float)(localPointF3.y + 10.0F * f3 * (f2 + 1.0F) * Math.cos(f4 + 0.0D));
-      break label2395;
-      localPointF3 = AlgoUtils.middlePoint((PointF)paramList.get(39), (PointF)paramList.get(55));
-      paramList.add(new PointF(localPointF3.x, localPointF3.y));
+      f1 = (float)(localPointF1.x + 10.0F * f3 * (1.0F + f2) * Math.sin(f4 + 0.0D));
+      f2 = (float)(localPointF1.y + 10.0F * f3 * (f2 + 1.0F) * Math.cos(f4 + 0.0D));
+      break label2369;
+      localPointF1 = AlgoUtils.middlePoint((PointF)paramList.get(39), (PointF)paramList.get(55));
+      paramList.add(new PointF(localPointF1.x, localPointF1.y));
       int j = paramList.size();
       i = 40;
       while (i < 43)
       {
-        localPointF3 = (PointF)paramList.get(i);
+        localPointF1 = (PointF)paramList.get(i);
         f1 = (float)Math.toRadians(60.0F * (i - 41));
         f2 = (float)(Math.sin((3.0F - Math.abs(i - 41)) * 3.141592653589793D / 2.0D) * 0.3D);
-        paramList.add(new PointF((float)(localPointF3.x - 16.0F * f3 * (1.0F + f2) * Math.sin(f1 + 0.0D)), (float)(localPointF3.y - 16.0F * f3 * (f2 + 1.0F) * Math.cos(f1 + 0.0D))));
+        paramList.add(new PointF((float)(localPointF1.x - 16.0F * f3 * (1.0F + f2) * Math.sin(f1 + 0.0D)), (float)(localPointF1.y - 16.0F * f3 * (f2 + 1.0F) * Math.cos(f1 + 0.0D))));
         i += 1;
       }
-      localPointF5 = (PointF)paramList.get(j);
-      localPointF3 = (PointF)paramList.get(j + 1);
-      localPointF4 = (PointF)paramList.get(j + 2);
-      localPointF5 = AlgoUtils.middlePoint(localPointF5, localPointF3);
-      localPointF3 = AlgoUtils.middlePoint(localPointF4, localPointF3);
-      paramList.add(new PointF(localPointF5.x, localPointF5.y));
+      localPointF3 = (PointF)paramList.get(j);
+      localPointF1 = (PointF)paramList.get(j + 1);
+      localPointF2 = (PointF)paramList.get(j + 2);
+      localPointF3 = AlgoUtils.middlePoint(localPointF3, localPointF1);
+      localPointF1 = AlgoUtils.middlePoint(localPointF2, localPointF1);
       paramList.add(new PointF(localPointF3.x, localPointF3.y));
-      localPointF4 = (PointF)paramList.get(51);
-      localPointF5 = (PointF)paramList.get(47);
-      localPointF3 = (PointF)paramList.get(54);
-      localPointF6 = (PointF)paramList.get(63);
-      f1 = AlgoUtils.getDistance(localPointF2, localPointF1);
-      AlgoUtils.getDistance(localPointF4, localPointF5);
+      paramList.add(new PointF(localPointF1.x, localPointF1.y));
+      localPointF2 = (PointF)paramList.get(51);
+      localPointF3 = (PointF)paramList.get(47);
+      localPointF1 = (PointF)paramList.get(54);
+      localPointF4 = (PointF)paramList.get(63);
+      f1 = AlgoUtils.getDistance((PointF)paramList.get(45), (PointF)paramList.get(49));
+      AlgoUtils.getDistance(localPointF2, localPointF3);
       f3 = f1 / 50.0F;
       i = 45;
       if (i < 49)
       {
-        localPointF1 = (PointF)paramList.get(i);
+        localPointF2 = (PointF)paramList.get(i);
         f2 = (float)(Math.sin((2.0F - Math.abs(i - 47)) * 3.141592653589793D / 4.0D) * 0.3D);
         if (i == 45)
         {
-          f2 = (localPointF1.y - localPointF3.y) / (localPointF1.x - localPointF3.x);
-          f1 = localPointF1.x + (localPointF1.x - localPointF3.x) * 0.9F;
-          f2 = (f1 - localPointF3.x) * f2 + localPointF3.y;
+          f2 = (localPointF2.y - localPointF1.y) / (localPointF2.x - localPointF1.x);
+          f1 = localPointF2.x + (localPointF2.x - localPointF1.x) * 0.9F;
+          f2 = (f1 - localPointF1.x) * f2 + localPointF1.y;
+          label3064:
           if ((i != 45) || (f1 <= ((PointF)paramList.get(18)).x)) {
-            break label3603;
+            break label3595;
           }
           f1 = ((PointF)paramList.get(18)).x;
         }
@@ -1385,9 +1432,9 @@ public class FaceOffUtil
         i += 1;
         break;
         f4 = (float)Math.toRadians(60.0F * (i - 47));
-        f1 = (float)(localPointF1.x + 10.0F * f3 * (1.0F + f2) * Math.sin(0.0D - f4));
-        f2 = (float)(localPointF1.y + 10.0F * f3 * (f2 + 1.0F) * Math.cos(0.0D - f4));
-        break label3072;
+        f1 = (float)(localPointF2.x + 10.0F * f3 * (1.0F + f2) * Math.sin(0.0D - f4));
+        f2 = (float)(localPointF2.y + 10.0F * f3 * (f2 + 1.0F) * Math.cos(0.0D - f4));
+        break label3064;
         localPointF1 = AlgoUtils.middlePoint((PointF)paramList.get(49), (PointF)paramList.get(63));
         paramList.add(new PointF(localPointF1.x, localPointF1.y));
         j = paramList.size();
@@ -1416,26 +1463,26 @@ public class FaceOffUtil
     }
   }
   
-  public static List<PointF> getFullCoords_v2(List<PointF> paramList, float paramFloat1, float paramFloat2, boolean paramBoolean)
+  public static List<PointF> getFullCoords_v2(List<PointF> paramList, float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean)
   {
     if ((CollectionUtils.isEmpty(paramList)) || (paramList.size() < 90)) {
-      localObject1 = new ArrayList();
+      localObject = new ArrayList();
     }
     do
     {
-      return localObject1;
+      return localObject;
       if (paramList.size() > 97) {
         paramList.subList(97, paramList.size()).clear();
       }
       if (paramList.size() == 90) {
         break;
       }
-      localObject1 = paramList;
+      localObject = paramList;
     } while (paramList.size() != 97);
     float f1 = ((PointF)paramList.get(41)).x;
     f1 = (((PointF)paramList.get(51)).x + f1) / 2.0F;
     float f2 = ((PointF)paramList.get(41)).y;
-    PointF localPointF4 = new PointF(f1, (((PointF)paramList.get(51)).y + f2) / 2.0F);
+    PointF localPointF5 = new PointF(f1, (((PointF)paramList.get(51)).y + f2) / 2.0F);
     f1 = ((PointF)paramList.get(9)).x;
     f2 = ((PointF)paramList.get(84)).x;
     float f3 = -((PointF)paramList.get(9)).y;
@@ -1443,9 +1490,9 @@ public class FaceOffUtil
     double d1 = Math.atan2(f1 - f2, f4 + f3) + 3.141592653589793D;
     android.graphics.Matrix localMatrix = new android.graphics.Matrix();
     localMatrix.reset();
-    localMatrix.postTranslate(-localPointF4.x, -localPointF4.y);
+    localMatrix.postTranslate(-localPointF5.x, -localPointF5.y);
     localMatrix.postRotate((float)Math.toDegrees(-d1));
-    localMatrix.postTranslate(localPointF4.x, localPointF4.y);
+    localMatrix.postTranslate(localPointF5.x, localPointF5.y);
     List localList = AlgoUtils.mapPoints(paramList, localMatrix);
     int i;
     if (localList.size() == 90)
@@ -1454,10 +1501,10 @@ public class FaceOffUtil
       paramList = new PointF((float)(((PointF)localList.get(1)).x + 2.0F * f1 * Math.sin(0.0D)), (float)(((PointF)localList.get(1)).y - 2.0F * f1 * Math.cos(0.0D)));
       localList.add(paramList);
       f1 = AlgoUtils.getDistance((PointF)localList.get(17), (PointF)localList.get(18));
-      localObject2 = new PointF((float)(((PointF)localList.get(17)).x + 2.0F * f1 * Math.sin(0.0D)), (float)(((PointF)localList.get(17)).y - 2.0F * f1 * Math.cos(0.0D)));
-      localList.add(localObject2);
-      f1 = AlgoUtils.getDistance((PointF)localList.get(59), localPointF4);
-      localObject1 = new PointF((float)(((PointF)localList.get(59)).x + 2.0F * f1 * Math.sin(0.0D)), (float)(((PointF)localList.get(59)).y - 2.0F * f1 * Math.cos(0.0D)));
+      localPointF1 = new PointF((float)(((PointF)localList.get(17)).x + 2.0F * f1 * Math.sin(0.0D)), (float)(((PointF)localList.get(17)).y - 2.0F * f1 * Math.cos(0.0D)));
+      localList.add(localPointF1);
+      f1 = AlgoUtils.getDistance((PointF)localList.get(59), localPointF5);
+      localObject = new PointF((float)(((PointF)localList.get(59)).x + 2.0F * f1 * Math.sin(0.0D)), (float)(((PointF)localList.get(59)).y - 2.0F * f1 * Math.cos(0.0D)));
       i = 2;
       double d2;
       double d3;
@@ -1465,100 +1512,102 @@ public class FaceOffUtil
       while (i >= 1)
       {
         d2 = Math.toRadians(i * 30.0F);
-        localPointF1 = new PointF();
-        localPointF1.x = ((float)(((PointF)localObject1).x - (((PointF)localObject1).x - ((PointF)localObject2).x) * Math.cos(d2)));
-        d3 = ((PointF)localObject2).y;
-        d4 = ((PointF)localObject2).y - ((PointF)localObject1).y;
-        localPointF1.y = ((float)(d3 - Math.sin(d2) * d4));
-        localList.add(localPointF1);
+        localPointF2 = new PointF();
+        localPointF2.x = ((float)(((PointF)localObject).x - (((PointF)localObject).x - localPointF1.x) * Math.cos(d2)));
+        d3 = localPointF1.y;
+        d4 = localPointF1.y - ((PointF)localObject).y;
+        localPointF2.y = ((float)(d3 - Math.sin(d2) * d4));
+        localList.add(localPointF2);
         i -= 1;
       }
       i = 3;
       while (i >= 1)
       {
         d2 = Math.toRadians(i * 30.0F);
-        localObject2 = new PointF();
-        ((PointF)localObject2).x = ((float)(((PointF)localObject1).x - (((PointF)localObject1).x - paramList.x) * Math.cos(d2)));
+        localPointF1 = new PointF();
+        localPointF1.x = ((float)(((PointF)localObject).x - (((PointF)localObject).x - paramList.x) * Math.cos(d2)));
         d3 = paramList.y;
-        d4 = paramList.y - ((PointF)localObject1).y;
-        ((PointF)localObject2).y = ((float)(d3 - Math.sin(d2) * d4));
-        localList.add(localObject2);
+        d4 = paramList.y - ((PointF)localObject).y;
+        localPointF1.y = ((float)(d3 - Math.sin(d2) * d4));
+        localList.add(localPointF1);
         i -= 1;
       }
     }
     localList.add(EMPTY_POINT);
     localList.add(EMPTY_POINT);
-    paramList = (PointF)localList.get(64);
-    Object localObject1 = (PointF)localList.get(54);
-    localObject1 = (PointF)localList.get(44);
-    Object localObject2 = new PointF(((PointF)localList.get(18)).x - ((PointF)localList.get(0)).x, ((PointF)localList.get(18)).y - ((PointF)localList.get(0)).y);
-    localObject1 = new PointF(-((PointF)localObject2).y, ((PointF)localObject2).x);
-    if (((PointF)localObject1).y < 0.0F)
+    paramList = (PointF)localList.get(54);
+    paramList = (PointF)localList.get(44);
+    PointF localPointF3 = new PointF(((PointF)localList.get(18)).x - ((PointF)localList.get(0)).x, ((PointF)localList.get(18)).y - ((PointF)localList.get(0)).y);
+    paramList = new PointF(-localPointF3.y, localPointF3.x);
+    if (paramList.y < 0.0F)
     {
-      ((PointF)localObject1).x = (-((PointF)localObject1).x);
-      ((PointF)localObject1).y = (-((PointF)localObject1).y);
+      paramList.x = (-paramList.x);
+      paramList.y = (-paramList.y);
     }
-    f1 = AlgoUtils.getDistance((PointF)localObject2, new PointF(0.0F, 0.0F));
-    f2 = AlgoUtils.getDistance((PointF)localObject1, new PointF(0.0F, 0.0F));
-    ((PointF)localObject2).x /= f1;
-    ((PointF)localObject2).y /= f1;
-    ((PointF)localObject1).x /= f2;
-    ((PointF)localObject1).y /= f2;
-    PointF localPointF1 = (PointF)localList.get(56);
-    PointF localPointF2 = (PointF)localList.get(62);
-    PointF localPointF3 = (PointF)localList.get(17);
-    PointF localPointF5 = (PointF)localList.get(1);
+    f1 = AlgoUtils.getDistance(localPointF3, new PointF(0.0F, 0.0F));
+    f2 = AlgoUtils.getDistance(paramList, new PointF(0.0F, 0.0F));
+    localPointF3.x /= f1;
+    localPointF3.y /= f1;
+    paramList.x /= f2;
+    paramList.y /= f2;
+    Object localObject = (PointF)localList.get(56);
+    PointF localPointF1 = (PointF)localList.get(62);
+    PointF localPointF2 = (PointF)localList.get(17);
+    PointF localPointF4 = (PointF)localList.get(1);
     PointF localPointF6 = (PointF)localList.get(9);
     PointF localPointF7 = (PointF)localList.get(87);
-    f1 = ((PointF)localObject2).x;
+    PointF localPointF8 = (PointF)localList.get(64);
+    f1 = localPointF3.x;
+    f2 = localPointF2.x;
+    f3 = ((PointF)localObject).x;
+    f4 = localPointF3.y;
+    f1 = Math.abs((localPointF2.y - ((PointF)localObject).y) * f4 + f1 * (f2 - f3));
     f2 = localPointF3.x;
-    f3 = localPointF1.x;
-    f4 = ((PointF)localObject2).y;
-    f1 = Math.abs((localPointF3.y - localPointF1.y) * f4 + f1 * (f2 - f3));
-    f2 = ((PointF)localObject2).x;
-    f3 = localPointF5.x;
-    f4 = localPointF2.x;
-    float f5 = ((PointF)localObject2).y;
-    f2 = -Math.abs(f2 * (f3 - f4) + (localPointF5.y - localPointF2.y) * f5);
-    f3 = Math.abs(((PointF)localObject1).x * (localPointF6.x - paramList.x) + ((PointF)localObject1).y * (localPointF6.y - paramList.y));
-    f4 = -Math.abs(((PointF)localObject1).x * (localPointF7.x - paramList.x) + ((PointF)localObject1).y * (localPointF7.y - paramList.y));
-    localList.add(new PointF(paramList.x + ((PointF)localObject2).x * f2 * paramFloat1 + ((PointF)localObject1).x * f4 * paramFloat1, paramList.y + ((PointF)localObject2).y * f2 * paramFloat1 + ((PointF)localObject1).y * f4 * paramFloat1));
-    localList.add(new PointF(paramList.x + ((PointF)localObject2).x * f2 * paramFloat1, paramList.y + ((PointF)localObject2).y * f2 * paramFloat1));
-    localList.add(new PointF(paramList.x + ((PointF)localObject2).x * f2 * paramFloat1 + ((PointF)localObject1).x * f3 * paramFloat1, paramList.y + ((PointF)localObject2).y * f2 * paramFloat1 + ((PointF)localObject1).y * f3 * paramFloat1));
-    localList.add(new PointF(paramList.x + ((PointF)localObject1).x * f3 * paramFloat1, paramList.y + ((PointF)localObject1).y * f3 * paramFloat1));
+    f3 = localPointF4.x;
+    f4 = localPointF1.x;
+    float f5 = localPointF3.y;
+    f2 = -Math.abs(f2 * (f3 - f4) + (localPointF4.y - localPointF1.y) * f5);
+    f4 = Math.abs(paramList.x * (localPointF6.x - localPointF8.x) + paramList.y * (localPointF6.y - localPointF8.y));
+    f3 = -Math.abs(paramList.x * (localPointF7.x - localPointF8.x) + paramList.y * (localPointF7.y - localPointF8.y));
+    localList.add(new PointF(localPointF8.x + localPointF3.x * f2 * paramFloat1 + paramList.x * f3 * paramFloat1, localPointF8.y + localPointF3.y * f2 * paramFloat1 + paramList.y * f3 * paramFloat1));
+    localList.add(new PointF(localPointF8.x + localPointF3.x * f2 * paramFloat1, localPointF8.y + localPointF3.y * f2 * paramFloat1));
+    localList.add(new PointF(localPointF8.x + localPointF3.x * f2 * paramFloat1 + paramList.x * f4 * paramFloat1, localPointF8.y + localPointF3.y * f2 * paramFloat1 + paramList.y * f4 * paramFloat1));
+    localList.add(new PointF(localPointF8.x + paramList.x * f4 * paramFloat1, localPointF8.y + paramList.y * f4 * paramFloat1));
+    f5 = localPointF8.x;
+    float f6 = localPointF3.x;
+    float f7 = paramList.x;
+    float f8 = localPointF8.y;
+    float f9 = localPointF3.y;
+    localList.add(new PointF(f5 + f6 * f1 * paramFloat1 + f7 * f4 * paramFloat1, f4 * paramList.y * paramFloat1 + (f8 + f9 * f1 * paramFloat1)));
+    localList.add(new PointF(localPointF8.x + localPointF3.x * f1 * paramFloat1, localPointF8.y + localPointF3.y * f1 * paramFloat1));
+    localList.add(new PointF(localPointF8.x + localPointF3.x * f1 * paramFloat1 + paramList.x * f3 * paramFloat1, localPointF8.y + localPointF3.y * f1 * paramFloat1 + paramList.y * f3 * paramFloat1));
+    f4 = localPointF8.x;
     f5 = paramList.x;
-    float f6 = ((PointF)localObject2).x;
-    float f7 = ((PointF)localObject1).x;
-    float f8 = paramList.y;
-    float f9 = ((PointF)localObject2).y;
-    localList.add(new PointF(f5 + f6 * f1 * paramFloat1 + f7 * f3 * paramFloat1, f3 * ((PointF)localObject1).y * paramFloat1 + (f8 + f9 * f1 * paramFloat1)));
-    localList.add(new PointF(paramList.x + ((PointF)localObject2).x * f1 * paramFloat1, paramList.y + ((PointF)localObject2).y * f1 * paramFloat1));
-    localList.add(new PointF(paramList.x + ((PointF)localObject2).x * f1 * paramFloat1 + ((PointF)localObject1).x * f4 * paramFloat1, paramList.y + ((PointF)localObject2).y * f1 * paramFloat1 + ((PointF)localObject1).y * f4 * paramFloat1));
-    localList.add(new PointF(paramList.x + ((PointF)localObject1).x * f4 * paramFloat1, paramList.y + f4 * ((PointF)localObject1).y * paramFloat1));
+    f6 = localPointF8.y;
+    localList.add(new PointF(f4 + f5 * f3 * paramFloat1, f3 * paramList.y * paramFloat1 + f6));
     paramList = (PointF)localList.get(3);
     paramList = (PointF)localList.get(15);
-    paramList = (PointF)localList.get(65);
-    localPointF2 = (PointF)localList.get(66);
+    localObject = (PointF)localList.get(65);
+    localPointF4 = (PointF)localList.get(66);
     localPointF1 = null;
+    localPointF2 = null;
     if (paramFloat2 < 0.0F)
     {
-      paramFloat1 = paramList.x;
-      f3 = ((PointF)localObject2).x;
-      f4 = paramList.y;
-      localPointF3 = new PointF(paramFloat1 + f3 * f2 * 10.0F, f2 * ((PointF)localObject2).y * 10.0F + f4);
+      paramList = new PointF(((PointF)localObject).x + localPointF3.x * f1 * 10.0F, ((PointF)localObject).y + localPointF3.y * f1 * 10.0F);
+      localPointF6 = new PointF(((PointF)localObject).x + localPointF3.x * f2 * 10.0F, ((PointF)localObject).y + localPointF3.y * f2 * 10.0F);
       i = 1;
       if (i >= 9) {
-        break label6607;
+        break label6681;
       }
-      localObject1 = AlgoUtils.getCrossPoint(paramList, localPointF3, (PointF)localList.get(i), (PointF)localList.get(i + 1));
-      if (localObject1 != null) {
+      localObject = AlgoUtils.getCrossPoint(paramList, localPointF6, (PointF)localList.get(i), (PointF)localList.get(i + 1));
+      if (localObject != null) {
         if (paramBoolean)
         {
           paramFloat1 = 0.0F;
-          label2036:
-          localPointF3 = AlgoUtils.getBetweenPoint((PointF)localObject1, (PointF)localList.get(65), paramFloat1);
-          paramList = AlgoUtils.getBetweenPoint((PointF)localObject1, (PointF)localList.get(65), Math.min(paramFloat1, 0.4F));
-          localList.add(new PointF(localPointF3.x, localPointF3.y));
+          label2081:
+          localPointF6 = AlgoUtils.getBetweenPoint((PointF)localObject, (PointF)localList.get(65), paramFloat1);
+          paramList = AlgoUtils.getBetweenPoint((PointF)localObject, (PointF)localList.get(65), Math.min(paramFloat1, 0.4F));
+          localList.add(new PointF(localPointF6.x, localPointF6.y));
           i = 1;
         }
       }
@@ -1569,35 +1618,32 @@ public class FaceOffUtil
       {
         paramList = (PointF)localList.get(1);
         if (!paramBoolean) {
-          break label3199;
+          break label3267;
         }
       }
-      label2257:
-      label2559:
-      PointF localPointF8;
-      label2363:
-      label2892:
-      label3199:
+      label2348:
+      label3267:
       for (paramFloat1 = 0.0F;; paramFloat1 = Math.min(1.8F - (float)(1.8D * Math.cos(paramFloat2)), 0.5F))
       {
-        localObject1 = AlgoUtils.getBetweenPoint(paramList, (PointF)localList.get(65), paramFloat1);
+        localObject = AlgoUtils.getBetweenPoint(paramList, (PointF)localList.get(65), paramFloat1);
         paramList = AlgoUtils.getBetweenPoint(paramList, (PointF)localList.get(65), Math.min(paramFloat1, 0.4F));
-        localList.add(new PointF(((PointF)localObject1).x, ((PointF)localObject1).y));
-        localObject1 = paramList;
+        localList.add(new PointF(((PointF)localObject).x, ((PointF)localObject).y));
+        localObject = paramList;
         if (paramFloat2 >= 0.0F) {
-          break label3482;
+          break label3586;
         }
-        paramList = new PointF(localPointF2.x + ((PointF)localObject2).x * f1 * 10.0F, localPointF2.y + ((PointF)localObject2).y * f1 * 10.0F);
+        paramList = new PointF(localPointF4.x + localPointF3.x * f2 * 10.0F, localPointF4.y + localPointF3.y * f2 * 10.0F);
+        localPointF3 = new PointF(localPointF4.x + localPointF3.x * f1 * 10.0F, localPointF4.y + localPointF3.y * f1 * 10.0F);
         i = 9;
         if (i >= 17) {
-          break label6595;
+          break label6669;
         }
-        localObject2 = AlgoUtils.getCrossPoint(localPointF2, paramList, (PointF)localList.get(i), (PointF)localList.get(i + 1));
-        if (localObject2 == null) {
-          break label3473;
+        localPointF4 = AlgoUtils.getCrossPoint(paramList, localPointF3, (PointF)localList.get(i), (PointF)localList.get(i + 1));
+        if (localPointF4 == null) {
+          break label3577;
         }
         paramFloat1 = (float)(4.0D * Math.cos(paramFloat2) - 4.0D);
-        paramList = AlgoUtils.getBetweenPoint((PointF)localObject2, (PointF)localList.get(66), paramFloat1);
+        paramList = AlgoUtils.getBetweenPoint(localPointF4, (PointF)localList.get(66), paramFloat1);
         localList.add(new PointF(paramList.x, paramList.y));
         i = 1;
         if (i == 0)
@@ -1607,87 +1653,89 @@ public class FaceOffUtil
           paramList = AlgoUtils.getBetweenPoint(paramList, (PointF)localList.get(66), paramFloat1);
           localList.add(new PointF(paramList.x, paramList.y));
         }
-        localObject2 = null;
-        paramList = (PointF)localList.get(2);
-        paramList = (PointF)localList.get(16);
-        localPointF5 = (PointF)localList.get(39);
-        localPointF2 = (PointF)localList.get(49);
-        paramList = (PointF)localList.get(57);
-        paramList = (PointF)localList.get(61);
-        localPointF6 = (PointF)localList.get(35);
-        localPointF3 = (PointF)localList.get(45);
+        paramList = null;
+        localPointF3 = (PointF)localList.get(2);
+        localPointF3 = (PointF)localList.get(16);
+        localPointF3 = (PointF)localList.get(39);
+        localPointF4 = (PointF)localList.get(57);
+        localPointF4 = (PointF)localList.get(61);
+        localPointF4 = (PointF)localList.get(35);
+        paramFloat3 = Math.max(0.0F, Math.min(1.0F, (float)(3.0F * paramFloat3 / 3.141592653589793D + 0.5D)));
+        localPointF6 = AlgoUtils.getBetweenPoint((PointF)localList.get(1), (PointF)localList.get(0), paramFloat3);
         if (paramFloat2 >= 0.0F) {
-          break label3832;
+          break label3982;
         }
         if (!paramBoolean) {
-          break label3808;
+          break label3958;
         }
         paramFloat1 = 0.0F;
-        paramList = AlgoUtils.getBetweenPoint((PointF)localList.get(0), (PointF)localList.get(56), paramFloat1);
-        localPointF7 = AlgoUtils.getBetweenPoint((PointF)localList.get(0), (PointF)localList.get(56), 0.1F);
-        localList.add(new PointF(paramList.x, localPointF7.y));
-        paramList = new PointF(AlgoUtils.getBetweenPoint((PointF)localList.get(0), (PointF)localList.get(56), Math.min(paramFloat1, 0.3F)).x, localPointF7.y);
+        label2678:
+        localPointF1 = AlgoUtils.getBetweenPoint(localPointF6, (PointF)localList.get(56), paramFloat1);
+        localPointF7 = AlgoUtils.getBetweenPoint(localPointF6, (PointF)localList.get(56), 0.1F);
+        localList.add(new PointF(localPointF1.x, localPointF7.y));
+        localPointF1 = new PointF(AlgoUtils.getBetweenPoint(localPointF6, (PointF)localList.get(56), Math.min(paramFloat1, 0.3F)).x, localPointF7.y);
+        label2786:
+        localPointF6 = AlgoUtils.getBetweenPoint((PointF)localList.get(17), (PointF)localList.get(18), paramFloat3);
         if (paramFloat2 >= 0.0F) {
-          break label4083;
+          break label4186;
         }
         paramFloat1 = (float)(3.0D * Math.cos(paramFloat2) - 3.0D);
-        localPointF7 = AlgoUtils.getBetweenPoint((PointF)localList.get(18), (PointF)localList.get(62), paramFloat1);
-        localPointF8 = AlgoUtils.getBetweenPoint((PointF)localList.get(18), (PointF)localList.get(62), 0.1F);
+        localPointF7 = AlgoUtils.getBetweenPoint(localPointF6, (PointF)localList.get(62), paramFloat1);
+        localPointF8 = AlgoUtils.getBetweenPoint(localPointF6, (PointF)localList.get(62), 0.1F);
         paramFloat1 = ((PointF)localList.get(18)).x;
-        f1 = ((PointF)localList.get(0)).x;
-        if ((((PointF)localList.get(18)).x - ((PointF)localList.get(62)).x) * (paramFloat1 - f1) > 0.0F) {
-          break label4055;
+        paramFloat3 = ((PointF)localList.get(0)).x;
+        if ((localPointF6.x - ((PointF)localList.get(62)).x) * (paramFloat1 - paramFloat3) > 0.0F) {
+          break label4158;
         }
-        localList.add(new PointF(((PointF)localList.get(18)).x, ((PointF)localList.get(18)).y));
-        localPointF7 = (PointF)localList.get(43);
-        localPointF8 = (PointF)localList.get(55);
-        localPointF8 = (PointF)localList.get(41);
-        PointF localPointF9 = (PointF)localList.get(37);
-        paramFloat1 = AlgoUtils.getDistance(localPointF6, localPointF5);
-        AlgoUtils.getDistance(localPointF8, localPointF9);
-        f2 = paramFloat1 / 50.0F;
+        localList.add(new PointF(localPointF6.x, localPointF6.y));
+        localPointF6 = (PointF)localList.get(43);
+        localPointF7 = (PointF)localList.get(55);
+        localPointF7 = (PointF)localList.get(41);
+        localPointF8 = (PointF)localList.get(37);
+        paramFloat1 = AlgoUtils.getDistance(localPointF4, localPointF3);
+        AlgoUtils.getDistance(localPointF7, localPointF8);
+        f1 = paramFloat1 / 50.0F;
         i = 35;
         for (;;)
         {
           if (i >= 39) {
-            break label4335;
+            break label4406;
           }
-          localPointF5 = (PointF)localList.get(i);
-          f1 = (float)(Math.sin((2.0F - Math.abs(i - 37)) * 3.141592653589793D / 4.0D) * 0.3D);
+          localPointF3 = (PointF)localList.get(i);
+          paramFloat3 = (float)(Math.sin((2.0F - Math.abs(i - 37)) * 3.141592653589793D / 4.0D) * 0.3D);
           if (i != 35) {
             break;
           }
-          f1 = (localPointF5.y - localPointF7.y) / (localPointF5.x - localPointF7.x);
-          paramFloat1 = localPointF5.x + (localPointF5.x - localPointF7.x) * 0.9F;
-          f1 = (paramFloat1 - localPointF7.x) * f1 + localPointF7.y;
+          paramFloat3 = (localPointF3.y - localPointF6.y) / (localPointF3.x - localPointF6.x);
+          paramFloat1 = localPointF3.x + (localPointF3.x - localPointF6.x) * 0.9F;
+          paramFloat3 = (paramFloat1 - localPointF6.x) * paramFloat3 + localPointF6.y;
+          label3167:
           if ((i != 35) || (paramFloat1 >= ((PointF)localList.get(0)).x)) {
-            break label6584;
+            break label6658;
           }
           paramFloat1 = ((PointF)localList.get(0)).x;
-          localList.add(new PointF(paramFloat1, f1));
+          localList.add(new PointF(paramFloat1, paramFloat3));
           i += 1;
         }
         paramFloat1 = Math.min(1.8F - (float)(1.8D * Math.cos(paramFloat2)), 0.5F);
-        break label2036;
+        break label2081;
         i += 1;
         break;
       }
-      label2691:
-      label3098:
-      label3139:
-      paramFloat1 = paramList.x;
-      f3 = ((PointF)localObject2).x;
-      f4 = paramList.y;
-      localObject1 = new PointF(paramFloat1 + f3 * f2 * 10.0F, f2 * ((PointF)localObject2).y * 10.0F + f4);
+      label2454:
+      paramList = new PointF(((PointF)localObject).x + localPointF3.x * f1 * 10.0F, ((PointF)localObject).y + localPointF3.y * f1 * 10.0F);
+      label2965:
+      localObject = new PointF(((PointF)localObject).x + localPointF3.x * f2 * 10.0F, ((PointF)localObject).y + localPointF3.y * f2 * 10.0F);
+      label3208:
       i = 1;
-      label3279:
+      label3383:
       if (i < 9)
       {
-        localPointF3 = AlgoUtils.getCrossPoint(paramList, (PointF)localObject1, (PointF)localList.get(i), (PointF)localList.get(i + 1));
-        if (localPointF3 != null)
+        localPointF6 = AlgoUtils.getCrossPoint(paramList, (PointF)localObject, (PointF)localList.get(i), (PointF)localList.get(i + 1));
+        if (localPointF6 != null)
         {
           paramFloat1 = (float)(4.0D * Math.cos(paramFloat2) - 4.0D);
-          paramList = AlgoUtils.getBetweenPoint(localPointF3, (PointF)localList.get(65), paramFloat1);
+          paramList = AlgoUtils.getBetweenPoint(localPointF6, (PointF)localList.get(65), paramFloat1);
           localList.add(new PointF(paramList.x, paramList.y));
         }
       }
@@ -1700,202 +1748,201 @@ public class FaceOffUtil
           paramList = AlgoUtils.getBetweenPoint(paramList, (PointF)localList.get(65), paramFloat1);
           localList.add(new PointF(paramList.x, paramList.y));
         }
-        localObject1 = null;
+        localObject = null;
         break;
         i += 1;
-        break label3279;
-        label3473:
+        break label3383;
+        label3577:
         i += 1;
-        break label2257;
-        label3482:
-        localObject2 = new PointF(localPointF2.x + ((PointF)localObject2).x * f1 * 10.0F, localPointF2.y + ((PointF)localObject2).y * f1 * 10.0F);
+        break label2348;
+        label3586:
+        paramList = new PointF(localPointF4.x + localPointF3.x * f2 * 10.0F, localPointF4.y + localPointF3.y * f2 * 10.0F);
+        localPointF4 = new PointF(localPointF4.x + localPointF3.x * f1 * 10.0F, localPointF4.y + localPointF3.y * f1 * 10.0F);
         i = 9;
-        label3531:
+        label3679:
         if (i < 17)
         {
-          paramList = AlgoUtils.getCrossPoint(localPointF2, (PointF)localObject2, (PointF)localList.get(i), (PointF)localList.get(i + 1));
-          if (paramList != null) {
+          localPointF3 = AlgoUtils.getCrossPoint(paramList, localPointF4, (PointF)localList.get(i), (PointF)localList.get(i + 1));
+          if (localPointF3 != null) {
             if (paramBoolean)
             {
               paramFloat1 = 0.0F;
-              label3582:
-              localObject2 = AlgoUtils.getBetweenPoint(paramList, (PointF)localList.get(66), paramFloat1);
-              paramList = AlgoUtils.getBetweenPoint(paramList, (PointF)localList.get(66), Math.min(paramFloat1, 0.4F));
-              localList.add(new PointF(((PointF)localObject2).x, ((PointF)localObject2).y));
+              localPointF4 = AlgoUtils.getBetweenPoint(localPointF3, (PointF)localList.get(66), paramFloat1);
+              paramList = AlgoUtils.getBetweenPoint(localPointF3, (PointF)localList.get(66), Math.min(paramFloat1, 0.4F));
+              localList.add(new PointF(localPointF4.x, localPointF4.y));
               i = 1;
             }
           }
         }
         for (;;)
         {
+          label3732:
           if (i == 0)
           {
             paramList = (PointF)localList.get(17);
             if (!paramBoolean) {
-              break label3784;
+              break label3934;
             }
           }
-          label3784:
+          label3934:
           for (paramFloat1 = 0.0F;; paramFloat1 = Math.min(1.8F - (float)(1.8D * Math.cos(paramFloat2)), 0.5F))
           {
-            localObject2 = AlgoUtils.getBetweenPoint(paramList, (PointF)localList.get(66), paramFloat1);
+            localPointF3 = AlgoUtils.getBetweenPoint(paramList, (PointF)localList.get(66), paramFloat1);
             paramList = AlgoUtils.getBetweenPoint(paramList, (PointF)localList.get(66), Math.min(paramFloat1, 0.4F));
-            localList.add(new PointF(((PointF)localObject2).x, ((PointF)localObject2).y));
-            localObject2 = paramList;
+            localList.add(new PointF(localPointF3.x, localPointF3.y));
             break;
             paramFloat1 = Math.min(1.8F - (float)(1.8D * Math.cos(paramFloat2)), 0.5F);
-            break label3582;
+            break label3732;
             i += 1;
-            break label3531;
+            break label3679;
           }
-          label3808:
+          label3958:
           paramFloat1 = Math.min(1.2F - (float)(1.2D * Math.cos(paramFloat2)), 0.5F);
-          break label2559;
-          label3832:
+          break label2678;
+          label3982:
           paramFloat1 = (float)(3.0D * Math.cos(paramFloat2) - 3.0D);
-          paramList = AlgoUtils.getBetweenPoint((PointF)localList.get(0), (PointF)localList.get(56), paramFloat1);
-          localPointF7 = AlgoUtils.getBetweenPoint((PointF)localList.get(0), (PointF)localList.get(56), 0.1F);
+          localPointF7 = AlgoUtils.getBetweenPoint(localPointF6, (PointF)localList.get(56), paramFloat1);
+          localPointF8 = AlgoUtils.getBetweenPoint(localPointF6, (PointF)localList.get(56), 0.1F);
           paramFloat1 = ((PointF)localList.get(18)).x;
           f1 = ((PointF)localList.get(0)).x;
-          if ((((PointF)localList.get(56)).x - ((PointF)localList.get(0)).x) * (paramFloat1 - f1) <= 0.0F)
+          if ((((PointF)localList.get(56)).x - localPointF6.x) * (paramFloat1 - f1) <= 0.0F)
           {
-            localList.add(new PointF(((PointF)localList.get(0)).x, ((PointF)localList.get(0)).y));
-            paramList = null;
-            break label2691;
+            localList.add(new PointF(localPointF6.x, localPointF6.y));
+            break label2786;
           }
-          localList.add(new PointF(paramList.x, localPointF7.y));
-          paramList = null;
-          break label2691;
-          label4055:
           localList.add(new PointF(localPointF7.x, localPointF8.y));
-          break label2892;
-          label4083:
+          break label2786;
+          label4158:
+          localList.add(new PointF(localPointF7.x, localPointF8.y));
+          break label2965;
+          label4186:
           if (paramBoolean) {}
           for (paramFloat1 = 0.0F;; paramFloat1 = Math.min(1.2F - (float)(1.2D * Math.cos(paramFloat2)), 0.5F))
           {
-            localPointF1 = AlgoUtils.getBetweenPoint((PointF)localList.get(18), (PointF)localList.get(62), paramFloat1);
-            localPointF7 = AlgoUtils.getBetweenPoint((PointF)localList.get(18), (PointF)localList.get(62), 0.1F);
-            localList.add(new PointF(localPointF1.x, localPointF7.y));
-            localPointF1 = new PointF(AlgoUtils.getBetweenPoint((PointF)localList.get(18), (PointF)localList.get(62), Math.min(paramFloat1, 0.3F)).x, localPointF7.y);
+            localPointF2 = AlgoUtils.getBetweenPoint(localPointF6, (PointF)localList.get(62), paramFloat1);
+            localPointF7 = AlgoUtils.getBetweenPoint(localPointF6, (PointF)localList.get(62), 0.1F);
+            localList.add(new PointF(localPointF2.x, localPointF7.y));
+            localPointF2 = new PointF(AlgoUtils.getBetweenPoint(localPointF6, (PointF)localList.get(62), Math.min(paramFloat1, 0.3F)).x, localPointF7.y);
             break;
           }
-          f3 = (float)Math.toRadians(60.0F * (i - 37));
-          paramFloat1 = (float)(localPointF5.x + 10.0F * f2 * (1.0F + f1) * Math.sin(f3 + 0.0D));
-          f1 = (float)(localPointF5.y + 10.0F * f2 * (f1 + 1.0F) * Math.cos(f3 + 0.0D));
-          break label3098;
-          label4335:
-          localPointF5 = AlgoUtils.middlePoint((PointF)localList.get(39), (PointF)localList.get(55));
-          localList.add(new PointF(localPointF5.x, localPointF5.y));
+          f2 = (float)Math.toRadians(60.0F * (i - 37));
+          paramFloat1 = (float)(localPointF3.x + 10.0F * f1 * (1.0F + paramFloat3) * Math.sin(f2 + 0.0D));
+          paramFloat3 = (float)(localPointF3.y + 10.0F * f1 * (paramFloat3 + 1.0F) * Math.cos(f2 + 0.0D));
+          break label3167;
+          label4406:
+          localPointF3 = AlgoUtils.middlePoint((PointF)localList.get(39), (PointF)localList.get(55));
+          localList.add(new PointF(localPointF3.x, localPointF3.y));
           int j = localList.size();
           i = 40;
           while (i < 43)
           {
-            localPointF5 = (PointF)localList.get(i);
+            localPointF3 = (PointF)localList.get(i);
             paramFloat1 = (float)Math.toRadians(60.0F * (i - 41));
-            f1 = (float)(Math.sin((3.0F - Math.abs(i - 41)) * 3.141592653589793D / 2.0D) * 0.3D);
-            localList.add(new PointF((float)(localPointF5.x - 16.0F * f2 * (1.0F + f1) * Math.sin(paramFloat1 + 0.0D)), (float)(localPointF5.y - 16.0F * f2 * (f1 + 1.0F) * Math.cos(paramFloat1 + 0.0D))));
+            paramFloat3 = (float)(Math.sin((3.0F - Math.abs(i - 41)) * 3.141592653589793D / 2.0D) * 0.3D);
+            localList.add(new PointF((float)(localPointF3.x - 16.0F * f1 * (1.0F + paramFloat3) * Math.sin(paramFloat1 + 0.0D)), (float)(localPointF3.y - 16.0F * f1 * (paramFloat3 + 1.0F) * Math.cos(paramFloat1 + 0.0D))));
             i += 1;
           }
-          localPointF7 = (PointF)localList.get(j);
-          localPointF5 = (PointF)localList.get(j + 1);
-          localPointF6 = (PointF)localList.get(j + 2);
-          localPointF7 = AlgoUtils.middlePoint(localPointF7, localPointF5);
-          localPointF5 = AlgoUtils.middlePoint(localPointF6, localPointF5);
-          localList.add(new PointF(localPointF7.x, localPointF7.y));
-          localList.add(new PointF(localPointF5.x, localPointF5.y));
-          localPointF6 = (PointF)localList.get(51);
-          localPointF7 = (PointF)localList.get(47);
-          localPointF5 = (PointF)localList.get(54);
-          localPointF8 = (PointF)localList.get(63);
-          paramFloat1 = AlgoUtils.getDistance(localPointF3, localPointF2);
-          AlgoUtils.getDistance(localPointF6, localPointF7);
-          f2 = paramFloat1 / 50.0F;
+          localPointF6 = (PointF)localList.get(j);
+          localPointF3 = (PointF)localList.get(j + 1);
+          localPointF4 = (PointF)localList.get(j + 2);
+          localPointF6 = AlgoUtils.middlePoint(localPointF6, localPointF3);
+          localPointF3 = AlgoUtils.middlePoint(localPointF4, localPointF3);
+          localList.add(new PointF(localPointF6.x, localPointF6.y));
+          localList.add(new PointF(localPointF3.x, localPointF3.y));
+          localPointF4 = (PointF)localList.get(51);
+          localPointF6 = (PointF)localList.get(47);
+          localPointF3 = (PointF)localList.get(54);
+          localPointF7 = (PointF)localList.get(63);
+          paramFloat1 = AlgoUtils.getDistance((PointF)localList.get(45), (PointF)localList.get(49));
+          AlgoUtils.getDistance(localPointF4, localPointF6);
+          f1 = paramFloat1 / 50.0F;
           i = 45;
           if (i < 49)
           {
-            localPointF2 = (PointF)localList.get(i);
-            f1 = (float)(Math.sin((2.0F - Math.abs(i - 47)) * 3.141592653589793D / 4.0D) * 0.3D);
+            localPointF4 = (PointF)localList.get(i);
+            paramFloat3 = (float)(Math.sin((2.0F - Math.abs(i - 47)) * 3.141592653589793D / 4.0D) * 0.3D);
             if (i == 45)
             {
-              f1 = (localPointF2.y - localPointF5.y) / (localPointF2.x - localPointF5.x);
-              paramFloat1 = localPointF2.x + (localPointF2.x - localPointF5.x) * 0.9F;
-              f1 = (paramFloat1 - localPointF5.x) * f1 + localPointF5.y;
-              label4871:
+              paramFloat3 = (localPointF4.y - localPointF3.y) / (localPointF4.x - localPointF3.x);
+              paramFloat1 = localPointF4.x + (localPointF4.x - localPointF3.x) * 0.9F;
+              paramFloat3 = (paramFloat1 - localPointF3.x) * paramFloat3 + localPointF3.y;
+              label4955:
               if ((i != 45) || (paramFloat1 <= ((PointF)localList.get(18)).x)) {
-                break label6581;
+                break label6655;
               }
               paramFloat1 = ((PointF)localList.get(18)).x;
             }
           }
-          label6581:
+          label6470:
+          label6655:
           for (;;)
           {
-            localList.add(new PointF(paramFloat1, f1));
+            localList.add(new PointF(paramFloat1, paramFloat3));
             i += 1;
             break;
-            f3 = (float)Math.toRadians(60.0F * (i - 47));
-            paramFloat1 = (float)(localPointF2.x + 10.0F * f2 * (1.0F + f1) * Math.sin(0.0D - f3));
-            f1 = (float)(localPointF2.y + 10.0F * f2 * (f1 + 1.0F) * Math.cos(0.0D - f3));
-            break label4871;
-            localPointF2 = AlgoUtils.middlePoint((PointF)localList.get(49), (PointF)localList.get(63));
-            localList.add(new PointF(localPointF2.x, localPointF2.y));
+            f2 = (float)Math.toRadians(60.0F * (i - 47));
+            paramFloat1 = (float)(localPointF4.x + 10.0F * f1 * (1.0F + paramFloat3) * Math.sin(0.0D - f2));
+            paramFloat3 = (float)(localPointF4.y + 10.0F * f1 * (paramFloat3 + 1.0F) * Math.cos(0.0D - f2));
+            break label4955;
+            localPointF3 = AlgoUtils.middlePoint((PointF)localList.get(49), (PointF)localList.get(63));
+            localList.add(new PointF(localPointF3.x, localPointF3.y));
             j = localList.size();
             i = 50;
             while (i < 53)
             {
-              localPointF2 = (PointF)localList.get(i);
+              localPointF3 = (PointF)localList.get(i);
               paramFloat1 = (float)Math.toRadians(60.0F * (i - 51));
-              f1 = (float)(Math.sin((3.0F - Math.abs(i - 51)) * 3.141592653589793D / 2.0D) * 0.3D);
-              localList.add(new PointF((float)(localPointF2.x - 16.0F * f2 * (1.0F + f1) * Math.sin(0.0D - paramFloat1)), (float)(localPointF2.y - 16.0F * f2 * (f1 + 1.0F) * Math.cos(0.0D - paramFloat1))));
+              paramFloat3 = (float)(Math.sin((3.0F - Math.abs(i - 51)) * 3.141592653589793D / 2.0D) * 0.3D);
+              localList.add(new PointF((float)(localPointF3.x - 16.0F * f1 * (1.0F + paramFloat3) * Math.sin(0.0D - paramFloat1)), (float)(localPointF3.y - 16.0F * f1 * (paramFloat3 + 1.0F) * Math.cos(0.0D - paramFloat1))));
               i += 1;
             }
-            localPointF5 = (PointF)localList.get(j);
-            localPointF2 = (PointF)localList.get(j + 1);
-            localPointF3 = (PointF)localList.get(j + 2);
-            localPointF5 = AlgoUtils.middlePoint(localPointF5, localPointF2);
-            localPointF2 = AlgoUtils.middlePoint(localPointF3, localPointF2);
-            localList.add(new PointF(localPointF5.x, localPointF5.y));
-            localList.add(new PointF(localPointF2.x, localPointF2.y));
-            localPointF3 = (PointF)localList.get(109);
-            localPointF2 = (PointF)localList.get(110);
+            localPointF6 = (PointF)localList.get(j);
+            localPointF3 = (PointF)localList.get(j + 1);
+            localPointF4 = (PointF)localList.get(j + 2);
+            localPointF6 = AlgoUtils.middlePoint(localPointF6, localPointF3);
+            localPointF3 = AlgoUtils.middlePoint(localPointF4, localPointF3);
+            localList.add(new PointF(localPointF6.x, localPointF6.y));
+            localList.add(new PointF(localPointF3.x, localPointF3.y));
+            localPointF4 = (PointF)localList.get(109);
+            localPointF3 = (PointF)localList.get(110);
+            localPointF4 = AlgoUtils.getBetweenPoint(localPointF4, AlgoUtils.middlePoint((PointF)localList.get(56), (PointF)localList.get(62)), 0.5F);
             localPointF3 = AlgoUtils.getBetweenPoint(localPointF3, AlgoUtils.middlePoint((PointF)localList.get(56), (PointF)localList.get(62)), 0.5F);
-            localPointF2 = AlgoUtils.getBetweenPoint(localPointF2, AlgoUtils.middlePoint((PointF)localList.get(56), (PointF)localList.get(62)), 0.5F);
-            localPointF5 = new PointF(localPointF3.x, localPointF3.y);
-            localPointF6 = new PointF(localPointF2.x, localPointF2.y);
+            localPointF6 = new PointF(localPointF4.x, localPointF4.y);
+            localPointF7 = new PointF(localPointF3.x, localPointF3.y);
             if (paramFloat2 < 0.0F)
             {
-              localPointF2 = AlgoUtils.getBetweenPoint(AlgoUtils.middlePoint((PointF)localList.get(45), (PointF)localList.get(61)), localPointF2, Math.max((float)Math.cos(paramFloat2) * 15.0F - 14.0F, 0.0F));
+              localPointF3 = AlgoUtils.getBetweenPoint(AlgoUtils.middlePoint((PointF)localList.get(45), (PointF)localList.get(61)), localPointF3, Math.max((float)Math.cos(paramFloat2) * 15.0F - 14.0F, 0.0F));
+              localList.add(new PointF(localPointF4.x, localPointF4.y));
               localList.add(new PointF(localPointF3.x, localPointF3.y));
-              localList.add(new PointF(localPointF2.x, localPointF2.y));
-              localPointF7 = (PointF)localList.get(107);
-              localPointF8 = (PointF)localList.get(108);
-              localPointF3 = AlgoUtils.getBetweenPoint(localPointF7, (PointF)localList.get(65), 0.5F);
-              localPointF2 = AlgoUtils.getBetweenPoint(localPointF8, (PointF)localList.get(66), 0.5F);
+              localPointF8 = (PointF)localList.get(107);
+              PointF localPointF9 = (PointF)localList.get(108);
+              localPointF4 = AlgoUtils.getBetweenPoint(localPointF8, (PointF)localList.get(65), 0.5F);
+              localPointF3 = AlgoUtils.getBetweenPoint(localPointF9, (PointF)localList.get(66), 0.5F);
               if (paramFloat2 >= 0.0F) {
-                break label6394;
+                break label6470;
               }
-              localPointF2 = AlgoUtils.getBetweenPoint(AlgoUtils.middlePoint((PointF)localList.get(14), (PointF)localList.get(66)), localPointF2, Math.max((float)Math.cos(paramFloat2) * 12.0F - 11.0F, 0.0F));
-              localPointF5 = new PointF(((PointF)localList.get(110)).x - localPointF6.x, ((PointF)localList.get(110)).y - localPointF6.y);
-              paramFloat1 = localPointF2.x;
-              f1 = localPointF5.x;
-              f2 = localPointF2.y;
-              localList.set(108, AlgoUtils.getBetweenPoint(new PointF(paramFloat1 + 0.8F * f1, localPointF5.y * 0.8F + f2), localPointF8, Math.max((float)Math.cos(paramFloat2) * 8.0F - 7.0F, 0.0F)));
+              localPointF3 = AlgoUtils.getBetweenPoint(AlgoUtils.middlePoint((PointF)localList.get(14), (PointF)localList.get(66)), localPointF3, Math.max((float)Math.cos(paramFloat2) * 12.0F - 11.0F, 0.0F));
+              localPointF6 = new PointF(((PointF)localList.get(110)).x - localPointF7.x, ((PointF)localList.get(110)).y - localPointF7.y);
+              paramFloat1 = localPointF3.x;
+              paramFloat3 = localPointF6.x;
+              f1 = localPointF3.y;
+              localList.set(108, AlgoUtils.getBetweenPoint(new PointF(paramFloat1 + 0.8F * paramFloat3, localPointF6.y * 0.8F + f1), localPointF9, Math.max((float)Math.cos(paramFloat2) * 8.0F - 7.0F, 0.0F)));
             }
             for (;;)
             {
+              localList.add(new PointF(localPointF4.x, localPointF4.y));
               localList.add(new PointF(localPointF3.x, localPointF3.y));
-              localList.add(new PointF(localPointF2.x, localPointF2.y));
-              if (localObject1 != null) {
-                localList.set(107, localObject1);
-              }
-              if (localObject2 != null) {
-                localList.set(108, localObject2);
+              if (localObject != null) {
+                localList.set(107, localObject);
               }
               if (paramList != null) {
-                localList.set(109, paramList);
+                localList.set(108, paramList);
               }
               if (localPointF1 != null) {
-                localList.set(110, localPointF1);
+                localList.set(109, localPointF1);
+              }
+              if (localPointF2 != null) {
+                localList.set(110, localPointF2);
               }
               if (paramBoolean)
               {
@@ -1903,40 +1950,44 @@ public class FaceOffUtil
                 localList.set(108, AlgoUtils.middlePoint((PointF)localList.get(15), (PointF)localList.get(66)));
                 localList.set(109, AlgoUtils.middlePoint((PointF)localList.get(35), (PointF)localList.get(57)));
                 localList.set(110, AlgoUtils.middlePoint((PointF)localList.get(45), (PointF)localList.get(61)));
-                localList.set(131, AlgoUtils.middlePoint((PointF)localList.get(35), (PointF)localList.get(57)));
-                localList.set(132, AlgoUtils.middlePoint((PointF)localList.get(45), (PointF)localList.get(61)));
                 localList.set(133, AlgoUtils.middlePoint((PointF)localList.get(3), (PointF)localList.get(65)));
                 localList.set(134, AlgoUtils.middlePoint((PointF)localList.get(15), (PointF)localList.get(66)));
               }
+              localList.set(131, AlgoUtils.middlePoint((PointF)localList.get(35), (PointF)localList.get(57)));
+              localList.set(132, AlgoUtils.middlePoint((PointF)localList.get(45), (PointF)localList.get(61)));
               localMatrix.reset();
-              localMatrix.postTranslate(-localPointF4.x, -localPointF4.y);
+              localMatrix.postTranslate(-localPointF5.x, -localPointF5.y);
               localMatrix.postRotate((float)Math.toDegrees(d1));
-              localMatrix.postTranslate(localPointF4.x, localPointF4.y);
+              localMatrix.postTranslate(localPointF5.x, localPointF5.y);
               return AlgoUtils.mapPoints(localList, localMatrix);
-              localPointF3 = AlgoUtils.getBetweenPoint(AlgoUtils.middlePoint((PointF)localList.get(35), (PointF)localList.get(57)), localPointF3, Math.max((float)Math.cos(-paramFloat2) * 15.0F - 14.0F, 0.0F));
+              localPointF4 = AlgoUtils.getBetweenPoint(AlgoUtils.middlePoint((PointF)localList.get(35), (PointF)localList.get(57)), localPointF4, Math.max((float)Math.cos(-paramFloat2) * 15.0F - 14.0F, 0.0F));
               break;
-              label6394:
-              localPointF3 = AlgoUtils.getBetweenPoint(AlgoUtils.middlePoint((PointF)localList.get(4), (PointF)localList.get(65)), localPointF3, Math.max((float)Math.cos(-paramFloat2) * 12.0F - 11.0F, 0.0F));
-              localPointF5 = new PointF(((PointF)localList.get(109)).x - localPointF5.x, ((PointF)localList.get(109)).y - localPointF5.y);
-              paramFloat1 = localPointF3.x;
-              f1 = localPointF5.x;
-              f2 = localPointF3.y;
-              localList.set(107, AlgoUtils.getBetweenPoint(new PointF(paramFloat1 + 0.8F * f1, localPointF5.y * 0.8F + f2), localPointF7, Math.max((float)Math.cos(-paramFloat2) * 8.0F - 7.0F, 0.0F)));
+              localPointF4 = AlgoUtils.getBetweenPoint(AlgoUtils.middlePoint((PointF)localList.get(4), (PointF)localList.get(65)), localPointF4, Math.max((float)Math.cos(-paramFloat2) * 12.0F - 11.0F, 0.0F));
+              localPointF6 = new PointF(((PointF)localList.get(109)).x - localPointF6.x, ((PointF)localList.get(109)).y - localPointF6.y);
+              paramFloat1 = localPointF4.x;
+              paramFloat3 = localPointF6.x;
+              f1 = localPointF4.y;
+              localList.set(107, AlgoUtils.getBetweenPoint(new PointF(paramFloat1 + 0.8F * paramFloat3, localPointF6.y * 0.8F + f1), localPointF8, Math.max((float)Math.cos(-paramFloat2) * 8.0F - 7.0F, 0.0F)));
             }
           }
-          label6584:
-          break label3139;
+          label6658:
+          break label3208;
           i = 0;
           paramList = null;
         }
-        label6595:
+        label6669:
         i = 0;
-        break label2363;
+        break label2454;
       }
-      label6607:
+      label6681:
       i = 0;
       paramList = null;
     }
+  }
+  
+  public static List<PointF> getFullCoords_v2(List<PointF> paramList, float paramFloat1, float paramFloat2, boolean paramBoolean)
+  {
+    return getFullCoords_v2(paramList, paramFloat1, paramFloat2, 0.0F, paramBoolean);
   }
   
   public static float[] getFullOpacityForFaceOffFilter_v2(List<PointF> paramList, float paramFloat)
@@ -2148,61 +2199,61 @@ public class FaceOffUtil
     return calcFullProbability_v2(paramList, paramArrayOfFloat, paramFloat);
   }
   
-  public static Bitmap getGrayBitmap(FaceOffUtil.FEATURE_TYPE paramFEATURE_TYPE)
+  public static Bitmap getGrayBitmap(FaceOffUtil.FeatureType paramFeatureType)
   {
     Bitmap localBitmap = null;
-    if (paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.NO_EYE)) {
+    if (paramFeatureType.equals(FaceOffUtil.FeatureType.NO_EYE)) {
       localBitmap = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_NO_EYE, 2147483647, 2147483647);
     }
     do
     {
       return localBitmap;
-      if (paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.HAS_EYE)) {
+      if (paramFeatureType.equals(FaceOffUtil.FeatureType.HAS_EYE)) {
         return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_HAS_EYE, 2147483647, 2147483647);
       }
-      if (paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.CRAZY_FACE)) {
+      if (paramFeatureType.equals(FaceOffUtil.FeatureType.CRAZY_FACE)) {
         return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_CRAZY_FACE, 2147483647, 2147483647);
       }
-      if (paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.FACE_HEAD_CROP)) {
+      if (paramFeatureType.equals(FaceOffUtil.FeatureType.FACE_HEAD_CROP)) {
         return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_CROP_HEAD_FACE, 2147483647, 2147483647);
       }
-      if (paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.FACE_SKIN)) {
+      if (paramFeatureType.equals(FaceOffUtil.FeatureType.FACE_SKIN)) {
         return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_FACE_SKIN, 2147483647, 2147483647);
       }
-      if (paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.MASK)) {
+      if (paramFeatureType.equals(FaceOffUtil.FeatureType.MASK)) {
         return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_MASK, 2147483647, 2147483647);
       }
-      if (paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.FACE_COS3D_MASK)) {
+      if (paramFeatureType.equals(FaceOffUtil.FeatureType.FACE_COS3D_MASK)) {
         return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_FACE_COS3D_MASK, 2147483647, 2147483647);
       }
-      if (paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.NOSE_MASK)) {
+      if (paramFeatureType.equals(FaceOffUtil.FeatureType.NOSE_MASK)) {
         return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_NOSE_MASK, 2147483647, 2147483647);
       }
-    } while (!paramFEATURE_TYPE.equals(FaceOffUtil.FEATURE_TYPE.LIPS_MASK));
+    } while (!paramFeatureType.equals(FaceOffUtil.FeatureType.LIPS_MASK));
     return BitmapUtils.decodeSampleBitmap(AEModule.getContext(), GRAY_FILE_LIPS_MASK, 2147483647, 2147483647);
   }
   
-  public static List<PointF> getGrayCoords(FaceOffUtil.FEATURE_TYPE paramFEATURE_TYPE)
+  public static List<PointF> getGrayCoords(FaceOffUtil.FeatureType paramFeatureType)
   {
-    switch (FaceOffUtil.1.$SwitchMap$com$tencent$ttpic$util$FaceOffUtil$FEATURE_TYPE[paramFEATURE_TYPE.ordinal()])
+    switch (FaceOffUtil.1.$SwitchMap$com$tencent$ttpic$util$FaceOffUtil$FeatureType[paramFeatureType.ordinal()])
     {
     default: 
-      paramFEATURE_TYPE = "assets://camera/camera_video/faceOff/coords/nomouthgray.tsv";
+      paramFeatureType = "assets://camera/camera_video/faceOff/coords/nomouthgray.tsv";
     }
     for (;;)
     {
-      return loadTexCoords(paramFEATURE_TYPE);
-      paramFEATURE_TYPE = "assets://camera/camera_video/faceOff/coords/nomouthgray.tsv";
+      return loadTexCoords(paramFeatureType);
+      paramFeatureType = "assets://camera/camera_video/faceOff/coords/nomouthgray.tsv";
       continue;
-      paramFEATURE_TYPE = "assets://camera/camera_video/faceOff/coords/crazyface.tsv";
+      paramFeatureType = "assets://camera/camera_video/faceOff/coords/crazyface.tsv";
       continue;
-      paramFEATURE_TYPE = "assets://camera/camera_video/faceOff/coords/faceheadcropgray.tsv";
+      paramFeatureType = "assets://camera/camera_video/faceOff/coords/faceheadcropgray.tsv";
       continue;
-      paramFEATURE_TYPE = "assets://camera/camera_video/faceOff/coords/faceMask_skin.tsv";
+      paramFeatureType = "assets://camera/camera_video/faceOff/coords/faceMask_skin.tsv";
       continue;
-      paramFEATURE_TYPE = "assets://camera/camera_video/faceOff/coords/nomouthgray.tsv";
+      paramFeatureType = "assets://camera/camera_video/faceOff/coords/nomouthgray.tsv";
       continue;
-      paramFEATURE_TYPE = "assets://camera/camera_video/faceOff/coords/nomouthgray.tsv";
+      paramFeatureType = "assets://camera/camera_video/faceOff/coords/nomouthgray.tsv";
     }
   }
   
@@ -2309,7 +2360,7 @@ public class FaceOffUtil
     }
   }
   
-  public static float[] initFaceLinePositions_v2(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat)
+  public static float[] initFaceLinePositions_4_Smooth(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat)
   {
     float[] arrayOfFloat;
     if ((CollectionUtils.isEmpty(paramList)) || (paramInt1 <= 0) || (paramInt2 <= 0))
@@ -2323,12 +2374,12 @@ public class FaceOffUtil
     for (;;)
     {
       arrayOfFloat = paramArrayOfFloat;
-      if (i >= NO_HOLE_TRIANGLE_COUNT_V2 * 3) {
+      if (i >= NO_HOLE_TRIANGLE_COUNT_4_SMOOTH * 3) {
         break;
       }
-      arrayOfPointF[0] = ((PointF)paramList.get(FaceMeshTriangles_v2[i]));
-      arrayOfPointF[1] = ((PointF)paramList.get(FaceMeshTriangles_v2[(i + 1)]));
-      arrayOfPointF[2] = ((PointF)paramList.get(FaceMeshTriangles_v2[(i + 2)]));
+      arrayOfPointF[0] = ((PointF)paramList.get(faceMesh4Smooth[i]));
+      arrayOfPointF[1] = ((PointF)paramList.get(faceMesh4Smooth[(i + 1)]));
+      arrayOfPointF[2] = ((PointF)paramList.get(faceMesh4Smooth[(i + 2)]));
       paramArrayOfFloat[j] = (arrayOfPointF[0].x / paramInt1 * 2.0F - 1.0F);
       paramArrayOfFloat[(j + 1)] = (arrayOfPointF[0].y / paramInt2 * 2.0F - 1.0F);
       paramArrayOfFloat[(j + 2)] = (arrayOfPointF[1].x / paramInt1 * 2.0F - 1.0F);
@@ -2343,6 +2394,47 @@ public class FaceOffUtil
       paramArrayOfFloat[(j + 11)] = (arrayOfPointF[0].y / paramInt2 * 2.0F - 1.0F);
       j += 12;
       i += 3;
+    }
+  }
+  
+  public static float[] initFaceLinePositions_v2(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat, boolean paramBoolean)
+  {
+    float[] arrayOfFloat;
+    if ((CollectionUtils.isEmpty(paramList)) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      arrayOfFloat = new float[0];
+      return arrayOfFloat;
+    }
+    if (paramBoolean) {}
+    for (int[] arrayOfInt = FaceMeshTriangles_disableFaceCrop_v2;; arrayOfInt = FaceMeshTriangles_v2)
+    {
+      PointF[] arrayOfPointF = new PointF[3];
+      int j = 0;
+      int i = 0;
+      for (;;)
+      {
+        arrayOfFloat = paramArrayOfFloat;
+        if (i >= NO_HOLE_TRIANGLE_COUNT_V2 * 3) {
+          break;
+        }
+        arrayOfPointF[0] = ((PointF)paramList.get(arrayOfInt[i]));
+        arrayOfPointF[1] = ((PointF)paramList.get(arrayOfInt[(i + 1)]));
+        arrayOfPointF[2] = ((PointF)paramList.get(arrayOfInt[(i + 2)]));
+        paramArrayOfFloat[j] = (arrayOfPointF[0].x / paramInt1 * 2.0F - 1.0F);
+        paramArrayOfFloat[(j + 1)] = (arrayOfPointF[0].y / paramInt2 * 2.0F - 1.0F);
+        paramArrayOfFloat[(j + 2)] = (arrayOfPointF[1].x / paramInt1 * 2.0F - 1.0F);
+        paramArrayOfFloat[(j + 3)] = (arrayOfPointF[1].y / paramInt2 * 2.0F - 1.0F);
+        paramArrayOfFloat[(j + 4)] = (arrayOfPointF[1].x / paramInt1 * 2.0F - 1.0F);
+        paramArrayOfFloat[(j + 5)] = (arrayOfPointF[1].y / paramInt2 * 2.0F - 1.0F);
+        paramArrayOfFloat[(j + 6)] = (arrayOfPointF[2].x / paramInt1 * 2.0F - 1.0F);
+        paramArrayOfFloat[(j + 7)] = (arrayOfPointF[2].y / paramInt2 * 2.0F - 1.0F);
+        paramArrayOfFloat[(j + 8)] = (arrayOfPointF[2].x / paramInt1 * 2.0F - 1.0F);
+        paramArrayOfFloat[(j + 9)] = (arrayOfPointF[2].y / paramInt2 * 2.0F - 1.0F);
+        paramArrayOfFloat[(j + 10)] = (arrayOfPointF[0].x / paramInt1 * 2.0F - 1.0F);
+        paramArrayOfFloat[(j + 11)] = (arrayOfPointF[0].y / paramInt2 * 2.0F - 1.0F);
+        j += 12;
+        i += 3;
+      }
     }
   }
   
@@ -2424,6 +2516,39 @@ public class FaceOffUtil
     paramArrayOfFloat2[0] = f2;
     paramArrayOfFloat2[1] = f1;
     return paramArrayOfFloat1;
+  }
+  
+  public static float[] initFacePositions4Smooth(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat, int paramInt3)
+  {
+    float[] arrayOfFloat;
+    if ((CollectionUtils.isEmpty(paramList)) || (paramArrayOfFloat == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      arrayOfFloat = new float[0];
+      return arrayOfFloat;
+    }
+    PointF[] arrayOfPointF = new PointF[3];
+    int j = 0;
+    int i = paramInt3;
+    paramInt3 = j;
+    for (;;)
+    {
+      arrayOfFloat = paramArrayOfFloat;
+      if (paramInt3 >= NO_HOLE_TRIANGLE_COUNT_4_SMOOTH * 3) {
+        break;
+      }
+      arrayOfPointF[0] = ((PointF)paramList.get(faceMesh4Smooth[paramInt3]));
+      arrayOfPointF[1] = ((PointF)paramList.get(faceMesh4Smooth[(paramInt3 + 1)]));
+      arrayOfPointF[2] = ((PointF)paramList.get(faceMesh4Smooth[(paramInt3 + 2)]));
+      j = 0;
+      while (j < 3)
+      {
+        paramArrayOfFloat[(j * 2 + i)] = (arrayOfPointF[j].x / paramInt1 * 2.0F - 1.0F);
+        paramArrayOfFloat[(j * 2 + i + 1)] = (arrayOfPointF[j].y / paramInt2 * 2.0F - 1.0F);
+        j += 1;
+      }
+      i += 6;
+      paramInt3 += 3;
+    }
   }
   
   public static float[] initFacePositionsBaseOnFaceRect(List<PointF> paramList, float paramFloat1, float paramFloat2, float[] paramArrayOfFloat)
@@ -2510,41 +2635,59 @@ public class FaceOffUtil
     }
   }
   
-  public static float[] initFacePositions_v2(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat)
+  public static float[] initFacePositions_v2(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat, boolean paramBoolean)
   {
-    return initFacePositions_v2(paramList, paramInt1, paramInt2, paramArrayOfFloat, null);
+    return initFacePositions_v2(paramList, paramInt1, paramInt2, paramArrayOfFloat, null, paramBoolean);
   }
   
-  public static float[] initFacePositions_v2(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public static float[] initFacePositions_v2(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, boolean paramBoolean)
   {
     if ((CollectionUtils.isEmpty(paramList)) || (paramArrayOfFloat1 == null) || (paramInt1 <= 0) || (paramInt2 <= 0) || (paramArrayOfFloat1.length != NO_HOLE_TRIANGLE_COUNT_V2 * 3 * 2)) {
       paramList = new float[0];
     }
     float f2;
     float f1;
+    label255:
     do
     {
       do
       {
         return paramList;
-        PointF[] arrayOfPointF = new PointF[3];
-        f2 = 0.0F;
-        f1 = 0.0F;
-        int j = 0;
-        int i = 0;
-        while (i < NO_HOLE_TRIANGLE_COUNT_V2 * 3)
+        int[] arrayOfInt;
+        PointF[] arrayOfPointF;
+        int j;
+        int i;
+        if (paramBoolean)
         {
-          arrayOfPointF[0] = ((PointF)paramList.get(FaceMeshTriangles_v2[i]));
-          arrayOfPointF[1] = ((PointF)paramList.get(FaceMeshTriangles_v2[(i + 1)]));
-          arrayOfPointF[2] = ((PointF)paramList.get(FaceMeshTriangles_v2[(i + 2)]));
+          arrayOfInt = FaceMeshTriangles_disableFaceCrop_v2;
+          arrayOfPointF = new PointF[3];
+          f2 = 0.0F;
+          f1 = 0.0F;
+          j = 0;
+          i = 0;
+        }
+        for (;;)
+        {
+          if (i >= NO_HOLE_TRIANGLE_COUNT_V2 * 3) {
+            break label255;
+          }
+          arrayOfPointF[0] = ((PointF)paramList.get(arrayOfInt[i]));
+          arrayOfPointF[1] = ((PointF)paramList.get(arrayOfInt[(i + 1)]));
+          arrayOfPointF[2] = ((PointF)paramList.get(arrayOfInt[(i + 2)]));
           int k = 0;
-          while (k < 3)
+          for (;;)
           {
-            paramArrayOfFloat1[(k * 2 + j)] = (arrayOfPointF[k].x / paramInt1 * 2.0F - 1.0F);
-            f2 += paramArrayOfFloat1[(k * 2 + j)];
-            paramArrayOfFloat1[(k * 2 + j + 1)] = (arrayOfPointF[k].y / paramInt2 * 2.0F - 1.0F);
-            f1 += paramArrayOfFloat1[(k * 2 + j + 1)];
-            k += 1;
+            if (k < 3)
+            {
+              paramArrayOfFloat1[(k * 2 + j)] = (arrayOfPointF[k].x / paramInt1 * 2.0F - 1.0F);
+              f2 += paramArrayOfFloat1[(k * 2 + j)];
+              paramArrayOfFloat1[(k * 2 + j + 1)] = (arrayOfPointF[k].y / paramInt2 * 2.0F - 1.0F);
+              f1 += paramArrayOfFloat1[(k * 2 + j + 1)];
+              k += 1;
+              continue;
+              arrayOfInt = FaceMeshTriangles_v2;
+              break;
+            }
           }
           j += 6;
           i += 3;
@@ -2556,6 +2699,38 @@ public class FaceOffUtil
     paramArrayOfFloat2[0] = f2;
     paramArrayOfFloat2[1] = f1;
     return paramArrayOfFloat1;
+  }
+  
+  public static float[] initFaceTexCoords4Smooth(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat)
+  {
+    float[] arrayOfFloat;
+    if ((CollectionUtils.isEmpty(paramList)) || (paramArrayOfFloat == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      arrayOfFloat = new float[0];
+      return arrayOfFloat;
+    }
+    PointF[] arrayOfPointF = new PointF[3];
+    int i = 0;
+    int j = 0;
+    for (;;)
+    {
+      arrayOfFloat = paramArrayOfFloat;
+      if (i >= NO_HOLE_TRIANGLE_COUNT_4_SMOOTH * 3) {
+        break;
+      }
+      arrayOfPointF[0] = ((PointF)paramList.get(faceMesh4Smooth[i]));
+      arrayOfPointF[1] = ((PointF)paramList.get(faceMesh4Smooth[(i + 1)]));
+      arrayOfPointF[2] = ((PointF)paramList.get(faceMesh4Smooth[(i + 2)]));
+      int k = 0;
+      while (k < 3)
+      {
+        paramArrayOfFloat[(k * 2 + j)] = (arrayOfPointF[k].x / paramInt1);
+        paramArrayOfFloat[(k * 2 + j + 1)] = (arrayOfPointF[k].y / paramInt2);
+        k += 1;
+      }
+      j += 6;
+      i += 3;
+    }
   }
   
   public static float[] initIrisLinePositions(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat)
@@ -2701,7 +2876,7 @@ public class FaceOffUtil
     }
   }
   
-  public static float[] initMaterialFaceTexCoords_v2(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat)
+  public static float[] initMaterialFaceTexCoords_v2(List<PointF> paramList, int paramInt1, int paramInt2, float[] paramArrayOfFloat, boolean paramBoolean)
   {
     float[] arrayOfFloat;
     if ((CollectionUtils.isEmpty(paramList)) || (paramArrayOfFloat == null) || (paramInt1 <= 0) || (paramInt2 <= 0) || (paramArrayOfFloat.length != NO_HOLE_TRIANGLE_COUNT_V2 * 3 * 2))
@@ -2710,23 +2885,36 @@ public class FaceOffUtil
       return arrayOfFloat;
     }
     PointF[] arrayOfPointF = new PointF[3];
-    int i = 0;
-    int j = 0;
+    int[] arrayOfInt;
+    int i;
+    int j;
+    if (paramBoolean)
+    {
+      arrayOfInt = FaceMeshTriangles_disableFaceCrop_v2;
+      i = 0;
+      j = 0;
+    }
     for (;;)
     {
       arrayOfFloat = paramArrayOfFloat;
       if (i >= NO_HOLE_TRIANGLE_COUNT_V2 * 3) {
         break;
       }
-      arrayOfPointF[0] = ((PointF)paramList.get(FaceMeshTriangles_v2[i]));
-      arrayOfPointF[1] = ((PointF)paramList.get(FaceMeshTriangles_v2[(i + 1)]));
-      arrayOfPointF[2] = ((PointF)paramList.get(FaceMeshTriangles_v2[(i + 2)]));
+      arrayOfPointF[0] = ((PointF)paramList.get(arrayOfInt[i]));
+      arrayOfPointF[1] = ((PointF)paramList.get(arrayOfInt[(i + 1)]));
+      arrayOfPointF[2] = ((PointF)paramList.get(arrayOfInt[(i + 2)]));
       int k = 0;
-      while (k < 3)
+      for (;;)
       {
-        paramArrayOfFloat[(k * 2 + j)] = (arrayOfPointF[k].x / paramInt1);
-        paramArrayOfFloat[(k * 2 + j + 1)] = (arrayOfPointF[k].y / paramInt2);
-        k += 1;
+        if (k < 3)
+        {
+          paramArrayOfFloat[(k * 2 + j)] = (arrayOfPointF[k].x / paramInt1);
+          paramArrayOfFloat[(k * 2 + j + 1)] = (arrayOfPointF[k].y / paramInt2);
+          k += 1;
+          continue;
+          arrayOfInt = FaceMeshTriangles_v2;
+          break;
+        }
       }
       j += 6;
       i += 3;
@@ -2765,7 +2953,7 @@ public class FaceOffUtil
     }
   }
   
-  public static float[] initPointVis_v2(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public static float[] initPointVis_v2(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, boolean paramBoolean)
   {
     float[] arrayOfFloat1;
     if ((paramArrayOfFloat1 == null) || (paramArrayOfFloat2.length != NO_HOLE_TRIANGLE_COUNT_V2 * 3 * 2))
@@ -2773,24 +2961,38 @@ public class FaceOffUtil
       arrayOfFloat1 = new float[0];
       return arrayOfFloat1;
     }
-    float[] arrayOfFloat2 = new float[3];
-    int i = 0;
-    int j = 0;
+    int[] arrayOfInt;
+    float[] arrayOfFloat2;
+    int i;
+    int j;
+    if (paramBoolean)
+    {
+      arrayOfInt = FaceMeshTriangles_disableFaceCrop_v2;
+      arrayOfFloat2 = new float[3];
+      i = 0;
+      j = 0;
+    }
     for (;;)
     {
       arrayOfFloat1 = paramArrayOfFloat2;
       if (i >= NO_HOLE_TRIANGLE_COUNT_V2 * 3) {
         break;
       }
-      arrayOfFloat2[0] = paramArrayOfFloat1[FaceMeshTriangles_v2[i]];
-      arrayOfFloat2[1] = paramArrayOfFloat1[FaceMeshTriangles_v2[(i + 1)]];
-      arrayOfFloat2[2] = paramArrayOfFloat1[FaceMeshTriangles_v2[(i + 2)]];
+      arrayOfFloat2[0] = paramArrayOfFloat1[arrayOfInt[i]];
+      arrayOfFloat2[1] = paramArrayOfFloat1[arrayOfInt[(i + 1)]];
+      arrayOfFloat2[2] = paramArrayOfFloat1[arrayOfInt[(i + 2)]];
       int k = 0;
-      while (k < 3)
+      for (;;)
       {
-        paramArrayOfFloat2[(k * 2 + j)] = arrayOfFloat2[k];
-        paramArrayOfFloat2[(k * 2 + j + 1)] = arrayOfFloat2[k];
-        k += 1;
+        if (k < 3)
+        {
+          paramArrayOfFloat2[(k * 2 + j)] = arrayOfFloat2[k];
+          paramArrayOfFloat2[(k * 2 + j + 1)] = arrayOfFloat2[k];
+          k += 1;
+          continue;
+          arrayOfInt = FaceMeshTriangles_v2;
+          break;
+        }
       }
       j += 6;
       i += 3;

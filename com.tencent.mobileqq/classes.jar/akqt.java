@@ -1,23 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
-public class akqt
-  implements DialogInterface.OnClickListener
+class akqt
+  implements ThreadExcutor.IThreadListener
 {
-  public akqt(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  akqt(akqq paramakqq, List paramList, Map paramMap, Bundle paramBundle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    if (EditLocalVideoActivity.a(this.a)) {}
-    for (paramInt = -1;; paramInt = 0)
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
     {
-      EditLocalVideoActivity.a(this.a).dismiss();
-      EditLocalVideoActivity.a(this.a, paramInt);
-      return;
+      bhyo localbhyo = new bhyo(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
+      localbhyo.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (this.jdField_a_of_type_Akqq.a != null) {
+        this.jdField_a_of_type_Akqq.a.a(localbhyo, akqq.a(this.jdField_a_of_type_Akqq), null);
+      }
     }
   }
+  
+  public void onPreRun() {}
 }
 
 

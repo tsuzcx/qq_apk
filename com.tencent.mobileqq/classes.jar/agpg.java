@@ -1,20 +1,20 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class agpg
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public agpg(StructingMsgItemBuilder paramStructingMsgItemBuilder, agpx paramagpx) {}
+  public agpg(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Agpx.a.setVisibility(0);
+    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
+      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

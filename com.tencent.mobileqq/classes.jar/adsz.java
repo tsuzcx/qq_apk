@@ -1,30 +1,69 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adsz
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adsz(NotificationActivity paramNotificationActivity) {}
+  public adsz(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QLog.i("NotificationActivity", 1, "setNegativeButton.onClick: invoked.  isDialogShow: " + NotificationActivity.a(this.a));
-    paramDialogInterface = new Intent("qqplayer_exit_action");
-    this.a.sendBroadcast(paramDialogInterface);
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("password", null);
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
-    this.a.finish();
+    if (((Boolean)paramCompoundButton.getTag()).booleanValue()) {
+      paramCompoundButton.setTag(Boolean.FALSE);
+    }
+    int i;
+    do
+    {
+      do
+      {
+        do
+        {
+          EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+          return;
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo == null);
+        i = this.a.app.getTroopMask(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      } while (i == -1);
+      if (!paramBoolean) {
+        break;
+      }
+    } while (i != 1);
+    ChatSettingForTroop.a(this.a, 4);
+    label82:
+    if (ChatSettingForTroop.a(this.a) != null) {
+      ChatSettingForTroop.d(this.a);
+    }
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean)
+    {
+      str = "msg_open";
+      label116:
+      bdla.b(localQQAppInterface, "dc00899", "Grp_msg", "", "Grp_data", str, 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
+      if (!paramBoolean) {
+        break label224;
+      }
+    }
+    label224:
+    for (String str = "msg_open";; str = "msg_close")
+    {
+      bhbu.a("Grp_msg", "grpData_admin", str, 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bhbu.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
+      break;
+      if (i == 1) {
+        break;
+      }
+      ChatSettingForTroop.a(this.a, 1);
+      break label82;
+      str = "msg_close";
+      break label116;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsz
  * JD-Core Version:    0.7.0.1
  */

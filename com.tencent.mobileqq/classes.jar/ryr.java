@@ -1,43 +1,56 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment.1.1;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.AddVideoReq;
+import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.MoveVideoReq;
+import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.ReqBody;
 
 public class ryr
-  implements txo
 {
-  public ryr(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
-  
-  public void a()
+  public static void a(List<String> paramList, int paramInt, @Nullable ryu paramryu)
   {
-    if ((VideoFeedsRecommendFragment.a(this.a)) && (VideoFeedsRecommendFragment.a(this.a) != null) && (VideoFeedsRecommendFragment.a(this.a).a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a.a != null) && (VideoFeedsRecommendFragment.a(this.a) != null)) {
-      if ((twq.e(VideoFeedsRecommendFragment.a(this.a).a.a.a)) && (!VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c)))
-      {
-        localVideoInfo = VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c);
-        if (localVideoInfo != null)
-        {
-          i = VideoFeedsRecommendFragment.a(this.a).getAdapterPosition() - 1;
-          j = VideoFeedsRecommendFragment.a(this.a).c;
-          VideoFeedsRecommendFragment.a(this.a).a(i, j, localVideoInfo);
-          twf.a(this.a.getActivity(), 50, true);
-        }
+    oidb_0xe2a.MoveVideoReq localMoveVideoReq = new oidb_0xe2a.MoveVideoReq();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      String str = (String)paramList.next();
+      if (!TextUtils.isEmpty(str)) {
+        localMoveVideoReq.rpt_rowkey_list.add(ByteStringMicro.copyFromUtf8(str));
       }
     }
-    while ((VideoFeedsRecommendFragment.a(this.a) == null) || (VideoFeedsRecommendFragment.a(this.a) == null))
+    localMoveVideoReq.uint32_column_id.set(paramInt);
+    localMoveVideoReq.uint32_oper_type.set(1);
+    paramList = new oidb_0xe2a.ReqBody();
+    paramList.msg_move_video_req.set(localMoveVideoReq);
+    ntb.a(pnn.a(), new ryt(paramryu, paramInt), paramList.toByteArray(), "OidbSvc.0xe2a", 3626, 2);
+  }
+  
+  public static void a(boolean paramBoolean, List<UgcVideo> paramList, @Nullable ryv paramryv)
+  {
+    Object localObject = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      ((List)localObject).add(((UgcVideo)paramList.next()).parseUgcVideo());
+    }
+    paramList = new oidb_0xe2a.ReqBody();
+    oidb_0xe2a.AddVideoReq localAddVideoReq = new oidb_0xe2a.AddVideoReq();
+    localAddVideoReq.rpt_video_list.set((List)localObject);
+    localObject = localAddVideoReq.uint32_add_video_type;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
     {
-      VideoInfo localVideoInfo;
-      int i;
-      int j;
-      VideoFeedsRecommendFragment.a(this.a).postDelayed(new VideoFeedsRecommendFragment.1.1(this, i + 1), 0L);
-      do
-      {
-        return;
-      } while (VideoFeedsRecommendFragment.a(this.a) == null);
-      VideoFeedsRecommendFragment.a(this.a).c();
+      ((PBUInt32Field)localObject).set(i);
+      paramList.msg_add_video_req.set(localAddVideoReq);
+      ntb.a(pnn.a(), new rys(paramryv), paramList.toByteArray(), "OidbSvc.0xe2a", 3626, 1, null, 120000L);
       return;
     }
-    VideoFeedsRecommendFragment.a(this.a).b(VideoFeedsRecommendFragment.a(this.a).a);
   }
 }
 

@@ -1,18 +1,18 @@
-import android.support.v7.widget.RecyclerView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoFragment;
-import com.tencent.mobileqq.util.DisplayUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SimpleChannelInfo;
 
-public class rqi
-  extends rkl
+public final class rqi
+  implements Parcelable.Creator<SimpleChannelInfo>
 {
-  public rqi(SelectVideoFragment paramSelectVideoFragment) {}
-  
-  @Nullable
-  public rkm a(int paramInt, @NotNull RecyclerView paramRecyclerView)
+  public SimpleChannelInfo a(Parcel paramParcel)
   {
-    return a(paramInt, SelectVideoFragment.a(this.a).getItemCount(), 3, DisplayUtil.dip2px(SelectVideoFragment.a(this.a), 8.0F));
+    return new SimpleChannelInfo(paramParcel);
+  }
+  
+  public SimpleChannelInfo[] a(int paramInt)
+  {
+    return new SimpleChannelInfo[paramInt];
   }
 }
 

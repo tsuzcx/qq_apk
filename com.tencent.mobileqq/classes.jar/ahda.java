@@ -1,50 +1,80 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.Player;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
-public final class ahda
-  extends AnimationView.Player
+final class ahda
+  implements INetEngine.INetEngineListener
 {
-  public static boolean a;
+  ahda(String paramString1, String paramString2) {}
   
-  public ahda(AnimationView paramAnimationView)
+  public void onResp(NetResp paramNetResp)
   {
-    super(paramAnimationView);
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    a = paramBoolean;
-  }
-  
-  public void a(AnimationView paramAnimationView)
-  {
-    reset();
-    this.playViewRef.clear();
-    this.playViewRef = new WeakReference(paramAnimationView);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    if (paramNetResp.mResult == 3)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo", 2, "pe res download repeating ");
+      }
+      return;
+    }
+    boolean bool;
+    if (paramNetResp.mResult == 0)
+    {
+      paramNetResp = paramNetResp.mReq.mOutPath;
+      String str1 = FileUtils.calcMd5(paramNetResp);
+      String str2 = this.a;
+      if ((str1 != null) && (str1.equalsIgnoreCase(this.b)))
+      {
+        try
+        {
+          FileUtils.uncompressZip(paramNetResp, str2, false);
+          bpqb.a(str2);
+          bool = true;
+        }
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            label83:
+            if (QLog.isColorLevel()) {
+              QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but unzip is failed");
+            }
+            bool = false;
+          }
+        }
+        FileUtils.deleteFile(paramNetResp);
+        if (!bool) {
+          break label189;
+        }
+        bhhr.a(true);
+        ahcw.b = true;
+      }
     }
     for (;;)
     {
-      return false;
-      if (a)
-      {
-        paramMessage = this.mHandler.obtainMessage(1);
-        this.mHandler.sendMessageDelayed(paramMessage, 500L);
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo", 2, "downloadRes.onResp download result = " + bool);
       }
-      else
-      {
-        autoPlay();
+      ahcw.c = false;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but md5 is mismatched");
       }
+      bool = false;
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeEmo", 2, "downloadRes.onResp failed ");
+      }
+      bool = false;
+      break label83;
+      label189:
+      ahcw.o += 1;
     }
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

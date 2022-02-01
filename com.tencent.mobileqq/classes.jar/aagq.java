@@ -1,84 +1,55 @@
-import android.app.Activity;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.util.TypedValue;
-import android.view.animation.AlphaAnimation;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.common.galleryactivity.GalleryPageView.3;
-import com.tencent.widget.AdapterView;
+import com.tencent.biz.troop.file.MoveFileActivity;
 
 public class aagq
-  extends aafx
+  implements TextWatcher
 {
-  public int a;
-  aafy jdField_a_of_type_Aafy;
-  AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-  public TextView a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new GalleryPageView.3(this);
-  private boolean jdField_a_of_type_Boolean = true;
-  public AlphaAnimation b = new AlphaAnimation(1.0F, 0.0F);
+  public aagq(MoveFileActivity paramMoveFileActivity, EditText paramEditText, aatk paramaatk) {}
   
-  public aagq()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-  }
-  
-  public void a(Activity paramActivity, aafy paramaafy, int paramInt)
-  {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramaafy.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramActivity);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.addRule(14, -1);
-    localLayoutParams.bottomMargin = ((int)TypedValue.applyDimension(1, this.jdField_a_of_type_Int, paramActivity.getResources().getDisplayMetrics()) + paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#e6e9e9e9"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 15.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367373);
-    localRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
-    this.b.setDuration(300L);
-    this.jdField_a_of_type_Aafy = paramaafy;
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new aagr(this));
-    this.b.setAnimationListener(new aags(this));
-  }
-  
-  public void a(AdapterView paramAdapterView, int paramInt)
-  {
-    if (paramAdapterView.getCount() > 1)
+    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    TextView localTextView = this.jdField_a_of_type_Aatk.getBtnight();
+    if (bgke.b(paramEditable))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + 1 + "/" + paramAdapterView.getCount());
-      if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 4)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-          this.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
-        return;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-      this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
+      localTextView.setEnabled(false);
+      localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165627));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    localTextView.setEnabled(true);
+    localTextView.setTextColor(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getResources().getColor(2131165622));
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt3 > 0)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      String str = bgke.b(paramCharSequence);
+      if ((paramCharSequence == null) || (paramCharSequence.equals(str))) {
+        break label57;
+      }
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int = paramInt1;
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
+    }
+    label57:
+    while (!this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aagq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,4 @@
-public abstract interface bjnr
-{
-  public abstract void a(float paramFloat1, float paramFloat2);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjnr

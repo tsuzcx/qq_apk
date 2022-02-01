@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.17.1;
 
 public class aepx
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public aepx(TroopRequestActivity paramTroopRequestActivity) {}
+  public aepx(QQLSActivity paramQQLSActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    TroopRequestActivity.a(this.a).setVisibility(8);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.security_verify", 2, "close warning tips");
+    if (QQLSActivity.a(this.a) != null) {
+      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

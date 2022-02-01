@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import java.util.HashSet;
+import android.content.Intent;
+import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
 
 public class avtw
+  implements avua
 {
-  public int a;
-  public long a;
-  public avtk a;
-  public String a;
-  public HashSet<RecentBaseData> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
+  public avtw(HuayangLoadbackgroudActivity paramHuayangLoadbackgroudActivity) {}
+  
+  public void a(int paramInt)
+  {
+    Intent localIntent = new Intent(avts.d(HuayangLoadbackgroudActivity.a(this.a)));
+    localIntent.putExtra("key_state", 4);
+    localIntent.putExtra("key_progress", paramInt);
+    localIntent.putExtra("key_totalSize", 100L);
+    this.a.sendBroadcast(localIntent);
+  }
+  
+  public void a(boolean paramBoolean, Throwable paramThrowable)
+  {
+    this.a.finish();
+  }
 }
 
 

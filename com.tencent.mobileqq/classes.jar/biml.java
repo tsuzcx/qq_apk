@@ -1,20 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class biml
-  implements DialogInterface.OnClickListener
+  implements TextWatcher
 {
-  public biml(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public biml(ClearableEditText paramClearableEditText) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramDialogInterface.dismiss();
+    paramCharSequence = this.a.getText().toString();
+    if (this.a.isFocused())
+    {
+      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
+        this.a.setClearButtonVisible(false);
+      }
+    }
+    else {
+      return;
+    }
+    if ((ClearableEditText.a(this.a)) || (ClearableEditText.b(this.a)))
+    {
+      this.a.setClearButtonVisible(true);
+      return;
+    }
+    this.a.setClearButtonVisible(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     biml
  * JD-Core Version:    0.7.0.1
  */

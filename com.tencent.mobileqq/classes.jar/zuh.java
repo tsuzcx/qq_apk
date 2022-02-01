@@ -1,10 +1,17 @@
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
 
-public abstract interface zuh
+class zuh
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetFeedDetailRsp>
 {
-  public abstract void a(int paramInt);
+  zuh(zug paramzug, COMM.StCommonExt paramStCommonExt) {}
   
-  public abstract void a(List<bfcs> paramList);
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
+  {
+    zug.a(this.jdField_a_of_type_Zug, paramBoolean, paramLong, paramString, paramStGetFeedDetailRsp, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt);
+  }
 }
 
 

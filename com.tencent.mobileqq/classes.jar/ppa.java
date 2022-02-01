@@ -1,16 +1,16 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
-public class ppa
-  implements pqe
+class ppa
+  extends qdb
 {
-  public ppa(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  ppa(pob parampob, String paramString, Map paramMap)
   {
-    pay.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), paa.r);
-    odq.a(null, "CliOper", "", "", "0X8008E3C", "0X8008E3C", 0, 0, "", "", "", pay.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), "8.4.8".replace("", ""), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()), false);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

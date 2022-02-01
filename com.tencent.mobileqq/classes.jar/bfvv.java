@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import java.util.List;
 
-class bfvv
-  implements acxa
+final class bfvv
+  implements DialogInterface.OnClickListener
 {
-  bfvv(bfvp parambfvp) {}
+  bfvv(XMediaEditor paramXMediaEditor, List paramList) {}
   
-  public void onAfterStartActivity()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((BaseActivity)this.a.a).finish();
-  }
-  
-  public void onBeforeStartActivity() {}
-  
-  public void onCancel()
-  {
-    ((BaseActivity)this.a.a).finish();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(this.jdField_a_of_type_JavaUtilList);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfvv
  * JD-Core Version:    0.7.0.1
  */

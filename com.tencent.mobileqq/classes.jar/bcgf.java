@@ -1,33 +1,49 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import com.tencent.TMG.utils.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bcgf
-  extends RecyclablePool.Recyclable
+  extends bcfs
 {
-  public long a;
+  public CharSequence a;
   public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
+  public CharSequence b;
+  public boolean b;
   
-  public void recycle()
+  public bcgf(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    super.recycle();
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public String toString()
+  public bcgf(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append("StorageItem info[size=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(",accessTime=").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(",isFile=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",fileCount=").append(this.c);
-    localStringBuilder.append(",dirCount=").append(this.d);
-    localStringBuilder.append(",name=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",path=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    for (boolean bool = true;; bool = false) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_JavaLangCharSequence = bcnc.a(paramString.optJSONArray("leftText"));
+        this.jdField_b_of_type_JavaLangCharSequence = bcnc.a(paramString.optJSONArray("rightText"));
+        this.jdField_a_of_type_JavaLangString = paramString.optString("bgColor");
+        if (paramString.optInt("needCenter") == 1)
+        {
+          this.jdField_b_of_type_Boolean = bool;
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d(c, 0, paramString.toString());
+      }
+    }
   }
 }
 

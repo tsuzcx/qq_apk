@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar;
 
-import aodl;
+import apgn;
 
 public final class FaceScanDownloadManager$2
   implements Runnable
 {
-  public FaceScanDownloadManager$2(aodl paramaodl, int paramInt, boolean paramBoolean) {}
+  public FaceScanDownloadManager$2(apgn paramapgn, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aodl != null) {
-      this.jdField_a_of_type_Aodl.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_Apgn != null) {
+      this.jdField_a_of_type_Apgn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
     }
   }
 }

@@ -1,19 +1,19 @@
 package com.tencent.biz.qqstory.utils;
 
-import yqa;
-import yqe;
+import zet;
+import zex;
 
 public class PollWidgetUtils$WidgetWrapper$2
   implements Runnable
 {
   public void run()
   {
-    yqe localyqe = this.this$0;
-    if (!yqe.a(this.this$0)) {}
+    zex localzex = this.this$0;
+    if (!zex.a(this.this$0)) {}
     for (boolean bool = true;; bool = false)
     {
-      yqe.a(localyqe, bool);
-      this.this$0.a.e_(yqe.a(this.this$0));
+      zex.a(localzex, bool);
+      this.this$0.a.e_(zex.a(this.this$0));
       return;
     }
   }

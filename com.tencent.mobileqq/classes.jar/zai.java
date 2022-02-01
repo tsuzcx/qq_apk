@@ -1,38 +1,39 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.richframework.part.extendsblock.HorizontalRvInnerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.util.ArrayUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class zai
-  extends yzs
+class zai
+  implements bbmy
 {
-  public zai(HorizontalRvInnerView paramHorizontalRvInnerView) {}
+  zai(zah paramzah) {}
   
-  public zah a(ViewGroup paramViewGroup, int paramInt)
+  public void onEncodeError(int paramInt, Throwable arg2)
   {
-    if (HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView) != null) {
-      return HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView).a(paramViewGroup, paramInt);
+    synchronized (zah.a(this.a))
+    {
+      zah.b(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(zah.a, 2, "onEncodeError, errorCode= " + paramInt);
+      }
+      zah.a(this.a).notifyAll();
+      return;
     }
-    return null;
   }
   
-  public int getItemCount()
+  public void onEncodeFinish(String paramString)
   {
-    if (HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView) != null) {
-      return HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView).c();
+    synchronized (zah.a(this.a))
+    {
+      zah.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(zah.a, 2, "onEncodeFinish, filePath= " + paramString);
+      }
+      zah.a(this.a).notifyAll();
+      return;
     }
-    return 0;
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((!ArrayUtils.isOutOfArrayIndex(paramInt, this.jdField_a_of_type_JavaUtilArrayList)) && (HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView) != null)) {
-      HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView).a(paramViewHolder, paramInt);
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-  }
+  public void onEncodeFrame() {}
+  
+  public void onEncodeStart() {}
 }
 
 

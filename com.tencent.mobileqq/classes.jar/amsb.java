@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.app.FrameFragment;
-import com.tencent.mobileqq.widget.QQTabHost;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class amsb
-  implements bhhx
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public amsb(FrameFragment paramFrameFragment) {}
+  public amsb(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
   
-  public void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramInt1 == paramInt2)
-    {
-      paramQQTabHost = this.a.b();
-      if (paramQQTabHost != null) {
-        paramQQTabHost.Y_();
-      }
-    }
+    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_whitelist_verify_switch", paramBoolean).commit();
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

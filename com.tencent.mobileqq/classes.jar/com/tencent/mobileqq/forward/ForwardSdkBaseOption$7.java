@@ -3,7 +3,7 @@ package com.tencent.mobileqq.forward;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcha;
+import bdny;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ForwardSdkBaseOption$7
@@ -13,7 +13,7 @@ class ForwardSdkBaseOption$7
   
   public void run()
   {
-    String str = bcha.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.a);
+    String str = bdny.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.a);
     if (!TextUtils.isEmpty(str))
     {
       this.this$0.jdField_a_of_type_AndroidOsBundle.putString("video_url", str);

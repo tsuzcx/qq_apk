@@ -1,22 +1,16 @@
-import android.os.Bundle;
-
-public abstract interface atgy
+class atgy
+  implements athg
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  atgy(atfq paramatfq) {}
   
-  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void a(String paramString, Bundle paramBundle);
-  
-  public abstract void b(Bundle paramBundle);
-  
-  public abstract void c(Bundle paramBundle);
+  public void a(Object[] paramArrayOfObject)
+  {
+    atfq.x(this.a, paramArrayOfObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atgy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.transfile.predownload.schedule;
 
-import amxv;
-import amxx;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bfqf;
+import aoaj;
+import aoal;
+import bgyw;
 import com.tencent.qphone.base.util.QLog;
 
 class PreDownloadScheduler$1
-  implements bfqf
+  implements bgyw
 {
   PreDownloadScheduler$1(PreDownloadScheduler paramPreDownloadScheduler) {}
   
@@ -22,7 +22,7 @@ class PreDownloadScheduler$1
     {
       PreDownloadScheduler.access$302(this.this$0, paramLong);
       PreDownloadScheduler.access$402(this.this$0, paramDouble);
-      PreDownloadScheduler.access$502(this.this$0, amxv.a.a);
+      PreDownloadScheduler.access$502(this.this$0, aoaj.a.a);
       if (PreDownloadScheduler.access$400(this.this$0) > PreDownloadScheduler.access$600(this.this$0))
       {
         if (!PreDownloadScheduler.access$700(this.this$0))

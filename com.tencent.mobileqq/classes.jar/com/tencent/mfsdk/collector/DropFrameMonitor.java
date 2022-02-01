@@ -1,13 +1,13 @@
 package com.tencent.mfsdk.collector;
 
-import achn;
-import acjp;
+import acxv;
+import aczy;
 import android.annotation.TargetApi;
 import android.os.Process;
 import android.os.SystemClock;
 import android.util.Log;
-import bcad;
-import bkwv;
+import bdgy;
+import bmie;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -120,7 +120,7 @@ public class DropFrameMonitor
   @NotNull
   public static HashMap<String, String> uploadDropFrameToDenta(String paramString, long paramLong1, long paramLong2, long[] paramArrayOfLong)
   {
-    bkwv.a().a(paramString, paramLong2, paramArrayOfLong, paramLong1);
+    bmie.a().a(paramString, paramLong2, paramArrayOfLong, paramLong1);
     if (QLog.isColorLevel()) {
       Log.d("AutoMonitor.DropFrame", "tag = " + paramString + ", dropCount = " + paramLong2 + ", " + Arrays.toString(paramArrayOfLong) + ", totalMs = " + paramLong1);
     }
@@ -145,10 +145,10 @@ public class DropFrameMonitor
     {
       paramLong1 = SystemClock.uptimeMillis() - sLastSyncMsgTimeForLogin;
       localHashMap.put("intervalAfterSyncMsg", String.valueOf(paramLong1));
-      localHashMap.put("hcState", String.valueOf(acjp.a().a()));
+      localHashMap.put("hcState", String.valueOf(aczy.a().a()));
       localHashMap.put("dropFenzi", String.valueOf(266.72000000000003D * d2 + 200.04000000000002D * d1));
       localHashMap.put("dropFenzi2", String.valueOf(16.699999999999999D * d3 + 25.049999999999997D * d4 + 50.099999999999994D * d5 + 100.19999999999999D * d6));
-      if (bcad.l)
+      if (bdgy.l)
       {
         paramArrayOfLong = "-1";
         str1 = "-1";
@@ -163,19 +163,19 @@ public class DropFrameMonitor
     label532:
     for (paramString = "-1";; paramString = String.valueOf(paramLong1 - AutomatorFinish.a))
     {
-      if (bcad.e != 0L) {
-        paramArrayOfLong = String.valueOf(paramLong1 - bcad.e);
+      if (bdgy.e != 0L) {
+        paramArrayOfLong = String.valueOf(paramLong1 - bdgy.e);
       }
-      if (bcad.d != 0L) {
-        str1 = String.valueOf(paramLong1 - bcad.d);
+      if (bdgy.d != 0L) {
+        str1 = String.valueOf(paramLong1 - bdgy.d);
       }
-      if (bcad.g != 0L) {
-        str2 = String.valueOf(paramLong1 - bcad.g);
+      if (bdgy.g != 0L) {
+        str2 = String.valueOf(paramLong1 - bdgy.g);
       }
-      if (bcad.f != 0L) {
-        str3 = String.valueOf(paramLong1 - bcad.f);
+      if (bdgy.f != 0L) {
+        str3 = String.valueOf(paramLong1 - bdgy.f);
       }
-      localHashMap.put("perfConfigReportValue", String.valueOf(bcad.c));
+      localHashMap.put("perfConfigReportValue", String.valueOf(bdgy.c));
       localHashMap.put("qZoneInterval", paramArrayOfLong);
       localHashMap.put("miniInterval", str1);
       localHashMap.put("troopListInterval", str2);
@@ -192,12 +192,12 @@ public class DropFrameMonitor
   {
     MagnifierSDK.a().a().a(paramString);
     if (paramString.equals("qzone_homepage")) {
-      acjp.a().a(0, 1, 1, 0, 1500, 701, 32L, Process.myTid(), "qzoneList", false);
+      aczy.a().a(0, 1, 1, 0, 1500, 701, 32L, Process.myTid(), "qzoneList", false);
     }
     while (!paramString.equals("list_photo")) {
       return;
     }
-    acjp.a().a(0, 1, 1, 0, 1500, 702, 32L, Process.myTid(), "photoList", false);
+    aczy.a().a(0, 1, 1, 0, 1500, 702, 32L, Process.myTid(), "photoList", false);
   }
   
   public void stopMonitorScene(String paramString, boolean paramBoolean)

@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nzj
-  implements DialogInterface.OnClickListener
+public class nzj
+  implements View.OnClickListener
 {
-  nzj(nyz paramnyz, JsResult paramJsResult) {}
+  public nzj(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    if (this.a.a != null)
+    {
+      Intent localIntent = new Intent(this.a, ChatHistory.class);
+      localIntent.putExtra("uin", EqqAccountDetailActivity.i(this.a));
+      localIntent.putExtra("uintype", 1024);
+      this.a.startActivity(localIntent);
+      olh.a(EqqAccountDetailActivity.i(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.j(this.a), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,39 +1,64 @@
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
 
-class aqii
+public class aqii
 {
-  String a = "";
-  String b = "";
-  String c = "";
+  public static aqhi a = new aqhi(0);
+  public static aqhi b = new aqhi(100000, 2130847034, 2130847035);
+  public static aqhi c = new aqhi(100001, 2130847034, 2130847034);
   
-  static aqii a(JSONObject paramJSONObject)
+  public static aqhi a(int paramInt, QQAppInterface paramQQAppInterface, Resources paramResources, BaseAdapter paramBaseAdapter)
   {
-    aqii localaqii = new aqii();
-    localaqii.a = paramJSONObject.optString("nonVIP", localaqii.a);
-    localaqii.b = paramJSONObject.optString("VIP", localaqii.b);
-    localaqii.c = paramJSONObject.optString("SVIP", localaqii.c);
-    return localaqii;
+    return a(paramInt, paramQQAppInterface, paramResources, paramBaseAdapter, true);
   }
   
-  String a(String paramString)
+  @NonNull
+  public static aqhi a(int paramInt, QQAppInterface paramQQAppInterface, Resources paramResources, BaseAdapter paramBaseAdapter, boolean paramBoolean)
   {
-    if ("normal".equals(paramString)) {
-      return this.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("BubbleUtils", 2, "getBubbleInfo, bubbleId=" + paramInt + ", shouldDownload=" + paramBoolean);
     }
-    if ("vip".equals(paramString)) {
-      return this.b;
+    long l = SystemClock.elapsedRealtime();
+    if (paramInt == 100000) {
+      paramQQAppInterface = c;
     }
-    return this.c;
+    do
+    {
+      return paramQQAppInterface;
+      if (paramInt == 100001) {
+        return b;
+      }
+      if (paramInt < 1) {
+        return a;
+      }
+      paramResources = ((BubbleManager)paramQQAppInterface.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER)).a(paramInt, paramBoolean);
+      if (paramResources == null) {
+        break;
+      }
+      paramQQAppInterface = paramResources;
+    } while (!QLog.isColorLevel());
+    QLog.d("bubble_performance", 2, "getBubbleInfo time " + (SystemClock.elapsedRealtime() - l));
+    return paramResources;
+    if (QLog.isColorLevel()) {
+      QLog.d("bubble_performance", 2, "getBubbleInfo time default" + (SystemClock.elapsedRealtime() - l));
+    }
+    return a;
   }
   
-  public String toString()
+  public static aqhi a(int paramInt, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    return "Info{nonVIP='" + this.a + '\'' + ", VIP='" + this.b + '\'' + ", SVIP='" + this.c + '\'' + '}';
+    return a(paramInt, paramQQAppInterface, null, null, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqii
  * JD-Core Version:    0.7.0.1
  */

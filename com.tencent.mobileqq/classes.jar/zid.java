@@ -1,35 +1,24 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import android.view.View;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import friendlist.GetOnlineInfoResp;
+import mqq.os.MqqHandler;
 
 public class zid
-  implements zdw
+  extends anvi
 {
-  public zid(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
+  public zid(StoryQIMBadgeView paramStoryQIMBadgeView) {}
   
-  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    if (paramStFeed != null) {
-      if (!paramStFeed.id.get().startsWith("fakeid_")) {
-        break label40;
-      }
+    super.onGetOnlineInfoByUinOrMobile(paramBoolean, paramLong, paramString, paramGetOnlineInfoResp);
+    if ((StoryQIMBadgeView.a(this.a) == null) || (paramGetOnlineInfoResp == null) || (TextUtils.isEmpty(StoryQIMBadgeView.a(this.a).qq))) {}
+    while ((!paramBoolean) || (!bhbx.a(StoryQIMBadgeView.a(this.a).qq, paramString))) {
+      return;
     }
-    label40:
-    do
-    {
-      QQToast.a(this.a.getActivity(), amtj.a(2131713679), 0).a();
-      do
-      {
-        return;
-      } while (!(paramView instanceof RelativeFeedItemView));
-      paramView = (RelativeFeedItemView)paramView;
-    } while (paramView.a == null);
-    zbh.a(this.a.getActivity(), paramStFeed, 0, zjc.a(paramView.a, paramStFeed.cover.width.get(), paramStFeed.cover.height.get()));
+    ThreadManager.getUIHandler().post(new StoryQIMBadgeView.1.1(this, paramGetOnlineInfoResp, paramString));
   }
 }
 

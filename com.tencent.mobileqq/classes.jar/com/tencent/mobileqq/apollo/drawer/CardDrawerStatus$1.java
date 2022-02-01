@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.drawer;
 
-import altf;
+import amsg;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class CardDrawerStatus$1
   implements Runnable
 {
-  public CardDrawerStatus$1(altf paramaltf, QQAppInterface paramQQAppInterface) {}
+  public CardDrawerStatus$1(amsg paramamsg, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

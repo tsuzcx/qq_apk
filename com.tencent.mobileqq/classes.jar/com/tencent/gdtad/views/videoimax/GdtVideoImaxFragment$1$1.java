@@ -1,14 +1,14 @@
 package com.tencent.gdtad.views.videoimax;
 
-import abrl;
-import abus;
+import acho;
+import ackr;
 import android.os.ResultReceiver;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
 public class GdtVideoImaxFragment$1$1
   implements Runnable
 {
-  public GdtVideoImaxFragment$1$1(abus paramabus) {}
+  public GdtVideoImaxFragment$1$1(ackr paramackr) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class GdtVideoImaxFragment$1$1
       GdtVideoImaxFragment.a(this.a.a).send(2, null);
       return;
     }
-    abrl.a("GdtVideoImaxFragment", "onStart() mResultReceiver != null");
+    acho.a("GdtVideoImaxFragment", "onStart() mResultReceiver != null");
   }
 }
 

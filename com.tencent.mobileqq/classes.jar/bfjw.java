@@ -1,19 +1,36 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 
-class bfjw
-  implements bcrz
+public class bfjw
+  implements ahpi
 {
-  bfjw(bfjv parambfjv) {}
-  
-  public void a()
+  private void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip)
   {
-    this.a.a.a.this$0.a();
-    if (this.a.a.a.jdField_a_of_type_Bcrz != null) {
-      this.a.a.a.jdField_a_of_type_Bcrz.a();
+    if ((paramQQAppInterface == null) || (paramMessageForUniteGrayTip == null)) {}
+    while ((paramMessageForUniteGrayTip.tipParam == null) || (paramMessageForUniteGrayTip.tipParam.b != 131090)) {
+      return;
     }
-    this.a.a.a.this$0.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.this$0.a, true);
+    bflj.b(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
+  }
+  
+  private void b(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  {
+    if ((paramQQAppInterface == null) || (paramMessageForUniteGrayTip == null)) {}
+    while ((paramMessageForUniteGrayTip.tipParam == null) || (paramMessageForUniteGrayTip.tipParam.b != 131091)) {
+      return;
+    }
+    bgbk.a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord == null) || (!(paramMessageRecord instanceof MessageForUniteGrayTip))) {
+      return;
+    }
+    paramMessageRecord = (MessageForUniteGrayTip)paramMessageRecord;
+    a(paramQQAppInterface, paramMessageRecord);
+    b(paramQQAppInterface, paramMessageRecord);
   }
 }
 

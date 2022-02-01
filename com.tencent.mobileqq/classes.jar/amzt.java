@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-
-public class amzt
-  implements BusinessObserver
+public abstract interface amzt
 {
-  public void a(boolean paramBoolean, Object paramObject) {}
+  public abstract String a(int paramInt, String paramString);
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    }
-    a(paramBoolean, ((Boolean)paramObject).booleanValue());
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(amre paramamre, long paramLong);
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 

@@ -1,12 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoTopicTextView;
+import android.graphics.Bitmap;
 
-class opp
+public class opp
 {
-  ChannelCoverInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
-  ReadInJoyVideoTopicTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView;
+  public int a;
+  public Bitmap a;
+  public int b;
+  public int c;
+  public int d;
   
-  opp(opo paramopo) {}
+  public opp(Bitmap paramBitmap)
+  {
+    this.a = paramBitmap;
+  }
 }
 
 

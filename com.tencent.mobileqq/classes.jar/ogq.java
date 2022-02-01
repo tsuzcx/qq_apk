@@ -1,102 +1,108 @@
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopNewServlet.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
-import mqq.observer.BusinessObserver;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
 
 public class ogq
-  extends MSFServlet
+  extends acmp
 {
-  public static void a(byte[] paramArrayOfByte, String paramString, BusinessObserver paramBusinessObserver)
+  public ogq(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime == null) {
-      return;
-    }
-    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), ogq.class);
-    localNewIntent.putExtra("cmd", paramString);
-    localNewIntent.putExtra("data", paramArrayOfByte);
-    localNewIntent.putExtra("timeout", 30000);
-    localNewIntent.setObserver(paramBusinessObserver);
-    localAppRuntime.startServlet(localNewIntent);
+    super(paramQQAppInterface, paramMessageHandler);
   }
   
-  public void notifyObserver(Intent paramIntent, int paramInt, boolean paramBoolean, Bundle paramBundle, Class<? extends BusinessObserver> paramClass)
+  public ArrayList<MessageRecord> a(long paramLong, List<msg_comm.Msg> paramList)
   {
-    int i = paramIntent.getIntExtra("callback_thread_type", 0);
-    if (i == 0) {
-      super.notifyObserver(paramIntent, paramInt, paramBoolean, paramBundle, paramClass);
-    }
-    do
+    paramList = b(paramLong, paramList);
+    ArrayList localArrayList = new ArrayList();
+    a(paramList, localArrayList, true);
+    paramList.clear();
+    return localArrayList;
+  }
+  
+  public void a(long paramLong, List<msg_comm.Msg> paramList)
+  {
+    paramList = a(paramLong, paramList);
+    okn localokn;
+    long l2;
+    long l1;
+    String str;
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      do
+      localokn = okn.a();
+      l2 = localokn.a(this.a, String.valueOf(paramLong));
+      l1 = l2;
+      if (l2 == 0L) {
+        l1 = 9223372036854775807L;
+      }
+      Iterator localIterator = paramList.iterator();
+      if (localIterator.hasNext())
       {
-        return;
-      } while ((i == 1) && (!(paramIntent instanceof NewIntent)));
-      paramIntent = ((NewIntent)paramIntent).getObserver();
-    } while (paramIntent == null);
-    ThreadManager.post(new EcshopNewServlet.1(this, paramIntent, paramInt, paramBoolean, paramBundle), 5, null, true);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EcshopNewServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putByteArray("data", arrayOfByte);
-      notifyObserver(paramIntent, 1, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-      arrayOfByte = null;
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if (!TextUtils.isEmpty(str))
-    {
-      paramPacket.setSSOCommand(str);
-      paramPacket.setTimeout(l);
-      if (arrayOfByte == null) {
-        break label117;
+        str = ((MessageRecord)localIterator.next()).getExtInfoFromExtStr("pa_msgId");
+        if (TextUtils.isEmpty(str)) {
+          break label176;
+        }
       }
-      paramIntent = new byte[arrayOfByte.length + 4];
-      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
-      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
     }
+    label176:
     for (;;)
     {
+      try
+      {
+        long l3 = Long.parseLong(str);
+        l2 = l1;
+        if (l3 < l1)
+        {
+          l2 = l1;
+          if (l3 != 0L)
+          {
+            localokn.a(this.a, String.valueOf(paramLong), l3);
+            l2 = l3;
+          }
+        }
+        l1 = l2;
+      }
+      catch (Exception localException)
+      {
+        continue;
+      }
+      this.a.getMessageFacade().addMessage(paramList, this.a.getCurrentAccountUin(), true);
+      return;
+    }
+  }
+  
+  public ArrayList<MessageRecord> b(long paramLong, List<msg_comm.Msg> paramList)
+  {
+    Object localObject1 = new ArrayList();
+    a(paramList, (List)localObject1);
+    paramList = new ArrayList();
+    bcre localbcre = new bcre(this.a.getLongAccountUin(), paramLong, true, true, false, false);
+    localbcre.h = true;
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (msg_comm.Msg)((Iterator)localObject1).next();
+      try
+      {
+        localObject2 = a((msg_comm.Msg)localObject2, localbcre);
+        if ((localObject2 == null) || (((List)localObject2).isEmpty())) {
+          continue;
+        }
+        paramList.addAll((Collection)localObject2);
+      }
+      catch (Exception localException) {}
       if (QLog.isColorLevel()) {
-        QLog.d("EcshopNewServlet", 2, "onSend exit cmd=" + str);
+        QLog.w("DynamicMsgProcessor", 2, "decodeSinglePBMsg_C2C error,", localException);
       }
-      return;
-      label117:
-      paramIntent = new byte[4];
-      PkgTools.DWord2Byte(paramIntent, 0, 4L);
-      paramPacket.putSendData(paramIntent);
     }
+    return paramList;
   }
 }
 

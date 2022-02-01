@@ -3,7 +3,7 @@ package com.tencent.av.config;
 import android.content.Context;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.HexUtil;
-import mwv;
+import ncl;
 
 public class ConfigInfo
 {
@@ -36,12 +36,12 @@ public class ConfigInfo
         str3 = str2.substring(0, i);
         str1 = str2.substring(i + 1);
         paramContext = str1;
-      } while (!mwv.c());
-      mwv.b(TAG, "getSharpConfigPayloadFromFile FileName=" + Common.b + "| payloadBuf:" + str2 + "| version=" + str3 + "| payload=" + str1);
+      } while (!ncl.c());
+      ncl.b(TAG, "getSharpConfigPayloadFromFile FileName=" + Common.b + "| payloadBuf:" + str2 + "| version=" + str3 + "| payload=" + str1);
       return str1;
     }
-    if (mwv.c()) {
-      mwv.b(TAG, "getSharpConfigPayloadFromFile payloadBuf NULL");
+    if (ncl.c()) {
+      ncl.b(TAG, "getSharpConfigPayloadFromFile payloadBuf NULL");
     }
     return "";
   }
@@ -60,8 +60,8 @@ public class ConfigInfo
       }
       localObject = paramContext.substring(0, i);
       String str = paramContext.substring(i + 1);
-      if (mwv.b()) {
-        mwv.c(TAG, "getSharpConfigVersionFromFile, payloadBufTmp[" + paramContext + "], version[" + (String)localObject + "], payload[" + str + "]");
+      if (ncl.b()) {
+        ncl.c(TAG, "getSharpConfigVersionFromFile, payloadBufTmp[" + paramContext + "], version[" + (String)localObject + "], payload[" + str + "]");
       }
     }
     label148:
@@ -74,12 +74,12 @@ public class ConfigInfo
       }
       catch (Exception localException)
       {
-        mwv.a(TAG, "getSharpConfigVersionFromFile Exception, payloadBufTmp[" + paramContext + "]", localException);
+        ncl.a(TAG, "getSharpConfigVersionFromFile Exception, payloadBufTmp[" + paramContext + "]", localException);
         return 0;
       }
       i = j;
-    } while (!mwv.b());
-    mwv.a(TAG, "getSharpConfigVersionFromFile fail, payloadBufTmp[" + paramContext + "]");
+    } while (!ncl.b());
+    ncl.a(TAG, "getSharpConfigVersionFromFile fail, payloadBufTmp[" + paramContext + "]");
     HexUtil.printHexStringEx(TAG, localException);
     return 0;
   }

@@ -1,1614 +1,562 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.appstore.dl.DownloadManagerV2.10;
-import com.tencent.open.appstore.dl.DownloadManagerV2.11;
-import com.tencent.open.appstore.dl.DownloadManagerV2.12;
-import com.tencent.open.appstore.dl.DownloadManagerV2.13;
-import com.tencent.open.appstore.dl.DownloadManagerV2.14;
-import com.tencent.open.appstore.dl.DownloadManagerV2.15;
-import com.tencent.open.appstore.dl.DownloadManagerV2.16;
-import com.tencent.open.appstore.dl.DownloadManagerV2.19;
-import com.tencent.open.appstore.dl.DownloadManagerV2.2;
-import com.tencent.open.appstore.dl.DownloadManagerV2.20;
-import com.tencent.open.appstore.dl.DownloadManagerV2.21;
-import com.tencent.open.appstore.dl.DownloadManagerV2.22;
-import com.tencent.open.appstore.dl.DownloadManagerV2.23;
-import com.tencent.open.appstore.dl.DownloadManagerV2.24;
-import com.tencent.open.appstore.dl.DownloadManagerV2.3;
-import com.tencent.open.appstore.dl.DownloadManagerV2.4;
-import com.tencent.open.appstore.dl.DownloadManagerV2.5;
-import com.tencent.open.appstore.dl.DownloadManagerV2.6;
-import com.tencent.open.appstore.dl.DownloadManagerV2.7;
-import com.tencent.open.appstore.dl.DownloadManagerV2.8;
-import com.tencent.open.appstore.dl.DownloadManagerV2.9;
-import com.tencent.open.appstore.notice.NoticeReceiver;
-import com.tencent.open.appstore.receiver.InstallStateReceiver;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.replacemonitor.replace.ReplaceMonitor;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBTaskInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import com.tencent.tmdownloader.TMAssistantDownloadManager;
-import com.tencent.tmdownloader.TMAssistantDownloadSettingClient;
-import cooperation.qappcenter.QAppCenterPluginProxyActivityTools;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import mqq.os.MqqHandler;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bhyo
-  implements ITMAssistantDownloadClientListener
 {
-  private static volatile bhyo jdField_a_of_type_Bhyo;
-  private final int jdField_a_of_type_Int = 1000;
-  private long jdField_a_of_type_Long;
-  private bibp jdField_a_of_type_Bibp = new bhyp(this);
-  private bibq jdField_a_of_type_Bibq;
-  private bicg jdField_a_of_type_Bicg;
-  private NoticeReceiver jdField_a_of_type_ComTencentOpenAppstoreNoticeNoticeReceiver;
-  private InstallStateReceiver jdField_a_of_type_ComTencentOpenAppstoreReceiverInstallStateReceiver;
-  private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private ConcurrentHashMap<String, DownloadInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ConcurrentLinkedQueue<DownloadListener> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
+  public byte a;
+  public float a;
+  public int a;
+  public long a;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private bhyn jdField_a_of_type_Bhyn;
+  public bhyp a;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  public String a;
+  ArrayList<bhyo> jdField_a_of_type_JavaUtilArrayList;
+  public List<String> a;
+  public Map<String, File> a;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(2);
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  private Map<String, String> jdField_b_of_type_JavaUtilMap;
+  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public String e;
+  public boolean e;
+  public int f;
+  public long f;
+  public String f;
+  public boolean f;
+  public int g;
+  public long g;
+  public boolean g;
+  public long h;
+  public boolean h;
+  public long i;
+  public boolean i = true;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
+  public boolean n;
+  public boolean o = true;
+  public boolean p = true;
+  public boolean q;
+  public boolean r;
+  public boolean s = true;
   
-  private bhyo()
+  public bhyo(String paramString, File paramFile)
   {
-    bhzm.b("DownloadManagerV2", "DownloadManagerV2 init");
-    this.jdField_a_of_type_JavaLangString = "com.tencent.open.appstore.dl.DownloadManagerV2";
-    Object localObject = new HashMap();
-    ReplaceMonitor.get().init(bhpc.a().a(), (Map)localObject);
-    this.jdField_a_of_type_ComTencentOpenAppstoreReceiverInstallStateReceiver = new InstallStateReceiver();
-    localObject = new IntentFilter();
-    ((IntentFilter)localObject).addDataScheme("package");
-    ((IntentFilter)localObject).addAction("android.intent.action.PACKAGE_ADDED");
-    ((IntentFilter)localObject).addAction("android.intent.action.PACKAGE_REMOVED");
-    ((IntentFilter)localObject).addAction("android.intent.action.PACKAGE_REPLACED");
-    this.jdField_a_of_type_ComTencentOpenAppstoreNoticeNoticeReceiver = new NoticeReceiver();
-    IntentFilter localIntentFilter = new IntentFilter();
-    String str = bhwr.r();
-    str = "." + str.replace(":", ".");
-    localIntentFilter.addAction(bido.jdField_a_of_type_JavaLangString + str);
-    localIntentFilter.addAction(bido.jdField_b_of_type_JavaLangString + str);
-    localIntentFilter.addAction(bido.jdField_c_of_type_JavaLangString + str);
-    localIntentFilter.addAction(bido.jdField_d_of_type_JavaLangString + str);
-    localIntentFilter.addAction(bido.e + str);
-    ThreadManager.excute(new DownloadManagerV2.2(this, (IntentFilter)localObject, localIntentFilter), 16, null, true);
-    bhzc.a().a(ThreadManager.getSubThreadHandler().getLooper());
-    a(bhzc.a());
-    a(bidg.a());
-    ThreadManager.excute(new DownloadManagerV2.3(this), 32, null, true);
-    this.jdField_a_of_type_Bicg = bicg.a();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_e_of_type_Int = 60000;
+    this.jdField_f_of_type_JavaLangString = "Vip";
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_a_of_type_Bhyp = new bhyp();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramFile);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_d_of_type_Int = 1;
   }
   
-  private int a(DownloadInfo paramDownloadInfo)
+  public bhyo(List<String> paramList, Map<String, File> paramMap, String paramString)
   {
-    if (paramDownloadInfo == null) {
-      return -30;
-    }
-    if (this.jdField_a_of_type_Bibq != null) {
-      return this.jdField_a_of_type_Bibq.a(paramDownloadInfo.e, paramDownloadInfo.jdField_b_of_type_Int, paramDownloadInfo.l, null);
-    }
-    this.jdField_a_of_type_Bibq = null;
-    return -40;
-  }
-  
-  public static bhyo a()
-  {
-    if (jdField_a_of_type_Bhyo == null) {}
-    try
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_e_of_type_Int = 60000;
+    this.jdField_f_of_type_JavaLangString = "Vip";
+    this.jdField_a_of_type_Byte = 0;
+    this.jdField_a_of_type_Bhyp = new bhyp();
+    if (paramList != null)
     {
-      if (jdField_a_of_type_Bhyo == null)
-      {
-        jdField_a_of_type_Bhyo = new bhyo();
-        jdField_a_of_type_Bhyo.c();
-        jdField_a_of_type_Bhyo.b();
-      }
-      return jdField_a_of_type_Bhyo;
-    }
-    finally {}
-  }
-  
-  private DownloadInfo a(String paramString, int paramInt)
-  {
-    paramString = b(paramString);
-    if ((paramString != null) && (paramInt != -2)) {
-      paramString.a(paramInt);
-    }
-    return paramString;
-  }
-  
-  private DownloadInfo a(String paramString, long paramLong1, long paramLong2)
-  {
-    paramString = b(paramString);
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    if (paramString != null)
-    {
-      paramString.a(2);
-      paramString.jdField_f_of_type_Int = i;
-      paramString.jdField_c_of_type_Long = paramLong2;
-    }
-    return paramString;
-  }
-  
-  private TMAssistantDownloadClient a()
-  {
-    TMAssistantDownloadManager.getInstance(bhpc.a().a()).getDownloadSDKClient(this.jdField_a_of_type_JavaLangString).registerDownloadTaskListener(this);
-    if (!this.jdField_b_of_type_Boolean) {}
-    try
-    {
-      TMAssistantDownloadSettingClient localTMAssistantDownloadSettingClient = TMAssistantDownloadManager.getInstance(bhpc.a().a()).getDownloadSDKSettingClient();
-      if (localTMAssistantDownloadSettingClient != null)
-      {
-        localTMAssistantDownloadSettingClient.setDownloadSDKMaxTaskNum(3);
-        this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_JavaUtilList = paramList;
+      if (paramMap == null) {
+        break label169;
       }
     }
-    catch (Exception localException)
+    for (;;)
     {
-      for (;;)
-      {
-        bhzm.e("DownloadManagerV2", "exception: " + localException.toString());
-      }
-    }
-    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(bhpc.a().a()).getDownloadSDKClient(this.jdField_a_of_type_JavaLangString);
-    return this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient;
-  }
-  
-  private void a(int paramInt1, DownloadInfo paramDownloadInfo, int paramInt2, String paramString)
-  {
-    if (paramDownloadInfo == null) {}
-    try
-    {
-      bhzm.e("DownloadManagerV2", "notifyListener info == null id=" + paramInt1);
+      this.jdField_a_of_type_JavaUtilMap = paramMap;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_d_of_type_Int = 2;
       return;
-    }
-    finally {}
-    switch (paramInt1)
-    {
-    default: 
-      paramInt1 = 1;
-    }
-    while (paramInt1 != 0)
-    {
-      bhzm.b("DownloadManagerV2", "[notifyListener] Need Save Info:" + paramDownloadInfo);
-      c(paramDownloadInfo);
+      paramList = new ArrayList();
       break;
-      bhzm.b("DownloadManagerV2", "[notifyListener] STATE_WAIT:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-      paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-      for (;;)
-      {
-        if (paramString.hasNext())
-        {
-          ((DownloadListener)paramString.next()).onDownloadWait(paramDownloadInfo);
-          continue;
-          bhzm.b("DownloadManagerV2", "[notifyListener] STATE_PAUSE:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-          paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-          while (paramString.hasNext()) {
-            ((DownloadListener)paramString.next()).onDownloadPause(paramDownloadInfo);
-          }
-          bhzm.b("DownloadManagerV2", "[notifyListener] STATE_COMPLETE:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-          paramDownloadInfo.jdField_f_of_type_Int = 100;
-          if (paramDownloadInfo.jdField_c_of_type_Int == 0) {
-            bhzd.e(paramDownloadInfo);
-          }
-          paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-          while (paramString.hasNext()) {
-            ((DownloadListener)paramString.next()).onDownloadFinish(paramDownloadInfo);
-          }
-          bhyn.a(12, null, 100, paramDownloadInfo);
-          paramInt1 = 1;
-          break;
-          bhzm.b("DownloadManagerV2", "[notifyListener] STATE_CANCEL:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-          m(paramDownloadInfo);
-          bidk.a().a(paramDownloadInfo.g);
-          paramDownloadInfo.a(10);
-          bhzm.b("DownloadManagerV2", "downloadInfo.state = " + paramDownloadInfo.a());
-          paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-          while (paramString.hasNext()) {
-            ((DownloadListener)paramString.next()).onDownloadCancel(paramDownloadInfo);
-          }
-          if (paramDownloadInfo.jdField_c_of_type_Int == 0)
-          {
-            bhzd.f(paramDownloadInfo);
-            paramInt1 = 0;
-            break;
-            if ((paramDownloadInfo.jdField_c_of_type_Int == 1) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1000L))
-            {
-              this.jdField_a_of_type_Long = System.currentTimeMillis();
-              bhzm.b("DownloadManagerV2", "[notifyListener] STATE_DOWNLOADING:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-              paramString = a(2);
-              bhzm.a("DownloadManagerV2", "[notifyListener] STATE_DOWNLOADING: infos size= " + paramString.size());
-              Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-              while (localIterator.hasNext())
-              {
-                DownloadListener localDownloadListener = (DownloadListener)localIterator.next();
-                bhzm.a("DownloadManagerV2", "[notifyListener] DownloadConstants.STATE_DOWNLOADING: listener name:" + localDownloadListener.getClass().getName());
-                localDownloadListener.onDownloadUpdate(paramString);
-              }
-              a(paramDownloadInfo, paramInt2, paramString);
-              paramInt1 = 1;
-              break;
-              bhzm.b("DownloadManagerV2", "[notifyListener] PACKAGE_INSTALLED:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-              paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-              while (paramString.hasNext()) {
-                ((DownloadListener)paramString.next()).installSucceed(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.e);
-              }
-              bhzm.b("DownloadManagerV2", "[notifyListener] PACKAGE_REPLACED:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-              paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-              while (paramString.hasNext()) {
-                ((DownloadListener)paramString.next()).packageReplaced(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.e);
-              }
-              bhzm.b("DownloadManagerV2", "[notifyListener] PACKAGE_UNINSTALLED:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-              paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-              while (paramString.hasNext()) {
-                ((DownloadListener)paramString.next()).uninstallSucceed(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.e);
-              }
-              paramInt1 = 1;
-              break;
-            }
-          }
-          paramInt1 = 0;
-          break;
-        }
-      }
-      paramInt1 = 1;
-      continue;
-      paramInt1 = 1;
-      continue;
-      paramInt1 = 1;
-      continue;
-      paramInt1 = 1;
-      continue;
-      paramInt1 = 1;
+      label169:
+      paramMap = new HashMap();
     }
   }
   
-  private void a(Bundle paramBundle)
+  public int a()
   {
-    bhzm.b("DownloadManagerV2", "[writeApkCodeAsync] ");
-    if (paramBundle == null)
-    {
-      bhzm.b("DownloadManagerV2", "[writeApkCodeAsync] data is null......");
-      return;
-    }
-    ThreadManager.excute(new DownloadManagerV2.22(this, paramBundle), 32, null, true);
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
   }
   
-  private void a(DownloadInfo paramDownloadInfo, int paramInt, String paramString)
+  public Bundle a()
   {
-    this.jdField_b_of_type_Boolean = false;
-    if (paramDownloadInfo == null)
-    {
-      bhzm.b("DownloadManagerV2", "[onDownloadError] info == null code = " + paramInt + " msg = " + paramString);
-      return;
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {
+      this.jdField_a_of_type_AndroidOsBundle = new Bundle();
     }
-    bhzm.b("DownloadManagerV2", "[onDownloadError] errorCode = " + paramInt + " msg = " + paramString);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = bhpc.a().a().getString(2131694233);
-        i = 3;
-        paramDownloadInfo.a(i);
-        bhzm.b("DownloadManagerV2", "[onDownloadError] ListenerSize:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-        if (!localIterator.hasNext()) {
-          break label717;
-        }
-        ((DownloadListener)localIterator.next()).onDownloadError(paramDownloadInfo, paramInt, paramString, i);
-        continue;
-        if (paramDownloadInfo.e == null) {
-          break label530;
-        }
-      }
-      catch (Exception paramDownloadInfo)
-      {
-        paramDownloadInfo.printStackTrace();
-        return;
-      }
-      if (("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (paramDownloadInfo.jdField_a_of_type_Int != 1) && (a()))
-      {
-        j(paramDownloadInfo);
-        return;
-      }
-      label530:
-      paramDownloadInfo.a(4);
-      if (paramDownloadInfo.jdField_a_of_type_Int == 1)
-      {
-        l(paramDownloadInfo);
-        return;
-      }
-      i(paramDownloadInfo);
-      return;
-      paramString = bhpc.a().a().getString(2131694243);
-      int i = 3;
-      continue;
-      paramString = bhpc.a().a().getString(2131694238);
-      i = 3;
-      continue;
-      paramString = bhpc.a().a().getString(2131694233);
-      i = 3;
-      continue;
-      paramString = bhpc.a().a().getString(2131694245);
-      i = 3;
-      continue;
-      paramString = bhpc.a().a().getString(2131694242);
-      i = 3;
-      continue;
-      paramString = bhpc.a().a().getString(2131694240);
-      i = 3;
-      continue;
-      if (paramInt == 712) {}
-      for (paramString = bhpc.a().a().getString(2131694235);; paramString = bhpc.a().a().getString(2131694236))
-      {
-        h(paramDownloadInfo);
-        i = 10;
-        break;
-      }
-      label717:
-      if ((!TextUtils.isEmpty(paramString)) && (paramInt != 6)) {
-        b(paramString);
-      }
-      if (paramDownloadInfo.jdField_c_of_type_Int == 0)
-      {
-        bhzd.a(paramDownloadInfo, paramInt, paramString);
-        return;
-      }
-      bhzm.e("DownloadManagerV2", "[onDownloadError] downloadType=DOWNLOAD_TYPE_MYAPP, shouldn't report!");
-      return;
-      i = 3;
-    }
+    return this.jdField_a_of_type_AndroidOsBundle;
   }
   
-  private void a(DownloadInfo paramDownloadInfo, String paramString1, String paramString2, boolean paramBoolean)
+  public bhyn a()
   {
-    if ((paramDownloadInfo.a() != 4) && (paramDownloadInfo.jdField_d_of_type_Boolean))
-    {
-      bhzm.b("DownloadManagerV2", "isAutoInstallBySDK is true");
-      if (TextUtils.isEmpty(paramString1)) {
-        break label30;
-      }
-    }
-    label266:
-    for (;;)
-    {
-      label30:
-      return;
-      if (new File(paramString1).exists())
-      {
-        if (paramBoolean)
-        {
-          paramDownloadInfo.w = BaseApplicationImpl.getApplication().getQQProcessName();
-          a(paramDownloadInfo, true);
-        }
-        paramBoolean = biam.a(bhpc.a().a(), paramString1, paramDownloadInfo.m, paramDownloadInfo.a("big_brother_ref_source_key"), paramDownloadInfo.a("hideInstallSuccessPage"));
-        bhzd.c(paramDownloadInfo);
-        for (;;)
-        {
-          if ((!paramBoolean) || (!"com.tencent.android.qqdownloader".equals(paramString2)) || (!"1101070898".equals(paramDownloadInfo.jdField_c_of_type_JavaLangString))) {
-            break label266;
-          }
-          bhzm.a("DownloadManagerV2", "report yyb start install");
-          String str = bias.a(paramDownloadInfo.jdField_h_of_type_JavaLangString, "NEWYYB");
-          bicl.a().b();
-          paramString2 = bicl.a().a();
-          paramString1 = paramString2;
-          if (TextUtils.isEmpty(paramString2)) {
-            paramString1 = paramDownloadInfo.jdField_c_of_type_JavaLangString;
-          }
-          bias.a("311", str, paramString1, paramDownloadInfo.o);
-          paramDownloadInfo = bhpc.a().a();
-          if (paramDownloadInfo == null) {
-            break;
-          }
-          bias.a(paramDownloadInfo, "312", str, paramString1);
-          return;
-          if (paramBoolean)
-          {
-            paramDownloadInfo.w = BaseApplicationImpl.getApplication().getQQProcessName();
-            a(paramDownloadInfo, true);
-          }
-          paramBoolean = biam.a(bhpc.a().a(), paramString1, paramDownloadInfo.m, paramDownloadInfo.a("big_brother_ref_source_key"), paramDownloadInfo.a("hideInstallSuccessPage"));
-          bhzd.c(paramDownloadInfo);
-        }
-      }
-    }
+    return this.jdField_a_of_type_Bhyn;
   }
   
-  private void a(String paramString, boolean paramBoolean)
+  public Map<String, String> a()
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      bhzm.d("DownloadManagerV2", "appid is empty");
-      return;
-    }
-    DownloadInfo localDownloadInfo = a(paramString);
-    if (localDownloadInfo == null)
-    {
-      bhzm.d("DownloadManagerV2", "clearDownloadInfo info == null");
-      return;
-    }
-    bhzm.a("DownloadManagerV2", "clearDownloadInfo info =" + localDownloadInfo.toString());
-    if (localDownloadInfo.jdField_c_of_type_Int == 0) {
-      if (localDownloadInfo.jdField_a_of_type_Int != 1) {
-        break label113;
-      }
-    }
-    label113:
-    for (paramString = localDownloadInfo.jdField_i_of_type_JavaLangString;; paramString = localDownloadInfo.jdField_d_of_type_JavaLangString)
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.15(this, paramBoolean, paramString));
-      }
-      m(localDownloadInfo);
-      return;
-    }
-  }
-  
-  private static int b(int paramInt)
-  {
-    return biby.a(paramInt);
-  }
-  
-  private int b(String paramString)
-  {
-    Object localObject = a(paramString);
-    if (localObject != null) {
-      if (((DownloadInfo)localObject).jdField_a_of_type_Int != 1) {
-        break label76;
-      }
-    }
-    label76:
-    for (localObject = ((DownloadInfo)localObject).jdField_i_of_type_JavaLangString;; localObject = ((DownloadInfo)localObject).jdField_d_of_type_JavaLangString)
-    {
-      ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.14(this, (String)localObject));
-      bhzm.a("DownloadManagerV2", "pause url=" + (String)localObject + ", ticket=" + paramString);
-      return 0;
-    }
-  }
-  
-  private DownloadInfo b(String paramString, int paramInt)
-  {
-    paramString = d(paramString);
-    if (paramString != null)
-    {
-      int i = paramInt;
-      if (paramInt == -2) {
-        i = 3;
-      }
-      paramString.a(i);
-    }
-    return paramString;
-  }
-  
-  private void c()
-  {
-    ThreadManager.getSubThreadHandler().postDelayed(new DownloadManagerV2.5(this), 1000L);
-  }
-  
-  private boolean c(String paramString, boolean paramBoolean)
-  {
-    DownloadInfo localDownloadInfo = a(paramString);
-    if (localDownloadInfo != null) {
-      a(paramString, false);
-    }
-    if (localDownloadInfo != null)
-    {
-      if (!paramBoolean) {
-        break label33;
-      }
-      a(10, localDownloadInfo);
-    }
-    for (;;)
-    {
-      return true;
-      try
-      {
-        label33:
-        bidk.a().a(localDownloadInfo.g);
-      }
-      catch (Exception paramString)
-      {
-        bhzm.c("DownloadManagerV2", "downloadSDKClient>>>", paramString);
-      }
-    }
-  }
-  
-  private DownloadInfo d(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-      while (localIterator.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)localIterator.next();
-        if (TextUtils.equals(localDownloadInfo.jdField_c_of_type_JavaLangString, paramString)) {
-          return localDownloadInfo;
-        }
-      }
-    }
-    return null;
-  }
-  
-  private boolean d(String paramString, boolean paramBoolean)
-  {
-    DownloadInfo localDownloadInfo = a(paramString);
-    if (localDownloadInfo != null) {
-      a(paramString, true);
-    }
-    if (localDownloadInfo != null)
-    {
-      if (paramBoolean) {
-        a(10, localDownloadInfo);
-      }
-    }
-    else {
-      return true;
-    }
-    try
-    {
-      bidk.a().a(localDownloadInfo.g);
-      return true;
-    }
-    catch (Exception paramString)
-    {
-      bhzm.c("DownloadManagerV2", "downloadSDKClient>>>", paramString);
-    }
-    return true;
-  }
-  
-  private void g(DownloadInfo paramDownloadInfo)
-  {
-    ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.7(this, paramDownloadInfo));
-  }
-  
-  private void h(DownloadInfo paramDownloadInfo)
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof AppInterface))
-    {
-      localObject = ((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getHandler(Conversation.class);
-      if ((localObject != null) && (bfng.a().a() == 4)) {
-        ((MqqHandler)localObject).obtainMessage(1134019).sendToTarget();
-      }
-    }
-    if (paramDownloadInfo.jdField_a_of_type_Int == 1) {}
-    for (Object localObject = paramDownloadInfo.jdField_i_of_type_JavaLangString;; localObject = paramDownloadInfo.jdField_d_of_type_JavaLangString)
-    {
-      if (localObject != null) {
-        ThreadManager.excute(new DownloadManagerV2.8(this, (String)localObject, paramDownloadInfo), 32, null, true);
-      }
-      return;
-    }
-  }
-  
-  private void i(DownloadInfo paramDownloadInfo)
-  {
-    ThreadManager.excute(new DownloadManagerV2.9(this, paramDownloadInfo), 32, null, true);
-  }
-  
-  private void j(DownloadInfo paramDownloadInfo)
-  {
-    ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.10(this, paramDownloadInfo));
-  }
-  
-  private void k(DownloadInfo paramDownloadInfo)
-  {
-    bhzm.b("DownloadManagerV2", ">>startDownload downloadInfo:" + paramDownloadInfo);
-    Object localObject1 = a(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    Object localObject2 = localObject1;
-    if (localObject1 == null)
-    {
-      localObject2 = bhym.a().a(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-      bhzm.b("DownloadManagerV2", ">>startDownload get from DB:" + localObject2);
-    }
-    localObject1 = localObject2;
-    if (localObject2 != null)
-    {
-      localObject1 = localObject2;
-      if (((DownloadInfo)localObject2).a() == 4)
-      {
-        localObject1 = localObject2;
-        if (!new File(((DownloadInfo)localObject2).l).exists())
-        {
-          bhzm.e("DownloadManagerV2", "[startDownload] info succeed, but file is deleted!info=" + localObject2);
-          ((DownloadInfo)localObject2).b();
-          localObject1 = null;
-        }
-      }
-    }
-    if (localObject1 != null)
-    {
-      ((DownloadInfo)localObject1).jdField_c_of_type_Int = 0;
-      ((DownloadInfo)localObject1).jdField_h_of_type_JavaLangString = paramDownloadInfo.jdField_h_of_type_JavaLangString;
-      ((DownloadInfo)localObject1).m = paramDownloadInfo.m;
-      ((DownloadInfo)localObject1).jdField_a_of_type_Boolean = paramDownloadInfo.jdField_a_of_type_Boolean;
-      ((DownloadInfo)localObject1).y = paramDownloadInfo.y;
-      bhzm.a("DownloadManagerV2", "startDownload() downloadInfo != null>>>downloadInfo.url=" + ((DownloadInfo)localObject1).jdField_d_of_type_JavaLangString + "downloadInfo.isAutoInstall" + ((DownloadInfo)localObject1).jdField_a_of_type_Boolean + "+++++downloadInfo.downloadType=" + ((DownloadInfo)localObject1).jdField_a_of_type_Int + "  test" + a(((DownloadInfo)localObject1).jdField_b_of_type_JavaLangString));
-      paramDownloadInfo = (DownloadInfo)localObject1;
-      paramDownloadInfo.w = BaseApplicationImpl.getApplication().getQQProcessName();
-      bhzm.b("DownloadManagerV2", ">>startDownload record download start process flag:" + paramDownloadInfo.w);
-      a(paramDownloadInfo, true);
-      if (("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (a())) {
-        n(paramDownloadInfo);
-      }
-      if (paramDownloadInfo.jdField_a_of_type_Int != 1) {
-        break label602;
-      }
-    }
-    label602:
-    for (localObject2 = paramDownloadInfo.jdField_i_of_type_JavaLangString;; localObject2 = paramDownloadInfo.jdField_d_of_type_JavaLangString)
-    {
-      int i = paramDownloadInfo.jdField_a_of_type_Int;
-      HashMap localHashMap = new HashMap();
-      localHashMap.put(TMAssistantDownloadConst.PARAM_APPID, paramDownloadInfo.jdField_c_of_type_JavaLangString);
-      localHashMap.put(TMAssistantDownloadConst.PARAM_TASK_PACKNAME, paramDownloadInfo.e);
-      localHashMap.put(TMAssistantDownloadConst.PARAM_TASK_VERSION, String.valueOf(paramDownloadInfo.jdField_b_of_type_Int));
-      localHashMap.put(TMAssistantDownloadConst.PARAM_VIA, paramDownloadInfo.jdField_h_of_type_JavaLangString);
-      localHashMap.put(TMAssistantDownloadConst.PARAM_UIN_TYPE, String.valueOf("qqNumber"));
-      localHashMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADTYPE, String.valueOf(2));
-      localHashMap.put(TMAssistantDownloadConst.PARAM_ICON_URL, paramDownloadInfo.n);
-      localHashMap.put(TMAssistantDownloadConst.PARAM_APP_NAME, paramDownloadInfo.jdField_f_of_type_JavaLangString);
-      localHashMap.put(TMAssistantDownloadConst.PARAM_SHOW_NOTIFICATION, String.valueOf(paramDownloadInfo.jdField_i_of_type_Int));
-      localHashMap.put(TMAssistantDownloadConst.PARAM_IS_AUTOINSTALL_BY_SDK, String.valueOf(paramDownloadInfo.jdField_d_of_type_Boolean));
-      localHashMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADSIZE, String.valueOf(paramDownloadInfo.jdField_d_of_type_Long));
-      localHashMap.put(TMAssistantDownloadConst.PARAM_QQ_SOURCE_ID, paramDownloadInfo.m);
-      ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.13(this, (String)localObject2, localHashMap, i, paramDownloadInfo, (DownloadInfo)localObject1));
-      try
-      {
-        bhyn.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramDownloadInfo);
-        return;
-      }
-      catch (Throwable paramDownloadInfo) {}
-      bhzd.a(paramDownloadInfo);
-      break;
-    }
-  }
-  
-  private void l(DownloadInfo paramDownloadInfo)
-  {
-    ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.16(this, paramDownloadInfo));
-  }
-  
-  private void m(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-      bhym.a().a(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    }
-  }
-  
-  private void n(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Bibq != null)
-    {
-      this.jdField_a_of_type_Bibq.a(paramDownloadInfo.e, paramDownloadInfo.jdField_b_of_type_Int, null);
-      return;
-    }
-    this.jdField_a_of_type_Bibq = null;
-  }
-  
-  private void o(DownloadInfo paramDownloadInfo)
-  {
-    bhzm.b("DownloadManagerV2", "[getApkCodeAsync]");
-    if (paramDownloadInfo == null)
-    {
-      bhzm.b("DownloadManagerV2", "[getApkCodeAsync] info is null......");
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.21(this, paramDownloadInfo));
-  }
-  
-  public int a(String paramString)
-  {
-    return b(DownloadInfo.b(paramString));
-  }
-  
-  public DownloadInfo a(String paramString)
-  {
-    Object localObject;
-    if (paramString == null)
-    {
-      bhzm.a("DownloadManagerV2", "getDownloadInfoByTicket ticket == null");
-      localObject = null;
-    }
-    DownloadInfo localDownloadInfo;
-    do
-    {
-      return localObject;
-      localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      localObject = localDownloadInfo;
-    } while (localDownloadInfo != null);
-    ThreadManager.excute(new DownloadManagerV2.11(this, paramString), 16, null, true);
-    return localDownloadInfo;
-  }
-  
-  public TMAssistantDownloadTaskInfo a(DownloadInfo paramDownloadInfo)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bibw.jdField_b_of_type_JavaLangString, paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    localBundle.putString(bibw.jdField_c_of_type_JavaLangString, paramDownloadInfo.jdField_j_of_type_JavaLangString);
-    localBundle.putString(bibw.jdField_d_of_type_JavaLangString, paramDownloadInfo.k);
-    localBundle.putString(bibw.jdField_f_of_type_JavaLangString, paramDownloadInfo.e);
-    localBundle.putInt(bibw.e, paramDownloadInfo.jdField_b_of_type_Int);
-    localBundle.putString(bibw.jdField_i_of_type_JavaLangString, paramDownloadInfo.jdField_h_of_type_JavaLangString);
-    try
-    {
-      bhzm.a("DownloadManagerV2", "OpenSDK getTaskInfoFromMyApp param SNGAppId=" + paramDownloadInfo.jdField_c_of_type_JavaLangString + " apkId=" + paramDownloadInfo.k + " taskAppId=" + paramDownloadInfo.jdField_j_of_type_JavaLangString + " packageName=" + paramDownloadInfo.e + " version=" + paramDownloadInfo.jdField_b_of_type_Int + " via=" + paramDownloadInfo.jdField_h_of_type_JavaLangString);
-      paramDownloadInfo = bicl.a().a(localBundle);
-      if (paramDownloadInfo != null) {}
-      try
-      {
-        bhzm.a("DownloadManagerV2", "OpenSDK getTaskInfoFromMyApp result taskInfo path=" + paramDownloadInfo.mSavePath + " state=" + paramDownloadInfo.mState);
-        return paramDownloadInfo;
-      }
-      catch (Exception localException1) {}
-      bhzm.a("DownloadManagerV2", "OpenSDK getTaskInfoFromMyApp result taskInfo is null");
-      return paramDownloadInfo;
-    }
-    catch (Exception localException2)
-    {
-      for (;;)
-      {
-        paramDownloadInfo = null;
-      }
-    }
-    bhzm.b("DownloadManagerV2", "getTaskInfoFromMyApp>>>" + localException1.getMessage());
-    return paramDownloadInfo;
-  }
-  
-  public TMAssistantDownloadTaskInfo a(String paramString)
-  {
-    TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2 = null;
-    TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo1 = null;
-    if (!TextUtils.isEmpty(paramString)) {
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-    }
-    try
-    {
-      long l1 = System.currentTimeMillis();
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-      TMAssistantDownloadClient localTMAssistantDownloadClient = a();
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-      long l2 = System.currentTimeMillis();
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-      localTMAssistantDownloadTaskInfo2 = localTMAssistantDownloadClient.getDownloadTaskState(paramString);
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-      long l3 = System.currentTimeMillis();
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-      bhzm.e("NEW_QAPP_TIME_COST", "step1=" + (l2 - l1) + ",step2=" + (l3 - l2));
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        bhzm.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
-      }
-    }
-    if (localTMAssistantDownloadTaskInfo1 == null) {
-      bhzm.a("DownloadManagerV2", "getTaskInfoFromSDK null url=" + paramString);
-    }
-    return localTMAssistantDownloadTaskInfo1;
-  }
-  
-  public String a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString != null) {
-      return paramString.l;
-    }
-    return "";
-  }
-  
-  public WeakReference<AppInterface> a()
-  {
-    try
-    {
-      Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-      if (localObject1 == null) {}
-      try
-      {
-        if ((BaseApplicationImpl.getApplication().getRuntime() instanceof AppInterface))
-        {
-          localObject1 = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          if (localObject1 != null) {
-            this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject1);
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          bhzm.c("DownloadManagerV2", "getQQAppInterface>>>", localException);
-        }
-      }
-      localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-      return localObject1;
-    }
-    finally {}
-  }
-  
-  protected List<DownloadInfo> a(int paramInt)
-  {
-    try
-    {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-      while (localIterator.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)localIterator.next();
-        if (localDownloadInfo.a() == paramInt) {
-          localArrayList.add(localDownloadInfo);
-        }
-      }
-    }
-    finally {}
-    return localList;
-  }
-  
-  public List<DownloadInfo> a(String paramString, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(paramString)) {
-      return localArrayList;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      DownloadInfo localDownloadInfo = (DownloadInfo)localIterator.next();
-      if ((paramString.equals(localDownloadInfo.e)) && (localDownloadInfo.a() == paramInt)) {
-        localArrayList.add(localDownloadInfo);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public ConcurrentHashMap<String, DownloadInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    return this.jdField_b_of_type_JavaUtilMap;
   }
   
   public void a()
   {
-    ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.4(this));
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
-  public void a(int paramInt, DownloadInfo paramDownloadInfo)
+  public void a(int paramInt)
   {
-    a(paramInt, paramDownloadInfo, 0, "");
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
   }
   
-  public void a(Activity paramActivity, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail, int paramInt)
+  public void a(long paramLong1, long paramLong2, int paramInt)
   {
-    new Handler(Looper.getMainLooper()).post(new DownloadManagerV2.19(this, paramBundle, paramActivity, paramString, paramApkUpdateDetail, paramInt));
-  }
-  
-  public void a(AppInterface paramAppInterface)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-      return;
+    float f1 = 100.0F;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_c_of_type_Int = paramInt;
+    if (this.jdField_b_of_type_Long <= 0L) {
+      f1 = 30.0F;
     }
-    finally
-    {
-      paramAppInterface = finally;
-      throw paramAppInterface;
-    }
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo == null) {}
     for (;;)
     {
-      try
+      this.jdField_a_of_type_Float = ((f1 + paramInt * 100) / this.jdField_a_of_type_JavaUtilList.size());
+      return;
+      if (this.jdField_b_of_type_Long >= this.jdField_a_of_type_Long)
       {
-        bhzm.b("DownloadManagerV2", "[onDownloadComplete] info == null ");
-        return;
-      }
-      finally {}
-      if (((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) && ("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (ampt.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
-        paramDownloadInfo.jdField_a_of_type_Boolean = false;
-      }
-      bhzm.b("DownloadManagerV2", "[onDownloadComplete] complete, info = " + paramDownloadInfo.toString());
-      if (paramDownloadInfo.jdField_c_of_type_Int == 0)
-      {
-        if (paramDownloadInfo.jdField_a_of_type_Int == 1) {
-          l(paramDownloadInfo);
-        } else {
-          g(paramDownloadInfo);
+        if (paramInt + 1 == this.jdField_a_of_type_JavaUtilList.size())
+        {
+          a(3);
+          this.jdField_a_of_type_Float = 100.0F;
         }
       }
       else {
-        ThreadManager.excute(new DownloadManagerV2.6(this, paramDownloadInfo), 32, null, true);
+        f1 = 100.0F * (float)this.jdField_b_of_type_Long / (float)this.jdField_a_of_type_Long;
       }
     }
   }
   
-  public void a(DownloadInfo paramDownloadInfo, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    bhzm.b("DownloadManagerV2", "onReveiveInstallIntent info=" + paramDownloadInfo);
-    if (paramDownloadInfo.jdField_c_of_type_Int == 0) {
-      bhzd.a(paramDownloadInfo, paramInt);
-    }
-    if (!"5".equals(paramDownloadInfo.m)) {
-      a(paramDownloadInfo.jdField_b_of_type_JavaLangString, false);
-    }
-    bidk.a().a(paramDownloadInfo.g);
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public void a(DownloadInfo paramDownloadInfo, long paramLong)
+  public void a(bhyn parambhyn)
   {
-    if ((a() == null) || (a().get() == null)) {}
-    while ((AppInterface)a().get() == null) {
-      return;
+    this.jdField_a_of_type_Bhyn = parambhyn;
+  }
+  
+  public void a(bhyo parambhyo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DownloadTask", 2, "DownloadTask.addDuplicateListenerTask,task.key=" + parambhyo.jdField_a_of_type_JavaLangString);
     }
-    int i = 14;
-    if ("biz_src_yyb".equals(paramDownloadInfo.m)) {}
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() < 5) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parambhyo);
+      }
+      while (!QLog.isColorLevel()) {
+        return;
+      }
+      QLog.d("DownloadTask", 2, "DownloadTask.addDuplicateListenerTask, taskList.size() >= DUPLICATE_LIMIT,size=" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {}
     for (;;)
     {
-      Bundle localBundle1 = null;
-      if (!TextUtils.isEmpty(paramDownloadInfo.jdField_f_of_type_JavaLangString))
-      {
-        localBundle1 = new Bundle();
-        localBundle1.putString("appname", paramDownloadInfo.jdField_f_of_type_JavaLangString + ".apk");
-      }
-      bhzm.b("DownloadManagerV2", "reportDownloadResult info.packageName = " + paramDownloadInfo.e + ",info.urlStr = " + paramDownloadInfo.jdField_d_of_type_JavaLangString + ",info.filePath = " + paramDownloadInfo.l);
-      Intent localIntent = new Intent("com.opensdk.downloadmanager.renameFilename");
-      Bundle localBundle2 = new Bundle();
-      localBundle2.putString("filePath", paramDownloadInfo.l);
-      localBundle2.putLong("dataLength", paramLong);
-      localBundle2.putInt("fileSourceId", i);
-      localBundle2.putBundle("otherData", localBundle1);
-      localBundle2.putInt("peerType", -1);
-      localIntent.putExtra("extraBundle", localBundle2);
-      bhpc.a().a().sendBroadcast(localIntent);
       return;
-      if ("biz_src_zf_games".equals(paramDownloadInfo.m)) {
-        i = 15;
-      } else if ("biz_src_jc_update".equals(paramDownloadInfo.m)) {
-        i = 17;
-      } else if ("biz_src_news".equals(paramDownloadInfo.m)) {
-        i = 18;
-      } else if ("biz_src_jc_vip".equals(paramDownloadInfo.m)) {
-        i = 40;
-      } else {
-        i = 40;
-      }
-    }
-  }
-  
-  /* Error */
-  public void a(DownloadInfo paramDownloadInfo, boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +19 -> 22
-    //   6: aload_1
-    //   7: invokevirtual 1051	com/tencent/open/downloadnew/DownloadInfo:a	()V
-    //   10: aload_1
-    //   11: getfield 715	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   14: invokestatic 509	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   17: istore_3
-    //   18: iload_3
-    //   19: ifeq +6 -> 25
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: return
-    //   25: ldc 50
-    //   27: new 118	java/lang/StringBuilder
-    //   30: dup
-    //   31: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   34: ldc_w 1053
-    //   37: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: aload_1
-    //   41: getfield 424	com/tencent/open/downloadnew/DownloadInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   44: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: ldc_w 1055
-    //   50: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: aload_1
-    //   54: getfield 210	com/tencent/open/downloadnew/DownloadInfo:e	Ljava/lang/String;
-    //   57: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: ldc_w 1008
-    //   63: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: aload_1
-    //   67: getfield 215	com/tencent/open/downloadnew/DownloadInfo:l	Ljava/lang/String;
-    //   70: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: invokestatic 57	bhzm:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   79: aload_0
-    //   80: getfield 34	bhyo:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   83: aload_1
-    //   84: getfield 715	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   87: aload_1
-    //   88: invokevirtual 1056	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   91: pop
-    //   92: new 1058	com/tencent/open/appstore/dl/DownloadManagerV2$17
-    //   95: dup
-    //   96: aload_0
-    //   97: aload_1
-    //   98: iload_2
-    //   99: invokespecial 1061	com/tencent/open/appstore/dl/DownloadManagerV2$17:<init>	(Lbhyo;Lcom/tencent/open/downloadnew/DownloadInfo;Z)V
-    //   102: bipush 32
-    //   104: aconst_null
-    //   105: iconst_1
-    //   106: invokestatic 161	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   109: goto -87 -> 22
-    //   112: astore_1
-    //   113: aload_0
-    //   114: monitorexit
-    //   115: aload_1
-    //   116: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	117	0	this	bhyo
-    //   0	117	1	paramDownloadInfo	DownloadInfo
-    //   0	117	2	paramBoolean	boolean
-    //   17	2	3	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   6	18	112	finally
-    //   25	109	112	finally
-  }
-  
-  public void a(DownloadListener paramDownloadListener)
-  {
-    try
-    {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramDownloadListener)) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramDownloadListener);
-      }
-      return;
-    }
-    finally
-    {
-      paramDownloadListener = finally;
-      throw paramDownloadListener;
-    }
-  }
-  
-  public void a(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt)
-  {
-    DownloadInfo localDownloadInfo2 = d(paramTMAssistantCallYYBParamStruct.SNGAppId);
-    DownloadInfo localDownloadInfo1 = localDownloadInfo2;
-    if (localDownloadInfo2 == null)
-    {
-      localDownloadInfo1 = bicl.a().a(paramTMAssistantCallYYBParamStruct, null);
-      c(localDownloadInfo1);
-    }
-    localDownloadInfo1.jdField_f_of_type_Int = paramInt;
-    localDownloadInfo1.a(2);
-    a(2, localDownloadInfo1);
-  }
-  
-  public void a(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt1, TMAssistantCallYYBTaskInfo paramTMAssistantCallYYBTaskInfo, int paramInt2, String paramString)
-  {
-    int i = b(paramInt1);
-    DownloadInfo localDownloadInfo = b(paramTMAssistantCallYYBParamStruct.SNGAppId, i);
-    if ((localDownloadInfo == null) && (paramInt1 != 6))
-    {
-      paramTMAssistantCallYYBTaskInfo = bicl.a().a(paramTMAssistantCallYYBParamStruct, null);
-      c(paramTMAssistantCallYYBTaskInfo);
-      b(paramTMAssistantCallYYBParamStruct.SNGAppId, i);
-    }
-    for (paramTMAssistantCallYYBParamStruct = paramTMAssistantCallYYBTaskInfo; paramTMAssistantCallYYBParamStruct != null; paramTMAssistantCallYYBParamStruct = localDownloadInfo) {
-      for (;;)
+      try
       {
-        bhzm.b("DownloadManagerV2", "onYYBDownloadTaskStateChanged notifyListener localState=" + i + " dlInfo=" + paramTMAssistantCallYYBParamStruct.toString());
-        a(i, paramTMAssistantCallYYBParamStruct, paramInt2, paramString);
-        return;
-        if (((paramInt1 == 2) || (paramInt1 == 3)) && (bicl.a().e()))
-        {
-          if (paramTMAssistantCallYYBTaskInfo != null) {}
-          try
-          {
-            long l1 = paramTMAssistantCallYYBTaskInfo.mReceiveDataLen;
-            long l2 = paramTMAssistantCallYYBTaskInfo.mTotalDataLen;
-            paramInt1 = (int)((float)l1 * 100.0F / (float)l2);
-            localDownloadInfo.jdField_f_of_type_Int = paramInt1;
-            bhzm.b("DownloadManagerV2", "onYYBDownloadTaskStateChanged info progress = " + paramInt1);
-            paramTMAssistantCallYYBParamStruct = localDownloadInfo;
-          }
-          catch (Exception paramTMAssistantCallYYBParamStruct)
-          {
-            bhzm.c("DownloadManagerV2", "onYYBDownloadTaskStateChanged>>>", paramTMAssistantCallYYBParamStruct);
-          }
+        if (this.jdField_b_of_type_JavaUtilMap == null) {
+          this.jdField_b_of_type_JavaUtilMap = new HashMap();
         }
+        this.jdField_b_of_type_JavaUtilMap.put(paramString1, paramString2);
       }
-    }
-    bhzm.b("DownloadManagerV2", "onYYBDownloadTaskStateChanged notifyListener error dlInfo == null");
-  }
-  
-  public void a(String paramString)
-  {
-    if ((paramString != null) && (paramString.trim().length() > 0)) {
-      bidk.a().a(paramString);
+      finally {}
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    int i = 0;
-    String str = "";
-    Object localObject2 = new ArrayList();
-    if (((Iterator)localObject1).hasNext())
-    {
-      DownloadInfo localDownloadInfo = (DownloadInfo)((Iterator)localObject1).next();
-      if ((localDownloadInfo == null) || (localDownloadInfo.a() == 4) || (localDownloadInfo.a() == 1) || (localDownloadInfo.jdField_c_of_type_Int != 1)) {
-        break label295;
-      }
-      ((ArrayList)localObject2).add(localDownloadInfo);
-      if ((!TextUtils.isEmpty(str)) || (biam.a(localDownloadInfo.e))) {
-        break label292;
-      }
-      str = localDownloadInfo.jdField_f_of_type_JavaLangString;
-      label118:
-      i += 1;
-    }
-    label274:
-    label292:
-    label295:
-    for (;;)
-    {
-      break;
-      if (((ArrayList)localObject2).size() > 0)
-      {
-        localObject1 = ((ArrayList)localObject2).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (DownloadInfo)((Iterator)localObject1).next();
-          ((DownloadInfo)localObject2).a(10);
-          a(10, (DownloadInfo)localObject2);
-        }
-      }
-      boolean bool = QAppCenterPluginProxyActivityTools.jdField_a_of_type_Boolean;
-      if ((paramBoolean) && (i > 0))
-      {
-        localObject1 = new StringBuilder();
-        if (TextUtils.isEmpty(str)) {
-          break label274;
-        }
-      }
-      for (str = str + amtj.a(2131702634);; str = "")
-      {
-        str = str + i + amtj.a(2131702645);
-        if (!bool) {
-          break;
-        }
-        bhzt.a().a(str, 1);
-        return;
-      }
-      bicl.a().a(true, str);
-      return;
-      break label118;
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
   }
   
   public boolean a()
   {
-    return BaseApplicationImpl.sProcessId == 1;
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
   
-  public boolean a(bibq parambibq)
+  public boolean a(byte paramByte)
   {
-    if (parambibq == null) {
-      return false;
-    }
-    this.jdField_a_of_type_Bibq = parambibq;
-    return true;
+    return ((byte)(this.jdField_a_of_type_Byte | 0x0) & paramByte) == paramByte;
   }
   
-  public boolean a(DownloadInfo paramDownloadInfo)
+  public int b()
   {
-    return a(paramDownloadInfo, true);
+    int i1 = 0;
+    if (this.jdField_a_of_type_AndroidOsBundle != null) {
+      i1 = this.jdField_a_of_type_AndroidOsBundle.getInt("id");
+    }
+    return i1;
   }
   
-  public boolean a(DownloadInfo paramDownloadInfo, boolean paramBoolean)
+  public void b()
   {
-    Object localObject3 = null;
-    if (paramDownloadInfo == null)
-    {
-      bhzm.a("DownloadManagerV2", "installDownload info == null");
-      return false;
-    }
-    if (!paramDownloadInfo.jdField_c_of_type_Boolean)
-    {
-      bhzm.a("DownloadManagerV2", "installDownload info is not apk");
-      return false;
-    }
-    Object localObject1 = "";
-    TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo;
-    if (TextUtils.isEmpty(paramDownloadInfo.l)) {
-      if (paramDownloadInfo.jdField_c_of_type_Int == 0)
-      {
-        localTMAssistantDownloadTaskInfo = a(paramDownloadInfo.jdField_d_of_type_JavaLangString);
-        localObject2 = localObject1;
-        if (localTMAssistantDownloadTaskInfo != null)
-        {
-          localObject2 = localObject1;
-          if (localTMAssistantDownloadTaskInfo.mState == 4) {
-            localObject2 = localTMAssistantDownloadTaskInfo.mSavePath;
-          }
-        }
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          localTMAssistantDownloadTaskInfo = a(paramDownloadInfo);
-          localObject1 = localObject2;
-          localObject3 = localTMAssistantDownloadTaskInfo;
-          if (localTMAssistantDownloadTaskInfo != null)
-          {
-            paramDownloadInfo.jdField_c_of_type_Int = 1;
-            localObject3 = localTMAssistantDownloadTaskInfo;
-            localObject1 = localObject2;
-          }
-        }
-        localObject2 = localObject1;
-        if (localObject3 != null)
-        {
-          localObject2 = localObject1;
-          if (((TMAssistantDownloadTaskInfo)localObject3).mState == 4) {
-            localObject2 = ((TMAssistantDownloadTaskInfo)localObject3).mSavePath;
-          }
-        }
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          paramDownloadInfo.l = ((String)localObject2);
-          paramDownloadInfo.a(4);
-          c(paramDownloadInfo);
-        }
-      }
-    }
-    for (localObject1 = localObject2;; localObject1 = paramDownloadInfo.l)
-    {
-      if (new File((String)localObject1).canRead()) {
-        break label301;
-      }
-      bhzm.b("DownloadManagerV2", "can't read apk file. installDownload localAPKPath=" + (String)localObject1);
-      return false;
-      localTMAssistantDownloadTaskInfo = a(paramDownloadInfo);
-      localObject2 = localObject1;
-      if (localTMAssistantDownloadTaskInfo != null)
-      {
-        localObject2 = localObject1;
-        if (localTMAssistantDownloadTaskInfo.mState == 4) {
-          localObject2 = localTMAssistantDownloadTaskInfo.mSavePath;
-        }
-      }
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        break;
-      }
-      localObject3 = a(paramDownloadInfo.jdField_d_of_type_JavaLangString);
-      localObject1 = localObject2;
-      break;
-    }
-    label301:
-    Object localObject2 = biam.a((String)localObject1);
-    bhzm.b("DownloadManagerV2", "installDownload localAPKPath=" + (String)localObject1 + ", apkPackageName=" + (String)localObject2 + " updateType=" + paramDownloadInfo.jdField_a_of_type_Int);
-    if (localObject2 != null)
-    {
-      bhzm.c("DownloadManagerV2", "[installDownload] begin sendCheckDownloadReq pkgname=" + (String)localObject2);
-      a(paramDownloadInfo, (String)localObject1, (String)localObject2, paramBoolean);
-      return true;
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      bhzm.a("DownloadManagerV2", "package invaild del file");
-    }
-    try
-    {
-      localObject1 = new File((String)localObject1);
-      if (((File)localObject1).exists()) {
-        ((File)localObject1).delete();
-      }
-      label434:
-      a(-2, paramDownloadInfo, -24, "");
-      return false;
-    }
-    catch (Exception localException)
-    {
-      break label434;
-    }
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return c(DownloadInfo.b(paramString), paramBoolean);
-  }
-  
-  public DownloadInfo b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      bhzm.a("DownloadManagerV2", "getDownloadInfoByTicket ticket == null");
-      return null;
-    }
-    return a(DownloadInfo.b(paramString));
-  }
-  
-  public List<DownloadInfo> b(String paramString, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(paramString)) {
-      return localArrayList;
-    }
-    paramString = bhym.a().a(paramString).iterator();
-    while (paramString.hasNext())
-    {
-      DownloadInfo localDownloadInfo = (DownloadInfo)paramString.next();
-      if (localDownloadInfo.a() == paramInt) {
-        localArrayList.add(localDownloadInfo);
-      }
-    }
-    return localArrayList;
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 200) {
-      ThreadManager.getSubThreadHandler().postDelayed(new DownloadManagerV2.20(this), 3000L);
-    }
-  }
-  
-  public void b(DownloadInfo paramDownloadInfo)
-  {
-    try
-    {
-      ThreadManager.excute(new DownloadManagerV2.12(this, paramDownloadInfo), 16, null, true);
-      return;
-    }
-    finally
-    {
-      paramDownloadInfo = finally;
-      throw paramDownloadInfo;
-    }
-  }
-  
-  public void b(DownloadListener paramDownloadListener)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramDownloadListener)) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramDownloadListener);
-      }
-      return;
-    }
-    finally
-    {
-      paramDownloadListener = finally;
-      throw paramDownloadListener;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    try
-    {
-      if ((BaseActivity.sTopActivity.isResume()) && (System.currentTimeMillis() - this.jdField_b_of_type_Long > 1000L))
-      {
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-        bhzt.a().a(paramString);
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      bhzm.c("DownloadManagerV2", "showToast>>>", paramString);
-    }
-  }
-  
-  public boolean b(bibq parambibq)
-  {
-    if (parambibq == null) {}
-    while ((this.jdField_a_of_type_Bibq == null) || (parambibq != this.jdField_a_of_type_Bibq)) {
-      return false;
-    }
-    this.jdField_a_of_type_Bibq = null;
-    return true;
-  }
-  
-  public boolean b(DownloadInfo paramDownloadInfo)
-  {
-    bhzm.a("DownloadManagerV2", "refreshDownloadInfo DownloadInfo=" + paramDownloadInfo);
-    DownloadInfo localDownloadInfo = a(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    if (localDownloadInfo == null) {
-      localDownloadInfo = c(paramDownloadInfo.e);
+    if (a() != null) {
+      a().onProgress(this);
     }
     for (;;)
     {
-      if (localDownloadInfo != null)
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        bhzm.a("DownloadManagerV2", "refreshDownloadInfo cacheInfo =" + localDownloadInfo);
-        Object localObject;
-        if (localDownloadInfo.jdField_c_of_type_Int == 0)
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
         {
-          bhzm.a("DownloadManagerV2", "refreshDownloadInfo DownloadInfo.DOWNLOAD_TYPE_DOWNLOADSDK......");
-          paramDownloadInfo.jdField_h_of_type_Int = localDownloadInfo.jdField_h_of_type_Int;
-          if (localDownloadInfo.jdField_a_of_type_Int == 1)
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
           {
-            localObject = localDownloadInfo.jdField_i_of_type_JavaLangString;
-            localObject = a().a((String)localObject);
-            if (localObject == null) {
-              break label318;
+            bhyo localbhyo = (bhyo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbhyo == null) || (localbhyo.a() == null)) {
+              break label135;
             }
-            bhzm.a("DownloadManagerV2", "refreshDownloadInfo sdk getReceiveDataLen=" + ((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen + " getTotalDataLen=" + ((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen);
-            paramDownloadInfo.jdField_f_of_type_Int = ((int)((float)((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen * 100.0F / (float)((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen));
-            paramDownloadInfo.a(b(((TMAssistantDownloadTaskInfo)localObject).mState));
-            paramDownloadInfo.jdField_c_of_type_Int = 0;
-            if (localDownloadInfo.jdField_a_of_type_Int != 1) {
-              break label306;
-            }
-            if (!TextUtils.isEmpty(localDownloadInfo.l)) {
-              break label294;
-            }
-            paramDownloadInfo.l = ((TMAssistantDownloadTaskInfo)localObject).mSavePath;
+            localbhyo.a(a());
+            localbhyo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbhyo.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbhyo.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+            localbhyo.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+            localbhyo.a().onProgress(localbhyo);
           }
-          for (;;)
-          {
-            if (paramDownloadInfo.a() == 4)
-            {
-              paramDownloadInfo.jdField_j_of_type_Int = localDownloadInfo.jdField_j_of_type_Int;
-              if (paramDownloadInfo.jdField_j_of_type_Int != 0)
-              {
-                paramDownloadInfo.a(3);
-                c(localDownloadInfo);
-              }
-            }
-            return true;
-            localObject = localDownloadInfo.jdField_d_of_type_JavaLangString;
-            break;
-            label294:
-            paramDownloadInfo.l = localDownloadInfo.l;
-            continue;
-            label306:
-            paramDownloadInfo.l = ((TMAssistantDownloadTaskInfo)localObject).mSavePath;
-          }
-          label318:
-          m(localDownloadInfo);
-          paramDownloadInfo.a(-100);
-          return true;
-        }
-        if (localDownloadInfo.jdField_c_of_type_Int == 1)
-        {
-          localObject = a(localDownloadInfo);
-          if (localObject != null)
-          {
-            int j = b(((TMAssistantDownloadTaskInfo)localObject).mState);
-            int i = j;
-            if (j == -2) {
-              i = 3;
-            }
-            paramDownloadInfo.a(i);
-            paramDownloadInfo.jdField_c_of_type_Int = 1;
-            paramDownloadInfo.l = ((TMAssistantDownloadTaskInfo)localObject).mSavePath;
-            long l1 = ((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen;
-            long l2 = ((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen;
-            paramDownloadInfo.jdField_f_of_type_Int = ((int)((float)l1 * 100.0F / (float)l2));
-            if (!bicl.a().e()) {
-              paramDownloadInfo.jdField_f_of_type_Int = 0;
-            }
-            return true;
-          }
-          m(localDownloadInfo);
         }
       }
-      return false;
+      return;
+      label135:
+      i1 -= 1;
     }
   }
   
-  public boolean b(String paramString, boolean paramBoolean)
+  public void b(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return d(DownloadInfo.b(paramString), paramBoolean);
+    this.jdField_f_of_type_Long = paramInt;
   }
   
-  public DownloadInfo c(String paramString)
+  public boolean b()
   {
-    if (!TextUtils.isEmpty(paramString))
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public void c()
+  {
+    if (a() != null) {
+      a().onCancel(this);
+    }
+    for (;;)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-      while (localIterator.hasNext())
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        DownloadInfo localDownloadInfo = (DownloadInfo)localIterator.next();
-        if (paramString.equals(localDownloadInfo.e)) {
-          return localDownloadInfo;
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bhyo localbhyo = (bhyo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbhyo == null) || (localbhyo.a() == null)) {
+              break label119;
+            }
+            localbhyo.a(a());
+            localbhyo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbhyo.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbhyo.a().onCancel(localbhyo);
+          }
         }
       }
-    }
-    return null;
-  }
-  
-  public void c(DownloadInfo paramDownloadInfo)
-  {
-    a(paramDownloadInfo, false);
-  }
-  
-  public void d(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a().a(9, paramDownloadInfo);
+      return;
+      label119:
+      i1 -= 1;
     }
   }
   
-  public void e(DownloadInfo paramDownloadInfo)
+  public boolean c()
   {
-    if (paramDownloadInfo != null)
+    boolean bool;
+    if (a() != null) {
+      bool = a().onStart(this);
+    }
+    for (;;)
     {
-      a(paramDownloadInfo, 2);
-      a().a(13, paramDownloadInfo);
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bhyo localbhyo = (bhyo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbhyo == null) || (localbhyo.a() == null)) {
+              break label137;
+            }
+            localbhyo.a(a());
+            localbhyo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbhyo.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbhyo.a().onStart(localbhyo);
+          }
+        }
+      }
+      return bool;
+      bool = true;
+      continue;
+      label137:
+      i1 -= 1;
     }
   }
   
-  public void f(DownloadInfo paramDownloadInfo)
+  public void d()
   {
-    if (paramDownloadInfo != null)
+    if (a() != null) {
+      a().onDoneFile(this);
+    }
+    for (;;)
     {
-      a(paramDownloadInfo, 1);
-      a().a(6, paramDownloadInfo);
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bhyo localbhyo = (bhyo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbhyo == null) || (localbhyo.a() == null)) {
+              break label119;
+            }
+            localbhyo.a(a());
+            localbhyo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbhyo.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbhyo.a().onDoneFile(localbhyo);
+          }
+        }
+      }
+      return;
+      label119:
+      i1 -= 1;
     }
   }
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public void e()
   {
-    ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.24(this, paramString, paramLong1, paramLong2));
+    if (a() != null) {
+      a().onDone(this);
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bhyo localbhyo = (bhyo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbhyo == null) || (localbhyo.a() == null)) {
+              break label119;
+            }
+            localbhyo.a(a());
+            localbhyo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbhyo.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbhyo.a().onDone(localbhyo);
+          }
+        }
+      }
+      return;
+      label119:
+      i1 -= 1;
+    }
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public boolean equals(Object paramObject)
   {
-    ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.23(this, paramTMAssistantDownloadClient, paramInt1, paramString1, paramInt2, paramString2));
+    return ((paramObject instanceof bhyo)) && (((bhyo)paramObject).jdField_a_of_type_JavaUtilList.equals(this.jdField_a_of_type_JavaUtilList));
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  public void f()
   {
-    bhzm.e("DownloadManagerV2", "OnDwonloadSDKServiceInvalid");
+    if (a() != null) {
+      a().onNetWifi2Mobile();
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bhyo localbhyo = (bhyo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbhyo == null) || (localbhyo.a() == null)) {
+              break label117;
+            }
+            localbhyo.a(a());
+            localbhyo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbhyo.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbhyo.a().onNetWifi2Mobile();
+          }
+        }
+      }
+      return;
+      label117:
+      i1 -= 1;
+    }
+  }
+  
+  public void g()
+  {
+    if (a() != null) {
+      a().onNetWifi2None();
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bhyo localbhyo = (bhyo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbhyo == null) || (localbhyo.a() == null)) {
+              break label117;
+            }
+            localbhyo.a(a());
+            localbhyo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbhyo.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbhyo.a().onNetWifi2None();
+          }
+        }
+      }
+      return;
+      label117:
+      i1 -= 1;
+    }
+  }
+  
+  public void h()
+  {
+    if (a() != null) {
+      a().onNetMobile2None();
+    }
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        {
+          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+          if (i1 >= 0)
+          {
+            bhyo localbhyo = (bhyo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            if ((localbhyo == null) || (localbhyo.a() == null)) {
+              break label117;
+            }
+            localbhyo.a(a());
+            localbhyo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+            localbhyo.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+            localbhyo.a().onNetMobile2None();
+          }
+        }
+      }
+      return;
+      label117:
+      i1 -= 1;
+    }
+  }
+  
+  public void i()
+  {
+    for (;;)
+    {
+      int i1;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+          break label72;
+        }
+        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+        if (i1 >= 0)
+        {
+          bhyo localbhyo = (bhyo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if (localbhyo == null) {
+            break label75;
+          }
+          localbhyo.a(null);
+        }
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_JavaUtilArrayList = null;
+      label72:
+      return;
+      label75:
+      i1 -= 1;
+    }
+  }
+  
+  public String toString()
+  {
+    return " key=" + this.jdField_a_of_type_JavaLangString + ",urlList size=" + this.jdField_a_of_type_JavaUtilList.size() + "|currentUrlIndex=" + this.jdField_c_of_type_Int + "|errCode=" + this.jdField_a_of_type_Int + "|status=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger + "|readSize=" + this.jdField_b_of_type_Long + "|maxSize=" + this.jdField_a_of_type_Long + "|percent=" + this.jdField_a_of_type_Float;
   }
 }
 

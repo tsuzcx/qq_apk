@@ -1,23 +1,28 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import java.util.Map;
 
 public class adzn
-  implements View.OnClickListener
+  extends anvi
 {
-  public adzn(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
+  public adzn(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onClick(View paramView)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramBoolean1) {
+      this.a.a();
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.a();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

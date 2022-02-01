@@ -1,14 +1,20 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface rgw
+class rgw
+  implements View.OnClickListener
 {
-  public abstract void a(Bundle paramBundle, float paramFloat);
+  rgw(rgv paramrgv, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public abstract void a(Bundle paramBundle, int paramInt, float paramFloat);
-  
-  public abstract void a(Bundle paramBundle, String paramString);
-  
-  public abstract void a(String paramString);
+  public void onClick(View paramView)
+  {
+    ComponentContentRecommend.a(this.jdField_a_of_type_Rgv.a, "0X80094DA", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+    this.jdField_a_of_type_Rgv.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

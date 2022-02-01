@@ -7,11 +7,11 @@ public final class PublicAccountDataManager$2
   public void run()
   {
     // Byte code:
-    //   0: invokestatic 20	amxz:a	()Ljava/util/LinkedList;
+    //   0: invokestatic 20	aoan:a	()Ljava/util/LinkedList;
     //   3: astore_2
     //   4: aload_2
     //   5: monitorenter
-    //   6: invokestatic 20	amxz:a	()Ljava/util/LinkedList;
+    //   6: invokestatic 20	aoan:a	()Ljava/util/LinkedList;
     //   9: invokevirtual 26	java/util/LinkedList:size	()I
     //   12: istore_1
     //   13: iload_1
@@ -25,10 +25,10 @@ public final class PublicAccountDataManager$2
     //   25: invokespecial 31	java/util/ArrayList:<init>	(I)V
     //   28: astore_3
     //   29: aload_3
-    //   30: invokestatic 20	amxz:a	()Ljava/util/LinkedList;
+    //   30: invokestatic 20	aoan:a	()Ljava/util/LinkedList;
     //   33: invokeinterface 37 2 0
     //   38: pop
-    //   39: invokestatic 20	amxz:a	()Ljava/util/LinkedList;
+    //   39: invokestatic 20	aoan:a	()Ljava/util/LinkedList;
     //   42: invokevirtual 40	java/util/LinkedList:clear	()V
     //   45: aload_2
     //   46: monitorexit
@@ -40,7 +40,7 @@ public final class PublicAccountDataManager$2
     //   60: ifeq +40 -> 100
     //   63: aload_2
     //   64: invokeinterface 54 1 0
-    //   69: checkcast 56	amyb
+    //   69: checkcast 56	aoap
     //   72: invokeinterface 58 1 0
     //   77: goto -23 -> 54
     //   80: astore_2

@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-
 public class amzn
-  implements BusinessObserver
 {
-  public void a(Object paramObject) {}
-  
-  public void b(Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1000: 
-      a(paramObject);
-      return;
-    }
-    b(paramObject);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
 }
 
 

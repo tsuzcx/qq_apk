@@ -1,24 +1,24 @@
 package cooperation.qzone;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import agzl;
-import ahmw;
-import ahnm;
-import ahns;
-import ahoa;
-import alnr;
-import amsw;
+import ahsl;
+import aihq;
+import aiig;
+import aiin;
+import aiiv;
+import amme;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import apke;
-import apzd;
-import apze;
-import aqxc;
-import aqxl;
-import aqya;
-import aydf;
+import anvk;
+import aqni;
+import arcg;
+import arch;
+import asbm;
+import asbv;
+import asck;
+import azjr;
 import com.tencent.biz.qcircleshadow.local.requests.QCircleDoFollowRequest;
 import com.tencent.biz.qcircleshadow.local.requests.QCircleGetFeedDetailRequest;
 import com.tencent.biz.qcircleshadow.local.requests.QCircleGetRecommendTagRequest;
@@ -29,7 +29,9 @@ import com.tencent.biz.subscribe.event.PublishBoxStatusEvent;
 import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
 import com.tencent.biz.subscribe.event.SubscribePublishFeedsEvent;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.mobileqq.data.Card;
@@ -79,13 +81,13 @@ import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
-import lld;
+import llq;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ugf;
+import uuc;
 
 public class QzoneIPCModule
   extends QIPCModule
@@ -220,7 +222,7 @@ public class QzoneIPCModule
     }
   }
   
-  private static List<ahnm> parseJson2Sticker(String paramString1, String paramString2, int paramInt)
+  private static List<aiig> parseJson2Sticker(String paramString1, String paramString2, int paramInt)
   {
     LinkedList localLinkedList = new LinkedList();
     JSONArray localJSONArray;
@@ -260,26 +262,26 @@ public class QzoneIPCModule
       paramString1 = localJSONArray.optJSONObject(i);
       String str = paramString1.optString("url");
       paramString1 = paramString1.optString("md5");
-      ahnm localahnm = new ahnm();
-      localahnm.b(str);
-      localahnm.d(paramString1);
+      aiig localaiig = new aiig();
+      localaiig.c(str);
+      localaiig.e(paramString1);
       paramString1 = paramString2;
       if (paramString2 != null)
       {
         paramString1 = paramString2;
         if (paramString2.equals(str))
         {
-          localahnm.b(true);
+          localaiig.b(true);
           paramString1 = null;
         }
       }
-      localLinkedList.add(localahnm);
+      localLinkedList.add(localaiig);
       i += 1;
       paramString2 = paramString1;
     }
   }
   
-  public static JSONObject parseSticker2Json(List<ahmw> paramList)
+  public static JSONObject parseSticker2Json(List<aihq> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty()))
     {
@@ -296,14 +298,14 @@ public class QzoneIPCModule
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      Object localObject2 = (ahmw)paramList.next();
-      if ((localObject2 != null) && ((localObject2 instanceof ahnm)))
+      Object localObject2 = (aihq)paramList.next();
+      if ((localObject2 != null) && ((localObject2 instanceof aiig)))
       {
-        localObject2 = (ahnm)localObject2;
+        localObject2 = (aiig)localObject2;
         try
         {
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("url", ((ahnm)localObject2).a()).put("thumbUrl", ((ahnm)localObject2).b()).put("md5", ((ahnm)localObject2).c());
+          localJSONObject.put("url", ((aiig)localObject2).a()).put("thumbUrl", ((aiig)localObject2).b()).put("md5", ((aiig)localObject2).c());
           localJSONArray.put(localJSONObject);
         }
         catch (JSONException localJSONException)
@@ -335,8 +337,8 @@ public class QzoneIPCModule
       {
         return;
       } while ((paramQQAppInterface == null) || (!(paramQQAppInterface instanceof QQAppInterface)));
-      paramBundle = (alnr)paramQQAppInterface.getManager(153);
-      paramQQAppInterface = (VasExtensionHandler)paramQQAppInterface.getBusinessHandler(71);
+      paramBundle = (amme)paramQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER);
+      paramQQAppInterface = (VasExtensionHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER);
       localArrayList = new ArrayList();
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
@@ -469,7 +471,7 @@ public class QzoneIPCModule
     if ("getHostInfo".equals(paramString)) {
       try
       {
-        paramString = ((amsw)localQQAppInterface.getManager(51)).c(localQQAppInterface.getCurrentAccountUin());
+        paramString = ((anvk)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(localQQAppInterface.getCurrentAccountUin());
         paramBundle = new Bundle();
         paramBundle.putLong("age", paramString.age);
         paramBundle.putLong("gender", paramString.shGender);
@@ -496,7 +498,7 @@ public class QzoneIPCModule
         try
         {
           l = paramBundle.getLong("uin");
-          bool1 = ((amsw)localQQAppInterface.getManager(51)).b(String.valueOf(l));
+          bool1 = ((anvk)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(String.valueOf(l));
           paramString = new Bundle();
           paramString.putBoolean("isFriend", bool1);
           paramString = EIPCResult.createResult(0, paramString);
@@ -514,7 +516,7 @@ public class QzoneIPCModule
           {
             try
             {
-              paramInt = lld.f();
+              paramInt = llq.f();
               if (paramInt > 2) {
                 continue;
               }
@@ -528,7 +530,7 @@ public class QzoneIPCModule
             }
             try
             {
-              paramString = ((aqxc)localQQAppInterface.getManager(77)).a(aqya.e());
+              paramString = ((asbm)localQQAppInterface.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER)).a(asck.e());
               if (paramString == null) {
                 continue;
               }
@@ -547,7 +549,7 @@ public class QzoneIPCModule
         {
           try
           {
-            aydf.a(localQQAppInterface, paramBundle);
+            azjr.a(localQQAppInterface, paramBundle);
             paramString = new Bundle();
             paramString.putBoolean("qzone_pre_send_result", true);
             paramString = EIPCResult.createResult(0, paramString);
@@ -575,16 +577,16 @@ public class QzoneIPCModule
               QLog.w("QzoneIPCModule", 1, "empty text or unit " + (String)localObject1 + " , " + paramString);
               return null;
             }
-            localObject2 = ahns.a(localQQAppInterface);
-            ((ahns)localObject2).a();
-            if (!((ahns)localObject2).b())
+            localObject2 = aiin.a(localQQAppInterface);
+            ((aiin)localObject2).a();
+            if (!((aiin)localObject2).b())
             {
               QLog.i("QzoneIPCModule", 1, "emo rec is not open");
               return null;
             }
             paramBundle = new QzoneIPCModule.StickerRecReq((String)localObject1, null);
             this.stickerRecReq.set(paramBundle);
-            if (!((ahns)localObject2).a((String)localObject1, 0, paramString))
+            if (!((aiin)localObject2).a((String)localObject1, 0, paramString))
             {
               this.stickerRecReq.compareAndSet(paramBundle, null);
               return null;
@@ -632,13 +634,13 @@ public class QzoneIPCModule
             if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (paramInt < 1)) {
               return null;
             }
-            paramBundle = new ahoa();
+            paramBundle = new aiiv();
             paramBundle.jdField_a_of_type_JavaLangString = ((String)localObject1);
             paramBundle.b = ((String)localObject2);
             paramBundle.jdField_a_of_type_JavaUtilList = parseJson2Sticker(str, (String)localObject3, paramInt);
-            localObject1 = ahns.a(localQQAppInterface);
-            ((ahns)localObject1).a();
-            ((ahns)localObject1).a(Collections.singletonList(paramBundle), true, 11000, paramString);
+            localObject1 = aiin.a(localQQAppInterface);
+            ((aiin)localObject1).a();
+            ((aiin)localObject1).a(Collections.singletonList(paramBundle), true, 11000, paramString);
             return EIPCResult.createSuccessResult(null);
           }
           if ("action_save_customenotion".equals(paramString))
@@ -648,7 +650,7 @@ public class QzoneIPCModule
               paramString = paramBundle.getString("pic_path");
               if (!TextUtils.isEmpty(paramString))
               {
-                paramInt = agzl.a(localQQAppInterface, paramString);
+                paramInt = ahsl.a(localQQAppInterface, paramString);
                 paramString = new Bundle();
                 paramString.putInt("resultCode", paramInt);
                 return EIPCResult.createSuccessResult(paramString);
@@ -726,7 +728,7 @@ public class QzoneIPCModule
               paramString = paramBundle.getString("uin", null);
               if (paramString != null)
               {
-                ugf.a(localQQAppInterface, localQQAppInterface.getApp().getApplicationContext(), paramString, false, null, true);
+                uuc.a(localQQAppInterface, localQQAppInterface.getApp().getApplicationContext(), paramString, false, null, true);
                 QzonePublicAccountHelper.broadcastFollowIfNeed(localQQAppInterface.getApp().getApplicationContext(), paramString, 0);
               }
             }
@@ -804,7 +806,7 @@ public class QzoneIPCModule
               if ("action_qzone_show_push_setting_banner".equalsIgnoreCase(paramString))
               {
                 paramString = new Bundle();
-                paramBundle = apke.a(localQQAppInterface);
+                paramBundle = aqni.a(localQQAppInterface);
                 if (paramBundle == null)
                 {
                   QLog.d("QzoneIPCModule", 1, "ACTION_SHOW_PUSH_SETTING_BANNER null mgr");
@@ -814,25 +816,25 @@ public class QzoneIPCModule
                 paramString.putBoolean("visible", bool1);
                 if (bool1)
                 {
-                  localObject1 = apze.a();
+                  localObject1 = arch.a();
                   if (localObject1 == null) {
-                    break label1848;
+                    break label1851;
                   }
-                  paramBundle = ((apzd)localObject1).a();
-                  localObject1 = ((apzd)localObject1).b();
+                  paramBundle = ((arcg)localObject1).a();
+                  localObject1 = ((arcg)localObject1).b();
                   paramString.putString("msg", paramBundle);
                   paramString.putString("setting", (String)localObject1);
                 }
                 for (;;)
                 {
                   return EIPCResult.createSuccessResult(paramString);
-                  label1848:
+                  label1851:
                   QLog.d("QzoneIPCModule", 1, "ACTION_SHOW_PUSH_SETTING_BANNER null conf bean");
                 }
               }
               if ("action_qzone_close_push_setting_banner".equalsIgnoreCase(paramString))
               {
-                paramString = apke.a(localQQAppInterface);
+                paramString = aqni.a(localQQAppInterface);
                 if (paramString == null)
                 {
                   QLog.d("QzoneIPCModule", 1, "ACTION_CLOSE_PUSH_SETTING_BANNER null mgr");
@@ -857,7 +859,6 @@ public class QzoneIPCModule
                   {
                     QLog.d("[QzoneIPCModule_upload2]QCircle", 4, new Object[] { "ACTION_QCIRCLE_PUBLISH_COMPLETE_REPORT size:", Integer.valueOf(paramInt) });
                     QCircleLpReportDc05494.report(paramString);
-                    reportPicQuality(paramString);
                     break;
                   }
                 }
@@ -943,7 +944,7 @@ public class QzoneIPCModule
                           QLog.w("QzoneIPCModule", 1, "flow qq circle is interrupted", paramBundle);
                         }
                         if (!bool1) {
-                          break label2507;
+                          break label2505;
                         }
                         QLog.d("QzoneIPCModule", 1, "flow qq circle failed");
                         paramString.putInt("code", -2);
@@ -959,7 +960,7 @@ public class QzoneIPCModule
                       return EIPCResult.createSuccessResult(null);
                     }
                   }
-                  label2507:
+                  label2505:
                   if ("cooperation.qzone.ACTION_QCIRCLE_PUBLISH_GET_RECOMMEND_TAG".equalsIgnoreCase(paramString))
                   {
                     if (QLog.isDevelopLevel()) {

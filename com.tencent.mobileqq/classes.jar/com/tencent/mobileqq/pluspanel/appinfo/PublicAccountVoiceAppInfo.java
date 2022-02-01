@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import ahiu;
+import ahvi;
+import aido;
 import android.widget.ImageView;
-import ayfu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class PublicAccountVoiceAppInfo
@@ -13,7 +14,7 @@ public class PublicAccountVoiceAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130839199;
+    return 2130839219;
   }
   
   public int getAppID()
@@ -26,13 +27,13 @@ public class PublicAccountVoiceAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697925);
+    return BaseApplicationImpl.getContext().getString(2131698208);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if ((paramBaseChatPie instanceof ahiu)) {
-      ((ahiu)paramBaseChatPie).c.performClick();
+    if ((paramBaseChatPie instanceof aido)) {
+      ((aido)paramBaseChatPie).c.performClick();
     }
   }
 }

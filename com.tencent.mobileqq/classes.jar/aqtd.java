@@ -1,62 +1,33 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class aqtd
-  extends BaseAdapter
+  extends MSFServlet
 {
-  public aqtd(DataReportSettingFragment paramDataReportSettingFragment) {}
-  
-  public aqsw a(int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    return (aqsw)this.a.a.get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.a.a.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    aqth localaqth;
-    aqsw localaqsw;
-    if (paramView == null)
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (byte[] arrayOfByte = bhjl.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
     {
-      paramView = LayoutInflater.from(this.a.getActivity()).inflate(2131559608, paramViewGroup, false);
-      localaqth = new aqth(this.a);
-      localaqth.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131369016));
-      localaqth.jdField_a_of_type_Aqte = new aqte(this.a);
-      localaqth.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(localaqth.jdField_a_of_type_Aqte);
-      localaqth.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnLongClickListener(localaqth.jdField_a_of_type_Aqte);
-      paramView.setTag(localaqth);
-      localaqsw = a(paramInt);
-      localaqth.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(localaqsw.jdField_a_of_type_Boolean);
-      if (!(localaqsw instanceof aqtx)) {
-        break label205;
+      new Bundle().putByteArray("data", arrayOfByte);
+      aoep localaoep = (aoep)((QQAppInterface)getAppRuntime()).getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+      if (localaoep != null) {
+        localaoep.a(paramIntent, paramFromServiceMsg, arrayOfByte);
       }
-      localaqth.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localaqsw.jdField_a_of_type_JavaLangString + " - " + ((aqtx)localaqsw).b);
+      return;
     }
-    for (;;)
-    {
-      localaqth.jdField_a_of_type_Aqte.a = localaqsw;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localaqth = (aqth)paramView.getTag();
-      break;
-      label205:
-      localaqth.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localaqsw.jdField_a_of_type_JavaLangString);
-    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bhjl.a(arrayOfByte));
   }
 }
 

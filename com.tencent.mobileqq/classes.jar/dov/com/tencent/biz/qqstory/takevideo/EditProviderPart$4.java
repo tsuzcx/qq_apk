@@ -1,24 +1,24 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.widget.TextView;
-import bncy;
+import bosq;
 
 public class EditProviderPart$4
   implements Runnable
 {
-  public EditProviderPart$4(bncy parambncy, boolean paramBoolean) {}
+  public EditProviderPart$4(bosq parambosq, boolean paramBoolean) {}
   
   public void run()
   {
-    if (bncy.a(this.this$0) == null) {
+    if (bosq.a(this.this$0) == null) {
       return;
     }
     if (this.a)
     {
-      bncy.a(this.this$0).setVisibility(0);
+      bosq.a(this.this$0).setVisibility(0);
       return;
     }
-    bncy.a(this.this$0).setVisibility(8);
+    bosq.a(this.this$0).setVisibility(8);
   }
 }
 

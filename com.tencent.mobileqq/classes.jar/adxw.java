@@ -1,28 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
-class adxw
-  implements DialogInterface.OnClickListener
+public class adxw
 {
-  adxw(adxv paramadxv) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adxw(FontSettingActivity paramFontSettingActivity, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_Adxu.a.app.getMessageFacade().removeMsgByUniseq(this.a.jdField_a_of_type_Adxu.a.a(), 0, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_Adxu.a.b();
-      return;
-    } while (this.a.jdField_a_of_type_Adxu.a.jdField_a_of_type_Adxu.getCount() <= 0);
-    this.a.jdField_a_of_type_Adxu.a.app.getMessageFacade().clearHistory(this.a.jdField_a_of_type_Adxu.a.a(), 0);
-    this.a.jdField_a_of_type_Adxu.a.jdField_a_of_type_Adxu.changeCursor(this.a.jdField_a_of_type_Adxu.getCursor());
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

@@ -1,23 +1,27 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import java.util.ArrayList;
+import java.util.List;
 
-class ajts
-  implements View.OnClickListener
+public class ajts
+  implements bkzq
 {
-  ajts(ajtr paramajtr) {}
+  public ajts(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, bkzi parambkzi) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (ajtr.a(this.a) == null)
+    paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
+    if ((paramView == null) || (paramView.isEmpty())) {}
+    do
     {
-      ajtr.a(this.a, bfur.a(this.a.mActivity, 0, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717337), null, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717335), ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717336), new ajtt(this), new ajtu(this)));
-      ajtr.a(this.a).setCanceledOnTouchOutside(false);
-    }
-    ajtr.a(this.a).show();
-    EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(paramView);
+      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new ajtt(this));
+      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
+    } while (!this.jdField_a_of_type_Bkzi.isShowing());
+    this.jdField_a_of_type_Bkzi.dismiss();
   }
 }
 

@@ -1,43 +1,32 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.ShieldFriendsListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.27.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aefy
-  extends amsu
+  extends ayqy
 {
-  public aefy(ShieldFriendsListActivity paramShieldFriendsListActivity) {}
+  public aefy(Leba paramLeba) {}
   
-  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    super.onUpdateFriendShieldFlag(paramLong, paramBoolean1, paramBoolean2, paramBoolean3, paramString);
-    if (!paramBoolean2)
-    {
-      paramString = this.a;
-      if (!paramBoolean1)
-      {
-        paramBoolean1 = true;
-        if (ShieldFriendsListActivity.a(paramString, paramLong, paramBoolean1)) {
-          QQToast.a(BaseApplication.getContext(), amtj.a(2131713099), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299076));
-        }
-      }
-    }
-    do
+    if ((!paramBoolean1) || (paramInt == 2)) {}
+    for (;;)
     {
       return;
-      paramBoolean1 = false;
-      break;
-      if (ShieldFriendsListActivity.a(this.a).a(String.valueOf(paramLong)))
+      if (Leba.b(this.a))
       {
-        ShieldFriendsListActivity.a(this.a, paramLong, paramBoolean1);
-        return;
+        ArrayList localArrayList = new ArrayList();
+        anxo.a(localArrayList, ajzy.a().a(this.a.a));
+        this.a.b(new Leba.27.1(this, localArrayList));
       }
-      paramString = ((amsw)this.a.app.getManager(51)).e(String.valueOf(paramLong));
-    } while ((paramString == null) || (paramString.isShield()));
-    ShieldFriendsListActivity.a(this.a).a(paramString);
-    ShieldFriendsListActivity.a(this.a);
+      while (QLog.isColorLevel())
+      {
+        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.c(this.a));
+        return;
+        ajzy.a |= 0x2;
+      }
+    }
   }
 }
 

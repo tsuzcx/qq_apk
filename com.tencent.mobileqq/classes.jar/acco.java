@@ -1,20 +1,16 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
+import kotlin.Metadata;
 
-public class acco
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onReceiveValue"}, k=3, mv={1, 1, 16})
+final class acco<T>
+  implements ValueCallback<String>
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    ahqf.a(paramQQAppInterface, paramMsgType0x210.vProtobuf);
-  }
+  public static final acco a = new acco();
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public final void a(String paramString)
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    QLog.i("GdtMotiveBrowsingDialog", 1, "handleMotiveBrowsingData EVENT_CALL_BACK_JS callback " + paramString);
   }
 }
 

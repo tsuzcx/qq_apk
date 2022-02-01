@@ -1,11 +1,32 @@
-class xuo
-  implements yqo<xrc>
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+
+public class xuo
+  extends ayqz
 {
-  xuo(xuh paramxuh) {}
+  public xuo(QQStoryMainController paramQQStoryMainController) {}
   
-  public xrc a()
+  protected void a(Object paramObject)
   {
-    return new xrc(null);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    yiz localyiz;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
+      }
+      paramObject = ((ntq)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(52);
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + ntq.a(paramObject));
+      }
+      localyiz = (yiz)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
+    } while (localyiz == null);
+    localyiz.a(paramObject);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
   }
 }
 

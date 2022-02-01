@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
-import awct;
+import anza;
+import axiv;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -45,7 +45,7 @@ public class MultiMsgUpHandler
     if (paramReqCommon.multiMsgType == 1) {
       paramReqBody.uint32_bu_type.set(1);
     }
-    if ((paramReqCommon.multiMsgType == 0) && (awct.b)) {
+    if ((paramReqCommon.multiMsgType == 0) && (axiv.b)) {
       paramReqBody.uint32_bu_type.set(2);
     }
   }
@@ -131,12 +131,12 @@ public class MultiMsgUpHandler
     byte[] arrayOfByte1 = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    amwm localamwm = paramProtoResp.statisInfo;
+    anza localanza = paramProtoResp.statisInfo;
     if (((FromServiceMsg)localObject1).getResultCode() != 1000)
     {
       i = ((FromServiceMsg)localObject1).getResultCode();
       if ((i == 1002) || (i == 1013)) {
-        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject1), "", localamwm, localRichProtoResp.resps);
+        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject1), "", localanza, localRichProtoResp.resps);
       }
     }
     List localList;
@@ -144,7 +144,7 @@ public class MultiMsgUpHandler
     {
       RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
       return;
-      setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject1), "", localamwm, localRichProtoResp.resps);
+      setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject1), "", localanza, localRichProtoResp.resps);
       continue;
       try
       {
@@ -156,7 +156,7 @@ public class MultiMsgUpHandler
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte1), localamwm, localRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte1), localanza, localRichProtoResp.resps);
       }
     }
     int i = 0;
@@ -189,7 +189,7 @@ public class MultiMsgUpHandler
         int j = 0;
       }
     }
-    setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte1), localamwm, (RichProto.RichProtoResp.RespCommon)localObject1);
+    setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte1), localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
     for (;;)
     {
       i += 1;
@@ -243,7 +243,7 @@ public class MultiMsgUpHandler
       }
       ((RichProto.RichProtoResp.MultiMsgUpResp)localObject1).blockSize = ((int)paramProtoResp.uint64_block_size.get());
       ((RichProto.RichProtoResp.MultiMsgUpResp)localObject1).transferedSize = ((int)paramProtoResp.uint64_up_offset.get());
-      setResult(0, 0, "", "", localamwm, (RichProto.RichProtoResp.RespCommon)localObject1);
+      setResult(0, 0, "", "", localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
       continue;
       label781:
       if (GroupPicUpHandler.shouldRetryByRetCode(j))
@@ -255,7 +255,7 @@ public class MultiMsgUpHandler
           return;
         }
       }
-      setResult(-1, -9527, BaseTransProcessor.getUrlReason(j), "", localamwm, (RichProto.RichProtoResp.RespCommon)localObject1);
+      setResult(-1, -9527, BaseTransProcessor.getUrlReason(j), "", localanza, (RichProto.RichProtoResp.RespCommon)localObject1);
     }
   }
   

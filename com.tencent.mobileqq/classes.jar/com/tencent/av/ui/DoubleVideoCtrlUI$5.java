@@ -1,73 +1,27 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Timer;
-import java.util.TimerTask;
-import lez;
+import lfe;
 
 class DoubleVideoCtrlUI$5
-  extends TimerTask
+  implements Runnable
 {
-  boolean a = this.b;
-  
-  DoubleVideoCtrlUI$5(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, boolean paramBoolean) {}
+  DoubleVideoCtrlUI$5(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) || (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null)) {}
-    lez locallez;
-    do
+    lfe locallfe = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+    QLog.w(this.this$0.jdField_d_of_type_JavaLangString, 1, "CheckRemoteCameraRunnable, 5s has past, 对方视频数据没来, mRecvVideoData[" + this.this$0.jdField_a_of_type_Boolean + "], SessionType[" + locallfe.jdField_d_of_type_Int + "], shutCameraAnswer[" + locallfe.n + "], cameraPermission[" + locallfe.o + "]");
+    if ((!this.this$0.jdField_a_of_type_Boolean) && (locallfe.jdField_d_of_type_Int == 2))
     {
-      return;
-      locallez = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-    } while (locallez == null);
-    if (locallez.S <= 0)
-    {
-      if (this.this$0.jdField_a_of_type_JavaUtilTimer != null)
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.e(locallfe.jdField_d_of_type_JavaLangString);
+      if ((locallfe.n) || (!locallfe.o))
       {
-        this.this$0.jdField_a_of_type_JavaUtilTimer.cancel();
-        this.this$0.jdField_a_of_type_JavaUtilTimer = null;
+        locallfe.a(-1011L, "CheckRemoteCameraRunnable", 1);
+        this.this$0.a("CheckRemoteCameraRunnable", 1);
       }
-      QLog.w(this.this$0.d, 1, "StartGlassCheck, cancel cur Timer");
-      return;
-    }
-    for (;;)
-    {
-      long l3;
-      try
-      {
-        if (this.this$0.jdField_a_of_type_JavaLangRefWeakReference == null) {
-          break label333;
-        }
-        l1 = ((AVActivity)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().d);
-        long l2 = System.currentTimeMillis();
-        if (l1 == 0L) {
-          break;
-        }
-        l3 = l2 - l1;
-        QLog.w(this.this$0.d, 1, "StartGlassCheck, interval[" + l3 + "], mCheck[" + this.a + "], mCurrentDoubleVideoGlassSwitch[" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R + "]");
-        if ((l3 > this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().S * 1000) && (this.a))
-        {
-          this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new DoubleVideoCtrlUI.5.1(this, l2, l1));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.w(this.this$0.d, 1, "StartGlassCheck, Exception", localException);
-        l1 = 0L;
-        continue;
-      }
-      if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R == 0) || (l3 >= 1000L)) {
-        break;
-      }
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new DoubleVideoCtrlUI.5.2(this));
-      return;
-      label333:
-      long l1 = 0L;
+      this.this$0.D(-1011L);
     }
   }
 }

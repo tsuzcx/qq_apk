@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity.home;
 
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class Conversation$28
   implements Runnable
@@ -11,25 +10,11 @@ class Conversation$28
   
   public void run()
   {
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.this$0.g)
-    {
-      Conversation.a(this.this$0, 800L);
-      boolean bool = NetworkUtil.isNetSupport(BaseApplication.getContext());
-      if (this.this$0.a != null)
-      {
-        localPullRefreshHeader = this.this$0.a;
-        if (!bool) {
-          break label57;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "delayUpdateMayKnowRecommendRunnable");
     }
-    label57:
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      return;
-    }
+    Conversation.l(this.this$0);
+    this.this$0.a.sendEmptyMessage(1009);
   }
 }
 

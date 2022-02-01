@@ -1,8 +1,21 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+
 public class bbqk
 {
-  public long a;
-  public long b;
-  public long c;
+  public static void a(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith(AppConstants.SDCARD_IMG_SAVE)))
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("src_file_path", paramString1);
+      localHashMap.put("des_file_path", paramString2);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "qq_images_file_delete", true, 0L, 0L, localHashMap, "");
+    }
+  }
 }
 
 

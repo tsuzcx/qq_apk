@@ -1,50 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import cooperation.qzone.QZoneShareManager;
-import java.net.URL;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class sja
-  extends sif
+final class sja
+  implements View.OnClickListener
 {
-  sja(sig paramsig) {}
+  sja(String paramString, Context paramContext, View.OnClickListener paramOnClickListener) {}
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onClick(View paramView)
   {
-    sig.a(this.a, false);
-    paramActionSheetItem = new Bundle();
-    paramActionSheetItem.putString("title", paramBaseArticleInfo.mTitle);
-    paramActionSheetItem.putString("desc", paramBaseArticleInfo.mSummary);
-    if ((paramBaseArticleInfo.qzoneShareUrl != null) && (paramBaseArticleInfo.qzoneShareUrl.contains("kandianshare.html5.qq.com")))
-    {
-      paramActionSheetItem.putString("detail_url", paramBaseArticleInfo.qzoneShareUrl);
-      paramString = new ArrayList(1);
-      if (paramBaseArticleInfo.getVideoCoverURL() != null) {
-        break label164;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "handleKingCardHintTextView span is clicked, guideUrl=" + this.jdField_a_of_type_JavaLangString);
     }
-    label164:
-    for (paramBaseArticleInfo = null;; paramBaseArticleInfo = paramBaseArticleInfo.getVideoCoverURL().getFile())
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      paramString.add(paramBaseArticleInfo);
-      paramActionSheetItem.putStringArrayList("image_url", paramString);
-      paramActionSheetItem.putLong("req_share_id", 0L);
-      QZoneShareManager.jumpToQzoneShare(sig.a(this.a), sig.a(this.a), paramActionSheetItem, null, 19202);
-      return;
-      paramActionSheetItem.putString("detail_url", paramString + "&sourcefrom=1");
-      break;
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("big_brother_source_key", pqx.a(0));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
     }
-  }
-  
-  public int b()
-  {
-    return 1;
-  }
-  
-  public int c()
-  {
-    return 2;
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

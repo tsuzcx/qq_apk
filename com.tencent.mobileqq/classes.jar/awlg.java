@@ -1,35 +1,43 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody.WifiPOIInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awlg
-  extends bhap
+public class awlg
+  implements View.OnClickListener
 {
-  awlg(awlc paramawlc) {}
+  public awlg(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
   
-  public void a(submsgtype0xdd.MsgBody paramMsgBody)
+  public void onClick(View paramView)
   {
-    switch (paramMsgBody.uint32_msg_type.get())
+    int i = 2;
+    if (!NetworkUtil.isNetworkAvailable())
     {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131693705, 0).a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    do
+    LocationRoom.Venue localVenue = LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationPickFragment", 2, "[venue] pick confirm click: venue: " + localVenue);
+    }
+    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a()) {}
+    for (;;)
     {
-      return;
-      paramMsgBody = (submsgtype0xdd.MsgBody.WifiPOIInfo)paramMsgBody.msg_poi_info.get();
-      String str = paramMsgBody.bytes_uid.get().toStringUtf8();
-      this.a.a(HotChatInfo.createHotChat(paramMsgBody, false, 0), paramMsgBody.uint32_group_code.get(), str, paramMsgBody.bytes_name.get().toStringUtf8());
-      return;
-      QQToast.a(this.a.a, amtj.a(2131704190), 0).a();
-      paramMsgBody = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((paramMsgBody == null) || (!(paramMsgBody instanceof QQAppInterface)));
-    paramMsgBody = (QQAppInterface)paramMsgBody;
-    bfyz.a(this.a.a, paramMsgBody.getCurrentAccountUin(), false, System.currentTimeMillis());
+      bdla.b(null, "CliOper", "", "", "0X800A962", "0X800A962", i, 0, "", "0", "0", "");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_picked_location", localVenue);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      break;
+      i = 1;
+    }
   }
 }
 

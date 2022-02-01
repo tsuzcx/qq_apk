@@ -1,12 +1,30 @@
-import android.view.animation.Interpolator;
+import android.util.Log;
+import com.tencent.qg.qq.GameDemoFragment;
+import com.tencent.qg.sdk.QGGLSurfaceView;
+import com.tencent.qg.sdk.QGRenderer.QGEventListener;
+import com.tencent.qg.sdk.doraemon.DoraemonApiWrapper;
 
-final class bjwk
-  implements Interpolator
+public class bjwk
+  implements QGRenderer.QGEventListener
 {
-  public float getInterpolation(float paramFloat)
+  public bjwk(GameDemoFragment paramGameDemoFragment) {}
+  
+  public void onCanvasCreated()
   {
-    return paramFloat * paramFloat * paramFloat * paramFloat * paramFloat;
+    Log.d("ejecta", "Event: Canvas was created");
+    this.a.a.init();
+    String[] arrayOfString = GameDemoFragment.a(this.a);
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      GameDemoFragment.a(this.a).loadJavaScriptFileFromSDCard(str);
+      i += 1;
+    }
   }
+  
+  public void onDrawFrame() {}
 }
 
 

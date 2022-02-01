@@ -1,68 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptMonitor.1;
-import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptMonitor.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.articlesummary.ChannelInfo;
 
-public class pso
+class pso
+  implements pnq
 {
-  public static void a()
+  pso(psf parampsf) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject = syn.a().a();
-    if (localObject != null)
+    paramView = (articlesummary.ChannelInfo)paramView.getTag();
+    if (paramView != null)
     {
-      QLog.d("RIJImageOptMonitor", 1, "executing jobs size: " + ((CopyOnWriteArrayList)localObject).size());
-      if (((CopyOnWriteArrayList)localObject).size() > 0)
-      {
-        localObject = ((CopyOnWriteArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          QLog.d("RIJImageOptMonitor", 1, new Object[] { (syo)((Iterator)localObject).next() });
-        }
+      if ((!paramView.bytes_channel_url.has()) || (paramView.bytes_channel_url.get() == null)) {
+        break label76;
+      }
+      if (!TextUtils.isEmpty(paramView.bytes_channel_url.get().toStringUtf8())) {
+        pkh.a(psf.a(this.a).a().a(), paramView.bytes_channel_url.get().toStringUtf8());
       }
     }
-  }
-  
-  public static void a(syo paramsyo)
-  {
-    ThreadManager.getSubThreadHandler().postDelayed(new RIJImageOptMonitor.1(paramsyo), psn.a.a());
-  }
-  
-  public static String[] a(String paramString)
-  {
-    try
-    {
-      InetAddress[] arrayOfInetAddress = InetAddress.getAllByName(paramString);
-      if ((arrayOfInetAddress != null) && (arrayOfInetAddress.length > 0))
-      {
-        String[] arrayOfString = new String[arrayOfInetAddress.length];
-        int i = 0;
-        for (;;)
-        {
-          paramString = arrayOfString;
-          if (i >= arrayOfInetAddress.length) {
-            break;
-          }
-          arrayOfString[i] = arrayOfInetAddress[i].getHostAddress();
-          i += 1;
-        }
-        return paramString;
-      }
-    }
-    catch (UnknownHostException paramString)
-    {
-      QLog.e("RIJImageOptMonitor", 1, paramString.getMessage());
-      paramString = null;
-    }
-    return null;
-  }
-  
-  public static void b(syo paramsyo)
-  {
-    ThreadManager.post(new RIJImageOptMonitor.2(paramsyo), 2, null, true);
+    return;
+    label76:
+    osg.b(psf.a(this.a).a().a(), paramView.uint32_channel_id.get(), pqw.a(paramView), paramView.uint32_channel_type.get(), 6, null);
   }
 }
 

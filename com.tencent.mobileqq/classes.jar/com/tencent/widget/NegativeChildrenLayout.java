@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bjrg;
-import bjsa;
+import blcs;
+import bldm;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -22,10 +22,10 @@ public class NegativeChildrenLayout
 {
   int jdField_a_of_type_Int;
   Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bjsa(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bldm(this);
   View jdField_a_of_type_AndroidViewView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public bjrg a;
+  public blcs a;
   ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
   public NegativeChildrenLayout(Context paramContext)
@@ -44,10 +44,10 @@ public class NegativeChildrenLayout
   
   private void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560239, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131370540));
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131366716);
-    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(2131377134);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560285, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131370723));
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131366832);
+    paramContext = this.jdField_a_of_type_AndroidViewView.findViewById(2131377408);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramContext.getLayoutParams();
     localLayoutParams.leftMargin = 0;
     localLayoutParams.rightMargin = 0;
@@ -76,9 +76,9 @@ public class NegativeChildrenLayout
     {
       try
       {
-        ImageView localImageView = (ImageView)paramView.findViewById(2131369825);
-        TextView localTextView1 = (TextView)paramView.findViewById(2131378982);
-        TextView localTextView2 = (TextView)paramView.findViewById(2131368963);
+        ImageView localImageView = (ImageView)paramView.findViewById(2131369995);
+        TextView localTextView1 = (TextView)paramView.findViewById(2131379276);
+        TextView localTextView2 = (TextView)paramView.findViewById(2131369124);
         j = 8;
         str = "";
         if (!paramBoolean) {
@@ -126,14 +126,14 @@ public class NegativeChildrenLayout
     while ((paramDislikeInfo == null) || (TextUtils.isEmpty(paramDislikeInfo.a))) {
       return;
     }
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560240, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560286, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
     localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     localView.setTag(paramDislikeInfo);
     this.jdField_a_of_type_JavaUtilArrayList.add(localView);
   }
   
-  public void setData(ArrayList<DislikeInfo> paramArrayList, String paramString, bjrg parambjrg)
+  public void setData(ArrayList<DislikeInfo> paramArrayList, String paramString, blcs paramblcs)
   {
     if (paramArrayList == null) {
       return;
@@ -161,7 +161,7 @@ public class NegativeChildrenLayout
       a((View)this.jdField_a_of_type_JavaUtilArrayList.get(i), null);
       i += 1;
     }
-    this.jdField_a_of_type_Bjrg = parambjrg;
+    this.jdField_a_of_type_Blcs = paramblcs;
   }
   
   public void setLastSeparateLineUnvis()
@@ -171,11 +171,11 @@ public class NegativeChildrenLayout
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
       View localView1 = (View)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      localView2 = localView1.findViewById(2131377134);
+      localView2 = localView1.findViewById(2131377408);
       if (i != this.jdField_a_of_type_Int) {
         break label68;
       }
-      localView1.setBackgroundResource(2130842967);
+      localView1.setBackgroundResource(2130842999);
     }
     label68:
     for (int j = 4;; j = 0)
@@ -191,7 +191,7 @@ public class NegativeChildrenLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.NegativeChildrenLayout
  * JD-Core Version:    0.7.0.1
  */

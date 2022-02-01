@@ -1,24 +1,8 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
 
-public class olr
-  extends GestureDetector.SimpleOnGestureListener
+public abstract interface olr<T>
 {
-  private WeakReference<oiy> a;
-  
-  public olr(oiy paramoiy)
-  {
-    this.a = new WeakReference(paramoiy);
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((oiy)this.a.get()).a(true);
-    }
-    return false;
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, T paramT, Bundle paramBundle);
 }
 
 

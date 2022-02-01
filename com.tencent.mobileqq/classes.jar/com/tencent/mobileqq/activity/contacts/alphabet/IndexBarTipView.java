@@ -81,7 +81,7 @@ public class IndexBarTipView
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     this.c = paramContext.getResources().getColor(17170444);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDimension(2131297201);
+    this.jdField_a_of_type_Float = paramContext.getResources().getDimension(2131297202);
     if (paramAttributeSet != null)
     {
       paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.IndexBar);

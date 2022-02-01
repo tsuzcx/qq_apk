@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pum;
-import tcn;
+import qfg;
+import tpy;
 
 public class FastWebModule$2
   implements Runnable
 {
-  public FastWebModule$2(pum parampum, tcn paramtcn, boolean paramBoolean, int paramInt, String paramString) {}
+  public FastWebModule$2(qfg paramqfg, tpy paramtpy, boolean paramBoolean, int paramInt, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Tcn.a(this.jdField_a_of_type_Boolean, "", this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Tpy.a(this.jdField_a_of_type_Boolean, "", this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

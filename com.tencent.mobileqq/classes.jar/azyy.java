@@ -1,41 +1,44 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.theme.SkinnableColorStateList;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.style.ImageSpan;
 
-public class azyy
-  extends azza
+class azyy
+  extends ImageSpan
 {
-  public List<azys> a(View paramView)
+  public azyy(Context paramContext, int paramInt1, int paramInt2)
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramView instanceof ImageView)) {
-      a(((ImageView)paramView).getDrawable(), localArrayList, 1);
+    super(paramContext, paramInt1, paramInt2);
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    if (this.mVerticalAlignment == 0) {
+      paramInt1 = paramInt5 - paramCharSequence.getBounds().bottom;
     }
-    do
+    for (;;)
     {
-      do
+      paramCanvas.save();
+      paramCanvas.translate(paramFloat, paramInt1);
+      paramCharSequence.draw(paramCanvas);
+      paramCanvas.restore();
+      return;
+      if (this.mVerticalAlignment == 1)
       {
-        return localArrayList;
-      } while (!(paramView instanceof TextView));
-      localObject = ((TextView)paramView).getCompoundDrawables();
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        a(localObject[i], localArrayList, 2);
-        i += 1;
+        paramInt1 = 0 - paramPaint.getFontMetricsInt().descent;
       }
-      localObject = ((TextView)paramView).getTextColors();
-    } while (!(localObject instanceof SkinnableColorStateList));
-    paramView = (SkinnableColorStateList)localObject;
-    Object localObject = new azys(3, ((SkinnableColorStateList)localObject).skinData);
-    ((azys)localObject).jdField_a_of_type_Array2dOfInt = paramView.getStateSpecs();
-    ((azys)localObject).jdField_a_of_type_ArrayOfInt = paramView.getColors();
-    localArrayList.add(localObject);
-    return localArrayList;
+      else
+      {
+        paramPaint = paramPaint.getFontMetricsInt();
+        paramInt1 = paramPaint.descent;
+        paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2 - paramCharSequence.getBounds().bottom / 2;
+      }
+    }
   }
 }
 

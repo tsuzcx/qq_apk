@@ -1,26 +1,69 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoyw
-  implements CompoundButton.OnCheckedChangeListener
+  implements aozb
 {
-  public aoyw(ArkAuthorityInfoActivity paramArkAuthorityInfoActivity, int paramInt) {}
+  public aoyw(QQDailyArkView paramQQDailyArkView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    String str1 = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
-    String str2 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
+    if (QQDailyArkView.a(this.a) == null) {}
+    View localView;
+    do
     {
-      aopl.a(str1, str2, str3, i);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      QQDailyArkView.b(this.a);
+      QQDailyArkView.a(this.a).setVisibility(0);
+      localView = QQDailyArkView.a(this.a).findViewById(2131370446);
+      QQDailyArkView.a(this.a, QQDailyArkView.a(this.a), 0);
+      this.a.requestLayout();
+    } while (localView == null);
+    localView.setVisibility(0);
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean, ArkViewModel paramArkViewModel)
+  {
+    if (QQDailyArkView.a(this.a) == null) {
       return;
     }
+    if ((paramArkViewModel != null) && (paramArkViewModel.GetAppScriptType() == 2) && (!ArkAppCenter.d()))
+    {
+      QLog.i("QQDailyArkView", 2, "onLoadFailed.ARKAPP_TYPE_RELOAD");
+      a();
+      return;
+    }
+    paramString = QQDailyArkView.a(this.a);
+    if (paramBoolean) {
+      paramString.setOnClickListener(new aoyx(this, paramArkViewModel));
+    }
+    for (;;)
+    {
+      QQDailyArkView.b(this.a);
+      paramString.setVisibility(0);
+      paramArkViewModel = paramString.findViewById(2131370446);
+      QQDailyArkView.a(this.a, paramString, 0);
+      this.a.requestLayout();
+      if (paramArkViewModel == null) {
+        break;
+      }
+      paramArkViewModel.setVisibility(4);
+      return;
+      paramString.setOnClickListener(null);
+    }
+  }
+  
+  public void b()
+  {
+    if (QQDailyArkView.a(this.a) == null) {
+      return;
+    }
+    QQDailyArkView.a(this.a).setVisibility(8);
+    QQDailyArkView.a(this.a, QQDailyArkView.a(this.a), 8);
   }
 }
 

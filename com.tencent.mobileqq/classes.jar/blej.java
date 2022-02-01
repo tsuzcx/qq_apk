@@ -1,12 +1,18 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.weiyun.transmission.WeiyunTransmissionStatus;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
-final class blej
-  implements INetEventHandler
+class blej
+  extends View.AccessibilityDelegate
 {
-  public void onNetChangeEvent(boolean paramBoolean)
+  blej(bleh parambleh) {}
+  
+  @TargetApi(14)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    WeiyunTransmissionStatus.getInstance().onReceiveNetChanged(paramBoolean);
+    if (paramInt != 32) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
   }
 }
 

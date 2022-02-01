@@ -1,26 +1,49 @@
-import com.tencent.mobileqq.search.searchengine.MiniProgramSearchEngine;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bbfi
-  implements Comparator<bayy>
+  extends bbfj
 {
-  public bbfi(MiniProgramSearchEngine paramMiniProgramSearchEngine) {}
-  
-  public int a(bayy parambayy1, bayy parambayy2)
+  private Drawable a(View paramView, String paramString)
   {
-    int i = parambayy2.a[2] - parambayy1.a[2];
-    if (i != 0) {}
-    int j;
-    do
+    if ((paramView != null) && (!TextUtils.isEmpty(paramString))) {
+      try
+      {
+        paramString = paramView.getClass().getDeclaredField(paramString);
+        paramString.setAccessible(true);
+        paramView = paramString.get(paramView);
+        if ((paramView instanceof Drawable))
+        {
+          paramView = (Drawable)paramView;
+          return paramView;
+        }
+      }
+      catch (Exception paramView)
+      {
+        QLog.d("GrabMainTabResourceName", 1, paramView, new Object[0]);
+      }
+    }
+    return null;
+  }
+  
+  public List<bbfb> a(View paramView)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramView instanceof TabDragAnimationView))
     {
-      return i;
-      j = parambayy1.a[0] - parambayy2.a[0];
-      i = j;
-    } while (j != 0);
-    parambayy1 = parambayy1.c().substring(parambayy1.a[0] + parambayy1.a[1]);
-    parambayy2 = parambayy2.c().substring(parambayy2.a[0] + parambayy2.a[1]);
-    return ChnToSpell.a(parambayy1, 2).compareTo(ChnToSpell.a(parambayy2, 2));
+      a(a(paramView, "mBgDrawable"), localArrayList, 0);
+      a(a(paramView, "mBgPressedDrawable"), localArrayList, 0);
+      a(a(paramView, "mEmotionDrawable"), localArrayList, 0);
+      a(a(paramView, "mEmotionPressedDrawable"), localArrayList, 0);
+      a(a(paramView, "mClickAnimationDrawable"), localArrayList, 0);
+    }
+    return localArrayList;
   }
 }
 

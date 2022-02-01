@@ -1,90 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.device.ble.JNIEngineLite;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Set;
-import mqq.os.MqqHandler;
-
 class aaqn
-  extends BroadcastReceiver
+  implements bgha
 {
-  aaqn(aaqk paramaaqk) {}
+  aaqn(aaqm paramaaqm, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(String paramString1, String paramString2)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceBLE2", 2, "mGattUpdateReceiver onReceive action=" + paramContext);
+    if (bggl.jdField_a_of_type_JavaLangString.equals(paramString2)) {
+      this.jdField_a_of_type_Aaqm.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"id\":" + paramString2 + "}" });
     }
-    if ("com.tencent.device.ble.ACTION_GATT_CONNECTED".equals(paramContext)) {
-      abdm.a().a(null, "Net_Bind_BLE_Connect", 0);
-    }
-    do
-    {
-      do
-      {
-        int i;
-        boolean bool;
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              if (!"com.tencent.device.ble.ACTION_GATT_DISCONNECTED".equals(paramContext)) {
-                break;
-              }
-              i = paramIntent.getIntExtra("com.tencent.device.ble.EXTRA_BLEID", 0);
-              paramIntent.getIntExtra("com.tencent.device.ble.EXTRA_STATUS", 0);
-              paramContext = this.a.a(i);
-              if (paramContext != null)
-              {
-                paramContext.jdField_a_of_type_Boolean = false;
-                paramContext.c = false;
-                paramContext.b = false;
-                JNIEngineLite.disconnectBle(paramContext.jdField_a_of_type_Int);
-                aaqk.b(this.a).remove(paramContext);
-                if (this.a.jdField_a_of_type_Aawy == paramContext) {
-                  this.a.jdField_a_of_type_Aawy = null;
-                }
-                aaqk.a(this.a).remove(paramContext);
-                aaqk.a(this.a, i);
-                this.a.a(paramContext);
-                return;
-              }
-            } while (!QLog.isColorLevel());
-            QLog.e("DeviceBLE2", 2, "ACTION_GATT_DISCONNECTED but no peerInfo with id:" + i);
-            return;
-            if ((!"com.tencent.device.ble.ACTION_GATT_SET_NOTIFICATION_FAILED".equals(paramContext)) && (!"com.tencent.device.ble.ACTION_GATT_NOT_QQ".equals(paramContext))) {
-              break;
-            }
-            i = paramIntent.getIntExtra("com.tencent.device.ble.EXTRA_BLEID", 0);
-            paramContext = this.a.a(i);
-          } while (paramContext == null);
-          aaqk.a(this.a, i);
-          this.a.a(paramContext);
-          return;
-          if ("com.tencent.device.ble.ACTION_DATA_AVAILABLE".equals(paramContext))
-          {
-            JNIEngineLite.bleReceived(paramIntent.getIntExtra("com.tencent.device.ble.EXTRA_BLEID", 0), paramIntent.getByteArrayExtra("com.tencent.device.ble.EXTRA_DATA"));
-            return;
-          }
-          if (!"com.tencent.device.ble.ACTION_DATA_WRITE_RST".equals(paramContext)) {
-            break;
-          }
-          i = paramIntent.getIntExtra("com.tencent.device.ble.EXTRA_BLEID", 0);
-          bool = paramIntent.getBooleanExtra("com.tencent.device.ble.EXRTA_RESULT", false);
-          paramContext = this.a.a(i);
-        } while (bool);
-        aaqk.a(this.a, i);
-      } while (paramContext == null);
-      this.a.a(paramContext);
-      return;
-    } while ((!"onDeviceVerifyRsp".equals(paramContext)) || (this.a.jdField_a_of_type_MqqOsMqqHandler == null));
-    this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(100);
   }
 }
 

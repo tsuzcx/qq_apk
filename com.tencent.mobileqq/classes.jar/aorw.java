@@ -1,61 +1,46 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
 
 public class aorw
-  implements aosj
+  extends aosi
 {
-  private String a(QQAppInterface paramQQAppInterface, String paramString)
+  public aorw(QQAppInterface paramQQAppInterface, aosm paramaosm)
   {
-    Object localObject = null;
-    String str = null;
-    SessionInfo localSessionInfo = aopk.a();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (localSessionInfo != null) {
-        str = ContactUtils.getNicknameInSession(paramQQAppInterface, localSessionInfo, paramString.equals(paramQQAppInterface.getCurrentUin()), paramString);
-      }
-      if (str != null)
-      {
-        localObject = str;
-        if (!TextUtils.equals(str, paramString)) {}
-      }
-      else
-      {
-        str = ContactUtils.getDateNickName(paramQQAppInterface, paramString);
-        localObject = str;
-        if (TextUtils.isEmpty(str)) {
-          localObject = ContactUtils.getNick(paramQQAppInterface, paramString, 0);
-        }
-      }
-    }
-    return localObject;
+    super(paramQQAppInterface, paramaosm);
   }
   
-  public EIPCResult a(Bundle paramBundle)
+  private void a(QQMessageFacade.Message paramMessage)
   {
-    Object localObject = aori.a();
-    if (localObject == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().msgNotifyManager.b() == 1)
     {
-      QLog.e("ArkApp.GetNicknameByViewHandler", 1, "Handler_GetNickName.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
+      if ((AppConstants.FRIEND_SYSTEM_MSG_UIN.equals(paramMessage.frienduin)) || (AppConstants.MAYKNOW_RECOMMEND_UIN.equals(paramMessage.frienduin)) || (AppConstants.FRIEND_ANNIVER_UIN.equals(paramMessage.frienduin)))
+      {
+        paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramMessage.senderuin, true);
+        this.jdField_a_of_type_Aosm.a(paramMessage);
+      }
     }
-    paramBundle = a((QQAppInterface)localObject, paramBundle.getString("Uin", ((QQAppInterface)localObject).getCurrentAccountUin()));
-    localObject = new Bundle();
-    if (TextUtils.isEmpty(paramBundle))
-    {
-      QLog.e("ArkApp.GetNicknameByViewHandler", 1, "Handler_GetNickName.onCall, nickname is empty");
-      ((Bundle)localObject).putString("Nickname", "");
+    else {
+      return;
     }
-    for (;;)
-    {
-      return EIPCResult.createResult(0, (Bundle)localObject);
-      ((Bundle)localObject).putString("Nickname", paramBundle);
-    }
+    paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramMessage.frienduin, true);
+    this.jdField_a_of_type_Aosm.a(paramMessage);
+  }
+  
+  public int a(QQMessageFacade.Message paramMessage)
+  {
+    return -113;
+  }
+  
+  public aosm a(QQMessageFacade.Message paramMessage)
+  {
+    a(paramMessage);
+    String str = a() + ": ";
+    this.jdField_a_of_type_Aosm.b(str);
+    this.jdField_a_of_type_Aosm.d(c());
+    b(paramMessage);
+    return this.jdField_a_of_type_Aosm;
   }
 }
 

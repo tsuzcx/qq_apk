@@ -1,13 +1,15 @@
-import android.arch.lifecycle.MutableLiveData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class blzi
-  extends bnav
+  implements DialogInterface.OnClickListener
 {
-  private MutableLiveData<blwu> a = new MutableLiveData();
+  public blzi(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public MutableLiveData<blwu> a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a;
+    this.a.finish();
   }
 }
 

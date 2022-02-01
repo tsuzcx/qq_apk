@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import alpl;
+import amol;
 import android.os.Build.VERSION;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.WebSsoBody.STServiceMonitItem;
@@ -20,37 +20,48 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.app.NewIntent;
-import nma;
+import nta;
 
 public class ApolloStoreStabilityReportManager$3
   implements Runnable
 {
-  public ApolloStoreStabilityReportManager$3(alpl paramalpl) {}
+  public ApolloStoreStabilityReportManager$3(amol paramamol) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList(alpl.a(this.this$0));
-    alpl.a(this.this$0);
-    try
+    if ((amol.a(this.this$0) == null) || (amol.a(this.this$0).size() == 0)) {
+      QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "mApolloStoreStabilityWatchQueue is empty");
+    }
+    do
     {
-      Object localObject2 = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.4.8");
-      Object localObject1 = new WebSSOAgent.UniSsoServerReq();
-      ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
-      if ((localArrayList == null) || (localArrayList.size() == 0))
+      return;
+      ArrayList localArrayList = new ArrayList(amol.a(this.this$0));
+      amol.a(this.this$0);
+      try
       {
-        QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "mUploadJob. copyList is empty, no need to upload");
+        localObject2 = new WebSSOAgent.UniSsoServerReqComm();
+        ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
+        ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
+        ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.4.10");
+        localObject1 = new WebSSOAgent.UniSsoServerReq();
+        ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
+        if ((localArrayList == null) || (localArrayList.size() == 0))
+        {
+          QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "mUploadJob. copyList is empty, no need to upload");
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "mUploadJob failed ", localException);
         return;
       }
-      localObject2 = new WebSsoBody.STServiceMonitReq();
+      Object localObject2 = new WebSsoBody.STServiceMonitReq();
       int i = 0;
-      Object localObject3;
-      while (i < localArrayList.size())
+      while (i < localException.size())
       {
         localObject3 = new WebSsoBody.STServiceMonitItem();
-        HashMap localHashMap = (HashMap)localArrayList.get(i);
+        HashMap localHashMap = (HashMap)localException.get(i);
         if (localHashMap.get("errcode") != null) {
           ((WebSsoBody.STServiceMonitItem)localObject3).errcode.set(((Integer)localHashMap.get("errcode")).intValue());
         }
@@ -68,29 +79,21 @@ public class ApolloStoreStabilityReportManager$3
         i += 1;
       }
       ((WebSSOAgent.UniSsoServerReq)localObject1).pbReqData.set(ByteStringMicro.copyFrom(((WebSsoBody.STServiceMonitReq)localObject2).toByteArray()));
-      localObject2 = alpl.a();
-      if (localObject2 != null)
-      {
-        localObject3 = new NewIntent(((AppInterface)localObject2).getApp().getApplicationContext(), nma.class);
-        ((NewIntent)localObject3).putExtra("cmd", "apollo_dc_report.service_monit");
-        ((NewIntent)localObject3).putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
-        ((NewIntent)localObject3).setObserver(this.this$0);
-        ((AppInterface)localObject2).startServlet((NewIntent)localObject3);
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("mUploadJob copyList: ");
-        ((StringBuilder)localObject1).append(localArrayList);
-        QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, ((StringBuilder)localObject1).toString());
-        return;
+      localObject2 = amol.a();
+      if (localObject2 == null) {
+        break;
       }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "mUploadJob failed ", localException);
-      return;
-    }
+      Object localObject3 = new NewIntent(((AppInterface)localObject2).getApp().getApplicationContext(), nta.class);
+      ((NewIntent)localObject3).putExtra("cmd", "apollo_dc_report.service_monit");
+      ((NewIntent)localObject3).putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
+      ((NewIntent)localObject3).setObserver(this.this$0);
+      ((AppInterface)localObject2).startServlet((NewIntent)localObject3);
+    } while (!QLog.isColorLevel());
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("mUploadJob copyList: ");
+    ((StringBuilder)localObject1).append(localException);
+    QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, ((StringBuilder)localObject1).toString());
+    return;
     QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "mUploadJob failed. appInterface is null");
   }
 }

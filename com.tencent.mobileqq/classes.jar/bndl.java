@@ -1,36 +1,30 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton.2.1;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton.2.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.9.1;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.9.2;
+import java.util.concurrent.CountDownLatch;
+import mqq.os.MqqHandler;
 
 public class bndl
-  implements ModuleDownloadListener
+  implements bnkq
 {
-  bndl(bndj parambndj) {}
+  bndl(bnda parambnda) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onDownloadFinish(bnke parambnke, boolean paramBoolean)
   {
-    QLog.i("Q.qqstory.record.EditVideoButton", 2, "onDownloadCanceled " + paramString);
+    bnrh.b("AEBottomListPart", "loadAndHandleData---download finish, isSuccess=" + paramBoolean);
+    if (!paramBoolean)
+    {
+      bnda.a(this.a, true);
+      ThreadManager.getUIHandler().post(new AEBottomListPart.9.1(this));
+    }
+    bnda.a(this.a).countDown();
   }
   
-  public void onDownloadFailed(String paramString)
+  public void onProgressUpdate(bnke parambnke, int paramInt)
   {
-    QLog.i("Q.qqstory.record.EditVideoButton", 2, "onDownloadFailed " + paramString);
-    if ((this.a.a != null) && (this.a.a.getActivity() != null)) {
-      this.a.a.getActivity().runOnUiThread(new EditVideoButton.2.2(this));
+    if ((paramInt > 1) && (paramInt <= 100)) {
+      ThreadManager.getUIHandler().post(new AEBottomListPart.9.2(this, paramInt));
     }
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("cyber_clink_version_2.jar")) {}
-    while ((this.a.a == null) || (this.a.a.getActivity() == null)) {
-      return;
-    }
-    this.a.a.getActivity().runOnUiThread(new EditVideoButton.2.1(this));
   }
 }
 

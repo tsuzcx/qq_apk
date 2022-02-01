@@ -1,25 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import UserGrowth.stCallInfo;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class vlx
-  extends SimpleJob<Object>
+public class vlx
 {
-  vlx(vls paramvls, String paramString1, String paramString2, vmb paramvmb)
+  public static void a(Activity paramActivity, vmb paramvmb)
   {
-    super(paramString1);
+    stCallInfo localstCallInfo = vau.a().a();
+    if ((localstCallInfo != null) && (localstCallInfo.switch_call_live))
+    {
+      vmp.e("OuterInterceptManager", "stGlobalConfig.callinfo: " + localstCallInfo);
+      if (paramvmb != null) {
+        paramvmb.b();
+      }
+      b(paramActivity, paramvmb);
+    }
+    while (paramvmb == null) {
+      return;
+    }
+    paramvmb.a();
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  private static void b(Activity paramActivity, vmb paramvmb)
   {
-    vls.a(this.jdField_a_of_type_Vls, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Vmb);
-    return null;
-  }
-  
-  public int getJobType()
-  {
-    return 4;
+    ThreadManager.getUIHandler().post(new OuterInterceptManager.1(paramActivity, paramvmb));
   }
 }
 

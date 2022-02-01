@@ -1,18 +1,47 @@
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.tavcut.timeline.TimelineView.SpeedChangeCallback;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+import android.content.Context;
+import android.view.View.OnClickListener;
 
 public class bmhd
-  implements TimelineView.SpeedChangeCallback
 {
-  public bmhd(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = true;
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = true;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean = true;
+  private String d;
   
-  public void onChangeFailed(int paramInt) {}
-  
-  public void onChangeSucc(float paramFloat)
+  public bmhd(Context paramContext)
   {
-    this.a.jdField_a_of_type_JavaLangFloat = Float.valueOf(this.a.jdField_a_of_type_Float);
-    AEEditorVideoClipFragment.a(this.a).setSpeed(paramFloat, true);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public bmha a()
+  {
+    return new bmha(this, null);
+  }
+  
+  public bmhd a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bmhd a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.d = paramString;
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public bmhd b(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
   }
 }
 

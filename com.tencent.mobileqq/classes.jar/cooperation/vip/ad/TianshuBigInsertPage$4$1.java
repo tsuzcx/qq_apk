@@ -5,10 +5,10 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.drawable.Drawable;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import bkvx;
-import bkyw;
-import bkyx;
-import bkzb;
+import bmhg;
+import bmkw;
+import bmkx;
+import bmlb;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.home.Conversation;
@@ -24,13 +24,13 @@ import cooperation.vip.pb.TianShuAccess.AdItem;
 public class TianshuBigInsertPage$4$1
   implements Runnable
 {
-  public TianshuBigInsertPage$4$1(bkzb parambkzb, PreloadManager.PathResult paramPathResult) {}
+  public TianshuBigInsertPage$4$1(bmlb parambmlb, PreloadManager.PathResult paramPathResult) {}
   
   public void run()
   {
     QLog.d("TianshuBigInsertPage", 2, "show insert page...");
-    bkvx.a(bkyx.a(this.jdField_a_of_type_Bkzb.a));
-    bkyx.a(this.jdField_a_of_type_Bkzb.a).addView(bkyx.a(this.jdField_a_of_type_Bkzb.a));
+    bmhg.a(bmkx.a(this.jdField_a_of_type_Bmlb.a));
+    bmkx.a(this.jdField_a_of_type_Bmlb.a).addView(bmkx.a(this.jdField_a_of_type_Bmlb.a));
     Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
     localObject1 = URLDrawable.getFileDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$PathResult.filePath, (URLDrawable.URLDrawableOptions)localObject1);
     try
@@ -44,9 +44,9 @@ public class TianshuBigInsertPage$4$1
       if (i > 0)
       {
         QLog.d("TianshuBigInsertPage", 2, "calc height: " + i);
-        localObject2 = bkyx.a(this.jdField_a_of_type_Bkzb.a).getLayoutParams();
+        localObject2 = bmkx.a(this.jdField_a_of_type_Bmlb.a).getLayoutParams();
         ((ViewGroup.LayoutParams)localObject2).height = i;
-        bkyx.a(this.jdField_a_of_type_Bkzb.a).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        bmkx.a(this.jdField_a_of_type_Bmlb.a).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
     }
     catch (Throwable localThrowable)
@@ -56,10 +56,10 @@ public class TianshuBigInsertPage$4$1
         localThrowable.printStackTrace();
       }
     }
-    bkyx.a(this.jdField_a_of_type_Bkzb.a).setBackgroundDrawable((Drawable)localObject1);
-    bkyx.a(bkyx.b(this.jdField_a_of_type_Bkzb.a));
-    if ((bkyx.a(this.jdField_a_of_type_Bkzb.a) != null) && (bkyx.a(this.jdField_a_of_type_Bkzb.a).a() != null) && (bkyx.a(this.jdField_a_of_type_Bkzb.a).a().app != null) && (bkyx.a(this.jdField_a_of_type_Bkzb.a) != null)) {
-      bkyw.a(bkyx.a(this.jdField_a_of_type_Bkzb.a).a().app, 101, String.valueOf(bkyx.a(this.jdField_a_of_type_Bkzb.a).iAdId.get()), bkyx.a(this.jdField_a_of_type_Bkzb.a).traceinfo.get());
+    bmkx.a(this.jdField_a_of_type_Bmlb.a).setBackgroundDrawable((Drawable)localObject1);
+    bmkx.a(bmkx.b(this.jdField_a_of_type_Bmlb.a));
+    if ((bmkx.a(this.jdField_a_of_type_Bmlb.a) != null) && (bmkx.a(this.jdField_a_of_type_Bmlb.a).a() != null) && (bmkx.a(this.jdField_a_of_type_Bmlb.a).a().app != null) && (bmkx.a(this.jdField_a_of_type_Bmlb.a) != null)) {
+      bmkw.a(bmkx.a(this.jdField_a_of_type_Bmlb.a).a().app, 101, String.valueOf(bmkx.a(this.jdField_a_of_type_Bmlb.a).iAdId.get()), bmkx.a(this.jdField_a_of_type_Bmlb.a).traceinfo.get());
     }
   }
 }

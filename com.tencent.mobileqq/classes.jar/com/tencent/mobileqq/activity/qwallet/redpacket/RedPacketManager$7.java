@@ -12,7 +12,7 @@ class RedPacketManager$7
     //   0: new 31	java/lang/StringBuilder
     //   3: dup
     //   4: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   7: getstatic 37	akgj:f	Ljava/lang/String;
+    //   7: getstatic 37	alcc:f	Ljava/lang/String;
     //   10: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   13: aload_0
     //   14: getfield 18	com/tencent/mobileqq/activity/qwallet/redpacket/RedPacketManager$7:jdField_a_of_type_JavaLangString	Ljava/lang/String;

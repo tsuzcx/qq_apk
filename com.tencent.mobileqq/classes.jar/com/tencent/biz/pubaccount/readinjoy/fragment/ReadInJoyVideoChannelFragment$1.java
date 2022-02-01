@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import odq;
-import ofe;
+import olh;
+import omx;
 
 class ReadInJoyVideoChannelFragment$1
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyVideoChannelFragment$1
   
   public void run()
   {
-    odq.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", ofe.a(56, null), false);
+    olh.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", omx.a(56, null), false);
   }
 }
 

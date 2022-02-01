@@ -1,11 +1,11 @@
 package com.tencent.biz.richframework.part.block.base;
 
-import yzx;
+import zpc;
 
 public class PullLoadMoreAdapter$1
   implements Runnable
 {
-  public PullLoadMoreAdapter$1(yzx paramyzx) {}
+  public PullLoadMoreAdapter$1(zpc paramzpc) {}
   
   public void run()
   {

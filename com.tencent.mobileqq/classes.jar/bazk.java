@@ -1,134 +1,523 @@
+import android.animation.AnimatorSet;
+import android.animation.AnimatorSet.Builder;
+import android.animation.ObjectAnimator;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Looper;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
+import android.view.View.OnTouchListener;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.util.DisplayUtil;
-import java.util.List;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.qzonevip.gift.QzoneGiftManager.3;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleExplodeView;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.vip.diy.common.DIYLottieLoader;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import cooperation.qzone.zipanimate.ZipAnimationDrawable;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bazk
-  extends bazi
+  implements View.OnTouchListener, bazt, Manager
 {
-  public static final String k = bazk.class.getSimpleName();
-  public boolean b;
-  public boolean c;
-  public String l;
-  public String m;
-  public String n;
+  public static final float a;
+  private static bazk jdField_a_of_type_Bazk;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private bazo jdField_a_of_type_Bazo;
+  private bazp jdField_a_of_type_Bazp = new bazp(this, Looper.getMainLooper());
+  private Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
+  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  private ParticleDropView jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleDropView;
+  private ParticleExplodeView jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleExplodeView;
+  private DIYLottieLoader jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader;
+  private ZipAnimationDrawable jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable;
+  private WeakReference<FrameLayout> jdField_a_of_type_JavaLangRefWeakReference;
+  private HashMap<String, argx> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private ZipAnimationDrawable jdField_b_of_type_CooperationQzoneZipanimateZipAnimationDrawable;
+  private ImageView c;
   
-  protected bazk(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, UnifySearchCommon.ResultItem paramResultItem)
+  static
   {
-    super(paramString, paramLong, paramList, paramInt1, paramJSONObject, paramInt2, paramResultItem);
+    jdField_a_of_type_Float = ViewUtils.getScreenWidth() / 720.0F;
   }
   
-  protected bazk(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, DynamicSearch.ResultItem paramResultItem)
+  public static bazk a()
   {
-    super(paramString, paramLong, paramList, paramInt1, paramJSONObject, paramInt2, paramResultItem);
+    if (jdField_a_of_type_Bazk == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bazk == null) {
+        jdField_a_of_type_Bazk = new bazk();
+      }
+      return jdField_a_of_type_Bazk;
+    }
+    finally {}
   }
   
-  public void a(View paramView)
+  private ZipAnimationDrawable a(String paramString, int paramInt)
   {
-    super.a(paramView);
-    bbgk.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), this.n);
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("QzoneGiftManager", 1, "createAnimationDrawable mZipPath = null");
+      return null;
+    }
+    ZipAnimationDrawable localZipAnimationDrawable = new ZipAnimationDrawable();
+    String str = bazq.a(paramString);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QzoneGiftManager", 4, "createAnimationDrawable mZipPath = " + paramString + " resUrl = " + str);
+    }
+    localZipAnimationDrawable.setAnimationRes(str, paramInt);
+    localZipAnimationDrawable.setScale(jdField_a_of_type_Float);
+    localZipAnimationDrawable.clearFirstFrame();
+    return localZipAnimationDrawable;
   }
   
-  public void a(bbhn parambbhn)
+  private void a(int paramInt)
   {
-    if (!(parambbhn instanceof bbhp)) {
+    a(paramInt, 0);
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Bazp == null) {
       return;
     }
-    int i = parambbhn.a().getLayoutParams().width - DisplayUtil.dip2px(parambbhn.a().getContext(), 3.0F);
-    if (this.jdField_a_of_type_Bazd != null) {
-      bbcm.a(this, parambbhn, true, i);
+    if (this.jdField_a_of_type_Bazp.hasMessages(paramInt1)) {
+      this.jdField_a_of_type_Bazp.removeMessages(paramInt1);
     }
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    this.jdField_a_of_type_Bazp.sendEmptyMessageDelayed(paramInt1, paramInt2);
+  }
+  
+  private void a(argw paramargw, String paramString1, String paramString2)
+  {
+    Object localObject = new StringBuilder().append("loadVipARConfig bean == null ");
+    boolean bool;
+    if (paramargw == null)
     {
-      parambbhn.a().setTextColor(Color.parseColor("#737373"));
-      parambbhn.c().setTextColor(Color.parseColor("#4A4A4A"));
-      if (!TextUtils.isEmpty(this.l)) {
-        break label192;
+      bool = true;
+      QLog.i("VipAR", 1, bool + " giftName = " + paramString1);
+      if (paramargw != null) {
+        break label65;
       }
-      parambbhn.a().setVisibility(8);
-      label104:
-      if (!TextUtils.isEmpty(this.m)) {
-        break label254;
-      }
-      parambbhn.c().setVisibility(8);
-      label123:
-      if (!this.jdField_b_of_type_Boolean) {
-        break label276;
-      }
-      parambbhn.a().setGravity(1);
-      parambbhn.c().setGravity(1);
+      QLog.e("VipAR", 1, "checkARGift loadVipARConfig error VipARConfBean = null ");
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.n)) {
-        break label295;
-      }
-      parambbhn.a().setOnClickListener(null);
       return;
-      parambbhn.a().setTextColor(Color.parseColor("#262626"));
-      parambbhn.c().setTextColor(Color.parseColor("#737373"));
+      bool = false;
       break;
-      label192:
-      parambbhn.a().setVisibility(0);
-      if (this.c)
-      {
-        parambbhn.a().setText(bbgk.a(parambbhn.a(), i, 2, this.l, this.jdField_a_of_type_Bbfz.a, false, false));
-        break label104;
+      label65:
+      if ((paramargw.jdField_a_of_type_Int != 1) || (paramargw.jdField_a_of_type_JavaUtilArrayList == null)) {
+        break label146;
       }
-      parambbhn.a().setText(this.l);
-      break label104;
-      label254:
-      parambbhn.c().setVisibility(0);
-      parambbhn.c().setText(this.m);
-      break label123;
-      label276:
-      parambbhn.a().setGravity(3);
-      parambbhn.c().setGravity(3);
+      paramargw = paramargw.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramargw.hasNext())
+      {
+        localObject = (argx)paramargw.next();
+        if ((localObject != null) && (!TextUtils.isEmpty(paramString1)) && (paramString1.equalsIgnoreCase(((argx)localObject).jdField_a_of_type_JavaLangString))) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(paramString2, localObject);
+        }
+      }
     }
-    label295:
-    parambbhn.a().setOnClickListener(this);
+    label146:
+    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString2);
+    QLog.i("VipAR", 1, "checkARGift not AR gift switch = " + paramargw.jdField_a_of_type_Int + " configlist == null " + paramargw.jdField_a_of_type_JavaUtilArrayList);
   }
   
-  public void b(JSONObject paramJSONObject)
+  private void d()
   {
-    boolean bool2 = true;
-    this.l = paramJSONObject.optString("title");
-    this.m = paramJSONObject.optString("desc");
-    if (paramJSONObject.optInt("needCenter") == 1)
+    if (this.jdField_a_of_type_Bazp == null) {}
+    for (;;)
     {
-      bool1 = true;
-      this.jdField_b_of_type_Boolean = bool1;
-      this.n = paramJSONObject.optString("jumpUrl");
-      if (paramJSONObject.optInt("highlightTitle", 1) != 1) {
-        break label109;
-      }
-    }
-    label109:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.c = bool1;
-      this.j = paramJSONObject.optString("result_id");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("extra_report_info");
-      paramJSONObject = paramJSONObject.optJSONObject("imageInfo");
-      if (paramJSONObject == null) {
-        break label114;
-      }
-      a(paramJSONObject);
       return;
-      bool1 = false;
-      break;
+      int i = 1;
+      while (i < 9)
+      {
+        if (this.jdField_a_of_type_Bazp.hasMessages(i)) {
+          this.jdField_a_of_type_Bazp.removeMessages(i);
+        }
+        i += 1;
+      }
     }
-    label114:
-    this.jdField_a_of_type_Bazd = null;
+  }
+  
+  private void e()
+  {
+    if ((this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader == null) || (!a()))
+    {
+      QLog.e("QzoneGiftManager", 1, "preloadLottieZip error");
+      return;
+    }
+    String str = QzoneZipCacheHelper.getBasePath("aio_lottie_gift", String.valueOf(this.jdField_a_of_type_Bazo.d.hashCode())) + ".zip";
+    if (QLog.isColorLevel()) {
+      QLog.i("QzoneGiftManager", 2, " preloadLottieZip local path = " + str + " zipUrl = " + this.jdField_a_of_type_Bazo.d);
+    }
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(this.jdField_a_of_type_Bazo.d, str, new bazl(this));
+  }
+  
+  private void f()
+  {
+    DIYLottieLoader localDIYLottieLoader = new DIYLottieLoader(null, BaseApplicationImpl.getContext());
+    localDIYLottieLoader.setMemoryCacheSize((int)(MemoryManager.getAvailClassSize() / 2L));
+    this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader = localDIYLottieLoader;
+  }
+  
+  private void g()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = new DiniFlyAnimationView(BaseApplicationImpl.getContext());
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.loop(false);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new bazm(this));
+  }
+  
+  private void h()
+  {
+    if (!a()) {
+      return;
+    }
+    f();
+    g();
+    String str = QzoneZipCacheHelper.getBasePath("aio_lottie_gift", String.valueOf(this.jdField_a_of_type_Bazo.d.hashCode())) + ".zip";
+    this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader.fromNetworkWithCacheBitmap(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, this.jdField_a_of_type_Bazo.d, str, true);
+    a(1);
+  }
+  
+  private void i()
+  {
+    QLog.i("QzoneGiftManager", 1, "MSG_INIT_CONTENT_VIEW");
+    FrameLayout localFrameLayout;
+    if (BaseActivity.sTopActivity != null)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((FrameLayout)BaseActivity.sTopActivity.findViewById(16908290));
+      localFrameLayout = (FrameLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localFrameLayout == null) {
+        QLog.e("QzoneGiftManager", 1, "mParentLayout = null");
+      }
+    }
+    else
+    {
+      QLog.e("QzoneGiftManager", 1, "activity = null");
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(BaseApplicationImpl.getContext());
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnTouchListener(this);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+    localFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, localLayoutParams);
+    if (a())
+    {
+      this.jdField_a_of_type_Bazp.sendEmptyMessage(7);
+      return;
+    }
+    a(2);
+  }
+  
+  private void j()
+  {
+    QLog.i("QzoneGiftManager", 1, "MSG_INIT_VIEW");
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)
+    {
+      QLog.e("QzoneGiftManager", 1, "mCotentLayout = null");
+      return;
+    }
+    this.c = new ImageView(BaseApplicationImpl.getContext());
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.c);
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(BaseApplicationImpl.getContext());
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable);
+    this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(BaseApplicationImpl.getContext());
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_CooperationQzoneZipanimateZipAnimationDrawable);
+    this.jdField_b_of_type_AndroidWidgetImageView.setAlpha(0);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(ViewUtils.dpToPx(200.0F), ViewUtils.dpToPx(200.0F));
+    localLayoutParams.gravity = 17;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleExplodeView = new ParticleExplodeView(BaseApplicationImpl.getContext());
+    this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleDropView = new ParticleDropView(BaseApplicationImpl.getContext());
+    this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleDropView.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleExplodeView, localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleDropView, localLayoutParams);
+    a(3);
+  }
+  
+  private void k()
+  {
+    QLog.i("QzoneGiftManager", 1, "MSG_BOX_ANIMATION_START");
+    if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable != null)
+    {
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.start();
+      a(5, this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.getDuration() - 330);
+      a(4, this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.getDuration() - 300);
+    }
+    if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable == null) {
+      a(4, 0);
+    }
+  }
+  
+  private void l()
+  {
+    QLog.i("QzoneGiftManager", 1, "MSG_GIFT_ANIMATION_START");
+    n();
+    if (this.jdField_b_of_type_CooperationQzoneZipanimateZipAnimationDrawable != null) {
+      this.jdField_b_of_type_CooperationQzoneZipanimateZipAnimationDrawable.start();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleDropView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleDropView.b();
+    }
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetImageView, "scaleX", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetImageView, "scaleY", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetImageView, "alpha", new float[] { 0.0F, 1.0F });
+    localObjectAnimator3.setInterpolator(new DecelerateInterpolator());
+    localAnimatorSet.setDuration(400L);
+    localAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
+    localAnimatorSet.start();
+    if (this.jdField_b_of_type_CooperationQzoneZipanimateZipAnimationDrawable != null) {
+      a(6, this.jdField_b_of_type_CooperationQzoneZipanimateZipAnimationDrawable.getDuration() + 2000);
+    }
+  }
+  
+  private void m()
+  {
+    QLog.i("QzoneGiftManager", 1, "MSG_GIFT_PARTICLE_EXPLODE");
+    if (this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleExplodeView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleExplodeView.b();
+    }
+  }
+  
+  private void n()
+  {
+    QLog.i("QzoneGiftManager", 1, "MSG_SHADER_SHOW");
+    if (this.c != null)
+    {
+      this.c.setBackgroundColor(Color.parseColor("#000000"));
+      this.c.setAlpha(0);
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.c, "alpha", new float[] { 0.0F, 0.5F });
+      localObjectAnimator.setDuration(300L);
+      localObjectAnimator.start();
+    }
+  }
+  
+  private void o()
+  {
+    QLog.i("QzoneGiftManager", 1, "MSG_GIFT_ANIMATION_STOP");
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetFrameLayout, "alpha", new float[] { 1.0F, 0.0F });
+    localObjectAnimator.setDuration(500L);
+    localObjectAnimator.addListener(new bazn(this));
+    localObjectAnimator.start();
+  }
+  
+  private void p()
+  {
+    QLog.i("QzoneGiftManager", 1, "MSG_GIFT_LOTTIE_ANIMATION_SHOW");
+    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView == null) || (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)) {
+      return;
+    }
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, localLayoutParams);
+  }
+  
+  private void q()
+  {
+    QLog.i("QzoneGiftManager", 1, "MSG_RECYCLE_VIEW");
+    if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable != null) {
+      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.release();
+    }
+    if (this.jdField_b_of_type_CooperationQzoneZipanimateZipAnimationDrawable != null) {
+      this.jdField_b_of_type_CooperationQzoneZipanimateZipAnimationDrawable.release();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader != null) {
+      this.jdField_a_of_type_ComTencentMobileqqVipDiyCommonDIYLottieLoader.destroy();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAllAnimatorListener();
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    FrameLayout localFrameLayout;
+    do
+    {
+      return;
+      localFrameLayout = (FrameLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while ((localFrameLayout == null) || (this.jdField_a_of_type_AndroidWidgetFrameLayout == null));
+    localFrameLayout.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+  }
+  
+  public argx a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString).optString("giftZipUrl");
+      if (QLog.isColorLevel()) {
+        QLog.i("VipAR", 2, "isNeedARShow gift key = " + paramString + " map = " + this.jdField_a_of_type_JavaUtilHashMap.toString());
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if ((localEntry != null) && (!TextUtils.isEmpty((CharSequence)localEntry.getKey())) && (paramString.contains((CharSequence)localEntry.getKey())))
+        {
+          paramString = (argx)localEntry.getValue();
+          return paramString;
+        }
+      }
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Bazo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Bazo.b)) || (TextUtils.isEmpty(this.jdField_a_of_type_Bazo.c)))
+    {
+      QLog.e("QzoneGiftManager", 1, "onSuccess show fail : data = null ");
+      return;
+    }
+    this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable = a(this.jdField_a_of_type_Bazo.jdField_a_of_type_JavaLangString, 10);
+    this.jdField_b_of_type_CooperationQzoneZipanimateZipAnimationDrawable = a(this.jdField_a_of_type_Bazo.b, 10);
+    if (this.jdField_b_of_type_CooperationQzoneZipanimateZipAnimationDrawable != null)
+    {
+      this.jdField_b_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setShowLastFrameWhenStop(true);
+      this.jdField_b_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setRepeatAnimation(false);
+    }
+    String str = bazq.a(this.jdField_a_of_type_Bazo.c, "qzone_aio_gift");
+    if (!TextUtils.isEmpty(str))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("QzoneGiftManager", 4, "show Gift giftLocalPath = " + str);
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(str);
+    }
+    a(1);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QzoneGiftManager", 2, " preload data = " + paramString);
+    }
+    this.jdField_a_of_type_Bazo = bazo.a(paramString);
+    if (a())
+    {
+      e();
+      return;
+    }
+    if (this.jdField_a_of_type_Bazo != null)
+    {
+      bazq.a(null, this.jdField_a_of_type_Bazo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bazo.b, this.jdField_a_of_type_Bazo.c);
+      return;
+    }
+    QLog.e("QzoneGiftManager", 1, "preloadGiftData error with data = null");
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Bazo != null) && (this.jdField_a_of_type_Bazo.jdField_a_of_type_Int == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bazo.d));
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bazo == null)
+    {
+      QLog.e("QzoneGiftManager", 1, "onFail show fail mGiftData = null");
+      return;
+    }
+    QLog.e("QzoneGiftManager", 1, "onFail show fail mGiftData = " + this.jdField_a_of_type_Bazo.toString());
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QzoneGiftManager", 2, " startPlay data = " + paramString);
+    }
+    this.jdField_a_of_type_Bazo = bazo.a(paramString);
+    if (a())
+    {
+      h();
+      return;
+    }
+    if (this.jdField_a_of_type_Bazo != null)
+    {
+      bazq.a(this, this.jdField_a_of_type_Bazo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bazo.b, this.jdField_a_of_type_Bazo.c);
+      return;
+    }
+    QLog.e("QzoneGiftManager", 1, "preloadGiftData error with data = null");
+  }
+  
+  public void c()
+  {
+    QLog.i("QzoneGiftManager", 1, "onLoading");
+  }
+  
+  public void c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Object localObject = new JSONObject(paramString).optJSONObject("giftData");
+        if (localObject != null)
+        {
+          paramString = ((JSONObject)localObject).optString("giftName");
+          localObject = ((JSONObject)localObject).optString("giftZipUrl");
+          ThreadManager.getFileThreadHandler().post(new QzoneGiftManager.3(this, paramString, (String)localObject));
+          QLog.i("VipARGiftManager", 1, "checkIsNeedARGiftShow key gift = " + (String)localObject);
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        QLog.e("VipARGiftManager", 1, "checkIsNeedARGiftShow exception msg = " + paramString.getMessage());
+      }
+    }
+  }
+  
+  public void onDestroy()
+  {
+    d();
+    a(8);
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      d();
+      a(8);
+    }
+    return true;
   }
 }
 

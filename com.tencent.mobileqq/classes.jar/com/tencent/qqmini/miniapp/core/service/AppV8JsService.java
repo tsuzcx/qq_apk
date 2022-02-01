@@ -52,6 +52,9 @@ public class AppV8JsService
   public AppV8JsService(IMiniAppContext paramIMiniAppContext, boolean paramBoolean)
   {
     super(paramIMiniAppContext);
+    if (WnsConfig.getConfig("qqminiapp", "mini_app_enable_v8_service_debug", 0) > 0) {
+      this.engine.setDebuggerOption(true, false);
+    }
     this.engine.setLibLoader(new V8rtSoLoader());
     this.engine.initEngine(paramIMiniAppContext.getContext());
     this.injectFlutterFlag = paramBoolean;

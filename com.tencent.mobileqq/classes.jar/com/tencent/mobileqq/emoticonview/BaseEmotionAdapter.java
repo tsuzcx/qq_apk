@@ -61,7 +61,7 @@ public abstract class BaseEmotionAdapter
     this.emotionType = paramInt3;
     this.callback = paramEmoticonCallback;
     this.recycleViewMap = new ConcurrentHashMap();
-    this.emoticonTextColor = paramContext.getResources().getColor(2131166523);
+    this.emoticonTextColor = paramContext.getResources().getColor(2131166537);
     this.density = paramContext.getResources().getDisplayMetrics().density;
   }
   
@@ -91,7 +91,7 @@ public abstract class BaseEmotionAdapter
             if ((localView instanceof EmoticonPanelLinearLayout)) {
               ((EmoticonPanelLinearLayout)localView).setCallBack(null);
             }
-            Integer localInteger = (Integer)localView.getTag(2131366025);
+            Integer localInteger = (Integer)localView.getTag(2131366126);
             if (EmotionPanelViewPool.widthPixels == localInteger.intValue()) {
               EmotionPanelViewPool.getInstance().release(j, localView);
             }
@@ -121,7 +121,7 @@ public abstract class BaseEmotionAdapter
       if (localObject1 != null)
       {
         ((TextView)localObject1).setVisibility(8);
-        ((TextView)localObject1).setId(2131365982);
+        ((TextView)localObject1).setId(2131366083);
         ((TextView)localObject1).setTextColor(this.emoticonTextColor);
         ((TextView)localObject1).setTextSize(11.0F);
         localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
@@ -131,10 +131,10 @@ public abstract class BaseEmotionAdapter
         localRelativeLayout.addView((View)localObject1, localLayoutParams);
       }
       localObject1 = new URLImageView(this.mContext);
-      ((URLImageView)localObject1).setId(2131365977);
+      ((URLImageView)localObject1).setId(2131366078);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 56.0F), (int)(this.density * 56.0F));
       localLayoutParams.addRule(13, -1);
-      localLayoutParams.addRule(2, 2131365982);
+      localLayoutParams.addRule(2, 2131366083);
       localLayoutParams.addRule(14);
       ((URLImageView)localObject1).setVisibility(8);
       ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
@@ -142,10 +142,10 @@ public abstract class BaseEmotionAdapter
       localRelativeLayout.addView((View)localObject1, localLayoutParams);
       localObject1 = new ImageView(this.mContext);
       ((ImageView)localObject1).setVisibility(8);
-      ((ImageView)localObject1).setId(2131365983);
+      ((ImageView)localObject1).setId(2131366084);
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(7, 2131365977);
-      localLayoutParams.addRule(8, 2131365977);
+      localLayoutParams.addRule(7, 2131366078);
+      localLayoutParams.addRule(8, 2131366078);
       localRelativeLayout.addView((View)localObject1, localLayoutParams);
       if (AppSetting.c) {
         localRelativeLayout.setFocusable(true);
@@ -227,7 +227,7 @@ public abstract class BaseEmotionAdapter
       if (QLog.isColorLevel()) {
         QLog.d(TAG, 2, "recycleView viewType = " + paramInt);
       }
-      paramView.setTag(2131366025, Integer.valueOf(this.widthPixels));
+      paramView.setTag(2131366126, Integer.valueOf(this.widthPixels));
       localArrayList = (ArrayList)this.recycleViewMap.get(Integer.valueOf(paramInt));
       if (localArrayList == null)
       {
@@ -276,7 +276,7 @@ public abstract class BaseEmotionAdapter
     {
       return;
       paramView.setTag(localObject1);
-      paramEmotionPanelData = (URLImageView)paramView.findViewById(2131365977);
+      paramEmotionPanelData = (URLImageView)paramView.findViewById(2131366078);
       long l = System.currentTimeMillis();
       localObject2 = ((EmoticonInfo)localObject1).getDrawable(this.mContext, this.density);
       if (QLog.isColorLevel()) {
@@ -286,7 +286,7 @@ public abstract class BaseEmotionAdapter
       paramEmotionPanelData.setVisibility(0);
     } while (!(localObject1 instanceof PicEmoticonInfo));
     paramEmotionPanelData = (PicEmoticonInfo)localObject1;
-    Object localObject1 = (TextView)paramView.findViewById(2131365982);
+    Object localObject1 = (TextView)paramView.findViewById(2131366083);
     if (paramEmotionPanelData.emoticon != null)
     {
       localObject2 = paramEmotionPanelData.emoticon.name;
@@ -300,14 +300,14 @@ public abstract class BaseEmotionAdapter
     }
     else
     {
-      paramView = (ImageView)paramView.findViewById(2131365983);
+      paramView = (ImageView)paramView.findViewById(2131366084);
       if (!paramEmotionPanelData.isSound()) {
         break label308;
       }
       if (!paramEmotionPanelData.isNewSoundType()) {
         break label298;
       }
-      paramView.setImageResource(2130838322);
+      paramView.setImageResource(2130838335);
     }
     for (;;)
     {
@@ -319,7 +319,7 @@ public abstract class BaseEmotionAdapter
       ((TextView)localObject1).setVisibility(8);
       break;
       label298:
-      paramView.setImageResource(2130850356);
+      paramView.setImageResource(2130850462);
     }
     label308:
     paramView.setVisibility(4);
@@ -327,7 +327,7 @@ public abstract class BaseEmotionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.BaseEmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

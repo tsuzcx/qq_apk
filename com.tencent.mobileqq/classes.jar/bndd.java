@@ -1,19 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bndd
-  implements Parcelable.Creator<EditRecordVideoSource>
+class bndd
+  implements Animator.AnimatorListener
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
+  bndd(bnda parambnda) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new EditRecordVideoSource(paramParcel);
+    if (QLog.isColorLevel()) {
+      QLog.d("AEBottomListPart", 2, "Watermark panel down");
+    }
   }
   
-  public EditRecordVideoSource[] a(int paramInt)
-  {
-    return new EditRecordVideoSource[paramInt];
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

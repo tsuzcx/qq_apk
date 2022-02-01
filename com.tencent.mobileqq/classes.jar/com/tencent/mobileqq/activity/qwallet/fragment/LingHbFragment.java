@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import ajyg;
-import ajyu;
-import ajyv;
-import ajyw;
-import ajyx;
-import ajyy;
-import ajze;
-import ajzz;
-import akgd;
-import amtj;
+import aktz;
+import akun;
+import akuo;
+import akup;
+import akuq;
+import akur;
+import akux;
+import akvs;
+import albw;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -20,10 +19,12 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bkvx;
+import anvx;
+import bmhg;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -52,16 +53,16 @@ public class LingHbFragment
     do
     {
       return;
-      i = bkvx.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 1);
-      str1 = bkvx.a(String.valueOf(bkvx.a(this.b.getText().toString())));
+      i = bmhg.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 1);
+      str1 = bmhg.a(String.valueOf(bmhg.a(this.b.getText().toString())));
       if (TextUtils.isEmpty(str1))
       {
-        QQToast.a(getActivity(), 2131692911, 0).a();
+        QQToast.a(getActivity(), 2131693017, 0).a();
         return;
       }
       str2 = c();
     } while (TextUtils.isEmpty(str2));
-    combineUploadData(this.jdField_a_of_type_Bkwf, this.channel, i, str1, "hongbao.wrap.go");
+    combineUploadData(this.jdField_a_of_type_Bmho, this.channel, i, str1, "hongbao.wrap.go");
     Map localMap = this.mActivity.a();
     localMap.put("channel", String.valueOf(this.channel));
     localMap.put("type", "1");
@@ -73,25 +74,25 @@ public class LingHbFragment
   
   public int a()
   {
-    return 2131561876;
+    return 2131561944;
   }
   
   protected String a()
   {
     if (32 == this.channel) {
-      return amtj.a(2131705246);
+      return anvx.a(2131705597);
     }
-    return amtj.a(2131705245);
+    return anvx.a(2131705596);
   }
   
   public void a()
   {
     super.a();
     c();
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ajyu(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a(this.jdField_a_of_type_JavaUtilList, true, new ajyv(this), new ajyw(this), new ajyx(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new akun(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a(this.jdField_a_of_type_JavaUtilList, true, new akuo(this), new akup(this), new akuq(this));
     this.c.setFocusable(true);
-    this.c.setOnFocusChangeListener(new ajyy(this));
+    this.c.setOnFocusChangeListener(new akur(this));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.getLayoutParams();
     localLayoutParams.width = -1;
@@ -103,11 +104,11 @@ public class LingHbFragment
     super.a(paramBundle);
     QLog.i("LingHbFragment", 2, "init view...");
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView = new ChooseItemView(this.mActivity);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369686));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369855));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.c.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     if (this.channel == 65536) {
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379662)).setText(2131692915);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379976)).setText(2131693021);
     }
   }
   
@@ -129,15 +130,15 @@ public class LingHbFragment
     String str1 = b();
     if (65536 == this.channel)
     {
-      if (ajzz.a(str1) < 4)
+      if (akvs.a(str1) < 4)
       {
-        QQToast.a(getActivity(), 2131696604, 0).a();
+        QQToast.a(getActivity(), 2131696871, 0).a();
         return null;
       }
-      String str2 = ajzz.a(str1);
+      String str2 = akvs.a(str1);
       if (str2.length() > 0)
       {
-        QQToast.a(getActivity(), String.format(getString(2131696602), new Object[] { Character.valueOf(str2.charAt(0)) }), 0).a();
+        QQToast.a(getActivity(), String.format(getString(2131696869), new Object[] { Character.valueOf(str2.charAt(0)) }), 0).a();
         return null;
       }
     }
@@ -146,7 +147,7 @@ public class LingHbFragment
   
   public void c()
   {
-    Object localObject = ((ajyg)getActivity().app.getManager(245)).a("hb_recommend");
+    Object localObject = ((aktz)getActivity().app.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER)).a("hb_recommend");
     for (;;)
     {
       int i;
@@ -172,8 +173,8 @@ public class LingHbFragment
             if (localJSONObject == null) {
               break label315;
             }
-            long l2 = akgd.a(localJSONObject.optString("begintime"), -1L);
-            long l3 = akgd.a(localJSONObject.optString("endtime"), 9223372036854775807L);
+            long l2 = albw.a(localJSONObject.optString("begintime"), -1L);
+            long l3 = albw.a(localJSONObject.optString("endtime"), 9223372036854775807L);
             if ((l1 < l2) || (l1 > l3)) {
               break label315;
             }

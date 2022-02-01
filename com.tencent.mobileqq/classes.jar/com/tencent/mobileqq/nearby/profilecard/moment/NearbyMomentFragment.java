@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import amtj;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,26 +12,28 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import axee;
-import axef;
-import axeg;
-import axeh;
-import axei;
-import axej;
-import axek;
-import axel;
-import axem;
-import axen;
-import axeu;
-import axfh;
-import axfp;
-import axfs;
+import anvx;
+import aykj;
+import aykk;
+import aykl;
+import aykm;
+import aykn;
+import ayko;
+import aykp;
+import aykq;
+import aykr;
+import ayks;
+import aykz;
+import aylm;
+import aylu;
+import aylx;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
@@ -56,30 +56,30 @@ public class NearbyMomentFragment
 {
   private int jdField_a_of_type_Int;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private axel jdField_a_of_type_Axel;
-  private axeu jdField_a_of_type_Axeu = new axef(this);
-  private axfh jdField_a_of_type_Axfh;
+  private aykq jdField_a_of_type_Aykq;
+  private aykz jdField_a_of_type_Aykz = new aykk(this);
+  private aylm jdField_a_of_type_Aylm;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private NearbyPeopleCard jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private List<axfs> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<String, axfs> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private List<aylx> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<String, aylx> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   public boolean a;
   private int jdField_b_of_type_Int;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private List<axfs> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private List<aylx> jdField_b_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_b_of_type_Boolean = true;
   private boolean c;
   private boolean d;
   private boolean e;
   
-  private axfs a(String paramString)
+  private aylx a(String paramString)
   {
-    return (axfs)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    return (aylx)this.jdField_a_of_type_JavaUtilMap.get(paramString);
   }
   
-  private List<axfs> a(List<axfs> paramList)
+  private List<aylx> a(List<aylx> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList != null)
@@ -87,20 +87,20 @@ public class NearbyMomentFragment
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        axfs localaxfs = (axfs)paramList.next();
-        if (a(localaxfs.c) == null) {
-          localArrayList.add(localaxfs);
+        aylx localaylx = (aylx)paramList.next();
+        if (a(localaylx.c) == null) {
+          localArrayList.add(localaylx);
         }
       }
     }
     return localArrayList;
   }
   
-  private void a(axem paramaxem)
+  private void a(aykr paramaykr)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
     {
-      if (this.jdField_a_of_type_Axfh.a().size() != 0) {
+      if (this.jdField_a_of_type_Aylm.a().size() != 0) {
         break label93;
       }
       a(0);
@@ -108,32 +108,32 @@ public class NearbyMomentFragment
     for (;;)
     {
       this.jdField_a_of_type_JavaUtilMap.clear();
-      ((axen)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nowId, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nowUserType, 0, 20, new axeg(this, paramaxem));
+      ((ayks)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.tinyId, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nowId, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nowUserType, 0, 20, new aykl(this, paramaykr));
       return;
       label93:
       a(3);
     }
   }
   
-  private void a(List<axfs> paramList)
+  private void a(List<aylx> paramList)
   {
     if (paramList != null)
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        Object localObject = (axfs)paramList.next();
-        this.jdField_a_of_type_JavaUtilMap.put(((axfs)localObject).c, localObject);
-        if ((localObject instanceof axfp))
+        Object localObject = (aylx)paramList.next();
+        this.jdField_a_of_type_JavaUtilMap.put(((aylx)localObject).c, localObject);
+        if ((localObject instanceof aylu))
         {
-          localObject = (axfp)localObject;
-          this.jdField_a_of_type_JavaUtilMap.put(((axfp)localObject).a, localObject);
+          localObject = (aylu)localObject;
+          this.jdField_a_of_type_JavaUtilMap.put(((aylu)localObject).a, localObject);
         }
       }
     }
   }
   
-  private void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, List<axfs> paramList, axem paramaxem)
+  private void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, List<aylx> paramList, aykr paramaykr)
   {
     if (paramBoolean1)
     {
@@ -141,15 +141,15 @@ public class NearbyMomentFragment
       if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(amtj.a(2131706338));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(anvx.a(2131706690));
       }
       this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_Axfh.a(paramList);
-      if (this.jdField_a_of_type_Axel != null) {
-        this.jdField_a_of_type_Axel.a(paramList.size());
+      this.jdField_a_of_type_Aylm.a(paramList);
+      if (this.jdField_a_of_type_Aykq != null) {
+        this.jdField_a_of_type_Aykq.a(paramList.size());
       }
-      if (paramaxem != null) {
-        paramaxem.a(true, paramList);
+      if (paramaykr != null) {
+        paramaykr.a(true, paramList);
       }
       if ((paramList == null) || (paramList.size() == 0)) {
         a(1);
@@ -161,13 +161,13 @@ public class NearbyMomentFragment
       a(3);
       return;
       a(2);
-    } while (paramaxem == null);
-    paramaxem.a(false, null);
+    } while (paramaykr == null);
+    paramaykr.a(false, null);
   }
   
-  private axfs b(String paramString)
+  private aylx b(String paramString)
   {
-    return (axfs)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    return (aylx)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
   }
   
   private void b()
@@ -179,8 +179,8 @@ public class NearbyMomentFragment
       }
       this.c = true;
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(amtj.a(2131706330));
-      ((axen)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nowId, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nowUserType, this.jdField_a_of_type_Int, 20, new axeh(this));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(anvx.a(2131706682));
+      ((ayks)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.tinyId, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nowId, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nowUserType, this.jdField_a_of_type_Int, 20, new aykm(this));
       return;
     }
     QLog.i("NearbyMomentFragment", 1, "loadMore, mCard == null");
@@ -200,9 +200,9 @@ public class NearbyMomentFragment
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      axen localaxen = (axen)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263);
-      if (localaxen != null) {
-        localaxen.a();
+      ayks localayks = (ayks)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER);
+      if (localayks != null) {
+        localayks.a();
       }
     }
   }
@@ -235,9 +235,9 @@ public class NearbyMomentFragment
       }
       for (;;)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131706333));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131706685));
         return;
-        ((URLDrawable)localObject).setURLDrawableListener(new axei(this));
+        ((URLDrawable)localObject).setURLDrawableListener(new aykn(this));
         ThreadManager.post(new NearbyMomentFragment.5(this, (URLDrawable)localObject), 8, null, false);
       }
     case 1: 
@@ -257,17 +257,17 @@ public class NearbyMomentFragment
       }
       while (this.d)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131706337));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131706689));
         return;
-        ((URLDrawable)localObject).setURLDrawableListener(new axej(this));
+        ((URLDrawable)localObject).setURLDrawableListener(new ayko(this));
         ThreadManager.post(new NearbyMomentFragment.7(this, (URLDrawable)localObject), 8, null, false);
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.gender == 1))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131706339));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131706691));
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131706331));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131706683));
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -286,16 +286,16 @@ public class NearbyMomentFragment
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131706334));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131706686));
       return;
-      ((URLDrawable)localObject).setURLDrawableListener(new axek(this));
+      ((URLDrawable)localObject).setURLDrawableListener(new aykp(this));
       ThreadManager.post(new NearbyMomentFragment.9(this, (URLDrawable)localObject), 8, null, false);
     }
   }
   
-  public void a(axel paramaxel)
+  public void a(aykq paramaykq)
   {
-    this.jdField_a_of_type_Axel = paramaxel;
+    this.jdField_a_of_type_Aykq = paramaykq;
   }
   
   public void a(NearbyPeopleCard paramNearbyPeopleCard)
@@ -303,7 +303,7 @@ public class NearbyMomentFragment
     this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard = paramNearbyPeopleCard;
     if (this.e)
     {
-      this.jdField_a_of_type_Axfh.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
+      this.jdField_a_of_type_Aylm.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
       a(null);
     }
   }
@@ -336,12 +336,12 @@ public class NearbyMomentFragment
     {
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
-      paramLayoutInflater = paramLayoutInflater.inflate(2131559506, null);
-      this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131371310));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131379590));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131380111));
-      this.jdField_a_of_type_Axfh = new axfh(paramViewGroup.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Axfh.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
+      paramLayoutInflater = paramLayoutInflater.inflate(2131559539, null);
+      this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131371496));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131379902));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131380446));
+      this.jdField_a_of_type_Aylm = new aylm(paramViewGroup.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Aylm.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
       paramBundle = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
       paramBundle.width = ((int)DeviceInfoUtil.getWidth());
       paramBundle.height = (paramBundle.width / 2);
@@ -353,7 +353,7 @@ public class NearbyMomentFragment
       this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
       this.jdField_b_of_type_AndroidWidgetTextView.setPadding(0, UIUtils.dip2px(paramViewGroup.getContext(), 10.0F), 0, UIUtils.dip2px(paramViewGroup.getContext(), 10.0F));
       this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(14.0F);
-      this.d = TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      this.d = this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.isHostSelf;
       if (!this.d)
       {
         paramViewGroup = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetListView.getLayoutParams();
@@ -362,18 +362,18 @@ public class NearbyMomentFragment
       }
       this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(this.jdField_b_of_type_AndroidWidgetTextView);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Axfh);
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(new axee(this));
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Aylm);
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(new aykj(this));
       this.e = true;
       a(null);
-      ((axen)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.jdField_a_of_type_Axeu);
+      ((ayks)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).a(this.jdField_a_of_type_Aykz);
     }
   }
   
   public void onDestroyView()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      ((axen)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).b(this.jdField_a_of_type_Axeu);
+      ((ayks)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).b(this.jdField_a_of_type_Aykz);
     }
     this.jdField_a_of_type_JavaUtilMap.clear();
     super.onDestroyView();

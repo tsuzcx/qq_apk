@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
-import azwy;
-import azxb;
+import bbdh;
+import bbdk;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class AIOIceBreakShow$RemoveRunnable
@@ -20,25 +21,25 @@ class AIOIceBreakShow$RemoveRunnable
   
   public void run()
   {
-    azwy localazwy = (azwy)AIOIceBreakShow.a(this.this$0).app.getManager(285);
+    bbdh localbbdh = (bbdh)AIOIceBreakShow.a(this.this$0).app.getManager(QQManagerFactory.ICE_BREAKING_MNG);
     if (QLog.isColorLevel())
     {
       if (this.jdField_a_of_type_Int != 1) {
         break label75;
       }
-      localazwy.g(this.jdField_a_of_type_JavaLangString);
+      localbbdh.g(this.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
       QLog.d("AIOIceBreakShow", 1, String.format("removeDelay, type = %s, uin = %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
       return;
       label75:
-      if (azxb.d(this.jdField_a_of_type_Int)) {
-        localazwy.h(this.jdField_a_of_type_JavaLangString);
-      } else if (azxb.e(this.jdField_a_of_type_Int)) {
-        localazwy.i(this.jdField_a_of_type_JavaLangString);
+      if (bbdk.d(this.jdField_a_of_type_Int)) {
+        localbbdh.h(this.jdField_a_of_type_JavaLangString);
+      } else if (bbdk.e(this.jdField_a_of_type_Int)) {
+        localbbdh.i(this.jdField_a_of_type_JavaLangString);
       } else {
-        localazwy.e(this.jdField_a_of_type_JavaLangString);
+        localbbdh.e(this.jdField_a_of_type_JavaLangString);
       }
     }
   }

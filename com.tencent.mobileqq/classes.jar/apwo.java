@@ -1,16 +1,28 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class apwo
+class apwo
+  implements agoa
 {
-  public String b;
-  public ArrayList<aouf> b;
-  public String c;
-  public String d;
-  public String e;
+  apwo(apwn paramapwn) {}
+  
+  public boolean closeView(agnx paramagnx)
+  {
+    if (apwn.a(this.a) != null)
+    {
+      apwn.a(this.a).hidePanel();
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean openCardView(agnx paramagnx, String paramString1, String paramString2)
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apwo
  * JD-Core Version:    0.7.0.1
  */

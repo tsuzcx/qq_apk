@@ -1,42 +1,62 @@
-import android.app.Activity;
-import android.view.Display;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.tbs.reader.TbsReaderView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.6.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class aspx
-  implements View.OnClickListener
+public class aspx
+  extends RecyclerView.OnScrollListener
 {
-  aspx(aspt paramaspt, int paramInt, Activity paramActivity) {}
+  public aspx(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
   {
-    int i;
-    if (this.jdField_a_of_type_Int == 5018)
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSearchFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null)
     {
-      Display localDisplay = this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay();
-      if (localDisplay.getWidth() > localDisplay.getHeight())
-      {
-        i = 0;
-        if (i == 0) {
-          break label61;
-        }
-        this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
+      if (paramInt != 0) {
+        break label87;
       }
+      this.a.c = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.resume();
+      this.a.am_();
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (paramInt == 0)
+      {
+        this.a.g();
+        this.a.b(false);
+      }
       return;
-      i = 1;
-      break;
-      label61:
-      this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
-      continue;
-      aspt.a(this.jdField_a_of_type_Aspt).doCommand(Integer.valueOf(this.jdField_a_of_type_Int), null, null);
+      label87:
+      this.a.c = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.pause();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
+      synchronized (ExtendFriendBaseFragment.a)
+      {
+        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.clear();
+        }
+      }
     }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if ((!ExtendFriendSearchFragment.a(this.a)) && (!ExtendFriendSearchFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Asqk != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Asqk.getItemCount() - 2) != null))
+    {
+      this.a.a(true);
+      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.6.1(this));
+      bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
+    }
+    this.a.a(false, 0L);
   }
 }
 

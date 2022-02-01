@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajdm;
+import ajza;
 import android.os.Message;
 
 class Conversation$UICallBack$6$1

@@ -1,19 +1,7 @@
-import com.tencent.mobileqq.data.NewFriendSubTitle;
-
 public class aigr
-  extends aigo
 {
-  public NewFriendSubTitle a;
-  
-  public aigr(NewFriendSubTitle paramNewFriendSubTitle)
-  {
-    this.a = paramNewFriendSubTitle;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
+  public int a;
+  public String a;
 }
 
 

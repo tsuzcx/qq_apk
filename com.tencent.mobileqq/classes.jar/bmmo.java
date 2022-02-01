@@ -1,27 +1,38 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
+import kotlin.Lazy;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import org.jetbrains.annotations.NotNull;
 
-public class bmmo
-  implements Animator.AnimatorListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcooperation/vip/impl/VasAdvInterfaceBinder$Companion;", "", "()V", "app", "Lcooperation/vip/VasAdvAppInterface;", "getApp", "()Lcooperation/vip/VasAdvAppInterface;", "app$delegate", "Lkotlin/Lazy;", "gdt", "Lcooperation/vip/VasAdvGdtInterface;", "getGdt", "()Lcooperation/vip/VasAdvGdtInterface;", "gdt$delegate", "appInterface", "gdtInterface", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bmmo
 {
-  public bmmo(AEEditorTextControlPanel paramAEEditorTextControlPanel) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  private final bmkc b()
   {
-    AEEditorTextControlPanel.b(this.a, false);
+    Lazy localLazy = bmmn.a();
+    bmmo localbmmo = bmmn.a;
+    return (bmkc)localLazy.getValue();
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  private final bmke b()
   {
-    AEEditorTextControlPanel.b(this.a, false);
-    AEEditorTextControlPanel.a(this.a);
-    this.a.setVisibility(8);
+    Lazy localLazy = bmmn.b();
+    bmmo localbmmo = bmmn.a;
+    return (bmke)localLazy.getValue();
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  @JvmStatic
+  @NotNull
+  public final bmkc a()
+  {
+    return ((bmmo)this).b();
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  @JvmStatic
+  @NotNull
+  public final bmke a()
+  {
+    return ((bmmo)this).b();
+  }
 }
 
 

@@ -2669,7 +2669,7 @@ public class WtloginHelper
     localObject1 = ((WloginSigInfo)localObject2)._TGT;
     localObject2 = t.B;
     byte[] arrayOfByte1 = t.F;
-    byte[] arrayOfByte2 = "6.0.0.2436".getBytes();
+    byte[] arrayOfByte2 = "6.0.0.2438".getBytes();
     byte[] arrayOfByte3 = "android".getBytes();
     paramArrayOfByte = paramArrayOfByte.getBytes();
     if (paramString2 == null) {}
@@ -2706,7 +2706,7 @@ public class WtloginHelper
     localTransReqContext.set_subcmd(locala.get_msgType());
     localTransReqContext.setSTEncryptMethod();
     localTransReqContext.setWtST((WloginSigInfo)localObject);
-    localTransReqContext._body = locala.a(l, paramLong1, paramLong2, ((WloginSigInfo)localObject)._TGT, t.B, t.F, "6.0.0.2436".getBytes(), t.L, t.K);
+    localTransReqContext._body = locala.a(l, paramLong1, paramLong2, ((WloginSigInfo)localObject)._TGT, t.B, t.F, "6.0.0.2438".getBytes(), t.L, t.K);
     if ((localTransReqContext._body == null) || (localTransReqContext._body.length == 0)) {
       return -1017;
     }
@@ -2936,7 +2936,7 @@ public class WtloginHelper
     localTransReqContext.set_subcmd(localb.get_msgType());
     localTransReqContext.setSTEncryptMethod();
     localTransReqContext.setWtST(localWloginSigInfo);
-    localTransReqContext._body = localb.a(l, paramLong1, paramLong2, localWloginSigInfo._TGT, t.B, t.F, "6.0.0.2436".getBytes(), "android".getBytes(), ((String)localObject).getBytes());
+    localTransReqContext._body = localb.a(l, paramLong1, paramLong2, localWloginSigInfo._TGT, t.B, t.F, "6.0.0.2438".getBytes(), "android".getBytes(), ((String)localObject).getBytes());
     if ((localTransReqContext._body == null) || (localTransReqContext._body.length == 0)) {
       return -1017;
     }

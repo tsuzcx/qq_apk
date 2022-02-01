@@ -1,13 +1,17 @@
 public class bgej
 {
-  public float a;
   public int a;
   public String a;
-  public String[] a;
-  public float b;
   public int b;
-  public float c;
-  public float d;
+  public int c;
+  
+  public bgej(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

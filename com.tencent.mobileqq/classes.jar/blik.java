@@ -1,60 +1,98 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class blik
+public abstract class blik<M, VH extends blij<M>>
+  extends RecyclerView.Adapter<blij<M>>
 {
-  public static int a;
-  private static QQFilterRenderManager a;
-  public static int b;
-  private static QQFilterRenderManager b;
-  public static int c = 2;
-  private static int d;
+  protected Context a;
+  protected View a;
+  protected blih a;
+  protected blii a;
+  protected View b;
   
-  static
+  public blik(Context paramContext)
   {
-    bljd.a();
-    babd.a(false);
-    jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static int a()
-  {
-    return d;
-  }
+  public abstract VH a(ViewGroup paramViewGroup, int paramInt);
   
-  public static QQFilterRenderManager a()
+  public void a(View paramView)
   {
-    return new QQFilterRenderManager(new int[] { 70, 80, 90, 184 });
-  }
-  
-  public static QQFilterRenderManager a(int paramInt)
-  {
-    if (paramInt == c) {
-      return a;
-    }
-    return EffectsCameraCaptureView.a();
-  }
-  
-  public static void a(QQFilterRenderManager paramQQFilterRenderManager)
-  {
-    a = paramQQFilterRenderManager;
-  }
-  
-  public static QQFilterRenderManager b()
-  {
-    try
+    if (paramView == null)
     {
-      if ((jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null) && (jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.isSurfaceDestroyed())) {
-        jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
-      }
-      if (jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null) {
-        jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = a();
-      }
-      QQFilterRenderManager localQQFilterRenderManager = jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
-      return localQQFilterRenderManager;
+      Log.w("HeaderAndFooterAdapter", "add the footer view is null");
+      return;
     }
-    finally {}
+    this.b = paramView;
+    notifyDataSetChanged();
   }
+  
+  public void a(blih paramblih)
+  {
+    this.jdField_a_of_type_Blih = paramblih;
+  }
+  
+  public abstract void a(VH paramVH, int paramInt);
+  
+  public final blij b(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt == 1024) {
+      paramViewGroup = new blij(this.jdField_a_of_type_AndroidViewView);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Blih != null) {
+        paramViewGroup.itemView.setOnClickListener(new blil(this, paramViewGroup));
+      }
+      if (this.jdField_a_of_type_Blii != null) {
+        paramViewGroup.itemView.setOnLongClickListener(new blim(this, paramViewGroup));
+      }
+      return paramViewGroup;
+      if (paramInt == 1025) {
+        paramViewGroup = new blij(this.b);
+      } else {
+        paramViewGroup = a(paramViewGroup, paramInt);
+      }
+    }
+  }
+  
+  public final void b(blij paramblij, int paramInt)
+  {
+    switch (paramblij.getItemViewType())
+    {
+    default: 
+      a(paramblij, paramInt);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramblij, paramInt, getItemId(paramInt));
+  }
+  
+  public int c()
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      i = 1;
+    }
+    int j = i;
+    if (this.b != null) {
+      j = i + 1;
+    }
+    return j;
+  }
+  
+  public int d()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public abstract long getItemId(int paramInt);
 }
 
 

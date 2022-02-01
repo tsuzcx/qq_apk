@@ -1,61 +1,92 @@
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.ui.redbag.AVRedBag.3.1;
 import com.tencent.qphone.base.util.QLog;
 
-class mpw
-  implements lfm
+public class mpw
+  extends mcx
 {
-  mpw(mpv parammpv) {}
+  mpw(mpt parammpt) {}
   
-  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  protected void a(String paramString, Boolean paramBoolean)
   {
-    boolean bool2 = true;
-    if (11 != paramInt1) {}
-    do
+    paramString = this.a.a();
+    if (paramString != null)
     {
-      return false;
-      QLog.w(this.a.i, 1, "onC2CDataCome, subType[" + paramInt2 + "], mPeerSupportRedBag[" + this.a.jdField_a_of_type_Int + "], mPeerSendMode[" + this.a.jdField_a_of_type_Boolean + "]");
-      paramArrayOfByte = this.a.a();
-    } while (paramArrayOfByte == null);
-    boolean bool1;
-    switch (paramInt2)
-    {
-    default: 
-      bool1 = false;
+      mqk localmqk = paramString.jdField_a_of_type_Mqk;
+      if (localmqk != null) {
+        localmqk.a(-4, 10000L);
+      }
+      paramString.c(paramBoolean.booleanValue());
     }
-    for (;;)
+  }
+  
+  public void a(mdb parammdb)
+  {
+    mqb localmqb = this.a.a();
+    if (localmqb == null) {}
+    while ((!localmqb.a()) || (localmqb.d())) {
+      return;
+    }
+    mqw.c();
+    mbf.a(this.a.a, 1045, 2131695556);
+    parammdb.jdField_b_of_type_Boolean = true;
+    parammdb.jdField_b_of_type_JavaLangString = "AVRedBag";
+  }
+  
+  protected void b(String paramString, Boolean paramBoolean)
+  {
+    mqb localmqb = this.a.a();
+    if (localmqb != null)
     {
-      return bool1;
-      this.a.jdField_a_of_type_Int = 2;
-      paramArrayOfByte.b("AbilityResDownloading");
-      bool1 = bool2;
-      continue;
-      this.a.jdField_a_of_type_Int = 1;
-      paramArrayOfByte.b("AbilityEnable");
-      bool1 = bool2;
-      continue;
-      this.a.jdField_a_of_type_Int = 0;
-      paramArrayOfByte.b("AbilityDisable");
-      bool1 = bool2;
-      continue;
-      this.a.jdField_a_of_type_Boolean = true;
-      bool1 = bool2;
-      if (this.a.jdField_a_of_type_Int != 1)
-      {
-        this.a.jdField_a_of_type_Int = 1;
-        paramArrayOfByte.b("Enter_SendMode");
-        bool1 = bool2;
-        continue;
-        this.a.jdField_a_of_type_Boolean = false;
-        bool1 = bool2;
-        continue;
-        paramArrayOfByte.a(this.a.b);
-        bool1 = bool2;
+      if (QLog.isDevelopLevel()) {
+        QLog.w(this.a.i, 4, "onAVActivityStop, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], isInGameMode[" + localmqb.a() + "], isGameStarter[" + localmqb.d() + "]");
+      }
+      if (localmqb.a()) {
+        ((AVRedPacketManager)this.a.a.a(6)).b(false);
+      }
+      localmqb.c();
+      if ((!paramBoolean.booleanValue()) && (localmqb.a()) && (!localmqb.d())) {
+        mqw.e();
       }
     }
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    mqb localmqb = this.a.a();
+    if (localmqb == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((!localmqb.a()) || (localmqb.jdField_a_of_type_Mqj == null) || (localmqb.jdField_a_of_type_Mqj.a == null));
+      QLog.w(this.a.i, 1, "onViewSwitch, uinBig[" + paramString1 + "], uinSmall[" + paramString2 + "]");
+    } while (!localmqb.jdField_a_of_type_Mqj.a.jdField_b_of_type_Boolean);
+    ((AVRedPacketManager)this.a.a.a(6)).a(paramString1, paramString2);
+  }
+  
+  protected void d(String paramString)
+  {
+    paramString = this.a.a();
+    if ((paramString != null) && (paramString.a())) {
+      ((AVRedPacketManager)this.a.a.a(6)).b(true);
+    }
+  }
+  
+  protected void e(String paramString)
+  {
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.a().post(new AVRedBag.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mpw
  * JD-Core Version:    0.7.0.1
  */

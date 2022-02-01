@@ -1,13 +1,12 @@
-import java.util.List;
-
-public abstract interface aokh
-  extends aoka
+class aokh
+  extends aofu
 {
-  public abstract void a(long paramLong);
+  private aokh(aoke paramaoke) {}
   
-  public abstract void a(List<aojx> paramList, long paramLong);
-  
-  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
+  protected void onUpdateNewTroopFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    this.a.c(106, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
+  }
 }
 
 

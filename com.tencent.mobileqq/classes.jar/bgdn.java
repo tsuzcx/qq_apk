@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import java.util.Vector;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bgdn
-  extends VasQuickUpdateManager.CallBacker
+public class bgdn
+  implements View.OnClickListener
 {
-  bgdn(bgdk parambgdk) {}
+  public bgdn(VisitorTroopCardFragment paramVisitorTroopCardFragment, Dialog paramDialog) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onClick(View paramView)
   {
-    if (paramLong == 27L)
-    {
-      paramInt2 = Integer.parseInt(paramString1.substring("groupnickitem.".length(), paramString1.length()));
-      bgdk.a(this.a).removeElement(Integer.valueOf(paramInt2));
-      if (paramInt1 == 0) {
-        this.a.a(paramInt2);
-      }
+    if ((this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
+    VisitorTroopCardFragment.g(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

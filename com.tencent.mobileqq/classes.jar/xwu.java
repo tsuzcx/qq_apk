@@ -1,36 +1,22 @@
-class xwu
-  implements yhr<Boolean, yhw>
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper.3.1;
+
+public class xwu
+  implements View.OnFocusChangeListener
 {
-  xwu(xws paramxws, long paramLong, int paramInt) {}
+  xwu(xwr paramxwr) {}
   
-  public Void a(Boolean paramBoolean, yhw paramyhw)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((!paramBoolean.booleanValue()) || (paramyhw == null) || (paramyhw.jdField_a_of_type_AndroidGraphicsBitmap == null))
-    {
-      xvv.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
-      return null;
+    if (!paramBoolean) {
+      this.a.b();
     }
-    xvv.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(paramyhw.jdField_a_of_type_Int));
-    if (paramyhw.jdField_a_of_type_Int >= this.jdField_a_of_type_Xws.a.length)
-    {
-      xvv.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(paramyhw.jdField_a_of_type_Int) });
-      return null;
+    while (xwr.a(this.a)) {
+      return;
     }
-    xvv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(paramyhw.jdField_a_of_type_Int));
-    this.jdField_a_of_type_Xws.a[paramyhw.jdField_a_of_type_Int] = xwv.a(this.jdField_a_of_type_Xws.a[paramyhw.jdField_a_of_type_Int], paramyhw.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Xws.a[paramyhw.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = paramyhw.jdField_a_of_type_JavaLangString;
-    if (paramyhw.jdField_a_of_type_Long > 0L)
-    {
-      this.jdField_a_of_type_Xws.a[paramyhw.jdField_a_of_type_Int].jdField_a_of_type_Int = ((int)paramyhw.jdField_a_of_type_Long / 1000);
-      xvv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix start time : %d ", Integer.valueOf(this.jdField_a_of_type_Xws.a[paramyhw.jdField_a_of_type_Int].jdField_a_of_type_Int));
-      if ((this.jdField_a_of_type_Xws.a[paramyhw.jdField_a_of_type_Int].b <= 0) && (this.jdField_a_of_type_Xws.a.length == 1))
-      {
-        this.jdField_a_of_type_Xws.a[paramyhw.jdField_a_of_type_Int].b = ((int)this.jdField_a_of_type_Long);
-        xvv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix end time : %d ", Integer.valueOf(this.jdField_a_of_type_Int));
-      }
-    }
-    this.jdField_a_of_type_Xws.g();
-    return null;
+    new Handler().postDelayed(new DetailCommentHelper.3.1(this), 200L);
   }
 }
 

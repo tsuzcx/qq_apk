@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pkp;
-import pwz;
+import pvm;
+import qif;
 
 public class VideoArticleModule$8
   implements Runnable
 {
-  public VideoArticleModule$8(pwz parampwz, int paramInt, List paramList) {}
+  public VideoArticleModule$8(qif paramqif, int paramInt, List paramList) {}
   
   public void run()
   {
-    pkp.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    pvm.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,45 +1,45 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import amtj;
 import android.os.Handler;
 import android.os.Message;
-import auod;
+import anvx;
+import avty;
 
 public class HuayangPluginLauncher$2
   implements Runnable
 {
-  public HuayangPluginLauncher$2(auod paramauod, boolean paramBoolean) {}
+  public HuayangPluginLauncher$2(avty paramavty, boolean paramBoolean) {}
   
   public void run()
   {
     long l;
-    if (auod.a(this.this$0) == null)
+    if (avty.a(this.this$0) == null)
     {
-      auod.a(this.this$0, auod.b(this.this$0));
+      avty.a(this.this$0, avty.b(this.this$0));
       if (this.a)
       {
-        l = 1000L - (System.currentTimeMillis() - auod.a(this.this$0));
+        l = 1000L - (System.currentTimeMillis() - avty.a(this.this$0));
         if (l > 0L) {
-          auod.a(this.this$0, "HuayangPluginLauncher", amtj.a(2131704780) + l);
+          avty.a(this.this$0, "HuayangPluginLauncher", anvx.a(2131705131) + l);
         }
       }
     }
     try
     {
       Thread.sleep(l);
-      if ((auod.a(this.this$0) != null) && (auod.a(this.this$0)))
+      if ((avty.a(this.this$0) != null) && (avty.a(this.this$0)))
       {
         if (this.a)
         {
-          Message localMessage = Message.obtain(auod.a(this.this$0), 2);
-          auod.a(this.this$0).sendMessage(localMessage);
-          auod.a(this.this$0, auod.a(this.this$0));
+          Message localMessage = Message.obtain(avty.a(this.this$0), 2);
+          avty.a(this.this$0).sendMessage(localMessage);
+          avty.a(this.this$0, avty.a(this.this$0));
           this.this$0.a = true;
         }
       }
       else
       {
-        auod.a(this.this$0, false);
+        avty.a(this.this$0, false);
         return;
       }
     }
@@ -49,7 +49,7 @@ public class HuayangPluginLauncher$2
       {
         localInterruptedException.printStackTrace();
         continue;
-        auod.b(this.this$0, auod.a(this.this$0));
+        avty.b(this.this$0, avty.a(this.this$0));
       }
     }
   }

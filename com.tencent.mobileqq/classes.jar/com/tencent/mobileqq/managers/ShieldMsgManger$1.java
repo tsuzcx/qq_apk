@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.managers;
 
-import avnk;
+import awtp;
 
 public class ShieldMsgManger$1
   implements Runnable
 {
-  public ShieldMsgManger$1(avnk paramavnk) {}
+  public ShieldMsgManger$1(awtp paramawtp) {}
   
   public void run()
   {
-    avnk.a(this.this$0);
+    awtp.a(this.this$0);
   }
 }
 

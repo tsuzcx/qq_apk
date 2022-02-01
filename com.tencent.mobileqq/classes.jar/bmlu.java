@@ -1,42 +1,26 @@
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.content.Context;
+import android.opengl.GLSurfaceView.Renderer;
+import android.view.ViewGroup;
 
-public final class bmlu
-  implements INetEngine.INetEngineListener
+public abstract class bmlu
+  implements GLSurfaceView.Renderer
 {
-  public bmlu(bmlv parambmlv, bmlo parambmlo, String paramString) {}
+  public Context a;
+  protected ViewGroup a;
   
-  public void onResp(NetResp paramNetResp)
+  public bmlu(Context paramContext, ViewGroup paramViewGroup)
   {
-    boolean bool2 = true;
-    bmbc localbmbc;
-    if ((paramNetResp != null) && (paramNetResp.mResult == 0))
-    {
-      bool1 = true;
-      bmbx.b("AEEditorMusicHelper", "[downloadMusic], onResp, succeeded=" + bool1);
-      if (this.jdField_a_of_type_Bmlv != null) {
-        this.jdField_a_of_type_Bmlv.a(this.jdField_a_of_type_Bmlo, bool1, this.jdField_a_of_type_JavaLangString);
-      }
-      if (paramNetResp != null)
-      {
-        localbmbc = bmbc.a();
-        if (paramNetResp.mResult != 0) {
-          break label113;
-        }
-      }
-    }
-    label113:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localbmbc.a(bool1, 5, "AEEditorMusicDownload", this.jdField_a_of_type_Bmlo.a(), paramNetResp.mErrCode, paramNetResp.reqCost);
-      return;
-      bool1 = false;
-      break;
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
 }
 
 

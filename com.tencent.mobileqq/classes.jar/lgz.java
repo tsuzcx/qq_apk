@@ -1,110 +1,45 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.1;
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.2;
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.3;
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.4;
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.5;
+import android.util.SparseArray;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectMutexManager.1;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public abstract class lgz
+public class lgz
+  extends lgp
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  String jdField_a_of_type_JavaLangString;
-  public WeakReference<lha> a;
-  public lhc a;
-  public volatile boolean a;
-  WeakReference<lhb> b;
+  private volatile SparseArray<lha> a;
   
-  public lgz()
+  protected lgz(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    c();
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public abstract int a();
+  protected void a() {}
   
-  public void a()
+  public void a(int paramInt, String paramString)
   {
-    d();
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Lhc.a();
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectMutexManager", 1, "notifyMutex, fromMuteKey[" + paramInt + "], data[" + paramString + "]");
     }
-    try
-    {
-      new Thread(new MagicfaceBaseDecoder.1(this)).start();
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new EffectMutexManager.1(this, paramInt, paramString));
+  }
+  
+  public void a(int paramInt, lha paramlha)
+  {
+    if (paramlha == null) {
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("MagicfaceBaseDecoder", 1, "startDecoder err:" + localOutOfMemoryError.getMessage());
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectMutexManager", 1, "registerMutexItem, key[" + paramInt + "]");
     }
+    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramlha);
   }
   
-  public void a(String paramString)
+  protected boolean a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return false;
   }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new MagicfaceBaseDecoder.3(this, paramString, paramInt));
-    }
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new MagicfaceBaseDecoder.4(this, paramString, paramBoolean));
-    }
-  }
-  
-  public void a(lha paramlha)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramlha);
-  }
-  
-  public void a(lhb paramlhb)
-  {
-    if (paramlhb != null)
-    {
-      this.b = new WeakReference(paramlhb);
-      return;
-    }
-    this.b = null;
-  }
-  
-  public void a(lhc paramlhc)
-  {
-    this.jdField_a_of_type_Lhc = paramlhc;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Lhc.b();
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new MagicfaceBaseDecoder.2(this, paramString));
-    }
-  }
-  
-  protected void c() {}
-  
-  protected void c(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new MagicfaceBaseDecoder.5(this, paramString));
-    }
-  }
-  
-  protected void d() {}
 }
 
 

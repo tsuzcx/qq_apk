@@ -1,14 +1,27 @@
-import android.arch.lifecycle.ViewModel;
-import android.support.annotation.CallSuper;
-
 public class bnav
-  extends ViewModel
 {
-  @CallSuper
-  public void onCleared()
+  public final bnau a;
+  public final bnaw a;
+  
+  private bnav(bnau parambnau, bnaw parambnaw)
   {
-    super.onCleared();
-    bnaw.a().a(this);
+    this.jdField_a_of_type_Bnau = parambnau;
+    this.jdField_a_of_type_Bnaw = parambnaw;
+  }
+  
+  public static bnav a()
+  {
+    return new bnav(null, bnaw.d);
+  }
+  
+  public static bnav a(bnau parambnau)
+  {
+    return new bnav(parambnau, bnaw.b);
+  }
+  
+  public static bnav b()
+  {
+    return new bnav(null, bnaw.c);
   }
 }
 

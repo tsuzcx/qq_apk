@@ -1,50 +1,89 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting.LocalWtTicketPromise.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.text.TextUtils;
 
 public class bcxb
-  implements WtTicketPromise
+  extends bcwx
 {
-  private aqlb jdField_a_of_type_Aqlb;
-  private WeakReference<bcxa> jdField_a_of_type_JavaLangRefWeakReference;
+  public boolean a;
+  public long b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public String h;
+  public String i;
   
-  public bcxb(bcxa parambcxa, aqlb paramaqlb)
+  public String a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambcxa);
-    this.jdField_a_of_type_Aqlb = paramaqlb;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nShortVideoDownloadInfo");
+    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("uuid:").append(this.a);
+    localStringBuilder.append("\n |-").append("fileType:").append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-").append("format:").append(this.d);
+    localStringBuilder.append("\n |-").append("mRequestType:").append(this.f);
+    localStringBuilder.append("\n |-").append("mSceneType:").append(this.g);
+    return localStringBuilder.toString();
   }
   
-  public void Done(Ticket paramTicket)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((paramTicket != null) && (paramTicket._pskey_map != null))
+    if (paramInt2 == 0) {
+      if ((paramInt1 == 0) || (paramInt1 == 1008)) {
+        this.jdField_e_of_type_Int = 1001;
+      }
+    }
+    do
     {
-      ThreadManager.excute(new ConfigSetting.LocalWtTicketPromise.1(this), 128, null, false);
-      return;
-    }
-    if (this.jdField_a_of_type_Aqlb != null) {
-      this.jdField_a_of_type_Aqlb.a(false);
-    }
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket is null");
+      do
+      {
+        do
+        {
+          return;
+          if (paramInt1 == 3000)
+          {
+            this.jdField_e_of_type_Int = 1005;
+            return;
+          }
+        } while (paramInt1 != 1);
+        this.jdField_e_of_type_Int = 1003;
+        return;
+      } while (1 != paramInt2);
+      if ((paramInt1 == 0) || (paramInt1 == 1008))
+      {
+        this.jdField_e_of_type_Int = 1002;
+        return;
+      }
+      if (paramInt1 == 3000)
+      {
+        this.jdField_e_of_type_Int = 1006;
+        return;
+      }
+    } while (paramInt1 != 1);
+    this.jdField_e_of_type_Int = 1004;
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public boolean a()
   {
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket failed");
-    if (this.jdField_a_of_type_Aqlb != null) {
-      this.jdField_a_of_type_Aqlb.a(false);
+    if (TextUtils.isEmpty(this.a))
+    {
+      a("ShortVideoDownloadInfo.check", "uuid invaid:" + this.a);
+      return false;
     }
+    if (this.b == null)
+    {
+      a("ShortVideoDownloadInfo", "selfUin invalid,selfUin:" + this.b);
+      return false;
+    }
+    return super.a();
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public String toString()
   {
-    if (this.jdField_a_of_type_Aqlb != null) {
-      this.jdField_a_of_type_Aqlb.a(false);
-    }
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket time oiut");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 

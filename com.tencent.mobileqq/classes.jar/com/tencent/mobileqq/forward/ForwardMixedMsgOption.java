@@ -13,11 +13,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
-import atky;
-import atmr;
-import avsf;
+import aupt;
+import aurm;
+import awyg;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForLongMsg;
 import com.tencent.mobileqq.data.MessageForMixedMsg;
@@ -29,7 +30,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ForwardMixedMsgOption
-  extends atky
+  extends aupt
 {
   public MessageForMixedMsg a;
   
@@ -46,10 +47,10 @@ public class ForwardMixedMsgOption
     ((AnimationTextView)localObject2).setText(new QQText(a(), 5, 16));
     ((AnimationTextView)localObject2).setMaxLines(2);
     ((AnimationTextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-    ((AnimationTextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131165695));
+    ((AnimationTextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131165704));
     ((AnimationTextView)localObject2).setTextSize(14.0F);
     Object localObject1 = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    ((ImageView)localObject1).setImageResource(2130840161);
+    ((ImageView)localObject1).setImageResource(2130840183);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2, 1.0F);
     localLayoutParams.gravity = 17;
     localLinearLayout.addView((View)localObject2, localLayoutParams);
@@ -59,8 +60,8 @@ public class ForwardMixedMsgOption
     localLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localLinearLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
     localObject1 = new View(this.jdField_a_of_type_AndroidAppActivity);
-    ((View)localObject1).setBackgroundResource(2130840171);
-    ((View)localObject1).setOnClickListener(new atmr(this));
+    ((View)localObject1).setBackgroundResource(2130840193);
+    ((View)localObject1).setOnClickListener(new aurm(this));
     localObject2 = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
     int i = ViewUtils.dip2px(20.0F);
     ((FrameLayout)localObject2).setPadding(0, i, 0, i);
@@ -100,7 +101,7 @@ public class ForwardMixedMsgOption
     Object localObject;
     if (l != -1L)
     {
-      localObject = (ChatMessage)((avsf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174)).a.get(Long.valueOf(l));
+      localObject = (ChatMessage)((awyg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MIXED_MSG_MANAGER)).a.get(Long.valueOf(l));
       if (localObject == null) {
         break label176;
       }

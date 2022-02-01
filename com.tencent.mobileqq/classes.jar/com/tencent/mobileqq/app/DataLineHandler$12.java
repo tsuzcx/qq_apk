@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import amqd;
+import ansr;
 import com.tencent.litetransfersdk.Session;
 
 public class DataLineHandler$12
   implements Runnable
 {
-  public DataLineHandler$12(amqd paramamqd, long paramLong) {}
+  public DataLineHandler$12(ansr paramansr, long paramLong) {}
   
   public void run()
   {
     Session localSession = this.this$0.a(this.a);
-    amqd.a(this.this$0, localSession, null, null, true);
+    ansr.a(this.this$0, localSession, null, null, true);
   }
 }
 

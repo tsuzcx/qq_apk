@@ -1,26 +1,64 @@
-import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemLoverAchievementView;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.widget.RoundRectImageView;
+import java.util.ArrayList;
+import java.util.List;
 
-final class agmo
-  implements agmv
+public class agmo
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  agmo(MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, BubbleImageView paramBubbleImageView, ETTextView paramETTextView1, ETTextView paramETTextView2, int paramInt, String paramString, MessageRecord paramMessageRecord) {}
+  private List<agme> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString)
+  private agmo(IntimateContentItemLoverAchievementView paramIntimateContentItemLoverAchievementView) {}
+  
+  public void a(List<agme> paramList)
   {
-    if ((paramMessageRecord2 != null) && (agmk.b(paramMessageRecord2)))
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      if (((paramMessageRecord1 instanceof MessageForReplyText)) && (((MessageForReplyText)paramMessageRecord1).getSourceMessage() == null)) {
-        ((MessageForReplyText)paramMessageRecord1).setSourceMessageRecord(paramMessageRecord2);
-      }
-      agmk.a(paramMessageRecord2, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramContext, paramQQAppInterface, paramString);
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(@NonNull RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    paramViewHolder = (agmp)paramViewHolder;
+    Object localObject = (agme)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramViewHolder.itemView.setTag(localObject);
+    if (!TextUtils.isEmpty(((agme)localObject).a))
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestHeight = paramViewHolder.a.getHeight();
+      localURLDrawableOptions.mRequestWidth = paramViewHolder.a.getWidth();
+      localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
+      localURLDrawableOptions.mFailedDrawable = new ColorDrawable(0);
+      localObject = URLDrawable.getDrawable(((agme)localObject).a, localURLDrawableOptions);
+      paramViewHolder.a.setImageDrawable((Drawable)localObject);
+      paramViewHolder.a.setCornerRadiusAndMode(ViewUtils.dpToPx(7.0F), 1);
+    }
+  }
+  
+  @NonNull
+  public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
+  {
+    return new agmp(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView.a).inflate(2131559321, null));
   }
 }
 

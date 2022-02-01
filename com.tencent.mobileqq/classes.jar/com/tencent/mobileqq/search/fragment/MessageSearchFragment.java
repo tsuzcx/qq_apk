@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.fragment;
 
-import baum;
-import bavw;
-import bbfe;
-import bbfg;
+import bcbc;
+import bccm;
+import bclw;
+import bcly;
 
 public class MessageSearchFragment
   extends BaseSearchFragment
@@ -13,19 +13,19 @@ public class MessageSearchFragment
     return 40;
   }
   
-  protected baum a()
+  protected bcbc a()
   {
-    return new bavw(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
+    return new bccm(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
   }
   
-  protected bbfe a()
+  protected bclw a()
   {
-    return new bbfg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new bcly(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   protected String a()
   {
-    return getString(2131717989);
+    return getString(2131718374);
   }
   
   public void a(String paramString)
@@ -36,13 +36,13 @@ public class MessageSearchFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Bbfe.c();
+    this.jdField_a_of_type_Bclw.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Bbfe.d();
+    this.jdField_a_of_type_Bclw.d();
   }
 }
 

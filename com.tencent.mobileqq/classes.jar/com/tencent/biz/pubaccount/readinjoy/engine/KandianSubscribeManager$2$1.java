@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import pkh;
+import pve;
 
 public class KandianSubscribeManager$2$1
   implements Runnable
 {
-  public KandianSubscribeManager$2$1(pkh parampkh) {}
+  public KandianSubscribeManager$2$1(pve parampve) {}
   
   public void run()
   {

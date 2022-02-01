@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aehk;
-import aehl;
-import aehm;
+import aeys;
+import aeyt;
+import aeyu;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +13,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bfur;
+import bhdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -76,15 +76,15 @@ public class SpaceLowNoticeActiviy
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559523);
+    super.setContentView(2131559556);
     if ((this.a != null) && (this.a.isShowing())) {
       this.a.dismiss();
     }
     this.a = null;
-    this.a = bfur.a(this, 230);
-    this.a.setContentView(2131558992);
-    this.a.setTitle(getString(2131698114)).setMessage(getString(2131698115)).setPositiveButton(2131698521, new aehl(this)).setNegativeButton(2131690620, new aehk(this));
-    this.a.setOnKeyListener(new aehm(this));
+    this.a = bhdj.a(this, 230);
+    this.a.setContentView(2131559019);
+    this.a.setTitle(getString(2131698400)).setMessage(getString(2131698401)).setPositiveButton(2131698818, new aeyt(this)).setNegativeButton(2131690697, new aeys(this));
+    this.a.setOnKeyListener(new aeyu(this));
     this.a.show();
     return false;
   }
@@ -109,7 +109,7 @@ public class SpaceLowNoticeActiviy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SpaceLowNoticeActiviy
  * JD-Core Version:    0.7.0.1
  */

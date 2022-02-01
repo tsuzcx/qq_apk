@@ -1,43 +1,23 @@
-import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public class alfa
-  implements bjsd
+class alfa
+  implements View.OnClickListener
 {
-  public alfa(SpecailCareListActivity paramSpecailCareListActivity) {}
+  alfa(aldh paramaldh, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
   
-  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
+    aoei.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, this.c, aldh.a(this.jdField_a_of_type_Aldh));
+    bdla.b(null, "CliOper", "", "", "theme", "0X8007233", 0, 0, String.valueOf(this.c), "", "", "");
+    aldh.a(this.jdField_a_of_type_Aldh).obtainMessage(16).sendToTarget();
+    bdla.a(aldh.a(this.jdField_a_of_type_Aldh).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 15, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
-  }
-  
-  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-    if (NetworkUtil.isNetSupport(this.a))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.getFriendGroupList(true);
-      this.a.jdField_a_of_type_Boolean = true;
-      ((azsx)this.a.app.getManager(91)).a();
-      return true;
-    }
-    paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 1000L);
-    return true;
-  }
-  
-  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

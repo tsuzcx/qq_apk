@@ -1,25 +1,14 @@
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-final class uyq
-  implements URLDrawable.URLDrawableListener
+class uyq
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  uyq(String paramString, RoundImageView paramRoundImageView) {}
+  uyq(uyp paramuyp) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    uya.d("AvatarImageLog", "WeishiUtils loadAvatarImage onFail url:" + this.jdField_a_of_type_JavaLangString + ", imageView:" + this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    uya.b("AvatarImageLog", "WeishiUtils loadAvatarImage onSuccess url:" + this.jdField_a_of_type_JavaLangString + ", imageView:" + this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView.setImageDrawable(paramURLDrawable);
+    vmp.a("WSUserAuthDialog", "jump to miniApp result = " + paramBoolean);
   }
 }
 

@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public class ahvj
-  implements DialogInterface.OnClickListener
+class ahvj
+  implements Observer<Integer>
 {
-  public ahvj(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  ahvj(ahvi paramahvi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@Nullable Integer paramInteger)
   {
-    paramDialogInterface.dismiss();
-    BlessSelectMemberActivity.a(this.a, null);
+    if (paramInteger != null) {
+      this.a.b = paramInteger.intValue();
+    }
   }
 }
 

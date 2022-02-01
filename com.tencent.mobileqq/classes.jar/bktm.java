@@ -1,23 +1,8 @@
-import android.widget.TextView;
-
-class bktm
-  implements bkkw
+abstract class bktm
 {
-  bktm(bkti parambkti) {}
+  public void a() {}
   
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      bkvd.a("ReaderSplashImpl", "jumpToPlugin: openPlugin: failed");
-      if (bkti.a(this.a) != null) {
-        bkti.a(this.a).setText("跳转失败，请返回重试");
-      }
-      return;
-    }
-    bkvd.d("ReaderSplashImpl", "jumpToPlugin: openPlugin: succeed");
-    bkti.b(this.a);
-  }
+  public abstract boolean a(String paramString, bkuf parambkuf);
 }
 
 

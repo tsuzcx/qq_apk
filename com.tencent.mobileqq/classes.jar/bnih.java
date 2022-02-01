@@ -1,39 +1,33 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.InitialLayoutListener.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.InitialLayoutListener.2;
-import mqq.os.MqqHandler;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bnih
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends RecyclerView.ViewHolder
 {
-  private bnih(bnhv parambnhv) {}
+  public View a;
+  public Button a;
+  public EditText a;
+  public ImageView a;
+  public TextView a;
+  public boolean a;
+  public View b;
+  public ImageView b;
   
-  public void onGlobalLayout()
+  public bnih(bnhy parambnhy, View paramView)
   {
-    int i = this.a.jdField_a_of_type_AndroidViewView.getBottom();
-    if (this.a.b < 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EditTextDialog", 2, "onGlobalLayout first bottom:" + i);
-      }
-      this.a.b = i;
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.InitialLayoutListener.1(this));
-    }
-    while (this.a.b - i <= this.a.jdField_a_of_type_Int) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("EditTextDialog", 2, "onGlobalLayout second bottom:" + i);
-    }
-    this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-    this.a.b = i;
-    this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.InitialLayoutListener.2(this));
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131366009));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365759));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131376579));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370509);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365980);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370503));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369456));
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

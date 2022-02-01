@@ -1,16 +1,27 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
 
-class asmx
-  implements View.OnClickListener
+public class asmx
+  extends RecyclerView.ViewHolder
 {
-  asmx(asmw paramasmw, bayt parambayt) {}
+  private ExtendFriendCampusVerifyTipsView a;
   
-  public void onClick(View paramView)
+  public asmx(View paramView, asud paramasud)
   {
-    ((asmv)this.jdField_a_of_type_Bayt).a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramView);
+    this.a = ((ExtendFriendCampusVerifyTipsView)paramView);
+    this.a.setOnClickListener(paramasud);
+  }
+  
+  public void a(asnq paramasnq, int paramInt)
+  {
+    if ((paramasnq instanceof asmy))
+    {
+      paramasnq = (asmy)paramasnq;
+      this.a.setTipsType(paramasnq.a);
+      this.a.setPadding(0, paramInt, 0, 0);
+    }
   }
 }
 

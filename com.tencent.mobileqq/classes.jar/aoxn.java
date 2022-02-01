@@ -1,21 +1,16 @@
-import android.widget.TextView;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.6.1;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aoxn
-  extends aoxq
+  extends aoui
 {
-  public aoxn(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void a(int paramInt)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    if (ArkIDESettingFragment.a(this.a) != null)
-    {
-      TextView localTextView = ArkIDESettingFragment.a(this.a);
-      ArkAppCenter.a().postToMainThread(new ArkIDESettingFragment.6.1(this, paramInt, localTextView));
-    }
+    paramQQAppInterface = new aoxm(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "wsgzh";
+    paramQQAppInterface.c = "waterfall";
+    return paramQQAppInterface;
   }
 }
 

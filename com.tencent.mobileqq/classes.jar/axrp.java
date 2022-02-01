@@ -1,34 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
 
 class axrp
-  implements ImageAssetDelegate
+  implements biks
 {
   axrp(axro paramaxro) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void a()
   {
-    Object localObject = null;
-    paramLottieImageAsset = paramLottieImageAsset.getFileName();
-    String str = this.a.jdField_a_of_type_JavaLangString + "guide_images" + File.separator + paramLottieImageAsset;
-    try
-    {
-      paramLottieImageAsset = mqa.a(str, this.a.jdField_a_of_type_Int, this.a.b);
-      return paramLottieImageAsset;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        paramLottieImageAsset = localObject;
-      } while (!AudioHelper.f());
-      QLog.w(axrn.jdField_a_of_type_JavaLangString, 1, "PromotionGuide Exception, imagePath[" + str + "]", localException);
-    }
-    return null;
+    this.a.a.a.setVisibility(8);
+    this.a.a.a(true);
   }
 }
 

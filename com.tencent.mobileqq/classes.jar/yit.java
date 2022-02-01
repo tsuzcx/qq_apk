@@ -1,25 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
 class yit
-  implements View.OnClickListener
+  implements yiy
 {
-  yit(yis paramyis, yiv paramyiv) {}
+  yit(yis paramyis, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public void a(Drawable paramDrawable)
   {
-    if (!this.jdField_a_of_type_Yiv.a()) {
-      this.jdField_a_of_type_Yiv.b();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Yis.a != null) {
-        this.jdField_a_of_type_Yis.a.a(this.jdField_a_of_type_Yis);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Yiv.c();
+    if (paramDrawable != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
     }
   }
 }

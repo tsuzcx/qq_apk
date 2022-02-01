@@ -1,32 +1,24 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.15.1;
 
 public class aidt
-  extends aiec
+  implements Animation.AnimationListener
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public String b;
-  public View c;
-  public ImageView c;
-  public TextView c;
-  public String c;
-  public View d;
-  public ImageView d;
-  public TextView d;
-  public String d;
-  public View e;
-  public ImageView e;
-  public TextView e;
-  public String e;
-  public TextView f;
-  public TextView g;
+  aidt(aido paramaido) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.d = 5;
+    aido.c(this.a).post(new PublicAccountChatPie.15.1(this));
+    this.a.a.sendEmptyMessage(1);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

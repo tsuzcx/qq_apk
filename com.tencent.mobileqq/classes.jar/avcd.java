@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
 
-class avcd
-  implements auzs
+public final class avcd
+  implements Parcelable.Creator<PadFaceAd>
 {
-  avcd(avca paramavca, int paramInt, String paramString) {}
-  
-  public void a()
+  public PadFaceAd a(Parcel paramParcel)
   {
-    ListenTogetherManager.a(this.jdField_a_of_type_Avca.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this.jdField_a_of_type_Avca.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1000);
-    bcef.b(null, "dc00899", this.jdField_a_of_type_Avca.jdField_a_of_type_Avch.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_join", 0, 0, this.jdField_a_of_type_Avca.jdField_a_of_type_Avch.b, "", this.jdField_a_of_type_Avca.jdField_a_of_type_Avch.jdField_a_of_type_Int + "", "");
+    return new PadFaceAd(paramParcel);
   }
   
-  public void b() {}
+  public PadFaceAd[] a(int paramInt)
+  {
+    return new PadFaceAd[paramInt];
+  }
 }
 
 

@@ -1,17 +1,11 @@
-class assh
-  implements asri
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+
+public abstract interface assh<V extends View>
 {
-  assh(assd paramassd) {}
+  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
   
-  public void a()
-  {
-    this.a.a(false, asyq.a(this.a.a.a()), this.a.c(), new assi(this));
-  }
-  
-  public void b()
-  {
-    assd.b(this.a);
-  }
+  public abstract void b(PullToRefreshBase<V> paramPullToRefreshBase);
 }
 
 

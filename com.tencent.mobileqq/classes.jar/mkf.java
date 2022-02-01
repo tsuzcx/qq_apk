@@ -1,38 +1,26 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoControlUI;
 import com.tencent.qphone.base.util.QLog;
 
-class mkf
-  implements mho
+public class mkf
+  implements DialogInterface.OnClickListener
 {
-  mkf(mke parammke, int paramInt) {}
+  public mkf(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Mke.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
-    {
-      this.jdField_a_of_type_Mke.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131373411, false);
-      this.jdField_a_of_type_Mke.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131363109, false);
-      this.jdField_a_of_type_Mke.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131363121, false);
-      this.jdField_a_of_type_Mke.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131363120, false);
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h()) {
+      return;
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Mke.a.a().a(this.jdField_a_of_type_Mke.a.c, 250);
-    this.jdField_a_of_type_Mke.a.a().b(250);
-    this.jdField_a_of_type_Mke.a.a().b(this.jdField_a_of_type_Mke.a.c, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Mke.a.e = true;
-    QLog.d(this.jdField_a_of_type_Mke.a.jdField_a_of_type_JavaLangString, 1, "onClose()-> onOutAnimationEnd ->finish  ");
-    this.jdField_a_of_type_Mke.a.finish();
-    this.jdField_a_of_type_Mke.a.overridePendingTransition(0, 2130772177);
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionNormalDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
+    mvk.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mkf
  * JD-Core Version:    0.7.0.1
  */

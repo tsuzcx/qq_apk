@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
 class ankf
-  implements DialogInterface.OnCancelListener
+  implements Comparator<ApolloActionData>
 {
-  ankf(anjz paramanjz) {}
+  ankf(ankc paramankc) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    anjz.a(this.a, null);
-    QLog.d("AccountPhoneUnityManager", 1, "dialog cancel");
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
+    }
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
+    }
+    return -1;
   }
 }
 

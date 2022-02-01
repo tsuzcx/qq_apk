@@ -1,23 +1,63 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.content.Context;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class qvz
-  extends ClickableSpan
+  extends BaseAdapter
 {
-  public qvz(ComponentHeaderPublish paramComponentHeaderPublish) {}
+  List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<teh> b = new ArrayList();
   
-  public void onClick(View paramView)
+  public qvz(NativeGridImageView paramNativeGridImageView) {}
+  
+  public List<URL> a()
   {
-    pay.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(qwa paramqwa)
   {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(AIOUtils.sp2TextSize(2, 14, this.a.getResources()));
+    this.b = paramqwa.a();
+    this.jdField_a_of_type_JavaUtilList = paramqwa.b();
+  }
+  
+  public int getCount()
+  {
+    return this.b.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.b.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Context localContext = paramViewGroup.getContext();
+    if (paramView == null)
+    {
+      paramView = new SquareCornerTextImageView(localContext);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    }
+    for (;;)
+    {
+      ((SquareCornerTextImageView)paramView).a((teh)this.b.get(paramInt));
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

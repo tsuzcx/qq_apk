@@ -1,12 +1,42 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-public abstract interface alki
-  extends alkh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/recent/guidebanner/NewerGuideBannerPreloadWebProcessConfigProcessor$Config;", "", "()V", "preloadWebProcess", "", "getPreloadWebProcess", "()Z", "setPreloadWebProcess", "(Z)V", "parse", "", "configText", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class alki
 {
-  public abstract void a(String paramString);
+  private boolean a = true;
   
-  public abstract void a(List<MayKnowRecommend> paramList);
+  public final void a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "configText");
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerBannerGuidePreloadWebProcessConfigProcessor", 2, paramString);
+    }
+    if (!TextUtils.isEmpty((CharSequence)paramString)) {}
+    try
+    {
+      if (new JSONObject(paramString).optInt("ConfigEnablePreloadWebProcess", 1) == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.a = bool;
+        return;
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("NewerBannerGuidePreloadWebProcessConfigProcessor", 1, paramString, new Object[0]);
+    }
+  }
+  
+  public final boolean a()
+  {
+    return this.a;
+  }
 }
 
 

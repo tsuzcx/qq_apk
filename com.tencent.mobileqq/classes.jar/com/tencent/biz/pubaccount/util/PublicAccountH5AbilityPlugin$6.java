@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.util;
 
 import android.app.Activity;
 import android.content.Intent;
-import bfuc;
+import bhcu;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ufd;
+import uta;
 
 public class PublicAccountH5AbilityPlugin$6
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$6(ufd paramufd, String[] paramArrayOfString) {}
+  public PublicAccountH5AbilityPlugin$6(uta paramuta, String[] paramArrayOfString) {}
   
   public void run()
   {
@@ -42,7 +42,7 @@ public class PublicAccountH5AbilityPlugin$6
         int m = ((JSONObject)localObject2).optInt("ugcPushType");
         try
         {
-          str1 = new String(bfuc.decode((String)localObject1, 0));
+          str1 = new String(bhcu.decode((String)localObject1, 0));
           localObject1 = str1;
         }
         catch (Exception localException)
@@ -104,7 +104,7 @@ public class PublicAccountH5AbilityPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.6
  * JD-Core Version:    0.7.0.1
  */

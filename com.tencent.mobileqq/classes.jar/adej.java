@@ -1,18 +1,66 @@
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity.3.1;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class adej
   implements View.OnClickListener
 {
-  public adej(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public adej(AccountManageActivity paramAccountManageActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!this.a.b)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    Object localObject = this.a;
+    boolean bool;
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      bool = true;
+      label35:
+      ((AccountManageActivity)localObject).jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label254;
+      }
+      this.a.rightViewText.setVisibility(8);
+      this.a.rightHighLView.setVisibility(0);
+      this.a.rightViewText.setText(2131692403);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131167112));
+    }
+    for (;;)
+    {
+      if (AccountManageActivity.a(this.a) != null)
+      {
+        localObject = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+        if ((localObject instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localObject).hideIgnoreVisible();
+        }
+        AccountManageActivity.a(this.a).a();
+        AccountManageActivity.a(this.a, null);
+      }
+      this.a.b();
+      this.a.a(this.a.jdField_a_of_type_Boolean);
+      this.a.b = false;
+      AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.3.1(this), 400L);
+      bdla.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit", 0, 0, "", "", "", "");
+      break;
+      bool = false;
+      break label35;
+      label254:
+      this.a.rightViewText.setVisibility(0);
+      this.a.rightHighLView.setVisibility(8);
+      this.a.rightViewText.setText(2131691815);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131167034));
+    }
   }
 }
 

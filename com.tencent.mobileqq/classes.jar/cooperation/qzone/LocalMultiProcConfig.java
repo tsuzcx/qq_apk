@@ -28,6 +28,11 @@ public class LocalMultiProcConfig
   public static final String PREFS_NAME_QZ_VIDEO_SETTING = "QZ_video_shared_setting";
   public static String PROCESS_NAME = "com.tencent.mobileqq:qzone";
   public static final String QCIRCLE_PUBLISH_SELECTED_GRID_SAVE = "qcircle_publish_selected_grid_save";
+  public static final String QCIRCLE_REDPOINT_GREY_TROOP_UIN = "qcircle_redpoint_grey_troop_uin";
+  public static final String QCIRCLE_TROOP_REDPOINT_GREY_LAST_TIMESTAMP = "qcircle_troop_redpoint_grey_last_timestamp";
+  public static final String QCIRCLE_TROOP_REDPOINT_GREY_TIME_THRESHOLD = "qcircle_troop_redpoint_grey_time_threshold";
+  public static final String QCIRCLE_TROOP_REDPOINT_PULL_AMOUNT_THRESHOLD = "qcircle_troop_redpoint_pull_amount_threshold";
+  public static final String QCIRCLE_TROOP_REDPOINT_PULL_TIME_THRESHOLD = "qcircle_troop_redpoint_pull_time_threshold";
   public static final String QZONE_ALBUM_DLNA_SWITCH = "QZone_dlnaSwitch";
   public static final String QZONE_BARRAGE_EFFECT_ENABLED = "qzone_barrage_effect_enabled";
   public static final String QZONE_BARRAGE_EFFECT_SAVE_DATA = "qzone_barrage_effect_save_data";

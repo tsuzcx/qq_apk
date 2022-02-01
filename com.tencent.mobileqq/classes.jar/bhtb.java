@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment.6;
+import android.graphics.Rect;
+import android.widget.TextView;
 
-public class bhtb
-  implements DialogInterface.OnClickListener
+final class bhtb
+  implements bhtc
 {
-  public bhtb(OpenAuthorityFragment.6 param6) {}
+  bhtb(TextView paramTextView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Rect paramRect)
   {
-    paramDialogInterface.dismiss();
+    if (this.a != null) {
+      this.a.setPadding(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+    }
   }
 }
 

@@ -36,7 +36,7 @@ class NetOcrReqResultState$6
       YtLogger.e(NetOcrReqResultState.access$000(), "json parse error " + paramHashMap.getLocalizedMessage());
       return;
     }
-    YtFSM.getInstance().sendFSMEvent(new NetOcrReqResultState.6.3(this, i, paramException));
+    YtFSM.getInstance().sendFSMEvent(new NetOcrReqResultState.6.3(this, i, paramException, paramHashMap));
   }
 }
 

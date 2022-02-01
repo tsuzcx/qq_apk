@@ -1,54 +1,118 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class ogz
-  implements View.OnTouchListener
+public final class ogz
 {
-  public ogz(ShopWebViewFragment paramShopWebViewFragment, JSONObject paramJSONObject1, JSONObject paramJSONObject2) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "";
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString = "";
+  private long jdField_c_of_type_Long;
+  private String jdField_c_of_type_JavaLangString = "";
+  private long jdField_d_of_type_Long;
+  private String jdField_d_of_type_JavaLangString = "";
+  private String e = "";
+  private String f = "";
+  private String g = "";
+  private String h = "";
+  private String i = "";
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ogx a()
   {
-    switch (paramMotionEvent.getAction())
-    {
+    return new ogx(this, null);
+  }
+  
+  public ogz a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public ogz a(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_a_of_type_JavaLangString = paramString;
     }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
-      return false;
-      int i = (int)(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c - paramMotionEvent.getY());
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
-      if ((i < 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d > 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
-      }
-      if ((i > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d < 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
-      }
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment;
-      paramView.d = (i + paramView.d);
-      return false;
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("y_offset", this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d);
-        paramView = WebViewPlugin.toJsScript("onScroll", this.jdField_a_of_type_OrgJsonJSONObject, this.b);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.webView != null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.webView.callJs(paramView);
-          return false;
-        }
-      }
-      catch (JSONException paramView)
-      {
-        paramView.printStackTrace();
-      }
+    return this;
+  }
+  
+  public ogz b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public ogz b(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_b_of_type_JavaLangString = paramString;
     }
-    return false;
+    return this;
+  }
+  
+  public ogz c(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public ogz c(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_c_of_type_JavaLangString = paramString;
+    }
+    return this;
+  }
+  
+  public ogz d(long paramLong)
+  {
+    this.jdField_d_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public ogz d(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_d_of_type_JavaLangString = paramString;
+    }
+    return this;
+  }
+  
+  public ogz e(String paramString)
+  {
+    if (paramString != null) {
+      this.e = paramString;
+    }
+    return this;
+  }
+  
+  public ogz f(String paramString)
+  {
+    if (paramString != null) {
+      this.f = paramString;
+    }
+    return this;
+  }
+  
+  public ogz g(String paramString)
+  {
+    if (paramString != null) {
+      this.g = paramString;
+    }
+    return this;
+  }
+  
+  public ogz h(String paramString)
+  {
+    if (paramString != null) {
+      this.h = paramString;
+    }
+    return this;
+  }
+  
+  public ogz i(String paramString)
+  {
+    if (paramString != null) {
+      this.i = paramString;
+    }
+    return this;
   }
 }
 

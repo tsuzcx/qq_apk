@@ -1,17 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import java.util.ArrayList;
 
 public class aduq
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public aduq(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
+  public aduq(DirectForwardActivity paramDirectForwardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
-    this.a.finish();
+    paramIntent = paramIntent.getExtras();
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getStringArrayList("procNameList");
+      paramIntent = paramIntent.getString("verify");
+      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (bgyr.a(paramIntent, paramContext))) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label53:
+      int i = 0;
+      while (i < paramContext.size())
+      {
+        if (this.a.a.equals(paramContext.get(i)))
+        {
+          this.a.finish();
+          return;
+        }
+        i += 1;
+      }
+    }
   }
 }
 

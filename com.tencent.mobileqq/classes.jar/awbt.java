@@ -1,17 +1,23 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
 public class awbt
+  implements Animation.AnimationListener
 {
-  public Button a;
-  public ImageView a;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public awbt(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
   
-  awbt(awbs paramawbs) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

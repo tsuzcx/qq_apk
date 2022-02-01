@@ -2,8 +2,8 @@ package com.tencent.mobileqq.qipc;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bkem;
-import bklb;
+import blpx;
+import blwj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
 import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
@@ -15,14 +15,14 @@ import mqq.app.MobileQQ;
 
 public class QIPCEnvironmentInit
 {
-  public static final bkem sCallbac = new bkem();
+  public static final blpx sCallbac = new blpx();
   
   static void initEnvironment()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QIPCEnvironmentInit", 2, "initEnvironment");
     }
-    IPluginAdapterProxy.setProxy(new bklb());
+    IPluginAdapterProxy.setProxy(new blwj());
     try
     {
       QIPCClientHelper.setupThreadEngine(new QIPCEnvironmentInit.1());

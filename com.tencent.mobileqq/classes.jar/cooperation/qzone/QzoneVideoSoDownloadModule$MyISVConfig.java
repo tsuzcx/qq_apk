@@ -1,16 +1,16 @@
 package cooperation.qzone;
 
-import amtj;
 import android.os.ResultReceiver;
-import bbqi;
-import bbri;
+import anvx;
+import bcxc;
+import bcyc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import java.util.ArrayList;
 
 class QzoneVideoSoDownloadModule$MyISVConfig
-  implements bbri
+  implements bcyc
 {
   private QQAppInterface app;
   private ResultReceiver mReceiver;
@@ -28,8 +28,8 @@ class QzoneVideoSoDownloadModule$MyISVConfig
     {
       if (paramInt2 != 0)
       {
-        QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -2, amtj.a(2131711620) + paramInt2 + "]");
-        bbqi.b(1, paramInt2);
+        QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -2, anvx.a(2131711967) + paramInt2 + "]");
+        bcxc.b(1, paramInt2);
         return;
       }
       ArrayList localArrayList = new ArrayList(1);
@@ -39,12 +39,12 @@ class QzoneVideoSoDownloadModule$MyISVConfig
         ShortVideoResourceManager.a(this.app, localArrayList, new QzoneVideoSoDownloadModule.MyShortVideoResource(this.this$0, this.mReceiver));
         return;
       }
-      QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -2, amtj.a(2131711704) + paramInt1 + "]");
-      bbqi.b(1, paramInt1);
+      QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -2, anvx.a(2131712051) + paramInt1 + "]");
+      bcxc.b(1, paramInt1);
       return;
     }
-    QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -2, amtj.a(2131711595) + paramInt2 + "]");
-    bbqi.b(1, paramInt2);
+    QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -2, anvx.a(2131711942) + paramInt2 + "]");
+    bcxc.b(1, paramInt2);
   }
 }
 

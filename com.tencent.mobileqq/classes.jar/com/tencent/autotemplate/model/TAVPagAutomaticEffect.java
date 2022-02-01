@@ -1,21 +1,18 @@
 package com.tencent.autotemplate.model;
 
 import android.graphics.PointF;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tavmovie.sticker.TAVMovieSticker;
 import com.tencent.tavmovie.sticker.TAVMovieSticker.TAVMovieStickerMode;
 import com.tencent.tavsticker.model.TAVSticker;
-import com.tencent.tavsticker.model.TAVStickerTextItem;
-import com.tencent.tavsticker.utils.CollectionUtil;
-import java.util.Iterator;
-import java.util.List;
 
 public class TAVPagAutomaticEffect
   extends TAVEffectAutomaticEffect
 {
+  public static final String KEY_EXTRA_MATERIAL_ID = "key_extra_material_id";
   private transient TAVMovieSticker.TAVMovieStickerMode mode;
   private transient PointF position = new PointF(0.5F, 0.5F);
   private transient float rotation = 0.0F;
@@ -35,44 +32,51 @@ public class TAVPagAutomaticEffect
     if ((localTAVMovieSticker == null) || (localTAVMovieSticker.getSticker() == null)) {
       return null;
     }
-    localTAVMovieSticker.setRotation(this.rotation);
-    localTAVMovieSticker.setScale(this.scale);
-    localTAVMovieSticker.setPosition(this.position);
-    Object localObject = localTAVMovieSticker.getSticker().getStickerTextItems();
-    if (!CollectionUtil.isEmptyList((List)localObject))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (!TextUtils.isEmpty(((TAVStickerTextItem)((Iterator)localObject).next()).getLayerName())) {}
-      }
-    }
-    localTAVMovieSticker.getSticker().updateTextData();
-    localTAVMovieSticker.setStickerMode(getMode());
+    label194:
     float f2;
-    if ((this.startOffset > -1L) && (this.endOffset == -1L))
+    if (this.parameter != null)
     {
+      localTAVMovieSticker.setRotation(this.parameter.rotation);
+      localTAVMovieSticker.setScale(this.parameter.scale);
+      if (this.parameter.position != null) {
+        localTAVMovieSticker.setPosition(new PointF(this.parameter.position.centerX, this.parameter.position.centerY));
+      }
+      localTAVMovieSticker.getSticker().updateTextData();
+      if (this.effectId != null) {
+        localTAVMovieSticker.getSticker().getExtraBundle().putString("key_extra_material_id", this.effectId);
+      }
+      localTAVMovieSticker.setStickerMode(getMode());
+      if ((this.startOffset <= -1L) || (this.endOffset != -1L)) {
+        break label275;
+      }
       f1 = (float)this.startOffset;
-      if (this.duration > 0L)
+      if (this.duration <= 0L) {
+        break label259;
+      }
+      paramFloat = (float)this.duration;
+      f2 = f1;
+      if (this.parameter != null)
       {
-        paramFloat = (float)this.duration;
-        f2 = f1;
-        if (this.parameter != null)
-        {
-          if (this.parameter.rhythmPosition != 1L) {
-            break label327;
-          }
-          f2 = f1 - paramFloat / 2.0F;
+        if (this.parameter.rhythmPosition != 1L) {
+          break label368;
         }
+        f2 = f1 - paramFloat / 2.0F;
       }
     }
     for (;;)
     {
       if (paramFloat > 0.0F) {
-        break label350;
+        break label391;
       }
       return null;
-      paramFloat = (float)localTAVMovieSticker.getSticker().durationTime() / 1000.0F;
+      localTAVMovieSticker.setRotation(this.rotation);
+      localTAVMovieSticker.setScale(this.scale);
+      localTAVMovieSticker.setPosition(this.position);
       break;
+      label259:
+      paramFloat = (float)localTAVMovieSticker.getSticker().durationTime() / 1000.0F;
+      break label194;
+      label275:
       if ((this.startOffset == -1L) && (this.endOffset > -1L))
       {
         if (this.duration > 0L) {}
@@ -86,14 +90,14 @@ public class TAVPagAutomaticEffect
       }
       paramFloat = paramFloat - (float)this.startOffset - (float)this.endOffset;
       f1 = (float)this.startOffset;
-      break;
-      label327:
+      break label194;
+      label368:
       f2 = f1;
       if (this.parameter.rhythmPosition == 2L) {
         f2 = f1 - paramFloat;
       }
     }
-    label350:
+    label391:
     float f1 = f2;
     if (f2 < 0.0F) {
       f1 = 0.0F;

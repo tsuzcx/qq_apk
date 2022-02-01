@@ -1,46 +1,19 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.app.proxy.GroupActionResp;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adlz
-  extends amsu
+final class adlz
+  implements DialogInterface.OnClickListener
 {
-  public adlz(GroupManagerActivity paramGroupManagerActivity) {}
+  adlz(adnm paramadnm) {}
   
-  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onAddGroupResp isSuccess = " + paramBoolean);
+    if (this.a != null) {
+      this.a.onCancel();
     }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onRenameGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onResortGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(true);
-    GroupManagerActivity.c(this.a, true);
   }
 }
 

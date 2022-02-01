@@ -1,24 +1,24 @@
-import android.graphics.PointF;
+import android.support.v4.view.OnApplyWindowInsetsListener;
+import android.support.v4.view.WindowInsetsCompat;
+import android.view.View;
+import android.view.ViewGroup;
+import dov.com.qq.im.ae.camera.ui.poi.AESelectLocationFragment;
 
 public class bngp
+  implements OnApplyWindowInsetsListener
 {
-  public final float a;
-  public final PointF a;
-  public final float b;
-  public final float c;
-  public final float d;
-  public final float e;
-  public final float f;
+  public bngp(AESelectLocationFragment paramAESelectLocationFragment) {}
   
-  public bngp(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8)
+  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.b = paramFloat4;
-    this.c = paramFloat5;
-    this.d = paramFloat6;
-    this.e = paramFloat7;
-    this.f = paramFloat8;
+    if ((paramView instanceof ViewGroup))
+    {
+      paramView = (ViewGroup)paramView.findViewById(2131376947);
+      if (paramView != null) {
+        paramView.setPadding(0, paramWindowInsetsCompat.getSystemWindowInsetTop(), 0, 0);
+      }
+    }
+    return paramWindowInsetsCompat;
   }
 }
 

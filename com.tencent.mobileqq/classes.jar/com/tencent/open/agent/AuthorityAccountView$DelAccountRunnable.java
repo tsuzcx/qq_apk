@@ -22,7 +22,7 @@ public class AuthorityAccountView$DelAccountRunnable
   public void run()
   {
     this.this$0.c(this.a);
-    Object localObject = AuthorityAccountView.a(this.this$0).findViewById(2131361926);
+    Object localObject = AuthorityAccountView.a(this.this$0).findViewById(2131361928);
     if (localObject == null)
     {
       QLog.e("AuthorityAccountView", 1, "--> DelAccountRunnable null == currUinView");

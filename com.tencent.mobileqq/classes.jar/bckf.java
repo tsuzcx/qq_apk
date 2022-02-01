@@ -1,19 +1,8 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
-
-class bckf
+public abstract interface bckf
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
-  String jdField_a_of_type_JavaLangString;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString;
-  String c;
+  public abstract void a(bcke parambcke);
   
-  bckf(bckd parambckd) {}
+  public abstract void a(bcke parambcke, String paramString1, String paramString2);
 }
 
 

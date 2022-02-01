@@ -1,90 +1,29 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.olympic.OlympicManager;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x78.submsgtype0x78.MsgBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.api.banner.GdtBannerAd;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acbi
-  implements abzb
+  implements View.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    submsgtype0x78.MsgBody localMsgBody = new submsgtype0x78.MsgBody();
-    int i;
-    do
-    {
-      do
-      {
-        try
-        {
-          localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-          i = localMsgBody.uint32_type.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.BaseMessageProcessor", 2, "MSG_TYPE_RED_PACKET type:" + i + ", serverVersion:" + localMsgBody.uint32_version.get());
-          }
-          if (i == 1004)
-          {
-            paramQQAppInterface = (PortalManager)paramQQAppInterface.getManager(79);
-            if (paramQQAppInterface != null) {
-              paramQQAppInterface.a(localMsgBody);
-            }
-            return;
-          }
-        }
-        catch (Throwable paramQQAppInterface)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PortalManager", 2, "", paramQQAppInterface);
-          }
-          throw new RuntimeException(paramQQAppInterface);
-        }
-        if (i == 49)
-        {
-          aqlw.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), localMsgBody.uint32_version.get());
-          return;
-        }
-        if (i == 46)
-        {
-          abvt.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), localMsgBody.uint32_version.get(), "C2COnlinePush");
-          return;
-        }
-        if (i == 1003)
-        {
-          ((OlympicManager)paramQQAppInterface.getManager(167)).a(localMsgBody);
-          return;
-        }
-        if (i != 222) {
-          break;
-        }
-        i = paramQQAppInterface.getPreferences().getInt("public_account_ad_preload_task", 0);
-        if (i != localMsgBody.uint32_version.get()) {
-          aqlw.a(paramQQAppInterface, 222, paramQQAppInterface.getCurrentAccountUin());
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "handlePublicAccountAdPreloadTaskPush localVersion:" + i + ", serverVersion:" + localMsgBody.uint32_version.get());
-      return;
-    } while ((i != 283) || (paramQQAppInterface == null));
-    try
-    {
-      QLog.d("Q.msg.BaseMessageProcessor", 1, "SAFE_MODE_COMMAND_CONFIG excute");
-      aqlw.a(paramQQAppInterface, 283, paramQQAppInterface.getCurrentAccountUin());
-      return;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "SAFE_MODE_COMMAND_CONFIG  Push throw an exception:", paramQQAppInterface);
-    }
-  }
+  public acbi(GdtBannerAd paramGdtBannerAd, acbl paramacbl) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(View paramView)
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    acho.b("GdtBannerAd", "getView().onClick");
+    if (!GdtBannerAd.access$200(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd)) {
+      acho.d("GdtBannerAd", "getView().onClick !isValidClick()");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      GdtBannerAd.access$300(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).a.a = this.jdField_a_of_type_Acbl.a().onClick(paramView);
+      GdtHandler.a(GdtBannerAd.access$300(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).a);
+      GdtBannerAd.access$400(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd);
+    }
   }
 }
 

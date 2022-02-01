@@ -1,31 +1,28 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdExposureManager.PosListener.1;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
-public final class txv
-  implements puu
+public class txv
+  extends txt
 {
-  private WeakReference<txu> a;
-  
-  public txv(txu paramtxu)
+  txv(txq paramtxq1, Activity paramActivity, txq paramtxq2, JSONObject paramJSONObject)
   {
-    this.a = new WeakReference(paramtxu);
+    super(paramtxq1, paramActivity, paramtxq2, paramJSONObject);
   }
   
-  public void a(int paramInt)
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
   {
-    if (this.a != null)
-    {
-      txu localtxu = (txu)this.a.get();
-      if ((localtxu != null) && (txu.a(localtxu) != null)) {
-        txu.a(localtxu).post(new VideoAdExposureManager.PosListener.1(this, localtxu, paramInt));
-      }
+    paramString1 = null;
+    if (paramActionSheetItem.action == 72) {
+      paramString1 = paramActionSheetItem.uin;
     }
+    txq.a(this.jdField_a_of_type_Txq).mShareUtils.a(this.jdField_a_of_type_OrgJsonJSONObject, paramInt, this.jdField_a_of_type_AndroidAppActivity, paramString1, paramActionSheetItem.uinType, paramActionSheetItem.label);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     txv
  * JD-Core Version:    0.7.0.1
  */

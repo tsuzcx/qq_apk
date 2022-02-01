@@ -1,22 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class nxm
-  implements Animation.AnimationListener
+  implements aaea
 {
-  public nxm(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public nxm(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void callback(Bundle paramBundle)
   {
-    this.a.setResult(-1);
-    PublicAccountAdvertisementActivity.g(this.a);
-    PublicAccountAdvertisementActivity.a(this.a, 0, 0);
+    if (paramBundle != null)
+    {
+      paramBundle = paramBundle.getString("music");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

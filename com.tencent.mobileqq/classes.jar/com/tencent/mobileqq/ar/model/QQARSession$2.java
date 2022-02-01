@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.model;
 
-import aolr;
+import apos;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$2
   implements Runnable
 {
-  public QQARSession$2(aolr paramaolr, long paramLong, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  public QQARSession$2(apos paramapos, long paramLong, ArCloudConfigInfo paramArCloudConfigInfo) {}
   
   public void run()
   {
-    QLog.d("AREngine_QQARSession", 1, "ARTransferDoorLogicManager startModelRender in AREngine." + this.this$0.a + ";" + aolr.a(this.this$0));
-    if ((this.this$0.a == 2) && (aolr.a(this.this$0)) && (!this.this$0.e()))
+    QLog.d("AREngine_QQARSession", 1, "ARTransferDoorLogicManager startModelRender in AREngine." + this.this$0.a + ";" + apos.a(this.this$0));
+    if ((this.this$0.a == 2) && (apos.a(this.this$0)) && (!this.this$0.e()))
     {
-      aolr.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, -1, 0.0F, 0.0F, 0.0F);
+      apos.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, -1, 0.0F, 0.0F, 0.0F);
       QLog.d("AREngine_QQARSession", 1, "startModelRender. recogType for external ");
     }
   }

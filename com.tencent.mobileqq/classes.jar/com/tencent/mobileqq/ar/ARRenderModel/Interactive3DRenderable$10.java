@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
 import android.text.TextUtils;
-import anyn;
-import aobu;
+import apbp;
+import apew;
 
 public class Interactive3DRenderable$10
   implements Runnable
 {
-  public Interactive3DRenderable$10(aobu paramaobu, String paramString) {}
+  public Interactive3DRenderable$10(apew paramapew, String paramString) {}
   
   public void run()
   {
-    if ((aobu.a(this.this$0) != null) && (!TextUtils.isEmpty(this.a))) {
-      aobu.a(this.this$0).a(aobu.a(this.this$0) + this.a, true);
+    if ((apew.a(this.this$0) != null) && (!TextUtils.isEmpty(this.a))) {
+      apew.a(this.this$0).a(apew.a(this.this$0) + this.a, true);
     }
   }
 }

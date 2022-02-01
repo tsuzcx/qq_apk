@@ -1,27 +1,32 @@
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class rvu
-  extends rvs
+  implements AdapterView.OnItemClickListener
 {
-  private ViewGroup B;
-  public VideoFeedsStressFollowLayout a;
-  private ReadInJoyHeadImageView a;
-  public scd a;
-  public View f;
+  public rvu(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public rvu(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setPrefix("@");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131380557));
-    this.B = ((ViewGroup)paramView.findViewById(2131380558));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout = ((VideoFeedsStressFollowLayout)paramView.findViewById(2131377831));
-    this.f = paramView.findViewById(2131380563);
-    this.jdField_a_of_type_Scd = new scd(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout, this.m);
+    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
+    if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
+    {
+      if (ReadInJoyVideoTagSelectionFragment.a(this.a).a()) {
+        break label72;
+      }
+      if ((!ReadInJoyVideoTagSelectionFragment.a(this.a).a((TagInfo)paramAdapterView)) && (!ReadInJoyVideoTagSelectionFragment.a(this.a).c())) {
+        ReadInJoyVideoTagSelectionFragment.a(this.a).a();
+      }
+    }
+    label72:
+    while (ReadInJoyVideoTagSelectionFragment.b(this.a).c()) {
+      return;
+    }
+    ReadInJoyVideoTagSelectionFragment.b(this.a).a();
   }
 }
 

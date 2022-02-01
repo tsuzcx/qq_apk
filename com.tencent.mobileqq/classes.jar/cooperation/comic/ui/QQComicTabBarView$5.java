@@ -1,9 +1,10 @@
 package cooperation.comic.ui;
 
-import bkgb;
-import bkgu;
-import bkgy;
+import blrn;
+import blsg;
+import blsk;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -16,12 +17,12 @@ class QQComicTabBarView$5
   public void run()
   {
     this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
-    this.this$0.jdField_a_of_type_Bkgy = ((bkgy)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(213));
-    if (this.this$0.jdField_a_of_type_Bkgy != null) {
-      this.this$0.jdField_a_of_type_Bkgy.addObserver(this.this$0.jdField_a_of_type_Bkha);
+    this.this$0.jdField_a_of_type_Blsk = ((blsk)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.COMIC_RED_TOUCH_MANAGER));
+    if (this.this$0.jdField_a_of_type_Blsk != null) {
+      this.this$0.jdField_a_of_type_Blsk.addObserver(this.this$0.jdField_a_of_type_Blsm);
     }
-    if (bkgu.a != null) {
-      bkgu.a.a(this.this$0.jdField_a_of_type_Bkga);
+    if (blsg.a != null) {
+      blsg.a.a(this.this$0.jdField_a_of_type_Blrm);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebViewTabBarView", 2, "register observers");

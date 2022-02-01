@@ -10,7 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
-import bfrw;
+import bhan;
 
 public class ShaderAnimLayout
   extends RelativeLayout
@@ -65,7 +65,7 @@ public class ShaderAnimLayout
     {
       for (;;)
       {
-        bfrw.a(this, 1, null);
+        bhan.a(this, 1, null);
       }
     }
   }

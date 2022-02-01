@@ -1,18 +1,23 @@
 package dov.com.qq.im.ae;
 
-import android.content.Context;
-import bljy;
-import com.tencent.mobileqq.widget.QQToast;
+import bmxa;
+import bnbn;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
 public class AEPituCameraUnit$31
   implements Runnable
 {
-  public AEPituCameraUnit$31(bljy parambljy, Context paramContext) {}
+  public AEPituCameraUnit$31(bmxa parambmxa) {}
   
   public void run()
   {
-    QQToast.a(this.a, this.a.getString(2131698114), 0).a();
-    this.this$0.J();
+    bnbn localbnbn = this.this$0.a;
+    if (this.this$0.b == AECaptureMode.NORMAL) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localbnbn.d(bool);
+      return;
+    }
   }
 }
 

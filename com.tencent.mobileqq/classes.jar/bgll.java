@@ -1,18 +1,13 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-
 public class bgll
-  implements TouchWebView.OnScrollChangedListener
 {
-  public bgll(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  public int a;
+  public String a;
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  bgll(String paramString, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.scrollBy(0, paramInt2 - paramInt4);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

@@ -1,12 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
-class bgwi
-  implements DialogInterface.OnDismissListener
+public class bgwi
+  implements DialogInterface.OnClickListener
 {
-  bgwi(bgwg parambgwg) {}
+  public bgwi(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 

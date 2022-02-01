@@ -1,15 +1,25 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnSeekCompleteListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.open.agent.AuthorityControlFragment;
 
-class bjbb
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+public class bjbb
+  implements View.OnTouchListener
 {
-  bjbb(bjau parambjau, AbsVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
+  public bjbb(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnSeekCompleteListener.onSeekComplete(this.jdField_a_of_type_Bjau);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

@@ -1,41 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.Share.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.biz.tribe.TribeVideoPlugin;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
 
 public class aadi
-  implements BusinessObserver
+  implements ISuperPlayer.OnErrorListener
 {
-  aadi(aadf paramaadf) {}
+  public aadi(TribeVideoPlugin paramTribeVideoPlugin, aado paramaado) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if (!paramBoolean) {}
-    byte[] arrayOfByte;
-    do
+    QLog.e("TribeVideoPlugin", 2, "ISuperPlayer.OnErrorListener module = " + paramInt1 + " errorType = " + paramInt2 + " errorCode = " + paramInt3 + " extraInfo = " + paramString);
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
     {
-      return;
-      arrayOfByte = paramBundle.getByteArray("data");
-    } while (arrayOfByte == null);
-    paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-    try
-    {
-      paramBundle.mergeFrom(arrayOfByte);
-      ThreadManager.post(new Share.7.1(this, paramBundle), 5, null, true);
-      return;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(7, aado.a(this.jdField_a_of_type_Aado));
+      paramISuperPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramISuperPlayer.obj = aado.a(this.jdField_a_of_type_Aado);
+      paramISuperPlayer.what = 7;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramISuperPlayer);
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(aadf.a, 2, localInvalidProtocolBufferMicroException.getMessage());
-        }
-      }
-    }
+    return false;
   }
 }
 

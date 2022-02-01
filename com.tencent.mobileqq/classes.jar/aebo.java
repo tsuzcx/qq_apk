@@ -1,70 +1,31 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity.8.1;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class aebo
-  extends nmf
+  implements bkzq
 {
-  public aebo(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public aebo(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, bkzi parambkzi) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = 0;
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    for (paramInt = 0;; paramInt = 1)
-    {
-      if (paramInt != 0) {}
-      try
-      {
-        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
-        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
-        paramInt = i;
-        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
-          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
-        }
-        if (paramInt == 1)
-        {
-          long l = 3600L;
-          paramArrayOfByte = "";
-          if (localQQProtectRisksResponse.uint32_cache_time.has()) {
-            l = localQQProtectRisksResponse.uint32_cache_time.get();
-          }
-          if (localQQProtectRisksResponse.str_risk_exist.has()) {
-            paramArrayOfByte = localQQProtectRisksResponse.str_risk_exist.get();
-          }
-          paramBundle = paramArrayOfByte;
-          if (TextUtils.isEmpty(paramArrayOfByte))
-          {
-            paramBundle = paramArrayOfByte;
-            if (localQQProtectRisksResponse.risk_info_list.has())
-            {
-              paramBundle = paramArrayOfByte;
-              if (!localQQProtectRisksResponse.risk_info_list.isEmpty()) {
-                paramBundle = this.a.getString(2131698504);
-              }
-            }
-          }
-          QQSettingSettingActivity.a(this.a, l, paramBundle);
-          this.a.runOnUiThread(new QQSettingSettingActivity.8.1(this, paramBundle));
-        }
-        return;
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        return;
-      }
+    if (this.jdField_a_of_type_Bkzi != null) {
+      this.jdField_a_of_type_Bkzi.dismiss();
     }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 1);
+      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(3) }));
+      return;
+    case 1: 
+      FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 2);
+      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(2) }));
+      return;
+    }
+    FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, 3);
+    FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, String.format("https://ti.qq.com/hybrid-h5/school_relation/eduexperience?category=%d&_wv=67108994", new Object[] { Integer.valueOf(1) }));
   }
 }
 

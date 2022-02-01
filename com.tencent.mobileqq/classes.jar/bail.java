@@ -1,124 +1,101 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.view.KeyEvent;
-import android.view.ViewGroup;
-import com.tencent.richmediabrowser.core.IBrowserBuilder;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import java.io.InputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 
 public class bail
-  implements IBrowserBuilder
+  extends InputStream
+  implements baii
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private bajd jdField_a_of_type_Bajd;
-  private bajl jdField_a_of_type_Bajl;
-  private bakk jdField_a_of_type_Bakk;
+  protected int a;
+  protected Context a;
+  protected baij a;
+  protected PipedInputStream a;
+  protected PipedOutputStream a;
+  protected byte[] a;
+  protected byte[] b;
+  protected byte[] c;
+  protected byte[] d = new byte[1];
   
-  public bail(Activity paramActivity)
+  public bail(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public bajl a()
+  public int a(byte[] paramArrayOfByte, int paramInt)
   {
-    return this.jdField_a_of_type_Bajl;
+    return read(paramArrayOfByte, paramInt, paramArrayOfByte.length);
+  }
+  
+  public baij a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Baij.jdField_a_of_type_Int = 0;
+    int j = paramInt2;
+    int i = paramInt1;
+    paramInt1 = j;
+    while (paramInt2 > 0)
+    {
+      if (paramInt2 > 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available()) {
+        paramInt1 = 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available();
+      }
+      a(paramArrayOfByte, i, paramInt1);
+      i += paramInt1;
+      paramInt1 = paramInt2 - paramInt1;
+      paramInt2 = paramInt1;
+    }
+    return this.jdField_a_of_type_Baij;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bajl != null) {
-      this.jdField_a_of_type_Bajl.onWindowFocusChanged();
+    if (this.jdField_a_of_type_JavaIoPipedOutputStream != null)
+    {
+      this.jdField_a_of_type_JavaIoPipedOutputStream.close();
+      this.jdField_a_of_type_JavaIoPipedOutputStream = null;
+    }
+    close();
+  }
+  
+  @TargetApi(9)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaIoPipedOutputStream = new PipedOutputStream();
+    if (Build.VERSION.SDK_INT <= 8)
+    {
+      this.jdField_a_of_type_JavaIoPipedInputStream = new bhgh(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
+      return;
+    }
+    this.jdField_a_of_type_JavaIoPipedInputStream = new PipedInputStream(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
+  }
+  
+  protected void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaIoPipedOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
+    while (this.jdField_a_of_type_JavaIoPipedInputStream.available() >= this.jdField_a_of_type_Int)
+    {
+      paramInt1 = a(this.c, this.jdField_a_of_type_Baij.jdField_a_of_type_Int);
+      paramArrayOfByte = this.jdField_a_of_type_Baij;
+      paramArrayOfByte.jdField_a_of_type_Int = (paramInt1 + paramArrayOfByte.jdField_a_of_type_Int);
     }
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void close()
   {
-    if (this.jdField_a_of_type_Bajl != null) {
-      this.jdField_a_of_type_Bajl.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_JavaIoPipedInputStream != null)
+    {
+      this.jdField_a_of_type_JavaIoPipedInputStream.close();
+      this.jdField_a_of_type_JavaIoPipedInputStream = null;
     }
   }
   
-  public void a(Configuration paramConfiguration)
+  public int read()
   {
-    if (this.jdField_a_of_type_Bajl != null) {
-      this.jdField_a_of_type_Bajl.onConfigurationChanged(paramConfiguration);
+    if (read(this.d, 0, 1) == 1) {
+      return this.d[0] & 0xFF;
     }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Bajl != null) {
-      return this.jdField_a_of_type_Bajl.onBackEvent();
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (this.jdField_a_of_type_Bajl != null) {
-      return this.jdField_a_of_type_Bajl.onKeyDown(paramInt, paramKeyEvent);
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bajl != null) {
-      this.jdField_a_of_type_Bajl.onStart();
-    }
-  }
-  
-  public void buildComplete()
-  {
-    this.jdField_a_of_type_Bajl.buildComplete();
-    this.jdField_a_of_type_Bakk.buildComplete();
-    this.jdField_a_of_type_Bajd.buildComplete();
-  }
-  
-  public void buildModel()
-  {
-    this.jdField_a_of_type_Bajd.buildModel();
-  }
-  
-  public void buildParams(Intent paramIntent)
-  {
-    this.jdField_a_of_type_Bajl.buildParams(paramIntent);
-    this.jdField_a_of_type_Bakk.buildParams(paramIntent);
-    this.jdField_a_of_type_Bajd.buildParams(paramIntent);
-  }
-  
-  public void buildPresenter()
-  {
-    this.jdField_a_of_type_Bajl = new bajl();
-    this.jdField_a_of_type_Bakk = new bakk(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bajl);
-    this.jdField_a_of_type_Bajl.a(this.jdField_a_of_type_Bakk);
-    this.jdField_a_of_type_Bajd = new bajd(this.jdField_a_of_type_Bajl);
-    this.jdField_a_of_type_Bajl.a(this.jdField_a_of_type_Bajd);
-  }
-  
-  public void buildView(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Bakk.buildView(paramViewGroup);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Bajl != null) {
-      this.jdField_a_of_type_Bajl.onResume();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Bajl != null) {
-      this.jdField_a_of_type_Bajl.onPause();
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Bajl != null) {
-      this.jdField_a_of_type_Bajl.onDestroy();
-    }
+    return -1;
   }
 }
 

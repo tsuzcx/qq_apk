@@ -1,18 +1,57 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public final class akcw
-  implements Parcelable.Creator<RedPacketInfoBase>
+class akcw
+  implements AdapterView.OnItemClickListener
 {
-  public RedPacketInfoBase a(Parcel paramParcel)
-  {
-    return new RedPacketInfoBase(paramParcel);
-  }
+  akcw(akcp paramakcp) {}
   
-  public RedPacketInfoBase[] a(int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return new RedPacketInfoBase[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+    }
+    if ((this.a.jdField_a_of_type_Ajws.getCount() <= 0) || (paramInt <= 0)) {}
+    do
+    {
+      return;
+      paramAdapterView = (akcy)this.a.jdField_a_of_type_Ajws.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+    }
+    try
+    {
+      paramAdapterView = bfce.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
+      if (paramAdapterView == null) {
+        break label214;
+      }
+      paramAdapterView = (TroopLinkElement)paramAdapterView;
+    }
+    catch (Exception paramAdapterView)
+    {
+      for (;;)
+      {
+        paramAdapterView = null;
+        continue;
+        paramAdapterView = null;
+      }
+    }
+    if (paramAdapterView != null)
+    {
+      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", paramAdapterView.url);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    }
+    this.a.a(true);
   }
 }
 

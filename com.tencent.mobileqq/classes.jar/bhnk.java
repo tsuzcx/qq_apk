@@ -1,13 +1,14 @@
-import android.content.Context;
-import com.tencent.wifisdk.TMSDKCustomConfig.IInstaller;
-
-final class bhnk
-  implements TMSDKCustomConfig.IInstaller
+public class bhnk
 {
-  public boolean installApp(Context paramContext, String paramString)
-  {
-    return biam.a(paramContext, paramString, "biz_src_wifi");
-  }
+  public static int b = 2;
+  public static int c = 1;
+  public int a;
+  public bhnh a;
+  public String a;
+  public bhnh b;
+  public bhnh c;
+  public int d;
+  public int e;
 }
 
 

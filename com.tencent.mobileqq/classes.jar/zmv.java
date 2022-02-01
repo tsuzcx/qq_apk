@@ -1,33 +1,73 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
 
 public class zmv
-  extends FragmentPagerAdapter
+  implements Manager
 {
-  public zmv(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private zmx jdField_a_of_type_Zmx;
+  
+  public zmv(QQAppInterface paramQQAppInterface)
   {
-    super(paramFragmentManager);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public int getCount()
+  private void b()
   {
-    return RelativePersonalBottomView.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
-      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
+    if (this.jdField_a_of_type_Zmx != null) {
+      this.jdField_a_of_type_Zmx.a();
     }
-    return null;
   }
   
-  public int getItemPosition(Object paramObject)
+  private void c()
   {
-    return -2;
+    if (this.jdField_a_of_type_Zmx != null) {
+      this.jdField_a_of_type_Zmx.b();
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Zmx != null)
+    {
+      this.jdField_a_of_type_Zmx.c();
+      this.jdField_a_of_type_Zmx = null;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 1: 
+    default: 
+      return;
+    case 2: 
+      b();
+      return;
+    case 3: 
+      c();
+      return;
+    }
+    a();
+  }
+  
+  public void a(Context paramContext, ScannerParams paramScannerParams)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if ((paramScannerParams.f) && (!paramScannerParams.d) && (this.jdField_a_of_type_Zmx == null)) {
+      this.jdField_a_of_type_Zmx = new zmx(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
   }
 }
 

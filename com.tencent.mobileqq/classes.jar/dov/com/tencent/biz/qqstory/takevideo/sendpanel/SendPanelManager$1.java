@@ -1,15 +1,15 @@
 package dov.com.tencent.biz.qqstory.takevideo.sendpanel;
 
-import bnqa;
+import bpfs;
 
 public class SendPanelManager$1
   implements Runnable
 {
-  public SendPanelManager$1(bnqa parambnqa) {}
+  public SendPanelManager$1(bpfs parambpfs) {}
   
   public void run()
   {
-    bnqa.a(this.this$0);
+    bpfs.a(this.this$0);
   }
 }
 

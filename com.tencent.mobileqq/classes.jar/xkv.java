@@ -1,10 +1,20 @@
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import mqq.os.MqqHandler;
 
-public abstract interface xkv
+public class xkv
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public abstract void a(String paramString, List<xlu> paramList);
+  xkv(xkq paramxkq) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    ThreadManager.executeOnSubThread(new VideoViewTVKImpl.5.1(this, paramTVK_IMediaPlayer));
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.5.2(this));
+  }
 }
 
 

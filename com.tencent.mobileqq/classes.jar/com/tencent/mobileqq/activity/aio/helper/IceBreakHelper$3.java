@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afrd;
+import agio;
 
 public class IceBreakHelper$3
   implements Runnable
 {
-  public IceBreakHelper$3(afrd paramafrd) {}
+  public IceBreakHelper$3(agio paramagio) {}
   
   public void run()
   {

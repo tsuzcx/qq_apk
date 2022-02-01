@@ -1,532 +1,353 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import android.content.res.AssetManager;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.utils.OfflineUtils.1;
+import com.tencent.commonsdk.cache.QQHashMap;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
-import com.tencent.viola.core.ViolaInstance;
-import com.tencent.viola.ui.baseComponent.ComponentConstant.Event;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class tmz
-  implements ComponentConstant.Event, sep, tmn, tmr, tmy
 {
-  private int a;
-  protected Activity a;
-  protected VVideoView a;
-  protected VideoPlayManager a;
-  protected tmm a;
-  private int b = 1;
-  private int c = -1;
+  private static QQHashMap<String, tmh> jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap = new QQHashMap(2019, 10, 10000);
+  public static String a;
+  private static Map<String, tna> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  public static String b;
+  public static String c;
   
-  public tmz(Activity paramActivity, tmm paramtmm, VVideoView paramVVideoView, ViolaInstance paramViolaInstance)
+  static
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager = new VideoPlayManager(paramActivity);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a(paramtmm);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a(this);
-    this.jdField_a_of_type_Tmm = paramtmm;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView = paramVVideoView;
-    this.jdField_a_of_type_Tmm.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager);
-    this.jdField_a_of_type_Tmm.setEventListener(this);
-    seo.a().a(paramActivity);
-    seo.a().a(this);
-    if ((paramViolaInstance != null) && (paramViolaInstance.isPageVisiable())) {
-      seo.a().a(true, "viola video");
-    }
+    jdField_a_of_type_JavaLangString = "version_id";
+    b = "support_min_version_id";
+    c = "is_merged";
   }
   
-  public static final int a(long paramLong)
+  private static int a(List<Integer> paramList1, List<Integer> paramList2)
   {
+    int j = Math.min(paramList1.size(), paramList2.size());
     int i = 0;
-    if (paramLong >= 500L) {
-      i = (int)(paramLong / 1000L + 0.5D);
-    }
-    return i;
-  }
-  
-  private void a(int paramInt, Object paramObject)
-  {
-    int i = 0;
-    for (;;)
+    while (i < j)
     {
-      try
-      {
-        this.b = paramInt;
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("state", paramInt);
-        if (paramObject != null) {
-          localJSONObject.put("message", paramObject);
-        }
-        paramObject = new JSONObject();
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().a != null)
-        {
-          paramInt = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().a.a().getWidth();
-          paramObject.put("width", paramInt);
-          paramInt = i;
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().a != null) {
-            paramInt = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().a.a().getHeight();
-          }
-          paramObject.put("height", paramInt);
-          localJSONObject.put("videoSize", paramObject);
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView.a("stateChange", localJSONObject);
-          return;
-        }
+      if (((Integer)paramList1.get(i)).intValue() > ((Integer)paramList2.get(i)).intValue()) {
+        return 1;
       }
-      catch (Exception paramObject)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("ViolaVideoDelegate", 2, "callJsStateChange,error = " + paramObject.getMessage());
+      if (((Integer)paramList1.get(i)).intValue() < ((Integer)paramList2.get(i)).intValue()) {
+        return -1;
       }
-      paramInt = 0;
+      i += 1;
     }
+    return 0;
   }
   
-  public void a() {}
+  /* Error */
+  public static String a(java.io.InputStream paramInputStream)
+  {
+    // Byte code:
+    //   0: new 72	java/io/BufferedReader
+    //   3: dup
+    //   4: new 74	java/io/InputStreamReader
+    //   7: dup
+    //   8: aload_0
+    //   9: invokespecial 77	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   12: invokespecial 80	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   15: astore_2
+    //   16: new 82	java/lang/StringBuilder
+    //   19: dup
+    //   20: invokespecial 83	java/lang/StringBuilder:<init>	()V
+    //   23: astore_1
+    //   24: aload_2
+    //   25: invokevirtual 87	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   28: astore_3
+    //   29: aload_3
+    //   30: ifnull +30 -> 60
+    //   33: aload_1
+    //   34: aload_3
+    //   35: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: pop
+    //   39: goto -15 -> 24
+    //   42: astore_2
+    //   43: ldc 93
+    //   45: iconst_2
+    //   46: ldc 95
+    //   48: invokestatic 101	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   51: aload_0
+    //   52: invokevirtual 106	java/io/InputStream:close	()V
+    //   55: aload_1
+    //   56: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: areturn
+    //   60: aload_0
+    //   61: invokevirtual 106	java/io/InputStream:close	()V
+    //   64: goto -9 -> 55
+    //   67: astore_0
+    //   68: goto -13 -> 55
+    //   71: astore_1
+    //   72: ldc 93
+    //   74: iconst_2
+    //   75: ldc 111
+    //   77: invokestatic 101	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   80: aload_0
+    //   81: invokevirtual 106	java/io/InputStream:close	()V
+    //   84: aconst_null
+    //   85: areturn
+    //   86: astore_0
+    //   87: aconst_null
+    //   88: areturn
+    //   89: astore_1
+    //   90: aload_0
+    //   91: invokevirtual 106	java/io/InputStream:close	()V
+    //   94: aload_1
+    //   95: athrow
+    //   96: astore_0
+    //   97: goto -42 -> 55
+    //   100: astore_0
+    //   101: goto -7 -> 94
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	104	0	paramInputStream	java.io.InputStream
+    //   23	33	1	localStringBuilder	java.lang.StringBuilder
+    //   71	1	1	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   89	6	1	localObject	Object
+    //   15	10	2	localBufferedReader	java.io.BufferedReader
+    //   42	1	2	localIOException	java.io.IOException
+    //   28	7	3	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   24	29	42	java/io/IOException
+    //   33	39	42	java/io/IOException
+    //   60	64	67	java/io/IOException
+    //   24	29	71	java/lang/OutOfMemoryError
+    //   33	39	71	java/lang/OutOfMemoryError
+    //   80	84	86	java/io/IOException
+    //   24	29	89	finally
+    //   33	39	89	finally
+    //   43	51	89	finally
+    //   72	80	89	finally
+    //   51	55	96	java/io/IOException
+    //   90	94	100	java/io/IOException
+  }
   
-  public void a(float paramFloat) {}
+  public static List<String> a(AssetManager paramAssetManager, String paramString)
+  {
+    return a(paramAssetManager.open(paramString + "/" + "manifest"));
+  }
   
-  public void a(int paramInt)
+  /* Error */
+  public static List<String> a(java.io.InputStream paramInputStream)
+  {
+    // Byte code:
+    //   0: new 72	java/io/BufferedReader
+    //   3: dup
+    //   4: new 74	java/io/InputStreamReader
+    //   7: dup
+    //   8: aload_0
+    //   9: invokespecial 77	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   12: invokespecial 80	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   15: astore_2
+    //   16: new 128	java/util/ArrayList
+    //   19: dup
+    //   20: invokespecial 129	java/util/ArrayList:<init>	()V
+    //   23: astore_1
+    //   24: aload_2
+    //   25: invokevirtual 87	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   28: astore_3
+    //   29: aload_3
+    //   30: ifnull +29 -> 59
+    //   33: aload_1
+    //   34: aload_3
+    //   35: invokeinterface 133 2 0
+    //   40: pop
+    //   41: goto -17 -> 24
+    //   44: astore_2
+    //   45: ldc 93
+    //   47: iconst_2
+    //   48: ldc 95
+    //   50: invokestatic 101	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   53: aload_0
+    //   54: invokevirtual 106	java/io/InputStream:close	()V
+    //   57: aload_1
+    //   58: areturn
+    //   59: aload_0
+    //   60: invokevirtual 106	java/io/InputStream:close	()V
+    //   63: aload_1
+    //   64: areturn
+    //   65: astore_0
+    //   66: aload_1
+    //   67: areturn
+    //   68: astore_1
+    //   69: ldc 93
+    //   71: iconst_2
+    //   72: ldc 111
+    //   74: invokestatic 101	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   77: aload_0
+    //   78: invokevirtual 106	java/io/InputStream:close	()V
+    //   81: aconst_null
+    //   82: areturn
+    //   83: astore_0
+    //   84: aconst_null
+    //   85: areturn
+    //   86: astore_1
+    //   87: aload_0
+    //   88: invokevirtual 106	java/io/InputStream:close	()V
+    //   91: aload_1
+    //   92: athrow
+    //   93: astore_0
+    //   94: aload_1
+    //   95: areturn
+    //   96: astore_0
+    //   97: goto -6 -> 91
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	100	0	paramInputStream	java.io.InputStream
+    //   23	44	1	localArrayList	ArrayList
+    //   68	1	1	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   86	9	1	localList	List<String>
+    //   15	10	2	localBufferedReader	java.io.BufferedReader
+    //   44	1	2	localIOException	java.io.IOException
+    //   28	7	3	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   24	29	44	java/io/IOException
+    //   33	41	44	java/io/IOException
+    //   59	63	65	java/io/IOException
+    //   24	29	68	java/lang/OutOfMemoryError
+    //   33	41	68	java/lang/OutOfMemoryError
+    //   77	81	83	java/io/IOException
+    //   24	29	86	finally
+    //   33	41	86	finally
+    //   45	53	86	finally
+    //   69	77	86	finally
+    //   53	57	93	java/io/IOException
+    //   87	91	96	java/io/IOException
+  }
+  
+  private static List<Integer> a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    paramString = paramString.split("\\.");
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramString.length)
+    {
+      localArrayList.add(Integer.valueOf(Integer.parseInt(paramString[i])));
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public static tmh a(String paramString)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("currentTime", a(paramInt));
-      localJSONObject.put("totalTime", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a() / 1000L);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView.a("playTimeChange", localJSONObject);
-      return;
+      paramString = (tmh)jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.get(paramString);
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public static tna a(String paramString)
+  {
+    tna localtna = (tna)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (localtna != null) {
+      return localtna;
+    }
+    localtna = new tna();
+    String str = nvf.a(paramString);
+    if (str == null)
+    {
+      QLog.d("OfflineUtils", 2, "checkOffLineProteusConfig: offline root dir is null");
+      localtna.a = false;
+      jdField_a_of_type_JavaUtilMap.put(paramString, localtna);
+      return localtna;
+    }
+    str = str + paramString;
+    str = str + "/" + "proteus_config.geojson";
+    File localFile = new File(str);
+    try
+    {
+      if (!localFile.exists())
+      {
+        QLog.d("OfflineUtils", 2, "checkOffLineProteusConfig: there is not file " + str);
+        localtna.a = true;
+        return localtna;
+      }
+      localtna.a = false;
+      return localtna;
     }
     catch (Exception localException)
     {
-      localException.printStackTrace();
+      QLog.e("OfflineUtils", 1, "checkOffLineProteusConfig: ", localException);
+      return localtna;
     }
-  }
-  
-  public void a(int paramInt, VVideoView paramVVideoView, boolean paramBoolean, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener)
-  {
-    boolean bool = false;
-    this.jdField_a_of_type_Tmm.a(0, paramBoolean);
-    try
+    finally
     {
-      paramVVideoView = new JSONObject();
-      paramBoolean = bool;
-      if (this.jdField_a_of_type_Int == 2) {
-        paramBoolean = true;
-      }
-      paramVVideoView.put("hasUI", paramBoolean);
-      paramOnVideoViewMethodListener.OnMethodSuccess(paramString, paramVVideoView);
-      return;
-    }
-    catch (Exception paramVVideoView)
-    {
-      QLog.e("ViolaVideoDelegate", 2, "enterFullScreen error = : " + paramVVideoView.getMessage());
+      jdField_a_of_type_JavaUtilMap.put(paramString, localtna);
     }
   }
   
-  public void a(VVideoView paramVVideoView) {}
-  
-  public void a(VVideoView paramVVideoView, int paramInt)
+  public static void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.d(paramInt);
+    piu.a();
+    nuz.a();
   }
   
-  public void a(VVideoView paramVVideoView, String paramString)
+  public static void a(String paramString)
   {
-    paramVVideoView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a();
-    if (paramVVideoView != null)
-    {
-      paramVVideoView.a(paramString);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c(paramVVideoView.f);
-    }
+    jdField_a_of_type_JavaUtilMap.remove(paramString);
   }
   
-  public void a(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener)
+  public static void a(String paramString, tmh paramtmh)
   {
     try
     {
-      paramVVideoView = new JSONObject();
-      paramVVideoView.put("state", this.b);
-      paramVVideoView.put("currentTime", a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.b()));
-      paramVVideoView.put("totalTime", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a() / 1000L);
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("width", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().a.a().getWidth());
-      localJSONObject.put("height", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a().a.a().getHeight());
-      paramVVideoView.put("videoSize", localJSONObject);
-      paramOnVideoViewMethodListener.OnMethodSuccess(paramString, paramVVideoView);
+      jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(paramString, paramtmh);
       return;
     }
-    catch (JSONException paramVVideoView)
+    finally
     {
-      paramVVideoView.printStackTrace();
+      paramString = finally;
+      throw paramString;
     }
   }
   
-  public void a(VVideoView paramVVideoView, JSONObject paramJSONObject)
+  public static void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaVideoDelegate", 2, "open: " + paramJSONObject);
-    }
-    paramVVideoView = this.jdField_a_of_type_Tmm.a();
-    try
+    ThreadManager.executeOnFileThread(new OfflineUtils.1(paramBoolean));
+  }
+  
+  public static boolean a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {}
+    do
     {
-      paramVVideoView = new tmx(paramVVideoView, paramJSONObject);
-      if (paramVVideoView != null)
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c();
-        if (paramVVideoView.b)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.b(paramVVideoView);
-          this.jdField_a_of_type_Tmm.a(paramVVideoView);
-        }
-      }
-      else
-      {
-        return;
-      }
-    }
-    catch (JSONException paramVVideoView)
-    {
-      for (;;)
-      {
-        paramVVideoView.printStackTrace();
-        paramVVideoView = null;
-        continue;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a(paramVVideoView);
-      }
-    }
+      return false;
+      paramString3 = a("8.4.10");
+      paramString3.add(Integer.valueOf(Integer.parseInt("4875")));
+      paramString1 = a(paramString1);
+      paramString2 = a(paramString2);
+    } while ((paramString1.size() != paramString3.size() - 1) || (paramString2.size() != paramString3.size() - 1) || (a(paramString1, paramString2) > 0) || (a(paramString3, paramString1) < 0) || (a(paramString3, paramString2) > 0));
+    return true;
   }
   
-  public void a(VVideoView paramVVideoView, boolean paramBoolean)
+  public static void b() {}
+  
+  public static void c()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c(paramBoolean);
-  }
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener) {}
-  
-  public void a(tmx paramtmx, int paramInt)
-  {
-    a(4, null);
-  }
-  
-  public void a(tmx paramtmx, int paramInt1, int paramInt2, String paramString)
-  {
-    paramtmx = new JSONObject();
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      paramtmx.put("code", 101);
-      localJSONObject.put("code", paramInt1 + "-" + paramInt2);
-      localJSONObject.put("msg", paramString);
-      paramtmx.put("extra", localJSONObject);
-      a(6, paramtmx);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(tmx paramtmx, long paramLong)
-  {
-    try
-    {
-      paramtmx = new JSONObject();
-      paramtmx.put("currentTime", a(paramLong));
-      paramtmx.put("totalTime", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a() / 1000L);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView.a("playTimeChange", paramtmx);
-      return;
-    }
-    catch (Exception paramtmx)
-    {
-      paramtmx.printStackTrace();
-    }
-  }
-  
-  public void a(tmx paramtmx, boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    VVideoView localVVideoView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView;
-    if (paramBoolean) {}
-    for (String str = "stateVisible";; str = "stateHidden")
-    {
-      localVVideoView.a(str, null);
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Tmm.a();
-  }
-  
-  public void a_(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.b(paramBoolean);
-  }
-  
-  public void b() {}
-  
-  public void b(VVideoView paramVVideoView)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a()) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a();
-    }
-    while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a() == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a());
-  }
-  
-  public void b(VVideoView paramVVideoView, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Tmm.setControlType(this.jdField_a_of_type_Int);
-  }
-  
-  public void b(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener)
-  {
-    boolean bool = true;
-    this.jdField_a_of_type_Tmm.a(1);
-    try
-    {
-      paramVVideoView = new JSONObject();
-      if (this.jdField_a_of_type_Int == 2) {}
-      for (;;)
-      {
-        paramVVideoView.put("hasUI", bool);
-        paramOnVideoViewMethodListener.OnMethodSuccess(paramString, paramVVideoView);
-        return;
-        bool = false;
-      }
-      return;
-    }
-    catch (Exception paramVVideoView)
-    {
-      QLog.e("ViolaVideoDelegate", 2, "exitFullScreen error = : " + paramVVideoView.getMessage());
-    }
-  }
-  
-  public void b(VVideoView paramVVideoView, JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaVideoDelegate", 2, "resetSrc: " + paramJSONObject);
-    }
-    a(paramVVideoView, paramJSONObject);
-  }
-  
-  public void b(VVideoView paramVVideoView, boolean paramBoolean) {}
-  
-  public void b(tmx paramtmx) {}
-  
-  public void b(tmx paramtmx, int paramInt)
-  {
-    a(2, null);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      for (;;)
-      {
-        try
-        {
-          JSONObject localJSONObject = new JSONObject();
-          if (this.jdField_a_of_type_Int == 2)
-          {
-            paramBoolean = true;
-            localJSONObject.put("hasUI", paramBoolean);
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView.a("didEnterFullScreen", localJSONObject);
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("ViolaVideoDelegate", 2, "initChangeFullScreenAnim onAnimationEnd error = : " + localException.getMessage());
-          return;
-        }
-        paramBoolean = false;
-      }
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView.a("didExitFullScreen", null);
-  }
-  
-  public void b_(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Tmm.setEndWithLastFrame(paramBoolean);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.e();
-    seo.a().a(true, "viola video");
-  }
-  
-  public void c(VVideoView paramVVideoView)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.b();
-  }
-  
-  public void c(VVideoView paramVVideoView, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.e(paramInt);
-  }
-  
-  public void c(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener) {}
-  
-  public void c(VVideoView paramVVideoView, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Tmm.setFullScreenDisable(paramBoolean);
-  }
-  
-  public void c(tmx paramtmx)
-  {
-    a(1, null);
-  }
-  
-  public void c(boolean paramBoolean) {}
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.d();
-    seo.a().a(false, "viola video");
-  }
-  
-  public void d(VVideoView paramVVideoView)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c();
-  }
-  
-  public void d(tmx paramtmx)
-  {
-    a(2, null);
-  }
-  
-  public void e() {}
-  
-  public void e(VVideoView paramVVideoView)
-  {
-    paramVVideoView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c();
-    if (paramVVideoView != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.b(paramVVideoView);
-    }
-  }
-  
-  public void e(tmx paramtmx)
-  {
-    a(7, null);
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.f();
-    if (this.jdField_a_of_type_Tmm != null) {
-      this.jdField_a_of_type_Tmm.c();
-    }
-    seo.a().b(this.jdField_a_of_type_AndroidAppActivity);
-    seo.a().b(this);
-    this.jdField_a_of_type_AndroidAppActivity = null;
-  }
-  
-  public void f(VVideoView paramVVideoView)
-  {
-    this.jdField_a_of_type_Tmm.a();
-  }
-  
-  public void f(tmx paramtmx)
-  {
-    if (this.b >= 2) {
-      a(3, null);
-    }
-  }
-  
-  public void f_(int paramInt) {}
-  
-  public void g() {}
-  
-  public void g(VVideoView paramVVideoView)
-  {
-    this.jdField_a_of_type_Tmm.b();
-  }
-  
-  public void g(tmx paramtmx)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.d()) {
-      a(2, null);
-    }
-    while (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c()) {
-      return;
-    }
-    a(4, null);
-  }
-  
-  public void h() {}
-  
-  public void h(tmx paramtmx)
-  {
-    a(5, null);
-  }
-  
-  public void i() {}
-  
-  public void j() {}
-  
-  public void onHeadsetStateChanged(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c(false);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c(true);
-  }
-  
-  public void onPhoneCome()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.b();
-  }
-  
-  public void onSystemVolumeChanged(int paramInt)
-  {
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c(true);
-    }
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        if (this.c == -1) {
-          this.c = seo.a().a(3);
-        }
-        localJSONObject.put("value", paramInt / this.c);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView.a("volumeChange", localJSONObject);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVideoPlayManager.c(false);
-    }
+    String str = bmhv.a("default_feeds_proteus_offline_bid");
+    FileUtils.deleteDirectory(nvf.a(str) + str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tmz
  * JD-Core Version:    0.7.0.1
  */

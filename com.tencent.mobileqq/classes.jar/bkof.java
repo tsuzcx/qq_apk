@@ -1,15 +1,93 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqdataline.DatalineBridgeActivity;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bkof
-  implements DialogInterface.OnDismissListener
+  implements com.tencent.oskplayer.util.QLog
 {
-  public bkof(DatalineBridgeActivity paramDatalineBridgeActivity) {}
+  private static ConcurrentHashMap<String, String> a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private static String a(String paramString)
   {
-    this.a.finish();
+    if (a == null) {
+      a = new ConcurrentHashMap();
+    }
+    if (!a.containsKey(paramString)) {
+      a.put(paramString, "VIDEO_LOG/" + paramString);
+    }
+    return (String)a.get(paramString);
+  }
+  
+  public int d(String paramString1, String paramString2)
+  {
+    if (com.tencent.qphone.base.util.QLog.isDevelopLevel()) {
+      com.tencent.qphone.base.util.QLog.d(a(paramString1), 4, paramString2);
+    }
+    return 0;
+  }
+  
+  public int d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (com.tencent.qphone.base.util.QLog.isDevelopLevel()) {
+      com.tencent.qphone.base.util.QLog.d(a(paramString1), 4, paramString2, paramThrowable);
+    }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    com.tencent.qphone.base.util.QLog.e(a(paramString1), 1, paramString2);
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    com.tencent.qphone.base.util.QLog.e(a(paramString1), 1, paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    com.tencent.qphone.base.util.QLog.i(a(paramString1), 1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    com.tencent.qphone.base.util.QLog.i(a(paramString1), 1, paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+      com.tencent.qphone.base.util.QLog.i(a(paramString1), 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+      com.tencent.qphone.base.util.QLog.i(a(paramString1), 2, paramString2, paramThrowable);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    com.tencent.qphone.base.util.QLog.w(a(paramString1), 1, paramString2);
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    com.tencent.qphone.base.util.QLog.w(a(paramString1), 1, paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int w(String paramString, Throwable paramThrowable)
+  {
+    com.tencent.qphone.base.util.QLog.w(a(paramString), 1, paramThrowable.getMessage());
+    return 0;
   }
 }
 

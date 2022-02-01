@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adka
-  implements aprh
+  implements View.OnClickListener
 {
-  public adka(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public adka(AuthDevActivity paramAuthDevActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {}
-    for (paramInt1 = 0;; paramInt1 = 1)
-    {
-      this.a.c = true;
-      this.a.a(paramInt1, true);
-      return;
-    }
+    AuthDevActivity.h(this.a);
+    Intent localIntent = new Intent(this.a, AuthDevOpenUgActivity.class);
+    localIntent.putExtra("DevlockInfo", AuthDevActivity.a(this.a));
+    this.a.startActivityForResult(localIntent, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

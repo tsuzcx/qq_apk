@@ -1,74 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.videostory.config.VSConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
 
 public class zwy
-  extends aptq<zwx>
+  implements aqrq
 {
-  @NonNull
-  public zwx a(int paramInt)
-  {
-    return new zwx();
-  }
+  public zwy(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  @Nullable
-  public zwx a(aptx[] paramArrayOfaptx)
+  public void onColorNoteAnimFinish()
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    if (this.a.getActivity() != null)
     {
-      zwx localzwx = zwx.a(paramArrayOfaptx[0].a);
-      a(localzwx);
-      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
-      return localzwx;
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-    return null;
-  }
-  
-  public void a(zwx paramzwx)
-  {
-    QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate ");
-    if (paramzwx != null)
-    {
-      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate " + paramzwx.toString());
-      VSConfigManager.getInstance().setValue("subscribe_entrance_enable", paramzwx.a());
-      VSConfigManager.getInstance().setValue("is_open_sharing", paramzwx.b());
-      VSConfigManager.getInstance().setValue("subscribe_account_title", paramzwx.c());
-      VSConfigManager.getInstance().setValue("newfollowlist", paramzwx.d());
-      VSConfigManager.getInstance().setValue("subscribe_publish_entrance_enable", paramzwx.e());
-    }
-  }
-  
-  public Class<zwx> clazz()
-  {
-    return zwx.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 463;
   }
 }
 

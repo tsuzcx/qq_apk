@@ -1,104 +1,60 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.ContactCard;
 
 public class adfz
-  implements avtb<List<EmoticonPackage>>
+  extends CardObserver
 {
-  public adfz(EmosmActivity paramEmosmActivity) {}
+  public adfz(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void a(List<EmoticonPackage> paramList)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (paramList == null) {
-      return;
-    }
-    int j = paramList.size();
-    int i = 0;
-    label14:
-    if (i < j) {
-      if (((EmoticonPackage)paramList.get(i)).jobType != 3) {}
+    Object localObject;
+    if ((paramBoolean) && (paramObject != null))
+    {
+      if (!(paramObject instanceof Card)) {
+        break label163;
+      }
+      localObject = (Card)paramObject;
+      if ((((Card)localObject).uin != null) && (((Card)localObject).uin.equals(AddFriendVerifyActivity.a(this.a))))
+      {
+        paramObject = bhaa.a(this.a, ((Card)localObject).shGender, ((Card)localObject).age, ((Card)localObject).strCountry, ((Card)localObject).strProvince, ((Card)localObject).strCity);
+        if (this.a.a != null) {
+          paramObject = bhaa.a(this.a, ((Card)localObject).shGender, 0, "", "", "");
+        }
+        if (!TextUtils.isEmpty(paramObject))
+        {
+          this.a.c.setVisibility(0);
+          this.a.c.setText(paramObject);
+        }
+      }
     }
     for (;;)
     {
-      ArrayList localArrayList = new ArrayList();
-      Object localObject1;
-      Object localObject2;
-      if (1 == this.a.b)
-      {
-        if (i == -1)
-        {
-          paramList = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-          while (paramList.hasNext()) {
-            localArrayList.add(((EmoticonPackage)paramList.next()).epId);
-          }
-          i += 1;
-          break label14;
-        }
-        localObject1 = new ArrayList();
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localObject2 = (EmoticonPackage)paramList.next();
-          if (((EmoticonPackage)localObject2).jobType == 3) {
-            ((ArrayList)localObject1).add(((EmoticonPackage)localObject2).epId);
-          }
-        }
-        if (i >= this.a.jdField_a_of_type_JavaUtilArrayList.size())
-        {
-          paramList = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-          while (paramList.hasNext()) {
-            localArrayList.add(((EmoticonPackage)paramList.next()).epId);
-          }
-          localArrayList.addAll((Collection)localObject1);
-        }
+      if (bjxa.b(this.a.app, AddFriendVerifyActivity.a(this.a))) {
+        this.a.c.setVisibility(8);
       }
-      for (;;)
+      return;
+      label163:
+      if ((paramObject instanceof ContactCard))
       {
-        this.a.jdField_a_of_type_Avsq.a(localArrayList, 0);
-        paramList = (amrg)this.a.app.getBusinessHandler(12);
-        if (paramList == null) {
-          break;
-        }
-        paramList.a(localArrayList, true, 0);
-        return;
-        int k = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-        j = 0;
-        while (j < k)
+        localObject = (ContactCard)paramObject;
+        if ((((ContactCard)localObject).mobileNo != null) && (((ContactCard)localObject).mobileNo.equals(AddFriendVerifyActivity.a(this.a))))
         {
-          paramList = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(j);
-          if (j == i) {
-            localArrayList.addAll((Collection)localObject1);
+          paramObject = bhaa.a(this.a, ((ContactCard)localObject).bSex, ((ContactCard)localObject).bAge, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity);
+          if (this.a.a != null) {
+            paramObject = bhaa.a(this.a, ((ContactCard)localObject).bSex, 0, "", "", "");
           }
-          localArrayList.add(paramList.epId);
-          j += 1;
-        }
-        continue;
-        if (2 == this.a.b)
-        {
-          k = paramList.size();
-          j = 0;
-          while (j < k)
+          if (!TextUtils.isEmpty(paramObject))
           {
-            localObject1 = (EmoticonPackage)paramList.get(j);
-            if (j == i)
-            {
-              localObject2 = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-              while (((Iterator)localObject2).hasNext()) {
-                localArrayList.add(((EmoticonPackage)((Iterator)localObject2).next()).epId);
-              }
-            }
-            if (((EmoticonPackage)localObject1).jobType != 3) {
-              localArrayList.add(((EmoticonPackage)localObject1).epId);
-            }
-            j += 1;
+            this.a.c.setVisibility(0);
+            this.a.c.setText(paramObject);
           }
         }
       }
-      i = -1;
     }
   }
 }

@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import bfvo;
+import bheg;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
@@ -17,17 +17,17 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 import mqq.util.WeakReference;
-import pay;
-import pwf;
-import syl;
+import pno;
+import qhl;
+import tlt;
 
 public class ReadInJoyHeadImageView
   extends NativeReadInjoyImageView
-  implements IView, pwf
+  implements IView, qhl
 {
   private long jdField_a_of_type_Long;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841748));
-  private WeakReference<pwf> jdField_a_of_type_MqqUtilWeakReference;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841758));
+  private WeakReference<qhl> jdField_a_of_type_MqqUtilWeakReference;
   
   public ReadInJoyHeadImageView(Context paramContext)
   {
@@ -50,7 +50,7 @@ public class ReadInJoyHeadImageView
   private void a()
   {
     setRound(true);
-    setImagePlaceHolder(bfvo.a());
+    setImagePlaceHolder(bheg.a());
     this.mController.a(false);
   }
   
@@ -67,14 +67,14 @@ public class ReadInJoyHeadImageView
   {
     if (paramReadInJoyUserInfo != null)
     {
-      if (pay.k()) {
+      if (pno.a()) {
         a(paramReadInJoyUserInfo);
       }
     }
     else {
       return;
     }
-    pay.b().post(new ReadInJoyHeadImageView.2(this, paramReadInJoyUserInfo));
+    pno.b().post(new ReadInJoyHeadImageView.2(this, paramReadInJoyUserInfo));
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
@@ -108,7 +108,7 @@ public class ReadInJoyHeadImageView
   {
     QLog.d("ReadInJoyHeadImageView", 1, "uin: " + paramString1 + " onLoadUserInfoFailed:" + paramString2);
     if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)) {
-      ((pwf)this.jdField_a_of_type_MqqUtilWeakReference.get()).onLoadUserInfoFailed(paramString1, paramString2);
+      ((qhl)this.jdField_a_of_type_MqqUtilWeakReference.get()).onLoadUserInfoFailed(paramString1, paramString2);
     }
   }
   
@@ -121,7 +121,7 @@ public class ReadInJoyHeadImageView
       return;
       ThreadManager.getUIHandler().post(new ReadInJoyHeadImageView.1(this, paramReadInJoyUserInfo));
     } while ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null));
-    ((pwf)this.jdField_a_of_type_MqqUtilWeakReference.get()).onLoadUserInfoSucceed(paramString, paramReadInJoyUserInfo);
+    ((qhl)this.jdField_a_of_type_MqqUtilWeakReference.get()).onLoadUserInfoSucceed(paramString, paramReadInJoyUserInfo);
   }
   
   public void setHeadImgByUin(long paramLong)
@@ -134,26 +134,30 @@ public class ReadInJoyHeadImageView
     setHeadImgByUin(paramLong, paramBoolean, null);
   }
   
-  public void setHeadImgByUin(long paramLong, boolean paramBoolean, pwf parampwf)
+  public void setHeadImgByUin(long paramLong, boolean paramBoolean, qhl paramqhl)
   {
-    setHeadImgByUin(paramLong, paramBoolean, parampwf, false);
+    setHeadImgByUin(paramLong, paramBoolean, paramqhl, false);
   }
   
-  public void setHeadImgByUin(long paramLong, boolean paramBoolean1, pwf parampwf, boolean paramBoolean2)
+  public void setHeadImgByUin(long paramLong, boolean paramBoolean1, qhl paramqhl, boolean paramBoolean2)
   {
-    if (paramLong <= 0L)
-    {
+    if (paramLong <= 0L) {
       QLog.d("ReadInJoyHeadImageView", 2, "Uin is illegal");
+    }
+    do
+    {
       return;
-    }
-    this.jdField_a_of_type_Long = paramLong;
-    if (paramBoolean1) {
-      setImagePlaceHolder(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    if (parampwf != null) {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parampwf);
-    }
-    b(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_Long, this, paramBoolean2));
+      this.jdField_a_of_type_Long = paramLong;
+      if (paramBoolean1) {
+        setImagePlaceHolder(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      }
+      if (paramqhl != null) {
+        this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramqhl);
+      }
+      paramqhl = ReadInJoyUserInfoModule.a(this.jdField_a_of_type_Long, this, paramBoolean2);
+      b(paramqhl);
+    } while ((paramqhl == null) || (!QLog.isColorLevel()));
+    QLog.d("ReadInJoyHeadImageView", 2, "setHeadImgByUin faceFlag:" + paramqhl.faceFlag);
   }
   
   public void setHeadImgByUin(String paramString)

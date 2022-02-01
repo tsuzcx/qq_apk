@@ -1,26 +1,11 @@
-import QC.UniLoginCheckRsp;
-import com.tencent.mobileqq.app.BusinessObserver;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-class bgjz
-  implements BusinessObserver
+public class bgjz
 {
-  private WeakReference<bgjy> a;
+  public int a;
+  public String a;
   
-  public bgjz(bgjy parambgjy)
-  {
-    this.a = new WeakReference(parambgjy);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    bgjy localbgjy = (bgjy)this.a.get();
-    if (localbgjy == null) {}
-    while (!(paramObject instanceof UniLoginCheckRsp)) {
-      return;
-    }
-    localbgjy.a(((UniLoginCheckRsp)paramObject).stKeyWord);
-  }
+  public bgjz(TroopFileTransferManager paramTroopFileTransferManager) {}
 }
 
 

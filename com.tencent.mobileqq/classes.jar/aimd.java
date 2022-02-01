@@ -1,64 +1,41 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.GroupInfo;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-public class aimd
+class aimd
   implements View.OnClickListener
 {
-  public aimd(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  private long jdField_a_of_type_Long;
+  
+  aimd(aimc paramaimc) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = (aikf)paramView.getTag();
-    if (((aikf)localObject).a.msg.group_msg_type.get() == 80)
-    {
-      localObject = TroopInfoActivity.a(String.valueOf(((aikf)localObject).a.msg.group_code.get()), 5);
-      TroopInfoActivity.a(this.a.getActivity(), (Bundle)localObject);
-    }
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 200L) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (NetworkUtil.isNetSupport(this.a.getActivity())) {
-        break;
-      }
-      QQToast.a(this.a.a, this.a.getActivity().getString(2131694062), 0).b(this.a.a());
-    }
-    ((FriendListHandler)TroopSuspiciousFragment.a(this.a).getBusinessHandler(1)).getFriendInfo(String.valueOf(((aikf)localObject).a.req_uin.get()));
-    aimg.a((structmsg.StructMsg)((aikf)localObject).a.get());
-    TroopSuspiciousFragment.a(this.a, (structmsg.StructMsg)((aikf)localObject).a.get(), ((aikf)localObject).c);
-    String str1 = ((aikf)localObject).a.msg.group_info.msg_alert.get();
-    String str2 = ((aikf)localObject).a.msg.group_code.get() + "";
-    if ((str1 == null) || ("".equals(str1)))
-    {
-      TroopSuspiciousFragment.a(this.a, 1, (structmsg.StructMsg)((aikf)localObject).a.get());
-      if ((((aikf)localObject).a.msg.has()) && (((aikf)localObject).a.msg.req_uin_nick.has())) {
-        ((TroopManager)TroopSuspiciousFragment.a(this.a).getManager(52)).a(str2, ((aikf)localObject).a.req_uin.get() + "", ((aikf)localObject).a.msg.req_uin_nick.get());
-      }
-      aimg.a(((aikf)localObject).a, "unnormal_join");
-    }
-    for (;;)
-    {
-      TroopSuspiciousFragment.c(this.a);
-      TroopSuspiciousFragment.a(this.a).c(2131718142);
-      TroopSuspiciousFragment.a(this.a).show();
-      break;
-      TroopSuspiciousFragment.a(this.a, 0, (structmsg.StructMsg)((aikf)localObject).a.get());
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Aimc.jdField_a_of_type_Ailr.a();
+      Object localObject = new Intent(aimc.a(this.jdField_a_of_type_Aimc), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("hide_left_button", false);
+      ((Intent)localObject).putExtra("show_right_close_button", false);
+      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+      String str = bhnp.a(aimc.a(this.jdField_a_of_type_Aimc), "call", "mvip.gongneng.anroid.individuation.web");
+      VasWebviewUtil.openQQBrowserWithoutAD(aimc.a(this.jdField_a_of_type_Aimc), str, 524288L, (Intent)localObject, false, -1);
+      VipUtils.a(this.jdField_a_of_type_Aimc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "QQVIPFUNCALL", "0X8004D8C", "0X8004D8C", 4, 0, new String[0]);
+      localObject = this.jdField_a_of_type_Aimc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+      ((SharedPreferences.Editor)localObject).putInt("funcall_tip_" + this.jdField_a_of_type_Aimc.jdField_a_of_type_JavaLangString, 4);
+      ((SharedPreferences.Editor)localObject).commit();
     }
   }
 }

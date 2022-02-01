@@ -1,189 +1,112 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.ark.ArkAppPanelReport.ReqBody;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.biz.qrcode.activity.QRJumpActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.Proto.EchoRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.Map;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aovo
-  extends BusinessHandler
+  extends aouc
 {
-  private static final int[] a = { 95 };
-  
-  public aovo(QQAppInterface paramQQAppInterface)
+  public aovo(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(paramQQAppInterface);
+    super(paramQQAppInterface, paramContext);
   }
   
-  private Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private boolean C()
   {
-    try
-    {
-      paramToServiceMsg = new String((byte[])paramObject, "UTF-8");
-      paramFromServiceMsg = paramToServiceMsg;
-      if (paramToServiceMsg == null) {
-        paramFromServiceMsg = "";
-      }
-      return paramFromServiceMsg;
+    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("appid"))) {
+      l = (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid");
     }
-    catch (Exception paramToServiceMsg)
-    {
-      for (;;)
-      {
-        ArkAppCenter.c("ArkApp.BusinessHandler", String.format("onReceive_AppMsg, fail convert data to string", new Object[0]));
-        paramToServiceMsg = null;
-      }
+    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("openid"))) {
+      m = (String)this.jdField_a_of_type_JavaUtilHashMap.get("openid");
     }
+    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("openkey"))) {
+      o = (String)this.jdField_a_of_type_JavaUtilHashMap.get("openkey");
+    }
+    if ("true".equals(this.jdField_a_of_type_JavaUtilHashMap.get("is_from_game"))) {
+      return D();
+    }
+    return E();
   }
   
-  private void a(String paramString, boolean paramBoolean, byte[] paramArrayOfByte, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver)
+  private boolean D()
   {
-    paramBusinessObserver = super.createToServiceMsg(paramString, paramBusinessObserver);
-    paramBusinessObserver.addAttribute("SendTime", Long.valueOf(System.currentTimeMillis()));
-    paramBusinessObserver.addAttribute("IsGenericCmd", Boolean.valueOf(paramBoolean));
-    paramBusinessObserver.addAttribute("IsPanelRequest", Boolean.valueOf(false));
-    paramBusinessObserver.addAttribute("NotifyType", Integer.valueOf(paramInt2));
-    paramBusinessObserver.putWupBuffer(paramArrayOfByte);
-    if (paramInt1 > 0) {
-      paramBusinessObserver.setTimeout(paramInt1);
-    }
-    if (!ampk.a().containsKey(paramString)) {
-      ampk.a(paramString, a);
-    }
-    super.sendPbReq(paramBusinessObserver);
-  }
-  
-  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    for (;;)
-    {
-      try
-      {
-        paramToServiceMsg = (Proto.EchoRsp)new Proto.EchoRsp().mergeFrom((byte[])paramObject);
-        if (paramToServiceMsg == null) {
-          return null;
-        }
-        if (paramToServiceMsg.msg.has())
-        {
-          paramToServiceMsg = paramToServiceMsg.msg.get();
-          paramFromServiceMsg = paramToServiceMsg;
-          if (paramToServiceMsg == null) {
-            paramFromServiceMsg = "";
-          }
-          return paramFromServiceMsg;
-        }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        return null;
-      }
-      paramToServiceMsg = null;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
+    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
+    if ((localObject == null) || ("".equals(localObject)) || (((String)localObject).length() < 5)) {
       return false;
     }
-    ArkAppPanelReport.ReqBody localReqBody = new ArkAppPanelReport.ReqBody();
-    localReqBody.bytes_app_name.set(ByteStringMicro.copyFromUtf8(paramString));
-    ArkAppCenter.a("ArkApp.BusinessHandler", String.format("reportArkAppPanelIconClick appName=%s", new Object[] { paramString }));
-    paramString = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "ArkAppPanel.Report");
-    paramString.putWupBuffer(localReqBody.toByteArray());
-    paramString.setNeedCallback(false);
-    sendPbReq(paramString);
+    localObject = TroopInfoActivity.a((String)localObject, 14);
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("appid")) {
+      ((Bundle)localObject).putString("appid", (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid"));
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("openid")) {
+      ((Bundle)localObject).putString("openid", c(bheh.m));
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("openkey")) {
+      ((Bundle)localObject).putString("openkey", (String)this.jdField_a_of_type_JavaUtilHashMap.get("openkey"));
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("is_from_game")) {
+      ((Bundle)localObject).putString("is_from_game", (String)this.jdField_a_of_type_JavaUtilHashMap.get("is_from_game"));
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("guild_id")) {
+      ((Bundle)localObject).putString("guild_id", (String)this.jdField_a_of_type_JavaUtilHashMap.get("guild_id"));
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("zone_id")) {
+      ((Bundle)localObject).putString("zone_id", (String)this.jdField_a_of_type_JavaUtilHashMap.get("zone_id"));
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("role_id")) {
+      ((Bundle)localObject).putString("role_id", (String)this.jdField_a_of_type_JavaUtilHashMap.get("role_id"));
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("gc")) {
+      ((Bundle)localObject).putString("gc", (String)this.jdField_a_of_type_JavaUtilHashMap.get("gc"));
+    }
+    TroopUtils.openTroopInfoActivity(this.jdField_a_of_type_AndroidContentContext, (Bundle)localObject, 2);
     return true;
   }
   
-  public boolean a(String paramString, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver)
+  private boolean E()
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBusinessObserver == null)) {
-      return false;
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QRJumpActivity.class);
+    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("url");
+    Object localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = this.jdField_a_of_type_JavaLangString;
     }
-    paramBusinessObserver = super.createToServiceMsg(paramString, paramBusinessObserver);
-    paramBusinessObserver.addAttribute("SendTime", Long.valueOf(System.currentTimeMillis()));
-    paramBusinessObserver.addAttribute("IsGenericCmd", Boolean.valueOf(true));
-    paramBusinessObserver.addAttribute("IsPanelRequest", Boolean.valueOf(true));
-    paramBusinessObserver.addAttribute("NotifyType", Integer.valueOf(paramInt2));
-    if (paramInt1 > 0) {
-      paramBusinessObserver.setTimeout(paramInt1);
+    localIntent.putExtra("url", (String)localObject);
+    localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("attr_original_url");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      localIntent.putExtra("attr_original_url", (String)localObject);
     }
-    if (!ampk.a().containsKey(paramString)) {
-      ampk.a(paramString, a);
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      localObject = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent();
+      if ((localObject != null) && (((Intent)localObject).hasExtra("fromQrcode"))) {
+        localIntent.putExtra("fromQrcode", ((Intent)localObject).getBooleanExtra("fromQrcode", false));
+      }
     }
-    super.sendPbReq(paramBusinessObserver);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
     return true;
   }
   
-  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver)
+  public boolean a()
   {
-    if ((TextUtils.isEmpty(paramString1)) || (paramBusinessObserver == null)) {
-      return false;
-    }
-    String str = paramString2;
-    if (paramString2 == null) {
-      str = "";
-    }
     try
     {
-      paramString2 = str.getBytes("UTF-8");
-      a(paramString1, true, paramString2, paramInt1, paramInt2, paramBusinessObserver);
-      return true;
+      boolean bool = C();
+      return bool;
     }
-    catch (Exception paramString2)
+    catch (Exception localException)
     {
-      ArkAppCenter.c("ArkApp.BusinessHandler", String.format("sendAppMsg, fail convert content to bytes array, cmd=%s, content=%s", new Object[] { paramString1, str }));
+      QLog.e("QrCodeAction", 1, "doAction error: " + localException.getMessage());
+      a("QrCodeAction");
     }
     return false;
-  }
-  
-  public Class<? extends BusinessObserver> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool1 = paramFromServiceMsg.isSuccess();
-    long l1 = ((Long)paramToServiceMsg.getAttribute("SendTime")).longValue();
-    long l2 = System.currentTimeMillis();
-    boolean bool2 = ((Boolean)paramToServiceMsg.getAttribute("IsGenericCmd")).booleanValue();
-    boolean bool3 = ((Boolean)paramToServiceMsg.getAttribute("IsPanelRequest")).booleanValue();
-    int i = ((Integer)paramToServiceMsg.getAttribute("NotifyType")).intValue();
-    String str = paramFromServiceMsg.getServiceCmd();
-    ArkAppCenter.c("ArkApp.BusinessHandler", String.format("onReceive, cmd=%s, app-msg=%s, panelRequest=%s, suc=%s, delay=%d, ", new Object[] { str, Boolean.toString(bool2), Boolean.toString(bool3), Boolean.toString(bool1), Long.valueOf(l2 - l1) }));
-    if (bool1) {
-      if (bool2) {
-        if (!bool3) {}
-      }
-    }
-    for (;;)
-    {
-      if (paramObject != null)
-      {
-        super.notifyUI(paramToServiceMsg, i, true, paramObject);
-        return;
-        paramObject = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        continue;
-        if (str.equalsIgnoreCase("ArkAppSvc.Echo")) {
-          paramObject = b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        }
-      }
-      else
-      {
-        super.notifyUI(paramToServiceMsg, i, false, null);
-        return;
-      }
-      paramObject = null;
-    }
   }
 }
 

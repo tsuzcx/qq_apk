@@ -1,55 +1,105 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedLikeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
-public class xhm
-  extends vqr<wge>
+public abstract class xhm
+  extends xgu
 {
+  public int a;
+  @NonNull
+  public final View a;
+  public StoryPlayerGroupHolder a;
   public String a;
-  public boolean a;
-  public int c = -1;
+  public xhf a;
+  protected xhn a;
+  protected boolean a;
+  public int b;
+  private final String b;
+  protected boolean b;
   
-  public String a()
+  public xhm(@NonNull ViewGroup paramViewGroup)
   {
-    return vpl.a("StorySvc.feed_like_list_715");
+    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
+    this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
   }
   
-  public vqm a(byte[] paramArrayOfByte)
+  protected abstract View a(ViewGroup paramViewGroup);
+  
+  public xhm a(Class<? extends xhm> paramClass)
   {
-    qqstory_service.RspFeedLikeList localRspFeedLikeList = new qqstory_service.RspFeedLikeList();
-    try
-    {
-      localRspFeedLikeList.mergeFrom(paramArrayOfByte);
-      return new xhn(localRspFeedLikeList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      xvv.d("Q.qqstory:GetLikeListRequest", "" + paramArrayOfByte);
+    if (this.jdField_a_of_type_Xhn != null) {
+      return this.jdField_a_of_type_Xhn.b(paramClass);
     }
     return null;
   }
   
-  protected byte[] a()
+  public void a(int paramInt1, int paramInt2)
   {
-    qqstory_service.ReqFeedLikeList localReqFeedLikeList = new qqstory_service.ReqFeedLikeList();
-    localReqFeedLikeList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2;; i = 1)
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
+    ykq.a(this.jdField_a_of_type_JavaLangString, "onPositionChanged, oldVer=%d, oldHor=%d, newVer=%d, newHor=%d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2, @NonNull xhf paramxhf, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  {
+    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Xhf = paramxhf;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = paramStoryPlayerGroupHolder;
+  }
+  
+  void a(xhn paramxhn)
+  {
+    this.jdField_a_of_type_Xhn = paramxhn;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_Boolean != paramBoolean)
     {
-      localReqFeedLikeList.source.set(i);
-      if (this.c != -1) {
-        localReqFeedLikeList.type.set(this.c);
-      }
-      return localReqFeedLikeList.toByteArray();
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      b(this.jdField_b_of_type_Boolean);
+      return;
     }
+    ykq.e(this.jdField_a_of_type_JavaLangString, "onSelected donot changed !");
+  }
+  
+  protected void b() {}
+  
+  protected void b(boolean paramBoolean)
+  {
+    ykq.b(this.jdField_a_of_type_JavaLangString, "onSelectedChanged (ver=%d, hor=%d) , => %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(paramBoolean));
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Xhf = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = null;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
   
   public String toString()
   {
-    return "GetLikeListRequest{, feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isOpen=" + this.jdField_a_of_type_Boolean + ", type=" + this.c + '}';
+    return "VideoHolderBase{, GroupPos=" + this.jdField_a_of_type_Int + ", VideoPos=" + this.jdField_b_of_type_Int + ", mData=" + this.jdField_a_of_type_Xhf + '}';
   }
 }
 

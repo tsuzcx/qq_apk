@@ -1,19 +1,19 @@
 package cooperation.vip.manager;
 
-import blah;
-import blbc;
-import blbf;
+import bmms;
+import bmnn;
+import bmnq;
 import cooperation.qzone.util.QZLog;
 
 public class GdtGeneralManager$3
   implements Runnable
 {
-  public GdtGeneralManager$3(blbc paramblbc, blah paramblah) {}
+  public GdtGeneralManager$3(bmnn parambmnn, bmms parambmms) {}
   
   public void run()
   {
-    blbc.a(this.this$0, this.this$0.a());
-    blbf.a(this.a, blbc.a(this.this$0));
+    bmnn.a(this.this$0, this.this$0.a());
+    bmnq.a(this.a, bmnn.a(this.this$0));
     QZLog.i("GdtGeneralManager", " @getGdtInfo gdtDeviceInfo == null  sendAdvInfoExposeOrClickReport");
   }
 }

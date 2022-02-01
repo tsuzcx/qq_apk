@@ -1,24 +1,23 @@
-import android.os.Message;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.WaitDoneBundle.1;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class bbuw
+  implements bkzq
 {
-  public final Object a;
-  public final Runnable a;
+  public bbuw(SignatureHistoryFragment paramSignatureHistoryFragment, int paramInt1, int paramInt2, int paramInt3) {}
   
-  bbuw()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaLangRunnable = new CameraProxy.WaitDoneBundle.1(this);
-  }
-  
-  static void a(Message paramMessage)
-  {
-    if (paramMessage == null) {}
-    while (!(paramMessage.obj instanceof bbuw)) {
-      return;
+    if (paramInt == 0)
+    {
+      VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "" + this.jdField_a_of_type_Int, "", "", "", "", 0, 0, 0, 0);
+      bhiw.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity().app, 0, "signature_history", -1, this.b, this.c, null);
     }
-    ((bbuw)paramMessage.obj).jdField_a_of_type_JavaLangRunnable.run();
+    if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment) != null) {
+      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).dismiss();
+    }
   }
 }
 

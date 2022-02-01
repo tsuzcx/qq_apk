@@ -1,19 +1,8 @@
-import android.opengl.EGLContext;
+import android.view.View;
 
-public class bodu
+public abstract interface bodu
 {
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  public boee a;
-  private Object jdField_a_of_type_JavaLangObject;
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
-      return;
-    }
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

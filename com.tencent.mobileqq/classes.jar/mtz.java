@@ -1,79 +1,108 @@
-import android.annotation.TargetApi;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build.VERSION;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.View;
-import java.io.InputStream;
+import android.widget.Button;
+import android.widget.ImageButton;
+import com.tencent.av.utils.QQFrameByFrameAnimation.1;
 
 public class mtz
-  extends BitmapDrawable
 {
-  private ColorStateList a;
+  public int a;
+  public Handler a;
+  View jdField_a_of_type_AndroidViewView = null;
+  Runnable jdField_a_of_type_JavaLangRunnable = new QQFrameByFrameAnimation.1(this);
+  public mty a;
+  public int[] a;
+  public int b = 0;
+  public int c = 0;
+  public int d = 0;
   
-  public mtz(Resources paramResources, Bitmap paramBitmap, int paramInt)
+  public mtz()
   {
-    super(paramResources, paramBitmap);
-    this.a = paramResources.getColorStateList(paramInt);
-    onStateChange(getState());
+    this.jdField_a_of_type_Mty = null;
+    this.jdField_a_of_type_Int = 300;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
   }
   
-  public mtz(Resources paramResources, InputStream paramInputStream, int paramInt)
+  public void a()
   {
-    super(paramResources, paramInputStream);
-    this.a = paramResources.getColorStateList(paramInt);
-    onStateChange(getState());
-  }
-  
-  public static mtz a(Resources paramResources, int paramInt1, int paramInt2)
-  {
-    return new mtz(paramResources, paramResources.openRawResource(paramInt1), paramInt2);
-  }
-  
-  public static mtz a(Resources paramResources, Bitmap paramBitmap, int paramInt)
-  {
-    return new mtz(paramResources, paramBitmap, paramInt);
-  }
-  
-  @TargetApi(16)
-  public static void a(View paramView, int paramInt1, int paramInt2)
-  {
-    if (paramView == null) {
+    this.c += 1;
+    int i;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
+    {
+      i = this.jdField_a_of_type_ArrayOfInt[(this.c % this.jdField_a_of_type_ArrayOfInt.length)];
+      if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
+        break label67;
+      }
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(i);
+    }
+    label67:
+    while (!(this.jdField_a_of_type_AndroidViewView instanceof Button)) {
       return;
     }
-    mtz localmtz = a(paramView.getResources(), paramInt1, paramInt2);
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      paramView.setBackground(localmtz);
-      return;
-    }
-    paramView.setBackgroundDrawable(localmtz);
+    Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(i);
+    localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+    ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
   }
   
-  public boolean isStateful()
+  public void a(int paramInt)
   {
-    return true;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected boolean onStateChange(int[] paramArrayOfInt)
+  public void a(View paramView)
   {
-    int i = this.a.getColorForState(paramArrayOfInt, 0);
-    if (i != 0) {
-      setColorFilter(i, PorterDuff.Mode.MULTIPLY);
-    }
-    for (;;)
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(mty parammty)
+  {
+    this.jdField_a_of_type_Mty = parammty;
+  }
+  
+  public void a(int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
     {
-      invalidateSelf();
-      return super.onStateChange(paramArrayOfInt);
-      clearColorFilter();
+      this.c = 0;
+      if ((this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_ArrayOfInt[0]);
+      }
+      if ((this.jdField_a_of_type_AndroidViewView instanceof Button))
+      {
+        Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(this.jdField_a_of_type_ArrayOfInt[0]);
+        localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+        ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
+      }
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Mty != null) {
+        this.jdField_a_of_type_Mty.d();
+      }
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (this.jdField_a_of_type_Mty != null) {
+      this.jdField_a_of_type_Mty.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mtz
  * JD-Core Version:    0.7.0.1
  */

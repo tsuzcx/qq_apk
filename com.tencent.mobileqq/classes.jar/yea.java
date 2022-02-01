@@ -1,28 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.TagFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class yea
-  implements View.OnClickListener
+public class yea
+  extends yeb<TagFeedItem>
 {
-  yea(ydv paramydv) {}
-  
-  public void onClick(View paramView)
+  public yea(@NonNull TagFeedItem paramTagFeedItem)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.a.jdField_a_of_type_JavaLangString);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.a.d);
-    this.a.jdField_a_of_type_Yde.a = this.a.d;
-    this.a.jdField_a_of_type_Yde.d = this.a.e;
-    this.a.dismiss();
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId == 3)) {
-      LpReportInfo_pf00064.allReport(615, 3, 3);
+    super(paramTagFeedItem);
+  }
+  
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  {
+    Object localObject = (qqstory_struct.TagFeed)paramStoryFeed.tag_feed.get();
+    ((TagFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.TagFeed)localObject);
+    ((TagFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    paramStoryFeed = new ArrayList();
+    localObject = ((qqstory_struct.TagFeed)localObject).video_list.get().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      qqstory_struct.TagVideoInfo localTagVideoInfo = (qqstory_struct.TagVideoInfo)((Iterator)localObject).next();
+      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+      localStoryVideoItem.convertFrom("Q.qqstory.home.data.VideoListHomeFeed", localTagVideoInfo);
+      paramStoryFeed.add(localStoryVideoItem);
     }
-    xwb.a("0X80076C5");
-    xwb.b("0X80075D9");
-    EventCollector.getInstance().onViewClicked(paramView);
+    c(paramStoryFeed, true);
+    return true;
   }
 }
 

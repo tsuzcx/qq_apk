@@ -1,31 +1,19 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class wle
-  extends QQUIEventReceiver<wld, wky>
 {
-  public wle(@NonNull wld paramwld)
-  {
-    super(paramwld);
-  }
+  @zef(a="oa_task_id")
+  public int a;
+  @zef(a="bg_url")
+  public String a;
+  @zef(a="is_comp_able")
+  public boolean a;
+  @zef(a="comp_vid")
+  public String b;
+  @zef(a="icon_url")
+  public String c;
   
-  public void a(@NonNull wld paramwld, @NonNull wky paramwky)
+  public String toString()
   {
-    if (TextUtils.equals("SendVideoToFriendHelper", paramwky.jdField_a_of_type_JavaLangString)) {}
-    switch (paramwky.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    }
-    xvv.a(this.TAG, "download video or picture finish. videoLocalPath = %s.", paramwky.b);
-    wld.a(paramwld, false);
-    paramwld.a(paramwld.jdField_a_of_type_AndroidOsBundle, paramwld.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramwld.jdField_a_of_type_JavaLangString, paramwky.b);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wky.class;
+    return "CompInfoBase{, comparedVid='" + this.b + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.c + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

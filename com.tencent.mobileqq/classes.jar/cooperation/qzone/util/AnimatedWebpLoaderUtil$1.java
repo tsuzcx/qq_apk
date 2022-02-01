@@ -2,7 +2,7 @@ package cooperation.qzone.util;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bibn;
+import bjmp;
 import cooperation.qzone.networkedmodule.ModuleDownloadListener;
 
 final class AnimatedWebpLoaderUtil$1
@@ -22,7 +22,7 @@ final class AnimatedWebpLoaderUtil$1
     if (!paramString.equals("animatedWebp.so")) {
       return;
     }
-    bibn.a().edit().putString("PREFERENCE_SO_MD5_KEY", AnimatedWebpLoaderUtil.WEBP_SO_MD5).commit();
+    bjmp.a().edit().putString("PREFERENCE_SO_MD5_KEY", AnimatedWebpLoaderUtil.WEBP_SO_MD5).commit();
     QZLog.i(AnimatedWebpLoaderUtil.TAG, "download webp so succ");
   }
 }

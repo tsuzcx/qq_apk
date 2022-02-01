@@ -1,30 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 
-final class amdw
-  extends bgod
+class amdw
+  implements DialogInterface.OnClickListener
 {
-  amdw(int paramInt, amea paramamea) {}
+  amdw(amdv paramamdv) {}
   
-  public void onDone(bgoe parambgoe)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onDone(parambgoe);
-    if (3 == parambgoe.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio ok id" + this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_a_of_type_Amea != null) {
-        this.jdField_a_of_type_Amea.a(true, this.jdField_a_of_type_Int);
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio error id->" + this.jdField_a_of_type_Int + " task.getStatus()->" + parambgoe.a());
-      }
-    } while (this.jdField_a_of_type_Amea == null);
-    this.jdField_a_of_type_Amea.a(false, this.jdField_a_of_type_Int);
+    bdla.b(null, "dc00898", "", "", "0X800A0C7", "0X800A0C7", 0, 0, String.valueOf(SessionClearFragment.b(this.a.a)), String.valueOf(SessionClearFragment.c(this.a.a)), "", "");
+    SessionClearFragment.a(this.a.a);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("extra_delete_total_file_size", SessionClearFragment.a(this.a.a).a());
+    Activity localActivity = SessionClearFragment.a(this.a.a);
+    SessionClearFragment.a(this.a.a);
+    localActivity.setResult(-1, paramDialogInterface);
   }
 }
 

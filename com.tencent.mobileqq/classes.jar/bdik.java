@@ -1,24 +1,12 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.CaughtExceptionReport.Proxy;
 
-class bdik
-  extends bdji<EditorState>
+public final class bdik
+  implements IMCoreProxyRoute.CaughtExceptionReport.Proxy
 {
-  bdik(bdid parambdid, EditorState paramEditorState, List paramList)
+  public void e(@NonNull Throwable paramThrowable, @NonNull String paramString)
   {
-    super(paramEditorState, paramList);
-  }
-  
-  public void a(EditorState paramEditorState)
-  {
-    super.a(paramEditorState);
-    if (bdgn.a(bdid.a(this.a), bdid.a(this.a)))
-    {
-      bdid.a(this.a).a(false, false);
-      return;
-    }
-    bdid.a(this.a).a(EditorState.CLOSED_BY_ADMIN, bdid.a(this.a).getString(2131719699));
+    bdjw.a(paramThrowable, paramString);
   }
 }
 

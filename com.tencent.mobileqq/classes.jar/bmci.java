@@ -1,24 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
 
 public class bmci
-  implements View.OnTouchListener
+  implements DialogInterface.OnDismissListener
 {
-  public bmci(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  public bmci(QfavJumpActivity paramQfavJumpActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!AEPituCameraCaptureButtonLayout.a(this.a)) {
-      return this.a.a(paramView, paramMotionEvent);
+    if (QfavJumpActivity.a(this.a))
+    {
+      QfavJumpActivity.a(this.a, false);
+      this.a.finish();
     }
-    return AEPituCameraCaptureButtonLayout.a(this.a, paramView, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmci
  * JD-Core Version:    0.7.0.1
  */

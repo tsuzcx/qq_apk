@@ -1,19 +1,26 @@
 package com.tencent.mobileqq.activity.aio.core;
 
+import ailr;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class BaseChatPie$18
-  implements Runnable
+  implements View.OnClickListener
 {
   BaseChatPie$18(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
+    this.this$0.mTipsMgr.a();
     SharedPreferences.Editor localEditor = this.this$0.app.getPreferences().edit();
-    localEditor.putInt("LT_tip_show_times" + this.this$0.app.getCurrentAccountUin(), 1);
+    localEditor.putInt("funcall_tip_" + this.this$0.sessionInfo.curFriendUin, 4);
     localEditor.commit();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

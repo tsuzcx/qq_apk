@@ -1,28 +1,12 @@
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adnd
-  extends amsu
+public final class adnd
+  implements DialogInterface.OnClickListener
 {
-  public adnd(JoinDiscussionActivity paramJoinDiscussionActivity) {}
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      paramString = ((amsw)this.a.app.getManager(51)).e(this.a.a + "");
-      if (paramString != null)
-      {
-        this.a.e = paramString.name;
-        JoinDiscussionActivity.a(this.a);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
+    paramDialogInterface.dismiss();
   }
 }
 

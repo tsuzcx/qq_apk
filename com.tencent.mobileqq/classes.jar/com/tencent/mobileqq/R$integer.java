@@ -51,6 +51,7 @@ public final class R$integer
   public static final int tabTextSize = 2131427374;
   public static final int tcw_datepicker_endyear = 2131427375;
   public static final int tcw_datepicker_startyear = 2131427376;
+  public static final int tkd_comment_publisher_dialog_anim_duration = 2131427377;
 }
 
 

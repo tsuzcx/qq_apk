@@ -160,8 +160,8 @@ public class VideoView
     for (;;)
     {
       return this.mBrowserItemView;
-      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131562964, paramViewGroup, false));
-      this.mVideoView = ((QQVideoPlayView)this.mBrowserItemView.findViewById(2131380458));
+      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131563040, paramViewGroup, false));
+      this.mVideoView = ((QQVideoPlayView)this.mBrowserItemView.findViewById(2131380797));
       this.mVideoView.setOnClickListener(this);
     }
   }

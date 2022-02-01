@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bhht;
+import bisl;
 
 class RegisterQQNumberActivity$5
   implements Runnable
@@ -13,8 +13,8 @@ class RegisterQQNumberActivity$5
     {
       if ((RegisterQQNumberActivity.a(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
-        RegisterQQNumberActivity.a(this.this$0, new bhht(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-        RegisterQQNumberActivity.a(this.this$0).c(2131694279);
+        RegisterQQNumberActivity.a(this.this$0, new bisl(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        RegisterQQNumberActivity.a(this.this$0).c(2131694477);
       }
       if ((RegisterQQNumberActivity.a(this.this$0) != null) && (!RegisterQQNumberActivity.a(this.this$0).isShowing())) {
         RegisterQQNumberActivity.a(this.this$0).show();
@@ -32,7 +32,7 @@ class RegisterQQNumberActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterQQNumberActivity.5
  * JD-Core Version:    0.7.0.1
  */

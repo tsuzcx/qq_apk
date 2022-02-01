@@ -1,24 +1,11 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
 public class wfd
-  extends vql
 {
-  public List<xnh> a = new ArrayList();
-  
-  public wfd(qqstory_group.RspGroupStoryFeedIdList paramRspGroupStoryFeedIdList)
+  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
   {
-    super(paramRspGroupStoryFeedIdList.result, paramRspGroupStoryFeedIdList.is_end, paramRspGroupStoryFeedIdList.next_cookie);
-    paramRspGroupStoryFeedIdList = paramRspGroupStoryFeedIdList.feed_seq_info_list.get().iterator();
-    while (paramRspGroupStoryFeedIdList.hasNext())
-    {
-      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspGroupStoryFeedIdList.next();
-      this.a.add(new xnh(localFeedSeqInfo));
-    }
+    return false;
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.app.Activity;
-import aoln;
-import bcef;
+import apoo;
+import bdla;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.ocr.OCRPerformFragment;
 
@@ -13,11 +13,11 @@ class OCRScanEntryView$1
   
   public void run()
   {
-    String str = aoln.a().a();
+    String str = apoo.a().a();
     if (FileUtil.isFileExists(str))
     {
       OCRPerformFragment.a((Activity)this.this$0.a, str, 0, -1008, null);
-      bcef.b(null, "dc00898", "", "", "0X800AE06", "0X800AE06", 1, 0, "", "0", "0", "");
+      bdla.b(null, "dc00898", "", "", "0X800AE06", "0X800AE06", 1, 0, "", "0", "0", "");
     }
     OCRScanEntryView.a(this.this$0, false);
   }

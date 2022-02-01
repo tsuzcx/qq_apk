@@ -1,59 +1,111 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.database.Cursor;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.OGEntityManager;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import com.tencent.mobileqq.utils.SecurityUtile;
+import com.tencent.mobileqq.vas.updatesystem.db.entity.LocalFileMd5Entity;
+import com.tencent.mobileqq.vas.updatesystem.db.entity.LocalUpdateEntity;
+import com.tencent.mobileqq.vas.updatesystem.db.entity.ShouldUpdateEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bhuq
-  extends Handler
+  extends EntityManagerFactory
 {
-  public bhuq(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
+  public bhuq(String paramString)
   {
-    super(paramLooper);
+    super(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static void a(String paramString, android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
-    switch (paramMessage.what)
+    Cursor localCursor1 = paramSQLiteDatabase.rawQuery("select distinct tbl_name from Sqlite_master", null);
+    ArrayList localArrayList = new ArrayList();
+    if (localCursor1 != null)
     {
-    }
-    do
-    {
-      do
+      while (localCursor1.moveToNext())
       {
-        do
-        {
-          do
+        String str = SecurityUtile.decode(localCursor1.getString(0));
+        Cursor localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str });
+        if (localCursor2 != null) {
+          for (;;)
           {
-            return;
-            paramMessage = (Bitmap)paramMessage.obj;
-          } while (paramMessage == null);
-          paramMessage = bhwf.a(this.a, paramMessage, 50, 50);
-          localMessage = Message.obtain();
-          localMessage.what = 1002;
-          localMessage.obj = paramMessage;
-          this.a.b.sendMessage(localMessage);
-          return;
-          paramMessage = (String)paramMessage.obj;
-        } while (TextUtils.isEmpty(paramMessage));
-        paramMessage = AuthorityActivity.a(paramMessage);
-      } while (paramMessage == null);
-      Message localMessage = Message.obtain();
-      localMessage.what = 1003;
-      localMessage.obj = paramMessage;
-      this.a.b.sendMessage(localMessage);
-      return;
-      QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "--> handler message GET_ACCOUNT_LIST");
-    } while (this.a.a.a == null);
-    this.a.a.a.c();
-    paramMessage = Message.obtain();
-    paramMessage.what = 1006;
-    this.a.b.sendMessage(paramMessage);
+            try
+            {
+              if (!str.equals(LocalUpdateEntity.TABLE_NAME)) {
+                continue;
+              }
+              localObject = LocalUpdateEntity.class;
+              OGEntityManager.extractedStatementByReflect(localArrayList, str, localCursor2, (Class)localObject);
+            }
+            catch (ClassNotFoundException localClassNotFoundException)
+            {
+              Object localObject;
+              continue;
+            }
+            localCursor2.close();
+            break;
+            if (str.equals(ShouldUpdateEntity.TABLE_NAME)) {
+              localObject = ShouldUpdateEntity.class;
+            } else if (str.equals(LocalFileMd5Entity.TABLE_NAME)) {
+              localObject = LocalFileMd5Entity.class;
+            } else {
+              localObject = Class.forName(paramString + "." + str);
+            }
+          }
+        }
+      }
+      localCursor1.close();
+    }
+    com.tencent.mobileqq.app.SQLiteDatabase.beginTransactionLog();
+    paramSQLiteDatabase.beginTransaction();
+    try
+    {
+      paramString = localArrayList.iterator();
+      while (paramString.hasNext()) {
+        paramSQLiteDatabase.execSQL((String)paramString.next());
+      }
+      paramSQLiteDatabase.setTransactionSuccessful();
+    }
+    finally
+    {
+      paramSQLiteDatabase.endTransaction();
+      com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+    }
+    paramSQLiteDatabase.endTransaction();
+    com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+  }
+  
+  public SQLiteOpenHelper build(String paramString)
+  {
+    if (this.dbHelper == null)
+    {
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "vas_update_system_database.db", null, 1);
+      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
+    }
+    return this.dbHelper;
+  }
+  
+  public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new ShouldUpdateEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new LocalUpdateEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new LocalFileMd5Entity()));
+  }
+  
+  public String getPackageName()
+  {
+    return "com.tencent.mobileqq.vas.updatesystem.db";
+  }
+  
+  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    QLog.i("VasUpdateEntityManagerF", 1, "[DB]|upgrade. oldVer=" + paramInt1 + ", newVer=" + paramInt2);
+    a(getPackageName(), paramSQLiteDatabase);
   }
 }
 

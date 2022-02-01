@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
-public abstract interface asor
+public class asor
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp);
+  public asor(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public abstract void a(int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp);
-  
-  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
-  
-  public abstract void ao_();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    ExtendFriendEditFragment.a(this.a).finish();
+  }
 }
 
 

@@ -1,39 +1,43 @@
-import com.tencent.kwstudio.office.base.Log;
-import com.tencent.kwstudio.office.preview.IHostInterface.IHttpListener;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class atfl
-  implements INetEngine.INetEngineListener
+class atfl
+  implements View.OnClickListener
 {
-  private final IHostInterface.IHttpListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
-  private final String jdField_a_of_type_JavaLangString;
+  atfl(atfk paramatfk) {}
   
-  private atfl(String paramString, IHostInterface.IHttpListener paramIHttpListener)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener = paramIHttpListener;
-  }
-  
-  public void onResp(NetResp paramNetResp)
-  {
-    if ((paramNetResp.mHttpCode == 200) || (paramNetResp.mHttpCode == 206)) {}
-    for (String str = new String(paramNetResp.mRespData);; str = null)
+    afqr localafqr = (afqr)AIOUtils.getHolder(paramView);
+    int i;
+    ChatMessage localChatMessage;
+    if (localafqr != null)
     {
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(paramNetResp.mHttpCode, str);
+      i = -1;
+      localChatMessage = auea.a(localafqr.a);
+      if (!this.a.a(localChatMessage)) {
+        break label57;
       }
-      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + paramNetResp.mHttpCode + ", rsp=" + str);
+      i = 0;
+    }
+    for (;;)
+    {
+      this.a.a(paramView, localafqr, localChatMessage, i);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label57:
+      if (this.a.b(localChatMessage)) {
+        i = 1;
+      }
     }
   }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfl
  * JD-Core Version:    0.7.0.1
  */

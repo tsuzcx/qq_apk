@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.controller;
 
-import ahsc;
-import ahsf;
-import ahsh;
+import ainb;
+import aine;
+import aing;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,22 +10,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class VoiceTextSttQueryController$2
   implements Runnable
 {
-  public VoiceTextSttQueryController$2(ahsc paramahsc, String paramString) {}
+  public VoiceTextSttQueryController$2(ainb paramainb, String paramString) {}
   
   public void run()
   {
-    List localList = ahsc.b(this.this$0);
+    List localList = ainb.b(this.this$0);
     if ((localList == null) || (localList.isEmpty()))
     {
-      if (ahsc.a(this.this$0) != null) {
-        ahsc.a(this.this$0).c();
+      if (ainb.a(this.this$0) != null) {
+        ainb.a(this.this$0).c();
       }
-      ahsc.a(this.this$0).set(true);
+      ainb.a(this.this$0).set(true);
       return;
     }
-    ahsc.a(this.this$0).set(localList.size());
-    ahsc.a(this.this$0, new ahsh[localList.size()]);
-    ahsc.a(this.this$0, this.a, localList);
+    ainb.a(this.this$0).set(localList.size());
+    ainb.a(this.this$0, new aing[localList.size()]);
+    ainb.a(this.this$0, this.a, localList);
   }
 }
 

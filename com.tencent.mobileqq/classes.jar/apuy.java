@@ -1,148 +1,66 @@
-import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import eipc.EIPCResult;
 
 public class apuy
-  extends aptq<apuz>
+  implements apvl
 {
-  private static volatile apuz a;
-  
-  public static apuz a()
+  private String a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    try
+    Object localObject = null;
+    String str = null;
+    SessionInfo localSessionInfo = apsl.a();
+    if (!TextUtils.isEmpty(paramString))
     {
-      if (a == null) {
-        a = (apuz)apub.a().a(672);
+      if (localSessionInfo != null) {
+        str = ContactUtils.getNicknameInSession(paramQQAppInterface, localSessionInfo, paramString.equals(paramQQAppInterface.getCurrentUin()), paramString);
       }
-      apuz localapuz = a;
-      return localapuz;
+      if (str != null)
+      {
+        localObject = str;
+        if (!TextUtils.equals(str, paramString)) {}
+      }
+      else
+      {
+        str = ContactUtils.getDateNickName(paramQQAppInterface, paramString);
+        localObject = str;
+        if (TextUtils.isEmpty(str)) {
+          localObject = ContactUtils.getNick(paramQQAppInterface, paramString, 0);
+        }
+      }
     }
-    finally {}
+    return localObject;
   }
   
-  public DisplayMetrics a()
+  public EIPCResult a(Bundle paramBundle)
   {
-    return BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
-  }
-  
-  @NonNull
-  public apuz a(int paramInt)
-  {
-    return b();
-  }
-  
-  @Nullable
-  public apuz a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0))
+    Object localObject = apuj.a();
+    if (localObject == null)
     {
-      paramArrayOfaptx = b();
-      return paramArrayOfaptx;
+      QLog.e("ArkApp.GetNicknameByViewHandler", 1, "Handler_GetNickName.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
     }
-    String str = paramArrayOfaptx[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOPicThumbSizeProcessor", 2, "onParsed, content:" + str);
+    paramBundle = a((QQAppInterface)localObject, paramBundle.getString("Uin", ((QQAppInterface)localObject).getCurrentAccountUin()));
+    localObject = new Bundle();
+    if (TextUtils.isEmpty(paramBundle))
+    {
+      QLog.e("ArkApp.GetNicknameByViewHandler", 1, "Handler_GetNickName.onCall, nickname is empty");
+      ((Bundle)localObject).putString("Nickname", "");
     }
-    apuz localapuz = new apuz();
     for (;;)
     {
-      JSONObject localJSONObject;
-      try
-      {
-        localJSONObject = new JSONObject(str);
-        localapuz.jdField_a_of_type_Boolean = localJSONObject.optBoolean("useNewConfig", true);
-        localapuz.jdField_b_of_type_Boolean = localJSONObject.optBoolean("reportExpose", false);
-        paramArrayOfaptx = localapuz;
-        if (!localapuz.jdField_a_of_type_Boolean) {
-          break;
-        }
-        localapuz.jdField_b_of_type_Double = localJSONObject.optDouble("minRatio", 0.0D);
-        localapuz.jdField_a_of_type_Double = localJSONObject.optDouble("maxRatio", 0.0D);
-        localapuz.jdField_a_of_type_Int = localJSONObject.optInt("textOtherSpace", 128);
-        if ((localapuz.jdField_a_of_type_Double > 0.0D) && (localapuz.jdField_b_of_type_Double > 0.0D) && (localapuz.jdField_a_of_type_Int > 0))
-        {
-          paramArrayOfaptx = a();
-          int i = (int)(Math.min(paramArrayOfaptx.widthPixels, paramArrayOfaptx.heightPixels) / paramArrayOfaptx.density - localapuz.jdField_a_of_type_Int);
-          localapuz.c = ((int)(i * localapuz.jdField_b_of_type_Double));
-          localapuz.jdField_b_of_type_Int = ((int)(i * localapuz.jdField_a_of_type_Double));
-          localapuz.e = localJSONObject.optInt("aioImageDynamicMinSize", 45);
-          localapuz.d = localJSONObject.optInt("aioImageDynamicMaxSize", 135);
-          return localapuz;
-        }
-      }
-      catch (Exception paramArrayOfaptx)
-      {
-        QLog.d("AIOPicThumbSizeProcessor", 1, "onParsed error, content:" + str);
-        return b();
-      }
-      localapuz.c = localJSONObject.optInt("aioImageMinSize", 45);
-      localapuz.jdField_b_of_type_Int = localJSONObject.optInt("aioImageMaxSize", 135);
+      return EIPCResult.createResult(0, (Bundle)localObject);
+      ((Bundle)localObject).putString("Nickname", paramBundle);
     }
-  }
-  
-  public void a(apuz paramapuz)
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOPicThumbSizeProcessor", 2, "onUpdate");
-      }
-      a = (apuz)apub.a().a(672);
-      return;
-    }
-    finally {}
-  }
-  
-  public apuz b()
-  {
-    apuz localapuz = new apuz();
-    localapuz.c = 45;
-    localapuz.jdField_b_of_type_Int = 135;
-    localapuz.e = 45;
-    localapuz.d = 135;
-    return localapuz;
-  }
-  
-  public Class<apuz> clazz()
-  {
-    return apuz.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOPicThumbSizeProcessor", 2, "onReqFailed");
-    }
-  }
-  
-  public int type()
-  {
-    return 672;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apuy
  * JD-Core Version:    0.7.0.1
  */

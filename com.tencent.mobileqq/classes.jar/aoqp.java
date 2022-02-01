@@ -1,139 +1,44 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mini.sdk.EntryModel;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class aoqp
+  implements aoqr
 {
-  private static HashMap<String, aoqs> a = new HashMap();
-  
-  static
+  public void a(anyz paramanyz, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, anza paramanza)
   {
-    a.put("qq", new aoqu());
-    a.put("tel", new aoqw());
-    a.put("app", new aoqq());
-    a.put("mqzone", new aoqv());
-    a.put("miniapp", new aoqt());
-  }
-  
-  public static List<Object> a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramJSONArray.length())
+    switch (paramInt)
     {
-      Object localObject2 = paramJSONArray.get(i);
-      Object localObject1;
-      if ((localObject2 instanceof JSONArray)) {
-        localObject1 = a((JSONArray)localObject2);
-      }
-      for (;;)
-      {
-        localArrayList.add(localObject1);
-        i += 1;
-        break;
-        localObject1 = localObject2;
-        if ((localObject2 instanceof JSONObject)) {
-          localObject1 = a((JSONObject)localObject2);
-        }
-      }
+    default: 
+      return;
+    case 4003: 
+      paramanyz.getTroopMsgFin(paramBoolean, paramArrayOfObject);
+      return;
+    case 4005: 
+      paramanyz.getSystemMsgFin(paramBoolean, false, (List)paramObject);
+      return;
+    case 4006: 
+      paramanyz.getSystemMsgFin(false, true, null);
+      return;
+    case 4011: 
+      paramanyz.sendSystemMsgActionFin(paramBoolean, (ToServiceMsg)paramObject);
+      return;
+    case 4012: 
+      paramanyz.sendSystemMsgActionError((ToServiceMsg)paramObject);
+      return;
+    case 4001: 
+      paramanyz.getMsgFin(paramBoolean);
+      return;
+    case 4004: 
+      paramanyz.registerProxyFin(paramBoolean, paramObject);
+      return;
+    case 4002: 
+      paramanyz.getDiscussionMsgFin(paramBoolean);
+      return;
+    case 4013: 
+      paramanyz.getAllProxyTroopMsg(paramBoolean, paramArrayOfObject);
+      return;
     }
-    return localArrayList;
-  }
-  
-  public static Map<String, Object> a(JSONObject paramJSONObject)
-  {
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = paramJSONObject.keys();
-    if (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      Object localObject2 = paramJSONObject.get(str);
-      Object localObject1;
-      if ((localObject2 instanceof JSONArray)) {
-        localObject1 = a((JSONArray)localObject2);
-      }
-      for (;;)
-      {
-        localHashMap.put(str, localObject1);
-        break;
-        localObject1 = localObject2;
-        if ((localObject2 instanceof JSONObject)) {
-          localObject1 = a((JSONObject)localObject2);
-        }
-      }
-    }
-    return localHashMap;
-  }
-  
-  public static boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    QLog.e("ArkApp", 2, "navigate url: " + paramString1);
-    Object localObject = paramString1.split(":");
-    if (localObject.length <= 1) {
-      return false;
-    }
-    if (MiniAppLauncher.isMiniAppUrl(paramString1)) {
-      try
-      {
-        i = Integer.parseInt((String)bjnd.b(paramString1.substring(paramString1.indexOf("?") + 1)).get("scene"));
-        paramString2 = b();
-        MiniAppLauncher.startMiniApp(BaseActivity.sTopActivity, paramString1, i, paramString2, null);
-        return true;
-      }
-      catch (Exception paramString2)
-      {
-        for (;;)
-        {
-          QLog.e("ArkApp", 1, "Ark parse miniapp scene failed.", paramString2);
-          int i = 2059;
-        }
-      }
-    }
-    localObject = localObject[0];
-    aoqs localaoqs = (aoqs)a.get(localObject);
-    if (localaoqs == null) {
-      return false;
-    }
-    localObject = paramString1.substring(((String)localObject).length() + 1);
-    paramString1 = (String)localObject;
-    if (((String)localObject).startsWith("//")) {
-      paramString1 = ((String)localObject).substring(2);
-    }
-    localaoqs.a(paramString1, paramString2, paramJSONObject, paramLong, paramString3);
-    return true;
-  }
-  
-  private static EntryModel b()
-  {
-    Object localObject = BaseActivity.sTopActivity;
-    if ((localObject instanceof FragmentActivity))
-    {
-      localObject = (FragmentActivity)localObject;
-      if (((FragmentActivity)localObject).getChatFragment() != null)
-      {
-        localObject = ((FragmentActivity)localObject).getChatFragment().a();
-        if ((localObject instanceof TroopChatPie)) {
-          return ((BaseChatPie)localObject).createMiniAppEntryModel();
-        }
-      }
-    }
-    return null;
+    paramanyz.receiptErrorRsp((Long[])paramObject);
   }
 }
 

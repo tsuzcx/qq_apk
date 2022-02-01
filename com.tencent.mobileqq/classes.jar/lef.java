@@ -1,35 +1,43 @@
 import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.av.VideoController;
+import android.content.IntentFilter;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class lef
-  extends BroadcastReceiver
+public class lef
 {
-  lef(lee paramlee) {}
+  private static String jdField_a_of_type_JavaLangString = "GBatteryMonitor";
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new leg(this);
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public lef(VideoAppInterface paramVideoAppInterface)
   {
-    if ((paramIntent != null) && ("com.tencent.process.exit".equals(paramIntent.getAction())))
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+  }
+  
+  public void a()
+  {
+    IntentFilter localIntentFilter = new IntentFilter("android.intent.action.BATTERY_CHANGED");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void b()
+  {
+    try
     {
-      paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
-      paramIntent = paramIntent.getExtras().getString("verify");
-      if ((lee.a(this.a, paramIntent, paramContext)) && (lee.a(this.a, paramContext)))
+      if (this.jdField_a_of_type_Boolean)
       {
-        paramContext = lee.a(this.a).a();
-        if ((paramContext == null) || (paramContext.a().f()))
-        {
-          if (paramContext != null) {
-            paramContext.A();
-          }
-          QLog.d("GKillProcessMonitor", 1, "qqExitBroadcastReceiver");
-          Process.killProcess(Process.myPid());
-        }
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        this.jdField_a_of_type_Boolean = false;
       }
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "video exit IllegalArgumentException ", localIllegalArgumentException);
     }
   }
 }

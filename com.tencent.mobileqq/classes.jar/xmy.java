@@ -1,35 +1,55 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.BannerFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class xmy
-  extends xmz<BannerFeedItem>
+class xmy
+  implements View.OnLongClickListener
 {
-  public xmy(@NonNull BannerFeedItem paramBannerFeedItem)
-  {
-    super(paramBannerFeedItem);
-  }
+  xmy(xmx paramxmx) {}
   
-  public List<StoryVideoItem> a()
+  public boolean onLongClick(View paramView)
   {
-    return new ArrayList(0);
-  }
-  
-  public void a() {}
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
-  {
-    qqstory_struct.BannerFeed localBannerFeed = (qqstory_struct.BannerFeed)paramStoryFeed.banner_feed.get();
-    ((BannerFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), localBannerFeed);
-    ((BannerFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    return true;
+    int i = 0;
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131371538: 
+    case 2131377525: 
+      do
+      {
+        do
+        {
+          return true;
+          paramView = (wjl)wjs.a(10);
+          if (((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue()) {
+            break;
+          }
+          bool = true;
+          paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
+          paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+        } while (paramView == null);
+        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
+      } while (paramView == null);
+      if (bool) {}
+      for (;;)
+      {
+        paramView.a(i);
+        return true;
+        bool = false;
+        break;
+        i = 8;
+      }
+    }
+    paramView = (wjl)wjs.a(10);
+    if (!((Boolean)paramView.b("player_use_tvk", Boolean.valueOf(false))).booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.b("player_use_tvk", Boolean.valueOf(bool));
+      QQToast.a(this.a.b(), "UserTVK: " + bool, 0).a();
+      return true;
+    }
   }
 }
 

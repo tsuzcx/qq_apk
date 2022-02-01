@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import ajou;
-import amtj;
+import akki;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.SparseArray;
@@ -9,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import anvx;
 import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 class PhotoPreviewActivity$ImageAdapter
   extends BaseAdapter
-  implements ajou
+  implements akki
 {
   SparseArray<URLDrawable> mActiveDrawable = new SparseArray();
   URLDrawable mRawDrawable;
@@ -69,7 +69,7 @@ class PhotoPreviewActivity$ImageAdapter
     }
     for (;;)
     {
-      ((ImageView)localObject1).setContentDescription(amtj.a(2131707251) + paramInt);
+      ((ImageView)localObject1).setContentDescription(anvx.a(2131707598) + paramInt);
       break;
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {

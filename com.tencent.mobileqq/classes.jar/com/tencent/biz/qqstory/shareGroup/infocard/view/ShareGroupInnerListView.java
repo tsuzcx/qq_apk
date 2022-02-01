@@ -8,18 +8,18 @@ import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizo
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
 import java.util.List;
-import xdz;
-import xea;
-import xlx;
-import ysv;
+import xsu;
+import xsv;
+import yas;
+import zho;
 
 public class ShareGroupInnerListView
   extends StoryHomeHorizontalListView
 {
   public String a;
-  public xea a;
-  protected xlx a;
-  protected ysv a;
+  public xsv a;
+  protected yas a;
+  protected zho a;
   
   public ShareGroupInnerListView(Context paramContext)
   {
@@ -30,16 +30,16 @@ public class ShareGroupInnerListView
   {
     super(paramContext, paramAttributeSet);
     this.c = DisplayUtil.dip2px(paramContext, 82.0F);
-    this.jdField_a_of_type_Xlx = new xlx(paramContext);
-    setAdapter(this.jdField_a_of_type_Xlx);
-    setOnItemClickListener(this.jdField_a_of_type_Xlx);
-    this.jdField_a_of_type_Ysv = new xdz(this);
-    setOnLoadMoreListener(this.jdField_a_of_type_Ysv);
+    this.jdField_a_of_type_Yas = new yas(paramContext);
+    setAdapter(this.jdField_a_of_type_Yas);
+    setOnItemClickListener(this.jdField_a_of_type_Yas);
+    this.jdField_a_of_type_Zho = new xsu(this);
+    setOnLoadMoreListener(this.jdField_a_of_type_Zho);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Xlx;
+    return this.jdField_a_of_type_Yas;
   }
   
   public void setData(VideoCollectionItem paramVideoCollectionItem)
@@ -49,7 +49,7 @@ public class ShareGroupInnerListView
     for (boolean bool = true;; bool = false)
     {
       setLoadMoreComplete(bool);
-      this.jdField_a_of_type_Xlx.a(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
+      this.jdField_a_of_type_Yas.a(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
       int i = this.b / this.c;
       if (paramVideoCollectionItem.collectionVideoUIItemList.size() < i) {
         break;
@@ -60,9 +60,9 @@ public class ShareGroupInnerListView
     setOverScrollMode(1);
   }
   
-  public void setLoadMoreDataListener(xea paramxea)
+  public void setLoadMoreDataListener(xsv paramxsv)
   {
-    this.jdField_a_of_type_Xea = paramxea;
+    this.jdField_a_of_type_Xsv = paramxsv;
   }
 }
 

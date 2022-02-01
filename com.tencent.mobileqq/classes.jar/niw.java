@@ -1,38 +1,114 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.avgame.ui.AvGameLoadingActivity;
-import com.tencent.avgame.util.AVGameNodeReportUtil;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.gamelogic.data.Player;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class niw
-  implements View.OnClickListener
+  implements njj
 {
-  public niw(AvGameLoadingActivity paramAvGameLoadingActivity) {}
+  protected nio a;
+  protected njk a;
   
-  public void onClick(View paramView)
+  public niw(njk paramnjk)
   {
-    QLog.e("AvGameManagerAvGameLoadingActivity", 2, "mExitBtn " + AvGameLoadingActivity.a(this.a) + " bExitEnable " + AvGameLoadingActivity.d(this.a) + "mExit" + AvGameLoadingActivity.b(this.a));
-    if (AvGameLoadingActivity.b(this.a) != null)
+    this.jdField_a_of_type_Njk = paramnjk;
+  }
+  
+  public int a()
+  {
+    return nfc.a().a().jdField_a_of_type_Int;
+  }
+  
+  public List<nga> a()
+  {
+    return nfc.a().a().jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  }
+  
+  public void a()
+  {
+    nfv localnfv = nfc.a().a();
+    nfc.a().a(localnfv.a(), nfc.a().a().getAccount(), 0, 3);
+  }
+  
+  public void a(nfv paramnfv)
+  {
+    this.jdField_a_of_type_Njk.a(paramnfv);
+  }
+  
+  public void a(nga paramnga, int paramInt)
+  {
+    if (paramnga != null)
     {
-      long l = njk.a(AvGameLoadingActivity.b(this.a));
-      AvGameLoadingActivity.a(this.a, l);
+      nfc.a().b(paramnga.jdField_a_of_type_Int);
+      bdla.b(null, "dc00898", "", "", "0X800B06D", "0X800B06D", paramnga.jdField_a_of_type_Int, 0, "", "" + nfc.a().a().a().players.size(), "", "");
     }
-    bcef.b(null, "dc00898", "", "", "0X800B042", "0X800B042", 0, 0, "", "", "", "");
-    if (AvGameLoadingActivity.a(this.a) == 9) {
-      bcef.b(null, "dc00898", "", "", "0X800B4A0", "0X800B4A0", 0, 0, "", "", "", "");
+  }
+  
+  public void a(nio paramnio)
+  {
+    this.jdField_a_of_type_Nio = paramnio;
+  }
+  
+  public boolean a()
+  {
+    return nfc.a().a();
+  }
+  
+  public void b()
+  {
+    nfv localnfv = nfc.a().a();
+    nfc.a().a(localnfv.a(), nfc.a().a().getAccount(), 1, 3);
+  }
+  
+  public void b(nga paramnga, int paramInt)
+  {
+    int j = 0;
+    Object localObject1 = this.jdField_a_of_type_Nio.c();
+    QLog.i("GameListPresenterImp", 1, "clickBeginGame players:" + localObject1);
+    if (((List)localObject1).size() <= 1) {
+      return;
     }
-    if (AvGameLoadingActivity.d(this.a))
-    {
-      AVGameNodeReportUtil.b(1);
-      this.a.a();
-    }
+    paramInt = 0;
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QLog.e("AvGameManagerAvGameLoadingActivity", 1, "mExitBtn click but not enabled");
+      int i = j;
+      if (paramInt < ((List)localObject1).size())
+      {
+        if ((((List)localObject1).get(paramInt) != null) && (((Player)((List)localObject1).get(paramInt)).status == 0)) {
+          i = 1;
+        }
+      }
+      else
+      {
+        if ((i != 0) || (paramnga == null)) {
+          break;
+        }
+        Object localObject2 = nfc.a().a();
+        localObject1 = ((nfv)localObject2).a(paramnga.jdField_a_of_type_Int);
+        String str = ((nfv)localObject2).jdField_a_of_type_JavaLangString;
+        localObject2 = ((nfv)localObject2).b;
+        if ((localObject1 == null) || (((ngb)localObject1).a == null) || (((ngb)localObject1).a.size() <= 0) || (str == null) || (localObject2 == null)) {
+          break label206;
+        }
+        noq.a(this.jdField_a_of_type_Njk.a(), paramnga.jdField_a_of_type_Int, ((ngb)localObject1).a, str, (String)localObject2);
+        return;
+      }
+      paramInt += 1;
     }
+    label206:
+    nfc.a().a(paramnga.jdField_a_of_type_Int, null);
+  }
+  
+  public void c()
+  {
+    nfc.a().e();
+  }
+  
+  public void d()
+  {
+    nfc.a().f();
   }
 }
 

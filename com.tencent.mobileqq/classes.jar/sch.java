@@ -1,25 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout.StressState;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment;
 import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowHelper$startShrinkAnim$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$onCreate$1$2"}, k=3, mv={1, 1, 16})
 public final class sch
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnDismissListener
 {
-  public void onAnimationCancel(@Nullable Animator paramAnimator) {}
+  public sch(SelectTopicFragment paramSelectTopicFragment, int paramInt, String paramString) {}
   
-  public void onAnimationEnd(@Nullable Animator paramAnimator)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    scd.a(this.a, false);
-    this.a.a().setStressState(VideoFeedsStressFollowLayout.StressState.Shrink);
+    SelectTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment);
   }
-  
-  public void onAnimationRepeat(@Nullable Animator paramAnimator) {}
-  
-  public void onAnimationStart(@Nullable Animator paramAnimator) {}
 }
 
 

@@ -1,46 +1,27 @@
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.DropdownView;
-import com.tencent.mobileqq.widget.DropdownView.1.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-public class bhdr
-  implements View.OnClickListener
+final class bhdr
+  implements DialogInterface.OnClickListener
 {
-  public bhdr(DropdownView paramDropdownView) {}
+  bhdr(Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Bhds.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Bhds.getWindowToken(), 0);
-    if ((this.a.jdField_a_of_type_Bhds.getAdapter() != null) && (this.a.jdField_a_of_type_Bhds.getAdapter().getCount() > 0))
+    if (paramInt == 1)
     {
-      if ((((ImageView)paramView).getDrawable() != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
-        break label167;
-      }
-      DropdownView.a(this.a).postDelayed(new DropdownView.1.1(this, paramView), 250L);
-      Context localContext = paramView.getContext();
-      if ((localContext != null) && ((localContext instanceof LoginActivity))) {
-        bcef.a(((LoginActivity)localContext).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label167:
-      this.a.jdField_a_of_type_Bhds.dismissDropDown();
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhdr
  * JD-Core Version:    0.7.0.1
  */

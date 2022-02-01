@@ -1,22 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class adob
-  extends adnm
+  implements DialogInterface.OnClickListener
 {
-  public adob(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
+  public adob(ChatHistory paramChatHistory) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    this.b.i();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adob
  * JD-Core Version:    0.7.0.1
  */

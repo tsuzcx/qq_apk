@@ -1,45 +1,34 @@
-import android.util.SparseArray;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectMutexManager.1;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 
-public class lgn
-  extends lgd
+public abstract class lgn<T1 extends MessageMicro, T2 extends MessageMicro>
 {
-  private volatile SparseArray<lgo> a;
-  
-  protected lgn(VideoAppInterface paramVideoAppInterface)
+  protected final void a(long paramLong, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  }
-  
-  protected void a() {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("EffectMutexManager", 1, "notifyMutex, fromMuteKey[" + paramInt + "], data[" + paramString + "]");
-    }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new EffectMutexManager.1(this, paramInt, paramString));
-  }
-  
-  public void a(int paramInt, lgo paramlgo)
-  {
-    if (paramlgo == null) {
+    Object localObject = lgk.a(this);
+    ((lgm)localObject).a("QAVMessageHandler", paramLong);
+    if ((((lgm)localObject).a != null) && (((lgm)localObject).b != null)) {}
+    try
+    {
+      MessageMicro localMessageMicro = (MessageMicro)((lgm)localObject).a.newInstance();
+      localObject = (MessageMicro)((lgm)localObject).b.newInstance();
+      paramToServiceMsg = paramToServiceMsg.getWupBuffer();
+      if ((paramToServiceMsg != null) && (paramToServiceMsg.length > 4)) {
+        localMessageMicro.mergeFrom(paramToServiceMsg, 4, paramToServiceMsg.length - 4);
+      }
+      ((MessageMicro)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
+      a(paramLong, paramFromServiceMsg.isSuccess(), localMessageMicro, (MessageMicro)localObject, paramObject);
       return;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.w("EffectMutexManager", 1, "registerMutexItem, key[" + paramInt + "]");
+    catch (Exception paramToServiceMsg)
+    {
+      QLog.w("QAVMessageHandler", 1, "onSendMsgRsp, Exception, seq[" + paramLong + "]", paramToServiceMsg);
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramlgo);
   }
   
-  protected boolean a(String paramString)
-  {
-    return false;
-  }
+  public abstract void a(long paramLong, boolean paramBoolean, T1 paramT1, T2 paramT2, Object paramObject);
 }
 
 

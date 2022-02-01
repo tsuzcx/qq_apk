@@ -1,8 +1,12 @@
-public abstract interface bjxg
+class bjxg
+  implements blak
 {
-  public abstract boolean a(boolean paramBoolean);
+  bjxg(bjxe parambjxe) {}
   
-  public abstract void c();
+  public void a()
+  {
+    this.a.a = null;
+  }
 }
 
 

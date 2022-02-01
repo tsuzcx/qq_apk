@@ -1,52 +1,56 @@
-import android.view.Display;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.tablequery.TableQueryViewer;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgType0x210;
+import tencent.im.s2c.msgtype0x210.submsgtype0x13b.submsgtype0x13b.MsgBody;
 
 public class bcti
-  implements View.OnTouchListener
+  implements bctu
 {
-  public bcti(TableQueryViewer paramTableQueryViewer) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
   {
-    paramView = this.a.getContext();
-    int i = paramMotionEvent.getAction();
-    int j = (int)paramMotionEvent.getRawY();
-    if (i == 0) {
-      TableQueryViewer.a(this.a, (int)paramMotionEvent.getY());
+    if (QLog.isColorLevel()) {
+      QLog.d("FilterMsgDecoder", 2, "decode0x210Sub0x13b() called ");
     }
-    label171:
-    do
+    submsgtype0x13b.MsgBody localMsgBody = new submsgtype0x13b.MsgBody();
+    try
     {
-      return false;
-      if (i == 2)
+      localMsgBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (almg)paramQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX);
+      if ((localMsgBody.op.has()) && (localMsgBody.uint64_mute_friend.has()))
       {
-        if ((TableQueryViewer.a(this.a)) || (Math.abs(paramMotionEvent.getY() - TableQueryViewer.a(this.a)) > com.tencent.mobileqq.util.DisplayUtil.dip2px(paramView, 10.0F)))
+        long l = localMsgBody.uint64_mute_friend.get();
+        if (localMsgBody.op.get() == 2)
         {
-          TableQueryViewer.a(this.a, true);
-          paramMotionEvent = (WindowManager.LayoutParams)this.a.getLayoutParams();
-          paramMotionEvent.y = (j - TableQueryViewer.a(this.a) - com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil.dip2px(paramView, 0.0F));
-          i = TableQueryViewer.a(this.a).getDefaultDisplay().getHeight();
-          if (paramMotionEvent.y >= 0) {
-            break label171;
-          }
-          paramMotionEvent.y = 0;
+          paramArrayOfByte.a(String.valueOf(l), paramQQAppInterface);
+          paramArrayOfByte.b(String.valueOf(l));
         }
-        for (;;)
+        if (localMsgBody.op.get() == 3)
         {
-          TableQueryViewer.a(this.a).updateViewLayout(TableQueryViewer.a(this.a), paramMotionEvent);
-          return true;
-          if (paramMotionEvent.y > i - this.a.getHeight()) {
-            paramMotionEvent.y = (i - this.a.getHeight());
-          }
+          paramArrayOfByte.c(String.valueOf(l));
+          paramArrayOfByte.a(String.valueOf(l));
         }
       }
-    } while ((i != 1) && (i != 3));
-    return false;
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("FilterMsgDecoder", 2, "parse error.", paramQQAppInterface);
+    }
+  }
+  
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
+  {
+    a(paramMessageHandler.app, paramMsgType0x210.msg_content.get().toByteArray());
   }
 }
 

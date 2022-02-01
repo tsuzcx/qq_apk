@@ -1,49 +1,98 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class mrl
 {
-  public static String a()
+  public int a;
+  ArrayList<mrj> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
+  
+  public mrl()
   {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public int a()
+  {
+    int i = 0;
+    int k;
+    for (int j = 0; i < this.jdField_a_of_type_JavaUtilArrayList.size(); j = k)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("GAudioSoundUtil", 2, "[sound_early] getFilesDir is null");
+      k = j;
+      if (((mrj)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
+        k = j + 1;
       }
-      return "";
+      i += 1;
     }
-    return localFile.getParent() + "/qav/sound_early/";
+    return j;
   }
   
-  public static void a(Context paramContext)
+  public ArrayList<mrj> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GAudioSoundUtil", 2, "[sound_early] trigger early download");
-    }
-    Object localObject2 = a();
-    Object localObject1 = new File((String)localObject2, "qav_gaudio_muted.mp3");
-    File localFile = new File((String)localObject2, "qav_gaudio_cancel_muted.mp3");
-    localObject2 = new File((String)localObject2, "qav_peer_phone_calling.mp3");
-    if ((!((File)localObject1).exists()) || (!localFile.exists()) || (!((File)localObject2).exists()))
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public mrj a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      localObject1 = new Intent("tencent.video.v2q.downloadGAudioSound");
-      ((Intent)localObject1).setPackage(paramContext.getPackageName());
-      paramContext.sendBroadcast((Intent)localObject1);
+      mrj localmrj = (mrj)localIterator.next();
+      if (localmrj.a() == paramInt) {
+        return localmrj;
+      }
     }
+    return null;
   }
   
-  public static boolean a(String paramString)
+  public void a(int paramInt)
   {
-    return new File(a(), paramString).exists();
+    b(a(paramInt));
+  }
+  
+  public void a(mrj parammrj)
+  {
+    if (parammrj == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(parammrj);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public ArrayList<mrj> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((mrj)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
+        localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
+      }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public void b(mrj parammrj)
+  {
+    if (parammrj == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.remove(parammrj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mrl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,4 @@
-public abstract interface bmzk
-{
-  public abstract void a(boolean paramBoolean);
-}
+public abstract interface bmzk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

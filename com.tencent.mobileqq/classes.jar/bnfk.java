@@ -1,25 +1,25 @@
-import android.graphics.Bitmap;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
+import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
 public class bnfk
-  extends bnfu
+  implements bhir<Float>
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
+  public bnfk(AEBeautyProviderView paramAEBeautyProviderView, AEProviderContainerView paramAEProviderContainerView, View paramView) {}
   
-  public bnfk(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
+  @TargetApi(11)
+  public void a(bhil<Float> parambhil, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    super(paramInt, paramBitmap);
-    this.a = paramLong1;
-    this.b = paramLong2;
-    this.jdField_c_of_type_Long = paramLong3;
-    this.d = paramLong4;
-  }
-  
-  public String toString()
-  {
-    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
+    paramFloat = paramFloat1.floatValue();
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView != null) {
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.setBackGroundAlpha(paramFloat);
+    }
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
+    }
+    AEBeautyProviderView.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView, paramFloat);
   }
 }
 

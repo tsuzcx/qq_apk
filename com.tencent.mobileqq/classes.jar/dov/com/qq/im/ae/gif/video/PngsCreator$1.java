@@ -3,37 +3,37 @@ package dov.com.qq.im.ae.gif.video;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
 import android.view.Surface;
-import bafv;
-import blwy;
-import blzw;
-import blzy;
-import bmab;
+import bbmk;
+import bnmi;
+import bnpg;
+import bnpi;
+import bnpl;
 import com.tencent.filter.BaseFilter;
 
 public class PngsCreator$1
   implements Runnable
 {
-  public PngsCreator$1(blzw paramblzw, String paramString) {}
+  public PngsCreator$1(bnpg parambnpg, String paramString) {}
   
   public void run()
   {
-    Object localObject = new bafv(null, 1);
-    ((bafv)localObject).b(((bafv)localObject).a(320, 320));
+    Object localObject = new bbmk(null, 1);
+    ((bbmk)localObject).b(((bbmk)localObject).a(320, 320));
     localObject = new int[1];
     GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
-    blzw.a(this.this$0, localObject[0]);
-    GLES20.glBindTexture(36197, blzw.a(this.this$0));
+    bnpg.a(this.this$0, localObject[0]);
+    GLES20.glBindTexture(36197, bnpg.a(this.this$0));
     GLES20.glTexParameterf(36197, 10240, 9729.0F);
     GLES20.glTexParameterf(36197, 10241, 9729.0F);
     GLES20.glTexParameterf(36197, 10242, 33071.0F);
     GLES20.glTexParameterf(36197, 10243, 33071.0F);
-    blzw.a(this.this$0).apply();
-    blzw.a(this.this$0).a(320, 320);
-    blzw.a(this.this$0).a();
-    blzw.a(this.this$0, new SurfaceTexture(blzw.a(this.this$0)));
-    blzw.a(this.this$0).setOnFrameAvailableListener(new blzy(this.this$0));
-    blzw.a(this.this$0, new bmab());
-    blzw.a(this.this$0).a(this.a, new Surface(blzw.a(this.this$0)));
+    bnpg.a(this.this$0).apply();
+    bnpg.a(this.this$0).a(320, 320);
+    bnpg.a(this.this$0).a();
+    bnpg.a(this.this$0, new SurfaceTexture(bnpg.a(this.this$0)));
+    bnpg.a(this.this$0).setOnFrameAvailableListener(new bnpi(this.this$0));
+    bnpg.a(this.this$0, new bnpl());
+    bnpg.a(this.this$0).a(this.a, new Surface(bnpg.a(this.this$0)));
   }
 }
 

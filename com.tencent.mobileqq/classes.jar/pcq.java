@@ -1,46 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
 
-public class pcq
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+final class pcq
+  implements qha
 {
-  public static String a = "HomePageConfigHandler";
+  pcq(Activity paramActivity, Intent paramIntent, int paramInt) {}
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = pbt.a(paramString);
-    Object localObject = paramString.keySet();
-    try
-    {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = (String)paramString.get(str1);
-        if (TextUtils.equals(str1, "rij_person_info_page_use_viola")) {
-          bkwm.l(Integer.parseInt(str2));
-        }
-      }
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    super.onWipeConfig(paramInt);
-    bkwm.l(0);
+    pcp.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_Int);
   }
 }
 

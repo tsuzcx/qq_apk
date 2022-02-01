@@ -5,9 +5,9 @@ import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.Processor;
 import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.VideoConvertConfig;
 import java.io.File;
-import vuq;
-import vux;
-import xvv;
+import wjl;
+import wjs;
+import ykq;
 
 public class VideoCompositeHelper$HWCompressProcessor
   implements VideoConverter.Processor
@@ -72,13 +72,13 @@ public class VideoCompositeHelper$HWCompressProcessor
         localVideoConvertConfig.profile = 8;
         localVideoConvertConfig.level = 512;
       }
-      if (vuq.e())
+      if (wjl.e())
       {
-        xvv.d(VideoCompositeHelper.TAG, "story debug mode is enable");
-        localObject = (vuq)vux.a(10);
-        paramInt1 = ((Integer)((vuq)localObject).b("int_story_debug_bitrate", Integer.valueOf(2000))).intValue();
-        paramInt2 = ((Integer)((vuq)localObject).b("int_story_debug_bitrate_mode", Integer.valueOf(localVideoConvertConfig.bitrateMode))).intValue();
-        boolean bool = ((Boolean)((vuq)localObject).b("boolean_story_debug_use_high_profile", Boolean.valueOf(false))).booleanValue();
+        ykq.d(VideoCompositeHelper.TAG, "story debug mode is enable");
+        localObject = (wjl)wjs.a(10);
+        paramInt1 = ((Integer)((wjl)localObject).b("int_story_debug_bitrate", Integer.valueOf(2000))).intValue();
+        paramInt2 = ((Integer)((wjl)localObject).b("int_story_debug_bitrate_mode", Integer.valueOf(localVideoConvertConfig.bitrateMode))).intValue();
+        boolean bool = ((Boolean)((wjl)localObject).b("boolean_story_debug_use_high_profile", Boolean.valueOf(false))).booleanValue();
         localVideoConvertConfig.bitrateMode = paramInt2;
         localVideoConvertConfig.videoBitRate = (paramInt1 * 1000);
         if (!bool) {
@@ -90,7 +90,7 @@ public class VideoCompositeHelper$HWCompressProcessor
     }
     for (localVideoConvertConfig.level = 512;; localVideoConvertConfig.level = 512)
     {
-      xvv.a(VideoCompositeHelper.TAG, "HWCompressProcessor, step: getEncodeConfig() config.setRotation = " + localVideoConvertConfig.setRotation + ", scaleRate=" + localVideoConvertConfig.scaleRate + ", videoBitRate=" + localVideoConvertConfig.videoBitRate + ", videoFrameRate=" + localVideoConvertConfig.videoFrameRate + ", beginTime=" + localVideoConvertConfig.beginTime + ", endTime=" + localVideoConvertConfig.endTime, ", isMute=" + this.mIsMute, ", accurateSeek=" + this.mAccurateSeek + ", cropX=" + this.cropX + ", cropY=" + this.cropY + ", cropWidth=" + this.cropWidth + ", cropHeight=" + this.cropHeight + ",bitrateMode=" + localVideoConvertConfig.bitrateMode + ",setProfileLevel=" + localVideoConvertConfig.setProfileLevel + ",profile=" + localVideoConvertConfig.profile + ", level=" + localVideoConvertConfig.level);
+      ykq.a(VideoCompositeHelper.TAG, "HWCompressProcessor, step: getEncodeConfig() config.setRotation = " + localVideoConvertConfig.setRotation + ", scaleRate=" + localVideoConvertConfig.scaleRate + ", videoBitRate=" + localVideoConvertConfig.videoBitRate + ", videoFrameRate=" + localVideoConvertConfig.videoFrameRate + ", beginTime=" + localVideoConvertConfig.beginTime + ", endTime=" + localVideoConvertConfig.endTime, ", isMute=" + this.mIsMute, ", accurateSeek=" + this.mAccurateSeek + ", cropX=" + this.cropX + ", cropY=" + this.cropY + ", cropWidth=" + this.cropWidth + ", cropHeight=" + this.cropHeight + ",bitrateMode=" + localVideoConvertConfig.bitrateMode + ",setProfileLevel=" + localVideoConvertConfig.setProfileLevel + ",profile=" + localVideoConvertConfig.profile + ", level=" + localVideoConvertConfig.level);
       return localVideoConvertConfig;
       paramInt2 = paramInt1;
       break;
@@ -102,24 +102,24 @@ public class VideoCompositeHelper$HWCompressProcessor
   
   public void onCanceled()
   {
-    xvv.c(VideoCompositeHelper.TAG, "HWCompressProcessor, step: HWCompressProcessor onCanceled");
+    ykq.c(VideoCompositeHelper.TAG, "HWCompressProcessor, step: HWCompressProcessor onCanceled");
     this.isCanceled = true;
   }
   
   public void onFailed(Throwable paramThrowable)
   {
-    xvv.e(VideoCompositeHelper.TAG, "HWCompressProcessor, step: HWCompressProcessor onFailed");
+    ykq.e(VideoCompositeHelper.TAG, "HWCompressProcessor, step: HWCompressProcessor onFailed");
     this.e = paramThrowable;
   }
   
   public void onProgress(int paramInt)
   {
-    xvv.b(VideoCompositeHelper.TAG, "HWCompressProcessor, step: HWCompressProcessor onProgress:" + paramInt);
+    ykq.b(VideoCompositeHelper.TAG, "HWCompressProcessor, step: HWCompressProcessor onProgress:" + paramInt);
   }
   
   public void onSuccessed()
   {
-    xvv.e(VideoCompositeHelper.TAG, "HWCompressProcessor, step: HWCompressProcessor onSuccessed");
+    ykq.e(VideoCompositeHelper.TAG, "HWCompressProcessor, step: HWCompressProcessor onSuccessed");
   }
   
   public void setCropRegion(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -144,7 +144,7 @@ public class VideoCompositeHelper$HWCompressProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.HWCompressProcessor
  * JD-Core Version:    0.7.0.1
  */

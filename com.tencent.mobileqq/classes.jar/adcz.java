@@ -1,10 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.DevlockPushActivity;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONObject;
 
 public class adcz
-  extends Handler
+  extends addb
 {
-  public adcz(DevlockPushActivity paramDevlockPushActivity) {}
+  public adcz(TestAppFragment paramTestAppFragment) {}
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    super.a(paramJSONObject);
+    paramJSONObject.optString("openid", "");
+    this.a.a.a("getAppFriends", null, new adda(this));
+  }
 }
 
 

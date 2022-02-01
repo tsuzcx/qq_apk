@@ -1,8 +1,8 @@
 package cooperation.qqreader;
 
-import bkth;
+import bmeq;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nny;
+import nuz;
 
 public final class QReaderHelper$1
   implements Runnable
@@ -11,7 +11,7 @@ public final class QReaderHelper$1
   
   public void run()
   {
-    nny.b("2036", this.a, true, new bkth(this));
+    nuz.b("2036", this.a, true, new bmeq(this));
   }
 }
 

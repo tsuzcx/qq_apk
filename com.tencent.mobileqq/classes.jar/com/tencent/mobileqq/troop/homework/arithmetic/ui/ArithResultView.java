@@ -12,19 +12,19 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import behx;
-import behy;
-import beig;
+import bfpa;
+import bfpb;
+import bfpj;
 import com.tencent.biz.qqstory.utils.UIUtils;
-import xvv;
+import ykq;
 
 public class ArithResultView
   extends BaseScaleAndMoveBitmapView
 {
   public int a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private behx jdField_a_of_type_Behx;
-  private beig jdField_a_of_type_Beig;
+  private bfpa jdField_a_of_type_Bfpa;
+  private bfpj jdField_a_of_type_Bfpj;
   private int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   
@@ -50,12 +50,12 @@ public class ArithResultView
     this.jdField_a_of_type_Int = (this.jdField_b_of_type_Int * 5);
     try
     {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130846095);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130846186);
       return;
     }
     catch (OutOfMemoryError paramContext)
     {
-      xvv.e("QQ.Troop.homework.ArithResultView", "create the mark bitmap out of memory:" + paramContext.toString());
+      ykq.e("QQ.Troop.homework.ArithResultView", "create the mark bitmap out of memory:" + paramContext.toString());
     }
   }
   
@@ -70,10 +70,10 @@ public class ArithResultView
     }
   }
   
-  private void a(behy parambehy)
+  private void a(bfpb parambfpb)
   {
-    if (this.jdField_a_of_type_Beig != null) {
-      this.jdField_a_of_type_Beig.a(parambehy);
+    if (this.jdField_a_of_type_Bfpj != null) {
+      this.jdField_a_of_type_Bfpj.a(parambfpb);
     }
   }
   
@@ -82,9 +82,9 @@ public class ArithResultView
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
     int i = 0;
-    if (i < this.jdField_a_of_type_Behx.a())
+    if (i < this.jdField_a_of_type_Bfpa.a())
     {
-      paramMotionEvent = this.jdField_a_of_type_Behx.a(i);
+      paramMotionEvent = this.jdField_a_of_type_Bfpa.a(i);
       if (paramMotionEvent.a) {}
       float f3;
       float f4;
@@ -112,22 +112,22 @@ public class ArithResultView
     paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
     paramCanvas.save();
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Behx != null)
+    if (this.jdField_a_of_type_Bfpa != null)
     {
       int i = 0;
-      if (i < this.jdField_a_of_type_Behx.a())
+      if (i < this.jdField_a_of_type_Bfpa.a())
       {
-        behy localbehy = this.jdField_a_of_type_Behx.a(i);
-        if (localbehy.a) {}
+        bfpb localbfpb = this.jdField_a_of_type_Bfpa.a(i);
+        if (localbfpb.a) {}
         for (;;)
         {
           i += 1;
           break;
-          int j = (int)(localbehy.jdField_b_of_type_Int + this.jdField_a_of_type_Float - this.jdField_b_of_type_Int);
-          int k = (int)(localbehy.c + this.jdField_b_of_type_Float - this.jdField_b_of_type_Int);
-          int m = localbehy.d;
+          int j = (int)(localbfpb.jdField_b_of_type_Int + this.jdField_a_of_type_Float - this.jdField_b_of_type_Int);
+          int k = (int)(localbfpb.c + this.jdField_b_of_type_Float - this.jdField_b_of_type_Int);
+          int m = localbfpb.d;
           int n = this.jdField_b_of_type_Int;
-          int i1 = localbehy.e;
+          int i1 = localbfpb.e;
           a(j, k, m + n * 2, this.jdField_b_of_type_Int * 2 + i1, paramCanvas);
         }
       }
@@ -135,15 +135,15 @@ public class ArithResultView
     paramCanvas.restore();
   }
   
-  public void setData(behx parambehx)
+  public void setData(bfpa parambfpa)
   {
-    this.jdField_a_of_type_Behx = parambehx;
+    this.jdField_a_of_type_Bfpa = parambfpa;
     invalidate();
   }
   
-  public void setOnItemClickListener(beig parambeig)
+  public void setOnItemClickListener(bfpj parambfpj)
   {
-    this.jdField_a_of_type_Beig = parambeig;
+    this.jdField_a_of_type_Bfpj = parambfpj;
   }
 }
 

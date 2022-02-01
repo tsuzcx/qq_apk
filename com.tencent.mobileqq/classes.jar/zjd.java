@@ -1,19 +1,16 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-class zjd
-  implements ViewTreeObserver.OnPreDrawListener
+public class zjd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  zjd(zjc paramzjc) {}
+  public zjd(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public boolean onPreDraw()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    zjc.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-    zjc.a(this.a, zjc.a(this.a).getLeft(), zjc.a(this.a).getTop(), zjc.a(this.a).getWidth(), zjc.a(this.a).getHeight());
-    QLog.d("TransitionAnimHelper", 4, new Object[] { "initImageEnterAnimation left:" + zjc.a(this.a).getLeft(), ",top:", Integer.valueOf(zjc.a(this.a).getTop()), ",width:", Integer.valueOf(zjc.a(this.a).getWidth()), ",height:", Integer.valueOf(zjc.a(this.a).getHeight()) });
-    return true;
+    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 

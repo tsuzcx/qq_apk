@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.video;
 
-import amaa;
-import amai;
+import anaq;
+import anay;
 import android.os.Handler;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -9,25 +9,25 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CmGameTxVideoPlayer$1
   implements Runnable
 {
-  public CmGameTxVideoPlayer$1(amaa paramamaa) {}
+  public CmGameTxVideoPlayer$1(anaq paramanaq) {}
   
   public void run()
   {
-    if (amaa.a(this.this$0) < 0L) {}
+    if (anaq.a(this.this$0) < 0L) {}
     do
     {
       return;
-      Iterator localIterator = amaa.a(this.this$0).iterator();
+      Iterator localIterator = anaq.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        amai localamai = (amai)localIterator.next();
-        if (localamai != null) {
-          localamai.a(amaa.a(this.this$0), this.this$0.a());
+        anay localanay = (anay)localIterator.next();
+        if (localanay != null) {
+          localanay.a(anaq.a(this.this$0), this.this$0.a());
         }
       }
-      amaa.a(this.this$0, this.this$0.a() - this.this$0.b());
-    } while (amaa.a(this.this$0) == null);
-    amaa.a(this.this$0).postDelayed(this, amaa.b(this.this$0));
+      anaq.a(this.this$0, this.this$0.a() - this.this$0.b());
+    } while (anaq.a(this.this$0) == null);
+    anaq.a(this.this$0).postDelayed(this, anaq.b(this.this$0));
   }
 }
 

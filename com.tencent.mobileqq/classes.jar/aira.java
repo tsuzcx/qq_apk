@@ -1,6 +1,15 @@
-public abstract interface aira
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+
+public class aira
+  implements ajwy
 {
-  public abstract void a();
+  public aira(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    this.a.a.a(paramMotionEvent);
+  }
 }
 
 

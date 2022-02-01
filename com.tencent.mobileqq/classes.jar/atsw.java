@@ -1,74 +1,82 @@
-import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 
 public class atsw
-  extends unp
 {
-  public atsw(QQSettingMsgClearFragment paramQQSettingMsgClearFragment) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList;
+  private final boolean jdField_a_of_type_Boolean;
+  private final byte[] jdField_a_of_type_ArrayOfByte;
+  private final List<ExcitingTransferHostInfo> b;
   
-  public void installSucceed(String paramString1, String paramString2)
+  public atsw(List<ExcitingTransferHostInfo> paramList1, List<ExcitingTransferHostInfo> paramList2, boolean paramBoolean, String paramString, byte[] paramArrayOfByte)
   {
-    super.installSucceed(paramString1, paramString2);
-    QQSettingMsgClearFragment.a(this.a, paramString1, paramString2);
+    this.jdField_a_of_type_JavaUtilList = paramList1;
+    this.b = paramList2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("QQSettingMsgClearFragment", 2, "qq onDownloadCancel info = " + paramDownloadInfo);
-    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  public List<ExcitingTransferHostInfo> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQSettingMsgClearFragment", 2, "qq onDownloadError errorCode = " + paramInt1 + "errorMsg = " + paramString + ", state = " + paramInt2 + ", info = " + paramDownloadInfo);
-    }
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  public boolean a()
   {
-    QQSettingMsgClearFragment.a(paramDownloadInfo, "YYB");
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    super.onDownloadPause(paramDownloadInfo);
-    if (QLog.isColorLevel()) {
-      QLog.e("QQSettingMsgClearFragment", 2, "qq onDownloadPause info = " + paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    super.onDownloadUpdate(paramList);
-    if ((QLog.isColorLevel()) && (paramList != null) && (paramList.size() > 0))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangString == null))
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        QLog.w("QQSettingMsgClearFragment", 2, "qq onDownloadUpdate progress = " + localDownloadInfo.f + ", url = " + localDownloadInfo.d);
+      if (QLog.isColorLevel()) {
+        QLog.e("ExcitingTransfer.SvrInfo<FileAssistant>", 2, "support https but mstrSSLName is null");
       }
+      return false;
     }
+    return true;
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public byte[] a()
   {
-    super.onDownloadWait(paramDownloadInfo);
-    if (QLog.isColorLevel()) {
-      QLog.e("QQSettingMsgClearFragment", 2, "qq onDownloadWait info = " + paramDownloadInfo);
-    }
+    return this.jdField_a_of_type_ArrayOfByte;
   }
   
-  public void packageReplaced(String paramString1, String paramString2)
+  public List<ExcitingTransferHostInfo> b()
   {
-    super.packageReplaced(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.e("QQSettingMsgClearFragment", 2, "qq packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
+    return this.b;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    ExcitingTransferHostInfo localExcitingTransferHostInfo;
+    for (Object localObject = "IPV4:"; localIterator.hasNext(); localObject = (String)localObject + "[" + localExcitingTransferHostInfo.mstrIp + ":" + localExcitingTransferHostInfo.mport + "] ") {
+      localExcitingTransferHostInfo = (ExcitingTransferHostInfo)localIterator.next();
+    }
+    localObject = (String)localObject + " -- IPV6:";
+    localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      localExcitingTransferHostInfo = (ExcitingTransferHostInfo)localIterator.next();
+      localObject = (String)localObject + "[" + localExcitingTransferHostInfo.mstrIp + ":" + localExcitingTransferHostInfo.mport + "] ";
+    }
+    localObject = new StringBuilder().append((String)localObject).append(" strSSLCName:").append(this.jdField_a_of_type_JavaLangString).append(" bSupportHttps:").append(this.jdField_a_of_type_Boolean).append(" busniEx len:");
+    if (this.jdField_a_of_type_ArrayOfByte != null) {}
+    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
+      return i;
     }
   }
 }

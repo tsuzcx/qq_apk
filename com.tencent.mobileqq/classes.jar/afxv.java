@@ -1,66 +1,22 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.transfile.BaseTransProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.widget.BubbleImageView;
 
-public class afxv
-  extends aezf
+class afxv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public afxu a;
-  public ImageView a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public View c;
-  final int e = 0;
-  final int f = 1;
-  final int g = 2;
-  final int h = 3;
-  final int i = 4;
-  final int j = 5;
+  afxv(afxu paramafxu) {}
   
-  public afxv(afxq paramafxq) {}
-  
-  int a(MessageForPic paramMessageForPic)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!paramMessageForPic.isSendFromLocal())
-    {
-      if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)) {
-        return 1;
-      }
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (afxu.a(this.a) != null) {
+      afxu.a(this.a).setAlpha((float)d);
     }
-    else
-    {
-      if (paramMessageForPic.size > 0L) {
-        return 2;
-      }
-      paramMessageForPic = this.jdField_a_of_type_Afxq.a.getTransFileController().findProcessor(paramMessageForPic.frienduin, paramMessageForPic.uniseq);
-      if ((paramMessageForPic instanceof BaseTransProcessor))
-      {
-        paramMessageForPic = (BaseTransProcessor)paramMessageForPic;
-        long l = paramMessageForPic.getFileStatus();
-        if ((l == 1005L) || (l == 1006L) || (l == 1004L) || (paramMessageForPic.getLastFileStatus() == 1003L)) {
-          return 4;
-        }
-        return 3;
-      }
-      return 5;
+    if (afxu.a(this.a) != null) {
+      afxu.a(this.a).setAlpha((float)d * 2.0F);
     }
-    return 0;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Afxu != null) {
-      return this.jdField_a_of_type_Afxu.b;
-    }
-    return false;
   }
 }
 

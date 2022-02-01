@@ -10,8 +10,8 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.OrientationEventListener;
-import apag;
-import apah;
+import aqdk;
+import aqdl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 import javax.microedition.khronos.egl.EGLConfig;
@@ -19,7 +19,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class ARGLSurfaceView
   extends GLSurfaceView
-  implements GLSurfaceView.Renderer, apah
+  implements GLSurfaceView.Renderer, aqdl
 {
   public static final int ACCELER_TYPE = 1;
   public static long FPS_LIMIT = 33L;
@@ -36,8 +36,8 @@ public class ARGLSurfaceView
   private volatile boolean mIsContextDestroyed;
   volatile boolean mIsDestroyed = false;
   private boolean mIsSupportPreserveEGLContextOnPause = true;
-  private apah mSensorListener;
-  public apag mSensorManager;
+  private aqdl mSensorListener;
+  public aqdk mSensorManager;
   private ARGLSurfaceView.SurfaceStateListener mSurfaceStateListener;
   private OrientationEventListener orientationListener;
   
@@ -98,12 +98,12 @@ public class ARGLSurfaceView
     this.orientationListener = new ARGLSurfaceView.3(this, paramActivity, paramActivity);
   }
   
-  public void initSensor(apah paramapah, int paramInt)
+  public void initSensor(aqdl paramaqdl, int paramInt)
   {
     if ((this.mSensorManager == null) && (this.mCurActivity != null))
     {
-      this.mSensorManager = new apag(this.mCurActivity, paramInt);
-      this.mSensorListener = paramapah;
+      this.mSensorManager = new aqdk(this.mCurActivity, paramInt);
+      this.mSensorListener = paramaqdl;
     }
   }
   

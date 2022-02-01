@@ -1,17 +1,15 @@
-import android.support.annotation.NonNull;
+import android.view.MotionEvent;
 
 class bmvx
-  implements bmvq
+  implements bnsd
 {
-  bmvx(bmvw parambmvw) {}
+  bmvx(bmvv parambmvv) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void a(MotionEvent paramMotionEvent)
   {
-    if (paramInt == 0) {
-      return bfby.b(paramString);
+    if ((bmvv.a(this.a) instanceof bmxa)) {
+      ((bmxa)bmvv.a(this.a)).a(paramMotionEvent);
     }
-    return "";
   }
 }
 

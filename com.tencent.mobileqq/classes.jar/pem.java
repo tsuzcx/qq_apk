@@ -1,16 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import java.util.List;
 
-public class pem
+class pem
+  extends pfe
 {
-  public static QQAppInterface a()
+  pem(pdv parampdv, boolean paramBoolean, List paramList)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
+    super(parampdv, null);
+  }
+  
+  void a(pfh parampfh)
+  {
+    parampfh.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, pdv.b(this.jdField_a_of_type_Pdv), 3, 3);
   }
 }
 

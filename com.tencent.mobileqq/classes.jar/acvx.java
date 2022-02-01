@@ -1,103 +1,46 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityFacade.18;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.List;
+import msf.msgsvc.msg_svc.AddressListTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
 public class acvx
-  implements bjoe
+  implements acos
 {
-  public acvx(ChatActivityFacade.18 param18) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public int a()
   {
-    switch (paramInt)
+    return 1006;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.AddressListTmp localAddressListTmp = new msg_svc.AddressListTmp();
+    localAddressListTmp.from_phone.set(paramMessageRecord.senderuin);
+    localAddressListTmp.to_phone.set(paramMessageRecord.frienduin);
+    paramMessageRecord = paramQQAppInterface.getMsgCache().f(paramMessageRecord.frienduin);
+    if (paramMessageRecord != null)
     {
-    default: 
-      if ((acvv.b != null) && (acvv.b.isShowing())) {
-        acvv.b.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.d("ContactRoutingType", 2, "sameState------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
       }
-      return;
+      localAddressListTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
-    if ((acvv.b != null) && (acvv.b.isShowing())) {
-      acvv.b.dismiss();
-    }
-    paramInt = 0;
-    Object localObject;
-    for (;;)
-    {
-      if (paramInt < acvv.a.size())
-      {
-        paramView = (ChatMessage)acvv.a.get(paramInt);
-        if (paramView.msgtype == -2005)
-        {
-          localObject = aszt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)paramView);
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().b(((FileManagerEntity)localObject).nSessionId);
-        }
-        localObject = paramView.getExtInfoFromExtStr("tim_aio_gary_uniseq");
-        if (QLog.isDebugVersion()) {
-          QLog.i("AIOMessageSpreadManager", 1, "del garyTips id[" + (String)localObject + "],targetId[" + paramView.msgUid + "], hashCode:" + paramView.hashCode());
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-        try
-        {
-          long l = Long.parseLong((String)localObject);
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(paramView.frienduin, paramView.istroop, l, true);
-          paramInt += 1;
-        }
-        catch (Exception paramView)
-        {
-          for (;;)
-          {
-            paramView.printStackTrace();
-            QLog.e("ChatActivityFacade", 1, paramView.toString());
-          }
-        }
-      }
-    }
-    if (BaseChatItemLayout.a)
-    {
-      paramView = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
-      paramView.setLeftCheckBoxVisible(false, null, true);
-      if (paramView.sessionInfo.curType == 1008)
-      {
-        localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-        bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", paramView.sessionInfo.curFriendUin, "0X80064FA", "0X80064FA", 0, 0, (String)localObject, "", "", "");
-      }
-    }
-    if ((((this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)) || ((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))) && (((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment() != null) && (((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a() != null))
-    {
-      if (acvv.a.size() == 1) {
-        ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a().startDelAnimAndDelMsg((ChatMessage)acvv.a.get(0));
-      }
-      for (;;)
-      {
-        amat.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "del_multi_msg");
-        return;
-        ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a().startMulDelAnimAndDelMsg(acvv.a);
-      }
-    }
-    paramInt = 0;
-    while (paramInt < acvv.a.size())
-    {
-      acvv.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)acvv.a.get(paramInt));
-      paramInt += 1;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMultiMsgByMessageRecord(acvv.a, false);
+    paramRoutingHead.address_list.set(localAddressListTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 8005;
   }
 }
 

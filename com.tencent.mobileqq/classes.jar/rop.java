@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
+import com.tencent.mobileqq.persistence.notColumn;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class rop
-  implements Parcelable.Creator<ResultRecord>
+public class rop
 {
-  public ResultRecord a(Parcel paramParcel)
-  {
-    return new ResultRecord(paramParcel);
-  }
+  @notColumn
+  public AtomicBoolean a;
+  @notColumn
+  public AtomicInteger a;
+  @notColumn
+  public AtomicBoolean b;
+  @notColumn
+  public AtomicInteger b;
+  @notColumn
+  public AtomicBoolean c = new AtomicBoolean(false);
+  @notColumn
+  public AtomicBoolean d = new AtomicBoolean(false);
   
-  public ResultRecord[] a(int paramInt)
+  public rop()
   {
-    return new ResultRecord[paramInt];
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 

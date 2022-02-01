@@ -1,48 +1,32 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.vas.VasProfileTemplateController;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
 
-class badd
+public class badd
+  extends VasQuickUpdateManager.CallBacker
 {
-  private final Drawable a;
-  private final Drawable b;
+  public badd(VasProfileTemplateController paramVasProfileTemplateController, azri paramazri, Card paramCard) {}
   
-  badd(Context paramContext)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837561);
-    this.b = paramContext.getDrawable(2130837565);
-  }
-  
-  private Drawable a(Drawable paramDrawable)
-  {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
-  }
-  
-  private Drawable b(Drawable paramDrawable)
-  {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
-  
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileTemplateCheckController", 2, String.format("onCardUpdate WZRY template download,  errorCode=%s httpCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      }
+      if (VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).b != null)
+      {
+        if (this.jdField_a_of_type_Azri.a(VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController), this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId)) {
+          VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).jdField_a_of_type_Azri = this.jdField_a_of_type_Azri;
+        }
+        VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).b.obtainMessage(5, 0, 12, this.jdField_a_of_type_ComTencentMobileqqDataCard).sendToTarget();
+      }
+      paramVasQuickUpdateManager.removeCallBacker(this);
+    }
   }
 }
 

@@ -1,26 +1,64 @@
-import com.tencent.biz.qcircleshadow.remoteCheck.QCircleGetRainBowRequest;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqcircle.report.QCirclePluginQualityReporter;
-import cooperation.qqcircle.report.QCirclePluginQualityReporter.ReportData;
-import qqcircle.QQCircleConfig.GetRainbowTableConfigRsp;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
+import java.util.HashMap;
+import java.util.Map;
 
-class vhp
-  implements VSDispatchObserver.onVSRspCallBack<QQCircleConfig.GetRainbowTableConfigRsp>
+public class vhp
+  extends vgu<TVK_UserInfo, TVK_PlayerVideoInfo>
 {
-  vhp(vho paramvho, QCircleGetRainBowRequest paramQCircleGetRainBowRequest) {}
-  
-  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleConfig.GetRainbowTableConfigRsp paramGetRainbowTableConfigRsp)
+  public int a(int paramInt)
   {
-    QLog.i("QCirclePluginManager", 1, "traceId:" + this.jdField_a_of_type_ComTencentBizQcircleshadowRemoteCheckQCircleGetRainBowRequest.getTraceId() + " retcode:" + paramLong);
-    if (paramBoolean)
-    {
-      vho.a(this.jdField_a_of_type_Vho, paramGetRainbowTableConfigRsp);
-      return;
+    if (paramInt == 101) {
+      return 2;
     }
-    QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_cmd_rsp").setRetCode(paramLong));
-    QLog.e("QCirclePluginManager", 1, " retcode= " + paramLong + " errMsg=" + paramString);
+    return 103;
+  }
+  
+  public TVK_PlayerVideoInfo a()
+  {
+    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, "");
+    localTVK_PlayerVideoInfo.setPreLoad(this.jdField_b_of_type_Boolean);
+    if (this.jdField_a_of_type_Long > 0L) {
+      localTVK_PlayerVideoInfo.setConfigMap("filesize", String.valueOf(this.jdField_a_of_type_Long));
+    }
+    if (this.jdField_b_of_type_Int > 0) {
+      localTVK_PlayerVideoInfo.setConfigMap("duration", String.valueOf(this.jdField_b_of_type_Int / 1000));
+    }
+    if (this.c) {
+      localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
+    }
+    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", vgd.jdField_a_of_type_JavaLangString);
+    if (!this.jdField_a_of_type_Boolean) {
+      localTVK_PlayerVideoInfo.setConfigMap("software_play", "true");
+    }
+    if ((this.d) && (this.jdField_b_of_type_Boolean)) {
+      localTVK_PlayerVideoInfo.setConfigMap("enable_cover_frame", "true");
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("shouq_bus_type", "bus_type_weishi_feeds");
+    localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
+    return localTVK_PlayerVideoInfo;
+  }
+  
+  public TVK_UserInfo a()
+  {
+    return new TVK_UserInfo("", "");
+  }
+  
+  public TVK_PlayerVideoInfo b()
+  {
+    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, "");
+    localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "2");
+    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", vgd.jdField_a_of_type_JavaLangString);
+    if (this.jdField_b_of_type_Int > 0) {
+      localTVK_PlayerVideoInfo.setConfigMap("duration", String.valueOf(this.jdField_b_of_type_Int));
+    }
+    return localTVK_PlayerVideoInfo;
+  }
+  
+  public TVK_UserInfo b()
+  {
+    return new TVK_UserInfo("", "");
   }
 }
 

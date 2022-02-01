@@ -1,37 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 class pyw
   implements View.OnClickListener
 {
-  pyw(pyr parampyr, ArticleInfo paramArticleInfo) {}
+  pyw(pyv parampyv) {}
   
   public void onClick(View paramView)
   {
-    int i = 0;
-    okj.a(pyr.a(this.jdField_a_of_type_Pyr), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("feeds_channel_entrance", i);
-      odq.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", localJSONObject.toString(), false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    int i = ((Integer)paramView.getTag()).intValue();
+    this.a.a.a(paramView, i);
+    pih.a(this.a.a.getActivity(), "0X8009A71", this.a.a.a(), ((pyu)this.a.a.a.get(i)).a.mChannelCoverId);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,42 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
-class amrv
-  implements CompoundButton.OnCheckedChangeListener
+public class amrv
+  implements amrp
 {
-  amrv(amru paramamru, BaseActivity paramBaseActivity, FormSwitchItem paramFormSwitchItem) {}
+  public amrv(CmGameDebugView paramCmGameDebugView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    boolean bool = QQNotificationManager.getInstance().areNotificationsEnabled(BaseApplicationImpl.getContext());
-    Object localObject = avre.a(amru.a(this.jdField_a_of_type_Amru));
-    if ((!bool) && (localObject != null))
+    if (CmGameDebugView.a(this.a).getVisibility() != 0)
     {
-      ((avre)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
-      {
-        bool = true;
-        ((FormSwitchItem)localObject).setChecked(bool);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(amru.a(this.jdField_a_of_type_Amru));
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      CmGameDebugView.b(this.a, true);
       return;
-      bool = false;
-      break;
-      SettingCloneUtil.writeValue(amru.a(this.jdField_a_of_type_Amru).getApp(), amru.a(this.jdField_a_of_type_Amru).getCurrentUin(), null, "top_msg_notification_key", paramBoolean);
     }
+    CmGameDebugView.b(this.a, paramInt);
   }
 }
 

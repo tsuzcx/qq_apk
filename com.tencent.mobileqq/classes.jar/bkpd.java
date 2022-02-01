@@ -1,35 +1,18 @@
-import android.content.ContentValues;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 
-public final class bkpd
+class bkpd
+  implements bkrm
 {
-  public long a;
-  public Object a;
-  public String a;
-  public long b = -1L;
+  bkpd(bkpb parambkpb, AsyncResult paramAsyncResult) {}
   
-  public bkpd(long paramLong1, long paramLong2, ContentValues paramContentValues)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Long = 1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = paramLong1;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangObject = paramContentValues;
-    try
+    if (paramInt == 0)
     {
-      this.jdField_a_of_type_JavaLangString = paramContentValues.getAsString("entityNickName");
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, null);
       return;
     }
-    catch (Exception paramContentValues) {}
-  }
-  
-  public bkpd(long paramLong1, long paramLong2, Object paramObject, String paramString)
-  {
-    this.jdField_a_of_type_Long = 1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = paramLong1;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, null);
   }
 }
 

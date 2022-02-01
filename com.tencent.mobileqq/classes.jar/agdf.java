@@ -1,18 +1,8 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Bitmap;
 
-class agdf
-  extends aghj
+public abstract interface agdf
 {
-  agdf(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
-  
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new afuk(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
 }
 
 

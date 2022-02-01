@@ -1,175 +1,113 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.avgame.ui.AVGameActivity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.avgameshare.AVGameShareResultPic.2;
-import com.tencent.mobileqq.app.avgameshare.AVGameShareResultPic.3;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneShareManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class angy
-  extends angs
 {
-  private String b;
+  public String a;
+  public final HashMap<String, String> a;
+  public final List<anha> a;
+  public String b;
   
-  public angy(Activity paramActivity, String paramString, int paramInt)
+  public angy()
   {
-    super(paramActivity, null, null, null, paramInt);
-    this.b = paramString;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  private Intent a()
+  public String a(boolean paramBoolean)
   {
-    QLog.d("AVGameShareResultPic", 1, "getImageIntent");
-    Intent localIntent = new Intent(a(), ForwardRecentActivity.class);
-    localIntent.putExtra("key_help_forward_pic", true);
-    localIntent.putExtra("forward_type", 1);
-    localIntent.putExtra("key_allow_multiple_forward_from_limit", false);
-    localIntent.putExtra("selection_mode", 2);
-    localIntent.putExtra("avgame_share_callback_key", true);
-    localIntent.setData(Uri.parse(this.b));
-    return localIntent;
-  }
-  
-  protected void b(int paramInt)
-  {
-    super.b(paramInt);
-    anha.a().a(a(), 2, true);
-  }
-  
-  protected void b(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    QLog.d("AVGameShareResultPic", 1, "shareToSpecifiedFriend");
-    bcef.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "0", "", "", "");
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_req", ForwardRecentActivity.f);
-    localBundle.putInt("key_direct_show_uin_type", paramActionSheetItem.uinType);
-    localBundle.putString("key_direct_show_uin", paramActionSheetItem.uin);
-    paramActionSheetItem = a();
-    if (paramActionSheetItem == null)
-    {
-      QLog.e("AVGameShareResultPic", 1, "shareToSpecifiedFriend error: intent is null");
-      QQToast.a(a(), 2131690422, 0).a();
-      return;
+    if (!a()) {
+      return "";
     }
-    paramActionSheetItem.putExtras(localBundle);
-    atky.a(a(), paramActionSheetItem, ForwardRecentTranslucentActivity.class, -1);
-    QLog.d("AVGameShareResultPic", 1, "shareToSpecifiedFriend success");
-    bcef.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "0", "", "", "");
-  }
-  
-  public void c()
-  {
-    QLog.d("AVGameShareResultPic", 1, "showActionSheet");
-    if ((a() == null) || (TextUtils.isEmpty(this.b)))
+    StringBuilder localStringBuilder = new StringBuilder();
+    for (;;)
     {
-      QLog.e("AVGameShareResultPic", 1, "showActionSheet error: params wrong");
-      QQToast.a(a(), 2131690422, 0).a();
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet == null)
-    {
-      QLog.e("AVGameShareResultPic", 1, "mShareActionSheet is null");
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
-      return;
-    }
-    a().getIntent().putExtra("big_brother_source_key", "biz_src_jc_av_game");
-    List localList1 = a();
-    List localList2 = b();
-    Intent localIntent = a();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setIntentForStartForwardRecentActivity(localIntent);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setRowVisibility(0, 0, 0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(localList1, localList2);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(new angz(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
-  }
-  
-  protected void c(int paramInt)
-  {
-    super.c(paramInt);
-  }
-  
-  protected void d()
-  {
-    QLog.d("AVGameShareResultPic", 1, "shareToQQ");
-    bcef.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "1", "", "", "");
-    Intent localIntent = a();
-    if (localIntent == null)
-    {
-      QLog.e("AVGameShareResultPic", 1, "shareToQQ error: params wrong");
-      QQToast.a(a(), 2131690422, 0).a();
-      return;
-    }
-    a().startActivityForResult(localIntent, -1);
-    QLog.d("AVGameShareResultPic", 1, "shareToQQ success");
-    bcef.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "1", "", "", "");
-  }
-  
-  protected void d(int paramInt)
-  {
-    super.d(paramInt);
-  }
-  
-  protected void e()
-  {
-    QLog.d("AVGameShareResultPic", 1, "shareToQzone");
-    bcef.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "2", "", "", "");
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Bundle localBundle = new Bundle();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.b);
-    localBundle.putStringArrayList("images", localArrayList);
-    QZoneShareManager.publishToQzone(localAppInterface, a(), localBundle, null, AVGameActivity.a);
-    bcef.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "2", "", "", "");
-  }
-  
-  protected void f(int paramInt)
-  {
-    QLog.d("AVGameShareResultPic", 1, "shareToWeChat shareType: " + paramInt);
-    int i = a();
-    if (paramInt == 9) {}
-    for (Object localObject = "3";; localObject = "4")
-    {
-      bcef.b(null, "dc00898", "", "", "0X800B065", "0X800B065", i, 0, (String)localObject, "", "", "");
-      localObject = new HashMap(1);
-      if (WXShareHelper.getInstance().isWXinstalled()) {
-        break;
+      int j;
+      int i;
+      try
+      {
+        j = this.jdField_a_of_type_JavaUtilList.size();
+        i = 0;
+        if (i < j)
+        {
+          anha localanha = (anha)this.jdField_a_of_type_JavaUtilList.get(i);
+          if ((localanha == null) || (TextUtils.isEmpty(localanha.jdField_a_of_type_JavaLangString))) {
+            break label397;
+          }
+          if ((localanha.jdField_a_of_type_Int != 6) && (localanha.jdField_a_of_type_Int != 7)) {
+            break label236;
+          }
+          if (TextUtils.isEmpty(Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter(localanha.b))) {
+            break label397;
+          }
+          if (paramBoolean)
+          {
+            localStringBuilder.append(bkyp.a(localanha.jdField_a_of_type_JavaLangString)).append("=").append(bkyp.a(localanha.b));
+            if (i == j - 1) {
+              break label397;
+            }
+            localStringBuilder.append("&");
+            break label397;
+          }
+          localStringBuilder.append(localanha.jdField_a_of_type_JavaLangString).append("=").append(localanha.b);
+          continue;
+        }
+        if (localException.jdField_a_of_type_Int != 8) {
+          break label318;
+        }
       }
-      QLog.e("AVGameShareResultPic", 1, "shareToWeChat error: wechat not install");
-      QQToast.a(a(), 1, 2131719722, 0).a();
-      return;
+      catch (Exception localException)
+      {
+        QLog.e("apollo_client_ApolloSSOConfig", 1, localException, new Object[0]);
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloSSOConfig", 2, new Object[] { "getParameterStr parameterBuilder:", localStringBuilder.toString() });
+        }
+        return localStringBuilder.toString();
+      }
+      label236:
+      if (paramBoolean) {
+        localStringBuilder.append(bkyp.a(localException.jdField_a_of_type_JavaLangString)).append("=").append(System.currentTimeMillis());
+      }
+      while (i != j - 1)
+      {
+        localStringBuilder.append("&");
+        break;
+        localStringBuilder.append(localException.jdField_a_of_type_JavaLangString).append("=").append(System.currentTimeMillis());
+        continue;
+        label318:
+        if (paramBoolean) {
+          localStringBuilder.append(bkyp.a(localException.jdField_a_of_type_JavaLangString)).append("=").append(bkyp.a(localException.b));
+        }
+        while (i != j - 1)
+        {
+          localStringBuilder.append("&");
+          break;
+          localStringBuilder.append(localException.jdField_a_of_type_JavaLangString).append("=").append(localException.b);
+        }
+      }
+      label397:
+      i += 1;
     }
-    if (!WXShareHelper.getInstance().isWXsupportApi())
-    {
-      QLog.e("AVGameShareResultPic", 1, "shareToWeChat error: wechat version not support");
-      QQToast.a(a(), 1, 2131719723, 0).a();
-      return;
-    }
-    a(paramInt);
-    AVGameShareResultPic.2 local2 = new AVGameShareResultPic.2(this, (Map)localObject, paramInt);
-    a(a());
-    this.jdField_a_of_type_Bhht.c(2131693585);
-    this.jdField_a_of_type_Bhht.show();
-    ThreadManager.post(new AVGameShareResultPic.3(this, (Map)localObject, local2), 8, null, false);
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("CGIConfig{");
+    localStringBuffer.append("mUrl='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mMethod='").append(this.b).append('\'');
+    localStringBuffer.append(", mHeaders=").append(this.jdField_a_of_type_JavaUtilHashMap);
+    localStringBuffer.append(", mParameters=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

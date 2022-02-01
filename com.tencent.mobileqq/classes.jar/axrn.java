@@ -1,148 +1,95 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.PlayerState;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class axrn
+  implements bila<oidb_0x8e4.RspBody>
 {
-  static final String jdField_a_of_type_JavaLangString = anzv.jdField_a_of_type_JavaLangString + "_Guide";
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private axrq jdField_a_of_type_Axrq;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  boolean jdField_a_of_type_Boolean = false;
+  public axrn(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public axrn(Activity paramActivity)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131381164));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131381165));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131381163));
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_Axrq == null) || ((this.jdField_a_of_type_Axrq != null) && (!this.jdField_a_of_type_Axrq.a()));
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = 1;
-    if (a())
+    boolean bool2 = false;
+    if (this.a.isFinishing()) {}
+    label192:
+    do
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "showText, isDestroyed, textIndex[" + paramInt + "]");
       return;
-    }
-    if (this.jdField_a_of_type_Axrq == null)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "showText, mPromotionRes为null, textIndex[" + paramInt + "]");
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_Axrq.a();
-    if (localObject != null)
-    {
-      localObject = ((anzl)localObject).a(paramInt);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      }
-    }
-    for (paramInt = i;; paramInt = 0)
-    {
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (paramInt != 0) {}
-      for (i = 0;; i = 8)
+      if ((paramInt == 0) || (paramInt == 1008) || (paramInt == 1009) || (paramInt == 1010))
       {
-        ((TextView)localObject).setVisibility(i);
-        if (paramInt == 0) {
+        if ((paramInt == 1009) && (this.a.jdField_b_of_type_JavaLangString != null) && (this.a.jdField_b_of_type_JavaLangString.equals(GameRoomInviteActivity.jdField_a_of_type_JavaLangString)))
+        {
+          paramRspBody = paramRspBody.poi_info;
+          localObject = paramRspBody.bytes_uid.get().toStringUtf8();
+          this.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), (String)localObject, paramRspBody.bytes_name.get().toStringUtf8());
+          return;
+        }
+        Object localObject = this.a;
+        if (paramRspBody.uint32_refresh_interval.has())
+        {
+          paramInt = paramRspBody.uint32_refresh_interval.get() * 1000;
+          ((GameRoomInviteActivity)localObject).c = paramInt;
+          this.a.c = Math.max(1000, this.a.c);
+          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
+          paramInt = 0;
+          if (paramInt >= paramRspBody.rpt_msg_player_state.size()) {
+            break label314;
+          }
+          localObject = new axsh(this.a);
+          oidb_0x8e4.PlayerState localPlayerState = (oidb_0x8e4.PlayerState)paramRspBody.rpt_msg_player_state.get(paramInt);
+          ((axsh)localObject).jdField_a_of_type_JavaLangString = (localPlayerState.uint64_uin.get() + "");
+          if (localPlayerState.uint32_state.get() != 1) {
+            break label309;
+          }
+        }
+        for (boolean bool1 = true;; bool1 = false)
+        {
+          ((axsh)localObject).jdField_a_of_type_Boolean = bool1;
+          this.a.jdField_a_of_type_JavaUtilList.add(localObject);
+          paramInt += 1;
+          break label192;
+          paramInt = 1000;
           break;
         }
-        this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+        if (paramRspBody.uint32_max_member_num.has()) {
+          this.a.jdField_a_of_type_Int = paramRspBody.uint32_max_member_num.get();
+        }
+        if (paramRspBody.uint32_zone_id.has()) {
+          this.a.jdField_b_of_type_Int = paramRspBody.uint32_zone_id.get();
+        }
+        this.a.jdField_b_of_type_Long = paramRspBody.uint64_leader_uin.get();
+        localObject = this.a;
+        if ((paramRspBody.uint64_leader_uin.has()) && (this.a.jdField_b_of_type_Long != this.a.app.getLongAccountUin()))
+        {
+          bool1 = bool2;
+          if (!this.a.jdField_a_of_type_JavaUtilList.isEmpty()) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+        ((GameRoomInviteActivity)localObject).jdField_a_of_type_Boolean = bool1;
+        this.a.jdField_a_of_type_Axsi.notifyDataSetChanged();
+        this.a.a();
+        this.a.g();
+        this.a.j();
         return;
       }
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(this.jdField_a_of_type_AndroidWidgetImageView.getVisibility());
-      return;
-    }
-  }
-  
-  public void a(anzl paramanzl)
-  {
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "loadRes, hadLoad[" + this.jdField_a_of_type_Boolean + "]");
-    if (a()) {}
-    while (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getResources();
-    int i = ((Resources)localObject).getDisplayMetrics().densityDpi;
-    int j = ((Resources)localObject).getDisplayMetrics().densityDpi;
-    localObject = anzr.b(paramanzl);
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "PromotionGuide, path is null");
-      return;
-    }
-    if (!new File((String)localObject).exists())
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "PromotionGuide, file not exist");
-      return;
-    }
-    paramanzl = (String)localObject + "guide.json";
-    localObject = new axro(this, (String)localObject, i, j);
-    try
-    {
-      LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_AndroidAppActivity, new FileInputStream(paramanzl), (OnCompositionLoadedListener)localObject);
-      return;
-    }
-    catch (Exception paramanzl)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "loadWorldCupGuideAnimation failed. err = " + paramanzl.getMessage());
-    }
-  }
-  
-  public void a(axrq paramaxrq)
-  {
-    this.jdField_a_of_type_Axrq = paramaxrq;
-  }
-  
-  public void a(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = null;
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      if (!paramBoolean) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(this.jdField_a_of_type_AndroidWidgetTextView.getVisibility());
+    } while (!this.a.e);
+    label309:
+    label314:
+    this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
   }
 }
 

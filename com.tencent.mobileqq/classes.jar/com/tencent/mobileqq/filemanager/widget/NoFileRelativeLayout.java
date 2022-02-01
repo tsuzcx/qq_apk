@@ -13,8 +13,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import atbk;
-import bcvs;
+import aufr;
+import becr;
 
 public class NoFileRelativeLayout
   extends RelativeLayout
@@ -42,15 +42,15 @@ public class NoFileRelativeLayout
   public NoFileRelativeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramAttributeSet = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560765, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramAttributeSet.findViewById(2131371852));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131378381));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131378392));
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new atbk(this);
-    bcvs.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramAttributeSet = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560825, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramAttributeSet.findViewById(2131372042));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131378672));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet.findViewById(2131378683));
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aufr(this);
+    becr.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramAttributeSet.findViewById(2131368367));
-    this.jdField_a_of_type_AndroidViewView = paramAttributeSet.findViewById(2131378964);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramAttributeSet.findViewById(2131368524));
+    this.jdField_a_of_type_AndroidViewView = paramAttributeSet.findViewById(2131379258);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -124,7 +124,7 @@ public class NoFileRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

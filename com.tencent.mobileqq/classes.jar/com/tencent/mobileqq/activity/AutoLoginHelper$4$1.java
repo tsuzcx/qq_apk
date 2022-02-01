@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import acup;
-import acus;
+import adlb;
+import adle;
 
 public class AutoLoginHelper$4$1
   implements Runnable
 {
-  public AutoLoginHelper$4$1(acus paramacus) {}
+  public AutoLoginHelper$4$1(adle paramadle) {}
   
   public void run()
   {
-    acup.a(this.a.a).a(2131716113, 1);
+    adlb.a(this.a.a).a(2131716463, 1);
   }
 }
 

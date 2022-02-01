@@ -20,7 +20,7 @@ public class TriangleView
   {
     super(paramContext);
     BaseApplicationImpl.getApplication();
-    this.drawColor = BaseApplicationImpl.getContext().getResources().getColor(2131165546);
+    this.drawColor = BaseApplicationImpl.getContext().getResources().getColor(2131165552);
     this.direction = paramInt1;
     this.drawColor = paramInt2;
   }

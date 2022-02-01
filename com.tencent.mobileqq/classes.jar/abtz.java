@@ -1,6 +1,19 @@
-public abstract interface abtz
+import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+
+public class abtz
+  implements abux
 {
-  public abstract void a(boolean paramBoolean);
+  public abtz(GameCenterActivity.GameCenterFragment paramGameCenterFragment, WebView paramWebView) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.i("GameCenterFragment", 1, "addShot res code=" + paramInt);
+    if (paramInt == 304) {
+      abuv.a().a(this.jdField_a_of_type_ComTencentSmttSdkWebView);
+    }
+  }
 }
 
 

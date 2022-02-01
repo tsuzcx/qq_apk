@@ -4,18 +4,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import beqn;
+import bfxp;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.data.PublicAccountShowPictureReport;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 import cooperation.qzone.LargeIntentManager;
 import java.util.ArrayList;
-import pgw;
+import java.util.HashMap;
+import pqb;
 
 public final class TroopNoticeJsHandler$2
   implements Runnable
 {
-  public TroopNoticeJsHandler$2(Activity paramActivity, int paramInt1, ArrayList paramArrayList1, ArrayList paramArrayList2, boolean[] paramArrayOfBoolean, PublicAccountShowPictureReport paramPublicAccountShowPictureReport, ArrayList paramArrayList3, ArrayList paramArrayList4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, ArticleInfo paramArticleInfo, String paramString1, String paramString2, int paramInt2) {}
+  public TroopNoticeJsHandler$2(Activity paramActivity, int paramInt1, ArrayList paramArrayList1, ArrayList paramArrayList2, boolean[] paramArrayOfBoolean, PublicAccountShowPictureReport paramPublicAccountShowPictureReport, ArrayList paramArrayList3, ArrayList paramArrayList4, String paramString1, HashMap paramHashMap, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, ArticleInfo paramArticleInfo, String paramString2, String paramString3, int paramInt2) {}
   
   public void run()
   {
@@ -38,6 +39,13 @@ public final class TroopNoticeJsHandler$2
     if (this.d != null) {
       localBundle.putStringArrayList("origin_size_list", this.d);
     }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      localBundle.putString("dt_page_id", this.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+        localBundle.putSerializable("dt_page_params", this.jdField_a_of_type_JavaUtilHashMap);
+      }
+    }
     localBundle.putBoolean("needBottomBar", this.jdField_a_of_type_Boolean);
     localBundle.putBoolean("IS_EDIT", false);
     localBundle.putBoolean("is_use_path", true);
@@ -47,16 +55,16 @@ public final class TroopNoticeJsHandler$2
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
     {
       localBundle.putBoolean("is_grid_image_report", true);
-      pgw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "", this.jdField_a_of_type_Int, localBundle);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localBundle.putString("src_id", this.jdField_a_of_type_JavaLangString);
+      pqb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "", this.jdField_a_of_type_Int, localBundle);
     }
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localBundle.putString("str_data_extra", this.jdField_b_of_type_JavaLangString);
+      localBundle.putString("src_id", this.jdField_b_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      localBundle.putString("str_data_extra", this.jdField_c_of_type_JavaLangString);
     }
     localIntent.putExtras(localBundle);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > beqn.a()))
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > bfxp.a()))
     {
       LargeIntentManager.saveIntent(localIntent, this.jdField_a_of_type_AndroidAppActivity);
       localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, TroopAvatarWallPreviewActivity.class);

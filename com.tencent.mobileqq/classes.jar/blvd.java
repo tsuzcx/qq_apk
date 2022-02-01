@@ -1,15 +1,51 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import androidx.annotation.UiThread;
+import com.tencent.qphone.base.util.QLog;
 
-public class blvd
+class blvd
+  extends blva
 {
-  public int a;
-  public MetaMaterial a;
-  public String a;
-  public int b;
+  blvd(blvc paramblvc) {}
   
-  public String toString()
+  public void a()
   {
-    return "AEMaterialWrapper{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", material=" + this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial + ", state=" + this.jdField_a_of_type_Int + ", type=" + this.b + '}';
+    blvc.a(this.a, null);
+    if (!this.a.c()) {
+      blvc.a(this.a);
+    }
+  }
+  
+  @UiThread
+  public void a(String paramString, blvg paramblvg)
+  {
+    if (paramblvg == null)
+    {
+      QLog.i("IliveGroupTipsBarHelper", 1, "handleIliveGroupData entity request error");
+      return;
+    }
+    blvc.a(this.a, paramblvg);
+    StringBuilder localStringBuilder = new StringBuilder().append("handleIliveGroupData ");
+    if (blvc.a(this.a) == null)
+    {
+      paramblvg = " data = null";
+      QLog.i("IliveGroupTipsBarHelper", 1, paramblvg + " source = " + paramString);
+      if ((blvc.a(this.a) == null) || (!blvc.a(this.a).a)) {
+        break label151;
+      }
+    }
+    label151:
+    for (boolean bool = true;; bool = false)
+    {
+      blvc.a(this.a, bool);
+      if (bool) {
+        break label156;
+      }
+      this.a.c();
+      return;
+      paramblvg = " value = " + blvc.a(this.a).toString();
+      break;
+    }
+    label156:
+    this.a.b();
   }
 }
 

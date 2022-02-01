@@ -1,6 +1,7 @@
-public abstract interface atls
+class atls
+  implements atlu
 {
-  public abstract void a();
+  atls(atll paramatll) {}
 }
 
 

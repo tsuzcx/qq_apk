@@ -25,19 +25,22 @@ public class VideoPlayParam
   
   public boolean isSameVideo(Object paramObject)
   {
+    boolean bool = true;
     if (!(paramObject instanceof VideoPlayParam)) {}
     do
     {
-      do
-      {
-        return false;
-        paramObject = (VideoPlayParam)paramObject;
-      } while ((paramObject.mIsLocal != this.mIsLocal) || (paramObject.mIsLoop != this.mIsLoop) || (paramObject.mIsMute != this.mIsMute));
-      if ((paramObject.mVideoPath != null) && (this.mVideoPath != null) && (paramObject.mVideoPath.equals(this.mVideoPath))) {
-        return true;
-      }
-    } while ((paramObject.mUrls == null) || (this.mUrls == null) || (!Arrays.equals(paramObject.mUrls, this.mUrls)));
-    return true;
+      return false;
+      paramObject = (VideoPlayParam)paramObject;
+    } while ((paramObject.mIsLocal != this.mIsLocal) || (paramObject.mIsLoop != this.mIsLoop) || (paramObject.mIsMute != this.mIsMute));
+    if ((paramObject.mVideoPath != null) && (this.mVideoPath != null) && (paramObject.mVideoPath.equals(this.mVideoPath))) {
+      return true;
+    }
+    if ((paramObject.mUrls != null) && (this.mUrls != null) && (Arrays.equals(paramObject.mUrls, this.mUrls))) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
   }
 }
 

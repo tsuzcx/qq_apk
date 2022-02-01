@@ -1,37 +1,35 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aomn
-  implements aolv
+class aomn
+  implements View.OnClickListener
 {
-  public aomn(ARScanEntryView paramARScanEntryView) {}
+  aomn(aomk paramaomk, Activity paramActivity, String paramString, boolean paramBoolean, QQAppInterface paramQQAppInterface) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResDownloadComplete ;" + this.a.m);
-    if (!this.a.m) {
+    Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
+    if (aomk.a(this.jdField_a_of_type_Aomk) == null)
+    {
+      aomk.a(this.jdField_a_of_type_Aomk, new aomq(null));
+      localObject = new IntentFilter("com.tencent.mobileqq.InvitationWebViewPlugin.accountIdentityNotify");
+      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(aomk.a(this.jdField_a_of_type_Aomk), (IntentFilter)localObject);
+    }
+    if (this.jdField_a_of_type_Boolean) {}
+    for (localObject = "0X800B277";; localObject = "0X800B274")
+    {
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    ARScanEntryView.a(this.a, 100);
-    ARScanEntryView.a(this.a).removeMessages(324);
-    ARScanEntryView.a(this.a).sendEmptyMessage(324);
-    this.a.k();
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResUpdateProgress " + paramInt + ";" + this.a.m);
-    if (!this.a.m) {
-      return;
-    }
-    ARScanEntryView.a(this.a, paramInt);
-    ARScanEntryView.a(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.k();
   }
 }
 

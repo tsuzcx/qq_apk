@@ -1,18 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingMe.32;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 public class aeau
-  implements View.OnClickListener
+  implements AdapterView.OnItemLongClickListener
 {
-  public aeau(QQSettingMe.32 param32) {}
+  public aeau(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    bgff.a();
-    bgff.a("0X800B232", bgff.a(), bgff.b());
-    EventCollector.getInstance().onViewClicked(paramView);
+    FriendProfileImageActivity.a(this.a);
+    return true;
   }
 }
 

@@ -1,27 +1,46 @@
-public class vts
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
+
+class vts
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public final int a;
-  public final String a;
-  public final int b;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
+  private vts(vtj paramvtj) {}
   
-  public vts(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.a = true;
+    vtj.b(this.a);
+    return false;
   }
   
-  public String toString()
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    return "AddressInfo{country='" + this.jdField_a_of_type_JavaLangString + '\'' + ", province='" + this.jdField_b_of_type_JavaLangString + '\'' + ", city='" + this.c + '\'' + ", district='" + this.d + '\'' + ", street='" + this.e + '\'' + ", longitude=" + this.jdField_a_of_type_Int + ", latitude=" + this.jdField_b_of_type_Int + '}';
+    return super.onDoubleTapEvent(paramMotionEvent);
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent)
+  {
+    super.onShowPress(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((!(vtj.a(this.a).getTag() instanceof vtq)) || (((vtj.a(this.a).getTag() instanceof vtq)) && (!vtj.a(this.a).a(vtj.a(this.a)).booleanValue()))) {
+      vtj.c(this.a);
+    }
+    return false;
   }
 }
 

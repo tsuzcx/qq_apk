@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahhp;
+import aici;
 import android.support.v4.app.FragmentActivity;
 
 class LimitChatPie$7$1
@@ -10,8 +10,8 @@ class LimitChatPie$7$1
   
   public void run()
   {
-    if ((!this.a.this$0.mActivity.isFinishing()) && (ahhp.c(this.a.this$0))) {
-      ahhp.b(this.a.this$0);
+    if ((!this.a.this$0.mActivity.isFinishing()) && (aici.c(this.a.this$0))) {
+      aici.b(this.a.this$0);
     }
   }
 }

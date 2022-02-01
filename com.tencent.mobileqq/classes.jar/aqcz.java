@@ -1,51 +1,72 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class aqcz
+class aqcz
+  extends Handler
 {
-  public boolean a = true;
-  
-  public static aqcz a(String paramString)
+  aqcz(aqcx paramaqcx, Looper paramLooper)
   {
-    aqcz localaqcz = new aqcz();
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SubAccountConfigBean", 0, "parse content is empty");
-      }
-      return localaqcz;
-    }
-    for (;;)
-    {
-      try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1000) {
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
       {
-        if (new JSONObject(paramString).optInt("isSideAccountGroupMsgEnabled", 0) != 0) {
-          break label109;
-        }
-        bool = true;
-        localaqcz.a = bool;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("SubAccountConfigBean", 0, "parse configValue=" + localaqcz.a);
-        return localaqcz;
+        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList.size());
+        paramMessage.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        this.a.a(paramMessage);
       }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("SubAccountConfigBean", 0, "parse e:", paramString);
-      return localaqcz;
-      label109:
-      boolean bool = false;
     }
+    Object localObject;
+    String str;
+    do
+    {
+      this.a.jdField_a_of_type_JavaUtilArrayList.removeAll(paramMessage);
+      for (;;)
+      {
+        return;
+        if (paramMessage.what == 1002) {
+          try
+          {
+            localObject = (Bundle)paramMessage.obj;
+            paramMessage = (Bitmap)((Bundle)localObject).getParcelable("bmp");
+            str = ((Bundle)localObject).getString("uin");
+            localObject = ((Bundle)localObject).getString("path");
+            if (paramMessage != null) {
+              this.a.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(str, paramMessage);
+            }
+            Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+            while (localIterator.hasNext())
+            {
+              aqdb localaqdb = (aqdb)localIterator.next();
+              if (localaqdb != null) {
+                localaqdb.onFaceUpdate(str, (String)localObject, paramMessage);
+              }
+            }
+            if (!QLog.isColorLevel()) {}
+          }
+          catch (Exception paramMessage) {}
+        }
+      }
+      QLog.e("NonMainAppHeadLoader", 2, "refreshImg, exception:" + paramMessage.toString());
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("NonMainAppHeadLoader", 2, "refreshImg, uin:" + str + ", path=" + (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqcz
  * JD-Core Version:    0.7.0.1
  */

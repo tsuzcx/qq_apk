@@ -1,29 +1,8 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.DataMigrationService;
+import android.graphics.Bitmap;
 
-public class amqm
-  extends Handler
+public abstract interface amqm
 {
-  public amqm(DataMigrationService paramDataMigrationService) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.arg1;
-    paramMessage = (Intent)paramMessage.obj;
-    if (paramMessage == null)
-    {
-      this.a.stopSelf(i);
-      return;
-    }
-    if ("com.tencent.mobileqq.action.MIGRATION_DATA".equals(paramMessage.getAction()))
-    {
-      DataMigrationService.a(this.a, paramMessage, i);
-      return;
-    }
-    this.a.stopSelf(i);
-  }
+  public abstract void a(Bitmap paramBitmap, int paramInt);
 }
 
 

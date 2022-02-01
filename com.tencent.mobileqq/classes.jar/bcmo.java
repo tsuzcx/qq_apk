@@ -1,26 +1,20 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
 
 public class bcmo
+  extends bckw
 {
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  private Comparator<bcff> a = new bcmp(this);
   
-  public bcmo(bcmn parambcmn, bcin parambcin)
+  public bcmo(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    if (parambcin == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = parambcin.a("c");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = parambcin.a("r");
-    }
-    this.b = bblk.a(bchh.a(parambcin), false);
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
   }
   
-  public bcmo(bcmn parambcmn, String paramString1, String paramString2)
+  public Comparator<bcff> a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    return this.a;
   }
 }
 

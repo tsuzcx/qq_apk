@@ -1,15 +1,4 @@
-public class azbk
-{
-  public float a;
-  public int a;
-  public float b = -1.0F;
-  
-  public azbk()
-  {
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_a_of_type_Int = -1;
-  }
-}
+class azbk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

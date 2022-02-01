@@ -1,17 +1,15 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiak
-  extends aiot
+class aiak
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public ArrayList<aial> a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  aiak(aiah paramaiah, aiar paramaiar) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aiah.a(this.jdField_a_of_type_Aiah, this.jdField_a_of_type_Aiar);
+  }
 }
 
 

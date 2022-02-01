@@ -1,15 +1,21 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView;
+
 public class bnuk
+  extends Handler
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  
-  public String toString()
+  public bnuk(LyricWithBuoyView paramLyricWithBuoyView, Looper paramLooper)
   {
-    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      this.a.a();
+    }
   }
 }
 

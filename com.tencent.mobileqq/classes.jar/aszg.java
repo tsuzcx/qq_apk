@@ -1,67 +1,29 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.SpannableString;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.3;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
 
 public class aszg
+  implements ActionMode.Callback
 {
-  public static void a(Context paramContext, int paramInt1, int paramInt2, aszj paramaszj)
+  public aszg(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseActivity.sTopActivity;
-    }
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
-      }
-      return;
-    }
-    a((Context)localObject, ((Context)localObject).getString(paramInt1), ((Context)localObject).getString(paramInt2), paramaszj);
+    return false;
   }
   
-  public static void a(Context paramContext, String paramString, int paramInt, aszj paramaszj)
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseActivity.sTopActivity;
-    }
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
-      }
-      return;
-    }
-    a((Context)localObject, paramString, ((Context)localObject).getString(paramInt), paramaszj);
+    return false;
   }
   
-  public static void a(Context paramContext, String paramString, CharSequence paramCharSequence, aszj paramaszj)
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    aszh localaszh = new aszh(paramaszj);
-    paramaszj = new aszi(paramaszj);
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {}
-    do
-    {
-      new Handler(localLooper).post(new FMDialogUtil.3(paramContext, paramCharSequence, paramString, localaszh, paramaszj));
-      do
-      {
-        return;
-      } while (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()));
-      if ((paramCharSequence instanceof String))
-      {
-        bfur.a(paramContext, 230, paramString, (String)paramCharSequence, 2131692113, 2131692117, localaszh, paramaszj).show();
-        return;
-      }
-    } while (!(paramCharSequence instanceof SpannableString));
-    bfur.a(paramContext, 230, paramString, paramCharSequence, 2131692113, 2131692117, localaszh, paramaszj).show();
+    return false;
   }
 }
 

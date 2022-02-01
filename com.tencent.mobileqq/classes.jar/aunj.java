@@ -1,162 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginLoader.1;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.MethodChannel.Result;
 
-public class aunj
+class aunj
+  extends aunk
 {
-  private static Context jdField_a_of_type_AndroidContentContext;
-  private static Map<String, aunj> jdField_a_of_type_JavaUtilMap = new HashMap();
-  public static int[] a;
-  private static boolean d;
-  private static boolean e;
-  private long jdField_a_of_type_Long;
-  protected BroadcastReceiver a;
-  private aunt jdField_a_of_type_Aunt;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<aunl> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private final String jdField_b_of_type_JavaLangString = "GroupVideoManager.IVPluginLoader";
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  aunj(auni paramauni) {}
   
-  static
+  protected void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Integer paramInteger1, Integer paramInteger2, Integer paramInteger3, String paramString5, String paramString6, Boolean paramBoolean, MethodChannel.Result paramResult)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 3, 7, 9, 5, 10 };
-  }
-  
-  private aunj(Context paramContext, String paramString)
-  {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aunk(this);
-    jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static aunj a(Context paramContext, String paramString)
-  {
-    aunj localaunj2 = (aunj)jdField_a_of_type_JavaUtilMap.get(paramString);
-    aunj localaunj1 = localaunj2;
-    if (localaunj2 == null)
+    if (paramInt == 1) {}
+    for (paramString1 = "dc00898";; paramString1 = "CliOper")
     {
-      localaunj1 = new aunj(paramContext, paramString);
-      jdField_a_of_type_JavaUtilMap.put(paramString, localaunj1);
-    }
-    return localaunj1;
-  }
-  
-  private void a(int paramInt)
-  {
-    xwa.a("group_video", "loadPuginState", paramInt, (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), new String[] { "", "", "", "8.4.8" });
-    switch (paramInt)
-    {
-    case 4: 
-    case 8: 
-    default: 
-      return;
-    case 2: 
-      auoj.b("2856626");
-      return;
-    case 3: 
-      auoj.b("2856627");
-      return;
-    case 5: 
-      auoj.b("2856629");
-      return;
-    case 6: 
-      auoj.b("2856630");
-      return;
-    case 7: 
-      auoj.b("2856631");
-      return;
-    }
-    auoj.b("2856647");
-  }
-  
-  public static boolean a()
-  {
-    if (e) {
-      return d;
-    }
-    try
-    {
-      File localFile = new File(jdField_a_of_type_AndroidContentContext.getExternalFilesDir(null).getPath(), "versionchecker.test");
-      if (localFile != null)
-      {
-        d = localFile.exists();
-        e = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("flutter.ReporterChannel", 2, String.format("report table=%s opType=%s opName=%s entry=%d", new Object[] { paramString1, paramString3, paramString4, paramInteger1 }));
       }
-      return d;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      try
       {
-        localThrowable.printStackTrace();
-        Object localObject = null;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aunt != null) {
-      this.jdField_a_of_type_Aunt.a();
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, aunl paramaunl)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      localObject = new IntentFilter(aunx.a(this.jdField_a_of_type_JavaLangString));
-      ((IntentFilter)localObject).addAction(aunx.b(this.jdField_a_of_type_JavaLangString));
-      jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-      this.jdField_a_of_type_Boolean = true;
-    }
-    this.jdField_b_of_type_Boolean = TextUtils.equals(paramString5, "slientDownload");
-    this.c = TextUtils.equals(paramString5, "download");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaunl);
-    paramaunl = IVPluginInfo.a();
-    Object localObject = (IVPluginInfo)paramaunl.get(this.jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(paramString3)) {}
-    try
-    {
-      ((IVPluginInfo)localObject).jdField_a_of_type_Long = Long.parseLong(paramString3);
-      if (!TextUtils.isEmpty(paramString6)) {
-        ((IVPluginInfo)localObject).e = paramString6;
-      }
-      ((IVPluginInfo)localObject).h = paramString7;
-      ((IVPluginInfo)localObject).c = paramInt;
-      ((IVPluginInfo)localObject).i = paramString8;
-      ((IVPluginInfo)localObject).j = paramString9;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        auoj.b("2856624");
-        this.jdField_a_of_type_Aunt = aunt.a(jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramString1);
-        ThreadManagerV2.executeOnSubThread(new IVPluginLoader.1(this, paramString2, paramString1, paramString4, paramString5, paramaunl));
+        bdla.b(null, paramString1, "", "", paramString3, paramString4, paramInteger1.intValue(), 0, paramInteger2 + "", paramInteger3 + "", paramString5, paramString6);
         return;
       }
-    }
-    catch (NumberFormatException paramString3)
-    {
-      for (;;)
+      catch (Throwable paramString1)
       {
-        paramString3.printStackTrace();
-        continue;
-        if (this.c)
-        {
-          auoj.b("2856625");
-          this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          xwa.a("group_video", "startLoad", 0, 0, new String[] { "", "", "", "8.4.8" });
-        }
+        QLog.d("flutter.ReporterChannel", 1, paramString1.getMessage(), paramString1);
       }
     }
   }

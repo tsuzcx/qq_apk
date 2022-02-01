@@ -1,58 +1,27 @@
-import java.util.HashMap;
+import android.text.Editable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bkkc
+  implements View.OnTouchListener
 {
-  private static bkkc jdField_a_of_type_Bkkc;
-  private HashMap<String, bkkb> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public bkkc(Login paramLogin) {}
   
-  public static bkkc a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (jdField_a_of_type_Bkkc == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bkkc == null) {
-        jdField_a_of_type_Bkkc = new bkkc();
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
+      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
       }
-      return jdField_a_of_type_Bkkc;
     }
-    finally {}
-  }
-  
-  public bkkb a(String paramString)
-  {
-    bkkb localbkkb2 = (bkkb)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    bkkb localbkkb1 = localbkkb2;
-    if (localbkkb2 == null)
-    {
-      localbkkb1 = new bkkb(paramString);
-      localbkkb1.a();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localbkkb1);
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
+      return false;
     }
-    return localbkkb1;
-  }
-  
-  public void a(String paramString)
-  {
-    if ((bkkb)this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (bkkb)this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null;
-  }
-  
-  public void b(String paramString)
-  {
-    bkkb localbkkb2 = (bkkb)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    bkkb localbkkb1 = localbkkb2;
-    if (localbkkb2 == null)
-    {
-      localbkkb1 = new bkkb(paramString);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localbkkb1);
-    }
-    localbkkb1.a();
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return false;
   }
 }
 

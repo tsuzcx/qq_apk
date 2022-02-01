@@ -1,44 +1,88 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import android.os.Bundle;
+import java.util.Iterator;
+import java.util.Set;
 
 public class xmr
-  implements View.OnClickListener, View.OnLongClickListener
+  extends xgs
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
+  public xmr(xmp paramxmp) {}
   
-  public xmr(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370267);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370295));
-    this.b = paramView.findViewById(2131371380);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371368));
-    paramView.setOnClickListener(this);
-    paramView.setOnLongClickListener(this);
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xfj)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
+      }
+    }
   }
   
-  public void a(int paramInt)
+  public void a(Bundle paramBundle1, Bundle paramBundle2)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xfj)localIterator.next()).a(paramBundle1, paramBundle2);
+      }
+    }
   }
   
-  public void onClick(View paramView)
+  public void c()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xfj)localIterator.next()).c();
+      }
+    }
   }
   
-  public boolean onLongClick(View paramView)
+  public void d()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemLongClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xfj)localIterator.next()).d();
+      }
+    }
+  }
+  
+  public void e()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xfj)localIterator.next()).e();
+      }
+    }
+  }
+  
+  public void f()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xfj)localIterator.next()).f();
+      }
+    }
+  }
+  
+  public void g()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((xfj)localIterator.next()).g();
+      }
+    }
   }
 }
 

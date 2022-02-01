@@ -1,17 +1,28 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.widget.ksong.KSongView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface akry
+public class akry
+  implements MediaPlayer.OnPreparedListener
 {
-  public abstract String getRefer();
+  public akry(RedPacketKSongFragment paramRedPacketKSongFragment, boolean paramBoolean) {}
   
-  public abstract void localVideoClick(Activity paramActivity);
-  
-  public abstract void onActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void sendClick(Activity paramActivity, Intent paramIntent);
-  
-  public abstract void setRefer(String paramString);
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketKSongFragment", 2, "playSong onPrepared");
+    }
+    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, true);
+    bhcl.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.getActivity(), true);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.a(true);
+    }
+    paramMediaPlayer.start();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a(this.jdField_a_of_type_Boolean);
+  }
 }
 
 

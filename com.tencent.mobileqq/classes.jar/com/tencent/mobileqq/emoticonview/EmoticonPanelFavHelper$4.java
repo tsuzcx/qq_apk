@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.emoticonview;
 
-import arbb;
-import arbj;
-import bcef;
+import asfl;
+import asft;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.qphone.base.util.QLog;
 
 class EmoticonPanelFavHelper$4
-  extends arbj<CustomEmotionData>
+  extends asft<CustomEmotionData>
 {
   EmoticonPanelFavHelper$4(EmoticonPanelFavHelper paramEmoticonPanelFavHelper) {}
   
@@ -18,7 +19,7 @@ class EmoticonPanelFavHelper$4
       QLog.d("EmoticonPanelFavHelper", 2, "download_finish");
     }
     this.this$0.updateFavEmoticonPanel();
-    bcef.b(this.this$0.mPanelController.app, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
+    bdla.b(this.this$0.mPanelController.app, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
   }
   
   public void onFileDone(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
@@ -32,7 +33,7 @@ class EmoticonPanelFavHelper$4
       QLog.d("EmoticonPanelFavHelper", 2, "roaming_finish");
     }
     if (this.this$0.mPanelController.app != null) {
-      ((arbb)this.this$0.mPanelController.app.getManager(103)).b(this.this$0.sListener);
+      ((asfl)this.this$0.mPanelController.app.getManager(QQManagerFactory.FAV_ROAMING_MANAGER)).b(this.this$0.sListener);
     }
     this.this$0.updateFavEmoticonPanel();
   }
@@ -46,7 +47,7 @@ class EmoticonPanelFavHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper.4
  * JD-Core Version:    0.7.0.1
  */

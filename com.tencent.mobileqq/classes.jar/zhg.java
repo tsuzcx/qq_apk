@@ -1,18 +1,9 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.biz.subscribe.comment.SubscribeCommentInputPopupWindow.1.1;
+import com.tencent.biz.qqstory.view.widget.InnerListView;
 
-public class zhg
-  implements zfn
+public abstract interface zhg
 {
-  zhg(zhf paramzhf) {}
-  
-  public void a(View paramView)
-  {
-    if (this.a.isShowing()) {
-      zhf.a(this.a).runOnUiThread(new SubscribeCommentInputPopupWindow.1.1(this));
-    }
-  }
+  public abstract void a(InnerListView paramInnerListView, View paramView, int paramInt);
 }
 
 

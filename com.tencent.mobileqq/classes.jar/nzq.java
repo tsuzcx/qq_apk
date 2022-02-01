@@ -1,108 +1,78 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
+import mqq.observer.BusinessObserver;
 
 public class nzq
-  extends abwi
+  implements BusinessObserver
 {
-  public nzq(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
-  {
-    super(paramQQAppInterface, paramMessageHandler);
-  }
+  public nzq(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public ArrayList<MessageRecord> a(long paramLong, List<msg_comm.Msg> paramList)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramList = b(paramLong, paramList);
-    ArrayList localArrayList = new ArrayList();
-    a(paramList, localArrayList, true);
-    paramList.clear();
-    return localArrayList;
-  }
-  
-  public void a(long paramLong, List<msg_comm.Msg> paramList)
-  {
-    paramList = a(paramLong, paramList);
-    ocw localocw;
-    long l2;
-    long l1;
-    String str;
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      localocw = ocw.a();
-      l2 = localocw.a(this.a, String.valueOf(paramLong));
-      l1 = l2;
-      if (l2 == 0L) {
-        l1 = 9223372036854775807L;
-      }
-      Iterator localIterator = paramList.iterator();
-      if (localIterator.hasNext())
-      {
-        str = ((MessageRecord)localIterator.next()).getExtInfoFromExtStr("pa_msgId");
-        if (TextUtils.isEmpty(str)) {
-          break label176;
-        }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean) {
+      if (!EqqAccountDetailActivity.a(this.a)) {
+        this.a.d(2131694983);
       }
     }
-    label176:
     for (;;)
     {
-      try
-      {
-        long l3 = Long.parseLong(str);
-        l2 = l1;
-        if (l3 < l1)
-        {
-          l2 = l1;
-          if (l3 != 0L)
-          {
-            localocw.a(this.a, String.valueOf(paramLong), l3);
-            l2 = l3;
-          }
-        }
-        l1 = l2;
+      EqqAccountDetailActivity.a(this.a);
+      if (EqqAccountDetailActivity.b(this.a) == 0) {
+        EqqAccountDetailActivity.a(this.a);
       }
-      catch (Exception localException)
-      {
-        continue;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("crmtest", 4, "receive sendCrmDetailInfoRequest, ts=" + System.currentTimeMillis());
       }
-      this.a.getMessageFacade().addMessage(paramList, this.a.getCurrentAccountUin(), true);
       return;
-    }
-  }
-  
-  public ArrayList<MessageRecord> b(long paramLong, List<msg_comm.Msg> paramList)
-  {
-    Object localObject1 = new ArrayList();
-    a(paramList, (List)localObject1);
-    paramList = new ArrayList();
-    bbkm localbbkm = new bbkm(this.a.getLongAccountUin(), paramLong, true, true, false, false);
-    localbbkm.h = true;
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = (msg_comm.Msg)((Iterator)localObject1).next();
+      if (paramBoolean) {}
       try
       {
-        localObject2 = a((msg_comm.Msg)localObject2, localbbkm);
-        if ((localObject2 == null) || (((List)localObject2).isEmpty())) {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+          localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+          if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
+          {
+            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail == null) || ((localGetEqqAccountDetailInfoResponse.seqno.has()) && (localGetEqqAccountDetailInfoResponse.seqno.get() != this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.seqno)))
+            {
+              this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse = localGetEqqAccountDetailInfoResponse;
+              paramBundle = new EqqDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse);
+              if ((EqqAccountDetailActivity.b(this.a)) && (paramBundle.followType == 1))
+              {
+                this.a.a(paramBundle, false);
+                continue;
+              }
+              this.a.a(paramBundle, true);
+              continue;
+            }
+            if ((!EqqAccountDetailActivity.c(this.a)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType != 1)) {
+              continue;
+            }
+            this.a.f();
+            continue;
+          }
+          this.a.d(2131694983);
           continue;
         }
-        paramList.addAll((Collection)localObject2);
+        if (EqqAccountDetailActivity.d(this.a)) {
+          continue;
+        }
+        this.a.d(2131694983);
       }
-      catch (Exception localException) {}
-      if (QLog.isColorLevel()) {
-        QLog.w("DynamicMsgProcessor", 2, "decodeSinglePBMsg_C2C error,", localException);
+      catch (Exception paramBundle) {}
+      if (!EqqAccountDetailActivity.e(this.a)) {
+        this.a.d(2131694983);
       }
     }
-    return paramList;
   }
 }
 

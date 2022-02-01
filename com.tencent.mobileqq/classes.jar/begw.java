@@ -1,26 +1,18 @@
-public abstract interface begw
+import android.graphics.Paint;
+import android.support.annotation.NonNull;
+
+class begw
+  extends behc
 {
-  public abstract int a();
+  begw(@NonNull String paramString)
+  {
+    super(1, paramString);
+  }
   
-  public abstract long a();
-  
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(begx parambegx);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract String b();
-  
-  public abstract boolean c();
-  
-  public abstract boolean d();
-  
-  public abstract int h();
+  float a(@NonNull Paint paramPaint)
+  {
+    return paramPaint.measureText(a());
+  }
 }
 
 

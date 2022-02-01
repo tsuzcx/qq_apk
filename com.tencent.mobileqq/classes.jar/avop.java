@@ -1,21 +1,52 @@
-import android.widget.ImageButton;
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.os.SystemClock;
 
 public class avop
-  implements PopupWindow.OnDismissListener
 {
-  public avop(MedalGuideView paramMedalGuideView) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  avoq jdField_a_of_type_Avoq;
+  boolean jdField_a_of_type_Boolean = false;
+  int b;
+  int c = 100;
   
-  public void onDismiss()
+  public avop(int paramInt, avoq paramavoq)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Avoq = paramavoq;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.b += paramInt;
+      if (this.jdField_a_of_type_Long == 0L)
+      {
+        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+        return;
+      }
+    } while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long <= this.c);
+    avoq localavoq = this.jdField_a_of_type_Avoq;
+    if (this.b > this.jdField_a_of_type_Int) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localavoq.onCheckSpeed(bool);
+      this.jdField_a_of_type_Long = 0L;
+      this.b = 0;
+      return;
     }
-    this.a.d = true;
-    this.a.a.performClick();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.c = paramInt;
   }
 }
 

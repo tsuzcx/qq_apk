@@ -1,117 +1,43 @@
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import android.content.Intent;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody;
-import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader;
+import java.util.Iterator;
+import java.util.List;
 
 public class anmt
-  extends abvx
 {
-  public anmt(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  anmp jdField_a_of_type_Anmp;
+  List<anmp> jdField_a_of_type_JavaUtilList;
+  
+  anmt(anmp paramanmp, List<anmp> paramList)
   {
-    super(paramQQAppInterface, paramMessageHandler);
+    this.jdField_a_of_type_Anmp = paramList;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  private void a(byte[] paramArrayOfByte)
+  public void a()
   {
-    if (paramArrayOfByte == null) {}
-    do
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      for (;;)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      do
       {
-        return;
-        C2CType0x211_SubC2CType0xb.MsgBody localMsgBody = new C2CType0x211_SubC2CType0xb.MsgBody();
-        try
-        {
-          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody)localMsgBody.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader)paramArrayOfByte.msg_msg_header.get();
-          if (paramArrayOfByte != null) {
-            break label71;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgHeader failed");
-            return;
-          }
+        if (!localIterator.hasNext()) {
+          break;
         }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgBody failed", paramArrayOfByte);
-    return;
-    label71:
-    long l1 = paramArrayOfByte.uint64_to_uin.get();
-    long l2 = paramArrayOfByte.uint64_room_id.get();
-    paramArrayOfByte = new Intent();
-    paramArrayOfByte.setAction("tencent.video.q2v.AudioEngineReady");
-    paramArrayOfByte.putExtra("uin", String.valueOf(l1));
-    paramArrayOfByte.putExtra("c2cuin", l1);
-    paramArrayOfByte.putExtra("c2croomid", l2);
-    this.a.getApp().sendBroadcast(paramArrayOfByte);
-    QLog.d("svenxu", 1, "ACTION_OPPOSITE_AUDIO_ENGINE_READY Send video c2c broadcast: selfUin = " + l1 + " roomid = " + l2);
-  }
-  
-  private void a(byte[] paramArrayOfByte, int paramInt)
-  {
-    switch (paramInt)
+      } while (((anmp)localIterator.next()).a());
+    }
+    for (int i = 1;; i = 0)
     {
-    default: 
+      if (i == 0) {
+        this.jdField_a_of_type_Anmp.c();
+      }
       return;
     }
-    a(paramArrayOfByte);
   }
   
-  public abxj a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public boolean a(anmp paramanmp)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return new abxj(null, true);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
-      {
-        a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime);
-      }
-      else
-      {
-        a(getClass().getName(), paramInt);
-        continue;
-        if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
-        {
-          boolean bool = lku.a(paramMsgInfo.vMsg);
-          this.a.getMsgHandler().a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime, bool);
-        }
-        else
-        {
-          a(getClass().getName(), paramInt);
-        }
-      }
-    }
+    return (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramanmp));
   }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if ((paramVarArgs != null) && (paramVarArgs.length == 3))
-    {
-      a((byte[])paramVarArgs[2], 11);
-      return;
-    }
-    a(getClass().getName(), paramInt);
-  }
-  
-  public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt) {}
 }
 
 

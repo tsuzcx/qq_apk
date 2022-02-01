@@ -1,36 +1,43 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.forward.ForwardMultServerShare.2;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.CheckTask.2.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.turingfd.sdk.xq.IteApkInfoResp;
+import com.tencent.turingfd.sdk.xq.IteApkInfoRespCallback;
 import java.util.Map;
-import tencent.im.msg.im_msg_body.RichText;
 
 public class atmu
-  implements ayeo
+  implements IteApkInfoRespCallback
 {
-  public atmu(ForwardMultServerShare.2 param2) {}
+  atmu(atms paramatms) {}
   
-  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  public void onResult(long paramLong, Map<Integer, IteApkInfoResp> paramMap)
   {
-    return null;
-  }
-  
-  public void onSend(ayep paramayep)
-  {
-    this.a.jdField_a_of_type_JavaUtilMap.put(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord, paramayep);
-    QLog.d(atms.a(), 1, new Object[] { "requestImageShare onSend result =", paramayep, ", isTimeOut=", Boolean.valueOf(atms.a(this.a.this$0)) });
-    if (this.a.jdField_a_of_type_JavaUtilMap.size() == atms.a(this.a.this$0).size())
+    int k = 2;
+    int m = 0;
+    String str3 = "";
+    String str4 = "";
+    int j = k;
+    int i = m;
+    String str2 = str3;
+    String str1 = str4;
+    if (paramMap != null)
     {
-      atqa.b("KEY_STAGE_2_UPLOAD_IMAGE_MULT");
-      atms.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilMap);
+      paramMap = (IteApkInfoResp)paramMap.get(Integer.valueOf(this.a.a));
+      j = k;
+      i = m;
+      str2 = str3;
+      str1 = str4;
+      if (paramMap != null)
+      {
+        j = (int)paramMap.getErrorCode();
+        i = paramMap.getSafeLevel();
+        str2 = paramMap.getRiskTips();
+        str1 = paramMap.getHandleUrl();
+      }
     }
-  }
-  
-  public void updateMsg(ayep paramayep)
-  {
-    if (paramayep != null) {
-      QLog.d(atms.a(), 1, "requestImageShare updateMsg info =" + paramayep);
-    }
+    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] <" + this.a.a + "> on checkresult. errCode:" + j + " safeLevel:" + i + " tipString:" + str2 + " jumpDetailUrl:" + str1);
+    new Handler(Looper.getMainLooper()).post(new MMApkFileSafeChecker.CheckTask.2.1(this, j, i, str2, str1));
   }
 }
 

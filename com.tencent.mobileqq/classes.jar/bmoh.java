@@ -1,33 +1,19 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.startup.step.SetSplash;
 
 class bmoh
-  implements TypeEvaluator<Rect>
+  implements View.OnLayoutChangeListener
 {
-  private Rect a;
+  bmoh(bmog parambmog) {}
   
-  bmoh() {}
-  
-  bmoh(Rect paramRect)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.a = paramRect;
-  }
-  
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
-  {
-    int i = paramRect1.left;
-    i = (int)((paramRect2.left - paramRect1.left) * paramFloat) + i;
-    int j = paramRect1.top;
-    j = (int)((paramRect2.top - paramRect1.top) * paramFloat) + j;
-    int k = paramRect1.right;
-    k = (int)((paramRect2.right - paramRect1.right) * paramFloat) + k;
-    int m = paramRect1.bottom;
-    m = (int)((paramRect2.bottom - paramRect1.bottom) * paramFloat) + m;
-    if (this.a == null) {
-      return new Rect(i, j, k, m);
+    if (paramView.getHeight() > 0)
+    {
+      bmog.a(this.a).removeOnLayoutChangeListener(this);
+      SetSplash.a(bmog.b(this.a));
     }
-    this.a.set(i, j, k, m);
-    return this.a;
   }
 }
 

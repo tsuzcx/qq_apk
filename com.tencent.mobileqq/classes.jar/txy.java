@@ -1,30 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.SheetItemClickProcessor.JuBaoAction.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
-class txy
-  extends Handler
+public class txy
+  extends txt
 {
-  txy(txx paramtxx, Looper paramLooper)
+  txy(txq paramtxq1, Activity paramActivity, txq paramtxq2, JSONObject paramJSONObject)
   {
-    super(paramLooper);
+    super(paramtxq1, paramActivity, paramtxq2, paramJSONObject);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    txx.a(this.a).set(1);
-    txx.a(this.a, true);
+    ThreadManager.executeOnSubThread(new SheetItemClickProcessor.JuBaoAction.1(this, paramString1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     txy
  * JD-Core Version:    0.7.0.1
  */

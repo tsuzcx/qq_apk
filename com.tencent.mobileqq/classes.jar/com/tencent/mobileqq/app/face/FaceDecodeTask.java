@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.face;
 
-import anbx;
 import android.graphics.Bitmap;
 import android.os.Looper;
 import android.text.TextUtils;
-import anhw;
+import aoem;
+import aokm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -128,7 +128,7 @@ public abstract class FaceDecodeTask
         return new FaceDecodeTaskImpl((QQAppInterface)paramAppInterface, paramFaceInfo, paramDecodeCompletionListener);
       }
     } while (!(paramAppInterface instanceof NearbyAppInterface));
-    return new anhw((NearbyAppInterface)paramAppInterface, paramFaceInfo, paramDecodeCompletionListener);
+    return new aokm((NearbyAppInterface)paramAppInterface, paramFaceInfo, paramDecodeCompletionListener);
   }
   
   public static FaceDecodeTask.FaceDecodeThreadInfo getNearbyFaceDecodeThreadInfo()
@@ -176,7 +176,7 @@ public abstract class FaceDecodeTask
               {
                 mDecodeRunnables[i] = new FaceDecodeTask.FaceDecodeRunnable(null);
                 mDecodeThreads[i] = ThreadManager.newFreeThread(mDecodeRunnables[i], "FaceDecodeThread", 5);
-                if (anbx.a().c()) {
+                if (aoem.a().c()) {
                   mDecodeThreads[i].setPriority(1);
                 }
                 if (mDecodeThreads[i].getState() != Thread.State.NEW) {

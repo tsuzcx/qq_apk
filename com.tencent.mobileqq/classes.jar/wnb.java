@@ -1,29 +1,16 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
 
-public final class wnb
-  implements TVK_ICacheMgr.IPreloadCallback
+public class wnb
+  extends wfh
 {
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public wnb(qqstory_service.RspMsgTabNodeWatched paramRspMsgTabNodeWatched)
   {
-    synchronized ()
-    {
-      wnf localwnf = wmz.a();
-      wmz.a().post(new TVKPreloader.2.2(this, localwnf, paramString1, paramInt, paramString2));
-      return;
-    }
+    super(paramRspMsgTabNodeWatched.result);
   }
   
-  public void onPreLoadSucess(String arg1, String paramString2)
+  public String toString()
   {
-    synchronized ()
-    {
-      paramString2 = wmz.a();
-      wmz.a().post(new TVKPreloader.2.1(this, paramString2));
-      return;
-    }
+    return "MsgTabNodeWatchedResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 

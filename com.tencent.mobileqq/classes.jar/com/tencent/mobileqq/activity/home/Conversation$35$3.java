@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajcb;
-import akho;
+import ajxq;
+import aldh;
 
 public class Conversation$35$3
   implements Runnable
 {
-  public Conversation$35$3(ajcb paramajcb, int paramInt) {}
+  public Conversation$35$3(ajxq paramajxq, int paramInt) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      this.jdField_a_of_type_Ajcb.a.a.a(31, 2);
-      this.jdField_a_of_type_Ajcb.a.a.a(-1, null);
+      this.jdField_a_of_type_Ajxq.a.a.a(31, 2);
+      this.jdField_a_of_type_Ajxq.a.a.a(-1, null);
       return;
     }
-    this.jdField_a_of_type_Ajcb.a.a.l();
+    this.jdField_a_of_type_Ajxq.a.a.l();
   }
 }
 

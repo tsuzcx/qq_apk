@@ -1,58 +1,49 @@
-import android.text.Spanned;
-import android.text.TextUtils;
+import android.os.Build;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.shortvideo.util.VidUtil;
+import java.io.File;
 
-class bmwf
-  extends bnij
+public class bmwf
+  extends bmww
 {
-  bmwf(bmwc parambmwc, int paramInt)
+  private static final String d = AppConstants.SDCARD_ROOT + "/DCIM/Video/";
+  private static final String e = AppConstants.SDCARD_ROOT + anvx.a(2131700112);
+  private static final String f = AppConstants.SDCARD_ROOT + anvx.a(2131700113);
+  private static final String g = AppConstants.SDCARD_ROOT + "/Camera/Video/";
+  private static final String h = AppConstants.SDCARD_ROOT + "/DCIM/Camera/";
+  
+  public static String a()
   {
-    super(paramInt);
+    String str = Build.MODEL.toUpperCase();
+    if (str.contains("GN9000L")) {
+      return e;
+    }
+    if ((str.contains("MX4")) || (str.contains("MX6")) || (str.contains("MX5")) || (str.contains("M355")) || (str.contains("M571C"))) {
+      return d;
+    }
+    if (str.contains("M040")) {
+      return g;
+    }
+    if ((str.contains("VIVO X7")) || (str.contains("VIVO X6A")) || (str.contains("VIVO XPLAY6")) || (str.contains("VIVO X5PRO")) || (str.contains("VIVO X9 PLUS")) || (str.contains("VIVO Y51A")) || (str.contains("VIVO X9I")) || (str.contains("VIVO X9")) || (str.contains("VIVO X6D"))) {
+      return f;
+    }
+    return h;
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public static String a(String paramString)
   {
-    String str1;
-    String str2;
-    int i;
-    if (this.jdField_a_of_type_Bmwc.b() == 0)
-    {
-      str1 = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-      str2 = bfby.b(str1);
-      String[] arrayOfString = this.jdField_a_of_type_Bmwc.a(str2).split("\n");
-      int m = arrayOfString.length;
-      int j = 0;
-      i = 0;
-      if (j < m)
-      {
-        int k = arrayOfString[j].length();
-        int n = k / 5;
-        if (k % 5 > 0) {}
-        for (k = 1;; k = 0)
-        {
-          i += k + n;
-          j += 1;
-          break;
-        }
-      }
-      if (!TextUtils.equals(paramCharSequence, "\n")) {
-        break label261;
-      }
-      i += 1;
+    StringBuilder localStringBuilder = new StringBuilder(paramString);
+    File localFile = new File(localStringBuilder.toString());
+    paramString = localStringBuilder;
+    if (!localFile.exists()) {
+      localFile.mkdirs();
     }
-    label261:
-    for (;;)
+    for (paramString = localStringBuilder;; paramString = new StringBuilder(paramString))
     {
-      if (i > 4)
-      {
-        if (!TextUtils.equals("", paramCharSequence)) {
-          a();
-        }
-        return "";
+      paramString.append(VidUtil.generateVid()).append(".mp4");
+      if (!new File(paramString.toString()).exists()) {
+        return paramString.toString();
       }
-      this.jdField_a_of_type_Int = (str1.length() - str2.length() + 20);
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
-      this.jdField_a_of_type_Int = 20;
-      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
     }
   }
 }

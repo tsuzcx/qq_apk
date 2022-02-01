@@ -1,24 +1,30 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
+
 public class aydo
+  implements bkzq
 {
-  public aydp a;
+  public aydo(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment, bkzi parambkzi) {}
   
-  public String a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return null;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.a == null) {
-      this.a = new aydp();
+    switch (paramInt)
+    {
     }
-    this.a.a = paramString1;
-    this.a.b = paramString2;
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      axqn.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app, 4);
+      continue;
+      paramView = (axqt)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app.getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER);
+      if (paramView != null) {
+        paramView.a("", 0, false);
+      }
+    }
   }
 }
 

@@ -1,23 +1,18 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkChangeReceiver.1;
+import org.jetbrains.annotations.NotNull;
 
-public class srk
-  implements MessageQueue.IdleHandler
+public final class srk
+  extends BroadcastReceiver
 {
-  public srk(FastWebActivity paramFastWebActivity) {}
+  private srk(srh paramsrh) {}
   
-  public boolean queueIdle()
+  public void onReceive(@NotNull Context paramContext, @NotNull Intent paramIntent)
   {
-    if (FastWebActivity.a(this.a).c == 0) {}
-    for (String str = "";; str = FastWebActivity.a(this.a).p)
-    {
-      int i = this.a.getIntent().getIntExtra("floating_window_scene", 0);
-      swb.a(FastWebActivity.a(this.a).o, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).d), FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).c(), str, FastWebActivity.a(this.a).m, FastWebActivity.a(this.a).n, FastWebActivity.a(this.a), FastWebActivity.b(this.a), i, this.a.a.mChannelID);
-      return false;
-    }
+    srh.a(this.a).post(new BandwidthPredictor.NetworkChangeReceiver.1(this));
   }
 }
 

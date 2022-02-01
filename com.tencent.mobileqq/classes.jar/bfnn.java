@@ -1,51 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.Map;
+import java.util.UUID;
 
-public final class bfnn
-  implements Parcelable.Creator<UpgradeTIMWrapper>
+class bfnn
+  extends aahl
 {
-  public UpgradeTIMWrapper a(Parcel paramParcel)
-  {
-    Object localObject = null;
-    String str2 = paramParcel.readString();
-    String str3 = paramParcel.readString();
-    String str4 = paramParcel.readString();
-    String str5 = paramParcel.readString();
-    String str6 = paramParcel.readString();
-    int j = 0;
-    for (;;)
-    {
-      try
-      {
-        int i = paramParcel.readInt();
-        j = i;
-        String str1 = paramParcel.readString();
-        paramParcel.printStackTrace();
-      }
-      catch (Exception paramParcel)
-      {
-        try
-        {
-          paramParcel = paramParcel.readString();
-          return new UpgradeTIMWrapper(str2, str3, str4, str5, str6, i, str1, paramParcel);
-        }
-        catch (Exception paramParcel)
-        {
-          break label81;
-        }
-        paramParcel = paramParcel;
-        str1 = null;
-        i = j;
-      }
-      label81:
-      paramParcel = localObject;
-    }
-  }
+  bfnn(bfnm parambfnm) {}
   
-  public UpgradeTIMWrapper[] a(int paramInt)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    return null;
+    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
+    do
+    {
+      do
+      {
+        return;
+        paramBundle = paramBundle.getString("itemKey");
+      } while (paramBundle == null);
+      paramBundle = UUID.fromString(paramBundle);
+      paramBundle = (TroopFileTransferManager.Item)this.a.jdField_a_of_type_JavaUtilMap.get(paramBundle);
+    } while (paramBundle == null);
+    bfnm.a(this.a, paramBundle, paramBoolean, paramInt1, paramInt2, paramString1, paramString2, paramString3);
   }
 }
 

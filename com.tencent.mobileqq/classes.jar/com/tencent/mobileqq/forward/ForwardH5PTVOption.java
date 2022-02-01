@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.forward;
 
-import amsw;
-import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import atku;
-import atky;
-import bftf;
+import anvk;
+import anvx;
+import aupp;
+import aupt;
+import bhbx;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
@@ -18,10 +19,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import npt;
+import nwu;
 
 public class ForwardH5PTVOption
-  extends atky
+  extends aupt
 {
   protected ResultReceiver a;
   
@@ -34,16 +35,16 @@ public class ForwardH5PTVOption
   public List<RecentUser> a(List<RecentUser> paramList)
   {
     ArrayList localArrayList = new ArrayList();
-    amsw localamsw = (amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    anvk localanvk = (anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("choose_friend_h5_type", 0);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(atku.h))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
-        if ((localRecentUser.getType() == 0) && (!bftf.a(localRecentUser.uin)) && (!bftf.c(localRecentUser.uin)) && (!npt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
+      if ((localRecentUser != null) && ((localRecentUser.getType() != 1006) || (a(aupp.h))) && (localRecentUser.getType() != 9501) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 7000)) {
+        if ((localRecentUser.getType() == 0) && (!bhbx.a(localRecentUser.uin)) && (!bhbx.c(localRecentUser.uin)) && (!nwu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType())))
         {
-          if ((localamsw != null) && (localamsw.b(localRecentUser.uin)) && ((i == 1) || (i == 13))) {
+          if ((localanvk != null) && (localanvk.b(localRecentUser.uin)) && ((i == 1) || (i == 13))) {
             localArrayList.add(localRecentUser);
           }
         }
@@ -161,7 +162,7 @@ public class ForwardH5PTVOption
     String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("choose_friend_title");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = amtj.a(2131703887);
+      str1 = anvx.a(2131704238);
     }
     return str1;
   }

@@ -1,19 +1,39 @@
-import android.support.v4.view.ViewPager.PageTransformer;
-import android.view.View;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wrk
-  implements wuk
+  extends QQUIEventReceiver<wri, wrh>
 {
-  public final ViewPager.PageTransformer a;
-  
-  public wrk(ViewPager.PageTransformer paramPageTransformer)
+  public wrk(wri paramwri)
   {
-    this.a = paramPageTransformer;
+    super(paramwri);
   }
   
-  public void a(View paramView, float paramFloat)
+  public void a(@NonNull wri paramwri, @NonNull wrh paramwrh)
   {
-    this.a.transformPage(paramView, paramFloat);
+    if (paramwri.a()) {}
+    do
+    {
+      return;
+      if (paramwrh.jdField_a_of_type_Boolean)
+      {
+        wri.a(paramwri);
+        return;
+      }
+      if ((paramwrh.a() != null) && (!paramwrh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramwrh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    return;
+    wri.a(paramwri);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wrh.class;
   }
 }
 

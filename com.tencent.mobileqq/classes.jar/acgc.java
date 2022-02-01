@@ -1,45 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.NearByAssistantTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class acgc
-  implements abyl
+  implements acgx
 {
-  public int a()
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    return 0;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.NearByAssistantTmp localNearByAssistantTmp = new msg_svc.NearByAssistantTmp();
-    localNearByAssistantTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.getMsgCache().p(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
+    Object localObject = null;
+    try
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("nearby_assistant", 4, "发送附近人助手临时会话消息 有NearbyAssistantKey------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      paramString = new JSONObject(paramVarArgs[0]);
+      acho.a("GdtC2SJsCallHandler", paramString.toString());
+      int i = paramString.optInt("operationType");
+      int j = paramString.optInt("businessType");
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString.getJSONObject("adInfo")));
+      achv.a(i, j, localAdInfo);
+      if (paramacfw != null) {}
+      for (paramString = paramacfw.a();; paramString = null)
+      {
+        paramVarArgs = localObject;
+        if (paramacfw != null) {
+          paramVarArgs = paramacfw.a();
+        }
+        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "c2sReport", paramVarArgs, new GdtAd(localAdInfo));
+        return true;
       }
-      localNearByAssistantTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+      return true;
     }
-    paramRoutingHead.nearby_assistant_tmp.set(localNearByAssistantTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8014;
+    catch (Exception paramacfw)
+    {
+      acho.d("GdtC2SJsCallHandler", "handleJsCallRequest", paramacfw);
+    }
   }
 }
 

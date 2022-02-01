@@ -1,63 +1,85 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.handler.AppleEmojiHandler.1;
-import com.tencent.mobileqq.earlydownload.xmldata.AppleEmojiData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.config.QConfigureException;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.lang.reflect.Member;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aqxh
-  extends aqxl
 {
-  public aqxh(QQAppInterface paramQQAppInterface)
+  private aqxk jdField_a_of_type_Aqxk = new aqxk(null);
+  private aqxl jdField_a_of_type_Aqxl = new aqxl(null);
+  private aqxm jdField_a_of_type_Aqxm = new aqxm(null);
+  private List<Member> jdField_a_of_type_JavaUtilList = new ArrayList();
+  
+  public static aqxh a()
   {
-    super("qq.android.appleemoji", paramQQAppInterface);
+    return aqxj.a;
   }
   
-  public int a()
+  private static String b()
   {
-    return 10001;
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append("-----------------------------------------------\n");
+    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+    if (arrayOfStackTraceElement != null)
+    {
+      int j = arrayOfStackTraceElement.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = arrayOfStackTraceElement[i].toString();
+        if ((!str.contains("com.tencent.mobileqq.config.QConfigWatchDog")) && (!str.contains("com.qq.android.dexposed.DexposedBridge")) && (!str.contains("me.weishu.epic.art")) && (!str.contains("java.lang.reflect.Method.invoke")) && (!str.contains("dalvik.system.VMStack.getThreadStackTrace")) && (!str.contains("java.lang.Thread.getStackTrace")) && (!str.contains("org.json.JSONTokener")) && (!str.contains("org.json.JSONObject.<init>"))) {
+          localStringBuilder.append(str).append("\n");
+        }
+        i += 1;
+      }
+    }
+    return localStringBuilder.toString();
   }
   
-  public Class<? extends XmlData> a()
+  private void b(aqwt paramaqwt, aqxa[] paramArrayOfaqxa, int paramInt, Exception paramException) {}
+  
+  private void b(aqwu paramaqwu, File paramFile, Exception paramException) {}
+  
+  private void b(Class paramClass, Exception paramException) {}
+  
+  private static void b(Exception paramException, String paramString1, String paramString2)
   {
-    return AppleEmojiData.class;
+    bdjw.a(new QConfigureException(paramException, "TAG: " + paramString2 + " Message: " + paramException.getMessage()), paramString1);
   }
   
-  public String a()
+  public void a(aqwt paramaqwt, aqxa[] paramArrayOfaqxa, int paramInt, Exception paramException)
   {
-    return "AppleMojiHandler";
+    int i = paramaqwt.type();
+    if (QLog.isColorLevel()) {
+      QLog.d("QConfigWatchDog", 2, "handleParsedJsonOrXmlException, parsed type=" + i + ", version=" + paramInt, paramException);
+    }
+    b(paramException, "parsed config failed, type=" + i + ", version=" + paramInt, "QConfigWatchDog_parsedConfig");
+    b(paramaqwt, paramArrayOfaqxa, paramInt, paramException);
   }
   
-  public void a(String paramString)
+  public void a(aqwu paramaqwu, File paramFile, Exception paramException)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess:" + paramString);
+      QLog.d("QConfigWatchDog", 2, "handleParsedIOException", paramException);
     }
-    File localFile = new File(paramString);
-    if (!localFile.exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppleMojiHandler", 2, "doOnDownloadSuccess sorse not exists");
-      }
-      return;
-    }
-    ThreadManager.excute(new AppleEmojiHandler.1(this, localFile, paramString), 64, null, true);
+    b(paramException, "write\\read IO failed", "QConfigWatchDog_parsedIO");
+    b(paramaqwu, paramFile, paramException);
   }
   
-  public boolean a()
+  public void a(Class paramClass, Exception paramException)
   {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("QConfigWatchDog", 2, "handleParsedJsonOrXmlException", paramException);
+    }
+    b(paramException, "parsed json\\Xml failed", "QConfigWatchDog_parsedIO");
+    b(paramClass, paramException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxh
  * JD-Core Version:    0.7.0.1
  */

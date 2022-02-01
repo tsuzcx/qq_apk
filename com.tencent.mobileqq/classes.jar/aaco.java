@@ -1,9 +1,6 @@
-public class aaco
+public abstract interface aaco
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public abstract void a(String paramString);
 }
 
 

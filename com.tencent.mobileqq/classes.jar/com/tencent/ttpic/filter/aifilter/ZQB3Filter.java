@@ -42,13 +42,6 @@ public class ZQB3Filter
     addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33987));
   }
   
-  public void ClearGLSL()
-  {
-    this.mGpuImageLookupFilter.ClearGLSL();
-    this.mGpuLookupFrame.clear();
-    super.ClearGLSL();
-  }
-  
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     addParam(new UniformParam.FloatsParam("faceCenter", this.faceCenter));
@@ -139,6 +132,13 @@ public class ZQB3Filter
     this.mGpuImageLookupFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, this.mGpuLookupFrame);
     addParam(new UniformParam.TextureParam("inputImageTexture2", this.mGpuLookupFrame.getTextureId(), 33987));
     super.beforeRender(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void clearGLSL()
+  {
+    this.mGpuImageLookupFilter.clearGLSL();
+    this.mGpuLookupFrame.clear();
+    super.clearGLSL();
   }
   
   public void clearGLSLSelf()

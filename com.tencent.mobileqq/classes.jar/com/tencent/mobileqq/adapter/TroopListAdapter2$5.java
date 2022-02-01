@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.adapter;
 
-import ally;
-import almf;
+import amjz;
+import amkg;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import mqq.os.MqqHandler;
 public class TroopListAdapter2$5
   implements Runnable
 {
-  public TroopListAdapter2$5(ally paramally, TroopManager paramTroopManager, String paramString, almf paramalmf, boolean paramBoolean) {}
+  public TroopListAdapter2$5(amjz paramamjz, TroopManager paramTroopManager, String paramString, amkg paramamkg, boolean paramBoolean) {}
   
   public void run()
   {

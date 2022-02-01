@@ -4,12 +4,12 @@ public class TavCutVersion
 {
   public static String getCommitId()
   {
-    return "da24fd6";
+    return "521dd9b";
   }
   
   public static String getVersion()
   {
-    return "1.1.5.51";
+    return "1.1.7.24";
   }
 }
 

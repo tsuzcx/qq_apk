@@ -1,52 +1,19 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
 
-class ymc
-  implements bagj
+public final class ymc
+  implements Parcelable.Creator<EditTakeGifSource>
 {
-  ymc(ymb paramymb, ylu paramylu) {}
-  
-  public void onEncodeError(int paramInt, Throwable arg2)
+  public EditTakeGifSource a(Parcel paramParcel)
   {
-    synchronized (ymb.a(this.jdField_a_of_type_Ymb))
-    {
-      this.jdField_a_of_type_Ylu.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "onEncodeError, errorCode= " + paramInt);
-      }
-      ymb.a(this.jdField_a_of_type_Ymb).notifyAll();
-      return;
-    }
+    return new EditTakeGifSource(paramParcel);
   }
   
-  public void onEncodeFinish(String paramString)
+  public EditTakeGifSource[] a(int paramInt)
   {
-    synchronized (ymb.a(this.jdField_a_of_type_Ymb))
-    {
-      this.jdField_a_of_type_Ylu.c = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "onEncodeFinish, filePath= " + paramString);
-      }
-      ymb.a(this.jdField_a_of_type_Ymb).notifyAll();
-      return;
-    }
+    return new EditTakeGifSource[paramInt];
   }
-  
-  public void onEncodeFrame()
-  {
-    if ((this.jdField_a_of_type_Ylu != null) && (!this.jdField_a_of_type_Ylu.d) && (!this.jdField_a_of_type_Ylu.b))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "cancel mergeVideoTask path : " + this.jdField_a_of_type_Ylu.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.b + " currContext id : " + this.jdField_a_of_type_Ylu + "  mCanceled : " + this.jdField_a_of_type_Ylu.b);
-      }
-      this.jdField_a_of_type_Ymb.b(this.jdField_a_of_type_Ylu);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "after cancel : " + this.jdField_a_of_type_Ylu.b);
-      }
-    }
-  }
-  
-  public void onEncodeStart() {}
 }
 
 

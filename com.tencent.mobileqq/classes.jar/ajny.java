@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajny
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public ajny(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public ajny(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = 2;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.notifyDataSetChanged();
+    int i = ContactsTroopAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter, this.jdField_a_of_type_Int);
+    new bdlf(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("clk_inactive").a(new String[] { "", String.valueOf(i) }).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

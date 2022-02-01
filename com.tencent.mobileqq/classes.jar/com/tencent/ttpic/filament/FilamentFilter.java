@@ -9,6 +9,7 @@ import android.opengl.EGLContext;
 import android.opengl.GLES20;
 import android.support.annotation.RequiresApi;
 import android.view.Surface;
+import com.google.android.filament.Camera;
 import com.google.android.filament.Engine;
 import com.google.android.filament.FilamentJNI;
 import com.google.android.filament.Texture;
@@ -31,8 +32,8 @@ import com.tencent.filter.SurfaceTextureFilter;
 import com.tencent.ttpic.ar.sensor.representation.Matrix;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
+import com.tencent.ttpic.baseutils.device.DeviceInstance.SOC_CLASS;
 import com.tencent.ttpic.baseutils.device.DeviceUtils;
-import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.gameplaysdk.model.Range;
@@ -44,10 +45,14 @@ import com.tencent.ttpic.openapi.initializer.Ace3DEngineInitializer;
 import com.tencent.ttpic.openapi.listener.MaterialLoadFinishListener;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.model.AnimojiExpressionJava;
+import com.tencent.ttpic.openapi.model.CameraTransform;
+import com.tencent.ttpic.openapi.model.CameraViewConfig;
 import com.tencent.ttpic.openapi.model.EyeNodeItem;
 import com.tencent.ttpic.openapi.model.GLBItemJava;
+import com.tencent.ttpic.openapi.model.KapuModelViewParam;
 import com.tencent.ttpic.openapi.model.NodeItemJava;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.util.MatrixUtil;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil.GLB_FIELD;
 import com.tencent.ttpic.openapi.util.VideoTemplateParser;
 import com.tencent.ttpic.trigger.TriggerCtrlItem;
@@ -71,12 +76,12 @@ public class FilamentFilter
   implements AEFilterI
 {
   private static final boolean DEBUG = false;
+  private static final float KAPU_SCALE = 1.0F;
   private static final String TAG = FilamentFilter.class.getSimpleName();
   private static final boolean USE_SHARE_CONTEXT = true;
   private List<String> animationItemNames;
   private ARManager arManager;
   private Texture cameraTexture;
-  private List<Texture> cameraTextures = new ArrayList();
   private boolean canUseShareContext;
   private String dataPath;
   private String defaultAnimationName = "";
@@ -88,40 +93,48 @@ public class FilamentFilter
   private Map<String, Frame> frames = new HashMap();
   private Map<GLBItemJava, byte[]> glbBytesMap = new HashMap();
   private List<GLBItemJava> glbList;
-  private boolean hasLoadGlbData;
   private boolean hasSetCameraTexture = false;
   private int height = -1;
   private final HashMap<String, Float> jawOpenThresholdMap = new HashMap();
   private byte[] jsonData;
+  private String jsonName;
   private Set<String> keys = new HashSet();
+  private ArrayList<CMShowUserLoader> loaderList = new ArrayList();
   private BaseFilter mCopyFilter = new BaseFilter(BaseFilter.getFragmentShader(0));
   private Frame mCopyFrame = new Frame();
   private SimpleGLThread mHandler;
   private SurfaceTextureFilter mPreviewFilter = new SurfaceTextureFilter();
   private int[] mPreviewTextureId = new int[2];
   private EGLContext mShareContext;
+  private final VideoMaterial material;
   private volatile boolean modelLoadSucceed;
   private volatile boolean modelReady;
+  private List<Texture> multiViewerTextures = new ArrayList();
   private boolean needFaceMesh = false;
   private boolean needRender;
   private MaterialLoadFinishListener onLoadFinishListener;
   private int rotation = 0;
+  private CmShowMaterialDisplayType showMaterialDisplayType = null;
   private int skipFrame;
   private Surface surface;
   private SurfaceTexture surfaceTexture;
+  private KapuModelViewParam viewParam;
   private int width = -1;
   
   @RequiresApi(api=17)
   public FilamentFilter(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
+    this.material = paramVideoMaterial;
     this.glbList = paramVideoMaterial.getGlbList();
     updateJawOpenThreshold(this.glbList);
     this.dataPath = paramVideoMaterial.getDataPath();
-    this.arManager = new ARManager(this.glbList, paramVideoMaterial.getIsAR3DMaterial());
+    this.jsonName = paramVideoMaterial.getJsonName();
+    this.arManager = new ARManager(this.glbList, paramVideoMaterial.getIsAR3DMaterial(), paramVideoMaterial.getArShaderPlanOffset());
     paramVideoMaterial = this.glbList.iterator();
     while (paramVideoMaterial.hasNext())
     {
-      Iterator localIterator = ((GLBItemJava)paramVideoMaterial.next()).nodeList.iterator();
+      GLBItemJava localGLBItemJava = (GLBItemJava)paramVideoMaterial.next();
+      Iterator localIterator = localGLBItemJava.nodeList.iterator();
       while (localIterator.hasNext())
       {
         NodeItemJava localNodeItemJava = (NodeItemJava)localIterator.next();
@@ -134,6 +147,9 @@ public class FilamentFilter
           paramTriggerManager.addTriggers(localTriggerCtrlItem);
           localNodeItemJava.triggerCtrlItem = localTriggerCtrlItem;
         }
+      }
+      if (localGLBItemJava.triggerCtrlItem != null) {
+        paramTriggerManager.addTriggers(localGLBItemJava.triggerCtrlItem);
       }
     }
     paramVideoMaterial = this.glbList.iterator();
@@ -202,6 +218,9 @@ public class FilamentFilter
   private List<FaceInfo> getMaxValidFaceInfoList(List<FaceInfo> paramList, int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
+    if (paramList == null) {
+      return localArrayList;
+    }
     int i = 0;
     int j = 0;
     if ((i < paramList.size()) && (j < paramInt))
@@ -219,19 +238,48 @@ public class FilamentFilter
     return localArrayList;
   }
   
-  private void initCameraTexture()
+  private void initCameraTexture(int paramInt1, int paramInt2)
   {
-    if ((!this.keys.isEmpty()) && (this.cameraTextures.isEmpty()))
+    if ((this.needFaceMesh) || (this.hasSetCameraTexture))
     {
-      Iterator localIterator = this.keys.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (String)localIterator.next();
-        localObject = (Frame)this.frames.get(localObject);
-        if (localObject != null) {
-          this.cameraTextures.add(new Texture.Builder().width(((Frame)localObject).width).height(((Frame)localObject).height).levels(1).usage(16).sampler(Texture.Sampler.SAMPLER_2D).format(Texture.InternalFormat.RGBA8).build(this.filamentJNI.getEngine()));
-        }
+      if (this.cameraTexture != null) {
+        this.filamentJNI.getEngine().destroyTexture(this.cameraTexture);
       }
+      this.cameraTexture = new Texture.Builder().width(paramInt1).height(paramInt2).levels(1).usage(16).sampler(Texture.Sampler.SAMPLER_2D).format(Texture.InternalFormat.RGBA8).build(this.filamentJNI.getEngine());
+      this.filamentJNI.setImage(this.cameraTexture);
+      FilamentJNI localFilamentJNI = this.filamentJNI;
+      long l = this.cameraTexture.getNativeObject();
+      localFilamentJNI.setDynamicTexture(new String[] { "$cameraTexture" }, new long[] { l });
+    }
+  }
+  
+  private void initMultiViewerTexture(Map<String, Frame> paramMap)
+  {
+    long[] arrayOfLong;
+    if ((!this.keys.isEmpty()) && (this.multiViewerTextures.isEmpty()))
+    {
+      arrayOfLong = new long[this.keys.size()];
+      Iterator localIterator = this.keys.iterator();
+      int i = 0;
+      if (localIterator.hasNext())
+      {
+        Object localObject = (Frame)paramMap.get((String)localIterator.next());
+        if (localObject == null) {
+          break label198;
+        }
+        localObject = new Texture.Builder().width(((Frame)localObject).width).height(((Frame)localObject).height).levels(1).usage(16).sampler(Texture.Sampler.SAMPLER_2D).format(Texture.InternalFormat.RGBA8).build(this.filamentJNI.getEngine());
+        this.multiViewerTextures.add(localObject);
+        int j = i + 1;
+        arrayOfLong[i] = ((Texture)localObject).getNativeObject();
+        i = j;
+      }
+    }
+    label198:
+    for (;;)
+    {
+      break;
+      this.filamentJNI.setDynamicTexture((String[])this.keys.toArray(new String[0]), arrayOfLong);
+      return;
     }
   }
   
@@ -253,14 +301,97 @@ public class FilamentFilter
     }
   }
   
-  private void resize(int paramInt1, int paramInt2, int paramInt3)
+  private void loadKapuData()
   {
+    if ((this.loaderList == null) || (this.loaderList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      if (!this.modelLoadSucceed)
+      {
+        this.filamentJNI.loadAllData();
+        long[] arrayOfLong = new long[this.loaderList.size()];
+        i = 0;
+        while (i < this.loaderList.size())
+        {
+          arrayOfLong[i] = ((CMShowUserLoader)this.loaderList.get(i)).getNativeObject();
+          i += 1;
+        }
+        this.filamentJNI.setupLoaders(arrayOfLong);
+        this.modelLoadSucceed = true;
+      }
+      int j = 0;
+      int i = 0;
+      if (j < this.loaderList.size())
+      {
+        if ((i != 0) || (((CMShowUserLoader)this.loaderList.get(j)).getNeedUpdate())) {}
+        for (i = 1;; i = 0)
+        {
+          j += 1;
+          break;
+        }
+      }
+      if (i != 0)
+      {
+        FilaBenchUtil.benchStart(FilamentUtil.BenchTag.KAPU_LOAD_DATA.tag);
+        this.filamentJNI.loadDataForCMShow();
+        this.filamentJNI.setKapuAnimation();
+        FilaBenchUtil.benchEnd(FilamentUtil.BenchTag.KAPU_LOAD_DATA.tag);
+        if (this.showMaterialDisplayType != null) {
+          setKapuMaterialDisplayType(this.showMaterialDisplayType);
+        }
+        this.filamentJNI.initKapuModelPosition();
+        AceMaterialManager.getInstance().getPosition();
+        AceMaterialManager.getInstance().getScale();
+        AceMaterialManager.getInstance().getRotation();
+        i = 0;
+        while (i < this.loaderList.size())
+        {
+          ((CMShowUserLoader)this.loaderList.get(i)).setNeedUpdate(false);
+          if ((this.viewParam != null) && (this.viewParam.viewSize != null) && (this.viewParam.boundingBox != null)) {
+            this.filamentJNI.adjustKapuModelView(i, this.viewParam.viewSize, this.viewParam.boundingBox, this.viewParam.bottomMargin);
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  private void resize(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    if (this.material.isKapuMaterial())
+    {
+      resizeKapu(paramInt1, paramInt2);
+      return;
+    }
+    resizeNormal(paramInt1, paramInt2, paramInt3, paramBoolean);
+  }
+  
+  private void resizeKapu(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 * 1.0F != this.width) || (paramInt2 * 1.0F != this.height))
+    {
+      this.width = ((int)(paramInt1 * 1.0F));
+      this.height = ((int)(paramInt2 * 1.0F));
+      FilaBenchUtil.benchStart(FilamentUtil.BenchTag.KAPU_INIT_FILTER.tag);
+      setupFilament();
+      this.filamentJNI.resize(this.width, this.height);
+      this.surfaceTexture.setDefaultBufferSize(this.width, this.height);
+      FilaBenchUtil.benchEnd(FilamentUtil.BenchTag.KAPU_INIT_FILTER.tag);
+    }
+  }
+  
+  private void resizeNormal(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    float f = 1.0F;
     if ((paramInt1 != this.width) || (paramInt2 != this.height) || (this.rotation != paramInt3))
     {
       this.width = paramInt1;
       this.height = paramInt2;
       this.rotation = paramInt3;
-      float f = Math.min(paramInt1 / FilamentUtil.getProcessWidth(), 1.0F);
+      if (paramBoolean) {
+        f = Math.min(paramInt1 / FilamentUtil.getProcessWidth(), 1.0F);
+      }
       int i = (int)(paramInt1 * f);
       int j = (int)(f * paramInt2);
       if (paramInt3 != 90)
@@ -278,62 +409,53 @@ public class FilamentFilter
       setupFilament();
       this.filamentJNI.resize(paramInt1, paramInt2);
       this.surfaceTexture.setDefaultBufferSize(paramInt1, paramInt2);
-      if ((this.needFaceMesh) || (this.hasSetCameraTexture))
-      {
-        if (this.cameraTexture != null) {
-          this.filamentJNI.getEngine().destroyTexture(this.cameraTexture);
-        }
-        this.cameraTexture = new Texture.Builder().width(paramInt1).height(paramInt2).levels(1).usage(16).sampler(Texture.Sampler.SAMPLER_2D).format(Texture.InternalFormat.RGBA8).build(this.filamentJNI.getEngine());
-        if ((this.needFaceMesh) && (this.modelLoadSucceed)) {
-          this.filamentJNI.setImage(this.cameraTexture);
-        }
-      }
-    }
-  }
-  
-  private void resizeForAr(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 != this.width) || (paramInt2 != this.height))
-    {
-      this.width = paramInt1;
-      this.height = paramInt2;
-      this.rotation = 0;
-      setupFilament();
-      this.filamentJNI.resize(paramInt1, paramInt2);
-      this.surfaceTexture.setDefaultBufferSize(paramInt1, paramInt2);
-      if ((this.needFaceMesh) || (this.hasSetCameraTexture))
-      {
-        if (this.cameraTexture != null) {
-          this.filamentJNI.getEngine().destroyTexture(this.cameraTexture);
-        }
-        this.cameraTexture = new Texture.Builder().width(paramInt1).height(paramInt2).levels(1).usage(16).sampler(Texture.Sampler.SAMPLER_2D).format(Texture.InternalFormat.RGBA8).build(this.filamentJNI.getEngine());
-        if ((this.needFaceMesh) && (this.modelLoadSucceed)) {
-          this.filamentJNI.setImage(this.cameraTexture);
-        }
-      }
+      initCameraTexture(paramInt1, paramInt2);
     }
   }
   
   private void setupFilament()
   {
     this.mHandler.waitDone();
-    if (this.filamentJNI != null) {}
-    do
-    {
+    if (this.filamentJNI != null) {
       return;
-      this.modelReady = false;
-      this.modelLoadSucceed = false;
-      this.hasLoadGlbData = false;
-      this.filamentJNI = FilamentJNI.create(this.surface, this.mShareContext, Math.min(this.width, this.height), Math.max(this.width, this.height), FeatureManager.Features.ACE_3D_ENGINE.getFinalResourcesDir() + File.separator, this.dataPath, this.jsonData);
-      this.arManager.setFilamentJNI(this.filamentJNI);
-      AceMaterialManager.getInstance().setFilterNativeObject(this.filamentJNI.getNativeObject());
-      if (!DeviceUtils.hasDeviceNormal(AEModule.getContext())) {
-        this.filamentJNI.setNewFurLayers(0);
-      }
-      this.canUseShareContext = this.filamentJNI.canUseShareContext();
-      this.mHandler.postJob(new FilamentFilter.3(this));
-    } while (this.animationItemNames == null);
-    this.filamentJNI.registerAnimation((String[])this.animationItemNames.toArray(new String[0]));
+    }
+    this.modelReady = false;
+    this.modelLoadSucceed = false;
+    this.filamentJNI = FilamentJNI.create(this.surface, this.mShareContext, Math.min(this.width, this.height), Math.max(this.width, this.height), FeatureManager.Features.ACE_3D_ENGINE.getFinalResourcesDir() + File.separator, this.dataPath, this.jsonData, this.material.isKapuMaterial(), DeviceUtils.getDeviceSocClass(AEModule.getContext()).value);
+    AceMaterialManager.getInstance().setFilterNativeObject(this.filamentJNI.getNativeObject());
+    if (this.material.isKapuMaterial())
+    {
+      initCameraTransform();
+      return;
+    }
+    setupNormalConfig();
+  }
+  
+  private void setupKapuConfig()
+  {
+    CmShowAssetsData localCmShowAssetsData = new CmShowAssetsData();
+    localCmShowAssetsData.roleResDir = "/sdcard/aekit/stickers/dresslist/3000055";
+    localCmShowAssetsData.dressResMap.put("hair", "/sdcard/aekit/stickers/dresslist/3000604");
+    localCmShowAssetsData.dressResMap.put("tops", "/sdcard/aekit/stickers/dresslist/3000605");
+    localCmShowAssetsData.dressResMap.put("pants", "/sdcard/aekit/stickers/dresslist/3000606");
+    localCmShowAssetsData.dressResMap.put("shoes", "/sdcard/aekit/stickers/dresslist/3000607");
+    localCmShowAssetsData.dressResMap.put("stocking", "/sdcard/aekit/stickers/dresslist/3000608");
+    localCmShowAssetsData.dressResMap.put("eyelash", "/sdcard/aekit/stickers/dresslist/3000420");
+    localCmShowAssetsData.dressResMap.put("eyebrow", "/sdcard/aekit/stickers/dresslist/3000421");
+    localCmShowAssetsData.dressResMap.put("eyes", "/sdcard/aekit/stickers/dresslist/3000536");
+  }
+  
+  private void setupNormalConfig()
+  {
+    this.arManager.setFilamentJNI(this.filamentJNI);
+    if (!DeviceUtils.hasDeviceNormal(AEModule.getContext())) {
+      this.filamentJNI.setNewFurLayers(0);
+    }
+    this.canUseShareContext = this.filamentJNI.canUseShareContext();
+    this.mHandler.postJob(new FilamentFilter.3(this));
+    if (this.animationItemNames != null) {
+      this.filamentJNI.registerAnimation((String[])this.animationItemNames.toArray(new String[0]));
+    }
   }
   
   private void updateActionTriggered(AIAttr paramAIAttr, PTFaceAttr paramPTFaceAttr, int paramInt)
@@ -369,6 +491,69 @@ public class FilamentFilter
         }
       }
       i += 1;
+    }
+  }
+  
+  private void updateCameraAndMultiViewerFrames(Frame paramFrame)
+  {
+    this.mCopyFilter.setRotationAndFlip(this.rotation, 0, 0);
+    Point localPoint = AlgoUtils.rotate(this.width, this.height, this.rotation);
+    Object localObject1;
+    label206:
+    Object localObject2;
+    if ((this.canUseShareContext) && (this.cameraTexture != null))
+    {
+      i = this.cameraTexture.getId(this.filamentJNI.getEngine());
+      if ((this.needFaceMesh) || (this.hasSetCameraTexture))
+      {
+        localObject1 = (Frame)this.frames.get(this.faceMeshTextureKey);
+        if ((localObject1 == null) || (this.hasSetCameraTexture)) {
+          localObject1 = paramFrame;
+        }
+        this.mCopyFilter.RenderProcess(((Frame)localObject1).getTextureId(), localPoint.x, localPoint.y, i, 0.0D, this.mCopyFrame);
+        GLES20.glFlush();
+        if (!this.canUseShareContext)
+        {
+          paramFrame = RendererUtils.saveTexture(this.mCopyFrame);
+          if (BitmapUtils.isLegal(paramFrame)) {
+            TextureHelper.setBitmap(this.filamentJNI.getEngine(), this.cameraTexture, 0, paramFrame);
+          }
+        }
+      }
+      if ((this.keys.isEmpty()) || (this.frames.isEmpty())) {
+        break label351;
+      }
+      paramFrame = this.keys.iterator();
+      if (!paramFrame.hasNext()) {
+        break label351;
+      }
+      localObject2 = (String)paramFrame.next();
+      localObject1 = (Texture)this.multiViewerTextures.get(0);
+      localObject2 = (Frame)this.frames.get(localObject2);
+      if (!this.canUseShareContext) {
+        break label346;
+      }
+    }
+    label346:
+    for (int i = ((Texture)localObject1).getId(this.filamentJNI.getEngine());; i = -1)
+    {
+      this.mCopyFilter.RenderProcess(((Frame)localObject2).getTextureId(), localPoint.x, localPoint.y, i, 0.0D, this.mCopyFrame);
+      if (this.canUseShareContext) {
+        break label206;
+      }
+      localObject2 = RendererUtils.saveTexture(this.mCopyFrame);
+      if (localObject2 == null) {
+        break label206;
+      }
+      TextureHelper.setBitmap(this.filamentJNI.getEngine(), (Texture)localObject1, 0, (Bitmap)localObject2);
+      break label206;
+      i = -1;
+      break;
+    }
+    label351:
+    this.mCopyFilter.setRotationAndFlip(0, 0, 0);
+    if ((!this.keys.isEmpty()) && (this.frames.isEmpty())) {
+      LogUtils.e(TAG, "自定义shader配置错误，导致获取不到吐出的frame（请检查滤镜顺序）。");
     }
   }
   
@@ -420,6 +605,66 @@ public class FilamentFilter
   private void updateParams(AIAttr paramAIAttr, @NotNull PTFaceAttr paramPTFaceAttr, Frame paramFrame)
   {
     this.needRender = false;
+    if (this.material.isKapuMaterial())
+    {
+      loadKapuData();
+      if (this.modelLoadSucceed)
+      {
+        updateParamsKapu(paramAIAttr, paramPTFaceAttr);
+        this.filamentJNI.render();
+        this.needRender = true;
+      }
+      return;
+    }
+    updateParamsNormal(paramAIAttr, paramPTFaceAttr, paramFrame);
+  }
+  
+  private void updateParamsKapu(AIAttr paramAIAttr, @NotNull PTFaceAttr paramPTFaceAttr)
+  {
+    paramPTFaceAttr = getMaxValidFaceInfoList(paramPTFaceAttr.getFaceInfoList(), this.filamentJNI.getMaxFaceCount());
+    int i = 0;
+    FaceInfo localFaceInfo;
+    if (i < paramPTFaceAttr.size())
+    {
+      localFaceInfo = (FaceInfo)paramPTFaceAttr.get(i);
+      paramAIAttr = new float[16];
+      Matrix.transposeM(paramAIAttr, 0, localFaceInfo.transform, 0);
+      this.filamentJNI.setKapuHeadTransform(i, paramAIAttr);
+      if (localFaceInfo.expressionWeights != null)
+      {
+        paramAIAttr = new ArrayList();
+        if ((this.glbList.size() <= 0) || (((GLBItemJava)this.glbList.get(0)).nodeList.size() <= 0)) {
+          break label259;
+        }
+        paramAIAttr = ((NodeItemJava)((GLBItemJava)this.glbList.get(0)).nodeList.get(0)).expressionConfigList;
+      }
+    }
+    label259:
+    for (;;)
+    {
+      FilamentUtil.setMorphWeightsKapu(this.filamentJNI, localFaceInfo.expressionWeights, i, paramAIAttr);
+      i += 1;
+      break;
+      if ((paramPTFaceAttr.size() == 0) && (this.material.getKapuMaterialType() == 1))
+      {
+        paramAIAttr = new float[16];
+        Matrix.setIdentityM(paramAIAttr, 0);
+        this.filamentJNI.setKapuHeadTransform(0, paramAIAttr);
+        FilamentUtil.setMorphWeightsKapu(this.filamentJNI, null, 0, null);
+      }
+      if (this.filamentJNI.getAnimationOver())
+      {
+        paramAIAttr = this.loaderList.iterator();
+        while (paramAIAttr.hasNext()) {
+          ((CMShowUserLoader)paramAIAttr.next()).animationEnd();
+        }
+      }
+      return;
+    }
+  }
+  
+  private void updateParamsNormal(AIAttr paramAIAttr, @NotNull PTFaceAttr paramPTFaceAttr, Frame paramFrame)
+  {
     if (!this.modelReady) {}
     do
     {
@@ -428,144 +673,107 @@ public class FilamentFilter
         loadGlbData();
       }
     } while ((!this.arManager.isAR3DMaterial()) && (CollectionUtils.isEmpty(paramPTFaceAttr.getFaceInfoList())));
-    Object localObject1 = getMaxValidFaceInfoList(paramPTFaceAttr.getFaceInfoList(), this.filamentJNI.getMaxFaceCount());
+    List localList = getMaxValidFaceInfoList(paramPTFaceAttr.getFaceInfoList(), this.filamentJNI.getMaxFaceCount());
+    int i;
+    label96:
+    FaceInfo localFaceInfo;
+    Object localObject2;
     if (this.arManager.isAR3DMaterial())
     {
       this.filamentJNI.setHeadCount(this.filamentJNI.getMaxFaceCount());
-      updateActionTriggered(paramAIAttr, paramPTFaceAttr, ((List)localObject1).size());
+      updateActionTriggered(paramAIAttr, paramPTFaceAttr, this.filamentJNI.getMaxFaceCount());
       i = 0;
-    }
-    Object localObject3;
-    int j;
-    Object localObject4;
-    for (;;)
-    {
-      if (i >= ((List)localObject1).size()) {
-        break label421;
+      if (i >= localList.size()) {
+        break label567;
       }
-      localObject2 = (FaceInfo)((List)localObject1).get(i);
+      localFaceInfo = (FaceInfo)localList.get(i);
       if (!this.arManager.isAR3DMaterial())
       {
-        localObject3 = new float[16];
-        Matrix.transposeM((float[])localObject3, 0, ((FaceInfo)localObject2).transform, 0);
-        this.filamentJNI.setMaterialTransform(i, (float[])localObject3, ((FaceInfo)localObject2).denseFaceModel);
+        localObject2 = new float[16];
+        Matrix.transposeM((float[])localObject2, 0, localFaceInfo.transform, 0);
+        if ((paramPTFaceAttr.getFace3DVerticesArray() == null) || (paramPTFaceAttr.getFace3DVerticesArray().size() <= i)) {
+          break label738;
+        }
       }
-      localObject3 = ((FaceInfo)localObject2).eyeRollWeights;
-      j = 0;
+    }
+    label558:
+    label567:
+    label738:
+    for (Object localObject1 = (float[])paramPTFaceAttr.getFace3DVerticesArray().get(i);; localObject1 = null)
+    {
+      Object localObject3;
+      if ((paramPTFaceAttr.getFace3DRotationArray() != null) && (paramPTFaceAttr.getFace3DRotationArray().size() > i))
+      {
+        localObject3 = (float[])paramPTFaceAttr.getFace3DRotationArray().get(i);
+        this.filamentJNI.setMvpMatrix((float[])localObject3, (float)paramPTFaceAttr.getFaceDetectScale());
+      }
+      if ((this.material.isUse3DMMTransform()) && (paramPTFaceAttr.getFace3DRotationArray() != null) && (i == 0)) {
+        localObject2 = (float[])paramPTFaceAttr.getFace3DRotationArray().get(2);
+      }
       for (;;)
       {
-        if (j >= this.glbList.size()) {
-          break label412;
-        }
-        localObject4 = (GLBItemJava)this.glbList.get(j);
-        Object localObject5;
-        if (((FaceInfo)localObject2).expressionWeights != null)
+        this.filamentJNI.setMaterialTransform(i, (float[])localObject2, localFaceInfo.denseFaceModel, (float[])localObject1);
+        this.filamentJNI.updateFaceVertices(i, (float[])localObject1);
+        localObject1 = localFaceInfo.eyeRollWeights;
+        int j = 0;
+        for (;;)
         {
-          localObject5 = ((GLBItemJava)localObject4).nodeList.iterator();
-          for (;;)
+          if (j >= this.glbList.size()) {
+            break label558;
+          }
+          localObject2 = (GLBItemJava)this.glbList.get(j);
+          if (localFaceInfo.expressionWeights != null)
           {
-            if (((Iterator)localObject5).hasNext())
+            localObject3 = ((GLBItemJava)localObject2).nodeList.iterator();
+            for (;;)
             {
-              NodeItemJava localNodeItemJava = (NodeItemJava)((Iterator)localObject5).next();
-              if (localNodeItemJava.enableExpressionConfigRemap) {
-                FilamentUtil.adjustExpressionWeights(localNodeItemJava.expressionConfigList, ((FaceInfo)localObject2).expressionWeights, ((Float)this.jawOpenThresholdMap.get(localNodeItemJava.name)).floatValue(), ((FaceInfo)localObject2).angles);
-              }
-              if (localNodeItemJava.expressionOrderList.size() > 0)
+              if (((Iterator)localObject3).hasNext())
               {
-                FilamentUtil.setMorphWeights(this.filamentJNI, localNodeItemJava, ((FaceInfo)localObject2).expressionWeights, i, j);
-                continue;
-                this.filamentJNI.setHeadCount(((List)localObject1).size());
-                break;
+                NodeItemJava localNodeItemJava = (NodeItemJava)((Iterator)localObject3).next();
+                if (localNodeItemJava.enableExpressionConfigRemap) {
+                  FilamentUtil.adjustExpressionWeights(localNodeItemJava.expressionConfigList, localFaceInfo.expressionWeights, ((Float)this.jawOpenThresholdMap.get(localNodeItemJava.name)).floatValue(), localFaceInfo.angles);
+                }
+                if (localNodeItemJava.expressionOrderList.size() > 0)
+                {
+                  FilamentUtil.setMorphWeights(this.filamentJNI, localNodeItemJava, localFaceInfo.expressionWeights, i, j);
+                  continue;
+                  this.filamentJNI.setHeadCount(localList.size());
+                  updateActionTriggered(paramAIAttr, paramPTFaceAttr, localList.size());
+                  break;
+                }
               }
             }
           }
-        }
-        localObject4 = ((GLBItemJava)localObject4).eyeNodeList.iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          localObject5 = (EyeNodeItem)((Iterator)localObject4).next();
-          this.filamentJNI.updateEyeNodeEuler(((EyeNodeItem)localObject5).name, (float[])localObject3, i, j);
-        }
-        j += 1;
-      }
-      label412:
-      i += 1;
-    }
-    label421:
-    localObject1 = getFaceInfoGenders((List)localObject1);
-    Object localObject2 = new int[this.glbList.size()];
-    int i = 0;
-    while (i < localObject2.length)
-    {
-      localObject2[i] = ((GLBItemJava)this.glbList.get(i)).isHit();
-      i += 1;
-    }
-    this.filamentJNI.changeAssetsDynamic((int[])localObject2, localObject2.length, (int[])localObject1, localObject1.length);
-    AceMaterialManager.getInstance().setFaceLightness((float)paramPTFaceAttr.getFaceAverageL());
-    this.filamentJNI.setAverageL(AceMaterialManager.getInstance().getFaceLightness());
-    this.mCopyFilter.setRotationAndFlip(this.rotation, 0, 0);
-    localObject1 = AlgoUtils.rotate(this.width, this.height, this.rotation);
-    if ((this.canUseShareContext) && (this.cameraTexture != null)) {}
-    for (i = this.cameraTexture.getId(this.filamentJNI.getEngine());; i = -1)
-    {
-      if ((this.needFaceMesh) || (this.hasSetCameraTexture))
-      {
-        paramPTFaceAttr = (Frame)this.frames.get(this.faceMeshTextureKey);
-        if ((paramPTFaceAttr == null) || (this.hasSetCameraTexture)) {
-          paramPTFaceAttr = paramFrame;
-        }
-        this.mCopyFilter.RenderProcess(paramPTFaceAttr.getTextureId(), ((Point)localObject1).x, ((Point)localObject1).y, i, 0.0D, this.mCopyFrame);
-        GLES20.glFlush();
-        if (!this.canUseShareContext)
-        {
-          paramPTFaceAttr = RendererUtils.saveTexture(this.mCopyFrame);
-          if (BitmapUtils.isLegal(paramPTFaceAttr)) {
-            TextureHelper.setBitmap(this.filamentJNI.getEngine(), this.cameraTexture, 0, paramPTFaceAttr);
+          localObject2 = ((GLBItemJava)localObject2).eyeNodeList.iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (EyeNodeItem)((Iterator)localObject2).next();
+            this.filamentJNI.updateEyeNodeEuler(((EyeNodeItem)localObject3).name, (float[])localObject1, i, j);
           }
+          j += 1;
         }
-        if (this.hasSetCameraTexture)
+        i += 1;
+        break label96;
+        localObject1 = getFaceInfoGenders(localList);
+        localObject2 = new int[this.glbList.size()];
+        i = 0;
+        while (i < localObject2.length)
         {
-          paramPTFaceAttr = this.filamentJNI;
-          long l = this.cameraTexture.getNativeObject();
-          paramPTFaceAttr.setDynamicTexture(new String[] { "$cameraTexture" }, new long[] { l });
+          localObject2[i] = ((GLBItemJava)this.glbList.get(i)).isHit();
+          i += 1;
         }
-      }
-      if ((this.keys.isEmpty()) || (this.frames.isEmpty())) {
-        break label973;
-      }
-      paramPTFaceAttr = new ArrayList();
-      paramFrame = new long[this.keys.size()];
-      localObject2 = this.keys.iterator();
-      j = 0;
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject4 = (String)((Iterator)localObject2).next();
-        paramPTFaceAttr.add(localObject4);
-        localObject3 = (Texture)this.cameraTextures.get(j);
-        localObject4 = (Frame)this.frames.get(localObject4);
-        this.mCopyFilter.RenderProcess(((Frame)localObject4).getTextureId(), ((Point)localObject1).x, ((Point)localObject1).y, i, 0.0D, this.mCopyFrame);
-        if (!this.canUseShareContext)
-        {
-          localObject4 = RendererUtils.saveTexture(this.mCopyFrame);
-          if (localObject4 != null) {
-            TextureHelper.setBitmap(this.filamentJNI.getEngine(), (Texture)localObject3, 0, (Bitmap)localObject4);
-          }
-        }
-        paramFrame[j] = ((Texture)localObject3).getNativeObject();
-        j += 1;
+        this.filamentJNI.changeAssetsDynamic((int[])localObject2, localObject2.length, (int[])localObject1, localObject1.length);
+        AceMaterialManager.getInstance().setFaceLightness((float)paramPTFaceAttr.getFaceAverageL());
+        this.filamentJNI.setAverageL(AceMaterialManager.getInstance().getFaceLightness());
+        updateCameraAndMultiViewerFrames(paramFrame);
+        LogUtils.d(TAG, "test for averageL: " + AceMaterialManager.getInstance().getFaceLightness());
+        this.arManager.initArModleStatus();
+        this.arManager.changeViewMatrix(paramAIAttr);
+        this.filamentJNI.render();
+        this.needRender = true;
+        return;
       }
     }
-    this.filamentJNI.setDynamicTexture((String[])paramPTFaceAttr.toArray(new String[0]), paramFrame);
-    label973:
-    this.mCopyFilter.setRotationAndFlip(0, 0, 0);
-    if ((!this.keys.isEmpty()) && (this.frames.isEmpty())) {
-      LogUtils.e(TAG, "自定义shader配置错误，导致获取不到吐出的frame（请检查滤镜顺序）。");
-    }
-    LogUtils.d(TAG, "test for averageL: " + AceMaterialManager.getInstance().getFaceLightness());
-    this.arManager.initArModleStatus();
-    this.arManager.changeViewMatrix(paramAIAttr);
-    this.filamentJNI.render();
-    this.needRender = true;
   }
   
   public Frame RenderProcess(Frame paramFrame)
@@ -592,7 +800,7 @@ public class FilamentFilter
     if (this.cameraTexture != null) {
       this.filamentJNI.getEngine().destroyTexture(this.cameraTexture);
     }
-    Iterator localIterator = this.cameraTextures.iterator();
+    Iterator localIterator = this.multiViewerTextures.iterator();
     while (localIterator.hasNext())
     {
       Texture localTexture = (Texture)localIterator.next();
@@ -718,6 +926,25 @@ public class FilamentFilter
     return this.glbList;
   }
   
+  public void initCameraTransform()
+  {
+    if (((this.material.getIsAR3DMaterial()) || (this.material.isKapuMaterial())) && (this.filamentJNI != null))
+    {
+      Camera localCamera = this.filamentJNI.getCamera();
+      Object localObject = this.material.getCameraTransform();
+      if (localObject != null)
+      {
+        List localList = ((CameraTransform)localObject).getCameraPosition();
+        localObject = ((CameraTransform)localObject).getCameraRotation();
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(Float.valueOf(1.0F));
+        localArrayList.add(Float.valueOf(1.0F));
+        localArrayList.add(Float.valueOf(1.0F));
+        localCamera.setModelMatrix(MatrixUtil.compose(localList, localArrayList, (List)localObject));
+      }
+    }
+  }
+  
   public void initial()
   {
     FilaBenchUtil.benchStart(FilamentUtil.BenchTag.INIT.tag);
@@ -728,7 +955,7 @@ public class FilamentFilter
     this.mPreviewFilter.apply();
     this.mCopyFilter.apply();
     this.surface = new Surface(this.surfaceTexture);
-    String str2 = VideoTemplateParser.readMaterialFile(this.dataPath, "params", true, VideoTemplateParser.decryptListener);
+    String str2 = VideoTemplateParser.readMaterialFile(this.dataPath, this.jsonName, true, VideoTemplateParser.decryptListener);
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -750,65 +977,277 @@ public class FilamentFilter
     }
   }
   
+  public void playKapuAnimation()
+  {
+    this.filamentJNI.playKapuAnimation();
+  }
+  
+  /* Error */
   public Frame render(Frame paramFrame, AIAttr paramAIAttr, PTFaceAttr paramPTFaceAttr)
   {
-    BenchUtil.benchStart("[filament] updateParams");
-    if ((this.needFaceMesh) && (!this.canUseShareContext) && (!DeviceUtils.hasDeviceHigh(AEModule.getContext()))) {}
-    while (this.arManager.isArTracked()) {
-      return paramFrame;
-    }
-    if (this.arManager.isAR3DMaterial())
-    {
-      resizeForAr(DeviceUtils.getScreenWidth(AEModule.getContext()), DeviceUtils.getScreenHeight(AEModule.getContext()));
-      this.arManager.getCurDeviceOrientation(paramPTFaceAttr);
-    }
-    long l1;
-    for (;;)
-    {
-      initCameraTexture();
-      updateParams(paramAIAttr, paramPTFaceAttr, paramFrame);
-      BenchUtil.benchEnd("[filament] updateParams");
-      l1 = FilaBenchUtil.benchEnd(FilamentUtil.BenchTag.FIRST_RENDER.tag);
-      if (this.needRender) {
-        break;
-      }
-      this.skipFrame = 0;
-      return paramFrame;
-      resize(paramFrame.width, paramFrame.height, paramPTFaceAttr.getRotation());
-    }
-    LogUtils.d(TAG, "test for filament render called");
-    FilaBenchUtil.benchStart(FilamentUtil.BenchTag.FIRST_FRAME.tag);
-    try
-    {
-      BenchUtil.benchStart("[filament] wait");
-      paramAIAttr = (Runnable)this.drawQueue.take();
-      BenchUtil.benchEnd("[filament] wait");
-      BenchUtil.benchStart("[filament] render");
-      paramAIAttr.run();
-      BenchUtil.benchEnd("[filament] render");
-      long l2 = FilaBenchUtil.benchEnd(FilamentUtil.BenchTag.FIRST_FRAME.tag);
-      if ((l1 > 0L) && (this.onLoadFinishListener != null)) {
-        this.onLoadFinishListener.onLoadFinish(l2 + l1);
-      }
-      FilaBenchUtil.benchEnd(FilamentUtil.BenchTag.AFTER_RENDER.tag);
-      FilaBenchUtil.reset();
-      if (this.skipFrame < 1)
-      {
-        this.skipFrame += 1;
-        return paramFrame;
-      }
-    }
-    catch (InterruptedException paramAIAttr)
-    {
-      for (;;)
-      {
-        paramAIAttr.printStackTrace();
-      }
-      GlUtil.setBlendMode(true);
-      this.mCopyFilter.RenderProcess(this.filamentFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, paramFrame);
-      GlUtil.setBlendMode(false);
-    }
-    return paramFrame;
+    // Byte code:
+    //   0: ldc_w 1359
+    //   3: invokestatic 1362	com/tencent/ttpic/baseutils/fps/BenchUtil:benchStart	(Ljava/lang/String;)V
+    //   6: aload_0
+    //   7: getfield 152	com/tencent/ttpic/filament/FilamentFilter:needFaceMesh	Z
+    //   10: ifeq +21 -> 31
+    //   13: aload_0
+    //   14: getfield 751	com/tencent/ttpic/filament/FilamentFilter:canUseShareContext	Z
+    //   17: ifne +14 -> 31
+    //   20: invokestatic 661	com/tencent/aekit/api/standard/AEModule:getContext	()Landroid/content/Context;
+    //   23: invokestatic 1365	com/tencent/ttpic/baseutils/device/DeviceUtils:hasDeviceHigh	(Landroid/content/Context;)Z
+    //   26: ifne +5 -> 31
+    //   29: aload_1
+    //   30: areturn
+    //   31: aload_0
+    //   32: getfield 213	com/tencent/ttpic/filament/FilamentFilter:arManager	Lcom/tencent/ttpic/filament/ARManager;
+    //   35: invokevirtual 1368	com/tencent/ttpic/filament/ARManager:isArTracked	()Z
+    //   38: ifne -9 -> 29
+    //   41: aload_1
+    //   42: getfield 475	com/tencent/aekit/openrender/internal/Frame:width	I
+    //   45: istore 6
+    //   47: aload_1
+    //   48: getfield 476	com/tencent/aekit/openrender/internal/Frame:height	I
+    //   51: istore 5
+    //   53: aload_3
+    //   54: invokevirtual 1370	com/tencent/ttpic/openapi/PTFaceAttr:getRotation	()I
+    //   57: istore 4
+    //   59: iconst_1
+    //   60: istore 7
+    //   62: aload_0
+    //   63: getfield 213	com/tencent/ttpic/filament/FilamentFilter:arManager	Lcom/tencent/ttpic/filament/ARManager;
+    //   66: invokevirtual 1009	com/tencent/ttpic/filament/ARManager:isAR3DMaterial	()Z
+    //   69: ifeq +25 -> 94
+    //   72: invokestatic 661	com/tencent/aekit/api/standard/AEModule:getContext	()Landroid/content/Context;
+    //   75: invokestatic 1374	com/tencent/ttpic/baseutils/device/DeviceUtils:getScreenWidth	(Landroid/content/Context;)I
+    //   78: istore 6
+    //   80: invokestatic 661	com/tencent/aekit/api/standard/AEModule:getContext	()Landroid/content/Context;
+    //   83: invokestatic 1377	com/tencent/ttpic/baseutils/device/DeviceUtils:getScreenHeight	(Landroid/content/Context;)I
+    //   86: istore 5
+    //   88: iconst_0
+    //   89: istore 4
+    //   91: iconst_0
+    //   92: istore 7
+    //   94: aload_0
+    //   95: iload 6
+    //   97: iload 5
+    //   99: iload 4
+    //   101: iload 7
+    //   103: invokespecial 1379	com/tencent/ttpic/filament/FilamentFilter:resize	(IIIZ)V
+    //   106: aload_0
+    //   107: getfield 213	com/tencent/ttpic/filament/FilamentFilter:arManager	Lcom/tencent/ttpic/filament/ARManager;
+    //   110: invokevirtual 1009	com/tencent/ttpic/filament/ARManager:isAR3DMaterial	()Z
+    //   113: ifeq +11 -> 124
+    //   116: aload_0
+    //   117: getfield 213	com/tencent/ttpic/filament/FilamentFilter:arManager	Lcom/tencent/ttpic/filament/ARManager;
+    //   120: aload_3
+    //   121: invokevirtual 1383	com/tencent/ttpic/filament/ARManager:getCurDeviceOrientation	(Lcom/tencent/ttpic/openapi/PTFaceAttr;)V
+    //   124: aload_0
+    //   125: aload_2
+    //   126: aload_3
+    //   127: aload_1
+    //   128: invokespecial 1385	com/tencent/ttpic/filament/FilamentFilter:updateParams	(Lcom/tencent/aekit/plugin/core/AIAttr;Lcom/tencent/ttpic/openapi/PTFaceAttr;Lcom/tencent/aekit/openrender/internal/Frame;)V
+    //   131: ldc_w 1359
+    //   134: invokestatic 1386	com/tencent/ttpic/baseutils/fps/BenchUtil:benchEnd	(Ljava/lang/String;)J
+    //   137: pop2
+    //   138: getstatic 1315	com/tencent/ttpic/filament/FilamentUtil$BenchTag:FIRST_RENDER	Lcom/tencent/ttpic/filament/FilamentUtil$BenchTag;
+    //   141: getfield 493	com/tencent/ttpic/filament/FilamentUtil$BenchTag:tag	Ljava/lang/String;
+    //   144: invokestatic 521	com/tencent/ttpic/filament/FilaBenchUtil:benchEnd	(Ljava/lang/String;)J
+    //   147: lstore 8
+    //   149: aload_0
+    //   150: getfield 952	com/tencent/ttpic/filament/FilamentFilter:needRender	Z
+    //   153: ifne +10 -> 163
+    //   156: aload_0
+    //   157: iconst_0
+    //   158: putfield 1388	com/tencent/ttpic/filament/FilamentFilter:skipFrame	I
+    //   161: aload_1
+    //   162: areturn
+    //   163: getstatic 99	com/tencent/ttpic/filament/FilamentFilter:TAG	Ljava/lang/String;
+    //   166: ldc_w 1390
+    //   169: invokestatic 1114	com/tencent/ttpic/baseutils/log/LogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   172: getstatic 1393	com/tencent/ttpic/filament/FilamentUtil$BenchTag:FIRST_FRAME	Lcom/tencent/ttpic/filament/FilamentUtil$BenchTag;
+    //   175: getfield 493	com/tencent/ttpic/filament/FilamentUtil$BenchTag:tag	Ljava/lang/String;
+    //   178: invokestatic 498	com/tencent/ttpic/filament/FilaBenchUtil:benchStart	(Ljava/lang/String;)V
+    //   181: aconst_null
+    //   182: astore_3
+    //   183: aconst_null
+    //   184: astore 12
+    //   186: aconst_null
+    //   187: astore_2
+    //   188: aload_0
+    //   189: getfield 176	com/tencent/ttpic/filament/FilamentFilter:material	Lcom/tencent/ttpic/openapi/model/VideoMaterial;
+    //   192: invokevirtual 586	com/tencent/ttpic/openapi/model/VideoMaterial:isKapuMaterial	()Z
+    //   195: ifeq +228 -> 423
+    //   198: aload_0
+    //   199: getfield 176	com/tencent/ttpic/filament/FilamentFilter:material	Lcom/tencent/ttpic/openapi/model/VideoMaterial;
+    //   202: invokevirtual 993	com/tencent/ttpic/openapi/model/VideoMaterial:getKapuMaterialType	()I
+    //   205: ifne +218 -> 423
+    //   208: lload 8
+    //   210: lconst_0
+    //   211: lcmp
+    //   212: ifgt +211 -> 423
+    //   215: aload_0
+    //   216: getfield 150	com/tencent/ttpic/filament/FilamentFilter:drawQueue	Ljava/util/concurrent/LinkedBlockingDeque;
+    //   219: invokevirtual 1394	java/util/concurrent/LinkedBlockingDeque:size	()I
+    //   222: ifle +59 -> 281
+    //   225: ldc_w 1396
+    //   228: invokestatic 1362	com/tencent/ttpic/baseutils/fps/BenchUtil:benchStart	(Ljava/lang/String;)V
+    //   231: aload_0
+    //   232: getfield 150	com/tencent/ttpic/filament/FilamentFilter:drawQueue	Ljava/util/concurrent/LinkedBlockingDeque;
+    //   235: invokevirtual 1399	java/util/concurrent/LinkedBlockingDeque:take	()Ljava/lang/Object;
+    //   238: checkcast 1401	java/lang/Runnable
+    //   241: astore_2
+    //   242: getstatic 99	com/tencent/ttpic/filament/FilamentFilter:TAG	Ljava/lang/String;
+    //   245: new 629	java/lang/StringBuilder
+    //   248: dup
+    //   249: invokespecial 630	java/lang/StringBuilder:<init>	()V
+    //   252: ldc_w 1403
+    //   255: invokevirtual 645	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   258: aload_0
+    //   259: getfield 150	com/tencent/ttpic/filament/FilamentFilter:drawQueue	Ljava/util/concurrent/LinkedBlockingDeque;
+    //   262: invokevirtual 1394	java/util/concurrent/LinkedBlockingDeque:size	()I
+    //   265: invokevirtual 1406	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   268: invokevirtual 653	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   271: invokestatic 1114	com/tencent/ttpic/baseutils/log/LogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   274: ldc_w 1396
+    //   277: invokestatic 1386	com/tencent/ttpic/baseutils/fps/BenchUtil:benchEnd	(Ljava/lang/String;)J
+    //   280: pop2
+    //   281: aload_2
+    //   282: ifnull +22 -> 304
+    //   285: ldc_w 1408
+    //   288: invokestatic 1362	com/tencent/ttpic/baseutils/fps/BenchUtil:benchStart	(Ljava/lang/String;)V
+    //   291: aload_2
+    //   292: invokeinterface 1411 1 0
+    //   297: ldc_w 1408
+    //   300: invokestatic 1386	com/tencent/ttpic/baseutils/fps/BenchUtil:benchEnd	(Ljava/lang/String;)J
+    //   303: pop2
+    //   304: getstatic 1393	com/tencent/ttpic/filament/FilamentUtil$BenchTag:FIRST_FRAME	Lcom/tencent/ttpic/filament/FilamentUtil$BenchTag;
+    //   307: getfield 493	com/tencent/ttpic/filament/FilamentUtil$BenchTag:tag	Ljava/lang/String;
+    //   310: invokestatic 521	com/tencent/ttpic/filament/FilaBenchUtil:benchEnd	(Ljava/lang/String;)J
+    //   313: lstore 10
+    //   315: lload 8
+    //   317: lconst_0
+    //   318: lcmp
+    //   319: ifle +58 -> 377
+    //   322: getstatic 99	com/tencent/ttpic/filament/FilamentFilter:TAG	Ljava/lang/String;
+    //   325: new 629	java/lang/StringBuilder
+    //   328: dup
+    //   329: invokespecial 630	java/lang/StringBuilder:<init>	()V
+    //   332: ldc_w 1413
+    //   335: invokevirtual 645	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   338: lload 10
+    //   340: invokevirtual 1416	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   343: ldc_w 1418
+    //   346: invokevirtual 645	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   349: invokevirtual 653	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   352: invokestatic 1423	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   355: pop
+    //   356: aload_0
+    //   357: getfield 1425	com/tencent/ttpic/filament/FilamentFilter:onLoadFinishListener	Lcom/tencent/ttpic/openapi/listener/MaterialLoadFinishListener;
+    //   360: ifnull +17 -> 377
+    //   363: aload_0
+    //   364: getfield 1425	com/tencent/ttpic/filament/FilamentFilter:onLoadFinishListener	Lcom/tencent/ttpic/openapi/listener/MaterialLoadFinishListener;
+    //   367: lload 10
+    //   369: lload 8
+    //   371: ladd
+    //   372: invokeinterface 1430 3 0
+    //   377: aload_0
+    //   378: getfield 172	com/tencent/ttpic/filament/FilamentFilter:loaderList	Ljava/util/ArrayList;
+    //   381: invokevirtual 1001	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   384: astore_2
+    //   385: aload_2
+    //   386: invokeinterface 224 1 0
+    //   391: ifeq +70 -> 461
+    //   394: aload_2
+    //   395: invokeinterface 228 1 0
+    //   400: checkcast 527	com/tencent/ttpic/filament/CMShowUserLoader
+    //   403: invokevirtual 1433	com/tencent/ttpic/filament/CMShowUserLoader:firstRenderEnd	()V
+    //   406: goto -21 -> 385
+    //   409: astore 12
+    //   411: aload_3
+    //   412: astore_2
+    //   413: aload 12
+    //   415: astore_3
+    //   416: aload_3
+    //   417: invokevirtual 1436	java/lang/InterruptedException:printStackTrace	()V
+    //   420: goto -139 -> 281
+    //   423: ldc_w 1396
+    //   426: invokestatic 1362	com/tencent/ttpic/baseutils/fps/BenchUtil:benchStart	(Ljava/lang/String;)V
+    //   429: aload_0
+    //   430: getfield 150	com/tencent/ttpic/filament/FilamentFilter:drawQueue	Ljava/util/concurrent/LinkedBlockingDeque;
+    //   433: invokevirtual 1399	java/util/concurrent/LinkedBlockingDeque:take	()Ljava/lang/Object;
+    //   436: checkcast 1401	java/lang/Runnable
+    //   439: astore_2
+    //   440: ldc_w 1396
+    //   443: invokestatic 1386	com/tencent/ttpic/baseutils/fps/BenchUtil:benchEnd	(Ljava/lang/String;)J
+    //   446: pop2
+    //   447: goto -166 -> 281
+    //   450: astore_3
+    //   451: aload 12
+    //   453: astore_2
+    //   454: aload_3
+    //   455: invokevirtual 1436	java/lang/InterruptedException:printStackTrace	()V
+    //   458: goto -177 -> 281
+    //   461: getstatic 1318	com/tencent/ttpic/filament/FilamentUtil$BenchTag:AFTER_RENDER	Lcom/tencent/ttpic/filament/FilamentUtil$BenchTag;
+    //   464: getfield 493	com/tencent/ttpic/filament/FilamentUtil$BenchTag:tag	Ljava/lang/String;
+    //   467: invokestatic 521	com/tencent/ttpic/filament/FilaBenchUtil:benchEnd	(Ljava/lang/String;)J
+    //   470: pop2
+    //   471: invokestatic 1439	com/tencent/ttpic/filament/FilaBenchUtil:reset	()V
+    //   474: aload_0
+    //   475: getfield 1388	com/tencent/ttpic/filament/FilamentFilter:skipFrame	I
+    //   478: iconst_1
+    //   479: if_icmpge +15 -> 494
+    //   482: aload_0
+    //   483: aload_0
+    //   484: getfield 1388	com/tencent/ttpic/filament/FilamentFilter:skipFrame	I
+    //   487: iconst_1
+    //   488: iadd
+    //   489: putfield 1388	com/tencent/ttpic/filament/FilamentFilter:skipFrame	I
+    //   492: aload_1
+    //   493: areturn
+    //   494: iconst_1
+    //   495: invokestatic 1442	com/tencent/aekit/openrender/util/GlUtil:setBlendMode	(Z)V
+    //   498: aload_0
+    //   499: getfield 131	com/tencent/ttpic/filament/FilamentFilter:mCopyFilter	Lcom/tencent/filter/BaseFilter;
+    //   502: aload_0
+    //   503: getfield 136	com/tencent/ttpic/filament/FilamentFilter:filamentFrame	Lcom/tencent/aekit/openrender/internal/Frame;
+    //   506: invokevirtual 876	com/tencent/aekit/openrender/internal/Frame:getTextureId	()I
+    //   509: aload_1
+    //   510: getfield 475	com/tencent/aekit/openrender/internal/Frame:width	I
+    //   513: aload_1
+    //   514: getfield 476	com/tencent/aekit/openrender/internal/Frame:height	I
+    //   517: iconst_m1
+    //   518: dconst_0
+    //   519: aload_1
+    //   520: invokevirtual 888	com/tencent/filter/BaseFilter:RenderProcess	(IIIIDLcom/tencent/aekit/openrender/internal/Frame;)V
+    //   523: iconst_0
+    //   524: invokestatic 1442	com/tencent/aekit/openrender/util/GlUtil:setBlendMode	(Z)V
+    //   527: aload_1
+    //   528: areturn
+    //   529: astore_3
+    //   530: goto -76 -> 454
+    //   533: astore_3
+    //   534: goto -118 -> 416
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	537	0	this	FilamentFilter
+    //   0	537	1	paramFrame	Frame
+    //   0	537	2	paramAIAttr	AIAttr
+    //   0	537	3	paramPTFaceAttr	PTFaceAttr
+    //   57	43	4	i	int
+    //   51	47	5	j	int
+    //   45	51	6	k	int
+    //   60	42	7	bool	boolean
+    //   147	223	8	l1	long
+    //   313	55	10	l2	long
+    //   184	1	12	localObject	Object
+    //   409	43	12	localInterruptedException	java.lang.InterruptedException
+    // Exception table:
+    //   from	to	target	type
+    //   225	242	409	java/lang/InterruptedException
+    //   423	440	450	java/lang/InterruptedException
+    //   440	447	529	java/lang/InterruptedException
+    //   242	281	533	java/lang/InterruptedException
   }
   
   public void reset()
@@ -843,6 +1282,49 @@ public class FilamentFilter
     }
   }
   
+  public void setFilamentAssetRotate(float[] paramArrayOfFloat)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("FilamentFilter|setFilamentAssetRotate:");
+    Object localObject;
+    if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length == 3))
+    {
+      localObject = Float.valueOf(paramArrayOfFloat[1]);
+      LogUtils.i("3D_ROTATE", localObject);
+      if (this.filamentJNI != null) {
+        break label62;
+      }
+    }
+    label62:
+    label74:
+    do
+    {
+      return;
+      localObject = "NONE";
+      break;
+      if (this.material.getIsAR3DMaterial())
+      {
+        int i = 0;
+        if (i < this.glbList.size())
+        {
+          localStringBuilder = new StringBuilder().append("FilamentFilter|setFilamentAssetRotate|filamentJNI.setFilamentAssetRotate:").append(i).append("||");
+          if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length != 3)) {
+            break label160;
+          }
+        }
+        for (localObject = Float.valueOf(paramArrayOfFloat[1]);; localObject = "NONE")
+        {
+          LogUtils.i("3D_ROTATE", localObject);
+          this.filamentJNI.setFilamentAssetRotate(i, paramArrayOfFloat);
+          i += 1;
+          break label74;
+          break;
+        }
+      }
+    } while (!this.material.isKapuMaterial());
+    label160:
+    this.filamentJNI.setAssetRotate(paramArrayOfFloat);
+  }
+  
   public void setFilamentAssetScale(float paramFloat)
   {
     if (this.arManager != null) {
@@ -850,9 +1332,76 @@ public class FilamentFilter
     }
   }
   
-  public void setFrames(Map<String, Frame> paramMap)
+  public void setKapuMaterialDisplayType(CmShowMaterialDisplayType paramCmShowMaterialDisplayType)
+  {
+    int i = 0;
+    this.showMaterialDisplayType = paramCmShowMaterialDisplayType;
+    if (((this.material.getIsAR3DMaterial()) || (this.material.isKapuMaterial())) && (this.filamentJNI != null))
+    {
+      ArrayList localArrayList = new ArrayList();
+      switch (FilamentFilter.4.$SwitchMap$com$tencent$ttpic$filament$CmShowMaterialDisplayType[paramCmShowMaterialDisplayType.ordinal()])
+      {
+      }
+      for (;;)
+      {
+        paramCmShowMaterialDisplayType = (String[])localArrayList.toArray(new String[0]);
+        while (i < this.glbList.size())
+        {
+          this.filamentJNI.setKapuDisplayMaterialTypeList(i, paramCmShowMaterialDisplayType);
+          i += 1;
+        }
+        localArrayList.add("tops");
+        localArrayList.add("eyelash");
+        localArrayList.add("eyebrow");
+        localArrayList.add("pants");
+        localArrayList.add("shoes");
+        localArrayList.add("stocking");
+        localArrayList.add("eyes");
+        localArrayList.add("role");
+        localArrayList.add("hair");
+        localArrayList.add("eyeglasses");
+        localArrayList.add("wing");
+        localArrayList.add("headDress");
+        localArrayList.add("wing");
+        localArrayList.add("nose");
+        localArrayList.add("mouth");
+        continue;
+        localArrayList.add("eyelash");
+        localArrayList.add("eyebrow");
+        localArrayList.add("eyes");
+        localArrayList.add("role");
+        localArrayList.add("hair");
+        localArrayList.add("eyeglasses");
+        localArrayList.add("headDress");
+        localArrayList.add("nose");
+        localArrayList.add("mouth");
+      }
+    }
+  }
+  
+  public void setKapuModelView(KapuModelViewParam paramKapuModelViewParam)
+  {
+    this.viewParam = paramKapuModelViewParam;
+    if ((this.filamentJNI != null) && (this.modelLoadSucceed) && (this.material.isKapuMaterial()) && (paramKapuModelViewParam.viewSize != null) && (paramKapuModelViewParam.boundingBox != null))
+    {
+      int i = 0;
+      while (i < this.loaderList.size())
+      {
+        this.filamentJNI.adjustKapuModelView(i, paramKapuModelViewParam.viewSize, paramKapuModelViewParam.boundingBox, paramKapuModelViewParam.bottomMargin);
+        i += 1;
+      }
+    }
+  }
+  
+  public void setLoaders(ArrayList<CMShowUserLoader> paramArrayList)
+  {
+    this.loaderList = paramArrayList;
+  }
+  
+  public void setMultiViewerFrames(Map<String, Frame> paramMap)
   {
     this.frames = paramMap;
+    initMultiViewerTexture(paramMap);
   }
   
   public void setOnLoadFinishListener(MaterialLoadFinishListener paramMaterialLoadFinishListener)
@@ -869,14 +1418,91 @@ public class FilamentFilter
   
   public void setUnProjectionHitPoint(float[] paramArrayOfFloat, boolean paramBoolean)
   {
-    if (this.arManager != null) {
+    if ((this.arManager != null) && (paramArrayOfFloat != null) && (paramArrayOfFloat.length >= 3)) {
       this.arManager.setUnProjectionHitPoint(paramArrayOfFloat, paramBoolean);
+    }
+  }
+  
+  public void switchCameraViewType(CameraViewType paramCameraViewType)
+  {
+    int k = 0;
+    int j = 0;
+    Object localObject;
+    if (((this.material.getIsAR3DMaterial()) || (this.material.isKapuMaterial())) && (this.filamentJNI != null))
+    {
+      localObject = this.material.getCameraViewConfig();
+      if (localObject != null) {
+        switch (FilamentFilter.4.$SwitchMap$com$tencent$ttpic$filament$CameraViewType[paramCameraViewType.ordinal()])
+        {
+        }
+      }
+    }
+    for (;;)
+    {
+      return;
+      int i = 0;
+      List localList;
+      float[] arrayOfFloat;
+      while (i < ((List)localObject).size())
+      {
+        paramCameraViewType = (CameraViewConfig)((List)localObject).get(i);
+        if (paramCameraViewType.getCameraViewType() == CameraViewType.Body.value)
+        {
+          localList = paramCameraViewType.getCameraPosition();
+          localObject = new float[localList.size()];
+          i = 0;
+          while (i < localList.size())
+          {
+            localObject[i] = ((Float)localList.get(i)).floatValue();
+            i += 1;
+          }
+          localList = paramCameraViewType.getCameraRotation();
+          arrayOfFloat = new float[localList.size()];
+          i = j;
+          while (i < localList.size())
+          {
+            arrayOfFloat[i] = ((Float)localList.get(i)).floatValue();
+            i += 1;
+          }
+          this.filamentJNI.setCameraAnimation((float[])localObject, arrayOfFloat, paramCameraViewType.getAnimationTime(), paramCameraViewType.getAnimationType());
+          return;
+        }
+        i += 1;
+      }
+      continue;
+      i = 0;
+      while (i < ((List)localObject).size())
+      {
+        paramCameraViewType = (CameraViewConfig)((List)localObject).get(i);
+        if (paramCameraViewType.getCameraViewType() == CameraViewType.Head.value)
+        {
+          localList = paramCameraViewType.getCameraPosition();
+          localObject = new float[localList.size()];
+          i = 0;
+          while (i < localList.size())
+          {
+            localObject[i] = ((Float)localList.get(i)).floatValue();
+            i += 1;
+          }
+          localList = paramCameraViewType.getCameraRotation();
+          arrayOfFloat = new float[localList.size()];
+          i = k;
+          while (i < localList.size())
+          {
+            arrayOfFloat[i] = ((Float)localList.get(i)).floatValue();
+            i += 1;
+          }
+          this.filamentJNI.setCameraAnimation((float[])localObject, arrayOfFloat, paramCameraViewType.getAnimationTime(), paramCameraViewType.getAnimationType());
+          return;
+        }
+        i += 1;
+      }
     }
   }
   
   public void updatePreview(Object paramObject)
   {
-    if (this.filamentJNI == null) {}
+    if ((this.filamentJNI == null) || (this.material.isKapuMaterial())) {}
     for (;;)
     {
       return;

@@ -1,17 +1,6 @@
-import android.graphics.Rect;
-import android.view.View;
-
 public abstract interface arrj
 {
-  public abstract int a();
-  
-  public abstract Rect a(int paramInt);
-  
-  public abstract View a(int paramInt);
-  
-  public abstract int b();
-  
-  public abstract int c();
+  public abstract void a(arrl paramarrl);
 }
 
 

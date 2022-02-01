@@ -1,22 +1,22 @@
 package com.tencent.biz.common.offline;
 
 import android.content.Context;
-import nnw;
-import nny;
-import nod;
-import nol;
+import nux;
+import nuz;
+import nve;
+import nvm;
 
 public final class HtmlOffline$1
   implements Runnable
 {
-  public HtmlOffline$1(Context paramContext, String paramString, nnw paramnnw) {}
+  public HtmlOffline$1(Context paramContext, String paramString, nux paramnux) {}
   
   public void run()
   {
-    if (nny.a.a()) {
-      nny.a.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,Begin transThread:");
+    if (nuz.a.a()) {
+      nuz.a.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,Begin transThread:");
     }
-    new nod(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nnw).a();
+    new nve(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nux).a();
   }
 }
 

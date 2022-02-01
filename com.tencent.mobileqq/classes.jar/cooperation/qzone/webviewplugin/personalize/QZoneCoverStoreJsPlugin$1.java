@@ -2,7 +2,7 @@ package cooperation.qzone.webviewplugin.personalize;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import bgve;
+import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;

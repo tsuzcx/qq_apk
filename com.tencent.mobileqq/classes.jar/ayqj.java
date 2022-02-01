@@ -1,15 +1,20 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.mobileqq.now.recommend.NoRecommendDataEvent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayqj
-  implements TypeEvaluator<Rect>
+final class ayqj
+  implements View.OnClickListener
 {
-  public ayqj(BreatheEffectView paramBreatheEffectView) {}
+  ayqj(FragmentActivity paramFragmentActivity, ayqg paramayqg) {}
   
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  public void onClick(View paramView)
   {
-    return new Rect(paramRect1.left + (int)((paramRect2.left - paramRect1.left) * paramFloat), paramRect1.top + (int)((paramRect2.top - paramRect1.top) * paramFloat), paramRect1.right + (int)((paramRect2.right - paramRect1.right) * paramFloat), paramRect1.bottom + (int)((paramRect2.bottom - paramRect1.bottom) * paramFloat));
+    ayqh.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Ayqg);
+    SimpleEventBus.getInstance().dispatchEvent(new NoRecommendDataEvent());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

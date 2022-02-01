@@ -1,3 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/o28" android:background="@color/bo" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="20.0dip" android:layout_below="@id/k6s" />
+    <LinearLayout android:orientation="vertical" android:layout_width="200.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/o28" android:layout_centerHorizontal="true">
+        <LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <EditText android:id="@id/mpy" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        </LinearLayout>
+        <Button android:textColor="@color/al3" android:id="@id/ncr" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="普通下载" style="@style/b9" />
+        <Button android:textColor="@color/al3" android:id="@id/nki" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="静默下载" style="@style/b9" />
+        <Button android:textColor="@color/al3" android:id="@id/lfd" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="安装" style="@style/b9" />
+        <Button android:textColor="@color/al3" android:id="@id/mpn" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="弹窗测试" style="@style/b9" />
+        <Button android:textColor="@color/al3" android:id="@id/bzi" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="退出" style="@style/b9" />
+        <EditText android:id="@id/mq0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Name" android:ems="10" android:inputType="textPersonName" />
+        <Button android:textColor="@color/al3" android:id="@id/aya" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="清除" style="@style/b9" />
+    </LinearLayout>
+</RelativeLayout>

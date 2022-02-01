@@ -1,37 +1,31 @@
 package com.tencent.mobileqq.mini.entry;
 
-import android.content.Context;
-import bhpc;
-import com.tencent.mobileqq.mini.cache.Storage;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import bijj;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 final class MiniAppUtils$3
-  implements Runnable
+  extends Handler
 {
-  MiniAppUtils$3(Context paramContext, String paramString1, String paramString2, String paramString3) {}
-  
-  public void run()
+  MiniAppUtils$3(Looper paramLooper, String paramString1, String paramString2)
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if ((paramMessage.obj instanceof bijj))
     {
-      Storage localStorage = Storage.open(this.val$context, String.valueOf(bhpc.a().a()), this.val$appId);
-      localObject1 = localStorage;
-      localObject3 = localStorage;
-      localStorage.writeSync(this.val$key, "Object", this.val$data);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localObject3 = localObject1;
-      QLog.e("MiniAppUtils", 1, "saveToMiniAppStorage ", localException);
-      return;
-    }
-    finally
-    {
-      if (localObject3 != null) {
-        localObject3.close();
+      bijj localbijj = (bijj)paramMessage.obj;
+      if (localbijj.c == 0)
+      {
+        QLog.d("MiniAppUtils", 2, "handleMessage() called with: msg = [" + paramMessage + "]");
+        ThreadManager.getFileThreadHandler().post(new MiniAppUtils.3.1(this, localbijj));
       }
     }
   }

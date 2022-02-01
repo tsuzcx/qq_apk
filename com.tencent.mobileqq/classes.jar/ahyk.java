@@ -1,61 +1,43 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.ark.ArkDebugger.DebuggerCallback;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.1;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.2;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.3;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.4;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahyk
-  extends ReportDialog
+  implements ArkDebugger.DebuggerCallback
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString;
+  public ahyk(ArkDebugChatPie.1 param1) {}
   
-  public ahyk(Context paramContext)
+  public void Accepted()
   {
-    super(paramContext, 2131755403);
+    ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.1.1(this));
+    QLog.d(this.a.this$0.tag, 1, "ArkDebugger Accepted");
   }
   
-  public ahyk(Context paramContext, String paramString)
+  public boolean ReadyToRun(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    super(paramContext, 2131755403);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    ArkAppCenter.a().postToMainThread(new ArkDebugChatPie.1.1.4(this, paramString4, paramString3, paramString1, paramString2));
+    QLog.d(this.a.this$0.tag, 1, String.format("ArkDebugger ReadyToRun viewId: %s, metaData: %s, mode: %s", new Object[] { paramString1, paramString2, paramString3 }));
+    return true;
   }
   
-  public View a(int paramInt)
+  public void ReceivedPackage(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
-    }
-    return null;
+    ahyj.a(this.a.this$0, paramString1);
+    ahyj.b(this.a.this$0, paramString2);
+    ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.1.3(this, paramString1, paramString2));
+    QLog.d(this.a.this$0.tag, 1, String.format("ArkDebugger ReceivedPackage appid: %s, appview: %s", new Object[] { paramString1, paramString2 }));
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void Stopped(int paramInt)
   {
-    super.onCreate(paramBundle);
-    paramBundle = LayoutInflater.from(getContext()).inflate(2131561547, null);
-    Object localObject = getWindow();
-    ((Window)localObject).setContentView(paramBundle);
-    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-    localLayoutParams.width = -2;
-    localLayoutParams.height = -2;
-    localLayoutParams.gravity = 48;
-    localLayoutParams.y += getContext().getResources().getDimensionPixelOffset(2131299156);
-    ((Window)localObject).setAttributes(localLayoutParams);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      localObject = (TextView)paramBundle.findViewById(2131371418);
-      if (localObject != null) {
-        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    this.jdField_a_of_type_AndroidViewView = paramBundle;
-    setCanceledOnTouchOutside(false);
+    ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.1.2(this, paramInt));
+    QLog.d(this.a.this$0.tag, 1, "ArkDebugger Stopped");
   }
 }
 

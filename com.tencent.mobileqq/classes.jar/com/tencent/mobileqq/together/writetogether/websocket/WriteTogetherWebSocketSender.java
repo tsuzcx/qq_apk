@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.together.writetogether.websocket;
 
-import bdhf;
-import bdjk;
-import bdjn;
-import bdjo;
+import beoi;
+import beqn;
+import beqq;
+import beqr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
@@ -20,10 +20,10 @@ import mqq.os.MqqHandler;
 import okhttp3.WebSocketListener;
 
 public class WriteTogetherWebSocketSender
-  implements bdhf
+  implements beoi
 {
   private int jdField_a_of_type_Int = 2000;
-  private bdjk jdField_a_of_type_Bdjk;
+  private beqn jdField_a_of_type_Beqn;
   private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
   public RoomController a;
   private HeartBeat jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketHeartBeat;
@@ -39,9 +39,9 @@ public class WriteTogetherWebSocketSender
   private String jdField_b_of_type_JavaLangString;
   boolean jdField_b_of_type_Boolean;
   
-  public WriteTogetherWebSocketSender(bdjk parambdjk)
+  public WriteTogetherWebSocketSender(beqn parambeqn)
   {
-    this.jdField_a_of_type_Bdjk = parambdjk;
+    this.jdField_a_of_type_Beqn = parambeqn;
     this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketWriteTogetherWebSocketAlarm = new WriteTogetherWebSocketAlarm(this);
     c();
   }
@@ -82,7 +82,7 @@ public class WriteTogetherWebSocketSender
   void a(QQAppInterface paramQQAppInterface)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler == null) {
-      this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new bdjo(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new beqr(this, null);
     }
     AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
   }
@@ -92,9 +92,9 @@ public class WriteTogetherWebSocketSender
     this.jdField_b_of_type_Boolean = false;
     this.jdField_b_of_type_JavaLangString = paramString2;
     if (this.jdField_a_of_type_Okhttp3WebSocketListener == null) {
-      this.jdField_a_of_type_Okhttp3WebSocketListener = new bdjn(this);
+      this.jdField_a_of_type_Okhttp3WebSocketListener = new beqq(this);
     }
-    this.jdField_a_of_type_Bdjk.a(this.jdField_a_of_type_Okhttp3WebSocketListener);
+    this.jdField_a_of_type_Beqn.a(this.jdField_a_of_type_Okhttp3WebSocketListener);
     TicketManager localTicketManager = (TicketManager)paramQQAppInterface.getManager(2);
     String str = paramQQAppInterface.getCurrentAccountUin();
     if (localTicketManager != null) {
@@ -102,9 +102,9 @@ public class WriteTogetherWebSocketSender
     }
     a(paramQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketHeartBeat.a(paramString1, str);
-    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController = new RoomController(paramQQAppInterface, this.jdField_a_of_type_Bdjk, paramString2, paramString1, paramInt, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController = new RoomController(paramQQAppInterface, this.jdField_a_of_type_Beqn, paramString2, paramString1, paramInt, this.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController.a(this);
-    this.jdField_a_of_type_Bdjk.a();
+    this.jdField_a_of_type_Beqn.a();
   }
   
   public void a(BaseToWriteTogetherMsg paramBaseToWriteTogetherMsg)
@@ -170,7 +170,7 @@ public class WriteTogetherWebSocketSender
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bdjk.b();
+    this.jdField_a_of_type_Beqn.b();
     if (this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController != null) {
       this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController.b();
     }

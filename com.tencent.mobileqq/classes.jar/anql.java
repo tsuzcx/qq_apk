@@ -1,53 +1,43 @@
+import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public class anql
-  extends anrh
+class anql
+  extends BroadcastReceiver
 {
-  public anql(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  anql(anqk paramanqk) {}
   
-  public boolean a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    if (!TextUtils.isEmpty(anqk.a(this.a)))
     {
-      boolean bool = g_();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ContactAddAction", 1, "doAction error: " + localException.getMessage());
-      a("ContactAddAction");
-    }
-    return false;
-  }
-  
-  public boolean g_()
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, AddContactsActivity.class);
-    localIntent.setFlags(67108864);
-    int j = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("des_type"));
-    int i = j;
-    if (j != 0)
-    {
-      i = j;
-      if (j != 1)
+      int i = paramIntent.getIntExtra("result", -1);
+      paramContext = "{ \"ret\": " + i + " }";
+      if (QLog.isColorLevel()) {
+        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb js req method = setFriendStatus, return = " + paramContext);
+      }
+      if (i != 0) {
+        break label176;
+      }
+      if (anqk.a(this.a) != null)
       {
-        i = j;
-        if (j != 2) {
-          i = 0;
-        }
+        paramContext = new Intent(anqk.a(this.a), ChatActivity.class);
+        paramContext.putExtra("uin", AppConstants.BABY_Q_UIN);
+        paramContext.putExtra("uintype", 0);
+        paramContext.putExtra("uinname", "babyQ");
+        paramContext.putExtra("selfSet_leftViewText", anqk.a(this.a).getString(2131690676));
+        anqk.a(this.a).startActivity(paramContext);
+        anqk.a(this.a).finish();
       }
     }
-    localIntent.putExtra("tab_index_key", i);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    return true;
+    return;
+    label176:
+    this.a.callJs(anqk.a(this.a) + "(" + paramContext + ");");
   }
 }
 

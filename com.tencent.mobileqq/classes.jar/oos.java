@@ -1,57 +1,54 @@
-import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class oos
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public oos(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
+  public oos(ShopWebViewFragment paramShopWebViewFragment, JSONObject paramJSONObject1, JSONObject paramJSONObject2) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.doOnBackPressed();
-    Object localObject1 = paramView.getTag();
-    try
+    switch (paramMotionEvent.getAction())
     {
-      i = Integer.valueOf(localObject1.toString()).intValue();
-      if ((i >= 0) && (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()))
+    }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
+      return false;
+      int i = (int)(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c - paramMotionEvent.getY());
+      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
+      if ((i < 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d > 0)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
+      }
+      if ((i > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d < 0)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
+      }
+      paramView = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment;
+      paramView.d = (i + paramView.d);
+      return false;
+      try
       {
-        localObject1 = (MultiBiuSameContent)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-        switch (paramView.getId())
+        this.jdField_a_of_type_OrgJsonJSONObject.put("y_offset", this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d);
+        paramView = WebViewPlugin.toJsScript("onScroll", this.jdField_a_of_type_OrgJsonJSONObject, this.b);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.webView != null)
         {
-        default: 
-          EventCollector.getInstance().onViewClicked(paramView);
-          return;
+          this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.webView.callJs(paramView);
+          return false;
         }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (JSONException paramView)
       {
-        int i = -1;
-        continue;
-        if (localException != null)
-        {
-          String str = ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a);
-          ReadInjoyFriendsBiuComponentFragment.a(this.a, str);
-          ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.b, "0X800953D", localException.c);
-          continue;
-          if (localException != null)
-          {
-            str = ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.c, localException.b);
-            ReadInjoyFriendsBiuComponentFragment.a(this.a, str);
-            ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.b, "0X800953C", localException.c);
-            continue;
-            Object localObject2 = null;
-          }
-        }
+        paramView.printStackTrace();
       }
     }
+    return false;
   }
 }
 

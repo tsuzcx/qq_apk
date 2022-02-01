@@ -1,22 +1,6 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-
-public class acyb
-  implements Animation.AnimationListener
+public abstract interface acyb
 {
-  public acyb(ChatHistory paramChatHistory, View paramView, int paramInt) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a();
 }
 
 

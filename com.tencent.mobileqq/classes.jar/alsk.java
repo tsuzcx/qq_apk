@@ -1,22 +1,10 @@
-public class alsk
+public abstract interface alsk
 {
-  public float a;
-  public float b;
-  public float c;
+  public abstract void b(int paramInt);
   
-  public alsk(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-  }
+  public abstract void b(String paramString);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
-    return localStringBuilder.toString();
-  }
+  public abstract void d();
 }
 
 

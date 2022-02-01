@@ -16,7 +16,9 @@ import com.tencent.ttpic.cache.LoadItemManager;
 import com.tencent.ttpic.cache.LoadItemManager.LOAD_TYPE;
 import com.tencent.ttpic.cache.LoadStickerItemManager;
 import com.tencent.ttpic.cache.PreLoader;
+import com.tencent.ttpic.filter.juyoujinggame.UKYOGameSetting;
 import com.tencent.ttpic.model.FaceFeatureItem;
+import com.tencent.ttpic.model.ImagesSetting;
 import com.tencent.ttpic.model.MultiViewerItem;
 import com.tencent.ttpic.openapi.extrastickerutil.ExtraStickerParserAgent;
 import com.tencent.ttpic.openapi.filter.FabbyMvPart;
@@ -25,7 +27,7 @@ import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
 import com.tencent.ttpic.util.VideoFilterFactory.STICKER_TYPE;
 import java.io.File;
@@ -50,7 +52,7 @@ public final class VideoMemoryManager
   private final Map<String, Bitmap> mCache = new ConcurrentHashMap();
   private double mCurMaterialSizeInMB;
   private final Map<String, ETC1Util.ETC1Texture> mETCCache = new ConcurrentHashMap();
-  private final Map<FaceOffUtil.FEATURE_TYPE, Bitmap> mGrayCache = new ConcurrentHashMap();
+  private final Map<FaceOffUtil.FeatureType, Bitmap> mGrayCache = new ConcurrentHashMap();
   private final Handler mHandler = new Handler(HandlerThreadManager.getInstance().getHandlerThread(HandlerThreadTag.VIDEO_MEMORY_MANAGER).getLooper());
   private int mMaxPreloadSizeInKB;
   private int mSampleSize;
@@ -222,37 +224,44 @@ public final class VideoMemoryManager
     if (paramVideoMaterial.getHeadCropItemList() != null) {
       localArrayList.addAll(paramVideoMaterial.getHeadCropItemList());
     }
+    Iterator localIterator;
     Object localObject;
     if (paramVideoMaterial.getFabbyParts() != null)
     {
-      localObject = paramVideoMaterial.getFabbyParts().getParts().iterator();
-      while (((Iterator)localObject).hasNext())
+      localIterator = paramVideoMaterial.getFabbyParts().getParts().iterator();
+      while (localIterator.hasNext())
       {
-        FabbyMvPart localFabbyMvPart = (FabbyMvPart)((Iterator)localObject).next();
-        if (localFabbyMvPart.bgItem != null) {
-          localArrayList.add(localFabbyMvPart.bgItem);
+        localObject = (FabbyMvPart)localIterator.next();
+        if (((FabbyMvPart)localObject).bgItem != null) {
+          localArrayList.add(((FabbyMvPart)localObject).bgItem);
         }
-        if (localFabbyMvPart.fgItem != null) {
-          localArrayList.add(localFabbyMvPart.fgItem);
+        if (((FabbyMvPart)localObject).fgItem != null) {
+          localArrayList.add(((FabbyMvPart)localObject).fgItem);
         }
-        if (localFabbyMvPart.coverItem != null) {
-          localArrayList.add(localFabbyMvPart.coverItem);
+        if (((FabbyMvPart)localObject).coverItem != null) {
+          localArrayList.add(((FabbyMvPart)localObject).coverItem);
         }
-        if (localFabbyMvPart.transitionItem != null) {
-          localArrayList.add(localFabbyMvPart.transitionItem);
+        if (((FabbyMvPart)localObject).transitionItem != null) {
+          localArrayList.add(((FabbyMvPart)localObject).transitionItem);
         }
       }
     }
     if (paramVideoMaterial.getFaceFeatureItemList() != null)
     {
-      paramVideoMaterial = paramVideoMaterial.getFaceFeatureItemList().iterator();
-      while (paramVideoMaterial.hasNext())
+      localIterator = paramVideoMaterial.getFaceFeatureItemList().iterator();
+      while (localIterator.hasNext())
       {
-        localObject = (FaceFeatureItem)paramVideoMaterial.next();
+        localObject = (FaceFeatureItem)localIterator.next();
         if ((localObject != null) && (((FaceFeatureItem)localObject).getStickerItems() != null)) {
           localArrayList.addAll(((FaceFeatureItem)localObject).getStickerItems());
         }
       }
+    }
+    if (paramVideoMaterial.getUkyoGameSetting() != null) {
+      localArrayList.addAll(paramVideoMaterial.getUkyoGameSetting().getItems());
+    }
+    if (paramVideoMaterial.getImageSetting() != null) {
+      localArrayList.addAll(paramVideoMaterial.getImageSetting().getStickerItems());
     }
     return localArrayList;
   }
@@ -487,9 +496,9 @@ public final class VideoMemoryManager
     return -1;
   }
   
-  public Bitmap loadImage(FaceOffUtil.FEATURE_TYPE paramFEATURE_TYPE)
+  public Bitmap loadImage(FaceOffUtil.FeatureType paramFeatureType)
   {
-    return (Bitmap)this.mGrayCache.get(paramFEATURE_TYPE);
+    return (Bitmap)this.mGrayCache.get(paramFeatureType);
   }
   
   public Bitmap loadImage(String paramString, int paramInt)

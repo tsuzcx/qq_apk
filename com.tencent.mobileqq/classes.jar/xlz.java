@@ -1,17 +1,6 @@
-import android.text.TextUtils;
-
-public class xlz
-  extends xlu
+public abstract interface xlz
 {
-  public xlz()
-  {
-    super("memory_publish", null);
-  }
-  
-  public static boolean a(xlu paramxlu)
-  {
-    return TextUtils.equals("memory_publish", paramxlu.a);
-  }
+  public abstract void a_(xlu paramxlu);
 }
 
 

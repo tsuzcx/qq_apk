@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
-import aexc;
-import amtj;
+import afoo;
 import android.app.Activity;
 import android.app.Application;
 import android.app.PendingIntent;
@@ -13,7 +12,8 @@ import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import ause;
+import anvx;
+import avxz;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
@@ -26,7 +26,7 @@ public class GroupMiniAioInterfaceImpl
   implements NewMiniAioInterface
 {
   private Activity mActivity;
-  private ause mMiniMsgUser;
+  private avxz mMiniMsgUser;
   private long roomId;
   private int roomType;
   private int xPoint;
@@ -38,7 +38,7 @@ public class GroupMiniAioInterfaceImpl
     localIntent1.setFlags(67108864);
     localIntent1.putExtra("tab_index", MainFragment.b);
     localIntent1.putExtra("fragment_id", 1);
-    localIntent1.putExtra("banner_wording", amtj.a(2131704472));
+    localIntent1.putExtra("banner_wording", anvx.a(2131704823));
     localIntent1.putExtra("banner_iconIdx", 13);
     localIntent1.putExtra("banner_iconIdx", 14);
     localIntent1.putExtra("banner_businessCategory", "GroupVideo");
@@ -56,7 +56,7 @@ public class GroupMiniAioInterfaceImpl
   {
     int i = this.mActivity.getApplication().getResources().getDisplayMetrics().widthPixels;
     int j = ImmersiveUtils.getStatusBarHeight(this.mActivity);
-    int k = this.mActivity.getApplication().getResources().getDimensionPixelSize(2131297335);
+    int k = this.mActivity.getApplication().getResources().getDimensionPixelSize(2131297336);
     if (this.xPoint == 0)
     {
       i = i - k * 4 - ViewUtils.dpToPx(35.0F);
@@ -96,7 +96,7 @@ public class GroupMiniAioInterfaceImpl
     this.mActivity = ((Activity)((ContextWrapper)paramContext).getBaseContext());
     this.roomId = paramLong;
     this.roomType = paramInt;
-    this.mMiniMsgUser = new ause(this.mActivity, paramString1, paramString2, getMiniMsgUserParam());
+    this.mMiniMsgUser = new avxz(this.mActivity, paramString1, paramString2, getMiniMsgUserParam());
     ThreadManagerV2.getUIHandlerV2().post(new GroupMiniAioInterfaceImpl.1(this));
   }
   

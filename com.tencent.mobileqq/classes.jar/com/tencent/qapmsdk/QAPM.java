@@ -7,19 +7,20 @@ import android.text.TextUtils;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 import com.tencent.qapmsdk.base.config.PluginCombination;
 import com.tencent.qapmsdk.base.config.PluginCombination.Companion;
+import com.tencent.qapmsdk.base.listener.IAnrConfigListener;
+import com.tencent.qapmsdk.base.listener.IDropFrameListener;
 import com.tencent.qapmsdk.base.listener.IExtraDataListener;
 import com.tencent.qapmsdk.base.listener.IInspectorListener;
+import com.tencent.qapmsdk.base.listener.ILooperListener;
 import com.tencent.qapmsdk.base.listener.IMemoryCellingListener;
+import com.tencent.qapmsdk.base.listener.IResourceListener;
 import com.tencent.qapmsdk.base.listener.IWebViewBreadCrumbListener;
-import com.tencent.qapmsdk.base.reporter.ab.AbProviderSingleton;
-import com.tencent.qapmsdk.base.reporter.ab.AbType;
 import com.tencent.qapmsdk.common.logger.LogState;
 import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.dropframe.DropFrameMonitor;
 import com.tencent.qapmsdk.qapmmanager.QAPMConfigureWizard;
 import com.tencent.qapmsdk.resource.ResourceMonitor;
 import java.lang.ref.WeakReference;
-import org.jetbrains.annotations.NotNull;
 
 public class QAPM
 {
@@ -31,7 +32,6 @@ public class QAPM
   public static final int LevelWarn;
   public static final int ModeANR;
   public static final int ModeAll;
-  public static final int ModeBattery;
   public static final int ModeCeiling;
   public static final int ModeCrash;
   public static final int ModeDBIO;
@@ -44,24 +44,28 @@ public class QAPM
   public static final int ModeResource;
   public static final int ModeStable;
   public static final int ModeWebView;
-  public static final int PropertyExtraDataListener = 202;
-  public static final int PropertyInspectorListener = 107;
+  public static final int PropertyAnrConfigListener = 117;
+  public static final int PropertyDropFrameListener = 113;
+  public static final int PropertyExtraDataListener = 115;
+  public static final int PropertyInspectorListener = 110;
   public static final int PropertyKeyAppId = 101;
-  public static final int PropertyKeyAppInstance = 201;
+  public static final int PropertyKeyAppInstance = 109;
   public static final int PropertyKeyAppVersion = 103;
-  public static final int PropertyKeyAthenaHost = 111;
-  public static final int PropertyKeyDeviceId = 109;
+  public static final int PropertyKeyAthenaHost = 107;
+  public static final int PropertyKeyDeviceId = 108;
   public static final int PropertyKeyHost = 106;
   public static final int PropertyKeyLogLevel = 105;
   public static final int PropertyKeySymbolId = 104;
   public static final int PropertyKeyUserId = 102;
-  public static final int PropertyMemoryCellingListener = 108;
-  public static final int PropertyWebViewBreadCrumbListener = 110;
+  public static final int PropertyLooperListener = 116;
+  public static final int PropertyMemoryCellingListener = 111;
+  public static final int PropertyResourceListener = 114;
+  public static final int PropertyWebViewBreadCrumbListener = 112;
   public static final String SCENE_ALL = "SCENE_ALL";
   private static final String TAG = "QAPM_QAPM";
   @NonNull
   private static QAPM apm = new QAPM();
-  private static int userMode = 0;
+  private static int userMode = PluginCombination.Companion.getModeStable();
   
   static
   {
@@ -69,7 +73,6 @@ public class QAPM
     ModeDBIO = PluginCombination.dbPlugin.mode;
     ModeLooper = PluginCombination.loopStackPlugin.mode;
     ModeCeiling = PluginCombination.ceilingValuePlugin.mode;
-    ModeBattery = PluginCombination.batteryPlugin.mode;
     ModeResource = PluginCombination.resourcePlugin.mode;
     ModeDropFrame = PluginCombination.dropFramePlugin.mode;
     ModeANR = PluginCombination.anrPlugin.mode;
@@ -96,11 +99,6 @@ public class QAPM
     if (paramString2 == null) {
       str = "";
     }
-    if ((userMode & paramInt) != paramInt)
-    {
-      userMode |= paramInt;
-      a.a(paramInt, false);
-    }
     if (paramInt == ModeResource) {
       if ("RESOURCEMONITOR".equals(str)) {
         ResourceMonitor.getInstance().start();
@@ -111,19 +109,34 @@ public class QAPM
       return true;
       ResourceMonitor.getInstance().start(paramString1, str);
       continue;
-      if (paramInt == ModeDropFrame) {
+      if (paramInt == ModeDropFrame)
+      {
         if ("RESOURCEMONITOR".equals(str)) {
           ResourceMonitor.getInstance().stop();
         } else {
           DropFrameMonitor.getInstance().beginDropFrameScene(paramString1);
         }
       }
+      else
+      {
+        userMode = paramInt;
+        a.a(paramInt, false);
+      }
     }
   }
   
   public static boolean endScene(String paramString, int paramInt)
   {
-    return endScene(paramString, "", paramInt);
+    String str2 = "";
+    String str1 = str2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      str1 = str2;
+      if (paramString.equals("QAPM_APPLAUNCH")) {
+        str1 = "QAPM_APPLAUNCH_END";
+      }
+    }
+    return endScene(paramString, str1, paramInt);
   }
   
   public static boolean endScene(String paramString1, @Nullable String paramString2, int paramInt)
@@ -132,47 +145,24 @@ public class QAPM
     if (paramString2 == null) {
       str = "";
     }
-    if ((userMode & paramInt) != paramInt)
+    if (paramInt == ModeResource)
     {
-      userMode |= paramInt;
-      a.a(paramInt, false);
-    }
-    if (paramInt == ModeResource) {
-      if ("RESOURCEMONITOR".equals(str)) {
+      if ("RESOURCEMONITOR".equals(str))
+      {
         ResourceMonitor.getInstance().stop();
+        return true;
       }
-    }
-    while (paramInt != ModeDropFrame)
-    {
-      return true;
       ResourceMonitor.getInstance().stop(paramString1, str);
       return true;
     }
-    DropFrameMonitor.getInstance().stopDropFrameScene();
-    return true;
-  }
-  
-  public static String getAbFactorByQapmPlugin(int paramInt)
-  {
-    return AbProviderSingleton.getInstance().getAbFactors(paramInt);
-  }
-  
-  public static void setAbFactor(@NotNull String paramString1, @NotNull String paramString2, @NotNull Class<? extends AbType> paramClass)
-  {
-    Logger.INSTANCE.i(new String[] { "QAPM_QAPM", "setABFactor:" + paramClass + " val " + paramString2 });
-    paramClass = AbProviderSingleton.getInstance().getAbType(paramClass);
-    if (paramClass != null)
+    if (paramInt == ModeDropFrame)
     {
-      paramClass.initValue(paramString2, paramString1);
-      paramClass.active();
-      return;
+      DropFrameMonitor.getInstance().stopDropFrameScene();
+      return true;
     }
-    Logger.INSTANCE.e(new String[] { "QAPM_QAPM", "setABFactor not found" });
-  }
-  
-  public static void setAbTypes(Class<? extends AbType>[] paramArrayOfClass)
-  {
-    AbProviderSingleton.getInstance().abTypeArr = paramArrayOfClass;
+    userMode = paramInt;
+    a.a(paramInt, false);
+    return true;
   }
   
   @NonNull
@@ -181,6 +171,11 @@ public class QAPM
     if (paramObject != null) {
       switch (paramInt)
       {
+      case 106: 
+      case 107: 
+      case 108: 
+      default: 
+        Logger.INSTANCE.w(new String[] { "QAPM_QAPM", "set invalid property by object type, key = ", String.valueOf(paramInt), ", value = ", paramObject.toString() });
       }
     }
     for (;;)
@@ -226,7 +221,43 @@ public class QAPM
       continue;
       try
       {
+        com.tencent.qapmsdk.base.listener.ListenerManager.dropFrameListener = (IDropFrameListener)paramObject;
+      }
+      catch (Throwable paramObject)
+      {
+        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+      }
+      continue;
+      try
+      {
+        com.tencent.qapmsdk.base.listener.ListenerManager.resourceListener = (IResourceListener)paramObject;
+      }
+      catch (Throwable paramObject)
+      {
+        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+      }
+      continue;
+      try
+      {
+        com.tencent.qapmsdk.base.listener.ListenerManager.looperListener = (ILooperListener)paramObject;
+      }
+      catch (Throwable paramObject)
+      {
+        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+      }
+      continue;
+      try
+      {
         com.tencent.qapmsdk.base.listener.ListenerManager.extraDataListener = (IExtraDataListener)paramObject;
+      }
+      catch (Throwable paramObject)
+      {
+        Logger.INSTANCE.exception("QAPM_QAPM", paramObject);
+      }
+      continue;
+      try
+      {
+        com.tencent.qapmsdk.base.listener.ListenerManager.anrConfigListener = (IAnrConfigListener)paramObject;
       }
       catch (Throwable paramObject)
       {
@@ -241,6 +272,8 @@ public class QAPM
     if (!TextUtils.isEmpty(paramString)) {
       switch (paramInt)
       {
+      default: 
+        Logger.INSTANCE.w(new String[] { "QAPM_QAPM", "set invalid property by string type, key = ", String.valueOf(paramInt), ", value = ", paramString });
       }
     }
     for (;;)
@@ -284,18 +317,6 @@ public class QAPM
         QAPMConfigureWizard.setDeviceId(paramString);
       }
     }
-  }
-  
-  public static void unSetAbFactor(Class<? extends AbType> paramClass)
-  {
-    Logger.INSTANCE.i(new String[] { "QAPM_QAPM", "unSetABFactor:" + paramClass });
-    paramClass = AbProviderSingleton.getInstance().getAbType(paramClass);
-    if (paramClass != null)
-    {
-      paramClass.unActive();
-      return;
-    }
-    Logger.INSTANCE.e(new String[] { "QAPM_QAPM", "setABFactor not found" });
   }
 }
 

@@ -1,16 +1,16 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bmhz;
+import bnxr;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AEEditorImageEditFragment$17$2
   implements Runnable
 {
-  public AEEditorImageEditFragment$17$2(bmhz parambmhz) {}
+  public AEEditorImageEditFragment$17$2(bnxr parambnxr) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a, 2131689841, 0).a();
+    QQToast.a(this.a.a.a, 2131689870, 0).a();
   }
 }
 

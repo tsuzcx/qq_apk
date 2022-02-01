@@ -1,60 +1,26 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qphone.base.util.QLog;
 
-public class angx
-  extends angu
+final class angx
+  extends bhyn
 {
-  private String b;
+  angx(SharedPreferences paramSharedPreferences, int paramInt, angv paramangv) {}
   
-  public angx(Activity paramActivity, String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4)
+  public void onDone(bhyo parambhyo)
   {
-    super(paramActivity, paramString1, paramString2, paramLong, paramString3, paramInt);
-    this.b = paramString4;
-  }
-  
-  private boolean a(String paramString)
-  {
-    return (TextUtils.isEmpty(paramString)) || (a() == 1);
-  }
-  
-  protected String f()
-  {
-    String str2 = anha.a().a(this.b);
-    String str1 = str2;
-    if (a(str2)) {
-      str1 = super.f();
+    super.onDone(parambhyo);
+    QLog.i("apollo_client_ApolloSSOConfig", 1, "checkUpdateApolloWebViewConfig download file task.getStatus()->" + parambhyo.a() + ", httpCode: " + parambhyo.f);
+    if (3 == parambhyo.a())
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_key_apollo_webView_config_version", this.jdField_a_of_type_Int).commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig download version:" + this.jdField_a_of_type_Int);
+      }
+      if (this.jdField_a_of_type_Angv != null) {
+        angv.a(this.jdField_a_of_type_Angv);
+      }
     }
-    return str1;
-  }
-  
-  protected String g()
-  {
-    String str2 = anha.a().a(this.b);
-    String str1 = str2;
-    if (a(str2)) {
-      str1 = super.g();
-    }
-    return str1;
-  }
-  
-  protected String h()
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("type", "result");
-    localJSONObject2.put("gameType", a());
-    JSONObject localJSONObject3 = new JSONObject();
-    localJSONObject3.put("jump_url", a());
-    String str2 = anha.a().a(this.b);
-    String str1 = str2;
-    if (a(str2)) {
-      str1 = "https://qqvgame.qq.com/d55d788cc3c423807d830230aad935b2.png";
-    }
-    localJSONObject3.put("icon_url", str1);
-    localJSONObject2.put("extra", localJSONObject3);
-    localJSONObject1.put("invite", localJSONObject2);
-    return localJSONObject1.toString();
   }
 }
 

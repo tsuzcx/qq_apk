@@ -1,30 +1,20 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import java.util.Comparator;
 
 class qfc
-  implements View.OnAttachStateChangeListener
+  implements Comparator<ChannelInfo>
 {
   qfc(qfb paramqfb) {}
   
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
+  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
   {
-    if (qfb.a(this.a) != null)
-    {
-      qfb.a(this.a).b();
-      qfb.a(this.a, null);
+    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
+      return 0;
     }
-    if (qfb.a(this.a) != null)
-    {
-      qfb.a(this.a).a();
-      qfb.a(this.a, null);
+    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
+      return -1;
     }
-    if (qfb.a(this.a) != null)
-    {
-      qfb.a(this.a).a();
-      qfb.a(this.a, null);
-    }
+    return 1;
   }
 }
 

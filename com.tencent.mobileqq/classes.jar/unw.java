@@ -1,86 +1,38 @@
-import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView;
+import com.tencent.qphone.base.util.QLog;
 
 public class unw
+  extends Handler
 {
-  private final ConcurrentHashMap<String, ConcurrentHashMap<Integer, WeakReference<unz>>> a = new ConcurrentHashMap();
-  
-  public static unw a()
+  public unw(ReadInJoyPatchAdView paramReadInJoyPatchAdView, Looper paramLooper)
   {
-    return uny.a();
+    super(paramLooper);
   }
   
-  private void a(String paramString, unz paramunz)
+  public void handleMessage(Message paramMessage)
   {
-    ConcurrentHashMap localConcurrentHashMap2 = (ConcurrentHashMap)this.a.get(paramString);
-    ConcurrentHashMap localConcurrentHashMap1 = localConcurrentHashMap2;
-    if (localConcurrentHashMap2 == null) {
-      localConcurrentHashMap1 = new ConcurrentHashMap();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyPatchAdView", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
     }
-    localConcurrentHashMap1.put(Integer.valueOf(paramunz.hashCode()), new WeakReference(paramunz));
-    this.a.put(paramString, localConcurrentHashMap1);
-    uya.b("WSSimpleEventBus", 2, "registerReceiver event Name:" + paramString + ",key：[" + paramunz.getClass().getSimpleName() + ":" + paramunz.hashCode() + "], subscribers size:" + localConcurrentHashMap1.size());
-  }
-  
-  private void b(String paramString, unz paramunz)
-  {
-    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.a.get(paramString);
-    if (localConcurrentHashMap == null) {
-      return;
+    switch (paramMessage.what)
+    {
     }
-    localConcurrentHashMap.remove(Integer.valueOf(paramunz.hashCode()));
-    if (localConcurrentHashMap.size() == 0) {
-      this.a.remove(paramString);
-    }
-    uya.b("WSSimpleEventBus", 2, "unRegisterReceiver event Name:" + paramString + ",key：[" + paramunz.getClass().getSimpleName() + ":" + paramunz.hashCode() + "], subscribers size:" + localConcurrentHashMap.size());
-  }
-  
-  public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
-  {
-    Object localObject = (ConcurrentHashMap)this.a.get(paramWSSimpleBaseEvent.getClass().getName());
-    if (localObject == null) {}
-    for (;;)
+    do
     {
       return;
-      localObject = ((ConcurrentHashMap)localObject).values().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((unz)localWeakReference.get()).a(paramWSSimpleBaseEvent);
-        }
+      int i = 0;
+      if ((paramMessage.obj instanceof Integer)) {
+        i = ((Integer)paramMessage.obj).intValue();
       }
-    }
-  }
-  
-  public void a(unz paramunz)
-  {
-    if (paramunz == null) {}
-    for (;;)
-    {
+      ReadInJoyPatchAdView.a(this.a, i);
       return;
-      Iterator localIterator = paramunz.a().iterator();
-      while (localIterator.hasNext()) {
-        a(((Class)localIterator.next()).getName(), paramunz);
-      }
-    }
-  }
-  
-  public void b(unz paramunz)
-  {
-    if (paramunz == null) {}
-    for (;;)
-    {
+      ReadInJoyPatchAdView.a(this.a);
       return;
-      Iterator localIterator = paramunz.a().iterator();
-      while (localIterator.hasNext()) {
-        b(((Class)localIterator.next()).getName(), paramunz);
-      }
-    }
+    } while (this.a.a == null);
+    this.a.a.b(ReadInJoyPatchAdView.a(this.a), ReadInJoyPatchAdView.a(this.a));
   }
 }
 

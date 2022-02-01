@@ -1,53 +1,33 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.EffectSettingUi.2.1;
-import com.tencent.av.ui.EffectSettingUi.2.2;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
 public class mdc
-  implements mpj
+  extends mdb
 {
-  public mdc(EffectSettingUi paramEffectSettingUi) {}
+  public static int b;
+  public static boolean c;
+  public static String d;
+  public final int a;
+  public final boolean a;
+  public final String c;
   
-  public void a(boolean paramBoolean)
+  public mdc(long paramLong, String paramString, boolean paramBoolean, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "onGetConfig, enable[" + paramBoolean + "]");
-    }
-    if (paramBoolean)
-    {
-      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
-      if (localObject != null)
-      {
-        localObject = (AVActivity)((WeakReference)localObject).get();
-        if (localObject != null) {
-          ((AVActivity)localObject).runOnUiThread(new EffectSettingUi.2.1(this));
-        }
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_Mpj = null;
+    super(6100, null);
+    a(paramLong, null);
+    this.jdField_c_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    d = paramString;
+    jdField_c_of_type_Boolean = paramBoolean;
+    b = paramInt;
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public String toString()
   {
-    long l = AudioHelper.b();
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onStatusChanged, seq[" + l + "]");
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new EffectSettingUi.2.2(this, l, paramBoolean3, paramBoolean1, paramBoolean2));
+    return "mId[" + this.jdField_c_of_type_JavaLangString + "], mFrom[" + this.jdField_a_of_type_Int + "], mSender[" + this.jdField_a_of_type_Boolean + "], seq[" + a() + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mdc
  * JD-Core Version:    0.7.0.1
  */

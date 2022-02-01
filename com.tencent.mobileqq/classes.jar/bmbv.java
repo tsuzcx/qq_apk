@@ -1,35 +1,41 @@
-import android.util.LruCache;
-import android.view.View;
-import androidx.annotation.NonNull;
+import android.content.Intent;
+import android.os.Bundle;
 
-public final class bmbv
+public abstract interface bmbv
 {
-  private static final LruCache<String, Long> a = new LruCache(10);
+  public abstract int a();
   
-  public static boolean a(View paramView)
-  {
-    Object localObject = paramView.getTag(2131362287);
-    long l = System.currentTimeMillis();
-    paramView.setTag(2131362287, Long.valueOf(l));
-    return ((localObject instanceof Long)) && (Math.abs(l - ((Long)localObject).longValue()) <= 500L);
-  }
+  public abstract Intent a();
   
-  public static boolean a(@NonNull String paramString)
-  {
-    Long localLong1 = (Long)a.get(paramString);
-    Long localLong2 = Long.valueOf(System.currentTimeMillis());
-    if (localLong1 == null)
-    {
-      a.put(paramString, localLong2);
-      return false;
-    }
-    if (Math.abs(localLong2.longValue() - localLong1.longValue()) >= 500L)
-    {
-      a.put(paramString, localLong2);
-      return false;
-    }
-    return true;
-  }
+  public abstract void a();
+  
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
+  
+  public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract void n();
 }
 
 

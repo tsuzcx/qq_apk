@@ -1,111 +1,53 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResReloader.1;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import mqq.os.MqqHandler;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arey
-  implements Handler.Callback
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private arez jdField_a_of_type_Arez;
-  protected ArrayList<Integer> a;
-  private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
+  public List<arfa> a = new ArrayList();
   
-  public arey(arez paramarez)
+  public static arey a(String paramString)
   {
-    this.jdField_a_of_type_Arez = paramarez;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10001);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    arey localarey = new arey();
     try
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList == null)
+      paramString = new JSONObject(paramString);
+      if (paramString.has("QRCodeList"))
       {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        b();
-      }
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)))
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(0, Integer.valueOf(paramInt));
-        if (QLog.isColorLevel()) {
-          QLog.d("QQSysAndEmojiResReloader", 2, new Object[] { "addReloadDrawable idx:", Integer.valueOf(paramInt), " ,size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
-        }
-      }
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  protected void b()
-  {
-    ThreadManager.getSubThreadHandler().post(new QQSysAndEmojiResReloader.1(this));
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return false;
-    } while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0));
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-          break label162;
-        }
-        i = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue();
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        if (i <= -1) {
-          break;
-        }
-        if (this.jdField_a_of_type_Arez != null) {
-          this.jdField_a_of_type_Arez.a(i);
-        }
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        paramString = paramString.optJSONArray("QRCodeList");
+        Type localType = new arez().getClass().getGenericSuperclass();
+        localarey.a.addAll(avyx.a(paramString, localType));
+        if (localarey.a.size() > 0)
         {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10001, 300L);
-          return false;
+          paramString = new arfa();
+          paramString.jdField_a_of_type_JavaLangString = "default_bg";
+          paramString.c = 1;
+          paramString.jdField_b_of_type_Int = 0;
+          paramString.jdField_a_of_type_Int = 0;
+          paramString.jdField_b_of_type_JavaLangString = "";
+          localarey.a.add(paramString);
         }
       }
-      finally
+      if (QLog.isColorLevel()) {
+        QLog.d("QrCodeDisplay.QrCodeConfBean", 2, "parse: " + localarey.a.size());
+      }
+      return localarey;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        paramString.printStackTrace();
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQSysAndEmojiResReloader", 2, "finish reloading");
-      return false;
-      label162:
-      int i = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arey
  * JD-Core Version:    0.7.0.1
  */

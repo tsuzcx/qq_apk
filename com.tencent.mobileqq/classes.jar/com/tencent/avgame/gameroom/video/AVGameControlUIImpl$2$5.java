@@ -1,11 +1,11 @@
 package com.tencent.avgame.gameroom.video;
 
-import nfj;
+import nmb;
 
 public class AVGameControlUIImpl$2$5
   implements Runnable
 {
-  public AVGameControlUIImpl$2$5(nfj paramnfj) {}
+  public AVGameControlUIImpl$2$5(nmb paramnmb) {}
   
   public void run()
   {

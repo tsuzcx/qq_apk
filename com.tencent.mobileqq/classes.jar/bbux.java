@@ -1,40 +1,15 @@
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+
 public class bbux
+  implements bkzs
 {
-  public int a;
-  private int b;
-  private int c;
+  public bbux(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public int a()
+  public void onDismiss()
   {
-    int i = this.b;
-    this.b = (i + 1);
-    return i;
-  }
-  
-  public void a()
-  {
-    this.b = 0;
-    this.a = 0;
-    this.c = 0;
-  }
-  
-  public int b()
-  {
-    int i = this.c;
-    this.c = (i + 1);
-    return i;
-  }
-  
-  public void b()
-  {
-    this.b = 0;
-    this.a = 0;
-    this.c = 0;
-  }
-  
-  public int c()
-  {
-    return this.c;
+    SignatureHistoryFragment.a(this.a, null);
+    VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "5", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

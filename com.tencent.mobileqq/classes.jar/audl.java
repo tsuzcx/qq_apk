@@ -1,261 +1,43 @@
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import mqq.app.AppRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class audl
 {
-  private final Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.context;
-  audn jdField_a_of_type_Audn = audn.jdField_a_of_type_Audn;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean = false;
-  audn jdField_b_of_type_Audn = audn.jdField_a_of_type_Audn;
-  String jdField_b_of_type_JavaLangString = "";
-  boolean jdField_b_of_type_Boolean = false;
-  audn jdField_c_of_type_Audn = audn.jdField_a_of_type_Audn;
-  boolean jdField_c_of_type_Boolean = false;
-  audn d = audn.jdField_a_of_type_Audn;
-  audn e = audn.jdField_a_of_type_Audn;
-  audn f = audn.jdField_a_of_type_Audn;
-  audn g = audn.jdField_a_of_type_Audn;
-  audn h = audn.jdField_a_of_type_Audn;
-  audn i = audn.jdField_a_of_type_Audn;
-  audn j = audn.jdField_a_of_type_Audn;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
+  public String c;
   
-  audl()
-  {
-    try
-    {
-      a();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-  }
+  private audl(audf paramaudf) {}
   
-  private audn a(JSONObject paramJSONObject)
+  public void a() {}
+  
+  public void a(Context paramContext)
   {
-    boolean bool = true;
-    if (paramJSONObject == null) {
-      return audn.jdField_a_of_type_Audn;
-    }
-    if (paramJSONObject.optInt("need_block") == 1) {}
-    for (;;)
+    paramContext.getSharedPreferences("FMSETTING_59", 3).edit().putString("DefaultRootPath", this.b).commit();
+    paramContext = audf.a(this.jdField_a_of_type_Audf, this.b + this.c);
+    Object localObject = audf.b(this.jdField_a_of_type_Audf, this.b + this.c);
+    String str = audf.c(this.jdField_a_of_type_Audf, this.b + this.c);
+    audf.a(this.jdField_a_of_type_Audf, paramContext);
+    audf.a(this.jdField_a_of_type_Audf, str);
+    audf.a(this.jdField_a_of_type_Audf, (String)localObject);
+    paramContext = this.jdField_a_of_type_Audf.a.keySet().iterator();
+    while (paramContext.hasNext())
     {
-      String str = paramJSONObject.optString("start_time");
-      paramJSONObject = paramJSONObject.optString("end_time");
-      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-      try
+      localObject = (String)paramContext.next();
+      localObject = (audl)this.jdField_a_of_type_Audf.a.get(localObject);
+      if ((((audl)localObject).jdField_a_of_type_Boolean) && (localObject != this))
       {
-        paramJSONObject = new audn(bool, localSimpleDateFormat.parse(str), localSimpleDateFormat.parse(paramJSONObject));
-        return paramJSONObject;
-      }
-      catch (ParseException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return audn.jdField_a_of_type_Audn;
-      }
-      catch (Throwable paramJSONObject)
-      {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
-      }
-      bool = false;
-    }
-  }
-  
-  private String a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {
-      localObject = "";
-    }
-    String str;
-    do
-    {
-      return localObject;
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if (localObject == null) {
-        return "";
-      }
-      str = ((AppRuntime)localObject).getAccount();
-      localObject = str;
-    } while (str != null);
-    return "";
-  }
-  
-  private void a(int paramInt)
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext);
-    String str = "_" + a();
-    localSharedPreferences.edit().putInt("KEY_WO_KAO_VERSION" + str, paramInt).apply();
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Audn = audn.jdField_a_of_type_Audn;
-    this.jdField_b_of_type_Audn = audn.jdField_a_of_type_Audn;
-    this.jdField_c_of_type_Audn = audn.jdField_a_of_type_Audn;
-    this.d = audn.jdField_a_of_type_Audn;
-    this.e = audn.jdField_a_of_type_Audn;
-    this.f = audn.jdField_a_of_type_Audn;
-    this.g = audn.jdField_a_of_type_Audn;
-    this.h = audn.jdField_a_of_type_Audn;
-    this.i = audn.jdField_a_of_type_Audn;
-    this.j = audn.jdField_a_of_type_Audn;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public int a()
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext);
-    String str = "_" + a();
-    return localSharedPreferences.getInt("KEY_WO_KAO_VERSION" + str, 0);
-  }
-  
-  void a()
-  {
-    long l = System.currentTimeMillis();
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("SP_WO_KAO", 4);
-    String str = "_" + a();
-    str = ((SharedPreferences)localObject).getString("KEY_WO_KAO_CONFIG" + str, "");
-    localObject = "";
-    try
-    {
-      str = audi.b(str);
-      localObject = str;
-    }
-    catch (XorCipherException localXorCipherException)
-    {
-      for (;;)
-      {
-        localXorCipherException.printStackTrace();
+        audf.a(2, "getDefaultStorage[" + ((audl)localObject).b + "]");
+        ((audl)localObject).jdField_a_of_type_Boolean = false;
       }
     }
-    a((String)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("Zhuoxu", 2, "loadConfigFromSp: invoked.  cost ms: " + (System.currentTimeMillis() - l));
-    }
-  }
-  
-  public void a(ConfigurationService.Config paramConfig)
-  {
-    int k = paramConfig.version.get();
-    int m = a();
-    a(k);
-    if (m != k)
-    {
-      paramConfig = aqlw.b(paramConfig, m, paramConfig.type.get());
-      a(paramConfig);
-      b(paramConfig);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("Zhuoxu", 2, "handleConfig: invoked. save version, ignored. version: " + m);
-  }
-  
-  void a(String paramString)
-  {
-    boolean bool2 = true;
-    if (TextUtils.isEmpty(paramString)) {
-      b();
-    }
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_Audn = a(paramString.optJSONObject("webview_menu"));
-        this.jdField_b_of_type_Audn = a(paramString.optJSONObject("webview_launch_app"));
-        this.jdField_c_of_type_Audn = a(paramString.optJSONObject("scan_qrcode"));
-        this.d = a(paramString.optJSONObject("save_image"));
-        this.e = a(paramString.optJSONObject("imageUpload_scan"));
-        this.g = a(paramString.optJSONObject("assetInfo_upload"));
-        this.f = a(paramString.optJSONObject("image_probe"));
-        this.h = a(paramString.optJSONObject("send_fileqrcode_switch"));
-        this.i = a(paramString.optJSONObject("file_exif_info"));
-        this.j = a(paramString.optJSONObject("file_app_scan"));
-        if (paramString.optInt("need_report_system_share_info_new") == 1)
-        {
-          bool1 = true;
-          this.jdField_a_of_type_Boolean = bool1;
-          if (paramString.optInt("need_xxxxx_else_xxx_installed") != 1) {
-            break label294;
-          }
-          bool1 = true;
-          this.jdField_b_of_type_Boolean = bool1;
-          if (paramString.optInt("need_xxxxx_plugin_xxxxx") != 1) {
-            break label299;
-          }
-          bool1 = bool2;
-          this.jdField_c_of_type_Boolean = bool1;
-          this.jdField_a_of_type_JavaLangString = paramString.optString("package1");
-          this.jdField_b_of_type_JavaLangString = paramString.optString("package2");
-          paramString = paramString.optJSONObject("webview_launch_xxx_xxxxxyyyy");
-          JefsClass.getInstance().a(this.jdField_b_of_type_Audn.a(), paramString);
-        }
-      }
-      catch (JSONException paramString)
-      {
-        boolean bool1;
-        while (QLog.isColorLevel())
-        {
-          QLog.e("Zhuoxu", 2, "parseConfig: failed. ", paramString);
-          return;
-          bool1 = false;
-          continue;
-          label294:
-          bool1 = false;
-          continue;
-          label299:
-          bool1 = false;
-        }
-      }
-      catch (Throwable paramString) {}
-    }
-  }
-  
-  void b(String paramString)
-  {
-    Object localObject = "";
-    try
-    {
-      paramString = audi.a(paramString);
-      localObject = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("SP_WO_KAO", 4);
-      String str = "_" + a();
-      ((SharedPreferences)localObject).edit().putString("KEY_WO_KAO_CONFIG" + str, paramString).apply();
-      return;
-    }
-    catch (XorCipherException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = (String)localObject;
-      }
-    }
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

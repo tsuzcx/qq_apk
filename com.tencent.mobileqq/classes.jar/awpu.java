@@ -1,189 +1,115 @@
-import android.os.Handler;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.AddCommentNoFilterReq;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsg;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsgBody;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.DelCommentReq;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.GetCommentListNoFilterReq;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.UserInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import mqq.manager.TicketManager;
-import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.report.lp.LpReportInfo_dc03950;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
 public class awpu
-  implements awpq
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  private VideoData jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData;
-  private HashSet<Long> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  
-  public awpu(VideoData paramVideoData, QQAppInterface paramQQAppInterface)
+  public static int a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private boolean a(oidb_0xada.ReqBody paramReqBody)
-  {
-    paramReqBody.uid.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-    paramReqBody.tinyid.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    String str = ((TicketManager)localObject).getA2(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    Iterator localIterator = LpReportInfo_dc03950.LOVE_ZONE_SETTING_ME_RESERVES_LIST.iterator();
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramReqBody.a2.set(str);
-      paramReqBody.platform.set(1);
-      paramReqBody.version.set("8.4.8");
-      paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramReqBody.original_key.set((String)localObject);
-      paramReqBody.original_id_type.set(1);
-      return true;
-    }
-    return false;
-  }
-  
-  public int a()
-  {
-    try
-    {
-      int i = Integer.parseInt("8.4.8".replace(".", ""));
-      return i;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("CommentsDataSource", 2, "getVersionInt exp:" + localException.toString());
+      int i = 2;
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if ((str != null) && (str.equals(paramString))) {
+          return i;
+        }
+        i += 1;
       }
     }
-    return 0;
+    return 1;
   }
   
-  public void a(int paramInt, awps paramawps)
+  public static String a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return;
-    }
-    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
-    if (!a(localReqBody))
+    if ((paramAppInfo != null) && (paramAppInfo.buffer.has()))
     {
-      QLog.i("CommentsDataSource", 1, "oidb_0xada configCommonFileds failed");
-      paramawps.a();
+      paramAppInfo = paramAppInfo.buffer.get();
+      try
+      {
+        Object localObject = new JSONObject(paramAppInfo);
+        paramAppInfo = ((JSONObject)localObject).optJSONObject("param");
+        localObject = ((JSONObject)localObject).optString("_show_mission");
+        if ((paramAppInfo != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
+        {
+          paramAppInfo = (JSONObject)paramAppInfo.opt((String)localObject);
+          if (paramAppInfo != null) {
+            return localObject;
+          }
+        }
+      }
+      catch (Exception paramAppInfo)
+      {
+        QLog.e("LoverZoneUtils", 1, "buffer handle exception:" + paramAppInfo);
+        paramAppInfo.printStackTrace();
+      }
     }
-    NowNearbyVideoCommentProto.GetCommentListNoFilterReq localGetCommentListNoFilterReq = new NowNearbyVideoCommentProto.GetCommentListNoFilterReq();
-    localGetCommentListNoFilterReq.count.set(20L);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString)) {
-      localGetCommentListNoFilterReq.feed_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
-    }
-    localGetCommentListNoFilterReq.feed_type.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j);
-    localGetCommentListNoFilterReq.page.set(paramInt);
-    localGetCommentListNoFilterReq.filter.set(0L);
-    localReqBody.cmd.set(857);
-    localReqBody.subcmd.set(8);
-    localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetCommentListNoFilterReq.toByteArray()));
-    nmb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new awpv(this, paramawps), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+    return "";
   }
   
-  public void a(Comments.Comment paramComment, awpr paramawpr)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return;
-    }
-    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
-    if (a(localReqBody))
-    {
-      localReqBody.cmd.set(857);
-      localReqBody.subcmd.set(3);
-      NowNearbyVideoCommentProto.DelCommentReq localDelCommentReq = new NowNearbyVideoCommentProto.DelCommentReq();
-      localDelCommentReq.feed_id.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString.getBytes()));
-      localDelCommentReq.comment_id.set(paramComment.jdField_a_of_type_Long);
-      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localDelCommentReq.toByteArray()));
-      nmb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new awpx(this, paramawpr, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
-      return;
-    }
-    paramawpr.a(paramComment, -1);
+    a(paramQQAppInterface, paramContext, paramInt, paramString, "2");
   }
   
-  public void a(Comments.Comment paramComment, awpt paramawpt)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+    if (paramContext == null) {
       return;
     }
-    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
-    if (!a(localReqBody))
+    String str = QzoneConfig.getInstance().getConfig("sweet_miniapp", "sweet_mainpage", "mqqapi://miniapp/open?_atype=0&_mappid=1108789561&_mvid=&_vt=3&referer=brandonlin&via=brandonlin&_sig=57b13f050e544ea7391452287c2f92c7ebf08e0d4bd1faef7d72c8c961ea80c9");
+    if (!TextUtils.isEmpty(str))
     {
-      QLog.i("CommentsDataSource", 1, "oidb_0xada configCommonFileds failed");
-      paramawpt.a(paramComment, -1, "");
-      return;
-    }
-    NowNearbyVideoCommentProto.AddCommentNoFilterReq localAddCommentNoFilterReq = new NowNearbyVideoCommentProto.AddCommentNoFilterReq();
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j == 6) {
-      localAddCommentNoFilterReq.feed_type.set(6L);
+      if (!MiniAppLauncher.isMiniAppUrl(str)) {
+        break label83;
+      }
+      MiniAppLauncher.startMiniApp(paramContext, str, paramInt, null);
     }
     for (;;)
     {
-      localAddCommentNoFilterReq.feed_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
-      Object localObject = new NowNearbyVideoCommentProto.UserInfo();
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).uid.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_c_of_type_Long);
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).user_type.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_g_of_type_Int);
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).now_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.d);
-      localAddCommentNoFilterReq.video_recorder.set((MessageMicro)localObject);
-      if ((paramComment.e > 0L) || (paramComment.f > 0L))
-      {
-        localObject = new NowNearbyVideoCommentProto.UserInfo();
-        ((NowNearbyVideoCommentProto.UserInfo)localObject).uid.set(paramComment.e);
-        ((NowNearbyVideoCommentProto.UserInfo)localObject).user_type.set(paramComment.jdField_c_of_type_Int);
-        ((NowNearbyVideoCommentProto.UserInfo)localObject).now_id.set(paramComment.f);
-        localAddCommentNoFilterReq.reply_user.set((MessageMicro)localObject);
+      a(paramString1, paramString2, "2", LpReportInfo_dc03950.getReportUserType(paramQQAppInterface));
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      localObject = new NowNearbyVideoCommentProto.UserInfo();
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).uid.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_g_of_type_Long);
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).now_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_h_of_type_Long);
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).user_type.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_h_of_type_Int);
-      localAddCommentNoFilterReq.video_owner.set((MessageMicro)localObject);
-      localAddCommentNoFilterReq.is_aggregate_short_video.set(0);
-      localObject = new NowNearbyVideoCommentProto.UserInfo();
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).uid.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Long);
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).user_type.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_c_of_type_Int);
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).now_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.b);
-      localAddCommentNoFilterReq.video_anchor.set((MessageMicro)localObject);
-      localObject = new NowNearbyVideoCommentProto.CommentMsgBody();
-      NowNearbyVideoCommentProto.CommentMsg localCommentMsg = new NowNearbyVideoCommentProto.CommentMsg();
-      localCommentMsg.msg.set(ByteStringMicro.copyFromUtf8(paramComment.jdField_a_of_type_JavaLangString));
-      localCommentMsg.type.set(0);
-      ((NowNearbyVideoCommentProto.CommentMsgBody)localObject).msgs.add(localCommentMsg);
-      localAddCommentNoFilterReq.content.set((MessageMicro)localObject);
-      localReqBody.cmd.set(857);
-      localReqBody.subcmd.set(9);
-      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localAddCommentNoFilterReq.toByteArray()));
-      if (QLog.isColorLevel()) {
-        QLog.i("CommentsDataSource", 2, "print bytes count =" + localAddCommentNoFilterReq.toByteArray().length);
-      }
-      int i = a();
-      QLog.i("CommentsDataSource", 1, "publishComment, qqver=" + i);
-      if (i > 0) {
-        localReqBody.version_code.set(i);
-      }
-      nmb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new awpw(this, paramawpt, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      QLog.d("intimate_relationship", 2, String.format("goToLoverZone, url: %s", new Object[] { str }));
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j == 4) {
-        localAddCommentNoFilterReq.feed_type.set(4L);
-      } else {
-        localAddCommentNoFilterReq.feed_type.set(3L);
+      label83:
+      if ((str.startsWith("mqqapi://")) && (paramQQAppInterface != null))
+      {
+        paramContext = bhey.a(paramQQAppInterface, paramContext, str);
+        if (paramContext != null) {
+          paramContext.a();
+        }
+      }
+      else if (paramQQAppInterface != null)
+      {
+        Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", str.replace("{hostuin}", paramQQAppInterface.getCurrentAccountUin()));
+        localIntent.putExtra("injectrecommend", true);
+        localIntent.putExtra("finish_animation_out_to_right", true);
+        localIntent.putExtra("is_wrap_content", true);
+        localIntent.putExtra("hide_left_button", false);
+        paramContext.startActivity(localIntent);
       }
     }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    LpReportInfo_dc03950.report(new LpReportInfo_dc03950("25", paramString1, paramString2, paramString3, paramString4));
   }
 }
 

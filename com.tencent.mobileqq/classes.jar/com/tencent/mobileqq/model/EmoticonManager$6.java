@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import avsq;
+import awyr;
 import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class EmoticonManager$6
   implements Runnable
 {
-  public EmoticonManager$6(avsq paramavsq, String paramString1, String paramString2) {}
+  public EmoticonManager$6(awyr paramawyr, String paramString1, String paramString2) {}
   
   public void run()
   {

@@ -1,20 +1,20 @@
-public class awdv
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.qphone.base.util.QLog;
+
+class awdv
+  implements View.OnLongClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
+  awdv(awdu paramawdu, awdy paramawdy) {}
   
-  public awdv(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (awdu.a(this.jdField_a_of_type_Awdu) != null)
+    {
+      QLog.i("leba_sort_LebaTableMgrAdpter", 1, "startDrag");
+      awdu.a(this.jdField_a_of_type_Awdu).startDrag(this.jdField_a_of_type_Awdy);
+    }
+    return false;
   }
 }
 

@@ -1,44 +1,23 @@
-public class anod
-  implements anny
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class anod
+  implements View.OnClickListener
 {
-  public void a(amwl paramamwl, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, amwm paramamwm)
+  anod(anob paramanob, annm paramannm, ApolloActionData paramApolloActionData, int paramInt, String paramString1, String paramString2) {}
+  
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 999: 
-      paramamwl.commenMsgContentChanged(paramBoolean, paramObject);
-      return;
-    case 1000: 
-      paramamwl.comenMsgReceived();
-      return;
-    case 1003: 
-      paramamwl.delRoamChatFriend(paramBoolean);
-      return;
-    case 1004: 
-      paramamwl.getRoamChat(paramBoolean, paramObject);
-      return;
-    case 1005: 
-      paramamwl.setRoamChat(paramBoolean);
-      return;
-    case 2000: 
-      paramamwl.friendsListRefresh();
-      return;
-    case 2001: 
-      paramamwl.troopListRefresh();
-      return;
-    case 2002: 
-      paramamwl.recentListRefresh();
-      return;
-    case 1002: 
-      paramamwl.msgDelFriend(paramArrayOfObject);
-      return;
-    case 3012: 
-      paramamwl.transserviceTempChatDownloadPic(paramBoolean, paramArrayOfObject);
-      return;
+    if ((anob.a(this.jdField_a_of_type_Anob) != null) && (anob.a(this.jdField_a_of_type_Anob).app != null) && (anob.a(this.jdField_a_of_type_Anob) != null)) {
+      anob.a(this.jdField_a_of_type_Anob).b(anob.a(this.jdField_a_of_type_Anob), this.jdField_a_of_type_Annm);
     }
-    paramamwl.transserviceC2CUploadStreamPtt(paramBoolean, paramArrayOfObject);
+    this.jdField_a_of_type_Anob.a();
+    anob.a(this.jdField_a_of_type_Anob, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, "action_flame_clicksend");
+    anme.a(102, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

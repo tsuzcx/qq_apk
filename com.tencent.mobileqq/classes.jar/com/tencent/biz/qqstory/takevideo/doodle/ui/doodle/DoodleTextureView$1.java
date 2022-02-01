@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import yfk;
-import yft;
+import yud;
+import yum;
 
 class DoodleTextureView$1
   implements Runnable
@@ -10,12 +10,12 @@ class DoodleTextureView$1
   
   public void run()
   {
-    yft localyft = (yft)this.this$0.jdField_a_of_type_Yfk.a(102);
-    if (localyft != null)
+    yum localyum = (yum)this.this$0.jdField_a_of_type_Yud.a(102);
+    if (localyum != null)
     {
-      localyft.a();
-      localyft.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
-      this.this$0.jdField_a_of_type_Yfk.h();
+      localyum.a();
+      localyum.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
+      this.this$0.jdField_a_of_type_Yud.h();
       this.this$0.a();
     }
   }

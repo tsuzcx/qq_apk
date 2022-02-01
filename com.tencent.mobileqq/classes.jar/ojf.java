@@ -1,17 +1,12 @@
-import com.tencent.biz.widgets.TabLayout;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import android.view.View;
 
-class ojf
-  implements HorizontalListView.OnScrollStateChangedListener
+public abstract interface ojf
 {
-  ojf(ojc paramojc) {}
+  public abstract void a(View paramView);
   
-  public void onScrollStateChanged(int paramInt)
-  {
-    if (paramInt == 4098) {
-      ojc.a(this.a).setOverScrollMode(0);
-    }
-  }
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

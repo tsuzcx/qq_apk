@@ -1,58 +1,23 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodCodec;
 
 public class auni
+  extends aumo
 {
-  final Context jdField_a_of_type_AndroidContentContext;
-  final String jdField_a_of_type_JavaLangString;
-  String b = "";
-  String c = "";
-  String d = "";
-  String e;
-  String f;
-  String g;
-  String h;
-  
-  public auni(Context paramContext, String paramString)
+  public auni(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramString, paramBinaryMessenger);
   }
   
-  public void a(String paramString)
+  public MethodChannel.MethodCallHandler a()
   {
-    this.b = paramString;
+    return new aunj(this);
   }
   
-  public void b(String paramString)
+  public MethodCodec a()
   {
-    this.c = paramString;
-  }
-  
-  public void c(String paramString)
-  {
-    this.d = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.e = paramString;
-  }
-  
-  public void e(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public void f(String paramString)
-  {
-    this.h = paramString;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "uin: " + this.jdField_a_of_type_JavaLangString + " roomId: " + this.b + " roomGroupCode: " + this.c + " roomShowNumber: " + this.d + " fromId: " + this.e + " openType: " + this.f + " fromGroupId: " + this.g + " fromGroupOwnerUin: " + this.h;
+    return aunk.a;
   }
 }
 

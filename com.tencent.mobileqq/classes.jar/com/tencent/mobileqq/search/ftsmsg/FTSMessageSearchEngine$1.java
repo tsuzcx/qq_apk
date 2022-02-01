@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.search.ftsmsg;
 
-import bawm;
-import bbff;
-import bbfs;
-import bgbo;
+import bcdc;
+import bclx;
+import bcmk;
+import bhkf;
 import java.util.List;
 
 public class FTSMessageSearchEngine$1
   implements Runnable
 {
-  public FTSMessageSearchEngine$1(bawm parambawm, bbfs parambbfs, bbff parambbff) {}
+  public FTSMessageSearchEngine$1(bcdc parambcdc, bcmk parambcmk, bclx parambclx) {}
   
   public void run()
   {
-    if (bgbo.g(bawm.a(this.this$0)) == 1) {}
-    for (List localList = this.this$0.b(this.jdField_a_of_type_Bbfs, false);; localList = this.this$0.a(this.jdField_a_of_type_Bbfs, false))
+    if (bhkf.g(bcdc.a(this.this$0)) == 1) {}
+    for (List localList = this.this$0.b(this.jdField_a_of_type_Bcmk, false);; localList = this.this$0.a(this.jdField_a_of_type_Bcmk, false))
     {
-      if (this.jdField_a_of_type_Bbff != null) {
-        this.jdField_a_of_type_Bbff.a(localList, 1);
+      if (this.jdField_a_of_type_Bclx != null) {
+        this.jdField_a_of_type_Bclx.a(localList, 1);
       }
       return;
     }

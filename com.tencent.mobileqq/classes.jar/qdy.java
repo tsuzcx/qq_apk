@@ -1,18 +1,62 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.oidb_0xb7e.RspBody;
 
-public abstract interface qdy
+class qdy
+  extends ntc
 {
-  public abstract TemplateBean a(int paramInt, JSONObject paramJSONObject);
+  qdy(qdx paramqdx, boolean paramBoolean) {}
   
-  public abstract JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo);
-  
-  public abstract void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2);
-  
-  public abstract boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase);
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt == 0)
+    {
+      try
+      {
+        paramBundle = new oidb_0xb7e.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (!paramBundle.rpt_top_item.has()) {
+          break label129;
+        }
+        List localList = paramBundle.rpt_top_item.get();
+        if ((localList == null) || (localList.size() <= 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(qdx.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
+          }
+          pvm.a().a(true, null);
+          qdx.a(this.a, paramArrayOfByte, 0L);
+          return;
+        }
+        qdx.a(this.a, paramArrayOfByte, System.currentTimeMillis());
+        if (!this.b) {
+          return;
+        }
+        qdx.a(this.a, paramBundle);
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+      }
+      QLog.e(qdx.a, 2, "requestDiandianTopConfig parser failed");
+      return;
+      label129:
+      if (QLog.isColorLevel()) {
+        QLog.d(qdx.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
+      }
+      qdx.a(this.a, paramArrayOfByte, 0L);
+      pvm.a().a(true, null);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e(qdx.a, 2, "requestDiandianTopConfig failed errorCode = " + paramInt);
+    }
+  }
 }
 
 

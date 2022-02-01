@@ -1,26 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aoxj
-  implements View.OnClickListener
+  extends aoui
 {
-  public aoxj(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void onClick(View paramView)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    bjnw localbjnw = (bjnw)bjon.a(BaseActivity.sTopActivity, null);
-    localbjnw.a(BaseActivity.sTopActivity.getString(2131690132));
-    localbjnw.a(2131690131, 3);
-    localbjnw.c(2131690130);
-    localbjnw.setOnDismissListener(new aoxk(this, localbjnw));
-    localbjnw.a(new aoxl(this, localbjnw));
-    if (!localbjnw.isShowing()) {
-      localbjnw.show();
+    paramQQAppInterface = new aoxi(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "trooptogether";
+    paramQQAppInterface.c = "open";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {}
+    for (;;)
+    {
+      return paramQQAppInterface;
+      paramContext = paramContext[1].split("&");
+      int j = paramContext.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramString = paramContext[i].split("=");
+        if (paramString.length == 2) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

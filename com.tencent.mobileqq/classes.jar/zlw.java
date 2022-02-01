@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.richframework.eventbus.SimpleEventBus;
-import com.tencent.biz.subscribe.event.SharePanelShowStateEvent;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity.6.1;
+import java.util.ArrayList;
 
-class zlw
-  implements DialogInterface.OnDismissListener
+public class zlw
+  implements zni
 {
-  zlw(zlv paramzlv) {}
+  public zlw(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(ArrayList<znf> paramArrayList)
   {
-    SimpleEventBus.getInstance().dispatchEvent(new SharePanelShowStateEvent(false));
+    this.a.runOnUiThread(new QRLoginMgrActivity.6.1(this, paramArrayList));
   }
 }
 

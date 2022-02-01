@@ -1,10 +1,10 @@
-import android.graphics.Bitmap;
-
 public abstract interface amnv
 {
   public abstract void a();
   
-  public abstract void a(int paramInt, Bitmap paramBitmap);
+  public abstract void a(long paramLong);
+  
+  public abstract void b(long paramLong);
 }
 
 

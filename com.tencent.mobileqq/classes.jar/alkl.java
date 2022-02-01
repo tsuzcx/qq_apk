@@ -1,31 +1,15 @@
-class alkl
-  extends bjub
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerView;
+
+public class alkl
+  implements Observer<alkb>
 {
-  alkl(alkj paramalkj, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  public alkl(NewerGuideBannerView paramNewerGuideBannerView) {}
   
-  public void a(int paramInt, Object paramObject, bjua[] paramArrayOfbjua)
+  public void a(@Nullable alkb paramalkb)
   {
-    paramInt = 0;
-    if ((paramArrayOfbjua == null) || (paramArrayOfbjua.length <= 0)) {}
-    for (;;)
-    {
-      return;
-      if (paramArrayOfbjua.length < 0)
-      {
-        paramArrayOfbjua[0].b = 0;
-        paramArrayOfbjua[0].a = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfbjua.length)
-      {
-        paramArrayOfbjua[paramInt].b = -1;
-        paramArrayOfbjua[paramInt].a = -1;
-        paramInt += 1;
-      }
-    }
+    NewerGuideBannerView.a(this.a, paramalkb);
   }
 }
 

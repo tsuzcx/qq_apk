@@ -1,10 +1,12 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageTrack$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tnz {}
+public abstract interface tnz
+{
+  public abstract void a(TopicInfo paramTopicInfo);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tnz
  * JD-Core Version:    0.7.0.1
  */

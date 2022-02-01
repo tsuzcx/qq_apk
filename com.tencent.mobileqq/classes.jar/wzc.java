@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 class wzc
-  implements DialogInterface.OnDismissListener
+  implements wzg
 {
   wzc(wzb paramwzb) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    if (this.a.a != null) {
-      this.a.a.c(false);
-    }
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
   }
 }
 

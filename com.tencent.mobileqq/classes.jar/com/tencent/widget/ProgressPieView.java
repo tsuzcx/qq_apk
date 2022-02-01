@@ -15,9 +15,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bjtb;
-import bjtc;
-import bjtd;
+import blen;
+import bleo;
+import blep;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class ProgressPieView
@@ -31,9 +31,9 @@ public class ProgressPieView
   RectF jdField_a_of_type_AndroidGraphicsRectF;
   public Drawable a;
   DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
-  bjtb jdField_a_of_type_Bjtb = new bjtb(this);
-  bjtc jdField_a_of_type_Bjtc = new bjtc(this);
-  bjtd jdField_a_of_type_Bjtd;
+  blen jdField_a_of_type_Blen = new blen(this);
+  bleo jdField_a_of_type_Bleo = new bleo(this);
+  blep jdField_a_of_type_Blep;
   public String a;
   public boolean a;
   public float b;
@@ -743,9 +743,9 @@ public class ProgressPieView
     invalidate();
   }
   
-  public void setOnProgressListener(bjtd parambjtd)
+  public void setOnProgressListener(blep paramblep)
   {
-    this.jdField_a_of_type_Bjtd = parambjtd;
+    this.jdField_a_of_type_Blep = paramblep;
   }
   
   public void setPregressPreColor(int paramInt)
@@ -761,16 +761,16 @@ public class ProgressPieView
     }
     this.jdField_b_of_type_Int = paramInt;
     invalidate();
-    if (this.jdField_a_of_type_Bjtd != null)
+    if (this.jdField_a_of_type_Blep != null)
     {
       if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Bjtd.b();
+        this.jdField_a_of_type_Blep.b();
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Bjtd.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Blep.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
   }
   
   public void setProgressColor(int paramInt)
@@ -869,7 +869,7 @@ public class ProgressPieView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.ProgressPieView
  * JD-Core Version:    0.7.0.1
  */

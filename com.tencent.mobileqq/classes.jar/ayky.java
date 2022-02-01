@@ -1,21 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import java.util.List;
 
-public class ayky
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface ayky
 {
-  public ayky(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
-  }
+  public abstract void a(boolean paramBoolean1, List<aylx> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

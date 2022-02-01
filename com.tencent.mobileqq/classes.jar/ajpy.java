@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ajpy
-  implements Parcelable.Creator<TroopClipPic>
+class ajpy
+  implements bdhi
 {
-  public TroopClipPic a(Parcel paramParcel)
+  ajpy(ajpx paramajpx) {}
+  
+  public void a()
   {
-    return new TroopClipPic(paramParcel);
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog grant");
   }
   
-  public TroopClipPic[] a(int paramInt)
+  public void b()
   {
-    return new TroopClipPic[paramInt];
+    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog denied");
+    ajpi.a(this.a.a, ajpi.b(this.a.a));
   }
 }
 

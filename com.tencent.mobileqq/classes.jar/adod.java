@@ -1,22 +1,31 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class adod
-  extends adnm
+  extends Handler
 {
-  public adod(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
+  public adod(ChatHistory paramChatHistory) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void handleMessage(Message paramMessage)
   {
-    this.b.h();
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new bisl(this.a, this.a.getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131691467);
+      if (!this.a.isFinishing()) {
+        this.a.a.show();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adod
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package cooperation.qzone;
 
-import avli;
+import awrn;
 
 public abstract interface QzoneGiftFullScreenActionManager$MagicfaceActionListener
 {
-  public abstract void magicfaceActionEnd(avli paramavli);
+  public abstract void magicfaceActionEnd(awrn paramawrn);
   
-  public abstract void magicfaceActionStart(avli paramavli);
+  public abstract void magicfaceActionStart(awrn paramawrn);
 }
 
 

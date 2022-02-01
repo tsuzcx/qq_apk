@@ -1,81 +1,90 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import android.app.Activity;
+import android.view.View;
+import com.etrump.mixlayout.ETFont;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
 
 class ahiw
-  extends amwl
+  implements bilt
 {
-  ahiw(ahiu paramahiu) {}
+  ahiw(ahit paramahit, boolean paramBoolean) {}
   
-  protected void onGetTroopMsgFin(boolean paramBoolean, String[] paramArrayOfString)
+  public void a(View paramView)
   {
-    if ((paramBoolean) && (paramArrayOfString != null))
-    {
-      paramArrayOfString = paramArrayOfString[0];
-      if (this.a.a.b.contains(paramArrayOfString))
-      {
-        this.a.a.a.put(paramArrayOfString, Integer.valueOf(this.a.app.getConversationFacade().a(paramArrayOfString, 1)));
-        this.a.a.d();
-        this.a.a.e();
-        this.a.a.c();
-      }
-    }
-  }
-  
-  protected void onInsertIntoBlackList(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.sessionInfo.curFriendUin != null) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.updateAddFriendAndShieldView();
-      }
-    }
-  }
-  
-  protected void onRemoveFromBlackList(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.sessionInfo.curFriendUin != null) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.updateAddFriendAndShieldView();
-      }
-    }
-  }
-  
-  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.sessionInfo.curFriendUin)) {
-      return;
-    }
-    this.a.hasSentRecvMsg = true;
-    this.a.refresh(262144, null, paramLong);
-  }
-  
-  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
-  {
-    this.a.refresh(65536);
-  }
-  
-  protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
-  {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.sessionInfo.curFriendUin)) || (paramInt1 != this.a.sessionInfo.curType))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.tag, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-      }
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      QLog.d("TextItemBuilder", 2, "SingleTap invoked!");
     }
-    this.a.refresh(196608);
+    Object localObject = (AnimationTextView)paramView;
+    float f1 = ((AnimationTextView)localObject).touchL - ahit.e;
+    float f2 = ((AnimationTextView)localObject).touchT;
+    float f3 = ahit.c;
+    if (this.jdField_a_of_type_Boolean) {
+      f1 = ((AnimationTextView)localObject).touchL - ahit.f;
+    }
+    localObject = ((AnimationTextView)localObject).getText();
+    int k;
+    boolean bool2;
+    int j;
+    boolean bool1;
+    if ((localObject instanceof QQText))
+    {
+      localObject = (QQText)localObject;
+      localObject = (QQText.EmoticonSpan[])((QQText)localObject).getSpans(0, ((QQText)localObject).length(), QQText.EmoticonSpan.class);
+      if (!(paramView instanceof ETTextView)) {
+        break label325;
+      }
+      paramView = (ETTextView)paramView;
+      k = paramView.mClickEpId;
+      int m = paramView.mClickcEId;
+      if ((paramView.mFont == null) || (paramView.mFont.mFontId == 0) || (paramView.mFont.mFontType != 1)) {
+        break label307;
+      }
+      bool2 = true;
+      i = k;
+      j = m;
+      bool1 = bool2;
+      if (bool2)
+      {
+        i = k;
+        j = m;
+        bool1 = bool2;
+        if (paramView.getETLayout() != null)
+        {
+          paramView = paramView.getETLayout();
+          if (QLog.isColorLevel()) {
+            QLog.d("ChatItemBuilder", 2, "isHanYiFont, onlyEmoji: " + paramView.jdField_a_of_type_Boolean);
+          }
+          if (paramView.jdField_a_of_type_Boolean) {
+            break label313;
+          }
+          bool1 = true;
+          label241:
+          j = m;
+        }
+      }
+    }
+    for (int i = k;; i = -1)
+    {
+      if ((i != -1) && (j != -1)) {}
+      for (bool2 = true;; bool2 = false)
+      {
+        EmoticonUtils.clickSmallEmoticon((QQText.EmoticonSpan[])localObject, f1, f2 - f3, bool2, i, j, this.jdField_a_of_type_Ahit.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahit.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Activity)this.jdField_a_of_type_Ahit.jdField_a_of_type_AndroidContentContext, bool1);
+        return;
+        label307:
+        bool2 = false;
+        break;
+        label313:
+        bool1 = false;
+        break label241;
+      }
+      label325:
+      bool1 = false;
+      j = -1;
+    }
   }
 }
 

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.ar;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anxz;
-import bfyz;
+import apbb;
+import bhhr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class ARDeviceController$1
   implements Runnable
 {
-  public ARDeviceController$1(anxz paramanxz, int paramInt, boolean paramBoolean) {}
+  public ARDeviceController$1(apbb paramapbb, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class ARDeviceController$1
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "AREnable", this.jdField_a_of_type_Boolean, 0L, 0L, (HashMap)localObject, null);
     localObject = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit();
     ((SharedPreferences.Editor)localObject).putInt("ar_incompatible_reason", this.jdField_a_of_type_Int);
-    bfyz.a((SharedPreferences.Editor)localObject);
+    bhhr.a((SharedPreferences.Editor)localObject);
   }
 }
 

@@ -1,17 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
 
-class bner
-  implements bhhk
+public class bner
 {
-  bner(bneo parambneo) {}
+  public String a;
+  public String b = "null";
   
-  public void onProgressChanged(bhhi parambhhi, int paramInt1, int paramInt2) {}
-  
-  public void onProgressCompleted(bhhi parambhhi)
+  @NonNull
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambhhi);
-    }
+    return this.a + ", value=" + this.b;
   }
 }
 

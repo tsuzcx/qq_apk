@@ -1,10 +1,19 @@
-import com.tencent.tavcut.bean.TextEditorData;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.ImageView;
 
-public abstract interface bmna
+public class bmna
+  extends bmmy
 {
-  public abstract void a();
+  public bmna(String paramString, View paramView)
+  {
+    super(paramString, paramView);
+  }
   
-  public abstract void a(TextEditorData paramTextEditorData);
+  protected void a(String paramString)
+  {
+    ((ImageView)this.a).setBackgroundColor(Color.parseColor(paramString));
+  }
 }
 
 

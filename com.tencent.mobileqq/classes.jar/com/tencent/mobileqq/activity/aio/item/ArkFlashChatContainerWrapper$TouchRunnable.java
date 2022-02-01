@@ -4,6 +4,7 @@ import android.view.MotionEvent;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Container;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
 import java.lang.ref.WeakReference;
@@ -67,7 +68,7 @@ class ArkFlashChatContainerWrapper$TouchRunnable
       MessageForArkFlashChat localMessageForArkFlashChat;
       if (localObject != null)
       {
-        localObject = (FlashChatManager)((QQAppInterface)localObject).getManager(217);
+        localObject = (FlashChatManager)((QQAppInterface)localObject).getManager(QQManagerFactory.FLASH_CHAT_MANAGER);
         if (ArkFlashChatContainerWrapper.a(this.this$0) != null)
         {
           localMessageForArkFlashChat = (MessageForArkFlashChat)ArkFlashChatContainerWrapper.a(this.this$0).get();

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.olympic.activity;
 
 import Override;
-import amtj;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -21,23 +20,24 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.RelativeLayout;
-import anyf;
-import aoai;
-import aoea;
-import aoee;
-import aoel;
-import aoem;
-import aolu;
-import aomc;
-import aomd;
-import aome;
-import aomf;
-import aomh;
-import axrx;
-import axry;
-import axrz;
-import axsa;
-import bbyp;
+import anvx;
+import apbh;
+import apdk;
+import aphc;
+import aphg;
+import aphn;
+import apho;
+import apov;
+import appd;
+import appe;
+import appf;
+import appg;
+import appi;
+import ayyi;
+import ayyj;
+import ayyk;
+import ayyl;
+import bdfk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -56,11 +56,11 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.HashMap;
 import mqq.app.QQBroadcastReceiver;
 import mqq.os.MqqHandler;
-import yxi;
+import zmk;
 
 public class ScanTorchActivity
   extends OlympicToolBaseActivity
-  implements Handler.Callback, axsa
+  implements Handler.Callback, ayyl
 {
   public static boolean h;
   public int a;
@@ -68,16 +68,16 @@ public class ScanTorchActivity
   Rect jdField_a_of_type_AndroidGraphicsRect;
   public Handler a;
   public RelativeLayout a;
-  public aoee a;
-  public aolu a;
-  aomd jdField_a_of_type_Aomd = null;
-  private axrz jdField_a_of_type_Axrz;
+  public aphg a;
+  public apov a;
+  appe jdField_a_of_type_Appe = null;
+  private ayyk jdField_a_of_type_Ayyk;
   public ARArguments a;
   private ScanEntryProviderContainerView jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView;
   private ScanGLRenderEnvFragment jdField_a_of_type_ComTencentMobileqqArViewScanGLRenderEnvFragment;
   public String a;
   private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private QQBroadcastReceiver jdField_a_of_type_MqqAppQQBroadcastReceiver = new axry(this);
+  private QQBroadcastReceiver jdField_a_of_type_MqqAppQQBroadcastReceiver = new ayyj(this);
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
   private int c;
@@ -137,28 +137,28 @@ public class ScanTorchActivity
       if (l1 == 2L)
       {
         localObject1 = localObject2;
-        if (this.jdField_a_of_type_Aomd == null)
+        if (this.jdField_a_of_type_Appe == null)
         {
-          this.jdField_a_of_type_Aomd = new aome();
+          this.jdField_a_of_type_Appe = new appf();
           QLog.w("ScanTorchActivity", 1, "initData, 没有运营数据");
         }
         this.jdField_a_of_type_ComTencentMobileqqArARArguments = new ARArguments(false);
-        this.jdField_a_of_type_Aoee = new aoee();
-        this.jdField_a_of_type_Aolu = new aolu(this, this.jdField_a_of_type_Aoee);
+        this.jdField_a_of_type_Aphg = new aphg();
+        this.jdField_a_of_type_Apov = new apov(this, this.jdField_a_of_type_Aphg);
         l();
-        if ((localObject1 != null) && ((this.jdField_a_of_type_Aomd instanceof aomf)) && ((this.jdField_a_of_type_Aomd.jdField_a_of_type_Long & 0x1000) != 0L))
+        if ((localObject1 != null) && ((this.jdField_a_of_type_Appe instanceof appg)) && ((this.jdField_a_of_type_Appe.jdField_a_of_type_Long & 0x1000) != 0L))
         {
-          this.jdField_a_of_type_Aomd = new aomc();
-          this.jdField_a_of_type_Aomd.b(this.jdField_b_of_type_ComTencentCommonAppAppInterface, (Bundle)localObject1);
-          if (TextUtils.isEmpty(((aomc)this.jdField_a_of_type_Aomd).jdField_a_of_type_JavaLangString)) {
-            ((aomc)this.jdField_a_of_type_Aomd).jdField_a_of_type_JavaLangString = "-1";
+          this.jdField_a_of_type_Appe = new appd();
+          this.jdField_a_of_type_Appe.b(this.jdField_b_of_type_ComTencentCommonAppAppInterface, (Bundle)localObject1);
+          if (TextUtils.isEmpty(((appd)this.jdField_a_of_type_Appe).jdField_a_of_type_JavaLangString)) {
+            ((appd)this.jdField_a_of_type_Appe).jdField_a_of_type_JavaLangString = "-1";
           }
           if (QLog.isColorLevel()) {
             QLog.i("ScanTorchActivity", 2, "transfer Promotion to AR TransferPromotion");
           }
         }
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView;
-        localObject2 = this.jdField_a_of_type_Aomd;
+        localObject2 = this.jdField_a_of_type_Appe;
         if (this.o) {
           break label382;
         }
@@ -166,12 +166,12 @@ public class ScanTorchActivity
       label382:
       for (boolean bool = true;; bool = false)
       {
-        ((ScanEntryProviderContainerView)localObject1).a((aomd)localObject2, bool);
+        ((ScanEntryProviderContainerView)localObject1).a((appe)localObject2, bool);
         return;
         if (l1 == 3L)
         {
-          this.jdField_a_of_type_Aomd = new aomc();
-          this.jdField_a_of_type_Aomd.b(this.jdField_b_of_type_ComTencentCommonAppAppInterface, (Bundle)localObject2);
+          this.jdField_a_of_type_Appe = new appd();
+          this.jdField_a_of_type_Appe.b(this.jdField_b_of_type_ComTencentCommonAppAppInterface, (Bundle)localObject2);
           localObject1 = localObject2;
           break;
         }
@@ -179,8 +179,8 @@ public class ScanTorchActivity
         if (l1 != 1L) {
           break;
         }
-        this.jdField_a_of_type_Aomd = new aomf();
-        this.jdField_a_of_type_Aomd.b(this.jdField_b_of_type_ComTencentCommonAppAppInterface, (Bundle)localObject2);
+        this.jdField_a_of_type_Appe = new appg();
+        this.jdField_a_of_type_Appe.b(this.jdField_b_of_type_ComTencentCommonAppAppInterface, (Bundle)localObject2);
         localObject1 = localObject2;
         break;
       }
@@ -195,16 +195,16 @@ public class ScanTorchActivity
     if (!this.o) {
       return;
     }
-    this.jdField_a_of_type_Aoee.a(this, true, this.jdField_a_of_type_Aolu, this.jdField_a_of_type_Aolu, this.jdField_a_of_type_Aolu, null);
+    this.jdField_a_of_type_Aphg.a(this, true, this.jdField_a_of_type_Apov, this.jdField_a_of_type_Apov, this.jdField_a_of_type_Apov, null);
     this.jdField_l_of_type_Long = System.currentTimeMillis();
   }
   
   private void m()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376679));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376947));
     n();
     o();
-    this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView = ((ScanEntryProviderContainerView)findViewById(2131376790));
+    this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView = ((ScanEntryProviderContainerView)findViewById(2131377059));
     ScanEntryProviderContainerView localScanEntryProviderContainerView = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView;
     Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
     if (!this.p) {}
@@ -225,10 +225,10 @@ public class ScanTorchActivity
     ImmersiveUtils.b();
     int i2;
     int i1;
-    if (aomh.jdField_a_of_type_Int < aomh.jdField_b_of_type_Int)
+    if (appi.jdField_a_of_type_Int < appi.jdField_b_of_type_Int)
     {
-      i2 = aomh.jdField_a_of_type_Int;
-      i1 = aomh.jdField_b_of_type_Int;
+      i2 = appi.jdField_a_of_type_Int;
+      i1 = appi.jdField_b_of_type_Int;
       if (ImmersiveUtils.isSupporImmersive() == 1) {
         break label184;
       }
@@ -240,7 +240,7 @@ public class ScanTorchActivity
       if (QLog.isColorLevel()) {
         QLog.d("ScanTorchActivity", 2, String.format("initQrScanRectDisplay screenWidth=%s, screenHeight=%s, exclude=%b", new Object[] { Integer.valueOf(i2), Integer.valueOf(i1), Boolean.valueOf(bool) }));
       }
-      int i4 = (int)(aoel.a().a * Math.min(i1, i2));
+      int i4 = (int)(aphn.a().a * Math.min(i1, i2));
       int i3 = i4;
       if (i4 <= 0) {
         i3 = AIOUtils.dp2px(248.0F, getResources());
@@ -248,8 +248,8 @@ public class ScanTorchActivity
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, i3, i3);
       this.jdField_a_of_type_AndroidGraphicsRect.offset(i2 / 2 - this.jdField_a_of_type_AndroidGraphicsRect.centerX(), (int)(i1 / 2 - 0.55F * this.jdField_a_of_type_AndroidGraphicsRect.height()));
       return;
-      i1 = aomh.jdField_a_of_type_Int;
-      i2 = aomh.jdField_b_of_type_Int;
+      i1 = appi.jdField_a_of_type_Int;
+      i2 = appi.jdField_b_of_type_Int;
       break;
     }
   }
@@ -262,7 +262,7 @@ public class ScanTorchActivity
       return;
       FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
       this.jdField_a_of_type_ComTencentMobileqqArViewScanGLRenderEnvFragment = ScanGLRenderEnvFragment.a(null);
-      localFragmentTransaction.add(2131362886, this.jdField_a_of_type_ComTencentMobileqqArViewScanGLRenderEnvFragment);
+      localFragmentTransaction.add(2131362903, this.jdField_a_of_type_ComTencentMobileqqArViewScanGLRenderEnvFragment);
       localFragmentTransaction.commitAllowingStateLoss();
     } while (this.g >= 0L);
     this.g = System.currentTimeMillis();
@@ -291,14 +291,14 @@ public class ScanTorchActivity
   
   public void a(boolean paramBoolean)
   {
-    aoai.a().b(4);
+    apdk.a().b(4);
     setResult(11);
     finish();
   }
   
   public final boolean b()
   {
-    return bbyp.b(ThemeUtil.getCurrentThemeId());
+    return bdfk.b(ThemeUtil.getCurrentThemeId());
   }
   
   @Override
@@ -319,6 +319,9 @@ public class ScanTorchActivity
   {
     if (QLog.isColorLevel()) {
       QLog.i("ScanTorchActivity", 2, "doOnBackPressed");
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView != null) && (this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView.a())) {
+      return;
     }
     a(true);
   }
@@ -377,11 +380,11 @@ public class ScanTorchActivity
           if (QLog.isColorLevel()) {
             QLog.i("ScanTorchActivity", 2, String.format("super.doOnCreate time cost:%sms SDK version %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l2), Integer.valueOf(Build.VERSION.SDK_INT) }));
           }
-          setContentView(2131561261);
+          setContentView(2131561322);
           if (!isInMultiWindow()) {
             break label337;
           }
-          QQToast.a(this, amtj.a(2131712635), 0).a();
+          QQToast.a(this, anvx.a(2131712982), 0).a();
           finish();
           return true;
           label284:
@@ -419,18 +422,18 @@ public class ScanTorchActivity
       paramBundle.addAction("com.tencent.mobileqq__alive");
       registerReceiver(this.jdField_a_of_type_MqqAppQQBroadcastReceiver, paramBundle);
     }
-    this.jdField_a_of_type_Axrz = new axrz(this.jdField_a_of_type_AndroidOsHandler, this);
-    this.jdField_a_of_type_Axrz.a(this);
-    anyf.a(this).a();
-    this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView.setUniformResManager(this.jdField_a_of_type_Aolu);
-    aoem.a().a();
+    this.jdField_a_of_type_Ayyk = new ayyk(this.jdField_a_of_type_AndroidOsHandler, this);
+    this.jdField_a_of_type_Ayyk.a(this);
+    apbh.a(this).a();
+    this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView.setUniformResManager(this.jdField_a_of_type_Apov);
+    apho.a().a();
     if (Build.VERSION.SDK_INT >= 23)
     {
       if (checkSelfPermission("android.permission.CAMERA") == 0) {
         break label572;
       }
       QLog.d("ScanTorchActivity", 1, "checkSelfPermission. not grant");
-      requestPermissions(new axrx(this), 1, new String[] { "android.permission.CAMERA" });
+      requestPermissions(new ayyi(this), 1, new String[] { "android.permission.CAMERA" });
     }
     for (;;)
     {
@@ -452,8 +455,8 @@ public class ScanTorchActivity
     if (this.jdField_j_of_type_Boolean) {
       this.jdField_b_of_type_ComTencentCommonAppAppInterface.reportClickEvent("dc00898", "", this.jdField_b_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X8008614", "0X8008614", 0, 0, "", "", "", "");
     }
-    if (aoea.a) {
-      aoea.a().a();
+    if (aphc.a) {
+      aphc.a().a();
     }
     try
     {
@@ -472,10 +475,10 @@ public class ScanTorchActivity
     {
       try
       {
-        if (this.jdField_a_of_type_Aoee != null)
+        if (this.jdField_a_of_type_Aphg != null)
         {
-          this.jdField_a_of_type_Aoee.a();
-          this.jdField_a_of_type_Aoee = null;
+          this.jdField_a_of_type_Aphg.a();
+          this.jdField_a_of_type_Aphg = null;
         }
         if (this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView != null) {
           this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView.f();
@@ -485,7 +488,7 @@ public class ScanTorchActivity
           ImmersiveUtils.a(true, getWindow());
         }
         this.m = true;
-        yxi.a(this);
+        zmk.a(this);
         return;
         localException1 = localException1;
         localException1.printStackTrace();
@@ -543,7 +546,7 @@ public class ScanTorchActivity
     }
     if ((isInMultiWindow()) && (!this.jdField_l_of_type_Boolean))
     {
-      QQToast.a(this, amtj.a(2131712634), 1).a();
+      QQToast.a(this, anvx.a(2131712981), 1).a();
       this.jdField_l_of_type_Boolean = true;
     }
     if (b()) {
@@ -558,8 +561,8 @@ public class ScanTorchActivity
       QLog.i("ScanTorchActivity", 2, "doOnStart");
     }
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Axrz != null) {
-      this.jdField_a_of_type_Axrz.a();
+    if (this.jdField_a_of_type_Ayyk != null) {
+      this.jdField_a_of_type_Ayyk.a();
     }
   }
   
@@ -572,8 +575,8 @@ public class ScanTorchActivity
     long l1 = System.currentTimeMillis();
     long l2 = this.jdField_a_of_type_Long;
     this.jdField_b_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069CB", "0X80069CB", 0, 0, "1", String.valueOf(l1 - l2), "", "");
-    if (this.jdField_a_of_type_Axrz != null) {
-      this.jdField_a_of_type_Axrz.b();
+    if (this.jdField_a_of_type_Ayyk != null) {
+      this.jdField_a_of_type_Ayyk.b();
     }
   }
   
@@ -583,12 +586,12 @@ public class ScanTorchActivity
     // Byte code:
     //   0: aload_0
     //   1: iload_1
-    //   2: invokespecial 797	com/tencent/mobileqq/olympic/activity/OlympicToolBaseActivity:doOnWindowFocusChanged	(Z)V
+    //   2: invokespecial 799	com/tencent/mobileqq/olympic/activity/OlympicToolBaseActivity:doOnWindowFocusChanged	(Z)V
     //   5: invokestatic 230	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   8: ifeq +36 -> 44
     //   11: ldc 174
     //   13: iconst_2
-    //   14: ldc_w 799
+    //   14: ldc_w 801
     //   17: iconst_2
     //   18: anewarray 88	java/lang/Object
     //   21: dup
@@ -599,7 +602,7 @@ public class ScanTorchActivity
     //   28: dup
     //   29: iconst_1
     //   30: aload_0
-    //   31: getfield 801	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:n	Z
+    //   31: getfield 803	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:n	Z
     //   34: invokestatic 251	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   37: aastore
     //   38: invokestatic 101	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
@@ -609,28 +612,28 @@ public class ScanTorchActivity
     //   46: iload_1
     //   47: ifeq +29 -> 76
     //   50: aload_0
-    //   51: getfield 803	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:s	Z
+    //   51: getfield 805	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:s	Z
     //   54: ifne +22 -> 76
     //   57: aload_0
     //   58: iconst_1
-    //   59: putfield 803	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:s	Z
+    //   59: putfield 805	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:s	Z
     //   62: aload_0
     //   63: getfield 236	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView	Lcom/tencent/mobileqq/ar/view/ScanEntryProviderContainerView;
     //   66: ifnull +10 -> 76
     //   69: aload_0
     //   70: getfield 236	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView	Lcom/tencent/mobileqq/ar/view/ScanEntryProviderContainerView;
-    //   73: invokevirtual 805	com/tencent/mobileqq/ar/view/ScanEntryProviderContainerView:d	()V
+    //   73: invokevirtual 807	com/tencent/mobileqq/ar/view/ScanEntryProviderContainerView:d	()V
     //   76: aload_0
     //   77: monitorexit
     //   78: iload_1
     //   79: ifeq +10 -> 89
     //   82: aload_0
     //   83: invokestatic 262	java/lang/System:currentTimeMillis	()J
-    //   86: putfield 807	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:jdField_k_of_type_Long	J
+    //   86: putfield 809	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:jdField_k_of_type_Long	J
     //   89: iload_1
     //   90: ifeq +141 -> 231
     //   93: aload_0
-    //   94: getfield 809	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:r	Z
+    //   94: getfield 811	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:r	Z
     //   97: ifne +134 -> 231
     //   100: aload_0
     //   101: invokevirtual 112	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:getIntent	()Landroid/content/Intent;
@@ -638,32 +641,32 @@ public class ScanTorchActivity
     //   106: aload 6
     //   108: ifnull +111 -> 219
     //   111: aload 6
-    //   113: ldc_w 811
+    //   113: ldc_w 813
     //   116: iconst_0
     //   117: invokevirtual 130	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
     //   120: istore_1
     //   121: aload 6
-    //   123: ldc_w 813
+    //   123: ldc_w 815
     //   126: lconst_0
-    //   127: invokevirtual 816	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   127: invokevirtual 818	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
     //   130: lstore_2
     //   131: aload 6
-    //   133: ldc_w 818
+    //   133: ldc_w 820
     //   136: lconst_0
-    //   137: invokevirtual 816	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   137: invokevirtual 818	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
     //   140: lstore 4
     //   142: aload 6
-    //   144: ldc_w 820
+    //   144: ldc_w 822
     //   147: invokevirtual 138	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   150: astore 6
-    //   152: invokestatic 659	aoem:a	()Laoem;
+    //   152: invokestatic 661	apho:a	()Lapho;
     //   155: iload_1
     //   156: lload_2
     //   157: lload 4
     //   159: aload 6
-    //   161: invokevirtual 823	aoem:a	(ZJJLjava/lang/String;)V
+    //   161: invokevirtual 825	apho:a	(ZJJLjava/lang/String;)V
     //   164: aload_0
-    //   165: getfield 825	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:q	Z
+    //   165: getfield 827	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:q	Z
     //   168: ifeq +51 -> 219
     //   171: lload_2
     //   172: lconst_0
@@ -671,8 +674,8 @@ public class ScanTorchActivity
     //   174: ifle +45 -> 219
     //   177: invokestatic 262	java/lang/System:currentTimeMillis	()J
     //   180: lstore 4
-    //   182: ldc_w 826
-    //   185: invokestatic 592	amtj:a	(I)Ljava/lang/String;
+    //   182: ldc_w 828
+    //   185: invokestatic 594	anvx:a	(I)Ljava/lang/String;
     //   188: iconst_1
     //   189: anewarray 88	java/lang/Object
     //   192: dup
@@ -680,7 +683,7 @@ public class ScanTorchActivity
     //   194: lload 4
     //   196: lload_2
     //   197: lsub
-    //   198: invokestatic 580	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   198: invokestatic 582	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   201: aastore
     //   202: invokestatic 101	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   205: astore 6
@@ -688,12 +691,12 @@ public class ScanTorchActivity
     //   208: iconst_0
     //   209: aload 6
     //   211: iconst_0
-    //   212: invokestatic 829	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;ILjava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
-    //   215: invokevirtual 600	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   212: invokestatic 831	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;ILjava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
+    //   215: invokevirtual 602	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
     //   218: pop
     //   219: aload_0
     //   220: iconst_1
-    //   221: putfield 809	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:r	Z
+    //   221: putfield 811	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:r	Z
     //   224: aload_0
     //   225: invokestatic 262	java/lang/System:currentTimeMillis	()J
     //   228: putfield 413	com/tencent/mobileqq/olympic/activity/ScanTorchActivity:jdField_j_of_type_Long	J
@@ -787,6 +790,8 @@ public class ScanTorchActivity
     }
   }
   
+  public void initNavigationBarColor() {}
+  
   public boolean isWrapContent()
   {
     return false;
@@ -807,9 +812,9 @@ public class ScanTorchActivity
         if (QLog.isColorLevel()) {
           QLog.i("ScanTorchActivity", 2, String.format("updateQRRect [%d,%d]", new Object[] { Integer.valueOf(i1), Integer.valueOf(i2) }));
         }
-      } while ((i1 <= 0) || (i2 <= 0) || ((aomh.jdField_a_of_type_Int == i1) && (aomh.jdField_b_of_type_Int == i2)));
-      aomh.jdField_a_of_type_Int = i1;
-      aomh.jdField_b_of_type_Int = i2;
+      } while ((i1 <= 0) || (i2 <= 0) || ((appi.jdField_a_of_type_Int == i1) && (appi.jdField_b_of_type_Int == i2)));
+      appi.jdField_a_of_type_Int = i1;
+      appi.jdField_b_of_type_Int = i2;
       n();
     } while (this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView == null);
     this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView.a(this.jdField_a_of_type_AndroidGraphicsRect);

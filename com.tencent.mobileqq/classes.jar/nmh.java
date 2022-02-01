@@ -1,6 +1,15 @@
-public abstract interface nmh
+import com.tencent.qphone.base.util.QLog;
+
+class nmh
+  implements zmr
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+  nmh(nmf paramnmf, Runnable paramRunnable, long paramLong) {}
+  
+  public void a()
+  {
+    nmf.a(this.jdField_a_of_type_Nmf, this.jdField_a_of_type_JavaLangRunnable);
+    QLog.d("AVGameLaunchWebHelper", 2, "preLoadToolProcAndExecuteCallable time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+  }
 }
 
 

@@ -1,15 +1,18 @@
 import android.view.View;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileBlankHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azai
-  extends RecyclerView.ViewHolder
+class azai
+  implements View.OnClickListener
 {
-  public azai(@NotNull View paramView)
+  azai(azac paramazac, AutoReplyText paramAutoReplyText) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramView);
+    int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
+    this.jdField_a_of_type_Azac.a(i);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

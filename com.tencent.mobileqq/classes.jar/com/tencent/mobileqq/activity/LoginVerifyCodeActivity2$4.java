@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bhht;
+import bisl;
 
 class LoginVerifyCodeActivity2$4
   implements Runnable
@@ -11,8 +11,8 @@ class LoginVerifyCodeActivity2$4
     {
       if ((LoginVerifyCodeActivity2.a(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
-        LoginVerifyCodeActivity2.a(this.this$0, new bhht(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-        LoginVerifyCodeActivity2.a(this.this$0).c(2131694279);
+        LoginVerifyCodeActivity2.a(this.this$0, new bisl(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        LoginVerifyCodeActivity2.a(this.this$0).c(2131694477);
       }
       if ((LoginVerifyCodeActivity2.a(this.this$0) != null) && (!LoginVerifyCodeActivity2.a(this.this$0).isShowing())) {
         LoginVerifyCodeActivity2.a(this.this$0).show();
@@ -30,7 +30,7 @@ class LoginVerifyCodeActivity2$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginVerifyCodeActivity2.4
  * JD-Core Version:    0.7.0.1
  */

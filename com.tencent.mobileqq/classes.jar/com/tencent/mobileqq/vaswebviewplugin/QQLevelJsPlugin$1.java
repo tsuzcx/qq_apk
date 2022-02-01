@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bdap;
+import beho;
 
 class QQLevelJsPlugin$1
-  extends bdap
+  extends beho
 {
   QQLevelJsPlugin$1(QQLevelJsPlugin paramQQLevelJsPlugin, String paramString) {}
   

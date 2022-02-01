@@ -1,13 +1,10 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-
-final class aquv
-  extends nme
+public abstract interface aquv
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    QLog.i("reportMsgBoxMomentRead", 1, " reportMsgBoxMomentRead code:" + paramInt);
-  }
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public abstract String a(int paramInt1, int paramInt2);
 }
 
 

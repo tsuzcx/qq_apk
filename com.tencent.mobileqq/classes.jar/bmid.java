@@ -1,65 +1,77 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.tavcut.exporter.ImageExporter.ImageExportCallback;
-import com.tencent.tavcut.session.TAVCutImageSession;
-import com.tencent.tavsticker.utils.CollectionUtil;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.effect.MediaEffectModel;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.21.1;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.21.2;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import cooperation.readinjoy.content.ReadInJoyDataProvider;
 
 public class bmid
-  implements ImageExporter.ImageExportCallback
+  extends SQLiteOpenHelper
 {
-  public bmid(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  public String a;
   
-  public void onCancelled() {}
-  
-  public void onExportComplete()
+  public bmid(ReadInJoyDataProvider paramReadInJoyDataProvider, Context paramContext, String paramString)
   {
-    bmbx.b("AEEditorImageEditFragment", "images export complete");
-    AEEditorImageEditFragment.a(this.a, System.currentTimeMillis());
-    bmbx.b("AEEditorImageEditFragment", "perf: image export cost = " + (AEEditorImageEditFragment.a(this.a) - AEEditorImageEditFragment.b(this.a)) + "ms");
-    ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.21.2(this));
+    super(paramContext, "readinjoy_main_" + paramString, null, 84);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onFailed(Collection<String> paramCollection)
+  private void a(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
-    bmbx.d("AEEditorImageEditFragment", "images export failed");
-    ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.21.1(this, paramCollection));
-  }
-  
-  public void onImageExport(String paramString)
-  {
-    bmbx.b("AEEditorImageEditFragment", "image export, path = " + paramString);
-    if (AEEditorImageEditFragment.a(this.a) == null) {
+    if ((paramString.equals("subscribe_msg_records")) || (paramString.equals("notify_msg_records"))) {
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "msgID" + " INTEGER UNIQUE NOT NULL, " + "subscribeID" + " TEXT NOT NULL, " + "msgURL" + " TEXT NOT NULL, " + "msgContent" + " TEXT NOT NULL, " + "msgTime" + " INTEGER NOT NULL, " + "bindUin" + " INTEGER NOT NULL);");
+    }
+    while (!paramString.equals("feeds_msg_records")) {
       return;
     }
-    Object localObject = AEEditorImageEditFragment.a(this.a).getMediaModels();
-    if (((List)localObject).get(AEEditorImageEditFragment.a(this.a).size()) != null)
-    {
-      bmbg.a().a().jdField_c_of_type_JavaUtilHashMap.put(Integer.valueOf(AEEditorImageEditFragment.a(this.a).size()), Integer.valueOf(((MediaModel)((List)localObject).get(AEEditorImageEditFragment.a(this.a).size())).getMediaEffectModel().getStickerModelList().size()));
-      localObject = ((MediaModel)((List)localObject).get(AEEditorImageEditFragment.a(this.a).size())).getMediaEffectModel().getStickerModelList();
-      int i = AEEditorImageEditFragment.a(this.a).size();
-      if (!CollectionUtil.isEmptyList((List)localObject)) {
-        this.a.a((List)localObject, i);
-      }
-      localObject = bmbg.a((String)AEEditorImageEditFragment.a(this.a).get(i));
-      bmbg.a().a().jdField_c_of_type_AndroidUtilSparseArray.put(i, localObject);
+    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "pushTime" + " INTEGER NOT NULL, " + "notifyType" + " INTEGER NOT NULL, " + "feedsOwner" + " INTEGER NOT NULL, " + "feedsID" + " INTEGER NOT NULL, " + "feedsSubject" + " TEXT DEFAULT '', " + "deleteUin" + " INTEGER NOT NULL, " + "publishFail" + " INTEGER NOT NULL, " + "likeUin" + " INTEGER NOT NULL, " + "commentUin" + " INTEGER NOT NULL, " + "commentID" + " VARCHAR(32) DEFAULT '', " + "replyUin" + " INTEGER NOT NULL, " + "replyID" + " VARCHAR(32) DEFAULT '', " + "commentInfo" + " TEXT DEFAULT '', " + "isDelete" + " INTEGER DEFAULT 0, " + "processSeq" + " INTEGER DEFAULT 0, " + "receiveTime" + " INTEGER NOT NULL);");
+  }
+  
+  private void b(SQLiteDatabase paramSQLiteDatabase, String paramString)
+  {
+    if ("common_records".equalsIgnoreCase(paramString)) {
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + paramString + "(" + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, " + "common_version" + " INTEGER NOT NULL, " + "common_key" + " TEXT DEFAULT '', " + "common_content" + " TEXT DEFAULT '');");
     }
-    bmbc.a().b(AEEditorImageEditFragment.a(this.a).size());
-    AEEditorImageEditFragment.a(this.a).add(paramString);
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    a(paramSQLiteDatabase, "subscribe_msg_records");
+    a(paramSQLiteDatabase, "notify_msg_records");
+    a(paramSQLiteDatabase, "feeds_msg_records");
+    b(paramSQLiteDatabase, "common_records");
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 < 80)
+    {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement("subscribe_msg_records"));
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement("notify_msg_records"));
+      a(paramSQLiteDatabase, "subscribe_msg_records");
+      a(paramSQLiteDatabase, "notify_msg_records");
+    }
+    if (paramInt1 < 81) {
+      a(paramSQLiteDatabase, "feeds_msg_records");
+    }
+    for (;;)
+    {
+      if (paramInt1 < 84) {
+        b(paramSQLiteDatabase, "common_records");
+      }
+      return;
+      if (paramInt1 < 82) {
+        paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s %s;", new Object[] { "feeds_msg_records", "isDelete", "INTEGER DEFAULT 0" }));
+      }
+      if (paramInt1 < 83) {
+        paramSQLiteDatabase.execSQL(String.format("ALTER TABLE %s ADD %s %s;", new Object[] { "feeds_msg_records", "processSeq", "INTEGER DEFAULT 0" }));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmid
  * JD-Core Version:    0.7.0.1
  */

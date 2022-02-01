@@ -1,30 +1,36 @@
 import UserGrowth.stSimpleMetaFeed;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import java.util.List;
 
-final class uzc
-  implements upr
+public class uzc
 {
-  uzc(String paramString1, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed) {}
-  
-  public void a()
+  public static void a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    uyz.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000003);
-    uwc.a("videolay_prof_clk_ws");
+    vmp.e("WSVideoPreloadManager", "[prepareRecommendFloatPageData] download cache video");
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramstSimpleMetaFeed);
+    b(paramstSimpleMetaFeed);
+    vnd.a(localArrayList, false);
+    uzf.a().b(localArrayList);
   }
   
-  public void b()
+  public static void b(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    uyz.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000007);
-  }
-  
-  public void c()
-  {
-    uyz.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000004);
-  }
-  
-  public void d()
-  {
-    uyz.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000002);
-    uwc.a("videolay_prof_dl_ws");
+    if (paramstSimpleMetaFeed == null) {}
+    WSVideoPreDownloadManager localWSVideoPreDownloadManager;
+    boolean bool;
+    do
+    {
+      return;
+      localWSVideoPreDownloadManager = new WSVideoPreDownloadManager(BaseApplicationImpl.sApplication);
+      bool = localWSVideoPreDownloadManager.a(paramstSimpleMetaFeed.video_url);
+      vmp.a("WSVideoPreloadManager", "sec itemInfo : " + paramstSimpleMetaFeed + "; isCached = " + bool);
+    } while (bool);
+    localWSVideoPreDownloadManager.a(new uzd(paramstSimpleMetaFeed));
+    localWSVideoPreDownloadManager.a(new uze(localWSVideoPreDownloadManager, paramstSimpleMetaFeed.video_url));
+    localWSVideoPreDownloadManager.a(0);
   }
 }
 

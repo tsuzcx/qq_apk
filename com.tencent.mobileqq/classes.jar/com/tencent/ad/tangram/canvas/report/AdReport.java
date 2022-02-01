@@ -1,5 +1,6 @@
 package com.tencent.ad.tangram.canvas.report;
 
+import android.content.Context;
 import android.support.annotation.Keep;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
@@ -38,6 +39,22 @@ public enum AdReport
       return (AdReportAdapter)INSTANCE.adapter.get();
     }
     return null;
+  }
+  
+  public static void reportForCanvasDataBuildEnd(Context paramContext, Ad paramAd, long paramLong)
+  {
+    AdReportAdapter localAdReportAdapter = getAdapter();
+    if (localAdReportAdapter != null) {
+      localAdReportAdapter.reportForCanvasDataBuildEnd(paramContext, paramAd, paramLong);
+    }
+  }
+  
+  public static void reportForCanvasDataBuildError(Context paramContext, int paramInt, Ad paramAd, String paramString)
+  {
+    AdReportAdapter localAdReportAdapter = getAdapter();
+    if (localAdReportAdapter != null) {
+      localAdReportAdapter.reportForCanvasDataBuildError(paramContext, paramInt, paramAd, paramString);
+    }
   }
   
   public static void setAdapter(WeakReference<AdReportAdapter> paramWeakReference)

@@ -1,26 +1,24 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
-class tyc
-  implements tyh
+public class tyc
+  extends txt
 {
-  tyc(txz paramtxz) {}
-  
-  public void a(GiftServiceBean paramGiftServiceBean)
+  tyc(txq paramtxq1, Activity paramActivity, txq paramtxq2, JSONObject paramJSONObject)
   {
-    String str = txz.c(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
-    {
-      txz.c(this.a, paramGiftServiceBean);
-      txz.c(this.a).setText(paramGiftServiceBean.t);
-    }
-    txz.a(this.a);
+    super(paramtxq1, paramActivity, paramtxq2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    txq.a(this.a).mShareHelper.d(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tyc
  * JD-Core Version:    0.7.0.1
  */

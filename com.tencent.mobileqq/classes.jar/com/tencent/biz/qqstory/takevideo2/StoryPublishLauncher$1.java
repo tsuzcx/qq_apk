@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.takevideo2;
 
-import xvv;
-import ynm;
+import ykq;
+import zcf;
 
 public class StoryPublishLauncher$1
   implements Runnable
 {
-  public StoryPublishLauncher$1(ynm paramynm, boolean paramBoolean) {}
+  public StoryPublishLauncher$1(zcf paramzcf, boolean paramBoolean) {}
   
   public void run()
   {
-    boolean bool = ynm.b();
-    xvv.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(this.a), Boolean.valueOf(bool));
+    boolean bool = zcf.b();
+    ykq.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(this.a), Boolean.valueOf(bool));
   }
 }
 

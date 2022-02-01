@@ -1,53 +1,62 @@
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"getColorCompat", "", "Landroid/content/res/Resources;", "id", "getColorStateListCompat", "Landroid/content/res/ColorStateList;", "getDrawableCompat", "Landroid/graphics/drawable/Drawable;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class awhe
+class awhe
+  extends BroadcastReceiver
 {
-  public static final int a(@NotNull Resources paramResources, @ColorRes int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramResources, "$this$getColorCompat");
-    if (Build.VERSION.SDK_INT >= 23) {
-      return paramResources.getColor(paramInt, null);
-    }
-    return paramResources.getColor(paramInt);
-  }
+  awhe(awgx paramawgx) {}
   
-  @NotNull
-  public static final ColorStateList a(@NotNull Resources paramResources, @ColorRes int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Intrinsics.checkParameterIsNotNull(paramResources, "$this$getColorStateListCompat");
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      paramResources = paramResources.getColorStateList(paramInt, null);
-      Intrinsics.checkExpressionValueIsNotNull(paramResources, "getColorStateList(id, null)");
-      return paramResources;
+    paramContext = paramIntent.getAction();
+    paramIntent = paramIntent.getStringExtra("process_name");
+    if (QLog.isColorLevel()) {
+      QLog.d("LyricsController", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
     }
-    paramResources = paramResources.getColorStateList(paramInt);
-    Intrinsics.checkExpressionValueIsNotNull(paramResources, "getColorStateList(id)");
-    return paramResources;
-  }
-  
-  @NotNull
-  public static final Drawable a(@NotNull Resources paramResources, @DrawableRes int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramResources, "$this$getDrawableCompat");
-    if (Build.VERSION.SDK_INT >= 21)
+    int i;
+    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
     {
-      paramResources = paramResources.getDrawable(paramInt, null);
-      Intrinsics.checkExpressionValueIsNotNull(paramResources, "getDrawable(id, null)");
-      return paramResources;
+      i = 1;
+      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
+        break label246;
+      }
+      if ((this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout != null) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) && (this.a.jdField_a_of_type_Awgv.jdField_h_of_type_Boolean))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a.setAlign(this.a.jdField_a_of_type_Awgv.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.a.jdField_a_of_type_Awgv.jdField_h_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.g());
+        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.a.jdField_a_of_type_Awgv.i, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.g());
+        this.a.jdField_a_of_type_Awgv.jdField_h_of_type_Boolean = false;
+      }
+      this.a.a(false);
+      this.a.jdField_a_of_type_Boolean = false;
+      awgx.a(this.a, false);
     }
-    paramResources = paramResources.getDrawable(paramInt);
-    Intrinsics.checkExpressionValueIsNotNull(paramResources, "getDrawable(id)");
-    return paramResources;
+    label246:
+    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
+    {
+      return;
+      i = 0;
+      break;
+    }
+    if (i == 0)
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.a(true);
+      awgx.a(this.a, false);
+      return;
+    }
+    if (this.a.b)
+    {
+      awgx.a(this.a, true);
+      return;
+    }
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Awgv.f = true;
+    awgx.a(this.a, false);
   }
 }
 

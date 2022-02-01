@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.apollo.view;
 
-import amaz;
-import amkr;
-import amnm;
+import anch;
+import anmj;
+import annn;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class ChatApolloViewListener$1
   implements Runnable
 {
-  public ChatApolloViewListener$1(amnm paramamnm) {}
+  public ChatApolloViewListener$1(annn paramannn) {}
   
   public void run()
   {
@@ -26,9 +27,9 @@ public class ChatApolloViewListener$1
       localBaseChatPie = (BaseChatPie)this.this$0.a.get();
     } while (localBaseChatPie == null);
     if ((localBaseChatPie.app != null) && (localBaseChatPie.sessionInfo != null)) {
-      ((amaz)localBaseChatPie.app.getManager(249)).a(localBaseChatPie.sessionInfo.curFriendUin, localBaseChatPie.sessionInfo.curType);
+      ((anch)localBaseChatPie.app.getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER)).a(localBaseChatPie.sessionInfo.curFriendUin, localBaseChatPie.sessionInfo.curType);
     }
-    amkr.b("TraceReport_initApolloSurfaceView_PreLoadJS");
+    anmj.b("TraceReport_initApolloSurfaceView_PreLoadJS");
   }
 }
 

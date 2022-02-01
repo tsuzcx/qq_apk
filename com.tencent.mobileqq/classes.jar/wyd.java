@@ -1,54 +1,33 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.widget.QQToast;
-
-class wyd
-  implements View.OnLongClickListener
+public class wyd
+  implements wyc
 {
-  wyd(wyc paramwyc) {}
+  private wxa jdField_a_of_type_Wxa;
+  private wyf jdField_a_of_type_Wyf;
   
-  public boolean onLongClick(View paramView)
+  public wyd(wxa paramwxa, wyf paramwyf)
   {
-    int i = 0;
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131371352: 
-    case 2131377252: 
-      do
-      {
-        do
-        {
-          return true;
-          paramView = (vuq)vux.a(10);
-          if (((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue()) {
-            break;
-          }
-          bool = true;
-          paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
-          paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
-        } while (paramView == null);
-        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
-      } while (paramView == null);
-      if (bool) {}
-      for (;;)
-      {
-        paramView.a(i);
-        return true;
-        bool = false;
-        break;
-        i = 8;
-      }
+    this.jdField_a_of_type_Wxa = paramwxa;
+    this.jdField_a_of_type_Wyf = paramwyf;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Wxa != null) {
+      this.jdField_a_of_type_Wxa.c(this.jdField_a_of_type_Wyf);
     }
-    paramView = (vuq)vux.a(10);
-    if (!((Boolean)paramView.b("player_use_tvk", Boolean.valueOf(false))).booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.b("player_use_tvk", Boolean.valueOf(bool));
-      QQToast.a(this.a.b(), "UserTVK: " + bool, 0).a();
-      return true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Wxa != null) {
+      this.jdField_a_of_type_Wxa.d(this.jdField_a_of_type_Wyf);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Wxa != null) {
+      this.jdField_a_of_type_Wxa.e(this.jdField_a_of_type_Wyf);
     }
   }
 }

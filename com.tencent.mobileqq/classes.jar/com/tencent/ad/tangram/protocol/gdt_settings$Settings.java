@@ -9,6 +9,7 @@ public final class gdt_settings$Settings
   public gdt_settings.Settings.SettingsForQzone settingsForQzone = new gdt_settings.Settings.SettingsForQzone();
   public gdt_settings.Settings.SettingsForSdkMsg settingsForSdkMsg = new gdt_settings.Settings.SettingsForSdkMsg();
   public gdt_settings.Settings.SettingsForUUID settingsForUUID = new gdt_settings.Settings.SettingsForUUID();
+  public gdt_settings.Settings.SettingsForVideoReward settingsForVideoReward = new gdt_settings.Settings.SettingsForVideoReward();
   public gdt_settings.Settings.SettingsForWebView settingsForWebView = new gdt_settings.Settings.SettingsForWebView();
   public String timeExpiredMillis;
   public String urlForSettings;

@@ -1,16 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.VideoController.1;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class lce
-  implements DialogInterface.OnClickListener
+class lce
+  extends Handler
 {
-  public lce(VideoController.1 param1) {}
+  WeakReference<lcc> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  lce(lcc paramlcc)
   {
-    this.a.this$0.g(true);
+    this.a = new WeakReference(paramlcc);
+  }
+  
+  public void a()
+  {
+    sendMessage(obtainMessage(1));
+  }
+  
+  public void b()
+  {
+    sendMessage(obtainMessage(3));
+    removeMessages(1);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    lcc locallcc = (lcc)this.a.get();
+    if (locallcc != null) {}
+    switch (paramMessage.what)
+    {
+    case 2: 
+    default: 
+    case 1: 
+      do
+      {
+        return;
+        lcc.a(locallcc, paramMessage.what);
+      } while (lcc.a(locallcc) == 2);
+      sendMessageDelayed(obtainMessage(paramMessage.what), 15000L);
+      return;
+    }
+    lcc.a(locallcc);
   }
 }
 

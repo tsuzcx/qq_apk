@@ -1,31 +1,17 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
 
-class awkg
-  implements atgv
+public class awkg
+  implements DialogInterface.OnClickListener
 {
-  awkg(awke paramawke) {}
+  public awkg(LocationDialogUtil.5 param5) {}
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d(awke.a(this.a), 2, "onDownloadFailed,errCode=" + paramInt);
+    this.a.a.finish();
   }
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.d(awke.a(this.a), 2, "onDownloadSucess,filePath:" + paramString);
-    }
-  }
-  
-  public void b(int paramInt, Bundle paramBundle) {}
-  
-  public void c(int paramInt, Bundle paramBundle) {}
-  
-  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

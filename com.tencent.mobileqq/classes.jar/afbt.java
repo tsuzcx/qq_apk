@@ -1,64 +1,34 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.data.IntimateInfo.DNAInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneHelper;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class afbt
-  extends ClickableSpan
+public class afbt
+  implements View.OnClickListener
 {
-  afbt(afbj paramafbj, IntimateInfo.DNAInfo paramDNAInfo) {}
+  public afbt(TroopAssistantActivity paramTroopAssistantActivity) {}
   
   public void onClick(View paramView)
   {
-    bcef.b(null, "dc00898", "", "", "0X800A20A ", "0X800A20A ", 0, 0, "", "", "", "");
-    QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A20A");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl))
+    int i = 0;
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    for (;;)
     {
-      QLog.e("intimate_relationship", 2, "linkUrl is empty");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("click scheme: %s, scheme: %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkWording, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl }));
-    }
-    paramView = bfwg.a(this.jdField_a_of_type_Afbj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afbj.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
-    if (paramView != null)
-    {
-      paramView.a();
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl.toLowerCase().startsWith("mqzone://"))
-    {
-      QZoneHelper.onMQzoneSchema(this.jdField_a_of_type_Afbj.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
-      return;
-    }
-    aftx.a(this.jdField_a_of_type_Afbj.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-    try
-    {
-      int j = Color.parseColor("#4D94FF");
-      paramTextPaint.setColor(j);
-      int i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo != null)
+      bdla.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_confirm", 0, 0, "", "", "", "");
+      this.a.jdField_a_of_type_Bhhi = ((bhhi)this.a.app.getManager(QQManagerFactory.MGR_TROOP_FILTER));
+      this.a.b.setCompoundDrawablesWithIntrinsicBounds(2130839466, 0, 0, 0);
+      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
       {
-        i = j;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor)) {
-          i = Color.parseColor(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor);
-        }
+        String str = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
+        this.a.a(str, 4);
+        i += 1;
       }
-      paramTextPaint.setColor(i);
-      return;
-    }
-    catch (IllegalArgumentException paramTextPaint)
-    {
-      QLog.e("intimate_relationship", 2, " color parse err");
     }
   }
 }

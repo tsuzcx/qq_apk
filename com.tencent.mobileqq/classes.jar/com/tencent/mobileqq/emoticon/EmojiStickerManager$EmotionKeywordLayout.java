@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.emoticon;
 
-import ahmw;
-import ahng;
+import aihq;
+import aiia;
+import aiih;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
@@ -28,11 +29,15 @@ public class EmojiStickerManager$EmotionKeywordLayout
   {
     super.onAttachedToWindow();
     Object localObject = getTag();
-    if ((localObject instanceof ahng))
+    if ((localObject instanceof aiia))
     {
-      localObject = ((ahng)localObject).a();
-      if ((localObject != null) && (((ahmw)localObject).c())) {
-        ((ahmw)localObject).a(System.currentTimeMillis());
+      localObject = (aiia)localObject;
+      aihq localaihq = ((aiia)localObject).a();
+      if ((localaihq != null) && (localaihq.c())) {
+        localaihq.a(System.currentTimeMillis());
+      }
+      if (aiih.a(localaihq)) {
+        ((aiia)localObject).d();
       }
     }
   }
@@ -41,11 +46,15 @@ public class EmojiStickerManager$EmotionKeywordLayout
   {
     super.onDetachedFromWindow();
     Object localObject = getTag();
-    if ((localObject instanceof ahng))
+    if ((localObject instanceof aiia))
     {
-      localObject = ((ahng)localObject).a();
-      if ((localObject != null) && (((ahmw)localObject).c())) {
-        ((ahmw)localObject).b(System.currentTimeMillis());
+      localObject = (aiia)localObject;
+      aihq localaihq = ((aiia)localObject).a();
+      if ((localaihq != null) && (localaihq.c())) {
+        localaihq.b(System.currentTimeMillis());
+      }
+      if (aiih.a(localaihq)) {
+        ((aiia)localObject).c();
       }
     }
   }
@@ -101,7 +110,7 @@ public class EmojiStickerManager$EmotionKeywordLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager.EmotionKeywordLayout
  * JD-Core Version:    0.7.0.1
  */

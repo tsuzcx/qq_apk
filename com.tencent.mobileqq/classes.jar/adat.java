@@ -1,20 +1,44 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.widget.XListView;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment.UrlNotauthorizedError;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
 
 class adat
-  implements MessageQueue.IdleHandler
+  extends SimpleObserver<awxt>
 {
-  adat(adas paramadas) {}
+  adat(adap paramadap, adaz paramadaz) {}
   
-  public boolean queueIdle()
+  public void a(awxt paramawxt)
   {
-    View localView = this.a.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
-    int i = localView.getTop();
-    int j = (this.a.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight() - localView.getHeight()) / 2;
-    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollBy(i - j, 1000);
-    return false;
+    adaz localadaz = this.jdField_a_of_type_Adaz;
+    if (paramawxt.c == 1) {}
+    for (int i = 2;; i = 3)
+    {
+      localadaz.a(paramawxt, i);
+      return;
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
+    }
+    int i;
+    if ((paramError instanceof VerifyUrlJobSegment.UrlNotauthorizedError)) {
+      i = 4;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Adaz.a(null, i);
+      return;
+      if ((paramError instanceof AppInfoError)) {
+        i = ((AppInfoError)paramError).type;
+      } else {
+        i = 0;
+      }
+    }
   }
 }
 

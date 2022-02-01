@@ -1,42 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ad.tangram.lbs.AdLocation;
+import com.tencent.gdtad.jsbridge.GdtDeviceDemoFragment;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acgh
-  implements abyl
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 10008;
-  }
+  public acgh(GdtDeviceDemoFragment paramGdtDeviceDemoFragment) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(165);
-    paramQQAppInterface = paramQQAppInterface.getMsgCache().f(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (paramQQAppInterface != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramQQAppInterface));
-    }
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8043;
+    AdLocation localAdLocation = GdtDeviceDemoFragment.a(LbsManagerService.getCachedLbsInfo("gdt_tangram"));
+    GdtDeviceDemoFragment.a(this.a, String.format("getLocationCacheOnCurrentProcess %s", new Object[] { localAdLocation }));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,10 +1,9 @@
-import Wallet.AcsMsg;
-
 public class aewn
 {
-  public int a;
-  public AcsMsg a;
+  public volatile long a;
   public String a;
+  
+  protected aewn(aewg paramaewg) {}
 }
 
 

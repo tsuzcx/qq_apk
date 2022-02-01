@@ -1,124 +1,57 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
-import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.videoplatform.api.ILoadSo;
+import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
+import com.tencent.mobileqq.videoplatform.util.LogUtil;
 
 public class bapx
-  extends bapu
+  implements ILoadSo
 {
-  public int a;
-  public CheckBox a;
-  QQAppInterface a;
-  public CommentsView a;
-  public LikesView a;
-  public RichStatus b;
+  boolean a = false;
   
-  public bapx(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
+  public boolean isCkeygeneratorV2Load()
   {
-    super(paramContext, paramAppInterface, paramView, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
-    this.e = 1;
+    return this.a;
   }
   
-  public View a(RichStatus paramRichStatus)
+  public boolean isCkguardLoad()
   {
-    return super.a(paramRichStatus);
+    return this.a;
   }
   
-  protected void a()
+  public boolean isDownProxyLoad()
   {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setMinimumHeight(0);
+    return this.a;
   }
   
-  protected void a(boolean paramBoolean)
+  public boolean isTPCoreLoad()
   {
-    super.a(paramBoolean);
-    int i;
-    label49:
-    label77:
-    label98:
-    LikesView localLikesView;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView != null)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
-      if (paramBoolean)
-      {
-        i = jdField_a_of_type_ArrayOfInt[14];
-        ((CommentsView)localObject).setNormalTextColor(i);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
-        if (!paramBoolean) {
-          break label162;
-        }
-        i = jdField_a_of_type_ArrayOfInt[13];
-        ((CommentsView)localObject).setItemColor(i);
-      }
+    return this.a;
+  }
+  
+  public boolean loadDownProxySync()
+  {
+    boolean bool = bdgh.a().a("DownloadProxy").isSucc();
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadDownProxySync, bDownProxyResult  = " + bool);
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView != null)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
-      if (!paramBoolean) {
-        break label172;
-      }
-      i = jdField_a_of_type_ArrayOfInt[14];
-      ((LikesView)localObject).setNormalTextColor(i);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
-      if (!paramBoolean) {
-        break label182;
-      }
-      i = jdField_a_of_type_ArrayOfInt[13];
-      ((LikesView)localObject).setItemColor(i);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView.a();
-      if ((this.jdField_a_of_type_AndroidContentContext != null) && (localObject != null))
-      {
-        localLikesView = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
-        if (!paramBoolean) {
-          break label192;
-        }
-      }
+    return bool;
+  }
+  
+  public void loadSo(LoadSoCallback paramLoadSoCallback)
+  {
+    bdgh localbdgh = bdgh.a();
+    paramLoadSoCallback = new bapy(this, paramLoadSoCallback);
+    localbdgh.a(new String[] { "TPCore-master", "DownloadProxy", "ckguard", "ckeygeneratorV2" }, paramLoadSoCallback);
+  }
+  
+  public boolean loadTPCoreSync()
+  {
+    boolean bool = bdgh.a().a("TPCore-master").isSucc();
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadTPCoreSync, bTPCoreResult  = " + bool);
     }
-    label162:
-    label172:
-    label182:
-    label192:
-    for (Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847360);; localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847361))
-    {
-      localLikesView.setLikSpanDrawable((Drawable)localObject);
-      return;
-      i = jdField_a_of_type_ArrayOfInt[16];
-      break;
-      i = jdField_a_of_type_ArrayOfInt[15];
-      break label49;
-      i = jdField_a_of_type_ArrayOfInt[15];
-      break label77;
-      i = jdField_a_of_type_ArrayOfInt[15];
-      break label98;
-    }
+    return bool;
   }
-  
-  protected int b()
-  {
-    return jdField_a_of_type_ArrayOfInt[12];
-  }
-  
-  protected boolean d()
-  {
-    return true;
-  }
-  
-  protected boolean e()
-  {
-    return false;
-  }
-  
-  protected void i() {}
 }
 
 

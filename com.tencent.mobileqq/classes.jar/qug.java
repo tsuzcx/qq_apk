@@ -1,6 +1,14 @@
-public abstract interface qug
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
+public class qug
+  implements ViewBase.IBuilder
 {
-  public abstract void a(int paramInt);
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new quf(paramVafContext);
+  }
 }
 
 

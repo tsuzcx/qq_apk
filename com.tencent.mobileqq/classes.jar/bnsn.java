@@ -1,11 +1,6 @@
-import java.util.ArrayList;
-
-public abstract interface bnsn
-{
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
-}
+public class bnsn
+  extends bmww
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

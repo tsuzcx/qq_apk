@@ -1,23 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import java.util.ArrayList;
 
 public class mgb
-  implements DialogInterface.OnClickListener
+  implements mik
 {
-  public mgb(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public mgb(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    mrd.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.j = true;
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.M();
+  }
+  
+  public void b()
+  {
+    lfe locallfe = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a();
+    if (locallfe != null)
+    {
+      lbd.g(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.d, " TYPE_NOTIFY_CAMERA_CLOSE 2: " + locallfe.j + "|" + locallfe.d);
+      if (locallfe.j) {
+        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
+      }
+    }
+    MultiVideoCtrlLayerUI4Discussion.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.d(true);
+    bdla.b(null, "CliOper", "", "", "0X8004CF2", "0X8004CF2", 0, 0, "", "", "", "");
+    if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 90) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 270)) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().b() != -1) && (((lob)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().c.get(0)).a == 1)) {
+      bdla.b(null, "CliOper", "", "", "0X8004CFB", "0X8004CFB", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.j = false;
+      return;
+      if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 90) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 270)) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().b() != -1) && (((lob)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().c.get(0)).a == 2)) {
+        bdla.b(null, "CliOper", "", "", "0X8004CFC", "0X8004CFC", 0, 0, "", "", "", "");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mgb
  * JD-Core Version:    0.7.0.1
  */

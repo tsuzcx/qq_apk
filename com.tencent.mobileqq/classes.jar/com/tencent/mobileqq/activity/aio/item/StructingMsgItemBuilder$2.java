@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agpx;
+import ahin;
 import android.view.View;
 import android.view.animation.Animation;
 
 class StructingMsgItemBuilder$2
   implements Runnable
 {
-  StructingMsgItemBuilder$2(StructingMsgItemBuilder paramStructingMsgItemBuilder, agpx paramagpx, Animation paramAnimation) {}
+  StructingMsgItemBuilder$2(StructingMsgItemBuilder paramStructingMsgItemBuilder, ahin paramahin, Animation paramAnimation) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Agpx.a.setVisibility(4);
-    this.jdField_a_of_type_Agpx.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.jdField_a_of_type_Ahin.a.setVisibility(4);
+    this.jdField_a_of_type_Ahin.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 

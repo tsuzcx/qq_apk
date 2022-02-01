@@ -1,10 +1,10 @@
 package com.tencent.open.appstore.dl;
 
-import bhpc;
-import bhym;
-import bhyo;
-import bhzm;
-import biam;
+import bizw;
+import bjjo;
+import bjjq;
+import bjko;
+import bjlo;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.util.Collection;
@@ -14,16 +14,16 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DownloadManagerV2$3
   implements Runnable
 {
-  public DownloadManagerV2$3(bhyo parambhyo) {}
+  public DownloadManagerV2$3(bjjq parambjjq) {}
   
   public void run()
   {
-    bhyo.a(this.this$0, bhym.a().a());
+    bjjq.a(this.this$0, bjjo.a().a());
     Object localObject1;
     Object localObject2;
-    if (bhyo.a(this.this$0) != null)
+    if (bjjq.a(this.this$0) != null)
     {
-      localObject1 = bhyo.a(this.this$0).values().iterator();
+      localObject1 = bjjq.a(this.this$0).values().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (DownloadInfo)((Iterator)localObject1).next();
@@ -58,20 +58,20 @@ public class DownloadManagerV2$3
           if (localObject2 != null) {
             break;
           }
-          bhyo.a(this.this$0, localDownloadInfo);
+          bjjq.a(this.this$0, localDownloadInfo);
           return;
         }
       }
       catch (Exception localException)
       {
-        bhzm.c("DownloadManagerV2", "speical clear>>>", localException);
+        bjko.c("DownloadManagerV2", "speical clear>>>", localException);
         return;
       }
       localObject2 = this.this$0.a(localDownloadInfo.i);
       str = localDownloadInfo.l;
     }
-    if ((((TMAssistantDownloadTaskInfo)localObject2).mState == 4) && (biam.c(str) <= bhpc.a().a())) {
-      bhyo.a(this.this$0, localDownloadInfo);
+    if ((((TMAssistantDownloadTaskInfo)localObject2).mState == 4) && (bjlo.c(str) <= bizw.a().a())) {
+      bjjq.a(this.this$0, localDownloadInfo);
     }
   }
 }

@@ -1,176 +1,123 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
-import java.util.List;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class argh
-  extends BaseAdapter
-  implements URLDrawableDownListener
 {
-  protected Context a;
-  protected Handler a;
-  protected argg a;
-  public List<argg> a;
+  private HashMap<String, argi> a = new HashMap();
   
-  public argh(Context paramContext, Handler paramHandler, argg paramargg)
+  public argh()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Argg = paramargg;
+    argi localargi = new argi();
+    localargi.a(true);
+    localargi.a("pages/detail/detail");
+    this.a.put("s_qq_mini_importing", localargi);
   }
   
-  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public static argh a(aqxa[] paramArrayOfaqxa)
   {
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    float f1 = paramInt1 / i;
-    float f2 = paramInt2 / j;
-    Matrix localMatrix = new Matrix();
-    localMatrix.postScale(f1, f2);
-    return Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
-  }
-  
-  public int a(argg paramargg)
-  {
-    return paramargg.a(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public argg a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (argg)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return this.jdField_a_of_type_Argg;
-  }
-  
-  public Long a(int paramInt)
-  {
-    return Long.valueOf(a(paramInt).a());
-  }
-  
-  public List<argg> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(List<argg> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return a(paramInt).a(this.jdField_a_of_type_Argg);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 1;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {
-      paramView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+    if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length <= 0)) {
+      return null;
     }
     for (;;)
     {
-      com.tencent.qphone.base.util.QLog.d("EmotionAdapter", 1, "getView position:" + paramInt);
-      Object localObject;
-      Drawable localDrawable;
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+      argh localargh;
+      int i;
+      JSONObject localJSONObject;
+      try
       {
-        localObject = (argg)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        localDrawable = ((argg)localObject).a(this.jdField_a_of_type_AndroidContentContext);
-        if ((((argg)localObject).a()) || (!((argg)localObject).b())) {
-          break label221;
+        localargh = new argh();
+        i = 0;
+        if (i >= paramArrayOfaqxa.length) {
+          break label516;
         }
-        ((URLImageView)paramView).setURLDrawableDownListener(this);
-        label110:
-        if ((!(localDrawable instanceof avks)) || (((avks)localDrawable).a() == null)) {
-          break label232;
+        localJSONObject = new JSONObject(paramArrayOfaqxa[i].a);
+        if (localJSONObject.has("MiniCodeConfigAioMsg"))
+        {
+          localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigAioMsg");
+          localargh.a.put("docs_miniapp_config_aio_msg", argi.a(localJSONObject));
         }
-        int i = AIOUtils.dp2px(100.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localObject = a(((avks)localDrawable).a(), i, i);
-        ((ImageView)paramView).setImageBitmap((Bitmap)localObject);
+        else if (localJSONObject.has("MiniCodeConfigAioEdit"))
+        {
+          localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigAioEdit");
+          localargh.a.put("docs_miniapp_config_aio_edit", argi.a(localJSONObject));
+        }
       }
-      for (;;)
+      catch (Exception paramArrayOfaqxa)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-        this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, paramInt, 0, localDrawable).sendToTarget();
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localObject = this.jdField_a_of_type_Argg;
-        break;
-        label221:
-        ((URLImageView)paramView).setURLDrawableDownListener(null);
-        break label110;
-        label232:
-        ((ImageView)paramView).setImageDrawable(localDrawable);
+        paramArrayOfaqxa.printStackTrace();
+        return null;
       }
+      if (localJSONObject.has("MiniCodeConfigBottomEdit"))
+      {
+        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigBottomEdit");
+        localargh.a.put("docs_miniapp_config_bottom_edit", argi.a(localJSONObject));
+      }
+      else if (localJSONObject.has("MiniCodeConfigMyFile"))
+      {
+        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigMyFile");
+        localargh.a.put("docs_miniapp_config_my_file", argi.a(localJSONObject));
+      }
+      else if (localJSONObject.has("MiniCodeConfigTroopFile"))
+      {
+        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigTroopFile");
+        localargh.a.put("docs_miniapp_config_troop_file", argi.a(localJSONObject));
+      }
+      else if (localJSONObject.has("MiniCodeConfigGrayBar"))
+      {
+        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigGrayBar");
+        localargh.a.put("docs_miniapp_config_gray_bar", argi.a(localJSONObject));
+      }
+      else if (localJSONObject.has("MiniCodeConfigMenuEdit"))
+      {
+        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigMenuEdit");
+        localargh.a.put("docs_miniapp_config_menu_edit", argi.a(localJSONObject));
+      }
+      else if (localJSONObject.has("MiniCodeConfigDownloadEdit"))
+      {
+        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigDownloadEdit");
+        localargh.a.put("docs_miniapp_config_download_edit", argi.a(localJSONObject));
+      }
+      else if (localJSONObject.has("docs_miniapp_config_online_preview"))
+      {
+        localJSONObject = (JSONObject)localJSONObject.get("docs_miniapp_config_online_preview");
+        localargh.a.put("docs_miniapp_config_online_preview", argi.a(localJSONObject));
+      }
+      else if (localJSONObject.has("MiniCodeConfigTemplateList"))
+      {
+        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigTemplateList");
+        localargh.a.put("docs_miniapp_config_templatelist", argi.a(localJSONObject));
+      }
+      else if (localJSONObject.has("MiniCodeConfigOcrSave"))
+      {
+        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigOcrSave");
+        localargh.a.put("docs_miniapp_config_ocr_save", argi.a(localJSONObject));
+      }
+      else if (localJSONObject.has("MiniCodeConfigUrl2Doc"))
+      {
+        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigUrl2Doc");
+        localargh.a.put("docs_miniapp_config_url_2_doc", argi.a(localJSONObject));
+      }
+      else if (localJSONObject.has("MiniCodeConfigAioArkH5"))
+      {
+        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigAioArkH5");
+        localargh.a.put("docs_miniapp_config_aio_ark_h5", argi.a(localJSONObject));
+        break label518;
+        label516:
+        return localargh;
+      }
+      label518:
+      i += 1;
     }
   }
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public HashMap<String, argi> a()
   {
-    try
-    {
-      File localFile = paramURLDrawable.getFileInLocal();
-      if (localFile == null) {
-        break label74;
-      }
-      i = bfvo.c(localFile.getAbsolutePath());
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        label74:
-        int i = 0;
-      }
-    }
-    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-      com.tencent.TMG.utils.QLog.d("EmotionAdapter", 0, "onLoadSuccessed,orientation");
-    }
-    AIOGalleryAdapter.a(paramView, paramURLDrawable, i);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, -1, 1, paramURLDrawable).sendToTarget();
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argh
  * JD-Core Version:    0.7.0.1
  */

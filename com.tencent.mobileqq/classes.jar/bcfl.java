@@ -1,14 +1,19 @@
-public abstract class bcfl
+public class bcfl
 {
-  public abstract void a();
+  public int a;
+  public String a;
   
-  public abstract void b();
+  public bcfl() {}
   
-  public abstract void c();
+  public bcfl(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcfl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,10 @@
-public abstract class amhi
+import android.widget.TextView;
+
+public class amhi
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, String paramString);
+  public int a;
+  public TextView a;
+  public TextView b;
 }
 
 

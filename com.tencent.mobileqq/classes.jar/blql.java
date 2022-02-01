@@ -1,14 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.os.Bundle;
+import com.tencent.mobileqq.config.business.QQComicConfBean.IPExpressionConfig;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public abstract interface blql<T extends RecyclerView.ViewHolder>
+final class blql
+  implements EIPCResultCallback
 {
-  public abstract void a(float paramFloat, int paramInt1, int paramInt2, @Nullable T paramT1, @Nullable T paramT2);
+  blql(blqn paramblqn) {}
   
-  public abstract void b(@NonNull T paramT, int paramInt);
-  
-  public abstract void c(@NonNull T paramT, int paramInt);
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if ((paramEIPCResult == null) || (paramEIPCResult.data == null)) {}
+    do
+    {
+      return;
+      blqj.a = (QQComicConfBean.IPExpressionConfig)paramEIPCResult.data.getSerializable("ipExpressionConfig");
+      if (this.a != null) {
+        this.a.a(blqj.a);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("VipComicConfigHelper", 2, " ipExpressionConfig" + blqj.a);
+  }
 }
 
 

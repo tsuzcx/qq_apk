@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import akpw;
+import alns;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
@@ -21,7 +21,7 @@ public class LoginView$4
     localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
     localTranslateAnimation.setDuration(500L);
     localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new akpw(this));
+    localTranslateAnimation.setAnimationListener(new alns(this));
     this.this$0.c.startAnimation(localTranslateAnimation);
   }
 }

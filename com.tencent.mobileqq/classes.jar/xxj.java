@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
-
-public final class xxj
-  implements Parcelable.Creator<EditTakeGifSource>
+class xxj
+  implements xxo
 {
-  public EditTakeGifSource a(Parcel paramParcel)
-  {
-    return new EditTakeGifSource(paramParcel);
-  }
+  xxj(xxi paramxxi) {}
   
-  public EditTakeGifSource[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new EditTakeGifSource[paramInt];
+    if (xxi.a(this.a) == null) {
+      return;
+    }
+    if (paramInt == 1) {
+      xxi.a(this.a);
+    }
+    for (;;)
+    {
+      this.a.h();
+      return;
+      if (paramInt == 2) {
+        xxi.b(this.a);
+      }
+    }
   }
 }
 

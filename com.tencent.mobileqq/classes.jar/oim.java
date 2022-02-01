@@ -1,22 +1,29 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.DailyDynamicHeaderViewController.5.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class oim
-  extends LbsManagerService.OnLocationChangeListener
+  implements udu
 {
-  oim(oif paramoif, String paramString)
-  {
-    super(paramString);
-  }
+  public oim(ADBaseAppDownloadManager.3 param3) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(boolean paramBoolean)
   {
-    QLog.i("DailyHeaderViewController", 1, "[onLocationFinish] errCode=" + paramInt + "");
-    ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderViewController.5.1(this, paramInt, paramSosoLbsInfo));
+    if (paramBoolean)
+    {
+      this.a.this$0.a(this.a.a, 5, 100);
+      this.a.this$0.d(this.a.a);
+    }
+    do
+    {
+      return;
+      if (this.a.a.a)
+      {
+        oil.a(this.a.this$0, this.a.a);
+        return;
+      }
+    } while (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()));
+    this.a.this$0.a(this.a.a, 0);
   }
 }
 

@@ -1,12 +1,6 @@
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
-import com.tencent.richmediabrowser.view.IBrowserViewHolder;
-
-public class bakv
-  extends IBrowserViewHolder
+public abstract interface bakv
 {
-  public BaseVideoView a;
-  
-  public bakv(bakr parambakr) {}
+  public abstract void a();
 }
 
 

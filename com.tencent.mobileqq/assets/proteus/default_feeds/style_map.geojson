@@ -347,9 +347,6 @@
         "id_jump_channel_img":{
                  "loadImageWithPath:":"jump_channel_img"
         },
-        "id_social_header_fold_button": {
-                 "setImage:": "social_header_fold"
-        },
         "id_socialize_recommend_follow":{
                  "setFeedsModel:":"article_model"
         },

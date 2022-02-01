@@ -1,36 +1,6 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
-import com.tribe.async.reactive.SimpleObserver;
-
-public class voz
-  extends SimpleObserver<ErrorMessage>
+class voz
 {
-  private voz(BasePublishTask paramBasePublishTask) {}
-  
-  public void a(ErrorMessage paramErrorMessage)
-  {
-    if (paramErrorMessage.isSuccess())
-    {
-      this.a.a(new ErrorMessage());
-      return;
-    }
-    this.a.a(paramErrorMessage);
-  }
-  
-  public void onCancel() {}
-  
-  public void onComplete() {}
-  
-  public void onError(@NonNull Error paramError)
-  {
-    if ((paramError instanceof ErrorMessage))
-    {
-      this.a.a((ErrorMessage)paramError);
-      return;
-    }
-    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
-  }
+  private static final vox a = new vox(null);
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pkp;
-import pwr;
+import pvm;
+import qhx;
 
 public class SubscriptionInfoModule$3
   implements Runnable
 {
-  public SubscriptionInfoModule$3(pwr parampwr, List paramList) {}
+  public SubscriptionInfoModule$3(qhx paramqhx, List paramList) {}
   
   public void run()
   {
-    pkp.a().b(this.a);
+    pvm.a().b(this.a);
   }
 }
 

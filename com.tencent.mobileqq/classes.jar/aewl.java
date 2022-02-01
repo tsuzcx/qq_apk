@@ -1,8 +1,18 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public abstract interface aewl
+class aewl
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  aewl(aewg paramaewg) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.show();
+    this.a.b = false;
+    aewg.c(this.a);
+  }
 }
 
 

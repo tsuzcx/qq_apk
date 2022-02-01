@@ -1,17 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
-
 public class auzu
-  implements bjog
 {
-  public auzu(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, avau paramavau) {}
+  public String a;
+  public boolean a;
+  public String b;
+  @Deprecated
+  public boolean b;
   
-  public void onDismiss()
+  public auzu(String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Avau.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-    }
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    return "MatchKey{column='" + this.jdField_a_of_type_JavaLangString + '\'' + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", or=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

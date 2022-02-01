@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface avcv
+public class avcv
+  implements View.OnClickListener
 {
-  public abstract void a(avcq paramavcq, int paramInt);
+  public avcv(QQGamePubAccountFragment paramQQGamePubAccountFragment, FrameLayout paramFrameLayout) {}
   
-  public abstract void a(avcq paramavcq, int paramInt1, int paramInt2);
-  
-  public abstract void a(avcq paramavcq, LocationRoom.Venue paramVenue, List<avco> paramList);
-  
-  public abstract void b(avcq paramavcq, int paramInt);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(QQGamePubAccountFragment.b(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment));
+    QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment, null);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

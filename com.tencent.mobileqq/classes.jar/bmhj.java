@@ -1,17 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+import android.os.Bundle;
 
-public class bmhj
-  implements DialogInterface.OnClickListener
+public abstract class bmhj
 {
-  public bmhj(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    AEEditorVideoClipFragment.b(this.a);
-    AEEditorVideoClipFragment.c(this.a);
-    this.a.a().a(this.a.getActivity());
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("_mqqpay_baseapi_appid");
+    this.c = paramBundle.getString("_mqqpay_baseapi_apptype");
+    this.b = paramBundle.getString("_mqqpay_baseapi_sdkversion");
+    this.d = paramBundle.getString("_mqqpay_baseapi_apiname");
+    this.jdField_a_of_type_Int = paramBundle.getInt("_mqqpay_baseapi_apimark");
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    localStringBuilder.append("ai=" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("&sv=" + this.b);
+    localStringBuilder.append("&at=" + this.c);
+    localStringBuilder.append("&an=" + this.d);
+    localStringBuilder.append("&am=" + this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

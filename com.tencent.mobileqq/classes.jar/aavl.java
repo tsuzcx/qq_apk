@@ -1,136 +1,80 @@
-import android.os.Bundle;
-import com.tencent.litetransfersdk.ActionInfo;
-import com.tencent.litetransfersdk.Session;
+import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.widget.Gallery;
 
 class aavl
-  extends aasp
+  implements aavx
 {
   aavl(aavk paramaavk) {}
   
-  private List<aasp> a(Session paramSession)
+  public void f()
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramSession != null)
-    {
-      str1 = str2;
-      if (paramSession.actionInfo != null) {
-        str1 = paramSession.actionInfo.strServiceName;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "gallery onEnterAnimationEnd");
     }
-    return a(str1);
-  }
-  
-  private List<aasp> a(String paramString)
-  {
-    if (paramString != null) {}
-    for (;;)
-    {
-      if (paramString != null) {
-        return (List)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      }
-      return null;
-      paramString = "";
+    if (this.a.jdField_a_of_type_ComTencentWidgetGallery.getVisibility() != 0) {
+      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
+    }
+    this.a.f();
+    if ((this.a.jdField_a_of_type_Aavw != null) && (!this.a.jdField_a_of_type_Aavw.a())) {
+      this.a.jdField_a_of_type_Aavw.a();
     }
   }
   
-  public void a(Bundle paramBundle)
+  public void g()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(aavk.jdField_a_of_type_JavaLangString, 4, "OnDataPointFileMsgProgress");
+    if (this.a.jdField_a_of_type_Aawb.a().b) {
+      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
     }
-    Object localObject = a("");
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((aasp)((Iterator)localObject).next()).a(paramBundle);
-      }
+    this.a.g();
+    if ((this.a.jdField_a_of_type_Aavw != null) && (this.a.jdField_a_of_type_Aavw.a())) {
+      this.a.jdField_a_of_type_Aavw.b();
     }
   }
   
-  public void a(Session paramSession)
+  public void h()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(aavk.jdField_a_of_type_JavaLangString, 4, "onServiceSessionNew:" + paramSession.uSessionID);
+    if (this.a.jdField_a_of_type_Aawb.a().b) {
+      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
     }
-    Object localObject = a(paramSession);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((aasp)((Iterator)localObject).next()).a(paramSession);
-      }
+    if (this.a.jdField_a_of_type_Aavj != null) {
+      this.a.jdField_a_of_type_Aavj.a(4);
     }
+    if ((this.a.jdField_a_of_type_Aavw != null) && (this.a.jdField_a_of_type_Aavw.a())) {
+      this.a.jdField_a_of_type_Aavw.b();
+    }
+    this.a.h();
+    this.a.jdField_a_of_type_ComTencentWidgetGallery.e();
   }
   
-  public void a(Session paramSession, float paramFloat)
+  public void i()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(aavk.jdField_a_of_type_JavaLangString, 4, "onServiceSessionProgress:" + paramSession.uSessionID);
-    }
-    Object localObject = a(paramSession);
-    if (localObject != null)
+    this.a.i();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((aasp)((Iterator)localObject).next()).a(paramSession, paramFloat);
+      localStringBuilder = new StringBuilder().append("gallery onExitAnimationEnd ");
+      if (this.a.jdField_a_of_type_Aawb.a() != this.a) {
+        break label87;
       }
     }
-  }
-  
-  public void a(Session paramSession, boolean paramBoolean)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(aavk.jdField_a_of_type_JavaLangString, 4, "onServiceSessionComplete:" + paramSession.uSessionID);
-    }
-    Object localObject = a(paramSession);
-    if (localObject != null)
+    label87:
+    for (boolean bool = true;; bool = false)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((aasp)((Iterator)localObject).next()).a(paramSession, paramBoolean);
+      QLog.d("GalleryComponent", 2, bool);
+      if (this.a.jdField_a_of_type_Aawb.a() != this.a) {
+        break;
       }
+      this.a.jdField_a_of_type_AndroidAppActivity.finish();
+      return;
     }
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(aavk.jdField_a_of_type_JavaLangString, 4, "OnDataPointFileMsgSendRet");
-    }
-    Object localObject = a("");
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((aasp)((Iterator)localObject).next()).b(paramBundle);
-      }
-    }
-  }
-  
-  public void b(Session paramSession)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(aavk.jdField_a_of_type_JavaLangString, 4, "onServiceSessionStart:" + paramSession.uSessionID);
-    }
-    Object localObject = a(paramSession);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((aasp)((Iterator)localObject).next()).b(paramSession);
-      }
-    }
+    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
+    this.a.n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aavl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,24 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arwl
-  implements View.OnLongClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public arwl(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public arwl(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  public boolean onLongClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
-      return false;
+    if (paramBoolean) {
+      arxi.a().c();
     }
-    paramView.setSelected(true);
-    bgaz localbgaz = new bgaz();
-    localbgaz.a(2131365376, paramView.getContext().getString(2131691363));
-    this.a.a = bfue.a(paramView, localbgaz, new arwm(this, paramView), new arwn(this, paramView));
-    return true;
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      arxi.a().d();
+    }
   }
 }
 

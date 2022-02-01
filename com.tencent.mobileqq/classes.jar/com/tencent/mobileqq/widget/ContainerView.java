@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.widget;
 
-import afde;
-import afdf;
-import akyl;
-import akym;
+import afuj;
+import afuk;
+import alwh;
+import alwi;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -20,9 +20,9 @@ import android.view.View.MeasureSpec;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bcef;
-import bhcl;
-import bhcm;
+import bdla;
+import bind;
+import bine;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -32,14 +32,14 @@ import com.tencent.widget.ScrollView;
 @TargetApi(11)
 public class ContainerView
   extends LinearLayout
-  implements afdf, akyl
+  implements afuk, alwh
 {
   public static float a;
   private static final int l = ViewUtils.dpToPx(5.0F);
   private static final int m = ViewUtils.dpToPx(2.0F);
   private static final int n = ViewUtils.dpToPx(28.0F);
   public int a;
-  private akym jdField_a_of_type_Akym;
+  private alwi jdField_a_of_type_Alwi;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   protected Handler a;
@@ -133,7 +133,7 @@ public class ContainerView
   
   private void a()
   {
-    if (this.jdField_a_of_type_Akym == null) {
+    if (this.jdField_a_of_type_Alwi == null) {
       throw new IllegalStateException("Has no bound delegate!");
     }
   }
@@ -173,7 +173,7 @@ public class ContainerView
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setPadding(i1, i1, i1, i1);
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     addView(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView, paramContext);
-    getViewTreeObserver().addOnGlobalLayoutListener(new bhcl(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new bind(this));
   }
   
   private void c(int paramInt1, int paramInt2, int paramInt3)
@@ -183,12 +183,12 @@ public class ContainerView
     if (this.g == 1)
     {
       i2 = this.h;
-      i1 = this.jdField_a_of_type_Akym.a(paramInt1, paramInt2);
+      i1 = this.jdField_a_of_type_Alwi.a(paramInt1, paramInt2);
       if (QLog.isColorLevel()) {
         QLog.d("BaseChatItemLayout", 2, "updateCursorLocation, touchIndex=" + i1 + ", type=" + this.g);
       }
       if (paramInt3 == -1) {
-        this.jdField_a_of_type_Akym.a(this.g, false);
+        this.jdField_a_of_type_Alwi.a(this.g, false);
       }
       if (i1 != -1) {
         break label107;
@@ -219,15 +219,15 @@ public class ContainerView
             if (QLog.isColorLevel()) {
               QLog.d("BaseChatItemLayout", 2, "update selection, s=" + i1 + ", e=" + paramInt3);
             }
-            this.jdField_a_of_type_Akym.a(i1, paramInt3);
-            this.jdField_a_of_type_Akym.b(paramInt1, paramInt2);
+            this.jdField_a_of_type_Alwi.a(i1, paramInt3);
+            this.jdField_a_of_type_Alwi.b(paramInt1, paramInt2);
             if (this.g != 1) {
               break label527;
             }
             if (this.j == -1) {
               break;
             }
-            this.jdField_a_of_type_Akym.a(paramInt1, this.j, true);
+            this.jdField_a_of_type_Alwi.a(paramInt1, this.j, true);
             return;
             if ((i1 > this.h) && (i1 < this.i))
             {
@@ -250,7 +250,7 @@ public class ContainerView
               this.h = this.i;
               this.i = i1;
               this.g = 2;
-              this.jdField_a_of_type_Akym.a(this.g);
+              this.jdField_a_of_type_Alwi.a(this.g);
               paramInt3 = i1;
               i1 = i2;
               continue;
@@ -284,24 +284,24 @@ public class ContainerView
                 this.i = this.h;
                 this.h = i1;
                 this.g = 1;
-                this.jdField_a_of_type_Akym.a(this.g);
+                this.jdField_a_of_type_Alwi.a(this.g);
               }
             }
           }
         } while ((this.g != 2) || (this.k == -1));
-        this.jdField_a_of_type_Akym.a(paramInt1, this.k, true);
+        this.jdField_a_of_type_Alwi.a(paramInt1, this.k, true);
         return;
         if (this.g != 1) {
           break label591;
         }
       } while (this.j == -1);
-      this.jdField_a_of_type_Akym.a(paramInt1, this.j, false);
+      this.jdField_a_of_type_Alwi.a(paramInt1, this.j, false);
       return;
     } while ((this.g != 2) || (this.k == -1));
     label527:
     label559:
     label591:
-    this.jdField_a_of_type_Akym.a(paramInt1, this.k, false);
+    this.jdField_a_of_type_Alwi.a(paramInt1, this.k, false);
   }
   
   public int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
@@ -309,7 +309,7 @@ public class ContainerView
     if ((!this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean)) {
       return -1;
     }
-    return new afde(this, this.jdField_a_of_type_Akym).a(paramFloat1, paramFloat2, paramInt1, paramInt2);
+    return new afuj(this, this.jdField_a_of_type_Alwi).a(paramFloat1, paramFloat2, paramInt1, paramInt2);
   }
   
   public int a(int paramInt)
@@ -354,9 +354,9 @@ public class ContainerView
     this.i = (paramInt1 + paramInt2);
   }
   
-  public void a(akym paramakym)
+  public void a(alwi paramalwi)
   {
-    this.jdField_a_of_type_Akym = paramakym;
+    this.jdField_a_of_type_Alwi = paramalwi;
   }
   
   public boolean a()
@@ -491,7 +491,7 @@ public class ContainerView
     if (((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) && (a(paramMotionEvent.getX(), paramMotionEvent.getY()) != -1))
     {
       a();
-      this.jdField_a_of_type_Akym.c();
+      this.jdField_a_of_type_Alwi.c();
       requestDisallowInterceptTouchEvent(true);
       return true;
     }
@@ -559,13 +559,13 @@ public class ContainerView
         a();
         this.jdField_e_of_type_Boolean = true;
         this.g = i1;
-        this.h = this.jdField_a_of_type_Akym.b();
-        this.i = this.jdField_a_of_type_Akym.c();
+        this.h = this.jdField_a_of_type_Alwi.b();
+        this.i = this.jdField_a_of_type_Alwi.c();
         if (paramMotionEvent.getSource() != -1) {
-          this.jdField_a_of_type_Akym.a(this.g, false);
+          this.jdField_a_of_type_Alwi.a(this.g, false);
         }
-        if (this.jdField_a_of_type_Akym.a()) {
-          this.jdField_a_of_type_Akym.b();
+        if (this.jdField_a_of_type_Alwi.a()) {
+          this.jdField_a_of_type_Alwi.b();
         }
       }
       do
@@ -580,13 +580,13 @@ public class ContainerView
           this.jdField_e_of_type_Boolean = false;
           this.j = -1;
           this.k = -1;
-          this.jdField_a_of_type_Akym.a(-1, true);
-          this.jdField_a_of_type_Akym.a();
+          this.jdField_a_of_type_Alwi.a(-1, true);
+          this.jdField_a_of_type_Alwi.a();
         } while (i2 != 1);
         if (paramMotionEvent.getSource() == -1) {}
         for (;;)
         {
-          bcef.b(null, "dc00898", "", "", "0X800AE7B", "0X800AE7B", i1, 0, "", "", "", "");
+          bdla.b(null, "dc00898", "", "", "0X800AE7B", "0X800AE7B", i1, 0, "", "", "", "");
           return true;
           i1 = 1;
         }
@@ -682,7 +682,7 @@ public class ContainerView
   public void setOutScrollView(ScrollView paramScrollView)
   {
     this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
-    this.jdField_a_of_type_ComTencentWidgetScrollView.setOnScrollStateChangedListener(new bhcm(this));
+    this.jdField_a_of_type_ComTencentWidgetScrollView.setOnScrollStateChangedListener(new bine(this));
   }
   
   public void setText(CharSequence paramCharSequence)

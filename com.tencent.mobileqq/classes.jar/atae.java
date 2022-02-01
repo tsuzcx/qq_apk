@@ -1,32 +1,29 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadPoolParams;
-import java.util.concurrent.Executor;
-import java.util.concurrent.LinkedBlockingQueue;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ExpandableListView;
 
-public class atae
+class atae
+  implements View.OnClickListener
 {
-  static Executor a;
+  atae(atab paramatab, int paramInt) {}
   
-  static
+  public void onClick(View paramView)
   {
-    ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
-    localThreadPoolParams.poolThreadName = "fileassistant_pool";
-    localThreadPoolParams.corePoolsize = 2;
-    localThreadPoolParams.maxPooolSize = 2;
-    localThreadPoolParams.priority = 8;
-    localThreadPoolParams.queue = new LinkedBlockingQueue();
-    localThreadPoolParams.keepAliveTime = 10;
-    a = ThreadManager.newFreeThreadPool(localThreadPoolParams);
-  }
-  
-  public static Executor a()
-  {
-    return a;
+    if (atab.a(this.jdField_a_of_type_Atab).c(this.jdField_a_of_type_Int)) {
+      atab.a(this.jdField_a_of_type_Atab).b(this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      atab.a(this.jdField_a_of_type_Atab).a(this.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atae
  * JD-Core Version:    0.7.0.1
  */

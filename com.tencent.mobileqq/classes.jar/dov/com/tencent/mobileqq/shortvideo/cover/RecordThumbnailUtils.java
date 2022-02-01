@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Matrix;
 import android.text.TextUtils;
-import bobu;
-import boef;
+import bprm;
+import bptx;
 import java.io.File;
 
 public class RecordThumbnailUtils
@@ -198,7 +198,7 @@ public class RecordThumbnailUtils
     //   340: aload 11
     //   342: iload_2
     //   343: iload_3
-    //   344: invokestatic 125	bodp:a	([I[BII)V
+    //   344: invokestatic 125	bpth:a	([I[BII)V
     //   347: aload 12
     //   349: iload_2
     //   350: iload_3
@@ -214,7 +214,7 @@ public class RecordThumbnailUtils
     //   370: aload_1
     //   371: astore 11
     //   373: iload 5
-    //   375: invokestatic 139	bnvm:a	(I)Z
+    //   375: invokestatic 139	bple:a	(I)Z
     //   378: ifne +11 -> 389
     //   381: aload_1
     //   382: iload 5
@@ -396,7 +396,7 @@ public class RecordThumbnailUtils
   public static String a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bitmap.Config paramConfig)
   {
     File localFile = new File(paramString);
-    return a(paramString, paramInt1, paramInt2, bobu.a + File.separator + boef.a(localFile) + ".jpg", paramInt3, paramConfig);
+    return a(paramString, paramInt1, paramInt2, bprm.a + File.separator + bptx.a(localFile) + ".jpg", paramInt3, paramConfig);
   }
   
   /* Error */
@@ -482,7 +482,7 @@ public class RecordThumbnailUtils
     //   151: iload 4
     //   153: ifeq +237 -> 390
     //   156: iload 4
-    //   158: invokestatic 139	bnvm:a	(I)Z
+    //   158: invokestatic 139	bple:a	(I)Z
     //   161: ifne +229 -> 390
     //   164: aload 5
     //   166: iload 4

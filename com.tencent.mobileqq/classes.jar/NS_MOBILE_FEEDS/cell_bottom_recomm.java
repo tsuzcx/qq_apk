@@ -23,6 +23,7 @@ public final class cell_bottom_recomm
   public s_join_list joinlist;
   public String jsonData = "";
   public s_picdata picinfo;
+  public int style;
   public String summary = "";
   public String summaryColor = "";
   public String title = "";
@@ -34,7 +35,7 @@ public final class cell_bottom_recomm
   
   public cell_bottom_recomm() {}
   
-  public cell_bottom_recomm(s_picdata params_picdata, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt2, s_join_list params_join_list, boolean paramBoolean, int paramInt3, int paramInt4, WeishiDownlowdUrl paramWeishiDownlowdUrl, String paramString8)
+  public cell_bottom_recomm(s_picdata params_picdata, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt2, s_join_list params_join_list, boolean paramBoolean, int paramInt3, int paramInt4, WeishiDownlowdUrl paramWeishiDownlowdUrl, String paramString8, int paramInt5)
   {
     this.picinfo = params_picdata;
     this.title = paramString1;
@@ -52,6 +53,7 @@ public final class cell_bottom_recomm
     this.iButtonFlag = paramInt4;
     this.downloadUrl = paramWeishiDownlowdUrl;
     this.jsonData = paramString8;
+    this.style = paramInt5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -72,6 +74,7 @@ public final class cell_bottom_recomm
     this.iButtonFlag = paramJceInputStream.read(this.iButtonFlag, 13, false);
     this.downloadUrl = ((WeishiDownlowdUrl)paramJceInputStream.read(cache_downloadUrl, 14, false));
     this.jsonData = paramJceInputStream.readString(15, false);
+    this.style = paramJceInputStream.read(this.style, 16, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -114,6 +117,7 @@ public final class cell_bottom_recomm
     if (this.jsonData != null) {
       paramJceOutputStream.write(this.jsonData, 15);
     }
+    paramJceOutputStream.write(this.style, 16);
   }
 }
 

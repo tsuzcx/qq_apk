@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import avcr;
+import awiu;
 import com.tencent.lbssearch.httpresponse.Poi;
 import com.tencent.lbssearch.object.result.SearchResultObject.SearchResultData;
 import com.tencent.lbssearch.object.result.SuggestionResultObject.SuggestionData;
@@ -19,7 +19,7 @@ import java.lang.ref.SoftReference;
 public class LocationRoom$Venue
   implements Parcelable
 {
-  public static final Parcelable.Creator<Venue> CREATOR = new avcr();
+  public static final Parcelable.Creator<Venue> CREATOR = new awiu();
   public LatLng a;
   public String a;
   public SoftReference<Marker> a;

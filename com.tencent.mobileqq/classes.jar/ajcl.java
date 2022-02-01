@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class ajcl
-  extends anaa
+class ajcl
+  implements Comparator<PhoneContact>
 {
-  public ajcl(Conversation paramConversation) {}
+  ajcl(ajcj paramajcj) {}
   
-  protected void b(int paramInt)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, new Object[] { "onRegPrxyUpdateLoginDevStatus int iState = ", Integer.valueOf(paramInt) });
-    }
-    if (paramInt == 1)
+    int j = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
+    int i = j;
+    if (j == 0)
     {
-      this.a.a.a(31, 2);
-      this.a.a.a(-1, null);
-      return;
+      Object localObject2 = paramPhoneContact1.pinyinFirst;
+      String str = paramPhoneContact2.pinyinFirst;
+      Object localObject1 = localObject2;
+      if (((String)localObject2).endsWith("#")) {
+        localObject1 = "Za";
+      }
+      localObject2 = str;
+      if (str.endsWith("#")) {
+        localObject2 = "Za";
+      }
+      j = ((String)localObject1).compareTo((String)localObject2);
+      i = j;
+      if (j == 0) {
+        i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+      }
     }
-    this.a.a.l();
+    return i;
   }
 }
 

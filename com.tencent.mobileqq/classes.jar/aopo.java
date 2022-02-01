@@ -1,29 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority.1;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.util.Base64;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import java.lang.reflect.Type;
 
 public class aopo
-  implements DialogInterface.OnClickListener
+  implements JsonDeserializer<MessageMicro>, JsonSerializer<MessageMicro>
 {
-  public aopo(ArkAppModuleBase.APIAuthority.1 param1, QQCustomDialog paramQQCustomDialog) {}
+  private Class<? extends MessageMicro<?>> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aopo(Class<? extends MessageMicro<?>> paramClass)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Aopp != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_Aopp.a();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {}
+    this.a = paramClass;
+  }
+  
+  public JsonElement a(MessageMicro paramMessageMicro, Type paramType, JsonSerializationContext paramJsonSerializationContext)
+  {
+    return new JsonPrimitive(Base64.encodeToString(paramMessageMicro.toByteArray(), 3));
+  }
+  
+  public MessageMicro a(JsonElement paramJsonElement, Type paramType, JsonDeserializationContext paramJsonDeserializationContext)
+  {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      label39:
-      aopl.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.d, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleBase$APIAuthority$1.e, 1);
-      return;
+      paramType = (MessageMicro)this.a.newInstance();
+      paramType.mergeFrom(Base64.decode(paramJsonElement.getAsString(), 3));
+      return paramType;
     }
-    catch (Exception paramDialogInterface)
+    catch (IllegalAccessException paramJsonElement)
     {
-      break label39;
+      paramJsonElement.printStackTrace();
+      return null;
+    }
+    catch (InstantiationException paramJsonElement)
+    {
+      for (;;)
+      {
+        paramJsonElement.printStackTrace();
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramJsonElement)
+    {
+      for (;;)
+      {
+        paramJsonElement.printStackTrace();
+      }
     }
   }
 }

@@ -1,16 +1,41 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.MsgTabWorkThreadHandler.1;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class wmj
-  implements View.OnTouchListener
+  extends Handler
 {
-  public wmj(StoryPlayerFragment paramStoryPlayerFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public wmj(wmd paramwmd, Looper paramLooper)
   {
-    return true;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        removeMessages(1);
+        ykq.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_LOAD_USER_ITEM_FROM_UI");
+        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
+        this.a.jdField_a_of_type_JavaUtilSet.clear();
+      } while (!wmd.a(this.a, paramMessage, false));
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.MsgTabWorkThreadHandler.1(this));
+      return;
+      ykq.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_SCHEDULE_REQUIRE_USER_ITEM");
+      paramMessage = (String)paramMessage.obj;
+    } while (this.a.jdField_a_of_type_JavaUtilSet.contains(paramMessage));
+    this.a.jdField_a_of_type_JavaUtilSet.add(paramMessage);
+    sendEmptyMessageDelayed(1, 2500L);
   }
 }
 

@@ -1,22 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class adsw
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adsw(NotificationActivity paramNotificationActivity) {}
+  public adsw(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsw
  * JD-Core Version:    0.7.0.1
  */

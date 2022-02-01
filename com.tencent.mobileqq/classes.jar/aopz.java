@@ -1,18 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
-public class aopz
-  extends BroadcastReceiver
+class aopz
+  implements PermissionMonitor.Listener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ark.ArkAppNotifyCenter", 2, "--VolumeReceiver---" + paramIntent.getAction());
+    if (!aopp.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
     }
-    ArkAppNotifyCenter.access$100("com.tencent.gouwu.video");
+  }
+  
+  aopz(aopp paramaopp) {}
+  
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (aopp.a(this.jdField_a_of_type_Aopp) != Thread.currentThread()) {}
+    while ((!aopp.a(this.jdField_a_of_type_Aopp)) || (paramArrayOfObject.length != 3)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1] != aopp.a(this.jdField_a_of_type_Aopp))) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)aopp.a(this.jdField_a_of_type_Aopp), (String)paramArrayOfObject[2]);
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

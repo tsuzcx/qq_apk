@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.image.URLDrawable;
 
-final class aexu
-  implements aeya
+public class aexu
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  int jdField_a_of_type_Int;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  
+  public aexu(aexr paramaexr, String paramString1, String paramString2, int paramInt)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 94);
-    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
-    return paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

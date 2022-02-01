@@ -16,7 +16,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bgzy;
+import bikq;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -60,11 +60,11 @@ public class HalfScreenBrowserActivity
     setImmersiveStatus(0);
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bgzy(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bikq(this));
     paramBundle = getIntent().getStringExtra("url");
     FrameLayout localFrameLayout = new FrameLayout(this);
     this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130840436));
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130840474));
     Object localObject = new FrameLayout.LayoutParams(AIOUtils.dp2px(25.0F, getResources()), AIOUtils.dp2px(25.0F, getResources()));
     ((FrameLayout.LayoutParams)localObject).gravity = 17;
     localFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetProgressBar, (ViewGroup.LayoutParams)localObject);
@@ -88,7 +88,7 @@ public class HalfScreenBrowserActivity
       }
       try
       {
-        findViewById(2131376501).setVisibility(8);
+        findViewById(2131376760).setVisibility(8);
         label226:
         this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
         AlbumUtil.anim(this, false, true);

@@ -1,102 +1,151 @@
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.transfile.URLDrawableHelper.Adapter;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.troopgame.TroopGameCardConfigProcessor.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import javax.annotation.Nullable;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/VasApngFactory$Options;", "", "()V", "autoScale", "", "getAutoScale", "()Z", "setAutoScale", "(Z)V", "extraInfo", "Landroid/os/Bundle;", "getExtraInfo", "()Landroid/os/Bundle;", "setExtraInfo", "(Landroid/os/Bundle;)V", "loadListener", "Lcom/tencent/image/URLDrawable$URLDrawableListener;", "getLoadListener", "()Lcom/tencent/image/URLDrawable$URLDrawableListener;", "setLoadListener", "(Lcom/tencent/image/URLDrawable$URLDrawableListener;)V", "loadingDrawable", "Landroid/graphics/drawable/Drawable;", "getLoadingDrawable", "()Landroid/graphics/drawable/Drawable;", "setLoadingDrawable", "(Landroid/graphics/drawable/Drawable;)V", "loop", "", "getLoop", "()I", "setLoop", "(I)V", "requestHeight", "getRequestHeight", "setRequestHeight", "requestWidth", "getRequestWidth", "setRequestWidth", "tagId", "", "getTagId", "()[I", "setTagId", "([I)V", "useCache", "getUseCache", "setUseCache", "useUnFinishedCache", "getUseUnFinishedCache", "setUseUnFinishedCache", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bgfu
+public class bgfu
+  extends aqwt<bgft>
 {
-  private int jdField_a_of_type_Int;
-  @Nullable
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = URLDrawableHelper.TRANSPARENT;
-  @NotNull
-  private Bundle jdField_a_of_type_AndroidOsBundle = new Bundle();
-  @NotNull
-  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = (URLDrawable.URLDrawableListener)new URLDrawableHelper.Adapter();
-  private boolean jdField_a_of_type_Boolean = true;
-  @NotNull
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = true;
+  private final List<bgfw> a = new LinkedList();
   
-  public final int a()
+  public static bgft a()
   {
-    return this.jdField_a_of_type_Int;
+    bgft localbgft = (bgft)aqxe.a().a(695);
+    if (localbgft != null) {
+      return localbgft;
+    }
+    return new bgft();
+  }
+  
+  private void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopGameCardConfigProcessor", 2, "[notifyListeners]:" + this.a.size());
+    }
+    ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
+    try
+    {
+      synchronized (this.a)
+      {
+        if (this.a.size() <= 0) {
+          break label162;
+        }
+        Iterator localIterator = this.a.iterator();
+        while (localIterator.hasNext())
+        {
+          bgfw localbgfw = (bgfw)localIterator.next();
+          try
+          {
+            localbgfw.a(paramInt);
+          }
+          catch (Throwable localThrowable2) {}
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopGameCardConfigProcessor", 1, localThrowable2, new Object[0]);
+          }
+        }
+      }
+      this.a.clear();
+    }
+    catch (Throwable localThrowable1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopGameCardConfigProcessor", 1, localThrowable1, new Object[0]);
+      }
+      return;
+    }
+    label162:
+  }
+  
+  private void b(bgft parambgft)
+  {
+    if (parambgft == null) {
+      return;
+    }
+    new bgfz((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(new bggc(parambgft.a(), parambgft.b()), new bgfv(this));
+  }
+  
+  @NonNull
+  public bgft a(int paramInt)
+  {
+    QLog.d("TroopGameCardConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new bgft();
   }
   
   @Nullable
-  public final Drawable a()
+  public bgft a(aqxa[] paramArrayOfaqxa)
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      paramArrayOfaqxa = bgft.a(paramArrayOfaqxa[0].a);
+      b(paramArrayOfaqxa);
+      return paramArrayOfaqxa;
+    }
+    return null;
   }
   
-  @NotNull
-  public final Bundle a()
+  public void a(bgft parambgft) {}
+  
+  public void a(bgfw parambgfw)
   {
-    return this.jdField_a_of_type_AndroidOsBundle;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopGameCardConfigProcessor", 2, "[getConfig]");
+    }
+    synchronized (this.a)
+    {
+      if (this.a.size() > 0)
+      {
+        this.a.add(parambgfw);
+        return;
+      }
+      this.a.add(parambgfw);
+      aqxe.a().a(new int[] { 695 });
+      ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
+      ThreadManager.getSubThreadHandler().postAtTime(new TroopGameCardConfigProcessor.2(this), this, SystemClock.uptimeMillis() + 10000L);
+      return;
+    }
   }
   
-  @NotNull
-  public final URLDrawable.URLDrawableListener a()
+  public Class<bgft> clazz()
   {
-    return this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener;
+    return bgft.class;
   }
   
-  public final void a(int paramInt)
+  public boolean isNeedCompressed()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return true;
   }
   
-  public final void a(@Nullable Drawable paramDrawable)
+  public boolean isNeedStoreLargeFile()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    return true;
   }
   
-  public final boolean a()
+  public boolean isNeedUpgradeReset()
   {
-    return this.jdField_a_of_type_Boolean;
+    return true;
   }
   
-  @NotNull
-  public final int[] a()
+  public int migrateOldVersion()
   {
-    return this.jdField_a_of_type_ArrayOfInt;
+    return 0;
   }
   
-  public final int b()
+  public void onReqFailed(int paramInt)
   {
-    return this.jdField_b_of_type_Int;
+    QLog.d("TroopGameCardConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
   }
   
-  public final void b(int paramInt)
+  public int type()
   {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public final boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public final int c()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public final void c(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public final boolean c()
-  {
-    return this.jdField_c_of_type_Boolean;
+    return 695;
   }
 }
 

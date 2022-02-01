@@ -1,188 +1,60 @@
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Process;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.tfs.AsyncTask;
-import com.tencent.mobileqq.minigame.manager.EngineChannel;
-import com.tencent.mobileqq.minigame.manager.EngineChannel.Receiver;
-import com.tencent.mobileqq.minigame.manager.InstalledEngine;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
 
-public class avsa
-  extends AsyncTask
-  implements EngineChannel.Receiver
+class avsa
+  implements BusinessObserver
 {
-  private int jdField_a_of_type_Int = 3;
-  private avrz jdField_a_of_type_Avrz;
-  private MiniAppInfo jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo;
-  private EngineChannel jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel;
-  private InstalledEngine jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine;
-  private int b;
+  avsa(avry paramavry, avsc paramavsc, String paramString) {}
   
-  public avsa(Context paramContext)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramContext);
-  }
-  
-  private void a(int paramInt, Bundle paramBundle)
-  {
-    paramBundle.putInt("baseLibType", this.jdField_a_of_type_Int);
-    paramBundle.putInt("enginePid", Process.myPid());
-    QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]installEngineRequestCount " + this.b);
-    if (this.b >= 2)
+    new Bundle();
+    paramBundle = paramBundle.getByteArray("data");
+    if (paramBundle == null)
     {
-      QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]GET_INSTALLED_ENGINE_LIST requestCount reaches max 2");
-      onTaskFailed(103, amtj.a(2131705928));
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel.send(paramInt, paramBundle);
-    } while (paramInt != 3);
-    this.b += 1;
-  }
-  
-  private void a(InstalledEngine paramInstalledEngine)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine == null)
-        {
-          QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]mEngine == null, loadEngineTask is reset?");
-          return;
-        }
-        long l = System.currentTimeMillis();
-        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]initEngine");
-        if (paramInstalledEngine != null) {
-          avsb.a().a(paramInstalledEngine);
-        }
-        if (!avsb.a().a())
-        {
-          QLog.e("MiniAppEngineLoadTask", 1, "[MiniEng]initEngine fail");
-          onTaskFailed();
-          continue;
-        }
-        QLog.e("MiniAppEngineLoadTask", 1, "[MiniEng]loadSo cost time " + (System.currentTimeMillis() - l));
-      }
-      finally {}
-      onTaskSucceed();
-    }
-  }
-  
-  private boolean a(InstalledEngine paramInstalledEngine, MiniAppInfo paramMiniAppInfo)
-  {
-    boolean bool = true;
-    if (paramInstalledEngine == null) {
-      bool = false;
-    }
-    while (paramMiniAppInfo != null) {
-      return bool;
-    }
-    return true;
-  }
-  
-  public void a(avrz paramavrz)
-  {
-    this.jdField_a_of_type_Avrz = paramavrz;
-  }
-  
-  public void a(EngineChannel paramEngineChannel)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel = paramEngineChannel;
-  }
-  
-  public void executeAsync()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqMinigameManagerEngineChannel == null)
-    {
-      onTaskFailed(1, amtj.a(2131705923));
+      this.jdField_a_of_type_Avsc.onGetKeyComplete(this.jdField_a_of_type_JavaLangString, false, -10002);
       return;
     }
-    EngineChannel localEngineChannel = new EngineChannel();
-    localEngineChannel.setName("AppEngine(" + Process.myPid() + ")");
-    localEngineChannel.setReceiver(this);
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("engineChannel", localEngineChannel);
-    a(1, localBundle);
-  }
-  
-  public void onReceiveData(int paramInt, Bundle paramBundle)
-  {
-    QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] onReceiveData what=" + paramInt);
-    if (paramBundle != null) {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-    }
-    if (paramInt == 51) {
-      if (paramBundle != null)
-      {
-        paramBundle = paramBundle.getParcelableArrayList("installedEngineList");
-        if (paramBundle != null)
-        {
-          paramInt = paramBundle.size();
-          QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] getInstalledEngineList success " + paramInt);
-          if (paramInt > 0)
-          {
-            paramBundle = (InstalledEngine)paramBundle.get(0);
-            if (a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo))
-            {
-              this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine = paramBundle;
-              a(paramBundle);
-            }
-          }
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        onTaskFailed(101, amtj.a(2131705925));
-        return;
-        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] no engine installed, send cmd WHAT_INSTALL_LATEST_ENGINE");
-        a(3, new Bundle());
-        return;
-        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] getInstalledEngineList miniAppEngineList is null");
-        onTaskFailed(102, amtj.a(2131705921));
-        return;
-        QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng] getInstalledEngineList data is null");
-        onTaskFailed(102, amtj.a(2131705920));
-        return;
-        if (paramInt == 52)
-        {
-          QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_BEGIN");
-          return;
-        }
-        if (paramInt != 53) {
-          break;
-        }
-      } while (paramBundle == null);
-      paramBundle = paramBundle.getString("engineInstallerMessage");
-      QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_PROCESS " + paramBundle);
-      return;
-    } while (paramInt != 54);
-    QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_FINISH");
-    a(1, new Bundle());
-  }
-  
-  public void reset()
-  {
+    FastAuthorize.AuthorizeResponse localAuthorizeResponse = new FastAuthorize.AuthorizeResponse();
     try
     {
-      QLog.i("MiniAppEngineLoadTask", 1, "[MiniEng]" + this + " reset ");
-      this.b = 0;
-      this.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo = null;
-      this.jdField_a_of_type_ComTencentMobileqqMinigameManagerInstalledEngine = null;
-      super.reset();
+      localAuthorizeResponse.mergeFrom(paramBundle);
+      if ((localAuthorizeResponse.ret.get().equals("0")) && (localAuthorizeResponse.apk_name.has()))
+      {
+        if (localAuthorizeResponse.access_token.has()) {
+          this.jdField_a_of_type_Avry.a.jdField_a_of_type_JavaLangString = localAuthorizeResponse.access_token.get();
+        }
+        if (localAuthorizeResponse.openid.has()) {
+          this.jdField_a_of_type_Avry.a.b = localAuthorizeResponse.openid.get();
+        }
+        if (localAuthorizeResponse.pay_token.has()) {
+          this.jdField_a_of_type_Avry.a.c = localAuthorizeResponse.pay_token.get();
+        }
+        this.jdField_a_of_type_Avry.a.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.jdField_a_of_type_Avsc.onGetKeyComplete(this.jdField_a_of_type_JavaLangString, true, 0);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      this.jdField_a_of_type_Avsc.onGetKeyComplete(this.jdField_a_of_type_JavaLangString, false, -10003);
+      paramBundle.printStackTrace();
       return;
     }
-    finally
+    QLog.e("XProxy", 2, "获取票据失败");
+    try
     {
-      localObject = finally;
-      throw localObject;
+      this.jdField_a_of_type_Avsc.onGetKeyComplete(this.jdField_a_of_type_JavaLangString, false, Integer.parseInt(localAuthorizeResponse.ret.get()));
+      return;
+    }
+    catch (NumberFormatException paramBundle)
+    {
+      this.jdField_a_of_type_Avsc.onGetKeyComplete(this.jdField_a_of_type_JavaLangString, false, 0);
+      QLog.e("XProxy", 2, "获取票据错误码不为int");
     }
   }
 }

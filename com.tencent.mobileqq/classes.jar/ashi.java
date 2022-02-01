@@ -1,36 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
 class ashi
-  implements asyx
+  implements URLDrawable.URLDrawableListener
 {
-  ashi(ashf paramashf) {}
+  ashi(ashe paramashe, String paramString) {}
   
-  public void a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
+    }
   }
   
-  public void a(int paramInt)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.a.a(2005);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 12, null, paramInt, null);
-    aszt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.j, this.a.jdField_g_of_type_Long, ashf.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.i, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, ashf.a(this.a), "", ashf.a(this.a), "sdcard full", null);
-    aszt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.k, this.a.jdField_g_of_type_Long, ashf.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.i, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, ashf.a(this.a), "", ashf.b(this.a), "sdcard full", null);
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url failed:" + this.jdField_a_of_type_JavaLangString);
+    }
   }
   
-  public void a(long paramLong1, long paramLong2) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.a.jdField_d_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
-      this.a.jdField_d_of_type_JavaLangString = paramString2;
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url down:" + this.jdField_a_of_type_JavaLangString);
     }
-    while (!this.a.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
-      return;
-    }
-    this.a.jdField_b_of_type_JavaLangString = paramString2;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramString2);
   }
 }
 

@@ -1,57 +1,95 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.IOException;
+import java.net.URLEncoder;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wdo
-  extends vqr
+  extends wdr
 {
-  private static final String jdField_a_of_type_JavaLangString = vpl.a("StorySvc.feed_comment_list_batch_775");
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private int c;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public wdo(List<String> paramList, boolean paramBoolean)
+  public wdo(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  private ErrorMessage a()
+  {
+    Object localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { QQStoryContext.a().a(), URLEncoder.encode(this.jdField_a_of_type_JavaLangString) });
+    long l = System.currentTimeMillis();
+    localObject = HttpUtil.openRequest(QQStoryContext.a().a(), (String)localObject, null, "GET", null, null, 5000, 5000);
+    if ((localObject != null) && (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200))
     {
-      this.c = i;
-      return;
+      localObject = HttpUtil.readHttpResponse((HttpResponse)localObject);
+      ykq.a("Q.qqstory.publish.upload.LinkRichObject", "http resp %s", localObject);
+      localObject = new JSONObject((String)localObject);
+      this.jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject).getString("ret"));
+      if (this.jdField_a_of_type_Int != 0) {
+        return new ErrorMessage(96000002, "server error code:" + this.jdField_a_of_type_Int);
+      }
     }
+    else
+    {
+      ykq.d("Q.qqstory.publish.upload.LinkRichObject", "");
+      if (localObject != null) {}
+      for (localObject = "http code:" + ((HttpResponse)localObject).getStatusLine();; localObject = "response is null") {
+        return new ErrorMessage(96000003, (String)localObject);
+      }
+    }
+    String str = ((JSONObject)localObject).getString("title");
+    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.b))) {
+      this.b = str;
+    }
+    str = ((JSONObject)localObject).getString("abstract");
+    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.c))) {
+      this.c = str;
+    }
+    localObject = ((JSONObject)localObject).getString("thumbUrl");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(this.d))) {
+      this.d = ((String)localObject);
+    }
+    ykq.d("Q.qqstory.publish.upload.LinkRichObject", "request take time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    return new ErrorMessage();
   }
   
-  public String a()
+  protected void a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBatchFeedComment localRspBatchFeedComment = new qqstory_service.RspBatchFeedComment();
     try
     {
-      localRspBatchFeedComment.mergeFrom(paramArrayOfByte);
-      return new wdp(localRspBatchFeedComment);
+      if (a().isSuccess())
+      {
+        b();
+        notifyResult(new ErrorMessage());
+        return;
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (JSONException localJSONException)
+    {
+      ykq.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localJSONException);
+      new ErrorMessage(96000001, localJSONException.getMessage());
+      b();
+      notifyResult(new ErrorMessage());
+      return;
+    }
+    catch (IOException localIOException)
     {
       for (;;)
       {
-        paramArrayOfByte.printStackTrace();
+        ykq.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localIOException);
+        new ErrorMessage(96000000, localIOException.getMessage());
       }
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqBatchFeedComment localReqBatchFeedComment = new qqstory_service.ReqBatchFeedComment();
-    List localList = a(this.jdField_a_of_type_JavaUtilList);
-    localReqBatchFeedComment.feed_id_list.set(localList);
-    localReqBatchFeedComment.source.set(this.c);
-    return localReqBatchFeedComment.toByteArray();
   }
 }
 

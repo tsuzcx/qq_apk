@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
-import azjm;
+import bapu;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -70,7 +70,7 @@ public class FileVideoOnlinePlayerFragment
   
   public int getContentLayoutId()
   {
-    return 2131560792;
+    return 2131560852;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -102,7 +102,7 @@ public class FileVideoOnlinePlayerFragment
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131376680);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131376948);
     Object localObject = getActivity().getIntent();
     String str1 = ((Intent)localObject).getStringExtra("fileid");
     String str2 = ((Intent)localObject).getStringExtra("url");
@@ -116,7 +116,7 @@ public class FileVideoOnlinePlayerFragment
     localVideoPlayParam.mIsLocal = false;
     localVideoPlayParam.mIsLoop = false;
     localVideoPlayParam.mSceneId = 109;
-    this.a = ((QQVideoPlayView)azjm.a(getActivity(), 109L, localVideoPlayParam, null));
+    this.a = ((QQVideoPlayView)bapu.a(getActivity(), 109L, localVideoPlayParam, null));
     localRelativeLayout.addView(this.a, -1, -1);
     this.a.play();
     super.onViewCreated(paramView, paramBundle);
@@ -124,7 +124,7 @@ public class FileVideoOnlinePlayerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileVideoOnlinePlayerFragment
  * JD-Core Version:    0.7.0.1
  */

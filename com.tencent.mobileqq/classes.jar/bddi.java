@@ -1,38 +1,26 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.qipc.QIPCModule;
 
-class bddi
-  extends bddc
+public class bddi
 {
-  bddi(bddh parambddh) {}
+  private static volatile bddi jdField_a_of_type_Bddi;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new bddj(this, "Module_VideoPlayIPCServer");
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public static bddi a()
   {
-    Object localObject = paramBundle.getString("KEY_SESSION_UIN");
-    int i = paramBundle.getInt("KEY_SESSION_TYPE");
-    int j = paramBundle.getInt("KEY_FROM", -1);
-    String str2 = paramBundle.getString("jump_url", "");
-    String str1 = paramBundle.getString("error_msg", "");
-    int k = paramBundle.getInt("error_code", 0);
-    if ((paramBoolean) && (!TextUtils.isEmpty(str2)))
+    if (jdField_a_of_type_Bddi == null) {}
+    try
     {
-      bddh.a(this.a, str2, i, (String)localObject, j);
-      return;
+      if (jdField_a_of_type_Bddi == null) {
+        jdField_a_of_type_Bddi = new bddi();
+      }
+      return jdField_a_of_type_Bddi;
     }
-    if ((k == 10004) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)))
-    {
-      bddh.a(this.a, this.a.a.getApplication(), str2, i, (String)localObject, j, str1);
-      return;
-    }
-    localObject = this.a.a.getApplication();
-    paramBundle = str1;
-    if (TextUtils.isEmpty(str1)) {
-      paramBundle = ((Context)localObject).getString(2131692889);
-    }
-    QQToast.a((Context)localObject, 1, paramBundle, 0).a();
+    finally {}
+  }
+  
+  public QIPCModule a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
 }
 

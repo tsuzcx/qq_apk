@@ -1,55 +1,23 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x87.SubMsgType0x87.MsgBody;
+import android.content.Context;
 
-public class acbp
-  implements abzb
+public final class acbp
 {
-  private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgType0x210 paramMsgType0x210)
-  {
-    SubMsgType0x87.MsgBody localMsgBody = new SubMsgType0x87.MsgBody();
-    for (;;)
-    {
-      try
-      {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        if (localMsgBody.uint64_friend_msg_type_flag.has())
-        {
-          if (localMsgBody.uint64_friend_msg_type_flag.get() != 1L) {
-            break label100;
-          }
-          i = 1;
-          if (i != 0) {
-            paramMessageHandler.a().a(2);
-          }
-        }
-        if (localMsgBody.rpt_msg_msg_notify.has()) {
-          aidr.a(paramQQAppInterface, localMsgBody);
-        }
-        return;
-      }
-      catch (Throwable paramQQAppInterface)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PortalManager", 2, "", paramQQAppInterface);
-        }
-        throw new RuntimeException(paramQQAppInterface);
-      }
-      label100:
-      int i = 0;
-    }
-  }
+  public int a = -2147483648;
+  public int b = -2147483648;
+  public int c = -2147483648;
+  public int d = -2147483648;
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public acbp(Context paramContext, int paramInt1, int paramInt2)
   {
-    a(paramabxc.a(), paramabxc.a().getMsgHandler(), paramMsgType0x210);
-    return null;
+    if ((paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      acho.d("GdtBannerViewWithLetterStyle", "constructor");
+      return;
+    }
+    this.a = Double.valueOf(0.02892561983471075D * paramInt1).intValue();
+    this.b = Double.valueOf(0.02666666666666667D * paramInt2).intValue();
+    this.c = Double.valueOf(0.06666666666666667D * paramInt2).intValue();
+    this.d = Double.valueOf(0.16D * paramInt2).intValue();
   }
 }
 

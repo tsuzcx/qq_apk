@@ -1,43 +1,7 @@
-public class sgl
-{
-  public static String a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int j = 1;
-    if (paramInt2 == 1300080)
-    {
-      paramInt3 = 1;
-      if (paramInt1 == 202)
-      {
-        i = j;
-        if (paramInt2 == 108) {}
-      }
-      else
-      {
-        if (paramInt2 != 1300062) {
-          break label87;
-        }
-      }
-    }
-    label87:
-    for (int i = j;; i = 0)
-    {
-      if (i == 0) {
-        break label92;
-      }
-      return amtj.a(2131717583) + " (" + paramInt1 + "-" + paramInt2 + ")";
-      paramInt3 = 0;
-      break;
-    }
-    label92:
-    if (paramInt1 == 4000) {
-      return amtj.a(2131715250) + paramInt1 + "-" + paramInt2 + ")";
-    }
-    if (paramInt3 != 0) {
-      return amtj.a(2131715181) + paramInt1 + "-" + paramInt2 + ")";
-    }
-    return amtj.a(2131715207) + paramInt1 + "-" + paramInt2 + ")";
-  }
-}
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$Companion;", "", "()V", "COLOR_EXPAND_BANNER_NAME_TEXT", "", "COLOR_SMALL_BANNER_NAME_TEXT", "COLUMN_ICON_ROUND_CORNER_DP", "", "EXPAND_AINM_DURATION_MS", "", "EXPAND_BANNER_COLUMN_ICON_SIZE_DP", "EXPAND_BANNER_COLUMN_MARGIN_LEFT_DP", "EXPAND_BG_ANIM_DURATION_MS", "EXPANND_BANNER_HEIGHT_DP", "LIGHT_LINE_LOTTIE_URL", "", "PAGE_COLUMN_DETAIL", "PAGE_COLUMN_PLAY", "SMALL_BANNER_COLUMN_MARGIN_LEFT_DP", "SMALL_BANNER_HEIGHT_DP", "TAG", "TEXT_TRANSLATE_ANIM_DURATION_MS", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sgl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,40 +1,148 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.hippy.qq.view.tkd.image.HippyTKDGifImageView;
-import com.tencent.hippy.qq.view.tkd.image.HippyTKDImageView;
-import com.tencent.hippy.qq.view.tkd.listview.HippyTKDListView;
-import com.tencent.hippy.qq.view.tkd.text.HippyTKDTextView;
-import com.tencent.hippy.qq.view.tkd.view.HippyTKDViewGroup;
-import com.tencent.mtt.hippy.common.HippyMap;
-import com.tencent.mtt.hippy.uimanager.HippyCustomViewCreator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class tss
-  implements HippyCustomViewCreator
+class tss
 {
-  public View createCustomView(String paramString, Context paramContext, HippyMap paramHippyMap)
+  private final int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final Map<Character, Integer> jdField_a_of_type_JavaUtilMap;
+  private final char[] jdField_a_of_type_ArrayOfChar;
+  
+  tss(String paramString)
   {
-    if (TextUtils.equals("ListView", paramString)) {
-      return new HippyTKDListView(paramContext);
+    if (paramString.contains(Character.toString('\000'))) {
+      throw new IllegalArgumentException("You cannot include TickerUtils.EMPTY_CHAR in the character list.");
     }
-    if (TextUtils.equals("Text", paramString)) {
-      return new HippyTKDTextView(paramContext);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    paramString = paramString.toCharArray();
+    int k = paramString.length;
+    this.jdField_a_of_type_Int = k;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap(k);
+    int i = 0;
+    while (i < k)
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
+      i += 1;
     }
-    if (TextUtils.equals("View", paramString)) {
-      return new HippyTKDViewGroup(paramContext);
+    this.jdField_a_of_type_ArrayOfChar = new char[k * 2 + 1];
+    this.jdField_a_of_type_ArrayOfChar[0] = '\000';
+    i = j;
+    while (i < k)
+    {
+      this.jdField_a_of_type_ArrayOfChar[(i + 1)] = paramString[i];
+      this.jdField_a_of_type_ArrayOfChar[(k + 1 + i)] = paramString[i];
+      i += 1;
     }
-    if (TextUtils.equals("Image", paramString)) {
-      return new HippyTKDImageView(paramContext);
+  }
+  
+  private int a(char paramChar)
+  {
+    if (paramChar == 0) {
+      return 0;
     }
-    if (TextUtils.equals("TKDGifImageView", paramString)) {
-      return new HippyTKDGifImageView(paramContext);
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Character.valueOf(paramChar))) {
+      return ((Integer)this.jdField_a_of_type_JavaUtilMap.get(Character.valueOf(paramChar))).intValue() + 1;
     }
-    return null;
+    return -1;
+  }
+  
+  String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  Set<Character> a()
+  {
+    return this.jdField_a_of_type_JavaUtilMap.keySet();
+  }
+  
+  tst a(char paramChar1, char paramChar2, int paramInt)
+  {
+    int j = a(paramChar1);
+    int k = a(paramChar2);
+    if ((j < 0) || (k < 0)) {
+      return null;
+    }
+    int i;
+    switch (paramInt)
+    {
+    default: 
+      i = j;
+      paramInt = k;
+    }
+    for (;;)
+    {
+      return new tst(this, i, paramInt);
+      if (paramChar2 == 0)
+      {
+        paramInt = this.jdField_a_of_type_ArrayOfChar.length;
+        i = j;
+      }
+      else
+      {
+        paramInt = k;
+        i = j;
+        if (k < j)
+        {
+          paramInt = k + this.jdField_a_of_type_Int;
+          i = j;
+          continue;
+          paramInt = k;
+          i = j;
+          if (j < k)
+          {
+            i = j + this.jdField_a_of_type_Int;
+            paramInt = k;
+            continue;
+            paramInt = k;
+            i = j;
+            if (paramChar1 != 0)
+            {
+              paramInt = k;
+              i = j;
+              if (paramChar2 != 0) {
+                if (k < j)
+                {
+                  paramInt = k;
+                  i = j;
+                  if (this.jdField_a_of_type_Int - j + k < j - k)
+                  {
+                    paramInt = k + this.jdField_a_of_type_Int;
+                    i = j;
+                  }
+                }
+                else
+                {
+                  paramInt = k;
+                  i = j;
+                  if (j < k)
+                  {
+                    paramInt = k;
+                    i = j;
+                    if (this.jdField_a_of_type_Int - k + j < k - j)
+                    {
+                      i = j + this.jdField_a_of_type_Int;
+                      paramInt = k;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  char[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfChar;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tss
  * JD-Core Version:    0.7.0.1
  */

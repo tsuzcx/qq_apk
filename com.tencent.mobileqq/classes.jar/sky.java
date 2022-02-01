@@ -1,52 +1,59 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-class sky
-  implements View.OnClickListener
+public class sky
+  implements sih
 {
-  sky(skv paramskv, Activity paramActivity) {}
+  private sky(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    int i;
-    Bundle localBundle;
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    this.a.c(true);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    if (VideoFeedsRecommendFragment.a(this.a) != null) {
+      VideoFeedsRecommendFragment.a(this.a).a.e(paramBoolean);
+    }
+    Object localObject;
+    if (paramBoolean)
     {
-      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to config feeds");
-      i = bkwm.f();
-      localBundle = new Bundle();
-      if ((paramView instanceof ReadInJoyColorBandEntranceButton))
+      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
+      if (!VideoFeedsRecommendFragment.a(this.a))
       {
-        localObject = ((ReadInJoyColorBandEntranceButton)paramView).a();
-        if (!(localObject instanceof Parcelable)) {
-          break label93;
+        localObject = VideoFeedsRecommendFragment.a(this.a);
+        if (paramBoolean) {
+          break label174;
         }
-        localBundle.putParcelable("daily_bottom_entry_data", (Parcelable)localObject);
+        bool1 = true;
+        label75:
+        ((VideoFeedsRecyclerView)localObject).setScrollable(bool1);
+        if ((!paramBoolean) && (VideoFeedsRecommendFragment.b(this.a)))
+        {
+          VideoFeedsRecommendFragment.a(this.a).a();
+          VideoFeedsRecommendFragment.a(this.a, false);
+        }
+      }
+      localObject = this.a;
+      if (paramBoolean) {
+        break label179;
       }
     }
-    label93:
-    while ((i != 3) && (i != 4))
+    label174:
+    label179:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      localBundle.putInt("daily_bottom_triger_src", 1);
-      smd.a(this.jdField_a_of_type_AndroidAppActivity, localBundle);
-      this.jdField_a_of_type_Skv.b();
-      EventCollector.getInstance().onViewClicked(paramView);
+      ((VideoFeedsRecommendFragment)localObject).b(bool1);
+      if (VideoFeedsRecommendFragment.a(this.a) != null) {
+        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
+      }
       return;
-    }
-    RecommendFeedsDiandianEntranceManager.EntranceIconInfo localEntranceIconInfo = new RecommendFeedsDiandianEntranceManager.EntranceIconInfo();
-    if (i == 4) {}
-    for (Object localObject = "https://buluo.qq.com/mobile/v2/buluoindex.html?_wv=16778243&_bid=128&_wwv=1&_wvSb=0&_nav_txtclr=00000&from=kdybrk&target=hot&_nav_titleclr=000000&_wvNlb=0xffffff";; localObject = "mqqapi://readinjoy/open?src_type=internal&ispush=1&target=2&readinjoyNotDecodeUrl=1&version=1&channelid=70&channelname=看点关注&channelType=0&changeChannelOrder=true&moveChannelFromSource=0")
-    {
-      localEntranceIconInfo.c = ((String)localObject);
-      localBundle.putParcelable("daily_bottom_entry_data", localEntranceIconInfo);
+      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
       break;
+      bool1 = false;
+      break label75;
     }
   }
 }

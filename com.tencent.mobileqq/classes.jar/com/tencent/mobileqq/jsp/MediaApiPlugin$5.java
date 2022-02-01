@@ -40,7 +40,7 @@ class MediaApiPlugin$5
     //   50: iload_1
     //   51: invokevirtual 60	java/lang/String:substring	(I)Ljava/lang/String;
     //   54: iconst_0
-    //   55: invokestatic 66	bfuc:decode	(Ljava/lang/String;I)[B
+    //   55: invokestatic 66	bhcu:decode	(Ljava/lang/String;I)[B
     //   58: astore_2
     //   59: aload_2
     //   60: ifnonnull +82 -> 142

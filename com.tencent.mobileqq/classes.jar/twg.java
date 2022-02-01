@@ -1,30 +1,22 @@
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class twg
+  extends twr
 {
-  public SparseArray<twf> a = new SparseArray();
-  
-  public twg()
+  public twg(BridgeModule paramBridgeModule)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExposureSupplementUtil", 2, "create ExposureSupplementUtilManager");
-    }
+    super(paramBridgeModule);
   }
   
-  public twf a(int paramInt)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    return (twf)this.a.get(paramInt);
-  }
-  
-  public void a(int paramInt, twf paramtwf)
-  {
-    this.a.put(paramInt, paramtwf);
+    BridgeModule.access$400(this.a, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     twg
  * JD-Core Version:    0.7.0.1
  */

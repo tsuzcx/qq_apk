@@ -1,31 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-class yoo
-  extends JobSegment<Integer, xnm>
+public abstract interface yoo
 {
-  private xnl a;
+  public abstract void a();
   
-  public yoo(@NonNull xnl paramxnl)
-  {
-    this.a = paramxnl;
-  }
-  
-  protected void a(JobContext paramJobContext, Integer paramInteger)
-  {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((xnm)localObject).a.size() > 0) || (((xnm)localObject).b))
-    {
-      xvv.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
-      return;
-    }
-    localObject = new wfc();
-    ((wfc)localObject).a = this.a.a();
-    vqn.a().a((vqr)localObject, new yop(this, paramJobContext, paramInteger));
-  }
+  public abstract void a(TroopBarPOI paramTroopBarPOI);
 }
 
 

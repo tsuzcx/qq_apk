@@ -1,18 +1,25 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.TextView;
+import java.io.File;
+import java.io.FileFilter;
 
-class apml
-  implements apmf
+final class apml
+  implements FileFilter
 {
-  apml(apmh paramapmh) {}
-  
-  public void a(View paramView)
+  public boolean accept(File paramFile)
   {
-    apmh.a(this.a, apmh.a(this.a).inflate());
-    apmh.a(this.a).setOnClickListener(new apmm(this));
-    ((TextView)apmh.a(this.a).findViewById(2131365573)).setOnClickListener(new apmn(this));
-    bcef.b(null, "dc00898", "", "", "0X800A8AD", "0X800A8AD", 0, 0, "", "", "", "");
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
+    {
+      int i = 3;
+      while (i < paramFile.length())
+      {
+        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
+    }
+    return false;
   }
 }
 

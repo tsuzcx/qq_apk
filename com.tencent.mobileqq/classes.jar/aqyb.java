@@ -1,138 +1,153 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.ApplicationInfo;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.startup.step.AVSoUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONObject;
 
-public abstract class aqyb
-  extends aqxl
+public class aqyb
+  extends aqwt<aqyc>
 {
-  public aqyb(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    super(paramString, paramQQAppInterface);
-  }
+  private static volatile aqyc a;
   
-  public static boolean a(Context paramContext, Boolean paramBoolean)
+  public static aqyc a()
   {
-    return (lld.f() > 2) || ((a(paramContext, "traeimp-armeabi")) && (a(paramContext, "TcVpxDec-armeabi")) && (a(paramContext, "TcVpxEnc-armeabi")));
-  }
-  
-  @TargetApi(9)
-  public static boolean a(Context paramContext, String paramString)
-  {
-    if (Build.VERSION.SDK_INT >= 9) {}
-    for (paramContext = paramContext.getApplicationInfo().nativeLibraryDir + "/";; paramContext = paramContext.getApplicationInfo().dataDir + "/lib/")
+    try
     {
-      paramContext = new File(paramContext + AVSoUtils.a(paramString));
-      File localFile = new File(AVSoUtils.b() + AVSoUtils.a(paramString));
-      if ((!paramContext.exists()) && (!localFile.exists())) {
-        break;
+      if (a == null) {
+        a = (aqyc)aqxe.a().a(672);
       }
-      return true;
+      aqyc localaqyc = a;
+      return localaqyc;
     }
+    finally {}
+  }
+  
+  public DisplayMetrics a()
+  {
+    return BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
+  }
+  
+  @NonNull
+  public aqyc a(int paramInt)
+  {
+    return b();
+  }
+  
+  @Nullable
+  public aqyc a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length == 0))
+    {
+      paramArrayOfaqxa = b();
+      return paramArrayOfaqxa;
+    }
+    String str = paramArrayOfaqxa[0].a;
     if (QLog.isColorLevel()) {
-      QLog.e("QavSoDownloadHandlerBase", 2, "fail to find so:" + paramString);
+      QLog.d("AIOPicThumbSizeProcessor", 2, "onParsed, content:" + str);
     }
+    aqyc localaqyc = new aqyc();
+    for (;;)
+    {
+      JSONObject localJSONObject;
+      try
+      {
+        localJSONObject = new JSONObject(str);
+        localaqyc.jdField_a_of_type_Boolean = localJSONObject.optBoolean("useNewConfig", true);
+        paramArrayOfaqxa = localaqyc;
+        if (!localaqyc.jdField_a_of_type_Boolean) {
+          break;
+        }
+        localaqyc.jdField_b_of_type_Double = localJSONObject.optDouble("minRatio", 0.0D);
+        localaqyc.jdField_a_of_type_Double = localJSONObject.optDouble("maxRatio", 0.0D);
+        localaqyc.jdField_a_of_type_Int = localJSONObject.optInt("textOtherSpace", 128);
+        localaqyc.jdField_b_of_type_Int = localJSONObject.optInt("picSizeLimit", 650);
+        if ((localaqyc.jdField_a_of_type_Double > 0.0D) && (localaqyc.jdField_b_of_type_Double > 0.0D) && (localaqyc.jdField_a_of_type_Int > 0))
+        {
+          paramArrayOfaqxa = a();
+          int i = (int)(Math.min(paramArrayOfaqxa.widthPixels, paramArrayOfaqxa.heightPixels) / paramArrayOfaqxa.density - localaqyc.jdField_a_of_type_Int);
+          localaqyc.d = ((int)(i * localaqyc.jdField_b_of_type_Double));
+          localaqyc.c = ((int)(i * localaqyc.jdField_a_of_type_Double));
+          localaqyc.f = localJSONObject.optInt("aioImageMinSizeUnderLimit", 45);
+          localaqyc.e = localJSONObject.optInt("aioImageMaxSizeUnderLimit", 135);
+          localaqyc.h = localJSONObject.optInt("aioImageDynamicMinSize", 45);
+          localaqyc.g = localJSONObject.optInt("aioImageDynamicMaxSize", 135);
+          return localaqyc;
+        }
+      }
+      catch (Exception paramArrayOfaqxa)
+      {
+        QLog.d("AIOPicThumbSizeProcessor", 1, "onParsed error, content:" + str);
+        return b();
+      }
+      localaqyc.d = localJSONObject.optInt("aioImageMinSize", 45);
+      localaqyc.c = localJSONObject.optInt("aioImageMaxSize", 135);
+    }
+  }
+  
+  public void a(aqyc paramaqyc)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOPicThumbSizeProcessor", 2, "onUpdate");
+      }
+      a = (aqyc)aqxe.a().a(672);
+      return;
+    }
+    finally {}
+  }
+  
+  public aqyc b()
+  {
+    aqyc localaqyc = new aqyc();
+    localaqyc.jdField_b_of_type_Int = 650;
+    localaqyc.d = 45;
+    localaqyc.c = 135;
+    localaqyc.f = 45;
+    localaqyc.e = 135;
+    localaqyc.h = 45;
+    localaqyc.g = 135;
+    return localaqyc;
+  }
+  
+  public Class<aqyc> clazz()
+  {
+    return aqyc.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
     return false;
   }
   
-  public int a()
+  public int migrateOldVersion()
   {
-    return 10048;
+    return 0;
   }
   
-  public String a()
-  {
-    return "qavDownloadSoDuration";
-  }
-  
-  public void a(XmlData paramXmlData)
+  public void onReqFailed(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QavSoDownloadHandlerBase", 2, "func doOnServerResp begins, respData" + paramXmlData);
-    }
-    if ((paramXmlData == null) || (!(paramXmlData instanceof QavSoData)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavSoDownloadHandlerBase", 2, "func doOnServerResp ends. respData is not QavSoData");
-      }
-      super.a(paramXmlData);
-      return;
-    }
-    super.a(paramXmlData);
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject1 = a();
-    Object localObject2;
-    SharedPreferences localSharedPreferences;
-    String str2;
-    if (localObject1 != null)
-    {
-      localObject2 = "QAVSOMD5__" + ((XmlData)localObject1).getSharedPreferencesName();
-      localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
-      str2 = localSharedPreferences.getString((String)localObject2, null);
-      String str1 = MD5Utils.encodeFileHexStr(paramString);
-      if ((TextUtils.isEmpty(((XmlData)localObject1).MD5)) || (!((XmlData)localObject1).MD5.equalsIgnoreCase(str1)))
-      {
-        localObject2 = new StringBuilder().append("download success but check md5 failed. config zip file md5 = ");
-        if (!TextUtils.isEmpty(((XmlData)localObject1).MD5)) {}
-        for (localObject1 = ((XmlData)localObject1).MD5;; localObject1 = "null")
-        {
-          QLog.e("QavSoDownloadHandlerBase", 1, (String)localObject1 + ", realZipFileMd5 = " + str1);
-          paramString = new File(paramString);
-          if (paramString.exists()) {
-            paramString.delete();
-          }
-          return;
-        }
-      }
-      QLog.d("QavSoDownloadHandlerBase", 1, "download success: " + paramString + "|" + str2 + "|" + ((XmlData)localObject1).MD5 + "|" + localObject1);
-      if (((TextUtils.isEmpty(((XmlData)localObject1).MD5)) || (((XmlData)localObject1).MD5.equalsIgnoreCase(str2))) && (a(this.a.getApp().getApplicationContext(), Boolean.valueOf(true)))) {}
-    }
-    try
-    {
-      FileUtils.uncompressZip(paramString, AVSoUtils.b(), false);
-      localSharedPreferences.edit().putString((String)localObject2, ((XmlData)localObject1).MD5).commit();
-      QLog.d("QavSoDownloadHandlerBase", 1, "uncompressZip success: " + paramString + "|" + str2 + "|" + ((XmlData)localObject1).MD5 + "|" + localObject1);
-      super.a(paramString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        QLog.e("QavSoDownloadHandlerBase", 1, "uncompressZip qavso failed.");
-        File localFile = new File(paramString);
-        if (localFile.exists()) {
-          localFile.delete();
-        }
-      }
+      QLog.d("AIOPicThumbSizeProcessor", 2, "onReqFailed");
     }
   }
   
-  public boolean a()
+  public int type()
   {
-    return true;
+    return 672;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyb
  * JD-Core Version:    0.7.0.1
  */

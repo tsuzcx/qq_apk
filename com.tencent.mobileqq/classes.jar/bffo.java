@@ -1,16 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import android.text.TextUtils.EllipsizeCallback;
+import android.widget.TextView;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.text.QQText;
 
-public class bffo
-  implements ValueAnimator.AnimatorUpdateListener
+final class bffo
+  implements TextUtils.EllipsizeCallback
 {
-  public bffo(RedDotAnimateView paramRedDotAnimateView) {}
+  bffo(bffp parambffp, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void ellipsized(int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_Float = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.jdField_a_of_type_Int / 2.0F);
-    this.a.invalidate();
+    if (paramInt1 == paramInt2)
+    {
+      this.jdField_a_of_type_Bffp.c.setText(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
+    this.jdField_a_of_type_Bffp.c.setText(new QQText(HttpUtil.unEscape(HttpUtil.removeHtmlTags(str + "...")), 3, 14));
   }
 }
 

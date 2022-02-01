@@ -1,20 +1,17 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.URLDrawable.DownloadListener;
 
 class bfsk
-  implements View.OnClickListener
+  implements URLDrawable.DownloadListener
 {
-  bfsk(bfse parambfse, Context paramContext, Dialog paramDialog, QQAppInterface paramQQAppInterface) {}
+  bfsk(bfsh parambfsh) {}
   
-  public void onClick(View paramView)
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
   {
-    bfse.b(this.jdField_a_of_type_Bfse, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidAppDialog);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B0C8", "0X800B0C8", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    bfsh.a(this.a);
   }
 }
 

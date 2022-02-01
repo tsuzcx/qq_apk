@@ -1,32 +1,23 @@
 package com.tencent.avgame.ui;
 
-import android.text.TextUtils;
-import com.tencent.avgame.app.AVGameAppInterface;
+import bhdj;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import ngd;
+import noj;
 
-class AVGameActivity$6
+public class AVGameActivity$6
   implements Runnable
 {
-  AVGameActivity$6(AVGameActivity paramAVGameActivity, int paramInt) {}
+  AVGameActivity$6(AVGameActivity paramAVGameActivity, String paramString) {}
   
   public void run()
   {
-    QLog.i("AVGameActivity", 1, "onEnterRoom run mGameExited:" + AVGameActivity.a(this.this$0) + " retCode:" + this.a + " mRoomId:" + AVGameActivity.a(this.this$0));
-    if (AVGameActivity.a(this.this$0)) {}
-    do
-    {
-      do
-      {
-        return;
-        if (this.a != 0) {
-          break;
-        }
-      } while ((TextUtils.isEmpty(AVGameActivity.a(this.this$0))) || (AVGameActivity.a(this.this$0) == null));
-      AVGameActivity.a(this.this$0).a().a(1, AVGameActivity.a(this.this$0));
+    if (this.this$0.isFinishing()) {
       return;
-    } while ((this.a == 5) || (this.a == 6));
-    AVGameActivity.a(this.this$0, 2, this.a);
+    }
+    String str = this.this$0.getString(2131690290);
+    QLog.d("AVGameActivity", 2, "showDialogTip content:" + this.a);
+    bhdj.a(this.this$0, 230, null, this.a, str, str, new noj(this), null).show();
   }
 }
 

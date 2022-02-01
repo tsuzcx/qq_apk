@@ -1,6 +1,19 @@
-public abstract interface amdy
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class amdy
+  implements View.OnClickListener
 {
-  public abstract void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  public amdy(SessionClearFragment paramSessionClearFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    SessionClearFragment.a(this.a).finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

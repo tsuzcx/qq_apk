@@ -1,72 +1,21 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adxr
+  implements View.OnClickListener
 {
-  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
-  {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(paramActivity, paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramActivity.startActivityForResult(localIntent, paramInt);
-  }
+  public adxr(FontSettingActivity paramFontSettingActivity) {}
   
-  public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  public void onClick(View paramView)
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
+    if (FontSettingManager.setCustomDensity(this.a, FontSettingActivity.a(this.a), true)) {
+      FontSettingManager.killProcess();
     }
-    localIntent.setClass(paramContext, paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
-  {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(paramContext, paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
-  }
-  
-  public static void a(Context paramContext, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
-  {
-    a(paramContext, null, paramClass, paramClass1);
-  }
-  
-  public static void a(Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
-  {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(BaseApplicationImpl.getApplication(), paramClass);
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    BaseApplicationImpl.getApplication().startActivity(localIntent);
-  }
-  
-  public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
-  {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(paramFragment.getActivity(), paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramFragment.startActivityForResult(localIntent, paramInt);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

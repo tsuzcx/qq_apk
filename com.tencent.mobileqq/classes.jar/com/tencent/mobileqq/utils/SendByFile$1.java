@@ -2,17 +2,17 @@ package com.tencent.mobileqq.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
-import bfyu;
+import bhhm;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class SendByFile$1
   implements Runnable
 {
-  public SendByFile$1(bfyu parambfyu, Context paramContext, String paramString) {}
+  public SendByFile$1(bhhm parambhhm, Context paramContext, String paramString) {}
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299076));
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299080));
   }
 }
 

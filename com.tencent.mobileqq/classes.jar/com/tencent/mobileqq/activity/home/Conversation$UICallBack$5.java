@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajdm;
-import bfwv;
+import ajza;
+import bhfn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class Conversation$UICallBack$5
   implements Runnable
 {
-  public Conversation$UICallBack$5(ajdm paramajdm) {}
+  public Conversation$UICallBack$5(ajza paramajza) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class Conversation$UICallBack$5
     do
     {
       return;
-      if (bfwv.a(this.a.a.a.getApp(), "com.tencent.tim"))
+      if (bhfn.a(this.a.a.a.getApp(), "com.tencent.tim"))
       {
         this.a.a.a(1134058, 0L, true);
         return;

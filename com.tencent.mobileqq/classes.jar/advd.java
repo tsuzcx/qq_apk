@@ -1,36 +1,35 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
 public class advd
-  implements CompoundButton.OnCheckedChangeListener
+  implements bkzq
 {
-  public advd(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public advd(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bkzi parambkzi) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = true;
-    if (!NetworkUtil.isNetworkAvailable(this.a))
+    switch (paramInt)
     {
-      QQToast.a(BaseApplication.getContext(), 1, 2131694109, 0).b(this.a.getTitleBarHeight());
-      FormSwitchItem localFormSwitchItem = this.a.j;
-      if (!paramBoolean) {
-        localFormSwitchItem.setChecked(bool);
-      }
     }
     for (;;)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      if ((this.jdField_a_of_type_Bkzi != null) && (this.jdField_a_of_type_Bkzi.isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.isFinishing()))
+      {
+        this.jdField_a_of_type_Bkzi.dismiss();
+        this.jdField_a_of_type_Bkzi.cancel();
+      }
       return;
-      bool = false;
-      break;
-      ((amov)this.a.app.getBusinessHandler(2)).g(paramBoolean);
+      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.b();
+      continue;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.uin;
+      Bundle localBundle = aaqo.a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
+      aaqo.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), "", "", paramView, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getCurrentAccountUin(), 22001, null, localBundle);
+      bhbu.a("Grp_Dis_set", "Dis_info", "clk_report", 0, 0, new String[] { DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), bhbu.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a) });
+      continue;
+      DiscussionInfoCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
     }
   }
 }

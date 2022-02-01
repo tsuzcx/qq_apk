@@ -1,27 +1,14 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import dov.com.qq.im.aeeditor.view.timebar.ScaleView;
+import android.content.Context;
+import cooperation.qzone.statistic.Singleton;
+import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
 
-public class bmov
-  implements ScaleGestureDetector.OnScaleGestureListener
+public final class bmov
+  extends Singleton<QzoneHuangzuanVipIconShow, Context>
 {
-  public bmov(ScaleView paramScaleView) {}
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  protected QzoneHuangzuanVipIconShow a(Context paramContext)
   {
-    this.a.a.a(paramScaleGestureDetector.getScaleFactor());
-    if (ScaleView.a(this.a) != null) {
-      ScaleView.a(this.a).a();
-    }
-    return true;
+    return new QzoneHuangzuanVipIconShow(paramContext);
   }
-  
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return true;
-  }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

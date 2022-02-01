@@ -1,32 +1,50 @@
-import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask$Transaction;", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask$ITransaction;", "task", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "(Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;)V", "recordTimeInMs", "", "Ljava/lang/Integer;", "commit", "", "key", "", "updateRecordTimeInMs", "timeInMs", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qxo
-  implements qxn
+public class qxo
+  extends MSFServlet
 {
-  private final RIJRewardTask jdField_a_of_type_ComTencentBizPubaccountReadinjoyRewardRIJRewardTask;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  
-  public qxo(@NotNull RIJRewardTask paramRIJRewardTask)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRewardRIJRewardTask = paramRIJRewardTask;
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+    for (;;)
+    {
+      urw.a(paramFromServiceMsg);
+      if (getAppRuntime() != null) {
+        qxn.a().a(paramFromServiceMsg.isSuccess(), paramIntent, paramFromServiceMsg, null);
+      }
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
   }
   
-  @NotNull
-  public qxn a(int paramInt)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRewardRIJRewardTask.a(paramInt);
-    this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt);
-    return (qxn)this;
-  }
-  
-  public void a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "key");
-    qzl.a(paramString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRewardRIJRewardTask);
+    if (paramIntent != null)
+    {
+      ToServiceMsg localToServiceMsg = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      urw.a(localToServiceMsg);
+      if (localToServiceMsg != null)
+      {
+        paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
+        paramPacket.putSendData(localToServiceMsg.getWupBuffer());
+        paramPacket.setTimeout(localToServiceMsg.getTimeout());
+        paramPacket.setAttributes(localToServiceMsg.getAttributes());
+        paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
+        paramPacket.autoResend = localToServiceMsg.isFastResendEnabled();
+        if (!localToServiceMsg.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
+    }
   }
 }
 

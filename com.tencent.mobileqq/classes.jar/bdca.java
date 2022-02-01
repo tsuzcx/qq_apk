@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.effect.engine.QEffectData;
-
-public class bdca
-  implements OnCompositionLoadedListener
+final class bdca
+  extends bdcd
 {
-  public bdca(QEffectLottieImageView paramQEffectLottieImageView) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public double a(int paramInt1, int paramInt2)
   {
-    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
-      QLog.e("QEffectLottieImageView", 1, "onCompositionLoaded: composition= " + paramLottieComposition);
-    }
-    if (paramLottieComposition == null) {
-      return;
-    }
-    if (QEffectLottieImageView.a(this.a))
+    double d2 = paramInt1 / (paramInt1 + paramInt2);
+    double d3 = paramInt2 / (paramInt1 + paramInt2);
+    double d1 = 0.0D;
+    if (paramInt1 > 0)
     {
-      QLog.e("QEffectLottieImageView", 1, "onCompositionLoaded: mIsStop " + QEffectLottieImageView.a(this.a));
-      return;
+      d1 = -d2;
+      d1 = 0.0D + Math.log(d2) * d1;
     }
-    this.a.cancelAnimation();
-    this.a.setComposition(paramLottieComposition);
-    this.a.setProgress(0.0F);
-    this.a.setRepeatCount(QEffectLottieImageView.a(this.a).repeat);
-    this.a.setVisibility(0);
-    this.a.playAnimation();
+    d2 = d1;
+    if (paramInt2 > 0) {
+      d2 = d1 + -d3 * Math.log(d3);
+    }
+    return d2 / Math.log(2.0D);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ark;
 
-import aowc;
+import apzg;
 
 public class ArkMediaPlayer$3
   implements Runnable
 {
-  public ArkMediaPlayer$3(aowc paramaowc) {}
+  public ArkMediaPlayer$3(apzg paramapzg) {}
   
   public void run()
   {
-    aowc.a(this.this$0, false);
+    apzg.a(this.this$0, false);
     if (this.this$0.Pause()) {
-      aowc.a(this.this$0, aowc.d(this.this$0));
+      apzg.a(this.this$0, apzg.d(this.this$0));
     }
   }
 }

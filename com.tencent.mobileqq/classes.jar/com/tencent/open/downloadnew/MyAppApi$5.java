@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import bias;
-import bicl;
+import bjlu;
+import bjnn;
 
 public class MyAppApi$5
   implements Runnable
 {
-  public MyAppApi$5(bicl parambicl, String paramString1, String paramString2) {}
+  public MyAppApi$5(bjnn parambjnn, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bias.a("202", bias.a(this.a, "NEWYYB"), this.b);
+    bjlu.a("202", bjlu.a(this.a, "NEWYYB"), this.b);
   }
 }
 

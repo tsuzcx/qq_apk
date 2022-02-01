@@ -1,16 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import android.view.View;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.15.1;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.15.2;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
 
 public class bnzb
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bofd
 {
-  public bnzb(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  public bnzb(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(bodv parambodv, boolean paramBoolean, int paramInt)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(this.a.c);
+    this.a.a.b();
+    if (paramBoolean)
+    {
+      ((View)parambodv).post(new AEEditorMultiCutEditFragment.15.1(this, parambodv));
+      if (AEEditorMultiCutEditFragment.a(this.a).a()) {
+        AEEditorMultiCutEditFragment.a(this.a).b();
+      }
+      return;
+    }
+    ((View)parambodv).post(new AEEditorMultiCutEditFragment.15.2(this));
   }
 }
 

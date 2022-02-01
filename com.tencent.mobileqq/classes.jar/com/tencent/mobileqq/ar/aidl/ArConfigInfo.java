@@ -5,8 +5,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
-import aocu;
-import aoey;
+import apfw;
+import apia;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.model.ArAwardInfo;
 import com.tencent.mobileqq.ar.model.ArFeatureInfo;
@@ -24,7 +24,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ArConfigInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ArConfigInfo> CREATOR = new aoey();
+  public static final Parcelable.Creator<ArConfigInfo> CREATOR = new apia();
   public static final String TAG = "ArConfigInfo";
   public static final int VERSION_700 = 10;
   public static final int VERSION_710 = 11;
@@ -480,7 +480,7 @@ public class ArConfigInfo
           str1 = ((XmlPullParser)localObject1).getName();
           if (str1.equalsIgnoreCase("Begin"))
           {
-            localArConfigInfo.aRBegin = aocu.a(((XmlPullParser)localObject1).nextText());
+            localArConfigInfo.aRBegin = apfw.a(((XmlPullParser)localObject1).nextText());
             i = ((XmlPullParser)localObject1).next();
           }
         }
@@ -490,7 +490,7 @@ public class ArConfigInfo
         }
         if (str1.equalsIgnoreCase("End"))
         {
-          localArConfigInfo.aREnd = aocu.a(((XmlPullParser)localObject1).nextText());
+          localArConfigInfo.aREnd = apfw.a(((XmlPullParser)localObject1).nextText());
           continue;
           return localObject1;
         }
@@ -995,7 +995,7 @@ public class ArConfigInfo
         if (!((String)localObject2).equalsIgnoreCase("Begin")) {
           break label2237;
         }
-        localArConfigInfo.aRCloudBegin = aocu.a(((XmlPullParser)localObject1).nextText());
+        localArConfigInfo.aRCloudBegin = apfw.a(((XmlPullParser)localObject1).nextText());
       }
       label2237:
       while ((i != 3) || (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("Cloud"))) {
@@ -1006,7 +1006,7 @@ public class ArConfigInfo
           break;
           if (((String)localObject2).equalsIgnoreCase("End"))
           {
-            localArConfigInfo.aRCloudEnd = aocu.a(((XmlPullParser)localObject1).nextText());
+            localArConfigInfo.aRCloudEnd = apfw.a(((XmlPullParser)localObject1).nextText());
           }
           else
           {

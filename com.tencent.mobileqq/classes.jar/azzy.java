@@ -1,99 +1,25 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView;
 
-class azzy
-  implements INetEngine.INetEngineListener
+public class azzy
+  extends RecyclerView.OnScrollListener
 {
-  azzy(azzx paramazzx, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3) {}
+  public azzy(AnonymousView paramAnonymousView) {}
   
-  public void onResp(NetResp paramNetResp)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager_PTV", 2, "onResp resultcode: " + paramNetResp.mHttpCode + " threadid=" + Thread.currentThread().getId());
-    }
-    File localFile = new File(azzx.jdField_a_of_type_JavaIoFile, "temp_ptv_template_zip");
-    if (!localFile.exists())
+    if ((paramInt != 0) && (paramInt != 1))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
-      }
-      aktv.a(0);
+      AnonymousView.a(this.a).cancelPendingRequests();
+      AnonymousView.a(this.a).pause();
+    }
+    while (!AnonymousView.a(this.a).isPausing()) {
       return;
     }
-    Object localObject = "";
-    try
-    {
-      paramNetResp = FileUtils.calcMd5(localFile.getPath());
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramNetResp))) {}
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        try
-        {
-          npo.a(localFile, this.b);
-          paramNetResp = new File(this.c);
-          if (!paramNetResp.exists()) {
-            break label330;
-          }
-          paramNetResp = azzx.a(paramNetResp);
-          localObject = azzx.a(null, paramNetResp, this.jdField_a_of_type_Azzx.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig);
-          if ((localObject != null) && (!((List)localObject).isEmpty())) {
-            break;
-          }
-          azzx.a(paramNetResp, "ptv_template_new.cfg");
-          if (QLog.isColorLevel()) {
-            QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip null == infos || infos.isEmpty()");
-          }
-          aktv.a(-4);
-          return;
-          localUnsatisfiedLinkError = localUnsatisfiedLinkError;
-          paramNetResp = (NetResp)localObject;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          localUnsatisfiedLinkError.printStackTrace();
-          paramNetResp = (NetResp)localObject;
-        }
-        catch (Exception paramNetResp)
-        {
-          aktv.a(-3);
-          bfyz.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          paramNetResp.printStackTrace();
-          continue;
-        }
-        aktv.a(-2);
-      }
-      azzx.a(paramNetResp, "ptv_template_new.cfg");
-      this.jdField_a_of_type_Azzx.c(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip finsh configContent=" + paramNetResp);
-      }
-      aktv.a(1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(new Intent("action_brocassreceiver_for_ptv"));
-      return;
-    }
-    label330:
-    if (QLog.isColorLevel()) {
-      QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
-    }
-    bfyz.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
+    AnonymousView.a(this.a).resume();
   }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

@@ -3,6 +3,8 @@ package com.tencent.ttpic.openapi.listener;
 public abstract interface MaterialLoadFinishListener
   extends IStickerListener
 {
+  public abstract void onFiltersReady();
+  
   public abstract void onLoadFinish(long paramLong);
 }
 

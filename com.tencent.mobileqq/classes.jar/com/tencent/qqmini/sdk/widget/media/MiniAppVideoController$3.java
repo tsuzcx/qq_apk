@@ -13,15 +13,15 @@ class MiniAppVideoController$3
   
   public void onBrightnessGesture(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    MiniAppVideoController.access$100(this.this$0).onBrightnessGesture(MiniAppVideoController.access$800(this.this$0), paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    MiniAppVideoController.access$300(this.this$0).onBrightnessGesture(MiniAppVideoController.access$000(this.this$0), paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
   }
   
   public void onDoubleTapGesture(MotionEvent paramMotionEvent)
   {
-    if (MiniAppVideoController.access$800(this.this$0).enablePlayGesture)
+    if (MiniAppVideoController.access$000(this.this$0).enablePlayGesture)
     {
       this.this$0.operate();
-      MiniAppVideoController.access$100(this.this$0).onDoubleTapGesture(MiniAppVideoController.access$800(this.this$0), MiniAppVideoController.access$600(this.this$0).isPlaying());
+      MiniAppVideoController.access$300(this.this$0).onDoubleTapGesture(MiniAppVideoController.access$000(this.this$0), MiniAppVideoController.access$200(this.this$0).isPlaying());
     }
   }
   
@@ -29,32 +29,32 @@ class MiniAppVideoController$3
   {
     int i = MiniAppVideoController.access$1100(this.this$0).getStreamVolume(3);
     int j = Settings.System.getInt(MiniAppVideoController.access$1200(this.this$0).getContentResolver(), "screen_brightness", 255);
-    MiniAppVideoController.access$100(this.this$0).onDown(i, j);
+    MiniAppVideoController.access$300(this.this$0).onDown(i, j);
   }
   
   public void onEndFF_REW(MotionEvent paramMotionEvent)
   {
-    MiniAppVideoController.access$100(this.this$0).onEndFF_REW(paramMotionEvent);
+    MiniAppVideoController.access$300(this.this$0).onEndFF_REW(paramMotionEvent);
   }
   
   public void onProgressGesture(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    MiniAppVideoController.access$100(this.this$0).onProgressGesture(MiniAppVideoController.access$800(this.this$0), paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    if (MiniAppVideoController.access$600(this.this$0) != null)
+    MiniAppVideoController.access$300(this.this$0).onProgressGesture(MiniAppVideoController.access$000(this.this$0), paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    if (MiniAppVideoController.access$200(this.this$0) != null)
     {
-      int i = (int)MiniAppVideoController.access$600(this.this$0).getDuration() * MiniAppVideoController.access$100(this.this$0).getGestureProgress() / 100;
+      int i = (int)MiniAppVideoController.access$200(this.this$0).getDuration() * MiniAppVideoController.access$300(this.this$0).getGestureProgress() / 100;
       this.this$0.seekTo(i);
     }
   }
   
   public void onSingleTapGesture(MotionEvent paramMotionEvent)
   {
-    MiniAppVideoController.access$100(this.this$0).onSingleTapGesture(MiniAppVideoController.access$800(this.this$0), paramMotionEvent);
+    MiniAppVideoController.access$300(this.this$0).onSingleTapGesture(MiniAppVideoController.access$000(this.this$0), paramMotionEvent);
   }
   
   public void onVolumeGesture(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    MiniAppVideoController.access$100(this.this$0).onVolumeGesture(MiniAppVideoController.access$800(this.this$0), paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2, MiniAppVideoController.access$1000(this.this$0), MiniAppVideoController.access$1100(this.this$0));
+    MiniAppVideoController.access$300(this.this$0).onVolumeGesture(MiniAppVideoController.access$000(this.this$0), paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2, MiniAppVideoController.access$1000(this.this$0), MiniAppVideoController.access$1100(this.this$0));
   }
 }
 

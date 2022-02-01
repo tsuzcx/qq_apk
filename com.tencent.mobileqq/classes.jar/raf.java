@@ -1,46 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function3;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import tencent.im.oidb.cmd0xe5c.cmd0xe5c.RspBody;
-import tencent.im.oidb.cmd0xe5c.cmd0xe5c.TopicRspBody;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWriteWatchWordModel$fetchTopicWatchWord$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onResult", "", "errorCode", "", "data", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class raf
-  extends nmf
+public class raf
 {
-  raf(Function3 paramFunction3) {}
-  
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @NotNull Bundle paramBundle)
+  public static Parcel a(byte[] paramArrayOfByte)
   {
-    Intrinsics.checkParameterIsNotNull(paramBundle, "bundle");
-    QLog.i("RIJWriteWatchWordModel", 1, "fetchTopicWatchWord error code = " + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      paramBundle = new cmd0xe5c.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (cmd0xe5c.TopicRspBody)paramBundle.topic_rsp_body.get();
-      paramBundle = this.a;
-      if (paramBundle != null)
-      {
-        String str1 = paramArrayOfByte.watch_word.get();
-        String str2 = paramArrayOfByte.url.get();
-        Intrinsics.checkExpressionValueIsNotNull(str2, "topicRspBody.url.get()");
-        paramArrayOfByte = (Unit)paramBundle.invoke(str1, str2, Boolean.valueOf(paramArrayOfByte.is_open.get()));
-      }
-    }
-    do
-    {
-      return;
-      paramArrayOfByte = this.a;
-    } while (paramArrayOfByte == null);
-    paramArrayOfByte = (Unit)paramArrayOfByte.invoke(null, "", Boolean.valueOf(false));
+    Parcel localParcel = Parcel.obtain();
+    localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
+    localParcel.setDataPosition(0);
+    return localParcel;
+  }
+  
+  public static <T> T a(byte[] paramArrayOfByte, Parcelable.Creator<T> paramCreator)
+  {
+    paramArrayOfByte = a(paramArrayOfByte);
+    paramCreator = paramCreator.createFromParcel(paramArrayOfByte);
+    paramArrayOfByte.recycle();
+    return paramCreator;
+  }
+  
+  public static byte[] a(Parcelable paramParcelable)
+  {
+    Parcel localParcel = Parcel.obtain();
+    paramParcelable.writeToParcel(localParcel, 0);
+    paramParcelable = localParcel.marshall();
+    localParcel.recycle();
+    return paramParcelable;
   }
 }
 

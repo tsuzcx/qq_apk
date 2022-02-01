@@ -1,7 +1,11 @@
 package com.tencent.av;
 
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import lcq;
+import lfe;
+import mtt;
+import mvk;
 
 class VideoController$32
   implements Runnable
@@ -10,12 +14,23 @@ class VideoController$32
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoController.a, 2, "quitDoubleVideoMeeting, time out task run.");
+    if (this.this$0.f) {
+      return;
     }
-    if (this.this$0.c != null) {
-      this.this$0.c.onCompletion(null);
+    long l = this.this$0.a();
+    if (l > 0L)
+    {
+      l %= 60L;
+      if (l % 30L == 0L)
+      {
+        String str = mvk.a(this.this$0.a());
+        mtt.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(this.this$0.a().c, this.this$0.a().d, str);
+        if ((this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.isBackgroundStop) && (l % 10L == 0L)) {
+          QLog.w(VideoController.jdField_a_of_type_JavaLangString, 1, "chattingTimerRunnale -->updateNotification() sessionId = " + this.this$0.a().c);
+        }
+      }
     }
+    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
   }
 }
 

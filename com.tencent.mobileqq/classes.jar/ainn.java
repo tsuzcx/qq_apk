@@ -1,16 +1,60 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contacts.base.Contacts;
+import android.view.View.MeasureSpec;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class ainn
-  extends axkt
+  implements aind
 {
-  public ainn(Contacts paramContacts) {}
+  public ainn(VoiceTextPanel paramVoiceTextPanel) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    if (Contacts.a(this.a)) {
-      Contacts.a(this.a);
+    VoiceTextPanel.a(this.a).hideSoftInput();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (VoiceTextPanel.a(this.a).b() != 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VoiceTextPanel", 2, "onActionDown but mHeader cannot see");
+      }
+      return;
     }
+    VoiceTextPanel.a(this.a, true);
+    this.a.measure(View.MeasureSpec.makeMeasureSpec(this.a.getRight() - this.a.getLeft(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt - this.a.getTop(), 1073741824));
+    this.a.layout(this.a.getLeft(), this.a.getTop(), this.a.getRight(), paramInt);
+    VoiceTextPanel.a(this.a).a(this.a.getLeft(), this.a.getTop(), this.a.getRight(), this.a.getBottom(), paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VoiceTextPanel", 2, "enterEditState");
+    }
+    VoiceTextPanel.a(this.a).a();
+    VoiceTextPanel.a(this.a).a(paramInt1, paramInt2, this.a.getHeight(), this.a.getTop());
+    VoiceTextPanel.a(this.a).showInputPanel();
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    VoiceTextPanel.a(this.a).a(paramInt1, paramInt2, paramInt3);
+    VoiceTextPanel.a(this.a).b();
+  }
+  
+  public void b()
+  {
+    VoiceTextPanel.a(this.a).a(true);
+    VoiceTextPanel.a(this.a, false);
+    VoiceTextPanel.a(this.a).b();
+  }
+  
+  public void c()
+  {
+    VoiceTextPanel.a(this.a).a(false);
+    VoiceTextPanel.a(this.a, false);
   }
 }
 

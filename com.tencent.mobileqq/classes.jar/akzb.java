@@ -1,26 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 
 public class akzb
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public akzb(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public akzb(ChooseItemView paramChooseItemView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.c) {
-      bcef.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      bcef.b(this.a.app, "dc00899", "Grp_create_new", "", "suc_create", "clk_cancel", 0, 0, "", "" + this.a.h, "", "");
-      this.a.finish();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bcef.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
-    }
+    return true;
   }
 }
 

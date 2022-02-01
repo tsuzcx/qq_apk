@@ -1,16 +1,17 @@
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
-final class xqi
-  implements xrs
+class xqi
+  extends vzx
 {
-  xqi(WeakReference paramWeakReference) {}
+  xqi(xqh paramxqh) {}
   
-  public void a(String paramString)
+  public void c(boolean paramBoolean)
   {
-    paramString = (xqk)this.a.get();
-    if (paramString != null) {
-      paramString.a(Integer.valueOf(((Integer)((vuq)vux.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
-    }
+    vzv localvzv = (vzv)this.a.a.app.getManager(QQManagerFactory.QQSTORY_MANAGER);
+    this.a.a(2, localvzv.a());
+    this.a.a(3, localvzv.b());
   }
 }
 

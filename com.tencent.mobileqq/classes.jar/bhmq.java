@@ -1,18 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.content.Context;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class bhmq
-  implements MediaPlayer.OnCompletionListener
+class bhmq
+  extends QQCustomDialog
 {
-  public bhmq(VideoTextureView paramVideoTextureView) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  bhmq(bhmn parambhmn, Context paramContext, int paramInt)
   {
-    if (VideoTextureView.a() != null) {
-      VideoTextureView.a().onVideoComplete(true);
-    }
+    super(paramContext, paramInt);
+  }
+  
+  public void onBackPressed()
+  {
+    super.onBackPressed();
   }
 }
 

@@ -1,48 +1,91 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.widget.TextView;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.net.URL;
 
 public class bexw
-  extends ReportDialog
+  extends AsyncTask<Void, Void, Bundle>
 {
-  private static String a = "https://sola.gtimg.cn/aoi/sola/20200515111445_ChpLurYZBA.png";
+  protected URLDrawable a;
+  protected String a;
+  protected WeakReference<TroopAvatarWallPreviewActivity> a;
+  protected boolean a;
+  protected String b;
   
-  public bexw(Context paramContext)
+  public bexw(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, String paramString1, boolean paramBoolean, URLDrawable paramURLDrawable, String paramString2)
   {
-    super(paramContext, 2131755174);
-    a();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTroopAvatarWallPreviewActivity);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.b = paramString2;
   }
   
-  private void a()
+  protected Bundle a(Void... paramVarArgs)
   {
-    setCancelable(false);
-    setCanceledOnTouchOutside(false);
-    setContentView(2131559020);
-    Object localObject1 = (URLImageView)findViewById(2131368344);
-    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#FFEBEDF5"));
-    ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localColorDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localColorDrawable;
-    ((URLImageView)localObject1).setBackgroundDrawable(URLDrawable.getDrawable(a, (URLDrawable.URLDrawableOptions)localObject2));
-    localObject1 = (TextView)findViewById(2131369567);
-    ((TextView)localObject1).setClickable(true);
-    localObject2 = new GradientDrawable();
-    ((GradientDrawable)localObject2).setCornerRadius(12.0F);
-    ((GradientDrawable)localObject2).setColor(-1315339);
-    ((TextView)localObject1).setBackgroundDrawable((Drawable)localObject2);
-    ((TextView)localObject1).setOnClickListener(new bexx(this));
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_ComTencentImageURLDrawable == null)) {
+      return null;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    paramVarArgs = new File(AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE);
+    if (!paramVarArgs.exists()) {
+      paramVarArgs.mkdirs();
+    }
+    String str = AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE + this.jdField_a_of_type_JavaLangString + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    paramVarArgs = str;
+    if (!new File(str).exists()) {}
+    try
+    {
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      localBundle.putBoolean("forward_urldrawable", true);
+      localBundle.putString("forward_urldrawable_thumb_url", this.b);
+      localBundle.putString("forward_filepath", paramVarArgs);
+      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+      localBundle.putString("forward_extra", paramVarArgs);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localBundle.putString("forward_thumb", paramVarArgs);
+        localBundle.putBoolean("key_flag_from_plugin", true);
+      }
+      return localBundle;
+    }
+    catch (IOException paramVarArgs)
+    {
+      QLog.e("foward", 2, "IOException", paramVarArgs);
+    }
+    return null;
+  }
+  
+  protected void a(Bundle paramBundle)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+      return;
+    }
+    TroopAvatarWallPreviewActivity localTroopAvatarWallPreviewActivity = (TroopAvatarWallPreviewActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramBundle == null)
+    {
+      QQToast.a(localTroopAvatarWallPreviewActivity, anvx.a(2131714575), 0).b(localTroopAvatarWallPreviewActivity.getTitleBarHeight());
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramBundle);
+    aupt.a(localTroopAvatarWallPreviewActivity, localIntent, 21);
+    TroopAvatarWallPreviewActivity.a(localTroopAvatarWallPreviewActivity, "0X8006A81", "0X8006A95");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexw
  * JD-Core Version:    0.7.0.1
  */

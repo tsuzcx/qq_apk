@@ -1,101 +1,59 @@
+import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.views.video.GdtVideoData;
+import com.tencent.gdtad.views.videoimax.GdtImaxData;
+import com.tencent.gdtad.views.videoimax.GdtMotiveVideoMockQzoneImaxFeedsFragment;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
-import tencent.im.oidb.oidb_0xb60.RspBody;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo;
 
-class ackp
-  extends nmf
+public class ackp
+  implements View.OnClickListener
 {
-  ackp(acko paramacko, avro paramavro) {}
+  public ackp(GdtMotiveVideoMockQzoneImaxFeedsFragment paramGdtMotiveVideoMockQzoneImaxFeedsFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "onResult type=" + this.jdField_a_of_type_Avro.jdField_a_of_type_Int + ", appid=" + this.jdField_a_of_type_Avro.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    GdtHandler.Params localParams = new GdtHandler.Params();
+    localParams.c = 2;
+    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.getActivity());
+    Object localObject = GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getAd();
+    ((GdtAd)localObject).info.product_type.set(1000);
+    ((GdtAd)localObject).info.dest_info.dest_type.set(4);
+    ((GdtAd)localObject).info.display_info.video_info2.video_url.set(GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getVideoData().getUrl());
+    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)localObject);
+    localParams.e = true;
+    localParams.jdField_a_of_type_Boolean = true;
+    localObject = new int[2];
+    paramView.getLocationInWindow((int[])localObject);
+    acho.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onClick() getLocationInWindow = [" + Arrays.toString((int[])localObject) + "]");
+    paramView.getLocationOnScreen((int[])localObject);
+    acho.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onClick() getLocationOnScreen = [" + Arrays.toString((int[])localObject) + "]");
+    localParams.jdField_a_of_type_AndroidGraphicsRect = new Rect(localObject[0], localObject[1], localObject[0] + paramView.getWidth(), localObject[1] + paramView.getHeight());
+    localObject = this.a.getActivity().getIntent();
+    if (TextUtils.isEmpty(((Intent)localObject).getStringExtra("big_brother_ref_source_key"))) {}
+    for (localObject = ((Intent)localObject).getStringExtra("big_brother_source_key");; localObject = ((Intent)localObject).getStringExtra("big_brother_ref_source_key"))
     {
-      acko.a(this.jdField_a_of_type_Acko, new AppInfoError(6, "jobApiPermission req error"));
-      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
-        break label513;
-      }
-    }
-    for (;;)
-    {
-      Object localObject;
-      try
-      {
-        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
-        localObject = new StringBuilder().append("req error code=").append(paramInt);
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = ", data=null";
-          QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, paramArrayOfByte);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
-      paramBundle = new oidb_0xb60.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if ((paramBundle.get_privilege_rsp.api_groups.has()) && (paramBundle.get_privilege_rsp.next_req_duration.has())) {
-          break label297;
-        }
-        acko.b(this.jdField_a_of_type_Acko, new AppInfoError(6, "jobApiPermission rsp invalid"));
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "rsp invalid");
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        acko.c(this.jdField_a_of_type_Acko, new AppInfoError(6, "jobApiPermission parse rsp error"));
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse rsp error", paramArrayOfByte);
-        return;
-        label297:
-        if (QLog.isColorLevel()) {
-          QLog.d("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
-        }
-        paramArrayOfByte = ackg.a();
-        paramArrayOfByte.a(paramBundle.get_privilege_rsp.api_groups.get(), this.jdField_a_of_type_Avro.jdField_a_of_type_JavaUtilSet);
-        if (paramBundle.get_privilege_rsp.api_names.size() > 0)
-        {
-          localObject = paramBundle.get_privilege_rsp.api_names.get().iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            String str = (String)((Iterator)localObject).next();
-            if (ackg.a(paramArrayOfByte, str)) {
-              this.jdField_a_of_type_Avro.jdField_a_of_type_JavaUtilSet.add(str);
-            }
-          }
-        }
-        this.jdField_a_of_type_Avro.c = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.get_privilege_rsp.next_req_duration.get() * 1000L, 300000L));
-        avrt.a().a(this.jdField_a_of_type_Avro);
-        acko.a(this.jdField_a_of_type_Acko, this.jdField_a_of_type_Avro);
-        return;
-        label513:
-        paramBundle = "";
-      }
+      localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
+      localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", (String)localObject);
+      localParams.f = true;
+      GdtHandler.a(localParams);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

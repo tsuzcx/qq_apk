@@ -1,14 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.widget.XListView.DrawFinishedListener;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
-public class snc
-  implements XListView.DrawFinishedListener
+class snc
+  implements szt
 {
-  public snc(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  snc(sna paramsna, VideoInfo paramVideoInfo, JSONObject paramJSONObject) {}
   
-  public void drawFinished()
+  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    this.a.a.f();
+    paramView = pkh.a();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
+      pvj.a().a(Long.valueOf(paramView).longValue(), smg.a(this.jdField_a_of_type_Sna.a).a.makeDislikeParam(paramArrayList, smg.a(this.jdField_a_of_type_Sna.a).g));
+    }
+    QQToast.a(smg.a(this.jdField_a_of_type_Sna.a), -1, smg.a(this.jdField_a_of_type_Sna.a).getString(2131699166), 0).b(smg.a(this.jdField_a_of_type_Sna.a).getResources().getDimensionPixelSize(2131299080));
+    smg.a(this.jdField_a_of_type_Sna.a).dismiss();
+    smg.b(this.jdField_a_of_type_Sna.a, false);
+    olh.b(null, null, "0X800913C", "0X800913C", 0, 0, null, null, null, new suu(omx.a(null, null, null, null, this.jdField_a_of_type_OrgJsonJSONObject)).i(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g).a(paramArrayList).a().a(), false);
+    return true;
   }
 }
 

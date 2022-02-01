@@ -1,27 +1,31 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class aizv
-  implements View.OnClickListener
+class aizv
+  extends blfn
 {
-  public aizv(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  public void onClick(View paramView)
+  aizv(aizt paramaizt, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bgge.e, amtj.a(2131700746));
-    localBundle.putString(bgge.f, "CJCLUBT");
-    localBundle.putString(bgge.d, "1450000516");
-    localBundle.putInt(bgge.b, 3);
-    localBundle.putString(bgge.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
-    localBundle.putString(bgge.g, "svip");
-    localBundle.putString(bgge.a, this.a.b.getCurrentAccountUin());
-    bgge.a(this.a.b, this.a.getActivity(), localBundle);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public void a(int paramInt, Object paramObject, blfm[] paramArrayOfblfm)
+  {
+    paramInt = 0;
+    if ((paramArrayOfblfm == null) || (paramArrayOfblfm.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfblfm.length < 0)
+      {
+        paramArrayOfblfm[0].b = 0;
+        paramArrayOfblfm[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfblfm.length)
+      {
+        paramArrayOfblfm[paramInt].b = -1;
+        paramArrayOfblfm[paramInt].a = -1;
+        paramInt += 1;
+      }
+    }
   }
 }
 

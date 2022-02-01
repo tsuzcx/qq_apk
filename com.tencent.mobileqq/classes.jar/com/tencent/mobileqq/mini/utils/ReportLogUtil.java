@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.utils;
 
-import bhpc;
+import bizw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -47,7 +47,7 @@ public class ReportLogUtil
       localTransferRequest.mCommandId = 65;
       localTransferRequest.mUniseq = ((Math.random() * 1000000.0D));
       localTransferRequest.mPeerUin = "0";
-      localTransferRequest.mSelfUin = String.valueOf(bhpc.a().a());
+      localTransferRequest.mSelfUin = String.valueOf(bizw.a().a());
       localTransferRequest.mFileType = 24;
       localTransferRequest.mRichTag = "miniAppUserLog";
       paramString = new Bdh_extinfo.CommFileExtReq();

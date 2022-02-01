@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface afaf
+public class afaf
+  implements View.OnClickListener
 {
-  public abstract void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo);
+  public afaf(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b(this.a.getShareUrl());
+    paramView.setEnabled(false);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

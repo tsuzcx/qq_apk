@@ -1,13 +1,14 @@
-class xst
-  extends ysw
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
+
+public abstract interface xst
 {
-  xst(xss paramxss) {}
+  public abstract void a();
   
-  public boolean a(boolean paramBoolean)
-  {
-    xss.a(this.a);
-    return true;
-  }
+  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
+  
+  public abstract void a(String paramString1, long paramLong, StoryVideoItem paramStoryVideoItem, int paramInt, String paramString2, List<String> paramList);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.youtu.ytagreflectlivecheck;
 
+import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
 import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
 import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
 import com.tencent.youtu.ytagreflectlivecheck.worker.SensorManagerWorker;
 import com.tencent.youtu.ytagreflectlivecheck.worker.SensorManagerWorker.OnGetValue;
 import com.tencent.youtu.ytagreflectlivecheck.worker.TimerWorker;
-import com.tencent.youtu.ytcommon.tools.YTLogger;
 
 final class YTAGReflectLiveCheckInterface$1
   implements SensorManagerWorker.OnGetValue
@@ -13,10 +13,10 @@ final class YTAGReflectLiveCheckInterface$1
   public void onGetValue(float paramFloat)
   {
     YTAGReflectLiveCheckInterface.access$008();
-    YTLogger.d("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: " + paramFloat + " mOnGetValueCount: " + YTAGReflectLiveCheckInterface.access$000());
+    YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: " + paramFloat + " mOnGetValueCount: " + YTAGReflectLiveCheckInterface.access$000());
     if (YTAGReflectLiveCheckInterface.access$000() > 1)
     {
-      YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: " + paramFloat);
+      YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: " + paramFloat);
       if (YTAGReflectLiveCheckInterface.access$100() != null)
       {
         YTAGReflectLiveCheckInterface.access$100().cancel();

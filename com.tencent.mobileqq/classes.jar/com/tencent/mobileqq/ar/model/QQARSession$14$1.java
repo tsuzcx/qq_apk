@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import amtj;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class QQARSession$14$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131709255), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anvx.a(2131709602), 1).a();
   }
 }
 

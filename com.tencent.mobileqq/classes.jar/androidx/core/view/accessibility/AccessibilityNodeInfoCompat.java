@@ -257,14 +257,14 @@ public class AccessibilityNodeInfoCompat
     if (localSparseArray2 == null)
     {
       localSparseArray1 = new SparseArray();
-      paramView.setTag(2131378160, localSparseArray1);
+      paramView.setTag(2131378448, localSparseArray1);
     }
     return localSparseArray1;
   }
   
   private SparseArray<WeakReference<ClickableSpan>> getSpansFromViewTags(View paramView)
   {
-    return (SparseArray)paramView.getTag(2131378160);
+    return (SparseArray)paramView.getTag(2131378448);
   }
   
   private boolean hasSpans()
@@ -407,7 +407,7 @@ public class AccessibilityNodeInfoCompat
       ClickableSpan[] arrayOfClickableSpan = getClickableSpans(paramCharSequence);
       if ((arrayOfClickableSpan != null) && (arrayOfClickableSpan.length > 0))
       {
-        getExtras().putInt("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ACTION_ID_KEY", 2131361822);
+        getExtras().putInt("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ACTION_ID_KEY", 2131361824);
         paramView = getOrCreateSpansFromViewTags(paramView);
         int i = 0;
         while ((arrayOfClickableSpan != null) && (i < arrayOfClickableSpan.length))

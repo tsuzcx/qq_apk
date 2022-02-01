@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.dating.MsgBoxListActivity.7.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aryg
-  implements bjqj
+  implements axxd
 {
-  public aryg(QfileFavFileTabView paramQfileFavFileTabView) {}
+  public aryg(MsgBoxListActivity paramMsgBoxListActivity) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramInt == this.a.jdField_a_of_type_Arvv.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
+    if (QLog.isColorLevel()) {
+      QLog.i("MsgBoxListActivity", 2, "follow onReceive errorCode = [" + paramInt + "]");
     }
+    this.a.b.post(new MsgBoxListActivity.7.1(this, paramInt));
   }
 }
 

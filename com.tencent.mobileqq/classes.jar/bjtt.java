@@ -1,12 +1,7 @@
-import android.view.animation.Interpolator;
-
-public class bjtt
-  implements Interpolator
+public abstract interface bjtt
+  extends ncj
 {
-  public float getInterpolation(float paramFloat)
-  {
-    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
-  }
+  public abstract void a(bjtr parambjtr);
 }
 
 

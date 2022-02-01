@@ -6,9 +6,9 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import axvj;
-import axvn;
-import axvu;
+import azbu;
+import azbz;
+import azcg;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +20,12 @@ public class OnlineStatusPagerAdapter
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  private axvn jdField_a_of_type_Axvn;
-  private axvu jdField_a_of_type_Axvu = new axvu();
-  public ArrayList<axvj> a;
+  private azbz jdField_a_of_type_Azbz;
+  private azcg jdField_a_of_type_Azcg = new azcg();
+  public ArrayList<azbu> a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private ArrayList<axvj> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<azbu> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   private int c;
   
   OnlineStatusPagerAdapter(Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean, ViewPager paramViewPager)
@@ -38,7 +38,7 @@ public class OnlineStatusPagerAdapter
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
   }
   
-  private List<axvj> a(int paramInt)
+  private List<azbu> a(int paramInt)
   {
     paramInt = this.jdField_a_of_type_Int * paramInt;
     int i = Math.min(this.jdField_b_of_type_JavaUtilArrayList.size(), this.jdField_a_of_type_Int + paramInt);
@@ -52,11 +52,11 @@ public class OnlineStatusPagerAdapter
       return 0;
     }
     int j = k;
-    axvj localaxvj;
+    azbu localazbu;
     int i;
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1)
     {
-      localaxvj = (axvj)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      localazbu = (azbu)this.jdField_a_of_type_JavaUtilArrayList.get(0);
       i = 0;
     }
     for (;;)
@@ -64,7 +64,7 @@ public class OnlineStatusPagerAdapter
       j = k;
       if (i < this.jdField_b_of_type_JavaUtilArrayList.size())
       {
-        if (((axvj)this.jdField_b_of_type_JavaUtilArrayList.get(i)).a == localaxvj.a) {
+        if (((azbu)this.jdField_b_of_type_JavaUtilArrayList.get(i)).a == localazbu.a) {
           j = i;
         }
       }
@@ -75,7 +75,7 @@ public class OnlineStatusPagerAdapter
     }
   }
   
-  public ArrayList<axvj> a()
+  public ArrayList<azbu> a()
   {
     return this.jdField_b_of_type_JavaUtilArrayList;
   }
@@ -115,18 +115,18 @@ public class OnlineStatusPagerAdapter
     this.c = paramInt;
   }
   
-  public void a(axvj paramaxvj, View paramView)
+  public void a(azbu paramazbu, View paramView)
   {
-    axvj localaxvj = null;
+    azbu localazbu = null;
     if (!this.jdField_a_of_type_Boolean)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        localaxvj = (axvj)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        localazbu = (azbu)this.jdField_a_of_type_JavaUtilArrayList.get(0);
       }
       this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramaxvj);
-      if (this.jdField_a_of_type_Axvn != null) {
-        this.jdField_a_of_type_Axvn.a(localaxvj, paramaxvj, paramView);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramazbu);
+      if (this.jdField_a_of_type_Azbz != null) {
+        this.jdField_a_of_type_Azbz.a(localazbu, paramazbu, paramView);
       }
     }
     do
@@ -134,24 +134,24 @@ public class OnlineStatusPagerAdapter
       do
       {
         return;
-        if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramaxvj)) {
+        if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramazbu)) {
           break;
         }
-        this.jdField_a_of_type_JavaUtilArrayList.remove(paramaxvj);
-      } while (this.jdField_a_of_type_Axvn == null);
-      this.jdField_a_of_type_Axvn.a(paramaxvj, null, paramView);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(paramazbu);
+      } while (this.jdField_a_of_type_Azbz == null);
+      this.jdField_a_of_type_Azbz.a(paramazbu, null, paramView);
       return;
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramaxvj);
-    } while (this.jdField_a_of_type_Axvn == null);
-    this.jdField_a_of_type_Axvn.a(null, paramaxvj, paramView);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramazbu);
+    } while (this.jdField_a_of_type_Azbz == null);
+    this.jdField_a_of_type_Azbz.a(null, paramazbu, paramView);
   }
   
-  public void a(axvn paramaxvn)
+  public void a(azbz paramazbz)
   {
-    this.jdField_a_of_type_Axvn = paramaxvn;
+    this.jdField_a_of_type_Azbz = paramazbz;
   }
   
-  public void a(ArrayList<axvj> paramArrayList)
+  public void a(ArrayList<azbu> paramArrayList)
   {
     this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -163,7 +163,7 @@ public class OnlineStatusPagerAdapter
       OnlineStatusListLayout localOnlineStatusListLayout = (OnlineStatusListLayout)paramObject;
       localOnlineStatusListLayout.setPageIndex(-1);
       paramViewGroup.removeView(localOnlineStatusListLayout);
-      this.jdField_a_of_type_Axvu.a(paramInt, (View)paramObject);
+      this.jdField_a_of_type_Azcg.a(paramInt, (View)paramObject);
     }
   }
   
@@ -186,7 +186,7 @@ public class OnlineStatusPagerAdapter
   {
     boolean bool2 = true;
     List localList = a(paramInt);
-    OnlineStatusListLayout localOnlineStatusListLayout2 = (OnlineStatusListLayout)this.jdField_a_of_type_Axvu.a(paramInt);
+    OnlineStatusListLayout localOnlineStatusListLayout2 = (OnlineStatusListLayout)this.jdField_a_of_type_Azcg.a(paramInt);
     OnlineStatusListLayout localOnlineStatusListLayout1 = localOnlineStatusListLayout2;
     if (localOnlineStatusListLayout2 == null)
     {
@@ -230,17 +230,17 @@ public class OnlineStatusPagerAdapter
   {
     Object localObject = paramView.getTag();
     if ((paramView instanceof OnlineStatusListLayout)) {
-      if ((((OnlineStatusListLayout)paramView).a()) && (this.jdField_a_of_type_Axvn != null)) {
-        this.jdField_a_of_type_Axvn.a(paramView);
+      if ((((OnlineStatusListLayout)paramView).a()) && (this.jdField_a_of_type_Azbz != null)) {
+        this.jdField_a_of_type_Azbz.a(paramView);
       }
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((localObject instanceof axvj))
+      if ((localObject instanceof azbu))
       {
-        a((axvj)localObject, paramView);
+        a((azbu)localObject, paramView);
         a();
       }
     }

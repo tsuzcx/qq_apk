@@ -1,14 +1,16 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
 
-final class bild
-  implements FilenameFilter
+public class bild
+  implements axrc
 {
-  public boolean accept(File paramFile, String paramString)
+  public bild(WerewolvesHostInterface paramWerewolvesHostInterface, boolean paramBoolean) {}
+  
+  public void g()
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".cfg"));
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.mGameRoomAVController.a(this.jdField_a_of_type_Boolean);
   }
+  
+  public void h() {}
 }
 
 

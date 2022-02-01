@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:background="#66000000" android:paddingBottom="@dimen/b_a" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/di" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="22.0dip" android:textColor="@android:color/white" android:gravity="center" android:id="@id/text1" android:layout_width="wrap_content" android:layout_height="25.0dip" android:layout_marginBottom="5.0dip" android:text="@string/w8q" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/n2e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="28.0dip" android:layout_marginBottom="45.0dip" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/n2f" android:layout_width="205.0dip" android:layout_height="79.0dip" android:layout_marginTop="79.0dip" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/nz2" android:background="@drawable/b45" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="34.0dip" android:text="@string/wkd" android:layout_alignParentBottom="true" />
 </RelativeLayout>

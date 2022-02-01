@@ -1,28 +1,19 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
 public class aisk
-  implements View.OnTouchListener
+  implements blfe
 {
-  public aisk(ContactsTroopAdapter paramContactsTroopAdapter, TextView paramTextView) {}
+  public aisk(AddContactsView paramAddContactsView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    }
+    AddContactsView.b(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    AddContactsView.b(this.a, true);
   }
 }
 

@@ -1,23 +1,13 @@
-public class ajji
+import mqq.os.MqqHandler;
+
+class ajji
+  implements ajmw
 {
-  public int a;
-  private String a;
-  private String b;
+  ajji(ajjf paramajjf) {}
   
-  public ajji(String paramString1, String paramString2)
+  public void a()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    this.a.a.sendEmptyMessageDelayed(7, 100L);
   }
 }
 

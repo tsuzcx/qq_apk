@@ -1,49 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileCountRspBody;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
+import java.util.List;
 
-public abstract class zrs
-  extends nmf
+public abstract interface zrs
+  extends zqq<zrr>
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
+  public abstract void a();
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3);
+  public abstract void a(int paramInt);
   
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      a(false, false, 0, 0, 0);
-      return;
-    }
-    paramBundle = new oidb_0x6d8.RspBody();
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (!paramBundle.group_file_cnt_rsp.has())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopFileProtocol", 2, "no group_file_cnt_rsp rsp.");
-        }
-        a(false, false, 0, 0, 0);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, false, 0, 0, 0);
-      return;
-    }
-    paramArrayOfByte = (oidb_0x6d8.GetFileCountRspBody)paramBundle.group_file_cnt_rsp.get();
-    a(true, paramArrayOfByte.bool_file_too_many.get(), paramArrayOfByte.uint32_all_file_count.get(), paramArrayOfByte.uint32_limit_count.get(), paramInt);
-  }
+  public abstract void a(CertifiedAccountMeta.StEntry paramStEntry, List<zse> paramList, boolean paramBoolean);
 }
 
 

@@ -18,9 +18,9 @@ import android.view.animation.Interpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ScrollView;
-import bhdv;
-import bhdw;
-import bhdx;
+import bion;
+import bioo;
+import biop;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -34,8 +34,8 @@ public class FixedBounceScrollView
   private View jdField_a_of_type_AndroidViewView;
   private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
   private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private bhdw jdField_a_of_type_Bhdw;
-  private bhdx jdField_a_of_type_Bhdx;
+  private bioo jdField_a_of_type_Bioo;
+  private biop jdField_a_of_type_Biop;
   boolean jdField_a_of_type_Boolean = false;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -76,7 +76,7 @@ public class FixedBounceScrollView
       this.jdField_a_of_type_Int = paramContext.getInt(4, 20);
       paramContext.recycle();
       if (this.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewAnimationInterpolator = new bhdv(null);
+        this.jdField_a_of_type_AndroidViewAnimationInterpolator = new bion(null);
       }
       setmCustomBottomFadingEdgeScale(0.0F);
       setmCustomTopFadingEdgeScale(0.0F);
@@ -361,8 +361,8 @@ public class FixedBounceScrollView
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Bhdx != null) {
-      this.jdField_a_of_type_Bhdx.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Biop != null) {
+      this.jdField_a_of_type_Biop.a(paramInt1, paramInt2);
     }
   }
   
@@ -412,22 +412,22 @@ public class FixedBounceScrollView
         this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom());
       }
       label353:
-      bhdw localbhdw;
+      bioo localbioo;
       if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft() - j, this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight() - j, this.jdField_a_of_type_AndroidViewView.getBottom());
-        if (this.jdField_a_of_type_Bhdw == null) {
+        if (this.jdField_a_of_type_Bioo == null) {
           break;
         }
         this.jdField_c_of_type_Int += j;
-        localbhdw = this.jdField_a_of_type_Bhdw;
+        localbioo = this.jdField_a_of_type_Bioo;
         if (this.jdField_c_of_type_Int > 0) {
           break label476;
         }
       }
       for (;;)
       {
-        localbhdw.a(bool, Math.abs(this.jdField_c_of_type_Int));
+        localbioo.a(bool, Math.abs(this.jdField_c_of_type_Int));
         break;
         f1 = paramMotionEvent.getY();
         break label66;
@@ -491,14 +491,14 @@ public class FixedBounceScrollView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnOverScrollListener(bhdw parambhdw)
+  public void setOnOverScrollListener(bioo parambioo)
   {
-    this.jdField_a_of_type_Bhdw = parambhdw;
+    this.jdField_a_of_type_Bioo = parambioo;
   }
   
-  public void setOnScrollListener(bhdx parambhdx)
+  public void setOnScrollListener(biop parambiop)
   {
-    this.jdField_a_of_type_Bhdx = parambhdx;
+    this.jdField_a_of_type_Biop = parambiop;
   }
   
   public void setScrollHorizontally(boolean paramBoolean)

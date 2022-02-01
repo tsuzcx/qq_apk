@@ -1,124 +1,90 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.articlesummary.articlesummary.AwesomeCommentInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcVideo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class rck
+  extends rcb
 {
-  public static int c;
-  public static String h = "ReadInJoy_Awesome_comment_plan";
-  public static String i = "ReadInJoy_Awesome_comment_max_lines";
-  public int a;
-  public long a;
-  public BaseArticleInfo a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  
-  static
+  public rck(Context paramContext, FaceDecoder paramFaceDecoder, szd paramszd)
   {
-    jdField_c_of_type_Int = ((Integer)bkwm.a(h, Integer.valueOf(0))).intValue();
+    super(paramContext, paramFaceDecoder, paramszd);
   }
   
-  private static int a(BaseArticleInfo paramBaseArticleInfo)
+  public rbp a()
   {
-    if ((paramBaseArticleInfo.mResolvedFeedType == 5) || (paramBaseArticleInfo.mResolvedFeedType == 19) || (paramBaseArticleInfo.mResolvedFeedType == 14) || (paramBaseArticleInfo.mResolvedFeedType == 4) || (paramBaseArticleInfo.mResolvedFeedType == 66) || (paramBaseArticleInfo.mResolvedFeedType == 115) || (paramBaseArticleInfo.mResolvedFeedType == 6)) {
-      return 2;
-    }
-    if ((paramBaseArticleInfo.mResolvedFeedType == 60) || (paramBaseArticleInfo.mResolvedFeedType == 61)) {
-      return 3;
-    }
-    if (paramBaseArticleInfo.mResolvedFeedType == 0) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_Boolean = true;
+    return a(this.jdField_a_of_type_Szd, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder).f().g().q().l().n().j();
   }
   
-  public static void a()
+  public rbp d()
   {
-    jdField_c_of_type_Int = ((Integer)bkwm.a(h, Integer.valueOf(0))).intValue();
-    NativeAwesomeCommentView.jdField_a_of_type_Int = ((Integer)bkwm.a(i, Integer.valueOf(1))).intValue();
-  }
-  
-  public static void a(BaseArticleInfo paramBaseArticleInfo, String paramString)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBaseArticleInfo != null) {}
-    try
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout1.setOrientation(1);
+    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial);
+    }
+    LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout2.setOrientation(1);
+    localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    localLinearLayout2.setBackgroundColor(Color.parseColor("#F8F8F8"));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary != null) {
+      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary);
+    }
+    if ((this.jdField_a_of_type_Rbo != null) && ((this.jdField_a_of_type_Rbo instanceof ComponentContentBig)))
     {
-      if ((paramBaseArticleInfo.mResolvedFeedType == 0) && ((paramBaseArticleInfo instanceof ArticleInfo))) {
-        paramBaseArticleInfo.mResolvedFeedType = pgb.a((ArticleInfo)paramBaseArticleInfo, 0);
+      LinearLayout localLinearLayout3 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLinearLayout3.setOrientation(1);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+      localLayoutParams.setMargins(AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(0.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLinearLayout3.setLayoutParams(localLayoutParams);
+      localLinearLayout3.addView((View)this.jdField_a_of_type_Rbo);
+      if ((this.jdField_a_of_type_Rbo instanceof ComponentContentBigImageVideo)) {
+        localLinearLayout3.setOnClickListener(new rcl(this));
       }
-      localJSONObject.put("entry", a(paramBaseArticleInfo));
-      localJSONObject.put("comment_id", paramBaseArticleInfo.oldCommentId);
-      localJSONObject.put("limit", NativeAwesomeCommentView.jdField_a_of_type_Int);
+      localLinearLayout2.setOnTouchListener(new rcm(this, localLinearLayout3));
+      pic.a(localLinearLayout3, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843098));
+      localLinearLayout2.addView(localLinearLayout3);
+      localLinearLayout2.setDuplicateParentStateEnabled(true);
+      localLinearLayout2.setOnTouchListener(new rcn(this, localLinearLayout2));
+      localLinearLayout1.setOnTouchListener(new rco(this, localLinearLayout2, localLinearLayout3));
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+    localLinearLayout2.setOnClickListener(new rcp(this));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
     }
-    if (paramBaseArticleInfo != null) {
-      odq.a(null, "", paramString, paramString, 0, 0, paramBaseArticleInfo.mArticleID + "", paramBaseArticleInfo.mStrategyId + "", paramBaseArticleInfo.rawkey, localJSONObject.toString(), false);
+    if (localLinearLayout2.getChildCount() > 0) {
+      localLinearLayout1.addView(localLinearLayout2);
     }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout1);
+    return this;
   }
   
-  public static void a(BaseArticleInfo paramBaseArticleInfo, articlesummary.AwesomeCommentInfo paramAwesomeCommentInfo)
+  public rbp g()
   {
-    if (paramBaseArticleInfo == null) {
-      QLog.d("AwesomeCommentInfo", 2, "articleinfo == null");
-    }
-    do
-    {
-      return;
-      if (paramAwesomeCommentInfo.rowkey.has()) {
-        paramBaseArticleInfo.rawkey = paramAwesomeCommentInfo.rowkey.get().toStringUtf8();
-      }
-      if (paramAwesomeCommentInfo.icon_url.has()) {
-        paramBaseArticleInfo.iconUrl = paramAwesomeCommentInfo.icon_url.get().toStringUtf8();
-      }
-      if (paramAwesomeCommentInfo.icon_with.has()) {
-        paramBaseArticleInfo.iconWith = paramAwesomeCommentInfo.icon_with.get();
-      }
-      if (paramAwesomeCommentInfo.icon_height.has()) {
-        paramBaseArticleInfo.iconHeight = paramAwesomeCommentInfo.icon_height.get();
-      }
-      if (paramAwesomeCommentInfo.jump_url.has()) {
-        paramBaseArticleInfo.jumpUrl = paramAwesomeCommentInfo.jump_url.get().toStringUtf8();
-      }
-      if (paramAwesomeCommentInfo.uin.has()) {
-        paramBaseArticleInfo.uin = paramAwesomeCommentInfo.uin.get();
-      }
-      if (paramAwesomeCommentInfo.nick_name.has()) {
-        paramBaseArticleInfo.nickName = paramAwesomeCommentInfo.nick_name.get().toStringUtf8();
-      }
-      if (paramAwesomeCommentInfo.avatar.has()) {
-        paramBaseArticleInfo.avatar = paramAwesomeCommentInfo.avatar.get().toStringUtf8();
-      }
-      if (paramAwesomeCommentInfo.comment_id.has()) {
-        paramBaseArticleInfo.oldCommentId = paramAwesomeCommentInfo.comment_id.get().toStringUtf8();
-      }
-    } while (!paramAwesomeCommentInfo.content.has());
-    paramBaseArticleInfo.content = paramAwesomeCommentInfo.content.get().toStringUtf8();
-  }
-  
-  public String toString()
-  {
-    return "AwesomeCommentInfo{rawkey='" + this.jdField_a_of_type_JavaLangString + '\'' + ", icon_url='" + this.jdField_b_of_type_JavaLangString + '\'' + ", icon_with=" + this.jdField_a_of_type_Int + ", icon_height=" + this.jdField_b_of_type_Int + ", jump_url='" + this.jdField_c_of_type_JavaLangString + '\'' + ", uin=" + this.jdField_a_of_type_Long + ", nick_name='" + this.d + '\'' + ", avatar='" + this.e + '\'' + ", comment_id='" + this.f + '\'' + ", content='" + this.g + '\'' + '}';
+    this.jdField_a_of_type_Rbo = new ComponentContentPgcVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

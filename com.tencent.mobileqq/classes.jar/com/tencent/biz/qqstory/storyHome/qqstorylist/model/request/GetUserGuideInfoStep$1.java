@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.model.request;
 
-import xqx;
-import xqz;
-import xrb;
+import yfs;
+import yfu;
+import yfw;
 
 public class GetUserGuideInfoStep$1
   implements Runnable
 {
-  public GetUserGuideInfoStep$1(xqx paramxqx, xrb paramxrb) {}
+  public GetUserGuideInfoStep$1(yfs paramyfs, yfw paramyfw) {}
   
   public void run()
   {
-    if (xqx.a(this.this$0) != null) {
-      xqx.a(this.this$0).a(this.a);
+    if (yfs.a(this.this$0) != null) {
+      yfs.a(this.this$0).a(this.a);
     }
   }
 }

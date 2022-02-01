@@ -1,30 +1,83 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.MD5;
+import java.io.File;
 
 public class bcyg
-  implements View.OnFocusChangeListener
 {
-  public bcyg(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public static bcyh a(String paramString)
   {
-    if (paramBoolean)
+    return new bcyh(paramString);
+  }
+  
+  public static String a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("short_video_mgr_sp", 4).getString("sv_md5_version_soname_key", "d000_1");
+  }
+  
+  public static String a(File paramFile)
+  {
+    return FileUtils.readFileContent(paramFile);
+  }
+  
+  public static String a(String paramString)
+  {
+    try
     {
-      bcvs.a(this.a.app, "0X800993D");
-      paramView.clearFocus();
-      if (this.a.jdField_a_of_type_AndroidAppDialog == null) {}
+      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+      VideoEnvironment.LogDownLoad("ShortVideoSoManager:computeMd5[MD5.getFileMd5]md5=" + str1, null);
+      String str3;
+      if (str1 != null)
+      {
+        str3 = str1;
+        if (!"".equals(str1)) {}
+      }
+      else
+      {
+        str3 = b(paramString);
+      }
+      return str3;
     }
-    else
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      return;
+      for (;;)
+      {
+        VideoEnvironment.LogDownLoad("ShortVideoSoManager:computeMd5[MD5.getFileMd5] ", localUnsatisfiedLinkError);
+        String str2 = b(paramString);
+      }
     }
-    this.a.jdField_a_of_type_AndroidAppDialog = new bczc(this.a, GroupTeamWorkListActivity.a(this.a), this.a.app, this.a.jdField_a_of_type_Long);
-    this.a.jdField_a_of_type_AndroidAppDialog.setTitle(amtj.a(2131704521));
-    this.a.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
-    this.a.jdField_a_of_type_AndroidAppDialog.show();
-    this.a.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new bcyh(this));
+  }
+  
+  public static final String a(String paramString1, String paramString2)
+  {
+    return paramString1 + '_' + paramString2;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_mgr_sp", 4).edit();
+    localEditor.putString("sv_md5_version_soname_key", paramString);
+    boolean bool = localEditor.commit();
+    VideoEnvironment.LogDownLoad("ShortVideoSoManager.storeSoNewVersion saveAVCodecOK=" + bool, null);
+    return bool;
+  }
+  
+  static String b(String paramString)
+  {
+    try
+    {
+      paramString = bkvq.a(new File(paramString));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      VideoEnvironment.LogDownLoad("ShortVideoSoManager:computeMd5[getFileMD5String]", paramString);
+    }
+    return null;
   }
 }
 

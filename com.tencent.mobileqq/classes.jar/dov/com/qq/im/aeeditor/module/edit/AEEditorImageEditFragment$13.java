@@ -1,8 +1,8 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
 import android.graphics.Bitmap;
-import bmbx;
-import bmde;
+import bnrh;
+import bnsw;
 import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
 import java.util.List;
 
@@ -13,10 +13,10 @@ class AEEditorImageEditFragment$13
   
   public void run()
   {
-    Bitmap localBitmap = AEEditorImageEditFragment.a(this.this$0, (String)AEEditorImageEditFragment.b(this.this$0).get(this.jdField_a_of_type_Int), ((bmde)AEEditorImageEditFragment.a(this.this$0).get(this.jdField_a_of_type_Int)).a);
+    Bitmap localBitmap = AEEditorImageEditFragment.a(this.this$0, (String)AEEditorImageEditFragment.b(this.this$0).get(this.jdField_a_of_type_Int), ((bnsw)AEEditorImageEditFragment.a(this.this$0).get(this.jdField_a_of_type_Int)).a);
     if (localBitmap == null)
     {
-      bmbx.d("AEEditorImageEditFragment", "bitmap null error.");
+      bnrh.d("AEEditorImageEditFragment", "bitmap null error.");
       return;
     }
     AEEditorImageEditFragment.a(this.this$0, localBitmap, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);

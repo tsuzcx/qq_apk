@@ -1,19 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.home.Conversation;
+import mqq.app.QQPermissionCallback;
 
-public class adua
-  implements View.OnClickListener
+class adua
+  implements QQPermissionCallback
 {
-  public adua(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  adua(adtz paramadtz, View paramView) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    PublicFragmentActivity.a(this.a, TempMsgSettingFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    bhdj.a(adtz.a(this.jdField_a_of_type_Adtz).a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Adtz.b(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

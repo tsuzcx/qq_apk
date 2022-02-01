@@ -1,76 +1,147 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
 import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.text.QQTextBuilder;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.api.QZoneApiProxy;
+import cooperation.qzone.publishInterface.QzonePublishMoodCallback;
+import cooperation.qzone.widget.QzoneEmotionUtils;
+import java.lang.reflect.Method;
+import java.util.Iterator;
+import java.util.List;
 
 public class aztr
-  extends QIPCModule
 {
-  private static aztr jdField_a_of_type_Aztr;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  public static int a = -16692;
+  public static int b = -16693;
   
-  private aztr(String paramString)
+  public static Drawable a(int paramInt)
   {
-    super(paramString);
+    Iterator localIterator = aztq.a.iterator();
+    while (localIterator.hasNext())
+    {
+      aztw localaztw = (aztw)localIterator.next();
+      if (paramInt == localaztw.jdField_a_of_type_Long) {
+        return localaztw.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
+      }
+    }
+    return null;
   }
   
-  public static aztr a()
+  private static Class<?> a(Context paramContext, String paramString)
   {
-    if (jdField_a_of_type_Aztr != null) {
-      return jdField_a_of_type_Aztr;
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    Object localObject1 = null;
+    try
     {
-      if (jdField_a_of_type_Aztr == null) {
-        jdField_a_of_type_Aztr = new aztr("REAL_NAME");
-      }
-      aztr localaztr = jdField_a_of_type_Aztr;
-      return localaztr;
+      localObject2 = Class.forName(paramString);
+      localObject1 = localObject2;
     }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("RealName", 2, "onCall s: " + paramString);
-    }
-    if (paramBundle == null) {}
-    do
+    catch (Throwable localThrowable)
     {
-      return null;
-      paramInt = paramBundle.getInt("result");
-      paramBundle = paramBundle.getString("source");
-      if (QLog.isColorLevel()) {
-        QLog.i("RealName", 2, "result is : " + paramInt);
-      }
-      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramBundle != null) && (paramString != null) && (TextUtils.equals(paramBundle, "avgame")))
+      for (;;)
       {
-        paramBundle = (ampt)paramString.getBusinessHandler(4);
-        if (paramBundle != null)
+        try
         {
-          if (paramInt == 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            if (bool) {
-              paramString.getPreferences().edit().putBoolean("has_auth_real_name_av", bool).commit();
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("RealName", 2, "notifyUI");
-            }
-            paramBundle.notifyUI(15, true, new Object[] { Boolean.valueOf(bool) });
-            return null;
-          }
+          Object localObject2 = QzonePluginProxyActivity.getQZonePluginClassLoader(paramContext).loadClass(paramString);
+          return localObject2;
+        }
+        catch (Throwable paramContext)
+        {
+          QLog.e("StickyNotePublishUtils", 1, "loadQZoneClass, failed to load class from qzone plugin class loader.");
+        }
+        localThrowable = localThrowable;
+        QLog.e("StickyNotePublishUtils", 1, "loadQZoneClass, failed to load class from normal class loader.");
+      }
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {}
+    return localObject1;
+  }
+  
+  public static String a(EditText paramEditText)
+  {
+    if (paramEditText != null)
+    {
+      if ((paramEditText.getText() instanceof QQTextBuilder))
+      {
+        QQTextBuilder localQQTextBuilder = (QQTextBuilder)paramEditText.getText();
+        if (localQQTextBuilder != null) {
+          return localQQTextBuilder.toPlainText();
         }
       }
-    } while ((paramInt == 0) || (paramString == null));
-    ((ampt)paramString.getBusinessHandler(4)).f();
+      if ((paramEditText != null) && (paramEditText.getEditableText() != null)) {
+        return paramEditText.getEditableText().toString();
+      }
+    }
     return null;
+  }
+  
+  public static void a(Context paramContext, long paramLong1, long paramLong2, String paramString, boolean paramBoolean, QzonePublishMoodCallback paramQzonePublishMoodCallback)
+  {
+    try
+    {
+      paramContext = a(paramContext, "com.qzone.publish.stickynote.StickyNotePublishProxy");
+      if (paramContext != null) {
+        paramContext.getMethod("modifyStickyNotePriv", new Class[] { Long.TYPE, Long.TYPE, String.class, Boolean.TYPE, QzonePublishMoodCallback.class }).invoke(null, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString, Boolean.valueOf(paramBoolean), paramQzonePublishMoodCallback });
+      }
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("StickyNotePublishUtils", 1, "modifyStickyNotePriv fail.", paramContext);
+    }
+  }
+  
+  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, QzonePublishMoodCallback paramQzonePublishMoodCallback)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickyNotePublishUtils", 0, String.format("publishStickyNote, hostUin=%s publishUin=%s isPublic=%s bgColor=%s bgVersion=%s vasExtendInfo=%s content=%s callback=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3, paramString4, paramQzonePublishMoodCallback }));
+    }
+    if ((paramContext == null) || (paramQQAppInterface == null) || (paramLong1 == 0L) || (paramLong2 == 0L) || (TextUtils.isEmpty(paramString4))) {
+      QLog.e("StickyNotePublishUtils", 1, "publishStickyNote, params invalid.");
+    }
+    for (;;)
+    {
+      return;
+      boolean bool1 = QZoneApiProxy.initEnv(paramContext, paramQQAppInterface);
+      boolean bool2 = QZoneApiProxy.initServlet(paramContext, paramQQAppInterface);
+      if ((!bool1) || (!bool2))
+      {
+        QLog.e("StickyNotePublishUtils", 1, String.format("publishStickyNote, init fail. initEnv=%s initServlet=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+        return;
+      }
+      try
+      {
+        paramContext = a(paramContext, "com.qzone.publish.stickynote.StickyNotePublishProxy");
+        if (paramContext != null)
+        {
+          paramContext.getMethod("publishStickyNote", new Class[] { Long.TYPE, Long.TYPE, Boolean.TYPE, String.class, String.class, String.class, String.class, QzonePublishMoodCallback.class }).invoke(null, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3, paramString4, paramQzonePublishMoodCallback });
+          return;
+        }
+      }
+      catch (Exception paramContext)
+      {
+        QLog.e("StickyNotePublishUtils", 1, "publishStickyNote fail.", paramContext);
+      }
+    }
+  }
+  
+  public static String b(EditText paramEditText)
+  {
+    if (paramEditText != null)
+    {
+      paramEditText = a(paramEditText);
+      if (!TextUtils.isEmpty(paramEditText)) {
+        return QzoneEmotionUtils.splash2Emo(paramEditText.replaceAll(anvx.a(2131705275), anvx.a(2131705277)).replaceAll(anvx.a(2131705274), "/MM").replaceAll(BaseApplicationImpl.sApplication.getResources().getString(2131717027), "/chigua"));
+      }
+    }
+    return "";
   }
 }
 

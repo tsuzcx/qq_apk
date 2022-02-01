@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import acyr;
+import adpd;
 
 class TroopAIOEmotionFragment$2$1
   implements Runnable

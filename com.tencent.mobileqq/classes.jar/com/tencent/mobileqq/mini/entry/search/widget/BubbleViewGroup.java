@@ -102,7 +102,7 @@ public class BubbleViewGroup
       paramInt1 = 0;
       if ((paramInt1 >= i1) || (this.mRowLayoutList.size() >= 3))
       {
-        if ((BubbleViewGroup.WarpLine.access$200(localWarpLine).size() > 0) && (!this.mRowLayoutList.contains(localWarpLine)) && (this.mRowLayoutList.size() < 2)) {
+        if ((BubbleViewGroup.WarpLine.access$200(localWarpLine).size() > 0) && (!this.mRowLayoutList.contains(localWarpLine)) && (this.mRowLayoutList.size() < 3)) {
           this.mRowLayoutList.add(localWarpLine);
         }
         paramInt1 = getPaddingTop() + getPaddingBottom();

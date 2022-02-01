@@ -1,12 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class bekm
-  implements bjoi
+  implements DialogInterface.OnClickListener
 {
-  bekm(bekk parambekk) {}
+  bekm(bekj parambekj, String paramString, int paramInt) {}
   
-  public void ab_()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (bekk.a(this.a) != null) {
-      bekk.a(this.a).a();
+    bekj localbekj = this.jdField_a_of_type_Bekj;
+    String str2 = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Int == 8) {}
+    for (String str1 = "clk_openframe_cancel";; str1 = "clk_joinbar_cancel")
+    {
+      bekj.a(localbekj, str2, str1);
+      paramDialogInterface.dismiss();
+      return;
     }
   }
 }

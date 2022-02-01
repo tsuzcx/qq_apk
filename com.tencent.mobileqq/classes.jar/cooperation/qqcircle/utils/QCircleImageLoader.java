@@ -28,8 +28,8 @@ public class QCircleImageLoader
   public static URLDrawable.URLDrawableOptions getDraftDefaultOptions(URLImageView paramURLImageView)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841659);
-    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843996);
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841669);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844042);
     if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
     {
       localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
@@ -42,8 +42,8 @@ public class QCircleImageLoader
   public static URLDrawable.URLDrawableOptions getSubDefaultURLDrawableOptions(URLImageView paramURLImageView)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846526);
-    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843996);
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846622);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844042);
     if (paramURLImageView.getLayoutParams() != null)
     {
       localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;

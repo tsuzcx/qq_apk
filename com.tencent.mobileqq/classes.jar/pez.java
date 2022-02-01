@@ -1,19 +1,16 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
 class pez
-  implements AbsListView.OnScrollListener
+  extends pfe
 {
-  pez(pey parampey) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  pez(pdv parampdv, BaseCommentData paramBaseCommentData)
   {
-    this.a.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    super(parampdv, null);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  void a(pfh parampfh)
   {
-    this.a.a(paramAbsListView, paramInt);
+    parampfh.onCommentReply(true, new pdp(0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, pdv.a(this.jdField_a_of_type_Pdv)));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import amsw;
 import android.support.v4.app.FragmentActivity;
+import anvk;
 import com.tencent.qphone.base.util.QLog;
 
 class FrameHelperActivity$3
@@ -22,10 +22,10 @@ class FrameHelperActivity$3
         localObject = ((FragmentActivity)localObject).app;
         if (localObject != null)
         {
-          amsw localamsw = (amsw)((QQAppInterface)localObject).getManager(51);
-          if (localamsw != null)
+          anvk localanvk = (anvk)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER);
+          if (localanvk != null)
           {
-            FrameHelperActivity.a(this.this$0, localamsw.b(((QQAppInterface)localObject).getCurrentAccountUin()));
+            FrameHelperActivity.a(this.this$0, localanvk.b(((QQAppInterface)localObject).getCurrentAccountUin()));
             return;
           }
         }

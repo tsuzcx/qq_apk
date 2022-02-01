@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
-import java.util.Comparator;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-final class atxb
-  implements Comparator<PadFaceAd>
+class atxb
+  implements atvq
 {
-  public int a(PadFaceAd paramPadFaceAd1, PadFaceAd paramPadFaceAd2)
+  atxb(atxa paramatxa, String paramString) {}
+  
+  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    if (paramPadFaceAd1.startTime < paramPadFaceAd2.startTime) {
-      return -1;
+    paramString = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      paramString.addAll(paramList);
+      if (this.jdField_a_of_type_Atxa.jdField_a_of_type_Atuw != null) {
+        this.jdField_a_of_type_Atxa.jdField_a_of_type_Atuw.c();
+      }
     }
-    if (paramPadFaceAd1.startTime == paramPadFaceAd2.startTime) {
-      return 0;
-    }
-    return 1;
+    this.jdField_a_of_type_Atxa.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramString);
   }
 }
 

@@ -1,22 +1,57 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class mev
-  implements View.OnLayoutChangeListener
+  implements lrz
 {
-  mev(meu parammeu) {}
+  mev(meu parammeu, VideoAppInterface paramVideoAppInterface) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a()
   {
+    meu.c(this.jdField_a_of_type_Meu);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = meu.a(paramInt4);
     if (QLog.isColorLevel()) {
-      QLog.e("MemberPagerAdapter", 2, String.format("view : left[%s], top[%s], right[%s], bottom[%s], oldLeft[%s], oldTop[%s], oldRight[%s], oldBottom[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8) }));
+      QLog.w(meu.a(this.jdField_a_of_type_Meu), 1, "onRenderInfoNotify, width[" + this.jdField_a_of_type_Meu.w + "->" + paramInt1 + "], height[" + this.jdField_a_of_type_Meu.x + "->" + paramInt2 + "], angle[" + this.jdField_a_of_type_Meu.v + "->" + paramInt3 + "], rotation[" + meu.a(this.jdField_a_of_type_Meu) + "->" + i + "], srcR[" + paramInt4 + "], isLocalView[" + this.jdField_a_of_type_Meu.c() + "]");
     }
+    if ((!this.jdField_a_of_type_Meu.c()) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10004), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    }
+    this.jdField_a_of_type_Meu.w = paramInt1;
+    this.jdField_a_of_type_Meu.x = paramInt2;
+    this.jdField_a_of_type_Meu.v = paramInt3;
+    this.jdField_a_of_type_Meu.i = i;
+    if (paramInt4 != -1) {
+      meu.a(this.jdField_a_of_type_Meu, i);
+    }
+    meu.d(this.jdField_a_of_type_Meu);
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    {
+      String str = this.jdField_a_of_type_Meu.c();
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(130), str, paramArrayOfByte });
+    }
+  }
+  
+  public void b()
+  {
+    meu.b(this.jdField_a_of_type_Meu);
+  }
+  
+  public void c()
+  {
+    meu.a(this.jdField_a_of_type_Meu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mev
  * JD-Core Version:    0.7.0.1
  */

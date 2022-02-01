@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.Arrays;
-import xvv;
+import ykq;
 
 @TargetApi(14)
 class Util
@@ -42,7 +42,7 @@ class Util
     }
     catch (IOException paramInputStream)
     {
-      xvv.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
+      ykq.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
       return null;
     }
     return paramInputStream;
@@ -92,7 +92,7 @@ class Util
       if (!paramFFmpegExecuteAsyncTask.isCancelled()) {
         paramFFmpegExecuteAsyncTask.cancel(true);
       }
-      xvv.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramFFmpegExecuteAsyncTask.cmd) });
+      ykq.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramFFmpegExecuteAsyncTask.cmd) });
     }
   }
   

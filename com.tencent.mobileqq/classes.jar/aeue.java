@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import mqq.app.AppActivity;
 
 public class aeue
-  implements Comparator<MessageRecord>
+  implements DialogInterface.OnClickListener
 {
-  public aeue(ActivateFriendActivity paramActivateFriendActivity) {}
+  public aeue(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, AppActivity paramAppActivity) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l2 = paramMessageRecord1.time - paramMessageRecord2.time;
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = paramMessageRecord1.getId() - paramMessageRecord2.getId();
+    if (paramInt == 1)
+    {
+      RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, true);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.a.a(this.jdField_a_of_type_MqqAppAppActivity, false)) {
+        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).b();
+      }
     }
-    if (l1 > 0L) {
-      return -1;
-    }
-    if (l1 < 0L) {
-      return 1;
-    }
-    return 0;
   }
 }
 

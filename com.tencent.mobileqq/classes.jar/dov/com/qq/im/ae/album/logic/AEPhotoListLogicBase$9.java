@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bllh;
-import bllm;
-import blmi;
+import bmyq;
+import bmyv;
+import bmzr;
 import mqq.util.WeakReference;
 
 public class AEPhotoListLogicBase$9
   implements Runnable
 {
-  public AEPhotoListLogicBase$9(blmi paramblmi) {}
+  public AEPhotoListLogicBase$9(bmzr parambmzr) {}
   
   public void run()
   {
-    ((bllh)this.this$0.a.get()).a.notifyDataSetChanged();
+    ((bmyq)this.this$0.a.get()).a.notifyDataSetChanged();
   }
 }
 

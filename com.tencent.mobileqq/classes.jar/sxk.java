@@ -1,10 +1,22 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
 
-public class sxk
+class sxk
+  implements Animation.AnimationListener
 {
-  public TextView a;
-  public SquareImageView a;
+  sxk(sxi paramsxi, ImageView paramImageView, boolean paramBoolean) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(sxi.a(this.jdField_a_of_type_Sxi, this.jdField_a_of_type_Boolean));
+    paramAnimation.setInterpolator(new AnticipateInterpolator());
+  }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

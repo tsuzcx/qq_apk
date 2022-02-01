@@ -1,45 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class amac
-  implements TVK_SDKMgr.OnLogListener
+final class amac
+  implements DialogInterface.OnClickListener
 {
-  public static String a = "cmgame_process.CmGameVideoLogImpl";
+  amac(Context paramContext) {}
   
-  public int d(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    QLog.e(a, 1, paramString1 + ":" + paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    QLog.w(a, 1, paramString1 + ":" + paramString2);
-    return 0;
+    ((Activity)this.a).finish();
   }
 }
 

@@ -1,29 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
 class ChatSettingForTroop$42
   implements Runnable
 {
-  ChatSettingForTroop$42(ChatSettingForTroop paramChatSettingForTroop, TroopManager paramTroopManager) {}
+  ChatSettingForTroop$42(ChatSettingForTroop paramChatSettingForTroop, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
   
   public void run()
   {
-    TroopMemberInfo localTroopMemberInfo = this.a.b(this.this$0.a.troopUin, this.this$0.app.getCurrentAccountUin());
-    if (localTroopMemberInfo != null)
-    {
-      this.this$0.a.troopColorNick = localTroopMemberInfo.troopColorNick;
-      this.this$0.a.troopCard = localTroopMemberInfo.troopnick;
-      this.this$0.runOnUiThread(new ChatSettingForTroop.42.1(this));
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.42
  * JD-Core Version:    0.7.0.1
  */

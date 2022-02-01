@@ -1,17 +1,23 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
+import com.tencent.youtu.sdkkitframework.common.CommonUtils;
+import com.tencent.youtu.sdkkitframework.common.YtLogger;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
 import java.util.HashMap;
 
 class NetLivenessReqResultState$7
-  extends HashMap<String, Object>
+  implements YtSDKKitFramework.IYtSDKKitNetResponseParser
 {
-  NetLivenessReqResultState$7(NetLivenessReqResultState paramNetLivenessReqResultState, Exception paramException)
+  NetLivenessReqResultState$7(NetLivenessReqResultState paramNetLivenessReqResultState) {}
+  
+  public void onNetworkResponseEvent(HashMap<String, String> paramHashMap, Exception paramException)
   {
-    put("ui_action", "process_finished");
-    put("ui_tips", "rst_failed");
-    put("process_action", "failed");
-    put("error_code", Integer.valueOf(2097153));
-    put("message", this.val$e.getMessage());
+    CommonUtils.benchMarkEnd("reflect_request_s2");
+    CommonUtils.benchMarkBegin("reflect_request_s3");
+    YtLogger.i(NetLivenessReqResultState.access$000(), "handle reflection response");
+    NetLivenessReqResultState.access$100(this.this$0, paramHashMap, paramException);
+    CommonUtils.benchMarkEnd("reflect_request_s3");
+    NetLivenessReqResultState.access$200(this.this$0);
   }
 }
 

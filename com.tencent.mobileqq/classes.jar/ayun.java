@@ -1,16 +1,15 @@
-import com.tencent.TMG.utils.QLog;
-
-class ayun
-  extends ayus
+public class ayun
 {
-  ayun(ayum paramayum) {}
+  public int a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileAnonymousComponent", 0, "onLikeAnonymousAnswer() success = " + paramBoolean);
-    }
-  }
+  public ayun(ayul paramayul) {}
 }
 
 

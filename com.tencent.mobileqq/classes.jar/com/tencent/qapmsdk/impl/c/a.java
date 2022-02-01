@@ -2,8 +2,8 @@ package com.tencent.qapmsdk.impl.c;
 
 import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.network.NetworkWatcher;
-import com.tencent.qapmsdk.impl.instrumentation.g;
 import com.tencent.qapmsdk.impl.instrumentation.h;
+import com.tencent.qapmsdk.impl.instrumentation.i;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
@@ -19,33 +19,33 @@ public class a
 {
   private volatile boolean a = true;
   
-  public static void a(g paramg, String paramString, int paramInt1, int paramInt2)
+  public static void a(h paramh, String paramString, int paramInt1, int paramInt2)
   {
     if ((paramString != null) && (!"".equals(paramString))) {
-      paramg.d(paramString);
+      paramh.d(paramString);
     }
-    paramg.c(paramInt2);
+    paramh.c(paramInt2);
     if (paramInt1 >= 0)
     {
-      paramg.d(paramInt1);
+      paramh.d(paramInt1);
       return;
     }
-    paramg.d(0L);
+    paramh.d(0L);
   }
   
-  private static void a(g paramg, Request paramRequest)
+  private static void a(h paramh, Request paramRequest)
   {
-    h.b(paramg, paramg.b());
+    i.b(paramh, paramh.b());
     paramRequest = new a.1(paramRequest);
-    h.a(paramg.d(), paramRequest, paramg);
+    i.a(paramh.d(), paramRequest, paramh);
   }
   
-  private static void a(g paramg, Response paramResponse)
+  private static void a(h paramh, Response paramResponse)
   {
-    com.tencent.qapmsdk.impl.a.a.a locala = paramg.j();
+    com.tencent.qapmsdk.impl.a.a.a locala = paramh.j();
     if (locala != null)
     {
-      if (paramg.g() >= 400L)
+      if (paramh.g() >= 400L)
       {
         TreeMap localTreeMap = new TreeMap();
         paramResponse = paramResponse.headers();
@@ -62,8 +62,8 @@ public class a
           }
         }
         paramResponse = "";
-        if (paramg.k() != null) {
-          paramResponse = paramg.k();
+        if (paramh.k() != null) {
+          paramResponse = paramh.k();
         }
         com.tencent.qapmsdk.impl.d.a.a(locala, localTreeMap, paramResponse);
       }
@@ -74,16 +74,16 @@ public class a
     com.tencent.qapmsdk.impl.d.a.a(locala);
   }
   
-  public void a(g paramg, IOException paramIOException)
+  public void a(h paramh, IOException paramIOException)
   {
     com.tencent.qapmsdk.impl.a.a.a locala;
     if (b())
     {
       Logger.INSTANCE.d(new String[] { "QAPM_Impl_HttpDataCollect", "okhttp3.0 ->httpError" });
-      h.a(paramg, paramIOException);
-      if (!paramg.f())
+      i.a(paramh, paramIOException);
+      if (!paramh.f())
       {
-        locala = paramg.j();
+        locala = paramh.j();
         if (locala != null) {
           break label49;
         }
@@ -92,11 +92,11 @@ public class a
     return;
     label49:
     locala.a(com.tencent.qapmsdk.impl.b.b.d);
-    if (paramg.h())
+    if (paramh.h())
     {
       paramIOException = "";
-      if (paramg.k() != null) {
-        paramIOException = paramg.k();
+      if (paramh.k() != null) {
+        paramIOException = paramh.k();
       }
       Logger.INSTANCE.d(new String[] { "QAPM_Impl_HttpDataCollect", "okhttp3.0 ->error message:" + paramIOException });
       com.tencent.qapmsdk.impl.d.a.a(locala, paramIOException);
@@ -105,7 +105,7 @@ public class a
     com.tencent.qapmsdk.impl.d.a.a(locala);
   }
   
-  public void a(Request paramRequest, g paramg)
+  public void a(Request paramRequest, h paramh)
   {
     Object localObject2;
     Object localObject1;
@@ -125,21 +125,21 @@ public class a
     label131:
     for (;;)
     {
-      paramg.f((String)localObject2);
-      paramg.b((String)localObject1);
-      paramg.a((String)localObject1);
-      paramg.e(paramRequest.method());
-      h.a(paramg, paramRequest.method());
-      paramg.c(NetworkWatcher.INSTANCE.activeNetworkCarrier());
-      paramg.a(com.tencent.qapmsdk.impl.b.b.d);
+      paramh.f((String)localObject2);
+      paramh.b((String)localObject1);
+      paramh.a((String)localObject1);
+      paramh.e(paramRequest.method());
+      i.a(paramh, paramRequest.method());
+      paramh.c(NetworkWatcher.INSTANCE.activeNetworkCarrier());
+      paramh.a(com.tencent.qapmsdk.impl.b.b.d);
       if (localObject2 != null) {
-        a(paramg, paramRequest);
+        a(paramh, paramRequest);
       }
       return;
     }
   }
   
-  public void a(Response paramResponse, g paramg)
+  public void a(Response paramResponse, h paramh)
   {
     if (b())
     {
@@ -155,8 +155,8 @@ public class a
     if (localResponseBody == null) {}
     for (long l = 0L;; l = localResponseBody.contentLength())
     {
-      a(paramg, "", (int)l, i);
-      a(paramg, paramResponse);
+      a(paramh, "", (int)l, i);
+      a(paramh, paramResponse);
       return;
     }
   }

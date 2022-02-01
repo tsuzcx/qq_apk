@@ -1,40 +1,31 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.togetherui.writetogether.SavingAnimView;
 
 public class berg
-  extends beqz
+  implements Animator.AnimatorListener
 {
-  public berg(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 14;
-  }
+  public berg(SavingAnimView paramSavingAnimView) {}
   
-  @Nullable
-  public bera a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramLong1);
-    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
-      return new bera(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696707), bdyo.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+    SavingAnimView.a(this.a, 0);
+    if (SavingAnimView.a(this.a) != null) {
+      SavingAnimView.a(this.a).a();
     }
-    return null;
   }
   
-  public void a(int paramInt, Object paramObject, String paramString)
-  {
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Appear_topmsgcue_atall", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_at_all", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void b(int paramInt, Object paramObject, String paramString)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_topmsgcue_atall", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_at_all", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+    SavingAnimView.c(this.a, SavingAnimView.a(this.a));
+    SavingAnimView.d(this.a, SavingAnimView.d(this.a));
+    if (SavingAnimView.a(this.a) != null) {
+      SavingAnimView.a(this.a).d();
+    }
   }
 }
 

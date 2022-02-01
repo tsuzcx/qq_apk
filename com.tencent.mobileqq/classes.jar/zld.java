@@ -1,23 +1,25 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.HashMap;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class zld
-  implements zns
+  implements Comparator<String>
 {
-  public zld(VideoPlayerView paramVideoPlayerView) {}
+  public zld(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
+  public int a(String paramString1, String paramString2)
   {
-    if (VideoPlayerView.a(this.a) != null)
-    {
-      zxp.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "half_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
-      VideoPlayerView.a(this.a).poster.followState.set(1);
-      VideoPlayerView.a(this.a).put(VideoPlayerView.a(this.a).poster.id.get(), Boolean.valueOf(true));
+    int i = 1;
+    if ((paramString1 != null) && (paramString2 != null)) {
+      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
     }
+    while (paramString1 != null) {
+      return i;
+    }
+    if (paramString2 != null) {
+      return -1;
+    }
+    return 0;
   }
 }
 

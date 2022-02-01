@@ -1,8 +1,18 @@
-public abstract interface bamx
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+
+public class bamx
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(bhby parambhby);
+  public int a;
+  public View a;
   
-  public abstract boolean a(bhby parambhby);
+  public bamx(bamw parambamw, int paramInt, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
 }
 
 

@@ -1,60 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
 
-public abstract class yqc
+public class yqc
+  implements Animation.AnimationListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new yqd(this);
-  View jdField_a_of_type_AndroidViewView;
-  ypx jdField_a_of_type_Ypx;
-  ypy jdField_a_of_type_Ypy;
-  yqe jdField_a_of_type_Yqe;
-  boolean b = false;
+  public yqc(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
   
-  public yqc(yqe paramyqe, View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Yqe = paramyqe;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(float paramFloat) {}
-  
-  public void a(CharSequence paramCharSequence) {}
-  
-  void a(ypx paramypx)
-  {
-    this.jdField_a_of_type_Ypx = paramypx;
-  }
-  
-  public void a(ypy paramypy)
-  {
-    this.jdField_a_of_type_Ypy = paramypy;
-    if (this.jdField_a_of_type_Ypy != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      return;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
     }
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
-    this.jdField_a_of_type_AndroidViewView.setClickable(false);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.b != paramBoolean)
-    {
-      this.b = paramBoolean;
-      ypx localypx = this.jdField_a_of_type_Ypx;
-      if (localypx != null) {
-        localypx.a(this, paramBoolean);
-      }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
     }
   }
   
-  public boolean a()
-  {
-    return this.b;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void d(boolean paramBoolean) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

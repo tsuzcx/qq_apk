@@ -1,41 +1,25 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class alru
-  extends alrs
+class alru
+  implements Handler.Callback
 {
-  public void a(alrw paramalrw, Bitmap paramBitmap)
-  {
-    if ((paramBitmap == null) || (paramalrw == null) || (TextUtils.isEmpty(paramalrw.jdField_a_of_type_JavaLangCharSequence))) {
-      return;
-    }
-    String str2 = paramalrw.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    paramalrw = str1 + paramalrw.jdField_a_of_type_JavaLangCharSequence;
-    this.a.put(paramalrw, new WeakReference(paramBitmap));
-  }
+  alru(alrt paramalrt) {}
   
-  public Bitmap b(alrw paramalrw)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((paramalrw == null) || (TextUtils.isEmpty(paramalrw.jdField_a_of_type_JavaLangCharSequence))) {
-      return null;
+    switch (paramMessage.what)
+    {
     }
-    String str2 = paramalrw.jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
+    for (;;)
+    {
+      return false;
+      this.a.a(null);
+      continue;
+      if (alrt.a(this.a) != null) {
+        alrt.a(this.a).e();
+      }
     }
-    paramalrw = str1 + paramalrw.jdField_a_of_type_JavaLangCharSequence;
-    paramalrw = (WeakReference)this.a.get(paramalrw);
-    if (paramalrw != null) {
-      return (Bitmap)paramalrw.get();
-    }
-    return null;
   }
 }
 

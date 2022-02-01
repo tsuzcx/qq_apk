@@ -1,24 +1,28 @@
-import android.support.annotation.NonNull;
-import java.util.HashSet;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class qpg
+class qpg
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public Set<String> a;
-  public Set<String> b = new HashSet();
+  qpg(qpa paramqpa, qfw paramqfw, Container paramContainer, int paramInt) {}
   
-  public qpg()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "time:" + this.jdField_a_of_type_Long + "effectTime:" + this.jdField_a_of_type_Int + "  " + this.jdField_a_of_type_JavaUtilSet + "  " + this.b;
+    Object localObject = this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.a;
+    ArrayList localArrayList = ((rrl)localObject).a;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = (rrm)((rrl)localObject).a.get(0);
+      qpa.a(this.jdField_a_of_type_Qpa, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Qfw.a(), (int)((rrm)localObject).a, this.jdField_a_of_type_Qfw.a().innerUniqueID, this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Qfw.a());
+    }
   }
 }
 

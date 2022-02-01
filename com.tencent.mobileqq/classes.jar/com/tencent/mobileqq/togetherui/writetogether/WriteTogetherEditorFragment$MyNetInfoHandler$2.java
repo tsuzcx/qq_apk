@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.togetherui.writetogether;
 
-import bdkv;
+import bery;
 
 public class WriteTogetherEditorFragment$MyNetInfoHandler$2
   implements Runnable
 {
-  public WriteTogetherEditorFragment$MyNetInfoHandler$2(bdkv parambdkv) {}
+  public WriteTogetherEditorFragment$MyNetInfoHandler$2(bery parambery) {}
   
   public void run()
   {

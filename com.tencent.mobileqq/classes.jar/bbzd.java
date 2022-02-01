@@ -1,65 +1,12 @@
-import com.tencent.mobileqq.soload.LoadOptions;
-
-public class bbzd
+public abstract interface bbzd
 {
-  private LoadOptions a = new LoadOptions();
+  public abstract void a(long paramLong);
   
-  bbzd a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      localLoadOptions = this.a;
-      localLoadOptions.flag |= 0x1;
-      return this;
-    }
-    LoadOptions localLoadOptions = this.a;
-    localLoadOptions.flag &= 0xFFFFFFFE;
-    return this;
-  }
+  public abstract void a(String paramString);
   
-  public LoadOptions a()
-  {
-    return this.a;
-  }
+  public abstract long b();
   
-  bbzd b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      localLoadOptions = this.a;
-      localLoadOptions.flag |= 0x8;
-      return this;
-    }
-    LoadOptions localLoadOptions = this.a;
-    localLoadOptions.flag &= 0xFFFFFFF7;
-    return this;
-  }
-  
-  bbzd c(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      localLoadOptions = this.a;
-      localLoadOptions.flag |= 0x10;
-      return this;
-    }
-    LoadOptions localLoadOptions = this.a;
-    localLoadOptions.flag &= 0xFFFFFFEF;
-    return this;
-  }
-  
-  bbzd d(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      localLoadOptions = this.a;
-      localLoadOptions.flag |= 0x20;
-      return this;
-    }
-    LoadOptions localLoadOptions = this.a;
-    localLoadOptions.flag &= 0xFFFFFFDF;
-    return this;
-  }
+  public abstract long c();
 }
 
 

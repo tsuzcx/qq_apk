@@ -1,33 +1,17 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateInfo;
 
 public class beer
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    ((AppInterface)getAppRuntime()).getTroopFileProtoReqMgr().a(paramIntent, paramFromServiceMsg);
-  }
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public AsyncImageView a;
+  public GroupPadTemplateInfo a;
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent == null) {
-      return;
-    }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bgau.a(arrayOfByte));
-    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-    boolean bool = paramIntent.getBooleanExtra("fastresendenable", false);
-    paramPacket.addAttribute("fastresend", Boolean.valueOf(bool));
-    paramPacket.autoResend = bool;
-    paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
-    paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(paramIntent.getBooleanExtra("remind_slown_network", true)));
-  }
+  public beer(beep parambeep) {}
 }
 
 

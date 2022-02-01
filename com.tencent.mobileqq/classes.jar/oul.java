@@ -1,37 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
-public final class oul
-  implements Parcelable.Creator<AnchorData>
+public class oul
+  implements bkzs
 {
-  public AnchorData a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    AnchorData localAnchorData = new AnchorData();
-    localAnchorData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localAnchorData.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localAnchorData.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label67;
-      }
-    }
-    label67:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localAnchorData.jdField_b_of_type_Boolean = bool1;
-      return localAnchorData;
-      bool1 = false;
-      break;
-    }
-  }
+  public oul(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public AnchorData[] a(int paramInt)
+  public void onDismiss()
   {
-    return new AnchorData[paramInt];
+    boolean bool = true;
+    ReadInJoySettingActivity.a(this.a, true);
+    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
+    if (!ReadInJoySettingActivity.a(this.a)) {}
+    for (;;)
+    {
+      localSwitch.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return;
+      bool = false;
+    }
   }
 }
 

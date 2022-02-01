@@ -263,6 +263,26 @@
                   "right_of_view": "id_info_avator",
                   "below_of_view": "id_nickname_wrapper",
                   "margin_left": "4",
+                  "margin_right": "4",
+                  "height": {
+                    "type": "absolutely",
+                    "value": "16"
+                  },
+                  "width": {
+                    "type": "wrap_content"
+                  },
+                  "attributes": {
+                    "setText:": "$biu_time_text",
+                    "setTextColorString:": "#B0B3BF",
+                    "setFontSizeString:": "11",
+                    "setNumberOfLinesString:": "1"
+                  }
+                },
+                {
+                  "view_type": "UILabel",
+                  "view_id": "id_extra_info",
+                  "right_of_view": "id_biu_time",
+                  "below_of_view": "id_nickname_wrapper",
                   "height": {
                     "type": "absolutely",
                     "value": "16"
@@ -271,7 +291,7 @@
                     "type": "match_parent"
                   },
                   "attributes": {
-                    "setText:": "$biu_time_text",
+                    "setText:": "$header_extra_info",
                     "setTextColorString:": "#B0B3BF",
                     "setFontSizeString:": "11",
                     "setNumberOfLinesString:": "1"

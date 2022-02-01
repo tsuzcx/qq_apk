@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import abwx;
-import adxt;
-import adxu;
+import acnf;
+import aeoy;
+import aeoz;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
@@ -22,12 +22,12 @@ public class QQBroadcastActivity
   extends BaseSystemActivity
   implements Observer
 {
-  public adxu a;
+  public aeoz a;
   public Handler a;
   
   public QQBroadcastActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new adxt(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aeoy(this);
   }
   
   private void c()
@@ -47,10 +47,10 @@ public class QQBroadcastActivity
     }
     for (;;)
     {
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131718771) + "(" + i + ")"));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131719161) + "(" + i + ")"));
       return;
       label79:
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131718771)));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131719161)));
       return;
       label99:
       i = j;
@@ -64,15 +64,15 @@ public class QQBroadcastActivity
   
   protected CursorAdapter a()
   {
-    if (this.jdField_a_of_type_Adxu == null) {
-      this.jdField_a_of_type_Adxu = new adxu(this, this, this.app.getMessageProxy(0).a(a(), 0));
+    if (this.jdField_a_of_type_Aeoz == null) {
+      this.jdField_a_of_type_Aeoz = new aeoz(this, this, this.app.getMessageProxy(0).a(a(), 0));
     }
-    return this.jdField_a_of_type_Adxu;
+    return this.jdField_a_of_type_Aeoz;
   }
   
   protected CharSequence a()
   {
-    return getString(2131718750);
+    return getString(2131719140);
   }
   
   public String a()
@@ -112,8 +112,8 @@ public class QQBroadcastActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Adxu != null) {
-      this.jdField_a_of_type_Adxu.changeCursor(null);
+    if (this.jdField_a_of_type_Aeoz != null) {
+      this.jdField_a_of_type_Aeoz.changeCursor(null);
     }
   }
   
@@ -124,7 +124,7 @@ public class QQBroadcastActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBroadcastActivity
  * JD-Core Version:    0.7.0.1
  */

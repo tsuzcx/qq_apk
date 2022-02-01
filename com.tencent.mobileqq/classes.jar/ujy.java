@@ -1,31 +1,22 @@
-import android.view.View;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class ujy
-  implements URLDrawableDownListener
+public class ujy
 {
-  ujy(ujx paramujx) {}
+  private CopyOnWriteArrayList<String> a = new CopyOnWriteArrayList();
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void a(Context paramContext, qfw paramqfw, int paramInt1, int paramInt2)
   {
-    ujx.a(this.a);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    ujx.a(this.a);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    ujx.a(this.a);
-    AbstractGifImage.resumeAll();
+    if ((this.a == null) || (paramqfw.a() == null) || (paramqfw.a().mSmallMiniGameInfo == null) || (paramqfw.a().mSmallMiniGameInfo.a == null)) {}
+    String str;
+    do
+    {
+      return;
+      str = paramqfw.a().mSmallMiniGameInfo.b + "_" + ((ugf)paramqfw.a().mSmallMiniGameInfo.a.get(paramInt1)).a;
+    } while (this.a.contains(str));
+    this.a.add(str);
+    ois.a(paramContext, paramqfw.a(), paramqfw.g(), paramInt1, paramInt2);
   }
 }
 

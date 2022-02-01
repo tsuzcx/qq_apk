@@ -1,22 +1,25 @@
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.RichStatus;
+
 public class aert
+  implements bbtg
 {
-  public int a;
-  public String a = "";
-  public int b;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = "";
+  public aert(QQSettingMe paramQQSettingMe) {}
+  
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  {
+    if (this.a.c)
+    {
+      if (paramInt != 100) {
+        this.a.a(2131690749);
+      }
+      this.a.y();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

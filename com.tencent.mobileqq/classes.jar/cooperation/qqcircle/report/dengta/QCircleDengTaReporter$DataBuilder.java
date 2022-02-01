@@ -65,6 +65,121 @@ public class QCircleDengTaReporter$DataBuilder
     }
   }
   
+  public String getActionType()
+  {
+    return this.actionType;
+  }
+  
+  public String getAuthorUin()
+  {
+    return this.authorUin;
+  }
+  
+  public String getElementId()
+  {
+    return this.elementId;
+  }
+  
+  public String getExt1()
+  {
+    return this.ext1;
+  }
+  
+  public String getExt2()
+  {
+    return this.ext2;
+  }
+  
+  public String getExt3()
+  {
+    return this.ext3;
+  }
+  
+  public String getExt4()
+  {
+    return this.ext4;
+  }
+  
+  public String getExt5()
+  {
+    return this.ext5;
+  }
+  
+  public String getExt6()
+  {
+    return this.ext6;
+  }
+  
+  public String getExt7()
+  {
+    return this.ext7;
+  }
+  
+  public String getExt8()
+  {
+    return this.ext8;
+  }
+  
+  public String getFeedId()
+  {
+    return this.feedId;
+  }
+  
+  public int getFeedIndex()
+  {
+    return this.feedIndex;
+  }
+  
+  public String getFeedTag()
+  {
+    return this.feedTag;
+  }
+  
+  public int getFeedType1()
+  {
+    return this.feedType1;
+  }
+  
+  public int getFeedType2()
+  {
+    return this.feedType2;
+  }
+  
+  public int getFeedType3()
+  {
+    return this.feedType3;
+  }
+  
+  public int getPositionIndex()
+  {
+    return this.positionIndex;
+  }
+  
+  public String getQqToUin()
+  {
+    return this.qqToUin;
+  }
+  
+  public QCircleReportBean getReportBean()
+  {
+    return this.reportBean;
+  }
+  
+  public String getVideoPlayTime()
+  {
+    return this.videoPlayTime;
+  }
+  
+  public String getVideoTotalTime()
+  {
+    return this.videoTotalTime;
+  }
+  
+  public boolean isReaded()
+  {
+    return this.isReaded;
+  }
+  
   public DataBuilder setActionType(String paramString)
   {
     this.actionType = paramString;

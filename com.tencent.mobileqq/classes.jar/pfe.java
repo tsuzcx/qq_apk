@@ -1,17 +1,8 @@
-import java.util.List;
-
-class pfe
-  extends pse
+public abstract class pfe
 {
-  pfe(pey parampey, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
-  {
-    super(paramString);
-  }
+  private pfe(pdv parampdv) {}
   
-  public void a(prx paramprx)
-  {
-    paramprx.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
-  }
+  public abstract void a(pfh parampfh);
 }
 
 

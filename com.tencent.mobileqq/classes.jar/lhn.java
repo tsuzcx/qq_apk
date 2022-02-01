@@ -1,13 +1,9 @@
-import com.tencent.ttpic.util.Coffee;
-import com.tencent.ttpic.util.DecryptListener;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 
-final class lhn
-  implements DecryptListener
+public abstract interface lhn
 {
-  public byte[] decrypt(byte[] paramArrayOfByte)
-  {
-    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
-  }
+  public abstract void a(Bitmap paramBitmap1, Bitmap paramBitmap2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, Rect paramRect);
 }
 
 

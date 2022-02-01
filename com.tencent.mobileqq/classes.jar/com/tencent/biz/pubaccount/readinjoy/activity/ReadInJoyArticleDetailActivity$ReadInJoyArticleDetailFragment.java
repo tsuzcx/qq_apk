@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import aacg;
-import acjr;
+import aars;
+import adaa;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,12 +16,12 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bfvo;
-import bgtw;
-import bgvt;
-import bgww;
-import bgxd;
-import bkwm;
+import bheg;
+import bieo;
+import bigl;
+import biho;
+import bihv;
+import bmhv;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -39,9 +39,9 @@ import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import oko;
-import tpo;
-import ugf;
+import osl;
+import ude;
+import uuc;
 
 public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
   extends WebViewFragment
@@ -55,6 +55,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
   public boolean b;
   public long c;
   public long d;
+  public long e;
   
   static
   {
@@ -107,7 +108,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
         ThreadManager.post(new ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.3(this, l2, l1, i, bool), 8, null, true);
       }
       return;
-      if (bgxd.s)
+      if (bihv.s)
       {
         i = 1;
         break;
@@ -116,7 +117,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       break;
       label103:
       i = j;
-      if (!bgxd.r) {
+      if (!bihv.r) {
         i = 0;
       }
     }
@@ -131,9 +132,9 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     ThreadManager.getUIHandler().post(new ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2(this));
   }
   
-  public bgvt createComponentsProvider()
+  public bigl createComponentsProvider()
   {
-    return new bgvt(this, 127, new oko(this));
+    return new bigl(this, 127, new osl(this));
   }
   
   @TargetApi(12)
@@ -142,11 +143,11 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     Bundle localBundle = this.intent.getExtras();
     Object localObject = localBundle.getString("url");
-    String str = tpo.a.a((String)localObject);
+    String str = ude.a.a((String)localObject);
     localObject = str;
-    if (ugf.f(str))
+    if (uuc.f(str))
     {
-      localObject = ugf.a(str);
+      localObject = uuc.a(str);
       localBundle.putString("url", (String)localObject);
       this.intent.putExtra("url", (String)localObject);
     }
@@ -159,9 +160,9 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       paramBundle = localBundle.getString("preload_iamge_url");
       if (this.mPluginEngine != null)
       {
-        localObject = (aacg)this.mPluginEngine.a("pubAccountPreload");
+        localObject = (aars)this.mPluginEngine.a("pubAccountPreload");
         if ((localObject != null) && (!TextUtils.isEmpty(paramBundle))) {
-          ((aacg)localObject).a(paramBundle, true);
+          ((aars)localObject).a(paramBundle, true);
         }
       }
       b();
@@ -177,6 +178,28 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     }
   }
   
+  public Object handlerMiscCallback(String paramString, Bundle paramBundle)
+  {
+    String str;
+    if ((TextUtils.equals("netTimeConsumingReport", paramString)) && (paramBundle != null) && (paramBundle.containsKey("firstbyte"))) {
+      str = paramBundle.getString("firstword");
+    }
+    try
+    {
+      if (!TextUtils.isEmpty(str)) {
+        this.e = Long.parseLong(str);
+      }
+      return super.handlerMiscCallback(paramString, paramBundle);
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "[handlerMiscCallback] e = " + localNumberFormatException);
+      }
+    }
+  }
+  
   public void initTitleBar(Intent paramIntent, String paramString)
   {
     super.initTitleBar(paramIntent, paramString);
@@ -185,7 +208,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       if ((this.mUIStyleHandler.mUIStyle.isTransparentTitle) || (this.mUIStyle.isTransparentTitleAndClickable)) {
         break label94;
       }
-      this.mSwiftTitleUI.rightViewImg.setImageResource(2130849438);
+      this.mSwiftTitleUI.rightViewImg.setImageResource(2130849530);
       this.mSwiftTitleUI.setConversationBtnColor(-16777216);
     }
     for (;;)
@@ -193,7 +216,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       this.mSwiftTitleUI.rightViewImg.setVisibility(0);
       return;
       label94:
-      paramIntent = bfvo.a(getResources().getDrawable(2130849438), -1);
+      paramIntent = bheg.a(getResources().getDrawable(2130849530), -1);
       this.mSwiftTitleUI.rightViewImg.setImageDrawable(paramIntent);
       this.mSwiftTitleUI.setConversationBtnColor(-1);
     }
@@ -252,7 +275,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       this.jdField_b_of_type_Boolean = true;
       paramWebView = BaseApplicationImpl.getApplication().getRuntime();
       if (paramWebView != null) {
-        if (!bkwm.C(paramWebView)) {
+        if (!bmhv.C(paramWebView)) {
           break label62;
         }
       }
@@ -275,24 +298,24 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     }
   }
   
-  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, acjr paramacjr)
+  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, adaa paramadaa)
   {
-    this.mSwiftTitleUI.setRightButton(paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramInt2, null, paramOnClickListener, paramacjr);
+    this.mSwiftTitleUI.setRightButton(paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramInt2, null, paramOnClickListener, paramadaa);
     if ((this.mSwiftTitleUI.leftView != null) && (this.mSwiftTitleUI.rightViewImg != null) && (this.mSwiftTitleUI.titleContainer != null) && (!paramBoolean) && (paramInt1 == 4))
     {
       if ((this.mUIStyleHandler.mUIStyle.isTransparentTitle) || (this.mUIStyle.isTransparentTitleAndClickable)) {
         break label130;
       }
-      this.mSwiftTitleUI.rightViewImg.setImageResource(2130849438);
+      this.mSwiftTitleUI.rightViewImg.setImageResource(2130849530);
       this.mSwiftTitleUI.setConversationBtnColor(-16777216);
     }
     for (;;)
     {
-      ((bgww)this.mComponentsProvider.a(4)).d();
+      ((biho)this.mComponentsProvider.a(4)).d();
       this.mUIStyleHandler.updateScreenOrientation();
       return;
       label130:
-      paramString1 = bfvo.a(getResources().getDrawable(2130849438), -1);
+      paramString1 = bheg.a(getResources().getDrawable(2130849530), -1);
       this.mSwiftTitleUI.rightViewImg.setImageDrawable(paramString1);
       this.mSwiftTitleUI.setConversationBtnColor(-1);
     }
@@ -303,8 +326,8 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     boolean bool = super.showPreview();
     if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.leftView != null) && (this.mSwiftTitleUI.rightViewImg != null) && (this.mSwiftTitleUI.titleContainer != null))
     {
-      this.mSwiftTitleUI.leftView.setBackgroundResource(2130849446);
-      this.mSwiftTitleUI.rightViewImg.setImageResource(2130839412);
+      this.mSwiftTitleUI.leftView.setBackgroundResource(2130849538);
+      this.mSwiftTitleUI.rightViewImg.setImageResource(2130839433);
       if ((!this.mUIStyleHandler.mUIStyle.isTransparentTitle) && (!this.mUIStyle.isTransparentTitleAndClickable))
       {
         this.mSwiftTitleUI.titleContainer.setBackgroundResource(0);
@@ -319,8 +342,8 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
         }
         this.mSwiftTitleUI.setTitleBarTextColor(-16777216);
         this.mSwiftTitleUI.setTitleBarButtonColor(-16777216);
-        this.mSwiftTitleUI.leftView.setBackgroundResource(2130849445);
-        this.mSwiftTitleUI.rightViewImg.setImageResource(2130849438);
+        this.mSwiftTitleUI.leftView.setBackgroundResource(2130849537);
+        this.mSwiftTitleUI.rightViewImg.setImageResource(2130849530);
         this.mSwiftTitleUI.rightViewImg.setVisibility(0);
       }
     }

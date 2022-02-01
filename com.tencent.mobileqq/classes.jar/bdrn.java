@@ -1,46 +1,21 @@
+import android.app.Activity;
+import android.content.Context;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.ExtendGridView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qwallet.plugin.QWalletHelper;
 
-public class bdrn
-  implements Animation.AnimationListener
+class bdrn
+  implements View.OnClickListener
 {
-  public bdrn(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  bdrn(bdrk parambdrk, Context paramContext) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    paramAnimation = this.a;
-    paramAnimation.q -= 1;
-    if (this.a.q == 0)
-    {
-      this.a.p = false;
-      int i = 0;
-      while (i < this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getCount())
-      {
-        paramAnimation = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.getChildAt(i);
-        if (paramAnimation != null) {
-          paramAnimation.clearAnimation();
-        }
-        i += 1;
-      }
-      this.a.c.clearAnimation();
-      this.a.jdField_a_of_type_JavaUtilArrayList.remove(this.a.r);
-      paramAnimation = this.a.jdField_a_of_type_Bdqx;
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() < this.a.s) {
-        bool = true;
-      }
-      paramAnimation.a(bool, true);
-      this.a.jdField_a_of_type_Bdqx.a(this.a.jdField_a_of_type_JavaUtilArrayList);
-    }
+    QWalletHelper.gotoQWalletHome((Activity)this.jdField_a_of_type_AndroidContentContext);
+    akrc.a("public.tailplace.click", "", "", "2", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

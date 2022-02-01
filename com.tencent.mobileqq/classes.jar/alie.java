@@ -1,7 +1,11 @@
-public class alie
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+class alie
+  extends algw
 {
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean;
+  public RelativeLayout a;
+  public ImageView c;
 }
 
 

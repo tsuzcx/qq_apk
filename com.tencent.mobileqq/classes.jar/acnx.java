@@ -1,42 +1,87 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.util.Pair;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class acnx
-  extends amwl
+public class acnx<T>
+  implements acnw<T>
 {
-  public acnx(AccountManageActivity paramAccountManageActivity) {}
+  private List<Class<? extends T>> a = new ArrayList();
+  private List<T> b = new ArrayList();
   
-  public void onPushSubAccountMsg(boolean paramBoolean, String paramString, bcqu parambcqu)
+  private T a(Class<? extends T> paramClass)
   {
-    if (this.a.isFinishing()) {}
-    bcqk localbcqk;
-    do
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
     {
-      for (;;)
+      Object localObject = localIterator.next();
+      if (localObject.getClass().equals(paramClass)) {
+        return localObject;
+      }
+    }
+    return null;
+  }
+  
+  private T b(Class<? extends T> paramClass)
+  {
+    try
+    {
+      paramClass = paramClass.newInstance();
+      return paramClass;
+    }
+    catch (Exception paramClass)
+    {
+      QLog.e("ClassGeneratorImpl", 1, paramClass, new Object[0]);
+    }
+    return null;
+  }
+  
+  public List<T> a()
+  {
+    for (;;)
+    {
+      Object localObject1;
+      try
       {
-        return;
-        AccountManageActivity.a(this.a, false);
-        localbcqk = (bcqk)this.a.app.getManager(62);
-        if (parambcqu.a != 1) {
+        ArrayList localArrayList = new ArrayList();
+        Iterator localIterator = this.a.iterator();
+        if (!localIterator.hasNext()) {
           break;
         }
-        if ((this.a.isResume()) && (bcqk.a(this.a.app, "sub.uin.all")))
+        localObject1 = (Class)localIterator.next();
+        Object localObject2 = a((Class)localObject1);
+        if (localObject2 != null)
         {
-          paramString = localbcqk.a("sub.uin.all");
-          int j = paramString.size();
-          int i = 0;
-          while (i < j)
-          {
-            parambcqu = (Pair)paramString.get(i);
-            localbcqk.a(this.a.app, this.a, parambcqu, new acny(this, localbcqk, parambcqu));
-            i += 1;
-          }
+          localArrayList.add(localObject2);
+          continue;
         }
+        localObject1 = b((Class)localObject1);
       }
-    } while (!this.a.isResume());
-    localbcqk.a(paramString, 1, true);
+      finally {}
+      if (localObject1 != null)
+      {
+        this.b.add(localObject1);
+        localList.add(localObject1);
+      }
+    }
+    return localList;
+  }
+  
+  public void a(Class<? extends T> paramClass)
+  {
+    if (paramClass != null) {}
+    try
+    {
+      if (!this.a.contains(paramClass)) {
+        this.a.add(paramClass);
+      }
+      return;
+    }
+    finally
+    {
+      paramClass = finally;
+      throw paramClass;
+    }
   }
 }
 

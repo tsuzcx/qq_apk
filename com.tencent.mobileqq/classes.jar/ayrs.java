@@ -1,157 +1,21 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profilecard.base.view.ProfileContentTitleView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.SingleLineTextView;
-import java.util.concurrent.ConcurrentHashMap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
 
-public abstract class ayrs
-  extends ayrr<View>
+public class ayrs
+  implements ayvp
 {
-  protected aysa a;
-  protected ayyp a;
-  protected bhha a;
+  public ayrs(OCRPerformFragment paramOCRPerformFragment, ayru paramayru) {}
   
-  public ayrs(aysx paramaysx, aymg paramaymg)
+  public void a(int paramInt, ayvq paramayvq)
   {
-    super(paramaysx, paramaymg);
-  }
-  
-  private void a(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5, aymn paramaymn)
-  {
-    aymn.a(paramView1, "background", paramaymn, "commonItemTopBorderBackground");
-    aymn.a(paramTextView, "color", paramaymn, "commonItemContentColor");
-    aymn.a(paramView2, "color", paramaymn, "commonItemContentColor");
-    aymn.a(paramImageView, "src", paramaymn, "commonItemMoreSrc");
-    if (paramImageView != null)
+    if ((paramayvq != null) && (!TextUtils.isEmpty(paramayvq.b)))
     {
-      paramView1 = paramImageView.getLayoutParams();
-      paramView1.width = -2;
-      paramView1.height = -2;
-      paramImageView.setLayoutParams(paramView1);
-    }
-    if (paramView3 != null)
-    {
-      paramView3.setBackgroundResource(0);
-      paramView3.setVisibility(8);
-    }
-    if (paramView4 != null) {
-      paramView4.setBackgroundResource(0);
-    }
-    if (paramView5 != null) {
-      paramView5.setBackgroundResource(0);
-    }
-  }
-  
-  private void b(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
-  {
-    if (paramView1 != null) {
-      paramView1.setBackgroundResource(2130839477);
-    }
-    this.jdField_a_of_type_Ayyp.a(paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
-  }
-  
-  private void c(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
-  {
-    Resources localResources = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
-    if (paramView1 != null) {
-      paramView1.setBackgroundResource(2130839477);
-    }
-    if (paramTextView != null) {
-      paramTextView.setTextColor(localResources.getColorStateList(2131167012));
-    }
-    if ((paramView2 instanceof TextView)) {
-      ((TextView)paramView2).setTextColor(localResources.getColorStateList(2131167092));
-    }
-    for (;;)
-    {
-      if (paramImageView != null)
-      {
-        paramImageView.setImageResource(2130839316);
-        paramView1 = paramImageView.getLayoutParams();
-        paramView1.width = -2;
-        paramView1.height = -2;
-        paramImageView.setLayoutParams(paramView1);
+      if (!this.jdField_a_of_type_Ayru.c.equalsIgnoreCase(paramayvq.b)) {
+        OCRPerformFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformFragment, this.jdField_a_of_type_Ayru.b, paramayvq.b, false);
       }
-      if (paramView3 != null)
-      {
-        paramView3.setBackgroundResource(0);
-        paramView3.setVisibility(8);
-      }
-      if (paramView4 != null) {
-        paramView4.setBackgroundResource(0);
-      }
-      if (paramView5 != null) {
-        paramView5.setBackgroundResource(0);
-      }
-      return;
-      if ((paramView2 instanceof SingleLineTextView)) {
-        ((SingleLineTextView)paramView2).setTextColor(localResources.getColorStateList(2131167092));
-      }
+      ayrt.a("0X800B55A", ayrt.a(paramayvq.b));
     }
   }
-  
-  protected void a(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView)
-  {
-    a(paramView1, paramTextView, paramView2, paramImageView, null, null, null);
-  }
-  
-  protected void a(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
-  {
-    try
-    {
-      aymn localaymn = ((aymg)this.b).jdField_a_of_type_Aymn;
-      if ((localaymn != null) && (localaymn.a != null) && (!localaymn.a.isEmpty()))
-      {
-        a(paramView1, paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5, localaymn);
-        return;
-      }
-      if (aymn.a(((aymg)this.b).jdField_a_of_type_Long))
-      {
-        b(paramView1, paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
-        return;
-      }
-    }
-    catch (Exception paramView1)
-    {
-      QLog.e("AbsProfileContentComponent", 1, "updateItemTheme fail.", paramView1);
-      return;
-    }
-    c(paramView1, paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
-  }
-  
-  protected void a(TextView paramTextView, View paramView)
-  {
-    a(null, paramTextView, paramView, null, null, null, null);
-  }
-  
-  protected void a(TextView paramTextView, View paramView, ImageView paramImageView)
-  {
-    a(null, paramTextView, paramView, paramImageView, null, null, null);
-  }
-  
-  public void a(aysa paramaysa, bhha parambhha, ayyp paramayyp)
-  {
-    this.jdField_a_of_type_Aysa = paramaysa;
-    this.jdField_a_of_type_Bhha = parambhha;
-    this.jdField_a_of_type_Ayyp = paramayyp;
-  }
-  
-  protected void a(ProfileContentTitleView paramProfileContentTitleView, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (FrameLayout localFrameLayout = paramProfileContentTitleView.jdField_a_of_type_AndroidWidgetFrameLayout;; localFrameLayout = null)
-    {
-      a(paramProfileContentTitleView.jdField_b_of_type_AndroidViewViewGroup, paramProfileContentTitleView.jdField_a_of_type_AndroidWidgetTextView, null, paramProfileContentTitleView.jdField_b_of_type_AndroidWidgetImageView, paramProfileContentTitleView.jdField_a_of_type_AndroidWidgetImageView, paramProfileContentTitleView.c, localFrameLayout);
-      return;
-    }
-  }
-  
-  public abstract String a_();
 }
 
 

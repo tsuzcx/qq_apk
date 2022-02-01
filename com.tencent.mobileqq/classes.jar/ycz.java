@@ -1,15 +1,37 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract interface ycz
+public class ycz
+  extends ycf
 {
-  public abstract void a();
+  public List<ydz> b = new ArrayList();
+  public boolean e;
   
-  public abstract boolean a();
+  public ycz(ErrorMessage paramErrorMessage)
+  {
+    super(paramErrorMessage);
+  }
   
-  public abstract void b(Canvas paramCanvas);
+  public String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      ydz localydz = (ydz)localIterator.next();
+      localStringBuilder.append("feedId:").append(localydz.a().feedId);
+      localStringBuilder.append("unionId:").append(localydz.a().getOwner().getUnionId());
+    }
+    return localStringBuilder.toString();
+  }
   
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public String toString()
+  {
+    return "FeedData{" + super.toString() + "mFeedItems=" + this.b + '}';
+  }
 }
 
 

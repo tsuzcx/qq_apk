@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
-import aiqw;
-import akka;
-import amtj;
+import ajml;
+import alfs;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -13,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
 import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.activity.recent.DrawerFrame;
@@ -25,7 +25,7 @@ import java.lang.ref.WeakReference;
 import mqq.observer.BusinessObserver;
 
 public class ContactsMiniAppEntryManager
-  implements aiqw, akka, BusinessObserver
+  implements ajml, alfs, BusinessObserver
 {
   public static final int MODE_IDLE = 1;
   public static final int MODE_REFRESH = 2;
@@ -150,7 +150,7 @@ public class ContactsMiniAppEntryManager
   
   private void setRefreshLayoutVisible(boolean paramBoolean)
   {
-    View localView = this.mPullRefreshHeader.findViewById(2131376207);
+    View localView = this.mPullRefreshHeader.findViewById(2131376455);
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -265,8 +265,8 @@ public class ContactsMiniAppEntryManager
             {
               if (paramInt <= -paramCommonRefreshLayout.a())
               {
-                paramMotionEvent = (TextView)this.mPullRefreshHeader.findViewById(2131376212);
-                if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(amtj.a(2131701715)))) {}
+                paramMotionEvent = (TextView)this.mPullRefreshHeader.findViewById(2131376460);
+                if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(anvx.a(2131702066)))) {}
                 for (this.mode = 3;; this.mode = 2)
                 {
                   paramCommonRefreshLayout.setShowMiniAppPanel(true);
@@ -363,7 +363,7 @@ public class ContactsMiniAppEntryManager
     if ((this.mPullRefreshHeader != null) && (this.mPullRefreshHeader.indexOfChild(this.mContentView) < 0))
     {
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(3, 2131376207);
+      localLayoutParams.addRule(3, 2131376455);
       this.mPullRefreshHeader.addView(this.mContentView, localLayoutParams);
       this.mode = 1;
       this.mContentView.setVisibility(8);

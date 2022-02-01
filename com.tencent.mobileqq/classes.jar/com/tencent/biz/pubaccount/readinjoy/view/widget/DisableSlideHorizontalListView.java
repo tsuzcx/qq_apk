@@ -4,14 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bfvh;
+import bhdz;
 import com.tencent.biz.pubaccount.readinjoy.view.BezierSideBarView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
-import tbi;
-import tbj;
+import toq;
+import tor;
 
 public class DisableSlideHorizontalListView
   extends HorizontalListView
@@ -19,21 +19,21 @@ public class DisableSlideHorizontalListView
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private BezierSideBarView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBezierSideBarView;
-  private tbi jdField_a_of_type_Tbi;
-  private tbj jdField_a_of_type_Tbj;
+  private toq jdField_a_of_type_Toq;
+  private tor jdField_a_of_type_Tor;
   private boolean jdField_a_of_type_Boolean;
   private float b;
   
   public DisableSlideHorizontalListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = ((int)bfvh.a(paramContext, 18.0F));
+    this.jdField_a_of_type_Int = ((int)bhdz.a(paramContext, 18.0F));
   }
   
   public DisableSlideHorizontalListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = ((int)bfvh.a(paramContext, 18.0F));
+    this.jdField_a_of_type_Int = ((int)bhdz.a(paramContext, 18.0F));
   }
   
   private void a()
@@ -93,8 +93,8 @@ public class DisableSlideHorizontalListView
           QLog.d("DisableSlideHorizontalListView", 2, "dispatchTouchEvent:ACTION_CANCEL or UP. action=" + i + " mIsPress=" + this.jdField_a_of_type_Boolean);
         }
         this.jdField_a_of_type_Boolean = false;
-        if ((this.jdField_a_of_type_Tbi != null) && (i == 1) && (getScrollX() > this.jdField_a_of_type_Int)) {
-          this.jdField_a_of_type_Tbi.c();
+        if ((this.jdField_a_of_type_Toq != null) && (i == 1) && (getScrollX() > this.jdField_a_of_type_Int)) {
+          this.jdField_a_of_type_Toq.c();
         }
         a();
       }
@@ -104,16 +104,16 @@ public class DisableSlideHorizontalListView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.jdField_a_of_type_Tbj != null) {
-      this.jdField_a_of_type_Tbj.a();
+    if (this.jdField_a_of_type_Tor != null) {
+      this.jdField_a_of_type_Tor.a();
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Tbj != null) {
-      this.jdField_a_of_type_Tbj.b();
+    if (this.jdField_a_of_type_Tor != null) {
+      this.jdField_a_of_type_Tor.b();
     }
   }
   
@@ -128,14 +128,14 @@ public class DisableSlideHorizontalListView
     a(paramInt1 - this.jdField_a_of_type_Int);
   }
   
-  public void setOnOverScrollListener(tbi paramtbi)
+  public void setOnOverScrollListener(toq paramtoq)
   {
-    this.jdField_a_of_type_Tbi = paramtbi;
+    this.jdField_a_of_type_Toq = paramtoq;
   }
   
-  public void setOnViewWindowChangedListener(tbj paramtbj)
+  public void setOnViewWindowChangedListener(tor paramtor)
   {
-    this.jdField_a_of_type_Tbj = paramtbj;
+    this.jdField_a_of_type_Tor = paramtor;
   }
   
   public void setSideBarView(BezierSideBarView paramBezierSideBarView)
@@ -145,7 +145,7 @@ public class DisableSlideHorizontalListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.DisableSlideHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,214 +1,85 @@
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Map;
 
-public class bfwi
+class bfwi
+  extends SimpleObserver<bfuw>
 {
-  public static boolean a;
-  private static boolean jdField_b_of_type_Boolean;
-  bfvp jdField_a_of_type_Bfvp = null;
-  String jdField_a_of_type_JavaLangString = "-1";
-  private String jdField_b_of_type_JavaLangString = "-1";
-  private String jdField_c_of_type_JavaLangString = "-1";
-  private boolean jdField_c_of_type_Boolean;
-  private String d = "-1";
-  private String e = "-1";
-  private String f = "-1";
-  private String g = "-1";
+  bfwi(bfwh parambfwh, bfuw parambfuw) {}
   
-  public bfwi()
+  public void a(bfuw parambfuw)
   {
-    if (jdField_b_of_type_Boolean) {}
-    label200:
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoItem", 2, new Object[] { "VideoItem onNext. info position=", Integer.valueOf(parambfuw.c), ", old status=", Integer.valueOf(parambfuw.g), ", result=", parambfuw });
+    }
+    parambfuw.g = 3;
+    parambfuw.e = 100;
+    this.jdField_a_of_type_Bfwh.jdField_a_of_type_JavaUtilMap.remove(parambfuw);
+    if (this.jdField_a_of_type_Bfwh.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
     {
-      return;
-      jdField_b_of_type_Boolean = true;
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("JumpReportCtr_SP", 0);
-      long l = localSharedPreferences.getLong("lastShotTime", 0L);
-      if (Math.abs(System.currentTimeMillis() - l) >= 43200000L) {
-        if (0.01F >= Math.random())
-        {
-          jdField_a_of_type_Boolean = bool;
-          localSharedPreferences.edit().putLong("lastShotTime", System.currentTimeMillis()).putBoolean("lastShotResult", jdField_a_of_type_Boolean).apply();
-        }
-      }
-      for (;;)
+      Object localObject = this.jdField_a_of_type_Bfwh.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(parambfuw.c);
+      if ((localObject instanceof bfwk))
       {
-        if (!QLog.isColorLevel()) {
-          break label200;
+        localObject = (bfwk)localObject;
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoItem", 2, new Object[] { "video onNext. info hash=", Integer.valueOf(parambfuw.hashCode()), ", result hash=", Integer.valueOf(parambfuw.hashCode()), ", info position=", Integer.valueOf(parambfuw.c), ", result position=", Integer.valueOf(parambfuw.c), ", vh position=", Integer.valueOf(((bfwk)localObject).jdField_a_of_type_Bfur.c), ",vh hash=", Integer.valueOf(localObject.hashCode()) });
         }
-        QLog.d("JumpActivity.Report", 2, "JumpReportCtr init needReport= " + jdField_a_of_type_Boolean);
-        return;
-        bool = false;
-        break;
-        jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("lastShotResult", false);
+        if (parambfuw.d.equals(((bfwk)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag()))
+        {
+          ((bfwk)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
+          ((bfwk)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+          ((bfwk)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(parambfuw.e, parambfuw.d);
+        }
+        this.jdField_a_of_type_Bfwh.jdField_a_of_type_Bfvo.a((RecyclerView.ViewHolder)localObject, true);
       }
     }
+    bgmd.a("hw_entry_upload", "upload_video", "1", "", String.valueOf(System.currentTimeMillis() - parambfuw.a), "");
+    this.jdField_a_of_type_Bfwh.a(0, false);
   }
   
-  public void a(Intent paramIntent)
+  public void onError(@NonNull Error paramError)
   {
-    if (!jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      if (paramIntent != null) {
-        this.jdField_c_of_type_JavaLangString = paramIntent.getComponent().getClassName();
-      }
-      if (!this.jdField_c_of_type_Boolean) {
-        break;
-      }
-      paramIntent = new HashMap(5);
-      paramIntent.put("action", this.d);
-      paramIntent.put("scheme", this.e);
-      paramIntent.put("type", this.f);
-      paramIntent.put("data", this.g);
-      paramIntent.put("fromPkg", this.jdField_b_of_type_JavaLangString);
-      paramIntent.put("jumpToAct", this.jdField_c_of_type_JavaLangString);
-      paramIntent.put("shareContext", this.jdField_a_of_type_JavaLangString);
-      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "jump_act_system_report", true, 0L, 0L, paramIntent, null);
-      paramIntent = new StringBuilder(256);
-      paramIntent.append("action=").append(this.d).append(", pkgName=").append(this.jdField_b_of_type_JavaLangString).append(", jumpToAct=").append(this.jdField_c_of_type_JavaLangString).append(", scheme=").append(this.e).append(", type=").append(this.f).append(", shareContext=").append(this.jdField_a_of_type_JavaLangString).append("\n data=").append(this.g);
-    } while (!QLog.isColorLevel());
-    QLog.d("JumpActivity.Report", 2, "systemShare|report : \n" + paramIntent.toString());
-    return;
-    String str;
-    if (this.jdField_a_of_type_Bfvp != null)
-    {
-      str = this.jdField_a_of_type_Bfvp.jdField_b_of_type_JavaLangString;
-      paramIntent = this.jdField_a_of_type_Bfvp.jdField_c_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoItem", 2, new Object[] { "VideoItem onError. info position=", Integer.valueOf(this.jdField_a_of_type_Bfuw.c), ", info old status=", Integer.valueOf(this.jdField_a_of_type_Bfuw.g) });
     }
-    for (;;)
+    this.jdField_a_of_type_Bfuw.g = 2;
+    this.jdField_a_of_type_Bfwh.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Bfuw);
+    QLog.d("VideoItem", 1, paramError, new Object[0]);
+    paramError = paramError.getMessage();
+    if (this.jdField_a_of_type_Bfwh.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
     {
-      Object localObject = new HashMap(8);
-      ((HashMap)localObject).put("action", this.d);
-      ((HashMap)localObject).put("scheme", this.e);
-      ((HashMap)localObject).put("type", this.f);
-      ((HashMap)localObject).put("data", this.g);
-      ((HashMap)localObject).put("fromPkg", this.jdField_b_of_type_JavaLangString);
-      ((HashMap)localObject).put("jumpToAct", this.jdField_c_of_type_JavaLangString);
-      ((HashMap)localObject).put("server_name", str);
-      ((HashMap)localObject).put("action_name", paramIntent);
-      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "jump_act_business_report", true, 0L, 0L, (HashMap)localObject, null);
-      localObject = new StringBuilder(256);
-      ((StringBuilder)localObject).append("action=").append(this.d).append(", type=").append(this.f).append(", pkgName=").append(this.jdField_b_of_type_JavaLangString).append(", jumpToAct=").append(this.jdField_c_of_type_JavaLangString).append(", scheme=").append(this.e).append(", server_name=").append(str).append(", action_name=").append(paramIntent).append("\n data=").append(this.g);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("JumpActivity.Report", 2, "business share |report params: \n" + ((StringBuilder)localObject).toString());
-      return;
-      paramIntent = "-1";
-      str = "-1";
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Intent paramIntent)
-  {
-    if (paramIntent == null) {}
-    label4:
-    do
-    {
-      do
+      Object localObject = this.jdField_a_of_type_Bfwh.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Bfuw.c);
+      if ((localObject instanceof bfwk))
       {
-        do
+        localObject = (bfwk)localObject;
+        if (this.jdField_a_of_type_Bfuw.d.equals(((bfwk)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag()))
         {
-          do
+          ((bfwh)((bfun)this.jdField_a_of_type_Bfwh.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((bfvx)localObject, this.jdField_a_of_type_Bfuw, 0);
+          if ("200".equals(paramError))
           {
-            do
-            {
-              break label4;
-              break label4;
-              break label4;
-              do
-              {
-                return;
-              } while (!jdField_a_of_type_Boolean);
-              Object localObject = bfwf.a(paramActivity);
-              StringBuilder localStringBuilder = new StringBuilder();
-              if ((localObject != null) && (!((HashSet)localObject).isEmpty()))
-              {
-                localObject = ((HashSet)localObject).iterator();
-                while (((Iterator)localObject).hasNext())
-                {
-                  String str = (String)((Iterator)localObject).next();
-                  if (localStringBuilder.length() > 0) {
-                    localStringBuilder.append("|");
-                  }
-                  localStringBuilder.append(str);
-                }
-              }
-              this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-              this.jdField_c_of_type_Boolean = a(paramIntent);
-              this.d = paramIntent.getAction();
-              this.e = paramIntent.getScheme();
-              this.f = paramIntent.getType();
-              this.g = paramIntent.getDataString();
-              if (!this.jdField_c_of_type_Boolean) {
-                break;
-              }
-            } while ((!this.d.equals("android.intent.action.SEND")) && (!this.d.equals("android.intent.action.SEND_MULTIPLE")));
-            paramQQAppInterface = paramIntent.getExtras();
-          } while (paramQQAppInterface == null);
-          if (!TextUtils.isEmpty(paramQQAppInterface.getString("android.intent.extra.TEXT")))
-          {
-            this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getString("android.intent.extra.TEXT");
-            return;
+            QLog.d("VideoItem", 1, "VideoItem onError. upload size exceed.");
+            QQToast.a(this.jdField_a_of_type_Bfwh.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext(), anvx.a(2131715650), 0).a();
+            this.jdField_a_of_type_Bfwh.jdField_a_of_type_Bfvo.a((RecyclerView.ViewHolder)localObject);
           }
-          paramQQAppInterface = paramQQAppInterface.get("android.intent.extra.STREAM");
-        } while (paramQQAppInterface == null);
-        if ((paramQQAppInterface instanceof Uri))
-        {
-          this.jdField_a_of_type_JavaLangString = ((Uri)paramQQAppInterface).toString();
-          return;
         }
-        if ((paramQQAppInterface instanceof String))
-        {
-          this.jdField_a_of_type_JavaLangString = ((String)paramQQAppInterface);
-          return;
-        }
-      } while (!(paramQQAppInterface instanceof ArrayList));
-      this.jdField_a_of_type_JavaLangString = "MULTIPLE_SHARE";
-      return;
-    } while ((TextUtils.isEmpty(this.g)) || (paramQQAppInterface == null));
-    this.jdField_a_of_type_Bfvp = bfwg.a(paramQQAppInterface, paramActivity, this.g);
-  }
-  
-  public boolean a(Intent paramIntent)
-  {
-    if (paramIntent == null) {}
-    String str;
-    do
-    {
-      do
-      {
-        return false;
-        str = paramIntent.getAction();
-      } while (TextUtils.isEmpty(str));
-      if ((str.equals("android.intent.action.SEND")) || (str.equals("android.intent.action.SEND_MULTIPLE"))) {
-        return true;
       }
-      paramIntent = paramIntent.getScheme();
-    } while ((!str.equals("android.intent.action.VIEW")) || (TextUtils.isEmpty(paramIntent)) || ((!paramIntent.equals("file")) && (!paramIntent.equals("content"))));
-    return true;
+    }
+    if (!paramError.startsWith("c_")) {
+      bgmd.a("hw_entry_upload", "upload_video", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Bfuw.a), "");
+    }
+    if (this.jdField_a_of_type_Bfuw.d.equals(this.jdField_a_of_type_Bfwh.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Bfwh.a(0, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfwi
  * JD-Core Version:    0.7.0.1
  */

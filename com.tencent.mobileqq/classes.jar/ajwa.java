@@ -1,31 +1,24 @@
 import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 
 public class ajwa
-  implements akbj
+  extends ajso
 {
-  public ajwa(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public static final int[] a = { 2131690774, 2131690779, 2131690776, 2131690777, 2131690781, 2131690778, 2131690775, 2131690780 };
+  public static final int[] b = { 2131364505, 2131364510, 2131364507, 2131364508, 2131364512, 2131364509, 2131364506, 2131364511 };
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public ajwa(FragmentActivity paramFragmentActivity)
   {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
-    {
-      ajwk localajwk = new ajwk();
-      localajwk.a = (paramPathResult.folderPath + "/" + "original.mp3");
-      localajwk.b = (paramPathResult.folderPath + "/" + "accompany.mp3");
-      localajwk.c = (paramPathResult.folderPath + "/" + "lyrics.qrc");
-      localajwk.d = (paramPathResult.folderPath + "/" + "config.cfg");
-      RedPacketKSongFragment.a(this.a, localajwk);
-      if (this.a.c()) {
-        return;
-      }
-      this.a.getActivity().runOnUiThread(new RedPacketKSongFragment.10.1(this));
-      return;
-    }
-    this.a.g();
+    super(paramFragmentActivity);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 

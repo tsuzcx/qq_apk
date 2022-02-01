@@ -1,25 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class aluu
-  implements View.OnClickListener
 {
-  public aluu(CmGameLoadingView.1 param1) {}
+  public int a;
+  public boolean a;
   
-  public void onClick(View paramView)
+  public static int a(int paramInt)
   {
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131701231));
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-    this.a.this$0.setProgressViewVisibility(true);
-    this.a.a.a(2);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramInt)
+    {
+    case 90: 
+    default: 
+      return 0;
+    case 0: 
+      return 270;
+    case 180: 
+      return 90;
+    }
+    return 180;
   }
 }
 

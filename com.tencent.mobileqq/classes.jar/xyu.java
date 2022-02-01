@@ -1,21 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GatherCardInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class xyu
-  implements Animation.AnimationListener
 {
-  public xyu(EditVideoGuide paramEditVideoGuide) {}
+  private qqstory_struct.GatherCardInfo a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public xyu(qqstory_struct.GatherCardInfo paramGatherCardInfo)
   {
-    this.a.h();
-    this.a.a.a(0);
+    this.a = paramGatherCardInfo;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public xyu(byte[] paramArrayOfByte)
+  {
+    this.a = new qqstory_struct.GatherCardInfo();
+    try
+    {
+      this.a.mergeFrom(paramArrayOfByte);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      ykq.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    }
+  }
 }
 
 

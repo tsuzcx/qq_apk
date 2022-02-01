@@ -1,21 +1,16 @@
-import java.util.Arrays;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class alog
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public boolean a;
-  public int[] a;
-  public int b;
-  public int[] b;
-  public int c;
-  public int d;
-  public int e;
+  public alog(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("userStatus:").append(this.d).append(",roleId:").append(this.jdField_a_of_type_Int).append(",dressIds:").append(Arrays.toString(this.jdField_a_of_type_ArrayOfInt)).append(",threeRoleId:").append(this.jdField_b_of_type_Int).append(",threeDressIds:").append(Arrays.toString(this.jdField_b_of_type_ArrayOfInt));
-    return localStringBuilder.toString();
+    this.a.a("608", "7", "2", true);
+    EditLocalVideoActivity.a(this.a, "an_yuanshipin");
   }
 }
 

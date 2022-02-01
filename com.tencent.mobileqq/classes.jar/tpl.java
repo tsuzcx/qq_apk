@@ -1,46 +1,39 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
-public class tpl
+class tpl
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  private static final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private final int jdField_a_of_type_Int;
+  private final int b;
   
-  public static void a()
+  tpl(tpk paramtpk, int paramInt1, int paramInt2)
   {
-    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() <= 0)) {}
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public static void a(String paramString1, String paramString2, double paramDouble)
+  public boolean onPreDraw()
   {
-    if (!a(paramDouble)) {}
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, double paramDouble)
-  {
-    if (!a(paramDouble)) {}
-  }
-  
-  private static boolean a(double paramDouble)
-  {
-    return false;
-  }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_JavaUtilList != null) {
-      jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Tpk.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpk.a, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpk.a) + tpk.a(this.jdField_a_of_type_Tpk));
+    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Tpk.a, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Tpk.a) + tpk.b(this.jdField_a_of_type_Tpk));
+    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpk.a) != null) {
+      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpk.a).setVisibility(0);
     }
-  }
-  
-  private static void b(String paramString)
-  {
-    odq.a(pay.a(), "", "0X800A064", "0X800A064", 0, 0, "", "", "", paramString, false);
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpk.a, this.jdField_a_of_type_Tpk.a.a(ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpk.a)));
+    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpk.a) != null) {
+      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpk.a).setVisibility(4);
+    }
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Tpk.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tpl
  * JD-Core Version:    0.7.0.1
  */

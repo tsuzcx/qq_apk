@@ -1,27 +1,21 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.List;
 
-class xvo
+public class xvo
 {
-  public TextView a;
+  public int a;
+  public String a;
+  public List<CommentEntry> a;
+  public boolean a;
+  public boolean b;
   
-  public xvo(View paramView)
+  public xvo(boolean paramBoolean1, List<CommentEntry> paramList, int paramInt, boolean paramBoolean2, String paramString)
   {
-    this.a = ((TextView)paramView.findViewById(2131378151));
-  }
-  
-  public void a(yml paramyml, xvn paramxvn)
-  {
-    if (TextUtils.isEmpty(paramyml.a))
-    {
-      this.a.setVisibility(8);
-      return;
-    }
-    this.a.setVisibility(0);
-    this.a.setText(xvj.a(paramyml));
-    xvj.a(this.a);
-    this.a.setOnClickListener(new xvp(this, paramxvn, paramyml));
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

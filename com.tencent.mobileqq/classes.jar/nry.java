@@ -1,6 +1,27 @@
-public abstract interface nry
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import com.tencent.biz.PoiMapActivity;
+
+public class nry
+  implements View.OnKeyListener
 {
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3);
+  public nry(PoiMapActivity paramPoiMapActivity) {}
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
+    {
+      paramView = ((TextView)paramView).getText().toString();
+      if (!TextUtils.isEmpty(paramView)) {
+        this.a.a(paramView);
+      }
+      return true;
+    }
+    return false;
+  }
 }
 
 

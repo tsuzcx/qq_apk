@@ -1,19 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import java.nio.ByteBuffer;
 
-final class bdak
-  implements DialogInterface.OnClickListener
+public class bdak
 {
-  bdak(String paramString1, String paramString2) {}
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public MediaFormat a;
+  public ByteBuffer a;
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bdak(bdaj parambdaj)
   {
-    paramDialogInterface = bdai.a();
-    if (paramDialogInterface != null) {
-      ((anbt)paramDialogInterface.getBusinessHandler(14)).a(this.a, this.b);
-    }
-    bdai.a("0X800A5B6");
+    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

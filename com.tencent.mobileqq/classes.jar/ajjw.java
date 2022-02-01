@@ -1,97 +1,134 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class ajjw
-  implements EmoticonCallback
+public class ajjw
 {
-  ajjw(ajjs paramajjs) {}
+  public ArrayList<ajki> a;
+  private boolean a;
+  public int[] a;
+  public String[] a;
+  private boolean b;
   
-  public void delete()
+  public ajjw(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.a.a.getSelectionStart() == 0) {}
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if ((paramBoolean1) && (!bdvn.a())) {}
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      this.b = paramBoolean1;
+      this.jdField_a_of_type_Boolean = paramBoolean2;
+      a();
+      return;
+    }
+  }
+  
+  public int a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return ((ajki)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).c;
+    }
+    return 1;
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.b) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(new ajki(0, 2131365117, anvx.a(2131702056)));
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ajki(6, 2131365114, anvx.a(2131702042)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ajki(1, 2131365113, anvx.a(2131702013)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ajki(2, 2131365118, anvx.a(2131702055)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ajki(3, 2131365111, anvx.a(2131702039)));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ajki(4, 2131365115, anvx.a(2131702035)));
+    if (!bdvn.a()) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(new ajki(5, 2131365116, usu.a()));
+    }
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
+    this.jdField_a_of_type_ArrayOfInt = new int[j];
+    int i = 0;
+    while (i < j)
+    {
+      this.jdField_a_of_type_ArrayOfInt[i] = ((ajki)this.jdField_a_of_type_JavaUtilArrayList.get(i)).d;
+      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((ajki)this.jdField_a_of_type_JavaUtilArrayList.get(i)).f;
+      i += 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsTabs", 2, "buildData showRecommend:" + this.b + " tabSize:" + j);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.b;
+  }
+  
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (!bdvn.a()))
+    {
+      paramBoolean1 = true;
+      if (paramBoolean1 == this.b) {
+        break label205;
+      }
+      this.b = paramBoolean1;
+      if (!paramBoolean1) {
+        break label150;
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(0, new ajki(0, 2131365117, anvx.a(2131702010)));
+    }
+    int j;
     for (;;)
     {
-      return;
-      try
+      j = this.jdField_a_of_type_JavaUtilArrayList.size();
+      this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
+      this.jdField_a_of_type_ArrayOfInt = new int[j];
+      int i = 0;
+      while (i < j)
       {
-        Editable localEditable = this.a.a.getText();
-        int i = this.a.a.getSelectionStart();
-        int j = android.text.TextUtils.getOffsetBefore(this.a.a.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
+        ajki localajki = (ajki)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if (localajki.c == 5) {
+          localajki.f = usu.a();
         }
+        this.jdField_a_of_type_ArrayOfInt[i] = localajki.d;
+        this.jdField_a_of_type_ArrayOfJavaLangString[i] = localajki.f;
+        i += 1;
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+      paramBoolean1 = false;
+      break;
+      label150:
+      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
     }
-  }
-  
-  public void emoticonMall() {}
-  
-  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
-  
-  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
-  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsTabs", 2, "update showRecommend1:" + paramBoolean1 + " tabSize:" + j);
+    }
     return true;
+    label205:
+    if (paramBoolean2 != this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean2;
+      a();
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsTabs", 2, "update showRecommend2:" + paramBoolean1 + " tabSize:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+    return false;
   }
   
-  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public void send() {}
-  
-  public void send(EmoticonInfo paramEmoticonInfo)
+  public int b(int paramInt)
   {
-    int i;
-    int j;
-    if ((paramEmoticonInfo instanceof SystemEmoticonInfo))
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
-    }
-    SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo;
-    int k;
-    int m;
-    do
-    {
-      this.a.a.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
-      do
-      {
-        return;
-      } while (!(paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo));
-      localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      k = localSystemAndEmojiEmoticonInfo.emotionType;
-      m = localSystemAndEmojiEmoticonInfo.code;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
+      if (((ajki)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c == paramInt) {
+        return i;
       }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(m);; paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m))
-    {
-      this.a.a.getEditableText().replace(i, j, paramEmoticonInfo);
-      this.a.a.requestFocus();
-      localSystemAndEmojiEmoticonInfo.addToCommonUsed((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-      arev.a().a(k).a(m, 2);
-      return;
+      i += 1;
     }
+    return -1;
   }
-  
-  public void setting() {}
 }
 
 

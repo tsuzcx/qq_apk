@@ -1,47 +1,61 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import com.tencent.qphone.base.util.QLog;
 
-class asvq
-  implements atez
+public class asvq
+  extends LinearLayoutManager
 {
-  asvq(asvn paramasvn) {}
-  
-  public void a(boolean paramBoolean)
+  public asvq(Context paramContext)
   {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Asqq != null)) {
-      this.a.jdField_a_of_type_Asqq.a();
-    }
-    if (paramBoolean)
-    {
-      if (this.a.jdField_a_of_type_Asst.e() == 10) {
-        asqw.a(this.a.jdField_a_of_type_Asst.c());
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Asst.d(), this);
-      asvn.c(this.a, true);
-      this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(4);
-      asvn.a(this.a);
-      return;
-    }
-    if (asvn.b(this.a))
-    {
-      asvn.c(this.a, false);
-      if (this.a.d) {
-        this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
-      }
-      asvn.d(this.a, true);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d();
-      if (this.a.jdField_a_of_type_Asqp != null) {
-        this.a.jdField_a_of_type_Asqp.a();
-      }
-    }
-    aspt.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Asst.d(), asvn.a(this.a), true);
+    super(paramContext);
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public asvq(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    asvn.b(this.a, paramBoolean2);
-    asvn.a(this.a, paramBoolean1);
+    super(paramContext, paramInt, paramBoolean);
+  }
+  
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      super.onLayoutChildren(paramRecycler, paramState);
+      return;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      QLog.e("WrapContentLinearLayoutManager", 1, "onLayoutChildren fail!", paramRecycler);
+    }
+  }
+  
+  public int scrollHorizontallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollHorizontallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      QLog.e("WrapContentLinearLayoutManager", 1, "scrollHorizontallyBy fail!", paramRecycler);
+    }
+    return 0;
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      QLog.e("WrapContentLinearLayoutManager", 1, "scrollVerticallyBy fail!", paramRecycler);
+    }
+    return 0;
   }
 }
 

@@ -1,9 +1,15 @@
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+
 public class axfq
+  implements axfm
 {
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  public axfq(TabPageIndicator paramTabPageIndicator) {}
+  
+  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    TabPageIndicator.a(this.a);
+    return false;
+  }
 }
 
 

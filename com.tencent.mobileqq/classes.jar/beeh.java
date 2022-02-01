@@ -1,166 +1,118 @@
-import android.content.ContentValues;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.TableBuilder;
-import java.lang.reflect.Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 
-public class beeh
-  extends anus
+public abstract class beeh
+  extends beem
 {
-  public beeh(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  public static befo a;
+  private static int[] jdField_a_of_type_ArrayOfInt = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298795), BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298796) };
+  public static befo b;
+  public static befo c;
+  protected int a;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new beei(this);
+  private beel jdField_a_of_type_Beel;
+  protected blfn a;
+  
+  static
   {
-    super(paramQQAppInterface, paramProxyManager);
+    jdField_a_of_type_Befo = new befo(0, 2131364742, 2131690853, 2130839569);
+    b = new befo(0, 2131364741, 2131690852, 2130839570);
+    c = new befo(0, 2131364743, 2131690854, 2130839571);
   }
   
-  private ContentValues a(Entity paramEntity)
+  public beeh(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
-    ContentValues localContentValues = new ContentValues();
-    List localList = TableBuilder.getValidField(paramEntity.getClass());
-    int j = localList.size();
+    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  private blfn a()
+  {
+    if (this.jdField_a_of_type_Blfn != null) {
+      return this.jdField_a_of_type_Blfn;
+    }
+    ArrayList localArrayList = new ArrayList(a());
+    if (localArrayList.size() > 3) {
+      localArrayList.add(0, jdField_a_of_type_Befo);
+    }
+    int[] arrayOfInt1 = new int[localArrayList.size()];
+    int[] arrayOfInt2 = new int[localArrayList.size()];
+    int[] arrayOfInt3 = new int[localArrayList.size()];
+    int[] arrayOfInt4 = new int[localArrayList.size()];
     int i = 0;
-    for (;;)
+    while (i < localArrayList.size())
     {
-      if (i < j)
-      {
-        Object localObject1 = (Field)localList.get(i);
-        String str = ((Field)localObject1).getName();
-        if (!((Field)localObject1).isAccessible()) {
-          ((Field)localObject1).setAccessible(true);
-        }
-        try
-        {
-          localObject1 = ((Field)localObject1).get(paramEntity);
-          if ((localObject1 instanceof Integer))
-          {
-            localContentValues.put(str, (Integer)localObject1);
-            i += 1;
-          }
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          for (;;)
-          {
-            localIllegalArgumentException.printStackTrace();
-            Object localObject2 = null;
-          }
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          for (;;)
-          {
-            localIllegalAccessException.printStackTrace();
-            Object localObject3 = null;
-            continue;
-            if ((localObject3 instanceof Long)) {
-              localContentValues.put(str, (Long)localObject3);
-            } else if ((localObject3 instanceof String)) {
-              localContentValues.put(str, (String)localObject3);
-            } else if ((localObject3 instanceof byte[])) {
-              localContentValues.put(str, (byte[])localObject3);
-            } else if ((localObject3 instanceof Short)) {
-              localContentValues.put(str, (Short)localObject3);
-            } else if ((localObject3 instanceof Boolean)) {
-              localContentValues.put(str, (Boolean)localObject3);
-            } else if ((localObject3 instanceof Double)) {
-              localContentValues.put(str, (Double)localObject3);
-            } else if ((localObject3 instanceof Float)) {
-              localContentValues.put(str, (Float)localObject3);
-            } else if ((localObject3 instanceof Byte)) {
-              localContentValues.put(str, (Byte)localObject3);
-            }
-          }
-        }
-      }
+      befo localbefo = (befo)localArrayList.get(i);
+      arrayOfInt1[i] = localbefo.b();
+      arrayOfInt2[i] = localbefo.c();
+      arrayOfInt3[i] = localbefo.d();
+      arrayOfInt4[i] = localbefo.a();
+      i += 1;
     }
-    return localContentValues;
+    this.jdField_a_of_type_Blfn = new beej(this, localArrayList.size(), 2, jdField_a_of_type_ArrayOfInt, -1, arrayOfInt1, arrayOfInt2, arrayOfInt3, localArrayList, arrayOfInt4);
+    return this.jdField_a_of_type_Blfn;
   }
   
-  public List<TroopFileTansferItemEntity> a(long paramLong)
+  private void a(befn parambefn)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    TroopFileTansferItemEntity localTroopFileTansferItemEntity = new TroopFileTansferItemEntity();
-    localTroopFileTansferItemEntity.troopuin = paramLong;
-    return localEntityManager.rawQuery(TroopFileTansferItemEntity.class, "select * from " + localTroopFileTansferItemEntity.getTableName() + " where troopuin = ?", new String[] { "" + paramLong });
-  }
-  
-  protected void a() {}
-  
-  public void a(long paramLong, UUID paramUUID)
-  {
-    if (paramUUID == null) {
-      return;
-    }
-    befc.c("TroopFileDataBaseProxy", befc.a, "[" + paramUUID.toString() + "] deleteItem");
-    Object localObject = new TroopFileTansferItemEntity();
-    ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-    localObject = ((TroopFileTansferItemEntity)localObject).getTableName();
-    String str = paramUUID.toString();
-    paramUUID = new beek(this, paramUUID);
-    a((String)localObject, "_sId=?", new String[] { str }, paramUUID);
-  }
-  
-  public void a(TroopFileTansferItemEntity paramTroopFileTansferItemEntity)
-  {
-    if ((paramTroopFileTansferItemEntity == null) || (paramTroopFileTansferItemEntity.Id == null)) {
-      return;
-    }
-    befc.c("TroopFileDataBaseProxy", befc.a, "[" + paramTroopFileTansferItemEntity.Id.toString() + "] updateItem transStatus[" + paramTroopFileTansferItemEntity.Status + "] FilePath[" + paramTroopFileTansferItemEntity.FilePath + "]");
-    int i = paramTroopFileTansferItemEntity.Status;
-    switch (paramTroopFileTansferItemEntity.Status)
+    bkzi localbkzi = (bkzi)bkzz.a(this.jdField_a_of_type_AndroidContentContext, null);
+    List localList = a(parambefn);
+    localList = localList.subList(0, localList.size() - 2);
+    Iterator localIterator = localList.iterator();
+    while (localIterator.hasNext())
     {
+      befo localbefo = (befo)localIterator.next();
+      localbkzi.a(this.jdField_a_of_type_AndroidContentContext.getResources().getString(localbefo.c()), 1);
+    }
+    localbkzi.c(2131690697);
+    localbkzi.a(new beek(this, localList, parambefn, localbkzi));
+    localbkzi.show();
+  }
+  
+  public final View a(int paramInt1, befn parambefn, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
+  {
+    blfn localblfn = a();
+    if (paramView == null)
+    {
+      paramView = new blfl();
+      paramViewGroup = b(paramInt1, parambefn, paramView.g, paramViewGroup, paramBoolean1, paramBoolean2, paramOnClickListener, paramOnLongClickListener, paramBoolean3, paramInt2);
+      paramOnClickListener = localblfn.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup, paramView, -1);
+      paramOnClickListener.setTag(paramView);
+      paramViewGroup = paramView;
+      paramView = paramOnClickListener;
     }
     for (;;)
     {
-      paramTroopFileTansferItemEntity.preupdate();
-      ContentValues localContentValues = a(paramTroopFileTansferItemEntity);
-      localContentValues.put("Status", Integer.valueOf(i));
-      localContentValues.put("_sStatus", bebd.a(i));
-      String str1 = paramTroopFileTansferItemEntity.getTableName();
-      String str2 = paramTroopFileTansferItemEntity.Id.toString();
-      paramTroopFileTansferItemEntity = new beej(this, paramTroopFileTansferItemEntity);
-      a(str1, localContentValues, "_sId=?", new String[] { str2 }, paramTroopFileTansferItemEntity);
-      return;
-      i = 3;
-      continue;
-      i = 10;
+      localblfn.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt1, parambefn, paramViewGroup, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramView.setEnabled(false);
+      return paramView;
+      blfl localblfl = (blfl)paramView.getTag();
+      b(paramInt1, parambefn, localblfl.g, paramViewGroup, paramBoolean1, paramBoolean2, paramOnClickListener, paramOnLongClickListener, paramBoolean3, paramInt2);
+      paramViewGroup = localblfl;
     }
   }
   
-  public void a(TroopFileTansferItemEntity paramTroopFileTansferItemEntity, ProxyListener paramProxyListener)
+  public abstract List<befo> a();
+  
+  public abstract List<befo> a(befn parambefn);
+  
+  public void a(beel parambeel)
   {
-    befc.c("TroopFileDataBaseProxy", befc.a, "[" + paramTroopFileTansferItemEntity.Id.toString() + "] addItem status[" + paramTroopFileTansferItemEntity.getStatus() + "]");
-    paramProxyListener = new beei(this, paramTroopFileTansferItemEntity);
-    if (paramTroopFileTansferItemEntity.getStatus() == 1000)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramTroopFileTansferItemEntity.getTableName(), paramTroopFileTansferItemEntity, 0, paramProxyListener);
-      return;
-    }
-    if (paramTroopFileTansferItemEntity.getStatus() == 1001)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramTroopFileTansferItemEntity.getTableName(), paramTroopFileTansferItemEntity, 1, paramProxyListener);
-      return;
-    }
-    befc.a("TroopFileDataBaseProxy", befc.a, "Item status[" + String.valueOf(paramTroopFileTansferItemEntity.getStatus()) + "] is wrong");
+    this.jdField_a_of_type_Beel = parambeel;
   }
   
-  protected void a(String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramString1, paramContentValues, paramString2, paramArrayOfString, 1, paramProxyListener);
-  }
-  
-  protected void a(String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramProxyListener);
-  }
-  
-  protected void b() {}
+  public abstract View b(int paramInt1, befn parambefn, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2);
 }
 
 

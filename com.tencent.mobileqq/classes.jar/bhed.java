@@ -1,16 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Paint;
-
-class bhed
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bhed
 {
-  bhed(bheb parambheb) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    bheb.a(this.a).setAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-  }
+  public abstract boolean onRespDownloadInfo(asid paramasid);
 }
 
 

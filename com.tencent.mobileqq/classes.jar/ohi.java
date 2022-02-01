@@ -1,37 +1,18 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class ohi
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g;
+  public ohi(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public ohi()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (ohi)paramObject;
-    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int;
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,25 +1,36 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.subscribe.network.DoLikeRequest;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aabu
-  implements bgwq
+public class aabu
+  implements View.OnClickListener
 {
-  aabu(aabq paramaabq, long paramLong, String paramString) {}
+  public aabu(RelativeFeedItemView paramRelativeFeedItemView, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void onCheckOfflineFinish(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aabq.c = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "onCheckOfflineFinish, cost: " + this.jdField_a_of_type_Aabq.c + ", url: " + npn.b(this.jdField_a_of_type_JavaLangString, new String[0]));
-    }
-    this.jdField_a_of_type_Aabq.a(this.jdField_a_of_type_JavaLangString, paramInt);
-    CustomWebView localCustomWebView = this.jdField_a_of_type_Aabq.mRuntime.a();
-    if (localCustomWebView != null)
+    if ((!RelativeFeedItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView)) || (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.a() == null) || (!zqn.a(((CertifiedAccountMeta.StFeed)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.a()).status.get()))) {}
+    for (;;)
     {
-      localCustomWebView.loadUrlOriginal(this.jdField_a_of_type_JavaLangString);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (!RelativeFeedItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), anvx.a(2131712827), 0).a();
+      }
+      else
+      {
+        RelativeFeedItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView, false);
+        DoLikeRequest localDoLikeRequest = new DoLikeRequest(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+        VSNetworkHelper.getInstance().sendRequest(localDoLikeRequest, new aabv(this));
+      }
     }
-    QLog.e("OfflinePluginQQ", 1, "error!!!! webview is null, now can not loadUrl " + this.jdField_a_of_type_JavaLangString);
   }
 }
 

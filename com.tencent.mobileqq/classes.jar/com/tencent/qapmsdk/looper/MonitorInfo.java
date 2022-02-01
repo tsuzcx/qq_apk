@@ -6,8 +6,9 @@ class MonitorInfo
 {
   volatile long cacheRealStackTime = 0L;
   IMonitorCallback callback;
-  volatile long lastGetStackTimeStamp = 0L;
+  volatile long lastForceTime = 0L;
   volatile long lastStackRequestTime = 0L;
+  volatile String scene = null;
   @Nullable
   volatile String stack = null;
   @Nullable

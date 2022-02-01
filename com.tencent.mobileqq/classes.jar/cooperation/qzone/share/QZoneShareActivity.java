@@ -1,7 +1,7 @@
 package cooperation.qzone.share;
 
 import Override;
-import aadf;
+import aasr;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -30,9 +30,9 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcef;
-import bfur;
-import bhht;
+import bdla;
+import bhdj;
+import bisl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -78,7 +78,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import yyi;
+import znl;
 
 public class QZoneShareActivity
   extends IphoneTitleBarActivity
@@ -139,7 +139,7 @@ public class QZoneShareActivity
   protected boolean mIsGettingAppinfo;
   public int mMaxLen;
   private String mOwnUin;
-  private bhht mProgressDialog;
+  private bisl mProgressDialog;
   private QZoneShareData mShareData;
   private int mShowAtIcon = 1;
   private int mShowEmoIcon = 1;
@@ -177,7 +177,7 @@ public class QZoneShareActivity
   private void askAnonymouslyReport()
   {
     if ((this.isSharedFromAskAnonymously) && (this.askAnonymouslyShareType == 1)) {
-      bcef.b(null, "dc00898", "", "", "0X800B46E", "0X800B46E", 0, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", "0X800B46E", "0X800B46E", 0, 0, "", "", "", "");
     }
   }
   
@@ -257,7 +257,7 @@ public class QZoneShareActivity
     if (QLog.isColorLevel()) {
       QLog.d("QZoneShare", 2, "-->sdk_share, getting appinfo in construct. sign: " + str);
     }
-    aadf.a(paramAppInterface, this, paramAppInterface.getCurrentAccountUin(), paramLong, str, l, this.mAppinfoObserver, paramString);
+    aasr.a(paramAppInterface, this, paramAppInterface.getCurrentAccountUin(), paramLong, str, l, this.mAppinfoObserver, paramString);
   }
   
   public static String getStringFromEditText(EditText paramEditText)
@@ -374,7 +374,7 @@ public class QZoneShareActivity
     }
     if (this.isSharedFromMiniProgram)
     {
-      showProgressDialog(2131718410);
+      showProgressDialog(2131718796);
       boolean bool = localIntent.getBooleanExtra("isSharedFromThirdParty", false);
       String str1 = localIntent.getStringExtra("miniShareParamAppId");
       String str2 = localIntent.getStringExtra("miniShareParamTitle");
@@ -438,21 +438,21 @@ public class QZoneShareActivity
   
   private void initUI()
   {
-    setContentView(2131562080);
-    setRightButton(2131717103, new QZoneShareActivity.6(this));
-    this.mConatainer = ((RelativeLayout)findViewById(2131375328));
-    this.mViewEdit = ((EditText)findViewById(2131367107));
-    this.mThumbContainer = ((FrameLayout)findViewById(2131367109));
-    this.mThumbView = ((URLImageView)findViewById(2131367112));
-    this.mViewForwardTitle = ((TextView)findViewById(2131367121));
-    this.mViewForwardSummary = ((TextView)findViewById(2131367117));
+    setContentView(2131562148);
+    setRightButton(2131717466, new QZoneShareActivity.6(this));
+    this.mConatainer = ((RelativeLayout)findViewById(2131375570));
+    this.mViewEdit = ((EditText)findViewById(2131367226));
+    this.mThumbContainer = ((FrameLayout)findViewById(2131367228));
+    this.mThumbView = ((URLImageView)findViewById(2131367231));
+    this.mViewForwardTitle = ((TextView)findViewById(2131367240));
+    this.mViewForwardSummary = ((TextView)findViewById(2131367236));
     addEmoPanel();
-    this.viewAtUser = findViewById(2131374845);
+    this.viewAtUser = findViewById(2131375086);
     setEventAtUser();
-    this.viewSmiley = ((ImageView)findViewById(2131374878));
+    this.viewSmiley = ((ImageView)findViewById(2131375119));
     setEventSmiley();
     setEventEditView();
-    this.viewTextCount = ((TextView)findViewById(2131367119));
+    this.viewTextCount = ((TextView)findViewById(2131367238));
     this.imm = ((InputMethodManager)getSystemService("input_method"));
     this.mAtUserList = new ArrayList();
   }
@@ -537,7 +537,7 @@ public class QZoneShareActivity
     callbackShareSuccess();
     if (!NetworkUtil.isNetSupport(this))
     {
-      yyi.a(1, 2131694064);
+      znl.a(1, 2131694255);
       return;
     }
     ThreadManager.postImmediately(new QZoneShareActivity.7(this), null, true);
@@ -665,7 +665,7 @@ public class QZoneShareActivity
   
   private void updateImageView()
   {
-    Object localObject = getResources().getDrawable(2130847756);
+    Object localObject = getResources().getDrawable(2130847847);
     if (!TextUtils.isEmpty(this.mThumbUrl))
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
@@ -703,7 +703,7 @@ public class QZoneShareActivity
     }
     for (;;)
     {
-      localObject = getResources().getDrawable(2130847756);
+      localObject = getResources().getDrawable(2130847847);
       this.mThumbView.setBackgroundDrawable((Drawable)localObject);
       return;
       this.mViewForwardSummary.setText(this.mSummary);
@@ -795,7 +795,7 @@ public class QZoneShareActivity
           }
           try
           {
-            showProgressDialog(2131691970);
+            showProgressDialog(2131692060);
             sAppinfoLock.wait(5000L);
             if (this.mGetAppinfoResponse != null) {
               break;
@@ -824,8 +824,8 @@ public class QZoneShareActivity
         if (QLog.isColorLevel()) {
           QLog.d("QZoneShare", 2, "-->sdk_share, checkAppinfoLocked, sign: " + str + ", appinfo is null.");
         }
-        showProgressDialog(2131691970);
-        aadf.a(paramAppInterface, this, paramAppInterface.getCurrentAccountUin(), paramLong, str, l, this.mAppinfoObserver, paramString);
+        showProgressDialog(2131692060);
+        aasr.a(paramAppInterface, this, paramAppInterface.getCurrentAccountUin(), paramLong, str, l, this.mAppinfoObserver, paramString);
         try
         {
           sAppinfoLock.wait(5000L);
@@ -1004,7 +1004,7 @@ public class QZoneShareActivity
     this.viewEmoView.setVisibility(8);
     this.viewDivider.setVisibility(4);
     ajustDesToolbar(this.emoShow);
-    this.viewSmiley.setImageResource(2130848977);
+    this.viewSmiley.setImageResource(2130849069);
     return true;
   }
   
@@ -1057,20 +1057,20 @@ public class QZoneShareActivity
       RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams1.addRule(12);
       this.line = new RelativeLayout(this);
-      this.desToolbar = LayoutInflater.from(this).inflate(2131562277, null);
+      this.desToolbar = LayoutInflater.from(this).inflate(2131562345, null);
       RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams2.addRule(10);
       this.desToolbar.setVisibility(4);
       this.line.addView(this.desToolbar, localLayoutParams2);
       localLayoutParams2 = new RelativeLayout.LayoutParams(-1, 2);
       localLayoutParams2.addRule(3, this.desToolbar.getId());
-      this.viewDivider = LayoutInflater.from(this).inflate(2131562170, null);
+      this.viewDivider = LayoutInflater.from(this).inflate(2131562238, null);
       this.line.addView(this.viewDivider, localLayoutParams2);
       localLayoutParams2 = new RelativeLayout.LayoutParams(-1, (int)(150.0F * ViewUtils.getDensity()));
       localLayoutParams2.addRule(3, this.viewDivider.getId());
       this.line.addView(this.viewEmoView, localLayoutParams2);
       this.viewEmoView.setVisibility(8);
-      this.viewEmoView.setBackgroundColor(getResources().getColor(2131166671));
+      this.viewEmoView.setBackgroundColor(getResources().getColor(2131166685));
       ((RelativeLayout)localObject).addView(this.line, localLayoutParams1);
       this.rootHeight = ((RelativeLayout)localObject).getHeight();
       ((RelativeLayout)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new QZoneShareActivity.8(this, (RelativeLayout)localObject));
@@ -1192,11 +1192,11 @@ public class QZoneShareActivity
   protected final void showOpenIdConfirmDialog(Activity paramActivity, QZoneShareData paramQZoneShareData)
   {
     paramQZoneShareData = new QZoneShareActivity.17(this, paramActivity, paramQZoneShareData);
-    QQCustomDialog localQQCustomDialog = bfur.a(paramActivity, 230);
-    localQQCustomDialog.setMessage(2131694768);
-    localQQCustomDialog.setTitle(2131691966);
-    localQQCustomDialog.setNegativeButton(2131690620, paramQZoneShareData);
-    localQQCustomDialog.setPositiveButton(2131718248, paramQZoneShareData);
+    QQCustomDialog localQQCustomDialog = bhdj.a(paramActivity, 230);
+    localQQCustomDialog.setMessage(2131694975);
+    localQQCustomDialog.setTitle(2131692056);
+    localQQCustomDialog.setNegativeButton(2131690697, paramQZoneShareData);
+    localQQCustomDialog.setPositiveButton(2131718634, paramQZoneShareData);
     localQQCustomDialog.setCancelable(false);
     if ((paramActivity != null) && (!paramActivity.isFinishing())) {}
     try

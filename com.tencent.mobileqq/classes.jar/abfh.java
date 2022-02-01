@@ -1,6 +1,16 @@
-class abfh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.bind.DevicePluginDownloadActivity;
+
+public class abfh
+  implements DialogInterface.OnClickListener
 {
-  private static abfg a = new abfg();
+  public abfh(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

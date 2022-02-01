@@ -1,90 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class pjl
+class pjl
+  implements View.OnClickListener
 {
-  private static volatile pjl jdField_a_of_type_Pjl;
-  private final List<pjm> jdField_a_of_type_JavaUtilList = new ArrayList();
+  pjl(pjk parampjk, String paramString1, String paramString2) {}
   
-  public static pjl a()
+  public void onClick(View paramView)
   {
-    if (jdField_a_of_type_Pjl == null) {}
-    try
-    {
-      if (jdField_a_of_type_Pjl == null) {
-        jdField_a_of_type_Pjl = new pjl();
-      }
-      return jdField_a_of_type_Pjl;
-    }
-    finally {}
-  }
-  
-  public void a(int paramInt, List<DynamicChannelDataModel> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
-      if (localIterator.hasNext()) {
-        ((pjm)localIterator.next()).a(paramInt, paramList);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, boolean paramBoolean, List<pjt> paramList, int paramInt2)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
-      if (localIterator.hasNext()) {
-        ((pjm)localIterator.next()).a(paramInt1, paramBoolean, paramList, paramInt2);
-      }
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
-      if (localIterator.hasNext()) {
-        ((pjm)localIterator.next()).a(paramInt, paramBoolean1, paramBoolean2, paramList);
-      }
-    }
-  }
-  
-  public void a(pjm parampjm)
-  {
-    if (parampjm == null) {}
-    while (this.jdField_a_of_type_JavaUtilList.contains(parampjm)) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(parampjm);
-      return;
-    }
-  }
-  
-  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
-      if (localIterator.hasNext()) {
-        ((pjm)localIterator.next()).b(paramInt, paramBoolean1, paramBoolean2, paramList);
-      }
-    }
-  }
-  
-  public void b(pjm parampjm)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(parampjm);
-      return;
-    }
+    pjk.a(this.jdField_a_of_type_Pjk).a(this.jdField_a_of_type_JavaLangString, this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

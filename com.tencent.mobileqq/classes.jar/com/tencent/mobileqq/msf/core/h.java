@@ -1087,11 +1087,11 @@ public class h
     //   2000: pop
     //   2001: aload_0
     //   2002: getfield 99	com/tencent/mobileqq/msf/core/h:y	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2005: invokevirtual 246	com/tencent/mobileqq/msf/core/MsfCore:getSsoRespHandler	()Lcom/tencent/mobileqq/msf/core/al;
+    //   2005: invokevirtual 246	com/tencent/mobileqq/msf/core/MsfCore:getSsoRespHandler	()Lcom/tencent/mobileqq/msf/core/am;
     //   2008: aload_2
     //   2009: aload 13
     //   2011: iload 4
-    //   2013: invokevirtual 541	com/tencent/mobileqq/msf/core/al:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;I)Z
+    //   2013: invokevirtual 541	com/tencent/mobileqq/msf/core/am:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;I)Z
     //   2016: istore 9
     //   2018: iload 9
     //   2020: ifne +43 -> 2063
@@ -2225,7 +2225,7 @@ public class h
       str = paramToServiceMsg.getServiceCmd();
       Object localObject = null;
       if (paramToServiceMsg.getWupBuffer() == null) {
-        break label472;
+        break label476;
       }
       b1 = f();
       b2 = (byte)NetConnInfoCenter.getActiveNetIpFamily(false);
@@ -2246,7 +2246,7 @@ public class h
         }
       }
       if (i1 != 1) {
-        break label305;
+        break label307;
       }
       if (591 == CodecWarpper.getSharedObjectVersion()) {
         return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, paramToServiceMsg.getAppId(), this.y.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, paramToServiceMsg.getWupBuffer(), true);
@@ -2259,18 +2259,18 @@ public class h
       return null;
     }
     if ((595 == CodecWarpper.getSharedObjectVersion()) || (600 == CodecWarpper.getSharedObjectVersion())) {
-      return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, paramToServiceMsg.getAppId(), this.y.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, localThrowable, paramToServiceMsg.getWupBuffer(), true);
+      return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, paramToServiceMsg.getAppId(), this.y.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, localThrowable, null, paramToServiceMsg.getWupBuffer(), true);
     }
-    return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, paramToServiceMsg.getAppId(), this.y.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, b2, localThrowable, paramToServiceMsg.getWupBuffer(), true);
-    label305:
+    return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, paramToServiceMsg.getAppId(), this.y.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, b2, localThrowable, null, paramToServiceMsg.getWupBuffer(), true);
+    label307:
     if (591 == CodecWarpper.getSharedObjectVersion()) {
       return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, paramToServiceMsg.getAppId(), this.y.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, paramToServiceMsg.getWupBuffer(), true);
     }
     if ((595 == CodecWarpper.getSharedObjectVersion()) || (600 == CodecWarpper.getSharedObjectVersion())) {
-      return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, paramToServiceMsg.getAppId(), this.y.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, localThrowable, paramToServiceMsg.getWupBuffer(), true);
+      return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, paramToServiceMsg.getAppId(), this.y.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, localThrowable, null, paramToServiceMsg.getWupBuffer(), true);
     }
-    return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, paramToServiceMsg.getAppId(), this.y.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, b2, localThrowable, paramToServiceMsg.getWupBuffer(), true);
-    label472:
+    return CodecWarpper.nativeEncodeRequest(paramToServiceMsg.getRequestSsoSeq(), w.d(), w.f(), w.g(), "", str, null, paramToServiceMsg.getAppId(), this.y.getMsfAppid(), paramToServiceMsg.getUin(), (byte)0, b1, b2, localThrowable, null, paramToServiceMsg.getWupBuffer(), true);
+    label476:
     return new byte[0];
   }
   

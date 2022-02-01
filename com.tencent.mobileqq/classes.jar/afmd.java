@@ -1,11 +1,45 @@
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.ArrayList;
+
 public class afmd
+  extends anvi
 {
-  public int a;
-  public byte[] a;
+  public afmd(ActivateFriendView paramActivateFriendView) {}
   
-  afmd(afmc paramafmc)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = 0;
+    int i = 0;
+    for (;;)
+    {
+      if (i < ActivateFriendView.a(this.a).size())
+      {
+        String str = String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin);
+        if (paramString.equals(str))
+        {
+          paramString = ContactUtils.getBuddyName(ActivateFriendView.a(this.a), str, false);
+          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(paramString);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 0;
+    while (i < ActivateFriendView.a(this.a).size())
+    {
+      String str = ContactUtils.getFriendDisplayName(ActivateFriendView.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin));
+      ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(str);
+      i += 1;
+    }
   }
 }
 

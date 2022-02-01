@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.profilecard.vas.view;
 
-import amsw;
 import android.widget.ImageView;
-import aymg;
-import bfua;
+import anvk;
+import azrb;
+import bhcs;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import mqq.os.MqqHandler;
@@ -13,17 +14,17 @@ import mqq.os.MqqHandler;
 class VasProfileQVipDiyView$1
   implements Runnable
 {
-  VasProfileQVipDiyView$1(VasProfileQVipDiyView paramVasProfileQVipDiyView, aymg paramaymg, ImageView paramImageView, boolean paramBoolean) {}
+  VasProfileQVipDiyView$1(VasProfileQVipDiyView paramVasProfileQVipDiyView, azrb paramazrb, ImageView paramImageView, boolean paramBoolean) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((amsw)VasProfileQVipDiyView.a(this.this$0).getManager(51)).a(this.jdField_a_of_type_Aymg.a.a);
+    ExtensionInfo localExtensionInfo = ((anvk)VasProfileQVipDiyView.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_Azrb.a.a);
     VasProfileQVipDiyView.1.1 local1 = new VasProfileQVipDiyView.1.1(this, localExtensionInfo);
     ThreadManager.getUIHandler().post(local1);
-    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bfua.b(localExtensionInfo.pendantId)))
+    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bhcs.b(localExtensionInfo.pendantId)))
     {
       VasProfileQVipDiyView.c(this.this$0).addObserver(VasProfileQVipDiyView.a(this.this$0));
-      bfua.a(VasProfileQVipDiyView.d(this.this$0), this.jdField_a_of_type_Aymg.a.a);
+      bhcs.a(VasProfileQVipDiyView.d(this.this$0), this.jdField_a_of_type_Azrb.a.a);
     }
   }
 }

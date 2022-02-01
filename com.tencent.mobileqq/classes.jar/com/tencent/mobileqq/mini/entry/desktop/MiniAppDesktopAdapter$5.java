@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnAttachStateChangeListener;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
@@ -18,7 +19,7 @@ class MiniAppDesktopAdapter$5
   {
     try
     {
-      ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(336)).checkMiniAppAdReport(this.val$miniAppInfo, this.val$position);
+      ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).checkMiniAppAdReport(this.val$miniAppInfo, this.val$position);
       return;
     }
     catch (Exception paramView)

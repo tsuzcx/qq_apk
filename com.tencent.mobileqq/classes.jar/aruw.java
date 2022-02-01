@@ -1,116 +1,99 @@
+import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.data.MessageForQQWalletTips;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.SoftReference;
+import java.util.Map;
+import org.json.JSONObject;
 
 public class aruw
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  public aruw(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public aruw(MessageForQQWalletTips paramMessageForQQWalletTips, SoftReference paramSoftReference1, SoftReference paramSoftReference2, QQAppInterface paramQQAppInterface, Context paramContext, agjr paramagjr, akqe paramakqe, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    Object localObject2 = (asls)paramView.getTag();
-    Object localObject1 = ((asls)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
-    int i;
-    if (paramView.getId() == 2131366631)
+    paramView = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    Object localObject1 = (QQAppInterface)this.b.get();
+    if ((localObject1 == null) || (paramView == null)) {}
+    do
     {
-      i = 1;
-      if (!((FileInfo)localObject1).c()) {
-        break label58;
-      }
-      LocalFileBrowserActivity.a(this.a, ((FileInfo)localObject1).c(), true);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      i = 0;
-      break;
-      label58:
-      if ((this.a.f()) && (i == 0))
+      QLog.i(MessageForQQWalletTips.access$000(), 2, "rich click, msgtype: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.msgType + ", msgsubtype: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.subType + ",isEq:" + TextUtils.equals(((QQAppInterface)localObject1).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.reciverUin));
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.bytes_jumpurl))
       {
-        if ((this.a.i()) && (!aslg.a(aslg.b)))
-        {
-          localObject1 = bfur.a(this.a, 2131697629);
-          ((QQCustomDialog)localObject1).setPositiveButton(2131694201, new bfvf());
-          ((QQCustomDialog)localObject1).show();
-        }
-        else
-        {
-          if (aslg.a((FileInfo)localObject1)) {
-            aslg.b((FileInfo)localObject1);
-          }
-          for (;;)
-          {
-            this.a.l();
-            if (!this.a.f()) {
-              break label230;
-            }
-            ((asls)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-            ((asls)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(aslg.a((FileInfo)localObject1));
-            break;
-            if (this.a.h) {
-              aslg.b();
-            }
-            if (((FileInfo)localObject1).a() == -1) {
-              ((FileInfo)localObject1).b(aszt.a(((FileInfo)localObject1).c()));
-            }
-            aslg.a((FileInfo)localObject1);
-            if (this.a.h) {
-              LocalFileBrowserActivity.a(this.a);
-            }
-          }
-          label230:
-          ((asls)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-        }
+        QLog.i(MessageForQQWalletTips.access$000(), 2, "gold red package...");
+        paramView = bmhg.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.bytes_jumpurl, MessageForQQWalletTips.access$100(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), true);
+        albv.a(this.jdField_a_of_type_AndroidContentContext, paramView);
+        return;
       }
-      else if (!this.a.a())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(LocalFileBrowserActivity.f, 2, "click too fast , wait a minute.");
-        }
+      if ((MessageForQQWalletTips.access$200(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips) != 524288) || (this.jdField_a_of_type_Agjr == null) || (this.jdField_a_of_type_Akqe == null)) {
+        break;
       }
-      else
+      localObject2 = this.jdField_a_of_type_Akqe.a(MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips));
+      if ((localObject2 == null) || (((akqd)localObject2).a) || (((akqd)localObject2).b) || (((akqd)localObject2).a())) {
+        break;
+      }
+      paramView = this.jdField_a_of_type_Akqe;
+    } while (StringUtil.isEmpty(akqe.a(((akqd)localObject2).e)));
+    this.jdField_a_of_type_Agjr.a(MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips), ((akqd)localObject2).e, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.subChannel);
+    return;
+    if (TextUtils.isEmpty(MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips)))
+    {
+      QLog.i(MessageForQQWalletTips.access$000(), 2, "error, listId is null");
+      return;
+    }
+    Object localObject2 = MessageForQQWalletTips.access$400(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips, (QQAppInterface)localObject1);
+    String str1 = (String)((Map)localObject2).get("grouptype");
+    String str2 = (String)((Map)localObject2).get("name");
+    String str3 = (String)((Map)localObject2).get("groupId");
+    JSONObject localJSONObject = new JSONObject();
+    localObject2 = new JSONObject();
+    try
+    {
+      localJSONObject.put("listid", MessageForQQWalletTips.access$300(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips));
+      localJSONObject.put("name", str2);
+      localJSONObject.put("grouptype", str1);
+      localJSONObject.put("groupid", str3);
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.authKey != null) {
+        localJSONObject.put("authkey", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.authKey);
+      }
+      ((JSONObject)localObject2).put("userId", ((QQAppInterface)localObject1).getCurrentAccountUin());
+      ((JSONObject)localObject2).put("viewTag", "redgiftDetail");
+      ((JSONObject)localObject2).put("app_info", "appid#1344242394|bargainor_id#1000030201|channel#graytips");
+      ((JSONObject)localObject2).put("come_from", 2);
+      ((JSONObject)localObject2).put("extra_data", localJSONObject);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        if (this.a.f()) {
-          bcef.b(this.a.app, "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-        }
-        this.a.e();
-        Object localObject3 = aszt.a((FileInfo)localObject1);
-        ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-        localForwardFileInfo.b(((FileManagerEntity)localObject3).nSessionId);
-        localForwardFileInfo.d(3);
-        localForwardFileInfo.b(10000);
-        localForwardFileInfo.a(((FileInfo)localObject1).c());
-        localForwardFileInfo.d(((FileInfo)localObject1).d());
-        localForwardFileInfo.d(((FileInfo)localObject1).a());
-        localObject2 = new Intent(this.a.getApplicationContext(), FileBrowserActivity.class);
-        ((Intent)localObject2).putExtra("fileinfo", localForwardFileInfo);
-        if ((((FileManagerEntity)localObject3).nFileType == 0) || (((FileManagerEntity)localObject3).nFileType == 1))
-        {
-          aslg.a(this.a.b);
-          ((Intent)localObject2).putExtra("clicked_file_hashcode", ((FileInfo)localObject1).hashCode());
-        }
-        localObject3 = new aszs();
-        ((aszs)localObject3).b = "file_viewer_in";
-        ((aszs)localObject3).jdField_a_of_type_Int = 80;
-        ((aszs)localObject3).c = FileUtil.getExtension(((FileInfo)localObject1).d());
-        ((aszs)localObject3).jdField_a_of_type_Long = ((FileInfo)localObject1).a();
-        aszr.a(this.a.app.getCurrentAccountUin(), (aszs)localObject3);
-        this.a.startActivityForResult((Intent)localObject2, 102);
+        localException.printStackTrace();
       }
     }
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("json", ((JSONObject)localObject2).toString());
+    ((Bundle)localObject1).putString("callbackSn", "0");
+    localObject2 = new Intent(paramView, PayBridgeActivity.class);
+    ((Intent)localObject2).putExtras((Bundle)localObject1);
+    ((Intent)localObject2).putExtra("pay_requestcode", 5);
+    paramView.startActivity((Intent)localObject2);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
   }
 }
 

@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ahmh
-  implements ahmf
+class ahmh
+  implements View.OnTouchListener
 {
-  ahmh(ahmg paramahmg) {}
+  ahmh(ahmf paramahmf, aftk paramaftk) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ahmg.a(this.a, ahmg.a(this.a));
-    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.1.1(this));
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleAnimationViewHolder", 2, "onSurfaceDestroyed");
-    }
-    ahmg.b(this.a, ahmg.a(this.a));
+    this.jdField_a_of_type_Aftk.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

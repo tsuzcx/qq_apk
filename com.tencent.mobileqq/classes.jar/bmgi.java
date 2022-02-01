@@ -1,16 +1,18 @@
-import java.util.concurrent.CountDownLatch;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qqreader.ui.ReaderHomeTabFragment;
+import cooperation.qqreader.view.ReaderTabBarView;
 
-final class bmgi
-  implements bmfg
+public class bmgi
+  extends BroadcastReceiver
 {
-  bmgi(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
+  public bmgi(ReaderHomeTabFragment paramReaderHomeTabFragment) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    bmgk.c(this.a.getActivity());
+    ReaderHomeTabFragment.a(this.a).setUnReadMsg(1, 20);
   }
 }
 

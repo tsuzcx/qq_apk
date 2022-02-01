@@ -1,106 +1,14 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.stickerrecommended.BloomFilter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ahnu
-  implements INetEngine.INetEngineListener
+public class ahnu
+  implements ahnr
 {
-  ahnu(ahns paramahns, String paramString1, boolean paramBoolean, String paramString2) {}
-  
-  public void onResp(NetResp paramNetResp)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("StickerRecManager", 2, "onResp resultcode: " + paramNetResp.mHttpCode + " threadid=" + Thread.currentThread().getId());
-    }
-    long l1;
-    if ((paramNetResp.mHttpCode == 200) && (ahns.a(this.jdField_a_of_type_Ahns, ahns.a(this.jdField_a_of_type_Ahns), ahns.b(this.jdField_a_of_type_Ahns), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean)))
-    {
-      if (!ahns.b(this.jdField_a_of_type_Ahns).exists()) {
-        break label423;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecManager", 2, "pull words success");
-      }
-      l1 = 0L;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        long l2 = SystemClock.elapsedRealtime();
-        l1 = l2;
-        Object localObject = new JSONObject(FileUtils.readFileToString(ahns.b(this.jdField_a_of_type_Ahns)));
-        l1 = l2;
-        paramNetResp = ((JSONObject)localObject).optString("version", null);
-        l1 = l2;
-        localObject = ((JSONObject)localObject).optJSONArray("words");
-        l1 = l2;
-        BloomFilter localBloomFilter = new BloomFilter();
-        l1 = l2;
-        localBloomFilter.version = paramNetResp;
-        i = 0;
-        l1 = l2;
-        if (i < ((JSONArray)localObject).length())
-        {
-          l1 = l2;
-          paramNetResp = ((JSONArray)localObject).optString(i);
-          l1 = l2;
-          if (TextUtils.isEmpty(paramNetResp)) {
-            break label438;
-          }
-          l1 = l2;
-          localBloomFilter.add(paramNetResp);
-          break label438;
-        }
-        l1 = l2;
-        FileUtils.deleteFile(ahns.c(this.jdField_a_of_type_Ahns).getAbsolutePath());
-        l1 = l2;
-        ahns.a(this.jdField_a_of_type_Ahns, ahns.c(this.jdField_a_of_type_Ahns).getAbsolutePath(), localBloomFilter);
-        l1 = l2;
-        FileUtils.deleteFile(ahns.b(this.jdField_a_of_type_Ahns).getAbsolutePath());
-        l1 = l2;
-        bfyz.d(ahns.a(this.jdField_a_of_type_Ahns).getApp(), "words_version_key805_gray_one", ahns.a(this.jdField_a_of_type_Ahns).getCurrentUin(), this.b);
-        l1 = l2;
-        this.jdField_a_of_type_Ahns.b();
-        l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          l1 = l2;
-          QLog.d("StickerRecManager", 2, "generate encode table time cost : " + (SystemClock.elapsedRealtime() - l2));
-        }
-        return;
-      }
-      catch (Exception paramNetResp)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("StickerRecManager", 2, "generate encode table time error cost : " + (SystemClock.elapsedRealtime() - l1));
-        QLog.d("StickerRecManager", 2, "build EncodeTable error !");
-        return;
-      }
-      label423:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("StickerRecManager", 2, "updateWords fail: words file is not exist.");
-        return;
-        label438:
-        i += 1;
-      }
-    }
+    paramagtf.e(paramMessageRecord, paramagus);
   }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

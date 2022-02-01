@@ -1,25 +1,37 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
-final class aojj
-  implements FileFilter
+class aojj
+  implements biyn
 {
-  public boolean accept(File paramFile)
+  aojj(aoji paramaoji, int paramInt) {}
+  
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
+    if ((paramBaseResp == null) || (paramBaseResp.transaction == null))
     {
-      int i = 3;
-      while (i < paramFile.length())
-      {
-        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
-          return false;
-        }
-        i += 1;
-      }
-      return true;
+      QLog.e("AVGameShareBase", 1, "onWXShareResp: respData is null");
+      return;
     }
-    return false;
+    if (!paramBaseResp.transaction.equals(this.jdField_a_of_type_Aoji.jdField_a_of_type_JavaLangString))
+    {
+      QLog.e("AVGameShareBase", 1, "onWXShareResp: mWXTransaction is wrong");
+      return;
+    }
+    WXShareHelper.a().b(this.jdField_a_of_type_Aoji.jdField_a_of_type_Biyn);
+    this.jdField_a_of_type_Aoji.jdField_a_of_type_Biyn = null;
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      this.jdField_a_of_type_Aoji.d(this.jdField_a_of_type_Int);
+      return;
+    case 0: 
+      this.jdField_a_of_type_Aoji.b(this.jdField_a_of_type_Int);
+      return;
+    }
+    this.jdField_a_of_type_Aoji.c(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import aeyl;
-import ahuz;
+import afpx;
+import aipy;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
@@ -26,39 +26,39 @@ import java.util.Properties;
 import java.util.Timer;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xvv;
-import xwb;
-import xwi;
-import xwx;
-import xyz;
-import xza;
-import xzb;
-import xzc;
-import xzd;
-import xzp;
-import yak;
-import yal;
-import yam;
-import yin;
-import yir;
-import yjh;
-import ymk;
-import yml;
-import ypi;
+import ykq;
+import ykw;
+import ylb;
+import ylq;
+import yns;
+import ynt;
+import ynu;
+import ynv;
+import ynw;
+import yoi;
+import ypd;
+import ype;
+import ypf;
+import yxg;
+import yxk;
+import yya;
+import zbd;
+import zbe;
+import zeb;
 
 public class EditVideoMusic
-  extends xzb
-  implements aeyl, xwx
+  extends ynu
+  implements afpx, ylq
 {
   int jdField_a_of_type_Int = 0;
   private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
   protected Handler a;
-  public SparseArray<yir> a;
+  public SparseArray<yxk> a;
   protected EditVideoMusic.TakePhotoMusicTimerTask a;
   protected AudioPlayer a;
-  public ArrayList<yir> a;
+  public ArrayList<yxk> a;
   protected Timer a;
-  yal jdField_a_of_type_Yal;
+  ype jdField_a_of_type_Ype;
   protected boolean a;
   private int b;
   protected boolean b;
@@ -69,28 +69,28 @@ public class EditVideoMusic
   private boolean g;
   private boolean h;
   
-  public EditVideoMusic(@NonNull xzd paramxzd)
+  public EditVideoMusic(@NonNull ynw paramynw)
   {
-    super(paramxzd);
-    this.jdField_a_of_type_AndroidOsHandler = new xza(this);
+    super(paramynw);
+    this.jdField_a_of_type_AndroidOsHandler = new ynt(this);
   }
   
-  private yir a(yal paramyal)
+  private yxk a(ype paramype)
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("title", paramyal.e);
-      localJSONObject.put("audio_url", paramyal.f);
+      localJSONObject.put("title", paramype.e);
+      localJSONObject.put("audio_url", paramype.f);
       localJSONObject.put("type", 2);
-      localJSONObject.put("id", paramyal.d);
-      return new yir(localJSONObject.toString());
+      localJSONObject.put("id", paramype.d);
+      return new yxk(localJSONObject.toString());
     }
-    catch (JSONException paramyal)
+    catch (JSONException paramype)
     {
       for (;;)
       {
-        paramyal.printStackTrace();
+        paramype.printStackTrace();
       }
     }
   }
@@ -101,11 +101,11 @@ public class EditVideoMusic
       return;
     }
     Object localObject = a();
-    if ((localObject == null) || (((yir)localObject).equals(yir.jdField_b_of_type_Yir)))
+    if ((localObject == null) || (((yxk)localObject).equals(yxk.jdField_b_of_type_Yxk)))
     {
-      localObject = (xzp)this.jdField_a_of_type_Xzd.a(xzp.class);
+      localObject = (yoi)this.jdField_a_of_type_Ynw.a(yoi.class);
       if (localObject != null) {
-        ((xzp)localObject).a(this.e);
+        ((yoi)localObject).a(this.e);
       }
       VideoSourceHelper.nativeSetPlayAFMute(this.e);
       return;
@@ -125,17 +125,17 @@ public class EditVideoMusic
       QQToast.a(a(), "GIF不支持添加音乐", 0).a();
       return;
     }
-    this.jdField_a_of_type_Xzd.a(2);
+    this.jdField_a_of_type_Ynw.a(2);
   }
   
-  public void Q_()
+  public void S_()
   {
-    super.Q_();
+    super.S_();
     this.jdField_a_of_type_Boolean = true;
     m();
   }
   
-  public void T_()
+  public void V_()
   {
     if (this.jdField_b_of_type_Boolean) {
       i();
@@ -153,10 +153,10 @@ public class EditVideoMusic
     QLog.d("Q.qqstory.publish.edit.EditVideoMusic", 2, "pauseClipMusic()");
   }
   
-  public yir a()
+  public yxk a()
   {
     if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      return (yir)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Xzd.a());
+      return (yxk)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Ynw.a());
     }
     return null;
   }
@@ -164,25 +164,25 @@ public class EditVideoMusic
   public void a()
   {
     super.a();
-    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Xzd.a();
+    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Ynw.a();
     Object localObject3 = null;
-    String str = this.jdField_a_of_type_Xzd.a.getStringExtra("video_tag_info");
+    String str = this.jdField_a_of_type_Ynw.a.getStringExtra("video_tag_info");
     Object localObject1 = localObject3;
     if (str != null) {}
     try
     {
-      this.jdField_a_of_type_Yal = ((yal)JsonORM.a(new JSONObject(str), yal.class));
+      this.jdField_a_of_type_Ype = ((ype)JsonORM.a(new JSONObject(str), ype.class));
       localObject1 = localObject3;
-      if (this.jdField_a_of_type_Yal != null)
+      if (this.jdField_a_of_type_Ype != null)
       {
-        if (this.jdField_a_of_type_Yal.c != 0) {
+        if (this.jdField_a_of_type_Ype.c != 0) {
           break label207;
         }
         localObject1 = localObject3;
-        if (yin.a(a()))
+        if (yxg.a(a()))
         {
-          localObject1 = yin.a(a(), this.jdField_a_of_type_Yal.d);
-          xvv.b("Q.qqstory.publish.edit.EditVideoMusic", "set the default music : music id = %s, success = %s", this.jdField_a_of_type_Yal.d, localObject1);
+          localObject1 = yxg.a(a(), this.jdField_a_of_type_Ype.d);
+          ykq.b("Q.qqstory.publish.edit.EditVideoMusic", "set the default music : music id = %s, success = %s", this.jdField_a_of_type_Ype.d, localObject1);
         }
       }
       if (localObject1 != null)
@@ -211,7 +211,7 @@ public class EditVideoMusic
     {
       for (;;)
       {
-        xvv.b("Q.qqstory.publish.edit.EditVideoMusic", "JsonORM.parseFrom JsonParseException", localJsonParseException);
+        ykq.b("Q.qqstory.publish.edit.EditVideoMusic", "JsonORM.parseFrom JsonParseException", localJsonParseException);
       }
     }
     catch (JSONException localJSONException)
@@ -222,48 +222,48 @@ public class EditVideoMusic
       {
         boolean bool;
         int i;
-        xvv.b("Q.qqstory.publish.edit.EditVideoMusic", "JsonORM.parseFrom JSONException", localJSONException);
+        ykq.b("Q.qqstory.publish.edit.EditVideoMusic", "JsonORM.parseFrom JSONException", localJSONException);
         continue;
-        if (this.jdField_a_of_type_Yal.c == 1)
+        if (this.jdField_a_of_type_Ype.c == 1)
         {
-          localObject2 = a(this.jdField_a_of_type_Yal);
-          xvv.b("Q.qqstory.publish.edit.EditVideoMusic", "set the qq music : music id = %s, success = %s", this.jdField_a_of_type_Yal.d, localObject2);
+          localObject2 = a(this.jdField_a_of_type_Ype);
+          ykq.b("Q.qqstory.publish.edit.EditVideoMusic", "set the qq music : music id = %s, success = %s", this.jdField_a_of_type_Ype.d, localObject2);
         }
         else
         {
           localObject2 = localObject3;
-          if (this.jdField_a_of_type_Yal.c == 2)
+          if (this.jdField_a_of_type_Ype.c == 2)
           {
-            localObject2 = a(this.jdField_a_of_type_Yal);
-            xvv.b("Q.qqstory.publish.edit.EditVideoMusic", "from qzone topic, set the qq music : music id = %s, success = %s", this.jdField_a_of_type_Yal.d, localObject2);
+            localObject2 = a(this.jdField_a_of_type_Ype);
+            ykq.b("Q.qqstory.publish.edit.EditVideoMusic", "from qzone topic, set the qq music : music id = %s, success = %s", this.jdField_a_of_type_Ype.d, localObject2);
             continue;
             bool = false;
             continue;
-            if (this.jdField_a_of_type_Xzd.a()) {
-              this.jdField_a_of_type_AndroidUtilSparseArray.put(i, yir.jdField_a_of_type_Yir);
+            if (this.jdField_a_of_type_Ynw.a()) {
+              this.jdField_a_of_type_AndroidUtilSparseArray.put(i, yxk.jdField_a_of_type_Yxk);
             } else {
-              this.jdField_a_of_type_AndroidUtilSparseArray.put(i, yir.jdField_b_of_type_Yir);
+              this.jdField_a_of_type_AndroidUtilSparseArray.put(i, yxk.jdField_b_of_type_Yxk);
             }
           }
         }
       }
       label329:
-      if ((localObject2 == null) && (this.jdField_a_of_type_Xzd.a()))
+      if ((localObject2 == null) && (this.jdField_a_of_type_Ynw.a()))
       {
-        a(yir.jdField_a_of_type_Yir);
+        a(yxk.jdField_a_of_type_Yxk);
         a(0);
       }
-      a(xwx.class, this);
+      a(ylq.class, this);
     }
   }
   
   public void a(int paramInt)
   {
-    xwi localxwi = (xwi)a(xwi.class);
-    if (localxwi != null)
+    ylb localylb = (ylb)a(ylb.class);
+    if (localylb != null)
     {
       if (paramInt == 0) {
-        localxwi.a(2130846574);
+        localylb.a(2130846670);
       }
     }
     else {
@@ -271,10 +271,10 @@ public class EditVideoMusic
     }
     if ((3 == paramInt) || (2 == paramInt))
     {
-      localxwi.a(2130846573);
+      localylb.a(2130846669);
       return;
     }
-    localxwi.a(2130846567);
+    localylb.a(2130846663);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -327,14 +327,14 @@ public class EditVideoMusic
     default: 
       return;
     case 2: 
-      xwb.a("0X80076BB", xwb.jdField_b_of_type_Int);
-      bool3 = paramObject instanceof yal;
-      paramObject = a(yam.class);
+      ykw.a("0X80076BB", ykw.jdField_b_of_type_Int);
+      bool3 = paramObject instanceof ype;
+      paramObject = a(ypf.class);
       if (paramObject == null) {
         break;
       }
     }
-    for (paramObject = ((yam)paramObject).a(this.jdField_a_of_type_Xzd.a());; paramObject = null)
+    for (paramObject = ((ypf)paramObject).a(this.jdField_a_of_type_Ynw.a());; paramObject = null)
     {
       boolean bool1 = bool2;
       if (paramObject != null)
@@ -344,13 +344,13 @@ public class EditVideoMusic
           bool1 = true;
         }
       }
-      paramObject = new EditVideoMusicDialog(a(), this, this.jdField_b_of_type_Boolean, (int)this.jdField_a_of_type_Xzd.a(this.jdField_a_of_type_Xzd.a()), this.jdField_a_of_type_Xzd.a, bool3, bool1);
+      paramObject = new EditVideoMusicDialog(a(), this, this.jdField_b_of_type_Boolean, (int)this.jdField_a_of_type_Ynw.a(this.jdField_a_of_type_Ynw.a()), this.jdField_a_of_type_Ynw.a, bool3, bool1);
       paramObject.setCanceledOnTouchOutside(true);
-      paramObject.setOnDismissListener(new xyz(this));
+      paramObject.setOnDismissListener(new yns(this));
       paramObject.setCancelable(true);
       paramObject.show();
       return;
-      T_();
+      V_();
       return;
       if ((this.jdField_b_of_type_Boolean) && (a() == null)) {
         a(0);
@@ -363,58 +363,58 @@ public class EditVideoMusic
     }
   }
   
-  public void a(int paramInt, @NonNull yjh paramyjh)
+  public void a(int paramInt, @NonNull yya paramyya)
   {
-    super.a(paramInt, paramyjh);
-    yir localyir = (yir)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localyir == null)
+    super.a(paramInt, paramyya);
+    yxk localyxk = (yxk)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localyxk == null)
     {
-      xvv.d("Q.qqstory.publish.edit.EditVideoMusic", "editVideoPrePublish music error---------");
+      ykq.d("Q.qqstory.publish.edit.EditVideoMusic", "editVideoPrePublish music error---------");
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a() instanceof AmrPlayer)) && (localyir.d - 1000 > 0)) {
-      localyir.d -= 1000;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a() instanceof AmrPlayer)) && (localyxk.d - 1000 > 0)) {
+      localyxk.d -= 1000;
     }
-    paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.backgroundMusicPath = localyir.g;
-    Object localObject1 = paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
-    if (localyir.jdField_b_of_type_Int != 1) {}
+    paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.backgroundMusicPath = localyxk.g;
+    Object localObject1 = paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
+    if (localyxk.jdField_b_of_type_Int != 1) {}
     for (boolean bool = true;; bool = false)
     {
       ((PublishVideoEntry)localObject1).isMuteRecordVoice = bool;
-      paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.backgroundMusicOffset = localyir.d;
-      paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.backgroundMusicDuration = ((int)this.jdField_a_of_type_Xzd.a(paramInt));
-      if (!TextUtils.isEmpty(localyir.g)) {
-        xvv.d("Q.qqstory.publish.edit.EditVideoMusic", "pre publish music file exist:%b path:%s", new Object[] { Boolean.valueOf(ypi.b(localyir.g)), localyir.g });
+      paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.backgroundMusicOffset = localyxk.d;
+      paramyya.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.backgroundMusicDuration = ((int)this.jdField_a_of_type_Ynw.a(paramInt));
+      if (!TextUtils.isEmpty(localyxk.g)) {
+        ykq.d("Q.qqstory.publish.edit.EditVideoMusic", "pre publish music file exist:%b path:%s", new Object[] { Boolean.valueOf(zeb.b(localyxk.g)), localyxk.g });
       }
-      switch (localyir.jdField_b_of_type_Int)
+      switch (localyxk.jdField_b_of_type_Int)
       {
       default: 
-        xvv.d("Q.qqstory.publish.edit.EditVideoMusic", "mCurrentMusicType illegal %d", new Object[] { Integer.valueOf(-999) });
+        ykq.d("Q.qqstory.publish.edit.EditVideoMusic", "mCurrentMusicType illegal %d", new Object[] { Integer.valueOf(-999) });
         return;
       }
     }
     Object localObject2;
-    if (localyir.jdField_b_of_type_Int == 2)
+    if (localyxk.jdField_b_of_type_Int == 2)
     {
       localObject1 = "1";
-      xzd localxzd = this.jdField_a_of_type_Xzd;
-      paramInt = this.jdField_a_of_type_Xzd.b();
-      String str = localyir.jdField_b_of_type_JavaLangString;
+      ynw localynw = this.jdField_a_of_type_Ynw;
+      paramInt = this.jdField_a_of_type_Ynw.b();
+      String str = localyxk.jdField_b_of_type_JavaLangString;
       if (!this.jdField_b_of_type_Boolean) {
         break label427;
       }
       localObject2 = "2";
       label302:
-      localxzd.b("pub_music", paramInt, 0, new String[] { localObject1, str, localObject2 });
+      localynw.b("pub_music", paramInt, 0, new String[] { localObject1, str, localObject2 });
       if (!((String)localObject1).equals("1")) {
         break label435;
       }
       localObject1 = "0X80076E6";
       label347:
-      xwb.a((String)localObject1, String.valueOf(xwb.jdField_b_of_type_Int), "", localyir.jdField_b_of_type_JavaLangString, "");
+      ykw.a((String)localObject1, String.valueOf(ykw.jdField_b_of_type_Int), "", localyxk.jdField_b_of_type_JavaLangString, "");
       localObject2 = new TribeVideoPublishParams.Music();
-      ((TribeVideoPublishParams.Music)localObject2).name = localyir.jdField_b_of_type_JavaLangString;
-      if (localyir.jdField_b_of_type_Int != 3) {
+      ((TribeVideoPublishParams.Music)localObject2).name = localyxk.jdField_b_of_type_JavaLangString;
+      if (localyxk.jdField_b_of_type_Int != 3) {
         break label443;
       }
     }
@@ -424,7 +424,7 @@ public class EditVideoMusic
     for (localObject1 = "1";; localObject1 = "2")
     {
       ((TribeVideoPublishParams.Music)localObject2).type = ((String)localObject1);
-      paramyjh.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams.music = ((TribeVideoPublishParams.Music)localObject2);
+      paramyya.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams.music = ((TribeVideoPublishParams.Music)localObject2);
       return;
       localObject1 = "2";
       break;
@@ -433,17 +433,17 @@ public class EditVideoMusic
       localObject1 = "0X80076E5";
       break label347;
     }
-    this.jdField_a_of_type_Xzd.b("sound_off", this.jdField_a_of_type_Xzd.b(), 0, new String[0]);
-    xwb.a("0X80076E7", xwb.jdField_b_of_type_Int);
-    paramyjh.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams.isSoundOn = false;
+    this.jdField_a_of_type_Ynw.b("sound_off", this.jdField_a_of_type_Ynw.b(), 0, new String[0]);
+    ykw.a("0X80076E7", ykw.jdField_b_of_type_Int);
+    paramyya.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams.isSoundOn = false;
     return;
-    this.jdField_a_of_type_Xzd.b("sound_on", this.jdField_a_of_type_Xzd.b(), 0, new String[0]);
-    xwb.a("0X80076E8");
-    paramyjh.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams.isSoundOn = true;
+    this.jdField_a_of_type_Ynw.b("sound_on", this.jdField_a_of_type_Ynw.b(), 0, new String[0]);
+    ykw.a("0X80076E8");
+    paramyya.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams.isSoundOn = true;
     return;
-    paramyjh = new Properties();
-    paramyjh.setProperty("bless_param_voice_id", "" + localyir.c);
-    ahuz.a("bless_event_voice_result", paramyjh);
+    paramyya = new Properties();
+    paramyya.setProperty("bless_param_voice_id", "" + localyxk.c);
+    aipy.a("bless_event_voice_result", paramyya);
   }
   
   public void a(AudioPlayerBase paramAudioPlayerBase) {}
@@ -452,64 +452,64 @@ public class EditVideoMusic
   
   public void a(String paramString)
   {
-    yir localyir = a();
-    if (localyir != null)
+    yxk localyxk = a();
+    if (localyxk != null)
     {
-      localyir.g = paramString;
+      localyxk.g = paramString;
       if (!TextUtils.isEmpty(paramString)) {
-        xvv.d("Q.qqstory.publish.edit.EditVideoMusic", "music file exist:%b path:%s", new Object[] { Boolean.valueOf(ypi.b(paramString)), paramString });
+        ykq.d("Q.qqstory.publish.edit.EditVideoMusic", "music file exist:%b path:%s", new Object[] { Boolean.valueOf(zeb.b(paramString)), paramString });
       }
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Xzd.a(paramString1, paramString2, paramString3, paramBoolean);
+    this.jdField_a_of_type_Ynw.a(paramString1, paramString2, paramString3, paramBoolean);
   }
   
-  public void a(yak paramyak)
+  public void a(ypd paramypd)
   {
-    yir localyir = a();
-    if (localyir == null)
+    yxk localyxk = a();
+    if (localyxk == null)
     {
-      paramyak.jdField_a_of_type_Boolean = false;
+      paramypd.jdField_a_of_type_Boolean = false;
       return;
     }
-    if ((localyir.jdField_b_of_type_Int != 2) && (localyir.jdField_b_of_type_Int != 3))
+    if ((localyxk.jdField_b_of_type_Int != 2) && (localyxk.jdField_b_of_type_Int != 3))
     {
-      paramyak.jdField_a_of_type_Boolean = false;
+      paramypd.jdField_a_of_type_Boolean = false;
       return;
     }
-    switch (localyir.jdField_b_of_type_Int)
+    switch (localyxk.jdField_b_of_type_Int)
     {
     }
     for (;;)
     {
       try
       {
-        paramyak.jdField_a_of_type_Long = Long.valueOf(localyir.jdField_a_of_type_JavaLangString).longValue();
-        paramyak.jdField_a_of_type_Boolean = true;
+        paramypd.jdField_a_of_type_Long = Long.valueOf(localyxk.jdField_a_of_type_JavaLangString).longValue();
+        paramypd.jdField_a_of_type_Boolean = true;
         return;
       }
       catch (Exception localException)
       {
-        xvv.e("Q.qqstory.publish.edit.EditVideoMusic", "music id is error: title:%s, id:%s", new Object[] { localyir.jdField_b_of_type_JavaLangString, localyir.jdField_a_of_type_JavaLangString });
-        paramyak.jdField_a_of_type_Boolean = false;
+        ykq.e("Q.qqstory.publish.edit.EditVideoMusic", "music id is error: title:%s, id:%s", new Object[] { localyxk.jdField_b_of_type_JavaLangString, localyxk.jdField_a_of_type_JavaLangString });
+        paramypd.jdField_a_of_type_Boolean = false;
       }
-      paramyak.jdField_a_of_type_Int = 0;
+      paramypd.jdField_a_of_type_Int = 0;
       continue;
-      paramyak.jdField_a_of_type_Int = 1;
+      paramypd.jdField_a_of_type_Int = 1;
     }
   }
   
-  public void a(yir paramyir)
+  public void a(yxk paramyxk)
   {
-    yir localyir = null;
-    if (paramyir != null)
+    yxk localyxk = null;
+    if (paramyxk != null)
     {
-      localyir = new yir();
-      localyir.a(paramyir);
-      if (paramyir.jdField_b_of_type_Int != 0) {
+      localyxk = new yxk();
+      localyxk.a(paramyxk);
+      if (paramyxk.jdField_b_of_type_Int != 0) {
         break label49;
       }
     }
@@ -517,7 +517,7 @@ public class EditVideoMusic
     for (boolean bool = true;; bool = false)
     {
       this.f = bool;
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_Xzd.a(), localyir);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_Ynw.a(), localyxk);
       return;
     }
   }
@@ -534,9 +534,9 @@ public class EditVideoMusic
     switch (paramMessage.what)
     {
     }
-    yir localyir;
+    yxk localyxk;
     label97:
-    xzp localxzp;
+    yoi localyoi;
     do
     {
       do
@@ -549,23 +549,23 @@ public class EditVideoMusic
       } while (paramMessage.arg1 != 32);
       n();
       return true;
-      localyir = a();
-      if (localyir == null) {
+      localyxk = a();
+      if (localyxk == null) {
         break;
       }
-      a(localyir.jdField_b_of_type_Int);
+      a(localyxk.jdField_b_of_type_Int);
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.publish.edit.EditVideoMusic", 2, "Message change fragment()");
       }
-      if ((yir.jdField_a_of_type_Yir.equals(localyir)) || (yir.jdField_b_of_type_Yir.equals(localyir))) {
+      if ((yxk.jdField_a_of_type_Yxk.equals(localyxk)) || (yxk.jdField_b_of_type_Yxk.equals(localyxk))) {
         i();
       }
-      localxzp = (xzp)a(xzp.class);
-    } while (localxzp == null);
-    if (!yir.jdField_b_of_type_Yir.equals(localyir)) {}
+      localyoi = (yoi)a(yoi.class);
+    } while (localyoi == null);
+    if (!yxk.jdField_b_of_type_Yxk.equals(localyxk)) {}
     for (;;)
     {
-      localxzp.a(bool);
+      localyoi.a(bool);
       break;
       a(1);
       break label97;
@@ -583,27 +583,27 @@ public class EditVideoMusic
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.publish.edit.EditVideoMusic", 2, "playBgMusic()");
     }
-    yir localyir = a();
-    if ((!this.jdField_a_of_type_Boolean) || (this.e) || (localyir == null))
+    yxk localyxk = a();
+    if ((!this.jdField_a_of_type_Boolean) || (this.e) || (localyxk == null))
     {
-      xvv.b("Q.qqstory.publish.edit.EditVideoMusic", "playBgMusic ignore");
+      ykq.b("Q.qqstory.publish.edit.EditVideoMusic", "playBgMusic ignore");
       return;
     }
     i();
-    if (this.jdField_a_of_type_Xzd.jdField_b_of_type_Int == 6)
+    if (this.jdField_a_of_type_Ynw.jdField_b_of_type_Int == 6)
     {
-      xvv.b("Q.qqstory.publish.edit.EditVideoMusic", "playBgMusic, edit face, return");
+      ykq.b("Q.qqstory.publish.edit.EditVideoMusic", "playBgMusic, edit face, return");
       return;
     }
-    if ((TextUtils.isEmpty(localyir.g)) || (localyir.jdField_b_of_type_Int == 0) || (localyir.jdField_b_of_type_Int == 1))
+    if ((TextUtils.isEmpty(localyxk.g)) || (localyxk.jdField_b_of_type_Int == 0) || (localyxk.jdField_b_of_type_Int == 1))
     {
-      xvv.a("Q.qqstory.publish.edit.EditVideoMusic", "playBgMusic, music path:%s, type:%d", localyir.g, Integer.valueOf(localyir.jdField_b_of_type_Int));
+      ykq.a("Q.qqstory.publish.edit.EditVideoMusic", "playBgMusic, music path:%s, type:%d", localyxk.g, Integer.valueOf(localyxk.jdField_b_of_type_Int));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new EditVideoMusic.3(this, a(), this, localyir);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new EditVideoMusic.3(this, a(), this, localyxk);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(3);
     if (paramInt >= 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(localyir.g, paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(localyxk.g, paramInt);
     }
     for (;;)
     {
@@ -615,7 +615,7 @@ public class EditVideoMusic
       }
       a().sendBroadcast(new Intent("action_music_start"));
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(localyir.g, localyir.d);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(localyxk.g, localyxk.d);
     }
   }
   
@@ -628,8 +628,8 @@ public class EditVideoMusic
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_Yal == null) {}
-    while (this.jdField_a_of_type_Yal.c != 2) {
+    if (this.jdField_a_of_type_Ype == null) {}
+    while (this.jdField_a_of_type_Ype.c != 2) {
       return true;
     }
     return false;
@@ -673,11 +673,11 @@ public class EditVideoMusic
   
   public void h()
   {
-    this.jdField_a_of_type_Yal = null;
+    this.jdField_a_of_type_Ype = null;
     this.d = false;
-    xzc localxzc = a(yam.class);
-    if (localxzc != null) {
-      ((yam)localxzc).a(this.jdField_a_of_type_Xzd.a());
+    ynv localynv = a(ypf.class);
+    if (localynv != null) {
+      ((ypf)localynv).a(this.jdField_a_of_type_Ynw.a());
     }
   }
   
@@ -705,17 +705,17 @@ public class EditVideoMusic
   
   public void j()
   {
-    this.jdField_a_of_type_Xzd.a(Message.obtain(null, 3, 3, 0));
+    this.jdField_a_of_type_Ynw.a(Message.obtain(null, 3, 3, 0));
   }
   
   public void k()
   {
-    this.jdField_a_of_type_Xzd.a(Message.obtain(null, 3, 1, 0));
+    this.jdField_a_of_type_Ynw.a(Message.obtain(null, 3, 1, 0));
   }
   
   public void l()
   {
-    this.jdField_a_of_type_Xzd.a(Message.obtain(null, 3, 2, 0));
+    this.jdField_a_of_type_Ynw.a(Message.obtain(null, 3, 2, 0));
   }
 }
 

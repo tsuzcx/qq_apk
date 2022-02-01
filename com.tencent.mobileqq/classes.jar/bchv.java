@@ -1,16 +1,52 @@
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
 
-public class bchv
-  extends URLDrawableDownListener.Adapter
+class bchv
+  implements View.OnLongClickListener
 {
-  public bchv(StructMsgForHypertext paramStructMsgForHypertext) {}
+  bchv(bchu parambchu, bcfj parambcfj) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public boolean onLongClick(View paramView)
   {
-    paramView.setBackgroundDrawable(null);
+    paramView = new AlertDialog.Builder(paramView.getContext());
+    paramView.setTitle(anvx.a(2131702051));
+    long l = ((bcff)this.jdField_a_of_type_Bcfj).b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = SearchConfigManager.contactSearchPinyinBaseBit;
+    int j = SearchConfigManager.contactSearchPinyinBaseBit;
+    localStringBuilder.append("拼音匹配：");
+    localStringBuilder.append((9223372036854775807L << i & l) >> j);
+    localStringBuilder.append('\n');
+    i = SearchConfigManager.contactSearchRecentBaseBit;
+    j = SearchConfigManager.contactSearchRecentBaseBit;
+    int k = SearchConfigManager.contactSearchRecentBaseBit;
+    localStringBuilder.append("最近联系人排序：");
+    localStringBuilder.append((9223372036854775807L >> 63 - (i + 10) & l & 9223372036854775807L << j) >> k);
+    localStringBuilder.append('\n');
+    i = SearchConfigManager.contactSearchIndexBaseBit;
+    j = SearchConfigManager.contactSearchIndexBaseBit;
+    k = SearchConfigManager.contactSearchIndexBaseBit;
+    localStringBuilder.append("字符串匹配度：");
+    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
+    localStringBuilder.append('\n');
+    i = SearchConfigManager.contactSearchTypeBaseBit;
+    j = SearchConfigManager.contactSearchTypeBaseBit;
+    k = SearchConfigManager.contactSearchTypeBaseBit;
+    localStringBuilder.append("数据类型：");
+    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
+    localStringBuilder.append('\n');
+    i = SearchConfigManager.contactSearchFieldBaseBit;
+    j = SearchConfigManager.contactSearchFieldBaseBit;
+    k = SearchConfigManager.contactSearchFieldBaseBit;
+    localStringBuilder.append("字段类型：");
+    localStringBuilder.append((l & 9223372036854775807L >> 63 - (i + 8) & 9223372036854775807L << j) >> k);
+    localStringBuilder.append('\n');
+    paramView.setMessage(localStringBuilder.toString());
+    paramView.create().show();
+    return false;
   }
 }
 

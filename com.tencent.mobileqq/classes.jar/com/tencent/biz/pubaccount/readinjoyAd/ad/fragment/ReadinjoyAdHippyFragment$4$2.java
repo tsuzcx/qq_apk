@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.fragment;
 
-import thu;
-import tsd;
+import tvg;
+import ugo;
 
 public class ReadinjoyAdHippyFragment$4$2
   implements Runnable
 {
-  public ReadinjoyAdHippyFragment$4$2(tsd paramtsd) {}
+  public ReadinjoyAdHippyFragment$4$2(ugo paramugo) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class ReadinjoyAdHippyFragment$4$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.4.2
  * JD-Core Version:    0.7.0.1
  */

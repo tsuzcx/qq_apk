@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azuh
-  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
+  implements View.OnClickListener
 {
-  public azuh(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public azuh(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
+  public void onClick(View paramView)
   {
-    return ChnToSpell.a(paramMemberInfo1.b, 1).compareTo(ChnToSpell.a(paramMemberInfo2.b, 1));
+    this.a.a(0);
+    this.a.b(false);
+    StickyNotePublishFragment.a(this.a).setImageResource(2130844773);
+    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getActivity().getString(2131690260));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

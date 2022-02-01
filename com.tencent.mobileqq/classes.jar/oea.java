@@ -1,8 +1,15 @@
-import android.os.Bundle;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public abstract interface oea<T>
+class oea
+  implements Comparator<Map.Entry<Long, Long>>
 {
-  public abstract void a(int paramInt, boolean paramBoolean, T paramT, Bundle paramBundle);
+  oea(odz paramodz) {}
+  
+  public int a(Map.Entry<Long, Long> paramEntry1, Map.Entry<Long, Long> paramEntry2)
+  {
+    return ((Long)paramEntry1.getValue()).compareTo((Long)paramEntry2.getValue());
+  }
 }
 
 

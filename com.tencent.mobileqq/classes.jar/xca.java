@@ -1,36 +1,80 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.support.annotation.NonNull;
 
 public class xca
-  extends JobSegment<List<Bitmap>, Bitmap>
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString = "story.icon.BitmapListToIconSegment";
+  @NonNull
+  public final String a;
+  @NonNull
+  public final String b;
+  @NonNull
+  public final String c;
+  public final String d;
   
-  public xca(Context paramContext, String paramString, int paramInt)
+  public xca(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
-    this.jdField_a_of_type_Int = paramInt;
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null))
+    {
+      ykq.e("Q.qqstory.playernew.TVKPreloader", "vid=%s, videoUrl=%s, localPath=%s", new Object[] { paramString1, paramString2, paramString3 });
+      throw new IllegalArgumentException("vid, videoUrl, localPath should not be null");
+    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
   }
   
-  protected void a(JobContext paramJobContext, List<Bitmap> paramList)
+  public boolean equals(Object paramObject)
   {
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      notifyError(new ErrorMessage(-1, "bitmap list should not be empty"));
-      return;
+    boolean bool2 = true;
+    boolean bool3 = false;
+    boolean bool1;
+    if (this == paramObject) {
+      bool1 = true;
     }
-    paramJobContext = (Bitmap[])paramList.toArray(new Bitmap[paramList.size()]);
-    paramList = bfrl.a(this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888, paramJobContext);
-    xcb.b(this.jdField_a_of_type_JavaLangString, "result bitmap = %s, child count = %d", paramList, Integer.valueOf(paramJobContext.length));
-    notifyResult(paramList);
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool3;
+          } while (paramObject == null);
+          bool1 = bool3;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (xca)paramObject;
+        bool1 = bool3;
+      } while (!this.a.equals(paramObject.a));
+      bool1 = bool3;
+    } while (!this.b.equals(paramObject.b));
+    if (this.d != null) {
+      bool1 = this.d.equals(paramObject.d);
+    }
+    for (;;)
+    {
+      return bool1;
+      bool1 = bool2;
+      if (paramObject.d != null) {
+        bool1 = false;
+      }
+    }
+  }
+  
+  public int hashCode()
+  {
+    int j = this.a.hashCode();
+    int k = this.b.hashCode();
+    if (this.d != null) {}
+    for (int i = this.d.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
+    }
+  }
+  
+  public String toString()
+  {
+    return "PreloadItem{vid='" + this.a + '\'' + ", debugMsg='" + this.d + '\'' + '}';
   }
 }
 

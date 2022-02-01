@@ -1,58 +1,39 @@
-import android.graphics.Bitmap;
-import com.qflutter.qqface.data.QQFaceNativeData;
-import com.qflutter.qqface.data.QQFaceParam;
-import com.qflutter.qqface.loader.QQFaceInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class atkj
-  implements QQFaceInterface
+class atkj
+  implements bkzq
 {
-  private atkl jdField_a_of_type_Atkl = new atkl(BaseApplicationImpl.getContext());
-  private atko jdField_a_of_type_Atko = new atkk(this);
+  atkj(atki paramatki, bkzi parambkzi) {}
   
-  public atkj()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Atkl.a(this.jdField_a_of_type_Atko);
-  }
-  
-  public void clearCache()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutterFace", 2, "clearCache");
+    if (this.jdField_a_of_type_Atki.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerRSCenter().a(atki.a(this.jdField_a_of_type_Atki).uniseq, this.jdField_a_of_type_Atki.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_Atki.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, -1L) != -1) {
+      ChatActivityUtils.a(this.jdField_a_of_type_Atki.jdField_a_of_type_AndroidContentContext, 2131718501, 1);
     }
-    this.jdField_a_of_type_Atkl.a();
-  }
-  
-  public QQFaceNativeData getFaceData(QQFaceParam paramQQFaceParam)
-  {
-    paramQQFaceParam = new atkh(paramQQFaceParam.faceType, paramQQFaceParam.account, paramQQFaceParam.faceShape);
-    paramQQFaceParam = this.jdField_a_of_type_Atkl.a(paramQQFaceParam);
-    QQFaceNativeData localQQFaceNativeData = new QQFaceNativeData();
-    localQQFaceNativeData.setBitmap((Bitmap)paramQQFaceParam.first);
-    localQQFaceNativeData.isDefaultFace = ((Boolean)paramQQFaceParam.second).booleanValue();
-    return localQQFaceNativeData;
-  }
-  
-  public String getLibPath()
-  {
-    String str = atjn.a("libqflutter-resource-loader.so");
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutterFace", 2, "getLibPath: " + str + ", isExist: " + FileUtil.isFileExists(str));
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.cancel();
+      return;
+      paramView = auea.a(this.jdField_a_of_type_Atki.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, atki.a(this.jdField_a_of_type_Atki));
+      if (paramView.status == 16)
+      {
+        audr.a(2131692622);
+        this.jdField_a_of_type_Bkzi.cancel();
+        return;
+      }
+      atki.a(this.jdField_a_of_type_Atki).status = 1002;
+      auea.a(this.jdField_a_of_type_Atki.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Atki.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
     }
-    return str;
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_Atkl.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atkj
  * JD-Core Version:    0.7.0.1
  */

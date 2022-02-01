@@ -1,48 +1,13 @@
-import android.database.sqlite.SQLiteDatabase;
-import com.tencent.mobileqq.app.SQLiteOpenHelper;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
-import com.tencent.mobileqq.persistence.TableBuilder;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
 
 public class apdh
-  extends EntityManagerFactory
+  implements DialogInterface.OnClickListener
 {
-  private static Map<String, Class<?>> a = new HashMap();
+  public apdh(ARRecordUtils.1 param1) {}
   
-  static
-  {
-    a.put(RockDownloadInfo.class.getSimpleName(), RockDownloadInfo.class);
-  }
-  
-  public apdh()
-  {
-    super("RockDownload");
-  }
-  
-  public SQLiteOpenHelper build(String paramString)
-  {
-    if (this.dbHelper == null)
-    {
-      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 1);
-      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
-    }
-    return this.dbHelper;
-  }
-  
-  public void createDatabase(SQLiteDatabase paramSQLiteDatabase)
-  {
-    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new RockDownloadInfo()));
-  }
-  
-  public String getPackageName()
-  {
-    return getClass().getPackage().getName();
-  }
-  
-  public void upgradeDatabase(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

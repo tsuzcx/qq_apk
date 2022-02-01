@@ -1,10 +1,25 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class axdl
+public class axdl
+  implements View.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public axdl(MultiAIOFragment paramMultiAIOFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    TextView localTextView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131380251);
+    axeo.a -= 1;
+    if (axeo.a < 1) {
+      axeo.a = 1;
+    }
+    localTextView.setText(anvx.a(2131706465) + axeo.a);
+    MultiAIOFragment.d(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

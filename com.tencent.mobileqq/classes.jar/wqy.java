@@ -1,34 +1,42 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
 
-class wqy
-  implements View.OnClickListener
+public class wqy
+  extends whv
 {
-  wqy(wqx paramwqx) {}
+  qqstory_service.RspIconPostfix a;
   
-  public void onClick(View paramView)
+  public wqy() {}
+  
+  public wqy(qqstory_service.RspIconPostfix paramRspIconPostfix)
   {
-    Object localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
-    if (localObject != null) {
-      ((VideoViewVideoHolder)localObject).d = 2;
+    super(paramRspIconPostfix.result);
+    this.a = paramRspIconPostfix;
+  }
+  
+  public void a()
+  {
+    if ((this.a.icon_info.has()) && (this.a.icon_info.size() > 0)) {
+      Bosses.get().postJob(new wqz(this, "GetUserIconHandler"));
     }
-    this.a.a().finish();
-    String str = "";
-    localObject = str;
-    if (this.a.jdField_a_of_type_Int >= 0)
-    {
-      localObject = str;
-      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_JavaUtilList.size()) {
-        localObject = ((wsk)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_Int)).a;
-      }
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
     }
-    xwa.a("play_video", "clk_quit", 0, 0, new String[] { "", "", "", localObject });
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
+    }
   }
 }
 

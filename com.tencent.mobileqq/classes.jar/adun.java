@@ -1,20 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.activity.Now;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class adun
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public adun(Now paramNow) {}
+  public adun(DialogActivity paramDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (Now.a(this.a) != null) {
-      Now.a(this.a).m();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.finish();
   }
 }
 

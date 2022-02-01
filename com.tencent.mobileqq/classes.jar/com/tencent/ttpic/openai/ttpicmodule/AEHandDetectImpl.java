@@ -191,19 +191,23 @@ public class AEHandDetectImpl
         BitmapUtils.recycle(paramBitmap);
         AEProfiler.getInstance().start(AEDetectorType.HAND.value);
         if (this.frameCount % 2L != 0L) {
-          break label262;
+          break label270;
         }
         bool = true;
         if (!this.needDetectBonePoint) {
-          break label311;
+          break label319;
         }
         localObject1 = AEHandDetector.HAND_DETECTOR.retrieveGestureInfo((Bitmap)localObject2, bool);
         paramBitmap = (Bitmap)localObject1;
+        if (localObject1 == null) {
+          break label430;
+        }
+        paramBitmap = (Bitmap)localObject1;
         if (localObject1.length != 48) {
-          break label414;
+          break label430;
         }
         if (!bool) {
-          break label268;
+          break label276;
         }
         this.lastHandType = Float.valueOf(localObject1[46]).intValue();
         this.lastConfidence = localObject1[47];
@@ -211,9 +215,9 @@ public class AEHandDetectImpl
         paramBitmap = (Bitmap)localObject1;
       }
     }
-    label262:
-    label268:
-    label414:
+    label270:
+    label276:
+    label430:
     for (;;)
     {
       long l2 = AEProfiler.getInstance().end(AEDetectorType.HAND.value);
@@ -233,25 +237,29 @@ public class AEHandDetectImpl
         localObject1[47] = this.lastConfidence;
         paramBitmap = (Bitmap)localObject1;
         continue;
-        label311:
+        label319:
         localObject1 = AEHandDetector.HAND_DETECTOR.retrieveGestureBoxAndType((Bitmap)localObject2, bool);
         paramBitmap = (Bitmap)localObject1;
-        if (localObject1.length == 7) {
-          if (bool)
-          {
-            this.lastHandType = Float.valueOf(localObject1[5]).intValue();
-            this.lastConfidence = localObject1[6];
-            this.lastClassifyTimeStamp = System.currentTimeMillis();
-            paramBitmap = (Bitmap)localObject1;
-          }
-          else
-          {
-            paramBitmap = (Bitmap)localObject1;
-            if (System.currentTimeMillis() - this.lastClassifyTimeStamp < 300L)
+        if (localObject1 != null)
+        {
+          paramBitmap = (Bitmap)localObject1;
+          if (localObject1.length == 7) {
+            if (bool)
             {
-              localObject1[5] = this.lastHandType;
-              localObject1[6] = this.lastConfidence;
+              this.lastHandType = Float.valueOf(localObject1[5]).intValue();
+              this.lastConfidence = localObject1[6];
+              this.lastClassifyTimeStamp = System.currentTimeMillis();
               paramBitmap = (Bitmap)localObject1;
+            }
+            else
+            {
+              paramBitmap = (Bitmap)localObject1;
+              if (System.currentTimeMillis() - this.lastClassifyTimeStamp < 300L)
+              {
+                localObject1[5] = this.lastHandType;
+                localObject1[6] = this.lastConfidence;
+                paramBitmap = (Bitmap)localObject1;
+              }
             }
           }
         }

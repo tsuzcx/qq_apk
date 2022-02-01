@@ -1,29 +1,18 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
 
-class sbe
-  extends sif
+public final class sbe
+  implements Parcelable.Creator<ResultRecord>
 {
-  sbe(sab paramsab) {}
-  
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public ResultRecord a(Parcel paramParcel)
   {
-    if ((paramVideoInfo.n != null) && (paramVideoInfo.n.contains("kandianshare.html5.qq.com")))
-    {
-      sab.a(this.a, paramVideoInfo.c, "", paramVideoInfo.n, paramVideoInfo.b);
-      return;
-    }
-    sab.a(this.a, paramVideoInfo.c, "", paramString + "&sourcefrom=4", paramVideoInfo.b);
+    return new ResultRecord(paramParcel);
   }
   
-  public int b()
+  public ResultRecord[] a(int paramInt)
   {
-    return 5;
-  }
-  
-  public int c()
-  {
-    return 5;
+    return new ResultRecord[paramInt];
   }
 }
 

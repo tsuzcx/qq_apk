@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
 import android.widget.EditText;
-import benx;
-import beow;
-import bepc;
+import bfva;
+import bfvz;
+import bfwf;
 
 public class TextItem$6
   implements Runnable
 {
-  public TextItem$6(beow parambeow, bepc parambepc, benx parambenx) {}
+  public TextItem$6(bfvz parambfvz, bfwf parambfwf, bfva parambfva) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bepc.a.requestFocus();
-    this.jdField_a_of_type_Bepc.a.findFocus();
-    this.jdField_a_of_type_Bepc.a.setSelection(this.jdField_a_of_type_Benx.a);
+    this.jdField_a_of_type_Bfwf.a.requestFocus();
+    this.jdField_a_of_type_Bfwf.a.findFocus();
+    this.jdField_a_of_type_Bfwf.a.setSelection(this.jdField_a_of_type_Bfva.a);
   }
 }
 

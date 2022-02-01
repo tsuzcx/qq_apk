@@ -1,10 +1,10 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.data.MessageForPic;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class admx
+public final class admx
+  implements DialogInterface.OnClickListener
 {
-  public URLImageView a;
-  MessageForPic a;
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

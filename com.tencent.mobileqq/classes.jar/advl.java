@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class advl
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public advl(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public advl(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (PhoneUnityBindInfoActivity.a(this.a) != null)
-    {
-      this.a.h();
-      PhoneUnityBindInfoActivity.a(this.a).dismiss();
-    }
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

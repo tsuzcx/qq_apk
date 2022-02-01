@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class aehm
-  implements DialogInterface.OnKeyListener
+  implements Animation.AnimationListener
 {
-  public aehm(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public aehm(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
+    LoginInfoActivity.a(this.a).setVisibility(4);
+    LoginInfoActivity.a(this.a).clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

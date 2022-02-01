@@ -1,12 +1,14 @@
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahoa
+  implements ahnr
 {
-  public int a = 0;
-  public String a;
-  public List<? extends ahmw> a;
-  public String b;
-  public List<? extends ahmw> b;
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramagtf.a(paramMessageRecord, paramLinearLayout, paramaftk, paramagus, paramString);
+  }
 }
 
 

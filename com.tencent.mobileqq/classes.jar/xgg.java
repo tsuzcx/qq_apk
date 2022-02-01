@@ -1,18 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.Nullable;
 
-class xgg
-  implements View.OnClickListener
+public class xgg
+  extends vzj
 {
-  xgg(xge paramxge) {}
+  public String a;
+  public xcy a;
+  public String b;
   
-  public void onClick(View paramView)
+  public xgg(@Nullable String paramString1, xcy paramxcy, String paramString2)
   {
-    this.a.b();
-    this.a.a.i();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Xcy = paramxcy;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "PlayVideoChangeEvent{openPlayerSessionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", groupId=" + this.jdField_a_of_type_Xcy + ", vid='" + this.b + '\'' + '}';
   }
 }
 

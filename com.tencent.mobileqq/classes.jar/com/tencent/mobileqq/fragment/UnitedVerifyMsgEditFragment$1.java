@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.fragment;
 
-import amtj;
 import android.os.Bundle;
 import android.text.TextUtils;
+import anvx;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
@@ -19,51 +20,51 @@ class UnitedVerifyMsgEditFragment$1
   public void run()
   {
     Object localObject1 = this.this$0.getArguments().getString("TROOP_UIN", "");
-    TroopManager localTroopManager = (TroopManager)this.this$0.a.app.getManager(52);
+    TroopManager localTroopManager = (TroopManager)this.this$0.a.app.getManager(QQManagerFactory.TROOP_MANAGER);
     Object localObject2 = localTroopManager.b((String)localObject1);
     localObject1 = localTroopManager.c((String)localObject1, this.this$0.a.app.getAccount());
     if (localObject2 == null)
     {
       localObject2 = "";
       if (localObject1 != null) {
-        break label153;
+        break label154;
       }
       localObject1 = ContactUtils.getFriendNick(this.this$0.a.app, this.this$0.a.app.getAccount());
-      label97:
+      label98:
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        break label255;
+        break label256;
       }
     }
-    label153:
-    label255:
-    for (localObject2 = String.format(Locale.getDefault(), amtj.a(2131714909), new Object[] { localObject1 });; localObject2 = String.format(Locale.getDefault(), amtj.a(2131714910), new Object[] { localObject2, localObject1 }))
+    label256:
+    for (localObject2 = String.format(Locale.getDefault(), anvx.a(2131715257), new Object[] { localObject1 });; localObject2 = String.format(Locale.getDefault(), anvx.a(2131715258), new Object[] { localObject2, localObject1 }))
     {
       this.this$0.a.runOnUiThread(new UnitedVerifyMsgEditFragment.1.1(this, (String)localObject2, (String)localObject1));
       return;
       localObject2 = ((TroopInfo)localObject2).getTroopName();
       break;
+      label154:
       if (!TextUtils.isEmpty(((TroopMemberInfo)localObject1).troopremark))
       {
         localObject1 = ((TroopMemberInfo)localObject1).troopremark;
-        break label97;
+        break label98;
       }
       if (!TextUtils.isEmpty(((TroopMemberInfo)localObject1).troopnick))
       {
         localObject1 = ((TroopMemberInfo)localObject1).troopnick;
-        break label97;
+        break label98;
       }
       if (!TextUtils.isEmpty(((TroopMemberInfo)localObject1).autoremark))
       {
         localObject1 = ((TroopMemberInfo)localObject1).autoremark;
-        break label97;
+        break label98;
       }
       if (!TextUtils.isEmpty(((TroopMemberInfo)localObject1).friendnick))
       {
         localObject1 = ((TroopMemberInfo)localObject1).friendnick;
-        break label97;
+        break label98;
       }
       localObject1 = ContactUtils.getFriendNick(this.this$0.a.app, this.this$0.a.app.getAccount());
-      break label97;
+      break label98;
     }
   }
 }

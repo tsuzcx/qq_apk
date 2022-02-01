@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
-class ynn
-  extends bfvf
+public class ynn
+  implements Animation.AnimationListener
 {
-  ynn(ynm paramynm) {}
+  public ynn(EditVideoGuide paramEditVideoGuide) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
+    this.a.h();
+    this.a.a.a(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/gm7" />
-    <item android:state_enabled="false" android:drawable="@drawable/glv" />
-    <item android:drawable="@drawable/gm0" />
-</selector>
+    <corners android:radius="11.5dip" />
+    <solid android:color="#ff00cafc" />
+    <padding android:left="12.0dip" android:top="4.0dip" android:right="12.0dip" android:bottom="4.0dip" />
+</shape>

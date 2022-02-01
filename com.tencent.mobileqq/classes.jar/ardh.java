@@ -1,38 +1,75 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class ardh
-  implements URLDrawable.URLDrawableListener
+public class ardh
+  extends aqwt<ardi>
 {
-  ardh(arcu paramarcu, String paramString) {}
+  @NonNull
+  public ardi a(int paramInt)
+  {
+    return new ardi();
+  }
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  @Nullable
+  public ardi a(aqxa[] paramArrayOfaqxa)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
+      QLog.d("PicShareToWXConfigProcessor", 2, "onParsed");
+    }
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      paramArrayOfaqxa = paramArrayOfaqxa[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("PicShareToWXConfigProcessor", 2, "onParsed, content:" + paramArrayOfaqxa);
+      }
+      return ardi.a(paramArrayOfaqxa);
+    }
+    return new ardi();
+  }
+  
+  public void a(ardi paramardi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicShareToWXConfigProcessor", 2, "onUpdate");
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public Class clazz()
+  {
+    return ardi.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url failed:" + this.jdField_a_of_type_JavaLangString);
+      QLog.d("PicShareToWXConfigProcessor", 2, "onReqFailed");
     }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public int type()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url down:" + this.jdField_a_of_type_JavaLangString);
-    }
+    return 530;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardh
  * JD-Core Version:    0.7.0.1
  */

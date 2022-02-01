@@ -14,7 +14,9 @@
     <permission id="scope.getPhoneNumber" name="获取你的电话号码" report_sub_action="getphonenumber" />
     <permission description="允许该小程序向我发起加好友请求" id="setting.addFriend" name="向我发起加好友请求" report_sub_action="addFriend" />
     <permission description="允许后，当你在阅读类小程序中添加阅读内容至书架时，该内容也将同步至“我的书架”中，你可在小程序设置中更改" id="scope.insertBookShelf" name="申请同步内容到“我的书架”" report_sub_action="insertBookShelf" />
+    <permission description="允许授权后，小程序会加入到「最近浏览」彩签" id="scope.recentColorSign" name="申请加入「最近浏览」彩签" report_sub_action="addRecentColorSign" />
     <permission description="" id="scope.uploadAvatar" name="是否允许将此图标设为你的QQ头像" />
+    <permission description="允许该小游戏使用你的厘米秀形象" id="scope.cmshowInfo" name="厘米秀形象" report_sub_action="getCMShowInfo" />
     <permission built-in="true" description="系统位置权限" id="android.permission.ACCESS_FINE_LOCATION" name="系统位置权限" />
     <permission built-in="true" description="需要麦克风权限，请到设置中设置" id="android.permission.RECORD_AUDIO" name="系统麦克风权限" />
     <permission built-in="true" description="需要麦克风权限，请到设置中设置" id="android.permission.CALL_PHONE" name="系统麦克风权限" />
@@ -89,5 +91,11 @@
     </event>
     <event name="insertBookshelf">
         <request-permission>scope.insertBookShelf</request-permission>
+    </event>
+    <event name="addRecentColorSign">
+        <request-permission>scope.recentColorSign</request-permission>
+    </event>
+    <event name="getCMShowInfo">
+        <request-permission>scope.cmshowInfo</request-permission>
     </event>
 </permissions>

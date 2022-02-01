@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pwh;
+import qhn;
 
 public class ReadInJoyUserInfoModule$Request0xb81Params
 {
@@ -12,14 +12,14 @@ public class ReadInJoyUserInfoModule$Request0xb81Params
   private int d;
   private int e;
   
-  private ReadInJoyUserInfoModule$Request0xb81Params(pwh parampwh)
+  private ReadInJoyUserInfoModule$Request0xb81Params(qhn paramqhn)
   {
-    this.jdField_a_of_type_Int = pwh.a(parampwh);
-    this.b = pwh.b(parampwh);
-    this.c = pwh.c(parampwh);
-    this.d = pwh.d(parampwh);
-    this.jdField_a_of_type_JavaUtilList = pwh.a(parampwh);
-    this.e = pwh.e(parampwh);
+    this.jdField_a_of_type_Int = qhn.a(paramqhn);
+    this.b = qhn.b(paramqhn);
+    this.c = qhn.c(paramqhn);
+    this.d = qhn.d(paramqhn);
+    this.jdField_a_of_type_JavaUtilList = qhn.a(paramqhn);
+    this.e = qhn.e(paramqhn);
   }
   
   public String toString()

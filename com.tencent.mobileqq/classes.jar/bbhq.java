@@ -1,26 +1,66 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import mqq.app.AppActivity;
+import mqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
 public class bbhq
-  extends bbhi
+  implements QQPermissionCallback
 {
-  private LinearLayout a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private bbhr jdField_a_of_type_Bbhr;
   
-  public bbhq(ViewGroup paramViewGroup, int paramInt)
+  public bbhq(Activity paramActivity, bbhr parambbhr)
   {
-    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Bbhr = parambbhr;
   }
   
-  protected void a()
+  public void a()
   {
-    super.a();
-    this.a = ((LinearLayout)a(this.c).findViewById(2131370109));
+    if (Build.VERSION.SDK_INT < 23) {
+      if (this.jdField_a_of_type_Bbhr != null) {
+        this.jdField_a_of_type_Bbhr.onGetLocation();
+      }
+    }
+    label119:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (this.jdField_a_of_type_AndroidAppActivity == null);
+        if (this.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {}
+        for (int i = 1;; i = 0)
+        {
+          if (i != 0) {
+            break label119;
+          }
+          if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
+            break;
+          }
+          ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+          return;
+        }
+      } while (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity));
+      ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      return;
+    } while (this.jdField_a_of_type_Bbhr == null);
+    this.jdField_a_of_type_Bbhr.onGetLocation();
   }
   
-  public View b()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return this.a;
+    bhdj.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (this.jdField_a_of_type_Bbhr != null) {
+      this.jdField_a_of_type_Bbhr.onGetLocation();
+    }
   }
 }
 

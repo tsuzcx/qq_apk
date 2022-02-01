@@ -1,23 +1,22 @@
-import android.os.Bundle;
-import java.util.UUID;
+import android.text.format.Time;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class begm
-  extends zrz
+public class begm
+  implements FilenameFilter
 {
-  begm(begl parambegl) {}
+  public begm(ShareAppLogHelper paramShareAppLogHelper) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public boolean accept(File paramFile, String paramString)
   {
-    if (paramBundle.getLong("troopUin") != begl.a(this.a)) {}
+    if ((!paramString.endsWith(".log")) && (!paramString.endsWith(".zip")) && (!paramString.endsWith(".qlog"))) {}
     do
     {
-      return;
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
-    if (!paramBoolean) {
-      befc.a("TroopFileToTroopForwarder", befc.a, "[" + begl.a(this.a) + "] onFowardToTroopResult isSuccess:false ");
-    }
-    begl.a(this.a, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+      return false;
+      paramFile = ShareAppLogHelper.a(this.a, paramString);
+    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
+    return true;
   }
 }
 

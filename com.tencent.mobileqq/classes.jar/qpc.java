@@ -1,6 +1,20 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
 class qpc
+  implements ViewBase.OnClickListener
 {
-  private static final qpb a = new qpb();
+  qpc(qpa paramqpa, Container paramContainer, qfw paramqfw, int paramInt) {}
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    qpa.a(this.jdField_a_of_type_Qpa, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Qfw, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("PgcProteusItem", 2, "click gallery comment for jumping to gallery articleinfo = " + this.jdField_a_of_type_Qfw.a() + " position = " + this.jdField_a_of_type_Int);
+    }
+  }
 }
 
 

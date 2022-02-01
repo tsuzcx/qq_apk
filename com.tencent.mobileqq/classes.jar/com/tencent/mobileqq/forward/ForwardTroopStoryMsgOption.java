@@ -16,7 +16,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import atky;
+import aupt;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -28,7 +28,7 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 public class ForwardTroopStoryMsgOption
-  extends atky
+  extends aupt
 {
   public ForwardTroopStoryMsgOption(Intent paramIntent)
   {
@@ -51,7 +51,7 @@ public class ForwardTroopStoryMsgOption
     ((RelativeLayout)localObject3).addView(localURLImageView, new RelativeLayout.LayoutParams(-1, -1));
     Object localObject5 = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
     ((ImageView)localObject5).setScaleType(ImageView.ScaleType.FIT_XY);
-    ((ImageView)localObject5).setImageResource(2130839627);
+    ((ImageView)localObject5).setImageResource(2130839648);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     int m = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 8.0F);
     localLayoutParams.setMargins(0, m, m, 0);

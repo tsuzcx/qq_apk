@@ -8,9 +8,11 @@ import java.util.ArrayList;
 public final class UniGetRsp
   extends JceStruct
 {
+  static NamePlate cache_stNamePlate = new NamePlate();
   static ArrayList<UniBusinessItem> cache_uniBusinessItemList = new ArrayList();
   public String errmsg = "";
   public int ret;
+  public NamePlate stNamePlate;
   public ArrayList<UniBusinessItem> uniBusinessItemList;
   
   static
@@ -21,11 +23,12 @@ public final class UniGetRsp
   
   public UniGetRsp() {}
   
-  public UniGetRsp(int paramInt, String paramString, ArrayList<UniBusinessItem> paramArrayList)
+  public UniGetRsp(int paramInt, String paramString, ArrayList<UniBusinessItem> paramArrayList, NamePlate paramNamePlate)
   {
     this.ret = paramInt;
     this.errmsg = paramString;
     this.uniBusinessItemList = paramArrayList;
+    this.stNamePlate = paramNamePlate;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -33,6 +36,7 @@ public final class UniGetRsp
     this.ret = paramJceInputStream.read(this.ret, 0, false);
     this.errmsg = paramJceInputStream.readString(1, false);
     this.uniBusinessItemList = ((ArrayList)paramJceInputStream.read(cache_uniBusinessItemList, 2, false));
+    this.stNamePlate = ((NamePlate)paramJceInputStream.read(cache_stNamePlate, 3, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -43,6 +47,9 @@ public final class UniGetRsp
     }
     if (this.uniBusinessItemList != null) {
       paramJceOutputStream.write(this.uniBusinessItemList, 2);
+    }
+    if (this.stNamePlate != null) {
+      paramJceOutputStream.write(this.stNamePlate, 3);
     }
   }
 }

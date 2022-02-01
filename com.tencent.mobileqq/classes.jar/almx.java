@@ -1,19 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-
-class almx
-  implements DialogInterface.OnClickListener
+public abstract interface almx
 {
-  almx(almv paramalmv) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(almv.a(this.a), 4, "right button is clicked! ");
-    }
-    almv.a(this.a, 0);
-  }
+  public abstract void a();
 }
 
 

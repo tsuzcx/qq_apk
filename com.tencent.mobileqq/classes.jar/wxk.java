@@ -1,14 +1,12 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-
 class wxk
-  implements MediaPlayer.OnPreparedListener
+  extends wwg
 {
-  wxk(wxj paramwxj, wxe paramwxe) {}
+  wxk(wxa paramwxa, wyi paramwyi) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public boolean b()
   {
-    this.jdField_a_of_type_Wxe.a_(this.jdField_a_of_type_Wxj);
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Wyi.d);
+    return true;
   }
 }
 

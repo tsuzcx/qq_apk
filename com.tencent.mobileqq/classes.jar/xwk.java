@@ -1,13 +1,22 @@
-import android.graphics.Canvas;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public abstract interface xwk
-  extends xzc
+final class xwk
+  extends ClickableSpan
 {
-  public abstract int a(int paramInt);
+  xwk(xwl paramxwl, String paramString, int paramInt) {}
   
-  public abstract boolean a(int paramInt);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Xwl.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
   
-  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.getColor());
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

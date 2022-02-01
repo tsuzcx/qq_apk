@@ -1,32 +1,63 @@
-public abstract interface tmy
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+public class tmy
 {
-  public abstract void a(tmx paramtmx, int paramInt);
+  public static volatile tnb a = new tnb(BaseApplicationImpl.getContext(), "proteus");
   
-  public abstract void a(tmx paramtmx, int paramInt1, int paramInt2, String paramString);
+  public static long a(InputStream paramInputStream, OutputStream paramOutputStream)
+  {
+    return a(paramInputStream, paramOutputStream, 8024);
+  }
   
-  public abstract void a(tmx paramtmx, long paramLong);
+  public static long a(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt)
+  {
+    byte[] arrayOfByte = new byte[paramInt];
+    for (long l = 0L;; l += paramInt)
+    {
+      paramInt = paramInputStream.read(arrayOfByte);
+      if (-1 == paramInt) {
+        break;
+      }
+      paramOutputStream.write(arrayOfByte, 0, paramInt);
+    }
+    return l;
+  }
   
-  public abstract void a(tmx paramtmx, boolean paramBoolean);
+  public static void a(Closeable paramCloseable)
+  {
+    if (paramCloseable != null) {}
+    try
+    {
+      paramCloseable.close();
+      return;
+    }
+    catch (IOException paramCloseable) {}
+  }
   
-  public abstract void b(tmx paramtmx);
-  
-  public abstract void b(tmx paramtmx, int paramInt);
-  
-  public abstract void c(tmx paramtmx);
-  
-  public abstract void d(tmx paramtmx);
-  
-  public abstract void e(tmx paramtmx);
-  
-  public abstract void f(tmx paramtmx);
-  
-  public abstract void g(tmx paramtmx);
-  
-  public abstract void h(tmx paramtmx);
+  public static boolean a(File paramFile)
+  {
+    if (paramFile == null) {
+      return false;
+    }
+    if (!paramFile.exists()) {
+      try
+      {
+        boolean bool = paramFile.mkdirs();
+        return bool;
+      }
+      finally {}
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tmy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class anad
-  extends BusinessHandler
+class anad
+  implements DialogInterface.OnKeyListener
 {
-  public static String a = "Add_friend_to_desktop|";
-  public static String b = "Click_desktop_friend|";
-  private String c = "FuMeiTiCeSu|";
+  anad(amzz paramamzz, anah paramanah) {}
   
-  anad(QQAppInterface paramQQAppInterface)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    super(paramQQAppInterface);
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    return "PLUG|" + paramString1 + "|" + paramString2 + "|internal|" + paramString3 + "|PB|" + paramString4 + "||";
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if ((paramBundle != null) && (paramBundle.containsKey("data")))
-    {
-      ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
-      localToServiceMsg.extraData.putAll(paramBundle);
-      super.send(localToServiceMsg);
+    if ((paramInt == 4) && (this.jdField_a_of_type_Anah != null)) {
+      this.jdField_a_of_type_Anah.a(this.jdField_a_of_type_Amzz.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
     }
+    return true;
   }
-  
-  public void a(String[] paramArrayOfString)
-  {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
-    localToServiceMsg.extraData.putStringArray("data", paramArrayOfString);
-    super.send(localToServiceMsg);
-  }
-  
-  public Class<? extends BusinessObserver> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

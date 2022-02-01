@@ -1,107 +1,36 @@
-import android.annotation.TargetApi;
-import android.app.Application;
-import android.bluetooth.BluetoothAdapter;
-import android.content.IntentFilter;
-import android.media.AudioManager;
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeyc
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aeye jdField_a_of_type_Aeye;
-  Application jdField_a_of_type_AndroidAppApplication;
-  WeakReference<AudioPlayerBase> jdField_a_of_type_MqqUtilWeakReference;
+  public aeyc(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public aeyc(Application paramApplication)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidAppApplication = paramApplication;
-  }
-  
-  private AudioPlayerBase a()
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
-      return null;
-    }
-    return (AudioPlayerBase)this.jdField_a_of_type_MqqUtilWeakReference.get();
-  }
-  
-  @TargetApi(14)
-  public int a(String paramString, int paramInt)
-  {
-    int i = 0;
-    if (AudioPlayerBase.b != -1) {
-      i = 1;
-    }
-    BluetoothAdapter localBluetoothAdapter;
-    AudioPlayerBase localAudioPlayerBase;
-    do
+    int i = 1;
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
     {
-      return i;
-      localBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-      localAudioPlayerBase = a();
-    } while (localAudioPlayerBase == null);
-    if (localBluetoothAdapter == null)
-    {
-      AudioPlayerBase.b = 0;
-      return 1;
-    }
-    if ((!localBluetoothAdapter.isEnabled()) || (localBluetoothAdapter.getProfileConnectionState(1) != 2) || (localBluetoothAdapter.getProfileConnectionState(2) == 2))
-    {
-      AudioPlayerBase.b = 0;
-      return 1;
-    }
-    paramString = new aeyd(this, localAudioPlayerBase, paramString, paramInt, localBluetoothAdapter);
-    localBluetoothAdapter.getProfileProxy(BaseApplication.getContext(), paramString, 1);
-    return 2;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aeye != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioPlayer_SCOHelper", 2, "unregister sco receiver:  " + SystemClock.uptimeMillis());
+      this.a.app.setTroopGeneralSettingVibrate(1);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label78;
       }
     }
-    try
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidAppApplication.unregisterReceiver(this.jdField_a_of_type_Aeye);
-      label51:
-      this.jdField_a_of_type_Aeye = null;
+      bdla.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
+      this.a.app.setTroopGeneralSettingVibrate(0);
+      break;
+      label78:
+      i = 0;
     }
-    catch (Exception localException)
-    {
-      break label51;
-    }
-  }
-  
-  public void a(AudioPlayerBase paramAudioPlayerBase)
-  {
-    if ((paramAudioPlayerBase == null) && (QLog.isColorLevel())) {
-      QLog.d("AudioPlayer_SCOHelper", 2, "setAudioPlayer audioPlayer is null");
-    }
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAudioPlayerBase);
-  }
-  
-  public int b(String paramString, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidAppApplication == null) {}
-    do
-    {
-      return 0;
-      paramString = new aeye(this, paramString, paramInt, null);
-      this.jdField_a_of_type_Aeye = paramString;
-      this.jdField_a_of_type_AndroidAppApplication.registerReceiver(paramString, new IntentFilter("android.media.ACTION_SCO_AUDIO_STATE_UPDATED"));
-      paramString = a();
-    } while ((paramString == null) || (paramString.a() == null));
-    paramString.a().startBluetoothSco();
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioPlayer_SCOHelper", 2, "tryStartBluetoothSCO return: Check_SCO_Result_Check_Access_Need_Return");
-    }
-    return 2;
   }
 }
 

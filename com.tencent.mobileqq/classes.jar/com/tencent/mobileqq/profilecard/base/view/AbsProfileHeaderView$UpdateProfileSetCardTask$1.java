@@ -4,8 +4,8 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aykg;
-import bcef;
+import azpb;
+import bdla;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -20,14 +20,14 @@ class AbsProfileHeaderView$UpdateProfileSetCardTask$1
     {
       if (this.a.jdField_a_of_type_JavaUtilHashMap != null)
       {
-        bcef.b(null, "CliOper", "", "", "card_mall", "0X80066D3", 0, 0, "", "", "", "");
+        bdla.b(null, "CliOper", "", "", "card_mall", "0X80066D3", 0, 0, "", "", "", "");
         View localView = (View)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_tips_set_card");
-        TextView localTextView = (TextView)localView.findViewById(2131367829);
-        ImageView localImageView = (ImageView)localView.findViewById(2131367814);
+        TextView localTextView = (TextView)localView.findViewById(2131367965);
+        ImageView localImageView = (ImageView)localView.findViewById(2131367950);
         Resources localResources = localView.getResources();
-        localTextView.setText(localResources.getString(2131719005));
-        localImageView.setContentDescription(localResources.getString(2131719005));
-        localView.setTag(new aykg(29, "CLICK_BANNER"));
+        localTextView.setText(localResources.getString(2131719410));
+        localImageView.setContentDescription(localResources.getString(2131719410));
+        localView.setTag(new azpb(29, "CLICK_BANNER"));
         localView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
         AbsProfileHeaderView.a(this.a).set(true);
         AbsProfileHeaderView.a(this.a);

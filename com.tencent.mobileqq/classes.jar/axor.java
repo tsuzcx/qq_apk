@@ -1,8 +1,17 @@
-public abstract interface axor
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
+
+public class axor
+  extends BroadcastReceiver
 {
-  public abstract void a();
+  public axor(NearbyJsInterface paramNearbyJsInterface) {}
   
-  public abstract void b();
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    this.a.tribePersonalDataModify();
+  }
 }
 
 

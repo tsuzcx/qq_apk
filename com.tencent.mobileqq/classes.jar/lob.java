@@ -1,40 +1,38 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-
 public class lob
 {
   public int a;
+  public long a;
   public String a;
-  public int b;
-  public int c;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
   
-  public static lob a()
+  public lob()
   {
-    lke locallke = lfi.a(BaseApplicationImpl.getContext());
-    if (!locallke.a())
-    {
-      lob locallob = new lob();
-      if (locallob.a(locallke)) {}
-      return locallob;
-    }
-    return null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 4L;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public boolean a(lke paramlke)
+  public boolean equals(Object paramObject)
   {
-    try
+    if ((paramObject != null) && ((paramObject instanceof lob)))
     {
-      this.jdField_a_of_type_Int = paramlke.a("OpenGLBlowUp/IsOpen", 0);
-      this.b = paramlke.a("OpenGLBlowUp/width", 0);
-      this.c = paramlke.a("OpenGLBlowUp/level", 0);
-      this.jdField_a_of_type_JavaLangString = paramlke.a("OpenGLBlowUp/versionname", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("RendererConfig", 2, "OpenGLSharpenConfig isOpen: " + this.jdField_a_of_type_Int + " width: " + this.b + " level: " + this.c + " versionName: " + this.jdField_a_of_type_JavaLangString);
+      paramObject = (lob)paramObject;
+      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+        return true;
       }
-      return true;
     }
-    catch (Exception paramlke) {}
     return false;
+  }
+  
+  public String toString()
+  {
+    return "Uin[" + this.jdField_a_of_type_Long + "], VideoSrcType[" + this.jdField_a_of_type_Int + "], isBig[" + this.jdField_a_of_type_Boolean + "], isRender[" + this.jdField_b_of_type_Boolean + "], isNeedRequest[" + this.c + "], hasRecvData[" + this.d + "], inviteId[" + this.jdField_a_of_type_JavaLangString + "], isMirror[" + this.f + "]";
   }
 }
 

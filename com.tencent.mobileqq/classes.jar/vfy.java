@@ -1,30 +1,80 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
-final class vfy
-  implements WXShareHelper.WXShareListener
+public abstract class vfy
 {
-  vfy(String paramString) {}
-  
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, vgh paramvgh)
   {
-    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
-      return;
+    if (QLog.isColorLevel()) {
+      vmp.b("WSPlayerListenerAdapter", 2, "onAccessVideoBitRate onTencentVideoDefnInfo:" + paramTVK_NetVideoInfo);
     }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      yyi.a(1, 2131718380);
+  }
+  
+  public void a(vgh paramvgh)
+  {
+    if (QLog.isColorLevel()) {
+      vmp.b("WSPlayerListenerAdapter", 2, "onCompletion videoPlayer:" + paramvgh);
     }
-    for (;;)
-    {
-      WXShareHelper.getInstance().removeObserver(this);
-      return;
-      yyi.a(2, 2131718398);
+  }
+  
+  public void a(vgh paramvgh, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      vmp.b("WSPlayerListenerAdapter", 2, "onAccessVideoBitRate videoBitRate:" + paramLong);
+    }
+  }
+  
+  public abstract void a(vgh paramvgh, Object paramObject);
+  
+  public void a(vgh paramvgh, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      vmp.b("WSPlayerListenerAdapter", 2, "OnDownloadCallback state:" + paramString + ", videoPlayer:" + paramvgh);
+    }
+  }
+  
+  public void a(vgh paramvgh, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      vmp.b("WSPlayerListenerAdapter", 2, "onCaptureImage result:" + paramBoolean + ", errCode:" + paramInt1 + ", id:" + paramInt2 + ", bitmap:" + paramBitmap + ", videoPlayer:" + paramvgh);
+    }
+  }
+  
+  public boolean a(vgh paramvgh, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      vmp.b("WSPlayerListenerAdapter", 2, "onError model:" + paramInt1 + ", what:" + paramInt2 + ", extra:" + paramInt3 + ", detailInfo:" + paramString + ", info:" + paramObject);
+    }
+    return false;
+  }
+  
+  public boolean a(vgh paramvgh, int paramInt, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      vmp.b("WSPlayerListenerAdapter", 2, "onInfo what:" + paramInt + ", extra:" + paramObject + ", videoPlayer:" + paramvgh);
+    }
+    return false;
+  }
+  
+  public void b(vgh paramvgh)
+  {
+    if (QLog.isColorLevel()) {
+      vmp.b("WSPlayerListenerAdapter", 2, "onSeekComplete videoPlayer:" + paramvgh);
+    }
+  }
+  
+  public void b(vgh paramvgh, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      vmp.d("WSPlayerListenerAdapter", 2, "onConnectQualityCallback json:" + paramString);
+    }
+  }
+  
+  public void c(vgh paramvgh)
+  {
+    if (QLog.isColorLevel()) {
+      vmp.b("WSPlayerListenerAdapter", 2, "onDownloadFinish videoPlayer:" + paramvgh);
     }
   }
 }

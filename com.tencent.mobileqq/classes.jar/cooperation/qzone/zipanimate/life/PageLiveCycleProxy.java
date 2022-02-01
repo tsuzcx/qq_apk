@@ -5,103 +5,196 @@ import android.arch.lifecycle.Lifecycle.Event;
 import android.arch.lifecycle.LifecycleOwner;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Stack;
 
 public class PageLiveCycleProxy
   implements PageLifeCycle
 {
   private static final String TAG = "PageLiveCycleProxy";
-  private static ArrayList<Lifecycle> mLifeCycleList = new ArrayList();
-  private static ArrayList<PageLifeCycle> mPageLifeCycleList = new ArrayList();
+  private static Stack<Lifecycle> mLifeCycleList = new Stack();
+  private static HashMap<Lifecycle, ArrayList<PageLifeCycle>> mPageLifeCycleList = new HashMap();
   private static PageLiveCycleProxy mProxy = new PageLiveCycleProxy();
   
   public static void addPageLifeCycle(PageLifeCycle paramPageLifeCycle)
   {
-    if ((paramPageLifeCycle == null) || (mPageLifeCycleList.contains(paramPageLifeCycle))) {
+    ArrayList localArrayList;
+    if (paramPageLifeCycle != null)
+    {
+      localArrayList = getPageLifeCycleList();
+      if (localArrayList != null) {
+        break label13;
+      }
+    }
+    label13:
+    while (localArrayList.contains(paramPageLifeCycle)) {
       return;
     }
-    mPageLifeCycleList.add(paramPageLifeCycle);
+    localArrayList.add(paramPageLifeCycle);
+  }
+  
+  private static Lifecycle getCurrentLifecycle()
+  {
+    if (mLifeCycleList.isEmpty()) {
+      return null;
+    }
+    return (Lifecycle)mLifeCycleList.peek();
+  }
+  
+  private static ArrayList<PageLifeCycle> getPageLifeCycleList()
+  {
+    Lifecycle localLifecycle = getCurrentLifecycle();
+    if (localLifecycle == null) {
+      return null;
+    }
+    if ((!mPageLifeCycleList.containsKey(localLifecycle)) || (mPageLifeCycleList.get(localLifecycle) == null))
+    {
+      ArrayList localArrayList = new ArrayList();
+      mPageLifeCycleList.put(localLifecycle, localArrayList);
+      return localArrayList;
+    }
+    return (ArrayList)mPageLifeCycleList.get(localLifecycle);
+  }
+  
+  private static void onLifeCycleDestory()
+  {
+    ArrayList localArrayList = getPageLifeCycleList();
+    if (localArrayList == null) {
+      return;
+    }
+    Lifecycle localLifecycle = getCurrentLifecycle();
+    Iterator localIterator = localArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((PageLifeCycle)localIterator.next()).onPageDestroy(null);
+    }
+    localArrayList.clear();
+    mPageLifeCycleList.remove(localLifecycle);
   }
   
   public static void sBindLifeCycle(Lifecycle paramLifecycle)
   {
-    if (paramLifecycle != null)
-    {
-      QLog.i("PageLiveCycleProxy", 1, "sBindLifeCycle = " + paramLifecycle.getClass().getName() + " data = " + paramLifecycle);
-      if (!mLifeCycleList.contains(paramLifecycle)) {}
+    if (paramLifecycle != null) {
+      try
+      {
+        if (mLifeCycleList.search(paramLifecycle) == 1) {
+          return;
+        }
+        QLog.i("PageLiveCycleProxy", 1, "sBindLifeCycle = " + paramLifecycle.getClass().getName() + " data = " + paramLifecycle);
+        paramLifecycle.addObserver(mProxy);
+        mLifeCycleList.push(paramLifecycle);
+        return;
+      }
+      catch (Exception paramLifecycle)
+      {
+        paramLifecycle.printStackTrace();
+      }
     }
-    else
-    {
-      return;
-    }
-    paramLifecycle.addObserver(mProxy);
-    mLifeCycleList.add(paramLifecycle);
   }
   
   public static void sUnBindLifeCycle(Lifecycle paramLifecycle)
   {
-    if (paramLifecycle != null)
+    if (paramLifecycle != null) {}
+    try
     {
       QLog.i("PageLiveCycleProxy", 1, "sUnBindLifeCycle = " + paramLifecycle.getClass().getName());
       paramLifecycle.removeObserver(mProxy);
-      mLifeCycleList.remove(paramLifecycle);
+      if (!mLifeCycleList.isEmpty())
+      {
+        onLifeCycleDestory();
+        mLifeCycleList.pop();
+      }
+      return;
+    }
+    catch (Exception paramLifecycle)
+    {
+      paramLifecycle.printStackTrace();
     }
   }
   
   public void onLifecycleChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
   {
-    Iterator localIterator = mPageLifeCycleList.iterator();
-    while (localIterator.hasNext()) {
-      ((PageLifeCycle)localIterator.next()).onLifecycleChanged(paramLifecycleOwner, paramEvent);
+    Object localObject = getPageLifeCycleList();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return;
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PageLifeCycle)((Iterator)localObject).next()).onLifecycleChanged(paramLifecycleOwner, paramEvent);
+      }
     }
   }
   
   public void onPageCreate(LifecycleOwner paramLifecycleOwner)
   {
-    Iterator localIterator = mPageLifeCycleList.iterator();
-    while (localIterator.hasNext()) {
-      ((PageLifeCycle)localIterator.next()).onPageCreate(paramLifecycleOwner);
+    Object localObject = getPageLifeCycleList();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return;
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PageLifeCycle)((Iterator)localObject).next()).onPageCreate(paramLifecycleOwner);
+      }
     }
   }
   
-  public void onPageDestroy(LifecycleOwner paramLifecycleOwner)
-  {
-    Iterator localIterator = mPageLifeCycleList.iterator();
-    while (localIterator.hasNext()) {
-      ((PageLifeCycle)localIterator.next()).onPageDestroy(paramLifecycleOwner);
-    }
-    mPageLifeCycleList.clear();
-  }
+  public void onPageDestroy(LifecycleOwner paramLifecycleOwner) {}
   
   public void onPagePause(LifecycleOwner paramLifecycleOwner)
   {
-    Iterator localIterator = mPageLifeCycleList.iterator();
-    while (localIterator.hasNext()) {
-      ((PageLifeCycle)localIterator.next()).onPagePause(paramLifecycleOwner);
+    Object localObject = getPageLifeCycleList();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return;
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PageLifeCycle)((Iterator)localObject).next()).onPagePause(paramLifecycleOwner);
+      }
     }
   }
   
   public void onPageResume(LifecycleOwner paramLifecycleOwner)
   {
-    Iterator localIterator = mPageLifeCycleList.iterator();
-    while (localIterator.hasNext()) {
-      ((PageLifeCycle)localIterator.next()).onPageResume(paramLifecycleOwner);
+    Object localObject = getPageLifeCycleList();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return;
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PageLifeCycle)((Iterator)localObject).next()).onPageResume(paramLifecycleOwner);
+      }
     }
   }
   
   public void onPageStart(LifecycleOwner paramLifecycleOwner)
   {
-    Iterator localIterator = mPageLifeCycleList.iterator();
-    while (localIterator.hasNext()) {
-      ((PageLifeCycle)localIterator.next()).onPageStart(paramLifecycleOwner);
+    Object localObject = getPageLifeCycleList();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return;
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PageLifeCycle)((Iterator)localObject).next()).onPageStart(paramLifecycleOwner);
+      }
     }
   }
   
   public void onPageStop(LifecycleOwner paramLifecycleOwner)
   {
-    Iterator localIterator = mPageLifeCycleList.iterator();
-    while (localIterator.hasNext()) {
-      ((PageLifeCycle)localIterator.next()).onPageStop(paramLifecycleOwner);
+    Object localObject = getPageLifeCycleList();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return;
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PageLifeCycle)((Iterator)localObject).next()).onPageStop(paramLifecycleOwner);
+      }
     }
   }
 }

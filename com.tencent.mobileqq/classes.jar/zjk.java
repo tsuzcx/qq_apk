@@ -1,8 +1,15 @@
-public abstract interface zjk
+final class zjk
 {
-  public abstract int a();
+  public float a;
+  public float b;
+  public float c;
   
-  public abstract int[] a(int paramInt1, int paramInt2);
+  public zjk(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+  }
 }
 
 

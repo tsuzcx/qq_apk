@@ -1,17 +1,52 @@
-class zyz
-  implements zza
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.PorterDuff.Mode;
+import android.util.Pair;
+import android.widget.ImageView;
+import com.tencent.biz.subscribe.utils.MergeBitmapBlurUtil.1;
+import com.tencent.biz.subscribe.utils.MergeBitmapBlurUtil.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
+public class zyz
 {
-  zyz(zyx paramzyx) {}
-  
-  public void a(zvs paramzvs)
+  public static void a(String paramString, ImageView paramImageView)
   {
-    int i = paramzvs.a();
-    if ((zyx.a(this.a)) && (i == 100))
+    ThreadManager.post(new MergeBitmapBlurUtil.1(paramString, paramImageView), 5, null, false);
+  }
+  
+  private static void b(Bitmap paramBitmap, ImageView paramImageView)
+  {
+    ThreadManager.getUIHandler().post(new MergeBitmapBlurUtil.2(paramBitmap, paramImageView));
+  }
+  
+  private static void b(String paramString, Bitmap paramBitmap, ImageView paramImageView)
+  {
+    Bitmap localBitmap;
+    Canvas localCanvas;
+    if (paramBitmap != null)
     {
-      zyx.a(this.a, true);
+      localBitmap = bheg.a(paramImageView.getContext(), paramBitmap, 0.25F, 20.0F);
+      if (localBitmap != null)
+      {
+        localCanvas = new Canvas();
+        if (!localBitmap.isMutable()) {
+          break label124;
+        }
+      }
+    }
+    label124:
+    for (Object localObject = localBitmap;; localObject = localBitmap.copy(localBitmap.getConfig(), true))
+    {
+      localCanvas.setBitmap((Bitmap)localObject);
+      localCanvas.drawColor(Color.parseColor("#3F000000"), PorterDuff.Mode.SRC_OVER);
+      localObject = zfl.a(paramBitmap.getWidth(), paramBitmap.getHeight(), paramImageView.getWidth(), paramImageView.getHeight());
+      paramBitmap = zdr.a(zdr.a(localBitmap, ((Integer)((Pair)localObject).first).intValue(), ((Integer)((Pair)localObject).second).intValue(), true), paramBitmap);
+      b(paramBitmap, paramImageView);
+      bhdb.a(paramString, paramBitmap);
       return;
     }
-    zyx.a(this.a, false);
   }
 }
 

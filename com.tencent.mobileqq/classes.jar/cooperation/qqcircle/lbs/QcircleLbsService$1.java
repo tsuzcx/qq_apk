@@ -1,6 +1,6 @@
 package cooperation.qqcircle.lbs;
 
-import aqru;
+import arvg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
@@ -54,7 +54,7 @@ class QcircleLbsService$1
     for (;;)
     {
       paramSosoLbsInfo = new GetBatchPoiRequest((ArrayList)localObject, this.val$appID, this.val$mapExt, 0);
-      localObject = new QzoneCommonIntent(localQQAppInterface.getApplication(), aqru.class);
+      localObject = new QzoneCommonIntent(localQQAppInterface.getApplication(), arvg.class);
       ((QzoneCommonIntent)localObject).setRequest(paramSosoLbsInfo);
       ((QzoneCommonIntent)localObject).setObserver(this.this$0);
       localQQAppInterface.startServlet((NewIntent)localObject);

@@ -1,58 +1,47 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.StringTokenizer;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract class bcwu
+public class bcwu
 {
-  public int a;
-  public bcxa a;
-  public QQAppInterface a;
-  public ChatMessage a;
-  public String a;
+  int a;
+  int b;
+  int c;
+  int d;
   
-  public bcwu(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bcxa parambcxa)
+  public static bcwu a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_JavaLangString = paramChatMessage.frienduin;
-    this.jdField_a_of_type_Int = paramChatMessage.istroop;
-    this.jdField_a_of_type_Bcxa = parambcxa;
-  }
-  
-  public abstract String a();
-  
-  public abstract void a(bcwv parambcwv);
-  
-  public boolean a()
-  {
-    Object localObject = aqle.a().c();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null, or maybe has not recv");
+    try
+    {
+      paramString = new JSONObject(paramString).getJSONArray("showDetail");
+      if (paramString.length() < 0)
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(0);
+        bcwu localbcwu = new bcwu();
+        String str = localJSONObject.optString("name");
+        if ("photo".equals(str))
+        {
+          localbcwu.c = localJSONObject.optInt("showRed", 0);
+          localbcwu.d = localJSONObject.optInt("version", 0);
+          return localbcwu;
+        }
+        paramString = localbcwu;
+        if (!"gif".equals(str)) {
+          return paramString;
+        }
+        localbcwu.a = localJSONObject.optInt("showRed", 0);
+        localbcwu.b = localJSONObject.optInt("version", 0);
+        return localbcwu;
       }
     }
-    String str;
-    do
+    catch (Exception paramString)
     {
-      while (!((StringTokenizer)localObject).hasMoreTokens())
-      {
-        do
-        {
-          return false;
-          str = FileUtil.getExtension(a());
-          localObject = new StringTokenizer((String)localObject, "|");
-          if (((StringTokenizer)localObject).hasMoreTokens()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null");
-        return false;
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoAndHotPicRedDotConfProcessor", 2, "handleGetPtvHotPicConfig Exception :", paramString);
       }
-    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
-    return true;
+      paramString = null;
+    }
+    return paramString;
   }
 }
 

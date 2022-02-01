@@ -1,27 +1,18 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment.4.1;
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiba
-  extends LbsManagerService.OnLocationChangeListener
+class aiba
+  implements DialogInterface.OnClickListener
 {
-  public aiba(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment, String paramString)
-  {
-    super(paramString);
-  }
+  aiba(aiav paramaiav, boolean paramBoolean, bili parambili) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "getview onLocationFinish info = " + paramSosoLbsInfo);
-    }
-    if (paramInt != 0)
-    {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "getview onLocationFinish, errorCode=" + paramInt);
-      this.a.a.post(new AddContactViewPagerTroopFragment.4.1(this));
+    this.jdField_a_of_type_Aiav.j = true;
+    aiav.d(this.jdField_a_of_type_Aiav, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Aiav.i = true;
+    if ((this.jdField_a_of_type_Bili.a()) && (!this.jdField_a_of_type_Bili.b())) {
+      bdla.b(this.jdField_a_of_type_Aiav.app, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
     }
   }
 }

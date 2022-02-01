@@ -1,34 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.qphone.base.util.QLog;
 
 public class stc
+  extends stj
 {
-  public float a;
-  public int a;
-  public long a;
-  public BaseData a;
-  public Long a;
-  public long b;
-  
-  public stc(int paramInt, Long paramLong, BaseData paramBaseData)
+  public stc(ssz paramssz)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
-    this.b = 0L;
+    super(paramssz);
   }
   
-  public void a(stc paramstc)
+  public void a(int paramInt, Object paramObject)
   {
-    if (paramstc != null)
-    {
-      this.jdField_a_of_type_JavaLangLong = paramstc.jdField_a_of_type_JavaLangLong;
-      this.jdField_a_of_type_Long = paramstc.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Float = paramstc.jdField_a_of_type_Float;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramstc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-      this.b = paramstc.b;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_DECODER_BLOCK");
     }
+    paramObject = this.a.a;
+    paramObject.o += 1;
   }
 }
 

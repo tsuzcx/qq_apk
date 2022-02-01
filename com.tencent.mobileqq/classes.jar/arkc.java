@@ -1,34 +1,95 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arkc
-  implements View.OnTouchListener
+  extends arjj<arkb>
 {
-  public arkc(ExtendFriendCampusFragment paramExtendFriendCampusFragment, View paramView) {}
+  static arkb a = new arkb();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static arkb c()
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.5F);
-      this.jdField_a_of_type_AndroidViewView.postInvalidate();
+    arkb localarkb2 = (arkb)aqxe.a().a(444);
+    arkb localarkb1 = localarkb2;
+    if (localarkb2 == null) {
+      localarkb1 = a;
     }
-    for (;;)
+    return localarkb1;
+  }
+  
+  @NonNull
+  public arkb a()
+  {
+    return a;
+  }
+  
+  @NonNull
+  public arkb a(@NonNull aqxa[] paramArrayOfaqxa)
+  {
+    arkb localarkb = new arkb();
+    int m = paramArrayOfaqxa.length;
+    int i = 0;
+    int j = 0;
+    while (i < m)
     {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      Object localObject = paramArrayOfaqxa[i];
+      if (j > ((aqxa)localObject).jdField_a_of_type_Int)
       {
-        this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-        this.jdField_a_of_type_AndroidViewView.postInvalidate();
+        i += 1;
+      }
+      else
+      {
+        int k = ((aqxa)localObject).jdField_a_of_type_Int;
+        j = k;
+        for (;;)
+        {
+          try
+          {
+            if (paramArrayOfaqxa[0].jdField_a_of_type_JavaLangString == null) {
+              break;
+            }
+            localObject = new JSONObject(paramArrayOfaqxa[0].jdField_a_of_type_JavaLangString);
+            localarkb.a = ((JSONObject)localObject).optBoolean("enable", false);
+            if (((JSONObject)localObject).optInt("dltc", 0) != 1) {
+              break label166;
+            }
+            bool = true;
+            localarkb.b = bool;
+            j = k;
+          }
+          catch (JSONException localJSONException)
+          {
+            ykq.e("QVipDiyTemplateProcessor", "parsed : " + paramArrayOfaqxa[0].jdField_a_of_type_JavaLangString + " error:" + localJSONException);
+            j = k;
+          }
+          break;
+          label166:
+          boolean bool = false;
+        }
       }
     }
+    return localarkb;
+  }
+  
+  @NonNull
+  public arkb b()
+  {
+    return a;
+  }
+  
+  public Class<arkb> clazz()
+  {
+    return arkb.class;
+  }
+  
+  public int type()
+  {
+    return 444;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkc
  * JD-Core Version:    0.7.0.1
  */

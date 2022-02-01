@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import aeep;
-import aeeq;
-import aeer;
-import aees;
-import aeet;
-import aeeu;
-import aeev;
-import aeew;
-import aeex;
+import aevx;
+import aevy;
+import aevz;
+import aewa;
+import aewb;
+import aewc;
+import aewd;
+import aewe;
+import aewf;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -26,7 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bfpm;
+import bgyd;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.selectmember.CustomGridView;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
@@ -43,8 +43,8 @@ public class SelectedAndSearchBar
   implements FaceDecoder.DecodeTaskCompletionListener
 {
   private float jdField_a_of_type_Float;
-  private aeew jdField_a_of_type_Aeew;
-  private aeex jdField_a_of_type_Aeex;
+  private aewe jdField_a_of_type_Aewe;
+  private aewf jdField_a_of_type_Aewf;
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
@@ -80,22 +80,22 @@ public class SelectedAndSearchBar
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131562791, this);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView = ((CustomGridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377055));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131376937));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368608));
-    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376930));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView = ((CustomHorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376870));
-    bfpm.a(this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView, false);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131562862, this);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView = ((CustomGridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377329));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131377209));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368767));
+    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377202));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView = ((CustomHorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377142));
+    bgyd.a(this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView, false);
     if (Build.VERSION.SDK_INT >= 9)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.setOverScrollMode(2);
       this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView.setOverScrollMode(2);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView.setOnItemClickListener(new aeep(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new aeeq(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aeer(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new aees(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView.setOnItemClickListener(new aevx(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new aevy(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aevz(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new aewa(this));
   }
   
   private void f()
@@ -120,24 +120,24 @@ public class SelectedAndSearchBar
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -i, 0 });
     localValueAnimator.setDuration(paramLong);
-    localValueAnimator.addUpdateListener(new aeeu(this, localLayoutParams));
+    localValueAnimator.addUpdateListener(new aewc(this, localLayoutParams));
     localValueAnimator.start();
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new aeet(this, paramOnClickListener));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new aewb(this, paramOnClickListener));
   }
   
-  public void a(List<ResultRecord> paramList, FaceDecoder paramFaceDecoder, aeex paramaeex)
+  public void a(List<ResultRecord> paramList, FaceDecoder paramFaceDecoder, aewf paramaewf)
   {
     if (paramList != null) {
       this.jdField_a_of_type_JavaUtilList = paramList;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = paramFaceDecoder;
-    this.jdField_a_of_type_Aeex = paramaeex;
-    this.jdField_a_of_type_Aeew = new aeew(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView.setAdapter(this.jdField_a_of_type_Aeew);
+    this.jdField_a_of_type_Aewf = paramaewf;
+    this.jdField_a_of_type_Aewe = new aewe(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView.setAdapter(this.jdField_a_of_type_Aewe);
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCustomGridView.setSmoothScrollbarEnabled(false);
     this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
   }
@@ -159,7 +159,7 @@ public class SelectedAndSearchBar
     if (paramBoolean) {
       postDelayed(new SelectedAndSearchBar.6(this), 200L);
     }
-    this.jdField_a_of_type_Aeew.notifyDataSetChanged();
+    this.jdField_a_of_type_Aewe.notifyDataSetChanged();
   }
   
   public boolean a()
@@ -178,7 +178,7 @@ public class SelectedAndSearchBar
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -i });
     localValueAnimator.setDuration(paramLong);
-    localValueAnimator.addUpdateListener(new aeev(this, localLayoutParams));
+    localValueAnimator.addUpdateListener(new aewd(this, localLayoutParams));
     localValueAnimator.start();
   }
   
@@ -226,7 +226,7 @@ public class SelectedAndSearchBar
         {
           localObject = (ResultRecord)localObject;
           if ((paramString.equals(((ResultRecord)localObject).uin)) && (((ResultRecord)localObject).type == paramInt2)) {
-            ((ImageView)localView.findViewById(2131366241)).setBackgroundDrawable(new BitmapDrawable(getResources(), paramBitmap));
+            ((ImageView)localView.findViewById(2131366345)).setBackgroundDrawable(new BitmapDrawable(getResources(), paramBitmap));
           }
         }
         paramInt1 += 1;

@@ -26,16 +26,16 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bcef;
-import bfvh;
-import bgtq;
-import bgtr;
-import bgtw;
-import bgvt;
-import bgvv;
-import bgvw;
-import bgxd;
-import bhkb;
+import bdla;
+import bhdz;
+import biei;
+import biej;
+import bieo;
+import bigl;
+import bign;
+import bigo;
+import bihv;
+import biur;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -58,12 +58,12 @@ import java.lang.reflect.Field;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
-import nko;
-import npn;
+import nro;
+import nwo;
 import org.json.JSONObject;
 
 public class SwiftBrowserUIStyleHandler
-  extends bgvv
+  extends bign
   implements View.OnClickListener, Animation.AnimationListener
 {
   public static final String BUNDLE_CONFIGURATION = "Configuration";
@@ -101,13 +101,13 @@ public class SwiftBrowserUIStyleHandler
   public boolean mIsShownPreview;
   public ViewGroup mLlShareMusic;
   public WebViewProgressBar mLoadingProgressBar;
-  public bhkb mProgressBarController;
+  public biur mProgressBarController;
   public ViewGroup mRootView;
   Animation mSlideIn;
   Animation mSlideOut;
-  private bgxd mStatistics;
-  public bgtr mSwiftFloatUI;
-  public bgtw mSwiftTitleUI;
+  private bihv mStatistics;
+  public biej mSwiftFloatUI;
+  public bieo mSwiftTitleUI;
   public TextView mTvShareMusic;
   public final SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle mUIStyle = new SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle();
   public View qqbrowser;
@@ -123,7 +123,7 @@ public class SwiftBrowserUIStyleHandler
     try
     {
       long l1 = System.currentTimeMillis();
-      if (!"1".equals(nko.a().a("wv_ctrl_switch", "")))
+      if (!"1".equals(nro.a().a("wv_ctrl_switch", "")))
       {
         if (QLog.isColorLevel()) {
           QLog.d("SwiftBrowserUIStyleHandler", 2, "checkWvParamAuthorize disable");
@@ -131,7 +131,7 @@ public class SwiftBrowserUIStyleHandler
       }
       else
       {
-        if ((!nko.a().a(paramString2, paramString1)) && ((this.mUIStyle.mRulesFromUrl & paramLong) != 0L))
+        if ((!nro.a().a(paramString2, paramString1)) && ((this.mUIStyle.mRulesFromUrl & paramLong) != 0L))
         {
           paramString1 = this.mUIStyle;
           paramString1.mRulesFromUrl &= (0xFFFFFFFF ^ paramLong);
@@ -410,13 +410,13 @@ public class SwiftBrowserUIStyleHandler
     {
       str = paramUri.getHost();
       if ((this.mUIStyle.mRulesFromUrl & 0x20000) != 0L) {
-        bcef.a(null, "dc00898", "", "", "0X800ADD8", "0X800ADD8", 131072, 0, "", "", str, "");
+        bdla.a(null, "dc00898", "", "", "0X800ADD8", "0X800ADD8", 131072, 0, "", "", str, "");
       }
       if ((this.mUIStyle.mRulesFromUrl & 0x1000000) != 0L) {
-        bcef.a(null, "dc00898", "", "", "0X800ADD8", "0X800ADD8", 16777216, 0, "", "", str, "");
+        bdla.a(null, "dc00898", "", "", "0X800ADD8", "0X800ADD8", 16777216, 0, "", "", str, "");
       }
       if ((this.mUIStyle.mRulesFromUrl & 0x2) != 0L) {
-        bcef.a(null, "dc00898", "", "", "0X800ADD8", "0X800ADD8", 2, 0, "", "", str, "");
+        bdla.a(null, "dc00898", "", "", "0X800ADD8", "0X800ADD8", 2, 0, "", "", str, "");
       }
       return;
     }
@@ -455,7 +455,7 @@ public class SwiftBrowserUIStyleHandler
   public void createUI()
   {
     this.mSwiftTitleUI = SwiftWebTitleBuilder.createTitleBar(this);
-    this.mSwiftFloatUI = bgtq.a(this);
+    this.mSwiftFloatUI = biei.a(this);
   }
   
   public void didBindContext()
@@ -463,7 +463,7 @@ public class SwiftBrowserUIStyleHandler
     super.didBindContext();
     this.mHostActivity = this.mComponentContext.a();
     this.mHostFragment = this.mComponentContext.a();
-    this.mStatistics = ((bgxd)this.mComponentContext.a().a(-2));
+    this.mStatistics = ((bihv)this.mComponentContext.a().a(-2));
   }
   
   public void disabledHistoryButton(WebView paramWebView)
@@ -511,12 +511,12 @@ public class SwiftBrowserUIStyleHandler
   
   public void initAioShareMusicBottomView()
   {
-    ViewStub localViewStub = (ViewStub)this.webviewContainer.findViewById(2131363621);
+    ViewStub localViewStub = (ViewStub)this.webviewContainer.findViewById(2131363690);
     if (localViewStub == null) {
       return;
     }
     this.mLlShareMusic = ((ViewGroup)localViewStub.inflate());
-    this.mTvShareMusic = ((TextView)this.webviewContainer.findViewById(2131379413));
+    this.mTvShareMusic = ((TextView)this.webviewContainer.findViewById(2131379718));
     this.mTvShareMusic.setOnClickListener(this.clickListener);
     this.mLlShareMusic.setVisibility(8);
   }
@@ -530,13 +530,13 @@ public class SwiftBrowserUIStyleHandler
       {
         return;
       } while ((this.bottomBar != null) || (!this.mUIStyle.isOnClickClose));
-      paramIntent = (ViewStub)this.webviewContainer.findViewById(2131363666);
+      paramIntent = (ViewStub)this.webviewContainer.findViewById(2131363735);
     } while (paramIntent == null);
     this.bottomBar = ((ViewGroup)paramIntent.inflate());
-    this.back = ((ImageView)this.webviewContainer.findViewById(2131363260));
+    this.back = ((ImageView)this.webviewContainer.findViewById(2131363323));
     this.back.setOnClickListener(this);
     this.back.setEnabled(false);
-    this.forward = ((ImageView)this.webviewContainer.findViewById(2131367094));
+    this.forward = ((ImageView)this.webviewContainer.findViewById(2131367213));
     this.forward.setOnClickListener(this);
     this.forward.setEnabled(false);
     this.bottomBar.setVisibility(8);
@@ -553,7 +553,7 @@ public class SwiftBrowserUIStyleHandler
   public void initContentView(WebBrowserViewContainer paramWebBrowserViewContainer, Intent paramIntent, TouchWebView paramTouchWebView)
   {
     long l2 = System.currentTimeMillis();
-    this.webviewContainer = ((FrameLayout)paramWebBrowserViewContainer.findViewById(2131367349));
+    this.webviewContainer = ((FrameLayout)paramWebBrowserViewContainer.findViewById(2131367473));
     this.webviewContainer.setVisibility(0);
     if ((this.mUIStyle.isFullScreen) && (this.mUIStyle.mFloatBarRulesFromUrl != 0L))
     {
@@ -563,8 +563,8 @@ public class SwiftBrowserUIStyleHandler
     }
     long l1 = System.currentTimeMillis();
     this.mStatistics.s = (l1 - l2);
-    this.mLoadingProgressBar = ((WebViewProgressBar)this.webviewContainer.findViewById(2131373019));
-    this.mProgressBarController = new bhkb();
+    this.mLoadingProgressBar = ((WebViewProgressBar)this.webviewContainer.findViewById(2131373229));
+    this.mProgressBarController = new biur();
     this.mLoadingProgressBar.setController(this.mProgressBarController);
     paramIntent = this.mProgressBarController;
     if (!this.disableProgress) {}
@@ -574,16 +574,16 @@ public class SwiftBrowserUIStyleHandler
       if ((this.mStatistics.j) && (this.mProgressBarController != null) && (this.mProgressBarController.b() != 0)) {
         this.mProgressBarController.a((byte)0);
       }
-      npn.a("Web_qqbrowser_initView_WebViewWrapper");
-      this.webviewWrapper = ((ViewGroup)this.webviewContainer.findViewById(2131381053));
-      npn.b("Web_qqbrowser_initView_WebViewWrapper");
+      nwo.a("Web_qqbrowser_initView_WebViewWrapper");
+      this.webviewWrapper = ((ViewGroup)this.webviewContainer.findViewById(2131381412));
+      nwo.b("Web_qqbrowser_initView_WebViewWrapper");
       l2 = System.currentTimeMillis();
       this.mStatistics.m = (l2 - l1);
       if (!this.mUIStyle.mIsDisableRefreshView)
       {
-        this.mBrowserTips = this.webviewContainer.findViewById(2131363712);
-        this.urlText = ((TextView)this.webviewContainer.findViewById(2131363713));
-        this.tbsTipView = ((TextView)this.webviewContainer.findViewById(2131378237));
+        this.mBrowserTips = this.webviewContainer.findViewById(2131363783);
+        this.urlText = ((TextView)this.webviewContainer.findViewById(2131363784));
+        this.tbsTipView = ((TextView)this.webviewContainer.findViewById(2131378525));
         this.urlText.setVisibility(4);
         this.tbsTipView.setVisibility(4);
         if ((this.mUIStyle.isTransparentTitle) && ((this.mHostActivity instanceof BaseActivity))) {
@@ -591,10 +591,10 @@ public class SwiftBrowserUIStyleHandler
         }
       }
       if (!this.mIsShownPreview) {
-        this.waitting = ((ProgressBar)this.webviewContainer.findViewById(2131376213));
+        this.waitting = ((ProgressBar)this.webviewContainer.findViewById(2131376461));
       }
       if ((this.mUIStyle.isNeedSetBrowserTipsPadding) && (this.mBrowserTips != null)) {
-        this.mBrowserTips.setPadding(0, (int)bfvh.a(BaseApplicationImpl.getContext(), 30.0F), 0, 0);
+        this.mBrowserTips.setPadding(0, (int)bhdz.a(BaseApplicationImpl.getContext(), 30.0F), 0, 0);
       }
       updateScreenOrientation();
       this.mHostActivity.getWindow().setBackgroundDrawable(null);
@@ -617,7 +617,7 @@ public class SwiftBrowserUIStyleHandler
     ViewStub localViewStub;
     if (this.mUIStyle.isShowFloatCancelBtn)
     {
-      localViewStub = (ViewStub)this.webviewContainer.findViewById(2131366834);
+      localViewStub = (ViewStub)this.webviewContainer.findViewById(2131366952);
       if (localViewStub != null) {}
     }
     else
@@ -806,7 +806,7 @@ public class SwiftBrowserUIStyleHandler
       bool = false;
       break label240;
     }
-    this.mUIStyle.isNeedSwitchAIO = nko.a().j(paramIntent.getStringExtra("url"));
+    this.mUIStyle.isNeedSwitchAIO = nro.a().j(paramIntent.getStringExtra("url"));
   }
   
   public void initWebViewInContentView()
@@ -814,7 +814,7 @@ public class SwiftBrowserUIStyleHandler
     if (this.mComponentContext.a() != null)
     {
       WebView localWebView = this.mComponentContext.a();
-      localWebView.setId(2131381043);
+      localWebView.setId(2131381402);
       if (this.mBrowserWebviewColor != -1) {
         localWebView.setBackgroundColor(this.mBrowserWebviewColor);
       }
@@ -893,7 +893,7 @@ public class SwiftBrowserUIStyleHandler
           localWebViewPluginEngine.a(localTouchWebView.getUrl(), 8589934610L, localHashMap);
         }
         updateHistoryButton(localTouchWebView);
-        bcef.a(null, "dc00898", "", "", "0X8009B21", "0X8009B21", 0, 0, "", "", "", "");
+        bdla.a(null, "dc00898", "", "", "0X8009B21", "0X8009B21", 0, 0, "", "", "", "");
         continue;
         if ((localTouchWebView != null) && (localTouchWebView.canGoForward()))
         {
@@ -907,7 +907,7 @@ public class SwiftBrowserUIStyleHandler
             localWebViewPluginEngine.a(localTouchWebView.getUrl(), 8589934602L, localHashMap);
           }
           updateHistoryButton(localTouchWebView);
-          bcef.a(null, "dc00898", "", "", "0X8009B20", "0X8009B20", 0, 0, "", "", "", "");
+          bdla.a(null, "dc00898", "", "", "0X8009B20", "0X8009B20", 0, 0, "", "", "", "");
         }
       }
     }
@@ -924,11 +924,11 @@ public class SwiftBrowserUIStyleHandler
     default: 
       return;
     case 2: 
-      npn.a("Web_updateTitleBarUI");
+      nwo.a("Web_updateTitleBarUI");
       if (this.mUIStyle.isGrandualChangeTitlebarBg) {
         this.mSwiftTitleUI.updateTitleBarUI();
       }
-      npn.b("Web_updateTitleBarUI");
+      nwo.b("Web_updateTitleBarUI");
       return;
     case 3: 
       if (this.mFavGuideView != null)
@@ -980,7 +980,7 @@ public class SwiftBrowserUIStyleHandler
         break;
       }
       if ((this.mBrowserTips != null) && (this.mBrowserTipsColor == -1)) {
-        this.mBrowserTips.setBackgroundResource(2131167333);
+        this.mBrowserTips.setBackgroundResource(2131167359);
       }
       this.urlText.setVisibility(0);
       if (this.mComponentContext.a() == null) {
@@ -1199,7 +1199,7 @@ public class SwiftBrowserUIStyleHandler
     this.bottomBar.clearAnimation();
     this.bottomBar.setAnimation(this.mSlideIn);
     this.mSlideIn.start();
-    bcef.a(null, "dc00898", "", "", "0X8009B1E", "0X8009B1E", 0, 0, "", "", "", "");
+    bdla.a(null, "dc00898", "", "", "0X8009B1E", "0X8009B1E", 0, 0, "", "", "", "");
     return;
     this.isBottomBarShow = false;
     adjustWebViewInBottomBar();
@@ -1273,7 +1273,7 @@ public class SwiftBrowserUIStyleHandler
       }
       while (localObject != null)
       {
-        ((View)localObject).setBackgroundColor(BaseApplicationImpl.getContext().getResources().getColor(2131167070));
+        ((View)localObject).setBackgroundColor(BaseApplicationImpl.getContext().getResources().getColor(2131167084));
         if (!paramBoolean) {
           break label98;
         }
@@ -1325,7 +1325,7 @@ public class SwiftBrowserUIStyleHandler
         if (paramInt != 0) {
           break label118;
         }
-        paramInt = 2131693388;
+        paramInt = 2131693569;
         ((TextView)localObject).setText(paramInt);
       } while (this.mComponentContext.a() == null);
       localObject = (FrameLayout.LayoutParams)this.webviewWrapper.getLayoutParams();
@@ -1338,7 +1338,7 @@ public class SwiftBrowserUIStyleHandler
       i = 8;
       break;
       label118:
-      paramInt = 2131693389;
+      paramInt = 2131693570;
       break label40;
     }
   }

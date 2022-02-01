@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-class ajzr
-  implements nmh
+public class ajzr
+  implements View.OnTouchListener
 {
-  ajzr(ajzq paramajzq) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean)
+    switch (paramMotionEvent.getActionMasked())
     {
-      WordChainHbFragment.a(this.a.a, 8);
-      return;
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      FrameHelperActivity.c(false);
+      return false;
     }
-    WordChainHbFragment.a(this.a.a, 0);
+    FrameHelperActivity.c(true);
+    return false;
   }
 }
 

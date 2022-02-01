@@ -29,14 +29,14 @@ public class BaseFileViewerActivity
   
   public void setContentViewForImage(int paramInt)
   {
-    super.setContentViewNoTitle(2131560779);
-    ((RelativeLayout)findViewById(2131368354)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
+    super.setContentViewNoTitle(2131560839);
+    ((RelativeLayout)findViewById(2131368511)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
     init(getIntent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.BaseFileViewerActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,36 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
 class xwt
-  implements yhr<Boolean, yhx>
+  implements View.OnTouchListener
 {
-  xwt(xws paramxws) {}
+  xwt(xwr paramxwr) {}
   
-  public Void a(Boolean paramBoolean, yhx paramyhx)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean.booleanValue())
+    if (paramMotionEvent.getAction() == 0)
     {
-      xvv.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramyhx.b.size(), paramyhx.jdField_a_of_type_JavaUtilList.size())));
-      this.a.a.setEnabled(true);
+      if (xwr.a(this.a)) {
+        break label105;
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(xwr.a(this.a), xwr.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, xwr.a(this.a).jdField_a_of_type_Boolean);
+      xwr.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+      paramView = this.a;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
+        break label100;
+      }
     }
-    for (;;)
+    label100:
+    for (boolean bool = true;; bool = false)
     {
-      return null;
-      xvv.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramyhx.jdField_a_of_type_Int);
-      QQToast.a(this.a.a(), 1, amtj.a(2131702777) + paramyhx.jdField_a_of_type_Int, 1);
+      xwr.a(paramView, bool);
+      return false;
     }
+    label105:
+    this.a.b();
+    return false;
   }
 }
 

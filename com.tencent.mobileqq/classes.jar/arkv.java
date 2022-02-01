@@ -1,20 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
-
 public class arkv
-  implements DialogInterface.OnDismissListener
 {
-  public arkv(ExtendFriendFragment paramExtendFriendFragment) {}
+  private String jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/qzone/visitor/";
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public String a()
   {
-    ExtendFriendFragment.a(this.a, false);
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkv
  * JD-Core Version:    0.7.0.1
  */

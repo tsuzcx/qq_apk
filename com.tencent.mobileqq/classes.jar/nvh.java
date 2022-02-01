@@ -1,39 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.widget.Switch;
+import android.content.Intent;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-class nvh
-  implements DialogInterface.OnClickListener
+final class nvh
+  implements nuw
 {
-  nvh(num paramnum, obr paramobr, boolean paramBoolean, Switch paramSwitch) {}
+  nvh(WeakReference paramWeakReference, String paramString1, int paramInt, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      if ((3 == this.jdField_a_of_type_Obr.e) && (this.jdField_a_of_type_Obr.d == 0))
+    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject;
+    if (paramString != null)
+    {
+      paramString = (PreDownloadController)paramString.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
+      localObject = this.jdField_a_of_type_JavaLangString;
+      if (!BidDownloader.a(paramInt)) {
+        break label172;
+      }
+    }
+    label172:
+    for (long l = this.jdField_a_of_type_Int;; l = -1L)
+    {
+      paramString.preDownloadSuccess((String)localObject, l);
+      QLog.i(nvg.jdField_a_of_type_JavaLangString, 1, "finish predown bid=" + this.b + ", code=" + paramInt);
+      nvg.a();
+      if (nvg.b() == 0)
       {
-        paramDialogInterface = this.jdField_a_of_type_Num;
-        localobr = this.jdField_a_of_type_Obr;
-        if (!this.jdField_a_of_type_Boolean) {
-          paramDialogInterface.a(localobr, bool);
+        paramString = new Intent("com.tencent.process.tmdownloader.exit");
+        localObject = new ArrayList();
+        ((ArrayList)localObject).add("com.tencent.mobileqq:TMAssistantDownloadSDKService");
+        paramString.putStringArrayListExtra("procNameList", (ArrayList)localObject);
+        paramString.putExtra("verify", nvg.a((ArrayList)localObject, false));
+        if (QLog.isColorLevel()) {
+          QLog.d(nvg.jdField_a_of_type_JavaLangString, 2, "sendBroadcast to close TMAssistant sdk process");
         }
+        BaseApplicationImpl.getContext().sendBroadcast(paramString);
       }
-      else
-      {
-        this.jdField_a_of_type_Num.a(this.jdField_a_of_type_Obr, this.jdField_a_of_type_ComTencentWidgetSwitch);
-      }
+      return;
     }
-    while (paramInt != 1) {
-      for (;;)
-      {
-        obr localobr;
-        return;
-        bool = false;
-      }
-    }
-    this.jdField_a_of_type_Num.a(this.jdField_a_of_type_Obr, this.jdField_a_of_type_Boolean);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

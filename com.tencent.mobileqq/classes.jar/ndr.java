@@ -1,28 +1,33 @@
-import android.widget.ImageView;
-import com.tencent.avgame.gameroom.overlay.OverlayView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.avgame.ipc.UserInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.HashMap;
 
 public class ndr
-  implements ncc
+  implements BusinessObserver
 {
-  public ndr(OverlayView paramOverlayView) {}
+  public void a(int paramInt1, String paramString, int paramInt2) {}
   
-  public void a(LottieDrawable paramLottieDrawable)
+  public void a(int paramInt, String paramString, UserInfo paramUserInfo) {}
+  
+  public void a(boolean paramBoolean, int paramInt, HashMap<String, String> paramHashMap) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramLottieDrawable != null)
+    switch (paramInt)
     {
-      OverlayView.b(this.a, paramLottieDrawable);
-      if (QLog.isColorLevel()) {
-        QLog.d("OverlayView", 2, "loadLottieAnim success needRecoverFriendHeadCheerLottie = " + OverlayView.b(this.a));
-      }
-      if (OverlayView.b(this.a))
-      {
-        OverlayView.b(this.a).setImageDrawable(OverlayView.b(this.a));
-        OverlayView.b(this.a).playAnimation();
-        OverlayView.c(this.a, false);
-      }
+    default: 
+      return;
+    case 0: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (UserInfo)paramObject[2]);
+      return;
+    case 1: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Integer)paramObject[2]).intValue());
+      return;
     }
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (HashMap)paramObject[1]);
   }
 }
 

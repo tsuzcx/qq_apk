@@ -1,10 +1,16 @@
-public abstract interface ygq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class ygq
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  ygq(ygp paramygp) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.a(false, true, 12, null);
+    ykv.a("home_page", "guide_open", 0, 0, new String[0]);
+  }
 }
 
 

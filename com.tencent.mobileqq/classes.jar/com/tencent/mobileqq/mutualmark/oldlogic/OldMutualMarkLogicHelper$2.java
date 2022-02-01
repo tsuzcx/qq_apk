@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.mutualmark.oldlogic;
 
-import afdp;
-import awfv;
+import afuu;
+import axlx;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class OldMutualMarkLogicHelper$2
   implements Runnable
 {
-  public OldMutualMarkLogicHelper$2(awfv paramawfv, afdp paramafdp, QQAppInterface paramQQAppInterface, AIOAnimationConatiner paramAIOAnimationConatiner) {}
+  public OldMutualMarkLogicHelper$2(axlx paramaxlx, afuu paramafuu, QQAppInterface paramQQAppInterface, AIOAnimationConatiner paramAIOAnimationConatiner) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Awfv.a()) {
-      this.jdField_a_of_type_Afdp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, true, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 0, this.jdField_a_of_type_Awfv, 4);
+    if (this.jdField_a_of_type_Axlx.a()) {
+      this.jdField_a_of_type_Afuu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, true, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 0, this.jdField_a_of_type_Axlx, 4);
     }
   }
 }

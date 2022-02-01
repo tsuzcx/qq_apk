@@ -1,7 +1,20 @@
-public class ahlx
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import java.io.File;
+
+class ahlx
+  implements ahlz
 {
-  public int a;
-  public String a;
+  ahlx(ahlu paramahlu, String paramString, ahma paramahma) {}
+  
+  public void a(int paramInt)
+  {
+    if (new File(this.jdField_a_of_type_JavaLangString).exists())
+    {
+      this.jdField_a_of_type_Ahma.a.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Ahma.f.setVisibility(8);
+    }
+  }
 }
 
 

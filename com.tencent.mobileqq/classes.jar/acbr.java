@@ -1,36 +1,101 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msgsync.cmd0x100.Submsgtype0x8a.ReqBody;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
 
-public class acbr
-  implements abzb
+public final class acbr
+  extends LinearLayout
+  implements acbl
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  private int jdField_a_of_type_Int = -2147483648;
+  private acbn jdField_a_of_type_Acbn;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private int jdField_b_of_type_Int = -2147483648;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  
+  public acbr(Context paramContext, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("revokeMsg", 2, "recv 0x210_0x8a_8b onlinepush");
-    }
-    Submsgtype0x8a.ReqBody localReqBody = new Submsgtype0x8a.ReqBody();
-    try
+    super(paramContext);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (paramInt1 < 0) || (paramInt2 < 0))
     {
-      localReqBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      bbmq.a(paramQQAppInterface, localReqBody, 0L, false);
+      acho.d("GdtBannerViewForCreativeSize194", "constructor");
       return;
     }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("revokeMsg", 2, "recv 0x210_0x8a_8b online msg, prase reqBody error");
-    }
+    setOrientation(0);
+    setGravity(16);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Acbn = new acbn(paramContext, paramString1);
+    this.jdField_a_of_type_Acbn.setId(2131367591);
+    addView(this.jdField_a_of_type_Acbn);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367594);
+    this.jdField_a_of_type_AndroidWidgetTextView.setLines(1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#333333"));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_b_of_type_AndroidWidgetTextView.setId(2131367589);
+    this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(2);
+    this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#666666"));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString3);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView);
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public View a()
   {
-    a(paramabxc.a(), paramMsgType0x210);
+    return this;
+  }
+  
+  public AdAntiSpamForClick a()
+  {
     return null;
+  }
+  
+  public void a(Context paramContext) {}
+  
+  public View b()
+  {
+    return null;
+  }
+  
+  public void b(Context paramContext) {}
+  
+  public void c(Context paramContext) {}
+  
+  public void setSize(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0) || (this.jdField_a_of_type_Acbn == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      acho.d("GdtBannerViewForCreativeSize194", "setSize error");
+      return;
+    }
+    acbp localacbp = new acbp(getContext(), paramInt1, paramInt2);
+    paramInt1 = Double.valueOf(1.0D * (paramInt2 - localacbp.jdField_b_of_type_Int * 2) / this.jdField_b_of_type_Int * this.jdField_a_of_type_Int + localacbp.jdField_b_of_type_Int * 2).intValue();
+    this.jdField_a_of_type_Acbn.setPadding(localacbp.jdField_b_of_type_Int, localacbp.jdField_b_of_type_Int, localacbp.jdField_b_of_type_Int, localacbp.jdField_b_of_type_Int);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
+    this.jdField_a_of_type_Acbn.setLayoutParams(localLayoutParams);
+    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    localLayoutParams.leftMargin = localacbp.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, localacbp.d);
+    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    localLayoutParams.topMargin = localacbp.c;
+    this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, localacbp.d);
   }
 }
 

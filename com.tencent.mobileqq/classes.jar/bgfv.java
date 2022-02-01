@@ -1,43 +1,40 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.vas.VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadCanceled.1;
-import com.tencent.mobileqq.vas.VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadFialed.1;
-import com.tencent.mobileqq.vas.VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadProgressed.1;
-import com.tencent.mobileqq.vas.VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadSuccessed.1;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/vas/VasApngFactory$getApngURLDrawable$listenerProxy$1", "Lcom/tencent/image/URLDrawable$URLDrawableListener;", "onLoadCanceled", "", "d", "Lcom/tencent/image/URLDrawable;", "onLoadFialed", "t", "", "onLoadProgressed", "progress", "", "onLoadSuccessed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bgfv
-  implements URLDrawable.URLDrawableListener
+class bgfv
+  implements bggb
 {
   bgfv(bgfu parambgfu) {}
   
-  public void onLoadCanceled(@NotNull URLDrawable paramURLDrawable)
+  public void a()
   {
-    Intrinsics.checkParameterIsNotNull(paramURLDrawable, "d");
-    bgft.a(bgft.a, (Function0)new VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadCanceled.1(this, paramURLDrawable));
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopGameCardConfigProcessor", 2, "onResDownloadStart");
+    }
   }
   
-  public void onLoadFialed(@NotNull URLDrawable paramURLDrawable, @Nullable Throwable paramThrowable)
+  public void a(int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramURLDrawable, "d");
-    bgft.a(bgft.a, (Function0)new VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadFialed.1(this, paramURLDrawable, paramThrowable));
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopGameCardConfigProcessor", 2, "onResDownloadProgress and percent is " + paramInt);
+    }
   }
   
-  public void onLoadProgressed(@NotNull URLDrawable paramURLDrawable, int paramInt)
+  public void a(String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramURLDrawable, "d");
-    bgft.a(bgft.a, (Function0)new VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadProgressed.1(this, paramURLDrawable, paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopGameCardConfigProcessor", 2, "onResDownloadReady");
+    }
+    BaseApplicationImpl.getApplication().getSharedPreferences("troop_game_card_sp", 4).edit().putString("resPath", paramString).commit();
   }
   
-  public void onLoadSuccessed(@NotNull URLDrawable paramURLDrawable)
+  public void b(int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramURLDrawable, "d");
-    bgft.a(bgft.a, (Function0)new VasApngFactory.getApngURLDrawable.listenerProxy.1.onLoadSuccessed.1(this, paramURLDrawable));
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopGameCardConfigProcessor", 1, "onResDownloadFailed");
+    }
   }
 }
 

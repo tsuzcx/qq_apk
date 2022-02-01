@@ -1,20 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.ThemeImageView;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class aklc
-  extends akln
+class aklc
+  extends ntf
 {
-  public ImageView a;
-  public TextView a;
-  public DragTextView a;
-  public ThemeImageView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  aklc(aklb paramaklb, long paramLong) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "checkOpenidDiff, onResult, errorCode=", Integer.valueOf(paramInt) });
+    }
+    if ((this.jdField_a_of_type_Aklb.a.isFinishing()) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L)) {}
+    while (paramInt != 16) {
+      return;
+    }
+    akkz.b(this.jdField_a_of_type_Aklb.a);
+  }
 }
 
 

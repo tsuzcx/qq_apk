@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class asvz
   implements DialogInterface.OnClickListener
 {
-  public asvz(VideoFilePresenter.8 param8) {}
+  public asvz(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.this$0.n();
+    this.a.a = false;
+    this.a.doOnBackPressed();
+    bdla.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_admin", "Clk_quit", 0, 0, this.a.d, "", "", "");
   }
 }
 

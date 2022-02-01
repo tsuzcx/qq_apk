@@ -1,39 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
 public class augc
+  implements audq
 {
-  int a = 0;
+  public augc(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public static augc a(String paramString)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (paramString == null) {}
-    do
-    {
-      for (;;)
-      {
-        return null;
-        try
-        {
-          paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-          Object localObject = paramString.getElementsByTagName("hotpic_config");
-          if ((localObject != null) && (((NodeList)localObject).getLength() > 0))
-          {
-            localObject = new augc();
-            ((augc)localObject).a = Integer.parseInt(paramString.getElementsByTagName("entry").item(0).getFirstChild().getNodeValue());
-            return localObject;
-          }
-        }
-        catch (Exception paramString) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("HotPicConfProcessor", 1, "handleHotPicConfig failed" + paramString);
-    return null;
+    QfileEditBottomBar.a(this.a);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.common.offline;
 
-import nnx;
+import nuy;
 
 public class BidDownloader$1$1
   extends Thread
 {
-  public BidDownloader$1$1(nnx paramnnx) {}
+  public BidDownloader$1$1(nuy paramnuy) {}
   
   public void run()
   {

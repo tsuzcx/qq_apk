@@ -3,7 +3,7 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqrq;
+import arvc;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 
@@ -11,7 +11,7 @@ public class PrecoverConfig
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<PrecoverConfig> CREATOR = new aqrq();
+  public static final Parcelable.Creator<PrecoverConfig> CREATOR = new arvc();
   @unique
   public String businessId;
   public int taskId;
@@ -64,7 +64,7 @@ public class PrecoverConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.PrecoverConfig
  * JD-Core Version:    0.7.0.1
  */

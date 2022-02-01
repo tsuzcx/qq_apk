@@ -1,90 +1,48 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class xsj
-  implements AbsListView.OnScrollListener
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wsh>
 {
-  public xsj(MystoryListView paramMystoryListView) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public xsj(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    int j;
-    int k;
-    int m;
-    int i;
-    if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0))
-    {
-      if (-MystoryListView.b(this.a) > UIUtils.getWindowScreenHeight(this.a.jdField_a_of_type_AndroidAppActivity) * 3) {
-        this.a.jdField_a_of_type_Xsi.b(true);
-      }
-      if ((paramInt3 == 0) || (!MystoryListView.a(this.a))) {
-        return;
-      }
-      View localView = paramAbsListView.getChildAt(0);
-      j = localView.getTop();
-      k = localView.getBottom();
-      m = localView.getHeight();
-      if (paramInt1 <= MystoryListView.c(this.a)) {
-        break label257;
-      }
-      MystoryListView.b(this.a, MystoryListView.d(this.a) + MystoryListView.e(this.a));
-      i = j - MystoryListView.d(this.a);
-    }
-    for (;;)
-    {
-      MystoryListView.e(this.a, MystoryListView.g(this.a) + i);
-      MystoryListView.f(this.a, i + MystoryListView.b(this.a));
-      MystoryListView.b(this.a, j);
-      MystoryListView.c(this.a, k);
-      MystoryListView.d(this.a, m);
-      MystoryListView.a(this.a, paramInt1);
-      if (MystoryListView.a(this.a) == null) {
-        break;
-      }
-      MystoryListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-      return;
-      label257:
-      if (paramInt1 < MystoryListView.c(this.a))
-      {
-        MystoryListView.c(this.a, MystoryListView.f(this.a) - MystoryListView.e(this.a));
-        i = k - MystoryListView.f(this.a);
-      }
-      else
-      {
-        i = k - MystoryListView.f(this.a);
-      }
-    }
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wsh paramwsh)
   {
-    if ((MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0)) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
+    if (!paramQQStoryShareGroupProfileActivity.g) {}
+    xsw localxsw;
+    Object localObject1;
+    do
     {
-      if (MystoryListView.a(this.a) != null) {
-        MystoryListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
-      }
       return;
-      MystoryListView.a(this.a, false);
-      continue;
-      View localView = paramAbsListView.getChildAt(0);
-      MystoryListView.a(this.a, paramAbsListView.getFirstVisiblePosition());
-      if (localView != null)
+      Object localObject2 = null;
+      localxsw = paramQQStoryShareGroupProfileActivity.a.a;
+      Iterator localIterator = paramQQStoryShareGroupProfileActivity.a.a.a.iterator();
+      do
       {
-        MystoryListView.b(this.a, localView.getTop());
-        MystoryListView.c(this.a, localView.getBottom());
-        MystoryListView.d(this.a, localView.getHeight());
-      }
-      MystoryListView.a(this.a, true);
-      MystoryListView.e(this.a, 0);
-    }
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (HotSortVideoEntry)localIterator.next();
+      } while (!((HotSortVideoEntry)localObject1).storyId.equals(paramwsh.a));
+    } while (localObject1 == null);
+    ((HotSortVideoEntry)localObject1).viewCount += 1;
+    ((wiz)wjs.a(25)).a((HotSortVideoEntry)localObject1);
+    localxsw.a((HotSortVideoEntry)localObject1);
+    paramQQStoryShareGroupProfileActivity.d = true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wsh.class;
   }
 }
 

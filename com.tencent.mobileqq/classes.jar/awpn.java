@@ -1,34 +1,16 @@
 import android.view.View;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.OperationView;
-import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awpn
-  implements awsz
+class awpn
+  implements View.OnClickListener
 {
-  public awpn(StoryPlayController paramStoryPlayController, awti paramawti, VideoData paramVideoData) {}
+  awpn(awpl paramawpl) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Awti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null) {
-      this.jdField_a_of_type_Awti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a().a.findViewById(2131369914).setVisibility(0);
-    }
-    this.jdField_a_of_type_Awti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.jdField_a_of_type_Awti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setVisibility(0);
-    this.jdField_a_of_type_Awti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.requestLayout();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a.c();
-  }
-  
-  public void a(String paramString, View paramView, int paramInt)
-  {
-    if (this.jdField_a_of_type_Awti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null) {
-      this.jdField_a_of_type_Awti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a().a.findViewById(2131369914).setVisibility(8);
-    }
-    this.jdField_a_of_type_Awti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.a();
-    this.jdField_a_of_type_Awti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(0);
-    this.jdField_a_of_type_Awti.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setOnClickListener(new awpo(this));
+    this.a.g();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

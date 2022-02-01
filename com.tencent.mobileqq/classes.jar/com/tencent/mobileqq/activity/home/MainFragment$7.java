@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.home;
 
 import android.content.SharedPreferences;
-import bcef;
+import bdla;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -21,7 +21,7 @@ class MainFragment$7
     label193:
     for (String str1 = "Msg_tab";; str1 = "Contacts_tab")
     {
-      bcef.b(MainFragment.a(this.this$0), "CliOper", "", "", str1, str1, 0, 0, "", "", "", "");
+      bdla.b(MainFragment.a(this.this$0), "CliOper", "", "", str1, str1, 0, 0, "", "", "", "");
       if ((MainFragment.a(this.this$0) != null) && (MainFragment.a(this.this$0).getBoolean("theme_voice_setting_" + MainFragment.a(this.this$0).getCurrentAccountUin(), true))) {
         MainFragment.a(this.this$0).playThemeVoice(this.a + 1);
       }

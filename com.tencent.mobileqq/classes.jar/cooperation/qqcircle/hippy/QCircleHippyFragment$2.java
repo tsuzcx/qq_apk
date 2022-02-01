@@ -6,7 +6,7 @@ import cooperation.qqcircle.report.QCircleQualityReporter;
 import cooperation.qqcircle.report.QCircleReportHelper;
 import feedcloud.FeedCloudCommon.Entry;
 import java.util.Arrays;
-import thu;
+import tvg;
 
 class QCircleHippyFragment$2
   implements HippyQQEngine.HippyQQEngineListener

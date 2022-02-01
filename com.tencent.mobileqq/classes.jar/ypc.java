@@ -1,13 +1,26 @@
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.List;
 
-final class ypc
-  extends ThreadLocal<DateFormat>
+class ypc
+  implements AbsListView.OnScrollListener
 {
-  protected DateFormat a()
+  int jdField_a_of_type_Int = 0;
+  
+  ypc(ypa paramypa) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == ypa.a(this.jdField_a_of_type_Ypa, ypa.a(this.jdField_a_of_type_Ypa)).a().size()) && (!ypa.a(this.jdField_a_of_type_Ypa, ypa.a(this.jdField_a_of_type_Ypa)).a()))
+    {
+      paramAbsListView = ypa.a(this.jdField_a_of_type_Ypa);
+      ypa.a(this.jdField_a_of_type_Ypa, ypa.a(this.jdField_a_of_type_Ypa)).b(paramAbsListView);
+    }
   }
 }
 

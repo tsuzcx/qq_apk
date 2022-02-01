@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#ff1a1a1a" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.verticalvideo.view.WSSwipeRefreshLayout android:id="@id/n_m" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView android:id="@id/nxc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </FrameLayout>
-    </com.tencent.biz.pubaccount.weishi_new.verticalvideo.view.WSSwipeRefreshLayout>
-    <ViewStub android:layout_gravity="top" android:id="@id/nse" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ProgressBar android:id="@id/nsm" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_margin="5.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/b0o" android:layout_centerInParent="true" />
-    <ViewStub android:id="@id/ns7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <FrameLayout android:id="@id/mom" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/ne4" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/skin_black" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/fmg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="18.0dip" android:layout_marginRight="10.0dip" android:text="@string/ww4" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="18.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="18.0dip" android:text="@string/ww3" />
+    </LinearLayout>
+</LinearLayout>

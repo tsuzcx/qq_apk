@@ -1,15 +1,8 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.content.DialogInterface;
 
-public class zgl
+public abstract interface zgl
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c;
+  public abstract void a(DialogInterface paramDialogInterface, int paramInt);
 }
 
 

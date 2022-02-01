@@ -1,10 +1,7 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 
 class BaseChatPie$65
   implements DialogInterface.OnClickListener
@@ -13,8 +10,6 @@ class BaseChatPie$65
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent(this.this$0.mContext, FavEmosmManageActivity.class);
-    this.this$0.mContext.startActivity(localIntent);
     paramDialogInterface.dismiss();
   }
 }

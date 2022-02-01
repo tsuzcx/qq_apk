@@ -1,6 +1,6 @@
 public abstract interface bima
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract int a();
 }
 
 

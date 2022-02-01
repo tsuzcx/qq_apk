@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.forward;
 
-import atpn;
-import atqa;
-import bfur;
+import auui;
+import auuv;
+import bhdj;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ForwardShareByServerHelper$5
   implements Runnable
 {
-  public ForwardShareByServerHelper$5(atpn paramatpn, String paramString) {}
+  public ForwardShareByServerHelper$5(auui paramauui, String paramString) {}
   
   public void run()
   {
-    atqa.a("KEY_STAGE_2_TOTAL", false);
-    if (atpn.a(this.this$0) == null) {
-      atpn.a(this.this$0, bfur.a(atpn.a(this.this$0), 230));
+    auuv.a("KEY_STAGE_2_TOTAL", false);
+    if (auui.a(this.this$0) == null) {
+      auui.a(this.this$0, bhdj.a(auui.a(this.this$0), 230));
     }
-    atpn.a(this.this$0).setMessage(this.a);
-    atpn.a(this.this$0).setPositiveButton(2131694201, this.this$0.a);
-    atpn.a(this.this$0).show();
+    auui.a(this.this$0).setMessage(this.a);
+    auui.a(this.this$0).setPositiveButton(2131694399, this.this$0.a);
+    auui.a(this.this$0).show();
   }
 }
 

@@ -1,23 +1,48 @@
-import java.util.List;
-
-class asxl
-  implements aszj
+public class asxl
+  extends asxo
 {
-  asxl(asxj paramasxj, List paramList, asxo paramasxo) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onNo()
+  public asxl(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (this.jdField_a_of_type_Asxo != null) {
-      this.jdField_a_of_type_Asxo.a(2, 1);
+    super(2, paramString1);
+    this.a = paramString2;
+    this.b = paramString3;
+    this.c = paramString4;
+    this.d = paramString5;
+    if (this.b == null) {
+      this.b = "";
+    }
+    if (this.e == null) {
+      this.e = "";
     }
   }
   
-  public void onYes()
+  public boolean equals(Object paramObject)
   {
-    aszt.a(this.jdField_a_of_type_JavaUtilList, asxj.a(this.jdField_a_of_type_Asxj));
-    if (this.jdField_a_of_type_Asxo != null) {
-      this.jdField_a_of_type_Asxo.a(2, 0);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof asxl))
+    {
+      paramObject = (asxl)paramObject;
+      bool1 = bool2;
+      if (this.b.equals(paramObject.b))
+      {
+        bool1 = bool2;
+        if (this.e.equals(paramObject.e)) {
+          bool1 = true;
+        }
+      }
     }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    return this.e + "_" + this.b;
   }
 }
 

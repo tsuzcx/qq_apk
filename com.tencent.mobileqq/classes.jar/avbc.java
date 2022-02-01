@@ -1,11 +1,17 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+
 class avbc
-  implements bjog
+  extends RecyclerView.ViewHolder
 {
-  avbc(avau paramavau) {}
-  
-  public void onDismiss()
+  avbc(avbb paramavbb, View paramView)
   {
-    this.a.b(false);
+    super(paramView);
+  }
+  
+  public String toString()
+  {
+    return super.toString();
   }
 }
 

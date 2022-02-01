@@ -1,22 +1,42 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-public class arrw
-  implements View.OnClickListener
+public final class arrw
 {
-  public arrw(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  private int jdField_a_of_type_Int;
+  private arry jdField_a_of_type_Arry;
+  public arrz a;
+  private arsb jdField_a_of_type_Arsb;
+  private arsc jdField_a_of_type_Arsc;
+  public arsd a;
+  private arse jdField_a_of_type_Arse;
+  private arsg jdField_a_of_type_Arsg;
+  private arsh jdField_a_of_type_Arsh;
+  private List<arsl> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void onClick(View paramView)
+  public arru a()
   {
-    Intent localIntent = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.f).putExtra("mgid", (byte)this.a.l);
-    localIntent.putExtra("PARAM_EXECUTE_IMMEDIATELY", false);
-    this.a.startActivityForResult(localIntent, 100);
-    bcef.b(null, "CliOper", "", "", "0X80050F1", "0X80050F1", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new arru(this, null);
+  }
+  
+  public arrw a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public arrw a(arse paramarse)
+  {
+    this.jdField_a_of_type_Arse = paramarse;
+    return this;
+  }
+  
+  public arrw a(arsl paramarsl)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramarsl);
+    return this;
   }
 }
 

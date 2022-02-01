@@ -1,44 +1,37 @@
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
-import com.tencent.mobileqq.data.ChatMessage;
+import Wallet.RedInfoSyncRsp;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public abstract interface akyk
+class akyk
+  implements BusinessObserver
 {
-  public abstract void bind(@Nullable akym paramakym);
+  akyk(akyj paramakyj) {}
   
-  public abstract void clearHighlightContent();
-  
-  @Nullable
-  public abstract CharSequence content();
-  
-  public abstract int contentLength();
-  
-  @Nullable
-  public abstract akym delegate();
-  
-  public abstract void doSelecting(ChatMessage paramChatMessage);
-  
-  public abstract boolean hasSelected();
-  
-  public abstract boolean hasTouchSelectableArea(int paramInt1, int paramInt2);
-  
-  public abstract void highlightBackgroundColor(@ColorInt int paramInt);
-  
-  public abstract void highlightContent();
-  
-  public abstract void locationByIndex(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean);
-  
-  @Nullable
-  public abstract CharSequence selectContent();
-  
-  public abstract void selectContent(int paramInt1, int paramInt2);
-  
-  public abstract int touchIndex(int paramInt1, int paramInt2);
-  
-  @NonNull
-  public abstract View view();
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "redInfoSyncReq onReceive" + paramBoolean);
+    }
+    StringBuilder localStringBuilder;
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = (RedInfoSyncRsp)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("RedInfoSyncRsp|");
+        if (paramBundle == null) {
+          break label97;
+        }
+      }
+    }
+    label97:
+    for (paramBundle = Integer.valueOf(paramBundle.result);; paramBundle = "")
+    {
+      QLog.d("QWalletRedManager", 2, paramBundle);
+      return;
+    }
+  }
 }
 
 

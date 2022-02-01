@@ -1,30 +1,154 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.io.OutputStream;
+import java.io.Writer;
+import org.xmlpull.v1.XmlSerializer;
 
 public class bdnt
-  extends SosoInterface.OnLocationListener
+  implements XmlSerializer
 {
-  public bdnt(AbsPublishActivity paramAbsPublishActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, BaseActivity paramBaseActivity, bezd parambezd)
+  XmlSerializer jdField_a_of_type_OrgXmlpullV1XmlSerializer;
+  
+  public bdnt(AbsStructMsg paramAbsStructMsg, XmlSerializer paramXmlSerializer)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = paramXmlSerializer;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public XmlSerializer attribute(String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(paramString1, paramString2, paramString3);
+  }
+  
+  public void cdsect(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.cdsect(paramString);
+  }
+  
+  public void comment(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.comment(paramString);
+  }
+  
+  public void docdecl(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.docdecl(paramString);
+  }
+  
+  public void endDocument()
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endDocument();
+  }
+  
+  public XmlSerializer endTag(String paramString1, String paramString2)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endTag(paramString1, paramString2);
+  }
+  
+  public void entityRef(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.entityRef(paramString);
+  }
+  
+  public void flush()
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.flush();
+  }
+  
+  public int getDepth()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getDepth();
+  }
+  
+  public boolean getFeature(String paramString)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getFeature(paramString);
+  }
+  
+  public String getName()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getName();
+  }
+  
+  public String getNamespace()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getNamespace();
+  }
+  
+  public String getPrefix(String paramString, boolean paramBoolean)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getPrefix(paramString, paramBoolean);
+  }
+  
+  public Object getProperty(String paramString)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getProperty(paramString);
+  }
+  
+  public void ignorableWhitespace(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.ignorableWhitespace(paramString);
+  }
+  
+  public void processingInstruction(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.processingInstruction(paramString);
+  }
+  
+  public void setFeature(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setFeature(paramString, paramBoolean);
+  }
+  
+  public void setOutput(OutputStream paramOutputStream, String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(paramOutputStream, paramString);
+  }
+  
+  public void setOutput(Writer paramWriter)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(paramWriter);
+  }
+  
+  public void setPrefix(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setPrefix(paramString1, paramString2);
+  }
+  
+  public void setProperty(String paramString, Object paramObject)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setProperty(paramString, paramObject);
+  }
+  
+  public void startDocument(String paramString, Boolean paramBoolean)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument(paramString, paramBoolean);
+  }
+  
+  public XmlSerializer startTag(String paramString1, String paramString2)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(paramString1, paramString2);
+  }
+  
+  public XmlSerializer text(@NonNull String paramString)
+  {
+    try
     {
-      double d1 = paramSosoLbsInfo.mLocation.mLat02;
-      double d2 = paramSosoLbsInfo.mLocation.mLon02;
-      TroopBarPublishLocationSelectActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.jdField_a_of_type_Bezd);
+      paramString = this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(bcsc.a(paramString, false));
+      return paramString;
     }
+    catch (Exception paramString)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("StructMsg", 4, "XmlSerializer . text  IllegalArgumentException。。。。。");
+      }
+    }
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text("");
+  }
+  
+  public XmlSerializer text(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(paramArrayOfChar, paramInt1, paramInt2);
   }
 }
 

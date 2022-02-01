@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.search.activity;
 
 import Override;
-import amrb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,9 +16,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import antp;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
@@ -51,7 +52,7 @@ public class MessageSearchDetailActivity
       }
       return;
     }
-    int i = ((amrb)this.app.getManager(53)).a(paramString2);
+    int i = ((antp)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString2);
     if (i <= 0)
     {
       paramTextView.setText(paramString1);
@@ -127,7 +128,7 @@ public class MessageSearchDetailActivity
       finish();
       return false;
     }
-    super.setContentView(2131558936);
+    super.setContentView(2131558963);
     if (this.b.user.getType() == 3000) {
       a(ContactUtils.getNick(this.app, this.b.user.uin, this.b.user.getType()), this.b.user.uin, this.centerView);
     }
@@ -136,7 +137,7 @@ public class MessageSearchDetailActivity
       Object localObject = super.getSupportFragmentManager();
       paramBundle = MessageSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
       localObject = ((FragmentManager)localObject).beginTransaction();
-      ((FragmentTransaction)localObject).replace(2131365087, paramBundle);
+      ((FragmentTransaction)localObject).replace(2131365171, paramBundle);
       ((FragmentTransaction)localObject).commit();
       this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver = new MessageSearchDetailActivity.CancelReceiver(this);
       paramBundle = new IntentFilter();

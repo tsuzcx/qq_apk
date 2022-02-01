@@ -1,16 +1,38 @@
-import android.content.DialogInterface.OnClickListener;
+import java.util.HashMap;
+import java.util.Map;
 
-class aurk
+public class aurk
 {
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  private static aurk jdField_a_of_type_Aurk;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public aurk(aurh paramaurh, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  public static aurk a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
+    if (jdField_a_of_type_Aurk == null) {
+      jdField_a_of_type_Aurk = new aurk();
+    }
+    return jdField_a_of_type_Aurk;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (jdField_a_of_type_Aurk == null) {
+      paramString = null;
+    }
+    String str;
+    do
+    {
+      return paramString;
+      str = (String)jdField_a_of_type_Aurk.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      paramString = str;
+    } while (!jdField_a_of_type_Aurk.jdField_a_of_type_JavaUtilMap.isEmpty());
+    jdField_a_of_type_Aurk = null;
+    return str;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
   }
 }
 

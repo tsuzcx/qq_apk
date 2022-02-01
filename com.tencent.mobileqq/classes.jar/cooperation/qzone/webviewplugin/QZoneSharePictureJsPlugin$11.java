@@ -1,6 +1,6 @@
 package cooperation.qzone.webviewplugin;
 
-import bgve;
+import bifw;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.widget.QQToast;
 import cooperation.qzone.util.QZLog;

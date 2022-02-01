@@ -3,6 +3,7 @@ package cooperation.qzone.plugin;
 import android.os.Binder;
 import android.support.annotation.Nullable;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -23,7 +24,7 @@ public class QZoneRemotePluginHandler
       localObject = localQQAppInterface;
       if (localQQAppInterface != null)
       {
-        this.pluginManger = ((IQZonePluginManager)localQQAppInterface.getManager(175));
+        this.pluginManger = ((IQZonePluginManager)localQQAppInterface.getManager(QQManagerFactory.QZONE_PLUGIN_MANAGER));
         localObject = localQQAppInterface;
       }
     }

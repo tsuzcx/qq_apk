@@ -1,16 +1,30 @@
-import java.util.ArrayList;
-
-public abstract interface bobt
+class bobt
+  implements bobv
 {
-  public abstract void a(int paramInt);
+  public int a()
+  {
+    return 960;
+  }
   
-  public abstract void a(int paramInt, bobo parambobo);
+  public int b()
+  {
+    return ((Integer)bobx.a(Integer.valueOf(1024), Integer.valueOf(2048))).intValue();
+  }
   
-  public abstract void a(int paramInt, ArrayList<bobo> paramArrayList);
+  public int c()
+  {
+    return (int)(b() * 1.3D);
+  }
   
-  public abstract void a(String[] paramArrayOfString, String paramString);
+  public int d()
+  {
+    return ((Integer)bobx.a(Integer.valueOf(1080), Integer.valueOf(1920), Integer.valueOf(2560))).intValue();
+  }
   
-  public abstract void b(int paramInt, bobo parambobo);
+  public int e()
+  {
+    return 100;
+  }
 }
 
 

@@ -21,13 +21,13 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import bcef;
-import bhfz;
-import bhga;
-import bhgb;
-import bhgc;
-import bhgd;
-import bhge;
+import bdla;
+import biqr;
+import biqs;
+import biqt;
+import biqu;
+import biqv;
+import biqw;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -54,16 +54,16 @@ public class ParticipleView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Point jdField_a_of_type_AndroidGraphicsPoint = new Point(0, 0);
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private bhgc jdField_a_of_type_Bhgc;
-  private bhgd jdField_a_of_type_Bhgd;
-  private bhge jdField_a_of_type_Bhge;
+  private biqu jdField_a_of_type_Biqu;
+  private biqv jdField_a_of_type_Biqv;
+  private biqw jdField_a_of_type_Biqw;
   private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
-  private List<bhgd> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<biqv> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private RectF jdField_b_of_type_AndroidGraphicsRectF;
-  private final List<bhgd> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private final List<biqv> jdField_b_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_b_of_type_Boolean;
   private float jdField_c_of_type_Float;
   private Paint jdField_c_of_type_AndroidGraphicsPaint;
@@ -119,7 +119,7 @@ public class ParticipleView
       int i2 = this.jdField_a_of_type_JavaUtilList.size();
       while (i1 < i2)
       {
-        Iterator localIterator = bhgd.a((bhgd)this.jdField_a_of_type_JavaUtilList.get(i1)).iterator();
+        Iterator localIterator = biqv.a((biqv)this.jdField_a_of_type_JavaUtilList.get(i1)).iterator();
         while (localIterator.hasNext()) {
           if (((RectF)localIterator.next()).contains(paramFloat1, paramFloat2)) {
             return i1;
@@ -182,7 +182,7 @@ public class ParticipleView
     }
   }
   
-  private void a(int paramInt1, int paramInt2, QQText paramQQText, bhgd parambhgd, Canvas paramCanvas)
+  private void a(int paramInt1, int paramInt2, QQText paramQQText, biqv parambiqv, Canvas paramCanvas)
   {
     int i2 = a(paramQQText);
     if (getWidth() <= 0)
@@ -204,7 +204,7 @@ public class ParticipleView
       paramInt1 = getPaddingLeft();
       i1 = this.e;
       int i3 = this.h;
-      c(paramInt1, this.f * 2 + (i1 + paramInt2 + i3), paramQQText, parambhgd, paramCanvas);
+      c(paramInt1, this.f * 2 + (i1 + paramInt2 + i3), paramQQText, parambiqv, paramCanvas);
       this.jdField_a_of_type_AndroidGraphicsPoint.x = (getPaddingLeft() + i2 + this.g * 2 + this.i);
       this.jdField_a_of_type_AndroidGraphicsPoint.y = (this.e + paramInt2 + this.h + this.f * 2);
       return;
@@ -212,10 +212,10 @@ public class ParticipleView
       break;
     }
     label181:
-    b(paramInt1, paramInt2, paramQQText, parambhgd, paramCanvas);
+    b(paramInt1, paramInt2, paramQQText, parambiqv, paramCanvas);
     return;
     label193:
-    c(paramInt1, paramInt2, paramQQText, parambhgd, paramCanvas);
+    c(paramInt1, paramInt2, paramQQText, parambiqv, paramCanvas);
     this.jdField_a_of_type_AndroidGraphicsPoint.x = (paramInt1 + i2 + this.i + this.g * 2);
   }
   
@@ -244,8 +244,8 @@ public class ParticipleView
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.l);
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.k);
-    this.jdField_a_of_type_Bhge = new bhge(this, null);
-    ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bhge);
+    this.jdField_a_of_type_Biqw = new biqw(this, null);
+    ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Biqw);
     this.u = ViewConfiguration.get(paramContext).getScaledTouchSlop();
   }
   
@@ -259,29 +259,29 @@ public class ParticipleView
       int i1 = 0;
       while (i1 < i2)
       {
-        bhgd localbhgd = (bhgd)this.jdField_a_of_type_JavaUtilList.get(i1);
-        if ((paramCanvas == null) || (a(localbhgd))) {
-          a(paramCanvas, localbhgd);
+        biqv localbiqv = (biqv)this.jdField_a_of_type_JavaUtilList.get(i1);
+        if ((paramCanvas == null) || (a(localbiqv))) {
+          a(paramCanvas, localbiqv);
         }
         i1 += 1;
       }
     }
   }
   
-  private void a(Canvas paramCanvas, bhgd parambhgd)
+  private void a(Canvas paramCanvas, biqv parambiqv)
   {
-    if (bhgd.a(parambhgd).isEmpty()) {
-      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, parambhgd.a, parambhgd, paramCanvas);
+    if (biqv.a(parambiqv).isEmpty()) {
+      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, parambiqv.a, parambiqv, paramCanvas);
     }
     for (;;)
     {
       return;
-      int i2 = bhgd.a(parambhgd).size();
+      int i2 = biqv.a(parambiqv).size();
       int i1 = 0;
       while (i1 < i2)
       {
-        RectF localRectF = (RectF)bhgd.a(parambhgd).get(i1);
-        a(localRectF, (QQText)bhgd.b(parambhgd).get(i1), parambhgd, paramCanvas);
+        RectF localRectF = (RectF)biqv.a(parambiqv).get(i1);
+        a(localRectF, (QQText)biqv.b(parambiqv).get(i1), parambiqv, paramCanvas);
         this.jdField_a_of_type_AndroidGraphicsPoint.x = ((int)localRectF.right + this.i);
         this.jdField_a_of_type_AndroidGraphicsPoint.y = ((int)localRectF.top);
         i1 += 1;
@@ -319,7 +319,7 @@ public class ParticipleView
       localObject3 = this.jdField_b_of_type_AndroidGraphicsRectF;
       paramRectF1 = (RectF)localObject1;
       localObject1 = localObject4;
-      this.jdField_a_of_type_Boolean = bhgd.a(this.jdField_a_of_type_Bhgd);
+      this.jdField_a_of_type_Boolean = biqv.a(this.jdField_a_of_type_Biqv);
       localObject4 = paramRectF1;
       paramRectF1 = (RectF)localObject2;
       localObject2 = localObject4;
@@ -349,7 +349,7 @@ public class ParticipleView
       label196:
       if (paramRectF1.equals(this.jdField_b_of_type_AndroidGraphicsRectF))
       {
-        this.jdField_a_of_type_Boolean = bhgd.a(this.jdField_a_of_type_Bhgd);
+        this.jdField_a_of_type_Boolean = biqv.a(this.jdField_a_of_type_Biqv);
         paramRectF1 = null;
         localObject4 = localObject1;
         localObject1 = null;
@@ -391,8 +391,8 @@ public class ParticipleView
     int i1 = 0;
     while (i1 < i2)
     {
-      bhgd localbhgd = (bhgd)this.jdField_a_of_type_JavaUtilList.get(i1);
-      Iterator localIterator = bhgd.a(localbhgd).iterator();
+      biqv localbiqv = (biqv)this.jdField_a_of_type_JavaUtilList.get(i1);
+      Iterator localIterator = biqv.a(localbiqv).iterator();
       while (localIterator.hasNext())
       {
         RectF localRectF = (RectF)localIterator.next();
@@ -400,8 +400,8 @@ public class ParticipleView
         {
           if (this.jdField_c_of_type_Boolean)
           {
-            if (bhgd.a(localbhgd)) {
-              bhgd.a(localbhgd, false);
+            if (biqv.a(localbiqv)) {
+              biqv.a(localbiqv, false);
             }
           }
           else
@@ -409,7 +409,7 @@ public class ParticipleView
             if (!this.jdField_a_of_type_Boolean) {}
             for (boolean bool = true;; bool = false)
             {
-              bhgd.a(localbhgd, bool);
+              biqv.a(localbiqv, bool);
               break;
             }
           }
@@ -448,10 +448,10 @@ public class ParticipleView
             if (!this.jdField_c_of_type_Boolean) {
               break label346;
             }
-            if (!bhgd.a(localbhgd)) {
+            if (!biqv.a(localbiqv)) {
               break;
             }
-            bhgd.a(localbhgd, false);
+            biqv.a(localbiqv, false);
             break;
             if (paramRectF3.left >= localRectF.left) {
               break;
@@ -465,27 +465,27 @@ public class ParticipleView
           label346:
           if (this.jdField_a_of_type_Boolean)
           {
-            if (!bhgd.a(localbhgd))
+            if (!biqv.a(localbiqv))
             {
-              bhgd.a(localbhgd, true);
-              bhgd.a(localbhgd, System.currentTimeMillis());
-              localArrayList.add(localbhgd);
+              biqv.a(localbiqv, true);
+              biqv.a(localbiqv, System.currentTimeMillis());
+              localArrayList.add(localbiqv);
             }
           }
-          else if (bhgd.a(localbhgd)) {
-            bhgd.a(localbhgd, false);
+          else if (biqv.a(localbiqv)) {
+            biqv.a(localbiqv, false);
           }
         }
       }
       i1 += 1;
     }
     a(localArrayList);
-    if (this.jdField_a_of_type_Bhgc != null) {
-      this.jdField_a_of_type_Bhgc.a();
+    if (this.jdField_a_of_type_Biqu != null) {
+      this.jdField_a_of_type_Biqu.a();
     }
   }
   
-  private void a(RectF paramRectF, QQText paramQQText, bhgd parambhgd, Canvas paramCanvas)
+  private void a(RectF paramRectF, QQText paramQQText, biqv parambiqv, Canvas paramCanvas)
   {
     int i2 = (int)paramRectF.bottom;
     int i3 = (int)paramRectF.left;
@@ -499,11 +499,11 @@ public class ParticipleView
       i1 = i1 - i3 - this.g * 2;
       f1 = 0.0F;
       f2 = 0.0F;
-      if (!bhgd.a(parambhgd)) {
+      if (!biqv.a(parambiqv)) {
         break label271;
       }
-      if (bhgd.a(parambhgd) >= 0.0F) {
-        f2 = bhgd.a(parambhgd);
+      if (biqv.a(parambiqv) >= 0.0F) {
+        f2 = biqv.a(parambiqv);
       }
       f1 = 1.0F;
       if (f2 < 1.0F)
@@ -523,7 +523,7 @@ public class ParticipleView
       }
       label224:
       paramRectF = this.jdField_a_of_type_AndroidGraphicsPaint;
-      if (!bhgd.a(parambhgd)) {
+      if (!biqv.a(parambiqv)) {
         break label373;
       }
     }
@@ -560,8 +560,8 @@ public class ParticipleView
       int i1 = 0;
       while (i1 < i4)
       {
-        bhgd localbhgd = (bhgd)this.jdField_a_of_type_JavaUtilList.get(i1);
-        Iterator localIterator = bhgd.a(localbhgd).iterator();
+        biqv localbiqv = (biqv)this.jdField_a_of_type_JavaUtilList.get(i1);
+        Iterator localIterator = biqv.a(localbiqv).iterator();
         while (localIterator.hasNext())
         {
           RectF localRectF2 = (RectF)localIterator.next();
@@ -574,15 +574,15 @@ public class ParticipleView
             {
               this.jdField_a_of_type_AndroidGraphicsRectF = localRectF2;
               this.jdField_b_of_type_AndroidGraphicsRectF = localRectF2;
-              this.jdField_a_of_type_Bhgd = localbhgd;
+              this.jdField_a_of_type_Biqv = localbiqv;
             }
             else if (paramMotionEvent.getAction() == 2)
             {
-              if (this.jdField_a_of_type_Bhgd == null)
+              if (this.jdField_a_of_type_Biqv == null)
               {
                 this.jdField_a_of_type_AndroidGraphicsRectF = localRectF2;
                 this.jdField_b_of_type_AndroidGraphicsRectF = localRectF2;
-                this.jdField_a_of_type_Bhgd = localbhgd;
+                this.jdField_a_of_type_Biqv = localbiqv;
                 f();
               }
               else if (!localRectF1.equals(this.jdField_a_of_type_AndroidGraphicsRectF))
@@ -613,10 +613,10 @@ public class ParticipleView
     a(paramView);
   }
   
-  private void a(bhgd parambhgd)
+  private void a(biqv parambiqv)
   {
     ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(parambhgd);
+    localArrayList.add(parambiqv);
     b(localArrayList);
   }
   
@@ -685,11 +685,11 @@ public class ParticipleView
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = new QQText(paramString, 3);
-      this.jdField_a_of_type_JavaUtilList.add(new bhgd(paramString, null));
+      this.jdField_a_of_type_JavaUtilList.add(new biqv(paramString, null));
     }
   }
   
-  private void a(List<bhgd> paramList)
+  private void a(List<biqv> paramList)
   {
     if (paramList.size() > 0)
     {
@@ -707,17 +707,17 @@ public class ParticipleView
     return (paramRectF1.top < paramRectF2.top) || ((paramRectF1.top == paramRectF2.top) && (paramRectF1.left < paramRectF2.left));
   }
   
-  private boolean a(bhgd parambhgd)
+  private boolean a(biqv parambiqv)
   {
-    if ((this.jdField_b_of_type_Boolean) && (!bhgd.a(parambhgd).isEmpty()))
+    if ((this.jdField_b_of_type_Boolean) && (!biqv.a(parambiqv).isEmpty()))
     {
       a(this);
       if (this.jdField_a_of_type_ComTencentWidgetScrollView != null)
       {
-        parambhgd = bhgd.a(parambhgd).iterator();
-        while (parambhgd.hasNext())
+        parambiqv = biqv.a(parambiqv).iterator();
+        while (parambiqv.hasNext())
         {
-          int i1 = (int)((RectF)parambhgd.next()).top;
+          int i1 = (int)((RectF)parambiqv.next()).top;
           if ((this.e + i1 + this.f * 2 - this.jdField_a_of_type_ComTencentWidgetScrollView.getScrollY() > 0) && (i1 - this.jdField_a_of_type_ComTencentWidgetScrollView.getScrollY() < this.jdField_a_of_type_ComTencentWidgetScrollView.getHeight())) {}
           for (i1 = 1; i1 != 0; i1 = 0) {
             return true;
@@ -751,7 +751,7 @@ public class ParticipleView
     }
   }
   
-  private void b(int paramInt1, int paramInt2, QQText paramQQText, bhgd parambhgd, Canvas paramCanvas)
+  private void b(int paramInt1, int paramInt2, QQText paramQQText, biqv parambiqv, Canvas paramCanvas)
   {
     int i3;
     int i1;
@@ -808,13 +808,13 @@ public class ParticipleView
       if (i1 > 0) {
         break label323;
       }
-      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramQQText, parambhgd, paramCanvas);
+      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramQQText, parambiqv, paramCanvas);
       i1 = 1;
     }
     for (;;)
     {
       if (i1 == 0) {
-        a(paramInt1, paramInt2, paramQQText, parambhgd, paramCanvas);
+        a(paramInt1, paramInt2, paramQQText, parambiqv, paramCanvas);
       }
       return;
       i3 = getWidth();
@@ -824,9 +824,9 @@ public class ParticipleView
       i6 = i1;
       break label178;
       label323:
-      c(paramInt1, paramInt2, new QQText(str3.substring(0, i1), 3), parambhgd, paramCanvas);
+      c(paramInt1, paramInt2, new QQText(str3.substring(0, i1), 3), parambiqv, paramCanvas);
       str1 = str3.substring(i1, i10);
-      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, new QQText(str1, 3), parambhgd, paramCanvas);
+      a(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, new QQText(str1, 3), parambiqv, paramCanvas);
       i1 = 1;
       continue;
       label398:
@@ -837,7 +837,7 @@ public class ParticipleView
     }
   }
   
-  private void b(List<bhgd> paramList)
+  private void b(List<biqv> paramList)
   {
     this.jdField_b_of_type_JavaUtilList.addAll(paramList);
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
@@ -848,32 +848,32 @@ public class ParticipleView
       this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.p);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bhfz(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new biqr(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
   }
   
   private void c()
   {
-    bcef.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A359", "0X800A359", 0, 0, "", "", "", "");
+    bdla.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A359", "0X800A359", 0, 0, "", "", "", "");
   }
   
-  private void c(int paramInt1, int paramInt2, QQText paramQQText, bhgd parambhgd, Canvas paramCanvas)
+  private void c(int paramInt1, int paramInt2, QQText paramQQText, biqv parambiqv, Canvas paramCanvas)
   {
     int i1 = this.e;
     int i2 = this.f;
     int i3 = a(paramQQText);
     int i4 = this.g;
     RectF localRectF = new RectF(paramInt1, paramInt2, i3 + i4 * 2 + paramInt1, i1 + paramInt2 + i2 * 2);
-    bhgd.a(parambhgd, localRectF, paramQQText);
-    a(localRectF, paramQQText, parambhgd, paramCanvas);
+    biqv.a(parambiqv, localRectF, paramQQText);
+    a(localRectF, paramQQText, parambiqv, paramCanvas);
   }
   
   private void d()
   {
     f();
-    if ((this.jdField_a_of_type_Bhgd != null) && (bhgd.a(this.jdField_a_of_type_Bhgd))) {
-      bcef.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A358", "0X800A358", 0, 0, "", "", "", "");
+    if ((this.jdField_a_of_type_Biqv != null) && (biqv.a(this.jdField_a_of_type_Biqv))) {
+      bdla.b(((BaseActivity)getContext()).app, "dc00898", "", "", "0X800A358", "0X800A358", 0, 0, "", "", "", "");
     }
   }
   
@@ -884,27 +884,27 @@ public class ParticipleView
   
   private void f()
   {
-    if (this.jdField_a_of_type_Bhgd != null)
+    if (this.jdField_a_of_type_Biqv != null)
     {
-      this.jdField_c_of_type_Boolean = bhgd.a(this.jdField_a_of_type_Bhgd);
-      if (!bhgd.a(this.jdField_a_of_type_Bhgd)) {
+      this.jdField_c_of_type_Boolean = biqv.a(this.jdField_a_of_type_Biqv);
+      if (!biqv.a(this.jdField_a_of_type_Biqv)) {
         break label63;
       }
-      bhgd.a(this.jdField_a_of_type_Bhgd, false);
+      biqv.a(this.jdField_a_of_type_Biqv, false);
       this.jdField_a_of_type_Boolean = false;
       invalidate();
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bhgc != null) {
-        this.jdField_a_of_type_Bhgc.a();
+      if (this.jdField_a_of_type_Biqu != null) {
+        this.jdField_a_of_type_Biqu.a();
       }
       return;
       label63:
-      bhgd.a(this.jdField_a_of_type_Bhgd, true);
+      biqv.a(this.jdField_a_of_type_Biqv, true);
       this.jdField_a_of_type_Boolean = true;
-      bhgd.a(this.jdField_a_of_type_Bhgd, System.currentTimeMillis());
-      a(this.jdField_a_of_type_Bhgd);
+      biqv.a(this.jdField_a_of_type_Biqv, System.currentTimeMillis());
+      a(this.jdField_a_of_type_Biqv);
     }
   }
   
@@ -917,10 +917,10 @@ public class ParticipleView
       int i1 = 0;
       while (i1 < i2)
       {
-        Object localObject = (bhgd)this.jdField_a_of_type_JavaUtilList.get(i1);
-        if (bhgd.a((bhgd)localObject))
+        Object localObject = (biqv)this.jdField_a_of_type_JavaUtilList.get(i1);
+        if (biqv.a((biqv)localObject))
         {
-          localObject = ((bhgd)localObject).a.toString();
+          localObject = ((biqv)localObject).a.toString();
           boolean bool = a((String)localObject);
           if ((localStringBuilder.length() > 0) && ((this.jdField_d_of_type_Boolean != bool) || (!this.jdField_d_of_type_Boolean))) {
             localStringBuilder.append(" ");
@@ -945,10 +945,10 @@ public class ParticipleView
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator.setDuration(this.o);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    localValueAnimator.addUpdateListener(new bhga(this));
+    localValueAnimator.addUpdateListener(new biqs(this));
     localValueAnimator.setDuration(this.p);
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.addListener(new bhgb(this));
+    localAnimatorSet.addListener(new biqt(this));
     localAnimatorSet.playSequentially(new Animator[] { localObjectAnimator, localValueAnimator });
     localAnimatorSet.start();
   }
@@ -964,7 +964,7 @@ public class ParticipleView
       int i1 = 0;
       while (i1 < i2)
       {
-        bhgd.a((bhgd)this.jdField_a_of_type_JavaUtilList.get(i1), false);
+        biqv.a((biqv)this.jdField_a_of_type_JavaUtilList.get(i1), false);
         a(this);
         if (this.jdField_a_of_type_ComTencentWidgetScrollView != null) {
           this.jdField_a_of_type_ComTencentWidgetScrollView.scrollTo(0, 0);
@@ -977,7 +977,7 @@ public class ParticipleView
   
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((AppSetting.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Bhge != null) && (this.jdField_a_of_type_Bhge.dispatchHoverEvent(paramMotionEvent))) {
+    if ((AppSetting.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Biqw != null) && (this.jdField_a_of_type_Biqw.dispatchHoverEvent(paramMotionEvent))) {
       return true;
     }
     return super.dispatchHoverEvent(paramMotionEvent);
@@ -1081,7 +1081,7 @@ public class ParticipleView
       this.jdField_a_of_type_Byte = 0;
       this.jdField_a_of_type_AndroidGraphicsRectF = null;
       this.jdField_b_of_type_AndroidGraphicsRectF = null;
-      this.jdField_a_of_type_Bhgd = null;
+      this.jdField_a_of_type_Biqv = null;
       this.t = 0;
       this.jdField_b_of_type_Boolean = false;
       if (QLog.isColorLevel()) {
@@ -1094,9 +1094,9 @@ public class ParticipleView
     }
   }
   
-  public void setOnParticipleSelectChangeListener(bhgc parambhgc)
+  public void setOnParticipleSelectChangeListener(biqu parambiqu)
   {
-    this.jdField_a_of_type_Bhgc = parambhgc;
+    this.jdField_a_of_type_Biqu = parambiqu;
   }
   
   public void setParticipleItems(List<String> paramList)
@@ -1123,7 +1123,7 @@ public class ParticipleView
             if (i1 >= i2) {
               break label148;
             }
-            if (!TextUtils.equals((CharSequence)paramList.get(i1), ((bhgd)this.jdField_a_of_type_JavaUtilList.get(i1)).a.toString()))
+            if (!TextUtils.equals((CharSequence)paramList.get(i1), ((biqv)this.jdField_a_of_type_JavaUtilList.get(i1)).a.toString()))
             {
               i1 = 0;
               break;

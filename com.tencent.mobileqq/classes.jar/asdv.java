@@ -1,108 +1,320 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.FavRoamingStrategy.3;
+import com.tencent.mobileqq.emosm.FavRoamingStrategy.4;
+import com.tencent.mobileqq.emosm.FavRoamingStrategy.7;
+import com.tencent.mobileqq.emosm.favroaming.FavEmoSingleSend;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.ICustomEmotionInfo;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.GridView;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
 
 public class asdv
+  extends ascs
 {
-  void a(int paramInt, boolean paramBoolean, Object paramObject)
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  anub jdField_a_of_type_Anub = new asdy(this);
+  private asfk jdField_a_of_type_Asfk;
+  asft<CustomEmotionData> jdField_a_of_type_Asft = new asdz(this);
+  private List<String> b;
+  
+  public asdv(QQAppInterface paramQQAppInterface, asdl paramasdl)
   {
-    if ((paramObject == null) || ((paramObject instanceof String))) {
-      return;
-    }
-    Object localObject = (Object[])paramObject;
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTransferObserver<FileAssistant>", 2, "onUpdate : type[" + paramInt + "], isSuccess[" + paramBoolean + "]");
-    }
-    switch (paramInt)
-    {
-    case 5008: 
-    case 5009: 
-    case 5010: 
-    case 5011: 
-    case 5012: 
-    case 5017: 
-    case 5018: 
-    case 5019: 
-    default: 
-      QLog.e("FileTransferObserver<FileAssistant>", 1, "onUpdate : Can Not process type" + paramInt);
-      return;
-    case 5004: 
-      a(paramBoolean, (asdr)localObject[0], (amwm)localObject[1], (List)localObject[2]);
-      return;
-    case 5005: 
-      a(paramBoolean, (asdr)localObject[0], (amwm)localObject[1]);
-      return;
-    case 5006: 
-      a(paramBoolean, ((Long)localObject[0]).longValue(), (String)localObject[1], (String)localObject[2], (ByteStringMicro)localObject[3], ((Boolean)localObject[4]).booleanValue(), (String)localObject[5], ((Short)localObject[6]).shortValue(), (String)localObject[7], (List)localObject[8], ((Integer)localObject[9]).intValue(), (String)localObject[10], (String)localObject[11], (String)localObject[12], ((Long)localObject[13]).longValue(), (Bundle)localObject[14]);
-      return;
-    case 5007: 
-      b(paramBoolean, (asdr)localObject[0], (amwm)localObject[1]);
-      return;
-    case 5013: 
-      a(paramBoolean, ((Long)localObject[0]).longValue(), (String)localObject[1], (String)localObject[2], (String)localObject[3], ((Integer)localObject[4]).intValue(), (String)localObject[5], (String)localObject[6], ((Integer)localObject[7]).intValue(), ((Long)localObject[8]).longValue(), (Bundle)localObject[9]);
-      return;
-    case 5014: 
-      paramBoolean = ((Boolean)localObject[0]).booleanValue();
-      long l = ((Long)localObject[1]).longValue();
-      paramInt = ((Integer)localObject[2]).intValue();
-      a(paramBoolean, l, ((Long)localObject[3]).longValue(), paramInt, ((Long)localObject[4]).longValue());
-      return;
-    case 5015: 
-      paramObject = (Long)localObject[0];
-      String str1 = (String)localObject[1];
-      String str2 = (String)localObject[2];
-      String str3 = (String)localObject[3];
-      String str4 = (String)localObject[4];
-      Integer localInteger = (Integer)localObject[5];
-      String str5 = (String)localObject[6];
-      String str6 = (String)localObject[7];
-      localObject = (Bundle)localObject[8];
-      a(paramBoolean, paramObject.longValue(), str1, str2, str3, str4, localInteger.intValue(), str5, str6, (Bundle)localObject);
-      return;
-    case 5016: 
-      a(paramBoolean, (Long)localObject[0]);
-      return;
-    case 5020: 
-      b(paramBoolean, (asdr)localObject[0], (amwm)localObject[1], (List)localObject[2]);
-      return;
-    case 5022: 
-      b(paramBoolean, ((Boolean)localObject[0]).booleanValue(), (List)localObject[1]);
-      return;
-    }
-    a(paramBoolean, ((Boolean)localObject[0]).booleanValue(), (List)localObject[1]);
+    super(paramQQAppInterface, paramasdl);
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(long paramLong1, long paramLong2) {}
+  private void a(asgo paramasgo, int paramInt, Object paramObject)
+  {
+    ThreadManager.post(new FavRoamingStrategy.4(this, paramObject, paramasgo, paramInt), 5, null, false);
+  }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt, long paramLong3) {}
+  private void a(EmoticonInfo paramEmoticonInfo, String paramString)
+  {
+    if ((paramEmoticonInfo instanceof FavoriteEmoticonInfo)) {
+      ((FavoriteEmoticonInfo)paramEmoticonInfo).roamingType = paramString;
+    }
+    while (!(paramEmoticonInfo instanceof PicEmoticonInfo)) {
+      return;
+    }
+    ((PicEmoticonInfo)paramEmoticonInfo).roamingType = paramString;
+  }
   
-  protected void a(boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle) {}
+  private void i()
+  {
+    a(new asdw(this));
+  }
   
-  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle) {}
+  private void j()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      Object localObject = this.jdField_a_of_type_Asdl.jdField_b_of_type_JavaUtilList;
+      int k = ((List)localObject).size();
+      ArrayList localArrayList = new ArrayList();
+      int j = 0;
+      int i = 0;
+      if (j < k)
+      {
+        EmoticonInfo localEmoticonInfo = (EmoticonInfo)((List)localObject).get(j);
+        if (!(localEmoticonInfo instanceof ICustomEmotionInfo)) {}
+        for (;;)
+        {
+          j += 1;
+          break;
+          if (((ICustomEmotionInfo)localEmoticonInfo).isChecked())
+          {
+            localArrayList.add(localEmoticonInfo);
+            i += 1;
+          }
+        }
+      }
+      ThreadManager.post(new FavRoamingStrategy.3(this, localArrayList), 5, null, true);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005C79", "0X8005C79", 0, 0, String.valueOf(i), "", "", "");
+      this.jdField_a_of_type_Boolean = false;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+      if (localObject != null) {
+        ((MqqHandler)localObject).obtainMessage(10).sendToTarget();
+      }
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "趣图已添加至收藏面板", 0).a();
+    }
+  }
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, Bundle paramBundle) {}
+  public int a()
+  {
+    return 2131691851;
+  }
   
-  protected void a(boolean paramBoolean, asdr paramasdr, amwm paramamwm) {}
+  public asda<CustomEmotionData> a()
+  {
+    if (this.jdField_a_of_type_Asfk == null) {
+      this.jdField_a_of_type_Asfk = ((asfk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER));
+    }
+    return this.jdField_a_of_type_Asfk;
+  }
   
-  protected void a(boolean paramBoolean, asdr paramasdr, amwm paramamwm, List<String> paramList) {}
+  public String a(EmoticonInfo paramEmoticonInfo)
+  {
+    if (paramEmoticonInfo == null) {
+      return null;
+    }
+    return asfl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(Integer.valueOf(paramEmoticonInfo.emoId));
+  }
   
-  protected void a(boolean paramBoolean, Long paramLong) {}
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_Asdl.a();
+    this.jdField_a_of_type_Asdl.b(2131691865);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anub);
+    i();
+    if (this.jdField_a_of_type_Asfk == null) {
+      this.jdField_a_of_type_Asfk = ((asfk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER));
+    }
+    ((asfl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FAV_ROAMING_MANAGER)).a(this.jdField_a_of_type_Asft);
+  }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<OfflineFileInfo> paramList) {}
+  public void a(Context paramContext, Intent paramIntent)
+  {
+    super.a(paramContext, paramIntent);
+    if ("com.tencent.mobileqq.action.update.emotiom".equals(paramIntent.getAction())) {
+      a(new asdx(this));
+    }
+  }
   
-  public void au_() {}
+  public void a(GridView paramGridView, int paramInt, ICustomEmotionInfo paramICustomEmotionInfo)
+  {
+    Object localObject = ((asfk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER)).a();
+    int i = paramICustomEmotionInfo.getEmoId();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject).next();
+      if (localCustomEmotionData.emoId == i)
+      {
+        QLog.d("FavRoamingStrategy", 1, new Object[] { "resend, emoId:", Integer.valueOf(localCustomEmotionData.emoId) });
+        if ((localCustomEmotionData.emoOriginalPath != null) && (!asfj.a(localCustomEmotionData.emoOriginalPath)))
+        {
+          ((anua)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER)).notifyUI(2, true, Integer.valueOf(1));
+        }
+        else
+        {
+          localCustomEmotionData.RomaingType = "needUpload";
+          a((EmoticonInfo)paramICustomEmotionInfo, "needUpload");
+          if (this.jdField_a_of_type_Asdl != null)
+          {
+            this.jdField_a_of_type_Asdl.a(paramICustomEmotionInfo.getPath(), "needUpload");
+            this.jdField_a_of_type_Asdl.a(paramGridView, paramInt);
+          }
+          com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend.jdField_b_of_type_Boolean = false;
+          ThreadManager.excute(new FavEmoSingleSend(localCustomEmotionData, true), 64, null, false);
+        }
+      }
+    }
+  }
   
-  protected void b(boolean paramBoolean, asdr paramasdr, amwm paramamwm) {}
+  public boolean a()
+  {
+    return true;
+  }
   
-  protected void b(boolean paramBoolean, asdr paramasdr, amwm paramamwm, List<String> paramList) {}
+  public boolean a(Activity paramActivity)
+  {
+    boolean bool = paramActivity.getIntent().getBooleanExtra("extra_key_from_web", false);
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_b_of_type_Boolean = bool;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      ArrayList localArrayList1 = paramActivity.getIntent().getStringArrayListExtra("extra_key_pkgids");
+      ArrayList localArrayList2 = paramActivity.getIntent().getStringArrayListExtra("extra_key_paths");
+      ArrayList localArrayList3 = paramActivity.getIntent().getStringArrayListExtra("extra_key_md5s");
+      int j = paramActivity.getIntent().getIntExtra("extra_key_faile_count", 0);
+      if ((localArrayList1 != null) && (localArrayList2 != null) && (localArrayList3 != null))
+      {
+        int i = Math.min(localArrayList1.size(), localArrayList2.size());
+        int k = Math.min(localArrayList3.size(), i);
+        i = 0;
+        while (i < k)
+        {
+          FavoriteEmoticonInfo localFavoriteEmoticonInfo = new FavoriteEmoticonInfo();
+          localFavoriteEmoticonInfo.eId = ((String)localArrayList1.get(i));
+          localFavoriteEmoticonInfo.path = ((String)localArrayList2.get(i));
+          localFavoriteEmoticonInfo.action = ((String)localArrayList3.get(i));
+          this.jdField_a_of_type_JavaUtilList.add(localFavoriteEmoticonInfo);
+          i += 1;
+        }
+      }
+      if (j > 0) {
+        QQToast.a(paramActivity, j + "个下载失败", 0).a();
+      }
+    }
+    return true;
+  }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<OfflineFileInfo> paramList) {}
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public void d()
+  {
+    super.d();
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.jdField_b_of_type_JavaUtilList.clear();
+    if (this.jdField_b_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().sendBroadcast(new Intent("com.tencent.mobileqq.action.update.emotiom"));
+    }
+    ((asfl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FAV_ROAMING_MANAGER)).b(this.jdField_a_of_type_Asft);
+    if (this.jdField_a_of_type_Anub != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anub);
+    }
+  }
+  
+  public void e()
+  {
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "ep_mall", "0X800A6AA", 0, 0, "", "", "", "");
+  }
+  
+  public void f()
+  {
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "ep_mall", "0X800A6AB", 0, 0, "", "", "", "");
+  }
+  
+  public void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FavRoamingStrategy", 2, "fav doSyncEmotion");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
+    }
+    ThreadManager.excute(new FavRoamingStrategy.7(this), 128, null, false);
+  }
+  
+  public void h()
+  {
+    int j = 0;
+    if ((this.jdField_a_of_type_Asdl == null) || (this.jdField_a_of_type_Asdl.jdField_b_of_type_JavaUtilList == null)) {
+      return;
+    }
+    Object localObject1 = this.jdField_a_of_type_Asdl.jdField_b_of_type_JavaUtilList.iterator();
+    Object localObject2;
+    do
+    {
+      if (!((Iterator)localObject1).hasNext()) {
+        break;
+      }
+      localObject2 = (EmoticonInfo)((Iterator)localObject1).next();
+    } while ((!(localObject2 instanceof ICustomEmotionInfo)) || (!((ICustomEmotionInfo)localObject2).isChecked()));
+    for (int i = 0;; i = 1)
+    {
+      if (i != 0)
+      {
+        localObject1 = (anua)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER);
+        if (localObject1 != null)
+        {
+          ((anua)localObject1).a(this.jdField_b_of_type_JavaUtilList, false);
+          if (QLog.isColorLevel()) {
+            QLog.d("FavEmoRoamingHandler", 2, "-------start delfav---------delResid=" + this.jdField_b_of_type_JavaUtilList.toString());
+          }
+          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CF2", "0X8005CF2", 0, 0, this.jdField_b_of_type_JavaUtilList.size() + "", "", "", "");
+          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A6D5", "0X800A6D5", 0, 0, String.valueOf(this.jdField_b_of_type_JavaUtilList.size()), "", "", "");
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+        if (localObject1 == null) {
+          break;
+        }
+        ((MqqHandler)localObject1).obtainMessage(10).sendToTarget();
+        return;
+      }
+      j();
+      localObject1 = (asgo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MQQ_COMIC_MANAGER);
+      i = j;
+      if (i < this.jdField_a_of_type_Asdl.jdField_b_of_type_JavaUtilList.size())
+      {
+        localObject2 = this.jdField_a_of_type_Asdl.getItem(i);
+        if ((localObject2 == null) || (!(localObject2 instanceof ICustomEmotionInfo))) {}
+        while (!((ICustomEmotionInfo)localObject2).isChecked())
+        {
+          i += 1;
+          break;
+        }
+        a((asgo)localObject1, i, localObject2);
+        return;
+      }
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+      if (localObject1 == null) {
+        break;
+      }
+      ((MqqHandler)localObject1).obtainMessage(10).sendToTarget();
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdv
  * JD-Core Version:    0.7.0.1
  */

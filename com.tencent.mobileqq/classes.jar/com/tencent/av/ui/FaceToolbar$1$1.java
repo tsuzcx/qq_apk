@@ -1,15 +1,15 @@
 package com.tencent.av.ui;
 
-import mdi;
+import mee;
 
 public class FaceToolbar$1$1
   implements Runnable
 {
-  public FaceToolbar$1$1(mdi parammdi, int paramInt) {}
+  public FaceToolbar$1$1(mee parammee, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mdi.a.fixDimmed(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Mee.a.fixDimmed(this.jdField_a_of_type_Int);
   }
 }
 

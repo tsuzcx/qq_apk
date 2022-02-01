@@ -21,7 +21,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
-import bjqx;
+import blcj;
 import com.tencent.util.VersionUtils;
 
 class FastScroller
@@ -132,7 +132,7 @@ class FastScroller
         this.k = localTypedArray.getInt(5, 0);
         this.jdField_a_of_type_Boolean = true;
         b();
-        this.jdField_e_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297006);
+        this.jdField_e_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297007);
         this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
         this.jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade = new FastScroller.ScrollFade(this);
         this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -171,9 +171,9 @@ class FastScroller
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
     if ((paramDrawable instanceof NinePatchDrawable)) {
-      this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297008);
+      this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297009);
     }
-    for (this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297007);; this.jdField_a_of_type_Int = paramDrawable.getIntrinsicHeight())
+    for (this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297008);; this.jdField_a_of_type_Int = paramDrawable.getIntrinsicHeight())
     {
       this.jdField_e_of_type_Boolean = true;
       return;
@@ -651,10 +651,10 @@ class FastScroller
     Object localObject2 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getAdapter();
     this.jdField_a_of_type_AndroidWidgetSectionIndexer = null;
     Object localObject1 = localObject2;
-    if ((localObject2 instanceof bjqx))
+    if ((localObject2 instanceof blcj))
     {
-      this.jdField_g_of_type_Int = ((bjqx)localObject2).a();
-      localObject1 = ((bjqx)localObject2).getWrappedAdapter();
+      this.jdField_g_of_type_Int = ((blcj)localObject2).a();
+      localObject1 = ((blcj)localObject2).getWrappedAdapter();
     }
     if ((localObject1 instanceof ExpandableListConnector))
     {

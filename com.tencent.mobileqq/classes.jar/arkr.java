@@ -1,28 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.support.v4.app.FragmentActivity;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+import android.support.annotation.NonNull;
 
 public class arkr
-  implements DialogInterface.OnKeyListener
+  extends arjj<arkq>
 {
-  public arkr(ExtendFriendFragment paramExtendFriendFragment) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  @NonNull
+  public static arkq c()
   {
-    if (paramInt == 4)
-    {
-      paramDialogInterface.dismiss();
-      ExtendFriendFragment.a(this.a).finish();
-      return true;
+    arkq localarkq2 = (arkq)aqxe.a().a(618);
+    arkq localarkq1 = localarkq2;
+    if (localarkq2 == null) {
+      localarkq1 = new arkq();
     }
-    return false;
+    return localarkq1;
+  }
+  
+  @NonNull
+  public arkq a()
+  {
+    return new arkq();
+  }
+  
+  @NonNull
+  public arkq a(@NonNull aqxa[] paramArrayOfaqxa)
+  {
+    return arkq.a(paramArrayOfaqxa[0].a);
+  }
+  
+  @NonNull
+  public arkq b()
+  {
+    return new arkq();
+  }
+  
+  public Class<arkq> clazz()
+  {
+    return arkq.class;
+  }
+  
+  public int type()
+  {
+    return 618;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arkr
  * JD-Core Version:    0.7.0.1
  */

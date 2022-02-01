@@ -1,23 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
-import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.Comparator;
 
-public class ajnj
-  implements ajms
+class ajnj
+  implements Comparator<MayKnowRecommend>
 {
-  public ajnj(PhoneLaunchActivity paramPhoneLaunchActivity) {}
+  ajnj(ajnh paramajnh) {}
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
   {
-    PhoneLaunchActivity.a(this.a).setEnabled(true);
-    if ((!paramBoolean) && (paramContext != null))
-    {
-      Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
-      localIntent.putExtra("fromKeyForContactBind", 2);
-      paramContext.startActivity(localIntent);
+    long l1 = paramMayKnowRecommend1.cardDisplayTimestamp;
+    long l2 = paramMayKnowRecommend2.cardDisplayTimestamp;
+    if (l1 < l2) {
+      return 1;
     }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

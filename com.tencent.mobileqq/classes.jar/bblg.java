@@ -1,11 +1,36 @@
-import java.util.Comparator;
+import android.opengl.Matrix;
 
-final class bblg
-  implements Comparator<abyg>
+public class bblg
 {
-  public int a(abyg paramabyg1, abyg paramabyg2)
+  public static float[] a = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+  public static final float[] b = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+  
+  public static float[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return paramabyg2.a() - paramabyg1.a();
+    float f1 = paramInt3 / paramInt4;
+    float f2 = paramInt1 / paramInt2;
+    if (f1 < f2)
+    {
+      f2 = paramInt4 * f2 / paramInt3;
+      f1 = 1.0F;
+    }
+    for (;;)
+    {
+      float[] arrayOfFloat = new float[16];
+      Matrix.setIdentityM(arrayOfFloat, 0);
+      Matrix.scaleM(arrayOfFloat, 0, f2, f1, 1.0F);
+      return arrayOfFloat;
+      if (f1 > f2)
+      {
+        f1 = paramInt3 / (f2 * paramInt4);
+        f2 = 1.0F;
+      }
+      else
+      {
+        f1 = 1.0F;
+        f2 = 1.0F;
+      }
+    }
   }
 }
 

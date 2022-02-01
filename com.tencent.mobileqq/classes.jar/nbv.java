@@ -1,20 +1,12 @@
 public abstract interface nbv
 {
-  public abstract void a();
+  public abstract void enableLocalSpeechRecognizeModel(boolean paramBoolean);
   
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public abstract int registerAudioDataCallback(int paramInt, boolean paramBoolean);
   
-  public abstract boolean a();
+  public abstract int setAudioDataFormat(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public abstract int unregisterAudioDataCallback(int paramInt);
 }
 
 

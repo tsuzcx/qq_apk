@@ -1,15 +1,20 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import blpb;
+import android.view.View;
+import android.widget.ImageView;
+import bncm;
+import bnqu;
 
 public class VideoStoryAIScenePart$6
   implements Runnable
 {
-  public VideoStoryAIScenePart$6(blpb paramblpb) {}
+  public VideoStoryAIScenePart$6(bncm parambncm) {}
   
   public void run()
   {
-    blpb.a(this.this$0);
+    bncm.a(this.this$0).setVisibility(4);
+    bncm.a(this.this$0).setVisibility(4);
+    bnqu.a().a("ai_guide_shown", true, 0);
   }
 }
 

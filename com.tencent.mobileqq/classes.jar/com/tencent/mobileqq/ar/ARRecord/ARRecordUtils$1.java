@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import amtj;
-import aoaf;
-import aoai;
-import bfur;
+import anvx;
+import apdh;
+import apdk;
+import bhdj;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public final class ARRecordUtils$1
@@ -15,7 +15,7 @@ public final class ARRecordUtils$1
   {
     try
     {
-      bfur.a(aoai.a().a(), 230, this.a, this.b, "", amtj.a(2131699886), new aoaf(this), null).show();
+      bhdj.a(apdk.a().a(), 230, this.a, this.b, "", anvx.a(2131700237), new apdh(this), null).show();
       return;
     }
     catch (Exception localException)

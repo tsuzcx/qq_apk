@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-
-class bnty
+public abstract interface bnty
 {
-  public FilterDesc a;
-  public ArrayList<WeakReference<bnua>> a;
-  
-  bnty(bntx parambntx)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public abstract void a(int paramInt);
 }
 
 

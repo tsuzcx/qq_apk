@@ -1,61 +1,51 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
-class aliv
-  implements View.OnClickListener
+public class aliv
+  extends AbsRecentStatus
 {
-  aliv(alis paramalis) {}
+  private static int a = 8;
   
-  public void onClick(View paramView)
+  public int[] declareStatus()
   {
-    ((SlideDetectListView)alis.a(this.a)).resetSlideStatus();
-    Object localObject = (View)paramView.getParent();
-    if ((localObject instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)localObject).hideDirectly();
-    }
-    localObject = paramView.getTag();
-    if (!(localObject instanceof DiscussionInfo)) {}
-    for (;;)
+    return new int[] { 0, 10 };
+  }
+  
+  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    return paramRecentBaseData.getRecentUserType() == 1;
+  }
+  
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  {
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {}
+    for (paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;; paramIMCoreAppRuntime = null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      DiscussionInfo localDiscussionInfo = (DiscussionInfo)localObject;
-      if (NetworkUtil.getSystemNetwork(alis.a(this.a)) == 0)
+      if ((paramIMCoreAppRuntime == null) || (paramRecentBaseData == null)) {}
+      String str;
+      do
       {
-        localObject = (BaseActivity)alis.a(this.a);
-        QQToast.a((Context)localObject, 2131695597, 0).b(((BaseActivity)localObject).getTitleBarHeight());
-      }
-      else if ((!localDiscussionInfo.hasCollect) && (((amrb)this.a.a.getManager(53)).a() >= 80))
-      {
-        localObject = (BaseActivity)alis.a(this.a);
-        QQToast.a((Context)localObject, alis.a(this.a).getString(2131695596, new Object[] { String.valueOf(80) }), 0).b(((BaseActivity)localObject).getTitleBarHeight());
-      }
-      else
-      {
-        amqx localamqx = (amqx)this.a.a.getBusinessHandler(6);
-        if (localDiscussionInfo.hasCollect) {}
-        for (localObject = "0X8006898";; localObject = "0X8006897")
+        int i;
+        do
         {
-          bcef.b(this.a.a, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
-          if (!localDiscussionInfo.hasCollect) {
-            break label269;
-          }
-          localamqx.e(Long.valueOf(localDiscussionInfo.uin).longValue());
-          break;
-        }
-        label269:
-        localamqx.d(Long.valueOf(localDiscussionInfo.uin).longValue());
-      }
+          return false;
+          i = paramRecentBaseData.getRecentUserType();
+          str = paramRecentBaseData.getRecentUserUin();
+        } while ((i != 1) || ((paramRecentBaseData.mStatus != 0) && (paramRecentBaseData.mStatus != 10)));
+        paramRecentBaseData.mStatus = 0;
+        paramIMCoreAppRuntime = (ncz)paramIMCoreAppRuntime.getManager(QQManagerFactory.AV_GAME_MANAGER);
+      } while ((paramIMCoreAppRuntime == null) || (!paramIMCoreAppRuntime.b(str)));
+      paramRecentBaseData.mStatus = 10;
+      return false;
     }
+  }
+  
+  public int priority()
+  {
+    return a;
   }
 }
 

@@ -1,18 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import kotlin.Metadata;
 
-public class rjx
-  implements rki
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "updateProgress"}, k=3, mv={1, 1, 16})
+final class rjx
+  implements rlm
 {
-  public rjx(CoverSelectTabFragment paramCoverSelectTabFragment) {}
+  rjx(TextView paramTextView1, TextView paramTextView2, TextView paramTextView3, TextView paramTextView4, TextView paramTextView5) {}
   
-  public void a(String paramString)
+  public final void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJUGC.CoverSelectTabFragment", 2, "OutputPicListener outPath:" + paramString);
+    TextView localTextView = this.a;
+    if (localTextView != null) {
+      localTextView.setText((CharSequence)("完成任务需要的时间：" + rjy.a() / 1000 + " 秒"));
     }
-    CoverSelectTabFragment.a(this.a, paramString, CoverSelectTabFragment.a(this.a).getCurrentItem());
+    localTextView = this.b;
+    if (localTextView != null) {
+      localTextView.setText((CharSequence)("文章最大贡献时长：" + rjy.c() / 1000 + " 秒"));
+    }
+    localTextView = this.c;
+    if (localTextView != null) {
+      localTextView.setText((CharSequence)("文章静止时最大贡献时长：" + rjy.d() / 1000 + " 秒"));
+    }
+    localTextView = this.d;
+    if (localTextView != null) {
+      localTextView.setText((CharSequence)("已完成任务数：" + rjz.a.a().a() + '/' + rjy.b()));
+    }
+    localTextView = this.e;
+    if (localTextView != null) {
+      localTextView.setText((CharSequence)("累积时间：" + paramInt / 1000 + " 秒"));
+    }
   }
 }
 

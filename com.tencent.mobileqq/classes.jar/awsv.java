@@ -1,20 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class awsv
-  implements View.OnClickListener
+public abstract interface awsv
 {
-  public awsv(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.j();
-    ShortVideoCommentsView.a(this.a).setVisibility(8);
-    ShortVideoCommentsView.a(this.a, 2);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a();
 }
 
 

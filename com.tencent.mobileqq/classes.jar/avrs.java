@@ -1,53 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.miniapp.MiniAppOptions;
-import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class avrs
+class avrs
+  implements Callable<Boolean>
 {
-  private boolean a(avrl paramavrl, MiniAppOptions paramMiniAppOptions)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher", 2, new Object[] { "checkMemory. cacheKey=", paramavrl.a.h });
-    }
-    return true;
-  }
+  avrs(avrq paramavrq, File paramFile) {}
   
-  avrl a(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
+  public Boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher", 2, new Object[] { "createApp type=", Integer.valueOf(paramInt) });
+    if ((avrq.a(this.jdField_a_of_type_Avrq).exists()) && (this.jdField_a_of_type_JavaIoFile == avrq.a(this.jdField_a_of_type_Avrq))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
     }
-    switch (paramInt)
-    {
-    default: 
-      QLog.e("MiniAppLauncher", 1, "createApp error. unknown appType");
-    case 0: 
-    case 1: 
-    case 2: 
-    case 4: 
-    case 5: 
-      return null;
-    }
-    return new bilj(paramMiniAppActivity, paramString, paramInt);
-  }
-  
-  void a(avrl paramavrl, MiniAppOptions paramMiniAppOptions)
-  {
-    if (!a(paramavrl, paramMiniAppOptions)) {
-      return;
-    }
-    DeviceInfoUtil.getDesity();
-    paramavrl.a();
-  }
-  
-  void a(avro paramavro, @NonNull avrm paramavrm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher", 2, new Object[] { "downloadApp. cacheKey=", paramavro.h });
-    }
-    paramavrm.a(paramavro.f, "MiniAppLauncher", paramavro.h);
   }
 }
 

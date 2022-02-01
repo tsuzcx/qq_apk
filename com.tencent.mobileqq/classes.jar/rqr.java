@@ -1,20 +1,11 @@
-import com.tencent.image.URLDrawable.DownloadListener;
+import tencent.im.oidb.articlesummary.feeds_info.VisibleShowInfo;
 
-class rqr
-  implements URLDrawable.DownloadListener
+public final class rqr
+  implements qdt<feeds_info.VisibleShowInfo, rro>
 {
-  rqr(rqj paramrqj) {}
-  
-  public void onFileDownloadFailed(int paramInt)
+  public rro a(feeds_info.VisibleShowInfo paramVisibleShowInfo)
   {
-    rqj.b(this.a);
-  }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    rqj.c(this.a);
+    return rro.a(paramVisibleShowInfo);
   }
 }
 

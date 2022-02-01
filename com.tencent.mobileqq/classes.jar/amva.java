@@ -1,27 +1,20 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
-
 public class amva
-  implements BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface
 {
-  public List<String> getRedPointPaths(AppInterface paramAppInterface)
+  public static String a(int paramInt)
   {
-    if ((paramAppInterface instanceof QQAppInterface))
+    switch (paramInt)
     {
-      boolean bool = ((QQAppInterface)paramAppInterface).getLebaHelper().a();
-      paramAppInterface = aqhj.c();
-      if ((bool) && (paramAppInterface.a()))
-      {
-        paramAppInterface = new ArrayList();
-        paramAppInterface.add("150000");
-        paramAppInterface.add("150000.150100");
-        return paramAppInterface;
-      }
+    default: 
+      return "";
+    case -5030: 
+      return "装扮资源下载失败，请稍后再试。";
+    case -5031: 
+      return "角色资源下载失败，请稍后再试。";
+    case -5033: 
+    case -5032: 
+      return "3D引擎加载失败，请稍后再试。";
     }
-    return null;
+    return "3D引擎初始化失败，请稍后再试。";
   }
 }
 

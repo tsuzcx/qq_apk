@@ -1,50 +1,74 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.LocalWtTicketPromise.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
-
 public class bcxd
-  implements WtTicketPromise
+  extends bcwx
 {
-  private aqjw jdField_a_of_type_Aqjw;
-  private WeakReference<bcxc> jdField_a_of_type_JavaLangRefWeakReference;
+  public bcxe a;
+  public Object a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public String l;
+  public int m;
+  public String m;
+  public int n;
+  public String n = "";
+  public int o;
+  public String o = "";
+  public int p;
+  public String p = "";
+  public int q;
+  public String q = "";
+  public int r;
+  public String r = "";
+  public int s;
+  public String s = "";
+  public String t = "";
   
-  public bcxd(bcxc parambcxc, aqjw paramaqjw)
+  public String a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambcxc);
-    this.jdField_a_of_type_Aqjw = paramaqjw;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nShortVideoForwardInfo");
+    localStringBuilder.append("\n |-").append("fromChatType:").append(this.c);
+    localStringBuilder.append("\n |-").append("toChatType:").append(this.d);
+    localStringBuilder.append("\n |-").append("fromBusiType:").append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-").append("toBusiType:").append(this.f);
+    localStringBuilder.append("\n |-").append("localPath:").append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("thumbPath:").append(this.jdField_i_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("thumbWidth:").append(this.g);
+    localStringBuilder.append("\n |-").append("thumbHeight:").append(this.jdField_h_of_type_Int);
+    localStringBuilder.append("\n |-").append("sendSizeSpec:").append(this.jdField_i_of_type_Int);
+    localStringBuilder.append("\n |-").append("fileTime:").append(this.jdField_j_of_type_Int);
+    localStringBuilder.append("\n |-").append("fileSource:").append(this.jdField_j_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("uuid:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("fromUin:").append(this.l);
+    localStringBuilder.append("\n |-").append("fromSessionUin:").append(this.m);
+    localStringBuilder.append("\n |-").append("supportProgressive:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("\n |-").append("templateId:").append(this.s);
+    localStringBuilder.append("\n |-").append("templateName:").append(this.t);
+    return localStringBuilder.toString();
   }
   
-  public void Done(Ticket paramTicket)
+  public String toString()
   {
-    if ((paramTicket != null) && (paramTicket._pskey_map != null))
-    {
-      ThreadManager.excute(new ConfigSettingForDataLine.LocalWtTicketPromise.1(this), 128, null, false);
-      return;
-    }
-    if (this.jdField_a_of_type_Aqjw != null) {
-      this.jdField_a_of_type_Aqjw.a(false);
-    }
-    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket is null");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket failed");
-    if (this.jdField_a_of_type_Aqjw != null) {
-      this.jdField_a_of_type_Aqjw.a(false);
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (this.jdField_a_of_type_Aqjw != null) {
-      this.jdField_a_of_type_Aqjw.a(false);
-    }
-    QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket time oiut");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,13 +1,19 @@
-import cooperation.qqcircle.chat.QCircleObserver;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import java.util.HashMap;
 
-class ajfd
-  extends QCircleObserver
+public class ajfd
+  implements ajfa
 {
-  ajfd(ajey paramajey) {}
+  public ajfd(TroopActivity paramTroopActivity) {}
   
-  public void onUpdateRedPoint(int paramInt)
+  public void a(String paramString, boolean paramBoolean)
   {
-    this.a.g();
+    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
+    {
+      this.a.a.remove(paramString);
+      return;
+    }
+    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
   }
 }
 

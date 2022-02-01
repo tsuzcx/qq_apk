@@ -1,12 +1,12 @@
 package cooperation.qqfav.globalsearch;
 
 import Override;
-import amtj;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import bkpu;
+import anvx;
+import bmbc;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -22,14 +22,14 @@ public class FavoriteSearchActivity
     paramContext.startActivity(localIntent);
   }
   
-  public BaseSearchFragment<bkpu> a()
+  public BaseSearchFragment<bmbc> a()
   {
     return new FavoriteSearchFragment();
   }
   
   public String a()
   {
-    return amtj.a(2131703510);
+    return anvx.a(2131703861);
   }
   
   @Override

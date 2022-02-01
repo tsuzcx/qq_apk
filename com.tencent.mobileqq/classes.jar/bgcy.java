@@ -1,7 +1,13 @@
-public class bgcy
+import java.util.ArrayList;
+
+public abstract class bgcy
+  implements bgaw
 {
-  public String a;
-  public String b;
+  public abstract void a(ArrayList<bgba> paramArrayList, boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void e();
 }
 
 

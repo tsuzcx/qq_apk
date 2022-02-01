@@ -1,30 +1,42 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.6;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.6.1.1;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class apnz
-  implements OnCompositionLoadedListener
 {
-  public apnz(ColorNoteSmallScreenRelativeLayout.6 param6) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public static apnx a(apoa paramapoa, int paramInt)
   {
-    if (paramLottieComposition == null)
-    {
-      QLog.e("ColorNoteSmallScreenRelativeLayout", 1, "getLottieDrawable onCompositionLoaded failed");
-      return;
+    if (paramapoa == null) {
+      throw new RuntimeException("params can not be null!");
     }
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.setImagesAssetsFolder(this.a.b);
-    ColorNoteSmallScreenRelativeLayout.a(this.a.this$0, localLottieDrawable);
-    ThreadManagerV2.getUIHandlerV2().post(new ColorNoteSmallScreenRelativeLayout.6.1.1(this));
+    Object localObject;
+    switch (paramapoa.jdField_a_of_type_Int)
+    {
+    default: 
+      localObject = new apoc(paramInt);
+    }
+    for (;;)
+    {
+      QLog.i("KeyingManager", 1, "getKeying keying: " + localObject + "  params: " + paramapoa.toString());
+      return localObject;
+      localObject = new apnr(paramInt);
+      continue;
+      localObject = new apoe(paramInt);
+      continue;
+      localObject = new apnv(paramInt);
+      continue;
+      localObject = new apnw(paramInt);
+      continue;
+      if (TextUtils.isEmpty(paramapoa.jdField_a_of_type_JavaLangString)) {
+        break;
+      }
+      localObject = new apns(paramInt, paramapoa.jdField_a_of_type_JavaLangString);
+    }
+    throw new RuntimeException("fragmentShader can not be empty!");
+  }
+  
+  public static apoa a(int paramInt)
+  {
+    return new apoa(paramInt);
   }
 }
 

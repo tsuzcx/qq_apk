@@ -1,63 +1,20 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.net.URL;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class qju
-  extends BaseAdapter
+class qju
+  implements qji<BEAN>
 {
-  List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
-  List<sqw> b = new ArrayList();
+  qju(qjt paramqjt) {}
   
-  public qju(NativeGridImageView paramNativeGridImageView) {}
-  
-  public List<URL> a()
+  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt1, Boolean paramBoolean1, int paramInt2, String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(qjv paramqjv)
-  {
-    this.b = paramqjv.a();
-    this.jdField_a_of_type_JavaUtilList = paramqjv.b();
-  }
-  
-  public int getCount()
-  {
-    return this.b.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.b.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Context localContext = paramViewGroup.getContext();
-    if (paramView == null)
+    if (paramBoolean)
     {
-      paramView = new SquareCornerTextImageView(localContext);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+      qjt.a(this.a, paramBoolean1.booleanValue(), paramInt1, paramList);
+      return;
     }
-    for (;;)
-    {
-      ((SquareCornerTextImageView)paramView).a((sqw)this.b.get(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-    }
+    QLog.i("ListPresenter", 2, "loadFirstPage error, errorCode=" + paramInt2 + ", errorMsg= " + paramString);
+    qjt.a(this.a, paramBoolean1.booleanValue(), paramList, paramInt2, paramString);
   }
 }
 

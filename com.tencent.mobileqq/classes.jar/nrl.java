@@ -1,37 +1,16 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.widget.QQToast;
 
-public class nrl
-  extends Handler
+class nrl
+  extends nrn
 {
-  public nrl(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  nrl(nrk paramnrk) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(int paramInt, String paramString, nfv paramnfv)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    switch (paramMessage.what)
-    {
-    case -1: 
-    default: 
-      return;
-    case 0: 
-      this.a.a.jdField_a_of_type_Byte = 0;
-      LebaSearchPluginManagerActivity.a(this.a);
-      localStringBuilder.append(this.a.getString(2131695522));
-      localStringBuilder.append(this.a.getString(2131695520));
-      localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
-      QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
-      return;
-    }
-    this.a.a.jdField_a_of_type_Byte = 1;
-    LebaSearchPluginManagerActivity.a(this.a);
-    localStringBuilder.append(this.a.getString(2131695522));
-    localStringBuilder.append(this.a.getString(2131695516));
-    localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
-    QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+    bjuc.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
+    nrk.a(this.a).removeCallbacksAndMessages(null);
+    nrk.a(this.a).sendEmptyMessage(2);
+    return true;
   }
 }
 

@@ -1,53 +1,70 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
-public class atrt
-  implements View.OnClickListener
+public abstract class atrt
 {
-  public atrt(NearbyHybridFragment paramNearbyHybridFragment) {}
+  protected final QQAppInterface a;
   
-  public void onClick(View paramView)
+  public atrt(QQAppInterface paramQQAppInterface)
   {
-    Object localObject2 = (String)awka.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), "nearby_mine_page_url", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.NearbyHybridFragment", 2, "onClick, server mine url=" + (String)localObject2);
+    this.a = paramQQAppInterface;
+  }
+  
+  protected abstract String a(boolean paramBoolean);
+  
+  protected abstract HashMap<String, String> a();
+  
+  public abstract void a();
+  
+  public void a(atru paramatru, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete, HashMap<String, String> paramHashMap)
+  {
+    boolean bool = false;
+    paramatru = paramatru.a();
+    if (paramExcitingTransferOneSlotComplete != null) {
+      paramatru.putAll(paramExcitingTransferOneSlotComplete.getReportData());
     }
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = "https://nearby.qq.com/nearby-index/mine.html?_bid=3027&_wv=16777218";
+    if (paramHashMap != null) {
+      paramatru.putAll(paramHashMap);
     }
-    localObject2 = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("url", (String)localObject1);
-    this.a.getActivity().startActivity((Intent)localObject2);
-    awkj.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "my_click", 0);
-    boolean bool;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch == null) {
-      bool = false;
+    if (paramExcitingTransferOneSlotComplete != null) {
+      if (paramExcitingTransferOneSlotComplete.m_SubReason != 0) {}
     }
-    for (;;)
+    for (bool = true;; bool = false)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a().a(42);
-      try
-      {
-        bcef.b(null, "dc00899", "grp_lbs", "", "entry", "nearby_frag_mine_click_tmp", 0, 0, bool + "", "", "", "");
-        label188:
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        bool = this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.c();
-      }
-      catch (Exception localException)
-      {
-        break label188;
-      }
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "actPDSlot", bool, 0L, 0L, paramatru, "");
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (a()) {
+      b(paramBoolean);
+    }
+    HashMap localHashMap = a();
+    if (localHashMap != null) {
+      QLog.i("DataReport", 1, ">>> report: act=" + a(false) + localHashMap.toString());
+    }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
+  }
+  
+  protected abstract boolean a();
+  
+  protected abstract HashMap<String, String> b();
+  
+  public abstract void b();
+  
+  public void b(boolean paramBoolean)
+  {
+    HashMap localHashMap = b();
+    if (localHashMap != null)
+    {
+      QLog.i("OldDataReport", 1, ">>> reportOld: act=" + a(true) + localHashMap.toString());
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
     }
   }
 }

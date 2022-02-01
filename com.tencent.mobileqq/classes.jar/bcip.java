@@ -1,35 +1,89 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import java.util.Random;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class bcip
+  extends bcjc
 {
-  private long jdField_a_of_type_Long = -1L;
-  private Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private Drawable a;
   
-  public void a()
+  public bcip(FaceDecoder paramFaceDecoder)
   {
-    if (this.jdField_a_of_type_JavaUtilRandom.nextInt() % 300 != 1) {
-      return;
-    }
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    super(paramFaceDecoder);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  private void a(bcnt parambcnt, TextView paramTextView, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Long == -1L) {
+    if (paramBoolean)
+    {
+      if (this.a == null)
+      {
+        this.a = parambcnt.a().getContext().getResources().getDrawable(2130841803);
+        this.a.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
+      }
+      paramTextView.setCompoundDrawables(null, null, this.a, null);
       return;
     }
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cost", l1 - l2 + "");
-    localHashMap.put("layout", paramInt1 + "");
-    localHashMap.put("first", paramInt2 + "");
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "structmsg_builder_getview", true, 0L, 0L, localHashMap, "", false);
-    this.jdField_a_of_type_Long = -1L;
+    paramTextView.setCompoundDrawables(null, null, null, null);
+  }
+  
+  private void b(bcnt parambcnt, bcfj parambcfj)
+  {
+    TextView localTextView = parambcnt.a();
+    Context localContext;
+    boolean bool;
+    if ((localTextView != null) && (parambcfj != null))
+    {
+      localContext = localTextView.getContext();
+      if (!(parambcfj instanceof bcgn)) {
+        break label73;
+      }
+      parambcfj = ((bcgn)parambcfj).a();
+      if ((parambcfj != null) && (localContext != null))
+      {
+        if (parambcfj.certifiedGrade <= 0L) {
+          break label68;
+        }
+        bool = true;
+        a(parambcnt, localTextView, bool);
+      }
+    }
+    label68:
+    label73:
+    do
+    {
+      do
+      {
+        return;
+        bool = false;
+        break;
+      } while (!(parambcfj instanceof bcen));
+      parambcfj = (bcen)parambcfj;
+    } while ((parambcfj == null) || (localContext == null));
+    a(parambcnt, localTextView, parambcfj.b());
+  }
+  
+  protected void a(bcnt parambcnt, bcfj parambcfj)
+  {
+    super.a(parambcnt, parambcfj);
+    if ((parambcfj instanceof bcgn))
+    {
+      Object localObject = (bcgn)parambcfj;
+      PublicAccountInfo localPublicAccountInfo = ((bcgn)localObject).a();
+      if ((localPublicAccountInfo != null) && (localPublicAccountInfo.displayNumber != null) && (localPublicAccountInfo.displayNumber.equalsIgnoreCase(((bcgn)localObject).a())))
+      {
+        localObject = new SpannableString(localPublicAccountInfo.name);
+        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-16734752), 0, localPublicAccountInfo.name.length(), 33);
+        parambcnt.a().setText((CharSequence)localObject);
+      }
+    }
+    b(parambcnt, parambcfj);
   }
 }
 

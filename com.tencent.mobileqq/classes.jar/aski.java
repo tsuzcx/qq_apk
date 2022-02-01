@@ -1,30 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
-class aski
-  extends asjn
+public class aski
 {
-  public aski(asji paramasji)
-  {
-    super(paramasji);
-  }
+  public ImageView a;
+  public URLImageView a;
+  public ImageView b;
   
-  protected String a()
-  {
-    return "StateSaveToWeiYunByPCWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    asji.b(this.jdField_a_of_type_Asji, 11, 7);
-    asji.c(this.jdField_a_of_type_Asji, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Asjn = new askh(this.jdField_a_of_type_Asji);
-  }
+  public aski(askg paramaskg) {}
 }
 
 

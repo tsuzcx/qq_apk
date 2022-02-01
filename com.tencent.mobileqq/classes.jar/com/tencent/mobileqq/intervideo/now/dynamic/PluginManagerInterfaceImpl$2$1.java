@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.intervideo.now.dynamic;
 
 import android.os.Bundle;
-import auqg;
+import avwb;
 import com.tencent.intervideo.nowproxy.customized_interface.DownloadCallback;
 import com.tencent.qphone.base.util.QLog;
 
 public class PluginManagerInterfaceImpl$2$1
   implements Runnable
 {
-  public PluginManagerInterfaceImpl$2$1(auqg paramauqg) {}
+  public PluginManagerInterfaceImpl$2$1(avwb paramavwb) {}
   
   public void run()
   {

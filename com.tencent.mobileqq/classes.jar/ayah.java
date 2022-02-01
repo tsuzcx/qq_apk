@@ -1,55 +1,76 @@
-import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class ayah
+class ayah
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  public static final Uri a;
-  public static final String[] a;
-  public static final Uri b;
-  public static final String[] b;
-  public static final Uri c;
-  public static final String[] c;
-  public static final Uri d;
-  public static final String[] d;
-  public static final Uri e;
-  public static final String[] e;
-  public static final Uri f;
-  public static final String[] f;
-  public static final Uri g;
-  public static final String[] g;
-  public static final Uri h;
-  public static final String[] h;
-  public static final Uri i;
-  public static final String[] i;
-  public static final Uri j;
-  public static final String[] j;
-  public static final Uri k;
-  public static final String[] k;
-  public static final String[] l = { "msg_type", "rs_code", "msgSummary" };
+  ayah(ayac paramayac, String paramString1, String paramString2, String paramString3) {}
   
-  static
+  public void OnDownloadCallback(String paramString)
   {
-    jdField_a_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/query_msg");
-    jdField_b_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/query_face");
-    jdField_c_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/query_nick");
-    jdField_d_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/reg_receiver");
-    jdField_e_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/send_msg");
-    jdField_f_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/set_readed");
-    jdField_g_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/openaio");
-    jdField_h_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/decodesilk");
-    jdField_i_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/download_media");
-    jdField_j_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/exchange_uin");
-    jdField_k_of_type_AndroidNetUri = Uri.parse("content://com.tencent.mobileqq.openapi.provider/paycode_channel");
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "rs_code" };
-    jdField_b_of_type_ArrayOfJavaLangString = ayak.jdField_a_of_type_ArrayOfJavaLangString;
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "media_path" };
-    jdField_d_of_type_ArrayOfJavaLangString = new String[] { "nick" };
-    jdField_e_of_type_ArrayOfJavaLangString = new String[] { "rs_code", "sessionkey", "uin" };
-    jdField_f_of_type_ArrayOfJavaLangString = new String[] { "msgid" };
-    jdField_g_of_type_ArrayOfJavaLangString = new String[] { "rs_code" };
-    jdField_h_of_type_ArrayOfJavaLangString = new String[] { "rs_code" };
-    jdField_i_of_type_ArrayOfJavaLangString = new String[] { "rs_code", "sampleRate" };
-    jdField_j_of_type_ArrayOfJavaLangString = new String[] { "mediaStatus" };
-    jdField_k_of_type_ArrayOfJavaLangString = new String[] { "rs_code", "uin" };
+    if (this.jdField_a_of_type_Ayac.a != null) {}
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        i = paramString.getInt("callBackType");
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback callBackType=" + i);
+        }
+        if (i != 7) {
+          break label313;
+        }
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          break label312;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback success , vid = " + this.b);
+        }
+        this.jdField_a_of_type_Ayac.a.a(this.b, this.c, new File(this.jdField_a_of_type_JavaLangString));
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        if (!QLog.isColorLevel()) {
+          break label312;
+        }
+      }
+      int i = paramString.getInt("errorCode");
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback errorCode=" + i);
+      }
+      this.jdField_a_of_type_Ayac.a.a(this.b, this.c, i);
+      return;
+      QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback JSONException=" + paramString.getMessage());
+      return;
+      label312:
+      label313:
+      do
+      {
+        long l1;
+        if (i == 2)
+        {
+          l1 = paramString.getLong("fileSize");
+          long l2 = paramString.getLong("offset");
+          this.jdField_a_of_type_Ayac.a.a(this.b, this.c, l1, l2);
+          return;
+        }
+        if (i == 1)
+        {
+          l1 = paramString.getLong("fileSize");
+          this.jdField_a_of_type_Ayac.a.a(this.b, this.c, l1);
+        }
+        return;
+        if (i == 4) {
+          break;
+        }
+      } while (i != 5);
+    }
   }
 }
 

@@ -1,213 +1,262 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqoz
+  implements aqov
 {
-  private static boolean jdField_c_of_type_Boolean = true;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = true;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private float jdField_e_of_type_Float;
-  private int jdField_e_of_type_Int;
-  private float jdField_f_of_type_Float;
-  private int jdField_f_of_type_Int;
-  private int g;
-  
-  public aqoz()
+  private QQAppInterface a()
   {
-    DisplayMetrics localDisplayMetrics = aqnj.a().a().a().getDisplayMetrics();
-    int i = localDisplayMetrics.widthPixels;
-    int j = localDisplayMetrics.heightPixels;
-    if (this.jdField_d_of_type_Boolean) {
-      this.g = Math.max(i, j);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
     }
-    for (this.jdField_f_of_type_Int = Math.min(i, j);; this.jdField_f_of_type_Int = Math.max(i, j))
-    {
-      c(8000);
-      b(12);
-      a(3);
-      a(1.5F);
-      d(1);
-      c(5.0F);
-      b(5.0F);
-      b(true);
-      c(true);
-      d(16.0F);
-      e(0.0F);
-      f(5.0F);
-      g(4.0F);
+    return null;
+  }
+  
+  private void a(Context paramContext, int paramInt)
+  {
+    String str = "";
+    if (paramInt == 1) {
+      str = paramContext.getString(2131692335);
+    }
+    QQToast.a(paramContext, 0, str, 0).a();
+  }
+  
+  private void a(Context paramContext, ColorNote paramColorNote)
+  {
+    Object localObject = a();
+    if (localObject == null) {
       return;
-      this.g = Math.min(i, j);
     }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    return jdField_c_of_type_Boolean;
-  }
-  
-  public float a()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_d_of_type_Int = aqqa.a(paramFloat);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public float b()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.jdField_b_of_type_Float = aqqa.a(paramFloat);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = aqqa.a(paramInt);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public float c()
-  {
-    return this.jdField_c_of_type_Float;
-  }
-  
-  public int c()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public void c(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = aqqa.a(paramFloat);
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public float d()
-  {
-    return this.jdField_d_of_type_Float;
-  }
-  
-  public int d()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void d(float paramFloat)
-  {
-    this.jdField_c_of_type_Float = aqqa.a(paramFloat);
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_e_of_type_Int = aqqa.a(paramInt);
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (this.jdField_d_of_type_Boolean != paramBoolean)
+    paramColorNote = new String(paramColorNote.getReserve());
+    try
     {
-      int i = this.jdField_f_of_type_Int;
-      this.jdField_f_of_type_Int = this.g;
-      this.g = i;
+      paramColorNote = new JSONObject(paramColorNote);
+      long l1 = paramColorNote.getLong("file_color_note_uniSeq");
+      long l2 = paramColorNote.getLong("file_color_note_sessionId");
+      int i = paramColorNote.getInt("file_color_note_peerType");
+      paramColorNote = paramColorNote.getString("file_color_note_peerUin");
+      paramColorNote = ((QQAppInterface)localObject).getFileManagerDataCenter().a(l1, paramColorNote, i, l2);
+      if (paramColorNote == null)
+      {
+        a(paramContext, 1);
+        return;
+      }
     }
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    catch (JSONException paramContext)
+    {
+      paramContext.printStackTrace();
+      return;
+    }
+    paramColorNote = new atyi((QQAppInterface)localObject, paramContext, paramColorNote, 10001);
+    localObject = new Bundle();
+    ((Bundle)localObject).putBoolean("from_qlink_enter_recent", false);
+    paramColorNote.a((Bundle)localObject);
+    paramContext = new atyk(paramContext, paramColorNote);
+    paramContext.a(14);
+    paramContext.b(268435456);
+    paramContext.a();
   }
   
-  public float e()
+  private void b(Context paramContext, ColorNote paramColorNote)
   {
-    return this.jdField_e_of_type_Float;
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    paramColorNote = new String(paramColorNote.getReserve());
+    long l;
+    try
+    {
+      paramColorNote = new JSONObject(paramColorNote);
+      paramColorNote.getInt("file_color_note_peerType");
+      l = paramColorNote.getLong("file_color_note_peerUin");
+      paramColorNote = bgke.a(localQQAppInterface, l, paramColorNote.getString("file_color_note_file_uuid"), paramColorNote.getString("file_color_note_file_url"), paramColorNote.getString("file_color_note_fileName"), paramColorNote.getLong("file_color_note_fileSize"), paramColorNote.getInt("file_color_note_busId"));
+      if (paramColorNote == null)
+      {
+        a(paramContext, 1);
+        return;
+      }
+    }
+    catch (JSONException paramContext)
+    {
+      paramContext.printStackTrace();
+      return;
+    }
+    if (paramColorNote.b == 12)
+    {
+      a(paramContext, 1);
+      return;
+    }
+    paramContext = new atyk(paramContext, new atyo(localQQAppInterface, paramContext, l, paramColorNote, -1));
+    paramContext.a(14);
+    paramContext.a(TroopFileDetailBrowserActivity.class);
+    paramContext.a(true);
+    paramContext.b(268435456);
+    paramContext.a();
   }
   
-  public int e()
+  private void c(Context paramContext, ColorNote paramColorNote)
   {
-    return this.jdField_f_of_type_Int;
+    Object localObject = a();
+    if (localObject == null) {
+      return;
+    }
+    String str = new String(paramColorNote.getReserve());
+    try
+    {
+      str = new JSONObject(str).getString("file_color_note_local_path");
+      if (!FileUtils.fileExistsAndNotEmpty(str))
+      {
+        a(paramContext, 1);
+        return;
+      }
+    }
+    catch (JSONException paramContext)
+    {
+      paramContext.printStackTrace();
+      return;
+    }
+    int i = aufd.a(paramColorNote.getSubType());
+    paramColorNote = new atyi((QQAppInterface)localObject, paramContext, auea.a(FileInfo.a(str)), 10000);
+    localObject = new Bundle();
+    ((Bundle)localObject).putInt("file_color_note_subType", i);
+    paramColorNote.a((Bundle)localObject);
+    paramContext = new atyk(paramContext, paramColorNote);
+    paramContext.a(14);
+    paramContext.b(268435456);
+    paramContext.a();
   }
   
-  public void e(float paramFloat)
+  private void d(Context paramContext, ColorNote paramColorNote)
   {
-    this.jdField_d_of_type_Float = paramFloat;
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    paramColorNote = new String(paramColorNote.getReserve());
+    try
+    {
+      long l = new JSONObject(paramColorNote).getLong("file_color_note_uniSeq");
+      int i = DataLineMsgRecord.getDevTypeBySeId(l);
+      paramColorNote = localQQAppInterface.getMessageFacade().getDatalineMessageManager(i).a(l);
+      if (paramColorNote != null)
+      {
+        paramContext = new atyk(paramContext, new atyj(paramContext, auea.a(paramColorNote)));
+        paramContext.a(14);
+        paramContext.b(268435456);
+        paramContext.a();
+        return;
+      }
+    }
+    catch (JSONException paramContext)
+    {
+      paramContext.printStackTrace();
+      return;
+    }
+    a(paramContext, 1);
   }
   
-  public float f()
+  private void e(Context paramContext, ColorNote paramColorNote)
   {
-    return this.jdField_f_of_type_Float;
+    Object localObject = a();
+    if (localObject == null) {
+      return;
+    }
+    paramColorNote = new String(paramColorNote.getReserve());
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramColorNote);
+      long l = localJSONObject.getLong("file_color_note_sessionId");
+      paramColorNote = ((QQAppInterface)localObject).getFileManagerDataCenter().a(l);
+      WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
+      localWeiYunFileInfo.jdField_b_of_type_Long = localJSONObject.getLong("file_color_note_cloud_lastTime");
+      localWeiYunFileInfo.jdField_a_of_type_Long = localJSONObject.getLong("file_color_note_fileSize");
+      localWeiYunFileInfo.jdField_a_of_type_Int = localJSONObject.getInt("file_color_note_cloud_srcType");
+      localWeiYunFileInfo.jdField_a_of_type_JavaLangString = localJSONObject.getString("file_color_note_cloud_fileId");
+      localWeiYunFileInfo.jdField_b_of_type_JavaLangString = localJSONObject.getString("file_color_note_cloud_dirKey");
+      localWeiYunFileInfo.c = localJSONObject.getString("file_color_note_fileName");
+      if (localJSONObject.has("file_color_note_cloud_encodeUrl")) {
+        localWeiYunFileInfo.e = localJSONObject.getString("file_color_note_cloud_encodeUrl");
+      }
+      if (localJSONObject.has("file_color_note_cloud_")) {
+        localWeiYunFileInfo.i = localJSONObject.getString("file_color_note_cloud_");
+      }
+      if (localJSONObject.has("file_color_note_cloud_")) {
+        localWeiYunFileInfo.j = localJSONObject.getString("file_color_note_cloud_");
+      }
+      localObject = new atyp((QQAppInterface)localObject, paramContext, localWeiYunFileInfo);
+      ((atyp)localObject).a(paramColorNote);
+      paramContext = new atyk(paramContext, (atyn)localObject);
+      paramContext.a(14);
+      paramContext.b(268435456);
+      paramContext.a();
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
   
-  public int f()
+  public void launch(Context paramContext, ColorNote paramColorNote)
   {
-    return this.g;
-  }
-  
-  public void f(float paramFloat)
-  {
-    this.jdField_e_of_type_Float = aqqa.a(paramFloat);
-  }
-  
-  public int g()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public void g(float paramFloat)
-  {
-    this.jdField_f_of_type_Float = aqqa.a(paramFloat);
+    if (paramColorNote.getServiceType() != 17039360) {}
+    int i;
+    do
+    {
+      return;
+      if (TextUtils.isEmpty(paramColorNote.getSubType()))
+      {
+        QLog.i("QFileColorNoteLauncher", 1, "launch: subType is null.");
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QFileColorNoteLauncher", 2, "launch: subKey[" + paramColorNote.getSubType() + "]");
+      }
+      i = aufd.a(paramColorNote.getSubType());
+      if (i == -1)
+      {
+        QLog.i("QFileColorNoteLauncher", 1, "launch: subType is unknown.");
+        return;
+      }
+    } while (paramColorNote.getReserve() == null);
+    switch (i)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramContext, paramColorNote);
+      return;
+    case 2: 
+      b(paramContext, paramColorNote);
+      return;
+    case 5: 
+      c(paramContext, paramColorNote);
+      return;
+    case 4: 
+      c(paramContext, paramColorNote);
+      return;
+    case 6: 
+      d(paramContext, paramColorNote);
+      return;
+    }
+    e(paramContext, paramColorNote);
   }
 }
 

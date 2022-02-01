@@ -1,31 +1,81 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.util.ArrayList;
 
-class avpd
-  implements EIPCOnGetConnectionListener
+public class avpd
 {
-  avpd(avpb paramavpb) {}
+  private static volatile avpd jdField_a_of_type_Avpd;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new avpf(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new avpe(this);
+  private ArrayList<avpg> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  private avpd(Context paramContext)
   {
-    if (paramEIPCConnection != null) {
-      avpb.a(this.a, paramEIPCConnection.procName);
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    a(true);
+  }
+  
+  public static avpd a(Context paramContext)
+  {
+    if (jdField_a_of_type_Avpd == null) {}
+    try
+    {
+      if (jdField_a_of_type_Avpd == null) {
+        jdField_a_of_type_Avpd = new avpd(paramContext);
+      }
+      return jdField_a_of_type_Avpd;
     }
-    avpb.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "onConnectBind");
+    finally {}
+  }
+  
+  public void a(avpg paramavpg)
+  {
+    if ((!this.jdField_a_of_type_JavaUtilArrayList.contains(paramavpg)) && (paramavpg != null)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramavpg);
     }
   }
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  public void a(boolean paramBoolean)
   {
-    if (paramEIPCConnection != null) {
-      avpb.a(this.a, paramEIPCConnection.procName);
+    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+      return;
     }
-    avpb.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "onConnectUnbind");
+    if (paramBoolean)
+    {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
+      localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
+      localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      localIntentFilter.addAction("VolumeBtnDown");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  public void b(avpg paramavpg)
+  {
+    if ((paramavpg != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramavpg))) {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramavpg);
     }
   }
 }

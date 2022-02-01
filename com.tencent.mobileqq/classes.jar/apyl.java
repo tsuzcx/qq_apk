@@ -1,78 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class apyl
-  extends aptq<apyk>
 {
-  @NonNull
-  public apyk a(int paramInt)
+  private static HashMap<String, apym> a = new HashMap();
+  
+  public static Object a(int paramInt, String paramString, Object paramObject1, Object paramObject2)
   {
-    return new apyk();
+    paramString = (apym)a.get(paramString);
+    if (paramString != null) {
+      paramObject2 = paramString.a(paramInt, paramObject1);
+    }
+    return paramObject2;
   }
   
-  @Nullable
-  public apyk a(aptx[] paramArrayOfaptx)
+  public static void a(String paramString)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
-    {
-      apyk localapyk = apyk.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationEasterEggConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
-      }
-      return localapyk;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationEasterEggConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(apyk paramapyk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationEasterEggConfProcessor", 2, "onUpdate " + paramapyk.toString());
+    if (paramString != null) {
+      a.remove(paramString);
     }
   }
   
-  public Class<apyk> clazz()
+  public static void a(String paramString, apym paramapym)
   {
-    return apyk.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationEasterEggConfProcessor", 2, "migrateOldVersion");
+    if (paramString != null) {
+      a.put(paramString, paramapym);
     }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationEasterEggConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 575;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apyl
  * JD-Core Version:    0.7.0.1
  */

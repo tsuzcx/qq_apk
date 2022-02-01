@@ -1,6 +1,29 @@
-public abstract interface bact
+public class bact
 {
-  public abstract void a(String paramString);
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c = "";
+  
+  public bact()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("idolid:").append(this.jdField_a_of_type_Int).append(" ");
+    localStringBuilder.append("name:").append(this.jdField_a_of_type_JavaLangString).append(" ");
+    localStringBuilder.append("avatar:").append(this.jdField_b_of_type_JavaLangString).append(" ");
+    localStringBuilder.append("pic:").append(this.c).append(" ");
+    localStringBuilder.append("rank:").append(this.jdField_a_of_type_Long).append(" ");
+    localStringBuilder.append("qScore:").append(this.jdField_b_of_type_Long).append(" ");
+    return localStringBuilder.toString();
+  }
 }
 
 

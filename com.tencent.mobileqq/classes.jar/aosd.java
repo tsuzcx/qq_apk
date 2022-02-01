@@ -1,33 +1,35 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.manager.TicketManager;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aosd
-  implements aosj
+  extends aosi
 {
-  public EIPCResult a(Bundle paramBundle)
+  protected aosd(QQAppInterface paramQQAppInterface, aosm paramaosm)
   {
-    paramBundle = aori.a();
-    if (paramBundle == null)
-    {
-      QLog.e("ArkApp.GetSKeyHandler", 1, "GetSKeyHandler.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
-    }
-    paramBundle = ((TicketManager)paramBundle.getManager(2)).getSkey(paramBundle.getCurrentAccountUin());
-    Bundle localBundle = new Bundle();
-    if (TextUtils.isEmpty(paramBundle))
-    {
-      QLog.e("ArkApp.GetSKeyHandler", 1, "GetSKeyHandler.onCall, skey is empty");
-      localBundle.putString("SKey", "");
-    }
-    for (;;)
-    {
-      return EIPCResult.createResult(0, localBundle);
-      localBundle.putString("SKey", paramBundle);
-    }
+    super(paramQQAppInterface, paramaosm);
+  }
+  
+  public int a(QQMessageFacade.Message paramMessage)
+  {
+    return 266;
+  }
+  
+  public aosm a(QQMessageFacade.Message paramMessage)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramMessage.frienduin, true);
+    this.jdField_a_of_type_Aosm.a((Bitmap)localObject);
+    localObject = a();
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131698473);
+    this.jdField_a_of_type_Aosm.c(str);
+    str = (String)localObject + "(" + a() + "): " + c();
+    this.jdField_a_of_type_Aosm.b(str);
+    localObject = (String)localObject + ": " + c();
+    this.jdField_a_of_type_Aosm.d((String)localObject);
+    this.jdField_a_of_type_Aosm.b(this.jdField_a_of_type_Aosm.b() + this.jdField_a_of_type_Aosm.a());
+    a(paramMessage, this.jdField_a_of_type_Aosm);
+    return this.jdField_a_of_type_Aosm;
   }
 }
 

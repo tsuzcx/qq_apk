@@ -1,19 +1,19 @@
-public class bbys
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+
+class bbys
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c = 0;
+  bbys(bbyp parambbyp) {}
   
-  bbys()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public String toString()
-  {
-    return "FailInfo{lastFCode=" + this.jdField_a_of_type_Int + ", lastSubFCode=" + this.b + ", netType=" + this.c + ", lastFTime=" + this.jdField_a_of_type_Long + '}';
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

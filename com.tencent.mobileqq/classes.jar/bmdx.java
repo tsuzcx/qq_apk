@@ -1,50 +1,17 @@
-import android.view.View;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public abstract class bmdx
+class bmdx
+  implements FilenameFilter
 {
-  public int a(int paramInt)
+  bmdx(bmdw parambmdw) {}
+  
+  public boolean accept(File paramFile, String paramString)
   {
-    return paramInt;
+    return (paramFile != null) && (paramFile.isDirectory()) && (bmdw.a(this.a).matcher(paramString).matches());
   }
-  
-  public int a(View paramView)
-  {
-    return 0;
-  }
-  
-  public int a(View paramView, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView, float paramFloat1, float paramFloat2) {}
-  
-  public void a(View paramView, int paramInt) {}
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public abstract boolean a(View paramView, int paramInt);
-  
-  public int b(View paramView)
-  {
-    return 0;
-  }
-  
-  public int b(View paramView, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
-  
-  public void b(int paramInt1, int paramInt2) {}
 }
 
 

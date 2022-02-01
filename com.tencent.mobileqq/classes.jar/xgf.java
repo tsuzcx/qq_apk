@@ -1,24 +1,19 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
 
-class xgf
-  extends axku
+public class xgf
+  implements xjf
 {
-  xgf(xge paramxge) {}
+  public final ViewPager.PageTransformer a;
   
-  protected void a(Object paramObject)
+  public xgf(ViewPager.PageTransformer paramPageTransformer)
   {
-    if ((paramObject != null) && ((paramObject instanceof oidb_0x791.RedDotInfo)))
-    {
-      paramObject = (oidb_0x791.RedDotInfo)paramObject;
-      if (paramObject.uint32_appid.get() == 21)
-      {
-        int i = paramObject.uint32_number.get();
-        int j = paramObject.uint32_last_time.get();
-        this.a.a.a(i, j);
-      }
-    }
+    this.a = paramPageTransformer;
+  }
+  
+  public void a(View paramView, float paramFloat)
+  {
+    this.a.transformPage(paramView, paramFloat);
   }
 }
 

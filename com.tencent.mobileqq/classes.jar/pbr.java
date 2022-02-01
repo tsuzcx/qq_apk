@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet.ConfigResult;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public final class pbr
-  implements Parcelable.Creator<AladdinConfigServlet.ConfigResult>
+final class pbr
+  implements qha
 {
-  public AladdinConfigServlet.ConfigResult a(Parcel paramParcel)
-  {
-    return new AladdinConfigServlet.ConfigResult(paramParcel);
-  }
+  pbr(Activity paramActivity, ArticleInfo paramArticleInfo, CommentInfo paramCommentInfo, int paramInt1, String paramString1, String paramString2, boolean paramBoolean1, String paramString3, boolean paramBoolean2, pbs parampbs, int paramInt2) {}
   
-  public AladdinConfigServlet.ConfigResult[] a(int paramInt)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    return new AladdinConfigServlet.ConfigResult[paramInt];
+    pbq.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.c, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Pbs, this.jdField_b_of_type_Int);
   }
 }
 

@@ -1,72 +1,85 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.SharedPreferences;
 import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class aqcn
-  extends aptq<aqco>
 {
-  public static aqco a()
-  {
-    return (aqco)apub.a().a(647);
-  }
+  static SimpleDateFormat a;
+  static SimpleDateFormat b;
   
-  @NonNull
-  public aqco a(int paramInt)
+  public static long a(String paramString)
   {
-    return new aqco();
-  }
-  
-  @Nullable
-  public aqco a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqco.a(paramArrayOfaptx);
+    if (a == null)
+    {
+      a = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+      a.setTimeZone(TimeZone.getTimeZone("GMT+8"));
     }
-    return null;
-  }
-  
-  public void a(aqco paramaqco)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichmediaHttpsConfProcessor", 2, "RichmediaHttpsConfProcessor onUpdate");
+    long l2 = -1L;
+    try
+    {
+      l1 = a.parse(paramString).getTime();
+      if (QLog.isColorLevel()) {
+        QLog.d("ArMapUtil", 2, "data2Millis, date = " + paramString + ",millis = " + l1);
+      }
+      return l1;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        long l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ArMapUtil", 2, "", localException);
+          l1 = l2;
+        }
+      }
     }
   }
   
-  public Class<aqco> clazz()
+  public static SharedPreferences a(AppRuntime paramAppRuntime)
   {
-    return aqco.class;
+    return paramAppRuntime.getApplication().getSharedPreferences(paramAppRuntime.getAccount() + "sp_ar_map", 4);
   }
   
-  public boolean isAccountRelated()
+  public static long b(String paramString)
   {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 647;
+    if (b == null)
+    {
+      b = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+      b.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+    }
+    long l2 = -1L;
+    try
+    {
+      l1 = b.parse(paramString).getTime();
+      if (QLog.isColorLevel()) {
+        QLog.d("ArMapUtil", 2, "data2Millis1, date = " + paramString + ",millis = " + l1);
+      }
+      return l1;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        long l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ArMapUtil", 2, "", localException);
+          l1 = l2;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqcn
  * JD-Core Version:    0.7.0.1
  */

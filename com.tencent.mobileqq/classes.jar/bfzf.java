@@ -1,6 +1,42 @@
-public abstract interface bfzf
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+
+public class bfzf
+  extends bfyf
 {
-  public abstract void onShowed(int paramInt, boolean paramBoolean);
+  public bfzf(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  {
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 101;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2130838412;
+  }
+  
+  @Nullable
+  public bfyg a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  {
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramLong1);
+    if (((paramList instanceof MessageForArkApp)) && (a(paramList, paramLong2, paramLong3))) {
+      return new bfyg(true, this.jdField_a_of_type_AndroidContentContext.getString(2131699068), bffr.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+    }
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject, String paramString)
+  {
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA10", "0X800AA10", 0, 0, "", "", "", "");
+  }
+  
+  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

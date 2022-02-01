@@ -1,98 +1,131 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.BeancurdMsg;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.MobileQQ;
 
 public class bdcj
 {
-  private static void a(QQAppInterface paramQQAppInterface, BeancurdMsg paramBeancurdMsg)
+  public static bdcj a;
+  private final int jdField_a_of_type_Int = 20;
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private long jdField_c_of_type_Long;
+  private boolean jdField_c_of_type_Boolean;
+  private long jdField_d_of_type_Long;
+  private volatile boolean jdField_d_of_type_Boolean;
+  private long e;
+  private long f;
+  private long g;
+  
+  public static bdcj a()
   {
-    paramQQAppInterface = paramQQAppInterface.getMessageFacade().getAllMessages(paramBeancurdMsg.frienduin, 0, null);
-    int i = paramQQAppInterface.size();
-    long l;
-    if (i > 0)
+    if (jdField_a_of_type_Bdcj == null) {}
+    try
     {
-      paramQQAppInterface = (MessageRecord)paramQQAppInterface.get(i - 1);
-      if (paramQQAppInterface != null) {
-        l = paramQQAppInterface.time - 1L;
+      if (jdField_a_of_type_Bdcj == null) {
+        jdField_a_of_type_Bdcj = new bdcj();
+      }
+      return jdField_a_of_type_Bdcj;
+    }
+    finally {}
+  }
+  
+  private void f()
+  {
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_d_of_type_Long = 0L;
+    this.e = 0L;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_d_of_type_Boolean) {
+      this.f = System.currentTimeMillis();
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 1;
+    if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int <= 20))
+    {
+      this.jdField_b_of_type_Int += 1;
+      if (QLog.isColorLevel()) {
+        QLog.i("GestureMonitorManager", 2, "start " + this.jdField_b_of_type_Int + "");
+      }
+    }
+    do
+    {
+      return;
+      if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int > 20))
+      {
+        e();
+        f();
+        return;
+      }
+    } while (this.jdField_d_of_type_Boolean);
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      paramBoolean1 = true;
+      this.jdField_d_of_type_Boolean = paramBoolean1;
+      if (!this.jdField_d_of_type_Boolean) {
+        break label133;
       }
     }
     for (;;)
     {
-      QLog.d("Tofu_TofuHelper", 1, String.format("fixTofuMsgTimeAtTop insertAtTop old.size=%d msgTime=%d", new Object[] { Integer.valueOf(i), Long.valueOf(l) }));
-      paramBeancurdMsg.msgTime = l;
+      this.jdField_b_of_type_Int = i;
       return;
-      l = -1L;
-      continue;
-      l = -1L;
+      paramBoolean1 = false;
+      break;
+      label133:
+      i = 0;
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, BeancurdMsg paramBeancurdMsg, boolean paramBoolean1, boolean paramBoolean2)
+  public void b()
   {
-    boolean bool = ((amsw)paramQQAppInterface.getManager(51)).b(paramBeancurdMsg.frienduin);
-    QLog.d("Tofu_TofuHelper", 1, String.format("insertTofuMsg prefUpdate=%b [%s,%d] isFrd=%b", new Object[] { Boolean.valueOf(paramBoolean1), MobileQQ.getShortUinStr(paramBeancurdMsg.frienduin), Integer.valueOf(paramBeancurdMsg.busiid), Boolean.valueOf(bool) }));
-    if (!bool) {}
-    while ((paramBoolean1) && (a(paramQQAppInterface, paramBeancurdMsg))) {
-      return;
+    if (this.jdField_d_of_type_Boolean)
+    {
+      this.f = (System.currentTimeMillis() - this.f);
+      this.jdField_a_of_type_Long += this.f;
+      if (QLog.isColorLevel()) {
+        QLog.i("GestureMonitorManager", 2, "GestureMonitorManager TotalDetetcorConsumer[startPreview] " + this.f + "ms");
+      }
     }
-    aezm localaezm = (aezm)paramQQAppInterface.getManager(282);
-    if (paramBoolean2) {
-      a(paramQQAppInterface, paramBeancurdMsg);
-    }
-    localaezm.a(paramBeancurdMsg);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  public void c()
+  {
+    if (this.jdField_d_of_type_Boolean) {
+      this.g = System.currentTimeMillis();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_d_of_type_Boolean)
+    {
+      this.g = (System.currentTimeMillis() - this.g);
+      this.jdField_d_of_type_Long += this.g;
+      if (QLog.isColorLevel()) {
+        QLog.i("GestureMonitorManager", 2, "GestureMonitorManager GestureDrawConsumer[GestureDraw] " + this.g + "ms");
+      }
+    }
+  }
+  
+  public void e()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Tofu_TofuHelper", 2, "onDelFriend " + paramString);
+      QLog.i("GestureMonitorManagerdoReport", 2, "GestureMonitorManager check Frame numbers[+20],[StartPreview:" + this.jdField_a_of_type_Long + "ms],[FaceDetector Aysn childThread:" + this.jdField_c_of_type_Long + "ms],ms],[FaceDraw:" + this.jdField_b_of_type_Long + "ms],[GestureDetector Aysn childThread:" + this.e + "ms],ms],[GestureDraw:" + this.jdField_d_of_type_Long + "ms]");
     }
-    ((bdck)paramQQAppInterface.getManager(368)).a(paramString);
-    ((aezm)paramQQAppInterface.getManager(282)).b(paramString);
-  }
-  
-  private static boolean a(QQAppInterface paramQQAppInterface, BeancurdMsg paramBeancurdMsg)
-  {
-    boolean bool = false;
-    int i = ((aezm)paramQQAppInterface.getManager(282)).a(paramBeancurdMsg.busiid);
-    Object localObject = paramQQAppInterface.getMessageFacade().getAllMessages(paramBeancurdMsg.frienduin, 0, new int[] { i });
-    QLog.d("Tofu_TofuHelper", 1, new Object[] { "insertTofuMsg_updateWhenMsgExists old size=", Integer.valueOf(((List)localObject).size()) });
-    if (((List)localObject).size() > 0)
-    {
-      MessageRecord localMessageRecord = (MessageRecord)((List)localObject).get(((List)localObject).size() - 1);
-      if (localMessageRecord != null) {}
-      for (long l = localMessageRecord.time;; l = bbko.a())
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-          if (localMessageRecord != null)
-          {
-            paramQQAppInterface.getMessageFacade().removeMsgFromCacheByUniseq(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.msgtype, localMessageRecord.uniseq);
-            paramQQAppInterface.getMessageFacade().removeMsgByUniseq(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
-          }
-        }
-      }
-      localObject = "";
-      if ((paramBeancurdMsg.buffer instanceof String)) {
-        localObject = paramBeancurdMsg.buffer;
-      }
-      localMessageRecord = bbli.a(i);
-      localMessageRecord.init(paramQQAppInterface.getAccount(), paramBeancurdMsg.frienduin, paramBeancurdMsg.frienduin, (String)localObject, l, i, 0, l);
-      localMessageRecord.msg = paramBeancurdMsg.buffer;
-      localMessageRecord.isread = true;
-      if (!amwh.a(paramQQAppInterface, localMessageRecord, false)) {
-        paramQQAppInterface.getMessageFacade().addMessage(localMessageRecord, localMessageRecord.selfuin);
-      }
-      bool = true;
-    }
-    return bool;
   }
 }
 

@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-
-public class ppd
-  implements pqe
+class ppd
+  extends qdb
 {
-  public ppd(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  ppd(pob parampob, String paramString)
   {
-    ReadInJoySelfFragment.e(this.a);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.d();
   }
 }
 

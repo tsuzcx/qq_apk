@@ -1,18 +1,19 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class ajgm
-  implements View.OnTouchListener
+public class ajgm
+  extends ajfp
 {
-  ajgm(ajgg paramajgg) {}
+  public ajgm(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if ((!paramBoolean) || (paramObject == null)) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.5.1(this));
   }
 }
 

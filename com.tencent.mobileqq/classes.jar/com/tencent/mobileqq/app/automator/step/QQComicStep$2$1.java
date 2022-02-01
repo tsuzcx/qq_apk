@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bkfn;
-import bkft;
+import blqy;
+import blrf;
 import com.tencent.mobileqq.app.automator.Automator;
 
 class QQComicStep$2$1
@@ -11,8 +11,8 @@ class QQComicStep$2$1
   
   public void run()
   {
-    bkfn.a(this.a.this$0.a.app);
-    bkft.a(this.a.this$0.a.app);
+    blqy.a(this.a.this$0.a.app);
+    blrf.a(this.a.this$0.a.app);
   }
 }
 

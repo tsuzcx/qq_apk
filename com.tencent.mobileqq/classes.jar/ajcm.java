@@ -1,16 +1,42 @@
+import android.database.ContentObserver;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.activity.home.Conversation.47.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class ajcm
-  extends aebt
+  extends ContentObserver
 {
-  public ajcm(Conversation paramConversation) {}
+  WeakReference<PhoneContactManagerImp> a;
   
-  protected void a()
+  public ajcm(Handler paramHandler)
   {
-    ThreadManagerV2.getUIHandlerV2().post(new Conversation.47.1(this));
+    super(paramHandler);
+  }
+  
+  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
+  {
+    if (this.a != null) {
+      this.a.clear();
+    }
+    if (paramPhoneContactManagerImp != null) {
+      this.a = new WeakReference(paramPhoneContactManagerImp);
+    }
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
+    }
+    if (this.a == null) {}
+    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
+    {
+      if (localPhoneContactManagerImp != null) {
+        localPhoneContactManagerImp.g = true;
+      }
+      return;
+    }
   }
 }
 

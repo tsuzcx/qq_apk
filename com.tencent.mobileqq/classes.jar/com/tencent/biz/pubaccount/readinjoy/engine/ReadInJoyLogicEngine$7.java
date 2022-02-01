@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import pkm;
-import pkp;
+import pvj;
+import pvm;
 
 public class ReadInJoyLogicEngine$7
   implements Runnable
 {
-  public ReadInJoyLogicEngine$7(pkm parampkm) {}
+  public ReadInJoyLogicEngine$7(pvj parampvj) {}
   
   public void run()
   {
-    pkp.a().b();
+    pvm.a().b();
   }
 }
 

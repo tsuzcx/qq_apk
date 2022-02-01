@@ -1,23 +1,54 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqIconPostfix;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class wqx
-  extends wqz
+  extends whu
 {
-  private ElasticImageView a;
+  private ArrayList<String> a;
   
-  public wqx(@NonNull ViewGroup paramViewGroup)
+  public wqx(ArrayList<String> paramArrayList)
   {
-    super(paramViewGroup);
+    this.a = paramArrayList;
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public String a()
   {
-    this.a = ((ElasticImageView)paramViewGroup.findViewById(2131364630));
-    this.a.setOnClickListener(new wqy(this));
-    return this.a;
+    return weg.a("StorySvc.batch_get_user_icon_info");
+  }
+  
+  public whv a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspIconPostfix localRspIconPostfix = new qqstory_service.RspIconPostfix();
+    try
+    {
+      localRspIconPostfix.mergeFrom(paramArrayOfByte);
+      return new wqy(localRspIconPostfix);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      ykq.d("GetUserIconHandler", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqIconPostfix localReqIconPostfix = new qqstory_service.ReqIconPostfix();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (!TextUtils.isEmpty(str)) {
+        localReqIconPostfix.union_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      }
+    }
+    return localReqIconPostfix.toByteArray();
   }
 }
 

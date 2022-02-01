@@ -1,40 +1,78 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class arbo
-  extends GestureDetector.SimpleOnGestureListener
+public class arbo
+  extends aqwt<arbn>
 {
-  arbo(arbn paramarbn) {}
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
+  @NonNull
+  public arbn a(int paramInt)
   {
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) && (this.a.d != -1)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setTapPos(this.a.d);
+    return new arbn();
+  }
+  
+  @Nullable
+  public arbn a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0) && (paramArrayOfaqxa[0] != null))
+    {
+      arbn localarbn = arbn.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationEasterEggConfProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
+      }
+      return localarbn;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "onParsed is null");
+    }
+    return null;
+  }
+  
+  public void a(arbn paramarbn)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "onUpdate " + paramarbn.toString());
+    }
+  }
+  
+  public Class<arbn> clazz()
+  {
+    return arbn.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
     return false;
   }
   
-  public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public int migrateOldVersion()
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onReqFailed(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) || (Math.abs(paramFloat1) <= Math.abs(paramFloat2)) || (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c()) || (this.a.c) || (Math.abs(paramFloat1) <= this.a.jdField_a_of_type_Float) || ((paramFloat1 < 0.0F) && (this.a.jdField_a_of_type_Int == 2))) {}
-    while ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Int == 1)) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
     }
-    int i = this.a.d;
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setSrcPos(i);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c();
-    return false;
+  }
+  
+  public int type()
+  {
+    return 575;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbo
  * JD-Core Version:    0.7.0.1
  */

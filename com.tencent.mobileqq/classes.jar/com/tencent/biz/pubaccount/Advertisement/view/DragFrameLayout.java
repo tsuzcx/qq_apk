@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.animation.AnimatorProxy;
 import com.tencent.mobileqq.util.DisplayUtil;
-import nym;
+import ofm;
 
 public class DragFrameLayout
   extends FrameLayout
@@ -23,7 +23,7 @@ public class DragFrameLayout
   private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
   private ScaleAnimation jdField_a_of_type_AndroidViewAnimationScaleAnimation;
   private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private nym jdField_a_of_type_Nym;
+  private ofm jdField_a_of_type_Ofm;
   protected boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -57,8 +57,8 @@ public class DragFrameLayout
     ViewHelper.setScaleY(this.jdField_a_of_type_AndroidViewView, f);
     ViewHelper.setX(this.jdField_a_of_type_AndroidViewView, paramInt1);
     ViewHelper.setY(this.jdField_a_of_type_AndroidViewView, paramInt2);
-    if (this.jdField_a_of_type_Nym != null) {
-      this.jdField_a_of_type_Nym.a(paramInt1, paramInt2, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(this.jdField_b_of_type_Int * f), (int)(this.jdField_c_of_type_Int * f));
+    if (this.jdField_a_of_type_Ofm != null) {
+      this.jdField_a_of_type_Ofm.a(paramInt1, paramInt2, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(this.jdField_b_of_type_Int * f), (int)(this.jdField_c_of_type_Int * f));
     }
   }
   
@@ -178,7 +178,7 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Nym.a()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Ofm.a()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
@@ -198,7 +198,7 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Nym.b()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Ofm.b()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
@@ -218,7 +218,7 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Nym.c()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Ofm.c()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
@@ -345,12 +345,12 @@ public class DragFrameLayout
       if (this.jdField_d_of_type_Int != 0)
       {
         this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Nym != null)
+        if (this.jdField_a_of_type_Ofm != null)
         {
           f1 = ViewHelper.getScaleX(this.jdField_a_of_type_AndroidViewView);
           f2 = ViewHelper.getScaleY(this.jdField_a_of_type_AndroidViewView);
           if ((f1 > 0.0F) && (f2 > 0.0F)) {
-            this.jdField_a_of_type_Nym.a(this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(f1 * this.jdField_b_of_type_Int), (int)(f2 * this.jdField_c_of_type_Int), (int)ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), (int)ViewHelper.getY(this.jdField_a_of_type_AndroidViewView));
+            this.jdField_a_of_type_Ofm.a(this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(f1 * this.jdField_b_of_type_Int), (int)(f2 * this.jdField_c_of_type_Int), (int)ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), (int)ViewHelper.getY(this.jdField_a_of_type_AndroidViewView));
           }
         }
       }
@@ -372,9 +372,9 @@ public class DragFrameLayout
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnDraggingListener(nym paramnym)
+  public void setOnDraggingListener(ofm paramofm)
   {
-    this.jdField_a_of_type_Nym = paramnym;
+    this.jdField_a_of_type_Ofm = paramofm;
   }
 }
 

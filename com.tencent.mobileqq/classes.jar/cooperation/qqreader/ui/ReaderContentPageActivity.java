@@ -7,8 +7,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
-import bkvd;
-import bkvo;
+import bmgm;
+import bmgx;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -48,10 +48,10 @@ public class ReaderContentPageActivity
         return;
         localObject = (ReaderBaseFragment)a();
       } while ((localObject == null) || (!((ReaderBaseFragment)localObject).b));
-      localObject = (bkvo)((ReaderBaseFragment)localObject).mSwiftTitleUI;
+      localObject = (bmgx)((ReaderBaseFragment)localObject).mSwiftTitleUI;
       localWindow = getWindow();
     } while ((localObject == null) || (localWindow == null));
-    ((bkvo)localObject).a(false, localWindow);
+    ((bmgx)localObject).a(false, localWindow);
   }
   
   @Override
@@ -71,7 +71,7 @@ public class ReaderContentPageActivity
     if (Build.VERSION.SDK_INT < 26) {
       setRequestedOrientation(1);
     }
-    bkvd.c("ReaderContentPageActivity", "mIsSplash = " + this.a);
+    bmgm.c("ReaderContentPageActivity", "mIsSplash = " + this.a);
   }
 }
 

@@ -1,11 +1,17 @@
-class afro
-  implements apfg
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+
+public class afro
+  extends QQLruCache<String, ahya>
 {
-  afro(afrn paramafrn) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public afro(CustomizeStrategyFactory paramCustomizeStrategyFactory, int paramInt1, int paramInt2, int paramInt3)
   {
-    afrn.a(this.a);
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, ahya paramahya1, ahya paramahya2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramahya1, paramahya2);
   }
 }
 

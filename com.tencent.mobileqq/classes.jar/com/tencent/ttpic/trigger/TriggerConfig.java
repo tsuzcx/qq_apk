@@ -60,9 +60,14 @@ public class TriggerConfig
   public TriggerConfig(FaceMeshItem paramFaceMeshItem)
   {
     this.alwaysTriggered = paramFaceMeshItem.alwaysTriggered;
+    this.preTriggerType = paramFaceMeshItem.getTriggerTypeInt();
+    this.countTriggerType = paramFaceMeshItem.countTriggerType;
     this.triggerType = paramFaceMeshItem.getTriggerTypeString();
     this.playCount = paramFaceMeshItem.playCount;
     this.externalTriggerWords = paramFaceMeshItem.externalTriggerWords;
+    this.activateTriggerCount = paramFaceMeshItem.activateTriggerCount;
+    this.activateTriggerTotalCount = paramFaceMeshItem.activateTriggerTotalCount;
+    this.activateTriggerType = paramFaceMeshItem.activateTriggerType;
   }
   
   public TriggerConfig(FaceItem paramFaceItem)
@@ -81,7 +86,12 @@ public class TriggerConfig
   public TriggerConfig(FaceStyleItem paramFaceStyleItem)
   {
     this.triggerType = paramFaceStyleItem.getTriggerTypeString();
+    this.preTriggerType = paramFaceStyleItem.getTriggerTypeInt();
     this.alwaysTriggered = paramFaceStyleItem.alwaysTriggered;
+    this.countTriggerType = paramFaceStyleItem.countTriggerType;
+    this.activateTriggerCount = paramFaceStyleItem.activateTriggerCount;
+    this.activateTriggerTotalCount = paramFaceStyleItem.activateTriggerTotalCount;
+    this.activateTriggerType = paramFaceStyleItem.activateTriggerType;
     this.playCount = paramFaceStyleItem.playCount;
   }
   

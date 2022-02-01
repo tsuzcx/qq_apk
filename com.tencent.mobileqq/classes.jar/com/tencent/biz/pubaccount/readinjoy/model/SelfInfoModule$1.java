@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pkp;
-import puk;
-import pwm;
+import pvm;
+import qfe;
+import qhs;
 
 public class SelfInfoModule$1
   implements Runnable
 {
-  public SelfInfoModule$1(pwm parampwm, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, puk parampuk) {}
+  public SelfInfoModule$1(qhs paramqhs, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, qfe paramqfe) {}
   
   public void run()
   {
-    pkp.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Puk);
+    pvm.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Qfe);
   }
 }
 

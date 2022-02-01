@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.segment;
 
-import baid;
-import baie;
+import bbos;
+import bbot;
 import com.tencent.mobileqq.transfile.LightVideoUploadProcessor;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 public class VideoSend$3
   implements Runnable
 {
-  public VideoSend$3(baie parambaie, LightVideoUploadProcessor paramLightVideoUploadProcessor) {}
+  public VideoSend$3(bbot parambbot, LightVideoUploadProcessor paramLightVideoUploadProcessor) {}
   
   public void run()
   {
@@ -21,8 +21,8 @@ public class VideoSend$3
     Iterator localIterator = this.this$0.b.iterator();
     while (localIterator.hasNext())
     {
-      baid localbaid = (baid)localIterator.next();
-      this.this$0.a.addToSendQuene(localbaid);
+      bbos localbbos = (bbos)localIterator.next();
+      this.this$0.a.addToSendQuene(localbbos);
     }
     this.this$0.b.clear();
   }

@@ -1,27 +1,10 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.TMG.sdk.AVContext.StartParam;
 
 public class anhv
-  extends MqqHandler
+  extends AVContext.StartParam
 {
-  private WeakReference<Handler.Callback> a;
-  
-  private anhv(Looper paramLooper, Handler.Callback paramCallback)
-  {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
-    }
-  }
+  public int a;
+  public long a;
 }
 
 

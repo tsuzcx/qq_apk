@@ -1,86 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.downloader.BaseDownloader.1;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.IExcitingTransferRecvListener;
-import java.util.concurrent.Executor;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.face.FaceDrawable.OnLoadingStateChangeListener;
 
-public abstract class asny
-  implements asnm, IExcitingTransferRecvListener
+class asny
+  implements FaceDrawable.OnLoadingStateChangeListener
 {
-  protected long a;
-  protected asnn a;
-  public asyy a;
-  private ExcitingTransferDownloadReqInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo = new ExcitingTransferDownloadReqInfo();
-  private boolean jdField_a_of_type_Boolean = true;
+  asny(asnx paramasnx) {}
   
-  public asny(QQAppInterface paramQQAppInterface)
+  public void onLoadingStateChanged(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Asnn = a(paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  protected abstract asnn a(QQAppInterface paramQQAppInterface);
-  
-  public abstract void a(ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo);
-  
-  public boolean a()
-  {
-    try
+    if (paramInt2 == 1)
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
+      asnx.a(this.a).setImageDrawable((Drawable)null);
+      asnx.a(this.a).setImageDrawable(asnx.a(this.a));
     }
-    finally {}
-  }
-  
-  public void at_()
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = false;
-      atae.a().execute(new BaseDownloader.1(this));
-      return;
-    }
-    finally {}
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = true;
-      ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
-      return;
-    }
-    finally {}
-  }
-  
-  public void c()
-  {
-    b();
-    this.jdField_a_of_type_Asnn.a();
-  }
-  
-  public void d()
-  {
-    b();
-    this.jdField_a_of_type_Asnn.b();
-  }
-  
-  public void e()
-  {
-    b();
-  }
-  
-  protected void f()
-  {
-    this.jdField_a_of_type_Long = ExcitingTransferEngine.getInstance().recvFileEx(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo, asnp.a().a(), this);
   }
 }
 

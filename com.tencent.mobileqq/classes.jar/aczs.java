@@ -1,19 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
-import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mfsdk.collector.ResultObject;
+import com.tencent.mfsdk.reporter.ReporterMachine;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Observable;
+import java.util.Observer;
+import org.json.JSONObject;
 
 public class aczs
-  implements DialogInterface.OnClickListener
+  implements Observer
 {
-  public aczs(ChatHistoryImageView paramChatHistoryImageView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (this.a.a != null)
+    Object localObject = ((aczr)paramObservable).a;
+    if ("t_held_thread".equals((String)((HashMap)localObject).get("key_type"))) {}
+    try
     {
-      this.a.a.b = false;
-      this.a.a.a(false);
+      paramObservable = new JSONObject();
+      paramObject = new JSONObject();
+      paramObject.put("fileObj1", ((HashMap)localObject).get("filePath"));
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("p_id", MagnifierSDK.b());
+      paramObservable.put("fileObj", paramObject);
+      paramObservable.put("clientinfo", localObject);
+      paramObservable.put("newplugin", 123);
+      ReporterMachine.a(new ResultObject(0, "testcase", true, 1L, 1L, paramObservable, true, true, MagnifierSDK.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("StackObserver", 2, "report apm suc");
+      }
+      return;
+    }
+    catch (Exception paramObservable)
+    {
+      QLog.e("StackObserver", 1, "report apm fail", paramObservable);
     }
   }
 }

@@ -1,33 +1,93 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.style.ImageSpan;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.AppFriendsInfo;
+import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.RspBody;
 
-public class adbm
-  extends ImageSpan
+class adbm
+  extends ntf
 {
-  public adbm(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
-  {
-    super(paramDrawable, paramInt);
-  }
+  adbm(adbk paramadbk, adaa paramadaa) {}
   
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramCanvas.save();
-    paramCanvas.translate(ScreenUtil.dip2px(9.0F), 0.0F);
-    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
-    paramCanvas.restore();
-  }
-  
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return getDrawable().getBounds().right + ScreenUtil.dip2px(9.0F);
+    if (QLog.isColorLevel()) {
+      QLog.i(adbk.jdField_a_of_type_JavaLangString, 2, "onResult appid=" + adbk.a(this.jdField_a_of_type_Adbk).jdField_a_of_type_JavaLangString + ", openid=" + this.jdField_a_of_type_Adbk.jdField_a_of_type_Adbn.jdField_a_of_type_JavaLangString + ", openkey=" + this.jdField_a_of_type_Adbk.jdField_a_of_type_Adbn.b + ", code=" + paramInt);
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      addh.a(this.jdField_a_of_type_Adaa, paramInt, "getappfriends result error, try again");
+      return;
+    }
+    paramBundle = new Oidb_0xb6e.RspBody();
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = paramBundle;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      JSONArray localJSONArray;
+      for (;;)
+      {
+        paramArrayOfByte = null;
+        paramBundle.printStackTrace();
+      }
+      try
+      {
+        paramBundle.put("appfriends", localJSONArray);
+        addh.a(this.jdField_a_of_type_Adaa, paramBundle);
+        return;
+      }
+      catch (JSONException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e(adbk.jdField_a_of_type_JavaLangString, 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
+          }
+        }
+      }
+      addh.a(this.jdField_a_of_type_Adaa, -1, "parse result error, try again");
+    }
+    if (paramArrayOfByte != null)
+    {
+      paramBundle = new JSONObject();
+      localJSONArray = new JSONArray();
+      paramArrayOfByte = paramArrayOfByte.rpt_friends_info.get().iterator();
+      while (paramArrayOfByte.hasNext())
+      {
+        Object localObject = (Oidb_0xb6e.AppFriendsInfo)paramArrayOfByte.next();
+        String str1 = ((Oidb_0xb6e.AppFriendsInfo)localObject).openid.get();
+        String str2 = ((Oidb_0xb6e.AppFriendsInfo)localObject).nick.get().toStringUtf8();
+        localObject = ((Oidb_0xb6e.AppFriendsInfo)localObject).figure_url_qq.get();
+        if (!TextUtils.isEmpty(str1))
+        {
+          try
+          {
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("openid", str1.toUpperCase());
+            localJSONObject.put("nickName", str2);
+            localJSONObject.put("avatarUrl", localObject);
+            localJSONArray.put(localJSONObject);
+          }
+          catch (JSONException localJSONException) {}
+          if (QLog.isColorLevel()) {
+            QLog.e(adbk.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+          }
+        }
+      }
+    }
   }
 }
 

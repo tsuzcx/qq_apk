@@ -190,7 +190,7 @@ public class h
         break label236;
         paramArrayOfByte7 = new RegTLV(52);
         paramArrayOfByte10 = new byte[4];
-        util.int32_to_buf(paramArrayOfByte10, 0, 12);
+        util.int32_to_buf(paramArrayOfByte10, 0, 13);
         paramArrayOfByte7.setData(paramArrayOfByte10, paramArrayOfByte10.length);
         paramArrayOfByte7 = paramArrayOfByte7.getBuf();
         util.LOGI("tlv52 len:" + paramArrayOfByte10.length, "");

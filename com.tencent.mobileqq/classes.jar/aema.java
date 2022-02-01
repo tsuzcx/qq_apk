@@ -1,17 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aema
-  implements View.OnClickListener
+  extends avrj
 {
-  public aema(TroopInfoActivity paramTroopInfoActivity) {}
+  public aema(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.f();
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = 1;
+    if (!paramBoolean1)
+    {
+      this.a.a(2131718593, 1);
+      return;
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean2) {
+      i = 2;
+    }
+    bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    }
   }
 }
 

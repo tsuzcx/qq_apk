@@ -1,5 +1,6 @@
 package com.tencent.youtu.sdkkitframework.ocr;
 
+import com.tencent.youtu.sdkkitframework.common.CommonUtils;
 import java.util.HashMap;
 
 class NetOcrReqResultState$6$2
@@ -11,7 +12,7 @@ class NetOcrReqResultState$6$2
     put("ui_tips", "rst_succeed");
     put("process_action", "succeed");
     put("error_code", Integer.valueOf(0));
-    put("message", this.val$result.get("response"));
+    put("message", CommonUtils.makeMessageJson(0, "rst_succeed", (String)this.val$result.get("response")));
   }
 }
 

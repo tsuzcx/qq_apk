@@ -1,17 +1,14 @@
-import android.view.View;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
-public abstract interface abuh
+public class abuh
+  implements abux
 {
-  public abstract void a(View paramView);
+  public abuh(GameCenterAPIJavaScript paramGameCenterAPIJavaScript, String paramString) {}
   
-  public abstract void a(GdtVideoCommonView paramGdtVideoCommonView);
-  
-  public abstract void b(GdtVideoCommonView paramGdtVideoCommonView);
-  
-  public abstract void c(GdtVideoCommonView paramGdtVideoCommonView);
-  
-  public abstract void d(GdtVideoCommonView paramGdtVideoCommonView);
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentGamecenterCommonUtilGameCenterAPIJavaScript.callbackJS(this.jdField_a_of_type_JavaLangString, paramInt, paramString);
+  }
 }
 
 

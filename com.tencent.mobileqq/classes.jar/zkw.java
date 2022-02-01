@@ -1,19 +1,18 @@
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class zkw
-  implements bhlz
+  implements azyj
 {
-  public zkw(VideoPlayerView paramVideoPlayerView) {}
+  public zkw(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public boolean a()
+  public void a()
   {
-    return false;
+    bdla.b(this.a.app, "CliOper", "", "", "0X800AEB1", "0X800AEB1", 0, 0, "", "", "", "");
   }
   
-  public boolean a(int paramInt1, int paramInt2)
+  public void a(String paramString)
   {
-    VideoPlayerView.c(this.a, true);
-    return false;
+    bdla.b(this.a.app, "CliOper", "", "", "0X800AEB3", "0X800AEB3", 0, 0, "", "", "", "");
   }
 }
 

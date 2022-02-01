@@ -1,17 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendPublicAccountMessageReceiptResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-public class oky
-  implements View.OnClickListener
+class oky
+  implements BusinessObserver
 {
-  public oky(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  oky(okn paramokn, NewIntent paramNewIntent) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ReadInJoyBaseDeliverActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      mobileqq_mp.SendPublicAccountMessageReceiptResponse localSendPublicAccountMessageReceiptResponse = new mobileqq_mp.SendPublicAccountMessageReceiptResponse();
+      localSendPublicAccountMessageReceiptResponse.mergeFrom(paramBundle);
+      boolean bool = paramBoolean;
+      if (localSendPublicAccountMessageReceiptResponse.ret_info.has())
+      {
+        bool = paramBoolean;
+        if (localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.has())
+        {
+          paramInt = localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.get();
+          bool = paramBoolean;
+          if (paramInt != 0L) {
+            bool = false;
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(false));
+      return;
+    }
+    finally
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(paramBoolean));
+      }
+    }
   }
 }
 

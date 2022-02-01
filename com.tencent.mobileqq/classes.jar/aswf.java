@@ -1,17 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aswf
+public class aswf
   implements View.OnClickListener
 {
-  aswf(aswb paramaswb) {}
+  public aswf(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a.a() != null) {
-      this.a.a.a().a();
-    }
+    bhaa.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

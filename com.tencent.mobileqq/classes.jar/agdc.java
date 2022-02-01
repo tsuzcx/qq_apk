@@ -1,26 +1,11 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Set;
+import java.util.List;
+import java.util.Map;
 
-class agdc
-  extends aghj
+public abstract interface agdc
 {
-  agdc(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  public abstract void a(String paramString, int paramInt, agcu paramagcu, List<agdp> paramList, Map<Integer, Integer> paramMap);
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    paramChatMessage = new aghq(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    agcw.a(this.a).add(paramChatMessage);
-    return paramChatMessage;
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
+  public abstract boolean a(String paramString);
 }
 
 

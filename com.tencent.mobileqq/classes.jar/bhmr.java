@@ -1,19 +1,12 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bhmr
-  implements MediaPlayer.OnSeekCompleteListener
+class bhmr
+  implements DialogInterface.OnClickListener
 {
-  public bhmr(VideoTextureView paramVideoTextureView) {}
+  bhmr(bhmn parambhmn) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
-  {
-    if (VideoTextureView.a() != null) {
-      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

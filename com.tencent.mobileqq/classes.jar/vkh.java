@@ -1,18 +1,25 @@
-import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1;
-import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class vkh
-  implements yli
+public abstract interface vkh
 {
-  public vkh(AlbumGalleryCapturePart.12.1 param1) {}
-  
-  public void a()
-  {
-    vkf.a(this.a.a.a, -1L);
-    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.12.1.1.1(this));
-  }
+  public static final String a = String.valueOf(1000001);
+  public static final String b = String.valueOf(1000002);
+  public static final String c = String.valueOf(1000003);
+  public static final String d = String.valueOf(1000004);
+  public static final String e = String.valueOf(1000005);
+  public static final String f = String.valueOf(1000006);
+  public static final String g = String.valueOf(1001001);
+  public static final String h = String.valueOf(1001002);
+  public static final String i = String.valueOf(1001003);
+  public static final String j = String.valueOf(1003002);
+  public static final String k = String.valueOf(1003003);
+  public static final String l = String.valueOf(1003004);
+  public static final String m = String.valueOf(1003005);
+  public static final String n = String.valueOf(1003006);
+  public static final String o = String.valueOf(1003008);
+  public static final String p = String.valueOf(1003012);
+  public static final String q = String.valueOf(1004001);
+  public static final String r = String.valueOf(1004002);
+  public static final String s = String.valueOf(1007001);
+  public static final String t = String.valueOf(1007002);
 }
 
 

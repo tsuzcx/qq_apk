@@ -1,9 +1,25 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
-public abstract interface ayqr
+class ayqr
+  implements Callback
 {
-  public abstract void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean);
+  ayqr(ayqq paramayqq) {}
+  
+  public void onFailure(Call paramCall, IOException paramIOException)
+  {
+    QLog.e("ReportCenter", 4, paramIOException, new Object[0]);
+  }
+  
+  public void onResponse(Call paramCall, Response paramResponse)
+  {
+    if ((paramResponse != null) && (paramResponse.code() == 200)) {
+      QLog.i("ReportCenter", 4, "data report success.");
+    }
+  }
 }
 
 

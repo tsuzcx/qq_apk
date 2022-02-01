@@ -1,14 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
 
-final class uyi
-  implements DialogInterface.OnCancelListener
+public class uyi
+  extends RecyclerView.OnScrollListener
 {
-  uyi(uwy paramuwy) {}
+  public uyi(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    uyd.b(this.a);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 1) {
+      WSRecommendFragment.c(this.a, true);
+    }
+    switch (paramInt)
+    {
+    default: 
+      DropFrameMonitor.getInstance().startMonitorScene("weishi_recommend_list");
+      return;
+    }
+    DropFrameMonitor.getInstance().stopMonitorScene("weishi_recommend_list", false);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

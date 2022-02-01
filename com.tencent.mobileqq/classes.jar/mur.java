@@ -1,53 +1,73 @@
-import android.content.Context;
-import android.net.wifi.WifiManager;
-import android.net.wifi.WifiManager.WifiLock;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
 
-public class mur
+public abstract class mur
 {
-  int jdField_a_of_type_Int = 0;
-  Context jdField_a_of_type_AndroidContentContext = null;
-  WifiManager.WifiLock jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = null;
-  String jdField_a_of_type_JavaLangString = null;
-  
-  public mur(Context paramContext, int paramInt, String paramString)
+  public static long a(Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return paramIntent.getLongExtra("log_seq", 0L);
   }
   
-  public void a()
+  public static long a(Bundle paramBundle)
   {
-    if (b())
-    {
-      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.release();
-      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = null;
+    long l = 0L;
+    if (paramBundle != null) {
+      l = paramBundle.getLong("log_seq");
     }
+    return l;
   }
   
-  public boolean a()
+  public static long a(ToServiceMsg paramToServiceMsg)
   {
-    if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock == null) {
-      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = ((WifiManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("wifi")).createWifiLock(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock != null)
-    {
-      if (!this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.isHeld()) {
-        this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.acquire();
-      }
-      return true;
-    }
-    return false;
+    return a(paramToServiceMsg.getAttribute("log_seq"));
   }
   
-  public boolean b()
+  public static long a(Object paramObject)
   {
-    return (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock != null) && (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.isHeld());
+    long l = 0L;
+    if ((paramObject instanceof Long)) {
+      l = ((Long)paramObject).longValue();
+    }
+    return l;
+  }
+  
+  public static long a(HashMap<String, Object> paramHashMap)
+  {
+    if ((paramHashMap != null) && (paramHashMap.containsKey("log_seq"))) {
+      return a(paramHashMap.get("log_seq"));
+    }
+    return 0L;
+  }
+  
+  public static long a(Object[] paramArrayOfObject, int paramInt)
+  {
+    long l = 0L;
+    if (paramArrayOfObject.length > paramInt) {
+      l = a(paramArrayOfObject[paramInt]);
+    }
+    return l;
+  }
+  
+  public static void a(Intent paramIntent, long paramLong)
+  {
+    paramIntent.putExtra("log_seq", paramLong);
+  }
+  
+  public static void a(Bundle paramBundle, long paramLong)
+  {
+    paramBundle.putLong("log_seq", paramLong);
+  }
+  
+  public static void a(HashMap<String, Object> paramHashMap, long paramLong)
+  {
+    paramHashMap.put("log_seq", Long.valueOf(paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mur
  * JD-Core Version:    0.7.0.1
  */

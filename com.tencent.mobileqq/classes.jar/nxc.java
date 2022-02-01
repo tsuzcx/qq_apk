@@ -1,20 +1,12 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 
-public class nxc
-  implements View.OnClickListener
+final class nxc
+  extends ThreadLocal<CharsetDecoder>
 {
-  public nxc(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  protected CharsetDecoder a()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return Charset.forName("UTF-8").newDecoder();
   }
 }
 

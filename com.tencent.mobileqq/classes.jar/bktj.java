@@ -1,17 +1,23 @@
-class bktj
-  implements bksx
+final class bktj
+  extends bktm
 {
-  bktj(bkti parambkti) {}
+  public bkuf a;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a()
+  public bktj(bkth parambkth, String paramString)
   {
-    if (bkti.a(this.a) != null) {
-      bkti.a(this.a);
+    super(null);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a(String paramString, bkuf parambkuf)
+  {
+    if (paramString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_Bkuf = parambkuf;
+      return false;
     }
-    while (bkti.a(this.a) == null) {
-      return;
-    }
-    bkti.a(this.a, bkti.a(this.a));
+    return true;
   }
 }
 

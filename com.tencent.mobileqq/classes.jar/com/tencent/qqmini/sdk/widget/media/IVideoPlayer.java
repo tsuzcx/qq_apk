@@ -1,21 +1,14 @@
 package com.tencent.qqmini.sdk.widget.media;
 
 import android.app.Activity;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCaptureImageListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCompletionListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnControllerClickListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnErrorListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnInfoListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnSeekCompleteListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoPreparedListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoViewInitListener;
 
 public abstract interface IVideoPlayer
 {
   public abstract void captureImageInTime(int paramInt1, int paramInt2);
   
-  public abstract AbsVideoPlayer getAbsVideoPlayer();
+  public abstract void createVideoView(AbsVideoPlayer.OnVideoViewInitListener paramOnVideoViewInitListener);
   
   public abstract long getCurrentPostion();
   
@@ -39,9 +32,7 @@ public abstract interface IVideoPlayer
   
   public abstract void setOnCaptureImageListener(AbsVideoPlayer.OnCaptureImageListener paramOnCaptureImageListener);
   
-  public abstract void setOutputMute(boolean paramBoolean);
-  
-  public abstract void setUpPlayer(MiniAppVideoConfig paramMiniAppVideoConfig, AbsVideoPlayer.OnVideoViewInitListener paramOnVideoViewInitListener, AbsVideoPlayer.OnControllerClickListener paramOnControllerClickListener, AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener, AbsVideoPlayer.OnCompletionListener paramOnCompletionListener, AbsVideoPlayer.OnErrorListener paramOnErrorListener, AbsVideoPlayer.OnInfoListener paramOnInfoListener, AbsVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener);
+  public abstract void setupPlayer(MiniAppVideoConfig paramMiniAppVideoConfig, MiniAppVideoPlayerListenerHolder paramMiniAppVideoPlayerListenerHolder);
   
   public abstract void start();
   

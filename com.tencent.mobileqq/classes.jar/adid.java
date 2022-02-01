@@ -1,20 +1,13 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class adid
-  implements adhy
+  implements View.OnClickListener
 {
-  public adid(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public adid(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a(View paramView)
-  {
-    ForwardTroopListFragment.a(this.a, paramView);
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    return ForwardTroopListFragment.a(this.a, paramString, paramInt);
-  }
+  public void onClick(View paramView) {}
 }
 
 

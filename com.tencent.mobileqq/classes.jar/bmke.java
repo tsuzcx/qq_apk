@@ -1,64 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
-import com.tencent.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.app.Activity;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-public class bmke
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcooperation/vip/VasAdvGdtInterface;", "", "getDeviceInfo", "Ltencent/gdt/qq_ad_get$QQAdGet$DeviceInfo;", "gdtBizId", "", "getDeviceInfoAsJson", "initGdtContext", "", "showMotiveAd", "activity", "Landroid/app/Activity;", "adInfo", "Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;", "profitableCallback", "Lcooperation/vip/reward/VasProfitableCallback;", "rewardText", "bizSrc", "vasGdtBizId", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface bmke
 {
-  private static final Map<Float, String> a = new HashMap();
+  @NotNull
+  public abstract String a();
   
-  static
-  {
-    a.put(Float.valueOf(0.5F), "0.5");
-    a.put(Float.valueOf(0.75F), "0.75");
-    a.put(Float.valueOf(1.0F), "1.0");
-    a.put(Float.valueOf(1.5F), "1.5");
-    a.put(Float.valueOf(2.0F), "2.0");
-  }
+  @Nullable
+  public abstract String a(@NotNull String paramString);
   
-  private static String a(float paramFloat)
-  {
-    Iterator localIterator = a.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if ((localEntry != null) && (a(paramFloat, ((Float)localEntry.getKey()).floatValue()))) {
-        return (String)localEntry.getValue();
-      }
-    }
-    return "none";
-  }
+  @Nullable
+  public abstract qq_ad_get.QQAdGet.DeviceInfo a(@NotNull String paramString);
   
-  public static String a(@NonNull List<CutModelKt> paramList)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    if (i < paramList.size())
-    {
-      CutModelKt localCutModelKt = (CutModelKt)paramList.get(i);
-      if ((localCutModelKt == null) || (localCutModelKt.getResource() == null)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append(a(localCutModelKt.getResource().getScaleSpeed()));
-        if (i != paramList.size() - 1) {
-          localStringBuilder.append(",");
-        }
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static boolean a(float paramFloat1, float paramFloat2)
-  {
-    return Math.abs(paramFloat1 - paramFloat2) < 0.001D;
-  }
+  public abstract void a(@NotNull Activity paramActivity, @NotNull qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, @NotNull bmoi parambmoi, @Nullable String paramString1, @NotNull String paramString2);
 }
 
 

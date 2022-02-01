@@ -1,16 +1,23 @@
-import com.tencent.biz.PoiMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class nlz
-  extends nly
+class nlz
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public int d;
+  nlz(nlx paramnlx, long paramLong) {}
   
-  public nlz(PoiMapActivity paramPoiMapActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramPoiMapActivity);
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Nlx.a()) {}
+    do
+    {
+      return;
+      paramDialogInterface = this.jdField_a_of_type_Nlx.a();
+      QLog.w(this.jdField_a_of_type_Nlx.a, 1, "showPermissionNormalDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "], activity[" + paramDialogInterface + "]");
+    } while (paramDialogInterface == null);
+    nqf.a(paramDialogInterface);
   }
 }
 

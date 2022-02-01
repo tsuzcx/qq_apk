@@ -1,18 +1,16 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
-import com.tencent.youtu.sdkkitframework.common.YtLogger;
-import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectResult;
+import com.tencent.youtu.sdkkitframework.common.CommonUtils;
+import java.util.HashMap;
 
 class ActionLivenessState$4
-  implements YTPoseDetectInterface.PoseDetectResult
+  extends HashMap<String, Object>
 {
-  ActionLivenessState$4(ActionLivenessState paramActionLivenessState) {}
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2) {}
-  
-  public void onSuccess()
+  ActionLivenessState$4(ActionLivenessState paramActionLivenessState, int paramInt)
   {
-    YtLogger.d(ActionLivenessState.access$200(), "start success");
+    put("process_action", "failed");
+    put("error_code", Integer.valueOf(5242882));
+    put("message", CommonUtils.makeMessageJson(5242882, "msg_param_error", "Init YtPose SDK failed with " + this.val$initR));
   }
 }
 

@@ -1,44 +1,32 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class awgc
-  implements URLDrawable.URLDrawableListener
+public class awgc
+  implements bkzq
 {
-  awgc(awgb paramawgb) {}
+  public awgc(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, boolean paramBoolean, awgx paramawgx) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadCanceled");
+    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      switch (paramInt)
+      {
+      }
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadFialed");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadProgressed i:" + paramInt);
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadSuccessed");
-    }
-    paramURLDrawable = paramURLDrawable.getCallback();
-    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof View)))
+    for (;;)
     {
-      ((View)paramURLDrawable).invalidate();
-      ((View)paramURLDrawable).requestLayout();
+      this.jdField_a_of_type_Awgx.b(false);
+      if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+        ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+      }
+      return;
+      awfq.a(ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment), this.jdField_a_of_type_Awgx.a().e, this.jdField_a_of_type_Awgx.a().b);
+      continue;
+      this.jdField_a_of_type_Awgx.h();
+      continue;
+      this.jdField_a_of_type_Awgx.h();
     }
   }
 }

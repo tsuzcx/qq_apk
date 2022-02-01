@@ -1,25 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.26.1;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 public class tfe
-  extends AnimatorListenerAdapter
+  implements InvocationHandler
 {
-  public tfe(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
+  public tfe(FastWebActivity.26.1 param1) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    this.a.setClickable(true);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setClickable(true);
+    this.a.a.a.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    FastWebActivity.a(this.a.a.a).setVisibility(8);
+    QLog.d("FastWebActivity", 1, "open web page, set activity transparent");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tfe
  * JD-Core Version:    0.7.0.1
  */

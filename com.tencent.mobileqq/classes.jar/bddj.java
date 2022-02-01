@@ -1,29 +1,82 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData;
+import com.tencent.mobileqq.utils.ContactUtils;
+import eipc.EIPCResult;
 
 class bddj
-  implements DialogInterface.OnClickListener
+  extends QIPCModule
 {
-  bddj(bddh parambddh, String paramString, int paramInt1, Bundle paramBundle, int paramInt2, Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bddj(bddi parambddi, String paramString)
   {
-    bddh localbddh = this.jdField_a_of_type_Bddh;
-    String str2 = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 8) {}
-    for (String str1 = "clk_openframe_open";; str1 = "clk_joinbar_open")
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ("CMD_GET_NICK_NAME_BY_UIN".equals(paramString))
     {
-      bddh.a(localbddh, str2, str1);
-      paramDialogInterface.dismiss();
-      if (this.jdField_a_of_type_Int != 8) {
-        break;
-      }
-      bddh.a(this.jdField_a_of_type_Bddh, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
-      return;
+      paramString = new Bundle();
+      paramString.putString("VALUE_USER_NICK_NAME", ContactUtils.getBuddyName(localQQAppInterface, paramBundle.getString("VALUE_USER_UIN_TO_GET_NICK_NAME"), true));
+      return EIPCResult.createSuccessResult(paramString);
     }
-    bddh.a(this.jdField_a_of_type_Bddh, this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if ("CMD_GET_CURRENT_NICK_NAME".equals(paramString))
+    {
+      paramString = localQQAppInterface.getCurrentNickname();
+      paramBundle = new Bundle();
+      paramBundle.putString("VALUE_GET_CURRENT_NICK_NAME", paramString);
+      return EIPCResult.createSuccessResult(paramBundle);
+    }
+    if ("CMD_GET_CURRENT_USER_HEAD".equals(paramString))
+    {
+      paramString = localQQAppInterface.getCustomFaceFilePath(1, localQQAppInterface.getCurrentUin(), 200);
+      paramBundle = new Bundle();
+      paramBundle.putString("VALUE_GET_CURRENT_USER_HEAD", paramString);
+      return EIPCResult.createSuccessResult(paramBundle);
+    }
+    if ("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT".equals(paramString))
+    {
+      paramString = paramBundle.getString("VALUE_MSG_FRIENDUIN");
+      paramInt = paramBundle.getInt("VALUE_MSG_ISTROOP");
+      paramBundle = paramBundle.getString("VALUE_MSG_VIDEO_ID");
+      if (paramBundle != null)
+      {
+        bdcw.a(localQQAppInterface).a(paramString, paramInt, paramBundle);
+        VideoRedbagData.updateRewardStat(paramBundle);
+      }
+      return EIPCResult.createSuccessResult(new Bundle());
+    }
+    if ("CMD_QUERY_VIDEO_REDBAG_STAT".equals(paramString))
+    {
+      boolean bool = VideoRedbagData.queryRewardStat(paramBundle.getString("VALUE_MSG_VIDEO_ID"));
+      paramString = new Bundle();
+      paramString.putBoolean("VALUE_MSG_REDBAG_STAT", bool);
+      return EIPCResult.createSuccessResult(paramString);
+    }
+    if ("CMD_DOWNLOAD_PTU_ADDITIONAL_RES".equals(paramString))
+    {
+      bnku.a().a(bnkt.c, null, false);
+      bnrh.b("VideoPlayIPCServer", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
+      return EIPCResult.createSuccessResult(new Bundle());
+    }
+    if ("CMD_DOWNLOAD_PTU_BASE_RES".equals(paramString))
+    {
+      bnku.a().a(bnkt.b, null, false);
+      bnrh.b("VideoPlayIPCServer", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
+      return EIPCResult.createSuccessResult(new Bundle());
+    }
+    if ("CMD_QUERY_STATUS_PTU_RES".equals(paramString))
+    {
+      paramInt = bnku.a().a(bnkt.c);
+      bnrh.b("VideoPlayIPCServer", "query additional_package");
+      paramString = new Bundle();
+      paramString.putInt("VALUE_MSG_PTU_RES_STATUS", paramInt);
+      return EIPCResult.createSuccessResult(paramString);
+    }
+    return null;
   }
 }
 

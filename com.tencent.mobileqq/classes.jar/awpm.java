@@ -1,33 +1,28 @@
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import android.view.ViewGroup;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.1.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class awpm
-  implements awsc
+  implements awpj
 {
-  public awpm(StoryPlayController paramStoryPlayController) {}
+  awpm(awpl paramawpl) {}
   
-  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void a(awpg paramawpg)
   {
-    int j = 1;
-    int i = 1;
-    if (paramInt1 != 100)
-    {
-      paramString1 = this.a.jdField_a_of_type_Awsb.a.a;
-      if (this.a.jdField_a_of_type_Awsb.c()) {}
-      for (;;)
-      {
-        awrt.a(paramString1, i, String.valueOf(paramInt1), String.valueOf(paramInt2));
-        return;
-        i = 2;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onShowCommonGuideWeb");
     }
-    awrt.e();
-    paramString1 = StoryPlayController.a(this.a);
-    if (this.a.jdField_a_of_type_Awsb.c()) {}
-    for (paramInt1 = j;; paramInt1 = 2)
-    {
-      awrt.a(paramString1, paramInt1, this.a.jdField_a_of_type_Boolean);
-      return;
+    awpl.a(this.a, paramawpg);
+  }
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onShowContactsGuideLayer");
+    }
+    if (awpl.a(this.a) != null) {
+      awpl.a(this.a).post(new LoginwelcomeHelper.1.1(this, paramURLDrawable));
     }
   }
 }

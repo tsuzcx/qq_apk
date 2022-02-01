@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import bgve;
+import bifw;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qflutter.utils.FLog;

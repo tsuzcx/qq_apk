@@ -1,14 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import kotlin.Metadata;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
-public final class bcod
-  implements DialogInterface.OnClickListener
+public class bcod
+  extends bcoa
 {
-  public static final bcod a = new bcod();
+  public int a;
+  public FrameLayout a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public SquareImageView a;
+  public ImageView b;
+  public LinearLayout b;
+  public TextView b;
+  public URLImageView b;
+  public TextView c;
+  public ImageView d;
+  public TextView d;
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public bcod(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365289));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368381));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378490));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131372828));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131377801));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368597));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131369778));
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365922));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365934));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376118));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131381667));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131381669));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131364938));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364970));
+  }
 }
 
 

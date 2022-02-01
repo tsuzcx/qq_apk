@@ -1,15 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.2;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.3;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bmjq
-  implements DialogInterface.OnClickListener
 {
-  public bmjq(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
+  public int a;
+  public Bitmap a;
+  public bmjf a;
+  public bmjg a;
+  public bmjp a;
+  String jdField_a_of_type_JavaLangString;
+  public AtomicBoolean a;
+  public boolean a;
+  public int b;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bmjq(TroopHWJsPlugin paramTroopHWJsPlugin)
   {
-    this.a.a().a(this.a.getActivity());
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_Bmjf = new bmjr(this);
+  }
+  
+  public void a()
+  {
+    ThreadManager.postImmediately(new TroopHWJsPlugin.UploadMediaEntry.2(this), null, false);
+  }
+  
+  public void b()
+  {
+    ThreadManager.postImmediately(new TroopHWJsPlugin.UploadMediaEntry.3(this), null, false);
   }
 }
 

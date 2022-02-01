@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import java.io.File;
+import java.util.Comparator;
 
 public class bdkm
-  implements DialogInterface.OnClickListener
+  implements Comparator<File>
 {
-  public bdkm(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
+  public bdkm(LocalCrashCollector paramLocalCrashCollector) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    paramDialogInterface.dismiss();
-    this.a.getActivity().finish();
-    WriteTogetherEditorFragment.b(this.a);
+    long l = paramFile1.lastModified() - paramFile2.lastModified();
+    if (l > 0L) {
+      return -1;
+    }
+    if (l < 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 

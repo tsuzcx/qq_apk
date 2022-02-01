@@ -1,35 +1,18 @@
-import java.util.Locale;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 class avou
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public static int a;
-  public float a;
-  public long a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public int d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
-  public float l;
+  avou(avor paramavor) {}
   
-  public avou()
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    int m = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = m + 1;
-    this.jdField_b_of_type_Int = m;
-  }
-  
-  public String toString()
-  {
-    return String.format(Locale.getDefault(), "[id:%d, start: %d, x: %f, y: %f, vx: %f, vy: %f, size: %d", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Float.valueOf(this.c), Float.valueOf(this.jdField_d_of_type_Float), Integer.valueOf(this.jdField_d_of_type_Int) });
+    this.a.c = 7;
+    if (avor.a(this.a) != null) {
+      avor.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    }
+    return false;
   }
 }
 

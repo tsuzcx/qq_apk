@@ -1,31 +1,30 @@
 import android.view.View;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import org.jetbrains.annotations.NotNull;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileOtherHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileOtherSettingItem", "Lcom/tencent/mobileqq/widget/FormSwitchItem;", "getProfileOtherSettingItem", "()Lcom/tencent/mobileqq/widget/FormSwitchItem;", "setProfileOtherSettingItem", "(Lcom/tencent/mobileqq/widget/FormSwitchItem;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azaj
-  extends RecyclerView.ViewHolder
+class azaj
+  extends Animation
 {
-  @NotNull
-  private FormSwitchItem a;
+  azaj(azac paramazac, View paramView, int paramInt) {}
   
-  public azaj(@NotNull View paramView)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    super(paramView);
-    paramView = paramView.findViewById(2131372997);
-    if (paramView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
+    super.applyTransformation(paramFloat, paramTransformation);
+    if (paramFloat == 1.0F) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    this.a = ((FormSwitchItem)paramView);
+    do
+    {
+      return;
+      paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    } while (paramTransformation == null);
+    paramTransformation.height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
   }
   
-  @NotNull
-  public final FormSwitchItem a()
+  public boolean willChangeBounds()
   {
-    return this.a;
+    return true;
   }
 }
 

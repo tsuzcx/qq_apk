@@ -1,24 +1,23 @@
-import android.support.annotation.NonNull;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public class bnho
-  extends vko
+class bnho
+  implements Observer<Boolean>
 {
-  public final int a;
-  public final long a;
-  @NonNull
-  public final DoodleEmojiItem a;
-  public final boolean a;
-  public final long b;
-  public boolean b;
+  bnho(bnhf parambnhf) {}
   
-  public bnho(@NonNull DoodleEmojiItem paramDoodleEmojiItem, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = paramDoodleEmojiItem;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    if (paramBoolean == null) {
+      return;
+    }
+    bnhf localbnhf = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bnhf.a(localbnhf, bool);
+      return;
+    }
   }
 }
 

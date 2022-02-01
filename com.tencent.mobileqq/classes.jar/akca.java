@@ -1,25 +1,18 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule.2;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
-public class akca
-  implements akbe
+class akca
+  implements View.OnTouchListener
 {
-  public akca(QWalletIPCModule.2 param2, ResultReceiver paramResultReceiver) {}
+  akca(akbu paramakbu) {}
   
-  public void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadModule" + paramString2 + "|" + paramResourceInfo + "|" + System.currentTimeMillis());
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("id", paramString1);
-    localBundle.putInt("result", paramInt);
-    localBundle.putString("path", paramString2);
-    localBundle.putSerializable("res_info", paramResourceInfo);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

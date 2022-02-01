@@ -1,12 +1,18 @@
-import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface tec
+public class tec
+  implements View.OnClickListener
 {
-  public abstract View a(ViewGroup paramViewGroup);
+  public tec(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public abstract void a(tdz paramtdz1, @Nullable tdz paramtdz2, int paramInt);
+  public void onClick(View paramView)
+  {
+    SlideActiveAnimController.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

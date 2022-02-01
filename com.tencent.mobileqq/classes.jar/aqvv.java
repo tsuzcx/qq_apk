@@ -1,25 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.graphics.Rect;
+import java.util.Comparator;
 
 class aqvv
+  implements Comparator<Rect>
 {
-  aqvv(aqvu paramaqvu) {}
+  aqvv(aqvt paramaqvt) {}
   
-  @QQPermissionDenied(1819)
-  public void denied()
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    QLog.e("CameraHelper", 1, "checkPermission user denied");
-    aqvu.a(this.a);
-    aqvu.a(this.a, false, 1830003);
-  }
-  
-  @QQPermissionGrant(1819)
-  public void grant()
-  {
-    QLog.d("CameraHelper", 1, "checkPermission user grant");
-    aqvu.a(this.a);
-    aqvu.a(this.a, true, 0);
+    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
+    do
+    {
+      return 1;
+      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
+        return -1;
+      }
+    } while (paramRect1.width() > paramRect2.width());
+    if (paramRect1.width() < paramRect2.width()) {
+      return -1;
+    }
+    return 0;
   }
 }
 

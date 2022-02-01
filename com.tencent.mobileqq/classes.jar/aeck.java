@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeck
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public aeck(RegisterActivity paramRegisterActivity) {}
+  public aeck(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
-    {
-      RegisterActivity.b(this.a);
-      return true;
-    }
-    return false;
+    Intent localIntent = new Intent();
+    localIntent.putExtra("set_display_type", 1);
+    PublicFragmentActivity.a(this.a.getActivity(), localIntent, QQSettingChatOperationFragment.class);
+    bdla.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

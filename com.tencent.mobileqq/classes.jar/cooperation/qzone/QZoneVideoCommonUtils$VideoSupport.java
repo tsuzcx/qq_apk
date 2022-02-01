@@ -1,15 +1,15 @@
 package cooperation.qzone;
 
-import amtj;
+import anvx;
 
 public class QZoneVideoCommonUtils$VideoSupport
 {
-  public static final VideoSupport Available = new VideoSupport(true, amtj.a(2131711626), false, false);
+  public static final VideoSupport Available = new VideoSupport(true, anvx.a(2131711973), false, false);
   public static final VideoSupport BlackListBanned;
-  public static final VideoSupport CodecFeatureBanned = new VideoSupport(false, amtj.a(2131711570), false, true);
+  public static final VideoSupport CodecFeatureBanned = new VideoSupport(false, anvx.a(2131711917), false, true);
   public static final VideoSupport ExternalSpaceBanned;
   public static final VideoSupport HardwareLimited;
-  public static final VideoSupport LoadSoFail = new VideoSupport(false, amtj.a(2131711659), true, true);
+  public static final VideoSupport LoadSoFail = new VideoSupport(false, anvx.a(2131712006), true, true);
   public static final VideoSupport NoExternalBanned;
   public static final VideoSupport OSVersionBanned;
   public static final VideoSupport OrderSetBanned = new VideoSupport(false, "CPU指令集不支持", false, true);
@@ -20,11 +20,11 @@ public class QZoneVideoCommonUtils$VideoSupport
   
   static
   {
-    BlackListBanned = new VideoSupport(false, amtj.a(2131711610), false, true);
-    HardwareLimited = new VideoSupport(false, amtj.a(2131711585), false, true);
-    OSVersionBanned = new VideoSupport(false, amtj.a(2131711593), false, true);
-    NoExternalBanned = new VideoSupport(false, amtj.a(2131711597), true, true);
-    ExternalSpaceBanned = new VideoSupport(false, amtj.a(2131711609), true, true);
+    BlackListBanned = new VideoSupport(false, anvx.a(2131711957), false, true);
+    HardwareLimited = new VideoSupport(false, anvx.a(2131711932), false, true);
+    OSVersionBanned = new VideoSupport(false, anvx.a(2131711940), false, true);
+    NoExternalBanned = new VideoSupport(false, anvx.a(2131711944), true, true);
+    ExternalSpaceBanned = new VideoSupport(false, anvx.a(2131711956), true, true);
   }
   
   QZoneVideoCommonUtils$VideoSupport(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)

@@ -1,29 +1,18 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
-public final class xae
-  extends QQUIEventReceiver<wzo, xnu>
+class xae
+  implements ViewPager.OnPageChangeListener
 {
-  public xae(@NonNull wzo paramwzo)
-  {
-    super(paramwzo);
-  }
+  xae(xac paramxac) {}
   
-  public void a(@NonNull wzo paramwzo, @NonNull xnu paramxnu)
-  {
-    if ((paramxnu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxnu.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramwzo.a != null) && (TextUtils.equals(paramxnu.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramwzo.a.b)))
-    {
-      xvv.a(paramwzo.b, "refresh feed item , feed id :%s", paramwzo.a.b);
-      paramwzo.i();
-    }
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public Class acceptEventClass()
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    return xnu.class;
+    this.a.a.setSelectedTab(paramInt, true);
   }
 }
 

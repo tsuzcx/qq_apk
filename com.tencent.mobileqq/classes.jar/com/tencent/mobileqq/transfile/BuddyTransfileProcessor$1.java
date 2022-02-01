@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.transfile;
 
-import amwl;
-import bbkz;
+import anyz;
+import bcrr;
 import com.tencent.qphone.base.util.QLog;
 
 class BuddyTransfileProcessor$1
-  extends amwl
+  extends anyz
 {
   BuddyTransfileProcessor$1(BuddyTransfileProcessor paramBuddyTransfileProcessor) {}
   
-  public void onUpdateUploadStreamFinished(boolean paramBoolean, bbkz parambbkz)
+  public void onUpdateUploadStreamFinished(boolean paramBoolean, bcrr parambcrr)
   {
-    if ((parambbkz != null) && (QLog.isColorLevel())) {
-      QLog.e("streamptt.send", 2, "onUpdateUploadStreamFinished Key:" + parambbkz.jdField_a_of_type_JavaLangString + " seq:" + parambbkz.jdField_a_of_type_Short + " Layer:" + parambbkz.jdField_a_of_type_Int + " RespCode:" + parambbkz.b);
+    if ((parambcrr != null) && (QLog.isColorLevel())) {
+      QLog.e("streamptt.send", 2, "onUpdateUploadStreamFinished Key:" + parambcrr.jdField_a_of_type_JavaLangString + " seq:" + parambcrr.jdField_a_of_type_Short + " Layer:" + parambcrr.jdField_a_of_type_Int + " RespCode:" + parambcrr.b);
     }
     if ((this.this$0.file != null) && (QLog.isColorLevel())) {
       QLog.e("streamptt.send", 2, "isSuccess:" + paramBoolean + "　FilePath:" + this.this$0.file.filePath + " isStreamPttSuccess:" + this.this$0.isStreamPttSuccess);
     }
     this.this$0.setStepFinishTime(2);
-    if ((parambbkz == null) || (parambbkz.jdField_a_of_type_JavaLangString == null) || (!parambbkz.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.this$0.file.filePath))) {
+    if ((parambcrr == null) || (parambcrr.jdField_a_of_type_JavaLangString == null) || (!parambcrr.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.this$0.file.filePath))) {
       return;
     }
     if (!paramBoolean)
     {
-      BuddyTransfileProcessor.access$000(this.this$0, false, parambbkz);
+      BuddyTransfileProcessor.access$000(this.this$0, false, parambcrr);
       return;
     }
-    BuddyTransfileProcessor.access$000(this.this$0, true, parambbkz);
+    BuddyTransfileProcessor.access$000(this.this$0, true, parambcrr);
   }
 }
 

@@ -1,23 +1,26 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ahil
-  extends amsu
+public class ahil
+  implements View.OnClickListener
 {
-  ahil(ahik paramahik) {}
+  public ahil(StructingMsgItemBuilder paramStructingMsgItemBuilder, TextView paramTextView, ChatMessage paramChatMessage, String paramString) {}
   
-  protected void onAddFriend(String paramString)
+  public void onClick(View paramView)
   {
-    if (this.a.sessionInfo.curFriendUin.equals(paramString))
+    if (StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {}
+    for (;;)
     {
-      Intent localIntent = this.a.mActivity.getIntent();
-      localIntent.putExtra("uintype", 0);
-      ahik.b(this.a, localIntent);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.tag + "Q.nearby.follow", 2, "onAddFriend, addUin:" + paramString + "|updateSession");
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", "", "0X8006512", "0X8006512", 0, 0, "", "" + this.jdField_a_of_type_JavaLangString, "", "");
     }
   }
 }

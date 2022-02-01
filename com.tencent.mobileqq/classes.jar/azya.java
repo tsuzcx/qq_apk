@@ -1,14 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
 
 public class azya
-  implements bjuu
+  implements azyg
 {
-  public azya(IosTimepicker paramIosTimepicker) {}
+  public azya(ComponentCenter paramComponentCenter) {}
   
-  public void a(View paramView, int paramInt)
+  public void a(azxs paramazxs)
   {
-    IosTimepicker.a(this.a, paramView, 1);
+    paramazxs.d();
   }
 }
 

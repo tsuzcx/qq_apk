@@ -1,76 +1,122 @@
-import java.io.BufferedReader;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.av.doodle.DoodleSurfaceView;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public class llw
-  extends llv
 {
-  private float jdField_a_of_type_Float;
-  float[] jdField_a_of_type_ArrayOfFloat = { 0.0F };
-  private float jdField_b_of_type_Float;
-  private float[] jdField_b_of_type_ArrayOfFloat = { 1.0F };
-  private boolean c;
+  public static boolean a;
   
-  public float a(float paramFloat)
+  public static int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
-    int j = arrayOfFloat1.length;
-    int i = 1;
-    if (i < j) {
-      if (arrayOfFloat1[i] <= paramFloat) {}
+    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
+  }
+  
+  public static int a(int[] paramArrayOfInt, float paramFloat)
+  {
+    if (paramFloat <= 0.0F) {
+      return paramArrayOfInt[0];
+    }
+    if (paramFloat >= 1.0F) {
+      return paramArrayOfInt[(paramArrayOfInt.length - 1)];
+    }
+    paramFloat = (paramArrayOfInt.length - 1) * paramFloat;
+    int j = (int)paramFloat;
+    paramFloat -= j;
+    int i = paramArrayOfInt[j];
+    j = paramArrayOfInt[(j + 1)];
+    return Color.argb(a(Color.alpha(i), Color.alpha(j), paramFloat), a(Color.red(i), Color.red(j), paramFloat), a(Color.green(i), Color.green(j), paramFloat), a(Color.blue(i), Color.blue(j), paramFloat));
+  }
+  
+  public static DoodleSurfaceView a(ViewGroup paramViewGroup)
+  {
+    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131373491);
+    Object localObject1 = localObject2;
+    View localView;
+    if (localObject2 == null)
+    {
+      localObject1 = new DoodleSurfaceView(paramViewGroup.getContext());
+      localObject2 = new ViewGroup.LayoutParams(-1, -1);
+      localView = paramViewGroup.findViewById(2131373791);
+      if (localView == null) {
+        break label67;
+      }
+    }
+    label67:
+    for (int i = paramViewGroup.indexOfChild(localView);; i = -1)
+    {
+      paramViewGroup.addView((View)localObject1, i, (ViewGroup.LayoutParams)localObject2);
+      return localObject1;
+    }
+  }
+  
+  public static llr a(int paramInt)
+  {
+    Object localObject;
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      localObject = new llx();
     }
     for (;;)
     {
-      if (i == -1)
-      {
-        return this.jdField_b_of_type_ArrayOfFloat[(j - 1)];
-        i += 1;
-        break;
-      }
-      float[] arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
-      j = i - 1;
-      float f1 = arrayOfFloat2[j];
-      float f2 = arrayOfFloat1[j];
-      float f3 = arrayOfFloat2[i];
-      return (paramFloat - f2) / (arrayOfFloat1[i] - f2) * (f3 - f1) + f1;
-      i = -1;
+      ((llr)localObject).a = paramInt;
+      return localObject;
+      localObject = new llx();
+      continue;
+      localObject = new lmc(2130968656);
     }
   }
   
-  public void a(BufferedReader paramBufferedReader)
+  public static void a(ViewGroup paramViewGroup)
   {
-    int j = 0;
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (;;)
+    View localView = paramViewGroup.findViewById(2131373491);
+    if (localView != null) {
+      paramViewGroup.removeView(localView);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    bdla.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static boolean a()
+  {
+    if (a) {
+      return true;
+    }
+    if (!b()) {
+      return false;
+    }
+    a = true;
+    return a;
+  }
+  
+  public static boolean b()
+  {
+    int i = llq.e();
+    if (i < 4)
     {
-      return;
-      this.jdField_a_of_type_Float = llr.a(paramBufferedReader, "highMin");
-      this.jdField_b_of_type_Float = llr.a(paramBufferedReader, "highMax");
-      this.c = llr.a(paramBufferedReader, "relative");
-      this.jdField_b_of_type_ArrayOfFloat = new float[llr.a(paramBufferedReader, "scalingCount")];
-      int i = 0;
-      while (i < this.jdField_b_of_type_ArrayOfFloat.length)
-      {
-        this.jdField_b_of_type_ArrayOfFloat[i] = llr.a(paramBufferedReader, "scaling" + i);
-        i += 1;
-      }
-      this.jdField_a_of_type_ArrayOfFloat = new float[llr.a(paramBufferedReader, "timelineCount")];
-      i = j;
-      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
-      {
-        this.jdField_a_of_type_ArrayOfFloat[i] = llr.a(paramBufferedReader, "timeline" + i);
-        i += 1;
-      }
+      lbd.f("DoodleUtils", "isSupportOfDevice error cpucount = " + i);
+      return false;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.c;
-  }
-  
-  public float b()
-  {
-    return this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * llm.a();
+    long l = llq.d();
+    if (l < 1400000L)
+    {
+      lbd.f("DoodleUtils", "isSupportOfDevice error cpuFrequency = " + l);
+      return false;
+    }
+    l = DeviceInfoUtil.getSystemTotalMemory();
+    if (l < 1073741824L)
+    {
+      lbd.f("DoodleUtils", "isSupportOfDevice error memory = " + l);
+      return false;
+    }
+    return true;
   }
 }
 

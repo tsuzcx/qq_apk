@@ -1,15 +1,16 @@
-public class bnod
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class bnod
+  implements View.OnTouchListener
 {
-  public int a;
-  public bnnz<Boolean, bnoe> a;
-  public String a;
-  public boolean a;
-  public int b;
-  public bnnz<Boolean, bnof> b;
-  public String b;
-  public boolean b;
-  public int c;
-  public int d;
+  bnod(bnoc parambnoc) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

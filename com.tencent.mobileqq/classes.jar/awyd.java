@@ -1,41 +1,115 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
+import android.app.Activity;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public abstract class awyd
+public class awyd
 {
-  protected Context a;
-  protected View a;
-  
-  public awyd(Context paramContext)
+  public static awye a(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return null;
+      paramString = Uri.parse(paramString);
+      if (paramString.isHierarchical())
+      {
+        paramString = paramString.getQueryParameter("_appinfo");
+        if (!TextUtils.isEmpty(paramString)) {
+          try
+          {
+            paramString = Base64.decode(paramString, 10);
+            if (paramString == null)
+            {
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.i("miniAppJump", 2, "appinfo decode error 2");
+              return null;
+            }
+          }
+          catch (Exception paramString)
+          {
+            QLog.e("miniAppJump", 1, "parse miniapp jump url error", paramString);
+            return null;
+          }
+        }
+      }
+    }
+    paramString = new JSONObject(new String(paramString, "UTF-8"));
+    awye localawye = new awye();
+    localawye.jdField_a_of_type_Int = paramString.getInt("type");
+    localawye.jdField_a_of_type_JavaLangString = paramString.getString("appid");
+    localawye.jdField_b_of_type_JavaLangString = paramString.optString("pageName");
+    localawye.jdField_b_of_type_Int = paramString.optInt("from");
+    localawye.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("param");
+    return localawye;
   }
   
-  protected abstract int a();
-  
-  public View a()
+  public static boolean a(Activity paramActivity, awye paramawye, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView;
+    if (paramawye == null) {}
+    while ((paramawye.jdField_a_of_type_Int == 4) || (paramawye.jdField_a_of_type_Int != 3)) {
+      return false;
     }
-    int i = a();
-    if (i > 0)
+    awxy.a(paramActivity, paramawye.jdField_a_of_type_JavaLangString, paramawye.jdField_a_of_type_Int, null);
+    return true;
+  }
+  
+  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
+  {
+    return a(paramActivity, a(paramString), paramBundle);
+  }
+  
+  public static boolean a(BaseActivity paramBaseActivity, String paramString, MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {
+      return false;
+    }
+    Bundle localBundle = new Bundle();
+    QQAppInterface localQQAppInterface = paramBaseActivity.app;
+    localBundle.putString("uin", localQQAppInterface.getCurrentAccountUin());
+    boolean bool;
+    if (paramMessageRecord.istroop == 1)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, null);
-      a(this.jdField_a_of_type_AndroidViewView);
+      localBundle.putString("gc", paramMessageRecord.frienduin);
+      if ((TroopUtils.isTroopOwner(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.getCurrentUin())) || (TroopUtils.isTroopAdmin(localQQAppInterface, paramMessageRecord.frienduin, localQQAppInterface.getCurrentUin())))
+      {
+        bool = true;
+        localBundle.putBoolean("isAdmin", bool);
+      }
+    }
+    else
+    {
+      paramString = a(paramString);
+      bool = a(paramBaseActivity, paramString, localBundle);
+      if ((paramString != null) && (bool) && ((paramMessageRecord instanceof MessageForGrayTips)) && (paramString.jdField_a_of_type_Int == 4) && (paramString.jdField_a_of_type_JavaLangString.equals("101474665")))
+      {
+        if (paramString.jdField_b_of_type_Int != 1) {
+          break label186;
+        }
+        bdla.b(localQQAppInterface, "dc00899", "Grp_idol", "", "idol_follow", "follow_suc_clk", 0, 0, paramMessageRecord.frienduin, "", "", "");
+      }
     }
     for (;;)
     {
-      return this.jdField_a_of_type_AndroidViewView;
-      this.jdField_a_of_type_AndroidViewView = null;
+      return bool;
+      bool = false;
+      break;
+      label186:
+      if (paramString.jdField_b_of_type_Int == 2) {
+        bhbu.a("Grp_idol", "Grp_AIO", "clk_renwu", 0, 0, new String[] { paramMessageRecord.frienduin });
+      }
     }
   }
-  
-  protected void a(View paramView) {}
-  
-  public abstract void a(NearbyPeopleCard paramNearbyPeopleCard);
 }
 
 

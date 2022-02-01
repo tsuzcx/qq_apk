@@ -1,8 +1,9 @@
 package com.tencent.biz.viewplugin;
 
+import aapg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhab;
+import bikt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -10,8 +11,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import dalvik.system.DexClassLoader;
 import java.io.File;
-import nny;
-import zzu;
+import nuz;
 
 public class ViewPluginLoader$1
   implements Runnable
@@ -21,7 +21,7 @@ public class ViewPluginLoader$1
     String str;
     synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
     {
-      str = zzu.a(this.this$0) + this.this$0.b;
+      str = aapg.a(this.this$0) + this.this$0.b;
       if (!new File(str).exists())
       {
         this.a.notifyUI(3, true, Integer.valueOf(1));
@@ -39,7 +39,7 @@ public class ViewPluginLoader$1
             continue;
           }
           FileUtils.deleteDirectory(((File)localObject3).getAbsolutePath());
-          this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("sp_key_version_prefix" + this.this$0.b, nny.a(this.this$0.jdField_a_of_type_JavaLangString)).commit();
+          this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("sp_key_version_prefix" + this.this$0.b, nuz.a(this.this$0.jdField_a_of_type_JavaLangString)).commit();
           ((File)localObject3).mkdirs();
         }
         if (!((File)localObject3).exists()) {

@@ -1,72 +1,32 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yjs
-  extends yju<yjh, yjh>
+  extends QQUIEventReceiver<yjc, wcx>
 {
-  private final int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final WeakReference<xzp> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public yjs(String paramString, xzp paramxzp, int paramInt)
+  public yjs(@NonNull yjc paramyjc)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxzp);
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramyjc);
   }
   
-  protected void a(JobContext paramJobContext, yjh paramyjh)
+  public void a(@NonNull yjc paramyjc, @NonNull wcx paramwcx)
   {
-    xvv.a("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    yjn localyjn = paramyjh.jdField_a_of_type_Yjn;
-    int i = localyjn.c;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      paramJobContext = (xzp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    while (paramJobContext != null)
+    if (paramwcx.a())
     {
-      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
-      if (localBitmap != null)
-      {
-        try
-        {
-          String str2 = this.jdField_a_of_type_JavaLangString;
-          String str1 = str2;
-          if (str2 == null) {
-            str1 = yjx.a(paramyjh.jdField_a_of_type_Int, paramyjh.b, ".jpg");
-          }
-          i = new yjp(localBitmap, str1, localyjn.jdField_a_of_type_Int, localyjn.jdField_b_of_type_Int, i, localyjn.jdField_a_of_type_Float, localyjn.jdField_a_of_type_Double, localyjn.jdField_b_of_type_Double, paramyjh.jdField_a_of_type_Int).a(new Void[0]).intValue();
-          paramJobContext.a(localBitmap);
-          if (i != 0) {
-            break label217;
-          }
-          paramyjh.jdField_a_of_type_JavaLangString = str1;
-          paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
-          xvv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-          super.notifyResult(paramyjh);
-          return;
-        }
-        finally
-        {
-          paramJobContext.a(localBitmap);
-        }
-        paramJobContext = null;
-        continue;
-        label217:
-        xvv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, amtj.a(2131704809) + this.jdField_a_of_type_Int));
-      }
-      else
-      {
-        xvv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, amtj.a(2131704814) + this.jdField_a_of_type_Int));
-        return;
-      }
+      ykq.b(this.TAG, "group video upload");
+      return;
     }
-    xvv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    super.notifyError(new ErrorMessage(-1, amtj.a(2131704810) + this.jdField_a_of_type_Int));
+    if (!paramwcx.b())
+    {
+      ykq.b(this.TAG, "ignore personal video");
+      return;
+    }
+    paramyjc.a(paramwcx);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wcx.class;
   }
 }
 

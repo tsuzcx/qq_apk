@@ -1,16 +1,84 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.avgame.gamelogic.data.RoomInfo;
-import com.tencent.avgame.ui.AVGameJoinRoomFragment;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.Handler;
+import android.support.v4.util.MQLruCache;
+import com.tencent.avgame.gameroom.AVGameLottieHelper.2;
+import com.tencent.avgame.gameroom.AVGameLottieHelper.4;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.FileInputStream;
+import org.jetbrains.annotations.Nullable;
 
 public class nhu
-  extends mya
 {
-  public nhu(AVGameJoinRoomFragment paramAVGameJoinRoomFragment) {}
-  
-  public void b(int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong1, long paramLong2)
+  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, nhz paramnhz)
   {
-    super.b(paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong1, paramLong2);
-    this.a.getActivity().finish();
+    try
+    {
+      LottieComposition.Factory.fromAssetFileName(paramContext, paramString1, new nhx(paramInt1, paramContext, paramInt2, paramInt3, paramString2, paramnhz));
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("AVGameLottieHelper", 1, "fromAssetFileName fail", paramContext);
+      bjum.a().post(new AVGameLottieHelper.4(paramnhz));
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, nhz paramnhz)
+  {
+    paramString1 = ngl.a() + paramString1;
+    paramString2 = ngl.a() + paramString2;
+    if (QLog.isColorLevel()) {
+      QLog.d("AVGameLottieHelper", 2, "loadLottieAnim  animJsonPath = " + paramString1 + ",animImageDirPath = " + paramString2);
+    }
+    if ((FileUtils.fileExistsAndNotEmpty(paramString1)) && (FileUtils.fileExistsAndNotEmpty(paramString2)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AVGameLottieHelper", 2, "loadLottieAnim loadLottieAnimFromFile");
+      }
+      b(paramContext, paramString1, paramString2, paramInt1, paramInt2, paramnhz);
+    }
+  }
+  
+  @Nullable
+  private static Bitmap b(String paramString)
+  {
+    Object localObject = BaseApplicationImpl.sImageCache.get(paramString);
+    if ((localObject != null) && ((localObject instanceof Bitmap))) {
+      return (Bitmap)localObject;
+    }
+    try
+    {
+      localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inScaled = false;
+      localObject = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
+      BaseApplicationImpl.sImageCache.put(paramString, localObject);
+      return localObject;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.i("AVGameLottieHelper", 1, "getBitmap error " + paramString.getMessage());
+    }
+    return null;
+  }
+  
+  public static void b(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, nhz paramnhz)
+  {
+    try
+    {
+      LottieComposition.Factory.fromInputStream(paramContext, new FileInputStream(paramString1), new nhv(paramInt1, paramInt2, paramContext, paramString2, paramnhz));
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("AVGameLottieHelper", 1, "fromAssetFileName fail", paramContext);
+      bjum.a().post(new AVGameLottieHelper.2(paramnhz));
+    }
   }
 }
 

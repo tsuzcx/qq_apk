@@ -1,15 +1,18 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import kotlin.Metadata;
 
-public class srz
-  implements MessageQueue.IdleHandler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"}, k=3, mv={1, 1, 16})
+final class srz
+  implements View.OnTouchListener
 {
-  public srz(FastWebActivity paramFastWebActivity) {}
+  srz(srv paramsrv) {}
   
-  public boolean queueIdle()
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    FastWebActivity.e(this.a);
-    return false;
+    srv.a(this.a);
+    return true;
   }
 }
 

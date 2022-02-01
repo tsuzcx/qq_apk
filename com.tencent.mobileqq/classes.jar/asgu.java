@@ -1,13 +1,20 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import org.json.JSONObject;
+
 public class asgu
+  extends oof
 {
-  long jdField_a_of_type_Long = 0L;
-  asgx jdField_a_of_type_Asgx;
-  public volatile boolean a;
-  public volatile boolean b = false;
+  public asgu(MessengerService paramMessengerService) {}
   
-  asgu(asgt paramasgt)
+  public void a(Object paramObject)
   {
-    this.jdField_a_of_type_Boolean = false;
+    if (this.a.a != null)
+    {
+      this.a.a.putString("data", bgzr.a(paramObject).toString());
+      this.a.a(this.a.a);
+      this.a.a = null;
+    }
   }
 }
 

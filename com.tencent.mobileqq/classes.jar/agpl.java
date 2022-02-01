@@ -1,48 +1,297 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.text.TextUtils;
+import com.tencent.ark.ark.RuntimeClassCallbackWrapper;
+import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import mqq.app.NewIntent;
+import java.lang.ref.WeakReference;
 
 public class agpl
-  implements bjsz
+  implements agpk, ark.RuntimeClassCallbackWrapper
 {
-  public agpl(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Activity paramActivity, AbsStructMsg paramAbsStructMsg) {}
+  private agpj jdField_a_of_type_Agpj;
+  private ark.VariantWrapper jdField_a_of_type_ComTencentArkArk$VariantWrapper;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(bjsy parambjsy)
+  public agpl(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  private void a(ark.VariantWrapper paramVariantWrapper)
+  {
+    if (this.jdField_a_of_type_ComTencentArkArk$VariantWrapper != null)
+    {
+      this.jdField_a_of_type_ComTencentArkArk$VariantWrapper.Reset();
+      this.jdField_a_of_type_ComTencentArkArk$VariantWrapper = null;
+    }
+    if (paramVariantWrapper != null) {
+      this.jdField_a_of_type_ComTencentArkArk$VariantWrapper = paramVariantWrapper.Copy();
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Agpj != null)
+    {
+      this.jdField_a_of_type_Agpj.a(null);
+      this.jdField_a_of_type_Agpj.a();
+      this.jdField_a_of_type_Agpj = null;
+    }
+  }
+  
+  public boolean Destruct()
+  {
+    b();
+    a(null);
+    return true;
+  }
+  
+  public boolean HasMethod(String paramString)
+  {
+    return (paramString.equals("Open")) || (paramString.equals("Abort")) || (paramString.equals("AttachEvent")) || (paramString.equals("DetachEvent")) || (paramString.equals("Send")) || (paramString.equals("SetTimeout")) || (paramString.equals("IsSuccess")) || (paramString.equals("GetData"));
+  }
+  
+  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return false;
+      if (paramString.equals("Open")) {
+        return a(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+      if (paramString.equals("Abort")) {
+        return b(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+      if (paramString.equals("AttachEvent")) {
+        return c(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+      if (paramString.equals("DetachEvent")) {
+        return d(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+      if (paramString.equals("Send")) {
+        return e(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+      if (paramString.equals("SetTimeout")) {
+        return f(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+      if (paramString.equals("IsSuccess")) {
+        return g(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+    } while (!paramString.equals("GetData"));
+    return h(paramArrayOfVariantWrapper, paramVariantWrapper);
+  }
+  
+  public boolean IsModule()
+  {
+    return false;
+  }
+  
+  protected String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    int i;
+    do
+    {
+      return null;
+      i = paramString.indexOf("://");
+    } while (i < 0);
+    return paramString.substring(0, i);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Agpj == null) {}
+    while ((this.jdField_a_of_type_ComTencentArkArk$VariantWrapper == null) || (!this.jdField_a_of_type_ComTencentArkArk$VariantWrapper.IsFunction())) {
       return;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("msg_template_id");
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, odw.class);
-    localNewIntent.putExtra("cmd", "PubAccountFollowSvc.subscribe");
-    mobileqq_mp.SubscribeRequest localSubscribeRequest = new mobileqq_mp.SubscribeRequest();
-    localSubscribeRequest.msg_id.set(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
-    localSubscribeRequest.index.set(parambjsy.a);
-    long l1 = 0L;
-    try
+    this.jdField_a_of_type_ComTencentArkArk$VariantWrapper.InvokeDefault(null, null);
+  }
+  
+  protected boolean a(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    b();
+    if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {}
+    for (;;)
     {
-      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
-      l1 = l2;
+      paramVariantWrapper.SetBool(false);
+      return true;
+      paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
+      if (!TextUtils.isEmpty(paramArrayOfVariantWrapper))
+      {
+        Object localObject = a(paramArrayOfVariantWrapper);
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equalsIgnoreCase("sso")))
+        {
+          localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (localObject != null) {}
+          for (this.jdField_a_of_type_Agpj = new agpw((QQAppInterface)localObject, this.jdField_a_of_type_JavaLangString); this.jdField_a_of_type_Agpj.a(paramArrayOfVariantWrapper); this.jdField_a_of_type_Agpj = new agpu(this.jdField_a_of_type_JavaLangString))
+          {
+            paramVariantWrapper.SetBool(true);
+            return true;
+          }
+        }
+      }
     }
-    catch (Exception parambjsy)
+  }
+  
+  protected boolean b(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    b();
+    paramVariantWrapper.SetBool(true);
+    return true;
+  }
+  
+  protected boolean c(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 3)) {}
+    String str;
+    do
     {
-      label108:
-      break label108;
+      paramVariantWrapper.SetBool(false);
+      return true;
+      str = paramArrayOfVariantWrapper[1].GetString();
+      paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[2];
+    } while ((TextUtils.isEmpty(str)) || (paramArrayOfVariantWrapper == null) || (!paramArrayOfVariantWrapper.IsFunction()) || (!str.equals("OnComplete")));
+    a(paramArrayOfVariantWrapper);
+    paramVariantWrapper.SetBool(true);
+    return true;
+  }
+  
+  protected boolean d(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {}
+    do
+    {
+      paramVariantWrapper.SetBool(false);
+      return true;
+      paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
+    } while ((TextUtils.isEmpty(paramArrayOfVariantWrapper)) || (!paramArrayOfVariantWrapper.equals("OnComplete")));
+    a(null);
+    paramVariantWrapper.SetBool(true);
+    return true;
+  }
+  
+  protected boolean e(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((this.jdField_a_of_type_Agpj == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {}
+    do
+    {
+      paramVariantWrapper.SetBool(false);
+      return true;
+      paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1];
+    } while (paramArrayOfVariantWrapper == null);
+    if (paramArrayOfVariantWrapper.GetType() == 1) {
+      paramArrayOfVariantWrapper = null;
     }
-    localSubscribeRequest.template_id.set(str);
-    localSubscribeRequest.puin.set(l1);
-    localNewIntent.setObserver(new agpm(this, str));
-    localNewIntent.putExtra("data", localSubscribeRequest.toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a.startServlet(localNewIntent);
-    StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
+    for (;;)
+    {
+      this.jdField_a_of_type_Agpj.a(this);
+      if (!this.jdField_a_of_type_Agpj.b(paramArrayOfVariantWrapper)) {
+        break;
+      }
+      paramVariantWrapper.SetBool(true);
+      return true;
+      if (paramArrayOfVariantWrapper.GetType() == 5)
+      {
+        paramArrayOfVariantWrapper = paramArrayOfVariantWrapper.GetString();
+      }
+      else
+      {
+        if ((!paramArrayOfVariantWrapper.IsArray()) && (!paramArrayOfVariantWrapper.IsTable())) {
+          break;
+        }
+        paramArrayOfVariantWrapper = paramArrayOfVariantWrapper.GetTableAsJsonString();
+      }
+    }
+  }
+  
+  protected boolean f(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    int j = 0;
+    if ((this.jdField_a_of_type_Agpj == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2))
+    {
+      paramVariantWrapper.SetBool(false);
+      return true;
+    }
+    paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1];
+    int i;
+    if (paramArrayOfVariantWrapper == null) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < 0) {
+        i = j;
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Agpj.a(i);
+        paramVariantWrapper.SetBool(true);
+        return true;
+        if (paramArrayOfVariantWrapper.GetType() == 3)
+        {
+          i = paramArrayOfVariantWrapper.GetInt();
+          break;
+        }
+        if (paramArrayOfVariantWrapper.GetType() != 4) {
+          break label97;
+        }
+        i = (int)paramArrayOfVariantWrapper.GetDouble();
+        break;
+      }
+      label97:
+      i = 0;
+    }
+  }
+  
+  protected boolean g(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    boolean bool = false;
+    if ((this.jdField_a_of_type_Agpj == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1))
+    {
+      paramVariantWrapper.SetBool(false);
+      return true;
+    }
+    if (this.jdField_a_of_type_Agpj.a() == 0) {
+      bool = true;
+    }
+    paramVariantWrapper.SetBool(bool);
+    return true;
+  }
+  
+  protected boolean h(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((this.jdField_a_of_type_Agpj == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {}
+    String str;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              paramVariantWrapper.SetNull();
+              return true;
+            } while (this.jdField_a_of_type_Agpj.a() != 0);
+            str = this.jdField_a_of_type_Agpj.a();
+          } while (str == null);
+          paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
+        } while (TextUtils.isEmpty(paramArrayOfVariantWrapper));
+        if (!paramArrayOfVariantWrapper.equals("text")) {
+          break;
+        }
+        paramArrayOfVariantWrapper = str;
+        if (str == null) {
+          paramArrayOfVariantWrapper = "";
+        }
+      } while (!paramVariantWrapper.SetString(paramArrayOfVariantWrapper));
+      return true;
+    } while ((!paramArrayOfVariantWrapper.equals("json")) || (!paramVariantWrapper.SetTableAsJsonString(str)));
+    return true;
   }
 }
 

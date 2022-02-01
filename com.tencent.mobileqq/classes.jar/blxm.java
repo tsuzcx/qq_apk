@@ -1,31 +1,45 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.pluginbridge.BridgeHelper;
+import cooperation.pluginbridge.BridgePluginInstallActivity;
 
-class blxm
-  implements Observer<blxe>
+public class blxm
+  extends BroadcastReceiver
 {
-  blxm(blxk paramblxk, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
-  
-  public void a(@Nullable blxe paramblxe)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramblxe != null)
-    {
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextColor(paramblxe.a);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineColor(paramblxe.b);
-      if (paramblxe.a.equals("#ccffffff"))
-      {
-        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadowParam(3.0F, 0.0F, 1.0F, "#73000000");
-        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(true);
-        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(false);
-      }
+    paramIntent = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("BridgeHelper", 2, "action:" + paramIntent);
     }
-    else
+    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent))) {}
+    try
     {
+      paramContext.unregisterReceiver(BridgeHelper.a());
+      BridgeHelper.a(null);
+      if (BridgeHelper.a() != null)
+      {
+        BridgeHelper.a().dismiss();
+        BridgeHelper.a(null);
+      }
+      if ((paramContext instanceof BridgePluginInstallActivity))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("BridgeHelper", 2, "Activity finish!");
+        }
+        ((BridgePluginInstallActivity)paramContext).finish();
+      }
       return;
     }
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(false);
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(true);
+    catch (Exception paramIntent)
+    {
+      for (;;)
+      {
+        paramIntent.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,13 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.image.AbstractGifImage;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-class aiub
-  implements DialogInterface.OnDismissListener
+public final class aiub
+  implements MessageQueue.IdleHandler
 {
-  aiub(aitt paramaitt) {}
+  final SearchContactsActivity a;
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public aiub(SearchContactsActivity paramSearchContactsActivity)
+  {
+    this.a = paramSearchContactsActivity;
+  }
+  
+  public boolean queueIdle()
+  {
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
+  }
 }
 
 

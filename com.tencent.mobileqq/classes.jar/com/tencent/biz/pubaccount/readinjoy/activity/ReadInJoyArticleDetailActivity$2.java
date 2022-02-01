@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import java.util.List;
-import pkm;
+import pvj;
 
 class ReadInJoyArticleDetailActivity$2
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyArticleDetailActivity$2
   
   public void run()
   {
-    pkm.a().a(this.a);
+    pvj.a().a(this.a);
   }
 }
 

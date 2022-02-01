@@ -1,5 +1,5 @@
 class eu
-  implements bjoy
+  implements blak
 {
   eu(es parames) {}
   

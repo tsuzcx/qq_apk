@@ -1,83 +1,65 @@
-import androidx.annotation.NonNull;
+import android.os.Handler;
+import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public abstract class nan
-  implements mzq
+class nan
+  extends mzp
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean = false;
-  String[] jdField_a_of_type_ArrayOfJavaLangString = new String[3];
-  String b = "";
+  nan(nah paramnah) {}
   
-  public int a()
+  public void a(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_Int;
+    paramString = this.a;
+    paramString.jdField_a_of_type_Int -= 1;
+    if (this.a.c) {}
+    for (paramString = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);; paramString = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5))
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+      return;
+    }
   }
   
-  public long a()
+  public void a(String arg1, String paramString2, int paramInt1, int paramInt2, List<bfmo> paramList)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  @Nullable
-  public String a()
-  {
-    return this.b;
-  }
-  
-  public List<? extends mzq> a()
-  {
-    return null;
-  }
-  
-  public abstract mzq a();
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(mzq parammzq)
-  {
-    return (parammzq != null) && (parammzq.a() == a()) && (parammzq.b() == b());
-  }
-  
-  public String[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id").append("=").append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append("isTopicBank").append("=").append(this.jdField_a_of_type_Boolean).append("|");
-    localStringBuilder.append("gameType").append("=").append(b()).append("|");
-    localStringBuilder.append("content").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append("answer").append("=").append(this.b).append("|");
-    localStringBuilder.append("buff type").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[0]).append("|");
-    localStringBuilder.append("buff point").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[1]).append("|");
-    localStringBuilder.append("buff color").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[2]).append("|");
-    return localStringBuilder.toString();
+    boolean bool = true;
+    int i = 0;
+    paramString2 = this.a;
+    paramString2.jdField_a_of_type_Int -= 1;
+    this.a.jdField_b_of_type_JavaLangString = ???;
+    this.a.jdField_b_of_type_Int = paramInt2;
+    ??? = this.a;
+    if (paramInt1 == 1) {}
+    for (;;)
+    {
+      ???.f = bool;
+      synchronized (this.a.jdField_a_of_type_JavaLangObject)
+      {
+        if (this.a.jdField_b_of_type_JavaUtilList != null)
+        {
+          this.a.jdField_b_of_type_JavaUtilList.clear();
+          label86:
+          paramInt1 = i;
+          label91:
+          if (paramInt1 >= paramList.size()) {
+            break;
+          }
+        }
+      }
+      synchronized (this.a.jdField_a_of_type_JavaLangObject)
+      {
+        this.a.jdField_b_of_type_JavaUtilList.add(paramList.get(paramInt1));
+        paramInt1 += 1;
+        break label91;
+        bool = false;
+        continue;
+        this.a.jdField_b_of_type_JavaUtilList = new ArrayList();
+        break label86;
+        paramString2 = finally;
+        throw paramString2;
+      }
+    }
+    ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
   }
 }
 

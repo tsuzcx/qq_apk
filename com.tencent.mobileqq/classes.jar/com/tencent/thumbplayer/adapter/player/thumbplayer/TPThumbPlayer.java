@@ -188,6 +188,7 @@ public class TPThumbPlayer
       TPProgramInfo localTPProgramInfo = new TPProgramInfo();
       localTPProgramInfo.name = paramTPNativePlayerProgramInfo.name;
       localTPProgramInfo.bandwidth = paramTPNativePlayerProgramInfo.bandwidth;
+      localTPProgramInfo.resolution = paramTPNativePlayerProgramInfo.resolution;
       return localTPProgramInfo;
     }
     return null;

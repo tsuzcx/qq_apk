@@ -1,56 +1,54 @@
-import android.view.View;
+import android.content.Context;
+import android.os.Bundle;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
-import com.tencent.mobileqq.gamecenter.web.view.QQGameIndicator2;
-import com.tencent.mobileqq.gamecenter.web.view.UnreadTipLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
 
 public class auap
-  implements View.OnClickListener
+  extends auft
 {
-  public auap(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new auaq(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public void onClick(View paramView)
+  public auap(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
   {
-    int i;
-    int j;
-    if (QQGameFeedWebFragment.a(this.a) != null)
-    {
-      if (QQGameFeedWebFragment.a(this.a) == null) {}
-      for (i = 0; this.a.a >= 3; i = QQGameFeedWebFragment.a(this.a).size())
-      {
-        QQGameFeedWebFragment.a(this.a).setCurrentItem(QQGameFeedWebFragment.a(this.a).getCount());
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-      }
-      j = QQGameFeedWebFragment.a(this.a).getCurrentItem();
-      if (j + 1 >= i) {
-        break label211;
-      }
-      QQGameFeedWebFragment.a(this.a).setCurrentItem(j + 1);
+    super(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+    c();
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131377339));
+    this.b = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131372043));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+  }
+  
+  public void a()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131692206) + this.jdField_a_of_type_AndroidContentContext.getString(2131692446) + atpm.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131692447);
+    long l = atpm.d();
+    String str = "";
+    if (l > 0L) {
+      str = this.jdField_a_of_type_AndroidContentContext.getString(2131692273) + FileUtil.filesizeToString(l);
     }
-    for (;;)
+    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (atpm.b() > 0L) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (this.a.a == 0)
-      {
-        QQGameFeedWebFragment.a(this.a).setVisibility(0);
-        QQGameFeedWebFragment.a(this.a).setVisibility(4);
-        QQGameFeedWebFragment.a(this.a).b();
-      }
-      HashMap localHashMap = new HashMap();
-      localHashMap.put(Integer.valueOf(4), "20");
-      localHashMap.put(Integer.valueOf(24), "1");
-      abet.a(alvx.a(), "769", "207553", "", "76925", "1", "160", localHashMap);
-      break;
-      label211:
-      if (j == i - 1) {
-        QQGameFeedWebFragment.a(this.a).setCurrentItem(i);
-      }
+      ((TextView)localObject).setEnabled(bool);
+      this.b.setText(str);
+      return;
     }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    if (this.jdField_a_of_type_Boolean) {}
   }
 }
 

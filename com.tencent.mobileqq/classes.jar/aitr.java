@@ -1,6 +1,17 @@
-public abstract interface aitr
+import android.os.Handler;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+
+public class aitr
+  extends Handler
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public aitr(SearchBaseActivity paramSearchBaseActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a.clearFocus();
+  }
 }
 
 

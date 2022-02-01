@@ -1,73 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 
-public class aqct
-  extends aptq<aqcu>
+class aqct
+  extends bkxp
 {
-  @NonNull
-  public aqcu a(int paramInt)
-  {
-    return new aqcu();
-  }
+  aqct(aqcq paramaqcq) {}
   
-  @Nullable
-  public aqcu a(aptx[] paramArrayOfaptx)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null)) {
-      return aqcu.a(paramArrayOfaptx[0].a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(aqcu paramaqcu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onUpdate " + paramaqcu.toString());
-    }
-  }
-  
-  public Class<aqcu> clazz()
-  {
-    return aqcu.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 551;
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqct
  * JD-Core Version:    0.7.0.1
  */

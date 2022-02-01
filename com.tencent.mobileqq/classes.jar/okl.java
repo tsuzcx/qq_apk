@@ -1,27 +1,36 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class okl
-  implements zop
+  extends AsyncTask<String, Integer, String>
 {
-  public okl(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void callback(Bundle paramBundle)
+  protected String a(String... paramVarArgs)
   {
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      ReadInJoyArticleDetailActivity.a(this.a, paramBundle.getByteArray("decryptResult"));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArticleDetail", 2, "请求返回时间" + System.currentTimeMillis());
-      }
-      if (ReadInJoyArticleDetailActivity.a(this.a) == null) {
-        this.a.jdField_a_of_type_JavaLangString = null;
-      }
-      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
+    if (super.isCancelled()) {
+      return null;
     }
+    return this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(paramVarArgs[0], paramVarArgs[1]);
   }
+  
+  protected void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "{\"r\" : \"-100\"}";
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs("clientCallback", new String[] { nwo.a(str), nwo.a(this.jdField_a_of_type_JavaLangString) });
+  }
+  
+  protected void a(Integer... paramVarArgs) {}
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
+  }
+  
+  protected void onPreExecute() {}
 }
 
 

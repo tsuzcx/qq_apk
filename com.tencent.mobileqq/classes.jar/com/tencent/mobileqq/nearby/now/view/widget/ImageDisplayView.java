@@ -5,8 +5,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import awqc;
-import awsz;
+import axwe;
+import axzb;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -20,7 +20,7 @@ public class ImageDisplayView
   implements URLDrawable.URLDrawableListener
 {
   private View jdField_a_of_type_AndroidViewView;
-  private awsz jdField_a_of_type_Awsz;
+  private axzb jdField_a_of_type_Axzb;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   public FitXImageView a;
   
@@ -44,8 +44,8 @@ public class ImageDisplayView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561182, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView = ((FitXImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365651));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561243, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView = ((FitXImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365744));
   }
   
   private void a(String paramString, int paramInt1, int paramInt2)
@@ -55,20 +55,20 @@ public class ImageDisplayView
   
   public void a(VideoData paramVideoData)
   {
-    awrs.c = paramVideoData.jdField_a_of_type_JavaLangString;
-    awrs.d = String.valueOf(paramVideoData.jdField_a_of_type_Long);
+    axxu.c = paramVideoData.jdField_a_of_type_JavaLangString;
+    axxu.d = String.valueOf(paramVideoData.jdField_a_of_type_Long);
     if (paramVideoData.jdField_a_of_type_Int == 4)
     {
-      a(((awqc)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangString, ((awqc)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Int, ((awqc)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).b);
+      a(((axwe)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangString, ((axwe)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Int, ((axwe)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).b);
       return;
     }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mUseAutoScaleParams = true;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(((awqc)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(((axwe)paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangString, localURLDrawableOptions);
     if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)
     {
       this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      this.jdField_a_of_type_Awsz.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicWidth(), this.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicHeight());
+      this.jdField_a_of_type_Axzb.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicWidth(), this.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicHeight());
       return;
     }
     this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
@@ -77,15 +77,15 @@ public class ImageDisplayView
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_Awsz != null) {
-      this.jdField_a_of_type_Awsz.a(paramURLDrawable.getURL().toString(), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView, 1);
+    if (this.jdField_a_of_type_Axzb != null) {
+      this.jdField_a_of_type_Axzb.a(paramURLDrawable.getURL().toString(), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView, 1);
     }
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.jdField_a_of_type_Awsz != null) {
-      this.jdField_a_of_type_Awsz.a(paramURLDrawable.getURL().toString(), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView, 0);
+    if (this.jdField_a_of_type_Axzb != null) {
+      this.jdField_a_of_type_Axzb.a(paramURLDrawable.getURL().toString(), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView, 0);
     }
   }
   
@@ -94,12 +94,12 @@ public class ImageDisplayView
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView.setImageDrawable(paramURLDrawable);
-    this.jdField_a_of_type_Awsz.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
+    this.jdField_a_of_type_Axzb.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
   }
   
-  public void setRelayoutListener(awsz paramawsz)
+  public void setRelayoutListener(axzb paramaxzb)
   {
-    this.jdField_a_of_type_Awsz = paramawsz;
+    this.jdField_a_of_type_Axzb = paramaxzb;
   }
 }
 

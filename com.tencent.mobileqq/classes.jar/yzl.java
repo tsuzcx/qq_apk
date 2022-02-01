@@ -1,14 +1,6 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-
-class yzl
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface yzl
 {
-  yzl(yzj paramyzj) {}
-  
-  public void onGlobalLayout()
-  {
-    yzj.a(this.a, this.a.e());
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

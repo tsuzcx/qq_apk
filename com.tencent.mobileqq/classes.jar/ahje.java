@@ -1,11 +1,16 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+
 class ahje
-  implements zuz
+  implements bils
 {
-  ahje(ahiu paramahiu) {}
+  ahje(ahjd paramahjd) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void a(View paramView)
   {
-    ahiu.a(this.a, paramString);
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

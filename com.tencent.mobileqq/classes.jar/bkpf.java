@@ -1,109 +1,56 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bkpf
+class bkpf
+  implements IActivityResultListener
 {
-  public static void a(AppRuntime paramAppRuntime, int paramInt)
-  {
-    a(paramAppRuntime, "User_NewFav", paramInt, 0, 0);
-  }
+  bkpf(bkpb parambkpb, AsyncResult paramAsyncResult, IActivityResultManager paramIActivityResultManager) {}
   
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    a(paramAppRuntime, "User_AddFav", paramInt2, 0, paramInt1);
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfavReport", 2, "subAction= 0X800AA51, actionName = 0X800AA51, fromType = " + paramInt1 + ", actionResult = " + paramInt2 + ", ext2 = " + paramInt3);
-    }
-    bcef.b(null, "dc00898", "", "", "0X800AA51", "0X800AA51", paramInt1, paramInt2, "" + paramInt3, "", "", "");
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(paramAppRuntime, paramString, paramInt1, paramInt2, paramInt3, 0, "", "");
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
-  {
-    QQAppInterface localQQAppInterface = null;
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)paramAppRuntime;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfavReport", 2, "actionName = " + paramString1 + ", fromType = " + paramInt1 + ", actionResult = " + paramInt2 + ", ext2 =" + paramInt3 + ", ext3 =" + paramInt4 + ", ext4 =" + paramString2 + ", ext5 =" + paramString3);
-    }
-    String str1 = "" + paramInt3;
-    String str2 = "" + paramInt4;
-    if (paramString2 == null)
+    QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
+    if (paramInt1 == 3)
     {
-      paramAppRuntime = "";
-      if (paramString3 != null) {
-        break label196;
-      }
-    }
-    label196:
-    for (paramString2 = "";; paramString2 = paramString3)
-    {
-      bcef.b(localQQAppInterface, "CliOper", "", "", "Favorite", paramString1, paramInt1, paramInt2, str1, str2, paramAppRuntime, paramString2);
-      return;
-      paramAppRuntime = paramString2;
-      break;
-    }
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean, long paramLong)
-  {
-    Object localObject = new String[3];
-    int i = NetworkUtil.getSystemNetwork(paramAppRuntime.getApplication().getApplicationContext());
-    if (i == 1) {
-      if (paramBoolean)
+      String str1;
+      String str2;
+      double d1;
+      double d2;
+      if ((paramInt2 == -1) && (paramIntent != null))
       {
-        localObject[0] = "param_WIFIFavoritesUploadFlow";
-        localObject[1] = "param_WIFIFlow";
-        localObject[2] = "param_Flow";
-        paramAppRuntime.sendAppDataIncermentMsg(paramAppRuntime.getAccount(), (String[])localObject, paramLong);
-        if (QLog.isColorLevel())
+        str1 = paramIntent.getStringExtra("name");
+        str2 = paramIntent.getStringExtra("address");
+        d1 = paramIntent.getIntExtra("latitude", 0) / 1000000.0D;
+        d2 = paramIntent.getIntExtra("longitude", 0) / 1000000.0D;
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult name=" + str1 + ",address=" + str2 + ",latitude=" + d1 + ",longitude=" + d2);
+        }
+        paramIntent = new JSONObject();
+      }
+      try
+      {
+        paramIntent.put("name", str1);
+        paramIntent.put("address", str2);
+        paramIntent.put("latitude", d1);
+        paramIntent.put("longitude", d2);
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramIntent);
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+        return true;
+      }
+      catch (JSONException paramIntent)
+      {
+        for (;;)
         {
-          localObject = new StringBuilder().append("addFlowCount ").append(paramLong).append(" for ");
-          if (!paramBoolean) {
-            break label156;
-          }
+          QLog.e("MiniAppProxyImpl", 1, " error, ", paramIntent);
+          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, new JSONObject());
         }
       }
     }
-    label156:
-    for (paramAppRuntime = "upload";; paramAppRuntime = "download")
-    {
-      QLog.d("qqfav", 2, paramAppRuntime + ", netType is " + i);
-      return;
-      localObject[0] = "param_WIFIFavoritesDownloadFlow";
-      break;
-      if (paramBoolean) {
-        localObject[0] = "param_XGFavoritesUploadFlow";
-      }
-      for (;;)
-      {
-        localObject[1] = "param_XGFlow";
-        break;
-        localObject[0] = "param_XGFavoritesDownloadFlow";
-      }
-    }
-  }
-  
-  public static void b(AppRuntime paramAppRuntime, int paramInt)
-  {
-    a(paramAppRuntime, "User_DelFav", 0, 0, paramInt);
-  }
-  
-  public static void b(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
-  {
-    a(paramAppRuntime, "User_OpenFavPage", paramInt2, 0, paramInt1);
+    return false;
   }
 }
 

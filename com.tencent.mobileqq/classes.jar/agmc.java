@@ -1,46 +1,31 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.EmptyStatusInfo;
 
-class agmc
-  extends akav
+public class agmc
 {
-  agmc(agma paramagma) {}
+  public String a;
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public static agmc a(oidb_0xcf4.EmptyStatusInfo paramEmptyStatusInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(agma.jdField_a_of_type_JavaLangString, 2, "onNotifyMsg btype:" + paramInt + " bid:" + paramString);
+    Object localObject;
+    if (paramEmptyStatusInfo == null) {
+      localObject = null;
     }
-    if ((paramInt == 1) && (!TextUtils.isEmpty(paramString)) && (paramBundle != null))
+    agmc localagmc;
+    do
     {
-      SparseArray localSparseArray = (SparseArray)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (localSparseArray != null)
-      {
-        paramInt = 0;
-        while (paramInt < localSparseArray.size())
-        {
-          Object localObject = (WeakReference)localSparseArray.valueAt(paramInt);
-          paramBundle = null;
-          if (localObject != null) {
-            paramBundle = (agmd)((WeakReference)localObject).get();
-          }
-          if ((paramBundle != null) && ((paramBundle.a instanceof MessageForQQWalletMsg)))
-          {
-            localObject = (MessageForQQWalletMsg)paramBundle.a;
-            if ((localObject != null) && (((MessageForQQWalletMsg)localObject).messageType == 16) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg != null) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId != null) && (paramString.equals(((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId))) {
-              this.a.a(paramBundle, (MessageForQQWalletMsg)localObject, ((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.elem);
-            }
-          }
-          paramInt += 1;
-        }
-      }
-    }
+      return localObject;
+      localagmc = new agmc();
+      localObject = localagmc;
+    } while (!paramEmptyStatusInfo.bytes_jump_url.has());
+    localagmc.a = paramEmptyStatusInfo.bytes_jump_url.get().toStringUtf8();
+    return localagmc;
+  }
+  
+  public String toString()
+  {
+    return "EmptyStatusInfo{jumpUrl=" + this.a + '}';
   }
 }
 

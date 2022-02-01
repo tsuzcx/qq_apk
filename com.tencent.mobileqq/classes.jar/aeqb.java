@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class aeqb
-  implements View.OnClickListener
+  implements Comparator<ChatMessage>
 {
-  public aeqb(TroopRequestActivity paramTroopRequestActivity) {}
+  public aeqb(QQLSActivity paramQQLSActivity) {}
   
-  public void onClick(View paramView)
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    this.a.e();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
+      return 0;
+    }
+    if (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq) {
+      return 1;
+    }
+    return -1;
   }
 }
 

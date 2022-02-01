@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bewz;
+import bgel;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
@@ -23,7 +23,7 @@ import java.util.Arrays;
 public class TroopMemberNewLevelView
   extends LinearLayout
 {
-  private static final int[] jdField_c_of_type_ArrayOfInt = { 2130846097, 2130846098, 2130846099, 2130846100, 2130846101, 2130846102, 2130846103, 2130846104, 2130846105, 2130846106, 2130846107 };
+  private static final int[] jdField_c_of_type_ArrayOfInt = { 2130846192, 2130846193, 2130846194, 2130846195, 2130846196, 2130846197, 2130846198, 2130846199, 2130846200, 2130846201, 2130846202 };
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString = "";
@@ -90,16 +90,16 @@ public class TroopMemberNewLevelView
     return this.jdField_b_of_type_Boolean;
   }
   
-  public void setTroopMemberNewLevel(bewz parambewz)
+  public void setTroopMemberNewLevel(bgel parambgel)
   {
-    if (parambewz == null)
+    if (parambgel == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopMemberNewLevelView", 2, "setTroopMemberNewLevel item is null");
       }
       return;
     }
-    setTroopMemberNewLevel(parambewz.jdField_a_of_type_Boolean, parambewz.jdField_b_of_type_Boolean, parambewz.jdField_b_of_type_Int, parambewz.jdField_a_of_type_JavaLangString, parambewz.jdField_b_of_type_ArrayOfInt, parambewz.jdField_a_of_type_ArrayOfInt, parambewz.d, parambewz.jdField_c_of_type_Int);
+    setTroopMemberNewLevel(parambgel.jdField_a_of_type_Boolean, parambgel.jdField_b_of_type_Boolean, parambgel.jdField_b_of_type_Int, parambgel.jdField_a_of_type_JavaLangString, parambgel.jdField_b_of_type_ArrayOfInt, parambgel.jdField_a_of_type_ArrayOfInt, parambgel.d, parambgel.jdField_c_of_type_Int);
   }
   
   public void setTroopMemberNewLevel(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, String paramString, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt2, int paramInt3)

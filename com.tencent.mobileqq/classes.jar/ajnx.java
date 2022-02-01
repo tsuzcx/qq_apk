@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.widget.SimpleTextView;
 
 public class ajnx
-  implements DialogInterface.OnCancelListener
+  extends blfn
 {
-  public ajnx(CameraPreviewActivity paramCameraPreviewActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public ajnx(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    this.a.a = null;
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, blfm paramblfm, View.OnClickListener paramOnClickListener)
+  {
+    paramblfm = super.a(paramInt, paramObject, paramblfm, paramOnClickListener);
+    if ((paramblfm instanceof SimpleTextView)) {
+      paramblfm.setTag(paramObject);
+    }
+    return paramblfm;
+  }
+  
+  public void a(int paramInt, Object paramObject, blfm[] paramArrayOfblfm)
+  {
+    this.a.a(paramInt, paramArrayOfblfm, paramObject);
   }
 }
 

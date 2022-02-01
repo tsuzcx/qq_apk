@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.qphone.base.util.QLog;
-
-public class atox
-  implements atls
+class atox
+  extends atob
 {
-  public atox(ForwardSdkShareOption paramForwardSdkShareOption) {}
-  
-  public void a()
+  public atox(atno paramatno)
   {
-    QLog.d("ForwardOption.ForwardSdkShareOption", 1, "--> mD55ResultListener onResult");
-    ((atph)this.a.a.getManager(350)).a().a(null);
-    this.a.z();
-    this.a.a();
+    super(paramatno);
+  }
+  
+  protected String a()
+  {
+    return "StateUploadoneWhenPause";
   }
 }
 

@@ -1,30 +1,14 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import java.util.Comparator;
 
-class amqi
-  extends amwl
+public class amqi
+  implements Comparator<amql>
 {
-  amqi(amqd paramamqd) {}
+  public amqi(ApolloCmdChannel paramApolloCmdChannel) {}
   
-  protected void onSelfIpadOnlineStatusUpdateNotify(int paramInt1, int paramInt2)
+  public int a(amql paramamql1, amql paramamql2)
   {
-    if ((paramInt1 == 1) && (this.a.b()))
-    {
-      this.a.b(true);
-      amqd.b(this.a, bbko.a());
-      this.a.app.getMessageFacade().getDatalineMessageManager(1).b();
-    }
-  }
-  
-  protected void onSelfPcOnlineStatusUpdateNotify(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 == 1) && (this.a.a()))
-    {
-      this.a.a(true);
-      amqd.a(this.a, bbko.a());
-      this.a.app.getMessageFacade().getDatalineMessageManager(0).b();
-    }
-    this.a.a.a(this.a);
+    return paramamql1.a() - paramamql2.a();
   }
 }
 

@@ -1,56 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qwj
-  extends ClickableSpan
-  implements som
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  protected String a;
-  boolean jdField_a_of_type_Boolean;
-  
-  public qwj(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend, String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
-    }
-  }
+  public qwj(NativeUsersCommentsView paramNativeUsersCommentsView) {}
   
   public void onClick(View paramView)
   {
-    paramView = paa.k + bfuc.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 0);
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.getContext(), PublicAccountBrowser.class);
-    localIntent.putExtra("url", paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.getContext().startActivity(localIntent);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = -1)
-    {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
-    }
+    this.a.callOnClick();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

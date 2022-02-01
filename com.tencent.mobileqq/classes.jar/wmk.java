@@ -1,24 +1,16 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
+import java.util.ArrayList;
 
-public class wmk
-  implements View.OnKeyListener
+public abstract interface wmk
 {
-  public wmk(StoryPlayerFragment paramStoryPlayerFragment) {}
+  public abstract void a();
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.finish();
-      }
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(ArrayList<wly> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  
+  public abstract void a(wly paramwly, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

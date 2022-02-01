@@ -1,21 +1,11 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.nio.charset.Charset;
 
-public class nxd
-  implements View.OnClickListener
+final class nxd
+  extends ThreadLocal<Charset>
 {
-  public nxd(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  protected Charset a()
   {
-    PublicAccountAdvertisementActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementActivityPublicAccountAdvertisementActivity);
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return Charset.forName("UTF-8");
   }
 }
 

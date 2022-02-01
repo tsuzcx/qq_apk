@@ -1,25 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class akiv
-  implements View.OnClickListener
+public class akiv
+  extends azip
 {
-  akiv(akho paramakho) {}
+  public akiv(PhoneInnerFrame paramPhoneInnerFrame) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (bfng.a().a() == 4) {
-      bcef.b(akho.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bfnf.b(), bfng.b(), bfng.a(), "0");
-    }
-    for (;;)
+    if (this.a.a)
     {
-      this.a.a(17, 0);
-      this.a.a(-1, null);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bcef.b(akho.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bfnf.b(), bfng.b(), bfng.a(), "0");
+      this.a.b().a().unRegistObserver(this);
+      this.a.g();
     }
   }
 }

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.splashad;
 
-import amtj;
 import android.content.Context;
 import android.graphics.BitmapFactory.Options;
 import android.os.Build.VERSION;
@@ -13,12 +12,13 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import azig;
-import bbzy;
-import bbzz;
-import bcaa;
-import bcab;
-import bfpx;
+import anvx;
+import baoo;
+import bdgt;
+import bdgu;
+import bdgv;
+import bdgw;
+import bgyo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -40,8 +40,8 @@ public class SplashADView
   public ImageView a;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  public azig a;
-  private bcab jdField_a_of_type_Bcab;
+  public baoo a;
+  private bdgw jdField_a_of_type_Bdgw;
   public TVK_IMediaPlayer a;
   public boolean a;
   View b;
@@ -49,56 +49,56 @@ public class SplashADView
   View c;
   public boolean c;
   
-  public SplashADView(azig paramazig, Context paramContext)
+  public SplashADView(baoo parambaoo, Context paramContext)
   {
-    this(paramazig, paramContext, null);
+    this(parambaoo, paramContext, null);
   }
   
-  public SplashADView(azig paramazig, Context paramContext, AttributeSet paramAttributeSet)
+  public SplashADView(baoo parambaoo, Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramazig, paramContext, paramAttributeSet, 0);
+    this(parambaoo, paramContext, paramAttributeSet, 0);
   }
   
-  public SplashADView(azig paramazig, Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public SplashADView(baoo parambaoo, Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Azig = paramazig;
+    this.jdField_a_of_type_Baoo = parambaoo;
     this.jdField_a_of_type_Boolean = a(paramContext);
     this.jdField_b_of_type_Boolean = true;
     QLog.i("QSplash@QbossSplashUtil", 1, "@SplashADView start");
   }
   
-  public static SplashADView a(azig paramazig, Context paramContext)
+  public static SplashADView a(baoo parambaoo, Context paramContext)
   {
     try
     {
-      if ((jdField_a_of_type_ComTencentMobileqqSplashadSplashADView == null) && (paramazig != null) && (paramContext != null)) {
-        jdField_a_of_type_ComTencentMobileqqSplashadSplashADView = new SplashADView(paramazig, paramContext);
+      if ((jdField_a_of_type_ComTencentMobileqqSplashadSplashADView == null) && (parambaoo != null) && (paramContext != null)) {
+        jdField_a_of_type_ComTencentMobileqqSplashadSplashADView = new SplashADView(parambaoo, paramContext);
       }
-      paramazig = jdField_a_of_type_ComTencentMobileqqSplashadSplashADView;
-      return paramazig;
+      parambaoo = jdField_a_of_type_ComTencentMobileqqSplashadSplashADView;
+      return parambaoo;
     }
     finally {}
   }
   
   private boolean a(Context paramContext)
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "madentry =" + this.jdField_a_of_type_Azig.toString());
-    LayoutInflater.from(paramContext).inflate(2131562809, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369465));
-    if ((this.jdField_a_of_type_Azig.jdField_c_of_type_Int == 1) && (this.jdField_a_of_type_Azig.jdField_b_of_type_Int == 0)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131713351));
+    QLog.i("QSplash@QbossSplashUtil", 1, "madentry =" + this.jdField_a_of_type_Baoo.toString());
+    LayoutInflater.from(paramContext).inflate(2131562880, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369634));
+    if ((this.jdField_a_of_type_Baoo.jdField_c_of_type_Int == 1) && (this.jdField_a_of_type_Baoo.jdField_b_of_type_Int == 0)) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131713698));
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371561));
-    if ((this.jdField_a_of_type_Azig.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Azig.jdField_b_of_type_Boolean))
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371747));
+    if ((this.jdField_a_of_type_Baoo.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Baoo.jdField_b_of_type_Boolean))
     {
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131381100);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131381459);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377685));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131365200);
-    switch (this.jdField_a_of_type_Azig.jdField_a_of_type_Int)
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377964));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131365291);
+    switch (this.jdField_a_of_type_Baoo.jdField_a_of_type_Int)
     {
     }
     for (;;)
@@ -111,8 +111,8 @@ public class SplashADView
       localOptions.inMutable = true;
       try
       {
-        QLog.i("QSplash@QbossSplashUtil", 1, "respath =" + this.jdField_a_of_type_Azig.jdField_a_of_type_JavaLangString);
-        paramContext.setImageBitmap(bfpx.a(this.jdField_a_of_type_Azig.jdField_a_of_type_JavaLangString, localOptions));
+        QLog.i("QSplash@QbossSplashUtil", 1, "respath =" + this.jdField_a_of_type_Baoo.jdField_a_of_type_JavaLangString);
+        paramContext.setImageBitmap(bgyo.a(this.jdField_a_of_type_Baoo.jdField_a_of_type_JavaLangString, localOptions));
         paramContext.setScaleType(ImageView.ScaleType.CENTER_CROP);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramContext, new RelativeLayout.LayoutParams(-1, -1));
         return true;
@@ -122,15 +122,15 @@ public class SplashADView
         QLog.e("SplashAD", 1, paramContext.toString());
         return false;
       }
-      bbzy.b(paramContext);
+      bdgt.b(paramContext);
       if (TVK_SDKMgr.isInstalled(paramContext)) {
-        return a(paramContext, this.jdField_a_of_type_Azig);
+        return a(paramContext, this.jdField_a_of_type_Baoo);
       }
       QLog.i("SplashAD", 1, "TVK_SDK not Installed");
     }
   }
   
-  private boolean a(Context paramContext, azig paramazig)
+  private boolean a(Context paramContext, baoo parambaoo)
   {
     TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
     if (localTVK_IProxyFactory != null) {
@@ -157,13 +157,13 @@ public class SplashADView
           QLog.e("QSplash@QbossSplashUtil", 1, " mVideoView init erro", localThrowable);
           this.jdField_c_of_type_AndroidViewView = ((View)localTVK_IProxyFactory.createVideoView_Scroll(paramContext));
         }
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new bbzz(this));
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new bdgu(this));
         QLog.i("QSplash@QbossSplashUtil", 1, "initVideo addView");
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidViewView);
-        if (paramazig.jdField_a_of_type_Boolean)
+        if (parambaoo.jdField_a_of_type_Boolean)
         {
           this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bcaa(this));
+          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bdgv(this));
         }
         return true;
       }
@@ -187,8 +187,8 @@ public class SplashADView
     {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setLoopback(false);
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setXYaxis(2);
-      String str = this.jdField_a_of_type_Azig.jdField_c_of_type_JavaLangString;
-      QLog.i("QSplash@QbossSplashUtil", 1, "videopath =" + this.jdField_a_of_type_Azig.jdField_c_of_type_JavaLangString);
+      String str = this.jdField_a_of_type_Baoo.jdField_c_of_type_JavaLangString;
+      QLog.i("QSplash@QbossSplashUtil", 1, "videopath =" + this.jdField_a_of_type_Baoo.jdField_c_of_type_JavaLangString);
       this.jdField_a_of_type_Int = 1;
       TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
       if (Build.VERSION.SDK_INT >= 21) {
@@ -232,7 +232,7 @@ public class SplashADView
         this.jdField_c_of_type_Boolean = true;
         jdField_a_of_type_ComTencentMobileqqSplashadSplashADView = null;
         this.jdField_a_of_type_Int = 0;
-        switch (this.jdField_a_of_type_Azig.jdField_a_of_type_Int)
+        switch (this.jdField_a_of_type_Baoo.jdField_a_of_type_Int)
         {
         case 0: 
         case 2: 
@@ -272,9 +272,9 @@ public class SplashADView
     }
   }
   
-  public void setPresenter(bcab parambcab)
+  public void setPresenter(bdgw parambdgw)
   {
-    this.jdField_a_of_type_Bcab = parambcab;
+    this.jdField_a_of_type_Bdgw = parambdgw;
   }
 }
 

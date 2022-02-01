@@ -1,19 +1,7 @@
-class sis
-  implements bjoi
-{
-  sis(sir paramsir) {}
-  
-  public void ab_()
-  {
-    if (sig.c(this.a.a))
-    {
-      sig.c(this.a.a, false);
-      sig.a(this.a.a).a(sig.a(this.a.a), sig.b(this.a.a), true, false);
-      return;
-    }
-    sig.a(this.a.a).a(sig.a(this.a.a), sig.b(this.a.a), true, true);
-  }
-}
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsGuideProxy$Companion;", "", "()V", "COLUMN_VIDEO_GUIDE_SHOW_PERCENT", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sis {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.transfile.chatpic;
 
-import amrp;
-import amtr;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import aydt;
+import anud;
+import anwf;
+import azkf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.CustomError;
 import com.tencent.image.URLDrawable;
@@ -33,9 +33,9 @@ public class PicDownloadExplicitError
   
   static
   {
-    M_MAP.put(Integer.valueOf(1), new PicDownloadExplicitError.ExplicitError(2130838096, 2131689934));
-    M_MAP.put(Integer.valueOf(2), new PicDownloadExplicitError.ExplicitError(-1, 2131689935));
-    M_MAP.put(Integer.valueOf(3), new PicDownloadExplicitError.ExplicitError(-1, 2131689936));
+    M_MAP.put(Integer.valueOf(1), new PicDownloadExplicitError.ExplicitError(2130838110, 2131689963));
+    M_MAP.put(Integer.valueOf(2), new PicDownloadExplicitError.ExplicitError(-1, 2131689964));
+    M_MAP.put(Integer.valueOf(3), new PicDownloadExplicitError.ExplicitError(-1, 2131689965));
   }
   
   private PicDownloadExplicitError(int paramInt)
@@ -43,7 +43,7 @@ public class PicDownloadExplicitError
     this.mErrCode = paramInt;
   }
   
-  private static PicDownloadExplicitError getError(aydt paramaydt)
+  private static PicDownloadExplicitError getError(azkf paramazkf)
   {
     return null;
   }
@@ -62,7 +62,7 @@ public class PicDownloadExplicitError
       if ((localObject instanceof MessageForPic))
       {
         localObject = (MessageForPic)localObject;
-        if ((amtr.a((MessageRecord)localObject)) || (amrp.a((MessageRecord)localObject))) {
+        if ((anwf.a((MessageRecord)localObject)) || (anud.a((MessageRecord)localObject))) {
           return null;
         }
       }
@@ -128,7 +128,7 @@ public class PicDownloadExplicitError
         return BaseApplicationImpl.getApplication().getResources().getString(i);
       }
     }
-    return BaseApplicationImpl.getApplication().getResources().getString(2131689934);
+    return BaseApplicationImpl.getApplication().getResources().getString(2131689963);
   }
   
   public static String getFailedTip(URLDrawable paramURLDrawable)
@@ -144,8 +144,8 @@ public class PicDownloadExplicitError
     if ((paramObject instanceof TransferResult)) {
       return getError((TransferResult)paramObject);
     }
-    if ((paramObject instanceof aydt)) {
-      return getError((aydt)paramObject);
+    if ((paramObject instanceof azkf)) {
+      return getError((azkf)paramObject);
     }
     return null;
   }

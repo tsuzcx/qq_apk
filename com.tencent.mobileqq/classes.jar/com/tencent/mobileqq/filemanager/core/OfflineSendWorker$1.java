@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import ashb;
-import asix;
-import aszr;
-import aszs;
+import atlh;
+import atnd;
+import audy;
+import audz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 public class OfflineSendWorker$1
   implements Runnable
 {
-  public OfflineSendWorker$1(asix paramasix) {}
+  public OfflineSendWorker$1(atnd paramatnd) {}
   
   public void run()
   {
@@ -22,24 +22,24 @@ public class OfflineSendWorker$1
     }
     if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
     {
-      asix.a(this.this$0, 0);
+      atnd.a(this.this$0, 0);
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 15, null, 2, null);
-      asix.a(this.this$0, 0L, 9004, "NoNetWork");
-      asix.b(this.this$0, 0L, 9004, "NoNetWork");
+      atnd.a(this.this$0, 0L, 9004, "NoNetWork");
+      atnd.b(this.this$0, 0L, 9004, "NoNetWork");
       return;
     }
     this.this$0.jdField_a_of_type_Long = System.currentTimeMillis();
     this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-    aszs localaszs = new aszs();
-    localaszs.b = "send_file_number";
-    aszr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localaszs);
+    audz localaudz = new audz();
+    localaudz.b = "send_file_number";
+    audy.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localaudz);
     this.this$0.m();
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 3, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OfflineSendWorker.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,30 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import afim;
-import afiw;
-import ahik;
-import ahkz;
-import amxb;
+import aail;
+import afzr;
+import agab;
+import ahvi;
+import aidd;
+import aift;
 import android.content.Intent;
 import android.net.Uri;
-import ayfu;
-import bcef;
-import bfci;
+import anzp;
+import bdla;
+import bgko;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
-import nmy;
-import zsz;
+import nty;
 
 public class GiftAppInfo
   extends PlusPanelAppInfo
@@ -39,16 +41,16 @@ public class GiftAppInfo
     if ((paramBaseChatPie instanceof TroopChatPie)) {
       return 1;
     }
-    if ((paramBaseChatPie instanceof afiw)) {
+    if ((paramBaseChatPie instanceof agab)) {
       return 2;
     }
-    if ((paramBaseChatPie instanceof afim)) {
+    if ((paramBaseChatPie instanceof afzr)) {
       return 6;
     }
-    if ((paramBaseChatPie instanceof ahkz)) {
+    if ((paramBaseChatPie instanceof aift)) {
       return 7;
     }
-    if ((paramBaseChatPie instanceof ahik)) {
+    if ((paramBaseChatPie instanceof aidd)) {
       return 3;
     }
     return 0;
@@ -83,18 +85,18 @@ public class GiftAppInfo
   
   private void a(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo, boolean paramBoolean, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if ((paramBaseChatPie instanceof ahik))
+    if ((paramBaseChatPie instanceof aidd))
     {
       paramSessionInfo = paramSessionInfo.curFriendUin;
       if (paramBaseChatPie.sessionInfo.curType == 10002)
       {
         paramBaseChatPie = "3";
-        amxb.a("gift_aio", "clk_icon", paramSessionInfo, paramBaseChatPie, "", "");
+        anzp.a("gift_aio", "clk_icon", paramSessionInfo, paramBaseChatPie, "", "");
       }
     }
     for (;;)
     {
-      bcef.b(paramQQAppInterface, "dc00899", "grp_lbs", "", "qq_gift", "plus_entry_clk", 0, 0, paramInt + "", "", "", "");
+      bdla.b(paramQQAppInterface, "dc00899", "grp_lbs", "", "qq_gift", "plus_entry_clk", 0, 0, paramInt + "", "", "", "");
       if (QLog.isColorLevel()) {
         QLog.d("GiftAppInfo", 2, "PlusPanel onGiftClick, aioType=" + paramInt);
       }
@@ -102,16 +104,16 @@ public class GiftAppInfo
       paramBaseChatPie = "0";
       break;
       if (paramInt == 2) {
-        bcef.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "C2C", "gift_clk", 0, 0, "", "", "", "");
+        bdla.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "C2C", "gift_clk", 0, 0, "", "", "", "");
       } else if (paramInt == 6) {
-        bcef.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "discuss_grp", "gift_clk", 0, 0, "", "", "", "");
+        bdla.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "discuss_grp", "gift_clk", 0, 0, "", "", "", "");
       } else if (paramInt == 7) {
-        bcef.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "temp_c2c", "gift_clk", 0, 0, "", "", "", "");
+        bdla.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "temp_c2c", "gift_clk", 0, 0, "", "", "", "");
       } else if (paramInt == 1) {
-        if (nmy.a().a(paramSessionInfo.curFriendUin)) {
-          bcef.b(null, "dc00899", "Grp_anon", "", "aio_plus", "clk_send", 1, 0, "" + paramSessionInfo.curFriendUin, "", "", "");
+        if (nty.a().a(paramSessionInfo.curFriendUin)) {
+          bdla.b(null, "dc00899", "Grp_anon", "", "aio_plus", "clk_send", 1, 0, "" + paramSessionInfo.curFriendUin, "", "", "");
         } else {
-          bcef.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_plus", 0, 0, "" + paramSessionInfo.curFriendUin, "" + paramBoolean, "", "");
+          bdla.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_plus", 0, 0, "" + paramSessionInfo.curFriendUin, "" + paramBoolean, "", "");
         }
       }
     }
@@ -125,7 +127,7 @@ public class GiftAppInfo
     if (paramBaseChatPie != null)
     {
       long l2 = paramBaseChatPie.jdField_a_of_type_Long;
-      if ((paramBaseChatPie.jdField_a_of_type_Boolean) && (l1 >= paramBaseChatPie.jdField_a_of_type_Long) && (l1 <= l2 + 2592000000L) && (!((bfci)paramQQAppInterface.getManager(113)).a())) {
+      if ((paramBaseChatPie.jdField_a_of_type_Boolean) && (l1 >= paramBaseChatPie.jdField_a_of_type_Long) && (l1 <= l2 + 2592000000L) && (!((bgko)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a())) {
         return true;
       }
     }
@@ -134,7 +136,7 @@ public class GiftAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130850626;
+    return 2130850757;
   }
   
   public int getAppID()
@@ -163,10 +165,10 @@ public class GiftAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131696777);
+    return BaseApplicationImpl.getContext().getString(2131697044);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     if (QLog.isColorLevel()) {
       QLog.i("testing", 2, "deliver flowers!");
@@ -185,8 +187,8 @@ public class GiftAppInfo
     label96:
     for (paramSessionInfo = "chat_tool_gift_stranger_clicked";; paramSessionInfo = "chat_tool_gift_clicked")
     {
-      paramayfu.a(paramSessionInfo, localQQAppInterface.getCurrentAccountUin());
-      paramayfu.b(paramBaseChatPie);
+      paramahvi.a(paramSessionInfo, localQQAppInterface.getCurrentAccountUin());
+      paramahvi.b(paramBaseChatPie);
       return;
       bool = a(paramBaseChatPie, localQQAppInterface);
       break;

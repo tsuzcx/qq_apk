@@ -1,97 +1,26 @@
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.FeedsProtocol.TopicCfg;
-import com.tencent.pb.now.ilive_feeds_read.TopicCfg;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class awqo
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
+  private List<awqp> a = Collections.synchronizedList(new ArrayList());
   
-  public static axfs a(List<ilive_feeds_read.TopicCfg> paramList, axfs paramaxfs)
+  void a(long paramLong)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = (ilive_feeds_read.TopicCfg)paramList.get(0);
-      paramaxfs.a = new awqo();
-      paramaxfs.a.d(paramList.jump_url.get());
-      paramaxfs.a.b(paramList.topic_name.get());
-      paramaxfs.a.a(paramList.topic_desc.get());
-      paramaxfs.a.b(paramList.topic_parti_num.get());
-      paramaxfs.a.c(paramList.topic_pic_url.get());
-      paramaxfs.a.a(paramList.topic_tag.get());
-      paramaxfs.a.c(paramList.topic_type.get());
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((awqp)localIterator.next()).a(paramLong);
     }
-    return paramaxfs;
   }
   
-  public static VideoData a(List<FeedsProtocol.TopicCfg> paramList, VideoData paramVideoData)
+  void b(long paramLong)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = (FeedsProtocol.TopicCfg)paramList.get(0);
-      paramVideoData.a = new awqo();
-      paramVideoData.a.d(paramList.jump_url.get());
-      paramVideoData.a.b(paramList.topic_name.get());
-      paramVideoData.a.a(paramList.topic_desc.get());
-      paramVideoData.a.b(paramList.topic_parti_num.get());
-      paramVideoData.a.c(paramList.topic_pic_url.get());
-      paramVideoData.a.a(paramList.topic_tag.get());
-      paramVideoData.a.c(paramList.topic_type.get());
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((awqp)localIterator.next()).b(paramLong);
     }
-    return paramVideoData;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String b()
-  {
-    return this.d;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.d = paramString;
   }
 }
 

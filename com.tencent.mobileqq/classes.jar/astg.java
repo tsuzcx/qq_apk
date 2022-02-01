@@ -1,19 +1,122 @@
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.utils.ExtendFriendVoicePlayer.2;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class astg
-  extends amwl
+public class astg
 {
-  astg(astb paramastb) {}
+  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new asth(this);
+  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
+  private asti jdField_a_of_type_Asti;
+  private bhjj jdField_a_of_type_Bhjj;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   
-  protected void onSelfPcOnlineStatusUpdateNotify(int paramInt1, int paramInt2)
+  public astg(asti paramasti, BaseActivity paramBaseActivity)
   {
-    if (paramInt1 == 0)
+    this.jdField_a_of_type_Asti = paramasti;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("audio"));
+  }
+  
+  public void a()
+  {
+    try
     {
-      if (astb.a(this.a)) {
-        aszk.a(2131693915);
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_Bhjj != null)
+        {
+          this.jdField_a_of_type_Bhjj.e();
+          this.jdField_a_of_type_Bhjj = null;
+        }
+        b();
+        return;
       }
-      astb.a(this.a, false);
-      QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "PC offline!");
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ExtendFriendVoicePlayer", 1, "stop e=" + localException);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (!a(paramString)) {
+      ThreadManager.executeOnFileThread(new ExtendFriendVoicePlayer.2(this, paramString));
+    }
+  }
+  
+  public boolean a(String arg1)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
+      QLog.e("ExtendFriendVoicePlayer", 2, "playLocal file but activity isFinish");
+    }
+    String str;
+    for (;;)
+    {
+      return false;
+      str = ???;
+      try
+      {
+        if (!FileUtil.isFileExists(???))
+        {
+          str = ???;
+          if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
+          {
+            str = BuddyTransfileProcessor.getTransferFilePath(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin(), MD5.toMD5(???), 23, null);
+            File localFile = new File(str);
+            if ((!localFile.exists()) || (localFile.length() <= 0L))
+            {
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.e("ExtendFriendVoicePlayer", 2, String.format("playLocal file not exist : %s", new Object[] { ??? }));
+              return false;
+            }
+          }
+        }
+      }
+      catch (Exception ???)
+      {
+        QLog.e("ExtendFriendVoicePlayer", 1, "playLocal", ???);
+        return false;
+      }
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Bhjj != null)
+      {
+        this.jdField_a_of_type_Bhjj.e();
+        this.jdField_a_of_type_Bhjj = null;
+      }
+      this.jdField_a_of_type_Bhjj = new bhjj(str, new Handler(), 1);
+      this.jdField_a_of_type_Bhjj.b();
+      this.jdField_a_of_type_Bhjj.a(this.jdField_a_of_type_Asti);
+      this.jdField_a_of_type_Bhjj.b();
+      if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
+        this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
+      }
+      return true;
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendVoicePlayer", 2, "abandonAudioFocus");
+    }
+    if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
+      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
     }
   }
 }

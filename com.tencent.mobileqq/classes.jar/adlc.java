@@ -1,33 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.utils.StringUtil;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class adlc
-  extends anau
+class adlc
+  extends WtloginObserver
 {
-  public adlc(GeneralSettingActivity paramGeneralSettingActivity) {}
+  adlc(adlb paramadlb) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void onGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SecSvcObserver", 2, "onGetPhoneUnityInfo isSuc: " + paramBoolean);
-    }
-    String str;
-    if ((this.a.isResume()) && (paramBundle != null))
+    if (QLog.isColorLevel())
     {
-      str = paramBundle.getString("phone");
-      paramBundle = paramBundle.getString("mibao_set_url");
-      if (!StringUtil.isEmpty(str)) {
-        break label78;
+      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
     }
-    label78:
-    for (int i = 1;; i = 0)
+    if (paramInt2 == 0) {}
+    do
     {
-      bcoo.a(i, str, paramBundle);
       return;
-    }
+      adlb.a(this.a);
+    } while (adlb.a(this.a) == null);
+    paramString = new Intent(adlb.a(this.a), LoginActivity.class);
+    paramString.putExtra("uin", adlb.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    adlb.a(this.a).startActivity(paramString);
+    adlb.a(this.a).finish();
   }
 }
 

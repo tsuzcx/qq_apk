@@ -1,28 +1,108 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.itemview.PTSItemData;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import java.util.Iterator;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlClient$RIJServiceConnection;", "Landroid/content/ServiceConnection;", "()V", "onServiceConnected", "", "name", "Landroid/content/ComponentName;", "service", "Landroid/os/IBinder;", "onServiceDisconnected", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-final class qyx
-  implements ServiceConnection
+public class qyx
 {
-  public void onServiceConnected(@NotNull ComponentName paramComponentName, @NotNull IBinder paramIBinder)
+  public static String a(BaseArticleInfo paramBaseArticleInfo)
   {
-    Intrinsics.checkParameterIsNotNull(paramComponentName, "name");
-    Intrinsics.checkParameterIsNotNull(paramIBinder, "service");
-    qyw.a(qyw.a, qyo.a(paramIBinder));
-    QLog.d("RIJAidlClient", 1, "onServiceConnected: " + paramComponentName);
+    if (paramBaseArticleInfo == null) {
+      return "null";
+    }
+    return " title = " + paramBaseArticleInfo.mTitle + ", rowKey = " + paramBaseArticleInfo.innerUniqueID + ", pageName = " + paramBaseArticleInfo.ptsLitePageName;
   }
   
-  public void onServiceDisconnected(@NotNull ComponentName paramComponentName)
+  public static <T extends BaseArticleInfo> void a(T paramT)
   {
-    Intrinsics.checkParameterIsNotNull(paramComponentName, "name");
-    qyw.a(qyw.a, (qyn)null);
-    QLog.d("RIJAidlClient", 1, "onServiceDisconnected: " + paramComponentName);
+    if ((paramT == null) || (paramT.ptsComposer == null)) {
+      return;
+    }
+    paramT.ptsComposer.destroy();
+    paramT.ptsComposer = null;
+    QLog.i("PTSPreLayoutHandler", 1, "[destroy] succeed, " + a(paramT));
+  }
+  
+  private static void a(BaseArticleInfo paramBaseArticleInfo, String paramString)
+  {
+    if ((paramBaseArticleInfo == null) || (TextUtils.isEmpty(paramString))) {
+      QLog.i("PTSPreLayoutHandler", 1, "[parsePtsCardType] articleInfo is null or frameTreeJson is empty.");
+    }
+    do
+    {
+      return;
+      if (paramString.contains("pts:round-corner-card"))
+      {
+        QLog.i("PTSPreLayoutHandler", 1, "[parsePtsCardType] ptsRoundCornerCard = true, articleInfo = " + a(paramBaseArticleInfo));
+        paramBaseArticleInfo.ptsRoundCornerCard = true;
+      }
+    } while (!paramString.contains("pts:special-card"));
+    QLog.i("PTSPreLayoutHandler", 1, "[parsePtsCardType] ptsSpecialCard = true, articleInfo = " + a(paramBaseArticleInfo));
+    paramBaseArticleInfo.ptsSpecialCard = true;
+  }
+  
+  public static void a(List<? extends BaseArticleInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] articleInfoList is empty.");
+    }
+    for (;;)
+    {
+      return;
+      if (!rad.a().a())
+      {
+        QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] pts lite master switch disabled.");
+        return;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramList.next();
+        if (!qym.a(localBaseArticleInfo))
+        {
+          QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo], articleInfo is not valid.");
+        }
+        else
+        {
+          String str1 = localBaseArticleInfo.ptsLitePageName;
+          String str2 = raj.a().a("default_feeds", str1);
+          if (TextUtils.isEmpty(str2))
+          {
+            QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo], frameTreeJson is empty.");
+          }
+          else
+          {
+            localBaseArticleInfo.ptsComposer = PTSComposer.buildComposer(str1, str2, localBaseArticleInfo.ptsItemData.getJSONData(), null, localBaseArticleInfo.ptsUpdateDataListener);
+            a(localBaseArticleInfo, str2);
+            QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] succeed, " + a(localBaseArticleInfo));
+          }
+        }
+      }
+    }
+  }
+  
+  public static void b(List<? extends BaseArticleInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      QLog.i("PTSPreLayoutHandler", 1, "[destroy] articleInfoList is null.");
+    }
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramList.next();
+        if (!qym.a(localBaseArticleInfo)) {
+          QLog.i("PTSPreLayoutHandler", 1, "[destroy], articleInfo is not valid.");
+        } else {
+          a(localBaseArticleInfo);
+        }
+      }
+    }
   }
 }
 

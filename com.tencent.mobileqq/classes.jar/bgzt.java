@@ -1,23 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import org.json.JSONObject;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public abstract interface bgzt
-  extends bguj
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface bgzt
 {
-  public abstract void doTransparent(JSONObject paramJSONObject);
-  
-  public abstract long getRulesFromUrl();
-  
-  public abstract int getTitleBarAlpa();
-  
-  public abstract int getTitleBarHeight();
-  
-  public abstract View getTitleBarView();
-  
-  public abstract void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, acjr paramacjr);
-  
-  public abstract void setWarnToastVisible(boolean paramBoolean, int paramInt1, int paramInt2);
+  Class a() default Object.class;
 }
 
 

@@ -1,32 +1,4 @@
-import android.app.Activity;
-import android.content.Context;
-import java.lang.ref.WeakReference;
-
-public class zhc
-  extends zes
-{
-  protected WeakReference<Context> a;
-  
-  public zhc(Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-    this.a = new WeakReference(paramContext);
-  }
-  
-  public boolean a()
-  {
-    Context localContext = (Context)this.a.get();
-    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
-  }
-  
-  public void show()
-  {
-    if (a()) {
-      return;
-    }
-    super.show();
-  }
-}
+public class zhc {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

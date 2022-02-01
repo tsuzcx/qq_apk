@@ -1,6 +1,9 @@
-public abstract interface appi
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+
+public class appi
 {
-  public abstract void b();
+  public static int a = ScreenUtil.SCREEN_WIDTH;
+  public static int b = ScreenUtil.SCREEN_HIGHT;
 }
 
 

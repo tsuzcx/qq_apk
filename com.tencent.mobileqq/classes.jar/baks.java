@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class baks
-  implements DialogInterface.OnClickListener
+public abstract interface baks
 {
-  baks(bakr parambakr) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.back();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(bald parambald);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

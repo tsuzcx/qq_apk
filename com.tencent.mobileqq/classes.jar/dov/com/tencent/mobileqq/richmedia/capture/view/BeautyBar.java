@@ -1,6 +1,5 @@
 package dov.com.tencent.mobileqq.richmedia.capture.view;
 
-import amtj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -13,10 +12,11 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import bnxu;
-import bnxv;
-import bnxw;
-import bnxx;
+import anvx;
+import bpnm;
+import bpnn;
+import bpno;
+import bpnp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import mqq.app.AppRuntime;
@@ -28,13 +28,13 @@ public class BeautyBar
   public static long a;
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bnxu(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bpnm(this);
   private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   public SeekBar.OnSeekBarChangeListener a;
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bnxx jdField_a_of_type_Bnxx;
+  private bpnp jdField_a_of_type_Bpnp;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   
@@ -47,19 +47,19 @@ public class BeautyBar
   public BeautyBar(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bnxv(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bpnn(this);
   }
   
   public BeautyBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bnxv(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bpnn(this);
   }
   
   public BeautyBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bnxv(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bpnn(this);
   }
   
   private void a()
@@ -68,13 +68,13 @@ public class BeautyBar
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131363408));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131363477));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new bnxw(this));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845600);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363410));
+    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new bpno(this));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845685);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363479));
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = null;
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
@@ -89,7 +89,7 @@ public class BeautyBar
     if ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetSeekBar == null)) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131700229) + paramInt + "%");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131700580) + paramInt + "%");
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams());
     }
@@ -120,9 +120,9 @@ public class BeautyBar
     a();
   }
   
-  public void setBeautyBarListener(bnxx parambnxx)
+  public void setBeautyBarListener(bpnp parambpnp)
   {
-    this.jdField_a_of_type_Bnxx = parambnxx;
+    this.jdField_a_of_type_Bpnp = parambpnp;
   }
 }
 

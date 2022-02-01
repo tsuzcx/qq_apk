@@ -1,6 +1,23 @@
-public abstract interface befk
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import java.util.Comparator;
+
+public class befk
+  implements Comparator<PadInfo>
 {
-  public abstract void a(boolean paramBoolean, bebc parambebc);
+  public befk(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  
+  public int a(PadInfo paramPadInfo1, PadInfo paramPadInfo2)
+  {
+    long l = paramPadInfo2.lastEditTime - paramPadInfo1.lastEditTime;
+    if (l > 0L) {
+      return 1;
+    }
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

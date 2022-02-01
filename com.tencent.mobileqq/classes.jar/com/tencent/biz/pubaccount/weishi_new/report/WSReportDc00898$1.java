@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.report;
 
 import com.tencent.beacon.event.UserAction;
 import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
-import uvr;
+import vkf;
 
 public final class WSReportDc00898$1
   implements Runnable
@@ -28,26 +28,26 @@ public final class WSReportDc00898$1
               {
                 return;
               } while (!(this.jdField_a_of_type_JavaLangObject instanceof String));
-              uvr.a("officialacc_weishi", "single_video_exp", 0, 0, 0L, 0L, (String)this.jdField_a_of_type_JavaLangObject, uvr.b());
+              vkf.a("officialacc_weishi", "single_video_exp", 0, 0, 0L, 0L, (String)this.jdField_a_of_type_JavaLangObject, vkf.b());
               return;
             } while (!this.jdField_a_of_type_JavaLangObject.getClass().isArray());
             localObject = (Object[])this.jdField_a_of_type_JavaLangObject;
             long l = ((Long)localObject[0]).longValue();
             i = ((Integer)localObject[1]).intValue();
-            uvr.a("officialacc_weishi", "officialacc_quit", 0, (int)l, i, 0L, UserAction.getQIMEI(), "");
+            vkf.a("officialacc_weishi", "officialacc_quit", 0, (int)l, i, 0L, UserAction.getQIMEI(), "");
             return;
             if ((this.jdField_a_of_type_JavaLangObject instanceof WSRedDotPushMsg)) {}
-            for (localObject = uvr.a((WSRedDotPushMsg)this.jdField_a_of_type_JavaLangObject);; localObject = uvr.c())
+            for (localObject = vkf.a((WSRedDotPushMsg)this.jdField_a_of_type_JavaLangObject);; localObject = vkf.c())
             {
-              uvr.a("officialacc_weishi", "feeds_exp", 0, 0, 0L, 0L, (String)localObject, "");
+              vkf.a("officialacc_weishi", "feeds_exp", 0, 0, 0L, 0L, (String)localObject, "");
               return;
             }
           } while (!(this.jdField_a_of_type_JavaLangObject instanceof String));
-          uvr.a("officialacc_weishi", "push_video_clk", 0, 0, 0L, 0L, (String)this.jdField_a_of_type_JavaLangObject, uvr.b());
+          vkf.a("officialacc_weishi", "push_video_clk", 0, 0, 0L, 0L, (String)this.jdField_a_of_type_JavaLangObject, vkf.b());
           return;
           if ((this.jdField_a_of_type_JavaLangObject instanceof String))
           {
-            uvr.a("officialacc_weishi", "feeds_clk", 0, 0, 0L, 0L, (String)this.jdField_a_of_type_JavaLangObject, uvr.b());
+            vkf.a("officialacc_weishi", "feeds_clk", 0, 0, 0L, 0L, (String)this.jdField_a_of_type_JavaLangObject, vkf.b());
             return;
           }
         } while (!(this.jdField_a_of_type_JavaLangObject instanceof Integer));
@@ -56,16 +56,16 @@ public final class WSReportDc00898$1
         default: 
           return;
         case 2: 
-          uvr.a("officialacc_weishi", "feeds_clk_videoplay", 0, 0, 0L, 0L, "", uvr.b());
+          vkf.a("officialacc_weishi", "feeds_clk_videoplay", 0, 0, 0L, 0L, "", vkf.b());
           return;
         case 115: 
-          uvr.a("weishi_share_officialacc", "feeds_dl_ws", 0, 0, 0L, 0L, "", uvr.b());
+          vkf.a("weishi_share_officialacc", "feeds_dl_ws", 0, 0, 0L, 0L, "", vkf.b());
           return;
         }
-        uvr.a("weishi_share_officialacc", "feeds_clk_ws", 0, 0, 0L, 0L, "", uvr.b());
+        vkf.a("weishi_share_officialacc", "feeds_clk_ws", 0, 0, 0L, 0L, "", vkf.b());
         return;
       } while ((!(this.jdField_a_of_type_JavaLangObject instanceof Integer)) || (((Integer)this.jdField_a_of_type_JavaLangObject).intValue() != 4));
-      uvr.a("weishi_share_officialacc", "dtest_dl_ws", 0, 0, 0L, 0L, "", uvr.b());
+      vkf.a("weishi_share_officialacc", "dtest_dl_ws", 0, 0, 0L, 0L, "", vkf.b());
       return;
       localObject = "";
       int i = 0;
@@ -79,27 +79,27 @@ public final class WSReportDc00898$1
         int m = ((Integer)localObject[4]).intValue();
         int n = ((Integer)localObject[5]).intValue();
         i = ((Integer)localObject[6]).intValue();
-        localObject = uvr.a(str1, str2, k, m, n);
+        localObject = vkf.a(str1, str2, k, m, n);
         switch (j)
         {
         default: 
-          uvr.a("officialacc_weishi", "feeds_video_exp", 0, 0, 0L, 0L, UserAction.getQIMEI(), uvr.b());
+          vkf.a("officialacc_weishi", "feeds_video_exp", 0, 0, 0L, 0L, UserAction.getQIMEI(), vkf.b());
         }
       }
       for (;;)
       {
-        uvr.a("officialacc_weishi", "feeds_exp_cpl", i, 0, 0L, 0L, (String)localObject, uvr.b());
+        vkf.a("officialacc_weishi", "feeds_exp_cpl", i, 0, 0L, 0L, (String)localObject, vkf.b());
         return;
-        uvr.a("weishi_share_officialacc", "feeds_dl_exp", 0, 0, 0L, 0L, UserAction.getQIMEI(), uvr.b());
+        vkf.a("weishi_share_officialacc", "feeds_dl_exp", 0, 0, 0L, 0L, UserAction.getQIMEI(), vkf.b());
       }
     } while (!this.jdField_a_of_type_JavaLangObject.getClass().isArray());
     Object localObject = (Object[])this.jdField_a_of_type_JavaLangObject;
-    uvr.a("officialacc_weishi", "feeds_load_fail", ((Integer)localObject[0]).intValue(), 0, ((Long)localObject[1]).longValue(), 0L, "", "");
+    vkf.a("officialacc_weishi", "feeds_load_fail", ((Integer)localObject[0]).intValue(), 0, ((Long)localObject[1]).longValue(), 0L, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898.1
  * JD-Core Version:    0.7.0.1
  */

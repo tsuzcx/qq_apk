@@ -1,23 +1,24 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import android.support.v4.app.FragmentActivity;
 
-class ajsw
-  implements MediaScanner.OnMediaInfoScannerListener
+public class ajsw
+  extends ajso
 {
-  ajsw(ajsv paramajsv, Intent paramIntent, ArrayList paramArrayList) {}
+  public static final int[] a = { 2131690779 };
+  public static final int[] b = { 2131364507 };
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public ajsw(FragmentActivity paramFragmentActivity)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Ajsv.mActivity).cancleProgressDailog();
-    if (bnsr.a(this.jdField_a_of_type_Ajsv.mActivity, paramLocalMediaInfo))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.sendPhoto(this.jdField_a_of_type_Ajsv.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
-    }
+    super(paramFragmentActivity);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 

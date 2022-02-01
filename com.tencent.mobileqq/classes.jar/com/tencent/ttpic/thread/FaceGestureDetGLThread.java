@@ -35,7 +35,6 @@ public class FaceGestureDetGLThread
 {
   private static final long BRIGHTNESS_DURATION = 2000L;
   private static final String TAG = FaceGestureDetGLThread.class.getSimpleName();
-  private ExecutorService SINGLE_THREAD_EXECUTOR = Executors.newSingleThreadExecutor();
   private int[] autoContrastCurve = new int[256];
   private double averageFaceL = 60.0D;
   private int[] brightnessAdjustmentCurve = new int[256];
@@ -61,6 +60,7 @@ public class FaceGestureDetGLThread
   private int[][][][] matrixCrs;
   private int[][] matrixRL;
   private GLSegSharedData sharedData;
+  private ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
   private float[] whitenBalanceRGBGain = { 1.0F, 1.0F, 1.0F };
   
   public FaceGestureDetGLThread(EGLContext paramEGLContext)
@@ -432,8 +432,8 @@ public class FaceGestureDetGLThread
       }
       System.arraycopy(paramArrayOfByte, 0, this.brightnessAdjustmentData, 0, paramArrayOfByte.length);
       System.arraycopy(this.autoContrastCurve, 0, this.lastAutoContrastCurve, 0, this.autoContrastCurve.length);
-    } while ((this.SINGLE_THREAD_EXECUTOR.isShutdown()) || (this.SINGLE_THREAD_EXECUTOR.isTerminated()));
-    this.SINGLE_THREAD_EXECUTOR.execute(new FaceGestureDetGLThread.3(this, paramInt1, paramInt2));
+    } while ((this.singleThreadExecutor.isShutdown()) || (this.singleThreadExecutor.isTerminated()));
+    this.singleThreadExecutor.execute(new FaceGestureDetGLThread.3(this, paramInt1, paramInt2));
   }
   
   public void destroy()
@@ -445,10 +445,10 @@ public class FaceGestureDetGLThread
       this.mCopyFrame.clear();
     }
     if (this.mCopyFilter != null) {
-      this.mCopyFilter.ClearGLSL();
+      this.mCopyFilter.clearGLSL();
     }
     if (this.mRotateFilter != null) {
-      this.mRotateFilter.ClearGLSL();
+      this.mRotateFilter.clearGLSL();
     }
     if (this.mRotateFrame != null) {
       this.mRotateFrame.clear();
@@ -456,8 +456,8 @@ public class FaceGestureDetGLThread
     if (this.mStarEffectFilter != null) {
       this.mStarEffectFilter.clear();
     }
-    if (this.SINGLE_THREAD_EXECUTOR != null) {
-      this.SINGLE_THREAD_EXECUTOR.shutdownNow();
+    if (this.singleThreadExecutor != null) {
+      this.singleThreadExecutor.shutdownNow();
     }
   }
   
@@ -498,7 +498,7 @@ public class FaceGestureDetGLThread
     RetrieveDataManager.getInstance().clear();
   }
   
-  public SegmentDataPipe postFaceGestureDet(Frame paramFrame, double paramDouble, boolean paramBoolean1, boolean paramBoolean2, int paramInt, StarParam paramStarParam, boolean paramBoolean3, boolean paramBoolean4)
+  public SegmentDataPipe postFaceGestureDet(Frame paramFrame, double paramDouble, boolean paramBoolean1, boolean paramBoolean2, int paramInt, StarParam paramStarParam, boolean paramBoolean3)
   {
     AEProfiler.getInstance().start("PTFaceDetect-detect", true);
     if (this.mListener == null) {
@@ -549,6 +549,14 @@ public class FaceGestureDetGLThread
             {
               paramStarParam = this.brightnessAdjustmentCurve;
               paramFrame.curve = AlgoUtils.mergeCurve(this.autoContrastCurve, paramStarParam);
+              if ((paramFrame.autoContrastCurve == null) || (paramFrame.autoContrastCurve.length < 256)) {
+                paramFrame.autoContrastCurve = new int[256];
+              }
+              System.arraycopy(this.autoContrastCurve, 0, paramFrame.autoContrastCurve, 0, this.autoContrastCurve.length);
+              if ((paramFrame.autoBrightnessCurve == null) || (paramFrame.autoBrightnessCurve.length < 256)) {
+                paramFrame.autoBrightnessCurve = new int[256];
+              }
+              System.arraycopy(paramStarParam, 0, paramFrame.autoBrightnessCurve, 0, paramStarParam.length);
               paramFrame.faceAverageL = this.averageFaceL;
               paramFrame.makeDataReady();
               this.sharedData.makeBrotherTextureFree(paramFrame);
@@ -579,7 +587,6 @@ public class FaceGestureDetGLThread
     AsyncTask.THREAD_POOL_EXECUTOR.execute(new FaceGestureDetGLThread.1(this, arrayOfByte, j, k, localCountDownLatch1));
     this.mFaceDetector.init();
     this.mFaceDetector.autoChangeFaceRefine(j, k, paramInt);
-    this.mFaceDetector.setNeedFaceKit(paramBoolean3);
     this.mFaceDetector.setFaceKitVerticesArray(paramFrame.faceKitVerticesArray);
     this.mFaceDetector.setFace3DVerticesArray(paramFrame.face3DVerticesArray);
     this.mFaceDetector.setFace3DRotationArray(paramFrame.face3DRotationArray);
@@ -592,12 +599,12 @@ public class FaceGestureDetGLThread
     {
       this.mFaceDetector.doDectectTrackByRGBA(paramFrame.mData, j, k);
       l1 = this.mFaceDetector.getFaceTrackTime();
-      this.mFaceDetector.updateAllFaceExpression(paramBoolean4);
+      this.mFaceDetector.updateAllFaceExpression(paramBoolean3);
       l2 = System.currentTimeMillis();
       localCountDownLatch2 = new CountDownLatch(1);
       i = 0;
       if (this.mLastBrightnessTime > 0L) {
-        break label767;
+        break label844;
       }
       this.mLastBrightnessTime = (l2 - 2000L + 2000L);
       if (i == 0) {

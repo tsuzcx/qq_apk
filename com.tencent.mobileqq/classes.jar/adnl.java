@@ -1,25 +1,10 @@
-import com.tencent.mobileqq.activity.JumpActivity;
-
-public class adnl
-  implements acxa
+public abstract interface adnl
 {
-  public adnl(JumpActivity paramJumpActivity) {}
-  
-  public void onAfterStartActivity()
-  {
-    this.a.finish();
-  }
-  
-  public void onBeforeStartActivity() {}
-  
-  public void onCancel()
-  {
-    this.a.finish();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnl
  * JD-Core Version:    0.7.0.1
  */

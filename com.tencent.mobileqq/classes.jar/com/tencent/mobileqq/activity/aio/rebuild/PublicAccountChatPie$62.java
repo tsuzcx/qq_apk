@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
-import ofj;
+import aido;
+import onc;
 
 public class PublicAccountChatPie$62
   implements Runnable
 {
-  public PublicAccountChatPie$62(ahiu paramahiu, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3) {}
+  public PublicAccountChatPie$62(aido paramaido, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {

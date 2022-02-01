@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import aafi;
+import aauu;
 
 class StatisticCollector$4
   implements Runnable
@@ -9,7 +9,7 @@ class StatisticCollector$4
   
   public void run()
   {
-    aafi.a(StatisticCollector.access$1000(), 1);
+    aauu.a(StatisticCollector.access$1000(), 1);
   }
 }
 

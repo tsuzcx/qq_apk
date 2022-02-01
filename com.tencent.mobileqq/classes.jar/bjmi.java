@@ -1,81 +1,60 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.os.Build.VERSION;
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class bjmi
+  extends SQLiteOpenHelper
 {
-  public static Camera a()
+  protected static bjmi a;
+  protected String a;
+  protected String b = "CREATE TABLE IF NOT EXISTS table_old_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
+  protected String c = "CREATE TABLE IF NOT EXISTS table_appcircle_setting(_id INTEGER PRIMARY KEY AUTOINCREMENT,uin TEXT,key TEXT,value TEXT,data BLOB);";
+  protected String d = "CREATE TABLE IF NOT EXISTS table_appcircle_report( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
+  
+  protected bjmi(Context paramContext)
   {
-    return a(-1, 5);
+    super(paramContext, "open_report.db", null, 3);
+    this.jdField_a_of_type_JavaLangString = "CREATE TABLE IF NOT EXISTS table_new_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
   }
   
-  public static Camera a(int paramInt)
+  public static bjmi a(Context paramContext)
   {
-    return a(paramInt, 5);
-  }
-  
-  @TargetApi(9)
-  public static Camera a(int paramInt1, int paramInt2)
-  {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-      paramInt2 = 1;
-    }
-    int i = 0;
-    Camera localCamera1 = null;
-    Camera localCamera3;
-    for (;;)
+    try
     {
-      localCamera3 = localCamera1;
-      if (i < paramInt2)
-      {
-        Camera localCamera2 = localCamera1;
-        try
-        {
-          if ((Build.VERSION.SDK_INT >= 9) && (paramInt1 != -1)) {
-            localCamera2 = localCamera1;
-          }
-          for (localCamera1 = Camera.open(paramInt1);; localCamera1 = Camera.open())
-          {
-            localCamera2 = localCamera1;
-            localCamera3 = localCamera1;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            localCamera2 = localCamera1;
-            QLog.d("CameraUtil", 2, "openCameraWithRetry successfully.  retry times = " + i + ", max retry times = " + paramInt2);
-            return localCamera1;
-            localCamera2 = localCamera1;
-          }
-        }
-        catch (Exception localException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("CameraUtil", 2, "openCameraWithRetry. Fail to open camera. error msg: " + localException.getMessage() + ", retry times = " + i + ", max retry times = " + paramInt2);
-          }
-          i += 1;
-          if (i < paramInt2) {
-            try
-            {
-              Thread.currentThread();
-              Thread.sleep(500);
-              Object localObject = localCamera2;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              for (;;)
-              {
-                localInterruptedException.printStackTrace();
-              }
-            }
-          } else {
-            throw new RuntimeException(localInterruptedException);
-          }
-        }
+      if (jdField_a_of_type_Bjmi == null) {
+        jdField_a_of_type_Bjmi = new bjmi(paramContext);
       }
+      paramContext = jdField_a_of_type_Bjmi;
+      return paramContext;
     }
-    return localCamera3;
+    finally {}
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    bjko.b("opensdk", "sql1:" + this.jdField_a_of_type_JavaLangString);
+    bjko.b("opensdk", "sql2:" + this.b);
+    paramSQLiteDatabase.execSQL(this.jdField_a_of_type_JavaLangString);
+    paramSQLiteDatabase.execSQL(this.b);
+    Log.i("ReportSqliteHelper", "circleTest create table:" + this.c);
+    paramSQLiteDatabase.execSQL(this.c);
+  }
+  
+  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
+    onCreate(paramSQLiteDatabase);
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
+    onCreate(paramSQLiteDatabase);
   }
 }
 

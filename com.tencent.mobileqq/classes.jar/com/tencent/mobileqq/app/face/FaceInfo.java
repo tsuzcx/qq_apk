@@ -5,14 +5,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anhn;
-import awkj;
+import aokd;
+import axql;
 import com.tencent.qphone.base.util.QLog;
 
 public class FaceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FaceInfo> CREATOR = new anhn();
+  public static final Parcelable.Creator<FaceInfo> CREATOR = new aokd();
   public static int f;
   public static int g = 1;
   public static int h = 2;
@@ -197,7 +197,7 @@ public class FaceInfo
       } while ((paramInt1 < 0) || (paramInt1 >= s));
       this.jdField_a_of_type_ArrayOfLong[paramInt1] = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        awkj.a(FaceInfo.class.getSimpleName(), "markTime", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt1]), this });
+        axql.a(FaceInfo.class.getSimpleName(), "markTime", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt1]), this });
       }
     } while ((paramInt1 != r) || (!QLog.isColorLevel()));
     StringBuilder localStringBuilder = new StringBuilder(260);
@@ -303,7 +303,7 @@ public class FaceInfo
         break;
       }
     } while (!QLog.isDevelopLevel());
-    awkj.a(FaceInfo.class.getSimpleName(), "isTimeOut", new Object[] { Integer.valueOf(paramInt) });
+    axql.a(FaceInfo.class.getSimpleName(), "isTimeOut", new Object[] { Integer.valueOf(paramInt) });
     return false;
     if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[paramInt]) >= paramLong) {}
     for (;;)

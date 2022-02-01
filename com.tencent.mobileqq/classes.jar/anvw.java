@@ -1,74 +1,74 @@
-import android.view.View;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class anvw
-  implements anwb
 {
-  public anvw(QQDailyArkView paramQQDailyArkView) {}
+  public static final String[] a;
+  private static final String[] b = { "MSG", "RESUME", "TICK", "FG", "BG", "ENTER", "MAIN" };
+  public int a;
+  public GuardManager a;
+  protected long c;
+  protected long d;
+  
+  static
+  {
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "EMPTY", "BG_FETCH", "FG_MAIN", "FG_OTHER", "BG_GUARD", "BG_UNGUARD", "LITE_GUARD", "LITE_UNGUARD", "DEAD" };
+  }
   
   public void a()
   {
-    if (QQDailyArkView.a(this.a) == null) {}
-    View localView;
-    do
-    {
-      return;
-      QQDailyArkView.b(this.a);
-      QQDailyArkView.a(this.a).setVisibility(0);
-      localView = QQDailyArkView.a(this.a).findViewById(2131370267);
-      QQDailyArkView.a(this.a, QQDailyArkView.a(this.a), 0);
-      this.a.requestLayout();
-    } while (localView == null);
-    localView.setVisibility(0);
+    this.c += 1L;
+    this.d += 1L;
   }
   
-  public void a(String paramString, int paramInt, boolean paramBoolean, ArkViewModel paramArkViewModel)
+  public final void a(int paramInt, Object paramObject)
   {
-    if (QQDailyArkView.a(this.a) == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] + " onEvent " + b[paramInt] + ", " + paramObject + ", " + this.c + ", " + this.d);
     }
-    if ((paramArkViewModel != null) && (paramArkViewModel.GetAppScriptType() == 2) && (!ArkAppCenter.d()))
+    switch (paramInt)
     {
-      QLog.i("QQDailyArkView", 2, "onLoadFailed.ARKAPP_TYPE_RELOAD");
+    default: 
+      return;
+    case 2: 
       a();
       return;
-    }
-    paramString = QQDailyArkView.a(this.a);
-    if (paramBoolean) {
-      paramString.setOnClickListener(new anvx(this, paramArkViewModel));
-    }
-    for (;;)
-    {
-      QQDailyArkView.b(this.a);
-      paramString.setVisibility(0);
-      paramArkViewModel = paramString.findViewById(2131370267);
-      QQDailyArkView.a(this.a, paramString, 0);
-      this.a.requestLayout();
-      if (paramArkViewModel == null) {
-        break;
-      }
-      paramArkViewModel.setVisibility(4);
+    case 0: 
+      b();
       return;
-      paramString.setOnClickListener(null);
+    case 3: 
+      a((String)paramObject);
+      return;
+    case 4: 
+      d((String)paramObject);
+      return;
+    case 5: 
+      b((String)paramObject);
+      return;
+    case 6: 
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(2, null);
+      return;
     }
+    c((String)paramObject);
   }
   
-  public void b()
+  protected void a(String paramString) {}
+  
+  protected void b() {}
+  
+  protected void b(String paramString)
   {
-    if (QQDailyArkView.a(this.a) == null) {
-      return;
-    }
-    QQDailyArkView.a(this.a).setVisibility(8);
-    QQDailyArkView.a(this.a, QQDailyArkView.a(this.a), 8);
+    this.d = 0L;
+    this.c = 0L;
   }
+  
+  protected void c(String paramString) {}
+  
+  protected void d(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anvw
  * JD-Core Version:    0.7.0.1
  */

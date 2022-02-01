@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.play;
 
-import bhhi;
-import bhhk;
+import bisa;
+import bisc;
 
 class AEVideoShelfPreviewFragment$3
-  implements bhhk
+  implements bisc
 {
   AEVideoShelfPreviewFragment$3(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
   
-  public void onProgressChanged(bhhi parambhhi, int paramInt1, int paramInt2) {}
+  public void onProgressChanged(bisa parambisa, int paramInt1, int paramInt2) {}
   
-  public void onProgressCompleted(bhhi parambhhi) {}
+  public void onProgressCompleted(bisa parambisa) {}
 }
 
 

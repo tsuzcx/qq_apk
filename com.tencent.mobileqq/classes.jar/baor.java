@@ -1,87 +1,203 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.SignatureHandler;
-import com.tencent.mobileqq.richstatus.HistorySignItem;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class baor
-  extends bapd
 {
-  private baor(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  protected void a(boolean paramBoolean, List<byte[]> paramList, List<Integer> paramList1)
+  public static Bitmap a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject;
-    if (QLog.isColorLevel())
+    Object localObject3 = null;
+    Object localObject1 = null;
+    QLog.d("OpenSDKUtils", 2, "getOpenSDKUserFaceBitmap phoneNumber = " + paramString);
+    Object localObject2 = localObject1;
+    if (paramQQAppInterface != null)
     {
-      localObject = new StringBuilder().append("onDeleteStatus. isSuccess=").append(paramBoolean).append(", keyListSize=").append(paramList.size()).append(", errorCodeSize=");
-      if (paramList1 != null) {
-        break label231;
+      localObject2 = localObject1;
+      if (paramString != null)
+      {
+        if (paramString.startsWith("+")) {
+          break label55;
+        }
+        localObject2 = localObject1;
       }
     }
-    label231:
-    for (paramList1 = "null";; paramList1 = Integer.valueOf(paramList1.size()))
+    label55:
+    do
     {
-      QLog.d("SignatureHistoryFragment", 2, paramList1);
-      if ((SignatureHistoryFragment.a(this.a) != null) && (SignatureHistoryFragment.a(this.a).isShowing())) {
-        SignatureHistoryFragment.a(this.a).dismiss();
+      return localObject2;
+      localObject1 = localObject3;
+      if (a(paramQQAppInterface, paramString)) {
+        localObject1 = paramQQAppInterface.getFaceBitmap(11, paramString, (byte)3, true, 0);
       }
-      if ((!paramBoolean) || (paramList == null)) {
-        break label419;
+      localObject2 = localObject1;
+    } while (localObject1 != null);
+    return bheg.a();
+  }
+  
+  public static Drawable a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Object localObject3 = null;
+    Object localObject1 = null;
+    QLog.d("OpenSDKUtils", 2, "getOpenSDKUserFaceBitmap phoneNumber = " + paramString);
+    Object localObject2 = localObject1;
+    if (paramQQAppInterface != null)
+    {
+      localObject2 = localObject1;
+      if (paramString != null)
+      {
+        if (paramString.startsWith("+")) {
+          break label55;
+        }
+        localObject2 = localObject1;
       }
-      if (this.a.getActivity() != null) {
-        this.a.a(2, 2131691371);
+    }
+    label55:
+    do
+    {
+      return localObject2;
+      localObject1 = localObject3;
+      if (a(paramQQAppInterface, paramString)) {
+        localObject1 = FaceDrawable.getMobileFaceDrawable(paramQQAppInterface, paramString, (byte)3);
       }
-      paramList = paramList.iterator();
+      localObject2 = localObject1;
+    } while (localObject1 != null);
+    return bheg.b();
+  }
+  
+  public static PhoneContact a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    awyz localawyz = (awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
+    if (localawyz != null)
+    {
+      PhoneContact localPhoneContact = localawyz.c(paramString);
+      azim localazim = azin.a(paramString);
+      paramQQAppInterface = localPhoneContact;
+      if (localPhoneContact == null) {
+        paramQQAppInterface = localawyz.b(localazim.c);
+      }
+      paramString = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        paramString = localawyz.b("+" + localazim.a + localazim.c);
+      }
+      paramQQAppInterface = paramString;
+      if (paramString == null) {
+        paramQQAppInterface = localawyz.b(localazim.a + localazim.c);
+      }
+      paramString = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        paramString = localawyz.b("00" + localazim.a + localazim.c);
+      }
+      if (paramString == null) {
+        return localawyz.b(localazim.a + "-" + localazim.c);
+      }
+      return paramString;
+    }
+    return null;
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Object localObject4 = null;
+    Object localObject3 = null;
+    QLog.d("OpenSDKUtils", 2, "getOpenSDKUserDisplayName phoneNumber = " + paramString);
+    if ((paramQQAppInterface == null) || (paramString == null) || (!paramString.startsWith("+")))
+    {
+      paramQQAppInterface = "";
+      return paramQQAppInterface;
+    }
+    Object localObject2 = a(paramQQAppInterface, paramString);
+    Object localObject1;
+    if (localObject2 != null) {
+      localObject1 = ((PhoneContact)localObject2).name;
+    }
+    for (String str = ((PhoneContact)localObject2).uin;; str = null)
+    {
+      QLog.d("OpenSDKUtils", 2, "getOpenSDKUserDisplayName contactName = " + (String)localObject1 + "uin = " + str);
+      localObject2 = localObject4;
+      if (!TextUtils.isEmpty(str))
+      {
+        localObject2 = localObject4;
+        if (!str.equals("0"))
+        {
+          localObject2 = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(str);
+          paramQQAppInterface = localObject3;
+          if (localObject2 != null)
+          {
+            if ((((Friends)localObject2).remark == null) || (((Friends)localObject2).remark.length() <= 0)) {
+              break label226;
+            }
+            paramQQAppInterface = ((Friends)localObject2).remark;
+          }
+          label178:
+          QLog.d("OpenSDKUtils", 2, "getOpenSDKUserDisplayName FriendDisplayName = " + paramQQAppInterface);
+          localObject2 = paramQQAppInterface;
+        }
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {}
       for (;;)
       {
-        if (!paramList.hasNext()) {
-          break label244;
+        paramQQAppInterface = (QQAppInterface)localObject1;
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          break;
         }
-        paramList1 = (byte[])paramList.next();
-        localObject = SignatureHistoryFragment.b(this.a).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          HistorySignItem localHistorySignItem = (HistorySignItem)((Iterator)localObject).next();
-          if ((localHistorySignItem == null) || (localHistorySignItem.richStatus == null) || (!localHistorySignItem.richStatus.feedsId.equals(new String(paramList1)))) {
-            break;
-          }
-          ((Iterator)localObject).remove();
+        return a(paramString);
+        label226:
+        paramQQAppInterface = localObject3;
+        if (((Friends)localObject2).name == null) {
+          break label178;
         }
+        paramQQAppInterface = localObject3;
+        if (((Friends)localObject2).name.length() <= 0) {
+          break label178;
+        }
+        paramQQAppInterface = ((Friends)localObject2).name;
+        break label178;
+        localObject1 = localObject2;
       }
+      localObject1 = null;
     }
-    label244:
-    if (SignatureHistoryFragment.b(this.a).size() == 0) {
-      SignatureHistoryFragment.a(this.a, 3);
+  }
+  
+  public static String a(String paramString)
+  {
+    azim localazim = azin.a(paramString);
+    if (localazim.a.equals("86")) {
+      paramString = localazim.c;
     }
-    SignatureHistoryFragment.a(this.a).clear();
-    SignatureHistoryFragment.b(this.a, false);
-    SignatureHistoryFragment.a(this.a).setText(2131718511);
-    SignatureHistoryFragment.b(this.a, false);
-    if (SignatureHistoryFragment.a(this.a) != null) {
-      SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
-    }
-    for (;;)
-    {
-      if ((paramBoolean) && (this.a.getActivity() != null))
-      {
-        BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit().putBoolean(SignatureHistoryFragment.b(this.a) + "_has_history_sig_del_key", true).apply();
-        if (this.a.a != null) {
-          this.a.a.a(Long.parseLong(SignatureHistoryFragment.a(this.a)));
-        }
-      }
+    return paramString;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  {
+    QLog.d("OpenSDKUtils", 2, "enterActionSheet phoneNumber = " + paramString);
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      label419:
-      if (this.a.getActivity() != null) {
-        this.a.a(1, 2131698489);
-      }
+    }
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = 1;
+    bkzi localbkzi = bkzi.a(paramContext);
+    localbkzi.a(2131689514);
+    arrayOfInt[0] = 1;
+    localbkzi.b(2131690690);
+    localbkzi.c(2131690697);
+    localbkzi.a(new baos());
+    localbkzi.a(new baot(localbkzi, arrayOfInt, paramString, paramContext, paramQQAppInterface));
+    localbkzi.show();
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = (awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
+    if (paramQQAppInterface != null) {}
+    for (paramQQAppInterface = paramQQAppInterface.c(paramString);; paramQQAppInterface = null) {
+      return (paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.uin));
     }
   }
 }

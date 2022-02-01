@@ -1,9 +1,25 @@
-import android.support.v4.view.PagerAdapter;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public abstract interface avyz
+public final class avyz
+  implements INetEngine.INetEngineListener
 {
-  public abstract void a(MultiAIOBaseViewPager paramMultiAIOBaseViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
+  public avyz(INetEngine.INetEngineListener paramINetEngineListener) {}
+  
+  public void onResp(NetResp paramNetResp)
+  {
+    if (this.a != null) {
+      this.a.onResp(paramNetResp);
+    }
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  {
+    if (this.a != null) {
+      this.a.onUpdateProgeress(paramNetReq, paramLong1, paramLong2);
+    }
+  }
 }
 
 

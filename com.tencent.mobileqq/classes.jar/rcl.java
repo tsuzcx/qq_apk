@@ -1,33 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
-import com.tencent.pts.core.itemview.PTSItemData;
-import com.tencent.pts.core.itemview.PTSItemData.Builder;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rcl
-  implements PTSComposer.IPTSUpdateDataListener
+class rcl
+  implements View.OnClickListener
 {
-  public rcl(BaseArticleInfo paramBaseArticleInfo) {}
+  rcl(rck paramrck) {}
   
-  public void onDataUpdated(String paramString)
+  public void onClick(View paramView)
   {
-    QLog.i("Q.readinjoy.BaseArticleInfo", 1, "[onDataUpdated] jsonData = " + paramString);
-    PTSItemData localPTSItemData = this.a.ptsItemData;
-    if (localPTSItemData != null)
-    {
-      this.a.ptsItemData = new PTSItemData.Builder().withPageName(localPTSItemData.getPageName()).withItemID(localPTSItemData.getItemID()).withJsonData(paramString).withFrameTreeJson(localPTSItemData.getFrameTreeJson()).build();
-      this.a.ptsItemDataBytes = qoa.a(this.a.ptsItemData);
-      paramString = pay.a();
-      if (paramString != null)
-      {
-        paramString = (pks)paramString.getManager(163);
-        if ((paramString != null) && ((this.a instanceof ArticleInfo))) {
-          paramString.a().b((ArticleInfo)this.a);
-        }
-      }
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

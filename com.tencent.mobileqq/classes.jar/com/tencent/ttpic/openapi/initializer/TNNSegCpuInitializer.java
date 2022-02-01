@@ -326,6 +326,28 @@ public class TNNSegCpuInitializer
     //   237	253	256	finally
     //   257	259	256	finally
   }
+  
+  public void setMode(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 1) {
+      synchronized (this.TNNSegHair)
+      {
+        if (this.modelManager.isModelLoaded(1)) {
+          this.TNNSegHair.setMode(paramInt2);
+        }
+        return;
+      }
+    }
+    if (paramInt1 == 2) {
+      synchronized (this.TNNSegSky)
+      {
+        if (this.modelManager.isModelLoaded(2)) {
+          this.TNNSegSky.setMode(paramInt2);
+        }
+        return;
+      }
+    }
+  }
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import puw;
+import qfq;
 
 public class FollowListInfoModule$3
   implements Runnable
 {
-  public FollowListInfoModule$3(puw parampuw, int paramInt) {}
+  public FollowListInfoModule$3(qfq paramqfq, int paramInt) {}
   
   public void run()
   {
-    puw.a(this.this$0, this.a, puw.a(this.this$0));
+    qfq.a(this.this$0, this.a, qfq.a(this.this$0));
   }
 }
 

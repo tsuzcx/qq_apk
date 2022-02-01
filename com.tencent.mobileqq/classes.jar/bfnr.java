@@ -1,16 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
-
-public class bfnr
-  implements DialogInterface.OnClickListener
+public abstract interface bfnr
+  extends bfmy
 {
-  public bfnr(UpgradeActivity paramUpgradeActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public abstract void a(int paramInt);
 }
 
 

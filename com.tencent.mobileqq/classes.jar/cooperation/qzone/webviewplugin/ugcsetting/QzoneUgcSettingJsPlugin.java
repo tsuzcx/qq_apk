@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbnx;
-import bgve;
+import bcur;
+import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -55,7 +55,7 @@ public class QzoneUgcSettingJsPlugin
     this.parentPlugin.callJs(paramString, new String[] { localObject });
   }
   
-  private void handleCancellationStatus(bgve parambgve, String paramString)
+  private void handleCancellationStatus(bifw parambifw, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     for (;;)
@@ -65,13 +65,13 @@ public class QzoneUgcSettingJsPlugin
       {
         if (new JSONObject(paramString).getInt("result") == 1)
         {
-          bbnx.a(0, parambgve.a().getLongAccountUin());
+          bcur.a(0, parambifw.a().getLongAccountUin());
           return;
         }
       }
-      catch (Throwable parambgve)
+      catch (Throwable parambifw)
       {
-        QLog.e(this.TAG, 1, "handleCancellationStatus... e:", parambgve);
+        QLog.e(this.TAG, 1, "handleCancellationStatus... e:", parambifw);
       }
     }
   }

@@ -1,22 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayoutNew;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
 
 public class bnzg
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public bnzg(QIMCameraSegmentCaptureButtonLayoutNew paramQIMCameraSegmentCaptureButtonLayoutNew, boolean paramBoolean, float paramFloat) {}
+  public bnzg(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayoutNew.a.e();
-      return;
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayoutNew.a.a(this.jdField_a_of_type_Float);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

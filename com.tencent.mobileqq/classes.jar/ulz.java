@@ -1,21 +1,32 @@
-import NS_KING_INTERFACE.stPostCommentDingRsp;
-import com.tribe.async.dispatch.Dispatcher;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageDialog.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
-class ulz
-  implements uqy
+public class ulz
+  implements umf
 {
-  ulz(uls paramuls) {}
+  ulz(ulx paramulx) {}
   
-  public void a(urj paramurj)
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    if ((paramurj.jdField_a_of_type_JavaLangObject instanceof stPostCommentDingRsp))
+    String str = ulx.b(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
     {
-      stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramurj.jdField_a_of_type_JavaLangObject;
-      uya.d(uls.a(), "回复点赞/取消成功,nothing is " + localstPostCommentDingRsp.nothing);
-      vli.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramurj.b), paramurj.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
-      return;
+      ulx.b(this.a, paramGiftServiceBean);
+      ulx.b(this.a).setText(paramGiftServiceBean.t);
+      if (ulx.a(this.a)) {
+        ulx.c(this.a, null);
+      }
+      ulx.c(this.a).setText("");
+      if (ulx.c(this.a) != null) {
+        ulx.c(this.a).clear();
+      }
+      ulx.a(this.a);
+      ThreadManager.executeOnNetWorkThread(new GiftPackageDialog.2.1(this));
     }
-    uya.d(uls.a(), "回复点赞失败new！");
   }
 }
 

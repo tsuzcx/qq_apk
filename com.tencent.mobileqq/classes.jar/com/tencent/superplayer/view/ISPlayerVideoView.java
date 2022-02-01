@@ -25,6 +25,8 @@ public abstract interface ISPlayerVideoView
   
   public abstract boolean isSurfaceReady();
   
+  public abstract boolean isTextureView();
+  
   public abstract void removeViewCallBack(ISPlayerVideoView.IVideoViewCallBack paramIVideoViewCallBack);
   
   public abstract void setDegree(int paramInt);

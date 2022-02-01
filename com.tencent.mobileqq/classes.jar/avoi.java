@@ -1,8 +1,4 @@
-public abstract interface avoi
-{
-  public abstract void g();
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avoi

@@ -1,20 +1,12 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-
-public final class bcdp
+public class bcdp
 {
-  public static void a(Context paramContext, boolean paramBoolean)
-  {
-    paramContext = paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).edit();
-    paramContext.putBoolean("SUPPORT_MTA", paramBoolean);
-    paramContext.commit();
-  }
-  
-  public static boolean a(Context paramContext, boolean paramBoolean)
-  {
-    return paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).getBoolean("SUPPORT_MTA", paramBoolean);
-  }
+  public int a;
+  public String a;
+  public long[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 

@@ -8,7 +8,7 @@ public class AnonymousGiftAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130850615;
+    return 2130850746;
   }
   
   public int getAppID()
@@ -26,7 +26,7 @@ public class AnonymousGiftAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131696699);
+    return BaseApplicationImpl.getContext().getString(2131696966);
   }
 }
 

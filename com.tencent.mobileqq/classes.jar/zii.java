@@ -1,39 +1,125 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.QZoneHelper;
+import java.util.ArrayList;
+import java.util.List;
 
-public class zii
-  implements View.OnClickListener
+public class zii<T extends RecyclerView.Adapter>
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  public zii(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, zhq paramzhq) {}
+  private final T jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private zim jdField_a_of_type_Zim;
+  private final List<View> b = new ArrayList();
   
-  public void onClick(View paramView)
+  public zii(T paramT)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("postUin", this.jdField_a_of_type_Zhq.a.poster.id.get());
-    if (this.jdField_a_of_type_Zhq.a.poster.youZhan.size() > 0) {
-      if (((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_Zhq.a.poster.youZhan.get(0)).type.get() <= 1) {
-        break label139;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramT;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(new zij(this));
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return (paramInt >= -1000) && (paramInt < this.jdField_a_of_type_JavaUtilList.size() - 1000);
+  }
+  
+  private boolean b(int paramInt)
+  {
+    return (paramInt >= -2000) && (paramInt < this.b.size() - 2000);
+  }
+  
+  public zii a(zim paramzim)
+  {
+    this.jdField_a_of_type_Zim = paramzim;
+    return this;
+  }
+  
+  public void a(@NonNull View paramView)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramView);
+  }
+  
+  public void b(@NonNull View paramView)
+  {
+    this.b.add(paramView);
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + this.b.size();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return paramInt - 1000;
+    }
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount()) {
+      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - this.jdField_a_of_type_JavaUtilList.size());
+    }
+    return paramInt - 2000 - this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+        localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+        paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      }
+      ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      return;
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())
+      {
+        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size());
+      }
+      else
+      {
+        localObject1 = localObject2;
+        if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+          localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
+        }
+        localObject2 = localObject1;
+        if (localObject1 == null)
+        {
+          localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+          paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        }
+        ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
       }
     }
-    label139:
-    for (boolean bool = true;; bool = false)
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (a(paramInt))
     {
-      localIntent.putExtra("has_shop", bool);
-      QZoneHelper.forwardToQQPublicAccountPublishPage(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment.getActivity(), localIntent, 0);
-      zxp.b(this.jdField_a_of_type_Zhq.a.poster.id.get(), "auth_person", "blank_post", 0, 0, new String[0]);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      paramInt = Math.abs(paramInt + 1000);
+      return new zik(this, (View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
     }
+    if (b(paramInt))
+    {
+      paramInt = Math.abs(paramInt + 2000);
+      return new zil(this, (View)this.b.get(paramInt));
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
   }
 }
 

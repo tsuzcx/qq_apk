@@ -178,6 +178,76 @@ public class MiniAppFileManager
     ThreadManager.executeOnDiskIOThreadPool(new MiniAppFileManager.1(this));
   }
   
+  private String getAbsoluteRealPath(String paramString)
+  {
+    if (paramString.startsWith("wxfile://tmp_"))
+    {
+      paramString = paramString.replace("wxfile://tmp_", "");
+      paramString = new File(getMiniFolderPath(0), paramString);
+      if ((paramString.exists()) && (paramString.getCanonicalPath().startsWith(getCurAppSdcardDir()))) {
+        return paramString.getAbsolutePath();
+      }
+    }
+    else if (paramString.startsWith("wxfile://store_"))
+    {
+      paramString = paramString.replace("wxfile://store_", "");
+      paramString = new File(getMiniFolderPath(1), paramString);
+      if ((paramString.exists()) && (paramString.getCanonicalPath().startsWith(getCurAppSdcardDir()))) {
+        return paramString.getAbsolutePath();
+      }
+    }
+    else if (paramString.startsWith("wxfile://usr"))
+    {
+      paramString = paramString.replace("wxfile://usr", "");
+      paramString = new File(getMiniFolderPath(2), paramString);
+      if ((paramString.exists()) && (paramString.getCanonicalPath().startsWith(getCurAppSdcardDir()))) {
+        return paramString.getAbsolutePath();
+      }
+    }
+    else if (paramString.startsWith("wxfile://precache"))
+    {
+      paramString = paramString.replace("wxfile://precache", "");
+      paramString = new File(getMiniFolderPath(4), paramString);
+      if ((paramString.exists()) && (paramString.getCanonicalPath().startsWith(getCurAppSdcardDir()))) {
+        return paramString.getAbsolutePath();
+      }
+    }
+    else
+    {
+      Object localObject1 = new File(this.mApkgBaseInfo.getChildFileAbsolutePath(paramString));
+      if ((((File)localObject1).exists()) && (((File)localObject1).getCanonicalPath().startsWith(new File(this.mApkgBaseInfo.getApkgFolderPath()).getCanonicalPath()))) {
+        return this.mApkgBaseInfo.getChildFileAbsolutePath(paramString);
+      }
+      if ((this.mApkgBaseInfo instanceof ApkgInfo))
+      {
+        localObject1 = ((ApkgInfo)this.mApkgBaseInfo).readApkgToStream(paramString);
+        if (localObject1 == null) {
+          return "";
+        }
+        createApkgResFolder(this.mApkgBaseInfo.getChildFileAbsolutePath(paramString));
+        ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+        Object localObject2 = new byte[8192];
+        for (;;)
+        {
+          int i = ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
+          if (i == -1) {
+            break;
+          }
+          localByteArrayOutputStream.write((byte[])localObject2, 0, i);
+        }
+        paramString = new File(this.mApkgBaseInfo.getChildFileAbsolutePath(paramString));
+        paramString.setWritable(true);
+        localObject2 = new FileOutputStream(paramString);
+        ((FileOutputStream)localObject2).write(localByteArrayOutputStream.toByteArray());
+        ((FileOutputStream)localObject2).close();
+        localByteArrayOutputStream.close();
+        ((ByteArrayInputStream)localObject1).close();
+        return paramString.getAbsolutePath();
+      }
+    }
+    return "";
+  }
+  
   private String getCurAppSdcardDir()
   {
     if (this.mApkgBaseInfo != null) {}
@@ -432,7 +502,7 @@ public class MiniAppFileManager
     //   27: aload 4
     //   29: invokevirtual 194	java/io/File:getParentFile	()Ljava/io/File;
     //   32: aload 5
-    //   34: invokevirtual 437	java/io/File:equals	(Ljava/lang/Object;)Z
+    //   34: invokevirtual 494	java/io/File:equals	(Ljava/lang/Object;)Z
     //   37: ifeq +5 -> 42
     //   40: aload_1
     //   41: areturn
@@ -440,28 +510,28 @@ public class MiniAppFileManager
     //   45: dup
     //   46: aload_0
     //   47: aload 4
-    //   49: invokestatic 439	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getFileSuffix	(Ljava/io/File;)Ljava/lang/String;
-    //   52: invokevirtual 442	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   49: invokestatic 496	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getFileSuffix	(Ljava/io/File;)Ljava/lang/String;
+    //   52: invokevirtual 499	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
     //   55: invokespecial 146	java/io/File:<init>	(Ljava/lang/String;)V
     //   58: astore 9
     //   60: sipush 8192
     //   63: newarray byte
     //   65: astore 7
-    //   67: new 444	java/io/BufferedInputStream
+    //   67: new 501	java/io/BufferedInputStream
     //   70: dup
-    //   71: new 446	java/io/FileInputStream
+    //   71: new 503	java/io/FileInputStream
     //   74: dup
     //   75: aload 4
-    //   77: invokespecial 449	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   80: invokespecial 452	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   77: invokespecial 504	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   80: invokespecial 507	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   83: astore 4
-    //   85: new 454	java/io/BufferedOutputStream
+    //   85: new 509	java/io/BufferedOutputStream
     //   88: dup
-    //   89: new 456	java/io/FileOutputStream
+    //   89: new 269	java/io/FileOutputStream
     //   92: dup
     //   93: aload 9
-    //   95: invokespecial 457	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   98: invokespecial 460	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   95: invokespecial 272	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   98: invokespecial 512	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   101: astore_1
     //   102: aload_1
     //   103: astore 6
@@ -469,7 +539,7 @@ public class MiniAppFileManager
     //   107: astore 5
     //   109: aload 4
     //   111: aload 7
-    //   113: invokevirtual 466	java/io/InputStream:read	([B)I
+    //   113: invokevirtual 515	java/io/InputStream:read	([B)I
     //   116: istore_2
     //   117: iload_2
     //   118: iconst_m1
@@ -482,7 +552,7 @@ public class MiniAppFileManager
     //   130: aload 7
     //   132: iconst_0
     //   133: iload_2
-    //   134: invokevirtual 472	java/io/OutputStream:write	([BII)V
+    //   134: invokevirtual 518	java/io/OutputStream:write	([BII)V
     //   137: goto -35 -> 102
     //   140: astore 7
     //   142: aload_1
@@ -490,18 +560,18 @@ public class MiniAppFileManager
     //   145: aload 4
     //   147: astore 5
     //   149: getstatic 95	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:TAG	Ljava/lang/String;
-    //   152: ldc_w 474
+    //   152: ldc_w 520
     //   155: aload 7
-    //   157: invokestatic 479	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   157: invokestatic 525	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   160: pop
     //   161: aload_1
     //   162: ifnull +7 -> 169
     //   165: aload_1
-    //   166: invokevirtual 482	java/io/OutputStream:close	()V
+    //   166: invokevirtual 526	java/io/OutputStream:close	()V
     //   169: aload 4
     //   171: ifnull +154 -> 325
     //   174: aload 4
-    //   176: invokevirtual 483	java/io/InputStream:close	()V
+    //   176: invokevirtual 527	java/io/InputStream:close	()V
     //   179: iconst_0
     //   180: istore_2
     //   181: aload 8
@@ -509,7 +579,7 @@ public class MiniAppFileManager
     //   184: iload_2
     //   185: ifeq +9 -> 194
     //   188: aload 9
-    //   190: invokevirtual 486	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   190: invokevirtual 232	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   193: astore_1
     //   194: aload_1
     //   195: areturn
@@ -518,19 +588,19 @@ public class MiniAppFileManager
     //   199: aload 4
     //   201: astore 5
     //   203: aload_1
-    //   204: invokevirtual 489	java/io/OutputStream:flush	()V
+    //   204: invokevirtual 530	java/io/OutputStream:flush	()V
     //   207: iconst_1
     //   208: istore_3
     //   209: aload_1
     //   210: ifnull +7 -> 217
     //   213: aload_1
-    //   214: invokevirtual 482	java/io/OutputStream:close	()V
+    //   214: invokevirtual 526	java/io/OutputStream:close	()V
     //   217: iload_3
     //   218: istore_2
     //   219: aload 4
     //   221: ifnull -40 -> 181
     //   224: aload 4
-    //   226: invokevirtual 483	java/io/InputStream:close	()V
+    //   226: invokevirtual 527	java/io/InputStream:close	()V
     //   229: iload_3
     //   230: istore_2
     //   231: goto -50 -> 181
@@ -550,11 +620,11 @@ public class MiniAppFileManager
     //   253: aload 6
     //   255: ifnull +8 -> 263
     //   258: aload 6
-    //   260: invokevirtual 482	java/io/OutputStream:close	()V
+    //   260: invokevirtual 526	java/io/OutputStream:close	()V
     //   263: aload 4
     //   265: ifnull +8 -> 273
     //   268: aload 4
-    //   270: invokevirtual 483	java/io/InputStream:close	()V
+    //   270: invokevirtual 527	java/io/InputStream:close	()V
     //   273: aload_1
     //   274: athrow
     //   275: astore_1
@@ -644,113 +714,48 @@ public class MiniAppFileManager
   
   public String getAbsolutePath(String paramString)
   {
-    Object localObject2;
     try
     {
       if (TextUtils.isEmpty(paramString)) {
         return "";
       }
-      if ((paramString.toLowerCase().startsWith("http://")) || (paramString.toLowerCase().startsWith("https://"))) {
-        return paramString;
-      }
-      if (this.curWxFileToLocalMap != null)
+      if ((!paramString.toLowerCase().startsWith("http://")) && (!paramString.toLowerCase().startsWith("https://")))
       {
-        localObject2 = (String)this.curWxFileToLocalMap.get(paramString);
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label578;
+        String str1;
+        if (this.curWxFileToLocalMap != null)
+        {
+          String str2 = (String)this.curWxFileToLocalMap.get(paramString);
+          str1 = str2;
+          if (!TextUtils.isEmpty(str2)) {}
         }
-      }
-      localObject1 = paramString;
-      if (!paramString.startsWith("wxfile://"))
-      {
-        if (!paramString.startsWith("wxfile://")) {
-          break label159;
+        else
+        {
+          str1 = paramString;
+          if (!paramString.startsWith("wxfile://"))
+          {
+            if (!paramString.startsWith("wxfile://")) {
+              break label104;
+            }
+            str1 = paramString.replace("wxfile://", "wxfile://");
+          }
+          for (;;)
+          {
+            return getAbsoluteRealPath(str1);
+            label104:
+            str1 = paramString;
+            if (paramString.startsWith("qqfile://")) {
+              str1 = paramString.replace("qqfile://", "wxfile://");
+            }
+          }
         }
-        localObject1 = paramString.replace("wxfile://", "wxfile://");
+        return str1;
       }
-      while (((String)localObject1).startsWith("wxfile://tmp_"))
-      {
-        paramString = ((String)localObject1).replace("wxfile://tmp_", "");
-        paramString = new File(getMiniFolderPath(0), paramString);
-        if ((!paramString.exists()) || (!paramString.getCanonicalPath().startsWith(getCurAppSdcardDir()))) {
-          break label575;
-        }
-        return paramString.getAbsolutePath();
-        label159:
-        localObject1 = paramString;
-        if (paramString.startsWith("qqfile://")) {
-          localObject1 = paramString.replace("qqfile://", "wxfile://");
-        }
-      }
-      if (((String)localObject1).startsWith("wxfile://store_"))
-      {
-        paramString = ((String)localObject1).replace("wxfile://store_", "");
-        paramString = new File(getMiniFolderPath(1), paramString);
-        if ((!paramString.exists()) || (!paramString.getCanonicalPath().startsWith(getCurAppSdcardDir()))) {
-          break label575;
-        }
-        return paramString.getAbsolutePath();
-      }
-      if (((String)localObject1).startsWith("wxfile://usr"))
-      {
-        paramString = ((String)localObject1).replace("wxfile://usr", "");
-        paramString = new File(getMiniFolderPath(2), paramString);
-        if ((!paramString.exists()) || (!paramString.getCanonicalPath().startsWith(getCurAppSdcardDir()))) {
-          break label575;
-        }
-        return paramString.getAbsolutePath();
-      }
-      if (((String)localObject1).startsWith("wxfile://precache"))
-      {
-        paramString = ((String)localObject1).replace("wxfile://precache", "");
-        paramString = new File(getMiniFolderPath(4), paramString);
-        if ((!paramString.exists()) || (!paramString.getCanonicalPath().startsWith(getCurAppSdcardDir()))) {
-          break label575;
-        }
-        return paramString.getAbsolutePath();
-      }
-      paramString = new File(this.mApkgBaseInfo.getChildFileAbsolutePath((String)localObject1));
-      if ((paramString.exists()) && (paramString.getCanonicalPath().startsWith(new File(this.mApkgBaseInfo.getApkgFolderPath()).getCanonicalPath()))) {
-        return this.mApkgBaseInfo.getChildFileAbsolutePath((String)localObject1);
-      }
-      if (!(this.mApkgBaseInfo instanceof ApkgInfo)) {
-        break label575;
-      }
-      paramString = ((ApkgInfo)this.mApkgBaseInfo).readApkgToStream((String)localObject1);
-      if (paramString == null) {
-        return "";
-      }
-      createApkgResFolder(this.mApkgBaseInfo.getChildFileAbsolutePath((String)localObject1));
-      localObject2 = new ByteArrayOutputStream();
-      localObject3 = new byte[8192];
-      for (;;)
-      {
-        int i = paramString.read((byte[])localObject3);
-        if (i == -1) {
-          break;
-        }
-        ((ByteArrayOutputStream)localObject2).write((byte[])localObject3, 0, i);
-      }
-      localObject1 = new File(this.mApkgBaseInfo.getChildFileAbsolutePath((String)localObject1));
     }
     catch (Throwable paramString)
     {
       QMLog.e(TAG, "getAbsolutePath error.", paramString);
-      return "";
+      str1 = "";
     }
-    ((File)localObject1).setWritable(true);
-    Object localObject3 = new FileOutputStream((File)localObject1);
-    ((FileOutputStream)localObject3).write(((ByteArrayOutputStream)localObject2).toByteArray());
-    ((FileOutputStream)localObject3).close();
-    ((ByteArrayOutputStream)localObject2).close();
-    paramString.close();
-    paramString = ((File)localObject1).getAbsolutePath();
-    return paramString;
-    label575:
-    Object localObject1 = "";
-    label578:
-    return localObject1;
     return paramString;
   }
   
@@ -1077,7 +1082,7 @@ public class MiniAppFileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.MiniAppFileManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopAdHandler.3.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public final class ogg
-  implements abrw
+class ogg
+  implements DialogInterface.OnClickListener
 {
-  ogg(AppInterface paramAppInterface) {}
+  ogg(ofz paramofz, JsResult paramJsResult, Context paramContext) {}
   
-  public void reportImpression(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Ecshop_EcshopAdHandler", 1, "--> reportImpression");
-    }
-    if (paramView == null) {}
-    do
-    {
-      return;
-      paramView = paramView.getTag(2131364454);
-    } while (paramView == null);
-    ThreadManagerV2.executeOnSubThread(new EcshopAdHandler.3.1(this, paramView));
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
   }
 }
 

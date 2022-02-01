@@ -1,8 +1,13 @@
-public abstract interface bnyh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment.11;
+
+public class bnyh
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void k();
+  public bnyh(AEEditorVideoEditFragment.11 param11) {}
   
-  public abstract void l();
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

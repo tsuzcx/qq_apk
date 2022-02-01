@@ -7,6 +7,7 @@ public class CosFun$CosFunItem
 {
   private int backgroundMode1;
   private int backgroundMode2;
+  private boolean clampToEdge;
   private String crazyFacePath;
   public List<CustomFilterItem> customFilterItemList;
   private int duration;
@@ -21,6 +22,7 @@ public class CosFun$CosFunItem
   private int transReverseDuration;
   private int transReverseStart;
   private int transStart;
+  private int transType;
   private int triggerType;
   private int waitInterval;
   
@@ -47,6 +49,11 @@ public class CosFun$CosFunItem
   public int getDuration()
   {
     return this.duration;
+  }
+  
+  public String getExternalTriggerWords()
+  {
+    return this.externalTriggerWords;
   }
   
   public int getFreezeDuration()
@@ -99,6 +106,11 @@ public class CosFun$CosFunItem
     return this.transStart;
   }
   
+  public int getTransType()
+  {
+    return this.transType;
+  }
+  
   public int getTriggerType()
   {
     return this.triggerType;
@@ -109,6 +121,11 @@ public class CosFun$CosFunItem
     return this.waitInterval;
   }
   
+  public boolean isClampToEdge()
+  {
+    return this.clampToEdge;
+  }
+  
   public void setBackgroundMode1(int paramInt)
   {
     this.backgroundMode1 = paramInt;
@@ -117,6 +134,11 @@ public class CosFun$CosFunItem
   public void setBackgroundMode2(int paramInt)
   {
     this.backgroundMode2 = paramInt;
+  }
+  
+  public void setClampToEdge(boolean paramBoolean)
+  {
+    this.clampToEdge = paramBoolean;
   }
   
   public void setCrazyFacePath(String paramString)
@@ -187,6 +209,11 @@ public class CosFun$CosFunItem
   public void setTransStart(int paramInt)
   {
     this.transStart = paramInt;
+  }
+  
+  public void setTransType(int paramInt)
+  {
+    this.transType = paramInt;
   }
   
   public void setTriggerType(int paramInt)

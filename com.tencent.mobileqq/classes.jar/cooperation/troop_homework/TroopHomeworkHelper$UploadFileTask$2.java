@@ -1,18 +1,18 @@
 package cooperation.troop_homework;
 
-import amtj;
-import bkxx;
+import anvx;
+import bmjg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class TroopHomeworkHelper$UploadFileTask$2
   implements Runnable
 {
-  public TroopHomeworkHelper$UploadFileTask$2(bkxx parambkxx) {}
+  public TroopHomeworkHelper$UploadFileTask$2(bmjg parambmjg) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), amtj.a(2131714461), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), anvx.a(2131714808), 0).a();
   }
 }
 

@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import alnr;
-import amim;
+import amme;
+import anjw;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public final class ApolloConfigDataReport$1
   implements Runnable
@@ -14,7 +15,7 @@ public final class ApolloConfigDataReport$1
     if (this.a == null) {
       return;
     }
-    ((alnr)this.a.getManager(153)).a("https://cmshow.gtimg.cn/xydata/cmshow/app/terminalCmConfig/xydata.json", ApolloUtil.b, new amim(this));
+    ((amme)this.a.getManager(QQManagerFactory.APOLLO_MANAGER)).a("https://cmshow.gtimg.cn/xydata/cmshow/app/terminalCmConfig/xydata.json", "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/apollo_report_config.json", new anjw(this));
   }
 }
 

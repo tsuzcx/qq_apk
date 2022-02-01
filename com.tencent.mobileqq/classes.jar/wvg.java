@@ -1,18 +1,36 @@
-import android.util.SparseArray;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class wvg
-  extends SparseArray<String>
+public class wvg
+  extends wfh
 {
-  wvg()
+  public List<StoryVideoItem> a;
+  
+  public wvg(qqstory_service.RspBatchGetVideoInfo paramRspBatchGetVideoInfo)
   {
-    put(31, "PLAYER_INFO_PLAYER_TYPE");
-    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
-    put(33, "PLAYER_INFO_START_GET_VINFO");
-    put(21, amtj.a(2131713584));
-    put(34, "PLAYER_INFO_END_GET_VINFO");
-    put(22, amtj.a(2131713588));
-    put(23, "PLAYER_INFO_START_RENDERING");
-    put(39, "PLAYER_INFO_HW_DECODE_FAILED");
+    super(paramRspBatchGetVideoInfo.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramRspBatchGetVideoInfo.vid_info_list.has())
+    {
+      paramRspBatchGetVideoInfo = paramRspBatchGetVideoInfo.vid_info_list.get().iterator();
+      while (paramRspBatchGetVideoInfo.hasNext())
+      {
+        qqstory_struct.GroupStoryInfo localGroupStoryInfo = (qqstory_struct.GroupStoryInfo)paramRspBatchGetVideoInfo.next();
+        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+        localStoryVideoItem.convertFrom("Q.qqstory.shareGroup:GetShareGroupVideoInfoResponse", localGroupStoryInfo);
+        this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "GetShareGroupVideoInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", mVideoItemList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

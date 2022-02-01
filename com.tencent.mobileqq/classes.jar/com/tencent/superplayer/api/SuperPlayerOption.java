@@ -13,6 +13,7 @@ public class SuperPlayerOption
   public boolean enableAudioFrameOutput;
   public boolean enableCodecReuse;
   public Boolean enableDownloadProxy;
+  public boolean enableP2P = false;
   public boolean enableVideoFrameCheck;
   public boolean enableVideoFrameOutput;
   public boolean isPrePlay;
@@ -37,6 +38,7 @@ public class SuperPlayerOption
       localJSONObject.put("preloadPacketDurationMs", this.preloadPacketDurationMs);
       localJSONObject.put("minBufferingPacketDurationMs", this.minBufferingPacketDurationMs);
       localJSONObject.put("audioFrameOutputOption", this.audioFrameOutputOption);
+      localJSONObject.put("enableP2P", this.enableP2P);
       return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
@@ -59,6 +61,7 @@ public class SuperPlayerOption
     localStringBuilder.append("preloadPacketDurationMs:").append(this.preloadPacketDurationMs).append("\n");
     localStringBuilder.append("minBufferingPacketDurationMs:").append(this.minBufferingPacketDurationMs).append("\n");
     localStringBuilder.append("audioFrameOutputOption:").append(this.audioFrameOutputOption).append("\n");
+    localStringBuilder.append("enableP2P:").append(this.enableP2P).append("\n");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

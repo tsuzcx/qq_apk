@@ -1,40 +1,39 @@
-public class lpq
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
+
+public abstract class lpq
+  extends lpv
 {
-  lok jdField_a_of_type_Lok;
-  short jdField_a_of_type_Short;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  short jdField_b_of_type_Short;
-  byte[] jdField_b_of_type_ArrayOfByte;
-  byte[] c;
+  protected Handler a;
   
-  lpq()
+  public lpq()
   {
-    a();
+    HandlerThread localHandlerThread = new HandlerThread("OffscreenGLThread" + (int)(Math.random() * 100.0D));
+    localHandlerThread.start();
+    this.a = new lpr(localHandlerThread.getLooper(), this);
   }
   
-  public void a()
+  protected abstract void a(Message paramMessage);
+  
+  protected void c()
   {
-    this.jdField_a_of_type_Lok = null;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_b_of_type_ArrayOfByte = null;
-    this.c = null;
-    this.jdField_a_of_type_Short = 0;
-    this.jdField_b_of_type_Short = 0;
+    super.c();
+    Process.setThreadPriority(0);
+    lbd.f("GLContextThread", "init: ");
   }
   
-  public void a(lok paramlok, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2)
+  protected void d()
   {
-    this.jdField_a_of_type_Lok = paramlok;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-    this.c = paramArrayOfByte3;
-    this.jdField_a_of_type_Short = paramShort1;
-    this.jdField_b_of_type_Short = paramShort2;
+    super.f();
+    this.a.getLooper().quit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lpq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import atyn;
+import avec;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class GameBasicInfo
   extends Entity
 {
-  public static final String TAG = atyn.a + "GameBasicInfo";
+  public static final String TAG = avec.a + "GameBasicInfo";
   @unique
   public String mAppId;
   public String mIconUrl;

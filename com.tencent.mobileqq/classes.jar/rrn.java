@@ -1,175 +1,106 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.articlesummary.articlesummary.PGCVideoInfo;
 
 public class rrn
-  extends rrl
 {
-  private long jdField_a_of_type_Long;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new rro(this);
-  TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
-  private Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long;
-  private Long jdField_b_of_type_JavaLangLong = Long.valueOf(0L);
-  private String jdField_b_of_type_JavaLangString;
-  private long jdField_c_of_type_Long;
-  private String jdField_c_of_type_JavaLangString;
-  private long jdField_d_of_type_Long;
-  private String jdField_d_of_type_JavaLangString;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public rrn(Context paramContext, QQAppInterface paramQQAppInterface, rrm paramrrm)
-  {
-    super(paramContext, paramQQAppInterface, paramrrm);
-  }
+  public rrn() {}
   
-  private void a(int paramInt)
+  public rrn(articlesummary.PGCVideoInfo paramPGCVideoInfo)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    long l1 = this.jdField_b_of_type_Long;
-    long l2 = this.jdField_a_of_type_Long;
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext);
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.collectPerformance(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
-      return;
+    if (paramPGCVideoInfo.bytes_pic_md5.has()) {
+      this.c = paramPGCVideoInfo.bytes_pic_md5.get().toStringUtf8();
     }
-  }
-  
-  private void a(int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    b(paramInt);
-    c(paramInt);
-    if (this.jdField_a_of_type_Rrm != null) {
-      this.jdField_a_of_type_Rrm.a(paramInt, paramString1, paramString2, paramString3);
+    if (paramPGCVideoInfo.bytes_pic_url.has()) {
+      this.d = paramPGCVideoInfo.bytes_pic_url.get().toStringUtf8();
     }
-  }
-  
-  private void b(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    localHashMap.put("cover_size_before_compression", this.jdField_a_of_type_JavaLangLong.toString());
-    localHashMap.put("cover_size_after_compression", this.jdField_b_of_type_JavaLangLong.toString());
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext);
-    String str = pay.a();
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.collectPerformance(str, "actReadInJoyDeliverVideoCompressCover", bool, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
-      return;
+    if (paramPGCVideoInfo.bytes_vid.has()) {
+      this.e = paramPGCVideoInfo.bytes_vid.get().toStringUtf8();
+    }
+    if (paramPGCVideoInfo.bytes_video_url.has()) {
+      this.jdField_b_of_type_JavaLangString = paramPGCVideoInfo.bytes_video_url.get().toStringUtf8();
+    }
+    if (paramPGCVideoInfo.bytes_video_md5.has()) {
+      this.jdField_a_of_type_JavaLangString = paramPGCVideoInfo.bytes_video_md5.get().toStringUtf8();
+    }
+    if (paramPGCVideoInfo.uint32_duration.has()) {
+      this.jdField_a_of_type_Int = paramPGCVideoInfo.uint32_duration.get();
+    }
+    if (paramPGCVideoInfo.uint32_busi_type.has()) {
+      this.jdField_b_of_type_Int = paramPGCVideoInfo.uint32_busi_type.get();
+    }
+    if (paramPGCVideoInfo.uint64_play_num.has()) {
+      this.jdField_a_of_type_Long = paramPGCVideoInfo.uint64_play_num.get();
+    }
+    if (paramPGCVideoInfo.video_auto_play.has()) {
+      this.jdField_a_of_type_Boolean = paramPGCVideoInfo.video_auto_play.get();
+    }
+    if (paramPGCVideoInfo.title.has()) {
+      this.g = paramPGCVideoInfo.title.get();
+    }
+    if (paramPGCVideoInfo.rowkey.has()) {
+      this.f = paramPGCVideoInfo.rowkey.get();
+    }
+    if (paramPGCVideoInfo.jump_url.has()) {
+      this.h = paramPGCVideoInfo.jump_url.get();
     }
   }
   
-  private void c(int paramInt)
+  public articlesummary.PGCVideoInfo a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext);
-    String str = pay.a();
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.collectPerformance(str, "actReadInJoyDeliverVideoUploadCover", bool, this.jdField_c_of_type_Long - this.jdField_d_of_type_Long, 0L, localHashMap, "");
-      return;
+    articlesummary.PGCVideoInfo localPGCVideoInfo = new articlesummary.PGCVideoInfo();
+    if (this.h != null) {
+      localPGCVideoInfo.jump_url.set(this.h);
     }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localPGCVideoInfo.bytes_video_md5.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.e)) {
+      localPGCVideoInfo.bytes_vid.set(ByteStringMicro.copyFromUtf8(this.e));
+    }
+    if (!TextUtils.isEmpty(this.f)) {
+      localPGCVideoInfo.rowkey.set(this.f);
+    }
+    if (!TextUtils.isEmpty(this.g)) {
+      localPGCVideoInfo.title.set(this.g);
+    }
+    localPGCVideoInfo.video_auto_play.set(this.jdField_a_of_type_Boolean);
+    localPGCVideoInfo.uint64_play_num.set(this.jdField_a_of_type_Long);
+    localPGCVideoInfo.uint32_busi_type.set(this.jdField_b_of_type_Int);
+    if (!TextUtils.isEmpty(this.c)) {
+      localPGCVideoInfo.bytes_pic_md5.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.d)) {
+      localPGCVideoInfo.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localPGCVideoInfo.bytes_video_url.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    localPGCVideoInfo.uint32_duration.set(this.jdField_a_of_type_Int);
+    return localPGCVideoInfo;
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public String toString()
   {
-    a(paramString, paramBoolean, 0);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageUploadController", 2, "startUploadPic path=" + paramString);
-    }
-    this.jdField_d_of_type_JavaLangString = paramString;
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "startUploadPic empty path!");
-      }
-      a(1001, null, null, null);
-      return;
-    }
-    Object localObject = new File(paramString);
-    if (!((File)localObject).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "startUploadPic file not exist, path=" + paramString);
-      }
-      a(1002, null, null, null);
-      return;
-    }
-    this.jdField_a_of_type_JavaLangLong = Long.valueOf(((File)localObject).length());
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
-    {
-      a(1003, null, null, null);
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    localObject = new CompressInfo(paramString, paramInt);
-    ((CompressInfo)localObject).f = 0;
-    if (!ayeu.a((CompressInfo)localObject)) {
-      a(1001);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageUploadController", 2, "startUploadPic compressPath=" + ((CompressInfo)localObject).jdField_e_of_type_JavaLangString + ", originPath=" + paramString + ", outWidth=" + ((CompressInfo)localObject).d + ", outHeight=" + ((CompressInfo)localObject).jdField_e_of_type_Int);
-    }
-    if (TextUtils.isEmpty(((CompressInfo)localObject).jdField_e_of_type_JavaLangString)) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_b_of_type_JavaLangLong = Long.valueOf(new File(this.jdField_a_of_type_JavaLangString).length());
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BDHCommonUploadProcessor.class });
-      paramString.addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = new TransferRequest();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mIsUp = true;
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mCommandId = 10;
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mLocalPath = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mPeerUin = "0";
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mFileType = 24;
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mRichTag = "KandianUGCPicUpload";
-      paramString.transferAsync(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest);
-      return;
-      paramString = ((CompressInfo)localObject).jdField_e_of_type_JavaLangString;
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-    if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_d_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "clearTempFile(image), origin:" + this.jdField_d_of_type_JavaLangString + ", compress:" + this.jdField_a_of_type_JavaLangString);
-      }
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-    }
+    return "PGCVideoInfo{video_md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", video_url='" + this.jdField_b_of_type_JavaLangString + '\'' + ", picMd5='" + this.c + '\'' + ", picUrl='" + this.d + '\'' + ", vid='" + this.e + '\'' + ", duration='" + this.jdField_a_of_type_Int + '\'' + ", busi_type='" + this.jdField_b_of_type_Int + '\'' + ", playCount='" + this.jdField_a_of_type_Long + '\'' + ", isVideoAutoPlay='" + this.jdField_a_of_type_Boolean + '\'' + ", rowkey='" + this.f + '\'' + ", title='" + this.g + '\'' + ", jumpUrl='" + this.h + '\'' + '}';
   }
 }
 

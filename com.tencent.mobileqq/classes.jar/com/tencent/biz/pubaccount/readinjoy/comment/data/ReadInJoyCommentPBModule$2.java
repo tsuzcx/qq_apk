@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
-import otk;
-import owh;
-import owk;
-import owl;
+import pbm;
+import pfi;
+import pfl;
+import pfm;
 
 public class ReadInJoyCommentPBModule$2
   implements Runnable
 {
-  public ReadInJoyCommentPBModule$2(owh paramowh, int paramInt, owk paramowk1, owk paramowk2, owl paramowl) {}
+  public ReadInJoyCommentPBModule$2(pfi parampfi, int paramInt, pfl parampfl1, pfl parampfl2, pfm parampfm) {}
   
   public void run()
   {
-    if (owh.a(this.this$0) != null) {
-      owh.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Owk, this.b, this.jdField_a_of_type_Owl);
+    if (pfi.a(this.this$0) != null) {
+      pfi.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Pfl, this.b, this.jdField_a_of_type_Pfm);
     }
   }
 }

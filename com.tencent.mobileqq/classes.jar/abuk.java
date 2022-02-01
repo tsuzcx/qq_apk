@@ -1,19 +1,20 @@
+import android.graphics.Outline;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewOutlineProvider;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class abuk
-  implements View.OnClickListener
+  extends ViewOutlineProvider
 {
-  public abuk(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
+  public abuk(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void onClick(View paramView)
+  public void getOutline(View paramView, Outline paramOutline)
   {
-    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
-      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), AIOUtils.dp2px(5.0F, paramView.getResources()));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

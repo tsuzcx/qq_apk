@@ -8,7 +8,7 @@ import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.ab;
 import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.ao;
+import com.tencent.mobileqq.msf.core.ap;
 import com.tencent.mobileqq.msf.core.auth.b;
 import com.tencent.mobileqq.msf.core.auth.l;
 import com.tencent.mobileqq.msf.core.c.f;
@@ -446,7 +446,7 @@ public class r
           try
           {
             l = ((Long)paramToServiceMsg.getAttribute("infoSync_timestamp")).longValue();
-            ao.a(paramToServiceMsg.getUin(), l);
+            ap.a(paramToServiceMsg.getUin(), l);
             QLog.d(a, 1, "recv infoSync timestamp:" + l);
             return;
           }

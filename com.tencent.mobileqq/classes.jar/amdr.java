@@ -1,40 +1,18 @@
-import java.io.File;
-import java.util.zip.ZipEntry;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class amdr
-  implements npp
+public class amdr
+  implements aqdb
 {
-  amdr(amdq paramamdq, StringBuilder paramStringBuilder, String paramString) {}
+  public amdr(SessionClearFragment paramSessionClearFragment) {}
   
-  public boolean a(ZipEntry paramZipEntry)
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (paramZipEntry.isDirectory())
-    {
-      if ((this.jdField_a_of_type_Amdq.a != null) && (this.jdField_a_of_type_Amdq.a.length > 0))
-      {
-        localObject = this.jdField_a_of_type_Amdq.a;
-        int j = localObject.length;
-        int i = 0;
-        while (i < j)
-        {
-          int k = localObject[i];
-          if (paramZipEntry.getName().equals(Integer.valueOf(k + File.separatorChar)))
-          {
-            this.jdField_a_of_type_JavaLangStringBuilder.append(paramZipEntry.getName()).append(" download, ");
-            return false;
-          }
-          i += 1;
-        }
-      }
-      Object localObject = new File(this.jdField_a_of_type_JavaLangString + paramZipEntry.getName());
-      if ((localObject != null) && (((File)localObject).isDirectory()) && (((File)localObject).list().length >= 3))
-      {
-        this.jdField_a_of_type_JavaLangStringBuilder.append(paramZipEntry.getName()).append(" exist, ");
-        return false;
-      }
-      this.jdField_a_of_type_JavaLangStringBuilder.append(paramZipEntry.getName()).append(" copy, ");
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForUser onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
     }
-    return true;
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 

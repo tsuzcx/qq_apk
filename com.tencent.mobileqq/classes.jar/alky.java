@@ -1,42 +1,77 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.SimpleTextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class alky
-  extends bjub
+public class alky
+  extends alkr
 {
-  alky(alkv paramalkv, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  private String d;
+  
+  public alky a(String paramString)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    this.d = paramString;
+    return this;
   }
   
-  public View a(int paramInt, Object paramObject, bjua parambjua, View.OnClickListener paramOnClickListener)
+  public Object a(int paramInt, bffl parambffl, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    parambjua = super.a(paramInt, paramObject, parambjua, paramOnClickListener);
-    if ((parambjua instanceof SimpleTextView)) {
-      parambjua.setTag(paramObject);
-    }
-    return parambjua;
+    return null;
   }
   
-  public void a(int paramInt, Object paramObject, bjua[] paramArrayOfbjua)
+  public String a()
   {
-    paramInt = 0;
-    if ((paramArrayOfbjua == null) || (paramArrayOfbjua.length <= 0)) {}
-    for (;;)
+    return this.d;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      return;
-      if (paramArrayOfbjua.length < 0)
-      {
-        paramArrayOfbjua[0].b = 0;
-        paramArrayOfbjua[0].a = 0;
-        paramInt = 1;
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.d = paramArrayOfByte.getString("senderUin");
+      if (this.jdField_a_of_type_Bffm == null) {
+        this.jdField_a_of_type_Bffm = new bffm();
       }
-      while (paramInt < paramArrayOfbjua.length)
+      this.jdField_a_of_type_Bffm.a(paramArrayOfByte.getString("messageNavInfo"));
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("senderUin", this.d);
+      if (this.jdField_a_of_type_Bffm != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bffm.a());
+      }
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        paramArrayOfbjua[paramInt].b = -1;
-        paramArrayOfbjua[paramInt].a = -1;
-        paramInt += 1;
+        localJSONException.printStackTrace();
       }
     }
   }

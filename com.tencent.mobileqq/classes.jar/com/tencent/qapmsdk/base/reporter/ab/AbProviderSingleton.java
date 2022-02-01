@@ -6,81 +6,87 @@ import com.tencent.qapmsdk.common.logger.Logger;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class AbProviderSingleton
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/base/reporter/ab/AbProviderSingleton;", "", "()V", "ABFACTOR", "", "TAG", "abTypeArr", "", "Ljava/lang/Class;", "Lcom/tencent/qapmsdk/base/reporter/ab/AbType;", "getAbTypeArr", "()[Ljava/lang/Class;", "setAbTypeArr", "([Ljava/lang/Class;)V", "[Ljava/lang/Class;", "abTypeCache", "Ljava/util/concurrent/ConcurrentHashMap;", "callback", "Lcom/tencent/qapmsdk/base/reporter/ab/IAbCallback;", "getCallback", "()Lcom/tencent/qapmsdk/base/reporter/ab/IAbCallback;", "setCallback", "(Lcom/tencent/qapmsdk/base/reporter/ab/IAbCallback;)V", "addAbToParams", "", "reportParams", "Lorg/json/JSONObject;", "getAbFactors", "qpmPlugin", "", "getAbParam", "perfTypeList", "Ljava/util/ArrayList;", "getAbType", "clazz", "qapmbase_release"}, k=1, mv={1, 1, 15})
+public final class AbProviderSingleton
 {
-  public static final String ABFACTOR = "abfactor";
-  private static final int PLUGIN_QCLOUD_CPU_TRACE = 126;
-  private static final int PLUGIN_QCLOUD_MEMORY_CACHE = 129;
-  public static final String TAG = "QAPM_AbFactorManger";
-  private static AbProviderSingleton instance = null;
-  public Class<? extends AbType>[] abTypeArr = new Class[0];
-  private ConcurrentHashMap<Class, AbType> abTypeCache = new ConcurrentHashMap();
+  private static final String ABFACTOR = "abfactor";
+  public static final AbProviderSingleton INSTANCE = new AbProviderSingleton();
+  private static final String TAG = "QAPM_base_AbFactorManger";
+  @NotNull
+  private static Class<? extends AbType>[] abTypeArr = new Class[0];
+  private static final ConcurrentHashMap<Class<?>, AbType> abTypeCache = new ConcurrentHashMap();
+  @Nullable
+  private static IAbCallback callback;
   
-  private String getAbParam(ArrayList<Integer> paramArrayList)
+  private final String getAbParam(ArrayList<Integer> paramArrayList)
   {
-    Class[] arrayOfClass = this.abTypeArr;
-    int k = arrayOfClass.length;
-    int i = 0;
+    int k = 0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    Class[] arrayOfClass = abTypeArr;
+    int m = arrayOfClass.length;
     int j = 0;
-    Object localObject2 = null;
-    AbType localAbType;
-    Object localObject1;
-    if (i < k)
+    int i = 0;
+    Object localObject;
+    if (j < m)
     {
-      localAbType = getAbType(arrayOfClass[i]);
-      localObject1 = paramArrayList.iterator();
-      int m = 0;
-      while (((Iterator)localObject1).hasNext())
+      localObject = arrayOfClass[j];
+      localObject = INSTANCE.getAbType((Class)localObject);
+      Iterator localIterator = ((Iterable)paramArrayList).iterator();
+      boolean bool = false;
+      if (localIterator.hasNext())
       {
-        boolean bool = localAbType.canReportWith(((Integer)((Iterator)localObject1).next()).intValue());
-        m = bool;
-        if (bool) {
-          m = bool;
+        int n = ((Number)localIterator.next()).intValue();
+        if (localObject != null) {}
+        for (bool = ((AbType)localObject).canReportWith(n);; bool = false)
+        {
+          if (bool) {}
+          break;
         }
       }
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new StringBuilder();
+      if (!bool) {
+        break label217;
       }
-      if (m == 0) {
-        break label166;
+      if (localObject != null)
+      {
+        localObject = ((AbType)localObject).getValue();
+        if (localObject == null) {}
       }
     }
-    label166:
-    for (localObject2 = localAbType.value;; localObject2 = "")
+    for (;;)
     {
-      if (j == 1) {
-        ((StringBuilder)localObject1).append(";");
+      if (i == 1) {
+        localStringBuilder.append(";");
       }
-      ((StringBuilder)localObject1).append((String)localObject2);
+      localStringBuilder.append((String)localObject);
       j += 1;
       i += 1;
-      localObject2 = localObject1;
       break;
-      if (localObject2 != null) {
-        return ((StringBuilder)localObject2).toString();
+      localObject = "";
+      continue;
+      paramArrayList = localStringBuilder.toString();
+      Intrinsics.checkExpressionValueIsNotNull(paramArrayList, "sb.toString()");
+      i = k;
+      if (((CharSequence)paramArrayList).length() == 0) {
+        i = 1;
       }
-      return "";
+      if (i != 0) {
+        return null;
+      }
+      return localStringBuilder.toString();
+      label217:
+      localObject = "";
     }
   }
   
-  public static AbProviderSingleton getInstance()
-  {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new AbProviderSingleton();
-      }
-      return instance;
-    }
-    finally {}
-  }
-  
-  public void addAbToParams(JSONObject paramJSONObject)
+  public final void addAbToParams(@Nullable JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {
       return;
@@ -102,124 +108,141 @@ public class AbProviderSingleton
       }
       catch (JSONException paramJSONObject)
       {
-        Logger.INSTANCE.exception("QAPM_AbFactorManger", "addFactorToAPM", paramJSONObject);
+        Logger.INSTANCE.exception("QAPM_base_AbFactorManger", "addFactorToAPM", (Throwable)paramJSONObject);
         return;
       }
       int i = paramJSONObject.getInt("plugin");
     }
   }
   
-  public String getAbFactors(int paramInt)
+  @Nullable
+  public final String getAbFactors(int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramInt == PluginCombination.dropFramePlugin.plugin) {
       localArrayList.add(Integer.valueOf(2));
     }
+    String str;
     for (;;)
     {
-      String str = null;
+      str = (String)null;
+      Object localObject = str;
       try
       {
         if (localArrayList.size() > 0) {
-          str = getAbParam(localArrayList);
+          localObject = getAbParam(localArrayList);
         }
-        return str;
+        return localObject;
       }
       catch (Exception localException)
       {
-        Logger.INSTANCE.exception("QAPM_AbFactorManger", "addFactorToAPM", localException);
+        Logger.INSTANCE.exception("QAPM_base_AbFactorManger", "addFactorToAPM", (Throwable)localException);
       }
       if (paramInt == PluginCombination.loopStackPlugin.plugin)
       {
         localArrayList.add(Integer.valueOf(2));
       }
-      else if ((paramInt == PluginCombination.ceilingHprofPlugin.plugin) || (paramInt == PluginCombination.ceilingHprofPlugin.plugin))
+      else
       {
-        localArrayList.add(Integer.valueOf(4));
-      }
-      else if (paramInt == PluginCombination.resourcePlugin.plugin)
-      {
-        localArrayList.add(Integer.valueOf(4));
-        localArrayList.add(Integer.valueOf(1));
-        localArrayList.add(Integer.valueOf(2));
-      }
-      else if (paramInt == 126)
-      {
-        localArrayList.add(Integer.valueOf(1));
-      }
-      else if (paramInt == 129)
-      {
-        localArrayList.add(Integer.valueOf(4));
+        if (paramInt == PluginCombination.ceilingValuePlugin.plugin) {}
+        while (paramInt == PluginCombination.ceilingHprofPlugin.plugin)
+        {
+          localArrayList.add(Integer.valueOf(4));
+          break;
+        }
+        if (paramInt == PluginCombination.resourcePlugin.plugin)
+        {
+          localArrayList.add(Integer.valueOf(4));
+          localArrayList.add(Integer.valueOf(1));
+          localArrayList.add(Integer.valueOf(2));
+        }
+        else
+        {
+          localObject = callback;
+          if (localObject != null) {
+            ((IAbCallback)localObject).addType(paramInt, localArrayList);
+          }
+        }
       }
     }
-    return null;
+    return str;
   }
   
-  /* Error */
-  public AbType getAbType(Class paramClass)
+  @Nullable
+  public final AbType getAbType(@NotNull Class<?> paramClass)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 41	com/tencent/qapmsdk/base/reporter/ab/AbProviderSingleton:abTypeCache	Ljava/util/concurrent/ConcurrentHashMap;
-    //   4: aload_1
-    //   5: invokevirtual 179	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   8: checkcast 71	com/tencent/qapmsdk/base/reporter/ab/AbType
-    //   11: astore_2
-    //   12: aload_2
-    //   13: ifnonnull +59 -> 72
-    //   16: aload_0
-    //   17: getfield 41	com/tencent/qapmsdk/base/reporter/ab/AbProviderSingleton:abTypeCache	Ljava/util/concurrent/ConcurrentHashMap;
-    //   20: astore 4
-    //   22: aload 4
-    //   24: monitorenter
-    //   25: aload_1
-    //   26: invokevirtual 182	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   29: checkcast 71	com/tencent/qapmsdk/base/reporter/ab/AbType
-    //   32: astore_3
-    //   33: aload_3
-    //   34: astore_2
-    //   35: aload_0
-    //   36: getfield 41	com/tencent/qapmsdk/base/reporter/ab/AbProviderSingleton:abTypeCache	Ljava/util/concurrent/ConcurrentHashMap;
-    //   39: aload_1
-    //   40: aload_2
-    //   41: invokevirtual 185	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   44: pop
-    //   45: aload 4
-    //   47: monitorexit
-    //   48: aload_2
-    //   49: areturn
-    //   50: astore_3
-    //   51: aload_3
-    //   52: invokevirtual 188	java/lang/IllegalAccessException:printStackTrace	()V
-    //   55: goto -20 -> 35
-    //   58: astore_1
-    //   59: aload 4
-    //   61: monitorexit
-    //   62: aload_1
-    //   63: athrow
-    //   64: astore_3
-    //   65: aload_3
-    //   66: invokevirtual 189	java/lang/InstantiationException:printStackTrace	()V
-    //   69: goto -34 -> 35
-    //   72: aload_2
-    //   73: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	AbProviderSingleton
-    //   0	74	1	paramClass	Class
-    //   11	62	2	localObject	Object
-    //   32	2	3	localAbType	AbType
-    //   50	2	3	localIllegalAccessException	java.lang.IllegalAccessException
-    //   64	2	3	localInstantiationException	java.lang.InstantiationException
-    // Exception table:
-    //   from	to	target	type
-    //   25	33	50	java/lang/IllegalAccessException
-    //   25	33	58	finally
-    //   35	48	58	finally
-    //   51	55	58	finally
-    //   59	62	58	finally
-    //   65	69	58	finally
-    //   25	33	64	java/lang/InstantiationException
+    Intrinsics.checkParameterIsNotNull(paramClass, "clazz");
+    AbType localAbType2 = (AbType)abTypeCache.get(paramClass);
+    localObject1 = localAbType2;
+    if (localAbType2 == null)
+    {
+      localConcurrentHashMap = abTypeCache;
+      localObject1 = localAbType2;
+      localAbType1 = localAbType2;
+    }
+    try
+    {
+      Object localObject3 = paramClass.newInstance();
+      Object localObject2 = localObject3;
+      localObject1 = localAbType2;
+      localAbType1 = localAbType2;
+      if (!(localObject3 instanceof AbType)) {
+        localObject2 = null;
+      }
+      localObject1 = localAbType2;
+      localAbType1 = localAbType2;
+      localAbType2 = (AbType)localObject2;
+      localObject1 = localAbType2;
+      if (localAbType2 != null)
+      {
+        localObject1 = localAbType2;
+        localAbType1 = localAbType2;
+        paramClass = (AbType)abTypeCache.put(paramClass, localAbType2);
+        localObject1 = localAbType2;
+      }
+    }
+    catch (IllegalAccessException paramClass)
+    {
+      for (;;)
+      {
+        Logger.INSTANCE.exception("QAPM_base_AbFactorManger", (Throwable)paramClass);
+        paramClass = Unit.INSTANCE;
+      }
+    }
+    catch (InstantiationException paramClass)
+    {
+      for (;;)
+      {
+        Logger.INSTANCE.exception("QAPM_base_AbFactorManger", (Throwable)paramClass);
+        paramClass = Unit.INSTANCE;
+        localObject1 = localAbType1;
+      }
+    }
+    finally {}
+    return localObject1;
+  }
+  
+  @NotNull
+  public final Class<? extends AbType>[] getAbTypeArr()
+  {
+    return abTypeArr;
+  }
+  
+  @Nullable
+  public final IAbCallback getCallback()
+  {
+    return callback;
+  }
+  
+  public final void setAbTypeArr(@NotNull Class<? extends AbType>[] paramArrayOfClass)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfClass, "<set-?>");
+    abTypeArr = paramArrayOfClass;
+  }
+  
+  public final void setCallback(@Nullable IAbCallback paramIAbCallback)
+  {
+    callback = paramIAbCallback;
   }
 }
 

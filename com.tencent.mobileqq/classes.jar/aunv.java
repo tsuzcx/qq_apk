@@ -1,38 +1,24 @@
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.dynamic.host.PluginProcessService;
-import com.tencent.shadow.dynamic.host.PpsController;
-import java.util.concurrent.CountDownLatch;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.flutter.channel.zanranking.ZanRankingIpcServer.GetCoverTask;
 
-class aunv
-  implements ServiceConnection
+public class aunv
+  extends CardObserver
 {
-  aunv(aunt paramaunt, CountDownLatch paramCountDownLatch) {}
+  public aunv(ZanRankingIpcServer.GetCoverTask paramGetCoverTask) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    QLog.i("HuayangPluginNewDownloader", 2, "onServiceConnected ");
-    aunt.a(this.jdField_a_of_type_Aunt).unbindService(this);
-    paramComponentName = PluginProcessService.wrapBinder(paramIBinder);
-    try
+    if ((paramBoolean) && ((paramObject instanceof Card)))
     {
-      paramComponentName.exit();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        QLog.d("HuayangPluginNewDownloader", 2, "exit over", paramComponentName);
+      paramObject = (Card)paramObject;
+      String str = this.a.a.getString("uin");
+      if (paramObject.uin.equals(str)) {
+        ZanRankingIpcServer.GetCoverTask.a(this.a, paramObject, false);
       }
     }
   }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName) {}
 }
 
 

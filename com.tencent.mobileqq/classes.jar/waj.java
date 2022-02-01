@@ -1,20 +1,34 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-@Deprecated
-public class waj
-  extends wal
+class waj
+  implements wfk<wue, wvp>
 {
-  public waj(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561663);
-  }
+  waj(wah paramwah) {}
   
-  public void a(vxd paramvxd)
+  public void a(wue arg1, wvp paramwvp, ErrorMessage paramErrorMessage)
   {
-    super.a(paramvxd);
-    this.a.setDisplayState(5);
-    this.a.setNodeName(amtj.a(2131706064), false);
+    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (paramErrorMessage.isSuccess()) {}
+    for (;;)
+    {
+      synchronized (this.a.jdField_b_of_type_JavaLangObject)
+      {
+        this.a.jdField_a_of_type_Wal = paramwvp.jdField_a_of_type_Wal;
+        this.a.jdField_a_of_type_Wal.a();
+        ykq.b("Q.qqstory.publish:VideoServerInfoManager", "get server inf %s", this.a.jdField_a_of_type_Wal);
+        this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      }
+      synchronized (this.a.jdField_a_of_type_JavaLangObject)
+      {
+        this.a.jdField_a_of_type_JavaLangObject.notifyAll();
+        return;
+        paramwvp = finally;
+        throw paramwvp;
+        ykq.b("Q.qqstory.publish:VideoServerInfoManager", "get server info:%s", paramErrorMessage);
+      }
+    }
   }
 }
 

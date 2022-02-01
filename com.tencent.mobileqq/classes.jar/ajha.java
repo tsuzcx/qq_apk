@@ -1,17 +1,28 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+
 public class ajha
+  implements ajdu
 {
-  public String a;
+  public ajha(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public ajha(String paramString)
+  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    this.a = paramString;
+    if (!(paramViewHolder instanceof ajfc)) {}
+    do
+    {
+      return;
+      paramView = (ajfc)paramViewHolder;
+    } while (paramView.a.msg_type.get() != 2);
+    TroopSuspiciousFragment.a(this.a, paramView);
   }
   
-  public String toString()
+  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("keyword = ").append(this.a);
-    return localStringBuilder.toString();
+    return false;
   }
 }
 

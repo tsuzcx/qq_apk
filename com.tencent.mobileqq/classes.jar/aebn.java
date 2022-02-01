@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class aebn
-  extends ampv
+  implements DialogInterface.OnClickListener
 {
-  public aebn(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public aebn(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  protected void onUpgradeConfig(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
-    QQSettingSettingActivity.c(this.a);
+    bdla.b(this.a.app, "dc00898", "", "", "0X800A0D8", "0X800A0D8", 0, 0, "", "", "", "");
+    FriendProfileMoreInfoActivity.b(this.a);
   }
 }
 

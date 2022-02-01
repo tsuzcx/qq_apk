@@ -1,16 +1,17 @@
 package dov.com.qq.im.ae.download;
 
-import blvn;
-import blvp;
+import bnkt;
+import bnku;
+import bnkw;
 
 public class AEResManager$1
   implements Runnable
 {
-  public AEResManager$1(blvn paramblvn, AEResInfo paramAEResInfo, blvp paramblvp, boolean paramBoolean) {}
+  public AEResManager$1(bnku parambnku, bnkt parambnkt, bnkw parambnkw, boolean paramBoolean) {}
   
   public void run()
   {
-    blvn.a(this.this$0, this.jdField_a_of_type_DovComQqImAeDownloadAEResInfo, this.jdField_a_of_type_Blvp, this.jdField_a_of_type_Boolean, false);
+    bnku.a(this.this$0, this.jdField_a_of_type_Bnkt, this.jdField_a_of_type_Bnkw, this.jdField_a_of_type_Boolean, false);
   }
 }
 

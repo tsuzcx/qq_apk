@@ -1,32 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
 import com.tencent.qphone.base.util.QLog;
 
-public class avok
-  implements ValueAnimator.AnimatorUpdateListener
+class avok
+  implements DialogInterface.OnClickListener
 {
-  public avok(MedalGuideView paramMedalGuideView) {}
+  avok(avod paramavod) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translate")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
-    f = paramValueAnimator.getAnimatedFraction();
-    if ((!this.a.c) && (f >= 0.8857143F))
-    {
-      this.a.c = true;
-      this.a.jdField_a_of_type_Bjng.sendEmptyMessage(4);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MedalWallMng", 4, "send MSG_START_3D_ROTATE");
-      }
-    }
-    if (f >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
-    }
+    avod.jdField_a_of_type_Boolean = false;
+    avod.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
+    QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
   }
 }
 

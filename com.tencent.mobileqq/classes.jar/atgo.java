@@ -1,23 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanageraux.util.UniformDownloadUtil.3.1;
-
-public final class atgo
-  implements atgq
+class atgo
+  implements athg
 {
-  atgo(String paramString1, String paramString2) {}
+  atgo(atfq paramatfq) {}
   
-  public void a(String paramString)
+  public void a(Object[] paramArrayOfObject)
   {
-    if (paramString == null) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new UniformDownloadUtil.3.1(this));
+    atfq.c(this.a, paramArrayOfObject[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atgo
  * JD-Core Version:    0.7.0.1
  */

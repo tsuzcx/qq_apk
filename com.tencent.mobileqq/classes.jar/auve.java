@@ -1,202 +1,137 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.content.res.Resources;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Pair;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class auve
-  extends aqyp
+  extends RecyclerView.Adapter<auvh>
 {
-  public auve(UiApiPlugin paramUiApiPlugin) {}
+  float jdField_a_of_type_Float = 1.0F;
+  Context jdField_a_of_type_AndroidContentContext;
+  FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
+  List<Pair<String, String>> jdField_a_of_type_JavaUtilList;
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public auve(Context paramContext, FaceDecoder paramFaceDecoder, float paramFloat)
   {
-    String str3;
-    String str1;
-    Object localObject3;
-    Object localObject2;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.a.key))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = paramFaceDecoder;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public auvh a(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt == auva.b)
     {
-      str3 = paramBundle.getString("cmd");
-      str1 = paramBundle.getString("callbackid");
-      localObject3 = paramBundle.getBundle("response");
-      localObject2 = paramBundle.getBundle("request");
-      if (localObject2 != null) {
-        break label88;
+      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+      int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297113);
+      paramInt = i;
+      if (this.jdField_a_of_type_Float != 0.0F) {
+        paramInt = (int)(i / this.jdField_a_of_type_Float);
       }
-      QLog.e("UiApiPlugin", 1, "reqBundle is null, cmd is : " + str3);
+      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, paramInt));
+      return new auvh(paramViewGroup);
     }
-    label784:
-    label832:
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559215, paramViewGroup, false);
+    if ((this.jdField_a_of_type_Float != 0.0F) && (paramViewGroup != null))
+    {
+      Object localObject1 = paramViewGroup.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).height = AIOUtils.dp2px(80.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = (ImageView)paramViewGroup.findViewById(2131368764);
+      Object localObject2;
+      if (localObject1 != null)
+      {
+        localObject2 = ((ImageView)localObject1).getLayoutParams();
+        if (localObject2 != null)
+        {
+          paramInt = AIOUtils.dp2px(40.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
+          ((ViewGroup.LayoutParams)localObject2).width = paramInt;
+          ((ViewGroup.LayoutParams)localObject2).height = paramInt;
+          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        }
+      }
+      localObject1 = (TextView)paramViewGroup.findViewById(2131380370);
+      if (localObject1 != null)
+      {
+        ((TextView)localObject1).setTextSize(2, (int)(10.0D / this.jdField_a_of_type_Float));
+        localObject2 = (ViewGroup.MarginLayoutParams)((TextView)localObject1).getLayoutParams();
+        ((ViewGroup.MarginLayoutParams)localObject2).setMargins((int)(((ViewGroup.MarginLayoutParams)localObject2).leftMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).topMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).rightMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).bottomMargin / this.jdField_a_of_type_Float));
+        ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      }
+    }
+    return new auvg(paramViewGroup);
+  }
+  
+  public void a(auvh paramauvh, int paramInt)
+  {
+    if (paramauvh.a == auva.b) {}
     for (;;)
     {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramauvh, paramInt, getItemId(paramInt));
       return;
-      label88:
-      Object localObject1 = ((Bundle)localObject2).getString("uin");
-      String str2 = ((Bundle)localObject2).getString("action");
-      Object localObject4 = new int[5];
-      tmp113_111 = localObject4;
-      tmp113_111[0] = 1;
-      tmp117_113 = tmp113_111;
-      tmp117_113[1] = 41;
-      tmp122_117 = tmp117_113;
-      tmp122_117[2] = 75;
-      tmp127_122 = tmp122_117;
-      tmp127_122[3] = 21;
-      tmp132_127 = tmp127_122;
-      tmp132_127[4] = 58;
-      tmp132_127;
-      if (this.a.mRuntime == null)
+      if (paramauvh.a == auva.a)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("UiApiPlugin", 2, "mRuntime == null");
+        int i = paramInt - 1;
+        if (i < 0) {
+          QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "type normal in wrong index");
+        }
+        Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
+        if ((paramauvh instanceof auvg)) {
+          ((auvg)paramauvh).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
         }
       }
-      else
-      {
-        Activity localActivity = this.a.mRuntime.a();
-        if (("checkRelation".equals(str3)) && (localActivity != null) && (localObject1 != null))
-        {
-          paramBundle = null;
-          int k;
-          int i;
-          if ("openSocialCard".equals(str2))
-          {
-            k = ((Bundle)localObject2).getInt("source");
-            paramBundle = ((Bundle)localObject2).getString("sign");
-            int j = ((Bundle)localObject2).getInt("nProfileEntryType");
-            i = j;
-            if (j == 0) {
-              i = 999;
-            }
-            localObject2 = this.a.mRuntime.a();
-            if ((((Bundle)localObject3).getBoolean("result", false)) && (localObject2 != null) && (!((AppInterface)localObject2).getCurrentAccountUin().equals(localObject1)))
-            {
-              paramBundle = new Intent(localActivity, FriendProfileCardActivity.class);
-              localObject1 = new ProfileActivity.AllInOne((String)localObject1, localObject4[k]);
-              ((ProfileActivity.AllInOne)localObject1).h = i;
-              paramBundle.putExtra("AllInOne", (Parcelable)localObject1);
-              localActivity.startActivity(paramBundle);
-              paramBundle = "{\"result\": 0}";
-            }
-          }
-          for (;;)
-          {
-            if ((TextUtils.isEmpty(str1)) || (paramBundle == null)) {
-              break label832;
-            }
-            this.a.callJs(str1, new String[] { paramBundle });
-            return;
-            localObject1 = new ProfileActivity.AllInOne((String)localObject1, localObject4[k]);
-            if (!TextUtils.isEmpty(paramBundle)) {
-              ((ProfileActivity.AllInOne)localObject1).b = ChatActivityUtils.a(paramBundle);
-            }
-            ((ProfileActivity.AllInOne)localObject1).h = i;
-            paramBundle = new Intent(localActivity, NearbyPeopleProfileActivity.class);
-            paramBundle.putExtra("param_mode", 3);
-            paramBundle.putExtra("AllInOne", (Parcelable)localObject1);
-            break;
-            if ("openStrangerAIO".equals(str2)) {
-              if (((Bundle)localObject3).getBoolean("result", false))
-              {
-                paramBundle = new Intent(localActivity, ChatActivity.class);
-                paramBundle.putExtra("uin", (String)localObject1);
-                paramBundle.putExtra("uintype", 0);
-                localActivity.startActivity(paramBundle);
-                paramBundle = "{\"result\": 0}";
-              }
-              else
-              {
-                i = ((Bundle)localObject2).getInt("sourceType");
-                paramBundle = ((Bundle)localObject2).getString("sign");
-                boolean bool = ((Bundle)localObject2).getBoolean("isGroup");
-                localObject3 = ((Bundle)localObject2).getString("strangerchat_ext");
-                localObject4 = new Intent();
-                ((Intent)localObject4).putExtra("uin", (String)localObject1);
-                if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-                  ((Intent)localObject4).putExtra("strangerchat_ext", (String)localObject3);
-                }
-                if ((bool) || (!TextUtils.isEmpty(paramBundle)) || (i == 6))
-                {
-                  if (bool)
-                  {
-                    ((Intent)localObject4).putExtra("open_chatfragment", true);
-                    ((Intent)localObject4).setClass(localActivity, SplashActivity.class);
-                    i = 1;
-                    if (((Bundle)localObject2).getInt("fromAIO") >= 1) {
-                      ((Intent)localObject4).addFlags(67108864);
-                    }
-                    ((Intent)localObject4).putExtra("uintype", i);
-                    if (i != 1001) {
-                      break label784;
-                    }
-                    ((Intent)localObject4).putExtra("rich_accost_sig", ChatActivityUtils.a(paramBundle));
-                  }
-                  for (;;)
-                  {
-                    localActivity.startActivity((Intent)localObject4);
-                    paramBundle = "{\"result\": 0}";
-                    break;
-                    ((Intent)localObject4).setClass(localActivity, ChatActivity.class);
-                    switch (i)
-                    {
-                    case 5: 
-                    case 7: 
-                    default: 
-                      i = 1001;
-                      break;
-                    case 0: 
-                      i = 0;
-                      break;
-                    case 1: 
-                      i = 1001;
-                      break;
-                    case 2: 
-                      i = 1010;
-                      break;
-                    case 3: 
-                      i = 1;
-                      break;
-                    case 4: 
-                      i = 1020;
-                      break;
-                    case 6: 
-                      i = 10002;
-                      break;
-                    case 8: 
-                      i = 10004;
-                      break;
-                      if (i == 1010) {
-                        ((Intent)localObject4).putExtra("rich_date_sig", ChatActivityUtils.a(paramBundle));
-                      } else if (i == 10004) {
-                        ((Intent)localObject4).putExtra("rich_movie_sig", ChatActivityUtils.a(paramBundle));
-                      }
-                      break;
-                    }
-                  }
-                }
-                paramBundle = "{\"result\": -2, \"message\":\"Can't send message to a stranger without sign!\"}";
-              }
-            }
-          }
-        }
-      }
+    }
+  }
+  
+  public void a(List<Pair<String, String>> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt == 0) {
+      return auva.b;
+    }
+    return auva.a;
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    paramRecyclerView = paramRecyclerView.getLayoutManager();
+    if ((paramRecyclerView instanceof GridLayoutManager)) {
+      ((GridLayoutManager)paramRecyclerView).setSpanSizeLookup(new auvf(this));
     }
   }
 }

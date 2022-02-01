@@ -8,27 +8,27 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
-import avrn;
-import avro;
-import avrt;
+import awxs;
+import awxt;
+import awxy;
 import com.tencent.mobileqq.miniapp.MiniAppOptions;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import vli;
+import wad;
 
 public class MiniAppActivity
   extends FragmentActivity
 {
   protected int a;
-  public avro a;
+  public awxt a;
   private MiniAppBaseFragment a;
   protected String a;
   
   public void a(MiniAppBaseFragment paramMiniAppBaseFragment)
   {
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-    localFragmentTransaction.replace(2131367125, paramMiniAppBaseFragment);
+    localFragmentTransaction.replace(2131367244, paramMiniAppBaseFragment);
     localFragmentTransaction.commit();
     this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppBaseFragment = paramMiniAppBaseFragment;
   }
@@ -46,31 +46,31 @@ public class MiniAppActivity
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131558453);
+    super.setContentView(2131558455);
     paramBundle = getIntent().getExtras();
     Object localObject = new MiniAppLoadingFragment();
     ((MiniAppLoadingFragment)localObject).setArguments(paramBundle);
     a((MiniAppBaseFragment)localObject);
-    avrt.a();
+    awxy.a();
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("key_appid");
     this.jdField_a_of_type_Int = getIntent().getIntExtra("key_appType", 0);
     paramBundle = (MiniAppOptions)getIntent().getParcelableExtra("key_options");
-    localObject = new avrn();
-    ((avrn)localObject).jdField_a_of_type_Int = 2;
-    ((avrn)localObject).jdField_a_of_type_Boolean = true;
-    ((avrn)localObject).jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramBundle };
-    vli.a().dispatch("MiniAppManager", (Dispatcher.Dispatchable)localObject);
+    localObject = new awxs();
+    ((awxs)localObject).jdField_a_of_type_Int = 2;
+    ((awxs)localObject).jdField_a_of_type_Boolean = true;
+    ((awxs)localObject).jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramBundle };
+    wad.a().dispatch("MiniAppManager", (Dispatcher.Dispatchable)localObject);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    avrn localavrn = new avrn();
-    localavrn.jdField_a_of_type_Int = 3;
-    localavrn.jdField_a_of_type_Boolean = true;
-    localavrn.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) };
-    vli.a().dispatch("MiniAppManager", localavrn);
+    awxs localawxs = new awxs();
+    localawxs.jdField_a_of_type_Int = 3;
+    localawxs.jdField_a_of_type_Boolean = true;
+    localawxs.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) };
+    wad.a().dispatch("MiniAppManager", localawxs);
   }
   
   public boolean isWrapContent()
@@ -81,7 +81,7 @@ public class MiniAppActivity
   public boolean onBackEvent()
   {
     moveTaskToBack(true);
-    overridePendingTransition(2130772301, 2130771990);
+    overridePendingTransition(2130772300, 2130771990);
     return true;
   }
   

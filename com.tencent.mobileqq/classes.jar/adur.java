@@ -1,22 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adur
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public adur(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
+  public adur(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4)
-    {
-      SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
-      this.a.finish();
-    }
-    return false;
+    DiscussionInfoCardActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

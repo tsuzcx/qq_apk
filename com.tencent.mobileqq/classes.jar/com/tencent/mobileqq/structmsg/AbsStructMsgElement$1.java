@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.structmsg;
 
-import ahiu;
+import aido;
 import android.text.TextUtils;
-import bcgw;
+import bdnu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import odq;
+import olh;
 
 public class AbsStructMsgElement$1
   implements Runnable
 {
-  public AbsStructMsgElement$1(bcgw parambcgw1, bcgw parambcgw2, QQAppInterface paramQQAppInterface) {}
+  public AbsStructMsgElement$1(bdnu parambdnu1, bdnu parambdnu2, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     long l = NetConnInfoCenter.getServerTime();
     int j = -1;
     int i = j;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bcgw.aa)) {}
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bdnu.aa)) {}
     try
     {
       i = Integer.parseInt(this.this$0.aa);
-      if (ahiu.a(this.jdField_a_of_type_Bcgw.ab, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      if (aido.a(this.jdField_a_of_type_Bdnu.ab, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
         j = 1;
-        odq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Bcgw.ab, "0X80055C7", "0X80055C7", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_Bcgw.a), this.jdField_a_of_type_Bcgw.c, Integer.toString(j), false);
+        olh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Bdnu.ab, "0X80055C7", "0X80055C7", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_Bdnu.a), this.jdField_a_of_type_Bdnu.c, Integer.toString(j), false);
         return;
       }
     }
@@ -41,7 +41,7 @@ public class AbsStructMsgElement$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsgElement.1
  * JD-Core Version:    0.7.0.1
  */

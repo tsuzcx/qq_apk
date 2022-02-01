@@ -1,21 +1,24 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
-import rx.Observable;
-import rx.functions.Func1;
+import android.app.Activity;
 
 public class vdx
-  implements Func1<Drawable, Bitmap>
+  extends vdr
 {
-  public vdx(RoundImageView paramRoundImageView) {}
-  
-  public Bitmap a(Drawable paramDrawable)
+  public vdx(vdt paramvdt)
   {
-    paramDrawable = RoundImageView.a(this.a, paramDrawable);
-    if (paramDrawable == null) {
-      Observable.error(new Throwable("bitmap is null"));
+    super(paramvdt);
+  }
+  
+  public boolean a(vdt paramvdt)
+  {
+    if ((paramvdt.a() instanceof Activity))
+    {
+      vbq.a((Activity)paramvdt.a(), paramvdt.a(), true);
+      if (paramvdt.a() != null) {
+        paramvdt.a().d();
+      }
+      return true;
     }
-    return paramDrawable;
+    return false;
   }
 }
 

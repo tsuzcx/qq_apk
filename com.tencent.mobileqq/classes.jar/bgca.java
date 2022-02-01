@@ -1,231 +1,522 @@
-import android.graphics.Color;
-import android.support.annotation.Nullable;
-import android.util.TimingLogger;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgItem.MsgInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-import java.util.PriorityQueue;
+import msf.msgcomm.msg_comm.ContentHead;
+import msf.msgcomm.msg_comm.GroupInfo;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.msg.im_msg_body.MsgBody;
+import tencent.im.msg.im_msg_body.Ptt;
+import tencent.im.msg.im_msg_body.RichText;
+import tencent.im.oidb.cmd0xea3.oidb_0xea3.BackMsg;
 
-final class bgca
+public class bgca
 {
-  private static final Comparator<bgcc> jdField_a_of_type_JavaUtilComparator = new bgcb();
-  @Nullable
-  final TimingLogger jdField_a_of_type_AndroidUtilTimingLogger = null;
-  final List<bgcj> jdField_a_of_type_JavaUtilList;
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[3];
-  final int[] jdField_a_of_type_ArrayOfInt;
-  @Nullable
-  final bgci[] jdField_a_of_type_ArrayOfBgci;
-  final int[] b;
-  
-  bgca(int[] paramArrayOfInt, int paramInt, @Nullable bgci[] paramArrayOfbgci)
+  public static int a(MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_ArrayOfBgci = paramArrayOfbgci;
-    paramArrayOfbgci = new int[32768];
-    this.b = paramArrayOfbgci;
-    int i = 0;
-    while (i < paramArrayOfInt.length)
+    if (paramMessageRecord == null) {}
+    do
     {
-      j = d(paramArrayOfInt[i]);
-      paramArrayOfInt[i] = j;
-      paramArrayOfbgci[j] += 1;
-      i += 1;
+      return -1;
+      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr(bcrn.E);
+    } while (TextUtils.isEmpty(paramMessageRecord));
+    try
+    {
+      int i = Integer.parseInt(paramMessageRecord);
+      return i;
     }
-    int j = 0;
-    for (i = 0; j < paramArrayOfbgci.length; i = k)
+    catch (NumberFormatException paramMessageRecord)
     {
-      if ((paramArrayOfbgci[j] > 0) && (a(j))) {
-        paramArrayOfbgci[j] = 0;
-      }
-      k = i;
-      if (paramArrayOfbgci[j] > 0) {
-        k = i + 1;
-      }
-      j += 1;
+      paramMessageRecord.printStackTrace();
     }
-    paramArrayOfInt = new int[i];
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    j = 0;
-    int m;
-    for (int k = 0; j < paramArrayOfbgci.length; k = m)
+    return -1;
+  }
+  
+  public static ImportantMsgItem.MsgInfo a(long paramLong)
+  {
+    return new ImportantMsgItem.MsgInfo(0L, paramLong, "", 0, "", true, 0);
+  }
+  
+  private static String a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {
+      return "";
+    }
+    if (paramInt == 1) {
+      return a(paramMessageRecord);
+    }
+    if (paramInt == 3) {
+      return b(paramMessageRecord);
+    }
+    if (paramInt == 2) {
+      return c(paramMessageRecord);
+    }
+    if (paramInt == 4) {
+      return d(paramMessageRecord);
+    }
+    if (paramInt == 5) {
+      return a(paramMessageRecord, false);
+    }
+    if (paramInt == 6) {
+      return a(paramMessageRecord, true);
+    }
+    return "";
+  }
+  
+  private static String a(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord)
+  {
+    QQMessageFacade.Message localMessage = new QQMessageFacade.Message();
+    MessageRecord.copyMessageRecordBaseField(localMessage, paramMessageRecord);
+    localMessage.emoRecentMsg = null;
+    localMessage.fileType = -1;
+    paramQQAppInterface.getMessageFacade().decodeMsg(localMessage);
+    paramMessageRecord = new MsgSummary();
+    bhfj.a(paramContext, paramQQAppInterface, localMessage, localMessage.istroop, paramMessageRecord, "", false, false);
+    return paramMessageRecord.parseMsg(paramContext).toString();
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord, int paramInt)
+  {
+    Object localObject = (bgbs)aqxe.a().a(658);
+    if (localObject == null) {
+      return "";
+    }
+    localObject = ((bgbs)localObject).a(paramInt);
+    if (localObject == null) {
+      return "";
+    }
+    if (((bgbt)localObject).a == 0) {
+      return a(paramQQAppInterface, paramContext, paramInt, paramMessageRecord);
+    }
+    if (((bgbt)localObject).a == 1) {
+      return ((bgbt)localObject).b;
+    }
+    if (((bgbt)localObject).a == 2) {
+      return a(paramQQAppInterface, paramContext, paramMessageRecord);
+    }
+    return "";
+  }
+  
+  private static String a(MessageRecord paramMessageRecord)
+  {
+    String str2 = BaseApplicationImpl.getContext().getResources().getString(2131719586);
+    String str1 = str2;
+    if ((paramMessageRecord instanceof MessageForTroopFile))
     {
-      m = k;
-      if (paramArrayOfbgci[j] > 0)
+      paramMessageRecord = (MessageForTroopFile)paramMessageRecord;
+      str1 = str2;
+      if (!TextUtils.isEmpty(paramMessageRecord.fileName)) {
+        str1 = paramMessageRecord.fileName;
+      }
+    }
+    return str1;
+  }
+  
+  private static String a(MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    String str = BaseApplicationImpl.getContext().getResources().getString(2131719585);
+    if (paramBoolean) {
+      str = BaseApplicationImpl.getContext().getResources().getString(2131719587);
+    }
+    for (;;)
+    {
+      Object localObject;
+      if ((paramMessageRecord instanceof MessageForArkApp))
       {
-        paramArrayOfInt[k] = j;
-        m = k + 1;
+        paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
+        localObject = str;
+        if (paramMessageRecord != null)
+        {
+          localObject = str;
+          if ((paramMessageRecord.appName != null) && (!paramMessageRecord.appName.equals("com.tencent.structmsg"))) {
+            break label124;
+          }
+        }
       }
-      j += 1;
-    }
-    if (i <= paramInt)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      i = paramArrayOfInt.length;
-      paramInt = n;
-      while (paramInt < i)
+      label124:
+      do
       {
-        j = paramArrayOfInt[paramInt];
-        this.jdField_a_of_type_JavaUtilList.add(new bgcj(e(j), paramArrayOfbgci[j]));
-        paramInt += 1;
-      }
+        do
+        {
+          do
+          {
+            do
+            {
+              for (;;)
+              {
+                try
+                {
+                  paramMessageRecord = new JSONObject(paramMessageRecord.metaList).optJSONObject("news");
+                  localObject = str;
+                  if (paramMessageRecord != null)
+                  {
+                    paramMessageRecord = paramMessageRecord.optString("title", "");
+                    paramBoolean = paramMessageRecord.isEmpty();
+                    localObject = str;
+                    if (!paramBoolean) {
+                      localObject = paramMessageRecord;
+                    }
+                  }
+                  return localObject;
+                }
+                catch (JSONException paramMessageRecord)
+                {
+                  paramMessageRecord.printStackTrace();
+                  return str;
+                }
+                localObject = str;
+                if (paramMessageRecord.appName.equals("com.tencent.miniapp_01")) {
+                  try
+                  {
+                    paramMessageRecord = new JSONObject(paramMessageRecord.metaList).optJSONObject("detail_1");
+                    localObject = str;
+                    if (paramMessageRecord != null)
+                    {
+                      paramMessageRecord = paramMessageRecord.optString("desc", "");
+                      paramBoolean = paramMessageRecord.isEmpty();
+                      localObject = str;
+                      if (!paramBoolean) {
+                        return paramMessageRecord;
+                      }
+                    }
+                  }
+                  catch (JSONException paramMessageRecord)
+                  {
+                    paramMessageRecord.printStackTrace();
+                    return str;
+                  }
+                }
+              }
+              localObject = str;
+            } while (!(paramMessageRecord instanceof MessageForStructing));
+            paramMessageRecord = bdof.a(paramMessageRecord.msgData);
+            localObject = str;
+          } while (paramMessageRecord == null);
+          localObject = str;
+        } while (!(paramMessageRecord instanceof StructMsgForGeneralShare));
+        paramMessageRecord = (StructMsgForGeneralShare)paramMessageRecord;
+        localObject = str;
+      } while (TextUtils.isEmpty(paramMessageRecord.mContentTitle));
+      return paramMessageRecord.mContentTitle;
     }
-    this.jdField_a_of_type_JavaUtilList = a(paramInt);
   }
   
-  static int a(int paramInt)
+  public static ArrayList<ImportantMsgItem.MsgInfo> a(QQAppInterface paramQQAppInterface, long paramLong, List<MessageRecord> paramList, boolean paramBoolean)
   {
-    return paramInt >> 10 & 0x1F;
-  }
-  
-  static int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    return Color.rgb(b(paramInt1, 5, 8), b(paramInt2, 5, 8), b(paramInt3, 5, 8));
-  }
-  
-  private List<bgcj> a(int paramInt)
-  {
-    PriorityQueue localPriorityQueue = new PriorityQueue(paramInt, jdField_a_of_type_JavaUtilComparator);
-    localPriorityQueue.offer(new bgcc(this, 0, this.jdField_a_of_type_ArrayOfInt.length - 1));
-    a(localPriorityQueue, paramInt);
-    return a(localPriorityQueue);
-  }
-  
-  private List<bgcj> a(Collection<bgcc> paramCollection)
-  {
-    ArrayList localArrayList = new ArrayList(paramCollection.size());
-    paramCollection = paramCollection.iterator();
-    while (paramCollection.hasNext())
+    if (paramList == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      bgcj localbgcj = ((bgcc)paramCollection.next()).a();
-      if (!a(localbgcj)) {
-        localArrayList.add(localbgcj);
+      paramList = (MessageRecord)localIterator.next();
+      int j = a(paramList);
+      if ((paramBoolean) || ((a(paramList)) && (-1 != j)))
+      {
+        boolean bool = true;
+        int i = 0;
+        long l1 = paramList.time;
+        long l2 = paramList.shmsgseq;
+        String str2 = paramList.senderuin;
+        if (b(paramList))
+        {
+          QLog.i("ImportantMsgUtil", 1, "parseImportantMsg isRevokedMsg troopUin:" + paramLong + " msgSeq:" + l2);
+          bool = false;
+          i = 2;
+          paramList = "";
+          label146:
+          if (!TextUtils.isEmpty(paramList)) {
+            break label315;
+          }
+          paramList = "";
+        }
+        label315:
+        for (;;)
+        {
+          localArrayList.add(new ImportantMsgItem.MsgInfo(l1, l2, str2, j, paramList, bool, i));
+          break;
+          if (c(paramList))
+          {
+            QLog.i("ImportantMsgUtil", 1, "parseImportantMsg isTroopNotificationShowWindow troopUin:" + paramLong + " msgSeq:" + l2);
+            bool = false;
+            i = 4;
+            paramList = "";
+            break label146;
+          }
+          String str1 = a(paramQQAppInterface, BaseApplicationImpl.getContext(), paramList, j);
+          paramList = str1;
+          if (!TextUtils.isEmpty(str1)) {
+            break label146;
+          }
+          QLog.i("ImportantMsgUtil", 1, "parseImportantMsg msgSummary == null troopUin:" + paramLong + " msgSeq:" + l2);
+          bool = false;
+          paramList = "";
+          i = 3;
+          break label146;
+        }
       }
     }
     return localArrayList;
   }
   
-  private void a(PriorityQueue<bgcc> paramPriorityQueue, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, oidb_0xea3.BackMsg paramBackMsg, List<MessageRecord> paramList)
   {
-    while (paramPriorityQueue.size() < paramInt)
-    {
-      bgcc localbgcc = (bgcc)paramPriorityQueue.poll();
-      if ((localbgcc == null) || (!localbgcc.a())) {
-        break;
-      }
-      paramPriorityQueue.offer(localbgcc.a());
-      paramPriorityQueue.offer(localbgcc);
-    }
-  }
-  
-  static void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
-  {
-    int i = paramInt2;
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
+    if ((paramQQAppInterface == null) || (paramBackMsg == null) || (paramList == null)) {
       return;
-      int j;
-      while (i <= paramInt3)
-      {
-        paramInt1 = paramArrayOfInt[i];
-        paramInt2 = b(paramInt1);
-        j = a(paramInt1);
-        paramArrayOfInt[i] = (c(paramInt1) | paramInt2 << 10 | j << 5);
-        i += 1;
-      }
-      while (paramInt2 <= paramInt3)
-      {
-        paramInt1 = paramArrayOfInt[paramInt2];
-        i = c(paramInt1);
-        j = b(paramInt1);
-        paramArrayOfInt[paramInt2] = (a(paramInt1) | i << 10 | j << 5);
-        paramInt2 += 1;
-      }
-    }
-  }
-  
-  private boolean a(int paramInt)
-  {
-    paramInt = e(paramInt);
-    bgcd.a(paramInt, this.jdField_a_of_type_ArrayOfFloat);
-    return a(paramInt, this.jdField_a_of_type_ArrayOfFloat);
-  }
-  
-  private boolean a(int paramInt, float[] paramArrayOfFloat)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_ArrayOfBgci != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ArrayOfBgci.length > 0)
-      {
-        j = this.jdField_a_of_type_ArrayOfBgci.length;
-        i = 0;
-      }
     }
     for (;;)
     {
-      bool1 = bool2;
-      if (i < j)
+      try
       {
-        if (!this.jdField_a_of_type_ArrayOfBgci[i].a(paramInt, paramArrayOfFloat)) {
-          bool1 = true;
+        paramQQAppInterface = paramQQAppInterface.getMsgHandler();
+        if (!paramBackMsg.msg.has()) {
+          break;
+        }
+        msg_comm.Msg localMsg = new msg_comm.Msg();
+        localMsg.mergeFrom(paramBackMsg.msg.get().toByteArray());
+        if (!localMsg.msg_head.has()) {
+          break label394;
+        }
+        paramBackMsg = (msg_comm.MsgHead)localMsg.msg_head.get();
+        if ((!paramBackMsg.group_info.has()) || (((msg_comm.GroupInfo)paramBackMsg.group_info.get()).group_type.get() != 127)) {
+          break label389;
+        }
+        i = 1;
+        l2 = paramBackMsg.msg_seq.get();
+        l1 = paramBackMsg.msg_time.get();
+        l3 = paramBackMsg.from_uin.get();
+        if (!localMsg.content_head.has()) {
+          break label383;
+        }
+        j = ((msg_comm.ContentHead)localMsg.content_head.get()).pkg_num.get();
+        if (localMsg.msg_body.has())
+        {
+          paramBackMsg = (im_msg_body.MsgBody)localMsg.msg_body.get();
+          if (paramBackMsg.rich_text.has())
+          {
+            if (!((im_msg_body.RichText)paramBackMsg.rich_text.get()).ptt.has()) {
+              break label364;
+            }
+            new bcsm().a(paramQQAppInterface, localMsg, paramList, null);
+          }
+        }
+        if ((paramList.size() == 0) && (j > 1))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("ImportantMsgUtil", 2, "<---decodeSinglePbMsg_GroupDis, empty long msg fragment");
+          }
+          paramQQAppInterface = (MessageForText)bcsa.a(-1000);
+          paramQQAppInterface.msgtype = -1000;
+          paramQQAppInterface.msg = "";
+          paramList.add(paramQQAppInterface);
+        }
+        paramQQAppInterface = paramList.iterator();
+        if (!paramQQAppInterface.hasNext()) {
+          break;
+        }
+        paramBackMsg = (MessageRecord)paramQQAppInterface.next();
+        if (i != 0) {
+          paramBackMsg.msgtype = -2006;
+        }
+        paramBackMsg.time = l1;
+        paramBackMsg.shmsgseq = l2;
+        paramBackMsg.senderuin = String.valueOf(l3);
+        continue;
+        bcrx.a(paramQQAppInterface, paramList, localMsg, false, false, new bffl());
+      }
+      catch (InvalidProtocolBufferMicroException paramQQAppInterface)
+      {
+        paramQQAppInterface.printStackTrace();
+        return;
+      }
+      label364:
+      continue;
+      label383:
+      int j = 0;
+      continue;
+      label389:
+      int i = 0;
+      continue;
+      label394:
+      long l1 = 0L;
+      long l2 = 0L;
+      long l3 = 0L;
+      i = 0;
+    }
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {}
+    do
+    {
+      return false;
+      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr(bcrn.D);
+    } while ((TextUtils.isEmpty(paramMessageRecord)) || (!paramMessageRecord.equals("1")));
+    return true;
+  }
+  
+  private static String b(MessageRecord paramMessageRecord)
+  {
+    String str = BaseApplicationImpl.getContext().getResources().getString(2131719584);
+    if ((paramMessageRecord instanceof MessageForArkApp))
+    {
+      paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
+      if (paramMessageRecord == null) {}
+    }
+    try
+    {
+      Object localObject = new JSONObject(paramMessageRecord.metaList).optJSONObject("albumData");
+      if (localObject != null)
+      {
+        paramMessageRecord = ((JSONObject)localObject).optString("title", "");
+        localObject = ((JSONObject)localObject).optString("albumName", "");
+        if ((!paramMessageRecord.isEmpty()) && (!((String)localObject).isEmpty()))
+        {
+          localObject = "《" + (String)localObject + "》";
+          if (paramMessageRecord.startsWith((String)localObject)) {
+            return paramMessageRecord.substring(((String)localObject).length());
+          }
+        }
+        else if (((String)localObject).isEmpty())
+        {
+          boolean bool = paramMessageRecord.isEmpty();
+          if (!bool) {
+            return paramMessageRecord;
+          }
         }
       }
-      else {
-        return bool1;
+    }
+    catch (JSONException paramMessageRecord)
+    {
+      for (;;)
+      {
+        paramMessageRecord.printStackTrace();
       }
-      i += 1;
     }
+    return str;
+    return paramMessageRecord;
   }
   
-  private boolean a(bgcj parambgcj)
+  public static boolean b(MessageRecord paramMessageRecord)
   {
-    return a(parambgcj.a(), parambgcj.a());
-  }
-  
-  static int b(int paramInt)
-  {
-    return paramInt >> 5 & 0x1F;
-  }
-  
-  private static int b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt3 > paramInt2) {
-      paramInt1 <<= paramInt3 - paramInt2;
+    if (paramMessageRecord == null) {}
+    while (paramMessageRecord.msgtype != -2006) {
+      return false;
     }
+    return true;
+  }
+  
+  private static String c(MessageRecord paramMessageRecord)
+  {
+    String str = BaseApplicationImpl.getContext().getResources().getString(2131719589);
+    if ((paramMessageRecord instanceof MessageForArkApp))
+    {
+      paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
+      if (paramMessageRecord != null) {
+        try
+        {
+          paramMessageRecord = new JSONObject(paramMessageRecord.metaList).optJSONObject("mannounce");
+          if (paramMessageRecord != null)
+          {
+            paramMessageRecord = paramMessageRecord.optString("text", "");
+            if (!paramMessageRecord.isEmpty())
+            {
+              paramMessageRecord = new String(Base64.decode(paramMessageRecord, 2));
+              return paramMessageRecord;
+            }
+          }
+        }
+        catch (JSONException paramMessageRecord)
+        {
+          paramMessageRecord.printStackTrace();
+        }
+      }
+    }
+    return str;
+  }
+  
+  private static boolean c(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {}
     for (;;)
     {
-      return paramInt1 & (1 << paramInt3) - 1;
-      paramInt1 >>= paramInt2 - paramInt3;
+      return false;
+      if ((paramMessageRecord instanceof MessageForArkApp))
+      {
+        paramMessageRecord = (MessageForArkApp)paramMessageRecord;
+        try
+        {
+          if (paramMessageRecord.ark_app_message != null)
+          {
+            paramMessageRecord = new JSONObject(paramMessageRecord.ark_app_message.metaList).optJSONObject("mannounce");
+            if (paramMessageRecord != null)
+            {
+              int i = paramMessageRecord.optInt("tw", 1);
+              if (i == 0) {
+                return true;
+              }
+            }
+          }
+        }
+        catch (JSONException paramMessageRecord)
+        {
+          paramMessageRecord.printStackTrace();
+        }
+      }
     }
+    return false;
   }
   
-  static int c(int paramInt)
+  private static String d(MessageRecord paramMessageRecord)
   {
-    return paramInt & 0x1F;
-  }
-  
-  private static int d(int paramInt)
-  {
-    return b(Color.red(paramInt), 8, 5) << 10 | b(Color.green(paramInt), 8, 5) << 5 | b(Color.blue(paramInt), 8, 5);
-  }
-  
-  private static int e(int paramInt)
-  {
-    return a(a(paramInt), b(paramInt), c(paramInt));
-  }
-  
-  List<bgcj> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    String str = BaseApplicationImpl.getContext().getResources().getString(2131719588);
+    if ((paramMessageRecord instanceof MessageForArkApp))
+    {
+      paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
+      if ((paramMessageRecord != null) && (!TextUtils.isEmpty(paramMessageRecord.getSummery()))) {
+        return paramMessageRecord.getSummery();
+      }
+    }
+    else if ((paramMessageRecord instanceof MessageForStructing))
+    {
+      paramMessageRecord = bdof.a(paramMessageRecord.msgData);
+      if ((paramMessageRecord != null) && ((paramMessageRecord instanceof StructMsgForGeneralShare)))
+      {
+        paramMessageRecord = (StructMsgForGeneralShare)paramMessageRecord;
+        if (!TextUtils.isEmpty(paramMessageRecord.mContentTitle)) {
+          return paramMessageRecord.mContentTitle;
+        }
+      }
+    }
+    return str;
   }
 }
 

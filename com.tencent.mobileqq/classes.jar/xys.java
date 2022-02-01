@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import java.util.List;
+import java.util.Map;
 
-public class xys
-  implements DialogInterface.OnDismissListener
+class xys
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public xys(EditVideoGuide paramEditVideoGuide) {}
+  xys(xyr paramxyr, StoryHomeHorizontalListView paramStoryHomeHorizontalListView, xyo paramxyo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onScrollStateChanged(int paramInt)
   {
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.b = 2;
-    this.a.jdField_a_of_type_Xzd.a(5);
+    if (paramInt == 4097)
+    {
+      int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getFirstVisiblePosition();
+      paramInt = i;
+      if (i < 0) {
+        paramInt = 0;
+      }
+      xyr.a(this.jdField_a_of_type_Xyr).a.put("2_" + this.jdField_a_of_type_Xyr.a.a.feedId, ((StoryVideoItem)this.jdField_a_of_type_Xyo.a.get(paramInt)).mVid);
+    }
   }
 }
 

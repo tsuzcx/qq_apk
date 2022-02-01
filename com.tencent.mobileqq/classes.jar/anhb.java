@@ -1,24 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 class anhb
-  implements anhg
 {
-  anhb(anha paramanha, BaseActivity paramBaseActivity, long paramLong1, long paramLong2, String paramString) {}
+  public int a;
+  public String a;
+  public List<angz> a;
+  public List<angy> b = new ArrayList();
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public anhb()
   {
-    QLog.d("AVGameShareUtil", 1, "getShareLinkCallback isSuccess: " + paramBoolean + " shareUrl: " + paramString);
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
-    {
-      new angu(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, String.valueOf(this.jdField_a_of_type_Long), paramString, this.b, this.jdField_a_of_type_JavaLangString, 0).c();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131690422, 0).a();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("ThunderConfig{");
+    localStringBuffer.append("mPageId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mMd5='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mCmdConfigs=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", mCGIConfigs=").append(this.b);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

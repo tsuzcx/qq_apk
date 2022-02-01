@@ -1,24 +1,51 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.15.1;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
 
 public class adfg
-  extends CardObserver
+  implements TextWatcher
 {
-  public adfg(EditInfoActivity paramEditInfoActivity) {}
+  public adfg(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (!this.a.j) {}
-    do
+    AddAccountActivity.a(this.a, null);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AddAccountActivity.a(this.a, paramCharSequence.toString());
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
     {
-      return;
-      this.a.j = false;
-      this.a.runOnUiThread(new EditInfoActivity.15.1(this, paramBoolean, paramCard, paramInt));
-    } while (!QLog.isColorLevel());
-    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+      paramCharSequence = paramCharSequence.toString();
+      if ((paramCharSequence != null) && (AddAccountActivity.a(this.a) != null) && (AddAccountActivity.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
+        BaseApplicationImpl.sApplication.refreAccountList();
+      }
+      AddAccountActivity.a(this.a, null);
+      if ((AddAccountActivity.a(this.a) == null) || (AddAccountActivity.a(this.a).length() == 0)) {}
+      do
+      {
+        return;
+        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != AddAccountActivity.a(this.a).length() + 1))
+        {
+          BaseApplicationImpl.sApplication.refreAccountList();
+          return;
+        }
+        if ((!paramCharSequence.substring(0, AddAccountActivity.a(this.a).length()).equals(AddAccountActivity.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText == null)) {
+          break;
+        }
+        paramCharSequence = paramCharSequence.substring(AddAccountActivity.a(this.a).length());
+      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText(paramCharSequence);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(1);
+    }
+    AddAccountActivity.a(this.a, null);
   }
 }
 

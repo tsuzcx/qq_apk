@@ -6,11 +6,11 @@ import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 class EventListener$6
   implements Runnable
 {
-  EventListener$6(EventListener paramEventListener, IAppBrandPageContainer paramIAppBrandPageContainer, String paramString, RequestEvent paramRequestEvent) {}
+  EventListener$6(EventListener paramEventListener, IAppBrandPageContainer paramIAppBrandPageContainer, String paramString1, String paramString2, RequestEvent paramRequestEvent) {}
   
   public void run()
   {
-    this.val$pageContainer.navigateTo(this.val$url, this.val$req.callbackId);
+    this.val$pageContainer.dispatchEventToWebView(this.val$eventName, this.val$jsonParams, null);
     this.val$req.ok();
   }
 }

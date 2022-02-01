@@ -1,184 +1,400 @@
-import android.app.Notification;
-import android.app.PendingIntent;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.notification.modularize.OnlineModulePushReceiver.onPushReceived.1;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.mobileqq.multicard.manager.TroopMemberRecommendHandler.1;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import tencent.im.s2c.msgtype0x210.submsgtype0x135.ModulePushPb.Content;
-import tencent.im.s2c.msgtype0x210.submsgtype0x135.ModulePushPb.Forward;
-import tencent.im.s2c.msgtype0x210.submsgtype0x135.ModulePushPb.Image;
-import tencent.im.s2c.msgtype0x210.submsgtype0x135.ModulePushPb.MsgBody;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xdcc.oidb_cmd0xdcc.EntryDelay;
+import tencent.im.oidb.cmd0xdcc.oidb_cmd0xdcc.RecommendCard;
+import tencent.im.oidb.cmd0xdcc.oidb_cmd0xdcc.RecommendPerson;
+import tencent.im.oidb.cmd0xdcc.oidb_cmd0xdcc.ReqBody;
+import tencent.im.oidb.cmd0xdcc.oidb_cmd0xdcc.RspBody;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/OnlineModulePushReceiver;", "", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "(Lcom/tencent/mobileqq/app/QQAppInterface;)V", "convertPacket", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "msgBody", "Ltencent/im/s2c/msgtype0x210/submsgtype0x135/ModulePushPb$MsgBody;", "createSystemNotification", "", "pushComponent", "notification", "Landroid/app/Notification;", "handleMsgBytes", "vProtobuf", "", "onPushReceived", "revokePush", "sendPush", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class axhz
+public class axhz
+  extends BusinessHandler
 {
-  private final QQAppInterface a;
+  private axia a;
   
-  public axhz(@NotNull QQAppInterface paramQQAppInterface)
+  public axhz(QQAppInterface paramQQAppInterface)
   {
-    this.a = paramQQAppInterface;
+    super(paramQQAppInterface);
+    this.a = ((axia)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MEMBER_RECOMMEND_MANAGER));
   }
   
-  private final void a(axib paramaxib, Notification paramNotification)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    QQNotificationManager.getInstance().notify("OnlineModulePushReceiver", paramaxib.jdField_d_of_type_Int, paramNotification);
-    this.a.vibratorAndAudio();
-    ((Map)axia.a()).put(Integer.valueOf(paramaxib.jdField_d_of_type_Int), Integer.valueOf(paramaxib.jdField_a_of_type_Int));
-    bcef.b(null, "dc00898", "", "", "0X800AE73", "0X800AE73", paramaxib.jdField_a_of_type_Int, 0, String.valueOf(paramaxib.jdField_b_of_type_Int), String.valueOf(paramaxib.jdField_c_of_type_Int), "", "");
-    paramNotification = axic.a;
-    String str = this.a.getCurrentUin();
-    Intrinsics.checkExpressionValueIsNotNull(str, "app.currentUin");
-    paramNotification.a(str, 117, String.valueOf(paramaxib.jdField_c_of_type_Int));
-  }
-  
-  private final void b(axib paramaxib)
-  {
-    Object localObject = axih.a.a(paramaxib).b(paramaxib);
-    localObject = axhy.a.a((PendingIntent)localObject, paramaxib);
-    boolean bool = axia.a(this.a);
-    if (axia.b(this.a)) {
+    boolean bool;
+    Object localObject1;
+    int i;
+    int j;
+    long l1;
+    long l2;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
+    {
+      bool = true;
+      localObject1 = new oidb_cmd0xdcc.RspBody();
+      i = -1;
+      if (!bool) {
+        break label1169;
+      }
+      j = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject1);
+      i = j;
+      if (j == 0) {
+        break label1169;
+      }
+      i = j;
+      bool = false;
       if (QLog.isColorLevel()) {
-        QLog.d("OnlineModulePushReceiver", 2, "sendPush: called. push need shield");
+        QLog.i("TroopMemberRecommend.Handler", 2, "handleGetTroopMemRecommendCards, isSuc=" + bool + ",oidbesult=" + i);
+      }
+      l1 = 0L;
+      paramFromServiceMsg = new ArrayList();
+      if (bool) {
+        l2 = l1;
+      }
+    }
+    Object localObject2;
+    int k;
+    for (;;)
+    {
+      long l4;
+      try
+      {
+        paramToServiceMsg = ((oidb_cmd0xdcc.RspBody)localObject1).rpt_msg_recommend_card.get();
+        l2 = l1;
+        localObject2 = ((oidb_cmd0xdcc.RspBody)localObject1).rpt_msg_entry_delay.get();
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.RspBody)localObject1).uint64_group_id.has()) {
+          break label503;
+        }
+        l2 = l1;
+        l1 = ((oidb_cmd0xdcc.RspBody)localObject1).uint64_group_id.get();
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.RspBody)localObject1).uint32_timestamp.has()) {
+          break label509;
+        }
+        l2 = l1;
+        l3 = ((oidb_cmd0xdcc.RspBody)localObject1).uint32_timestamp.get();
+        l2 = l1;
+        paramObject = this.a.a();
+        if (localObject2 == null) {
+          break label584;
+        }
+        l2 = l1;
+        if (((List)localObject2).size() <= 0) {
+          break label584;
+        }
+        l2 = l1;
+        localObject1 = ((List)localObject2).iterator();
+        l2 = l1;
+        if (!((Iterator)localObject1).hasNext()) {
+          break label584;
+        }
+        l2 = l1;
+        localObject2 = (oidb_cmd0xdcc.EntryDelay)((Iterator)localObject1).next();
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.EntryDelay)localObject2).em_entry.has()) {
+          break label515;
+        }
+        l2 = l1;
+        j = ((oidb_cmd0xdcc.EntryDelay)localObject2).em_entry.get();
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.EntryDelay)localObject2).uint32_delay.has()) {
+          break label521;
+        }
+        l2 = l1;
+        k = ((oidb_cmd0xdcc.EntryDelay)localObject2).uint32_delay.get();
+        l4 = k + l3;
+        l2 = l1;
+        if (QLog.isColorLevel())
+        {
+          l2 = l1;
+          QLog.i("TroopMemberRecommend.Handler", 2, "handleGetTroopMemRecommendCards, nextFetchTS =" + l4);
+        }
+        if (j != 11) {
+          break label528;
+        }
+        l2 = l1;
+        paramObject.edit().putLong("key_LeftSlide_fetch_ts" + String.valueOf(l1), l4).commit();
+        continue;
+        if (this.a == null) {
+          break label496;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.i("TroopMemberRecommend.Handler", 1, "handleGetTroopMemRecommendCards exception, isSuc=" + bool + ",oidbesult=" + i, paramToServiceMsg);
+      }
+      label474:
+      this.a.a(bool, paramFromServiceMsg, String.valueOf(l2));
+      label496:
+      return;
+      bool = false;
+      break;
+      label503:
+      l1 = 0L;
+      continue;
+      label509:
+      long l3 = 0L;
+      continue;
+      label515:
+      j = 0;
+      continue;
+      label521:
+      k = 86400;
+      continue;
+      label528:
+      if (j == 12)
+      {
+        l2 = l1;
+        paramObject.edit().putLong("key_AIO_fetch_ts" + String.valueOf(l1), l4).commit();
+      }
+    }
+    label584:
+    oidb_cmd0xdcc.RecommendPerson localRecommendPerson1;
+    label685:
+    RecommendPerson localRecommendPerson;
+    if (paramToServiceMsg != null)
+    {
+      l2 = l1;
+      if (paramToServiceMsg.size() > 0)
+      {
+        l2 = l1;
+        paramObject = paramToServiceMsg.iterator();
+        do
+        {
+          do
+          {
+            do
+            {
+              l2 = l1;
+              if (!paramObject.hasNext()) {
+                break;
+              }
+              l2 = l1;
+              localObject1 = (oidb_cmd0xdcc.RecommendCard)paramObject.next();
+              l2 = l1;
+              paramToServiceMsg = ((oidb_cmd0xdcc.RecommendCard)localObject1).rpt_msg_person.get();
+            } while (paramToServiceMsg == null);
+            l2 = l1;
+          } while (paramToServiceMsg.size() <= 0);
+          l2 = l1;
+          localObject2 = paramToServiceMsg.iterator();
+          j = 0;
+          l2 = l1;
+        } while (!((Iterator)localObject2).hasNext());
+        l2 = l1;
+        localRecommendPerson1 = (oidb_cmd0xdcc.RecommendPerson)((Iterator)localObject2).next();
+        l2 = l1;
+        localRecommendPerson = new RecommendPerson();
+        l2 = l1;
+        localRecommendPerson.troopUin = String.valueOf(l1);
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.RecommendCard)localObject1).enum_card_id.has()) {
+          break label1172;
+        }
+        l2 = l1;
+        k = ((oidb_cmd0xdcc.RecommendCard)localObject1).enum_card_id.get();
+        label771:
+        l2 = l1;
+        localRecommendPerson.cardTypeID = k;
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.RecommendCard)localObject1).bytes_main_title.has()) {
+          break label1178;
+        }
+        l2 = l1;
+        paramToServiceMsg = ((oidb_cmd0xdcc.RecommendCard)localObject1).bytes_main_title.get().toStringUtf8();
+        label813:
+        l2 = l1;
+        localRecommendPerson.cardMainTitle = paramToServiceMsg;
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.RecommendCard)localObject1).bytes_sub_title.has()) {
+          break label1185;
+        }
+        l2 = l1;
+        paramToServiceMsg = ((oidb_cmd0xdcc.RecommendCard)localObject1).bytes_sub_title.get().toStringUtf8();
+        label854:
+        l2 = l1;
+        localRecommendPerson.cardSubTitle = paramToServiceMsg;
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.RecommendCard)localObject1).uint32_show_max.has()) {
+          break label1192;
+        }
+        l2 = l1;
+        k = ((oidb_cmd0xdcc.RecommendCard)localObject1).uint32_show_max.get();
+        label893:
+        l2 = l1;
+        localRecommendPerson.cardMaxDisplayPersonNum = k;
+        l2 = l1;
+        if (!localRecommendPerson1.uint64_uin.has()) {
+          break label1198;
+        }
+        l2 = l1;
+        paramToServiceMsg = String.valueOf(localRecommendPerson1.uint64_uin.get());
+        label935:
+        l2 = l1;
+        localRecommendPerson.uin = paramToServiceMsg;
+        l2 = l1;
+        if (!localRecommendPerson1.bytes_reason.has()) {
+          break label1205;
+        }
+        l2 = l1;
+        paramToServiceMsg = localRecommendPerson1.bytes_reason.get().toStringUtf8();
+        label976:
+        l2 = l1;
+        localRecommendPerson.recommendReason = paramToServiceMsg;
+        l2 = l1;
+        if (!localRecommendPerson1.bytes_keyword.has()) {
+          break label1212;
+        }
+        l2 = l1;
+        paramToServiceMsg = localRecommendPerson1.bytes_keyword.get().toStringUtf8();
+        label1017:
+        l2 = l1;
+        localRecommendPerson.recommendKeyword = paramToServiceMsg;
+        l2 = l1;
+        if (!localRecommendPerson1.bytes_alghrithm.has()) {
+          break label1219;
+        }
+        l2 = l1;
+        paramToServiceMsg = localRecommendPerson1.bytes_alghrithm.get().toStringUtf8();
+        label1058:
+        l2 = l1;
+        localRecommendPerson.recommendALghrithm = paramToServiceMsg;
+        l2 = l1;
+        if (!localRecommendPerson1.bytes_recall.has()) {
+          break label1226;
+        }
+        l2 = l1;
+      }
+    }
+    label1169:
+    label1172:
+    label1178:
+    label1185:
+    label1192:
+    label1198:
+    label1205:
+    label1212:
+    label1219:
+    label1226:
+    for (paramToServiceMsg = localRecommendPerson1.bytes_recall.get().toStringUtf8();; paramToServiceMsg = "")
+    {
+      l2 = l1;
+      localRecommendPerson.recommendRecall = paramToServiceMsg;
+      l2 = l1;
+      localRecommendPerson.addedIndex = j;
+      l2 = l1;
+      paramFromServiceMsg.add(localRecommendPerson);
+      j += 1;
+      break label685;
+      l2 = l1;
+      ThreadManager.excute(new TroopMemberRecommendHandler.1(this, l1, paramFromServiceMsg), 32, null, true);
+      l2 = l1;
+      break label474;
+      break;
+      k = 0;
+      break label771;
+      paramToServiceMsg = "";
+      break label813;
+      paramToServiceMsg = "";
+      break label854;
+      k = 0;
+      break label893;
+      paramToServiceMsg = "";
+      break label935;
+      paramToServiceMsg = "";
+      break label976;
+      paramToServiceMsg = "";
+      break label1017;
+      paramToServiceMsg = "";
+      break label1058;
+    }
+  }
+  
+  public void a(String paramString, int paramInt, List<Long> paramList)
+  {
+    try
+    {
+      oidb_cmd0xdcc.ReqBody localReqBody = new oidb_cmd0xdcc.ReqBody();
+      localReqBody.uint64_group_id.set(Long.parseLong(paramString));
+      localReqBody.em_entry.set(paramInt);
+      ArrayList localArrayList = new ArrayList();
+      if (paramList != null) {
+        localArrayList.addAll(localArrayList);
+      }
+      localReqBody.rpt_uint64_filter_uin.set(localArrayList);
+      paramList = makeOIDBPkg("OidbSvc.oidb_0xdcc", 3532, 1, localReqBody.toByteArray());
+      paramList.extraData.putString("troop_uin", paramString);
+      sendPbReq(paramList);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopMemberRecommend.Handler", 2, "getTroopMemRecommendCards, request =" + paramList);
+      }
+      return;
+    }
+    catch (NumberFormatException paramString) {}
+  }
+  
+  public boolean a(EntityManager paramEntityManager, Entity paramEntity)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramEntityManager.isOpen()) {
+      if (paramEntity.getStatus() == 1000)
+      {
+        paramEntityManager.persistOrReplace(paramEntity);
+        if (paramEntity.getStatus() == 1001) {
+          bool1 = true;
+        }
+        paramEntityManager.close();
       }
     }
     do
     {
-      return;
-      if ((paramaxib.jdField_d_of_type_Boolean) && (paramaxib.jdField_c_of_type_Boolean))
-      {
-        a(paramaxib, (Notification)localObject);
-        return;
+      return bool1;
+      if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
+        break;
       }
-      if ((paramaxib.jdField_d_of_type_Boolean) && (bool))
-      {
-        a(paramaxib, (Notification)localObject);
-        return;
-      }
-      if ((paramaxib.jdField_c_of_type_Boolean) && (!bool))
-      {
-        a(paramaxib, (Notification)localObject);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("OnlineModulePushReceiver", 2, new Object[] { "sendPush: called. ", "no need send push. isBackground: " + bool });
-  }
-  
-  private final void c(axib paramaxib)
-  {
-    QQNotificationManager.getInstance().cancel("OnlineModulePushReceiver", paramaxib.jdField_d_of_type_Int);
-  }
-  
-  @NotNull
-  public final axib a(@NotNull ModulePushPb.MsgBody paramMsgBody)
-  {
-    boolean bool2 = false;
-    Intrinsics.checkParameterIsNotNull(paramMsgBody, "msgBody");
-    axib localaxib = new axib();
-    String str = paramMsgBody.msg_content.str_title.get();
-    Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.msg_content.str_title.get()");
-    localaxib.jdField_a_of_type_JavaLangString = str;
-    str = paramMsgBody.msg_content.msg_image.str_url.get();
-    Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.msg_content.msg_image.str_url.get()");
-    localaxib.jdField_b_of_type_JavaLangString = str;
-    str = paramMsgBody.msg_content.str_desc.get();
-    Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.msg_content.str_desc.get()");
-    localaxib.jdField_c_of_type_JavaLangString = str;
-    str = paramMsgBody.msg_content.msg_forward.str_url.get();
-    Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.msg_content.msg_forward.str_url.get()");
-    localaxib.jdField_d_of_type_JavaLangString = str;
-    label214:
-    int i;
-    if (paramMsgBody.msg_content.msg_forward.uint32_type.get() == 0)
-    {
-      bool1 = true;
-      localaxib.jdField_a_of_type_Boolean = bool1;
-      localaxib.jdField_a_of_type_Int = paramMsgBody.int32_service_id.get();
-      localaxib.jdField_b_of_type_Int = paramMsgBody.int32_sub_service_id.get();
-      localaxib.jdField_d_of_type_Int = paramMsgBody.int32_notify_id.get();
-      localaxib.jdField_c_of_type_Int = paramMsgBody.int32_push_id.get();
-      if (paramMsgBody.int32_recall_flag.get() != 1) {
-        break label301;
-      }
-      bool1 = true;
-      localaxib.jdField_b_of_type_Boolean = bool1;
-      i = paramMsgBody.int32_type.get();
-      if ((i != 1) && (i != 2)) {
-        break label306;
-      }
-    }
-    label301:
-    label306:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      localaxib.jdField_c_of_type_Boolean = bool1;
-      if (i != 0)
-      {
-        bool1 = bool2;
-        if (i != 2) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      localaxib.jdField_d_of_type_Boolean = bool1;
-      paramMsgBody = paramMsgBody.msg_content.bytes_ext_data.get().toByteArray();
-      Intrinsics.checkExpressionValueIsNotNull(paramMsgBody, "msgBody.msg_content.byte…_data.get().toByteArray()");
-      localaxib.jdField_a_of_type_ArrayOfByte = paramMsgBody;
-      return localaxib;
-      bool1 = false;
+      bool1 = paramEntityManager.update(paramEntity);
       break;
-      bool1 = false;
-      break label214;
-    }
+      bool1 = bool2;
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopMemberRecommend.Handler", 2, "updateEntity em closed e=" + paramEntity.getTableName());
+    return false;
   }
   
-  public final void a(@NotNull axib paramaxib)
+  public Class<? extends BusinessObserver> observerClass()
   {
-    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
+    return axib.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("OnlineModulePushReceiver", 2, new Object[] { "onPushReceived: called. ", "pushComponent: " + paramaxib });
+      QLog.d("TroopMemberRecommend.Handler", 2, " onReceive() res =" + paramFromServiceMsg.getServiceCmd());
     }
-    if (!paramaxib.a())
-    {
-      QLog.d("OnlineModulePushReceiver", 1, new Object[] { "onPushReceived: called. ", "invalid notify id. pushComponent: " + paramaxib });
-      return;
-    }
-    if (paramaxib.jdField_b_of_type_Boolean)
-    {
-      c(paramaxib);
-      return;
-    }
-    axia.a((Function0)new OnlineModulePushReceiver.onPushReceived.1(this, paramaxib));
-  }
-  
-  public final void a(@NotNull byte[] paramArrayOfByte)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "vProtobuf");
-    ModulePushPb.MsgBody localMsgBody = new ModulePushPb.MsgBody();
-    try
-    {
-      localMsgBody.mergeFrom(paramArrayOfByte);
-      a(a(localMsgBody));
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("OnlineModulePushReceiver", 2, "handleMsgBytes: failed. ", (Throwable)paramArrayOfByte);
-        }
-      }
+    if ("OidbSvc.oidb_0xdcc".equals(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
 }

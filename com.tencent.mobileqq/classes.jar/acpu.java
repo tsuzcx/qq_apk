@@ -1,56 +1,72 @@
-import android.graphics.drawable.Animatable;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.File;
-import java.net.MalformedURLException;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.s2c.msgtype0x210.submsgtype0x117.submsgtype0x117.MsgBody;
 
 public class acpu
-  extends Handler
+  implements acpi
 {
-  public acpu(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  private static void a(byte[] paramArrayOfByte)
   {
-    switch (paramMessage.what)
+    if (paramArrayOfByte == null) {}
+    Object localObject;
+    do
     {
-    }
-    for (;;)
-    {
-      return;
-      if ((this.a.isFinishing()) || (AddFriendVerifyActivity.a(this.a) == null)) {
-        continue;
-      }
-      AddFriendVerifyActivity.a(this.a).setVisibility(0);
-      ((Animatable)AddFriendVerifyActivity.a(this.a).getDrawable()).start();
-      return;
-      if (this.a.isFinishing()) {
-        continue;
-      }
-      if (!TextUtils.isEmpty(AddFriendVerifyActivity.c(this.a))) {}
-      try
+      for (;;)
       {
-        paramMessage = new File(AddFriendVerifyActivity.d(this.a)).toURL();
-        AddFriendVerifyActivity.a(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
-        label142:
-        if (AddFriendVerifyActivity.a(this.a) == null) {
-          continue;
+        return;
+        localObject = new submsgtype0x117.MsgBody();
+        try
+        {
+          ((submsgtype0x117.MsgBody)localObject).mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = ((submsgtype0x117.MsgBody)localObject).rpt_uint32_moudle_id.get();
+          l = ((submsgtype0x117.MsgBody)localObject).uint64_uin.get();
+          if ((paramArrayOfByte == null) || (paramArrayOfByte.size() == 0))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SuMsgType0x117 音视频测试环境push,moudleIds==null || moudleIds.size()== 0");
+          }
         }
-        AddFriendVerifyActivity.a(this.a).setVisibility(8);
-        return;
-        QQToast.a(this.a.getApplicationContext(), 1, 2131719409, 0).b(this.a.getTitleBarHeight());
-        return;
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          long l;
+          for (;;)
+          {
+            paramArrayOfByte.printStackTrace();
+          }
+          localObject = new StringBuilder(anvx.a(2131707294));
+          ((StringBuilder)localObject).append(l);
+          paramArrayOfByte = paramArrayOfByte.iterator();
+          while (paramArrayOfByte.hasNext())
+          {
+            int i = ((Integer)paramArrayOfByte.next()).intValue();
+            if (i == 92) {
+              ((StringBuilder)localObject).append("|音视频");
+            } else if (i == 93) {
+              ((StringBuilder)localObject).append("|双人");
+            } else if (i == 94) {
+              ((StringBuilder)localObject).append("|多人");
+            }
+          }
+          ((StringBuilder)localObject).append("】");
+        }
       }
-      catch (MalformedURLException paramMessage)
-      {
-        break label142;
-      }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SuMsgType0x117 音视频测试环境push" + ((StringBuilder)localObject).toString());
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramMsgType0x210.vProtobuf);
+    return null;
   }
 }
 

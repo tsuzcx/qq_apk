@@ -1,21 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.soload.LoadParam.LoadItem;
+import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
 
 class bdfs
-  implements Animation.AnimationListener
+  implements bdgo
 {
-  bdfs(bdfr parambdfr) {}
+  bdfs(bdfq parambdfq, String paramString, bdge parambdge, LoadParam.LoadItem paramLoadItem) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
   {
-    this.a.a.d.setVisibility(8);
-    this.a.a.a = false;
+    if (!this.jdField_a_of_type_Bdfq.a(paramSoInfo))
+    {
+      bdfq.a(this.jdField_a_of_type_Bdfq, 2);
+      return;
+    }
+    if ((TextUtils.equals(this.jdField_a_of_type_Bdfq.a.ver, this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Bdge.b()))
+    {
+      this.jdField_a_of_type_Bdfq.c = "runcrash";
+      bdfq.a(this.jdField_a_of_type_Bdfq, 8);
+      return;
+    }
+    bdgf.b(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name);
+    bdfq.a(this.jdField_a_of_type_Bdfq, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

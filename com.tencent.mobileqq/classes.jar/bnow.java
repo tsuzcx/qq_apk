@@ -1,96 +1,158 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Canvas;
-import android.os.SystemClock;
-import android.view.View;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.media.MediaPlayer;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
+import android.opengl.GLSurfaceView.Renderer;
+import android.util.Log;
+import android.view.Surface;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import com.tencent.filter.SurfaceTextureFilter;
+import com.tencent.ttpic.openapi.filter.SpaceFilter;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class bnow
-  extends bnph<bnot, bnot>
+  implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer
 {
-  public final String a;
-  public final WeakReference<bnca> a;
-  private boolean a;
+  private static final String jdField_a_of_type_JavaLangString = bnow.class.getSimpleName();
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private final GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
+  private bnou jdField_a_of_type_Bnou = new bnou();
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
+  private SpaceFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter = new SpaceFilter();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private float jdField_b_of_type_Float;
+  private Frame jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
   
-  public bnow(bnca parambnca, String paramString)
+  public bnow(GLSurfaceView paramGLSurfaceView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnca);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
   }
   
-  private Bitmap a(bnot parambnot, Bitmap paramBitmap)
+  private void a(Frame paramFrame)
+  {
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glClearColor(0.92F, 0.93F, 0.96F, 1.0F);
+    GLES20.glClear(16384);
+    GLES20.glEnable(3042);
+    GLES20.glBlendFunc(770, 771);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.RenderProcess(paramFrame.getTextureId(), (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, 0, 0.0D, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame);
+    GLES20.glDisable(3042);
+  }
+  
+  private void b()
+  {
+    Object localObject = new int[1];
+    GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
+    this.jdField_a_of_type_Int = localObject[0];
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    localObject = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.setSurface((Surface)localObject);
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+  }
+  
+  private void c()
+  {
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.setRotationAndFlip(0, 0, 1);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.apply();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.setRotationAndFlip(0, 0, 1);
+    this.jdField_a_of_type_Bnou.a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.clearGLSL();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.clearGLSL();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    c();
+    this.jdField_a_of_type_Bnou.b();
+  }
+  
+  public void a(MediaPlayer paramMediaPlayer)
+  {
+    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
+  }
+  
+  public void a(bnov parambnov)
+  {
+    if (this.jdField_a_of_type_Bnou != null) {
+      this.jdField_a_of_type_Bnou.a(parambnov);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Bnou != null) {
+      this.jdField_a_of_type_Bnou.a(paramBoolean);
+    }
+  }
+  
+  public void onDrawFrame(GL10 paramGL10)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+    {
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_ComTencentFilterBaseFilter.updateMatrix(this.jdField_a_of_type_ArrayOfFloat);
+      this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_a_of_type_Int, (int)(2.0F * this.jdField_a_of_type_Float), (int)this.jdField_b_of_type_Float, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+    }
+    if (GLES20.glIsTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId()))
+    {
+      a(this.jdField_a_of_type_Bnou.a(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float));
+      return;
+    }
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glClearColor(1.0F, 1.0F, 1.0F, 1.0F);
+    GLES20.glClear(16384);
+  }
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
     try
     {
-      parambnot = parambnot.a();
-      xvv.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "filter view = %s", parambnot);
-      if (parambnot == null)
-      {
-        xvv.e("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "filter view has been recycled.");
-        return paramBitmap;
-      }
-      paramBitmap = Bitmap.createBitmap(paramBitmap);
-      float f1 = paramBitmap.getWidth();
-      float f2 = paramBitmap.getHeight();
-      float f3 = parambnot.getWidth();
-      float f4 = parambnot.getHeight();
-      Canvas localCanvas = new Canvas(paramBitmap);
-      localCanvas.scale(f1 / f3, f2 / f4);
-      parambnot.draw(localCanvas);
-      return paramBitmap;
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.requestRender();
+      return;
     }
-    catch (OutOfMemoryError parambnot)
+    finally
     {
-      xvv.c("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "create filterBitmap error : %s", parambnot);
+      paramSurfaceTexture = finally;
+      throw paramSurfaceTexture;
     }
-    return null;
   }
   
-  protected void a(JobContext paramJobContext, bnot parambnot)
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    long l = SystemClock.uptimeMillis();
-    paramJobContext = this.jdField_a_of_type_JavaLangString;
-    if (paramJobContext == null) {
-      paramJobContext = bnpk.a(parambnot.jdField_a_of_type_Int, parambnot.b, ".png");
-    }
-    for (;;)
-    {
-      Object localObject = (bnca)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localObject != null) && (!((bnca)localObject).c()))
-      {
-        localObject = ((bnca)localObject).a();
-        if (localObject != null)
-        {
-          parambnot.jdField_a_of_type_Bnoy.b = ((Bitmap)localObject);
-          parambnot.jdField_a_of_type_Boolean = true;
-          Bitmap localBitmap = a(parambnot, (Bitmap)localObject);
-          if (localBitmap == null) {
-            break label234;
-          }
-          xvv.a("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap success %s", Integer.valueOf(System.identityHashCode(localBitmap)));
-          localObject = localBitmap;
-        }
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          boolean bool = yoy.a((Bitmap)localObject, Bitmap.CompressFormat.PNG, 60, paramJobContext);
-          parambnot.jdField_a_of_type_Boolean = bool;
-          parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = paramJobContext;
-          if (!bool) {
-            xvv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "Save doodle bitmap to " + paramJobContext + " failed! error code = " + bool);
-          }
-        }
-        xvv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "GenerateEditPicDoodleSegment" + parambnot.jdField_a_of_type_Boolean + " cost " + (SystemClock.uptimeMillis() - l));
-        super.notifyResult(parambnot);
-        return;
-        label234:
-        xvv.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap failed");
-      }
-    }
+    Log.d(jdField_a_of_type_JavaLangString, "onSurfaceChanged width = " + paramInt1 + "  height = " + paramInt2);
+    this.jdField_a_of_type_Float = paramInt1;
+    this.jdField_b_of_type_Float = paramInt2;
+    this.jdField_a_of_type_Bnou.a(paramInt1, paramInt2);
+  }
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    b();
+    d();
   }
 }
 

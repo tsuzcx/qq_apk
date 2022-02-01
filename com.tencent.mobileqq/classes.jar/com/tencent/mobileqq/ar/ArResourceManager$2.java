@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar;
 
-import aodc;
-import aodg;
+import apge;
+import apgi;
 import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 
 public class ArResourceManager$2
   implements Runnable
 {
-  public ArResourceManager$2(aodg paramaodg, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ArResourceManager$2(apgi paramapgi, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {

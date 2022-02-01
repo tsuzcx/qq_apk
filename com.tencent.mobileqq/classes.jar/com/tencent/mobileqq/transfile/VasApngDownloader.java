@@ -2,10 +2,10 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgil;
-import bgio;
-import bgoe;
-import bgog;
+import bhrg;
+import bhrj;
+import bhyo;
+import bhyq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -39,8 +39,8 @@ public class VasApngDownloader
       if (((Bundle)localObject2).getBoolean("key_use_gldrawable", false))
       {
         boolean bool = ((Bundle)localObject2).getBoolean("key_use_cache", false);
-        bgio.a().a(null);
-        localObject2 = bgio.a().a(paramFile, bool);
+        bhrj.a().a(null);
+        localObject2 = bhrj.a().a(paramFile, bool);
         if (localObject2 != null) {
           paramURLDrawableHandler = (URLDrawableHandler)localObject2;
         }
@@ -138,9 +138,9 @@ public class VasApngDownloader
         QLog.e("vasapngdownloader", 2, "downloadImage url has no http err, url=" + paramOutputStream + ", path=" + paramURLDrawableHandler);
         return null;
       }
-      paramDownloadParams = new bgoe(paramOutputStream, localFile);
+      paramDownloadParams = new bhyo(paramOutputStream, localFile);
       paramDownloadParams.h = true;
-      i = bgog.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
+      i = bhyq.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
       if (i == 0)
       {
         if (localFile.exists()) {

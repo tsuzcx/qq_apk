@@ -1,27 +1,108 @@
-import com.tencent.avcore.jni.data.NetAddr;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.av.config.ConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class lfu
 {
-  private static lfu a;
-  public int a;
-  public long a;
-  public List<NetAddr> a;
-  public int b;
+  private static lfu jdField_a_of_type_Lfu;
+  int jdField_a_of_type_Int = 0;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lfv(this);
+  lkq jdField_a_of_type_Lkq = null;
   
-  static
+  public lfu(Context paramContext)
   {
-    jdField_a_of_type_Lfu = new lfu();
+    if (QLog.isDevelopLevel()) {
+      QLog.w("AVConfigManager", 1, "构造", new Throwable("打印调用栈"));
+    }
   }
   
-  public static lfu a()
+  public static lfu a(Context paramContext)
   {
-    return jdField_a_of_type_Lfu;
+    if (jdField_a_of_type_Lfu == null) {}
+    try
+    {
+      if (jdField_a_of_type_Lfu == null)
+      {
+        jdField_a_of_type_Lfu = new lfu(paramContext);
+        jdField_a_of_type_Lfu.b(paramContext);
+      }
+      return jdField_a_of_type_Lfu;
+    }
+    finally {}
   }
   
-  public String toString()
+  public static lkq a(Context paramContext)
   {
-    return "mChannelType[" + this.jdField_a_of_type_Int + "], mSessionId[" + this.jdField_a_of_type_Long + "], mTransType[" + this.b + "]";
+    return a(paramContext).b(paramContext);
+  }
+  
+  public static void a(Context paramContext)
+  {
+    try
+    {
+      if (jdField_a_of_type_Lfu != null)
+      {
+        jdField_a_of_type_Lfu.c(paramContext);
+        jdField_a_of_type_Lfu = null;
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  lkq b(Context paramContext)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Lkq == null)
+      {
+        String str = ConfigInfo.getSharpConfigPayloadFromFile(paramContext);
+        this.jdField_a_of_type_Int = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+        this.jdField_a_of_type_Lkq = new lkq(str);
+        QLog.w("AVConfigManager", 1, "getParser, Version[" + this.jdField_a_of_type_Int + "], data[\n" + str + "\n]");
+      }
+      paramContext = this.jdField_a_of_type_Lkq;
+      return paramContext;
+    }
+    finally {}
+  }
+  
+  public void b(Context paramContext)
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE");
+    localIntentFilter.addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD");
+    paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+  }
+  
+  void c(Context paramContext)
+  {
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+    {
+      paramContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    }
+  }
+  
+  public void d(Context paramContext)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Lkq == null) {
+        return;
+      }
+      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+      if ((this.jdField_a_of_type_Int != i) || (this.jdField_a_of_type_Lkq.a()))
+      {
+        QLog.w("AVConfigManager", 1, "reload, Version[" + this.jdField_a_of_type_Int + "->" + i + "]");
+        this.jdField_a_of_type_Lkq = null;
+        this.jdField_a_of_type_Int = 0;
+      }
+      return;
+    }
+    finally {}
   }
 }
 

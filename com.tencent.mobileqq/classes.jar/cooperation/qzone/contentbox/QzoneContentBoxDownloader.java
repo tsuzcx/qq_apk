@@ -2,8 +2,8 @@ package cooperation.qzone.contentbox;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgoe;
-import bgog;
+import bhyo;
+import bhyq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -74,7 +74,7 @@ public class QzoneContentBoxDownloader
         QLog.e("qzonecontentboxdownloader", 2, "downloadImage url has no http err, url=" + paramDownloadParams + ", path=" + str);
         return null;
       }
-      int i = bgog.a(new bgoe(paramDownloadParams, paramOutputStream), BaseApplicationImpl.sApplication.getRuntime());
+      int i = bhyq.a(new bhyo(paramDownloadParams, paramOutputStream), BaseApplicationImpl.sApplication.getRuntime());
       if (i == 0)
       {
         if (!paramOutputStream.exists())

@@ -1,19 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-
-class tag
-  implements OnCompositionLoadedListener
+public abstract interface tag
 {
-  tag(taf paramtaf, Runnable paramRunnable) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
-  {
-    RefreshAnimView.a(this.jdField_a_of_type_Taf.a, paramLottieComposition);
-    if (paramLottieComposition != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
+  public abstract void a();
 }
 
 

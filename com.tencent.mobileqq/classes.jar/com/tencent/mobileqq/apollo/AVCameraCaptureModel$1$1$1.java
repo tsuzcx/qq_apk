@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo;
 
-import alng;
-import alnh;
-import alni;
-import alvx;
-import alym;
+import amlh;
+import amli;
+import amlj;
+import amwn;
+import amzc;
 import android.text.TextUtils;
 import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
 import com.tencent.common.app.AppInterface;
@@ -12,7 +12,7 @@ import com.tencent.common.app.AppInterface;
 public class AVCameraCaptureModel$1$1$1
   extends IApolloRunnableTask
 {
-  public AVCameraCaptureModel$1$1$1(alni paramalni, ApolloSurfaceView paramApolloSurfaceView, AVVideoCtrl.VideoFrame paramVideoFrame) {}
+  public AVCameraCaptureModel$1$1$1(amlj paramamlj, ApolloSurfaceView paramApolloSurfaceView, AVVideoCtrl.VideoFrame paramVideoFrame) {}
   
   public String a()
   {
@@ -21,10 +21,10 @@ public class AVCameraCaptureModel$1$1$1
   
   public void run()
   {
-    String str = alvx.a().getCurrentAccountUin();
-    alym localalym = alvx.a(alng.a(this.jdField_a_of_type_Alni.a.a));
-    if (localalym == null) {}
-    while (TextUtils.isEmpty(localalym.b(str))) {
+    String str = amwn.a().getCurrentAccountUin();
+    amzc localamzc = amwn.a(amlh.a(this.jdField_a_of_type_Amlj.a.a));
+    if (localamzc == null) {}
+    while (TextUtils.isEmpty(localamzc.b(str))) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().nativePreviewCallback(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.data, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.width, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.height, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.rotate, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.videoFormat, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.srcType, "");

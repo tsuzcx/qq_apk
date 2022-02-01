@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bani
-  implements QQPermissionCallback
+class bani
+  implements View.OnClickListener
 {
-  public bani(SignTextEditFragment paramSignTextEditFragment, AppActivity paramAppActivity) {}
+  bani(bang parambang) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignTextEditFragment", 2, "requestPermission user denied");
-    }
-    bfur.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignTextEditFragment", 2, "requestPermission user grant");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignTextEditFragment.c();
+    this.a.a = 3;
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,44 +1,29 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
 class bekl
-  implements aprh
+  implements DialogInterface.OnClickListener
 {
-  bekl(bekk parambekk) {}
+  bekl(bekj parambekj, String paramString, int paramInt1, Bundle paramBundle, int paramInt2, Context paramContext) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (bekk.a(this.a) != null) {
-      bekk.a(this.a).a(bekk.b(this.a), bekk.c(this.a), bekk.a(this.a));
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
+    bekj localbekj = this.jdField_a_of_type_Bekj;
+    String str2 = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Int == 8) {}
+    for (String str1 = "clk_openframe_open";; str1 = "clk_joinbar_open")
     {
-    }
-    for (;;)
-    {
-      if (bekk.a(this.a) != null) {
-        bekk.a(this.a).a(paramInt1, paramInt2);
+      bekj.a(localbekj, str2, str1);
+      paramDialogInterface.dismiss();
+      if (this.jdField_a_of_type_Int != 8) {
+        break;
       }
-      if ((bekk.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1)))
-      {
-        bekk.a(this.a).a(2);
-        if (bekk.a(this.a) >= bekk.a(this.a).a(2)) {
-          bekk.c(this.a, bekk.a(this.a).a(2) - 1);
-        }
-      }
-      if (bekk.b(this.a) != null) {
-        bekk.b(this.a).a(paramInt1, paramInt2);
-      }
+      bekj.a(this.jdField_a_of_type_Bekj, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
       return;
-      bekk.a(this.a, paramInt2);
-      continue;
-      bekk.b(this.a, paramInt2);
-      continue;
-      bekk.c(this.a, paramInt2);
     }
+    bekj.a(this.jdField_a_of_type_Bekj, this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,17 +1,13 @@
 package com.tencent.av;
 
-import com.tencent.av.gaudio.QQGAudioCtrl;
-
 class VideoController$25
   implements Runnable
 {
-  VideoController$25(VideoController paramVideoController, int paramInt1, int paramInt2, int paramInt3) {}
+  VideoController$25(VideoController paramVideoController, long paramLong, String paramString1, int paramInt, String paramString2, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.setAudioNoiseCtrlParam(this.a, this.b, this.c);
-    }
+    this.this$0.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, null, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_Boolean, 0);
   }
 }
 

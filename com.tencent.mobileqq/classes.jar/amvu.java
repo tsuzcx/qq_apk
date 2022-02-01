@@ -1,17 +1,22 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
+import com.tencent.mobileqq.apollo.player.manager.CMSBornPlayer.CMSActionContext.viewListener.2;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function1;
+import org.jetbrains.annotations.Nullable;
 
-class amvu
-  implements BusinessObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/apollo/player/manager/CMSBornPlayer$CMSActionContext$viewListener$2$1", "Lcom/tencent/mobileqq/apollo/OnApolloViewListener;", "onNotifyLongTouch", "", "name", "", "onNotifyStatusChanged", "clickPart", "", "apolloId", "onSurfaceReady", "w", "h", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amvu
+  implements ampy
 {
-  amvu(amvo paramamvo, String paramString) {}
+  public void onNotifyLongTouch(@Nullable String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onNotifyStatusChanged(int paramInt, @Nullable String paramString) {}
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
-    }
+    QLog.w("cmshow_scripted_[CMSPlayer]CMSBornPlayer", 1, "onSurfaceReady, " + this.a.this$0.a().d() + " width:" + paramInt1 + ", height:" + paramInt2);
+    this.a.this$0.a().invoke(this.a.this$0);
   }
 }
 

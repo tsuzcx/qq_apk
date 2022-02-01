@@ -1,102 +1,33 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.Window;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-class afix
-  extends anbn
+public class afix
+  implements DialogInterface.OnDismissListener
 {
-  afix(afiw paramafiw) {}
+  public afix(TroopTransferActivity paramTroopTransferActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public void a(List<String> paramList)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
+    try
     {
-      paramList = paramList.iterator();
-      do
-      {
-        if (!paramList.hasNext()) {
-          break;
-        }
-      } while (!((String)paramList.next()).equals(this.a.sessionInfo.curFriendUin));
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.tag, 2, String.format("be deleted, current uin: %s", new Object[] { this.a.sessionInfo.curFriendUin }));
-        }
-        this.a.finish();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+      paramDialogInterface = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getSystemService("input_method");
+      if (paramDialogInterface != null) {
+        paramDialogInterface.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getWindow().peekDecorView().getWindowToken(), 0);
       }
       return;
     }
-  }
-  
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
-  {
-    if (this.a.mActivity.isFinishing()) {}
-    label338:
-    label339:
-    for (;;)
+    catch (Exception paramDialogInterface)
     {
-      return;
-      if (this.a.mProgressDialog != null) {
-        this.a.mProgressDialog.dismiss();
-      }
-      if (paramBoolean)
-      {
-        paramPBRepeatMessageField = paramPBRepeatMessageField.get().iterator();
-        paramBoolean = false;
-        if (paramPBRepeatMessageField.hasNext())
-        {
-          if (!String.valueOf(((oidb_0x5d4.DelResult)paramPBRepeatMessageField.next()).uin.get()).equalsIgnoreCase(this.a.sessionInfo.curFriendUin)) {
-            break label338;
-          }
-          paramBoolean = true;
-        }
-      }
-      for (;;)
-      {
-        break;
-        if (!paramBoolean) {
-          break label339;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.tag, 2, "StrangerObserver : onDelete , result=" + paramBoolean);
-        }
-        paramPBRepeatMessageField = new ArrayList();
-        paramPBRepeatMessageField.add(this.a.sessionInfo.curFriendUin);
-        acvv.a(this.a.app, BaseApplication.getContext(), paramPBRepeatMessageField);
-        paramPBRepeatMessageField = this.a.app.getProxyManager().a();
-        if (paramPBRepeatMessageField != null)
-        {
-          RecentUser localRecentUser = (RecentUser)paramPBRepeatMessageField.findRecentUserByUin(this.a.sessionInfo.curFriendUin, this.a.sessionInfo.curType);
-          if (QLog.isDevelopLevel()) {
-            QLog.d(this.a.tag, 4, "StrangerObserver, delete Recent user");
-          }
-          paramPBRepeatMessageField.delRecentUser(localRecentUser);
-        }
-        QQToast.a(this.a.mActivity, 2, this.a.mActivity.getResources().getString(2131718526), 0).a();
-        if (this.a.isFromManageStranger) {
-          this.a.mActivity.setResult(-1);
-        }
-        this.a.finish();
-        return;
-        QQToast.a(this.a.mActivity, this.a.mActivity.getResources().getString(2131718524), 0).a();
-        return;
-      }
+      paramDialogInterface.printStackTrace();
     }
   }
 }

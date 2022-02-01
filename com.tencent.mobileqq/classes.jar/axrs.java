@@ -1,63 +1,31 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
-class axrs
-  implements anzq
+public class axrs
+  implements bila<oidb_0x8e4.RspBody>
 {
-  axrs(axrr paramaxrr, String paramString, AppInterface paramAppInterface) {}
+  public axrs(GameRoomInviteActivity paramGameRoomInviteActivity, String paramString1, String paramString2) {}
   
-  public void a(PromotionConfigInfo paramPromotionConfigInfo)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    boolean bool = false;
-    QLog.w(axrr.jdField_a_of_type_JavaLangString, 1, "getRes, promotionConfigInfo[" + paramPromotionConfigInfo + "], activityID[" + this.jdField_a_of_type_JavaLangString + "], isDestroyed[" + axrr.a(this.jdField_a_of_type_Axrr) + "]");
-    if (axrr.a(this.jdField_a_of_type_Axrr)) {
-      return;
-    }
-    Object localObject = null;
-    anzl localanzl;
-    String str;
-    if (paramPromotionConfigInfo != null)
+    GameRoomInviteActivity localGameRoomInviteActivity;
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        break label324;
+      localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      if ((paramRspBody.uint64_leader_uin.has()) && (paramRspBody.uint64_leader_uin.get() != this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {
+        break label94;
       }
-      localanzl = paramPromotionConfigInfo.getItem(this.jdField_a_of_type_JavaLangString);
-      str = axrr.a(this.jdField_a_of_type_Axrr).getCurrentAccountUin();
-      int i = aomj.a(str + "AR_PROMOTION_ENTRY_SHOWONCE");
-      int j = bgax.b(str);
-      if ((j != aomj.a(str + "AR_PROMOTION_ENTRY_SERVER_VERSION")) || (j == 0))
-      {
-        aomj.a(str + "AR_PROMOTION_ENTRY_SERVER_VERSION", j);
-        i = 0;
-      }
-      if ((!paramPromotionConfigInfo.showOnce) || (i == 0)) {
-        aomj.a(str + "AR_PROMOTION_ENTRY_SHOWONCE", 0);
-      }
-      if (!paramPromotionConfigInfo.showOnce) {
-        break label333;
-      }
-      if (i != 0) {}
     }
-    label324:
-    label333:
-    for (bool = true;; bool = true)
+    label94:
+    for (boolean bool = true;; bool = false)
     {
-      axrr.a(this.jdField_a_of_type_Axrr).a(bool, paramPromotionConfigInfo.showInTopView);
-      localObject = localanzl;
-      if (bool)
-      {
-        localObject = localanzl;
-        if (paramPromotionConfigInfo.showOnce)
-        {
-          aomj.a(str + "AR_PROMOTION_ENTRY_SHOWONCE", 1);
-          localObject = localanzl;
-        }
-      }
-      axrr.a(this.jdField_a_of_type_Axrr, this.jdField_a_of_type_ComTencentCommonAppAppInterface, localObject);
+      localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), this.jdField_a_of_type_JavaLangString, this.b);
       return;
-      localanzl = paramPromotionConfigInfo.getActivityItem();
-      break;
     }
   }
 }

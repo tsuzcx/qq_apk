@@ -1,15 +1,19 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
 class svd
-  implements svf
+  extends suv
 {
-  svd(sup paramsup) {}
+  svd(suw paramsuw) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public int a()
   {
-    svr.b(paramContext, paramProteusItemData.b, paramProteusItemData.a);
+    return 3;
+  }
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    suw.a(this.a).c(paramString + "&sourcefrom=6");
   }
 }
 

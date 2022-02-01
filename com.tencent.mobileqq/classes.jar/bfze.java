@@ -1,44 +1,54 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-class bfze
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class bfze
+  extends bfyf
 {
-  bfze(bfzd parambfzd) {}
-  
-  public void onGlobalLayout()
+  public bfze(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (!bfzd.a(this.a)) {}
-    for (;;)
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 22;
+  }
+  
+  @Nullable
+  public bfyg a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByShmsgseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramLong1);
+    if ((localObject != null) && (a((MessageRecord)localObject, paramLong2, paramLong3)))
     {
+      paramList = this.jdField_a_of_type_AndroidContentContext.getString(2131697436);
+      paramObject = bffr.a(paramInt1, ((MessageRecord)localObject).shmsgseq, paramInt2);
+      localObject = ((MessageRecord)localObject).senderuin;
+      MessageForReplyText.reportReplyMsg(null, "AIOchat", "Appear_topmsgcue_reply", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, null);
+      return new bfyg(true, paramList, paramObject, (String)localObject);
+    }
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject, String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 3000) {}
+    for (paramObject = "Grp_Dis_replyMsg";; paramObject = "Grp_AIO")
+    {
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", paramObject, "", "notice_center_new", "exp_reply", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
       return;
-      Object localObject = new Rect();
-      bfzd.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
-      int j = bfzd.a(this.a) - ((Rect)localObject).height();
-      bfzd.a(this.a, ((Rect)localObject).height());
-      if (j > bfzd.b(this.a) / 3) {}
-      for (int i = 1; i != 0; i = 0)
-      {
-        bfzd.a(this.a, false);
-        if (QLog.isColorLevel()) {
-          QLog.d("SoftKeyboardHeight", 2, new Object[] { "onGlobalLayout, keyboard height:", Integer.valueOf(j) });
-        }
-        localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_soft_keyboard", 0);
-        if (((SharedPreferences)localObject).getInt("key_height", 0) != j) {
-          ((SharedPreferences)localObject).edit().putInt("key_height", j).commit();
-        }
-        if (bfzd.a(this.a) != null) {
-          bfzd.a(this.a).onShowed(j, false);
-        }
-        this.a.a();
-        return;
-      }
+    }
+  }
+  
+  public void b(int paramInt, Object paramObject, String paramString)
+  {
+    MessageForReplyText.reportReplyMsg(null, "AIOchat", "Clk_topmsgcue_reply", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, null);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 3000) {}
+    for (paramObject = "Grp_Dis_replyMsg";; paramObject = "Grp_AIO")
+    {
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", paramObject, "", "notice_center_new", "clk_reply", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+      return;
     }
   }
 }

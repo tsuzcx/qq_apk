@@ -1,96 +1,88 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ZimuItem;
-import com.tencent.avcore.jni.data.NetAddr;
-import com.tencent.common.app.AppInterface;
+import com.tencent.av.HardWareCodecSSO.ConfigRsp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.File;
 
 public class lfw
-  extends lfv
 {
-  public lfw(AppInterface paramAppInterface)
-  {
-    super(paramAppInterface);
-  }
+  private static lfw jdField_a_of_type_Lfw;
+  private lld jdField_a_of_type_Lld;
   
-  protected int a()
+  private lfw()
   {
-    Object localObject = (VideoAppInterface)this.mApp;
-    if (((VideoAppInterface)localObject).a(0))
-    {
-      localObject = (lir)((VideoAppInterface)localObject).a(0);
-      if (localObject != null) {
-        return ((lir)localObject).b();
-      }
-    }
-    return 4;
-  }
-  
-  protected void a(long paramLong1, boolean paramBoolean, List<NetAddr> paramList, long paramLong2)
-  {
-    VideoController localVideoController = ((VideoAppInterface)this.mApp).a();
-    lez locallez = localVideoController.a();
-    StringBuilder localStringBuilder = new StringBuilder().append("requestRecordingAudio, isStart[").append(paramBoolean).append("], sessionid[").append(paramLong2).append("], seq[").append(paramLong1).append("], iplist[");
-    if (paramList == null)
-    {
-      localObject = "null";
-      localStringBuilder = localStringBuilder.append(localObject).append("], peerUin[");
-      if (locallez != null) {
-        break label159;
-      }
-    }
-    label159:
-    for (Object localObject = "null";; localObject = locallez.d)
-    {
-      QLog.w("AudioTransClientInterfaceHandlerExtend.runhw", 1, (String)localObject + "]");
-      if ((localVideoController != null) && (locallez != null)) {
-        localVideoController.a(lcs.a(locallez.d), paramBoolean, paramList, paramLong2);
-      }
-      return;
-      localObject = Integer.valueOf(paramList.size());
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaCodecChipConfigManager", 2, "MediaCodecChipConfigManager constructor ");
     }
   }
   
-  protected void a(Integer paramInteger, Object paramObject)
+  public static lfw a()
   {
-    lba.f("AudioTransClientInterfaceHandlerExtend.runhw", "notifyEvent :" + paramInteger + "|" + paramObject);
-    ((VideoAppInterface)this.mApp).a(new Object[] { paramInteger, paramObject });
-  }
-  
-  protected void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    a(Integer.valueOf(6008), new lgc(paramString1, paramString2, paramString3, paramInt));
-  }
-  
-  protected boolean a()
-  {
-    boolean bool2 = false;
-    Object localObject = (VideoAppInterface)this.mApp;
-    boolean bool1 = bool2;
-    if (((VideoAppInterface)localObject).a(0))
+    if (jdField_a_of_type_Lfw == null) {}
+    try
     {
-      localObject = (lir)((VideoAppInterface)localObject).a(0);
-      bool1 = bool2;
-      if (localObject != null)
+      if (jdField_a_of_type_Lfw == null)
       {
-        localObject = (ZimuItem)((lir)localObject).a();
-        bool1 = bool2;
-        if (localObject != null)
+        jdField_a_of_type_Lfw = new lfw();
+        jdField_a_of_type_Lfw.a();
+      }
+      return jdField_a_of_type_Lfw;
+    }
+    finally {}
+  }
+  
+  private void a() {}
+  
+  public lld a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaCodecChipConfigManager", 2, "getMediaCodecChipConfigInfo");
+    }
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_Lld == null) {
+          this.jdField_a_of_type_Lld = lld.a(llf.a(BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath(), "av_mediacodec_file_config"));
+        }
+        Object localObject1;
+        if (QLog.isColorLevel())
         {
-          localObject = ((ZimuItem)localObject).getId();
-          if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equalsIgnoreCase("film"))) {
-            break label74;
+          StringBuilder localStringBuilder = new StringBuilder().append("getMediaCodecChipConfigInfo content:=");
+          if (this.jdField_a_of_type_Lld != null)
+          {
+            localObject1 = this.jdField_a_of_type_Lld.toString();
+            QLog.d("MediaCodecChipConfigManager", 2, (String)localObject1);
           }
         }
+        else
+        {
+          localObject1 = this.jdField_a_of_type_Lld;
+          return localObject1;
+        }
       }
+      finally {}
+      Object localObject3 = null;
     }
-    label74:
-    for (bool1 = true;; bool1 = false) {
-      return bool1;
+  }
+  
+  public void a(HardWareCodecSSO.ConfigRsp paramConfigRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaCodecChipConfigManager", 2, "saveMediaCodecChipConfigContent");
     }
+    paramConfigRsp = lld.a(paramConfigRsp);
+    try
+    {
+      String str = paramConfigRsp.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("MediaCodecChipConfigManager", 2, "saveMediaCodecChipConfigContent jsonContent:=" + str);
+      }
+      llf.a(str, BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath(), "av_mediacodec_file_config");
+      this.jdField_a_of_type_Lld = paramConfigRsp;
+      return;
+    }
+    finally {}
   }
 }
 

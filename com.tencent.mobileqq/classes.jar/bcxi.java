@@ -1,118 +1,295 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.ttpicmodule.module_human_segment.HumanSegmentInitializer;
+import com.tencent.ttpic.openapi.ttpicmodule.module_human_segment.PTHumanSegmenter;
+import java.io.File;
 
-public abstract class bcxi
-  extends bcxn
+public class bcxi
 {
-  public static bcyp a;
-  private static int[] jdField_a_of_type_ArrayOfInt = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298791), BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298792) };
-  public static bcyp b;
-  public static bcyp c;
-  protected int a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bcxj(this);
-  private bcxm jdField_a_of_type_Bcxm;
-  protected bjub a;
+  private static String a = "Xiaomi;Redmi 4X;23|LGE;Nexus 5X;27|HUAWEI;CAM-UL00;23|Meizu;M2 E;23|vivo;vivo X9s Plus L;25";
   
-  static
+  public static String a()
   {
-    jdField_a_of_type_Bcyp = new bcyp(0, 2131364658, 2131690776, 2130839548);
-    b = new bcyp(0, 2131364657, 2131690775, 2130839549);
-    c = new bcyp(0, 2131364659, 2131690777, 2130839550);
+    String str = BaseApplicationImpl.getApplication().getSharedPreferences("portrait_short_video_mgr_sp", 4).getString("portrait_sv_md5_version_soname_key", "Portrait000_0");
+    boolean bool = bcwn.a(str, 9);
+    VideoEnvironment.LogDownLoad("ShortVideoPortraitResourceManager", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
+    if (bool) {
+      return str;
+    }
+    return "Portrait000_0";
   }
   
-  public bcxi(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
+  public static void a() {}
+  
+  static boolean a()
   {
-    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
-    this.jdField_a_of_type_Int = 0;
+    return PTHumanSegmenter.HUMAN_SEGMENT.isResourceReady();
   }
   
-  private bjub a()
+  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
-    if (this.jdField_a_of_type_Bjub != null) {
-      return this.jdField_a_of_type_Bjub;
-    }
-    ArrayList localArrayList = new ArrayList(a());
-    if (localArrayList.size() > 3) {
-      localArrayList.add(0, jdField_a_of_type_Bcyp);
-    }
-    int[] arrayOfInt1 = new int[localArrayList.size()];
-    int[] arrayOfInt2 = new int[localArrayList.size()];
-    int[] arrayOfInt3 = new int[localArrayList.size()];
-    int[] arrayOfInt4 = new int[localArrayList.size()];
+    return bdee.e();
+  }
+  
+  /* Error */
+  static boolean a(com.tencent.mobileqq.app.QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore 5
+    //   3: iconst_0
+    //   4: istore 4
+    //   6: ldc 2
+    //   8: monitorenter
+    //   9: invokestatic 92	bcxi:b	()Ljava/lang/String;
+    //   12: astore_0
+    //   13: new 45	java/lang/StringBuilder
+    //   16: dup
+    //   17: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   20: aload_0
+    //   21: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: aload_1
+    //   25: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: getstatic 97	java/io/File:separator	Ljava/lang/String;
+    //   31: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   37: astore_0
+    //   38: new 94	java/io/File
+    //   41: dup
+    //   42: aload_0
+    //   43: invokespecial 100	java/io/File:<init>	(Ljava/lang/String;)V
+    //   46: astore 7
+    //   48: aload 7
+    //   50: invokevirtual 103	java/io/File:exists	()Z
+    //   53: ifeq +65 -> 118
+    //   56: invokestatic 105	bcxi:a	()Ljava/lang/String;
+    //   59: aload_1
+    //   60: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   63: ifeq +26 -> 89
+    //   66: aload_0
+    //   67: ldc 113
+    //   69: invokestatic 116	bcwn:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   72: ifeq +17 -> 89
+    //   75: ldc 43
+    //   77: ldc 118
+    //   79: aconst_null
+    //   80: invokestatic 68	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   83: ldc 2
+    //   85: monitorexit
+    //   86: iload 4
+    //   88: ireturn
+    //   89: aload_0
+    //   90: invokestatic 123	com/tencent/mobileqq/utils/FileUtils:deleteDirectory	(Ljava/lang/String;)V
+    //   93: ldc 43
+    //   95: new 45	java/lang/StringBuilder
+    //   98: dup
+    //   99: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   102: ldc 125
+    //   104: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: aload_0
+    //   108: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   111: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   114: aconst_null
+    //   115: invokestatic 68	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   118: aload 7
+    //   120: invokevirtual 128	java/io/File:mkdirs	()Z
+    //   123: istore 4
+    //   125: ldc 43
+    //   127: new 45	java/lang/StringBuilder
+    //   130: dup
+    //   131: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   134: ldc 130
+    //   136: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: iload 4
+    //   141: invokevirtual 57	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   144: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   147: aconst_null
+    //   148: invokestatic 68	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   151: aload_2
+    //   152: aload_0
+    //   153: iconst_0
+    //   154: invokestatic 134	com/tencent/mobileqq/utils/FileUtils:uncompressZip	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   157: aload_0
+    //   158: ldc 113
+    //   160: invokestatic 116	bcwn:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   163: istore 4
+    //   165: ldc 43
+    //   167: new 45	java/lang/StringBuilder
+    //   170: dup
+    //   171: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   174: ldc 136
+    //   176: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: iload 4
+    //   181: invokevirtual 57	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   184: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   187: aconst_null
+    //   188: invokestatic 68	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   191: iload 4
+    //   193: ifeq +155 -> 348
+    //   196: aload_1
+    //   197: invokestatic 139	bcxi:a	(Ljava/lang/String;)Z
+    //   200: istore 6
+    //   202: ldc 43
+    //   204: new 45	java/lang/StringBuilder
+    //   207: dup
+    //   208: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   211: ldc 141
+    //   213: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: iload 6
+    //   218: invokevirtual 57	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   221: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   224: aconst_null
+    //   225: invokestatic 68	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   228: iload 5
+    //   230: istore 4
+    //   232: iload 6
+    //   234: ifne +97 -> 331
+    //   237: aload_1
+    //   238: invokestatic 139	bcxi:a	(Ljava/lang/String;)Z
+    //   241: istore 6
+    //   243: ldc 43
+    //   245: new 45	java/lang/StringBuilder
+    //   248: dup
+    //   249: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   252: ldc 143
+    //   254: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   257: iload 6
+    //   259: invokevirtual 57	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   262: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   265: aconst_null
+    //   266: invokestatic 68	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   269: iload 5
+    //   271: istore 4
+    //   273: iload 6
+    //   275: ifne +56 -> 331
+    //   278: ldc 43
+    //   280: ldc 145
+    //   282: aconst_null
+    //   283: invokestatic 68	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   286: ldc 30
+    //   288: invokestatic 139	bcxi:a	(Ljava/lang/String;)Z
+    //   291: istore 4
+    //   293: ldc 43
+    //   295: new 45	java/lang/StringBuilder
+    //   298: dup
+    //   299: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   302: ldc 147
+    //   304: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   307: iload 4
+    //   309: invokevirtual 57	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   312: ldc 149
+    //   314: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   317: aload_1
+    //   318: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   321: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   324: aconst_null
+    //   325: invokestatic 68	com/tencent/mobileqq/shortvideo/VideoEnvironment:LogDownLoad	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   328: iconst_1
+    //   329: istore 4
+    //   331: invokestatic 151	bcxi:a	()V
+    //   334: goto -251 -> 83
+    //   337: astore_0
+    //   338: aload_0
+    //   339: invokevirtual 154	java/lang/Exception:printStackTrace	()V
+    //   342: iconst_1
+    //   343: istore 4
+    //   345: goto -262 -> 83
+    //   348: iconst_1
+    //   349: istore 4
+    //   351: goto -268 -> 83
+    //   354: astore_0
+    //   355: ldc 2
+    //   357: monitorexit
+    //   358: aload_0
+    //   359: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	360	0	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
+    //   0	360	1	paramString1	String
+    //   0	360	2	paramString2	String
+    //   0	360	3	paramInt	int
+    //   4	346	4	bool1	boolean
+    //   1	269	5	bool2	boolean
+    //   200	74	6	bool3	boolean
+    //   46	73	7	localFile	File
+    // Exception table:
+    //   from	to	target	type
+    //   151	191	337	java/lang/Exception
+    //   196	228	337	java/lang/Exception
+    //   237	269	337	java/lang/Exception
+    //   278	328	337	java/lang/Exception
+    //   331	334	337	java/lang/Exception
+    //   9	83	354	finally
+    //   89	118	354	finally
+    //   118	151	354	finally
+    //   151	191	354	finally
+    //   196	228	354	finally
+    //   237	269	354	finally
+    //   278	328	354	finally
+    //   331	334	354	finally
+    //   338	342	354	finally
+  }
+  
+  private static boolean a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("portrait_short_video_mgr_sp", 4).edit();
+    localEditor.putString("portrait_sv_md5_version_soname_key", paramString);
+    boolean bool = localEditor.commit();
+    VideoEnvironment.LogDownLoad("ShortVideoPortraitResourceManager", "storeNewPendantUnzipPath commitValue=" + bool + ",pathName=" + paramString, null);
+    return bool;
+  }
+  
+  private static boolean a(String paramString1, String paramString2)
+  {
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if (paramString2 == null) {}
+    do
+    {
+      return bool2;
+      paramString2 = paramString2.split("\\|");
+    } while (paramString2 == null);
+    int j = paramString2.length;
     int i = 0;
-    while (i < localArrayList.size())
-    {
-      bcyp localbcyp = (bcyp)localArrayList.get(i);
-      arrayOfInt1[i] = localbcyp.b();
-      arrayOfInt2[i] = localbcyp.c();
-      arrayOfInt3[i] = localbcyp.d();
-      arrayOfInt4[i] = localbcyp.a();
-      i += 1;
-    }
-    this.jdField_a_of_type_Bjub = new bcxk(this, localArrayList.size(), 2, jdField_a_of_type_ArrayOfInt, -1, arrayOfInt1, arrayOfInt2, arrayOfInt3, localArrayList, arrayOfInt4);
-    return this.jdField_a_of_type_Bjub;
-  }
-  
-  private void a(bcyo parambcyo)
-  {
-    bjnw localbjnw = (bjnw)bjon.a(this.jdField_a_of_type_AndroidContentContext, null);
-    List localList = a(parambcyo);
-    localList = localList.subList(0, localList.size() - 2);
-    Iterator localIterator = localList.iterator();
-    while (localIterator.hasNext())
-    {
-      bcyp localbcyp = (bcyp)localIterator.next();
-      localbjnw.a(this.jdField_a_of_type_AndroidContentContext.getResources().getString(localbcyp.c()), 1);
-    }
-    localbjnw.c(2131690620);
-    localbjnw.a(new bcxl(this, localList, parambcyo, localbjnw));
-    localbjnw.show();
-  }
-  
-  public final View a(int paramInt1, bcyo parambcyo, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
-  {
-    bjub localbjub = a();
-    if (paramView == null)
-    {
-      paramView = new bjtz();
-      paramViewGroup = b(paramInt1, parambcyo, paramView.g, paramViewGroup, paramBoolean1, paramBoolean2, paramOnClickListener, paramOnLongClickListener, paramBoolean3, paramInt2);
-      paramOnClickListener = localbjub.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup, paramView, -1);
-      paramOnClickListener.setTag(paramView);
-      paramViewGroup = paramView;
-      paramView = paramOnClickListener;
-    }
     for (;;)
     {
-      localbjub.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt1, parambcyo, paramViewGroup, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramView.setEnabled(false);
-      return paramView;
-      bjtz localbjtz = (bjtz)paramView.getTag();
-      b(paramInt1, parambcyo, localbjtz.g, paramViewGroup, paramBoolean1, paramBoolean2, paramOnClickListener, paramOnLongClickListener, paramBoolean3, paramInt2);
-      paramViewGroup = localbjtz;
+      boolean bool1 = bool3;
+      if (i < j)
+      {
+        if (paramString2[i].equalsIgnoreCase(paramString1)) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        bool2 = bool1;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("ShortVideoPortraitResourceManager", 2, "in black list:" + bool1 + ", buildType:" + paramString1);
+        return bool1;
+      }
+      i += 1;
     }
   }
   
-  public abstract List<bcyp> a();
-  
-  public abstract List<bcyp> a(bcyo parambcyo);
-  
-  public void a(bcxm parambcxm)
+  public static String b()
   {
-    this.jdField_a_of_type_Bcxm = parambcxm;
+    String str = bdee.a();
+    return str + "portrait_res_cache" + File.separator;
   }
   
-  public abstract View b(int paramInt1, bcyo parambcyo, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2);
+  public static boolean b()
+  {
+    return a(Build.MANUFACTURER + ";" + Build.MODEL + ";" + Build.VERSION.SDK_INT, a);
+  }
 }
 
 

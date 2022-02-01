@@ -1,60 +1,33 @@
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.avgame.gameroom.video.AVGameNetWorkQualityManager;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RspBody;
-import tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotRes;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-class nml
-  implements BusinessObserver
+public class nml
+  implements aojw
 {
-  nml(nmj paramnmj) {}
+  public nml(AVGameNetWorkQualityManager paramAVGameNetWorkQualityManager, Context paramContext, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (paramBoolean) {
-      try
-      {
-        Object localObject = paramBundle.getByteArray("data");
-        paramBundle = new oidb_sso.OIDBSSOPkg();
-        paramBundle.mergeFrom((byte[])localObject);
-        if ((paramBundle != null) && (paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()))
-        {
-          if (paramBundle.bytes_bodybuffer.get() == null) {
-            return;
-          }
-          localObject = new oidb_0x791.RspBody();
-          ((oidb_0x791.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
-          localObject = (oidb_0x791.SetRedDotRes)((oidb_0x791.RspBody)localObject).msg_set_reddot_res.get();
-          if (localObject != null)
-          {
-            paramBundle = "";
-            localObject = ((oidb_0x791.SetRedDotRes)localObject).rpt_uint64_failed_uin.get().iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              long l = ((Long)((Iterator)localObject).next()).longValue();
-              paramBundle = paramBundle + String.valueOf(l) + ",";
-            }
-            if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
-            {
-              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "reportRedTouchHasClick failed result is:" + paramBundle);
-              return;
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
+    QLog.d("AVGameNetWorkQualityManager", 1, "getShareLinkCallback isSuccess: " + paramBoolean + " shareUrl: " + paramString);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      StringBuilder localStringBuilder = new StringBuilder("https://act.qzone.qq.com/vip/meteor/blockly/p/4861x6970f?env=uat");
+      Intent localIntent = new Intent(localActivity, QQTranslucentBrowserActivity.class);
+      localIntent.putExtra("isTransparentTitle", true);
+      localIntent.putExtra("hide_more_button", true);
+      localIntent.putExtra("avgame_share_link", paramString);
+      localIntent.putExtra("avgame_share_name", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("url", localStringBuilder.toString());
+      localIntent.putExtra("big_brother_source_key", "biz_src_jc_av_game");
+      localActivity.startActivity(localIntent);
     }
   }
 }

@@ -24,6 +24,7 @@ public class ARManager
 {
   private static final boolean ENABLE_TOUCH = false;
   private ArFrameInfo arFrameInfo;
+  private float[] arShaderPlanOffset;
   private int deviceOrientation = 0;
   private FilamentJNI filamentJNI;
   private List<GLBItemJava> glbList;
@@ -35,9 +36,10 @@ public class ARManager
   private float[] midPoint = { 0.0F, 0.0F, 0.0F };
   private boolean touched;
   
-  public ARManager(List<GLBItemJava> paramList, boolean paramBoolean)
+  public ARManager(List<GLBItemJava> paramList, boolean paramBoolean, float[] paramArrayOfFloat)
   {
     this.isAR3DMaterial = paramBoolean;
+    this.arShaderPlanOffset = paramArrayOfFloat;
     this.glbList = paramList;
   }
   
@@ -96,14 +98,22 @@ public class ARManager
     if (this.isAR3DMaterial)
     {
       this.arFrameInfo = ((ArFrameInfo)paramAIAttr.getRealtimeData(AEDetectorType.AR_DETECT.value));
-      if (this.arFrameInfo != null)
+      if ((this.arFrameInfo != null) && (!this.arFrameInfo.planeList.isEmpty()))
       {
         paramAIAttr = this.filamentJNI.getCamera();
         paramAIAttr.setModelMatrix(this.arFrameInfo.cameraModelMatrix);
         float[] arrayOfFloat = new float[16];
         Matrix.multiplyMM(arrayOfFloat, this.arFrameInfo.projectionMatrix, new float[] { 0.9998477F, 0.01745241F, 0.0F, 0.0F, -0.01745241F, 0.9998477F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F });
         paramAIAttr.setCustomProjection(this.arFrameInfo.float2double(arrayOfFloat), paramAIAttr.getNear(), paramAIAttr.getCullingFar());
-        this.filamentJNI.showArShadowPlane(((ArFrameInfo.Plane)this.arFrameInfo.planeList.get(0)).arbitraryPoint, ((ArFrameInfo.Plane)this.arFrameInfo.planeList.get(0)).normal);
+        paramAIAttr = this.filamentJNI;
+        float f1 = ((ArFrameInfo.Plane)this.arFrameInfo.planeList.get(0)).arbitraryPoint[0];
+        float f2 = this.arShaderPlanOffset[0];
+        float f3 = ((ArFrameInfo.Plane)this.arFrameInfo.planeList.get(0)).arbitraryPoint[1];
+        float f4 = this.arShaderPlanOffset[1];
+        float f5 = ((ArFrameInfo.Plane)this.arFrameInfo.planeList.get(0)).arbitraryPoint[2];
+        float f6 = this.arShaderPlanOffset[2];
+        arrayOfFloat = ((ArFrameInfo.Plane)this.arFrameInfo.planeList.get(0)).normal;
+        paramAIAttr.showArShadowPlane(new float[] { f1 + f2, f3 + f4, f5 + f6 }, arrayOfFloat);
       }
     }
   }
@@ -132,8 +142,21 @@ public class ARManager
       this.isIninted = true;
       if (this.filamentJNI != null)
       {
-        this.filamentJNI.setHitTestAfterUnprojection(this.midPoint);
-        this.filamentJNI.setFilamentAssetScale(((GLBItemJava)this.glbList.get(0)).scale[0], ((GLBItemJava)this.glbList.get(0)).scaleRange);
+        int i = 0;
+        if (i < this.glbList.size())
+        {
+          GLBItemJava localGLBItemJava = (GLBItemJava)this.glbList.get(i);
+          if (localGLBItemJava.arTranslateType == 1) {
+            this.filamentJNI.setHitTestAfterUnprojection(i, new float[] { this.midPoint[0] + localGLBItemJava.translate[0], this.midPoint[1] + localGLBItemJava.translate[1], this.midPoint[2] + localGLBItemJava.translate[2] });
+          }
+          for (;;)
+          {
+            this.filamentJNI.setFilamentAssetScale(i, localGLBItemJava.scale[0], localGLBItemJava.scaleRange);
+            i += 1;
+            break;
+            this.filamentJNI.setHitTestAfterUnprojection(i, this.midPoint);
+          }
+        }
       }
     }
   }
@@ -151,13 +174,21 @@ public class ARManager
   public void setArModelScale(float paramFloat)
   {
     if (!this.isAR3DMaterial) {}
-    do
+    for (;;)
     {
       return;
       paramFloat = (paramFloat - 1.0F) / 2.0F;
-    } while (this.filamentJNI == null);
-    float[] arrayOfFloat = ((GLBItemJava)this.glbList.get(0)).scaleRange;
-    this.filamentJNI.setFilamentAssetScale(paramFloat + 1.0F, arrayOfFloat);
+      if (this.filamentJNI != null)
+      {
+        int i = 0;
+        while (i < this.glbList.size())
+        {
+          float[] arrayOfFloat = ((GLBItemJava)this.glbList.get(i)).scaleRange;
+          this.filamentJNI.setFilamentAssetScale(i, 1.0F + paramFloat, arrayOfFloat);
+          i += 1;
+        }
+      }
+    }
   }
   
   public void setDownEventUnProjectionPoint(ArrayList<float[]> paramArrayList)
@@ -191,14 +222,29 @@ public class ARManager
   public void setUnProjectionHitPoint(float[] paramArrayOfFloat, boolean paramBoolean)
   {
     if (!this.isAR3DMaterial) {}
-    do
+    for (;;)
     {
       return;
-      if ((!paramBoolean) && (this.filamentJNI != null)) {
-        this.filamentJNI.setHitTestAfterUnprojection(paramArrayOfFloat);
+      if (this.filamentJNI != null)
+      {
+        int i = 0;
+        while (i < this.glbList.size())
+        {
+          GLBItemJava localGLBItemJava = (GLBItemJava)this.glbList.get(i);
+          if (localGLBItemJava.arTranslateType == 1)
+          {
+            int j = 0;
+            while (j < 3)
+            {
+              paramArrayOfFloat[j] += localGLBItemJava.translate[j];
+              j += 1;
+            }
+          }
+          this.filamentJNI.setHitTestAfterUnprojection(i, paramArrayOfFloat);
+          i += 1;
+        }
       }
-    } while (this.filamentJNI == null);
-    this.filamentJNI.setHitTestAfterUnprojection(paramArrayOfFloat);
+    }
   }
 }
 

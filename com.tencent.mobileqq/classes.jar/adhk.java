@@ -1,25 +1,21 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class adhk
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adhk(ForwardRecentActivity paramForwardRecentActivity) {}
+  public adhk(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.isFinishing()) {
-      ForwardRecentActivity.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhk
  * JD-Core Version:    0.7.0.1
  */

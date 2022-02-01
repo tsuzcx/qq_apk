@@ -1,11 +1,11 @@
 package com.tencent.mfsdk.impls.memory;
 
-import achq;
-import achr;
-import acin;
-import aciq;
-import acir;
-import acit;
+import acxy;
+import acxz;
+import acyw;
+import acyz;
+import acza;
+import aczc;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
@@ -23,7 +23,7 @@ import mqq.os.MqqHandler;
 public class MemoryDumpHelper$5
   implements Runnable
 {
-  public MemoryDumpHelper$5(acin paramacin, boolean paramBoolean1, InspectUUID paramInspectUUID, String paramString, boolean paramBoolean2) {}
+  public MemoryDumpHelper$5(acyw paramacyw, boolean paramBoolean1, InspectUUID paramInspectUUID, String paramString, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -36,9 +36,9 @@ public class MemoryDumpHelper$5
       if (!this.jdField_a_of_type_Boolean) {
         break label371;
       }
-      localDumpResult = MagnifierSDK.a().a().a((String)localObject1, new aciq(this));
+      localDumpResult = MagnifierSDK.a().a().a((String)localObject1, new acyz(this));
       localObject2 = new MemoryDumpHelper.5.2(this, localDumpResult);
-      acin.a().postDelayed((Runnable)localObject2, 0L);
+      acyw.a().postDelayed((Runnable)localObject2, 0L);
     }
     for (;;)
     {
@@ -60,13 +60,13 @@ public class MemoryDumpHelper$5
         ((HashMap)localObject1).put("dumpFileSize", String.valueOf(localDumpResult.hprofFileSize));
         ((HashMap)localObject1).put("zipFileSize", String.valueOf(((File)localObject2).length()));
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "MemoryPeakDump", true, 0L, 0L, (HashMap)localObject1, "");
-        acit.a().b();
+        aczc.a().b();
       }
       return;
       localObject1 = this.jdField_a_of_type_JavaLangString;
       break;
       label371:
-      localDumpResult = MagnifierSDK.a().a().a((String)localObject1, new acir(this));
+      localDumpResult = MagnifierSDK.a().a().a((String)localObject1, new acza(this));
       MagnifierSDK.a().a().a(localDumpResult);
     }
   }

@@ -1,66 +1,102 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
-import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class ardt
-  extends Handler
 {
-  protected Bundle a;
-  private WeakReference<MessengerService> a;
+  private long jdField_a_of_type_Long = 2000L;
+  private boolean jdField_a_of_type_Boolean = true;
+  private long jdField_b_of_type_Long = 60000L;
+  private boolean jdField_b_of_type_Boolean = false;
+  private boolean c = true;
+  private boolean d = false;
   
-  public ardt(MessengerService paramMessengerService)
+  public static ardt a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessengerService);
+    boolean bool2 = true;
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      ardt localardt = new ardt();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("useNewLog", 1) == 1)
+      {
+        bool1 = true;
+        localardt.jdField_a_of_type_Boolean = bool1;
+        if (paramString.optInt("compressAndEncrypt", 0) != 1) {
+          break label130;
+        }
+        bool1 = true;
+        label56:
+        localardt.jdField_b_of_type_Boolean = bool1;
+        if (paramString.optInt("enableConsole", 1) != 1) {
+          break label135;
+        }
+        bool1 = true;
+        label74:
+        localardt.c = bool1;
+        if (paramString.optInt("enableCheckPermission", 1) != 1) {
+          break label140;
+        }
+      }
+      label130:
+      label135:
+      label140:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        localardt.d = bool1;
+        localardt.jdField_a_of_type_Long = paramString.optLong("locationSdkCallbackIntervalMillis", 2000L);
+        localardt.jdField_b_of_type_Long = paramString.optLong("locationBgTimeoutMillis", 60000L);
+        return localardt;
+        bool1 = false;
+        break;
+        bool1 = false;
+        break label56;
+        bool1 = false;
+        break label74;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public long a()
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, mServiceWeakRef null");
-      }
+    if (this.jdField_a_of_type_Long < 0L) {
+      return 2000L;
     }
-    MessengerService localMessengerService;
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        localMessengerService = (MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localMessengerService != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, service null");
-      return;
-      i = paramMessage.what;
-    } while (i != 4);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("qwallet.type", i);
-    if (paramMessage.arg1 == 1) {}
-    for (;;)
-    {
-      localBundle.putBoolean("qwallet.isSuccess", bool);
-      localBundle.putSerializable("qwallet.data", (Serializable)paramMessage.obj);
-      if (this.jdField_a_of_type_AndroidOsBundle == null) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      localMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      bool = false;
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_b_of_type_Long < 0L) {
+      return 60000L;
     }
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public boolean b()
+  {
+    return this.d;
+  }
+  
+  public String toString()
+  {
+    return "QConfLogBean{useNewLog=" + this.jdField_a_of_type_Boolean + ", compressAndEncrypt=" + this.jdField_b_of_type_Boolean + ", enableConsole=" + this.c + ",enableCheckPermission=" + this.d + ",locationSdkCallbackIntervalMillis=" + this.jdField_a_of_type_Long + ",locationBgTimeoutMillis=" + this.jdField_b_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardt
  * JD-Core Version:    0.7.0.1
  */

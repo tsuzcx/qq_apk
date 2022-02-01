@@ -1,14 +1,18 @@
-final class pll
-  implements pln
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+
+public class pll
+  extends SimpleConfigHandler
 {
-  public void l()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    pbo.a(9, "", "", "", "");
-  }
-  
-  public void m()
-  {
-    pbo.a(9, "", "", "", "", pli.c, "", false);
+    boolean bool = super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    paramString = Aladdin.getConfig(paramInt1).getString("daily_header_proteus_bid", "0");
+    bmhv.a("daily_header_proteus_bid", paramString);
+    QLog.i("DailyDynamicHeaderConfig", 2, "update bid=" + paramString);
+    return bool;
   }
 }
 

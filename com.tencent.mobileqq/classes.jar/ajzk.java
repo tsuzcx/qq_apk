@@ -1,37 +1,28 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.2.1;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class ajzk
-  implements ajvb
+  implements bisq
 {
-  public ajzk(ThemeHbFragment paramThemeHbFragment) {}
+  public ajzk(MainFragment paramMainFragment) {}
   
   public void a()
   {
-    ThemeHbFragment.a(this.a, null);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (ThemeHbFragment.a(this.a) == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
-      }
-    }
-    do
+    int i = GesturePWDUtils.getGesturePWDState(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
+    int j = GesturePWDUtils.getGesturePWDMode(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
+    if ((i == 2) && (j == 20))
     {
-      return;
       if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back drawable = " + paramObject);
+        QLog.d("mainactivity", 2, "gesturepwd manual move.");
       }
-    } while (!(paramObject instanceof Drawable));
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
+      ((SplashActivity)this.a.getActivity()).startUnlockActivity();
+      this.a.getActivity().overridePendingTransition(2130771997, 2130771990);
+      MainFragment.a(true);
     }
-    ThemeHbFragment.a(this.a).post(new ThemeHbFragment.2.1(this, paramObject));
   }
 }
 

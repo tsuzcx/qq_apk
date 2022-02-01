@@ -1,10 +1,10 @@
 package cooperation.qzone.webviewplugin;
 
+import biyn;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 class QZoneSharePictureJsPlugin$9
-  implements WXShareHelper.WXShareListener
+  implements biyn
 {
   QZoneSharePictureJsPlugin$9(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin) {}
   

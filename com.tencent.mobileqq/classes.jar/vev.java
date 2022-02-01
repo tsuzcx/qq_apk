@@ -1,32 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 class vev
-  extends anxq
+  implements tlu
 {
-  vev(veq paramveq) {}
+  vev(veu paramveu, DiniFlyAnimationView paramDiniFlyAnimationView, vew paramvew) {}
   
-  public int a()
-  {
-    return 0;
-  }
+  public void a(tlw paramtlw, int paramInt) {}
   
-  public void a(Object paramObject)
+  public void a(tlw paramtlw, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
+    if (this.jdField_a_of_type_Vew != null) {
+      this.jdField_a_of_type_Vew.a();
     }
-    this.a.a = true;
-    veq.a(this.a);
   }
   
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
+  public void a(tlw paramtlw, tls paramtls)
   {
-    veq.a(this.a, 2131694775);
+    veu.a(this.jdField_a_of_type_Veu, this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, paramtls.a(), this.jdField_a_of_type_Vew);
   }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

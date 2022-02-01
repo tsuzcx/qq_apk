@@ -4,13 +4,13 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import azeu;
-import azfc;
-import azgf;
-import azgv;
-import azht;
-import azhu;
-import azhv;
+import bakl;
+import bakt;
+import balw;
+import band;
+import baob;
+import baoc;
+import baod;
 import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglHandlerThread;
 import java.io.File;
 
@@ -21,9 +21,9 @@ public class QQWakeAIEngine
   public static volatile boolean a;
   public static boolean b;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private azht jdField_a_of_type_Azht;
-  private azhu jdField_a_of_type_Azhu;
-  azhv jdField_a_of_type_Azhv;
+  private baob jdField_a_of_type_Baob;
+  private baoc jdField_a_of_type_Baoc;
+  baod jdField_a_of_type_Baod;
   private EglHandlerThread jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private Handler b;
@@ -34,16 +34,16 @@ public class QQWakeAIEngine
     jdField_b_of_type_Boolean = true;
   }
   
-  public QQWakeAIEngine(azht paramazht)
+  public QQWakeAIEngine(baob parambaob)
   {
     a();
-    this.jdField_a_of_type_Azht = paramazht;
-    if (this.jdField_a_of_type_Azht.jdField_a_of_type_Int == 1) {}
+    this.jdField_a_of_type_Baob = parambaob;
+    if (this.jdField_a_of_type_Baob.jdField_a_of_type_Int == 1) {}
     for (;;)
     {
       this.c = bool;
-      if (azgf.a()) {
-        this.jdField_a_of_type_Azhv = new azhv();
+      if (balw.a()) {
+        this.jdField_a_of_type_Baod = new baod();
       }
       return;
       bool = false;
@@ -54,23 +54,23 @@ public class QQWakeAIEngine
   {
     try
     {
-      if ((azgv.a()) && (!jdField_a_of_type_Boolean))
+      if ((band.a()) && (!jdField_a_of_type_Boolean))
       {
-        String str = azfc.a("wake", azgv.a()) + "/" + "libHelloQQ.so";
+        String str = bakt.a("wake", band.a()) + "/" + "libHelloQQ.so";
         if (new File(str).exists())
         {
-          azeu.a("HelloQQWake", "loadSo file exists: " + str);
+          bakl.a("HelloQQWake", "loadSo file exists: " + str);
           System.load(str);
           jdField_a_of_type_Boolean = true;
           return;
         }
-        azeu.a("HelloQQWake", "loadSo file not exists: " + str);
+        bakl.a("HelloQQWake", "loadSo file not exists: " + str);
         return;
       }
     }
     catch (Exception localException)
     {
-      azeu.a("HelloQQWake", "loadSo() error: " + localException.getMessage());
+      bakl.a("HelloQQWake", "loadSo() error: " + localException.getMessage());
       jdField_b_of_type_Boolean = false;
     }
   }
@@ -80,17 +80,17 @@ public class QQWakeAIEngine
     Float localFloat = Float.valueOf(0.0F);
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      azeu.a("HelloQQWake", "doProcess mLock");
+      bakl.a("HelloQQWake", "doProcess mLock");
       if (jdField_a_of_type_Long != 0L) {
         localFloat = Float.valueOf(HelloQQDetect(jdField_a_of_type_Long, paramArrayOfShort, paramInt));
       }
       ??? = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(200, localFloat);
       this.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)???);
-      if (azgf.a())
+      if (balw.a())
       {
-        this.jdField_a_of_type_Azhv.a(paramArrayOfShort);
+        this.jdField_a_of_type_Baod.a(paramArrayOfShort);
         if (localFloat.floatValue() > 0.5D) {
-          this.jdField_a_of_type_Azhv.a(localFloat.floatValue());
+          this.jdField_a_of_type_Baod.a(localFloat.floatValue());
         }
       }
       return;
@@ -105,16 +105,16 @@ public class QQWakeAIEngine
       {
         if (jdField_a_of_type_Long == 0L)
         {
-          jdField_a_of_type_Long = HelloQQInit(this.jdField_a_of_type_Azht.jdField_a_of_type_Int, this.jdField_a_of_type_Azht.jdField_b_of_type_Int, this.jdField_a_of_type_Azht.jdField_c_of_type_Int, this.jdField_a_of_type_Azht.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Azht.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Azht.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Azht.d, this.jdField_a_of_type_Azht.e);
-          azeu.a("HelloQQWake", "QQWakeAIEngine mNativeObj  after：" + jdField_a_of_type_Long);
-          if (this.jdField_a_of_type_Azhu != null)
+          jdField_a_of_type_Long = HelloQQInit(this.jdField_a_of_type_Baob.jdField_a_of_type_Int, this.jdField_a_of_type_Baob.jdField_b_of_type_Int, this.jdField_a_of_type_Baob.jdField_c_of_type_Int, this.jdField_a_of_type_Baob.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Baob.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Baob.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Baob.d, this.jdField_a_of_type_Baob.e);
+          bakl.a("HelloQQWake", "QQWakeAIEngine mNativeObj  after：" + jdField_a_of_type_Long);
+          if (this.jdField_a_of_type_Baoc != null)
           {
-            azhu localazhu = this.jdField_a_of_type_Azhu;
+            baoc localbaoc = this.jdField_a_of_type_Baoc;
             if (jdField_a_of_type_Long == 0L) {
               break label141;
             }
             bool = true;
-            localazhu.a(bool);
+            localbaoc.a(bool);
           }
         }
         return;
@@ -131,7 +131,7 @@ public class QQWakeAIEngine
       if (jdField_a_of_type_Long != 0L)
       {
         HelloQQDestroy(jdField_a_of_type_Long);
-        azeu.a("HelloQQWake", "native doDestroy  done:" + jdField_a_of_type_Long);
+        bakl.a("HelloQQWake", "native doDestroy  done:" + jdField_a_of_type_Long);
         jdField_a_of_type_Long = 0L;
       }
       return;
@@ -145,7 +145,7 @@ public class QQWakeAIEngine
       if (jdField_a_of_type_Long != 0L)
       {
         HelloQQClear(jdField_a_of_type_Long);
-        azeu.a("HelloQQWake", "native  HelloQQClear done");
+        bakl.a("HelloQQWake", "native  HelloQQClear done");
       }
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
@@ -190,18 +190,18 @@ public class QQWakeAIEngine
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(100);
       return;
     }
-    azeu.a("HelloQQWake", "QQWakeAIEngine init initEnv exception: uiLooper=null");
+    bakl.a("HelloQQWake", "QQWakeAIEngine init initEnv exception: uiLooper=null");
     return;
     label110:
-    azeu.a("HelloQQWake", "QQWakeAIEngine init eglHandler exception: looper=null");
+    bakl.a("HelloQQWake", "QQWakeAIEngine init eglHandler exception: looper=null");
     return;
     label118:
     d();
   }
   
-  public void a(azhu paramazhu)
+  public void a(baoc parambaoc)
   {
-    this.jdField_a_of_type_Azhu = paramazhu;
+    this.jdField_a_of_type_Baoc = parambaoc;
   }
   
   public void a(short[] paramArrayOfShort, int paramInt)
@@ -220,7 +220,7 @@ public class QQWakeAIEngine
   
   public void b()
   {
-    azeu.a("HelloQQWake", "destroy()");
+    bakl.a("HelloQQWake", "destroy()");
     if (!this.c) {
       e();
     }
@@ -251,12 +251,12 @@ public class QQWakeAIEngine
     for (;;)
     {
       return false;
-      azeu.a("HelloQQWake", "QQWakeAIEngine MSG_EGL_INIT");
+      bakl.a("HelloQQWake", "QQWakeAIEngine MSG_EGL_INIT");
       d();
       continue;
       b((short[])paramMessage.obj, paramMessage.arg1);
       continue;
-      azeu.a("HelloQQWake", "QQWakeAIEngine MSG_EGL_DESTROY");
+      bakl.a("HelloQQWake", "QQWakeAIEngine MSG_EGL_DESTROY");
       e();
       try
       {
@@ -270,15 +270,15 @@ public class QQWakeAIEngine
         paramMessage.printStackTrace();
       }
       continue;
-      azeu.a("HelloQQWake", "QQWakeAIEngine  MSG_EGL_CLEAR");
+      bakl.a("HelloQQWake", "QQWakeAIEngine  MSG_EGL_CLEAR");
       f();
       continue;
       float f = 0.0F;
       if ((paramMessage.obj instanceof Float)) {
         f = ((Float)paramMessage.obj).floatValue();
       }
-      if (this.jdField_a_of_type_Azhu != null) {
-        this.jdField_a_of_type_Azhu.a(f);
+      if (this.jdField_a_of_type_Baoc != null) {
+        this.jdField_a_of_type_Baoc.a(f);
       }
     }
   }

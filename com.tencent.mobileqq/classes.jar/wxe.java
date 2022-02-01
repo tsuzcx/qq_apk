@@ -1,6 +1,13 @@
-public abstract interface wxe
+class wxe
+  extends wwo
 {
-  public abstract void a_(wwz paramwwz);
+  wxe(wxa paramwxa, wyh paramwyh) {}
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Wyh.a = ((String)a("UploadImageJob_out_image_url"));
+    return true;
+  }
 }
 
 

@@ -1,244 +1,205 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.RelativeLayout;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManagerExecutor;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanageraux.widget.DocCooperationBanner.2;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
-import java.io.File;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.atomic.AtomicLong;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aulr
-  implements PluginManagerUpdater
+  implements View.OnClickListener
 {
-  private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("IVShadowCdnPmUpdater", 0);
-  aulq jdField_a_of_type_Aulq;
-  private aulu jdField_a_of_type_Aulu;
-  private final IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
-  private final File jdField_a_of_type_JavaIoFile;
-  private final String jdField_a_of_type_JavaLangString;
-  private Future<File> jdField_a_of_type_JavaUtilConcurrentFuture;
-  private final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(System.currentTimeMillis() - 180000L);
-  private final boolean jdField_a_of_type_Boolean;
-  private final File jdField_b_of_type_JavaIoFile;
-  private final String jdField_b_of_type_JavaLangString;
-  private final String c;
-  private final String d;
-  private String e;
+  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  public View a;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  arnx jdField_a_of_type_Arnx;
+  TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
+  String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private RelativeLayout b;
   
-  public aulr(Context paramContext, String paramString1, String paramString2, String paramString3)
+  private void a(boolean paramBoolean, int paramInt)
   {
-    this.e = paramString3;
-    this.jdField_b_of_type_JavaIoFile = new File(new File(paramContext.getFilesDir(), "IVShadowCdnPmUpdater"), paramString1);
-    this.jdField_b_of_type_JavaIoFile.mkdirs();
-    this.jdField_a_of_type_JavaIoFile = new File(this.jdField_b_of_type_JavaIoFile, paramString1 + this.e + "_pm.temp");
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = ("pm_name_" + paramString1 + "_" + paramString2 + "_" + this.e);
-    this.d = ("wasUpdate_" + paramString1 + "_" + this.e);
-    this.jdField_a_of_type_Boolean = "Now".equals(paramString1);
-    this.jdField_a_of_type_Aulq = new aulq(paramContext, paramString1, paramString3);
-    if (this.jdField_a_of_type_Boolean)
+    int j = 1;
+    Object localObject = arnz.a();
+    int i;
+    if (paramBoolean)
     {
-      paramContext = "9";
-      if (!StringUtil.isEmpty(paramString2)) {
-        paramContext = paramString2.substring(paramString2.length() - 1);
+      localObject = ((arnx)localObject).b;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        i = j;
+        if (paramInt != 1)
+        {
+          if (paramInt != 3000) {
+            break label80;
+          }
+          i = j;
+        }
       }
-      this.jdField_a_of_type_JavaLangString = ("https://dlied5sdk.myapp.com/now/pluginmanager/" + "" + this.e + "/ShadowPluginManager_nowPlugin_" + paramContext);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.i("shadow::CdnPmUpdater", 2, "use cdnupdater url = " + this.jdField_a_of_type_JavaLangString);
+      bdla.b(null, "dc00898", "", "", (String)localObject, (String)localObject, i, 0, "", "", "", "");
+      return;
+      localObject = ((arnx)localObject).d;
+      break;
+      label80:
+      if (paramInt == 0) {
+        i = 0;
+      } else {
+        i = 3;
+      }
+    }
+  }
+  
+  public void a(String paramString1, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, boolean paramBoolean, String paramString2)
+  {
+    StringBuilder localStringBuilder;
+    if ((!TextUtils.isEmpty(paramString1)) && (paramTeamWorkFileImportInfo != null))
+    {
+      new StringBuilder(paramString1);
+      if (paramString1.indexOf("?") <= 0) {
+        break label204;
+      }
+      paramString1 = paramString1 + "&adtag=s_qq_file_inviteedit";
+      if (paramBoolean)
+      {
+        paramBoolean = arnz.a().a(paramTeamWorkFileImportInfo.b);
+        localStringBuilder = new StringBuilder(anvx.a(2131702866));
+        if ((paramTeamWorkFileImportInfo.a != 1) && (paramTeamWorkFileImportInfo.a != 3000)) {
+          break label227;
+        }
+        localStringBuilder.append("群成员");
+        label104:
+        if (!paramBoolean) {
+          break label245;
+        }
+        localStringBuilder.append("一起编辑");
+      }
+    }
+    for (;;)
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, localStringBuilder.toString(), 1).a();
+      ThreadManager.excute(new DocCooperationBanner.2(this, paramTeamWorkFileImportInfo, paramString1, paramBoolean, paramString2), 128, null, false);
+      beeg.a(null, "0X800A637");
+      paramString2 = new Bundle();
+      paramString2.putString("url", paramString1);
+      paramString2.putBoolean("temp_preview_from_qq", true);
+      paramString2.putParcelable("key_team_work_file_import_info", paramTeamWorkFileImportInfo);
+      TeamWorkDocEditBrowserActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, false);
+      return;
+      label204:
+      paramString1 = paramString1 + "?adtag=s_qq_file_inviteedit";
+      break;
+      label227:
+      if (paramTeamWorkFileImportInfo.a != 0) {
+        break label104;
+      }
+      localStringBuilder.append("好友");
+      break label104;
+      label245:
+      localStringBuilder.append("一起查看");
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Arnx != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null))
+    {
+      if (!paramBoolean) {
+        break label105;
+      }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+          this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+        }
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { 0.0F });
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+      }
+    }
+    return;
+    label105:
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+          this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+        }
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { this.jdField_a_of_type_AndroidViewView.getHeight() });
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new auls(this));
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
       }
       return;
-      if (!"Reader".equals(paramString1)) {
-        break;
-      }
-      if ((paramString2 != null) && (paramString2.endsWith("0"))) {
-        this.jdField_a_of_type_JavaLangString = "https://down.qq.com/reading/android/plugin/release/5/reader-plugin-manager-release-gray.apk";
-      } else {
-        this.jdField_a_of_type_JavaLangString = "https://down.qq.com/reading/android/plugin/release/5/reader-plugin-manager-release.apk";
-      }
     }
-    if ((paramString2 != null) && (paramString2.endsWith("0"))) {}
-    for (paramContext = "_A";; paramContext = "_B")
-    {
-      this.jdField_a_of_type_JavaLangString = ("https://dlied5sdk.myapp.com/huayang/Android/ShadowPluginManager1_1_" + paramString1 + paramContext);
-      break;
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
-  private void a(File paramFile)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.c, paramFile.getAbsolutePath()).apply();
-  }
-  
-  @SuppressLint({"ApplySharedPref"})
-  private void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.d, paramBoolean).commit();
-    if (QLog.isColorLevel()) {
-      QLog.i("shadow::CdnPmUpdater", 2, "setWasUpdating:" + paramBoolean);
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, anvx.a(2131702864), 0).a();
     }
-  }
-  
-  private boolean a()
-  {
-    boolean bool1 = true;
-    boolean bool2 = true;
-    File localFile = getLatest();
-    if (localFile == null) {}
+    label201:
     for (;;)
     {
-      return bool2;
-      long l = System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
-      if (l <= 180000L)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("shadow::CdnPmUpdater", 2, "短时间内不重复检测interval==" + l);
-        }
-        return false;
-      }
-      try
-      {
-        localObject1 = new URL(this.jdField_a_of_type_JavaLangString).openConnection();
-        if ((localObject1 instanceof HttpURLConnection)) {
-          break label149;
-        }
-        throw new Error(this.jdField_a_of_type_JavaLangString + amtj.a(2131700616));
-      }
-      finally
-      {
-        localObject1 = null;
-      }
-      label136:
-      if (localObject1 != null) {
-        ((HttpURLConnection)localObject1).disconnect();
-      }
-      throw localObject2;
-      label149:
-      Object localObject1 = (HttpURLConnection)localObject1;
-      try
-      {
-        if (((HttpURLConnection)localObject1).getResponseCode() != 200) {
-          throw new Error(amtj.a(2131700618) + 200 + amtj.a(2131700619) + ((HttpURLConnection)localObject1).getResponseCode());
-        }
-        l = localObject2.length();
-        int i = ((HttpURLConnection)localObject1).getContentLength();
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
-        if (l != i) {}
-        for (;;)
+        Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+        if ((localObject instanceof QQAppInterface))
         {
-          bool2 = bool1;
-          if (localObject1 == null) {
-            break;
+          localObject = (bebl)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
+          if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (!((bebl)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo)))
+          {
+            beeg.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.k + "-" + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d);
+            this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 0;
+            ((bebl)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
           }
-          ((HttpURLConnection)localObject1).disconnect();
-          return bool1;
-          bool1 = false;
         }
-        break label136;
       }
-      finally {}
-    }
-  }
-  
-  private boolean b()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.d, false);
-  }
-  
-  public File a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("shadow::CdnPmUpdater", 2, "start download ");
-    }
-    File localFile = new File(this.jdField_b_of_type_JavaIoFile, this.jdField_b_of_type_JavaLangString + "_" + Long.valueOf(new StringBuilder().append(System.currentTimeMillis()).append("").toString(), 36) + ".apk");
-    CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    Exception[] arrayOfException = new Exception[1];
-    long l = System.currentTimeMillis();
-    auoo localauoo = new auoo();
-    localauoo.a(BaseApplicationImpl.getContext());
-    localauoo.a(this.jdField_a_of_type_JavaLangString, new ault(this, localFile, arrayOfException, l, localCountDownLatch));
-    localauoo.b(auoq.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
-    localCountDownLatch.await();
-    if (arrayOfException[0] == null)
-    {
-      localFile.setLastModified(localFile.lastModified() + 1000L);
-      a(localFile);
-      return localFile;
-    }
-    throw arrayOfException[0];
-  }
-  
-  public void a()
-  {
-    File localFile = getLatest();
-    if (localFile != null) {
-      localFile.delete();
-    }
-  }
-  
-  public void a(aulu paramaulu)
-  {
-    this.jdField_a_of_type_Aulu = paramaulu;
-  }
-  
-  public File getLatest()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.c, null);
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = new File((String)localObject);
-      if (((File)localObject).exists()) {
-        return localObject;
-      }
-    }
-    return null;
-  }
-  
-  public Future<Boolean> isAvailable(File paramFile)
-  {
-    throw new UnsupportedOperationException(amtj.a(2131700617));
-  }
-  
-  public Future<File> update()
-  {
-    a(true);
-    if (QLog.isColorLevel()) {
-      QLog.i("shadow::CdnPmUpdater", 2, "update");
-    }
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "33669796";; str = "33669801")
-    {
-      auoj.b(str);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("update").report();
-      if ((this.jdField_a_of_type_JavaUtilConcurrentFuture == null) || (this.jdField_a_of_type_JavaUtilConcurrentFuture.isDone())) {
+      for (boolean bool = true;; bool = false)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo == null) {
+          break label201;
+        }
+        a(bool, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.a);
         break;
+        if (this.b.getVisibility() == 0) {
+          a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, false, "");
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("shadow::CdnPmUpdater", 2, "上一次update还没结束，返回相同Future");
-      }
-      return this.jdField_a_of_type_JavaUtilConcurrentFuture;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = ThreadManagerExecutor.getExecutorService(192).submit(new auls(this));
-    return this.jdField_a_of_type_JavaUtilConcurrentFuture;
-  }
-  
-  public boolean wasUpdating()
-  {
-    return b();
   }
 }
 

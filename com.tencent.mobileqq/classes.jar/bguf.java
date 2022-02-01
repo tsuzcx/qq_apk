@@ -1,13 +1,21 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface bguf
+class bguf
+  implements bgui
 {
-  public abstract WebViewFragment a();
+  bguf(bgua parambgua) {}
   
-  public abstract WebViewFragment a(Intent paramIntent);
-  
-  public abstract boolean a(boolean paramBoolean);
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      this.a.d = paramString;
+      bgua.f(this.a);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anvx.a(2131715145), 0).a();
+  }
 }
 
 

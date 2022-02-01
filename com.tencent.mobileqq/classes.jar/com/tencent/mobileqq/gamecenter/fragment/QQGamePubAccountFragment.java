@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import abet;
-import akms;
-import alvx;
-import amtj;
+import abuf;
+import alik;
+import amwn;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -34,41 +33,44 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aoye;
-import atwa;
-import atxn;
-import atxo;
-import atxp;
-import atxq;
-import atxr;
-import atxs;
-import atxt;
-import atxu;
-import atxv;
-import atxw;
-import atxz;
-import atyb;
-import atyd;
-import atzb;
-import atzc;
-import atzd;
-import atzp;
-import auad;
-import bbyp;
-import bfwv;
-import bggc;
-import bldr;
-import bldt;
-import bldu;
-import bleb;
-import blec;
+import anvx;
+import aqbi;
+import avbb;
+import avcr;
+import avcs;
+import avct;
+import avcu;
+import avcv;
+import avcw;
+import avcx;
+import avcy;
+import avcz;
+import avda;
+import avdj;
+import avdq;
+import avds;
+import aveq;
+import aver;
+import aves;
+import avfh;
+import avfv;
+import bdfk;
+import bhfn;
+import bhow;
+import bmqi;
+import bmqk;
+import bmql;
+import bmqs;
+import bmqt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForPubAccount;
@@ -113,7 +115,7 @@ import org.json.JSONObject;
 
 public class QQGamePubAccountFragment
   extends PublicBaseFragment
-  implements Handler.Callback, auad, bldr, bleb, Observer
+  implements Handler.Callback, avfv, bmqi, bmqs, Observer
 {
   public static final byte[] a;
   public static final byte[] b;
@@ -124,10 +126,10 @@ public class QQGamePubAccountFragment
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private atwa jdField_a_of_type_Atwa;
-  private atxw jdField_a_of_type_Atxw;
-  private atzp jdField_a_of_type_Atzp;
-  private bggc jdField_a_of_type_Bggc = new atxn(this);
+  private avbb jdField_a_of_type_Avbb;
+  private avda jdField_a_of_type_Avda;
+  private avfh jdField_a_of_type_Avfh;
+  private bhow jdField_a_of_type_Bhow = new avcr(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private FeedsItemData.GameInfo jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo;
   private GameSessionView jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView;
@@ -135,7 +137,7 @@ public class QQGamePubAccountFragment
   private QQGamePubViewpager jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager;
   private QQGameStatusView jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameStatusView;
   private ArrayList<MessageRecord> jdField_a_of_type_JavaUtilArrayList;
-  private List<atzp> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<avfh> jdField_a_of_type_JavaUtilList = new ArrayList();
   Map<String, WadlParams> jdField_a_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_a_of_type_Boolean;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
@@ -150,8 +152,8 @@ public class QQGamePubAccountFragment
   
   static
   {
-    aoye.a(true);
-    aoye.a();
+    aqbi.a(true);
+    aqbi.a();
     jdField_a_of_type_ArrayOfByte = new byte[0];
     jdField_b_of_type_ArrayOfByte = new byte[0];
   }
@@ -174,23 +176,23 @@ public class QQGamePubAccountFragment
         }
         if (i == paramInt)
         {
-          this.jdField_a_of_type_Atzp = ((atzp)this.jdField_a_of_type_JavaUtilList.get(i));
-          if ((this.jdField_a_of_type_Atzp instanceof GameArkView)) {
-            atyb.a().a((GameArkView)this.jdField_a_of_type_Atzp);
+          this.jdField_a_of_type_Avfh = ((avfh)this.jdField_a_of_type_JavaUtilList.get(i));
+          if ((this.jdField_a_of_type_Avfh instanceof GameArkView)) {
+            avdq.a().a((GameArkView)this.jdField_a_of_type_Avfh);
           } else {
-            atyb.a().a(null);
+            avdq.a().a(null);
           }
         }
       }
       finally {}
-      atzp localatzp = (atzp)this.jdField_a_of_type_JavaUtilList.get(i);
-      if ((localatzp != null) && (a(localatzp)))
+      avfh localavfh = (avfh)this.jdField_a_of_type_JavaUtilList.get(i);
+      if ((localavfh != null) && (a(localavfh)))
       {
-        localatzp.b();
+        localavfh.b();
         break label155;
         label125:
-        if ((this.jdField_a_of_type_Atzp != null) && (a(this.jdField_a_of_type_Atzp))) {
-          this.jdField_a_of_type_Atzp.a();
+        if ((this.jdField_a_of_type_Avfh != null) && (a(this.jdField_a_of_type_Avfh))) {
+          this.jdField_a_of_type_Avfh.a();
         }
         return;
       }
@@ -229,14 +231,14 @@ public class QQGamePubAccountFragment
               paramString = paramJSONObject.optString("jump_text");
               str = paramJSONObject.optString("tribe_url");
               localObject1 = paramJSONObject.optJSONObject("share_ark");
-            } while ((paramJSONObject.optInt("result") != 2) || (this.jdField_a_of_type_Atwa == null));
+            } while ((paramJSONObject.optInt("result") != 2) || (this.jdField_a_of_type_Avbb == null));
             if ((this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId)) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId.equals(paramIntent)))
             {
               this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameStatus = 2;
-              this.jdField_a_of_type_Atwa.a(true);
+              this.jdField_a_of_type_Avbb.a(true);
               this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameStatusView.b();
               this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameStatusView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId, 4);
-              this.jdField_a_of_type_Atwa.a(paramIntent, paramString, str, (JSONObject)localObject1, a());
+              this.jdField_a_of_type_Avbb.a(paramIntent, paramString, str, (JSONObject)localObject1, a());
             }
             try
             {
@@ -251,7 +253,7 @@ public class QQGamePubAccountFragment
                     ((FeedsItemData)paramJSONObject.get(0)).gameInfo.gameStatus = 2;
                   }
                 }
-                atzc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sp_key_game_center_feeds_info", this.jdField_b_of_type_JavaUtilMap);
+                aver.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sp_key_game_center_feeds_info", this.jdField_b_of_type_JavaUtilMap);
               }
             }
             catch (Throwable paramIntent)
@@ -269,7 +271,7 @@ public class QQGamePubAccountFragment
               paramJSONObject.gameInfo.gameStatus = 2;
             }
           }
-          atzc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sp_key_game_center_feeds_topcard_info", this.e);
+          aver.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sp_key_game_center_feeds_topcard_info", this.e);
           return;
         } while ((!"12787".equals(paramString)) || (paramIntent == null));
         l = paramIntent.getLongExtra("msgSeq", 0L);
@@ -485,9 +487,9 @@ public class QQGamePubAccountFragment
         }
         if (localJSONObject1 != null)
         {
-          atzb.a = localJSONObject1.optInt("video_count");
-          atzb.b = localJSONObject1.optInt("video_time") * 1000;
-          atzb.c = localJSONObject1.optInt("layer_duration") * 1000;
+          aveq.a = localJSONObject1.optInt("video_count");
+          aveq.b = localJSONObject1.optInt("video_time") * 1000;
+          aveq.c = localJSONObject1.optInt("layer_duration") * 1000;
           if (getActivity() != null)
           {
             paramJSONObject = getActivity().getSharedPreferences("game_center_sp", 0);
@@ -500,8 +502,8 @@ public class QQGamePubAccountFragment
         }
         if (paramIntent.size() == 0)
         {
-          abet.a(alvx.a(), "769", "205353", str, "76901", "1", "160", new String[] { paramString, "", "20" });
-          this.jdField_a_of_type_Atwa.a(false, true);
+          abuf.a(amwn.a(), "769", "205353", str, "76901", "1", "160", new String[] { paramString, "", "20" });
+          this.jdField_a_of_type_Avbb.a(false, true);
           return;
         }
         paramString = (List)this.jdField_b_of_type_JavaUtilMap.get(Long.valueOf(l));
@@ -509,16 +511,16 @@ public class QQGamePubAccountFragment
         this.jdField_b_of_type_JavaUtilMap.put(Long.valueOf(l), paramString);
         i = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.getCurrentItem();
       } while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) || (((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uniseq != l));
-      this.jdField_a_of_type_Atwa.c();
-      this.jdField_a_of_type_Atwa.a(paramIntent);
+      this.jdField_a_of_type_Avbb.c();
+      this.jdField_a_of_type_Avbb.a(paramIntent);
       return;
       this.e.put(Long.valueOf(l), localObject1);
       int i = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.getCurrentItem();
       if (paramIntent.size() == 0)
       {
-        this.d.put(Long.valueOf(l), atzc.b);
-        this.jdField_a_of_type_Atwa.a(false, false);
-        abet.a(alvx.a(), "769", "205353", str, "76901", "1", "160", new String[] { paramString, "", "20" });
+        this.d.put(Long.valueOf(l), aver.b);
+        this.jdField_a_of_type_Avbb.a(false, false);
+        abuf.a(amwn.a(), "769", "205353", str, "76901", "1", "160", new String[] { paramString, "", "20" });
       }
       for (;;)
       {
@@ -526,23 +528,23 @@ public class QQGamePubAccountFragment
         if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) || (((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uniseq != l)) {
           break;
         }
-        this.jdField_a_of_type_Atwa.a(paramIntent, (FeedsItemData.TopCardInfo)localObject1);
+        this.jdField_a_of_type_Avbb.a(paramIntent, (FeedsItemData.TopCardInfo)localObject1);
         a((FeedsItemData.TopCardInfo)localObject1);
         return;
-        this.d.put(Long.valueOf(l), atzc.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Atwa.a(false, false);
+        this.d.put(Long.valueOf(l), aver.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Avbb.a(false, false);
       }
-      abet.a(alvx.a(), "769", "205353", str, "76901", "1", "160", new String[] { paramString, "", "20" });
+      abuf.a(amwn.a(), "769", "205353", str, "76901", "1", "160", new String[] { paramString, "", "20" });
       QLog.e("QQGamePubAccountFragment", 1, "[onGetGameCenterPubAccountFeeds] get feeds fail.");
       i = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.getCurrentItem();
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uniseq == l))
       {
-        this.jdField_a_of_type_Atwa.a(false, false);
-        this.d.put(Long.valueOf(l), atzc.b);
+        this.jdField_a_of_type_Avbb.a(false, false);
+        this.d.put(Long.valueOf(l), aver.b);
       }
     } while (getActivity() == null);
     label961:
-    QQToast.a(getActivity(), amtj.a(2131709408), 0).a();
+    QQToast.a(getActivity(), anvx.a(2131709755), 0).a();
     label1064:
     label1071:
     label1084:
@@ -623,7 +625,7 @@ public class QQGamePubAccountFragment
       this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameStatusView.a(paramTopCardInfo.gameAppId, 4);
       return;
     }
-    if (bfwv.a(this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gamePkgName))
+    if (bhfn.a(this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gamePkgName))
     {
       this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameStatusView.a(paramTopCardInfo.gameAppId, 1);
       return;
@@ -633,9 +635,9 @@ public class QQGamePubAccountFragment
   
   private void e()
   {
-    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371720)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_newMsg_normal@2x.png"));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371721));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new atxq(this));
+    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371908)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_newMsg_normal@2x.png"));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371909));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new avcu(this));
   }
   
   private void f()
@@ -648,7 +650,7 @@ public class QQGamePubAccountFragment
     do
     {
       return;
-      localSharedPreferences = atzd.a();
+      localSharedPreferences = aves.a();
       str = "sp_key_game_center_guide_is_show" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     } while (localSharedPreferences.getBoolean(str, false));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(getActivity());
@@ -670,19 +672,19 @@ public class QQGamePubAccountFragment
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-1358954496);
     localObject1 = (FrameLayout)getActivity().getWindow().getDecorView();
     ((FrameLayout)localObject1).addView(this.jdField_b_of_type_AndroidWidgetRelativeLayout, new FrameLayout.LayoutParams(-1, -1));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new atxr(this, (FrameLayout)localObject1));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new avcv(this, (FrameLayout)localObject1));
     localSharedPreferences.edit().putBoolean(str, true).apply();
   }
   
   private void g()
   {
-    bldt.a();
-    bldt.a(this);
+    bmqk.a();
+    bmqk.a(this);
   }
   
   private void h()
   {
-    bldt.b(this);
+    bmqk.b(this);
   }
   
   public View a()
@@ -694,21 +696,21 @@ public class QQGamePubAccountFragment
       }
       return b();
     }
-    View localView = LayoutInflater.from(getActivity()).inflate(2131559202, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager = ((QQGamePubViewpager)localView.findViewById(2131366610));
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator = ((QQGameIndicator)localView.findViewById(2131372206));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376571));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369958));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369963));
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(atzc.a(null, null, "https://i.gtimg.cn/channel/imglib/202004/upload_a0fdb03e7c5c42246be0bf79cce9958f.png", "https://i.gtimg.cn/channel/imglib/202004/upload_a0fdb03e7c5c42246be0bf79cce9958f.png"));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new atxo(this));
+    View localView = LayoutInflater.from(getActivity()).inflate(2131559235, null, false);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager = ((QQGamePubViewpager)localView.findViewById(2131366721));
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator = ((QQGameIndicator)localView.findViewById(2131372397));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376830));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370128));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370133));
+    this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(aver.a(null, null, "https://i.gtimg.cn/channel/imglib/202004/upload_a0fdb03e7c5c42246be0bf79cce9958f.png", "https://i.gtimg.cn/channel/imglib/202004/upload_a0fdb03e7c5c42246be0bf79cce9958f.png"));
+    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new avcs(this));
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.setNestedpParent(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.setOffscreenPageLimit(5);
-    this.jdField_a_of_type_Atxw = new atxw(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.setAdapter(this.jdField_a_of_type_Atxw);
+    this.jdField_a_of_type_Avda = new avda(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.setAdapter(this.jdField_a_of_type_Avda);
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator.setViewPager(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager);
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator.a();
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator.setPageListener(new atxp(this));
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator.setPageListener(new avct(this));
     int j = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     int i = j;
     if (j >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
@@ -720,8 +722,8 @@ public class QQGamePubAccountFragment
     c();
     if (i == 0)
     {
-      abet.a(alvx.a(), "769", "205017", a(0), "76901", "1", "160", new String[] { atzc.a((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(0)), "0", "8" });
-      ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(71)).a(2, ((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(0)).getExtInfoFromExtStr("pa_msgId"), "");
+      abuf.a(amwn.a(), "769", "205017", a(0), "76901", "1", "160", new String[] { aver.a((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(0)), "0", "8" });
+      ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(2, ((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(0)).getExtInfoFromExtStr("pa_msgId"), "");
     }
     return localView;
   }
@@ -740,7 +742,7 @@ public class QQGamePubAccountFragment
     {
       int i = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.getCurrentItem();
       if (i < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        return atzc.a((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        return aver.a((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i));
       }
     }
     return "";
@@ -749,7 +751,7 @@ public class QQGamePubAccountFragment
   public String a(int paramInt)
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return atzc.a((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), 0);
+      return aver.a((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), 0);
     }
     return null;
   }
@@ -757,7 +759,7 @@ public class QQGamePubAccountFragment
   public ArrayList<MessageRecord> a()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = (QQAppInterface)alvx.a();
+    Object localObject = (QQAppInterface)amwn.a();
     if (localObject == null) {
       return localArrayList;
     }
@@ -791,8 +793,8 @@ public class QQGamePubAccountFragment
   @SuppressLint({"ClickableViewAccessibility"})
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getActivity(), new atxt(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new atxu(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getActivity(), new avcx(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new avcy(this));
   }
   
   public void a(Activity paramActivity)
@@ -801,8 +803,8 @@ public class QQGamePubAccountFragment
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("qqgame_enter", 1);
-      String str = getString(2131694783);
-      akms.a(paramActivity, (QQAppInterface)alvx.a(), "2747277822", 1008, str, true, localBundle);
+      String str = getString(2131694991);
+      alik.a(paramActivity, (QQAppInterface)amwn.a(), "2747277822", 1008, str, true, localBundle);
       return;
     }
     catch (Throwable paramActivity)
@@ -814,15 +816,15 @@ public class QQGamePubAccountFragment
   
   public void a(View paramView)
   {
-    paramView = (NavBarCommon)paramView.findViewById(2131376501);
+    paramView = (NavBarCommon)paramView.findViewById(2131376760);
     paramView.setBackgroundColor(0);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131369436);
-    paramView.setRightImage(getResources().getDrawable(2130850057));
-    localImageView.setImageResource(2130850594);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369115));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694783);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131369605);
+    paramView.setRightImage(getResources().getDrawable(2130850150));
+    localImageView.setImageResource(2130850725);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369278));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694991);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    paramView.setOnItemSelectListener(new atxs(this));
+    paramView.setOnItemSelectListener(new avcw(this));
     a();
   }
   
@@ -833,29 +835,29 @@ public class QQGamePubAccountFragment
   
   public void a(String paramString)
   {
-    QQToast.a(getActivity(), amtj.a(2131709426), 0).a();
-    atzb.a(getActivity(), a());
+    QQToast.a(getActivity(), anvx.a(2131709773), 0).a();
+    aveq.a(getActivity(), a());
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameStatusView.a(paramString, 5);
     paramString = new HashMap();
     paramString.put(Integer.valueOf(2), a());
     paramString.put(Integer.valueOf(4), "1");
-    abet.a(alvx.a(), "769", "205612", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId, "76902", "1", "160", paramString);
+    abuf.a(amwn.a(), "769", "205612", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId, "76902", "1", "160", paramString);
   }
   
   public void a(String paramString1, String paramString2)
   {
     paramString1 = (WadlParams)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
     if (paramString1 != null) {
-      atzb.a(paramString1);
+      aveq.a(paramString1);
     }
     for (;;)
     {
       paramString1 = new HashMap();
       paramString1.put(Integer.valueOf(2), a());
       paramString1.put(Integer.valueOf(4), "2");
-      abet.a(alvx.a(), "769", "205611", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId, "76903", "1", "160", paramString1);
+      abuf.a(amwn.a(), "769", "205611", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId, "76903", "1", "160", paramString1);
       return;
-      QQToast.a(getActivity(), amtj.a(2131709429), 0).a();
+      QQToast.a(getActivity(), anvx.a(2131709776), 0).a();
     }
   }
   
@@ -868,7 +870,7 @@ public class QQGamePubAccountFragment
   {
     if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      bldt.a();
+      bmqk.a();
       ArrayList localArrayList = new ArrayList();
       int j = paramVarArgs.length;
       int i = 0;
@@ -877,20 +879,20 @@ public class QQGamePubAccountFragment
         localArrayList.add(paramVarArgs[i]);
         i += 1;
       }
-      bldt.a().a(this);
-      bldt.a().a(localArrayList);
+      bmqk.a().a(this);
+      bmqk.a().a(localArrayList);
     }
   }
   
-  public boolean a(atzp paramatzp)
+  public boolean a(avfh paramavfh)
   {
-    return ((paramatzp instanceof GameArkView)) && (atzd.a(paramatzp.a()));
+    return ((paramavfh instanceof GameArkView)) && (aves.a(paramavfh.a()));
   }
   
   public View b()
   {
-    View localView = LayoutInflater.from(getActivity()).inflate(2131559207, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, false);
-    ((ImageView)localView.findViewById(2131366060)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
+    View localView = LayoutInflater.from(getActivity()).inflate(2131559240, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, false);
+    ((ImageView)localView.findViewById(2131366161)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
     return localView;
   }
   
@@ -906,14 +908,14 @@ public class QQGamePubAccountFragment
     this.jdField_a_of_type_Boolean = false;
     try
     {
-      atzb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      localObject3 = (Queue)atzc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sp_key_game_center_feeds_red_dot_status");
+      aveq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject3 = (Queue)aver.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sp_key_game_center_feeds_red_dot_status");
       localObject1 = localObject3;
       if (localObject3 == null) {
         localObject1 = new ArrayDeque(100);
       }
-      atzc.jdField_a_of_type_JavaUtilQueue = (Queue)localObject1;
-      localObject1 = (Map)atzc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sp_key_game_center_feeds_info");
+      aver.jdField_a_of_type_JavaUtilQueue = (Queue)localObject1;
+      localObject1 = (Map)aver.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sp_key_game_center_feeds_info");
       if (localObject1 == null) {
         break label227;
       }
@@ -930,30 +932,29 @@ public class QQGamePubAccountFragment
         long l;
         Object localObject4;
         localException.printStackTrace();
-        this.jdField_a_of_type_Atwa = new atwa(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+        this.jdField_a_of_type_Avbb = new avbb(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
         this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView = new GameSessionView(getActivity());
-        this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.setVisibility(8);
         this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.jdField_a_of_type_Atwa.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView);
-        this.jdField_a_of_type_Atwa.a(a());
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bggc);
-        this.jdField_a_of_type_Atwa.a();
-        this.jdField_a_of_type_Atwa.b();
+        this.jdField_a_of_type_Avbb.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView);
+        this.jdField_a_of_type_Avbb.a(a());
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bhow);
+        this.jdField_a_of_type_Avbb.a();
+        this.jdField_a_of_type_Avbb.b();
         Object localObject2;
         if (this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager == null)
         {
           i = 0;
           if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= i)) {
-            break label913;
+            break label904;
           }
           localObject2 = (MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i);
           localObject3 = (List)this.jdField_b_of_type_JavaUtilMap.get(Long.valueOf(((MessageRecord)localObject2).uniseq));
           localObject4 = (FeedsItemData.TopCardInfo)this.e.get(Long.valueOf(((MessageRecord)localObject2).uniseq));
-          this.jdField_a_of_type_Atwa.a((List)localObject3, (FeedsItemData.TopCardInfo)localObject4);
+          this.jdField_a_of_type_Avbb.a((List)localObject3, (FeedsItemData.TopCardInfo)localObject4);
           a((FeedsItemData.TopCardInfo)localObject4);
           GameCenterVideoViewController.sPlayCount = 0;
           if ((localObject3 == null) || (((List)localObject3).size() <= 0)) {
-            break label905;
+            break label896;
           }
           if (this.jdField_c_of_type_JavaUtilMap.containsKey(Long.valueOf(((MessageRecord)localObject2).uniseq))) {
             localObject2 = (Integer)this.jdField_c_of_type_JavaUtilMap.get(Long.valueOf(((MessageRecord)localObject2).uniseq));
@@ -961,17 +962,17 @@ public class QQGamePubAccountFragment
         }
         for (;;)
         {
-          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Atwa);
-          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new atxv(this, localLinearLayoutManager));
+          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Avbb);
+          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new avcz(this, localLinearLayoutManager));
           return;
-          localObject2 = (Map)atzc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sp_key_game_center_feeds_topcard_info");
+          localObject2 = (Map)aver.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sp_key_game_center_feeds_topcard_info");
           if (localObject2 != null)
           {
             localObject3 = ((Map)localObject2).keySet().iterator();
             for (;;)
             {
               if (!((Iterator)localObject3).hasNext()) {
-                break label773;
+                break label764;
               }
               l = ((Long)((Iterator)localObject3).next()).longValue();
               localObject4 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -988,15 +989,15 @@ public class QQGamePubAccountFragment
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
             localObject2 = new JSONObject((String)localObject2);
-            atzb.a = ((JSONObject)localObject2).optInt("video_count");
-            atzb.b = ((JSONObject)localObject2).optInt("video_time") * 1000;
-            atzb.c = ((JSONObject)localObject2).optInt("layer_duration") * 1000;
+            aveq.a = ((JSONObject)localObject2).optInt("video_count");
+            aveq.b = ((JSONObject)localObject2).optInt("video_time") * 1000;
+            aveq.c = ((JSONObject)localObject2).optInt("layer_duration") * 1000;
             break;
           }
           QLog.e("QQGamePubAccountFragment", 1, "[initFeeds] condition is null");
           break;
           i = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.getCurrentItem();
-          break label468;
+          break label459;
           b(false);
           continue;
           if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
@@ -1021,14 +1022,14 @@ public class QQGamePubAccountFragment
     }
     else
     {
-      localObject1 = (Map)atzc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sp_key_game_center_feeds_position");
+      localObject1 = (Map)aver.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sp_key_game_center_feeds_position");
       if (localObject1 != null)
       {
         localObject3 = ((Map)localObject1).keySet().iterator();
         for (;;)
         {
           if (!((Iterator)localObject3).hasNext()) {
-            break label650;
+            break label641;
           }
           l = ((Long)((Iterator)localObject3).next()).longValue();
           localObject4 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -1048,12 +1049,12 @@ public class QQGamePubAccountFragment
   {
     if (a().gameAppId.equals(paramString))
     {
-      atzc.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gamePkgName, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameTicket, getActivity());
+      aver.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gamePkgName, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameTicket, getActivity());
       paramString = new HashMap(10);
       paramString.put(Integer.valueOf(2), a());
       paramString.put(Integer.valueOf(6), a().gameAppId);
       paramString.put(Integer.valueOf(4), "20");
-      abet.a(alvx.a(), "769", "205613", a().gameAppId, "76902", "1", "160", paramString);
+      abuf.a(amwn.a(), "769", "205613", a().gameAppId, "76902", "1", "160", paramString);
     }
   }
   
@@ -1062,7 +1063,7 @@ public class QQGamePubAccountFragment
     if ((paramBoolean) && (this.jdField_c_of_type_Boolean)) {
       QLog.d("QQGamePubAccountFragment", 4, "isLoadMoreing:" + this.jdField_c_of_type_Boolean);
     }
-    label326:
+    label327:
     do
     {
       do
@@ -1078,7 +1079,7 @@ public class QQGamePubAccountFragment
         for (int i = 0;; i = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.getCurrentItem())
         {
           if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= i)) {
-            break label326;
+            break label327;
           }
           localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i);
           localArrayList = new ArrayList();
@@ -1095,20 +1096,20 @@ public class QQGamePubAccountFragment
             }
           }
         }
-        Object localObject1 = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(71);
-        Object localObject2 = atzc.a((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i), 0);
-        String str = atzc.a((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i), 2);
-        ((VasExtensionHandler)localObject1).a(atzc.a(localMessageRecord), localMessageRecord.uniseq, localMessageRecord.time, localArrayList, paramBoolean, (String)localObject2, str);
-      } while (this.jdField_a_of_type_Atwa == null);
+        Object localObject1 = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER);
+        Object localObject2 = aver.a((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i), 0);
+        String str = aver.a((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i), 2);
+        ((VasExtensionHandler)localObject1).a(aver.a(localMessageRecord), localMessageRecord.uniseq, localMessageRecord.time, localArrayList, paramBoolean, (String)localObject2, str);
+      } while (this.jdField_a_of_type_Avbb == null);
       if (!paramBoolean)
       {
-        this.jdField_a_of_type_Atwa.a(true, false);
+        this.jdField_a_of_type_Avbb.a(true, false);
         return;
       }
-      this.jdField_a_of_type_Atwa.a(true, false);
+      this.jdField_a_of_type_Avbb.a(true, false);
       return;
-    } while ((this.jdField_a_of_type_Atwa == null) || (paramBoolean));
-    this.jdField_a_of_type_Atwa.a(false, false);
+    } while ((this.jdField_a_of_type_Avbb == null) || (paramBoolean));
+    this.jdField_a_of_type_Avbb.a(false, false);
   }
   
   public void c()
@@ -1134,15 +1135,15 @@ public class QQGamePubAccountFragment
     if ((a().gameAppId.equals(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameStatus == 1))
     {
       this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameStatusView.a();
-      blec.a().a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId, "10000144");
+      bmqt.a().a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId, "10000144");
       paramString = new HashMap();
-      abet.a(paramString, a());
+      abuf.a(paramString, a());
       paramString.put(Integer.valueOf(2), a());
       paramString.put(Integer.valueOf(6), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId);
       paramString.put(Integer.valueOf(4), "20");
       paramString.put(Integer.valueOf(18), "GameAIO");
       paramString.put(Integer.valueOf(35), "10000144");
-      abet.a(alvx.a(), "769", "205610", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId, "76903", "1", "160", paramString);
+      abuf.a(amwn.a(), "769", "205610", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$GameInfo.gameAppId, "76903", "1", "160", paramString);
     }
   }
   
@@ -1160,11 +1161,11 @@ public class QQGamePubAccountFragment
       paramString = a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.getCurrentItem());
     }
     Intent localIntent = new Intent(getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("title", amtj.a(2131709431));
-    localIntent.putExtra("selfSet_leftViewText", getString(2131690599));
+    localIntent.putExtra("title", anvx.a(2131709778));
+    localIntent.putExtra("selfSet_leftViewText", getString(2131690676));
     localIntent.putExtra("url", "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin");
     startActivity(localIntent);
-    abet.a(alvx.a(), "769", "205018", paramString, "76902", "1", "160", new String[] { "", "", "" });
+    abuf.a(amwn.a(), "769", "205018", paramString, "76902", "1", "160", new String[] { "", "", "" });
   }
   
   public HashSet<String> getFilterCmds()
@@ -1210,7 +1211,7 @@ public class QQGamePubAccountFragment
       this.jdField_b_of_type_AndroidWidgetRelativeLayout = null;
       return true;
     }
-    GameCenterVideoViewController localGameCenterVideoViewController = atxz.a().a();
+    GameCenterVideoViewController localGameCenterVideoViewController = avdj.a().a();
     if ((localGameCenterVideoViewController != null) && (localGameCenterVideoViewController.isFullScreenMode()))
     {
       localGameCenterVideoViewController.exitFullScreen();
@@ -1228,39 +1229,39 @@ public class QQGamePubAccountFragment
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppInterface());
-    ((WebProcessManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).e();
-    ((atyd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(358)).c();
-    atzc.jdField_a_of_type_Boolean = true;
+    ((WebProcessManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.WEBPROCESS_MANAGER)).e();
+    ((avds)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER)).c();
+    aver.jdField_a_of_type_Boolean = true;
     paramBundle = new HashMap();
     paramBundle.put(Integer.valueOf(4), "8");
-    abet.a(alvx.a(), "769", "205838", "", "76902", "1", "160", paramBundle);
+    abuf.a(amwn.a(), "769", "205838", "", "76902", "1", "160", paramBundle);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559206, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559239, paramViewGroup, false);
     this.jdField_a_of_type_JavaUtilArrayList = a();
-    atyb.a().a(1);
+    avdq.a().a(1);
     paramLayoutInflater = URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenterBackground.png");
-    paramViewGroup = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363274);
+    paramViewGroup = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363339);
     paramViewGroup.setScaleType(ImageView.ScaleType.FIT_START);
     paramViewGroup.setImageDrawable(paramLayoutInflater);
-    if (!bbyp.b())
+    if (!bdfk.b())
     {
       getActivity().mSystemBarComp = null;
       getActivity().setImmersiveStatus(0);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366611));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369958));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369963));
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameStatusView = ((QQGameStatusView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380789));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366722));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370128));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370133));
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameStatusView = ((QQGameStatusView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381140));
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameStatusView.setListener(this);
     b();
     e();
     g();
-    blec.a().a(this);
-    ((QQAppInterface)alvx.a()).getMessageFacade().addObserver(this);
+    bmqt.a().a(this);
+    ((QQAppInterface)amwn.a()).getMessageFacade().addObserver(this);
     f();
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -1274,66 +1275,66 @@ public class QQGamePubAccountFragment
     //   0: iconst_0
     //   1: istore_1
     //   2: aload_0
-    //   3: invokespecial 1569	com/tencent/mobileqq/fragment/PublicBaseFragment:onDestroy	()V
-    //   6: invokestatic 1405	blec:a	()Lblec;
+    //   3: invokespecial 1581	com/tencent/mobileqq/fragment/PublicBaseFragment:onDestroy	()V
+    //   6: invokestatic 1409	bmqt:a	()Lbmqt;
     //   9: aload_0
-    //   10: invokevirtual 1571	blec:b	(Lbleb;)V
+    //   10: invokevirtual 1583	bmqt:b	(Lbmqs;)V
     //   13: aload_0
     //   14: getfield 163	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   17: ifnull +86 -> 103
     //   20: aload_0
     //   21: getfield 163	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   24: aload_0
-    //   25: getfield 103	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_Bggc	Lbggc;
-    //   28: invokevirtual 1574	com/tencent/mobileqq/app/QQAppInterface:removeObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
+    //   25: getfield 103	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_Bhow	Lbhow;
+    //   28: invokevirtual 1586	com/tencent/mobileqq/app/QQAppInterface:removeObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
     //   31: aload_0
     //   32: getfield 163	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   35: ldc_w 1299
+    //   35: ldc_w 1304
     //   38: aload_0
     //   39: getfield 72	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_c_of_type_JavaUtilMap	Ljava/util/Map;
-    //   42: invokestatic 335	atzc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/Object;)V
+    //   42: invokestatic 335	aver:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/Object;)V
     //   45: aload_0
     //   46: getfield 163	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   49: ldc_w 340
     //   52: aload_0
     //   53: getfield 76	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:e	Ljava/util/Map;
-    //   56: invokestatic 335	atzc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/Object;)V
+    //   56: invokestatic 335	aver:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/Object;)V
     //   59: aload_0
     //   60: getfield 163	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   63: ldc_w 330
     //   66: aload_0
     //   67: getfield 70	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
-    //   70: invokestatic 335	atzc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/Object;)V
+    //   70: invokestatic 335	aver:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/Object;)V
     //   73: aload_0
     //   74: getfield 163	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   77: ldc_w 1282
-    //   80: getstatic 1294	atzc:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   83: invokestatic 335	atzc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/Object;)V
+    //   77: ldc_w 1287
+    //   80: getstatic 1299	aver:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
+    //   83: invokestatic 335	aver:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/Object;)V
     //   86: aload_0
     //   87: getfield 163	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   90: sipush 358
-    //   93: invokevirtual 1501	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   96: checkcast 1507	atyd
+    //   90: getstatic 1517	com/tencent/mobileqq/app/QQManagerFactory:GAME_CENTER_MSG_MANAGER	I
+    //   93: invokevirtual 1510	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   96: checkcast 1519	avds
     //   99: iconst_0
-    //   100: invokevirtual 1576	atyd:c	(I)V
+    //   100: invokevirtual 1588	avds:c	(I)V
     //   103: aload_0
-    //   104: getfield 1309	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView	Lcom/tencent/mobileqq/gamecenter/view/GameSessionView;
+    //   104: getfield 1314	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView	Lcom/tencent/mobileqq/gamecenter/view/GameSessionView;
     //   107: ifnull +10 -> 117
     //   110: aload_0
-    //   111: getfield 1309	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView	Lcom/tencent/mobileqq/gamecenter/view/GameSessionView;
-    //   114: invokevirtual 1577	com/tencent/mobileqq/gamecenter/view/GameSessionView:b	()V
-    //   117: invokestatic 1475	atxz:a	()Latxz;
-    //   120: invokevirtual 1578	atxz:a	()V
+    //   111: getfield 1314	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_ComTencentMobileqqGamecenterViewGameSessionView	Lcom/tencent/mobileqq/gamecenter/view/GameSessionView;
+    //   114: invokevirtual 1589	com/tencent/mobileqq/gamecenter/view/GameSessionView:b	()V
+    //   117: invokestatic 1479	avdj:a	()Lavdj;
+    //   120: invokevirtual 1590	avdj:a	()V
     //   123: aload_0
     //   124: getfield 89	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   127: aconst_null
-    //   128: invokevirtual 1582	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
+    //   128: invokevirtual 1594	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
     //   131: aload_0
-    //   132: getfield 153	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_Atwa	Latwa;
+    //   132: getfield 153	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_Avbb	Lavbb;
     //   135: ifnull +10 -> 145
     //   138: aload_0
-    //   139: getfield 153	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_Atwa	Latwa;
-    //   142: invokevirtual 1584	atwa:d	()V
+    //   139: getfield 153	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_Avbb	Lavbb;
+    //   142: invokevirtual 1596	avbb:d	()V
     //   145: aload_0
     //   146: getfield 96	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   149: ifnull +105 -> 254
@@ -1353,7 +1354,7 @@ public class QQGamePubAccountFragment
     //   185: iload_1
     //   186: invokeinterface 188 2 0
     //   191: checkcast 192	com/tencent/mobileqq/gamecenter/view/GameArkView
-    //   194: invokevirtual 1585	com/tencent/mobileqq/gamecenter/view/GameArkView:c	()V
+    //   194: invokevirtual 1597	com/tencent/mobileqq/gamecenter/view/GameArkView:c	()V
     //   197: invokestatic 980	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   200: ifeq +30 -> 230
     //   203: ldc_w 320
@@ -1361,10 +1362,10 @@ public class QQGamePubAccountFragment
     //   207: new 120	java/lang/StringBuilder
     //   210: dup
     //   211: invokespecial 121	java/lang/StringBuilder:<init>	()V
-    //   214: ldc_w 1587
+    //   214: ldc_w 1599
     //   217: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   220: iload_1
-    //   221: invokevirtual 1590	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   221: invokevirtual 1602	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   224: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   227: invokestatic 894	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   230: iload_1
@@ -1374,13 +1375,13 @@ public class QQGamePubAccountFragment
     //   234: goto -82 -> 152
     //   237: astore_2
     //   238: aload_2
-    //   239: invokevirtual 1591	java/io/IOException:printStackTrace	()V
+    //   239: invokevirtual 1603	java/io/IOException:printStackTrace	()V
     //   242: goto -156 -> 86
     //   245: aload_0
     //   246: getfield 96	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   249: invokeinterface 1594 1 0
+    //   249: invokeinterface 1606 1 0
     //   254: aload_0
-    //   255: invokespecial 1596	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:h	()V
+    //   255: invokespecial 1608	com/tencent/mobileqq/gamecenter/fragment/QQGamePubAccountFragment:h	()V
     //   258: return
     //   259: astore_2
     //   260: ldc_w 320
@@ -1388,7 +1389,7 @@ public class QQGamePubAccountFragment
     //   264: new 120	java/lang/StringBuilder
     //   267: dup
     //   268: invokespecial 121	java/lang/StringBuilder:<init>	()V
-    //   271: ldc_w 1598
+    //   271: ldc_w 1610
     //   274: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   277: aload_2
     //   278: invokevirtual 323	java/lang/Throwable:toString	()Ljava/lang/String;
@@ -1414,8 +1415,8 @@ public class QQGamePubAccountFragment
     super.onDestroyView();
     try
     {
-      ((QQAppInterface)alvx.a()).getMessageFacade().deleteObserver(this);
-      atyb.a().e();
+      ((QQAppInterface)amwn.a()).getMessageFacade().deleteObserver(this);
+      avdq.a().e();
       return;
     }
     catch (Throwable localThrowable)
@@ -1427,12 +1428,12 @@ public class QQGamePubAccountFragment
   public void onPause()
   {
     super.onPause();
-    GameCenterVideoViewController localGameCenterVideoViewController = atxz.a().a();
+    GameCenterVideoViewController localGameCenterVideoViewController = avdj.a().a();
     if (localGameCenterVideoViewController != null) {
       localGameCenterVideoViewController.pause();
     }
-    if (a(this.jdField_a_of_type_Atzp)) {
-      this.jdField_a_of_type_Atzp.b();
+    if (a(this.jdField_a_of_type_Avfh)) {
+      this.jdField_a_of_type_Avfh.b();
     }
   }
   
@@ -1476,10 +1477,10 @@ public class QQGamePubAccountFragment
         localThrowable.printStackTrace();
       }
     }
-    if (a(this.jdField_a_of_type_Atzp)) {
-      this.jdField_a_of_type_Atzp.a();
+    if (a(this.jdField_a_of_type_Avfh)) {
+      this.jdField_a_of_type_Avfh.a();
     }
-    ((atyd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(358)).c(0);
+    ((avds)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER)).c(0);
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().setReaded("2747277822", 1008, true, true);
     }

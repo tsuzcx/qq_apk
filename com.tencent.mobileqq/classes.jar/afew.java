@@ -1,10 +1,28 @@
-class afew
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class afew
+  implements View.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString;
+  public afew(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public afew(afeu paramafeu, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a.c = false;
+    this.a.t = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.d != 22) {
+      this.a.b.setVisibility(0);
+    }
+    if (this.a.jdField_a_of_type_Afgk != null) {
+      this.a.jdField_a_of_type_Afgk.a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

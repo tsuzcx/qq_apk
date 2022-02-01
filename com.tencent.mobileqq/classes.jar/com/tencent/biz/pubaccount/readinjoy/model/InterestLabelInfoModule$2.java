@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import pvd;
+import qfx;
 
 public class InterestLabelInfoModule$2
   implements Runnable
@@ -13,13 +13,13 @@ public class InterestLabelInfoModule$2
   {
     if ((this.a != null) && (!this.a.isEmpty()))
     {
-      pvd.a(this.this$0).clear();
+      qfx.a(this.this$0).clear();
       Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         InterestLabelInfo localInterestLabelInfo = (InterestLabelInfo)localIterator.next();
         this.this$0.a(localInterestLabelInfo);
-        pvd.a(this.this$0).put(Integer.valueOf(localInterestLabelInfo.mInterestLabelID), localInterestLabelInfo);
+        qfx.a(this.this$0).put(Integer.valueOf(localInterestLabelInfo.mInterestLabelID), localInterestLabelInfo);
       }
     }
   }

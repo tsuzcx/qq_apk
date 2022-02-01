@@ -1,16 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
-class nvj
-  implements View.OnClickListener
+public class nvj
+  extends AbsPreDownloadTask
 {
-  nvj(nvi paramnvi) {}
+  public BidDownloader a;
   
-  public void onClick(View paramView)
+  public nvj(QQAppInterface paramQQAppInterface, String paramString, BidDownloader paramBidDownloader)
   {
-    this.a.a.a(this.a.a.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramQQAppInterface, paramString);
+    this.a = paramBidDownloader;
+  }
+  
+  public void realCancel()
+  {
+    QLog.i(nvg.a, 1, "cancel predown bid=" + this.a.a);
+  }
+  
+  public void realStart()
+  {
+    QLog.i(nvg.a, 1, "start predown bid=" + this.a.a);
+    this.a.a();
   }
 }
 

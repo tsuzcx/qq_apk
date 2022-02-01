@@ -1,67 +1,56 @@
-import android.content.Context;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class xhr
-  implements xhq
+  extends xgs
 {
-  private int jdField_a_of_type_Int;
-  private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  public xhr(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public xhr(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, boolean paramBoolean)
+  public void d()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    xvv.a("Q.qqstory.detail.SpannableStringUtils", "on nick click. unionId = %s.", paramString);
-    if ((paramInt == 1002) || (paramInt == 1003)) {}
-    Object localObject;
-    do
-    {
-      return;
-      localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        vpl.a((Context)localObject, 12, paramString);
-      }
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localObject = "clk_reply_nick";
-      paramString = "2";
-      if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem instanceof VideoListFeedItem)) {
-        break label157;
-      }
-      paramString = (VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-      paramInt = xwa.a(paramString);
-      if (!paramString.getOwner().isMe()) {
-        break label151;
-      }
-      paramString = "1";
+    boolean bool = false;
+    super.d();
+    String str1 = this.a.jdField_a_of_type_JavaLangString;
+    String str2 = VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)];
+    if (this.a.a().getVisibility() == 0) {
+      bool = true;
     }
-    for (;;)
+    ykq.d(str1, "onResume, current state = %s, startBtn show = %s", new Object[] { str2, Boolean.valueOf(bool) });
+    if (this.a.c()) {
+      this.a.a(10, "onResume");
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    VideoViewVideoHolder.a(this.a, false);
+    ykq.d(this.a.jdField_a_of_type_JavaLangString, "onPause, current state = %s", new Object[] { VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)] });
+    this.a.a(0, true, "onPause");
+  }
+  
+  public void g()
+  {
+    super.g();
+    VideoViewVideoHolder.a(this.a).removeCallbacksAndMessages(null);
+    this.a.jdField_a_of_type_Xii.a();
+    this.a.a(0, true, "onDestroy");
+    this.a.jdField_a_of_type_Xjm.a();
+    this.a.jdField_a_of_type_Xjm.e();
+    wzb localwzb = VideoViewVideoHolder.a(this.a);
+    VideoViewVideoHolder.a(this.a, null);
+    if (localwzb != null) {
+      localwzb.a();
+    }
+    if (VideoViewVideoHolder.a(this.a) != null)
     {
-      xwa.a("home_page", (String)localObject, paramInt, 0, new String[] { paramString, xwa.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      return;
-      localObject = "clk_like_name";
-      break;
-      label151:
-      paramString = "2";
-      continue;
-      label157:
-      paramInt = 4;
+      VideoViewVideoHolder.a(this.a).recycle();
+      VideoViewVideoHolder.a(this.a, null);
+    }
+    if ((this.a.jdField_a_of_type_Zgh != null) && (this.a.jdField_a_of_type_Zgh.isShowing())) {
+      this.a.jdField_a_of_type_Zgh.dismiss();
     }
   }
 }

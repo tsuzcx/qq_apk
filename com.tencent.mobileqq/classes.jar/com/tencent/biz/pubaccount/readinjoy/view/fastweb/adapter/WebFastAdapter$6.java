@@ -8,13 +8,13 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ssq;
-import swa;
+import tgb;
+import tjl;
 
 public class WebFastAdapter$6
   implements Runnable
 {
-  public WebFastAdapter$6(ssq paramssq, DownloadInfo paramDownloadInfo) {}
+  public WebFastAdapter$6(tgb paramtgb, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -34,8 +34,8 @@ public class WebFastAdapter$6
           j = i;
           if (localJSONObject.optString("kd_ug_rsp_info") != null)
           {
-            localObject = new swa(localJSONObject.optString("kd_ug_rsp_info"), ssq.a(localJSONObject));
-            if ((TextUtils.isEmpty(((swa)localObject).b)) || (!((swa)localObject).b.equals(this.a.d))) {
+            localObject = new tjl(localJSONObject.optString("kd_ug_rsp_info"), tgb.a(localJSONObject));
+            if ((TextUtils.isEmpty(((tjl)localObject).b)) || (!((tjl)localObject).b.equals(this.a.d))) {
               continue;
             }
             j = i;
@@ -53,7 +53,7 @@ public class WebFastAdapter$6
             i = k;
             localJSONObject = localJSONObject.getJSONObject("id_recommend_category_txt");
             i = k;
-            localJSONObject.put("text", ((swa)localObject).f);
+            localJSONObject.put("text", ((tjl)localObject).f);
             i = k;
             localJSONObject.put("label_ug_progress_progress", 0);
           }
@@ -74,7 +74,7 @@ public class WebFastAdapter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,71 @@
-import java.util.Calendar;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import tencent.im.msg.im_msg_body.RichText;
 
-class axcf
-  implements apri
+public class axcf
+  extends axch<MessageForPtt>
 {
-  axcf(axcb paramaxcb) {}
+  public axcf(MessageForPtt paramMessageForPtt)
+  {
+    super(paramMessageForPtt);
+  }
   
-  public int a()
+  protected int a()
   {
     return 3;
   }
   
-  public int a(int paramInt)
+  public List<MsgBackupResEntity> a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
+    MsgBackupResEntity localMsgBackupResEntity = a();
+    localMsgBackupResEntity.msgSubType = 15;
+    localMsgBackupResEntity.filePath = ((MessageForPtt)this.a).getLocalFilePath();
+    if (!a(localMsgBackupResEntity.filePath)) {
+      return null;
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
+    a(localMsgBackupResEntity.filePath, localMsgBackupResEntity);
+    Object localObject = a(15);
+    ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
+    ((HashMap)localObject).put("uuid", ((MessageForPtt)this.a).urlAtServer);
+    ((HashMap)localObject).put("md5", ((MessageForPtt)this.a).md5);
+    ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
+    if (((MessageForPtt)this.a).istroop == 1) {
+      ((HashMap)localObject).put("chatType", "1");
+    }
+    for (;;)
+    {
+      localMsgBackupResEntity.extraDataStr = a((Map)localObject);
+      localObject = new ArrayList();
+      ((List)localObject).add(localMsgBackupResEntity);
+      return localObject;
+      if (((MessageForPtt)this.a).istroop == 3000) {
+        ((HashMap)localObject).put("chatType", "2");
+      } else {
+        ((HashMap)localObject).put("chatType", "3");
+      }
+    }
   }
   
-  public String a(int paramInt1, int paramInt2)
+  public void a()
   {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + amtj.a(2131706422);
-    case 1: 
-      return paramInt2 + 1 + amtj.a(2131706414);
+    Object localObject = (MessageForPtt)this.a;
+    a("packMsg uinType:" + ((MessageForPtt)localObject).istroop);
+    localObject = ((MessageForPtt)this.a).getRichText();
+    ((MessageForPtt)this.a).richText = ((im_msg_body.RichText)localObject);
+  }
+  
+  public void b()
+  {
+    ((MessageForPtt)this.a).url = axcg.a(((MessageForPtt)this.a).md5, ((MessageForPtt)this.a).selfuin);
+    if (((MessageForPtt)this.a).isSendFromLocal()) {
+      ((MessageForPtt)this.a).issend = 2;
     }
-    return paramInt2 + 1 + amtj.a(2131706402);
+    ((MessageForPtt)this.a).isReadPtt = true;
+    ((MessageForPtt)this.a).serial();
   }
 }
 

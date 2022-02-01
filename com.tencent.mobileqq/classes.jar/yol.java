@@ -1,20 +1,68 @@
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi.2.1;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi.2.2;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
-class yol
-  implements View.OnClickListener
+public class yol
+  implements bldp
 {
-  yol(yok paramyok, int paramInt) {}
+  yol(yoj paramyoj) {}
   
-  public void onClick(View paramView)
+  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    if (this.jdField_a_of_type_Yok.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      this.jdField_a_of_type_Yok.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Yok.jdField_b_of_type_ComTencentImageURLImageView);
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.c(l);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
+  
+  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  {
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
+  {
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L)
+    {
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!NetworkUtil.isNetworkAvailable(this.a.a())) {
+        break label118;
+      }
+      if (this.a.jdField_a_of_type_Wlr != null) {
+        this.a.jdField_a_of_type_Wlr.a();
+      }
+      this.a.g();
+      new Handler(Looper.getMainLooper()).postDelayed(new EditVideoPoi.2.1(this), 300L);
+    }
+    for (;;)
+    {
+      ((ajje)paramView.getTag()).a = true;
+      return true;
+      l = this.a.jdField_a_of_type_Long;
+      break;
+      label118:
+      new Handler(Looper.getMainLooper()).postDelayed(new EditVideoPoi.2.2(this), 300L);
+    }
+  }
+  
+  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

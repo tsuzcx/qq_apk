@@ -1,6 +1,6 @@
-public abstract interface aogf
+public abstract class aogf
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a();
 }
 
 

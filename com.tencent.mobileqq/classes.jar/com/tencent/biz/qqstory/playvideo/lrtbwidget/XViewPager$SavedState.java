@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.v4.os.ParcelableCompat;
 import android.view.View.BaseSavedState;
-import wum;
+import xjh;
 
 public class XViewPager$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator<SavedState> CREATOR = ParcelableCompat.newCreator(new wum());
+  public static final Parcelable.Creator<SavedState> CREATOR = ParcelableCompat.newCreator(new xjh());
   int jdField_a_of_type_Int;
   Parcelable jdField_a_of_type_AndroidOsParcelable;
   ClassLoader jdField_a_of_type_JavaLangClassLoader;

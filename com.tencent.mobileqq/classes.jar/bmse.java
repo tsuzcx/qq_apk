@@ -1,43 +1,58 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import dov.com.qq.im.capture.data.LockedCategory;
+import android.text.TextUtils;
 
-class bmse
-  implements DialogInterface.OnClickListener
+public class bmse
+  implements Cloneable
 {
-  bmse(bmsd parambmsd, Context paramContext) {}
+  public final int a;
+  public final long a;
+  public bmsg a;
+  public final String a;
+  public final int b;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  public String f;
+  public final String g;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private bmse(int paramInt1, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt2, String paramString4, String paramString5, String paramString6)
   {
-    this.jdField_a_of_type_Bmsd.b(this.jdField_a_of_type_Bmsd.a.a);
-    this.jdField_a_of_type_Bmsd.a = null;
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Bmsd.c = true;
-      if ((BaseActivity.sTopActivity instanceof SplashActivity))
-      {
-        paramDialogInterface = (SplashActivity)BaseActivity.sTopActivity;
-        Intent localIntent = new Intent();
-        localIntent.putExtra("main_tab_id", 8);
-        localIntent.putExtra("fragment_id", 1);
-        localIntent.putExtra("switch_anim", true);
-        paramDialogInterface.b(localIntent);
-      }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.g = paramString6;
+  }
+  
+  public static bmse a(int paramInt1, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt2, String paramString4, String paramString5, String paramString6)
+  {
+    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString5)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)) || (paramLong < 0L)) {
+      throw new IllegalArgumentException("The params fileName, pDirKey, fileId, sha and fileSize should be valid.");
     }
-    else
+    return new bmse(paramInt1, paramString1, paramString2, paramString3.toLowerCase(), paramLong, paramInt2, paramString4, paramString5, paramString6);
+  }
+  
+  public bmse a()
+  {
+    try
     {
+      bmse localbmse = (bmse)super.clone();
+      return localbmse;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString3)) && (TextUtils.isEmpty(paramString4))) {
       return;
     }
-    paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.putExtra("fragment_id", 1);
-    paramDialogInterface.setFlags(67108864);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_Bmsg = new bmsg(this, paramString1, paramInt, paramString2, paramString3, paramString4, paramString5, null);
   }
 }
 

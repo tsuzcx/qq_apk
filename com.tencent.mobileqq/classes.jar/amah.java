@@ -1,33 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-class amah
-  implements View.OnClickListener
+public class amah
+  implements DialogInterface.OnClickListener
 {
-  amah(amad paramamad) {}
+  public amah(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((amad.a(this.a).d()) || (amad.b(this.a)))
-    {
-      amad.b(this.a, false);
-      amad.a(this.a).a();
-      amad.c(this.a).setVisibility(8);
-      amad.b(this.a).setVisibility(8);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (amad.a(this.a).c())
-      {
-        amad.b(this.a, true);
-        amad.a(this.a).b();
-        amad.b(this.a).setVisibility(0);
-      }
-    }
+    ShortVideoPlayActivity.b(this.a);
   }
 }
 

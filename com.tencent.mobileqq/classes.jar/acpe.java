@@ -1,37 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.GetAioListCallback;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
 
 public class acpe
-  implements DialogInterface.OnClickListener
+  implements QQMessageFacade.GetAioListCallback
 {
-  public acpe(AddFriendLogicActivity paramAddFriendLogicActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGetAioList(String paramString, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean, List<ChatMessage> paramList, QQMessageFacade paramQQMessageFacade)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent(this.a, LoginActivity.class);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface.putExtra("if_check_account_same", true);
-      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
-      paramDialogInterface.putExtra("appid", AddFriendLogicActivity.c(this.a));
-      paramDialogInterface.putExtra("openid", AddFriendLogicActivity.jdField_a_of_type_JavaLangString);
-      paramDialogInterface.putExtra("key_action", AddFriendLogicActivity.class.getSimpleName());
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-      this.a.startActivity(paramDialogInterface);
-      this.a.finish();
-    }
-    while (paramInt != 0) {
+    if ((paramInt1 != 1001) && (paramInt1 != 10002) && (acnh.a(paramInt1) != 1032)) {
       return;
     }
-    this.a.setResult(0);
-    this.a.finish();
+    if (paramList == null) {}
+    for (paramInt1 = 0;; paramInt1 = paramList.size())
+    {
+      paramInt1 -= 1;
+      while (paramInt1 >= 0)
+      {
+        paramString = (ChatMessage)paramList.get(paramInt1);
+        if ((paramString != null) && (paramString.msgtype == -4011)) {
+          paramList.remove(paramString);
+        }
+        paramInt1 -= 1;
+      }
+      break;
+    }
   }
 }
 

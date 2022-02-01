@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.nearby;
 
-import awjn;
-import awoz;
+import axpp;
+import axvb;
 
 public class NearbyProxy$6
   implements Runnable
 {
-  public NearbyProxy$6(awjn paramawjn, awoz paramawoz, int paramInt, Object[] paramArrayOfObject) {}
+  public NearbyProxy$6(axpp paramaxpp, axvb paramaxvb, int paramInt, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Awoz.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.jdField_a_of_type_Axvb.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

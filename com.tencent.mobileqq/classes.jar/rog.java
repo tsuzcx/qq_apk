@@ -1,32 +1,85 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.CheckBox;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-import java.util.List;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
 
-public class rog
-  extends rof
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterArticleOnePic;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rog
+  extends roe
 {
-  public rog(Context paramContext, List<? extends Map<String, ?>> paramList, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void a()
   {
-    super(paramContext, paramList, paramInt, paramArrayOfString, paramArrayOfInt, arrayOfInt);
-  }
-  
-  protected void a(View paramView, ResultRecord paramResultRecord)
-  {
-    if ((paramView == null) || (FollowingListFragment.a(this.b) == null) || (FollowingListFragment.a(this.b).a() == null) || (FollowingListFragment.a(this.b).a().isEmpty())) {
-      return;
+    Object localObject2 = null;
+    Object localObject1 = a();
+    if (localObject1 != null) {
+      ((SocializeFeedsInfo)localObject1).a = 1;
     }
-    paramView = (CheckBox)paramView.findViewById(2131364530);
-    paramView.setBackgroundResource(2130849321);
-    if (FollowingListFragment.a(this.b).a().contains(paramResultRecord.a()))
+    Object localObject3 = a();
+    localObject1 = a();
+    if (localObject1 != null)
     {
-      paramView.setEnabled(false);
-      return;
+      localObject1 = ((rre)localObject1).a;
+      if (localObject1 == null) {}
     }
-    paramView.setEnabled(true);
+    for (localObject1 = ((rqu)localObject1).b;; localObject1 = null)
+    {
+      ((BaseArticleInfo)localObject3).mTitle = ((String)localObject1);
+      localObject1 = a();
+      if (localObject1 != null) {
+        ((rrl)localObject1).a = true;
+      }
+      try
+      {
+        localObject3 = a();
+        localObject1 = localObject2;
+        if (localObject3 != null)
+        {
+          localObject3 = ((rre)localObject3).a;
+          localObject1 = localObject2;
+          if (localObject3 != null)
+          {
+            localObject3 = ((rqu)localObject3).a;
+            localObject1 = localObject2;
+            if (localObject3 != null)
+            {
+              localObject3 = (articlesummary.PGCPicInfo)((ArrayList)localObject3).get(0);
+              localObject1 = localObject2;
+              if (localObject3 != null)
+              {
+                localObject3 = ((articlesummary.PGCPicInfo)localObject3).bytes_pic_url;
+                localObject1 = localObject2;
+                if (localObject3 != null)
+                {
+                  localObject3 = ((PBBytesField)localObject3).get();
+                  localObject1 = localObject2;
+                  if (localObject3 != null) {
+                    localObject1 = ((ByteStringMicro)localObject3).toStringUtf8();
+                  }
+                }
+              }
+            }
+          }
+        }
+        if (localObject1 != null) {
+          a().mSinglePicture = new URL((String)localObject1);
+        }
+        return;
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        localMalformedURLException.printStackTrace();
+        return;
+      }
+      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+      {
+        localIndexOutOfBoundsException.printStackTrace();
+      }
+    }
   }
 }
 

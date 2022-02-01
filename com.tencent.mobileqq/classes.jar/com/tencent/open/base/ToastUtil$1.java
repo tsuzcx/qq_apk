@@ -1,19 +1,19 @@
 package com.tencent.open.base;
 
 import android.widget.Toast;
-import bhpc;
-import bhzt;
+import bizw;
+import bjkv;
 
 public class ToastUtil$1
   implements Runnable
 {
-  public ToastUtil$1(bhzt parambhzt, String paramString, int paramInt) {}
+  public ToastUtil$1(bjkv parambjkv, String paramString, int paramInt) {}
   
   public void run()
   {
     if (this.this$0.a == null)
     {
-      this.this$0.a = Toast.makeText(bhpc.a().a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.this$0.a = Toast.makeText(bizw.a().a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
       this.this$0.a.show();
       return;
     }

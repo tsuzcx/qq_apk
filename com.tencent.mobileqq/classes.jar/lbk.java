@@ -1,18 +1,10 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public class lbk
+public abstract interface lbk
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<Integer> a;
-  public HashMap<String, lbj> a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public abstract String a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract String b();
 }
 
 

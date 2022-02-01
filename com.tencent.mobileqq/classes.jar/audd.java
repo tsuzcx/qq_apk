@@ -1,21 +1,4 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class audd
-  implements DialogInterface.OnDismissListener
-{
-  audd(aucz paramaucz) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.a.a)
-    {
-      this.a.a = false;
-      aucz.a(this.a).finish();
-    }
-  }
-}
+public abstract interface audd {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

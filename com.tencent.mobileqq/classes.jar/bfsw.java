@@ -1,38 +1,20 @@
-import android.os.Message;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-final class bfsw
-  implements View.OnTouchListener
+public class bfsw
+  implements bimp
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bfsw(ReciteRecordLayout paramReciteRecordLayout) {}
+  
+  public void onClick(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        bfsu.b(false);
-        bfsu.a = f1;
-        bfsu.b = f2;
-        paramMotionEvent = Message.obtain();
-        paramMotionEvent.what = bfsz.a;
-        paramMotionEvent.obj = paramView;
-        bfsu.a().sendMessageDelayed(paramMotionEvent, 1000L);
-        return false;
-      } while ((bfsu.a()) || ((Math.abs(bfsu.a - f1) <= 20.0F) && (Math.abs(bfsu.b - f2) <= 20.0F)));
-      bfsu.b(true);
-      bfsu.a().removeMessages(bfsz.a);
-      return false;
-    }
-    bfsu.a().removeMessages(bfsz.a);
-    return false;
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

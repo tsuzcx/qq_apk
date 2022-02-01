@@ -1,20 +1,69 @@
-import android.content.Context;
 import android.os.Bundle;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
+import com.tencent.device.msg.activities.DeviceMsgSettingActivity.2.1;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class abkg
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class abkg
+  implements BusinessObserver
 {
-  abkg(abkf paramabkf, AdQQMINIProgramAdapter.Params paramParams, GdtAd paramGdtAd) {}
+  public abkg(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    abrl.b("GdtQQMINIProgramAdapter", String.format("onLaunchResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
-    AdReporterForAnalysis.reportForLaunchQQMINIProgramEND((Context)this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter$Params.context.get(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramBoolean);
+    this.a.jdField_a_of_type_Bisl.dismiss();
+    if (!paramBoolean)
+    {
+      bjkv.a().a(this.a.getString(2131692815));
+      DeviceMsgSettingActivity.b(this.a);
+      return;
+    }
+    if (paramBundle.getInt("cgiResultCode", -1) != 0)
+    {
+      bjkv.a().a(this.a.getString(2131692815));
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramBundle = new JSONObject(new String(paramBundle.getByteArray("data")));
+        if (paramBundle.optInt("ret", -1) != 0)
+        {
+          bjkv.a().a(this.a.getString(2131692815));
+          this.a.jdField_a_of_type_AndroidOsHandler.post(new DeviceMsgSettingActivity.2.1(this));
+          return;
+        }
+        paramBundle = paramBundle.optJSONArray("data");
+        if (paramBundle == null)
+        {
+          bjkv.a().a(this.a.getString(2131694311));
+          DeviceMsgSettingActivity.b(this.a);
+          return;
+        }
+      }
+      catch (JSONException paramBundle)
+      {
+        bjko.e("DeviceMsgSettingActivity", "get msg setting json format faild!");
+        bjkv.a().a(this.a.getString(2131692815));
+        continue;
+        paramInt = 0;
+      }
+      while (paramInt < paramBundle.length())
+      {
+        JSONObject localJSONObject = paramBundle.getJSONObject(paramInt);
+        abki localabki = new abki(this.a, null);
+        localabki.jdField_a_of_type_Int = localJSONObject.getInt("id");
+        localabki.jdField_a_of_type_JavaLangString = localJSONObject.getString("name");
+        localabki.b = localJSONObject.getInt("enable");
+        this.a.jdField_a_of_type_JavaUtilArrayList.add(localabki);
+        paramInt += 1;
+      }
+    }
   }
 }
 

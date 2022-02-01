@@ -1,45 +1,104 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.album.AlbumListAdapter;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aknh
-  extends AbsRecentStatus
+  extends akly
 {
-  public static int a = 16;
+  private List<String> a;
   
-  public int[] declareStatus()
+  aknh(AlbumListFragment paramAlbumListFragment)
   {
-    return new int[] { 11 };
+    super(paramAlbumListFragment);
   }
   
-  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return true;
-  }
-  
-  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
-  {
-    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
-    do
+    paramView = super.getView(paramInt, paramView, paramViewGroup);
+    paramViewGroup = (AlbumListFragment)this.mFragment;
+    if ((paramViewGroup != null) && (paramViewGroup.isAdded()) && (!paramViewGroup.isDetached()) && (!paramViewGroup.isRemoving()))
     {
-      do
+      paramViewGroup = paramViewGroup.listAdapter;
+      if (paramViewGroup != null)
       {
-        return false;
-      } while ((paramRecentBaseData.getRecentUserType() != 3000) && (paramRecentBaseData.getRecentUserType() != 1));
-      paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
-      String str = paramRecentBaseData.getRecentUserUin();
-      paramIMCoreAppRuntime = ((TroopManager)paramIMCoreAppRuntime.getManager(52)).a(str);
-    } while ((paramIMCoreAppRuntime == null) || (!paramIMCoreAppRuntime.getStudyRoomOpen()));
-    paramRecentBaseData.mStatus = 11;
-    return false;
+        paramViewGroup = paramViewGroup.getItem(paramInt);
+        if ((paramViewGroup != null) && ((paramView instanceof TextView))) {
+          ((TextView)paramView).setText(paramViewGroup.name);
+        }
+      }
+    }
+    return paramView;
   }
   
-  public int priority()
+  public void initData(Intent paramIntent)
   {
-    return a;
+    if (paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 0) == 5) {
+      paramIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 6);
+    }
+    super.initData(paramIntent);
+    this.mPhotoCommonData.albumName = paramIntent.getStringExtra("ALBUM_NAME");
+    paramIntent = (AlbumListFragment)this.mFragment;
+    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()))
+    {
+      paramIntent = bmtv.a(paramIntent.getActivity().getApplicationContext(), this.mPhotoCommonData.myUin, "pref_select_album");
+      if (!TextUtils.isEmpty(paramIntent)) {
+        break label173;
+      }
+    }
+    label173:
+    for (paramIntent = new ArrayList();; paramIntent = bmtv.a(paramIntent))
+    {
+      this.a = paramIntent;
+      if ((this.a != null) && (!this.a.isEmpty())) {
+        this.mPhotoCommonData.albumId = ((String)this.a.get(0));
+      }
+      if (TextUtils.isEmpty(this.mPhotoCommonData.albumId)) {
+        this.mPhotoCommonData.albumId = "$RecentAlbumId";
+      }
+      return;
+    }
+  }
+  
+  public boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
+  {
+    boolean bool = super.onItemClick(paramQQAlbumInfo, paramInt, paramIntent);
+    if (!TextUtils.isEmpty(this.mPhotoCommonData.albumName)) {
+      paramIntent.putExtra("ALBUM_NAME", this.mPhotoCommonData.albumName);
+    }
+    paramIntent = (AlbumListFragment)this.mFragment;
+    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()) && (this.a != null)) {
+      if (!TextUtils.isEmpty(paramQQAlbumInfo._id))
+      {
+        if ((this.a.contains(paramQQAlbumInfo._id)) && (!TextUtils.equals(paramQQAlbumInfo._id, (CharSequence)this.a.get(0)))) {
+          this.a.remove(paramQQAlbumInfo._id);
+        }
+        if (!this.a.isEmpty()) {
+          break label199;
+        }
+        this.a.add(paramQQAlbumInfo._id);
+      }
+    }
+    for (;;)
+    {
+      bmtv.a(paramIntent.getActivity().getApplicationContext(), this.mPhotoCommonData.myUin, "pref_select_album", bmtv.a(this.a.iterator()));
+      return bool;
+      label199:
+      this.a.set(0, paramQQAlbumInfo._id);
+    }
+  }
+  
+  public void queryAlbumList(int paramInt)
+  {
+    super.queryAlbumList(-1);
   }
 }
 

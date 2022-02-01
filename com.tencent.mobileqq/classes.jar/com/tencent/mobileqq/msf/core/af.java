@@ -35,7 +35,7 @@ final class af
     //   56: new 54	com/tencent/qphone/base/util/Cryptor
     //   59: dup
     //   60: invokespecial 55	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   63: astore 6
+    //   63: astore 4
     //   65: new 57	java/io/RandomAccessFile
     //   68: dup
     //   69: getstatic 34	com/tencent/mobileqq/msf/core/ab:ac	Ljava/lang/String;
@@ -50,13 +50,13 @@ final class af
     //   83: invokevirtual 65	java/io/RandomAccessFile:length	()J
     //   86: l2i
     //   87: newarray byte
-    //   89: astore 4
+    //   89: astore 6
     //   91: aload_2
     //   92: astore_1
     //   93: aload_2
     //   94: astore_3
     //   95: aload_2
-    //   96: aload 4
+    //   96: aload 6
     //   98: invokevirtual 69	java/io/RandomAccessFile:read	([B)I
     //   101: pop
     //   102: aload_2
@@ -65,8 +65,8 @@ final class af
     //   105: astore_3
     //   106: new 24	java/lang/String
     //   109: dup
-    //   110: aload 6
-    //   112: aload 4
+    //   110: aload 4
+    //   112: aload 6
     //   114: ldc 71
     //   116: invokevirtual 75	java/lang/String:getBytes	()[B
     //   119: invokevirtual 79	com/tencent/qphone/base/util/Cryptor:decrypt	([B[B)[B
@@ -449,7 +449,7 @@ final class af
     //   29	552	3	localObject6	Object
     //   34	376	4	localObject7	Object
     //   6	287	5	str4	java.lang.String
-    //   63	48	6	localCryptor	com.tencent.qphone.base.util.Cryptor
+    //   89	24	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
     //   30	36	546	java/lang/Exception

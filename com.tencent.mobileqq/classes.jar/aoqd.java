@@ -1,21 +1,20 @@
-import com.tencent.ark.ark.VariantWrapper;
-
-class aoqd
-  implements afwg
+public class aoqd
 {
-  aoqd(aoqa paramaoqa, long paramLong) {}
-  
-  public void a()
+  public static String a(long paramLong)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aoqa.a(this.jdField_a_of_type_Long);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if (paramLong <= 0L) {
+      return "";
     }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    this.jdField_a_of_type_Aoqa.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    if (paramLong < 1024L) {
+      return paramLong + "B";
+    }
+    if (paramLong < 1048576L) {
+      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F) }) + "K";
+    }
+    if (paramLong < 1073741824L) {
+      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) }) + "M";
+    }
+    return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) }) + "G";
   }
 }
 

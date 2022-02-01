@@ -45,14 +45,14 @@ public class SmallColorNoteItem
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (paramBoolean) {}
-    for (this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558922, paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558921, paramViewGroup, false))
+    for (this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558949, paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558948, paramViewGroup, false))
     {
       paramViewGroup = this.jdField_a_of_type_AndroidViewView;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131365107));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgFrameLayout = ((AutoBgFrameLayout)paramViewGroup.findViewById(2131371888));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramViewGroup.findViewById(2131371889));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371899));
-      this.b = ((TextView)paramViewGroup.findViewById(2131371897));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131365192));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgFrameLayout = ((AutoBgFrameLayout)paramViewGroup.findViewById(2131372079));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramViewGroup.findViewById(2131372080));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372090));
+      this.b = ((TextView)paramViewGroup.findViewById(2131372088));
       return;
     }
   }

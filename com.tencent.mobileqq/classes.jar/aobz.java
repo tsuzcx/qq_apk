@@ -1,19 +1,34 @@
-import android.opengl.GLES20;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class aobz
-  implements aokx
+public class aobz
+  extends BusinessHandler
 {
-  aobz(aoby paramaoby) {}
-  
-  public void a()
+  aobz(QQAppInterface paramQQAppInterface)
   {
-    GLES20.glUniform1i(aoby.a(this.a), aoby.b(this.a));
+    super(paramQQAppInterface);
   }
   
-  public void a(int paramInt)
+  public Class<? extends BusinessObserver> observerClass()
   {
-    aoby.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
-    aocj.a("glGetUniformLocation uDisplayType");
+    return aoca.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("QzoneService.GetNewAndUnread".equals(paramToServiceMsg.getServiceCmd()))
+    {
+      if (paramObject == null) {
+        notifyUI(1, false, null);
+      }
+    }
+    else {
+      return;
+    }
+    notifyUI(1, true, null);
   }
 }
 

@@ -18,16 +18,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import nnv;
-import nnx;
-import nny;
-import noe;
-import nom;
-import non;
-import nop;
-import npk;
-import npn;
-import npo;
+import nuw;
+import nuy;
+import nuz;
+import nvf;
+import nvn;
+import nvo;
+import nvq;
+import nwl;
+import nwo;
+import nwp;
 
 public class BidDownloader
   implements Handler.Callback
@@ -36,18 +36,18 @@ public class BidDownloader
   public static BidDownloader.WifiListener a;
   public static ArrayList<BidDownloader> a;
   public static HashMap<String, Integer> a;
-  public static nom a;
-  public static non a;
+  public static nvn a;
+  public static nvo a;
   public static String d;
   public static boolean g;
   public int a;
   public Handler a;
   public String a;
-  public nnv a;
+  public nuw a;
   public boolean a;
   public int b;
   public String b;
-  public nnv b;
+  public nuw b;
   public boolean b;
   public int c;
   public String c;
@@ -59,12 +59,12 @@ public class BidDownloader
   
   static
   {
-    jdField_a_of_type_Non = new npk();
-    jdField_a_of_type_Nom = new nop();
+    jdField_a_of_type_Nvo = new nwl();
+    jdField_a_of_type_Nvn = new nvq();
     jdField_d_of_type_JavaLangString = "BidDownloader";
   }
   
-  public BidDownloader(String paramString, AppRuntime paramAppRuntime, nnv paramnnv, boolean paramBoolean, int paramInt)
+  public BidDownloader(String paramString, AppRuntime paramAppRuntime, nuw paramnuw, boolean paramBoolean, int paramInt)
   {
     this.jdField_a_of_type_Boolean = true;
     if (TextUtils.isEmpty(paramString)) {
@@ -76,14 +76,14 @@ public class BidDownloader
       jdField_a_of_type_JavaUtilHashMap = new HashMap();
       jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader$WifiListener = new BidDownloader.WifiListener();
     }
-    this.jdField_a_of_type_Nnv = paramnnv;
+    this.jdField_a_of_type_Nuw = paramnuw;
     jdField_a_of_type_AndroidContentContext = paramAppRuntime.getApplication().getApplicationContext();
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (paramInt == 1)
     {
       this.jdField_b_of_type_Boolean = true;
-      paramString = noe.b(this.jdField_a_of_type_JavaLangString);
+      paramString = nvf.b(this.jdField_a_of_type_JavaLangString);
       if (!TextUtils.isEmpty(paramString))
       {
         if (!this.e) {
@@ -293,8 +293,8 @@ public class BidDownloader
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Nnv != null) {
-      this.jdField_a_of_type_Nnv.loaded(null, paramInt1);
+    if (this.jdField_a_of_type_Nuw != null) {
+      this.jdField_a_of_type_Nuw.loaded(null, paramInt1);
     }
   }
   
@@ -384,10 +384,10 @@ public class BidDownloader
     } while (!QLog.isColorLevel());
     QLog.i(jdField_d_of_type_JavaLangString, 2, jdField_a_of_type_JavaUtilHashMap + "," + this.jdField_a_of_type_JavaLangString + "add to queue");
     return;
-    nny.a(jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString);
+    nuz.a(jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString);
     b();
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_d_of_type_JavaLangString, 2, this.jdField_a_of_type_JavaLangString + this.jdField_c_of_type_JavaLangString + this.jdField_b_of_type_Nnv);
+      QLog.i(jdField_d_of_type_JavaLangString, 2, this.jdField_a_of_type_JavaLangString + this.jdField_c_of_type_JavaLangString + this.jdField_b_of_type_Nuw);
     }
     a(this.jdField_a_of_type_JavaLangString);
   }
@@ -414,14 +414,14 @@ public class BidDownloader
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       return false;
     }
-    this.jdField_b_of_type_Nnv = new nnx(this, l);
+    this.jdField_b_of_type_Nuw = new nuy(this, l);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     return true;
   }
   
   public void b()
   {
-    jdField_a_of_type_Non.c(new BidDownloader.2(this));
+    jdField_a_of_type_Nvo.c(new BidDownloader.2(this));
   }
   
   public boolean b()
@@ -443,7 +443,7 @@ public class BidDownloader
       {
         return bool2;
         bool2 = bool1;
-        if (!TextUtils.isEmpty(noe.b(str1)))
+        if (!TextUtils.isEmpty(nvf.b(str1)))
         {
           localObject1 = new File(str4);
           if (((File)localObject1).exists()) {
@@ -470,16 +470,16 @@ public class BidDownloader
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       if (((String)localObject2).equals("zip"))
       {
-        i = npo.a(str4, str3);
+        i = nwp.a(str4, str3);
         label229:
         if (QLog.isColorLevel()) {
           QLog.i(jdField_d_of_type_JavaLangString, 2, "now delete original download offline zip, path: " + str4);
         }
-        npn.b(str4);
+        nwo.b(str4);
         if (i <= 0) {
           break label470;
         }
-        nny.a(str2, 13, 0L, i, "lixian_update", "0");
+        nuz.a(str2, 13, 0L, i, "lixian_update", "0");
         bool1 = bool3;
         if (QLog.isColorLevel())
         {
@@ -491,7 +491,7 @@ public class BidDownloader
     label691:
     for (;;)
     {
-      npn.a(str3);
+      nwo.a(str3);
       bool2 = bool1;
       if (!QLog.isColorLevel()) {
         break;
@@ -506,7 +506,7 @@ public class BidDownloader
         QLog.w(jdField_d_of_type_JavaLangString, 1, "can not recognize download compress file format, " + this.jdField_b_of_type_JavaLangString);
         if (this.jdField_d_of_type_Boolean)
         {
-          i = npo.a(str4, str3);
+          i = nwp.a(str4, str3);
           break label229;
         }
         if (this.e)
@@ -529,15 +529,15 @@ public class BidDownloader
             }
             if (!bool1)
             {
-              nny.a(str2, 13, 0L, i, "lixian_update", "0");
+              nuz.a(str2, 13, 0L, i, "lixian_update", "0");
               bool1 = false;
               break label691;
             }
-            nny.a(str2, 13, 0L, i, "lixian_time", "0");
+            nuz.a(str2, 13, 0L, i, "lixian_time", "0");
             bool1 = true;
             break label691;
           }
-          nny.a(str2, 13, 0L, i, "lixian_update", "0");
+          nuz.a(str2, 13, 0L, i, "lixian_update", "0");
           bool1 = bool3;
           continue;
         }
@@ -556,7 +556,7 @@ public class BidDownloader
       }
       return;
     }
-    jdField_a_of_type_Non.c(new BidDownloader.4(this));
+    jdField_a_of_type_Nvo.c(new BidDownloader.4(this));
   }
   
   public boolean handleMessage(Message paramMessage)

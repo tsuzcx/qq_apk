@@ -1,27 +1,10 @@
-import com.tencent.mobileqq.widget.QQToast;
-
-class vzg
-  extends vlc
+public abstract interface vzg
 {
-  vzg(vzf paramvzf) {}
+  public abstract void a(vxg paramvxg);
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
-  {
-    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
-    if ((paramBoolean1) && (paramBoolean2)) {
-      QQToast.a(this.a.a.a, 2, amtj.a(2131706081), 0).a();
-    }
-    do
-    {
-      return;
-      if ((!paramBoolean1) && (paramBoolean2))
-      {
-        QQToast.a(this.a.a.a, 1, amtj.a(2131706086), 0).a();
-        return;
-      }
-    } while ((paramBoolean1) || (paramBoolean2));
-    QQToast.a(this.a.a.a, 1, amtj.a(2131706082), 0).a();
-  }
+  public abstract void a(vxg paramvxg, int paramInt);
+  
+  public abstract void b();
 }
 
 

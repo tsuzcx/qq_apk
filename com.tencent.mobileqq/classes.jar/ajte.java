@@ -1,18 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class ajte
-  implements View.OnClickListener
+public class ajte
+  extends atfq
 {
-  ajte(ajtd paramajtd) {}
+  private ajte(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt, long paramLong, String paramString)
   {
-    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((bmqx.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    }
+  }
+  
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    if ((bmqx.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryMediaBaseFragment", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+    }
+    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong2);
+    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bmqx.a(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    }
   }
 }
 

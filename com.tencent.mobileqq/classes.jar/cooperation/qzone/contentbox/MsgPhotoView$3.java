@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bkyt;
+import bmkt;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.contentbox.model.MQMsg;
@@ -40,7 +40,7 @@ class MsgPhotoView$3
       this.this$0.mContext.startActivity((Intent)localObject);
       break;
       str = ((MQUserPersonalData)localObject).mBVJumpUrl;
-      bkyt.a(12, 2);
+      bmkt.a(12, 2);
       continue;
       str = ((MQUserPersonalData)localObject).mYJumpUrl;
       localObject = paramView.getTag();
@@ -49,11 +49,11 @@ class MsgPhotoView$3
         if (((Boolean)localObject).booleanValue()) {}
         for (int i = 11;; i = 10)
         {
-          bkyt.a(i, 2);
+          bmkt.a(i, 2);
           break;
         }
         str = ((MQUserPersonalData)localObject).mLYJumpUrl;
-        bkyt.a(13, 2);
+        bmkt.a(13, 2);
       }
     }
   }

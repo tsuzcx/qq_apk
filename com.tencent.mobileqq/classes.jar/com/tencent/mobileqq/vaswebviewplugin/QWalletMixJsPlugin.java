@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aevj;
-import aevk;
-import aewc;
+import afmu;
+import afmv;
+import afnn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,10 +12,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import aqyp;
-import aqyt;
-import ardu;
-import bgve;
+import ascz;
+import asdd;
+import ashz;
+import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingInnerFragment;
@@ -30,7 +30,7 @@ import org.json.JSONObject;
 
 public class QWalletMixJsPlugin
   extends VasWebviewJsPlugin
-  implements aevk
+  implements afmv
 {
   public static final String ERROR_MSG_PARAM_ERROR = "params error";
   public static final String ERROR_MSG_UNKNOWN_ERROR = "client_unknown_error";
@@ -74,7 +74,7 @@ public class QWalletMixJsPlugin
       return;
     }
     Handler localHandler = new Handler(Looper.getMainLooper());
-    aewc.a(this.app, str, new QWalletMixJsPlugin.1(this, localHandler, paramJSONObject, str));
+    afnn.a(this.app, str, 0L, 2, new QWalletMixJsPlugin.1(this, localHandler, paramJSONObject, str));
   }
   
   private void doCallback(String paramString)
@@ -177,7 +177,7 @@ public class QWalletMixJsPlugin
       return;
     }
     String str2 = Uri.parse(this.mRuntime.a().getUrl()).getHost();
-    aevj.a(this.mRuntime.a(), str1, str2, paramJSONObject, 48128);
+    afmu.a(this.mRuntime.a(), str1, str2, paramJSONObject, 48128);
   }
   
   private void notifydelMsgUI(String paramString1, String paramString2)
@@ -185,8 +185,8 @@ public class QWalletMixJsPlugin
     Bundle localBundle = new Bundle();
     localBundle.putString("busiid", paramString1);
     localBundle.putString("msgid", paramString2);
-    paramString1 = aqyt.a("ipc_cmd_is_qq_notify_all_notify", this.mCallback, this.mOnRemoteResp.key, localBundle);
-    ardu.a().a(paramString1);
+    paramString1 = asdd.a("ipc_cmd_is_qq_notify_all_notify", this.mCallback, this.mOnRemoteResp.key, localBundle);
+    ashz.a().a(paramString1);
   }
   
   private void parseCallback(String paramString)
@@ -215,7 +215,7 @@ public class QWalletMixJsPlugin
     while (this.mRuntime == null) {
       return;
     }
-    aevj.a(str, Uri.parse(this.mRuntime.a().getUrl()).getHost(), paramJSONObject, this);
+    afmu.a(str, Uri.parse(this.mRuntime.a().getUrl()).getHost(), paramJSONObject, this);
   }
   
   private void subscribeNotify(JSONObject paramJSONObject)
@@ -333,7 +333,7 @@ public class QWalletMixJsPlugin
   
   public void queryHasSetNotify(Bundle paramBundle1, Bundle paramBundle2)
   {
-    doCallback(aevj.a(paramBundle1));
+    doCallback(afmu.a(paramBundle1));
   }
 }
 

@@ -11,20 +11,20 @@ import java.lang.ref.WeakReference;
 import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.LinkedList;
-import yko;
-import ykq;
-import ykr;
-import ykv;
+import yzh;
+import yzj;
+import yzk;
+import yzo;
 
 public class Image2Video
-  implements yko
+  implements yzh
 {
   public static final String a;
   public static final String b = jdField_a_of_type_JavaLangString + "cache/";
   private Context jdField_a_of_type_AndroidContentContext;
   private Image2Video.EglHandlerThreadEx jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx;
-  private HashMap<Long, ykq> jdField_a_of_type_JavaUtilHashMap;
-  private LinkedList<ykq> jdField_a_of_type_JavaUtilLinkedList;
+  private HashMap<Long, yzj> jdField_a_of_type_JavaUtilHashMap;
+  private LinkedList<yzj> jdField_a_of_type_JavaUtilLinkedList;
   private boolean jdField_a_of_type_Boolean;
   
   static
@@ -289,8 +289,8 @@ public class Image2Video
       if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
         break label199;
       }
-      ykq localykq = (ykq)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-      if (localykq == null) {
+      yzj localyzj = (yzj)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+      if (localyzj == null) {
         return;
       }
     }
@@ -315,9 +315,9 @@ public class Image2Video
     }
   }
   
-  public void a(ykv paramykv)
+  public void a(yzo paramyzo)
   {
-    if (paramykv == null) {
+    if (paramyzo == null) {
       if (QLog.isColorLevel()) {
         QLog.d("Image2Video", 2, "onConvertResult, resultinfo is null!!!");
       }
@@ -331,11 +331,11 @@ public class Image2Video
         {
           return;
           if (QLog.isColorLevel()) {
-            QLog.d("Image2Video", 2, "onConvertResult, taskId:" + paramykv.jdField_a_of_type_Long + ", resultcode:" + paramykv.jdField_a_of_type_Int + ", image:" + paramykv.jdField_a_of_type_JavaLangString + ". destfile:" + paramykv.b);
+            QLog.d("Image2Video", 2, "onConvertResult, taskId:" + paramyzo.jdField_a_of_type_Long + ", resultcode:" + paramyzo.jdField_a_of_type_Int + ", image:" + paramyzo.jdField_a_of_type_JavaLangString + ". destfile:" + paramyzo.b);
           }
           try
           {
-            localObject = (ykq)this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramykv.jdField_a_of_type_Long));
+            localObject = (yzj)this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramyzo.jdField_a_of_type_Long));
             if (localObject == null)
             {
               if (!QLog.isColorLevel()) {
@@ -346,19 +346,19 @@ public class Image2Video
           }
           finally {}
         }
-        if (paramykv.jdField_a_of_type_Int != 7) {
+        if (paramyzo.jdField_a_of_type_Int != 7) {
           break;
         }
-        localObject = (ykr)((ykq)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = (yzk)((yzj)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
       } while (localObject == null);
-      ((ykr)localObject).a(paramykv);
+      ((yzk)localObject).a(paramyzo);
       return;
-      if (paramykv.jdField_a_of_type_Int == 0) {
+      if (paramyzo.jdField_a_of_type_Int == 0) {
         a();
       }
-      localObject = (ykr)((ykq)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (yzk)((yzj)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
     } while (localObject == null);
-    ((ykr)localObject).a(paramykv);
+    ((yzk)localObject).a(paramyzo);
   }
 }
 

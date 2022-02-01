@@ -1,12 +1,31 @@
-public abstract interface azci
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+public class azci
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  private View a;
   
-  public abstract void a(int paramInt);
+  public azci(View paramView)
+  {
+    this.a = paramView;
+  }
   
-  public abstract void a(azch paramazch, int paramInt1, int paramInt2);
-  
-  public abstract void f();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.a.setVisibility(0);
+      return false;
+    }
+    this.a.setVisibility(8);
+    return false;
+  }
 }
 
 

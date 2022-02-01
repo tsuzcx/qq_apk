@@ -1,115 +1,154 @@
-import android.content.Context;
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import org.json.JSONObject;
 
 public class adak
-  implements BusinessObserver
+  extends adad
 {
-  public adak(ChatSettingActivity paramChatSettingActivity, String paramString) {}
+  protected awxt a;
+  private String jdField_c_of_type_JavaLangString = "doraemon_user_permission_" + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+  private Map<String, Integer> jdField_c_of_type_JavaUtilMap = new HashMap();
+  private String d;
+  private String e;
+  private String f;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public adak(Activity paramActivity, int paramInt, String paramString)
   {
-    if (paramBoolean)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          Object localObject = new WebSsoBody.WebSsoResponseBody();
-          ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-          paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-          localObject = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-          if (paramInt != 0)
-          {
-            paramBundle = ((JSONObject)localObject).optString("msg");
-            if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
-            {
-              QLog.d(ChatSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity) + "Q.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity) + ", op:" + this.jdField_a_of_type_JavaLangString + ", errMsg:" + paramBundle);
-              QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, 1, paramBundle, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.getTitleBarHeight());
-            }
-          }
-          else
-          {
-            paramBundle = ((JSONObject)localObject).getJSONObject("result");
-            if (((JSONObject)localObject).optInt("retcode") == 0)
-            {
-              localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity;
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.jdField_a_of_type_Boolean) {
-                break label648;
-              }
-              paramBoolean = true;
-              ((ChatSettingActivity)localObject).jdField_a_of_type_Boolean = paramBoolean;
-              ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity);
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.jdField_a_of_type_Boolean)
-              {
-                ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, false);
-                ((avnk)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.getManager(16)).a(0, 1, ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity));
-                ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity).setOnCheckedChangeListener(null);
-                if (QLog.isColorLevel()) {
-                  QLog.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.jdField_a_of_type_JavaLangString, 2, "sendOperateFollowUser, mIsShield=" + ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity) + ", mIsFollowed=" + this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.jdField_a_of_type_Boolean);
-                }
-                ChatSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity);
-                ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity).setOnCheckedChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity);
-              }
-              localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity;
-              ChatSettingActivity localChatSettingActivity = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity;
-              if (!this.jdField_a_of_type_JavaLangString.equals("1")) {
-                break label653;
-              }
-              paramInt = 2131694031;
-              label390:
-              QQToast.a((Context)localObject, 2, localChatSettingActivity.getString(paramInt), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.getTitleBarHeight());
-              if (!QLog.isColorLevel()) {
-                return;
-              }
-              QLog.d(ChatSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity) + "Q.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity) + ", op:" + this.jdField_a_of_type_JavaLangString + ", result:" + paramBundle.toString());
-              return;
-            }
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(ChatSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), 2, "sendOperateFollowUser, Exception");
-        }
+    super(paramActivity, paramInt, paramString);
+  }
+  
+  private int a(adaj paramadaj)
+  {
+    Integer localInteger2 = (Integer)this.jdField_c_of_type_JavaUtilMap.get(paramadaj.jdField_a_of_type_JavaLangString);
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      if (BaseApplicationImpl.getApplication().getSharedPreferences(this.jdField_c_of_type_JavaLangString, 4).getLong(this.b + "_" + paramadaj.jdField_a_of_type_JavaLangString + "_2", 0L) <= NetConnInfoCenter.getServerTimeMillis()) {
+        break label106;
       }
     }
-    else
+    label106:
+    for (localInteger1 = Integer.valueOf(2);; localInteger1 = Integer.valueOf(0))
     {
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity;
-      if (!this.jdField_a_of_type_JavaLangString.equals("1")) {
-        break label659;
-      }
+      this.jdField_c_of_type_JavaUtilMap.put(paramadaj.jdField_a_of_type_JavaLangString, localInteger1);
+      return localInteger1.intValue();
     }
-    label648:
-    label653:
-    label659:
-    for (paramInt = 2131694030;; paramInt = 2131694038)
+  }
+  
+  private void a(adaj paramadaj, int paramInt)
+  {
+    if (2 == paramInt)
     {
-      paramBundle = paramBundle.getString(paramInt);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, 1, paramBundle, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.getTitleBarHeight());
-      if (!QLog.isColorLevel()) {
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      BaseApplicationImpl.getApplication().getSharedPreferences(this.jdField_c_of_type_JavaLangString, 4).edit().putLong(this.b + "_" + paramadaj.jdField_a_of_type_JavaLangString + "_2", l + 2592000000L).apply();
+    }
+    this.jdField_c_of_type_JavaUtilMap.put(paramadaj.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
+  }
+  
+  public awxt a()
+  {
+    return this.jdField_a_of_type_Awxt;
+  }
+  
+  public String a()
+  {
+    if (this.e == null) {
+      return MobileQQ.getContext().getPackageName();
+    }
+    return this.e;
+  }
+  
+  protected Map<String, adab> a()
+  {
+    return adcm.a();
+  }
+  
+  protected void a(adab paramadab, JSONObject paramJSONObject, adaa paramadaa)
+  {
+    adaj localadaj;
+    Object localObject2;
+    Object localObject1;
+    switch (paramadab.b)
+    {
+    default: 
+      QLog.i("DoraemonOpenAPI.apiMgr", 1, "unsupport auth type " + paramadab.b);
+      a(6, paramadab, paramJSONObject, paramadaa);
+      return;
+    case 0: 
+      a(0, paramadab, paramJSONObject, paramadaa);
+      return;
+    case 1: 
+      localadaj = adap.a().a(paramadab.jdField_a_of_type_JavaLangString);
+      if (localadaj == null)
+      {
+        a(1, paramadab, paramJSONObject, paramadaa);
         return;
       }
-      QLog.d(ChatSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity) + "Q.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity) + ", op:" + this.jdField_a_of_type_JavaLangString + ", re:" + paramBundle);
-      return;
-      paramBoolean = false;
+      int i = a(localadaj);
+      if (i == 1)
+      {
+        a(4, paramadab, paramJSONObject, paramadaa);
+        return;
+      }
+      if (i == 2)
+      {
+        a(0, paramadab, paramJSONObject, paramadaa);
+        return;
+      }
+      localObject2 = a();
+      if (localObject2 == null)
+      {
+        localObject1 = null;
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label352;
+        }
+        localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131694474);
+      }
       break;
-      paramInt = 2131694039;
-      break label390;
     }
+    label352:
+    for (;;)
+    {
+      if (localObject2 == null) {}
+      for (localObject2 = null;; localObject2 = ((awxt)localObject2).jdField_c_of_type_JavaLangString)
+      {
+        a((String)localObject1, (String)localObject2, BaseApplicationImpl.getApplication().getResources().getString(2131694473, new Object[] { localObject1 }), localadaj.b, BaseApplicationImpl.getApplication().getResources().getString(2131720094), new adam(this, localadaj, paramadab, paramJSONObject, paramadaa), BaseApplicationImpl.getApplication().getResources().getString(2131720104), new adan(this, localadaj, paramadab, paramJSONObject, paramadaa), new adao(this, localadaj, paramadab, paramJSONObject, paramadaa));
+        return;
+        localObject1 = ((awxt)localObject2).b;
+        break;
+      }
+      localObject1 = (adbk)a(adbk.class, false);
+      if ((localObject1 != null) && (((adbk)localObject1).a()))
+      {
+        a(0, paramadab, paramJSONObject, paramadaa);
+        return;
+      }
+      QLog.i("DoraemonOpenAPI.apiMgr", 1, "not login");
+      a(5, paramadab, paramJSONObject, paramadaa);
+      return;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    this.d = paramString1;
+    this.e = paramString2;
+    this.f = paramString3;
+  }
+  
+  protected void c()
+  {
+    adap.a().a(this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.d, this.e, this.f, new adal(this));
   }
 }
 

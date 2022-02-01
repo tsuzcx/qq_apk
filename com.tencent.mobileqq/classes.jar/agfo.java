@@ -1,17 +1,18 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 
 class agfo
-  extends aghj
+  extends aocm
 {
-  agfo(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  agfo(agfn paramagfn) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(boolean paramBoolean)
   {
-    return new agtf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    agfn.a(this.a).panelicons.c();
+    agkg localagkg = (agkg)agfn.a(this.a).getHelper(29);
+    if (localagkg != null) {
+      localagkg.f();
+    }
   }
 }
 

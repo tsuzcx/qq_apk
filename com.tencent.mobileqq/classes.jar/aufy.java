@@ -1,44 +1,17 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract class aufy
+class aufy
+  implements DialogInterface.OnClickListener
 {
-  protected int a;
-  protected Context a;
-  protected Bitmap a;
-  protected aufs a;
+  aufy(aufu paramaufu) {}
   
-  public aufy(Context paramContext, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public aufy(Context paramContext, int paramInt, aufs paramaufs)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Aufs = paramaufs;
-  }
-  
-  public Bitmap a()
-  {
-    if (this.jdField_a_of_type_Aufs != null) {
-      a(this.jdField_a_of_type_Aufs.a());
+    if (paramInt == 1) {
+      this.a.c();
     }
-    return null;
-  }
-  
-  public void a(aufu paramaufu)
-  {
-    paramaufu.c = 1.0F;
-  }
-  
-  public Drawable[] a(QQAppInterface paramQQAppInterface)
-  {
-    return null;
+    paramDialogInterface.dismiss();
   }
 }
 

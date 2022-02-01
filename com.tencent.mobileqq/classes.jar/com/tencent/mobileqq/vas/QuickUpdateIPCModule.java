@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.vas;
 
 import android.os.Bundle;
-import bdao;
-import bdap;
-import bgfg;
-import bgfi;
-import bgfj;
-import bgfk;
-import bgit;
-import bgjd;
+import behn;
+import beho;
+import bhob;
+import bhod;
+import bhoe;
+import bhof;
+import bhro;
+import bhry;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
@@ -42,7 +43,7 @@ public class QuickUpdateIPCModule
     finally {}
   }
   
-  public static void a(int paramInt, String paramString, boolean paramBoolean, bgfg parambgfg)
+  public static void a(int paramInt, String paramString, boolean paramBoolean, bhob parambhob)
   {
     QuickUpdateIPCModule.Params localParams = new QuickUpdateIPCModule.Params(null);
     localParams.intVal = paramInt;
@@ -50,14 +51,14 @@ public class QuickUpdateIPCModule
     localParams.strVal1 = paramString;
     paramString = new Bundle();
     paramString.putSerializable("params", localParams);
-    QIPCClientHelper.getInstance().callServer("QuickUpdateIPCModule", b, paramString, new bgfj(parambgfg));
+    QIPCClientHelper.getInstance().callServer("QuickUpdateIPCModule", b, paramString, new bhoe(parambhob));
   }
   
-  public static void a(long paramLong, String paramString, bdao parambdao)
+  public static void a(long paramLong, String paramString, behn parambehn)
   {
     Bundle localBundle = new Bundle();
-    if (parambdao != null) {
-      localBundle.putParcelable("binder", new BinderWarpper(parambdao.asBinder()));
+    if (parambehn != null) {
+      localBundle.putParcelable("binder", new BinderWarpper(parambehn.asBinder()));
     }
     localBundle.putLong("bid", paramLong);
     localBundle.putString("scid", paramString);
@@ -74,10 +75,10 @@ public class QuickUpdateIPCModule
       localObject = paramBundle.getString("scid");
       paramString = null;
       if (paramBundle.containsKey("binder")) {
-        paramString = new bgfk(l, (String)localObject, bdap.asInterface(((BinderWarpper)paramBundle.getParcelable("binder")).a), null);
+        paramString = new bhof(l, (String)localObject, beho.asInterface(((BinderWarpper)paramBundle.getParcelable("binder")).a), null);
       }
       QLog.e("QuickUpdateIPCModule", 1, "download listener: " + paramString);
-      bgjd.a(l).download(null, l, (String)localObject, paramString, false);
+      bhry.a(l).download(null, l, (String)localObject, paramString, false);
     }
     for (;;)
     {
@@ -93,7 +94,7 @@ public class QuickUpdateIPCModule
         }
         else
         {
-          ((VasQuickUpdateManager)((QQAppInterface)((BaseApplicationImpl)localObject).getRuntime()).getManager(184)).queryItemVersion(paramString.intVal, paramString.strVal1, paramString.boolVal, false, 10000L, new bgfi(this, paramInt));
+          ((VasQuickUpdateManager)((QQAppInterface)((BaseApplicationImpl)localObject).getRuntime()).getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER)).queryItemVersion(paramString.intVal, paramString.strVal1, paramString.boolVal, false, 10000L, new bhod(this, paramInt));
         }
       }
     }

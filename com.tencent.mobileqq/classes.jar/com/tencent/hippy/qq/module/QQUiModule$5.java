@@ -2,11 +2,11 @@ package com.tencent.hippy.qq.module;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import auus;
+import awar;
 import com.tencent.mtt.hippy.modules.Promise;
 
 class QQUiModule$5
-  implements auus
+  implements awar
 {
   QQUiModule$5(QQUiModule paramQQUiModule) {}
   

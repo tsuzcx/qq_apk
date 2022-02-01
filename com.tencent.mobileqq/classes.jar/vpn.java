@@ -1,11 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.qflutter.utils.FLog;
+import java.lang.ref.WeakReference;
 
-public class vpn
+class vpn
+  implements AdExposureChecker.ExposureCallback
 {
-  public static Intent a(Context paramContext, boolean paramBoolean1, Intent paramIntent, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2)
+  vpn(vpm paramvpm) {}
+  
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    return vqg.a(paramContext, paramBoolean1, paramIntent, paramBoolean2, paramBoolean3, paramBoolean4, paramString1, paramString2);
+    FLog.e("AdExposureChecker", "onExposure");
+    vpk.a(vpm.a(this.a), (vpj)this.a.a());
   }
 }
 

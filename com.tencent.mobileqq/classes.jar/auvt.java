@@ -1,18 +1,144 @@
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.nearby.home.NearbyTabInfo;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class auvt
-  implements View.OnClickListener
+public final class auvt
+  extends bidf
+  implements TouchWebView.OnScrollChangedListener
 {
-  public auvt(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
+  public int a;
+  public boolean a;
+  public boolean b;
+  boolean c = false;
   
-  public void onClick(View paramView)
+  public auvt(CommonTabFragment paramCommonTabFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext, paramActivity, paramAppInterface);
+    super.preInitPluginEngine();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) {}
+    for (long l = System.currentTimeMillis();; l = 0L)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      nro.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo != null) {
+        this.mUrl = this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo.tabUrl;
+      }
+      if (!TextUtils.isEmpty(this.mUrl)) {
+        if (!this.mUrl.contains("?")) {
+          break label379;
+        }
+      }
+      label379:
+      for (this.mUrl += "&";; this.mUrl += "?")
+      {
+        this.mUrl += this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_JavaLangString;
+        this.mWebview = new TouchWebView(this.mContext);
+        buildBaseWebView(this.mInterface);
+        this.c = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
+        if (this.c) {
+          this.mWebview.setMask(true);
+        }
+        this.mWebview.setBackgroundColor(-1);
+        this.mWebview.setOnScrollChangedListener(this);
+        setmTimeBeforeLoadUrl(System.currentTimeMillis());
+        if (QLog.isDevelopLevel()) {
+          axql.a("WebSpeedTrace", "mTimeBeforeLoadUrl", new Object[] { Long.valueOf(this.mTimeBeforeLoadUrl) });
+        }
+        this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.g = false;
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("accept-diff", "true");
+        this.mWebview.loadUrl(this.mUrl, localHashMap);
+        if (QLog.isColorLevel()) {
+          axql.a("AbsWebView", new Object[] { "HotChatWebView.init", this.mUrl });
+        }
+        if ((this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k != 0L)) {
+          break;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k = (System.currentTimeMillis() - l);
+        if (!QLog.isDevelopLevel()) {
+          break;
+        }
+        axql.a("WebSpeedTrace", "mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k) });
+        return;
+      }
+    }
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    super.doOnCreate(paramIntent);
+  }
+  
+  public void b()
+  {
+    super.doOnResume();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    if (paramArrayList != null) {
+      paramArrayList.add(new bikp());
+    }
+  }
+  
+  public void c()
+  {
+    super.doOnPause();
+  }
+  
+  public void d()
+  {
+    super.doOnDestroy();
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.a(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    this.b = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Auyp != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Auyp.b(true).a(true);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_Auyp.a();
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.b != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.b.getVisibility() != 8)) {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.b.setVisibility(8);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.a(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    if (this.mWebview != null) {
+      this.jdField_a_of_type_Int = this.mWebview.getWebScrollY();
+    }
   }
 }
 

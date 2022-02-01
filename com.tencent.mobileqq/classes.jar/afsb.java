@@ -1,66 +1,34 @@
-import android.app.Activity;
-import com.tencent.image.QQLiveImage;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeCustomizeStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/aio/helper/QQLiveImageHelper;", "Lcom/tencent/mobileqq/activity/aio/helper/ILifeCycleHelper;", "chatPie", "Lcom/tencent/mobileqq/activity/aio/core/BaseChatPie;", "(Lcom/tencent/mobileqq/activity/aio/core/BaseChatPie;)V", "getTag", "", "interestedIn", "", "onMoveToState", "", "state", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class afsb
-  implements afrc
+public class afsb
+  implements akxc
 {
-  public static final afsc a;
-  private final BaseChatPie a;
+  public afsb(CustomizeStrategyFactory.ThemeCustomizeStrategy.1 param1) {}
   
-  static
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    jdField_a_of_type_Afsc = new afsc(null);
-  }
-  
-  public afsb(@NotNull BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLiveImagehelper", 2, "onMoveToState: state=" + paramInt);
-    }
-    switch (paramInt)
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
     {
-    case 6: 
-    case 7: 
-    case 11: 
-    case 12: 
-    default: 
-      return;
-    case 8: 
-      QQLiveImage.resumeAll((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity());
-      return;
-    case 5: 
-      QQLiveImage.onForeground((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity());
-      return;
-    case 9: 
-      QQLiveImage.pauseAll((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity());
-      return;
-    case 10: 
-      QQLiveImage.onBackground((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity());
-      return;
-    case 13: 
-      QQLiveImage.releaseAll((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity());
-      return;
-    case 16: 
-      QQLiveImage.resumeAll((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity());
+      this.a.a.background = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy info.background=" + this.a.a.background);
+      }
+      CustomizeStrategyFactory.a().a(this.a.a);
       return;
     }
-    QQLiveImage.pauseAll((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity());
-  }
-  
-  @NotNull
-  public int[] a()
-  {
-    return new int[] { 8, 5, 9, 10, 13, 16, 15, 14 };
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,38 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.qqstory.utils.UIUtils;
-
-class bdxu
-  extends AnimatorListenerAdapter
+public class bdxu
 {
-  bdxu(bdxs parambdxs, boolean paramBoolean, View paramView, int paramInt) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d = 0;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public bdxu()
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramAnimator = new int[2];
-      this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramAnimator);
-      i = UIUtils.getWindowScreenHeight(this.jdField_a_of_type_Bdxs.jdField_a_of_type_AndroidContentContext) - paramAnimator[1];
-      if (i >= this.jdField_a_of_type_Int) {}
-    }
-    for (int i = this.jdField_a_of_type_Int - i;; i = 0)
-    {
-      if (this.jdField_a_of_type_Bdxs.jdField_a_of_type_Bdxw != null)
-      {
-        paramAnimator = this.jdField_a_of_type_Bdxs.jdField_a_of_type_Bdxw;
-        if (!this.jdField_a_of_type_Boolean) {
-          bool = true;
-        }
-        paramAnimator.a(bool, i);
-      }
-      return;
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("result:").append(this.jdField_b_of_type_Int).append(" mainAccount:").append(this.jdField_a_of_type_JavaLangString).append(" errorType:").append(this.jdField_a_of_type_Int).append(" errorMsg:").append(this.jdField_b_of_type_JavaLangString).append(" interval:").append(this.c).append(" allLastMsgTime:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

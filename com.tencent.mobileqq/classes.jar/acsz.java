@@ -1,21 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class acsz
-  implements bjoe
+  implements acpi
 {
-  public acsz(AssociatedAccountActivity paramAssociatedAccountActivity, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  private static void a(acnk paramacnk, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("HotFriend_PushMessage", 2, "onLinePush receive 0x210_0xc7");
     }
-    this.jdField_a_of_type_Bjnw.cancel();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131690749));
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "dc00898", "", "", "0X800AC3E", "0X800AC3E", 0, 0, "", "", "", "");
+    long l1 = paramMsgInfo.lFromUin;
+    int i = paramMsgInfo.shMsgSeq;
+    long l2 = paramMsgInfo.lMsgUid;
+    int j = paramMsgInfo.shMsgType;
+    int k = paramMsgInfo.uRealMsgTime;
+    paramMsgInfo = new aooq(l1, i, l2, j, k, true);
+    paramacnk.a(paramMsgType0x210.vProtobuf, paramMsgInfo);
+    bcrx.a(paramacnk.a().getMsgHandler(), l1, i, l2, j);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk, paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

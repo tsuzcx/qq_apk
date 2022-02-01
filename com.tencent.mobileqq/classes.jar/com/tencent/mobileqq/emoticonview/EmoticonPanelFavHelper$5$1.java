@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import araj;
+import aset;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend;
 import com.tencent.mobileqq.widget.QQToast;
@@ -26,17 +26,17 @@ class EmoticonPanelFavHelper$5$1
     do
     {
       return;
-      i = 2131691768;
+      i = 2131691856;
       break;
-      i = 2131691770;
+      i = 2131691858;
       break;
-      i = 2131691772;
+      i = 2131691860;
       break;
-      i = 2131691771;
+      i = 2131691859;
       break;
-      i = 2131691767;
+      i = 2131691855;
       break;
-      i = 2131691769;
+      i = 2131691857;
       break;
       QLog.e("FavEmoRoamingObserver", 1, new Object[] { "update panel, over limit flag:", Boolean.valueOf(CameraEmoAllSend.b), " ret:", Integer.valueOf(i), " isResumed:", Boolean.valueOf(this.this$1.this$0.mPanelController.isResumed) });
     } while ((CameraEmoAllSend.b) || (!this.this$1.this$0.mPanelController.isResumed));
@@ -44,7 +44,7 @@ class EmoticonPanelFavHelper$5$1
     if (i == 7) {}
     for (i = 1;; i = 2)
     {
-      araj.b(this.this$1.this$0.mPanelController.app, this.this$1.this$0.mPanelController.context, i);
+      aset.b(this.this$1.this$0.mPanelController.app, this.this$1.this$0.mPanelController.context, i);
       i = 0;
       break;
     }
@@ -52,7 +52,7 @@ class EmoticonPanelFavHelper$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper.5.1
  * JD-Core Version:    0.7.0.1
  */

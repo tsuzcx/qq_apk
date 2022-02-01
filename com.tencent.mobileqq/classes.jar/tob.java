@@ -1,44 +1,62 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
-import com.tencent.viola.core.dispatch.ComponentAppearEvent;
-import com.tencent.viola.core.dispatch.IEvent;
-import com.tencent.viola.core.dispatch.IObserver;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
 
 public class tob
-  implements IObserver
+  extends Drawable
 {
-  public tob(VTopicVideo paramVTopicVideo) {}
+  private Bitmap a;
   
-  public String getRef()
+  public tob(Bitmap paramBitmap)
   {
-    return this.a.getRef();
+    this.a = paramBitmap;
   }
   
-  public void onReceive(IEvent paramIEvent)
+  public Bitmap a()
   {
-    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
-    {
-      paramIEvent = (ComponentAppearEvent)paramIEvent;
-      if (!paramIEvent.event.equals("didDisappear")) {
-        break label59;
-      }
-      this.a.getVideoLifeCycleChangeListener().F_();
+    return this.a;
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if ((this.a != null) && (!this.a.isRecycled())) {
+      paramCanvas.drawBitmap(this.a, 0.0F, 0.0F, null);
     }
-    label59:
-    do
-    {
-      return;
-      if (paramIEvent.event.equals("willAppear"))
-      {
-        this.a.getVideoLifeCycleChangeListener().D_();
-        return;
-      }
-    } while (!paramIEvent.event.equals("didAppear"));
-    this.a.getVideoLifeCycleChangeListener().E_();
   }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.a.getHeight();
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.a.getWidth();
+  }
+  
+  public int getMinimumHeight()
+  {
+    return this.a.getHeight();
+  }
+  
+  public int getMinimumWidth()
+  {
+    return this.a.getWidth();
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tob
  * JD-Core Version:    0.7.0.1
  */

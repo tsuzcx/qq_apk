@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import ahnc;
-import ahnf;
+import aihw;
+import aihz;
 import java.util.List;
 
 public class StickerRecBarAdapter$ImgUpdateListener$1
   implements Runnable
 {
-  public StickerRecBarAdapter$ImgUpdateListener$1(ahnf paramahnf, int paramInt, String paramString1, String paramString2, List paramList, String paramString3) {}
+  public StickerRecBarAdapter$ImgUpdateListener$1(aihz paramaihz, int paramInt, String paramString1, String paramString2, List paramList, String paramString3) {}
   
   public void run()
   {

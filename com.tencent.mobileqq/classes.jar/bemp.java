@@ -1,81 +1,8 @@
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.regex.Matcher;
 
-public class bemp
-  extends BaseAdapter
+public abstract interface bemp
 {
-  protected SearchReciteArticleFragment a;
-  protected String a;
-  protected List<bemo> a;
-  
-  public bemp(SearchReciteArticleFragment paramSearchReciteArticleFragment)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment = paramSearchReciteArticleFragment;
-  }
-  
-  public bemo a(int paramInt)
-  {
-    return (bemo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(bemo parambemo)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(parambemo);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560654, null, false);
-      paramView = new bemq(this);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379877));
-      paramView.b = ((TextView)localView.findViewById(2131379544));
-      localView.setTag(paramView);
-    }
-    for (;;)
-    {
-      paramView.jdField_a_of_type_Int = paramInt;
-      Object localObject = a(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(SearchReciteArticleFragment.a(this.jdField_a_of_type_JavaLangString, ((bemo)localObject).jdField_a_of_type_JavaLangString, Color.parseColor("#00B6F9")));
-      paramView.b.setText(((bemo)localObject).b);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (bemq)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-    }
-  }
+  public abstract String a(Matcher paramMatcher);
 }
 
 

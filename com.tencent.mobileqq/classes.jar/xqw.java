@@ -1,36 +1,40 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class xqw
-  extends vqm
 {
-  public List<String> a = new ArrayList();
-  public int b;
-  
-  public xqw(qqstory_service.RspGetPhotographyGuide paramRspGetPhotographyGuide)
+  public static void a(String paramString1, String paramString2)
   {
-    super(paramRspGetPhotographyGuide.result);
-    Object localObject = paramRspGetPhotographyGuide.word.get();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ByteStringMicro localByteStringMicro = (ByteStringMicro)((Iterator)localObject).next();
-        this.a.add(localByteStringMicro.toStringUtf8());
-      }
-    }
-    this.b = paramRspGetPhotographyGuide.seqno.get();
+    ykq.b(paramString1, paramString2);
   }
   
-  public String toString()
+  public static void a(String paramString1, String paramString2, Object paramObject)
   {
-    return "GetPhotographyGuideResponse{, wordList=" + this.a.size() + ", seqno=" + this.b + '}';
+    ykq.a(paramString1, paramString2, paramObject);
+  }
+  
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    ykq.d(paramString1, paramString2);
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject)
+  {
+    ykq.a(paramString1, paramString2, paramObject);
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    ykq.a(paramString1, paramString2, paramObject1, paramObject2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    ykq.e(paramString1, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    ykq.a(paramString1, paramString2, paramObject1, paramObject2);
   }
 }
 

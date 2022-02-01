@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qqfav.audiopanel.QfavAudioPanel android:orientation="vertical" android:id="@id/a0n" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <com.qqfav.audiopanel.QfavAudioPanelViewPager android:id="@id/fho" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <RelativeLayout android:gravity="center_vertical" android:id="@id/ln3" android:background="@drawable/skin_panel_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mobileqq.activity.aio.audiopanel.PttTextTransitionAnim android:id="@id/n_4" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="8.0dip" android:layout_centerHorizontal="true" />
-            <ImageView android:id="@id/llu" android:background="@drawable/skin_aio_audio_panel_record_start_bg" android:layout_width="122.0dip" android:layout_height="122.0dip" android:layout_marginTop="38.0dip" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-    </FrameLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/fhm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip">
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/ay1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/skin_aio_audio_panel_indicate_panel" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/fhl" android:layout_width="fill_parent" android:layout_height="20.0dip">
-            <TextView android:textSize="13.0sp" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center" android:id="@id/i3t" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="18.0dip" android:layout_marginRight="18.0dip" android:text="@string/qlo" />
-        </LinearLayout>
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/myd" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/dso" android:layout_width="70.5dip" android:layout_height="23.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/nds" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="广告" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:background="#4cffffff" android:layout_width="0.5dip" android:layout_height="fill_parent" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" />
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/nr5" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="3秒" android:maxLines="1" android:layout_weight="1.0" />
     </LinearLayout>
-</com.qqfav.audiopanel.QfavAudioPanel>
+    <View android:background="@drawable/dsb" android:layout_width="fill_parent" android:layout_height="62.0dip" android:layout_alignParentBottom="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="33.0dip" android:layout_marginBottom="9.0dip" android:layout_alignParentBottom="true">
+        <com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView android:id="@id/k6p" android:layout_width="33.0dip" android:layout_height="33.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="8.0dip" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/khm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="肯德基" android:maxLines="1" />
+            <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/fz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="TF Boys 送你新春金桶旺财祝福，新年新惊喜肯" android:maxLines="1" />
+        </LinearLayout>
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ndu" android:background="@drawable/dsc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:text="查看" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,63 +1,19 @@
-import com.tencent.biz.qcircleshadow.lib.delegate.ILogDelegate;
-import com.tencent.qphone.base.util.QLog;
-
 public class vgi
-  implements ILogDelegate
 {
-  public void d(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.d(paramString1, paramInt, paramString2);
-  }
-  
-  public void d(String paramString, int paramInt, Object... paramVarArgs)
-  {
-    QLog.d(paramString, paramInt, paramVarArgs);
-  }
-  
-  public void e(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.e(paramString1, paramInt, paramString2);
-  }
-  
-  public void e(String paramString, int paramInt, Object... paramVarArgs)
-  {
-    QLog.e(paramString, paramInt, paramVarArgs);
-  }
-  
-  public int getCLRValue()
-  {
-    return 2;
-  }
-  
-  public int getDEVValue()
-  {
-    return 4;
-  }
-  
-  public int getUSRValue()
-  {
-    return 1;
-  }
-  
-  public void i(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i(paramString1, paramInt, paramString2);
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public boolean isDevelopLevel()
-  {
-    return QLog.isDevelopLevel();
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.w(paramString1, paramInt, paramString2);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
 }
 
 

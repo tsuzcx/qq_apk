@@ -1,19 +1,19 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import amtj;
+import anvx;
 import com.tencent.mobileqq.widget.QQToast;
-import yaa;
-import yan;
+import yot;
+import ypg;
 
 public class EditVideoSave$1
   implements Runnable
 {
-  public EditVideoSave$1(yaa paramyaa) {}
+  public EditVideoSave$1(yot paramyot) {}
   
   public void run()
   {
     this.this$0.h();
-    QQToast.a(this.this$0.a.a(), 2, amtj.a(2131702989), 0).a();
+    QQToast.a(this.this$0.a.a(), 2, anvx.a(2131703340), 0).a();
   }
 }
 

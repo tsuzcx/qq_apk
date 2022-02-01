@@ -1,18 +1,19 @@
 package cooperation.qwallet.plugin.ipc;
 
-import amrb;
-import amsw;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import ayan;
+import antp;
+import anvk;
+import azgz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.face.FaceDecoder;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
-import nma;
+import nta;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -182,7 +183,7 @@ public class CorpReq
         ((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x787.ReqBody)localObject2).toByteArray()));
         if ((localObject1 != null) && (((QQAppInterface)localObject1).getApp() != null))
         {
-          localObject2 = new NewIntent(((QQAppInterface)localObject1).getApp(), nma.class);
+          localObject2 = new NewIntent(((QQAppInterface)localObject1).getApp(), nta.class);
           ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x787_1");
           ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject3).toByteArray());
           ((NewIntent)localObject2).setObserver(new CorpReq.2(this, localCorpResp, (QQAppInterface)localObject1, localArrayList));
@@ -485,7 +486,7 @@ public class CorpReq
         return;
         label128:
         if (i == 1) {
-          localCorpResp.userNick = new amrb(localQQAppInterface).a(str).discussionName;
+          localCorpResp.userNick = new antp(localQQAppInterface).a(str).discussionName;
         }
       }
     }
@@ -535,7 +536,7 @@ public class CorpReq
       }
     }
     label62:
-    for (localCorpResp.isFriend = false;; localCorpResp.isFriend = ((amsw)((QQAppInterface)localObject).getManager(51)).b(this.uin))
+    for (localCorpResp.isFriend = false;; localCorpResp.isFriend = ((anvk)((QQAppInterface)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.uin))
     {
       localObject = new Bundle();
       localCorpResp.toBundle((Bundle)localObject);
@@ -594,8 +595,8 @@ public class CorpReq
     if (this.data == null) {
       return;
     }
-    ayan localayan = new ayan(this.data.getInt("businessType"), 0, this.data.getString("retData"));
-    OpenApiManager.getInstance().onPayMsgRsp(localayan);
+    azgz localazgz = new azgz(this.data.getInt("businessType"), 0, this.data.getString("retData"));
+    OpenApiManager.getInstance().onPayMsgRsp(localazgz);
   }
   
   public void onUserNcik()
@@ -612,18 +613,18 @@ public class CorpReq
     Object localObject1;
     if (localObject2 != null)
     {
-      localObject3 = (amsw)((QQAppInterface)localObject2).getManager(51);
-      if (((this.channel == 5) || ((this.channel & 0x10) != 0)) && ((!((amsw)localObject3).b(this.uin)) || (((QQAppInterface)localObject2).getCurrentAccountUin().equals(this.uin)))) {
-        break label357;
+      localObject3 = (anvk)((QQAppInterface)localObject2).getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (((this.channel == 5) || ((this.channel & 0x10) != 0)) && ((!((anvk)localObject3).b(this.uin)) || (((QQAppInterface)localObject2).getCurrentAccountUin().equals(this.uin)))) {
+        break label359;
       }
       if (TextUtils.isEmpty(this.groupId)) {
-        break label320;
+        break label322;
       }
-      localObject1 = (TroopManager)((QQAppInterface)localObject2).getManager(52);
-      localObject3 = ((amsw)localObject3).e(this.uin);
+      localObject1 = (TroopManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.TROOP_MANAGER);
+      localObject3 = ((anvk)localObject3).e(this.uin);
       localObject1 = ((TroopManager)localObject1).b(this.groupId, this.uin);
       if ((localObject3 == null) || (TextUtils.isEmpty(((Friends)localObject3).remark))) {
-        break label224;
+        break label226;
       }
       localObject1 = ((Friends)localObject3).remark;
     }
@@ -641,7 +642,7 @@ public class CorpReq
         localCorpResp.toBundle((Bundle)localObject1);
         doCallback((Bundle)localObject1);
         return;
-        label224:
+        label226:
         if ((localObject1 != null) && (!TextUtils.isEmpty(((TroopMemberInfo)localObject1).troopnick)))
         {
           localObject1 = ((TroopMemberInfo)localObject1).troopnick;
@@ -653,7 +654,7 @@ public class CorpReq
           break;
         }
         if (localObject1 == null) {
-          break label388;
+          break label390;
         }
         if (this.uin.equals(((QQAppInterface)localObject2).getCurrentAccountUin()))
         {
@@ -669,12 +670,12 @@ public class CorpReq
         break;
         localCorpResp.userNick = ((String)localObject1);
         continue;
-        label320:
+        label322:
         ((QQAppInterface)localObject2).addObserver(CorpReq.TenpayFriendListObserver.getInstance());
         CorpReq.TenpayFriendListObserver.getInstance().add(this.uin, this.fromReceiver);
         localCorpResp.userNick = ContactUtils.getBuddyName((QQAppInterface)localObject2, this.uin, true);
         continue;
-        label357:
+        label359:
         localObject2 = ContactUtils.getDateNickName((QQAppInterface)localObject2, this.uin);
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -682,7 +683,7 @@ public class CorpReq
         }
         localCorpResp.userNick = ((String)localObject1);
       }
-      label388:
+      label390:
       localObject1 = null;
     }
   }

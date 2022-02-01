@@ -1,27 +1,82 @@
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class apjy
-  implements CompoundButton.OnCheckedChangeListener
+  extends apkj
+  implements apjw
 {
-  public apjy(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
+  public int a;
+  public String a;
+  public apjz[] a;
+  public int b = -1;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 0;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public apjy()
   {
-    Object localObject = this.a.getResources();
-    TextView localTextView = CampusCircleReplyActivity.a(this.a);
-    if (paramBoolean) {}
-    for (localObject = ((Resources)localObject).getColorStateList(2131166350);; localObject = ((Resources)localObject).getColorStateList(2131166352))
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfApjz = null;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+  }
+  
+  public static boolean a(apjy paramapjy)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramapjy != null)
     {
-      localTextView.setTextColor((ColorStateList)localObject);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
+      bool1 = bool2;
+      if (paramapjy.jdField_a_of_type_Int == 0)
+      {
+        bool1 = bool2;
+        if (paramapjy.b == 0)
+        {
+          bool1 = bool2;
+          if (paramapjy.jdField_a_of_type_ArrayOfApjz != null)
+          {
+            bool1 = bool2;
+            if (paramapjy.jdField_a_of_type_ArrayOfApjz[0].jdField_c_of_type_Int == 0)
+            {
+              bool1 = bool2;
+              if (paramapjy.jdField_a_of_type_ArrayOfApjz[0].a != null) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
     }
+    return bool1;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfApjz[0].a;
+  }
+  
+  public String toString()
+  {
+    if (this.jdField_a_of_type_ArrayOfApjz != null)
+    {
+      String str1 = "ImageTags{";
+      int i = 0;
+      for (;;)
+      {
+        str2 = str1;
+        if (i >= this.jdField_a_of_type_ArrayOfApjz.length) {
+          break;
+        }
+        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfApjz[i];
+        i += 1;
+      }
+    }
+    String str2 = "null";
+    return "ARCloudObjectClassifyResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

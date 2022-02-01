@@ -1,19 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class aecc
-  implements bjts
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public aecc(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public aecc(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void a(View paramView)
-  {
-    RecommendFriendActivity.a(this.a, false);
-  }
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
   
-  public void b(View paramView)
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    RecommendFriendActivity.a(this.a, true);
+    if (this.a.a != null) {
+      return this.a.a.a(paramMotionEvent);
+    }
+    return true;
   }
 }
 

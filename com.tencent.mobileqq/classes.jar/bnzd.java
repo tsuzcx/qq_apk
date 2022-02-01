@@ -1,17 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import androidx.annotation.RequiresApi;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
 
 public class bnzd
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bofu
 {
-  public bnzd(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  public bnzd(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  @RequiresApi(api=16)
+  public void a(String paramString, long paramLong1, long paramLong2)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    AEEditorMultiCutEditFragment.a(this.a, paramString, paramLong1, paramLong2);
   }
 }
 

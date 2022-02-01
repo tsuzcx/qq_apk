@@ -1,16 +1,23 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import agqn;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Intent;
+import com.tencent.widget.XPanelContainer;
+import mqq.os.MqqHandler;
 
 class BaseChatPie$23
   implements Runnable
 {
-  BaseChatPie$23(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$23(BaseChatPie paramBaseChatPie, Intent paramIntent) {}
   
   public void run()
   {
-    agqn.a(this.this$0.sessionInfo.curType, this.this$0.app);
+    if (this.this$0.root.a() != 1)
+    {
+      this.this$0.showInputPanel();
+      this.this$0.uiHandler.postDelayed(this, 100L);
+      return;
+    }
+    this.val$intent.removeExtra("KEY_SHOULD_SHOW_KEYBOARD");
   }
 }
 

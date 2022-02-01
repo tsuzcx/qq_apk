@@ -1,37 +1,38 @@
-import com.tencent.tavcut.bean.Size;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
 class bmmc
-  implements bmmg
+  implements ModuleDownloadListener
 {
-  public int a()
+  bmmc(bmmb parambmmb, bmmg parambmmg) {}
+  
+  public void onDownloadCanceled(String paramString)
   {
-    return ((Integer)bmmf.a(Integer.valueOf(960), Integer.valueOf(1280), Integer.valueOf(1920))).intValue();
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public Size a(Size paramSize)
+  public void onDownloadFailed(String paramString)
   {
-    int i = ((Integer)bmmf.a(Integer.valueOf(960), Integer.valueOf(1280), Integer.valueOf(1920))).intValue();
-    Size localSize = new Size(0, 0);
-    double d = paramSize.getWidth() / paramSize.getHeight();
-    if (paramSize.getWidth() > paramSize.getHeight())
-    {
-      localSize.setWidth(Math.min(paramSize.getWidth(), i));
-      localSize.setHeight(bmmf.a(localSize.getWidth() / d));
-      return localSize;
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+    bmmb.a(this.jdField_a_of_type_Bmmb, false);
+    this.jdField_a_of_type_Bmmg.a(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("vip_tar_engine.jar")) {
+      return;
     }
-    localSize.setHeight(Math.min(paramSize.getHeight(), i));
-    localSize.setWidth(bmmf.a(d * localSize.getHeight()));
-    return localSize;
-  }
-  
-  public int b()
-  {
-    return ((Integer)bmmf.a(Integer.valueOf(3145728), Integer.valueOf(4194304), Integer.valueOf(5242880))).intValue();
-  }
-  
-  public int c()
-  {
-    return 30;
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bmmb.a(), " onDownloadSucceed = ", bmmb.b() });
+    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bmmb.b());
+    bmmb.a(this.jdField_a_of_type_Bmmb);
+    this.jdField_a_of_type_Bmmg.a(bmmb.a(this.jdField_a_of_type_Bmmb));
   }
 }
 

@@ -1,28 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class sog
-  implements View.OnClickListener
+public class sog
 {
-  sog(sof paramsof, TabChannelCoverInfo paramTabChannelCoverInfo1, int paramInt, TabChannelCoverInfo paramTabChannelCoverInfo2, ImageView paramImageView) {}
+  public static long a;
   
-  public void onClick(View paramView)
+  public static void a()
   {
-    sof.a(this.jdField_a_of_type_Sof, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo);
-    if (sof.a(this.jdField_a_of_type_Sof) != null) {
-      sof.a(this.jdField_a_of_type_Sof).a(this.jdField_a_of_type_Int);
-    }
-    TabChannelCoverInfo localTabChannelCoverInfo = this.b;
-    int j = opq.b;
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {}
-    for (int i = 1;; i = 0)
+    a = System.currentTimeMillis();
+  }
+  
+  public static void a(Context paramContext)
+  {
+    long l = System.currentTimeMillis();
+    if (l - a < 10000L)
     {
-      opq.a("0X8009496", localTabChannelCoverInfo, j, i, this.jdField_a_of_type_Int);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_starttime", String.valueOf(l - a));
+      pqe.d(paramContext, pkh.a(), true, localHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsStartStatistic", 2, "doReportStartTime param_starttime=" + (l - a));
+      }
     }
   }
 }

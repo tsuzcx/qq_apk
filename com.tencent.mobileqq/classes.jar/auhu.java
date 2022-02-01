@@ -1,33 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.1;
 
 public class auhu
-  implements auhx
+  extends BroadcastReceiver
 {
-  public auhu(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
+  public auhu(UniformDownloadMgr.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
-    if ((this.a.jdField_a_of_type_Int == 2) && (this.a.jdField_a_of_type_Auia != null))
-    {
-      this.a.jdField_a_of_type_Auia.a(0, paramView);
+    if (paramIntent == null) {
       return;
     }
-    if ((this.a.jdField_a_of_type_Int == 3) && (this.a.jdField_a_of_type_Auia != null)) {
-      this.a.jdField_a_of_type_Auia.a(4, paramView);
-    }
-    for (;;)
-    {
-      QLog.d("HotVideoRelativeLayout", 2, "click base view");
-      return;
-      if ((this.a.jdField_a_of_type_Int == 4) && (this.a.jdField_a_of_type_Auia != null)) {
-        this.a.jdField_a_of_type_Auia.a(1, paramView);
-      } else if ((this.a.jdField_a_of_type_Int == 6) && (this.a.jdField_a_of_type_Auia != null)) {
-        this.a.jdField_a_of_type_Auia.a(2, paramView);
-      }
-    }
+    paramContext = paramIntent.getBundleExtra("param");
+    paramIntent = paramIntent.getStringExtra("url");
+    auht.a().a(paramIntent, paramContext);
   }
 }
 

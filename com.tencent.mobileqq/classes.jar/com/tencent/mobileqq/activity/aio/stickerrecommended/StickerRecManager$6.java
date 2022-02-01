@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import ahns;
+import aiin;
 import com.tencent.mobileqq.persistence.EntityManager;
 
 public class StickerRecManager$6
   implements Runnable
 {
-  public StickerRecManager$6(ahns paramahns, StickerRecommendEntity paramStickerRecommendEntity) {}
+  public StickerRecManager$6(aiin paramaiin, StickerRecommendEntity paramStickerRecommendEntity) {}
   
   public void run()
   {
-    ahns.a(this.this$0).persistOrReplace(this.a);
+    aiin.a(this.this$0).persistOrReplace(this.a);
   }
 }
 

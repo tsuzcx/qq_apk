@@ -1,16 +1,18 @@
-import android.view.View;
+import android.os.Bundle;
 
-public abstract interface auia
+public class auia
 {
-  public abstract void a();
+  public int a;
+  public Bundle a;
+  String a;
+  public String b;
   
-  public abstract void a(int paramInt, View paramView);
-  
-  public abstract void a(View paramView);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
+  public auia(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+  }
 }
 
 

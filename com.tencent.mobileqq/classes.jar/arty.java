@@ -1,37 +1,30 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
 
-public class arty
-  implements atbj
+public final class arty
+  implements Parcelable.Creator
 {
-  public arty(FilePreviewActivity paramFilePreviewActivity) {}
-  
-  public void a() {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b()
+  public IPSiteModel.Goods a(Parcel paramParcel)
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.g)) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_Aslp != null)
-    {
-      this.a.jdField_a_of_type_Aslp.k = "3";
-      this.a.jdField_a_of_type_Aslp.e = System.currentTimeMillis();
-    }
-    this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
+    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
+    localGoods.cover = paramParcel.readString();
+    localGoods.goodsTags = paramParcel.readString();
+    localGoods.id = paramParcel.readString();
+    localGoods.name = paramParcel.readString();
+    localGoods.price = paramParcel.readString();
+    localGoods.saleTags = paramParcel.readString();
+    localGoods.svipPrice = paramParcel.readString();
+    localGoods.url = paramParcel.readString();
+    localGoods.moreUrl = paramParcel.readString();
+    localGoods.saleNum = paramParcel.readString();
+    return localGoods;
   }
   
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
+  public IPSiteModel.Goods[] a(int paramInt)
+  {
+    return new IPSiteModel.Goods[paramInt];
+  }
 }
 
 

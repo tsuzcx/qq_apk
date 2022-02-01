@@ -1,41 +1,38 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.QavPanel;
 
-public class mhz
-  implements Animator.AnimatorListener
+class mhz
+  implements DialogInterface.OnClickListener
 {
-  public mhz(QavPanel paramQavPanel) {}
+  mhz(mhy parammhy) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QavPanel.a(this.a))
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    mhw.a(this.a.a, false);
+    if (paramInt == 1)
     {
-      paramAnimator = this.a.a.a().a();
-      paramAnimator.a("tryPlayBtnMuteAnimation onAnimationEnd", true);
-      paramAnimator.b("tryPlayBtnMuteAnimation onAnimationEnd", 1);
-      this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
+      bdla.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      this.a.a.c();
+      if (!mvk.a(mhw.a(this.a.a))) {
+        mhw.a(this.a.a).a(mhw.a(this.a.a));
+      }
+    }
+    while (paramInt != 0)
+    {
+      return;
+      mhw.a(this.a.a).b(mhw.a(this.a.a));
       return;
     }
-    this.a.a.a().g("tryPlayBtnMuteAnimation onAnimationEnd", 1);
-    this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
-    QavPanel.a(this.a).a(false, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    QavPanel.a(this.a).a(false);
+    mhw.a(this.a.a, mhw.a(this.a.a).a().w);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mhz
  * JD-Core Version:    0.7.0.1
  */

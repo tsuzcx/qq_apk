@@ -1,6 +1,16 @@
-public abstract interface zkl
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+
+public class zkl
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
+  public zkl(QRDisplayActivity paramQRDisplayActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 

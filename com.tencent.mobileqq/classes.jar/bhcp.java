@@ -1,24 +1,13 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-@TargetApi(16)
-public class bhcp
-  implements bjoy
+final class bhcp
+  implements MediaPlayer.OnCompletionListener
 {
-  bhcp(ContextMenuTextView paramContextMenuTextView) {}
-  
-  public void a()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      ContextMenuTextView.a(this.a, null);
-    }
-    for (;;)
-    {
-      this.a.a = null;
-      return;
-      ContextMenuTextView.b(this.a, null);
-    }
+    paramMediaPlayer.release();
+    bhcl.a = null;
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import nny;
-import oly;
-import olz;
-import oma;
-import omb;
+import nuz;
+import otv;
+import otw;
+import otx;
+import oty;
 
 public class ReadInJoyNewFeedsActivity$2
   implements Runnable
@@ -13,10 +13,10 @@ public class ReadInJoyNewFeedsActivity$2
   
   public void run()
   {
-    nny.b("2378", this.this$0.app, true, new oly(this));
-    nny.b("2464", this.this$0.app, true, new olz(this));
-    nny.b("2463", this.this$0.app, true, new oma(this));
-    nny.b("3256", this.this$0.app, true, new omb(this));
+    nuz.b("2378", this.this$0.app, true, new otv(this));
+    nuz.b("2464", this.this$0.app, true, new otw(this));
+    nuz.b("2463", this.this$0.app, true, new otx(this));
+    nuz.b("3256", this.this$0.app, true, new oty(this));
   }
 }
 

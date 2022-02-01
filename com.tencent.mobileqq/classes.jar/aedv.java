@@ -1,48 +1,17 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aedv
-  extends WtloginObserver
+  implements View.OnClickListener
 {
-  public aedv(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public aedv(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onClick(View paramView)
   {
-    if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing()))
-    {
-      if ((paramInt != 0) || (paramDevlockInfo == null)) {
-        break label305;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus ret = " + paramInt);
-        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
-        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
-        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
-        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
-        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
-      }
-      argz.a().a(paramDevlockInfo.TransferInfo);
-      this.a.a = paramDevlockInfo;
-    }
-    label305:
-    do
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
-      }
-    } while (paramDevlockInfo != null);
-    QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus DevlockInfo is null");
+    HongbaoShowerActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

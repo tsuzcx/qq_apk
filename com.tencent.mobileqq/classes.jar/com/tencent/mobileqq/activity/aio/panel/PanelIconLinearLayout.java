@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.activity.aio.panel;
 
-import afcm;
-import afqw;
-import afrt;
-import agkg;
-import agwt;
-import agwz;
-import agxa;
-import agxb;
-import agxc;
-import agxd;
-import ahcd;
-import ahce;
-import ahff;
-import akgd;
+import aftr;
+import aghg;
+import agih;
+import agje;
+import ahcw;
+import ahpt;
+import ahpz;
+import ahqa;
+import ahqb;
+import ahqc;
+import ahqd;
+import ahwv;
+import ahww;
+import ahzx;
+import albw;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -32,27 +33,29 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import apju;
-import aqzw;
-import augn;
-import ayfh;
-import ayft;
-import azvi;
-import bbwb;
-import bbyp;
-import bcef;
-import bdav;
-import bftf;
-import bily;
-import bmau;
+import aqmy;
+import aseg;
+import avmh;
+import azlu;
+import azmc;
+import bbbq;
+import bdcw;
+import bdfk;
+import bdla;
+import behu;
+import bhbx;
+import bjxa;
+import bnqe;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
@@ -72,9 +75,10 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import dov.com.qq.im.ptv.LightVideoConfigMgr;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import nmy;
+import nty;
 import org.jetbrains.annotations.NotNull;
 
 public class PanelIconLinearLayout
@@ -86,11 +90,11 @@ public class PanelIconLinearLayout
   public static int b;
   public static Boolean b;
   public int a;
-  public afqw a;
-  private agxa jdField_a_of_type_Agxa;
-  private agxb jdField_a_of_type_Agxb;
-  private agxc jdField_a_of_type_Agxc;
-  private agxd jdField_a_of_type_Agxd;
+  public agih a;
+  private ahqa jdField_a_of_type_Ahqa;
+  private ahqb jdField_a_of_type_Ahqb;
+  private ahqc jdField_a_of_type_Ahqc;
+  private ahqd jdField_a_of_type_Ahqd;
   public Context a;
   public SharedPreferences a;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
@@ -117,31 +121,27 @@ public class PanelIconLinearLayout
     this.jdField_a_of_type_Int = 100;
     setOrientation(0);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setBackgroundResource(2130849809);
+    setBackgroundResource(2130849902);
     jdField_b_of_type_Int = AIOUtils.dp2px(40.0F, paramContext.getResources());
     d();
   }
   
   @NotNull
-  private RedTouch a(ayfh paramayfh, int paramInt, RedDotImageView paramRedDotImageView)
+  private RedTouch a(azlu paramazlu, int paramInt, RedDotImageView paramRedDotImageView)
   {
-    paramRedDotImageView = new RedTouch(this.jdField_a_of_type_AndroidContentContext, paramRedDotImageView).a(53).c(15).d(0).a(true).a();
+    paramRedDotImageView = new RedTouch(this.jdField_a_of_type_AndroidContentContext, paramRedDotImageView).b(53).d(15).e(0).a(true).a();
     paramRedDotImageView.setTag(Integer.valueOf(paramInt));
-    azvi localazvi = (azvi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36);
-    if (paramInt == 8)
-    {
-      paramayfh = localazvi.a(10);
-      if (paramayfh != null) {
-        paramRedDotImageView.a(paramayfh);
-      }
+    bbbq localbbbq = (bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
+    if (paramInt == 8) {
+      a(paramRedDotImageView);
     }
     do
     {
       return paramRedDotImageView;
-      paramayfh = localazvi.a(4, String.valueOf(paramayfh.jdField_b_of_type_Int));
-    } while (paramayfh == null);
-    paramRedDotImageView.a(paramayfh);
-    localazvi.b(paramayfh, "");
+      paramazlu = localbbbq.a(4, String.valueOf(paramazlu.jdField_b_of_type_Int));
+    } while (paramazlu == null);
+    paramRedDotImageView.a(paramazlu);
+    localbbbq.b(paramazlu, "");
     return paramRedDotImageView;
   }
   
@@ -171,7 +171,7 @@ public class PanelIconLinearLayout
       {
         paramRedDotImageView.setReddotXOffsetDp(15);
         paramRedDotImageView.setReddotYOffsetDp(11);
-        paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850322));
+        paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850428));
         paramRedDotImageView.a(true);
       }
     }
@@ -180,41 +180,41 @@ public class PanelIconLinearLayout
       if (paramInt == 26)
       {
         if (!b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentSharedPreferences)) {
-          break label222;
+          break label223;
         }
         paramRedDotImageView.setReddotXOffsetDp(15);
         paramRedDotImageView.setReddotYOffsetDp(11);
-        paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850322));
+        paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850428));
         paramRedDotImageView.a(true);
       }
       label100:
       if (paramInt == 3)
       {
         if (!a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-          break label230;
+          break label231;
         }
         paramRedDotImageView.setReddotXOffsetDp(15);
         paramRedDotImageView.setReddotYOffsetDp(11);
-        paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850322));
+        paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850428));
         paramRedDotImageView.a(true);
       }
       label145:
       if (paramInt != 2) {
-        break label244;
+        break label245;
       }
-      BusinessInfoCheckUpdate.AppInfo localAppInfo = ((azvi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).a("103100.103300");
+      BusinessInfoCheckUpdate.AppInfo localAppInfo = ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a("103100.103300");
       if ((localAppInfo == null) || (localAppInfo.iNewFlag.get() != 1)) {
-        break label238;
+        break label239;
       }
       paramRedDotImageView.setReddotXOffsetDp(15);
       paramRedDotImageView.setReddotYOffsetDp(11);
-      paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850322));
+      paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850428));
       paramRedDotImageView.a(true);
     }
-    label222:
-    label230:
-    label238:
-    label244:
+    label223:
+    label231:
+    label239:
+    label245:
     do
     {
       return;
@@ -233,7 +233,7 @@ public class PanelIconLinearLayout
       }
       if (paramInt == 10)
       {
-        akgd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRedDotImageView, this.jdField_c_of_type_Int);
+        albw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRedDotImageView, this.jdField_c_of_type_Int);
         return;
       }
       if (paramInt == 8)
@@ -242,7 +242,7 @@ public class PanelIconLinearLayout
         {
           paramRedDotImageView.setReddotXOffsetDp(15);
           paramRedDotImageView.setReddotYOffsetDp(11);
-          paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850322));
+          paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850428));
           paramRedDotImageView.a(true);
           return;
         }
@@ -273,19 +273,19 @@ public class PanelIconLinearLayout
       i = ((Integer)paramView.getTag()).intValue();
       if (i == 2)
       {
-        ((azvi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).b("103100.103300");
+        ((bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b("103100.103300");
         if ((paramView instanceof RedDotImageView)) {
           ((RedDotImageView)paramView).a(false);
         }
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "changevoice", "0X8006F48", 0, 0, "", "", "", "");
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "changevoice", "0X8006F48", 0, 0, "", "", "", "");
         return;
       }
       if (i == 10)
       {
-        afcm.a(1);
+        aftr.a(1);
         String str = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", str, 0, 0, "", "", "", "");
-        akgd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, this.jdField_c_of_type_Int);
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", str, 0, 0, "", "", "", "");
+        albw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, this.jdField_c_of_type_Int);
         return;
       }
     }
@@ -296,20 +296,20 @@ public class PanelIconLinearLayout
     }
     if (i == 6)
     {
-      if ((ShortVideoUtils.supportShortVideoMergePhoto()) && (apju.a())) {
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80072C0", "0X80072C0", 0, 0, "", "", "", "");
+      if ((ShortVideoUtils.supportShortVideoMergePhoto()) && (aqmy.a())) {
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80072C0", "0X80072C0", 0, 0, "", "", "", "");
       }
       if (!jdField_b_of_type_JavaLangBoolean.booleanValue())
       {
         setShowRed(6, false);
-        bbwb.a(bbwb.jdField_d_of_type_JavaLangString);
+        bdcw.a(bdcw.jdField_d_of_type_JavaLangString);
         return;
       }
       if (jdField_a_of_type_JavaLangBoolean.booleanValue())
       {
         setShowRed(6, false);
         ShortVideoUtils.setPtvRedDotStatus(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009367", "0X8009367", 1, 0, "", "", "", "");
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009367", "0X8009367", 1, 0, "", "", "", "");
         jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
       }
     }
@@ -319,7 +319,7 @@ public class PanelIconLinearLayout
       {
         setShowRed(24, false);
         ShortVideoUtils.setHotPicRedDotStatus(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), false);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009367", "0X8009367", 2, 0, "", "", "", "");
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009367", "0X8009367", 2, 0, "", "", "", "");
         jdField_a_of_type_Boolean = false;
       }
     }
@@ -330,25 +330,27 @@ public class PanelIconLinearLayout
         ScribbleResMgr.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
         setShowRed(8, false);
       }
-      c();
+      if ((paramView instanceof RedTouch)) {
+        a((RedTouch)paramView);
+      }
     }
   }
   
-  private void a(ayfh paramayfh, SessionInfo paramSessionInfo, Context paramContext)
+  private void a(azlu paramazlu, SessionInfo paramSessionInfo, Context paramContext)
   {
-    if ((8 == paramayfh.jdField_d_of_type_Int) && (paramSessionInfo != null) && (bftf.b(paramSessionInfo.curFriendUin)))
+    if ((8 == paramazlu.jdField_d_of_type_Int) && (paramSessionInfo != null) && (bhbx.b(paramSessionInfo.curFriendUin)))
     {
-      paramayfh.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(agwt.T[2]);
-      paramayfh.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramayfh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      paramayfh.jdField_d_of_type_Int = agwt.T[0];
-      paramayfh.e = agwt.T[3];
-      paramayfh.jdField_d_of_type_JavaLangString = paramContext.getResources().getString(agwt.T[1]);
+      paramazlu.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(ahpt.T[2]);
+      paramazlu.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramazlu.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      paramazlu.jdField_d_of_type_Int = ahpt.T[0];
+      paramazlu.e = ahpt.T[3];
+      paramazlu.jdField_d_of_type_JavaLangString = paramContext.getResources().getString(ahpt.T[1]);
     }
   }
   
-  private void a(ayfh paramayfh, ArrayList<ahce> paramArrayList, int paramInt)
+  private void a(azlu paramazlu, ArrayList<ahww> paramArrayList, int paramInt)
   {
-    int i = paramayfh.jdField_d_of_type_Int;
+    int i = paramazlu.jdField_d_of_type_Int;
     RedDotImageView localRedDotImageView = new RedDotImageView(this.jdField_a_of_type_AndroidContentContext);
     localRedDotImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     localRedDotImageView.setShowBorder(true);
@@ -356,14 +358,14 @@ public class PanelIconLinearLayout
     localLayoutParams.weight = 1.0F;
     localLayoutParams.gravity = 16;
     localRedDotImageView.setTag(Integer.valueOf(i));
-    if ((paramayfh.jdField_a_of_type_ArrayOfInt != null) && (paramayfh.jdField_a_of_type_ArrayOfInt.length > 0))
+    if ((paramazlu.jdField_a_of_type_ArrayOfInt != null) && (paramazlu.jdField_a_of_type_ArrayOfInt.length > 0))
     {
-      if (a(paramayfh))
+      if (a(paramazlu))
       {
-        ahce localahce = new ahce();
-        localahce.jdField_a_of_type_Int = paramInt;
-        localahce.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView = localRedDotImageView;
-        paramArrayList.add(localahce);
+        ahww localahww = new ahww();
+        localahww.jdField_a_of_type_Int = paramInt;
+        localahww.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView = localRedDotImageView;
+        paramArrayList.add(localahww);
       }
     }
     else {
@@ -372,14 +374,14 @@ public class PanelIconLinearLayout
       }
     }
     label253:
-    for (paramArrayList = paramayfh.jdField_b_of_type_AndroidGraphicsDrawableDrawable;; paramArrayList = paramayfh.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
+    for (paramArrayList = paramazlu.jdField_b_of_type_AndroidGraphicsDrawableDrawable;; paramArrayList = paramazlu.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
     {
       localRedDotImageView.setImageDrawable(paramArrayList);
       if (AppSetting.jdField_c_of_type_Boolean) {
-        localRedDotImageView.setContentDescription(paramayfh.jdField_d_of_type_JavaLangString);
+        localRedDotImageView.setContentDescription(paramazlu.jdField_d_of_type_JavaLangString);
       }
-      if (paramayfh.e > 0) {
-        localRedDotImageView.setId(paramayfh.e);
+      if (paramazlu.e > 0) {
+        localRedDotImageView.setId(paramazlu.e);
       }
       localRedDotImageView.setLongClickable(true);
       localRedDotImageView.setOnLongClickListener(this);
@@ -389,9 +391,9 @@ public class PanelIconLinearLayout
       if ((!this.d) && (i != 8)) {
         break label261;
       }
-      addView(a(paramayfh, i, localRedDotImageView), localLayoutParams);
+      addView(a(paramazlu, i, localRedDotImageView), localLayoutParams);
       return;
-      localRedDotImageView.setImageResource(paramayfh.jdField_a_of_type_ArrayOfInt[2]);
+      localRedDotImageView.setImageResource(paramazlu.jdField_a_of_type_ArrayOfInt[2]);
       break;
     }
     label261:
@@ -403,32 +405,32 @@ public class PanelIconLinearLayout
   {
     this.d = true;
     this.e = false;
-    this.jdField_a_of_type_JavaUtilArrayList.add(agwt.d);
-    this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+    this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.d);
+    this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
     h();
     f();
-    if (agwt.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.C);
+    if (ahpt.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.C);
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
-    if (bftf.b(paramSessionInfo.curFriendUin))
+    this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
+    if (bhbx.b(paramSessionInfo.curFriendUin))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.U);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.U);
       this.d = false;
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(agwt.y);
+    this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.y);
   }
   
   private void a(BaseChatPie paramBaseChatPie)
   {
     ArrayList localArrayList;
-    if ((paramBaseChatPie != null) && ((paramBaseChatPie instanceof ahff)))
+    if ((paramBaseChatPie != null) && ((paramBaseChatPie instanceof ahzx)))
     {
-      if (((ahff)paramBaseChatPie).e()) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.jdField_a_of_type_ArrayOfInt);
+      if (((ahzx)paramBaseChatPie).e()) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.jdField_a_of_type_ArrayOfInt);
       }
-      if (((ahff)paramBaseChatPie).d())
+      if (((ahzx)paramBaseChatPie).d())
       {
         localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
         if (!this.jdField_b_of_type_Boolean) {
@@ -437,17 +439,17 @@ public class PanelIconLinearLayout
       }
     }
     label122:
-    for (int[] arrayOfInt = agwt.p;; arrayOfInt = agwt.l)
+    for (int[] arrayOfInt = ahpt.p;; arrayOfInt = ahpt.l)
     {
       localArrayList.add(arrayOfInt);
       g();
-      if (((ahff)paramBaseChatPie).a())
+      if (((ahzx)paramBaseChatPie).a())
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.E);
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.D);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.E);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.D);
       }
-      if (((ahff)paramBaseChatPie).c()) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.J);
+      if (((ahzx)paramBaseChatPie).c()) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.J);
       }
       return;
     }
@@ -455,13 +457,13 @@ public class PanelIconLinearLayout
   
   private void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, int paramInt)
   {
-    if ((paramInt == 1024) && (((bily)paramQQAppInterface.getManager(165)).f(paramSessionInfo.curFriendUin))) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.jdField_a_of_type_ArrayOfInt);
+    if ((paramInt == 1024) && (((bjxa)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(paramSessionInfo.curFriendUin))) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.jdField_a_of_type_ArrayOfInt);
     }
     ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
     if (this.jdField_b_of_type_Boolean)
     {
-      arrayOfInt = agwt.p;
+      arrayOfInt = ahpt.p;
       localArrayList.add(arrayOfInt);
       g();
       localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
@@ -470,34 +472,34 @@ public class PanelIconLinearLayout
       }
     }
     label163:
-    for (int[] arrayOfInt = agwt.i;; arrayOfInt = agwt.e)
+    for (int[] arrayOfInt = ahpt.i;; arrayOfInt = ahpt.e)
     {
       localArrayList.add(arrayOfInt);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.z);
-      if ((paramInt == 1024) && (((bily)paramQQAppInterface.getManager(165)).f(paramSessionInfo.curFriendUin)))
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.z);
+      if ((paramInt == 1024) && (((bjxa)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(paramSessionInfo.curFriendUin)))
       {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(agwt.z);
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.w);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(ahpt.z);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.w);
       }
       return;
-      arrayOfInt = agwt.l;
+      arrayOfInt = ahpt.l;
       break;
     }
   }
   
   private void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, int paramInt, ArrayList<int[]> paramArrayList)
   {
-    if ((paramInt == 1024) && (((bily)paramQQAppInterface.getManager(165)).f(paramSessionInfo.curFriendUin))) {
-      paramArrayList.add(agwt.d);
+    if ((paramInt == 1024) && (((bjxa)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(paramSessionInfo.curFriendUin))) {
+      paramArrayList.add(ahpt.d);
     }
-    paramArrayList.add(agwt.o);
+    paramArrayList.add(ahpt.o);
     f();
-    paramArrayList.add(agwt.h);
-    paramArrayList.add(agwt.A);
-    if ((paramInt == 1024) && (((bily)paramQQAppInterface.getManager(165)).f(paramSessionInfo.curFriendUin)))
+    paramArrayList.add(ahpt.h);
+    paramArrayList.add(ahpt.A);
+    if ((paramInt == 1024) && (((bjxa)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(paramSessionInfo.curFriendUin)))
     {
-      paramArrayList.remove(agwt.z);
-      paramArrayList.add(agwt.y);
+      paramArrayList.remove(ahpt.z);
+      paramArrayList.add(ahpt.y);
     }
   }
   
@@ -505,12 +507,12 @@ public class PanelIconLinearLayout
   {
     if (paramInt == 3000)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.d);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.d);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
       h();
       f();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.y);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.y);
       return;
     }
     if (paramInt == 1)
@@ -525,19 +527,19 @@ public class PanelIconLinearLayout
     }
     if (c(paramInt))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.d);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.d);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
       f();
       e();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
       return;
     }
     if (paramInt == 1036)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
       f();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.X);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.X);
       return;
     }
     if (a(paramQQAppInterface, paramSessionInfo, paramInt))
@@ -547,97 +549,97 @@ public class PanelIconLinearLayout
     }
     if (paramInt == 10004)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.d);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.d);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
       f();
       e();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.y);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.y);
       return;
     }
     if (e(paramInt))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
       f();
       e();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
       return;
     }
     if (paramInt == 1020)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
       f();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.A);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.A);
       return;
     }
     if (paramInt == 1005)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
       f();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.A);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.A);
       return;
     }
     if (paramInt == 1003)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
       f();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.A);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.A);
       e();
       return;
     }
     if (paramInt == 1010)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.d);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.d);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
       f();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.y);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.y);
       return;
     }
     if (b(paramInt))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
       f();
       e();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
       return;
     }
     if (paramInt == 1025)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.d);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.d);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
       f();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.y);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.y);
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+    this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
     f();
-    this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
+    this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
   }
   
   private void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie, ArrayList<int[]> paramArrayList)
   {
-    HotChatManager localHotChatManager = (HotChatManager)paramQQAppInterface.getManager(60);
+    HotChatManager localHotChatManager = (HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
     if ((localHotChatManager != null) && (localHotChatManager.b(paramSessionInfo.curFriendUin)))
     {
       paramQQAppInterface = localHotChatManager.a(paramSessionInfo.curFriendUin);
-      paramArrayList.add(agwt.d);
-      paramArrayList.add(agwt.W);
+      paramArrayList.add(ahpt.d);
+      paramArrayList.add(ahpt.W);
       if (!paramQQAppInterface.isRobotHotChat) {
-        paramArrayList.add(agwt.G);
+        paramArrayList.add(ahpt.G);
       }
-      paramArrayList.add(agwt.I);
-      paramArrayList.add(agwt.h);
+      paramArrayList.add(ahpt.I);
+      paramArrayList.add(ahpt.h);
       if (!paramQQAppInterface.isRobotHotChat) {
-        paramArrayList.add(agwt.y);
+        paramArrayList.add(ahpt.y);
       }
       return;
     }
     boolean bool = TroopInfo.isQidianPrivateTroop(paramQQAppInterface, paramSessionInfo.curFriendUin);
-    a(nmy.a().a(paramSessionInfo.curFriendUin), bool, paramQQAppInterface, paramBaseChatPie, true);
+    a(nty.a().a(paramSessionInfo.curFriendUin), bool, paramQQAppInterface, paramBaseChatPie, true);
   }
   
   private void a(QQAppInterface paramQQAppInterface, ArrayList<int[]> paramArrayList)
@@ -645,23 +647,79 @@ public class PanelIconLinearLayout
     int[] arrayOfInt;
     if (this.jdField_b_of_type_Boolean)
     {
-      arrayOfInt = agwt.p;
+      arrayOfInt = ahpt.p;
       paramArrayList.add(arrayOfInt);
       g();
-      if (augn.a(paramQQAppInterface).b()) {
-        paramArrayList.add(agwt.N);
+      if (avmh.a(paramQQAppInterface).b()) {
+        paramArrayList.add(ahpt.N);
       }
       if (!this.jdField_b_of_type_Boolean) {
         break label64;
       }
     }
     label64:
-    for (paramQQAppInterface = agwt.i;; paramQQAppInterface = agwt.e)
+    for (paramQQAppInterface = ahpt.i;; paramQQAppInterface = ahpt.e)
     {
       paramArrayList.add(paramQQAppInterface);
       return;
-      arrayOfInt = agwt.l;
+      arrayOfInt = ahpt.l;
       break;
+    }
+  }
+  
+  private void a(RedTouch paramRedTouch)
+  {
+    Object localObject2 = null;
+    bbbq localbbbq;
+    int i;
+    if (paramRedTouch != null)
+    {
+      localbbbq = (bbbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
+      if (this.e)
+      {
+        i = 11;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+          break label198;
+        }
+      }
+    }
+    label193:
+    label198:
+    for (Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin;; localObject1 = null)
+    {
+      if (this.jdField_a_of_type_Agih != null)
+      {
+        List localList = ((aghg)this.jdField_a_of_type_Agih.a(89)).a();
+        ArrayList localArrayList = new ArrayList();
+        if (localList != null)
+        {
+          localObject2 = localList.iterator();
+          for (;;)
+          {
+            if (((Iterator)localObject2).hasNext())
+            {
+              localArrayList.add(String.valueOf(((PlusPanelAppInfo)((Iterator)localObject2).next()).getRedDotID()));
+              continue;
+              i = 10;
+              break;
+            }
+          }
+          localObject2 = localArrayList;
+        }
+        localObject1 = localbbbq.a(i, (String)localObject1, (List)localObject2);
+        paramRedTouch.a((BusinessInfoCheckUpdate.RedTypeInfo)localObject1);
+        if ((!this.jdField_c_of_type_Boolean) && (localObject1 != null)) {
+          localbbbq.b(i, 30);
+        }
+        if (localObject1 == null) {
+          break label193;
+        }
+      }
+      for (boolean bool = true;; bool = false)
+      {
+        this.jdField_c_of_type_Boolean = bool;
+        return;
+      }
     }
   }
   
@@ -676,9 +734,9 @@ public class PanelIconLinearLayout
     {
       paramRedDotImageView.setReddotXOffsetDp(15);
       paramRedDotImageView.setReddotYOffsetDp(11);
-      paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850322));
+      paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850428));
       paramRedDotImageView.a(true);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009366", "0X8009366", 2, 0, "", "", "", "");
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009366", "0X8009366", 2, 0, "", "", "", "");
       return;
     }
     paramRedDotImageView.a(false);
@@ -694,35 +752,35 @@ public class PanelIconLinearLayout
     }
   }
   
-  private void a(List<ayfh> paramList)
+  private void a(List<azlu> paramList)
   {
     int i = 0;
     if (i < paramList.size())
     {
-      ayfh localayfh = (ayfh)paramList.get(i);
+      azlu localazlu = (azlu)paramList.get(i);
       int[] arrayOfInt;
-      if ((!this.jdField_b_of_type_Boolean) && (localayfh != null) && (localayfh.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
+      if ((!this.jdField_b_of_type_Boolean) && (localazlu != null) && (localazlu.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
       {
-        arrayOfInt = ayft.a(localayfh.jdField_a_of_type_Int);
+        arrayOfInt = azmc.a(localazlu.jdField_a_of_type_Int);
         if (arrayOfInt != null) {
-          localayfh.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(arrayOfInt[2]);
+          localazlu.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(arrayOfInt[2]);
         }
       }
-      if ((this.jdField_b_of_type_Boolean) && (localayfh != null) && (localayfh.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null))
+      if ((this.jdField_b_of_type_Boolean) && (localazlu != null) && (localazlu.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null))
       {
-        arrayOfInt = ayft.a(localayfh.jdField_a_of_type_Int);
+        arrayOfInt = azmc.a(localazlu.jdField_a_of_type_Int);
         if (arrayOfInt == null) {
           break label130;
         }
-        localayfh.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(arrayOfInt[2]);
+        localazlu.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(arrayOfInt[2]);
       }
       for (;;)
       {
         i += 1;
         break;
         label130:
-        if (localayfh.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-          localayfh.jdField_b_of_type_AndroidGraphicsDrawableDrawable = localayfh.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        if (localazlu.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+          localazlu.jdField_b_of_type_AndroidGraphicsDrawableDrawable = localazlu.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         }
       }
     }
@@ -730,17 +788,17 @@ public class PanelIconLinearLayout
   
   private boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (bftf.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin));
+    return (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (bhbx.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin));
   }
   
   private boolean a(int paramInt, SessionInfo paramSessionInfo)
   {
-    return (10 != paramInt) || (paramSessionInfo == null) || (!bftf.b(paramSessionInfo.curFriendUin));
+    return (10 != paramInt) || (paramSessionInfo == null) || (!bhbx.b(paramSessionInfo.curFriendUin));
   }
   
-  private boolean a(ayfh paramayfh)
+  private boolean a(azlu paramazlu)
   {
-    return ((paramayfh.jdField_a_of_type_ArrayOfInt.length >= 6) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isQimUserOnline) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isQimUserTitleForm) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isNightMode)) || ((paramayfh.jdField_a_of_type_ArrayOfInt.length >= 6) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isTimUserOnline) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isTimUserTitleForm) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isNightMode)) || ((paramayfh.jdField_a_of_type_ArrayOfInt.length >= 6) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType)));
+    return ((paramazlu.jdField_a_of_type_ArrayOfInt.length >= 6) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isQimUserOnline) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isQimUserTitleForm) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isNightMode)) || ((paramazlu.jdField_a_of_type_ArrayOfInt.length >= 6) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isTimUserOnline) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isTimUserTitleForm) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isNightMode)) || ((paramazlu.jdField_a_of_type_ArrayOfInt.length >= 6) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType)));
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface)
@@ -748,21 +806,21 @@ public class PanelIconLinearLayout
     if (paramQQAppInterface == null) {
       return false;
     }
-    return ((aqzw)paramQQAppInterface.getManager(334)).b();
+    return ((aseg)paramQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_MANAGER)).b();
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, SharedPreferences paramSharedPreferences)
   {
     boolean bool2 = true;
-    int i = agkg.b(paramQQAppInterface, 1);
+    int i = ahcw.b(paramQQAppInterface, 1);
     if (paramSharedPreferences != null) {}
-    for (boolean bool1 = agkg.b(paramSharedPreferences);; bool1 = false)
+    for (boolean bool1 = ahcw.b(paramSharedPreferences);; bool1 = false)
     {
       if ((i == 2) && (!bool1)) {}
       for (;;)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(agkg.jdField_a_of_type_JavaLangString, 2, "getPokeNeedRed isPokeNeedRed=" + bool2 + "getPokeMsgFoldSwitch=" + i + "hasClicked=" + bool1);
+          QLog.d(ahcw.jdField_a_of_type_JavaLangString, 2, "getPokeNeedRed isPokeNeedRed=" + bool2 + "getPokeMsgFoldSwitch=" + i + "hasClicked=" + bool1);
         }
         return bool2;
         bool2 = false;
@@ -775,30 +833,30 @@ public class PanelIconLinearLayout
     return (paramInt == 0) || (ChatActivityUtils.a(paramQQAppInterface, paramSessionInfo.curFriendUin));
   }
   
-  private boolean a(List<ayfh> paramList)
+  private boolean a(List<azlu> paramList)
   {
     return (this.e) || (!this.d) || (paramList == null) || (paramList.size() == 0);
   }
   
   private boolean a(boolean paramBoolean)
   {
-    return (!bbyp.b()) || ((paramBoolean) && ("2920".equals(ThemeUtil.curThemeId)));
+    return (!bdfk.b()) || ((paramBoolean) && ("2920".equals(ThemeUtil.curThemeId)));
   }
   
   private void b(SessionInfo paramSessionInfo)
   {
     this.d = true;
     this.e = false;
-    this.jdField_a_of_type_JavaUtilArrayList.add(agwt.jdField_a_of_type_ArrayOfInt);
+    this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.jdField_a_of_type_ArrayOfInt);
     ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
     if (this.jdField_b_of_type_Boolean)
     {
-      arrayOfInt = agwt.p;
+      arrayOfInt = ahpt.p;
       localArrayList.add(arrayOfInt);
       i();
       g();
-      if (agwt.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.B);
+      if (ahpt.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.B);
       }
       localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
       if (!this.jdField_b_of_type_Boolean) {
@@ -806,20 +864,20 @@ public class PanelIconLinearLayout
       }
     }
     label124:
-    for (int[] arrayOfInt = agwt.i;; arrayOfInt = agwt.e)
+    for (int[] arrayOfInt = ahpt.i;; arrayOfInt = ahpt.e)
     {
       localArrayList.add(arrayOfInt);
-      if (!bftf.b(paramSessionInfo.curFriendUin)) {
+      if (!bhbx.b(paramSessionInfo.curFriendUin)) {
         break label131;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.T);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.T);
       this.d = false;
       return;
-      arrayOfInt = agwt.l;
+      arrayOfInt = ahpt.l;
       break;
     }
     label131:
-    this.jdField_a_of_type_JavaUtilArrayList.add(agwt.w);
+    this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.w);
   }
   
   private void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
@@ -853,11 +911,11 @@ public class PanelIconLinearLayout
   {
     if (paramInt == 3000)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.jdField_a_of_type_ArrayOfInt);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.jdField_a_of_type_ArrayOfInt);
       paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
       if (this.jdField_b_of_type_Boolean)
       {
-        paramQQAppInterface = agwt.p;
+        paramQQAppInterface = ahpt.p;
         paramSessionInfo.add(paramQQAppInterface);
         i();
         g();
@@ -865,10 +923,10 @@ public class PanelIconLinearLayout
         if (!this.jdField_b_of_type_Boolean) {
           break label90;
         }
-        paramQQAppInterface = agwt.i;
+        paramQQAppInterface = ahpt.i;
         label65:
         paramSessionInfo.add(paramQQAppInterface);
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.w);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.w);
       }
     }
     label90:
@@ -877,9 +935,9 @@ public class PanelIconLinearLayout
     do
     {
       return;
-      paramQQAppInterface = agwt.l;
+      paramQQAppInterface = ahpt.l;
       break;
-      paramQQAppInterface = agwt.e;
+      paramQQAppInterface = ahpt.e;
       break label65;
       if (paramInt == 1)
       {
@@ -901,7 +959,7 @@ public class PanelIconLinearLayout
         paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
         if (this.jdField_b_of_type_Boolean)
         {
-          paramQQAppInterface = agwt.p;
+          paramQQAppInterface = ahpt.p;
           paramSessionInfo.add(paramQQAppInterface);
           g();
           paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
@@ -909,12 +967,12 @@ public class PanelIconLinearLayout
             break label223;
           }
         }
-        for (paramQQAppInterface = agwt.i;; paramQQAppInterface = agwt.e)
+        for (paramQQAppInterface = ahpt.i;; paramQQAppInterface = ahpt.e)
         {
           paramSessionInfo.add(paramQQAppInterface);
-          this.jdField_a_of_type_JavaUtilArrayList.add(agwt.X);
+          this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.X);
           return;
-          paramQQAppInterface = agwt.l;
+          paramQQAppInterface = ahpt.l;
           break;
         }
       }
@@ -926,7 +984,7 @@ public class PanelIconLinearLayout
       if (paramInt == 10004)
       {
         b(paramQQAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.w);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.w);
         return;
       }
       if (e(paramInt))
@@ -939,7 +997,7 @@ public class PanelIconLinearLayout
         paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
         if (this.jdField_b_of_type_Boolean)
         {
-          paramQQAppInterface = agwt.p;
+          paramQQAppInterface = ahpt.p;
           paramSessionInfo.add(paramQQAppInterface);
           g();
           paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
@@ -947,12 +1005,12 @@ public class PanelIconLinearLayout
             break label370;
           }
         }
-        for (paramQQAppInterface = agwt.i;; paramQQAppInterface = agwt.e)
+        for (paramQQAppInterface = ahpt.i;; paramQQAppInterface = ahpt.e)
         {
           paramSessionInfo.add(paramQQAppInterface);
-          this.jdField_a_of_type_JavaUtilArrayList.add(agwt.z);
+          this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.z);
           return;
-          paramQQAppInterface = agwt.l;
+          paramQQAppInterface = ahpt.l;
           break;
         }
       }
@@ -962,7 +1020,7 @@ public class PanelIconLinearLayout
       paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
       if (this.jdField_b_of_type_Boolean)
       {
-        paramQQAppInterface = agwt.p;
+        paramQQAppInterface = ahpt.p;
         paramSessionInfo.add(paramQQAppInterface);
         g();
         paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
@@ -971,12 +1029,12 @@ public class PanelIconLinearLayout
         }
       }
       label460:
-      for (paramQQAppInterface = agwt.i;; paramQQAppInterface = agwt.e)
+      for (paramQQAppInterface = ahpt.i;; paramQQAppInterface = ahpt.e)
       {
         paramSessionInfo.add(paramQQAppInterface);
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.z);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.z);
         return;
-        paramQQAppInterface = agwt.l;
+        paramQQAppInterface = ahpt.l;
         break;
       }
     }
@@ -984,25 +1042,25 @@ public class PanelIconLinearLayout
     {
       paramBaseChatPie = this.jdField_a_of_type_JavaUtilArrayList;
       if (this.jdField_b_of_type_Boolean) {}
-      for (paramSessionInfo = agwt.p;; paramSessionInfo = agwt.l)
+      for (paramSessionInfo = ahpt.p;; paramSessionInfo = ahpt.l)
       {
         paramBaseChatPie.add(paramSessionInfo);
         g();
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.z);
-        if (!augn.a(paramQQAppInterface).b()) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.z);
+        if (!avmh.a(paramQQAppInterface).b()) {
           break;
         }
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.N);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.N);
         return;
       }
     }
     if (paramInt == 1010)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.jdField_a_of_type_ArrayOfInt);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.jdField_a_of_type_ArrayOfInt);
       paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
       if (this.jdField_b_of_type_Boolean)
       {
-        paramQQAppInterface = agwt.p;
+        paramQQAppInterface = ahpt.p;
         paramSessionInfo.add(paramQQAppInterface);
         g();
         paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
@@ -1011,12 +1069,12 @@ public class PanelIconLinearLayout
         }
       }
       label627:
-      for (paramQQAppInterface = agwt.i;; paramQQAppInterface = agwt.e)
+      for (paramQQAppInterface = ahpt.i;; paramQQAppInterface = ahpt.e)
       {
         paramSessionInfo.add(paramQQAppInterface);
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.w);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.w);
         return;
-        paramQQAppInterface = agwt.l;
+        paramQQAppInterface = ahpt.l;
         break;
       }
     }
@@ -1029,12 +1087,12 @@ public class PanelIconLinearLayout
     {
       paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
       if (this.jdField_b_of_type_Boolean) {}
-      for (paramQQAppInterface = agwt.p;; paramQQAppInterface = agwt.l)
+      for (paramQQAppInterface = ahpt.p;; paramQQAppInterface = ahpt.l)
       {
         paramSessionInfo.add(paramQQAppInterface);
         g();
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.J);
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.K);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.J);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.K);
         return;
       }
     }
@@ -1042,21 +1100,21 @@ public class PanelIconLinearLayout
     {
       paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
       if (this.jdField_b_of_type_Boolean) {}
-      for (paramQQAppInterface = agwt.p;; paramQQAppInterface = agwt.l)
+      for (paramQQAppInterface = ahpt.p;; paramQQAppInterface = ahpt.l)
       {
         paramSessionInfo.add(paramQQAppInterface);
         g();
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.J);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.J);
         return;
       }
     }
     if (paramInt == 1025)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.jdField_a_of_type_ArrayOfInt);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.jdField_a_of_type_ArrayOfInt);
       paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
       if (this.jdField_b_of_type_Boolean)
       {
-        paramQQAppInterface = agwt.p;
+        paramQQAppInterface = ahpt.p;
         paramSessionInfo.add(paramQQAppInterface);
         g();
         paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
@@ -1065,12 +1123,12 @@ public class PanelIconLinearLayout
         }
       }
       label856:
-      for (paramQQAppInterface = agwt.i;; paramQQAppInterface = agwt.e)
+      for (paramQQAppInterface = ahpt.i;; paramQQAppInterface = ahpt.e)
       {
         paramSessionInfo.add(paramQQAppInterface);
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.w);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.w);
         return;
-        paramQQAppInterface = agwt.l;
+        paramQQAppInterface = ahpt.l;
         break;
       }
     }
@@ -1087,7 +1145,7 @@ public class PanelIconLinearLayout
     paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
     if (this.jdField_b_of_type_Boolean)
     {
-      paramQQAppInterface = agwt.p;
+      paramQQAppInterface = ahpt.p;
       paramSessionInfo.add(paramQQAppInterface);
       g();
       paramSessionInfo = this.jdField_a_of_type_JavaUtilArrayList;
@@ -1096,37 +1154,37 @@ public class PanelIconLinearLayout
       }
     }
     label946:
-    for (paramQQAppInterface = agwt.i;; paramQQAppInterface = agwt.e)
+    for (paramQQAppInterface = ahpt.i;; paramQQAppInterface = ahpt.e)
     {
       paramSessionInfo.add(paramQQAppInterface);
       return;
-      paramQQAppInterface = agwt.l;
+      paramQQAppInterface = ahpt.l;
       break;
     }
   }
   
   private void b(QQAppInterface paramQQAppInterface, ArrayList<int[]> paramArrayList)
   {
-    paramArrayList.add(agwt.jdField_a_of_type_ArrayOfInt);
+    paramArrayList.add(ahpt.jdField_a_of_type_ArrayOfInt);
     int[] arrayOfInt;
     if (this.jdField_b_of_type_Boolean)
     {
-      arrayOfInt = agwt.p;
+      arrayOfInt = ahpt.p;
       paramArrayList.add(arrayOfInt);
       g();
-      if (augn.a(paramQQAppInterface).b()) {
-        paramArrayList.add(agwt.N);
+      if (avmh.a(paramQQAppInterface).b()) {
+        paramArrayList.add(ahpt.N);
       }
       if (!this.jdField_b_of_type_Boolean) {
         break label72;
       }
     }
     label72:
-    for (paramQQAppInterface = agwt.i;; paramQQAppInterface = agwt.e)
+    for (paramQQAppInterface = ahpt.i;; paramQQAppInterface = ahpt.e)
     {
       paramArrayList.add(paramQQAppInterface);
       return;
-      arrayOfInt = agwt.l;
+      arrayOfInt = ahpt.l;
       break;
     }
   }
@@ -1138,12 +1196,12 @@ public class PanelIconLinearLayout
       jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(ShortVideoUtils.getPtvRedDotStatus(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()));
       ShortVideoUtils.isPtvConfiginitied = true;
     }
-    jdField_b_of_type_JavaLangBoolean = Boolean.valueOf(bbwb.a(bbwb.jdField_d_of_type_JavaLangString));
+    jdField_b_of_type_JavaLangBoolean = Boolean.valueOf(bdcw.a(bdcw.jdField_d_of_type_JavaLangString));
     if (!jdField_b_of_type_JavaLangBoolean.booleanValue())
     {
       paramRedDotImageView.setReddotXOffsetDp(11);
       paramRedDotImageView.setReddotYOffsetDp(8);
-      paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130849675));
+      paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130849768));
       paramRedDotImageView.a(true);
       return;
     }
@@ -1151,9 +1209,9 @@ public class PanelIconLinearLayout
     {
       paramRedDotImageView.setReddotXOffsetDp(15);
       paramRedDotImageView.setReddotYOffsetDp(11);
-      paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850322));
+      paramRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130850428));
       paramRedDotImageView.a(true);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009366", "0X8009366", 1, 0, "", "", "", "");
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009366", "0X8009366", 1, 0, "", "", "", "");
       return;
     }
     paramRedDotImageView.a(false);
@@ -1166,14 +1224,14 @@ public class PanelIconLinearLayout
     }
   }
   
-  private void b(List<ayfh> paramList)
+  private void b(List<azlu> paramList)
   {
     int j = 0;
     int i = 0;
     if (i < paramList.size())
     {
-      localObject = (ayfh)paramList.get(i);
-      if (!a(((ayfh)localObject).jdField_d_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo))
+      localObject = (azlu)paramList.get(i);
+      if (!a(((azlu)localObject).jdField_d_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo))
       {
         paramList.remove(i);
         i -= 1;
@@ -1182,7 +1240,7 @@ public class PanelIconLinearLayout
       {
         i += 1;
         break;
-        a((ayfh)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext);
+        a((azlu)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext);
       }
     }
     Object localObject = new ArrayList();
@@ -1191,14 +1249,14 @@ public class PanelIconLinearLayout
       i = j;
       while (i < paramList.size())
       {
-        a((ayfh)paramList.get(i), (ArrayList)localObject, i);
+        a((azlu)paramList.get(i), (ArrayList)localObject, i);
         i += 1;
       }
     }
     if (((ArrayList)localObject).size() > 0) {}
     try
     {
-      ahcd.a().a((ArrayList)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+      ahwv.a().a((ArrayList)localObject, this.jdField_a_of_type_JavaUtilArrayList);
       return;
     }
     catch (Throwable paramList)
@@ -1215,9 +1273,9 @@ public class PanelIconLinearLayout
   public static boolean b(QQAppInterface paramQQAppInterface, SharedPreferences paramSharedPreferences)
   {
     boolean bool3 = false;
-    int i = agkg.a(paramQQAppInterface);
+    int i = ahcw.a(paramQQAppInterface);
     if (paramSharedPreferences != null) {}
-    for (boolean bool1 = agkg.a(paramSharedPreferences);; bool1 = false)
+    for (boolean bool1 = ahcw.a(paramSharedPreferences);; bool1 = false)
     {
       boolean bool2 = bool3;
       if (i == 2)
@@ -1228,7 +1286,7 @@ public class PanelIconLinearLayout
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.d(agkg.jdField_a_of_type_JavaLangString, 2, "getUniquePokeNeedRed isUnquePokeNeedRed=" + bool2 + "getUniquePokeConfig=" + i + "hasClicked=" + bool1);
+        QLog.d(ahcw.jdField_a_of_type_JavaLangString, 2, "getUniquePokeNeedRed isUnquePokeNeedRed=" + bool2 + "getUniquePokeConfig=" + i + "hasClicked=" + bool1);
       }
       return bool2;
     }
@@ -1236,29 +1294,29 @@ public class PanelIconLinearLayout
   
   private void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    HotChatManager localHotChatManager = (HotChatManager)paramQQAppInterface.getManager(60);
+    HotChatManager localHotChatManager = (HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
     if ((localHotChatManager != null) && (localHotChatManager.b(paramSessionInfo.curFriendUin)))
     {
       paramSessionInfo = localHotChatManager.a(paramSessionInfo.curFriendUin);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.jdField_a_of_type_ArrayOfInt);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.V);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.jdField_a_of_type_ArrayOfInt);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.V);
       if (!paramSessionInfo.isRobotHotChat) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.F);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.F);
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.H);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.H);
       paramBaseChatPie = this.jdField_a_of_type_JavaUtilArrayList;
       if (this.jdField_b_of_type_Boolean) {}
-      for (paramQQAppInterface = agwt.i;; paramQQAppInterface = agwt.e)
+      for (paramQQAppInterface = ahpt.i;; paramQQAppInterface = ahpt.e)
       {
         paramBaseChatPie.add(paramQQAppInterface);
         if (!paramSessionInfo.isRobotHotChat) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(agwt.w);
+          this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.w);
         }
         return;
       }
     }
     boolean bool = TroopInfo.isQidianPrivateTroop(paramQQAppInterface, paramSessionInfo.curFriendUin);
-    a(nmy.a().a(paramSessionInfo.curFriendUin), bool, paramQQAppInterface, paramBaseChatPie);
+    a(nty.a().a(paramSessionInfo.curFriendUin), bool, paramQQAppInterface, paramBaseChatPie);
   }
   
   private boolean c(int paramInt)
@@ -1268,18 +1326,18 @@ public class PanelIconLinearLayout
   
   private void d()
   {
-    this.jdField_b_of_type_JavaUtilMap.put(agwt.e, agwt.i);
-    this.jdField_b_of_type_JavaUtilMap.put(agwt.f, agwt.j);
-    this.jdField_b_of_type_JavaUtilMap.put(agwt.g, agwt.k);
-    this.jdField_b_of_type_JavaUtilMap.put(agwt.l, agwt.p);
-    this.jdField_b_of_type_JavaUtilMap.put(agwt.m, agwt.q);
-    this.jdField_b_of_type_JavaUtilMap.put(agwt.n, agwt.r);
-    this.jdField_a_of_type_JavaUtilMap.put(agwt.i, agwt.e);
-    this.jdField_a_of_type_JavaUtilMap.put(agwt.j, agwt.f);
-    this.jdField_a_of_type_JavaUtilMap.put(agwt.k, agwt.g);
-    this.jdField_a_of_type_JavaUtilMap.put(agwt.p, agwt.l);
-    this.jdField_a_of_type_JavaUtilMap.put(agwt.q, agwt.m);
-    this.jdField_a_of_type_JavaUtilMap.put(agwt.r, agwt.n);
+    this.jdField_b_of_type_JavaUtilMap.put(ahpt.e, ahpt.i);
+    this.jdField_b_of_type_JavaUtilMap.put(ahpt.f, ahpt.j);
+    this.jdField_b_of_type_JavaUtilMap.put(ahpt.g, ahpt.k);
+    this.jdField_b_of_type_JavaUtilMap.put(ahpt.l, ahpt.p);
+    this.jdField_b_of_type_JavaUtilMap.put(ahpt.m, ahpt.q);
+    this.jdField_b_of_type_JavaUtilMap.put(ahpt.n, ahpt.r);
+    this.jdField_a_of_type_JavaUtilMap.put(ahpt.i, ahpt.e);
+    this.jdField_a_of_type_JavaUtilMap.put(ahpt.j, ahpt.f);
+    this.jdField_a_of_type_JavaUtilMap.put(ahpt.k, ahpt.g);
+    this.jdField_a_of_type_JavaUtilMap.put(ahpt.p, ahpt.l);
+    this.jdField_a_of_type_JavaUtilMap.put(ahpt.q, ahpt.m);
+    this.jdField_a_of_type_JavaUtilMap.put(ahpt.r, ahpt.n);
   }
   
   private boolean d(int paramInt)
@@ -1289,8 +1347,8 @@ public class PanelIconLinearLayout
   
   private void e()
   {
-    if (augn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b()) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.O);
+    if (avmh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b()) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.O);
     }
   }
   
@@ -1301,14 +1359,14 @@ public class PanelIconLinearLayout
   
   private void f()
   {
-    if ((ShortVideoUtils.needTwoEntrance()) || (!this.jdField_a_of_type_JavaUtilArrayList.contains(agwt.v))) {}
+    if ((ShortVideoUtils.needTwoEntrance()) || (!this.jdField_a_of_type_JavaUtilArrayList.contains(ahpt.v))) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        agwt.s[2] = 2130844703;
-        agwt.s[5] = 0;
-        agwt.s[6] = 0;
+        ahpt.s[2] = 2130844772;
+        ahpt.s[5] = 0;
+        ahpt.s[6] = 0;
       }
       return;
     }
@@ -1316,14 +1374,14 @@ public class PanelIconLinearLayout
   
   private void g()
   {
-    if ((ShortVideoUtils.needTwoEntrance()) || (!this.jdField_a_of_type_JavaUtilArrayList.contains(agwt.v))) {}
+    if ((ShortVideoUtils.needTwoEntrance()) || (!this.jdField_a_of_type_JavaUtilArrayList.contains(ahpt.v))) {}
     for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
         QLog.d("PanelIconLinearLayout", 2, "addCameraIcon" + bool);
       }
       if (bool) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.s);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.s);
       }
       return;
     }
@@ -1332,13 +1390,13 @@ public class PanelIconLinearLayout
   private void h()
   {
     if (ShortVideoUtils.needTwoEntrance()) {
-      agwt.v[2] = 2130844714;
+      ahpt.v[2] = 2130844783;
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.v);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.v);
       return;
-      agwt.v[2] = 2130844703;
+      ahpt.v[2] = 2130844772;
     }
   }
   
@@ -1346,36 +1404,18 @@ public class PanelIconLinearLayout
   {
     if (ShortVideoUtils.needTwoEntrance())
     {
-      agwt.v[2] = 2130838217;
-      agwt.v[5] = 2130849875;
-      agwt.v[6] = 2130849876;
+      ahpt.v[2] = 2130838231;
+      ahpt.v[5] = 2130849968;
+      ahpt.v[6] = 2130849969;
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.v);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.v);
       return;
-      agwt.v[2] = 2130838140;
-      agwt.v[5] = 2130849777;
-      agwt.v[6] = 2130849778;
+      ahpt.v[2] = 2130838154;
+      ahpt.v[5] = 2130849870;
+      ahpt.v[6] = 2130849871;
     }
-  }
-  
-  private void j()
-  {
-    try
-    {
-      azvi localazvi = (azvi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36);
-      if (this.e) {}
-      for (int i = 11;; i = 10)
-      {
-        if (localazvi.a(i, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin) != null) {
-          localazvi.b(i, 31);
-        }
-        return;
-      }
-      return;
-    }
-    catch (Exception localException) {}
   }
   
   public ArrayList<int[]> a()
@@ -1388,15 +1428,15 @@ public class PanelIconLinearLayout
     ArrayList localArrayList;
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.jdField_a_of_type_ArrayOfInt);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.jdField_a_of_type_ArrayOfInt);
       localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
       if (!this.jdField_b_of_type_Boolean) {
         break label78;
       }
-      arrayOfInt = agwt.p;
+      arrayOfInt = ahpt.p;
       localArrayList.add(arrayOfInt);
       g();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.N);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.N);
       localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
       if (!this.jdField_b_of_type_Boolean) {
         break label85;
@@ -1404,11 +1444,11 @@ public class PanelIconLinearLayout
     }
     label78:
     label85:
-    for (int[] arrayOfInt = agwt.i;; arrayOfInt = agwt.e)
+    for (int[] arrayOfInt = ahpt.i;; arrayOfInt = ahpt.e)
     {
       localArrayList.add(arrayOfInt);
       return;
-      arrayOfInt = agwt.l;
+      arrayOfInt = ahpt.l;
       break;
     }
   }
@@ -1422,7 +1462,7 @@ public class PanelIconLinearLayout
     {
       return;
     } while (!LightVideoConfigMgr.a().b());
-    paramView.setOnLongClickListener(new agwz(this));
+    paramView.setOnLongClickListener(new ahpz(this));
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -1431,15 +1471,15 @@ public class PanelIconLinearLayout
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.add(agwt.b);
+    this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.b);
     ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
     if (this.jdField_b_of_type_Boolean)
     {
-      paramQQAppInterface = agwt.q;
+      paramQQAppInterface = ahpt.q;
       localArrayList.add(paramQQAppInterface);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.t);
-      if (augn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b()) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.R);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.t);
+      if (avmh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b()) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.R);
       }
       localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
       if (!this.jdField_b_of_type_Boolean) {
@@ -1447,13 +1487,13 @@ public class PanelIconLinearLayout
       }
     }
     label126:
-    for (paramQQAppInterface = agwt.j;; paramQQAppInterface = agwt.f)
+    for (paramQQAppInterface = ahpt.j;; paramQQAppInterface = ahpt.f)
     {
       localArrayList.add(paramQQAppInterface);
       this.d = false;
       b();
       return;
-      paramQQAppInterface = agwt.m;
+      paramQQAppInterface = ahpt.m;
       break;
     }
   }
@@ -1467,11 +1507,11 @@ public class PanelIconLinearLayout
   {
     if (("1103".equals(ThemeUtil.curThemeId)) || ("2920".equals(ThemeUtil.curThemeId)))
     {
-      setBackgroundResource(2130849809);
+      setBackgroundResource(2130849902);
       b(paramQQAppInterface, paramSessionInfo, paramBaseChatPie, paramBoolean);
       return;
     }
-    setBackgroundResource(2130844708);
+    setBackgroundResource(2130844777);
     b(paramQQAppInterface, paramSessionInfo, paramBaseChatPie);
   }
   
@@ -1497,12 +1537,12 @@ public class PanelIconLinearLayout
     if (paramBoolean)
     {
       this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.jdField_a_of_type_ArrayOfInt);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.jdField_a_of_type_ArrayOfInt);
       localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
       if (!this.jdField_b_of_type_Boolean) {
         break label76;
       }
-      arrayOfInt = agwt.p;
+      arrayOfInt = ahpt.p;
       localArrayList.add(arrayOfInt);
       localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
       if (!this.jdField_b_of_type_Boolean) {
@@ -1511,13 +1551,13 @@ public class PanelIconLinearLayout
     }
     label76:
     label83:
-    for (int[] arrayOfInt = agwt.i;; arrayOfInt = agwt.e)
+    for (int[] arrayOfInt = ahpt.i;; arrayOfInt = ahpt.e)
     {
       localArrayList.add(arrayOfInt);
       this.d = false;
       b();
       return;
-      arrayOfInt = agwt.l;
+      arrayOfInt = ahpt.l;
       break;
     }
   }
@@ -1532,60 +1572,60 @@ public class PanelIconLinearLayout
     this.d = false;
     if (paramBoolean1)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.b);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.b);
       paramBaseChatPie = this.jdField_a_of_type_JavaUtilArrayList;
       if (this.jdField_b_of_type_Boolean)
       {
-        paramQQAppInterface = agwt.q;
+        paramQQAppInterface = ahpt.q;
         paramBaseChatPie.add(paramQQAppInterface);
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.t);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.t);
         paramBaseChatPie = this.jdField_a_of_type_JavaUtilArrayList;
         if (!this.jdField_b_of_type_Boolean) {
           break label98;
         }
       }
       label98:
-      for (paramQQAppInterface = agwt.j;; paramQQAppInterface = agwt.f)
+      for (paramQQAppInterface = ahpt.j;; paramQQAppInterface = ahpt.f)
       {
         paramBaseChatPie.add(paramQQAppInterface);
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.x);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.x);
         return;
-        paramQQAppInterface = agwt.m;
+        paramQQAppInterface = ahpt.m;
         break;
       }
     }
     if (paramBoolean3)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.d);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.o);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.d);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.o);
       h();
       f();
       if (paramBoolean2) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.A);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.A);
       }
       for (;;)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.h);
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.y);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.h);
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.y);
         return;
-        if (agwt.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(agwt.C);
+        if (ahpt.jdField_a_of_type_Boolean) {
+          this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.C);
         }
       }
     }
     this.e = true;
-    this.jdField_a_of_type_JavaUtilArrayList.add(agwt.jdField_a_of_type_ArrayOfInt);
+    this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.jdField_a_of_type_ArrayOfInt);
     paramBaseChatPie = this.jdField_a_of_type_JavaUtilArrayList;
     if (this.jdField_b_of_type_Boolean)
     {
-      paramQQAppInterface = agwt.p;
+      paramQQAppInterface = ahpt.p;
       paramBaseChatPie.add(paramQQAppInterface);
       i();
       g();
       if (!paramBoolean2) {
         break label304;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.z);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.z);
       label261:
       paramBaseChatPie = this.jdField_a_of_type_JavaUtilArrayList;
       if (!this.jdField_b_of_type_Boolean) {
@@ -1594,17 +1634,17 @@ public class PanelIconLinearLayout
     }
     label304:
     label324:
-    for (paramQQAppInterface = agwt.i;; paramQQAppInterface = agwt.e)
+    for (paramQQAppInterface = ahpt.i;; paramQQAppInterface = ahpt.e)
     {
       paramBaseChatPie.add(paramQQAppInterface);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.w);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.w);
       return;
-      paramQQAppInterface = agwt.l;
+      paramQQAppInterface = ahpt.l;
       break;
-      if (!agwt.jdField_a_of_type_Boolean) {
+      if (!ahpt.jdField_a_of_type_Boolean) {
         break label261;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.B);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.B);
       break label261;
     }
   }
@@ -1680,7 +1720,7 @@ public class PanelIconLinearLayout
       localObject1 = localObject2;
       if (!a())
       {
-        localObject2 = ayft.a(this.jdField_b_of_type_Boolean, this.jdField_a_of_type_AndroidContentContext);
+        localObject2 = azmc.a(this.jdField_b_of_type_Boolean, this.jdField_a_of_type_AndroidContentContext);
         if ((localObject2 == null) && (QLog.isColorLevel()))
         {
           localObject3 = new StringBuilder().append("session: ");
@@ -1704,19 +1744,19 @@ public class PanelIconLinearLayout
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
         localObject1 = (int[])this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        localObject3 = new ayfh();
-        ((ayfh)localObject3).jdField_d_of_type_Int = localObject1[0];
-        ((ayfh)localObject3).jdField_d_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(localObject1[1]);
-        ((ayfh)localObject3).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(localObject1[2]);
-        ((ayfh)localObject3).e = localObject1[3];
-        ((ayfh)localObject3).jdField_a_of_type_ArrayOfInt = ((int[])localObject1);
+        localObject3 = new azlu();
+        ((azlu)localObject3).jdField_d_of_type_Int = localObject1[0];
+        ((azlu)localObject3).jdField_d_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(localObject1[1]);
+        ((azlu)localObject3).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(localObject1[2]);
+        ((azlu)localObject3).e = localObject1[3];
+        ((azlu)localObject3).jdField_a_of_type_ArrayOfInt = ((int[])localObject1);
         ((List)localObject2).add(localObject3);
         i += 1;
       }
     }
     a((List)localObject2);
     b((List)localObject2);
-    bdav.a().b(this.jdField_a_of_type_AndroidContentContext, this);
+    behu.a().b(this.jdField_a_of_type_AndroidContentContext, this);
   }
   
   public void b(QQAppInterface paramQQAppInterface)
@@ -1725,15 +1765,15 @@ public class PanelIconLinearLayout
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.add(agwt.c);
+    this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.c);
     ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
     if (this.jdField_b_of_type_Boolean)
     {
-      paramQQAppInterface = agwt.r;
+      paramQQAppInterface = ahpt.r;
       localArrayList.add(paramQQAppInterface);
-      this.jdField_a_of_type_JavaUtilArrayList.add(agwt.u);
-      if (augn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b()) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(agwt.N);
+      this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.u);
+      if (avmh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b()) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(ahpt.N);
       }
       localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
       if (!this.jdField_b_of_type_Boolean) {
@@ -1741,13 +1781,13 @@ public class PanelIconLinearLayout
       }
     }
     label126:
-    for (paramQQAppInterface = agwt.k;; paramQQAppInterface = agwt.g)
+    for (paramQQAppInterface = ahpt.k;; paramQQAppInterface = ahpt.g)
     {
       localArrayList.add(paramQQAppInterface);
       this.d = false;
       b();
       return;
-      paramQQAppInterface = agwt.n;
+      paramQQAppInterface = ahpt.n;
       break;
     }
   }
@@ -1861,35 +1901,14 @@ public class PanelIconLinearLayout
       {
         View localView = getChildAt(i);
         if ((!(localView.getTag() instanceof Integer)) || (((Integer)localView.getTag()).intValue() != 8)) {
-          break label162;
+          break label79;
         }
-        if ((localView instanceof RedTouch))
-        {
-          azvi localazvi = (azvi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36);
-          if (!this.e) {
-            break label151;
-          }
-          i = 11;
-          BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = localazvi.a(i, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin);
-          ((RedTouch)localView).a(localRedTypeInfo);
-          if ((!this.jdField_c_of_type_Boolean) && (localRedTypeInfo != null)) {
-            localazvi.b(i, 30);
-          }
-          if (localRedTypeInfo == null) {
-            break label157;
-          }
+        if ((localView instanceof RedTouch)) {
+          a((RedTouch)localView);
         }
       }
-      label151:
-      label157:
-      for (boolean bool = true;; bool = false)
-      {
-        this.jdField_c_of_type_Boolean = bool;
-        return;
-        i = 10;
-        break;
-      }
-      label162:
+      return;
+      label79:
       i -= 1;
     }
   }
@@ -1902,7 +1921,7 @@ public class PanelIconLinearLayout
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((this.jdField_a_of_type_Agxa != null) && (this.jdField_a_of_type_Agxa.a(((Integer)localObject).intValue())))
+      if ((this.jdField_a_of_type_Ahqa != null) && (this.jdField_a_of_type_Ahqa.a(((Integer)localObject).intValue())))
       {
         if (QLog.isColorLevel()) {
           QLog.d("PanelIconLinearLayout", 2, "onClick intercepted tag = " + localObject);
@@ -1912,42 +1931,39 @@ public class PanelIconLinearLayout
       {
         if (((Integer)localObject).intValue() == 6)
         {
-          bmau.a().d();
-          bmau.a().a("userClick");
+          bnqe.a().d();
+          bnqe.a().a("userClick");
         }
-        ayfh localayfh = ayft.a(((Integer)localObject).intValue());
-        if (localayfh != null) {
-          agwt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 4, String.valueOf(localayfh.jdField_b_of_type_Int), localayfh.jdField_a_of_type_Int);
+        azlu localazlu = azmc.a(((Integer)localObject).intValue());
+        if (localazlu != null) {
+          ahpt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 4, String.valueOf(localazlu.jdField_b_of_type_Int), localazlu.jdField_a_of_type_Int);
         }
         do
         {
           do
           {
-            if (((Integer)paramView.getTag()).intValue() == 8) {
-              j();
-            }
-            if (this.jdField_a_of_type_Agxc != null) {
-              this.jdField_a_of_type_Agxc.onPanelIconClick(paramView.getTag());
+            if (this.jdField_a_of_type_Ahqc != null) {
+              this.jdField_a_of_type_Ahqc.onPanelIconClick(paramView.getTag());
             }
             a(paramView);
             break;
-            localObject = ayft.a(((Integer)localObject).intValue(), true);
+            localObject = azmc.a(((Integer)localObject).intValue(), true);
           } while (localObject == null);
-          if ("web".equals(((ayfh)localObject).jdField_a_of_type_JavaLangString))
+          if ("web".equals(((azlu)localObject).jdField_a_of_type_JavaLangString))
           {
-            a(((ayfh)localObject).jdField_b_of_type_JavaLangString);
+            a(((azlu)localObject).jdField_b_of_type_JavaLangString);
             break;
           }
-        } while (!"miniapp".equals(((ayfh)localObject).jdField_a_of_type_JavaLangString));
-        b(((ayfh)localObject).jdField_b_of_type_JavaLangString);
+        } while (!"miniapp".equals(((azlu)localObject).jdField_a_of_type_JavaLangString));
+        b(((azlu)localObject).jdField_b_of_type_JavaLangString);
       }
     }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Agxb != null) {
-      return this.jdField_a_of_type_Agxb.interceptTouchEvent(paramMotionEvent);
+    if (this.jdField_a_of_type_Ahqb != null) {
+      return this.jdField_a_of_type_Ahqb.interceptTouchEvent(paramMotionEvent);
     }
     return false;
   }
@@ -1958,8 +1974,8 @@ public class PanelIconLinearLayout
     if (!(localObject instanceof Integer)) {
       return false;
     }
-    if (this.jdField_a_of_type_Agxd != null) {
-      return this.jdField_a_of_type_Agxd.a(paramView.getTag());
+    if (this.jdField_a_of_type_Ahqd != null) {
+      return this.jdField_a_of_type_Ahqd.a(paramView.getTag());
     }
     switch (((Integer)localObject).intValue())
     {
@@ -1969,8 +1985,8 @@ public class PanelIconLinearLayout
       do
       {
         return false;
-      } while (this.jdField_a_of_type_Afqw == null);
-      paramView = (afrt)this.jdField_a_of_type_Afqw.a(7);
+      } while (this.jdField_a_of_type_Agih == null);
+      paramView = (agje)this.jdField_a_of_type_Agih.a(7);
     } while (paramView == null);
     paramView.a();
     return true;
@@ -1987,8 +2003,8 @@ public class PanelIconLinearLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Agxb != null) {
-      return this.jdField_a_of_type_Agxb.handleTouchEvent(paramMotionEvent);
+    if (this.jdField_a_of_type_Ahqb != null) {
+      return this.jdField_a_of_type_Ahqb.handleTouchEvent(paramMotionEvent);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -2094,29 +2110,29 @@ public class PanelIconLinearLayout
     }
   }
   
-  public void setHelperProvider(afqw paramafqw)
+  public void setHelperProvider(agih paramagih)
   {
-    this.jdField_a_of_type_Afqw = paramafqw;
+    this.jdField_a_of_type_Agih = paramagih;
   }
   
-  public void setInterceptListener(agxb paramagxb)
+  public void setInterceptListener(ahqb paramahqb)
   {
-    this.jdField_a_of_type_Agxb = paramagxb;
+    this.jdField_a_of_type_Ahqb = paramahqb;
   }
   
-  public void setPanelIconClickInterceptListener(agxa paramagxa)
+  public void setPanelIconClickInterceptListener(ahqa paramahqa)
   {
-    this.jdField_a_of_type_Agxa = paramagxa;
+    this.jdField_a_of_type_Ahqa = paramahqa;
   }
   
-  public void setPanelIconListener(agxc paramagxc)
+  public void setPanelIconListener(ahqc paramahqc)
   {
-    this.jdField_a_of_type_Agxc = paramagxc;
+    this.jdField_a_of_type_Ahqc = paramahqc;
   }
   
-  public void setPanelIconLongListener(agxd paramagxd)
+  public void setPanelIconLongListener(ahqd paramahqd)
   {
-    this.jdField_a_of_type_Agxd = paramagxd;
+    this.jdField_a_of_type_Ahqd = paramahqd;
   }
   
   public void setSelected(int paramInt)
@@ -2152,15 +2168,15 @@ public class PanelIconLinearLayout
         if (!this.d) {
           break label82;
         }
-        localObject = ayft.a(Integer.valueOf(paramInt).intValue());
+        localObject = azmc.a(Integer.valueOf(paramInt).intValue());
         if (localObject != null) {
-          agwt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 4, String.valueOf(((ayfh)localObject).jdField_b_of_type_Int), ((ayfh)localObject).jdField_a_of_type_Int);
+          ahpt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 4, String.valueOf(((azlu)localObject).jdField_b_of_type_Int), ((azlu)localObject).jdField_a_of_type_Int);
         }
       }
       return;
       label82:
       ((RedDotImageView)localObject).setReddotXOffsetDp(15);
-      ((RedDotImageView)localObject).setRedDotDrawable(getResources().getDrawable(2130850322));
+      ((RedDotImageView)localObject).setRedDotDrawable(getResources().getDrawable(2130850428));
       ((RedDotImageView)localObject).a(paramBoolean);
       return;
       label119:

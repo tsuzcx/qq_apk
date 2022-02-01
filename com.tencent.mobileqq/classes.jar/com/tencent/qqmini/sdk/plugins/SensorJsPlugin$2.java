@@ -16,9 +16,8 @@ class SensorJsPlugin$2
       SensorJsPlugin.access$000(this.this$0);
       if (new JSONObject(this.val$req.jsonParams).optBoolean("enable"))
       {
-        if (this.this$0.startAccelerometer(this.val$req.jsService, 3))
+        if (this.this$0.startCompass(this.val$req.jsService, 3))
         {
-          SensorJsPlugin.access$102(this.this$0, true);
           this.val$req.ok();
           return;
         }
@@ -31,19 +30,11 @@ class SensorJsPlugin$2
       localJSONException.printStackTrace();
       return;
     }
-    this.this$0.stopAccelerometer();
-    if (!SensorJsPlugin.access$100(this.this$0)) {
-      this.val$req.fail(":fail to disable, not enable?");
-    }
-    for (;;)
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("errMsg", this.val$req.event + ":cancel");
-      this.val$req.evaluateCallbackJs(localJSONObject.toString());
-      return;
-      SensorJsPlugin.access$102(this.this$0, false);
-      this.val$req.ok();
-    }
+    this.this$0.stopCompass();
+    this.val$req.ok();
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("errMsg", this.val$req.event + ":cancel");
+    this.val$req.evaluateCallbackJs(localJSONObject.toString());
   }
 }
 

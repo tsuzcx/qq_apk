@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import yta;
+import zht;
 
 public class RateWidget$2
   implements Runnable
 {
   public void run()
   {
-    if (yta.a(this.this$0))
+    if (zht.a(this.this$0))
     {
-      yta.a(this.this$0, false);
+      zht.a(this.this$0, false);
       this.this$0.c(false);
     }
   }

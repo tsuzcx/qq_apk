@@ -1,24 +1,57 @@
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
+
 public class rdz
-  implements Cloneable
+  extends rbp
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = -1;
-  public int d = -1;
-  public int e = -1;
-  public int f = -1;
-  
-  public rdz()
+  public rdz(Context paramContext, FaceDecoder paramFaceDecoder, szd paramszd)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
+    super(paramContext, paramFaceDecoder, paramszd);
   }
   
-  public String toString()
+  public rbp a()
   {
-    return "VideoExtraRepoerData{JumpWayWhich=" + this.jdField_a_of_type_Int + ", InOneThreeSource=" + this.jdField_b_of_type_Int + ", videoTimePosition=" + this.d + ", videoDuration=" + this.e + ", needWhetherClickIn=" + this.jdField_b_of_type_Boolean + ", whetherClickIn=" + this.jdField_a_of_type_Boolean + ", InVideoChannelSource=" + this.c + ", videoFromType=" + this.f + '}';
+    this.jdField_a_of_type_Boolean = true;
+    return g().h();
+  }
+  
+  public rbp d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.dp2px(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    if ((this.jdField_a_of_type_Rbo != null) && ((this.jdField_a_of_type_Rbo instanceof ComponentContentBig))) {
+      localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Rbo);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public rbp e()
+  {
+    return null;
+  }
+  
+  public rbp g()
+  {
+    this.jdField_a_of_type_Rbo = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public rbp o()
+  {
+    super.o();
+    return this;
   }
 }
 

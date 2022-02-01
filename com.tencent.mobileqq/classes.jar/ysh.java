@@ -1,18 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class ysh
-  implements View.OnClickListener
+class ysh
+  implements wfk<wsy, wuw>
 {
-  public ysh(AbsEmptyView paramAbsEmptyView, View.OnClickListener paramOnClickListener) {}
+  ysh(ysa paramysa) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull wsy paramwsy, @Nullable wuw paramwuw, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAbsEmptyView.a(3);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ykq.b("DoodleEmojiManager", "fireRequestEmojiPackList, result : " + paramwuw + ", errorMsg = " + paramErrorMessage);
+    synchronized (this.a.jdField_b_of_type_JavaLangObject)
+    {
+      if (!TextUtils.equals(paramwsy.a, this.a.jdField_b_of_type_JavaLangString))
+      {
+        ykq.d("DoodleEmojiManager", "cookie mismatch ! ignore this response : " + paramwuw);
+        return;
+      }
+      if ((paramwuw == null) || (paramErrorMessage.isFail()))
+      {
+        ykq.d("DoodleEmojiManager", "get emoji error : " + paramwuw + ", " + paramErrorMessage);
+        return;
+      }
+    }
+    this.a.jdField_b_of_type_JavaLangString = paramwuw.a;
+    this.a.a(TextUtils.isEmpty(paramwsy.a), paramwuw, false);
   }
 }
 

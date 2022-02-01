@@ -1,28 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.av.widget.stageview.StageEffectView.5.1;
-import com.tencent.av.widget.stageview.StageMemberView;
-
 public class mvu
-  implements Animation.AnimationListener
 {
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.post(new StageEffectView.5.1(this));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mvu
  * JD-Core Version:    0.7.0.1
  */

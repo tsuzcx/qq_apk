@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import awwu;
-import awxa;
+import aycw;
+import aydc;
 
 public class PicBrowserGalleryAdapter$3
   implements Runnable
 {
-  public PicBrowserGalleryAdapter$3(awwu paramawwu, int paramInt, boolean paramBoolean) {}
+  public PicBrowserGalleryAdapter$3(aycw paramaycw, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    awwu.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-    if (awwu.a(this.this$0) != null) {
-      awwu.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    aycw.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    if (aycw.a(this.this$0) != null) {
+      aycw.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
     }
   }
 }

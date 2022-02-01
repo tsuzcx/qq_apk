@@ -1,16 +1,26 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class ahvn
-  implements DialogInterface.OnClickListener
+public class ahvn
+  implements ahvk
 {
-  public ahvn(Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ahvv paramahvv, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    ((BlessSelectMemberActivity)this.a).d();
+    if (!llq.c())
+    {
+      paramahvv.b(202);
+      paramahvv.b(201);
+      paramahvv.b(1200000007);
+      paramahvv.b(100719166);
+      paramahvv.b(101847385);
+      paramahvv.b(1104651886);
+      paramahvv.b(1106658188);
+    }
+    if ((paramInt != 0) && (paramInt != 1025) && (paramInt != 1024) && (!ChatActivityUtils.a(paramQQAppInterface, paramString)))
+    {
+      paramahvv.b(202);
+      paramahvv.b(201);
+    }
   }
 }
 

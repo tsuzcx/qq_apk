@@ -1,42 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.api.GdtAd;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class acga
-  implements abyl
+class acga
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 1044;
-  }
+  acga(acfz paramacfz) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(163);
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.getMsgCache().c(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (paramMessageRecord != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    boolean bool;
+    if (this.a.a() != null)
+    {
+      bool = this.a.a().load(this.a.getActivity());
+      if (!bool) {
+        break label66;
+      }
     }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8040;
+    label66:
+    for (String str = "loading ad data";; str = "load ad data error")
+    {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

@@ -1,29 +1,15 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-public class aojp
+class aojp
+  implements ShareActionSheet.OnItemClickListener
 {
-  public int a;
-  public long a;
-  public HttpNetReq a;
-  public String a;
-  public boolean a;
-  public String b = "";
-  public String c = "";
+  aojp(aojo paramaojo) {}
   
-  public aojp()
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", md5='").append(this.b).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    this.a.a(paramActionSheetItem);
   }
 }
 

@@ -1,262 +1,501 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
+import android.graphics.Bitmap;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastLikeDislikeCreator.ViewHolder.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnCaptureImageListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
+import com.tencent.superplayer.api.SuperPlayerOption;
+import com.tencent.superplayer.view.ISPlayerVideoView;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class sua
-  extends stg
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/superplayer/SuperPlayer;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayer;", "Lcom/tencent/superplayer/api/ISuperPlayer$OnVideoPreparedListener;", "Lcom/tencent/superplayer/api/ISuperPlayer$OnCompletionListener;", "Lcom/tencent/superplayer/api/ISuperPlayer$OnErrorListener;", "Lcom/tencent/superplayer/api/ISuperPlayer$OnInfoListener;", "Lcom/tencent/superplayer/api/ISuperPlayer$OnCaptureImageListener;", "Lcom/tencent/superplayer/api/ISuperPlayer$OnSeekCompleteListener;", "videoPlayer", "Lcom/tencent/superplayer/api/ISuperPlayer;", "(Lcom/tencent/superplayer/api/ISuperPlayer;)V", "currentPositionMs", "", "getCurrentPositionMs", "()J", "currentVideoView", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "durationMs", "getDurationMs", "isBuffering", "", "()Z", "value", "isLoopBack", "setLoopBack", "(Z)V", "isPauseing", "isPlaying", "isPrepared", "isPrepareing", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IEventListener;", "outputMute", "getOutputMute", "setOutputMute", "", "speedRatio", "getSpeedRatio", "()F", "setSpeedRatio", "(F)V", "videoHeight", "", "getVideoHeight", "()I", "videoWidth", "getVideoWidth", "addExtReportData", "", "data", "", "", "getStreamDumpInfo", "getToken", "getVideoView", "onCaptureImageFailed", "p0", "id", "errorCode", "onCaptureImageSucceed", "width", "height", "bitmap", "Landroid/graphics/Bitmap;", "onCompletion", "onError", "tvkPlayer", "module", "errorType", "extraInfo", "onInfo", "what", "arg1", "arg2", "extra", "", "onSeekComplete", "onVideoPrepared", "openMediaPlayer", "context", "Landroid/content/Context;", "videoInfo", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerVideoInfo;", "startPositionMilsec", "playerOption", "Lcom/tencent/superplayer/api/SuperPlayerOption;", "pause", "pauseDownload", "prePlayViewShow", "release", "resumeDownload", "seekTo", "positionMilsec", "mode", "setEventListener", "setHttpBufferRange", "emergencyTime", "safePlayTime", "preloadDuration", "setLoopback", "isLoopback", "setXYaxis", "type", "start", "stop", "updatePlayerVideoView", "videoView", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sua
+  implements ISuperPlayer.OnCaptureImageListener, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnSeekCompleteListener, ISuperPlayer.OnVideoPreparedListener, stn
 {
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean jdField_a_of_type_Boolean = true;
+  private float jdField_a_of_type_Float;
+  private final ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+  private stm jdField_a_of_type_Stm;
+  private stv jdField_a_of_type_Stv;
   
-  public sua(stz paramstz, Context paramContext, View paramView, BaseData paramBaseData)
+  public sua(@Nullable ISuperPlayer paramISuperPlayer)
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369284));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379697));
-    paramstz = (LinearLayout)paramView.findViewById(2131366330);
-    int j = paramstz.getChildCount();
-    int k = a(j);
-    int i = 0;
-    while (i < j)
+    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = paramISuperPlayer;
+    this.jdField_a_of_type_Float = 1.0F;
+  }
+  
+  public int a()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getVideoWidth();
+    }
+    return 0;
+  }
+  
+  public long a()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getDurationMs();
+    }
+    return 0L;
+  }
+  
+  @Nullable
+  public String a()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getStreamDumpInfo();
+    }
+    return null;
+  }
+  
+  @Nullable
+  public stv a()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localObject != null)
     {
-      paramContext = paramstz.getChildAt(i);
-      ((LinearLayout.LayoutParams)paramContext.getLayoutParams()).width = k;
-      paramContext.setOnClickListener(this);
-      i += 1;
-    }
-  }
-  
-  private int a(int paramInt)
-  {
-    return (int)Math.floor(((int)DeviceInfoUtil.getPortraitWidth(true) - this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDimensionPixelSize(2131298724) * 2 - (paramInt - 1) * this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDimensionPixelSize(2131298725)) * 1.0D / paramInt);
-  }
-  
-  private void a(ArticleInfo paramArticleInfo)
-  {
-    ThreadManager.executeOnSubThread(new WebFastLikeDislikeCreator.ViewHolder.1(this, paramArticleInfo));
-    a("0X80101DC");
-  }
-  
-  private void a(FastWebArticleInfo paramFastWebArticleInfo)
-  {
-    if (paramFastWebArticleInfo == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
-    {
-      ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
-      localScaleAnimation.setDuration(200L);
-      localScaleAnimation.setRepeatCount(1);
-      localScaleAnimation.setRepeatMode(2);
-      localScaleAnimation.setInterpolator(new DecelerateInterpolator());
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = localScaleAnimation;
-    }
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new sub(this, paramFastWebArticleInfo));
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-  }
-  
-  private void a(String paramString)
-  {
-    int j = 1;
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b;
-    if (localArticleInfo == null) {
-      return;
-    }
-    pbg localpbg = swy.a(localArticleInfo);
-    for (;;)
-    {
-      try
-      {
-        localpbg.b("source_from", "2");
-        localpbg.j();
-        localpbg.k();
-        localpbg.l();
-        localpbg.a(localArticleInfo.mAlgorithmID);
-        localpbg.b(localArticleInfo.mStrategyId);
-        AladdinConfig localAladdinConfig = Aladdin.getConfig(151);
-        if (localAladdinConfig != null)
-        {
-          i = localAladdinConfig.getIntegerFromString("readinjoy_bottom_action_bar_business_id", -1);
-          localpbg.b("interact_style", localAladdinConfig.getIntegerFromString("readinjoy_bottom_action_bar_style", -1));
-          localpbg.b("businessID", i);
-        }
-        if (!pay.p()) {
-          break label217;
-        }
-        i = 1;
-        localpbg.b("artical_interact_area", i);
-        localpbg.b("artical_interact_type", pay.h());
-        if ((paramString.equals("0X80101DC")) || (paramString.equals("0X80100DB")))
-        {
-          if (!pay.q()) {
-            break label222;
-          }
-          i = j;
-          localpbg.b("ad_relative_pos", i);
-        }
-        swy.a(localArticleInfo, paramString, localpbg.a());
-        return;
+      localObject = ((ISuperPlayer)localObject).getVideoView();
+      if (localObject != null) {
+        return (stv)new sue((ISPlayerVideoView)localObject);
       }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e(stz.a(), 2, "parseR5 has error !", paramString);
-      return;
-      label217:
-      int i = 0;
-      continue;
-      label222:
-      i = 0;
     }
+    return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      a("0X80099DA");
-      a("0X80100DB");
-      a("0X8009A5A");
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.start();
     }
   }
   
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  public void a(float paramFloat)
   {
-    paramBaseData1 = paramBaseData2.a;
-    if (paramBaseData1 != null)
-    {
-      if (pay.h() != 1) {
-        break label288;
-      }
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131370173).setBackgroundColor(0);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131370152).setBackgroundColor(0);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131370217).setBackgroundColor(0);
-      paramBaseData2 = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (!paramBaseData1.jdField_a_of_type_Boolean) {
-        break label280;
-      }
-    }
-    label280:
-    for (int i = 2130842883;; i = 2130841693)
-    {
-      paramBaseData2.setImageResource(i);
-      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370153)).setImageResource(2130841680);
-      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370218)).setImageResource(2130842649);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370154)).setTextColor(Color.parseColor("#737373"));
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370219)).setTextColor(Color.parseColor("#737373"));
-      if (!pay.p())
-      {
-        paramBaseData1 = (LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366330);
-        this.jdField_a_of_type_AndroidViewView.findViewById(2131366330).setPadding(paramBaseData1.getPaddingLeft(), ViewUtils.dpToPx(10.5F), paramBaseData1.getPaddingRight(), paramBaseData1.getPaddingBottom());
-      }
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131370173).getLayoutParams().height = -2;
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131370152).getLayoutParams().height = -2;
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131370217).getLayoutParams().height = -2;
-      return;
-    }
-    label288:
-    paramBaseData2 = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBaseData1.jdField_a_of_type_Boolean)
-    {
-      i = 2130842882;
-      paramBaseData2.setImageResource(i);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(bkwm.a(paramBaseData1.jdField_a_of_type_Int, 99990000L, "9999万+", stz.a));
-      if (!paramBaseData1.jdField_a_of_type_Boolean) {
-        break label403;
-      }
-      i = Color.parseColor("#F64B31");
-      label350:
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
-      if (!paramBaseData1.jdField_a_of_type_Boolean) {
-        break label411;
-      }
-    }
-    label403:
-    label411:
-    for (paramBaseData1 = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(2130849313);; paramBaseData1 = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(2130849312))
-    {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131370173).setBackgroundDrawable(paramBaseData1);
-      return;
-      i = 2130841692;
-      break;
-      i = -16777216;
-      break label350;
+    this.jdField_a_of_type_Float = paramFloat;
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setPlaySpeedRatio(this.jdField_a_of_type_Float);
     }
   }
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b == null) {}
+    int j = 0;
+    int i = j;
+    switch (paramInt)
+    {
+    default: 
+      i = j;
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+      if (localISuperPlayer != null) {
+        localISuperPlayer.setXYaxis(i);
+      }
       return;
-      Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.a;
-      if (localObject == null) {
-        AIOUtils.catchedExceptionInReleaseV2(stz.a(), "", new IllegalArgumentException());
-      } else {
-        switch (paramView.getId())
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int j = 1;
+    int i = j;
+    switch (paramInt2)
+    {
+    default: 
+      i = j;
+    }
+    for (;;)
+    {
+      ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+      if (localISuperPlayer != null) {
+        localISuperPlayer.seekTo(paramInt1, i);
+      }
+      return;
+      i = 3;
+      continue;
+      i = 2;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt3);
+    }
+  }
+  
+  public void a(@NotNull Context paramContext, @NotNull sty paramsty, long paramLong, @NotNull SuperPlayerOption paramSuperPlayerOption)
+  {
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Intrinsics.checkParameterIsNotNull(paramsty, "videoInfo");
+    Intrinsics.checkParameterIsNotNull(paramSuperPlayerOption, "playerOption");
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.openMediaPlayer(paramContext.getApplicationContext(), stz.a(paramsty), paramLong, paramSuperPlayerOption);
+    }
+  }
+  
+  public void a(@NotNull Map<String, String> paramMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMap, "data");
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.addExtReportData(paramMap);
+    }
+  }
+  
+  public void a(@Nullable stm paramstm)
+  {
+    this.jdField_a_of_type_Stm = paramstm;
+    paramstm = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (paramstm != null) {
+      paramstm.setOnVideoPreparedListener((ISuperPlayer.OnVideoPreparedListener)this);
+    }
+    paramstm = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (paramstm != null) {
+      paramstm.setOnCompletionListener((ISuperPlayer.OnCompletionListener)this);
+    }
+    paramstm = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (paramstm != null) {
+      paramstm.setOnErrorListener((ISuperPlayer.OnErrorListener)this);
+    }
+    paramstm = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (paramstm != null) {
+      paramstm.setOnInfoListener((ISuperPlayer.OnInfoListener)this);
+    }
+    paramstm = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (paramstm != null) {
+      paramstm.setOnCaptureImageListener((ISuperPlayer.OnCaptureImageListener)this);
+    }
+    paramstm = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (paramstm != null) {
+      paramstm.setOnSeekCompleteListener((ISuperPlayer.OnSeekCompleteListener)this);
+    }
+  }
+  
+  public void a(@Nullable stv paramstv)
+  {
+    this.jdField_a_of_type_Stv = paramstv;
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      if (paramstv == null) {
+        break label47;
+      }
+    }
+    label47:
+    for (paramstv = paramstv.a();; paramstv = null)
+    {
+      stv localstv = paramstv;
+      if (!(paramstv instanceof ISPlayerVideoView)) {
+        localstv = null;
+      }
+      localISuperPlayer.updatePlayerVideoView((ISPlayerVideoView)localstv);
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setOutputMute(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    return (localISuperPlayer != null) && (localISuperPlayer.isOutputMute() == true);
+  }
+  
+  public int b()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getVideoHeight();
+    }
+    return 0;
+  }
+  
+  public long b()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getCurrentPositionMs();
+    }
+    return 0L;
+  }
+  
+  @NotNull
+  public String b()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localObject != null)
+    {
+      localObject = ((ISuperPlayer)localObject).getToken();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    return "";
+  }
+  
+  public void b()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.pause();
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setLoopback(paramBoolean);
+    }
+  }
+  
+  public boolean b()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    return (localISuperPlayer != null) && (localISuperPlayer.isPlaying() == true);
+  }
+  
+  public void c()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localObject != null) {
+      ((ISuperPlayer)localObject).reset();
+    }
+    localObject = this.jdField_a_of_type_Stv;
+    if (localObject != null)
+    {
+      ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+      if (localISuperPlayer != null)
+      {
+        View localView = ((stv)localObject).a();
+        localObject = localView;
+        if (!(localView instanceof ISPlayerVideoView)) {
+          localObject = null;
+        }
+        localISuperPlayer.updatePlayerVideoView((ISPlayerVideoView)localObject);
+      }
+    }
+  }
+  
+  public boolean c()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    return (localISuperPlayer != null) && (localISuperPlayer.isBuffering() == true);
+  }
+  
+  public void d()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.stop();
+    }
+    localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.release();
+    }
+  }
+  
+  public boolean d()
+  {
+    boolean bool2 = true;
+    Object localObject = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localObject != null)
+    {
+      localObject = Integer.valueOf(((ISuperPlayer)localObject).getCurrentPlayerState());
+      if (localObject != null) {
+        break label42;
+      }
+      label25:
+      if (localObject != null) {
+        break label55;
+      }
+      label29:
+      if (localObject != null) {
+        break label68;
+      }
+    }
+    label42:
+    label55:
+    label68:
+    while (((Integer)localObject).intValue() != 2)
+    {
+      boolean bool1 = false;
+      do
+      {
+        do
         {
-        default: 
+          return bool1;
+          localObject = null;
           break;
-        case 2131370152: 
-          a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b);
+          bool1 = bool2;
+        } while (((Integer)localObject).intValue() == 3);
+        break label25;
+        bool1 = bool2;
+      } while (((Integer)localObject).intValue() == 1);
+      break label29;
+    }
+    return true;
+  }
+  
+  public void e()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.pauseDownload();
+    }
+  }
+  
+  public boolean e()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    return (localISuperPlayer != null) && (localISuperPlayer.getCurrentPlayerState() == 4);
+  }
+  
+  public void f()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.resumeDownload();
+    }
+  }
+  
+  public boolean f()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    return (localISuperPlayer != null) && (localISuperPlayer.isPausing() == true);
+  }
+  
+  public void g()
+  {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.onPrePlayViewShow();
+    }
+  }
+  
+  public void onCaptureImageFailed(@Nullable ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2)
+  {
+    paramISuperPlayer = this.jdField_a_of_type_Stm;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.a((stn)this, paramInt1, paramInt2);
+    }
+  }
+  
+  public void onCaptureImageSucceed(@Nullable ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, @Nullable Bitmap paramBitmap)
+  {
+    paramISuperPlayer = this.jdField_a_of_type_Stm;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.a((stn)this, paramInt1, paramInt2, paramInt3, paramBitmap);
+    }
+  }
+  
+  public void onCompletion(@Nullable ISuperPlayer paramISuperPlayer)
+  {
+    paramISuperPlayer = this.jdField_a_of_type_Stm;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.b((stn)this);
+    }
+  }
+  
+  public boolean onError(@Nullable ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString)
+  {
+    paramISuperPlayer = this.jdField_a_of_type_Stm;
+    return (paramISuperPlayer != null) && (paramISuperPlayer.a((stn)this, paramInt1, paramInt2, paramInt3, paramString) == true);
+  }
+  
+  public boolean onInfo(@Nullable ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, @Nullable Object paramObject)
+  {
+    int i;
+    switch (paramInt)
+    {
+    case 106: 
+    case 107: 
+    case 109: 
+    case 110: 
+    case 111: 
+    default: 
+      i = paramInt;
+      if (i != 209) {
+        break;
+      }
+    }
+    for (paramISuperPlayer = Long.valueOf(paramLong1);; paramISuperPlayer = paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SuperPlayer", 2, "onInfo: what=" + paramInt + ", arg1=" + paramLong1 + ", arg2=" + paramLong2 + ", extra=" + paramObject);
+      }
+      if (paramInt == 207)
+      {
+        if (paramObject == null)
+        {
+          throw new TypeCastException("null cannot be cast to non-null type com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo");
+          i = 112;
           break;
-        case 2131370173: 
-          if (((FastWebArticleInfo)localObject).jdField_a_of_type_Boolean)
-          {
-            ((FastWebArticleInfo)localObject).jdField_a_of_type_Boolean = false;
-            ((FastWebArticleInfo)localObject).jdField_a_of_type_Int -= 1;
-            swy.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b, "0X8009765", "2");
-          }
-          for (;;)
-          {
-            a((FastWebArticleInfo)localObject);
-            pkp.a().c();
-            pkm.a().a(pay.a(), ((FastWebArticleInfo)localObject).jdField_a_of_type_Boolean, (FastWebArticleInfo)localObject);
-            break;
-            ((FastWebArticleInfo)localObject).jdField_a_of_type_Boolean = true;
-            ((FastWebArticleInfo)localObject).jdField_a_of_type_Int += 1;
-            swy.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b, "0X8009764", "2");
-          }
-        case 2131370217: 
-          localObject = this.jdField_a_of_type_AndroidViewView.getContext();
-          a("0X8009A5B");
-          if ((localObject instanceof FastWebActivity)) {
-            ((FastWebActivity)localObject).a(false);
-          }
+          i = 113;
+          break;
+          i = 105;
+          break;
+          i = 108;
           break;
         }
+        paramISuperPlayer = (TPPlayerMsg.TPDownLoadProgressInfo)paramObject;
+        paramObject = this.jdField_a_of_type_Stm;
+        if (paramObject != null) {
+          paramObject.a(paramISuperPlayer.currentDownloadSize, paramISuperPlayer.totalFileSize);
+        }
+        return true;
       }
+      paramObject = this.jdField_a_of_type_Stm;
+      if ((paramObject != null) && (paramObject.a((stn)this, i, paramISuperPlayer) == true)) {}
+      for (boolean bool = true;; bool = false) {
+        return bool;
+      }
+    }
+  }
+  
+  public void onSeekComplete(@Nullable ISuperPlayer paramISuperPlayer)
+  {
+    paramISuperPlayer = this.jdField_a_of_type_Stm;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.c((stn)this);
+    }
+  }
+  
+  public void onVideoPrepared(@Nullable ISuperPlayer paramISuperPlayer)
+  {
+    paramISuperPlayer = this.jdField_a_of_type_Stm;
+    if (paramISuperPlayer != null) {
+      paramISuperPlayer.a((stn)this);
     }
   }
 }

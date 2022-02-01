@@ -7,17 +7,18 @@ import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.util.WeakReference;
-import mxn;
-import mzl;
+import ncz;
+import nfc;
 
 public class AVGameBroadcastReceiver
   extends BroadcastReceiver
 {
   public static final String[] a;
-  public static final String[] b = { "tencent.avgame.g2q.preload", "action_notify_av_game_room_changed", "tencent.avgame.g2q.exit" };
+  public static final String[] b = { "tencent.avgame.g2q.preload", "action_notify_av_game_room_changed", "tencent.avgame.g2q.exit", "tencent.avgame.g2q.pkRestart" };
   public static final String[] c = { "tencent.video.v2g.exitAVGame", "tencent.avgame.q2g.entring" };
   private final WeakReference<AppRuntime> a;
   
@@ -46,7 +47,7 @@ public class AVGameBroadcastReceiver
       QLog.i("AVGameBroadcastReceiver", 2, "actionToAVGame, action[" + paramAVGameAppInterface + "]");
     }
     if ("tencent.video.v2g.exitAVGame".equals(paramAVGameAppInterface)) {
-      mzl.a().a(8, null, mzl.a().a());
+      nfc.a().a(8, null, nfc.a().a());
     }
     while (!"tencent.avgame.q2g.entring".equals(paramAVGameAppInterface)) {
       return;
@@ -56,11 +57,11 @@ public class AVGameBroadcastReceiver
   
   private void a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent)
   {
-    paramContext = paramIntent.getAction();
+    String str = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.i("AVGameBroadcastReceiver", 2, "actionToQQ, action[" + paramContext + "]");
+      QLog.i("AVGameBroadcastReceiver", 2, "actionToQQ, action[" + str + "]");
     }
-    if ("tencent.avgame.g2q.preload".equals(paramContext)) {
+    if ("tencent.avgame.g2q.preload".equals(str)) {
       AVGameUtilService.a(paramIntent, true);
     }
     do
@@ -69,17 +70,22 @@ public class AVGameBroadcastReceiver
       do
       {
         return;
-        if (!"action_notify_av_game_room_changed".equals(paramContext)) {
+        if (!"action_notify_av_game_room_changed".equals(str)) {
           break;
         }
         i = paramIntent.getIntExtra("action_key_status", 0);
         paramContext = paramIntent.getStringExtra("action_key_room_id");
-        paramQQAppInterface = (mxn)paramQQAppInterface.getManager(373);
+        paramQQAppInterface = (ncz)paramQQAppInterface.getManager(QQManagerFactory.AV_GAME_MANAGER);
       } while (paramQQAppInterface == null);
       paramQQAppInterface.a(i, paramContext);
       return;
-    } while (!"tencent.avgame.g2q.exit".equals(paramContext));
-    AVGameUtilService.a(null, false);
+      if ("tencent.avgame.g2q.exit".equals(str))
+      {
+        AVGameUtilService.a(null, false);
+        return;
+      }
+    } while (!"tencent.avgame.g2q.pkRestart".equals(str));
+    AVGameUtilService.a(paramQQAppInterface, paramContext, paramIntent);
   }
   
   public String[] a()

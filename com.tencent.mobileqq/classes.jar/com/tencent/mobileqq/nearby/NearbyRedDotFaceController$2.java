@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby;
 
 import android.os.Handler;
-import awju;
+import axpw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -22,8 +22,8 @@ public class NearbyRedDotFaceController$2
         this.this$0.jdField_a_of_type_Int = 0;
       }
       this.this$0.a((String)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int));
-      awju localawju2 = this.this$0;
-      localawju2.jdField_a_of_type_Int += 1;
+      axpw localaxpw2 = this.this$0;
+      localaxpw2.jdField_a_of_type_Int += 1;
       if (this.this$0.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
         this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 3000L);
       }

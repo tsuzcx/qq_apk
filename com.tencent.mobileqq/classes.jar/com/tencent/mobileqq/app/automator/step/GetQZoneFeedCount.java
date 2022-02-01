@@ -1,39 +1,42 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import avta;
+import awzb;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.whitelist.QCirclePreLoadManager;
 
 public class GetQZoneFeedCount
   extends AsyncStep
 {
   public int a()
   {
-    avta localavta;
+    awzb localawzb;
     if ((this.a != null) && (this.a.app != null))
     {
-      localavta = (avta)this.a.app.getManager(10);
-      if (localavta != null)
+      localawzb = (awzb)this.a.app.getManager(QQManagerFactory.QZONE_MANAGER);
+      if (localawzb != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("GetQZoneFeedCount", 2, "GetQZoneFeedCount isFirstGetUnread:" + localavta.a() + ",isBackground_Pause:" + this.a.app.isBackgroundPause);
+          QLog.d("GetQZoneFeedCount", 2, "GetQZoneFeedCount isFirstGetUnread:" + localawzb.a() + ",isBackground_Pause:" + this.a.app.isBackgroundPause);
         }
-        if (!localavta.a()) {
-          break label120;
+        if (!localawzb.a()) {
+          break label137;
         }
-        localavta.a(this.a.app.getAccount(), null);
+        localawzb.a(this.a.app.getAccount(), null);
       }
     }
     for (;;)
     {
+      QCirclePreLoadManager.getInstance().requestWhiteList(this.a.app.getCurrentUin());
       return 7;
-      label120:
+      label137:
       if (this.a.app.isBackgroundPause) {
-        localavta.b(6);
+        localawzb.b(6);
       } else {
-        localavta.a(5);
+        localawzb.a(5);
       }
     }
   }

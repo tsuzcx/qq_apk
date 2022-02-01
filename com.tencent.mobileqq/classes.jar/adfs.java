@@ -1,18 +1,29 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class adfs
-  implements InputFilter
+  implements View.OnTouchListener
 {
-  public adfs(EditInfoActivity paramEditInfoActivity) {}
+  public adfs(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramCharSequence.toString().contains("\n")) {
-      return paramCharSequence.toString().replace("\n", "");
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
     }
-    return null;
+    do
+    {
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 

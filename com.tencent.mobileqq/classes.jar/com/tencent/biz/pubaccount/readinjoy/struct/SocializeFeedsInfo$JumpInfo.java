@@ -3,49 +3,29 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import rev;
+import java.io.Serializable;
+import rrc;
 
 public class SocializeFeedsInfo$JumpInfo
-  implements Parcelable
+  implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<JumpInfo> CREATOR = new rev();
-  private final long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString;
-  private final String b;
+  public static final Parcelable.Creator<JumpInfo> CREATOR = new rrc();
+  private final long id;
+  private final String jumpUrl;
+  private final String wording;
   
   public SocializeFeedsInfo$JumpInfo(long paramLong, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.id = paramLong;
+    this.wording = paramString1;
+    this.jumpUrl = paramString2;
   }
   
   public SocializeFeedsInfo$JumpInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.b = paramParcel.readString();
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
-  public String b()
-  {
-    if (this.b != null) {
-      return this.b;
-    }
-    return "";
+    this.id = paramParcel.readLong();
+    this.wording = paramParcel.readString();
+    this.jumpUrl = paramParcel.readString();
   }
   
   public int describeContents()
@@ -53,16 +33,37 @@ public class SocializeFeedsInfo$JumpInfo
     return 0;
   }
   
+  public long getId()
+  {
+    return this.id;
+  }
+  
+  public String getJumpUrl()
+  {
+    if (this.jumpUrl != null) {
+      return this.jumpUrl;
+    }
+    return "";
+  }
+  
+  public String getWording()
+  {
+    if (this.wording != null) {
+      return this.wording;
+    }
+    return "";
+  }
+  
   public String toString()
   {
-    return "JumpInfo{id=" + this.jdField_a_of_type_Long + ", wording='" + this.jdField_a_of_type_JavaLangString + '\'' + ", jumpUrl='" + this.b + '\'' + '}';
+    return "JumpInfo{id=" + this.id + ", wording='" + this.wording + '\'' + ", jumpUrl='" + this.jumpUrl + '\'' + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.b);
+    paramParcel.writeLong(this.id);
+    paramParcel.writeString(this.wording);
+    paramParcel.writeString(this.jumpUrl);
   }
 }
 

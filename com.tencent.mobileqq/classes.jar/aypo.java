@@ -1,47 +1,42 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.9.1;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.XEditTextEx;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class aypo
-  implements TextWatcher
+  extends aypr
 {
-  private int jdField_a_of_type_Int;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private int b;
+  public aypo(MessageReceivingAdapter paramMessageReceivingAdapter, int paramInt, MessageForArkApp paramMessageForArkApp) {}
   
-  public aypo(StickyNotePublishFragment paramStickyNotePublishFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public boolean onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (com.tencent.mobileqq.text.TextUtils.getQQTextCharCount(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 300))
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.getActivity(), 1, 2131690221, 0).a();
-      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
+    j = 0;
+    ayqp.b(this.jdField_a_of_type_Int + 1, aypm.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp), "1");
+    paramView = aypm.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    if (TextUtils.isEmpty(paramView)) {
+      return false;
     }
-    paramEditable = ayow.a(StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment));
-    if ((android.text.TextUtils.isEmpty(paramEditable)) || (android.text.TextUtils.isEmpty(paramEditable.trim()))) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(false);
-    }
-    for (;;)
+    paramView = ayqv.a(ayqv.a(paramView, "fromid", String.valueOf(60013)), "startsrc", String.valueOf(60013));
+    try
     {
-      if (StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment) != null) {
-        StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment).post(new StickyNotePublishFragment.9.1(this));
+      String str = ayqv.a(paramView, "roomid");
+      i = j;
+      if (!TextUtils.isEmpty(str)) {
+        i = Integer.parseInt(str);
       }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(true);
     }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = (paramInt1 + paramInt3);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("MessageReceivingAdapter", 4, localException, new Object[0]);
+        int i = j;
+      }
+    }
+    Log.i("MessageReceivingAdapter", "jumpUrl = " + paramView);
+    return ayqt.a(MessageReceivingAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter), paramView, i, 60012);
   }
 }
 

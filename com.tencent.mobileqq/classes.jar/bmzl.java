@@ -1,26 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
-public class bmzl
-  extends bmtc
+public abstract interface bmzl
 {
-  public bmzl(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView) {}
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvTemplateProviderView", 2, "onFaceUUpdate!");
-    }
-    this.a.g();
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvTemplateProviderView", 2, "onSegmentModeUpdate!");
-    }
-    this.a.a(false);
-  }
+  public abstract void a(boolean paramBoolean, LocalMediaInfo paramLocalMediaInfo);
 }
 
 

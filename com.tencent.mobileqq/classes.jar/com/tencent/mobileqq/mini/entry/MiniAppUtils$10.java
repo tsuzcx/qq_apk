@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.mini.entry;
 
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import common.config.service.QzoneConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 final class MiniAppUtils$10
   implements Runnable
 {
-  MiniAppUtils$10(MiniAppConfig paramMiniAppConfig) {}
+  MiniAppUtils$10(String paramString) {}
   
   public void run()
   {
-    if (this.val$appConfig != null)
+    try
     {
-      if (!MiniAppUtils.isFromPullDownEntry(this.val$appConfig)) {
-        break label45;
-      }
-      MiniAppUtils.access$200(this.val$appConfig);
-      if (QzoneConfig.getInstance().getConfig("qqminiapp", "backAutoHide", 0) == 2) {
-        MiniAppUtils.updateMiniAppList(100);
-      }
-    }
-    label45:
-    while ((this.val$appConfig.config == null) || (this.val$appConfig.config.isAppStoreMiniApp())) {
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
+      localHttpURLConnection.setRequestMethod("GET");
+      localHttpURLConnection.setConnectTimeout(10000);
+      localHttpURLConnection.setReadTimeout(10000);
+      localHttpURLConnection.setUseCaches(false);
+      localHttpURLConnection.setInstanceFollowRedirects(true);
+      localHttpURLConnection.connect();
+      int i = localHttpURLConnection.getResponseCode();
+      QLog.i("MiniAppUtils", 1, "reportBannerAd rspCode" + i);
       return;
     }
-    MiniAppInfo localMiniAppInfo = MiniAppInfo.copy(this.val$appConfig.config);
-    localMiniAppInfo.debugInfo = null;
-    MiniAppUtils.access$300(localMiniAppInfo);
+    catch (Throwable localThrowable)
+    {
+      QLog.i("MiniAppUtils", 1, "reportBannerAd error, url = " + this.val$reportUrl, localThrowable);
+    }
   }
 }
 

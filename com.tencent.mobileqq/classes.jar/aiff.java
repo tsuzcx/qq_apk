@@ -1,69 +1,43 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.widget.ThemeImageView;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aiff
-  extends aiea
-  implements View.OnClickListener
+class aiff
+  implements BusinessObserver
 {
-  private boolean a;
+  aiff(aido paramaido) {}
   
-  public aiff(Context paramContext, QQAppInterface paramQQAppInterface, aifw paramaifw, aigo paramaigo)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramContext, paramQQAppInterface, paramaifw, paramaigo);
-  }
-  
-  public View a(int paramInt, View paramView)
-  {
-    aifg localaifg;
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof aifg)))
-    {
-      localaifg = new aifg();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561243, null);
-      localaifg.a = ((LinearLayout)paramView.findViewById(2131365058));
-      localaifg.b = ((LinearLayout)paramView.findViewById(2131365053));
-      localObject = (ThemeImageView)paramView.findViewById(2131366065);
-      ((ThemeImageView)localObject).setSupportMaskView(true);
-      ((ThemeImageView)localObject).setMaskShape(bjuk.b);
-      paramView.setTag(localaifg);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
     }
-    for (;;)
-    {
-      paramView.setOnClickListener(this);
-      localObject = new Rect();
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      paramInt = ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299076) - ViewUtils.dip2px(80.0F);
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
+        localSendMenuEventResponse.mergeFrom(paramBundle);
+        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.tag, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
+        }
+        if (paramInt == 0)
+        {
+          this.a.x = true;
+          this.a.q();
+          this.a.b();
+          return;
+        }
       }
-      a(paramView, paramInt);
-      localaifg.a.setVisibility(8);
-      localaifg.b.setVisibility(0);
-      return paramView;
-      localaifg = (aifg)paramView.getTag();
+      catch (Exception paramBundle) {}
     }
-    a(paramView, paramInt);
-    localaifg.a.setVisibility(0);
-    localaifg.b.setVisibility(8);
-    return paramView;
+    this.a.b(2131694983);
+    this.a.b();
   }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 

@@ -8,7 +8,7 @@ import LBS_V2_PROTOCOL.PoiInfoCell_V2;
 import LBS_V2_PROTOCOL.PoiInfo_V2;
 import LBS_V2_PROTOCOL.Wifi_V2;
 import android.os.Bundle;
-import aqru;
+import arvg;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -90,7 +90,7 @@ public class QcircleLbsService
       return;
     }
     paramGpsInfo = new GetCombinInfoRequest(paramGpsInfo, paramGeoInfo, paramArrayList, paramArrayList1, paramInt1, paramInt2, 100203, paramInt4, paramArrayList2, 1);
-    paramGeoInfo = new QzoneCommonIntent(((QQAppInterface)localObject).getApplication(), aqru.class);
+    paramGeoInfo = new QzoneCommonIntent(((QQAppInterface)localObject).getApplication(), arvg.class);
     paramGeoInfo.setRequest(paramGpsInfo);
     paramGeoInfo.setObserver(this);
     ((QQAppInterface)localObject).startServlet(paramGeoInfo);

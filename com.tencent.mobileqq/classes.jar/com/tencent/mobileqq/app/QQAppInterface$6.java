@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bfyg;
+import bhgy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -40,7 +40,7 @@ class QQAppInterface$6
       QQAppInterface.access$2000(this.this$0, 1, paramMessage, ???);
       label138:
       if (QLog.isColorLevel()) {
-        bfyg.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, user getQQHead resp uinList: ", paramMessage);
+        bhgy.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, user getQQHead resp uinList: ", paramMessage);
       }
     }
     do
@@ -74,7 +74,7 @@ class QQAppInterface$6
             }
             QQAppInterface.access$2000(this.this$0, 4, paramMessage, ???);
           } while (!QLog.isColorLevel());
-          bfyg.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, group getQQHead resp uinList: ", paramMessage);
+          bhgy.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, group getQQHead resp uinList: ", paramMessage);
           return;
           if (paramMessage.what != 993) {
             break;
@@ -98,7 +98,7 @@ class QQAppInterface$6
           }
           QQAppInterface.access$2000(this.this$0, 101, paramMessage, ???);
         } while (!QLog.isColorLevel());
-        bfyg.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, dis getQQHead resp uinList: ", paramMessage);
+        bhgy.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, dis getQQHead resp uinList: ", paramMessage);
         return;
       } while (paramMessage.what != 992);
       paramMessage = new ArrayList();
@@ -120,7 +120,7 @@ class QQAppInterface$6
       }
       QQAppInterface.access$2000(this.this$0, 113, paramMessage, ???);
     } while (!QLog.isColorLevel());
-    bfyg.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, newGroup getQQHead resp uinList: ", paramMessage);
+    bhgy.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, newGroup getQQHead resp uinList: ", paramMessage);
   }
 }
 

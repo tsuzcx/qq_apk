@@ -1,42 +1,21 @@
-import android.view.animation.Transformation;
-import android.view.animation.TranslateAnimation;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class afdl
-  extends TranslateAnimation
+  implements URLDrawable.URLDrawableListener
 {
-  public static volatile boolean a;
-  public int a;
+  public afdl(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public afdl()
-  {
-    this(1, 1.0F, 1, 0.0F, 1, 0.0F, 1, 0.0F);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public afdl(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
-  {
-    super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
-    this.jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public boolean getTransformation(long paramLong, Transformation paramTransformation)
-  {
-    this.jdField_a_of_type_Int += 1;
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int <= 2))
-    {
-      setStartTime(paramLong);
-      if (this.jdField_a_of_type_Int == 2) {
-        jdField_a_of_type_Boolean = true;
-      }
-    }
-    return super.getTransformation(paramLong, paramTransformation);
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void reset()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-    super.reset();
+    TroopInfoActivity.b(this.a);
   }
 }
 

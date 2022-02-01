@@ -1,170 +1,46 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.text.TextUtils;
-import android.view.View.OnClickListener;
-import android.view.Window;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.studymode.StudyModeSwitchDialog.btnSwitchOn.2;
-import com.tencent.mobileqq.studymode.StudyModeSwitchDialog.ivClose.2;
-import com.tencent.mobileqq.studymode.StudyModeSwitchDialog.manager.2;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import kotlin.Lazy;
-import kotlin.LazyKt;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/StudyModeSwitchDialog;", "Landroid/app/Dialog;", "Lcom/tencent/mobileqq/studymode/ModeSwitchManager$OnModeChangeResultCallback;", "activity", "Lcom/tencent/mobileqq/app/BaseActivity;", "(Lcom/tencent/mobileqq/app/BaseActivity;)V", "btnSwitchOn", "Landroid/widget/Button;", "getBtnSwitchOn", "()Landroid/widget/Button;", "btnSwitchOn$delegate", "Lkotlin/Lazy;", "ivClose", "Landroid/widget/ImageView;", "getIvClose", "()Landroid/widget/ImageView;", "ivClose$delegate", "loadingDialog", "Lcom/tencent/mobileqq/widget/QQProgressDialog;", "manager", "Lcom/tencent/mobileqq/studymode/ModeSwitchManager;", "getManager", "()Lcom/tencent/mobileqq/studymode/ModeSwitchManager;", "manager$delegate", "initView", "", "onModeChangeComplete", "isSuccess", "", "targetType", "", "oldType", "message", "", "onModeChangeStart", "onModeSwitching", "onSelectModeRecover", "onSwitchClick", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bcot
-  extends ReportDialog
-  implements bcog
+public class bcot
+  extends bcoa
 {
-  private bhht jdField_a_of_type_Bhht;
-  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private final Lazy jdField_a_of_type_KotlinLazy;
-  private final Lazy b;
-  private final Lazy c;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public SquareImageView a;
+  public Button b;
+  public LinearLayout b;
+  public TextView b;
+  public LinearLayout c;
   
-  public bcot(@NotNull BaseActivity paramBaseActivity)
+  public bcot(ViewGroup paramViewGroup, int paramInt)
   {
-    super((Context)paramBaseActivity, 2131755174);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new StudyModeSwitchDialog.ivClose.2(this));
-    this.b = LazyKt.lazy((Function0)new StudyModeSwitchDialog.btnSwitchOn.2(this));
-    this.c = LazyKt.lazy((Function0)new StudyModeSwitchDialog.manager.2(this));
-    paramBaseActivity = getWindow();
-    if (paramBaseActivity != null)
-    {
-      if (ImmersiveUtils.isSupporImmersive() == 1) {
-        paramBaseActivity.addFlags(67108864);
-      }
-      ImmersiveUtils.a(paramBaseActivity, true);
-    }
-    setContentView(2131558946);
-    a();
-    a().a((bcog)this);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X800ADD4", "0X800ADD4", 0, 0, "", "", "", "");
+    super(paramViewGroup, paramInt);
   }
   
-  private final Button a()
+  protected void a()
   {
-    return (Button)this.b.getValue();
-  }
-  
-  private final ImageView a()
-  {
-    return (ImageView)this.jdField_a_of_type_KotlinLazy.getValue();
-  }
-  
-  private final bcof a()
-  {
-    return (bcof)this.c.getValue();
-  }
-  
-  private final void a()
-  {
-    a().setOnClickListener((View.OnClickListener)new bcou(this));
-    a().setOnClickListener((View.OnClickListener)new bcov(this));
-    setOnDismissListener((DialogInterface.OnDismissListener)new bcow(this));
-  }
-  
-  private final void b()
-  {
-    if (a().a())
-    {
-      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131718227, 0).a();
-      return;
-    }
-    if (bcoa.a() == 2)
-    {
-      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131718624, 0).a();
-      dismiss();
-      return;
-    }
-    int i = bbyp.c();
-    bcoi localbcoi = a().a((Activity)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, i, true);
-    if ((!localbcoi.a()) && (localbcoi.a() == localbcoi.b()))
-    {
-      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131718624, 0).a();
-      dismiss();
-    }
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X800ADD5", "0X800ADD5", 0, 0, "", "", "", "");
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "message");
-    Context localContext;
-    if (!TextUtils.isEmpty((CharSequence)paramString))
-    {
-      localContext = (Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-      if (!paramBoolean) {
-        break label70;
-      }
-    }
-    label70:
-    for (paramInt1 = 2;; paramInt1 = 1)
-    {
-      QQToast.a(localContext, paramInt1, (CharSequence)paramString, 0).a();
-      paramString = this.jdField_a_of_type_Bhht;
-      if (paramString != null) {
-        paramString.dismiss();
-      }
-      dismiss();
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
-  {
-    bcoh.a(this, paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString)
-  {
-    bcoh.a(this, paramBoolean1, paramBoolean2, paramBoolean3, paramInt, paramString);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    bhht localbhht = this.jdField_a_of_type_Bhht;
-    if ((localbhht != null) && (localbhht.isShowing() == true))
-    {
-      localbhht = this.jdField_a_of_type_Bhht;
-      if (localbhht != null) {
-        localbhht.dismiss();
-      }
-    }
-    this.jdField_a_of_type_Bhht = new bhht((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    localbhht = this.jdField_a_of_type_Bhht;
-    if (localbhht == null) {
-      Intrinsics.throwNpe();
-    }
-    Window localWindow = localbhht.getWindow();
-    if (localWindow != null) {
-      localWindow.setDimAmount(0.0F);
-    }
-    localbhht.show();
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    bhht localbhht = this.jdField_a_of_type_Bhht;
-    if (localbhht != null) {
-      localbhht.dismiss();
-    }
-  }
-  
-  public void d(int paramInt1, int paramInt2)
-  {
-    QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131718227, 0).a();
+    super.a();
+    View localView = a(this.jdField_c_of_type_Int);
+    a(localView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131376864));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131364020));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369531));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370315));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370316));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379818));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379817));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131369343));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370314));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363847));
   }
 }
 

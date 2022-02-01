@@ -1,24 +1,24 @@
-import java.util.concurrent.atomic.AtomicBoolean;
-import msf.msgcomm.msg_comm.Msg;
+import java.util.Comparator;
 
 class amyy
+  implements Comparator<amza>
 {
-  public long a;
-  public AtomicBoolean a;
-  public msg_comm.Msg a;
-  public long b;
+  amyy(amyx paramamyx) {}
   
-  public amyy(msg_comm.Msg paramMsg, long paramLong1, long paramLong2)
+  public int a(amza paramamza1, amza paramamza2)
   {
-    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    if (paramamza1.a == paramamza2.a) {
+      return 0;
+    }
+    if (paramamza1.a > paramamza2.a) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyy
  * JD-Core Version:    0.7.0.1
  */

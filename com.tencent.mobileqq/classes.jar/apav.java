@@ -1,26 +1,68 @@
-class apav
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+
+public class apav
+  extends QIPCModule
 {
-  static final float[] a;
+  private static apav a;
   
-  static
+  public apav(String paramString)
   {
-    int k = 0;
-    a = new float[8192];
-    int i = 0;
-    int j;
-    for (;;)
+    super(paramString);
+  }
+  
+  public static apav a()
+  {
+    if (a == null) {}
+    try
     {
-      j = k;
-      if (i >= 8192) {
-        break;
+      if (a == null) {
+        a = new apav("PublicAccountModule");
       }
-      a[i] = ((float)Math.cos((i + 0.5F) / 8192.0F * 6.283186F));
-      i += 1;
+      return a;
     }
-    while (j < 360)
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountModule", 2, new Object[] { "PublicAccountModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
+    }
+    String str;
+    boolean bool;
+    if ("ACTION_REPORT_PUBLIC_ACCOUNT_FOLLOW_INFO_IN_WEBVIEW".equalsIgnoreCase(paramString))
     {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.cos(j * 0.01745329F));
-      j += 90;
+      paramInt = paramBundle.getInt("BUNDLE_KEY_REPORT_INFO_SOURCE", -1);
+      str = paramBundle.getString("BUNDLE_KEY_REPORT_INFO_PUIN", "");
+      bool = paramBundle.getBoolean("BUNDLE_KEY_REPORT_INFO_IS_FOLLOW", false);
+      if ((paramInt != -1) && (!TextUtils.isEmpty(str))) {
+        break label161;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountModule", 2, new Object[] { "empty error: source=", Integer.valueOf(paramInt), " uin=", str });
+      }
+    }
+    return null;
+    label161:
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("PublicAccountModule", 2, "app is null!");
+        return null;
+      }
+      apaw.a(paramString, bool, str, paramInt);
+      return null;
     }
   }
 }

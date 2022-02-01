@@ -1,61 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 
 public class aqhw
-  extends aqgc<aqhv>
 {
-  @NonNull
-  public aqhv a()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ampi localampi = (ampi)localQQAppInterface.getBusinessHandler(16);
-    if (localampi != null) {
-      localampi.a(localQQAppInterface.getApplication().getApplicationContext());
-    }
-    return new aqhv();
-  }
+  public final int a;
+  public final Rect a;
+  public final BitmapDrawable a;
   
-  @NonNull
-  public aqhv a(aptx[] paramArrayOfaptx)
+  public aqhw(BitmapDrawable paramBitmapDrawable, int paramInt, Rect paramRect)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ampi localampi = (ampi)localQQAppInterface.getBusinessHandler(16);
-    if (localampi != null) {
-      localampi.a(localQQAppInterface, paramArrayOfaptx[0].a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipResourceProcessor", 2, "receiveAllConfigs|type: 26,content: " + paramArrayOfaptx[0]);
-    }
-    return new aqhv();
-  }
-  
-  @NonNull
-  public aqhv b()
-  {
-    return new aqhv();
-  }
-  
-  public Class<aqhv> clazz()
-  {
-    return aqhv.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public int type()
-  {
-    return 26;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = paramBitmapDrawable;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhw
  * JD-Core Version:    0.7.0.1
  */

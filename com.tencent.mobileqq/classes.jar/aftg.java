@@ -1,49 +1,17 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
-import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
-import com.tencent.mobileqq.app.ThreadManager;
-
-public class aftg
-  implements afrc
+public abstract interface aftg
+  extends afrm
 {
-  private BaseChatPie a;
+  public abstract void onHeadsetChanged(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
   
-  public aftg(BaseChatPie paramBaseChatPie)
-  {
-    this.a = paramBaseChatPie;
-  }
+  public abstract void onPlayFailed(int paramInt);
   
-  private void a()
-  {
-    if ((this.a != null) && (this.a.getIfOnShowDone()) && (this.a.getCurType() == 1)) {
-      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
-    }
-  }
+  public abstract void onPlayStart();
   
-  private void b()
-  {
-    if ((this.a != null) && (this.a.getCurType() == 1)) {
-      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
-    }
-  }
+  public abstract void onPlayStop();
   
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 5: 
-      a();
-      return;
-    }
-    b();
-  }
+  public abstract void onPlayVolumeChanged(int paramInt);
   
-  public int[] a()
-  {
-    return new int[] { 5, 10 };
-  }
+  public abstract void onVolumeStreamChanged(int paramInt);
 }
 
 

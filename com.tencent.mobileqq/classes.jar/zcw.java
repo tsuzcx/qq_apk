@@ -1,21 +1,21 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
 public class zcw
-  implements View.OnClickListener
 {
-  public zcw(BaseWidgetView paramBaseWidgetView) {}
+  public View a;
+  public View b;
   
-  public void onClick(View paramView)
+  public zcw(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    if ((this.a.a() != null) && (!this.a.a(paramView)))
-    {
-      this.a.a(this.a.a());
-      this.a.a().onClick(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView.findViewById(2131380860);
+  }
+  
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  {
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new zcx(this));
   }
 }
 

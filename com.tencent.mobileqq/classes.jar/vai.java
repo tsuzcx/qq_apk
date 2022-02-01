@@ -1,12 +1,6 @@
-class vai
-  implements uqy
+public abstract interface vai
 {
-  vai(vah paramvah, vaa paramvaa) {}
-  
-  public void a(urj paramurj)
-  {
-    vah.a(this.jdField_a_of_type_Vah, paramurj, this.jdField_a_of_type_Vaa);
-  }
+  public abstract void a();
 }
 
 

@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar android:id="@id/jt2" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/bbk" />
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/nl3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom|center|left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <ImageView android:id="@id/nl4" android:padding="10.0dip" android:layout_width="44.0dip" android:layout_height="44.0dip" android:src="@drawable/biv" />
-                <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/nl5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-6.0dip" android:text="00:00/00:00" android:shadowColor="#3b000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="3.0" />
-            </LinearLayout>
-            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/al3" android:layout_gravity="bottom|center" android:id="@id/nl1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:text="@string/w9g" android:shadowColor="#3b000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="3.0" />
-            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/nl2" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="66.0dip" android:text="@string/w9g" android:shadowColor="#3b000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="3.0" />
-            <dov.com.qq.im.aeeditor.module.toolbar.VideoEditToolBar android:layout_gravity="bottom|center|right" android:id="@id/jst" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:layout_marginBottom="6.0dip" />
-            <TextView android:textSize="13.0sp" android:textColor="@color/al3" android:layout_gravity="bottom|center" android:id="@id/mog" android:background="@drawable/bin" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="" />
-            <ViewStub android:id="@id/mmi" android:layout="@layout/c2j" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </FrameLayout>
-        <dov.com.qq.im.aeeditor.module.controlpanel.VideoControlPanel android:id="@id/mlx" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/b_a" />
+<dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout android:gravity="bottom" android:id="@id/nbo" android:layout_width="fill_parent" android:layout_height="fill_parent" app:umanoDragView="@id/nbx" app:umanoOverlay="true" app:umanoPanelHeight="@dimen/bb5" app:umanoParallaxOffset="100.0dip" app:umanoScrollableView="@id/nc0" app:umanoShadowHeight="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/nby" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/nbx" android:layout_width="fill_parent" android:layout_height="@dimen/bb5">
+            <ImageView android:layout_gravity="center" android:id="@id/nbz" android:layout_width="45.0dip" android:layout_height="16.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/bij" android:scaleType="fitCenter" />
+            <dov.com.qq.im.aeeditor.lyric.widget.LyricViewSingleLine android:layout_gravity="center" android:id="@id/nc1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" app:aelvLyricHilightColor="@color/ff" app:aelvLyricHilightSize="14.0dip" app:aelvLyricHilightThinColor="@color/ff" app:aelvLyricLineHeight="14.0dip" app:aelvLyricLineMargin="14.0dip" app:aelvLyricLiteratim="false" app:aelvLyricScrollable="false" app:aelvLyricTextColor="@color/ff" app:aelvLyricTextFakeBold="false" app:aelvLyricTextSize="14.0dip" app:aelvLyricTextThinColor="@color/ff" />
+        </LinearLayout>
+        <dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView android:layout_gravity="center_horizontal" android:id="@id/nc0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="25.0dip" />
     </LinearLayout>
-    <dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel android:layout_gravity="bottom" android:id="@id/nlb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <FrameLayout android:id="@id/mop" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+</dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout>

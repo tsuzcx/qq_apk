@@ -1,53 +1,138 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class aqhf
-  extends aqgc<aqhe>
 {
-  @NonNull
-  public aqhe a()
+  public double a;
+  public int a;
+  public aqhc a;
+  @Deprecated
+  public aqio a;
+  public String a;
+  public ArrayList<aqhc> a;
+  public HashMap<String, aqin> a;
+  public HashSet<String> a;
+  public boolean a;
+  public int[] a;
+  public int b;
+  public aqhc b;
+  public ArrayList<Integer> b;
+  public HashMap<String, aqie> b;
+  public boolean b;
+  public int c;
+  public aqhc c;
+  public ArrayList<String> c;
+  public int d;
+  public aqhc d;
+  public int e;
+  public aqhc e;
+  public int f = -1;
+  public aqhc f;
+  public int g = 2;
+  
+  public aqhf(int paramInt)
   {
-    return new aqhe();
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  @NonNull
-  public aqhe a(aptx[] paramArrayOfaptx)
+  private boolean a(File paramFile, String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    paramArrayOfaptx = paramArrayOfaptx[0].a;
-    bgny.a().a(localQQAppInterface.getApplication(), paramArrayOfaptx, localQQAppInterface.getCurrentAccountUin());
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipKeywordsProcessor", 2, "receiveAllConfigs|type: 76,content: " + paramArrayOfaptx);
+    boolean bool2 = false;
+    paramFile = new File(paramFile, paramString);
+    boolean bool1 = bool2;
+    if (paramFile.exists())
+    {
+      bool1 = bool2;
+      if (paramFile.isDirectory())
+      {
+        paramFile = paramFile.list();
+        bool1 = bool2;
+        if (paramFile != null)
+        {
+          bool1 = bool2;
+          if (paramFile.length > 0) {
+            bool1 = true;
+          }
+        }
+      }
     }
-    return new aqhe();
+    return bool1;
   }
   
-  @NonNull
-  public aqhe b()
+  public int a()
   {
-    return new aqhe();
+    if (a()) {
+      return ((Integer)this.b.get(this.e)).intValue();
+    }
+    return -1;
   }
   
-  public Class<aqhe> clazz()
+  public void a()
   {
-    return aqhe.class;
+    if (a())
+    {
+      this.e = ((this.e + 1) % this.b.size());
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleConfig", 2, "now change bubble sub id: " + this.b.get(this.e));
+      }
+      return;
+    }
+    this.e = 0;
   }
   
-  public boolean isNeedCompressed()
+  public boolean a()
   {
+    return (this.b != null) && (this.b.size() > 0);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (this.b != null) && (this.b.contains(Integer.valueOf(paramInt)));
+  }
+  
+  public boolean a(File paramFile)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+    while (localIterator.hasNext()) {
+      if (a(paramFile, (String)localIterator.next())) {
+        return true;
+      }
+    }
     return false;
   }
   
-  public int type()
+  public boolean a(String paramString)
   {
-    return 76;
+    if ((this.c != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      Iterator localIterator = this.c.iterator();
+      while (localIterator.hasNext()) {
+        if (paramString.indexOf(((String)localIterator.next()).toLowerCase()) != -1) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append("[ bubbleId=" + this.jdField_a_of_type_Int).append(",");
+    localStringBuffer.append("name=" + this.jdField_a_of_type_JavaLangString).append(" ]");
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import Override;
-import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -24,11 +23,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aylp;
-import aylr;
-import aylu;
-import aylx;
-import aymb;
+import anvx;
+import azqk;
+import azqm;
+import azqp;
+import azqs;
+import azqw;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -47,11 +47,11 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import yyi;
+import znl;
 
 public class PersonalityLabelShareActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, aylu, aylx
+  implements View.OnClickListener, azqp, azqs
 {
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int = 0;
@@ -62,7 +62,7 @@ public class PersonalityLabelShareActivity
   Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  aylr jdField_a_of_type_Aylr;
+  azqm jdField_a_of_type_Azqm;
   PersonalityLabel jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel;
   TagCloudView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView;
   boolean jdField_a_of_type_Boolean = true;
@@ -81,7 +81,7 @@ public class PersonalityLabelShareActivity
     {
       if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
       {
-        requestPermissions(new aylp(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+        requestPermissions(new azqk(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
         return;
       }
       d();
@@ -101,7 +101,7 @@ public class PersonalityLabelShareActivity
     ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel.getSize());
     Object localObject3 = null;
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2131165444);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2131165450);
     }
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel.getLatestThumbLocalUrl();
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -112,7 +112,7 @@ public class PersonalityLabelShareActivity
       try
       {
         localObject1 = URLDrawable.getDrawable(new URL("file:///" + ((File)localObject1).getAbsolutePath()), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        aymb.a(localArrayList, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel, this.jdField_a_of_type_Float);
+        azqw.a(localArrayList, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel, this.jdField_a_of_type_Float);
         this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setTags(localArrayList);
         this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setTagIcon((Drawable)localObject1);
         return;
@@ -184,7 +184,7 @@ public class PersonalityLabelShareActivity
     int k;
     try
     {
-      localObject2 = yyi.a(String.format(aylr.a, new Object[] { this.app.getCurrentAccountUin() }), 29);
+      localObject2 = znl.a(String.format(azqm.a, new Object[] { this.app.getCurrentAccountUin() }), 29);
       m = ((gr)localObject2).a();
       localObject1 = new int[m * m];
       i = 0;
@@ -277,24 +277,24 @@ public class PersonalityLabelShareActivity
   void a()
   {
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    Object localObject = (BounceScrollView)findViewById(2131363689);
+    Object localObject = (BounceScrollView)findViewById(2131363760);
     ((BounceScrollView)localObject).setVerticalScrollBarEnabled(false);
     ((BounceScrollView)localObject).mScrollFlag = 1;
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView = ((TagCloudView)findViewById(2131378209));
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView = ((TagCloudView)findViewById(2131378497));
     this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setOnUpdateDrawingListener(this);
     this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setMinHeight((int)(this.jdField_a_of_type_Float * 150.0F));
     this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setThreshold((int)(this.jdField_a_of_type_Float * 7.5F));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131372211);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131368721);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131378482);
-    this.d = findViewById(2131370365);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131372402);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131368880);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131378773);
+    this.d = findViewById(2131370548);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374517));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378367));
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298333);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374755));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378658));
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298336);
     localObject = ContactUtils.getFriendNick(this.app, this.app.getCurrentAccountUin());
-    String str1 = amtj.a(2131707061);
-    String str2 = amtj.a(2131707083);
+    String str1 = anvx.a(2131707408);
+    String str2 = anvx.a(2131707430);
     int i = getResources().getDisplayMetrics().widthPixels - AIOUtils.dp2px(20.0F, getResources()) * 5 - AIOUtils.dp2px(1.0F, getResources()) - this.jdField_a_of_type_Int - AIOUtils.dp2px(10.0F, getResources());
     TextPaint localTextPaint = new TextPaint();
     localTextPaint.setTextSize(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize());
@@ -305,14 +305,14 @@ public class PersonalityLabelShareActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363950));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363972));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364024));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364046));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidGraphicsBitmap = a();
       if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
       {
-        QQToast.a(this, 1, amtj.a(2131707060), 0).a();
+        QQToast.a(this, 1, anvx.a(2131707407), 0).a();
         finish();
       }
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
@@ -613,7 +613,7 @@ public class PersonalityLabelShareActivity
   
   void b()
   {
-    setLeftViewName(2131690424);
+    setLeftViewName(2131690499);
     this.rightViewText.setVisibility(8);
     if (this.mSystemBarComp != null)
     {
@@ -640,7 +640,7 @@ public class PersonalityLabelShareActivity
       if (paramInt1 != 1) {
         break label25;
       }
-      yyi.a(2, 2131716160);
+      znl.a(2, 2131716516);
     }
     for (;;)
     {
@@ -660,10 +660,10 @@ public class PersonalityLabelShareActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561268);
+    setContentView(2131561329);
     this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel = ((PersonalityLabel)getIntent().getParcelableExtra("data"));
     a();
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845566);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845651);
     return true;
   }
   
@@ -675,9 +675,9 @@ public class PersonalityLabelShareActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363972) {
+    if (paramView.getId() == 2131364046) {
       if (!this.jdField_a_of_type_Boolean) {
-        QQToast.a(this, 2131698429, 0).a();
+        QQToast.a(this, 2131698725, 0).a();
       }
     }
     for (;;)
@@ -689,17 +689,17 @@ public class PersonalityLabelShareActivity
       }
       if (this.jdField_c_of_type_AndroidGraphicsBitmap == null)
       {
-        QQToast.a(this, 1, 2131698430, 0).a();
+        QQToast.a(this, 1, 2131698726, 0).a();
       }
       else
       {
-        if (this.jdField_a_of_type_Aylr == null) {
-          this.jdField_a_of_type_Aylr = new aylr(this, this.app, this, this);
+        if (this.jdField_a_of_type_Azqm == null) {
+          this.jdField_a_of_type_Azqm = new azqm(this, this.app, this, this);
         }
-        this.jdField_a_of_type_Aylr.a(this.jdField_c_of_type_AndroidGraphicsBitmap);
-        this.jdField_a_of_type_Aylr.a(null);
+        this.jdField_a_of_type_Azqm.a(this.jdField_c_of_type_AndroidGraphicsBitmap);
+        this.jdField_a_of_type_Azqm.a(null);
         continue;
-        if (paramView.getId() == 2131363950)
+        if (paramView.getId() == 2131364024)
         {
           if (this.jdField_a_of_type_Boolean)
           {
@@ -707,15 +707,15 @@ public class PersonalityLabelShareActivity
               this.jdField_c_of_type_AndroidGraphicsBitmap = b();
             }
             if (this.jdField_c_of_type_AndroidGraphicsBitmap == null) {
-              QQToast.a(this, 1, 2131698430, 0).a();
+              QQToast.a(this, 1, 2131698726, 0).a();
             } else if (!this.jdField_b_of_type_Boolean) {
               c();
             } else {
-              QQToast.a(this, 0, amtj.a(2131707067), 0).a();
+              QQToast.a(this, 0, anvx.a(2131707414), 0).a();
             }
           }
         }
-        else if (paramView.getId() == 2131372211)
+        else if (paramView.getId() == 2131372402)
         {
           this.jdField_b_of_type_Boolean = false;
           if (this.jdField_c_of_type_AndroidGraphicsBitmap != null)

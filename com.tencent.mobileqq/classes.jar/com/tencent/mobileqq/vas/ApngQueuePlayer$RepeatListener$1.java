@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vas;
 
-import bgcn;
-import bgcr;
+import bhle;
+import bhli;
 
 public class ApngQueuePlayer$RepeatListener$1
   implements Runnable
 {
-  public ApngQueuePlayer$RepeatListener$1(bgcr parambgcr) {}
+  public ApngQueuePlayer$RepeatListener$1(bhli parambhli) {}
   
   public void run()
   {
-    bgcn.a(this.a.a);
+    bhle.a(this.a.a);
   }
 }
 

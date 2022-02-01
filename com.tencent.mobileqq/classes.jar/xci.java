@@ -1,117 +1,47 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
 
-class xci
-  extends Drawable
+public class xci
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private String jdField_a_of_type_JavaLangString = "story.icon.ShareGroupIconDrawable";
-  private xcd jdField_a_of_type_Xcd;
-  private xcf jdField_a_of_type_Xcf = new xcj(this);
-  private Drawable b;
+  private xcw jdField_a_of_type_Xcw;
+  private xcy jdField_a_of_type_Xcy;
+  private xda jdField_a_of_type_Xda = new xcj(this);
+  public xdu a;
+  private xpz jdField_a_of_type_Xpz;
+  private xda b = new xck(this);
   
-  xci(@NonNull xcd paramxcd, @NonNull Drawable paramDrawable)
+  public void a(MsgTabPlayInfo paramMsgTabPlayInfo)
   {
-    this.jdField_a_of_type_Xcd = paramxcd;
-    this.jdField_a_of_type_Xcd.a(this.jdField_a_of_type_Xcf);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.b = paramDrawable;
-    paramxcd = this.jdField_a_of_type_Xcd.a();
-    if (paramxcd != null) {
-      a(paramxcd);
-    }
+    this.jdField_a_of_type_Xdu = new xdu(new xdl(paramMsgTabPlayInfo));
+    this.jdField_a_of_type_Xpz = new xpz(this.jdField_a_of_type_Xdu);
+    this.jdField_a_of_type_Xpz.b();
   }
   
-  private void a(@NonNull Drawable paramDrawable)
+  public void a(HomeFeedPlayInfo paramHomeFeedPlayInfo)
   {
-    xcb.a(this.jdField_a_of_type_JavaLangString, "updateCurrentDrawable view:%s drawable: %s", getCallback(), paramDrawable);
-    if (paramDrawable != this.b)
+    this.jdField_a_of_type_Xdu = new xdu(new xcr(paramHomeFeedPlayInfo));
+    this.jdField_a_of_type_Xpz = new xpz(this.jdField_a_of_type_Xdu);
+  }
+  
+  public void onClickTestDown(View paramView)
+  {
+    if (this.jdField_a_of_type_Xdu != null)
     {
-      paramDrawable.setBounds(getBounds());
-      paramDrawable.setVisible(isVisible(), true);
-      paramDrawable.setState(getState());
-      paramDrawable.setLevel(getLevel());
-      paramDrawable.setCallback(getCallback());
-      if (Build.VERSION.SDK_INT >= 19) {
-        paramDrawable.setAlpha(getAlpha());
-      }
-      Drawable localDrawable = this.b;
-      this.b = paramDrawable;
-      if (localDrawable != null) {
-        localDrawable.setCallback(null);
-      }
-      invalidateSelf();
+      this.jdField_a_of_type_Xdu.a(this.b);
+      this.jdField_a_of_type_Xdu.b(this.jdField_a_of_type_Xda);
+      this.jdField_a_of_type_Xdu.a(this.jdField_a_of_type_Xcy, 2, 1, null);
     }
   }
   
-  public void draw(@NonNull Canvas paramCanvas)
+  public void onClickTestUp(View paramView)
   {
-    this.b.draw(paramCanvas);
-    this.jdField_a_of_type_Xcd.b();
-  }
-  
-  public int getOpacity()
-  {
-    return this.b.getOpacity();
-  }
-  
-  public boolean getPadding(@NonNull Rect paramRect)
-  {
-    return this.b.getPadding(paramRect);
-  }
-  
-  @NonNull
-  public Drawable mutate()
-  {
-    this.b.mutate();
-    return super.mutate();
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    super.onBoundsChange(paramRect);
-    this.b.setBounds(paramRect);
-  }
-  
-  protected boolean onLevelChange(int paramInt)
-  {
-    this.b.setLevel(paramInt);
-    return true;
-  }
-  
-  protected boolean onStateChange(int[] paramArrayOfInt)
-  {
-    this.b.setState(paramArrayOfInt);
-    return true;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.b.setAlpha(paramInt);
-  }
-  
-  public void setColorFilter(int paramInt, @NonNull PorterDuff.Mode paramMode)
-  {
-    super.setColorFilter(paramInt, paramMode);
-    this.b.setColorFilter(paramInt, paramMode);
-  }
-  
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
-  {
-    this.b.setColorFilter(paramColorFilter);
-  }
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    this.b.setVisible(paramBoolean1, paramBoolean2);
-    return bool;
+    if (this.jdField_a_of_type_Xdu != null)
+    {
+      this.jdField_a_of_type_Xdu.b(this.b);
+      this.jdField_a_of_type_Xdu.a(this.jdField_a_of_type_Xda);
+      this.jdField_a_of_type_Xdu.a(this.jdField_a_of_type_Xcy, 0, 1, null);
+    }
   }
 }
 

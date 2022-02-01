@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
 import android.app.Activity;
-import auun;
+import awam;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public class ShareMsgImpl$1
   implements Runnable
 {
-  public ShareMsgImpl$1(auun paramauun, HashMap paramHashMap, String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, int paramInt1, String paramString11, int paramInt2, Activity paramActivity) {}
+  public ShareMsgImpl$1(awam paramawam, HashMap paramHashMap, String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, int paramInt1, String paramString11, int paramInt2, Activity paramActivity) {}
   
   public void run()
   {

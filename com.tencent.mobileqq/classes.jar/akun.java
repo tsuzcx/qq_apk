@@ -1,66 +1,20 @@
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akun
+  implements View.OnClickListener
 {
-  private static WeakReference<akup> a;
-  private static WeakReference<akuo> b;
+  public akun(LingHbFragment paramLingHbFragment) {}
   
-  public static void a()
+  public void onClick(View paramView)
   {
-    if (b != null) {}
-    for (akuo localakuo = (akuo)b.get();; localakuo = null)
-    {
-      if (localakuo != null) {
-        localakuo.d();
-      }
-      return;
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    if (b != null) {}
-    for (akuo localakuo = (akuo)b.get();; localakuo = null)
-    {
-      if (localakuo != null) {
-        localakuo.b(paramInt);
-      }
-      return;
-    }
-  }
-  
-  public static void a(akuo paramakuo)
-  {
-    b = new WeakReference(paramakuo);
-  }
-  
-  public static void a(akup paramakup)
-  {
-    a = new WeakReference(paramakup);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (b != null) {}
-    for (akuo localakuo = (akuo)b.get();; localakuo = null)
-    {
-      if (localakuo != null) {
-        localakuo.b(paramString);
-      }
-      return;
-    }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (a != null) {}
-    for (akup localakup = (akup)a.get();; localakup = null)
-    {
-      if (localakup != null) {
-        localakup.a(paramString, paramInt);
-      }
-      return;
-    }
+    this.a.c.clearFocus();
+    LingHbFragment.a(this.a).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

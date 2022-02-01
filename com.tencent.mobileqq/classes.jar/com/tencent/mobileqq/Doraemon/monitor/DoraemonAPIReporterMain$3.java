@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
-import acmh;
+import adcq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.persistence.EntityManager;
 public class DoraemonAPIReporterMain$3
   implements Runnable
 {
-  public DoraemonAPIReporterMain$3(acmh paramacmh, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2) {}
+  public DoraemonAPIReporterMain$3(adcq paramadcq, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2) {}
   
   public void run()
   {

@@ -1,29 +1,27 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
 import com.tencent.qphone.base.util.QLog;
 
-public class avxw
-  implements avzr
+class avxw
+  extends beke
 {
-  public avxw(MultiAIOFragment paramMultiAIOFragment) {}
+  avxw(avxv paramavxv) {}
   
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean, bekh parambekh, int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
-    }
-    switch (paramInt)
+    if ((!paramBoolean) || (parambekh == null)) {}
+    do
     {
-    default: 
-      return;
-    case 0: 
-      MultiAIOFragment.a(this.a, MultiAIOFragment.a(this.a).a());
-      return;
-    case 1: 
-      MultiAIOFragment.c(this.a);
-      return;
-    }
-    MultiAIOFragment.c(this.a);
+      do
+      {
+        return;
+        QLog.i("WatchTogetherManager", 1, "onGetPlayState  groupuin = " + parambekh.e);
+      } while (!(parambekh instanceof WatchTogetherSession));
+      paramString = avxv.a(this.a, (WatchTogetherSession)parambekh);
+    } while (paramString == null);
+    this.a.b(parambekh.e, paramString);
+    paramInt = paramString.a;
+    this.a.a("100", paramInt, null);
   }
 }
 

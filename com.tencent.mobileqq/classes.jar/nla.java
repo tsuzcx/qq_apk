@@ -1,37 +1,30 @@
+import android.graphics.RectF;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.TabView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
 
-public class nla
-  implements View.OnClickListener
+public abstract interface nla
 {
-  public nla(PoiMapActivity paramPoiMapActivity) {}
+  public abstract RectF a();
   
-  public void onClick(View paramView)
-  {
-    if ((paramView instanceof PoiMapActivity.TabView))
-    {
-      this.a.a(((PoiMapActivity.TabView)paramView).a);
-      this.a.i();
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
-      }
-      if (!PoiMapActivity.a(this.a)) {
-        break label127;
-      }
-      this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label127:
-      this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
-    }
-  }
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(ImageView paramImageView, long paramLong1, long paramLong2);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(nfv paramnfv);
+  
+  public abstract void a(boolean paramBoolean, long paramLong1, long paramLong2);
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(nfv paramnfv);
+  
+  public abstract void c();
 }
 
 

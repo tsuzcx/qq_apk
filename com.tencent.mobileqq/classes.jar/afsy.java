@@ -1,34 +1,25 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.IntimateInfo;
 
 class afsy
-  extends amzx
+  implements DialogInterface.OnClickListener
 {
-  afsy(afsw paramafsw) {}
+  afsy(afsv paramafsv) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedpointHandler", 2, "troopChatPie RedpointObserver  onDataChange");
-    }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((azvi)afsw.a(this.a).app.getManager(36)).a(4, String.valueOf(130500));
-    if (this.a.b == null) {
-      this.a.b = ((ImageView)afsw.a(this.a).mAIORootView.findViewById(2131376186));
-    }
-    if (this.a.b == null) {
-      return;
-    }
-    if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1))
+    if ((!TextUtils.isEmpty(this.a.a)) && (afsv.a(this.a) != null))
     {
-      this.a.b.setVisibility(0);
+      if (afsv.a(this.a) == 1) {
+        afsv.b(this.a, this.a.a);
+      }
+    }
+    else {
       return;
     }
-    this.a.b.setVisibility(8);
+    afsv.a(this.a, this.a.a, afsv.a(this.a).maskType);
   }
 }
 

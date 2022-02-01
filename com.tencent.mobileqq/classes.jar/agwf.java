@@ -1,53 +1,17 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.widget.ListView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agwf
-  implements afrc
+class agwf
+  extends ahaa
 {
-  private agwg jdField_a_of_type_Agwg;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public agwf(BaseChatPie paramBaseChatPie)
+  agwf(agvm paramagvm)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    super(paramagvm, null);
   }
   
-  private ListView a()
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof ahia)) {
-      return ((ahia)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).a();
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.listView;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-    case 3: 
-    case 7: 
-    case 19: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_Agwg = new agwg();
-        return;
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Agwg.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, a());
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Agwg.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, a());
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Agwg = null;
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 7, 13, 19 };
+    return new ahdl(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

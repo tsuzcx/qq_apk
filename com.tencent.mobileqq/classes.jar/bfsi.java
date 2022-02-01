@@ -1,22 +1,16 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 
 class bfsi
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bfsi(bfse parambfse, Context paramContext, QQAppInterface paramQQAppInterface, Dialog paramDialog) {}
+  bfsi(bfsh parambfsh, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    bfse.a(this.jdField_a_of_type_Bfse, this.jdField_a_of_type_AndroidContentContext);
-    bfse.a(this.jdField_a_of_type_Bfse, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 2);
-    bfse.b(this.jdField_a_of_type_Bfse, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidAppDialog);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B0C6", "0X800B0C6", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    bfsh.a(this.jdField_a_of_type_Bfsh).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    bfsh.a(this.jdField_a_of_type_Bfsh, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -4,14 +4,14 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
-import beyv;
+import bggz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.data.TroopTipsEntity;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForDeliverGiftTips
   extends MessageForGrayTips
-  implements beyv
+  implements bggz
 {
   public static final String MESSAGERECORD_EXTSTR_TYPE = "troop_send_gift_ext_remind";
   public static final int VERSION = 2;
@@ -121,7 +121,7 @@ public class MessageForDeliverGiftTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForDeliverGiftTips
  * JD-Core Version:    0.7.0.1
  */

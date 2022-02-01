@@ -1,58 +1,189 @@
 import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import com.tencent.qphone.base.util.QLog;
 
-public class ljm
-  extends lja
-  implements SurfaceTexture.OnFrameAvailableListener
+public abstract class ljm
 {
-  public ljm(liy paramliy, liz paramliz)
+  protected int a;
+  protected final ljk a;
+  protected ljl a;
+  protected final ljn a;
+  protected ljz a;
+  
+  public ljm(ljk paramljk, ljl paramljl)
   {
-    super(paramliy, paramliz);
+    this.jdField_a_of_type_Ljz = new ljz();
+    this.jdField_a_of_type_Ljn = new ljn();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Ljk = paramljk;
+    this.jdField_a_of_type_Ljl = paramljl;
   }
   
-  public void a() {}
-  
-  public void a(long paramLong, SurfaceTexture paramSurfaceTexture)
+  public int a(int paramInt, boolean paramBoolean)
   {
-    if (paramSurfaceTexture != null) {
-      paramSurfaceTexture.setOnFrameAvailableListener(this);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("SurfaceTag", 2, "setPreviewCallback, seq[" + paramLong + "], surfaceTexture[" + paramSurfaceTexture + "]");
-    }
-  }
-  
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
-  {
-    lok.a(paramSurfaceTexture);
-    a(this.jdField_a_of_type_Ljb);
-    int i = liy.a;
-    int j = liy.b;
-    this.jdField_a_of_type_Ljn.a(this.jdField_a_of_type_Ljb.a, this.jdField_a_of_type_Liy.f, liy.d, this.jdField_a_of_type_Liy.e, this.jdField_a_of_type_Ljb.c, this.jdField_a_of_type_Ljb.d, this.jdField_a_of_type_Ljb.b, 0, i, j);
-    lok locallok;
-    long l;
-    int k;
-    int m;
-    int n;
-    if (this.jdField_a_of_type_Liz != null)
+    byte b;
+    switch (paramInt)
     {
-      locallok = lok.a();
-      l = this.jdField_a_of_type_Ljn.j;
-      k = liy.c;
-      m = this.jdField_a_of_type_Ljb.a;
-      n = this.jdField_a_of_type_Ljb.b;
-      if (this.jdField_a_of_type_Liy.f != 1) {
-        break label171;
+    default: 
+      b = 0;
+    }
+    while (paramBoolean)
+    {
+      return llc.a(this.jdField_a_of_type_Ljk.a, true, false, b, false) * 90;
+      b = 0;
+      continue;
+      b = 1;
+      continue;
+      b = 2;
+      continue;
+      b = 3;
+    }
+    return llc.b(this.jdField_a_of_type_Ljk.a, true, false, b, false) * 90;
+  }
+  
+  public abstract void a();
+  
+  public abstract void a(long paramLong, SurfaceTexture paramSurfaceTexture);
+  
+  public void a(ljn paramljn)
+  {
+    int i = 0;
+    int m = this.jdField_a_of_type_Ljk.f();
+    int j;
+    int n;
+    label60:
+    int k;
+    if (this.jdField_a_of_type_Ljk.e)
+    {
+      j = 0;
+      n = this.jdField_a_of_type_Ljk.g();
+      if (this.jdField_a_of_type_Ljk.f != 1) {
+        break label219;
+      }
+      i = (360 - (m + j) % 360) % 360;
+      k = i + n;
+      if ((m != 270) && (m != 90)) {
+        break label246;
+      }
+      i = k;
+      if (n % 180 == 0)
+      {
+        i = k;
+        if (this.jdField_a_of_type_Ljk.f == 1) {
+          if (a())
+          {
+            i = k;
+            if (!this.jdField_a_of_type_Ljk.d) {}
+          }
+          else
+          {
+            i = k + 180;
+          }
+        }
+      }
+      label134:
+      if (this.jdField_a_of_type_Ljk.f != 1) {
+        break label370;
+      }
+      if (this.jdField_a_of_type_Ljk.l <= 0) {
+        break label351;
+      }
+      i += 360 - this.jdField_a_of_type_Ljk.l;
+    }
+    for (;;)
+    {
+      i = i % 360 / 90;
+      if (paramljn != null)
+      {
+        paramljn.jdField_a_of_type_Int = i;
+        paramljn.b = n;
+        paramljn.c = m;
+        paramljn.d = j;
+      }
+      return;
+      j = this.jdField_a_of_type_Ljk.c() * 90;
+      break;
+      label219:
+      if (this.jdField_a_of_type_Ljk.f != 2) {
+        break label60;
+      }
+      i = (m - j + 360) % 360;
+      break label60;
+      label246:
+      if (m != 0)
+      {
+        i = k;
+        if (m != 180) {
+          break label134;
+        }
+      }
+      if ((n == 90) || (n == 270))
+      {
+        i = k;
+        if (this.jdField_a_of_type_Ljk.f != 1) {
+          break label134;
+        }
+        i = k;
+        if (this.jdField_a_of_type_Ljk.c) {
+          break label134;
+        }
+        i = k + 180;
+        break label134;
+      }
+      i = k;
+      if (this.jdField_a_of_type_Ljk.f != 1) {
+        break label134;
+      }
+      i = k;
+      if (!this.jdField_a_of_type_Ljk.c) {
+        break label134;
+      }
+      i = k + 180;
+      break label134;
+      label351:
+      i += a(n, this.jdField_a_of_type_Ljk.e);
+      continue;
+      label370:
+      if (this.jdField_a_of_type_Ljk.m > 0) {
+        i += this.jdField_a_of_type_Ljk.m;
+      } else {
+        i += b(n, this.jdField_a_of_type_Ljk.e);
       }
     }
-    label171:
-    for (boolean bool = true;; bool = false)
-    {
-      locallok.a(l, paramSurfaceTexture, i, j, k, m, n, bool, liy.d, System.currentTimeMillis());
-      this.jdField_a_of_type_Liz.a(locallok);
-      return;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      if (!mtj.a(this.jdField_a_of_type_Ljk.a, "ro.qq.orientation").equalsIgnoreCase("ZTE")) {
+        break label43;
+      }
     }
+    label43:
+    for (this.jdField_a_of_type_Int = 1; this.jdField_a_of_type_Int == 1; this.jdField_a_of_type_Int = 0) {
+      return true;
+    }
+    return false;
+  }
+  
+  public int b(int paramInt, boolean paramBoolean)
+  {
+    byte b;
+    switch (paramInt)
+    {
+    default: 
+      b = 0;
+    }
+    while (paramBoolean)
+    {
+      return llc.a(this.jdField_a_of_type_Ljk.a, false, false, b, false) * 90;
+      b = 0;
+      continue;
+      b = 1;
+      continue;
+      b = 2;
+      continue;
+      b = 3;
+    }
+    return llc.b(this.jdField_a_of_type_Ljk.a, false, false, b, false) * 90;
   }
 }
 

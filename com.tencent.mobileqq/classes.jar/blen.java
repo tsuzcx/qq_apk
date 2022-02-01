@@ -1,25 +1,44 @@
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.widget.ProgressPieView;
 
-final class blen
-  implements UploadManager.IUploadStatusListener
+public class blen
+  extends Handler
 {
-  public void onUploadJobAdded(String paramString, long paramLong) {}
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  public blen(ProgressPieView paramProgressPieView) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean)
+    if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b > this.jdField_a_of_type_Int)
     {
-      if (paramStatusInfo.state != 6) {
-        break label26;
-      }
-      blhm.a(paramString, "actFileWyUp", paramStatusInfo, false, paramLong);
+      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.b - 1);
+      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
     }
-    label26:
-    while (paramStatusInfo.state != 5) {
+    do
+    {
       return;
-    }
-    blhm.a(paramString, "actFileWyUp", paramStatusInfo, true, paramLong);
+      if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b < this.jdField_a_of_type_Int)
+      {
+        int i = this.jdField_a_of_type_ComTencentWidgetProgressPieView.b + this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Int;
+        if (i <= this.jdField_a_of_type_Int) {
+          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
+        }
+        for (;;)
+        {
+          sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
+          return;
+          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_Int);
+        }
+      }
+      removeMessages(0);
+    } while (!this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setVisibility(4);
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setShowImage(false);
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

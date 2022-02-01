@@ -1,33 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class xur
-  extends vlc
+public abstract interface xur
 {
-  xur(xuh paramxuh) {}
+  public abstract View a();
   
-  public void a(StoryPushMsg paramStoryPushMsg)
-  {
-    if ((xuh.a(this.a) == null) || (xuh.a(this.a).a == null))
-    {
-      xvv.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
-      return;
-    }
-    String str = xuh.a(this.a).a.a;
-    if (!TextUtils.equals(str, paramStoryPushMsg.d))
-    {
-      xvv.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
-      return;
-    }
-    switch (paramStoryPushMsg.a)
-    {
-    case 16: 
-    case 17: 
-    default: 
-      return;
-    }
-    this.a.a(new xrq[] { new xrl(xqt.a(str)), (xrq)this.a.b.a(), new xrk(new xus(this, str)) });
-  }
+  public abstract ImageView a();
+  
+  public abstract TextView a();
+  
+  public abstract void a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 

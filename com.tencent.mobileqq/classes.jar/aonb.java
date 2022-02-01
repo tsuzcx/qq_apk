@@ -1,18 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.app.Activity;
 
-class aonb
-  implements Animator.AnimatorListener
+public abstract interface aonb
 {
-  aonb(aomz paramaomz) {}
+  public abstract void a();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a(Activity paramActivity);
   
-  public void onAnimationEnd(Animator paramAnimator) {}
+  public abstract void b();
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void c();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.scribble;
 
-import bard;
+import bbxs;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForScribble;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class ScribbleBaseOperator$1
   implements Runnable
 {
-  public ScribbleBaseOperator$1(bard parambard, MessageForScribble paramMessageForScribble) {}
+  public ScribbleBaseOperator$1(bbxs parambbxs, MessageForScribble paramMessageForScribble) {}
   
   public void run()
   {

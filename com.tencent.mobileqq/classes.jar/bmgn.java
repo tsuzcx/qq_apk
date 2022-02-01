@@ -1,40 +1,24 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.support.annotation.Nullable;
 
 public class bmgn
-  extends bmgl
 {
-  public List<bmgu> a = new ArrayList();
-  
-  public float a()
+  @Nullable
+  public static Activity a(Context paramContext)
   {
-    return 0.0F;
-  }
-  
-  public String a()
-  {
-    return "";
-  }
-  
-  public HashMap<String, String> a()
-  {
+    if ((paramContext instanceof Activity)) {
+      return (Activity)paramContext;
+    }
+    if ((paramContext instanceof ContextWrapper))
+    {
+      paramContext = (ContextWrapper)paramContext;
+      if ((paramContext.getBaseContext() instanceof Activity)) {
+        return (Activity)paramContext.getBaseContext();
+      }
+    }
     return null;
-  }
-  
-  public float b()
-  {
-    return 0.0F;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public float c()
-  {
-    return 0.0F;
   }
 }
 

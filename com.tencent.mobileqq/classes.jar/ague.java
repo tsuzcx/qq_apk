@@ -1,22 +1,50 @@
-import android.graphics.Bitmap;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
-public class ague
+class ague
+  extends ClickableSpan
 {
-  public float a;
-  public int a;
-  public Bitmap a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
-  public float d = 0.0F;
-  public float e;
+  ague(agtf paramagtf) {}
   
-  private ague()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
+    Intent localIntent;
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, EditActivity.class);
+      paramView = ((antp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+      if ((paramView == null) || (!paramView.hasRenamed())) {
+        break label194;
+      }
+    }
+    label194:
+    for (paramView = paramView.discussionName;; paramView = "")
+    {
+      localIntent.putExtra("title", 2131691754);
+      localIntent.putExtra("action", 102);
+      localIntent.putExtra("limit", 48);
+      localIntent.putExtra("current", paramView);
+      localIntent.putExtra("canPostNull", false);
+      localIntent.putExtra("multiLine", false);
+      localIntent.putExtra("selfSet_leftViewText", this.a.jdField_a_of_type_AndroidContentContext.getString(2131690499));
+      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 6002);
+      bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800666A", "0X800666A", 0, 0, "", "", "", "");
+      return;
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

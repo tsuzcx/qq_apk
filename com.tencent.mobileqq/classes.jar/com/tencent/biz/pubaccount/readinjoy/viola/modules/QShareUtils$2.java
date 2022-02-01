@@ -7,12 +7,12 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import java.io.IOException;
 import java.util.Map;
-import tjz;
+import txn;
 
 public class QShareUtils$2
   implements Runnable
 {
-  public QShareUtils$2(tjz paramtjz, String paramString, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
+  public QShareUtils$2(txn paramtxn, String paramString, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
   
   public void run()
   {
@@ -41,7 +41,7 @@ public class QShareUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.QShareUtils.2
  * JD-Core Version:    0.7.0.1
  */

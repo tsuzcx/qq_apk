@@ -1,38 +1,34 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-
-public abstract interface tmm
-  extends tmy
+public class tmm
 {
-  public abstract ViewGroup a();
+  public String a;
+  public tmh a;
+  public String b;
   
-  public abstract void a();
+  public tmm(String paramString, tmh paramtmh, boolean paramBoolean)
+  {
+    if (paramString == null) {
+      throw new IllegalArgumentException();
+    }
+    this.jdField_a_of_type_Tmh = paramtmh;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    this.b = paramString;
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(VideoPlayManager paramVideoPlayManager);
-  
-  public abstract void a(tmx paramtmx);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void setControlType(int paramInt);
-  
-  public abstract void setEndWithLastFrame(boolean paramBoolean);
-  
-  public abstract void setEventListener(tmn paramtmn);
-  
-  public abstract void setFullScreenDisable(boolean paramBoolean);
+  public String a()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return this.b;
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tmm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,24 @@
-import com.tencent.av.gaudio.GaInviteDialogActivity;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
 public class lnb
-  implements acwz
 {
-  public lnb(GaInviteDialogActivity paramGaInviteDialogActivity) {}
+  public int a;
+  public long a;
   
-  public void a(int paramInt1, int paramInt2)
+  public lnb(AVNotifyCenter paramAVNotifyCenter, long paramLong, int paramInt)
   {
-    this.a.g = paramInt1;
-    this.a.h = paramInt2;
-    GaInviteDialogActivity.a(this.a);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "OtherTerChatingRoomInfo:mRoomId=" + this.jdField_a_of_type_Long + ", mSessionType=" + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lnb
  * JD-Core Version:    0.7.0.1
  */

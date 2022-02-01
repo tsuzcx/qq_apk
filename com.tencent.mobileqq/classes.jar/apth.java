@@ -1,127 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import java.util.HashMap;
 
-public class apth
+class apth
+  implements apvq
 {
-  public static byte a;
-  private static aptj jdField_a_of_type_Aptj;
-  public static aqmi a;
-  private static HttpCommunicator jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator;
-  private static ArrayList<apti> jdField_a_of_type_JavaUtilArrayList;
-  static aqmd[] jdField_a_of_type_ArrayOfAqmd;
-  public static byte b;
-  static aqmi b;
-  private boolean jdField_a_of_type_Boolean = true;
+  apth(aptb paramaptb, long paramLong) {}
   
-  static
+  public void a(String paramString1, long paramLong, String paramString2, String paramString3)
   {
-    jdField_a_of_type_Byte = 3;
-    jdField_b_of_type_Byte = 1;
-  }
-  
-  public apth(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator = paramQQAppInterface.getHttpCommunicatort();
-    jdField_a_of_type_Aptj = new aptj(paramQQAppInterface.getApp(), paramString);
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_Aqmi = new aqmi((short)24, (byte)0);
-    jdField_b_of_type_Aqmi = new aqmi((short)12, (byte)1);
-    jdField_a_of_type_ArrayOfAqmd = new aqmd[] { jdField_a_of_type_Aqmi, jdField_b_of_type_Aqmi };
-    jdField_a_of_type_Aptj.a();
-  }
-  
-  public static aptj a()
-  {
-    return jdField_a_of_type_Aptj;
-  }
-  
-  public static HttpCommunicator a()
-  {
-    return jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator;
-  }
-  
-  public static String a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if (localAppRuntime != null) {
-      return localAppRuntime.getAccount();
-    }
-    return null;
-  }
-  
-  public static String a(String paramString1, int paramInt, String paramString2)
-  {
-    paramString1 = new StringBuffer(aptj.a(paramString1, paramInt).trim());
-    if (paramString2 != null)
+    if ((paramLong > 0L) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      paramString2 = paramString2.trim();
-      if (paramString2.length() > 0)
-      {
-        if (paramString2.charAt(0) != '&') {
-          paramString1.append('&');
-        }
-        paramString1.append(paramString2);
-      }
+      paramString1 = this.jdField_a_of_type_Aptb.a + "_" + paramLong + "_" + paramString1;
+      aptb.a(this.jdField_a_of_type_Aptb).put(paramString1, paramString2);
+      aptb.b(this.jdField_a_of_type_Aptb).put(paramString1, paramString3);
+      aptb.c(this.jdField_a_of_type_Aptb).put(this.jdField_a_of_type_Aptb.a, String.valueOf(paramLong));
     }
-    return paramString1.toString();
-  }
-  
-  public static ArrayList<apti> a()
-  {
-    return jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Aptj = null;
-    if (jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator != null) {
-      jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.close();
-    }
-    jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator = null;
-  }
-  
-  public int a(int paramInt)
-  {
-    return jdField_a_of_type_ArrayOfAqmd[paramInt].a();
-  }
-  
-  public long a(int paramInt1, int paramInt2)
-  {
-    return ((aqmi)jdField_a_of_type_ArrayOfAqmd[paramInt1]).a(paramInt2);
-  }
-  
-  public Bitmap a(int paramInt1, int paramInt2)
-  {
-    return ((aqmi)jdField_a_of_type_ArrayOfAqmd[paramInt1]).a(paramInt2);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    return ((aqmi)jdField_a_of_type_ArrayOfAqmd[paramInt1]).c(paramInt2);
-  }
-  
-  public short a(int paramInt1, int paramInt2)
-  {
-    return ((aqmi)jdField_a_of_type_ArrayOfAqmd[paramInt1]).a(paramInt2);
-  }
-  
-  public String b(int paramInt1, int paramInt2)
-  {
-    return ((aqmi)jdField_a_of_type_ArrayOfAqmd[paramInt1]).a(paramInt2);
-  }
-  
-  public String c(int paramInt1, int paramInt2)
-  {
-    return ((aqmi)jdField_a_of_type_ArrayOfAqmd[paramInt1]).b(paramInt2);
+    aptb.a(this.jdField_a_of_type_Aptb, paramString2, paramString3, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apth
  * JD-Core Version:    0.7.0.1
  */

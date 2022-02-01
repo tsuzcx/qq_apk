@@ -7,8 +7,8 @@ import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import atgn;
-import bcef;
+import auku;
+import bdla;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.AppConstants;
@@ -22,7 +22,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import nop;
+import nvq;
 
 public class UpgradeTIMManager
   implements INetInfoHandler, Manager
@@ -33,13 +33,13 @@ public class UpgradeTIMManager
   private UpgradeTIMManager.DownloadTask jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMManager$DownloadTask;
   private UpgradeTIMWrapper jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper;
   private File jdField_a_of_type_JavaIoFile;
-  private nop jdField_a_of_type_Nop;
+  private nvq jdField_a_of_type_Nvq;
   private boolean jdField_a_of_type_Boolean;
   
   public UpgradeTIMManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Nop = new nop();
+    this.jdField_a_of_type_Nvq = new nvq();
     this.jdField_a_of_type_JavaIoFile = new File(jdField_a_of_type_JavaLangString, "tim.apk");
   }
   
@@ -94,7 +94,7 @@ public class UpgradeTIMManager
   
   private void c()
   {
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008A48", "0X8008A48", 0, 0, "", "", "", "");
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008A48", "0X8008A48", 0, 0, "", "", "", "");
     if (this.jdField_a_of_type_JavaIoFile.exists())
     {
       PackageInfo localPackageInfo = BaseApplication.getContext().getPackageManager().getPackageArchiveInfo(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 64);
@@ -130,7 +130,7 @@ public class UpgradeTIMManager
     if (a())
     {
       i = j;
-      if (atgn.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()) == 0) {
+      if (auku.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()) == 0) {
         i = 1;
       }
     }

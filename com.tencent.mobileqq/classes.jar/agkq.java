@@ -1,23 +1,65 @@
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+
 public class agkq
+  implements agin
 {
-  public static float a;
-  public static long a;
-  public static String a;
-  public static boolean a;
-  public static float[] a;
-  public static boolean b;
-  public static boolean c;
-  public static volatile boolean d;
-  public static boolean e;
-  public static boolean f;
-  public static boolean g;
-  public static boolean h;
+  private BaseChatPie a;
+  protected QQCustomDialog a;
   
-  static
+  public agkq(BaseChatPie paramBaseChatPie)
   {
-    jdField_a_of_type_Float = 1.0F;
-    jdField_a_of_type_ArrayOfFloat = new float[] { 0.5F, 1.0F, 1.5F, 2.0F, 2.5F, 3.0F };
-    jdField_a_of_type_JavaLangString = "ptt_uin";
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+  }
+  
+  protected void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 14: 
+      a();
+      return;
+    }
+    b();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 14, 6 };
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin)) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mActivity.isResume()));
+      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin;
+      if (bfcs.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, str))
+      {
+        a();
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfcs.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, str, new agkr(this, str));
+        return;
+      }
+      a();
+    } while (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof TroopChatPie));
+    ((TroopChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).j();
   }
 }
 

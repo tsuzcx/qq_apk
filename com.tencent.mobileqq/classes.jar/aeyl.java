@@ -1,16 +1,28 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aeyl
+public class aeyl
+  implements View.OnClickListener
 {
-  public abstract void a(AudioPlayerBase paramAudioPlayerBase);
+  public aeyl(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public abstract void a(AudioPlayerBase paramAudioPlayerBase, int paramInt);
-  
-  public abstract void b(AudioPlayerBase paramAudioPlayerBase, int paramInt);
-  
-  public abstract void c(AudioPlayerBase paramAudioPlayerBase, int paramInt);
-  
-  public abstract void d(AudioPlayerBase paramAudioPlayerBase, int paramInt);
+  public void onClick(View paramView)
+  {
+    this.a.b(1);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
+    if (this.a.a().booleanValue())
+    {
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

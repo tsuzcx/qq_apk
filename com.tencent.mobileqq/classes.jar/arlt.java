@@ -1,26 +1,54 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class arlt
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends arjj<arln>
 {
-  public arlt(ExtendFriendSearchFragment paramExtendFriendSearchFragment, View paramView) {}
-  
-  public void onGlobalLayout()
+  @NonNull
+  public static arln c()
   {
-    Object localObject = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment.e = localObject[1];
-    localObject = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment;
-    ((ExtendFriendSearchFragment)localObject).e += this.jdField_a_of_type_AndroidViewView.getHeight();
+    arln localarln2 = (arln)aqxe.a().a(628);
+    arln localarln1 = localarln2;
+    if (localarln2 == null) {
+      localarln1 = arln.a();
+    }
+    return localarln1;
+  }
+  
+  @NonNull
+  public arln a()
+  {
+    return arln.a();
+  }
+  
+  @NonNull
+  public arln a(@NonNull aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.TROOP_FILE.ConfigProcessor", 1, paramArrayOfaqxa[0].a);
+    }
+    return arln.a(paramArrayOfaqxa[0].a);
+  }
+  
+  @NonNull
+  public arln b()
+  {
+    return arln.a();
+  }
+  
+  public Class<arln> clazz()
+  {
+    return arln.class;
+  }
+  
+  public int type()
+  {
+    return 628;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arlt
  * JD-Core Version:    0.7.0.1
  */

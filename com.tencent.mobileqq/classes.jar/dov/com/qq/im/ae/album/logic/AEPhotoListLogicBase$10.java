@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.album.logic;
 
-import blmi;
+import bmzr;
 
 public class AEPhotoListLogicBase$10
   implements Runnable
 {
-  public AEPhotoListLogicBase$10(blmi paramblmi, String paramString, boolean paramBoolean) {}
+  public AEPhotoListLogicBase$10(bmzr parambmzr, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    blmi.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    bmzr.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
   }
 }
 

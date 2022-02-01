@@ -1,40 +1,22 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import dov.com.qq.im.capture.data.TransitionCategoryItem;
-
-public class bmrd
+final class bmrd
+  implements bmsy
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  TransitionCategoryItem jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem;
-  boolean jdField_a_of_type_Boolean = false;
+  public void a(String paramString) {}
   
-  public void a(boolean paramBoolean)
+  public void a(String paramString, long paramLong, bmsj parambmsj, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem != null))
+    if (paramBoolean)
     {
-      if (!paramBoolean) {
-        break label45;
+      if (parambmsj.a != 5) {
+        break label25;
       }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844335);
-      }
+      bmud.a(paramString, "actFileWyDown", parambmsj, false, paramLong);
     }
-    else
-    {
+    label25:
+    while (parambmsj.a != 4) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844354);
-    return;
-    label45:
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844351);
+    bmud.a(paramString, "actFileWyDown", parambmsj, true, paramLong);
   }
 }
 

@@ -1,18 +1,6 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-
-class aged
-  extends aghj
+public abstract interface aged
 {
-  aged(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
-  
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return asgg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 65, paramChatMessage);
-  }
+  public abstract void a(agec paramagec);
 }
 
 

@@ -1,20 +1,38 @@
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+import com.tencent.mobileqq.together.writetogether.statemachine.CreatingState;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class bepc
-  extends beon<benx>
 {
-  public TextWatcher a;
-  public EditText a;
-  public TextView a;
+  private beqk<CreatingState> jdField_a_of_type_Beqk;
+  private bera jdField_a_of_type_Bera;
   
-  public bepc(View paramView)
+  public bepc(bera parambera)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378538));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131365924));
+    this.jdField_a_of_type_Bera = parambera;
+  }
+  
+  public CreatingState a()
+  {
+    return (CreatingState)this.jdField_a_of_type_Beqk.a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Beqk = new beqk(CreatingState.TEMPLATE_NO, "CreatingStateMachineController");
+    this.jdField_a_of_type_Beqk.a(new bepd(this, CreatingState.TEMPLATE_FIRST_USE, Collections.singletonList(CreatingState.TEMPLATE_NO)));
+    this.jdField_a_of_type_Beqk.a(new bepe(this, CreatingState.TEMPLATE_SHOW_ENTRANCE, Arrays.asList(new CreatingState[] { CreatingState.TEMPLATE_NO, CreatingState.TEMPLATE_FIRST_USE, CreatingState.TEMPLATE_SHOW_LAYER })));
+    this.jdField_a_of_type_Beqk.a(new bepf(this, CreatingState.TEMPLATE_SHOW_LAYER, Arrays.asList(new CreatingState[] { CreatingState.TEMPLATE_NO, CreatingState.TEMPLATE_FIRST_USE, CreatingState.TEMPLATE_SHOW_ENTRANCE })));
+  }
+  
+  public void a(CreatingState paramCreatingState)
+  {
+    this.jdField_a_of_type_Beqk.a(paramCreatingState);
+  }
+  
+  public CreatingState b()
+  {
+    return (CreatingState)this.jdField_a_of_type_Beqk.b();
   }
 }
 

@@ -1,23 +1,18 @@
+import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.widget.LinearLayout;
 
-class bdqj
-  implements bjoe
+public class bdqj
 {
-  bdqj(bdqi parambdqi, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      this.jdField_a_of_type_Bdqi.a.a(this.jdField_a_of_type_Bdqi.a.a);
-    }
-  }
+  public Bundle a;
+  public View a;
+  public LinearLayout a;
+  public boolean a;
+  public View b;
+  public LinearLayout b;
+  public View c;
+  public View d;
+  public View e;
 }
 
 

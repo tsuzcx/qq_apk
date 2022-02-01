@@ -1,52 +1,41 @@
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class airq
+  implements View.OnClickListener
 {
-  public int a;
-  public short a;
-  public short b;
+  public airq(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  public JSONObject a()
+  public void onClick(View paramView)
   {
-    try
+    Object localObject = paramView.getTag();
+    if ((localObject == null) || (!(localObject instanceof Integer))) {}
+    for (;;)
     {
-      localJSONObject = new JSONObject();
-      localException1.printStackTrace();
-    }
-    catch (Exception localException1)
-    {
-      try
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      int i = ((Integer)localObject).intValue();
+      if ((i >= 0) && (this.a.jdField_a_of_type_Airt != null))
       {
-        localJSONObject.put("entryId", this.jdField_a_of_type_Int);
-        localJSONObject.put("flagId", this.jdField_a_of_type_Short);
-        localJSONObject.put("flagValue", this.b);
-        return localJSONObject;
+        localObject = this.a.getActivity();
+        if (localObject != null)
+        {
+          bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
+          MessageRecord localMessageRecord = ((airs)this.a.jdField_a_of_type_Airt.getItem(i)).a;
+          ChatHistoryBubbleListForTroopFragment.a((Activity)localObject, this.a.b, localMessageRecord, 100, 1);
+          if (QLog.isColorLevel()) {
+            QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + localMessageRecord);
+          }
+          bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A597", "0X800A597", 0, 0, "", "", "", "");
+        }
       }
-      catch (Exception localException2)
-      {
-        JSONObject localJSONObject;
-        break label46;
-      }
-      localException1 = localException1;
-      localJSONObject = null;
     }
-    label46:
-    return localJSONObject;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryId");
-      this.jdField_a_of_type_Short = ((short)paramJSONObject.optInt("flagId"));
-      this.b = ((short)paramJSONObject.optInt("flagValue"));
-    }
-  }
-  
-  boolean a()
-  {
-    return (this.jdField_a_of_type_Short != 0) && (this.b == 1);
   }
 }
 

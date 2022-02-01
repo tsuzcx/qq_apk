@@ -1,22 +1,10 @@
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class axsw
+final class axsw
+  implements DialogInterface.OnClickListener
 {
-  axsw(axsv paramaxsv) {}
-  
-  @QQPermissionDenied(1)
-  public void denied()
-  {
-    bfur.a(axsv.a(this.a), 2131697860, 2131697861);
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    axsv.a(this.a).a(null);
-    axsv.a(this.a).show();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

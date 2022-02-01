@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.Advertisement.view;
 
 import android.os.Handler;
-import bcef;
+import bdla;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import nxq;
-import nxs;
+import oeq;
+import oes;
 
 class VideoCoverView$11
   implements Runnable
@@ -20,7 +20,7 @@ class VideoCoverView$11
       {
         i = (int)((float)VideoCoverView.a(this.this$0).getCurrentPostion() * 1.0F * 100.0F / (float)this.this$0.jdField_a_of_type_Long);
         if ((VideoCoverView.a(this.this$0) == 1) && (i < VideoCoverView.a(this.this$0).d) && (VideoCoverView.a(this.this$0) != null) && (VideoCoverView.a(this.this$0).a != null)) {
-          bcef.a(null, "dc00898", "", VideoCoverView.a(this.this$0).a.jdField_a_of_type_JavaLangString, "0X8008F65", "0X8008F65", 0, 0, VideoCoverView.a(this.this$0).a.c, "", this.this$0.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.this$0).a.b);
+          bdla.a(null, "dc00898", "", VideoCoverView.a(this.this$0).a.jdField_a_of_type_JavaLangString, "0X8008F65", "0X8008F65", 0, 0, VideoCoverView.a(this.this$0).a.c, "", this.this$0.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.this$0).a.b);
         }
         if (VideoCoverView.b(this.this$0) != VideoCoverView.a(this.this$0).c) {
           continue;

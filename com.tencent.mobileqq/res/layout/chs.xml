@@ -1,32 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/jt2" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="0.0dip" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:id="@id/nuh" android:layout_width="fill_parent" android:layout_height="211.0dip">
-            <ImageView android:id="@id/fp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-            <View android:id="@id/k0k" android:background="@color/jo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <RelativeLayout android:id="@id/krm" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/n16" android:background="@color/jo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="46.0dip" android:layout_weight="1.0" />
-                <ImageView android:id="@id/mni" android:layout_width="50.0dip" android:layout_height="50.0dip" />
-                <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/mnj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" />
-                <Button android:textSize="14.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/mnh" android:background="@drawable/bry" android:layout_width="96.0dip" android:layout_height="30.0dip" android:layout_marginTop="16.0dip" android:singleLine="true" />
-                <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+<FrameLayout android:id="@id/edw" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.extendfriend.wiget.RoundCorneredFrameLayout android:layout_width="fill_parent" android:layout_height="121.0dip" android:layout_marginLeft="@dimen/an" android:layout_marginTop="12.0dip" android:layout_marginRight="@dimen/an" android:layout_marginBottom="12.0dip" app:qqArMapGuideRadius="16">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0">
+            <LinearLayout android:gravity="left" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginRight="22.0dip">
+                <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/e_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/wb0" android:singleLine="true" android:includeFontPadding="false" />
+                <TextView android:textSize="19.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/e_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="18.0dip" android:text="xxx" android:singleLine="true" android:includeFontPadding="false" />
+                <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/n56" android:background="@drawable/bjo" android:paddingLeft="@dimen/mp" android:paddingTop="2.0dip" android:paddingRight="@dimen/mp" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="xxx" android:singleLine="true" android:includeFontPadding="false" />
             </LinearLayout>
-            <View android:id="@id/nui" android:background="@color/jo" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />
-        </RelativeLayout>
-        <com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView android:id="@id/nw4" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="211.0dip">
-            <RelativeLayout android:orientation="horizontal" android:id="@id/nw1" android:layout_width="fill_parent" android:layout_height="40.0dip">
-                <TextView android:textSize="12.0sp" android:textColor="#ff333333" android:gravity="center" android:id="@id/nw2" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/gj" android:text="@string/n1l" android:drawableLeft="@drawable/cno" android:drawablePadding="5.0dip" android:contentDescription="@string/n1l" />
-                <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:ellipsize="end" android:id="@id/nw5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxEms="8" android:includeFontPadding="false" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-                <TextView android:textSize="15.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/fdl" android:background="@drawable/n6" android:paddingLeft="8.0dip" android:paddingTop="5.0dip" android:paddingRight="8.0dip" android:paddingBottom="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/wl4" android:maxLines="1" android:drawableLeft="@drawable/cnx" android:drawablePadding="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-                <View android:background="#ffe0e0e0" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-                <View android:background="#ffe0e0e0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
-            </RelativeLayout>
-            <FrameLayout android:id="@id/l1y" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/nw1" />
-        </com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView>
-        <include layout="@layout/chu" />
-        <View android:id="@id/f_1" android:background="#77000000" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </RelativeLayout>
-</LinearLayout>
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:layout_gravity="center" android:id="@id/mwz" android:background="@drawable/fr" android:padding="1.0dip" android:layout_width="48.0dip" android:layout_height="@dimen/nc" android:layout_marginRight="-19.0dip" />
+                <ImageView android:layout_gravity="center" android:id="@id/mx0" android:background="@drawable/fr" android:padding="1.0dip" android:layout_width="48.0dip" android:layout_height="@dimen/nc" android:layout_marginLeft="-19.0dip" />
+            </FrameLayout>
+        </LinearLayout>
+        <View android:id="@id/enc" android:background="#66000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mobileqq.extendfriend.wiget.RoundCorneredFrameLayout>
+</FrameLayout>

@@ -1,22 +1,130 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import UserGrowth.stNewIconStyle;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class vqw
-  extends Job<Object, Object, Object>
+public class vqw
+  extends uyw<vpj>
+  implements View.OnClickListener
 {
-  vqw(vqv paramvqv, String paramString, QQStoryCmdHandler.IllegalUinException paramIllegalUinException)
+  private stNewIconStyle jdField_a_of_type_UserGrowthStNewIconStyle;
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
+  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private View jdField_b_of_type_AndroidViewView;
+  private KandianUrlImageView jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
+  private KandianUrlImageView c;
+  
+  public vqw(Context paramContext, vrn paramvrn)
   {
-    super(paramString);
+    super(paramContext);
+    if (paramvrn != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramvrn.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+    }
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    xvv.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
-    this.jdField_a_of_type_Vqv.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
-    return null;
+    if ((paramBoolean1) && (this.jdField_a_of_type_UserGrowthStNewIconStyle != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStNewIconStyle.title)))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.c.setVisibility(0);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStNewIconStyle.title);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStNewIconStyle.iconUrl)) {
+        this.c.setImage(vnd.a(this.jdField_a_of_type_UserGrowthStNewIconStyle.iconUrl));
+      }
+      for (;;)
+      {
+        if (paramBoolean2) {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842735);
+        }
+        return;
+        this.c.setImageResource(2130843257);
+      }
+    }
+    this.c.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
+  }
+  
+  private void f()
+  {
+    a(true, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageResource(2130842735);
+  }
+  
+  protected void a()
+  {
+    vpj localvpj = (vpj)a();
+    if ((localvpj != null) && ((localvpj.a() instanceof stSimpleMetaFeed)))
+    {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)localvpj.a());
+      this.jdField_a_of_type_UserGrowthStNewIconStyle = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.new_icon;
+      if (this.jdField_a_of_type_UserGrowthStNewIconStyle != null) {
+        vkq.a(this.jdField_a_of_type_UserGrowthStNewIconStyle.tag_type, this.jdField_a_of_type_UserGrowthStNewIconStyle.id);
+      }
+    }
+  }
+  
+  protected int b()
+  {
+    return 2131560077;
+  }
+  
+  protected void b()
+  {
+    if ((this.jdField_a_of_type_UserGrowthStNewIconStyle != null) && ((this.jdField_a_of_type_UserGrowthStNewIconStyle.tag_type == 1) || (this.jdField_a_of_type_UserGrowthStNewIconStyle.tag_type == 2)))
+    {
+      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      int i = this.jdField_a_of_type_UserGrowthStNewIconStyle.tag_type;
+      String str = this.jdField_a_of_type_UserGrowthStNewIconStyle.img_url;
+      if (i == 1)
+      {
+        this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
+        f();
+      }
+      while (i != 2) {
+        return;
+      }
+      a(false, false);
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
+      if (!TextUtils.isEmpty(str))
+      {
+        this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImage(vnd.a(str));
+        return;
+      }
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImage(vnd.a("https://isee.weishi.qq.com/qq/doudi_ban.png"));
+      return;
+    }
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  protected void c() {}
+  
+  protected void e()
+  {
+    this.jdField_b_of_type_AndroidViewView = a(2131380773);
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131380755));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131380772));
+    this.c = ((KandianUrlImageView)a(2131380775));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380774));
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131380773) {
+      vnr.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

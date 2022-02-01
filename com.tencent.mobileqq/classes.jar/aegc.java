@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.32.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aegc
-  implements DialogInterface.OnDismissListener
+  extends axod
 {
-  public aegc(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public aegc(Leba paramLeba) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
+    }
+    if (Leba.a(this.a) == null) {
+      return;
+    }
+    this.a.a.post(new Leba.32.1(this));
   }
 }
 

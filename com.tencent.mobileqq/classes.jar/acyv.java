@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-
-class acyv
-  implements awdb
+public class acyv
 {
-  acyv(acyu paramacyu) {}
-  
-  public void a()
-  {
-    this.a.jdField_a_of_type_Awdi.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Awdi.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
-  }
+  long a;
+  long b;
+  long c;
 }
 
 

@@ -1,22 +1,38 @@
-public class aojz
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+class aojz
+  implements EIPCResultCallback
 {
-  public int a()
+  aojz(aojy paramaojy, String paramString) {}
+  
+  private void a(EIPCResult paramEIPCResult)
   {
-    return 0;
+    switch (paramEIPCResult.code)
+    {
+    default: 
+      aojy.a(this.jdField_a_of_type_Aojy).a();
+      return;
+    }
+    aojy.a(this.jdField_a_of_type_Aojy).a(this.jdField_a_of_type_JavaLangString);
   }
   
-  public void a() {}
-  
-  public void a(aoka paramaoka) {}
-  
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
+  private boolean a(EIPCResult paramEIPCResult)
   {
-    return false;
+    return (paramEIPCResult == null) || (paramEIPCResult.data == null) || (aojy.a(this.jdField_a_of_type_Aojy) == null);
   }
   
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return false;
+    if (a(paramEIPCResult))
+    {
+      QLog.e("ThirdPartyLoginUtilImpl", 1, "toWtLoginOnOpenSdk callback params error");
+      return;
+    }
+    QLog.d("ThirdPartyLoginUtilImpl", 1, "code=" + paramEIPCResult.code + " ssoResult=" + paramEIPCResult.data.getInt("key_sso_ret"));
+    a(paramEIPCResult);
   }
 }
 

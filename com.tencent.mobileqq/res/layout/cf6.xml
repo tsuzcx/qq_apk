@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll android:id="@id/l37" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar android:id="@id/jt2" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/bbk" android:layout_alignParentTop="true" />
-    <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/nky" android:background="@drawable/ew5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/n7a" android:layout_below="@id/jt2" />
-    <dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu android:id="@id/n7a" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/b_a" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <dov.com.qq.im.aeeditor.lyric.widget.LyricViewInternalDetail android:id="@id/l36" android:layout_width="fill_parent" android:layout_height="wrap_content" app:aelvLyricHilightColor="@color/fh" app:aelvLyricHilightSize="18.0sp" app:aelvLyricHilightThinColor="@color/fh" app:aelvLyricLineHeight="18.0dip" app:aelvLyricLineMargin="20.0dip" app:aelvLyricScoreHighColor="@color/fi" app:aelvLyricScoreLowColor="@color/fi" app:aelvLyricScoreMiddleColor="@color/fi" app:aelvLyricTextColor="@color/fi" app:aelvLyricTextSize="18.0sp" app:aelvLyricTextThinColor="@color/fi" />
+    </FrameLayout>
+</dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll>

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.apollo.activity;
 
-import amtp;
+import anwd;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class HotChatCenterFragment$7
@@ -10,7 +11,7 @@ class HotChatCenterFragment$7
   
   public void run()
   {
-    ((amtp)HotChatCenterFragment.a(this.this$0).getBusinessHandler(35)).a(this.jdField_a_of_type_JavaLangString, 0, false, 4, this.jdField_a_of_type_Int);
+    ((anwd)HotChatCenterFragment.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER)).a(this.jdField_a_of_type_JavaLangString, 0, false, 4, this.jdField_a_of_type_Int);
   }
 }
 

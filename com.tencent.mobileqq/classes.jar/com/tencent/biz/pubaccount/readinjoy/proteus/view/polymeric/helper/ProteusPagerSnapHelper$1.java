@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper;
 
 import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
-import qkr;
+import qww;
 
 public class ProteusPagerSnapHelper$1
   implements Runnable
 {
-  public ProteusPagerSnapHelper$1(qkr paramqkr) {}
+  public ProteusPagerSnapHelper$1(qww paramqww) {}
   
   public void run()
   {
-    if (!qkr.a(this.this$0)) {
+    if (!qww.a(this.this$0)) {
       return;
     }
     this.this$0.a(this.this$0.b() + 1);
-    qkr.a(this.this$0).postDelayed(this.this$0.a, qkr.a(this.this$0));
+    qww.a(this.this$0).postDelayed(this.this$0.a, qww.a(this.this$0));
   }
 }
 

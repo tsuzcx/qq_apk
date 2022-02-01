@@ -1,14 +1,24 @@
-class ouz
-  extends owd
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment.1;
+
+public class ouz
+  implements DialogInterface.OnCancelListener
 {
-  ouz(ouu paramouu, int paramInt1, ouo paramouo, int paramInt2)
-  {
-    super(paramouu, null);
-  }
+  public ouz(ReadInJoyUploadAvatarFragment.1 param1) {}
   
-  void a(owg paramowg)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramowg.onCommentDelete(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Ouo, this.b);
+    paramDialogInterface = this.a.a.getIntent();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("retCode", 1);
+    localBundle.putString("msg", anvx.a(2131712549));
+    paramDialogInterface.putExtra("Bundle", localBundle);
+    this.a.a.setResult(-1, paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

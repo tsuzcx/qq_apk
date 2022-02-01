@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import amtj;
-import asyy;
-import aszl;
-import atcc;
+import anvx;
+import audf;
+import auds;
+import augj;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,20 +27,20 @@ class QfileLocalFileOtherTabView$1
     {
       localObject1 = this.this$0.d.iterator();
       while (((Iterator)localObject1).hasNext()) {
-        aszl.a(bool, ((atcc)((Iterator)localObject1).next()).a(), "", ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|.swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.apk|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject2, null);
+        auds.a(bool, ((augj)((Iterator)localObject1).next()).a(), "", ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|.swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.apk|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject2, null);
       }
     }
     if (this.this$0.f) {}
-    for (Object localObject1 = asyy.a().a();; localObject1 = null)
+    for (Object localObject1 = audf.a().a();; localObject1 = null)
     {
       if (localObject1 != null) {
-        aszl.a(bool, (String)localObject1, "", ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|.swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.apk|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject2, null);
+        auds.a(bool, (String)localObject1, "", ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|.swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.apk|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject2, null);
       }
-      aszl.a((Map)localObject2);
+      auds.a((Map)localObject2);
       localObject1 = new LinkedHashMap();
-      ((LinkedHashMap)localObject1).put(amtj.a(2131708793), new ArrayList());
-      ((LinkedHashMap)localObject1).put(amtj.a(2131708798), new ArrayList());
-      ((LinkedHashMap)localObject1).put(amtj.a(2131708785), new ArrayList());
+      ((LinkedHashMap)localObject1).put(anvx.a(2131709140), new ArrayList());
+      ((LinkedHashMap)localObject1).put(anvx.a(2131709145), new ArrayList());
+      ((LinkedHashMap)localObject1).put(anvx.a(2131709132), new ArrayList());
       Iterator localIterator = ((HashMap)localObject2).keySet().iterator();
       while (localIterator.hasNext())
       {
@@ -59,7 +59,7 @@ class QfileLocalFileOtherTabView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView.1
  * JD-Core Version:    0.7.0.1
  */

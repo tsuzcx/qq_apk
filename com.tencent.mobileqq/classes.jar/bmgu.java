@@ -1,49 +1,73 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
-import com.microrapid.opencv.ImageStatisticsData;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqreader.view.ReaderTabBarView;
 import java.util.List;
+import mqq.util.WeakReference;
 
 public class bmgu
-  extends bmgl
+  implements View.OnClickListener
 {
-  public float a;
-  public ImageStatisticsData a;
-  public String a;
-  public HashMap<String, String> a;
-  public List<YoutuResultItem> a;
-  public float[] a;
-  public float b;
-  public String b;
-  public float c;
+  final int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  final List<WebViewTabBarData> jdField_a_of_type_JavaUtilList;
+  final WeakReference<ReaderTabBarView> jdField_a_of_type_MqqUtilWeakReference;
   
-  public float a()
+  public bmgu(ReaderTabBarView paramReaderTabBarView, int paramInt, @NonNull List<WebViewTabBarData> paramList)
   {
-    return this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramReaderTabBarView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public String a()
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public HashMap<String, String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public float b()
-  {
-    return this.c;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public float c()
-  {
-    return this.jdField_b_of_type_Float;
+    ReaderTabBarView localReaderTabBarView = (ReaderTabBarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localReaderTabBarView == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_Int != ReaderTabBarView.a(localReaderTabBarView))
+      {
+        long l = System.currentTimeMillis();
+        if (l - this.jdField_a_of_type_Long >= 500L)
+        {
+          this.jdField_a_of_type_Long = l;
+          localReaderTabBarView.setSelectedTab(this.jdField_a_of_type_Int);
+          int i = ReaderTabBarView.a(localReaderTabBarView)[this.jdField_a_of_type_Int];
+          localReaderTabBarView.setCurrentItemId(i);
+          localReaderTabBarView.a();
+          ReaderTabBarView.a(localReaderTabBarView, i);
+          String str1 = localReaderTabBarView.b();
+          String str2 = localReaderTabBarView.a();
+          switch (i)
+          {
+          default: 
+            break;
+          case 0: 
+            bmgp.a(str1, str2, "297", "0", "3", "", "");
+            if (localReaderTabBarView.a(i)) {
+              bmgp.a(str1, str2, "69", "336", "0", "3", "", "", "");
+            }
+            break;
+          case 1: 
+            bmgp.a(str1, str2, "298", "0", "3", "", "");
+            break;
+          case 3: 
+            if (bmgk.f(localReaderTabBarView.getContext())) {
+              bmgk.f(localReaderTabBarView.getContext(), false);
+            }
+            bmgp.a(str1, str2, "300", "0", "3", "", "");
+            break;
+          case 2: 
+            bmgp.a(str1, str2, "1847", "0", "3", "", "");
+          }
+        }
+      }
+    }
   }
 }
 

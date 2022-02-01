@@ -1,32 +1,20 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
-class bgwx
-  implements zop
+public class bgwx
+  implements DialogInterface.OnClickListener
 {
-  bgwx(bgww parambgww) {}
+  public bgwx(UpgradeActivity paramUpgradeActivity) {}
   
-  public void callback(Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool;
-    if (paramBundle.getInt("type") == 73)
-    {
-      bool = paramBundle.getBoolean("isSuccess");
-      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.isDestroyed)) {}
+    bdla.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
+    if (UpgradeActivity.a(this.a)) {
+      bdla.b(this.a.app, "CliOper", "", "", "0X800714C", "0X800714C", 0, 0, "", "", "", "");
     }
-    else
-    {
-      return;
-    }
-    if (Boolean.valueOf(bool).booleanValue())
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131719065, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131719062, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
+    UpgradeActivity.a(this.a, false);
+    bdla.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, bgvw.b(), String.valueOf(2), bgvx.a(), "");
   }
 }
 

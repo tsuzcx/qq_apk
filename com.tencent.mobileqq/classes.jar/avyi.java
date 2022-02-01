@@ -1,69 +1,86 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.javahook.BadTokenHooker.2;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import mqq.os.MqqHandler;
 
+@TargetApi(14)
 public class avyi
-  extends aptq<avyh>
 {
-  @NonNull
-  public avyh a(int paramInt)
-  {
-    return new avyh();
-  }
+  private static avyk a = new avyk(null);
   
-  @Nullable
-  public avyh a(aptx[] paramArrayOfaptx)
+  public static void a()
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOEntranceConfigProcessor", 2, "onParsed : " + paramArrayOfaptx[0].a);
+      localClass1 = Class.forName("android.view.ViewRootImpl");
+      JavaHookBridge.findAndHookMethod(localClass1, "setView", new Object[] { View.class, WindowManager.LayoutParams.class, View.class, new avyj(localClass1) });
+    }
+    catch (NoSuchMethodException localNoSuchMethodException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          localClass1 = Class.forName("android.view.WindowManagerImpl");
+          if (Build.VERSION.SDK_INT > 16) {
+            break;
+          }
+        }
+        catch (ClassNotFoundException localClassNotFoundException2)
+        {
+          Class localClass1;
+          Class localClass2;
+          bhbx.a(localClassNotFoundException2);
+          return;
+        }
+        try
+        {
+          localClass2 = Class.forName("android.view.CompatibilityInfoHolder");
+          if (localClass2 != null) {
+            JavaHookBridge.findAndHookMethod(localClass1, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, localClass2, Boolean.class, a });
+          }
+          return;
+        }
+        catch (NoSuchMethodException localNoSuchMethodException2)
+        {
+          bhbx.a(localNoSuchMethodException2);
+          return;
+        }
+        catch (ClassNotFoundException localClassNotFoundException3)
+        {
+          bhbx.a(localClassNotFoundException3);
+          return;
+        }
+        localNoSuchMethodException1 = localNoSuchMethodException1;
+        bhbx.a(localNoSuchMethodException1);
       }
-      return avyh.a(paramArrayOfaptx[0].a);
     }
-    return new avyh();
-  }
-  
-  public void a(avyh paramavyh)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramavyh);
+    catch (ClassNotFoundException localClassNotFoundException1)
+    {
+      for (;;)
+      {
+        bhbx.a(localClassNotFoundException1);
+      }
     }
-    ((avyj)BaseApplicationImpl.getApplication().getRuntime().getManager(325)).a(paramavyh);
-  }
-  
-  public Class<avyh> clazz()
-  {
-    return avyh.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramInt);
+    try
+    {
+      JavaHookBridge.findAndHookMethod(localClassNotFoundException3, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, a });
+      return;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException3)
+    {
+      bhbx.a(localNoSuchMethodException3);
     }
   }
   
-  public int type()
+  private static void b(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    return 478;
+    ThreadManager.getSubThreadHandler().postDelayed(new BadTokenHooker.2(paramString1, paramString2, paramInt1), paramInt2);
   }
 }
 

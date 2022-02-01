@@ -1,19 +1,8 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-final class bnao
-  implements EIPCResultCallback
+public abstract interface bnao
 {
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (paramEIPCResult != null)
-    {
-      boolean bool = paramEIPCResult.data.getBoolean("key_result");
-      QLog.d("PeakIpcController", 2, "sendPic result:" + bool);
-    }
-  }
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

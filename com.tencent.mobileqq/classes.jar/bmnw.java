@@ -1,329 +1,250 @@
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QUA;
+import cooperation.vip.manager.MonitorManager;
+import cooperation.vip.pb.mobile_monitor_report.ExceptionReport;
+import cooperation.vip.pb.mobile_monitor_report.PkgExceptionReq;
+import cooperation.vip.pb.mobile_monitor_report.PkgRsp;
+import cooperation.vip.pb.mobile_monitor_report.PkgTraceReq;
+import cooperation.vip.pb.mobile_monitor_report.TraceReport;
+import cooperation.vip.pb.mobile_monitor_report.UserCommReport;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import tencent.im.new_year_2014.Unisso.UniSsoServerReq;
+import tencent.im.new_year_2014.Unisso.UniSsoServerReqComm;
+import tencent.im.new_year_2014.Unisso.UniSsoServerRsp;
 
 public class bmnw
+  extends MSFServlet
 {
-  private static final int jdField_a_of_type_Int = ViewUtils.dip2px(2.0F);
-  private static final int jdField_b_of_type_Int = ViewUtils.dip2px(4.0F);
-  private float jdField_a_of_type_Float;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new bmnx(this);
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private bmny jdField_a_of_type_Bmny;
-  private bmnz jdField_a_of_type_Bmnz;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private Paint jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
-  private int j;
-  private int k;
-  private int l;
-  private int m;
-  private int n;
-  private int o;
-  private int p;
-  private int q;
-  private int r;
-  private int s;
-  private int t;
-  
-  public bmnw(bmnz parambmnz, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5)
+  private static int a()
   {
-    this.jdField_a_of_type_Bmnz = parambmnz;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_d_of_type_Int = paramInt2;
-    if (this.jdField_d_of_type_Int == 0) {
-      this.jdField_d_of_type_Int = 60000;
-    }
-    this.jdField_c_of_type_Int = paramInt1;
-    this.f = paramInt3;
-    this.g = ViewUtils.dip2px(7.0F);
-    this.h = ViewUtils.dip2px(3.0F);
-    this.i = ViewUtils.dip2px(2.0F);
-    this.j = (this.i / 2);
-    this.l = paramInt4;
-    this.e = paramInt5;
-    this.q = (this.l - paramInt3 * 2);
-    float f1;
-    if (this.jdField_c_of_type_Int < this.jdField_d_of_type_Int)
+    switch (NetworkUtil.getNetworkType(BaseApplicationImpl.getContext()))
     {
-      this.k = this.l;
-      this.n = this.f;
-      this.o = (this.k - this.f);
-      f1 = 1000.0F / this.jdField_d_of_type_Int * this.q;
-      this.jdField_c_of_type_Float = 0.0F;
-      if (this.jdField_c_of_type_Int >= this.jdField_d_of_type_Int) {
-        break label541;
-      }
-      this.jdField_b_of_type_Float = (this.jdField_c_of_type_Int * 1.0F / this.jdField_d_of_type_Int * this.q - f1);
-      label250:
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.r = this.f;
-        this.s = ViewUtils.dip2px(9.0F);
-      }
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_Bmnz.a(), this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setDither(true);
-      if (this.jdField_c_of_type_Int >= this.jdField_d_of_type_Int) {
-        break label561;
-      }
+    default: 
+      return 1;
+    case 1: 
+      return 3;
+    case 4: 
+      return 4;
+    case 3: 
+      return 5;
     }
-    label541:
-    label561:
-    for (this.m = ((int)((this.jdField_c_of_type_Int * 1.0F / this.jdField_d_of_type_Int * this.q + paramInt3 * 2) / jdField_b_of_type_Int));; this.m = ((int)(this.k * 1.0F / jdField_b_of_type_Int)))
+    return 6;
+  }
+  
+  private static mobile_monitor_report.UserCommReport a()
+  {
+    mobile_monitor_report.UserCommReport localUserCommReport = new mobile_monitor_report.UserCommReport();
+    localUserCommReport.qua.set(String.valueOf(QUA.getQUA3()));
+    localUserCommReport.imei.set(String.valueOf(bjls.c()));
+    String str = LbsManagerService.getCityCode();
+    localUserCommReport.city_code.set(str);
+    localUserCommReport.mobile_type.set(Build.MODEL);
+    localUserCommReport.net_type.set(a());
+    localUserCommReport.from_id.set(2);
+    return localUserCommReport;
+  }
+  
+  private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    byte[] arrayOfByte = null;
+    if (paramFromServiceMsg.isSuccess())
     {
-      if (this.m > 10000) {
-        bmbx.c("AEEditorMusicWaveScrollProcessor", "AEEditorMusicWaveScrollProcessor() called with: parent = [" + parambmnz + "], audioPath = [" + paramString2 + "], audioDuration = [" + paramInt1 + "], perScreenDuration = [" + paramInt2 + "], padding = [" + paramInt3 + "], isFromLibrary = [" + paramBoolean + "], width = [" + paramInt4 + "], height = [" + paramInt5 + "] lineCount=" + this.m);
-      }
-      bmnv.a(paramString1, paramString2, this.m);
-      return;
-      this.k = ((int)(this.jdField_c_of_type_Int * 1.0F / this.jdField_d_of_type_Int * this.q) + paramInt3 * 2);
-      break;
-      this.jdField_b_of_type_Float = (this.k - paramInt3 * 2 - f1);
-      break label250;
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapUtils.decodeSampledBitmapFromResource(BaseApplicationImpl.getApplication().getResources(), 2130837911, 16, 118);
-    }
-  }
-  
-  public int a()
-  {
-    return this.r;
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((paramInt >= this.f) && (paramInt <= this.l - this.f)) {
-      this.r = paramInt;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.p = ((int)(1.0F * paramInt1 / paramInt2 * (this.k - this.f * 2)) + this.f);
-    if (this.jdField_a_of_type_Bmnz != null) {
-      this.jdField_a_of_type_Bmnz.a();
-    }
-  }
-  
-  public void a(Canvas paramCanvas, boolean paramBoolean)
-  {
-    paramCanvas.save();
-    int i1 = BaseApplicationImpl.getContext().getResources().getColor(2131165254);
-    Object localObject = BaseApplicationImpl.getContext().getResources().getColorStateList(2131165254);
-    if (localObject != null) {
-      i1 = ((ColorStateList)localObject).getDefaultColor();
-    }
-    int i2 = BaseApplicationImpl.getContext().getResources().getColor(2131165256);
-    localObject = BaseApplicationImpl.getContext().getResources().getColorStateList(2131165256);
-    if (localObject != null) {
-      i2 = ((ColorStateList)localObject).getDefaultColor();
-    }
-    int i3 = BaseApplicationImpl.getContext().getResources().getColor(2131165255);
-    localObject = BaseApplicationImpl.getContext().getResources().getColorStateList(2131165255);
-    if (localObject != null) {
-      i3 = ((ColorStateList)localObject).getDefaultColor();
-    }
-    for (;;)
-    {
-      if (!paramBoolean) {
-        i2 = i1;
-      }
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsPaint != null) && (paramCanvas != null))
+    mobile_monitor_report.PkgRsp localPkgRsp = new mobile_monitor_report.PkgRsp();
+    int i = paramFromServiceMsg.getResultCode();
+    if (i == 1000) {
+      try
       {
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(BaseApplicationImpl.getContext().getResources().getColor(2131165252));
-        paramCanvas.drawRoundRect(new RectF(this.f - this.j, this.g, this.l - this.f + this.j, this.e - this.g), this.h, this.h, this.jdField_b_of_type_AndroidGraphicsPaint);
-      }
-      float f1 = this.l;
-      float f2 = this.f;
-      float f3 = this.f;
-      int i6 = this.l / jdField_b_of_type_Int;
-      int i5 = (int)Math.ceil(1.0D * this.n / jdField_b_of_type_Int);
-      int i4 = Math.max(Math.min((int)this.jdField_a_of_type_Float / jdField_b_of_type_Int, this.m), i5);
-      i6 = Math.min(i6 + i4, this.m);
-      localObject = new RectF(0.0F, 0.0F, jdField_a_of_type_Int, this.e);
-      if (i4 < i6)
-      {
-        int i7;
-        float f4;
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          i7 = (int)(bmnv.a(i4 - i5) * (this.e - this.g * 4));
-          ((RectF)localObject).top = ((this.e - i7) / 2);
-          f4 = ((RectF)localObject).top;
-          ((RectF)localObject).bottom = (i7 + f4);
-          label415:
-          if ((this.jdField_a_of_type_Float + ((RectF)localObject).right >= this.n) && (this.jdField_a_of_type_Float + ((RectF)localObject).left <= this.o))
-          {
-            if ((((RectF)localObject).left < f2 + 0.0F) || (((RectF)localObject).left > f1 - f3)) {
-              break label678;
-            }
-            if (!this.jdField_a_of_type_Boolean) {
-              break label640;
-            }
-            if (((RectF)localObject).left >= this.p - this.jdField_a_of_type_Float) {
-              break label628;
-            }
-            this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i3);
-          }
+        paramFromServiceMsg = new Unisso.UniSsoServerRsp();
+        paramFromServiceMsg.mergeFrom(arrayOfByte);
+        long l = paramFromServiceMsg.ret.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("MonitorServlet", 1, new Object[] { " unissoResult=", Long.valueOf(l) });
         }
-        for (;;)
+        localPkgRsp.mergeFrom(paramFromServiceMsg.rspdata.get().toByteArray());
+        i = localPkgRsp.ret.get();
+        if (i == 0)
         {
-          paramCanvas.drawRoundRect((RectF)localObject, jdField_a_of_type_Int / 2, jdField_a_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-          ((RectF)localObject).left += jdField_b_of_type_Int;
-          ((RectF)localObject).right += jdField_b_of_type_Int;
-          i4 += 1;
+          MonitorManager.a().a(localPkgRsp.mult_cnt.get(), localPkgRsp.mult_delay.get());
+          if (QLog.isColorLevel()) {
+            QLog.d("MonitorServlet", 2, "onReceive ret " + i);
+          }
+          notifyObserver(paramIntent, 1000, true, new Bundle(), bmnv.class);
+          return;
+        }
+        QLog.d("MonitorServlet", 2, "onReceive ret " + i);
+        notifyObserver(paramIntent, 1000, false, new Bundle(), bmnv.class);
+        return;
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        QLog.e("MonitorServlet", 2, "onReceive exception " + paramFromServiceMsg);
+        notifyObserver(paramIntent, 1000, false, new Bundle(), bmnv.class);
+        return;
+      }
+    }
+    QLog.e("MonitorServlet", 2, "onReceive result fail with result " + i);
+    notifyObserver(paramIntent, 1000, false, new Bundle(), bmnv.class);
+  }
+  
+  public static void a(List<mobile_monitor_report.ExceptionReport> paramList)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    mobile_monitor_report.PkgExceptionReq localPkgExceptionReq = new mobile_monitor_report.PkgExceptionReq();
+    localPkgExceptionReq.exception_report.set(paramList);
+    paramList = a();
+    localPkgExceptionReq.user_comm_report.set(paramList);
+    paramList = new NewIntent(localAppRuntime.getApplication(), bmnw.class);
+    Unisso.UniSsoServerReq localUniSsoServerReq = new Unisso.UniSsoServerReq();
+    Unisso.UniSsoServerReqComm localUniSsoServerReqComm = new Unisso.UniSsoServerReqComm();
+    localUniSsoServerReqComm.platform.set(109L);
+    localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
+    localUniSsoServerReqComm.mqqver.set("8.4.10");
+    localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
+    localUniSsoServerReq.reqdata.set(ByteStringMicro.copyFrom(localPkgExceptionReq.toByteArray()));
+    paramList.putExtra("data", bhjl.a(localUniSsoServerReq.toByteArray()));
+    paramList.putExtra("cmd", "MobileReport.ExceptionReport");
+    localAppRuntime.startServlet(paramList);
+  }
+  
+  private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    byte[] arrayOfByte = null;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    mobile_monitor_report.PkgRsp localPkgRsp = new mobile_monitor_report.PkgRsp();
+    int i = paramFromServiceMsg.getResultCode();
+    if (i == 1000) {
+      try
+      {
+        paramFromServiceMsg = new Unisso.UniSsoServerRsp();
+        paramFromServiceMsg.mergeFrom(arrayOfByte);
+        long l = paramFromServiceMsg.ret.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("MonitorServlet", 1, new Object[] { " unissoResult=", Long.valueOf(l) });
+        }
+        localPkgRsp.mergeFrom(paramFromServiceMsg.rspdata.get().toByteArray());
+        i = localPkgRsp.ret.get();
+        if (i == 0)
+        {
+          MonitorManager.a().a(localPkgRsp.mult_cnt.get(), localPkgRsp.mult_delay.get());
+          if (QLog.isColorLevel()) {
+            QLog.d("MonitorServlet", 2, "onReceive ret " + i);
+          }
+          notifyObserver(paramIntent, 1000, true, new Bundle(), bmnv.class);
+          return;
+        }
+        QLog.d("MonitorServlet", 2, "onReceive ret " + i);
+        notifyObserver(paramIntent, 1000, false, new Bundle(), bmnv.class);
+        return;
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        QLog.e("MonitorServlet", 2, "onReceive exception " + paramFromServiceMsg);
+        notifyObserver(paramIntent, 1000, false, new Bundle(), bmnv.class);
+        return;
+      }
+    }
+    QLog.e("MonitorServlet", 2, "onReceive result fail with result " + i);
+    notifyObserver(paramIntent, 1000, false, new Bundle(), bmnv.class);
+  }
+  
+  public static void b(List<mobile_monitor_report.TraceReport> paramList)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    mobile_monitor_report.PkgTraceReq localPkgTraceReq = new mobile_monitor_report.PkgTraceReq();
+    localPkgTraceReq.trace_report.set(paramList);
+    paramList = a();
+    localPkgTraceReq.user_comm_report.set(paramList);
+    paramList = new NewIntent(localAppRuntime.getApplication(), bmnw.class);
+    Unisso.UniSsoServerReq localUniSsoServerReq = new Unisso.UniSsoServerReq();
+    Unisso.UniSsoServerReqComm localUniSsoServerReqComm = new Unisso.UniSsoServerReqComm();
+    localUniSsoServerReqComm.platform.set(109L);
+    localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
+    localUniSsoServerReqComm.mqqver.set("8.4.10");
+    localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
+    localUniSsoServerReq.reqdata.set(ByteStringMicro.copyFrom(localPkgTraceReq.toByteArray()));
+    paramList.putExtra("data", bhjl.a(localUniSsoServerReq.toByteArray()));
+    paramList.putExtra("cmd", "MobileReport.TraceReport");
+    localAppRuntime.startServlet(paramList);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MonitorServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    }
+    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
+    String str2;
+    label157:
+    do
+    {
+      do
+      {
+        return;
+        str2 = paramFromServiceMsg.getServiceCmd();
+      } while (str2 == null);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        boolean bool = paramFromServiceMsg.isSuccess();
+        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
+        if (!bool) {
+          break label157;
+        }
+      }
+      for (String str1 = "";; str1 = "not")
+      {
+        QLog.d("MonitorServlet", 2, str1 + " success");
+        if (!str2.equals("MobileReport.ExceptionReport")) {
           break;
-          i7 = (int)(bmnv.a(i4 - i5) * this.e);
-          ((RectF)localObject).top = ((this.e - i7) / 2);
-          f4 = ((RectF)localObject).top;
-          ((RectF)localObject).bottom = (i7 + f4);
-          break label415;
-          label628:
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i2);
-          continue;
-          label640:
-          if (((RectF)localObject).left < this.t)
-          {
-            this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i3);
-          }
-          else
-          {
-            this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i2);
-            continue;
-            label678:
-            this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i1);
-          }
         }
+        a(paramIntent, paramFromServiceMsg);
+        return;
       }
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsPaint != null) && (paramCanvas != null))
-      {
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(BaseApplicationImpl.getContext().getResources().getColor(2131165253));
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.i);
-        paramCanvas.drawRoundRect(new RectF(this.f - this.j, this.g, this.l - this.f + this.j, this.e - this.g), this.h, this.h, this.jdField_b_of_type_AndroidGraphicsPaint);
-        a();
-        localObject = new Rect(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-        RectF localRectF = new RectF(this.r - this.s / 2, 0.0F, this.r + this.s / 2, this.e);
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, (Rect)localObject, localRectF, this.jdField_c_of_type_AndroidGraphicsPaint);
-      }
-      paramCanvas.restore();
-      return;
+    } while (!str2.equals("MobileReport.TraceReport"));
+    b(paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    String str = paramIntent.getStringExtra("cmd");
+    long l = paramIntent.getLongExtra("timeout", 10000L);
+    paramPacket.setSSOCommand(str);
+    paramPacket.setTimeout(l);
+    paramPacket.putSendData(arrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("MonitorServlet", 2, "onSend exit cmd=" + str);
     }
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1) {
-      if (this.jdField_a_of_type_Bmny != null) {
-        this.jdField_a_of_type_Bmny.b();
-      }
-    }
-    while (this.jdField_a_of_type_AndroidViewGestureDetector == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-  }
-  
-  public void a(bmny parambmny)
-  {
-    this.jdField_a_of_type_Bmny = parambmny;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(float paramFloat1, float paramFloat2)
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.s;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.t = paramInt;
-  }
-  
-  public int c()
-  {
-    return this.f;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_Float = (1.0F * paramInt / this.jdField_d_of_type_Int * this.q);
-    if (this.jdField_a_of_type_Bmnz != null) {
-      this.jdField_a_of_type_Bmnz.a();
-    }
-  }
-  
-  public int d()
-  {
-    return this.l;
-  }
-  
-  public int e()
-  {
-    return this.e;
-  }
-  
-  public int f()
-  {
-    int i2 = (int)(1.0F * this.jdField_a_of_type_Float / this.q * this.jdField_d_of_type_Int);
-    int i1 = i2;
-    if (i2 > this.jdField_c_of_type_Int) {
-      i1 = this.jdField_c_of_type_Int;
-    }
-    return i1;
-  }
-  
-  public int g()
-  {
-    int i1 = (int)(1.0F * this.jdField_a_of_type_Float / this.q * this.jdField_d_of_type_Int) + this.jdField_d_of_type_Int;
-    if (i1 <= this.jdField_c_of_type_Int) {
-      return i1;
-    }
-    return this.jdField_c_of_type_Int;
   }
 }
 

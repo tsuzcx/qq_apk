@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae.play;
 
 import android.text.TextUtils;
-import blvr;
-import bmbx;
-import bnfm;
+import bnlb;
+import bnrh;
+import bove;
 import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
 import java.io.File;
 import java.util.Timer;
@@ -24,7 +24,7 @@ class AEVideoShelfPreviewFragment$5
         if (localFile.exists())
         {
           localFile.delete();
-          bmbx.b(AEVideoShelfPreviewFragment.access$200(), "onCompletion---delete temp silent file because user cancel generation: " + (String)localObject);
+          bnrh.b(AEVideoShelfPreviewFragment.access$200(), "onCompletion---delete temp silent file because user cancel generation: " + (String)localObject);
         }
       }
       if (!TextUtils.isEmpty(AEVideoShelfPreviewFragment.access$500(this.this$0)))
@@ -33,7 +33,7 @@ class AEVideoShelfPreviewFragment$5
         if (((File)localObject).exists())
         {
           ((File)localObject).delete();
-          bmbx.b(AEVideoShelfPreviewFragment.access$200(), "onCompletion---delete final file because user cancel generation: " + AEVideoShelfPreviewFragment.access$500(this.this$0));
+          bnrh.b(AEVideoShelfPreviewFragment.access$200(), "onCompletion---delete final file because user cancel generation: " + AEVideoShelfPreviewFragment.access$500(this.this$0));
         }
       }
       AEVideoShelfPreviewFragment.access$602(this.this$0, false);
@@ -53,7 +53,7 @@ class AEVideoShelfPreviewFragment$5
         AEVideoShelfPreviewFragment.access$1102(this.this$0, false);
         AEVideoShelfPreviewFragment.keepScreenOn(this.this$0.getActivity(), false);
       }
-      bnfm.a(this.this$0.getActivity(), AEVideoShelfPreviewFragment.access$500(this.this$0), this.this$0.getThumbPath(), blvr.b(this.this$0.getActivity()), "caller_aecamera");
+      bove.a(this.this$0.getActivity(), AEVideoShelfPreviewFragment.access$500(this.this$0), this.this$0.getThumbPath(), bnlb.b(this.this$0.getActivity()), "caller_aecamera");
       return;
       AEVideoShelfPreviewFragment.access$900(this.this$0);
     }

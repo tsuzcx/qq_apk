@@ -1,69 +1,138 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import android.content.Intent;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.pluginsdk.IStatisticsUploader;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import java.io.File;
-import mqq.app.MobileQQ;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import cooperation.qzone.QZoneHelper;
+import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
+import java.util.Arrays;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
+@JsPlugin(secondary=true)
 public class bkld
-  extends AsyncTask<String, String, String>
+  extends BaseJsPlugin
 {
-  private IStatisticsUploader jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  private String d;
-  private String e;
-  private String f;
-  
-  public bkld(Intent paramIntent)
+  private JSONObject a(RequestEvent paramRequestEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("pluginsdk_selfuin");
-    this.b = paramIntent.getStringExtra("pluginsdk_pluginName");
-    this.c = paramIntent.getStringExtra("pluginsdk_pluginLocation");
-    this.d = paramIntent.getStringExtra("pluginsdk_pluginpath");
-    this.e = paramIntent.getStringExtra("pluginsdk_launchActivity");
-    this.f = paramIntent.getStringExtra("pluginsdk_extraInfo");
-    paramIntent = paramIntent.getStringExtra("clsUploader");
-    if (paramIntent != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader = ((IStatisticsUploader)Class.forName(paramIntent).newInstance());
+      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("QQPublicAccountNativePlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
+    }
+    return null;
+  }
+  
+  @JsEvent({"qsubscribe_getdeviceinfo"})
+  public void qsubscribeGetdeviceinfo(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      a(paramRequestEvent);
+      Object localObject = new GdtDeviceInfoHelper.Params();
+      ((GdtDeviceInfoHelper.Params)localObject).businessIdForAidTicketAndTaidTicket = "1b0ad2";
+      localObject = GdtDeviceInfoHelper.create(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);
+      if ((localObject != null) && (((GdtDeviceInfoHelper.Result)localObject).deviceInfo != null))
+      {
+        vac_adv_get.VacFeedsAdvMetaReq localVacFeedsAdvMetaReq = new vac_adv_get.VacFeedsAdvMetaReq();
+        localVacFeedsAdvMetaReq.device_info.set(((GdtDeviceInfoHelper.Result)localObject).deviceInfo);
+        localObject = Arrays.toString(localVacFeedsAdvMetaReq.toByteArray());
+        new JSONObject().put("deviceinfo", localObject);
+        paramRequestEvent.ok();
+      }
       return;
     }
-    catch (Exception paramIntent)
+    catch (Throwable localThrowable)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader = null;
+      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
+      paramRequestEvent.fail();
     }
   }
   
-  protected String a(String... paramVarArgs)
+  @JsEvent({"qsubscribe_opendetail"})
+  public void qsubscribeOpendetail(RequestEvent paramRequestEvent)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader == null) || (this.f == null)) {
-      return "";
-    }
-    for (;;)
+    try
     {
-      try
+      Object localObject = a(paramRequestEvent).optJSONObject("data");
+      if (localObject != null)
       {
-        if ((this.f.contains("Resources$NotFoundException")) || (this.f.contains("ResourcesNotFoundException")) || (this.f.contains("ClassNotFoundException")) || (this.f.contains("GetPackageInfoFailException")))
-        {
-          paramVarArgs = PluginStatic.encodeFile(this.d);
-          if (this.d == null) {
-            continue;
-          }
-          l = new File(this.d).length();
-          this.f = ("ApkMd5:" + paramVarArgs + "__FileSize:" + l + "__" + this.f);
+        String str1 = ((JSONObject)localObject).optString("uin");
+        int i = ((JSONObject)localObject).optInt("type");
+        String str2 = ((JSONObject)localObject).optString("feedid");
+        long l = ((JSONObject)localObject).optLong("createtime");
+        localObject = zqm.a(str2, str1, i, ((JSONObject)localObject).optInt("width"), ((JSONObject)localObject).optInt("height"), l);
+        zqm.a(this.mMiniAppContext.getAttachedActivity(), (CertifiedAccountMeta.StFeed)localObject, 9001);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
+      paramRequestEvent.fail();
+    }
+  }
+  
+  @JsEvent({"qsubscribe_opendiscover"})
+  public void qsubscribeOpendiscover(RequestEvent paramRequestEvent)
+  {
+    boolean bool = false;
+    try
+    {
+      Object localObject = a(paramRequestEvent).optJSONObject("data");
+      if (localObject != null)
+      {
+        String str = ((JSONObject)localObject).optString("uin");
+        int i = ((JSONObject)localObject).optInt("shoptype");
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("postUin", str);
+        ((Intent)localObject).putExtra("sourceFrom", 1);
+        if (i > 1) {
+          bool = true;
         }
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader.uploadStartupFailure(MobileQQ.getContext(), this.jdField_a_of_type_JavaLangString, this.b, this.c, this.e, this.f);
+        ((Intent)localObject).putExtra("has_shop", bool);
+        ((Intent)localObject).addFlags(268435456);
+        QZoneHelper.forwardToQQPublicAccountPublishPage(this.mMiniAppContext.getAttachedActivity(), (Intent)localObject, 0);
+        paramRequestEvent.ok();
       }
-      catch (Throwable paramVarArgs)
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
+      paramRequestEvent.fail();
+    }
+  }
+  
+  @JsEvent({"qsubscribe_openhomepage"})
+  public void qsubscribeOpenhomepage(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      Object localObject = a(paramRequestEvent).optJSONObject("data");
+      if (localObject != null)
       {
-        long l;
-        continue;
+        localObject = ((JSONObject)localObject).optString("uin");
+        zqm.a(this.mMiniAppContext.getAttachedActivity(), (String)localObject, 9001);
       }
-      return null;
-      l = 0L;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
+      paramRequestEvent.fail();
     }
   }
 }

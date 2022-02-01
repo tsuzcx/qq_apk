@@ -1,14 +1,13 @@
-class asti
-  implements aszj
+import java.io.File;
+
+public abstract interface asti
+  extends bhjk
 {
-  asti(asth paramasth) {}
+  public abstract void a(File paramFile);
   
-  public void onNo() {}
+  public abstract void c(boolean paramBoolean);
   
-  public void onYes()
-  {
-    this.a.a.u();
-  }
+  public abstract void f(int paramInt);
 }
 
 

@@ -1,24 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-
-public class awsi
-  implements bjoe
+class awsi
+  implements awse
 {
-  public awsi(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bjnw parambjnw) {}
+  awsi(awsf paramawsf) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bjnw != null) {
-        this.jdField_a_of_type_Bjnw.dismiss();
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    if (this.a.jdField_a_of_type_Awrl != null) {
+      this.a.jdField_a_of_type_Awrl.a(paramInt, this.a.jdField_a_of_type_Awsl);
     }
   }
 }

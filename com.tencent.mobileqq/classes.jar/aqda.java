@@ -1,123 +1,113 @@
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aqda
+class aqda
+  extends Handler
 {
-  private HashMap<String, aqdb> a = new HashMap();
-  
-  public aqda()
+  aqda(aqcx paramaqcx, Looper paramLooper)
   {
-    aqdb localaqdb = new aqdb();
-    localaqdb.a(true);
-    localaqdb.a("pages/detail/detail");
-    this.a.put("s_qq_mini_importing", localaqdb);
+    super(paramLooper);
   }
   
-  public static aqda a(aptx[] paramArrayOfaptx)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0)) {
-      return null;
-    }
-    for (;;)
-    {
-      aqda localaqda;
-      int i;
-      JSONObject localJSONObject;
-      try
+    if (paramMessage.what == 1001) {
+      for (;;)
       {
-        localaqda = new aqda();
-        i = 0;
-        if (i >= paramArrayOfaptx.length) {
-          break label516;
-        }
-        localJSONObject = new JSONObject(paramArrayOfaptx[i].a);
-        if (localJSONObject.has("MiniCodeConfigAioMsg"))
+        try
         {
-          localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigAioMsg");
-          localaqda.a.put("docs_miniapp_config_aio_msg", aqdb.a(localJSONObject));
+          paramMessage = (ArrayList)paramMessage.obj;
+          if ((paramMessage == null) || (paramMessage.size() <= 0)) {
+            continue;
+          }
+          Iterator localIterator = paramMessage.iterator();
+          if (!localIterator.hasNext()) {
+            continue;
+          }
+          str1 = (String)localIterator.next();
+          str2 = (String)this.a.b.get(str1);
+          paramMessage = BitmapFactory.decodeFile(str2);
+          if (paramMessage == null) {
+            continue;
+          }
+          if (aqcx.a(this.a) != 1) {
+            continue;
+          }
+          localObject1 = QQAppInterface.getShapeRoundFaceBitmap(paramMessage, bheg.a(paramMessage.getWidth()), 50, 50);
+          paramMessage = (Message)localObject1;
+          if (blfw.a())
+          {
+            paramMessage = new Paint();
+            paramMessage.setAntiAlias(true);
+            paramMessage.setColor(ThemeUtil.NIGHTMODE_MASKCOLOR);
+            localObject2 = new Canvas((Bitmap)localObject1);
+            ((Canvas)localObject2).drawRoundRect(new RectF(0.0F, 0.0F, ((Canvas)localObject2).getWidth(), ((Canvas)localObject2).getHeight()), 10.0F, 10.0F, paramMessage);
+            paramMessage = (Message)localObject1;
+          }
         }
-        else if (localJSONObject.has("MiniCodeConfigAioEdit"))
+        catch (OutOfMemoryError paramMessage)
         {
-          localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigAioEdit");
-          localaqda.a.put("docs_miniapp_config_aio_edit", aqdb.a(localJSONObject));
+          String str1;
+          String str2;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("NonMainAppHeadLoader", 2, "decodeFile, OutOfMemoryError");
+          return;
+          Object localObject1 = this.a.a(paramMessage);
+          paramMessage = (Message)localObject1;
+          if (!blfw.a()) {
+            continue;
+          }
+          paramMessage = new Paint();
+          paramMessage.setAntiAlias(true);
+          paramMessage.setColor(ThemeUtil.NIGHTMODE_MASKCOLOR);
+          Object localObject2 = new Canvas((Bitmap)localObject1);
+          ((Canvas)localObject2).drawCircle(((Canvas)localObject2).getWidth() / 2, ((Canvas)localObject2).getHeight() / 2, ((Canvas)localObject2).getWidth() / 2, paramMessage);
+          paramMessage = (Message)localObject1;
+          continue;
+        }
+        catch (Exception paramMessage)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("NonMainAppHeadLoader", 2, "decodeFile, exception:" + paramMessage.toString());
+        }
+        if (paramMessage != null)
+        {
+          localObject1 = Message.obtain();
+          localObject2 = new Bundle();
+          ((Bundle)localObject2).putParcelable("bmp", paramMessage);
+          ((Bundle)localObject2).putString("uin", str1);
+          ((Bundle)localObject2).putString("path", str2);
+          ((Message)localObject1).obj = localObject2;
+          ((Message)localObject1).what = 1002;
+          this.a.a.sendMessage((Message)localObject1);
+          if (QLog.isColorLevel()) {
+            QLog.d("NonMainAppHeadLoader", 2, "decodeFile, uin:" + str1);
+          }
         }
       }
-      catch (Exception paramArrayOfaptx)
-      {
-        paramArrayOfaptx.printStackTrace();
-        return null;
-      }
-      if (localJSONObject.has("MiniCodeConfigBottomEdit"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigBottomEdit");
-        localaqda.a.put("docs_miniapp_config_bottom_edit", aqdb.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigMyFile"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigMyFile");
-        localaqda.a.put("docs_miniapp_config_my_file", aqdb.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigTroopFile"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigTroopFile");
-        localaqda.a.put("docs_miniapp_config_troop_file", aqdb.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigGrayBar"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigGrayBar");
-        localaqda.a.put("docs_miniapp_config_gray_bar", aqdb.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigMenuEdit"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigMenuEdit");
-        localaqda.a.put("docs_miniapp_config_menu_edit", aqdb.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigDownloadEdit"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigDownloadEdit");
-        localaqda.a.put("docs_miniapp_config_download_edit", aqdb.a(localJSONObject));
-      }
-      else if (localJSONObject.has("docs_miniapp_config_online_preview"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("docs_miniapp_config_online_preview");
-        localaqda.a.put("docs_miniapp_config_online_preview", aqdb.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigTemplateList"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigTemplateList");
-        localaqda.a.put("docs_miniapp_config_templatelist", aqdb.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigOcrSave"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigOcrSave");
-        localaqda.a.put("docs_miniapp_config_ocr_save", aqdb.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigUrl2Doc"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigUrl2Doc");
-        localaqda.a.put("docs_miniapp_config_url_2_doc", aqdb.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigAioArkH5"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigAioArkH5");
-        localaqda.a.put("docs_miniapp_config_aio_ark_h5", aqdb.a(localJSONObject));
-        break label518;
-        label516:
-        return localaqda;
-      }
-      label518:
-      i += 1;
     }
-  }
-  
-  public HashMap<String, aqdb> a()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqda
  * JD-Core Version:    0.7.0.1
  */

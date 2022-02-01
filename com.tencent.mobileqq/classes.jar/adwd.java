@@ -1,6 +1,19 @@
-public abstract interface adwd
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+
+public class adwd
+  implements InputFilter
 {
-  public abstract void a();
+  public adwd(EditInfoActivity paramEditInfoActivity) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    if (paramCharSequence.toString().contains("\n")) {
+      return paramCharSequence.toString().replace("\n", "");
+    }
+    return null;
+  }
 }
 
 

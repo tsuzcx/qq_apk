@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.task;
 
-import amgh;
-import amgk;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.text.TextUtils;
-import bftt;
+import anhp;
+import anhs;
+import bhcl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -15,8 +15,8 @@ import java.io.File;
 public class ApolloAudioPlayer
   implements MediaPlayer.OnPreparedListener
 {
-  private amgk jdField_a_of_type_Amgk;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private anhs jdField_a_of_type_Anhs;
   public Object a;
   private String jdField_a_of_type_JavaLangString;
   public boolean a;
@@ -39,7 +39,7 @@ public class ApolloAudioPlayer
         if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
           this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
         }
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new amgh(this, paramInt, paramString));
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new anhp(this, paramInt, paramString));
         try
         {
           boolean bool = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).isMusicActive();
@@ -52,7 +52,7 @@ public class ApolloAudioPlayer
           synchronized (this.jdField_a_of_type_JavaLangObject)
           {
             this.jdField_a_of_type_JavaLangString = paramString;
-            bftt.a(BaseApplicationImpl.getContext(), true);
+            bhcl.a(BaseApplicationImpl.getContext(), true);
             long l = System.currentTimeMillis();
             this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
             this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);

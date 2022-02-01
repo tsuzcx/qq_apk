@@ -1,34 +1,43 @@
-import NS_MINI_APP_MISC.MISC.StGetFriendPlayListV2Rsp;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.RspBody;
 
-public class atui
-  implements View.OnClickListener
+final class atui
+  extends ntf
 {
-  public atui(IntimatePlayTogetherMiniGameCardView paramIntimatePlayTogetherMiniGameCardView, MISC.StGetFriendPlayListV2Rsp paramStGetFriendPlayListV2Rsp) {}
+  atui(atuj paramatuj) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.total.get() <= 1) {
-      QLog.d("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "will not jump because total count less than 2" });
+    if (paramInt == 0) {
+      paramBundle = new oidb_0x6e7.RspBody();
     }
-    for (;;)
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get())) {
-        QLog.e("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "Could not launch with empty jump url" });
-      } else {
-        MiniAppLauncher.startMiniApp(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimatePlayTogetherMiniGameCardView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get(), 2064, new atuj(this));
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, "is_white = " + paramBundle.uint32_is_white.get() + ", req_interval = " + paramBundle.uint32_interval.get());
+        }
+        if (this.a != null) {
+          this.a.a(paramBundle.uint32_is_white.get(), paramBundle.uint32_interval.get());
+        }
+        return;
       }
-    }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("zivonchen", 2, "requestWhiteList() errorCode = " + paramInt);
+      }
+    } while (this.a == null);
+    this.a.a(0, -1);
   }
 }
 

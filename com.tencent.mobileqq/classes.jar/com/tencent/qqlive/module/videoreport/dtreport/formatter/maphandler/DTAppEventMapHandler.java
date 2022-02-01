@@ -5,9 +5,9 @@ import java.util.Map;
 public class DTAppEventMapHandler
   extends DTBaseEventMapHandler
 {
-  public void formatEvent(String paramString, Map<String, Object> paramMap1, Map<String, Object> paramMap2)
+  public void formatCustomParams(String paramString, Map<String, Object> paramMap1, Map<String, Object> paramMap2)
   {
-    super.formatEvent(paramString, paramMap1, paramMap2);
+    super.formatCustomParams(paramString, paramMap1, paramMap2);
     if ("appout".equals(paramString))
     {
       formatLvTime(paramMap1, paramMap2);

@@ -1,65 +1,147 @@
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class avlf
 {
-  public int a;
-  public boolean a;
-  public String[] a;
-  public int b;
-  public String[] b;
-  public int c;
-  public int d;
+  public static ConcurrentHashMap<String, ArrayList<avli>> a = new ConcurrentHashMap();
+  public static ConcurrentHashMap<String, avlh> b = new ConcurrentHashMap();
   
-  public avlf()
+  public static void a()
   {
-    a();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 1;
-    this.c = 100;
-    this.d = 0;
-    this.jdField_a_of_type_ArrayOfJavaLangString = null;
-    this.jdField_b_of_type_ArrayOfJavaLangString = null;
-  }
-  
-  public boolean a()
-  {
-    int i;
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+    synchronized (a)
     {
-      i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      HashSet localHashSet = new HashSet();
+      Iterator localIterator2 = a.values().iterator();
+      while (localIterator2.hasNext())
       {
-        if (!new File(this.jdField_a_of_type_ArrayOfJavaLangString[i]).exists()) {
-          return false;
+        Iterator localIterator3 = ((ArrayList)localIterator2.next()).iterator();
+        if (localIterator3.hasNext())
+        {
+          avli localavli = (avli)localIterator3.next();
+          localavli.d();
+          localHashSet.add(localavli.d);
         }
-        i += 1;
       }
     }
-    if ((this.jdField_b_of_type_ArrayOfJavaLangString != null) && (this.jdField_b_of_type_ArrayOfJavaLangString.length > 0))
+    Iterator localIterator1 = localObject.iterator();
+    while (localIterator1.hasNext()) {
+      c((String)localIterator1.next());
+    }
+  }
+  
+  public static void a(avli paramavli)
+  {
+    synchronized (a)
     {
-      i = 0;
-      for (;;)
+      String str = paramavli.a();
+      ArrayList localArrayList = (ArrayList)a.get(str);
+      if (localArrayList == null)
       {
-        if (i >= this.jdField_b_of_type_ArrayOfJavaLangString.length) {
-          break label106;
+        localArrayList = new ArrayList();
+        localArrayList.add(paramavli);
+        a.put(str, localArrayList);
+      }
+      while (localArrayList.contains(paramavli)) {
+        return;
+      }
+      localArrayList.add(paramavli);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    synchronized (a)
+    {
+      avli localavli;
+      do
+      {
+        Iterator localIterator = a.keySet().iterator();
+        Object localObject;
+        while (!((Iterator)localObject).hasNext())
+        {
+          do
+          {
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            localObject = (String)localIterator.next();
+          } while (!((String)localObject).endsWith("plugin"));
+          localObject = ((ArrayList)a.get(localObject)).iterator();
         }
-        if (!new File(this.jdField_b_of_type_ArrayOfJavaLangString[i]).exists()) {
-          break;
+        localavli = (avli)((Iterator)localObject).next();
+      } while (!((avlg)localavli).a.equals(paramString));
+      localavli.b();
+      localavli.d();
+    }
+  }
+  
+  public static void b(String paramString)
+  {
+    synchronized (a)
+    {
+      Iterator localIterator = a.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (String)localIterator.next();
+        if (((String)localObject).startsWith(paramString))
+        {
+          localObject = ((ArrayList)a.get(localObject)).iterator();
+          if (((Iterator)localObject).hasNext()) {
+            ((avli)((Iterator)localObject).next()).d();
+          }
         }
-        i += 1;
       }
     }
-    label106:
-    return true;
+    c(paramString);
+  }
+  
+  public static void c(String paramString)
+  {
+    synchronized (a)
+    {
+      avlh localavlh = (avlh)b.get(paramString);
+      if (localavlh != null)
+      {
+        localavlh.d();
+        b.remove(paramString);
+      }
+      return;
+    }
+  }
+  
+  public static void d(String paramString)
+  {
+    synchronized (a)
+    {
+      paramString = (avlh)b.get(paramString);
+      if (paramString != null) {
+        paramString.b();
+      }
+      return;
+    }
+  }
+  
+  public static void e(String paramString)
+  {
+    synchronized (a)
+    {
+      if ((avlh)b.get(paramString) == null)
+      {
+        avlh localavlh = new avlh(paramString);
+        b.put(paramString, localavlh);
+        localavlh.a();
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     avlf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,194 +1,81 @@
+import android.annotation.TargetApi;
+import android.hardware.Camera;
 import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.Processor;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.VideoConvertConfig;
+import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class bkxv
-  implements VideoConverter.Processor
 {
-  final int jdField_a_of_type_Int;
-  final String jdField_a_of_type_JavaLangString;
-  Throwable jdField_a_of_type_JavaLangThrowable;
-  final int b;
-  
-  bkxv(String paramString, int paramInt1, int paramInt2)
+  public static Camera a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt2 > 0) {}
-    for (this.b = paramInt2;; this.b = 30)
-    {
-      this.jdField_a_of_type_JavaLangThrowable = null;
-      if (paramString != null) {
-        break;
-      }
-      throw new IllegalArgumentException("null == outputFilePath");
-    }
+    return a(-1, 5);
   }
   
-  public boolean a()
+  public static Camera a(int paramInt)
   {
-    boolean bool = false;
-    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
-      bool = true;
-    }
-    while (Build.VERSION.SDK_INT <= 19) {
-      return bool;
-    }
-    return false;
+    return a(paramInt, 5);
   }
   
-  public VideoConverter.VideoConvertConfig getEncodeConfig(int paramInt1, int paramInt2)
+  @TargetApi(9)
+  public static Camera a(int paramInt1, int paramInt2)
   {
+    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+      paramInt2 = 1;
+    }
     int i = 0;
-    VideoConverter.VideoConvertConfig localVideoConvertConfig = new VideoConverter.VideoConvertConfig();
-    int k;
-    Object localObject;
-    if (paramInt1 <= paramInt2)
-    {
-      k = paramInt2;
-      localObject = new File(this.jdField_a_of_type_JavaLangString);
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
-      }
-      localVideoConvertConfig.output = ((File)localObject);
-      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.lvcc.name(), "640|640|384|768|30");
-      if ((localObject == null) || (((String)localObject).length() <= 0)) {
-        break label431;
-      }
-      localObject = ((String)localObject).split("\\|");
-      if ((localObject == null) || (localObject.length <= 4)) {
-        break label431;
-      }
-    }
-    label431:
+    Camera localCamera1 = null;
+    Camera localCamera3;
     for (;;)
     {
-      try
+      localCamera3 = localCamera1;
+      if (i < paramInt2)
       {
-        i = Integer.valueOf(localObject[1]).intValue();
-      }
-      catch (NumberFormatException localNumberFormatException1)
-      {
-        paramInt1 = 0;
-        paramInt2 = 0;
-        i = 0;
-      }
-      try
-      {
-        paramInt2 = Integer.valueOf(localObject[2]).intValue();
-      }
-      catch (NumberFormatException localNumberFormatException2)
-      {
-        for (;;)
+        Camera localCamera2 = localCamera1;
+        try
         {
-          label344:
-          int n;
-          paramInt1 = 0;
-          paramInt2 = 0;
+          if ((Build.VERSION.SDK_INT >= 9) && (paramInt1 != -1)) {
+            localCamera2 = localCamera1;
+          }
+          for (localCamera1 = Camera.open(paramInt1);; localCamera1 = Camera.open())
+          {
+            localCamera2 = localCamera1;
+            localCamera3 = localCamera1;
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            localCamera2 = localCamera1;
+            QLog.d("CameraUtil", 2, "openCameraWithRetry successfully.  retry times = " + i + ", max retry times = " + paramInt2);
+            return localCamera1;
+            localCamera2 = localCamera1;
+          }
         }
-      }
-      try
-      {
-        paramInt1 = Integer.valueOf(localObject[3]).intValue();
-      }
-      catch (NumberFormatException localNumberFormatException3)
-      {
-        paramInt1 = 0;
-        break label344;
-      }
-      try
-      {
-        m = Integer.valueOf(localObject[4]).intValue();
-        j = i;
-        i = paramInt2;
-        paramInt2 = m;
-        m = j;
-        if (j <= 0) {
-          m = 640;
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("CameraUtil", 2, "openCameraWithRetry. Fail to open camera. error msg: " + localException.getMessage() + ", retry times = " + i + ", max retry times = " + paramInt2);
+          }
+          i += 1;
+          if (i < paramInt2) {
+            try
+            {
+              Thread.currentThread();
+              Thread.sleep(500);
+              Object localObject = localCamera2;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                localInterruptedException.printStackTrace();
+              }
+            }
+          } else {
+            throw new RuntimeException(localInterruptedException);
+          }
         }
-        j = i;
-        if (i <= 0) {
-          j = 384;
-        }
-        i = paramInt1;
-        if (paramInt1 <= 0) {
-          i = 768;
-        }
-        paramInt1 = paramInt2;
-        if (paramInt2 <= 0) {
-          paramInt1 = 30;
-        }
-        localVideoConvertConfig.scaleRate = (m / k);
-        localVideoConvertConfig.videoBitRate = ((int)(this.jdField_a_of_type_Int * localVideoConvertConfig.scaleRate * localVideoConvertConfig.scaleRate + 0.5F));
-        if (localVideoConvertConfig.videoBitRate <= i * 1024) {
-          break label382;
-        }
-        localVideoConvertConfig.videoBitRate = (i * 1024);
-        paramInt2 = paramInt1;
-        if (this.b <= paramInt1) {
-          paramInt2 = this.b;
-        }
-        localVideoConvertConfig.videoFrameRate = paramInt2;
-        localVideoConvertConfig.setRotation = a();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: getEncodeConfig() config.setRotation = " + localVideoConvertConfig.setRotation);
-        }
-        return localVideoConvertConfig;
-      }
-      catch (NumberFormatException localNumberFormatException4)
-      {
-        break label344;
-      }
-      k = paramInt1;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopHomeworkHelper", 2, "getEncodeConfig -> get DpcConfig Erro", localNumberFormatException1);
-      }
-      n = 0;
-      int j = paramInt2;
-      int m = i;
-      paramInt2 = n;
-      i = j;
-      j = m;
-      continue;
-      label382:
-      if (localVideoConvertConfig.videoBitRate < j * 1024)
-      {
-        localVideoConvertConfig.videoBitRate = (j * 1024);
-        continue;
-        paramInt2 = 0;
-        paramInt1 = 0;
-        j = 0;
       }
     }
-  }
-  
-  public void onCanceled() {}
-  
-  public void onFailed(Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onFailed");
-    }
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-  }
-  
-  public void onProgress(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onProgress:" + paramInt);
-    }
-  }
-  
-  public void onSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onSuccessed");
-    }
+    return localCamera3;
   }
 }
 

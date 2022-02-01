@@ -1,287 +1,456 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.ActionMode.Callback;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
-import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.soload.LoadOptions;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.mobileqq.soload.SoLoadManager.1;
+import com.tencent.mobileqq.soload.SoLoadManager.2;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class bdgh
-  implements afrc, afrp
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ActionMode.Callback jdField_a_of_type_AndroidViewActionMode$Callback;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private static volatile bdgh jdField_a_of_type_Bdgh;
+  private static final Map<LoadParam, bdfw> b = new HashMap();
+  private final Map<LoadParam, List<bdgc>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private final Set<LoadParam> jdField_a_of_type_JavaUtilSet = new HashSet();
   
-  public bdgh(afqw paramafqw, BaseChatPie paramBaseChatPie)
+  private long a(LoadParam paramLoadParam)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.app;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.mContext;
-    paramafqw.a(this);
+    int i = LoadParam.getItemSize(paramLoadParam);
+    long l = bdgd.a(paramLoadParam, null, "SoLoadModule", "SoLoad", "load.start", LoadParam.getReportStr(paramLoadParam), i, null);
+    paramLoadParam.mReportSeq = l;
+    return l;
   }
   
-  private String a()
+  private static bdfw a(LoadParam paramLoadParam)
   {
-    String str2 = "";
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {
-      str1 = str2;
+    if (paramLoadParam.mLoadItems.size() > 1) {
+      return new bdfz();
     }
-    for (;;)
+    return new bdfo();
+  }
+  
+  private static bdfw a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    synchronized (b)
     {
-      if (TextUtils.isEmpty(str1)) {}
-      return str1;
-      str1 = str2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo != null)
+      Object localObject2 = new LinkedList(b.values());
+      ??? = ((List)localObject2).iterator();
+      while (((Iterator)???).hasNext())
       {
-        str1 = str2;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin != null) {
-          str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin;
+        localObject2 = (bdfw)((Iterator)???).next();
+        if ((localObject2 != null) && (((bdfw)localObject2).a(paramString))) {
+          return localObject2;
         }
       }
     }
+    return null;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, BaseChatPie paramBaseChatPie, String paramString1, String paramString2, int paramInt)
+  private bdgc a(LoadParam paramLoadParam, long paramLong)
   {
-    if (!a(paramContext)) {}
-    while (TextUtils.isEmpty(paramString1)) {
-      return;
+    return new bdgi(this, paramLoadParam);
+  }
+  
+  public static bdgh a()
+  {
+    if (jdField_a_of_type_Bdgh == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bdgh == null) {
+        jdField_a_of_type_Bdgh = new bdgh();
+      }
+      return jdField_a_of_type_Bdgh;
     }
+    finally {}
+  }
+  
+  private LoadExtResult a(LoadParam paramLoadParam)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("WriteTogetherHelper", 2, "[Launch Editor] - Click WT message. docId: " + paramString1);
+      QLog.i("SoLoadWidget.SoLoadManager", 2, "loadSync loadParam=" + paramLoadParam);
     }
-    paramQQAppInterface = new Bundle();
-    paramQQAppInterface.putString("KEY_CANCEL_OR_BACK", "VALUE_BACK");
-    OpenDocParam localOpenDocParam = new OpenDocParam();
-    localOpenDocParam.jdField_f_of_type_Int = paramInt;
-    localOpenDocParam.k = paramString2;
-    localOpenDocParam.jdField_f_of_type_JavaLangString = paramString1;
-    localOpenDocParam.g = 0;
-    paramQQAppInterface.putParcelable("KEY_LAUNCH_EDITOR_PARAM", localOpenDocParam);
-    if ((paramContext instanceof Activity))
+    long l = a(paramLoadParam);
+    if (!LoadParam.isValid(paramLoadParam)) {}
+    for (Object localObject = LoadExtResult.create(1, LoadParam.getItemSize(paramLoadParam));; localObject = ((bdfw)localObject).a(paramLoadParam))
     {
-      WriteTogetherEditorFragment.a((Activity)paramContext, WriteTogetherEditorFragment.class, paramQQAppInterface, 18005);
-      return;
-    }
-    if ((paramBaseChatPie != null) && ((paramBaseChatPie.mActivity instanceof Activity)))
-    {
-      WriteTogetherEditorFragment.a(paramBaseChatPie.mActivity, WriteTogetherEditorFragment.class, paramQQAppInterface, 18005);
-      return;
-    }
-    WriteTogetherEditorFragment.a(paramContext, WriteTogetherEditorFragment.class, paramQQAppInterface);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, int paramInt)
-  {
-    a(paramQQAppInterface, paramContext, null, paramString1, paramString2, paramInt);
-  }
-  
-  private static boolean a(Context paramContext)
-  {
-    boolean bool = NetworkUtil.isNetworkAvailable(paramContext);
-    if (!bool) {
-      QQToast.a(paramContext, 2131719716, 0).a();
-    }
-    return bool;
-  }
-  
-  private static boolean a(Context paramContext, String paramString)
-  {
-    boolean bool = nmy.a().a(paramString);
-    if (bool) {
-      QQToast.a(paramContext, 2131719697, 0).a();
-    }
-    return bool;
-  }
-  
-  private static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
-  {
-    boolean bool = a(paramQQAppInterface, paramString);
-    if (bool) {
-      QQToast.a(paramContext, 2131719707, 0).a();
-    }
-    return bool;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    return ((bfbz)paramQQAppInterface.getManager(48)).a(paramString, true).a;
-  }
-  
-  private boolean b()
-  {
-    Object localObject = a();
-    localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a((String)localObject, true);
-    return (localObject != null) && (((TroopInfo)localObject).exitTroopReason == 0);
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_AndroidViewActionMode$Callback != null) {}
-    while (Build.VERSION.SDK_INT < 23) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewActionMode$Callback = new bdgi(this);
-  }
-  
-  private void d()
-  {
-    ChatXListView localChatXListView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.listView;
-    localChatXListView.setSelectionFromBottom(localChatXListView.getCount() - 1, 0);
-  }
-  
-  public ActionMode.Callback a()
-  {
-    c();
-    return this.jdField_a_of_type_AndroidViewActionMode$Callback;
-  }
-  
-  public void a()
-  {
-    c();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {
-      a();
-    }
-    while (paramInt != 13) {
-      return;
-    }
-    b();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (paramInt1 != 18005) {}
-    do
-    {
-      return;
-      if ((paramInt2 & 0x1) == 0) {
-        break;
+      b(((LoadExtResult)localObject).getResultCode(), (LoadExtResult)localObject, l, null, paramLoadParam);
+      if (((LoadExtResult)localObject).isNeedRetry(paramLoadParam)) {
+        a((LoadExtResult)localObject, paramLoadParam);
       }
-      if ((paramInt2 & 0x2) != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input.setText("");
-      }
-      if ((paramInt2 & 0x4) != 0)
-      {
-        paramIntent = (afqj)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(24);
-        if (paramIntent != null) {
-          paramIntent.a(true);
-        }
-      }
-    } while ((paramInt2 & 0x8) == 0);
-    d();
-    return;
-    QLog.e("WriteTogetherHelper", 1, "[onActivityResult] failed code: " + paramInt2);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, paramString, a(), paramInt);
-  }
-  
-  public boolean a()
-  {
-    boolean bool = true;
-    if (!aqeg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      return false;
+      return localObject;
+      localObject = a(paramLoadParam);
+      paramLoadParam.mCallType = LoadParam.CALL_TYPE_SYNC;
+      a(paramLoadParam, (bdfw)localObject);
     }
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo;
-    if ((localSessionInfo != null) && (localSessionInfo.curType == 1) && (b())) {}
+  }
+  
+  private LoadParam a(LoadParam paramLoadParam, bdgc parambdgc)
+  {
     for (;;)
     {
-      return bool;
-      bool = false;
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        localObject1 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        if (!((Iterator)localObject1).hasNext()) {
+          break label258;
+        }
+        Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+        LoadParam localLoadParam = (LoadParam)((Map.Entry)localObject2).getKey();
+        if ((localLoadParam == null) || (!localLoadParam.isSame(paramLoadParam))) {
+          continue;
+        }
+        if (localLoadParam.isOverTime())
+        {
+          localObject2 = (List)((Map.Entry)localObject2).getValue();
+          ((Iterator)localObject1).remove();
+          localObject1 = localObject2;
+          if (QLog.isColorLevel())
+          {
+            QLog.i("SoLoadWidget.SoLoadManager", 2, "[getSameParamInLoad] isOverTime:" + localObject2);
+            localObject1 = localObject2;
+          }
+          localObject2 = new LinkedList();
+          ((LinkedList)localObject2).add(parambdgc);
+          paramLoadParam.mLoadTime = NetConnInfoCenter.getServerTimeMillis();
+          this.jdField_a_of_type_JavaUtilMap.put(paramLoadParam, localObject2);
+          if (localObject1 != null)
+          {
+            parambdgc = ((List)localObject1).iterator();
+            if (parambdgc.hasNext())
+            {
+              localObject1 = (bdgc)parambdgc.next();
+              if (localObject1 == null) {
+                continue;
+              }
+              ((bdgc)localObject1).onLoadResult(7, LoadExtResult.create(7, LoadParam.getItemSize(paramLoadParam)));
+              continue;
+            }
+          }
+        }
+        else
+        {
+          ((List)((Map.Entry)localObject2).getValue()).add(parambdgc);
+          return localLoadParam;
+        }
+      }
+      return null;
+      label258:
+      Object localObject1 = null;
     }
   }
   
-  public int[] a()
+  private LoadParam a(String paramString, LoadOptions paramLoadOptions)
   {
-    return new int[] { 0, 13 };
+    LoadParam localLoadParam = new LoadParam();
+    localLoadParam.addItem(paramString, paramLoadOptions);
+    return localLoadParam;
   }
   
-  public void b() {}
-  
-  public void b(String paramString, int paramInt)
+  private LoadParam a(String[] paramArrayOfString, LoadOptions[] paramArrayOfLoadOptions)
   {
-    int i = 1;
-    if (!a(this.jdField_a_of_type_AndroidContentContext)) {}
-    Object localObject;
-    do
+    LoadParam localLoadParam = new LoadParam();
+    if (paramArrayOfString != null)
     {
-      return;
-      localObject = a();
-    } while ((a(this.jdField_a_of_type_AndroidContentContext, (String)localObject)) || (a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, (String)localObject)));
-    if (!bdgn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject))
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131719699, 0).a();
-      return;
-    }
-    String str1 = paramString;
-    if (paramString == null) {
-      str1 = "";
-    }
-    int j;
-    if (QLog.isColorLevel())
-    {
-      if (paramInt == 1)
+      int i = 0;
+      while (i < paramArrayOfString.length)
       {
-        paramString = "input box";
-        QLog.d("WriteTogetherHelper", 2, "[Launch Editor] - " + paramString);
+        String str = paramArrayOfString[i];
+        if (TextUtils.isEmpty(str))
+        {
+          i += 1;
+        }
+        else
+        {
+          if ((paramArrayOfLoadOptions != null) && (paramArrayOfLoadOptions.length > i)) {}
+          for (LoadOptions localLoadOptions = paramArrayOfLoadOptions[i];; localLoadOptions = null)
+          {
+            localLoadParam.addItem(str, localLoadOptions);
+            break;
+          }
+        }
       }
     }
-    else
-    {
-      paramString = new Bundle();
-      String str2 = bdgn.a(str1);
-      paramString.putString("leftViewText", amtj.a(2131719668));
-      paramString.putString("KEY_CANCEL_OR_BACK", "VALUE_CANCEL");
-      OpenDocParam localOpenDocParam = new OpenDocParam();
-      localOpenDocParam.a = str2;
-      localOpenDocParam.jdField_f_of_type_Int = paramInt;
-      localOpenDocParam.k = ((String)localObject);
-      if ((paramInt == 5) || (paramInt == 6)) {
-        localOpenDocParam.g = 0;
-      }
-      paramString.putParcelable("KEY_LAUNCH_EDITOR_PARAM", localOpenDocParam);
-      WriteTogetherEditorFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mActivity, WriteTogetherEditorFragment.class, paramString, 18005);
-      j = bdgn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
-      paramString = "" + bdgn.a(paramInt);
-      localObject = new StringBuilder().append("");
-      if (!TextUtils.isEmpty(str1)) {
-        break label346;
-      }
+    return localLoadParam;
+  }
+  
+  private void a(LoadExtResult arg1, LoadParam paramLoadParam)
+  {
+    paramLoadParam.mCallType = LoadParam.CALL_TYPE_ASYNC_BY_SYNC;
+    long l = ???.getDelayAyncTime();
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.SoLoadManager", 2, "[handleLoadSyncFail]delayTime:" + l);
     }
-    label346:
-    for (paramInt = i;; paramInt = 2)
+    if (l <= 0L)
     {
-      bcef.b(null, "dc00898", "", "", "0X800AF2F", "0X800AF2F", j, 0, paramString, paramInt, "", "");
+      a(paramLoadParam, null);
       return;
-      if (paramInt == 2)
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilSet)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext())
       {
-        paramString = "full screen";
-        break;
+        LoadParam localLoadParam = (LoadParam)localIterator.next();
+        if (localLoadParam.isSame(paramLoadParam))
+        {
+          ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(localLoadParam);
+          localIterator.remove();
+        }
       }
-      paramString = "unknown";
+    }
+    ThreadManager.getSubThreadHandler().postAtTime(new SoLoadManager.1(this, paramLoadParam), paramLoadParam, l + NetConnInfoCenter.getServerTimeMillis());
+    this.jdField_a_of_type_JavaUtilSet.add(paramLoadParam);
+  }
+  
+  private static void a(LoadParam paramLoadParam)
+  {
+    synchronized (b)
+    {
+      b.remove(paramLoadParam);
+      return;
+    }
+  }
+  
+  private static void a(LoadParam paramLoadParam, bdfw parambdfw)
+  {
+    if ((paramLoadParam == null) || (parambdfw == null)) {
+      return;
+    }
+    synchronized (b)
+    {
+      b.put(paramLoadParam, parambdfw);
+      return;
+    }
+  }
+  
+  private void a(LoadParam paramLoadParam, bdgc parambdgc)
+  {
+    ThreadManager.excute(new SoLoadManager.2(this, paramLoadParam, parambdgc), 16, null, false);
+  }
+  
+  public static void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
+  {
+    paramString2 = null;
+    if (TextUtils.isEmpty(paramString3)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        String str = b(paramString3);
+        if (TextUtils.isEmpty(str))
+        {
+          localObject = a(paramString3);
+          paramString2 = (String)localObject;
+          if (localObject == null)
+          {
+            if (!paramString3.contains("com.tencent.mobileqq.soload")) {
+              continue;
+            }
+            paramString2 = (String)localObject;
+          }
+        }
+        Object localObject = BaseApplicationImpl.processName;
+        paramString1 = "process:" + (String)localObject + "msg:" + paramString1 + paramString3;
+        if (!TextUtils.isEmpty(str))
+        {
+          paramString2 = bdfo.a(str);
+          bdge.a(str, paramString2, 1);
+          VACDReportUtil.a("ver=" + paramString2, "SoLoadModule", "SoLoadSingle", "Exception", str, 2, paramString1);
+          return;
+        }
+      }
+      catch (Throwable paramString1)
+      {
+        paramString1.printStackTrace();
+        return;
+      }
+    }
+    if (paramString2 != null)
+    {
+      paramString2.a(paramString1);
+      return;
+    }
+    VACDReportUtil.a(null, "SoLoadModule", "SoLoadSingle", "Exception", "SoLoadWidget", 2, paramString1);
+  }
+  
+  private static String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    Iterator localIterator = bdfo.a().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = "lib" + str1 + ".so";
+      if ((!TextUtils.isEmpty(str2)) && (paramString.contains(str2))) {
+        return str1;
+      }
+    }
+    return null;
+  }
+  
+  private static void b(int paramInt, LoadExtResult paramLoadExtResult, long paramLong, bdgc parambdgc, LoadParam paramLoadParam)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.SoLoadManager", 2, "[LoadResult] resCode：" + paramInt);
+    }
+    int i;
+    if (paramLoadExtResult != null)
+    {
+      i = paramLoadExtResult.getReportCode();
+      if (paramLoadExtResult == null) {
+        break label136;
+      }
+    }
+    label136:
+    for (String str = paramLoadExtResult.getReportStr();; str = "")
+    {
+      if (paramInt != 0) {
+        bdgd.a(paramLoadParam, paramLong, "load.end", str, i, null);
+      }
+      if (parambdgc != null) {
+        parambdgc.onLoadResult(paramInt, paramLoadExtResult);
+      }
+      a(paramLoadParam);
+      if (!LoadParam.isCloseReport(paramLoadParam)) {
+        bdla.b(null, "dc00899", "SoLoad", "", "resStat", "resReport", 0, i, str, "", "", "");
+      }
+      return;
+      i = 0;
       break;
     }
+  }
+  
+  private void b(LoadParam paramLoadParam, bdgc parambdgc)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.SoLoadManager", 2, "load loadParam=" + paramLoadParam);
+    }
+    long l = a(paramLoadParam);
+    parambdgc = new bdgj(parambdgc, l, paramLoadParam);
+    if (!LoadParam.isValid(paramLoadParam))
+    {
+      parambdgc.onLoadResult(1, LoadExtResult.create(1, LoadParam.getItemSize(paramLoadParam)));
+      return;
+    }
+    if ((paramLoadParam.mCallType != LoadParam.CALL_TYPE_ASYNC) && (paramLoadParam.mCallType != LoadParam.CALL_TYPE_ASYNC_BY_SYNC)) {
+      paramLoadParam.mCallType = LoadParam.CALL_TYPE_ASYNC;
+    }
+    parambdgc = a(paramLoadParam, parambdgc);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("load isSameParamInLoad=");
+      if (parambdgc == null) {
+        break label190;
+      }
+    }
+    for (;;)
+    {
+      QLog.i("SoLoadWidget.SoLoadManager", 2, bool);
+      if (parambdgc == null) {
+        break;
+      }
+      bdgd.a(paramLoadParam, l, null, "load.join.same.queue", "first=" + parambdgc.mReportSeq, 0, null);
+      return;
+      label190:
+      bool = false;
+    }
+    parambdgc = a(paramLoadParam, l);
+    Object localObject = a(paramLoadParam);
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.SoLoadManager", 2, "load getSoLoader=" + localObject);
+    }
+    a(paramLoadParam, (bdfw)localObject);
+    ((bdfw)localObject).a(paramLoadParam, parambdgc);
+  }
+  
+  public LoadExtResult a(String paramString)
+  {
+    return a(paramString, null);
+  }
+  
+  public LoadExtResult a(String paramString, LoadOptions paramLoadOptions)
+  {
+    return a(a(paramString, paramLoadOptions));
+  }
+  
+  public String a(String paramString)
+  {
+    String str = a(paramString, new bdfy().a(true).b(true).c(true).d(true).a()).getVer();
+    paramString = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString = "";
+    }
+    return paramString;
+  }
+  
+  public void a(String paramString, bdgc parambdgc)
+  {
+    a(paramString, parambdgc, null);
+  }
+  
+  public void a(String paramString, bdgc parambdgc, LoadOptions paramLoadOptions)
+  {
+    a(a(paramString, paramLoadOptions), parambdgc);
+  }
+  
+  public void a(String[] paramArrayOfString, bdgc parambdgc)
+  {
+    a(paramArrayOfString, parambdgc, null);
+  }
+  
+  public void a(String[] paramArrayOfString, bdgc parambdgc, LoadOptions[] paramArrayOfLoadOptions)
+  {
+    a(a(paramArrayOfString, paramArrayOfLoadOptions), parambdgc);
+  }
+  
+  public void b(String paramString, bdgc parambdgc)
+  {
+    a(paramString, parambdgc, new bdfy().a(true).a());
+  }
+  
+  public void b(String[] paramArrayOfString, bdgc parambdgc)
+  {
+    int j = 0;
+    if (paramArrayOfString == null) {}
+    Object localObject;
+    for (int i = 0;; i = paramArrayOfString.length)
+    {
+      localObject = null;
+      if (i <= 0) {
+        break;
+      }
+      LoadOptions[] arrayOfLoadOptions = new LoadOptions[i];
+      for (;;)
+      {
+        localObject = arrayOfLoadOptions;
+        if (j >= i) {
+          break;
+        }
+        arrayOfLoadOptions[j] = new bdfy().a(true).a();
+        j += 1;
+      }
+    }
+    a(paramArrayOfString, parambdgc, localObject);
   }
 }
 

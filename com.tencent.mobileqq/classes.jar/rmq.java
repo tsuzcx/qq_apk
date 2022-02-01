@@ -1,14 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 
 public class rmq
-  implements tpv
+  extends StateListDrawable
 {
-  public rmq(EditColumnFragment paramEditColumnFragment) {}
-  
-  public void a(int paramInt)
-  {
-    this.a.g();
-  }
+  public Drawable a;
+  public Drawable b;
 }
 
 

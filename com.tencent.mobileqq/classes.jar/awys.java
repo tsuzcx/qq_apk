@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.List;
 
 class awys
-  implements DialogInterface.OnClickListener
+  implements awzd<Integer, List<EmoticonPackage>>
 {
-  awys(awyf paramawyf) {}
+  awys(awyr paramawyr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public List<EmoticonPackage> a(Integer paramInteger)
   {
-    awkj.a(this.a.a, 1032);
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
-    }
+    return this.a.a(paramInteger.intValue());
   }
 }
 

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import anvx;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -170,7 +170,7 @@ public class SmallEmotionDownloadedAdapter
             localTextView.setTextSize(14.0F);
             if (paramView.hasRecommendDressup)
             {
-              paramViewHolder = amtj.a(2131713298);
+              paramViewHolder = anvx.a(2131713645);
               localTextView.setText(paramViewHolder);
               localTextView.setTextColor(-8947849);
               localLinearLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject2);
@@ -178,7 +178,7 @@ public class SmallEmotionDownloadedAdapter
               paramViewHolder.leftMargin = ((int)(5.0F * this.density));
               paramViewHolder.gravity = 16;
               localObject2 = new ImageView(this.mContext);
-              ((ImageView)localObject2).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130847025));
+              ((ImageView)localObject2).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130847123));
               localLinearLayout.addView((View)localObject2, paramViewHolder);
               paramViewGroup.addView(localLinearLayout);
               ((SmallEmotionDownloadedAdapter.SmallEmotionDownloadedViewHolder)localObject1).linearLayout = localLinearLayout;
@@ -204,7 +204,7 @@ public class SmallEmotionDownloadedAdapter
               VasWebviewUtil.reportCommercialDrainage(paramViewHolder, "ep_mall", "exp_bq_detail", null, 1, 0, 0, null, (String)localObject1, paramView);
               paramView = paramViewGroup;
               return paramView;
-              paramViewHolder = amtj.a(2131713297);
+              paramViewHolder = anvx.a(2131713644);
               break;
               ((SmallEmotionDownloadedAdapter.SmallEmotionDownloadedViewHolder)localObject1).linearLayout.setVisibility(0);
               break label828;
@@ -244,7 +244,7 @@ public class SmallEmotionDownloadedAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SmallEmotionDownloadedAdapter
  * JD-Core Version:    0.7.0.1
  */

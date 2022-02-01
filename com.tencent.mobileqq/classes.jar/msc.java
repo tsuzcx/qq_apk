@@ -1,132 +1,161 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.util.Pair;
 
 public class msc
 {
-  private static volatile msc jdField_a_of_type_Msc;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new msd(this);
-  Context jdField_a_of_type_AndroidContentContext = null;
-  VideoController jdField_a_of_type_ComTencentAvVideoController = null;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  String jdField_a_of_type_JavaLangString = null;
-  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  mse jdField_a_of_type_Mse = null;
-  
-  private msc(VideoAppInterface paramVideoAppInterface)
+  public static Pair<Integer, Integer> a(int paramInt1, int paramInt2)
   {
-    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.getNearByProfile");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp();
-    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-  }
-  
-  public static msc a(VideoAppInterface paramVideoAppInterface)
-  {
-    if (jdField_a_of_type_Msc == null) {}
-    try
+    int j = 1;
+    switch (paramInt2)
     {
-      if (jdField_a_of_type_Msc == null) {
-        jdField_a_of_type_Msc = new msc(paramVideoAppInterface);
-      }
-      return jdField_a_of_type_Msc;
+    default: 
+      return null;
     }
-    finally {}
+    for (int i = 1;; i = 2)
+    {
+      paramInt2 = j;
+      switch (paramInt1)
+      {
+      default: 
+        return null;
+      }
+    }
+    paramInt2 = 2;
+    for (;;)
+    {
+      return new Pair(Integer.valueOf(paramInt2), Integer.valueOf(i));
+      paramInt2 = 3;
+      continue;
+      paramInt2 = 4;
+      continue;
+      paramInt2 = 5;
+      continue;
+      paramInt2 = 7;
+    }
   }
   
-  public void a()
+  public static void a()
   {
-    this.jdField_a_of_type_Mse = null;
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentAvVideoController = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-    jdField_a_of_type_Msc = null;
+    msa.b("0X800A2B9");
   }
   
-  /* Error */
-  public void a(VideoAppInterface paramVideoAppInterface, String paramString)
+  public static void a(int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 89	lbu:a	()Llbu;
-    //   5: aload_0
-    //   6: getfield 34	msc:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   9: invokevirtual 93	lbu:c	(Ljava/lang/String;)Llez;
-    //   12: astore_3
-    //   13: aload_3
-    //   14: ifnonnull +6 -> 20
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: return
-    //   20: aload_0
-    //   21: getfield 32	msc:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   24: aload_2
-    //   25: invokeinterface 97 2 0
-    //   30: ifne -13 -> 17
-    //   33: invokestatic 103	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   36: ifeq +28 -> 64
-    //   39: ldc 105
-    //   41: iconst_2
-    //   42: new 107	java/lang/StringBuilder
-    //   45: dup
-    //   46: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   49: ldc 110
-    //   51: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: aload_2
-    //   55: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   64: aload_1
-    //   65: aload_2
-    //   66: invokevirtual 126	com/tencent/av/app/VideoAppInterface:b	(Ljava/lang/String;)Z
-    //   69: ifeq -52 -> 17
-    //   72: aload_0
-    //   73: getfield 32	msc:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   76: aload_2
-    //   77: invokeinterface 129 2 0
-    //   82: pop
-    //   83: goto -66 -> 17
-    //   86: astore_1
-    //   87: aload_0
-    //   88: monitorexit
-    //   89: aload_1
-    //   90: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	91	0	this	msc
-    //   0	91	1	paramVideoAppInterface	VideoAppInterface
-    //   0	91	2	paramString	String
-    //   12	2	3	locallez	lez
-    // Exception table:
-    //   from	to	target	type
-    //   2	13	86	finally
-    //   20	64	86	finally
-    //   64	83	86	finally
+    String str;
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    case 4: 
+      str = "0X800A2BF";
+    }
+    for (;;)
+    {
+      msa.b(str);
+      return;
+      str = "0X800A2C1";
+      continue;
+      str = "0X800A2BE";
+      continue;
+      str = "0X800A2C3";
+    }
   }
   
-  public void a(String paramString)
+  public static void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    Pair localPair = a(paramInt1, paramInt2);
+    if (localPair == null) {
+      return;
+    }
+    bdla.b(null, "dc00898", "", "", "0X800A2BB", "0X800A2BB", ((Integer)localPair.first).intValue(), 0, String.valueOf(((Integer)localPair.second).intValue()), "", "", "");
   }
   
-  public void a(mse parammse)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    this.jdField_a_of_type_Mse = parammse;
+    String str;
+    switch (paramInt3)
+    {
+    default: 
+      return;
+    case 1: 
+      str = "0X800A3E3";
+    }
+    for (;;)
+    {
+      Object localObject = a(paramInt1, paramInt2);
+      if (localObject == null) {
+        break;
+      }
+      paramInt1 = ((Integer)((Pair)localObject).first).intValue();
+      localObject = String.valueOf(((Pair)localObject).second);
+      if (!TextUtils.isEmpty(paramString)) {
+        localObject = paramString;
+      }
+      bdla.b(null, "dc00898", "", "", str, str, paramInt1, 0, (String)localObject, "", "", "");
+      return;
+      str = "0X800A3E1";
+      continue;
+      str = "0X800A2BC";
+    }
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    if (paramInt == 1) {
+      bdla.b(null, "dc00898", "", "", "0X800A3E2", "0X800A3E2", 0, 0, "", paramString, "", "");
+    }
+  }
+  
+  public static void b()
+  {
+    msa.b("0X800A2BA");
+  }
+  
+  public static void c()
+  {
+    msa.b("0X800A2BD");
+  }
+  
+  public static void d()
+  {
+    msa.b("0X800A2C0");
+  }
+  
+  public static void e()
+  {
+    msa.b("0X800A2C2");
+  }
+  
+  public static void f()
+  {
+    msa.b("0X800A3DB");
+  }
+  
+  public static void g()
+  {
+    msa.b("0X800A3DC");
+  }
+  
+  public static void h()
+  {
+    msa.b("0X800B5A0");
+  }
+  
+  public static void i()
+  {
+    msa.b("0X800B5A1");
+  }
+  
+  public static void j()
+  {
+    msa.b("0X800B5A2");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     msc
  * JD-Core Version:    0.7.0.1
  */

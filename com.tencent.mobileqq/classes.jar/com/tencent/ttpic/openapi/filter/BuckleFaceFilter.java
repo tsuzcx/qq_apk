@@ -58,28 +58,24 @@ public class BuckleFaceFilter
       this.needRender = false;
     }
     Object localObject1;
+    double d3;
+    double d4;
     float f1;
-    float f2;
+    PointF localPointF1;
     Object localObject2;
-    float f5;
-    PointF localPointF;
-    float f3;
-    float f4;
+    Object localObject3;
     do
     {
       return;
       localObject1 = (BuckleFrameItem)this.mBuckleItem.frameList.get(paramInt);
       double d1 = localObject1.size[0];
       double d2 = localObject1.size[1];
-      double d3 = localObject1.nosePoint[0];
-      double d4 = localObject1.nosePoint[1];
-      paramFloat = (float)Math.min(d1 / this.width, d2 / this.height);
-      f1 = (float)(d1 / paramFloat);
-      f2 = (float)(d2 / paramFloat);
-      localObject2 = new PointF((f1 - this.width) / 2.0F, (f2 - this.height) / 2.0F);
-      f5 = (float)(((BuckleFrameItem)localObject1).faceWidth / paramFloat);
-      f1 = (float)(d3 / paramFloat - ((PointF)localObject2).x);
-      f2 = (float)(d4 / paramFloat - ((PointF)localObject2).y);
+      d3 = localObject1.nosePoint[0];
+      d4 = localObject1.nosePoint[1];
+      f1 = (float)Math.min(d1 / this.width, d2 / this.height);
+      paramFloat = (float)(d1 / f1);
+      f2 = (float)(d2 / f1);
+      localPointF1 = new PointF((paramFloat - this.width) / 2.0F, (f2 - this.height) / 2.0F);
       localObject2 = FaceOffUtil.getFullCoords(paramList, 3.0F);
       if ((localObject2 == null) || (((List)localObject2).isEmpty()))
       {
@@ -89,13 +85,10 @@ public class BuckleFaceFilter
       paramList = ((List)localObject2).iterator();
       while (paramList.hasNext())
       {
-        localPointF = (PointF)paramList.next();
-        localPointF.x = ((float)(localPointF.x / this.mFaceDetScale));
-        localPointF.y = ((float)(localPointF.y / this.mFaceDetScale));
+        localObject3 = (PointF)paramList.next();
+        ((PointF)localObject3).x = ((float)(((PointF)localObject3).x / this.mFaceDetScale));
+        ((PointF)localObject3).y = ((float)(((PointF)localObject3).y / this.mFaceDetScale));
       }
-      paramFloat = distanceOf((PointF)((List)localObject2).get(0), (PointF)((List)localObject2).get(18));
-      f3 = ((PointF)((List)localObject2).get(64)).x;
-      f4 = ((PointF)((List)localObject2).get(64)).y;
       paramList = new ArrayList();
       paramList.add(((List)localObject2).get(99));
       paramList.add(((List)localObject2).get(105));
@@ -106,60 +99,70 @@ public class BuckleFaceFilter
       this.faceCheckPoint.add(((List)localObject2).get(88));
       this.faceCheckPoint.add(((List)localObject2).get(0));
       this.faceCheckPoint.add(((List)localObject2).get(18));
-      localObject2 = this.faceCheckPoint.iterator();
-      while (((Iterator)localObject2).hasNext())
+      localObject3 = this.faceCheckPoint.iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        localPointF = (PointF)((Iterator)localObject2).next();
-        if ((localPointF.x < 0.0F) || (localPointF.y < 0.0F) || (localPointF.x >= this.width) || (localPointF.y >= this.height)) {
+        PointF localPointF2 = (PointF)((Iterator)localObject3).next();
+        if ((localPointF2.x < 0.0F) || (localPointF2.y < 0.0F) || (localPointF2.x >= this.width) || (localPointF2.y >= this.height)) {
           this.needRender = false;
         }
       }
       this.faceCheckPoint.clear();
     } while (!this.needRender);
-    float f6 = f5 / paramFloat;
-    float f7 = paramArrayOfFloat[1];
-    paramFloat = 0.0F;
-    if (Math.abs(f7) > 0.2D) {
-      if (f7 <= 0.0F) {
-        break label825;
+    float f2 = (float)(((BuckleFrameItem)localObject1).faceWidth / f1);
+    float f3 = distanceOf((PointF)((List)localObject2).get(0), (PointF)((List)localObject2).get(18));
+    paramFloat = paramArrayOfFloat[1];
+    if (Math.abs(paramFloat) > 0.2D) {
+      if (paramFloat > 0.0F) {
+        paramFloat = (paramFloat - 0.2F) * f2;
       }
     }
-    label825:
-    for (paramFloat = (f7 - 0.2F) * f5;; paramFloat = (0.2F + f7) * f5)
+    for (;;)
     {
-      localObject2 = new Matrix();
-      ((Matrix)localObject2).reset();
-      ((Matrix)localObject2).postRotate(radians2DEGREES((float)(paramArrayOfFloat[2] - ((BuckleFrameItem)localObject1).faceAngle)), f3, f4);
-      ((Matrix)localObject2).postScale(f6, f6, f3, f4);
-      ((Matrix)localObject2).postTranslate(f1 - f3, f2 - f4);
-      ((Matrix)localObject2).postTranslate(paramFloat, 0.0F);
+      localObject3 = new Matrix();
+      ((Matrix)localObject3).reset();
+      float f4 = ((PointF)((List)localObject2).get(64)).x;
+      float f5 = ((PointF)((List)localObject2).get(64)).y;
+      f2 /= f3;
+      ((Matrix)localObject3).postRotate(radians2DEGREES((float)(paramArrayOfFloat[2] - ((BuckleFrameItem)localObject1).faceAngle)), f4, f5);
+      ((Matrix)localObject3).postScale(f2, f2, f4, f5);
+      ((Matrix)localObject3).postTranslate((float)(d3 / f1 - localPointF1.x) - f4, (float)(d4 / f1 - localPointF1.y) - f5);
+      ((Matrix)localObject3).postTranslate(paramFloat, 0.0F);
       paramArrayOfFloat = new ArrayList();
       localObject1 = paramList.iterator();
-      while (((Iterator)localObject1).hasNext())
+      for (;;)
       {
-        localPointF = (PointF)((Iterator)localObject1).next();
-        float[] arrayOfFloat = new float[2];
-        ((Matrix)localObject2).mapPoints(arrayOfFloat, new float[] { localPointF.x, localPointF.y });
-        paramArrayOfFloat.add(new PointF(arrayOfFloat[0], arrayOfFloat[1]));
+        if (((Iterator)localObject1).hasNext())
+        {
+          localPointF1 = (PointF)((Iterator)localObject1).next();
+          localObject2 = new float[2];
+          ((Matrix)localObject3).mapPoints((float[])localObject2, new float[] { localPointF1.x, localPointF1.y });
+          paramArrayOfFloat.add(new PointF(localObject2[0], localObject2[1]));
+          continue;
+          paramFloat = (0.2F + paramFloat) * f2;
+          break;
+        }
       }
+      int i = 0;
+      paramInt = 0;
+      while (paramInt < 4)
+      {
+        localObject1 = (PointF)paramArrayOfFloat.get(paramInt);
+        this.attrPositions[i] = (2.0F * ((PointF)localObject1).x / this.width - 1.0F);
+        this.attrPositions[(i + 1)] = (((PointF)localObject1).y * 2.0F / this.height - 1.0F);
+        localObject1 = (PointF)paramList.get(paramInt);
+        this.attrTexCoords[i] = (((PointF)localObject1).x / this.width);
+        this.attrTexCoords[(i + 1)] = (((PointF)localObject1).y / this.height);
+        i += 2;
+        paramInt += 1;
+      }
+      setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLE_STRIP);
+      setRenderMode(0);
+      setPositions(this.attrPositions);
+      setTexCords(this.attrTexCoords);
+      return;
+      paramFloat = 0.0F;
     }
-    int i = 0;
-    paramInt = 0;
-    while (paramInt < 4)
-    {
-      localObject1 = (PointF)paramArrayOfFloat.get(paramInt);
-      this.attrPositions[i] = (2.0F * ((PointF)localObject1).x / this.width - 1.0F);
-      this.attrPositions[(i + 1)] = (((PointF)localObject1).y * 2.0F / this.height - 1.0F);
-      localObject1 = (PointF)paramList.get(paramInt);
-      this.attrTexCoords[i] = (((PointF)localObject1).x / this.width);
-      this.attrTexCoords[(i + 1)] = (((PointF)localObject1).y / this.height);
-      i += 2;
-      paramInt += 1;
-    }
-    setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLE_STRIP);
-    setRenderMode(0);
-    setPositions(this.attrPositions);
-    setTexCords(this.attrTexCoords);
   }
   
   public void ApplyGLSLFilter()

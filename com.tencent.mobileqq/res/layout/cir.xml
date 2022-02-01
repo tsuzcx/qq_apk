@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bja" android:background="@drawable/hd0" android:paddingLeft="16.0dip" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/no9" android:background="@drawable/dk7" android:paddingLeft="2.0dip" android:paddingRight="7.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/nfp" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/mx0" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/fph" android:layout_centerVertical="true" />
-        <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="#ff03081a" android:id="@id/noh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <ListView android:id="@id/n22" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" android:layout_below="@id/nfp" />
-    <View android:id="@id/e_1" android:background="#ffebedf5" android:visibility="visible" android:layout_width="210.0dip" android:layout_height="0.5dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="16.0dip" android:layout_below="@id/nfp" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/mv8" android:layout_width="36.0dip" android:layout_height="36.0dip" android:scaleType="centerCrop" />
+    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/mva" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="7.0dip" android:maxWidth="100.0dip" android:maxLines="1" />
+</LinearLayout>

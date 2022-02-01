@@ -1,45 +1,103 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bdwh
-  implements View.OnClickListener
+public class bdwh
+  extends aqwt<bdwg>
 {
-  bdwh(bdwg parambdwg) {}
-  
-  public void onClick(View paramView)
+  public static bdwg a()
   {
-    Object localObject = (bdxy)paramView.getTag();
-    String str;
-    if (((bdxy)localObject).b == 1)
-    {
-      this.a.a.a.a(((bdxy)localObject).a, null);
-      if (((bdxy)localObject).a == null) {}
-      for (str = "";; str = ((bdxy)localObject).a)
-      {
-        bcef.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, str, "", "", "");
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-      }
+    return (bdwg)aqxe.a().a(612);
+  }
+  
+  public static void a()
+  {
+    aqxe.a().a(new int[] { 612 });
+  }
+  
+  @NonNull
+  public bdwg a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[migrateOldOrDefaultContent]");
     }
-    this.a.a.a.a(((bdxy)localObject).d, ((bdxy)localObject).a);
-    if (((bdxy)localObject).d == null)
-    {
-      str = "";
-      label114:
-      if (((bdxy)localObject).a != null) {
-        break label157;
-      }
+    return new bdwg();
+  }
+  
+  @Nullable
+  public bdwg a(aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[onParsed]");
     }
-    label157:
-    for (localObject = "";; localObject = ((bdxy)localObject).a)
+    bdwg localbdwg = new bdwg();
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
     {
-      bcef.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, str, (String)localObject, "", "");
-      break;
-      str = ((bdxy)localObject).d;
-      break label114;
+      paramArrayOfaqxa = paramArrayOfaqxa[0];
+      if ((paramArrayOfaqxa == null) || (TextUtils.isEmpty(paramArrayOfaqxa.a))) {}
     }
+    try
+    {
+      localbdwg.a = new JSONObject(paramArrayOfaqxa.a);
+      return localbdwg;
+    }
+    catch (JSONException paramArrayOfaqxa)
+    {
+      QLog.e("StudyRoomConfProcessor", 4, paramArrayOfaqxa, new Object[0]);
+    }
+    return localbdwg;
+  }
+  
+  public void a(bdwg parambdwg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[onUpdate] newConf:" + parambdwg);
+    }
+  }
+  
+  public Class<bdwg> clazz()
+  {
+    return bdwg.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[get migrateOldVersion]");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
+    }
+  }
+  
+  public void onReqNoReceive()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "onReqNoReceive: type=" + type() + "curContent:" + a());
+    }
+  }
+  
+  public int type()
+  {
+    return 612;
   }
 }
 

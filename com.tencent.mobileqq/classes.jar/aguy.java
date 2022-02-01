@@ -1,13 +1,16 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
 
 public class aguy
-  implements agut
+  implements View.OnTouchListener
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public aguy(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramagap.a(paramMessageRecord, paramLinearLayout, paramagcc, paramString);
+    return true;
   }
 }
 

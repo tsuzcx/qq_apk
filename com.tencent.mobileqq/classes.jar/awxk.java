@@ -1,73 +1,58 @@
-import SummaryCard.TPraiseInfo;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awxk
-  extends Handler
+class awxk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public awxk(NearbyCardVoteView paramNearbyCardVoteView) {}
+  awxk(awxj paramawxj, NotifyPushSettingActivity paramNotifyPushSettingActivity, FormSwitchItem paramFormSwitchItem1, FormSwitchItem paramFormSwitchItem2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super.handleMessage(paramMessage);
-    int j;
-    if (paramMessage.what == NearbyCardVoteView.c)
-    {
-      j = paramMessage.arg1;
-      if (paramMessage.arg2 > 0)
-      {
-        i = 2;
-        this.a.a(j, i);
-      }
+    int j = 1;
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewMsgNotificationManager", 2, new Object[] { "NEW_MSG_NOTIFICATION_KEY::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
     }
-    while (paramMessage.what != NearbyCardVoteView.d) {
-      for (;;)
-      {
-        return;
-        i = 0;
-      }
-    }
-    int m = paramMessage.arg1;
-    int n = paramMessage.arg2;
-    Object localObject = (List)paramMessage.obj;
-    paramMessage = (Message)localObject;
-    if (localObject != null)
+    if (!this.jdField_a_of_type_Awxj.c())
     {
-      paramMessage = (Message)localObject;
-      if (n < ((List)localObject).size()) {
-        paramMessage = ((List)localObject).subList(0, n);
+      this.jdField_a_of_type_Awxj.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+      localFormSwitchItem = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
+        bool = true;
       }
-    }
-    paramMessage = ayol.a(paramMessage);
-    int i = 0;
-    int k;
-    if ((i < n) && (i < 20))
-    {
-      if ((paramMessage == null) || (i >= paramMessage.size())) {
-        break label267;
-      }
-      k = (int)((TPraiseInfo)paramMessage.get(i)).uCustomId;
-      j = ((TPraiseInfo)paramMessage.get(i)).iIsPayed;
-    }
-    for (;;)
-    {
-      localObject = this.a.a.obtainMessage(NearbyCardVoteView.c, k, j);
-      this.a.a.sendMessageDelayed((Message)localObject, (i + 2) * 500);
-      i += 1;
-      break;
-      paramMessage = this.a.getContext().getSharedPreferences("nearby_card_reddot_num", 0).edit();
-      paramMessage.putInt("voteNum", m);
-      paramMessage.putInt("increaseNum", n);
-      paramMessage.commit();
+      localFormSwitchItem.setChecked(bool);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_Awxj.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      label267:
-      j = 0;
-      k = 0;
+    }
+    FormSwitchItem localFormSwitchItem = this.b;
+    if (paramBoolean)
+    {
+      i = 0;
+      label129:
+      localFormSwitchItem.setVisibility(i);
+      if (anui.a(this.jdField_a_of_type_Awxj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).h()) {
+        this.b.setVisibility(8);
+      }
+      SettingCloneUtil.writeValue(this.jdField_a_of_type_Awxj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_Awxj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), null, "new_msg_notification_key", paramBoolean);
+      if (!paramBoolean) {
+        break label227;
+      }
+    }
+    label227:
+    for (int i = j;; i = 2)
+    {
+      bdla.b(null, "dc00898", "", "", "0X800A511", "0X800A511", i, 0, "", "", "", "");
+      break;
+      i = 8;
+      break label129;
     }
   }
 }

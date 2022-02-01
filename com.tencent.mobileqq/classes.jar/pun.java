@@ -1,18 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.commonsdk.cache.QQLruCache;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import java.util.Comparator;
 
 class pun
-  extends QQLruCache<String, List<BaseData>>
+  implements Comparator<DynamicChannelDataModel>
 {
-  pun(pum parampum, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  pun(puk parampuk) {}
   
-  protected void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
+  public int a(DynamicChannelDataModel paramDynamicChannelDataModel1, DynamicChannelDataModel paramDynamicChannelDataModel2)
   {
-    super.entryRemoved(paramBoolean, paramString, paramList1, paramList2);
+    if (paramDynamicChannelDataModel1.recommendSeq == paramDynamicChannelDataModel2.recommendSeq) {
+      return 0;
+    }
+    if (paramDynamicChannelDataModel1.recommendSeq < paramDynamicChannelDataModel2.recommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

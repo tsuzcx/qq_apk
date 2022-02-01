@@ -1,106 +1,48 @@
-import android.content.Context;
-import android.text.TextUtils;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.view.View;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import java.io.File;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Locale;
 
 public class awuh
-  implements awtu
+  implements Handler.Callback
 {
-  TextureVideoView a;
+  public awuh(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
   
-  public awuh(Context paramContext)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a = new TextureVideoView(paramContext.getApplicationContext());
-  }
-  
-  public int a()
-  {
-    if (this.a == null) {
-      return 0;
-    }
-    return (int)(this.a.getCurrentPosition() / (this.a.getDuration() + 0.1D) * 100.0D);
-  }
-  
-  public long a()
-  {
-    return this.a.getCurrentPosition();
-  }
-  
-  public View a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a.seekTo((int)paramLong);
-  }
-  
-  public void a(awtv paramawtv)
-  {
-    this.a.setOnCompletionListener(new awui(this, paramawtv));
-  }
-  
-  public void a(awtw paramawtw) {}
-  
-  public void a(awtx paramawtx)
-  {
-    this.a.setOnErrorListener(new awuj(this, paramawtx, null));
-  }
-  
-  public void a(awty paramawty)
-  {
-    this.a.setOnInfoListener(new awuk(this, paramawty));
-  }
-  
-  public void a(awtz paramawtz)
-  {
-    TextureVideoView localTextureVideoView = this.a;
-    if (paramawtz == null) {}
-    for (paramawtz = null;; paramawtz = new awul(this, paramawtz))
+    switch (paramMessage.what)
     {
-      localTextureVideoView.setOnPreparedListener(paramawtz);
-      return;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
-  {
-    paramString1 = paramString3;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1 = paramString3;
-      if (vmq.a(new File(paramString2))) {
-        paramString1 = paramString2;
+    default: 
+      return false;
+    case 0: 
+      if ((!this.a.a()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1))
+      {
+        this.a.jdField_a_of_type_Algc.a(this.a.jdField_b_of_type_JavaUtilList);
+        this.a.jdField_a_of_type_Algc.a(21);
+        this.a.b();
+        if ((this.a.c) || (this.a.jdField_b_of_type_JavaUtilList.size() == 0)) {
+          this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        }
+        while (!this.a.jdField_a_of_type_Boolean)
+        {
+          this.a.jdField_a_of_type_Boolean = true;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("MatchChatMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) }));
+          return false;
+          this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        }
       }
+      this.a.jdField_b_of_type_Boolean = true;
+      return false;
     }
-    this.a.setVideoPath(paramString1);
-  }
-  
-  public boolean a()
-  {
-    return this.a.isPlaying();
-  }
-  
-  public void b()
-  {
-    this.a.start();
-  }
-  
-  public void c()
-  {
-    this.a.pause();
-  }
-  
-  public void d()
-  {
-    b();
+    MatchChatMsgListFragment.a(this.a, MatchChatMsgListFragment.a(this.a));
+    return false;
   }
 }
 

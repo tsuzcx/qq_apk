@@ -1,94 +1,22 @@
-import android.content.Context;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.util.Pair;
 
-public final class aezj
-  implements CompoundButton.OnCheckedChangeListener
+class aezj
+  implements DialogInterface.OnClickListener
 {
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  aezj(aezi paramaezi, bdxj parambdxj, Pair paramPair) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject1 = (ChatMessage)paramCompoundButton.getTag();
-    if (localObject1 == null) {}
-    label507:
-    for (;;)
+    this.jdField_a_of_type_Bdxj.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    if (!bdxj.a(this.jdField_a_of_type_Aezi.a.app))
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      if ((localObject1 instanceof MessageForPtt))
-      {
-        localObject2 = MediaPlayerManager.a(BaseActivity.sTopActivity.app).a();
-        if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).uniseq == ((ChatMessage)localObject1).uniseq))) {
-          MediaPlayerManager.a(BaseActivity.sTopActivity.app).c(false);
-        }
-      }
-      Object localObject2 = AIOLongShotHelper.a();
-      if ((localObject2 != null) && (((AIOLongShotHelper)localObject2).a()))
-      {
-        if ((paramBoolean != ((AIOLongShotHelper)localObject2).a((ChatMessage)localObject1)) && (BaseChatItemLayout.a != null)) {
-          BaseChatItemLayout.a.onCheckedChanged((ChatMessage)localObject1, paramCompoundButton, paramBoolean);
-        }
-      }
-      else if (paramBoolean != awcm.a().a((ChatMessage)localObject1))
-      {
-        if (!paramBoolean) {
-          awcm.a().a((ChatMessage)localObject1, paramBoolean);
-        }
-        for (;;)
-        {
-          if (BaseChatItemLayout.a == null) {
-            break label507;
-          }
-          BaseChatItemLayout.a.onCheckedChanged((ChatMessage)localObject1, paramCompoundButton, paramBoolean);
-          break;
-          if ((localObject1 instanceof MessageForFile))
-          {
-            localObject2 = aszt.a(BaseActivity.sTopActivity.app, (MessageForFile)localObject1);
-            if ((((FileManagerEntity)localObject2).getCloudType() == 1) && (((FileManagerEntity)localObject2).status == 2))
-            {
-              localObject1 = paramCompoundButton.getContext().getString(2131692383);
-              QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
-              paramCompoundButton.setChecked(false);
-              break;
-            }
-          }
-          if ((localObject1 instanceof MessageForTroopFile))
-          {
-            localObject2 = (MessageForTroopFile)localObject1;
-            localObject2 = bfby.a(BaseActivity.sTopActivity.app, (MessageForTroopFile)localObject2);
-            if ((localObject2 != null) && ((((becp)localObject2).b == 0) || (((becp)localObject2).b == 1) || (((becp)localObject2).b == 2) || (((becp)localObject2).b == 3) || (((becp)localObject2).b == 4)))
-            {
-              localObject1 = paramCompoundButton.getContext().getString(2131692383);
-              QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
-              paramCompoundButton.setChecked(false);
-              break;
-            }
-          }
-          int i = awcm.a().a();
-          if (awcm.a().a((ChatMessage)localObject1, i))
-          {
-            if (awcm.a().a == 7) {}
-            for (localObject1 = paramCompoundButton.getContext().getString(2131697904, new Object[] { Integer.valueOf(i) });; localObject1 = paramCompoundButton.getContext().getString(2131697903, new Object[] { Integer.valueOf(i) }))
-            {
-              QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
-              paramCompoundButton.setChecked(false);
-              break;
-            }
-          }
-          awcm.a().a((ChatMessage)localObject1, paramBoolean);
-        }
-      }
+      this.jdField_a_of_type_Aezi.a.setTitle("");
+      bdxi.a(this.jdField_a_of_type_Aezi.a.app, this.jdField_a_of_type_Aezi.a, null);
     }
+    this.jdField_a_of_type_Aezi.a.finish();
   }
 }
 

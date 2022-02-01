@@ -1,23 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
-class agbn
-  implements bjoe
+public class agbn
+  extends beci
 {
-  agbn(agbj paramagbj, bjnw parambjnw) {}
+  public agbn(TroopChatPie paramTroopChatPie) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    ChatActivityUtils.a(this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Agbj.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, true, true, null, null);
-    bcef.b(this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
+    becr.c(this.a.app, this.a.mContext, this.a.uiHandler, paramBoolean, paramArrayOfObject);
+  }
+  
+  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    becr.d(this.a.app, this.a.mContext, this.a.uiHandler, paramBoolean, paramArrayOfObject);
   }
 }
 

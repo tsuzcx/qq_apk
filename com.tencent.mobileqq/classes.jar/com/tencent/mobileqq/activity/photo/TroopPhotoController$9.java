@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.photo;
 
-import andd;
-import bftf;
+import aofu;
+import bhbx;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class TroopPhotoController$9
-  extends andd
+  extends aofu
 {
   TroopPhotoController$9(TroopPhotoController paramTroopPhotoController) {}
   
   public void onCmdTroopAvatar(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
   {
-    if (!bftf.a(paramString1, this.this$0.mTroopUin)) {
+    if (!bhbx.a(paramString1, this.this$0.mTroopUin)) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -29,7 +29,7 @@ class TroopPhotoController$9
       do
       {
         return;
-      } while ((!paramBoolean) || (!bftf.a(paramString1, this.this$0.mTroopUin)));
+      } while ((!paramBoolean) || (!bhbx.a(paramString1, this.this$0.mTroopUin)));
       if (QLog.isColorLevel()) {
         QLog.i("TroopPhotoController", 2, String.format("onGetTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
       }

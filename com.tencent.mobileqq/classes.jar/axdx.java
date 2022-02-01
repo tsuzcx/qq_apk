@@ -1,19 +1,13 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
 public class axdx
-  extends axdv
+  implements axfu
 {
-  public View e;
-  public ImageView e;
-  public View f;
-  public ImageView f;
-  public TextView g;
+  public axdx(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public axdx(axdw paramaxdw)
+  public void a(int paramInt)
   {
-    super(paramaxdw);
+    MultiAIOFragment.a(this.a, true);
   }
 }
 

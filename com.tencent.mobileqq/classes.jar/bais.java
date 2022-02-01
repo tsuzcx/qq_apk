@@ -1,192 +1,142 @@
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class bais
 {
-  protected int a;
-  private long jdField_a_of_type_Long;
-  public Rect a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  public boolean b;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  public boolean c;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private boolean f;
-  private boolean g;
-  private boolean h;
-  private boolean i;
   
-  private bais()
+  public bais(Context paramContext)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_Boolean = true;
+    this(paramContext, null);
   }
   
-  public static bais a()
+  public bais(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    return baiu.a();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public int a()
+  private boolean a()
   {
-    return this.jdField_b_of_type_Int;
+    return (this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("http://")) || (this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("https://"));
   }
   
-  public long a()
+  private void b()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Rect a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect;
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    Bundle localBundle = paramIntent.getExtras();
-    this.jdField_d_of_type_Boolean = localBundle.getBoolean("IS_APP_SHARE_PIC", false);
-    this.jdField_e_of_type_Boolean = localBundle.getBoolean("extra.IS_APOLLO");
-    this.jdField_a_of_type_JavaLangString = localBundle.getString("extra.GROUP_UIN");
-    this.jdField_b_of_type_JavaLangString = localBundle.getString("extra.GROUP_CODE");
-    this.f = localBundle.getBoolean("extra.IS_FROM_MULTI_MSG");
-    this.jdField_a_of_type_Long = localBundle.getLong("key_multi_forward_seq", 0L);
-    this.jdField_b_of_type_Int = localBundle.getInt("forward_source_uin_type", -1);
-    this.jdField_c_of_type_JavaLangString = localBundle.getString("uin");
-    this.jdField_d_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    boolean bool;
-    if (TextUtils.isEmpty(localBundle.getString("babyq_video_type")))
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
+    String str1;
+    do
     {
-      bool = false;
-      this.g = bool;
-      this.jdField_a_of_type_Int = localBundle.getInt("extra.EXTRA_ENTRANCE");
-      if ((!this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int != 4) && (!localBundle.getBoolean("is_one_item"))) {
-        break label272;
-      }
-      bool = true;
-      label168:
-      this.h = bool;
-      if (!paramIntent.getBooleanExtra("extra.IS_FROM_CHAT_FILE_HISTORY", false)) {
-        break label277;
-      }
-    }
-    label272:
-    label277:
-    for (int j = 1;; j = 0)
-    {
-      this.jdField_c_of_type_Int = j;
-      this.jdField_d_of_type_Int = localBundle.getInt("extra.AIO_CURRENT_PANEL_STATE", -3321);
-      this.jdField_e_of_type_Int = localBundle.getInt("extra.MOBILE_QQ_PROCESS_ID", -2147483648);
-      this.i = localBundle.getBoolean("extra.IS_FROM_CHAT_FILE_HISTORY", false);
-      this.jdField_a_of_type_Boolean = localBundle.getBoolean("is_ReplyMsg_From_Same_Session", true);
-      this.jdField_c_of_type_Boolean = localBundle.getBoolean(bkkh.jdField_b_of_type_JavaLangString, true);
-      this.jdField_b_of_type_Boolean = localBundle.getBoolean(bkkh.jdField_a_of_type_JavaLangString);
       return;
-      bool = true;
-      break;
-      bool = false;
-      break label168;
+      str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
+    } while (TextUtils.isEmpty(str1));
+    try
+    {
+      String str2 = aaqo.b(str1, aaqo.b(2));
+      if (QLog.isColorLevel()) {
+        QLog.i("HttpMqqJumper", 2, "openMoreOptions uin:" + str1 + " uinCode:" + str2);
+      }
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAIOList(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, -1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.topicId, false);
+      Object localObject2 = new ArrayList();
+      if (localObject1 != null) {
+        ((List)localObject2).addAll((Collection)localObject1);
+      }
+      localObject1 = aaqo.a(str1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 25004, 10, (List)localObject2);
+      localObject2 = ((String)localObject1).replaceAll(str1, str2);
+      Bundle localBundle = aaqo.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      if (QLog.isColorLevel()) {
+        QLog.i("HttpMqqJumper", 2, "openMoreOptions safetyReport reportMsgOrg: " + (String)localObject1 + "  reportMsg: " + (String)localObject2);
+      }
+      aaqo.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mActivity, str1, str2, null, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 25004, (String)localObject2, localBundle);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("HttpMqqJumper", 1, "openMoreOptions safetyReport error" + localThrowable.getMessage());
     }
   }
   
-  public void a(Rect paramRect)
+  private boolean b()
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    return this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("mqq://jubao.qq.com");
   }
   
-  public boolean a()
+  private boolean c()
   {
-    return this.jdField_d_of_type_Boolean;
+    return this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("mqq://");
   }
   
-  public int b()
+  public bais a(SessionInfo paramSessionInfo)
   {
-    return this.jdField_c_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    return this;
   }
   
-  public String b()
+  public bais a(BaseChatPie paramBaseChatPie)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    return this;
   }
   
-  public boolean b()
+  public bais a(String paramString)
   {
-    return this.jdField_e_of_type_Boolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public int c()
+  public void a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public boolean c()
-  {
-    return this.f;
-  }
-  
-  public int d()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String d()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public boolean d()
-  {
-    return this.g;
-  }
-  
-  public int e()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public boolean e()
-  {
-    return this.h;
-  }
-  
-  public boolean f()
-  {
-    return this.i;
-  }
-  
-  public boolean g()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != -1);
-  }
-  
-  public boolean h()
-  {
-    return this.jdField_a_of_type_Boolean;
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    Object localObject;
+    label94:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          localObject = null;
+          if (b())
+          {
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("mqq://", "https://");
+            b();
+          }
+          while (localObject != null)
+          {
+            this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+            return;
+            if (!a()) {
+              break label94;
+            }
+            localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+            ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
+          }
+        }
+        if (!c()) {
+          break;
+        }
+      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
+      localObject = bhey.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    } while (localObject == null);
+    ((bheh)localObject).a();
+    ((bheh)localObject).a();
   }
 }
 

@@ -1,83 +1,82 @@
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ProviderInfo;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.widget.URLThemeImageView;
 
-public class bfyf
+public abstract class bfyf
+  implements bfyi
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "com.android.launcher.permission.READ_SETTINGS", "com.android.launcher2.permission.READ_SETTINGS", "com.android.launcher3.permission.READ_SETTINGS", "com.google.android.launcher.permission.READ_SETTINGS", "com.huawei.android.launcher.permission.READ_SETTINGS", "com.huawei.launcher2.permission.READ_SETTINGS", "com.huawei.launcher3.permission.READ_SETTINGS", "com.bbk.launcher2.permission.READ_SETTINGS", "com.huaqin.launcherEx.permission.READ_SETTINGS", "com.htc.launcher.permission.READ_SETTINGS", "com.htc.launcher.settings", "com.oppo.launcher.permission.READ_SETTINGS", "com.meizu.android.launcher.permission.READ_SETTINGS", "com.meizu.launcher2.permission.READ_SETTINGS", "com.meizu.android.launcher3.permission.READ_SETTINGS", "com.lenovo.launcher.permission.READ_SETTINGS", "com.ebproductions.android.launcher.permission.READ_SETTINGS", "com.android.mylauncher.permission.READ_SETTINGS", "com.sec.android.app.twlauncher.settings.READ_SETTINGS", "com.fede.launcher.permission.READ_SETTINGS", "net.qihoo.launcher.permission.READ_SETTINGS", "com.qihoo360.launcher.permission.READ_SETTINGS", "com.lge.launcher.permission.READ_SETTINGS", "org.adw.launcher.permission.READ_SETTINGS", "telecom.mdesk.permission.READ_SETTINGS" };
+  protected int a;
+  protected Context a;
+  protected SessionInfo a;
+  protected QQAppInterface a;
+  protected final String a;
   
-  public static String a(Context paramContext)
+  public bfyf(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (jdField_a_of_type_JavaLangString == null)
-    {
-      jdField_a_of_type_JavaLangString = a(paramContext, jdField_a_of_type_ArrayOfJavaLangString);
-      if (jdField_a_of_type_JavaLangString == null) {
-        break label88;
-      }
-    }
-    label88:
-    for (jdField_a_of_type_JavaLangString = "content://" + jdField_a_of_type_JavaLangString + "/favorites?notify=true";; jdField_a_of_type_JavaLangString = "empty")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.shortcut", 2, "getShortcutUri.shortcutUri=" + jdField_a_of_type_JavaLangString);
-      }
-      return jdField_a_of_type_JavaLangString;
-    }
+    this.jdField_a_of_type_JavaLangString = ("Navigate." + getClass().getSimpleName());
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
   }
   
-  private static String a(Context paramContext, String[] paramArrayOfString)
+  protected int a()
   {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getInstalledPackages(10);
-      if (paramContext != null)
-      {
-        paramContext = paramContext.iterator();
-        while (paramContext.hasNext())
-        {
-          ProviderInfo[] arrayOfProviderInfo = ((PackageInfo)paramContext.next()).providers;
-          if (arrayOfProviderInfo != null)
-          {
-            int k = arrayOfProviderInfo.length;
-            int i = 0;
-            while (i < k)
-            {
-              ProviderInfo localProviderInfo = arrayOfProviderInfo[i];
-              if (localProviderInfo != null)
-              {
-                int m = paramArrayOfString.length;
-                int j = 0;
-                while (j < m)
-                {
-                  if (paramArrayOfString[j].equals(localProviderInfo.readPermission))
-                  {
-                    paramContext = localProviderInfo.authority;
-                    return paramContext;
-                  }
-                  j += 1;
-                }
-              }
-              i += 1;
-            }
-          }
-        }
-      }
-      return null;
-    }
-    catch (RuntimeException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    return this.jdField_a_of_type_Int;
   }
+  
+  @DrawableRes
+  public int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public bfyf a(int paramInt)
+  {
+    return this;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString) {}
+  
+  public void a(int paramInt1, bffr parambffr, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong) {}
+  
+  public boolean a(int paramInt)
+  {
+    return true;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    return true;
+  }
+  
+  public boolean a(int paramInt, URLThemeImageView paramURLThemeImageView, String paramString)
+  {
+    return false;
+  }
+  
+  protected boolean a(@NonNull MessageRecord paramMessageRecord, long paramLong1, long paramLong2)
+  {
+    if ((paramMessageRecord.shmsgseq <= paramLong2) && (QLog.isColorLevel())) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkShMsgSeqCanShow, shMsgSeq = " + paramMessageRecord.shmsgseq + ", firstMsgSeq = " + paramLong1 + ", lastReadSeq = " + paramLong2);
+    }
+    return (paramMessageRecord.shmsgseq < paramLong1) && (paramMessageRecord.shmsgseq > paramLong2);
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfyf
  * JD-Core Version:    0.7.0.1
  */

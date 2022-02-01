@@ -1,24 +1,80 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.HttpEngineTask;
-import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8.1.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutputStream;
 
 public class bmht
-  implements HttpEngineTask.IHttpEngineTask
 {
-  public bmht(AEEditorCommonEditFragment.8 param8) {}
+  private ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream();
+  private ObjectOutputStream jdField_a_of_type_JavaIoObjectOutputStream = new ObjectOutputStream(this.jdField_a_of_type_JavaIoByteArrayOutputStream);
   
-  public void onPreDownloadStart(HttpEngineTask paramHttpEngineTask) {}
-  
-  public void onResp(NetResp paramNetResp)
+  public void a(int paramInt)
   {
-    ThreadManager.excute(new AEEditorCommonEditFragment.8.1.1(this, paramNetResp), 64, null, true);
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeInt(paramInt);
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeObject(paramObject);
+  }
+  
+  public void a(String paramString)
+  {
+    a(paramString, "");
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (paramString1 == null)
+    {
+      this.jdField_a_of_type_JavaIoObjectOutputStream.writeUTF(paramString2);
+      return;
+    }
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeUTF(paramString1);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeBoolean(paramBoolean);
+  }
+  
+  public byte[] a()
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaIoObjectOutputStream.close();
+      try
+      {
+        label7:
+        arrayOfByte1 = this.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray();
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          try
+          {
+            byte[] arrayOfByte1;
+            this.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+            return arrayOfByte1;
+          }
+          catch (Exception localException3)
+          {
+            byte[] arrayOfByte2;
+            return arrayOfByte2;
+          }
+          localException1 = localException1;
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.msg.qqwalletmsg", 2, "flushDataAndCloseStream toByteArray Exception", localException1);
+          }
+          arrayOfByte2 = null;
+        }
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label7;
+    }
+  }
 }
 
 

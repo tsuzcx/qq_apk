@@ -1,15 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.image.URLImageView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
 
 class sxt
-  implements udv
+  implements Animator.AnimatorListener
 {
-  sxt(sxp paramsxp, ChannelCoverInfo paramChannelCoverInfo) {}
+  sxt(sxs paramsxs, boolean paramBoolean) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    sxp.a(this.jdField_a_of_type_Sxp).setImageDrawable(sxp.a(this.jdField_a_of_type_Sxp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo, false));
+    sxs.a(this.jdField_a_of_type_Sxs, this.jdField_a_of_type_Boolean);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    sxs.a(this.jdField_a_of_type_Sxs, this.jdField_a_of_type_Boolean);
+    sxs.a(this.jdField_a_of_type_Sxs);
+    this.jdField_a_of_type_Sxs.b.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

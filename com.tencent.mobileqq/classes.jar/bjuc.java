@@ -1,54 +1,50 @@
-import com.tencent.widget.TCWDatePicker;
-import com.tencent.widget.TCWNumberPicker;
-import java.util.Calendar;
-
 public class bjuc
-  implements bjuj
 {
-  public bjuc(TCWDatePicker paramTCWDatePicker) {}
+  private static bjud a = new bjud();
   
-  public void a(TCWNumberPicker paramTCWNumberPicker, int paramInt1, int paramInt2)
+  public static void a(bjud parambjud)
   {
-    TCWDatePicker.b(this.a).setTimeInMillis(TCWDatePicker.a(this.a).getTimeInMillis());
-    int i;
-    if (paramTCWNumberPicker == TCWDatePicker.a(this.a))
+    if (parambjud != null)
     {
-      i = TCWDatePicker.b(this.a).getActualMaximum(5);
-      if ((paramInt1 == i) && (paramInt2 == 1)) {
-        TCWDatePicker.b(this.a).add(5, 1);
-      }
-    }
-    for (;;)
-    {
-      TCWDatePicker.a(this.a, TCWDatePicker.b(this.a).get(1), TCWDatePicker.b(this.a).get(2), TCWDatePicker.b(this.a).get(5));
-      TCWDatePicker.b(this.a);
-      TCWDatePicker.c(this.a);
+      a = parambjud;
       return;
-      if ((paramInt1 == 1) && (paramInt2 == i))
-      {
-        TCWDatePicker.b(this.a).add(5, -1);
-      }
-      else
-      {
-        TCWDatePicker.b(this.a).add(5, paramInt2 - paramInt1);
-        continue;
-        if (paramTCWNumberPicker == TCWDatePicker.b(this.a))
-        {
-          TCWDatePicker.a(this.a);
-          if ((paramInt1 == 11) && (paramInt2 == 0)) {
-            TCWDatePicker.b(this.a).add(2, 1);
-          } else if ((paramInt1 == 0) && (paramInt2 == 11)) {
-            TCWDatePicker.b(this.a).add(2, -1);
-          } else {
-            TCWDatePicker.b(this.a).add(2, paramInt2 - paramInt1);
-          }
-        }
-        else if (paramTCWNumberPicker == TCWDatePicker.c(this.a))
-        {
-          TCWDatePicker.b(this.a).set(1, paramInt2);
-        }
-      }
     }
+    a = new bjud();
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a.a(paramString1, paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a.a(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    a.b(paramString1, paramString2);
+  }
+  
+  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a.b(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    a.c(paramString1, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a.c(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    a.d(paramString1, paramString2);
   }
 }
 

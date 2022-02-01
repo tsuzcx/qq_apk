@@ -1,168 +1,120 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.LbsManagerService;
-import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.util.Xml;
 import com.tencent.qphone.base.util.QLog;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
+import org.xmlpull.v1.XmlPullParser;
 
 public class pku
 {
-  private static final LbsManagerService.OnLocationChangeListener jdField_a_of_type_ComTencentMobileqqAppSosoLbsManagerService$OnLocationChangeListener = new pkv("readinjoy_anti_cheating", false);
-  private static boolean jdField_a_of_type_Boolean;
-  
-  private static int a()
+  public static Map<String, String> a(String paramString)
   {
-    String str1 = a();
-    String str2 = (String)bkwm.a("readinjoy_sp_key_last_request_lbs_date", "");
-    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "getToadyRequestLbsTime, today = ", str1, ", lastRequestLbsDate = ", str2 });
-    if (str1.equals(str2)) {
-      return ((Integer)bkwm.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0))).intValue();
-    }
-    return 0;
-  }
-  
-  private static SosoInterface.SosoLocation a()
-  {
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = LbsManagerService.getCachedLbsInfo("readinjoy_anti_cheating");
-    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null)) {
-      return localSosoLbsInfo.mLocation;
-    }
-    return null;
-  }
-  
-  private static String a()
-  {
-    return new SimpleDateFormat("yyyy.MM.dd").format(new Date());
-  }
-  
-  public static void a()
-  {
-    long l = System.currentTimeMillis();
-    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "init, app launch time = ", Long.valueOf(l) });
-    bkwm.a("readinjoy_sp_key_app_launch_time", Long.valueOf(l));
-  }
-  
-  public static void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return;
-    }
-    SosoInterface.SosoLocation localSosoLocation = a();
-    if (localSosoLocation != null) {}
+    HashMap localHashMap = new HashMap();
+    label159:
     for (;;)
     {
       try
       {
-        paramJSONObject.put("longitude", localSosoLocation.mLon02);
-        paramJSONObject.put("latitude", localSosoLocation.mLat02);
-        if (!QLog.isColorLevel()) {
-          break;
+        XmlPullParser localXmlPullParser = Xml.newPullParser();
+        localXmlPullParser.setFeature("http://xmlpull.org/v1/doc/features.html#process-namespaces", false);
+        localXmlPullParser.setInput(new StringReader(paramString));
+        int i = localXmlPullParser.getEventType();
+        if (i != 1)
+        {
+          if (localXmlPullParser.getEventType() == 0)
+          {
+            QLog.d("AladdinParseUtils", 2, "[parseContentXml] START_DOCUMENT");
+            i = localXmlPullParser.next();
+            continue;
+          }
+          if (localXmlPullParser.getEventType() != 2) {
+            continue;
+          }
+          QLog.d("AladdinParseUtils", 2, "[parseContentXml] START_TAG");
+          paramString = localXmlPullParser.getName();
+          if (!"configs".equals(paramString)) {
+            break label159;
+          }
+          a(localXmlPullParser, localHashMap);
+          continue;
         }
-        QLog.d("ReadInJoySpEventReportUtil", 2, new Object[] { "json = ", paramJSONObject });
-        return;
+        QLog.e("AladdinParseUtils", 1, "[parseContentXml] unknown tag: " + paramString);
       }
-      catch (JSONException localJSONException)
+      catch (Exception paramString)
       {
-        QLog.d("ReadInJoySpEventReportUtil", 1, "addLbsInfo e = ", localJSONException);
-        continue;
+        QLog.e("AladdinParseUtils", 1, "[parseContentXml] ", paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("AladdinParseUtils", 2, "[parseContentXml] result=" + localHashMap);
+        }
+        return localHashMap;
       }
-      b();
     }
   }
   
-  private static boolean a()
+  private static void a(XmlPullParser paramXmlPullParser)
   {
-    Object localObject = (QQAppInterface)pay.a();
-    if ((localObject == null) || (!((QQAppInterface)localObject).isLogin()))
-    {
-      QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, app is null or not login, do not request.");
-      return false;
+    if (paramXmlPullParser.getEventType() != 2) {
+      throw new IllegalStateException();
     }
-    if (jdField_a_of_type_Boolean)
-    {
-      QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, isRequestingLbs.");
-      return false;
-    }
-    if (a() != null)
-    {
-      QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, cache is valid, no need to request.");
-      return false;
-    }
-    localObject = BaseApplicationImpl.getApplication().getApplicationContext();
-    if ((localObject != null) && (Build.VERSION.SDK_INT >= 23) && (((Context)localObject).checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
-    {
-      QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, no location permission.");
-      return false;
-    }
-    localObject = Aladdin.getConfig(165);
-    if (localObject != null)
-    {
-      int i = ((AladdinConfig)localObject).getIntegerFromString("lbs_switch", 1);
-      QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "lbsSwitch = ", Integer.valueOf(i) });
-      if (i != 1)
+    int i = 1;
+    while (i != 0) {
+      switch (paramXmlPullParser.next())
       {
-        QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, switch is OFF, do not request.");
-        return false;
+      default: 
+        break;
+      case 1: 
+        throw new IllegalStateException();
+      case 3: 
+        i -= 1;
+        break;
+      case 2: 
+        QLog.d("AladdinParseUtils", 2, "[skip] " + paramXmlPullParser.getName());
+        i += 1;
       }
-      i = ((AladdinConfig)localObject).getIntegerFromString("lbs_request_interval", 2);
-      long l1 = ((Long)bkwm.a("readinjoy_sp_key_app_launch_time", Long.valueOf(System.currentTimeMillis()))).longValue();
-      long l2 = (System.currentTimeMillis() - l1) / 1000L / 60L;
-      QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "from app launch interval = ", Long.valueOf(l2), ", lbsRequestInterval = ", Integer.valueOf(i), ", appLaunchTime = ", Long.valueOf(l1) });
-      if (l2 <= i)
-      {
-        QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, less than lbs request interval.");
-        return false;
-      }
-      i = ((AladdinConfig)localObject).getIntegerFromString("lbs_day_limit", 1);
-      int j = a();
-      QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "lbsDayLimit = ", Integer.valueOf(i), ", todayRequestTime = ", Integer.valueOf(j) });
-      if (j >= i)
-      {
-        QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: NO, over lbs day limit.");
-        return false;
-      }
-    }
-    QLog.d("ReadInJoySpEventReportUtil", 1, "isAbleToRequestLbs: YES !!!");
-    return true;
-  }
-  
-  private static void b()
-  {
-    if (a())
-    {
-      LbsManagerService.startLocation(jdField_a_of_type_ComTencentMobileqqAppSosoLbsManagerService$OnLocationChangeListener);
-      jdField_a_of_type_Boolean = true;
-      c();
     }
   }
   
-  private static void c()
+  private static void a(XmlPullParser paramXmlPullParser, Map<String, String> paramMap)
   {
-    String str = a();
-    Object localObject = (String)bkwm.a("readinjoy_sp_key_last_request_lbs_date", "");
-    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "updateToadyRequestLbsTime, today = ", str, ", lastRequestLbsDate = ", localObject });
-    if (str.equals(localObject))
+    paramXmlPullParser.require(2, null, "configs");
+    int i = paramXmlPullParser.next();
+    if ((i != 3) && (i != 1))
     {
-      localObject = (Integer)bkwm.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(0));
-      QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "updateToadyRequestLbsTime, todayTime = ", localObject });
-      bkwm.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(((Integer)localObject).intValue() + 1));
+      if (i == 2) {
+        b(paramXmlPullParser, paramMap);
+      }
+      for (;;)
+      {
+        i = paramXmlPullParser.next();
+        break;
+        QLog.e("AladdinParseUtils", 1, "[readConfigs] unknown event type: " + i);
+      }
     }
-    for (;;)
+    paramXmlPullParser.require(3, null, "configs");
+  }
+  
+  private static void b(XmlPullParser paramXmlPullParser, Map<String, String> paramMap)
+  {
+    if (paramXmlPullParser.getEventType() != 2) {
+      throw new IllegalStateException();
+    }
+    String str = paramXmlPullParser.getName();
+    int i = paramXmlPullParser.next();
+    if ((i != 3) && (i != 1))
     {
-      bkwm.a("readinjoy_sp_key_last_request_lbs_date", str);
-      return;
-      QLog.d("ReadInJoySpEventReportUtil", 1, "updateToadyRequestLbsTime, first time today.");
-      bkwm.a("readinjoy_sp_key_toady_request_lbs_time", Integer.valueOf(1));
+      if (i == 4) {
+        paramMap.put(str, paramXmlPullParser.getText());
+      }
+      for (;;)
+      {
+        i = paramXmlPullParser.next();
+        break;
+        if (i == 2)
+        {
+          QLog.d("AladdinParseUtils", 2, "[readTag] unexpected nested tag: " + paramXmlPullParser.getName() + ", skip.");
+          a(paramXmlPullParser);
+        }
+      }
     }
   }
 }

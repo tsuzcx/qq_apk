@@ -1,32 +1,19 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aacb
-  implements bjoe
+public class aacb
+  implements View.OnClickListener
 {
-  aacb(aaca paramaaca) {}
+  public aacb(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, CertifiedAccountMeta.StYouZanShop paramStYouZanShop) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
-      }
-      return;
-    case 0: 
-      aaca.a(this.a);
-      return;
-    case 1: 
-      aaca.b(this.a);
-      return;
-    case 2: 
-      aaca.c(this.a);
-      return;
-    }
-    aaca.d(this.a);
+    zqm.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StYouZanShop.schema.get());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

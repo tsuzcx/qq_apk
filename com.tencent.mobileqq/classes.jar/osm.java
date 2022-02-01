@@ -1,19 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment.8.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.HotPicData;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2;
 
 public class osm
-  implements auis
+  extends AnimatorListenerAdapter
 {
-  public osm(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  public osm(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2 param2) {}
   
-  public void a(HotPicData paramHotPicData)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a = paramHotPicData;
-    ReadInJoyCommentComponentFragment.a(this.a, null);
-    ThreadManager.getUIHandler().post(new ReadInJoyCommentComponentFragment.8.1(this));
+    this.a.this$0.a.setVisibility(8);
   }
 }
 

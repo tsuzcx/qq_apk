@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.TroopAdmin;
 
-public class ajvz
-  implements View.OnClickListener
+public final class ajvz
+  implements Parcelable.Creator<ChatHistoryTroopMemberFragment.TroopAdmin>
 {
-  public ajvz(RedPacketKSongFragment paramRedPacketKSongFragment) {}
-  
-  public void onClick(View paramView)
+  public ChatHistoryTroopMemberFragment.TroopAdmin a(Parcel paramParcel)
   {
-    this.a.b.setVisibility(8);
-    this.a.a.setVisibility(8);
-    RedPacketKSongFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new ChatHistoryTroopMemberFragment.TroopAdmin(paramParcel, null);
+  }
+  
+  public ChatHistoryTroopMemberFragment.TroopAdmin[] a(int paramInt)
+  {
+    return new ChatHistoryTroopMemberFragment.TroopAdmin[paramInt];
   }
 }
 

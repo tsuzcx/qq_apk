@@ -1,10 +1,10 @@
 package dov.com.qq.im.ae.play;
 
 import android.support.annotation.NonNull;
-import bluy;
-import blvb;
-import blvj;
-import bmas;
+import bnkb;
+import bnke;
+import bnkq;
+import bnqc;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,16 +17,16 @@ import mqq.util.WeakReference;
 public class PlayDownloadManagerWrap
 {
   private static final String TAG = "PlayDownloadManagerWrap";
-  private final Map<String, blvj> downloadingMap = new HashMap();
+  private final Map<String, bnkq> downloadingMap = new HashMap();
   private String finalDownloadId = "";
-  private WeakReference<bmas> mPartManager;
+  private WeakReference<bnqc> mPartManager;
   private final Map<String, List<IProgressObserver>> observerMap = new HashMap();
   
-  private void addDownloadListener(String paramString, blvj paramblvj)
+  private void addDownloadListener(String paramString, bnkq parambnkq)
   {
     synchronized (this.downloadingMap)
     {
-      this.downloadingMap.put(paramString, paramblvj);
+      this.downloadingMap.put(paramString, parambnkq);
       return;
     }
   }
@@ -87,7 +87,7 @@ public class PlayDownloadManagerWrap
     this.observerMap.clear();
   }
   
-  public Map<String, blvj> getDownloadingMap()
+  public Map<String, bnkq> getDownloadingMap()
   {
     return this.downloadingMap;
   }
@@ -97,9 +97,9 @@ public class PlayDownloadManagerWrap
     return this.finalDownloadId;
   }
   
-  public void notifyDownloadFinish(blvb paramblvb, boolean paramBoolean)
+  public void notifyDownloadFinish(bnke parambnke, boolean paramBoolean)
   {
-    if (paramblvb == null) {}
+    if (parambnke == null) {}
     for (;;)
     {
       return;
@@ -107,10 +107,10 @@ public class PlayDownloadManagerWrap
       List localList;
       try
       {
-        str = paramblvb.a;
+        str = parambnke.a;
         localList = (List)this.observerMap.get(str);
-        if ((this.finalDownloadId != null) && (this.finalDownloadId.equals(str)) && (paramBoolean) && (paramblvb.equals(AEPlayShowGridAdapter.selectedMaterial))) {
-          ThreadManager.getUIHandler().post(new PlayDownloadManagerWrap.2(this, paramblvb));
+        if ((this.finalDownloadId != null) && (this.finalDownloadId.equals(str)) && (paramBoolean) && (parambnke.equals(AEPlayShowGridAdapter.selectedMaterial))) {
+          ThreadManager.getUIHandler().post(new PlayDownloadManagerWrap.2(this, parambnke));
         }
         if (localList == null)
         {
@@ -119,9 +119,9 @@ public class PlayDownloadManagerWrap
         }
       }
       finally {}
-      paramblvb = localList.iterator();
-      while (paramblvb.hasNext()) {
-        ((IProgressObserver)paramblvb.next()).onDownloadFinish(str, paramBoolean);
+      parambnke = localList.iterator();
+      while (parambnke.hasNext()) {
+        ((IProgressObserver)parambnke.next()).onDownloadFinish(str, paramBoolean);
       }
       this.observerMap.remove(str);
     }
@@ -207,18 +207,18 @@ public class PlayDownloadManagerWrap
     }
   }
   
-  public void startDownload(bmas parambmas, @NonNull bluy parambluy, @NonNull blvb paramblvb)
+  public void startDownload(bnqc parambnqc, @NonNull bnkb parambnkb, @NonNull bnke parambnke)
   {
-    if (isListenerExits(paramblvb.a)) {
+    if (isListenerExits(parambnke.a)) {
       return;
     }
     if ((this.mPartManager == null) || (this.mPartManager.get() == null)) {
-      this.mPartManager = new WeakReference(parambmas);
+      this.mPartManager = new WeakReference(parambnqc);
     }
-    parambmas = new PlayDownloadManagerWrap.DownloadProcessListener(null);
-    addDownloadListener(paramblvb.a, parambmas);
-    this.finalDownloadId = paramblvb.a;
-    ThreadManager.excute(new PlayDownloadManagerWrap.1(this, parambluy, paramblvb, parambmas), 128, null, true);
+    parambnqc = new PlayDownloadManagerWrap.DownloadProcessListener(null);
+    addDownloadListener(parambnke.a, parambnqc);
+    this.finalDownloadId = parambnke.a;
+    ThreadManager.excute(new PlayDownloadManagerWrap.1(this, parambnkb, parambnke, parambnqc), 128, null, true);
   }
 }
 

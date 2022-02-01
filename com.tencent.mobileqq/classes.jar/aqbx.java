@@ -1,45 +1,48 @@
-public class aqbx
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+class aqbx
 {
-  @ausx(a="isStatusBarWhite")
   public int a;
-  @ausx(a="bkgURL")
   public String a;
-  @ausx(a="isNavBarWhite")
   public int b;
-  @ausx(a="logoColor")
   public String b;
-  @ausx(a="needShowLogo")
-  public int c = 1;
+  public int c;
+  public String c;
+  public String d = aqbw.a();
   
   public aqbx()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Int == 1;
-  }
-  
-  public boolean c()
-  {
-    return this.c == 1;
+    this.jdField_a_of_type_JavaLangString = "android";
   }
   
   public String toString()
   {
-    return "QrCodeList{bkgURL = " + this.jdField_a_of_type_JavaLangString + ", isStatusBarWhite = " + this.jdField_a_of_type_Int + ", isNavBarWhite = " + this.jdField_b_of_type_Int + ", logoColor = " + this.jdField_b_of_type_JavaLangString + ", needShowLogo = " + this.c + '}';
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("os", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("app", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("result", this.jdField_a_of_type_Int);
+      localJSONObject.put("scene", this.jdField_b_of_type_Int);
+      localJSONObject.put("type", this.jdField_c_of_type_Int);
+      localJSONObject.put("ver", this.d);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("ArkApp.ArkSecurityReporter", 1, "ArkSafe.report exception=", localJSONException);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.activity.history;
 
-import aixw;
-import amat;
-import aybz;
+import ajtl;
+import ancb;
+import azil;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForApollo;
 import com.tencent.qphone.base.util.QLog;
@@ -12,20 +13,20 @@ import com.tencent.qphone.base.util.QLog;
 public class ChatHistoryTroopAllFragment$6$1
   implements Runnable
 {
-  public ChatHistoryTroopAllFragment$6$1(aixw paramaixw) {}
+  public ChatHistoryTroopAllFragment$6$1(ajtl paramajtl) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("chatHistory.troop.msgList", 2, "do delete uniseq=" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq + ",id=" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getId());
     }
-    aybz localaybz = (aybz)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.b.getManager(201);
-    if (localaybz != null) {
-      localaybz.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+    azil localazil = (azil)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.b.getManager(QQManagerFactory.SLOW_TABLE_MANAGER);
+    if (localazil != null) {
+      localazil.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
     }
     this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.b.getMessageFacade().removeMsgByMessageRecord(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, true);
     if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForApollo)) {
-      amat.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.b, "chat_history_start_del_msg");
+      ancb.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.b, "chat_history_start_del_msg");
     }
   }
 }

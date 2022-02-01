@@ -1,6 +1,6 @@
 package cooperation.qzone.api;
 
-import ajen;
+import akab;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.ViewGroup;
@@ -18,7 +18,7 @@ public abstract interface QzoneFragmentImpl
   
   public abstract void resetReportFlag();
   
-  public abstract void setQzoneSwitchlistener(ajen paramajen);
+  public abstract void setQzoneSwitchlistener(akab paramakab);
   
   public abstract void setRightButtonType(int paramInt);
   

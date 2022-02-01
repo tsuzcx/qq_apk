@@ -1,14 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.photo.album.preview.PicPreviewPresent;
+import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharpP.SharpPUtils;
 
-class akps
-  implements DialogInterface.OnClickListener
+public class akps
+  extends PicPreviewPresent
 {
-  akps(akpr paramakpr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akps(PreviewBean paramPreviewBean)
   {
-    paramDialogInterface.dismiss();
+    super(paramPreviewBean);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = this.mBean.getPath();
+    paramView = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = paramViewGroup.getWidth();
+    localURLDrawableOptions.mRequestHeight = paramViewGroup.getHeight();
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+    paramViewGroup = URLDrawable.getDrawable(SharpPUtils.getWebpUrl(str), localURLDrawableOptions);
+    if (paramViewGroup == null) {
+      QLog.w("PEAK", 2, "drawable == null");
+    }
+    paramView.setImageDrawable(paramViewGroup);
+    return paramView;
   }
 }
 

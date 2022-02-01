@@ -1,37 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class omu
-  implements bhhv
+  implements BusinessObserver
 {
-  public omu(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public void a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    boolean bool2 = true;
-    Object localObject;
-    if (this.a.a)
+    if (paramObject != null)
     {
-      localObject = this.a;
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label61;
-      }
-      bool1 = true;
-      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
-      localObject = ReadInJoySettingActivity.a(this.a);
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label66;
-      }
-    }
-    label61:
-    label66:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ((Switch)localObject).setChecked(bool1);
+      a(paramBoolean, (Bundle)paramObject);
       return;
-      bool1 = false;
-      break;
     }
+    a(paramBoolean, null);
   }
 }
 

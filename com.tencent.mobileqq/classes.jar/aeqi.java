@@ -1,157 +1,62 @@
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQLSActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class aeqi
-  implements apri
+  extends BroadcastReceiver
 {
-  public TroopRobotPickerActivity.RobotPickerData a;
+  private String jdField_a_of_type_JavaLangString;
   
-  public aeqi(TroopRobotPickerActivity paramTroopRobotPickerActivity, TroopRobotPickerActivity.RobotPickerData paramRobotPickerData)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData = paramRobotPickerData;
-  }
+  private aeqi(QQLSActivity paramQQLSActivity) {}
   
-  public int a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int j = 1;
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-    TroopRobotPickerActivity.RobotPickerData localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-    if (i == 2) {
-      i = 2;
-    }
-    for (;;)
+    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(TroopRobotPickerActivity.a, 2, "getColumnCount|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType + ", count : " + i);
-      }
-      return i;
-      int k = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-      localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-      i = j;
-      if (k != 1)
+      do
       {
-        k = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-        localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-        i = j;
-        if (k == 3) {
-          i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount;
-        }
-      }
-    }
-  }
-  
-  public int a(int paramInt)
-  {
-    int j = 0;
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-    TroopRobotPickerActivity.RobotPickerData localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-    if (i == 2) {
-      i = ampm.b.length;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(TroopRobotPickerActivity.a, 2, "getRowCount|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType + ", column : " + paramInt + ", count : " + i);
-      }
-      return i;
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-      localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-      if (i == 1)
-      {
-        i = ampm.a.length;
-      }
-      else
-      {
-        int k = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-        localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-        i = j;
-        if (k == 3)
+        for (;;)
         {
-          i = j;
-          if (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount)
+          return;
+          if (paramIntent != null) {}
+          try
           {
-            i = j;
-            if (paramInt >= 0)
+            this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+            if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString))
             {
-              i = j;
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt] != null) {
-                i = ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt]).size();
+              if (!QLog.isColorLevel()) {
+                continue;
               }
+              QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
             }
           }
-        }
-      }
-    }
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    String str2 = "";
-    int i;
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 2)
-    {
-      if (paramInt2 >= 0)
-      {
-        i = paramInt2;
-        if (paramInt2 < ampm.b.length) {}
-      }
-      else
-      {
-        i = 0;
-      }
-      str1 = ampm.b[i];
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(TroopRobotPickerActivity.a, 2, "getText|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType + ", column : " + paramInt1 + ", row : " + i + ", result : " + str1);
-      }
-      return str1;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 1)
-      {
-        if (paramInt2 >= 0)
-        {
-          i = paramInt2;
-          if (paramInt2 < ampm.c.length) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        str1 = ampm.a[i];
-      }
-      else
-      {
-        str1 = str2;
-        i = paramInt2;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 3)
-        {
-          str1 = str2;
-          i = paramInt2;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt1] != null)
+          catch (Exception paramContext)
           {
-            if (paramInt2 >= 0)
-            {
-              i = paramInt2;
-              if (paramInt2 < ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt1]).size()) {}
-            }
-            else
-            {
-              i = 0;
-            }
-            if (((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt1]).get(i)).code.equals("0")) {
-              str1 = amtj.a(2131714765);
-            } else {
-              str1 = ((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt1]).get(i)).name;
-            }
+            QLog.e("QQLSActivity", 1, paramContext, new Object[0]);
+            return;
           }
         }
-      }
+        if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
+      return;
+    } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder().append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
+      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
+      QLog.d("QQLSActivity", 2, awto.f);
     }
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
+    if (!awto.f) {
+      QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
   }
 }
 

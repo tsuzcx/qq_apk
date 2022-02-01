@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoticonManager.RelatedEmotionSearchResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class anab
-  implements BusinessObserver
+class anab
+  implements DialogInterface.OnClickListener
 {
-  public static final String TAG = "FavEmoRoamingObserver";
+  anab(amzz paramamzz, anah paramanah) {}
   
-  protected void onSearchRelatedEmoError(int paramInt) {}
-  
-  protected void onSearchRelatedEmoResponse(RelatedEmoticonManager.RelatedEmotionSearchResult paramRelatedEmotionSearchResult) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
+    if (this.jdField_a_of_type_Anah != null) {
+      this.jdField_a_of_type_Anah.a(this.jdField_a_of_type_Amzz.a(), "sc.xy_alert_show_success.local", "{\"confirm\":1}");
     }
-    do
-    {
-      return;
-      if ((paramBoolean) && (paramObject != null))
-      {
-        onSearchRelatedEmoResponse((RelatedEmoticonManager.RelatedEmotionSearchResult)paramObject);
-        return;
-      }
-    } while (!(paramObject instanceof Integer));
-    onSearchRelatedEmoError(((Integer)paramObject).intValue());
   }
 }
 

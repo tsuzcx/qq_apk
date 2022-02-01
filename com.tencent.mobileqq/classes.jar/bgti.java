@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
 
-class bgti
-  implements DialogInterface.OnClickListener
+public class bgti
+  implements View.OnTouchListener
 {
-  bgti(bgth parambgth) {}
+  public bgti(TroopPicEffectGuidePicActivity paramTroopPicEffectGuidePicActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
+    int i = paramMotionEvent.getAction();
+    if (i == 0) {
+      paramView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((i == 1) || (i == 3)) {
+        paramView.setAlpha(1.0F);
+      }
+    }
   }
 }
 

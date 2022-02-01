@@ -1,51 +1,32 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.NinePatch;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class afex
+  implements View.OnClickListener
 {
-  public Bitmap a;
-  public NinePatch a;
+  public afex(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    zdl.a(this.a.a);
+    zdl.a(this.a.a.a);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      localArrayList.add(((afgi)this.a.a.a.get(i)).a);
+      i += 1;
     }
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    if (paramBitmap != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap.getNinePatchChunk();
-      if ((paramBitmap != null) && (NinePatch.isNinePatchChunk(paramBitmap))) {
-        this.jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, null);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsNinePatch = null;
-  }
-  
-  public void a(Canvas paramCanvas, Rect paramRect1, Rect paramRect2, Paint paramPaint)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsNinePatch != null) {
-      if (paramPaint != null) {
-        this.jdField_a_of_type_AndroidGraphicsNinePatch.draw(paramCanvas, paramRect2, paramPaint);
-      }
-    }
-    while ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (paramPaint == null)) {
-      return;
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramRect1, paramRect2, paramPaint);
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", localArrayList);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.service.message.codec.decoder.msgType0x210;
 
-import amqd;
-import bbmn;
+import ansr;
+import bctf;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import msf.msgcomm.msg_comm.Msg;
@@ -9,11 +10,11 @@ import msf.msgcomm.msg_comm.Msg;
 public class DataLineDecoder$1
   implements Runnable
 {
-  public DataLineDecoder$1(bbmn parambbmn, MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
+  public DataLineDecoder$1(bctf parambctf, MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
   
   public void run()
   {
-    ((amqd)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getBusinessHandler(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
+    ((ansr)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
   }
 }
 

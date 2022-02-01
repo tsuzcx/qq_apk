@@ -1,13 +1,13 @@
 package dov.com.tencent.mobileqq.richmedia.capture.data;
 
-import bnxl;
+import bpnd;
 
 public class CaptureVideoFilterManager$2
   implements Runnable
 {
   public void run()
   {
-    bnxl.a(this.this$0);
+    bpnd.a(this.this$0);
   }
 }
 

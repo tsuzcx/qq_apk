@@ -1,31 +1,24 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import java.io.File;
+import java.net.URI;
 
 public class wfv
-  extends vqm
 {
-  public List<QQUserUIItem> a = new ArrayList();
+  private boolean a;
   
-  public wfv(qqstory_service.RspConvertUinAndUnionId paramRspConvertUinAndUnionId)
+  private void a(Context paramContext, String paramString1, String paramString2)
   {
-    super(paramRspConvertUinAndUnionId.result);
-    paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.user_list.get();
-    if (paramRspConvertUinAndUnionId != null)
-    {
-      paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.iterator();
-      while (paramRspConvertUinAndUnionId.hasNext())
-      {
-        qqstory_struct.UserInfo localUserInfo = (qqstory_struct.UserInfo)paramRspConvertUinAndUnionId.next();
-        QQUserUIItem localQQUserUIItem = new QQUserUIItem();
-        localQQUserUIItem.convertFrom(localUserInfo);
-        this.a.add(localQQUserUIItem);
-      }
+    paramString1 = new File(paramString1);
+    if (!paramString1.exists()) {
+      return;
     }
+    paramString1 = Uri.parse(paramString1.toURI().toString());
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.setDataAndType(paramString1, paramString2);
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
   }
 }
 

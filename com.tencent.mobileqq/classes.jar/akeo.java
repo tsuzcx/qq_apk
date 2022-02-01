@@ -1,33 +1,21 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View.OnClickListener;
 
-public class akeo
-  implements akdt
+class akeo
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public akeo(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  akeo(aken paramaken) {}
   
-  public void a()
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineBegin---");
+    if (aken.a(this.a) != null)
+    {
+      aken.a(this.a).onClick(aken.a(this.a));
+      return true;
     }
-    DrawRedpacketPannelPreviewFragment.a(this.a, false);
-    DrawRedpacketPannelPreviewFragment.a(this.a);
-    DrawRedpacketPannelPreviewFragment.d(this.a).setTextColor(Color.parseColor("#878B99"));
-    DrawRedpacketPannelPreviewFragment.d(this.a).setText(amtj.a(2131702666));
+    return false;
   }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineFinish---");
-    }
-    DrawRedpacketPannelPreviewFragment.c(this.a);
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
 }
 
 

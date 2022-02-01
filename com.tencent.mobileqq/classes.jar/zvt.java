@@ -1,160 +1,44 @@
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.subscribe.comment.EmoView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zvt
+  implements AdapterView.OnItemClickListener
 {
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private final List<Animator> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final zwd jdField_a_of_type_Zwd;
-  private boolean jdField_a_of_type_Boolean;
-  private final View[] jdField_a_of_type_ArrayOfAndroidViewView;
-  private boolean b;
+  public zvt(EmoView paramEmoView, int paramInt) {}
   
-  public zvt(zwd paramzwd, View... paramVarArgs)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Zwd = paramzwd;
-    this.jdField_a_of_type_ArrayOfAndroidViewView = paramVarArgs;
-  }
-  
-  protected float a(float paramFloat)
-  {
-    return this.jdField_a_of_type_ArrayOfAndroidViewView[0].getContext().getResources().getDisplayMetrics().density * paramFloat;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_ArrayOfAndroidViewView[0];
-  }
-  
-  public Interpolator a()
-  {
-    return this.jdField_a_of_type_AndroidViewAnimationInterpolator;
-  }
-  
-  protected List<Animator> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public zvt a(long paramLong)
-  {
-    this.jdField_a_of_type_Zwd.a(paramLong);
-    return this;
-  }
-  
-  protected zvt a(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramAnimator);
-    return this;
-  }
-  
-  public zvt a(String paramString, float... paramVarArgs)
-  {
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
-    int j = arrayOfView.length;
-    int i = 0;
-    while (i < j)
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramInt == 27)
     {
-      View localView = arrayOfView[i];
-      this.jdField_a_of_type_JavaUtilList.add(ObjectAnimator.ofFloat(localView, paramString, a(paramVarArgs)));
-      i += 1;
-    }
-    return this;
-  }
-  
-  public zvt a(zwa paramzwa)
-  {
-    this.jdField_a_of_type_Zwd.a(paramzwa);
-    return this;
-  }
-  
-  public zvt a(zwc paramzwc, float... paramVarArgs)
-  {
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
-    int j = arrayOfView.length;
-    int i = 0;
-    while (i < j)
-    {
-      View localView = arrayOfView[i];
-      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(a(paramVarArgs));
-      if (paramzwc != null) {
-        localValueAnimator.addUpdateListener(new zvu(this, paramzwc, localView));
+      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
+        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
       }
-      a(localValueAnimator);
-      i += 1;
+      if (!bool1) {
+        EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+      }
     }
-    return this;
-  }
-  
-  public zvt a(float... paramVarArgs)
-  {
-    return a("translationY", paramVarArgs);
-  }
-  
-  public zvt a(View... paramVarArgs)
-  {
-    return this.jdField_a_of_type_Zwd.b(paramVarArgs);
-  }
-  
-  public zwd a()
-  {
-    return this.jdField_a_of_type_Zwd.a(new AccelerateInterpolator());
-  }
-  
-  public zwd a(float paramFloat)
-  {
-    return this.jdField_a_of_type_Zwd.a(new DecelerateInterpolator(paramFloat));
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected float[] a(float... paramVarArgs)
-  {
-    if (!this.b) {
-      return paramVarArgs;
-    }
-    float[] arrayOfFloat = new float[paramVarArgs.length];
-    int i = 0;
-    while (i < paramVarArgs.length)
+    for (;;)
     {
-      arrayOfFloat[i] = a(paramVarArgs[i]);
-      i += 1;
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      int i = (this.jdField_a_of_type_Int - 1) * 27 + paramInt;
+      if (i < 107)
+      {
+        String str = zwg.b[zvx.b[i]];
+        bool1 = bool2;
+        if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
+          bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(str);
+        }
+        if (!bool1) {
+          EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(str);
+        }
+      }
     }
-    return arrayOfFloat;
-  }
-  
-  public zvt b(float... paramVarArgs)
-  {
-    return a("alpha", paramVarArgs);
-  }
-  
-  public zwd b()
-  {
-    this.jdField_a_of_type_Zwd.a();
-    return this.jdField_a_of_type_Zwd;
-  }
-  
-  public zvt c(float... paramVarArgs)
-  {
-    return a(new zvv(this), paramVarArgs);
-  }
-  
-  public zvt d(float... paramVarArgs)
-  {
-    return a(new zvw(this), paramVarArgs);
   }
 }
 

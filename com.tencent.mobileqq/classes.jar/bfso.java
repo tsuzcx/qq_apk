@@ -1,24 +1,20 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
-final class bfso
-  implements Comparator
+public class bfso
+  implements DialogInterface.OnClickListener
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public bfso(ReciteFragment paramReciteFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
-    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
-    if (l1 == l2) {
-      return 0;
-    }
-    if (l1 < l2) {
-      return 2;
-    }
-    return -1;
+    ReciteFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfso
  * JD-Core Version:    0.7.0.1
  */

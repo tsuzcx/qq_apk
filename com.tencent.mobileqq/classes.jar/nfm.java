@@ -1,79 +1,37 @@
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl;
-import com.tencent.avgame.qav.SecurityPolicyChecker;
-import com.tencent.avgame.session.AVGameUserInfo;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl;
+import com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl.RefreshEntryTask;
+import com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl.ShowAwardResult;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class nfm
-  implements nhm
+  extends nhd
 {
-  public nfm(AVGameControlUIImpl paramAVGameControlUIImpl) {}
+  public nfm(GameActivityCenterCtrl paramGameActivityCenterCtrl) {}
   
-  public void a(boolean paramBoolean)
+  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    if (this.a.a()) {}
-    Object localObject1;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localObject1 = ngu.b();
-        } while (localObject1 == null);
-        localObject1 = ((ngu)localObject1).a();
-      } while (localObject1 == null);
-      AVGameControlUIImpl.a(this.a, "CheckDisableSmallPicTask");
-    } while ((this.a.a == null) || (!paramBoolean));
-    boolean bool2 = SecurityPolicyChecker.a().b();
-    Object localObject2 = new ArrayList();
-    ((nhn)localObject1).b((List)localObject2);
-    boolean bool1;
-    if (((List)localObject2).size() > 0)
-    {
-      localObject1 = ((List)localObject2).iterator();
-      paramBoolean = false;
-      do
-      {
-        do
-        {
-          bool1 = paramBoolean;
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject2 = (AVGameUserInfo)((Iterator)localObject1).next();
-        } while (localObject2 == null);
-        if (!((AVGameUserInfo)localObject2).hasVideo()) {
-          break label242;
-        }
-      } while (((AVGameUserInfo)localObject2).mIsSelf);
+    if (QLog.isColorLevel()) {
+      QLog.i("GameACCtrl", 2, "onSyncShareGame, [isSuccess: " + paramBoolean + ", errorCode: " + paramInt + ", errorMsg:" + paramString1 + ", playGameId: " + paramString2 + ", jumpUrl: " + paramString3 + "]");
     }
-    label242:
-    for (;;)
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString3))) {
+      nom.a().b().post(new GameActivityCenterCtrl.ShowAwardResult(paramString3));
+    }
+    if (paramBoolean) {
+      GameActivityCenterCtrl.a(this.a, true);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, nfy paramnfy)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GameACCtrl", 2, "onGetActivityEntry, [isSuccess: " + paramBoolean + ", errorCode: " + paramInt + ", errorMsg:" + paramString + ", entry: " + paramnfy + "]");
+    }
+    if (paramBoolean)
     {
-      if (((AVGameUserInfo)localObject2).mBigVideo)
-      {
-        paramBoolean = true;
-      }
-      else if (!bool2)
-      {
-        paramBoolean = true;
-        continue;
-        bool1 = false;
-        if (bool1) {
-          this.a.c();
-        }
-        while (QLog.isDevelopLevel())
-        {
-          QLog.i("AVGameControlUIImpl", 4, "checkDisableSmallPic, [" + bool2 + "], needRequest[" + bool1 + "]");
-          return;
-          this.a.e();
-        }
-        break;
-      }
+      GameActivityCenterCtrl.a(this.a, paramnfy);
+      nom.a().b().post(new GameActivityCenterCtrl.RefreshEntryTask());
     }
   }
 }

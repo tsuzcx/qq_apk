@@ -1,43 +1,57 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 class bcmf
-  implements View.OnClickListener
+  implements Comparator<bcff>
 {
   bcmf(bcme parambcme) {}
   
-  public void onClick(View paramView)
+  public int a(bcff parambcff1, bcff parambcff2)
   {
-    Context localContext = paramView.getContext();
-    if (NetworkUtil.getSystemNetwork(localContext) == 1)
-    {
-      bcme.a(this.a, localContext, paramView);
-      if ((localContext instanceof BaseActivity)) {
-        bcef.b(((BaseActivity)localContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
+    int i = -1;
+    Object localObject = (awyz)this.a.a.getManager(QQManagerFactory.CONTACT_MANAGER);
+    parambcff1 = ((awyz)localObject).c(((bceb)parambcff1).e());
+    parambcff2 = ((awyz)localObject).c(((bceb)parambcff2).e());
+    if ((parambcff1 == null) || (parambcff2 == null)) {
+      if ((parambcff1 == null) && (parambcff2 == null)) {
+        i = 0;
       }
     }
-    for (;;)
+    boolean bool2;
+    do
     {
-      bcef.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!NetworkUtil.isNetworkAvailable(localContext))
+      do
       {
-        QQToast.a(localContext, 2131692035, 0).a();
+        return i;
+        if (parambcff2 == null) {}
+        for (i = -1;; i = 1) {
+          return i;
+        }
+        if ((parambcff1.uin.equals("0")) && (parambcff2.uin.equals("0"))) {
+          break;
+        }
+        if ((!parambcff1.uin.equals("0")) && (!parambcff2.uin.equals("0"))) {
+          return 0;
+        }
+      } while (!parambcff2.uin.equals("0"));
+      return 1;
+      if (!parambcff1.uin.equals("0")) {
+        break;
       }
-      else
-      {
-        Resources localResources = localContext.getResources();
-        bfur.a(localContext, 232, "", amtj.a(2131713626), localResources.getString(2131690620), localResources.getString(2131694201), new bcmg(this, localContext, paramView), new bcmh(this)).show();
+      localObject = (anvk)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      boolean bool1 = ((anvk)localObject).a(parambcff1.unifiedCode, true);
+      bool2 = ((anvk)localObject).a(parambcff2.unifiedCode, true);
+      if ((!bool1) && (!bool2)) {
+        break;
       }
-    }
+      if ((bool1) && (bool2)) {
+        return 0;
+      }
+    } while (bool2);
+    return 1;
+    return 0;
   }
 }
 

@@ -13,12 +13,12 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bcdf;
-import bgnr;
-import bgnt;
-import bgnu;
-import bgnv;
-import bgnw;
+import bdka;
+import bhyb;
+import bhyd;
+import bhye;
+import bhyf;
+import bhyg;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -71,11 +71,11 @@ public class VipVideoPlayActivity
           i = 1;
           setRequestedOrientation(i);
         }
-        setContentViewNoTitle(2131562018);
+        setContentViewNoTitle(2131562086);
         this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
         if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null)
         {
-          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131380905));
+          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131381257));
           this.jdField_a_of_type_AndroidViewView = ((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView(getApplication()));
           this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
           Object localObject = new FrameLayout.LayoutParams(-1, -1);
@@ -89,9 +89,9 @@ public class VipVideoPlayActivity
             i = UIUtils.dip2px(this, 20.0F);
             ((FrameLayout.LayoutParams)localObject).setMargins(i, i, 0, 0);
             this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843315);
+            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843352);
             this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-            this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bgnt(this));
+            this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bhyd(this));
           }
           long l1 = System.currentTimeMillis();
           this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(getApplication(), (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
@@ -99,9 +99,9 @@ public class VipVideoPlayActivity
           if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
           {
             this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.attachDanmuView();
-            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnControllerClickListener(new bgnu(this));
-            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new bgnw(this));
-            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new bgnv(this));
+            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnControllerClickListener(new bhye(this));
+            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new bhyg(this));
+            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new bhyf(this));
             this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.attachControllerView();
             if (this.jdField_a_of_type_Boolean)
             {
@@ -159,7 +159,7 @@ public class VipVideoPlayActivity
       localStringBuilder.append(paramInt2 + "|");
       localStringBuilder.append(paramLong + "|");
       localStringBuilder.append(paramString2);
-      bcdf.a(null, "b_sng_qqvip_videosdk|mediaplay", localStringBuilder.toString(), true);
+      bdka.a(null, "b_sng_qqvip_videosdk|mediaplay", localStringBuilder.toString(), true);
       return;
     }
     catch (Exception paramString1)
@@ -228,7 +228,7 @@ public class VipVideoPlayActivity
       setResult(4);
       finish();
     }
-    if (bgnr.a(getApplication()))
+    if (bhyb.a(getApplication()))
     {
       int i = a();
       if (i != 0)

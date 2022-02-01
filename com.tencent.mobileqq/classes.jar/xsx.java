@@ -1,86 +1,11 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMultiRcmdDisLike;
-import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-
-class xsx
-  implements bjoe
+public class xsx
+  extends vzj
 {
-  xsx(xss paramxss, bjnw parambjnw, QQUserUIItem paramQQUserUIItem, StoryVideoItem paramStoryVideoItem, HotRecommendFeedItem paramHotRecommendFeedItem) {}
+  public int a;
   
-  public void OnClick(View paramView, int paramInt)
+  public String toString()
   {
-    this.jdField_a_of_type_Bjnw.e();
-    switch (paramInt)
-    {
-    default: 
-      xwa.a("home_page", "multi_press_clk", 0, 5, new String[0]);
-    case 0: 
-    case 1: 
-      Object localObject;
-      do
-      {
-        return;
-        localObject = xss.a(this.jdField_a_of_type_Xss);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) {}
-        for (paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;; paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid)
-        {
-          vpl.a((Context)localObject, 4, paramView);
-          xwa.a("home_page", "multi_press_clk", 0, 1, new String[0]);
-          return;
-        }
-        if (!NetworkUtil.isNetworkAvailable(xss.f(this.jdField_a_of_type_Xss)))
-        {
-          QQToast.a(xss.a(this.jdField_a_of_type_Xss), 1, amtj.a(2131703578), 0).a();
-          return;
-        }
-      } while (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isSubscribe;
-      paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isSubscribe())
-      {
-        paramInt = 0;
-        paramView.isSubscribe = paramInt;
-        xss.a(this.jdField_a_of_type_Xss, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
-        paramView = (vkz)wkp.a().getBusinessHandler(98);
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
-        if (i != 1) {
-          break label255;
-        }
-        paramInt = 1;
-        label220:
-        paramView.a(1, (String)localObject, paramInt, 1);
-        if (i != 1) {
-          break label260;
-        }
-      }
-      label260:
-      for (paramInt = 3;; paramInt = 2)
-      {
-        xwa.a("home_page", "multi_press_clk", 0, paramInt, new String[0]);
-        return;
-        paramInt = 1;
-        break;
-        label255:
-        paramInt = 0;
-        break label220;
-      }
-    }
-    if (!NetworkUtil.isNetworkAvailable(xss.g(this.jdField_a_of_type_Xss)))
-    {
-      QQToast.a(xss.a(this.jdField_a_of_type_Xss), 1, amtj.a(2131703581), 0).a();
-      return;
-    }
-    paramView = new qqstory_service.ReqMultiRcmdDisLike();
-    paramView.vid.set(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-    nmb.a(wkp.a(), new xsy(this), paramView.toByteArray(), vpl.a("StorySvc.multi_rcmd_dis_like"));
-    xwa.a("home_page", "multi_press_clk", 0, 4, new String[0]);
+    return "ChangeVideoSortEvent " + super.toString();
   }
 }
 

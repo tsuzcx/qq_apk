@@ -1,69 +1,57 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
-import com.tencent.mobileqq.utils.ViewUtils;
+import android.os.Looper;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ris
-  implements TextWatcher
+  extends pvq
 {
-  private int jdField_a_of_type_Int;
+  public ris(ComponentHeaderUgc paramComponentHeaderUgc) {}
   
-  public ris(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void b(long paramLong, boolean paramBoolean)
   {
-    int k = paramEditable.length();
     int i;
-    int j;
-    label24:
-    Drawable[] arrayOfDrawable;
-    if (this.jdField_a_of_type_Int > 0)
+    if (Looper.getMainLooper() == Looper.myLooper())
     {
       i = 1;
-      if (k <= 0) {
-        break label156;
+      if (i != 0) {
+        break label32;
       }
-      j = 1;
-      if ((j ^ i) != 0)
-      {
-        arrayOfDrawable = ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment).getCompoundDrawables();
-        if (k <= 0) {
-          break label161;
-        }
-        Drawable localDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment.getResources().getDrawable(2130839579);
-        localDrawable.setBounds(0, 0, ViewUtils.dpToPx(16.0F), ViewUtils.dpToPx(16.0F));
-        arrayOfDrawable[2] = localDrawable;
-      }
+      QLog.e("ComponentHeaderUgc", 2, "Please call this method in main thread!!!");
     }
-    for (;;)
+    label32:
+    ArticleInfo localArticleInfo;
+    do
     {
-      ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-      this.jdField_a_of_type_Int = k;
-      ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment, paramEditable.toString());
-      if (paramEditable.length() <= 0) {
-        break label169;
-      }
-      pkm.a().h(ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment));
       return;
       i = 0;
       break;
-      label156:
-      j = 0;
-      break label24;
-      label161:
-      arrayOfDrawable[2] = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("ComponentHeaderUgc", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
+      }
+      localArticleInfo = this.a.jdField_a_of_type_Rfw.a.a();
+    } while (paramLong != localArticleInfo.mSocialFeedInfo.a.a);
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(anvx.a(2131701792));
+      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
+      localArticleInfo.mSocialFeedInfo.h = 2;
+      localArticleInfo.isNeedShowBtnWhenFollowed = true;
     }
-    label169:
-    ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment).setVisibility(4);
+    for (;;)
+    {
+      pvm.a().b();
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(anvx.a(2131701797));
+      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
+      localArticleInfo.mSocialFeedInfo.h = 1;
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

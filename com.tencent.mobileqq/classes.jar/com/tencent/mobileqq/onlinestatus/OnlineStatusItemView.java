@@ -13,16 +13,16 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import axuy;
-import axvd;
-import axvj;
-import bjsc;
+import azbj;
+import azbo;
+import azbu;
+import bldo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.text.QQText.EmoticonSpan;
 import com.tencent.mobileqq.theme.ThemeUtil;
-import mun;
+import mvl;
 
 public class OnlineStatusItemView
   extends RelativeLayout
@@ -31,7 +31,7 @@ public class OnlineStatusItemView
   private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public axvj a;
+  public azbu a;
   public boolean a;
   public boolean b;
   private boolean c;
@@ -70,7 +70,7 @@ public class OnlineStatusItemView
     localLayoutParams.rightMargin = j;
     this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(null);
     localLayoutParams.addRule(11);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setBackgroundDrawable(getResources().getDrawable(2130840288));
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setBackgroundDrawable(getResources().getDrawable(2130840324));
     addView(this.jdField_a_of_type_AndroidWidgetCheckBox, localLayoutParams);
   }
   
@@ -83,11 +83,11 @@ public class OnlineStatusItemView
     localLayoutParams.addRule(13);
     addView(localLinearLayout, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131372027);
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131372219);
     localLayoutParams = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
     localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131372028);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131372220);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -103,25 +103,25 @@ public class OnlineStatusItemView
     if (this.e) {
       b();
     }
-    setOnTouchListener(new mun());
+    setOnTouchListener(new mvl());
   }
   
-  public void a(axvj paramaxvj)
+  public void a(azbu paramazbu)
   {
-    if (paramaxvj == null) {
+    if (paramazbu == null) {
       return;
     }
-    this.jdField_a_of_type_Axvj = paramaxvj;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramaxvj.jdField_a_of_type_JavaLangString);
-    if (paramaxvj.jdField_a_of_type_Int == 2) {
-      paramaxvj = axvd.a(paramaxvj.jdField_a_of_type_MqqAppAppRuntime$Status);
+    this.jdField_a_of_type_Azbu = paramazbu;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramazbu.b);
+    if (paramazbu.jdField_a_of_type_Int == 2) {
+      paramazbu = azbo.a(paramazbu.jdField_a_of_type_MqqAppAppRuntime$Status);
     }
     for (;;)
     {
-      if (paramaxvj != null)
+      if (paramazbu != null)
       {
-        paramaxvj.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramaxvj);
+        paramazbu.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramazbu);
       }
       boolean bool = ThemeUtil.isNowThemeIsNight(null, false, "");
       int i;
@@ -131,11 +131,11 @@ public class OnlineStatusItemView
       TextView localTextView;
       if (this.c)
       {
-        i = 2130839466;
+        i = 2130839487;
         if (!this.d) {
           break label235;
         }
-        j = 2130839427;
+        j = 2130839448;
         if (bool) {
           i = j;
         }
@@ -147,34 +147,34 @@ public class OnlineStatusItemView
       }
       label235:
       label242:
-      for (paramaxvj = "#FFFFFF";; paramaxvj = "#03081A")
+      for (paramazbu = "#FFFFFF";; paramazbu = "#03081A")
       {
-        localTextView.setTextColor(Color.parseColor(paramaxvj));
+        localTextView.setTextColor(Color.parseColor(paramazbu));
         return;
         if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(a())))
         {
-          paramaxvj = new com.tencent.mobileqq.text.QQText(a(), 3).mSpans[0];
-          if (!(paramaxvj instanceof QQText.EmoticonSpan)) {
+          paramazbu = new com.tencent.mobileqq.text.QQText(a(), 3).mSpans[0];
+          if (!(paramazbu instanceof QQText.EmoticonSpan)) {
             break label249;
           }
-          paramaxvj = ((QQText.EmoticonSpan)paramaxvj).getDrawable();
+          paramazbu = ((QQText.EmoticonSpan)paramazbu).getDrawable();
           break;
         }
-        if (axuy.a().a(paramaxvj))
+        if (azbj.a().a(paramazbu))
         {
-          i = axuy.a();
-          paramaxvj = new bjsc().a(i, 1);
+          i = azbj.a();
+          paramazbu = new bldo().a(i, 1);
           break;
         }
-        paramaxvj = URLDrawable.getDrawable(this.jdField_a_of_type_Axvj.b, URLDrawable.URLDrawableOptions.obtain());
+        paramazbu = URLDrawable.getDrawable(this.jdField_a_of_type_Azbu.c, URLDrawable.URLDrawableOptions.obtain());
         break;
-        i = 2130839465;
+        i = 2130839486;
         break label82;
-        j = 2130839464;
+        j = 2130839485;
         break label92;
       }
       label249:
-      paramaxvj = null;
+      paramazbu = null;
     }
   }
   
@@ -185,11 +185,11 @@ public class OnlineStatusItemView
     int j;
     if (this.c)
     {
-      i = 2130839466;
+      i = 2130839487;
       if (!this.d) {
         break label103;
       }
-      j = 2130839427;
+      j = 2130839448;
       label29:
       if (bool) {
         i = j;
@@ -213,9 +213,9 @@ public class OnlineStatusItemView
       setSelected(false);
       invalidate();
       return;
-      i = 2130839465;
+      i = 2130839486;
       break;
-      j = 2130839464;
+      j = 2130839485;
       break label29;
     }
     label118:

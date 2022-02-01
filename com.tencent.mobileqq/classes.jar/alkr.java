@@ -1,80 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class alkr
-  extends amrc
+public abstract class alkr
+  implements alkt
 {
-  alkr(alkj paramalkj) {}
+  public int a;
+  public long a;
+  public bffm a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
   
-  public void a(long paramLong)
+  public alkr()
   {
-    if (paramLong == 0L) {}
-    String str1;
-    String str2;
-    do
-    {
-      do
-      {
-        return;
-      } while (!this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)));
-      str1 = (String)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-      str2 = ContactUtils.getDiscussionNameCanNull(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong));
-      if ((!TextUtils.isEmpty(str2)) && (!str2.equals(str1))) {
-        alkj.a(this.a, false);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "checkIfNeedUpdate [uin: %d, pre: %s, cur: %s]", new Object[] { Long.valueOf(paramLong), str1, str2 }));
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_b_of_type_Int = -35072;
+    this.jdField_a_of_type_Bffm = new bffm();
   }
   
-  protected void onAddDiscussionMember(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
-  {
-    if (paramBoolean) {
-      a(paramLong);
-    }
-  }
+  @Nullable
+  public abstract Object a(int paramInt, bffl parambffl, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
   
-  protected void onChangeDiscussionName(boolean paramBoolean, String paramString)
+  public boolean a()
   {
-    if (paramBoolean) {}
-    try
-    {
-      a(Long.parseLong(paramString));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  protected void updateDiscussionInfo(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      if (!(paramObject instanceof ArrayList)) {
-        break label70;
-      }
-    }
-    label70:
-    for (paramObject = (ArrayList)paramObject;; paramObject = null)
-    {
-      if ((paramObject != null) && (paramObject.size() > 0))
-      {
-        paramObject = paramObject.iterator();
-        while (paramObject.hasNext())
-        {
-          Object localObject = paramObject.next();
-          if ((localObject instanceof Long)) {
-            a(((Long)localObject).longValue());
-          }
-        }
-      }
-      return;
-    }
+    return true;
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.utils;
 
-import amtj;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
-import bfur;
+import anvx;
+import bhdj;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import ypj;
-import ypk;
+import zec;
+import zed;
 
 public final class FileUtils$1
   implements Runnable
@@ -16,10 +16,10 @@ public final class FileUtils$1
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = bfur.a(this.a, 230);
-    localQQCustomDialog.setMessage(amtj.a(2131703702));
-    localQQCustomDialog.setNegativeButton(amtj.a(2131703704), new ypj(this));
-    localQQCustomDialog.setPositiveButton(amtj.a(2131703703), new ypk(this));
+    QQCustomDialog localQQCustomDialog = bhdj.a(this.a, 230);
+    localQQCustomDialog.setMessage(anvx.a(2131704053));
+    localQQCustomDialog.setNegativeButton(anvx.a(2131704055), new zec(this));
+    localQQCustomDialog.setPositiveButton(anvx.a(2131704054), new zed(this));
     localQQCustomDialog.setCancelable(false);
     localQQCustomDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
     localQQCustomDialog.show();

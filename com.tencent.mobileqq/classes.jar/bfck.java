@@ -1,89 +1,88 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.GetPackageShopRsp;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.RspBody;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.StockItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bfck
-  extends nme
+public class bfck
 {
-  bfck(bfci parambfci, bfch parambfch) {}
+  public int a;
+  public ArrayList<Integer> a;
+  public int b = 0;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bfck()
   {
-    if (paramInt != 0)
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public static bfck a(aqxa[] paramArrayOfaqxa)
+  {
+    bfck localbfck = new bfck();
+    int i = 0;
+    if (i < paramArrayOfaqxa.length)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Bfch);
+      Object localObject = paramArrayOfaqxa[i].a;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          if (QLog.isColorLevel()) {
+            QLog.i("TroopAssociationsEntryConfig", 2, "jsonObj:" + ((JSONObject)localObject).toString());
+          }
+          localbfck.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("switchOn", 0);
+          localbfck.b = ((JSONObject)localObject).optInt("troopMemberCount_ahn", 0);
+          localObject = ((JSONObject)localObject).optJSONArray("troopType_ahn");
+          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+          {
+            int j = 0;
+            while (j < ((JSONArray)localObject).length())
+            {
+              if ((((JSONArray)localObject).get(j) instanceof Integer)) {
+                localbfck.jdField_a_of_type_JavaUtilArrayList.add((Integer)((JSONArray)localObject).get(j));
+              }
+              j += 1;
+            }
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
       }
-      this.jdField_a_of_type_Bfch.a(-1, "errorCode=" + paramInt);
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAssociationsEntryConfig", 2, "config:" + localbfck.toString());
+    }
+    return localbfck;
+  }
+  
+  public boolean a(TroopInfoData paramTroopInfoData)
+  {
+    if (this.jdField_a_of_type_Int == 0) {}
     do
     {
-      return;
-      paramBundle = new Oidb_0xcd1.RspBody();
-      if (paramArrayOfByte != null) {
-        break;
+      return false;
+      if (this.jdField_a_of_type_Int == 2) {
+        return true;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult erro data=" + null);
-    return;
-    for (;;)
-    {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!paramBundle.get_pack_rsp.has()) {
-          break;
-        }
-        paramArrayOfByte = new Oidb_0xcd1.GetPackageShopRsp();
-        paramArrayOfByte.mergeFrom(((Oidb_0xcd1.GetPackageShopRsp)paramBundle.get_pack_rsp.get()).toByteArray());
-        paramBundle = new ArrayList();
-        if (paramArrayOfByte.msg_stock.has())
-        {
-          List localList = paramArrayOfByte.msg_stock.get();
-          paramInt = 0;
-          if (paramInt < localList.size())
-          {
-            Oidb_0xcd1.StockItem localStockItem = (Oidb_0xcd1.StockItem)localList.get(paramInt);
-            bfct localbfct = new bfct();
-            localbfct.a = localStockItem.int32_productid.get();
-            localbfct.b = localStockItem.int32_amount.get();
-            paramBundle.add(localbfct);
-            paramInt += 1;
-            continue;
-          }
-        }
-        if (paramArrayOfByte.empty_package_page.has())
-        {
-          paramArrayOfByte = (Oidb_0xcd1.EmptyPackagePage)paramArrayOfByte.empty_package_page.get();
-          if (paramArrayOfByte != null)
-          {
-            paramArrayOfByte = new ztd(paramArrayOfByte);
-            if (this.jdField_a_of_type_Bfch == null) {
-              break;
-            }
-            this.jdField_a_of_type_Bfch.a(paramBundle, paramArrayOfByte);
-            return;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-        }
-        this.jdField_a_of_type_Bfch.a(-1, "InvalidProtocolBufferMicroException");
-        return;
-      }
-      paramArrayOfByte = null;
-    }
+    } while ((this.jdField_a_of_type_Int != 1) || (paramTroopInfoData == null) || (TextUtils.isEmpty(paramTroopInfoData.troopUin)) || (paramTroopInfoData.troopMemberMaxNum > this.b) || (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf((int)paramTroopInfoData.dwGroupClassExt))));
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mSwitchOn:").append(this.jdField_a_of_type_Int).append("\r\n");
+    localStringBuilder.append("mTroopMemberCount:").append(this.b).append("\r\n");
+    localStringBuilder.append("mGrayTroopType:").append(this.jdField_a_of_type_JavaUtilArrayList.toString()).append("\r\n");
+    return localStringBuilder.toString();
   }
 }
 

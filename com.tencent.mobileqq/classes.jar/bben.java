@@ -1,49 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.util.VADHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class bben
-  extends bbfd
+  implements Manager
 {
-  public bben(GroupSearchEngine paramGroupSearchEngine, bbfe parambbfe, String paramString, int paramInt1, int paramInt2)
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ConcurrentHashMap<Long, ChatMessage> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  public bben(QQAppInterface paramQQAppInterface)
   {
-    super(paramGroupSearchEngine, parambbfe, paramString, paramInt1);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public bays a(List<bayt> paramList, String paramString)
+  public ChatMessage a(long paramLong)
   {
-    return new baye(paramList, paramString, this.jdField_a_of_type_Int);
+    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
   }
   
-  public List<bays> a(bbfs parambbfs)
+  public void a(ChatMessage paramChatMessage)
   {
-    if (!GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine)) {
-      return null;
-    }
-    VADHelper.a("voice_search_approximate_cost");
-    List localList = super.a(parambbfs);
-    VADHelper.b("voice_search_approximate_cost");
-    if ((localList != null) && (!localList.isEmpty()))
-    {
-      if (parambbfs.a == null) {
-        parambbfs.a = new Bundle();
-      }
-      parambbfs.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
-      if (localList.size() >= 2)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((bays)localList.get(1)).a().size());
-        }
-        parambbfs.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((bays)localList.get(1)).a().size());
-      }
-    }
-    for (;;)
-    {
-      return localList;
-      parambbfs.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramChatMessage.uniseq), paramChatMessage);
+  }
+  
+  public ChatMessage b(long paramLong)
+  {
+    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import alag;
+import alyc;
 
 public class SelectMemberBuddyListAdapter$1
   implements Runnable
 {
-  public SelectMemberBuddyListAdapter$1(alag paramalag) {}
+  public SelectMemberBuddyListAdapter$1(alyc paramalyc) {}
   
   public void run()
   {

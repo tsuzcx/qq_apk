@@ -1,43 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
-public class wpn
-  implements View.OnClickListener
+class wpn
+  extends wpg
 {
-  wpn(wpl paramwpl) {}
-  
-  public void onClick(View paramView)
+  public wpn(ViewGroup paramViewGroup)
   {
-    String str1;
-    if ((wpl.a(this.a) != null) && (wpl.a(this.a).a()))
-    {
-      wpl.a(this.a).c();
-      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.2.1(this), 200L);
-      if (!this.a.a()) {
-        break label116;
-      }
-      str1 = "2";
-      label64:
-      if (!this.a.b()) {
-        break label122;
-      }
-    }
-    label116:
-    label122:
-    for (String str2 = "2";; str2 = "1")
-    {
-      xwa.a("play_video", "close_reply", 0, 1, new String[] { str1, str2 });
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a();
-      break;
-      str1 = "1";
-      break label64;
-    }
+    super(paramViewGroup, 2131561731);
+  }
+  
+  public void a(String paramString)
+  {
+    b(paramString);
+  }
+  
+  public void a(wly paramwly)
+  {
+    super.a(paramwly);
+    ykq.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramwly);
+    a(zfe.b(paramwly.g));
+    this.a.setNodeName(paramwly.c, 2130846662);
+  }
+  
+  protected void b(wly paramwly)
+  {
+    this.a.setDisplayState(6);
+    this.a.a(paramwly);
   }
 }
 

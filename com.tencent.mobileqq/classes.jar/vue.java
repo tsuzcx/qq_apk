@@ -1,107 +1,21 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class vue
-  implements vuf
+  extends Handler
 {
-  private EntityManager a()
-  {
-    return QQStoryContext.a().a().createEntityManager();
-  }
+  public vue(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  public void handleMessage(Message paramMessage)
   {
-    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public List<HotSortVideoEntry> a(String paramString)
-  {
-    List localList = a(a(), HotSortVideoEntry.class, HotSortVideoEntry.class.getSimpleName(), "groupId=?", new String[] { paramString });
-    Object localObject = localList;
-    if (localList == null) {
-      localObject = new ArrayList();
-    }
-    xvv.a("Q.qqstory:HotSortVideoManager", "query HotSortVideoEntry id: %s, size: %d", paramString, Integer.valueOf(((List)localObject).size()));
-    return localObject;
-  }
-  
-  public void a() {}
-  
-  public void a(HotSortVideoEntry paramHotSortVideoEntry)
-  {
-    EntityManager localEntityManager = a();
-    paramHotSortVideoEntry.setStatus(1001);
-    localEntityManager.update(paramHotSortVideoEntry);
-  }
-  
-  public void a(List<HotSortVideoEntry> paramList)
-  {
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-    localEntityManager.getTransaction().begin();
-    try
+    switch (paramMessage.what)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        HotSortVideoEntry localHotSortVideoEntry = (HotSortVideoEntry)paramList.next();
-        localHotSortVideoEntry.setStatus(1001);
-        localEntityManager.update(localHotSortVideoEntry);
-      }
+    default: 
+      return;
     }
-    finally
-    {
-      localEntityManager.getTransaction().end();
-    }
-    localEntityManager.getTransaction().end();
+    PublicAccountImageCollectionMainActivity.b(this.a);
   }
-  
-  public void a(List<HotSortVideoEntry> paramList, String paramString, boolean paramBoolean)
-  {
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-    localEntityManager.getTransaction().begin();
-    Object localObject;
-    HotSortVideoEntry localHotSortVideoEntry;
-    if (paramBoolean) {
-      try
-      {
-        localObject = a(paramString);
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
-            localHotSortVideoEntry.setStatus(1001);
-            localEntityManager.remove(localHotSortVideoEntry);
-          }
-        }
-        localObject = paramList.iterator();
-      }
-      finally
-      {
-        localEntityManager.getTransaction().end();
-      }
-    }
-    while (((Iterator)localObject).hasNext())
-    {
-      localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
-      localHotSortVideoEntry.groupId = paramString;
-      localHotSortVideoEntry.setStatus(1000);
-      localEntityManager.persistOrReplace(localHotSortVideoEntry);
-    }
-    xvv.a("Q.qqstory:HotSortVideoManager", "insert HotSortVideoEntry list groupId is %s, size is %d", paramString, Integer.valueOf(paramList.size()));
-    localEntityManager.getTransaction().commit();
-    localEntityManager.getTransaction().end();
-  }
-  
-  public void b() {}
 }
 
 

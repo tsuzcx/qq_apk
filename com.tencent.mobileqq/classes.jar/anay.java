@@ -1,25 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.ShieldOperationItem;
-
-public final class anay
-  implements Parcelable.Creator<ShieldOperationItem>
+public abstract interface anay
 {
-  public ShieldOperationItem a(Parcel paramParcel)
-  {
-    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
-    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localShieldOperationItem.b = paramParcel.readInt();
-    localShieldOperationItem.c = paramParcel.readInt();
-    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
-    localShieldOperationItem.d = paramParcel.readInt();
-    return localShieldOperationItem;
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString);
   
-  public ShieldOperationItem[] a(int paramInt)
-  {
-    return null;
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void c();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

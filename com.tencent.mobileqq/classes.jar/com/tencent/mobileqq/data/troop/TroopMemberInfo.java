@@ -21,6 +21,7 @@ public class TroopMemberInfo
   public byte age;
   public String alias;
   public String autoremark;
+  public long cmduinFlagEx3Grocery;
   public int commonFrdCnt = -2147483648;
   public long credit_level;
   public long datetime;
@@ -73,6 +74,7 @@ public class TroopMemberInfo
   public int tribeLevel;
   public int tribePoint;
   public String troopColorNick;
+  public int troopColorNickId;
   public String troopnick;
   public String troopremark;
   public String troopuin;
@@ -86,6 +88,7 @@ public class TroopMemberInfo
     this.pyAll_friendnick = paramCursor.getString(paramCursor.getColumnIndex("pyAll_friendnick"));
     this.pyFirst_friendnick = paramCursor.getString(paramCursor.getColumnIndex("pyFirst_friendnick"));
     this.troopColorNick = paramCursor.getString(paramCursor.getColumnIndex("troopColorNick"));
+    this.troopColorNickId = paramCursor.getInt(paramCursor.getColumnIndex("troopColorNickId"));
     this.troopnick = paramCursor.getString(paramCursor.getColumnIndex("troopnick"));
     this.pyAll_troopnick = paramCursor.getString(paramCursor.getColumnIndex("pyAll_troopnick"));
     this.pyFirst_troopnick = paramCursor.getString(paramCursor.getColumnIndex("pyFirst_troopnick"));
@@ -142,6 +145,7 @@ public class TroopMemberInfo
       this.mBigClubTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("mBigClubTemplateId"));
       this.mIsHideBigClub = paramCursor.getInt(paramCursor.getColumnIndex("mIsHideBigClub"));
       this.honorList = paramCursor.getString(paramCursor.getColumnIndex("honorList"));
+      this.cmduinFlagEx3Grocery = paramCursor.getLong(paramCursor.getColumnIndex("cmduinFlagEx3Grocery"));
       return true;
     }
   }
@@ -197,6 +201,8 @@ public class TroopMemberInfo
     localStringBuilder.append(", mVipType=").append(this.mVipType);
     localStringBuilder.append(", mVipLevel=").append(this.mVipLevel);
     localStringBuilder.append(", honorList=").append(this.honorList);
+    localStringBuilder.append(", cmduinFlagEx3Grocery=").append(this.cmduinFlagEx3Grocery);
+    localStringBuilder.append(", troopColorNickId=").append(this.troopColorNickId);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

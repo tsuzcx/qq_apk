@@ -1,83 +1,19 @@
-import Wallet.RedPackGrapInfo;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajxy
-  extends FrameLayout
+  extends vzx
 {
-  agme jdField_a_of_type_Agme;
-  Context jdField_a_of_type_AndroidContentContext;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  public ajxy(Conversation paramConversation) {}
   
-  public ajxy(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, @NonNull Context paramContext, agme paramagme)
+  public void d(boolean paramBoolean)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Agme = paramagme;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    paramTroopUnAccalimedRedPacketList.width = -2;
-    paramTroopUnAccalimedRedPacketList.height = -2;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
-    if (!bbyp.b()) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130847400);
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    paramTroopUnAccalimedRedPacketList = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-    paramTroopUnAccalimedRedPacketList.width = UIUtils.dip2px(paramContext, 29.0F);
-    paramTroopUnAccalimedRedPacketList.height = UIUtils.dip2px(paramContext, 29.0F);
-    paramTroopUnAccalimedRedPacketList.gravity = 1;
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramTroopUnAccalimedRedPacketList.width = UIUtils.dip2px(paramContext, 28.0F);
-    paramTroopUnAccalimedRedPacketList.height = UIUtils.dip2px(paramContext, 28.0F);
-    paramTroopUnAccalimedRedPacketList.gravity = 17;
-  }
-  
-  public void a(RedPackGrapInfo paramRedPackGrapInfo)
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (paramBoolean)
     {
-      localObject = FaceDrawable.getUserFaceDrawable(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), String.valueOf(paramRedPackGrapInfo.lUin), (byte)3);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    }
-    if (this.jdField_a_of_type_Agme != null)
-    {
-      this.jdField_a_of_type_Agme.a(paramRedPackGrapInfo);
-      localObject = this.jdField_a_of_type_Agme.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      if (localObject == null) {
-        break label120;
-      }
-      localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      localLayoutParams.topMargin = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 11.5F);
-      localLayoutParams.gravity = 16;
-      ((FrameLayout)localObject).setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_Agme.a((FrameLayout)localObject, paramRedPackGrapInfo, new ajxz(this));
-    }
-    label120:
-    while (!QLog.isColorLevel())
-    {
-      LinearLayout.LayoutParams localLayoutParams;
+      ykq.b("Q.recent", "onMsgTabStoryShowChange() sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send");
+      this.a.a(1055, 0L, false);
       return;
     }
-    QLog.w(TroopUnAccalimedRedPacketList.b(), 2, "red packet item layout is null");
+    Conversation.a(this.a, false);
   }
 }
 

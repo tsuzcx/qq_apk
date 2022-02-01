@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afiw;
+import agab;
 import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class FriendChatPie$17
   implements Runnable
 {
-  public FriendChatPie$17(afiw paramafiw) {}
+  public FriendChatPie$17(agab paramagab) {}
   
   public void run()
   {

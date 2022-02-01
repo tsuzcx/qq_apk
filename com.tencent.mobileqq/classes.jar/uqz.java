@@ -1,9 +1,6 @@
-import java.util.Map;
-
 public class uqz
 {
-  public String a = "";
-  public Map<String, String> a;
+  static uqx a = new uqx(null);
 }
 
 

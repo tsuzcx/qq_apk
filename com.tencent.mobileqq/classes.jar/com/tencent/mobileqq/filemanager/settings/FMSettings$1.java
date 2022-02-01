@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import asyy;
+import audf;
 import java.io.File;
 
 public class FMSettings$1
   implements Runnable
 {
-  public FMSettings$1(asyy paramasyy, String paramString) {}
+  public FMSettings$1(audf paramaudf, String paramString) {}
   
   public void run()
   {
@@ -37,7 +37,7 @@ public class FMSettings$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.settings.FMSettings.1
  * JD-Core Version:    0.7.0.1
  */

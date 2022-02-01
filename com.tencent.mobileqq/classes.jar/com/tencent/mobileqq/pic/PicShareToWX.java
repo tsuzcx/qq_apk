@@ -4,15 +4,15 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import apub;
-import aqaf;
-import aydu;
-import aydv;
-import aydw;
-import aydx;
-import bbgk;
-import bcef;
-import bhht;
+import aqxe;
+import ardi;
+import azkg;
+import azkh;
+import azki;
+import azkj;
+import bcnc;
+import bdla;
+import bisl;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
@@ -37,8 +37,8 @@ public class PicShareToWX
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
-  private aydu jdField_a_of_type_Aydu;
-  public bhht a;
+  private azkg jdField_a_of_type_Azkg;
+  public bisl a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private PicShareToWX.TimeoutRunnable jdField_a_of_type_ComTencentMobileqqPicPicShareToWX$TimeoutRunnable;
   private TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
@@ -68,7 +68,7 @@ public class PicShareToWX
     }
     for (;;)
     {
-      bcef.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
       return;
       str = "0X800A501";
       continue;
@@ -95,7 +95,7 @@ public class PicShareToWX
     Bundle localBundle = new Bundle();
     localBundle.putString("param_pic_path", paramString);
     localBundle.putInt("param_from_type", paramInt);
-    paramString = new aydw();
+    paramString = new azki();
     QIPCClientHelper.getInstance().callServer("PicSTWXQIPCModule", "action_share_pic_to_wx", localBundle, paramString);
     a().a(paramContext);
   }
@@ -120,27 +120,27 @@ public class PicShareToWX
   
   public int a(Context paramContext)
   {
-    return paramContext.getResources().getDimensionPixelSize(2131299076);
+    return paramContext.getResources().getDimensionPixelSize(2131299080);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Bhht = null;
+    this.jdField_a_of_type_Bisl = null;
     this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = null;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Aydu = null;
+    this.jdField_a_of_type_Azkg = null;
     this.b = 0;
   }
   
   public void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (this.jdField_a_of_type_Bhht == null) {
-      this.jdField_a_of_type_Bhht = new bhht(paramContext, a(paramContext));
+    if (this.jdField_a_of_type_Bisl == null) {
+      this.jdField_a_of_type_Bisl = new bisl(paramContext, a(paramContext));
     }
-    this.jdField_a_of_type_Bhht.c(2131697900);
-    this.jdField_a_of_type_Bhht.show();
+    this.jdField_a_of_type_Bisl.c(2131698183);
+    this.jdField_a_of_type_Bisl.show();
   }
   
   public void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -150,10 +150,10 @@ public class PicShareToWX
     a(paramQQAppInterface, paramString);
   }
   
-  public void a(aydu paramaydu, int paramInt1, QQAppInterface paramQQAppInterface, String paramString, int paramInt2)
+  public void a(azkg paramazkg, int paramInt1, QQAppInterface paramQQAppInterface, String paramString, int paramInt2)
   {
     this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Aydu = paramaydu;
+    this.jdField_a_of_type_Azkg = paramazkg;
     this.b = paramInt1;
     a(paramQQAppInterface, paramString);
   }
@@ -165,7 +165,7 @@ public class PicShareToWX
     localTransferRequest.mFileType = 66;
     localTransferRequest.mLocalPath = paramString;
     this.jdField_a_of_type_Long = new File(paramString).length();
-    localTransferRequest.mUpCallBack = new aydx(this, paramString);
+    localTransferRequest.mUpCallBack = new azkj(this, paramString);
     localTransferRequest.mUniseq = System.currentTimeMillis();
     this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = localTransferRequest;
     if (paramQQAppInterface != null)
@@ -185,42 +185,42 @@ public class PicShareToWX
     if (QLog.isColorLevel()) {
       QLog.d("PicShareToWX", 1, "doShareToWX");
     }
-    aqaf localaqaf = (aqaf)apub.a().a(530);
-    aydv localaydv = new aydv(this, paramInt);
-    String str = localaqaf.jdField_b_of_type_JavaLangString + "url=" + bbgk.b(paramString);
-    WXShareHelper.getInstance().addObserver(localaydv);
-    WXShareHelper.getInstance().shareMiniProgramToWXForPicShare(str, paramString, localaqaf.jdField_a_of_type_JavaLangString, paramBitmap, localaqaf.c, localaqaf.d, localaqaf.jdField_b_of_type_Boolean, localaqaf.jdField_a_of_type_Int);
+    ardi localardi = (ardi)aqxe.a().a(530);
+    azkh localazkh = new azkh(this, paramInt);
+    String str = localardi.jdField_b_of_type_JavaLangString + "url=" + bcnc.b(paramString);
+    WXShareHelper.a().a(localazkh);
+    WXShareHelper.a().a(str, paramString, localardi.jdField_a_of_type_JavaLangString, paramBitmap, localardi.c, localardi.d, localardi.jdField_b_of_type_Boolean, localardi.jdField_a_of_type_Int);
   }
   
   public boolean a()
   {
-    return ((aqaf)apub.a().a(530)).jdField_a_of_type_Boolean;
+    return ((ardi)aqxe.a().a(530)).jdField_a_of_type_Boolean;
   }
   
   public boolean a(File paramFile)
   {
-    aqaf localaqaf = (aqaf)apub.a().a(530);
-    return paramFile.length() < localaqaf.jdField_a_of_type_Long;
+    ardi localardi = (ardi)aqxe.a().a(530);
+    return paramFile.length() < localardi.jdField_a_of_type_Long;
   }
   
   public boolean a(String paramString)
   {
     paramString = new File(paramString);
-    aqaf localaqaf = (aqaf)apub.a().a(530);
-    return paramString.length() < localaqaf.jdField_a_of_type_Long;
+    ardi localardi = (ardi)aqxe.a().a(530);
+    return paramString.length() < localardi.jdField_a_of_type_Long;
   }
   
   public void b()
   {
     if (this.jdField_a_of_type_AndroidContentContext != null) {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131718381, 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131718767, 0).a();
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Bhht != null) {
-      this.jdField_a_of_type_Bhht.dismiss();
+    if (this.jdField_a_of_type_Bisl != null) {
+      this.jdField_a_of_type_Bisl.dismiss();
     }
   }
   

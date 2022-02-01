@@ -1,28 +1,28 @@
-import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.IdlePushWakeParam;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class uio
-  implements pln
+  implements qqa
 {
-  private static uio a = new uio();
-  
-  public static void a()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    pli.a(a);
+    return null;
   }
   
-  public static void a(int paramInt) {}
-  
-  public static void a(List<oidb_cmd0x80a.IdlePushWakeParam> paramList) {}
-  
-  public static void b()
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    pli.b(a);
+    return qln.a(paramBaseArticleInfo);
   }
   
-  public void l() {}
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2) {}
   
-  public void m() {}
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
+  {
+    return false;
+  }
 }
 
 

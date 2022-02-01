@@ -1,66 +1,22 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
+import com.tencent.av.share.AVSchema.2.1;
 
-final class lyf
-  implements lym
+public class lyf
+  implements DialogInterface.OnClickListener
 {
-  lyf(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, int paramInt, long paramLong, WeakReference paramWeakReference) {}
+  public lyf(AVSchema.2.1 param1) {}
   
-  public Bitmap a(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopFaceBitmap(this.b, (byte)3, false, false);
-  }
-  
-  public TroopInfoData a()
-  {
-    TroopInfoData localTroopInfoData = new TroopInfoData();
-    localTroopInfoData.troopUin = this.b;
-    localTroopInfoData.updateForTroopInfo(((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(this.b), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    return localTroopInfoData;
-  }
-  
-  public String a()
-  {
-    return lyc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
-  }
-  
-  public String a(int paramInt)
-  {
-    return "0X800A3E4";
-  }
-  
-  public String a(long paramLong, int paramInt)
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt3 == 2) {
-      mrf.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
-    }
-    lyc.a(this.jdField_a_of_type_Long, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-  }
-  
-  public String b()
-  {
-    return lyc.a(this.b);
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt3 == 2) {
-      mrf.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
-    }
+    msc.i();
+    this.a.jdField_a_of_type_Lye.a.b(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Lye.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lyf
  * JD-Core Version:    0.7.0.1
  */

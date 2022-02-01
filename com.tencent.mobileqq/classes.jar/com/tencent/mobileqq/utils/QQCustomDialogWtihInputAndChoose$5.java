@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bjmm;
+import bkxz;
 
 class QQCustomDialogWtihInputAndChoose$5
   implements Runnable
@@ -9,7 +9,7 @@ class QQCustomDialogWtihInputAndChoose$5
   
   public void run()
   {
-    bjmm.a(this.this$0.inputView);
+    bkxz.a(this.this$0.inputView);
   }
 }
 

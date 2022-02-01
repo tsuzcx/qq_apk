@@ -1,14 +1,10 @@
-import android.os.Bundle;
-import android.os.IInterface;
-
 public abstract interface bldn
-  extends IInterface
 {
-  public abstract void a(String paramString, Bundle paramBundle);
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bldn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,43 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 class asyg
-  implements asxy
+  implements DialogInterface.OnClickListener
 {
-  asyg(asyf paramasyf) {}
+  asyg(asyf paramasyf, String paramString, auht paramauht, Bundle paramBundle) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramInt3);
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean);
+    Object localObject = new StringBuilder();
+    if (this.jdField_a_of_type_Asyf.a.jdField_b_of_type_Boolean) {}
+    for (paramDialogInterface = "https://";; paramDialogInterface = "http://")
+    {
+      String str = paramDialogInterface + this.jdField_a_of_type_Asyf.a.g + ":" + this.jdField_a_of_type_Asyf.a.h + "/ftn_compress_getfile/rkey=" + this.jdField_a_of_type_Asyf.a.e + "&filetype=" + this.jdField_a_of_type_Asyf.a.jdField_b_of_type_Int + "&path=";
+      if (QLog.isColorLevel()) {
+        QLog.i("<FileAssistant>FilePreviewActivity", 1, str);
+      }
+      paramDialogInterface = this.jdField_a_of_type_JavaLangString;
+      try
+      {
+        localObject = URLEncoder.encode(this.jdField_a_of_type_JavaLangString, "utf8");
+        paramDialogInterface = (DialogInterface)localObject;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        for (;;)
+        {
+          localUnsupportedEncodingException.printStackTrace();
+        }
+      }
+      paramDialogInterface = str + paramDialogInterface + "&";
+      this.jdField_a_of_type_Auht.b(paramDialogInterface, this.jdField_a_of_type_AndroidOsBundle);
+      audy.a("0X80052CE");
+      return;
     }
   }
 }

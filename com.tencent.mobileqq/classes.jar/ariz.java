@@ -1,41 +1,45 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ariz
+  implements aqwv<String>
 {
-  public int a;
-  public long a;
   public String a;
   public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
   
   public ariz()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "{}";
   }
   
-  public String toString()
+  public void a(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{SenderUin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{SenderNickName: ").append(this.jdField_b_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{bEnter: ").append(this.jdField_a_of_type_Boolean).append("}");
-    localStringBuilder.append("{leaveChatType: ").append(this.jdField_a_of_type_Int).append("}");
-    localStringBuilder.append("{leftChatTime: ").append(this.jdField_b_of_type_Int).append("}");
-    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
-    localStringBuilder.append("{matchExpired: ").append(this.jdField_c_of_type_Int).append("}");
-    localStringBuilder.append("{c2cExpiredTime: ").append(this.d).append("}");
-    localStringBuilder.append("{tipsWording: ").append(this.jdField_c_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{readyTs: ").append(this.jdField_b_of_type_Long).append("}");
-    return localStringBuilder.toString();
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("QFileFileReaderConfigBean<QFile>", 1, "onParse: but configContent is null!");
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.has("barShowSwitch")) {
+          this.jdField_a_of_type_Boolean = paramString.getBoolean("barShowSwitch");
+        }
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("QFileFileReaderConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
+      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ariz
  * JD-Core Version:    0.7.0.1
  */

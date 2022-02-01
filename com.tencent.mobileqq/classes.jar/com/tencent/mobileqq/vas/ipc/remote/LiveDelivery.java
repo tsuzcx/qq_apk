@@ -4,15 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bdda;
-import bfvp;
-import bfwg;
-import bgge;
-import bgha;
-import bgot;
-import blbu;
-import blbw;
-import blbx;
+import bekc;
+import bheh;
+import bhey;
+import bhoy;
+import bhpu;
+import bhzd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -32,6 +29,9 @@ import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import cooperation.vip.pb.TianShuAccess.MapEntry;
 import cooperation.vip.pb.TianShuAccess.RspEntry;
+import cooperation.vip.tianshu.TianShuAdPosItemData;
+import cooperation.vip.tianshu.TianShuManager;
+import cooperation.vip.tianshu.TianShuReportData;
 import eipc.EIPCModule;
 import eipc.EIPCResultCallback;
 import java.io.Serializable;
@@ -41,7 +41,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
-import ugf;
+import uuc;
 
 public class LiveDelivery
   implements ILiveDelivery
@@ -51,7 +51,7 @@ public class LiveDelivery
   public void followUin(String paramString, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
   {
     paramEIPCResultCallback = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ugf.a(paramEIPCResultCallback, BaseApplicationImpl.getContext(), paramString, new LiveDelivery.3(this, paramEIPCModule, paramInt, paramEIPCResultCallback), false, 0, true);
+    uuc.a(paramEIPCResultCallback, BaseApplicationImpl.getContext(), paramString, new LiveDelivery.3(this, paramEIPCModule, paramInt, paramEIPCResultCallback), false, 0, true);
   }
   
   public long getAccount()
@@ -59,7 +59,7 @@ public class LiveDelivery
     return BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
   }
   
-  public bdda getAdsInfo(TianShuAccess.GetAdsRsp paramGetAdsRsp, int paramInt)
+  public bekc getAdsInfo(TianShuAccess.GetAdsRsp paramGetAdsRsp, int paramInt)
   {
     if (paramGetAdsRsp == null) {
       return null;
@@ -96,12 +96,12 @@ public class LiveDelivery
           localHashMap.put(str, localObject2);
         }
       }
-      localObject1 = new bdda();
-      ((bdda)localObject1).jdField_a_of_type_JavaLangString = ((String)localHashMap.get("type"));
-      ((bdda)localObject1).c = ((String)localHashMap.get("pic"));
-      ((bdda)localObject1).b = ((String)localHashMap.get("url"));
-      ((bdda)localObject1).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0));
-      if (!TextUtils.isEmpty(((bdda)localObject1).c)) {}
+      localObject1 = new bekc();
+      ((bekc)localObject1).jdField_a_of_type_JavaLangString = ((String)localHashMap.get("type"));
+      ((bekc)localObject1).c = ((String)localHashMap.get("pic"));
+      ((bekc)localObject1).b = ((String)localHashMap.get("url"));
+      ((bekc)localObject1).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0));
+      if (!TextUtils.isEmpty(((bekc)localObject1).c)) {}
     }
     else
     {
@@ -112,18 +112,18 @@ public class LiveDelivery
   
   public boolean isFollowUin(String paramString)
   {
-    return ugf.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString);
+    return uuc.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString);
   }
   
   public boolean isWxInstall()
   {
-    return WXShareHelper.getInstance().isWXinstalled();
+    return WXShareHelper.a().a();
   }
   
   public void openChargePage()
   {
     QLog.e("LiveDelivery", 1, "openChargePage");
-    bgge.a(BaseApplicationImpl.getApplication(), "https://h5.qzone.qq.com/live/chargedialog?_wv=17301507&from=ugc&_proxy=1&aid=zhiboczban");
+    bhoy.a(BaseApplicationImpl.getApplication(), "https://h5.qzone.qq.com/live/chargedialog?_wv=17301507&from=ugc&_proxy=1&aid=zhiboczban");
   }
   
   public void openQQBrowser(String paramString)
@@ -151,7 +151,7 @@ public class LiveDelivery
         BaseApplicationImpl.getApplication().getApplicationContext().startActivity((Intent)localObject);
         return;
       }
-      paramString = bfwg.a((QQAppInterface)localObject, BaseApplicationImpl.getApplication().getApplicationContext(), paramString);
+      paramString = bhey.a((QQAppInterface)localObject, BaseApplicationImpl.getApplication().getApplicationContext(), paramString);
       if (paramString != null)
       {
         paramString.a();
@@ -169,50 +169,50 @@ public class LiveDelivery
   
   public void reportStatistic(String paramString, HashMap<String, String> paramHashMap, long paramLong)
   {
-    bgha.a(paramString, paramHashMap, paramLong);
+    bhpu.a(paramString, paramHashMap, paramLong);
   }
   
   public void reportTianshu(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    blbx localblbx = new blbx();
+    TianShuReportData localTianShuReportData = new TianShuReportData();
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     String str = "";
     if (localAppRuntime != null) {
       str = localAppRuntime.getAccount();
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localblbx.b = (str + "_" + l);
-    localblbx.jdField_a_of_type_Int = paramInt2;
-    localblbx.jdField_e_of_type_JavaLangString = paramString1;
-    localblbx.f = paramString2;
-    localblbx.g = paramString3;
-    localblbx.d = paramInt1;
-    localblbx.jdField_e_of_type_Int = 1;
-    localblbx.jdField_a_of_type_Long = l;
-    blbw.a().a(localblbx);
+    localTianShuReportData.mTraceId = (str + "_" + l);
+    localTianShuReportData.mTraceNum = paramInt2;
+    localTianShuReportData.mAppId = paramString1;
+    localTianShuReportData.mPageId = paramString2;
+    localTianShuReportData.mItemId = paramString3;
+    localTianShuReportData.mActionId = paramInt1;
+    localTianShuReportData.mActionValue = 1;
+    localTianShuReportData.mOperTime = l;
+    TianShuManager.getInstance().report(localTianShuReportData);
   }
   
   public void reqPendantInfo(int paramInt1, int paramInt2, Serializable paramSerializable, EIPCModule paramEIPCModule, int paramInt3, EIPCResultCallback paramEIPCResultCallback)
   {
     paramEIPCResultCallback = new ArrayList();
-    blbu localblbu = new blbu();
-    localblbu.jdField_a_of_type_Int = paramInt1;
-    localblbu.b = paramInt2;
-    localblbu.jdField_a_of_type_JavaUtilHashMap = ((HashMap)paramSerializable);
-    paramEIPCResultCallback.add(localblbu);
-    blbw.a().a(paramEIPCResultCallback, new LiveDelivery.5(this, paramInt1, paramEIPCModule, paramInt3));
+    TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
+    localTianShuAdPosItemData.mPosId = paramInt1;
+    localTianShuAdPosItemData.mNeedCnt = paramInt2;
+    localTianShuAdPosItemData.mExtraData = ((HashMap)paramSerializable);
+    paramEIPCResultCallback.add(localTianShuAdPosItemData);
+    TianShuManager.getInstance().requestAdv(paramEIPCResultCallback, new LiveDelivery.5(this, paramInt1, paramEIPCModule, paramInt3));
   }
   
   public void requestPbMsfSSO(String paramString1, String paramString2, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
   {
-    bgot.a(paramString1, paramString2, new LiveDelivery.1(this, paramEIPCModule, paramInt));
+    bhzd.a(paramString1, paramString2, new LiveDelivery.1(this, paramEIPCModule, paramInt));
   }
   
   public void requestPbVSBase(String paramString1, String paramString2, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
   {
     try
     {
-      bgot.a(paramString1, bgot.a(paramString2.getBytes("ISO8859_1")).toByteArray(), new LiveDelivery.2(this, paramEIPCModule, paramInt));
+      bhzd.a(paramString1, bhzd.a(paramString2.getBytes("ISO8859_1")).toByteArray(), new LiveDelivery.2(this, paramEIPCModule, paramInt));
       return;
     }
     catch (Exception paramString1)
@@ -223,17 +223,17 @@ public class LiveDelivery
   
   public void setAnchorIsLive(boolean paramBoolean)
   {
-    bkke.a = paramBoolean;
+    blvm.a = paramBoolean;
   }
   
   public void setAudienceIsLive(boolean paramBoolean)
   {
-    bkke.b = paramBoolean;
+    blvm.b = paramBoolean;
   }
   
   public void unfollowUin(String paramString, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
   {
-    ugf.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext(), paramString, false, new LiveDelivery.4(this, paramEIPCModule, paramInt), true);
+    uuc.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext(), paramString, false, new LiveDelivery.4(this, paramEIPCModule, paramInt), true);
   }
 }
 

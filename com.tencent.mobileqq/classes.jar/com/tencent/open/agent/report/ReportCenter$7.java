@@ -4,17 +4,17 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import bhpc;
-import bhvw;
-import bhzh;
-import biar;
+import bizw;
+import bjgx;
+import bjkj;
+import bjlt;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class ReportCenter$7
   implements Runnable
 {
-  public ReportCenter$7(bhvw parambhvw, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, boolean paramBoolean) {}
+  public ReportCenter$7(bjgx parambjgx, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, boolean paramBoolean) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class ReportCenter$7
       try
       {
         localObject1 = new Bundle();
-        Object localObject3 = bhzh.a(bhpc.a().a());
+        Object localObject3 = bjkj.a(bizw.a().a());
         ((Bundle)localObject1).putString("apn", (String)localObject3);
         ((Bundle)localObject1).putString("appid", "" + this.jdField_a_of_type_Int);
         ((Bundle)localObject1).putString("commandid", this.jdField_a_of_type_JavaLangString);
@@ -36,7 +36,7 @@ public class ReportCenter$7
         {
           i = 1;
           ((StringBuilder)localObject3).append(i).append('&');
-          localStringBuilder.append("wifi=").append(bhzh.e(bhpc.a().a()));
+          localStringBuilder.append("wifi=").append(bjkj.e(bizw.a().a()));
           ((Bundle)localObject1).putString("deviceInfo", localStringBuilder.toString());
           i = 100 / this.jdField_b_of_type_Int;
           if (i > 0) {
@@ -64,7 +64,7 @@ public class ReportCenter$7
       try
       {
         this.this$0.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
-        j = biar.a(bhpc.a().a(), null).a("Agent_ReportTimeInterval");
+        j = bjlt.a(bizw.a().a(), null).a("Agent_ReportTimeInterval");
         i = j;
         if (j == 0) {
           i = 10000;

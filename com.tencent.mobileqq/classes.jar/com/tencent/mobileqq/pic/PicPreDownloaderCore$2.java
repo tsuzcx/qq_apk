@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pic;
 
-import aydl;
-import ayds;
+import azjx;
+import azke;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +19,7 @@ class PicPreDownloaderCore$2
     {
       int j;
       int i;
-      ayds localayds;
+      azke localazke;
       synchronized (PicPreDownloaderCore.a(this.this$0))
       {
         Iterator localIterator = PicPreDownloaderCore.a(this.this$0).iterator();
@@ -28,27 +28,27 @@ class PicPreDownloaderCore$2
         if (!localIterator.hasNext()) {
           break label310;
         }
-        localayds = (ayds)localIterator.next();
-        switch (localayds.f)
+        localazke = (azke)localIterator.next();
+        switch (localazke.f)
         {
         case 4: 
           k += 1;
-          localayds.e = localayds.f;
-          this.this$0.a.put(localayds.a.g, Integer.valueOf(localayds.e));
-          PicPreDownloaderCore.d(this.this$0).add(0, localayds);
-          localayds.e = localayds.f;
-          this.this$0.a.put(localayds.a.g, Integer.valueOf(localayds.e));
+          localazke.e = localazke.f;
+          this.this$0.a.put(localazke.a.g, Integer.valueOf(localazke.e));
+          PicPreDownloaderCore.d(this.this$0).add(0, localazke);
+          localazke.e = localazke.f;
+          this.this$0.a.put(localazke.a.g, Integer.valueOf(localazke.e));
         }
       }
       i += 1;
-      localayds.e = localayds.f;
-      this.this$0.a.put(localayds.a.g, Integer.valueOf(localayds.e));
-      PicPreDownloaderCore.b(this.this$0).add(0, localayds);
+      localazke.e = localazke.f;
+      this.this$0.a.put(localazke.a.g, Integer.valueOf(localazke.e));
+      PicPreDownloaderCore.b(this.this$0).add(0, localazke);
       continue;
       j += 1;
-      localayds.e = localayds.f;
-      this.this$0.a.put(localayds.a.g, Integer.valueOf(localayds.e));
-      PicPreDownloaderCore.c(this.this$0).add(0, localayds);
+      localazke.e = localazke.f;
+      this.this$0.a.put(localazke.a.g, Integer.valueOf(localazke.e));
+      PicPreDownloaderCore.c(this.this$0).add(0, localazke);
       continue;
       label310:
       PicPreDownloaderCore.a(this.this$0).clear();

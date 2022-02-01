@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.qqstory.view.widget.DragFrameLayout;
-import ryk;
+import skm;
 
 class VideoFeedsLoadDelegate$1
   implements Runnable
@@ -10,7 +10,7 @@ class VideoFeedsLoadDelegate$1
   
   public void run()
   {
-    this.a.a(200, new ryk());
+    this.a.a(200, new skm());
   }
 }
 

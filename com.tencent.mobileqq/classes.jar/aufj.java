@@ -1,67 +1,22 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.view.MotionEvent;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.emoticonview.EmotionPanelListView.PullAndFastScrollListener;
+import android.content.Context;
+import android.os.AsyncTask;
 
-public class aufj
-  extends RecyclerView.OnScrollListener
-  implements auiw
+final class aufj
+  extends df
 {
-  private int jdField_a_of_type_Int = 0;
-  private auiv jdField_a_of_type_Auiv = new auiv(200, this);
-  private EmotionPanelListView.PullAndFastScrollListener jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener;
+  aufj(Context paramContext) {}
   
-  public aufj(EmotionPanelListView.PullAndFastScrollListener paramPullAndFastScrollListener)
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener = paramPullAndFastScrollListener;
-  }
-  
-  public boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      this.jdField_a_of_type_Auiv.a(true);
-    }
-    for (;;)
+    try
     {
-      return false;
-      if ((i == 1) && (((GridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() == 0) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener.onPullDown();
-      }
-    }
-  }
-  
-  public void onCheckSpeed(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener.onPullUp();
-      this.jdField_a_of_type_Auiv.a(false);
-    }
-  }
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
-  {
-    if (paramInt == 0) {
-      AbstractGifImage.resumeAll();
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) && (this.jdField_a_of_type_Int == 2) && (((GridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() == 0) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener.onPullDown();
-      }
-      this.jdField_a_of_type_Int = paramInt;
+      dc.a(this.a, paramAsyncTask, paramInt, new aufk(this));
+      super.a(paramAsyncTask, paramInt);
       return;
-      AbstractGifImage.pauseAll();
     }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (paramInt2 > 0) {
-      this.jdField_a_of_type_Auiv.a(paramInt2);
+    catch (Exception paramAsyncTask)
+    {
+      paramAsyncTask.printStackTrace();
     }
   }
 }

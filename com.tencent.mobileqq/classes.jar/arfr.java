@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-
 public class arfr
-  implements avtb<EmoticonPackage>
 {
-  public arfr(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
+  @avyw(a="c2c_time_interval")
+  public double a = 72.0D;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public static arfr a(String paramString)
   {
-    if (paramEmoticonPackage == null)
-    {
-      AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 32);
-      return;
-    }
-    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, true);
+    return (arfr)avyx.a(paramString, arfr.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfr
  * JD-Core Version:    0.7.0.1
  */

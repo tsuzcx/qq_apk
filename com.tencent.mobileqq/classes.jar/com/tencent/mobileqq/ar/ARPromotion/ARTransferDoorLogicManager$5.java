@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
 import android.widget.RelativeLayout;
-import anzc;
+import apce;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARTransferDoorLogicManager$5
   implements Runnable
 {
-  public ARTransferDoorLogicManager$5(anzc paramanzc, boolean paramBoolean) {}
+  public ARTransferDoorLogicManager$5(apce paramapce, boolean paramBoolean) {}
   
   public void run()
   {
     if (this.a == true) {
-      anzc.a(this.this$0).setVisibility(0);
+      apce.a(this.this$0).setVisibility(0);
     }
     for (;;)
     {
-      QLog.d(anzc.a, 2, "makeARTransferPromotionTouchViewVisiable " + this.a);
+      QLog.d(apce.a, 2, "makeARTransferPromotionTouchViewVisiable " + this.a);
       return;
-      anzc.a(this.this$0).setVisibility(8);
+      apce.a(this.this$0).setVisibility(8);
     }
   }
 }

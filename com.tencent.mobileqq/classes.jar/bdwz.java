@@ -1,32 +1,17 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class bdwz
-  implements View.OnKeyListener
+class bdwz
+  implements Callable<File>
 {
-  public bdwz(NewTroopContactView paramNewTroopContactView) {}
+  bdwz(bdwy parambdwy) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public File a()
   {
-    if (paramInt == 67)
-    {
-      if (paramKeyEvent.getAction() != 0) {
-        break label35;
-      }
-      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
+    if (bdwy.a(this.a).exists()) {
+      return bdwy.a(this.a);
     }
-    for (;;)
-    {
-      return false;
-      label35:
-      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_Bdxc.a();
-      }
-    }
+    return null;
   }
 }
 

@@ -1,82 +1,85 @@
-import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.barrage.BarrageView;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-class amed
-  implements alqv
+public class amed
 {
-  amed(amec paramamec) {}
+  private static amed a;
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public static amed a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "[onCompleteRender] taskId=", Integer.valueOf(paramInt1), ", roleName=", paramString, ", errCode=", Integer.valueOf(paramInt2) });
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName null");
-    }
-    do
+    if (a == null) {}
+    try
     {
-      do
-      {
-        do
-        {
-          return;
-          if (!amec.a(this.a).containsKey(paramString))
-          {
-            QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName not showing");
-            return;
-          }
-          if ((amec.a(this.a) == null) || (TextUtils.isEmpty(amec.a(this.a).apolloId)) || (!amec.a(this.a).apolloId.equals(paramString))) {
-            break;
-          }
-          amec.b(this.a);
-          if (this.a.c != 5) {
-            this.a.jdField_a_of_type_Int = 1;
-          }
-          paramString = amec.a(this.a).obtainMessage(18, 1, 0);
-          amec.a(this.a).sendMessage(paramString);
-          this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
-        } while (TextUtils.isEmpty(amec.a(this.a)));
-        if (!amec.a(this.a)) {
-          break;
-        }
-      } while ((amec.a(this.a) != 1) || (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null));
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.b();
-      return;
-      if (amec.a(this.a) != 1) {
-        break;
+      if (a == null) {
+        a = new amed();
       }
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.a(true);
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a(1, amec.a(this.a).apolloId, "Bubble");
-    return;
-    synchronized (amec.a(this.a))
+      return a;
+    }
+    finally {}
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    a(paramQQAppInterface, "new_folder_weather_expose");
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForArkApp))
     {
-      if (amec.a(this.a).containsKey(paramString))
-      {
-        Message localMessage = amec.a(this.a).obtainMessage(28);
-        localMessage.obj = paramString;
-        amec.a(this.a).sendMessage(localMessage);
-        this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
-      }
-      return;
+      ames.a(1, "");
+      a(paramQQAppInterface, "new_folder_weather_arrive");
     }
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
+    a(paramQQAppInterface, paramString, null);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, Object paramObject)
+  {
+    String str2 = "";
+    String str1 = str2;
+    if (paramObject != null)
+    {
+      str1 = str2;
+      if (!TextUtils.isEmpty(String.valueOf(paramObject))) {
+        str1 = "|" + paramObject;
+      }
+    }
+    paramString = System.currentTimeMillis() + "|" + "QQWeather" + "|" + "QQWeather_native" + "|" + paramString + "|" + "android" + str1;
+    bdka.a(paramQQAppInterface, "dc04698", paramString);
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "[onStartRender] taskId=", Integer.valueOf(paramInt), ", roleName=", paramString });
+      QLog.d("WeatherDCReportHelper", 2, "reportWeather : " + paramString);
     }
-    if ((amec.a(this.a) != null) && (!TextUtils.isEmpty(amec.a(this.a).apolloId)) && (amec.a(this.a).apolloId.equals(paramString))) {
-      amec.a(this.a);
+  }
+  
+  public void a(String paramString, String... paramVarArgs)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(System.currentTimeMillis()).append("|").append("QQWeather").append("|").append("QQWeather_native").append("|").append(paramString);
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramString = paramVarArgs[i];
+      localStringBuilder.append("|").append(paramString);
+      i += 1;
     }
+    paramString = localStringBuilder.toString();
+    bdka.a(null, "dc04698", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeatherDCReportHelper", 2, "reportWeather : " + paramString);
+    }
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    a(paramQQAppInterface, "new_folder_weather_click");
   }
 }
 

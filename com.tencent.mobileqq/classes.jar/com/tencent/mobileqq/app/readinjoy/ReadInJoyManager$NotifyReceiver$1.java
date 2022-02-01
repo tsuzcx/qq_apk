@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.app.readinjoy;
 
-import ajek;
-import amzs;
+import ajzy;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anwg;
-import aqlw;
-import aqmf;
-import bkwm;
-import bkwy;
+import aoch;
+import aozg;
+import arph;
+import arpq;
+import bmhv;
+import bmih;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.LebaPluginInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -21,11 +22,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import odq;
-import pay;
-import pkm;
-import pwu;
-import ugf;
+import olh;
+import pkh;
+import pvj;
+import qia;
+import uuc;
 
 class ReadInJoyManager$NotifyReceiver$1
   implements Runnable
@@ -46,7 +47,7 @@ class ReadInJoyManager$NotifyReceiver$1
       l1 = ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).getLong("config_feeds_newfeeds_leba_max_id", 0L);
       localObject1 = ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).edit();
       ((SharedPreferences.Editor)localObject1).putLong("config_feeds_newfeeds_leba_read_id", l1);
-      bkwm.a((SharedPreferences.Editor)localObject1, true);
+      bmhv.a((SharedPreferences.Editor)localObject1, true);
       ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a);
     }
     label232:
@@ -54,7 +55,7 @@ class ReadInJoyManager$NotifyReceiver$1
     label292:
     int i;
     int j;
-    label1072:
+    label1073:
     do
     {
       do
@@ -81,7 +82,7 @@ class ReadInJoyManager$NotifyReceiver$1
             {
               localObject1 = ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).edit();
               ((SharedPreferences.Editor)localObject1).putLong("config_feeds_newcomment_leba_read_id", l1);
-              bkwm.a((SharedPreferences.Editor)localObject1, true);
+              bmhv.a((SharedPreferences.Editor)localObject1, true);
               ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a);
               break;
               l1 = l3;
@@ -91,10 +92,10 @@ class ReadInJoyManager$NotifyReceiver$1
           }
           if (this.jdField_a_of_type_AndroidContentIntent.getAction().equals("notify_main_feeds_msg_publish_fail"))
           {
-            localObject1 = new bkwy();
-            ((bkwy)localObject1).c = 999999;
-            ((bkwy)localObject1).a = this.jdField_a_of_type_AndroidContentIntent.getExtras().getLong("feed_owner");
-            ((bkwy)localObject1).d = this.jdField_a_of_type_AndroidContentIntent.getExtras().getInt("fail_reason");
+            localObject1 = new bmih();
+            ((bmih)localObject1).c = 999999;
+            ((bmih)localObject1).a = this.jdField_a_of_type_AndroidContentIntent.getExtras().getLong("feed_owner");
+            ((bmih)localObject1).d = this.jdField_a_of_type_AndroidContentIntent.getExtras().getInt("fail_reason");
             localObject2 = new ArrayList();
             ((List)localObject2).add(localObject1);
             this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a.a((List)localObject2);
@@ -109,7 +110,7 @@ class ReadInJoyManager$NotifyReceiver$1
               l1 = ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).getLong("config_feeds_publishfail_leba_max_id", 0L);
               localObject1 = ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).edit();
               ((SharedPreferences.Editor)localObject1).putLong("config_feeds_publishfail_leba_read_id", l1);
-              bkwm.a((SharedPreferences.Editor)localObject1, true);
+              bmhv.a((SharedPreferences.Editor)localObject1, true);
               ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a);
               continue;
             }
@@ -120,7 +121,7 @@ class ReadInJoyManager$NotifyReceiver$1
               }
               localObject1 = ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).edit();
               ((SharedPreferences.Editor)localObject1).putInt("config_new_channel_notify_flag", -1);
-              bkwm.a((SharedPreferences.Editor)localObject1, true);
+              bmhv.a((SharedPreferences.Editor)localObject1, true);
               ReadInJoyManager.b(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a);
               continue;
             }
@@ -134,13 +135,13 @@ class ReadInJoyManager$NotifyReceiver$1
               ((SharedPreferences.Editor)localObject1).putLong("config_notify_guide_updated_time", NetConnInfoCenter.getServerTime());
               ((SharedPreferences.Editor)localObject1).putInt("readinjoy_push_channel_article_flag", -1);
               ((SharedPreferences.Editor)localObject1).putLong("readinjoy_push_channel_article_updated_time", NetConnInfoCenter.getServerTime());
-              bkwm.a((SharedPreferences.Editor)localObject1, true);
+              bmhv.a((SharedPreferences.Editor)localObject1, true);
               ReadInJoyManager.b(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a);
               continue;
             }
             if (this.jdField_a_of_type_AndroidContentIntent.getAction().equals("config_local_channel_flag"))
             {
-              aqlw.d(ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a), ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).getCurrentAccountUin());
+              arph.d(ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a), ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).getCurrentAccountUin());
             }
             else if (this.jdField_a_of_type_AndroidContentIntent.getAction().equals("config_follow_uin"))
             {
@@ -148,21 +149,21 @@ class ReadInJoyManager$NotifyReceiver$1
               j = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("follow_uin_smooth_dx", 0);
               localObject1 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("follow_uin");
               if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                pkm.a().a().a(ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).getAccount(), (String)localObject1, true, "", new anwg(i, j, (String)localObject1));
+                pvj.a().a().a(ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).getAccount(), (String)localObject1, true, "", new aozg(i, j, (String)localObject1));
               }
             }
             else if (this.jdField_a_of_type_AndroidContentIntent.getAction().equals("config_update_app_setting"))
             {
-              localObject1 = bkwm.a(ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a));
-              if ((localObject1 != null) && (((aqmf)localObject1).jdField_a_of_type_Byte != 0))
+              localObject1 = bmhv.a(ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a));
+              if ((localObject1 != null) && (((arpq)localObject1).jdField_a_of_type_Byte != 0))
               {
-                ((aqmf)localObject1).jdField_a_of_type_Byte = 0;
-                ajek.a().a(ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a), ((aqmf)localObject1).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
-                localObject2 = (amzs)ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).getBusinessHandler(31);
+                ((arpq)localObject1).jdField_a_of_type_Byte = 0;
+                ajzy.a().a(ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a), ((arpq)localObject1).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+                localObject2 = (aoch)ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).getBusinessHandler(BusinessHandlerFactory.RED_TOUCH_HANDLER);
                 if (localObject2 != null)
                 {
-                  ((amzs)localObject2).a(String.valueOf(((aqmf)localObject1).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), true, NetConnInfoCenter.getServerTimeMillis());
-                  ((amzs)localObject2).notifyUI(1, true, null);
+                  ((aoch)localObject2).a(String.valueOf(((arpq)localObject1).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId), true, NetConnInfoCenter.getServerTimeMillis());
+                  ((aoch)localObject2).notifyUI(1, true, null);
                 }
               }
             }
@@ -170,15 +171,15 @@ class ReadInJoyManager$NotifyReceiver$1
             {
               localObject1 = this.jdField_a_of_type_AndroidContentIntent.getExtras();
               if (localObject1 != null) {
-                ugf.b(((Bundle)localObject1).getString("VIDEO_REALTIME_REPORT_AID"), ((Bundle)localObject1).getString("VIDEO_REALTIME_REPORT_VID"), ((Bundle)localObject1).getInt("VIDEO_REALTIME_REPORT_RTYPE"), ((Bundle)localObject1).getInt("VIDEO_REALTIME_REPORT_RCODE"));
+                uuc.b(((Bundle)localObject1).getString("VIDEO_REALTIME_REPORT_AID"), ((Bundle)localObject1).getString("VIDEO_REALTIME_REPORT_VID"), ((Bundle)localObject1).getInt("VIDEO_REALTIME_REPORT_RTYPE"), ((Bundle)localObject1).getInt("VIDEO_REALTIME_REPORT_RCODE"));
               }
             }
             else
             {
               if (!this.jdField_a_of_type_AndroidContentIntent.getAction().equals("notify_main_share_friend_video")) {
-                break label1072;
+                break label1073;
               }
-              ForwardUtils.handleForwardData((QQAppInterface)pay.a(), null, ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).getApp(), this.jdField_a_of_type_AndroidContentIntent, null);
+              ForwardUtils.handleForwardData((QQAppInterface)pkh.a(), null, ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager$NotifyReceiver.a).getApp(), this.jdField_a_of_type_AndroidContentIntent, null);
             }
           }
         }
@@ -193,7 +194,7 @@ class ReadInJoyManager$NotifyReceiver$1
       String str2 = ((Bundle)localObject2).getString("VIDEO_REPORT_SUBACTION");
       i = ((Bundle)localObject2).getInt("VIDEO_REPORT_FROM_TYPE");
       j = ((Bundle)localObject2).getInt("VIDEO_REPORT_RESULT");
-      odq.c((QQAppInterface)localObject1, str1, str2, ((Bundle)localObject2).getString("VIDEO_REPORT_ACTION_NAME"), i, j, ((Bundle)localObject2).getString("VIDEO_REPORT_R2"), ((Bundle)localObject2).getString("VIDEO_REPORT_R3"), ((Bundle)localObject2).getString("VIDEO_REPORT_R4"), ((Bundle)localObject2).getString("VIDEO_REPORT_R5"), ((Bundle)localObject2).getBoolean("VIDEO_REPORT_SHOULD_ENCODE"));
+      olh.c((QQAppInterface)localObject1, str1, str2, ((Bundle)localObject2).getString("VIDEO_REPORT_ACTION_NAME"), i, j, ((Bundle)localObject2).getString("VIDEO_REPORT_R2"), ((Bundle)localObject2).getString("VIDEO_REPORT_R3"), ((Bundle)localObject2).getString("VIDEO_REPORT_R4"), ((Bundle)localObject2).getString("VIDEO_REPORT_R5"), ((Bundle)localObject2).getBoolean("VIDEO_REPORT_SHOULD_ENCODE"));
       break;
     }
   }

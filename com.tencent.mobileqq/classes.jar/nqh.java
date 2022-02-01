@@ -1,10 +1,15 @@
-import OnlinePushPack.SvcRespPushMsg;
-
-public abstract interface nqh
+public class nqh
 {
-  public abstract void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg);
+  public int a;
+  public int b;
+  public int c;
   
-  public abstract void a(int paramInt, String paramString);
+  public nqh(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
 }
 
 

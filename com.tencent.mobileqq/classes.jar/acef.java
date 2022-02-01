@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.view.View;
 
 public class acef
-  extends acew
+  extends acei
 {
-  public int a()
-  {
-    return -1000;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (18 == paramElem.common_elem.uint32_service_type.get());
-  }
+  public int a;
+  public View a;
+  public int b;
+  public View b;
+  public int c;
+  public View c;
+  public int d;
+  public View d;
+  public int e;
+  public View e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.Advertisement.manager;
 
-import nyd;
+import ofd;
 
 public class AdvertisementVideoPreloadManager$3
   implements Runnable
 {
-  public AdvertisementVideoPreloadManager$3(nyd paramnyd) {}
+  public AdvertisementVideoPreloadManager$3(ofd paramofd) {}
   
   public void run()
   {

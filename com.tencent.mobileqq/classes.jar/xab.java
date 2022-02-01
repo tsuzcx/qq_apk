@@ -1,29 +1,77 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class xab
-  extends vll<wzo, vsd>
+public final class xab
 {
-  public xab(wzo paramwzo)
+  public static void a(Context paramContext)
   {
-    super(paramwzo);
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://story.now.qq.com/mobile/qim/transfer.html?_wv=16777219");
+    paramContext.startActivity(localIntent);
   }
   
-  public void a(@NonNull wzo paramwzo, @NonNull vsd paramvsd)
+  public static void a(Context paramContext, String paramString)
   {
-    if ((paramwzo.a != null) && (TextUtils.equals(paramwzo.a.b, paramvsd.a)))
+    if (a(paramContext, paramString))
     {
-      xvv.a(this.TAG, "receive feed info change event. %s.", paramvsd.toString());
-      paramwzo.i();
+      b(paramContext, paramString);
+      return;
+    }
+    a(paramContext);
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    boolean bool = false;
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    paramContext = null;
+    try
+    {
+      paramString = localPackageManager.getPackageInfo(paramString, 0);
+      paramContext = paramString;
+    }
+    catch (PackageManager.NameNotFoundException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    if (paramContext != null) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return false;
+    }
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", String.format("%s?tag_id=%s&tag_type=%s&_wv=3&_nav_alpha=0&_bid=2910", new Object[] { "https://story.now.qq.com/mobile/tag/index.html", String.valueOf(paramString1), String.valueOf(paramString2) }));
+    paramContext.startActivity(localIntent);
+    return true;
+  }
+  
+  public static boolean a(Context paramContext, zbe paramzbe)
+  {
+    if (paramzbe == null) {
+      return false;
+    }
+    return a(paramContext, String.valueOf(paramzbe.jdField_a_of_type_Long), String.valueOf(paramzbe.jdField_a_of_type_Int));
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    paramString = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
+    if (paramString != null) {
+      paramContext.startActivity(paramString);
     }
   }
-  
-  public Class acceptEventClass()
-  {
-    return vsd.class;
-  }
-  
-  public void b(@NonNull wzo paramwzo, @NonNull vsd paramvsd) {}
 }
 
 

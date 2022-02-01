@@ -1,18 +1,18 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import java.util.List;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
-class qbj
-  implements ViewBase.OnClickListener
+public class qbj
+  implements View.OnTouchListener
 {
-  qbj(qbf paramqbf, Context paramContext, rdl paramrdl, ArticleInfo paramArticleInfo) {}
+  public qbj(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, GestureDetector paramGestureDetector) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    rwv.a(this.jdField_a_of_type_AndroidContentContext, ((rfo)this.jdField_a_of_type_Rdl.a.get(0)).a);
-    qbf.a(this.jdField_a_of_type_Qbf, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

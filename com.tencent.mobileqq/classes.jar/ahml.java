@@ -1,17 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class ahml
-  implements ahmn
+  implements agre
 {
-  public ahml(StickerBubbleListView paramStickerBubbleListView, int[] paramArrayOfInt) {}
+  public ahml(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void a(View paramView)
+  public void onUpdate(int paramInt)
   {
-    if ((paramView.getTag() instanceof Integer))
-    {
-      paramView = (Integer)paramView.getTag();
-      this.jdField_a_of_type_ArrayOfInt[0] = paramView.intValue();
+    if (paramInt == 23) {
+      UnlimitedBladeWorks.a(this.a).start();
     }
   }
 }

@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import xpn;
-import xvv;
-import yoy;
+import yei;
+import ykq;
+import zdr;
 
 class NewFlowCameraActivity$43
   implements Runnable
@@ -17,18 +17,18 @@ class NewFlowCameraActivity$43
   {
     int i = AIOUtils.dp2px(47.0F, this.this$0.getResources());
     int j = AIOUtils.dp2px(75.0F, this.this$0.getResources());
-    Bitmap localBitmap1 = yoy.a(this.a, i, j, false);
+    Bitmap localBitmap1 = zdr.a(this.a, i, j, false);
     if (localBitmap1 == null) {
-      xvv.e("PTV.NewFlowCameraActivity", "resizeThumb = null.");
+      ykq.e("PTV.NewFlowCameraActivity", "resizeThumb = null.");
     }
     Bitmap localBitmap2;
     do
     {
       return;
-      localBitmap2 = new xpn(AIOUtils.dp2px(3.0F, this.this$0.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
+      localBitmap2 = new yei(AIOUtils.dp2px(3.0F, this.this$0.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
       if (localBitmap2 == null)
       {
-        xvv.e("PTV.NewFlowCameraActivity", "roundThumb = null.");
+        ykq.e("PTV.NewFlowCameraActivity", "roundThumb = null.");
         return;
       }
       i = this.a.getWidth();
@@ -36,9 +36,9 @@ class NewFlowCameraActivity$43
       float f1 = ScreenUtil.SCREEN_WIDTH;
       float f2 = ScreenUtil.getInstantScreenHeight(this.this$0.getApplicationContext());
       if (i / j > f1 / f2) {}
-      for (localBitmap1 = yoy.a(this.a, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = yoy.a(this.a, i, (int)(f2 / f1 * i), true))
+      for (localBitmap1 = zdr.a(this.a, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = zdr.a(this.a, i, (int)(f2 / f1 * i), true))
       {
-        xvv.e("PTV.NewFlowCameraActivity", "animBitmap = null.");
+        ykq.e("PTV.NewFlowCameraActivity", "animBitmap = null.");
         return;
       }
     } while (this.this$0.a == null);

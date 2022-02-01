@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import bfvp;
+import bheh;
 
 public class JumpAction$6
   implements Runnable
 {
-  public JumpAction$6(bfvp parambfvp) {}
+  public JumpAction$6(bheh parambheh) {}
   
   public void run()
   {
-    bfvp.c(this.this$0);
+    bheh.c(this.this$0);
   }
 }
 

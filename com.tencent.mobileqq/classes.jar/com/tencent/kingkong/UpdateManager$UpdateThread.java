@@ -1,17 +1,17 @@
 package com.tencent.kingkong;
 
-import achb;
+import acxj;
 import android.os.Looper;
 
 public class UpdateManager$UpdateThread
   extends Thread
 {
-  private achb a;
+  private acxj a;
   
   public void run()
   {
     Looper.prepare();
-    this.a = new achb();
+    this.a = new acxj();
     Looper.loop();
   }
 }

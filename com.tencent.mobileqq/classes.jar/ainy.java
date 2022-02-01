@@ -1,6 +1,19 @@
-public abstract interface ainy
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ainy
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  ainy(ainw paramainw) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

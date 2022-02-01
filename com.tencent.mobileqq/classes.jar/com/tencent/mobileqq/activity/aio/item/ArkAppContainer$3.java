@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afvi;
+import agnx;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppContainer$3
   implements Runnable
 {
-  public ArkAppContainer$3(afvi paramafvi, String paramString) {}
+  public ArkAppContainer$3(agnx paramagnx, String paramString) {}
   
   public void run()
   {

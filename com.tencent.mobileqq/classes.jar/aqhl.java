@@ -1,50 +1,31 @@
-import android.support.annotation.NonNull;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Pair;
 
-public class aqhl
-  extends aqgc<aqhk>
+class aqhl
+  extends Handler
 {
-  @NonNull
-  public static aqhk c()
+  aqhl(aqhk paramaqhk, Looper paramLooper)
   {
-    aqhk localaqhk2 = (aqhk)apub.a().a(665);
-    aqhk localaqhk1 = localaqhk2;
-    if (localaqhk2 == null) {
-      localaqhk1 = new aqhk();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    return localaqhk1;
-  }
-  
-  @NonNull
-  public aqhk a()
-  {
-    return new aqhk();
-  }
-  
-  @NonNull
-  public aqhk a(@NonNull aptx[] paramArrayOfaptx)
-  {
-    return aqhk.a(paramArrayOfaptx[0].a);
-  }
-  
-  @NonNull
-  public aqhk b()
-  {
-    return new aqhk();
-  }
-  
-  public Class<aqhk> clazz()
-  {
-    return aqhk.class;
-  }
-  
-  public int type()
-  {
-    return 665;
+    paramMessage = (Pair)paramMessage.obj;
+    this.a.b(((Long)paramMessage.first).longValue(), ((Long)paramMessage.second).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhl
  * JD-Core Version:    0.7.0.1
  */

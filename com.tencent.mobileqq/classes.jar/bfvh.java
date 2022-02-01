@@ -1,44 +1,49 @@
-import android.annotation.SuppressLint;
-import android.app.ActivityManager;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.util.DisplayMetrics;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ImageUploadHandler.1;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class bfvh
+  implements bmjf
 {
-  public static float a(Context paramContext, float paramFloat)
+  private bfup a;
+  
+  public bfvh(ArithmeticViewHolder paramArithmeticViewHolder, bfup parambfup)
   {
-    return paramContext.getResources().getDisplayMetrics().densityDpi / 160.0F * paramFloat;
+    this.jdField_a_of_type_Bfup = parambfup;
   }
   
-  @SuppressLint({"NewApi"})
-  public static int a(Context paramContext)
+  private void a(bfup parambfup)
   {
-    int i = 0;
-    if (Build.VERSION.SDK_INT >= 11) {
-      i = ((ActivityManager)paramContext.getSystemService("activity")).getLauncherLargeIconSize();
-    }
-    int j = (int)paramContext.getResources().getDimension(17104896);
+    ThreadManager.getUIHandler().post(new ArithmeticViewHolder.ImageUploadHandler.1(this, parambfup));
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Bfup.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Bfup.jdField_a_of_type_Int = paramInt;
+    ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).c(this.jdField_a_of_type_Bfup);
+    a(this.jdField_a_of_type_Bfup);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Bfup.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_Bfup.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bfup.jdField_a_of_type_Int = 100;
+    ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).c(this.jdField_a_of_type_Bfup);
+    a(this.jdField_a_of_type_Bfup);
     if (QLog.isColorLevel()) {
-      QLog.d("DisplayUtils", 2, "launcher icon size = " + i + " , app icon size = " + j);
+      QLog.d("ArithmeticViewHolder", 2, "update success , url = " + paramString);
     }
-    return Math.max(i, j);
   }
   
-  public static int a(TextView paramTextView, int paramInt)
+  public void b(int paramInt)
   {
-    if ((paramTextView != null) && (paramTextView.getText() != null) && (paramInt > 0))
-    {
-      TextPaint localTextPaint = paramTextView.getPaint();
-      return new StaticLayout(paramTextView.getText().toString(), localTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false).getLineCount();
-    }
-    return -1;
+    this.jdField_a_of_type_Bfup.jdField_b_of_type_Int = 2;
+    a(this.jdField_a_of_type_Bfup);
+    QLog.w("ArithmeticViewHolder", 2, "upload error , code = " + paramInt + " ;local path = " + this.jdField_a_of_type_Bfup.jdField_b_of_type_JavaLangString);
   }
 }
 

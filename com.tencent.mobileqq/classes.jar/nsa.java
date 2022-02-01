@@ -1,24 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.TabView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nsa
-  extends Handler
+public class nsa
+  implements View.OnClickListener
 {
-  nsa(nrz paramnrz, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public nsa(PoiMapActivity paramPoiMapActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if ((paramView instanceof PoiMapActivity.TabView))
     {
-    default: 
-      return;
+      this.a.a(((PoiMapActivity.TabView)paramView).a);
+      this.a.i();
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
+      }
+      if (!PoiMapActivity.a(this.a)) {
+        break label127;
+      }
+      this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
     }
-    this.a.a = true;
-    nrz.a(this.a);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label127:
+      this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
+    }
   }
 }
 

@@ -1,19 +1,25 @@
-public abstract class uoe<T>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
+
+public class uoe
+  implements DialogInterface.OnClickListener
 {
-  protected T a;
-  protected StringBuilder a;
+  public uoe(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public T a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
-      return "";
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      ThreadManager.post(new ReadInJoyNewSearchActivity.5.1(this), 10, null, true);
+      return;
     }
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    paramDialogInterface.dismiss();
   }
 }
 

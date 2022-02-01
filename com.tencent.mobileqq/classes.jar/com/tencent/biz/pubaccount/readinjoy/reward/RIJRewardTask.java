@@ -5,15 +5,15 @@ import android.os.Parcelable;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import qxm;
-import qxn;
-import qxo;
+import rjs;
+import rjt;
+import rju;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "rowKey", "", "contentType", "", "maxTimeInMs", "recordTimeInMs", "(Ljava/lang/String;III)V", "getContentType", "()I", "getMaxTimeInMs", "getRecordTimeInMs", "setRecordTimeInMs", "(I)V", "getRowKey", "()Ljava/lang/String;", "beginTransaction", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask$ITransaction;", "describeContents", "toString", "writeToParcel", "", "dest", "flags", "CREATOR", "ITransaction", "Transaction", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class RIJRewardTask
   implements Parcelable
 {
-  public static final qxm CREATOR = new qxm(null);
+  public static final rjs CREATOR = new rjs(null);
   private final int jdField_a_of_type_Int;
   @NotNull
   private final String jdField_a_of_type_JavaLangString;
@@ -45,9 +45,9 @@ public final class RIJRewardTask
   }
   
   @NotNull
-  public final qxn a()
+  public final rjt a()
   {
-    return (qxn)new qxo(this);
+    return (rjt)new rju(this);
   }
   
   public final void a(int paramInt)

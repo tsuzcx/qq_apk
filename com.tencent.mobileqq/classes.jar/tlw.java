@@ -1,137 +1,114 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.10;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.11;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.12;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.13;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.14;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.15;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.16;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.17;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.18;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.19;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.2;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.20;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.21;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.22;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.23;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.3;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.4;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.5;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.6;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.7;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.8;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.UIBridgeInvokeHandler.register.9;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import cooperation.liveroom.LiveRoomProxyActivity;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import android.graphics.Bitmap.Config;
+import java.net.URL;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/UIBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "arouseReadInJoyNativeCommentView", "", "params", "Lorg/json/JSONObject;", "callbackId", "", "biuCommentAladdinConfig", "callBackId", "nameSpace", "openPluginView", "register", "showCommentEditor", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tlw
-  extends tks
+public class tlw
 {
-  public static final tlx a = new tlx(null);
+  public static int g;
+  public int a;
+  public long a;
+  public Bitmap.Config a;
+  public String a;
+  public URL a;
+  public volatile boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public int e;
+  public long e;
+  public int f;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
   
-  public tlw(@NotNull BridgeModule paramBridgeModule)
+  static
   {
-    super(paramBridgeModule);
+    jdField_g_of_type_Int = 2;
   }
   
-  private final void a(JSONObject paramJSONObject, String paramString)
+  public tlw()
   {
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = paramJSONObject.optString("url");
-      paramString = (Activity)BaseActivity.sTopActivity;
-      if ((paramString != null) && (paramJSONObject != null)) {
-        if (((CharSequence)paramJSONObject).length() <= 0) {
-          break label57;
-        }
-      }
-    }
-    label57:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        LiveRoomProxyActivity.open(paramString, paramJSONObject, "Readinjoy feeds");
-      }
-      return;
-      paramJSONObject = null;
-      break;
-    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_e_of_type_Int = -2;
+    this.jdField_c_of_type_JavaLangString = "";
   }
   
-  private final void b(JSONObject paramJSONObject, String paramString)
-  {
-    if (paramJSONObject != null)
-    {
-      if (paramJSONObject.optBoolean("isAlbum", true)) {
-        a().arouseReadInJoyNativeCommentView(paramJSONObject, paramString);
-      }
-    }
-    else {
-      return;
-    }
-    if (TextUtils.isEmpty((CharSequence)paramJSONObject.optString("callback"))) {}
-    for (String str = paramString;; str = paramJSONObject.optString("callback"))
-    {
-      ufd.a(paramJSONObject, str, (tiu)new tly(this, paramString));
-      break;
-    }
-  }
-  
-  private final void c(JSONObject paramJSONObject, String paramString)
-  {
-    UiApiPlugin.a(true, paramString, (tiu)new tlz(this));
-  }
-  
-  private final void d(JSONObject paramJSONObject, String paramString)
-  {
-    UiApiPlugin.a(paramJSONObject, paramString, a());
-  }
-  
-  @NotNull
   public String a()
   {
-    return "ui";
+    return "kandian_zimage_image_req_" + hashCode();
   }
   
-  public void a()
+  public boolean equals(Object paramObject)
   {
-    a("openPluginView", (Function2)new UIBridgeInvokeHandler.register.1((tlw)this));
-    a("arouseReadInJoyNativeCommentView", (Function2)new UIBridgeInvokeHandler.register.2((tlw)this));
-    a("biuCommentAladdinConfig", (Function2)new UIBridgeInvokeHandler.register.3((tlw)this));
-    a("showCommentEditor", (Function2)new UIBridgeInvokeHandler.register.4((tlw)this));
-    a("showTips", (Function2)new UIBridgeInvokeHandler.register.5(this));
-    a("openPage", (Function2)new UIBridgeInvokeHandler.register.6(this));
-    a("openUrl", (Function2)new UIBridgeInvokeHandler.register.7(this));
-    a("setTitle", (Function2)new UIBridgeInvokeHandler.register.8(this));
-    a("pageVisibility", (Function2)new UIBridgeInvokeHandler.register.9(this));
-    a("popBack", (Function2)new UIBridgeInvokeHandler.register.10(this));
-    a("suspensionPopBack", (Function2)new UIBridgeInvokeHandler.register.11(this));
-    a("setNavBtn", (Function2)new UIBridgeInvokeHandler.register.12(this));
-    a("showDialog", (Function2)new UIBridgeInvokeHandler.register.13(this));
-    a("showShareMenu", (Function2)new UIBridgeInvokeHandler.register.14(this));
-    a("canOpenPage", (Function2)new UIBridgeInvokeHandler.register.15(this));
-    a("setNavBar", (Function2)new UIBridgeInvokeHandler.register.16(this));
-    a("setRightDragToGoBackParams", (Function2)new UIBridgeInvokeHandler.register.17(this));
-    a("showActionSheet", (Function2)new UIBridgeInvokeHandler.register.18(this));
-    a("violaTitleBarClick", (Function2)new UIBridgeInvokeHandler.register.19(this));
-    a("sharePicMessage", (Function2)new UIBridgeInvokeHandler.register.20(this));
-    a("isNightMode", (Function2)new UIBridgeInvokeHandler.register.21(this));
-    a("addViolaPageByUrl", (Function2)new UIBridgeInvokeHandler.register.22(this));
-    a("disableSwitcher", (Function2)new UIBridgeInvokeHandler.register.23(this));
+    boolean bool2 = true;
+    boolean bool3 = false;
+    if (this == paramObject) {
+      bool1 = true;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return bool1;
+                bool1 = bool3;
+              } while (paramObject == null);
+              bool1 = bool3;
+            } while (getClass() != paramObject.getClass());
+            paramObject = (tlw)paramObject;
+            bool1 = bool3;
+          } while (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int);
+          bool1 = bool3;
+        } while (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int);
+        bool1 = bool3;
+      } while (this.jdField_c_of_type_Int != paramObject.jdField_c_of_type_Int);
+      if (this.jdField_a_of_type_JavaNetURL == null) {
+        break;
+      }
+      bool1 = bool3;
+    } while (!this.jdField_a_of_type_JavaNetURL.equals(paramObject.jdField_a_of_type_JavaNetURL));
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap$Config == paramObject.jdField_a_of_type_AndroidGraphicsBitmap$Config) {}
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      return bool1;
+      if (paramObject.jdField_a_of_type_JavaNetURL == null) {
+        break;
+      }
+      return false;
+    }
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaNetURL != null) {}
+    for (int j = this.jdField_a_of_type_JavaNetURL.hashCode();; j = 0) {
+      return (((j * 31 + this.jdField_a_of_type_Int) * 31 + this.jdField_b_of_type_Int) * 31 + this.jdField_a_of_type_AndroidGraphicsBitmap$Config.hashCode()) * 31 + this.jdField_c_of_type_Int;
+    }
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaNetURL + " " + this.jdField_a_of_type_Int + "x" + this.jdField_b_of_type_Int + " isPreload:" + this.jdField_b_of_type_Boolean + " isCancel:" + this.jdField_a_of_type_Boolean + " startTime: " + this.jdField_a_of_type_Long + " enterSubThreadTime: " + this.jdField_b_of_type_Long + " enterThreadPoolTime: " + this.jdField_c_of_type_Long + " startThreadPoolTime: " + this.jdField_d_of_type_Long + " downloadAndWriteFileTime: " + this.jdField_e_of_type_Long + " decodeTime: " + this.f + " enterMainThreadTime: " + this.jdField_g_of_type_Long + " endTime: " + this.h + " failCode: " + this.jdField_e_of_type_Int + " errMsg: " + this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tlw
  * JD-Core Version:    0.7.0.1
  */

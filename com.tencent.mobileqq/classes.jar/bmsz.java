@@ -1,12 +1,8 @@
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import cooperation.weiyun.sdk.download.DownloadType;
 
-public class bmsz
-  extends bmst
+public abstract interface bmsz
 {
-  public bmsz(CaptureModeController paramCaptureModeController)
-  {
-    super(paramCaptureModeController);
-  }
+  public abstract void a(bmse parambmse, DownloadType paramDownloadType, bmsw parambmsw);
 }
 
 

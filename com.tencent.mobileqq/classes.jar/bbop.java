@@ -1,25 +1,48 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-
-final class bbop
-  implements bbos
+public abstract class bbop
 {
-  bbop(BusinessObserver paramBusinessObserver) {}
+  public static final String a;
+  public long a;
+  private String b;
   
-  public void a(int paramInt, String paramString)
+  static
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("dataErrorMsg", paramString);
-    localBundle.putInt("dataErrorCode", paramInt);
-    this.a.onReceive(0, false, localBundle);
+    jdField_a_of_type_JavaLangString = bbii.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(String paramString)
+  public bbop(long paramLong)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("data", paramString.getBytes());
-    localBundle.putString("cmd", "isIpForeign");
-    this.a.onReceive(0, true, localBundle);
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  private void a()
+  {
+    if (this.b == null) {
+      this.b = (jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long + "/");
+    }
+  }
+  
+  public final String a()
+  {
+    a();
+    return this.b + "thumb.jpg";
+  }
+  
+  public final String b()
+  {
+    a();
+    return this.b + "combine.mp4";
+  }
+  
+  public final String c()
+  {
+    a();
+    return this.b + "audio.mp4";
+  }
+  
+  public String d()
+  {
+    a();
+    return this.b;
   }
 }
 

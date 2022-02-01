@@ -6,10 +6,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.format.Time;
-import bczm;
-import bczn;
-import bczo;
-import bczp;
+import begl;
+import begm;
+import begn;
+import bego;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -22,9 +22,9 @@ import java.util.regex.Pattern;
 
 public class ShareAppLogHelper
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new bczm(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new begl(this, Looper.getMainLooper());
   private Time jdField_a_of_type_AndroidTextFormatTime;
-  private bczp jdField_a_of_type_Bczp;
+  private bego jdField_a_of_type_Bego;
   volatile Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString = BaseApplicationImpl.getLogExternalPath(BaseApplicationImpl.context) + "/tencent/msflogs/com/tencent/mobileqq/";
   private ArrayList<ShareAppLogHelper.LogFile> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -153,7 +153,7 @@ public class ShareAppLogHelper
     Object localObject = new File(this.c);
     if (((File)localObject).exists())
     {
-      localObject = ((File)localObject).listFiles(new bczo(this));
+      localObject = ((File)localObject).listFiles(new begn(this));
       if ((localObject != null) && (localObject.length > 0))
       {
         int j = localObject.length;
@@ -179,7 +179,7 @@ public class ShareAppLogHelper
   
   private void a(File paramFile, boolean paramBoolean)
   {
-    paramFile = paramFile.listFiles(new bczn(this));
+    paramFile = paramFile.listFiles(new begm(this));
     if ((paramFile != null) && (paramFile.length > 0))
     {
       int j = paramFile.length;
@@ -531,9 +531,9 @@ public class ShareAppLogHelper
     }
   }
   
-  public void a(bczp parambczp)
+  public void a(bego parambego)
   {
-    this.jdField_a_of_type_Bczp = parambczp;
+    this.jdField_a_of_type_Bego = parambego;
   }
   
   public void a(boolean paramBoolean)
@@ -561,7 +561,7 @@ public class ShareAppLogHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.testassister.ShareAppLogHelper
  * JD-Core Version:    0.7.0.1
  */

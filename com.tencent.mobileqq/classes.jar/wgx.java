@@ -1,41 +1,8 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideoBatch;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.VideoItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class wgx
-  extends vqm
+public abstract interface wgx
 {
-  public List<vuo> a;
-  
-  public wgx(qqstory_service.RspWatchVideoBatch paramRspWatchVideoBatch)
-  {
-    super(paramRspWatchVideoBatch.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspWatchVideoBatch = paramRspWatchVideoBatch.succ_video_list.get();
-    if (paramRspWatchVideoBatch == null) {}
-    for (;;)
-    {
-      return;
-      paramRspWatchVideoBatch = paramRspWatchVideoBatch.iterator();
-      while (paramRspWatchVideoBatch.hasNext())
-      {
-        qqstory_service.VideoItem localVideoItem = (qqstory_service.VideoItem)paramRspWatchVideoBatch.next();
-        vuo localvuo = new vuo();
-        localvuo.a = localVideoItem.vid.get().toStringUtf8();
-        this.jdField_a_of_type_JavaUtilList.add(localvuo);
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    return "WatchVideoBatchResponse{ errorCode=" + this.jdField_a_of_type_Int + " succList=" + this.jdField_a_of_type_JavaUtilList + "}";
-  }
+  public abstract void a(long paramLong, String paramString, CommentLikeFeedItem paramCommentLikeFeedItem);
 }
 
 

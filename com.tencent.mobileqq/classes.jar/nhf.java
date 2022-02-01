@@ -1,36 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.gameresult.GamePKResultFragment;
 
 public class nhf
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public nhf(nhe paramnhe, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public nhf(GamePKResultFragment paramGamePKResultFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    case 257: 
-    default: 
-      return;
-    case 152: 
-      nhe.a(this.a);
-      return;
-    case 153: 
-      nhe.b(this.a);
-      return;
-    case 256: 
-      int i = paramMessage.arg1;
-      int j = paramMessage.arg2;
-      long l = ((Long)paramMessage.obj).longValue();
-      this.a.a(null, i, j, l);
-      return;
-    }
-    nhe.b(this.a);
+    GamePKResultFragment.a(this.a);
   }
 }
 

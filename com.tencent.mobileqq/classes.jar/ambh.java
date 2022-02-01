@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-public abstract interface ambh
+public class ambh
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public ambh(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
   
-  public abstract void a(SpriteTaskParam paramSpriteTaskParam);
-  
-  public abstract boolean a();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 

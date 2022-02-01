@@ -1,17 +1,18 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aggd
-  extends aghj
+public class aggd
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aggd(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  public aggd(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return new aaur(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    AIOLongShotHelper.a(this.a, paramCompoundButton, paramBoolean);
+    AIOLongShotHelper.a("0X8009DE8");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

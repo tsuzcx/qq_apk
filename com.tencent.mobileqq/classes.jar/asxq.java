@@ -1,23 +1,16 @@
-import java.util.List;
-
-class asxq
-  implements bhnm
+public class asxq
+  extends asxo
 {
-  asxq(asxp paramasxp, List paramList, asxo paramasxo) {}
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void a(int paramInt)
+  public asxq(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
   {
-    if (paramInt == 2)
-    {
-      asxp.a(this.jdField_a_of_type_Asxp, this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Asxo != null) {
-        this.jdField_a_of_type_Asxo.a(1, 0);
-      }
-    }
-    while (this.jdField_a_of_type_Asxo == null) {
-      return;
-    }
-    this.jdField_a_of_type_Asxo.a(1, 1);
+    super(1, paramString1);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
   }
 }
 

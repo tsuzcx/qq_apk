@@ -1,11 +1,11 @@
 package cooperation.qzone;
 
 import android.support.v4.app.FragmentActivity;
-import aroz;
+import astf;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneNavigateToQQTransparentFragment$1
-  implements aroz
+  implements astf
 {
   QZoneNavigateToQQTransparentFragment$1(QZoneNavigateToQQTransparentFragment paramQZoneNavigateToQQTransparentFragment, FragmentActivity paramFragmentActivity) {}
   

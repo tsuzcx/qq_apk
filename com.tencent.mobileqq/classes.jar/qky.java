@@ -1,17 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qky
-  extends EventCallback
+  implements View.OnClickListener
 {
-  qky(qks paramqks) {}
+  qky(qkw paramqkw, long paramLong, ArticleInfo paramArticleInfo) {}
   
-  public void onPagerChange(int paramInt)
+  public void onClick(View paramView)
   {
-    qks.b(paramInt);
-    if ((qks.b() != null) && (!qks.b().contains(Integer.valueOf(paramInt)))) {
-      qks.b().add(Integer.valueOf(paramInt));
-    }
+    String str = pjj.g + bhcu.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
+    pkh.a(qkw.a(this.jdField_a_of_type_Qkw), str);
+    qkw.a(1, pqw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

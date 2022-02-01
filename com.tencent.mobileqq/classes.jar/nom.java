@@ -1,11 +1,35 @@
-import android.content.Context;
-import java.util.Map;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 
-public abstract interface nom
+public class nom
 {
-  public abstract int a(Context paramContext, String paramString);
+  private static final nom jdField_a_of_type_Nom = new nom();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private Handler b;
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, nnv paramnnv, Map<String, String> paramMap);
+  private nom()
+  {
+    HandlerThread localHandlerThread = new HandlerThread("avgame_chat_thread");
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    this.b = new Handler(Looper.getMainLooper());
+  }
+  
+  public static nom a()
+  {
+    return jdField_a_of_type_Nom;
+  }
+  
+  public Handler a()
+  {
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public Handler b()
+  {
+    return this.b;
+  }
 }
 
 

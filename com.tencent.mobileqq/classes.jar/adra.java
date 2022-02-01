@@ -1,8 +1,21 @@
-public abstract interface adra
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.nowsummarycard.NowSummaryCard.MiniCard;
+import java.util.List;
+import mqq.os.MqqHandler;
+
+public class adra
+  implements aydl
 {
-  public abstract void a();
+  public adra(ChatSettingActivity paramChatSettingActivity) {}
   
-  public abstract void b();
+  public void a(int paramInt, List<NowSummaryCard.MiniCard> paramList, String paramString)
+  {
+    if ((paramInt == 0) && (paramList != null) && (paramList.size() > 0)) {
+      ThreadManager.getUIHandler().post(new ChatSettingActivity.3.1(this, paramList));
+    }
+  }
 }
 
 

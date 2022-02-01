@@ -1,21 +1,71 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
 
-public class aioo
-  implements View.OnClickListener
+class aioo
+  implements INetEngine.INetEngineListener
 {
-  public aioo(SimpleSlidingIndicator paramSimpleSlidingIndicator, int paramInt) {}
+  private Handler a;
   
-  public void onClick(View paramView)
+  aioo(Handler paramHandler)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.e >= 0) && (SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator) != null)) {
-      SimpleSlidingIndicator.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator).b(this.jdField_a_of_type_Int);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.a(this.jdField_a_of_type_Int, true, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramHandler;
   }
+  
+  public void onResp(NetResp paramNetResp)
+  {
+    Object localObject = this.a.obtainMessage(8);
+    ((Message)localObject).obj = paramNetResp.mReq;
+    this.a.sendMessage((Message)localObject);
+    Bundle localBundle = (Bundle)paramNetResp.mReq.getUserData();
+    localObject = localBundle.getString("ReqUniqueKey");
+    int i = localBundle.getInt("IdxInRes");
+    if (QLog.isColorLevel())
+    {
+      long l = localBundle.getLong("StartTs");
+      QLog.d("ZhituManager", 2, aioi.a((String)localObject, "onResp", i, " zhitu img download onResp result fileSize = " + paramNetResp.mTotalFileLen + " file.path = " + paramNetResp.mReq.mOutPath + " resp.result = " + paramNetResp.mResult + " take time: " + Long.toString(System.currentTimeMillis() - l)));
+    }
+    if (paramNetResp.mResult == 3)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituManager", 2, aioi.a((String)localObject, "OnResp", i, "result downloading, "));
+      }
+      return;
+    }
+    if (paramNetResp.mResult == 0)
+    {
+      ZhituImgResponse localZhituImgResponse = (ZhituImgResponse)localBundle.getParcelable("ImgResponse");
+      aioi.a(paramNetResp.mReq.mOutPath);
+      if (localZhituImgResponse != null)
+      {
+        paramNetResp = this.a.obtainMessage(3);
+        paramNetResp.obj = localBundle;
+        this.a.sendMessage(paramNetResp);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituManager", 2, aioi.a((String)localObject, "onResp", "download succ but md5 is mismatched"));
+      }
+      paramNetResp = this.a.obtainMessage(4);
+      localBundle.putInt("ErrorCode", 99999);
+      paramNetResp.obj = localBundle;
+    }
+    for (;;)
+    {
+      break;
+      localObject = this.a.obtainMessage(4);
+      localBundle.putInt("ErrorCode", paramNetResp.mErrCode);
+      ((Message)localObject).obj = localBundle;
+      paramNetResp = (NetResp)localObject;
+    }
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

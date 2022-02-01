@@ -1,43 +1,66 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arbi
+  extends aqwt<arbh>
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  
-  public arbi(String paramString)
+  @NonNull
+  public arbh a(int paramInt)
   {
-    this.a = paramString;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split("_");
-      if (paramString.length >= 7)
-      {
-        this.g = paramString[0];
-        this.h = paramString[1];
-        this.b = paramString[2];
-        this.c = paramString[3];
-        this.d = paramString[4];
-        this.e = paramString[5];
-        this.f = paramString[6];
-      }
-    }
+    return new arbh();
   }
   
-  public boolean a()
+  @Nullable
+  public arbh a(aqxa[] paramArrayOfaqxa)
   {
-    return this.a.split("_").length >= 7;
+    QLog.i("LebaQzoneStyleProcessor", 1, "[onParsed] config");
+    return arbh.a(paramArrayOfaqxa);
+  }
+  
+  public void a(arbh paramarbh)
+  {
+    QLog.i("LebaQzoneStyleProcessor", 1, "[onUpdate]");
+  }
+  
+  public Class<arbh> clazz()
+  {
+    return arbh.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.i("LebaQzoneStyleProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 614;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbi
  * JD-Core Version:    0.7.0.1
  */

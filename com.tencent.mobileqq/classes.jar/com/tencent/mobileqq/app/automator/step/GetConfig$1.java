@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
@@ -27,7 +28,7 @@ public class GetConfig$1
       ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSDKPredownload", true, 0L, 0L, (HashMap)localObject, "");
     }
-    Object localObject = (PreDownloadController)this.this$0.a.app.getManager(193);
+    Object localObject = (PreDownloadController)this.this$0.a.app.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
     if (((PreDownloadController)localObject).isEnable()) {
       ((PreDownloadController)localObject).preDownloadSuccess("http://tvk_sdkmgr/unkown", -1L);
     }

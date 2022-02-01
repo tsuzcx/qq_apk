@@ -1,38 +1,16 @@
-import android.os.SystemClock;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class aqpo
+class aqpo
+  implements View.OnTouchListener
 {
-  private long a;
-  private long b;
-  private long c;
+  aqpo(aqpl paramaqpl) {}
   
-  public long a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a = 0L;
-    this.b = 0L;
-  }
-  
-  public long b()
-  {
-    this.b = (SystemClock.uptimeMillis() - this.c);
-    this.a += this.b;
-    b();
-    return this.b;
-  }
-  
-  public void b()
-  {
-    this.c = SystemClock.uptimeMillis();
-  }
-  
-  public long c()
-  {
-    return this.b;
+    return aqpl.a(this.a).onTouchEvent(paramMotionEvent);
   }
 }
 

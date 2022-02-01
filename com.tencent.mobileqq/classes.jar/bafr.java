@@ -1,38 +1,23 @@
-class bafr
-  implements baem
+import android.content.Context;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+
+public class bafr
+  extends LinearLayoutManager
 {
-  bafr(bafq parambafq) {}
-  
-  public void a(int paramInt, Throwable paramThrowable)
+  public bafr(InterestSwitchEditActivity paramInterestSwitchEditActivity, Context paramContext)
   {
-    xvv.d("FlowEdit_VideoFlowDecodeWrapper", paramThrowable, "onDecodeError: %d", new Object[] { Integer.valueOf(paramInt) });
+    super(paramContext);
   }
   
-  public void a(long paramLong) {}
-  
-  public void b(long paramLong)
+  public boolean canScrollHorizontally()
   {
-    xvv.a("FlowEdit_VideoFlowDecodeWrapper", "onDecodeSeekTo: %d", Long.valueOf(paramLong));
+    return false;
   }
   
-  public void g()
+  public boolean canScrollVertically()
   {
-    xvv.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeStart: ");
-  }
-  
-  public void j()
-  {
-    xvv.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeFinish: ");
-  }
-  
-  public void k()
-  {
-    xvv.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeCancel: ");
-  }
-  
-  public void l()
-  {
-    xvv.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeRepeat: ");
+    return false;
   }
 }
 

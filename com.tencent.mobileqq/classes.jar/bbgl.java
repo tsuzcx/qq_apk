@@ -1,6 +1,6 @@
-public abstract interface bbgl
+class bbgl
 {
-  public abstract void a(String paramString);
+  private static final bbgg a = new bbgg(null);
 }
 
 

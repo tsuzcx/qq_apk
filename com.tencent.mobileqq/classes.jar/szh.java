@@ -1,63 +1,67 @@
-import android.content.Context;
-import android.content.res.AssetManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.InputStream;
+import com.tencent.qqlive.module.videoreport.VideoReport;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class szh
-  implements szi
+  implements AbsListView.OnScrollListener
 {
-  private AssetManager jdField_a_of_type_AndroidContentResAssetManager;
-  private String jdField_a_of_type_JavaLangString;
+  List<AbsListView.OnScrollListener> a = new ArrayList();
   
-  public szh(Context paramContext, String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidContentResAssetManager = paramContext.getAssets();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a.clear();
   }
   
-  public InputStream a(String paramString)
+  public void a(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    return this.jdField_a_of_type_AndroidContentResAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
-  }
-  
-  public List<String> a()
-  {
-    try
-    {
-      localList = szr.a(this.jdField_a_of_type_AndroidContentResAssetManager, this.jdField_a_of_type_JavaLangString);
-      if (localList == null) {
-        break label28;
-      }
+    if (!this.a.contains(paramOnScrollListener)) {
+      this.a.add(paramOnScrollListener);
     }
-    catch (Exception localException)
+  }
+  
+  public void b(AbsListView.OnScrollListener paramOnScrollListener)
+  {
+    this.a.remove(paramOnScrollListener);
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      label28:
-      do
+      AbsListView.OnScrollListener localOnScrollListener = (AbsListView.OnScrollListener)localIterator.next();
+      try
       {
-        List localList;
-        QLog.d("ReadAssetFile", 1, "tryLoadTemplateFromAssets fileList size: ", localException);
-        arrayOfString = this.jdField_a_of_type_AndroidContentResAssetManager.list(this.jdField_a_of_type_JavaLangString);
-        localArrayList = new ArrayList();
-        localObject = localArrayList;
-      } while (arrayOfString == null);
-      j = arrayOfString.length;
-      i = 0;
-    }
-    return localList;
-    for (;;)
-    {
-      String[] arrayOfString;
-      ArrayList localArrayList;
-      int j;
-      int i;
-      Object localObject = localArrayList;
-      if (i >= j) {
-        break;
+        localOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
       }
-      localArrayList.add(arrayOfString[i]);
-      i += 1;
+      catch (Throwable localThrowable) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("ReadInJoyBaseListView", 2, "onScroll exp", localThrowable);
+      }
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      AbsListView.OnScrollListener localOnScrollListener = (AbsListView.OnScrollListener)localIterator.next();
+      try
+      {
+        localOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      catch (Throwable localThrowable) {}
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, "onScrollStateChanged exp", localThrowable);
+      }
+    }
+    if (paramInt == 0) {
+      VideoReport.traverseExposure();
     }
   }
 }

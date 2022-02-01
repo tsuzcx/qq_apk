@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.music;
 
-import bmtk;
+import bojc;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,7 +13,7 @@ class QIMMusicConfigManager$1
   {
     Iterator localIterator = QIMMusicConfigManager.a(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((bmtk)localIterator.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
+      ((bojc)localIterator.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
     }
   }
 }

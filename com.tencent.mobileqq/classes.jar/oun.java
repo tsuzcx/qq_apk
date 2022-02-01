@@ -1,15 +1,14 @@
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+
 public class oun
+  implements bkzs
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
+  public oun(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  
+  public void onDismiss()
+  {
+    ReadInJoySettingActivity.b(this.a).cancel();
+  }
 }
 
 

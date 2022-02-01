@@ -1,21 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class xza
-  extends Handler
+class xza
+  implements DialogInterface.OnDismissListener
 {
-  public xza(EditVideoMusic paramEditVideoMusic) {}
+  xza(xyz paramxyz) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.b();
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

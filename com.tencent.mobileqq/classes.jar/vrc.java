@@ -1,42 +1,24 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import UserGrowth.stSimpleMetaPerson;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.common.util.NetworkUtil;
 
-public final class vrc
-  extends MSFServlet
+class vrc
+  implements bkzq
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramIntent == null) {
-      return;
-    }
-    Bundle localBundle = paramIntent.getExtras();
-    paramIntent = null;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      paramIntent = bgau.b(paramFromServiceMsg.getWupBuffer());
-      localBundle.putInt("data_error_code", 0);
-    }
-    for (;;)
-    {
-      QQStoryContext.a().a().a(localBundle, paramIntent);
-      return;
-      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
-    }
-  }
+  vrc(vrb paramvrb, stSimpleMetaPerson paramstSimpleMetaPerson) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void OnClick(View paramView, int paramInt)
   {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bgau.a(arrayOfByte));
-    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-    paramPacket.autoResend = paramIntent.getBooleanExtra("support_retry", false);
+    if (!NetworkUtil.isNetworkAvailable(vrb.a(this.jdField_a_of_type_Vrb)))
+    {
+      bjkv.a().a(2131720145);
+      return;
+    }
+    vrb.a(this.jdField_a_of_type_Vrb).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
+    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
+    vrb.a(this.jdField_a_of_type_Vrb).setText("关注");
+    vrb.a(this.jdField_a_of_type_Vrb).setVisibility(0);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.notecard;
 
-import pxt;
+import qjx;
 
 class SoundCheckRunnable$1
   implements Runnable
 {
-  SoundCheckRunnable$1(SoundCheckRunnable paramSoundCheckRunnable, pxt parampxt) {}
+  SoundCheckRunnable$1(SoundCheckRunnable paramSoundCheckRunnable, qjx paramqjx) {}
   
   public void run()
   {
-    this.a.x_();
+    this.a.z_();
   }
 }
 

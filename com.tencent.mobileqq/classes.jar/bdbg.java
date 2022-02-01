@@ -1,10 +1,16 @@
-import android.os.Bundle;
-
-public abstract interface bdbg
+class bdbg
+  implements bczh
 {
-  public abstract void a(Bundle paramBundle);
+  bdbg(bdbf parambdbf, bdbk parambdbk) {}
   
-  public abstract void b(Bundle paramBundle);
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if ((paramInt == 1) && (this.jdField_a_of_type_Bdbk != null)) {
+      this.jdField_a_of_type_Bdbk.onAutoFocusCallback(paramBoolean, true);
+    }
+  }
 }
 
 

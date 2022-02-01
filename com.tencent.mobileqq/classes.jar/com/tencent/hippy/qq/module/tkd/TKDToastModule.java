@@ -16,10 +16,22 @@ public class TKDToastModule
     super(paramHippyEngineContext);
   }
   
-  @HippyMethod(name="show")
-  public void show(String paramString1, String paramString2, int paramInt, String paramString3, Promise paramPromise)
+  private int getIconType(int paramInt)
   {
-    UIThreadUtils.runOnUiThread(new TKDToastModule.1(this, paramString1, paramInt, paramPromise));
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    }
+    return 2;
+  }
+  
+  @HippyMethod(name="show")
+  public void show(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, Promise paramPromise)
+  {
+    UIThreadUtils.runOnUiThread(new TKDToastModule.1(this, paramInt2, paramString1, paramInt1, paramPromise));
   }
 }
 

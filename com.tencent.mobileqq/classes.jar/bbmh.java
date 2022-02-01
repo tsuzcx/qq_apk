@@ -1,48 +1,24 @@
-import com.tencent.av.service.AVPbInfo;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
 class bbmh
-  implements lxl
+  implements Comparator<bble>
 {
-  bbmh(bbmg parambbmg, byte[] paramArrayOfByte, String paramString, long paramLong1, MessageHandler paramMessageHandler, long paramLong2, long paramLong3, int paramInt, boolean paramBoolean) {}
+  bbmh(bbmf parambbmf) {}
   
-  public void a(lxk paramlxk)
+  public int a(bble parambble1, bble parambble2)
   {
-    AVPbInfo localAVPbInfo = paramlxk.a(this.jdField_a_of_type_ArrayOfByte);
-    if (localAVPbInfo != null)
+    if (parambble2.b() > parambble1.b()) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "ret, bindId:" + localAVPbInfo.bindId + ", bindIdType:" + localAVPbInfo.bindIdType + ", phoneNum:" + localAVPbInfo.phoneNum);
+      return -1;
+      if (parambble2.b() < parambble1.b()) {
+        return 1;
       }
-      if (!lld.c()) {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Discard video message cause device not support");
-        }
-      }
+    } while (parambble2.a() > parambble1.a());
+    if (parambble2.a() == parambble1.a()) {
+      return 0;
     }
-    for (;;)
-    {
-      paramlxk.a();
-      return;
-      if (this.jdField_a_of_type_Long >= 60L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Discard video message because of time out " + this.jdField_a_of_type_Long + " s");
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "===========handleSharpVideoMessageResp 1234========");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.b, this.jdField_a_of_type_ArrayOfByte, this.c, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "ret, decode failed!");
-        }
-      }
-    }
+    return 1;
   }
 }
 

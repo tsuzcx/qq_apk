@@ -1,61 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.widget.TextView;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.6.1;
 
 public class aqar
-  extends aptq<aqaq>
+  extends aqau
 {
-  @NonNull
-  public aqaq a(int paramInt)
-  {
-    return new aqaq();
-  }
+  public aqar(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  @Nullable
-  public aqaq a(aptx[] paramArrayOfaptx)
+  public void a(int paramInt)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqaq.a(paramArrayOfaptx[0].a);
+    if (ArkIDESettingFragment.a(this.a) != null)
+    {
+      TextView localTextView = ArkIDESettingFragment.a(this.a);
+      ArkAppCenter.a().postToMainThread(new ArkIDESettingFragment.6.1(this, paramInt, localTextView));
     }
-    return null;
-  }
-  
-  public void a(aqaq paramaqaq) {}
-  
-  public Class<aqaq> clazz()
-  {
-    return aqaq.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 419;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqar
  * JD-Core Version:    0.7.0.1
  */

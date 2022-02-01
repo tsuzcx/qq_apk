@@ -1,21 +1,19 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
-
 public class aqzj
 {
-  public View a;
-  public ImageView a;
-  public URLImageView a;
-  public View b;
-  public ImageView b;
-  public View c;
+  public String a;
+  public String b;
+  public String c;
   
-  public aqzj(aqzb paramaqzb) {}
+  public aqzj(String paramString1, String paramString2, String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqzj
  * JD-Core Version:    0.7.0.1
  */

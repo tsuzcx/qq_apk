@@ -1,32 +1,17 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
 
-class amzq
-  implements BusinessObserver
+public class amzq
+  implements DialogInterface.OnClickListener
 {
-  amzq(amzp paramamzp, long paramLong) {}
+  public amzq(CmGameSubRscHandler.2 param2) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Amzp.a.append(2, Boolean.valueOf(false));
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer onReceive :" + paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.b(null);
     }
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null) {
-        break label79;
-      }
-      amzp.a(this.jdField_a_of_type_Amzp, 2, this.jdField_a_of_type_Long, paramBundle);
-    }
-    label79:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer success data is null");
   }
 }
 

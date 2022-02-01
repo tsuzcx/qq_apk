@@ -1,30 +1,30 @@
 package dov.com.qq.im.aeeditor.manage;
 
-import bmbx;
-import bmfc;
-import bmfg;
+import bnrh;
+import bnuu;
+import bnuy;
 import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
 import java.util.Map;
 
 public class AEEditorResourceDownloader$4
   implements Runnable
 {
-  public AEEditorResourceDownloader$4(bmfc parambmfc, String paramString, bmfg parambmfg) {}
+  public AEEditorResourceDownloader$4(bnuu parambnuu, String paramString, bnuy parambnuy) {}
   
   public void run()
   {
-    bmbx.b(this.this$0.c, "downLoadResource--by user--BEGIN id: " + this.jdField_a_of_type_JavaLangString);
-    this.this$0.b();
+    bnrh.b(this.this$0.c, "downLoadResource--by user--BEGIN id: " + this.jdField_a_of_type_JavaLangString);
+    this.this$0.c();
     AEEditorDownloadResBean localAEEditorDownloadResBean = (AEEditorDownloadResBean)this.this$0.a.get(this.jdField_a_of_type_JavaLangString);
     if (localAEEditorDownloadResBean != null) {
-      this.this$0.a(localAEEditorDownloadResBean, this.jdField_a_of_type_Bmfg);
+      this.this$0.a(localAEEditorDownloadResBean, this.jdField_a_of_type_Bnuy);
     }
     do
     {
       return;
-      bmbx.d(this.this$0.c, "downLoadResource--by user--FAIL, no download config for id: " + this.jdField_a_of_type_JavaLangString);
-    } while (this.jdField_a_of_type_Bmfg == null);
-    this.jdField_a_of_type_Bmfg.a(false);
+      bnrh.d(this.this$0.c, "downLoadResource--by user--FAIL, no download config for id: " + this.jdField_a_of_type_JavaLangString);
+    } while (this.jdField_a_of_type_Bnuy == null);
+    this.jdField_a_of_type_Bnuy.a(false);
   }
 }
 

@@ -2,7 +2,7 @@ package cooperation.qzone.util;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import bfur;
+import bhdj;
 import mqq.app.QQPermissionCallback;
 
 final class MediaUtil$2
@@ -12,7 +12,7 @@ final class MediaUtil$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bfur.a(MediaUtil.access$100(this.val$activity));
+    bhdj.a(MediaUtil.access$100(this.val$activity));
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)

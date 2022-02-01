@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
 import android.content.Intent;
-import ayeu;
-import bcef;
+import azlg;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import lkd;
+import lkp;
 
 class TransFileController$1
   implements Runnable
@@ -18,7 +18,7 @@ class TransFileController$1
   {
     Object localObject = new CompressInfo(this.val$filePath, 0);
     ((CompressInfo)localObject).f = 0;
-    ayeu.a((CompressInfo)localObject);
+    azlg.a((CompressInfo)localObject);
     String str = "";
     boolean bool;
     int i;
@@ -42,7 +42,7 @@ class TransFileController$1
         localTransferRequest.mIsUp = true;
         localTransferRequest.mLocalPath = ((CompressInfo)localObject).e;
         localTransferRequest.mFileType = 22;
-        localObject = new lkd();
+        localObject = new lkp();
         if (!bool) {
           break label310;
         }
@@ -50,16 +50,16 @@ class TransFileController$1
       label310:
       for (byte b = 1;; b = 0)
       {
-        ((lkd)localObject).a(b);
-        localTransferRequest.mExtentionInfo = ((lkd)localObject).a();
+        ((lkp)localObject).a(b);
+        localTransferRequest.mExtentionInfo = ((lkp)localObject).a();
         localTransferRequest.mUpCallBack = new TransFileController.1.1(this, bool, str);
         this.this$0.transferAsync(localTransferRequest);
         if (bool)
         {
           int j = this.val$intent.getIntExtra("PhotoConst.SYNCQZONE_CHECKSTATE", 1);
-          bcef.b(this.val$app, "dc00898", "", "", "0X8007C16", "0X8007C16", j, 0, "", "", "", "");
+          bdla.b(this.val$app, "dc00898", "", "", "0X8007C16", "0X8007C16", j, 0, "", "", "", "");
         }
-        bcef.b(this.val$app, "dc00898", "", "", "0X8007C17", "0X8007C17", i, 0, "", "", "", "");
+        bdla.b(this.val$app, "dc00898", "", "", "0X8007C17", "0X8007C17", i, 0, "", "", "", "");
         return;
         if ("FROM_TAKE_PHOTO".equals(str))
         {

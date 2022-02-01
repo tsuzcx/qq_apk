@@ -1,15 +1,14 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 
 class blcu
-  implements View.OnTouchListener
+  implements blcs
 {
-  blcu(blcs paramblcs) {}
+  blcu(blct paramblct) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    return paramMotionEvent.getAction() == 2;
+    this.a.c(paramView);
+    this.a.c();
   }
 }
 

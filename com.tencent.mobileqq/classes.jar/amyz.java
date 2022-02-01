@@ -1,22 +1,40 @@
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.process.data.CmGameManager.GameEventReceiver.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
-class amyz
-  implements Comparator<amyy>
+public class amyz
+  extends BroadcastReceiver
 {
-  public int a(amyy paramamyy1, amyy paramamyy2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramamyy1.b < paramamyy2.b) {
-      return -1;
+    if (paramIntent == null) {
+      QLog.e("cmgame_process.CmGameManager", 1, "[onReceive] intent null");
     }
-    if (paramamyy1.b > paramamyy2.b) {
-      return 1;
-    }
-    return 0;
+    do
+    {
+      do
+      {
+        return;
+        paramContext = paramIntent.getAction();
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] action=", paramContext });
+        }
+      } while ((!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
+      paramContext = paramIntent.getStringExtra("data");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] data=", paramContext });
+      }
+    } while (TextUtils.isEmpty(paramContext));
+    ThreadManagerV2.excute(new CmGameManager.GameEventReceiver.1(this, paramContext), 16, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyz
  * JD-Core Version:    0.7.0.1
  */

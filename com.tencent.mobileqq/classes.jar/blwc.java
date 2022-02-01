@@ -1,6 +1,18 @@
-public abstract interface blwc
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+
+final class blwc
+  implements blwf
 {
-  public abstract void a(blwu paramblwu);
+  public void a(boolean paramBoolean, Context paramContext, blwh paramblwh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      blvy.e(paramContext, paramblwh);
+    }
+  }
 }
 
 

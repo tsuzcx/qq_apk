@@ -1,20 +1,35 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
-import com.tencent.widget.DynamicGridView;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.open.model.AppInfo;
+import java.util.List;
 
 public class bjpk
-  implements TypeEvaluator<Rect>
+  implements BusinessObserver
 {
-  public bjpk(DynamicGridView paramDynamicGridView) {}
+  protected void a(boolean paramBoolean, List<AppInfo> paramList) {}
   
-  public int a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
-  }
+  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString) {}
   
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      if (paramBoolean)
+      {
+        a(paramBoolean, (List)paramObject, null);
+        return;
+      }
+      a(paramBoolean, null, (String)paramObject);
+      return;
+    }
+    if (paramBoolean)
+    {
+      a(paramBoolean, (List)paramObject);
+      return;
+    }
+    a(paramBoolean, null);
   }
 }
 

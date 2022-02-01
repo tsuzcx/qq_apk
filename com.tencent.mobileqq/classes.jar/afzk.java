@@ -1,16 +1,9 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
-
-class afzk
-  extends aexg
+public class afzk
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  List<ImageView> jdField_a_of_type_JavaUtilList;
-  TextView b;
-  
-  afzk(afzj paramafzj) {}
+  long a;
+  long b;
+  long c;
+  long d;
 }
 
 

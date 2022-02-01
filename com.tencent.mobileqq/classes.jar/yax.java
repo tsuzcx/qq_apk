@@ -1,30 +1,40 @@
-import android.graphics.Bitmap;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.utils.UIUtils;
 
 public class yax
-  extends ybh
+  extends zgz
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
+  public static final String KEY = "MemoriesPlaceHolderSegment";
   
-  public yax(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
+  public yax(Context paramContext)
   {
-    super(paramInt, paramBitmap);
-    this.a = paramLong1;
-    this.b = paramLong2;
-    this.jdField_c_of_type_Long = paramLong3;
-    this.d = paramLong4;
+    super(paramContext);
   }
   
-  public yax a(Bitmap paramBitmap)
+  public int a()
   {
-    return new yax(this.jdField_c_of_type_Int, this.a, this.b, this.jdField_c_of_type_Long, this.d, paramBitmap);
+    return 1;
   }
   
-  public String toString()
+  public View a(int paramInt, yhc paramyhc, ViewGroup paramViewGroup)
   {
-    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
+    paramInt = UIUtils.getWindowScreenHeight(this.a);
+    int i = UIUtils.getStatusBarHeight(this.a);
+    paramyhc.a().getLayoutParams().height = (paramInt - i);
+    return paramyhc.a();
+  }
+  
+  public String a()
+  {
+    return "MemoriesPlaceHolderSegment";
+  }
+  
+  public yhc a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new yhc(LayoutInflater.from(this.a).inflate(2131561724, paramViewGroup, false));
   }
 }
 

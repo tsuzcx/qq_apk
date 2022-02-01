@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajot;
-import ajou;
+import akkh;
+import akki;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
-import atvo;
+import avao;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.widget.Gallery;
 
@@ -16,9 +16,9 @@ public class ProGallery
   extends Gallery
 {
   private int jdField_a_of_type_Int = 1;
-  private ajot jdField_a_of_type_Ajot;
-  private ajou jdField_a_of_type_Ajou;
-  private atvo jdField_a_of_type_Atvo;
+  private akkh jdField_a_of_type_Akkh;
+  private akki jdField_a_of_type_Akki;
+  private avao jdField_a_of_type_Avao;
   
   public ProGallery(Context paramContext)
   {
@@ -37,23 +37,23 @@ public class ProGallery
   
   public void a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Ajou != null) {
-      this.jdField_a_of_type_Ajou.onscaleBegin(paramInt, paramView, paramViewGroup);
+    if (this.jdField_a_of_type_Akki != null) {
+      this.jdField_a_of_type_Akki.onscaleBegin(paramInt, paramView, paramViewGroup);
     }
   }
   
   public void a(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Ajou != null) {
-      this.jdField_a_of_type_Ajou.onViewDetached(paramInt, paramView, paramViewGroup, paramBoolean);
+    if (this.jdField_a_of_type_Akki != null) {
+      this.jdField_a_of_type_Akki.onViewDetached(paramInt, paramView, paramViewGroup, paramBoolean);
     }
   }
   
   public void a(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
   {
     super.a(paramInt, paramView, paramRegionDrawableData);
-    if (this.jdField_a_of_type_Ajou != null) {
-      this.jdField_a_of_type_Ajou.onShowAreaChanged(paramInt, paramView, paramRegionDrawableData);
+    if (this.jdField_a_of_type_Akki != null) {
+      this.jdField_a_of_type_Akki.onShowAreaChanged(paramInt, paramView, paramRegionDrawableData);
     }
   }
   
@@ -61,7 +61,7 @@ public class ProGallery
   {
     int k = 0;
     int n = this.jdField_a_of_type_Int;
-    if ((n == 0) || (this.jdField_a_of_type_Ajou == null)) {}
+    if ((n == 0) || (this.jdField_a_of_type_Akki == null)) {}
     int m;
     label34:
     do
@@ -99,40 +99,40 @@ public class ProGallery
           if (paramInt < 0) {
             break;
           }
-          this.jdField_a_of_type_Ajou.onDestroyView(paramInt, null, paramViewGroup);
+          this.jdField_a_of_type_Akki.onDestroyView(paramInt, null, paramViewGroup);
           return;
-          this.jdField_a_of_type_Ajou.onCreateView(j, null, paramViewGroup);
+          this.jdField_a_of_type_Akki.onCreateView(j, null, paramViewGroup);
           i += 1;
           break label34;
         }
-        this.jdField_a_of_type_Ajou.onCreateView(j, null, paramViewGroup);
+        this.jdField_a_of_type_Akki.onCreateView(j, null, paramViewGroup);
         i += 1;
       }
       paramInt = paramInt + n + 1;
     } while (paramInt >= m);
     label158:
-    this.jdField_a_of_type_Ajou.onDestroyView(paramInt, null, paramViewGroup);
+    this.jdField_a_of_type_Akki.onDestroyView(paramInt, null, paramViewGroup);
   }
   
   public void b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Ajou != null) {
-      this.jdField_a_of_type_Ajou.onSlot(paramInt, paramView, paramViewGroup);
+    if (this.jdField_a_of_type_Akki != null) {
+      this.jdField_a_of_type_Akki.onSlot(paramInt, paramView, paramViewGroup);
     }
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Atvo != null) {
-      this.jdField_a_of_type_Atvo.a(paramMotionEvent);
+    if (this.jdField_a_of_type_Avao != null) {
+      this.jdField_a_of_type_Avao.a(paramMotionEvent);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Atvo != null) {
-      this.jdField_a_of_type_Atvo.a(paramScaleGestureDetector);
+    if (this.jdField_a_of_type_Avao != null) {
+      this.jdField_a_of_type_Avao.a(paramScaleGestureDetector);
     }
     return super.onScale(paramScaleGestureDetector);
   }
@@ -140,26 +140,26 @@ public class ProGallery
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     boolean bool = super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    if (this.jdField_a_of_type_Ajot != null) {
-      this.jdField_a_of_type_Ajot.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    if (this.jdField_a_of_type_Akkh != null) {
+      this.jdField_a_of_type_Akkh.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
     return bool;
   }
   
-  public void setGalleryScaleListener(atvo paramatvo)
+  public void setGalleryScaleListener(avao paramavao)
   {
-    this.jdField_a_of_type_Atvo = paramatvo;
+    this.jdField_a_of_type_Avao = paramavao;
   }
   
-  public void setGestureListener(ajot paramajot)
+  public void setGestureListener(akkh paramakkh)
   {
-    this.jdField_a_of_type_Ajot = paramajot;
+    this.jdField_a_of_type_Akkh = paramakkh;
   }
   
-  public void setOnNoBlankListener(ajou paramajou)
+  public void setOnNoBlankListener(akki paramakki)
   {
-    if (paramajou != this.jdField_a_of_type_Ajou) {
-      this.jdField_a_of_type_Ajou = paramajou;
+    if (paramakki != this.jdField_a_of_type_Akki) {
+      this.jdField_a_of_type_Akki = paramakki;
     }
   }
   
@@ -168,7 +168,7 @@ public class ProGallery
     int m = 0;
     super.setSelection(paramInt);
     int n = this.jdField_a_of_type_Int;
-    if ((n == 0) || (this.jdField_a_of_type_Ajou == null)) {}
+    if ((n == 0) || (this.jdField_a_of_type_Akki == null)) {}
     label193:
     for (;;)
     {
@@ -207,7 +207,7 @@ public class ProGallery
         }
         while (paramInt <= i)
         {
-          this.jdField_a_of_type_Ajou.onDestroyView(paramInt, null, this);
+          this.jdField_a_of_type_Akki.onDestroyView(paramInt, null, this);
           paramInt += 1;
         }
         break;

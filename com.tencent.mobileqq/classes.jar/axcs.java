@@ -1,19 +1,7 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-
-class axcs
-  implements TextWatcher
+public class axcs
 {
-  axcs(axcb paramaxcb) {}
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    awkj.a(this.a.a, 30);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public long a;
+  public boolean a;
 }
 
 

@@ -1,23 +1,40 @@
-import dov.com.qq.im.aeeditor.view.timeline.TimelineView;
-
 public class bmpi
-  implements bmpe
 {
-  public bmpi(TimelineView paramTimelineView) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void a()
+  public bmpi(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.a.c();
+    this.f = paramInt1;
+    this.e = paramInt2;
+    this.b = paramInt3;
+    this.a = paramInt4;
+    this.c = paramInt5;
+    this.d = paramInt6;
   }
   
-  public void a(float paramFloat)
+  public int a()
   {
-    this.a.b(paramFloat);
+    return this.f;
   }
   
-  public void b()
+  public int b()
   {
-    TimelineView.a(this.a, false);
+    return this.e;
+  }
+  
+  public int c()
+  {
+    return this.c - this.b;
+  }
+  
+  public int d()
+  {
+    return this.d - this.a;
   }
 }
 

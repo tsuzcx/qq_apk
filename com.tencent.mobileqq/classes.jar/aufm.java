@@ -1,29 +1,18 @@
-public class aufm
-  extends aufo
+class aufm
+  implements audq
 {
-  public String a = "";
+  aufm(aufl paramaufl) {}
   
-  public aufm(String paramString1, String paramString2, String paramString3)
-  {
-    super("plugin", paramString1, paramString2);
-    this.a = paramString3;
-  }
+  public void onNo() {}
   
-  @Deprecated
-  public void a()
+  public void onYes()
   {
-    super.a();
-  }
-  
-  @Deprecated
-  public void b()
-  {
-    super.b();
+    dc.b(this.a.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aufm
  * JD-Core Version:    0.7.0.1
  */

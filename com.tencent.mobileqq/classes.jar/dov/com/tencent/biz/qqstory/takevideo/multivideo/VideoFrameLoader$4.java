@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
-import bnoq;
-import bnor;
+import bpei;
+import bpej;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -10,21 +10,21 @@ import java.util.List;
 public class VideoFrameLoader$4
   implements Runnable
 {
-  public VideoFrameLoader$4(bnoq parambnoq) {}
+  public VideoFrameLoader$4(bpei parambpei) {}
   
   public void run()
   {
-    if (bnoq.b(this.this$0) != bnoq.a(this.this$0).size())
+    if (bpei.b(this.this$0) != bpei.a(this.this$0).size())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("VideoFrameLoader", 2, "onDecodeError , framecount error!" + bnoq.b(this.this$0) + "-" + bnoq.a(this.this$0).size());
+        QLog.d("VideoFrameLoader", 2, "onDecodeError , framecount error!" + bpei.b(this.this$0) + "-" + bpei.a(this.this$0).size());
       }
-      if ((!bnoq.c(this.this$0)) && (bnoq.a(this.this$0).size() == 0))
+      if ((!bpei.c(this.this$0)) && (bpei.a(this.this$0).size() == 0))
       {
-        bnoq.a(this.this$0, true);
+        bpei.a(this.this$0, true);
         this.this$0.b();
-        bnoq.a(this.this$0, new RetrieverDecodeRunnable(bnoq.a(this.this$0), bnoq.c(this.this$0), bnoq.d(this.this$0), bnoq.b(this.this$0), bnoq.a(this.this$0), bnoq.a(this.this$0), bnoq.b(this.this$0), this.this$0));
-        ThreadManager.post(bnoq.a(this.this$0), 10, null, true);
+        bpei.a(this.this$0, new RetrieverDecodeRunnable(bpei.a(this.this$0), bpei.c(this.this$0), bpei.d(this.this$0), bpei.b(this.this$0), bpei.a(this.this$0), bpei.a(this.this$0), bpei.b(this.this$0), this.this$0));
+        ThreadManager.post(bpei.a(this.this$0), 10, null, true);
         if (QLog.isColorLevel()) {
           QLog.d("VideoFrameLoader", 2, "onLoadEnd , retry with retriever!");
         }
@@ -33,10 +33,10 @@ public class VideoFrameLoader$4
     for (;;)
     {
       return;
-      if (bnoq.a(this.this$0) != null) {}
-      for (bnor localbnor = (bnor)bnoq.a(this.this$0).get(); localbnor != null; localbnor = null)
+      if (bpei.a(this.this$0) != null) {}
+      for (bpej localbpej = (bpej)bpei.a(this.this$0).get(); localbpej != null; localbpej = null)
       {
-        localbnor.b();
+        localbpej.b();
         return;
       }
     }

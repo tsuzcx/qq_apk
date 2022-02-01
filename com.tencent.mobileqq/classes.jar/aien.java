@@ -1,46 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 class aien
-  implements avsz
+  implements DialogInterface.OnClickListener
 {
-  aien(aiej paramaiej) {}
+  aien(aido paramaido, PublicAccountInfo paramPublicAccountInfo, aoan paramaoan) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
-    }
-    this.a.d();
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
-    }
-    this.a.d();
-  }
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
-    }
-    if ((paramInt & 0x1) != 0) {
-      synchronized (aiej.a(this.a))
-      {
-        Iterator localIterator = aiej.a(this.a).iterator();
-        if (localIterator.hasNext()) {
-          ((aiep)localIterator.next()).b();
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = false;
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
+    this.jdField_a_of_type_Aoan.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+    this.jdField_a_of_type_Aido.a(2, null);
   }
 }
 

@@ -4,14 +4,14 @@ import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
-import qyn;
-import qyq;
-import qyw;
+import rkt;
+import rkw;
+import rlc;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterfaceForRewardTask;", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJAidlClientRedPacketModule$rijAidlInterfaceForRewardTask$1
   extends Lambda
-  implements Function0<qyq>
+  implements Function0<rkw>
 {
   public static final 1 INSTANCE = new 1();
   
@@ -21,11 +21,11 @@ public final class RIJAidlClientRedPacketModule$rijAidlInterfaceForRewardTask$1
   }
   
   @Nullable
-  public final qyq invoke()
+  public final rkw invoke()
   {
-    qyn localqyn = qyw.a.a();
-    if (localqyn != null) {
-      return localqyn.a();
+    rkt localrkt = rlc.a.a();
+    if (localrkt != null) {
+      return localrkt.a();
     }
     return null;
   }

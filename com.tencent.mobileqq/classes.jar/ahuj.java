@@ -1,10 +1,19 @@
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
 
-abstract interface ahuj
+public class ahuj
+  implements DialogInterface.OnClickListener
 {
-  public abstract File a(String paramString);
+  public ahuj(PhotoListPanel paramPhotoListPanel) {}
   
-  public abstract String c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+  }
 }
 
 

@@ -1,46 +1,23 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import aewo;
-import afqw;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class BaseChatPie$9
-  implements View.OnClickListener
+  implements Runnable
 {
-  BaseChatPie$9(BaseChatPie paramBaseChatPie) {}
+  BaseChatPie$9(BaseChatPie paramBaseChatPie, String paramString, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (!(localObject instanceof Integer))) {}
-    while (aewo.b())
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    if (ChatActivityUtils.a(this.this$0.app, this.this$0.sessionInfo.curType, this.val$uin, this.this$0.sessionInfo.phoneNum)) {
+      this.this$0.mActivity.runOnUiThread(new BaseChatPie.9.1(this));
+    }
+    while (this.val$isSingleWayFriend) {
       return;
     }
-    String str = this.this$0.sessionInfo.curFriendUin;
-    if (this.this$0.sessionInfo.curType == 1006) {
-      str = this.this$0.sessionInfo.contactUin;
-    }
-    int i = ((Integer)localObject).intValue();
-    switch (i)
-    {
-    }
-    for (;;)
-    {
-      this.this$0.helperProvider.b(i);
-      break;
-      BaseChatPie.access$700(this.this$0, str);
-      continue;
-      BaseChatPie.access$800(this.this$0, str);
-      continue;
-      BaseChatPie.access$900(this.this$0);
-      continue;
-      BaseChatPie.access$1000(this.this$0);
-    }
+    this.this$0.mActivity.runOnUiThread(new BaseChatPie.9.2(this));
   }
 }
 

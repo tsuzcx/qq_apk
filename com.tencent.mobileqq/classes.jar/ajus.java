@@ -1,27 +1,18 @@
-import Wallet.GetRandomHbIdiomReq;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.observer.BusinessObserver;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajus
-  implements akha
+public class ajus
+  implements View.OnClickListener
 {
-  ajus(ajul paramajul, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver) {}
+  public ajus(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (ajul.a(this.jdField_a_of_type_Ajul) != null)
-    {
-      GetRandomHbIdiomReq localGetRandomHbIdiomReq = new GetRandomHbIdiomReq();
-      localGetRandomHbIdiomReq.makeUin = ajul.a(this.jdField_a_of_type_Ajul).getLongAccountUin();
-      localGetRandomHbIdiomReq.subchannel = this.jdField_a_of_type_Int;
-      localGetRandomHbIdiomReq.sKey = paramString;
-      localGetRandomHbIdiomReq.appid = AppSetting.a();
-      localGetRandomHbIdiomReq.fromType = this.b;
-      localGetRandomHbIdiomReq.platform = 0;
-      localGetRandomHbIdiomReq.qqVersion = "8.4.8";
-      ajvh.a(localGetRandomHbIdiomReq, this.jdField_a_of_type_MqqObserverBusinessObserver);
-    }
+    this.a.d.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

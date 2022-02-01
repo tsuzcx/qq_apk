@@ -1,17 +1,9 @@
-import android.support.v4.util.LruCache;
-
 class lag
-  extends LruCache<String, String>
 {
-  lag(laf paramlaf, int paramInt)
-  {
-    super(paramInt);
-  }
+  public long a;
+  public String a;
   
-  protected int a(String paramString1, String paramString2)
-  {
-    return paramString2.length() + 1;
-  }
+  private lag(lac paramlac) {}
 }
 
 

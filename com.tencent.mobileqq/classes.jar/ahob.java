@@ -1,16 +1,13 @@
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahob
+  implements ahnr
 {
-  public int a;
-  public List<ahoh> a;
-  public boolean a;
-  
-  public ahob(boolean paramBoolean, int paramInt, List<ahoh> paramList)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    paramagtf.d(paramaftk, paramagus, paramString);
   }
 }
 

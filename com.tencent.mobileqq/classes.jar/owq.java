@@ -1,155 +1,58 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONObject;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class owq
-  implements owg
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 10;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public owq(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
   
-  private void a(String paramString, ArticleInfo paramArticleInfo)
+  public void onClick(View paramView)
   {
-    pbg localpbg = new pbg();
-    localpbg.i().b("wording", "" + pcj.a());
-    oto.a(paramString, paramArticleInfo, localpbg);
-  }
-  
-  public View a(ViewGroup paramViewGroup, View paramView, Context paramContext, ouo paramouo)
-  {
-    if (!a(paramouo)) {
-      return paramView;
-    }
-    if ((!TextUtils.isEmpty(paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID)) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID)))
-    {
-      a("0X8009FE9", paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      this.jdField_a_of_type_JavaUtilSet.add(paramouo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
-    }
-    this.jdField_a_of_type_Boolean = true;
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.getLayoutParams();
-    if (localLayoutParams.bottomMargin >= 0) {
-      localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131298786));
-    }
-    paramViewGroup.setLayoutParams(localLayoutParams);
-    if (paramView != null) {}
-    for (;;)
-    {
-      paramView.setOnClickListener(new owr(this, paramouo, paramContext));
-      return paramView;
-      paramView = LayoutInflater.from(paramContext).inflate(2131560311, null);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("GuideHelper", 1, "showGuidePagerNum : " + paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(ArticleInfo paramArticleInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.d("GuideHelper", 1, "extraInfo : " + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.doOnBackPressed();
+    Object localObject1 = paramView.getTag();
     try
     {
-      this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).getString("app_schema");
-      QLog.d("GuideHelper", 1, "scheme : " + this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.d("GuideHelper", 1, "setGuideExtraInfo : ", paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = 0;
-    if (paramViewGroup == null) {
-      return;
-    }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.getLayoutParams();
-    if (!paramBoolean) {
-      localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131298784));
-    }
-    paramViewGroup.setLayoutParams(localLayoutParams);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(List<ouo> paramList)
-  {
-    int i = this.b;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (i > this.jdField_a_of_type_Int) && (paramList != null))
-    {
-      ouo localouo = new ouo(6, null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext()) {
-        if (((ouo)localIterator.next()).jdField_a_of_type_Int == 6) {
-          localIterator.remove();
+      i = Integer.valueOf(localObject1.toString()).intValue();
+      if ((i >= 0) && (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()))
+      {
+        localObject1 = (MultiBiuSameContent)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+        switch (paramView.getId())
+        {
+        default: 
+          EventCollector.getInstance().onViewClicked(paramView);
+          return;
         }
       }
-      paramList.add(localouo);
-      QLog.d("GuideHelper", 1, "addGuidePager : " + i + "  articleInfo :" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      return true;
     }
-    return false;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = -1;
+        continue;
+        if (localException != null)
+        {
+          String str = ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a);
+          ReadInjoyFriendsBiuComponentFragment.a(this.a, str);
+          ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.b, "0X800953D", localException.c);
+          continue;
+          if (localException != null)
+          {
+            str = ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.c, localException.b);
+            ReadInjoyFriendsBiuComponentFragment.a(this.a, str);
+            ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.b, "0X800953C", localException.c);
+            continue;
+            Object localObject2 = null;
+          }
+        }
+      }
+    }
   }
-  
-  public boolean a(ouo paramouo)
-  {
-    return (paramouo != null) && (paramouo.jdField_a_of_type_Int == 6);
-  }
-  
-  public void onCommentCreate(boolean paramBoolean, ouo paramouo, List<ouo> paramList, int paramInt) {}
-  
-  public void onCommentCreate(boolean paramBoolean1, ouo paramouo, boolean paramBoolean2, List<ouo> paramList, int paramInt) {}
-  
-  public void onCommentDelete(int paramInt1, boolean paramBoolean, ouo paramouo, int paramInt2) {}
-  
-  public void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<ouo> paramList, boolean paramBoolean2, int paramInt2, int paramInt3)
-  {
-    this.b = 1;
-    a(paramList);
-  }
-  
-  public void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<ouo> paramList, boolean paramBoolean2, int paramInt2)
-  {
-    this.b += 1;
-    a(paramList);
-  }
-  
-  public void onCommentReply(boolean paramBoolean, ouo paramouo) {}
-  
-  public void onCommentStateError(int paramInt) {}
 }
 
 

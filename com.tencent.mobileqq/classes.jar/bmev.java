@@ -1,6 +1,23 @@
-public abstract interface bmev
+import android.widget.TextView;
+
+class bmev
+  implements blwe
 {
-  public abstract void a();
+  bmev(bmer parambmer) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      bmgm.a("ReaderSplashImpl", "jumpToPlugin: openPlugin: failed");
+      if (bmer.a(this.a) != null) {
+        bmer.a(this.a).setText("跳转失败，请返回重试");
+      }
+      return;
+    }
+    bmgm.d("ReaderSplashImpl", "jumpToPlugin: openPlugin: succeed");
+    bmer.b(this.a);
+  }
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import abwz;
+import acnh;
 import android.text.TextUtils;
-import anwz;
-import aqqh;
-import bcef;
+import apab;
+import arts;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,11 +15,11 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
-import nmy;
+import nty;
 
 public class MessageForReplyText
   extends ChatMessage
-  implements aqqh
+  implements arts
 {
   public static final String KEY_BARRAGE_SOURCE_MSG_TYPE = "barrage_source_msg_type";
   public static final String KEY_BARRAGE_TIME_LOCATION = "barrage_time_location";
@@ -49,7 +49,7 @@ public class MessageForReplyText
   public static boolean needHideLocate(MessageForReplyText paramMessageForReplyText)
   {
     if (paramMessageForReplyText == null) {}
-    while (((abwz.d(paramMessageForReplyText.istroop)) && (paramMessageForReplyText.mSourceMsgInfo != null) && (paramMessageForReplyText.mSourceMsgInfo.origUid == 0L)) || (paramMessageForReplyText.mSourceMsgInfo.origUid == -1L)) {
+    while (((acnh.d(paramMessageForReplyText.istroop)) && (paramMessageForReplyText.mSourceMsgInfo != null) && (paramMessageForReplyText.mSourceMsgInfo.origUid == 0L)) || (paramMessageForReplyText.mSourceMsgInfo.origUid == -1L)) {
       return true;
     }
     return false;
@@ -59,7 +59,7 @@ public class MessageForReplyText
   {
     if (paramSessionInfo.curType == 0)
     {
-      bcef.b(paramQQAppInterface, "dc00898", "", "", "0X80095E8", "0X80095E8", 0, 0, "", "", "", "");
+      bdla.b(paramQQAppInterface, "dc00898", "", "", "0X80095E8", "0X80095E8", 0, 0, "", "", "", "");
       return;
     }
     reportReplyMsg(paramQQAppInterface, "Msg_menu", "clk_replyMsg", paramSessionInfo.curFriendUin, paramChatMessage);
@@ -86,12 +86,12 @@ public class MessageForReplyText
         str1 = "Grp_Dis_replyMsg";
         label99:
         String str2 = i + "";
-        if (!nmy.a(paramChatMessage)) {
+        if (!nty.a(paramChatMessage)) {
           break label281;
         }
         paramChatMessage = "1";
         label133:
-        bcef.b(paramQQAppInterface, "P_CliOper", str1, "", paramString1, paramString2, 0, 0, paramString3, str2, paramChatMessage, (String)localObject);
+        bdla.b(paramQQAppInterface, "P_CliOper", str1, "", paramString1, paramString2, 0, 0, paramString3, str2, paramChatMessage, (String)localObject);
         return;
         i = 0;
         localObject = "";
@@ -129,7 +129,7 @@ public class MessageForReplyText
         break label99;
         paramChatMessage = "0";
         break label133;
-        bcef.b(paramQQAppInterface, "P_CliOper", "Grp_replyMsg", "", paramString1, paramString2, 0, 0, paramString3, "", "", "");
+        bdla.b(paramQQAppInterface, "P_CliOper", "Grp_replyMsg", "", paramString1, paramString2, 0, 0, paramString3, "", "", "");
         return;
       }
       label317:
@@ -222,7 +222,7 @@ public class MessageForReplyText
     //   74: aload_0
     //   75: aload_3
     //   76: invokestatic 230	com/tencent/mobileqq/utils/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
-    //   79: invokestatic 235	anwz:a	([B)Ljava/lang/Object;
+    //   79: invokestatic 235	apab:a	([B)Ljava/lang/Object;
     //   82: checkcast 63	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo
     //   85: putfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
     //   88: aload_0
@@ -237,7 +237,7 @@ public class MessageForReplyText
     //   105: invokevirtual 241	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo:unPackSourceMsg	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lcom/tencent/mobileqq/data/MessageRecord;
     //   108: invokevirtual 244	com/tencent/mobileqq/data/MessageForReplyText:setSourceMessageRecord	(Lcom/tencent/mobileqq/data/MessageRecord;)V
     //   111: aload_0
-    //   112: getstatic 249	bbkv:i	Ljava/lang/String;
+    //   112: getstatic 249	bcrn:i	Ljava/lang/String;
     //   115: invokevirtual 200	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   118: astore_3
     //   119: aload_3
@@ -347,7 +347,7 @@ public class MessageForReplyText
     //   340: iload_1
     //   341: aload_3
     //   342: invokestatic 230	com/tencent/mobileqq/utils/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
-    //   345: invokestatic 313	bhoa:a	(Lcom/tencent/mobileqq/data/MessageRecord;Ljava/util/List;Z[B)V
+    //   345: invokestatic 313	biyt:a	(Lcom/tencent/mobileqq/data/MessageRecord;Ljava/util/List;Z[B)V
     //   348: aload_0
     //   349: ldc 13
     //   351: invokevirtual 200	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
@@ -421,7 +421,7 @@ public class MessageForReplyText
   
   public boolean isSupportFTS()
   {
-    return abwz.x(this.istroop);
+    return acnh.x(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -459,7 +459,7 @@ public class MessageForReplyText
         if ((this.sourceMessage != null) && (localObject != null)) {
           this.mSourceMsgInfo.packSourceMsg((QQAppInterface)localObject, this.sourceMessage);
         }
-        saveExtInfoToExtStr("sens_msg_source_msg_info", HexUtil.bytes2HexStr(anwz.a(this.mSourceMsgInfo)));
+        saveExtInfoToExtStr("sens_msg_source_msg_info", HexUtil.bytes2HexStr(apab.a(this.mSourceMsgInfo)));
         if (this.isBarrageMsg)
         {
           saveExtInfoToExtStr("barrage_time_location", String.valueOf(this.barrageTimeLocation));
@@ -513,7 +513,7 @@ public class MessageForReplyText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForReplyText
  * JD-Core Version:    0.7.0.1
  */

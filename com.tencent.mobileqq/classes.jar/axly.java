@@ -1,24 +1,6 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import java.util.List;
-
-public class axly
-  implements PopupWindow.OnDismissListener
+public abstract interface axly
 {
-  public axly(OCRResultActivity paramOCRResultActivity) {}
-  
-  public void onDismiss()
-  {
-    this.a.a = null;
-    if ((OCRResultActivity.c(this.a) != null) && (OCRResultActivity.c(this.a).size() > 1))
-    {
-      Drawable localDrawable = this.a.getResources().getDrawable(2130845519);
-      this.a.b.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
-    }
-  }
+  public abstract void a();
 }
 
 

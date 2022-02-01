@@ -1,8 +1,8 @@
 package com.tencent.av.utils;
 
 import android.text.TextUtils;
-import avmx;
-import bfyg;
+import awtc;
+import bhgy;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,13 +20,13 @@ final class VideoMsgTools$2
       QLog.d("VideoMsgTools", 2, "addMessage");
     }
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if ((!QQAppInterface.isAppOnForeground(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) || (bfyg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))) {
+    if ((!QQAppInterface.isAppOnForeground(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) || (bhgy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Boolean);
     }
     for (;;)
     {
       if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        avmx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, "qav");
+        awtc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, "qav");
       }
       if (QLog.isColorLevel()) {
         QLog.d("VideoMsgTools", 2, "addMessage end");

@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
 
 public class afjv
-  implements DialogInterface.OnClickListener
+  implements TextWatcher
 {
-  public afjv(TroopChatPie paramTroopChatPie) {}
+  public afjv(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.finish();
+    if (paramEditable.length() >= 4)
+    {
+      VerifyCodeActivity.c(this.a, true);
+      return;
+    }
+    VerifyCodeActivity.d(this.a, false);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afjv
  * JD-Core Version:    0.7.0.1
  */

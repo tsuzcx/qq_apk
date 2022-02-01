@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akzv
-  extends amsu
+  implements View.OnClickListener
 {
-  public akzv(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  public akzv(DrawHbFragment paramDrawHbFragment) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean1) {
-      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    if (this.a.a != null) {
+      this.a.a.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.intervideo.od;
 
 import Override;
-import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -13,10 +12,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import auoj;
-import auqs;
-import auqt;
-import bhht;
+import anvx;
+import avue;
+import avwn;
+import avwo;
+import bisl;
 import com.tencent.mobileqq.app.ThreadManagerExecutor;
 import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 import com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVCommonInterfaceImpl;
@@ -31,27 +31,27 @@ public class ODLoadingActivity
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private final auqt jdField_a_of_type_Auqt = new auqt(this);
-  private bhht jdField_a_of_type_Bhht;
+  private final avwo jdField_a_of_type_Avwo = new avwo(this);
+  private bisl jdField_a_of_type_Bisl;
   private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bhht == null)
+    if (this.jdField_a_of_type_Bisl == null)
     {
-      this.jdField_a_of_type_Bhht = new bhht(this, 40);
-      this.jdField_a_of_type_Bhht.a(amtj.a(2131706934));
+      this.jdField_a_of_type_Bisl = new bisl(this, 40);
+      this.jdField_a_of_type_Bisl.a(anvx.a(2131707280));
     }
-    this.jdField_a_of_type_Bhht.show();
+    this.jdField_a_of_type_Bisl.show();
   }
   
   private void d()
   {
     this.b = true;
-    if (this.jdField_a_of_type_Bhht != null) {
-      this.jdField_a_of_type_Bhht.dismiss();
+    if (this.jdField_a_of_type_Bisl != null) {
+      this.jdField_a_of_type_Bisl.dismiss();
     }
   }
   
@@ -60,7 +60,7 @@ public class ODLoadingActivity
     d();
     finish();
     this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onCloseLoadingView").report();
-    auoj.b("33669909");
+    avue.b("33669909");
   }
   
   public void a(View paramView)
@@ -68,13 +68,13 @@ public class ODLoadingActivity
     this.jdField_a_of_type_AndroidViewView = paramView;
     runOnUiThread(new ODLoadingActivity.4(this));
     this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onShowLoadingView").report();
-    auoj.b("33669908");
+    avue.b("33669908");
   }
   
   public void b()
   {
     this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onEnterComplete").report();
-    auoj.b("33669911");
+    avue.b("33669911");
   }
   
   @Override
@@ -98,7 +98,7 @@ public class ODLoadingActivity
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("onBackPressed").report();
-      auoj.b("33669910");
+      avue.b("33669910");
       IVCommonInterfaceImpl.getInstance().onHostActivityBackPress();
     }
   }
@@ -126,11 +126,11 @@ public class ODLoadingActivity
       for (;;)
       {
         str = paramBundle.getString("bizType");
-        paramBundle.putString("qqVersion", "8.4.8");
+        paramBundle.putString("qqVersion", "8.4.10");
         paramBundle.putBoolean("isGooglePlayVersion", false);
         this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(str).d1(String.valueOf(l));
         this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("enterLoading").report();
-        auoj.b("33669907");
+        avue.b("33669907");
         this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
         setContentView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
@@ -138,7 +138,7 @@ public class ODLoadingActivity
         this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ODLoadingActivity.1(this), 1000L);
         ExecutorService localExecutorService = ThreadManagerExecutor.getExecutorService(192);
-        localExecutorService.submit(new ODLoadingActivity.3(this, localExecutorService.submit(new auqs(this, str)), l, paramBundle));
+        localExecutorService.submit(new ODLoadingActivity.3(this, localExecutorService.submit(new avwn(this, str)), l, paramBundle));
         return;
         QLog.e("ODLoadingActivity", 2, "not have fromId");
       }

@@ -1,39 +1,12 @@
-import com.tencent.biz.qqstory.network.handler.GetUserIconHandler.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wcb
+public abstract interface wcb
 {
-  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  public static boolean a;
+  public abstract void a(String paramString, int paramInt);
   
-  public static void a(String paramString)
-  {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (!jdField_a_of_type_JavaUtilSet.contains(paramString))
-      {
-        jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        jdField_a_of_type_JavaUtilSet.add(paramString);
-      }
-      if (!jdField_a_of_type_Boolean)
-      {
-        jdField_a_of_type_Boolean = true;
-        ThreadManager.post(new GetUserIconHandler.1(), 5, null, true);
-      }
-      return;
-    }
-  }
+  public abstract void a(String paramString, int paramInt, ErrorMessage paramErrorMessage);
   
-  public static void a(ArrayList<String> paramArrayList)
-  {
-    paramArrayList = new wcc(paramArrayList);
-    wcd localwcd = new wcd();
-    vsx.a().a(paramArrayList, localwcd);
-  }
+  public abstract void b(String paramString, int paramInt);
 }
 
 

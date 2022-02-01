@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import amtj;
+import anvx;
 import com.tencent.mobileqq.widget.QQToast;
 
 class QidianProfileCardActivity$ForwardRunnable$1
@@ -10,7 +10,7 @@ class QidianProfileCardActivity$ForwardRunnable$1
   
   public void run()
   {
-    QQToast.a(this.a, amtj.a(2131708860), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, anvx.a(2131709207), 0).b(this.a.getTitleBarHeight());
   }
 }
 

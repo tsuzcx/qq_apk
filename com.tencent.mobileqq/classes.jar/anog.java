@@ -1,18 +1,23 @@
-public class anog
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class anog
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public long c;
+  anog(anob paramanob, ApolloActionData paramApolloActionData, int paramInt, String paramString1, String paramString2) {}
   
-  public anog(String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
+    ApolloUtil.a(anob.a(this.jdField_a_of_type_Anob).mActivity, anob.a(this.jdField_a_of_type_Anob).app.getCurrentUin(), "lmx_actchat");
+    this.jdField_a_of_type_Anob.a();
+    anob.a(this.jdField_a_of_type_Anob, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, "action_flame_clickgain");
+    anme.a(125, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

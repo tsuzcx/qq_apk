@@ -1,10 +1,18 @@
-public abstract interface nku
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.avgame.gameroom.stage.CountDownClockView;
+
+public class nku
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public nku(CountDownClockView paramCountDownClockView) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    CountDownClockView.a(this.a, i);
+    this.a.invalidate();
+  }
 }
 
 

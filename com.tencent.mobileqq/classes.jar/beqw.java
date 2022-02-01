@@ -1,29 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.troop.TroopInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class beqw
-  implements Comparable<beqw>
+class beqw
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public TroopInfo a;
-  public String a;
-  public int b;
+  beqw(bequ parambequ) {}
   
-  public int a(@NonNull beqw parambeqw)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.b != parambeqw.b) {
-      return this.b - parambeqw.b;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.lastMsgTime != parambeqw.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.lastMsgTime) {
-      return (int)(parambeqw.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.lastMsgTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.lastMsgTime);
-    }
-    if (parambeqw.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopCreateTime != this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopCreateTime) {
-      return (int)(parambeqw.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopCreateTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopCreateTime);
-    }
-    if (this.jdField_a_of_type_Int != parambeqw.jdField_a_of_type_Int) {
-      return this.jdField_a_of_type_Int - parambeqw.jdField_a_of_type_Int;
-    }
-    return this.jdField_a_of_type_JavaLangString.compareTo(parambeqw.jdField_a_of_type_JavaLangString);
+    bdla.b(null, "dc00898", "", "", "0X800B359", "0X800B359", 2, 0, "", "", "", "");
   }
 }
 

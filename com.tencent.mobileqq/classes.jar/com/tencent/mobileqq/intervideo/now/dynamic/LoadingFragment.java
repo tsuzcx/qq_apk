@@ -11,16 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import auot;
-import aupc;
-import aupy;
-import aupz;
+import avuo;
+import avux;
+import avvt;
+import avvu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.intervideo.nowproxy.Global;
 import com.tencent.intervideo.nowproxy.NowLive;
 import com.tencent.intervideo.nowproxy.NowPluginObserver;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.qphone.base.util.QLog;
 
@@ -28,8 +29,8 @@ public class LoadingFragment
   extends IphoneTitleBarFragment
 {
   static View jdField_a_of_type_AndroidViewView;
-  aupc jdField_a_of_type_Aupc;
-  NowPluginObserver jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver = new aupy(this);
+  avux jdField_a_of_type_Avux;
+  NowPluginObserver jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver = new avvt(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public static void a(Context paramContext, Bundle paramBundle, View paramView)
@@ -76,12 +77,12 @@ public class LoadingFragment
         paramLayoutInflater.addView(jdField_a_of_type_AndroidViewView, paramViewGroup);
       }
     }
-    this.jdField_a_of_type_Aupc.a.a.a();
+    this.jdField_a_of_type_Avux.a.a.a();
   }
   
   public int getContentLayoutId()
   {
-    return 2131561199;
+    return 2131561260;
   }
   
   public void init(Bundle paramBundle)
@@ -92,7 +93,7 @@ public class LoadingFragment
     for (paramBundle = null; (paramBundle instanceof QQAppInterface); paramBundle = paramBundle.getAppInterface())
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
-      this.jdField_a_of_type_Aupc = ((aupc)paramBundle.getManager(306));
+      this.jdField_a_of_type_Avux = ((avux)paramBundle.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER));
       Global.addNowPluginObserver(this.jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver);
       return;
     }
@@ -108,7 +109,7 @@ public class LoadingFragment
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Aupc != null) {
+    if (this.jdField_a_of_type_Avux != null) {
       Global.removeNowPluginObserver(this.jdField_a_of_type_ComTencentIntervideoNowproxyNowPluginObserver);
     }
     if (jdField_a_of_type_AndroidViewView != null)

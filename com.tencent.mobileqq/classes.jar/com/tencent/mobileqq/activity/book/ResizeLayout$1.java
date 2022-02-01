@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.book;
 
-import ahvw;
+import aiqv;
 
 class ResizeLayout$1
   implements Runnable

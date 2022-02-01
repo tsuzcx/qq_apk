@@ -1,56 +1,41 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.mobileqq.soload.LoadParam.LoadItem;
+import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class bdft
-  implements Handler.Callback
+  implements akxc
 {
-  bdft(bdfo parambdfo) {}
+  bdft(bdfq parambdfq, boolean paramBoolean1, boolean paramBoolean2, bdgs parambdgs) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 1: 
-      if (this.a.b.size() == 0)
-      {
-        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
-        return false;
-      }
-      this.a.b();
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-      if ((this.a.b != null) && (this.a.b.size() > 3))
-      {
-        paramMessage = (String)this.a.b.get(3);
-        Drawable localDrawable = bfvo.a(true);
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (localQQAppInterface != null) {
-          FaceDrawable.getFaceDrawable(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
-        }
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[downloadSo] resCode=" + paramInt + ",pathRes=" + paramPathResult);
     }
-    paramMessage = (ArrayList)paramMessage.obj;
-    if (this.a.jdField_a_of_type_Boolean)
+    bdgd.a(this.jdField_a_of_type_Bdfq.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_Bdfq.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq, null, "load.item.download.end", "sc=" + paramPathResult.subErrCode, paramInt, null);
+    this.jdField_a_of_type_Bdfq.jdField_a_of_type_Int = paramPathResult.subErrCode;
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
     {
-      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
-      return false;
+      this.jdField_a_of_type_Bdfq.jdField_a_of_type_Boolean = true;
+      paramPathResult = new File(paramPathResult.folderPath, this.jdField_a_of_type_Bdfq.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.soFileName).getAbsolutePath();
+      bdfq.a(this.jdField_a_of_type_Bdfq, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Bdgs, paramPathResult, this.jdField_a_of_type_Bdfq.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.crc, 2);
+      return;
     }
-    bdfo.a(this.a, paramMessage);
-    return false;
+    if (paramInt == 2)
+    {
+      bdfq.a(this.jdField_a_of_type_Bdfq, 4);
+      return;
+    }
+    if (paramPathResult.subErrCode == 404)
+    {
+      bdfq.a(this.jdField_a_of_type_Bdfq, 9);
+      return;
+    }
+    bdfq.a(this.jdField_a_of_type_Bdfq, 3);
   }
 }
 

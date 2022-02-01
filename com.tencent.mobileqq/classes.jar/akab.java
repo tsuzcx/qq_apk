@@ -1,12 +1,10 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
 
-final class akab
-  implements Comparator<akaa>
+public abstract class akab
 {
-  public int a(akaa paramakaa1, akaa paramakaa2)
-  {
-    return paramakaa1.a - paramakaa2.a;
-  }
+  public akab(QzoneFrame paramQzoneFrame) {}
+  
+  public abstract void a(int paramInt);
 }
 
 

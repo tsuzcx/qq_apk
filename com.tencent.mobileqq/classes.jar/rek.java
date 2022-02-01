@@ -1,11 +1,19 @@
-import tencent.im.oidb.articlesummary.feeds_info.VisibleShowInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class rek
-  implements psw<feeds_info.VisibleShowInfo, rfh>
+class rek
+  implements View.OnClickListener
 {
-  public rfh a(feeds_info.VisibleShowInfo paramVisibleShowInfo)
+  rek(rej paramrej) {}
+  
+  public void onClick(View paramView)
   {
-    return rfh.a(paramVisibleShowInfo);
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

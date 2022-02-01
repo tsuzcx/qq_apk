@@ -1,12 +1,12 @@
 package cooperation.qzone.webviewplugin;
 
-import aadt;
+import aatf;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import bgve;
-import bgzd;
+import bifw;
+import bijv;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -516,10 +516,10 @@ public class QzoneOfflinePluginJsForQQ
   {
     Object localObject2;
     Object localObject1;
-    if ((paramWebView != null) && (aadt.a(paramWebView)) && (bgzd.b(paramString1)) && (!checkOfflineUrl(paramString1)) && (!checkDownloadFont(paramString1)))
+    if ((paramWebView != null) && (aatf.a(paramWebView)) && (bijv.b(paramString1)) && (!checkOfflineUrl(paramString1)) && (!checkDownloadFont(paramString1)))
     {
-      localObject2 = paramWebView.getTag(2131374242);
-      localObject1 = paramWebView.getTag(2131374243);
+      localObject2 = paramWebView.getTag(2131374479);
+      localObject1 = paramWebView.getTag(2131374480);
       if ((localObject2 instanceof String))
       {
         localObject2 = (String)localObject2;
@@ -531,8 +531,8 @@ public class QzoneOfflinePluginJsForQQ
       try
       {
         paramAppInterface = new BufferedInputStream(new ByteArrayInputStream(((String)localObject2).getBytes("UTF-8")), INPUTSTREAM_BUFFER_SIZE);
-        paramWebView.setTag(2131374242, null);
-        paramWebView.setTag(2131374243, null);
+        paramWebView.setTag(2131374479, null);
+        paramWebView.setTag(2131374480, null);
         paramWebView = new WebResourceResponse("text/html", "UTF-8", paramAppInterface);
         if (QLog.isColorLevel())
         {

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.text;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import bfue;
-import bfwx;
+import bhcw;
+import bhfp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,7 +21,7 @@ public class QQText$LinkSpan
   
   public void onClick(View paramView)
   {
-    if (bfue.a) {
+    if (bhcw.a) {
       if (QLog.isColorLevel()) {
         QLog.e("LinkSpan", 2, "LinkSpan.onCLick is invoked by LongClick misstake");
       }
@@ -35,10 +35,10 @@ public class QQText$LinkSpan
         QQText.access$102((String)localObject);
       }
       localObject = this.mUrl;
-      boolean bool2 = bfwx.d.matcher((CharSequence)localObject).find();
+      boolean bool2 = bhfp.d.matcher((CharSequence)localObject).find();
       boolean bool1 = bool2;
       if (!bool2) {
-        bool1 = bfwx.c.matcher((CharSequence)localObject).find();
+        bool1 = bhfp.c.matcher((CharSequence)localObject).find();
       }
       if (bool1)
       {

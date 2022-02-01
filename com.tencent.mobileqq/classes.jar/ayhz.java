@@ -1,44 +1,35 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
+import android.widget.EditText;
 
 class ayhz
-  implements Animator.AnimatorListener
+  implements aquk
 {
-  ayhz(ayhx paramayhx, View paramView1, View paramView2) {}
+  int jdField_a_of_type_Int = -1;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  ayhz(ayhd paramayhd, int paramInt, bkzi parambkzi) {}
+  
+  public void a()
   {
-    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-    paramAnimator.topMargin = (-ayhx.a(this.jdField_a_of_type_Ayhx));
-    this.b.setLayoutParams(paramAnimator);
-    if (this.jdField_a_of_type_Ayhx.f)
+    if (this.jdField_a_of_type_Int == -1)
     {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Ayhd.h.setTag(Byte.valueOf((byte)(this.b + 1)));
+      this.jdField_a_of_type_Ayhd.h.setText(ayhd.b(this.jdField_a_of_type_Ayhd).a(0, this.b));
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Bkzi != null) && (this.jdField_a_of_type_Bkzi.isShowing()))
+      {
+        ayhd.a(this.jdField_a_of_type_Ayhd, this.jdField_a_of_type_Ayhd.h, false);
+        this.jdField_a_of_type_Bkzi.dismiss();
+      }
+      return;
+      this.jdField_a_of_type_Ayhd.h.setTag(Byte.valueOf((byte)(this.jdField_a_of_type_Int + 1)));
+      this.jdField_a_of_type_Ayhd.h.setText(ayhd.b(this.jdField_a_of_type_Ayhd).a(0, this.jdField_a_of_type_Int));
     }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-    paramAnimator.topMargin = (-ayhx.a(this.jdField_a_of_type_Ayhx));
-    this.b.setLayoutParams(paramAnimator);
-    if (this.jdField_a_of_type_Ayhx.f)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (!this.jdField_a_of_type_Ayhx.f) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+    this.jdField_a_of_type_Int = paramInt2;
   }
 }
 

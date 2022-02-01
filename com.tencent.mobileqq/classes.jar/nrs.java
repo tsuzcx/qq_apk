@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class nrs
-  implements Animation.AnimationListener
+class nrs
+  implements DialogInterface.OnDismissListener
 {
-  public nrs(ScrolledTabHost paramScrolledTabHost, View paramView1, View paramView2, int paramInt) {}
+  nrs(nrr paramnrr) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(this.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_Nru.c();
+    this.a.jdField_a_of_type_Long = 0L;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

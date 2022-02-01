@@ -1,71 +1,188 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.DeadObjectException;
+import android.os.Looper;
+import android.os.RemoteException;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qappcenter.QAppCenterPluginProxyService;
+import cooperation.qappcenter.remote.RecvMsg;
+import cooperation.qappcenter.remote.RemoteServiceProxy.2;
+import cooperation.qappcenter.remote.RemoteServiceProxy.3;
+import cooperation.qappcenter.remote.SendMsg;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-class blxv
-  implements View.OnClickListener
+public class blxv
 {
-  blxv(blxu paramblxu, int paramInt, blvd paramblvd) {}
+  protected static ConcurrentHashMap<String, blxv> a;
+  protected volatile long a;
+  protected ServiceConnection a;
+  private blxo jdField_a_of_type_Blxo;
+  public volatile blxr a;
+  protected Object a;
+  private String jdField_a_of_type_JavaLangString;
+  public ConcurrentLinkedQueue<SendMsg> a;
+  private String b;
   
-  public void onClick(View paramView)
+  static
   {
-    blxw localblxw1 = null;
-    Object localObject = null;
-    bmbx.a("AEGIFStickerAdapter", "[ItemView.onClick] position=" + this.jdField_a_of_type_Int + ", mClickedPos=" + blxu.a(this.jdField_a_of_type_Blxu) + ", mActivatedPos=" + blxu.b(this.jdField_a_of_type_Blxu));
-    blxu.a(this.jdField_a_of_type_Blxu, this.jdField_a_of_type_Int);
-    if ((this.jdField_a_of_type_Blvd.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Blvd.b == 1))
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public blxv(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_AndroidContentServiceConnection = new blxw(this);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public static blxv a(String paramString)
+  {
+    try
     {
-      bmbx.a("AEGIFStickerAdapter", "[ItemView.onClick] data.state == STATE_DOWNLOADED");
-      blxu.a(this.jdField_a_of_type_Blxu, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Int != blxu.b(this.jdField_a_of_type_Blxu))
-      {
-        bmbx.a("AEGIFStickerAdapter", "[ItemView.onClick] position != mActivatedPos");
-        int i = blxu.b(this.jdField_a_of_type_Blxu);
-        blxu.b(this.jdField_a_of_type_Blxu, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Blxu.notifyItemChanged(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Blxu.notifyItemChanged(i);
-        if (blxu.a(this.jdField_a_of_type_Blxu) != null)
-        {
-          localblxw1 = blxu.a(this.jdField_a_of_type_Blxu);
-          if (this.jdField_a_of_type_Blvd.b == 1) {
-            localblxw1.a((blvd)localObject);
-          }
-        }
-        else
-        {
-          bmbg.a().k(this.jdField_a_of_type_Blvd.jdField_a_of_type_JavaLangString);
-          bmbc.a().ai();
-          bmbx.b("AEGIFStickerAdapter", "[ItemView.onClick] gifMaterialClick, id=" + this.jdField_a_of_type_Blvd.jdField_a_of_type_JavaLangString);
-        }
+      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) == null) {
+        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, new blxv(null, paramString));
       }
+      paramString = (blxv)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      return paramString;
     }
-    for (;;)
+    finally {}
+  }
+  
+  public RecvMsg a(SendMsg paramSendMsg, String paramString)
+  {
+    paramSendMsg = new RecvMsg(paramSendMsg.a(), paramSendMsg.a());
+    paramSendMsg.a(1002, paramString);
+    return paramSendMsg;
+  }
+  
+  protected void a()
+  {
+    RemoteServiceProxy.2 local2 = new RemoteServiceProxy.2(this);
+    local2.setName("handleWaitSendProxyMsgThread");
+    local2.start();
+  }
+  
+  public void a(SendMsg paramSendMsg)
+  {
+    if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      ThreadManager.post(new RemoteServiceProxy.3(this, paramSendMsg), 10, null, false);
       return;
-      localObject = this.jdField_a_of_type_Blvd;
-      break;
-      bmbx.a("AEGIFStickerAdapter", "[ItemView.onClick] position == mActivatedPos");
-      continue;
-      if (this.jdField_a_of_type_Blvd.jdField_a_of_type_Int == 0)
+    }
+    this.jdField_a_of_type_Blxr.a(paramSendMsg);
+  }
+  
+  public void a(SendMsg paramSendMsg, RecvMsg paramRecvMsg)
+  {
+    try
+    {
+      if (paramSendMsg.a() != null)
       {
-        bmbx.a("AEGIFStickerAdapter", "[ItemView.onClick] data.state == STATE_NOT_DOWNLOAD");
-        if (blxu.a(this.jdField_a_of_type_Blxu) != null)
-        {
-          blxw localblxw2 = blxu.a(this.jdField_a_of_type_Blxu);
-          if (this.jdField_a_of_type_Blvd.b == 1) {}
-          for (localObject = localblxw1;; localObject = this.jdField_a_of_type_Blvd)
-          {
-            localblxw2.a((blvd)localObject);
-            break;
-          }
-        }
+        paramSendMsg.a().a(paramRecvMsg);
+        return;
       }
-      else
+      if (this.jdField_a_of_type_Blxo != null)
       {
-        bmbx.a("AEGIFStickerAdapter", "[ItemView.onClick] data.state == STATE_DOWNLOADING");
+        this.jdField_a_of_type_Blxo.a(paramRecvMsg);
+        return;
       }
     }
+    catch (RemoteException paramSendMsg)
+    {
+      paramSendMsg.printStackTrace();
+    }
+  }
+  
+  protected boolean a()
+  {
+    return this.jdField_a_of_type_Blxr != null;
+  }
+  
+  public void b()
+  {
+    long l = System.currentTimeMillis();
+    if ((this.jdField_a_of_type_Long == -1L) || (l - this.jdField_a_of_type_Long > 1000L))
+    {
+      this.jdField_a_of_type_Long = l;
+      c();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("RemoteServiceProxy", 2, "wait start " + this.jdField_a_of_type_JavaLangString + " service result, skiped...");
+  }
+  
+  public void b(SendMsg paramSendMsg)
+  {
+    try
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (a())
+        {
+          a(paramSendMsg);
+          return;
+        }
+        c(paramSendMsg);
+        b();
+      }
+      return;
+    }
+    catch (DeadObjectException localDeadObjectException)
+    {
+      c(paramSendMsg);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (this.jdField_a_of_type_Blxr == null)
+      {
+        c(paramSendMsg);
+        return;
+      }
+      localException.printStackTrace();
+    }
+  }
+  
+  void c()
+  {
+    try
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), QAppCenterPluginProxyService.class);
+      blwh localblwh = new blwh(1);
+      localblwh.b = "qappcenter_plugin.apk";
+      localblwh.d = anvx.a(2131712852);
+      localblwh.jdField_a_of_type_JavaLangString = this.b;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+      for (localblwh.e = "com.tencent.plugin.qappcenter.remote.RemoteService";; localblwh.e = this.jdField_a_of_type_JavaLangString)
+      {
+        localblwh.jdField_a_of_type_AndroidContentIntent = localIntent;
+        localblwh.jdField_a_of_type_AndroidContentServiceConnection = this.jdField_a_of_type_AndroidContentServiceConnection;
+        blvy.c(BaseApplicationImpl.getApplication(), localblwh);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("RemoteServiceProxy", 2, " start service finish");
+        return;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  protected void c(SendMsg paramSendMsg)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramSendMsg);
   }
 }
 

@@ -1,35 +1,24 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.beacon.qimei.IAsyncQimeiListener;
+import com.tencent.beacon.qimei.Qimei;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class blrd
-  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
+final class blrd
+  implements IAsyncQimeiListener
 {
-  blrd(blqw paramblqw) {}
-  
-  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
+  public void onQimeiDispatch(Qimei paramQimei)
   {
-    bmbx.b("VideoStoryCapturePart", "mCurrentRatio---onChanged: ratio=" + paramRatio);
-    if (paramRatio == null) {}
-    while (blqw.a(this.a) == paramRatio) {
-      return;
+    if ((paramQimei != null) && (TextUtils.isEmpty(blrb.b()))) {
+      blrb.a(paramQimei.getQimeiNew());
     }
-    blqw.a(this.a, paramRatio);
-    int i = 0;
-    if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.R_4_3) {
-      i = blqw.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("VipComicReportUtils", 1, "getQimei onQimeiDispatch qimei:" + blrb.b());
     }
-    for (;;)
-    {
-      akur localakur = bmbw.a();
-      paramRatio = bmbw.a(blqw.a(this.a), localakur, blqw.b(this.a), paramRatio);
-      blqw.a(this.a, i, paramRatio);
-      blqw.a(this.a, localakur, paramRatio);
-      return;
-      if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.R_1_1) {
-        i = blqw.a;
-      }
-    }
+    BaseApplicationImpl.getContext().getSharedPreferences("fileSystemInfo_", 4).edit().putString("qimei_new", blrb.b()).commit();
   }
 }
 

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import bgpk;
-import bgpl;
+import bhzu;
+import bhzv;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
@@ -17,7 +17,7 @@ public class ProfileTemplateNickNameContainer
   extends ViewGroup
 {
   private int jdField_a_of_type_Int;
-  private bgpl jdField_a_of_type_Bgpl = new bgpl();
+  private bhzv jdField_a_of_type_Bhzv = new bhzv();
   private ProfileNameView jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -52,7 +52,7 @@ public class ProfileTemplateNickNameContainer
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int n = this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.a();
+    int n = this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.b();
     int k = this.jdField_a_of_type_Int;
     int m = this.jdField_a_of_type_Int + n;
     int j;
@@ -68,9 +68,9 @@ public class ProfileTemplateNickNameContainer
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         break;
       }
-      this.jdField_a_of_type_Bgpl.a(i - j, paramInt4 - paramInt2);
-      URLDrawable localURLDrawable = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bgpl);
-      bgpk.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
+      this.jdField_a_of_type_Bhzv.a(i - j, paramInt4 - paramInt2);
+      URLDrawable localURLDrawable = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bhzv);
+      bhzu.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setBackgroundDrawable(localURLDrawable);
       return;
       i = m;

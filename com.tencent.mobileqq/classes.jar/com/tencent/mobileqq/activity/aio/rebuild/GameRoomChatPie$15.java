@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahgc;
+import aiav;
 import android.support.v4.app.FragmentActivity;
-import bhar;
+import bilj;
 
 public class GameRoomChatPie$15
   implements Runnable
 {
-  public GameRoomChatPie$15(ahgc paramahgc) {}
+  public GameRoomChatPie$15(aiav paramaiav) {}
   
   public void run()
   {

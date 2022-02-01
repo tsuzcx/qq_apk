@@ -54,12 +54,12 @@ public class OptimGaussianMaskFilter
   {
     if (this.mReSizeFilter != null)
     {
-      this.mReSizeFilter.ClearGLSL();
+      this.mReSizeFilter.clearGLSL();
       this.mReSizeFilter = null;
     }
     if (this.mMixFilter != null)
     {
-      this.mMixFilter.ClearGLSL();
+      this.mMixFilter.clearGLSL();
       this.mMixFilter = null;
     }
   }

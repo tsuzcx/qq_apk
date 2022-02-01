@@ -1,88 +1,61 @@
-import java.util.ArrayList;
-import java.util.List;
+import QC.UniSetRsp;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class bdff
+class bdff
+  implements BusinessObserver
 {
-  int jdField_a_of_type_Int = 0;
-  char[] jdField_a_of_type_ArrayOfChar;
+  bdff(bdfe parambdfe, long paramLong) {}
   
-  private int a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = 0;
-    while (this.jdField_a_of_type_Int + i < this.jdField_a_of_type_ArrayOfChar.length)
+    boolean bool = true;
+    if (QLog.isColorLevel())
     {
-      int j = this.jdField_a_of_type_ArrayOfChar[(this.jdField_a_of_type_Int + i)];
-      if (((j < 48) || (j > 57)) && ((j < 97) || (j > 122))) {
-        break;
+      QLog.d("SimpleUILog.SimpleUIHandler", 1, new Object[] { "sendSwitchBubbleUnread onObserver update: ", Boolean.valueOf(paramBoolean), "type: ", Integer.valueOf(paramInt) });
+      if ((paramObject instanceof UniSetRsp)) {
+        QLog.d("SimpleUILog.SimpleUIHandler", 1, new Object[] { "ret: ", Integer.valueOf(((UniSetRsp)paramObject).ret) });
       }
-      i += 1;
     }
-    return i;
-  }
-  
-  List<bdfd> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_ArrayOfChar = paramString.toCharArray();
-    bdfd localbdfd = new bdfd();
-    StringBuilder localStringBuilder = new StringBuilder();
-    while (this.jdField_a_of_type_Int < this.jdField_a_of_type_ArrayOfChar.length)
+    if ((paramBoolean) && ((paramObject instanceof UniSetRsp)) && (((UniSetRsp)paramObject).ret == 0))
     {
-      int i;
-      switch (this.jdField_a_of_type_ArrayOfChar[this.jdField_a_of_type_Int])
+      paramObject = this.jdField_a_of_type_Bdfe;
+      if (bdfe.a(this.jdField_a_of_type_Bdfe).get() == 1)
       {
-      default: 
-        this.jdField_a_of_type_Int += 1;
-        localbdfd.a();
+        paramBoolean = true;
+        paramInt = bdfe.b(this.jdField_a_of_type_Bdfe).get();
+        if (bdfe.c(this.jdField_a_of_type_Bdfe).get() != 1) {
+          break label168;
+        }
+      }
+      label168:
+      for (bool = true;; bool = false)
+      {
+        paramObject.a(paramBoolean, paramInt, false, bool, this.jdField_a_of_type_Long);
+        return;
+        paramBoolean = false;
         break;
-      case '*': 
-        this.jdField_a_of_type_Int += 1;
-        i = a();
-        if (i == 0) {
-          localbdfd.a();
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Int = (i + this.jdField_a_of_type_Int);
-          break;
-          localStringBuilder.append(paramString.substring(this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Int + i));
-        }
-      case '|': 
-        this.jdField_a_of_type_Int += 1;
-        i = a();
-        if (i == 0) {
-          localbdfd.a();
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Int = (i + this.jdField_a_of_type_Int);
-          break;
-          localbdfd.b = bdej.a(paramString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + i));
-        }
-      case '+': 
-      case '-': 
-      case '=': 
-        localbdfd.jdField_a_of_type_Char = this.jdField_a_of_type_ArrayOfChar[this.jdField_a_of_type_Int];
-        this.jdField_a_of_type_Int += 1;
-        i = a();
-        if (i == 0) {
-          localbdfd.a();
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Int = (i + this.jdField_a_of_type_Int);
-          break;
-          localbdfd.jdField_a_of_type_Int = bdej.a(paramString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + i));
-          localbdfd.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-          localArrayList.add(localbdfd);
-          localStringBuilder.delete(0, localStringBuilder.length());
-          localbdfd = new bdfd();
-        }
-      case '?': 
-        throw new IllegalArgumentException("Hit error opcode in op stream: " + paramString);
       }
     }
-    return localArrayList;
+    paramObject = this.jdField_a_of_type_Bdfe;
+    if (bdfe.a(this.jdField_a_of_type_Bdfe).get() == 1)
+    {
+      paramBoolean = true;
+      paramInt = bdfe.b(this.jdField_a_of_type_Bdfe).get();
+      if (bdfe.c(this.jdField_a_of_type_Bdfe).get() != 1) {
+        break label237;
+      }
+    }
+    for (;;)
+    {
+      paramObject.a(false, paramBoolean, paramInt, bool, false, false);
+      return;
+      paramBoolean = false;
+      break;
+      label237:
+      bool = false;
+    }
   }
 }
 

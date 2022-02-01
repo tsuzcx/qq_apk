@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.phone;
 
-import aiqi;
+import ajlx;
 import com.tencent.mobileqq.activity.phone.PhoneContactStatusCheckView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
@@ -20,13 +20,13 @@ class PhoneContactFragment$2
     }
     if (this.this$0.jdField_a_of_type_ComTencentWidgetXListView != null)
     {
-      if (this.this$0.jdField_a_of_type_Aiqi == null)
+      if (this.this$0.jdField_a_of_type_Ajlx == null)
       {
-        this.this$0.jdField_a_of_type_Aiqi = new aiqi(PhoneContactFragment.a(this.this$0), PhoneContactFragment.d(this.this$0), this.this$0.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.this$0);
-        this.this$0.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.this$0.jdField_a_of_type_Aiqi);
+        this.this$0.jdField_a_of_type_Ajlx = new ajlx(PhoneContactFragment.a(this.this$0), PhoneContactFragment.d(this.this$0), this.this$0.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.this$0);
+        this.this$0.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.this$0.jdField_a_of_type_Ajlx);
       }
-      this.this$0.jdField_a_of_type_Aiqi.a(PhoneContactFragment.e(this.this$0));
-      this.this$0.jdField_a_of_type_Aiqi.notifyDataSetChanged();
+      this.this$0.jdField_a_of_type_Ajlx.a(PhoneContactFragment.e(this.this$0));
+      this.this$0.jdField_a_of_type_Ajlx.notifyDataSetChanged();
     }
   }
 }

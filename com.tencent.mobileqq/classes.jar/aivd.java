@@ -1,31 +1,13 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
-
-public class aivd
-  implements aixs
+class aivd
+  extends anvi
 {
-  public aivd(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
+  aivd(aiuz paramaiuz) {}
   
-  public void a()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    this.a.j();
-  }
-  
-  public void b()
-  {
-    if ((!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof ChatHistoryActivity)) || (!((ChatHistoryActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).c)) {
-      this.a.jdField_a_of_type_Ajbf.a();
+    if ((paramBoolean) && (aiuz.a(this.a) != null)) {
+      aiuz.a(this.a).a(String.valueOf(paramObject));
     }
-    this.a.c = true;
-    this.a.b(true);
-  }
-  
-  public void c()
-  {
-    this.a.jdField_a_of_type_Ajbf.b();
-    this.a.c = false;
-    this.a.b(false);
-    this.a.jdField_a_of_type_Ajaq.a();
   }
 }
 

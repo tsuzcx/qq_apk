@@ -1,255 +1,302 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.ad.tangram.util.AdExposureChecker;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ViewUtils;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.search.rich.RichNodeController.1;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletPicHelper;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import org.jetbrains.annotations.NotNull;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bckm
-  extends bcgx
 {
-  public static AdExposureChecker.ExposureCallback a;
-  public static ArrayList<AdExposureChecker> b = new ArrayList();
-  private static final int s = Color.parseColor("#C7C7C7");
-  private int t;
-  private int u;
+  private static String jdField_a_of_type_JavaLangString = "RichNodeController";
+  private static final Set<WeakReference<bcke>> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+  private int jdField_a_of_type_Int = 0;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private Map<Integer, bckn> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private int b;
+  private int c;
   
-  @NotNull
-  private GradientDrawable a()
+  public static void a()
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(ViewUtils.dip2px(2.0F));
-    localGradientDrawable.setStroke(ViewUtils.dpToPx(0.25F), s);
-    return localGradientDrawable;
-  }
-  
-  @NotNull
-  private ImageView a(Context paramContext, RelativeLayout paramRelativeLayout)
-  {
-    ImageView localImageView = new ImageView(paramContext);
-    localImageView.setId(2131374723);
-    int i = ViewUtils.dpToPx(50.0F);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i * 16 / 9, i);
-    localLayoutParams.addRule(15);
-    localImageView.setImageDrawable(paramContext.getResources().getDrawable(2130847270));
-    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    paramRelativeLayout.addView(localImageView, localLayoutParams);
-    return localImageView;
-  }
-  
-  @NotNull
-  private LinearLayout a(Context paramContext, RelativeLayout paramRelativeLayout)
-  {
-    paramContext = new LinearLayout(paramContext);
-    paramContext.setId(2131374724);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(11);
-    localLayoutParams.addRule(8, 2131374723);
-    paramRelativeLayout.addView(paramContext, localLayoutParams);
-    return paramContext;
-  }
-  
-  private RelativeLayout a(Context paramContext)
-  {
-    paramContext = new RelativeLayout(paramContext);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.dpToPx(74.0F));
-    paramContext.setPadding(this.t, 0, this.u, 0);
-    paramContext.setLayoutParams(localLayoutParams);
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletGdtAdManager_StructMsgItemLayout31", 2, "getItemRootView...left:" + this.t + ",right:" + this.u + ",top:" + 0 + ",bottom:" + 0);
-    }
-    return paramContext;
-  }
-  
-  @NotNull
-  private TextView a(Context paramContext, RelativeLayout paramRelativeLayout)
-  {
-    TextView localTextView = new TextView(paramContext);
-    localTextView.setId(2131374721);
-    localTextView.setText(paramContext.getResources().getText(2131716445));
-    localTextView.setSingleLine(false);
-    localTextView.setMaxLines(2);
-    localTextView.setEllipsize(TextUtils.TruncateAt.END);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(1, 2131374723);
-    localLayoutParams.addRule(0, 2131374724);
-    localLayoutParams.addRule(15);
-    localLayoutParams.setMargins(ViewUtils.dip2px(12.0F), 0, ViewUtils.dip2px(12.0F), 0);
-    paramRelativeLayout.addView(localTextView, localLayoutParams);
-    a(paramContext, localTextView);
-    return localTextView;
-  }
-  
-  @NotNull
-  private TextView a(Context paramContext, CharSequence paramCharSequence)
-  {
-    paramContext = new TextView(paramContext);
-    paramContext.setId(2131374725);
-    paramContext.setText(paramCharSequence);
-    paramContext.setTextColor(s);
-    paramContext.setTextSize(1, 10.0F);
-    paramContext.setBackgroundDrawable(a());
-    paramContext.setPadding(ViewUtils.dpToPx(0.8F), 0, 0, ViewUtils.dpToPx(0.8F));
-    return paramContext;
-  }
-  
-  private void a(Context paramContext, LinearLayout paramLinearLayout, int paramInt)
-  {
-    if (paramInt == 12) {
-      paramLinearLayout.addView(a(paramContext, paramContext.getResources().getText(2131716474)));
-    }
-    paramContext = a(paramContext, paramContext.getResources().getText(2131716473));
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.leftMargin = ViewUtils.dpToPx(2.0F);
-    paramLinearLayout.addView(paramContext, localLayoutParams);
-  }
-  
-  private void a(Context paramContext, RelativeLayout paramRelativeLayout, ImageView paramImageView, LinearLayout paramLinearLayout, TextView paramTextView)
-  {
-    if ((paramContext instanceof BaseActivity)) {}
-    for (ajvj localajvj = (ajvj)((BaseActivity)paramContext).app.getManager(341);; localajvj = null)
-    {
-      Object localObject = new AdExposureChecker(null, new WeakReference(paramRelativeLayout));
-      if ((localajvj != null) && (localajvj.a() != null) && (localajvj.a().getImageData() != null))
-      {
-        GdtAd localGdtAd = localajvj.a();
-        int i = localGdtAd.getProductType();
-        abkv localabkv = localGdtAd.getImageData();
-        ViewGroup.LayoutParams localLayoutParams = paramImageView.getLayoutParams();
-        if ((localabkv.jdField_a_of_type_Int != 0) && (localabkv.b != 0)) {
-          localLayoutParams.width = ((int)(Math.min(Math.max(localabkv.jdField_a_of_type_Int * 1.0F / localabkv.b, 1.0F), 1.777778F) * localLayoutParams.height));
-        }
-        localObject = paramContext.getResources().getDrawable(2130847270);
-        if (localabkv.jdField_a_of_type_Int == localabkv.b) {
-          localObject = paramContext.getResources().getDrawable(2130847269);
-        }
-        paramImageView.setImageDrawable(QWalletPicHelper.getNetDrawableForQWallet(localabkv.jdField_a_of_type_JavaLangString, (Drawable)localObject, (Drawable)localObject));
-        if (QLog.isColorLevel()) {
-          QLog.i("QWalletGdtAdManager_StructMsgItemLayout31", 2, "adInfo:,text:" + localGdtAd.getText() + ",url:" + localabkv.jdField_a_of_type_JavaLangString + ",width:" + localabkv.jdField_a_of_type_Int + ",height:" + localabkv.b + ",paramsWidth:" + localLayoutParams.width + ",paramsHeight:" + localLayoutParams.height + ",productType:" + i);
-        }
-        paramImageView.requestLayout();
-        paramTextView.setText(localGdtAd.getText());
-        a(paramContext, paramLinearLayout, i);
-        paramImageView = new AdExposureChecker(localGdtAd, new WeakReference(paramRelativeLayout));
-        if (a == null) {
-          a = new bckn(this, localajvj, paramContext, localGdtAd);
-        }
-        paramImageView.setCallback(new WeakReference(a));
-        paramRelativeLayout.setOnClickListener(new bcko(this, localGdtAd, paramContext, localajvj));
-        if (QLog.isColorLevel()) {
-          QLog.d("QWalletGdtAdManager_StructMsgItemLayout31", 2, "updateAdInfo....startCheck view:" + this);
-        }
-      }
-      for (paramContext = paramImageView;; paramContext = (Context)localObject)
-      {
-        paramContext.startCheck();
-        b.add(paramContext);
-        if (QLog.isColorLevel()) {
-          QLog.d("QWalletGdtAdManager_StructMsgItemLayout31", 2, "updateAdInfo....adExposureCheckers size:" + b.size());
-        }
-        return;
-        paramRelativeLayout.setOnClickListener(new bckp(this, paramContext));
-      }
-    }
-  }
-  
-  private void a(Context paramContext, TextView paramTextView)
-  {
-    TextPaint localTextPaint;
-    if ((paramContext instanceof BaseActivity))
-    {
-      paramContext = (ajyg)((BaseActivity)paramContext).app.getManager(245);
-      localTextPaint = paramTextView.getPaint();
-      if (paramContext.a("common", 0, new String[] { "pub_ad_control", "gdt_content_bold" }) != 1) {
-        break label143;
-      }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      localTextPaint.setFakeBoldText(bool);
-      paramTextView.setTextSize(1, Math.min(Math.max(paramContext.a("common", 24, new String[] { "pub_ad_control", "gdt_content_size" }), 24), 36) >> 1);
-      try
-      {
-        paramTextView.setTextColor(Color.parseColor(paramContext.a("common", "#000000", new String[] { "pub_ad_control", "gdt_content_color" })));
-        return;
-      }
-      catch (Throwable paramContext)
-      {
-        label143:
-        QLog.e("QWalletGdtAdManager_StructMsgItemLayout31", 1, paramContext, new Object[0]);
-        paramTextView.setTextColor(Color.parseColor("#000000"));
-      }
-    }
-  }
-  
-  private void a(RelativeLayout paramRelativeLayout)
-  {
-    int i = paramRelativeLayout.getPaddingTop();
-    int j = paramRelativeLayout.getPaddingBottom();
-    paramRelativeLayout.setBackgroundResource(2130838336);
-    paramRelativeLayout.setPadding(this.t, i, this.u, j);
-  }
-  
-  protected int b()
-  {
-    return 31;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    if (paramBundle != null) {}
     for (;;)
     {
-      try
+      synchronized (jdField_a_of_type_JavaUtilSet)
       {
-        if (!paramBundle.getBoolean("isShowQWalletPubAd")) {
-          return new View(paramContext);
+        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+        if (!localIterator.hasNext()) {
+          break;
         }
-        this.t = (paramContext.getResources().getDimensionPixelSize(2131298978) - ViewUtils.dip2px(3.0F));
-        this.u = (paramContext.getResources().getDimensionPixelSize(2131298979) - ViewUtils.dip2px(3.0F));
-        if ((paramView instanceof RelativeLayout))
+        localObject2 = (WeakReference)localIterator.next();
+        if (localObject2 == null)
         {
-          paramView = (RelativeLayout)paramView;
-          paramView.removeAllViews();
-          a(paramView);
-          a(paramContext, paramView, a(paramContext, paramView), a(paramContext, paramView), a(paramContext, paramView));
-          return paramView;
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "onDestroy.(item == null");
+          }
+          localIterator.remove();
         }
       }
-      catch (Throwable paramContext)
+      Object localObject2 = (bcke)((WeakReference)localObject2).get();
+      if (localObject2 == null)
       {
-        QLog.e("QWalletGdtAdManager_StructMsgItemLayout31", 1, paramContext, new Object[0]);
-        return null;
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "onDestroy.(node == null");
+        }
+        localObject1.remove();
       }
-      paramView = a(paramContext);
+      else
+      {
+        a((bcke)localObject2);
+        ((bcke)localObject2).d();
+      }
+    }
+    jdField_a_of_type_JavaUtilSet.clear();
+  }
+  
+  private static void a(bcke parambcke) {}
+  
+  private void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "pauseAll, puase:" + paramBoolean + " startPos:" + this.b + " endPos:" + this.c);
+    }
+    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "pauseAll, map is empty");
+      }
+    }
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (bckn)localIterator.next();
+        if (localObject != null)
+        {
+          localObject = ((bckn)localObject).a;
+          if (localObject != null)
+          {
+            localObject = (bcke)((WeakReference)localObject).get();
+            if (localObject != null) {
+              if (paramBoolean) {
+                ((bcke)localObject).b();
+              } else {
+                ((bcke)localObject).c();
+              }
+            }
+          }
+        }
+      }
     }
   }
   
-  public String b()
+  public static void b()
   {
-    return "Layout31";
+    for (;;)
+    {
+      synchronized (jdField_a_of_type_JavaUtilSet)
+      {
+        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject2 = (WeakReference)localIterator.next();
+        if (localObject2 == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause item == null");
+          }
+          localIterator.remove();
+        }
+      }
+      Object localObject2 = (bcke)((WeakReference)localObject2).get();
+      if (localObject2 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause node == null");
+        }
+        localObject1.remove();
+      }
+      else
+      {
+        ((bcke)localObject2).b();
+      }
+    }
+  }
+  
+  private void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "restartPlayTimer:" + paramInt);
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    }
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    if (paramInt < 0) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaLangRunnable == null) {
+      this.jdField_a_of_type_JavaLangRunnable = new RichNodeController.1(this);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt);
+  }
+  
+  public static void c() {}
+  
+  public static void d() {}
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject1 = (Map.Entry)localIterator.next();
+        Object localObject2 = (bckn)((Map.Entry)localObject1).getValue();
+        if (localObject2 == null)
+        {
+          localIterator.remove();
+        }
+        else if (((bckn)localObject2).a == null)
+        {
+          localIterator.remove();
+        }
+        else
+        {
+          localObject2 = (bcke)((bckn)localObject2).a.get();
+          if (localObject2 == null)
+          {
+            localIterator.remove();
+          }
+          else
+          {
+            localObject1 = (Integer)((Map.Entry)localObject1).getKey();
+            if (localObject1 == null)
+            {
+              ((bcke)localObject2).b();
+              localIterator.remove();
+            }
+            else if ((((Integer)localObject1).intValue() < this.b) || (((Integer)localObject1).intValue() > this.c))
+            {
+              ((bcke)localObject2).b();
+              localIterator.remove();
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  private static void f()
+  {
+    for (;;)
+    {
+      synchronized (jdField_a_of_type_JavaUtilSet)
+      {
+        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject2 = (WeakReference)localIterator.next();
+        if (localObject2 == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause item == null");
+          }
+          localIterator.remove();
+        }
+      }
+      Object localObject2 = (bcke)((WeakReference)localObject2).get();
+      if (localObject2 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause node == null");
+        }
+        localObject1.remove();
+      }
+      else
+      {
+        ((bcke)localObject2).c();
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      b(100);
+      return;
+    }
+    b(-1);
+    b();
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt1 == this.b) && (this.c == paramInt1 + paramInt2)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "setScorllData, mStartPos:" + this.b + " endPos:" + this.c);
+    }
+    this.b = paramInt1;
+    this.c = (paramInt1 + paramInt2);
+    e();
+  }
+  
+  public void a(int paramInt, bcke parambcke)
+  {
+    if (parambcke == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "registerNode, nPos:" + paramInt);
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), new bckn(paramInt, parambcke));
+    if (this.jdField_a_of_type_Int != 0) {
+      parambcke.b();
+    }
+    for (;;)
+    {
+      synchronized (jdField_a_of_type_JavaUtilSet)
+      {
+        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+        if (!localIterator.hasNext()) {
+          break label201;
+        }
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference == null) || (localWeakReference.get() != parambcke)) {
+          continue;
+        }
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "find in list:" + bool);
+        }
+        if (!bool) {
+          jdField_a_of_type_JavaUtilSet.add(new WeakReference(parambcke));
+        }
+        return;
+      }
+      parambcke.c();
+      continue;
+      label201:
+      boolean bool = false;
+    }
   }
 }
 

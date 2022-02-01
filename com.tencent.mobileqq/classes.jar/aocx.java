@@ -1,416 +1,463 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.commonsdk.cache.QQHashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.RoamSettingManager.1;
+import com.tencent.mobileqq.app.RoamSettingManager.2;
+import com.tencent.mobileqq.app.RoamSettingManager.3;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ArNativeSoLoader.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.RoamSetting;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.util.HashMap;
-import org.xmlpull.v1.XmlPullParser;
+import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import mqq.manager.Manager;
 
 public class aocx
+  implements Manager
 {
-  public static boolean a;
-  private static final byte[] a;
-  public static boolean b;
+  public QQHashMap<String, RoamSetting> a;
+  RoamSetting a;
+  public EntityManager a;
+  public Lock a;
+  public boolean a;
+  public QQHashMap<String, RoamSetting> b;
   
-  static
+  public aocx(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_ArrayOfByte = new byte[0];
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap = new QQHashMap(1003, 0, 60);
+    this.b = new QQHashMap(1004, 0, 60);
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
+    a();
   }
   
-  public static byte a(String paramString)
+  private boolean a(String paramString)
   {
-    byte b2 = 0;
-    if (paramString == null) {
-      return -1;
-    }
-    String str = a() + "/lib" + paramString + ".so";
-    if (QLog.isColorLevel()) {
-      QLog.i("ArConfig_ArNativeSoLoader", 2, "start arNativeSo: " + str);
-    }
-    File localFile = new File(str);
-    if ((!jdField_a_of_type_Boolean) && (localFile.exists())) {}
-    for (;;)
+    boolean bool = false;
+    try
     {
-      try
-      {
-        System.load(str);
-        b1 = b2;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("ArConfig_ArNativeSoLoader", 2, "load " + str + " success!");
-          b1 = b2;
-        }
+      int i = Integer.parseInt(paramString);
+      if ((i == -2) || (i == -1) || (i == 1) || (i == 2) || (i == 3) || (i == 4)) {
+        bool = true;
       }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("ArConfig_ArNativeSoLoader", 2, "load from ar dir failed.", localUnsatisfiedLinkError);
-        b1 = -3;
-        continue;
-      }
-      a(paramString, b1);
-      return b1;
-      b2 = -2;
-      byte b1 = b2;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("ArConfig_ArNativeSoLoader", 2, "no ar so in ar dir");
-        b1 = b2;
-      }
+      return bool;
     }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      QLog.e("RoamSettingManager", 1, paramString + "");
+    }
+    return false;
   }
   
-  public static String a()
+  public int a()
   {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ArConfig_ArNativeSoLoader", 2, "getFilesDir is null");
-      }
-      return "";
+    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting == null) {
+      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting = ((RoamSetting)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(RoamSetting.class, "setting_revision"));
     }
-    return localFile.getParent() + "/ar";
-  }
-  
-  private static void a(String paramString, byte paramByte)
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
-    byte b1 = localSharedPreferences.getInt("ar_native_so_load_result" + paramString, 0);
-    if ((!b) || (b1 != paramByte))
-    {
-      b = true;
-      ThreadManager.post(new ArNativeSoLoader.1(paramString, paramByte, localSharedPreferences), 5, null, true);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting == null) {
+      return 0;
     }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return a(paramString, true);
-  }
-  
-  public static boolean a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    boolean bool = true;
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    paramHashMap.clear();
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value == null)
     {
-      try
-      {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception paramHashMap)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("ArConfig_ArNativeSoLoader", 2, paramString, paramHashMap);
-        bool = false;
-        return bool;
-      }
-      int i = localXmlPullParser.next();
-      if (localXmlPullParser.getName().equalsIgnoreCase("ArMapEngine836"))
-      {
-        paramHashMap.put("ArMapEngine836", localXmlPullParser.nextText());
-        break label104;
-        ;;
-        label104:
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArConfig_ArNativeSoLoader", 2, "parseConfig success|config=" + paramHashMap);
-          return true;
-          if (i != 1) {
-            switch (i)
-            {
-            }
-          }
-        }
-      }
+      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting = null;
+      return 0;
     }
-  }
-  
-  public static boolean a(String paramString, boolean paramBoolean)
-  {
-    boolean bool2 = false;
-    boolean bool3 = false;
-    String str1 = a() + "/lib" + paramString + ".so";
-    ??? = new File(str1);
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArNativeSoLoader", 2, "isSoFileExist libPath=" + str1 + ", exist=" + ((File)???).exists() + ", isUncompressZip=" + jdField_a_of_type_Boolean);
-    }
-    boolean bool1 = bool3;
-    if (!jdField_a_of_type_Boolean)
+    try
     {
-      bool1 = bool3;
-      if (((File)???).exists())
-      {
-        if (paramBoolean) {
-          break label132;
-        }
-        bool1 = true;
-      }
+      i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value);
+      return i;
     }
-    return bool1;
-    for (;;)
+    catch (Exception localException)
     {
-      synchronized (jdField_a_of_type_ArrayOfByte)
+      for (;;)
       {
-        label132:
-        String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).getString("ar_native_" + paramString, null);
         if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArNativeSoLoader", 2, "isSoFileExist: md5= " + str2);
+          QLog.d("RoamSetting", 2, "parse revision.value exception, revision.value=" + this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value);
         }
-        if (str2 == null) {
-          break label283;
-        }
-        if (str2.equalsIgnoreCase(ayja.a(str1)))
-        {
-          break label283;
-          return paramBoolean;
-        }
-      }
-      paramBoolean = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ArConfig_ArNativeSoLoader", 2, "isSoFileExist: soName= " + paramString + " check md5 false!");
-        paramBoolean = bool2;
-        continue;
-        label283:
-        paramBoolean = true;
+        int i = 0;
       }
     }
+  }
+  
+  public int a(String paramString, int paramInt)
+  {
+    RoamSetting localRoamSetting2 = a(paramString);
+    RoamSetting localRoamSetting1 = localRoamSetting2;
+    if (localRoamSetting2 == null)
+    {
+      localRoamSetting1 = localRoamSetting2;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localRoamSetting1 = new RoamSetting(paramString, Integer.toString(paramInt));
+        a(localRoamSetting1);
+      }
+    }
+    return RoamSetting.getIntValue(localRoamSetting1, paramInt);
   }
   
   /* Error */
-  public static byte b(String arg0)
+  public RoamSetting a(String paramString)
   {
     // Byte code:
-    //   0: invokestatic 41	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +28 -> 31
-    //   6: ldc 43
-    //   8: iconst_2
-    //   9: new 18	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 228
-    //   18: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: aload_0
-    //   22: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   28: invokestatic 196	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   31: iconst_1
-    //   32: putstatic 56	aocx:jdField_a_of_type_Boolean	Z
-    //   35: aload_0
-    //   36: invokestatic 24	aocx:a	()Ljava/lang/String;
-    //   39: invokestatic 233	aocu:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   42: new 141	java/util/HashMap
-    //   45: dup
-    //   46: invokespecial 234	java/util/HashMap:<init>	()V
-    //   49: astore 5
-    //   51: getstatic 84	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   54: ldc 101
-    //   56: iconst_0
-    //   57: invokevirtual 105	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   60: invokeinterface 238 1 0
-    //   65: astore 4
-    //   67: new 51	java/io/File
-    //   70: dup
-    //   71: new 18	java/lang/StringBuilder
-    //   74: dup
-    //   75: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   78: invokestatic 24	aocx:a	()Ljava/lang/String;
-    //   81: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: ldc 240
-    //   86: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
-    //   95: astore_3
-    //   96: aload_3
-    //   97: invokevirtual 59	java/io/File:exists	()Z
-    //   100: ifeq +311 -> 411
-    //   103: aconst_null
-    //   104: astore_0
-    //   105: aload_3
-    //   106: invokestatic 246	com/tencent/mobileqq/utils/FileUtils:readFileToString	(Ljava/io/File;)Ljava/lang/String;
-    //   109: astore_3
-    //   110: aload_3
-    //   111: astore_0
-    //   112: aload_0
-    //   113: ifnull +274 -> 387
+    //   0: aload_1
+    //   1: ifnonnull +5 -> 6
+    //   4: aconst_null
+    //   5: areturn
+    //   6: aload_0
+    //   7: getfield 49	aocx:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   10: invokeinterface 140 1 0
+    //   15: aload_1
+    //   16: invokestatic 144	bhhi:a	(Ljava/lang/String;)I
+    //   19: istore_2
+    //   20: iload_2
+    //   21: iconst_1
+    //   22: if_icmpne +106 -> 128
+    //   25: aload_0
+    //   26: getfield 44	aocx:b	Lcom/tencent/commonsdk/cache/QQHashMap;
+    //   29: aload_1
+    //   30: invokevirtual 148	com/tencent/commonsdk/cache/QQHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   33: checkcast 89	com/tencent/mobileqq/data/RoamSetting
+    //   36: astore_3
+    //   37: aload_3
+    //   38: astore 4
+    //   40: aload_3
+    //   41: ifnonnull +75 -> 116
+    //   44: aload_3
+    //   45: astore 4
+    //   47: aload_0
+    //   48: getfield 21	aocx:jdField_a_of_type_Boolean	Z
+    //   51: ifne +65 -> 116
+    //   54: aload_0
+    //   55: getfield 35	aocx:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   58: ldc 89
+    //   60: aload_1
+    //   61: invokevirtual 97	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   64: checkcast 89	com/tencent/mobileqq/data/RoamSetting
+    //   67: astore_1
+    //   68: aload_1
+    //   69: astore 4
+    //   71: aload_1
+    //   72: ifnull +44 -> 116
+    //   75: aload_1
+    //   76: astore 4
+    //   78: aload_1
+    //   79: getfield 151	com/tencent/mobileqq/data/RoamSetting:path	Ljava/lang/String;
+    //   82: ifnull +34 -> 116
+    //   85: aload_1
+    //   86: astore 4
+    //   88: aload_1
+    //   89: getfield 101	com/tencent/mobileqq/data/RoamSetting:value	Ljava/lang/String;
+    //   92: ifnull +24 -> 116
+    //   95: iload_2
+    //   96: iconst_1
+    //   97: if_icmpne +46 -> 143
+    //   100: aload_0
+    //   101: getfield 44	aocx:b	Lcom/tencent/commonsdk/cache/QQHashMap;
+    //   104: aload_1
+    //   105: getfield 151	com/tencent/mobileqq/data/RoamSetting:path	Ljava/lang/String;
+    //   108: aload_1
+    //   109: invokevirtual 155	com/tencent/commonsdk/cache/QQHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   112: pop
+    //   113: aload_1
+    //   114: astore 4
     //   116: aload_0
-    //   117: aload 5
-    //   119: invokestatic 248	aocx:a	(Ljava/lang/String;Ljava/util/HashMap;)Z
-    //   122: ifeq +265 -> 387
-    //   125: getstatic 12	aocx:jdField_a_of_type_ArrayOfByte	[B
-    //   128: astore_0
-    //   129: aload_0
-    //   130: monitorenter
-    //   131: aload 5
-    //   133: invokevirtual 252	java/util/HashMap:entrySet	()Ljava/util/Set;
-    //   136: invokeinterface 258 1 0
-    //   141: astore_3
-    //   142: aload_3
-    //   143: invokeinterface 263 1 0
-    //   148: ifeq +283 -> 431
-    //   151: aload_3
-    //   152: invokeinterface 266 1 0
-    //   157: checkcast 268	java/util/Map$Entry
-    //   160: astore 5
-    //   162: new 18	java/lang/StringBuilder
-    //   165: dup
-    //   166: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   169: invokestatic 24	aocx:a	()Ljava/lang/String;
-    //   172: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   175: ldc 30
-    //   177: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   180: aload 5
-    //   182: invokeinterface 271 1 0
-    //   187: checkcast 148	java/lang/String
-    //   190: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   193: ldc 32
-    //   195: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   201: astore 7
-    //   203: new 51	java/io/File
-    //   206: dup
-    //   207: aload 7
-    //   209: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
-    //   212: astore 6
-    //   214: aload 6
-    //   216: invokevirtual 59	java/io/File:exists	()Z
-    //   219: ifeq +163 -> 382
-    //   222: aload 7
-    //   224: invokestatic 220	ayja:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   227: astore 7
-    //   229: aload 5
-    //   231: invokeinterface 274 1 0
-    //   236: checkcast 148	java/lang/String
-    //   239: aload 7
-    //   241: invokevirtual 178	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   244: ifne +84 -> 328
-    //   247: aload 6
-    //   249: invokevirtual 277	java/io/File:delete	()Z
-    //   252: pop
-    //   253: iconst_2
-    //   254: istore_1
-    //   255: aload 4
-    //   257: invokeinterface 282 1 0
-    //   262: pop
-    //   263: aload_0
-    //   264: monitorexit
-    //   265: iconst_0
-    //   266: putstatic 56	aocx:jdField_a_of_type_Boolean	Z
-    //   269: iload_1
-    //   270: ireturn
-    //   271: astore_0
-    //   272: iconst_0
-    //   273: putstatic 56	aocx:jdField_a_of_type_Boolean	Z
-    //   276: invokestatic 41	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   279: ifeq +32 -> 311
-    //   282: ldc 43
-    //   284: iconst_2
-    //   285: new 18	java/lang/StringBuilder
-    //   288: dup
-    //   289: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   292: ldc_w 284
-    //   295: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   298: aload_0
-    //   299: invokevirtual 287	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   302: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   305: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   308: invokestatic 196	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   311: invokestatic 24	aocx:a	()Ljava/lang/String;
-    //   314: iconst_0
-    //   315: invokestatic 290	com/tencent/mobileqq/utils/FileUtils:delete	(Ljava/lang/String;Z)V
-    //   318: iconst_m1
-    //   319: ireturn
-    //   320: astore_3
-    //   321: aload_3
-    //   322: invokevirtual 293	java/io/IOException:printStackTrace	()V
-    //   325: goto -213 -> 112
-    //   328: aload 4
-    //   330: new 18	java/lang/StringBuilder
-    //   333: dup
-    //   334: invokespecial 21	java/lang/StringBuilder:<init>	()V
-    //   337: ldc 209
-    //   339: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   342: aload 5
-    //   344: invokeinterface 271 1 0
-    //   349: checkcast 148	java/lang/String
-    //   352: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   355: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   358: aload 5
-    //   360: invokeinterface 274 1 0
-    //   365: checkcast 148	java/lang/String
-    //   368: invokeinterface 297 3 0
-    //   373: pop
-    //   374: goto -232 -> 142
-    //   377: astore_3
-    //   378: aload_0
-    //   379: monitorexit
-    //   380: aload_3
-    //   381: athrow
-    //   382: iconst_3
-    //   383: istore_1
-    //   384: goto -129 -> 255
-    //   387: iconst_4
-    //   388: istore_2
-    //   389: iload_2
-    //   390: istore_1
-    //   391: invokestatic 41	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   394: ifeq -129 -> 265
-    //   397: ldc 43
-    //   399: iconst_2
-    //   400: ldc_w 299
-    //   403: invokestatic 196	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   406: iload_2
-    //   407: istore_1
-    //   408: goto -143 -> 265
-    //   411: invokestatic 41	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   414: ifeq +12 -> 426
-    //   417: ldc 43
-    //   419: iconst_2
-    //   420: ldc_w 301
-    //   423: invokestatic 196	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   426: iconst_0
-    //   427: istore_1
-    //   428: goto -163 -> 265
-    //   431: iconst_0
-    //   432: istore_1
-    //   433: goto -178 -> 255
+    //   117: getfield 49	aocx:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   120: invokeinterface 158 1 0
+    //   125: aload 4
+    //   127: areturn
+    //   128: aload_0
+    //   129: getfield 42	aocx:jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap	Lcom/tencent/commonsdk/cache/QQHashMap;
+    //   132: aload_1
+    //   133: invokevirtual 148	com/tencent/commonsdk/cache/QQHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   136: checkcast 89	com/tencent/mobileqq/data/RoamSetting
+    //   139: astore_3
+    //   140: goto -103 -> 37
+    //   143: aload_0
+    //   144: getfield 42	aocx:jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap	Lcom/tencent/commonsdk/cache/QQHashMap;
+    //   147: aload_1
+    //   148: getfield 151	com/tencent/mobileqq/data/RoamSetting:path	Ljava/lang/String;
+    //   151: aload_1
+    //   152: invokevirtual 155	com/tencent/commonsdk/cache/QQHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   155: pop
+    //   156: aload_1
+    //   157: astore 4
+    //   159: goto -43 -> 116
+    //   162: astore_1
+    //   163: aload_0
+    //   164: getfield 49	aocx:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   167: invokeinterface 158 1 0
+    //   172: aload_1
+    //   173: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   254	179	1	b1	byte
-    //   388	19	2	b2	byte
-    //   95	57	3	localObject1	Object
-    //   320	2	3	localIOException	java.io.IOException
-    //   377	4	3	localObject2	Object
-    //   65	264	4	localEditor	android.content.SharedPreferences.Editor
-    //   49	310	5	localObject3	Object
-    //   212	36	6	localFile	File
-    //   201	39	7	str	String
+    //   0	174	0	this	aocx
+    //   0	174	1	paramString	String
+    //   19	79	2	i	int
+    //   36	104	3	localRoamSetting	RoamSetting
+    //   38	120	4	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   35	42	271	java/io/IOException
-    //   105	110	320	java/io/IOException
-    //   131	142	377	finally
-    //   142	253	377	finally
-    //   255	265	377	finally
-    //   328	374	377	finally
-    //   378	380	377	finally
+    //   15	20	162	finally
+    //   25	37	162	finally
+    //   47	68	162	finally
+    //   78	85	162	finally
+    //   88	95	162	finally
+    //   100	113	162	finally
+    //   128	140	162	finally
+    //   143	156	162	finally
   }
   
-  public static boolean b(String paramString)
+  public RoamSetting a(String paramString1, String paramString2)
   {
-    return new File(a() + "/lib" + paramString + ".so").exists();
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return null;
+    }
+    RoamSetting localRoamSetting = a(paramString1);
+    if (localRoamSetting == null)
+    {
+      localRoamSetting = new RoamSetting(paramString1, paramString2);
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    }
+    for (;;)
+    {
+      try
+      {
+        if (bhhi.a(paramString1) == 1)
+        {
+          if (a(paramString2))
+          {
+            this.b.put(localRoamSetting.path, localRoamSetting);
+            return localRoamSetting;
+            if (paramString2.equals(localRoamSetting.value)) {
+              return null;
+            }
+            localRoamSetting.value = paramString2;
+            break;
+          }
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("RoamSettingManager", 2, "isTroopRoamSettingLegal false. path:" + paramString1 + ", value:" + paramString2);
+          continue;
+        }
+        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(localRoamSetting.path, localRoamSetting);
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+    }
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new RoamSettingManager.1(this), 8, null, false);
+  }
+  
+  public void a(int paramInt)
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting != null)
+    {
+      localObject = Integer.toString(paramInt);
+      if (((String)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value)) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting.value = ((String)localObject);
+    }
+    for (;;)
+    {
+      a(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting);
+      return;
+      localObject = new RoamSetting();
+      ((RoamSetting)localObject).path = "setting_revision";
+      ((RoamSetting)localObject).value = Integer.toString(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting = ((RoamSetting)localObject);
+    }
+  }
+  
+  public void a(RoamSetting paramRoamSetting)
+  {
+    if ((paramRoamSetting == null) || (paramRoamSetting.path == null) || (paramRoamSetting.value == null)) {
+      return;
+    }
+    int j = bhhi.a(paramRoamSetting.path);
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    if (j == 1) {}
+    for (;;)
+    {
+      try
+      {
+        if (a(paramRoamSetting.value))
+        {
+          this.b.put(paramRoamSetting.path, paramRoamSetting);
+          i = 1;
+          this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+          if ((j == 1) && (i == 0)) {
+            break;
+          }
+          if (Looper.myLooper() == Looper.getMainLooper()) {
+            break label182;
+          }
+          a(paramRoamSetting);
+          return;
+        }
+        if (!QLog.isColorLevel()) {
+          break label199;
+        }
+        QLog.e("RoamSettingManager", 2, "isTroopRoamSettingLegal false. path:" + paramRoamSetting.path + ", value:" + paramRoamSetting.value);
+        i = 0;
+        continue;
+        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(paramRoamSetting.path, paramRoamSetting);
+        i = 1;
+        continue;
+        ThreadManagerV2.excute(new RoamSettingManager.2(this, paramRoamSetting), 32, null, false);
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+      label182:
+      return;
+      label199:
+      int i = 0;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    RoamSetting localRoamSetting = a(paramString);
+    if ((localRoamSetting == null) || (localRoamSetting.path == null) || (localRoamSetting.value == null)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
+    {
+      if (bhhi.a(paramString) == 1) {
+        this.b.remove(localRoamSetting.path);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
+          break;
+        }
+        ThreadManager.post(new RoamSettingManager.3(this, localRoamSetting), 5, null, false);
+        return;
+        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.remove(localRoamSetting.path);
+      }
+      b(localRoamSetting);
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  public void a(List<RoamSetting> paramList)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    try
+    {
+      EntityTransaction localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
+      localObject1 = localEntityTransaction;
+      localObject2 = localEntityTransaction;
+      localEntityTransaction.begin();
+      if (paramList != null)
+      {
+        int i = 0;
+        for (;;)
+        {
+          localObject1 = localEntityTransaction;
+          localObject2 = localEntityTransaction;
+          if (i >= paramList.size()) {
+            break;
+          }
+          localObject1 = localEntityTransaction;
+          localObject2 = localEntityTransaction;
+          a((Entity)paramList.get(i));
+          i += 1;
+        }
+      }
+      localObject1 = localEntityTransaction;
+      localObject2 = localEntityTransaction;
+      localEntityTransaction.commit();
+      return;
+    }
+    catch (Exception paramList)
+    {
+      localObject2 = localObject1;
+      paramList.printStackTrace();
+      localObject2 = localObject1;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = localObject1;
+        QLog.w("RoamSettingManager", 2, "insert write exception: " + paramList.getMessage());
+      }
+      return;
+    }
+    finally
+    {
+      if (localObject2 != null) {
+        localObject2.end();
+      }
+    }
+  }
+  
+  public boolean a(Entity paramEntity)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())
+    {
+      if (paramEntity.getStatus() != 1000) {
+        break label48;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+      bool1 = bool2;
+      if (paramEntity.getStatus() == 1001) {
+        bool1 = true;
+      }
+    }
+    label48:
+    do
+    {
+      return bool1;
+      if (paramEntity.getStatus() == 1001) {
+        break;
+      }
+      bool1 = bool2;
+    } while (paramEntity.getStatus() != 1002);
+    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+  }
+  
+  public boolean b(Entity paramEntity)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen()) {
+      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramEntity);
+    }
+    return false;
+  }
+  
+  public void onDestroy()
+  {
+    if (this.b != null) {
+      this.b.clear();
+    }
+    if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap != null) {
+      this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.clear();
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    }
   }
 }
 

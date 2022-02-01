@@ -1,38 +1,65 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-final class ofg
-  implements WXShareHelper.WXShareListener
+class ofg
+  implements INetInfoHandler
 {
-  ofg(String paramString, uhe paramuhe) {}
+  ofd a;
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public ofg(ofd paramofd1, ofd paramofd2)
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
-      return;
+    this.a = paramofd2;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onNetMobile2None()
+  {
+    ofd.c("onNetMobile2None");
+    if (this.a != null) {
+      ofd.b(this.a);
     }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      yyi.b(1, 2131718380);
-      bool = false;
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    ofd.c("onNetMobile2Wifi");
+    if (this.a != null) {
+      ofd.b(this.a);
     }
-    for (;;)
-    {
-      WXShareHelper.getInstance().removeObserver(this);
-      if (this.jdField_a_of_type_Uhe == null) {
-        break;
-      }
-      this.jdField_a_of_type_Uhe.a(bool);
-      return;
-      yyi.b(2, 2131718398);
-      continue;
-      bool = false;
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    ofd.c("onNetNone2Mobile");
+    if (this.a != null) {
+      ofd.b(this.a);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    ofd.c("onNetNone2Wifi");
+    if (this.a != null) {
+      ofd.b(this.a);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    ofd.c("onNetWifi2Mobile");
+    if (this.a != null) {
+      ofd.b(this.a);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    ofd.c("onNetWifi2None");
+    if (this.a != null) {
+      ofd.b(this.a);
     }
   }
 }

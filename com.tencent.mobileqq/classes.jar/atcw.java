@@ -1,23 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewStub;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
 public class atcw
-  implements CompoundButton.OnCheckedChangeListener
+  extends AnimatorListenerAdapter
 {
-  public atcw(QFileDebugSettingFragment paramQFileDebugSettingFragment, QQAppInterface paramQQAppInterface) {}
+  public atcw(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a().a(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    super.onAnimationEnd(paramAnimator);
+    FileAssistantActivity.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcw
  * JD-Core Version:    0.7.0.1
  */

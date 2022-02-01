@@ -1,58 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayjs
+class ayjs
+  implements View.OnClickListener
 {
-  private static HashMap<Long, ayjt> a = new HashMap();
+  ayjs(ayjr paramayjr) {}
   
-  public static void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("business_type", String.valueOf(paramInt1));
-    localHashMap.put("prediction_step", String.valueOf(paramInt2));
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actPredictionData", true, 0L, 0L, localHashMap, "");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
-  {
-    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
-    long l;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPredictionEvaluator", 2, "msgViewedInAIO, size=" + a.size());
-      }
-      l = System.currentTimeMillis();
-    } while ((a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq))) || (a.size() >= 24));
-    paramQQAppInterface = new ayjt(paramQQAppInterface, paramMessageForShortVideo, l, 0L);
-    a.put(Long.valueOf(paramMessageForShortVideo.uniseq), paramQQAppInterface);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
-  {
-    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
-    long l;
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPredictionEvaluator", 2, "msgClicked, size=" + a.size());
-        }
-        l = System.currentTimeMillis();
-      } while (!a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq)));
-      paramQQAppInterface = (ayjt)a.remove(Long.valueOf(paramMessageForShortVideo.uniseq));
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(l);
-    paramQQAppInterface.a();
+    Intent localIntent = new Intent(ayjr.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://nearby.qq.com/nearby-topic/topicTags.html");
+    ayjr.a(this.a).startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,37 +1,6 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.HorizontalScrollView;
-
-class vec
-  extends AnimatorListenerAdapter
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface vec
 {
-  private vec(vea paramvea) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    vea.a(this.a).scrollTo(0, 0);
-    uya.a("WSMarqueeDirector", "onAnimationEnd: ");
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    vea.a(this.a).scrollTo(0, 0);
-    uya.a("WSMarqueeDirector", "onAnimationStart: ");
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if ((i < 0) || (i > vea.a(this.a))) {
-      return;
-    }
-    vea.a(this.a).scrollTo(i, 0);
-  }
+  public abstract vdr a(vdt paramvdt);
 }
 
 

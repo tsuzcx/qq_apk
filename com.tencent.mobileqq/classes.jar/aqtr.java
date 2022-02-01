@@ -1,16 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqtr
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public aqtr(DataReportViewer paramDataReportViewer) {}
+  public aqtr(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

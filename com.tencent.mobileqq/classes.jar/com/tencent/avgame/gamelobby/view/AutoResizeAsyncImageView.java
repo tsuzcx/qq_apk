@@ -2,11 +2,15 @@ package com.tencent.avgame.gamelobby.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.ImageView;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -56,7 +60,7 @@ public class AutoResizeAsyncImageView
     paramAttributeSet = new ColorDrawable(paramContext.getColor(0, 0));
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramContext, 6, paramAttributeSet);
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = a(paramContext, 2, paramAttributeSet);
-    a();
+    b();
     this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mUseApngImage = paramContext.getBoolean(9, false);
     paramContext.recycle();
   }
@@ -68,14 +72,6 @@ public class AutoResizeAsyncImageView
       return paramDrawable;
     }
     return paramTypedArray;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mFailedDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mDecodeFileStrategy = 3;
   }
   
   private boolean a(String paramString)
@@ -95,6 +91,30 @@ public class AutoResizeAsyncImageView
     return true;
   }
   
+  private void b()
+  {
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mFailedDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mDecodeFileStrategy = 3;
+  }
+  
+  public void a()
+  {
+    Object localObject = getDrawable();
+    if (!(localObject instanceof URLDrawable)) {}
+    do
+    {
+      return;
+      localObject = (URLDrawable)localObject;
+    } while ((localObject == null) || (!(((URLDrawable)localObject).getCurrDrawable() instanceof ApngDrawable)) || (((ApngDrawable)((URLDrawable)localObject).getCurrDrawable()).getImage() == null));
+    Bitmap localBitmap = ((ApngDrawable)((URLDrawable)localObject).getCurrDrawable()).getImage().getCurrentFrame();
+    if (localBitmap != null) {
+      localBitmap.eraseColor(0);
+    }
+    ((ApngDrawable)((URLDrawable)localObject).getCurrDrawable()).repaly();
+  }
+  
   public void a(String paramString)
   {
     a(paramString, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions);
@@ -102,7 +122,9 @@ public class AutoResizeAsyncImageView
   
   public void a(String paramString, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    if (a(paramString)) {
+    if (a(paramString))
+    {
+      a();
       return;
     }
     paramString = URLDrawable.getDrawable(paramString, paramURLDrawableOptions);
@@ -210,9 +232,34 @@ public class AutoResizeAsyncImageView
     super.onMeasure(paramInt1, paramInt2);
   }
   
+  public void setFailedDrawable(Drawable paramDrawable)
+  {
+    if (paramDrawable == null) {
+      return;
+    }
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mFailedDrawable = paramDrawable;
+  }
+  
   public void setFixedRatio(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void setLoadingDrawable(Drawable paramDrawable)
+  {
+    if (paramDrawable == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mLoadingDrawable = paramDrawable;
+  }
+  
+  public void setLoopOne()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_loop", 1);
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mExtraInfo = localBundle;
   }
   
   public void setMinHeight(int paramInt)

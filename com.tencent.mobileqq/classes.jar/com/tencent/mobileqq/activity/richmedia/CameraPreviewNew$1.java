@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import akqg;
+import aloc;
 import android.content.Context;
 import android.view.WindowManager.BadTokenException;
-import bfur;
+import bhdj;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,9 +16,9 @@ public class CameraPreviewNew$1
   {
     Object localObject = this.jdField_a_of_type_JavaLangString;
     if (this.jdField_a_of_type_Int == 2002) {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131698487);
+      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131698784);
     }
-    localObject = bfur.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131693580), new akqg(this));
+    localObject = bhdj.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131693764), new aloc(this));
     try
     {
       ((QQCustomDialog)localObject).setCancelable(false);

@@ -1,28 +1,110 @@
-import com.tencent.mobileqq.app.MessageHandler;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import com.tencent.mobileqq.pb.PBDoubleField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import tencent.im.oidb.location.RoomOperate.ReqRoomOperation;
+import tencent.im.oidb.location.RoomOperate.RspRoomOperation;
+import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
+import tencent.im.oidb.location.qq_lbs_share.RoomKey;
 
-class awjl
-  extends azvc
+public class awjl
+  extends awiv<awiz>
 {
-  awjl(awji paramawji, QQAppInterface paramQQAppInterface) {}
+  private awiz a;
   
-  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
+  awjl(QQAppInterface paramQQAppInterface, awiz paramawiz)
   {
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Awiz = paramawiz;
+  }
+  
+  private void a(int paramInt1, int paramInt2, long paramLong)
+  {
+    Object localObject = this.jdField_a_of_type_Awiz.a();
     if (QLog.isColorLevel()) {
-      QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "updateNumMsg: appid msgList.size = " + paramList.size());
+      QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoom: invoked. ", "operateType = [" + paramInt1 + "]  R_OPT_CREATE = 1; //创建房间 R_OPT_JOIN = 2; //加入 R_OPT_QUIT = 3; //退出\n", ", uinType = [" + paramInt2 + "], sessionUin = [" + paramLong + "], location = [" + localObject + "]" });
     }
-    if (("nearby_num_red_dot".equals(paramString)) && (paramList != null))
+    if (localObject == null) {
+      return;
+    }
+    RoomOperate.ReqRoomOperation localReqRoomOperation = new RoomOperate.ReqRoomOperation();
+    qq_lbs_share.RoomKey localRoomKey = awnj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt2, paramLong);
+    localReqRoomOperation.room_key.set(localRoomKey);
+    localReqRoomOperation.room_key.setHasFlag(true);
+    localReqRoomOperation.room_operation.set(paramInt1);
+    localReqRoomOperation.lat.set(((LatLng)localObject).latitude);
+    localReqRoomOperation.lon.set(((LatLng)localObject).longitude);
+    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "QQLBSShareSvc.room_operation");
+    ((ToServiceMsg)localObject).extraData.putInt("OPT_ROOM_TYPE", paramInt1);
+    ((ToServiceMsg)localObject).extraData.putInt("uintype", paramInt2);
+    ((ToServiceMsg)localObject).extraData.putString("uin", String.valueOf(paramLong));
+    ((ToServiceMsg)localObject).putWupBuffer(localReqRoomOperation.toByteArray());
+    a().sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  private void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  {
+    awnj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, false);
+    awni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, false);
+    a().notifyUI(1, false, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1), paramString });
+  }
+  
+  protected awiz a()
+  {
+    return awiz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    try
     {
-      this.jdField_a_of_type_Awji.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList);
-      amzu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler();
-      if ((paramString != null) && (paramString.a("businessbase_processor") != null)) {
-        paramString.a("businessbase_processor").a(105, true, null);
+      long l = Long.parseLong(paramString);
+      a(paramInt1, paramInt2, l);
+      return;
+    }
+    catch (NumberFormatException paramString)
+    {
+      QLog.e("RoomOperateHandler", 1, "requestOperateRoom: failed. ", paramString);
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i;
+    if (a(paramToServiceMsg, paramFromServiceMsg, paramObject)) {
+      try
+      {
+        i = paramToServiceMsg.extraData.getInt("OPT_ROOM_TYPE");
+        int j = paramToServiceMsg.extraData.getInt("uintype", -1);
+        paramToServiceMsg = paramToServiceMsg.extraData.getString("uin");
+        paramFromServiceMsg = (qq_lbs_share.ResultInfo)((RoomOperate.RspRoomOperation)new RoomOperate.RspRoomOperation().mergeFrom((byte[])paramObject)).msg_result.get();
+        if (awnj.a(paramFromServiceMsg))
+        {
+          a().notifyUI(1, true, new Object[] { Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), paramToServiceMsg });
+          return;
+        }
+        a(j, paramToServiceMsg, paramFromServiceMsg.uint32_result.get(), i);
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.e("RoomOperateHandler", 1, "requestOperateRoomResp: failed. ", paramToServiceMsg);
+        return;
       }
     }
+    if (paramFromServiceMsg != null)
+    {
+      i = paramFromServiceMsg.getResultCode();
+      if (QLog.isColorLevel()) {
+        QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoomResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
+      }
+    }
+    a(-2, "", -10001, -1);
   }
 }
 

@@ -1,28 +1,35 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.TranslateFragment;
 
-class ayss
-  implements bjoj
+public class ayss
+  implements biqq
 {
-  ayss(aysl paramaysl, bjnw parambjnw) {}
+  public ayss(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
   public void a()
   {
-    View localView = this.jdField_a_of_type_Bjnw.a.findViewById(1);
-    if (localView == null) {}
-    for (localView = null;; localView = localView.findViewById(2131361969))
-    {
-      if (localView != null)
-      {
-        localView = aysl.a(this.jdField_a_of_type_Aysl, localView, 5, 5, 7, 5);
-        if (localView != null) {
-          new RedTouch(aysl.e(this.jdField_a_of_type_Aysl), localView).a(53).a().a(bfrj.a());
-        }
-      }
-      this.jdField_a_of_type_Bjnw.a(null);
-      return;
-    }
+    OCRResultFragmentNew.a(this.a, 0);
+  }
+  
+  public void a(String paramString)
+  {
+    behe.a(paramString, "OCR_Participle_copy");
+  }
+  
+  public void b(String paramString)
+  {
+    ayrt.a(OCRResultFragmentNew.a(this.a), paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    behe.a(OCRResultFragmentNew.a(this.a), OCRResultFragmentNew.a(this.a).app, paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    TranslateFragment.a(OCRResultFragmentNew.a(this.a), paramString);
   }
 }
 

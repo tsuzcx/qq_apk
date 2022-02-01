@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bcyr
-  implements View.OnClickListener
+public class bcyr
 {
-  bcyr(bcyq parambcyq) {}
-  
-  public void onClick(View paramView)
-  {
-    if (bcyq.a(this.a).isShowing()) {
-      bcyq.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public long a;
+  public int b;
+  public long b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

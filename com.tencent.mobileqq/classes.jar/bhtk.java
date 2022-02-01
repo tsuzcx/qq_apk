@@ -1,25 +1,26 @@
-import android.view.View;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.Iterator;
-import java.util.List;
+import QC.CGetChiefRsp;
+import QC.UniBusiGetUserInfoRsp;
+import java.util.Comparator;
 
-public class bhtk
-  implements AdapterView.OnItemClickListener
+class bhtk
+  implements Comparator<Object>
 {
-  public bhtk(OpenCardContainer paramOpenCardContainer) {}
+  bhtk(bhtj parambhtj) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    paramAdapterView = bhtr.a(this.a.jdField_a_of_type_Bhtr).iterator();
-    while (paramAdapterView.hasNext()) {
-      ((bhtu)paramAdapterView.next()).a = false;
+    if ((paramObject1 instanceof UniBusiGetUserInfoRsp)) {}
+    do
+    {
+      return -1;
+      if ((paramObject2 instanceof UniBusiGetUserInfoRsp)) {
+        return 1;
+      }
+    } while ((paramObject1 instanceof CGetChiefRsp));
+    if ((paramObject2 instanceof CGetChiefRsp)) {
+      return 1;
     }
-    ((bhtu)bhtr.a(this.a.jdField_a_of_type_Bhtr).get(paramInt)).a = true;
-    this.a.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(false);
-    this.a.jdField_a_of_type_Bhtr.notifyDataSetChanged();
+    return 0;
   }
 }
 

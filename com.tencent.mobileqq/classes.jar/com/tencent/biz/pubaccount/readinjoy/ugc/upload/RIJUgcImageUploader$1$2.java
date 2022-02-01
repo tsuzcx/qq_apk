@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.upload;
 
 import com.tencent.qphone.base.util.QLog;
-import rrb;
-import rrn;
+import sdq;
+import sec;
 
 class RIJUgcImageUploader$1$2
   implements Runnable
@@ -11,13 +11,13 @@ class RIJUgcImageUploader$1$2
   
   public void run()
   {
-    if (rrb.a(this.a.this$0))
+    if (sdq.a(this.a.this$0))
     {
-      rrb.a(this.a.this$0, false);
-      QLog.i(rrb.a, 1, "cancel before upload");
+      sdq.a(this.a.this$0, false);
+      QLog.i(sdq.a, 1, "cancel before upload");
       return;
     }
-    rrb.a(this.a.this$0).a(rrb.a(this.a.this$0), true);
+    sdq.a(this.a.this$0).a(sdq.a(this.a.this$0), true);
   }
 }
 

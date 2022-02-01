@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
 import android.content.Intent;
-import bgqg;
-import bgve;
+import biaq;
+import bifw;
 import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -69,7 +69,7 @@ public class RegLiangHaoJsPlugin
     }
     paramString1 = paramJsBridgeListener.optString("uin", "");
     paramJsBridgeListener = paramJsBridgeListener.optString("highlight", "");
-    LiangHaoBuyFragment.a(this.mActivity, this.mActivity.getIntent(), new bgqg(paramString1, paramJsBridgeListener));
+    LiangHaoBuyFragment.a(this.mActivity, this.mActivity.getIntent(), new biaq(paramString1, paramJsBridgeListener));
     return true;
   }
   

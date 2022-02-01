@@ -1,17 +1,4 @@
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-
-public class apre
-  implements bjuu
-{
-  public apre(IphonePickerView paramIphonePickerView) {}
-  
-  public void a(View paramView, int paramInt)
-  {
-    IphonePickerView.a(this.a, paramView, 1);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apre

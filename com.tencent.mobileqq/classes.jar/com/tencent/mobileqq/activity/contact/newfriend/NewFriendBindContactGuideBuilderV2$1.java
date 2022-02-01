@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aief;
+import aize;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class NewFriendBindContactGuideBuilderV2$1
   implements Runnable
 {
-  public NewFriendBindContactGuideBuilderV2$1(aief paramaief) {}
+  public NewFriendBindContactGuideBuilderV2$1(aize paramaize) {}
   
   public void run()
   {
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.this$0.a.getManager(11);
+    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.this$0.a.getManager(QQManagerFactory.CONTACT_MANAGER);
     localPhoneContactManagerImp.j();
     localPhoneContactManagerImp.e = true;
   }

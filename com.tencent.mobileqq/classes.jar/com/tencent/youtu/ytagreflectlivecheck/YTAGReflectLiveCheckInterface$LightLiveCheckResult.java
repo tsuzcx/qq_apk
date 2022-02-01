@@ -1,6 +1,6 @@
 package com.tencent.youtu.ytagreflectlivecheck;
 
-import com.tencent.youtu.ytagreflectlivecheck.requester.LightDiffResponse;
+import com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.FullPack;
 
 public abstract interface YTAGReflectLiveCheckInterface$LightLiveCheckResult
 {
@@ -16,7 +16,7 @@ public abstract interface YTAGReflectLiveCheckInterface$LightLiveCheckResult
   
   public abstract void onFailed(int paramInt, String paramString1, String paramString2);
   
-  public abstract void onSuccess(boolean paramBoolean, LightDiffResponse paramLightDiffResponse, String paramString);
+  public abstract void onSuccess(FullPack paramFullPack);
 }
 
 

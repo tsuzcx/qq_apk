@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bfur;
+import bhdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -56,42 +56,36 @@ public class GameCloseManager
   {
     int i = GameWnsUtils.getRetainConfirmInterval();
     long l = 0L;
-    if ((paramActivity instanceof GameActivity)) {
-      l = ((GameActivity)paramActivity).getStartTime();
+    if ((paramActivity instanceof GameActivity1)) {
+      l = ((GameActivity1)paramActivity).getStartTime();
     }
-    for (;;)
+    l = (System.currentTimeMillis() - l) / 1000L;
+    if (l > i)
     {
-      l = (System.currentTimeMillis() - l) / 1000L;
-      if (l <= i) {
-        break;
-      }
       QLog.i("GameCloseManager", 1, "showRetainGuideDialog: not show, duration=" + l + " timeInterval=" + i);
       return true;
-      if ((paramActivity instanceof GameActivity1)) {
-        l = ((GameActivity1)paramActivity).getStartTime();
-      }
     }
     return false;
   }
   
   private static void doShowRetainDialog(Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString1, ArrayList<MiniAppInfo> paramArrayList, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    QQCustomDialogForMiniGame localQQCustomDialogForMiniGame = new QQCustomDialogForMiniGame(paramActivity, 2131755826);
-    localQQCustomDialogForMiniGame.setContentView(2131559016);
+    QQCustomDialogForMiniGame localQQCustomDialogForMiniGame = new QQCustomDialogForMiniGame(paramActivity, 2131755829);
+    localQQCustomDialogForMiniGame.setContentView(2131559043);
     localQQCustomDialogForMiniGame.setBodyLayoutNoMargin();
-    View localView = LayoutInflater.from(paramActivity).inflate(2131559429, null, false);
-    ((URLImageView)localView.findViewById(2131378737)).setBackgroundURL(GameWnsUtils.getGameRetainConfirmImageUrl());
-    Object localObject = localView.findViewById(2131376939);
+    View localView = LayoutInflater.from(paramActivity).inflate(2131559462, null, false);
+    ((URLImageView)localView.findViewById(2131379030)).setBackgroundURL(GameWnsUtils.getGameRetainConfirmImageUrl());
+    Object localObject = localView.findViewById(2131377211);
     if (!TextUtils.isEmpty(paramString2))
     {
       ((View)localObject).setVisibility(0);
-      ((URLImageView)localView.findViewById(2131376938)).setBackgroundURL(paramString2);
+      ((URLImageView)localView.findViewById(2131377210)).setBackgroundURL(paramString2);
     }
     for (;;)
     {
       paramString2 = new LinearLayout.LayoutParams(ViewUtils.dpToPx(296.0F), -2);
       paramString2.gravity = 17;
-      localObject = (LinearLayout)localView.findViewById(2131376110);
+      localObject = (LinearLayout)localView.findViewById(2131376357);
       int i = 0;
       while (i < 3)
       {
@@ -104,7 +98,7 @@ public class GameCloseManager
       ((View)localObject).setVisibility(8);
     }
     localQQCustomDialogForMiniGame.setCancelable(false);
-    localQQCustomDialogForMiniGame.setTitle(null).setMessage(null).addView(localView, paramString2).setNegativeButton(2131693822, new GameCloseManager.3(paramMiniAppInfo, paramOnClickListener, paramActivity)).setPositiveButton(2131693823, new GameCloseManager.2(paramMiniAppInfo, paramString1, paramOnClickListener, paramActivity));
+    localQQCustomDialogForMiniGame.setTitle(null).setMessage(null).addView(localView, paramString2).setNegativeButton(2131694013, new GameCloseManager.3(paramMiniAppInfo, paramOnClickListener, paramActivity)).setPositiveButton(2131694014, new GameCloseManager.2(paramMiniAppInfo, paramString1, paramOnClickListener, paramActivity));
     localQQCustomDialogForMiniGame.getBtnight().setTypeface(Typeface.DEFAULT, 1);
     localQQCustomDialogForMiniGame.getBtnLeft().setTypeface(Typeface.DEFAULT, 1);
     localQQCustomDialogForMiniGame.show();
@@ -262,7 +256,7 @@ public class GameCloseManager
     while (!shouldShowAlertViewForBattleGame(paramMiniAppConfig)) {
       return false;
     }
-    paramGameActivity = bfur.a(paramGameActivity, 230).setTitle(paramGameActivity.getString(2131718947)).setMessage(paramGameActivity.getString(2131693785)).setNegativeButton(paramGameActivity.getString(2131690620), new GameCloseManager.5()).setPositiveButton(paramGameActivity.getString(2131693784), new GameCloseManager.4(paramOnClickListener));
+    paramGameActivity = bhdj.a(paramGameActivity, 230).setTitle(paramGameActivity.getString(2131719342)).setMessage(paramGameActivity.getString(2131693969)).setNegativeButton(paramGameActivity.getString(2131690697), new GameCloseManager.5()).setPositiveButton(paramGameActivity.getString(2131693968), new GameCloseManager.4(paramOnClickListener));
     paramGameActivity.setCancelable(false);
     paramGameActivity.show();
     return true;

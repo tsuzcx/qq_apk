@@ -1,30 +1,16 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileWZRYView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
 public class ayyn
-  extends ayyb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ayyn(aysx paramaysx, aymg paramaymg)
-  {
-    super(paramaysx, paramaymg);
-  }
+  public ayyn(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public String a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return "VasProfileHeaderWZRYComponent";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
-    {
-      VasProfileWZRYView localVasProfileWZRYView = new VasProfileWZRYView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (aymg)this.b);
-      localVasProfileWZRYView.setClickListener(this);
-      localVasProfileWZRYView.a();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileWZRYView;
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
-    }
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

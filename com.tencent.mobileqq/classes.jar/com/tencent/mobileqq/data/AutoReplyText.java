@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
-import aqqe;
+import artp;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -15,7 +15,7 @@ public class AutoReplyText
   extends Entity
   implements Parcelable, Comparable<AutoReplyText>
 {
-  public static final Parcelable.Creator<AutoReplyText> CREATOR = new aqqe();
+  public static final Parcelable.Creator<AutoReplyText> CREATOR = new artp();
   public static final int TEXT_NONE = 2147483647;
   public int mCheckFlag;
   @notColumn
@@ -172,7 +172,7 @@ public class AutoReplyText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.AutoReplyText
  * JD-Core Version:    0.7.0.1
  */

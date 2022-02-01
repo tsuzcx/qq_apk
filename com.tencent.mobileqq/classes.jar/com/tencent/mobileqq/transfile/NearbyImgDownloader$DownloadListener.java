@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import ardx;
-import bfvl;
+import asid;
+import bhed;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 
 public class NearbyImgDownloader$DownloadListener
-  implements bfvl
+  implements bhed
 {
   private DownloadParams mDownloadConfig;
   private DiskCache.Editor mEditor;
@@ -30,10 +30,10 @@ public class NearbyImgDownloader$DownloadListener
     this.mDownloadConfig = paramDownloadParams;
   }
   
-  public boolean onRespDownloadInfo(ardx paramardx)
+  public boolean onRespDownloadInfo(asid paramasid)
   {
     Object localObject2 = null;
-    if (paramardx.jdField_b_of_type_Int == 0) {
+    if (paramasid.jdField_b_of_type_Int == 0) {
       if ((this.mDownloadConfig == null) || (!(this.mDownloadConfig.mExtraInfo instanceof PicInfo))) {
         break label257;
       }
@@ -41,20 +41,20 @@ public class NearbyImgDownloader$DownloadListener
     label257:
     for (Object localObject1 = (PicInfo)this.mDownloadConfig.mExtraInfo;; localObject1 = null)
     {
-      if ((localObject1 != null) && ("type_history_head_pic".equals(((PicInfo)localObject1).g)) && (((!TextUtils.isEmpty(paramardx.k)) && (!paramardx.k.trim().equals("0"))) || ((!TextUtils.isEmpty(paramardx.j)) && (!paramardx.j.trim().equals("0")))))
+      if ((localObject1 != null) && ("type_history_head_pic".equals(((PicInfo)localObject1).g)) && (((!TextUtils.isEmpty(paramasid.k)) && (!paramasid.k.trim().equals("0"))) || ((!TextUtils.isEmpty(paramasid.j)) && (!paramasid.j.trim().equals("0")))))
       {
         if (QLog.isColorLevel()) {
-          QLog.i("NearbyImgDownloader", 2, "historhead download fail, url : " + paramardx.jdField_b_of_type_JavaLangString + " respXFailNo: " + paramardx.j + " respXErrNo: " + paramardx.k);
+          QLog.i("NearbyImgDownloader", 2, "historhead download fail, url : " + paramasid.jdField_b_of_type_JavaLangString + " respXFailNo: " + paramasid.j + " respXErrNo: " + paramasid.k);
         }
-        paramardx.jdField_b_of_type_Int = 32;
+        paramasid.jdField_b_of_type_Int = 32;
         return false;
       }
-      if (paramardx.a != null) {
+      if (paramasid.a != null) {
         try
         {
-          localObject1 = paramardx.a.getInputStream();
+          localObject1 = paramasid.a.getInputStream();
           if (localObject1 != null) {
-            return NearbyImgDownloader.access$000(this.this$0, (InputStream)localObject1, paramardx.e, this.mEditor, this.mHandelr);
+            return NearbyImgDownloader.access$000(this.this$0, (InputStream)localObject1, paramasid.e, this.mEditor, this.mHandelr);
           }
         }
         catch (IOException localIOException)
@@ -68,11 +68,11 @@ public class NearbyImgDownloader$DownloadListener
               localObject1 = localObject2;
             }
           }
-          paramardx.jdField_b_of_type_Int = 11;
+          paramasid.jdField_b_of_type_Int = 11;
           return false;
         }
       }
-      paramardx.jdField_b_of_type_Int = 11;
+      paramasid.jdField_b_of_type_Int = 11;
       return false;
       return false;
     }

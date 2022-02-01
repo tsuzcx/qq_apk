@@ -1,29 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class afsp
-  implements bhbg
+public class afsp
+  extends afrl
 {
-  afsp(afsn paramafsn) {}
-  
-  public void a()
+  public afsp(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    if ((afsn.a(this.a) != null) && (afsn.a(this.a).a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel.reportAppShortcutBarItem()");
-      }
-      afsn.a(this.a).d();
-    }
-    for (;;)
-    {
-      if ((afsn.a(this.a) != null) && (afsn.a(this.a).a())) {
-        afsn.a(this.a).d();
-      }
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortcutBarAIOHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel is null");
-      }
-    }
+    super(paramQQAppInterface, paramSessionInfo, paramContext, paramOnClickListener);
+  }
+  
+  protected void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, afqr paramafqr) {}
+  
+  public void b(View paramView)
+  {
+    super.b(paramView);
   }
 }
 

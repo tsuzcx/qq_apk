@@ -1,54 +1,29 @@
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
+
 public class aydm
-  extends aydl
+  implements aqej
 {
-  public aydl a()
+  public aydm(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    return this;
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   progress:" + paramInt);
+    }
   }
   
-  public void a(int paramInt)
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_c_of_type_Long = paramLong;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_f_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
+    }
+    if ((this.a.isDetached()) || (this.a.getActivity() == null)) {
+      return;
+    }
+    this.a.getActivity().runOnUiThread(new NearbyAuthVideoPlayerFragment.2.1(this, paramBoolean1));
   }
 }
 

@@ -1,90 +1,23 @@
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-final class uns
-  extends unp
+class uns
+  extends Handler
 {
-  public void installSucceed(String paramString1, String paramString2)
+  uns(unr paramunr, Looper paramLooper)
   {
-    super.installSucceed(paramString1, paramString2);
-    if (!unq.b()) {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
       return;
     }
-    unq.a(paramString1, paramString2, true);
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    uya.c("WeishiDownloadUtil", "qzone onDownloadCancel info = " + paramDownloadInfo);
-    if (unq.a(paramDownloadInfo))
-    {
-      unq.a();
-      int i = unq.b();
-      WSPublicAccReport.getInstance().reportDownload(unq.a(), i, 3, 2, 0);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    uya.d("WeishiDownloadUtil", "qzone onDownloadError info = " + paramDownloadInfo);
-    if (unq.a(paramDownloadInfo))
-    {
-      unq.a();
-      paramInt2 = unq.b();
-      WSPublicAccReport.getInstance().reportDownload(unq.a(), paramInt2, 3, 2, 0);
-      uya.d("WeishiDownloadUtil", "qzone  errorCode:" + paramInt1 + ", errorMsg: " + paramString);
-      unq.a(paramDownloadInfo, paramInt1);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    unq.a();
-    uya.a("WeishiDownloadUtil", "qzone onDownloadFinish~~~");
-    int i = unq.a();
-    int j = unq.b();
-    if (j != 3)
-    {
-      uya.c("WeishiDownloadUtil", "onDownloadFinish return!qzone只有主动下载");
-      return;
-    }
-    if (!unq.b())
-    {
-      uya.d("WeishiDownloadUtil", "这是Qzone的监听器，不响应qq onDownloadFinish eventId:" + i + ",eventType:" + j);
-      return;
-    }
-    unq.a(paramDownloadInfo, i, j, "Qzone");
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    super.onDownloadPause(paramDownloadInfo);
-    uya.d("WeishiDownloadUtil", "qzone onDownloadPause info = " + paramDownloadInfo);
-    if (unq.a(paramDownloadInfo)) {
-      unq.a();
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    super.onDownloadUpdate(paramList);
-    if (!unq.b()) {}
-    while ((paramList == null) || (paramList.size() <= 0)) {
-      return;
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    super.onDownloadWait(paramDownloadInfo);
-    uya.d("WeishiDownloadUtil", "qzone onDownloadWait info = " + paramDownloadInfo);
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    super.packageReplaced(paramString1, paramString2);
-    uya.d("WeishiDownloadUtil", "qzone packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
+    unr.a(this.a);
   }
 }
 

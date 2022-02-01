@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.AppConstants;
 
-class asdj
-  implements DialogInterface.OnClickListener
+public class asdj
 {
-  asdj(asdg paramasdg) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public static final String a = AppConstants.SDCARD_ROOT + "/Tencent/QQ_Images/";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdj
  * JD-Core Version:    0.7.0.1
  */

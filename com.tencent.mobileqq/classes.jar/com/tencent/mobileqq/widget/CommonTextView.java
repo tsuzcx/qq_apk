@@ -6,16 +6,16 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
-import bhcf;
-import bhfj;
-import bhfk;
+import bimx;
+import biqb;
+import biqc;
 
 public class CommonTextView
   extends TextView
-  implements bhfk
+  implements biqc
 {
-  private bhcf jdField_a_of_type_Bhcf;
-  private bhfj jdField_a_of_type_Bhfj;
+  private bimx jdField_a_of_type_Bimx;
+  private biqb jdField_a_of_type_Biqb;
   
   public CommonTextView(Context paramContext)
   {
@@ -44,9 +44,9 @@ public class CommonTextView
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bhfj != null)
+    if (this.jdField_a_of_type_Biqb != null)
     {
-      this.jdField_a_of_type_Bhfj.a(paramCanvas);
+      this.jdField_a_of_type_Biqb.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -54,9 +54,9 @@ public class CommonTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bhfj != null)
+    if (this.jdField_a_of_type_Biqb != null)
     {
-      this.jdField_a_of_type_Bhfj.b(paramCanvas);
+      this.jdField_a_of_type_Biqb.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
@@ -65,27 +65,27 @@ public class CommonTextView
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
-    if (this.jdField_a_of_type_Bhcf != null) {
-      this.jdField_a_of_type_Bhcf.a(paramView, paramInt);
+    if (this.jdField_a_of_type_Bimx != null) {
+      this.jdField_a_of_type_Bimx.a(paramView, paramInt);
     }
   }
   
-  public void setMosaicEffect(bhfj parambhfj)
+  public void setMosaicEffect(biqb parambiqb)
   {
-    bhfj localbhfj = this.jdField_a_of_type_Bhfj;
-    if (localbhfj != null) {
-      localbhfj.a(null);
+    biqb localbiqb = this.jdField_a_of_type_Biqb;
+    if (localbiqb != null) {
+      localbiqb.a(null);
     }
-    this.jdField_a_of_type_Bhfj = parambhfj;
-    if (parambhfj != null) {
-      parambhfj.a(this);
+    this.jdField_a_of_type_Biqb = parambiqb;
+    if (parambiqb != null) {
+      parambiqb.a(this);
     }
     invalidate();
   }
   
-  public void setOnVisibilityChangedListener(bhcf parambhcf)
+  public void setOnVisibilityChangedListener(bimx parambimx)
   {
-    this.jdField_a_of_type_Bhcf = parambhcf;
+    this.jdField_a_of_type_Bimx = parambimx;
   }
 }
 

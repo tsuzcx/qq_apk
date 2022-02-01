@@ -1,6 +1,12 @@
+import android.os.Bundle;
+import android.os.IInterface;
+
 public abstract interface bmim
+  extends IInterface
 {
-  public abstract void a(int paramInt);
+  public abstract Bundle a(String paramString, Bundle paramBundle);
+  
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 

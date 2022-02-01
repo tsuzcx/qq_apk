@@ -1,67 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-public class pde
-  implements AladdinConfigHandler
+class pde
+  extends Editable.Factory
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    Map localMap = pbt.a(paramString);
-    Object localObject2 = localMap.keySet();
-    Object localObject1 = "";
-    paramString = "";
-    Iterator localIterator = ((Set)localObject2).iterator();
-    String str;
-    if (localIterator.hasNext())
-    {
-      str = (String)localIterator.next();
-      localObject2 = (String)localMap.get(str);
-      QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
-      if (TextUtils.equals(str, "reset_kandian_configuration"))
-      {
-        localObject1 = paramString;
-        paramString = (String)localObject2;
-      }
-    }
-    for (;;)
-    {
-      localObject2 = paramString;
-      paramString = (String)localObject1;
-      localObject1 = localObject2;
-      break;
-      if (TextUtils.equals(str, "reset_version"))
-      {
-        paramString = (String)localObject1;
-        localObject1 = localObject2;
-        continue;
-        if ((TextUtils.equals("1", (CharSequence)localObject1)) && (!TextUtils.isEmpty(paramString))) {}
-        try
-        {
-          paramInt1 = Integer.valueOf(paramString).intValue();
-          bfyz.r(BaseApplicationImpl.getApplication(), paramInt1, pay.a());
-          return true;
-        }
-        catch (NumberFormatException paramString)
-        {
-          QLog.e("ResetAllConfigHandler", 1, "[onReceiveConfig] e = " + paramString);
-          return true;
-        }
-      }
-      localObject2 = paramString;
-      paramString = (String)localObject1;
-      localObject1 = localObject2;
-    }
-  }
+  pde(pdd parampdd) {}
   
-  public void onWipeConfig(int paramInt)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    QLog.d("ResetAllConfigHandler", 2, "[onWipeConfig] id=" + paramInt);
+    if ((paramCharSequence instanceof owe)) {
+      return (Editable)paramCharSequence;
+    }
+    return new owe(paramCharSequence, 3, 20);
   }
 }
 

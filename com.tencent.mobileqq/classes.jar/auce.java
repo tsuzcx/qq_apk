@@ -1,13 +1,23 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.AutoBgImageView;
+import android.os.Bundle;
 
-public class auce
-  extends aexg
+class auce
+  implements aucf
 {
-  public AutoBgImageView a;
-  public TextView b;
+  auce(aucd paramaucd) {}
   
-  public auce(auca paramauca) {}
+  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramInt3);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean);
+    }
+  }
 }
 
 

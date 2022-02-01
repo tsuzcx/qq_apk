@@ -1,58 +1,110 @@
-import com.tencent.mobileqq.utils.StringUtil;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arag
+  extends aqwt<arah>
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  int b;
-  int c = 0;
+  public static boolean a;
+  private static boolean b;
   
-  public arag(int paramInt)
+  public static boolean a()
   {
-    this(paramInt, null);
+    if (b) {
+      return a;
+    }
+    b = true;
+    a = b();
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean isSwitchOpened = " + a);
+    }
+    return a;
   }
   
-  public arag(int paramInt, String paramString)
+  private static boolean b()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    arah localarah2 = (arah)aqxe.a().a(531);
+    arah localarah1 = localarah2;
+    if (localarah2 == null)
+    {
+      localarah2 = new arah();
+      localarah1 = localarah2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean = null, general new bean, so switch default");
+        localarah1 = localarah2;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean switch isOpened = " + localarah1);
+    }
+    return localarah1.a();
   }
   
-  public boolean a(int paramInt, String paramString)
+  @NonNull
+  public arah a(int paramInt)
   {
-    if (paramInt == this.jdField_a_of_type_Int)
+    return new arah();
+  }
+  
+  @Nullable
+  public arah a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
     {
-      paramInt = 1;
-      if (!StringUtil.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label40;
+      if (QLog.isColorLevel()) {
+        QLog.d("DarkModeConfigProcessor", 2, "onParsed : " + paramArrayOfaqxa[0].a);
       }
+      return arah.a(paramArrayOfaqxa[0].a);
     }
-    label40:
-    for (boolean bool = StringUtil.isEmpty(paramString);; bool = this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))
-    {
-      if ((paramInt == 0) || (!bool)) {
-        break label52;
-      }
-      return true;
-      paramInt = 0;
-      break;
+    return new arah();
+  }
+  
+  public void a(arah paramarah)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeConfigProcessor", 2, "onUpdate : " + paramarah);
     }
-    label52:
+    if (paramarah != null) {
+      a = paramarah.a();
+    }
+  }
+  
+  public Class<arah> clazz()
+  {
+    return arah.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
     return false;
   }
   
-  public boolean a(arag paramarag)
+  public boolean isNeedCompressed()
   {
-    if (paramarag == null) {
-      return false;
-    }
-    return a(paramarag.jdField_a_of_type_Int, paramarag.jdField_a_of_type_JavaLangString);
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 531;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arag
  * JD-Core Version:    0.7.0.1
  */

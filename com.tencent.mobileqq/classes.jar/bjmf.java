@@ -1,143 +1,105 @@
-import android.app.Notification;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.badge.CommonBadgeUtilImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BadgeUtils.1;
-import com.tencent.util.BadgeUtils.2;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class bjmf
 {
-  public static int a;
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private static Runnable jdField_a_of_type_JavaLangRunnable = new BadgeUtils.2();
-  public static boolean a;
-  public static boolean b;
-  public static boolean c;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_Int = -1;
-  }
-  
   public static int a()
   {
-    String str = "";
-    int i;
-    if (jdField_a_of_type_Int != -1) {
-      i = jdField_a_of_type_Int;
+    int j = bjlt.a(bizw.a().a(), null).a("Common_BusinessReportMaxcount");
+    int i = j;
+    if (j == 0) {
+      i = 20;
     }
-    for (;;)
+    return i;
+  }
+  
+  public static int a(int paramInt)
+  {
+    int i;
+    if (paramInt == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BadgeUtils", 2, "getLimitCount Limitcount" + i);
-      }
-      return i;
-      try
-      {
-        Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1|1|999");
-        if (QLog.isColorLevel()) {
-          QLog.d("BadgeUtils", 2, "LimitConfig:" + (String)localObject);
-        }
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length > 3) {
-          str = localObject[3];
-        }
-        jdField_a_of_type_Int = Integer.valueOf(str).intValue();
-        i = jdField_a_of_type_Int;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BadgeUtils", 2, "getLimitCount e:" + localException.toString());
-        }
-        jdField_a_of_type_Int = 999;
-        i = jdField_a_of_type_Int;
+      i = bjlt.a(bizw.a().a(), null).a("Common_ViaSuccessRatioFrequencySuccess");
+      paramInt = i;
+      if (i == 0) {
+        paramInt = 20;
       }
     }
-  }
-  
-  public static void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BadgeUtils", 2, "enableBadge mobileqq");
-    }
-    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    BadgeUtilImpl.enableBadge(BaseApplicationImpl.sApplication);
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    if ((!jdField_a_of_type_Boolean) && (paramInt > 0)) {}
-    int i;
     do
     {
-      do
-      {
-        return;
-      } while (!a(paramContext));
-      i = a();
-      QLog.d("BadgeUtils_UnreadMonitor", 1, "setBadge limit: " + i + ", count: " + paramInt);
-      if (Looper.myLooper() == Looper.getMainLooper()) {
-        break;
-      }
-      BadgeUtilImpl.setLimitCount(i);
-      try
-      {
-        BadgeUtilImpl.setBadge(paramContext, paramInt);
-        return;
-      }
-      catch (Exception paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("BadgeUtilImpl", 2, "badge not support");
-    return;
-    ThreadManager.executeOnSubThread(new BadgeUtils.1(i, paramContext, paramInt));
+      return paramInt;
+      i = bjlt.a(bizw.a().a(), null).a("Common_ViaSuccessRatioFrequencyFail");
+      paramInt = i;
+    } while (i != 0);
+    return 50;
   }
   
-  public static void a(Context paramContext, int paramInt, Notification paramNotification)
+  public static int a(String paramString)
   {
-    if (!c) {
-      if (!b)
-      {
-        c = CommonBadgeUtilImpl.isMIUI6();
-        b = true;
-        if (c) {}
-      }
-      else
-      {
-        return;
-      }
+    int j = bjlt.a(bizw.a().a(), paramString).a("Common_BusinessReportFrequency");
+    int i = j;
+    if (j == 0) {
+      i = 100;
     }
-    QLog.d("BadgeUtils_UnreadMonitor", 1, "setMIUI6Badge count: " + paramInt);
-    BadgeUtilImpl.setLimitCount(a());
-    BadgeUtilImpl.setMIUI6Badge(paramContext, paramInt, paramNotification);
+    return i;
   }
   
-  public static boolean a(Context paramContext)
+  public static long a()
   {
-    return BadgeUtilImpl.isSupportBadge(paramContext);
+    return bizw.a().a().getSharedPreferences("reportConfig", 0).getLong("lastTime", 0L);
   }
   
-  public static void b()
+  protected static SharedPreferences a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BadgeUtils", 2, "disableBadge mobileqq");
+    return bizw.a().a().getSharedPreferences("reportConfig", 0);
+  }
+  
+  public static String a()
+  {
+    if (bizw.a().a() == null) {
+      return "";
     }
-    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    BadgeUtilImpl.disableBadge(BaseApplicationImpl.sApplication);
-    jdField_a_of_type_AndroidOsHandler.postDelayed(jdField_a_of_type_JavaLangRunnable, 2000L);
+    return a().getString("uin", "");
   }
   
-  public static void c()
+  public static void a(long paramLong)
   {
-    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if (bizw.a().a() == null) {
+      return;
+    }
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putLong("lastTime", paramLong);
+    localEditor.commit();
+  }
+  
+  public static void a(String paramString)
+  {
+    if (bizw.a().a() == null) {
+      return;
+    }
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putString("uin", paramString);
+    localEditor.commit();
+  }
+  
+  public static int b()
+  {
+    int j = bjlt.a(bizw.a().a(), null).a("Common_HttpRetryCount");
+    int i = j;
+    if (j == 0) {
+      i = 2;
+    }
+    return i;
+  }
+  
+  public static long b()
+  {
+    long l2 = bjlt.a(bizw.a().a(), null).a("Common_BusinessReportTimeinterval");
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = 3600L;
+    }
+    return l1;
   }
 }
 

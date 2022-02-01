@@ -1,18 +1,44 @@
+import android.app.Activity;
 import android.content.Context;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
-class aown
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public class aown
+  extends aouc
 {
-  aown(aowk paramaowk, String paramString, Context paramContext) {}
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public aown(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramInt == 0) && (paramAppPathInfo.path != null)) {
-      ArkAppCacheMgr.getAppIcon(this.jdField_a_of_type_JavaLangString, new aowo(this));
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
+      localUserInfo.qzone_uin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      localUserInfo.nickname = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
+      QZoneHelper.forwardToPublishQueue((Activity)this.jdField_a_of_type_AndroidContentContext, localUserInfo, -1);
+      return true;
     }
+    return false;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzonePublishQueueAction", 1, "doAction error: " + localException.getMessage());
+      a("QzonePublishQueueAction");
+    }
+    return false;
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.os.Bundle;
 import android.os.Parcelable;
-import bjgm;
+import bkrx;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QzoneVideoSoDownloadModule;
@@ -14,7 +14,7 @@ public final class VideoJsProxyImpl$1
 {
   public void run()
   {
-    Object localObject1 = QzoneVideoSoDownloadModule.getReceiverForSending(new bjgm(this));
+    Object localObject1 = QzoneVideoSoDownloadModule.getReceiverForSending(new bkrx(this));
     Object localObject2 = new Bundle();
     ((Bundle)localObject2).putParcelable("key_download_result_receiver", (Parcelable)localObject1);
     localObject1 = QIPCClientHelper.getInstance().getClient().callServer("QzoneVideoSoDownloadModule", "action_download_avcodec", (Bundle)localObject2);
@@ -34,7 +34,7 @@ public final class VideoJsProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

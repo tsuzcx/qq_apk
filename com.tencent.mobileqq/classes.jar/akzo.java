@@ -1,12 +1,10 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
-
-public class akzo
-  extends aepg
+public abstract interface akzo
 {
-  public CheckBox a;
+  public abstract void a();
   
-  private akzo(FriendListInnerFrame paramFriendListInnerFrame) {}
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 

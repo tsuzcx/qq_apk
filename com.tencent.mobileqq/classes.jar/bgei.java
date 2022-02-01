@@ -1,50 +1,59 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.vas.FriendCloneSettingFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class bgei
-  extends anam
+  extends aqwt<bgeh>
 {
-  public bgei(FriendCloneSettingFragment paramFriendCloneSettingFragment) {}
-  
-  public void d(boolean paramBoolean, Object paramObject)
+  @NonNull
+  public bgeh a(int paramInt)
   {
-    int i;
-    if ((paramBoolean) && ((paramObject instanceof ArrayList)))
-    {
-      paramObject = (ArrayList)paramObject;
-      i = ((Integer)paramObject.get(1)).intValue();
-      if (i == 257) {
-        if (((Boolean)paramObject.get(2)).booleanValue())
-        {
-          this.a.a(1);
-          this.a.jdField_a_of_type_Int = 1;
-        }
-      }
+    QLog.d("TroopMemberLevelMapCofigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
+    return new bgeh();
+  }
+  
+  @Nullable
+  public bgeh a(aqxa[] paramArrayOfaqxa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberLevelMapCofigProcessor", 2, "onParsed");
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if (this.a.jdField_a_of_type_Bhhw != null) {
-        this.a.jdField_a_of_type_Bhhw.b();
-      }
-      return;
-      this.a.a(0);
-      this.a.jdField_a_of_type_Int = 0;
-      continue;
-      if (i == 258)
-      {
-        this.a.jdField_a_of_type_Int = this.a.b;
-        continue;
-        this.a.a(this.a.jdField_a_of_type_Int);
-        if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) {
-          QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, amtj.a(2131703991), 0).a();
-        }
-        QLog.e("IphoneTitleBarFragment", 0, "onFriendCloneAuth: failed. ");
-      }
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return bgeh.a(paramArrayOfaqxa[0].a);
     }
+    return null;
+  }
+  
+  public void a(bgeh parambgeh) {}
+  
+  public Class<bgeh> clazz()
+  {
+    return bgeh.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TroopMemberLevelMapCofigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 659;
   }
 }
 

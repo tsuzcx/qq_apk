@@ -1,45 +1,42 @@
-public class bocn
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.tavcut.bean.TextEditorData;
+
+class bocn
+  implements TextWatcher
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float jdField_b_of_type_Float;
-  private long jdField_b_of_type_Long;
-  private float jdField_c_of_type_Float;
-  private long jdField_c_of_type_Long;
+  bocn(bock parambock) {}
   
-  public long a(float paramFloat)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_b_of_type_Long += (1000.0F * paramFloat);
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public long a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Long == 0L)
-    {
-      this.jdField_a_of_type_Long = (paramLong * 1000L);
-      this.jdField_b_of_type_Long = (paramLong * 1000L);
-      this.jdField_c_of_type_Long = paramLong;
+    if (paramEditable == null) {
+      return;
     }
-    return paramLong * 1000L;
+    String str = paramEditable.toString();
+    if (paramEditable.length() > 20)
+    {
+      QQToast.a(this.a.getContext(), bock.a(this.a), 0).a();
+      str = paramEditable.subSequence(0, 20).toString();
+      bock.a(this.a).setText(str);
+      bock.a(this.a).setSelection(str.length());
+    }
+    if (TextUtils.isEmpty(str.trim())) {
+      bock.a(this.a).setContent("");
+    }
+    for (;;)
+    {
+      bock.b(this.a);
+      return;
+      bock.a(this.a).setContent(str);
+    }
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Float = 0.0F;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = ((float)(1000.0D / paramFloat));
-    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + 0.3F);
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float - 0.7F);
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

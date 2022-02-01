@@ -1,45 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import java.util.Vector;
 
 public class lna
-  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
+  public long a;
+  public Vector<lnd> a;
   
-  public lna(GaInviteActivity paramGaInviteActivity, int paramInt)
+  public lna(AVNotifyCenter paramAVNotifyCenter)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilVector = null;
   }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.g(true);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
-        break;
-        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e) {
-          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l();
-        }
-      }
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
+    StringBuilder localStringBuilder = new StringBuilder().append("roomNum[").append(this.jdField_a_of_type_Long).append("], list[");
+    if (this.jdField_a_of_type_JavaUtilVector == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size())) {
+      return localObject + "]";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lna
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,36 @@
-import com.tencent.util.Pair;
-import java.util.Comparator;
+import QC.GetConciseThemeRsp;
+import QC.ItemDisDetail;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bdfl
-  implements Comparator<Pair<String, String>>
+final class bdfl
+  implements BusinessObserver
 {
-  public int a(Pair<String, String> paramPair1, Pair<String, String> paramPair2)
+  bdfl(String paramString, AppInterface paramAppInterface, boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int j = ((String)paramPair1.first).compareTo((String)paramPair2.first);
-    int i = j;
-    if (j == 0) {
-      i = ((String)paramPair1.second).compareTo((String)paramPair2.second);
+    if ((paramBoolean) && ((paramObject instanceof GetConciseThemeRsp)))
+    {
+      paramObject = (GetConciseThemeRsp)paramObject;
+      bdfk.a.clear();
+      paramInt = 0;
+      while (paramInt < paramObject.vItems.size())
+      {
+        ItemDisDetail localItemDisDetail = (ItemDisDetail)paramObject.vItems.get(paramInt);
+        bdfk.a.add(localItemDisDetail.itemId + "");
+        if (TextUtils.equals("2920", localItemDisDetail.itemId + "")) {
+          bdfk.c = paramInt;
+        }
+        paramInt += 1;
+      }
+      paramInt = bdfk.a(this.jdField_a_of_type_JavaLangString);
+      bdfk.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Boolean, 1);
+      bdfk.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt, 1);
     }
-    return i;
   }
 }
 

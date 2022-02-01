@@ -1,17 +1,17 @@
 package dov.com.tencent.mobileqq.shortvideo.mediadevice;
 
-import amtj;
 import android.content.Context;
 import android.media.AudioRecord;
 import android.os.SystemClock;
-import bbsv;
-import bbub;
-import bobx;
-import bock;
-import bocp;
-import bocr;
-import boct;
-import bodj;
+import anvx;
+import bczq;
+import bdaw;
+import bprp;
+import bpsc;
+import bpsh;
+import bpsj;
+import bpsl;
+import bptb;
 import com.tencent.maxvideo.common.AVIOStruct;
 import com.tencent.maxvideo.common.ControlFlagEnum;
 import com.tencent.maxvideo.mediadevice.AVCodec;
@@ -22,7 +22,7 @@ import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class AudioCapture
-  extends bbsv
+  extends bczq
 {
   public static int a;
   public static int b;
@@ -35,7 +35,7 @@ public class AudioCapture
   volatile boolean jdField_a_of_type_Boolean = false;
   byte[] jdField_a_of_type_ArrayOfByte = null;
   long jdField_b_of_type_Long;
-  public AtomicReference<bodj> b;
+  public AtomicReference<bptb> b;
   boolean jdField_b_of_type_Boolean = false;
   byte[] jdField_b_of_type_ArrayOfByte = null;
   public int c;
@@ -82,9 +82,9 @@ public class AudioCapture
     this.jdField_h_of_type_Int = 0;
   }
   
-  public void a(bocp parambocp)
+  public void a(bpsh parambpsh)
   {
-    a(parambocp, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+    a(parambpsh, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
   }
   
   void a(byte[] paramArrayOfByte, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
@@ -110,18 +110,18 @@ public class AudioCapture
       {
         byte[] arrayOfByte = new byte[paramInt1];
         System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramInt1);
-        boct.a().a().handleAudio(arrayOfByte, (AVIOStruct)localObject, (int)paramLong);
+        bpsl.a().a().handleAudio(arrayOfByte, (AVIOStruct)localObject, (int)paramLong);
         paramArrayOfByte = (SVHwEncoder)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
         if (paramArrayOfByte != null)
         {
-          localObject = new bock();
-          ((bock)localObject).jdField_a_of_type_ArrayOfByte = arrayOfByte;
-          ((bock)localObject).jdField_a_of_type_Int = 0;
-          ((bock)localObject).jdField_b_of_type_Int = arrayOfByte.length;
-          ((bock)localObject).jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          ((bock)localObject).jdField_a_of_type_Boolean = false;
-          ((bock)localObject).jdField_b_of_type_Boolean = false;
-          paramArrayOfByte.a((bock)localObject, false);
+          localObject = new bpsc();
+          ((bpsc)localObject).jdField_a_of_type_ArrayOfByte = arrayOfByte;
+          ((bpsc)localObject).jdField_a_of_type_Int = 0;
+          ((bpsc)localObject).jdField_b_of_type_Int = arrayOfByte.length;
+          ((bpsc)localObject).jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+          ((bpsc)localObject).jdField_a_of_type_Boolean = false;
+          ((bpsc)localObject).jdField_b_of_type_Boolean = false;
+          paramArrayOfByte.a((bpsc)localObject, false);
         }
         a(paramInt2, new Object[] { Integer.valueOf(0) });
       }
@@ -186,7 +186,7 @@ public class AudioCapture
       boolean bool;
       if (!this.jdField_g_of_type_Boolean)
       {
-        bool = bbub.a(bbub.p);
+        bool = bdaw.a(bdaw.p);
         if ((!bool) || (this.jdField_d_of_type_Int >= 5)) {
           break label303;
         }
@@ -222,9 +222,9 @@ public class AudioCapture
     }
   }
   
-  public void b(bocp parambocp)
+  public void b(bpsh parambpsh)
   {
-    a(parambocp);
+    a(parambpsh);
   }
   
   void b(byte[] paramArrayOfByte, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
@@ -234,7 +234,7 @@ public class AudioCapture
       if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.get() == null) {
         break label59;
       }
-      ((bodj)this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).a(paramArrayOfByte, 0, paramInt1);
+      ((bptb)this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).a(paramArrayOfByte, 0, paramInt1);
     }
     for (;;)
     {
@@ -263,7 +263,7 @@ public class AudioCapture
         this.jdField_e_of_type_Int = AudioRecord.getMinBufferSize(CodecParam.mAudioSampleRate, CodecParam.mAudioChannel, CodecParam.mAudioFormat);
         if ((this.jdField_e_of_type_Int == -2) || (this.jdField_e_of_type_Int == -1))
         {
-          if (boct.a().a().a(this, 3, "init audio failed")) {
+          if (bpsl.a().a().a(this, 3, "init audio failed")) {
             break label187;
           }
           a(3, new Object[] { "init audio failed" });
@@ -317,7 +317,7 @@ public class AudioCapture
       try
       {
         this.jdField_a_of_type_AndroidMediaAudioRecord.release();
-        a(6, new Object[] { amtj.a(2131699939) });
+        a(6, new Object[] { anvx.a(2131700290) });
       }
       catch (Exception localException)
       {
@@ -352,14 +352,14 @@ public class AudioCapture
         this.jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(1, CodecParam.mAudioSampleRate, CodecParam.mAudioChannel, CodecParam.mAudioFormat, this.jdField_e_of_type_Int);
         if (this.jdField_a_of_type_AndroidMediaAudioRecord.getState() == 0)
         {
-          a(5, new Object[] { amtj.a(2131699938) });
+          a(5, new Object[] { anvx.a(2131700289) });
           return false;
         }
       }
       catch (Exception localException)
       {
         QLog.e(this.jdField_a_of_type_JavaLangString, 2, localException, new Object[0]);
-        a(5, new Object[] { amtj.a(2131699936) });
+        a(5, new Object[] { anvx.a(2131700287) });
         return false;
       }
       this.jdField_b_of_type_Boolean = true;
@@ -422,7 +422,7 @@ public class AudioCapture
   
   public void g()
   {
-    if (!bocr.jdField_a_of_type_Boolean) {
+    if (!bpsj.jdField_a_of_type_Boolean) {
       return;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -435,7 +435,7 @@ public class AudioCapture
   
   public void h()
   {
-    if (bocr.jdField_a_of_type_Boolean) {
+    if (bpsj.jdField_a_of_type_Boolean) {
       return;
     }
     a(2, new Object[] { Integer.valueOf(0) });

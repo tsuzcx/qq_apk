@@ -35,7 +35,7 @@ import com.tencent.ttpic.openapi.PTFaceDetector;
 import com.tencent.ttpic.openapi.PTGenderAttr;
 import com.tencent.ttpic.openapi.PTGenderAttr.GenderInfo;
 import com.tencent.ttpic.openapi.PTSegAttr;
-import com.tencent.ttpic.openapi.facedetect.FaceDetector.FACE_DETECT_MODE;
+import com.tencent.ttpic.openapi.facedetect.FaceDetector.FaceDetectMode;
 import com.tencent.ttpic.openapi.facedetect.FaceInfo;
 import com.tencent.ttpic.openapi.filter.VideoFilterListExtension;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
@@ -66,7 +66,7 @@ public class QQFilterRenderManager
   private AIAttr aiAttr;
   public CameraInterFace cameraInterFace;
   private boolean enableGauss = true;
-  private FaceDetector.FACE_DETECT_MODE faceDetectMode = FaceDetector.FACE_DETECT_MODE.MULTIPLE;
+  private FaceDetector.FaceDetectMode faceDetectMode = FaceDetector.FaceDetectMode.MULTIPLE;
   private boolean isAEDetectorInited = false;
   public boolean mBackCameraDetectEnable = false;
   private long mBeginTime = 0L;
@@ -844,7 +844,7 @@ public class QQFilterRenderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager
  * JD-Core Version:    0.7.0.1
  */

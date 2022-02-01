@@ -1,17 +1,14 @@
 package cooperation.qqcircle.helpers;
 
 import com.tencent.TMG.utils.QLog;
-import java.lang.ref.SoftReference;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class QCircleFollowManager
 {
   public static final String TAG = QCircleFollowManager.class.getSimpleName();
   private static volatile QCircleFollowManager sInstance;
-  private List<SoftReference<QCircleFollowManager.OnFollowListener>> mListenerList = new LinkedList();
-  private ConcurrentHashMap<String, Boolean> mUinFollowMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Integer> mFakeUinFollowMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Integer> mUinFollowMap = new ConcurrentHashMap();
   
   public static QCircleFollowManager getInstance()
   {
@@ -28,38 +25,70 @@ public class QCircleFollowManager
   
   public void clearAll()
   {
-    if (this.mUinFollowMap != null)
-    {
-      QLog.i(TAG, 1, "clear all");
+    QLog.i(TAG, 1, "clear all");
+    if (this.mUinFollowMap != null) {
       this.mUinFollowMap.clear();
+    }
+    if (this.mFakeUinFollowMap != null) {
+      this.mFakeUinFollowMap.clear();
     }
   }
   
-  public boolean getUinFollowed(String paramString)
+  public void clearFakeUinFollowed(String paramString)
   {
-    if (hasUin(paramString))
-    {
-      paramString = (Boolean)this.mUinFollowMap.get(paramString);
-      if (paramString == null)
-      {
-        QLog.e(TAG, 1, "mUinFollowMap getValue uin null");
-        return false;
-      }
-      return paramString.booleanValue();
+    if (this.mFakeUinFollowMap != null) {
+      this.mFakeUinFollowMap.remove(paramString);
     }
-    return false;
+  }
+  
+  public Integer getUinFollowed(String paramString)
+  {
+    Integer localInteger2 = (Integer)this.mFakeUinFollowMap.get(paramString);
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      localInteger1 = (Integer)this.mUinFollowMap.get(paramString);
+    }
+    return localInteger1;
   }
   
   public boolean hasUin(String paramString)
   {
-    return (paramString != null) && (this.mUinFollowMap.containsKey(paramString));
+    return (paramString != null) && ((this.mFakeUinFollowMap.containsKey(paramString)) || (this.mUinFollowMap.containsKey(paramString)));
   }
   
-  public void setUinFollowed(String paramString, boolean paramBoolean)
+  public boolean isUinFollowed(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (hasUin(paramString))
+    {
+      paramString = getUinFollowed(paramString);
+      if (paramString.intValue() != 1)
+      {
+        bool1 = bool2;
+        if (paramString.intValue() != 3) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void setFakeUinFollowed(String paramString, int paramInt)
+  {
+    if (this.mFakeUinFollowMap != null) {
+      this.mFakeUinFollowMap.put(paramString, Integer.valueOf(paramInt));
+    }
+  }
+  
+  public void setUinFollowed(String paramString, int paramInt)
   {
     if (this.mUinFollowMap != null) {
-      this.mUinFollowMap.put(paramString, Boolean.valueOf(paramBoolean));
+      this.mUinFollowMap.put(paramString, Integer.valueOf(paramInt));
     }
+    clearFakeUinFollowed(paramString);
   }
 }
 

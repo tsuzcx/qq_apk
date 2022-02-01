@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ark;
 
-import aots;
-import aotv;
-import aotw;
-import aouj;
-import apwc;
-import apwo;
+import apww;
+import apwz;
+import apxa;
+import apxn;
+import aqzf;
+import aqzr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
@@ -17,29 +17,29 @@ import java.util.Set;
 public class ArkAiDictUpdateMgr$1
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$1(aotv paramaotv) {}
+  public ArkAiDictUpdateMgr$1(apwz paramapwz) {}
   
   public void run()
   {
-    if ((QQAppInterface)aotv.a(this.this$0).get() == null) {
+    if ((QQAppInterface)apwz.a(this.this$0).get() == null) {
       ArkAppCenter.c("ArkApp.Dict.Update", "updateLocalDict, qq app is NULL, return");
     }
     for (;;)
     {
       return;
-      apwc localapwc1 = aotv.a();
-      Object localObject2 = aotv.a(localapwc1);
-      apwc localapwc3 = aotv.b();
+      aqzf localaqzf1 = apwz.a();
+      Object localObject2 = apwz.a(localaqzf1);
+      aqzf localaqzf3 = apwz.b();
       Object localObject1 = new ArrayList();
       Object localObject3 = ((Map)localObject2).keySet().iterator();
       while (((Iterator)localObject3).hasNext())
       {
         String str = (String)((Iterator)localObject3).next();
-        apwo localapwo = (apwo)((Map)localObject2).get(str);
-        if (!aotv.a(this.this$0, localapwo))
+        aqzr localaqzr = (aqzr)((Map)localObject2).get(str);
+        if (!apwz.a(this.this$0, localaqzr))
         {
           ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateLocalDict, local dict is not integrity, update, id=%s", new Object[] { str }));
-          ((ArrayList)localObject1).add(localapwo);
+          ((ArrayList)localObject1).add(localaqzr);
         }
         else
         {
@@ -48,29 +48,29 @@ public class ArkAiDictUpdateMgr$1
       }
       if (((ArrayList)localObject1).isEmpty())
       {
-        aotv.a(localapwc1);
-        aots.b((AppInterface)aotv.a(this.this$0).get());
+        apwz.a(localaqzf1);
+        apww.b((AppInterface)apwz.a(this.this$0).get());
         return;
       }
       try
       {
-        if (aotv.a(this.this$0))
+        if (apwz.a(this.this$0))
         {
           ArkAppCenter.c("ArkApp.Dict.Update", "updateLocalDict, update in progress, wait current task complete");
-          aotv.a(this.this$0, true);
+          apwz.a(this.this$0, true);
           return;
         }
       }
       finally {}
-      aotv.b(this.this$0, true);
-      localObject2 = new aouj(null);
-      ((aouj)localObject2).jdField_a_of_type_Boolean = true;
-      ((aouj)localObject2).jdField_a_of_type_Int = ((ArrayList)localObject1).size();
+      apwz.b(this.this$0, true);
+      localObject2 = new apxn(null);
+      ((apxn)localObject2).jdField_a_of_type_Boolean = true;
+      ((apxn)localObject2).jdField_a_of_type_Int = ((ArrayList)localObject1).size();
       localObject1 = ((ArrayList)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject3 = (apwo)((Iterator)localObject1).next();
-        aotv.a(this.this$0, localapwc3, (apwo)localObject3, new aotw(this, (apwo)localObject3, (aouj)localObject2, localapwc2));
+        localObject3 = (aqzr)((Iterator)localObject1).next();
+        apwz.a(this.this$0, localaqzf3, (aqzr)localObject3, new apxa(this, (aqzr)localObject3, (apxn)localObject2, localaqzf2));
       }
     }
   }

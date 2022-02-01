@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bbqf;
-import bbqh;
-import bbqp;
-import bbqx;
+import bcwz;
+import bcxb;
+import bcxj;
+import bcxr;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class ShortVideoPreDownloader$3
   implements Runnable
 {
-  public ShortVideoPreDownloader$3(bbqp parambbqp, bbqh parambbqh, MessageForShortVideo paramMessageForShortVideo, bbqx parambbqx) {}
+  public ShortVideoPreDownloader$3(bcxj parambcxj, bcxb parambcxb, MessageForShortVideo paramMessageForShortVideo, bcxr parambcxr) {}
   
   public void run()
   {
-    bbqp.a("consumeShortVideoThumb", "start download thumb, fileType=" + this.jdField_a_of_type_Bbqh.e + ", uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    bbqf.a(this.jdField_a_of_type_Bbqx, this.this$0.a);
+    bcxj.a("consumeShortVideoThumb", "start download thumb, fileType=" + this.jdField_a_of_type_Bcxb.e + ", uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    bcwz.a(this.jdField_a_of_type_Bcxr, this.this$0.a);
   }
 }
 

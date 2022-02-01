@@ -1,15 +1,42 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aoty
-  implements aouh
+public class aoty
+  extends aouc
 {
-  aoty(aotv paramaotv, aouf paramaouf, aouh paramaouh) {}
-  
-  public void a(boolean paramBoolean)
+  public aoty(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Aouf.a }));
-    if (paramBoolean) {}
-    this.jdField_a_of_type_Aouh.a(paramBoolean);
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      String str = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("url"));
+      if ((TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("appid"))) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("openid"))))
+      {
+        QLog.e("IdentifierWebJumpAction", 1, "identification with illegal params");
+        return true;
+      }
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097E8", "0X80097E8", 0, 0, "", "", (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid"), "");
+      avpw.a();
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("IdentifierWebJumpAction", 1, "doAction error: " + localException.getMessage());
+      a("IdentifierWebJumpAction");
+    }
+    return false;
   }
 }
 

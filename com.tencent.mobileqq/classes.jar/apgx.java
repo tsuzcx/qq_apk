@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class apgx
-  implements View.OnClickListener
+public abstract interface apgx
 {
-  public apgx(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onClick(View paramView)
-  {
-    apgz localapgz = (apgz)paramView.getTag();
-    this.a.a(localapgz.jdField_a_of_type_JavaLangString, localapgz.b, localapgz.jdField_a_of_type_Boolean);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void l_(int paramInt);
 }
 
 

@@ -1,16 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.mobileqq.widget.ClickableToastView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bimt
   implements View.OnClickListener
 {
-  public bimt(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public bimt(ClickableToastView paramClickableToastView) {}
   
   public void onClick(View paramView)
   {
-    this.a.finish();
+    if (ClickableToastView.a(this.a).a != null)
+    {
+      this.a.b();
+      ClickableToastView.a(this.a).a.onClick(paramView);
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

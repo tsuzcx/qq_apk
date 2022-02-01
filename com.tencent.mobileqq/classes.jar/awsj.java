@@ -1,28 +1,8 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-
-public class awsj
-  implements bjoe
+public abstract interface awsj
 {
-  public awsj(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bjnw parambjnw) {}
+  public abstract void a(awrn paramawrn);
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bjnw != null) {
-        this.jdField_a_of_type_Bjnw.dismiss();
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.f(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-      continue;
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-    }
-  }
+  public abstract void b(awrn paramawrn);
 }
 
 

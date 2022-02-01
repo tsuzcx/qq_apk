@@ -13,13 +13,6 @@ public class ThreadUtils
   private static final AtomicInteger NUMBER = new AtomicInteger(1);
   private static IThreadTaskInterceptor sTaskInterceptor = null;
   
-  public static void cancelUiThreadRunnable(Runnable paramRunnable)
-  {
-    if (paramRunnable != null) {
-      HANDLER.removeCallbacks(paramRunnable);
-    }
-  }
-  
   public static void execTask(Runnable paramRunnable)
   {
     if (paramRunnable != null) {
@@ -76,6 +69,11 @@ public class ThreadUtils
   private static boolean shouldIntercept(Runnable paramRunnable)
   {
     return (sTaskInterceptor != null) && (sTaskInterceptor.shouldInterceptTask(paramRunnable));
+  }
+  
+  private static boolean tryToRemoveInPendingTask(Runnable paramRunnable)
+  {
+    return (sTaskInterceptor != null) && (sTaskInterceptor.removePendingTask(paramRunnable));
   }
 }
 

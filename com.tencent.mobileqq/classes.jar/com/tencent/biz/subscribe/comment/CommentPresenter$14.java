@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.comment;
 
 import com.tribe.async.dispatch.Dispatcher;
-import vli;
-import zfo;
-import zfs;
+import wad;
+import zut;
+import zux;
 
 public class CommentPresenter$14
   implements Runnable
 {
-  public CommentPresenter$14(zfs paramzfs) {}
+  public CommentPresenter$14(zux paramzux) {}
   
   public void run()
   {
-    vli.a().dispatch(new zfo(1, new Object[0]));
+    wad.a().dispatch(new zut(1, new Object[0]));
   }
 }
 

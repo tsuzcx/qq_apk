@@ -1,48 +1,173 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profilesetting.ReqSetSettingItem;
-import java.util.ArrayList;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.widget.FixSizeImageView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/CardSettingObserver;", "Lcom/tencent/mobileqq/app/BusinessObserver;", "()V", "handleGetCardDisplaySettingNotify", "", "isSuccess", "", "data", "", "handleSetCardDisplaySettingNotify", "onGetCardDisplaySetting", "uin", "", "card", "Lcom/tencent/mobileqq/data/Card;", "onSetCardDisplaySetting", "items", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem;", "Lkotlin/collections/ArrayList;", "onUpdate", "type", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public class ayzz
-  implements BusinessObserver
+class ayzz
 {
-  public static final azaa a = new azaa(null);
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  FixSizeImageView jdField_a_of_type_ComTencentWidgetFixSizeImageView;
+  View b;
   
-  private final void a(boolean paramBoolean, Object paramObject)
+  public ayzz(ayzg paramayzg, View paramView)
   {
-    if ((paramObject instanceof Object[])) {
-      a(paramBoolean, (String)((Object[])paramObject)[0], (Card)((Object[])paramObject)[1]);
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131363167));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378229));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371980));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131380499));
+    this.b = paramView.findViewById(2131363162);
   }
   
-  private final void b(boolean paramBoolean, Object paramObject)
+  private void a()
   {
-    if ((paramObject instanceof Object[])) {
-      a(paramBoolean, (String)((Object[])paramObject)[0], (Card)((Object[])paramObject)[1], (ArrayList)((Object[])paramObject)[2]);
+    boolean bool2 = false;
+    if (!AppSetting.c) {
+      return;
     }
-  }
-  
-  public void a(boolean paramBoolean, @Nullable String paramString, @Nullable Card paramCard) {}
-  
-  public void a(boolean paramBoolean, @Nullable String paramString, @Nullable Card paramCard, @Nullable ArrayList<ReqSetSettingItem> paramArrayList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, @NotNull Object paramObject)
-  {
-    Intrinsics.checkParameterIsNotNull(paramObject, "data");
-    switch (paramInt)
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {}
+    for (String str = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();; str = "")
     {
-    default: 
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.getTag() instanceof Integer))) {}
+      for (int i = ((Integer)this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.getTag()).intValue();; i = 0)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        boolean bool1;
+        if (this.jdField_a_of_type_Int == 2)
+        {
+          localStringBuilder.append(ayzg.a(this.jdField_a_of_type_Ayzg).getString(2131719069, new Object[] { str })).append(ayzg.a(this.jdField_a_of_type_Ayzg).getString(2131690673));
+          bool1 = bool2;
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView != null)
+          {
+            bool1 = bool2;
+            if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.getTag(2131380499) instanceof Boolean)) {
+              bool1 = ((Boolean)this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.getTag(2131380499)).booleanValue();
+            }
+          }
+          if ((i <= 0) || (bool1)) {
+            break label318;
+          }
+          if (i != 1) {
+            break label278;
+          }
+          localStringBuilder.append(" 有一条未读");
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_AndroidViewView.setContentDescription(localStringBuilder.toString());
+          return;
+          if (this.jdField_a_of_type_Int == 2)
+          {
+            localStringBuilder.append(ayzg.a(this.jdField_a_of_type_Ayzg).getString(2131719070, new Object[] { str })).append(ayzg.a(this.jdField_a_of_type_Ayzg).getString(2131690673));
+            break;
+          }
+          localStringBuilder.append(str).append(ayzg.a(this.jdField_a_of_type_Ayzg).getString(2131690673));
+          break;
+          label278:
+          if (i == 2)
+          {
+            localStringBuilder.append(" 有两条未读");
+          }
+          else if (i > 0)
+          {
+            localStringBuilder.append(" 有").append(i).append("条未读");
+            continue;
+            label318:
+            if (bool1) {
+              localStringBuilder.append(" 有最新消息");
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    int i;
+    int j;
+    if (paramInt > 0) {
+      if (paramBoolean)
+      {
+        i = 1;
+        if (this.jdField_a_of_type_Int != 2) {
+          break label89;
+        }
+        if (!paramBoolean) {
+          break label82;
+        }
+        j = 2130850427;
+        label26:
+        blas.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, paramInt, j, 99, null);
+        label40:
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131380499, Boolean.valueOf(paramBoolean));
+      a();
       return;
-    case 1: 
-      a(paramBoolean, paramObject);
+      i = 3;
+      break;
+      label82:
+      j = 2130850431;
+      break label26;
+      label89:
+      blas.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, paramInt, 2130850434, 99, null);
+      break label40;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(Integer.valueOf(paramInt));
+    }
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(paramDrawable);
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    if (!TextUtils.isEmpty(paramCharSequence))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+      a();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       return;
     }
-    b(paramBoolean, paramObject);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.b.setVisibility(0);
+      return;
+    }
+    this.b.setVisibility(8);
   }
 }
 

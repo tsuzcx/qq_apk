@@ -1,29 +1,22 @@
 package dov.com.qq.im.ae.gif;
 
-import blwd;
-import bmbx;
-import bmkn;
-import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
+import android.text.TextUtils;
+import bnlh;
+import bnln;
+import boaf;
 
 public class AEGIFStickerListPart$9
   implements Runnable
 {
-  public AEGIFStickerListPart$9(blwd paramblwd) {}
+  public AEGIFStickerListPart$9(bnln parambnln, String paramString) {}
   
   public void run()
   {
-    bmbx.b("AEGIFStickerListPart", "[preDownloadGifFonts] run");
-    Iterator localIterator = bmkn.a().a().values().iterator();
-    while (localIterator.hasNext())
-    {
-      AEEditorDownloadResBean localAEEditorDownloadResBean = (AEEditorDownloadResBean)localIterator.next();
-      if ((localAEEditorDownloadResBean.getPreDownload() == 1) && (!bmkn.a().a(localAEEditorDownloadResBean))) {
-        bmkn.a().a(localAEEditorDownloadResBean, null);
-      }
+    String str = boaf.a().a(this.a, 1);
+    if (TextUtils.isEmpty(str)) {
+      return;
     }
+    bnlh.a().a(this.a, str);
   }
 }
 

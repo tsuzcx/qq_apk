@@ -8,9 +8,9 @@ import android.util.LongSparseArray;
 class d
   extends b
 {
-  public d(SkinEngine paramSkinEngine, Resources paramResources, LongSparseArray paramLongSparseArray, int paramInt1, int paramInt2)
+  public d(SkinEngine paramSkinEngine, Resources paramResources, LongSparseArray paramLongSparseArray, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramSkinEngine, paramResources, paramLongSparseArray, paramInt1, paramInt2);
+    super(paramSkinEngine, paramResources, paramLongSparseArray, paramInt1, paramInt2, paramInt3);
   }
   
   public Object get(long paramLong)

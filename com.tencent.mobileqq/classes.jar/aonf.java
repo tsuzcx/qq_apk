@@ -1,10 +1,11 @@
-import javax.microedition.khronos.opengles.GL10;
-
-public abstract interface aonf
+class aonf
 {
-  public abstract void a(GL10 paramGL10);
-  
-  public abstract void a(GL10 paramGL10, int paramInt1, int paramInt2);
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean;
+  byte[] jdField_a_of_type_ArrayOfByte;
+  int b;
+  int c;
+  int d;
 }
 
 

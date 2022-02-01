@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
 
-public final class awog
-  implements Parcelable.Creator<InterestTagInfo>
+class awog
+  extends BroadcastReceiver
 {
-  public InterestTagInfo a(Parcel paramParcel)
-  {
-    return new InterestTagInfo(paramParcel);
-  }
+  awog(awof paramawof) {}
   
-  public InterestTagInfo[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new InterestTagInfo[paramInt];
+    if (paramIntent == null) {}
+    while ((paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) || (awof.a(this.a) == null)) {
+      return;
+    }
+    awof.a(this.a).a();
   }
 }
 

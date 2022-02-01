@@ -1,18 +1,24 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class rjh
-  implements AdapterView.OnItemClickListener
+  implements View.OnClickListener
 {
-  public rjh(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  public rjh(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = (TagInfo)ReadInJoyVideoTagSelectionFragment.a(this.a).getItem(paramInt);
-    ReadInJoyVideoTagSelectionFragment.a(this.a).b(paramAdapterView);
+    pqx.a = ComponentTopicItemMulti.a(this.a);
+    pkh.a(this.a.getContext(), this.a.a.b);
+    String str1 = uvs.b(ComponentTopicItemMulti.a(this.a));
+    String str2 = pqf.a(ComponentTopicItemMulti.a(this.a).mAlgorithmID, pqw.a(ComponentTopicItemMulti.a(this.a)), ComponentTopicItemMulti.a(this.a), 0, 0, NetworkUtil.isWifiConnected(this.a.getContext()), ComponentTopicItemMulti.a(this.a).mSubscribeID, null, ComponentTopicItemMulti.a(this.a).innerUniqueID, null, ComponentTopicItemMulti.a(this.a));
+    olh.a(null, ComponentTopicItemMulti.a(this.a).mSubscribeID, str1, str1, 0, 0, ComponentTopicItemMulti.a(this.a).mFeedId + "", String.valueOf(this.a.a.a), String.valueOf(ComponentTopicItemMulti.a(this.a).mAlgorithmID), str2, false);
+    pqb.c(ComponentTopicItemMulti.a(this.a), ComponentTopicItemMulti.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

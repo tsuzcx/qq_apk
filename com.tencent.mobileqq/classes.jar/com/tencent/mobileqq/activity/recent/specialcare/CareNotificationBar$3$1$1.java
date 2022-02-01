@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.specialcare;
 
-import akow;
+import alms;
 import android.animation.ValueAnimator;
 
 public class CareNotificationBar$3$1$1
   implements Runnable
 {
-  public CareNotificationBar$3$1$1(akow paramakow) {}
+  public CareNotificationBar$3$1$1(alms paramalms) {}
   
   public void run()
   {

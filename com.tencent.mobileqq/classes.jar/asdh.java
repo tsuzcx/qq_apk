@@ -1,21 +1,22 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class asdh
-  implements aszp
+public final class asdh
 {
-  asdh(asdg paramasdg, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
-  
-  public void a(String paramString1, String paramString2)
+  public static ascs a(QQAppInterface paramQQAppInterface, asdl paramasdl, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString1;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString2;
-    this.jdField_a_of_type_Asdg.a.getFileManagerEngine().a().a(paramString2, new asdi(this));
+    switch (paramInt)
+    {
+    default: 
+      return new asdv(paramQQAppInterface, paramasdl);
+    case 0: 
+      return new asdv(paramQQAppInterface, paramasdl);
+    }
+    return new asct(paramQQAppInterface, paramasdl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdh
  * JD-Core Version:    0.7.0.1
  */

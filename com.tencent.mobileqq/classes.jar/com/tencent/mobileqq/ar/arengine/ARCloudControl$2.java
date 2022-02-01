@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import amtj;
-import aogg;
-import aogn;
+import anvx;
+import apji;
+import apjp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ARCloudControl$2
   implements Runnable
 {
-  public ARCloudControl$2(aogg paramaogg) {}
+  public ARCloudControl$2(apji paramapji) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), String.format(amtj.a(2131699788), new Object[] { Integer.valueOf(this.this$0.a.c) }), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), String.format(anvx.a(2131700139), new Object[] { Integer.valueOf(this.this$0.a.c) }), 0).a();
   }
 }
 

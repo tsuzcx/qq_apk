@@ -1,44 +1,28 @@
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class adva
-  implements URLDrawable.URLDrawableListener
+  implements View.OnTouchListener
 {
-  public adva(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public adva(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    if ((paramMotionEvent != null) && (this.a.a != null))
+    {
+      paramView = this.a.a;
+      if (paramMotionEvent.getAction() != 0) {
+        break label39;
+      }
     }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, UIUtils.dip2px(this.a.app.getApp(), 47.0F), UIUtils.dip2px(this.a.app.getApp(), 14.0F));
-    }
-    if (PermisionPrivacyActivity.b(this.a) != null) {
-      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    label39:
+    for (float f = 0.5F;; f = 1.0F)
+    {
+      paramView.setAlpha(f);
+      return false;
     }
   }
 }

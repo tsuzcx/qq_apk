@@ -1,25 +1,42 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.transfile.StoryUploadProcessor;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ypv
-  extends ypz
+  implements View.OnClickListener
 {
-  public int a;
+  protected long a;
+  protected View a;
+  public ypw a;
   
-  public ypv(yqe paramyqe, View paramView, int paramInt)
+  public ypv(ypw paramypw, View paramView)
   {
-    super(paramyqe, paramView);
-    this.a = paramInt;
+    this.jdField_a_of_type_Ypw = paramypw;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramView.setOnClickListener(this);
   }
   
-  public int a()
+  private boolean a()
   {
-    xvv.e("NullOptionElement", "getOptionIndex() on %d", new Object[] { Integer.valueOf(this.a) });
-    return this.a;
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if ((l2 > 0L) && (l2 < 2000L)) {
+      return true;
+    }
+    this.jdField_a_of_type_Long = l1;
+    return false;
   }
   
-  public void a(CharSequence paramCharSequence)
+  public void onClick(View paramView)
   {
-    xvv.e("NullOptionElement", "setText() on %d", new Object[] { Integer.valueOf(this.a) });
+    if (!a())
+    {
+      ykv.a("home_page", "clk_shoot", 0, 0, new String[0]);
+      this.jdField_a_of_type_Ypw.a();
+    }
+    StoryUploadProcessor.checkUploadSessionKey();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

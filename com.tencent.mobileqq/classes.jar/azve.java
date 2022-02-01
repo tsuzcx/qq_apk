@@ -1,38 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import java.util.ArrayList;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
-public final class azve
-  implements Parcelable.Creator<RedAppInfo>
+public class azve
+  implements TypeEvaluator<Rect>
 {
-  public RedAppInfo a(Parcel paramParcel)
-  {
-    RedAppInfo localRedAppInfo = new RedAppInfo();
-    RedAppInfo.a(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.b(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.c(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.a(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.b(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.d(localRedAppInfo, paramParcel.readInt());
-    localRedAppInfo.a = new ArrayList();
-    paramParcel.readList(localRedAppInfo.a, null);
-    RedAppInfo.e(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.f(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.c(localRedAppInfo, paramParcel.readString());
-    RedAppInfo.g(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.h(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.i(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.j(localRedAppInfo, paramParcel.readInt());
-    RedAppInfo.a(localRedAppInfo, (RedDisplayInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-    RedAppInfo.k(localRedAppInfo, paramParcel.readInt());
-    return localRedAppInfo;
-  }
+  public azve(BreatheEffectView paramBreatheEffectView) {}
   
-  public RedAppInfo[] a(int paramInt)
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
   {
-    return new RedAppInfo[paramInt];
+    return new Rect(paramRect1.left + (int)((paramRect2.left - paramRect1.left) * paramFloat), paramRect1.top + (int)((paramRect2.top - paramRect1.top) * paramFloat), paramRect1.right + (int)((paramRect2.right - paramRect1.right) * paramFloat), paramRect1.bottom + (int)((paramRect2.bottom - paramRect1.bottom) * paramFloat));
   }
 }
 

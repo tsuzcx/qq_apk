@@ -1,18 +1,43 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.6.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFilterList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public final class wkt
-  implements vqp<wea, wfy>
+public class wkt
+  extends wfm<wku>
 {
-  wkt(wla paramwla) {}
+  @NonNull
+  public final String a;
+  public final int c;
   
-  public void a(@NonNull wea paramwea, @Nullable wfy paramwfy, @NonNull ErrorMessage paramErrorMessage)
+  public wkt(@NonNull String paramString)
   {
-    ThreadManager.getUIHandler().post(new PlayModeUtils.6.1(this, paramwfy, paramErrorMessage));
+    this(paramString, 20);
+  }
+  
+  public wkt(@NonNull String paramString, int paramInt)
+  {
+    this.a = paramString;
+    this.c = paramInt;
+  }
+  
+  public String a()
+  {
+    return weg.a("StorySvc.video_filter_list");
+  }
+  
+  public wfh a(byte[] paramArrayOfByte)
+  {
+    return new wku(paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetFilterList localReqGetFilterList = new qqstory_service.ReqGetFilterList();
+    localReqGetFilterList.count.set(this.c);
+    localReqGetFilterList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqGetFilterList.toByteArray();
   }
 }
 

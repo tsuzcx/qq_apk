@@ -1,42 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akbw
-  implements EIPClientConnectListener
+  implements View.OnClickListener
 {
-  akbw(akbu paramakbu, long paramLong) {}
+  akbw(akbu paramakbu) {}
   
-  public void connectFailed()
+  public void onClick(View paramView)
   {
-    akbu.a(this.jdField_a_of_type_Akbu, false);
-    akbu.b(this.jdField_a_of_type_Akbu, false);
-    synchronized (akbu.a(this.jdField_a_of_type_Akbu))
-    {
-      akbu.a(this.jdField_a_of_type_Akbu).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + akbu.a(this.jdField_a_of_type_Akbu));
-      }
-      return;
-    }
-  }
-  
-  public void connectSuccess(EIPCConnection arg1)
-  {
-    long l = System.currentTimeMillis();
-    if (??? != null) {
-      akbu.a(this.jdField_a_of_type_Akbu, ???.procName);
-    }
-    akbu.a(this.jdField_a_of_type_Akbu, true);
-    akbu.b(this.jdField_a_of_type_Akbu, false);
-    synchronized (akbu.a(this.jdField_a_of_type_Akbu))
-    {
-      akbu.a(this.jdField_a_of_type_Akbu).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + akbu.a(this.jdField_a_of_type_Akbu) + "|" + (l - this.jdField_a_of_type_Long));
-      }
-      return;
-    }
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

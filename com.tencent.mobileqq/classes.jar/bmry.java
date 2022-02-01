@@ -1,6 +1,12 @@
-public class bmry
+import com.tencent.weiyun.utils.Singleton;
+
+final class bmry
+  extends Singleton<bmrx, Void>
 {
-  public static final String[] a = { "Jitter", "SoulOut" };
+  protected bmrx a(Void paramVoid)
+  {
+    return new bmrx(null);
+  }
 }
 
 

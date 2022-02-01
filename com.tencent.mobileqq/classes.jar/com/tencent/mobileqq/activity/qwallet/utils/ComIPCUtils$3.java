@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.utils;
 
-import ajyk;
+import akud;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -8,7 +8,7 @@ import android.os.ResultReceiver;
 public final class ComIPCUtils$3
   extends ResultReceiver
 {
-  public ComIPCUtils$3(Handler paramHandler, ajyk paramajyk, String paramString)
+  public ComIPCUtils$3(Handler paramHandler, akud paramakud, String paramString)
   {
     super(paramHandler);
   }
@@ -18,7 +18,7 @@ public final class ComIPCUtils$3
     if ((paramInt == 0) && (paramBundle != null))
     {
       paramBundle = paramBundle.getString("res");
-      this.jdField_a_of_type_Ajyk.a(this.jdField_a_of_type_JavaLangString, paramBundle, null);
+      this.jdField_a_of_type_Akud.a(this.jdField_a_of_type_JavaLangString, paramBundle, null);
     }
   }
 }

@@ -1,57 +1,62 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.SignatureException;
 
 public class aonk
-  implements View.OnClickListener
 {
-  public aonk(QRScanEntryView paramQRScanEntryView) {}
-  
-  public void onClick(View paramView)
+  private Signature a()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (QRScanEntryView.a(this.a))
+    try
     {
-      Object localObject = aoln.a();
-      if (!QRScanEntryView.b(this.a))
-      {
-        bool1 = true;
-        if (((aoln)localObject).a(bool1))
-        {
-          localObject = this.a;
-          if (QRScanEntryView.b(this.a)) {
-            break label131;
-          }
-          bool1 = true;
-          label56:
-          QRScanEntryView.a((QRScanEntryView)localObject, bool1);
-          localObject = (aols)this.a.a;
-          bool1 = bool2;
-          if (!QRScanEntryView.b(this.a)) {
-            bool1 = true;
-          }
-          ((aols)localObject).a(bool1, 0L);
-          QRScanEntryView.a(this.a, true);
-          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
-        }
-      }
+      Signature localSignature = Signature.getInstance("SHA256withRSA");
+      return localSignature;
     }
-    for (;;)
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bool1 = false;
-      break;
-      label131:
-      bool1 = false;
-      break label56;
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
-      }
+      QLog.e("RsaUsingShaAlgorithm", 1, new Object[] { "getSignature error : ", localNoSuchAlgorithmException.getMessage() });
     }
+    return null;
+  }
+  
+  private boolean a(Signature paramSignature, Key paramKey)
+  {
+    try
+    {
+      paramSignature.initVerify((PublicKey)paramKey);
+      return true;
+    }
+    catch (InvalidKeyException paramSignature)
+    {
+      QLog.e("RsaUsingShaAlgorithm", 1, new Object[] { "initForVerify error : ", paramSignature.getMessage() });
+    }
+    return false;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte1, Key paramKey, byte[] paramArrayOfByte2)
+  {
+    Signature localSignature = a();
+    if (localSignature == null)
+    {
+      QLog.e("RsaUsingShaAlgorithm", 1, "verifySignature fail");
+      return false;
+    }
+    if (!a(localSignature, paramKey))
+    {
+      QLog.e("RsaUsingShaAlgorithm", 1, "initForVerify fail");
+      return false;
+    }
+    try
+    {
+      localSignature.update(paramArrayOfByte2);
+      boolean bool = localSignature.verify(paramArrayOfByte1);
+      return bool;
+    }
+    catch (SignatureException paramArrayOfByte1) {}
+    return false;
   }
 }
 

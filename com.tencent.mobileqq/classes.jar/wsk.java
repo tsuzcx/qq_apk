@@ -1,129 +1,52 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wsk
+  extends wfh
 {
-  private ErrorMessage a;
-  @NonNull
-  public final String a;
-  public vxd a;
-  public final String b;
-  private String c;
+  public List<wsl> a;
+  public List<ycb> b = new ArrayList(0);
   
-  public wsk(@NonNull String paramString1, @NonNull String paramString2)
+  public wsk(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public static wsk a(String paramString1, String paramString2, @NonNull ErrorMessage paramErrorMessage)
+  public wsk(qqstory_service.RspBatchFeedComment paramRspBatchFeedComment)
   {
-    if (paramString1 != null) {
-      if (paramString2 == null) {
-        break label31;
-      }
-    }
-    for (;;)
+    super(paramRspBatchFeedComment.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspBatchFeedComment = paramRspBatchFeedComment.feed_comment_info_list.get().iterator();
+    while (paramRspBatchFeedComment.hasNext())
     {
-      paramString1 = new wsk(paramString1, paramString2);
-      paramString1.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-      return paramString1;
-      paramString1 = "ERROR_NO_VID";
-      break;
-      label31:
-      paramString2 = "ERROR_NO_FEED";
-    }
-  }
-  
-  public static wsk a(String paramString1, String paramString2, String paramString3)
-  {
-    if (paramString1 != null) {
-      if (paramString2 == null) {
-        break label31;
+      Object localObject = (qqstory_struct.FeedCommentInfo)paramRspBatchFeedComment.next();
+      wsl localwsl = new wsl();
+      localwsl.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).feed_id.get().toStringUtf8();
+      localwsl.jdField_a_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).comment_total_num.get();
+      localwsl.jdField_b_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8();
+      localwsl.jdField_b_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).is_end.get();
+      if (localwsl.jdField_b_of_type_Int != 1) {
+        this.b.add(new ycb(localwsl.jdField_a_of_type_JavaLangString, 1, ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8()));
       }
-    }
-    for (;;)
-    {
-      paramString1 = new wsk(paramString1, paramString2);
-      paramString1.c = paramString3;
-      return paramString1;
-      paramString1 = "LOADING_NO_VID";
-      break;
-      label31:
-      paramString2 = "LOADING_NO_FEED";
-    }
-  }
-  
-  public ErrorMessage a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
-  }
-  
-  public StoryVideoItem a()
-  {
-    return ((vuu)vux.a(5)).b(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public VideoListFeedItem a()
-  {
-    if (TextUtils.isEmpty(this.b)) {
-      return null;
-    }
-    FeedItem localFeedItem = ((xnp)vux.a(11)).a(this.b, true);
-    if (localFeedItem == null) {
-      return null;
-    }
-    if ((localFeedItem instanceof VideoListFeedItem)) {
-      return (VideoListFeedItem)localFeedItem;
-    }
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return this.c != null;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
-  }
-  
-  public boolean c()
-  {
-    return (!a()) && (!b());
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("VideoData{").append("msgTabNodeType=");
-    int i;
-    if (this.jdField_a_of_type_Vxd == null)
-    {
-      i = 0;
-      localStringBuilder2.append(i).append(",");
-      if (!a()) {
-        break label89;
+      localObject = ((qqstory_struct.FeedCommentInfo)localObject).comment_list.get().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((Iterator)localObject).next());
+        localCommentEntry.feedId = localwsl.jdField_a_of_type_JavaLangString;
+        localwsl.jdField_a_of_type_JavaUtilList.add(localCommentEntry);
       }
-      localStringBuilder1.append("loadingMessage='").append(this.c).append('\'');
-    }
-    for (;;)
-    {
-      localStringBuilder1.append("}");
-      return localStringBuilder1.toString();
-      i = this.jdField_a_of_type_Vxd.a;
-      break;
-      label89:
-      if (b()) {
-        localStringBuilder1.append("errorMessage=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-      } else {
-        localStringBuilder1.append("vid='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", feedId='").append(this.b).append('\'');
-      }
+      this.jdField_a_of_type_JavaUtilList.add(localwsl);
     }
   }
 }

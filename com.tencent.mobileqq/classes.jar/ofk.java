@@ -1,36 +1,20 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 import com.tencent.qphone.base.util.QLog;
 
-class ofk
-  implements URLDrawableDownListener
+public class ofk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ofk(ofj paramofj) {}
+  public ofk(AdControlView paramAdControlView) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PubAccountTipsManager", 2, "img Load Failed.");
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PubAccountTipsManager", 2, "img Load Interrupted.");
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (ofj.a(this.a) != null) {
-      ofj.a(this.a).setVisibility(0);
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    QLog.d("Ron", 2, "alpha:" + f);
+    AdControlView.a(this.a).setAlpha(f);
+    this.a.invalidate();
   }
 }
 

@@ -1,61 +1,44 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.widget.ImageView;
-import dov.com.qq.im.ae.mode.AECaptureMode;
-import dov.com.qq.im.ae.mode.AECaptureModeSelectPager;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qqfav.QfavHelper.AsyncFavoritesProvider.1;
+import mqq.os.MqqHandler;
 
-class bmak
-  implements Observer<bmah>
+public abstract class bmak
+  extends OnPluginInstallListener.Stub
 {
-  bmak(bmai parambmai) {}
+  public Bundle a;
   
-  public void a(@Nullable bmah parambmah)
+  public bmak(Bundle paramBundle)
   {
-    boolean bool = false;
-    if (parambmah == null) {
-      return;
-    }
-    parambmah = parambmah.b;
-    bmai.a(this.a, parambmah);
-    if (parambmah != AECaptureMode.NORMAL) {
-      bmai.a(this.a).a(196616, new Object[0]);
-    }
-    int i;
-    if (bmai.a(this.a) != null)
-    {
-      i = 0;
-      if (i < bmai.a(this.a).length) {
-        if (parambmah != bmai.a(this.a)[i]) {}
-      }
-    }
-    for (;;)
-    {
-      if (i != -1) {
-        bmai.a(this.a).setCurrentItem(i, true);
-      }
-      bmai localbmai = this.a;
-      if (parambmah == AECaptureMode.GIF) {
-        bool = true;
-      }
-      bmai.a(localbmai, bool);
-      bmai.a(this.a).notifyDataSetChanged();
-      parambmah = bmai.a(this.a);
-      if (bmai.a(this.a)) {}
-      for (i = 2130837610;; i = 2130837611)
-      {
-        parambmah.setImageResource(i);
-        return;
-        i += 1;
-        break;
-      }
-      i = -1;
-    }
+    this.a = paramBundle;
+  }
+  
+  public void a()
+  {
+    bmaf.a(BaseApplication.getContext(), this);
+  }
+  
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    a(false, this.a);
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    ThreadManager.getSubThreadHandler().post(new QfavHelper.AsyncFavoritesProvider.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmak
  * JD-Core Version:    0.7.0.1
  */

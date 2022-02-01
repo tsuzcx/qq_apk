@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import akfw;
+import albp;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.View;
@@ -153,7 +153,7 @@ public class ImmersionBar
           setMIUIStatusBarDarkFont(this.mWindow, paramBoolean);
         }
         if (OSUtils.isFlymeOS4More()) {
-          akfw.a(this.mActivity, paramBoolean);
+          albp.a(this.mActivity, paramBoolean);
         }
       }
       return;

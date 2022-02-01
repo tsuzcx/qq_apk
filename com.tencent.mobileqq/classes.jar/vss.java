@@ -1,44 +1,46 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
-import com.tencent.mobileqq.text.TextUtils;
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class vss
-  implements EmoticonCallback
+  extends ReportDialog
 {
-  public vss(StoryInputBarView paramStoryInputBarView) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void delete()
+  public vss(Context paramContext, String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
-      TextUtils.backspace(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    super(paramContext, 2131755403);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = LayoutInflater.from(getContext()).inflate(2131560453, null);
+    Object localObject = getWindow();
+    ((Window)localObject).setContentView(paramBundle);
+    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
+    localLayoutParams.width = -1;
+    localLayoutParams.height = -1;
+    ((Window)localObject).setAttributes(localLayoutParams);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      localObject = (TextView)paramBundle.findViewById(2131371603);
+      if (localObject != null) {
+        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
+      }
     }
+    this.jdField_a_of_type_AndroidViewView = paramBundle;
+    setCanceledOnTouchOutside(false);
   }
-  
-  public void emoticonMall() {}
-  
-  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
-  
-  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
-  {
-    return false;
-  }
-  
-  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public void send() {}
-  
-  public void send(EmoticonInfo paramEmoticonInfo)
-  {
-    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
-      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).send(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
-    }
-  }
-  
-  public void setting() {}
 }
 
 

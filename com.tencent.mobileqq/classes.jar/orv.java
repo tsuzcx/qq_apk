@@ -1,22 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.2;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initSocialAvatarOnClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class orv
-  implements oqp
+public class orv
+  implements Animation.AnimationListener
 {
-  public void a(int paramInt, @NotNull Container paramContainer, @NotNull ouc paramouc, @NotNull ouo paramouo, @NotNull ViewBase paramViewBase)
+  public orv(ReadInJoyNaviController.2 param2) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
-    Intrinsics.checkParameterIsNotNull(paramouc, "adapter");
-    Intrinsics.checkParameterIsNotNull(paramouo, "commentViewItem");
-    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new orw(paramouc, paramouo));
+    ors.a(this.a.this$0, true);
+    ors.a(this.a.this$0).setAlpha(0.0F);
+    ors.a(this.a.this$0).removeView(ors.a(this.a.this$0));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,41 +1,61 @@
-import android.opengl.GLES20;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.graphics.Color;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.Transformation;
+import com.tencent.qphone.base.util.QLog;
 
 public class bagw
-  extends bagv
+  extends Animation
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230751);
-  private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+  private bagy jdField_a_of_type_Bagy;
+  private int b;
   
-  public bagw()
+  public bagw(View paramView, int paramInt1, int paramInt2, bagy parambagy)
   {
-    this(0.5F);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Bagy = parambagy;
   }
   
-  public bagw(float paramFloat)
+  public void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Float = paramFloat;
+    super.applyTransformation(paramFloat, paramTransformation);
+    if ((this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener != null) && ((this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener instanceof bagx))) {
+      ((bagx)this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener).a(this, paramFloat);
+    }
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return;
+    }
+    int i = this.b;
+    if (paramFloat < 1.0F)
+    {
+      i = Color.argb((int)(Color.alpha(this.jdField_a_of_type_Int) + (Color.alpha(this.b) - Color.alpha(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.red(this.jdField_a_of_type_Int) + (Color.red(this.b) - Color.red(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.green(this.jdField_a_of_type_Int) + (Color.green(this.b) - Color.green(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.blue(this.jdField_a_of_type_Int) + (Color.blue(this.b) - Color.blue(this.jdField_a_of_type_Int)) * paramFloat));
+      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(i);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bagy != null) {
+        this.jdField_a_of_type_Bagy.jdField_a_of_type_Int = i;
+      }
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.d("LsRecord", 4, "LS applyTransformation: " + paramFloat + " CLR: " + i);
+      return;
+      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(i);
+      this.jdField_a_of_type_AndroidViewView = null;
+    }
   }
   
-  public void a(float paramFloat)
+  public void setAnimationListener(Animation.AnimationListener paramAnimationListener)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void onDrawTexture()
-  {
-    super.onDrawTexture();
-    GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float);
-  }
-  
-  public void onInitialized()
-  {
-    super.onInitialized();
-    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "brightness");
-    a(this.jdField_a_of_type_Float);
+    super.setAnimationListener(paramAnimationListener);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = paramAnimationListener;
   }
 }
 

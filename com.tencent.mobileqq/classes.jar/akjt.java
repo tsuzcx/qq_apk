@@ -1,130 +1,43 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.photo.MediaPlayHelper.2;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.util.HashMap;
 
-class akjt
-  implements akjm
+public class akjt
+  implements TVK_SDKMgr.InstallListener
 {
-  private final int jdField_a_of_type_Int;
-  @Nullable
-  private akjo jdField_a_of_type_Akjo;
-  @Nullable
-  private final Bundle jdField_a_of_type_AndroidOsBundle;
-  @NonNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NonNull
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
-  @Nullable
-  private final String b;
+  public akjt(MediaPlayHelper.2 param2) {}
   
-  public akjt(@NonNull String paramString1, @NonNull QQAppInterface paramQQAppInterface, @Nullable String paramString2, int paramInt, @Nullable Bundle paramBundle, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public void onInstallProgress(float paramFloat) {}
   
-  public void a(@Nullable akjo paramakjo)
-  {
-    this.jdField_a_of_type_Akjo = paramakjo;
-  }
-  
-  public boolean isNeedAutoCloseWhenAccountChange()
-  {
-    return true;
-  }
-  
-  public void onClose()
-  {
-    if (this.jdField_a_of_type_Akjo == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    akho.a(localQQAppInterface, this.jdField_a_of_type_Akjo);
-  }
-  
-  public void onEnter()
+  public void onInstalledFailed(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "onEnter: " + this.jdField_a_of_type_Akjo + " / " + this.b + " / " + this.jdField_a_of_type_Int + " / " + this.jdField_a_of_type_JavaLangString);
+      QLog.d(akjs.a(this.a.this$0), 2, "onInstalledFailed:" + paramInt);
     }
-    if (this.jdField_a_of_type_Akjo == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    Object localObject3 = QQBrowserActivity.class;
-    Object localObject1 = localObject3;
-    if (!TextUtils.isEmpty(this.b)) {}
-    try
-    {
-      localObject1 = Class.forName(this.b);
-      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-      localObject3 = localBaseActivity;
-      if (localBaseActivity == null)
-      {
-        localObject3 = BaseApplicationImpl.getContext();
-        QLog.d("Q.recent.banner", 1, "sTopActivity is null,set Application context");
-      }
-      if (localObject3 != null)
-      {
-        localObject1 = new Intent(localQQAppInterface.getApp(), (Class)localObject1);
-        ((Intent)localObject1).setFlags(this.jdField_a_of_type_Int);
-        ((Intent)localObject1).putExtra("banner_fromBanner", true);
-        ((Intent)localObject1).putExtra("url", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject1).putExtra("banner_webview_extra", this.jdField_a_of_type_AndroidOsBundle);
-        ((Intent)localObject1).putExtra("force_no_reload", this.jdField_a_of_type_Boolean);
-      }
-      for (;;)
-      {
-        try
-        {
-          ((Context)localObject3).startActivity((Intent)localObject1);
-          akho.a(localQQAppInterface, this.jdField_a_of_type_Akjo);
-          return;
-        }
-        catch (Exception localException)
-        {
-          QLog.d("Q.recent.banner", 1, "startActivity,error =" + localException);
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.recent.banner", 2, "sTopActivity is null");
-        }
-      }
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        Object localObject2 = localObject3;
-      }
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "MediaPlayHelper");
+    localHashMap.put("param_erroCode", String.valueOf(paramInt));
+    localHashMap.put("param_result", "0");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
   }
   
-  public void onOverride()
+  public void onInstalledSuccessed()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "banner for " + this.jdField_a_of_type_JavaLangString + " is overrided");
+      QLog.d(akjs.a(this.a.this$0), 2, "onInstalledSuccessed");
     }
+    if ((this.a.this$0.b != null) && (this.a.this$0.a != null)) {
+      this.a.this$0.a.sendEmptyMessage(6);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "MediaPlayHelper");
+    localHashMap.put("param_erroCode", "0");
+    localHashMap.put("param_result", "1");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
   }
 }
 

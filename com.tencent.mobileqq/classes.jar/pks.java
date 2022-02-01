@@ -1,38 +1,18 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet.ConfigResult;
 
-public class pks
-  implements Manager
+public final class pks
+  implements Parcelable.Creator<AladdinConfigServlet.ConfigResult>
 {
-  private AppInterface a;
-  
-  public pks(AppInterface paramAppInterface)
+  public AladdinConfigServlet.ConfigResult a(Parcel paramParcel)
   {
-    QLog.i("ReadInJoyLogicManager", 1, "[ReadInJoyLogicManager] constructed.");
-    this.a = paramAppInterface;
-    a();
+    return new AladdinConfigServlet.ConfigResult(paramParcel);
   }
   
-  public pkm a()
+  public AladdinConfigServlet.ConfigResult[] a(int paramInt)
   {
-    return pkm.a();
-  }
-  
-  public void a()
-  {
-    pby.a();
-    pkm.a().a(this.a);
-  }
-  
-  public void b()
-  {
-    pkm.a().a(false);
-  }
-  
-  public void onDestroy()
-  {
-    b();
+    return new AladdinConfigServlet.ConfigResult[paramInt];
   }
 }
 

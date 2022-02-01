@@ -1,198 +1,386 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.image.RegionDrawableData;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.net.URL;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import mqq.manager.Manager;
 
 public class asqt
-  extends BaseAdapter
-  implements ajou
+  implements Manager
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private List<assv> jdField_a_of_type_JavaUtilList;
-  private Drawable b;
+  static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static final Object jdField_b_of_type_JavaLangObject = new Object();
+  protected SharedPreferences a;
+  private aslz jdField_a_of_type_Aslz = new asqu(this);
+  private asne jdField_a_of_type_Asne;
+  asro jdField_a_of_type_Asro;
+  asry jdField_a_of_type_Asry;
+  public asrz a;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public String a;
+  private WeakReference<asqy> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean = true;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean = true;
+  private String jdField_d_of_type_JavaLangString;
+  private boolean jdField_d_of_type_Boolean;
   
-  public asqt(Context paramContext)
+  public asqt(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130850678);
-    this.b = paramContext.getResources().getDrawable(2130839449);
+    this.jdField_a_of_type_Asrz = new asqv(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aslz);
+    this.jdField_a_of_type_AndroidContentSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
   }
   
-  private void a(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    boolean bool = true;
-    switch (paramInt)
+    if (paramQQAppInterface == null)
     {
-    case 4: 
-    case 5: 
-    case 7: 
-    default: 
-      paramInt = 0;
-      if (paramURLDrawable.isAnim()) {
-        break;
-      }
+      QLog.e("ExtendFriendLimitChatManager", 2, "getMatchSexTypeFromSp with null app");
+      return 0;
+    }
+    Card localCard = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramQQAppInterface.getCurrentAccountUin());
+    int i;
+    if (localCard == null)
+    {
+      QLog.i("ExtendFriendLimitChatManager", 2, "获取自己的资料卡性别，缓存中未获取到，使用默认值随机");
+      i = 0;
+      return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("sp_match_sex_type", i);
+    }
+    if (localCard.shGender == 0) {
+      i = 2;
     }
     for (;;)
     {
-      paramView.setTag(2131296390, Boolean.valueOf(bool));
-      if (bool) {
-        paramView.setTag(2131296389, Integer.valueOf(paramInt));
+      QLog.i("ExtendFriendLimitChatManager", 2, "获取自己的资料卡性别，defaultSex:" + i);
+      break;
+      if (localCard.shGender == 1) {
+        i = 1;
+      } else {
+        i = 0;
       }
+    }
+  }
+  
+  public static Boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null)
+    {
+      QLog.e("ExtendFriendLimitChatManager", 2, "getMatchSwitchOpenFromSp with null app");
+      return Boolean.valueOf(true);
+    }
+    return Boolean.valueOf(paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("sp_match_switch_type", false));
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    QLog.i("ExtendFriendLimitChatManager", 2, "getMatchSexTypeFromSp : " + paramInt);
+    if (paramQQAppInterface == null) {
+      QLog.e("ExtendFriendLimitChatManager", 2, "setMatchSexTypeToSp with null app");
+    }
+    do
+    {
       return;
-      paramInt = 1;
-      break;
-      paramInt = 2;
-      break;
-      paramInt = 3;
-      break;
-      bool = false;
+      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.putInt("sp_match_sex_type", paramInt).apply();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Boolean paramBoolean)
+  {
+    if (paramQQAppInterface == null) {
+      QLog.e("ExtendFriendLimitChatManager", 2, "setMatchSwitchToSp with null app");
     }
-  }
-  
-  public void a(List<assv> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
+    do
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560814, null);
-      paramView = new asqv(this, null);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368344));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378669));
-      paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView.findViewById(2131373018));
-      localView.setTag(paramView);
+      return;
+      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.putBoolean("sp_match_switch_type", paramBoolean.booleanValue()).apply();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ArrayList<asnt> paramArrayList)
+  {
+    if (paramQQAppInterface == null) {
+      QLog.e("ExtendFriendLimitChatManager", 2, "setTaglistToSp with null app");
     }
-    Object localObject1;
-    for (;;)
+    do
     {
-      localObject1 = (assv)getItem(paramInt);
-      if (localObject1 != null) {
-        break;
-      }
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject1 = (asqv)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject1;
+      return;
+      paramArrayList = asnt.a(paramArrayList);
+      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    } while ((paramArrayList == null) || (paramQQAppInterface == null));
+    paramQQAppInterface.putString("sp_tagList", paramArrayList).apply();
+  }
+  
+  public static Boolean b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null)
+    {
+      QLog.e("ExtendFriendLimitChatManager", 2, "getMatchSwitchFlagFromSp with null app");
+      return Boolean.valueOf(false);
     }
-    URL localURL = ((assv)localObject1).a();
-    int i = ((assv)localObject1).a();
-    if (localURL != null)
+    paramQQAppInterface = Boolean.valueOf(paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("sp_voice_match_switch_flag", false));
+    QLog.d("ExtendFriendLimitChatManager", 2, "getVoiceMatch " + paramQQAppInterface);
+    return paramQQAppInterface;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, Boolean paramBoolean)
+  {
+    if (paramQQAppInterface == null) {
+      QLog.e("ExtendFriendLimitChatManager", 2, "setVoiceMatchSwitchFlagToSp with null app");
+    }
+    do
     {
-      Object localObject2 = this.b;
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject2);
-      localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions.mPlayGifImage = true;
-      localURLDrawableOptions.mUseExifOrientation = false;
-      localObject2 = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
-      ((URLDrawable)localObject2).setTargetDensity(this.jdField_a_of_type_Int);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
-      if (((assv)localObject1).a())
+      return;
+      QLog.d("ExtendFriendLimitChatManager", 2, "setVoiceMatch " + paramBoolean);
+      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.putBoolean("sp_voice_match_switch_flag", paramBoolean.booleanValue()).apply();
+  }
+  
+  private void d()
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject1 == null) {}
+    do
+    {
+      return;
+      Object localObject2;
+      try
       {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        label246:
-        a(localView, (URLDrawable)localObject2, ((assv)localObject1).b());
-        if ((i != 1) || (!AsyncImageView.a(localURL)) || (!FileUtil.isFileExists(((assv)localObject1).b()))) {
-          break label321;
+        localObject1 = ((QQAppInterface)localObject1).getProxyManager().a();
+        Object localObject3 = ((aoxz)localObject1).getRecentList(false);
+        localObject2 = new ArrayList();
+        if ((localObject3 != null) && (((List)localObject3).size() > 0))
+        {
+          localObject3 = ((List)localObject3).iterator();
+          while (((Iterator)localObject3).hasNext())
+          {
+            RecentUser localRecentUser = (RecentUser)((Iterator)localObject3).next();
+            if ((localRecentUser.getType() == 1044) && (!localRecentUser.uin.equals(AppConstants.MATCH_CHAT_UIN))) {
+              ((List)localObject2).add(localRecentUser);
+            }
+          }
+          QLog.i("ExtendFriendLimitChatManager", 1, "[initLimitChatBox] toBeRemoved.size:" + ((List)localObject2).size());
         }
-        ((URLDrawable)localObject2).setTag(Integer.valueOf(1));
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("ExtendFriendLimitChatManager", 1, localThrowable, new Object[0]);
+        return;
+      }
+      if (((List)localObject2).size() > 0)
+      {
+        long l = ((RecentUser)((List)localObject2).get(0)).lastmsgtime;
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext()) {
+          localThrowable.delRecentUser((RecentUser)((Iterator)localObject2).next());
+        }
+      }
+    } while (this.jdField_a_of_type_AndroidContentSharedPreferences == null);
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("init_matchchat_folder", false).commit();
+  }
+  
+  public int a()
+  {
+    return a().a();
+  }
+  
+  public asro a()
+  {
+    if (this.jdField_a_of_type_Asro != null) {
+      return this.jdField_a_of_type_Asro;
+    }
+    synchronized (jdField_b_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Asro != null)
+      {
+        asro localasro1 = this.jdField_a_of_type_Asro;
+        return localasro1;
       }
     }
+    this.jdField_a_of_type_Asro = new asro(this);
+    asro localasro2 = this.jdField_a_of_type_Asro;
+    return localasro2;
+  }
+  
+  public asry a()
+  {
+    if (this.jdField_a_of_type_Asry != null) {
+      return this.jdField_a_of_type_Asry;
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Asry != null)
+      {
+        asry localasry1 = this.jdField_a_of_type_Asry;
+        return localasry1;
+      }
+    }
+    this.jdField_a_of_type_Asry = new asry(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Asry.a(this.jdField_a_of_type_Asrz);
+    asry localasry2 = this.jdField_a_of_type_Asry;
+    return localasry2;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Asne != null) {
+      return this.jdField_a_of_type_Asne.jdField_b_of_type_JavaLangString;
+    }
+    return "";
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Asne = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    a().b(101, paramInt);
+  }
+  
+  public void a(asnt paramasnt)
+  {
+    int i = 1;
+    if (paramasnt != null) {
+      i = paramasnt.a;
+    }
+    a().b(102, i);
+  }
+  
+  public void a(asqy paramasqy)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramasqy);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(boolean paramBoolean, asnd paramasnd)
+  {
+    QLog.i("ExtendFriendLimitChat", 2, "handleGetSquareStrangerList onGetMatchFeedInfo success = " + paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_d_of_type_JavaLangString = paramString3;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    while (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
+      return false;
+    }
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("init_matchchat_folder", true);
+  }
+  
+  public boolean a(Context paramContext)
+  {
+    if (paramContext == null) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ExtendFriendLimitChatManager", 2, "showRealNameAuthDialog");
+    }
+    if ((!this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean))
+    {
+      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        this.jdField_b_of_type_JavaLangString = paramContext.getString(2131698776);
+      }
+      if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+        this.jdField_c_of_type_JavaLangString = paramContext.getString(2131698774);
+      }
+      if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
+        this.jdField_d_of_type_JavaLangString = "https://ti.qq.com/realname/index.html";
+      }
+      paramContext = bhdj.a(paramContext, 230, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, paramContext.getString(2131698775), paramContext.getString(2131698777), new asqw(this, paramContext), new asqx(this));
+      paramContext.setCancelable(false);
+      paramContext.show();
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    a().a(103);
+  }
+  
+  public Boolean c(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = false;
+    if (paramQQAppInterface != null)
+    {
+      bool = b(paramQQAppInterface).booleanValue();
+      if (!bool) {
+        break label69;
+      }
+      paramQQAppInterface = (aslo)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      if (paramQQAppInterface == null) {
+        break label81;
+      }
+      bool = paramQQAppInterface.h();
+    }
+    label69:
+    label81:
     for (;;)
     {
-      break;
-      paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-      break label246;
-      label321:
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-      continue;
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      if (!((assv)localObject1).b())
-      {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        localView.setTag(2131296386, Float.valueOf(1.0F));
-      }
+      QLog.d("ExtendFriendLimitChatManager", 2, "is voiceMatch ShowToUser " + bool);
+      return Boolean.valueOf(bool);
+      QLog.d("ExtendFriendLimitChatManager", 2, "is voiceMatchShowToUser xinyong not enough  ");
     }
   }
   
-  public View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void c()
   {
-    return null;
+    QLog.i("ExtendFriendLimitChatManager", 1, "[initManager], threadId:" + Thread.currentThread().getId());
+    if (a()) {
+      d();
+    }
   }
   
-  public void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void onDestroy()
   {
-    paramView = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (paramView != null)
+    if (this.jdField_a_of_type_Asry != null)
     {
-      if (paramView.getStatus() == 0) {
-        paramView.cancelDownload(true);
-      }
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+      this.jdField_a_of_type_Asry.b();
+      this.jdField_a_of_type_Asry = null;
     }
-  }
-  
-  public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
-  {
-    paramView = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (paramView != null) {
-      paramView.updateRegionBitmap(paramRegionDrawableData);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aslz);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
     }
+    this.jdField_a_of_type_Asne = null;
   }
-  
-  public void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup) {}
-  
-  public void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean) {}
-  
-  public void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup) {}
 }
 
 

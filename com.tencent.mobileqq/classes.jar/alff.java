@@ -1,22 +1,25 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public class alff
-  implements Animation.AnimationListener
+class alff
+  implements View.OnClickListener
 {
-  public alff(SpecailCareListActivity paramSpecailCareListActivity) {}
+  private final int jdField_a_of_type_Int;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public alff(int paramInt, MqqHandler paramMqqHandler)
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(8);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,37 +1,11 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import java.util.List;
 
-class ayml
-  implements AdapterView.OnItemClickListener
+abstract interface ayml
 {
-  ayml(aymj paramaymj) {}
+  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if (aymj.a(this.a).isShowing()) {
-      aymj.a(this.a).dismiss();
-    }
-    int i = -1;
-    switch ((int)paramLong)
-    {
-    }
-    for (;;)
-    {
-      if (aymj.a(this.a) != null) {
-        aymj.a(this.a).a(i, aymj.a(this.a));
-      }
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
-      aymj.a(this.a);
-      i = 0;
-      continue;
-      aymj.b(this.a);
-      i = 2;
-    }
-  }
+  public abstract void a(List<RedTouchItem> paramList);
 }
 
 

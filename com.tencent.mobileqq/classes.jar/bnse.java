@@ -1,10 +1,18 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.view.TabLayout;
 
-public abstract interface bnse
+public class bnse
+  implements View.OnClickListener
 {
-  public abstract void a(@NonNull ArrayList<bnsf> paramArrayList, @NonNull Context paramContext);
+  public bnse(TabLayout paramTabLayout, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_DovComQqImAeViewTabLayout.a(this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

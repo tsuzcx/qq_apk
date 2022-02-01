@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.album.adapter;
 
-import blky;
+import bmyh;
 import java.util.List;
 
 public class AEAlbumListAdapter$1
   implements Runnable
 {
-  public AEAlbumListAdapter$1(blky paramblky, List paramList) {}
+  public AEAlbumListAdapter$1(bmyh parambmyh, List paramList) {}
   
   public void run()
   {

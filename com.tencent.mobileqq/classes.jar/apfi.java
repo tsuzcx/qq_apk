@@ -1,10 +1,8 @@
-import android.view.MotionEvent;
-
 public abstract interface apfi
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
   
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public abstract void a(float[] paramArrayOfFloat);
 }
 
 

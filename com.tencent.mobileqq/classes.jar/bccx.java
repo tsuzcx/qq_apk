@@ -1,27 +1,56 @@
-public class bccx
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import java.util.ArrayList;
+
+public abstract class bccx
+  extends bcfk
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = "";
-  public String p = "";
-  public String q = "";
-  public String r = "";
-  public String s = "";
-  public String t = "";
-  public String u = "";
-  public String v = "";
+  protected QQAppInterface a;
+  protected FTSEntity a;
+  protected CharSequence a;
+  protected String a;
+  protected ArrayList<String> a;
+  protected CharSequence b;
+  protected CharSequence c;
+  private CharSequence d;
+  
+  public bccx(QQAppInterface paramQQAppInterface, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity = paramFTSEntity;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence b()
+  {
+    if (this.d == null) {
+      this.d = bcnc.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mContent, this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mProximityStart, this.jdField_a_of_type_JavaUtilArrayList);
+    }
+    return this.d;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public CharSequence d()
+  {
+    return null;
+  }
+  
+  public abstract CharSequence e();
 }
 
 

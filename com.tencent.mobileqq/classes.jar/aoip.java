@@ -1,21 +1,34 @@
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetNearbyRecommender;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
+
 public class aoip
+  extends CardObserver
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public aoip(GetNearbyRecommender paramGetNearbyRecommender) {}
   
-  public String toString()
+  public void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("skuId:").append(this.c).append(",skuName:").append(this.d).append(",skuPrice:").append(this.e).append(",imageUrl:").append(this.b).append(",detailUrl:").append(this.a);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "GetNearbyRecommender onGetDetailInfo|uin=" + paramString);
+    }
+    if (!this.a.a.app.getCurrentAccountUin().equals(paramString)) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoip
  * JD-Core Version:    0.7.0.1
  */

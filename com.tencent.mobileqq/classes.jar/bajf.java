@@ -1,152 +1,150 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import java.io.File;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.utils.SilkCodecWrapper;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bajf
-  extends BrowserBaseModel
 {
-  private void b(AIOFileVideoData paramAIOFileVideoData, Context paramContext, bakr parambakr)
-  {
-    paramAIOFileVideoData = new bajg(this, paramContext, paramAIOFileVideoData, parambakr);
-    aszg.a(paramContext, paramContext.getString(2131692374), paramContext.getString(2131692376), paramAIOFileVideoData);
-  }
+  private baim jdField_a_of_type_Baim;
+  private bajg jdField_a_of_type_Bajg;
+  private bhik jdField_a_of_type_Bhik;
+  private boolean jdField_a_of_type_Boolean;
   
-  private boolean c(AIOFileVideoData paramAIOFileVideoData)
+  public bajf(QQRecorder.RecorderParam paramRecorderParam)
   {
-    if (a(paramAIOFileVideoData)) {}
-    do
+    try
     {
-      do
+      if (this.jdField_a_of_type_Baim == null)
       {
-        return false;
-      } while ((paramAIOFileVideoData == null) || (paramAIOFileVideoData.g) || (!aszt.a()));
-      if ((!TextUtils.isEmpty(paramAIOFileVideoData.jdField_a_of_type_JavaLangString)) && (paramAIOFileVideoData.jdField_c_of_type_Long > 0L) && (paramAIOFileVideoData.jdField_c_of_type_Long > paramAIOFileVideoData.e)) {
-        return true;
+        this.jdField_a_of_type_Bajg = new bajg();
+        this.jdField_a_of_type_Baim = new baim();
+        this.jdField_a_of_type_Baim.a(new SilkCodecWrapper(BaseApplication.getContext()));
+        this.jdField_a_of_type_Baim.a(paramRecorderParam.jdField_a_of_type_Int, paramRecorderParam.b, paramRecorderParam.c);
+        this.jdField_a_of_type_Baim.a(this.jdField_a_of_type_Bajg);
       }
-    } while (paramAIOFileVideoData.jdField_c_of_type_Long <= 1048576L);
-    return true;
-  }
-  
-  public ajqi a(AIOFileVideoData paramAIOFileVideoData, boolean paramBoolean)
-  {
-    boolean bool = false;
-    ajqi localajqi = new ajqi();
-    localajqi.jdField_a_of_type_ArrayOfJavaLangString = new String[] { paramAIOFileVideoData.jdField_d_of_type_JavaLangString };
-    localajqi.jdField_a_of_type_JavaUtilArrayList = paramAIOFileVideoData.jdField_a_of_type_JavaUtilArrayList;
-    if (!a(paramAIOFileVideoData)) {
-      bool = true;
-    }
-    localajqi.jdField_a_of_type_Boolean = bool;
-    if (localajqi.jdField_a_of_type_Boolean) {}
-    for (String str = "";; str = paramAIOFileVideoData.jdField_c_of_type_JavaLangString)
-    {
-      localajqi.jdField_a_of_type_JavaLangString = str;
-      localajqi.jdField_c_of_type_Long = paramAIOFileVideoData.progress;
-      localajqi.jdField_b_of_type_Boolean = true;
-      localajqi.jdField_b_of_type_Long = paramAIOFileVideoData.jdField_c_of_type_Long;
-      localajqi.jdField_a_of_type_Long = paramAIOFileVideoData.jdField_a_of_type_Long;
-      localajqi.jdField_b_of_type_Int = paramAIOFileVideoData.jdField_a_of_type_Int;
-      localajqi.e = paramBoolean;
-      localajqi.jdField_a_of_type_AndroidOsBundle = paramAIOFileVideoData.jdField_a_of_type_AndroidOsBundle;
-      return localajqi;
-    }
-  }
-  
-  public Drawable a(AIOFileVideoData paramAIOFileVideoData)
-  {
-    URLDrawable localURLDrawable = null;
-    File localFile = a(paramAIOFileVideoData);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-    if ((localFile != null) && (BaseApplicationImpl.sImageCache.get(a(paramAIOFileVideoData)) != null)) {
-      localURLDrawable = URLDrawable.getDrawable(a(paramAIOFileVideoData), localURLDrawableOptions);
-    }
-    while (localFile == null) {
-      return localURLDrawable;
-    }
-    paramAIOFileVideoData = URLDrawable.getDrawable(a(paramAIOFileVideoData), localURLDrawableOptions);
-    paramAIOFileVideoData.downloadImediatly();
-    return paramAIOFileVideoData;
-  }
-  
-  public File a(AIOFileVideoData paramAIOFileVideoData)
-  {
-    if ((paramAIOFileVideoData == null) || (!FileUtil.fileExistsAndNotEmpty(paramAIOFileVideoData.b))) {
-      return null;
-    }
-    return new File(paramAIOFileVideoData.b);
-  }
-  
-  public String a(AIOFileVideoData paramAIOFileVideoData)
-  {
-    if ((paramAIOFileVideoData == null) || (TextUtils.isEmpty(paramAIOFileVideoData.b))) {
-      return "";
-    }
-    if (!paramAIOFileVideoData.b.startsWith("/")) {
-      return "file:/" + paramAIOFileVideoData.b;
-    }
-    if (paramAIOFileVideoData.b.startsWith("//")) {
-      return "file:" + paramAIOFileVideoData.b;
-    }
-    return "file:" + paramAIOFileVideoData.b;
-  }
-  
-  public void a(AIOFileVideoData paramAIOFileVideoData, Context paramContext, bakr parambakr)
-  {
-    if (c(paramAIOFileVideoData))
-    {
-      if (ataw.a(paramContext, false, new bajh(this, parambakr))) {
-        b(paramAIOFileVideoData, paramContext, parambakr);
+      if ((this.jdField_a_of_type_Bhik == null) || (this.jdField_a_of_type_Bhik.jdField_a_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Bhik = new bhik();
+        if (this.jdField_a_of_type_Boolean) {
+          this.jdField_a_of_type_Bhik.c();
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Bhik.a();
+          return;
+          this.jdField_a_of_type_Bhik.d();
+        }
       }
       return;
     }
-    parambakr.i();
-  }
-  
-  public boolean a(AIOFileVideoData paramAIOFileVideoData)
-  {
-    if (paramAIOFileVideoData != null)
+    catch (IOException paramRecorderParam)
     {
-      if ((TextUtils.isEmpty(paramAIOFileVideoData.jdField_c_of_type_JavaLangString)) && (paramAIOFileVideoData.jdField_a_of_type_AndroidOsBundle != null)) {
-        paramAIOFileVideoData.jdField_c_of_type_JavaLangString = paramAIOFileVideoData.jdField_a_of_type_AndroidOsBundle.getString("savepath");
-      }
-      if (FileUtils.fileExistsAndNotEmpty(paramAIOFileVideoData.jdField_c_of_type_JavaLangString))
+      paramRecorderParam.printStackTrace();
+    }
+  }
+  
+  public baji a(byte[] paramArrayOfByte)
+  {
+    int j = 0;
+    for (;;)
+    {
+      try
       {
-        paramAIOFileVideoData.jdField_d_of_type_Boolean = true;
-        return true;
+        long l1 = System.currentTimeMillis();
+        Object localObject = new ArrayList();
+        int i = 0;
+        baij localbaij;
+        if (i < paramArrayOfByte.length)
+        {
+          int k = Math.min(paramArrayOfByte.length - i, 6400);
+          localbaij = this.jdField_a_of_type_Baim.a(paramArrayOfByte, i, k);
+          i += k;
+          ((List)localObject).add(localbaij);
+        }
+        else
+        {
+          long l2;
+          i = 2000;
+        }
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        paramArrayOfByte = null;
+        return paramArrayOfByte;
+        paramArrayOfByte = ((List)localObject).iterator();
+        i = 0;
+        if (paramArrayOfByte.hasNext())
+        {
+          i = ((baij)paramArrayOfByte.next()).jdField_a_of_type_Int + i;
+        }
+        else
+        {
+          paramArrayOfByte = new byte[i];
+          localObject = ((List)localObject).iterator();
+          i = j;
+          if (((Iterator)localObject).hasNext())
+          {
+            localbaij = (baij)((Iterator)localObject).next();
+            System.arraycopy(localbaij.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, i, localbaij.jdField_a_of_type_Int);
+            i = localbaij.jdField_a_of_type_Int + i;
+          }
+          else
+          {
+            l2 = System.currentTimeMillis();
+            bakl.a("VoiceBeanProcessor", "silk encode time:" + (l2 - l1));
+            if (this.jdField_a_of_type_Bajg != null)
+            {
+              i = this.jdField_a_of_type_Bajg.a();
+              paramArrayOfByte = new baji(paramArrayOfByte, i);
+            }
+          }
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Baim != null)
+      {
+        this.jdField_a_of_type_Baim.a();
+        this.jdField_a_of_type_Baim = null;
+      }
+      if (this.jdField_a_of_type_Bhik != null)
+      {
+        this.jdField_a_of_type_Bhik.b();
+        this.jdField_a_of_type_Bhik = null;
       }
     }
-    if ((paramAIOFileVideoData != null) && (paramAIOFileVideoData.jdField_d_of_type_JavaLangString == null)) {
-      paramAIOFileVideoData.jdField_d_of_type_Boolean = false;
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        localIOException.printStackTrace();
+      }
     }
-    return false;
+    finally {}
   }
   
-  public boolean a(AIOFileVideoData paramAIOFileVideoData, baiv parambaiv)
+  public boolean a(byte[] paramArrayOfByte)
   {
-    if ((paramAIOFileVideoData == null) || (a(paramAIOFileVideoData)) || (parambaiv == null)) {}
-    while ((!TextUtils.isEmpty(paramAIOFileVideoData.jdField_d_of_type_JavaLangString)) && (paramAIOFileVideoData.jdField_a_of_type_JavaUtilArrayList != null)) {
-      return false;
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Bhik.a(paramArrayOfByte, this.jdField_a_of_type_Boolean);
+      return bool;
     }
-    parambaiv.downloadMedia(paramAIOFileVideoData.jdField_a_of_type_Long, paramAIOFileVideoData.jdField_a_of_type_Int, 16842753);
-    return true;
-  }
-  
-  public boolean b(AIOFileVideoData paramAIOFileVideoData)
-  {
-    return !TextUtils.isEmpty(paramAIOFileVideoData.f);
+    finally
+    {
+      paramArrayOfByte = finally;
+      throw paramArrayOfByte;
+    }
   }
 }
 

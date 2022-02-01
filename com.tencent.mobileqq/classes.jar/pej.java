@@ -1,22 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.util.DisplayUtil;
+import java.util.List;
 
-public class pej
+class pej
+  extends pfe
 {
-  public static int a(Context paramContext)
+  pej(pdv parampdv, boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    if (pay.u()) {
-      return DisplayUtil.dip2px(paramContext, 8.0F);
-    }
-    return DisplayUtil.dip2px(paramContext, 3.0F);
+    super(parampdv, null);
   }
   
-  public static int b(Context paramContext)
+  void a(pfh parampfh)
   {
-    if (pay.u()) {
-      return DisplayUtil.dip2px(paramContext, 14.0F);
-    }
-    return DisplayUtil.dip2px(paramContext, 6.0F);
+    parampfh.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 2);
   }
 }
 

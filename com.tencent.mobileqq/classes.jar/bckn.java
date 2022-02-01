@@ -1,23 +1,14 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 class bckn
-  implements AdExposureChecker.ExposureCallback
 {
-  bckn(bckm parambckm, ajvj paramajvj, Context paramContext, GdtAd paramGdtAd) {}
+  int jdField_a_of_type_Int = -1;
+  WeakReference<bcke> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onExposure(WeakReference<View> paramWeakReference)
+  public bckn(int paramInt, bcke parambcke)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletGdtAdManager_StructMsgItemLayout31", 2, "reportImpression...");
-    }
-    this.jdField_a_of_type_Ajvj.a(this.jdField_a_of_type_AndroidContentContext, 1);
-    this.jdField_a_of_type_Ajvj.a(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForImpression());
-    ajvj.a("public.tailplace.show", "", "", "1", "");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambcke);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork;
 
-import bcvy;
+import becx;
 
 public final class TenDocWebPreLoadHelper$1
   implements Runnable
@@ -9,12 +9,12 @@ public final class TenDocWebPreLoadHelper$1
   
   public void run()
   {
-    bcvy.b(this.a);
+    becx.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocWebPreLoadHelper.1
  * JD-Core Version:    0.7.0.1
  */

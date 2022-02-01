@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
+import aido;
 
 class PublicAccountChatPie$57$1
   implements Runnable

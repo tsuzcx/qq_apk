@@ -1,48 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-
-class lhf
-  implements lha
+public class lhf
 {
-  lhf(lhe paramlhe) {}
+  public int a;
+  public String a;
+  public int b = 2;
+  public int c = 2;
+  public int d = 5000;
   
-  public void a(long paramLong, String paramString)
+  public lhf()
   {
-    lba.f("AVMagicfacePlayer", "play video begin." + paramString);
-    if (this.a.jdField_b_of_type_Lha != null) {
-      this.a.jdField_b_of_type_Lha.a(paramLong, paramString);
-    }
+    this.jdField_a_of_type_Int = 5000;
+    this.jdField_a_of_type_JavaLangString = anvx.a(2131703454);
   }
   
-  public void a(long paramLong, String arg3, int paramInt)
+  public String a(String paramString)
   {
-    QLog.w("AVMagicfacePlayer", 1, "onEndMagicPlay, id[" + ??? + "], reason[" + paramInt + "], seq[" + paramLong + "]");
-    if (this.a.jdField_b_of_type_Lha != null) {
-      this.a.jdField_b_of_type_Lha.a(paramLong, ???, paramInt);
-    }
-    synchronized (this.a)
-    {
-      if ((this.a.jdField_b_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_Lhc != null)) {
-        this.a.a(paramLong, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Lhc, this.a.jdField_a_of_type_Lhb, this.a.jdField_a_of_type_Lha);
-      }
-      return;
-    }
-  }
-  
-  public void a(long paramLong, String paramString, boolean paramBoolean)
-  {
-    lba.f("AVMagicfacePlayer", "play audio begin. id = " + paramString + ", repeat = " + paramBoolean);
-    if (paramBoolean)
-    {
-      this.a.a(this.a.jdField_a_of_type_JavaLangString, 100);
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_JavaLangString, 1);
-  }
-  
-  public void b(long paramLong, String paramString)
-  {
-    lba.f("AVMagicfacePlayer", "play audio end. id = " + paramString);
-    this.a.a(this.a.jdField_a_of_type_JavaLangString);
+    return this.jdField_a_of_type_JavaLangString.replace("voicesticker", paramString);
   }
 }
 

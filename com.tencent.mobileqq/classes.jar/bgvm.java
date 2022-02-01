@@ -1,26 +1,99 @@
-import android.graphics.Bitmap;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-class bgvm
-  extends bgvo
+public class bgvm
+  implements bjms
 {
-  bgvm(bgvj parambgvj)
+  private bgvn jdField_a_of_type_Bgvn;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bgvm(String paramString, bgvn parambgvn)
   {
-    super(parambgvj);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bgvn = parambgvn;
   }
   
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle)
   {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    int i = -20;
+    if (paramString1.equals(BaseApplicationImpl.sApplication.getPackageName()))
+    {
+      if (this.jdField_a_of_type_JavaLangString == null)
+      {
+        paramString1 = null;
+        paramInt = -1;
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Bgvn != null) {
+          this.jdField_a_of_type_Bgvn.a(paramInt);
+        }
+        QLog.d("UpgradeController", 1, "writeCodeToApk:" + this.jdField_a_of_type_JavaLangString + ", forFile:" + paramString2 + " result: " + paramInt, paramString1);
+        return paramInt;
+        if (this.jdField_a_of_type_JavaLangString.length() == 0)
+        {
+          paramString1 = null;
+          paramInt = 0;
+        }
+        else
+        {
+          try
+          {
+            paramString1 = new File(paramString2);
+            paramBundle = new File(paramString2 + "~tmp");
+            if (paramBundle.exists()) {
+              paramBundle.delete();
+            }
+            paramString1.renameTo(paramBundle);
+            bkwg.a(paramBundle, this.jdField_a_of_type_JavaLangString);
+            paramBundle.renameTo(paramString1);
+            paramString1 = null;
+            paramInt = 0;
+          }
+          catch (FileNotFoundException paramString1)
+          {
+            paramInt = -30;
+          }
+          catch (IOException paramString1)
+          {
+            paramInt = i;
+            if (paramString1 != null)
+            {
+              paramInt = i;
+              if (paramString1.getMessage() != null)
+              {
+                paramInt = i;
+                if (paramString1.getMessage().contains("space")) {
+                  paramInt = -10;
+                }
+              }
+            }
+          }
+          catch (Exception paramString1)
+          {
+            paramInt = -20;
+          }
+        }
+      }
+    }
+    return -1;
   }
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  public void a(String paramString, int paramInt, Bundle paramBundle)
   {
-    return a(paramWebView, paramString);
+    if (BaseApplicationImpl.sApplication.getPackageName().equals(paramString))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("UpgradeController", 4, "syncVersionCodeToTool:" + paramString + ", versionCode:" + paramInt);
+      }
+      if ((this.jdField_a_of_type_Bgvn != null) && (!this.jdField_a_of_type_Bgvn.a(paramInt))) {
+        this.jdField_a_of_type_JavaLangString = null;
+      }
+    }
   }
 }
 

@@ -1,33 +1,16 @@
-import android.graphics.Rect;
-import java.util.ArrayList;
-import java.util.Comparator;
+import com.tencent.ark.ark.VariantWrapper;
 
-class apsr
-  implements Comparator<Rect>
+public abstract interface apsr
 {
-  apsr(apsq paramapsq) {}
+  public abstract String a();
   
-  public int a(Rect paramRect1, Rect paramRect2)
-  {
-    if (this.a.g.contains(paramRect1)) {}
-    do
-    {
-      do
-      {
-        return 1;
-        if (this.a.g.contains(paramRect2)) {
-          return -1;
-        }
-        if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {
-          return -1;
-        }
-      } while (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width());
-      if (paramRect1.width() > paramRect2.width()) {
-        return -1;
-      }
-    } while (paramRect1.width() < paramRect2.width());
-    return 0;
-  }
+  public abstract void a(apsl paramapsl, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract boolean b();
 }
 
 

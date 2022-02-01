@@ -1,7 +1,4 @@
-public abstract interface uqb
-{
-  public abstract upq a(ups paramups);
-}
+class uqb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

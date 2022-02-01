@@ -1,16 +1,38 @@
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import NS_MOBILE_EXTRA.mobile_get_urlinfo_req;
+import QMF_PROTOCAL.RetryInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class awal
-  implements avzi
+  extends QzoneExternalRequest
 {
-  public awal(MultiCardFragment paramMultiCardFragment) {}
+  private JceStruct a;
   
-  public void a(boolean paramBoolean)
+  public awal(String paramString)
   {
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).setViewPagerBusy(paramBoolean);
-    }
+    mobile_get_urlinfo_req localmobile_get_urlinfo_req = new mobile_get_urlinfo_req();
+    localmobile_get_urlinfo_req.url = paramString;
+    this.a = localmobile_get_urlinfo_req;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getUrlInfo";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public Object getRetryInfo()
+  {
+    return new RetryInfo((short)0, 0, System.currentTimeMillis());
+  }
+  
+  public String uniKey()
+  {
+    return "getUrlInfo";
   }
 }
 

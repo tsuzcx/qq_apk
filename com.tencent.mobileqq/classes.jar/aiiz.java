@@ -1,37 +1,97 @@
-import android.app.Activity;
-import android.view.View;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public abstract interface aiiz
+public class aiiz
+  extends aqwt<aiiy>
 {
-  public abstract Activity a();
+  @NonNull
+  public aiiy a(int paramInt)
+  {
+    return new aiiy();
+  }
   
-  public abstract View a();
+  @Nullable
+  public aiiy a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      aiiy localaiiy = aiiy.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("AdEmoConfigProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
+      }
+      return localaiiy;
+    }
+    return null;
+  }
   
-  public abstract TextView a();
+  public QQAppInterface a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("getApp, runtime is null ?  ");
+      if (localAppRuntime != null) {
+        break label70;
+      }
+    }
+    label70:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("AdEmoConfigProcessor", 2, bool + " , runtime instanceof QQAppInterface ? " + (localAppRuntime instanceof QQAppInterface));
+      if (!(localAppRuntime instanceof QQAppInterface)) {
+        break;
+      }
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
   
-  public abstract atky a();
+  public void a(aiiy paramaiiy)
+  {
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface != null)
+    {
+      String str = localQQAppInterface.getCurrentUin();
+      aiix.a(localQQAppInterface.getApp(), str, paramaiiy.a);
+    }
+  }
   
-  public abstract bjmp a();
+  public Class<aiiy> clazz()
+  {
+    return aiiy.class;
+  }
   
-  public abstract QQAppInterface a();
+  public boolean isAccountRelated()
+  {
+    return super.isAccountRelated();
+  }
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
   
-  public abstract void a(Runnable paramRunnable);
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
   
-  public abstract void a(String paramString);
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
   
-  public abstract boolean a();
+  public void onReqFailed(int paramInt) {}
   
-  public abstract View b();
-  
-  public abstract boolean b();
-  
-  public abstract View c();
-  
-  public abstract View d();
+  public int type()
+  {
+    return 657;
+  }
 }
 
 

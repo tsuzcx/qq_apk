@@ -1,45 +1,27 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.utils.FileUtils;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
 
 public class bocg
-  extends AsyncTask<Void, Void, Integer>
+  implements Animator.AnimatorListener
 {
-  public bocg(SVHwEncoder.HwEncode paramHwEncode) {}
+  public bocg(AEEditorTextControlPanel paramAEEditorTextControlPanel) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    long l = System.currentTimeMillis();
-    paramVarArgs = SVHwEncoder.HwEncode.a(this.a) + "shortvideo_thumb.jpg";
-    int j = this.a.a.a(SVHwEncoder.HwEncode.b(this.a), SVHwEncoder.f(this.a.this$0), SVHwEncoder.g(this.a.this$0), SVHwEncoder.a(this.a.this$0), SVHwEncoder.b(this.a.this$0), paramVarArgs);
-    int i = j;
-    String str;
-    if (j == 0)
-    {
-      str = ShortVideoUtils.a(this.a.a.jdField_a_of_type_JavaLangString, "jpg");
-      if (!FileUtils.rename(paramVarArgs, str)) {
-        break label177;
-      }
-      this.a.a.b = str;
-      i = j;
-    }
-    for (;;)
-    {
-      this.a.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-      this.a.a.jdField_a_of_type_Int = i;
-      SVHwEncoder.HwEncode.a(this.a, true);
-      return Integer.valueOf(i);
-      label177:
-      i = j;
-      if (!FileUtils.fileExistsAndNotEmpty(str))
-      {
-        this.a.this$0.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
-        i = -3;
-      }
-    }
+    AEEditorTextControlPanel.b(this.a, false);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AEEditorTextControlPanel.b(this.a, false);
+    AEEditorTextControlPanel.a(this.a);
+    this.a.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

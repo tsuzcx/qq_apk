@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import amtj;
 import android.support.v4.view.accessibility.AccessibilityEventCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityRecordCompat;
@@ -8,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerViewAccessibilityDelegate;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
+import anvx;
 
 public class VideoFeedsAccessibilityHelper$VideoFeedsRVAccessibilityDelegate
   extends RecyclerViewAccessibilityDelegate
@@ -21,7 +21,7 @@ public class VideoFeedsAccessibilityHelper$VideoFeedsRVAccessibilityDelegate
   {
     super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
     AccessibilityEventCompat.asRecord(paramAccessibilityEvent).setItemCount(0);
-    paramView.setContentDescription(amtj.a(2131715200));
+    paramView.setContentDescription(anvx.a(2131715548));
   }
   
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)

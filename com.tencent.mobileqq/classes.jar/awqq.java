@@ -1,81 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import mqq.manager.TicketManager;
-import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
+import android.content.res.TypedArray;
 
 public class awqq
 {
   public int a;
-  public awqs a;
-  public awqt a;
-  public AppInterface a;
+  public boolean a;
   public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
   
-  public awqq(AppInterface paramAppInterface)
+  public void a(TypedArray paramTypedArray)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  private boolean a(oidb_0xada.ReqBody paramReqBody)
-  {
-    paramReqBody.uid.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    paramReqBody.tinyid.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
-    String str = ((TicketManager)localObject).getA2(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
-    {
-      paramReqBody.a2.set(str);
-      paramReqBody.platform.set(1);
-      paramReqBody.version.set("8.4.8");
-      paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-      paramReqBody.original_key.set((String)localObject);
-      paramReqBody.original_id_type.set(1);
-      return true;
-    }
-    return false;
-  }
-  
-  public awqq a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public awqq a(awqs paramawqs)
-  {
-    this.jdField_a_of_type_Awqs = paramawqs;
-    return this;
-  }
-  
-  public awqq a(awqt paramawqt)
-  {
-    this.jdField_a_of_type_Awqt = paramawqt;
-    return this;
-  }
-  
-  public awqq a(byte[] paramArrayOfByte)
-  {
-    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
-    if (a(localReqBody))
-    {
-      localReqBody.cmd.set(this.jdField_a_of_type_Int);
-      localReqBody.subcmd.set(this.b);
-      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-      nmb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new awqr(this), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
-    }
-    return this;
-  }
-  
-  public awqq b(int paramInt)
-  {
-    this.b = paramInt;
-    return this;
+    this.jdField_a_of_type_Int = paramTypedArray.getDimensionPixelSize(19, 16);
+    this.jdField_b_of_type_Int = paramTypedArray.getInt(18, 255);
+    this.jdField_c_of_type_Int = paramTypedArray.getInt(20, 255);
+    this.d = paramTypedArray.getDimensionPixelSize(8, 20);
+    this.i = paramTypedArray.getDimensionPixelSize(9, 20);
+    this.j = paramTypedArray.getDimensionPixelSize(0, 15);
+    this.e = paramTypedArray.getDimensionPixelSize(4, 20);
+    this.f = paramTypedArray.getInt(2, 255);
+    this.g = paramTypedArray.getInt(5, 255);
+    this.h = paramTypedArray.getDimensionPixelSize(3, 20);
+    this.k = paramTypedArray.getDimensionPixelSize(12, 20);
+    this.jdField_a_of_type_Boolean = paramTypedArray.getBoolean(11, false);
+    this.l = paramTypedArray.getDimensionPixelSize(7, 10);
+    this.jdField_c_of_type_Boolean = paramTypedArray.getBoolean(6, false);
+    this.jdField_b_of_type_Boolean = paramTypedArray.getBoolean(1, true);
   }
 }
 

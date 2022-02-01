@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.data;
 
-import bcef;
-import beaj;
+import bdla;
+import bfhm;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.AccountDetail;
-import ugf;
+import uuc;
 
 public class TroopEntranceBar$1
   implements Runnable
 {
-  public TroopEntranceBar$1(beaj parambeaj) {}
+  public TroopEntranceBar$1(bfhm parambfhm) {}
   
   public void run()
   {
@@ -17,11 +17,11 @@ public class TroopEntranceBar$1
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
     {
       String str2 = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
-      AccountDetail localAccountDetail = ugf.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2);
+      AccountDetail localAccountDetail = uuc.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2);
       if (localAccountDetail != null) {
         str1 = localAccountDetail.uin;
       }
-      bcef.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "interest_data", "exp_tribechat_aio", 0, 0, str2, str1, "", "");
+      bdla.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "interest_data", "exp_tribechat_aio", 0, 0, str2, str1, "", "");
     }
   }
 }

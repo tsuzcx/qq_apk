@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.shortcutbar.importantmsg;
 
-import beur;
-import beuv;
+import bgbv;
+import bgbz;
 import java.util.HashMap;
 
 class ImportantMsgManager$6$1
@@ -11,13 +11,13 @@ class ImportantMsgManager$6$1
   
   public void run()
   {
-    if (beur.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.this$0).containsKey(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Long)))
+    if (bgbv.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.this$0).containsKey(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Long)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Beuv.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Long, (ImportantMsgItem)beur.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.this$0).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Long)));
+      this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Bgbz.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Long, (ImportantMsgItem)bgbv.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.this$0).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Long)));
       return;
     }
-    beur.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.this$0).put(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgItem);
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Beuv.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgItem);
+    bgbv.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.this$0).put(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgItem);
+    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Bgbz.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager$6.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgItem);
   }
 }
 

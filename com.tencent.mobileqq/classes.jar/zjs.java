@@ -1,75 +1,41 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.app.Activity;
-import android.graphics.Rect;
-import android.view.View;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import java.util.ArrayList;
-
 public class zjs
-  extends FlingGestureHandler
 {
-  private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  private CertifiedAccountMeta.StUser jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
-  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList;
+  int jdField_a_of_type_Int = 0;
+  short jdField_a_of_type_Short = 0;
+  byte[] jdField_a_of_type_ArrayOfByte = null;
   
-  public zjs(Activity paramActivity)
+  public zjs() {}
+  
+  public zjs(int paramInt, short paramShort, byte[] paramArrayOfByte)
   {
-    super(paramActivity);
-    paramActivity = new TopGestureLayout(paramActivity);
-    paramActivity.setInterceptScrollRLFlag(true);
-    setTopLayout(paramActivity);
-    if (this.mTopLayout != null)
-    {
-      paramActivity = new Rect();
-      this.mTopLayout.setInterceptTouchEventListener(new zjt(this, paramActivity));
-    }
-    onStart();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Short = paramShort;
   }
   
-  public void a(CertifiedAccountMeta.StUser paramStUser)
+  public int a()
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
+    return this.jdField_a_of_type_ArrayOfByte.length + 4;
   }
   
-  public void a(View paramView)
+  public long a()
   {
-    if (paramView == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-    } while (this.jdField_a_of_type_JavaUtilArrayList.contains(paramView));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
+    return znl.a(this.jdField_a_of_type_ArrayOfByte);
   }
   
-  public boolean a()
+  public String a()
   {
-    return true;
+    return new String(this.jdField_a_of_type_ArrayOfByte);
   }
   
-  public void flingRToL()
+  public String toString()
   {
-    if (this.mTopLayout != null)
-    {
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser == null) {
-        break label29;
-      }
-      zbh.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
-    }
-    label29:
-    while (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) {
-      return;
-    }
-    zbh.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    return String.format("{t: %s, l: %s, v: %s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Short.valueOf(this.jdField_a_of_type_Short), this.jdField_a_of_type_ArrayOfByte });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zjs
  * JD-Core Version:    0.7.0.1
  */

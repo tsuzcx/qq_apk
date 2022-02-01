@@ -1,9 +1,12 @@
 import android.widget.TextView;
+import com.tencent.widget.HorizontalListView;
 
 public class alhl
+  extends alhf
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public TextView a;
+  public HorizontalListView a;
+  public String a;
 }
 
 

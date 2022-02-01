@@ -1,23 +1,18 @@
-import android.content.ClipData;
-import android.view.View;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bfsy
+  implements DialogInterface.OnClickListener
 {
-  public ClipData a;
-  public View a;
-  File a;
+  public bfsy(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  bfsy(File paramFile, View paramView, ClipData paramClipData)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidContentClipData = paramClipData;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidContentClipData != null);
+    this.a.a(this.a.a);
+    if (ReciteRecordLayout.a(this.a) != null) {
+      ReciteRecordLayout.a(this.a).f();
+    }
   }
 }
 

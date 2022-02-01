@@ -1,43 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import qqcircle.QQCircleCountergroup.GetGroupCountRsp;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
 
-class bevg
-  implements VSDispatchObserver.onVSRspCallBack
+public class bevg
+  implements Animation.AnimationListener
 {
-  bevg(bevf parambevf) {}
+  public bevg(AudioRecordFragment paramAudioRecordFragment) {}
   
-  public void onReceive(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramBoolean) && ((paramObject instanceof QQCircleCountergroup.GetGroupCountRsp)))
-    {
-      paramVSBaseRequest = (QQCircleCountergroup.GetGroupCountRsp)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("QCircleMsgProcessor", 2, String.format(Locale.getDefault(), "rsp.content=%s,rsp.count=%d, rsp.hasMore=%d, rsp.iconUrl=%s, rsp.latestFeedTime=%s, rsp.timeInterval=%s", new Object[] { paramVSBaseRequest.content.get(), Integer.valueOf(paramVSBaseRequest.count.get()), Integer.valueOf(paramVSBaseRequest.hasMore.get()), paramVSBaseRequest.iconUrl.get(), Integer.valueOf(paramVSBaseRequest.latestFeedTime.get()), Integer.valueOf(paramVSBaseRequest.timeInterval.get()) }));
-      }
-      if ((paramVSBaseRequest.count.get() < 1) || (TextUtils.isEmpty(paramVSBaseRequest.content.get())))
-      {
-        QLog.d("QCircleMsgProcessor", 2, "rsp.count.get() < 1 || TextUtils.isEmpty(rsp.content.get())");
-        return;
-      }
-      bevf.a(this.a, paramVSBaseRequest);
-      bevf.a(this.a, NetConnInfoCenter.getServerTimeMillis() / 1000L);
-      bevf.b(this.a, paramVSBaseRequest.timeInterval.get());
-      bcef.b(null, "dc00898", "", String.valueOf(bevf.a(this.a)), "0X800B24E", "0X800B24E", 0, 0, "", "", "", "");
-      return;
-    }
-    QLog.e("QCircleMsgProcessor", 2, "retCode:" + paramLong + ", errMsg:" + paramString);
+    this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.a.jdField_b_of_type_AndroidViewView.setBackgroundColor(2130706432);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bevg
  * JD-Core Version:    0.7.0.1
  */

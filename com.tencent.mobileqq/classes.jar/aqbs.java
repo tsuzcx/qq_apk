@@ -1,41 +1,23 @@
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class aqbs
+class aqbs
+  extends bhyn
 {
-  public String a = "";
-  public String b = "";
+  aqbs(aqbo paramaqbo, String paramString, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
   
-  public static aqbs a(JSONObject paramJSONObject)
+  public void onDone(bhyo parambhyo)
   {
-    aqbs localaqbs = new aqbs();
-    if (paramJSONObject == null) {}
-    do
-    {
-      do
-      {
-        return localaqbs;
-        paramJSONObject = paramJSONObject.optJSONObject("anim_emoticon_count");
-      } while (paramJSONObject == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("QQSysAndEmojiConfProcessor", 2, "parse AnimCountConfBean: ");
-      }
-      if (paramJSONObject.has("model")) {
-        localaqbs.a = paramJSONObject.optString("model");
-      }
-    } while (!paramJSONObject.has("version"));
-    localaqbs.b = paramJSONObject.optString("version");
-    return localaqbs;
-  }
-  
-  public String toString()
-  {
-    return "{mAnimEmoVersion=" + this.b + ", mAnimEmoModel=" + this.a + "}";
+    super.onDone(parambhyo);
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, String.format("download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambhyo.a) }));
+    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onDownload(parambhyo.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbs
  * JD-Core Version:    0.7.0.1
  */

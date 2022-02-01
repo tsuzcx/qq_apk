@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aobk;
+import apem;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARTransferPromotionRenderable$20
   implements Runnable
 {
-  public ARTransferPromotionRenderable$20(aobk paramaobk, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3) {}
+  public ARTransferPromotionRenderable$20(apem paramapem, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3) {}
   
   public void run()
   {
-    aobk.b(this.this$0, aobk.f(this.this$0) + this.a.length);
-    QLog.i("ARTransferPromotionRenderable", 1, "insertWorldCupSpark. mInsertedSparkTotalCnt = " + aobk.f(this.this$0) + ", new cnt = " + this.a.length + ", px[0] = " + this.a[0] + ", py[0] = " + this.b[0] + ", degree[0] = " + this.c[0] + ", hasDrawedFrame = " + aobk.e(this.this$0));
-    if ((aobk.a(this.this$0) != null) && (aobk.e(this.this$0))) {
-      aobk.a(this.this$0).native_insertWorldCupSpark(this.a, this.b, this.c);
+    apem.b(this.this$0, apem.f(this.this$0) + this.a.length);
+    QLog.i("ARTransferPromotionRenderable", 1, "insertWorldCupSpark. mInsertedSparkTotalCnt = " + apem.f(this.this$0) + ", new cnt = " + this.a.length + ", px[0] = " + this.a[0] + ", py[0] = " + this.b[0] + ", degree[0] = " + this.c[0] + ", hasDrawedFrame = " + apem.e(this.this$0));
+    if ((apem.a(this.this$0) != null) && (apem.e(this.this$0))) {
+      apem.a(this.this$0).native_insertWorldCupSpark(this.a, this.b, this.c);
     }
   }
 }

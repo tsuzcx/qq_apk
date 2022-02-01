@@ -1,11 +1,14 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-
-public abstract class xdv
+class xdv
+  extends vzo<xdf>
 {
-  public int a;
+  xdv(xdu paramxdu) {}
   
-  public abstract void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt);
+  public void a(xdf paramxdf)
+  {
+    paramxdf.a(new xdw(this));
+  }
+  
+  public void c() {}
 }
 
 

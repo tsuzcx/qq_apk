@@ -8,8 +8,9 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 public final class QQCirclePay$StPayComm
   extends MessageMicro<StPayComm>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "myMoney" }, new Object[] { Long.valueOf(0L) }, StPayComm.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "myMoney", "myMoneyWithdrawal" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L) }, StPayComm.class);
   public final PBInt64Field myMoney = PBField.initInt64(0L);
+  public final PBInt64Field myMoneyWithdrawal = PBField.initInt64(0L);
 }
 
 

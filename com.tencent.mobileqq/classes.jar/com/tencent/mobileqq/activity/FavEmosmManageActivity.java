@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adgi;
-import aitt;
+import adxo;
+import ajpi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,11 +10,11 @@ import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import aqyi;
-import aqyx;
-import aqzb;
-import aqzk;
-import bcef;
+import ascs;
+import asdh;
+import asdl;
+import asdu;
+import bdla;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -23,12 +23,12 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class FavEmosmManageActivity
   extends IphoneTitleBarActivity
-  implements aqzk
+  implements asdu
 {
-  private aitt jdField_a_of_type_Aitt;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adgi(this);
-  private aqyi jdField_a_of_type_Aqyi;
-  private aqzb jdField_a_of_type_Aqzb;
+  private ajpi jdField_a_of_type_Ajpi;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adxo(this);
+  private ascs jdField_a_of_type_Ascs;
+  private asdl jdField_a_of_type_Asdl;
   
   private void a()
   {
@@ -47,9 +47,9 @@ public class FavEmosmManageActivity
         QLog.d("FavEmosmManageActivity", 2, "initParam fromSdkSetAvatar =  " + bool);
       }
     } while (!bool);
-    this.jdField_a_of_type_Aitt = new aitt(this);
-    this.jdField_a_of_type_Aitt.a(localIntent);
-    this.jdField_a_of_type_Aitt.a();
+    this.jdField_a_of_type_Ajpi = new ajpi(this);
+    this.jdField_a_of_type_Ajpi.a(localIntent);
+    this.jdField_a_of_type_Ajpi.a();
   }
   
   public void a(boolean paramBoolean)
@@ -85,12 +85,12 @@ public class FavEmosmManageActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559134);
+    super.setContentView(2131559162);
     int i = getIntent().getIntExtra("camera_emo_mode", 0);
-    this.jdField_a_of_type_Aqzb = new aqzb(this.app, this);
-    this.jdField_a_of_type_Aqzb.a(this);
-    this.jdField_a_of_type_Aqyi = aqyx.a(this.app, this.jdField_a_of_type_Aqzb, i);
-    this.jdField_a_of_type_Aqzb.a(this.jdField_a_of_type_Aqyi);
+    this.jdField_a_of_type_Asdl = new asdl(this.app, this);
+    this.jdField_a_of_type_Asdl.a(this);
+    this.jdField_a_of_type_Ascs = asdh.a(this.app, this.jdField_a_of_type_Asdl, i);
+    this.jdField_a_of_type_Asdl.a(this.jdField_a_of_type_Ascs);
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
     {
       paramBundle = new IntentFilter("com.tencent.mobileqq.action.update.emotiom");
@@ -99,8 +99,8 @@ public class FavEmosmManageActivity
       getApplicationContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     }
     a();
-    this.jdField_a_of_type_Aqyi.a();
-    this.jdField_a_of_type_Aqyi.g();
+    this.jdField_a_of_type_Ascs.a();
+    this.jdField_a_of_type_Ascs.g();
     return true;
   }
   
@@ -112,21 +112,21 @@ public class FavEmosmManageActivity
       getApplicationContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
     }
-    if (this.jdField_a_of_type_Aqyi.b) {
+    if (this.jdField_a_of_type_Ascs.b) {
       getApplicationContext().sendBroadcast(new Intent("com.tencent.mobileqq.action.update.emotiom"));
     }
-    if (this.jdField_a_of_type_Aitt != null) {
-      this.jdField_a_of_type_Aitt.e();
+    if (this.jdField_a_of_type_Ajpi != null) {
+      this.jdField_a_of_type_Ajpi.e();
     }
-    this.jdField_a_of_type_Aqyi.d();
+    this.jdField_a_of_type_Ascs.d();
   }
   
   public void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    if (this.jdField_a_of_type_Aitt != null)
+    if (this.jdField_a_of_type_Ajpi != null)
     {
-      this.jdField_a_of_type_Aitt.b(paramIntent);
+      this.jdField_a_of_type_Ajpi.b(paramIntent);
       return;
     }
     setIntent(paramIntent);
@@ -136,13 +136,13 @@ public class FavEmosmManageActivity
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Aqzb.b();
+    this.jdField_a_of_type_Asdl.b();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_Aqzb.a();
+    this.jdField_a_of_type_Asdl.a();
   }
   
   public void doOnStart()
@@ -157,20 +157,20 @@ public class FavEmosmManageActivity
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Aqyi != null) {
-      this.jdField_a_of_type_Aqyi.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Ascs != null) {
+      this.jdField_a_of_type_Ascs.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean onBackEvent()
   {
-    bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X80057D4", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_Aitt != null) {
-      this.jdField_a_of_type_Aitt.b();
+    bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X80057D4", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_Ajpi != null) {
+      this.jdField_a_of_type_Ajpi.b();
     }
-    if (this.jdField_a_of_type_Aqzb != null) {
-      this.jdField_a_of_type_Aqzb.g();
+    if (this.jdField_a_of_type_Asdl != null) {
+      this.jdField_a_of_type_Asdl.g();
     }
     return super.onBackEvent();
   }
@@ -184,7 +184,7 @@ public class FavEmosmManageActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FavEmosmManageActivity
  * JD-Core Version:    0.7.0.1
  */

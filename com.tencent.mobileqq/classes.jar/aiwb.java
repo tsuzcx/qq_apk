@@ -1,25 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
 
 public class aiwb
-  implements DialogInterface.OnCancelListener
+  implements ajjq
 {
-  private final WeakReference<ChatHistoryC2CAllFragment> a;
+  public aiwb(TroopView paramTroopView) {}
   
-  public aiwb(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a = new WeakReference(paramChatHistoryC2CAllFragment);
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = (ChatHistoryC2CAllFragment)this.a.get();
-    if ((localChatHistoryC2CAllFragment != null) && (localChatHistoryC2CAllFragment.getActivity() != null) && (!localChatHistoryC2CAllFragment.getActivity().isFinishing())) {
-      paramDialogInterface.dismiss();
+    if (TroopView.a(this.a) != null) {
+      TroopView.a(this.a).a(paramInt1, paramInt2);
     }
+    if (paramInt1 >= paramInt2) {
+      if (!TroopView.a(this.a))
+      {
+        TroopView.a(this.a, true);
+        if (this.a.a != null) {
+          this.a.a.a(TroopView.a(this.a));
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!TroopView.a(this.a));
+      TroopView.a(this.a, false);
+    } while (this.a.a == null);
+    this.a.a.a(TroopView.a(this.a));
   }
 }
 

@@ -1,31 +1,20 @@
-import android.os.Handler;
 import android.view.View;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter.1;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract class alid
-  extends BaseAdapter
-  implements AbsListView.OnScrollListener
+final class alid
+  implements Animation.AnimationListener
 {
-  protected Handler a;
-  public String a;
+  alid(View paramView, Animation paramAnimation) {}
   
-  private final void a(View paramView, Object paramObject, int paramInt, alie paramalie)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = a(paramInt);
-    if (localObject == null) {
-      return;
-    }
-    paramView = new BaseWhatASmoothAdapter.1(this, paramView, localObject, paramObject, paramInt, paramalie);
-    alie.a(paramalie, true);
-    alie.a(paramalie, paramView);
-    this.a.post(paramView);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  protected abstract Object a(int paramInt);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(View paramView, Object paramObject);
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,31 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import android.opengl.GLSurfaceView.EGLConfigChooser;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class amom
-  extends BroadcastReceiver
+  implements GLSurfaceView.EGLConfigChooser
 {
-  private amom(BaseActivity2 paramBaseActivity2) {}
+  private int a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public amom(int paramInt)
   {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+    QLog.i("ApolloSurfaceView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
+    this.a = paramInt;
+  }
+  
+  public EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  {
+    int i = this.a;
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
+    if (arrayOfInt[0] == 0)
     {
-      BaseActivity2.mAppForground = false;
-      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
+      QLog.e("ApolloSurfaceView", 1, "[ApolloConfigChooser], fail to set config");
+      return null;
     }
-    while (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
-      return;
-    }
-    BaseActivity2.mAppForground = GesturePWDUtils.isAppOnForegroundByTasks(paramContext);
-    GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
+    return arrayOfEGLConfig[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amom
  * JD-Core Version:    0.7.0.1
  */

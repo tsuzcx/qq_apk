@@ -1,108 +1,105 @@
-import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
-import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlServerRewardTaskModule.model.2;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import kotlin.Lazy;
-import kotlin.LazyKt;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.1;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.2;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.3;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.4;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlServerRewardTaskModule;", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterfaceForRewardTask$Stub;", "()V", "model", "Lcom/tencent/biz/pubaccount/readinjoy/reward/mvp/RIJRewardTaskTimingModel;", "getModel", "()Lcom/tencent/biz/pubaccount/readinjoy/reward/mvp/RIJRewardTaskTimingModel;", "model$delegate", "Lkotlin/Lazy;", "dailyMissionCount", "", "getCurrentTask", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "getLastTask", "getTaskProgress", "hasRead", "", "rowKey", "", "isEnable", "isNowInKanDianTab", "maxTaskTimeForArticleInMs", "maxTaskTimeWhenArticleStationaryInMs", "missionCompletedTimeInMs", "reportTaskCompleted", "", "type", "callback", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IReportTaskProgressCallback;", "setCurrentTask", "task", "setLastTask", "setRead", "taskCompletedToday", "updateTaskProgress", "timeInMs", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qzc
-  extends qyr
+public class qzc
 {
-  private final Lazy a = LazyKt.lazy((Function0)RIJAidlServerRewardTaskModule.model.2.INSTANCE);
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile qzc jdField_a_of_type_Qzc;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private final String b = nvf.a("4044") + "4044";
+  private final String c = BaseApplicationImpl.getApplication().getFilesDir().getParent() + "/txlib/" + "readinjoy_pts_jsc";
   
-  private final qzh a()
+  public static qzc a()
   {
-    return (qzh)this.a.getValue();
+    if (jdField_a_of_type_Qzc == null) {}
+    try
+    {
+      if (jdField_a_of_type_Qzc == null) {
+        jdField_a_of_type_Qzc = new qzc();
+      }
+      return jdField_a_of_type_Qzc;
+    }
+    finally {}
   }
   
-  public int a()
+  private void b()
   {
-    return a().b();
+    ThreadManager.excute(new PTSJSCLoader.3(this), 128, null, true);
   }
   
-  @Nullable
-  public RIJRewardTask a()
+  private boolean b()
   {
-    return a().a();
+    Object localObject = this.c + "/" + "pts_jsc_config.json";
+    boolean bool1 = FileUtils.fileExists(this.c + "/" + "libjsc.so");
+    boolean bool2 = qze.a((String)localObject);
+    jdField_a_of_type_JavaLangString = qze.b((String)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[checkInnerPTSJSCIsValid]").append("\n").append(", ptsJSCVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isJSCSoExists = ").append(bool1).append("\n").append(", isVersionSupport = ").append(bool2).append("\n");
+    QLog.i("PTSJSCLoader", 1, ((StringBuilder)localObject).toString());
+    return (bool1) && (bool2);
   }
   
-  public void a(int paramInt)
+  private void c()
   {
-    a().a(paramInt);
-  }
-  
-  public void a(@Nullable RIJRewardTask paramRIJRewardTask)
-  {
-    a().a(paramRIJRewardTask);
-  }
-  
-  public void a(@Nullable String paramString)
-  {
-    if (paramString != null) {
-      a().a(paramString);
+    try
+    {
+      ThreadManager.excute(new PTSJSCLoader.4(this), 64, null, false);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void a(@Nullable String paramString, int paramInt, @Nullable qyt paramqyt)
+  public void a()
   {
-    a().a(paramString, paramInt, (qxx)new qzd(paramqyt));
+    try
+    {
+      this.jdField_a_of_type_Boolean = false;
+      PTSJSCLoader.1 local1 = new PTSJSCLoader.1(this);
+      ThreadManager.getSubThreadHandler().postDelayed(local1, 10000L);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if (a())
+    {
+      QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], jsc has loaded, no need to load again.");
+      if (paramRunnable != null) {
+        ThreadManager.getFileThreadHandler().post(paramRunnable);
+      }
+      return;
+    }
+    if (b())
+    {
+      paramRunnable = new PTSJSCLoader.2(this, paramRunnable);
+      ThreadManager.getFileThreadHandler().post(paramRunnable);
+      return;
+    }
+    QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], pts jsc is not valid, load jsc so failed.");
+    c();
   }
   
   public boolean a()
   {
-    return ReadinjoyTabFrame.d_();
-  }
-  
-  public boolean a(@Nullable String paramString)
-  {
-    if (paramString != null) {
-      return a().a(paramString);
-    }
-    return false;
-  }
-  
-  public int b()
-  {
-    return a().a();
-  }
-  
-  @Nullable
-  public RIJRewardTask b()
-  {
-    return a().b();
-  }
-  
-  public void b(@Nullable RIJRewardTask paramRIJRewardTask)
-  {
-    a().b(paramRIJRewardTask);
-  }
-  
-  public boolean b()
-  {
-    return qxs.a();
-  }
-  
-  public int c()
-  {
-    return qxs.a();
-  }
-  
-  public int d()
-  {
-    return qxs.b();
-  }
-  
-  public int e()
-  {
-    return qxs.c();
-  }
-  
-  public int f()
-  {
-    return qxs.d();
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

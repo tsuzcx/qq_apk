@@ -1,40 +1,96 @@
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
 public class atkh
+  extends atkn
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  
-  public atkh(int paramInt1, String paramString, int paramInt2)
+  public atkh(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = a();
-    this.c = b();
-    this.d = (paramString + "_" + paramInt1 + "_" + paramInt2);
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    QLog.e("DefaultBubbleModel", 1, "error, this is a default bubble model.");
   }
   
-  private String a()
+  public int a()
   {
-    return "flutter_face_bmp_" + this.jdField_a_of_type_Int + "_" + this.jdField_a_of_type_JavaLangString + "_" + this.jdField_b_of_type_Int;
+    return 0;
   }
   
-  private String b()
+  public long a()
   {
-    return "flutter_face_path_" + this.jdField_a_of_type_Int + "_" + this.jdField_a_of_type_JavaLangString;
+    return 0L;
   }
   
-  public String toString()
+  public atfh a()
   {
-    return "DecodeRequest{faceType=" + this.jdField_a_of_type_Int + ", faceUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", faceShape=" + this.jdField_b_of_type_Int + '}';
+    return null;
+  }
+  
+  public atfk a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public List<Integer> a(int paramInt)
+  {
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, View paramView) {}
+  
+  protected void a(ChatMessage paramChatMessage) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public List<Integer> b(int paramInt)
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public int d()
+  {
+    return 0;
+  }
+  
+  public int e()
+  {
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atkh
  * JD-Core Version:    0.7.0.1
  */

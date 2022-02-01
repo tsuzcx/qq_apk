@@ -2,7 +2,7 @@ package com.tencent.mobileqq.profile.stickynote.vas;
 
 import QC.GetSuixintieSigFontRsp;
 import android.view.View;
-import ayps;
+import azun;
 
 class StickyNoteShopLayout$2$1
   implements Runnable
@@ -11,8 +11,8 @@ class StickyNoteShopLayout$2$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$2.this$0.findViewById(2131379587).setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$2.this$0.findViewById(2131368420).setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$2.this$0.findViewById(2131379899).setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$2.this$0.findViewById(2131368577).setVisibility(8);
     StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$2.this$0).a(this.jdField_a_of_type_QCGetSuixintieSigFontRsp.vItems, false);
   }
 }

@@ -1,97 +1,12 @@
-import android.os.Bundle;
-import android.widget.Toast;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.im.c2s.imax.IMaxService.RspBody;
-
 public class aukw
-  extends nmc
 {
-  int jdField_a_of_type_Int = 0;
-  nxq jdField_a_of_type_Nxq;
-  WeakReference<QQAppInterface> c;
+  public long a;
+  public String a;
   
-  public aukw(aukv paramaukv, int paramInt)
+  public aukw(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public aukw(aukv paramaukv, nxq paramnxq, QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_Nxq = paramnxq;
-    this.c = new WeakReference(paramQQAppInterface);
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    paramBundle = new IMaxService.RspBody();
-    if (QLog.isColorLevel()) {
-      QLog.i("ImaxAdNetPresenter", 2, "errorCode == " + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("ImaxAdNetPresenter", 2, "request service success");
-        }
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if ((!paramBundle.has()) || (paramBundle.int32_ret.get() != 0)) {
-          return;
-        }
-        paramInt = paramBundle.int32_type.get();
-        if ((paramInt == 2) && (this.jdField_a_of_type_Int == 3))
-        {
-          Toast.makeText(BaseApplication.getContext(), amtj.a(2131704870), 0).show();
-          return;
-        }
-        if (paramInt != 1) {
-          return;
-        }
-        if (paramBundle.int32_exposure_flag.get() != 1) {
-          break label264;
-        }
-        paramArrayOfByte = (QQAppInterface)this.c.get();
-        if (paramArrayOfByte == null)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d("ImaxAdNetPresenter", 2, "request EXPOSURE succ ,but app == null");
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        return;
-      }
-      nxz.a().a(paramArrayOfByte, 1, this.jdField_a_of_type_Nxq);
-      this.jdField_a_of_type_Nxq.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ImaxAdNetPresenter", 2, "do exposure Report");
-      }
-      this.jdField_a_of_type_Aukv.a(this.jdField_a_of_type_Nxq);
-      bcef.a(paramArrayOfByte, "dc00898", "", this.jdField_a_of_type_Nxq.jdField_a_of_type_Nxs.a, "0X8009129", "0X8009129", 0, 0, this.jdField_a_of_type_Nxq.jdField_a_of_type_Nxs.c, "", nyj.a(), this.jdField_a_of_type_Nxq.jdField_a_of_type_Nxs.b);
-      return;
-      label264:
-      if (QLog.isColorLevel()) {
-        QLog.d("ImaxAdNetPresenter", 2, "exposure already limited");
-      }
-    }
-    else
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ImaxAdNetPresenter", 2, "request service fail");
-      }
-      if (this.jdField_a_of_type_Int == 3) {
-        Toast.makeText(BaseApplication.getContext(), amtj.a(2131704869), 0).show();
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

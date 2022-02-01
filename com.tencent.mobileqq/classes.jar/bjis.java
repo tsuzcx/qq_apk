@@ -1,31 +1,93 @@
-import android.text.TextUtils;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class bjis
+class bjis
+  implements DownloadListener
 {
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
+  bjis(bjiq parambjiq) {}
   
-  public String a()
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_b_of_type_JavaLangString;
+    Iterator localIterator = bjiq.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bjit)localIterator.next()).installSucceed(paramString1, paramString2);
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
-    }
-    return bjkf.a(this.jdField_a_of_type_JavaLangString);
   }
   
-  public String toString()
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    return "[ft:" + this.jdField_a_of_type_Int + ",st:" + this.jdField_b_of_type_Int + ",fs:" + this.jdField_c_of_type_Int + ",fn:" + this.jdField_a_of_type_JavaLangString + ",fm:" + this.jdField_b_of_type_JavaLangString + ",a1:" + this.jdField_c_of_type_JavaLangString + ",a2:" + this.d + ",a3:" + this.e + "]";
+    Iterator localIterator = bjiq.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bjit)localIterator.next()).onDownloadCancel(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    Iterator localIterator = bjiq.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bjit)localIterator.next()).onDownloadError(paramDownloadInfo, paramInt1, paramString, paramInt2);
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if (avus.a(paramDownloadInfo.l, paramDownloadInfo.c, paramDownloadInfo.e))
+    {
+      if (!avus.b().equals(paramDownloadInfo.l))
+      {
+        avus.a(paramDownloadInfo.l);
+        paramDownloadInfo.l = avus.b();
+      }
+      bjna.a().e(paramDownloadInfo);
+    }
+    Iterator localIterator = bjiq.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bjit)localIterator.next()).onDownloadFinish(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    Iterator localIterator = bjiq.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bjit)localIterator.next()).onDownloadPause(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    Iterator localIterator = bjiq.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bjit)localIterator.next()).onDownloadUpdate(paramList);
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    Iterator localIterator = bjiq.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bjit)localIterator.next()).onDownloadWait(paramDownloadInfo);
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    Iterator localIterator = bjiq.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bjit)localIterator.next()).packageReplaced(paramString1, paramString2);
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    Iterator localIterator = bjiq.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bjit)localIterator.next()).uninstallSucceed(paramString1, paramString2);
+    }
   }
 }
 

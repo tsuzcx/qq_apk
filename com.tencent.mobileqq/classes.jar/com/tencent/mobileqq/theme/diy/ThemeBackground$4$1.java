@@ -3,7 +3,7 @@ package com.tencent.mobileqq.theme.diy;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bgio;
+import bhrj;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.theme.ThemeUtil;
 
@@ -22,7 +22,7 @@ class ThemeBackground$4$1
       {
         localObject = (ImageView)this.this$0.val$view;
         ((ImageView)localObject).setImageDrawable(this.val$themeBackground.img);
-        if ((ThemeUtil.isHorizontalAnimate()) && (bgio.a(this.val$themeBackground.img)))
+        if ((ThemeUtil.isHorizontalAnimate()) && (bhrj.a(this.val$themeBackground.img)))
         {
           this.val$themeBackground.scaleType = ((ImageView)localObject).getScaleType();
           ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
@@ -41,8 +41,8 @@ class ThemeBackground$4$1
       this.this$0.val$view.setBackgroundDrawable(this.val$themeBackground.img);
       break;
       localObject = this.this$0.val$view.getTag();
-      if (((localObject instanceof ThemeBackground)) && (bgio.b(((ThemeBackground)localObject).img))) {
-        bgio.a().a(((ThemeBackground)localObject).img);
+      if (((localObject instanceof ThemeBackground)) && (bhrj.b(((ThemeBackground)localObject).img))) {
+        bhrj.a().a(((ThemeBackground)localObject).img);
       }
       this.val$themeBackground.img = null;
       this.this$0.val$view.setTag(null);

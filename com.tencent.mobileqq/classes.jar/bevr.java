@@ -1,28 +1,26 @@
-import android.text.Spannable;
-import java.util.Comparator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 
-final class bevr
-  implements Comparator<bevq>
+public class bevr
+  implements Animation.AnimationListener
 {
-  bevr(Spannable paramSpannable) {}
+  public bevr(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  public int a(bevq parambevq1, bevq parambevq2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = 0;
-    int j = this.a.getSpanStart(parambevq1);
-    int k = this.a.getSpanStart(parambevq2);
-    if (j < k) {
-      i = -1;
-    }
-    while (j <= k) {
-      return i;
-    }
-    return 1;
+    this.a.b = false;
+    paramAnimation.setAnimationListener(null);
+    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bevr
  * JD-Core Version:    0.7.0.1
  */

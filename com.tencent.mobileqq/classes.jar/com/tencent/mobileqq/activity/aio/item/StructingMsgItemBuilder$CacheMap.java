@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agpz;
+import ahip;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StructingMsgItemBuilder$CacheMap
-  extends HashMap<String, ArrayList<agpz>>
+  extends HashMap<String, ArrayList<ahip>>
 {
   private static final long serialVersionUID = -7873031099646660622L;
   
-  public void add(agpz paramagpz)
+  public void add(ahip paramahip)
   {
-    if (paramagpz == null) {
+    if (paramahip == null) {
       return;
     }
-    get(paramagpz.a).add(paramagpz);
+    get(paramahip.a).add(paramahip);
   }
   
-  public ArrayList<agpz> get(String paramString)
+  public ArrayList<ahip> get(String paramString)
   {
     ArrayList localArrayList2 = (ArrayList)super.get(paramString);
     ArrayList localArrayList1 = localArrayList2;
@@ -29,17 +29,17 @@ public class StructingMsgItemBuilder$CacheMap
     return localArrayList1;
   }
   
-  public void remove(agpz paramagpz)
+  public void remove(ahip paramahip)
   {
-    if ((paramagpz == null) || (paramagpz.a == null)) {}
+    if ((paramahip == null) || (paramahip.a == null)) {}
     ArrayList localArrayList;
     do
     {
       return;
-      localArrayList = get(paramagpz.a);
-      localArrayList.remove(paramagpz);
+      localArrayList = get(paramahip.a);
+      localArrayList.remove(paramahip);
     } while (!localArrayList.isEmpty());
-    remove(paramagpz.a);
+    remove(paramahip.a);
   }
 }
 

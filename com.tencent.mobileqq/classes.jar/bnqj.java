@@ -1,27 +1,6 @@
-import android.util.Property;
-
 class bnqj
-  extends Property<bnqi, Integer>
 {
-  bnqj(bnqi parambnqi, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
-  
-  public Integer a(bnqi parambnqi)
-  {
-    if (parambnqi != null) {
-      return Integer.valueOf(bnqi.a(parambnqi));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bnqi parambnqi, Integer paramInteger)
-  {
-    if (parambnqi != null) {
-      bnqi.a(parambnqi, paramInteger.intValue());
-    }
-  }
+  public static bnqi a = new bnqi("ae_camera_get_info_client");
 }
 
 

@@ -1,22 +1,38 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.FrameLayout;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.theme.SkinnableBitmapDrawable;
+import com.tencent.theme.SkinnableNinePatchDrawable;
 
-class bhbd
-  extends Handler
+public class bhbd
 {
-  bhbd(bhbc parambhbc, Looper paramLooper)
+  public static int a(Drawable paramDrawable)
   {
-    super(paramLooper);
+    if (paramDrawable == null) {}
+    do
+    {
+      return -1;
+      if ((paramDrawable instanceof BitmapDrawable)) {
+        return bhbx.a(((BitmapDrawable)paramDrawable).getBitmap());
+      }
+      if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
+        return bhbx.a(((SkinnableBitmapDrawable)paramDrawable).getBitmap());
+      }
+    } while (!(paramDrawable instanceof SkinnableNinePatchDrawable));
+    return bhbx.a(((SkinnableNinePatchDrawable)paramDrawable).getBitmap());
   }
   
-  public void handleMessage(Message paramMessage)
+  public static final Bitmap a(Drawable paramDrawable)
   {
-    if (paramMessage.what == 1) {
-      this.a.a(0.0F, 0 - bhbc.a(this.a).getHeight(), true);
-    }
-    super.handleMessage(paramMessage);
+    if (paramDrawable == null) {}
+    do
+    {
+      return null;
+      if ((paramDrawable instanceof BitmapDrawable)) {
+        return ((BitmapDrawable)paramDrawable).getBitmap();
+      }
+    } while (!(paramDrawable instanceof SkinnableBitmapDrawable));
+    return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
   }
 }
 

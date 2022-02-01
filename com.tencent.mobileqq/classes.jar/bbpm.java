@@ -1,31 +1,49 @@
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bbpm
 {
-  public int a;
-  public long a;
-  public String a;
-  public Map<String, String> a;
-  public boolean a;
-  public byte[] a;
-  public long b;
-  public boolean b;
-  
-  public bbpm(long paramLong1, Map<String, String> paramMap, long paramLong2, String paramString)
+  public static List<bbpr> a(String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.b = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public bbpm(long paramLong1, Map<String, String> paramMap, long paramLong2, String paramString, byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.b = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.has("LiuHaiArray"))
+        {
+          paramString = paramString.getJSONArray("LiuHaiArray");
+          int i = 0;
+          while (i < paramString.length())
+          {
+            bbpr localbbpr = new bbpr();
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            if (localJSONObject.has("manufacturer")) {
+              localbbpr.a = localJSONObject.optString("manufacturer", "");
+            }
+            if (localJSONObject.has("brand")) {
+              localbbpr.b = localJSONObject.optString("brand", "");
+            }
+            if (localJSONObject.has("model")) {
+              localbbpr.c = localJSONObject.optString("model", "");
+            }
+            localArrayList.add(localbbpr);
+            i += 1;
+          }
+        }
+        return localArrayList;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        BrowserLogHelper.getInstance().getGalleryLog().d("ListConfigParseUtils", 4, "parseWhiteListConfig exception = " + paramString.getMessage());
+      }
+    }
   }
 }
 

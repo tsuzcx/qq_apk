@@ -1,21 +1,8 @@
-import android.animation.Animator;
-import android.view.View;
-
-public final class yut
+public abstract interface yut
 {
-  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
-  {
-    return a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2, 2);
-  }
+  public abstract void a(yrw paramyrw, float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3)
-  {
-    yuo localyuo = yuo.a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2);
-    if (paramInt3 != paramView.getLayerType()) {
-      localyuo.addListener(new yuq(paramView, paramInt3));
-    }
-    return localyuo;
-  }
+  public abstract void a(yuv paramyuv);
 }
 
 

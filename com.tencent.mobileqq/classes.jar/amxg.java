@@ -1,104 +1,123 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.PPCLoginAuthHandler.1;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.comering_req;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.comering_rsp;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.plat_info;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.req;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.rsp;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
 
 public class amxg
-  extends BusinessHandler
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  private long a;
-  public QQAppInterface a;
+  anvi jdField_a_of_type_Anvi = new amxh(this);
+  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, Integer> b = new HashMap();
   
-  protected amxg(QQAppInterface paramQQAppInterface)
+  public amxg(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Anvi);
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    PPCLoginAuth.plat_info localplat_info = new PPCLoginAuth.plat_info();
-    localplat_info.implat.set(109L);
-    localplat_info.mqqver.set("8.4.8.4810");
-    localplat_info.osver.set(Build.VERSION.RELEASE);
-    PPCLoginAuth.comering_req localcomering_req = new PPCLoginAuth.comering_req();
-    localcomering_req.id.set(String.valueOf(this.jdField_a_of_type_Long));
-    PPCLoginAuth.req localreq = new PPCLoginAuth.req();
-    localreq.comm.set(localplat_info);
-    localreq.reqcmd_0x01.set(localcomering_req);
-    localObject = new ToServiceMsg("mobileqq.service", (String)localObject, "Loginauth.1");
-    ((ToServiceMsg)localObject).putWupBuffer(localreq.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("PPCLoginAuthHandler", 2, "sendPbReq called. req=" + localreq.toString());
+    QLog.i("apollochannel_CmGameAccountHandler", 1, "onDestroy");
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b.clear();
+    this.jdField_a_of_type_JavaUtilMap = null;
+    this.b = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = null;
     }
   }
   
-  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
-    for (int i = 1;; i = 0)
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
+    do
     {
-      if (i != 0) {
-        paramToServiceMsg = new PPCLoginAuth.rsp();
-      }
-      try
+      return;
+      switch (paramInt2)
       {
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if ((paramToServiceMsg.ret.get() == 0L) && (((PPCLoginAuth.comering_rsp)paramToServiceMsg.rspcmd_0x01.get()).ret.get() != 0)) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.execute(new PPCLoginAuthHandler.1(this));
-        }
+      default: 
         return;
+      case 1: 
+        localObject = ContactUtils.getBuddyNickName((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString, true);
+        if ((!bghb.b((String)localObject)) || (!((String)localObject).equals(paramString))) {
+          break label147;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_CmGameAccountHandler", 2, "nickName.equals(uin):" + paramString);
+        }
+        break;
       }
-      catch (Exception paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-      }
+    } while (this.jdField_a_of_type_JavaUtilMap == null);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString + "nick", Integer.valueOf(paramInt1));
+    return;
+    label147:
+    if (QLog.isColorLevel()) {
+      QLog.d("apollochannel_CmGameAccountHandler", 2, "nickName != null:" + paramString);
     }
-  }
-  
-  public void b()
-  {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).createEntityManager();
-    ExtensionInfo localExtensionInfo = (ExtensionInfo)localEntityManager.find(ExtensionInfo.class, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    localEntityManager.close();
-    if ((localExtensionInfo != null) && (localExtensionInfo.commingRingId != 0L))
-    {
-      this.jdField_a_of_type_Long = localExtensionInfo.commingRingId;
-      a();
-    }
-  }
-  
-  public Class<? extends BusinessObserver> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("Loginauth.1".equals(paramFromServiceMsg.getServiceCmd()))
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 1);
+    localBundle.putString("uin", paramString);
+    localBundle.putString("nickName", (String)localObject);
+    paramString = EIPCResult.createResult(0, localBundle);
+    amwf.a().callbackResult(paramInt1, paramString);
+    return;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.getBitmapFromCache(1, String.valueOf(paramString), 0, (byte)1);
+    if (localObject != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("PPCLoginAuthHandler", 2, "onReceive called.");
+        QLog.d("qwe", 2, "bm != null:" + paramString);
       }
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      localObject = ((Bitmap)localObject).copy(Bitmap.Config.ARGB_8888, true);
+      localBundle = new Bundle();
+      localBundle.putInt("type", 2);
+      localBundle.putString("uin", paramString);
+      localBundle.putParcelable("head", (Parcelable)localObject);
+      paramString = EIPCResult.createResult(0, localBundle);
+      amwf.a().callbackResult(paramInt1, paramString);
+      return;
+    }
+    if (this.b != null) {
+      this.b.put(paramString + "head", Integer.valueOf(paramInt1));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.requestDecodeFace(paramString, 200, false, 1, true, (byte)0, 1);
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qwe", 2, "onDecodeTaskCompleted:" + paramString);
+      }
+      paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
+      if ((this.b != null) && (this.b.get(paramString + "head") != null))
+      {
+        paramInt1 = ((Integer)this.b.remove(paramString + "head")).intValue();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("type", 2);
+        localBundle.putString("uin", paramString);
+        localBundle.putParcelable("head", paramBitmap);
+        paramString = EIPCResult.createResult(0, localBundle);
+        amwf.a().callbackResult(paramInt1, paramString);
+      }
     }
   }
 }

@@ -1,16 +1,32 @@
-import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.io.InputStream;
 
-class axxs
-  implements axxz
+public class axxs
 {
-  axxs(axxr paramaxxr, LatLng paramLatLng, int paramInt, PoiBean paramPoiBean) {}
-  
-  public void a(PoiBean paramPoiBean)
+  public static byte[] a(InputStream paramInputStream, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(axxq.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Axxr.b + "] memPut [fail already exist]. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " acceptAccuracy: " + this.jdField_a_of_type_Int + " put: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean + " cache: " + paramPoiBean);
+    Object localObject;
+    if (paramInt <= 0) {
+      localObject = null;
+    }
+    for (;;)
+    {
+      return localObject;
+      int i = 0;
+      byte[] arrayOfByte = new byte[paramInt];
+      localObject = arrayOfByte;
+      if (i >= paramInt) {
+        continue;
+      }
+      try
+      {
+        int j = paramInputStream.read(arrayOfByte, i, paramInt - i);
+        localObject = arrayOfByte;
+        if (j <= 0) {
+          continue;
+        }
+        i += j;
+      }
+      finally {}
     }
   }
 }

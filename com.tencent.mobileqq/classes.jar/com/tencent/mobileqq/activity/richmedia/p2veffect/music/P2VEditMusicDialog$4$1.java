@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.activity.richmedia.p2veffect.music;
 
-import akve;
+import alta;
 import com.tencent.qphone.base.util.QLog;
-import vtp;
-import vts;
-import vty;
-import vux;
-import xvv;
-import yio;
+import wik;
+import win;
+import wit;
+import wjs;
+import ykq;
+import yxh;
 
 public class P2VEditMusicDialog$4$1
   implements Runnable
 {
-  public P2VEditMusicDialog$4$1(akve paramakve, vts paramvts) {}
+  public P2VEditMusicDialog$4$1(alta paramalta, win paramwin) {}
   
   public void run()
   {
-    xvv.b(P2VEditMusicDialog.a(), "address update, refresh ui.");
-    if (((vtp)((vty)vux.a(20)).a(1)).a(this.jdField_a_of_type_Vts))
+    ykq.b(P2VEditMusicDialog.a(), "address update, refresh ui.");
+    if (((wik)((wit)wjs.a(20)).a(1)).a(this.jdField_a_of_type_Win))
     {
       QLog.d(P2VEditMusicDialog.a(), 2, "isInternationalUser --------------------2");
-      this.jdField_a_of_type_Akve.a.a.a();
+      this.jdField_a_of_type_Alta.a.a.a();
     }
   }
 }

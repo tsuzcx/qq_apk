@@ -1,75 +1,31 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qqreader.net.BaseCgiTask;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class bkus
-  extends bkuk
+  implements bkuu
 {
-  public bkus(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  public bkus(QSecFramework paramQSecFramework) {}
   
-  public void a(bkuj parambkuj)
+  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    int j = 0;
-    i = 0;
-    parambkuj = parambkuj.a();
-    if ((parambkuj == null) || (parambkuj.length() == 0)) {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: FetchTabConfigData response illegal: " + parambkuj);
+    if (paramLong1 != 0L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QSecFramework", 2, String.format("Native msg, cookie: %08X, delay: %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+      }
+      paramObject1 = String.valueOf(paramLong1);
+      if (paramLong2 == 0L) {
+        break label84;
+      }
+      QSecFramework.a(this.a).sendMessageDelayed(QSecFramework.a(this.a).obtainMessage(1, paramObject1), 1000L * paramLong2);
     }
     for (;;)
     {
-      if (i == 0) {
-        ForceUserUpdateActivity.b(this.a, "拉取新书城配置失败，请检查网络重试");
-      }
-      return;
-      for (;;)
-      {
-        for (;;)
-        {
-          try
-          {
-            localObject = (JSONArray)parambkuj.get("tabList");
-            if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-            {
-              bkvd.d("ForceUserUpdateActivity", "onReceiveData: FetchTabConfigData succeed, length = " + ((JSONArray)localObject).length());
-              localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-              ForceUserUpdateActivity.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_TAB_CONFIG_DATA" + (String)localObject, parambkuj.toString()).apply();
-              bkvb.d(ForceUserUpdateActivity.a(this.a), true);
-            }
-          }
-          catch (Exception parambkuj)
-          {
-            Object localObject;
-            i = j;
-          }
-          try
-          {
-            ForceUserUpdateActivity.b(this.a);
-            i = 1;
-          }
-          catch (Exception parambkuj)
-          {
-            for (;;)
-            {
-              i = 1;
-            }
-          }
-        }
-        ForceUserUpdateActivity.a(this.a, "onReceiveData: FetchTabConfigData empty: " + localObject);
-        i = 0;
-      }
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: FetchTabConfigData parse failed: " + parambkuj.getMessage());
+      return 0;
+      label84:
+      QSecFramework.a(this.a).sendMessage(QSecFramework.a(this.a).obtainMessage(1, paramObject1));
     }
-  }
-  
-  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
-  {
-    ForceUserUpdateActivity.a(this.a, "onConnectionError: FetchTabConfigData error: " + paramString);
   }
 }
 

@@ -1,128 +1,91 @@
-import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-final class aqlk
+public class aqlk
+  extends aqwt<aqlj>
 {
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static aqlk a(aptx[] paramArrayOfaptx)
+  @NonNull
+  public static aqlj a()
   {
-    Object localObject1;
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0))
+    aqlj localaqlj2 = (aqlj)aqxe.a().a(670);
+    aqlj localaqlj1 = localaqlj2;
+    if (localaqlj2 == null)
     {
-      QLog.e("TdsReaderView_TdsReaderConfigBean", 1, "parse error, confFiles is no-valid.");
-      localObject1 = null;
-      return localObject1;
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarConfProcessor", 2, "loadConfig(): bean is null then new C2CShortcutBarConfBean()");
+      }
+      localaqlj1 = new aqlj();
     }
-    aqlk localaqlk = new aqlk();
-    int j = paramArrayOfaptx.length;
-    int i = 0;
-    for (;;)
+    return localaqlj1;
+  }
+  
+  @NonNull
+  public aqlj a(int paramInt)
+  {
+    return new aqlj();
+  }
+  
+  @Nullable
+  public aqlj a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length == 0))
     {
-      localObject1 = localaqlk;
-      if (i >= j) {
-        break;
-      }
-      localObject1 = paramArrayOfaptx[i];
-      try
-      {
-        localObject1 = new JSONObject(((aptx)localObject1).a);
-        if (localObject1 != null)
-        {
-          if (((JSONObject)localObject1).has("has_gray")) {
-            localaqlk.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("has_gray");
-          }
-          a((JSONObject)localObject1, localaqlk.jdField_a_of_type_JavaUtilMap);
-        }
-        i += 1;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("TdsReaderView_TdsReaderConfigBean", 1, "parse error", localJSONException);
-          Object localObject2 = null;
-        }
-      }
+      QLog.d("C2CShortcutBarConfProcessor", 1, "C2CShortcutBarConfProcessor onParsed, confFiles is null empty");
+      return null;
+    }
+    paramArrayOfaqxa = paramArrayOfaqxa[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CShortcutBarConfProcessor", 2, "C2CShortcutBarConfProcessor onParsed, content:" + paramArrayOfaqxa);
+    }
+    return aqlj.a(paramArrayOfaqxa);
+  }
+  
+  public void a(aqlj paramaqlj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CShortcutBarConfProcessor", 2, "onUpdate " + paramaqlj.toString());
     }
   }
   
-  public static void a(JSONObject paramJSONObject, Map<String, String> paramMap)
+  public Class<aqlj> clazz()
   {
-    if ((paramJSONObject == null) || (paramMap == null)) {}
-    do
-    {
-      return;
-      if (paramJSONObject.has("facade_plugin_name")) {
-        paramMap.put("facade_plugin_name", paramJSONObject.optString("facade_plugin_name"));
-      }
-      if (paramJSONObject.has("facade_plugin_name_prefix")) {
-        paramMap.put("facade_plugin_name_prefix", paramJSONObject.optString("facade_plugin_name_prefix"));
-      }
-      if (paramJSONObject.has("facade_plugin_url")) {
-        paramMap.put("facade_plugin_url", paramJSONObject.optString("facade_plugin_url"));
-      }
-      if (paramJSONObject.has("facade_plugin_md5")) {
-        paramMap.put("facade_plugin_md5", paramJSONObject.optString("facade_plugin_md5"));
-      }
-      if (paramJSONObject.has("facade_plugin_entry_class")) {
-        paramMap.put("facade_plugin_entry_class", paramJSONObject.optString("facade_plugin_entry_class"));
-      }
-      if (paramJSONObject.has("pre_load_info")) {
-        paramMap.put("pre_load_info", paramJSONObject.optString("pre_load_info"));
-      }
-      if (paramJSONObject.has("global_required_res_info")) {
-        paramMap.put("global_required_res_info", paramJSONObject.optString("global_required_res_info"));
-      }
-      if (paramJSONObject.has("docs_plugin_info")) {
-        paramMap.put("docs_plugin_info", paramJSONObject.optString("docs_plugin_info"));
-      }
-      if (paramJSONObject.has("docs_font_info")) {
-        paramMap.put("docs_font_info", paramJSONObject.optString("docs_font_info"));
-      }
-      if (paramJSONObject.has("sheets_plugin_info")) {
-        paramMap.put("sheets_plugin_info", paramJSONObject.optString("sheets_plugin_info"));
-      }
-      if (paramJSONObject.has("slides_plugin_info")) {
-        paramMap.put("slides_plugin_info", paramJSONObject.optString("slides_plugin_info"));
-      }
-    } while (!paramJSONObject.has("slides_res_info"));
-    paramMap.put("slides_res_info", paramJSONObject.optString("slides_res_info"));
+    return aqlj.class;
   }
   
-  public static void a(boolean paramBoolean, aqlk paramaqlk)
+  public boolean isNeedCompressed()
   {
-    if (paramaqlk == null) {
-      QLog.w("TdsReaderView_TdsReaderConfigBean", 1, "source error, configBean is null.");
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CShortcutBarConfProcessor", 2, "migrateOldVersion");
     }
-    int i;
-    do
-    {
-      return;
-      if (!paramaqlk.jdField_a_of_type_JavaUtilMap.isEmpty()) {}
-      for (i = 1;; i = 0)
-      {
-        if (i != 0) {
-          TdsReaderGlobal.a(paramBoolean, paramaqlk.jdField_a_of_type_JavaUtilMap);
-        }
-        if (!paramaqlk.jdField_a_of_type_Boolean) {
-          break;
-        }
-        aqln.a();
-        return;
-      }
-    } while (i == 0);
-    TdsReaderGlobal.a(true);
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CShortcutBarConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 670;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqlk
  * JD-Core Version:    0.7.0.1
  */

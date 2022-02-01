@@ -1,16 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
+import android.view.View;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ajku
-  implements DialogInterface.OnClickListener
+class ajku
+  implements bkzq
 {
-  public ajku(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
+  ajku(ajkt paramajkt, boolean paramBoolean, Friends paramFriends, bkzi parambkzi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
+    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_Ajkt.a)) {
+      QQToast.a(this.jdField_a_of_type_Ajkt.a, 1, 2131692125, 0).a();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.e();
+      return;
+      paramView = (FriendListHandler)ajkt.a(this.jdField_a_of_type_Ajkt).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        paramView.setSpecialCareSwitch(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
+        bdla.b(ajkt.a(this.jdField_a_of_type_Ajkt), "dc00898", "", "", "0X800808B", "0X800808B", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        paramView.setSpecialCareSwitch(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
+        bdla.b(ajkt.a(this.jdField_a_of_type_Ajkt), "dc00898", "", "", "0X800808A", "0X800808A", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

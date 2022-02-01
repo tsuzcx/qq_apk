@@ -5,7 +5,7 @@ import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRRsp;
 import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.RspBody;
 
 public class hn
-  extends nmf
+  extends ntf
 {
   private hl a;
   

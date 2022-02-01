@@ -1,26 +1,27 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.fragment.SimpleDebugFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-public class attf
-  implements RadioGroup.OnCheckedChangeListener
+class attf
+  implements ShareActionSheet.OnItemClickListener
 {
-  public attf(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
+  attf(attd paramattd) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
+    if (paramActionSheetItem == null) {}
+    do
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
       return;
-      bbyp.a(0);
-      continue;
-      bbyp.a(1);
-    }
+      attd.a(this.a).dismiss();
+      if (paramActionSheetItem.listener != null)
+      {
+        paramActionSheetItem.listener.onClick(null);
+        return;
+      }
+    } while (attd.a(this.a) == null);
+    attd.a(this.a).a(paramActionSheetItem);
   }
 }
 

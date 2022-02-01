@@ -21,10 +21,10 @@ public class Face3DLibInitializer
   
   static
   {
-    FACE_3D_SO_MODEL = new ModelInfo[] { new ModelInfo(true, "Face3DLib", "2DTo3D_Edge.txt"), new ModelInfo(true, "Face3DLib", "2DTo3D_Edge_16_youtu.txt"), new ModelInfo(true, "Face3DLib", "2DTo3Dyoutu.txt"), new ModelInfo(true, "Face3DLib", "forehead.txt"), new ModelInfo(true, "Face3DLib", "mean.bin"), new ModelInfo(true, "Face3DLib", "mouthandjaw.txt"), new ModelInfo(true, "Face3DLib", "normalised_pca_basis_roi.bin"), new ModelInfo(true, "Face3DLib", "sharevertex.txt"), new ModelInfo(true, "Face3DLib", "up.txt"), new ModelInfo(true, "Face3DLib", "All_68_youtu.txt"), new ModelInfo(true, "Face3DLib", "blendshape_47.bin"), new ModelInfo(true, "Face3DLib", "blendshape_47_nnls_68.bin") };
-    FACE_3D_FILTER_MODEL = new ModelInfo[] { new ModelInfo(true, "Face3DLib", "face3d_indices_config.dat"), new ModelInfo(true, "Face3DLib", "face3d_uv_config.dat") };
+    FACE_3D_SO_MODEL = new ModelInfo[] { new ModelInfo(true, "Face3DLib", "2DTo3D_Edge.txt"), new ModelInfo(true, "Face3DLib", "mean.bin"), new ModelInfo(true, "Face3DLib", "normalised_pca_basis_roi.bin"), new ModelInfo(true, "Face3DLib", "All_68_youtu2.txt"), new ModelInfo(true, "Face3DLib", "blendshape_46.bin"), new ModelInfo(true, "Face3DLib", "blendshape_46_nnls_68.bin"), new ModelInfo(true, "Face3DLib", "LeftFace2.txt"), new ModelInfo(true, "Face3DLib", "RightFace2.txt"), new ModelInfo(true, "Face3DLib", "LeftFace3.txt"), new ModelInfo(true, "Face3DLib", "RightFace3.txt"), new ModelInfo(true, "Face3DLib", "tongueReg.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "Face3DLib", "tongueReg.onnx.opt.onnx.rapidproto"), new ModelInfo(true, "Face3DLib", "eyebrow_base.bin"), new ModelInfo(true, "Face3DLib", "eyelash_base.bin"), new ModelInfo(true, "Face3DLib", "face_base.bin"), new ModelInfo(true, "Face3DLib", "face_exps.bin"), new ModelInfo(true, "Face3DLib", "mouth_base.bin"), new ModelInfo(true, "Face3DLib", "mouth_exps.bin"), new ModelInfo(true, "Face3DLib", "tongue_base.bin"), new ModelInfo(true, "Face3DLib", "tongue_exps.bin"), new ModelInfo(true, "Face3DLib", "tooth_down_base.bin"), new ModelInfo(true, "Face3DLib", "tooth_down_exps.bin"), new ModelInfo(true, "Face3DLib", "tooth_up_base.bin"), new ModelInfo(true, "Face3DLib", "tooth_up_exps.bin") };
+    FACE_3D_FILTER_MODEL = new ModelInfo[] { new ModelInfo(true, "Face3DLib", "face3d_indices_config.dat"), new ModelInfo(true, "Face3DLib", "face3d_uv_config.dat"), new ModelInfo(true, "Face3DLib", "face3d_uv_config_yt.dat"), new ModelInfo(true, "Face3DLib", "face3d_normal_v2.dat"), new ModelInfo(true, "Face3DLib", "face3d_indices.dat"), new ModelInfo(true, "Face3DLib", "face3d_uv.dat"), new ModelInfo(true, "Face3DLib", "face3d_uv_v2.dat") };
     face3DLibJNI = Face3DLibJNI.getInstance();
-    face3DUV = new float[17240];
+    face3DUV = new float[34480];
   }
   
   private boolean loadFace3DIndices(String paramString1, String paramString2)
@@ -40,6 +40,24 @@ public class Face3DLibInitializer
     while (i < paramString1.size())
     {
       face3DIndices[i] = GsonUtils.optInt(paramString1, i, 0);
+      i += 1;
+    }
+    return true;
+  }
+  
+  private boolean loadFace3DNormal(String paramString1, String paramString2)
+  {
+    int i = 0;
+    paramString1 = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, VideoTemplateParser.decryptListener);
+    if (paramString1 == null) {}
+    do
+    {
+      return false;
+      paramString1 = GsonUtils.optJsonArray(paramString1, "normal");
+    } while ((paramString1 == null) || (paramString1.size() == 0));
+    while (i < paramString1.size())
+    {
+      face3DUV[(i + 24136)] = ((float)GsonUtils.optDouble(paramString1, i, 0.0D));
       i += 1;
     }
     return true;
@@ -63,8 +81,27 @@ public class Face3DLibInitializer
     return true;
   }
   
+  private boolean loadFace3DUV2(String paramString1, String paramString2)
+  {
+    int i = 0;
+    paramString1 = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, VideoTemplateParser.decryptListener);
+    if (paramString1 == null) {}
+    do
+    {
+      return false;
+      paramString1 = GsonUtils.optJsonArray(paramString1, "uv");
+    } while ((paramString1 == null) || (paramString1.size() == 0));
+    while (i < paramString1.size())
+    {
+      face3DUV[(i + 17240)] = ((float)GsonUtils.optDouble(paramString1, i, 0.0D));
+      i += 1;
+    }
+    return true;
+  }
+  
   protected boolean destroyImpl()
   {
+    face3DLibJNI.destroy();
     return false;
   }
   
@@ -89,7 +126,7 @@ public class Face3DLibInitializer
   public boolean initFace3D()
   {
     if (!loadAllSoFiles()) {}
-    while ((!loadFace3DUV(getFinalResourcesDir(), "face3d_uv_config")) || (!loadFace3DIndices(getFinalResourcesDir(), "face3d_indices_config"))) {
+    while ((!loadFace3DUV(getFinalResourcesDir(), "face3d_uv_config")) || (!loadFace3DUV2(getFinalResourcesDir(), "face3d_uv_config_yt")) || (!loadFace3DIndices(getFinalResourcesDir(), "face3d_indices_config")) || (!loadFace3DNormal(getFinalResourcesDir(), "face3d_normal_v2"))) {
       return false;
     }
     return face3DLibJNI.init(getFinalResourcesDir());

@@ -1,56 +1,16 @@
-import Wallet.PfaFriend;
-import Wallet.PfaFriendRsp;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.home.Conversation;
 
-final class ajxe
-  implements DialogInterface.OnClickListener
+public class ajxe
+  implements DialogInterface.OnDismissListener
 {
-  ajxe(WeakReference paramWeakReference, ArrayList paramArrayList) {}
+  public ajxe(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramDialogInterface instanceof QQCustomDialogWtihInputAndChoose)) {
-      switch (paramInt)
-      {
-      }
-    }
-    do
-    {
-      return;
-      ajxc.a((SelectMemberActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaUtilArrayList, (QQCustomDialogWtihInputAndChoose)paramDialogInterface);
-    } while ((ajxc.a == null) || (ajxc.a.vecRec == null) || (ajxc.a.vecRec.size() <= 0));
-    paramInt = 0;
-    label79:
-    String str;
-    int i;
-    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      str = "friendpay.selectpage.unrecomchoosefriclick";
-      i = 0;
-    }
-    for (;;)
-    {
-      paramDialogInterface = str;
-      if (i < ajxc.a.vecRec.size())
-      {
-        if (((ResultRecord)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).uin.equals(((PfaFriend)ajxc.a.vecRec.get(i)).uin)) {
-          paramDialogInterface = "friendpay.selectpage.recommendfriclick";
-        }
-      }
-      else
-      {
-        bcef.b(akgd.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramDialogInterface, 0, 0, "", "", "", "");
-        paramInt += 1;
-        break label79;
-        break;
-      }
-      i += 1;
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
     }
   }
 }

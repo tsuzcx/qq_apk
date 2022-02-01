@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import ajzp;
-import ajzv;
+import akvi;
+import akvo;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.ViewGroup.MarginLayoutParams;
@@ -23,19 +23,19 @@ public class WordChainHbFragment$1
       Iterator localIterator = WordChainHbFragment.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        ajzv localajzv = (ajzv)localIterator.next();
+        akvo localakvo = (akvo)localIterator.next();
         TextView localTextView = new TextView(this.this$0.mActivity);
         ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(-2, -2);
         localMarginLayoutParams.leftMargin = UIUtils.dip2px(this.this$0.mActivity, 5.0F);
         localMarginLayoutParams.rightMargin = UIUtils.dip2px(this.this$0.mActivity, 5.0F);
         localMarginLayoutParams.bottomMargin = UIUtils.dip2px(this.this$0.mActivity, 10.0F);
         WordChainHbFragment.a(this.this$0).addView(localTextView, localMarginLayoutParams);
-        localTextView.setText(localajzv.a);
+        localTextView.setText(localakvo.a);
         localTextView.setPadding(UIUtils.dip2px(this.this$0.mActivity, 16.0F), UIUtils.dip2px(this.this$0.mActivity, 5.0F), UIUtils.dip2px(this.this$0.mActivity, 16.0F), UIUtils.dip2px(this.this$0.mActivity, 5.0F));
         localTextView.setTextColor(Color.parseColor("#03081A"));
-        localTextView.setTag(localajzv);
-        localTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(2130847203));
-        localTextView.setOnClickListener(new ajzp(this, localTextView, localajzv));
+        localTextView.setTag(localakvo);
+        localTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(2130847301));
+        localTextView.setOnClickListener(new akvi(this, localTextView, localakvo));
       }
       WordChainHbFragment.b(this.this$0);
     }

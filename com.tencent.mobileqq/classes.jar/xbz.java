@@ -1,66 +1,27 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import org.json.JSONArray;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class xbz
-  extends xpk
+final class xbz
+  extends SimpleJob<Object>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  xbz(String paramString, wah paramwah, String[] paramArrayOfString, int paramInt, xca paramxca, TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    switch (paramInt1)
-    {
-    default: 
-      xvv.d("AddVideoMiddleCode", "unknown request code %d", new Object[] { Integer.valueOf(paramInt1) });
-      a(paramInt2, paramIntent);
-      e();
-      return;
-    }
-    if (paramInt2 == -1) {}
-    for (;;)
-    {
-      try
-      {
-        LinkedHashSet localLinkedHashSet = (LinkedHashSet)paramIntent.getSerializableExtra("extra_checked_vidset");
-        if ((localLinkedHashSet != null) && (localLinkedHashSet.size() > 0))
-        {
-          xvv.d("AddVideoMiddleCode", "let's add video to group, count = %d, collection = %s", new Object[] { Integer.valueOf(localLinkedHashSet.size()), new JSONArray(localLinkedHashSet).toString() });
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.addAll(localLinkedHashSet);
-          vns.a(this.jdField_a_of_type_JavaLangString, localArrayList, this.jdField_a_of_type_Int);
-          paramIntent.putExtra("totalPublishVideoCount", localLinkedHashSet.size());
-          paramIntent.putExtra("isAddFromExist", true);
-          a(paramInt2, paramIntent);
-          e();
-          return;
-        }
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        xvv.c("AddVideoMiddleCode", "StoryPickerFragment return illegal value", localClassCastException);
-        Object localObject = null;
-        continue;
-        xvv.d("AddVideoMiddleCode", "do not add video to group, exit ! result=%s, retValue=%s", new Object[] { Integer.valueOf(paramInt2), localObject });
-        paramInt2 = 0;
-        continue;
-      }
-      xvv.d("AddVideoMiddleCode", "add video to group cancel by user");
-    }
+    super(paramString);
   }
   
-  public void a(Bundle paramBundle1, Bundle paramBundle2)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle2.getString("shareGroupId");
-    this.b = paramBundle2.getString("shareGroupName");
-    this.jdField_a_of_type_Int = paramBundle2.getInt("add_video_source");
-    xvv.a("AddVideoMiddleCode", "shareGroupId = %s, shareGroupName = %s, source=%d", this.jdField_a_of_type_JavaLangString, this.b, Integer.valueOf(this.jdField_a_of_type_Int));
-    StoryPickerFragment.a(a(), null, this.b, 1000, 2);
+    paramJobContext = this.jdField_a_of_type_Wah.a();
+    if (!TextUtils.isEmpty(paramJobContext)) {
+      this.jdField_a_of_type_ArrayOfJavaLangString[0] = bkyp.a(this.jdField_a_of_type_ArrayOfJavaLangString[0], "authkey", paramJobContext);
+    }
+    xbu.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_Xca);
+    return null;
   }
 }
 

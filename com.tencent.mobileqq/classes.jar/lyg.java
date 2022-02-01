@@ -1,41 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
+import com.tencent.av.share.AVSchema.2.1;
 
-class lyg
-  extends andd
+public class lyg
+  implements DialogInterface.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString;
+  public lyg(AVSchema.2.1 param1) {}
   
-  private lyg(lyc paramlyc) {}
-  
-  protected void onGetSimpleTroopInfoResult(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramTroopInfo == null) {}
-    do
-    {
-      return;
-      paramTroopInfo = paramTroopInfo.troopuin;
-    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramTroopInfo)));
-    this.jdField_a_of_type_Lyc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    if (this == this.jdField_a_of_type_Lyc.jdField_a_of_type_Lyg) {
-      this.jdField_a_of_type_Lyc.jdField_a_of_type_Lyg = null;
-    }
-    QLog.w("ShareChat", 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "]");
-    this.jdField_a_of_type_Lyc.a();
-  }
-  
-  protected void onUpdateTroopList(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("ShareChat", 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
-    }
+    msc.j();
+    this.a.a.a.a(false);
+    this.a.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lyg
  * JD-Core Version:    0.7.0.1
  */

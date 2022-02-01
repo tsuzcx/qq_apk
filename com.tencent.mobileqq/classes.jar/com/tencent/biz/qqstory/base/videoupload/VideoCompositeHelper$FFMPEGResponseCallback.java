@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.base.videoupload;
 
 import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
 import java.util.concurrent.atomic.AtomicInteger;
-import xvv;
+import ykq;
 
 class VideoCompositeHelper$FFMPEGResponseCallback
   implements FFmpegExecuteResponseCallback
@@ -24,7 +24,7 @@ class VideoCompositeHelper$FFMPEGResponseCallback
   
   public void onFailure(String paramString)
   {
-    xvv.d(VideoCompositeHelper.TAG, "FFMPEGResponseCallback onFailure() mTaskType = " + this.mTaskType + " message = " + paramString);
+    ykq.d(VideoCompositeHelper.TAG, "FFMPEGResponseCallback onFailure() mTaskType = " + this.mTaskType + " message = " + paramString);
   }
   
   public void onFinish(boolean paramBoolean)
@@ -33,14 +33,14 @@ class VideoCompositeHelper$FFMPEGResponseCallback
     int k = 0;
     int m = 0;
     int i = 0;
-    xvv.d(VideoCompositeHelper.TAG, "FFMPEGResponseCallback onFinish() mTaskType = " + this.mTaskType + " isSuccess = " + paramBoolean);
+    ykq.d(VideoCompositeHelper.TAG, "FFMPEGResponseCallback onFinish() mTaskType = " + this.mTaskType + " isSuccess = " + paramBoolean);
     synchronized (this.mLock)
     {
       this.mLock.notify();
       switch (this.mTaskType)
       {
       case 1: 
-        xvv.e(VideoCompositeHelper.TAG, "Undefined task type mTaskType = " + this.mTaskType);
+        ykq.e(VideoCompositeHelper.TAG, "Undefined task type mTaskType = " + this.mTaskType);
         throw new RuntimeException("Undefined task in FFMPEGResponseCallback");
       }
     }
@@ -90,17 +90,17 @@ class VideoCompositeHelper$FFMPEGResponseCallback
   
   public void onStart()
   {
-    xvv.c(VideoCompositeHelper.TAG, "onStart() mTaskType = " + this.mTaskType);
+    ykq.c(VideoCompositeHelper.TAG, "onStart() mTaskType = " + this.mTaskType);
   }
   
   public void onSuccess(String paramString)
   {
-    xvv.c(VideoCompositeHelper.TAG, "FFMPEGResponseCallback onSuccess() mTaskType = " + this.mTaskType + " message = " + paramString);
+    ykq.c(VideoCompositeHelper.TAG, "FFMPEGResponseCallback onSuccess() mTaskType = " + this.mTaskType + " message = " + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.FFMPEGResponseCallback
  * JD-Core Version:    0.7.0.1
  */

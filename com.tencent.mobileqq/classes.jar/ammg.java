@@ -1,46 +1,70 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
-public class ammg
-  extends bggc
+class ammg
+  implements anfg
 {
-  public ammg(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, int paramInt) {}
+  ammg(amme paramamme) {}
   
-  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, new Object[] { "[showNewActionFloatView] onAuthResponse, result=", Boolean.valueOf(paramBoolean), ", data=", paramObject });
+    if (paramBoolean) {
+      if ((paramInt1 > 0) && (!ApolloUtil.d(paramInt1))) {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "role rsc NOT complete.");
+        }
+      }
     }
-    if ((paramObject != null) && ((paramObject instanceof HashMap)))
+    label96:
+    do
     {
-      paramObject = (HashMap)paramObject;
-      localObject = (String)paramObject.get("optFrom");
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && ("newActionFloatView".equals(localObject))) {}
-    }
-    else
-    {
+      VasExtensionHandler localVasExtensionHandler;
+      do
+      {
+        return;
+        if (paramArrayOfInt != null)
+        {
+          paramInt1 = 0;
+          for (;;)
+          {
+            if (paramInt1 >= paramArrayOfInt.length) {
+              break label96;
+            }
+            if (!ApolloUtil.c(paramArrayOfInt[paramInt1]))
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("ApolloManager", 2, "dress rsc NOT complete, id:" + paramArrayOfInt[paramInt1]);
+              return;
+            }
+            paramInt1 += 1;
+          }
+        }
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        localVasExtensionHandler = (VasExtensionHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER);
+        localVasExtensionHandler.notifyUI(2, true, paramArrayOfInt);
+        amwf.a().a(paramArrayOfInt);
+        localVasExtensionHandler.a(paramString, null);
+      } while (!QLog.isColorLevel());
+      QLog.d("ApolloManager", 2, "apollo dress download ok notifyUI uin: " + ApolloUtil.d(paramString));
       return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.app.removeObserver(this);
-    if (paramBoolean)
-    {
-      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 0, 21, this.jdField_a_of_type_Int, null);
-      return;
-    }
-    Object localObject = new Bundle();
-    paramObject = (String)paramObject.get("url");
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, new Object[] { "[showNewActionFloatView] onAuthResponse, activityUrl=", paramObject });
-    }
-    ((Bundle)localObject).putString("activityUrl", paramObject);
-    ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 1, 22, this.jdField_a_of_type_Int, (Bundle)localObject);
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        localVasExtensionHandler = (VasExtensionHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER);
+        localVasExtensionHandler.notifyUI(2, false, paramArrayOfInt);
+        localVasExtensionHandler.a(paramString, null);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloManager", 2, "apollo dress download failed " + ApolloUtil.d(paramString));
   }
 }
 

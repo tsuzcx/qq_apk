@@ -1,25 +1,13 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.graphics.Bitmap;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class sul
-  implements sth
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$CaptureViewCallback;", "", "onCaptureFailed", "", "onCaptureSuccess", "bitmap", "Landroid/graphics/Bitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface sul
 {
-  public int a(BaseData paramBaseData)
-  {
-    return 5;
-  }
+  public abstract void a();
   
-  public stg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    return new sum(LayoutInflater.from(paramContext).inflate(2131560192, null), paramBaseData);
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.r == 5;
-  }
+  public abstract void a(@NotNull Bitmap paramBitmap);
 }
 
 

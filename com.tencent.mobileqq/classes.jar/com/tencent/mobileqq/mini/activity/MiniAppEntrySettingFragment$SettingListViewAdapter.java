@@ -74,10 +74,10 @@ class MiniAppEntrySettingFragment$SettingListViewAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.mContext).inflate(2131562329, null);
+      localView = LayoutInflater.from(this.mContext).inflate(2131562397, null);
       paramView = new MiniAppEntrySettingFragment.SettingListViewAdapter.Holder(this);
-      paramView.singleLineSwitchItem = ((FormSwitchItem)localView.findViewById(2131371274));
-      paramView.multiLineSwitchItem = ((FormMultiLineSwitchItem)localView.findViewById(2131371273));
+      paramView.singleLineSwitchItem = ((FormSwitchItem)localView.findViewById(2131371460));
+      paramView.multiLineSwitchItem = ((FormMultiLineSwitchItem)localView.findViewById(2131371459));
       localView.setTag(paramView);
     }
     for (;;)

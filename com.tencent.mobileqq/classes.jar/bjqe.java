@@ -1,101 +1,89 @@
-import com.tencent.widget.ExpandableListView;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bjqe
+class bjqe
+  extends bjqm
 {
-  private static ArrayList<bjqe> a;
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  bjqe(bjqa parambjqa, bjpl parambjpl, bjgg parambjgg, String paramString, JSONObject paramJSONObject) {}
   
-  static
+  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  }
-  
-  private static bjqe a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    bool2 = false;
+    boolean bool3 = true;
+    QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, new Object[] { "OpenVirtual.uploadAvatarImage.result:", bjqk.a(paramString1, this.jdField_a_of_type_Bjpl.jdField_a_of_type_JavaLangString) });
+    localObject = null;
+    bool1 = bool2;
+    paramString2 = localObject;
+    i = paramInt;
+    if (paramBoolean) {}
+    try
     {
-      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      paramString1 = new JSONObject(paramString1);
+      i = paramString1.optInt("ErrorCode");
+      if (i != 0) {}
+    }
+    catch (JSONException paramString1)
+    {
+      label96:
+      do
       {
-        localbjqe = (bjqe)jdField_a_of_type_JavaUtilArrayList.remove(0);
-        localbjqe.b();
-        return localbjqe;
+        for (;;)
+        {
+          QLog.d("SDK_LOGIN.OpenSdkVirtualManager", 1, "OpenVirtual.uploadAvatarImage.e:", paramString1);
+          bool1 = bool2;
+          paramString2 = localObject;
+          i = paramInt;
+        }
+        bjqa.a(this.jdField_a_of_type_Bjqa);
+        if (bjqa.b(this.jdField_a_of_type_Bjqa) < 2) {
+          break;
+        }
+      } while (this.jdField_a_of_type_Bjgg == null);
+      this.jdField_a_of_type_Bjgg.a(bool1, this.jdField_a_of_type_JavaLangString, paramString2, i);
+      return;
+      bjqa.a(this.jdField_a_of_type_Bjqa, this.jdField_a_of_type_Bjpl, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Bjgg);
+      return;
+    }
+    try
+    {
+      paramString1 = paramString1.optJSONObject("msg_img_data");
+      if (paramString1 == null) {
+        break label253;
       }
-      bjqe localbjqe = new bjqe();
-      return localbjqe;
+      paramString1 = paramString1.optString("str_file_name");
+      paramBoolean = bool3;
     }
-  }
-  
-  public static bjqe a(int paramInt)
-  {
-    return a(2, paramInt, 0, 0);
-  }
-  
-  public static bjqe a(int paramInt1, int paramInt2)
-  {
-    return a(1, paramInt1, paramInt2, 0);
-  }
-  
-  public static bjqe a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    bjqe localbjqe = a();
-    localbjqe.d = paramInt1;
-    localbjqe.jdField_a_of_type_Int = paramInt2;
-    localbjqe.b = paramInt3;
-    localbjqe.c = paramInt4;
-    return localbjqe;
-  }
-  
-  public static bjqe a(long paramLong)
-  {
-    if (paramLong == 4294967295L) {
-      return null;
-    }
-    bjqe localbjqe = a();
-    localbjqe.jdField_a_of_type_Int = ExpandableListView.c(paramLong);
-    if (ExpandableListView.b(paramLong) == 1)
+    catch (JSONException paramString1)
     {
-      localbjqe.d = 1;
-      localbjqe.b = ExpandableListView.d(paramLong);
-      return localbjqe;
+      paramInt = i;
+      break label155;
+      paramBoolean = false;
+      paramString1 = null;
+      break label96;
     }
-    localbjqe.d = 2;
-    return localbjqe;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
-  }
-  
-  public long a()
-  {
-    if (this.d == 1) {
-      return ExpandableListView.a(this.jdField_a_of_type_Int, this.b);
-    }
-    return ExpandableListView.b(this.jdField_a_of_type_Int);
-  }
-  
-  public void a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    paramInt = i;
+    for (;;)
     {
-      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
-        jdField_a_of_type_JavaUtilArrayList.add(this);
+      i = paramInt;
+      paramString2 = paramString1;
+      bool1 = paramBoolean;
+      if (!bool1) {
+        break;
+      }
+      if (this.jdField_a_of_type_Bjgg != null) {
+        this.jdField_a_of_type_Bjgg.a(bool1, this.jdField_a_of_type_JavaLangString, paramString2, i);
       }
       return;
+      paramInt = paramString1.optInt("uint32_ret_to_http", i);
+      paramString1 = null;
+      paramBoolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjqe
  * JD-Core Version:    0.7.0.1
  */

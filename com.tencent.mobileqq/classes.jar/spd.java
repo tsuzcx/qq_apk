@@ -1,10 +1,8 @@
 public abstract interface spd
 {
-  public abstract void a();
+  public abstract void a(ses paramses1, ses paramses2, int paramInt, boolean paramBoolean);
   
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void j();
 }
 
 

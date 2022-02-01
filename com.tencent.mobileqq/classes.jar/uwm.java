@@ -1,17 +1,34 @@
-import UserGrowth.stNotificationReq;
-import UserGrowth.stNotificationRsp;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.util.SwipeBackLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class uwm
-  extends urg<stNotificationRsp>
+  extends Handler
 {
-  public uwm(String paramString)
+  public uwm(SwipeBackLayout paramSwipeBackLayout) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    super("Notification", 4);
-    stNotificationReq localstNotificationReq = new stNotificationReq();
-    localstNotificationReq.linkStrategyArgs = uyb.a();
-    localstNotificationReq.push_info = paramString;
-    this.a = localstNotificationReq;
-    uya.b("NotificationRequest", "stNotificationReq = " + localstNotificationReq.toString());
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (SwipeBackLayout.a(this.a));
+      SwipeBackLayout.a(this.a, true);
+    } while (!(this.a.a instanceof Activity));
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
+    }
+    this.a.c = true;
+    ((Activity)this.a.a).finish();
   }
 }
 

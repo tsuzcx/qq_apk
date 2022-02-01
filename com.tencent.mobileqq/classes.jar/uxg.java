@@ -1,14 +1,23 @@
+import UserGrowth.stFollowFeedsRsp;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
+import java.util.ArrayList;
+
 public class uxg
+  implements uyy
 {
-  public String a;
-  public String b;
+  public uxg(WSFollowFragment paramWSFollowFragment) {}
   
-  public uxg() {}
-  
-  public uxg(String paramString1, String paramString2)
+  public void a(JceStruct paramJceStruct)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    if (!(paramJceStruct instanceof stFollowFeedsRsp)) {}
+    do
+    {
+      return;
+      paramJceStruct = (stFollowFeedsRsp)paramJceStruct;
+    } while (vmg.a(paramJceStruct.feeds));
+    vmp.b("WSFollowFragment", "load cache data for follow page, size: " + paramJceStruct.feeds.size());
+    this.a.a(paramJceStruct.feeds);
   }
 }
 

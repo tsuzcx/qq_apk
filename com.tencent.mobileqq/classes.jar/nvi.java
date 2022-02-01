@@ -1,60 +1,217 @@
-import android.content.SharedPreferences;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.OfflineExpire.OfflineExpireCheckUpdate.1;
+import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import mqq.os.MqqHandler;
+import tencent.im.sso.offlinpkg.OfflinePkg.BidPkg;
+import tencent.im.sso.offlinpkg.OfflinePkg.ReqBody;
+import tencent.im.sso.offlinpkg.OfflinePkg.RspBody;
 
-class nvi
-  implements Handler.Callback
+public class nvi
+  implements bcug
 {
-  nvi(num paramnum) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public nvi(QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramMessage.what)
+    if (paramQQAppInterface.getLongAccountUin() % 10L == 6L) {}
+    for (boolean bool = true;; bool = false)
     {
-    default: 
-      bool1 = false;
+      nuz.jdField_a_of_type_Boolean = bool;
+      return;
     }
-    do
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    if (nvg.jdField_a_of_type_Boolean) {
+      return null;
+    }
+    nvg.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d(nvg.jdField_a_of_type_JavaLangString, 2, "getCheckUpdateItemData");
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    ReqItem localReqItem;
+    OfflinePkg.ReqBody localReqBody;
+    int j;
+    String str;
+    if ((localObject instanceof QQAppInterface))
     {
-      do
-      {
-        return bool1;
-        if (QLog.isColorLevel()) {
-          QLog.i("AccountDetailGroupListContainer", 2, "refresh recent list, from_handle");
-        }
-        bool1 = bool2;
-      } while (!this.a.b);
-      bool1 = bool2;
-    } while (this.a.jdField_a_of_type_AndroidViewView == null);
-    this.a.jdField_a_of_type_AndroidContentSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("public_account_detail_setting_status", 0);
-    int i;
-    if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null)
-    {
-      i = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_result_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -10000);
-      this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getInt("setting_status_" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);
+      localObject = (QQAppInterface)localObject;
+      localReqItem = new ReqItem();
+      localReqItem.cOperType = 1;
+      localReqItem.eServiceID = 127;
+      localReqBody = new OfflinePkg.ReqBody();
+      localReqBody.uint32_cmd.set(2);
+      localReqBody.uint32_platform.set(nvg.jdField_a_of_type_Int);
+      if (QLog.isColorLevel()) {
+        QLog.d(nvg.jdField_a_of_type_JavaLangString, 1, String.format("OfflineExpireCheckUpdate, check update QQ Version: %s", new Object[] { "8.4.10.4875" }));
+      }
+      localReqBody.str_qver.set(ByteStringMicro.copyFrom("8.4.10.4875".getBytes()));
+      localReqBody.str_osrelease.set(ByteStringMicro.copyFrom(Build.VERSION.RELEASE.getBytes()));
+      paramInt = NetworkUtil.getNetworkType(((QQAppInterface)localObject).getApp());
+      localReqBody.int32_network.set(paramInt);
+      localReqBody.str_from.set(ByteStringMicro.copyFrom("predown".getBytes()));
+      localObject = nuz.a();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label426;
+      }
+      String[] arrayOfString = ((String)localObject).split(",");
+      int m = arrayOfString.length;
+      j = 0;
+      if (j >= m) {
+        break label426;
+      }
+      str = arrayOfString[j];
+      if (!TextUtils.isEmpty(str)) {
+        localObject = str.split("\\|");
+      }
     }
     for (;;)
     {
-      bool1 = bool2;
-      if (i != 0) {
-        break;
+      for (;;)
+      {
+        int i;
+        try
+        {
+          paramInt = Integer.valueOf(localObject[0]).intValue();
+        }
+        catch (NumberFormatException localNumberFormatException1)
+        {
+          int k;
+          i = 0;
+          localNumberFormatException1.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.i(nvg.jdField_a_of_type_JavaLangString, 2, "NumberFormatException:" + str);
+          }
+          paramInt = 0;
+          continue;
+        }
+        catch (Exception localException1)
+        {
+          i = 0;
+        }
+        try
+        {
+          k = Integer.valueOf(localObject[1]).intValue();
+          i = paramInt;
+          paramInt = k;
+          if (i != 0) {
+            break label383;
+          }
+          j += 1;
+        }
+        catch (Exception localException2)
+        {
+          for (;;)
+          {
+            OfflinePkg.BidPkg localBidPkg;
+            i = paramInt;
+          }
+        }
+        catch (NumberFormatException localNumberFormatException2)
+        {
+          label383:
+          i = paramInt;
+        }
       }
-      bool1 = bool2;
-      if (this.a.jdField_a_of_type_Int <= -1) {
-        break;
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i(nvg.jdField_a_of_type_JavaLangString, 2, "Exception:" + str);
       }
-      num.b(this.a, this.a.jdField_a_of_type_Int);
-      this.a.jdField_a_of_type_AndroidViewView.setOnClickListener(new nvj(this));
-      return true;
-      i = -10000;
+      paramInt = 0;
+      continue;
+      localBidPkg = new OfflinePkg.BidPkg();
+      localBidPkg.uint32_bid.set(i);
+      localBidPkg.uint32_pkg_id.add(Integer.valueOf(paramInt));
+      localReqBody.st_bid_pkg.add(localBidPkg);
     }
+    label426:
+    localReqItem.vecParam = bhjl.a(localReqBody.toByteArray());
+    return localReqItem;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(nvg.jdField_a_of_type_JavaLangString, 2, "handleCheckUpdateItemData");
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      if (paramRespItem.cResult != 2) {
+        break label279;
+      }
+      if (paramRespItem.eServiceID == 127)
+      {
+        paramRespItem = bhjl.b(paramRespItem.vecUpdate);
+        if (paramRespItem != null) {
+          localRspBody = new OfflinePkg.RspBody();
+        }
+      }
+    }
+    label279:
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        OfflinePkg.RspBody localRspBody;
+        localRspBody.mergeFrom(paramRespItem);
+        nvg.a(new String(localRspBody.str_expire_pkg.get().toByteArray(), "UTF-8"));
+        nvg.a(new String(localRspBody.str_predown_pkg_ex.get().toByteArray(), "UTF-8"), (QQAppInterface)localObject, ((QQAppInterface)localObject).getApp().getApplicationContext(), 1);
+        ThreadManager.getSubThreadHandler().postDelayed(new OfflineExpire.OfflineExpireCheckUpdate.1(this), 180000L);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramRespItem)
+      {
+        for (;;)
+        {
+          paramRespItem.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.i(nvg.jdField_a_of_type_JavaLangString, 2, "handleCheckUpdateItemData: " + QLog.getStackTraceString(paramRespItem));
+          }
+        }
+      }
+      catch (UnsupportedEncodingException paramRespItem)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(nvg.jdField_a_of_type_JavaLangString, 2, "handleCheckUpdateItemData: " + QLog.getStackTraceString(paramRespItem));
+          }
+        }
+      }
+      catch (Exception paramRespItem)
+      {
+        for (;;)
+        {
+          paramRespItem.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.i(nvg.jdField_a_of_type_JavaLangString, 2, "handleCheckUpdateItemData: " + QLog.getStackTraceString(paramRespItem));
+          }
+        }
+      }
+    }
+    QLog.d(nvg.jdField_a_of_type_JavaLangString, 2, "***handleCheckUpdateItemData fail respitem.cResult:" + paramRespItem.cResult);
   }
 }
 

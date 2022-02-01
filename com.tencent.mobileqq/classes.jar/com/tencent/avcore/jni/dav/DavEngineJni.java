@@ -11,53 +11,53 @@ import android.view.WindowManager;
 import com.tencent.avcore.jni.data.AVCorePbInfo;
 import com.tencent.avcore.jni.data.NetAddr;
 import com.tencent.avcore.jni.data.SDKConfigInfo;
-import mwb;
-import mwc;
-import mwi;
-import mwj;
-import mwk;
-import mwp;
-import mwq;
-import mwv;
-import mwz;
+import nbo;
+import nbp;
+import nbw;
+import nbx;
+import nbz;
+import ncf;
+import ncg;
+import ncl;
+import ncp;
 
 public class DavEngineJni
-  implements mwp
+  implements ncf
 {
   public static final String TAG = "DavEngineJni";
   public static boolean sDisableReOpen;
-  protected final mwj mAdapter;
+  protected final nbx mAdapter;
   protected final Handler mEventHandler;
-  protected final mwk mEventListener;
-  protected mwz mGlStringParser;
-  protected final mwq mNetChannel;
-  protected final mwc mSysInfo;
+  protected final nbz mEventListener;
+  protected ncp mGlStringParser;
+  protected final ncg mNetChannel;
+  protected final nbp mSysInfo;
   
-  DavEngineJni(mwc parammwc, mwq parammwq, mwj parammwj, mwk parammwk)
+  DavEngineJni(nbp paramnbp, ncg paramncg, nbx paramnbx, nbz paramnbz)
   {
-    this.mNetChannel = parammwq;
+    this.mNetChannel = paramncg;
     this.mNetChannel.a(this);
-    this.mSysInfo = parammwc;
-    this.mAdapter = parammwj;
-    this.mEventListener = parammwk;
-    parammwq = Looper.getMainLooper();
-    parammwc = parammwq;
-    if (parammwq == null) {
-      parammwc = Looper.myLooper();
+    this.mSysInfo = paramnbp;
+    this.mAdapter = paramnbx;
+    this.mEventListener = paramnbz;
+    paramncg = Looper.getMainLooper();
+    paramnbp = paramncg;
+    if (paramncg == null) {
+      paramnbp = Looper.myLooper();
     }
-    parammwq = parammwj.getNativeEventProcessor();
-    this.mEventHandler = new DavEngineJni.NativeEventHandler(parammwc, parammwk, parammwq);
-    parammwc = parammwj.getContext();
-    if (parammwc != null)
+    paramncg = paramnbx.getNativeEventProcessor();
+    this.mEventHandler = new DavEngineJni.NativeEventHandler(paramnbp, paramnbz, paramncg);
+    paramnbp = paramnbx.getContext();
+    if (paramnbp != null)
     {
-      parammwj = new DisplayMetrics();
-      ((WindowManager)parammwc.getSystemService("window")).getDefaultDisplay().getMetrics(parammwj);
-      int i = parammwj.widthPixels;
-      int j = parammwj.heightPixels;
+      paramnbx = new DisplayMetrics();
+      ((WindowManager)paramnbp.getSystemService("window")).getDefaultDisplay().getMetrics(paramnbx);
+      int i = paramnbx.widthPixels;
+      int j = paramnbx.heightPixels;
       this.mSysInfo.a(i, j);
       this.mSysInfo.b(i, j);
     }
-    mwv.c("DavEngineJni", "DavEngineJni, callback[" + parammwq + "], context[" + parammwc + "]");
+    ncl.c("DavEngineJni", "DavEngineJni, callback[" + paramncg + "], context[" + paramnbp + "]");
   }
   
   private static native void cacheMethodIds();
@@ -107,7 +107,7 @@ public class DavEngineJni
   private void callbackOnEvent(int paramInt1, byte[] paramArrayOfByte1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, String paramString, int paramInt2, int paramInt3, long paramLong5, byte[] paramArrayOfByte2)
   {
     if (this.mEventListener == null) {
-      mwv.h("DavEngineJni", "mEventListener is null");
+      ncl.h("DavEngineJni", "mEventListener is null");
     }
     do
     {
@@ -118,18 +118,18 @@ public class DavEngineJni
         return;
       }
     } while (this.mEventHandler == null);
-    mwi localmwi = new mwi();
-    localmwi.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-    localmwi.jdField_a_of_type_Long = paramLong1;
-    localmwi.jdField_b_of_type_Long = paramLong2;
-    localmwi.c = paramLong3;
-    localmwi.d = paramLong4;
-    localmwi.jdField_a_of_type_JavaLangString = paramString;
-    localmwi.jdField_a_of_type_Int = paramInt2;
-    localmwi.jdField_b_of_type_Int = paramInt3;
-    localmwi.e = paramLong5;
-    localmwi.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-    paramArrayOfByte1 = this.mEventHandler.obtainMessage(paramInt1, 0, 0, localmwi);
+    nbw localnbw = new nbw();
+    localnbw.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+    localnbw.jdField_a_of_type_Long = paramLong1;
+    localnbw.jdField_b_of_type_Long = paramLong2;
+    localnbw.c = paramLong3;
+    localnbw.d = paramLong4;
+    localnbw.jdField_a_of_type_JavaLangString = paramString;
+    localnbw.jdField_a_of_type_Int = paramInt2;
+    localnbw.jdField_b_of_type_Int = paramInt3;
+    localnbw.e = paramLong5;
+    localnbw.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
+    paramArrayOfByte1 = this.mEventHandler.obtainMessage(paramInt1, 0, 0, localnbw);
     this.mEventHandler.sendMessage(paramArrayOfByte1);
   }
   
@@ -138,10 +138,10 @@ public class DavEngineJni
     if (this.mNetChannel != null) {
       this.mNetChannel.b(paramArrayOfByte);
     }
-    while (!mwv.c()) {
+    while (!ncl.c()) {
       return;
     }
-    mwv.b("DavEngineJni", "callbackSendConfigReq, net channel is null.");
+    ncl.b("DavEngineJni", "callbackSendConfigReq, net channel is null.");
   }
   
   private void callbackTcpSendSharpCMD(byte[] paramArrayOfByte, long paramLong)
@@ -149,28 +149,28 @@ public class DavEngineJni
     if (this.mNetChannel != null) {
       this.mNetChannel.a(paramLong, paramArrayOfByte);
     }
-    while (!mwv.c()) {
+    while (!ncl.c()) {
       return;
     }
-    mwv.b("DavEngineJni", "callbackTcpSendSharpCMD, net channel is null.");
+    ncl.b("DavEngineJni", "callbackTcpSendSharpCMD, net channel is null.");
   }
   
   private void changePreviewSize(int paramInt1, int paramInt2)
   {
     if (this.mGlStringParser == null) {
-      this.mGlStringParser = new mwz('=', ';');
+      this.mGlStringParser = new ncp('=', ';');
     }
     if (this.mAdapter != null) {}
     for (Object localObject = this.mAdapter.getContext();; localObject = null)
     {
-      localObject = mwb.a((Context)localObject).a();
+      localObject = nbo.a((Context)localObject).a();
       this.mGlStringParser.a((String)localObject);
       localObject = this.mGlStringParser.a("preview-size-values");
       if ((localObject != null) && (((String)localObject).contains(paramInt1 + "x" + paramInt2))) {
         break;
       }
-      if (mwv.c()) {
-        mwv.c("DavEngineJni", "changePreviewSize, 不包含该分辨率, w[" + paramInt1 + "], h[" + paramInt2 + "]");
+      if (ncl.c()) {
+        ncl.c("DavEngineJni", "changePreviewSize, 不包含该分辨率, w[" + paramInt1 + "], h[" + paramInt2 + "]");
       }
       return;
     }
@@ -184,18 +184,18 @@ public class DavEngineJni
   
   private int getCpuArchitecture()
   {
-    mwc localmwc = this.mSysInfo;
-    return mwc.f();
+    nbp localnbp = this.mSysInfo;
+    return nbp.f();
   }
   
   private int getCpuMaxFrequency()
   {
-    return (int)mwc.jdField_a_of_type_Long;
+    return (int)nbp.jdField_a_of_type_Long;
   }
   
   private String getDeviceName()
   {
-    return mwc.b();
+    return nbp.b();
   }
   
   private int getDispHeight()
@@ -215,7 +215,7 @@ public class DavEngineJni
   
   private int getNumCores()
   {
-    return mwc.jdField_b_of_type_Int;
+    return nbp.jdField_b_of_type_Int;
   }
   
   private String getOsName()
@@ -247,7 +247,7 @@ public class DavEngineJni
   {
     if (this.mAdapter != null) {}
     for (Context localContext = this.mAdapter.getContext();; localContext = null) {
-      return mwb.a(localContext).a();
+      return nbo.a(localContext).a();
     }
   }
   
@@ -267,6 +267,8 @@ public class DavEngineJni
   
   native boolean enableLoopback(boolean paramBoolean);
   
+  native String getAVSDKInfo(long paramLong, String paramString);
+  
   native int getBusiTypeFromCmdPkg(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt);
   
   native long getChatRoomID(long paramLong);
@@ -279,13 +281,7 @@ public class DavEngineJni
   
   native long getOnPeerFrameRenderEndFunctionPtr();
   
-  native int getPeerSdkVersion(long paramLong);
-  
-  native int getPeerTerminalType(long paramLong);
-  
   native int getSdkVersion();
-  
-  native long getTrafficSize(long paramLong);
   
   native int getVolume(boolean paramBoolean);
   
@@ -302,8 +298,8 @@ public class DavEngineJni
     this.mAdapter.initClientLogReport();
     if (getSdkVersion() < 18)
     {
-      if (mwv.c()) {
-        mwv.c("DavEngineJni", "sdk version: " + getSdkVersion());
+      if (ncl.c()) {
+        ncl.c("DavEngineJni", "sdk version: " + getSdkVersion());
       }
       throw new UnsatisfiedLinkError();
     }
@@ -321,8 +317,6 @@ public class DavEngineJni
   native int onLogOutByKicked();
   
   native void onProcessExit();
-  
-  native int onRecvGAudioCMD(int paramInt, byte[] paramArrayOfByte);
   
   native int onRecvVideoCallBytesForSharp(byte[] paramArrayOfByte);
   
@@ -409,6 +403,8 @@ public class DavEngineJni
   
   native void sendTransferMsg(long paramLong, int paramInt, byte[] paramArrayOfByte);
   
+  native void setAVSDKInfo(long paramLong, String paramString1, String paramString2);
+  
   native int setApType(int paramInt);
   
   native int setAudioDataFormat(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
@@ -436,8 +432,6 @@ public class DavEngineJni
   native int setSelfUin(long paramLong);
   
   native void setVideoJitterLength(int paramInt);
-  
-  native void setVideoReceiver(boolean paramBoolean);
   
   native int setVoiceType(int paramInt);
   

@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-class azjw
-  implements DialogInterface.OnClickListener
+public class azjw
 {
-  azjw(azjv paramazjv, QQCustomDialog paramQQCustomDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-  }
+  public static boolean a;
 }
 
 

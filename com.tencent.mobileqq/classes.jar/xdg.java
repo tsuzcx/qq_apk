@@ -1,27 +1,11 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public class xdg
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wbq>
+public abstract interface xdg
 {
-  public xdg(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, List<xcy> paramList);
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wbq paramwbq)
-  {
-    if (!paramQQStoryShareGroupProfileActivity.g) {
-      return;
-    }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwbq);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wbq.class;
-  }
+  public abstract void a(List<xcz> paramList, boolean paramBoolean);
 }
 
 

@@ -1,15 +1,25 @@
-import android.support.annotation.NonNull;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class xnw
-  extends vko
+class xnw
+  implements bkzq
 {
-  public int a;
-  public String a;
+  xnw(xnt paramxnt, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, bkzi parambkzi) {}
   
-  public xnw(@NonNull String paramString, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      wzk.a(this.jdField_a_of_type_Xnt.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new xnx(this));
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
   }
 }
 

@@ -1,6 +1,31 @@
-public abstract interface ahvt
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class ahvt
+  extends ahvq
 {
-  public abstract void a();
+  protected void b(BaseChatPie paramBaseChatPie)
+  {
+    try
+    {
+      l = Long.parseLong(paramBaseChatPie.sessionInfo.curFriendUin);
+      abgm localabgm = (abgm)paramBaseChatPie.app.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+      if ((localabgm != null) && (localabgm.c(l))) {
+        a(paramBaseChatPie.sessionInfo.curType, 206);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        long l = 0L;
+      }
+    }
+  }
 }
 
 

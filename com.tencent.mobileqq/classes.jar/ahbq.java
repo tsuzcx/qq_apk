@@ -1,18 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.util.WeakReference;
 
 class ahbq
   implements View.OnClickListener
 {
-  ahbq(ahbp paramahbp, int paramInt) {}
+  ahbq(ahbp paramahbp) {}
   
   public void onClick(View paramView)
   {
-    ((PhotoListPanel)this.jdField_a_of_type_Ahbp.a.get()).a(paramView, this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    if (this.a.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ahbp.a(this.a).onClick(paramView);
+    }
   }
 }
 

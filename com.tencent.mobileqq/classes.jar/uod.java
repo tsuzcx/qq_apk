@@ -1,53 +1,28 @@
-import UserGrowth.stFriendFeed;
-import UserGrowth.stSimpleMetaFeed;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
 
 public class uod
+  implements TextWatcher
 {
-  public static List<uof> a(stFriendFeed paramstFriendFeed)
+  public uod(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramstFriendFeed == null) {
-      return Collections.emptyList();
-    }
-    paramstFriendFeed = paramstFriendFeed.friendFeeds;
-    if ((paramstFriendFeed == null) || (paramstFriendFeed.size() == 0)) {
-      return Collections.emptyList();
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(a((stSimpleMetaFeed)paramstFriendFeed.get(0)));
-    int i = 1;
-    while (i < paramstFriendFeed.size())
+    if (TextUtils.isEmpty(ReadInJoyNewSearchActivity.a(this.a).getText().toString()))
     {
-      Object localObject = (stSimpleMetaFeed)paramstFriendFeed.get(i);
-      uof localuof = (uof)localArrayList.get(localArrayList.size() - 1);
-      if (!localuof.a((stSimpleMetaFeed)localObject))
-      {
-        a(localuof);
-        localObject = a((stSimpleMetaFeed)localObject);
-        ((uof)localObject).a(i);
-        localArrayList.add(localObject);
-      }
-      i += 1;
+      ReadInJoyNewSearchActivity.a(this.a).setVisibility(8);
+      return;
     }
-    a((uof)localArrayList.get(localArrayList.size() - 1));
-    ulf.a().c(localArrayList);
-    return localArrayList;
+    ReadInJoyNewSearchActivity.a(this.a).setVisibility(0);
   }
   
-  private static uof a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    uof localuof = new uof();
-    localuof.a(paramstSimpleMetaFeed);
-    return localuof;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  private static void a(uof paramuof)
-  {
-    paramuof.a(ulf.a().a().contains(paramuof.a()));
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

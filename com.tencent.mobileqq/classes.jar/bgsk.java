@@ -1,16 +1,30 @@
-public class bgsk
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import org.json.JSONObject;
+
+class bgsk
+  implements bdyy
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  bgsk(bgsj parambgsj) {}
   
-  bgsk(int paramInt)
+  public void a()
   {
-    this.a = paramInt;
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView == null) {
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds / 1000L > this.a.jdField_a_of_type_Int + this.a.jdField_b_of_type_Int)
+    {
+      String str = this.a.jdField_a_of_type_JavaLangString + this.a.jdField_b_of_type_OrgJsonJSONObject.optString("videoPath", "3.mp4");
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a(str, new bgsl(this));
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_Bdyy != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_Bdyy.a();
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.jdField_a_of_type_Int, true);
   }
 }
 

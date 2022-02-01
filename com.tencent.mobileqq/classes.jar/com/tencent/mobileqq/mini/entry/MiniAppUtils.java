@@ -22,38 +22,30 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.ImageView;
-import apys;
-import apyt;
-import atup;
-import bfol;
-import bgyp;
-import bgyq;
-import blbw;
-import blbx;
+import arbv;
+import arbw;
+import auzp;
+import bgxc;
+import bijh;
+import biji;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
-import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
 import com.tencent.mobileqq.mini.apkg.AppMode;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.apkg.NetworkTimeoutInfo;
 import com.tencent.mobileqq.mini.apkg.PreCacheInfo;
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
-import com.tencent.mobileqq.mini.appbrand.utils.ThreadPools;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.mobileqq.mini.launch.CmdCallback;
-import com.tencent.mobileqq.mini.network.http.MiniappHttpUtil;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -63,7 +55,6 @@ import com.tencent.mobileqq.mini.sdk.MiniAppException;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
 import com.tencent.mobileqq.mini.util.StorageUtil;
-import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -77,17 +68,18 @@ import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import common.config.service.QzoneConfig;
+import cooperation.vip.tianshu.TianShuManager;
+import cooperation.vip.tianshu.TianShuReportData;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.Executor;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
-import nko;
+import nro;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -98,6 +90,8 @@ public class MiniAppUtils
   private static final String CONTENT_TYPE_JSON = "application/json";
   public static final String GDT_COOKIE = "gdt_cookie";
   public static final String KEY_MINI_APP_CONFIG = "key_record_mini_app_config";
+  public static final String KEY_MINI_GAME_PAY_ENV = "keyMiniGamePayEnv";
+  public static final String KEY_MINI_GAME_PAY_ENV_APPID_VERTYPE = "keyMiniGamePayEnvAppidVertype";
   public static final String MINI_APP_DESKTOP_GDT_COOKIE_PRE = "mini_app_desktop_gdt_cookie";
   private static final String MINI_APP_STORE_URL = "mqqapi://miniapp/open?_ext=&_mappid=1108291530&_mvid=&_nq=&_path=&_q=&_sig=0178f7ca2545b9ef6f736f01247642f6e53ef6467005aa21274c4166f0ff5a3b";
   private static final Set<Integer> PULL_DOWN_REFER = new HashSet();
@@ -177,7 +171,7 @@ public class MiniAppUtils
       return;
       l1 = ((AppInterface)localObject).getPreferences().getLong("key_mini_app_refresh_interval", 0L);
       l2 = System.currentTimeMillis();
-      localObject = (DesktopDataManager)((AppInterface)localObject).getManager(336);
+      localObject = (DesktopDataManager)((AppInterface)localObject).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
     } while (l2 - l1 <= 1000L * ((DesktopDataManager)localObject).getRefreshInterval());
     ((DesktopDataManager)localObject).sendDropDownAppListRequestAsync();
   }
@@ -226,12 +220,12 @@ public class MiniAppUtils
       l1 = localSharedPreferences.getLong("key_update_miniapp_time", 0L);
       l2 = System.currentTimeMillis();
       i = 60;
-      apys localapys = apyt.a();
-      if (localapys != null) {
-        i = localapys.a();
+      arbv localarbv = arbw.a();
+      if (localarbv != null) {
+        i = localarbv.a();
       }
     } while (l2 - l1 <= i * 60 * 1000);
-    ((MiniAppUserAppInfoListManager)localAppInterface.getManager(309)).sendUserAppListRequest(Long.valueOf(localAppInterface.getCurrentAccountUin()).longValue(), 20L);
+    ((MiniAppUserAppInfoListManager)localAppInterface.getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER)).sendUserAppListRequest(Long.valueOf(localAppInterface.getCurrentAccountUin()).longValue(), 20L);
     localSharedPreferences.edit().putLong("key_update_miniapp_time", l2).apply();
   }
   
@@ -239,7 +233,7 @@ public class MiniAppUtils
   public static MiniAppInfo createFromBuffer(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: invokestatic 294	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   0: invokestatic 303	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   3: astore_1
     //   4: aload_1
     //   5: astore_2
@@ -248,37 +242,37 @@ public class MiniAppUtils
     //   8: iconst_0
     //   9: aload_0
     //   10: arraylength
-    //   11: invokevirtual 298	android/os/Parcel:unmarshall	([BII)V
+    //   11: invokevirtual 307	android/os/Parcel:unmarshall	([BII)V
     //   14: aload_1
     //   15: astore_2
     //   16: aload_1
     //   17: iconst_0
-    //   18: invokevirtual 302	android/os/Parcel:setDataPosition	(I)V
+    //   18: invokevirtual 311	android/os/Parcel:setDataPosition	(I)V
     //   21: aload_1
     //   22: astore_2
     //   23: aload_1
-    //   24: ldc_w 304
-    //   27: invokevirtual 310	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   30: invokevirtual 314	android/os/Parcel:readParcelable	(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
-    //   33: checkcast 304	com/tencent/mobileqq/mini/apkg/MiniAppInfo
+    //   24: ldc_w 313
+    //   27: invokevirtual 319	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   30: invokevirtual 323	android/os/Parcel:readParcelable	(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
+    //   33: checkcast 313	com/tencent/mobileqq/mini/apkg/MiniAppInfo
     //   36: astore_0
     //   37: aload_1
     //   38: ifnull +7 -> 45
     //   41: aload_1
-    //   42: invokevirtual 317	android/os/Parcel:recycle	()V
+    //   42: invokevirtual 326	android/os/Parcel:recycle	()V
     //   45: aload_0
     //   46: areturn
     //   47: astore_0
     //   48: aconst_null
     //   49: astore_0
-    //   50: ldc 32
+    //   50: ldc 38
     //   52: iconst_1
-    //   53: ldc_w 319
-    //   56: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   53: ldc_w 328
+    //   56: invokestatic 161	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   59: aload_0
     //   60: ifnull +7 -> 67
     //   63: aload_0
-    //   64: invokevirtual 317	android/os/Parcel:recycle	()V
+    //   64: invokevirtual 326	android/os/Parcel:recycle	()V
     //   67: aconst_null
     //   68: areturn
     //   69: astore_0
@@ -286,22 +280,22 @@ public class MiniAppUtils
     //   71: astore_1
     //   72: aload_1
     //   73: astore_2
-    //   74: ldc 32
+    //   74: ldc 38
     //   76: iconst_1
-    //   77: new 129	java/lang/StringBuilder
+    //   77: new 130	java/lang/StringBuilder
     //   80: dup
-    //   81: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   84: ldc_w 321
-    //   87: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   84: ldc_w 330
+    //   87: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   90: aload_0
-    //   91: invokestatic 327	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   94: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   91: invokestatic 336	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   94: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   100: invokestatic 161	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   103: aload_1
     //   104: ifnull -37 -> 67
     //   107: aload_1
-    //   108: invokevirtual 317	android/os/Parcel:recycle	()V
+    //   108: invokevirtual 326	android/os/Parcel:recycle	()V
     //   111: goto -44 -> 67
     //   114: astore_0
     //   115: aconst_null
@@ -309,7 +303,7 @@ public class MiniAppUtils
     //   117: aload_2
     //   118: ifnull +7 -> 125
     //   121: aload_2
-    //   122: invokevirtual 317	android/os/Parcel:recycle	()V
+    //   122: invokevirtual 326	android/os/Parcel:recycle	()V
     //   125: aload_0
     //   126: athrow
     //   127: astore_0
@@ -350,185 +344,6 @@ public class MiniAppUtils
     //   23	37	143	java/lang/OutOfMemoryError
   }
   
-  private static void doWnsCgiRequest(String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, BaseJsPluginEngine paramBaseJsPluginEngine)
-  {
-    if (paramBaseJsPluginEngine == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, paramInt);
-      return;
-    }
-    int j;
-    int i;
-    label353:
-    label892:
-    for (;;)
-    {
-      Object localObject2;
-      TicketManager localTicketManager;
-      Object localObject1;
-      boolean bool;
-      try
-      {
-        localObject2 = new JSONObject(paramString1);
-        localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
-        paramString1 = ((JSONObject)localObject2).optJSONObject("header");
-        if (paramString1 != null) {
-          break label917;
-        }
-        paramString1 = new JSONObject();
-        paramString1.put("Referer", MiniappHttpUtil.getRequestReferer(paramBaseJsPluginEngine));
-        j = 60000;
-        localObject1 = paramBaseJsPluginEngine.appBrandRuntime.getApkgInfo();
-        i = j;
-        if (localObject1 != null)
-        {
-          i = j;
-          if (((ApkgInfo)localObject1).mAppConfigInfo != null)
-          {
-            i = j;
-            if (((ApkgInfo)localObject1).mAppConfigInfo.networkTimeoutInfo != null) {
-              i = ((ApkgInfo)localObject1).mAppConfigInfo.networkTimeoutInfo.request;
-            }
-          }
-        }
-        localObject1 = new bgyq();
-        ((bgyq)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("url");
-        ((bgyq)localObject1).c = paramString1.toString();
-        ((bgyq)localObject1).jdField_a_of_type_Int = i;
-        ((bgyq)localObject1).jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
-        ((bgyq)localObject1).b = ((JSONObject)localObject2).optString("method", "GET");
-        ((bgyq)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).optString("responseType").equals("base64");
-        ((bgyq)localObject1).d = null;
-        bool = ((JSONObject)localObject2).optString("dataType").equalsIgnoreCase("json");
-        if (TextUtils.isEmpty(((bgyq)localObject1).jdField_a_of_type_JavaLangString))
-        {
-          paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, "empty url", paramInt);
-          return;
-        }
-      }
-      catch (JSONException paramString1)
-      {
-        QLog.e("MiniAppUtils", 1, "performWnsCgiRequest ", paramString1);
-        paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, paramInt);
-        return;
-      }
-      if (((JSONObject)localObject2).has("data"))
-      {
-        paramString1 = ((JSONObject)localObject2).get("data");
-        if (!(paramString1 instanceof String)) {
-          break label353;
-        }
-      }
-      for (((bgyq)localObject1).d = ((String)paramString1); TextUtils.isEmpty(((bgyq)localObject1).b); ((bgyq)localObject1).d = paramString1.toString())
-      {
-        paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, "wrong method", paramInt);
-        return;
-      }
-      if (("get".equalsIgnoreCase(((bgyq)localObject1).b)) || ("post".equalsIgnoreCase(((bgyq)localObject1).b)))
-      {
-        ((bgyq)localObject1).b = ((bgyq)localObject1).b.toUpperCase();
-        if ("post".equalsIgnoreCase(((bgyq)localObject1).b)) {
-          ((bgyq)localObject1).jdField_e_of_type_JavaLangString = "application/json";
-        }
-        i = -1;
-      }
-      try
-      {
-        paramString1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        localObject2 = localTicketManager.getPskey(paramString1, nko.a().d(SwiftBrowserCookieMonster.b(((bgyq)localObject1).jdField_a_of_type_JavaLangString)));
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          i = getGTK((String)localObject2);
-        }
-        j = i;
-        if (i == -1)
-        {
-          localObject2 = SwiftBrowserCookieMonster.c(((bgyq)localObject1).jdField_a_of_type_JavaLangString);
-          j = i;
-          if (!TextUtils.isEmpty((CharSequence)localObject2))
-          {
-            j = i;
-            if (((String)localObject2).contains("p_skey"))
-            {
-              localObject2 = ((String)localObject2).split(";");
-              int m = localObject2.length;
-              int k = 0;
-              for (;;)
-              {
-                j = i;
-                if (k >= m) {
-                  break;
-                }
-                Object localObject3 = localObject2[k];
-                j = i;
-                if (!TextUtils.isEmpty((CharSequence)localObject3))
-                {
-                  j = i;
-                  if (((String)localObject3).contains("p_skey"))
-                  {
-                    localObject3 = ((String)localObject3).substring(((String)localObject3).indexOf("=") + 1, ((String)localObject3).length());
-                    j = i;
-                    if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-                      j = getGTK((String)localObject3);
-                    }
-                  }
-                }
-                k += 1;
-                i = j;
-              }
-              paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, "wrong method", paramInt);
-              return;
-            }
-          }
-        }
-        if (j != -1) {
-          break label910;
-        }
-        i = getGTK(localTicketManager.getSkey(paramString1));
-      }
-      catch (Throwable paramString1)
-      {
-        for (;;)
-        {
-          QLog.e("MiniAppUtils", 1, "get gtk fail.", paramString1);
-          continue;
-          QLog.d("MiniAppUtils", 2, "performWnsCgiRequest  fail");
-          paramString1 = new JSONObject();
-          try
-          {
-            paramString1.put("wnsCode", 20001);
-            paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, paramString1, "perform wnsRequest failed!", paramInt);
-            return;
-          }
-          catch (Exception localException)
-          {
-            break label892;
-          }
-          i = j;
-        }
-      }
-      if (i != -1) {
-        if (!((bgyq)localObject1).jdField_a_of_type_JavaLangString.contains("?")) {
-          break label813;
-        }
-      }
-      for (((bgyq)localObject1).jdField_a_of_type_JavaLangString = (((bgyq)localObject1).jdField_a_of_type_JavaLangString + "&g_tk=" + i);; ((bgyq)localObject1).jdField_a_of_type_JavaLangString = (((bgyq)localObject1).jdField_a_of_type_JavaLangString + "?g_tk=" + i))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniAppUtils", 2, "url : " + ((bgyq)localObject1).jdField_a_of_type_JavaLangString);
-        }
-        paramString1 = new MiniAppUtils.8(ThreadManagerV2.getSubThreadLooper(), bool, paramBaseJsPluginEngine, paramJsRuntime, paramString2, paramInt);
-        if (!bgyp.a().a((bgyq)localObject1, paramString1, getCookie(((bgyq)localObject1).jdField_a_of_type_JavaLangString))) {
-          break;
-        }
-        QLog.d("MiniAppUtils", 2, "performWnsCgiRequest  success");
-        return;
-      }
-    }
-  }
-  
   private static void fetchWnsCgiCacheData(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     if ((!URLUtil.isHttpsUrl(paramString3)) && (!URLUtil.isHttpUrl(paramString3)))
@@ -536,25 +351,25 @@ public class MiniAppUtils
       QLog.e("MiniAppUtils", 2, new Object[] { "fetchWnsCgiCacheData ", " invalid url " + paramString3 });
       return;
     }
-    bgyq localbgyq = new bgyq();
-    localbgyq.jdField_a_of_type_JavaLangString = paramString3;
-    localbgyq.b = "GET";
-    localbgyq.jdField_a_of_type_Boolean = false;
-    localbgyq.jdField_a_of_type_Int = 0;
-    localbgyq.jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
-    bgyp.a().a(localbgyq, new MiniAppUtils.5(ThreadManager.getSubThreadLooper(), paramContext, paramString1, paramString2));
+    biji localbiji = new biji();
+    localbiji.jdField_a_of_type_JavaLangString = paramString3;
+    localbiji.b = "GET";
+    localbiji.jdField_a_of_type_Boolean = false;
+    localbiji.jdField_a_of_type_Int = 0;
+    localbiji.e = "application/x-www-form-urlencoded";
+    bijh.a().a(localbiji, new MiniAppUtils.4(ThreadManager.getSubThreadLooper(), paramContext, paramString1, paramString2));
   }
   
   public static void fetchWnsCgiPreCacheData(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     QLog.d("MiniAppUtils", 1, "--- prefetch cache data appid:" + paramString1 + "  requestUrl" + paramString2 + "  path:" + paramString3);
-    paramContext = new bgyq();
+    paramContext = new biji();
     paramContext.jdField_a_of_type_JavaLangString = paramString2;
     paramContext.b = "GET";
     paramContext.jdField_a_of_type_Boolean = false;
     paramContext.jdField_a_of_type_Int = 0;
-    paramContext.jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
-    bgyp.a().a(paramContext, new MiniAppUtils.4(ThreadManager.getSubThreadLooper(), paramString3, paramString2));
+    paramContext.e = "application/x-www-form-urlencoded";
+    bijh.a().a(paramContext, new MiniAppUtils.3(ThreadManager.getSubThreadLooper(), paramString3, paramString2));
   }
   
   public static AppInterface getAppInterface()
@@ -707,8 +522,8 @@ public class MiniAppUtils
     ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
     if (paramBoolean)
     {
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130841172);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130841172);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130841184);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130841184);
     }
     label118:
     do
@@ -722,8 +537,8 @@ public class MiniAppUtils
       {
         try
         {
-          paramContext.setTag(bfol.b(i, i, ViewUtils.dpToPx(9.0F)));
-          paramContext.setDecodeHandler(bfol.j);
+          paramContext.setTag(bgxc.b(i, i, ViewUtils.dpToPx(9.0F)));
+          paramContext.setDecodeHandler(bgxc.j);
           localObject = paramContext;
           if (paramContext.getStatus() == 2)
           {
@@ -755,8 +570,8 @@ public class MiniAppUtils
     ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
     if (paramBoolean)
     {
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130841172);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130841172);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130841184);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130841184);
     }
     label126:
     do
@@ -771,8 +586,8 @@ public class MiniAppUtils
       {
         try
         {
-          paramContext.setTag(bfol.b(i, i, ViewUtils.dpToPx(f)));
-          paramContext.setDecodeHandler(bfol.j);
+          paramContext.setTag(bgxc.b(i, i, ViewUtils.dpToPx(f)));
+          paramContext.setDecodeHandler(bgxc.j);
           localObject = paramContext;
           if (paramContext.getStatus() == 2)
           {
@@ -819,8 +634,8 @@ public class MiniAppUtils
       {
         try
         {
-          paramContext.setTag(bfol.b(paramInt2, paramInt2, ViewUtils.dpToPx(9.0F)));
-          paramContext.setDecodeHandler(bfol.j);
+          paramContext.setTag(bgxc.b(paramInt2, paramInt2, ViewUtils.dpToPx(9.0F)));
+          paramContext.setDecodeHandler(bgxc.j);
           localObject = paramContext;
           return localObject;
         }
@@ -868,19 +683,6 @@ public class MiniAppUtils
     return null;
   }
   
-  public static void getMiniAppStoreAppList(String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, BaseJsPluginEngine paramBaseJsPluginEngine)
-  {
-    if (paramBaseJsPluginEngine == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(""))
-    {
-      paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, "no dataCacheKey at app.json", paramInt);
-      return;
-    }
-    ThreadManager.getFileThreadHandler().post(new MiniAppUtils.2(paramBaseJsPluginEngine, paramJsRuntime, paramString2, paramInt));
-  }
-  
   public static Drawable getRecommendIconDrawable(Context paramContext, String paramString)
   {
     paramContext = URLDrawable.URLDrawableOptions.obtain();
@@ -925,7 +727,7 @@ public class MiniAppUtils
         }
         localObject1 = getAppInterface();
       } while (localObject1 == null);
-      localObject1 = (MiniAppUserAppInfoListManager)((AppInterface)localObject1).getManager(309);
+      localObject1 = (MiniAppUserAppInfoListManager)((AppInterface)localObject1).getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER);
       if (localObject1 == null) {}
     }
     Object localObject2;
@@ -1080,22 +882,22 @@ public class MiniAppUtils
   
   public static void miniAppTianShuReport(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    blbx localblbx = new blbx();
+    TianShuReportData localTianShuReportData = new TianShuReportData();
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     String str = "";
     if (localAppRuntime != null) {
       str = localAppRuntime.getAccount();
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localblbx.b = (str + "_" + l);
-    localblbx.jdField_a_of_type_Int = 1;
-    localblbx.jdField_e_of_type_JavaLangString = paramString1;
-    localblbx.f = paramString2;
-    localblbx.g = paramString3;
-    localblbx.d = paramInt;
-    localblbx.jdField_e_of_type_Int = 1;
-    localblbx.jdField_a_of_type_Long = l;
-    blbw.a().a(localblbx);
+    localTianShuReportData.mTraceId = (str + "_" + l);
+    localTianShuReportData.mTraceNum = 1;
+    localTianShuReportData.mAppId = paramString1;
+    localTianShuReportData.mPageId = paramString2;
+    localTianShuReportData.mItemId = paramString3;
+    localTianShuReportData.mActionId = paramInt;
+    localTianShuReportData.mActionValue = 1;
+    localTianShuReportData.mOperTime = l;
+    TianShuManager.getInstance().report(localTianShuReportData);
     if (QLog.isColorLevel()) {
       QLog.i("MiniAppUtils", 2, "tianShuReport, report itemId: " + paramString3);
     }
@@ -1121,7 +923,7 @@ public class MiniAppUtils
   
   public static void notifyUpdateHongBaoRes()
   {
-    if (apyt.c())
+    if (arbw.c())
     {
       BaseApplicationImpl.getApplication().getRuntime().notifyObservers(MiniAppDesktop.class, 103, true, null);
       return;
@@ -1133,7 +935,7 @@ public class MiniAppUtils
   {
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("key_record_mini_app_config", paramMiniAppConfig);
-    AppBrandProxy.g().sendCmd("cmd_update_pull_down_entry_list", localBundle, new MiniAppUtils.9());
+    AppBrandProxy.g().sendCmd("cmd_update_pull_down_entry_list", localBundle, new MiniAppUtils.6());
   }
   
   /* Error */
@@ -1142,23 +944,23 @@ public class MiniAppUtils
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: invokestatic 294	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   2: invokestatic 303	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   5: astore_1
     //   6: aload_1
     //   7: astore_2
     //   8: aload_1
     //   9: iconst_0
-    //   10: invokevirtual 302	android/os/Parcel:setDataPosition	(I)V
+    //   10: invokevirtual 311	android/os/Parcel:setDataPosition	(I)V
     //   13: aload_1
     //   14: astore_2
     //   15: aload_1
     //   16: aload_0
     //   17: iconst_0
-    //   18: invokevirtual 1061	android/os/Parcel:writeParcelable	(Landroid/os/Parcelable;I)V
+    //   18: invokevirtual 890	android/os/Parcel:writeParcelable	(Landroid/os/Parcelable;I)V
     //   21: aload_1
     //   22: astore_2
     //   23: aload_1
-    //   24: invokevirtual 1065	android/os/Parcel:marshall	()[B
+    //   24: invokevirtual 894	android/os/Parcel:marshall	()[B
     //   27: astore_0
     //   28: aload_0
     //   29: astore_2
@@ -1167,7 +969,7 @@ public class MiniAppUtils
     //   32: aload_1
     //   33: ifnull +9 -> 42
     //   36: aload_1
-    //   37: invokevirtual 317	android/os/Parcel:recycle	()V
+    //   37: invokevirtual 326	android/os/Parcel:recycle	()V
     //   40: aload_2
     //   41: astore_0
     //   42: aload_0
@@ -1177,24 +979,24 @@ public class MiniAppUtils
     //   46: astore_1
     //   47: aload_1
     //   48: astore_2
-    //   49: ldc 32
+    //   49: ldc 38
     //   51: iconst_1
-    //   52: new 129	java/lang/StringBuilder
+    //   52: new 130	java/lang/StringBuilder
     //   55: dup
-    //   56: invokespecial 140	java/lang/StringBuilder:<init>	()V
-    //   59: ldc_w 1067
-    //   62: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   59: ldc_w 896
+    //   62: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: aload_0
-    //   66: invokestatic 327	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   69: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   66: invokestatic 336	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   69: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   75: invokestatic 161	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   78: aload_3
     //   79: astore_0
     //   80: aload_1
     //   81: ifnull -39 -> 42
     //   84: aload_1
-    //   85: invokevirtual 317	android/os/Parcel:recycle	()V
+    //   85: invokevirtual 326	android/os/Parcel:recycle	()V
     //   88: aconst_null
     //   89: areturn
     //   90: astore_0
@@ -1203,7 +1005,7 @@ public class MiniAppUtils
     //   93: aload_2
     //   94: ifnull +7 -> 101
     //   97: aload_2
-    //   98: invokevirtual 317	android/os/Parcel:recycle	()V
+    //   98: invokevirtual 326	android/os/Parcel:recycle	()V
     //   101: aload_0
     //   102: athrow
     //   103: astore_0
@@ -1229,11 +1031,6 @@ public class MiniAppUtils
     //   23	28	107	java/lang/Throwable
   }
   
-  public static void performWnsCgiRequest(String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, BaseJsPluginEngine paramBaseJsPluginEngine)
-  {
-    ThreadPools.getNetworkIOThreadPool().execute(new MiniAppUtils.7(paramString1, paramJsRuntime, paramString2, paramInt, paramBaseJsPluginEngine));
-  }
-  
   public static boolean performWnsCgiRequest(JSONObject paramJSONObject, AsyncResult paramAsyncResult)
   {
     if (paramJSONObject == null)
@@ -1243,25 +1040,25 @@ public class MiniAppUtils
     }
     TicketManager localTicketManager;
     Object localObject1;
-    bgyq localbgyq;
+    biji localbiji;
     boolean bool;
     try
     {
       localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
       localObject1 = paramJSONObject.optJSONObject("header");
-      localbgyq = new bgyq();
-      localbgyq.jdField_a_of_type_JavaLangString = paramJSONObject.optString("url");
+      localbiji = new biji();
+      localbiji.jdField_a_of_type_JavaLangString = paramJSONObject.optString("url");
       if (localObject1 == null) {}
       for (localObject1 = "{}";; localObject1 = ((JSONObject)localObject1).toString())
       {
-        localbgyq.c = ((String)localObject1);
-        localbgyq.jdField_a_of_type_Int = 60000;
-        localbgyq.jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
-        localbgyq.b = paramJSONObject.optString("method", "GET");
-        localbgyq.jdField_a_of_type_Boolean = paramJSONObject.optString("responseType").equals("base64");
-        localbgyq.d = null;
+        localbiji.c = ((String)localObject1);
+        localbiji.jdField_a_of_type_Int = 60000;
+        localbiji.e = "application/x-www-form-urlencoded";
+        localbiji.b = paramJSONObject.optString("method", "GET");
+        localbiji.jdField_a_of_type_Boolean = paramJSONObject.optString("responseType").equals("base64");
+        localbiji.d = null;
         bool = paramJSONObject.optString("dataType").equalsIgnoreCase("json");
-        if (!TextUtils.isEmpty(localbgyq.jdField_a_of_type_JavaLangString)) {
+        if (!TextUtils.isEmpty(localbiji.jdField_a_of_type_JavaLangString)) {
           break;
         }
         paramAsyncResult.onReceiveResult(false, null);
@@ -1273,14 +1070,14 @@ public class MiniAppUtils
         if (!(paramJSONObject instanceof String)) {
           break label231;
         }
-        localbgyq.d = ((String)paramJSONObject);
+        localbiji.d = ((String)paramJSONObject);
       }
-      while (TextUtils.isEmpty(localbgyq.b))
+      while (TextUtils.isEmpty(localbiji.b))
       {
         paramAsyncResult.onReceiveResult(false, null);
         return false;
         label231:
-        localbgyq.d = paramJSONObject.toString();
+        localbiji.d = paramJSONObject.toString();
         continue;
         return false;
       }
@@ -1293,25 +1090,25 @@ public class MiniAppUtils
     for (;;)
     {
       int i;
-      if (("get".equalsIgnoreCase(localbgyq.b)) || ("post".equalsIgnoreCase(localbgyq.b)))
+      if (("get".equalsIgnoreCase(localbiji.b)) || ("post".equalsIgnoreCase(localbiji.b)))
       {
-        localbgyq.b = localbgyq.b.toUpperCase();
-        if ("post".equalsIgnoreCase(localbgyq.b)) {
-          localbgyq.jdField_e_of_type_JavaLangString = "application/json";
+        localbiji.b = localbiji.b.toUpperCase();
+        if ("post".equalsIgnoreCase(localbiji.b)) {
+          localbiji.e = "application/json";
         }
         i = -1;
       }
       try
       {
         paramJSONObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        localObject1 = localTicketManager.getPskey(paramJSONObject, nko.a().d(SwiftBrowserCookieMonster.b(localbgyq.jdField_a_of_type_JavaLangString)));
+        localObject1 = localTicketManager.getPskey(paramJSONObject, nro.a().d(SwiftBrowserCookieMonster.b(localbiji.jdField_a_of_type_JavaLangString)));
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           i = getGTK((String)localObject1);
         }
         j = i;
         if (i == -1)
         {
-          localObject1 = SwiftBrowserCookieMonster.c(localbgyq.jdField_a_of_type_JavaLangString);
+          localObject1 = SwiftBrowserCookieMonster.c(localbiji.jdField_a_of_type_JavaLangString);
           j = i;
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
@@ -1353,18 +1150,18 @@ public class MiniAppUtils
         {
           i = getGTK(localTicketManager.getSkey(paramJSONObject));
           if (i != -1) {
-            if (!localbgyq.jdField_a_of_type_JavaLangString.contains("?")) {
+            if (!localbiji.jdField_a_of_type_JavaLangString.contains("?")) {
               break label682;
             }
           }
           label682:
-          for (localbgyq.jdField_a_of_type_JavaLangString = (localbgyq.jdField_a_of_type_JavaLangString + "&g_tk=" + i);; localbgyq.jdField_a_of_type_JavaLangString = (localbgyq.jdField_a_of_type_JavaLangString + "?g_tk=" + i))
+          for (localbiji.jdField_a_of_type_JavaLangString = (localbiji.jdField_a_of_type_JavaLangString + "&g_tk=" + i);; localbiji.jdField_a_of_type_JavaLangString = (localbiji.jdField_a_of_type_JavaLangString + "?g_tk=" + i))
           {
             if (QLog.isColorLevel()) {
-              QLog.d("MiniAppUtils", 2, "url : " + localbgyq.jdField_a_of_type_JavaLangString);
+              QLog.d("MiniAppUtils", 2, "url : " + localbiji.jdField_a_of_type_JavaLangString);
             }
-            paramJSONObject = new MiniAppUtils.6(ThreadManagerV2.getSubThreadLooper(), bool, paramAsyncResult);
-            if (!bgyp.a().a(localbgyq, paramJSONObject, getCookie(localbgyq.jdField_a_of_type_JavaLangString))) {
+            paramJSONObject = new MiniAppUtils.5(ThreadManagerV2.getSubThreadLooper(), bool, paramAsyncResult);
+            if (!bijh.a().a(localbiji, paramJSONObject, getCookie(localbiji.jdField_a_of_type_JavaLangString))) {
               break;
             }
             QLog.d("MiniAppUtils", 2, "performWnsCgiRequest  success");
@@ -1434,13 +1231,13 @@ public class MiniAppUtils
   {
     paramMiniAppInfo.recommend = 0;
     paramMiniAppInfo.extendData = null;
-    if (apyt.c()) {
+    if (arbw.c()) {
       DesktopDataManager.recordMiniAppStart(paramMiniAppInfo);
     }
     for (;;)
     {
       QLog.w("MiniAppUtils", 1, "recordMiniAppInfoToCacheListAndUpdateDB, appInfo = " + paramMiniAppInfo);
-      MiniAppLocalSearchManager localMiniAppLocalSearchManager = (MiniAppLocalSearchManager)BaseApplicationImpl.getApplication().getRuntime().getManager(310);
+      MiniAppLocalSearchManager localMiniAppLocalSearchManager = (MiniAppLocalSearchManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.MINI_APP_LOCAL_SEARCH);
       if (localMiniAppLocalSearchManager != null) {
         localMiniAppLocalSearchManager.updateDataToDB(paramMiniAppInfo);
       }
@@ -1455,7 +1252,7 @@ public class MiniAppUtils
     if ((TextUtils.isEmpty(paramString)) || (!URLUtil.isNetworkUrl(paramString))) {
       return;
     }
-    ThreadManager.executeOnNetWorkThread(new MiniAppUtils.13(paramString));
+    ThreadManager.executeOnNetWorkThread(new MiniAppUtils.10(paramString));
   }
   
   public static void reportProfileCardClick(Card paramCard, boolean paramBoolean) {}
@@ -1507,7 +1304,7 @@ public class MiniAppUtils
       paramCard = ((MISC.StAppPlayingInfo)paramCard.appPlayingInfos.get(0)).appMetaInfo;
       localObject = new MiniAppConfig(MiniAppInfo.from(paramCard));
       ((MiniAppConfig)localObject).launchParam.scene = 2062;
-      if (atup.a(paramCard)) {}
+      if (auzp.a(paramCard)) {}
       for (paramCard = "id_card";; paramCard = "page_view")
       {
         MiniProgramLpReportDC04239.reportAsync((MiniAppConfig)localObject, paramCard, "expo", null, null);
@@ -1577,7 +1374,7 @@ public class MiniAppUtils
     if ((TextUtils.isEmpty(paramString1)) || (paramContext == null) || (paramString3 == null)) {
       return;
     }
-    ThreadManager.getFileThreadHandler().post(new MiniAppUtils.3(paramContext, paramString1, paramString2, paramString3));
+    ThreadManager.getFileThreadHandler().post(new MiniAppUtils.2(paramContext, paramString1, paramString2, paramString3));
   }
   
   public static void setImage(@NonNull ImageView paramImageView, @Nullable String paramString)
@@ -1645,7 +1442,7 @@ public class MiniAppUtils
       recordMiniAppInfoToCacheListAndUpdateDB(paramMiniAppConfig);
       return;
     }
-    MiniAppCmdUtil.getInstance().getAppInfoById(null, paramMiniAppConfig.config.appId, paramMiniAppConfig.launchParam.entryPath, paramMiniAppConfig.launchParam.envVersion, new MiniAppUtils.12(paramMiniAppConfig));
+    MiniAppCmdUtil.getInstance().getAppInfoById(null, paramMiniAppConfig.config.appId, paramMiniAppConfig.launchParam.entryPath, paramMiniAppConfig.launchParam.envVersion, new MiniAppUtils.9(paramMiniAppConfig));
   }
   
   public static void updatePullDownEntryListData(MiniAppConfig paramMiniAppConfig)
@@ -1659,8 +1456,8 @@ public class MiniAppUtils
       QLog.d("MiniAppUtils", 1, "updatePullDownEntryListData, has forbidToken");
       return;
     }
-    ThreadManager.excute(new MiniAppUtils.10(paramMiniAppConfig), 16, null, true);
-    ThreadManagerV2.excute(new MiniAppUtils.11(paramMiniAppConfig), 128, null, true);
+    ThreadManager.excute(new MiniAppUtils.7(paramMiniAppConfig), 16, null, true);
+    ThreadManagerV2.excute(new MiniAppUtils.8(paramMiniAppConfig), 128, null, true);
   }
 }
 

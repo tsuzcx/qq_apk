@@ -6,27 +6,27 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import sex;
+import src;
 
 public class VideofeedsUserGuideController$4
   implements Runnable
 {
-  public VideofeedsUserGuideController$4(sex paramsex) {}
+  public VideofeedsUserGuideController$4(src paramsrc) {}
   
   public void run()
   {
-    TranslateAnimation localTranslateAnimation = sex.b(this.this$0);
+    TranslateAnimation localTranslateAnimation = src.b(this.this$0);
     if (localTranslateAnimation != null)
     {
-      sex.a(this.this$0).setVisibility(0);
-      sex.a(this.this$0).findViewById(2131380271).setVisibility(0);
-      sex.a(this.this$0).findViewById(2131380267).setVisibility(0);
-      sex.a(this.this$0).findViewById(2131380268).setVisibility(0);
-      sex.a(this.this$0).bringToFront();
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)sex.a(this.this$0).getLayoutParams();
-      localMarginLayoutParams.setMargins(0, 0, 0, AIOUtils.dp2px(187.0F, sex.a(this.this$0).getResources()));
-      sex.a(this.this$0).setLayoutParams(localMarginLayoutParams);
-      sex.a(this.this$0).startAnimation(localTranslateAnimation);
+      src.a(this.this$0).setVisibility(0);
+      src.a(this.this$0).findViewById(2131380606).setVisibility(0);
+      src.a(this.this$0).findViewById(2131380602).setVisibility(0);
+      src.a(this.this$0).findViewById(2131380603).setVisibility(0);
+      src.a(this.this$0).bringToFront();
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)src.a(this.this$0).getLayoutParams();
+      localMarginLayoutParams.setMargins(0, 0, 0, AIOUtils.dp2px(187.0F, src.a(this.this$0).getResources()));
+      src.a(this.this$0).setLayoutParams(localMarginLayoutParams);
+      src.a(this.this$0).startAnimation(localTranslateAnimation);
     }
   }
 }

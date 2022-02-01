@@ -1,43 +1,71 @@
-import android.graphics.Color;
-import com.microrapid.opencv.ImageMainColorData;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import SWEET_NEW_BASE.sweet_rsp_comm;
+import SWEET_NEW_PAIR.sweet_pair_byebye_rsp;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QzoneExternalRequest;
+import cooperation.qzone.util.ProtocolUtils;
 
-public final class bmnr
+public class bmnr
+  extends bmnh
 {
-  public static int a(ImageMainColorData paramImageMainColorData)
+  public QQAppInterface a()
   {
-    return Color.argb(255, (int)paramImageMainColorData.r, (int)paramImageMainColorData.g, (int)paramImageMainColorData.b);
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    return null;
   }
   
-  public static List<String> a(List<ImageMainColorData> paramList, int paramInt)
+  public QzoneExternalRequest a(Intent paramIntent)
   {
-    ArrayList localArrayList = new ArrayList();
+    return new bmns(this, paramIntent);
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("currentUin", paramLong1);
+    localIntent.putExtra("friendUin", paramLong2);
+    a(localIntent);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    Object localObject = a();
     int i;
-    if (paramList != null)
+    if (localObject != null)
     {
-      paramList = paramList.iterator();
-      i = 0;
+      localObject = (auzb)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER);
+      paramIntent = String.valueOf(paramIntent.getLongExtra("friendUin", -1L));
+      if (paramFromServiceMsg == null) {
+        break label98;
+      }
+      i = paramFromServiceMsg.getResultCode();
     }
-    for (;;)
+    while (i == 1000)
     {
-      if (paramList.hasNext())
+      paramFromServiceMsg = (sweet_pair_byebye_rsp)ProtocolUtils.decode(paramFromServiceMsg.getWupBuffer(), "sweet_pair_byebye");
+      if (paramFromServiceMsg != null)
       {
-        String str = String.format("#%06X", new Object[] { Integer.valueOf(a((ImageMainColorData)paramList.next()) & 0xFFFFFF) });
-        if (!localArrayList.contains(str))
-        {
-          localArrayList.add(str);
-          int j = i + 1;
-          i = j;
-          if (j < paramInt) {}
+        paramFromServiceMsg = paramFromServiceMsg.rsp_comm;
+        if (paramFromServiceMsg.retcode == 0) {
+          ((auzb)localObject).a(true, paramFromServiceMsg.retcode, paramFromServiceMsg.errmsg, paramIntent);
         }
       }
       else
       {
-        return localArrayList;
+        return;
+        label98:
+        i = -1;
+        continue;
       }
+      ((auzb)localObject).a(false, paramFromServiceMsg.retcode, paramFromServiceMsg.errmsg, paramIntent);
+      return;
     }
+    ((auzb)localObject).a(false, -1, null, null);
   }
 }
 

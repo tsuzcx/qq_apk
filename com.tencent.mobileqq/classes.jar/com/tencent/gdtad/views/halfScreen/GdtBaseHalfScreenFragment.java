@@ -1,11 +1,11 @@
 package com.tencent.gdtad.views.halfScreen;
 
-import abrl;
-import abtr;
-import abts;
-import abtt;
-import abup;
-import adxr;
+import acho;
+import acjq;
+import acjr;
+import acjs;
+import acko;
+import aeow;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,12 +17,10 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bgtj;
+import bieb;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
 import com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasView;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.ad.tangram.util.AdUIUtils;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
@@ -37,16 +35,10 @@ import mqq.app.MobileQQ;
 public abstract class GdtBaseHalfScreenFragment
   extends PublicBaseFragment
 {
-  public static String a;
-  private abup jdField_a_of_type_Abup;
+  private acko jdField_a_of_type_Acko;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private AdCanvasView jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView;
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "key_from_process_name";
-  }
   
   private void a(int paramInt, AdCanvasData paramAdCanvasData, String paramString, FrameLayout paramFrameLayout)
   {
@@ -66,9 +58,9 @@ public abstract class GdtBaseHalfScreenFragment
     paramAdCanvasData = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
     this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(getActivity());
     paramFrameLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    this.jdField_a_of_type_Abup = new abtt(this, getActivity(), getActivity(), null, paramAdCanvasData);
-    this.jdField_a_of_type_Abup.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    new bgtj(this.jdField_a_of_type_Abup).a(null, paramAdCanvasData, getActivity().getIntent());
+    this.jdField_a_of_type_Acko = new acjs(this, getActivity(), getActivity(), null, paramAdCanvasData);
+    this.jdField_a_of_type_Acko.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
+    new bieb(this.jdField_a_of_type_Acko).a(null, paramAdCanvasData, getActivity().getIntent());
     this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(paramString);
   }
   
@@ -76,55 +68,40 @@ public abstract class GdtBaseHalfScreenFragment
   {
     if ((paramActivity == null) || (paramAd == null) || (!paramAd.isValid()))
     {
-      abrl.d("GdtBaseHalfScreenFragment", "start error");
+      acho.d("GdtBaseHalfScreenFragment", "start error");
       return;
     }
-    abrl.b("GdtBaseHalfScreenFragment", "start GdtBaseHalfScreenFragment" + paramInt);
+    acho.b("GdtBaseHalfScreenFragment", "start GdtBaseHalfScreenFragment" + paramInt);
     Bundle localBundle = new Bundle();
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
       localBundle.putAll(paramBundle);
     }
     localBundle.putSerializable("data", (GdtAd)paramAd);
-    paramBundle = new Intent();
-    paramBundle.putExtra("public_fragment_window_feature", 1);
-    paramBundle.putExtra("big_brother_source_key", "biz_src_ads");
-    paramBundle.putExtras(localBundle);
-    paramBundle.putExtra("url", paramString);
-    paramBundle.putExtra("canvas_data", paramAdCanvasData);
-    paramBundle.putExtra("style", paramInt);
-    if (TextUtils.isEmpty(paramBundle.getStringExtra("big_brother_ref_source_key"))) {
-      abrl.d("GdtBaseHalfScreenFragment", "start gdt empty refId");
+    paramAd = new Intent();
+    paramAd.putExtra("public_fragment_window_feature", 1);
+    paramAd.putExtra("big_brother_source_key", "biz_src_ads");
+    paramAd.putExtras(localBundle);
+    paramAd.putExtra("url", paramString);
+    paramAd.putExtra("canvas_data", paramAdCanvasData);
+    paramAd.putExtra("style", paramInt);
+    if (TextUtils.isEmpty(paramAd.getStringExtra("big_brother_ref_source_key"))) {
+      acho.d("GdtBaseHalfScreenFragment", "start gdt empty refId");
     }
-    paramString = AdProcessManager.INSTANCE.getCurrentProcessName(paramActivity);
     if (paramInt == 2)
     {
-      paramAdCanvasData = AdProcessManager.INSTANCE.getMainProcessName();
-      if (!TextUtils.isEmpty(paramString)) {
-        paramBundle.putExtra(jdField_a_of_type_JavaLangString, paramString);
-      }
-      if (paramInt != 2) {
-        break label250;
-      }
-      adxr.a(paramActivity, paramBundle, PublicTransFragmentActivity.class, paramClass);
-    }
-    for (;;)
-    {
-      AdReporterForAnalysis.reportForStartActivity(paramActivity, paramAd, "GdtBaseHalfScreenFragment", paramAdCanvasData);
+      aeow.a(paramActivity, paramAd, PublicTransFragmentActivity.class, paramClass);
       return;
-      paramAdCanvasData = AdProcessManager.INSTANCE.getWebProcessName();
-      break;
-      label250:
-      adxr.a(paramActivity, paramBundle, PublicTransFragmentActivityForTool.class, paramClass);
     }
+    aeow.a(paramActivity, paramAd, PublicTransFragmentActivityForTool.class, paramClass);
   }
   
   private void a(FrameLayout paramFrameLayout, View paramView)
   {
     if (paramFrameLayout != null) {
-      paramFrameLayout.setOnClickListener(new abtr(this));
+      paramFrameLayout.setOnClickListener(new acjq(this));
     }
     if (paramView != null) {
-      paramView.setOnClickListener(new abts(this));
+      paramView.setOnClickListener(new acjr(this));
     }
   }
   
@@ -165,31 +142,26 @@ public abstract class GdtBaseHalfScreenFragment
     for (paramBundle = (AdCanvasData)getActivity().getIntent().getSerializableExtra("canvas_data");; paramBundle = null)
     {
       localObject = (GdtAd)getActivity().getIntent().getSerializableExtra("data");
-      String str = getActivity().getIntent().getStringExtra("url");
+      localObject = getActivity().getIntent().getStringExtra("url");
       int i = getActivity().getIntent().getIntExtra("style", -2147483648);
-      if ((getArguments() != null) && (getArguments().containsKey(jdField_a_of_type_JavaLangString))) {}
-      for (localObject = getArguments().getString(jdField_a_of_type_JavaLangString);; localObject = null)
-      {
-        AdReporterForAnalysis.reportForActivityStatusChanged(getActivity(), null, "GdtBaseHalfScreenFragment", 1, (String)localObject);
-        paramLayoutInflater = paramLayoutInflater.inflate(2131559229, paramViewGroup, false);
-        paramViewGroup = (FrameLayout)paramLayoutInflater.findViewById(2131369603);
-        localObject = (FrameLayout)paramLayoutInflater.findViewById(2131379060);
-        View localView = paramLayoutInflater.findViewById(2131363260);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131378707));
-        this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(AdUIUtils.dp2px(120.0F, getResources()));
-        a((FrameLayout)localObject, localView);
-        a(i, paramBundle, str, paramViewGroup);
-        paramBundle = paramLayoutInflater;
-        break;
-      }
+      paramLayoutInflater = paramLayoutInflater.inflate(2131559268, paramViewGroup, false);
+      paramViewGroup = (FrameLayout)paramLayoutInflater.findViewById(2131369772);
+      FrameLayout localFrameLayout = (FrameLayout)paramLayoutInflater.findViewById(2131379356);
+      View localView = paramLayoutInflater.findViewById(2131363323);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131379001));
+      this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(AdUIUtils.dp2px(120.0F, getResources()));
+      a(localFrameLayout, localView);
+      a(i, paramBundle, (String)localObject, paramViewGroup);
+      paramBundle = paramLayoutInflater;
+      break;
     }
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Abup != null) {
-      this.jdField_a_of_type_Abup.c();
+    if (this.jdField_a_of_type_Acko != null) {
+      this.jdField_a_of_type_Acko.c();
     }
     if (this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView != null) {
       this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView.onActivityDestroy();
@@ -206,8 +178,8 @@ public abstract class GdtBaseHalfScreenFragment
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Abup != null) {
-      this.jdField_a_of_type_Abup.b();
+    if (this.jdField_a_of_type_Acko != null) {
+      this.jdField_a_of_type_Acko.b();
     }
     if (this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView != null) {
       this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView.onActivityPause();
@@ -217,8 +189,8 @@ public abstract class GdtBaseHalfScreenFragment
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Abup != null) {
-      this.jdField_a_of_type_Abup.a();
+    if (this.jdField_a_of_type_Acko != null) {
+      this.jdField_a_of_type_Acko.a();
     }
     if (this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView != null) {
       this.jdField_a_of_type_ComTencentAdTangramCanvasViewsCanvasFrameworkAdCanvasView.onActivityResume();

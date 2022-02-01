@@ -1,203 +1,325 @@
+import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
-import android.os.Looper;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager.1;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.ViewGroup;
+import android.view.Window;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.push.RIJPushNotifyManager.Companion.instance.2;
+import com.tencent.biz.pubaccount.readinjoy.push.RIJPushNotifyManager.showPushNotifyDialog.param.1;
+import com.tencent.biz.pubaccount.readinjoy.push.RIJPushNotifyManager.showPushNotifyDialogForWeb.param.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.LazyThreadSafetyMode;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function3;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class rao
-  implements Manager
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager;", "", "()V", "checkBoxText", "", "getCheckBoxText", "()Ljava/lang/String;", "dialogShowDuration", "", "getDialogShowDuration", "()J", "shouldShowDialog", "", "type1ButtonText", "getType1ButtonText", "type1HeaderText", "getType1HeaderText", "type2HeaderText", "getType2HeaderText", "type2LeftButtonText", "getType2LeftButtonText", "type2RightButtonText", "getType2RightButtonText", "dismiss", "", "needAnimation", "uin", "getParam", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyParam;", "guideType", "", "topActivity", "Landroid/app/Activity;", "avatarUrl", "isDarkMode", "hasNightMode", "logicAction", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "isOpenPushNotify", "isDefaultOpen", "buttonId", "reportDialogButtonClicked", "bizType", "uniqueId", "reportDialogCloseIconClicked", "reportDialogExposure", "showPushNotifyDialog", "isForceDarkMode", "showPushNotifyDialogForWeb", "callback", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager$IPushNotifyDialogCallback;", "showToast", "activity", "Companion", "IPushNotifyDialogCallback", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rao
 {
-  public static volatile boolean b;
-  protected int a;
-  protected long a;
-  protected bgoj a;
-  protected AppInterface a;
-  protected String a;
-  protected ArrayList<raq> a;
-  protected HashMap<String, String> a;
-  protected boolean a;
-  protected int b;
-  private int c = -1;
+  @NotNull
+  private static final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy(LazyThreadSafetyMode.SYNCHRONIZED, (Function0)RIJPushNotifyManager.Companion.instance.2.INSTANCE);
+  public static final rap a;
+  private final long jdField_a_of_type_Long;
+  @NotNull
+  private final String jdField_a_of_type_JavaLangString;
+  private final boolean jdField_a_of_type_Boolean;
+  @NotNull
+  private final String b;
+  @NotNull
+  private final String c;
+  @NotNull
+  private final String d;
+  @NotNull
+  private final String e;
+  @NotNull
+  private final String f;
   
   static
   {
-    jdField_b_of_type_Boolean = true;
+    jdField_a_of_type_Rap = new rap(null);
   }
   
-  public rao(AppInterface paramAppInterface)
+  public rao()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Bgoj = ((bgog)paramAppInterface.getManager(47)).a(1);
-  }
-  
-  public static RefreshData b(Context paramContext, int paramInt)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (rao)((AppRuntime)localObject).getManager(270);
-      if (localObject != null) {
-        return ((rao)localObject).a(paramContext, paramInt);
-      }
-    }
-    return null;
-  }
-  
-  private void b(int paramInt1, String paramString, long paramLong, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
-    rbm.a(this.jdField_a_of_type_JavaLangString, paramLong);
-    paramInt1 = 0;
-    while (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      ((raq)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-      paramInt1 += 1;
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public RefreshData a(Context paramContext, int paramInt)
-  {
-    RefreshData localRefreshData = null;
-    paramContext = bfyz.a(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt);
-    if (paramContext != null) {}
+    if (Aladdin.getConfig(340).getIntegerFromString("enable_alert", 0) == 1) {}
     for (;;)
     {
-      try
-      {
-        paramContext = new JSONObject(paramContext);
-        if (paramContext != null) {
-          localRefreshData = new RefreshData(paramContext);
-        }
-        return localRefreshData;
-      }
-      catch (Exception paramContext)
-      {
-        paramContext = null;
-        continue;
-      }
-      paramContext = null;
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Long = (Aladdin.getConfig(340).getIntegerFromString("show_duration", 10) * 1000L);
+      String str = Aladdin.getConfig(340).getString("checkbox_text", pkh.a(2131717679));
+      Intrinsics.checkExpressionValueIsNotNull(str, "Aladdin.getConfig(QQAlad…efault_open_push_notify))");
+      this.jdField_a_of_type_JavaLangString = str;
+      str = Aladdin.getConfig(340).getString("type1_header_text", pkh.a(2131717770));
+      Intrinsics.checkExpressionValueIsNotNull(str, "Aladdin.getConfig(QQAlad…_has_closed_push_notify))");
+      this.b = str;
+      str = Aladdin.getConfig(340).getString("type1_button_text", pkh.a(2131717813));
+      Intrinsics.checkExpressionValueIsNotNull(str, "Aladdin.getConfig(QQAlad…injoy_open_it_right_now))");
+      this.c = str;
+      str = Aladdin.getConfig(340).getString("type2_header_text", pkh.a(2131717771));
+      Intrinsics.checkExpressionValueIsNotNull(str, "Aladdin.getConfig(QQAlad…_has_opened_push_notify))");
+      this.d = str;
+      str = Aladdin.getConfig(340).getString("type2_left_button_text", pkh.a(2131690845));
+      Intrinsics.checkExpressionValueIsNotNull(str, "Aladdin.getConfig(QQAlad…etString(R.string.close))");
+      this.e = str;
+      str = Aladdin.getConfig(340).getString("type2_right_button_text", pkh.a(2131717773));
+      Intrinsics.checkExpressionValueIsNotNull(str, "Aladdin.getConfig(QQAlad…g.readinjoy_i_dont_need))");
+      this.f = str;
+      return;
+      bool = false;
     }
   }
   
-  public String a()
+  private final rau a(int paramInt, Activity paramActivity, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, Function3<? super Boolean, ? super Boolean, ? super Integer, Unit> paramFunction3)
+  {
+    boolean bool2 = false;
+    int j = 1;
+    int i;
+    boolean bool1;
+    if ((paramActivity instanceof SplashActivity))
+    {
+      i = DisplayUtil.dip2px((Context)paramActivity, 72.0F);
+      bool1 = bool2;
+      if (ThemeUtil.isNowThemeIsNight(pkh.a(), false, null))
+      {
+        bool1 = bool2;
+        if (paramBoolean2) {
+          bool1 = true;
+        }
+      }
+      if (paramInt != 1) {
+        break label93;
+      }
+    }
+    label93:
+    for (paramInt = j;; paramInt = 2)
+    {
+      return new rau(paramInt, paramBoolean1, paramString1, paramString2, i, bool1, paramFunction3);
+      i = DisplayUtil.dip2px((Context)paramActivity, 16.0F);
+      break;
+    }
+  }
+  
+  private final void a(int paramInt1, String paramString, int paramInt2)
+  {
+    QQAppInterface localQQAppInterface = pnn.a();
+    if (paramInt1 == 1) {}
+    for (String str = "2";; str = "1")
+    {
+      olh.a(localQQAppInterface, "", "0X800AFFC", "0X800AFFC", 0, 0, str, paramString, String.valueOf(paramInt2), "", false);
+      return;
+    }
+  }
+  
+  private final void a(int paramInt1, String paramString, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    pqg localpqg;
+    label38:
+    QQAppInterface localQQAppInterface;
+    if (paramInt2 == 1)
+    {
+      paramInt3 = 1;
+      localpqg = new pqg();
+      localpqg.a("click_type", Integer.valueOf(paramInt3));
+      if (!paramBoolean) {
+        break label113;
+      }
+      paramInt3 = 1;
+      localpqg.a("is_ticked", Integer.valueOf(paramInt3));
+      localQQAppInterface = pnn.a();
+      if (paramInt1 != 1) {
+        break label119;
+      }
+    }
+    label113:
+    label119:
+    for (String str = "2";; str = "1")
+    {
+      olh.a(localQQAppInterface, "", "0X800AFFE", "0X800AFFE", 0, 0, str, paramString, String.valueOf(paramInt2), localpqg.a(), false);
+      return;
+      if (paramInt3 == 1)
+      {
+        paramInt3 = 0;
+        break;
+      }
+      paramInt3 = 1;
+      break;
+      paramInt3 = 0;
+      break label38;
+    }
+  }
+  
+  private final void a(boolean paramBoolean1, boolean paramBoolean2, Activity paramActivity)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramBoolean1) {
+      localStringBuilder.append(pkh.a(2131717814));
+    }
+    for (;;)
+    {
+      if (paramBoolean2) {
+        localStringBuilder.append(pkh.a(2131717680));
+      }
+      QQToast.a((Context)paramActivity, 2, (CharSequence)localStringBuilder, 0).a();
+      return;
+      localStringBuilder.append(pkh.a(2131717612));
+    }
+  }
+  
+  private final void b(int paramInt1, String paramString, int paramInt2)
+  {
+    QQAppInterface localQQAppInterface = pnn.a();
+    if (paramInt1 == 1) {}
+    for (String str = "2";; str = "1")
+    {
+      olh.a(localQQAppInterface, "", "0X800AFFD", "0X800AFFD", 0, 0, str, paramString, String.valueOf(paramInt2), "", false);
+      return;
+    }
+  }
+  
+  public final long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  @NotNull
+  public final String a()
   {
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a()
+  public final void a(int paramInt1, @NotNull String paramString1, @NotNull String paramString2, int paramInt2)
   {
-    this.jdField_a_of_type_Int = -1;
+    Intrinsics.checkParameterIsNotNull(paramString1, "avatarUrl");
+    Intrinsics.checkParameterIsNotNull(paramString2, "uniqueId");
+    a(paramInt1, paramString1, paramString2, paramInt2, false);
   }
   
-  public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
+  public final void a(int paramInt1, @NotNull String paramString1, @NotNull String paramString2, int paramInt2, boolean paramBoolean)
   {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    Intrinsics.checkParameterIsNotNull(paramString1, "avatarUrl");
+    Intrinsics.checkParameterIsNotNull(paramString2, "uniqueId");
+    QLog.i("RIJPushNotifyManager", 1, "showPushNotifyDialog guideType: " + paramInt1 + " avatarUrl: " + paramString1 + " uin: " + paramString2 + " shouldShowDialog: " + this.jdField_a_of_type_Boolean);
+    BaseActivity localBaseActivity;
+    Object localObject;
+    if ((paramInt1 != 0) && (this.jdField_a_of_type_Boolean))
     {
-      b(paramInt1, paramString, paramLong, paramInt2);
-      return;
+      localBaseActivity = BaseActivity.sTopActivity;
+      if (localBaseActivity == null) {
+        break label235;
+      }
+      localObject = localBaseActivity.getWindow();
+      if (localObject == null) {
+        break label235;
+      }
+      localObject = ((Window)localObject).getDecorView();
+      if ((localObject instanceof ViewGroup))
+      {
+        if ((!(localBaseActivity instanceof VideoFeedsPlayActivity)) && (!(localBaseActivity instanceof PublicTransFragmentActivity)) && (!paramBoolean)) {
+          break label241;
+        }
+        paramBoolean = true;
+        label146:
+        if (((localBaseActivity instanceof VideoFeedsPlayActivity)) || ((localBaseActivity instanceof PublicTransFragmentActivity))) {
+          break label247;
+        }
+      }
     }
-    ThreadManager.getUIHandler().post(new ReadInJoyRefreshManager.1(this, paramInt1, paramString, paramLong, paramInt2));
+    label235:
+    label241:
+    label247:
+    for (boolean bool = true;; bool = false)
+    {
+      paramString1 = a(paramInt1, (Activity)localBaseActivity, paramString1, paramString2, paramBoolean, bool, (Function3)new RIJPushNotifyManager.showPushNotifyDialog.param.1(this, localBaseActivity, paramString2, paramInt2, paramInt1));
+      pvm.a().a(false, "MATCH_ALL_UIN");
+      new raw((ViewGroup)localObject, paramString1).a(true);
+      a(paramInt2, paramString2, paramInt1);
+      return;
+      localObject = null;
+      break;
+      paramBoolean = false;
+      break label146;
+    }
   }
   
-  public void a(raq paramraq)
+  public final void a(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, @NotNull String paramString1, int paramInt2, @NotNull String paramString2, @NotNull raq paramraq)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    Intrinsics.checkParameterIsNotNull(paramString1, "avatarUrl");
+    Intrinsics.checkParameterIsNotNull(paramString2, "uniqueId");
+    Intrinsics.checkParameterIsNotNull(paramraq, "callback");
+    QLog.i("RIJPushNotifyManager", 1, "showPushNotifyDialogForWeb guideType: " + paramInt1 + " avatarUrl: " + paramString1 + " uin: " + paramString2 + "isDarkMode: " + paramBoolean1 + " hasNightMode: " + paramBoolean2 + " bizType: " + paramInt2 + " shouldShowDialog: " + this.jdField_a_of_type_Boolean);
+    BaseActivity localBaseActivity;
+    if ((paramInt1 != 0) && (this.jdField_a_of_type_Boolean))
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramraq)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramraq);
+      localBaseActivity = BaseActivity.sTopActivity;
+      if (localBaseActivity == null) {
+        break label241;
+      }
+      localObject = localBaseActivity.getWindow();
+      if (localObject == null) {
+        break label241;
+      }
+    }
+    label241:
+    for (Object localObject = ((Window)localObject).getDecorView();; localObject = null)
+    {
+      if ((localObject instanceof ViewGroup))
+      {
+        paramString1 = a(paramInt1, (Activity)localBaseActivity, paramString1, paramString2, paramBoolean1, paramBoolean2, (Function3)new RIJPushNotifyManager.showPushNotifyDialogForWeb.param.1(this, localBaseActivity, paramString2, paramInt2, paramraq, paramInt1));
+        pvm.a().a(false, "MATCH_ALL_UIN");
+        new raw((ViewGroup)localObject, paramString1).a(true);
+        a(paramInt2, paramString2, paramInt1);
       }
       return;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public final void a(boolean paramBoolean, @NotNull String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    pvm.a().a(paramBoolean, paramString);
   }
   
-  public boolean a()
+  @NotNull
+  public final String b()
   {
-    return (a() == 1) && (rbm.b() == 1);
+    return this.b;
   }
   
-  public boolean a(RefreshData paramRefreshData, int paramInt)
+  @NotNull
+  public final String c()
   {
-    return a(paramRefreshData, 0, paramInt);
+    return this.c;
   }
   
-  public boolean a(RefreshData paramRefreshData, int paramInt1, int paramInt2)
+  @NotNull
+  public final String d()
   {
-    Object localObject = paramRefreshData.id;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes start id = " + (String)localObject);
-    }
-    String str = rbm.a((String)localObject);
-    if (rbm.a((String)localObject)) {
-      return true;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap.get("refresh_" + (String)localObject) != null) {
-      return false;
-    }
-    FileUtils.deleteDirectory(str);
-    this.jdField_a_of_type_JavaUtilHashMap.put("refresh_" + (String)localObject, paramRefreshData.url);
-    str = str + ".zip";
-    File localFile = new File(str);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("refreshId", (String)localObject);
-    localObject = new bgoe(paramRefreshData.url, localFile);
-    ((bgoe)localObject).jdField_b_of_type_Int = paramInt1;
-    ((bgoe)localObject).d = 60L;
-    ((bgoe)localObject).m = true;
-    this.jdField_a_of_type_Bgoj.a((bgoe)localObject, new rap(this, str, paramRefreshData, paramInt2), localBundle);
-    return false;
+    return this.d;
   }
   
-  public void b(raq paramraq)
+  @NotNull
+  public final String e()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramraq);
-      return;
-    }
+    return this.e;
   }
   
-  public boolean b()
+  @NotNull
+  public final String f()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Int = -1;
-    jdField_b_of_type_Boolean = false;
+    return this.f;
   }
 }
 

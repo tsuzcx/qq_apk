@@ -1,18 +1,23 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import mqq.os.MqqHandler;
 
-class ajhs
-  implements View.OnTouchListener
+public class ajhs
+  extends aofu
 {
-  ajhs(ajhm paramajhm) {}
+  public ajhs(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onTroopManagerFailed(int paramInt1, int paramInt2)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (paramInt1 == 8) {
+      this.a.a.sendEmptyMessage(1018);
+    }
+  }
+  
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 8) {
+      this.a.a.sendEmptyMessage(1016);
+    }
   }
 }
 

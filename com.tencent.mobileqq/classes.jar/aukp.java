@@ -1,16 +1,21 @@
-import android.graphics.ColorMatrixColorFilter;
-import android.os.Bundle;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aukp
+final class aukp
+  implements View.OnClickListener
 {
-  public abstract void a();
+  aukp(QQAppInterface paramQQAppInterface, String paramString, aukq paramaukq, arnm paramarnm) {}
   
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
-  public abstract void a(ColorMatrixColorFilter paramColorMatrixColorFilter);
-  
-  public abstract void a(Map<String, Object> paramMap);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
+    }
+    this.jdField_a_of_type_Aukq.a(this.jdField_a_of_type_Arnm.b());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,36 +1,14 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public final class wyn
-  extends QQUIEventReceiver<wyc, wbm>
+class wyn
+  implements DialogInterface.OnCancelListener
 {
-  public wyn(@NonNull wyc paramwyc)
-  {
-    super(paramwyc);
-  }
+  wyn(wyk paramwyk) {}
   
-  public void a(@NonNull wyc paramwyc, @NonNull wbm paramwbm)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramwbm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwbm.jdField_a_of_type_JavaUtilList != null) && (paramwyc.a != null))
-    {
-      paramwbm = paramwbm.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramwbm.hasNext())
-      {
-        vwa localvwa = (vwa)paramwbm.next();
-        if (TextUtils.equals(paramwyc.a.b, localvwa.a)) {
-          paramwyc.i();
-        }
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wbm.class;
+    this.a.f();
   }
 }
 

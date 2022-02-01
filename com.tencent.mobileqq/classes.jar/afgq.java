@@ -1,22 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.ImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin;
 
-class afgq
-  implements ValueAnimator.AnimatorUpdateListener
+public final class afgq
+  implements Parcelable.Creator<TroopMemberListActivity.TroopAdmin>
 {
-  afgq(afgp paramafgp) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public TroopMemberListActivity.TroopAdmin a(Parcel paramParcel)
   {
-    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
-    if (afgp.a(this.a) != null) {
-      afgp.a(this.a).setAlpha((float)d);
-    }
-    if (afgp.a(this.a) != null) {
-      afgp.a(this.a).setAlpha((float)d * 2.0F);
-    }
+    return new TroopMemberListActivity.TroopAdmin(paramParcel, null);
+  }
+  
+  public TroopMemberListActivity.TroopAdmin[] a(int paramInt)
+  {
+    return new TroopMemberListActivity.TroopAdmin[paramInt];
   }
 }
 

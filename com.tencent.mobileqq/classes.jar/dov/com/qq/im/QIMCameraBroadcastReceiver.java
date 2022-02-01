@@ -4,20 +4,20 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import blhu;
-import bmbx;
-import boav;
+import bmul;
+import bnkt;
+import bnrh;
+import bpqn;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import dov.com.qq.im.ae.download.AEResInfo;
 
 public class QIMCameraBroadcastReceiver
   extends BroadcastReceiver
 {
-  private blhu a;
+  private bmul a;
   
-  public QIMCameraBroadcastReceiver(blhu paramblhu)
+  public QIMCameraBroadcastReceiver(bmul parambmul)
   {
-    this.a = paramblhu;
+    this.a = parambmul;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -34,19 +34,19 @@ public class QIMCameraBroadcastReceiver
           {
             return;
             paramContext = paramIntent.getAction();
-            bmbx.b("QIMCameraBroadcastReceiver", "receive boardcast, action:" + paramContext);
+            bnrh.b("QIMCameraBroadcastReceiver", "receive boardcast, action:" + paramContext);
             if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
               break;
             }
           } while ((this.a.f) || (!this.a.m));
-          this.a.m();
+          this.a.h();
           return;
-        } while (!AEResInfo.AE_RES_ADDITIONAL_PACKAGE.resPrefix.equals(paramContext));
-        boav.jdField_a_of_type_Boolean = true;
-      } while (boav.jdField_a_of_type_JavaLangString == null);
+        } while (!bnkt.c.b.equals(paramContext));
+        bpqn.jdField_a_of_type_Boolean = true;
+      } while (bpqn.jdField_a_of_type_JavaLangString == null);
       paramContext = this.a.a();
     } while (!(paramContext instanceof EffectsCameraCaptureView));
-    ((EffectsCameraCaptureView)paramContext).setFaceEffect(boav.jdField_a_of_type_JavaLangString);
+    ((EffectsCameraCaptureView)paramContext).setFaceEffect(bpqn.jdField_a_of_type_JavaLangString);
   }
 }
 

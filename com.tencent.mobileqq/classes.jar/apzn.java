@@ -1,69 +1,168 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import org.json.JSONObject;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
 
 public class apzn
 {
-  private boolean a;
+  public static int a;
+  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+  public static int b = 3;
+  public static int c = 1;
+  public static int d = 3;
+  public static int e = 3;
+  public static int f = 10;
+  public static int g = 1;
+  private apwn jdField_a_of_type_Apwn;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  protected WeakReference<QQAppInterface> a;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static apzn a(aptx[] paramArrayOfaptx)
+  static
   {
-    apzn localapzn = new apzn();
-    StringBuilder localStringBuilder = new StringBuilder();
+    jdField_a_of_type_Int = 5;
+  }
+  
+  public apzn(BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app);
+    }
+    ArkAppCenter.b(false);
+  }
+  
+  public static boolean a(Node paramNode, JSONObject paramJSONObject)
+  {
+    boolean bool = true;
+    if (paramNode == null) {
+      bool = false;
+    }
     for (;;)
     {
+      return bool;
       try
       {
-        int j = paramArrayOfaptx.length;
+        String str = paramNode.getNodeName();
+        NodeList localNodeList = paramNode.getChildNodes();
+        JSONObject localJSONObject = new JSONObject();
         int i = 0;
-        if (i < j)
+        int k;
+        for (int j = 0;; j = k)
         {
-          String str = paramArrayOfaptx[i].a;
-          QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "content=", str });
-          JSONObject localJSONObject = new JSONObject(str);
-          if (localJSONObject.has("enable_fake_msg"))
+          if (i < localNodeList.getLength())
           {
-            if (localJSONObject.optInt("enable_fake_msg", 0) == 1)
+            Node localNode = localNodeList.item(i);
+            if ((localNode instanceof Element))
             {
-              bool = true;
-              localapzn.a = bool;
+              a(localNode, localJSONObject);
+              k = 1;
+            }
+            else
+            {
+              k = j;
+              if ((localNode instanceof Text))
+              {
+                paramJSONObject.put(str, paramNode.getFirstChild().getNodeValue());
+                k = j;
+              }
             }
           }
           else
           {
-            localStringBuilder.append("config: ").append(str).append(",");
-            i += 1;
+            if (j == 0) {
+              break;
+            }
+            paramJSONObject.put(str, localJSONObject);
+            return true;
           }
+          i += 1;
         }
-        else
-        {
-          QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, "parse, content:" + localStringBuilder.toString());
-          return localapzn;
-        }
+        return false;
       }
-      catch (JSONException paramArrayOfaptx)
-      {
-        QLog.e("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, "JSONException", paramArrayOfaptx);
-        return null;
-      }
-      boolean bool = false;
+      catch (Exception paramNode) {}
     }
   }
   
-  public boolean a()
+  public View a()
   {
-    return this.a;
+    if (this.jdField_a_of_type_Apwn != null) {
+      return this.jdField_a_of_type_Apwn.a();
+    }
+    return null;
   }
   
-  public String toString()
+  BaseChatPie a()
   {
-    new StringBuilder().append("isEnableFakeMsg:").append(this.a);
-    return super.toString();
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Apwn != null) {
+      this.jdField_a_of_type_Apwn.a();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Apwn != null)
+    {
+      if ((paramInt2 == 22) || (paramInt1 != 22)) {
+        break label27;
+      }
+      this.jdField_a_of_type_Apwn.a();
+    }
+    label27:
+    while ((paramInt2 != 22) || (paramInt1 == 22)) {
+      return;
+    }
+    this.jdField_a_of_type_Apwn.b();
+  }
+  
+  public void a(List<apxo> paramList, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkRecommendController", 2, "showAppPanel.mChatPie is null");
+      }
+      return;
+    }
+    if (this.jdField_a_of_type_Apwn == null) {
+      this.jdField_a_of_type_Apwn = new apwn(a());
+    }
+    this.jdField_a_of_type_Apwn.a();
+    this.jdField_a_of_type_Apwn.a(paramList, paramInt, null);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Apwn != null)
+    {
+      this.jdField_a_of_type_Apwn.c();
+      this.jdField_a_of_type_Apwn = null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = null;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apzn
  * JD-Core Version:    0.7.0.1
  */

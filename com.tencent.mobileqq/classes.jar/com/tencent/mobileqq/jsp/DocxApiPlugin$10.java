@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.jsp;
 
-import autl;
-import bfyz;
+import avzk;
+import bhhr;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class DocxApiPlugin$10
   implements Runnable
 {
-  public DocxApiPlugin$10(autl paramautl, QQBrowserActivity paramQQBrowserActivity, String paramString) {}
+  public DocxApiPlugin$10(avzk paramavzk, QQBrowserActivity paramQQBrowserActivity, String paramString) {}
   
   public void run()
   {
-    bfyz.D(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, this.jdField_a_of_type_JavaLangString);
+    bhhr.D(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 

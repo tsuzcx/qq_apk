@@ -20,18 +20,18 @@ public class TransitionFilter
     setDataPath(paramString);
   }
   
-  public void ClearGLSL()
-  {
-    this.mBlendFilter.ClearGLSL();
-    this.mAlphaFilter.ClearGLSL();
-    this.mMoveFilter.ClearGLSL();
-  }
-  
   public void RenderProcess(int paramInt1, int paramInt2, int paramInt3, int paramInt4, double paramDouble, Frame paramFrame)
   {
     if (this.mCurrFilter != null) {
       this.mCurrFilter.RenderProcess(paramInt1, paramInt2, paramInt3, paramInt4, paramDouble, paramFrame);
     }
+  }
+  
+  public void clearGLSL()
+  {
+    this.mBlendFilter.clearGLSL();
+    this.mAlphaFilter.clearGLSL();
+    this.mMoveFilter.clearGLSL();
   }
   
   public boolean needRender()

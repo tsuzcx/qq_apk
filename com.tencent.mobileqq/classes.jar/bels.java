@@ -1,28 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-public class bels
-  implements DialogInterface.OnClickListener
+final class bels
+  implements bemf
 {
-  public bels(ReciteRecordLayout paramReciteRecordLayout) {}
+  bels(beli parambeli) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(bemg parambemg1, bemg parambemg2, bemg parambemg3)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    }
-    if (!NetworkUtil.isNetworkAvailable(this.a.jdField_a_of_type_AndroidContentContext)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    }
-    do
-    {
-      return;
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    } while (ReciteRecordLayout.a(this.a) == null);
-    ReciteRecordLayout.a(this.a).f();
+    belm.a(parambemg1, parambemg2, parambemg3, this.a);
   }
 }
 

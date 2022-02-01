@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
 
-class ayse
-  extends bgaf
+public class ayse
+  implements ayvp
 {
-  ayse(aysb paramaysb, int paramInt)
-  {
-    super(paramInt);
-  }
+  public ayse(OCRResultActivity paramOCRResultActivity) {}
   
-  public void a()
+  public void a(int paramInt, ayvq paramayvq)
   {
-    bfrj.a(aysb.a(this.a), aysb.c(this.a).getCurrentAccountUin(), "inside.myCardButton", 1, 3, 1, "", true);
-    bcef.b(aysb.d(this.a), "CliOper", "", "", "card_mall", "0X8004DBF", 0, 0, "", "", "", "");
-    VasWebviewUtil.reportCommercialDrainage(aysb.e(this.a).getCurrentAccountUin(), "defaultcard", "click_card_mine", "", 1, 0, 0, "", "", "");
-    aysb.a(this.a, 2);
+    if ((!TextUtils.isEmpty(OCRResultActivity.b(this.a))) && (!OCRResultActivity.b(this.a).equals(paramayvq.b)))
+    {
+      OCRResultActivity.b(this.a, paramayvq.b);
+      OCRResultActivity.a(this.a, false);
+    }
   }
 }
 

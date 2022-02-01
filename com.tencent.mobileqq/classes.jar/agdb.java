@@ -1,22 +1,33 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
-class agdb
-  extends aghj
+public class agdb
+  implements agde
 {
-  agdb(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  public agdb(LoadDataJob paramLoadDataJob, Map paramMap, List paramList) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(int paramInt, agdp paramagdp)
   {
-    return new afzl(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadDataJob", 2, "unmarshall task finish id:" + paramInt);
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+      this.jdField_a_of_type_JavaUtilMap.notifyAll();
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramagdp);
+      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
+        this.jdField_a_of_type_JavaUtilList.notifyAll();
+      }
+      return;
+      paramagdp = finally;
+      throw paramagdp;
+    }
   }
 }
 

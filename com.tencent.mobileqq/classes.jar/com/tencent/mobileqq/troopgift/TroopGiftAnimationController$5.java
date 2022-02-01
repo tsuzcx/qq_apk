@@ -5,15 +5,15 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.text.TextUtils;
-import bfcv;
-import bfip;
-import bfiu;
-import bfiv;
-import bfiw;
-import bfix;
-import bfiz;
-import bfol;
-import bfvo;
+import bglb;
+import bgrg;
+import bgrl;
+import bgrm;
+import bgrn;
+import bgro;
+import bgrq;
+import bgxc;
+import bheg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -26,16 +26,16 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopGiftAnimationController$5
   implements Runnable
 {
-  public TroopGiftAnimationController$5(bfip parambfip, MessageForDeliverGiftTips paramMessageForDeliverGiftTips) {}
+  public TroopGiftAnimationController$5(bgrg parambgrg, MessageForDeliverGiftTips paramMessageForDeliverGiftTips) {}
   
   public void run()
   {
-    bfip.a(this.this$0, System.currentTimeMillis());
+    bgrg.a(this.this$0, System.currentTimeMillis());
     Object localObject2;
     Object localObject1;
-    if (bfip.a(this.this$0) != null)
+    if (bgrg.a(this.this$0) != null)
     {
-      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.this$0.a(String.valueOf(this.a.senderUin), new bfiu(this));
+      this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.this$0.a(String.valueOf(this.a.senderUin), new bgrl(this));
       localObject2 = TroopUtils.headDrawableToBitamp(this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       if (!TextUtils.isEmpty(this.a.receiverHead))
       {
@@ -47,10 +47,10 @@ public class TroopGiftAnimationController$5
         localObject1 = URLDrawable.getDrawable(this.a.receiverHead, (URLDrawable.URLDrawableOptions)localObject1);
         if (((URLDrawable)localObject1).getStatus() != 1)
         {
-          ((URLDrawable)localObject1).setDownloadListener(new bfiv(this, (URLDrawable)localObject1));
+          ((URLDrawable)localObject1).setDownloadListener(new bgrm(this, (URLDrawable)localObject1));
           ((URLDrawable)localObject1).startDownload();
         }
-        ((URLDrawable)localObject1).setURLDrawableListener(new bfiw(this, (URLDrawable)localObject1));
+        ((URLDrawable)localObject1).setURLDrawableListener(new bgrn(this, (URLDrawable)localObject1));
         this.this$0.b = ((Drawable)localObject1);
         localObject1 = TroopUtils.headDrawableToBitamp((Drawable)localObject1);
       }
@@ -67,24 +67,24 @@ public class TroopGiftAnimationController$5
         {
           localObject1 = URLDrawable.URLDrawableOptions.obtain();
           localObject1 = URLDrawable.getDrawable(this.a.senderAvatarUrl, (URLDrawable.URLDrawableOptions)localObject1);
-          ((URLDrawable)localObject1).setDecodeHandler(bfol.a);
+          ((URLDrawable)localObject1).setDecodeHandler(bgxc.a);
           if ((((URLDrawable)localObject1).getStatus() == 1) && (((URLDrawable)localObject1).getCurrDrawable() != null))
           {
-            localObject1 = bfvo.a(((URLDrawable)localObject1).getCurrDrawable());
+            localObject1 = bheg.a(((URLDrawable)localObject1).getCurrDrawable());
             if (TextUtils.isEmpty(this.a.receiveAvatarUrl)) {
               break label563;
             }
             localObject2 = URLDrawable.URLDrawableOptions.obtain();
             localObject2 = URLDrawable.getDrawable(this.a.receiveAvatarUrl, (URLDrawable.URLDrawableOptions)localObject2);
-            ((URLDrawable)localObject2).setDecodeHandler(bfol.a);
+            ((URLDrawable)localObject2).setDecodeHandler(bgxc.a);
             if ((((URLDrawable)localObject2).getStatus() != 1) || (((URLDrawable)localObject2).getCurrDrawable() == null)) {
               break label552;
             }
-            localObject2 = bfvo.a(((URLDrawable)localObject2).getCurrDrawable());
+            localObject2 = bheg.a(((URLDrawable)localObject2).getCurrDrawable());
             localObject3 = localObject1;
             localObject1 = localObject2;
             localObject2 = localObject3;
-            str = bfcv.a(this.a);
+            str = bglb.a(this.a);
           }
         }
       }
@@ -98,23 +98,23 @@ public class TroopGiftAnimationController$5
           localObject3 = BitmapFactory.decodeFile(str + "/avatar/avatar_anim_res.png");
           this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopGiftAnimationController.5.5(this, str, (Bitmap)localObject2, (Bitmap)localObject1, (Bitmap)localObject3), 300L);
           return;
-          this.this$0.b = this.this$0.a(String.valueOf(this.a.receiverUin), new bfix(this));
+          this.this$0.b = this.this$0.a(String.valueOf(this.a.receiverUin), new bgro(this));
           localObject1 = TroopUtils.headDrawableToBitamp(this.this$0.b);
           break;
-          if ((bfip.a(this.this$0) == null) || (!(bfip.a(this.this$0) instanceof bfiz))) {
+          if ((bgrg.a(this.this$0) == null) || (!(bgrg.a(this.this$0) instanceof bgrq))) {
             break label617;
           }
-          localObject1 = (bfiz)bfip.a(this.this$0);
-          localObject2 = ((bfiz)localObject1).a(String.valueOf(this.a.senderUin), this.a.frienduin);
-          localObject1 = ((bfiz)localObject1).a(String.valueOf(this.a.receiverUin), this.a.frienduin);
+          localObject1 = (bgrq)bgrg.a(this.this$0);
+          localObject2 = ((bgrq)localObject1).a(String.valueOf(this.a.senderUin), this.a.frienduin);
+          localObject1 = ((bgrq)localObject1).a(String.valueOf(this.a.receiverUin), this.a.frienduin);
           break;
           ((URLDrawable)localObject1).startDownload();
-          localObject1 = bfvo.a();
+          localObject1 = bheg.a();
           break label279;
           localObject1 = null;
           break label279;
           ((URLDrawable)localObject2).startDownload();
-          localObject2 = bfvo.a();
+          localObject2 = bheg.a();
           break label338;
           localObject3 = null;
           localObject2 = localObject1;
@@ -123,9 +123,9 @@ public class TroopGiftAnimationController$5
           if (localObject2 != null) {
             break label614;
           }
-          localObject2 = bfvo.a();
+          localObject2 = bheg.a();
           if (localObject1 == null) {
-            localObject1 = bfvo.a();
+            localObject1 = bheg.a();
           }
         }
         catch (OutOfMemoryError localOutOfMemoryError)

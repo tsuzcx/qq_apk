@@ -59,7 +59,7 @@ public class JsStatMachine$JsState
     if (paramString1 != null) {}
     for (int i = paramString1.length();; i = 0)
     {
-      QMLog.i("JsDebugInfo", i + " path=" + paramString2);
+      QMLog.i("JsDebugInfo", i + " path=" + paramString2 + " (" + this + ")");
       try
       {
         if (!TextUtils.isEmpty(this.jsContent))
@@ -75,8 +75,8 @@ public class JsStatMachine$JsState
               i = this.jsContent.length() - 150;
             }
             paramString2 = paramString2.substring(i);
-            QMLog.i("JsDebugInfo", "JsState id:" + this.id + " begin=" + paramString1);
-            QMLog.i("JsDebugInfo", "JsState id:" + this.id + " end=" + paramString2);
+            QMLog.i("JsDebugInfo", "JsState id:" + this.id + " begin=" + paramString1 + " (" + this + ")");
+            QMLog.i("JsDebugInfo", "JsState id:" + this.id + " end=" + paramString2 + " (" + this + ")");
             return;
           }
         }
@@ -84,7 +84,7 @@ public class JsStatMachine$JsState
       }
       catch (Throwable paramString1)
       {
-        QMLog.i("JsDebugInfo", "", paramString1);
+        QMLog.i("JsDebugInfo", " (" + this + ")", paramString1);
       }
     }
   }

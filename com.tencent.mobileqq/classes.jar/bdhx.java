@@ -1,18 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.TimeFormatterUtils.Proxy;
 
 public final class bdhx
-  implements Parcelable.Creator<OpenDocParam>
+  implements RecentRoute.TimeFormatterUtils.Proxy
 {
-  public OpenDocParam a(Parcel paramParcel)
+  public String getRecentMessageDateTime(StringBuffer paramStringBuffer, long paramLong, boolean paramBoolean, String paramString)
   {
-    return new OpenDocParam(paramParcel);
-  }
-  
-  public OpenDocParam[] a(int paramInt)
-  {
-    return new OpenDocParam[paramInt];
+    return bhid.a(paramStringBuffer, paramLong, paramBoolean, paramString);
   }
 }
 

@@ -1,19 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SetRefuseFollowResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-public class okx
-  implements View.OnClickListener
+class okx
+  implements BusinessObserver
 {
-  public okx(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  okx(okn paramokn, NewIntent paramNewIntent, old paramold) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.m = true;
-    ReadInJoyBaseDeliverActivity.a(this.a);
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAccountManager", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    bool = paramBoolean;
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      mobileqq_mp.SetRefuseFollowResponse localSetRefuseFollowResponse = new mobileqq_mp.SetRefuseFollowResponse();
+      localSetRefuseFollowResponse.mergeFrom(paramBundle);
+      bool = paramBoolean;
+      if (localSetRefuseFollowResponse.ret_info.has())
+      {
+        bool = paramBoolean;
+        if (localSetRefuseFollowResponse.ret_info.ret_code.has())
+        {
+          paramInt = localSetRefuseFollowResponse.ret_info.ret_code.get();
+          bool = paramBoolean;
+          if (paramInt != 0L) {
+            bool = false;
+          }
+        }
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      for (;;)
+      {
+        bool = false;
+      }
+    }
+    if (this.jdField_a_of_type_Old != null) {
+      this.jdField_a_of_type_Old.a(bool);
+    }
   }
 }
 

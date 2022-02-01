@@ -1,16 +1,8 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.AudioAnimationView;
-import com.tencent.mobileqq.widget.CircleProgressView;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
 
-public class agob
-  extends aezf
+public abstract interface agob
 {
-  agny jdField_a_of_type_Agny;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  AudioAnimationView jdField_a_of_type_ComTencentMobileqqWidgetAudioAnimationView;
-  CircleProgressView jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressView;
-  
-  public agob(agnv paramagnv) {}
+  public abstract void a(agnx paramagnx, ArkAppLoadLayout paramArkAppLoadLayout);
 }
 
 

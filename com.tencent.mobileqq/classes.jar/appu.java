@@ -1,31 +1,36 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.RoundImageView;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.graphics.Point;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
+import com.tencent.tencentmap.mapsdk.maps.MapView;
+import com.tencent.tencentmap.mapsdk.maps.Projection;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
-class appu
-  implements aozx
+public class appu
+  implements TencentMap.OnMapLoadedCallback
 {
-  appu(appt paramappt) {}
+  public appu(ARScanEntryView paramARScanEntryView) {}
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onMapLoaded()
   {
-    paramString2 = (List)appt.a(this.a).get(paramString1);
-    if ((paramString2 != null) && (paramString2.size() > 0))
+    this.a.b = true;
+    if (ARScanEntryView.a(this.a) != null)
     {
-      paramString2 = paramString2.iterator();
-      while (paramString2.hasNext())
+      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
+      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
+      if ((localProjection != null) && (localTencentMap != null))
       {
-        appx localappx = (appx)paramString2.next();
-        if ((localappx != null) && (localappx.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) && (localappx.jdField_a_of_type_Aqoi != null))
+        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
+        if (localPoint != null)
         {
-          localappx.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(paramBitmap);
-          localappx.jdField_a_of_type_Aqoi.c(true);
+          localPoint.offset(0, AIOUtils.dp2px(60.0F, this.a.a.getResources()) * -1);
+          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
         }
       }
     }
-    appt.a(this.a).remove(paramString1);
   }
 }
 

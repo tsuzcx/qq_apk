@@ -1,61 +1,22 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import com.tencent.mobileqq.transfile.DiskCache;
-import com.tencent.mobileqq.transfile.HttpDownloader;
-import com.tencent.mobileqq.vas.VasApngIPCModule;
-import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class abuz
-  extends URLDrawableParams
 {
-  Context a;
+  private static abuz jdField_a_of_type_Abuz;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(5);
   
-  public abuz(Context paramContext, File paramFile)
+  public static abuz a()
   {
-    super(paramContext);
-    this.a = paramContext;
-    com.tencent.mobileqq.transfile.URLDrawableHelper.diskCachePath = paramFile;
-    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new DiskCache(paramFile);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    boolean bool = true;
-    if (("http".equals(paramString)) || ("https".equals(paramString)))
-    {
-      if (BaseApplicationImpl.sProcessId == 1) {}
-      for (;;)
-      {
-        return new HttpDownloader(bool, paramObject);
-        bool = false;
-      }
+    if (jdField_a_of_type_Abuz == null) {
+      jdField_a_of_type_Abuz = new abuz();
     }
-    return null;
+    return jdField_a_of_type_Abuz;
   }
   
-  public String doGetLocalFilePath(String paramString)
+  public void a(Runnable paramRunnable)
   {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return VasApngIPCModule.getInstance();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847755);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847755);
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(paramRunnable);
   }
 }
 

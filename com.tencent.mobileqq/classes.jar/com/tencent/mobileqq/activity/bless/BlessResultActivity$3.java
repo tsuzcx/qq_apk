@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.bless;
 
 import android.os.Message;
-import bfvo;
-import bjmp;
+import bheg;
+import bkyc;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +24,7 @@ class BlessResultActivity$3
         return;
       }
       Object localObject = BlessResultActivity.a(this.a);
-      bfvo.a(BaseApplication.getContext(), this.a, (String)localObject, 160, 160);
+      bheg.a(BaseApplication.getContext(), this.a, (String)localObject, 160, 160);
       if (QLog.isColorLevel()) {
         QLog.d("BlessResultActivity", 2, "share ptv to FC. srcLen:" + l + " ,objLen:" + FileUtils.getFileSizes((String)localObject) + " , thumbPath:" + (String)localObject);
       }

@@ -1,22 +1,26 @@
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
-import com.tencent.av.ui.GAudioMembersCtrlActivity.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mdr
-  extends len
+  implements View.OnClickListener
 {
-  public mdr(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public mdr(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  protected void a(long paramLong1, long paramLong2, ArrayList<lcp> paramArrayList)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new GAudioMembersCtrlActivity.2.1(this));
+    QLog.d(this.a.d, 1, "onClick R.id.qav_btn_accept_video");
+    this.a.e();
+    this.a.a.a().aq = true;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mdr
  * JD-Core Version:    0.7.0.1
  */

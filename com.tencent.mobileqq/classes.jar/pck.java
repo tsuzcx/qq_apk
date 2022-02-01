@@ -1,18 +1,23 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qzone.util.NetworkState;
 
-public class pck
-  extends SimpleConfigHandler
+class pck
+  implements DialogInterface.OnClickListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  pck(pcj parampcj, String paramString, int paramInt) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    paramString = Aladdin.getConfig(paramInt1).getString("daily_header_proteus_bid", "0");
-    bkwm.a("daily_header_proteus_bid", paramString);
-    QLog.i("DailyDynamicHeaderConfig", 2, "update bid=" + paramString);
-    return bool;
+    if (NetworkState.isNetSupport())
+    {
+      if (this.jdField_a_of_type_Pcj.jdField_a_of_type_Pbx != null) {
+        this.jdField_a_of_type_Pcj.jdField_a_of_type_Pbx.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt);
+      }
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_Pcj.jdField_a_of_type_Pcf.a, 1, anvx.a(2131699134), 0).a();
   }
 }
 

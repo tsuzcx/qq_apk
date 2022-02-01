@@ -1,38 +1,40 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayju
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class ayju
+  implements View.OnClickListener
 {
-  public ayju(CoverDetailFragment paramCoverDetailFragment) {}
+  ayju(ayjt paramayjt, Context paramContext, aylx paramaylx, ayka paramayka) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      CoverDetailFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    String str1 = this.jdField_a_of_type_Aylx.h;
+    String str2 = this.jdField_a_of_type_Aylx.i;
+    Object localObject2 = this.jdField_a_of_type_Aylx.k;
+    if (TextUtils.isEmpty((CharSequence)localObject2))
     {
-      Object localObject = this.a.getActivity().getResources().getDrawable(2130850679);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = CoverDetailFragment.a(this.a).getWidth();
-      localURLDrawableOptions.mRequestHeight = CoverDetailFragment.a(this.a).getHeight();
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localObject = URLDrawable.getDrawable(CoverDetailFragment.a(this.a).d, localURLDrawableOptions);
-      ((URLDrawable)localObject).setURLDrawableListener(CoverDetailFragment.a(this.a));
-      CoverDetailFragment.a(this.a).setImageDrawable((Drawable)localObject);
-      CoverDetailFragment.b(this.a).setImageDrawable(this.a.a((Drawable)localObject));
+      localObject1 = this.jdField_a_of_type_Aylx.j;
+      localIntent.putExtra("url", String.format("https://3gimg.qq.com/lightmap/v1/marker/?key=%s&referer=qqnearby&marker=coord:%s,%s;title:%s;addr:%s", new Object[] { "25TBZ-W4HCP-2BKDM-LBYH3-L4QRT-G3BDP", str2, str1, localObject1, localObject2 }));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      localObject2 = new bdlf(this.jdField_a_of_type_Ayjt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("data_card").d("clk_lbs").e(String.valueOf(this.jdField_a_of_type_Ayka.jdField_a_of_type_Aylx.e));
+      if (!this.jdField_a_of_type_Ayjt.jdField_a_of_type_Boolean) {
+        break label220;
+      }
+    }
+    label220:
+    for (Object localObject1 = "1";; localObject1 = "2")
+    {
+      ((bdlf)localObject2).a(new String[] { localObject1, "", "", this.jdField_a_of_type_Ayka.jdField_a_of_type_Aylx.c }).a();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      CoverDetailFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      localObject1 = localObject2;
+      break;
     }
   }
 }

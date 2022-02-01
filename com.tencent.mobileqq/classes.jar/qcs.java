@@ -1,22 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.text.TextUtils;
 
 class qcs
-  implements ViewBase.OnClickListener
 {
-  qcs(qcq paramqcq, pvc parampvc, Container paramContainer) {}
+  public String a;
+  public String b;
   
-  public void onClick(ViewBase paramViewBase)
+  qcs(String paramString1, String paramString2)
   {
-    paramViewBase = this.jdField_a_of_type_Pvc.a();
-    if (paramViewBase != null)
-    {
-      pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.mArticleContentUrl, null);
-      pgw.b(paramViewBase, 0);
-      qcq.b(this.jdField_a_of_type_Qcq, true);
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    return "[insertArticleInfo] algorithmID = " + this.a + ", rowKey = " + this.b;
   }
 }
 

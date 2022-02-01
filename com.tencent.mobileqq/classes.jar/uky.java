@@ -1,97 +1,46 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.support.annotation.UiThread;
-import android.view.View;
-
-public abstract class uky<T>
-  implements Handler.Callback
+public class uky
 {
-  protected int a;
-  protected Context a;
-  protected Handler a;
-  protected View a;
-  protected T a;
-  protected int b = -1;
+  private static volatile uky jdField_a_of_type_Uky;
+  public static boolean a;
+  ukz jdField_a_of_type_Ukz = null;
   
-  public uky(Context paramContext)
+  public static uky a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  protected Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  protected Resources a()
-  {
-    if (this.jdField_a_of_type_AndroidContentContext != null) {
-      return this.jdField_a_of_type_AndroidContentContext.getResources();
+    if (jdField_a_of_type_Uky == null) {}
+    try
+    {
+      if (jdField_a_of_type_Uky == null) {
+        jdField_a_of_type_Uky = new uky();
+      }
+      return jdField_a_of_type_Uky;
     }
-    return null;
+    finally {}
   }
   
-  public T a()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    if (this.jdField_a_of_type_Ukz != null) {
+      this.jdField_a_of_type_Ukz = null;
+    }
   }
-  
-  protected abstract void a();
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
+    if (this.jdField_a_of_type_Ukz != null) {
+      this.jdField_a_of_type_Ukz.a(paramInt);
     }
   }
   
-  public void a(T paramT)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    a();
-    e();
-  }
-  
-  @UiThread
-  protected abstract void b();
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected abstract void c();
-  
-  public void d()
-  {
-    c();
-    b(-1);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1)
-    {
-      b();
-      return true;
+    if (this.jdField_a_of_type_Ukz != null) {
+      this.jdField_a_of_type_Ukz.a(paramInt, paramBoolean);
     }
-    return false;
+  }
+  
+  public void a(ukz paramukz)
+  {
+    this.jdField_a_of_type_Ukz = paramukz;
   }
 }
 

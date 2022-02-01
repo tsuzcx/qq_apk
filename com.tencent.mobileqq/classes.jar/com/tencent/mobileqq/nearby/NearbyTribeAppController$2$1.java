@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby;
 
-import amtj;
 import android.content.res.Resources;
-import awkf;
+import anvx;
+import axqh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -10,11 +10,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class NearbyTribeAppController$2$1
   implements Runnable
 {
-  public NearbyTribeAppController$2$1(awkf paramawkf) {}
+  public NearbyTribeAppController$2$1(axqh paramaxqh) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), amtj.a(2131706499), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299076));
+    QQToast.a(BaseApplicationImpl.getContext(), anvx.a(2131706851), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299080));
   }
 }
 

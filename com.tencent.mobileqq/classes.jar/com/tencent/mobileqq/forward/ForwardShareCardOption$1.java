@@ -93,7 +93,7 @@ class ForwardShareCardOption$1
     //   178: invokespecial 124	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   181: invokespecial 127	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   184: astore 8
-    //   186: invokestatic 133	bfvo:e	()Landroid/graphics/drawable/Drawable;
+    //   186: invokestatic 133	bheg:e	()Landroid/graphics/drawable/Drawable;
     //   189: checkcast 135	android/graphics/drawable/BitmapDrawable
     //   192: invokevirtual 139	android/graphics/drawable/BitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
     //   195: getstatic 145	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
@@ -102,7 +102,7 @@ class ForwardShareCardOption$1
     //   202: invokevirtual 151	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   205: istore 5
     //   207: iload 5
-    //   209: ifeq +432 -> 641
+    //   209: ifeq +433 -> 642
     //   212: iconst_1
     //   213: istore_2
     //   214: aload 6
@@ -145,7 +145,7 @@ class ForwardShareCardOption$1
     //   287: aload 7
     //   289: invokevirtual 160	java/io/IOException:printStackTrace	()V
     //   292: aload 6
-    //   294: ifnull +339 -> 633
+    //   294: ifnull +340 -> 634
     //   297: aload 6
     //   299: invokevirtual 154	java/io/BufferedOutputStream:close	()V
     //   302: aconst_null
@@ -235,10 +235,10 @@ class ForwardShareCardOption$1
     //   484: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   487: invokestatic 90	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   490: aload 6
-    //   492: ifnull +133 -> 625
+    //   492: ifnull +134 -> 626
     //   495: aload 6
     //   497: invokevirtual 207	java/util/ArrayList:size	()I
-    //   500: ifle +125 -> 625
+    //   500: ifle +126 -> 626
     //   503: aload 6
     //   505: iconst_0
     //   506: invokevirtual 211	java/util/ArrayList:get	(I)Ljava/lang/Object;
@@ -270,52 +270,52 @@ class ForwardShareCardOption$1
     //   560: goto -492 -> 68
     //   563: aload_0
     //   564: getfield 25	com/tencent/mobileqq/forward/ForwardShareCardOption$1:jdField_a_of_type_Boolean	Z
-    //   567: ifeq +58 -> 625
+    //   567: ifeq +59 -> 626
     //   570: aload_0
     //   571: getfield 17	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Lcom/tencent/mobileqq/forward/ForwardShareCardOption;
     //   574: getfield 163	com/tencent/mobileqq/forward/ForwardShareCardOption:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   577: bipush 6
-    //   579: invokevirtual 230	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   582: checkcast 232	amqx
-    //   585: aload_0
-    //   586: getfield 21	com/tencent/mobileqq/forward/ForwardShareCardOption$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   589: iconst_1
-    //   590: invokevirtual 235	amqx:a	(Ljava/lang/String;Z)V
-    //   593: return
-    //   594: astore 6
-    //   596: aload 8
-    //   598: astore 7
-    //   600: goto -259 -> 341
-    //   603: astore 8
-    //   605: aload 6
-    //   607: astore 7
-    //   609: aload 8
-    //   611: astore 6
-    //   613: goto -272 -> 341
-    //   616: astore 7
-    //   618: aload 8
-    //   620: astore 6
-    //   622: goto -341 -> 281
-    //   625: aconst_null
-    //   626: astore 6
-    //   628: iload_2
-    //   629: istore_1
-    //   630: goto -562 -> 68
-    //   633: aconst_null
-    //   634: astore 6
-    //   636: iconst_0
-    //   637: istore_1
-    //   638: goto -570 -> 68
-    //   641: aconst_null
-    //   642: astore 7
-    //   644: iconst_0
-    //   645: istore_2
-    //   646: goto -428 -> 218
+    //   577: getstatic 231	com/tencent/mobileqq/app/BusinessHandlerFactory:DISCUSSION_HANDLER	I
+    //   580: invokevirtual 235	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   583: checkcast 237	antl
+    //   586: aload_0
+    //   587: getfield 21	com/tencent/mobileqq/forward/ForwardShareCardOption$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   590: iconst_1
+    //   591: invokevirtual 240	antl:a	(Ljava/lang/String;Z)V
+    //   594: return
+    //   595: astore 6
+    //   597: aload 8
+    //   599: astore 7
+    //   601: goto -260 -> 341
+    //   604: astore 8
+    //   606: aload 6
+    //   608: astore 7
+    //   610: aload 8
+    //   612: astore 6
+    //   614: goto -273 -> 341
+    //   617: astore 7
+    //   619: aload 8
+    //   621: astore 6
+    //   623: goto -342 -> 281
+    //   626: aconst_null
+    //   627: astore 6
+    //   629: iload_2
+    //   630: istore_1
+    //   631: goto -563 -> 68
+    //   634: aconst_null
+    //   635: astore 6
+    //   637: iconst_0
+    //   638: istore_1
+    //   639: goto -571 -> 68
+    //   642: aconst_null
+    //   643: astore 7
+    //   645: iconst_0
+    //   646: istore_2
+    //   647: goto -429 -> 218
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	649	0	this	1
-    //   67	571	1	i	int
-    //   1	645	2	j	int
+    //   0	650	0	this	1
+    //   67	572	1	i	int
+    //   1	646	2	j	int
     //   5	96	3	l	long
     //   205	3	5	bool	boolean
     //   23	281	6	localObject1	Object
@@ -323,19 +323,19 @@ class ForwardShareCardOption$1
     //   329	1	6	localObject2	Object
     //   336	16	6	localObject3	Object
     //   392	167	6	localObject4	Object
-    //   594	12	6	localObject5	Object
-    //   611	24	6	localObject6	Object
+    //   595	12	6	localObject5	Object
+    //   612	24	6	localObject6	Object
     //   56	212	7	localObject7	Object
     //   276	12	7	localIOException2	java.io.IOException
     //   339	8	7	localObject8	Object
     //   354	14	7	localIOException3	java.io.IOException
-    //   404	204	7	localObject9	Object
-    //   616	1	7	localIOException4	java.io.IOException
-    //   642	1	7	localObject10	Object
+    //   404	205	7	localObject9	Object
+    //   617	1	7	localIOException4	java.io.IOException
+    //   643	1	7	localObject10	Object
     //   184	46	8	localBufferedOutputStream	java.io.BufferedOutputStream
     //   243	20	8	localIOException5	java.io.IOException
-    //   421	176	8	localArrayList	java.util.ArrayList
-    //   603	16	8	localObject11	Object
+    //   421	177	8	localArrayList	java.util.ArrayList
+    //   604	16	8	localObject11	Object
     // Exception table:
     //   from	to	target	type
     //   229	234	243	java/io/IOException
@@ -343,9 +343,9 @@ class ForwardShareCardOption$1
     //   297	302	310	java/io/IOException
     //   162	186	336	finally
     //   346	351	354	java/io/IOException
-    //   186	207	594	finally
-    //   281	292	603	finally
-    //   186	207	616	java/io/IOException
+    //   186	207	595	finally
+    //   281	292	604	finally
+    //   186	207	617	java/io/IOException
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import bajk;
-import baki;
+import bbpz;
+import bbqx;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 

@@ -1,113 +1,72 @@
-import android.graphics.Matrix;
-import android.graphics.Path;
+import Wallet.AcsMsg;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class afmn
-  implements afme
 {
-  public static final afmf<afmn> a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private float b;
-  
-  static
+  public static String a(int paramInt)
   {
-    jdField_a_of_type_Afmf = new afmo();
+    String str = anvx.a(2131716761);
+    if (paramInt == 1) {
+      str = anvx.a(2131716762);
+    }
+    return str;
   }
   
-  public afmn(afmc paramafmc)
+  public static String a(AcsMsg paramAcsMsg)
   {
-    paramafmc.a();
-    this.jdField_a_of_type_Float = paramafmc.a();
-    this.jdField_a_of_type_Long = paramafmc.a();
-    this.jdField_a_of_type_Int = paramafmc.a();
-    this.b = paramafmc.a();
+    if (paramAcsMsg == null) {
+      return null;
+    }
+    if (paramAcsMsg.type == 0) {
+      return paramAcsMsg.msg_id;
+    }
+    return paramAcsMsg.msg_id + "-" + paramAcsMsg.sub_time;
   }
   
-  public afmn(Path paramPath)
+  public static void a(Context paramContext, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Path a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPath;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(afmc paramafmc, int paramInt)
-  {
-    paramafmc.a(1);
-    paramafmc.a(this.jdField_a_of_type_Float);
-    paramafmc.a(this.jdField_a_of_type_Long);
-    paramafmc.a(this.jdField_a_of_type_Int);
-    paramafmc.a(this.b);
-  }
-  
-  public void a(afmn paramafmn)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPath != null)
+    String str = anvx.a(2131716842);
+    if ((paramInt1 == 0) || (paramInt1 == 6)) {
+      str = a(paramInt2);
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramafmn.jdField_a_of_type_AndroidGraphicsPath);
-      this.b += paramafmn.b;
+      QQToast.a(paramContext, 2, str, 0).a();
+      return;
+      if (paramInt1 == -1) {
+        str = anvx.a(2131716842);
+      }
     }
   }
   
-  public void a(Path paramPath)
+  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-  }
-  
-  public float b()
-  {
-    return this.b;
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.b = paramFloat;
-  }
-  
-  public void c(float paramFloat)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
+    if (paramAppInterface == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQNotifyHelper", 1, "doReport app is null");
+      }
       return;
     }
-    Matrix localMatrix = new Matrix();
-    localMatrix.postScale(paramFloat, paramFloat);
-    Path localPath = new Path();
-    localPath.addPath(this.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-    this.jdField_a_of_type_AndroidGraphicsPath = localPath;
+    HashMap localHashMap = new HashMap(12);
+    localHashMap.put("time_stamp", String.valueOf(NetConnInfoCenter.getServerTimeMillis()));
+    localHashMap.put("bussiness_id", paramString2);
+    localHashMap.put("remind_id", paramString3);
+    localHashMap.put("uin", paramAppInterface.getCurrentAccountUin());
+    if (paramString4 != null) {
+      localHashMap.put("flag1", paramString4);
+    }
+    if (paramString5 != null) {
+      localHashMap.put("flag2", paramString5);
+    }
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", paramString1, true, 0L, 0L, localHashMap, "");
   }
 }
 

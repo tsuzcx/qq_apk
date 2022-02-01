@@ -1,13 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import android.graphics.Bitmap;
 
 public class ywp
-  implements DialogInterface.OnClickListener
 {
-  public ywp(QRLoginAuthActivity paramQRLoginAuthActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public long a = -1L;
+  public Bitmap a;
+  public String a;
 }
 
 

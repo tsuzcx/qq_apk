@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.applets;
 
 import android.text.TextUtils;
-import anxs;
-import blbw;
-import blbx;
+import apau;
+import cooperation.vip.tianshu.TianShuManager;
+import cooperation.vip.tianshu.TianShuReportData;
 
 public final class PublicAccountEventReport$4
   implements Runnable
@@ -12,13 +12,13 @@ public final class PublicAccountEventReport$4
   
   public void run()
   {
-    Object localObject = anxs.a(this.jdField_a_of_type_JavaLangString);
+    Object localObject = apau.a(this.jdField_a_of_type_JavaLangString);
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       i = (int)(System.currentTimeMillis() / 1000L);
-      localObject = new blbx(this.b + "_" + i, 1, this.jdField_a_of_type_Int, 1, "vab_push", "vab_push", (String)localObject, "vab_push", i);
-      ((blbx)localObject).l = this.jdField_a_of_type_JavaLangString;
-      ((blbx)localObject).jdField_f_of_type_JavaLangString = "vab_push";
+      localObject = new TianShuReportData(this.b + "_" + i, 1, this.jdField_a_of_type_Int, 1, "vab_push", "vab_push", (String)localObject, "vab_push", i);
+      ((TianShuReportData)localObject).mTriggerInfo = this.jdField_a_of_type_JavaLangString;
+      ((TianShuReportData)localObject).mPageId = "vab_push";
       if (!this.jdField_a_of_type_Boolean) {
         break label125;
       }
@@ -26,10 +26,10 @@ public final class PublicAccountEventReport$4
     label125:
     for (int i = 6;; i = -1)
     {
-      ((blbx)localObject).jdField_f_of_type_Int = i;
-      ((blbx)localObject).m = this.c;
-      ((blbx)localObject).k = this.d;
-      blbw.a().a((blbx)localObject);
+      ((TianShuReportData)localObject).mActionAttr = i;
+      ((TianShuReportData)localObject).mBusiInfo = this.c;
+      ((TianShuReportData)localObject).mPositionId = this.d;
+      TianShuManager.getInstance().report((TianShuReportData)localObject);
       return;
     }
   }

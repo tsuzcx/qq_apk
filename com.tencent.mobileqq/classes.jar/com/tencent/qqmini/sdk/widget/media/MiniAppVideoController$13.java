@@ -13,7 +13,7 @@ class MiniAppVideoController$13
     if (paramFile != null)
     {
       paramFile = ImageUtil.getLocalBitmap(paramFile.getAbsolutePath());
-      MiniAppVideoController.access$100(this.this$0).setPoster(paramFile);
+      MiniAppVideoController.access$300(this.this$0).setPoster(paramFile);
     }
   }
 }

@@ -1,55 +1,26 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.widget.Switch;
 
-public class amht
+class amht
+  extends View.AccessibilityDelegate
 {
-  public static void a(String paramString, Bundle paramBundle)
+  amht(amhq paramamhq) {}
+  
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    if (paramBundle == null) {}
-    int i;
-    do
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    if (paramView != null)
     {
-      String str;
-      for (;;)
+      paramView = (Switch)paramView.findViewById(2131364056);
+      if ((paramView != null) && (paramView.getVisibility() != 8))
       {
-        return;
-        try
-        {
-          if (amho.a())
-          {
-            i = paramBundle.getInt("featureId");
-            str = paramBundle.getString("featureKey");
-            if ("action_begin_trace".equals(paramString))
-            {
-              amho.a().a(i, str, paramBundle);
-              return;
-            }
-          }
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("TraceReport", 1, paramString, new Object[0]);
-          return;
-        }
+        paramAccessibilityNodeInfo.setCheckable(true);
+        paramAccessibilityNodeInfo.setChecked(paramView.isChecked());
+        paramAccessibilityNodeInfo.setClassName(Switch.class.getName());
       }
-      if ("action_end_trace".equals(paramString))
-      {
-        amho.a().b(i, str, paramBundle);
-        return;
-      }
-      if ("action_report_span".equals(paramString))
-      {
-        amho.a().c(i, str, paramBundle);
-        return;
-      }
-      if ("action_update_trace".equals(paramString))
-      {
-        amho.a().a(i, paramBundle);
-        return;
-      }
-    } while (!"action_enable_trace".equals(paramString));
-    boolean bool = paramBundle.getBoolean("enable");
-    amho.a().a(i, bool);
+    }
   }
 }
 

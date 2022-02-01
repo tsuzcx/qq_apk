@@ -1,34 +1,47 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agaw
-  implements View.OnClickListener
+public class agaw
+  extends Handler
 {
-  agaw(agap paramagap, MessageRecord paramMessageRecord, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public agaw(TroopChatPie paramTroopChatPie, Looper paramLooper)
   {
-    Object localObject = mum.a(this.jdField_a_of_type_Agap.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin);
-    bcef.b(null, "CliOper", "", "", "0X800A8D8", "0X800A8D8", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      localObject = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + (String)localObject));
-      paramView.getContext().startActivity((Intent)localObject);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    case 3: 
+    default: 
+    case 1: 
+    case 2: 
+    case 4: 
+      do
+      {
+        do
+        {
+          return;
+          this.a.a(null, false);
+          return;
+          paramMessage = paramMessage.obj;
+        } while (!(paramMessage instanceof bgkl));
+        this.a.a((bgkl)paramMessage);
+        return;
+        paramMessage = (PlusPanel)this.a.panelManager.a(8);
+      } while (paramMessage == null);
+      paramMessage.a();
       return;
-      QQToast.a(BaseApplicationImpl.getContext(), 2131695238, 0).a();
     }
+    String str = (String)paramMessage.obj;
+    int i = paramMessage.arg1;
+    QQToast.a(this.a.mActivity, str, i).b(this.a.mActivity.getTitleBarHeight());
   }
 }
 

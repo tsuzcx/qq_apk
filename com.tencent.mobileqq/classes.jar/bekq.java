@@ -1,20 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bekq
-  implements View.OnClickListener
+public abstract interface bekq
 {
-  public bekq(ComplexGuidViewPager paramComplexGuidViewPager) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import akew;
+import alap;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
@@ -23,14 +23,14 @@ class LineLayer$SaveTempFileJob
   private int jdField_a_of_type_Int = -1;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public final String a;
-  private WeakReference<akew> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<alap> jdField_a_of_type_JavaLangRefWeakReference;
   private int b = -1;
   
-  public LineLayer$SaveTempFileJob(LineLayer paramLineLayer, int paramInt1, int paramInt2, Bitmap paramBitmap, akew paramakew)
+  public LineLayer$SaveTempFileJob(LineLayer paramLineLayer, int paramInt1, int paramInt2, Bitmap paramBitmap, alap paramalap)
   {
     this.jdField_a_of_type_JavaLangString = (AppConstants.SCRIBBLE_FILE_DIR + "temp" + File.separator);
     QLog.d("SaveTempFileJob", 2, "SaveTempFileJob begin:");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramakew);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalap);
     if (paramBitmap == null) {
       return;
     }

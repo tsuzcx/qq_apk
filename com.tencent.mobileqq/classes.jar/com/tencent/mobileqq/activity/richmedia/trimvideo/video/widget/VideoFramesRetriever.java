@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import akwe;
-import akwj;
-import akwl;
-import akwq;
+import alua;
+import aluf;
+import aluh;
+import alum;
 import android.annotation.TargetApi;
 import android.media.MediaMetadataRetriever;
 import com.tencent.qphone.base.util.QLog;
@@ -15,16 +15,16 @@ import java.util.concurrent.PriorityBlockingQueue;
 
 @TargetApi(10)
 public class VideoFramesRetriever
-  implements akwl
+  implements aluh
 {
   private static long jdField_a_of_type_Long;
   private float jdField_a_of_type_Float;
   private volatile int jdField_a_of_type_Int = 1;
-  private akwe jdField_a_of_type_Akwe;
+  private alua jdField_a_of_type_Alua;
   private MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
   private String jdField_a_of_type_JavaLangString;
-  private BlockingQueue<akwq> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap<Integer, akwq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private BlockingQueue<alum> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private ConcurrentHashMap<Integer, alum> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   private volatile boolean jdField_a_of_type_Boolean;
   private int b = 1000;
@@ -36,14 +36,14 @@ public class VideoFramesRetriever
     this.jdField_a_of_type_Float = paramFloat;
   }
   
-  private akwj b(int paramInt)
+  private aluf b(int paramInt)
   {
     if (!a()) {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFramesRetriever", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    akwq localakwq2;
+    alum localalum2;
     do
     {
       return null;
@@ -51,10 +51,10 @@ public class VideoFramesRetriever
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          akwq localakwq1 = (akwq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          alum localalum1 = (alum)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localakwq1.jdField_a_of_type_Long = l;
+          localalum1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -65,17 +65,17 @@ public class VideoFramesRetriever
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localakwq2 = new akwq(this, l, paramInt, paramInt + this.b);
+      localalum2 = new alum(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localakwq2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localalum2);
     return null;
   }
   
-  public int a(int paramInt1, int paramInt2, akwe paramakwe)
+  public int a(int paramInt1, int paramInt2, alua paramalua)
   {
     this.b = paramInt1;
     this.c = paramInt2;
-    this.jdField_a_of_type_Akwe = paramakwe;
+    this.jdField_a_of_type_Alua = paramalua;
     this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new PriorityBlockingQueue();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = new MediaMetadataRetriever();
@@ -85,7 +85,7 @@ public class VideoFramesRetriever
     return 0;
   }
   
-  public akwj a(int paramInt)
+  public aluf a(int paramInt)
   {
     if ((!a()) || (paramInt < 0))
     {
@@ -94,8 +94,8 @@ public class VideoFramesRetriever
       }
       return null;
     }
-    if (this.jdField_a_of_type_Akwe.a(paramInt)) {
-      return this.jdField_a_of_type_Akwe.a(paramInt);
+    if (this.jdField_a_of_type_Alua.a(paramInt)) {
+      return this.jdField_a_of_type_Alua.a(paramInt);
     }
     return b(this.b * paramInt);
   }

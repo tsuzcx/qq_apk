@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.graphics.Bitmap;
 
 class amix
-  implements Comparator<ApolloActionData>
+  implements bbtd
 {
-  amix(amir paramamir) {}
+  amix(amiw paramamiw) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
+    if ((paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.notifyDataSetChanged();
     }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
   }
 }
 

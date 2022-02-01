@@ -1,110 +1,84 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import tencent.im.oidb.location.RoomOperate.ReqRoomOperation;
-import tencent.im.oidb.location.RoomOperate.RspRoomOperation;
-import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
-import tencent.im.oidb.location.qq_lbs_share.RoomKey;
+import android.widget.TextView;
+import com.tencent.mobileqq.gamecenter.media.DanmakuLayout;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class avdi
-  extends avcs<avcw>
+  extends avdh
 {
-  private avcw a;
+  private List<avdg> a = new ArrayList();
   
-  avdi(QQAppInterface paramQQAppInterface, avcw paramavcw)
+  public avdi(DanmakuLayout paramDanmakuLayout)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Avcw = paramavcw;
+    super(paramDanmakuLayout);
   }
   
-  private void a(int paramInt1, int paramInt2, long paramLong)
+  public void a(long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_Avcw.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoom: invoked. ", "operateType = [" + paramInt1 + "]  R_OPT_CREATE = 1; //创建房间 R_OPT_JOIN = 2; //加入 R_OPT_QUIT = 3; //退出\n", ", uinType = [" + paramInt2 + "], sessionUin = [" + paramLong + "], location = [" + localObject + "]" });
-    }
-    if (localObject == null) {
-      return;
-    }
-    RoomOperate.ReqRoomOperation localReqRoomOperation = new RoomOperate.ReqRoomOperation();
-    qq_lbs_share.RoomKey localRoomKey = avhg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt2, paramLong);
-    localReqRoomOperation.room_key.set(localRoomKey);
-    localReqRoomOperation.room_key.setHasFlag(true);
-    localReqRoomOperation.room_operation.set(paramInt1);
-    localReqRoomOperation.lat.set(((LatLng)localObject).latitude);
-    localReqRoomOperation.lon.set(((LatLng)localObject).longitude);
-    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "QQLBSShareSvc.room_operation");
-    ((ToServiceMsg)localObject).extraData.putInt("OPT_ROOM_TYPE", paramInt1);
-    ((ToServiceMsg)localObject).extraData.putInt("uintype", paramInt2);
-    ((ToServiceMsg)localObject).extraData.putString("uin", String.valueOf(paramLong));
-    ((ToServiceMsg)localObject).putWupBuffer(localReqRoomOperation.toByteArray());
-    a().sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  private void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    avhg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, false);
-    avhf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, false);
-    a().notifyUI(1, false, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1), paramString });
-  }
-  
-  protected avcw a()
-  {
-    return avcw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    try
+    if (this.a.size() > 0)
     {
-      long l = Long.parseLong(paramString);
-      a(paramInt1, paramInt2, l);
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      QLog.e("RoomOperateHandler", 1, "requestOperateRoom: failed. ", paramString);
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int i;
-    if (a(paramToServiceMsg, paramFromServiceMsg, paramObject)) {
-      try
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
       {
-        i = paramToServiceMsg.extraData.getInt("OPT_ROOM_TYPE");
-        int j = paramToServiceMsg.extraData.getInt("uintype", -1);
-        paramToServiceMsg = paramToServiceMsg.extraData.getString("uin");
-        paramFromServiceMsg = (qq_lbs_share.ResultInfo)((RoomOperate.RspRoomOperation)new RoomOperate.RspRoomOperation().mergeFrom((byte[])paramObject)).msg_result.get();
-        if (avhg.a(paramFromServiceMsg))
+        avdg localavdg = (avdg)localIterator.next();
+        if (!localavdg.a(paramLong, this.jdField_b_of_type_Int))
         {
-          a().notifyUI(1, true, new Object[] { Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), paramToServiceMsg });
-          return;
+          localavdg.a();
+          localIterator.remove();
         }
-        a(j, paramToServiceMsg, paramFromServiceMsg.uint32_result.get(), i);
-        return;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        QLog.e("RoomOperateHandler", 1, "requestOperateRoomResp: failed. ", paramToServiceMsg);
-        return;
       }
     }
-    if (paramFromServiceMsg != null)
+  }
+  
+  public boolean a()
+  {
+    return this.a.size() > 0;
+  }
+  
+  public boolean a(avdg paramavdg)
+  {
+    boolean bool;
+    if (!a()) {
+      bool = true;
+    }
+    for (;;)
     {
-      i = paramFromServiceMsg.getResultCode();
-      if (QLog.isColorLevel()) {
-        QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoomResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
+      if (bool)
+      {
+        this.a.add(paramavdg);
+        if (paramavdg.jdField_a_of_type_AndroidWidgetTextView.getParent() == null) {
+          this.jdField_b_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout.addView(paramavdg.jdField_a_of_type_AndroidWidgetTextView);
+        }
+      }
+      return bool;
+      avdg localavdg = (avdg)this.a.get(this.a.size() - 1);
+      if (localavdg.jdField_a_of_type_Float > localavdg.jdField_b_of_type_Int + 40 + Math.random() * 40.0D)
+      {
+        avdg.a(paramavdg);
+        if ((paramavdg.jdField_b_of_type_Float < localavdg.jdField_b_of_type_Float) || ((localavdg.jdField_a_of_type_Float - localavdg.jdField_b_of_type_Int) / (paramavdg.jdField_b_of_type_Float - localavdg.jdField_b_of_type_Float) > (DanmakuLayout.a(this.jdField_b_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout) + localavdg.jdField_b_of_type_Int - localavdg.jdField_a_of_type_Float) / localavdg.jdField_b_of_type_Float))
+        {
+          bool = true;
+          continue;
+        }
+      }
+      bool = false;
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.a.size() > 0) {}
+    for (boolean bool = true; bool; bool = false)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        ((avdg)localIterator.next()).a();
+        localIterator.remove();
       }
     }
-    a(-2, "", -10001, -1);
+    return bool;
   }
 }
 

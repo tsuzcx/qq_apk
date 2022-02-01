@@ -1,13 +1,16 @@
 import android.view.View;
+import android.widget.TextView;
 
 class ajio
-  implements bjoy
+  extends amgz
 {
-  ajio(ajin paramajin, View paramView) {}
+  public int a;
+  public TextView a;
   
-  public void a()
+  public ajio(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379987));
   }
 }
 

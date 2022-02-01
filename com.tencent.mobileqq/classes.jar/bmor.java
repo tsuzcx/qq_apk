@@ -1,33 +1,32 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
-import dov.com.qq.im.aeeditor.view.reorder.SelectableThumbClipView;
-import dov.com.qq.im.aeeditor.view.reorder.ThumbClipView;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.graphics.drawable.Drawable;
+import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
+import cooperation.vip.vipcomponent.util.VipResourcesListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Ldov/com/qq/im/aeeditor/view/reorder/ReorderVH;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "selectableView", "Ldov/com/qq/im/aeeditor/view/reorder/SelectableThumbClipView;", "(Ldov/com/qq/im/aeeditor/view/reorder/SelectableThumbClipView;)V", "contentView", "Ldov/com/qq/im/aeeditor/view/reorder/ThumbClipView;", "getContentView", "()Ldov/com/qq/im/aeeditor/view/reorder/ThumbClipView;", "durationView", "Landroid/widget/TextView;", "getDurationView", "()Landroid/widget/TextView;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bmor
-  extends RecyclerView.ViewHolder
+public class bmor
 {
-  private final SelectableThumbClipView a;
+  public static bmor a;
   
-  public bmor(@NotNull SelectableThumbClipView paramSelectableThumbClipView)
+  public static bmor a()
   {
-    super((View)paramSelectableThumbClipView);
-    this.a = paramSelectableThumbClipView;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bmor();
+      }
+      return a;
+    }
+    finally {}
   }
   
-  @NotNull
-  public final TextView a()
+  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, VipResourcesListener paramVipResourcesListener)
   {
-    return this.a.a();
+    return QzoneHuangzuanVipIconShow.getInstance().getLayers(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramVipResourcesListener, 0);
   }
   
-  @NotNull
-  public final ThumbClipView a()
+  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, VipResourcesListener paramVipResourcesListener)
   {
-    return this.a.a();
+    return a(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString, paramInt3, 100, null, paramVipResourcesListener);
   }
 }
 

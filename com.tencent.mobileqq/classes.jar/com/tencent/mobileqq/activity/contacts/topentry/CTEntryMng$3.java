@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import airj;
-import airq;
-import bfuk;
+import ajmy;
+import ajnf;
+import bhdc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ import org.json.JSONArray;
 public class CTEntryMng$3
   implements Runnable
 {
-  public CTEntryMng$3(airj paramairj) {}
+  public CTEntryMng$3(ajmy paramajmy) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList(airj.a(this.this$0));
+    ArrayList localArrayList = new ArrayList(ajmy.a(this.this$0));
     for (;;)
     {
       JSONArray localJSONArray;
@@ -32,16 +32,16 @@ public class CTEntryMng$3
           if (i >= localArrayList.size()) {
             break label211;
           }
-          Object localObject = (airq)localArrayList.get(i);
-          if ((((airq)localObject).a > 4) && (!airj.b(this.this$0).contains(Integer.valueOf(((airq)localObject).a))))
+          Object localObject = (ajnf)localArrayList.get(i);
+          if ((((ajnf)localObject).a > 4) && (!ajmy.b(this.this$0).contains(Integer.valueOf(((ajnf)localObject).a))))
           {
             if (QLog.isColorLevel()) {
-              QLog.i("CTEntryMng", 2, "saveUserSetting not save id: " + ((airq)localObject).a);
+              QLog.i("CTEntryMng", 2, "saveUserSetting not save id: " + ((ajnf)localObject).a);
             }
           }
           else
           {
-            localObject = ((airq)localObject).a();
+            localObject = ((ajnf)localObject).a();
             if (localObject != null) {
               localJSONArray.put(localObject);
             }
@@ -58,7 +58,7 @@ public class CTEntryMng$3
         if (QLog.isColorLevel()) {
           QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "saveUserSetting value: %s", new Object[] { str }));
         }
-        bfuk.a(airj.a(this.this$0).getApp(), airj.a(this.this$0).getCurrentUin(), "ct_entry_user_setting", str);
+        bhdc.a(ajmy.a(this.this$0).getApp(), ajmy.a(this.this$0).getCurrentUin(), "ct_entry_user_setting", str);
         return;
         label211:
         str = localJSONArray.toString();

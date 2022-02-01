@@ -1,17 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 class aggq
-  extends aghj
+  implements AdapterView.OnItemClickListener
 {
-  aggq(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  aggq(aggp paramaggp) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return new afwh(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    paramAdapterView = (akcy)aggp.a(this.a).a.getItem(paramInt - 1);
+    aggp.a(this.a, paramAdapterView);
+    aggp.a(this.a).dismiss();
+    bdla.b(aggp.a(this.a).app, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 

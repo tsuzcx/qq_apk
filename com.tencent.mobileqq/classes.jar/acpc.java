@@ -1,18 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class acpc
-  implements DialogInterface.OnClickListener
+public abstract interface acpc
 {
-  public acpc(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  public abstract int a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bcef.b(this.a.app, "P_CliOper", "Safe_AntiFraud", this.a.app.getCurrentAccountUin(), "AlertDialog", "UserClick", 0, AddFriendLogicActivity.d(this.a), "", "", "", "");
-    this.a.finish();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

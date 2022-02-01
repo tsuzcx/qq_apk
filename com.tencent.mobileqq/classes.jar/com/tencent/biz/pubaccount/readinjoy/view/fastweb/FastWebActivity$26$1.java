@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import android.os.Build.VERSION;
-import apoq;
-import srs;
-import srt;
+import aqru;
+import tfd;
+import tfe;
 
 public class FastWebActivity$26$1
   implements Runnable
 {
-  public FastWebActivity$26$1(srs paramsrs) {}
+  public FastWebActivity$26$1(tfd paramtfd) {}
   
   public void run()
   {
     if ((Build.VERSION.SDK_INT > 26) && (FastWebActivity.a(this.a.a) == null))
     {
-      apoq.a(this.a.a, new srt(this));
+      aqru.a(this.a.a, new tfe(this));
       return;
     }
     this.a.a.finish();
@@ -22,7 +22,7 @@ public class FastWebActivity$26$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.26.1
  * JD-Core Version:    0.7.0.1
  */

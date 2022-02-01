@@ -1,32 +1,15 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
 
-class pho
-  implements pen
+public class pho
+  implements blak
 {
-  pho(phl paramphl) {}
+  public pho(NativeCommentTextView paramNativeCommentTextView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    sjy localsjy = (sjy)paramView.getTag();
-    BaseArticleInfo localBaseArticleInfo = phl.a(this.a).a(localsjy.jdField_a_of_type_Int);
-    if (localBaseArticleInfo == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RIJVideoHandleClick", 2, "articleInfo == null, ERROR");
-      }
-      return;
-    }
-    if ((phl.a(this.a).a().a() != null) && (phl.a(this.a).a().a().b()))
-    {
-      phl.a(this.a).a().a().a();
-      phl.a(this.a).a().f(true);
-    }
-    phl.a(this.a).a().a().a(localsjy.g, localsjy.jdField_a_of_type_Int);
-    phl.a(this.a).a().a().a(phl.a(this.a).a().a());
-    phl.a(this.a).a().a().a(localBaseArticleInfo, phk.a(localsjy.jdField_a_of_type_Sdg, localBaseArticleInfo, phl.a(this.a).a().a(), phl.a(this.a)), phl.a(this.a).a().a(), new php(this, localBaseArticleInfo), phl.a(this.a).a().b());
-    psf.a(paramView);
+    this.a.setBackgroundColor(NativeCommentTextView.a(this.a).getResources().getColor(2131167363));
   }
 }
 

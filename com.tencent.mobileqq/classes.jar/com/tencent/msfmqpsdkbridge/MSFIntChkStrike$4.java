@@ -2,7 +2,7 @@ package com.tencent.msfmqpsdkbridge;
 
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
-import bfur;
+import bhdj;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
@@ -15,7 +15,7 @@ class MSFIntChkStrike$4
   {
     try
     {
-      QQCustomDialog localQQCustomDialog = bfur.a(BaseActivity.sTopActivity, 230, this.val$fstrTitle, this.val$fstrWording, this.val$fonConfirm, this.val$fonCancel);
+      QQCustomDialog localQQCustomDialog = bhdj.a(BaseActivity.sTopActivity, 230, this.val$fstrTitle, this.val$fstrWording, this.val$fonConfirm, this.val$fonCancel);
       if (localQQCustomDialog == null) {
         return;
       }

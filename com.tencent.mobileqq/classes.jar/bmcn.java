@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.view.TabLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class bmcn
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public bmcn(TabLayout paramTabLayout, int paramInt) {}
+  public bmcn(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_DovComQqImAeViewTabLayout.a(this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.a)
+    {
+      this.a.setResult(1001);
+      QQIndividualityBridgeActivity.a(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
+    }
   }
 }
 

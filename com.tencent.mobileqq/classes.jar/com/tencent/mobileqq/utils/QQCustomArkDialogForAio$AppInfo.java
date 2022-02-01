@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import afvi;
+import agnx;
 import android.os.Bundle;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
@@ -9,7 +9,7 @@ public class QQCustomArkDialogForAio$AppInfo
   public String appMinVersion;
   public String appName;
   public String appView;
-  public afvi container;
+  public agnx container;
   public String metaData;
   public float scale;
   public SessionInfo session;

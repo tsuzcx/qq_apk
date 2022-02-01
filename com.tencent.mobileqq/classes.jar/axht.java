@@ -1,8 +1,17 @@
-public abstract interface axht
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
+
+class axht
+  extends RecyclerView.ViewHolder
 {
-  public abstract boolean a();
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public abstract boolean a(int paramInt1, int paramInt2, int paramInt3);
+  public axht(axhq paramaxhq, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380234));
+  }
 }
 
 

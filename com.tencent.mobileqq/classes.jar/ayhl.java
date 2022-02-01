@@ -1,22 +1,45 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import java.util.Calendar;
 
-public class ayhl
-  extends aygp
+class ayhl
+  implements aqul
 {
-  public void b(BaseChatPie paramBaseChatPie)
+  ayhl(ayhd paramayhd) {}
+  
+  public int a()
   {
-    if (!nns.b(paramBaseChatPie.sessionInfo.curFriendUin)) {
-      a(paramBaseChatPie.sessionInfo.curType, 219);
+    return 3;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return this.a.b - 1896 + 1;
+    case 1: 
+      return 12;
     }
-    a(paramBaseChatPie.sessionInfo.curType, 205);
-    a(paramBaseChatPie.sessionInfo.curType, 206);
-    a(paramBaseChatPie.sessionInfo.curType, 208);
-    if (!nns.b(paramBaseChatPie.sessionInfo.curFriendUin)) {
-      a(paramBaseChatPie.sessionInfo.curType, 211);
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, this.a.e + 1896);
+    localCalendar.set(2, this.a.f);
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return paramInt2 + 1896 + anvx.a(2131706725);
+    case 1: 
+      return paramInt2 + 1 + anvx.a(2131706828);
     }
-    a(paramBaseChatPie.sessionInfo.curType, 212);
-    a(paramBaseChatPie.sessionInfo.curType, 213);
+    return paramInt2 + 1 + anvx.a(2131706810);
   }
 }
 

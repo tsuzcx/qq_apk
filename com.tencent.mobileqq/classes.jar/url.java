@@ -1,47 +1,129 @@
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.StringUtil;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.math.BigInteger;
+import java.security.KeyFactory;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.zip.GZIPOutputStream;
+import javax.crypto.Cipher;
 
 public class url
 {
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new urm(this);
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private Handler jdField_a_of_type_AndroidOsHandler = new urn(Looper.getMainLooper(), this);
-  
-  public static url a()
+  public static final String a(String paramString)
   {
-    return uro.a();
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {
-      this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getApplication().getSystemService("audio"));
+    if (paramString == null) {
+      return "";
     }
-    this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {
-      return;
+    if (paramString.length() == 0) {
+      return "";
     }
-    this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
+    paramString = new BigInteger(paramString.getBytes());
+    return new BigInteger("51901").xor(paramString).toString(16);
   }
   
-  public void a(boolean paramBoolean)
+  public static byte[] a(boolean paramBoolean, byte[] paramArrayOfByte, String paramString)
   {
-    uya.e("WSPlayerAudioControlLog", "[WSPlayerAudioControl.java][requestOrAbandonAudioFocus] isFocus:" + paramBoolean);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    if (paramArrayOfByte == null) {
+      throw new IllegalArgumentException("encryptByPublicKey data null");
+    }
+    int i = 128;
+    Object localObject = "RSA";
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      return;
+      localObject = "RSA/ECB/PKCS1Padding";
+      i = 117;
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 1500L);
+    paramString = new X509EncodedKeySpec(bhcu.decode(paramString, 0));
+    paramString = KeyFactory.getInstance("RSA").generatePublic(paramString);
+    localObject = Cipher.getInstance((String)localObject);
+    ((Cipher)localObject).init(1, paramString);
+    int k = paramArrayOfByte.length;
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    int j = 0;
+    if (k - j > 0)
+    {
+      if (k - j > i) {}
+      for (paramString = ((Cipher)localObject).doFinal(paramArrayOfByte, j, i);; paramString = ((Cipher)localObject).doFinal(paramArrayOfByte, j, k - j))
+      {
+        localByteArrayOutputStream.write(paramString, 0, paramString.length);
+        j += i;
+        break;
+      }
+    }
+    paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+    localByteArrayOutputStream.close();
+    return paramArrayOfByte;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte)
+  {
+    Object localObject2 = null;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
+    }
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    Object localObject1 = localObject2;
+    try
+    {
+      GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
+      localObject1 = localObject2;
+      localGZIPOutputStream.write(paramArrayOfByte);
+      localObject1 = localObject2;
+      localGZIPOutputStream.close();
+      localObject1 = localObject2;
+      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+      localObject1 = paramArrayOfByte;
+      localByteArrayOutputStream.close();
+      return paramArrayOfByte;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return localObject1;
+  }
+  
+  public static final String b(String paramString)
+  {
+    if (paramString == null) {
+      return "";
+    }
+    if (paramString.length() == 0) {
+      return "";
+    }
+    BigInteger localBigInteger = new BigInteger("51901");
+    try
+    {
+      paramString = new String(new BigInteger(paramString, 16).xor(localBigInteger).toByteArray());
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return "";
+  }
+  
+  public static String c(String paramString)
+  {
+    try
+    {
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      if (localMessageDigest != null)
+      {
+        localMessageDigest.reset();
+        localMessageDigest.update(paramString.getBytes());
+        return StringUtil.byte2HexString(localMessageDigest.digest());
+      }
+    }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+    {
+      for (;;)
+      {
+        localNoSuchAlgorithmException.printStackTrace();
+        Object localObject = null;
+      }
+    }
+    return "";
   }
 }
 

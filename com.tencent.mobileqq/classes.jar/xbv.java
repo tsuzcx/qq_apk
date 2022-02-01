@@ -1,15 +1,19 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
 
-class xbv
+public final class xbv
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
-  
-  xbv(xbu paramxbu) {}
+  public void onComplete(String arg1, String paramString2)
+  {
+    synchronized ()
+    {
+      paramString2 = xbu.a();
+      xbu.a().post(new TVKPreloader.1.1(this, paramString2));
+      return;
+    }
+  }
 }
 
 

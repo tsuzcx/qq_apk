@@ -1,27 +1,11 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ad.tangram.version.AdVersionAdapter;
 
 public class acab
-  implements abzb
+  implements AdVersionAdapter
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public String getAppVersion()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x133");
-    }
-    paramQQAppInterface = (ahzy)paramQQAppInterface.getBusinessHandler(169);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(paramMsgType0x210.vProtobuf);
-    }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    return achs.a();
   }
 }
 

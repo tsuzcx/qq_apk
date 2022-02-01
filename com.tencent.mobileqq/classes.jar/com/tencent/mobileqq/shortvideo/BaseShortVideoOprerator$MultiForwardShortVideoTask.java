@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bbpq;
-import bbqj;
-import bbrl;
+import bcwk;
+import bcxd;
+import bcyf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -16,10 +16,10 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
   implements Runnable
 {
   public int a;
-  public ArrayList<bbqj> a;
-  public ArrayList<bbrl> b;
+  public ArrayList<bcxd> a;
+  public ArrayList<bcyf> b;
   
-  public BaseShortVideoOprerator$MultiForwardShortVideoTask(ArrayList<bbqj> paramArrayList)
+  public BaseShortVideoOprerator$MultiForwardShortVideoTask(ArrayList<bcxd> paramArrayList)
   {
     this.jdField_a_of_type_Int = 0;
     Object localObject;
@@ -37,7 +37,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
         Iterator localIterator = this.b.iterator();
         if (localIterator.hasNext())
         {
-          if (((bbrl)localIterator.next()).jdField_a_of_type_Int == -2) {
+          if (((bcyf)localIterator.next()).jdField_a_of_type_Int == -2) {
             i += 1;
           }
         }
@@ -57,7 +57,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     int i;
     int j;
     label105:
-    bbqj localbbqj;
+    bcxd localbcxd;
     Object localObject;
     if (this.jdField_a_of_type_Int + BaseShortVideoOprerator.d < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
@@ -69,11 +69,11 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
       if (j >= i) {
         break label456;
       }
-      localbbqj = (bbqj)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      if (localbbqj.a == null) {
+      localbcxd = (bcxd)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+      if (localbcxd.a == null) {
         break label178;
       }
-      localObject = (MessageForShortVideo)localbbqj.a;
+      localObject = (MessageForShortVideo)localbcxd.a;
       label141:
       if (localObject != null) {
         break label192;
@@ -89,7 +89,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
       i = this.jdField_a_of_type_JavaUtilArrayList.size();
       break;
       label178:
-      localObject = this.this$0.a(localbbqj);
+      localObject = this.this$0.a(localbcxd);
       break label141;
       label192:
       this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
@@ -99,13 +99,13 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
       localTransferRequest.mPeerUin = ((MessageRecord)localObject).frienduin;
       localTransferRequest.mUinType = ((MessageRecord)localObject).istroop;
       localTransferRequest.mFileType = 20;
-      localTransferRequest.mExtraObj = localbbqj;
+      localTransferRequest.mExtraObj = localbcxd;
       localTransferRequest.mUniseq = ((MessageRecord)localObject).uniseq;
       localTransferRequest.mIsUp = true;
       localTransferRequest.mBusiType = 1010;
-      localTransferRequest.mMd5 = localbbqj.e;
-      localTransferRequest.mLocalPath = (localbbqj.h + "QQ_&_MoblieQQ_&_QQ" + localbbqj.i + "QQ_&_MoblieQQ_&_QQ" + localbbqj.j + "QQ_&_MoblieQQ_&_QQ" + localbbqj.g);
-      localTransferRequest.mUpCallBack = new bbpq(this, j);
+      localTransferRequest.mMd5 = localbcxd.e;
+      localTransferRequest.mLocalPath = (localbcxd.h + "QQ_&_MoblieQQ_&_QQ" + localbcxd.i + "QQ_&_MoblieQQ_&_QQ" + localbcxd.j + "QQ_&_MoblieQQ_&_QQ" + localbcxd.g);
+      localTransferRequest.mUpCallBack = new bcwk(this, j);
       localTransferRequest.mRec = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
       if (QLog.isColorLevel()) {
@@ -131,10 +131,10 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (bbqj)localIterator.next();
-      localObject = new bbrl();
-      ((bbrl)localObject).jdField_a_of_type_Int = -2;
-      ((bbrl)localObject).jdField_a_of_type_Bbqx = this.this$0.jdField_a_of_type_Bbqx;
+      Object localObject = (bcxd)localIterator.next();
+      localObject = new bcyf();
+      ((bcyf)localObject).jdField_a_of_type_Int = -2;
+      ((bcyf)localObject).jdField_a_of_type_Bcxr = this.this$0.jdField_a_of_type_Bcxr;
       this.b.add(localObject);
     }
     a();

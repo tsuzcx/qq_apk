@@ -34,7 +34,7 @@ public class BeaconReport
           isSupportMultiChannel = true;
         }
         ABTestLog.debug("static initializer -> QIMEI:" + getQIMEI() + "  SDKVersion:" + sdkVersion, new Object[0]);
-        registerTunnel("JS0B558T33E4YJ", "1.1.0.9", "10000000");
+        registerTunnel("JS0B558T33E4YJ", "1.1.1.0", "10000000");
         return;
       }
       catch (Exception localException2)
@@ -100,10 +100,34 @@ public class BeaconReport
     UserAction.registerTunnel(new TunnelInfo(paramString1, paramString2, paramString3));
   }
   
+  public static boolean reportApiEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    boolean bool = false;
+    ABTestLog.stepReport(String.format("apiName: %s, successFlag: %s, consumedTime: %s", new Object[] { paramString4, paramString5, paramString6 }), new Object[0]);
+    HashMap localHashMap;
+    if (isBeaconEnable)
+    {
+      localHashMap = new HashMap();
+      localHashMap.put("A70", paramString2);
+      localHashMap.put("A71", paramString3);
+      localHashMap.put("api_name", paramString4);
+      localHashMap.put("success_flag", paramString5);
+      localHashMap.put("consumed_time", paramString6);
+      if (isSupportMultiChannel) {
+        bool = onUserActionToTunnel(paramString1, true, -1L, -1L, localHashMap, true, true);
+      }
+    }
+    else
+    {
+      return bool;
+    }
+    return onUserAction(paramString1, true, -1L, -1L, localHashMap, true, true);
+  }
+  
   public static boolean reportExpEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     boolean bool = false;
-    ABTestLog.debug("reportExpEvent: isBeaconEnable:" + isBeaconEnable + " isSupportMultiChannel:" + isSupportMultiChannel, new Object[0]);
+    ABTestLog.debug("isBeaconEnable:" + isBeaconEnable + " isSupportMultiChannel:" + isSupportMultiChannel, new Object[0]);
     HashMap localHashMap;
     if (isBeaconEnable)
     {

@@ -1,6 +1,23 @@
-public abstract interface alop
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+
+public class alop
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, Object paramObject);
+  public alop(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (EditLocalVideoActivity.a(this.a)) {}
+    for (paramInt = -1;; paramInt = 0)
+    {
+      EditLocalVideoActivity.a(this.a).dismiss();
+      EditLocalVideoActivity.a(this.a, paramInt);
+      return;
+    }
+  }
 }
 
 

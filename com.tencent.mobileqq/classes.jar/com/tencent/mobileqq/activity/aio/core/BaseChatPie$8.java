@@ -1,21 +1,46 @@
 package com.tencent.mobileqq.activity.aio.core;
 
+import afnz;
+import agih;
 import android.view.View;
-import android.view.ViewGroup;
-import bhhn;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class BaseChatPie$8
-  implements bhhn
+  implements View.OnClickListener
 {
-  private View mPreview = this.this$0.mAIORootView.findViewById(2131372918);
-  
   BaseChatPie$8(BaseChatPie paramBaseChatPie) {}
   
-  public boolean isDirty()
+  public void onClick(View paramView)
   {
-    return (this.this$0.listView.isDirty()) || (this.this$0.mAnimContainer.isDirty()) || (this.mPreview.isDirty());
+    Object localObject = paramView.getTag();
+    if (!(localObject instanceof Integer)) {}
+    while (afnz.b())
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    String str = this.this$0.sessionInfo.curFriendUin;
+    if (this.this$0.sessionInfo.curType == 1006) {
+      str = this.this$0.sessionInfo.contactUin;
+    }
+    int i = ((Integer)localObject).intValue();
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      this.this$0.helperProvider.a(i, this.this$0.sessionInfo.curType);
+      break;
+      BaseChatPie.access$600(this.this$0, str);
+      continue;
+      BaseChatPie.access$700(this.this$0, str);
+      continue;
+      BaseChatPie.access$800(this.this$0);
+      continue;
+      BaseChatPie.access$900(this.this$0);
+    }
   }
 }
 

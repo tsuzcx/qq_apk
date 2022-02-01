@@ -1,76 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class yzs<E>
-  extends RecyclerView.Adapter
+class yzs
+  implements View.OnClickListener
 {
-  private Handler a;
-  protected ArrayList<E> a;
+  yzs(yzr paramyzr, yzu paramyzu) {}
   
-  public yzs()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public Handler a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    if (yzr.a(this.jdField_a_of_type_Yzr) != null) {
+      yzr.a(this.jdField_a_of_type_Yzr).a((SlideItemInfo)this.jdField_a_of_type_Yzu.a.getTag());
     }
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public ArrayList<E> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(E paramE, int paramInt)
-  {
-    if ((paramE == null) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.set(paramInt, paramE);
-  }
-  
-  public void a(ArrayList<E> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    notifyDataSetChanged();
-    if (paramArrayList == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    notifyDataSetChanged();
-  }
-  
-  public void b(List<E> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    notifyItemRangeInserted(this.jdField_a_of_type_JavaUtilArrayList.size(), paramList.size());
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onDetachedFromRecyclerView(paramRecyclerView);
-    a().removeCallbacksAndMessages(null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

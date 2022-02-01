@@ -1,15 +1,12 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import amtj;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.mini.app.AppLoaderFactory;
-import com.tencent.mobileqq.mini.app.BaseAppLoaderManager;
-import com.tencent.mobileqq.mini.appbrand.utils.JSUtil;
 import com.tencent.mobileqq.mini.launch.MiniSdkLauncher;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
 import com.tencent.mobileqq.mini.report.MiniAppStartState;
@@ -43,7 +40,6 @@ public class ApkgManager
   private static final String TAG = "ApkgManager";
   public static volatile long downloadDuration;
   private static volatile ApkgManager sInstance;
-  private String basePageFrameStr;
   private String subRoot = "";
   
   private void deleteOldPkg(MiniAppConfig paramMiniAppConfig, String paramString)
@@ -328,7 +324,7 @@ public class ApkgManager
       paramOnGetApkgInfoListener.onGetApkgInfo(paramString1, 0, "");
       return;
     }
-    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, amtj.a(2131699437));
+    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, anvx.a(2131699788));
   }
   
   private void onInitApkgInfo(ApkgManager.OnInitApkgListener paramOnInitApkgListener, int paramInt, ApkgInfo paramApkgInfo, String paramString)
@@ -405,35 +401,6 @@ public class ApkgManager
       MiniReportManager.reportEventType(paramMiniAppConfig, 124, null, null, null, 0);
     }
     getApkgInfoByConfig(paramMiniAppConfig, paramBoolean, new ApkgManager.1(this, paramOnInitApkgListener, l, paramMiniAppConfig, paramOnFakeApkgListener));
-  }
-  
-  public String getBasePageFrameStr()
-  {
-    this.basePageFrameStr = AppLoaderFactory.getAppLoaderManager().getBasePageFrameStr();
-    if (this.basePageFrameStr == null) {
-      this.basePageFrameStr = JSUtil.assetFile2Str(BaseApplicationImpl.getApplication(), "qvip_pay_miniapp_page_frame.html");
-    }
-    return this.basePageFrameStr;
-  }
-  
-  public String getWARemoteDebugJsStr()
-  {
-    return AppLoaderFactory.getAppLoaderManager().waRemoteDebugJsStr();
-  }
-  
-  public String getWAWebviewJsStr()
-  {
-    return AppLoaderFactory.getAppLoaderManager().waWebviewJsStr();
-  }
-  
-  public String getWaConsoleJsStr()
-  {
-    return AppLoaderFactory.getAppLoaderManager().waConsoleJsStr();
-  }
-  
-  public String getWaServiceJsStr()
-  {
-    return AppLoaderFactory.getAppLoaderManager().waServiceJsStr();
   }
   
   public void initApkgByConfig(MiniAppConfig paramMiniAppConfig, ApkgManager.OnInitApkgListener paramOnInitApkgListener)

@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar;
 
-import amtj;
 import android.widget.TextView;
+import anvx;
 import com.tencent.biz.pubaccount.NativeAd.view.NativeAdDownloadView;
 import com.tencent.mobileqq.widget.QQToast;
-import tql;
+import ued;
 
 public class AdDownloadProxy$3
   implements Runnable
 {
-  public AdDownloadProxy$3(tql paramtql, int paramInt1, int paramInt2, TextView paramTextView, NativeAdDownloadView paramNativeAdDownloadView) {}
+  public AdDownloadProxy$3(ued paramued, int paramInt1, int paramInt2, TextView paramTextView, NativeAdDownloadView paramNativeAdDownloadView) {}
   
   public void run()
   {
-    tql.a(this.this$0.jdField_a_of_type_Txh, this.jdField_a_of_type_Int);
-    tql.b(this.this$0.jdField_a_of_type_Txh, this.b);
+    ued.a(this.this$0.jdField_a_of_type_Ule, this.jdField_a_of_type_Int);
+    ued.b(this.this$0.jdField_a_of_type_Ule, this.b);
     switch (this.jdField_a_of_type_Int)
     {
     case 2: 
@@ -56,15 +56,15 @@ public class AdDownloadProxy$3
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.b());
         this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewNativeAdDownloadView.setVisibility(8);
       } while (this.this$0.jdField_a_of_type_AndroidContentContext == null);
-      QQToast.a(this.this$0.jdField_a_of_type_AndroidContentContext, amtj.a(2131712092), 0).a();
+      QQToast.a(this.this$0.jdField_a_of_type_AndroidContentContext, anvx.a(2131712439), 0).a();
       return;
     }
-    this.this$0.h();
+    this.this$0.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.AdDownloadProxy.3
  * JD-Core Version:    0.7.0.1
  */

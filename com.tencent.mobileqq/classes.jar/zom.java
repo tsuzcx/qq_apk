@@ -1,39 +1,68 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.widget.TextView;
 
 public class zom
-  implements BusinessObserver
 {
-  public zom(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static Bitmap a(Resources paramResources, int paramInt, Integer paramInteger1, Integer paramInteger2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditUniqueTitleActivity", 2, "setUniqueTitle, onReceive. type=" + paramInt + ", isSuccess=" + paramBoolean);
+    Object localObject = paramResources.getDrawable(paramInt);
+    if ((localObject instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)localObject).getBitmap();
     }
-    if (!paramBoolean)
+    if ((localObject instanceof GradientDrawable))
     {
-      EditUniqueTitleActivity.a(this.a, -1);
-      return;
+      paramResources = (GradientDrawable)localObject;
+      if (((Drawable)localObject).getIntrinsicWidth() > 0)
+      {
+        paramInt = ((Drawable)localObject).getIntrinsicWidth();
+        if (((Drawable)localObject).getIntrinsicHeight() <= 0) {
+          break label122;
+        }
+      }
+      label122:
+      for (int i = ((Drawable)localObject).getIntrinsicHeight();; i = paramInteger2.intValue())
+      {
+        paramInteger1 = Bitmap.createBitmap(paramInt, i, Bitmap.Config.ARGB_8888);
+        paramInteger2 = new Canvas(paramInteger1);
+        paramResources.setBounds(0, 0, paramInt, i);
+        paramResources.setStroke(1, -16777216);
+        paramResources.setFilterBitmap(true);
+        paramResources.draw(paramInteger2);
+        return paramInteger1;
+        paramInt = paramInteger1.intValue();
+        break;
+      }
     }
-    paramBundle = paramBundle.getByteArray("data");
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    try
+    if ((localObject instanceof ColorDrawable))
     {
-      localOIDBSSOPkg.mergeFrom(paramBundle);
-      paramInt = localOIDBSSOPkg.uint32_result.get();
-      EditUniqueTitleActivity.a(this.a, paramInt);
-      return;
+      paramResources = (ColorDrawable)localObject;
+      localObject = Bitmap.createBitmap(paramInteger1.intValue(), paramInteger2.intValue(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      paramResources.setBounds(0, 0, paramInteger1.intValue(), paramInteger2.intValue());
+      paramResources.setFilterBitmap(true);
+      paramResources.draw(localCanvas);
+      return localObject;
     }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      EditUniqueTitleActivity.a(this.a, -1);
-    }
+    return BitmapFactory.decodeResource(paramResources, paramInt).copy(Bitmap.Config.ARGB_8888, true);
+  }
+  
+  public static TextView a(Context paramContext, float paramFloat, String paramString1, String paramString2)
+  {
+    paramContext = new TextView(paramContext);
+    paramContext.setTextSize(1, paramFloat);
+    paramContext.setTextColor(Color.parseColor(paramString1));
+    paramContext.setText(paramString2);
+    return paramContext;
   }
 }
 

@@ -1,49 +1,46 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class plr
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  public static long a;
-  public static List<pls> a;
-  public static long b;
-  public static long c;
+  public static String a = "HomePageConfigHandler";
   
-  static
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    jdField_a_of_type_Long = -1L;
-    b = -1L;
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_JavaUtilList.clear();
-    c = 0L;
-  }
-  
-  public static void a(pls parampls)
-  {
-    if (!jdField_a_of_type_JavaUtilList.isEmpty())
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = pku.a(paramString);
+    Object localObject = paramString.keySet();
+    try
     {
-      pls localpls = (pls)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
-      if (parampls.b - localpls.b > jdField_a_of_type_Long) {
-        a();
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)paramString.get(str1);
+        if (TextUtils.equals(str1, "rij_person_info_page_use_viola")) {
+          bmhv.l(Integer.parseInt(str2));
+        }
       }
+      return true;
     }
-    jdField_a_of_type_JavaUtilList.add(parampls);
-    c += parampls.jdField_a_of_type_Long;
-    if (a())
+    catch (Throwable paramString)
     {
-      parampls = new ArrayList();
-      parampls.addAll(jdField_a_of_type_JavaUtilList);
-      jdField_a_of_type_JavaUtilList.clear();
-      ple.a(parampls);
+      paramString.printStackTrace();
     }
   }
   
-  public static boolean a()
+  public void onWipeConfig(int paramInt)
   {
-    return c > b;
+    super.onWipeConfig(paramInt);
+    bmhv.l(0);
   }
 }
 

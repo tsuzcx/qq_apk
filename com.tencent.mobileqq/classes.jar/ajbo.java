@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.data.NewFriendMoreInfo;
 
 public class ajbo
-  implements DialogInterface.OnDismissListener
+  extends ajbn
 {
-  public ajbo(Conversation paramConversation) {}
+  public NewFriendMoreInfo a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ajbo(NewFriendMoreInfo paramNewFriendMoreInfo)
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
-    this.a.a(1134057, 50L, true);
+    this.a = paramNewFriendMoreInfo;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

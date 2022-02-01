@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.gif.giftext.fragment;
 
-import blxk;
-import blyb;
-import blyc;
+import bnmu;
+import bnnl;
+import bnnm;
 
 public class AEGIFChunkPreviewFragment$1$1
   implements Runnable
 {
-  public AEGIFChunkPreviewFragment$1$1(blyc paramblyc, int paramInt) {}
+  public AEGIFChunkPreviewFragment$1$1(bnnm parambnnm, int paramInt) {}
   
   public void run()
   {
-    if (blyb.a(this.jdField_a_of_type_Blyc.a) != null) {
-      blyb.a(this.jdField_a_of_type_Blyc.a).notifyItemChanged(this.jdField_a_of_type_Int);
+    if (bnnl.a(this.jdField_a_of_type_Bnnm.a) != null) {
+      bnnl.a(this.jdField_a_of_type_Bnnm.a).notifyItemChanged(this.jdField_a_of_type_Int);
     }
   }
 }

@@ -1,31 +1,18 @@
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import android.view.WindowManager;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arxc
-  implements arxi
+  implements View.OnClickListener
 {
-  public arxc(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public arxc(DataReportViewer paramDataReportViewer, WindowManager paramWindowManager) {}
   
-  public View.OnClickListener a(TextView paramTextView)
+  public void onClick(View paramView)
   {
-    this.a.a = paramTextView;
-    return new arxd(this);
-  }
-  
-  public boolean a()
-  {
-    return this.a.c;
-  }
-  
-  public boolean b()
-  {
-    return this.a.b;
-  }
-  
-  public boolean c()
-  {
-    return QfileCloudFileTabView.a(this.a);
+    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

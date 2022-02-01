@@ -1,27 +1,55 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.TouchDelegate;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import dov.com.qq.im.ae.cmshow.AECMShowPhotoPreviewFragment;
 
 public class aknn
-  extends TouchDelegate
+  extends akmj
 {
-  public aknn(DragTextView paramDragTextView, Rect paramRect, View paramView)
+  protected long a;
+  
+  aknn(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    super(paramRect, paramView);
+    super(paramNewPhotoListActivity);
   }
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  protected void e(LocalMediaInfo paramLocalMediaInfo)
   {
-    if (this.a.getVisibility() != 0) {
-      return false;
-    }
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    boolean bool = super.onTouchEvent(paramMotionEvent);
-    paramMotionEvent.setLocation(f1, f2);
-    return bool;
+    bnqm.a().aG();
+    super.e(paramLocalMediaInfo);
+  }
+  
+  public void onSendBtnClick(View paramView)
+  {
+    bnqm.a().f(System.currentTimeMillis() - this.a);
+    this.a = System.currentTimeMillis();
+    paramView = new Intent();
+    paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.mPhotoCommonData.selectedPhotoList);
+    AECMShowPhotoPreviewFragment.a(this.mActivity, paramView);
+  }
+  
+  public void onTitleBtnCancelClick(View paramView)
+  {
+    bnqm.a().aH();
+    bnqm.a().f(System.currentTimeMillis() - this.a);
+    super.onTitleBtnCancelClick(paramView);
+  }
+  
+  public void postInitUI()
+  {
+    this.a = System.currentTimeMillis();
+    bnqm.a().aF();
+    super.postInitUI();
+    ((NewPhotoListActivity)this.mActivity).previewBtn.setVisibility(8);
+  }
+  
+  public void startPhotoPreviewActivity(Intent paramIntent)
+  {
+    bnqm.a().f(System.currentTimeMillis() - this.a);
+    super.startPhotoPreviewActivity(paramIntent);
   }
 }
 

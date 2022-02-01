@@ -1,22 +1,20 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
 public class mfm
-  extends len
+  implements DialogInterface.OnDismissListener
 {
-  public mfm(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public mfm(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  protected void a(long paramLong1, long paramLong2, ArrayList<lcp> paramArrayList)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ThreadManager.getUIHandler().post(new MultiVideoCtrlLayerUIBase.1.1(this));
+    this.a.b("onDismiss");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mfm
  * JD-Core Version:    0.7.0.1
  */

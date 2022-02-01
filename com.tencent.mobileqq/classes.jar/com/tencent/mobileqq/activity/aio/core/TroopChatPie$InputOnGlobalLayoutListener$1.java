@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afkq;
-import anca;
+import agbs;
+import aoep;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 import com.tencent.qphone.base.util.QLog;
@@ -12,12 +13,12 @@ import java.util.Iterator;
 public class TroopChatPie$InputOnGlobalLayoutListener$1
   implements Runnable
 {
-  public TroopChatPie$InputOnGlobalLayoutListener$1(afkq paramafkq) {}
+  public TroopChatPie$InputOnGlobalLayoutListener$1(agbs paramagbs) {}
   
   public void run()
   {
     String str1 = this.a.a.sessionInfo.curFriendUin;
-    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((anca)this.a.a.app.getBusinessHandler(20)).a();
+    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((aoep)this.a.a.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a();
     Object localObject = localTroopBatchAddFriendMgr.a(str1);
     ArrayList localArrayList = new ArrayList();
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))

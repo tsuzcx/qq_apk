@@ -1,44 +1,74 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.troop.aioapp.FullListGroupAppsDbHelper.1;
+import com.tencent.mobileqq.troop.aioapp.data.FullListGroupAppEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-class bfca
-  extends andd
+public class bfca
 {
-  bfca(bfbz parambfbz) {}
+  private final QQAppInterface a;
   
-  protected void onOIDB0X899_0_Ret(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
+  bfca(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel())
+    this.a = paramQQAppInterface;
+  }
+  
+  private void b(FullListGroupAppEntity paramFullListGroupAppEntity)
+  {
+    if ((paramFullListGroupAppEntity == null) || (bfce.a(paramFullListGroupAppEntity.troopAIOAppInfos)))
     {
-      StringBuilder localStringBuilder = new StringBuilder(150);
-      localStringBuilder.append("onOIDB0X899_0_Ret").append("| isSuccess = ").append(paramBoolean).append("| troopuin = ").append(paramLong1).append("| nFlag = ").append(paramInt1).append("| strErorMsg = ").append(paramString);
-      QLog.i("TroopGagMgr", 2, localStringBuilder.toString());
+      if (QLog.isColorLevel()) {
+        QLog.i("FullListGroupAppsDbHelper", 2, "saveToDb: invoked. empty full list, no need to persist");
+      }
+      return;
     }
-    if (((paramInt1 == 6) || (paramInt1 == 3)) && (paramBoolean))
+    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
+    paramFullListGroupAppEntity.setStatus(1000);
+    localEntityManager.delete(FullListGroupAppEntity.class.getSimpleName(), null, null);
+    localEntityManager.persistOrReplace(paramFullListGroupAppEntity);
+    localEntityManager.close();
+  }
+  
+  public void a()
+  {
+    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
+    bfbz localbfbz = bfbz.a(this.a);
+    Object localObject = localEntityManager.query(FullListGroupAppEntity.class);
+    if (!bfce.a((Collection)localObject))
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        paramString = (oidb_0x899.memberlist)paramList.next();
-        if ((paramString != null) && (paramString.uint64_member_uin.has()) && (paramString.uint32_shutup_timestap.has()))
+        FullListGroupAppEntity localFullListGroupAppEntity = (FullListGroupAppEntity)((Iterator)localObject).next();
+        if (!bfce.a(localFullListGroupAppEntity.troopAIOAppInfos))
         {
-          paramLong2 = paramString.uint32_shutup_timestap.get();
-          long l = paramString.uint64_member_uin.get();
-          ((TroopManager)this.a.a.getManager(52)).b(paramLong1 + "", l + "", paramLong2);
+          localbfbz.a = localFullListGroupAppEntity.troopAIOAppInfos;
+          QLog.i("FullListGroupAppsDbHelper", 1, "buildFullListFromDb: invoked. " + localbfbz.a);
+          return;
         }
       }
     }
+    localEntityManager.close();
+  }
+  
+  void a(FullListGroupAppEntity paramFullListGroupAppEntity)
+  {
+    ThreadManagerV2.excute(new FullListGroupAppsDbHelper.1(this, paramFullListGroupAppEntity), 32, null, false);
+  }
+  
+  void b()
+  {
+    this.a.getEntityManagerFactory().createEntityManager().delete(FullListGroupAppEntity.class.getSimpleName(), null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfca
  * JD-Core Version:    0.7.0.1
  */

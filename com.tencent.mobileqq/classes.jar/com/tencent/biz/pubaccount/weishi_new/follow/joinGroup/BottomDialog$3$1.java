@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.weishi_new.follow.joinGroup;
 
-import uog;
-import uoj;
+import vcg;
+import vcj;
 
 public class BottomDialog$3$1
   implements Runnable
 {
-  public BottomDialog$3$1(uoj paramuoj) {}
+  public BottomDialog$3$1(vcj paramvcj) {}
   
   public void run()
   {
     try
     {
-      uog.a(this.a.a);
+      vcg.a(this.a.a);
       return;
     }
     catch (Exception localException) {}
@@ -20,7 +20,7 @@ public class BottomDialog$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.BottomDialog.3.1
  * JD-Core Version:    0.7.0.1
  */

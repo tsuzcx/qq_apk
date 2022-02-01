@@ -1,93 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.manager.TicketManager;
 
 public class apvf
-  extends aptq<apve>
+  implements apvl
 {
-  public static void a()
+  public EIPCResult a(Bundle paramBundle)
   {
-    apve localapve = (apve)apub.a().a(67);
-    apve.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localapve);
-  }
-  
-  public static void b()
-  {
-    int i = apub.a().a(67, "");
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "resetApolloConfVersion localVersion:" + i);
-    apub.a().a(67, 0);
-  }
-  
-  @NonNull
-  public apve a(int paramInt)
-  {
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    if (paramInt == 1) {
-      return new apve();
+    paramBundle = apuj.a();
+    if (paramBundle == null)
+    {
+      QLog.e("ArkApp.GetSKeyHandler", 1, "GetSKeyHandler.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
     }
-    apve.a();
-    return new apve();
-  }
-  
-  @Nullable
-  public apve a(aptx[] paramArrayOfaptx)
-  {
-    return apve.a(paramArrayOfaptx);
-  }
-  
-  public void a(apve paramapve)
-  {
-    QLog.w("ApolloConfig_GlobalProcessor", 1, "onUpdate");
-    apve.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramapve);
-  }
-  
-  public Class<apve> clazz()
-  {
-    return apve.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.e("ApolloConfig_GlobalProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void onReqNoReceive()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfig_GlobalProcessor", 2, "onReqNoReceive");
+    paramBundle = ((TicketManager)paramBundle.getManager(2)).getSkey(paramBundle.getCurrentAccountUin());
+    Bundle localBundle = new Bundle();
+    if (TextUtils.isEmpty(paramBundle))
+    {
+      QLog.e("ArkApp.GetSKeyHandler", 1, "GetSKeyHandler.onCall, skey is empty");
+      localBundle.putString("SKey", "");
     }
-  }
-  
-  public int type()
-  {
-    return 67;
+    for (;;)
+    {
+      return EIPCResult.createResult(0, localBundle);
+      localBundle.putString("SKey", paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvf
  * JD-Core Version:    0.7.0.1
  */

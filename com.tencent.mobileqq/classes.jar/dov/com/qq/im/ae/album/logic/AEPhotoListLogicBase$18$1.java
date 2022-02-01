@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.album.logic;
 
-import blmi;
-import blmm;
-import bmce;
+import bmzr;
+import bmzv;
+import bnrv;
 
 public class AEPhotoListLogicBase$18$1
   implements Runnable
 {
-  public AEPhotoListLogicBase$18$1(blmm paramblmm, float paramFloat) {}
+  public AEPhotoListLogicBase$18$1(bmzv parambmzv, float paramFloat) {}
   
   public void run()
   {
     int i = (int)(this.jdField_a_of_type_Float * 100.0F);
-    blmi.a(this.jdField_a_of_type_Blmm.a).a(i);
+    bmzr.a(this.jdField_a_of_type_Bmzv.a).a(i);
   }
 }
 

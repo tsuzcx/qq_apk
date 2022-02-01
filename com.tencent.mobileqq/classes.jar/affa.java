@@ -1,35 +1,43 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class affa
-  extends AsyncTask<String, Void, Bitmap>
+  implements View.OnClickListener
 {
-  public affa(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
+  public affa(TroopMemberListActivity paramTroopMemberListActivity, String paramString) {}
   
-  protected Bitmap a(String... paramVarArgs)
+  public void onClick(View paramView)
   {
-    paramVarArgs = paramVarArgs[0];
-    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
-    {
-      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.f) && (!TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity))) {
+      if (((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_Int > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 3))
+      {
+        Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getIntent();
+        localIntent.putExtra("member_uin", "0");
+        localIntent.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.setResult(-1, localIntent);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.finish();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.d == 11) {
+          bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
+        }
       }
-      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
     }
-    return null;
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    VoicePrintUtils.VoicePrintView.a(this.a);
-    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
-    this.a.invalidate();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, anvx.a(2131714992), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
+      continue;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g)) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.g, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
+      } else {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, anvx.a(2131714952), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewView.getHeight());
+      }
+    }
   }
 }
 

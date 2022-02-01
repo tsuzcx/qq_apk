@@ -1,105 +1,119 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class wah
-  extends wal
+  extends wio
 {
-  public static final String a;
-  public QQUserUIItem a;
-  private boolean a;
+  public long a;
+  protected INetEventHandler a;
+  public final Object a;
+  public AtomicBoolean a;
+  public wal a;
+  public final Object b;
+  public AtomicBoolean b;
   
-  static
+  public wah()
   {
-    jdField_a_of_type_JavaLangString = vpl.a(2131698834);
+    this.jdField_a_of_type_Wal = new wal();
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new wak(this, null);
   }
   
-  public wah(ViewGroup paramViewGroup)
+  private boolean a()
   {
-    super(paramViewGroup, 2131561663);
+    if (this.jdField_a_of_type_Wal.b()) {
+      d();
+    }
+    return this.jdField_a_of_type_Wal.a();
   }
   
-  protected String a(QQUserUIItem paramQQUserUIItem)
+  private void d()
   {
-    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true))
+    {
+      ykq.b("Q.qqstory.publish:VideoServerInfoManager", "task is running");
+      return;
+    }
+    ykq.a("Q.qqstory.publish:VideoServerInfoManager", "start get server info", this.jdField_a_of_type_Wal);
+    wue localwue = new wue();
+    wfi.a().a(localwue, new waj(this));
+  }
+  
+  public String a()
+  {
+    byte[] arrayOfByte = a();
+    if (arrayOfByte == null) {
       return null;
     }
-    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
-      return paramQQUserUIItem.nickName;
+    return HexUtil.bytes2HexStr(arrayOfByte);
+  }
+  
+  public void a()
+  {
+    super.a();
+    AppNetConnInfo.registerNetChangeReceiver(QQStoryContext.a().a(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
+    Bosses.get().postJob(new wai(this, "Q.qqstory.publish:VideoServerInfoManager"));
+  }
+  
+  public byte[] a()
+  {
+    if (a()) {
+      return this.jdField_a_of_type_Wal.a;
     }
-    return paramQQUserUIItem.getDisplayName();
-  }
-  
-  protected void a(String paramString)
-  {
-    b(yql.b(paramString));
-  }
-  
-  protected void a(String paramString, boolean paramBoolean, vxd paramvxd)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramString, paramBoolean);
-  }
-  
-  public void a(vxd paramvxd)
-  {
-    super.a(paramvxd);
-    xvv.a("FollowNodeViewHolder", "bindData %s", paramvxd);
-    this.itemView.setTag(paramvxd.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((vvj)vux.a(2)).a(paramvxd.jdField_a_of_type_JavaLangString, false);
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool;
-    Object localObject2;
-    Object localObject1;
-    if (vzt.h)
+    d();
+    ykq.d("Q.qqstory.publish:VideoServerInfoManager", "wait start");
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend()))
+      try
       {
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
-      }
-    }
-    else
-    {
-      localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label194;
-      }
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = amtj.a(2131703797);
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject1 = jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramvxd.c)) {
-          localObject1 = paramvxd.c;
+        this.jdField_a_of_type_JavaLangObject.wait(30000L);
+        ykq.d("Q.qqstory.publish:VideoServerInfoManager", "wait end");
+        ??? = this.jdField_a_of_type_Wal;
+        if (((wal)???).a()) {
+          return ((wal)???).a;
         }
-        xvv.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramvxd.jdField_a_of_type_JavaLangString);
-        vli.a().dispatch(new vxc(paramvxd.jdField_a_of_type_JavaLangString));
-        localObject2 = localObject1;
       }
-      a((String)localObject2, this.jdField_a_of_type_Boolean, paramvxd);
-      a(paramvxd.g);
-      return;
-      bool = false;
-      break;
-      label194:
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
+      catch (InterruptedException localInterruptedException)
       {
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq;
+        for (;;)
+        {
+          ykq.b("Q.qqstory.publish:VideoServerInfoManager", "wait exception", localInterruptedException);
         }
       }
     }
+    ykq.d("Q.qqstory.publish:VideoServerInfoManager", "return auth key with invalidate");
+    return ((wal)???).a;
+  }
+  
+  public String b()
+  {
+    if (!this.jdField_a_of_type_Wal.b())
+    {
+      byte[] arrayOfByte = this.jdField_a_of_type_Wal.a;
+      if (arrayOfByte != null) {
+        return HexUtil.bytes2HexStr(arrayOfByte);
+      }
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    super.b();
+    AppNetConnInfo.unregisterNetEventHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
+  }
+  
+  public void c()
+  {
+    a();
   }
 }
 

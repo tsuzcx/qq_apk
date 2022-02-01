@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.avcore.jni.data.AVCorePbInfo;
-import lvu;
+import lwh;
 
 public class AVPbInfo
   extends AVCorePbInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<AVPbInfo> CREATOR = new lvu();
+  public static final Parcelable.Creator<AVPbInfo> CREATOR = new lwh();
   
   public AVPbInfo() {}
   

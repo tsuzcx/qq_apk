@@ -1,8 +1,14 @@
-import com.tencent.mobileqq.remind.widget.WheelView;
+import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
 
-public abstract interface azyc
+public class azyc
+  implements azyg
 {
-  public abstract long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt);
+  public azyc(ComponentCenter paramComponentCenter) {}
+  
+  public void a(azxs paramazxs)
+  {
+    paramazxs.f();
+  }
 }
 
 

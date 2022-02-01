@@ -1,8 +1,25 @@
-import java.util.List;
+import android.support.annotation.NonNull;
 
-public abstract interface ydu
+public class ydu
+  extends wag<ydd, wrt>
 {
-  public abstract void a(int paramInt, List<vwc> paramList);
+  public ydu(ydd paramydd)
+  {
+    super(paramydd);
+  }
+  
+  public void a(@NonNull ydd paramydd, @NonNull wrt paramwrt)
+  {
+    ykq.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramwrt);
+    ydd.a(paramydd, paramwrt.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wrt.class;
+  }
+  
+  public void b(@NonNull ydd paramydd, @NonNull wrt paramwrt) {}
 }
 
 

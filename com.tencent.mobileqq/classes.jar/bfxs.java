@@ -1,80 +1,35 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 class bfxs
-  extends BaseAdapter
+  implements View.OnClickListener
 {
   bfxs(bfxr parambfxr) {}
   
-  public int getCount()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    bfxx localbfxx;
-    if (paramView == null)
+    BaseActivity localBaseActivity = (BaseActivity)bfxr.a(this.a).get();
+    if (localBaseActivity != null)
     {
-      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559004, null);
-      localbfxx = new bfxx(this.a, null);
-      localbfxx.a = ((TextView)paramView.findViewById(2131369017));
-      paramView.setTag(localbfxx);
+      bghd.a(bfxr.b(this.a), bfxr.c(this.a).curFriendUin);
+      Object localObject1 = bgld.a();
+      Object localObject2 = ((bgld)localObject1).a("troop_list_homework");
+      bgle localbgle = new bgle();
+      localbgle.a = bfxr.d(this.a).curFriendUin;
+      localbgle.c = "aio";
+      localObject1 = ((bgld)localObject1).a((String)localObject2, localbgle);
+      localObject2 = new Intent(localBaseActivity, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      localBaseActivity.startActivity((Intent)localObject2);
+      bhbu.a(bfxr.c(this.a), bfxr.e(this.a).curFriendUin, "homework", "AioSee_Clk", 0, 0, new String[] { bfxr.f(this.a).curFriendUin, "", "", bhbu.a(bfxr.d(this.a), bfxr.g(this.a).curFriendUin) });
     }
-    for (;;)
-    {
-      localbfxx = (bfxx)paramView.getTag();
-      int i;
-      int j;
-      int k;
-      int m;
-      if (localbfxx.a != null)
-      {
-        localbfxx.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-        localbfxx.a.setOnClickListener(new bfxw(this.a, paramInt));
-        i = localbfxx.a.getPaddingTop();
-        j = localbfxx.a.getPaddingLeft();
-        k = localbfxx.a.getPaddingRight();
-        m = localbfxx.a.getPaddingBottom();
-        if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-          break label232;
-        }
-        localbfxx.a.setBackgroundResource(2130839583);
-      }
-      for (;;)
-      {
-        localbfxx.a.setPadding(j, i, k, m);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        label232:
-        if (paramInt == 0) {
-          localbfxx.a.setBackgroundResource(2130839584);
-        } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-          localbfxx.a.setBackgroundResource(2130839582);
-        }
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

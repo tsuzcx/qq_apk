@@ -1,11 +1,20 @@
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+
 class vaf
-  implements uqy
+  implements View.OnFocusChangeListener
 {
-  vaf(vae paramvae, vaa paramvaa) {}
+  vaf(vab paramvab) {}
   
-  public void a(urj paramurj)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    vae.a(this.jdField_a_of_type_Vae, paramurj, this.jdField_a_of_type_Vaa);
+    if (paramBoolean)
+    {
+      this.a.onClick(vab.a(this.a));
+      return;
+    }
+    vab.a(this.a, 0, 8);
+    this.a.b(paramView);
   }
 }
 

@@ -1,45 +1,25 @@
-import java.util.HashMap;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoek
+class aoek
+  implements bhob
 {
-  private static int a;
-  public static String a;
-  public static HashMap<String, aods> a;
-  private static int b;
-  public static String b;
-  public static String c;
-  public static String d;
+  aoek(aoei paramaoei, beik parambeik, Context paramContext, Bundle paramBundle) {}
   
-  static
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_Int = 5;
-    jdField_b_of_type_Int = 1;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-    c = "";
-    d = "";
-    jdField_a_of_type_JavaUtilHashMap.put("recogQ3", new aods(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("recogQ4", new aods(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("recogQ5", new aods(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("trackQ3", new aods(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("trackQ4", new aods(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("trackQ5", new aods(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("renderQ1", new aods(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("renderQ0", new aods(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ1", new aods(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ0", new aods(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("camRenderQ0", new aods(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ1", new aods(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ0", new aods(2147483647));
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    jdField_a_of_type_JavaLangString = paramString1;
-    jdField_b_of_type_JavaLangString = paramString2;
-    c = paramString3;
-    d = paramString4;
+    QLog.e("Theme.ThemeHandler", 1, "onQueryItemVer: " + paramInt + "," + paramString1 + "," + paramString2);
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_Beik.a(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2);
+      this.jdField_a_of_type_AndroidOsBundle.putString("themePath", this.jdField_a_of_type_Beik.d());
+      aoei.a(this.jdField_a_of_type_Aoei, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsBundle.putString("themeId", "1000");
+    this.jdField_a_of_type_AndroidOsBundle.remove("themePath");
+    aoei.a(this.jdField_a_of_type_Aoei, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

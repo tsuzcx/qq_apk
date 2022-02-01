@@ -1,22 +1,38 @@
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.qphone.base.util.QLog;
+
 public class awfi
+  implements Handler.Callback
 {
-  public final long a;
-  public final String a;
-  public final boolean a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
+  public awfi(ListenTogetherManager paramListenTogetherManager) {}
   
-  public awfi(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    }
+    paramMessage = this.a.a();
+    if (paramMessage != null)
+    {
+      paramMessage.a = (SystemClock.elapsedRealtime() - paramMessage.c + paramMessage.a);
+      paramMessage.c = SystemClock.elapsedRealtime();
+      boolean bool = ListenTogetherManager.a(this.a).a(paramMessage);
+      QLog.i("ListenTogether.Seek", 1, "MSG_TYPE_TIME_SYNC seek is: " + paramMessage.a + " currentTime: " + System.currentTimeMillis() + " result: " + bool);
+    }
+    for (;;)
+    {
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, awes.a().a);
+      return true;
+      QLog.i("ListenTogether.Manager", 1, "MSG_TYPE_TIME_SYNC startPlay musicInfo is null.");
+    }
   }
 }
 

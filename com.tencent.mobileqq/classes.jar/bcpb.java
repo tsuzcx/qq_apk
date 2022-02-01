@@ -1,69 +1,173 @@
-import com.tencent.mobileqq.app.GuardProcessExitListener;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.mobileqq.widget.FolderTextView;
+import com.tencent.widget.ThemeImageView;
 
-class bcpb
-  extends GuardProcessExitListener
+public class bcpb
+  extends bcpj
 {
-  bcpb(bcpa parambcpa) {}
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  public Button a;
+  public ImageView a;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TroopActiveLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
+  private TroopLabelLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+  private FolderTextView jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
+  public ImageView b;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TroopLabelLayout jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+  private ImageView jdField_c_of_type_AndroidWidgetImageView;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private View e;
+  private View f;
   
-  public String a()
+  public bcpb(ViewGroup paramViewGroup, int paramInt)
   {
-    return "com.tencent.mobileqq:live";
+    this.jdField_a_of_type_Int = paramInt;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      this.jdField_c_of_type_Int = 2131559884;
+    }
+    for (;;)
+    {
+      paramViewGroup.getResources();
+      LinearLayout localLinearLayout = new LinearLayout(paramViewGroup.getContext());
+      localLinearLayout.setOrientation(1);
+      localLinearLayout.addView(LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_c_of_type_Int, null, false), new LinearLayout.LayoutParams(-1, -2));
+      localLinearLayout.setClickable(true);
+      localLinearLayout.setFocusable(true);
+      this.jdField_b_of_type_AndroidViewView = localLinearLayout;
+      a();
+      return;
+      this.jdField_c_of_type_Int = 2131560472;
+      continue;
+      this.jdField_c_of_type_Int = 2131559851;
+      continue;
+      this.jdField_c_of_type_Int = 2131561294;
+      continue;
+      this.jdField_c_of_type_Int = 2131561295;
+    }
   }
   
-  /* Error */
-  public void a(boolean paramBoolean)
+  public View a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 10	bcpb:a	Lbcpa;
-    //   4: invokestatic 25	bcpa:a	(Lbcpa;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   7: ifnull +48 -> 55
-    //   10: aload_0
-    //   11: getfield 10	bcpb:a	Lbcpa;
-    //   14: invokestatic 25	bcpa:a	(Lbcpa;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   17: invokevirtual 31	com/tencent/shadow/dynamic/host/DynamicPluginManager:getManagerImpl	()Lcom/tencent/shadow/dynamic/host/PluginManager;
-    //   20: instanceof 33
-    //   23: ifeq +32 -> 55
-    //   26: aload_0
-    //   27: getfield 10	bcpb:a	Lbcpa;
-    //   30: invokestatic 25	bcpa:a	(Lbcpa;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   33: invokevirtual 31	com/tencent/shadow/dynamic/host/DynamicPluginManager:getManagerImpl	()Lcom/tencent/shadow/dynamic/host/PluginManager;
-    //   36: checkcast 33	com/tencent/mobileqq/intervideo/shadow/PluginProcessKiller
-    //   39: astore_2
-    //   40: aload_2
-    //   41: invokeinterface 36 1 0
-    //   46: aload_0
-    //   47: getfield 10	bcpb:a	Lbcpa;
-    //   50: aconst_null
-    //   51: invokestatic 39	bcpa:a	(Lbcpa;Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   54: pop
-    //   55: return
-    //   56: astore_2
-    //   57: aload_0
-    //   58: getfield 10	bcpb:a	Lbcpa;
-    //   61: aconst_null
-    //   62: invokestatic 39	bcpa:a	(Lbcpa;Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   65: pop
-    //   66: return
-    //   67: astore_2
-    //   68: aload_0
-    //   69: getfield 10	bcpb:a	Lbcpa;
-    //   72: aconst_null
-    //   73: invokestatic 39	bcpa:a	(Lbcpa;Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   76: pop
-    //   77: aload_2
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	bcpb
-    //   0	79	1	paramBoolean	boolean
-    //   39	2	2	localPluginProcessKiller	com.tencent.mobileqq.intervideo.shadow.PluginProcessKiller
-    //   56	1	2	localIllegalArgumentException	java.lang.IllegalArgumentException
-    //   67	11	2	localObject	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   40	46	56	java/lang/IllegalArgumentException
-    //   40	46	67	finally
+    if ("ActiveEntitySearchResultPresenter_add_troop".equals(paramString)) {
+      return this.jdField_a_of_type_AndroidViewView;
+    }
+    if ("ActiveEntitySearchResultPresenter_pay_troop".equals(paramString)) {
+      return this.e;
+    }
+    if ("ActiveEntitySearchResultPresenter_hot_troop".equals(paramString)) {
+      return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
+    }
+    if ("ActiveEntitySearchResultPresenter_expand_desc".equals(paramString)) {
+      return this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
+    }
+    return super.a(paramString);
+  }
+  
+  public TroopLabelLayout a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+  }
+  
+  protected void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368381));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365289));
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131365200);
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setTag("ActiveEntitySearchResultPresenter_add_troop");
+      }
+      this.e = this.jdField_b_of_type_AndroidViewView.findViewById(2131373169);
+      if (this.e != null)
+      {
+        this.e.setTag("ActiveEntitySearchResultPresenter_pay_troop");
+        if ((this.e instanceof ThemeImageView)) {
+          ((ThemeImageView)this.e).setMaskShape(blfw.jdField_c_of_type_Int);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout = ((TroopActiveLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131362006));
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout.setTag("ActiveEntitySearchResultPresenter_hot_troop");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView = ((FolderTextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131367079));
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView.setTag("ActiveEntitySearchResultPresenter_expand_desc");
+      }
+      return;
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131376596));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376606));
+      this.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131379521));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370817));
+      this.f = this.jdField_b_of_type_AndroidViewView.findViewById(2131380136);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379425));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379387));
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131379521));
+      if (this.h != null)
+      {
+        TextView localTextView = this.h;
+        int j = ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(187.0F);
+        int i = j;
+        if (j <= 0) {
+          i = ScreenUtil.dip2px(220.0F);
+        }
+        localTextView.setMaxWidth(i);
+      }
+    }
+  }
+  
+  public View b()
+  {
+    return this.f;
+  }
+  
+  public TroopLabelLayout b()
+  {
+    return this.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+  }
+  
+  public ImageView c()
+  {
+    return this.jdField_c_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView e()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView f()
+  {
+    return this.jdField_a_of_type_AndroidWidgetButton;
+  }
+  
+  public TextView g()
+  {
+    return this.jdField_b_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView h()
+  {
+    return this.jdField_c_of_type_AndroidWidgetTextView;
   }
 }
 

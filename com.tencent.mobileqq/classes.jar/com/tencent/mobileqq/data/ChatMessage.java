@@ -33,12 +33,18 @@ public abstract class ChatMessage
   public boolean mPendantAnimatable;
   @notColumn
   private int mViewHeight;
+  private String qCircleRedDotJumpSchema = "";
   
   protected abstract void doParse();
   
   public boolean getQcircleRedDotFlag()
   {
     return this.isShowQcircleRedDot;
+  }
+  
+  public String getQcircleRedDotJumpSchema()
+  {
+    return this.qCircleRedDotJumpSchema;
   }
   
   public boolean getQcircleRedDotPulledFlag()
@@ -125,6 +131,11 @@ public abstract class ChatMessage
     this.isShowQcircleRedDot = paramBoolean;
   }
   
+  public void setQcircleRedDotJumpSchema(String paramString)
+  {
+    this.qCircleRedDotJumpSchema = paramString;
+  }
+  
   public void setQcircleRedDotPulledFlag(boolean paramBoolean)
   {
     this.isQcircleRedDotPulled = paramBoolean;
@@ -137,7 +148,7 @@ public abstract class ChatMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.ChatMessage
  * JD-Core Version:    0.7.0.1
  */

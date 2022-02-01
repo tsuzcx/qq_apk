@@ -1,38 +1,61 @@
-import android.os.Looper;
-import android.text.TextUtils;
-import androidx.annotation.UiThread;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.tips.StudyRoomTipBarHelper.2.1;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.view.View;
+import com.tencent.widget.XPanelContainer;
 
-public class ahqn
-  implements bcpe
+class ahqn
+  implements ahqf<View>
 {
-  ahqn(ahql paramahql) {}
-  
-  @UiThread
-  private void a(int paramInt)
+  private String a(int paramInt)
   {
-    if (paramInt <= 0)
+    switch (paramInt)
     {
-      this.a.c();
-      return;
+    default: 
+      return "chatPie change";
+    case 2: 
+      return "chatPie change EXT_PANEL_AUDIO";
     }
-    this.a.b();
+    return "chatPie change SOFT_INPUT_PANEL";
   }
   
-  public void a(String paramString, int paramInt)
+  private boolean a(int paramInt)
   {
-    if (!TextUtils.equals(paramString, ahql.a(this.a).sessionInfo.curFriendUin)) {
-      return;
+    return (paramInt == 2) || (paramInt == 1);
+  }
+  
+  public int a()
+  {
+    return 39;
+  }
+  
+  public View a()
+  {
+    return null;
+  }
+  
+  public View a(Context paramContext)
+  {
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    boolean bool1 = a(paramInt1);
+    boolean bool2 = a(paramInt2);
+    if (bool2) {
+      banp.a().b(a(paramInt2));
     }
-    if (Thread.currentThread() != Looper.getMainLooper().getThread())
-    {
-      ahql.a(this.a).post(new StudyRoomTipBarHelper.2.1(this, paramInt));
-      return;
+    if ((bool1) && (!bool2)) {
+      banp.a().a(a(paramInt1));
     }
-    a(paramInt);
+  }
+  
+  public void a(XPanelContainer paramXPanelContainer) {}
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

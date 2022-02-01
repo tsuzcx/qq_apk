@@ -1,14 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.JoinGroupInfo;
 
-public class bffj
+public final class bffj
+  implements Parcelable.Creator<JoinGroupInfo>
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public URLImageView a;
-  public ImageProgressCircle a;
+  public JoinGroupInfo a(Parcel paramParcel)
+  {
+    return new JoinGroupInfo(paramParcel);
+  }
   
-  protected bffj(bffh parambffh) {}
+  public JoinGroupInfo[] a(int paramInt)
+  {
+    return new JoinGroupInfo[paramInt];
+  }
 }
 
 

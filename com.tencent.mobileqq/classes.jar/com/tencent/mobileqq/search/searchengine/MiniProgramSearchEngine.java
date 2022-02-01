@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import bayt;
-import bayy;
-import bbfe;
-import bbff;
-import bbfi;
-import bbfs;
-import bbgk;
-import bbgn;
+import bcfj;
+import bcfo;
+import bclw;
+import bclx;
+import bcma;
+import bcmk;
+import bcnc;
+import bcnf;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class MiniProgramSearchEngine
-  implements bbfe<bayy>, Runnable
+  implements bclw<bcfo>, Runnable
 {
   protected int a;
   protected QQAppInterface a;
@@ -30,7 +31,7 @@ public class MiniProgramSearchEngine
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public List<bayy> a(bbfs parambbfs)
+  public List<bcfo> a(bcmk parambcmk)
   {
     int i = 0;
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchManager.getLocalSearchData();
@@ -43,24 +44,24 @@ public class MiniProgramSearchEngine
     while (((Iterator)localObject).hasNext())
     {
       MiniAppLocalSearchEntity localMiniAppLocalSearchEntity = (MiniAppLocalSearchEntity)((Iterator)localObject).next();
-      int[] arrayOfInt = bbgk.a(parambbfs.a, localMiniAppLocalSearchEntity.appName, false);
+      int[] arrayOfInt = bcnc.a(parambcmk.a, localMiniAppLocalSearchEntity.appName, false);
       if ((arrayOfInt != null) && (arrayOfInt.length >= 3) && (arrayOfInt[0] > -1))
       {
-        bayy localbayy = new bayy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localMiniAppLocalSearchEntity, parambbfs.a);
-        localbayy.a = arrayOfInt;
-        if (localMiniAppLocalSearchEntity.appName.equals(parambbfs.a)) {
-          localArrayList2.add(0, localbayy);
+        bcfo localbcfo = new bcfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localMiniAppLocalSearchEntity, parambcmk.a);
+        localbcfo.a = arrayOfInt;
+        if (localMiniAppLocalSearchEntity.appName.equals(parambcmk.a)) {
+          localArrayList2.add(0, localbcfo);
         } else {
-          localArrayList2.add(localbayy);
+          localArrayList2.add(localbcfo);
         }
       }
     }
     localArrayList1.addAll(localArrayList2);
-    Collections.sort(localArrayList2, new bbfi(this));
+    Collections.sort(localArrayList2, new bcma(this));
     int j = localArrayList1.size();
     while (i < j)
     {
-      bbgn.a((bayt)localArrayList1.get(i), j, i);
+      bcnf.a((bcfj)localArrayList1.get(i), j, i);
       i += 1;
     }
     return localArrayList1;
@@ -68,10 +69,10 @@ public class MiniProgramSearchEngine
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchManager = ((MiniAppLocalSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(310));
+    this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchManager = ((MiniAppLocalSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MINI_APP_LOCAL_SEARCH));
   }
   
-  public void a(bbfs parambbfs, bbff<bayy> parambbff) {}
+  public void a(bcmk parambcmk, bclx<bcfo> parambclx) {}
   
   public void b() {}
   

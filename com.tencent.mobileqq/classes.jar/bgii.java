@@ -1,15 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.os.Looper;
-import kotlin.jvm.functions.Function0;
+import android.util.SparseArray;
 
 class bgii
-  implements Function0<Drawable>
+  extends bgik
 {
-  bgii(bgih parambgih, bgig parambgig, Looper paramLooper, boolean paramBoolean) {}
+  bgii(bgig parambgig) {}
   
-  public Drawable a()
+  protected void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Bgih.a(this.jdField_a_of_type_Bgig, this.jdField_a_of_type_AndroidOsLooper, this.jdField_a_of_type_Boolean);
+    if (paramBoolean) {}
+    synchronized (this.a.a)
+    {
+      this.a.a.clear();
+      this.a.b();
+      bgig.a(this.a);
+      return;
+    }
   }
 }
 

@@ -1,8 +1,14 @@
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-abstract interface ahnv
+public class ahnv
+  implements ahnr
 {
-  public abstract void a(List<ahmw> paramList, String paramString1, String paramString2, int paramInt, String paramString3);
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramagtf.b(paramaftk, paramagus, paramString);
+  }
 }
 
 

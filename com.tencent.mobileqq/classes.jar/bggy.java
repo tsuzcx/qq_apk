@@ -1,10 +1,27 @@
-public abstract interface bggy
+import java.util.Observable;
+
+public class bggy
+  extends Observable
 {
-  public abstract void a();
+  private static bggy a;
   
-  public abstract void b();
+  public static bggy a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bggy();
+      }
+      return a;
+    }
+    finally {}
+  }
   
-  public abstract void c();
+  public void setChanged()
+  {
+    super.setChanged();
+  }
 }
 
 

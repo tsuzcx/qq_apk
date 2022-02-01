@@ -1,52 +1,18 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
 
-public class bbgx
-  extends bbir
+public final class bbgx
+  implements Parcelable.Creator<FilterCategoryItem>
 {
-  private TextView a;
-  private TextView b;
-  private TextView c;
-  private TextView d;
-  
-  public bbgx(View paramView)
+  public FilterCategoryItem a(Parcel paramParcel)
   {
-    super(paramView);
+    return new FilterCategoryItem(paramParcel);
   }
   
-  public bbgx(ViewGroup paramViewGroup, int paramInt)
+  public FilterCategoryItem[] a(int paramInt)
   {
-    super(paramViewGroup, paramInt);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    this.a = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377121));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377120));
-    this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131377119));
-    this.d = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376984));
-  }
-  
-  public TextView e()
-  {
-    return this.a;
-  }
-  
-  public TextView f()
-  {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
-  }
-  
-  public TextView g()
-  {
-    return this.c;
-  }
-  
-  public TextView h()
-  {
-    return this.d;
+    return new FilterCategoryItem[paramInt];
   }
 }
 

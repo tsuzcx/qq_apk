@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+<merge android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="48.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.QQBlurView android:layout_gravity="bottom" android:id="@id/ac8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-    <RelativeLayout android:layout_gravity="bottom" android:id="@id/ac4" android:layout_width="fill_parent" android:layout_height="66.0dip">
-        <View android:id="@id/iql" android:background="@drawable/ac0" android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_alignParentTop="true" />
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_below="@id/iql">
-            <TextView android:textSize="17.0dip" android:textStyle="normal" android:textColor="#ff03081a" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:text="@string/fj5" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/yz" android:layout_width="7.0dip" android:layout_height="11.5dip" android:layout_marginRight="17.0dip" android:src="@drawable/esa" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            <RelativeLayout android:id="@id/d3o" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginRight="17.0dip" android:layout_toLeftOf="@id/yz" android:layout_centerVertical="true">
-                <com.tencent.image.URLImageView android:id="@id/acr" android:background="@drawable/acd" android:padding="1.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" />
-                <com.tencent.image.URLImageView android:id="@id/acs" android:background="@drawable/acd" android:padding="1.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="-11.0dip" android:layout_toRightOf="@id/acr" />
-                <com.tencent.image.URLImageView android:id="@id/act" android:background="@drawable/acd" android:padding="1.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="-11.0dip" android:layout_toRightOf="@id/acs" />
-                <com.tencent.image.URLImageView android:id="@id/acu" android:background="@drawable/acd" android:padding="1.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="-11.0dip" android:layout_toRightOf="@id/act" />
-                <com.tencent.image.URLImageView android:id="@id/acv" android:background="@drawable/acd" android:padding="1.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="-11.0dip" android:layout_toRightOf="@id/acu" />
-                <com.tencent.image.URLImageView android:id="@id/acw" android:background="@drawable/acd" android:padding="1.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="-11.0dip" android:layout_toRightOf="@id/acv" />
-            </RelativeLayout>
-        </RelativeLayout>
-    </RelativeLayout>
+    <com.tencent.mobileqq.widget.EllipsizeLayout android:gravity="right" android:layout_gravity="end|center" android:id="@id/dls" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/k9t" android:layout_width="48.0dip" android:layout_height="wrap_content" android:maxWidth="48.0dip" android:text="    " android:singleLine="true" />
+            <TextView android:textSize="9.0sp" android:textColor="@color/al3" android:id="@id/nyw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="          " />
+        </LinearLayout>
+        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTiktokFollowBtn android:layout_gravity="center_vertical" android:id="@id/myv" android:layout_width="44.0dip" android:layout_height="20.0dip" android:layout_margin="8.0dip" android:src="@drawable/cjl" android:contentDescription="@string/pz7" />
+    </com.tencent.mobileqq.widget.EllipsizeLayout>
+    <com.tencent.biz.pubaccount.readinjoy.widgets.ScalingFrameLayout android:layout_gravity="start" android:id="@id/msq" android:clipChildren="false" android:layout_width="48.0dip" android:layout_height="48.0dip">
+        <FrameLayout android:layout_gravity="center" android:id="@id/mx3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:foreground="@drawable/dyi">
+            <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:id="@id/d46" android:focusable="true" android:layout_width="40.0dip" android:layout_height="40.0dip" />
+        </FrameLayout>
+        <ImageView android:layout_gravity="center" android:id="@id/mx4" android:background="@drawable/gqp" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/gq9" />
+    </com.tencent.biz.pubaccount.readinjoy.widgets.ScalingFrameLayout>
 </merge>

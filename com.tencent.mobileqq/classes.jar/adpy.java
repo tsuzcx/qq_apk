@@ -1,64 +1,36 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class adpy
-  implements CompoundButton.OnCheckedChangeListener
+class adpy
+  implements audq
 {
-  public adpy(LikeSettingActivity paramLikeSettingActivity) {}
+  adpy(adpw paramadpw, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
-    {
-      ((awjw)this.a.app.getBusinessHandler(66)).a(paramBoolean);
-      this.a.app.reportClickEvent("CliOper", "0X8006729");
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Adpw.a.a.getOnlineFileSessionCenter().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    for (;;)
+    ansr localansr;
+    ArrayList localArrayList;
+    do
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      if (paramCompoundButton == this.a.c.a())
-      {
-        this.a.app.setZanAllowed(true, paramBoolean);
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
       }
-      else
-      {
-        QQAppInterface localQQAppInterface;
-        String str;
-        if (paramCompoundButton == this.a.b.a())
-        {
-          localQQAppInterface = this.a.app;
-          if (paramBoolean) {}
-          for (str = "1";; str = "0")
-          {
-            bcef.b(localQQAppInterface, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, str, "", "", "");
-            this.a.jdField_a_of_type_Amov.h(paramBoolean);
-            break;
-          }
-        }
-        if (paramCompoundButton == this.a.d.a())
-        {
-          localQQAppInterface = this.a.app;
-          if (paramBoolean) {}
-          for (str = "1";; str = "2")
-          {
-            bcef.b(localQQAppInterface, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, str, "", "", "");
-            this.a.jdField_a_of_type_Amov.f(paramBoolean);
-            if (paramBoolean) {
-              break label249;
-            }
-            this.a.b.setVisibility(8);
-            break;
-          }
-          label249:
-          this.a.b.setVisibility(0);
-        }
-      }
-    }
+      localansr = (ansr)this.jdField_a_of_type_Adpw.a.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localansr.a(localArrayList));
+    audr.a(2131692468);
+    return;
+    this.jdField_a_of_type_Adpw.a.a.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
 }
 

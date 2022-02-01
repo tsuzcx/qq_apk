@@ -1,16 +1,16 @@
 package dov.com.qq.im.aeeditor.lyric.common;
 
-import bmdi;
+import bnta;
 
 public class TimerTaskManager$InternalTaskEntry$1
   implements Runnable
 {
-  public TimerTaskManager$InternalTaskEntry$1(bmdi parambmdi) {}
+  public TimerTaskManager$InternalTaskEntry$1(bnta parambnta) {}
   
   public void run()
   {
-    if (bmdi.a(this.this$0) != null) {
-      bmdi.a(this.this$0).run();
+    if (bnta.a(this.this$0) != null) {
+      bnta.a(this.this$0).run();
     }
   }
 }

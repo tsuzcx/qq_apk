@@ -1,12 +1,12 @@
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.mobileqq.widget.InterestLabelTextView;
 
 public class aeei
 {
-  public int a;
   public ImageView a;
   public TextView a;
-  public TextView b;
+  public InterestLabelTextView a;
 }
 
 

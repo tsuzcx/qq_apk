@@ -1,26 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import cooperation.qzone.util.QZLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
 public class akkf
+  extends akjv
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public void a(boolean paramBoolean)
+  public akkf(PhotoCropActivity paramPhotoCropActivity)
   {
-    if (QZLog.isColorLevel()) {
-      QZLog.i("QbossADBannerConfigInfo", 2, " qboss resources down response resUrl = " + this.a + " isSuccess = " + paramBoolean);
-    }
+    super(paramPhotoCropActivity);
   }
   
-  public boolean a()
+  public void a(int paramInt)
   {
-    if (TextUtils.isEmpty(this.c)) {
-      return false;
-    }
-    return FileUtil.isFileExists(this.c);
+    this.a.getIntent().putExtra("PhotoConst.QZONE_COVER_SYNC_FLAG", paramInt);
   }
 }
 

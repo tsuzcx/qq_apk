@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.apollo.process.ui.framework;
 
-import altz;
-import aluh;
-import alvx;
-import alxy;
-import alzu;
-import alzv;
-import amtj;
+import amta;
+import amti;
+import amwn;
+import amyo;
+import anak;
+import anal;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -25,7 +24,8 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bjng;
+import anvx;
+import bkys;
 import com.tencent.biz.webviewplugin.Hole;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
@@ -64,7 +64,7 @@ public class QzoneGameFloatView
     this.jdField_c_of_type_Boolean = true;
     paramContext = LayoutInflater.from(paramContext);
     if (paramStartCheckParam.mGameType == 5) {}
-    for (int j = 2131559965;; j = 2131559966)
+    for (int j = 2131560009;; j = 2131560010)
     {
       paramContext = (FrameLayout)paramContext.inflate(j, null);
       this.i = a();
@@ -75,7 +75,7 @@ public class QzoneGameFloatView
         setFrameViewStyle(paramStartCheckParam);
       }
       a(paramContext, this);
-      RelativeLayout localRelativeLayout = (RelativeLayout)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).findViewById(2131376688);
+      RelativeLayout localRelativeLayout = (RelativeLayout)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).findViewById(2131376956);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       addView(paramContext, localLayoutParams);
       if (paramStartCheckParam.mGameType == 5)
@@ -95,7 +95,7 @@ public class QzoneGameFloatView
   private View a()
   {
     View localView = new View((Context)this.jdField_a_of_type_MqqUtilWeakReference.get());
-    localView.setId(2131370601);
+    localView.setId(2131370784);
     localView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
     localView.setBackgroundColor(1996488704);
     localView.setVisibility(8);
@@ -106,26 +106,26 @@ public class QzoneGameFloatView
   {
     if ((this.f != null) && ((this.f instanceof TextView)) && (this.jdField_c_of_type_Boolean))
     {
-      ((TextView)this.f).setCompoundDrawablesWithIntrinsicBounds(0, 2130842647, 0, 0);
-      ((TextView)this.f).setTextColor(getResources().getColor(2131167209));
+      ((TextView)this.f).setCompoundDrawablesWithIntrinsicBounds(0, 2130842677, 0, 0);
+      ((TextView)this.f).setTextColor(getResources().getColor(2131167223));
     }
     if ((this.g != null) && ((this.g instanceof TextView)))
     {
-      ((TextView)this.g).setCompoundDrawablesWithIntrinsicBounds(0, 2130842644, 0, 0);
-      ((TextView)this.g).setTextColor(getResources().getColor(2131167209));
+      ((TextView)this.g).setCompoundDrawablesWithIntrinsicBounds(0, 2130842674, 0, 0);
+      ((TextView)this.g).setTextColor(getResources().getColor(2131167223));
     }
     if ((this.e != null) && ((this.e instanceof TextView)))
     {
-      ((TextView)this.e).setCompoundDrawablesWithIntrinsicBounds(0, 2130842638, 0, 0);
-      ((TextView)this.e).setTextColor(getResources().getColor(2131167209));
+      ((TextView)this.e).setCompoundDrawablesWithIntrinsicBounds(0, 2130842668, 0, 0);
+      ((TextView)this.e).setTextColor(getResources().getColor(2131167223));
     }
     if ((this.d != null) && ((this.d instanceof TextView)))
     {
-      ((TextView)this.d).setCompoundDrawablesWithIntrinsicBounds(0, 2130842635, 0, 0);
-      ((TextView)this.d).setTextColor(getResources().getColor(2131167209));
+      ((TextView)this.d).setCompoundDrawablesWithIntrinsicBounds(0, 2130842665, 0, 0);
+      ((TextView)this.d).setTextColor(getResources().getColor(2131167223));
     }
     if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof Button))) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130842640);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130842670);
     }
   }
   
@@ -150,15 +150,15 @@ public class QzoneGameFloatView
         j = localDisplayMetrics.widthPixels;
         label64:
         this.jdField_b_of_type_Int = j;
-        this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366828);
-        this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131378656);
-        this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363692);
-        this.d = paramView.findViewById(2131366195);
-        this.f = paramView.findViewById(2131377252);
-        this.g = paramView.findViewById(2131377111);
-        this.h = paramView.findViewById(2131371352);
-        this.e = paramView.findViewById(2131366960);
-        this.jdField_a_of_type_ComTencentBizWebviewpluginHole = ((Hole)paramView.findViewById(2131368098));
+        this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366946);
+        this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131378950);
+        this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363763);
+        this.d = paramView.findViewById(2131366298);
+        this.f = paramView.findViewById(2131377525);
+        this.g = paramView.findViewById(2131377385);
+        this.h = paramView.findViewById(2131371538);
+        this.e = paramView.findViewById(2131367078);
+        this.jdField_a_of_type_ComTencentBizWebviewpluginHole = ((Hole)paramView.findViewById(2131368241));
         b();
         this.g.setVisibility(0);
         this.e.setVisibility(0);
@@ -175,12 +175,12 @@ public class QzoneGameFloatView
         }
         this.jdField_c_of_type_AndroidViewView.setVisibility(0);
         localSharedPreferences.edit().putBoolean("first_float_tip", false).apply();
-        paramView.getViewTreeObserver().addOnGlobalLayoutListener(new alzu(this, paramView, localDisplayMetrics));
+        paramView.getViewTreeObserver().addOnGlobalLayoutListener(new anak(this, paramView, localDisplayMetrics));
       }
     }
     for (;;)
     {
-      paramView = new alzv(this, localDisplayMetrics);
+      paramView = new anal(this, localDisplayMetrics);
       this.d.setOnClickListener(paramOnClickListener);
       this.f.setOnClickListener(paramOnClickListener);
       this.h.setOnClickListener(paramOnClickListener);
@@ -247,7 +247,7 @@ public class QzoneGameFloatView
   public void onClick(View paramView)
   {
     if (paramView == this.d) {
-      if ((this.jdField_a_of_type_Alxy == null) || (!this.jdField_a_of_type_Alxy.a()))
+      if ((this.jdField_a_of_type_Amyo == null) || (!this.jdField_a_of_type_Amyo.a()))
       {
         QLog.d("cmframe_QzoneGameFloatView", 1, "game not running, finish");
         ((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
@@ -260,12 +260,12 @@ public class QzoneGameFloatView
       QLog.d("cmframe_QzoneGameFloatView", 1, "notify game");
       if (!b())
       {
-        if (this.jdField_a_of_type_Aluh != null) {
-          this.jdField_a_of_type_Aluh.a();
+        if (this.jdField_a_of_type_Amti != null) {
+          this.jdField_a_of_type_Amti.a();
         }
-        this.jdField_a_of_type_Alxy.i();
+        this.jdField_a_of_type_Amyo.i();
         if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) || ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.commFlag & 0x1) == 0)) {
-          this.jdField_a_of_type_Bjng.sendEmptyMessageDelayed(102, 1000L);
+          this.jdField_a_of_type_Bkys.sendEmptyMessageDelayed(102, 1000L);
         }
       }
       for (;;)
@@ -273,22 +273,22 @@ public class QzoneGameFloatView
         if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {
           break label204;
         }
-        alvx.a(alvx.a(), altz.a(0, 0, 3, 901003004, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src));
+        amwn.a(amwn.a(), amta.a(0, 0, 3, 901003004, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src));
         break;
-        this.jdField_a_of_type_Bjng.sendEmptyMessageDelayed(102, 5000L);
+        this.jdField_a_of_type_Bkys.sendEmptyMessageDelayed(102, 5000L);
         QLog.i("cmframe_QzoneGameFloatView", 1, "comm flag bit0 is 1.");
         continue;
-        this.jdField_a_of_type_Bjng.sendEmptyMessage(111);
+        this.jdField_a_of_type_Bkys.sendEmptyMessage(111);
       }
       label204:
       continue;
       if (paramView == this.f)
       {
         if ((this.jdField_b_of_type_Boolean) && (!this.jdField_c_of_type_Boolean)) {
-          QQToast.a(getContext(), 0, amtj.a(2131711015), 0).a();
-        } else if ((this.jdField_a_of_type_Alxy != null) && (this.jdField_a_of_type_Alxy.c())) {
+          QQToast.a(getContext(), 0, anvx.a(2131711362), 0).a();
+        } else if ((this.jdField_a_of_type_Amyo != null) && (this.jdField_a_of_type_Amyo.c())) {
           QLog.e("cmframe_QzoneGameFloatView", 1, "onClick mGameLauncher.isDisableMoreMenu():true");
-        } else if ((this.jdField_a_of_type_Alxy != null) && (this.jdField_a_of_type_Alxy.a()) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)) {
+        } else if ((this.jdField_a_of_type_Amyo != null) && (this.jdField_a_of_type_Amyo.a()) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)) {
           try
           {
             JSONObject localJSONObject = new JSONObject();
@@ -296,14 +296,14 @@ public class QzoneGameFloatView
             localJSONObject.put("isSelectFriend", 1);
             localJSONObject.put("gameMode", this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameMode);
             localJSONObject.put("roomId", this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId);
-            this.jdField_a_of_type_Alxy.b(localJSONObject.toString());
-            if (this.jdField_a_of_type_Aluh != null) {
-              this.jdField_a_of_type_Aluh.b();
+            this.jdField_a_of_type_Amyo.b(localJSONObject.toString());
+            if (this.jdField_a_of_type_Amti != null) {
+              this.jdField_a_of_type_Amti.b();
             }
             if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {
               continue;
             }
-            alvx.a(alvx.a(), altz.a(0, 0, 3, 901003002, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src));
+            amwn.a(amwn.a(), amta.a(0, 0, 3, 901003002, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src));
           }
           catch (Exception localException)
           {
@@ -316,21 +316,21 @@ public class QzoneGameFloatView
       }
       else if (paramView == this.e)
       {
-        if ((this.jdField_a_of_type_Alxy != null) && (this.jdField_a_of_type_Alxy.c()))
+        if ((this.jdField_a_of_type_Amyo != null) && (this.jdField_a_of_type_Amyo.c()))
         {
           QLog.e("cmframe_QzoneGameFloatView", 1, "onClick mGameLauncher.isDisableMoreMenu():true");
         }
         else
         {
-          if ((this.jdField_a_of_type_Alxy != null) && (this.jdField_a_of_type_Alxy.a()))
+          if ((this.jdField_a_of_type_Amyo != null) && (this.jdField_a_of_type_Amyo.a()))
           {
             f();
             QLog.d("cmframe_QzoneGameFloatView", 1, "pack up game");
-            if (this.jdField_a_of_type_Aluh != null) {
-              this.jdField_a_of_type_Aluh.c();
+            if (this.jdField_a_of_type_Amti != null) {
+              this.jdField_a_of_type_Amti.c();
             }
             if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) {
-              alvx.a(alvx.a(), altz.a(0, 0, 3, 901003003, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src));
+              amwn.a(amwn.a(), amta.a(0, 0, 3, 901003003, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src));
             }
           }
           for (;;)
@@ -346,7 +346,7 @@ public class QzoneGameFloatView
       else {
         label625:
         if ((paramView == this.g) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)) {
-          if ((this.jdField_a_of_type_Alxy != null) && (this.jdField_a_of_type_Alxy.c())) {
+          if ((this.jdField_a_of_type_Amyo != null) && (this.jdField_a_of_type_Amyo.c())) {
             QLog.e("cmframe_QzoneGameFloatView", 1, "onClick mGameLauncher.isDisableMoreMenu():true");
           } else {
             ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, null);
@@ -359,7 +359,7 @@ public class QzoneGameFloatView
   public void setFloatBtnBackground(View paramView, boolean paramBoolean)
   {
     if (!this.jdField_a_of_type_Boolean) {
-      paramView.setBackgroundResource(2130842642);
+      paramView.setBackgroundResource(2130842672);
     }
   }
   

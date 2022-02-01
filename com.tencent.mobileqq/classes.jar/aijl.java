@@ -1,27 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.data.MessageForStructing;
 
 public class aijl
-  implements View.OnClickListener
+  implements aijn
 {
-  public aijl(NotificationView paramNotificationView) {}
-  
-  public void onClick(View paramView)
+  public void a(MessageForStructing paramMessageForStructing, afqr paramafqr, View paramView, boolean paramBoolean)
   {
-    aijj localaijj = (aijj)paramView.getTag();
-    if (localaijj.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() == 2)
+    if (paramBoolean) {}
+    for (int i = 2130838364;; i = 2130838348)
     {
-      this.a.a(localaijj);
-      if (localaijj.jdField_a_of_type_Int == 82) {
-        bcef.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", localaijj.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
-      }
+      paramView.setBackgroundResource(i);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

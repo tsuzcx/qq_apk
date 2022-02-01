@@ -1,8 +1,13 @@
-public abstract interface appq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+
+public class appq
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public appq(ARScanEntryView paramARScanEntryView) {}
   
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

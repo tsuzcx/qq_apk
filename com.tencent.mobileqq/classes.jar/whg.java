@@ -1,10 +1,15 @@
-public abstract interface whg
+public class whg
+  extends vzj
 {
-  public abstract void a(wjk paramwjk);
-  
-  public abstract void b(wjk paramwjk);
-  
-  public abstract void c(wjk paramwjk);
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

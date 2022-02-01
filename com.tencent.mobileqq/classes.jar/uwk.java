@@ -1,17 +1,13 @@
-import UserGrowth.stSimpleGetFeedDetailReq;
-import UserGrowth.stSimpleGetFeedDetailRsp;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2;
 
 public class uwk
-  extends urg<stSimpleGetFeedDetailRsp>
+  implements bdhi
 {
-  public uwk(String paramString)
-  {
-    super("SimpleGetFeedDetail", 10002);
-    stSimpleGetFeedDetailReq localstSimpleGetFeedDetailReq = new stSimpleGetFeedDetailReq();
-    localstSimpleGetFeedDetailReq.feedid = paramString;
-    this.a = localstSimpleGetFeedDetailReq;
-    uya.b("SimpleGetFeedDetailRequest", "stSimpleGetFeedDetailReq = " + localstSimpleGetFeedDetailReq.toString());
-  }
+  public uwk(ShareImageUtils.2 param2) {}
+  
+  public void a() {}
+  
+  public void b() {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
 import android.net.Uri;
-import rtb;
+import sfq;
 
 class ViolaHandler$1$1
   implements Runnable
@@ -11,7 +11,7 @@ class ViolaHandler$1$1
   public void run()
   {
     if ("1".equals(Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("v_feeds_preload"))) {
-      rtb.a().b(this.jdField_a_of_type_JavaLangString);
+      sfq.a().b(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

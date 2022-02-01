@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.view.videotrack;
 
-import bmpz;
+import bofr;
 
 class VideoTrackContainerView$1
   implements Runnable

@@ -1,139 +1,515 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Rect;
-import android.graphics.drawable.NinePatchDrawable;
-import com.tencent.mobileqq.activity.aio.item.TroopPobingItemView;
-import com.tencent.mobileqq.vas.quickupdate.PobingUpdateCallback.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.io.File;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.List;
+import mqq.manager.Manager;
 
 public class bgiy
-  extends bgit
+  implements Manager
 {
-  public static bgiy a;
-  public static final HashMap<Integer, String> a;
+  private static final ArrayList<Long> a;
+  protected SharedPreferences a;
+  protected LruCache<String, Bundle> a;
+  protected QQAppInterface a;
+  protected TroopManager a;
+  protected String a;
+  protected HashMap<String, Long> a;
   
   static
   {
-    jdField_a_of_type_Bgiy = new bgiy();
-    jdField_a_of_type_JavaUtilHashMap = new PobingUpdateCallback.1();
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static NinePatchDrawable a(Resources paramResources, Bitmap paramBitmap)
+  public bgiy(QQAppInterface paramQQAppInterface)
   {
-    int i = 0;
-    int[] arrayOfInt1 = new int[2];
-    arrayOfInt1[0] = (paramBitmap.getWidth() / 2);
-    arrayOfInt1[1] = (paramBitmap.getWidth() / 2 + 1);
-    int[] arrayOfInt2 = new int[2];
-    arrayOfInt2[0] = (paramBitmap.getHeight() / 2);
-    arrayOfInt2[1] = (paramBitmap.getHeight() / 2 + 1);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(arrayOfInt1.length * 4 + arrayOfInt2.length * 4 + 36 + 32).order(ByteOrder.nativeOrder());
-    localByteBuffer.put((byte)1);
-    localByteBuffer.put((byte)2);
-    localByteBuffer.put((byte)2);
-    localByteBuffer.put((byte)9);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putInt(arrayOfInt1[0]);
-    localByteBuffer.putInt(arrayOfInt1[1]);
-    localByteBuffer.putInt(arrayOfInt2[0]);
-    localByteBuffer.putInt(arrayOfInt2[1]);
-    while (i < 9)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(10);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER));
+    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_troop_bind_pb", 0);
+  }
+  
+  @Deprecated
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    return (paramMessageRecord != null) && (paramMessageRecord.msgtype == -3006);
+  }
+  
+  public int a(String paramString)
+  {
+    paramString = paramString + "_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_temp_follow_state";
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, -1);
+  }
+  
+  public Bundle a(String paramString)
+  {
+    return (Bundle)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+  }
+  
+  public String a()
+  {
+    try
     {
-      localByteBuffer.putInt(1);
+      String str = this.jdField_a_of_type_JavaLangString;
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (!jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong))) {
+      jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+    {
+      try
+      {
+        paramString = paramString + "_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_temp_follow_state";
+        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        localEditor.remove(paramString);
+        localEditor.commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.tempFollow", 2, "deletePubAccTempFollowState:" + paramString);
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopBindPublicAccountMgr.tempFollow", 2, "deletePubAccTempFollowState:" + paramString.toString());
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+    {
+      try
+      {
+        paramString = paramString + "_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_temp_follow_state";
+        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        paramInt1 = paramInt1 << 4 | paramInt2;
+        localEditor.putInt(paramString, paramInt1);
+        localEditor.commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.tempFollow", 2, "saveTroopTempFollowState:" + paramString + ", " + paramInt1);
+        }
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopBindPublicAccountMgr.tempFollow", 2, "saveTroopTempFollowState:" + paramString.toString());
+          }
+        }
+      }
+      return;
+    }
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+    {
+      try
+      {
+        paramString = paramString + "_btm_pbmsg_seq";
+        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        localEditor.putLong(paramString, paramLong);
+        localEditor.commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.bottom", 2, "setTroopLastPubAccountMsgUniseq:" + paramString + ", " + paramLong);
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopBindPublicAccountMgr.bottom", 2, "setTroopLastPubAccountMsgUniseq:" + paramString.toString());
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, paramBundle);
+  }
+  
+  public void a(String paramString, List<ChatMessage> arg2)
+  {
+    Object localObject2;
+    boolean bool;
+    try
+    {
+      localObject2 = paramString + "_btm_pbmsg_seq";
+      synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+      {
+        l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong((String)localObject2, -1L);
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder().append("checkMovePubMsg2Bottom:").append(paramString).append(", hasPubMsg=");
+          if (l <= 0L) {
+            break label230;
+          }
+          bool = true;
+          QLog.d("TroopBindPublicAccountMgr.bottom", 2, bool);
+        }
+        if ((l >= 0L) && (??? != null))
+        {
+          i = ???.size();
+          if (i != 0) {
+            break label236;
+          }
+        }
+        return;
+      }
+      ??? = paramString + "_unread_pbmsg_cnt";
+    }
+    catch (Exception ???)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopBindPublicAccountMgr.bottom", 2, "checkMoveLastPubMsgToBottom:" + ???.toString());
+      }
+      b(paramString);
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+      {
+        if (this.jdField_a_of_type_AndroidContentSharedPreferences.getInt((String)???, 0) == 1) {
+          d(paramString);
+        }
+        return;
+      }
+      label230:
+      bool = false;
+      break;
+      label236:
+      j = ???.size();
+      i = 0;
+      label246:
+      if (i >= j) {
+        break label746;
+      }
+      if (((ChatMessage)???.get(i)).uniseq != l) {
+        break label754;
+      }
+      label271:
+      bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopBindPublicAccountMgr.bottom", 2, "lastPubMsgIdxInList: lastPubMsgIdx=" + i + ", listSize=" + j + ", inBottomBefore=" + bool);
+      }
+      ??? = null;
+      if (i < 0)
+      {
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByUniseq(paramString, 1, l);
+        if ((localObject2 instanceof ChatMessage)) {
+          ??? = (ChatMessage)localObject2;
+        }
+        if (!QLog.isColorLevel()) {
+          break label751;
+        }
+        QLog.d("TroopBindPublicAccountMgr.bottom", 2, "queryMsgItemByseq:" + (localObject2 instanceof ChatMessage));
+        break label751;
+      }
+      label408:
+      while (??? == null)
+      {
+        b(paramString);
+        return;
+        ??? = (ChatMessage)???.remove(i);
+      }
+      if (bool) {
+        break label537;
+      }
+      ???.add(???);
+      i = ???.size();
+      if (i > 1)
+      {
+        l = ((ChatMessage)???.get(i - 2)).shmsgseq;
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.bottom", 2, "put2InsertSeqMap:" + paramString + "," + l);
+        }
+      }
+    }
+    label537:
+    long l = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).longValue();
+    int j = ???.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        if (((ChatMessage)???.get(i)).shmsgseq < l) {}
+      }
+      else
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopBindPublicAccountMgr.bottom", 2, "inBottomBefore, lastSeq=" + l + ", insertIdx=" + i);
+          }
+          if (i < 0) {
+            ???.add(???);
+          }
+          for (;;)
+          {
+            bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "bottom_one", 0, 0, paramString, "", "", "");
+            break;
+            if (((ChatMessage)???.get(i)).shmsgseq > l) {
+              ???.add(i, ???);
+            } else if (((ChatMessage)???.get(i)).shmsgseq == l) {
+              ???.add(i + 1, ???);
+            }
+          }
+          i = -1;
+        }
+        label746:
+        i = -1;
+        break label271;
+        label751:
+        break label408;
+        label754:
+        i += 1;
+        break label246;
+      }
       i += 1;
     }
-    return new NinePatchDrawable(paramResources, paramBitmap, localByteBuffer.array(), new Rect(), "");
   }
   
-  public static String a(int paramInt)
+  public boolean a(long paramLong)
   {
-    return "pobing.preview.cache." + paramInt;
+    return jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong));
   }
   
-  public static boolean a()
+  /* Error */
+  public boolean a(String paramString)
   {
-    return QzoneConfig.getInstance().getConfig("qqsetting", "addgroupvasfeaturedisable", 0L) == 0L;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: invokestatic 301	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6: ifne +63 -> 69
+    //   9: aload_1
+    //   10: aload_0
+    //   11: getfield 33	bgiy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   14: invokevirtual 306	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   17: ifeq +52 -> 69
+    //   20: iconst_1
+    //   21: istore_2
+    //   22: invokestatic 153	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   25: ifeq +40 -> 65
+    //   28: ldc_w 308
+    //   31: iconst_2
+    //   32: new 69	java/lang/StringBuilder
+    //   35: dup
+    //   36: invokespecial 70	java/lang/StringBuilder:<init>	()V
+    //   39: ldc_w 310
+    //   42: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: aload_1
+    //   46: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: ldc_w 266
+    //   52: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: iload_2
+    //   56: invokevirtual 210	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   62: invokestatic 161	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   65: aload_0
+    //   66: monitorexit
+    //   67: iload_2
+    //   68: ireturn
+    //   69: iconst_0
+    //   70: istore_2
+    //   71: goto -49 -> 22
+    //   74: astore_1
+    //   75: aload_0
+    //   76: monitorexit
+    //   77: aload_1
+    //   78: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	79	0	this	bgiy
+    //   0	79	1	paramString	String
+    //   21	50	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   2	20	74	finally
+    //   22	65	74	finally
   }
   
-  public Bitmap a(Context paramContext, int paramInt, String paramString)
+  public boolean a(String arg1, long paramLong)
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inDensity = 320;
-    localOptions.inTargetDensity = 320;
-    paramContext = getDir(paramContext, getScid(paramInt));
-    paramContext = paramContext + File.separator + paramString;
-    paramString = new bfpy();
-    bfpx.a(paramContext, localOptions, paramString);
-    if (paramString.jdField_a_of_type_Int != 0)
+    String str = ??? + "_btm_pbmsg_seq";
+    for (;;)
     {
-      QLog.e("PobingUpdateCallback", 1, paramContext + " decodeFail: " + paramString.jdField_a_of_type_Int);
-      return null;
+      synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+      {
+        long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(str, -1L);
+        if ((l > 0L) && (l == paramLong))
+        {
+          bool = true;
+          return bool;
+        }
+      }
+      boolean bool = false;
     }
-    return paramString.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
-  public boolean a(Context paramContext, int paramInt)
+  public void b(String paramString)
   {
-    Object localObject = "newComeCard." + paramInt;
-    paramContext = jdField_a_of_type_Bgiy.getDir(paramContext, (String)localObject);
-    if (!new File(paramContext).exists()) {
+    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+    {
+      try
+      {
+        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        String str = paramString + "_btm_pbmsg_seq";
+        localEditor.remove(str);
+        localEditor.commit();
+        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.bottom", 2, "removeTroopLastPubAccountMsgUniseq:" + str);
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopBindPublicAccountMgr.bottom", 2, "removeTroopLastPubAccountMsgUniseq:" + paramString.toString());
+          }
+        }
+      }
+    }
+  }
+  
+  public boolean b(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForStructing))
+    {
+      MessageForStructing localMessageForStructing = (MessageForStructing)paramMessageRecord;
+      if (a(paramMessageRecord)) {
+        return (a(paramMessageRecord.frienduin, paramMessageRecord.uniseq)) && (!a(paramMessageRecord.uniseq));
+      }
+    }
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    while (this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString) != null) {
       return false;
-    }
-    if (paramInt == 2000) {
-      return new File(paramContext, "addgroup_preview.png").exists();
-    }
-    localObject = TroopPobingItemView.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    File localFile;
-    while (((Iterator)localObject).hasNext())
-    {
-      localFile = new File(paramContext, (String)((Iterator)localObject).next());
-      if (!localFile.exists())
-      {
-        QLog.e("PobingUpdateCallback", 1, "missing: " + localFile.getAbsolutePath());
-        return false;
-      }
-    }
-    localObject = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      localFile = new File(paramContext, (String)((Iterator)localObject).next());
-      if (!localFile.exists())
-      {
-        QLog.e("PobingUpdateCallback", 1, "missing: " + localFile.getAbsolutePath());
-        return false;
-      }
     }
     return true;
   }
   
-  public long getBID()
+  public void c(String paramString)
   {
-    return 40L;
+    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+    {
+      try
+      {
+        paramString = paramString + "_unread_pbmsg_cnt";
+        int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, 0) + 1;
+        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        localEditor.putInt(paramString, i);
+        localEditor.commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.redDot", 2, "increaseTroopPubMsgUnreadCount:" + paramString + ", " + i);
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopBindPublicAccountMgr.redDot", 2, "increaseTroopPubMsgUnreadCount:" + paramString.toString());
+          }
+        }
+      }
+    }
   }
   
-  protected String getRootDir()
+  public void d(String paramString)
   {
-    return "newComeCard";
+    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+    {
+      try
+      {
+        paramString = paramString + "_unread_pbmsg_cnt";
+        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        localEditor.remove(paramString);
+        localEditor.commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBindPublicAccountMgr.redDot", 2, "clearTroopPubMsgUnreadCount:" + paramString);
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TroopBindPublicAccountMgr.redDot", 2, "clearTroopPubMsgUnreadCount:" + paramString.toString());
+          }
+        }
+      }
+    }
   }
   
-  protected String getScidPrefix()
+  public void e(String paramString)
   {
-    return "newComeCard.";
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopBindPublicAccountMgr", 2, "setCurentAIOUin:" + paramString);
+      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    finally {}
+  }
+  
+  public void onDestroy()
+  {
+    jdField_a_of_type_JavaUtilArrayList.clear();
   }
 }
 

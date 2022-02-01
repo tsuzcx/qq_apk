@@ -1,45 +1,79 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class bhhj
-  extends Handler
+public class bhhj
 {
-  public int a;
-  
-  bhhj(bhhi parambhhi) {}
-  
-  public void a(int paramInt)
+  public static int a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getInt("key_versioncode", 0);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_Bhhi.isVisible())
-    {
-      this.jdField_a_of_type_Bhhi.b = this.jdField_a_of_type_Int;
-      return;
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putInt("key_versioncode", paramInt);
+    localEditor.apply();
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putBoolean("key_predownload_success_key", paramBoolean);
+    localEditor.apply();
+  }
+  
+  public static boolean a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getBoolean("key_predownload_success_key", false);
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0);
+    if (localSharedPreferences.getInt("key_normal_upgrade_version", 0) != paramInt) {}
+    while (!localSharedPreferences.getBoolean("key_normal_upgrade", false)) {
+      return true;
     }
-    if (this.jdField_a_of_type_Bhhi.b > this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_Bhhi.c(this.jdField_a_of_type_Bhhi.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bhhi.e);
-      return;
-    }
-    if (this.jdField_a_of_type_Bhhi.b < this.jdField_a_of_type_Int)
-    {
-      int i = this.jdField_a_of_type_Bhhi.b + this.jdField_a_of_type_Bhhi.f;
-      if (i <= this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Bhhi.c(i);
-      }
-      for (;;)
-      {
-        sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bhhi.e);
-        return;
-        this.jdField_a_of_type_Bhhi.c(this.jdField_a_of_type_Int);
-      }
-    }
-    removeMessages(0);
+    return false;
+  }
+  
+  public static int b()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getInt("key_dialog_versioncode", 0);
+  }
+  
+  public static void b(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putInt("key_dialog_versioncode", paramInt);
+    localEditor.apply();
+  }
+  
+  public static void b(boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putBoolean("key_has_show_upgrade_dialog", paramBoolean);
+    localEditor.apply();
+  }
+  
+  public static boolean b()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getBoolean("key_has_show_upgrade_dialog", false);
+  }
+  
+  public static void c(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putInt("key_normal_upgrade_version", paramInt);
+    localEditor.apply();
+  }
+  
+  public static void c(boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
+    localEditor.putBoolean("key_normal_upgrade", paramBoolean);
+    localEditor.apply();
   }
 }
 

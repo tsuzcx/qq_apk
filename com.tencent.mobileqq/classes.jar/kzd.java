@@ -1,48 +1,59 @@
 import com.tencent.qphone.base.util.QLog;
-import java.net.Socket;
-import java.security.KeyStore;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
+import java.security.cert.X509Certificate;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocket;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.conn.ssl.X509HostnameVerifier;
 
-public class kzd
-  extends org.apache.http.conn.ssl.SSLSocketFactory
+class kzd
+  implements X509HostnameVerifier
 {
-  private SSLContext a = SSLContext.getInstance("TLS");
+  private X509HostnameVerifier jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier = SSLSocketFactory.STRICT_HOSTNAME_VERIFIER;
   
-  public kzd(KeyStore paramKeyStore)
+  kzd(kzc paramkzc) {}
+  
+  public void verify(String paramString, X509Certificate paramX509Certificate)
   {
-    super(paramKeyStore);
-    try
-    {
-      paramKeyStore = new kzf();
-      this.a.init(null, new TrustManager[] { paramKeyStore }, null);
-      return;
+    String str = paramString;
+    if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
+      str = "accesscontrol.windows.net";
     }
-    catch (Exception paramKeyStore)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Translator", 2, "[cancel] cancel task" + paramKeyStore);
-        }
-        paramKeyStore = null;
-      }
-    }
+    this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramX509Certificate);
   }
   
-  public Socket createSocket()
+  public void verify(String paramString, SSLSocket paramSSLSocket)
   {
-    return this.a.getSocketFactory().createSocket();
+    String str = paramString;
+    if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
+      str = "accesscontrol.windows.net";
+    }
+    this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramSSLSocket);
   }
   
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  public void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    return this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
+    String str = paramString;
+    if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
+      str = "accesscontrol.windows.net";
+    }
+    this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramArrayOfString1, paramArrayOfString2);
+  }
+  
+  public boolean verify(String paramString, SSLSession paramSSLSession)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Translator", 2, "[AsyncHttpClient] host:" + paramString);
+    }
+    String str = paramString;
+    if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
+      str = "accesscontrol.windows.net";
+    }
+    return this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramSSLSession);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kzd
  * JD-Core Version:    0.7.0.1
  */

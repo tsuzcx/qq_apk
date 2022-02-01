@@ -1,32 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
-class oda
-  extends BroadcastReceiver
+public class oda
+  implements DialogInterface.OnClickListener
 {
-  oda(ocw paramocw) {}
+  public oda(AccountDetailActivity paramAccountDetailActivity, Activity paramActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a == 2)
+    switch (paramInt)
     {
-      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
-      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
-      this.a.a(null, 0, 14, i, paramIntent);
-    }
-    try
-    {
-      paramContext.unregisterReceiver(this.a.b);
-      label50:
-      this.a.b = null;
-      this.a.a = 0;
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.i = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.doOnBackPressed();
+      ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.a()).longValue());
       return;
     }
-    catch (Exception paramContext)
-    {
-      break label50;
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.f();
+    paramDialogInterface.dismiss();
   }
 }
 

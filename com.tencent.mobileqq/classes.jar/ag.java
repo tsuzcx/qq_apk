@@ -9,9 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 
 class ag
-  implements aszj
+  implements audq
 {
-  ag(af paramaf, DataLineMsgRecord paramDataLineMsgRecord, amqd paramamqd) {}
+  ag(af paramaf, DataLineMsgRecord paramDataLineMsgRecord, ansr paramansr) {}
   
   public void onNo() {}
   
@@ -19,7 +19,7 @@ class ag
   {
     Object localObject1 = null;
     if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.isSendFromLocal()) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.strMoloKey != null)) {
-      this.jdField_a_of_type_Amqd.b(112);
+      this.jdField_a_of_type_Ansr.b(112);
     }
     DLFilesViewerActivity.a(this.jdField_a_of_type_Af.a).setPaused(false);
     Iterator localIterator = DLFilesViewerActivity.a(this.jdField_a_of_type_Af.a).values().iterator();
@@ -64,10 +64,10 @@ class ag
       }
     }
     if ((localObject2 != null) && (localObject2.size() > 0)) {
-      this.jdField_a_of_type_Amqd.a(localObject2, true);
+      this.jdField_a_of_type_Ansr.a(localObject2, true);
     }
     if ((localObject1 != null) && (localObject1.size() > 0)) {
-      this.jdField_a_of_type_Amqd.a(localObject1);
+      this.jdField_a_of_type_Ansr.a(localObject1);
     }
     DLFilesViewerActivity.a(this.jdField_a_of_type_Af.a).notifyDataSetChanged();
   }

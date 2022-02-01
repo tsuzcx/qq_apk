@@ -1,55 +1,49 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
+import android.os.Bundle;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.util.VADHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class bclf
-  extends URLDrawableDownListener.Adapter
+public class bclf
+  extends bclv
 {
-  bclf(bcle parambcle) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public bclf(GroupSearchEngine paramGroupSearchEngine, bclw parambclw, String paramString, int paramInt1, int paramInt2)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.ac, 2, "onLoadCancelled");
-    }
+    super(paramGroupSearchEngine, parambclw, paramString, paramInt1);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public bcfi a(List<bcfj> paramList, String paramString)
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.ac, 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
+    return new bceu(paramList, paramString, this.jdField_a_of_type_Int);
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public List<bcfi> a(bcmk parambcmk)
   {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.ac, 2, "onLoadInterrupted");
+    if (!GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine)) {
+      return null;
     }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    do
+    VADHelper.a("voice_search_approximate_cost");
+    List localList = super.a(parambcmk);
+    VADHelper.b("voice_search_approximate_cost");
+    if ((localList != null) && (!localList.isEmpty()))
     {
-      return;
-      paramView.setBackgroundDrawable(null);
-      if ((paramView instanceof ImageView))
-      {
-        ((URLImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
+      if (parambcmk.a == null) {
+        parambcmk.a = new Bundle();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.a.ac, 2, "onLoadSuccessed");
+      parambcmk.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
+      if (localList.size() >= 2)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((bcfi)localList.get(1)).a().size());
+        }
+        parambcmk.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((bcfi)localList.get(1)).a().size());
+      }
+    }
+    for (;;)
+    {
+      return localList;
+      parambcmk.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
+    }
   }
 }
 

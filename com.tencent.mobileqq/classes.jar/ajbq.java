@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.activity.home.Conversation.15;
+import com.tencent.mobileqq.data.NewFriendSubTitle;
 
 public class ajbq
-  implements bccr
+  extends ajbn
 {
-  public ajbq(Conversation.15 param15) {}
+  public NewFriendSubTitle a;
   
-  public void a()
+  public ajbq(NewFriendSubTitle paramNewFriendSubTitle)
   {
-    this.a.this$0.o();
+    this.a = paramNewFriendSubTitle;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

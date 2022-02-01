@@ -1,26 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
 
-class zqy
-  implements View.OnClickListener
+public class zqy
+  extends AnimatorListenerAdapter
 {
-  zqy(zqq paramzqq, bebb parambebb) {}
+  public zqy(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopTipsPopWindow", 2, "mTroopNotifyAdImage onClick--------");
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_Zqq.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_Bebb.b);
-    this.jdField_a_of_type_Zqq.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
-    bcef.b(this.jdField_a_of_type_Zqq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "clk_ad", 0, 0, this.jdField_a_of_type_Zqq.b, String.valueOf(this.jdField_a_of_type_Zqq.jdField_a_of_type_Beba.a), "8020205751015455", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.clearAnimation();
+    this.a.setVisibility(8);
   }
 }
 

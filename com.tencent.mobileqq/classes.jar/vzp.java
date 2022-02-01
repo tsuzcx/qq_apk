@@ -1,19 +1,10 @@
-public class vzp
-  extends vko
+public abstract interface vzp<T>
 {
-  public String a;
-  public wod a;
+  public abstract void a();
   
-  public vzp(wod paramwod, String paramString)
-  {
-    this.jdField_a_of_type_Wod = paramwod;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(vzq<T> paramvzq);
   
-  public String toString()
-  {
-    return "UpdateMsgTabCoverEvent{, groupId=" + this.jdField_a_of_type_Wod + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
-  }
+  public abstract void c();
 }
 
 

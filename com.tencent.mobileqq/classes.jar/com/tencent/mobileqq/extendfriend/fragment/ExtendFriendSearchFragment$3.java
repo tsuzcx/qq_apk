@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import arhi;
-import arlu;
+import aslo;
+import asqa;
 import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendMultiLinesTagsView;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ class ExtendFriendSearchFragment$3
     ExtendFriendSearchFragment localExtendFriendSearchFragment;
     if ((this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) && (this.this$0.isAdded()) && (this.this$0.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendMultiLinesTagsView != null))
     {
-      List localList = this.this$0.jdField_a_of_type_Arhi.a().a();
+      List localList = this.this$0.jdField_a_of_type_Aslo.a().a();
       this.this$0.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendMultiLinesTagsView.setSearchTags((ArrayList)localList);
       localExtendFriendSearchFragment = this.this$0;
       if (localList.size() <= 0) {
@@ -34,7 +34,7 @@ class ExtendFriendSearchFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.3
  * JD-Core Version:    0.7.0.1
  */

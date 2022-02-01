@@ -1,24 +1,39 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.util.HashMap;
+import java.util.List;
 
-public class amdl
-  implements alqv
+class amdl
+  implements amcl
 {
-  public amdl(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  amdl(amdk paramamdk, String paramString) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a != null)
+    if (paramBoolean) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
-      }
-      this.a.a.getRenderImpl().a(0L);
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Amdk.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      amdk.a(this.jdField_a_of_type_Amdk, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      return;
     }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
+      {
+        amdk.a(this.jdField_a_of_type_Amdk, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+    amdk.a(this.jdField_a_of_type_Amdk, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
-  
-  public void a(int paramInt, String paramString) {}
 }
 
 

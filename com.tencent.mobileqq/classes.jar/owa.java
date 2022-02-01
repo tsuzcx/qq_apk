@@ -1,18 +1,4 @@
-import java.util.List;
-
-class owa
-  extends owd
-{
-  owa(ouu paramouu, List paramList)
-  {
-    super(paramouu, null);
-  }
-  
-  void a(owg paramowg)
-  {
-    paramowg.onCommentListLoad(1, true, this.jdField_a_of_type_JavaUtilList, ouu.b(this.jdField_a_of_type_Ouu), 3, 3);
-  }
-}
+public abstract interface owa {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

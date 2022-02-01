@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import java.util.ArrayList;
 
 public class bgur
-  implements DialogInterface.OnClickListener
 {
-  public bgur(WebViewFragment paramWebViewFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
 }
 
 

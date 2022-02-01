@@ -1,13 +1,23 @@
-public class amid
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+class amid
+  implements Animation.AnimationListener
 {
-  public int a;
-  public int b;
+  amid(amia paramamia, View paramView) {}
   
-  public amid(int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getTag() instanceof amig))) {
+      ((amig)this.jdField_a_of_type_AndroidViewView.getTag()).a = true;
+    }
+    amia.a(this.jdField_a_of_type_Amia);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

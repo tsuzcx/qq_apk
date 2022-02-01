@@ -1,8 +1,12 @@
-import android.graphics.Bitmap;
-
-public abstract interface bacn
+class bacn
+  extends anrc
 {
-  public abstract void a(Bitmap paramBitmap);
+  bacn(bacm parambacm) {}
+  
+  protected void a(boolean paramBoolean, long paramLong, Object paramObject, int paramInt)
+  {
+    bacm.a(this.a, paramBoolean, paramLong, paramObject, paramInt);
+  }
 }
 
 

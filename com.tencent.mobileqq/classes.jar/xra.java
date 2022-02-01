@@ -1,39 +1,10 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserGuide;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.support.annotation.NonNull;
 
-public class xra
-  extends vqr<xrb>
+abstract interface xra
 {
-  public static final String a = vpl.a("StorySvc.get_user_guide");
+  public abstract void a(@NonNull xqy paramxqy);
   
-  public String a()
-  {
-    return a;
-  }
-  
-  public xrb a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetUserGuide localRspGetUserGuide = new qqstory_service.RspGetUserGuide();
-    try
-    {
-      localRspGetUserGuide.mergeFrom(paramArrayOfByte);
-      return new xrb(localRspGetUserGuide);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        xvv.c("Q.qqstory.home.GetUserGuideInfoStep", "decodeResponse error=%s", paramArrayOfByte);
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    return new qqstory_service.ReqGetUserGuide().toByteArray();
-  }
+  public abstract void b(@NonNull xqy paramxqy);
 }
 
 

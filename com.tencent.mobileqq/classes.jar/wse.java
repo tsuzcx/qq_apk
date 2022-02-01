@@ -1,23 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wse
-  implements wrj
+  extends vzj
 {
-  public wse(StoryPlayerGroupAdapter paramStoryPlayerGroupAdapter) {}
+  public String a;
+  public List<yap> a;
   
-  public void a(int paramInt1, int paramInt2)
+  public wse()
   {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
+  public String toString()
   {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramFloat, paramInt3);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramInt3);
+    return super.toString() + " collectionId=" + this.jdField_a_of_type_JavaLangString + "mSimpleInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + "mSimpleInfoList=" + this.jdField_a_of_type_JavaUtilList;
   }
 }
 

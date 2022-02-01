@@ -1,82 +1,160 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class afck
   extends BaseAdapter
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  ArrayList<ayfo> jdField_a_of_type_JavaUtilArrayList;
+  protected int a;
+  protected List<String> a;
   
-  public void a(View.OnClickListener paramOnClickListener)
+  public afck(TroopDisbandActivity paramTroopDisbandActivity)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add("0");
   }
   
-  public void a(ArrayList<ayfo> paramArrayList)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    if ((this.jdField_a_of_type_JavaUtilList.size() == 1) && (this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.d))) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.d);
+    notifyDataSetChanged();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if (paramList != null) {}
+    for (int i = paramList.size();; i = 0)
+    {
+      if (i > 0)
+      {
+        this.jdField_a_of_type_JavaUtilList.clear();
+        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+        notifyDataSetChanged();
+      }
+      return;
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilList.contains(paramString);
+  }
+  
+  public void b(List<oidb_0x899.memberlist> paramList)
+  {
+    int i;
+    int j;
+    label26:
+    Object localObject;
+    if (paramList != null)
+    {
+      i = paramList.size();
+      if (i <= 0) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+      j = 0;
+      if (j >= i) {
+        break label113;
+      }
+      localObject = (oidb_0x899.memberlist)paramList.get(j);
+      if ((localObject != null) && (((oidb_0x899.memberlist)localObject).uint64_member_uin.has())) {
+        break label71;
+      }
+    }
+    for (;;)
+    {
+      j += 1;
+      break label26;
+      i = 0;
+      break;
+      label71:
+      localObject = String.valueOf(((oidb_0x899.memberlist)localObject).uint64_member_uin.get());
+      if (!this.jdField_a_of_type_JavaUtilList.contains(localObject)) {
+        this.jdField_a_of_type_JavaUtilList.add(localObject);
+      }
+    }
+    label113:
+    notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i > 6) {
+      return 6;
     }
-    return 0;
+    return i;
   }
   
   public Object getItem(int paramInt)
   {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
     return null;
   }
   
   public long getItemId(int paramInt)
   {
-    return 0L;
+    return paramInt;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject1 = BaseApplication.getContext();
+    Object localObject1;
     Object localObject2;
     if (paramView == null)
     {
-      localObject1 = LayoutInflater.from((Context)localObject1).inflate(2131558876, null);
-      paramView = new afcl();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131368368));
-      paramView.b = ((ImageView)((View)localObject1).findViewById(2131366809));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131378382));
-      ((View)localObject1).setTag(paramView);
-      localObject2 = (ayfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((ayfo)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((ayfo)localObject2).jdField_a_of_type_JavaLangString);
-      if (!((ayfo)localObject2).jdField_a_of_type_Boolean) {
-        break label195;
+      localObject1 = new ImageView(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
+      ((ImageView)localObject1).setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int));
+      ((ImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER_CROP);
+      ((ImageView)localObject1).setAdjustViewBounds(true);
+      paramView = (View)localObject1;
+      localObject2 = (String)getItem(paramInt);
+      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!((String)localObject2).equals("0"))) {
+        break label156;
       }
-      paramView.b.setVisibility(0);
+      paramView.setImageDrawable(bheg.b());
     }
     for (;;)
     {
-      paramView.jdField_a_of_type_Int = ((ayfo)localObject2).jdField_a_of_type_Int;
-      ((View)localObject1).setContentDescription(((ayfo)localObject2).b);
-      ((View)localObject1).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
       return localObject1;
-      localObject2 = (afcl)paramView.getTag();
-      localObject1 = paramView;
-      paramView = (View)localObject2;
+      localObject1 = (ImageView)paramView;
+      localObject2 = ((ImageView)localObject1).getLayoutParams();
+      if (localObject2 != null)
+      {
+        ((ViewGroup.LayoutParams)localObject2).width = this.jdField_a_of_type_Int;
+        ((ViewGroup.LayoutParams)localObject2).height = this.jdField_a_of_type_Int;
+      }
+      localObject2 = paramView;
+      paramView = (View)localObject1;
+      localObject1 = localObject2;
       break;
-      label195:
-      paramView.b.setVisibility(8);
+      label156:
+      paramView.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app, (String)localObject2, (byte)3));
     }
   }
 }

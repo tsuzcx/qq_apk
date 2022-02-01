@@ -1,16 +1,27 @@
-public abstract interface aagl
+import android.text.TextUtils.EllipsizeCallback;
+import android.widget.TextView;
+import com.tencent.biz.troop.file.MoveFileActivity;
+
+public class aagl
+  implements TextUtils.EllipsizeCallback
 {
-  public abstract void f();
+  public aagl(MoveFileActivity paramMoveFileActivity, TextView paramTextView) {}
   
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void ellipsized(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == paramInt2)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
+      return;
+    }
+    String str1 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(0, paramInt1);
+    String str2 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(paramInt2, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).length());
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + "..." + str2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aagl
  * JD-Core Version:    0.7.0.1
  */

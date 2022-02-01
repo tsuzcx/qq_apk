@@ -1,27 +1,56 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.BusinessWPATmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-final class acvr
-  implements DialogInterface.OnClickListener
+public class acvr
+  implements acos
 {
-  acvr(QQAppInterface paramQQAppInterface, acxb paramacxb, long paramLong, Context paramContext, acxa paramacxa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Acxb.jdField_a_of_type_Int, this.jdField_a_of_type_Acxb.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Acxb.jdField_c_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_Acxb.jdField_a_of_type_Boolean) {
-      bcef.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
+    return 1024;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    byte[] arrayOfByte = paramQQAppInterface.getMsgCache().d(paramMessageRecord.frienduin);
+    msg_svc.BusinessWPATmp localBusinessWPATmp = new msg_svc.BusinessWPATmp();
+    localBusinessWPATmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    if (arrayOfByte != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BusinessCRMRoutingType", 2, "conversation------>sig:" + HexUtil.bytes2HexStr(arrayOfByte) + ",length:" + arrayOfByte.length);
+      }
+      localBusinessWPATmp.sig.set(ByteStringMicro.copyFrom(arrayOfByte));
     }
-    this.jdField_a_of_type_Acxb.b = false;
-    this.jdField_a_of_type_Acxb.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Acxb.e = false;
-    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acxa, this.jdField_a_of_type_Acxb);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    for (;;)
+    {
+      paramRoutingHead.business_wpa_tmp.set(localBusinessWPATmp);
+      return true;
+      paramMessageRecord = paramQQAppInterface.getMsgCache().e(paramMessageRecord.frienduin);
+      if (paramMessageRecord != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BusinessCRMRoutingType", 2, "conversation------>sigt:" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+        }
+        localBusinessWPATmp.sigt.set(ByteStringMicro.copyFrom(paramMessageRecord));
+      }
     }
+  }
+  
+  public int b()
+  {
+    return 8010;
   }
 }
 

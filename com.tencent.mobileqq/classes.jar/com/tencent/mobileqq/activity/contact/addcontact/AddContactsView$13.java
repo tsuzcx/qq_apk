@@ -22,7 +22,7 @@ class AddContactsView$13
         if (this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
           return;
         }
-        View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131558467, this.this$0.i, false);
+        View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131558469, this.this$0.i, false);
         localView.measure(0, 0);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);

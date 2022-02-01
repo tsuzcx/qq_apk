@@ -9,8 +9,8 @@ import android.os.Build.VERSION;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import lfi;
-import lnu;
+import lfu;
+import loh;
 
 @SuppressLint({"NewApi"})
 public class DeviceCheck
@@ -251,7 +251,7 @@ public class DeviceCheck
   public static boolean g()
   {
     if (h()) {}
-    lnu locallnu;
+    loh localloh;
     AndroidCodec.HWCodecAbility localHWCodecAbility1;
     AndroidCodec.HWCodecAbility localHWCodecAbility2;
     do
@@ -260,10 +260,10 @@ public class DeviceCheck
       {
         return false;
       } while (Build.VERSION.SDK_INT < 21);
-      locallnu = new lnu(lfi.a(BaseApplicationImpl.getContext()));
-      localHWCodecAbility1 = locallnu.d();
-      localHWCodecAbility2 = locallnu.c();
-    } while ((localHWCodecAbility1 == null) || (!localHWCodecAbility1.isHWCodec) || (!locallnu.a(2)) || (localHWCodecAbility2 == null) || (!localHWCodecAbility2.isHWCodec) || (!locallnu.a(1)));
+      localloh = new loh(lfu.a(BaseApplicationImpl.getContext()));
+      localHWCodecAbility1 = localloh.d();
+      localHWCodecAbility2 = localloh.c();
+    } while ((localHWCodecAbility1 == null) || (!localHWCodecAbility1.isHWCodec) || (!localloh.a(2)) || (localHWCodecAbility2 == null) || (!localHWCodecAbility2.isHWCodec) || (!localloh.a(1)));
     if (QLog.isColorLevel()) {
       QLog.d("DeviceCheck", 2, "SUPPORT Async API");
     }

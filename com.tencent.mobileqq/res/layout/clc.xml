@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="30.0dip"
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textStyle="bold" android:textColor="@color/bp" android:gravity="bottom|center" android:id="@id/nxs" android:paddingBottom="2.0dip" android:layout_width="60.0dip" android:layout_height="wrap_content" android:singleLine="true" android:shadowColor="@color/al3" android:shadowRadius="1.0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/j_" android:textColor="@color/al3" android:ellipsize="none" android:gravity="center" android:id="@id/nxj" android:background="@drawable/dkz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="5.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <RelativeLayout android:id="@id/wh" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="56.0dip" android:minHeight="@dimen/j2">
+        <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black" android:gravity="center_vertical" android:id="@id/wc" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxWidth="184.0dip" android:text="@string/wbv" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <com.tencent.widget.Switch android:id="@id/wb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray3" android:id="@id/wa" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/wbu" />
+</LinearLayout>

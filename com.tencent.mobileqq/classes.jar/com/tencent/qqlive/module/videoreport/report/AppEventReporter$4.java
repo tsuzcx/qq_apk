@@ -5,11 +5,11 @@ import com.tencent.qqlive.module.videoreport.utils.ListenerMgr.INotifyCallback;
 class AppEventReporter$4
   implements ListenerMgr.INotifyCallback<AppEventReporter.IAppEventListener>
 {
-  AppEventReporter$4(AppEventReporter paramAppEventReporter) {}
+  AppEventReporter$4(AppEventReporter paramAppEventReporter, boolean paramBoolean) {}
   
   public void onNotify(AppEventReporter.IAppEventListener paramIAppEventListener)
   {
-    paramIAppEventListener.onAppIn();
+    paramIAppEventListener.onAppOut(this.val$isMainThread);
   }
 }
 

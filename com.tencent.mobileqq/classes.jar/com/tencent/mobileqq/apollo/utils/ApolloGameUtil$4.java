@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import amav;
+import ancd;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ final class ApolloGameUtil$4
     {
       Object localObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
       long l = ((JSONObject)localObject).optLong("taskId");
-      localObject = amav.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (JSONObject)localObject);
+      localObject = ancd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (JSONObject)localObject);
       if (localObject == null) {
         return;
       }

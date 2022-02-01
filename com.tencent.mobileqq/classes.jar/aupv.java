@@ -1,22 +1,33 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLoading;
-import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 class aupv
-  implements CustomizedLoading
+  extends azky
 {
-  aupv(aupc paramaupc) {}
+  aupv(aupt paramaupt, auqh paramauqh, MessageForPic paramMessageForPic, String paramString) {}
   
-  public void onShowLoading(Context paramContext, Bundle paramBundle, View paramView)
+  public void a(int paramInt, azkf paramazkf)
   {
-    LoadingFragment.a(paramContext, paramBundle, paramView);
+    if (this.jdField_a_of_type_Auqh != null) {
+      this.jdField_a_of_type_Auqh.b();
+    }
+    AbsDownloader.getFilePath(URLDrawableHelper.getURL(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
+      aupt.a(this.jdField_a_of_type_Aupt, ahsl.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic), this.jdField_a_of_type_JavaLangString);
+    }
   }
+  
+  public void a_(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aupv
  * JD-Core Version:    0.7.0.1
  */

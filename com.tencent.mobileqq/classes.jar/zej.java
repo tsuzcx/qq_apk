@@ -1,19 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
-class zej
-  implements View.OnClickListener
+final class zej
+  implements INetEventHandler
 {
-  zej(zei paramzei) {}
+  zej(Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    if ((!zvo.a("SUB_ENTER_FLOAT_MODE")) && (zei.a(this.a) != null)) {
-      zei.a(this.a).d();
+    if (paramBoolean)
+    {
+      zei.a(this.a);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    zei.a("");
+    zei.b("");
   }
 }
 

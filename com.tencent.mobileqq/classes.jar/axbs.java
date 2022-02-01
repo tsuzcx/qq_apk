@@ -1,11 +1,32 @@
-class axbs
-  implements bjog
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import java.util.List;
+import mqq.os.MqqHandler;
+
+public class axbs
+  implements awzl
 {
-  axbs(axax paramaxax) {}
+  public axbs(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public void onDismiss()
+  public void a(List<RecentBaseData> paramList)
   {
-    axax.a(this.a, this.a.c, false);
+    MsgBackupSelectionFragment.a(this.a, true);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      this.a.a.clear();
+      this.a.a.addAll(paramList);
+    }
+    for (;;)
+    {
+      paramList = MsgBackupSelectionFragment.a(this.a).obtainMessage(10000);
+      MsgBackupSelectionFragment.a(this.a).sendMessage(paramList);
+      return;
+      if (MsgBackupSelectionFragment.a(this.a) == 0) {
+        axct.a("0X800A232");
+      } else if (awzs.c) {
+        axct.a("0X800A257");
+      }
+    }
   }
 }
 

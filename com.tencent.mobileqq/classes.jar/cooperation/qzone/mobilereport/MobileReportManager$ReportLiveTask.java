@@ -1,8 +1,8 @@
 package cooperation.qzone.mobilereport;
 
 import NS_USER_ACTION_REPORT.ItemInfo;
-import bbot;
-import blbz;
+import bcvn;
+import bmoq;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,7 +35,7 @@ class MobileReportManager$ReportLiveTask
       }
       localArrayList.add(localUserActionReportBuilder.build());
     }
-    bbot.a(8, localAppRuntime, new MobileReportManager.UserCommReportBuilder(null).setUin(localAppRuntime.getLongAccountUin()).setNetwork_type(blbz.c()).build(), localArrayList);
+    bcvn.a(8, localAppRuntime, new MobileReportManager.UserCommReportBuilder(null).setUin(localAppRuntime.getLongAccountUin()).setNetwork_type(bmoq.c()).build(), localArrayList);
   }
 }
 

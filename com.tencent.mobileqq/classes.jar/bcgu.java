@@ -1,109 +1,47 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.QLog;
-
 public class bcgu
-  extends bchd
 {
-  public bcgu(AbsShareMsg paramAbsShareMsg, QQAppInterface paramQQAppInterface, View paramView)
-  {
-    super(paramQQAppInterface, paramView);
-  }
+  public static final int[] a = { 1, 2, 3, 4 };
+  public static final int[] b = { 6 };
+  public static final int[] c = { 7 };
   
-  public boolean a(Activity paramActivity, long paramLong, String paramString1, String paramString2, String paramString3)
+  public static int a(int paramInt)
   {
-    paramString1 = AbsShareMsg.parsePackageNameAndData(paramString2, paramString3)[0];
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "SourceClickHandler click2YYB  appid = " + paramLong + "; packageName=" + paramString1);
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    paramString2 = new Bundle();
-    paramString2.putString("packageName", paramString1);
-    paramString2.putString("appId", paramLong + "");
-    paramString2.putString("big_brother_source_key", "biz_src_jc_aio");
-    bhwo.b(paramActivity, paramString2);
-    return true;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "SourceClickHandler clickWebMsg  url = " + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))) {
-      return false;
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("key_isReadModeEnabled", true);
-    localIntent.putExtra("title", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName);
-    localIntent.putExtra("url", paramString);
-    ugf.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.message, localIntent, paramString);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString, "", "", "");
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "SourceClickHandler clickAppMsg url = " + paramString1 + ", actionData = " + paramString2 + ", actionDataA = " + paramString3);
-    }
-    paramString1 = AbsShareMsg.parsePackageNameAndData(paramString2, paramString3);
-    paramString2 = this.jdField_a_of_type_AndroidContentContext.getPackageManager();
-    try
+    int k = 0;
+    int[] arrayOfInt = a;
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
     {
-      if (paramString2.getPackageInfo(paramString1[0], 1) != null)
+      if (arrayOfInt[i] == paramInt)
       {
-        paramString2 = paramString2.getLaunchIntentForPackage(paramString1[0]);
-        if (paramString2 == null) {
-          return false;
-        }
-        paramString2.putExtra("big_brother_source_key", "biz_src_jc_aio");
-        paramString2.addFlags(67108864);
-        if (!TextUtils.isEmpty(paramString1[1])) {
-          paramString2.setData(Uri.parse(paramString1[1]));
-        }
-        try
-        {
-          paramString3 = (anbg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(23);
-          paramString2.putExtra("report_open_type", "structmsg_source");
-          paramString2.putExtra("report_url", "");
-          paramString2.putExtra("report_from", "1");
-          paramString2.putExtra("report_click_origin", "AIOTail");
-          paramString2.putExtra("report_class_name", this.jdField_a_of_type_AndroidContentContext.getClass().getName());
-          paramString3.b(paramString1[0].trim(), this.jdField_a_of_type_AndroidContentContext, paramString2);
-          return true;
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("AppStartedHandler", 2, "<-- StartAppCheckHandler AbsShareMSG Failed!");
-            }
-            this.jdField_a_of_type_AndroidContentContext.startActivity(paramString2);
-          }
-        }
+        i = 1;
+        return i;
       }
-      return false;
+      i += 1;
     }
-    catch (PackageManager.NameNotFoundException paramString1)
+    arrayOfInt = b;
+    j = arrayOfInt.length;
+    i = 0;
+    while (i < j)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsg", 2, paramString1.getMessage());
+      if (arrayOfInt[i] == paramInt) {
+        return 2;
       }
+      i += 1;
+    }
+    arrayOfInt = c;
+    int m = arrayOfInt.length;
+    j = 0;
+    for (;;)
+    {
+      i = k;
+      if (j >= m) {
+        break;
+      }
+      if (arrayOfInt[j] == paramInt) {
+        return 3;
+      }
+      j += 1;
     }
   }
 }

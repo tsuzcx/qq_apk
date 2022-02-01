@@ -1,27 +1,112 @@
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.OldHttpEngine;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lbc
+  extends WebViewPlugin
+  implements lba
 {
-  private static INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
-  private static IHttpCommunicatorFlowCount jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new lbd();
+  private bidz jdField_a_of_type_Bidz;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static INetEngine a()
+  public lbc()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null) {}
-    try
+    this.mPluginNameSpace = "aioShareMusic";
+  }
+  
+  public void a(String paramString, JSONObject paramJSONObject)
+  {
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {}
+    for (;;)
     {
-      if (jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null)
-      {
-        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount, 128);
-        localHttpCommunicator.start();
-        jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = new OldHttpEngine(localHttpCommunicator, true);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AioShareMusic.AioShareMusicPlugin", 2, "onEvent（） actionType =" + paramString + " data = " + paramJSONObject.toString());
       }
-      return jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+      if (this.jdField_a_of_type_Bidz == null) {
+        this.jdField_a_of_type_Bidz = new bidz(this.mRuntime.a());
+      }
+      if ("checkAioShareMusic".equals(paramString))
+      {
+        this.jdField_a_of_type_Bidz.a(paramJSONObject);
+        return;
+      }
+      if ("startListenAioShareMusic".equals(paramString))
+      {
+        this.jdField_a_of_type_Bidz.b(paramJSONObject);
+        return;
+      }
+      if ("updateSongIdToAioShareMusic".equals(paramString)) {
+        try
+        {
+          paramString = paramJSONObject.getString("current_song_id");
+          this.jdField_a_of_type_Bidz.a = paramString;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("AioShareMusicAioShareMusic.AioShareMusicPlugin", 2, "updateSongId() newSongId = " + paramString);
+            return;
+          }
+        }
+        catch (JSONException paramString)
+        {
+          paramString.printStackTrace();
+        }
+      }
     }
-    finally {}
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a() == null)) {
+      return true;
+    }
+    if (this.jdField_a_of_type_Bidz == null) {
+      this.jdField_a_of_type_Bidz = new bidz(this.mRuntime.a());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AioShareMusicAioShareMusic.AioShareMusicPlugin", 2, "handleEvent() type = " + paramLong);
+    }
+    if (paramLong == 8589934594L)
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Bidz.a(this.mRuntime.a().getIntent());
+        return true;
+      }
+    }
+    else if (paramLong == 8589934622L)
+    {
+      Object localObject = paramMap.get("intent");
+      if ((localObject != null) && ((localObject instanceof Intent)))
+      {
+        paramString = (Intent)localObject;
+        this.jdField_a_of_type_Bidz.b(paramString);
+        return true;
+      }
+    }
+    return super.handleEvent(paramString, paramLong, paramMap);
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    lay.a().a(this);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Bidz != null)
+    {
+      this.jdField_a_of_type_Bidz.a();
+      this.jdField_a_of_type_Bidz = null;
+    }
+    lay.a().a();
   }
 }
 

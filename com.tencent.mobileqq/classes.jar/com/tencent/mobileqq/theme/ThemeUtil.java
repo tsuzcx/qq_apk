@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.theme;
 
-import aezp;
-import anbt;
+import afrb;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -20,23 +19,25 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
-import aqyy;
-import bbyp;
-import bdav;
-import bday;
-import bdbm;
-import bdbq;
-import bdbr;
-import bges;
-import bggk;
-import bghq;
-import bgiw;
-import bgix;
-import bgjb;
-import bgkb;
+import aoei;
+import asdi;
+import bdfk;
+import behu;
+import behx;
+import beim;
+import beiq;
+import beir;
+import bhnm;
+import bhpe;
+import bhql;
+import bhrr;
+import bhrs;
+import bhrw;
+import bhuk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -60,7 +61,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import npg;
+import nwh;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -74,6 +75,7 @@ public class ThemeUtil
   public static final int ANIMATE_TAB_CONVERSATION = 11;
   public static final int ANIMATE_TAB_LEBA = 14;
   public static final int ANIMATE_TAB_NOW = 15;
+  public static final int ANIMATE_TAB_QCIRCLE = 17;
   public static final int ANIMATE_TAB_SEE = 16;
   public static final String DEFAULT_THEME_ID = "1000";
   public static final String DIY_ASSETS_NAME = "999_540";
@@ -157,14 +159,14 @@ public class ThemeUtil
     curThemeId = getCurrentThemeId();
     lastThemeId = "";
     refLock = new Object();
-    mReceiver = new bdbq();
+    mReceiver = new beiq();
   }
   
   public static void adjustThemeStatusBar(Window paramWindow)
   {
     boolean bool = true;
     if ((isCustomTheme(true)) && (ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.c())) {
-      if (isColorDark(paramWindow.getDecorView().getResources().getColor(2131167070))) {
+      if (isColorDark(paramWindow.getDecorView().getResources().getColor(2131167084))) {
         break label47;
       }
     }
@@ -180,7 +182,7 @@ public class ThemeUtil
   public static Drawable drawableTint(Context paramContext, int paramInt1, int paramInt2)
   {
     if (!SkinEngine.getInstances().checkResExist(paramInt1)) {
-      return npg.a(paramContext.getResources().getDrawable(paramInt1), paramInt2);
+      return nwh.a(paramContext.getResources().getDrawable(paramInt1), paramInt2);
     }
     return paramContext.getResources().getDrawable(paramInt1);
   }
@@ -247,6 +249,8 @@ public class ThemeUtil
       localObject1 = mAnimateThemePath + "raw/qvip_tab_icon_now_animate.png";
       continue;
       localObject1 = mAnimateThemePath + "raw/qvip_tab_icon_see_animate.png";
+      continue;
+      localObject1 = mAnimateThemePath + "raw/qvip_tab_icon_qcircle_animate.png";
     }
   }
   
@@ -285,7 +289,7 @@ public class ThemeUtil
               break label201;
             }
             localObject1 = localObject1[(localObject1.length - 3)];
-            if ((!android.text.TextUtils.isEmpty((CharSequence)localObject1)) && (aqyy.a((String)localObject1)))
+            if ((!android.text.TextUtils.isEmpty((CharSequence)localObject1)) && (asdi.a((String)localObject1)))
             {
               localBundle.putString("themeId", (String)localObject1);
               localBundle.putString("version", "20000000");
@@ -444,7 +448,7 @@ public class ThemeUtil
     }
     int i = 0;
     Object localObject = paramString.split("\\.");
-    if ((paramString.startsWith(bgjb.a)) && (localObject.length > 3)) {
+    if ((paramString.startsWith(bhrw.a)) && (localObject.length > 3)) {
       localObject = localObject[2];
     }
     for (;;)
@@ -501,7 +505,7 @@ public class ThemeUtil
   public static String getThemeConfigID(String paramString)
   {
     String str = "theme." + paramString + ".cfg";
-    if (bgkb.a()) {
+    if (bhuk.a()) {
       str = "theme." + paramString;
     }
     return str;
@@ -854,7 +858,7 @@ public class ThemeUtil
       Collections.sort((List)localObject3);
       localObject4 = (String)((List)localObject3).get(((List)localObject3).size() - 1);
       localObject3 = ((SharedPreferences)localObject2).getString("currentThemeVersion", "0");
-      if (bges.a("6.0", "8.4.8"))
+      if (bhnm.a("6.0", "8.4.10"))
       {
         localObject2 = (String)((Map)localObject1).get(localObject4);
         localObject1 = localObject2;
@@ -862,7 +866,7 @@ public class ThemeUtil
         {
           localObject1 = localObject2;
           if ((paramAppInterface instanceof QQAppInterface)) {
-            ((anbt)((QQAppInterface)paramAppInterface).getBusinessHandler(14)).a((String)localObject2, (String)localObject3, false);
+            ((aoei)((QQAppInterface)paramAppInterface).getBusinessHandler(BusinessHandlerFactory.THEME_HANDLER)).a((String)localObject2, (String)localObject3, false);
           }
         }
       }
@@ -992,7 +996,7 @@ public class ThemeUtil
       try
       {
         if (weakApp == null) {
-          break label278;
+          break label280;
         }
         paramQQAppInterface = (QQAppInterface)weakApp.get();
         if (paramQQAppInterface == null)
@@ -1023,7 +1027,7 @@ public class ThemeUtil
         QLog.e("Theme.ThemeUtil", 1, "initTheme: engine is not ready");
         return;
       }
-      paramQQAppInterface = (anbt)localQQAppInterface.getBusinessHandler(14);
+      paramQQAppInterface = (aoei)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.THEME_HANDLER);
       if ((paramQQAppInterface != null) && (!paramQQAppInterface.b.compareAndSet(true, false)))
       {
         QLog.e("Theme.ThemeUtil", 1, "initTheme: had send auth");
@@ -1034,13 +1038,13 @@ public class ThemeUtil
       localObject = paramQQAppInterface.getString("themeId");
       String str = getUserThemeIDForReset(localQQAppInterface);
       QLog.i("Theme.ThemeUtil", 1, "initTheme,userThemeId=" + str + ",engine currentThemeId=" + (String)localObject + ", enginePath=" + paramQQAppInterface.getString("themePath"));
-      ThemeSwitcher.a(localQQAppInterface, str, "206", new bdbr(localQQAppInterface));
-      paramQQAppInterface = (bggk)localQQAppInterface.getBusinessHandler(103);
+      ThemeSwitcher.a(localQQAppInterface, str, "206", new beir(localQQAppInterface));
+      paramQQAppInterface = (bhpe)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VAS_MONITOR_HANDLER);
       if (!paramQQAppInterface.b.get()) {
         paramQQAppInterface.a(localQQAppInterface, true);
       }
       return;
-      label278:
+      label280:
       paramQQAppInterface = null;
     }
   }
@@ -1088,7 +1092,7 @@ public class ThemeUtil
     {
       return false;
       arrayOfFloat = new float[3];
-      Color.colorToHSV(paramContext.getResources().getColor(2131166461), arrayOfFloat);
+      Color.colorToHSV(paramContext.getResources().getColor(2131166475), arrayOfFloat);
     } while (arrayOfFloat[2] >= 0.5F);
     return true;
   }
@@ -1116,7 +1120,7 @@ public class ThemeUtil
   
   public static boolean isFixTheme(String paramString)
   {
-    return ("1103".equals(paramString)) || (bbyp.a(paramString));
+    return ("1103".equals(paramString)) || (bdfk.a(paramString));
   }
   
   public static boolean isGoldenTheme()
@@ -1264,7 +1268,7 @@ public class ThemeUtil
         if (isThemeIsAnimate)
         {
           localObject2 = new Bundle();
-          if (bdbm.a((Bundle)localObject2))
+          if (beim.a((Bundle)localObject2))
           {
             bool1 = bool2;
             if (((Bundle)localObject2).getBoolean("dynamic_switch", true))
@@ -1377,7 +1381,7 @@ public class ThemeUtil
     }
     label23:
     for (str = getUserCurrentThemeId(paramAppRuntime);; str = getCurrentThemeId()) {
-      return bbyp.a(str);
+      return bdfk.a(str);
     }
   }
   
@@ -1386,7 +1390,7 @@ public class ThemeUtil
     if (QLog.isColorLevel()) {
       QLog.d("Theme.ThemeUtil", 2, "isSimpleAndOtherThemeSwitch lastThemeId  = " + lastThemeId + ", curThemeId = " + curThemeId);
     }
-    return ((bbyp.a(lastThemeId)) || (bbyp.a(curThemeId))) && (!curThemeId.equals(lastThemeId));
+    return ((bdfk.a(lastThemeId)) || (bdfk.a(curThemeId))) && (!curThemeId.equals(lastThemeId));
   }
   
   public static boolean isSimpleColrThemeStateBarUseWhite(String paramString)
@@ -1398,7 +1402,7 @@ public class ThemeUtil
   {
     if (paramBoolean) {}
     for (String str = getUserCurrentThemeId(null);; str = getCurrentThemeId()) {
-      return bbyp.b(str);
+      return bdfk.b(str);
     }
   }
   
@@ -1418,11 +1422,11 @@ public class ThemeUtil
   
   public static void previewAIOTheme(Context paramContext, String paramString)
   {
-    Object localObject = bgix.a;
-    localObject = ((bgix)localObject).getDir(paramContext, ((bgix)localObject).getScid(99999));
+    Object localObject = bhrs.a;
+    localObject = ((bhrs)localObject).getDir(paramContext, ((bhrs)localObject).getScid(99999));
     if ((android.text.TextUtils.isEmpty(paramString)) || ("clear".equals(paramString)))
     {
-      bdav.a().b("", 0);
+      behu.a().b("", 0);
       return;
     }
     try
@@ -1455,7 +1459,7 @@ public class ThemeUtil
     }
     if (new File((String)localObject).exists())
     {
-      bdav.a().b((String)localObject, 99999);
+      behu.a().b((String)localObject, 99999);
       QQToast.a(paramContext, "AIO主题切换成功", 0).a();
       return;
     }
@@ -1463,17 +1467,17 @@ public class ThemeUtil
   
   public static void previewPlayerSkin(Context paramContext, String paramString)
   {
-    bgiw localbgiw = bgiw.a;
-    paramContext = localbgiw.getDir(paramContext, localbgiw.getScid(99999));
+    bhrr localbhrr = bhrr.a;
+    paramContext = localbhrr.getDir(paramContext, localbhrr.getScid(99999));
     if ((android.text.TextUtils.isEmpty(paramString)) || ("clear".equals(paramString)))
     {
-      bday.a().a("", 0);
+      behx.a().a("", 0);
       return;
     }
     try
     {
       FileUtils.uncompressZip(paramString, paramContext, false);
-      bday.a().a(paramContext, 99999);
+      behx.a().a(paramContext, 99999);
       return;
     }
     catch (IOException paramContext)
@@ -1770,7 +1774,7 @@ public class ThemeUtil
     }
     try
     {
-      bghq.b(Integer.parseInt(paramIntent));
+      bhql.b(Integer.parseInt(paramIntent));
       return true;
     }
     catch (NumberFormatException paramIntent)
@@ -1792,7 +1796,7 @@ public class ThemeUtil
       }
       localObject = "/storage/emulated/0/tencent/skin/effect" + "/" + System.currentTimeMillis();
       FileUtils.uncompressZip(paramString2, (String)localObject, false);
-      aezp.a(paramContext, paramString1, null, (String)localObject + "/aioImage");
+      afrb.a(paramContext, paramString1, null, (String)localObject + "/aioImage");
       paramContext = paramQQAppInterface.getHandler(ChatActivity.class);
       if (paramContext != null) {
         paramContext.sendMessage(paramContext.obtainMessage(60, new BitmapDrawable()));

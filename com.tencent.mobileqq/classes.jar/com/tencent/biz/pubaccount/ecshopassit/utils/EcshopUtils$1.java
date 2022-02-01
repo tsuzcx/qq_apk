@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.ecshopassit.utils;
 
-import abkw;
-import abwp;
-import bcgw;
+import acam;
+import acmw;
+import bdnu;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import ofx;
-import ohm;
+import onq;
+import opg;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
@@ -53,12 +53,12 @@ public final class EcshopUtils$1
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(this.jdField_a_of_type_JavaLangString, 1008, false);
     return;
     localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMsgForMsgTab(this.jdField_a_of_type_JavaLangString, 1008);
-    localObject3 = ohm.a((MessageRecord)localObject1);
-    if ((localObject3 != null) && (((bcgw)localObject3).c != 100))
+    localObject3 = opg.a((MessageRecord)localObject1);
+    if ((localObject3 != null) && (((bdnu)localObject3).c != 100))
     {
-      localObject1 = ofx.a((MessageRecord)localObject1);
+      localObject1 = onq.a((MessageRecord)localObject1);
       if (localObject1 != null) {
-        abkw.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
+        acam.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
       }
     }
     while ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade() != null))
@@ -67,12 +67,12 @@ public final class EcshopUtils$1
       return;
       if ((localObject1 instanceof MessageForArkApp))
       {
-        localObject3 = ohm.a((MessageRecord)localObject1);
+        localObject3 = opg.a((MessageRecord)localObject1);
         if ((localObject3 != null) && (String.valueOf(1).equals(((JSONObject)localObject3).optString("action_type"))))
         {
-          localObject1 = ofx.a((MessageRecord)localObject1);
+          localObject1 = onq.a((MessageRecord)localObject1);
           if (localObject1 != null) {
-            abkw.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
+            acam.a().a(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1));
           }
         }
       }

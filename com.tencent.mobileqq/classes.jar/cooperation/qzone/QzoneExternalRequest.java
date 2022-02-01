@@ -2,7 +2,7 @@ package cooperation.qzone;
 
 import QMF_PROTOCAL.RetryInfo;
 import android.text.TextUtils;
-import bgau;
+import bhjl;
 import com.qq.jce.wup.UniAttribute;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
@@ -46,7 +46,7 @@ public abstract class QzoneExternalRequest
     localObject1 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, localRetryInfo);
     localObject2 = getEncodedUniParameter();
     if (localObject2 != null) {
-      return bgau.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
+      return bhjl.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
     }
     return null;
   }

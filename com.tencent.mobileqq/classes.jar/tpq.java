@@ -1,56 +1,26 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/webarticle/RIJWebArticleReportUtil$ReportR5Builder;", "", "()V", "r5", "Lorg/json/JSONObject;", "getR5", "()Lorg/json/JSONObject;", "addString", "key", "", "value", "build", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tpq
+public class tpq
+  implements tpr
 {
-  @NotNull
-  private final JSONObject a = new JSONObject();
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public tpq()
+  public tpq(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
   {
-    JSONObject localJSONObject = this.a;
-    if (tpr.a.b())
-    {
-      str = "1";
-      localJSONObject.put("param_webviewPoolReuse", str);
-      localJSONObject = this.a;
-      if (!tpr.a.c()) {
-        break label72;
-      }
-    }
-    label72:
-    for (String str = "1";; str = "0")
-    {
-      localJSONObject.put("param_useVasSonic", str);
-      return;
-      str = "0";
-      break;
-    }
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  @NotNull
-  public final String a()
+  public void a(int paramInt1, int paramInt2)
   {
-    String str = this.a.toString();
-    Intrinsics.checkExpressionValueIsNotNull(str, "r5.toString()");
-    return str;
-  }
-  
-  @NotNull
-  public final tpq a(@NotNull String paramString1, @NotNull String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "key");
-    Intrinsics.checkParameterIsNotNull(paramString2, "value");
-    this.a.put(paramString1, paramString2);
-    return this;
+    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView) + this.jdField_a_of_type_Int);
+    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView) + this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tpq
  * JD-Core Version:    0.7.0.1
  */

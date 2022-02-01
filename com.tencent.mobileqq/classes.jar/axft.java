@@ -1,9 +1,6 @@
-public class axft
-  extends axfu
+public abstract interface axft
 {
-  public int a;
-  public String a;
-  public int b;
+  public abstract void a(int paramInt);
 }
 
 

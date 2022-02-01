@@ -1,29 +1,46 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.util.LruCache;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.profilecard.bussiness.circle.ProfileCircleComponent.FeedVsRspCallBack.1;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import java.lang.ref.WeakReference;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class baal
-  implements INetEngine.INetEngineListener
+public class baal
+  implements VSDispatchObserver.onVSRspCallBack<FeedCloudRead.StGetMainPageRsp>
 {
-  baal(baah parambaah) {}
+  private WeakReference<baai> a;
   
-  public void onResp(NetResp paramNetResp)
+  baal(baai parambaai)
   {
-    FilterDesc localFilterDesc = (FilterDesc)paramNetResp.mReq.getUserData();
-    if (paramNetResp.mResult != 0)
-    {
-      lba.f("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + paramNetResp.mErrCode + ", errorMsg: " + paramNetResp.mErrDesc + ", file: " + localFilterDesc.iconurl);
-      return;
-    }
-    if ((baah.a(this.a).decrementAndGet() == 0) && (baah.a(this.a) != null)) {
-      baah.a(this.a).a(true);
-    }
-    lba.f("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.iconurl);
+    this.a = new WeakReference(parambaai);
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
+  {
+    paramVSBaseRequest = (baai)this.a.get();
+    if (paramVSBaseRequest == null) {}
+    do
+    {
+      do
+      {
+        return;
+        baai.a(paramVSBaseRequest).set(false);
+      } while (paramStGetMainPageRsp == null);
+      paramString = paramStGetMainPageRsp.vecFeed.get();
+      baai.a(paramVSBaseRequest, paramStGetMainPageRsp);
+      if (((azrb)baai.a(paramVSBaseRequest)).a != null) {
+        baai.a().put(((azrb)baai.b(paramVSBaseRequest)).a.uin, new baam(paramStGetMainPageRsp, System.currentTimeMillis()));
+      }
+    } while ((paramString == null) || (paramString.size() <= 0));
+    baai.a(paramVSBaseRequest, paramString);
+    baai.a(paramVSBaseRequest).post(new ProfileCircleComponent.FeedVsRspCallBack.1(this, paramVSBaseRequest));
+    QLog.d("ProfileCircleComponent", 4, "makeOrRefreshQQCircle onResponse success");
+  }
 }
 
 

@@ -1,57 +1,22 @@
 import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.LayoutParams;
+import java.util.Comparator;
 
 public class xjj
-  extends xqa
+  implements Comparator<View>
 {
-  public xjj(xjg paramxjg) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
+  public int a(View paramView1, View paramView2)
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(xjg.a(this.a)).size())) {}
-    do
+    paramView1 = (XViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (XViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
     {
-      do
-      {
-        do
-        {
-          return;
-          paramObject = (CommentEntry)this.a.a.a(xjg.a(this.a)).get(paramInt);
-          switch (paramView.getId())
-          {
-          default: 
-            return;
-          }
-        } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
-        vpl.a(paramView.getContext(), 12, paramObject.authorUnionId);
-        return;
-      } while (xjg.a(this.a) == null);
-      xjg.a(this.a).a(paramObject, paramInt);
-      return;
-    } while (xjg.a(this.a) == null);
-    xjg.a(this.a).H_();
-  }
-  
-  public void b(int paramInt, View paramView, Object paramObject, xsh paramxsh)
-  {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(xjg.a(this.a)).size())) {}
-    do
-    {
-      do
-      {
-        return;
-        paramObject = (CommentEntry)this.a.a.a(xjg.a(this.a)).get(paramInt);
-        switch (paramView.getId())
-        {
-        default: 
-          return;
-        }
-      } while (xjg.a(this.a) == null);
-      xjg.a(this.a).b(paramObject, paramInt);
-      return;
-    } while (xjg.a(this.a) == null);
-    xjg.a(this.a).H_();
+      if (paramView1.a) {
+        return 1;
+      }
+      return -1;
+    }
+    return paramView1.b - paramView2.b;
   }
 }
 

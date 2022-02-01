@@ -6,7 +6,7 @@ import android.opengl.Matrix;
 import com.tencent.mobileqq.shortvideo.panoramicvideo.GL.GLPassThroughProgram;
 import com.tencent.mobileqq.shortvideo.panoramicvideo.GL.TextureUtil;
 import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Utils.OrientationHelper;
+import com.tencent.mobileqq.shortvideo.panoramicvideo.utils.OrientationHelper;
 
 public class SphereTo2DRenderObj
   extends BaseRenderObj
@@ -106,7 +106,7 @@ public class SphereTo2DRenderObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.SphereTo2DRenderObj
  * JD-Core Version:    0.7.0.1
  */

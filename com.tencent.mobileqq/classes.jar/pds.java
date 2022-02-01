@@ -1,50 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class pds
-  implements AladdinConfigHandler
+class pds
+  extends ClickableSpan
 {
-  private static void a(int paramInt)
+  pds(pdp parampdp, SubCommentData paramSubCommentData) {}
+  
+  public void onClick(View paramView)
   {
-    QLog.d("WormholeConfigHandler", 0, "update wormhole value: " + paramInt);
-    bkwm.a("wormhole_open", Integer.valueOf(paramInt));
+    pbq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
+    paramView = new paa(this.jdField_a_of_type_Pdp).a().a();
+    olh.a(null, pbq.a(this.jdField_a_of_type_Pdp.a), "0X800955B", "0X800955B", 0, 0, String.valueOf(this.jdField_a_of_type_Pdp.a.mArticleID), String.valueOf(this.jdField_a_of_type_Pdp.a.mAlgorithmID), this.jdField_a_of_type_Pdp.a.innerUniqueID, paramView, false);
   }
   
-  public static boolean a()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return ((Integer)bkwm.a("wormhole_open", Integer.valueOf(0))).intValue() == 1;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("WormholeConfigHandler", 0, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    try
-    {
-      paramString = pbt.a(paramString);
-      Iterator localIterator = paramString.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        String str2 = (String)paramString.get(str1);
-        if (TextUtils.equals(str1, "open")) {
-          a(Integer.parseInt(str2));
-        }
-      }
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.d("WormholeConfigHandler", 0, "parse wormhole error: " + paramString.getMessage());
-    }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    a(0);
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

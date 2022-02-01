@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.5.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ajmb
-  implements DialogInterface.OnClickListener
+  implements ThreadExcutor.IThreadListener
 {
-  public ajmb(BindVerifyActivity paramBindVerifyActivity) {}
+  public ajmb(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(0);
-    this.a.finish();
+    ThreadManager.getUIHandler().post(new PublicAccountFragment.5.1(this));
   }
+  
+  public void onPreRun() {}
 }
 
 

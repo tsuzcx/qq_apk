@@ -1,9 +1,18 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akdc
+class akdc
+  implements View.OnClickListener
 {
-  public static final IRedPacket a = new RedPacketManager();
+  akdc(akda paramakda) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -6,13 +6,13 @@ import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bfur;
+import bhdj;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
-import msq;
-import msr;
-import mss;
+import mtn;
+import mto;
+import mtp;
 
 public class PopupDialogQQSide
   extends PublicBaseFragment
@@ -40,19 +40,19 @@ public class PopupDialogQQSide
     boolean bool1 = ((Bundle)localObject1).getBoolean("leftBtnVisiable", true);
     boolean bool2 = ((Bundle)localObject1).getBoolean("rightBtnVisiable", true);
     a();
-    localObject1 = new msq(this, (ResultReceiver)localObject2);
-    localObject2 = new msr(this, (ResultReceiver)localObject2);
+    localObject1 = new mtn(this, (ResultReceiver)localObject2);
+    localObject2 = new mto(this, (ResultReceiver)localObject2);
     if (i == 0) {
-      i = 2131719509;
+      i = 2131719961;
     }
     for (;;)
     {
       if (j == 0) {
-        j = 2131719509;
+        j = 2131719961;
       }
       for (;;)
       {
-        QQCustomDialog localQQCustomDialog = bfur.a(getActivity(), k);
+        QQCustomDialog localQQCustomDialog = bhdj.a(getActivity(), k);
         localQQCustomDialog.setMessage(str2);
         localQQCustomDialog.setTitle(str1);
         if (bool1) {
@@ -61,7 +61,7 @@ public class PopupDialogQQSide
         if (bool2) {
           localQQCustomDialog.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
         }
-        localQQCustomDialog.setOnDismissListener(new mss(this));
+        localQQCustomDialog.setOnDismissListener(new mtp(this));
         localQQCustomDialog.setCancelable(true);
         localQQCustomDialog.show();
         this.a = localQQCustomDialog;

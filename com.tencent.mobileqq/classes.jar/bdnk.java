@@ -1,135 +1,59 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
-
-class bdnk
-  extends BaseAdapter
+public class bdnk
 {
   private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bdni jdField_a_of_type_Bdni;
-  private List<bdnl> jdField_a_of_type_JavaUtilList;
-  private List<bdnl> b;
+  private short jdField_a_of_type_Short;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private boolean b;
   
-  public bdnk(Context paramContext)
+  bdnk(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.b = new ArrayList();
-    this.jdField_a_of_type_Bdni = new bdni(this);
+    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
   }
   
-  private void a()
+  public int a()
   {
-    this.b.clear();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      if (this.jdField_a_of_type_Int != i) {
-        this.b.add(this.jdField_a_of_type_JavaUtilList.get(i));
-      }
-      i += 1;
-    }
+    return this.jdField_a_of_type_Int;
   }
   
-  private void a(int paramInt)
+  public short a()
+  {
+    return this.jdField_a_of_type_Short;
+  }
+  
+  public void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    a();
-    notifyDataSetChanged();
   }
   
-  private void a(View paramView)
+  public void a(short paramShort)
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(ViewUtils.dip2px(17.0F));
-    localGradientDrawable.setColor(Color.parseColor("#FBFBFB"));
-    localGradientDrawable.setStroke(1, Color.parseColor("#E7E7EE"));
-    paramView.setBackgroundDrawable(localGradientDrawable);
+    this.jdField_a_of_type_Short = paramShort;
   }
   
-  public void a(bdnj parambdnj)
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bdni != null) {
-      this.jdField_a_of_type_Bdni.a(parambdnj);
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(List<bdnl> paramList)
+  public boolean a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d(bdng.a(), 2, new Object[] { "mPrefixList size: ", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
-    }
-    this.jdField_a_of_type_Int = 0;
-    a();
-    notifyDataSetChanged();
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public int getCount()
+  public byte[] a()
   {
-    if (this.b != null) {
-      return this.b.size();
-    }
-    return 0;
+    return this.jdField_a_of_type_ArrayOfByte;
   }
   
-  public Object getItem(int paramInt)
+  public void b(boolean paramBoolean)
   {
-    return this.b.get(paramInt);
+    this.b = paramBoolean;
   }
   
-  public long getItemId(int paramInt)
+  public boolean b()
   {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = new bdnm(null);
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559919, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131372899));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372901));
-      localView.setTag(paramView);
-      localObject = (bdnl)this.b.get(paramInt);
-      if (localObject != null) {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((bdnl)localObject).a + ((bdnl)localObject).b + ((bdnl)localObject).c);
-      }
-      a(paramView.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      if (paramInt >= this.jdField_a_of_type_Int) {
-        break label198;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt));
-    }
-    for (;;)
-    {
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_Bdni);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (bdnm)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label198:
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt + 1));
-    }
+    return this.b;
   }
 }
 

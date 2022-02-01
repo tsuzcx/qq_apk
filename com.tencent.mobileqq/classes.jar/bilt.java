@@ -1,18 +1,8 @@
+import android.view.View;
+
 public abstract interface bilt
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, Throwable paramThrowable);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public abstract void a(View paramView);
 }
 
 

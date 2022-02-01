@@ -1,23 +1,31 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
 
-class aise
-  implements aisb
+public class aise
+  extends anxj
 {
-  aise(aisd paramaisd) {}
+  public aise(AddContactsView paramAddContactsView) {}
   
-  public void a(String paramString, int paramInt)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    ((amvo)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).c(paramString);
-    if (paramInt == 0)
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString = paramLBSInfo.a();
+    }
+    if ((this.a.jdField_a_of_type_ArrayOfJavaLangString == null) || (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 4)) {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "-1", "-1", "-1", "-1" };
+    }
+    if (this.a.c) {
+      this.a.f();
+    }
+    if (!"-1".equals(this.a.jdField_a_of_type_ArrayOfJavaLangString[0]))
     {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      return;
+      this.a.jdField_a_of_type_ArrayOfJavaLangString[3] = "0";
+      this.a.jdField_a_of_type_Anrz.a(this.a.jdField_a_of_type_ArrayOfJavaLangString);
     }
-    if (this.a.jdField_a_of_type_Airh != null) {
-      this.a.jdField_a_of_type_Airh.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", autoReqLocation : " + this.a.c + ", locationCodes[0] : " + this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
     }
-    aisd.a(this.a);
   }
 }
 

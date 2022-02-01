@@ -1,16 +1,22 @@
-import com.tencent.ad.tangram.image.AdImageViewAdapter.Callback;
-import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
-import java.lang.ref.WeakReference;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.UploadTask;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
 
 class abka
-  implements abtz
+  implements EncodeVideoTask.ResultListener
 {
-  abka(abjy paramabjy, AdImageViewAdapter.Params paramParams) {}
+  abka(abjz paramabjz) {}
   
-  public void a(boolean paramBoolean)
+  public void onEncodeSuccess(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
   {
-    ((AdImageViewAdapter.Callback)this.jdField_a_of_type_ComTencentAdTangramImageAdImageViewAdapter$Params.callback.get()).onStopLoad(paramBoolean);
+    if (abjz.a(this.a) != null)
+    {
+      abjz.a(this.a).md5 = HexUtil.bytes2HexStr(paramArrayOfByte1);
+      new ShortVideoRealItemBuilder.UploadTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, abjz.a(this.a), paramString1, this.a).run();
+    }
   }
+  
+  public void onError(int paramInt) {}
 }
 
 

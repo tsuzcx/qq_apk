@@ -1,22 +1,11 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-
-public class zml
-  implements zns
+final class zml
+  extends zmg
 {
-  public zml(BlankRecommendItemView paramBlankRecommendItemView, CertifiedAccountMeta.StUser paramStUser) {}
+  zml(zms paramzms) {}
   
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
+  public void a()
   {
-    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get();
-    if (paramBoolean) {}
-    for (paramStFeed = "blank_content_follow";; paramStFeed = "blank_content_unfollow")
-    {
-      zxp.b(str, "auth_follow", paramStFeed, 0, 0, new String[] { "", BlankRecommendItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoBlankRecommendItemView) + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get(), "" });
-      return;
-    }
+    this.a.a();
   }
 }
 

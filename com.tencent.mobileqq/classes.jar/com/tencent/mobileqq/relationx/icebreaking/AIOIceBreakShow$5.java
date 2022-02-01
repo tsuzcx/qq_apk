@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
-import azwy;
+import bbdh;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class AIOIceBreakShow$5
   implements Runnable
@@ -12,7 +13,7 @@ class AIOIceBreakShow$5
   
   public void run()
   {
-    ((azwy)AIOIceBreakShow.a(this.this$0).app.getManager(285)).i(AIOIceBreakShow.a(this.this$0).sessionInfo.curFriendUin);
+    ((bbdh)AIOIceBreakShow.a(this.this$0).app.getManager(QQManagerFactory.ICE_BREAKING_MNG)).i(AIOIceBreakShow.a(this.this$0).sessionInfo.curFriendUin);
   }
 }
 

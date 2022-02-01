@@ -1,58 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.download.ReadInJoyDownloader.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import com.tencent.tmdownloader.TMAssistantDownloadManager;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public class pib
 {
-  private static volatile pib jdField_a_of_type_Pib;
-  private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(BaseApplication.getContext()).getDownloadSDKClient("ReadInJoyDownloader");
-  private final pia jdField_a_of_type_Pia = new pia();
-  
-  private pib()
+  public static Bundle a(Bundle paramBundle, AdvertisementInfo paramAdvertisementInfo)
   {
-    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_Pia);
-  }
-  
-  public static pib a()
-  {
-    if (jdField_a_of_type_Pib != null) {
-      return jdField_a_of_type_Pib;
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
-    try
-    {
-      if (jdField_a_of_type_Pib == null) {
-        jdField_a_of_type_Pib = new pib();
-      }
-      return jdField_a_of_type_Pib;
-    }
-    finally {}
-  }
-  
-  private void a(pic parampic)
-  {
-    ThreadManager.getSubThreadHandler().postDelayed(new ReadInJoyDownloader.1(this, parampic), 15000L);
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo)
-  {
-    QLog.d("ReadInJoyDownloader", 2, "[startDownload] ");
-    bidn.a().a(paramDownloadInfo);
-    a(new pic(paramDownloadInfo, null));
-  }
-  
-  public void a(phz paramphz)
-  {
-    this.jdField_a_of_type_Pia.a(paramphz);
-  }
-  
-  public void b(phz paramphz)
-  {
-    this.jdField_a_of_type_Pia.b(paramphz);
+    localBundle.putString("param_ad_app_info_trace_id", paramAdvertisementInfo.mAdTraceId);
+    localBundle.putLong("param_ad_app_info_pull_time", paramAdvertisementInfo.mAdFetchTime);
+    localBundle.putString("param_ad_app_info_view_id", paramAdvertisementInfo.mAdViewId);
+    localBundle.putLong("param_ad_app_info_pos_id", paramAdvertisementInfo.mAdPosID);
+    localBundle.putInt("param_ad_app_info_kd_pos", paramAdvertisementInfo.mAdKdPos);
+    localBundle.putString("param_ad_app_info_product_id", paramAdvertisementInfo.mAdProductId);
+    localBundle.putInt("param_ad_app_info_product_type", paramAdvertisementInfo.mAdProductType);
+    localBundle.putString("param_ad_app_info_ap_url", paramAdvertisementInfo.mAdApurl);
+    localBundle.putString("param_ad_info_corporatelogo", paramAdvertisementInfo.mAdCorporateLogo);
+    localBundle.putString("param_ad_info_corporatename", paramAdvertisementInfo.mAdCorporationName);
+    localBundle.putString("param_ad_info_adtext", paramAdvertisementInfo.mAdTxt);
+    localBundle.putParcelable("param_ad_info", paramAdvertisementInfo);
+    localBundle.putParcelableArrayList("param_ad_info_dislike", paramAdvertisementInfo.mAdDislikeInfos);
+    return localBundle;
   }
 }
 

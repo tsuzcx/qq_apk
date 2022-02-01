@@ -1,36 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class adsp
-  implements DialogInterface.OnClickListener
+  implements bkzq
 {
-  public adsp(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
+  public adsp(ChatSettingForTroop paramChatSettingForTroop, bkzi parambkzi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      if (this.jdField_a_of_type_Boolean != bool) {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
-      }
-      label39:
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-      return;
     }
-    catch (Exception paramDialogInterface)
+    for (;;)
     {
-      break label39;
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      ChatSettingForTroop.q(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+      bhbu.a("Grp_set_new", "grpData_admin", "search_upgrade_actionsheet_click set", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsp
  * JD-Core Version:    0.7.0.1
  */

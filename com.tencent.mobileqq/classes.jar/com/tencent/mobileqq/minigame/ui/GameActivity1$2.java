@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import apom;
+import aqrq;
 
 class GameActivity1$2
-  implements apom
+  implements aqrq
 {
   GameActivity1$2(GameActivity1 paramGameActivity1) {}
   

@@ -1,157 +1,172 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import KQQ.RespBatchProcess;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import friendlist.GetMultiTroopInfoResp;
+import friendlist.GetTroopAppointRemarkResp;
+import friendlist.GetTroopListRespV2;
+import friendlist.GetTroopMemberListResp;
+import friendlist.GetTroopRemarkResp;
+import friendlist.ModifyGroupCardResp;
+import friendlist.ModifyGroupInfoResp;
 
 public class bcuv
-  extends bcup
 {
-  public bcuv(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  private final <T> T a(byte[] paramArrayOfByte, String paramString, T paramT)
   {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
+    UniPacket localUniPacket = new UniPacket(true);
+    try
+    {
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      return localUniPacket.getByClass(paramString, paramT);
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      return null;
+    }
+    catch (RuntimeException paramArrayOfByte) {}
+    return null;
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    Object localObject3;
-    String str2;
-    Object localObject1;
-    Object localObject2;
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null) && (this.jdField_a_of_type_Bcum != null))
+    return (GetMultiTroopInfoResp)a(paramFromServiceMsg.getWupBuffer(), "GMTIRESP", new GetMultiTroopInfoResp());
+  }
+  
+  private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramFromServiceMsg = (GetTroopListRespV2)a(paramFromServiceMsg.getWupBuffer(), "GetTroopListRespV2", new GetTroopListRespV2());
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.result != 1))
     {
-      localObject3 = bcua.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      str2 = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.n;
-      localObject1 = "";
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int != 6000)
+      paramToServiceMsg = paramFromServiceMsg;
+      if (paramFromServiceMsg.vecTroopList == null)
       {
-        localObject2 = localObject3;
-        if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int != 6003) {}
-      }
-      else
-      {
-        localObject2 = "";
-        localObject1 = localObject3;
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label291;
-      }
-    }
-    for (;;)
-    {
-      long l2 = 0L;
-      int i;
-      long l1;
-      long l3;
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int == 1)
-      {
-        i = 3;
-        l1 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString).longValue();
-        l2 = 0L;
-        l3 = 0L;
-      }
-      for (;;)
-      {
-        label122:
-        paramQQAppInterface = new JSONObject();
-        for (;;)
+        paramToServiceMsg = paramFromServiceMsg;
+        if (paramFromServiceMsg.vecTroopListDel == null)
         {
-          try
+          paramToServiceMsg = paramFromServiceMsg;
+          if (paramFromServiceMsg.vecTroopRank == null)
           {
-            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              continue;
-            }
-            paramQQAppInterface.put("fileid", localObject1);
-            paramQQAppInterface.put("filename", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
-            paramQQAppInterface.put("filesize", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d);
-            paramQQAppInterface.put("filetype", i);
-            paramQQAppInterface.put("businesstype", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_Int);
-            paramQQAppInterface.put("groupuin", l1);
-            paramQQAppInterface.put("senderuin", l3);
-            paramQQAppInterface.put("discussuin", l2);
-            if (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.h) {
-              continue;
-            }
-            paramQQAppInterface.put("ownertype", 1);
+            paramToServiceMsg = paramFromServiceMsg;
+            if (paramFromServiceMsg.vecFavGroup != null) {}
           }
-          catch (JSONException localJSONException)
-          {
-            label291:
-            QLog.e("TeamWorkFileImportJobForFile2Form", 2, "put fileid exception: " + localJSONException.toString());
-            continue;
-            if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g != 0) {
-              continue;
-            }
-            this.jdField_a_of_type_Bcum.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-            this.jdField_a_of_type_Bcum.b(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-            return;
-            this.jdField_a_of_type_Bcum.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-            return;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = true;
-          if ((!TextUtils.isEmpty((CharSequence)localObject2)) || (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g != 0)) {
-            continue;
-          }
-          this.jdField_a_of_type_Bcum.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-          this.jdField_a_of_type_Bcum.c(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-          return;
-          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label596;
-          }
-          if (TextUtils.isEmpty(str2))
-          {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c;
-            localObject3 = new File((String)localObject1);
-            if ((localObject3 == null) || (!((File)localObject3).exists())) {
-              break label596;
-            }
-            localObject1 = bcvf.a((String)localObject1);
-            break;
-          }
-          localObject1 = str2;
-          break;
-          if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int == 3000)
-          {
-            i = 2;
-            l2 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString).longValue();
-            l3 = 0L;
-            l1 = 0L;
-            break label122;
-          }
-          i = 1;
-          localObject3 = paramQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
-          l1 = l2;
-          if (localObject3 != null)
-          {
-            l1 = l2;
-            if ((localObject3 instanceof MessageForFile)) {
-              l1 = Long.valueOf(((MessageRecord)localObject3).senderuin).longValue();
-            }
-          }
-          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label585;
-          }
-          l3 = Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue();
-          l2 = 0L;
-          l1 = 0L;
-          break label122;
-          localObject1 = localObject2;
-          continue;
-          paramQQAppInterface.put("ownertype", 2);
         }
-        label585:
-        l2 = 0L;
-        l3 = l1;
-        l1 = 0L;
       }
-      label596:
-      String str1 = "";
     }
+    else
+    {
+      paramToServiceMsg = null;
+    }
+    return paramToServiceMsg;
+  }
+  
+  private Object d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    paramFromServiceMsg = (GetTroopRemarkResp)a(paramFromServiceMsg.getWupBuffer(), "GTRRESP", new GetTroopRemarkResp());
+    if (paramFromServiceMsg == null) {
+      paramToServiceMsg = null;
+    }
+    do
+    {
+      return paramToServiceMsg;
+      paramToServiceMsg = paramFromServiceMsg;
+    } while (paramFromServiceMsg.result != 1);
+    return null;
+  }
+  
+  private Object e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    try
+    {
+      paramToServiceMsg = (GetTroopMemberListResp)a(paramFromServiceMsg.getWupBuffer(), "GTMLRESP", new GetTroopMemberListResp());
+      paramFromServiceMsg = paramToServiceMsg;
+      StringBuilder localStringBuilder;
+      label74:
+      return paramFromServiceMsg;
+    }
+    catch (OutOfMemoryError paramToServiceMsg)
+    {
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          return paramFromServiceMsg;
+        }
+        localStringBuilder = new StringBuilder().append("FriendListService.decodeTroopGetMemberList");
+        if (paramToServiceMsg == null) {}
+        for (paramFromServiceMsg = "resp == null";; paramFromServiceMsg = "resp != null")
+        {
+          QLog.d("get_troop_member", 2, paramFromServiceMsg);
+          return paramToServiceMsg;
+        }
+        paramToServiceMsg = paramToServiceMsg;
+        paramToServiceMsg = null;
+      }
+      catch (OutOfMemoryError paramFromServiceMsg)
+      {
+        break label74;
+      }
+      paramFromServiceMsg = paramToServiceMsg;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("TroopReceiver", 2, "decodeTroopGetMemberList OOM");
+        return paramToServiceMsg;
+      }
+    }
+  }
+  
+  private Object f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (ModifyGroupCardResp)a(paramFromServiceMsg.getWupBuffer(), "MGCRESP", new ModifyGroupCardResp());
+  }
+  
+  private Object g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (ModifyGroupInfoResp)a(paramFromServiceMsg.getWupBuffer(), "MGIRESP", new ModifyGroupInfoResp());
+  }
+  
+  private Object h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (GetTroopAppointRemarkResp)a(paramFromServiceMsg.getWupBuffer(), "GTARESP", new GetTroopAppointRemarkResp());
+  }
+  
+  private Object i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (RespBatchProcess)a(paramFromServiceMsg.getWupBuffer(), "RespBatchProcess", new RespBatchProcess());
+  }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopReceiver", 2, "~~~decode cmd: " + str);
+    }
+    if ("friendlist.GetMultiTroopInfoReq".equalsIgnoreCase(str)) {
+      return b(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("friendlist.GetTroopListReqV2".equalsIgnoreCase(str)) {
+      return c(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("friendlist.getTroopRemark".equalsIgnoreCase(str)) {
+      return d(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("friendlist.getTroopMemberList".equalsIgnoreCase(str)) {
+      return e(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("friendlist.ModifyGroupCardReq".equalsIgnoreCase(str)) {
+      return f(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("friendlist.ModifyGroupInfoReq".equalsIgnoreCase(str)) {
+      return g(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("friendlist.GetTroopAppointRemarkReq".equalsIgnoreCase(str)) {
+      return h(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("ProfileService.ReqBatchProcess".equalsIgnoreCase(str)) {
+      return i(paramToServiceMsg, paramFromServiceMsg);
+    }
+    return null;
   }
 }
 

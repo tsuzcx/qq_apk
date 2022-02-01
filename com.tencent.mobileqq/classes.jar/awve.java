@@ -1,24 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.mediafocus.MediaFocusController;
+import com.tencent.mobileqq.mediafocus.MediaFocusController.1;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.Stack;
 
-class awve
-  implements DialogInterface.OnClickListener
+public class awve
+  implements EIPCResultCallback
 {
-  awve(awvd paramawvd) {}
+  public awve(MediaFocusController.1 param1, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
+    boolean bool1;
+    boolean bool2;
+    long l;
+    if (paramEIPCResult.data != null)
     {
-      QQToast.a(this.a.a.jdField_a_of_type_AndroidViewView.getContext(), 1, amtj.a(2131707366), 0).a();
-      return;
+      bool1 = paramEIPCResult.data.getBoolean("isProcessRunning");
+      bool2 = paramEIPCResult.data.getBoolean("isItemExist");
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+      if ((!bool1) || (!bool2)) {
+        break label75;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged not the same process but existed, cost:", Long.valueOf(l) });
+      }
     }
-    ((axen)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.e, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j, new awvf(this));
+    return;
+    label75:
+    MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).pop();
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged isProcessRun:", Boolean.valueOf(bool1), " ,isItmeExist:", Boolean.valueOf(bool2), " ,stack:", Integer.valueOf(MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).size()), " ,cost:", Long.valueOf(l) });
+    }
+    MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0, this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.a);
   }
 }
 

@@ -1,27 +1,28 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import akbx;
+import akxq;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import mqq.app.AppRuntime;
 
 public class QWalletIPCModule$1
   implements Runnable
 {
-  public QWalletIPCModule$1(akbx paramakbx, Bundle paramBundle, int paramInt, AppRuntime paramAppRuntime) {}
+  public QWalletIPCModule$1(akxq paramakxq, Bundle paramBundle, int paramInt, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
     String str = this.jdField_a_of_type_AndroidOsBundle.getString("id");
     QWalletIPCModule.1.1 local1 = new QWalletIPCModule.1.1(this, null);
-    PreloadManager localPreloadManager = (PreloadManager)((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getManager(151);
+    PreloadManager localPreloadManager = (PreloadManager)((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getManager(QQManagerFactory.PRELOAD_MANAGER);
     if (localPreloadManager != null)
     {
       localPreloadManager.a(str, local1);
       return;
     }
-    local1.send(-7, null);
+    local1.send(-7, new Bundle());
   }
 }
 

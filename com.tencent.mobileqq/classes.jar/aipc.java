@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
 
-public class aipc
-  extends amsu
+public final class aipc
+  implements Parcelable.Creator<ZhituResponse>
 {
-  public aipc(DeviceFragment paramDeviceFragment) {}
-  
-  protected void onPullIpad()
+  public ZhituResponse a(Parcel paramParcel)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    this.a.a.e();
-    this.a.a.notifyDataSetChanged();
+    return new ZhituResponse(paramParcel);
+  }
+  
+  public ZhituResponse[] a(int paramInt)
+  {
+    return new ZhituResponse[paramInt];
   }
 }
 

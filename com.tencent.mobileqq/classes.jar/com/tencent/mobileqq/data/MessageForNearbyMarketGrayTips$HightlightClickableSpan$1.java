@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import aqri;
+import arut;
 
 public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$1
   implements Runnable
 {
-  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$1(aqri paramaqri) {}
+  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$1(arut paramarut) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.1
  * JD-Core Version:    0.7.0.1
  */

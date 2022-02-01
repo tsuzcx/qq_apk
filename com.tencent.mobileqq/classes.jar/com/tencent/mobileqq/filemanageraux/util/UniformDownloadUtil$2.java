@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanageraux.util;
 
-import atgn;
-import atgq;
+import auku;
+import aukx;
 
 public final class UniformDownloadUtil$2
   implements Runnable
 {
-  public UniformDownloadUtil$2(String paramString, atgq paramatgq) {}
+  public UniformDownloadUtil$2(String paramString, aukx paramaukx) {}
   
   public void run()
   {
-    String str = atgn.a(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Atgq != null) {
-      this.jdField_a_of_type_Atgq.a(str);
+    String str = auku.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Aukx != null) {
+      this.jdField_a_of_type_Aukx.a(str);
     }
   }
 }

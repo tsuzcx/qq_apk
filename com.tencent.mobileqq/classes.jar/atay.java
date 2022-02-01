@@ -1,18 +1,26 @@
-final class atay
-  implements bgoc
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+
+class atay
+  implements audq
 {
-  atay(atar paramatar) {}
+  atay(atav paramatav, WeiYunFileInfo paramWeiYunFileInfo) {}
   
-  public void callback(int paramInt)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if ((paramInt == 1) || (paramInt == 2)) {
-      this.a.a();
-    }
+    FileManagerEntity localFileManagerEntity = auea.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo);
+    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Atav.a).getFileManagerEngine().b(localFileManagerEntity);
+    QfileBaseCloudFileTabView.j(this.jdField_a_of_type_Atav.a).getFileManagerDataCenter().a(localFileManagerEntity);
+    this.jdField_a_of_type_Atav.a.a(localFileManagerEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atay
  * JD-Core Version:    0.7.0.1
  */

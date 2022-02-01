@@ -1,15 +1,18 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.utils.IDetectionInterceptor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bcao
-  implements IDetectionInterceptor
+public class bcao
+  implements View.OnClickListener
 {
-  public boolean ignoreAppEvent(Activity paramActivity)
+  public bcao(MixSearchWebFragment paramMixSearchWebFragment) {}
+  
+  public void onClick(View paramView)
   {
-    QLog.d("DtSdkInitStep", 1, "848QQDT [ignoreAppEvent] activity: " + paramActivity.toString());
-    return paramActivity instanceof QQLSActivity;
+    this.a.a(1);
+    this.a.doOnBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

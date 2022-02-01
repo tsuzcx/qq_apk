@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import aiku;
-import ailu;
+import ajfq;
+import ajgr;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bcef;
-import bcsz;
+import bdla;
+import bdzy;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.recent.TimeManager;
@@ -96,11 +96,11 @@ public class RecentItemTroopNotification
       return;
       super.a(paramQQAppInterface, paramContext);
       if (TextUtils.isEmpty(this.mTitleName)) {
-        this.mTitleName = paramContext.getString(2131690989);
+        this.mTitleName = paramContext.getString(2131691074);
       }
-      this.mUnreadNum = aiku.a(paramQQAppInterface);
-      String str = bcsz.a().a(paramQQAppInterface);
-      localStructMsg = bcsz.a().a();
+      this.mUnreadNum = ajfq.a(paramQQAppInterface);
+      String str = bdzy.a().a(paramQQAppInterface);
+      localStructMsg = bdzy.a().a();
       paramQQAppInterface = paramQQAppInterface.getMessageFacade().getMsgList(AppConstants.TROOP_SYSTEM_MSG_UIN, 0);
       if (paramQQAppInterface == null) {
         break label511;
@@ -122,21 +122,21 @@ public class RecentItemTroopNotification
       if (this.mUnreadNum != 0) {
         break label547;
       }
-      i = ailu.c();
-      this.unDealMsgCountNumFlag = ailu.a(i);
+      i = ajgr.c();
+      this.unDealMsgCountNumFlag = ajgr.a(i);
       if (!this.unDealMsgCountNumFlag) {
         break label557;
       }
-      bcef.b(null, "dc00898", "", "", "0X800B52C", "0X800B52C", 0, 0, "", "", null, null);
+      bdla.b(null, "dc00898", "", "", "0X800B52C", "0X800B52C", 0, 0, "", "", null, null);
       long l = System.currentTimeMillis();
       this.mUnreadNum = i;
-      this.mLastMsg = (paramContext.getString(2131719260) + String.valueOf(this.mUnreadNum) + paramContext.getString(2131719261));
-      ailu.a(true);
-      i = ailu.a() + 1;
-      ailu.a(i);
-      int j = ailu.b() + 1;
-      ailu.b(j);
-      ailu.b(System.currentTimeMillis());
+      this.mLastMsg = (paramContext.getString(2131719681) + String.valueOf(this.mUnreadNum) + paramContext.getString(2131719682));
+      ajgr.a(true);
+      i = ajgr.a() + 1;
+      ajgr.a(i);
+      int j = ajgr.b() + 1;
+      ajgr.b(j);
+      ajgr.b(System.currentTimeMillis());
       if (QLog.isColorLevel())
       {
         QLog.d("RecentItemTroopNotification", 2, new Object[] { "unDealMsgCountNunFlag", "oneWeekCount =", Integer.valueOf(i), "oneDayCount =", Integer.valueOf(j), "mUnreadNum =", Integer.valueOf(this.mUnreadNum) });
@@ -177,7 +177,7 @@ public class RecentItemTroopNotification
       i = 0;
       break label191;
       label557:
-      ailu.a(false);
+      ajgr.a(false);
       break label395;
       if (this.mUnreadNum == 2) {
         paramQQAppInterface.append("有两条未读");

@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.nativePlugins.TroopAlbumPlugin.2.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjah
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bjah(TroopAlbumPlugin.2.1 param1) {}
+  public bjah(AuthorityAccountView paramAuthorityAccountView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    Object localObject = paramView.getTag();
+    if ((localObject != null) && ((localObject instanceof String))) {
+      this.a.b((String)localObject);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

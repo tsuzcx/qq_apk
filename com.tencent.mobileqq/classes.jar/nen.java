@@ -1,22 +1,30 @@
-import com.tencent.avgame.gameroom.stage.StageView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import androidx.annotation.NonNull;
+import com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView;
+import java.util.List;
 
 public class nen
-  implements ncc
+  extends new<neh>
 {
-  public nen(StageView paramStageView) {}
+  private AutoResizeAsyncImageView a;
   
-  public void a(LottieDrawable paramLottieDrawable)
+  public nen(@NonNull View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StageView", 2, "onLoad " + paramLottieDrawable);
-    }
-    if (paramLottieDrawable != null)
+    super(paramView);
+    this.a = ((AutoResizeAsyncImageView)paramView.findViewById(2131363209));
+    a(paramView);
+  }
+  
+  public void a(nfa paramnfa, neh paramneh, int paramInt)
+  {
+    super.a(paramnfa, paramneh, paramInt);
+    if (paramneh == null) {}
+    do
     {
-      this.a.b = paramLottieDrawable;
-      this.a.b.addAnimatorListener(new neo(this));
-    }
+      return;
+      paramnfa = paramneh.a();
+    } while ((paramnfa == null) || (paramnfa.size() <= 0));
+    this.a.a(((nph)paramnfa.get(0)).a);
   }
 }
 

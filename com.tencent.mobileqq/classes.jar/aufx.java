@@ -1,13 +1,14 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.hotchat.anim.HeartLayout;
-
-public abstract interface aufx
+class aufx
+  implements biyc
 {
-  public abstract void a(Animation paramAnimation);
+  aufx(aufu paramaufu) {}
   
-  public abstract void a(HeartLayout paramHeartLayout, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(Animation paramAnimation);
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      this.a.c();
+    }
+  }
 }
 
 

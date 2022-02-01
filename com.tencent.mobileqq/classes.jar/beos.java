@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.together.writetogether.data.EditUserHistory;
 
-final class beos
-  implements DialogInterface.OnClickListener
+public final class beos
+  implements Parcelable.Creator<EditUserHistory>
 {
-  beos(XMediaEditor paramXMediaEditor, List paramList) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public EditUserHistory a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(this.jdField_a_of_type_JavaUtilList);
-    paramDialogInterface.dismiss();
+    return new EditUserHistory(paramParcel);
+  }
+  
+  public EditUserHistory[] a(int paramInt)
+  {
+    return new EditUserHistory[paramInt];
   }
 }
 

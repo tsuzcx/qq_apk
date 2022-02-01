@@ -1,59 +1,35 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 import java.util.List;
+import java.util.Queue;
 
-public class wnj
-  extends BaseAdapter
+class wnj
+  extends SimpleJob<Void>
 {
-  private wnj(VideoCoverListBar paramVideoCoverListBar) {}
-  
-  public String a(int paramInt)
+  wnj(wni paramwni, String paramString, Context paramContext, List paramList)
   {
-    return (String)VideoCoverListBar.a(this.a).get(paramInt);
+    super(paramString);
   }
   
-  public int getCount()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return VideoCoverListBar.a(this.a).size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2131561691, null);
-      paramView = new wnk(this, localView);
-      localView.setTag(paramView);
+    if (!wni.a(this.jdField_a_of_type_Wni, this.jdField_a_of_type_AndroidContentContext)) {
+      QLog.i("MsgTabStoryVideoPreloader", 2, "当前网络状态, 不启动预下载");
     }
-    for (;;)
+    do
     {
-      paramView.a(paramInt);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      wnk localwnk = (wnk)paramView.getTag();
-      localView = paramView;
-      paramView = localwnk;
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 1;
+      return null;
+      QLog.i("MsgTabStoryVideoPreloader", 2, "启动消息TAB节点预加载器");
+      paramJobContext = wni.a(this.jdField_a_of_type_Wni, this.jdField_a_of_type_JavaUtilList);
+    } while ((paramJobContext.isEmpty()) || (!this.jdField_a_of_type_Wni.a()));
+    wni.a(this.jdField_a_of_type_Wni);
+    wni.a(this.jdField_a_of_type_Wni, paramJobContext);
+    this.jdField_a_of_type_Wni.b();
+    return null;
   }
 }
 

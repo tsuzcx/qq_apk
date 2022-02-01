@@ -1,19 +1,40 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aouq
-  implements BusinessObserver
+public class aouq
+  extends aouc
 {
-  aouq(aoul paramaoul) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public aouq(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (!paramBoolean)
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    Object localObject = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("friendUin"));
+    localObject = AddFriendLogicActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, 1, (String)localObject, "", 3001, 11, "", "", null, "", "");
+    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+    return true;
+  }
+  
+  public boolean a()
+  {
+    try
     {
-      ArkAppCenter.c("ArkApp.ArkAppCGI", "doVipReport(), sso request failed");
-      return;
+      boolean bool = C();
+      return bool;
     }
-    ArkAppCenter.b("ArkApp.ArkAppCGI", "doVipReport().server.back=" + paramObject);
+    catch (Exception localException)
+    {
+      QLog.e("OdAddFriendAction", 1, "doAction error: " + localException.getMessage());
+      a("OdAddFriendAction");
+    }
+    return false;
   }
 }
 

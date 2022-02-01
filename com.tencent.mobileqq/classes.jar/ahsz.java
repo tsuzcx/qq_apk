@@ -1,18 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.superplayer.api.SuperPlayerVideoInfo;
+import java.util.ArrayList;
 
-class ahsz
-  implements View.OnClickListener
+public class ahsz
+  implements atmj
 {
-  ahsz(ahsx paramahsx) {}
+  public ahsz(AIOImageProviderService paramAIOImageProviderService, atvt paramatvt, long paramLong, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E", new String[] { String.valueOf(paramInt), paramString }, null, null, -1, null);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void a(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null)
+    {
+      ArrayList localArrayList = paramSuperPlayerVideoInfo.getCookie();
+      Bundle localBundle = new Bundle();
+      localBundle.putString("savepath", paramSuperPlayerVideoInfo.getLocalSavePath());
+      localBundle.putStringArrayList("cookies", localArrayList);
+      localBundle.putString("contextid", this.jdField_a_of_type_Atvt.a());
+      localBundle.putString("fileid", paramSuperPlayerVideoInfo.getFileId());
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Atvt.b(), paramSuperPlayerVideoInfo.getPlayUrls(), null, null, -1, localBundle);
+    }
   }
 }
 

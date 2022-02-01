@@ -1,31 +1,12 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.AVActivity.10.1;
-import com.tencent.av.ui.AVActivity.10.2;
+import java.io.File;
 
 public class mas
-  extends bgqx
 {
-  public mas(AVActivity paramAVActivity) {}
-  
-  public void a()
-  {
-    if (this.a.a != null) {
-      this.a.a.a().postDelayed(new AVActivity.10.1(this), 0L);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.a != null) {
-      this.a.a.a().post(new AVActivity.10.2(this));
-    }
-  }
+  public static String a = lhd.d + "huanlian" + File.separator + "allgray.png";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mas
  * JD-Core Version:    0.7.0.1
  */

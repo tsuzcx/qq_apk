@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/moo" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/mor">
+        <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/mor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:text="@string/wr6" android:fontFamily="PingFangSC-Medium" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/moq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginRight="4.0dip" android:text="@string/wr5" android:layout_toLeftOf="@id/mom" />
+        <ImageView android:id="@id/mom" android:layout_width="7.0dip" android:layout_height="11.0dip" android:layout_marginTop="22.0dip" android:src="@drawable/intimate_relationship_arrow" android:layout_alignParentRight="true" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/mop" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/mor" />
+    </RelativeLayout>
+</merge>

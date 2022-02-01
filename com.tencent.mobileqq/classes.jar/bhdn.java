@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.DrawerFrame;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class bhdn
-  implements View.OnClickListener
+final class bhdn
+  implements DialogInterface.OnClickListener
 {
-  public bhdn(DrawerFrame paramDrawerFrame) {}
+  bhdn(QQCustomDialog paramQQCustomDialog) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhdn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,10 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-
-public class wbj
+public abstract interface wbj
 {
-  public int a;
-  public VideoCollectionItem a;
+  public abstract void a(wbk paramwbk);
   
-  public wbj(int paramInt, VideoCollectionItem paramVideoCollectionItem)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem = paramVideoCollectionItem;
-  }
+  public abstract boolean a();
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("StateVideoCollectionItem{itemKey=").append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key).append(", operation=");
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (String str = "delete";; str = "update") {
-      return str + '}';
-    }
-  }
+  public abstract void b(wbk paramwbk);
 }
 
 

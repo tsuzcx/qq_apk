@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import aqjw;
-import aqjz;
-import bbko;
-import bcwx;
-import bcwz;
+import arnh;
+import arnk;
+import bcrg;
+import bedw;
+import bedy;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
@@ -27,7 +27,7 @@ class BuddyFileDataLineMsgTips$1$1
       QLog.i("BuddyFileDataLineMsgTips", 1, "sub Thread getWordsList by buddyFile[" + System.currentTimeMillis() + "]");
     }
     ArrayList localArrayList = new ArrayList();
-    Object localObject2 = new StringTokenizer(aqjz.a().a(), "|");
+    Object localObject2 = new StringTokenizer(arnk.a().a(), "|");
     if (!((StringTokenizer)localObject2).hasMoreTokens())
     {
       if (QLog.isColorLevel()) {
@@ -43,7 +43,7 @@ class BuddyFileDataLineMsgTips$1$1
       arrayOfString[i] = ((StringTokenizer)localObject2).nextToken();
       i += 1;
     }
-    long l = bbko.a();
+    long l = bcrg.a();
     localObject1 = ((List)localObject1).iterator();
     label304:
     label320:
@@ -89,7 +89,7 @@ class BuddyFileDataLineMsgTips$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.BuddyFileDataLineMsgTips.1.1
  * JD-Core Version:    0.7.0.1
  */

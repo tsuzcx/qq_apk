@@ -1,9 +1,6 @@
-public abstract interface rqe<V>
-{
-  public abstract void a();
-  
-  public abstract void a(V paramV);
-}
+public class rqe
+  extends rot
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

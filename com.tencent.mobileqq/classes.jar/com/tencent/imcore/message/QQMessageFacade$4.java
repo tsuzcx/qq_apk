@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import acvz;
-import anmr;
+import adml;
+import aopk;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 class QQMessageFacade$4
   implements Runnable
 {
-  QQMessageFacade$4(QQMessageFacade paramQQMessageFacade, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, ArrayList paramArrayList, acvz paramacvz) {}
+  QQMessageFacade$4(QQMessageFacade paramQQMessageFacade, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, ArrayList paramArrayList, adml paramadml) {}
   
   public void run()
   {

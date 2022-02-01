@@ -30,6 +30,7 @@ public final class cell_comm
   public long feedsDelTime;
   public int feedsattr;
   public int feedsattr2;
+  public long feedsattr3;
   public String feedsid = "";
   public String feedskey = "";
   public int feedstype;
@@ -82,7 +83,7 @@ public final class cell_comm
   
   public cell_comm() {}
   
-  public cell_comm(int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, int paramInt6, String paramString3, String paramString4, String paramString5, int paramInt7, int paramInt8, String paramString6, String paramString7, long paramLong1, int paramInt9, int paramInt10, String paramString8, String paramString9, int paramInt11, String paramString10, long paramLong2, long paramLong3, UgcRightInfo paramUgcRightInfo, int paramInt12, long paramLong4, int paramInt13, int paramInt14, int paramInt15, int paramInt16, Map<Integer, Integer> paramMap, boolean paramBoolean1, String paramString11, int paramInt17, int paramInt18, int paramInt19, long paramLong5, ArrayList<s_droplist_option> paramArrayList, Map<String, String> paramMap1, int paramInt20, long paramLong6, String paramString12, int paramInt21, Map<String, byte[]> paramMap2, int paramInt22, boolean paramBoolean2, boolean paramBoolean3, long paramLong7)
+  public cell_comm(int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5, int paramInt6, String paramString3, String paramString4, String paramString5, int paramInt7, int paramInt8, String paramString6, String paramString7, long paramLong1, int paramInt9, int paramInt10, String paramString8, String paramString9, int paramInt11, String paramString10, long paramLong2, long paramLong3, UgcRightInfo paramUgcRightInfo, int paramInt12, long paramLong4, int paramInt13, int paramInt14, int paramInt15, int paramInt16, Map<Integer, Integer> paramMap, boolean paramBoolean1, String paramString11, int paramInt17, int paramInt18, int paramInt19, long paramLong5, ArrayList<s_droplist_option> paramArrayList, Map<String, String> paramMap1, int paramInt20, long paramLong6, String paramString12, int paramInt21, Map<String, byte[]> paramMap2, int paramInt22, boolean paramBoolean2, boolean paramBoolean3, long paramLong7, long paramLong8)
   {
     this.appid = paramInt1;
     this.subid = paramInt2;
@@ -133,6 +134,7 @@ public final class cell_comm
     this.is_kuolie = paramBoolean2;
     this.pull_qzone = paramBoolean3;
     this.operatemask3 = paramLong7;
+    this.feedsattr3 = paramLong8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -186,6 +188,7 @@ public final class cell_comm
     this.is_kuolie = paramJceInputStream.read(this.is_kuolie, 46, false);
     this.pull_qzone = paramJceInputStream.read(this.pull_qzone, 47, false);
     this.operatemask3 = paramJceInputStream.read(this.operatemask3, 48, false);
+    this.feedsattr3 = paramJceInputStream.read(this.feedsattr3, 49, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -273,6 +276,7 @@ public final class cell_comm
     paramJceOutputStream.write(this.is_kuolie, 46);
     paramJceOutputStream.write(this.pull_qzone, 47);
     paramJceOutputStream.write(this.operatemask3, 48);
+    paramJceOutputStream.write(this.feedsattr3, 49);
   }
 }
 

@@ -1,19 +1,19 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bncy;
-import bnda;
-import bndb;
-import bnee;
+import bosq;
+import boss;
+import bost;
+import botw;
 
 public class EditProviderPart$2$1$1$1
   implements Runnable
 {
-  public EditProviderPart$2$1$1$1(bndb parambndb) {}
+  public EditProviderPart$2$1$1$1(bost parambost) {}
   
   public void run()
   {
-    if ((this.a.a.a.this$0.jdField_a_of_type_Bnew != null) && (this.a.a.a.this$0.jdField_a_of_type_Bnee != null)) {
-      this.a.a.a.this$0.jdField_a_of_type_Bnee.a(0);
+    if ((this.a.a.a.this$0.jdField_a_of_type_Bouo != null) && (this.a.a.a.this$0.jdField_a_of_type_Botw != null)) {
+      this.a.a.a.this$0.jdField_a_of_type_Botw.a(0);
     }
   }
 }

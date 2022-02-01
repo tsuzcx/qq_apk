@@ -1,345 +1,372 @@
-import BOSSStrategyCenter.tAdvDesc;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.qboss.QbossReportManager;
-import cooperation.qzone.qboss.QzoneQbossHelper;
-import java.io.File;
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashMap<Ljava.lang.String;Ljava.lang.String;>;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class azhw
+  extends OGAbstractDao
 {
-  private static volatile azhw a;
-  public static final String a;
-  
-  static
+  public azhw()
   {
-    jdField_a_of_type_JavaLangString = AppConstants.SDCARD_PATH + "qbdownres";
+    this.columnLen = 24;
   }
   
-  public static SharedPreferences a(String paramString)
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    return BaseApplicationImpl.getContext().getSharedPreferences("qboss_pre_download_pref_" + paramString, 0);
-  }
-  
-  public static azhw a()
-  {
-    if (jdField_a_of_type_Azhw == null) {}
-    try
+    boolean bool2 = true;
+    boolean bool1 = true;
+    paramEntity = (PublicAccountInfo)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      if (jdField_a_of_type_Azhw == null) {
-        jdField_a_of_type_Azhw = new azhw();
-      }
-      return jdField_a_of_type_Azhw;
-    }
-    finally {}
-  }
-  
-  private static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    return jdField_a_of_type_JavaLangString + File.separator + b(paramString);
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      Object localObject = a(paramString1);
-      paramString1 = ((SharedPreferences)localObject).edit();
-      paramString1.remove("download_url" + paramString2);
-      paramString1.remove("end_time" + paramString2);
-      paramString1.remove("trace_info" + paramString2);
-      localObject = new HashSet(((SharedPreferences)localObject).getStringSet("packagenames", new HashSet()));
-      if (((Set)localObject).remove(paramString2)) {
-        paramString1.putStringSet("packagenames", (Set)localObject);
-      }
-      paramString1.apply();
-      QLog.i("QbossPreDownloadManager", 1, "cleanConfig2Sp packageName:" + paramString2);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("QbossPreDownloadManager", 1, "cleanConfig2Sp exception", paramString1);
-    }
-  }
-  
-  private void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    try
-    {
-      SharedPreferences localSharedPreferences = a(paramString1);
-      paramString1 = localSharedPreferences.edit();
-      paramString1.putString("download_url" + paramString2, paramString4);
-      paramString1.putString("end_time" + paramString2, paramString3);
-      paramString1.putString("trace_info" + paramString2, paramString3);
-      paramString3 = new HashSet(localSharedPreferences.getStringSet("packagenames", new HashSet()));
-      if (paramString3.add(paramString2)) {
-        paramString1.putStringSet("packagenames", paramString3);
-      }
-      paramString1.apply();
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("QbossPreDownloadManager", 1, "saveConfig2Sp exception", paramString1);
-    }
-  }
-  
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    try
-    {
-      if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
+      paramEntity.uin = paramCursor.getLong(paramCursor.getColumnIndex("uin"));
+      paramEntity.name = paramCursor.getString(paramCursor.getColumnIndex("name"));
+      paramEntity.displayNumber = paramCursor.getString(paramCursor.getColumnIndex("displayNumber"));
+      paramEntity.summary = paramCursor.getString(paramCursor.getColumnIndex("summary"));
+      if (1 == paramCursor.getShort(paramCursor.getColumnIndex("isRecvMsg")))
       {
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString, true, 0L, 0L, paramHashMap, null, false);
-        if (QLog.isColorLevel()) {
-          QLog.i("QbossPreDownloadManager", 2, "reportQbossPreDownloadBeacon, tagName  " + paramString);
+        paramBoolean = true;
+        paramEntity.isRecvMsg = paramBoolean;
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isRecvPush"))) {
+          break label498;
+        }
+        paramBoolean = true;
+        label133:
+        paramEntity.isRecvPush = paramBoolean;
+        paramEntity.clickCount = paramCursor.getInt(paramCursor.getColumnIndex("clickCount"));
+        paramEntity.certifiedGrade = paramCursor.getLong(paramCursor.getColumnIndex("certifiedGrade"));
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isSyncLbs"))) {
+          break label503;
+        }
+        paramBoolean = true;
+        label194:
+        paramEntity.isSyncLbs = paramBoolean;
+        paramEntity.showFlag = paramCursor.getInt(paramCursor.getColumnIndex("showFlag"));
+        paramEntity.mShowMsgFlag = paramCursor.getInt(paramCursor.getColumnIndex("mShowMsgFlag"));
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("mIsAgreeSyncLbs"))) {
+          break label508;
+        }
+        paramBoolean = true;
+        label255:
+        paramEntity.mIsAgreeSyncLbs = paramBoolean;
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("mIsSyncLbsSelected"))) {
+          break label513;
+        }
+        paramBoolean = true;
+        label280:
+        paramEntity.mIsSyncLbsSelected = paramBoolean;
+        paramEntity.dateTime = paramCursor.getLong(paramCursor.getColumnIndex("dateTime"));
+        paramEntity.accountFlag = paramCursor.getInt(paramCursor.getColumnIndex("accountFlag"));
+        paramEntity.accountFlag2 = paramCursor.getLong(paramCursor.getColumnIndex("accountFlag2"));
+        paramEntity.eqqAccountFlag = paramCursor.getLong(paramCursor.getColumnIndex("eqqAccountFlag"));
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isShieldMsg"))) {
+          break label518;
         }
       }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("QbossPreDownloadManager", 1, paramString, new Object[0]);
-    }
-  }
-  
-  public static boolean a(Context paramContext, HashMap<String, String> paramHashMap)
-  {
-    if ((paramContext == null) || (paramHashMap == null) || (paramHashMap.isEmpty())) {
-      return false;
-    }
-    try
-    {
-      Object localObject = a((String)paramHashMap.get("downloadurl"));
-      if ((QzoneConfig.getInstance().getConfig("Schema", "jump_installapp_scheme_enable", 0) == 0) && (FileUtil.fileExistsAndNotEmpty((String)localObject)))
+      label513:
+      label518:
+      for (paramBoolean = bool1;; paramBoolean = false)
       {
-        QLog.i("QbossPreDownloadManager", 1, "loadPreDownloadRes installApkFile faifilePath:" + (String)localObject);
-        FileProvider7Helper.installApkFile(paramContext, (String)localObject);
-      }
-      else
-      {
-        localObject = (String)paramHashMap.get("jumpurl");
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          QLog.e("QbossPreDownloadManager", 1, "loadPreDownloadRes jumpurl is empty");
-          return false;
-        }
-        paramHashMap = (HashMap<String, String>)localObject;
-        if (!((String)localObject).contains("http://"))
-        {
-          paramHashMap = (HashMap<String, String>)localObject;
-          if (!((String)localObject).contains("https://")) {
-            paramHashMap = "https://" + (String)localObject;
-          }
-        }
-        localObject = new Intent(paramContext, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", paramHashMap);
-        ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_vip");
-        paramContext.startActivity((Intent)localObject);
-        QLog.i("QbossPreDownloadManager", 1, "loadPreDownloadRes jump browser url:" + paramHashMap);
-        return true;
+        paramEntity.isShieldMsg = paramBoolean;
+        paramEntity.messageSettingFlag = paramCursor.getInt(paramCursor.getColumnIndex("messageSettingFlag"));
+        paramEntity.extendType = paramCursor.getInt(paramCursor.getColumnIndex("extendType"));
+        paramEntity.mComparePartInt = paramCursor.getInt(paramCursor.getColumnIndex("mComparePartInt"));
+        paramEntity.mCompareSpell = paramCursor.getString(paramCursor.getColumnIndex("mCompareSpell"));
+        paramEntity.logo = paramCursor.getString(paramCursor.getColumnIndex("logo"));
+        paramEntity.lastAIOReadTime = paramCursor.getLong(paramCursor.getColumnIndex("lastAIOReadTime"));
+        return paramEntity;
+        paramBoolean = false;
+        break;
+        label498:
+        paramBoolean = false;
+        break label133;
+        label503:
+        paramBoolean = false;
+        break label194;
+        label508:
+        paramBoolean = false;
+        break label255;
+        paramBoolean = false;
+        break label280;
       }
     }
-    catch (Exception paramContext)
+    int i = paramCursor.getColumnIndex("uin");
+    if (i == -1)
     {
-      QLog.e("QbossPreDownloadManager", 1, paramContext, new Object[0]);
-    }
-    return true;
-  }
-  
-  private boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3))) {
-      return false;
-    }
-    if (QzoneQbossHelper.findPkgInstalled(paramString1).booleanValue())
-    {
-      QLog.e("QbossPreDownloadManager", 1, "handleQbossPreDownloadConfig package:" + paramString1 + " is installed");
-      QbossReportManager.getInstance().reportIntercept(paramString4, null);
-      a(paramQQAppInterface.getAccount(), paramString1);
-      paramQQAppInterface = new HashMap();
-      paramQQAppInterface.put("Qboss_PreDownload_PackageName", paramString1);
-      a("Qboss_PreDownload_App_Installed", paramQQAppInterface);
-      return false;
-    }
-    String str = a(paramString3);
-    if (a(str, paramString2))
-    {
-      a(paramQQAppInterface, paramString1, paramString3, str, paramString4);
-      return true;
-    }
-    QLog.e("QbossPreDownloadManager", 1, "handleQbossPreDownloadConfig shouldDownloadRes return false");
-    if (azid.a(paramString2))
-    {
-      a(paramQQAppInterface.getAccount(), paramString1);
-      FileUtil.deleteFile(str);
-      return false;
-    }
-    QbossReportManager.getInstance().reportExpose(paramString4, null);
-    return false;
-  }
-  
-  private static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = Uri.parse(paramString);
-    return Utils.Crc64String(paramString.getHost() + paramString.getPath());
-  }
-  
-  private static void b(String paramString1, SoftReference<QQAppInterface> paramSoftReference, String paramString2, String paramString3)
-  {
-    if (paramSoftReference != null) {}
-    try
-    {
-      paramSoftReference = (QQAppInterface)paramSoftReference.get();
-      if (paramSoftReference != null)
-      {
-        paramSoftReference = (PreDownloadController)paramSoftReference.getManager(193);
-        if (paramSoftReference.isEnable()) {
-          paramSoftReference.preDownloadSuccess(paramString1, -1L);
-        }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uin", Long.TYPE));
+      i = paramCursor.getColumnIndex("name");
+      if (i != -1) {
+        break label1375;
       }
-      paramString1 = new HashMap();
-      paramString1.put("Qboss_PreDownload_PackageName", paramString2);
-      paramString1.put("Qboss_PreDownload_FailCode", paramString3);
-      a("Qboss_PreDownload_Fail", paramString1);
-      return;
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("name", String.class));
+      label592:
+      i = paramCursor.getColumnIndex("displayNumber");
+      if (i != -1) {
+        break label1390;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("displayNumber", String.class));
+      label626:
+      i = paramCursor.getColumnIndex("summary");
+      if (i != -1) {
+        break label1405;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("summary", String.class));
+      label660:
+      i = paramCursor.getColumnIndex("isRecvMsg");
+      if (i != -1) {
+        break label1420;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isRecvMsg", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("isRecvPush");
+      if (i != -1) {
+        break label1447;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isRecvPush", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("clickCount");
+      if (i != -1) {
+        break label1474;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("clickCount", Integer.TYPE));
+      label765:
+      i = paramCursor.getColumnIndex("certifiedGrade");
+      if (i != -1) {
+        break label1489;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("certifiedGrade", Long.TYPE));
+      label800:
+      i = paramCursor.getColumnIndex("isSyncLbs");
+      if (i != -1) {
+        break label1504;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isSyncLbs", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("showFlag");
+      if (i != -1) {
+        break label1531;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("showFlag", Integer.TYPE));
+      label870:
+      i = paramCursor.getColumnIndex("mShowMsgFlag");
+      if (i != -1) {
+        break label1546;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mShowMsgFlag", Integer.TYPE));
+      label905:
+      i = paramCursor.getColumnIndex("mIsAgreeSyncLbs");
+      if (i != -1) {
+        break label1561;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mIsAgreeSyncLbs", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("mIsSyncLbsSelected");
+      if (i != -1) {
+        break label1588;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mIsSyncLbsSelected", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("dateTime");
+      if (i != -1) {
+        break label1615;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("dateTime", Long.TYPE));
+      label1010:
+      i = paramCursor.getColumnIndex("accountFlag");
+      if (i != -1) {
+        break label1630;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("accountFlag", Integer.TYPE));
+      label1045:
+      i = paramCursor.getColumnIndex("accountFlag2");
+      if (i != -1) {
+        break label1645;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("accountFlag2", Long.TYPE));
+      label1080:
+      i = paramCursor.getColumnIndex("eqqAccountFlag");
+      if (i != -1) {
+        break label1660;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("eqqAccountFlag", Long.TYPE));
+      label1115:
+      i = paramCursor.getColumnIndex("isShieldMsg");
+      if (i != -1) {
+        break label1675;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isShieldMsg", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("messageSettingFlag");
+      if (i != -1) {
+        break label1703;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("messageSettingFlag", Integer.TYPE));
+      label1185:
+      i = paramCursor.getColumnIndex("extendType");
+      if (i != -1) {
+        break label1718;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("extendType", Integer.TYPE));
+      label1220:
+      i = paramCursor.getColumnIndex("mComparePartInt");
+      if (i != -1) {
+        break label1733;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mComparePartInt", Integer.TYPE));
+      label1255:
+      i = paramCursor.getColumnIndex("mCompareSpell");
+      if (i != -1) {
+        break label1748;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("mCompareSpell", String.class));
+      label1289:
+      i = paramCursor.getColumnIndex("logo");
+      if (i != -1) {
+        break label1763;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("logo", String.class));
     }
-    catch (Exception paramString1)
-    {
-      QLog.e("QbossPreDownloadManager", 1, paramString1, new Object[0]);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
     for (;;)
     {
-      return;
-      SharedPreferences localSharedPreferences = a(paramQQAppInterface.getAccount());
-      Object localObject = localSharedPreferences.getStringSet("packagenames", null);
-      if ((localObject != null) && (((Set)localObject).size() > 0))
-      {
-        localObject = ((Set)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str1 = (String)((Iterator)localObject).next();
-          if (!TextUtils.isEmpty(str1))
-          {
-            String str2 = localSharedPreferences.getString("download_url" + str1, "");
-            a(paramQQAppInterface, str1, localSharedPreferences.getString("end_time" + str1, ""), str2, localSharedPreferences.getString("trace_info" + str1, ""));
-          }
-        }
+      i = paramCursor.getColumnIndex("lastAIOReadTime");
+      if (i != -1) {
+        break label1778;
       }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("lastAIOReadTime", Long.TYPE));
+      return paramEntity;
+      paramEntity.uin = paramCursor.getLong(i);
+      break;
+      label1375:
+      paramEntity.name = paramCursor.getString(i);
+      break label592;
+      label1390:
+      paramEntity.displayNumber = paramCursor.getString(i);
+      break label626;
+      label1405:
+      paramEntity.summary = paramCursor.getString(i);
+      break label660;
+      label1420:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        paramEntity.isRecvMsg = paramBoolean;
+        break;
+      }
+      label1447:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        paramEntity.isRecvPush = paramBoolean;
+        break;
+      }
+      label1474:
+      paramEntity.clickCount = paramCursor.getInt(i);
+      break label765;
+      label1489:
+      paramEntity.certifiedGrade = paramCursor.getLong(i);
+      break label800;
+      label1504:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        paramEntity.isSyncLbs = paramBoolean;
+        break;
+      }
+      label1531:
+      paramEntity.showFlag = paramCursor.getInt(i);
+      break label870;
+      label1546:
+      paramEntity.mShowMsgFlag = paramCursor.getInt(i);
+      break label905;
+      label1561:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        paramEntity.mIsAgreeSyncLbs = paramBoolean;
+        break;
+      }
+      label1588:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        paramEntity.mIsSyncLbsSelected = paramBoolean;
+        break;
+      }
+      label1615:
+      paramEntity.dateTime = paramCursor.getLong(i);
+      break label1010;
+      label1630:
+      paramEntity.accountFlag = paramCursor.getInt(i);
+      break label1045;
+      label1645:
+      paramEntity.accountFlag2 = paramCursor.getLong(i);
+      break label1080;
+      label1660:
+      paramEntity.eqqAccountFlag = paramCursor.getLong(i);
+      break label1115;
+      label1675:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = bool2;; paramBoolean = false)
+      {
+        paramEntity.isShieldMsg = paramBoolean;
+        break;
+      }
+      label1703:
+      paramEntity.messageSettingFlag = paramCursor.getInt(i);
+      break label1185;
+      label1718:
+      paramEntity.extendType = paramCursor.getInt(i);
+      break label1220;
+      label1733:
+      paramEntity.mComparePartInt = paramCursor.getInt(i);
+      break label1255;
+      label1748:
+      paramEntity.mCompareSpell = paramCursor.getString(i);
+      break label1289;
+      label1763:
+      paramEntity.logo = paramCursor.getString(i);
     }
+    label1778:
+    paramEntity.lastAIOReadTime = paramCursor.getLong(i);
+    return paramEntity;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
   {
-    try
-    {
-      PreDownloadController localPreDownloadController = (PreDownloadController)paramQQAppInterface.getManager(193);
-      if (localPreDownloadController.isEnable())
-      {
-        QLog.i("QbossPreDownloadManager", 1, "downloadRes request packagename:" + paramString1);
-        paramString3 = paramString3 + ".qbtemp";
-        localPreDownloadController.requestPreDownload(10088, "vas", paramString2, 0, paramString2, paramString3, 1, 2, true, new azhx(this, paramQQAppInterface, "qboss_pre_download_res", paramString1, paramString3, paramString2, paramString4));
-        return;
-      }
-      QLog.i("QbossPreDownloadManager", 1, "ctrl.isEnable() = false");
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("QbossPreDownloadManager", 1, paramQQAppInterface, new Object[0]);
-    }
+    paramEntity = (PublicAccountInfo)paramEntity;
+    paramContentValues.put("uin", Long.valueOf(paramEntity.uin));
+    paramContentValues.put("name", paramEntity.name);
+    paramContentValues.put("displayNumber", paramEntity.displayNumber);
+    paramContentValues.put("summary", paramEntity.summary);
+    paramContentValues.put("isRecvMsg", Boolean.valueOf(paramEntity.isRecvMsg));
+    paramContentValues.put("isRecvPush", Boolean.valueOf(paramEntity.isRecvPush));
+    paramContentValues.put("clickCount", Integer.valueOf(paramEntity.clickCount));
+    paramContentValues.put("certifiedGrade", Long.valueOf(paramEntity.certifiedGrade));
+    paramContentValues.put("isSyncLbs", Boolean.valueOf(paramEntity.isSyncLbs));
+    paramContentValues.put("showFlag", Integer.valueOf(paramEntity.showFlag));
+    paramContentValues.put("mShowMsgFlag", Integer.valueOf(paramEntity.mShowMsgFlag));
+    paramContentValues.put("mIsAgreeSyncLbs", Boolean.valueOf(paramEntity.mIsAgreeSyncLbs));
+    paramContentValues.put("mIsSyncLbsSelected", Boolean.valueOf(paramEntity.mIsSyncLbsSelected));
+    paramContentValues.put("dateTime", Long.valueOf(paramEntity.dateTime));
+    paramContentValues.put("accountFlag", Integer.valueOf(paramEntity.accountFlag));
+    paramContentValues.put("accountFlag2", Long.valueOf(paramEntity.accountFlag2));
+    paramContentValues.put("eqqAccountFlag", Long.valueOf(paramEntity.eqqAccountFlag));
+    paramContentValues.put("isShieldMsg", Boolean.valueOf(paramEntity.isShieldMsg));
+    paramContentValues.put("messageSettingFlag", Integer.valueOf(paramEntity.messageSettingFlag));
+    paramContentValues.put("extendType", Integer.valueOf(paramEntity.extendType));
+    paramContentValues.put("mComparePartInt", Integer.valueOf(paramEntity.mComparePartInt));
+    paramContentValues.put("mCompareSpell", paramEntity.mCompareSpell);
+    paramContentValues.put("logo", paramEntity.logo);
+    paramContentValues.put("lastAIOReadTime", Long.valueOf(paramEntity.lastAIOReadTime));
   }
   
-  public void a(ArrayList<tAdvDesc> paramArrayList, QQAppInterface paramQQAppInterface)
+  public String getCreateTableSql(String paramString)
   {
-    Object localObject1;
-    String str1;
-    if ((paramQQAppInterface != null) && (paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      localObject1 = (tAdvDesc)paramArrayList.get(0);
-      if ((localObject1 != null) && (!TextUtils.isEmpty(((tAdvDesc)localObject1).res_data)))
-      {
-        QLog.i("QbossPreDownloadManager", 4, "handleQbossPreDownloadConfig data = " + ((tAdvDesc)localObject1).res_data);
-        paramArrayList = paramQQAppInterface.getAccount();
-        str1 = ((tAdvDesc)localObject1).res_traceinfo;
-        localObject1 = ((tAdvDesc)localObject1).res_data;
-      }
-    }
-    else
-    {
-      try
-      {
-        Object localObject2 = new JSONObject((String)localObject1);
-        localObject1 = ((JSONObject)localObject2).getString("packagename");
-        String str2 = ((JSONObject)localObject2).getString("endtime");
-        localObject2 = ((JSONObject)localObject2).getString("apkurl");
-        if (a(paramQQAppInterface, (String)localObject1, str2, (String)localObject2, str1)) {
-          a(paramArrayList, (String)localObject1, str2, (String)localObject2);
-        }
-        return;
-      }
-      catch (Exception paramArrayList)
-      {
-        QLog.e("QbossPreDownloadManager", 1, paramArrayList, new Object[0]);
-        return;
-      }
-    }
-    QLog.e("QbossPreDownloadManager", 1, "handleQbossPreDownloadConfig data = null");
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!FileUtil.fileExistsAndNotEmpty(paramString1))
-    {
-      bool1 = bool2;
-      if (!azid.a(paramString2)) {
-        bool1 = true;
-      }
-    }
-    QLog.i("QbossPreDownloadManager", 1, "filePath [" + paramString1 + "] shouldRequestRes result = " + bool1);
-    return bool1;
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin INTEGER UNIQUE ,name TEXT ,displayNumber TEXT ,summary TEXT ,isRecvMsg INTEGER ,isRecvPush INTEGER ,clickCount INTEGER ,certifiedGrade INTEGER ,isSyncLbs INTEGER ,showFlag INTEGER ,mShowMsgFlag INTEGER ,mIsAgreeSyncLbs INTEGER ,mIsSyncLbsSelected INTEGER ,dateTime INTEGER ,accountFlag INTEGER ,accountFlag2 INTEGER ,eqqAccountFlag INTEGER ,isShieldMsg INTEGER ,messageSettingFlag INTEGER ,extendType INTEGER ,mComparePartInt INTEGER ,mCompareSpell TEXT ,logo TEXT ,lastAIOReadTime INTEGER)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azhw
  * JD-Core Version:    0.7.0.1
  */

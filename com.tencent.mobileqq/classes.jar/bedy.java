@@ -1,33 +1,17 @@
-import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class bedy
+  extends bedv
 {
-  public int a;
-  public TroopEssenceMsgItem a;
-  public String a;
-  public String b;
-  
-  public bedy(TroopEssenceMsgItem paramTroopEssenceMsgItem, int paramInt, String paramString1, String paramString2)
+  public bedy(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, beeb parambeeb)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem = paramTroopEssenceMsgItem;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    super(paramQQAppInterface, paramDataLineMsgRecord, parambeeb);
   }
   
-  public String toString()
+  protected String a()
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("msgItem:");
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem != null) {}
-    for (String str = this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.toString();; str = "null")
-    {
-      localStringBuilder2.append(str).append(" ");
-      localStringBuilder1.append("graytipmsgseq:").append(this.jdField_a_of_type_Int).append(" ");
-      localStringBuilder1.append("opNickName:").append(this.jdField_a_of_type_JavaLangString).append(" ");
-      localStringBuilder1.append("senderNickName:").append(this.b);
-      return localStringBuilder1.toString();
-    }
+    return this.a.filename;
   }
 }
 

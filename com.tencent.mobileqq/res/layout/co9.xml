@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/h79" android:paddingLeft="2.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="45.0dip"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="40.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/z3" android:layout_width="9.0dip" android:layout_height="15.0dip" android:layout_marginLeft="13.0dip" android:src="@drawable/cri" android:layout_centerVertical="true" />
-    <TextView android:textSize="12.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/jmn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="12.0dip" android:text="@string/xic" android:singleLine="true" android:layout_toRightOf="@id/z3" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/n3_" android:layout_width="10.0dip" android:layout_height="5.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/gpf" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <FrameLayout android:background="@drawable/gq3" android:layout_width="wrap_content" android:layout_height="35.0dip" android:layout_marginTop="-0.5dip" android:layout_below="@id/n3_" android:layout_alignParentRight="true">
+        <TextView android:textSize="@dimen/ayk" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/kbr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="9.5dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="9.5dip" android:text="@string/xw4" />
+    </FrameLayout>
 </RelativeLayout>

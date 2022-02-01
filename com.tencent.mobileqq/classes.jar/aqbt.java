@@ -1,112 +1,108 @@
-import android.text.TextUtils;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.ark.ModuleRegister;
+import com.tencent.ark.open.ArkAppConfigMgr;
+import com.tencent.ark.open.security.ArkAppUrlChecker;
+import com.tencent.mobileqq.ark.ArkAppCenterEvent;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import org.json.JSONObject;
 
-public class aqbt
+final class aqbt
+  implements ark.ApplicationCallback
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = -1;
-  public int d = -1;
-  public int e;
-  public int f;
-  
-  public aqbt()
+  public void AppCreate(ark.Application paramApplication)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
   }
   
-  public static aqbt a(JSONObject paramJSONObject)
+  public void AppDestroy(ark.Application paramApplication)
   {
-    aqbt localaqbt = new aqbt();
-    if (paramJSONObject == null) {}
-    do
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppCenterEvent.a(1, paramApplication, null);
+    aqbw.a(paramApplication);
+  }
+  
+  public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
+    boolean bool1 = true;
+    int j;
+    int i;
+    boolean bool2;
+    if (localArkAppUrlChecker != null)
     {
-      do
+      j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
+      i = 0;
+      if (j != 0) {
+        break label279;
+      }
+      bool1 = true;
+      boolean bool3 = ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication);
+      boolean bool4 = ArkAppCenterUtil.isPublicAccount();
+      if ((!bool3) || (bool4)) {
+        break label285;
+      }
+      bool2 = true;
+      label69:
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkMultiProcUtil", 2, new Object[] { "ArkSafe.UrlCheck.CheckUrlLegalityCallback,appname=", paramApplication, ", enableCheck=", Boolean.valueOf(bool2), ", appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4) });
+      }
+      if (bool1) {
+        break label291;
+      }
+      i = 1;
+      if (bool2) {
+        break label291;
+      }
+      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback , isValid set=true, appName=", paramApplication, ",appEnableCheck=", Boolean.valueOf(bool3), ", isPublicAccount=", Boolean.valueOf(bool4), ",url=", nwo.b(paramString, new String[0]) });
+      bool1 = true;
+      i = 2;
+    }
+    label279:
+    label285:
+    label291:
+    for (;;)
+    {
+      aqbw.a(paramApplication, paramString, j, i, "");
+      QLog.e("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkSafe.EngineCallback appName=", paramApplication, ",url=", nwo.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool1) });
+      return bool1;
+      bool1 = false;
+      break;
+      bool2 = false;
+      break label69;
+    }
+  }
+  
+  public void OutputScriptError(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    for (;;)
+    {
+      if (paramString2 == null) {
+        paramString2 = "";
+      }
+      for (;;)
       {
-        do
-        {
-          return localaqbt;
-          paramJSONObject = paramJSONObject.optJSONObject("emoticon_guide_config");
-        } while (paramJSONObject == null);
         if (QLog.isColorLevel()) {
-          QLog.i("QQSysAndEmojiConfProcessor", 2, "parse GuideConfBean: ");
+          QLog.e("ArkApp.ArkMultiProcUtil", 1, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
         }
-        if (paramJSONObject.has("emoticon_guide_url")) {
-          localaqbt.jdField_a_of_type_JavaLangString = paramJSONObject.optString("emoticon_guide_url");
-        }
-        if (paramJSONObject.has("emoticon_guide_night_url")) {
-          localaqbt.jdField_b_of_type_JavaLangString = paramJSONObject.optString("emoticon_guide_night_url");
-        }
-        if (paramJSONObject.has("emoticon_guide_serverid")) {
-          localaqbt.c = paramJSONObject.optInt("emoticon_guide_serverid", -1);
-        }
-        if (paramJSONObject.has("emoticon_guide_serverid_type")) {
-          localaqbt.d = paramJSONObject.optInt("emoticon_guide_serverid_type", -1);
-        }
-        if (paramJSONObject.has("emoticon_guide_width")) {
-          localaqbt.e = paramJSONObject.optInt("emoticon_guide_width", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_height")) {
-          localaqbt.f = paramJSONObject.optInt("emoticon_guide_height", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_open")) {
-          localaqbt.jdField_a_of_type_Int = paramJSONObject.optInt("emoticon_guide_open", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_version")) {
-          localaqbt.jdField_b_of_type_Int = paramJSONObject.optInt("emoticon_guide_version", 0);
-        }
-      } while (!paramJSONObject.has("emoticon_guide_invalid_time"));
-      paramJSONObject = paramJSONObject.optString("emoticon_guide_invalid_time", null);
-    } while (TextUtils.isEmpty(paramJSONObject));
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
-    try
-    {
-      localaqbt.jdField_a_of_type_Long = localSimpleDateFormat.parse(paramJSONObject).getTime();
-      return localaqbt;
+        apyp.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
+        return;
+      }
     }
-    catch (Exception paramJSONObject)
-    {
-      QLog.d("QQSysAndEmojiConfProcessor", 2, "parse invalidTime failed!", paramJSONObject);
-    }
-    return localaqbt;
   }
   
-  boolean a()
+  public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
   {
-    int i = bfyz.c("key_emoticon_guide_version");
-    if (this.jdField_b_of_type_Int > i)
-    {
-      bfyz.a("key_emoticon_guide_version", Integer.valueOf(this.jdField_b_of_type_Int));
-      bfyz.a("key_show_emoticon_guide", Boolean.valueOf(true));
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQSysAndEmojiConfProcessor", 2, "currentTimeMillis: " + System.currentTimeMillis() + " mInvalidTime: " + this.jdField_a_of_type_Long);
-    }
-    return (this.jdField_a_of_type_Int == 1) && (System.currentTimeMillis() < this.jdField_a_of_type_Long);
-  }
-  
-  public String toString()
-  {
-    return "{mOpen=" + this.jdField_a_of_type_Int + ", mDrawableUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNightDrawableUrl=" + this.jdField_b_of_type_JavaLangString + ", mServerId=" + this.c + ", mEmoType=" + this.d + ", mInvalidTime=" + this.jdField_a_of_type_Long + '}';
+    apss.a(paramModuleRegister, paramApplication);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class awza
-  implements DialogInterface.OnDismissListener
+public abstract interface awza
 {
-  awza(awyf paramawyf) {}
+  public abstract void a(int paramInt);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.r = false;
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

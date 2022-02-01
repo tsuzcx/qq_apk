@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import adpo;
-import amtj;
-import bfpm;
+import aegr;
+import anvx;
+import bgyd;
 import java.util.ArrayList;
 
 class Leba$33$2
@@ -16,13 +16,13 @@ class Leba$33$2
       Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0).a(this.jdField_a_of_type_JavaUtilArrayList);
     }
     if (Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0) != null) {
-      bfpm.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0), amtj.a(2131705142));
+      bgyd.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$33.this$0), anvx.a(2131705493));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.33.2
  * JD-Core Version:    0.7.0.1
  */

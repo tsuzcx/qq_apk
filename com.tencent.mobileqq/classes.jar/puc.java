@@ -1,194 +1,243 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.BannerInfoModule.2;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerRoundReqBody;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerRoundRspBody;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.ContentBannerItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.ReqBody;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.RspBody;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONException;
 
 public class puc
-  extends pwd
 {
-  private final ConcurrentHashMap<Integer, TopBannerInfo> a;
+  private static final Map<Integer, qqa> a = new HashMap();
   
-  public puc(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qli paramqli, Handler paramHandler, ptv paramptv)
+  static
   {
-    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqli, paramHandler);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    if (paramptv != null) {
-      paramptv.a(new pud(this));
-    }
-  }
-  
-  private void a(TopBannerInfo paramTopBannerInfo)
-  {
-    b(paramTopBannerInfo);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramTopBannerInfo.mChannelId), paramTopBannerInfo);
-    this.jdField_a_of_type_AndroidOsHandler.post(new BannerInfoModule.2(this, paramTopBannerInfo));
-  }
-  
-  private void b(TopBannerInfo paramTopBannerInfo)
-  {
-    a(paramTopBannerInfo);
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int j = 0;
-    paramToServiceMsg = new oidb_cmd0xbc9.RspBody();
-    int i = qlk.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    QLog.d("ReadInJoyEngineModule", 2, new Object[] { "handle0xbc9BannerInfo result = ", Integer.valueOf(i) });
-    if ((i == 0) && (paramToServiceMsg.msg_banner_round_rsp_body.has()))
+    if (a.isEmpty())
     {
-      paramObject = (oidb_cmd0xbc9.BannerRoundRspBody)paramToServiceMsg.msg_banner_round_rsp_body.get();
-      if ((!paramObject.uint32_need_update.has()) || (paramObject.uint32_need_update.get() != 1)) {
-        break label453;
-      }
-      paramFromServiceMsg = new TopBannerInfo();
-      if ((paramObject.rpt_msg_banner_list.has()) && (paramObject.rpt_msg_banner_list.size() > 0))
-      {
-        i = 0;
-        if (i < paramObject.rpt_msg_banner_list.size())
-        {
-          paramToServiceMsg = (oidb_cmd0xbc9.BannerItem)paramObject.rpt_msg_banner_list.get(i);
-          if (paramToServiceMsg.uint32_banner_type.has())
-          {
-            if (paramToServiceMsg.uint32_banner_type.get() != 2) {
-              break label199;
-            }
-            if (!paramToServiceMsg.msg_video_banner_item.has()) {
-              break label462;
-            }
-            paramToServiceMsg = rfx.b(paramToServiceMsg);
-          }
-        }
-      }
+      a(0, new qoe());
+      a(1, new qoe());
+      a(2, new qoe());
     }
-    label453:
+  }
+  
+  public static ProteusItemView a(VafContext paramVafContext, int paramInt, String paramString)
+  {
+    blfz.a("ProteusSupportUtilDynamic.getView");
+    Object localObject = null;
+    paramString = a(paramVafContext, a(paramInt), paramString);
+    Container localContainer = paramVafContext.getViewFactory().inflate(paramVafContext, paramString);
+    paramString = localObject;
+    if (localContainer != null)
+    {
+      localContainer.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841743));
+      paramString = new ProteusItemView(paramVafContext.getContext());
+      paramString.a(localContainer);
+    }
+    blfz.a();
+    return paramString;
+  }
+  
+  /* Error */
+  private static TemplateBean a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString)
+  {
+    // Byte code:
+    //   0: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +37 -> 40
+    //   6: ldc 100
+    //   8: iconst_2
+    //   9: new 102	java/lang/StringBuilder
+    //   12: dup
+    //   13: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   16: ldc 105
+    //   18: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: aload_1
+    //   22: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   25: ldc 114
+    //   27: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: iload_0
+    //   31: invokevirtual 117	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   37: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   40: getstatic 16	puc:a	Ljava/util/Map;
+    //   43: iload_0
+    //   44: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   47: invokeinterface 135 2 0
+    //   52: checkcast 137	qqa
+    //   55: astore_3
+    //   56: aload_3
+    //   57: ifnonnull +13 -> 70
+    //   60: ldc 100
+    //   62: iconst_1
+    //   63: ldc 139
+    //   65: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   68: aconst_null
+    //   69: areturn
+    //   70: aload_3
+    //   71: iload_0
+    //   72: aload_1
+    //   73: invokeinterface 142 3 0
+    //   78: astore 4
+    //   80: aload_3
+    //   81: iload_0
+    //   82: aload 4
+    //   84: invokeinterface 145 3 0
+    //   89: astore_3
+    //   90: aload_3
+    //   91: astore_1
+    //   92: aload_3
+    //   93: ifnonnull +20 -> 113
+    //   96: aload_2
+    //   97: iconst_1
+    //   98: invokestatic 150	tmh:a	(Ljava/lang/String;Z)Ltmh;
+    //   101: astore_1
+    //   102: aload_1
+    //   103: ifnull +12 -> 115
+    //   106: aload_1
+    //   107: aload 4
+    //   109: invokevirtual 154	tmh:getTemplateBean	(Lorg/json/JSONObject;)Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;
+    //   112: astore_1
+    //   113: aload_1
+    //   114: areturn
+    //   115: aconst_null
+    //   116: astore_1
+    //   117: goto -4 -> 113
+    //   120: astore_2
+    //   121: aconst_null
+    //   122: astore_1
+    //   123: ldc 100
+    //   125: iconst_2
+    //   126: ldc 156
+    //   128: aload_2
+    //   129: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   132: goto -19 -> 113
+    //   135: astore_2
+    //   136: aconst_null
+    //   137: astore_1
+    //   138: ldc 100
+    //   140: iconst_2
+    //   141: ldc 162
+    //   143: aload_2
+    //   144: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   147: goto -34 -> 113
+    //   150: astore_2
+    //   151: aload_3
+    //   152: astore_1
+    //   153: goto -15 -> 138
+    //   156: astore_2
+    //   157: aload_3
+    //   158: astore_1
+    //   159: goto -36 -> 123
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	162	0	paramInt	int
+    //   0	162	1	paramBaseArticleInfo	BaseArticleInfo
+    //   0	162	2	paramString	String
+    //   55	103	3	localObject	Object
+    //   78	30	4	localJSONObject	org.json.JSONObject
+    // Exception table:
+    //   from	to	target	type
+    //   40	56	120	org/json/JSONException
+    //   60	68	120	org/json/JSONException
+    //   70	90	120	org/json/JSONException
+    //   40	56	135	java/lang/Exception
+    //   60	68	135	java/lang/Exception
+    //   70	90	135	java/lang/Exception
+    //   96	102	150	java/lang/Exception
+    //   106	113	150	java/lang/Exception
+    //   96	102	156	org/json/JSONException
+    //   106	113	156	org/json/JSONException
+  }
+  
+  private static TemplateBean a(VafContext paramVafContext, String paramString1, String paramString2)
+  {
+    QLog.d("ProteusSupportUtilDynamic", 2, new Object[] { "getTemplateBean, styleID = ", paramString1 });
+    qlk localqlk = new qlk();
+    tmh localtmh = (tmh)paramVafContext.getTemplateFactory();
+    paramVafContext = localtmh;
+    if (localtmh == null) {
+      paramVafContext = tmh.a(paramString2, true);
+    }
+    if (paramVafContext != null) {}
     for (;;)
     {
-      if (paramToServiceMsg != null) {
-        paramFromServiceMsg.addItem(paramToServiceMsg);
-      }
-      i += 1;
-      break;
-      label199:
-      if (paramToServiceMsg.msg_article_content_item.has())
+      try
       {
-        paramToServiceMsg = rfv.b(paramToServiceMsg);
-        continue;
-        if (paramObject.bytes_cookie.has()) {
-          paramFromServiceMsg.mCookie = paramObject.bytes_cookie.get().toStringUtf8();
-        }
-        if (paramObject.uint32_channel_id.has()) {
-          paramFromServiceMsg.mChannelId = paramObject.uint32_channel_id.get();
-        }
-        if ((paramObject.rpt_msg_dynamic_banner_list.has()) && (paramObject.rpt_msg_dynamic_banner_list.size() > 0))
-        {
-          i = j;
-          while (i < paramObject.rpt_msg_dynamic_banner_list.size())
-          {
-            if ((((oidb_cmd0xbc9.DynamicBannerItem)paramObject.rpt_msg_dynamic_banner_list.get(i)).has()) && (paramObject.rpt_msg_dynamic_banner_list.get(i) != null))
-            {
-              paramToServiceMsg = rfu.a((oidb_cmd0xbc9.DynamicBannerItem)paramObject.rpt_msg_dynamic_banner_list.get(i));
-              if (paramToServiceMsg != null)
-              {
-                paramToServiceMsg = paramToServiceMsg.iterator();
-                while (paramToServiceMsg.hasNext()) {
-                  paramFromServiceMsg.addDynamicItem((rfu)paramToServiceMsg.next());
-                }
-              }
-            }
-            i += 1;
-          }
-        }
-        if (paramObject.msg_more_channel_item.has())
-        {
-          paramToServiceMsg = rfw.a((oidb_cmd0xbc9.MoreChannelItem)paramObject.msg_more_channel_item.get());
-          if (paramToServiceMsg != null) {
-            paramFromServiceMsg.setMoreChannelItem(paramToServiceMsg);
-          }
-        }
-        a(paramFromServiceMsg);
-        QLog.d("ReadInJoyEngineModule", 2, "handle0xbc9BannerInfo bannerInfo = " + paramFromServiceMsg);
-        return;
-        QLog.d("ReadInJoyEngineModule", 2, "handle0xbc9BannerInfo uint32_need_update = 0");
+        paramVafContext = paramVafContext.getTemplateBean(localqlk.a(paramString1).a());
+        return paramVafContext;
       }
-      else
+      catch (JSONException paramVafContext)
       {
-        label462:
-        paramToServiceMsg = null;
+        QLog.e("ProteusSupportUtilDynamic", 1, new Object[] { "getTemplateBean failed, styleID = ", paramString1, ", e = ", paramVafContext });
       }
+      paramVafContext = null;
     }
+    return null;
   }
   
-  public TopBannerInfo a(int paramInt)
+  private static String a(int paramInt)
   {
-    return (TopBannerInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    Object localObject1 = a(paramInt1);
-    if (localObject1 == null) {}
-    for (localObject1 = "";; localObject1 = ((TopBannerInfo)localObject1).mCookie)
+    switch (paramInt)
     {
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = "";
+    default: 
+      return "ReadInjoy_small_cell";
+    case 0: 
+    case 1: 
+      return "ReadInjoy_small_cell";
+    }
+    return "ReadInjoy_large_cell";
+  }
+  
+  private static void a(int paramInt, qqa paramqqa)
+  {
+    if (paramqqa == null) {
+      throw new NullPointerException();
+    }
+    a.put(Integer.valueOf(paramInt), paramqqa);
+  }
+  
+  public static void a(ProteusItemView paramProteusItemView, int paramInt1, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, int paramInt2, String paramString)
+  {
+    blfz.a("ProteusSupportUtilDynamic.bindData");
+    if ((paramProteusItemView == null) || (paramProteusItemView.a() == null))
+    {
+      blfz.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("ProteusSupportUtilDynamic", 2, "bindData : " + paramBaseArticleInfo + " adapterViewType : " + paramInt1);
       }
-      localObject1 = new oidb_cmd0xbc9.ReqBody();
-      oidb_cmd0xbc9.BannerRoundReqBody localBannerRoundReqBody = new oidb_cmd0xbc9.BannerRoundReqBody();
-      localBannerRoundReqBody.bytes_cookie.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-      localBannerRoundReqBody.uint32_channel_id.set(paramInt1);
-      ((oidb_cmd0xbc9.ReqBody)localObject1).msg_banner_round_req_body.set(localBannerRoundReqBody);
-      a(qlk.a("OidbSvc.0xbc9", 3017, paramInt2, ((oidb_cmd0xbc9.ReqBody)localObject1).toByteArray()));
-      QLog.d("ReadInJoyEngineModule", 2, "req banner info cookies: " + (String)localObject2 + "  channelId: " + paramInt1);
       return;
     }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xbc9")) {
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    a(paramInt, 1);
-  }
-  
-  public void c(int paramInt)
-  {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(TopBannerInfo.class, true, "mChannelId IS NOT NULL AND mChannelId == ?", new String[] { "" + paramInt }, null, null, null, "1");
-    if ((localList == null) || (localList.isEmpty()))
+    TemplateBean localTemplateBean = paramProteusItemView.a();
+    paramString = a(paramInt1, paramBaseArticleInfo, paramString);
+    if ((localTemplateBean != null) && (paramString != null) && (!paramString.equals(localTemplateBean)))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramInt), new TopBannerInfo());
-      return;
+      Container localContainer = paramVafContext.getViewFactory().inflate(paramVafContext, paramString);
+      if (localContainer != null)
+      {
+        localContainer.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841743));
+        paramProteusItemView.d();
+        paramProteusItemView.a(localContainer);
+      }
+      paramBaseArticleInfo.mProteusTemplateBean = paramString;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramInt), localList.get(0));
+    paramProteusItemView = paramProteusItemView.a();
+    paramProteusItemView.setTag(2131376215, paramString);
+    blfz.a("ProteusSupportUtilDynamic.bindDataImpl");
+    if (paramString != null) {
+      piv.a(paramProteusItemView, localTemplateBean, paramString);
+    }
+    blfz.a();
+    piv.a(paramProteusItemView, paramVafContext, paramString);
+    blfz.a();
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return a.containsKey(Integer.valueOf(paramInt));
   }
 }
 

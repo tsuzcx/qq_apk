@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class acou
-  implements DialogInterface.OnClickListener
+public class acou
+  implements acot
 {
-  acou(acot paramacot) {}
+  private acny<Integer, acos> a = new acnz();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acos a(Integer paramInteger)
   {
-    paramDialogInterface.dismiss();
+    return (acos)this.a.a(paramInteger);
+  }
+  
+  public void a(Integer paramInteger, Class<? extends acos> paramClass)
+  {
+    this.a.a(paramInteger, paramClass);
   }
 }
 

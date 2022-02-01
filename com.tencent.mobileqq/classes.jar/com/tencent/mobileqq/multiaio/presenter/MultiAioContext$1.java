@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.multiaio.presenter;
 
 import android.support.v4.app.FragmentActivity;
-import avxy;
-import avyk;
+import axea;
+import axem;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
@@ -16,15 +16,15 @@ import mqq.os.MqqHandler;
 public class MultiAioContext$1
   implements Runnable
 {
-  public MultiAioContext$1(avyk paramavyk, FragmentActivity paramFragmentActivity, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  public MultiAioContext$1(axem paramaxem, FragmentActivity paramFragmentActivity, QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
   public void run()
   {
-    Object localObject1 = avxy.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+    Object localObject1 = axea.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
     if (((List)localObject1).size() > 0) {
       ThreadManager.getSubThreadHandler().postDelayed(new MultiAioContext.1.1(this), 100L);
     }
-    avyk.a(this.this$0, (List)localObject1);
+    axem.a(this.this$0, (List)localObject1);
     QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())

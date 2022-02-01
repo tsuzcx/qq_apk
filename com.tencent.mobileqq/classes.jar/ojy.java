@@ -1,24 +1,16 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.2;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ojy
-  implements Animation.AnimationListener
+class ojy
+  implements DialogInterface.OnClickListener
 {
-  public ojy(ReadInJoyNaviController.2 param2) {}
+  ojy(oju paramoju, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ojv.a(this.a.this$0, true);
-    ojv.a(this.a.this$0).setAlpha(0.0F);
-    ojv.a(this.a.this$0).removeView(ojv.a(this.a.this$0));
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Oju.a(paramDialogInterface, false, this.jdField_a_of_type_JavaLangString);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

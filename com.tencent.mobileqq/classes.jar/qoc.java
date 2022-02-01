@@ -1,95 +1,45 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import org.json.JSONObject;
 
 public class qoc
+  implements qqa
 {
-  private JSONObject a;
+  private BaseTemplateFactory a;
   
-  public qoc()
+  public qoc(VafContext paramVafContext)
   {
-    this.a = new JSONObject();
-    a();
+    this.a = paramVafContext.getTemplateFactory();
   }
   
-  public qoc(String paramString)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        this.a = new JSONObject(paramString);
-        a();
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("PTSReport", 1, "e = " + paramString);
-        this.a = new JSONObject();
-        a();
-        return;
-      }
+    if (this.a != null) {
+      return this.a.getTemplateBean(paramJSONObject);
     }
-    this.a = new JSONObject();
-    a();
+    return null;
   }
   
-  private void a()
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    for (;;)
-    {
-      try
-      {
-        this.a.put("os", "1");
-        this.a.put("version", "8.4.8");
-        this.a.put("pts_engine_version", qmv.a().a());
-        this.a.put("pts_app_version", qmt.a().a());
-        this.a.put("sdk_version", String.valueOf(Build.VERSION.SDK_INT));
-        JSONObject localJSONObject = this.a;
-        if (!TextUtils.isEmpty(Build.BRAND))
-        {
-          String str1 = Build.BRAND;
-          localJSONObject.put("device_brand", str1);
-          localJSONObject = this.a;
-          if (!TextUtils.isEmpty(Build.MODEL))
-          {
-            str1 = Build.MODEL;
-            localJSONObject.put("device_model", str1);
-            this.a.put("is_debug", "0");
-            return;
-          }
-          str1 = "";
-          continue;
-        }
-        String str2 = "";
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("PTSReport", 1, "[initCommonField], e = " + localJSONException);
-        return;
-      }
+    return new qlk().N(paramBaseArticleInfo).C(paramBaseArticleInfo).a();
+  }
+  
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView().findViewBaseByName("id_proteus_collection_view");
+    if ((paramContainer instanceof qwn)) {
+      ((qwn)paramContainer).a(paramqfw);
     }
   }
   
-  public String a()
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
   {
-    return this.a.toString();
-  }
-  
-  public qoc a(String paramString1, String paramString2)
-  {
-    try
-    {
-      this.a.put(paramString1, paramString2);
-      return this;
-    }
-    catch (JSONException paramString1)
-    {
-      QLog.e("PTSReport", 1, "[addString], e = " + paramString1);
-    }
-    return this;
+    return false;
   }
 }
 

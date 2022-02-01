@@ -1,51 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoControlUI;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-public class mjk
-  implements DialogInterface.OnClickListener
+class mjk
+  implements Animator.AnimatorListener
 {
-  public mjk(VideoControlUI paramVideoControlUI, long paramLong) {}
+  mjk(mji parammji) {}
   
-  public void onClick(DialogInterface arg1, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h()) {}
-    long l;
-    do
-    {
-      do
-      {
-        return;
-        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.m) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g != null)) {
-          bcef.b(null, "CliOper", "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, 0, 0, "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h, "");
-        }
-        mum.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
-      } while ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.z != 2) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.z != 1));
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
-      l = Long.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).longValue();
-      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().a(l, 1);
-    } while (paramInt == -1);
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c.remove(paramInt);
-    synchronized (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d)
-    {
-      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().b(l, 1);
-      if (paramInt != -1)
-      {
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d.remove(paramInt);
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c();
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationCancel");
     }
+    this.a.b(3, false);
+    if (mji.a(this.a) != null) {
+      mji.a(this.a).requestLayout();
+    }
+    mji.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationEnd");
+    }
+    this.a.c(3);
+    if (mji.a(this.a) != null) {
+      mji.a(this.a).requestLayout();
+    }
+    mji.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationStart");
+    }
+    mji.a(this.a).setVisibility(0);
+    mji.a(this.a).setAlpha(0.0F);
+    mji.a(this.a).setVisibility(0);
+    mji.a(this.a).setAlpha(0.0F);
+    mji.a(this.a).height = -2;
+    mji.a(this.a).width = -2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mjk
  * JD-Core Version:    0.7.0.1
  */

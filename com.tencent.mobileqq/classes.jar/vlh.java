@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import java.util.concurrent.atomic.AtomicInteger;
+import UserGrowth.stQQGroupDetailReq;
+import UserGrowth.stQQGroupDetailRsp;
 
-class vlh
-  implements ThreadExcutor.IThreadListener
+public class vlh
+  extends vfo<stQQGroupDetailRsp>
 {
-  vlh(vlg paramvlg, Runnable paramRunnable) {}
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public vlh(String paramString1, String paramString2)
   {
-    vlg.a(this.jdField_a_of_type_Vlg).decrementAndGet();
-    xvv.b(vlg.a(this.jdField_a_of_type_Vlg), "threshold after running current task is " + vlg.a(this.jdField_a_of_type_Vlg).get());
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      xvv.b(vlg.a(this.jdField_a_of_type_Vlg), "threshold after running current task is:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
-    }
-  }
-  
-  public void onPreRun()
-  {
-    vlg.a(this.jdField_a_of_type_Vlg).incrementAndGet();
-    xvv.a(vlg.a(this.jdField_a_of_type_Vlg), "execute %s", this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      xvv.b(vlg.a(this.jdField_a_of_type_Vlg), "execute hashcode:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
-    }
+    super("QQGroupDetail");
+    stQQGroupDetailReq localstQQGroupDetailReq = new stQQGroupDetailReq();
+    localstQQGroupDetailReq.groupId = paramString1;
+    localstQQGroupDetailReq.posterPersonId = paramString2;
+    this.a = localstQQGroupDetailReq;
+    this.f = 15000L;
+    vmp.d("QQGroupDetailRequest", "QQGroupDetailRequest  = " + localstQQGroupDetailReq.toString());
   }
 }
 

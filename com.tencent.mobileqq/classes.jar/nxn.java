@@ -1,20 +1,21 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class nxn
-  implements View.OnClickListener
+  extends Handler
 {
-  public nxn(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
+  public nxn(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramMessage.what == 5) {
+      this.a.a((String)paramMessage.obj);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    while (paramMessage.what != 291) {
+      return;
+    }
+    this.a.updateMicStatus((String)paramMessage.obj);
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.startup.step;
 
-import bcad;
-import bcct;
+import bdgy;
+import bdjo;
 
 public class Step$AfterDexStepFactory
-  implements bcct
+  implements bdjo
 {
-  public Step a(int paramInt, bcad parambcad, int[] paramArrayOfInt)
+  public Step a(int paramInt, bdgy parambdgy, int[] paramArrayOfInt)
   {
-    parambcad = null;
+    parambdgy = null;
     switch (paramInt)
     {
     case 8: 
@@ -17,9 +17,9 @@ public class Step$AfterDexStepFactory
     case 13: 
     case 21: 
     default: 
-      parambcad = new Step();
+      parambdgy = new Step();
     case 31: 
-      return parambcad;
+      return parambdgy;
     case 7: 
     case 19: 
       return new LoadData();

@@ -1,19 +1,53 @@
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import android.widget.TableLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class alwy
-  implements QQPermissionCallback
+public class alwy
+  extends Handler
 {
-  alwy(alwt paramalwt, AppActivity paramAppActivity) {}
+  public alwy(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void handleMessage(Message paramMessage)
   {
-    bfur.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Alwt.grant();
+    if (paramMessage.what == 0)
+    {
+      CreateFaceToFaceDiscussionActivity.a(this.a, 3);
+      paramMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, this.a.jdField_a_of_type_Long);
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (1 != paramMessage.what) {
+          break;
+        }
+      } while (this.a.jdField_c_of_type_Boolean);
+      this.a.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.a.jdField_a_of_type_JavaLangStringBuffer.length());
+      this.a.jdField_b_of_type_AndroidWidgetTableLayout.setContentDescription(this.a.a());
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845207);
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845207);
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845207);
+      this.a.d.setImageResource(2130845207);
+      this.a.e.setEnabled(true);
+      this.a.f.setEnabled(true);
+      this.a.g.setEnabled(true);
+      this.a.h.setEnabled(true);
+      this.a.i.setEnabled(true);
+      this.a.j.setEnabled(true);
+      this.a.k.setEnabled(true);
+      this.a.l.setEnabled(true);
+      this.a.m.setEnabled(true);
+      this.a.n.setEnabled(true);
+      this.a.o.setEnabled(true);
+      return;
+    } while (2 != paramMessage.what);
+    QQToast.a(BaseApplicationImpl.getContext(), paramMessage.arg1, paramMessage.arg2, 0).a();
   }
 }
 

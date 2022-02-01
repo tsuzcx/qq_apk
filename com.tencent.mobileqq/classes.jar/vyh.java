@@ -1,79 +1,67 @@
-import android.os.Build;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Queue;
+import java.util.Set;
 
 public class vyh
-  extends vqr
 {
-  static final String a;
-  static boolean b;
-  public boolean a;
-  public String b;
-  public int c;
-  public String c;
+  private vyi a = new vyi();
   
-  static
+  public vyh(HashMap<String, List<vxh>> paramHashMap)
   {
-    jdField_a_of_type_JavaLangString = vpl.a("StoryTabSvc.startpage_feeds_list_725");
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspMsgTabNodeList localRspMsgTabNodeList = new qqstory_service.RspMsgTabNodeList();
-    try
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
     {
-      localRspMsgTabNodeList.mergeFrom(paramArrayOfByte);
-      return new vyi(localRspMsgTabNodeList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
+      Object localObject = (Map.Entry)paramHashMap.next();
+      String str = (String)((Map.Entry)localObject).getKey();
+      localObject = ((Map.Entry)localObject).getValue();
+      if (localObject == null)
       {
-        paramArrayOfByte.printStackTrace();
+        ykq.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "value is null key=%s", new Object[] { str });
+      }
+      else
+      {
+        localObject = (List)localObject;
+        this.a.a(str, ((List)localObject).size());
       }
     }
   }
   
-  protected byte[] a()
+  public String a()
   {
-    if (jdField_b_of_type_Boolean)
+    StringBuilder localStringBuilder = new StringBuilder("AlbumTree=[\n");
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(this.a);
+    while (localLinkedList.size() > 0)
     {
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_c_of_type_JavaLangString = null;
+      int j = localLinkedList.size();
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = (vyi)localLinkedList.poll();
+        if (localObject != null)
+        {
+          localStringBuilder.append(" [").append(((vyi)localObject).toString()).append("];");
+          localObject = ((vyi)localObject).a.iterator();
+          while (((Iterator)localObject).hasNext()) {
+            localLinkedList.offer((vyi)((Iterator)localObject).next());
+          }
+        }
+        i += 1;
+      }
+      localStringBuilder.append("\n");
     }
-    qqstory_service.ReqMsgTabNodeList localReqMsgTabNodeList = new qqstory_service.ReqMsgTabNodeList();
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      localReqMsgTabNodeList.current_seq.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    localReqMsgTabNodeList.source.set(this.jdField_c_of_type_Int);
-    if (this.jdField_c_of_type_JavaLangString != null) {
-      localReqMsgTabNodeList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    }
-    localReqMsgTabNodeList.version.set(4);
-    Long localLong = ypo.a();
-    if (localLong != null) {
-      localReqMsgTabNodeList.adcode.set(localLong.longValue());
-    }
-    localReqMsgTabNodeList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
-    localReqMsgTabNodeList.force_refresh.set(this.jdField_a_of_type_Boolean);
-    localReqMsgTabNodeList.client_version.set(ByteStringMicro.copyFromUtf8("8.4.8"));
-    return localReqMsgTabNodeList.toByteArray();
+    localStringBuilder.append("\n]");
+    ykq.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "traverse " + localStringBuilder.toString());
+    return localStringBuilder.toString();
   }
   
-  public String toString()
+  public vyi a()
   {
-    return "MsgTabNodeListRequest{cookie='" + this.jdField_c_of_type_JavaLangString + '\'' + ", seq='" + this.jdField_b_of_type_JavaLangString + '\'' + ", source=" + this.jdField_c_of_type_Int + '}';
+    return this.a;
   }
 }
 

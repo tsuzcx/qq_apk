@@ -1,18 +1,22 @@
 package com.tencent.qapmsdk.impl.appstate;
 
 import android.os.Looper;
-import com.tencent.qapmsdk.impl.instrumentation.i;
+import com.tencent.qapmsdk.impl.e.a;
+import com.tencent.qapmsdk.impl.g.b;
 import com.tencent.qapmsdk.impl.instrumentation.j;
-import com.tencent.qapmsdk.impl.instrumentation.k.b;
+import com.tencent.qapmsdk.impl.instrumentation.k;
+import com.tencent.qapmsdk.impl.instrumentation.l.b;
+import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class QAPMMonitorThreadLocal
-  extends f
+  extends g
 {
   private static volatile QAPMMonitorThreadLocal e;
-  protected ThreadLocal<Vector<i>> d = new ThreadLocal();
+  protected ThreadLocal<Vector<j>> d = new ThreadLocal();
   
-  private Vector<i> g()
+  private Vector<j> g()
   {
     Vector localVector2 = (Vector)this.d.get();
     Vector localVector1 = localVector2;
@@ -43,13 +47,14 @@ public class QAPMMonitorThreadLocal
     super.d();
   }
   
-  public ThreadLocal<Vector<i>> f()
+  public ThreadLocal<Vector<j>> f()
   {
     return this.d;
   }
   
   public void pop(boolean paramBoolean)
   {
+    j localj;
     if (g() != null)
     {
       if ((this.d.get() == null) || (((Vector)this.d.get()).size() < 20)) {
@@ -58,17 +63,33 @@ public class QAPMMonitorThreadLocal
       if ((e() != null) && (!e().isEmpty()))
       {
         if (paramBoolean) {
-          ((i)e().peek()).a();
+          ((j)e().peek()).a();
         }
-        g().add(e().peek());
+        localj = (j)e().peek();
+        if (localj == null) {
+          return;
+        }
+        if ((b.e.get()) || (b.a.contains(localj.h)) || (b.b.contains(localj.h))) {
+          break label148;
+        }
+        a.a().a(0L, localj);
       }
     }
-    super.a();
+    for (;;)
+    {
+      super.a();
+      return;
+      label148:
+      if (("QAPM_APPLAUNCH".equals(localj.g)) && (!b.d())) {
+        break;
+      }
+      g().add(localj);
+    }
   }
   
   public void push(String paramString1, String paramString2, long paramLong)
   {
-    paramString1 = new com.tencent.qapmsdk.impl.instrumentation.f(paramString1, paramString2, paramLong, paramLong, k.b.b.a());
+    paramString1 = new com.tencent.qapmsdk.impl.instrumentation.g(paramString1, paramString2, paramLong, paramLong, l.b.b.a());
     if (Looper.myLooper() == Looper.getMainLooper()) {}
     for (boolean bool = true;; bool = false)
     {

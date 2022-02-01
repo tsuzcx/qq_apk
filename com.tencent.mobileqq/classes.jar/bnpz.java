@@ -1,31 +1,38 @@
-import android.graphics.Bitmap;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
 public class bnpz
+  extends ViewModel
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public String d;
-  public String e;
-  String f;
-  public String g;
+  public final MutableLiveData<bnpr> a;
+  private boolean a;
+  public final MutableLiveData<AECaptureMode[]> b = new MutableLiveData();
+  public final MutableLiveData<Boolean> c = new MutableLiveData();
   
-  public void a()
+  public bnpz()
   {
-    this.jdField_b_of_type_Int = 0;
-    this.c = 0;
-    this.e = "";
-    this.g = "";
-    this.a = 0L;
-    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) && (((bnpr)this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue()).b == AECaptureMode.GIF);
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) && (((bnpr)this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue()).b == AECaptureMode.NORMAL);
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) && (((bnpr)this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue()).b == AECaptureMode.PLAY);
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

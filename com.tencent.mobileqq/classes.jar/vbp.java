@@ -1,25 +1,27 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.List;
 
 public class vbp
+  implements DownloadListener
 {
-  public static bjwy<vaq> a(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return new vbo(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    case 1: 
-      return new vcr(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    case 2: 
-      return new vcq(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    case 1001: 
-      return new vas(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    case 1002: 
-      return new vbj(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    }
-    return new vbm(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-  }
+  public void installSucceed(String paramString1, String paramString2) {}
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList) {}
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

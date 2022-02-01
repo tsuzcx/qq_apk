@@ -2,17 +2,17 @@ package com.tencent.open.downloadnew;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhzm;
-import bias;
-import biby;
-import bjkv;
+import bjko;
+import bjlu;
+import bjna;
+import bkwg;
 import java.io.File;
 import java.io.IOException;
 
 public class DownloadManager$21
   implements Runnable
 {
-  public DownloadManager$21(biby parambiby, Bundle paramBundle) {}
+  public DownloadManager$21(bjna parambjna, Bundle paramBundle) {}
   
   public void run()
   {
@@ -20,24 +20,24 @@ public class DownloadManager$21
     try
     {
       String str1 = this.a.getString("PackageName");
-      bhzm.c("DownloadManager_", "receive write code msg pkgName|" + str1);
+      bjko.c("DownloadManager_", "receive write code msg pkgName|" + str1);
       if (str1 == null) {
         return;
       }
       localDownloadInfo = this.this$0.b(str1);
       if (localDownloadInfo == null)
       {
-        bhzm.c("DownloadManager_", "receive write code msg pkgName|" + str1 + " download info is null");
+        bjko.c("DownloadManager_", "receive write code msg pkgName|" + str1 + " download info is null");
         return;
       }
     }
     catch (Exception localException)
     {
-      bhzm.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      bjko.c("DownloadManager_", "downloadSDKClient>>>", localException);
       return;
     }
     String str2 = this.a.getString("Code");
-    bhzm.c("DownloadManager_", "receive write code msg pkgName|" + localException + " code|" + str2);
+    bjko.c("DownloadManager_", "receive write code msg pkgName|" + localException + " code|" + str2);
     if (TextUtils.isEmpty(str2))
     {
       localDownloadInfo.a(4);
@@ -45,7 +45,7 @@ public class DownloadManager$21
       this.this$0.e(localDownloadInfo);
       this.this$0.a(4, localDownloadInfo);
       this.this$0.a(localDownloadInfo, localDownloadInfo.jdField_c_of_type_Long);
-      bias.a("300", localDownloadInfo.h, localDownloadInfo.jdField_c_of_type_JavaLangString, localDownloadInfo.o);
+      bjlu.a("300", localDownloadInfo.h, localDownloadInfo.jdField_c_of_type_JavaLangString, localDownloadInfo.o);
       if (localDownloadInfo.a) {
         this.this$0.c(localDownloadInfo);
       }
@@ -56,18 +56,18 @@ public class DownloadManager$21
       Object localObject = new File(localDownloadInfo.l);
       try
       {
-        bjkv.a((File)localObject, str2);
-        localObject = bjkv.a((File)localObject);
-        bhzm.c("DownloadManager_", "receive write code msg pkgName|" + localException + " check code|" + (String)localObject);
+        bkwg.a((File)localObject, str2);
+        localObject = bkwg.a((File)localObject);
+        bjko.c("DownloadManager_", "receive write code msg pkgName|" + localException + " check code|" + (String)localObject);
         bool = str2.equals(localObject);
         if (bool)
         {
-          bhzm.c("DownloadManager_", "receive write code msg pkgName|" + localException + " write code and check code suc");
+          bjko.c("DownloadManager_", "receive write code msg pkgName|" + localException + " write code and check code suc");
           localDownloadInfo.j = 0;
           this.this$0.e(localDownloadInfo);
           this.this$0.a(4, localDownloadInfo);
           this.this$0.a(localDownloadInfo, localDownloadInfo.jdField_c_of_type_Long);
-          bias.a("300", localDownloadInfo.h, localDownloadInfo.jdField_c_of_type_JavaLangString, localDownloadInfo.o);
+          bjlu.a("300", localDownloadInfo.h, localDownloadInfo.jdField_c_of_type_JavaLangString, localDownloadInfo.o);
           if (!localDownloadInfo.a) {
             return;
           }
@@ -78,10 +78,10 @@ public class DownloadManager$21
       {
         for (;;)
         {
-          bhzm.c("DownloadManager_", "write code Exception|" + localIOException.getMessage());
+          bjko.c("DownloadManager_", "write code Exception|" + localIOException.getMessage());
           boolean bool = false;
         }
-        bhzm.c("DownloadManager_", "receive write code msg pkgName|" + localException + " write code or check code fail");
+        bjko.c("DownloadManager_", "receive write code msg pkgName|" + localException + " write code or check code fail");
         localDownloadInfo.j = -20;
         localDownloadInfo.e = -2;
         this.this$0.e(localDownloadInfo);

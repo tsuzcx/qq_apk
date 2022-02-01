@@ -1,84 +1,113 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import com.tencent.ark.open.delegate.IArkDelegateNet;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-public class aqbo
-  extends aptq<aqbn>
+final class aqbo
+  extends IArkDelegateNet
 {
-  public static aqbn a()
+  public void download(String paramString, boolean paramBoolean1, boolean paramBoolean2, HashMap<String, String> paramHashMap, File paramFile, IArkDelegateNetCallback paramIArkDelegateNetCallback)
   {
-    return (aqbn)apub.a().a(631);
-  }
-  
-  @NonNull
-  public aqbn a(int paramInt)
-  {
-    return new aqbn();
-  }
-  
-  @Nullable
-  public aqbn a(aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGamePreloadConfProcessor", 2, "onParsed ");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.download url=", paramString });
+    String str;
+    if (paramHashMap != null)
     {
-      new aqbn();
-      return aqbn.a(paramArrayOfaptx);
+      str = (String)paramHashMap.get("Cookie");
+      if (paramHashMap == null) {
+        break label161;
+      }
+      paramHashMap = (String)paramHashMap.get("Referer");
+      label53:
+      if (paramFile == null) {
+        break label168;
+      }
     }
-    return null;
-  }
-  
-  public void a(aqbn paramaqbn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGamePreloadConfProcessor", 2, "onUpdate " + paramaqbn.toString());
+    label161:
+    label168:
+    for (paramFile = paramFile.getAbsolutePath();; paramFile = "")
+    {
+      if (1 == BaseApplicationImpl.sProcessId) {
+        break label175;
+      }
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("url", paramString);
+      ((Bundle)localObject).putBoolean("supportGzip", paramBoolean1);
+      ((Bundle)localObject).putBoolean("supportRedirect", paramBoolean2);
+      ((Bundle)localObject).putString("Cookie", str);
+      ((Bundle)localObject).putString("Referer", paramHashMap);
+      ((Bundle)localObject).putString("file", paramFile);
+      aqba.a().a("callDownload", (Bundle)localObject, new aqbr(this, paramString, paramIArkDelegateNetCallback));
+      return;
+      str = "";
+      break;
+      paramHashMap = "";
+      break label53;
     }
-  }
-  
-  public Class<aqbn> clazz()
-  {
-    return aqbn.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGamePreloadConfProcessor", 2, "onReqFailed " + paramInt);
+    label175:
+    Object localObject = ((bhyq)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+    paramFile = new bhyo(paramString, new File(paramFile));
+    paramFile.n = paramBoolean1;
+    paramFile.p = paramBoolean2;
+    if (str != null) {
+      paramFile.a("Cookie", str);
     }
+    if (paramHashMap != null) {
+      paramFile.a("Referer", paramHashMap);
+    }
+    paramHashMap = new Bundle();
+    ((bhyt)localObject).a(paramFile, new aqbs(this, paramString, paramIArkDelegateNetCallback), paramHashMap);
   }
   
-  public void onReqNoReceive() {}
-  
-  public int type()
+  public int getNetworkType()
   {
-    return 631;
+    return NetworkUtil.getNetworkType(BaseApplication.getContext());
+  }
+  
+  public boolean isNetworkAvailable()
+  {
+    return NetworkUtil.isNetworkAvailable(null);
+  }
+  
+  public void sendAppMsg(String paramString1, String paramString2, int paramInt1, int paramInt2, IArkDelegateNetCallback paramIArkDelegateNetCallback)
+  {
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.sendAppMsg cmd=", paramString1, ", msg=", paramString2 });
+    if (1 != BaseApplicationImpl.sProcessId)
+    {
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("cmd", paramString1);
+      ((Bundle)localObject).putString("msg", paramString2);
+      ((Bundle)localObject).putInt("timeOut", paramInt1);
+      ((Bundle)localObject).putInt("notifyType", paramInt2);
+      aqba.a().a("callSendAppMsg", (Bundle)localObject, new aqbp(this, paramString1, paramString2, paramIArkDelegateNetCallback, paramInt2));
+      return;
+    }
+    Object localObject = (ArkAppCenter)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER);
+    if (localObject == null)
+    {
+      QLog.e("ArkApp.ArkMultiProcUtil", 1, "ArkMultiProc.callSendAppMsg  appCenter is null");
+      return;
+    }
+    localObject = ((ArkAppCenter)localObject).a();
+    if (localObject == null)
+    {
+      QLog.e("ArkApp.ArkMultiProcUtil", 1, "ArkMultiProc.callSendAppMsg  sso is null");
+      return;
+    }
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.callSendAppMsg cmd=", paramString1, ", msg=", paramString2 });
+    ((apyz)localObject).a(paramString1, paramString2, paramInt1, paramInt2, new aqbq(this, paramIArkDelegateNetCallback));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbo
  * JD-Core Version:    0.7.0.1
  */

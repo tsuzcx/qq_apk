@@ -1,23 +1,25 @@
-import android.app.Dialog;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
 
-class aqun
-  implements View.OnClickListener
+public class aqun
+  implements View.OnTouchListener
 {
-  aqun(aqum paramaqum) {}
+  public aqun(TimeSelectView paramTimeSelectView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((HotChatFlashPicActivity.a(this.a.a) != null) && (!this.a.a.isFinishing()))
+    switch (paramMotionEvent.getActionMasked())
     {
-      HotChatFlashPicActivity.a(this.a.a).dismiss();
-      HotChatFlashPicActivity.a(this.a.a, null);
-      this.a.a.finish();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

@@ -1,83 +1,115 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.SharedPreferences;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppEntryHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
 public class apyr
-  extends aptq<apyq>
 {
-  public static apyq a()
-  {
-    return (apyq)apub.a().a(446);
-  }
+  private static final apyr jdField_a_of_type_Apyr = new apyr(1);
+  private static boolean jdField_a_of_type_Boolean;
+  private static final apyr jdField_b_of_type_Apyr = new apyr(2);
+  private static apyr jdField_c_of_type_Apyr = jdField_b_of_type_Apyr;
+  private final int jdField_a_of_type_Int;
+  private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private final String jdField_a_of_type_JavaLangString;
+  private final SharedPreferences jdField_b_of_type_AndroidContentSharedPreferences;
+  private final String jdField_b_of_type_JavaLangString;
+  private final String jdField_c_of_type_JavaLangString;
   
-  @NonNull
-  public apyq a(int paramInt)
+  private apyr(int paramInt)
   {
-    return new apyq();
-  }
-  
-  @Nullable
-  public apyq a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return apyq.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(apyq paramapyq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppApiReportProcessor", 2, "onUpdate " + paramapyq.toString());
-    }
-    paramapyq = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramapyq instanceof QQAppInterface))
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = a(paramInt);
+    this.jdField_c_of_type_JavaLangString = b(paramInt);
+    this.jdField_a_of_type_AndroidContentSharedPreferences = a(paramInt);
+    this.jdField_b_of_type_AndroidContentSharedPreferences = b(paramInt);
+    if (paramInt == 1)
     {
-      paramapyq = (MiniAppEntryHandler)((QQAppInterface)paramapyq).getBusinessHandler(149);
-      if (paramapyq != null) {
-        paramapyq.notifyUI(0, true, null);
-      }
+      this.jdField_b_of_type_JavaLangString = "test.ark.qq.com";
+      return;
     }
+    this.jdField_b_of_type_JavaLangString = "cgi.ark.qq.com";
   }
   
-  public Class<apyq> clazz()
+  private static SharedPreferences a(int paramInt)
   {
-    return apyq.class;
+    if (paramInt == 2) {
+      return BaseApplication.getContext().getSharedPreferences("ArkAppServerConfig", 0);
+    }
+    return BaseApplication.getContext().getSharedPreferences("ArkAppServerConfigDebug", 0);
   }
   
-  public boolean isAccountRelated()
+  public static apyr a()
   {
-    return true;
+    if (!jdField_a_of_type_Boolean)
+    {
+      jdField_a_of_type_Boolean = true;
+      ArkAppCenter.c("ArkApp", "ArkTemp.getCurrent sso env isTestEnv=" + false);
+    }
+    jdField_c_of_type_Apyr = jdField_b_of_type_Apyr;
+    return jdField_c_of_type_Apyr;
   }
   
-  public boolean isNeedCompressed()
+  private static String a(int paramInt)
   {
-    return true;
+    String str = e();
+    if (paramInt == 1) {
+      return str + "/ArkAppTest";
+    }
+    return str + "/ArkApp";
   }
   
-  public boolean isNeedStoreLargeFile()
+  private static SharedPreferences b(int paramInt)
   {
-    return false;
+    if (paramInt == 2) {
+      return BaseApplication.getContext().getSharedPreferences("ArkAppCacheConfig", 0);
+    }
+    return BaseApplication.getContext().getSharedPreferences("ArkAppCacheConfigDebug", 0);
   }
   
-  public int migrateOldVersion()
+  private static String b(int paramInt)
   {
-    return 0;
+    String str = e();
+    if (paramInt == 1) {
+      return str + "/pddata/prd/arkapp/test";
+    }
+    return str + "/pddata/prd/arkapp";
   }
   
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
+  private static String e()
   {
-    return 446;
+    return BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.jdField_c_of_type_JavaLangString + "/Dict";
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString + "/Debug";
+  }
+  
+  public String d()
+  {
+    return this.jdField_a_of_type_JavaLangString + "/Crash";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apyr
  * JD-Core Version:    0.7.0.1
  */

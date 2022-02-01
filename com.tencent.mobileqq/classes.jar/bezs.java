@@ -1,50 +1,63 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class bezs
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  private String c;
-  public int d;
+  public bezs(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public String a()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Int & 0x4) == 4) {
-      return "classteacher";
+    switch (((aftq)paramView.getTag()).a)
+    {
     }
-    if ((this.jdField_a_of_type_Int & 0x8) == 8) {
-      return "teacher";
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      TroopBarReplyActivity.b(this.a);
+      continue;
+      TroopBarReplyActivity.c(this.a);
+      continue;
+      TroopBarReplyActivity.d(this.a);
+      continue;
+      if (this.a.k)
+      {
+        bgip.a(this.a.m, this.a.n, "Clk_music", this.a.o, "", "", "");
+        bgip.b("reply_page_new", "Clk_music", this.a.o, "", "", "");
+      }
+      if (!this.a.a(4)) {
+        if ((this.a.a.a() != 0) && (this.a.a.a() != 3))
+        {
+          this.a.a(3);
+        }
+        else
+        {
+          this.a.b(4);
+          continue;
+          if (this.a.k)
+          {
+            bgip.a(this.a.m, this.a.n, "Clk_video", this.a.o, "", "", "");
+            bgip.b("reply_page_new", "Clk_video", this.a.o, "", "", "");
+          }
+          if (!this.a.a(8)) {
+            if ((this.a.a.a() != 0) && (this.a.a.a() != 4)) {
+              this.a.a(7);
+            } else {
+              this.a.b(3);
+            }
+          }
+        }
+      }
     }
-    if ((this.jdField_a_of_type_Int & 0x1) == 1) {
-      return "owner";
-    }
-    if ((this.jdField_a_of_type_Int & 0x2) == 2) {
-      return "admin";
-    }
-    return "other";
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = bezr.a(paramString, "").trim().replaceAll("\\s+", " ");
-  }
-  
-  public String b()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    return "KeywordResult{msgId=" + this.jdField_a_of_type_Long + ", troopUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", userRole=" + this.jdField_a_of_type_Int + ", action=" + this.jdField_b_of_type_Int + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", startPos=" + this.jdField_c_of_type_Int + ", endPos=" + this.d + ", content=" + this.jdField_c_of_type_JavaLangString + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezs
  * JD-Core Version:    0.7.0.1
  */

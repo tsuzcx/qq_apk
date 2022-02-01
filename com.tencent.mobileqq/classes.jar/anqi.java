@@ -1,89 +1,48 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public class anqi
-  extends anrh
+class anqi
+  implements AbsListView.OnScrollListener
 {
-  public anqi(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  anqi(anqh paramanqh) {}
   
-  private boolean c(String paramString)
-  {
-    int k = 0;
-    int j = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return true;
-      paramString = paramString.split("\\?");
-    } while ((paramString == null) || (paramString.length < 2));
-    long l1 = 0L;
-    paramString = paramString[1];
-    for (;;)
-    {
-      try
-      {
-        Object localObject = new JSONObject(URLDecoder.decode(paramString.substring(paramString.indexOf('=') + 1), "UTF-8"));
-        int i = ((JSONObject)localObject).optInt("gameId");
-        j = k;
-        long l2;
-        paramString.printStackTrace();
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          l2 = ((JSONObject)localObject).optLong("roomId");
-          l1 = l2;
-          j = k;
-          paramString = ((JSONObject)localObject).optString("gameName");
-          l1 = l2;
-          j = k;
-          k = ((JSONObject)localObject).optInt("gameMode");
-          l1 = l2;
-          j = k;
-          localObject = ((JSONObject)localObject).optString("extendInfo");
-          l1 = l2;
-          j = k;
-          ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, l2, k, (String)localObject, 204, paramString);
-          j = k;
-          l1 = l2;
-          QLog.i("CMShowGameInviteAction", 1, "[gotoCmShowGame], gameId:" + i + ",roomId:" + l1 + ",gameMode:" + j);
-          return true;
-        }
-        catch (Exception paramString)
-        {
-          break label212;
-        }
-        paramString = paramString;
-        i = 0;
-      }
-      label212:
-      QLog.w("CMShowGameInviteAction", 1, "[gotoCmShowGame], errInfo->" + paramString.getMessage());
-    }
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public boolean a()
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      QLog.i("CMShowGameInviteAction", 1, "[cmshow.game_invite], source:" + this.jdField_a_of_type_JavaLangString);
-      boolean bool = c(this.jdField_a_of_type_JavaLangString);
-      return bool;
+    default: 
+      return;
+    case 0: 
+      paramInt = paramAbsListView.getFirstVisiblePosition();
+      if (paramInt > anqh.a(this.a)) {
+        paramInt = 0;
+      }
+      break;
     }
-    catch (Exception localException)
+    while ((paramInt >= 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
     {
-      QLog.e("CMShowGameInviteAction", 1, "doAction error: " + localException.getMessage());
-      a("CMShowGameInviteAction");
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "slideupdown", "", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), this.a.d, new String[] { String.valueOf(paramInt) });
+      if (this.a.d != 9) {
+        break;
+      }
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "y_bqtabupdown", "", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, new String[] { "" });
+      return;
+      if (anqh.a(this.a) > paramInt)
+      {
+        paramInt = 1;
+        continue;
+        anqh.a(this.a, paramAbsListView.getFirstVisiblePosition());
+      }
+      else
+      {
+        paramInt = -1;
+      }
     }
-    return false;
   }
 }
 

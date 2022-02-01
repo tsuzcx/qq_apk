@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.scribble;
 
-import bard;
-import bare;
-import barf;
+import bbxs;
+import bbxt;
+import bbxu;
 import com.tencent.mobileqq.data.MessageForScribble;
 
 public class ScribbleDownloader$1
   implements Runnable
 {
-  public ScribbleDownloader$1(barf parambarf, bare parambare) {}
+  public ScribbleDownloader$1(bbxu parambbxu, bbxt parambbxt) {}
   
   public void run()
   {
-    barf.a(this.this$0, "dowmthreak", "start download ,uniseq:" + this.a.a.uniseq);
-    new bard(this.this$0.a).a(this.a.a, null);
+    bbxu.a(this.this$0, "dowmthreak", "start download ,uniseq:" + this.a.a.uniseq);
+    new bbxs(this.this$0.a).a(this.a.a, null);
   }
 }
 

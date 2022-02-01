@@ -1,26 +1,40 @@
-import android.opengl.EGLContext;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.RecentDynamicAvatarView;
 
 public class bbxe
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  public bbxv a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  public final TextView a;
+  private bbxc jdField_a_of_type_Bbxc;
+  public RecentDynamicAvatarView a;
   
-  public void a()
+  public bbxe(bbxb parambbxb, View paramView, bbxc parambbxc)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = null;
-      return;
-    }
+    super(paramView);
+    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131368381));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371981));
+    this.jdField_a_of_type_Bbxc = parambbxc;
+    paramView.setOnClickListener(this);
+    paramView.setTag(this);
   }
   
-  public void a(EGLContext paramEGLContext)
+  public void onClick(View paramView)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if ((this.jdField_a_of_type_Bbxc != null) && (bbxb.a(this.jdField_a_of_type_Bbxb))) {
+      this.jdField_a_of_type_Bbxc.a(paramView, getAdapterPosition() - 1);
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (this.jdField_a_of_type_Bbxc != null) {
+        this.jdField_a_of_type_Bbxc.a(paramView, getAdapterPosition());
+      }
     }
   }
 }

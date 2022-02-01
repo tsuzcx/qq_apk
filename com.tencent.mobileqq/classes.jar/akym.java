@@ -1,60 +1,31 @@
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.data.ChatMessage;
+import org.json.JSONObject;
 
-public abstract interface akym
+public class akym
 {
-  public abstract int a();
+  public int a;
+  public String a;
+  public JSONObject a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public abstract int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
+  public akym() {}
   
-  public abstract int a(int paramInt1, int paramInt2);
+  public akym(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+  }
   
-  @Nullable
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(@NonNull akyo paramakyo);
-  
-  public abstract void a(ChatMessage paramChatMessage);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(@ColorInt int paramInt);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(@ColorInt int paramInt);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
-  
-  public abstract void d();
-  
-  public abstract boolean f();
+  public String toString()
+  {
+    return "id: " + this.jdField_a_of_type_JavaLangString + " type: " + this.jdField_a_of_type_Int + " name: " + this.b + " params: " + this.jdField_a_of_type_OrgJsonJSONObject;
+  }
 }
 
 

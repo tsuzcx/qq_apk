@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
 public class otc
-  implements oww
+  implements avom
 {
-  public otc(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, oww paramoww) {}
+  public otc(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(int paramInt)
+  public void a(HotPicData paramHotPicData)
   {
-    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).c();
-    if (this.jdField_a_of_type_Oww != null) {
-      this.jdField_a_of_type_Oww.a(paramInt);
+    if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
+      ((ReadInJoyDeliverUGCActivity)this.a).a(paramHotPicData);
     }
   }
 }

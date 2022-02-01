@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.navigate;
 
-import agws;
+import ahps;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -8,14 +8,14 @@ import android.widget.ImageView;
 public class TroopDNANavBar$1
   implements Runnable
 {
-  public TroopDNANavBar$1(agws paramagws) {}
+  public TroopDNANavBar$1(ahps paramahps) {}
   
   public void run()
   {
-    agws.a(this.this$0, AnimationUtils.loadAnimation(this.this$0.a, 2130772057));
-    agws.a(this.this$0).clearAnimation();
-    agws.a(this.this$0).startAnimation(agws.a(this.this$0));
-    agws.a(this.this$0).setAnimationListener(this.this$0);
+    ahps.a(this.this$0, AnimationUtils.loadAnimation(this.this$0.a, 2130772057));
+    ahps.a(this.this$0).clearAnimation();
+    ahps.a(this.this$0).startAnimation(ahps.a(this.this$0));
+    ahps.a(this.this$0).setAnimationListener(this.this$0);
   }
 }
 

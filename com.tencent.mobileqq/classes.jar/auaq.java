@@ -1,68 +1,33 @@
-import android.text.TextUtils;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.ArrayList;
 
-public class auaq
+class auaq
   implements View.OnClickListener
 {
-  public auaq(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  auaq(auap paramauap) {}
   
   public void onClick(View paramView)
   {
-    String str2 = "";
-    String str1 = "";
-    Object localObject = QQGameFeedWebFragment.a(this.a);
-    int i;
-    if (localObject != null)
-    {
-      str2 = ((QQGameMsgInfo)localObject).gameAppId;
-      if (TextUtils.isEmpty(((QQGameMsgInfo)localObject).paMsgid)) {
-        str1 = "";
-      }
-    }
-    else
-    {
-      localObject = new HashMap();
-      ((Map)localObject).put(Integer.valueOf(2), str1);
-      ((Map)localObject).put(Integer.valueOf(3), "2");
-      ((Map)localObject).put(Integer.valueOf(4), "20");
-      ((Map)localObject).put(Integer.valueOf(24), "1");
-      abet.a(alvx.a(), "769", "205037", str2, "76901", "1", "160", (Map)localObject);
-      if (QQGameFeedWebFragment.a(this.a) != null)
-      {
-        if (QQGameFeedWebFragment.a(this.a) != null) {
-          break label201;
-        }
-        i = 0;
-        label152:
-        if (this.a.a < 3) {
-          break label217;
-        }
-        QQGameFeedWebFragment.a(this.a).setCurrentItem(QQGameFeedWebFragment.a(this.a).getCount());
-      }
-    }
+    if (!auap.a(this.a)) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      str1 = ((QQGameMsgInfo)localObject).paMsgid;
-      break;
-      label201:
-      i = QQGameFeedWebFragment.a(this.a).size();
-      break label152;
-      label217:
-      int j = QQGameFeedWebFragment.a(this.a).getCurrentItem();
-      if (j + 1 < i) {
-        QQGameFeedWebFragment.a(this.a).setCurrentItem(j + 1);
-      } else if (j == i - 1) {
-        QQGameFeedWebFragment.a(this.a).setCurrentItem(i);
+      if ((auea.a()) && (atpm.c() > atpj.a()))
+      {
+        audn.a(SplashActivity.sTopActivity, 2131692476, 2131692481, new auar(this));
+      }
+      else
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.addAll(atpm.a());
+        Intent localIntent = new Intent();
+        localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+        auap.b(this.a, localIntent);
       }
     }
   }

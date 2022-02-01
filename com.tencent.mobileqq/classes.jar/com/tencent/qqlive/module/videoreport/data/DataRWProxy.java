@@ -47,6 +47,15 @@ public class DataRWProxy
     return DataEntityOperator.getPageId(getDataEntity(paramObject, false));
   }
   
+  public static long getPageInTime(Object paramObject)
+  {
+    paramObject = DataEntityOperator.getInnerParam(getDataEntity(paramObject, false), "page_in_time");
+    if ((paramObject instanceof Long)) {
+      return ((Long)paramObject).longValue();
+    }
+    return 0L;
+  }
+  
   public static Map<String, ?> getPageParams(Object paramObject)
   {
     return DataEntityOperator.getPageParams(getDataEntity(paramObject, false));
@@ -77,6 +86,11 @@ public class DataRWProxy
     DataEntityOperator.removePageParam(getDataEntity(paramObject, false), paramString);
   }
   
+  public static void setElementDynamicParam(Object paramObject, IElementDynamicParams paramIElementDynamicParams)
+  {
+    DataEntityOperator.setElementParams(getDataEntity(paramObject, true), paramIElementDynamicParams);
+  }
+  
   public static void setElementId(Object paramObject, String paramString)
   {
     DataEntityOperator.setElementId(getDataEntity(paramObject, true), paramString);
@@ -92,6 +106,11 @@ public class DataRWProxy
     DataEntityOperator.setElementParams(getDataEntity(paramObject, true), paramMap);
   }
   
+  public static void setElementVirtualParentParams(Object paramObject, int paramInt, String paramString, Map<String, Object> paramMap)
+  {
+    DataEntityOperator.setElementVirtualParentParams(getDataEntity(paramObject, false), paramInt, paramString, paramMap);
+  }
+  
   public static void setInnerParam(Object paramObject1, String paramString, Object paramObject2)
   {
     DataEntityOperator.putInnerParam(getDataEntity(paramObject1, true), paramString, paramObject2);
@@ -100,6 +119,11 @@ public class DataRWProxy
   public static void setPageContentId(Object paramObject, String paramString)
   {
     DataEntityOperator.setPageContentId(getDataEntity(paramObject, true), paramString);
+  }
+  
+  public static void setPageExpTs(Object paramObject, long paramLong)
+  {
+    DataEntityOperator.putInnerParam(getDataEntity(paramObject, true), "page_in_time", Long.valueOf(paramLong));
   }
   
   public static void setPageId(Object paramObject, String paramString)

@@ -1,36 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-final class tjs
-  implements DialogInterface.OnClickListener
+public class tjs
 {
-  tjs(JSONObject paramJSONObject, BridgeModule paramBridgeModule, String paramString) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String a(int paramInt)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("button", 0);
-      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("cancelBtnText", ""));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
-      return;
+    if (paramInt == 72) {
+      return this.d;
     }
-    catch (JSONException paramDialogInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("BridgeModuleHelper", 2, "showDialog error" + paramDialogInterface.getMessage());
+    if (paramInt == 73) {
+      return this.d;
     }
+    if (paramInt == 2) {
+      return this.d;
+    }
+    if (paramInt == 3) {
+      return this.e;
+    }
+    if (paramInt == 12) {
+      return this.a;
+    }
+    if (paramInt == 9) {
+      return this.c;
+    }
+    if (paramInt == 10) {
+      return this.b;
+    }
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("weibo : ").append(this.a).append("\n");
+    localStringBuilder.append("qq : ").append(this.d).append("\n");
+    localStringBuilder.append("wx : ").append(this.c).append("\n");
+    localStringBuilder.append("pyq : ").append(this.b).append("\n");
+    localStringBuilder.append("qzone : ").append(this.e).append("\n");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tjs
  * JD-Core Version:    0.7.0.1
  */

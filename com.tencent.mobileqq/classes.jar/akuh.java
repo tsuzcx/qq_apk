@@ -1,23 +1,6 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
-
-public class akuh
-  extends Handler
+public abstract interface akuh
 {
-  public akuh(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 10) {
-      postDelayed(QzoneSlideShowPreparingFragment.a(this.a), 200L);
-    }
-  }
+  public abstract void a();
 }
 
 

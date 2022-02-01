@@ -1,17 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
 
 public class rjg
-  extends pkt
+  implements Animation.AnimationListener
 {
-  public rjg(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  public rjg(ComponentSocialOperation paramComponentSocialOperation) {}
   
-  public void c(List<TagInfo> paramList)
-  {
-    ReadInJoyVideoTagSelectionFragment.a(this.a).addAll(paramList);
-    pkp.a().b(this);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

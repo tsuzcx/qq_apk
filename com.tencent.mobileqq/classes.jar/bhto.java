@@ -1,6 +1,24 @@
-public abstract interface bhto
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bhto
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong);
+  long jdField_a_of_type_Long = 0L;
+  
+  bhto(bhtn parambhtn) {}
+  
+  public void onClick(View paramView)
+  {
+    long l = System.currentTimeMillis();
+    if ((this.jdField_a_of_type_Long == 0L) || (l - this.jdField_a_of_type_Long > 2000L))
+    {
+      bhtn.a(this.jdField_a_of_type_Bhtn).b();
+      this.jdField_a_of_type_Long = l;
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

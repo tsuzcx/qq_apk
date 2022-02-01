@@ -1,45 +1,47 @@
-import android.widget.TextView;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.player.IPlayer.PlayerListener;
-import com.tencent.tav.player.IPlayer.PlayerStatus;
-import com.tencent.tavcut.player.MoviePlayer;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import dov.com.qq.im.aeeditor.module.controlpanel.VideoControlPanel;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import android.os.Handler;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.troop.TroopPluginManager;
+import cooperation.troop.TroopPluginManager.InstallRunable;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class bmiy
-  implements IPlayer.PlayerListener
+  extends OnPluginInstallListener.Stub
 {
-  public bmiy(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  public bmiy(TroopPluginManager.InstallRunable paramInstallRunable) {}
   
-  public void onPositionChanged(CMTime paramCMTime)
+  public void onInstallBegin(String paramString)
   {
-    if (this.a.jdField_a_of_type_Long == 0L)
-    {
-      CMTime localCMTime = this.a.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.getDuration();
-      this.a.jdField_a_of_type_Long = (((float)(localCMTime.value * 1000L) / localCMTime.timeScale));
-    }
-    float f = (float)(paramCMTime.value * 1000L) / paramCMTime.timeScale;
-    paramCMTime = bmnt.a(f) + "/" + bmnt.a(this.a.jdField_a_of_type_Long);
-    AEEditorVideoEditFragment.a(this.a).setText(paramCMTime);
-    long l = bmnt.a(f);
-    if (AEEditorVideoEditFragment.a(this.a) != null) {
-      bmlk.a().a(l, this.a.jdField_a_of_type_Long);
-    }
-    AEEditorVideoEditFragment.a(this.a).b((int)l, (int)this.a.jdField_a_of_type_Long);
-    if ((this.a.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null) && (AEEditorVideoEditFragment.a(this.a) != null)) {
-      this.a.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.updateVideoProgress(f);
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallBegin...  pluginId = " + this.a.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    if ((paramPlayerStatus == IPlayer.PlayerStatus.PLAYING) || (paramPlayerStatus == IPlayer.PlayerStatus.REPLAY))
-    {
-      AEEditorVideoEditFragment.a(this.a, true);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallDownloadProgress... pluginId = " + this.a.jdField_a_of_type_JavaLangString);
     }
-    AEEditorVideoEditFragment.a(this.a, false);
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallError... = " + this.a.jdField_a_of_type_JavaLangString);
+    }
+    this.a.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramString);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1002);
+    bdla.b(null, "P_CliOper", "BizTechReport", "", "troop_plugin", "install_plugin", 0, 1, null, null, null, null);
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallFinish...   pluginId = " + this.a.jdField_a_of_type_JavaLangString);
+    }
+    this.a.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramString);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+    bdla.b(null, "P_CliOper", "BizTechReport", "", "troop_plugin", "install_plugin", 0, 0, null, null, null, null);
   }
 }
 

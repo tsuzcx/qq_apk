@@ -2,9 +2,10 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aray;
-import arba;
+import asfi;
+import asfk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
@@ -20,15 +21,15 @@ class EmoticonPanelFavHelper$2
     }
     if (!this.val$isDelOverflow)
     {
-      arba localarba = (arba)this.val$app.getManager(149);
-      List localList1 = localarba.a();
-      if ((localList1 != null) && (localList1.size() > aray.a))
+      asfk localasfk = (asfk)this.val$app.getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
+      List localList1 = localasfk.a();
+      if ((localList1 != null) && (localList1.size() > asfi.a))
       {
-        List localList2 = localList1.subList(0, localList1.size() - aray.a);
+        List localList2 = localList1.subList(0, localList1.size() - asfi.a);
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonPanelFavHelper", 2, "delListOverflow=" + localList2.toString() + "emolist.size=" + localList1.size());
         }
-        localarba.b(localList2);
+        localasfk.b(localList2);
         this.this$0.updateFavEmoticonPanel();
       }
       this.val$sp.edit().putBoolean("local_overflow" + this.val$uin, true).apply();
@@ -40,7 +41,7 @@ class EmoticonPanelFavHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,10 @@
-import android.view.View;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import trpc.qq_vgame.common.AvGameCommon.GameStatusInfo;
 
-class nfg
-  implements QQPermissionCallback
+public abstract interface nfg
 {
-  nfg(nff paramnff, String paramString, long paramLong, int paramInt, View paramView) {}
+  public abstract void a(AvGameCommon.GameStatusInfo paramGameStatusInfo);
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.w(this.jdField_a_of_type_Nff.jdField_a_of_type_JavaLangString, 1, "onClick_Camera, deny, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_Nff.jdField_a_of_type_Boolean + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.jdField_a_of_type_Nff.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Nff.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.w(this.jdField_a_of_type_Nff.jdField_a_of_type_JavaLangString, 1, "onClick_Camera, grant, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_Nff.jdField_a_of_type_Boolean + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.jdField_a_of_type_Nff.jdField_a_of_type_Boolean = false;
-    if ("android.permission.CAMERA".equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Nff.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView);
-    }
-    while (!"android.permission.RECORD_AUDIO".equals(this.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.jdField_a_of_type_Nff.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
-  }
+  public abstract boolean a();
 }
 
 

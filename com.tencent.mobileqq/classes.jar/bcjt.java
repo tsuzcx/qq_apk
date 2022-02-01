@@ -1,101 +1,216 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.text.TextUtils;
+import com.tencent.ark.ark;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.ark.Container;
+import com.tencent.ark.ark.ModuleRegister;
+import com.tencent.ark.open.ArkAppConfigMgr;
+import com.tencent.ark.open.security.ArkAppUrlChecker;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppCenterEvent;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class bcjt
-  extends bcgx
+  implements bcjv, ark.ApplicationCallback
 {
-  private LinearLayout a(Context paramContext)
-  {
-    Resources localResources = paramContext.getResources();
-    paramContext = new LinearLayout(paramContext);
-    paramContext.setOrientation(1);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    int i = localResources.getDimensionPixelSize(2131298978);
-    int j = localResources.getDimensionPixelSize(2131298979);
-    paramContext.setPadding(i, localResources.getDimensionPixelSize(2131298980), j, localResources.getDimensionPixelSize(2131298977));
-    paramContext.setLayoutParams(localLayoutParams);
-    return paramContext;
-  }
+  private ArrayList<WeakReference<bcke>> a = new ArrayList();
   
-  protected int b()
+  private bcke a(long paramLong)
   {
-    return 21;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    if (paramBundle.getInt("accostType") == AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA) {}
-    Resources localResources = paramContext.getResources();
-    int i;
-    int k;
-    label102:
-    Object localObject2;
-    if ((paramView != null) && ((paramView instanceof LinearLayout)))
+    ark.Container localContainer = ark.arkGetContainer(paramLong);
+    bcke localbcke;
+    if (localContainer == null)
     {
-      paramView = (LinearLayout)paramView;
-      paramView.removeAllViews();
-      i = paramView.getPaddingTop();
-      j = paramView.getPaddingBottom();
-      k = localResources.getDimensionPixelSize(2131298978);
-      int m = localResources.getDimensionPixelSize(2131298979);
-      a(paramView);
-      d(paramView);
-      paramView.setPadding(k, i, m, j);
-      k = AIOUtils.dp2px(7.0F, localResources);
-      i = 0;
-      if (i >= this.a.size()) {
-        return paramView;
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkNodeContainer", 2, "getArkNode, arkcontainer is null");
       }
-      localObject2 = (bcgw)this.a.get(i);
-      if (!(localObject2 instanceof bcmc)) {
-        break label216;
-      }
-      localObject1 = (bcmc)localObject2;
-      localObject2 = ((bcmc)localObject1).a(paramContext, null, paramBundle);
-      if (localObject2 != null)
+      localbcke = null;
+    }
+    label150:
+    label154:
+    for (;;)
+    {
+      return localbcke;
+      if (this.a.size() == 0)
       {
-        localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-        localLayoutParams.topMargin = ((bcmc)localObject1).o;
-        localLayoutParams.bottomMargin = ((bcmc)localObject1).p;
-        paramView.addView((View)localObject2, localLayoutParams);
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkNodeContainer", 2, "getArkNode, list is null");
+        }
+        return null;
       }
-    }
-    label216:
-    while (!(localObject2 instanceof bcjb))
-    {
-      LinearLayout.LayoutParams localLayoutParams;
-      i += 1;
-      break label102;
-      paramView = a(paramContext);
-      break;
-    }
-    Object localObject1 = ((bcgw)localObject2).a(paramContext, null, paramBundle);
-    if (((bcjb)localObject2).a) {}
-    for (int j = 0;; j = AIOUtils.dp2px(2.0F, localResources))
-    {
-      localObject2 = new LinearLayout.LayoutParams(-1, j);
-      ((LinearLayout.LayoutParams)localObject2).topMargin = k;
-      ((LinearLayout.LayoutParams)localObject2).bottomMargin = k;
-      if (localObject1 == null) {
+      int i = 0;
+      if (i < this.a.size())
+      {
+        localbcke = (bcke)((WeakReference)this.a.get(i)).get();
+        if ((localbcke == null) || (!(localbcke instanceof bckc))) {
+          break label150;
+        }
+      }
+      for (bcjy localbcjy = ((bckc)localbcke).a();; localbcjy = null)
+      {
+        if ((localbcjy != null) && (localbcjy.getContainer() == localContainer)) {
+          break label154;
+        }
+        i += 1;
         break;
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkNodeContainer", 2, "getArkNode, not found");
+        }
+        return null;
       }
-      paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-      break;
     }
-    return paramView;
   }
   
-  public String b()
+  public void AppCreate(ark.Application paramApplication)
   {
-    return "Layout21";
+    ArkAppCenterEvent.a(0, paramApplication.GetSpecific("appName"), null);
+  }
+  
+  public void AppDestroy(ark.Application paramApplication)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppCenterEvent.a(1, paramApplication, null);
+    aqbw.a(paramApplication);
+  }
+  
+  public boolean CheckUrlLegalityCallback(ark.Application paramApplication, String paramString)
+  {
+    paramApplication = paramApplication.GetSpecific("appName");
+    ArkAppUrlChecker localArkAppUrlChecker = ArkAppConfigMgr.getInstance().getUrlChecker(paramApplication);
+    boolean bool;
+    int i;
+    if (localArkAppUrlChecker != null)
+    {
+      int j = localArkAppUrlChecker.checkUrlIsValidByAppResouceList(paramString);
+      if (j == 0)
+      {
+        bool = true;
+        if (bool) {
+          break label170;
+        }
+        if (ArkAppConfigMgr.getInstance().isUrlCheckEnable(paramApplication)) {
+          break label165;
+        }
+        QLog.e("ArkNodeContainer", 1, new Object[] { "ArkSafe.UrlCheck.setDisable.EngineCallback seach appName=", paramApplication, ",url=", nwo.b(paramString, new String[0]), ", isValid set=true" });
+        i = 2;
+        bool = true;
+        label97:
+        aqbw.a(paramApplication, paramString, j, i, "");
+      }
+    }
+    for (;;)
+    {
+      QLog.e("ArkNodeContainer", 1, new Object[] { "ArkSafe.EngineCallback search appName=", paramApplication, ",url=", nwo.b(paramString, new String[0]), ", isValid=", Boolean.valueOf(bool) });
+      return bool;
+      bool = false;
+      break;
+      label165:
+      i = 1;
+      break label97;
+      label170:
+      i = 0;
+      break label97;
+      bool = true;
+    }
+  }
+  
+  public void OutputScriptError(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    for (;;)
+    {
+      if (paramString2 == null) {
+        paramString2 = "";
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ArkNodeContainer", 2, String.format("%s.script error: %s", new Object[] { paramString1, paramString2 }));
+        }
+        apyp.a(null, paramString1, "ScriptError", 0, 0, 0L, 0L, 0L, paramString2, "");
+        return;
+      }
+    }
+  }
+  
+  public void RegisterModules(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
+  {
+    apss.a(paramModuleRegister, paramApplication);
+    String str = paramApplication.GetSpecific("appName");
+    bcju localbcju = new bcju(paramApplication, apss.a(str));
+    localbcju.a(this);
+    paramApplication = apuh.a();
+    if ((!TextUtils.isEmpty(str)) && (paramApplication != null))
+    {
+      paramApplication = (ArkAppCenter)paramApplication.getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER);
+      if (paramApplication == null) {}
+    }
+    for (paramApplication = paramApplication.a();; paramApplication = null)
+    {
+      if (paramApplication != null) {
+        localbcju.a((List)apwl.a.get(localbcju.GetTypeName()));
+      }
+      paramModuleRegister.RegCallbackWrapper(localbcju);
+      return;
+    }
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    bcke localbcke = a(paramLong);
+    if ((localbcke != null) && ((localbcke instanceof bckc))) {
+      ((bckc)localbcke).a(paramString);
+    }
+  }
+  
+  public void a(long paramLong, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkNodeContainer", 2, "onNotify, KEY：" + paramString1 + " VALUE:" + paramString2);
+    }
+    bcke localbcke = a(paramLong);
+    if ((localbcke != null) && ((localbcke instanceof bckc))) {
+      ((bckc)localbcke).a(paramString1, paramString2);
+    }
+  }
+  
+  public void a(bckc parambckc)
+  {
+    if (parambckc == null) {
+      return;
+    }
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      if (((WeakReference)localIterator.next()).get() == parambckc) {
+        return;
+      }
+    }
+    this.a.add(new WeakReference(parambckc));
+  }
+  
+  public void b(bckc parambckc)
+  {
+    if (parambckc == null) {}
+    WeakReference localWeakReference;
+    do
+    {
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext()) {
+        localIterator = this.a.iterator();
+      }
+      localWeakReference = (WeakReference)localIterator.next();
+    } while (localWeakReference.get() != parambckc);
+    this.a.remove(localWeakReference);
   }
 }
 

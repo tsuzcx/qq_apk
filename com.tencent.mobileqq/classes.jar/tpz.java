@@ -1,42 +1,25 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_action/download_action/AdAppDownloadUtil$DownloadStateInfo;", "", "()V", "pkgName", "", "getPkgName", "()Ljava/lang/String;", "setPkgName", "(Ljava/lang/String;)V", "progress", "", "getProgress", "()I", "setProgress", "(I)V", "state", "getState", "setState", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tpz
+public class tpz
+  implements AdapterView.OnItemClickListener
 {
-  private int jdField_a_of_type_Int;
-  @Nullable
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  public tpz(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public final int a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public final void a(@Nullable String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public final int b()
-  {
-    return this.b;
-  }
-  
-  public final void b(int paramInt)
-  {
-    this.b = paramInt;
+    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.a) != null)) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tpz
  * JD-Core Version:    0.7.0.1
  */

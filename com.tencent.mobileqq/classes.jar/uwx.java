@@ -1,18 +1,15 @@
-import UserGrowth.stGetCollectionReq;
-import UserGrowth.stGetCollectionRsp;
+import android.support.annotation.NonNull;
 
-public class uwx
-  extends urg<stGetCollectionRsp>
+public abstract interface uwx<V extends uww, P extends uwz<V>>
 {
-  public uwx(String paramString1, String paramString2, int paramInt)
-  {
-    super("GetCollection", paramInt);
-    stGetCollectionReq localstGetCollectionReq = new stGetCollectionReq();
-    localstGetCollectionReq.cid = paramString1;
-    localstGetCollectionReq.attachInfo = paramString2;
-    localstGetCollectionReq.scene = paramInt;
-    this.a = localstGetCollectionReq;
-  }
+  public abstract V a();
+  
+  @NonNull
+  public abstract P a();
+  
+  public abstract void a(P paramP);
+  
+  public abstract P b();
 }
 
 

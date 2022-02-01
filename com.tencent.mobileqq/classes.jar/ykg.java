@@ -1,36 +1,18 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ykg
-  implements ServiceConnection
+  implements View.OnClickListener
 {
-  private yke a;
+  ykg(yke paramyke) {}
   
-  public ykg(yke paramyke)
+  public void onClick(View paramView)
   {
-    this.a = paramyke;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    yke localyke = this.a;
-    if (localyke != null) {
-      localyke.a(paramComponentName, paramIBinder);
+    if (yke.a(this.a) != null) {
+      yke.a(this.a).M_();
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    yke localyke = this.a;
-    if (localyke != null) {
-      localyke.a(paramComponentName);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

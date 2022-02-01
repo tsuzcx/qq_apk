@@ -1,13 +1,17 @@
-import android.view.View;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
-class yvk
-  implements bjoy
+public class yvk
+  extends ytc
 {
-  yvk(yvj paramyvj, View paramView) {}
+  public yvk(ElasticImageView paramElasticImageView) {}
   
-  public void a()
+  public void a(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    ElasticImageView.a(this.a, this.a.d);
+    ykq.b("ElasticImageView", "updateAnimator:" + this.a.d);
+    ElasticImageView.a(this.a);
   }
 }
 

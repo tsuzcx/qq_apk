@@ -1,24 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.5;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class oua
-  implements AbsListView.OnScrollListener
+  implements View.OnClickListener
 {
-  public oua(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
+  public oua(ReadInJoyNewFeedsActivity.5 param5, FrameLayout paramFrameLayout) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
-    if ((ReadInJoySecondCommentListFragment.a(this.a) != null) && (ReadInJoySecondCommentListFragment.a(this.a).a() != null)) {
-      ReadInJoySecondCommentListFragment.a(this.a).a().a(ReadInJoySecondCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoySecondCommentListFragment.a(this.a).getLastVisiblePosition());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a.a();
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a);
+    if (QQManagerFactory.READ_INJOY_SKIN_MANAGER == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.a) {
+      bhhr.s(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.app.getCurrentAccountUin(), null);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.servlet;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bgau;
+import bhjl;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
@@ -26,7 +26,7 @@ public class MiniAppOpenChannelAbstractServlet
     {
       if (paramFromServiceMsg.isSuccess())
       {
-        localBundle.putByteArray("responsedata", bgau.b(paramFromServiceMsg.getWupBuffer()));
+        localBundle.putByteArray("responsedata", bhjl.b(paramFromServiceMsg.getWupBuffer()));
         notifyObserver(paramIntent, 1054, true, localBundle, MiniAppObserver.class);
       }
       for (;;)
@@ -57,7 +57,7 @@ public class MiniAppOpenChannelAbstractServlet
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_webapp.OpenChannel");
-    paramPacket.putSendData(bgau.a(arrayOfByte1));
+    paramPacket.putSendData(bhjl.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

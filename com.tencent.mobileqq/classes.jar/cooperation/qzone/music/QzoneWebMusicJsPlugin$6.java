@@ -1,6 +1,6 @@
 package cooperation.qzone.music;
 
-import aval;
+import awgo;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import cooperation.qzone.remote.logic.RemoteRequestSender;
 import org.json.JSONObject;
@@ -13,7 +13,7 @@ class QzoneWebMusicJsPlugin$6
   public void run()
   {
     RemoteHandleManager.getInstance().getSender().stopPlay();
-    aval.a(new JSONObject(), "stopMusicBox", null);
+    awgo.a(new JSONObject(), "stopMusicBox", null);
   }
 }
 

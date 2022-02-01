@@ -1,15 +1,8 @@
-class ovq
-  extends owd
+public class ovq
 {
-  ovq(ouu paramouu)
-  {
-    super(paramouu, null);
-  }
+  public static final ovq a = new ovq();
   
-  void a(owg paramowg)
-  {
-    paramowg.onCommentListLoad(1, true, this.a.c(), ouu.c(this.a), 6, 6);
-  }
+  public void a() {}
 }
 
 

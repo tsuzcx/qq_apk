@@ -1,10 +1,10 @@
 package com.tencent.hippy.qq.module;
 
 import android.os.Bundle;
-import aqyp;
+import ascz;
 
 class QQRedPointModule$2
-  extends aqyp
+  extends ascz
 {
   QQRedPointModule$2(QQRedPointModule paramQQRedPointModule) {}
   

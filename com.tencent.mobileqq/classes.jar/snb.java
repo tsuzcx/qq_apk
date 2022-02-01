@@ -1,13 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public class snb
-  implements peb
+class snb
+  implements bkzu
 {
-  public snb(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  snb(sna paramsna) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void ad_()
   {
-    this.a.a(true, 2);
+    smg.a(this.a.a).c();
   }
 }
 

@@ -1,8 +1,18 @@
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+
 public class bhvv
+  implements TouchWebView.OnScrollChangedListener
 {
-  public static String a(String paramString1, String paramString2)
+  public bhvv(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    return String.format("https://q.qlogo.cn/qqapp/%s/%s/%d", new Object[] { paramString1, paramString2, Short.valueOf(100) });
+    if (this.a.a != null) {
+      this.a.a.scrollBy(0, paramInt2 - paramInt4);
+    }
   }
 }
 

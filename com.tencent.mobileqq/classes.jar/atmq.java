@@ -1,23 +1,28 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.forward.ForwardMarketFaceOption;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public class atmq
-  implements URLDrawable.URLDrawableListener
+class atmq
+  implements atmx
 {
-  public atmq(ForwardMarketFaceOption paramForwardMarketFaceOption) {}
+  atmq(atmo paramatmo, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
   {
-    paramURLDrawable.setBounds(bfvo.a(paramURLDrawable, 36, 100, this.a.a));
-    ForwardMarketFaceOption.a(this.a).setImageDrawable(paramURLDrawable);
+    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] onCheckResult. nSessionId=" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + " errCode:" + paramInt1);
+    if ((paramInt1 == 0) && (paramInt2 != 0) && (paramInt2 != 4))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeLevel = paramInt2;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeMsg = paramString1;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeDetailUrl = paramString2;
+      if (this.jdField_a_of_type_Atmo.a != null) {
+        this.jdField_a_of_type_Atmo.a.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      }
+    }
+    if (this.jdField_a_of_type_Atmo.a != null) {
+      this.jdField_a_of_type_Atmo.a.getFileManagerNotifyCenter().a(true, 200, new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramBundle });
+    }
   }
 }
 

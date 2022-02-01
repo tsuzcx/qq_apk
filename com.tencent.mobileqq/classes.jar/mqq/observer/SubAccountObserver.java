@@ -9,7 +9,7 @@ public abstract class SubAccountObserver
 {
   protected void onGetKeyBack(String paramString1, String paramString2, String paramString3) {}
   
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, String paramString4) {}
+  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, Bundle paramBundle) {}
   
   public void onLoginSuccess(String paramString1, String paramString2, String paramString3) {}
   
@@ -43,7 +43,7 @@ public abstract class SubAccountObserver
         onUserCancel(str3, str2, str1);
         return;
       }
-      onLoginFailed(str3, str2, str1, paramBundle.getString("error"));
+      onLoginFailed(str3, str2, str1, paramBundle);
       return;
     }
     String str1 = paramBundle.getString("uin");

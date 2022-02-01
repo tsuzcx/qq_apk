@@ -1,6 +1,32 @@
-public class aync
+import android.view.View;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
+
+class aync
+  implements AdapterView.OnItemSelectedListener
 {
-  public static final int[] a = { -1000, -2000, -20000, -2002, -2022, -1035, -2001, -2007, -1049, -2058 };
+  private aync(aymy paramaymy) {}
+  
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (this.a.jdField_a_of_type_Int != 0)
+    {
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.a();
+    }
+    AdapterView.OnItemSelectedListener localOnItemSelectedListener = this.a.jdField_a_of_type_Aymx.a();
+    if (localOnItemSelectedListener != null) {
+      localOnItemSelectedListener.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
+    }
+  }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView)
+  {
+    AdapterView.OnItemSelectedListener localOnItemSelectedListener = this.a.jdField_a_of_type_Aymx.a();
+    if (localOnItemSelectedListener != null) {
+      localOnItemSelectedListener.onNothingSelected(paramAdapterView);
+    }
+  }
 }
 
 

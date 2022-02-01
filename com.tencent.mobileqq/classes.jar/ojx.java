@@ -1,14 +1,17 @@
-import android.view.animation.Animation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
 
 class ojx
-  extends bjmc
+  implements DialogInterface.OnClickListener
 {
-  ojx(ojw paramojw) {}
+  ojx(oju paramoju, Context paramContext, Uri paramUri, String paramString1, String paramString2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ojv.a(this.a.a.this$0, true);
+    this.jdField_a_of_type_Oju.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Oju.a(paramDialogInterface, true, this.b);
   }
 }
 

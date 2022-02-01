@@ -1,27 +1,12 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class bgtu
-  implements Animation.AnimationListener
+public class bgtu
 {
-  bgtu(bgtt parambgtt, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimation.leftMargin = this.jdField_a_of_type_Bgtt.e;
-    paramAnimation.topMargin = this.jdField_a_of_type_Bgtt.f;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Bgtt.a = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
 }
 
 

@@ -1,58 +1,163 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.olympic.submsgtype0xb4.BodyType;
-import tencent.im.oidb.olympic.submsgtype0xb4.MsgBody;
-import tencent.im.oidb.olympic.torch_transfer.TorchbearerInfo;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.ad.tangram.log.AdLog;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.ad.tangram.util.AdUIUtils;
+import com.tencent.ark.open.ArkAppInfo.Size;
+import com.tencent.ark.open.ArkView;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialStatus;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialView.2;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public class acck
-  implements abzb
+public final class acck
+  implements acas
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  private ArkView a;
+  
+  public acck(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("olympic.OnLinePush", 2, "receive push 0xb4");
+    this.a = a(paramContext, paramGdtInterstitialParams, paramGdtInterstitialStatus);
+  }
+  
+  private static ArkView a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, GdtInterstitialStatus paramGdtInterstitialStatus)
+  {
+    WeakReference localWeakReference1 = new WeakReference(paramContext);
+    WeakReference localWeakReference2 = new WeakReference(paramGdtInterstitialStatus);
+    if (paramGdtInterstitialParams != null) {
+      paramGdtInterstitialStatus = paramGdtInterstitialParams.a();
     }
-    submsgtype0xb4.MsgBody localMsgBody = new submsgtype0xb4.MsgBody();
-    try
+    for (;;)
     {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      int i = localMsgBody.uint32_type.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("olympic.OnLinePush", 2, new Object[] { "receive push 0xb4, type = ", Integer.valueOf(i) });
-      }
-      if (i == 1)
+      try
       {
-        paramMsgType0x210 = localMsgBody.msg_body_type;
-        if (paramMsgType0x210.msg_torchbearer.has())
-        {
-          paramQQAppInterface = (axqb)paramQQAppInterface.getBusinessHandler(94);
-          if (paramQQAppInterface != null) {
-            paramQQAppInterface.a((torch_transfer.TorchbearerInfo)paramMsgType0x210.msg_torchbearer.get());
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.d("olympic.OnLinePush", 2, "receive push 0xb4, bodyType.msg_torchbearer.has() == false");
-          return;
-        }
+        localacbu = accc.a().a();
+        str = a(paramContext, paramGdtInterstitialParams);
+        acho.b("GdtInterstitialView", String.format("load appName:%s view:%s minver:%s", new Object[] { localacbu.a, localacbu.b, localacbu.c }));
+        l = System.currentTimeMillis();
+        paramContext = new ArkView(paramContext, null);
+        if (paramGdtInterstitialParams == null) {}
       }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("olympic.OnLinePush", 2, "receive push 0xb4, parse msgBody err,", paramQQAppInterface);
+      catch (Throwable paramGdtInterstitialStatus)
+      {
+        acbu localacbu;
+        String str;
+        long l;
+        paramContext = null;
       }
+      try
+      {
+        if ((paramGdtInterstitialParams.c >= 0) && (paramGdtInterstitialParams.d >= 0))
+        {
+          ArkAppInfo.Size localSize = new ArkAppInfo.Size(paramGdtInterstitialParams.c, paramGdtInterstitialParams.d);
+          paramContext.setSize(localSize, localSize, localSize);
+        }
+        paramContext.setBorderType(0);
+        paramContext.load(localacbu.a, localacbu.b, localacbu.c, str, null, new accl(l, paramGdtInterstitialStatus, localWeakReference2, localWeakReference1, paramGdtInterstitialParams));
+        if (localWeakReference2.get() != null) {
+          acid.a((Context)localWeakReference1.get(), paramGdtInterstitialParams, (GdtInterstitialStatus)localWeakReference2.get());
+        }
+        return paramContext;
+      }
+      catch (Throwable paramGdtInterstitialStatus)
+      {
+        break label222;
+      }
+      paramGdtInterstitialStatus = null;
+      continue;
+      label222:
+      AdLog.e("GdtInterstitialView", "createView", paramGdtInterstitialStatus);
     }
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  private static String a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams)
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    if ((paramGdtInterstitialParams == null) || (!paramGdtInterstitialParams.b()))
+    {
+      acho.d("GdtInterstitialView", "getMetaData error");
+      return null;
+    }
+    String str;
+    if (paramGdtInterstitialParams.b == 1) {
+      str = "vertical";
+    }
+    for (;;)
+    {
+      if (TextUtils.isEmpty(str))
+      {
+        acho.d("GdtInterstitialView", "getMetaData error");
+        return null;
+        if ((paramGdtInterstitialParams.b == 0) || (paramGdtInterstitialParams.b == 8)) {
+          str = "horizontal";
+        }
+      }
+      else
+      {
+        int i = AdUIUtils.px2dp(paramContext, paramGdtInterstitialParams.c);
+        int j = AdUIUtils.px2dp(paramContext, paramGdtInterstitialParams.d);
+        acho.b("GdtInterstitialView", String.format("getMetaData width:%d height:%d ptWidth:%d ptHeight:%d", new Object[] { Integer.valueOf(paramGdtInterstitialParams.c), Integer.valueOf(paramGdtInterstitialParams.d), Integer.valueOf(i), Integer.valueOf(j) }));
+        try
+        {
+          paramContext = new JSONObject();
+          paramContext.put("style", paramGdtInterstitialParams.jdField_a_of_type_Int);
+          paramContext.put("screenType", str);
+          paramGdtInterstitialParams = achn.a(paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a.info);
+          if ((paramGdtInterstitialParams != null) && (!JSONObject.NULL.equals(paramGdtInterstitialParams))) {
+            paramContext.put("adInfo", paramGdtInterstitialParams);
+          }
+          paramContext.put("viewWidth", i);
+          paramContext.put("viewHeight", j);
+          paramGdtInterstitialParams = new JSONObject();
+          paramGdtInterstitialParams.put("gdt", paramContext);
+          paramContext = paramGdtInterstitialParams.toString();
+          return paramContext;
+        }
+        catch (Throwable paramContext)
+        {
+          acho.d("GdtInterstitialView", "getMetaData", paramContext);
+          return null;
+        }
+      }
+      str = null;
+    }
+  }
+  
+  private static void b(int paramInt1, int paramInt2, String paramString)
+  {
+    AdThreadManager.INSTANCE.post(new GdtInterstitialView.2(paramString, paramInt1, paramInt2), 0);
+  }
+  
+  public View a()
+  {
+    return this.a;
+  }
+  
+  public void a(Context paramContext)
+  {
+    acho.b("GdtInterstitialView", "pause");
+    if (this.a != null) {
+      this.a.onPause();
+    }
+  }
+  
+  public void b(Context paramContext)
+  {
+    acho.b("GdtInterstitialView", "resume");
+    if (this.a != null) {
+      this.a.onResume();
+    }
+  }
+  
+  public void c(Context paramContext)
+  {
+    acho.b("GdtInterstitialView", "destroy");
+    if (this.a != null) {
+      this.a.onDestroy();
+    }
   }
 }
 

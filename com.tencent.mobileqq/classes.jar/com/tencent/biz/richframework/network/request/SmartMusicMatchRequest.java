@@ -4,7 +4,7 @@ import NS_COMM.COMM.Entry;
 import NS_COMM.COMM.StCommonExt;
 import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicReq;
 import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
-import biaq;
+import bjls;
 import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
@@ -57,7 +57,7 @@ public class SmartMusicMatchRequest
     }
     paramArrayList = new COMM.Entry();
     paramArrayList.key.set("wifi_mac");
-    paramArrayList.value.set(biaq.a());
+    paramArrayList.value.set(bjls.a());
     this.req.extInfo.mapInfo.add(paramArrayList);
   }
   

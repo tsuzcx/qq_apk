@@ -1,166 +1,126 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.Advertisement.view.ProgressControler.2;
+import com.tencent.biz.pubaccount.Advertisement.view.ProgressControler.3;
+import com.tencent.biz.qqstory.view.SplitedProgressBar;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import java.security.InvalidParameterException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ofn
-  implements apts<String>
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean;
-  private String c = "";
+  public int a;
+  protected long a;
+  public Handler a;
+  private SplitedProgressBar jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar;
+  public WeakReference<xjm> a;
+  public Timer a;
+  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
+  public boolean a;
+  public long b;
+  public long c;
   
-  public static ofn a()
+  public ofn(SplitedProgressBar paramSplitedProgressBar)
   {
-    ofn localofn = new ofn();
-    localofn.jdField_a_of_type_JavaLangString = uex.jdField_a_of_type_JavaLangString;
-    localofn.jdField_b_of_type_JavaLangString = uex.jdField_b_of_type_JavaLangString;
-    localofn.c = uex.c;
-    localofn.jdField_a_of_type_Boolean = uex.d;
-    return localofn;
-  }
-  
-  private ofn a(ofn paramofn, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return this;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("pacenter_url")) {
-          this.jdField_a_of_type_JavaLangString = paramofn.jdField_a_of_type_JavaLangString;
-        }
-        if (paramString.has("pacategory_url")) {
-          this.jdField_b_of_type_JavaLangString = paramofn.jdField_b_of_type_JavaLangString;
-        }
-        if (paramString.has("readinjoy_search_url")) {
-          this.c = paramofn.c;
-        }
-        if (paramString.has("image_collection_comment")) {
-          this.jdField_a_of_type_Boolean = paramofn.jdField_a_of_type_Boolean;
-        }
-        if (paramofn.jdField_b_of_type_Boolean)
-        {
-          this.jdField_b_of_type_Boolean = true;
-          return this;
-        }
-      }
-      catch (Exception paramofn)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramofn);
-        }
-        paramofn.printStackTrace();
-      }
+    this.jdField_a_of_type_AndroidOsHandler = new ofo(this, Looper.getMainLooper());
+    if (paramSplitedProgressBar == null) {
+      throw new InvalidParameterException("ProgressControler: progressBar is null");
     }
-    return this;
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = paramSplitedProgressBar;
   }
   
-  public static ofn a(aptx[] paramArrayOfaptx)
+  private void d()
   {
-    Object localObject = new ofn();
+    Timer localTimer = new Timer();
+    ProgressControler.3 local3 = new ProgressControler.3(this);
+    localTimer.scheduleAtFixedRate(local3, 0L, 50L);
+    this.jdField_a_of_type_JavaUtilTimer = localTimer;
+    this.jdField_a_of_type_JavaUtilTimerTask = local3;
+  }
+  
+  protected void a()
+  {
+    ProgressControler.2 local2 = new ProgressControler.2(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(local2);
+  }
+  
+  protected void a(int paramInt, long paramLong)
+  {
+    int j = 100;
     int i = 0;
-    String str;
-    for (;;)
+    if (this.b > 0L)
     {
-      if (i >= paramArrayOfaptx.length) {
-        return localObject;
+      int k = (int)paramLong * 100 / (int)this.b;
+      i = k;
+      if (k > 100) {
+        i = j;
       }
-      str = paramArrayOfaptx[i].jdField_a_of_type_JavaLangString;
-      try
-      {
-        ofn localofn = ((ofn)localObject).a((ofn)apul.a(str, ofn.class), str);
-        localObject = localofn;
-      }
-      catch (QStorageInstantiateException localQStorageInstantiateException)
-      {
-        for (;;)
-        {
-          QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + str, localQStorageInstantiateException);
-        }
-      }
-      i += 1;
     }
-    return localObject;
-  }
-  
-  public void a()
-  {
-    uex.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    uex.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    uex.c = this.c;
-    uex.d = this.jdField_a_of_type_Boolean;
-  }
-  
-  public void a(String paramString)
-  {
-    boolean bool3 = true;
     for (;;)
     {
-      boolean bool2;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        String str1 = paramString.getString("pacenter_url");
-        String str2 = paramString.getString("pacategory_url");
-        if (!uex.a(str1)) {
-          break label156;
-        }
-        this.jdField_a_of_type_JavaLangString = str1;
-        bool1 = true;
-        if (uex.a(str2))
-        {
-          this.jdField_b_of_type_JavaLangString = str2;
-          bool1 = true;
-        }
-        bool2 = bool1;
-        if (paramString.has("readinjoy_search_url"))
-        {
-          str1 = paramString.getString("readinjoy_search_url");
-          bool2 = bool1;
-          if (uex.a(str1))
-          {
-            this.c = str1;
-            bool2 = true;
-          }
-        }
-        if (paramString.has("image_collection_comment"))
-        {
-          this.jdField_a_of_type_Boolean = paramString.getBoolean("image_collection_comment");
-          bool1 = bool3;
-          this.jdField_b_of_type_Boolean = bool1;
-          return;
-        }
-      }
-      catch (Exception paramString)
+      if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.b))
       {
         if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramString);
+          QLog.e("ProgressControler", 2, "setProgressNow index < 0 || index >= mProgressBar.mTotalCount, index = " + paramInt + ", mTotalCount = " + this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.b);
         }
-        paramString.printStackTrace();
-        this.jdField_b_of_type_Boolean = false;
+        if (this.jdField_a_of_type_JavaUtilTimer != null) {
+          this.jdField_a_of_type_JavaUtilTimer.cancel();
+        }
+        if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+          this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+        }
         return;
       }
-      boolean bool1 = bool2;
-      continue;
-      label156:
-      bool1 = false;
+      this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setProgress(paramInt, i);
+      return;
     }
+  }
+  
+  public void a(int paramInt, long paramLong1, long paramLong2, xjm paramxjm)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = this.jdField_a_of_type_Long;
+    this.b = paramLong2;
+    if (this.jdField_a_of_type_JavaUtilTimer != null) {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
+    }
+    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    if (paramLong2 <= 0L)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxjm);
+      a();
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      return;
+    }
+    d();
   }
   
   public void b()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      uex.c((QQAppInterface)localAppRuntime);
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
+    if (this.jdField_a_of_type_JavaUtilTimer != null) {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
+    }
+    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    b();
   }
 }
 

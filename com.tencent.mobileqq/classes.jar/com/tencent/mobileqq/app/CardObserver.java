@@ -3,8 +3,8 @@ package com.tencent.mobileqq.app;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
 import android.os.Bundle;
-import aymx;
-import aymy;
+import azrs;
+import azrt;
 import com.tencent.mobileqq.data.AutoReplyText;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.CardProfile;
@@ -928,7 +928,7 @@ public class CardObserver
   
   protected void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard) {}
   
-  protected void onGetEducationList(boolean paramBoolean, long paramLong, ArrayList<aymx> paramArrayList) {}
+  protected void onGetEducationList(boolean paramBoolean, long paramLong, ArrayList<azrs> paramArrayList) {}
   
   protected void onGetHelloLiveMessageState(boolean paramBoolean1, boolean paramBoolean2) {}
   
@@ -960,7 +960,7 @@ public class CardObserver
   
   protected void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt) {}
   
-  protected void onGetShoppingInfo(boolean paramBoolean, String paramString, List<aymy> paramList, int paramInt1, int paramInt2, int paramInt3) {}
+  protected void onGetShoppingInfo(boolean paramBoolean, String paramString, List<azrt> paramList, int paramInt1, int paramInt2, int paramInt3) {}
   
   protected void onGetSignInInfo(boolean paramBoolean) {}
   

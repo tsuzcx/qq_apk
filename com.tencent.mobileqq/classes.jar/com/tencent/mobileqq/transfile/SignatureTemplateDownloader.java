@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import bgfm;
-import bggj;
-import bggk;
-import bgoe;
-import bgog;
-import bjkq;
+import bhoh;
+import bhpd;
+import bhpe;
+import bhyo;
+import bhyq;
+import bkwb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
@@ -41,12 +41,12 @@ public class SignatureTemplateDownloader
   public File downLoadImg(AppRuntime paramAppRuntime, String paramString1, String paramString2, boolean paramBoolean)
   {
     String str = getSigTplUri(Integer.parseInt(paramString1), paramString2);
-    paramString2 = new File(bgfm.a(paramString1, paramString2));
-    bgoe localbgoe = new bgoe(str, paramString2);
-    localbgoe.k = paramBoolean;
+    paramString2 = new File(bhoh.a(paramString1, paramString2));
+    bhyo localbhyo = new bhyo(str, paramString2);
+    localbhyo.k = paramBoolean;
     if (paramAppRuntime != null)
     {
-      if (bgog.a(localbgoe, paramAppRuntime) != 0) {
+      if (bhyq.a(localbhyo, paramAppRuntime) != 0) {
         break label102;
       }
       if ((!paramString2.exists()) || (SignatureManager.a(paramString2.getAbsolutePath()))) {
@@ -59,12 +59,12 @@ public class SignatureTemplateDownloader
       return new File(AppConstants.SDCARD_PATH);
       label88:
       if (SharpPUtil.isSharpPFile(paramString2)) {
-        return bjkq.a(paramString2);
+        return bkwb.a(paramString2);
       }
       return paramString2;
       label102:
-      bggk.a(null, "individual_v2_signature_download_fail", "" + localbgoe.a, "error code = " + localbgoe.a + " errorMsg = " + localbgoe.b + "url = " + str, null, 0.0F);
-      bggj.a("individual_v2_signature_download_fail", "tlpId:" + paramString1 + " errCode:" + localbgoe.a + " errMsg:" + localbgoe.b);
+      bhpe.a(null, "individual_v2_signature_download_fail", "" + localbhyo.a, "error code = " + localbhyo.a + " errorMsg = " + localbhyo.b + "url = " + str, null, 0.0F);
+      bhpd.a("individual_v2_signature_download_fail", "tlpId:" + paramString1 + " errCode:" + localbhyo.a + " errMsg:" + localbhyo.b);
     }
   }
   
@@ -82,13 +82,13 @@ public class SignatureTemplateDownloader
       paramURLDrawableHandler = ((Header)localObject).getValue();
     }
     paramURLDrawableHandler = BaseApplicationImpl.sApplication.getAppRuntime(paramURLDrawableHandler);
-    localObject = new File(bgfm.a(paramOutputStream, str));
+    localObject = new File(bhoh.a(paramOutputStream, str));
     if (((File)localObject).exists()) {
       return localObject;
     }
     if (paramDownloadParams.useSharpPImage)
     {
-      localObject = new File(bjkq.a((File)localObject));
+      localObject = new File(bkwb.a((File)localObject));
       if (((File)localObject).exists()) {
         return localObject;
       }

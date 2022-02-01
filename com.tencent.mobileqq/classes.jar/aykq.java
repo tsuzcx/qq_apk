@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-import java.util.Comparator;
-
-public class aykq
-  implements Comparator<PersonalityLabelInfo>
+public abstract interface aykq
 {
-  public aykq(PersonalityLabel paramPersonalityLabel) {}
-  
-  public int a(PersonalityLabelInfo paramPersonalityLabelInfo1, PersonalityLabelInfo paramPersonalityLabelInfo2)
-  {
-    return -(int)(paramPersonalityLabelInfo1.modTime - paramPersonalityLabelInfo2.modTime);
-  }
+  public abstract void a(int paramInt);
 }
 
 

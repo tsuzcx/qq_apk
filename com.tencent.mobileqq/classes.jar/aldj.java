@@ -1,13 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aldj
-  implements DialogInterface.OnClickListener
+class aldj
+  implements View.OnClickListener
 {
-  public aldj(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  aldj(aldh paramaldh, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (BaseActivity.sTopActivity != null) {
+      awzs.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      awzs.m();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+      }
+    }
+  }
 }
 
 

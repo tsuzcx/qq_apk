@@ -1,8 +1,30 @@
-public abstract interface alqv
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.QQToast;
+
+public class alqv
+  implements aaea
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  public alqv(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString1, String paramString2) {}
   
-  public abstract void a(int paramInt, String paramString);
+  public void callback(Bundle paramBundle)
+  {
+    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getIntent();
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")) && (paramBundle.getInt("head_id") >= 0) && (!TextUtils.isEmpty(paramBundle.getString("video_id"))))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a();
+      localIntent.putExtras(paramBundle);
+      localIntent.putExtra("video_path", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("photo_path", this.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.setResult(-1, localIntent);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.finish();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, 1, anvx.a(2131706934), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getTitleBarHeight());
+  }
 }
 
 

@@ -1,18 +1,12 @@
-import android.support.annotation.NonNull;
+import com.tencent.ttpic.video.AECoderFactory.AEEncoderFactory;
+import com.tencent.ttpic.video.AEEncoder;
 
-class bmwd
-  implements bmvq
+final class bmwd
+  implements AECoderFactory.AEEncoderFactory
 {
-  bmwd(bmwc parambmwc) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public AEEncoder createEncoder(String paramString, int paramInt1, int paramInt2)
   {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = bfby.b(paramString);
-    }
-    return str;
+    return new bbkt(paramString, paramInt1, paramInt2);
   }
 }
 

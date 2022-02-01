@@ -1,30 +1,15 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhvm
-  extends BaseAdapter
+class bhvm
+  implements bhvh
 {
-  public int getCount()
-  {
-    return 0;
-  }
+  bhvm(bhvl parambhvl) {}
   
-  public Object getItem(int paramInt)
+  public void a(Drawable paramDrawable)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return null;
+    QLog.i("VipWallpaper", 1, "mView#draw");
+    bhvl.a(this.a).a(paramDrawable);
   }
 }
 

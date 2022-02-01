@@ -1,27 +1,19 @@
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
+
 public class otw
+  implements nuw
 {
-  public int a;
-  public long a;
-  public CharSequence a;
-  public String a;
-  public CharSequence b;
+  public otw(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public otw(String paramString, long paramLong, CharSequence paramCharSequence)
+  public void loaded(String paramString, int paramInt)
   {
-    this(paramString, paramLong, paramCharSequence, 0);
-  }
-  
-  public otw(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    paramString = paramCharSequence;
-    if (paramCharSequence == null) {
-      paramString = "";
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
     }
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

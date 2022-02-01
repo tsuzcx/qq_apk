@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.model;
 
 import android.os.Handler;
-import avsq;
+import awyr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
@@ -13,7 +13,7 @@ import mqq.app.MobileQQ;
 public class EmoticonManager$26
   implements Runnable
 {
-  public EmoticonManager$26(avsq paramavsq, int paramInt) {}
+  public EmoticonManager$26(awyr paramawyr, int paramInt) {}
   
   public void run()
   {

@@ -1,42 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.content.Context;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import java.lang.ref.WeakReference;
 
-public class acft
-  implements abyl
+public final class acft
 {
-  public int a()
-  {
-    return 10009;
-  }
+  private static volatile acft a;
   
-  public boolean a()
+  public static acft a()
   {
-    return true;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(168);
-    paramQQAppInterface = paramQQAppInterface.getMsgCache().e(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (paramQQAppInterface != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramQQAppInterface));
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new acft();
+      }
+      return a;
     }
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
+    finally {}
   }
   
-  public int b()
+  public void a(Context paramContext)
   {
-    return 8044;
+    AdIPCManager.INSTANCE.init(paramContext, new WeakReference(acim.a().a()));
   }
 }
 

@@ -1,85 +1,136 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.YYBDownloadEngine.pauseDownload.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.YYBDownloadEngine.queryDownloadState.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.YYBDownloadEngine.startDownload.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import java.io.File;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class uey
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/engine/YYBDownloadEngine;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/engine/IDownloadEngine;", "()V", "buildDownloadParams", "Landroid/os/Bundle;", "data", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "cancelDownload", "", "viewRIJ", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "getLocalPakPathBySDK", "", "localInfo", "Lcom/tencent/open/downloadnew/DownloadInfo;", "installApp", "", "isAppPkgExist", "needReplaceUrl", "pauseDownload", "queryDownloadState", "startDownload", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class uey
+  extends uex
 {
-  int jdField_a_of_type_Int = 0;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
-  String c = "";
+  public static final uey a = new uey();
   
-  public uey(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  private final Bundle a(ule paramule)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(paramInt2);
-    this.b = "";
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(paramInt3);
-      label66:
-      this.c = a(paramInt1);
-      return;
+    if (paramule == null) {
+      return new Bundle();
     }
-    catch (Exception paramQQAppInterface)
-    {
-      break label66;
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bjmy.f, paramule.d);
+    localBundle.putString(bjmy.b, paramule.a);
+    localBundle.putString(bjmy.j, paramule.c);
+    localBundle.putString(bjmy.l, paramule.e);
+    localBundle.putInt(bjmy.k, 2);
+    localBundle.putInt(bjmy.F, 0);
+    localBundle.putBoolean(bjmy.x, false);
+    localBundle.putInt(bjmy.I, 0);
+    localBundle.putBoolean(bjmy.y, true);
+    localBundle.putBoolean(bjmy.h, true);
+    localBundle.putBoolean(bjmy.r, false);
+    localBundle.putBoolean(bjmy.K, false);
+    localBundle.putString("sendTime", "_" + GlobalUtil.calcMD5AsString(paramule.c));
+    localBundle.putString(bjmy.i, paramule.f);
+    return localBundle;
   }
   
-  public uey(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
+  private final String a(DownloadInfo paramDownloadInfo)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = a(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = uex.a(paramContext, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mId: " + this.jdField_a_of_type_Int + " | mName: " + this.jdField_a_of_type_JavaLangString + " | mIconUrl: " + this.b + " | mUin : " + this.c);
+    paramDownloadInfo = bjjq.a().a(paramDownloadInfo.d);
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.mState == 4)) {
+      return paramDownloadInfo.mSavePath;
     }
-    if ((!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)))
+    return null;
+  }
+  
+  private final boolean c(ule paramule)
+  {
+    return (TextUtils.isEmpty((CharSequence)paramule.c)) && (!TextUtils.isEmpty((CharSequence)paramule.b));
+  }
+  
+  public void a(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable ule paramule)
+  {
+    ThreadManagerV2.executeOnSubThread((Runnable)new YYBDownloadEngine.queryDownloadState.1(paramRIJDownloadView, paramule));
+  }
+  
+  public boolean a(@Nullable ule paramule)
+  {
+    Object localObject3 = null;
+    if (paramule != null) {}
+    for (Object localObject1 = paramule.c; TextUtils.isEmpty((CharSequence)localObject1); localObject1 = null) {
+      return false;
+    }
+    Object localObject2 = bjjq.a().b((String)localObject1);
+    label43:
+    Object localObject4;
+    if (localObject2 != null)
     {
-      paramString1 = adpi.b(paramContext, paramString2);
-      if (paramString1 != null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString1;
+      if (localObject2 == null) {
+        break label193;
+      }
+      localObject4 = ((DownloadInfo)localObject2).l;
+      localObject1 = localObject4;
+      if (TextUtils.isEmpty((CharSequence)localObject4)) {
+        localObject1 = a((DownloadInfo)localObject2);
+      }
+      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (!new File((String)localObject1).exists())) {
+        break label201;
       }
     }
-    while (!QLog.isColorLevel())
+    label193:
+    label201:
+    for (boolean bool = true;; bool = false)
     {
-      return;
-      adpi.a(paramQQAppInterface, paramContext, paramString2, new adpj(paramContext, new uez(this, paramQQAppInterface, this.c), new Object[0]));
-      return;
+      localObject4 = new StringBuilder().append("isAppDownloaded = ").append(bool).append("  packageName = ");
+      localObject2 = localObject3;
+      if (paramule != null) {
+        localObject2 = paramule.d;
+      }
+      QLog.d("AD_DOWNLOAD_TAG", 1, (String)localObject2 + " localAPKPath = " + (String)localObject1);
+      return bool;
+      localObject2 = bjjq.a();
+      if (paramule != null)
+      {
+        localObject1 = paramule.d;
+        if (localObject1 == null) {}
+      }
+      for (;;)
+      {
+        localObject2 = ((bjjq)localObject2).c((String)localObject1);
+        break label43;
+        break;
+        localObject1 = "";
+      }
     }
-    QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mIconUrl is empty");
   }
   
-  private String a(int paramInt)
+  public void b(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable ule paramule)
   {
-    switch (paramInt)
+    ThreadManagerV2.executeOnSubThread((Runnable)new YYBDownloadEngine.startDownload.1(paramRIJDownloadView, paramule));
+  }
+  
+  public boolean b(@Nullable ule paramule)
+  {
+    bjjq localbjjq = bjjq.a();
+    if (paramule != null) {}
+    for (paramule = paramule.c;; paramule = null)
     {
-    default: 
-      return "";
-    case 1: 
-      return String.valueOf(7210);
-    case 2: 
-      return String.valueOf(AppConstants.NEW_KANDIAN_UIN);
+      paramule = localbjjq.b(paramule);
+      return bjjq.a().a(paramule);
     }
-    return String.valueOf(AppConstants.KANDIAN_MERGE_UIN);
   }
   
-  public Drawable a()
+  public void c(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable ule paramule)
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    ThreadManagerV2.executeOnSubThread((Runnable)new YYBDownloadEngine.pauseDownload.1(paramule));
   }
 }
 

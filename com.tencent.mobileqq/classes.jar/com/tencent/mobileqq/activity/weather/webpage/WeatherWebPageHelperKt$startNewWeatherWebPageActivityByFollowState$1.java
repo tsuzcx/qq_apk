@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.weather.webpage;
 
-import alhb;
+import amfb;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
@@ -25,7 +25,7 @@ public final class WeatherWebPageHelperKt$startNewWeatherWebPageActivityByFollow
   {
     if (paramInt == 1)
     {
-      alhb.b(this.$context, this.$app, this.$from, this.$url);
+      amfb.b(this.$context, this.$app, this.$from, this.$url);
       return;
     }
     Intent localIntent = new Intent(this.$context, AccountDetailActivity.class);

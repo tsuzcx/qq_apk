@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo.widget;
 
-import boer;
+import bpuj;
 import com.tencent.image.VideoDrawable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -18,8 +18,8 @@ class ImageViewVideoPlayer$2
       if (QLog.isColorLevel()) {
         QLog.i("ImageViewVideoPlayer", 2, "onPlayRepeat: repeatTimes = " + this.a + ", costTime = " + (System.currentTimeMillis() - l));
       }
-      if (this.this$0.jdField_a_of_type_Boer != null) {
-        this.this$0.jdField_a_of_type_Boer.d();
+      if (this.this$0.jdField_a_of_type_Bpuj != null) {
+        this.this$0.jdField_a_of_type_Bpuj.d();
       }
     }
   }

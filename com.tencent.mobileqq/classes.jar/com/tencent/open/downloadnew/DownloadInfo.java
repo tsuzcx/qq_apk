@@ -5,10 +5,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bhpc;
-import bhzm;
-import bhzn;
-import bibx;
+import bizw;
+import bjko;
+import bjkp;
+import bjmz;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import org.json.JSONException;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class DownloadInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DownloadInfo> CREATOR = new bibx();
+  public static final Parcelable.Creator<DownloadInfo> CREATOR = new bjmz();
   protected static final String a;
   public int a;
   public long a;
@@ -40,8 +40,10 @@ public class DownloadInfo
   public boolean e;
   public volatile int f;
   public String f;
+  public boolean f;
   public int g;
   public String g;
+  public boolean g;
   public int h;
   public String h;
   public int i;
@@ -274,16 +276,16 @@ public class DownloadInfo
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
-    return bhzn.a(paramString);
+    return bjkp.a(paramString);
   }
   
   private static String c(String paramString)
   {
     try
     {
-      paramString = "" + bhpc.a().a() + DeviceInfoUtil.getIMEI() + System.currentTimeMillis() + paramString;
-      bhzm.b(jdField_a_of_type_JavaLangString, ">genUniqueId ori=" + paramString);
-      paramString = bhzn.a(paramString);
+      paramString = "" + bizw.a().a() + DeviceInfoUtil.getIMEI() + System.currentTimeMillis() + paramString;
+      bjko.b(jdField_a_of_type_JavaLangString, ">genUniqueId ori=" + paramString);
+      paramString = bjkp.a(paramString);
       return paramString;
     }
     catch (Throwable paramString) {}
@@ -315,7 +317,7 @@ public class DownloadInfo
   {
     if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.y)))
     {
-      bhzm.b(jdField_a_of_type_JavaLangString, ">getExtParam empty params:" + paramString + "|" + this.y);
+      bjko.b(jdField_a_of_type_JavaLangString, ">getExtParam empty params:" + paramString + "|" + this.y);
       return "";
     }
     try
@@ -324,7 +326,7 @@ public class DownloadInfo
       if (localObject != null)
       {
         localObject = ((JSONObject)localObject).optString(paramString);
-        bhzm.b(jdField_a_of_type_JavaLangString, ">getExtParam " + paramString + "=" + (String)localObject);
+        bjko.b(jdField_a_of_type_JavaLangString, ">getExtParam " + paramString + "=" + (String)localObject);
         return localObject;
       }
     }
@@ -361,7 +363,7 @@ public class DownloadInfo
     }
     catch (JSONException localJSONException)
     {
-      bhzm.c(jdField_a_of_type_JavaLangString, "onNetworkConnect " + localJSONException.getMessage(), localJSONException);
+      bjko.c(jdField_a_of_type_JavaLangString, "onNetworkConnect " + localJSONException.getMessage(), localJSONException);
     }
     return localJSONObject;
   }
@@ -374,7 +376,7 @@ public class DownloadInfo
         break label45;
       }
       this.jdField_b_of_type_JavaLangString = b(this.jdField_d_of_type_JavaLangString);
-      bhzm.b(jdField_a_of_type_JavaLangString, "gen ticket by urlStr");
+      bjko.b(jdField_a_of_type_JavaLangString, "gen ticket by urlStr");
     }
     for (;;)
     {
@@ -384,16 +386,16 @@ public class DownloadInfo
       if (!TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString))
       {
         this.jdField_b_of_type_JavaLangString = b(this.jdField_i_of_type_JavaLangString);
-        bhzm.b(jdField_a_of_type_JavaLangString, "gen ticket by urlPatch");
+        bjko.b(jdField_a_of_type_JavaLangString, "gen ticket by urlPatch");
       }
       else if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
       {
         this.jdField_b_of_type_JavaLangString = a(this.jdField_e_of_type_JavaLangString, this.jdField_b_of_type_Int);
-        bhzm.b(jdField_a_of_type_JavaLangString, "gen ticket by packageName & versionCode");
+        bjko.b(jdField_a_of_type_JavaLangString, "gen ticket by packageName & versionCode");
       }
       else
       {
-        bhzm.e(jdField_a_of_type_JavaLangString, "bad download INFO!!!");
+        bjko.e(jdField_a_of_type_JavaLangString, "bad download INFO!!!");
       }
     }
   }
@@ -426,14 +428,14 @@ public class DownloadInfo
       try
       {
         localJSONObject1.put(paramString1, paramString2);
-        bhzm.b(jdField_a_of_type_JavaLangString, ">setExtParam " + paramString1 + "=" + paramString2);
+        bjko.b(jdField_a_of_type_JavaLangString, ">setExtParam " + paramString1 + "=" + paramString2);
         this.y = localJSONObject1.toString();
         return true;
       }
       catch (Exception paramString1)
       {
         JSONObject localJSONObject2;
-        bhzm.c(jdField_a_of_type_JavaLangString, ">setExtParam failed:", paramString1);
+        bjko.c(jdField_a_of_type_JavaLangString, ">setExtParam failed:", paramString1);
       }
       try
       {
@@ -461,7 +463,7 @@ public class DownloadInfo
   
   public String toString()
   {
-    return "DownloadInfo [ticket=" + this.jdField_b_of_type_JavaLangString + ", uniqueId=" + this.x + ", state=" + this.jdField_e_of_type_Int + ", urlStr=" + this.jdField_d_of_type_JavaLangString + ", urlPatch=" + this.jdField_i_of_type_JavaLangString + ", packageName=" + this.jdField_e_of_type_JavaLangString + ", versionCode=" + this.jdField_b_of_type_Int + ", fileSize =" + this.jdField_d_of_type_Long + ", totalDataLength =" + this.jdField_c_of_type_Long + ", progress=" + this.jdField_f_of_type_Int + ", isAutoInstallBySDK =" + this.jdField_d_of_type_Boolean + ", isAutoInstall=" + this.jdField_a_of_type_Boolean + ", filePath=" + this.l + ", appId=" + this.jdField_c_of_type_JavaLangString + ", push_title=" + this.jdField_f_of_type_JavaLangString + ", sendTime=" + this.jdField_g_of_type_JavaLangString + ", time=" + this.jdField_a_of_type_Long + ", updateType=" + this.jdField_a_of_type_Int + ", myAppId=" + this.jdField_j_of_type_JavaLangString + ", apkId=" + this.jdField_k_of_type_JavaLangString + ", lastDownloadSize=" + this.jdField_b_of_type_Long + ", isApk=" + this.jdField_c_of_type_Boolean + ", iconUrl=" + this.n + ", isShowNotification=" + this.jdField_i_of_type_Int + ", writeCodeState=" + this.jdField_j_of_type_Int + ", extraInfo =" + this.o + ", fileMd5 =" + this.p + ", recommendId =" + this.q + "]";
+    return "DownloadInfo [ticket=" + this.jdField_b_of_type_JavaLangString + ", source =" + this.m + ", uniqueId=" + this.x + ", state=" + this.jdField_e_of_type_Int + ", urlStr=" + this.jdField_d_of_type_JavaLangString + ", urlPatch=" + this.jdField_i_of_type_JavaLangString + ", packageName=" + this.jdField_e_of_type_JavaLangString + ", versionCode=" + this.jdField_b_of_type_Int + ", fileSize =" + this.jdField_d_of_type_Long + ", totalDataLength =" + this.jdField_c_of_type_Long + ", progress=" + this.jdField_f_of_type_Int + ", isAutoInstallBySDK =" + this.jdField_d_of_type_Boolean + ", isAutoInstall=" + this.jdField_a_of_type_Boolean + ", filePath=" + this.l + ", appId=" + this.jdField_c_of_type_JavaLangString + ", push_title=" + this.jdField_f_of_type_JavaLangString + ", sendTime=" + this.jdField_g_of_type_JavaLangString + ", time=" + this.jdField_a_of_type_Long + ", updateType=" + this.jdField_a_of_type_Int + ", myAppId=" + this.jdField_j_of_type_JavaLangString + ", apkId=" + this.jdField_k_of_type_JavaLangString + ", lastDownloadSize=" + this.jdField_b_of_type_Long + ", isApk=" + this.jdField_c_of_type_Boolean + ", iconUrl=" + this.n + ", isShowNotification=" + this.jdField_i_of_type_Int + ", writeCodeState=" + this.jdField_j_of_type_Int + ", extraInfo =" + this.o + ", fileMd5 =" + this.p + ", recommendId =" + this.q + "]";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

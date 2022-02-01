@@ -1,8 +1,27 @@
-public abstract interface afaa
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+
+public class afaa
+  implements bkzq
 {
-  public abstract void onHeadsetChanged(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  public afaa(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment, bkzi parambkzi) {}
   
-  public abstract void onNearToEar(boolean paramBoolean1, boolean paramBoolean2);
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment, true);
+      this.jdField_a_of_type_Bkzi.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.getShareUrl());
+      return;
+    }
+    this.jdField_a_of_type_Bkzi.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.getActivity().finish();
+  }
 }
 
 

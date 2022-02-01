@@ -1,22 +1,7 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class rlw
-  implements View.OnClickListener
-{
-  public rlw(EditVideoFragment paramEditVideoFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((EditVideoFragment.a(this.a) != null) && (EditVideoFragment.a(this.a).isShowing())) {
-      EditVideoFragment.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract;", "", "IModel", "IPresenter", "IView", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface rlw {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

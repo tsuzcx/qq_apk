@@ -1,39 +1,135 @@
 import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.weiyun.utils.Singleton;
+import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
-public class bmrx
-  implements BusinessObserver
+public final class bmrx
 {
-  public void a() {}
+  private static Singleton<bmrx, Void> jdField_a_of_type_ComTencentWeiyunUtilsSingleton = new bmry();
+  private long jdField_a_of_type_Long = 1L;
+  private ConcurrentHashMap<Integer, bmrz> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  public void a(Bundle paramBundle) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static bmrx a()
   {
-    switch (paramInt)
+    return (bmrx)jdField_a_of_type_ComTencentWeiyunUtilsSingleton.get(null);
+  }
+  
+  private void a(int paramInt, String paramString, byte[] paramArrayOfByte)
+  {
+    if ((paramString == null) || (paramString.length() == 0))
     {
-    default: 
-      return;
-    case 967: 
-      b();
-      return;
-    case 968: 
-      a(paramBoolean, paramBundle);
-      return;
-    case 969: 
-      c();
-      return;
-    case 970: 
-      a(paramBundle);
+      QLog.e("WySender", 1, "sendRequestInner : seq[" + paramInt + "], cmd is empty");
       return;
     }
-    a();
+    if (QLog.isColorLevel()) {
+      QLog.d("WySender", 1, "sendRequestInner : seq[" + paramInt + "], cmd[" + paramString + "]");
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    String[] arrayOfString;
+    if (paramString.contains(".")) {
+      arrayOfString = paramString.split("\\.");
+    }
+    for (int i = Integer.parseInt(arrayOfString[(arrayOfString.length - 1)]);; i = Integer.parseInt(paramString))
+    {
+      paramArrayOfByte = new bmrv(i, paramArrayOfByte);
+      paramString = new ToServiceMsg("mobileqq.service", localAppRuntime.getAccount(), paramString);
+      paramString.setTimeout(Math.min(60000L, (30000.0D * Math.pow(this.jdField_a_of_type_Long, 0.15D))));
+      paramString.setEnableFastResend(true);
+      paramString.putWupBuffer(bmrw.a(paramArrayOfByte));
+      paramString.extraData.putInt("sequence", paramInt);
+      paramString.extraData.putLong("sendtimekey", System.currentTimeMillis());
+      paramArrayOfByte = new NewIntent(localAppRuntime.getApplication(), bmsa.class);
+      paramArrayOfByte.putExtra(ToServiceMsg.class.getSimpleName(), paramString);
+      localAppRuntime.startServlet(paramArrayOfByte);
+      return;
+    }
+  }
+  
+  void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    Object localObject = null;
+    int k = paramToServiceMsg.extraData.getInt("sequence");
+    int i;
+    label40:
+    bmrv localbmrv;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      i = 0;
+      if (i != 1002) {
+        break label148;
+      }
+      this.jdField_a_of_type_Long += 1L;
+      if (i != 0) {
+        break label156;
+      }
+      localbmrv = bmrw.a(paramFromServiceMsg.getWupBuffer());
+      label53:
+      paramFromServiceMsg = paramFromServiceMsg.getBusinessFailMsg();
+      paramToServiceMsg = paramFromServiceMsg;
+      if (i == 1002) {
+        paramToServiceMsg = "(1002)" + paramFromServiceMsg;
+      }
+      if (i != 0) {
+        break label205;
+      }
+      if (localbmrv != null) {
+        break label162;
+      }
+      i = 1810023;
+    }
+    label148:
+    label156:
+    label162:
+    label196:
+    label205:
+    for (;;)
+    {
+      label99:
+      bmrz localbmrz = (bmrz)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(k));
+      if (localbmrz != null) {
+        if (localbmrv != null) {
+          break label196;
+        }
+      }
+      for (paramFromServiceMsg = localObject;; paramFromServiceMsg = localbmrv.a())
+      {
+        localbmrz.a(i, paramToServiceMsg, paramFromServiceMsg);
+        return;
+        i = paramFromServiceMsg.getResultCode();
+        break;
+        this.jdField_a_of_type_Long = 1L;
+        break label40;
+        localbmrv = null;
+        break label53;
+        paramFromServiceMsg = localbmrv.a();
+        int j = paramFromServiceMsg.retcode.get();
+        if (j == 0) {
+          break label205;
+        }
+        paramToServiceMsg = paramFromServiceMsg.retmsg.get();
+        i = j;
+        break label99;
+      }
+    }
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte, bmrz parambmrz)
+  {
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    if (parambmrz != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), parambmrz);
+    }
+    a(i, paramString, paramArrayOfByte);
   }
 }
 

@@ -1,33 +1,77 @@
-public class bbvj
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+class bbvj
+  implements EIPCResultCallback
 {
-  static int jdField_a_of_type_Int = 3;
-  int[] jdField_a_of_type_ArrayOfInt;
-  int b;
-  int c;
+  bbvj(bbvh parambbvh) {}
   
-  public bbvj(String paramString, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.c = paramInt;
-    paramString = paramString.split(" ");
-    if (paramString.length != 2) {
-      throw new Exception("data illegal");
-    }
-    if (paramString[1].equals("1")) {}
-    for (this.b = 1;; this.b = 0)
+    Object localObject = paramEIPCResult.data;
+    if (localObject == null) {}
+    do
     {
-      paramString = paramString[0].toCharArray();
-      this.jdField_a_of_type_ArrayOfInt = new int[paramString.length];
-      paramInt = i;
-      while (paramInt < paramString.length)
+      do
       {
-        this.jdField_a_of_type_ArrayOfInt[paramInt] = (Integer.valueOf(paramString[paramInt]).intValue() - Integer.valueOf(48).intValue());
-        paramInt += 1;
-      }
-      if (!paramString[1].equals("0")) {
-        break;
-      }
-    }
-    throw new Exception("data illegal");
+        do
+        {
+          do
+          {
+            return;
+            switch (((Bundle)localObject).getInt("notify_type"))
+            {
+            case 6: 
+            case 7: 
+            default: 
+              return;
+            case 4: 
+              paramEIPCResult = ((Bundle)localObject).getSerializable("my_signature");
+            }
+          } while (!(paramEIPCResult instanceof RichStatus));
+          bbvh.c(this.a);
+          localObject = new ArrayList();
+          ((ArrayList)localObject).add(Integer.valueOf(5));
+          ((ArrayList)localObject).add(paramEIPCResult);
+          this.a.notifyObservers(localObject);
+          return;
+          localObject = new HashMap();
+          ((HashMap)localObject).put("change_status_callback_data", paramEIPCResult.data);
+          i = paramEIPCResult.data.getInt("result");
+          int j = paramEIPCResult.data.getInt("type");
+          bbvh.d(this.a);
+          paramEIPCResult = new ArrayList();
+          paramEIPCResult.add(Integer.valueOf(6));
+          paramEIPCResult.add(Integer.valueOf(i));
+          paramEIPCResult.add(localObject);
+          paramEIPCResult.add(Integer.valueOf(j));
+          this.a.notifyObservers(paramEIPCResult);
+          return;
+          ((Bundle)localObject).getLong("bid");
+          paramEIPCResult = ((Bundle)localObject).getString("scid");
+        } while (TextUtils.isEmpty(paramEIPCResult));
+        i = ((Bundle)localObject).getInt("download_result");
+      } while ((!paramEIPCResult.startsWith("signature.sticker.")) || (i != 0));
+      paramEIPCResult = paramEIPCResult.substring("signature.sticker.".length(), paramEIPCResult.length() - 4);
+    } while (!TextUtils.isDigitsOnly(paramEIPCResult));
+    int i = Integer.parseInt(paramEIPCResult);
+    bbvh.e(this.a);
+    paramEIPCResult = new ArrayList();
+    paramEIPCResult.add(Integer.valueOf(7));
+    paramEIPCResult.add(Integer.valueOf(i));
+    this.a.notifyObservers(paramEIPCResult);
+    return;
+    i = ((Bundle)localObject).getInt("key_history_signature_num");
+    bbvh.f(this.a);
+    paramEIPCResult = new ArrayList();
+    paramEIPCResult.add(Integer.valueOf(8));
+    paramEIPCResult.add(Integer.valueOf(i));
+    this.a.notifyObservers(paramEIPCResult);
   }
 }
 

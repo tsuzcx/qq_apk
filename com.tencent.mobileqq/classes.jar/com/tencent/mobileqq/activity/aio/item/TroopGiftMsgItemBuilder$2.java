@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agrz;
+import ahkx;
 import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class TroopGiftMsgItemBuilder$2
   implements Runnable
 {
-  public TroopGiftMsgItemBuilder$2(agrz paramagrz, BubbleImageView paramBubbleImageView, String paramString, int paramInt) {}
+  public TroopGiftMsgItemBuilder$2(ahkx paramahkx, BubbleImageView paramBubbleImageView, String paramString, int paramInt) {}
   
   public void run()
   {
-    agrz.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    ahkx.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

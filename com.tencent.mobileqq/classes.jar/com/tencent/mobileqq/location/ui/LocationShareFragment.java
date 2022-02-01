@@ -11,17 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import avcq;
-import avcw;
-import avdg;
-import avdr;
-import avfq;
-import avgj;
-import avgk;
-import avgm;
-import avhu;
-import bcef;
-import bjuk;
+import awit;
+import awiz;
+import awjj;
+import awju;
+import awlt;
+import awmm;
+import awmn;
+import awmp;
+import awnx;
+import bdla;
+import blfw;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -38,38 +38,38 @@ public class LocationShareFragment
 {
   private static long jdField_a_of_type_Long;
   private View jdField_a_of_type_AndroidViewView;
-  private avcq jdField_a_of_type_Avcq;
-  private avfq jdField_a_of_type_Avfq;
+  private awit jdField_a_of_type_Awit;
+  private awlt jdField_a_of_type_Awlt;
   private HeadSetView jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView;
   private MapWidget jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget;
   
   private void a()
   {
     boolean bool = true;
-    this.jdField_a_of_type_Avfq = new avfq(getActivity().app);
+    this.jdField_a_of_type_Awlt = new awlt(getActivity().app);
     Object localObject = getActivity().getIntent();
     int i = ((Intent)localObject).getIntExtra("FROM_KEY", -1);
-    avcw.a(getActivity().app).a(i);
+    awiz.a(getActivity().app).a(i);
     String str = ((Intent)localObject).getStringExtra("uin");
     int j = ((Intent)localObject).getIntExtra("uintype", -1);
-    this.jdField_a_of_type_Avcq = new avcq(j, str);
+    this.jdField_a_of_type_Awit = new awit(j, str);
     localObject = this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView;
-    avfq localavfq = this.jdField_a_of_type_Avfq;
-    avcq localavcq = this.jdField_a_of_type_Avcq;
+    awlt localawlt = this.jdField_a_of_type_Awlt;
+    awit localawit = this.jdField_a_of_type_Awit;
     if (i == 1) {}
     for (;;)
     {
-      ((HeadSetView)localObject).setLocationController(localavfq, localavcq, bool);
-      localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370345);
-      ((TextView)localObject).setOnClickListener(new avgj(this, j, str));
-      if (!bjuk.a()) {
+      ((HeadSetView)localObject).setLocationController(localawlt, localawit, bool);
+      localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370528);
+      ((TextView)localObject).setOnClickListener(new awmm(this, j, str));
+      if (!blfw.a()) {
         break;
       }
-      ((TextView)localObject).setBackgroundResource(2130840607);
+      ((TextView)localObject).setBackgroundResource(2130840646);
       return;
       bool = false;
     }
-    ((TextView)localObject).setBackgroundResource(2130840610);
+    ((TextView)localObject).setBackgroundResource(2130840649);
   }
   
   public static void a(Activity paramActivity, int paramInt1, String paramString, int paramInt2)
@@ -82,19 +82,19 @@ public class LocationShareFragment
       return;
     }
     jdField_a_of_type_Long = System.currentTimeMillis();
-    if (avgm.a(paramActivity) <= 0)
+    if (awmp.a(paramActivity) <= 0)
     {
-      QQToast.a(paramActivity, 1, paramActivity.getString(2131694095), 1).a();
+      QQToast.a(paramActivity, 1, paramActivity.getString(2131694292), 1).a();
       return;
     }
-    avdg localavdg = avcw.a(((BaseActivity)paramActivity).app).a;
-    if (!localavdg.a(paramString, paramInt1)) {}
+    awjj localawjj = awiz.a(((BaseActivity)paramActivity).app).a;
+    if (!localawjj.a(paramString, paramInt1)) {}
     for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
         QLog.d("LocationShareFragment", 2, new Object[] { "[location_fragment]launch: invoked. ", " notSameSession: ", Boolean.valueOf(bool) });
       }
-      if (localavdg.a()) {
+      if (localawjj.a()) {
         break label210;
       }
       if (QLog.isColorLevel()) {
@@ -103,7 +103,7 @@ public class LocationShareFragment
       if (paramInt2 == 1) {
         break;
       }
-      avdr.a(paramActivity, paramInt1, paramString, paramInt2);
+      awju.a(paramActivity, paramInt1, paramString, paramInt2);
       return;
     }
     b(paramActivity, paramInt1, paramString, paramInt2);
@@ -114,7 +114,7 @@ public class LocationShareFragment
     }
     if (bool)
     {
-      avdr.a((BaseActivity)paramActivity, paramInt1, paramString, paramInt2);
+      awju.a((BaseActivity)paramActivity, paramInt1, paramString, paramInt2);
       return;
     }
     b(paramActivity, paramInt1, paramString, paramInt2);
@@ -122,19 +122,19 @@ public class LocationShareFragment
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget = ((MapWidget)this.jdField_a_of_type_AndroidViewView.findViewById(2131370330));
-    avgm.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, "地图 你正在共享位置");
-    Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370337);
-    avgm.a((View)localObject, "在地图区回到我的位置");
-    this.jdField_a_of_type_Avfq.a(getActivity(), this.jdField_a_of_type_Avcq, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView.a, (ImageView)localObject, this.jdField_a_of_type_AndroidViewView.findViewById(2131370344), this.jdField_a_of_type_AndroidViewView.findViewById(2131370345), this.jdField_a_of_type_AndroidViewView.findViewById(2131363641));
-    localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131365290);
-    if (bjuk.a()) {
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget = ((MapWidget)this.jdField_a_of_type_AndroidViewView.findViewById(2131370512));
+    awmp.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, "地图 你正在共享位置");
+    Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370519);
+    awmp.a((View)localObject, "在地图区回到我的位置");
+    this.jdField_a_of_type_Awlt.a(getActivity(), this.jdField_a_of_type_Awit, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView.a, (ImageView)localObject, this.jdField_a_of_type_AndroidViewView.findViewById(2131370527), this.jdField_a_of_type_AndroidViewView.findViewById(2131370528), this.jdField_a_of_type_AndroidViewView.findViewById(2131363710));
+    localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131365385);
+    if (blfw.a()) {
       ((View)localObject).setVisibility(0);
     }
     for (;;)
     {
-      avhu.a(getActivity().app).a(1);
-      bcef.b(null, "CliOper", "", "", "0X800A8BA", "0X800A8BA", 0, 0, "", "0", "0", "");
+      awnx.a(getActivity().app).a(1);
+      bdla.b(null, "CliOper", "", "", "0X800A8BA", "0X800A8BA", 0, 0, "", "0", "0", "");
       return;
       ((View)localObject).setVisibility(8);
     }
@@ -181,14 +181,14 @@ public class LocationShareFragment
       if (paramIntent == null) {
         break label72;
       }
-      this.jdField_a_of_type_Avfq.a(paramIntent);
+      this.jdField_a_of_type_Awlt.a(paramIntent);
     }
     label72:
     label89:
     while (paramInt2 != 1)
     {
       return;
-      QQToast.a(getActivity(), 1, 2131693512, 1).a();
+      QQToast.a(getActivity(), 1, 2131693693, 1).a();
       return;
     }
     getActivity().finish();
@@ -198,7 +198,7 @@ public class LocationShareFragment
   {
     getActivity().overridePendingTransition(0, 2130772041);
     FragmentActivity localFragmentActivity = getActivity();
-    if (avhu.a(localFragmentActivity.app).a(localFragmentActivity, this.jdField_a_of_type_Avcq)) {
+    if (awnx.a(localFragmentActivity.app).a(localFragmentActivity, this.jdField_a_of_type_Awit)) {
       return super.onBackEvent();
     }
     return true;
@@ -210,8 +210,8 @@ public class LocationShareFragment
     if (QLog.isColorLevel()) {
       QLog.d("LocationShareFragment", 2, "[location_fragment]onCreateView: invoked. this: " + this + " activity: " + getActivity());
     }
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559190, null);
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView = ((HeadSetView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367972));
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559221, null);
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView = ((HeadSetView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368108));
     this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView.a();
     getActivity().overridePendingTransition(2130772039, 17432577);
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
@@ -253,7 +253,7 @@ public class LocationShareFragment
     FragmentActivity localFragmentActivity = getActivity();
     if (localFragmentActivity.isFinishing())
     {
-      avgm.a();
+      awmp.a();
       ThreadManager.getUIHandler().postDelayed(new LocationShareFragment.4(this, localFragmentActivity), 200L);
     }
   }
@@ -270,9 +270,9 @@ public class LocationShareFragment
       this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.onResume();
     }
     this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetView.b();
-    avcw localavcw = avcw.a(getActivity().app);
-    if ((this.jdField_a_of_type_Avcq != null) && (localavcw.a.a(this.jdField_a_of_type_Avcq))) {
-      localavcw.c(this.jdField_a_of_type_Avcq.a(), this.jdField_a_of_type_Avcq.a());
+    awiz localawiz = awiz.a(getActivity().app);
+    if ((this.jdField_a_of_type_Awit != null) && (localawiz.a.a(this.jdField_a_of_type_Awit))) {
+      localawiz.c(this.jdField_a_of_type_Awit.a(), this.jdField_a_of_type_Awit.a());
     }
   }
   
@@ -311,11 +311,11 @@ public class LocationShareFragment
     String str = paramBundle.getStringExtra("uin");
     int j = paramBundle.getIntExtra("uintype", -1);
     if (!NetworkUtil.isNetworkAvailable()) {
-      avdr.a(paramView, i, j, str);
+      awju.a(paramView, i, j, str);
     }
     if (Build.VERSION.SDK_INT >= 23)
     {
-      paramView.requestPermissions(new avgk(this, paramView, j, str, i), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      paramView.requestPermissions(new awmn(this, paramView, j, str, i), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
       return;
     }
     c();

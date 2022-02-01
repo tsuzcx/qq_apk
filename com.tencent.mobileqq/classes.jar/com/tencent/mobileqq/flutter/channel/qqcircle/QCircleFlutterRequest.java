@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flutter.channel.qqcircle;
 
-import atin;
+import aumu;
 import com.tencent.biz.qcircleshadow.local.requests.QCircleBaseRequest;
 import com.tencent.mobileqq.pb.MessageMicro;
 
@@ -20,7 +20,7 @@ public class QCircleFlutterRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     this.rsp = paramArrayOfByte;
-    return new atin(this);
+    return new aumu(this);
   }
   
   public String getCmdName()

@@ -1,31 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
-class aenz
-  implements View.OnClickListener
+public class aenz
+  implements Handler.Callback
 {
-  aenz(aeny paramaeny) {}
+  public aenz(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.a.jdField_d_of_type_Boolean = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.a.jdField_d_of_type_Int != 22) {
-      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    switch (paramMessage.what)
+    {
     }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131369068));
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
-    if (this.a.a.jdField_a_of_type_Aeoz != null) {
-      this.a.a.jdField_a_of_type_Aeoz.a();
+    for (;;)
+    {
+      return true;
+      this.a.c();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

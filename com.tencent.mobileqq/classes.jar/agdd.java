@@ -1,22 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import java.util.Comparator;
 
-class agdd
-  extends aghj
+public class agdd
+  implements Comparator
 {
-  agdd(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  public agdd(LoadDataJob paramLoadDataJob) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    return new agpc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    paramObject1 = (agdp)paramObject1;
+    paramObject2 = (agdp)paramObject2;
+    return paramObject1.a - paramObject2.a;
   }
 }
 

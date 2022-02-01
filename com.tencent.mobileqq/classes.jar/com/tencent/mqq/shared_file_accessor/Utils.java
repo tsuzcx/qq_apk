@@ -779,11 +779,11 @@ public class Utils
     //   5: aconst_null
     //   6: astore 8
     //   8: aconst_null
-    //   9: astore 6
+    //   9: astore 7
     //   11: aconst_null
     //   12: astore 4
     //   14: aconst_null
-    //   15: astore 7
+    //   15: astore 6
     //   17: invokestatic 337	com/tencent/mqq/shared_file_accessor/Utils:ensureBuffer	()Ljava/io/ByteArrayOutputStream;
     //   20: astore 9
     //   22: aload 9
@@ -840,7 +840,7 @@ public class Utils
     //   119: astore_0
     //   120: aconst_null
     //   121: astore_3
-    //   122: aload 7
+    //   122: aload 6
     //   124: astore_0
     //   125: aload_3
     //   126: ifnull +7 -> 133
@@ -894,7 +894,7 @@ public class Utils
     //   200: astore_0
     //   201: aconst_null
     //   202: astore_3
-    //   203: aload 6
+    //   203: aload 7
     //   205: astore_0
     //   206: aload_3
     //   207: ifnull +7 -> 214
@@ -949,7 +949,7 @@ public class Utils
     //   292: astore_0
     //   293: goto -60 -> 233
     //   296: astore_0
-    //   297: aload 6
+    //   297: aload 7
     //   299: astore_0
     //   300: goto -94 -> 206
     //   303: astore_1
@@ -967,7 +967,7 @@ public class Utils
     //   325: astore_1
     //   326: goto -174 -> 152
     //   329: astore_0
-    //   330: aload 7
+    //   330: aload 6
     //   332: astore_0
     //   333: goto -208 -> 125
     //   336: astore_1
@@ -982,8 +982,8 @@ public class Utils
     //   12	269	4	localObject1	Object
     //   286	5	4	localObject2	Object
     //   3	317	5	localObject3	Object
-    //   9	289	6	localObject4	Object
-    //   15	316	7	localObject5	Object
+    //   15	316	6	localObject4	Object
+    //   9	289	7	localObject5	Object
     //   6	303	8	localObject6	Object
     //   20	58	9	localByteArrayOutputStream	ByteArrayOutputStream
     // Exception table:

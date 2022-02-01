@@ -1,33 +1,59 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.Button;
+import android.util.Log;
+import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 public class bnsz
-  extends bnct
+  extends ScheduledThreadPoolExecutor
 {
-  private View a;
-  
-  public bnsz(@NonNull bnee parambnee)
+  public bnsz(TimerTaskManager paramTimerTaskManager, int paramInt)
   {
-    super(parambnee);
+    super(paramInt);
   }
   
-  public void a()
+  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
-    super.a();
-    this.a = a(2131375223);
-    ((Button)a(2131366886)).setOnClickListener(new bnta(this));
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    super.a(paramInt, paramObject);
-    paramObject = this.a;
-    if ((paramInt == 0) || (paramInt == 4)) {}
-    for (paramInt = 0;; paramInt = 8)
+    super.afterExecute(paramRunnable, paramThrowable);
+    Throwable localThrowable1 = paramThrowable;
+    if (paramThrowable == null)
     {
-      paramObject.setVisibility(paramInt);
-      return;
+      localThrowable1 = paramThrowable;
+      if (!(paramRunnable instanceof Future)) {}
+    }
+    try
+    {
+      paramRunnable = (Future)paramRunnable;
+      localThrowable1 = paramThrowable;
+      if (paramRunnable.isDone())
+      {
+        paramRunnable.get();
+        localThrowable1 = paramThrowable;
+      }
+    }
+    catch (CancellationException localCancellationException)
+    {
+      break label46;
+    }
+    catch (ExecutionException paramRunnable)
+    {
+      for (;;)
+      {
+        localThrowable2 = paramRunnable.getCause();
+      }
+    }
+    catch (InterruptedException paramRunnable)
+    {
+      for (;;)
+      {
+        label46:
+        paramRunnable.printStackTrace();
+        Throwable localThrowable2 = paramThrowable;
+      }
+    }
+    if (localThrowable1 != null) {
+      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
     }
   }
 }

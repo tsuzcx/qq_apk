@@ -1,15 +1,10 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetPotentialFriendListRsp;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StUserGameData;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import java.util.Iterator;
-import java.util.List;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class OpenDataCommonJsPlugin$6
@@ -19,58 +14,33 @@ class OpenDataCommonJsPlugin$6
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("OpenDataCommonJsPlugin", "getPotentialFriendList receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
-    if (paramJSONObject == null)
-    {
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , ret == null");
-      this.val$req.fail();
-      return;
-    }
     if (paramBoolean)
     {
-      int i;
-      Object localObject1;
+      localObject = new JSONObject();
+      paramJSONObject = paramJSONObject.optJSONArray("key_result_data");
+      if (paramJSONObject == null) {}
       try
       {
-        Object localObject2 = (CloudStorage.StGetPotentialFriendListRsp)paramJSONObject.get("response");
-        i = paramJSONObject.getInt("retCode");
-        localObject1 = paramJSONObject.getString("errMsg");
-        localObject2 = ((CloudStorage.StGetPotentialFriendListRsp)localObject2).data.get();
-        QMLog.d("OpenDataCommonJsPlugin", "getPotentialFriendList receive retCode= " + i + " errMsg=" + (String)localObject1);
-        paramJSONObject = new JSONObject();
-        if ((i != 0) || (localObject2 == null) || (((List)localObject2).size() <= 0)) {
-          break label306;
-        }
-        localObject1 = new JSONArray();
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
+        ((JSONObject)localObject).putOpt("list", new JSONArray());
+        for (;;)
         {
-          CloudStorage.StUserGameData localStUserGameData = (CloudStorage.StUserGameData)((Iterator)localObject2).next();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("avatarUrl", localStUserGameData.avatarUrl.get());
-          localJSONObject.put("nickname", localStUserGameData.nickname.get());
-          localJSONObject.put("openid", localStUserGameData.openid.get());
-          ((JSONArray)localObject1).put(localJSONObject);
+          this.val$req.ok((JSONObject)localObject);
+          return;
+          ((JSONObject)localObject).putOpt("list", paramJSONObject);
         }
-        paramJSONObject.put("list", localObject1);
       }
-      catch (Exception paramJSONObject)
+      catch (JSONException paramJSONObject)
       {
-        QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error ", paramJSONObject);
-        this.val$req.fail(paramJSONObject.getMessage());
-        return;
+        for (;;)
+        {
+          paramJSONObject.printStackTrace();
+        }
       }
-      this.val$req.ok(paramJSONObject);
-      return;
-      label306:
-      paramJSONObject.put("retErrMsg", localObject1);
-      paramJSONObject.put("errCode", i);
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , retCode!=0 or userGameDataList is empty");
-      this.val$req.fail(paramJSONObject, "retCode!=0 or userGameDataList is empty");
-      return;
     }
-    QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , isSuc false");
-    this.val$req.fail("getPotentialFriendList failed.");
+    long l = paramJSONObject.optLong("retCode");
+    Object localObject = paramJSONObject.optString("errMsg");
+    QMLog.e("OpenDataCommonJsPlugin", "getReactiveFriendList fail, retCode: " + l + "; errMsg : " + (String)localObject);
+    this.val$req.fail(paramJSONObject, null);
   }
 }
 

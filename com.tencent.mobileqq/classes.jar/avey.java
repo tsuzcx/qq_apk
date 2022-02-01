@@ -1,27 +1,32 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class avey
-  implements QQPermissionCallback
+class avey
+  implements AdapterView.OnItemClickListener
 {
-  public avey(LocationPickFragment paramLocationPickFragment, BaseActivity paramBaseActivity) {}
+  avey(avex paramavex) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    bfur.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).setOnDismissListener(new avez(this));
-    paramArrayOfInt = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
-    paramArrayOfString = paramArrayOfInt.getStringExtra("uin");
-    paramInt = paramArrayOfInt.getIntExtra("uintype", -1);
-    paramArrayOfInt = avcw.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-    paramArrayOfInt.a(paramInt, paramArrayOfString, paramArrayOfInt.a(), 1);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
+    if (avex.a(this.a) != null) {}
+    try
+    {
+      avbx localavbx = (avbx)paramAdapterView.getItemAtPosition(paramInt);
+      avex.a(this.a).a(localavbx.a);
+      avdu.a(aiah.c, "1", "145", "920", "92005", "207649", localavbx.a, "", "20", "");
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("GameMsgQuickReplyView", 1, localThrowable, new Object[0]);
+      }
+    }
   }
 }
 

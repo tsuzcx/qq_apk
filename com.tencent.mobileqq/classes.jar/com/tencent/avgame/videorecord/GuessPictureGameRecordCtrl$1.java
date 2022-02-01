@@ -1,16 +1,16 @@
 package com.tencent.avgame.videorecord;
 
-import nkc;
+import nrc;
 
 public class GuessPictureGameRecordCtrl$1
   implements Runnable
 {
-  public GuessPictureGameRecordCtrl$1(nkc paramnkc) {}
+  public GuessPictureGameRecordCtrl$1(nrc paramnrc) {}
   
   public void run()
   {
-    nkc.a(this.this$0, false);
-    nkc.b(this.this$0, false);
+    nrc.a(this.this$0, false);
+    nrc.b(this.this$0, false);
     this.this$0.e();
   }
 }

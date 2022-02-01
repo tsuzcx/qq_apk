@@ -1,28 +1,38 @@
-import android.widget.ImageView;
-import com.tencent.avgame.gameroom.overlay.OverlayView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import mqq.os.MqqHandler;
 
 public class nds
-  implements ncc
 {
-  public nds(OverlayView paramOverlayView) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void a(LottieDrawable paramLottieDrawable)
+  public nds(Looper paramLooper)
   {
-    if (paramLottieDrawable != null)
-    {
-      OverlayView.c(this.a, paramLottieDrawable);
-      if (QLog.isColorLevel()) {
-        QLog.d("OverlayView", 2, "loadLottieAnim success needRecoverSelfHeadCheerLottie = " + OverlayView.c(this.a));
-      }
-      if (OverlayView.c(this.a))
-      {
-        OverlayView.b(this.a).setImageDrawable(OverlayView.c(this.a));
-        OverlayView.c(this.a).playAnimation();
-        OverlayView.d(this.a, false);
-      }
+    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(paramLooper);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramLooper);
+  }
+  
+  public nds(MqqHandler paramMqqHandler)
+  {
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramMqqHandler.getLooper());
+  }
+  
+  public final boolean a(Runnable paramRunnable, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return this.jdField_a_of_type_AndroidOsHandler.postAtFrontOfQueue(paramRunnable);
     }
+    return this.jdField_a_of_type_MqqOsMqqHandler.postAtFrontOfQueue(paramRunnable);
+  }
+  
+  public final boolean b(Runnable paramRunnable, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    }
+    return this.jdField_a_of_type_MqqOsMqqHandler.post(paramRunnable);
   }
 }
 

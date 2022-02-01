@@ -1,18 +1,7 @@
-public class bafm
-  implements bafn
-{
-  public void a()
-  {
-    xvv.b("FlowEdit_NeoVideoFilterPlayView", "onResetAndStart");
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    xvv.a("FlowEdit_NeoVideoFilterPlayView", "onSpeedChange, old=%d, new=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-  }
-  
-  public void a(long paramLong) {}
-}
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/CardSettingHandler$Companion;", "", "()V", "CMD_GET_CARD_DISPLAY_SETTING", "", "CMD_SET_CARD_DISPLAY_SETTING", "REQ_GET_CARD_DISPLAY_SETTING_TAG", "REQ_SET_CARD_DISPLAY_SETTING_TAG", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bafm {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

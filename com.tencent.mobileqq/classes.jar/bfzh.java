@@ -1,77 +1,27 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.SyncLoadTask.1;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public abstract class bfzh
+public class bfzh
+  extends bfyf
 {
-  public final String TAG;
-  int mTaskStatus = 1;
-  
-  public bfzh(String paramString)
+  public bfzh(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.TAG = (paramString + "_" + AudioHelper.b());
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.a = 10;
   }
   
-  public static void requestSyncTask(Resources paramResources, ArrayList<bfzh> paramArrayList, bfzi parambfzi)
+  @Nullable
+  public bfyg a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      bfzh localbfzh = (bfzh)localIterator.next();
-      if (localbfzh.isNeedRunTask()) {
-        localArrayList.add(localbfzh);
-      }
-    }
-    localIterator = localArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((bfzh)localIterator.next()).setRunning();
-    }
-    ThreadManager.post(new SyncLoadTask.1(localArrayList, paramResources, parambfzi, paramArrayList), 8, null, true);
+    return null;
   }
   
-  public final void clean()
-  {
-    this.mTaskStatus = 1;
-    innerClean();
-  }
+  public void a(int paramInt, Object paramObject, String paramString) {}
   
-  public abstract void innerClean();
-  
-  public final boolean isNeedRunTask()
-  {
-    return (this.mTaskStatus != 20) && (this.mTaskStatus != 2);
-  }
-  
-  final boolean isRunning()
-  {
-    return (this.mTaskStatus & 0x2) == 2;
-  }
-  
-  final boolean isSuc()
-  {
-    return (this.mTaskStatus & 0x14) == 20;
-  }
-  
-  public abstract boolean runOnSubThread(Resources paramResources);
-  
-  public final void setComplete(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.mTaskStatus = 20;
-      return;
-    }
-    this.mTaskStatus = 36;
-  }
-  
-  final void setRunning()
-  {
-    this.mTaskStatus = 2;
-  }
+  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

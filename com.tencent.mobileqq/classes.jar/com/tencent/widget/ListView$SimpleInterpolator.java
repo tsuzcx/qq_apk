@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
 import android.view.animation.Interpolator;
-import bjmb;
+import bkxo;
 
 class ListView$SimpleInterpolator
   implements Interpolator
@@ -10,7 +10,7 @@ class ListView$SimpleInterpolator
   
   public float getInterpolation(float paramFloat)
   {
-    return bjmb.a(paramFloat);
+    return bkxo.a(paramFloat);
   }
 }
 

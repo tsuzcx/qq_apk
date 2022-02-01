@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ark;
 
-import aovj;
+import apyn;
 import java.util.HashMap;
 
 public class ArkAppCenterEvent$Observers
-  extends HashMap<String, aovj>
+  extends HashMap<String, apyn>
 {}
 
 

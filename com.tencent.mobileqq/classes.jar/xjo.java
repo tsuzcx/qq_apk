@@ -1,27 +1,13 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import java.io.File;
+import org.json.JSONObject;
 
-class xjo
-  extends whf
+public abstract interface xjo
 {
-  xjo(xjn paramxjn) {}
+  public abstract void a(String paramString, File paramFile, int paramInt, JSONObject paramJSONObject);
   
-  public void a()
-  {
-    super.a();
-    xjn.a(this.a, null);
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    xwa.a("home_page", "suc_share", 2, paramInt, new String[] { xwa.b(xjn.a(this.a).a) + "", xwa.a(xjn.a(this.a).a) + "", xjn.a(this.a).a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    super.b(paramInt);
-    xwa.a("home_page", "share_chanel", 2, paramInt, new String[] { xwa.b(xjn.a(this.a).a) + "", xwa.a(xjn.a(this.a).a) + "", xjn.a(this.a).a.feedId });
-  }
+  public abstract void a(String paramString1, String paramString2, File paramFile);
 }
 
 

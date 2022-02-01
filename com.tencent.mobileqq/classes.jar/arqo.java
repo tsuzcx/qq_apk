@@ -1,32 +1,86 @@
+import android.content.ClipData;
+import android.content.ClipData.Item;
+import android.content.ClipDescription;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.jvm.internal.StringCompanionObject;
+import mqq.manager.Manager;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$init$1", "Lcom/tencent/mobileqq/activity/BirthdayPickHelper$BirthdayChangeListener;", "onBirthdayChange", "", "newYear", "", "newMonth", "newDay", "onConfirmBtClicked", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class arqo
-  implements acva
+public class arqo
+  implements Manager
 {
-  public void a() {}
+  private ClipboardManager jdField_a_of_type_AndroidContentClipboardManager;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public arqo(QQAppInterface paramQQAppInterface)
   {
-    arql.a(this.a, paramInt1);
-    arql.b(this.a, paramInt2);
-    arql.c(this.a, paramInt3);
-    arql.d(this.a, paramInt1 << 16 | paramInt2 << 8 | paramInt3);
-    if (QLog.isColorLevel())
-    {
-      Object localObject = StringCompanionObject.INSTANCE;
-      localObject = new Object[3];
-      localObject[0] = Integer.valueOf(paramInt1);
-      localObject[1] = Integer.valueOf(paramInt2);
-      localObject[2] = Integer.valueOf(paramInt3);
-      localObject = String.format("onBirthdayChange newYear:%d,newMonth:%d,newDay:%d", Arrays.copyOf((Object[])localObject, localObject.length));
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.String.format(format, *args)");
-      QLog.d("FillBirthdayDialog", 2, (String)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private ClipboardManager a()
+  {
+    if (this.jdField_a_of_type_AndroidContentClipboardManager == null) {
+      this.jdField_a_of_type_AndroidContentClipboardManager = ((ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getSystemService("clipboard"));
     }
+    return this.jdField_a_of_type_AndroidContentClipboardManager;
+  }
+  
+  private SharedPreferences a()
+  {
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
+      this.jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+    }
+    return this.jdField_a_of_type_AndroidContentSharedPreferences;
+  }
+  
+  public String a()
+  {
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      long l1 = a().getLong("KEY_LAST_COPY_TIME", 0L);
+      Object localObject = a().getPrimaryClipDescription();
+      if (localObject != null)
+      {
+        long l2 = ((ClipDescription)localObject).getTimestamp();
+        long l3 = System.currentTimeMillis();
+        if ((l2 != l1) && (l3 - l2 < 180000L))
+        {
+          a().edit().putLong("KEY_LAST_COPY_TIME", l2).apply();
+          if (a().hasPrimaryClip())
+          {
+            localObject = a().getPrimaryClip();
+            if ((localObject != null) && (((ClipData)localObject).getItemCount() > 0))
+            {
+              localObject = ((ClipData)localObject).getItemAt(0);
+              if (QLog.isColorLevel()) {
+                QLog.d("CopyPromptManager", 2, "origin copy data : " + localObject);
+              }
+              if (localObject != null)
+              {
+                localObject = ((ClipData.Item)localObject).getText();
+                if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+                  return String.valueOf(localObject);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return "";
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences = null;
   }
 }
 

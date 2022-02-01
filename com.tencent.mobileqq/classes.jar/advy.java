@@ -1,31 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class advy
-  implements DialogInterface.OnClickListener
+public class advy
+  implements View.OnClickListener
 {
-  advy(advw paramadvw) {}
+  public advy(EditActivity paramEditActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    if (!NetworkUtil.isNetSupport(this.a.a))
-    {
-      PhoneUnityChangeActivity.a(this.a.a, 2131694108);
-      return;
-    }
-    if (this.a.a.b == null)
-    {
-      this.a.a.b = new advz(this);
-      this.a.a.app.registObserver(this.a.a.b);
-    }
-    PhoneUnityChangeActivity.a(this.a.a).a(true, false);
-    PhoneUnityChangeActivity.a(this.a.a, 2131718142, 0L, true);
-    bcef.b(this.a.a.app, "CliOper", "", "", "0X8005B81", "0X8005B81", 0, 0, "", "", "", "");
+    EditActivity.a(this.a).setVisibility(4);
+    EditActivity.a(this.a).setImageResource(2130847907);
+    EditActivity.a(this.a, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

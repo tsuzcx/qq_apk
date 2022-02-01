@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afte;
+import agks;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.widget.XEditTextEx;
 
 public class TroopEggLottieAnimHelper$1
   implements Runnable
 {
-  public TroopEggLottieAnimHelper$1(afte paramafte, String paramString) {}
+  public TroopEggLottieAnimHelper$1(agks paramagks, String paramString) {}
   
   public void run()
   {
-    afte.a(this.this$0).input.setSelection(this.a.length());
+    agks.a(this.this$0).input.setSelection(this.a.length());
   }
 }
 

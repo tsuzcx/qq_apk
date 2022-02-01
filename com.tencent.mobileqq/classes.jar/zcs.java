@@ -1,8 +1,19 @@
-public abstract interface zcs
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+
+public class zcs
+  implements View.OnLongClickListener
 {
-  public abstract void a();
+  public zcs(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
   
-  public abstract void b();
+  public boolean onLongClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
+      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    }
+    return true;
+  }
 }
 
 

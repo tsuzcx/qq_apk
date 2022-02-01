@@ -4,12 +4,12 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import ygq;
+import yvj;
 
 public class ClipboardEditText
   extends EditText
 {
-  private ygq a;
+  private yvj a;
   
   public ClipboardEditText(Context paramContext)
   {
@@ -56,9 +56,9 @@ public class ClipboardEditText
     }
   }
   
-  public void setClipboardCallBack(ygq paramygq)
+  public void setClipboardCallBack(yvj paramyvj)
   {
-    this.a = paramygq;
+    this.a = paramyvj;
   }
 }
 

@@ -1,32 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import android.telephony.PhoneStateListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class sqv
-  extends AnimatorListenerAdapter
+class sqv
+  extends PhoneStateListener
 {
-  public sqv(SlideActiveAnimController paramSlideActiveAnimController) {}
+  sqv(sqt paramsqt) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    super.onAnimationCancel(paramAnimator);
-    SlideActiveAnimController.a(this.a, false);
     if (QLog.isColorLevel()) {
-      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationCancel");
+      QLog.d("VideoVolumeController", 2, "onCallStateChanged:" + paramInt);
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    SlideActiveAnimController.a(this.a, false);
-    SlideActiveAnimController.a(this.a, SlideActiveAnimController.a());
-    SlideActiveAnimController.a(this.a).setVisibility(8);
-    if (QLog.isColorLevel()) {
-      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationEnd");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.a(true);
+      return;
     }
+    this.a.a(true);
   }
 }
 

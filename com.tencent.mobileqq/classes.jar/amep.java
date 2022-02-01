@@ -1,35 +1,7 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import kotlin.Metadata;
 
-public class amep
-  implements ValueAnimator.AnimatorUpdateListener
-{
-  public amep(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
-        break label42;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amem.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-    }
-    label42:
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(amem.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(amem.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkNotify$Companion;", "", "()V", "TAG", "", "WEATHER_ARK_APP_NAME", "WEATHER_ARK_METHOD_TO_CLIENT", "WEATHER_ARK_METHOD_TO_WEB", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amep {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

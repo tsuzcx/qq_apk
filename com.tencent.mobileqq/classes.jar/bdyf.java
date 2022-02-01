@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.InviteToGroupInfo.UinInfo;
-
-public final class bdyf
-  implements Parcelable.Creator<InviteToGroupInfo.UinInfo>
+public class bdyf
+  extends bdyd
 {
-  public InviteToGroupInfo.UinInfo a(Parcel paramParcel)
+  public bdyf(int paramInt)
   {
-    return new InviteToGroupInfo.UinInfo(paramParcel);
+    super(paramInt, 0, 0);
   }
   
-  public InviteToGroupInfo.UinInfo[] a(int paramInt)
+  protected void a(int paramInt, float paramFloat)
   {
-    return new InviteToGroupInfo.UinInfo[paramInt];
+    super.a(paramInt, paramFloat);
   }
 }
 

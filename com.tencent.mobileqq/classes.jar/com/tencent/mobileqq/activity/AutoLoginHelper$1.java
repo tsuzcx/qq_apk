@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import acup;
-import avsy;
+import adlb;
+import awyz;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class AutoLoginHelper$1
   implements Runnable
 {
-  public AutoLoginHelper$1(acup paramacup) {}
+  public AutoLoginHelper$1(adlb paramadlb) {}
   
   public void run()
   {
-    ((avsy)acup.a(this.this$0).getManager(11)).c();
+    ((awyz)adlb.a(this.this$0).getManager(QQManagerFactory.CONTACT_MANAGER)).c();
   }
 }
 

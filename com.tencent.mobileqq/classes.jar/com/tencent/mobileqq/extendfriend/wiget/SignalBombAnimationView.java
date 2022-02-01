@@ -14,12 +14,12 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import arnf;
-import arrc;
-import arrd;
-import arre;
-import arrh;
-import arri;
+import asrl;
+import asvi;
+import asvj;
+import asvk;
+import asvn;
+import asvo;
 import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -37,7 +37,7 @@ public class SignalBombAnimationView
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private arri jdField_a_of_type_Arri;
+  private asvo jdField_a_of_type_Asvo;
   public QQAnimationDrawable a;
   boolean jdField_a_of_type_Boolean = false;
   public final int b;
@@ -70,11 +70,11 @@ public class SignalBombAnimationView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561081, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377496));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377493));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363598));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366313);
+    LayoutInflater.from(paramContext).inflate(2131561142, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377769));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377766));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363667));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366418);
     this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable = new QQAnimationDrawable();
     this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable = new QQAnimationDrawable();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
@@ -90,7 +90,7 @@ public class SignalBombAnimationView
       paramString = paramString.listFiles();
       if ((paramString != null) && (paramString.length > 0))
       {
-        Arrays.sort(paramString, new arrh(this));
+        Arrays.sort(paramString, new asvn(this));
         ArrayList localArrayList = new ArrayList();
         boolean bool = DeviceInfoUtil.isLowPerfDevice();
         int i = 1;
@@ -124,16 +124,16 @@ public class SignalBombAnimationView
     int j = this.jdField_c_of_type_AndroidWidgetImageView.getTop();
     this.jdField_a_of_type_Int = (i - j);
     QLog.d("SignalBombAnimationViewExtendFriendLimitChat", 2, "SignalBombAnimationView. deltaY = " + this.jdField_a_of_type_Int + " beginY" + j + "destinyY " + i);
-    Object localObject = a(arnf.d());
+    Object localObject = a(asrl.d());
     if ((localObject != null) && (localObject.length > 0))
     {
       this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a((String[])localObject);
       this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(true);
       this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(2480L);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable);
-      this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(new arrc(this));
+      this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(new asvi(this));
     }
-    localObject = a(arnf.e());
+    localObject = a(asrl.e());
     if ((localObject != null) && (localObject.length > 0))
     {
       if (this.d > localObject.length)
@@ -145,7 +145,7 @@ public class SignalBombAnimationView
       this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(true);
       this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(2880L);
       this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable);
-      this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(new arrd(this));
+      this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(new asvj(this));
     }
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
     localObject = ObjectAnimator.ofFloat(this.jdField_c_of_type_AndroidWidgetImageView, "translationY", new float[] { 0.0F, this.jdField_a_of_type_Int });
@@ -155,7 +155,7 @@ public class SignalBombAnimationView
     ((ObjectAnimator)localObject).setInterpolator(localAccelerateDecelerateInterpolator);
     localObjectAnimator.setDuration(860L);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObject, localObjectAnimator });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new arre(this));
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new asvk(this));
   }
   
   public void a()
@@ -164,8 +164,8 @@ public class SignalBombAnimationView
     if (!this.jdField_a_of_type_Boolean) {
       e();
     }
-    if (this.jdField_a_of_type_Arri != null) {
-      this.jdField_a_of_type_Arri.a();
+    if (this.jdField_a_of_type_Asvo != null) {
+      this.jdField_a_of_type_Asvo.a();
     }
     b();
     this.jdField_b_of_type_Boolean = true;
@@ -177,8 +177,8 @@ public class SignalBombAnimationView
     if (this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable != null)
     {
       this.jdField_b_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.start();
-      if (this.jdField_a_of_type_Arri != null) {
-        this.jdField_a_of_type_Arri.a();
+      if (this.jdField_a_of_type_Asvo != null) {
+        this.jdField_a_of_type_Asvo.a();
       }
       QLog.d("SignalBombAnimationView", 2, "mBombDrawable start");
     }
@@ -262,14 +262,14 @@ public class SignalBombAnimationView
     }
   }
   
-  public void setListener(arri paramarri)
+  public void setListener(asvo paramasvo)
   {
-    this.jdField_a_of_type_Arri = paramarri;
+    this.jdField_a_of_type_Asvo = paramasvo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView
  * JD-Core Version:    0.7.0.1
  */

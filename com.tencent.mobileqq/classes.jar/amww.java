@@ -1,37 +1,16 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import java.util.List;
-import tencent.im.nearfield_discuss.nearfield_discuss.BusiRespHead;
-import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class amww
-  implements BusinessObserver
+class amww
+  implements MediaPlayer.OnErrorListener
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  amww(amwv paramamwv) {}
   
-  protected void a(boolean paramBoolean, List<nearfield_discuss.UserProfile> paramList, int paramInt1, int paramInt2, nearfield_discuss.BusiRespHead paramBusiRespHead, int paramInt3, int paramInt4, long paramLong) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      a(paramBoolean, paramObject);
-      return;
-      if (paramBoolean)
-      {
-        paramObject = (Object[])paramObject;
-        a(paramBoolean, (List)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (nearfield_discuss.BusiRespHead)paramObject[3], ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Long)paramObject[6]).longValue());
-        return;
-      }
-      a(paramBoolean, null, -1, -1, null, -1, -1, -1L);
-      return;
-    } while (!paramBoolean);
-    b(paramBoolean, paramObject);
+    QLog.e("CmGameAudioPlayer", 1, "what " + paramInt1 + " ext " + paramInt2);
+    return false;
   }
 }
 

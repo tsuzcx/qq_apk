@@ -167,6 +167,11 @@ public class SPlayerTextureView
     }
   }
   
+  public void setVideoViewTagId(String paramString)
+  {
+    this.mTag = (TAG + "-" + paramString);
+  }
+  
   public void setVideoWidthAndHeight(int paramInt1, int paramInt2)
   {
     this.mVideoWidth = paramInt1;
@@ -176,11 +181,6 @@ public class SPlayerTextureView
   public void setViewCallBack(ISPlayerViewBase.ViewCreateCallBack paramViewCreateCallBack)
   {
     this.mViewCallBack = paramViewCreateCallBack;
-  }
-  
-  public void setViewViewTagId(String paramString)
-  {
-    this.mTag = (TAG + "-" + paramString);
   }
   
   public void setXYaxis(int paramInt)

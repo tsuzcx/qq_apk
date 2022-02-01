@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.imaxad;
 
-import aukv;
+import avqq;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class ImaxAdPresenter$2
   implements Runnable
 {
-  public ImaxAdPresenter$2(aukv paramaukv, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public ImaxAdPresenter$2(avqq paramavqq, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
   public void run()
   {

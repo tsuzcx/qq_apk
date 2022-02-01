@@ -1,48 +1,149 @@
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll;
+import android.text.TextUtils;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqreader.QReaderHelper.1;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import mqq.app.AppRuntime;
 
 public class bmep
-  extends Handler
 {
-  int jdField_a_of_type_Int;
+  public static int a = 0;
+  public static boolean a;
   
-  public bmep(LyricViewScroll paramLyricViewScroll) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    switch (paramMessage.what)
+    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
+      return null;
+    }
+    try
     {
+      paramString = Class.forName("com.qqreader.ReaderRuntime");
+      if (paramString == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QReaderHelper", 2, "createReaderRuntime: load class failed");
+        }
+        return null;
+      }
+    }
+    catch (ClassNotFoundException paramString)
+    {
+      try
+      {
+        ClassLoader localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqreaderplugin.apk");
+        paramString = localClassLoader.loadClass("com.qqreader.ReaderRuntime");
+        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+      }
+      catch (Exception paramBaseApplicationImpl)
+      {
+        return null;
+      }
+      paramBaseApplicationImpl = paramString.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, "Reader" });
+      if ((paramBaseApplicationImpl != null) && ((paramBaseApplicationImpl instanceof AppRuntime)))
+      {
+        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
+      }
+    }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+  }
+  
+  public static void a(int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    if (!NetworkUtil.isNetworkAvailable(paramQQAppInterface.getApplication())) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QReaderHelper", 2, "no network. skip update offline pkg.");
+      }
     }
     do
     {
-      do
+      return;
+      if (a(paramInt))
       {
+        if (QLog.isColorLevel()) {
+          QLog.e("QReaderHelper", 1, "entry " + paramInt + " offline preload enabled,update offline package now!");
+        }
+        nuz.a();
+        ThreadManager.post(new QReaderHelper.1(paramQQAppInterface), 5, null, true);
         return;
-        if (this.jdField_a_of_type_Int != this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.getScrollY()) {
-          break;
-        }
-        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        if (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) != null) {
-          LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).b(this.jdField_a_of_type_Int);
-        }
-        Log.d("LyricViewScroll", "fling stop");
-        LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll, false);
-        LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).sendEmptyMessageDelayed(2, this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Int);
-        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Boolean = false;
-      } while (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) == null);
-      LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).a();
-      return;
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.getScrollY();
-      if (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) != null) {
-        LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).a(this.jdField_a_of_type_Int);
       }
-      LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).sendEmptyMessageDelayed(1, 100L);
-      return;
-      this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Boolean = true;
-    } while (LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll) == null);
-    LyricViewScroll.a(this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll).b();
+    } while (!QLog.isColorLevel());
+    QLog.e("QReaderHelper", 2, "entry " + paramInt + " offline preload is disabled.");
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    boolean bool = true;
+    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.qr_process_config.name());
+    if ((TextUtils.isEmpty((CharSequence)localObject)) && (QLog.isColorLevel())) {
+      QLog.e("QReaderHelper", 1, "reader dpc is null.");
+    }
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.e("QReaderHelper", 2, "enableOfflinePreload,dpc=" + (String)localObject);
+      }
+      localObject = ((String)localObject).split("\\|");
+      if (localObject.length >= 7) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("QReaderHelper", 2, "offline preload switch not fount.");
+    return false;
+    if ((Integer.parseInt(localObject[6]) & paramInt) != 0) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
   }
 }
 

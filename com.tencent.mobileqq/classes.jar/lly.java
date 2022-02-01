@@ -1,19 +1,14 @@
+import android.os.SystemClock;
+
 public class lly
 {
-  public static int a(String paramString)
+  public float a;
+  public long a;
+  
+  public lly(llx paramllx, float paramFloat)
   {
-    if ((paramString == null) || (paramString.equals("point"))) {}
-    do
-    {
-      return 0;
-      if (paramString.equals("line")) {
-        return 1;
-      }
-      if (paramString.equals("square")) {
-        return 2;
-      }
-    } while (!paramString.equals("ellipse"));
-    return 3;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
 }
 

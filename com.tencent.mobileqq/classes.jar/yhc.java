@@ -1,36 +1,79 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
 public class yhc
-  extends ygy
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  @NonNull
-  public final vvs a;
-  @NonNull
-  public final String c;
+  public int a;
+  public SparseArray<View> a;
+  public View a;
+  public Object a;
+  public String a;
+  public HashMap<String, Object> a;
+  public yev a;
+  public int b;
+  public SparseArray<String> b;
+  public int c = -1;
   
-  public yhc(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull vvs paramvvs)
+  public yhc(View paramView)
   {
-    super(paramInt1, paramString1, paramInt2);
-    this.c = paramString2;
-    this.a = paramvvs;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    paramView.setTag(this);
   }
   
-  @NonNull
-  public Class<? extends ygz> a()
+  public View a()
   {
-    return yhe.class;
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  @NonNull
-  public ygz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public <T extends View> T a(int paramInt)
   {
-    return new yhe(paramContext, paramViewGroup, null);
+    View localView2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView1);
+    }
+    return localView1;
   }
   
-  public boolean a()
+  public Object a(String paramString)
   {
+    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramObject);
+  }
+  
+  public void a(yev paramyev)
+  {
+    this.jdField_a_of_type_Yev = paramyev;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Yev != null) {
+      this.jdField_a_of_type_Yev.a(this.jdField_b_of_type_Int, paramView, this.jdField_a_of_type_JavaLangObject, this);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Yev != null) {
+      this.jdField_a_of_type_Yev.b(this.jdField_b_of_type_Int, paramView, this.jdField_a_of_type_JavaLangObject, this);
+    }
     return true;
   }
 }

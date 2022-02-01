@@ -1,6 +1,6 @@
 public abstract interface aqsv
 {
-  public abstract void a(int paramInt);
+  public abstract long a();
 }
 
 

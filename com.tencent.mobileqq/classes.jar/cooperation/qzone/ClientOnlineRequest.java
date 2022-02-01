@@ -1,7 +1,7 @@
 package cooperation.qzone;
 
 import QzoneCombine.ClientOnlineNotfiyReq;
-import bkec;
+import blpn;
 import com.qq.taf.jce.JceStruct;
 
 public class ClientOnlineRequest
@@ -22,7 +22,7 @@ public class ClientOnlineRequest
   
   protected byte[] getEncodedUniParameter()
   {
-    return bkec.a(this.req);
+    return blpn.a(this.req);
   }
   
   public JceStruct getReq()

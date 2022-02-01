@@ -1,26 +1,9 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
 
-class ruv
-  extends Handler
+public abstract interface ruv
 {
-  public ruv(run paramrun, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (run.a(this.a) == null);
-    run.a(this.a).a(4, null, null, 0L);
-  }
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 

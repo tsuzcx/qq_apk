@@ -1,66 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
 
 public class auwc
-  implements IMiniMsgUnreadCallback
+  implements bkzq
 {
-  public auwc(UiApiPlugin paramUiApiPlugin) {}
+  public auwc(LangSettingFragment paramLangSettingFragment, int paramInt) {}
   
-  public void destroy() {}
-  
-  public void hide() {}
-  
-  public void hideUnread()
+  public void OnClick(View paramView, int paramInt)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unReadHide", true);
-      this.a.a("UnRead", localJSONObject);
-      return;
+    if (paramInt == 0) {
+      LangSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
     }
-    catch (Exception localException)
-    {
-      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
-    }
-  }
-  
-  public boolean show(int paramInt)
-  {
-    return false;
-  }
-  
-  public void updateOnBackFromMiniAIO(Bundle paramBundle)
-  {
-    try
-    {
-      paramBundle = new JSONObject();
-      this.a.a("backFromMiniAIO", paramBundle);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.d("UiApiPlugin", 1, paramBundle, new Object[0]);
-    }
-  }
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unReadC", paramInt);
-      localJSONObject.put("unReadHide", paramBoolean);
-      this.a.a("updateUnreadCount", localJSONObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin", 2, "mini_msg uiApiPlugin undateUnreadCount = " + paramInt);
-      }
-      return;
-    }
-    catch (Exception localException) {}
   }
 }
 

@@ -1,47 +1,40 @@
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
-import android.content.Context;
-import android.view.View;
-import android.view.ViewStub;
+import UserGrowth.stQQGroupDetailRsp;
+import android.text.TextUtils;
+import java.lang.ref.WeakReference;
 
-public class vcs
-  extends vcz
+class vcs
+  implements vfg
 {
-  private ukz<vaq> a;
+  vcs(vcr paramvcr, vct paramvct, String paramString) {}
   
-  public vcs(Context paramContext, vct paramvct)
+  public void a(vfr paramvfr)
   {
-    super(paramContext, paramvct);
-  }
-  
-  private void f()
-  {
-    if ((a() != null) && (a().poster != null) && (!uxr.a(a().poster.followStatus))) {
-      ((vbs)this.jdField_a_of_type_Ukz).a(a().poster);
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void c(int paramInt)
-  {
-    if ((paramInt == 1) && ((this.jdField_a_of_type_Ukz instanceof vbs)))
+    Object localObject = new WeakReference(this.jdField_a_of_type_Vct);
+    if ((paramvfr == null) || (paramvfr.jdField_a_of_type_Vfo == null) || (!TextUtils.equals(paramvfr.jdField_a_of_type_Vfo.b, vcr.a(this.jdField_a_of_type_Vcr)))) {}
+    do
     {
-      f();
+      return;
+      localObject = (vct)((WeakReference)localObject).get();
+    } while ((localObject == null) || (!((vct)localObject).a()));
+    ((vct)localObject).c();
+    if (paramvfr.a())
+    {
+      if ((paramvfr.jdField_a_of_type_JavaLangObject instanceof stQQGroupDetailRsp))
+      {
+        paramvfr = (stQQGroupDetailRsp)paramvfr.jdField_a_of_type_JavaLangObject;
+        if (paramvfr.status == 0)
+        {
+          vmp.e("WSJoinGroupDataProcessor", "doTask: stQQGroupDetailRsp response :  msg = " + paramvfr.msg + ", code = " + paramvfr.status + "; signature = " + paramvfr.signature);
+          ((vct)localObject).a(this.jdField_a_of_type_JavaLangString, paramvfr.signature);
+          return;
+        }
+      }
+      vmp.e("WSJoinGroupDataProcessor", "doTask: stQQGroupDetailRsp response : response is not instanceof stQQGroupDetailRsp");
+      ((vct)localObject).a();
       return;
     }
-    super.c(paramInt);
-  }
-  
-  public void e()
-  {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380722);
-    this.jdField_a_of_type_Ukz = new vbs(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vct);
-    this.jdField_a_of_type_Ukz.a(localViewStub);
-    a(this.jdField_a_of_type_Ukz);
+    vmp.e("WSJoinGroupDataProcessor", "doTask: stQQGroupDetailRsp response : !task.succeeded()");
+    ((vct)localObject).a();
   }
 }
 

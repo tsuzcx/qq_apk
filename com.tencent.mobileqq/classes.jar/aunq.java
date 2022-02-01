@@ -1,9 +1,4 @@
-import android.os.Bundle;
-
-public abstract interface aunq
-{
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
-}
+class aunq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

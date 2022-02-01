@@ -1,22 +1,48 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer.DrawableContainerState;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.theme.BaseConstantState;
+import java.util.List;
 
-public class bbfj
-  extends SosoInterface.OnLocationListener
+public abstract class bbfj
 {
-  public bbfj(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public abstract List<bbfb> a(View paramView);
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  void a(Drawable paramDrawable, List<bbfb> paramList, int paramInt)
   {
-    if (paramInt == 0)
+    if ((paramDrawable != null) && (paramDrawable.getConstantState() != null) && (paramList != null))
     {
-      NetSearchEngine.a = paramSosoLbsInfo.mLocation.mLat02;
-      NetSearchEngine.b = paramSosoLbsInfo.mLocation.mLon02;
+      paramDrawable = paramDrawable.getConstantState();
+      if (!(paramDrawable instanceof BaseConstantState)) {
+        break label81;
+      }
+      paramList.add(new bbfb(paramInt, ((BaseConstantState)paramDrawable).skinData));
+      if (QLog.isColorLevel()) {
+        QLog.d("SpecialResourceNameGrab", 2, "getFileNameByConstantState BaseConstantState resourceNames -> " + paramList);
+      }
+    }
+    for (;;)
+    {
+      return;
+      label81:
+      if ((paramDrawable instanceof DrawableContainer.DrawableContainerState))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SpecialResourceNameGrab", 2, "getFileNameByConstantState DrawableContainerState");
+        }
+        paramDrawable = ((DrawableContainer.DrawableContainerState)paramDrawable).getChildren();
+        int j = paramDrawable.length;
+        int i = 0;
+        while (i < j)
+        {
+          Drawable localDrawable = paramDrawable[i];
+          if (localDrawable != null) {
+            a(localDrawable, paramList, paramInt);
+          }
+          i += 1;
+        }
+      }
     }
   }
 }

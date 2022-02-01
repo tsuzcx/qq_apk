@@ -16,8 +16,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import aubi;
-import aubj;
+import avhc;
+import avhd;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class QQGameIndicator2
   implements ViewPager.OnPageChangeListener
 {
   public ViewPager a;
-  private aubj a;
+  private avhd a;
   
   public QQGameIndicator2(Context paramContext)
   {
@@ -62,28 +62,28 @@ public class QQGameIndicator2
   
   public RadioButton a(int paramInt1, int paramInt2)
   {
-    aubi localaubi = new aubi(this, super.getContext());
-    localaubi.setButtonDrawable(null);
-    localaubi.setBackgroundResource(2130846157);
-    localaubi.setGravity(17);
-    localaubi.setText(paramInt1 + "");
+    avhc localavhc = new avhc(this, super.getContext());
+    localavhc.setButtonDrawable(null);
+    localavhc.setBackgroundResource(2130846253);
+    localavhc.setGravity(17);
+    localavhc.setText(paramInt1 + "");
     if (paramInt2 + 1 == paramInt1) {
-      localaubi.setTextColor(-1);
+      localavhc.setTextColor(-1);
     }
     for (;;)
     {
-      localaubi.setTextSize(12.0F);
+      localavhc.setTextSize(12.0F);
       Resources localResources = super.getContext().getResources();
       RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, 20.0F, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, 20.0F, localResources.getDisplayMetrics()));
       localLayoutParams.gravity = 17;
       paramInt1 = (int)TypedValue.applyDimension(1, 2.0F, localResources.getDisplayMetrics());
       localLayoutParams.leftMargin = paramInt1;
       localLayoutParams.rightMargin = paramInt1;
-      localaubi.setLayoutParams(localLayoutParams);
-      localaubi.setClickable(false);
-      localaubi.setFocusable(false);
-      return localaubi;
-      localaubi.setTextColor(Color.parseColor("#9B9B9B"));
+      localavhc.setLayoutParams(localLayoutParams);
+      localavhc.setClickable(false);
+      localavhc.setFocusable(false);
+      return localavhc;
+      localavhc.setTextColor(Color.parseColor("#9B9B9B"));
     }
   }
   
@@ -167,8 +167,8 @@ public class QQGameIndicator2
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.jdField_a_of_type_Aubj != null) {
-      this.jdField_a_of_type_Aubj.a(paramInt1, paramFloat, paramInt2);
+    if (this.jdField_a_of_type_Avhd != null) {
+      this.jdField_a_of_type_Avhd.a(paramInt1, paramFloat, paramInt2);
     }
   }
   
@@ -189,17 +189,17 @@ public class QQGameIndicator2
         localRadioButton.setChecked(true);
       }
       a(i, localPagerAdapter.getCount());
-      if (this.jdField_a_of_type_Aubj == null) {
+      if (this.jdField_a_of_type_Avhd == null) {
         break;
       }
-      this.jdField_a_of_type_Aubj.a(paramInt);
+      this.jdField_a_of_type_Avhd.a(paramInt);
       return;
     }
   }
   
-  public void setPageListener(aubj paramaubj)
+  public void setPageListener(avhd paramavhd)
   {
-    this.jdField_a_of_type_Aubj = paramaubj;
+    this.jdField_a_of_type_Avhd = paramavhd;
   }
   
   public void setViewPager(ViewPager paramViewPager)

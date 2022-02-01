@@ -1,35 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.messagesearch.C2CLinkElement;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.6.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class ajgn
-  implements AdapterView.OnItemClickListener
+public class ajgn
+  implements ThreadExcutor.IThreadListener
 {
-  ajgn(ajgg paramajgg) {}
+  public ajgn(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_Ajgf.getCount() <= 0) || (paramInt <= 0)) {
-      return;
-    }
-    paramAdapterView = this.a.jdField_a_of_type_Ajgf.a(paramInt - 1);
-    if (paramAdapterView != null)
-    {
-      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", paramAdapterView.url);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
-    }
-    QLog.e("LinkMessageSearchDialog", 2, "link element is null pos:" + paramInt);
+    ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.6.1(this));
   }
+  
+  public void onPreRun() {}
 }
 
 

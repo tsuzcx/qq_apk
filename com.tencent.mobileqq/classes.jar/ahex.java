@@ -1,27 +1,32 @@
-public class ahex
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QZoneClickReport;
+import cooperation.qzone.QZoneClickReport.ReportInfo;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
+
+class ahex
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
+  ahex(ahev paramahev) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuffer localStringBuffer = new StringBuffer("UserInfo{");
-    localStringBuffer.append("age=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", sex=").append(this.jdField_b_of_type_Int);
-    localStringBuffer.append(", nickName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", province='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", city='").append(this.jdField_c_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", headPic='").append(this.d).append('\'');
-    localStringBuffer.append(", relationShip=").append(this.jdField_c_of_type_Int);
-    localStringBuffer.append(", uin='").append(this.e).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    {
+      Object localObject = new QZoneClickReport.ReportInfo();
+      ((QZoneClickReport.ReportInfo)localObject).actionType = "330";
+      ((QZoneClickReport.ReportInfo)localObject).subactionType = "3";
+      ((QZoneClickReport.ReportInfo)localObject).reserves = "2";
+      QZoneClickReport.startReportImediately(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (QZoneClickReport.ReportInfo)localObject);
+      localObject = QZoneHelper.UserInfo.getInstance();
+      QZoneHelper.forwardToUserHome((Activity)this.a.jdField_a_of_type_AndroidContentContext, (QZoneHelper.UserInfo)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, 0, 0, 0);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

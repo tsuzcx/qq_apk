@@ -1,21 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qwz
-  implements Animation.AnimationListener
+class qwz
+  implements ViewBase.OnClickListener
 {
-  public qwz(ComponentSocialOperation paramComponentSocialOperation) {}
+  qwz(qwy paramqwy) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.a.startAnimation(this.a.c);
+    qwx.a(this.a.jdField_a_of_type_Qwx).a(this.a.jdField_a_of_type_Int, paramViewBase, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

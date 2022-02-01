@@ -1,29 +1,17 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.graphics.Matrix;
 
-class ajqm
-  extends axkw
+public class ajqm
 {
-  ajqm(ajqk paramajqk) {}
+  public float a;
+  private final Matrix a;
+  public boolean a;
+  public float b = 0.0F;
   
-  protected void onGetQZoneAlbumListNum(boolean paramBoolean, Bundle paramBundle)
+  public ajqm()
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
-    {
-      long l = ((get_albumlist_num_rsp)paramBundle).album_num;
-      ((ajrc)this.a.mOtherCommonData).jdField_a_of_type_Long = l;
-      paramBundle = this.a.a();
-      if (paramBundle != null)
-      {
-        paramBundle.a(((ajrc)this.a.mOtherCommonData).jdField_a_of_type_Long);
-        paramBundle.postData();
-      }
-    }
-    ((ajrc)this.a.mOtherCommonData).jdField_a_of_type_Boolean = false;
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a.a);
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 0.0F;
   }
 }
 

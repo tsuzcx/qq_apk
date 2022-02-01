@@ -1,35 +1,40 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.os.Bundle;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 class nuv
-  implements bjoe
+  extends bhyn
 {
-  nuv(num paramnum, bjnw parambjnw) {}
+  nuv(nuu paramnuu) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDone(bhyo parambhyo)
   {
-    if (this.jdField_a_of_type_Num.f) {
-      return;
+    if (parambhyo.a == 0) {
+      parambhyo = parambhyo.a().getString("file_path");
     }
-    this.jdField_a_of_type_Num.f = true;
-    if (paramInt == 0) {
-      this.jdField_a_of_type_Num.jdField_a_of_type_Int = 0;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Num.jdField_a_of_type_Anxp);
-      this.jdField_a_of_type_Num.jdField_a_of_type_Anxp = new anxp(new nuw(this));
-      this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Num.jdField_a_of_type_Anxp);
-      anxu.a(this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Num.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      if (paramInt == 1) {
-        this.jdField_a_of_type_Num.jdField_a_of_type_Int = 2;
-      } else if (paramInt == 2) {
-        this.jdField_a_of_type_Num.jdField_a_of_type_Int = 1;
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        File localFile = new File(parambhyo);
+        String str = FileUtils.readFileToString(localFile);
+        if (QLog.isColorLevel()) {
+          QLog.d("CommonConfigBase", 2, "onDone() content =  " + str + ", filePath = " + parambhyo);
+        }
+        localFile.delete();
+        this.a.b(str);
+        this.a.a(str);
+        return;
+      }
+      catch (IOException parambhyo)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("CommonConfigBase", 2, QLog.getStackTraceString(parambhyo));
+        return;
       }
     }
+    QLog.d("CommonConfigBase", 2, "onError(), errorCode = " + parambhyo.a);
   }
 }
 

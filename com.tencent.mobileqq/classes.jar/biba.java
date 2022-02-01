@@ -1,31 +1,48 @@
+import android.support.annotation.NonNull;
+import java.util.HashMap;
+import java.util.Map;
+
 public class biba
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
+  private static final biba jdField_a_of_type_Biba = new biba();
+  private static final Map<String, bibe> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public biba(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
+  public static biba a()
   {
-    this.a = (paramString1 + "");
-    this.b = (paramString2 + "");
-    this.c = (paramString3 + "");
-    this.d = (paramString4 + "");
-    this.e = (paramString5 + "");
-    this.f = (paramString6 + "");
-    this.g = (paramString7 + "");
-    this.h = paramString8;
-    this.i = paramString9;
-    this.j = (paramString10 + "");
-    this.k = (paramString11 + "");
-    bhzm.b("report_debug", "reportItem apn=" + this.a + ",frequency=" + this.b + ",commandid=" + this.c + ",resultcode=" + this.d + "timecost" + this.e + ",reqsize=" + this.f + ",rspsize=" + this.g + ",uin=" + this.h + ",deviceinfo=" + this.i + ",detail=" + this.j + ",appid=" + paramString11);
+    return jdField_a_of_type_Biba;
+  }
+  
+  public bibe a(@NonNull String paramString)
+  {
+    Object localObject;
+    if (paramString == null) {
+      localObject = null;
+    }
+    bibe localbibe;
+    do
+    {
+      do
+      {
+        return localObject;
+        localbibe = (bibe)jdField_a_of_type_JavaUtilMap.get(paramString);
+        localObject = localbibe;
+      } while (localbibe != null);
+      localbibe = bibe.a(paramString);
+      localObject = localbibe;
+    } while (localbibe == null);
+    jdField_a_of_type_JavaUtilMap.put(paramString, localbibe);
+    return localbibe;
+  }
+  
+  public void a(@NonNull String paramString, Object paramObject)
+  {
+    paramObject = bibe.a(paramObject);
+    if (paramObject == null) {}
+    while (paramObject.a(a(paramString))) {
+      return;
+    }
+    jdField_a_of_type_JavaUtilMap.put(paramString, paramObject);
+    paramObject.a(paramString);
   }
 }
 

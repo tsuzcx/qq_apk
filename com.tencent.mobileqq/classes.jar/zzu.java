@@ -1,273 +1,439 @@
-import android.content.SharedPreferences;
-import android.os.Environment;
+import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.viewplugin.ViewPluginLoader.5;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.biz.subscribe.videoplayer.CleanVideoPlayerView;
+import com.tencent.biz.subscribe.videoplayer.SubscribePlayerManager.2;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vas.LzmaUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.widget.AbsListView;
 import java.util.HashMap;
-import org.json.JSONObject;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class zzu
 {
-  public static final HashMap<String, zzu> a;
-  int jdField_a_of_type_Int = 0;
-  public SharedPreferences a;
-  public ClassLoader a;
-  public Object a;
-  public String a;
-  nop jdField_a_of_type_Nop = new nop();
-  public zzt a;
-  public volatile boolean a;
-  public String b;
-  boolean b;
-  public String c = null;
-  public String d;
-  public String e;
-  private String f;
+  private static zzu jdField_a_of_type_Zzu;
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private ChatXListView jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private final String jdField_a_of_type_JavaLangString = "SubscribePlayerManager";
+  private Map<Integer, agqf> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Set<agqf> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = -1;
+  private Map<Integer, Integer> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int = -1;
+  private Map<Integer, String> jdField_c_of_type_JavaUtilMap = new HashMap();
+  private int d = -1;
+  private int e = -1;
+  private int f;
   
-  static
+  private int a()
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null) || (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(0) == null)) {
+      return 0;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(0).getTop();
   }
   
-  public zzu(String paramString1, String paramString2)
+  public static zzu a()
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = (BaseApplicationImpl.getContext().getFilesDir() + "/pluginopt/" + paramString2 + "/opt");
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("viewplugin_sp", 0);
-    jdField_a_of_type_JavaUtilHashMap.put(paramString2, this);
-    this.f = (Environment.getExternalStorageDirectory().getPath() + "/tencent/plugins/");
+    if (jdField_a_of_type_Zzu == null) {
+      jdField_a_of_type_Zzu = new zzu();
+    }
+    return jdField_a_of_type_Zzu;
   }
   
-  public bgoj a()
+  private void a(agqf paramagqf, boolean paramBoolean)
   {
-    return ((bgog)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
+    if (paramBoolean)
+    {
+      paramagqf.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      paramagqf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramagqf.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      return;
+    }
+    paramagqf.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+    paramagqf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    paramagqf.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if (NetworkUtil.getNetworkType(BaseApplicationImpl.context) != 1) {
+      QLog.d("SubscribePlayerManager", 4, "not wifi autoPlay return");
+    }
+    for (;;)
+    {
+      return;
+      if ((this.f > this.jdField_c_of_type_Int) && (this.f < this.d))
+      {
+        QLog.d("SubscribePlayerManager", 4, "mCurrentPosition:" + this.f + "is play in screen");
+        return;
+      }
+      QLog.d("SubscribePlayerManager", 4, "mFirstPosition:" + this.jdField_c_of_type_Int + ",mLastPosition:" + this.d);
+      int i;
+      if (paramBoolean)
+      {
+        i = this.jdField_c_of_type_Int;
+        while ((i <= this.d) && (!b(i))) {
+          i += 1;
+        }
+      }
+      else
+      {
+        i = this.d;
+        while ((i >= this.jdField_c_of_type_Int) && (!b(i))) {
+          i -= 1;
+        }
+      }
+    }
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return paramInt == this.jdField_b_of_type_Int;
+  }
+  
+  private void b(agqf paramagqf)
+  {
+    if (paramagqf != null) {
+      while ((paramagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0) instanceof CleanVideoPlayerView))
+      {
+        View localView = paramagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+        paramagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
+        if (((VideoPlayerView)localView).f()) {
+          ((VideoPlayerView)localView).f();
+        }
+        ((VideoPlayerView)localView).i();
+        a(paramagqf, false);
+        QLog.d("SubscribePlayerManager", 4, "release videoPlayer position:" + paramagqf.jdField_b_of_type_Int);
+      }
+    }
+  }
+  
+  private boolean b(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null)
+    {
+      agqf localagqf = (agqf)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      if (localagqf != null)
+      {
+        Object localObject = localagqf.jdField_a_of_type_AndroidWidgetRelativeLayout;
+        Rect localRect = new Rect();
+        localagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.getLocalVisibleRect(localRect);
+        int i = localagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+        if ((localRect.top == 0) && (localRect.bottom == i))
+        {
+          localObject = ((RelativeLayout)localObject).getChildAt(0);
+          if ((localObject instanceof CleanVideoPlayerView))
+          {
+            localObject = (CleanVideoPlayerView)localObject;
+            if (!((CleanVideoPlayerView)localObject).f())
+            {
+              ((CleanVideoPlayerView)localObject).e();
+              QLog.d("SubscribePlayerManager", 4, "play by old player position:" + localagqf.jdField_b_of_type_Int);
+            }
+            QLog.d("SubscribePlayerManager", 4, "is playing now position:" + localagqf.jdField_b_of_type_Int);
+            a(localagqf, true);
+          }
+          for (;;)
+          {
+            return true;
+            c(localagqf, paramInt);
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  private void c(agqf paramagqf, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null)
+    {
+      if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.context))
+      {
+        bjkv.a().a(anvx.a(2131714033));
+        QLog.d("SubscribePlayerManager", 4, "network not available");
+      }
+    }
+    else {
+      return;
+    }
+    Object localObject;
+    CleanVideoPlayerView localCleanVideoPlayerView;
+    int i;
+    if (!TextUtils.isEmpty(paramagqf.jdField_b_of_type_JavaLangString))
+    {
+      b(paramagqf);
+      localObject = a(paramagqf.jdField_b_of_type_JavaLangString, "vid");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localCleanVideoPlayerView = new CleanVideoPlayerView(this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getContext());
+        localCleanVideoPlayerView.setLoopBack(true);
+        localCleanVideoPlayerView.setOutPutMute(true);
+        localCleanVideoPlayerView.setWifiAutoPlay(true);
+        if (this.jdField_b_of_type_JavaUtilMap == null) {
+          break label301;
+        }
+        if (this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramagqf.jdField_b_of_type_Int)) == null) {
+          i = 0;
+        }
+      }
+    }
+    for (;;)
+    {
+      localCleanVideoPlayerView.setVideoPath((String)localObject, "", i);
+      localCleanVideoPlayerView.setBaseVideoViewListenerSets(new zzw(this, paramagqf));
+      localCleanVideoPlayerView.setRevertProgress(true);
+      i = ScreenUtil.dip2px(180.0F);
+      localObject = new RelativeLayout.LayoutParams((int)(i * (paramagqf.e / paramagqf.f)), i);
+      ((RelativeLayout.LayoutParams)localObject).addRule(13);
+      paramagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localCleanVideoPlayerView, 0, (ViewGroup.LayoutParams)localObject);
+      this.f = paramInt;
+      e();
+      QLog.d("SubscribePlayerManager", 4, "playInner mCurrentPlayPosition: " + this.f);
+      return;
+      i = ((Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramagqf.jdField_b_of_type_Int))).intValue();
+      continue;
+      QLog.d("SubscribePlayerManager", 4, "vid is empty");
+      return;
+      QLog.d("SubscribePlayerManager", 4, "url is empty");
+      return;
+      label301:
+      i = 0;
+    }
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_JavaLangRunnable == null) {
+      this.jdField_a_of_type_JavaLangRunnable = new SubscribePlayerManager.2(this);
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+    }
+  }
+  
+  private void e()
+  {
+    agqf localagqf1 = (agqf)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.f));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    while (localIterator.hasNext())
+    {
+      agqf localagqf2 = (agqf)localIterator.next();
+      if (localagqf2 != localagqf1) {
+        b(localagqf2);
+      }
+    }
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    String str = "";
+    String[] arrayOfString = paramString1.substring(paramString1.indexOf("?") + 1).split("&");
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      paramString1 = str;
+      if (i < j)
+      {
+        paramString1 = arrayOfString[i];
+        if (paramString1.contains(paramString2)) {
+          paramString1 = paramString1.replace(paramString2 + "=", "");
+        }
+      }
+      else
+      {
+        return paramString1;
+      }
+      i += 1;
+    }
   }
   
   public void a()
   {
-    bhab localbhab = (bhab)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(107);
-    try
+    agqf localagqf = (agqf)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.f));
+    if (localagqf != null)
     {
-      if (this.jdField_b_of_type_Boolean)
+      View localView = localagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+      if (((localView instanceof CleanVideoPlayerView)) && (!((VideoPlayerView)localView).f()))
       {
-        localbhab.notifyUI(3, true, Integer.valueOf(4));
-        return;
-      }
-      this.jdField_b_of_type_Boolean = true;
-      String str = "https://" + this.jdField_b_of_type_JavaLangString + "?_bid=" + this.jdField_a_of_type_JavaLangString;
-      BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-      long l = System.currentTimeMillis();
-      if ((!nny.a(BaseApplicationImpl.getContext(), str, new zzv(this, l, localbhab, localBaseApplication))) && (QLog.isColorLevel()))
-      {
-        QLog.i("ViewPluginLoader", 2, "plugin:" + this.jdField_b_of_type_JavaLangString + " transToLocalUrl: return false");
-        return;
+        ((VideoPlayerView)localView).e();
+        QLog.d("SubscribePlayerManager", 4, "onResume play video position:" + localagqf.jdField_b_of_type_Int);
       }
     }
-    finally {}
   }
   
-  public void a(BaseActivity paramBaseActivity)
+  public void a(agqf paramagqf)
   {
-    if (this.jdField_a_of_type_Zzt != null)
+    View localView = paramagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+    a(paramagqf, false);
+    if ((localView instanceof CleanVideoPlayerView))
     {
-      this.jdField_a_of_type_Zzt = new zzt(paramBaseActivity, 0, this.jdField_a_of_type_Zzt);
+      paramagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
+      if (((VideoPlayerView)localView).f())
+      {
+        ((VideoPlayerView)localView).f();
+        QLog.d("SubscribePlayerManager", 4, "handleScrollOutScreen:" + paramagqf.jdField_b_of_type_Int);
+      }
+      ((CleanVideoPlayerView)localView).i();
+      this.f = -1;
+    }
+  }
+  
+  public void a(agqf paramagqf, int paramInt)
+  {
+    if ((agqf)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) == paramagqf) {
       return;
     }
-    this.jdField_a_of_type_Zzt = new zzt(paramBaseActivity, 0, this.e, this.jdField_a_of_type_JavaLangClassLoader);
+    d();
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramagqf);
+    this.jdField_a_of_type_JavaUtilSet.add(paramagqf);
+    View localView = paramagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+    if ((localView instanceof CleanVideoPlayerView))
+    {
+      paramagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
+      if (((VideoPlayerView)localView).f()) {
+        ((VideoPlayerView)localView).f();
+      }
+      ((VideoPlayerView)localView).i();
+    }
+    a(paramagqf, false);
+    paramagqf.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new zzv(this, paramagqf));
+    QLog.d("SubscribePlayerManager", 4, "bindViewHolder:" + paramInt + "  HolderSize:" + this.jdField_a_of_type_JavaUtilSet.size());
   }
   
-  public void a(JSONObject paramJSONObject, QQAppInterface paramQQAppInterface)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    boolean bool1 = true;
-    int i = paramJSONObject.optInt("code");
-    paramQQAppInterface = noe.b(this.jdField_a_of_type_JavaLangString);
-    boolean bool2;
-    if (!TextUtils.isEmpty(paramQQAppInterface)) {
-      if (i == 4)
-      {
-        paramQQAppInterface = paramQQAppInterface + this.jdField_a_of_type_JavaLangString + ".7z";
-        bool2 = false;
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null) {
+      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)paramAbsListView);
     }
-    for (;;)
+    switch (paramInt)
     {
-      ThreadManager.post(new ViewPluginLoader.5(this, paramJSONObject, paramQQAppInterface, new zzx(this, paramQQAppInterface, bool2, bool1)), 8, null, false);
+    default: 
       return;
-      if ((i == 3) || (i == 2))
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_Boolean = true;
+    QLog.d("SubscribePlayerManager", 4, "mPerFirstVisible:" + this.jdField_b_of_type_Int + "  mFiresVisible:" + this.jdField_c_of_type_Int);
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      a(true);
+      QLog.d("SubscribePlayerManager", 4, "begin start");
+      return;
+    }
+    a(false);
+    QLog.d("SubscribePlayerManager", 4, "begin end");
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt3 == 0) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null) {
+      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)paramAbsListView);
+    }
+    if (a(paramInt1))
+    {
+      int i = a();
+      if (Math.abs(this.jdField_a_of_type_Int - i) > 0)
       {
-        paramQQAppInterface = paramQQAppInterface + this.jdField_a_of_type_JavaLangString + ".zip";
-        bool2 = true;
-        bool1 = false;
+        paramInt3 = 1;
+        if (paramInt3 != 0) {
+          if (this.jdField_a_of_type_Int <= i) {
+            break label130;
+          }
+        }
       }
-      else
+      label130:
+      for (this.jdField_b_of_type_Boolean = true;; this.jdField_b_of_type_Boolean = false)
       {
-        QLog.e("ViewPluginLoader", 1, "do not know what format, use default zip name!");
-        paramQQAppInterface = paramQQAppInterface + this.jdField_a_of_type_JavaLangString + ".zip";
-        bool2 = false;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        bool2 = false;
-        paramQQAppInterface = null;
+        this.jdField_a_of_type_Int = i;
+        paramInt3 = this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFooterViewsCount();
+        i = this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
+        this.jdField_c_of_type_Int = (paramInt1 - i);
+        this.e = paramInt2;
+        this.d = (this.jdField_c_of_type_Int + paramInt2 - paramInt3 - i);
+        return;
+        paramInt3 = 0;
+        break;
       }
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    b();
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 1;
-    for (;;)
+    if (paramInt1 > this.jdField_b_of_type_Int) {}
+    for (this.jdField_b_of_type_Boolean = true;; this.jdField_b_of_type_Boolean = false)
     {
-      String str2;
-      File localFile;
-      String str1;
-      Object localObject;
-      try
-      {
-        str2 = this.jdField_a_of_type_JavaLangString;
-        boolean bool = TextUtils.isEmpty(str2);
-        if (bool)
-        {
-          paramBoolean2 = false;
-          return paramBoolean2;
-        }
-        if (TextUtils.isEmpty(noe.b(str2)))
-        {
-          paramBoolean2 = false;
-          continue;
-        }
-        localFile = new File(paramString);
-        if (!localFile.exists())
-        {
-          if (!QLog.isColorLevel()) {
-            break label595;
-          }
-          QLog.i("ViewPluginLoader", 2, "doUnzipZip: no zip ! : businessId:" + str2);
-          break label595;
-        }
-        long l = System.currentTimeMillis();
-        str1 = localFile.getParent() + File.separator + str2;
-        localObject = BidDownloader.a(paramString);
-        if (QLog.isColorLevel()) {
-          QLog.i("ViewPluginLoader", 2, "fileFormat: " + (String)localObject + ", path: " + paramString);
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label378;
-        }
-        if (((String)localObject).equals("zip"))
-        {
-          i = npo.a(paramString, str1);
-          if (QLog.isColorLevel()) {
-            QLog.i("ViewPluginLoader", 2, "now delete original download offline zip, path: " + paramString);
-          }
-          npn.b(paramString);
-          if (i <= 0) {
-            break label440;
-          }
-          nny.a(str2, 13, 0L, i, "lixian_update", "0");
-          if (!QLog.isColorLevel()) {
-            break label590;
-          }
-          QLog.i("ViewPluginLoader", 2, "unZipFolder fail!");
-          paramBoolean1 = false;
-          npn.a(str1);
-          paramBoolean2 = paramBoolean1;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("ViewPluginLoader", 2, "time of unzip zip：" + (System.currentTimeMillis() - l) + ", isSuccess: " + paramBoolean1);
-          paramBoolean2 = paramBoolean1;
-          continue;
-        }
-        if (!((String)localObject).equals("7z")) {
-          continue;
-        }
-      }
-      finally {}
-      i = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString, str1);
-      continue;
-      label378:
-      QLog.w("ViewPluginLoader", 1, "can not recognize download compress file format, " + paramString);
-      if (paramBoolean1)
-      {
-        i = npo.a(paramString, str1);
-      }
-      else if (paramBoolean2)
-      {
-        i = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString, str1);
-        continue;
-        label440:
-        paramString = str1 + File.separator + str2 + ".zip";
-        localObject = new File(paramString);
-        str2 = localFile.getParent() + File.separator + str2 + ".zip";
-        if (QLog.isColorLevel()) {
-          QLog.i("ViewPluginLoader", 2, "now move zip file to location: " + str2);
-        }
-        if (((File)localObject).exists())
-        {
-          paramBoolean2 = ((File)localObject).renameTo(new File(str2));
-          paramBoolean1 = paramBoolean2;
-          if (!paramBoolean2) {
-            paramBoolean1 = FileUtils.moveFile(paramString, str2);
-          }
-        }
-        else
-        {
-          label590:
-          paramBoolean1 = false;
-          continue;
-          label595:
-          paramBoolean2 = false;
-        }
-      }
+      this.jdField_a_of_type_Int = a();
+      this.jdField_b_of_type_Int = paramInt1;
+      break;
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Int = 0;
-    nny.a();
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((localQQAppInterface != null) && (localQQAppInterface.getLongAccountUin() % 10L == 6L)) {}
-    for (boolean bool = true;; bool = false)
+    agqf localagqf = (agqf)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.f));
+    if (localagqf != null)
     {
-      nny.a = bool;
-      String str = nny.a(this.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("ViewPluginLoader", 2, "checkOfflineAndLoad version = " + str);
+      View localView = localagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+      if (((localView instanceof CleanVideoPlayerView)) && (((VideoPlayerView)localView).f()))
+      {
+        ((VideoPlayerView)localView).f();
+        QLog.d("SubscribePlayerManager", 4, "onStop pause video position:" + localagqf.jdField_b_of_type_Int);
       }
-      if ((!new File(noe.a(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_JavaLangString + "/" + this.jdField_b_of_type_JavaLangString).exists()) && (!TextUtils.isEmpty(str)) && (!"0".equals(str))) {
-        FileUtils.deleteDirectory(noe.a(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_JavaLangString);
-      }
-      if (localQQAppInterface != null) {
-        break;
-      }
-      return;
     }
-    nny.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface, new zzw(this, localQQAppInterface), false);
+  }
+  
+  public void b(agqf paramagqf, int paramInt)
+  {
+    if (paramagqf != null)
+    {
+      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramagqf.jdField_b_of_type_Int));
+      View localView = paramagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+      if ((localView instanceof CleanVideoPlayerView))
+      {
+        paramagqf.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
+        if (((VideoPlayerView)localView).f()) {
+          ((VideoPlayerView)localView).f();
+        }
+        ((VideoPlayerView)localView).i();
+        a(paramagqf, false);
+        QLog.d("SubscribePlayerManager", 4, "unbind view position:" + paramInt);
+      }
+    }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Zzt = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = -1;
+    this.f = -1;
+    e();
+    this.jdField_c_of_type_Int = -1;
+    this.d = -1;
+    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = null;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_a_of_type_JavaUtilSet.clear();
+    this.jdField_b_of_type_JavaUtilMap.clear();
+    this.jdField_c_of_type_JavaUtilMap.clear();
   }
 }
 

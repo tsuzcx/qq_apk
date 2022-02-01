@@ -1,14 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
 
-public abstract interface ots
-  extends View.OnClickListener, otp
+public class ots
+  implements bkzq
 {
-  public abstract void a(int paramInt);
+  public ots(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, String paramString, bkzi parambkzi) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void onClick(View paramView);
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      pvj.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.getActivity());
+    }
+  }
 }
 
 

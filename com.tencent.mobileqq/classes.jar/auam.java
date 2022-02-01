@@ -1,25 +1,18 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class auam
-  extends GestureDetector.SimpleOnGestureListener
+class auam
+  implements View.OnClickListener
 {
-  public auam(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  auam(auai paramauai) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    if (this.a.a.a() != null) {
+      this.a.a.a().a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

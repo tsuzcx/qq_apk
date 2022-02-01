@@ -1,25 +1,52 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Map;
 
 class wbf
-  extends SimpleJob<Object>
+  implements bcyl
 {
-  wbf(wbd paramwbd, String paramString)
+  wbf(wbe paramwbe, String paramString) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, bcyf parambcyf)
   {
-    super(paramString);
+    wbk localwbk;
+    if (parambcyf.jdField_a_of_type_Int == 0)
+    {
+      parambcyf = (azjk)parambcyf.jdField_a_of_type_JavaLangObject;
+      localwbk = (wbk)this.jdField_a_of_type_Wbe.a.a.remove(this.jdField_a_of_type_JavaLangString);
+      if (localwbk != null)
+      {
+        if (!new File(parambcyf.b).exists()) {
+          break label99;
+        }
+        localwbk.b = (System.currentTimeMillis() - localwbk.jdField_a_of_type_Long);
+        if (localwbk.jdField_a_of_type_Wbd != null) {
+          localwbk.jdField_a_of_type_Wbd.a(localwbk, new ErrorMessage(0, "onDownload"));
+        }
+      }
+    }
+    label99:
+    do
+    {
+      do
+      {
+        return;
+        ykq.d("AsyncFileDownloader", "preload success , why file not exist , key : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+        return;
+        ykq.d("AsyncFileDownloader", "onPreLoadFailed,key=%s,errorCode=%s", new Object[] { this.jdField_a_of_type_JavaLangString, String.valueOf(parambcyf.jdField_a_of_type_Int) });
+        localwbk = (wbk)this.jdField_a_of_type_Wbe.a.a.remove(this.jdField_a_of_type_JavaLangString);
+      } while (localwbk == null);
+      localwbk.b = (System.currentTimeMillis() - localwbk.jdField_a_of_type_Long);
+    } while (localwbk.jdField_a_of_type_Wbd == null);
+    localwbk.jdField_a_of_type_Wbd.a(localwbk, new ErrorMessage(parambcyf.jdField_a_of_type_Int, "onFailed"));
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    if (this.a.jdField_a_of_type_Wbg == null) {
-      this.a.jdField_a_of_type_Wbg = new wbg(this.a, this.a.d);
-    }
-    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Wbg.jdField_a_of_type_JavaLangString;
-    wbd.a(this.a);
-    return null;
-  }
+  public void a(int paramInt, ArrayList<bcyf> paramArrayList) {}
+  
+  public void b(int paramInt, bcyf parambcyf) {}
 }
 
 

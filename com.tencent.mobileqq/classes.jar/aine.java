@@ -1,17 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
-
-public class aine
-  implements bamo
+public abstract interface aine
 {
-  private aine(AlphabetFriendFragment paramAlphabetFriendFragment) {}
+  public abstract void a(int paramInt);
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if ((AlphabetFriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
-      AlphabetFriendFragment.a(this.a, 1400L, false);
-    }
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

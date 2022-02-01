@@ -1,14 +1,20 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arww
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public arww(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public arww(DataReportViewer paramDataReportViewer) {}
   
-  public void onGlobalLayout()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.am_();
+    this.a.a = paramBoolean;
+    if (this.a.a) {
+      this.a.a();
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

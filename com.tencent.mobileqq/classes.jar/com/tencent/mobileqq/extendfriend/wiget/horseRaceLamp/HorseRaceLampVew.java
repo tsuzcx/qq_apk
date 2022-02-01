@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import arrm;
-import arrn;
-import arro;
-import arrp;
+import asvs;
+import asvt;
+import asvu;
+import asvv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,9 +27,9 @@ public class HorseRaceLampVew
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 3;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private arrm jdField_a_of_type_Arrm;
-  private arrp jdField_a_of_type_Arrp;
-  private ArrayList<arrn> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private asvs jdField_a_of_type_Asvs;
+  private asvv jdField_a_of_type_Asvv;
+  private ArrayList<asvt> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 15;
@@ -69,7 +69,7 @@ public class HorseRaceLampVew
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((arrn)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
+        ((asvt)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
         i += 1;
       }
     }
@@ -134,15 +134,15 @@ public class HorseRaceLampVew
             localObject = localView.getTag();
             n = k;
             i = m;
-            if ((localObject instanceof arro))
+            if ((localObject instanceof asvu))
             {
               m += 1;
-              localObject = (arro)localObject;
+              localObject = (asvu)localObject;
               n = k;
               i = m;
               if (localView.getWidth() != 0)
               {
-                ((arro)localObject).c(localView.getMeasuredWidth());
+                ((asvu)localObject).c(localView.getMeasuredWidth());
                 n = k + 1;
                 i = m;
               }
@@ -157,7 +157,7 @@ public class HorseRaceLampVew
         i = i1;
         while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          ((arrn)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
+          ((asvt)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
           i += 1;
         }
         this.jdField_a_of_type_Boolean = true;
@@ -178,11 +178,11 @@ public class HorseRaceLampVew
             localView.setVisibility(0);
           }
           localObject = localView.getTag();
-          if ((localObject instanceof arro))
+          if ((localObject instanceof asvu))
           {
-            localObject = (arro)localObject;
-            j = ((arro)localObject).a();
-            k = ((arro)localObject).b();
+            localObject = (asvu)localObject;
+            j = ((asvu)localObject).a();
+            k = ((asvu)localObject).b();
             localView.setX(j);
             localView.setY(k);
           }
@@ -268,20 +268,20 @@ public class HorseRaceLampVew
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.jdField_b_of_type_Int);
   }
   
-  public void setAdapter(arrp paramarrp)
+  public void setAdapter(asvv paramasvv)
   {
-    this.jdField_a_of_type_Arrp = paramarrp;
+    this.jdField_a_of_type_Asvv = paramasvv;
     d();
   }
   
-  public void setTagClickListner(arrm paramarrm)
+  public void setTagClickListner(asvs paramasvs)
   {
-    this.jdField_a_of_type_Arrm = paramarrm;
+    this.jdField_a_of_type_Asvs = paramasvs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew
  * JD-Core Version:    0.7.0.1
  */

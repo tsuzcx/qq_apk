@@ -1,19 +1,16 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class uzk
   implements View.OnClickListener
 {
-  uzk(uzj paramuzj) {}
+  uzk(uzh paramuzh) {}
   
   public void onClick(View paramView)
   {
-    if (uzj.a(this.a).getActivity() != null) {
-      uzj.a(this.a).getActivity().doOnBackPressed();
-    }
+    uzh.a(this.a).deleteEmoticonClick();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

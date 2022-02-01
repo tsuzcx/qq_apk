@@ -1,44 +1,22 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.ArrayList;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
 public class aeus
-  extends amsu
+  implements Handler.Callback
 {
-  public aeus(ActivateFriendView paramActivateFriendView) {}
+  public aeus(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = 0;
+    switch (paramMessage.what)
+    {
+    }
     for (;;)
     {
-      if (i < ActivateFriendView.a(this.a).size())
-      {
-        String str = String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin);
-        if (paramString.equals(str))
-        {
-          paramString = ContactUtils.getBuddyName(ActivateFriendView.a(this.a), str, false);
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(paramString);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 0;
-    while (i < ActivateFriendView.a(this.a).size())
-    {
-      String str = ContactUtils.getFriendDisplayName(ActivateFriendView.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin));
-      ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(str);
-      i += 1;
+      return true;
+      paramMessage = new aeut(this);
+      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
     }
   }
 }

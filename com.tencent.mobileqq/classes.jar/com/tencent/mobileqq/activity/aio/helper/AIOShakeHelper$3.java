@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afpo;
+import aggs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShakeWindow;
 
 public class AIOShakeHelper$3
   implements Runnable
 {
-  public AIOShakeHelper$3(afpo paramafpo, MessageForShakeWindow paramMessageForShakeWindow) {}
+  public AIOShakeHelper$3(aggs paramaggs, MessageForShakeWindow paramMessageForShakeWindow) {}
   
   public void run()
   {
     this.this$0.a();
-    afpo.a(this.this$0).vibratorAndAudioForShake(this.a.frienduin, false);
+    aggs.a(this.this$0).vibratorAndAudioForShake(this.a.frienduin, false);
   }
 }
 

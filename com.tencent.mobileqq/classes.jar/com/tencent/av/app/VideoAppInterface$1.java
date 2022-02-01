@@ -1,7 +1,7 @@
 package com.tencent.av.app;
 
 import com.tencent.qphone.base.util.QLog;
-import lfk;
+import lfw;
 
 class VideoAppInterface$1
   implements Runnable
@@ -13,7 +13,7 @@ class VideoAppInterface$1
     if (QLog.isColorLevel()) {
       QLog.i(VideoAppInterface.c(), 2, "Async load mediaCodecChipConfig.");
     }
-    lfk.a().a();
+    lfw.a().a();
   }
 }
 

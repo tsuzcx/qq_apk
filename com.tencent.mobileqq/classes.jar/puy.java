@@ -1,8 +1,18 @@
-import java.util.Map;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskException;
 
-public abstract interface puy
+public class puy
+  extends BroadcastReceiver
 {
-  public abstract void a(int paramInt, Map<Long, rcz> paramMap);
+  public puy(KandianMergeManager paramKandianMergeManager) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    TaskException.reportCrash(paramIntent.getBooleanExtra("isNativeCrashed", false), paramIntent.getStringExtra("crashType"), paramIntent.getStringExtra("crashAddress"), paramIntent.getStringExtra("crashStack"), paramIntent.getIntExtra("native_SICODE", 0), paramIntent.getLongExtra("crashTime", 0L));
+  }
 }
 
 

@@ -1,22 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeViewHolder.1.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class wph
-  implements vqp<wfc, wfd>
+public class wph
+  implements URLDrawable.URLDrawableListener
 {
-  wph(wpg paramwpg, woj paramwoj) {}
+  wph(wpg paramwpg) {}
   
-  public void a(@NonNull wfc paramwfc, @Nullable wfd paramwfd, @NonNull ErrorMessage paramErrorMessage)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramErrorMessage.isFail()) || (paramwfd == null))
-    {
-      xvv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Woj.a(paramErrorMessage, null, false);
-      return;
-    }
-    this.jdField_a_of_type_Wpg.a.a(paramwfd.jdField_a_of_type_JavaUtilList, paramwfd.jdField_a_of_type_JavaLangString, paramwfd.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Woj.a(paramErrorMessage, wnr.b(paramwfd.jdField_a_of_type_JavaUtilList), paramwfd.jdField_a_of_type_Boolean);
+    ThreadManager.getUIHandler().postDelayed(new MsgNodeViewHolder.1.1(this), 1000L);
   }
 }
 

@@ -1,58 +1,208 @@
-import android.util.SparseArray;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.1;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.2;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.3;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.4;
+import com.tencent.mobileqq.colornote.ColorNoteCurd.5;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.util.Pair;
 
 public class aqns
 {
-  private final SparseArray<BlockingQueue<aqoa>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private aqoj jdField_a_of_type_Aqoj;
-  private final BlockingQueue<aqoa> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+  private Handler jdField_a_of_type_AndroidOsHandler = new aqnt(this);
+  private aqnu jdField_a_of_type_Aqnu;
+  private aqnv jdField_a_of_type_Aqnv = new aqnv();
   
-  public aqns(aqoj paramaqoj)
+  public aqns()
   {
-    this.jdField_a_of_type_Aqoj = paramaqoj;
-  }
-  
-  protected int a()
-  {
-    return 300;
-  }
-  
-  public aqoa a(int paramInt, Object paramObject)
-  {
-    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    Object localObject = localBlockingQueue;
-    if (localBlockingQueue == null) {
-      localObject = new LinkedBlockingQueue();
-    }
-    localObject = (aqoa)((BlockingQueue)localObject).poll();
-    if (localObject == null)
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    QQAppInterface localQQAppInterface;
+    if ((localObject instanceof QQAppInterface))
     {
-      localObject = this.jdField_a_of_type_Aqoj.a(paramInt);
-      aqqb.a("DanmakuFactory", new Object[] { localObject, " is created " });
+      localQQAppInterface = (QQAppInterface)localObject;
+      if (localQQAppInterface != null) {
+        break label74;
+      }
+      localObject = null;
     }
     for (;;)
     {
-      ((aqoa)localObject).e();
-      ((aqoa)localObject).a(paramObject);
-      return localObject;
-      aqqb.a("DanmakuFactory", new Object[] { localObject, " is reused " });
+      this.jdField_a_of_type_Aqnv.a(localQQAppInterface);
+      this.jdField_a_of_type_Aqnv.a((aqol)localObject);
+      return;
+      localQQAppInterface = null;
+      break;
+      label74:
+      if (localQQAppInterface.getProxyManager() == null) {
+        localObject = null;
+      } else {
+        localObject = localQQAppInterface.getProxyManager().a();
+      }
     }
   }
   
-  public void a(aqoa paramaqoa)
+  private boolean c()
   {
-    int i = paramaqoa.a();
-    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    Object localObject = localBlockingQueue;
-    if (localBlockingQueue == null)
+    return Looper.getMainLooper() == Looper.myLooper();
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    a(paramInt, paramString, 0);
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    if (c())
     {
-      localObject = new LinkedBlockingQueue();
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localObject);
+      ThreadManagerV2.excute(new ColorNoteCurd.2(this, paramInt1, paramString, paramInt2), 32, null, true);
+      return;
     }
-    if (a() > ((BlockingQueue)localObject).size()) {
-      ((BlockingQueue)localObject).add(paramaqoa);
+    b(paramInt1, paramString, paramInt2);
+  }
+  
+  public void a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.3(this, paramInt, paramString, paramBoolean), 32, null, true);
+      return;
     }
+    b(paramInt, paramString, paramBoolean);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.1(this, paramBundle), 32, null, true);
+      return;
+    }
+    b(paramBundle);
+  }
+  
+  public void a(aqnu paramaqnu)
+  {
+    this.jdField_a_of_type_Aqnu = paramaqnu;
+  }
+  
+  public void a(ColorNote paramColorNote)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.4(this, paramColorNote), 32, null, true);
+      return;
+    }
+    b(paramColorNote);
+  }
+  
+  public boolean a()
+  {
+    if (BaseApplicationImpl.sProcessId == 1) {
+      return this.jdField_a_of_type_Aqnv.c();
+    }
+    return aqos.a().c();
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return aqos.a().a(paramInt, paramString);
+  }
+  
+  public void b(int paramInt1, String paramString, int paramInt2)
+  {
+    boolean bool = aqnv.b(paramInt1, paramString, paramInt2);
+    Message localMessage = Message.obtain();
+    localMessage.obj = new Pair(Integer.valueOf(paramInt1), paramString);
+    if (bool) {}
+    for (localMessage.what = 5;; localMessage.what = 6)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return;
+    }
+  }
+  
+  public void b(int paramInt, String paramString, boolean paramBoolean)
+  {
+    Bundle localBundle = aqnv.a(paramInt, paramString, paramBoolean);
+    if (localBundle == null) {
+      return;
+    }
+    localBundle.putInt("key_service_type", paramInt);
+    localBundle.putString("key_sub_type", paramString);
+    paramString = Message.obtain();
+    paramString.what = 9;
+    paramString.obj = localBundle;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    boolean bool = this.jdField_a_of_type_Aqnv.a(paramBundle);
+    Message localMessage = Message.obtain();
+    localMessage.obj = paramBundle;
+    if (bool) {}
+    for (localMessage.what = 3;; localMessage.what = 4)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return;
+    }
+  }
+  
+  public void b(ColorNote paramColorNote)
+  {
+    Object localObject = paramColorNote.getUniKey();
+    if (paramColorNote.mMainTitle != null) {}
+    for (boolean bool2 = aqnv.a((String)localObject, "mMainTitle", paramColorNote.mMainTitle);; bool2 = true)
+    {
+      boolean bool1 = bool2;
+      if (paramColorNote.mSubTitle != null) {
+        bool1 = bool2 & aqnv.a((String)localObject, "mSubTitle", paramColorNote.mSubTitle);
+      }
+      bool2 = bool1;
+      if (paramColorNote.mPicUrl != null) {
+        bool2 = bool1 & aqnv.a((String)localObject, "mPicUrl", paramColorNote.mPicUrl);
+      }
+      bool1 = bool2;
+      if (paramColorNote.mReserve != null) {
+        bool1 = bool2 & aqnv.a((String)localObject, "mReserve", paramColorNote.mReserve, 1);
+      }
+      localObject = Message.obtain();
+      if (bool1) {}
+      for (((Message)localObject).what = 10;; ((Message)localObject).what = 11)
+      {
+        ((Message)localObject).obj = paramColorNote;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+        return;
+      }
+    }
+  }
+  
+  public boolean b()
+  {
+    return aqos.a().b();
+  }
+  
+  public void c(ColorNote paramColorNote)
+  {
+    if (c())
+    {
+      ThreadManagerV2.excute(new ColorNoteCurd.5(this, paramColorNote), 32, null, true);
+      return;
+    }
+    d(paramColorNote);
+  }
+  
+  public void d(ColorNote paramColorNote)
+  {
+    aqnv.a(paramColorNote);
   }
 }
 

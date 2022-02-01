@@ -37,6 +37,7 @@ public final class SvcRequestRegisterNew
   public SvcReqGet heartbeat;
   public SvcReqRegister regist;
   public long uEndSeq;
+  public long ulLastFilterListTime;
   public long ulMaxDisGrpMsgTime;
   public long ulRequestOptional;
   public long ulSyncTime;
@@ -46,7 +47,7 @@ public final class SvcRequestRegisterNew
   
   public SvcRequestRegisterNew() {}
   
-  public SvcRequestRegisterNew(long paramLong1, SvcRequestGetMsgV2 paramSvcRequestGetMsgV2, SvcRequestPullGroupMsgSeq paramSvcRequestPullGroupMsgSeq, SvcRequestPullDisMsgSeq paramSvcRequestPullDisMsgSeq, SvcReqRegister paramSvcReqRegister, byte paramByte1, byte paramByte2, byte paramByte3, long paramLong2, SvcRequestPullDisGroupSeq paramSvcRequestPullDisGroupSeq, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, SvcReqGet paramSvcReqGet, byte paramByte4, byte paramByte5, long paramLong3, byte paramByte6, long paramLong4, long paramLong5, byte[] paramArrayOfByte4)
+  public SvcRequestRegisterNew(long paramLong1, SvcRequestGetMsgV2 paramSvcRequestGetMsgV2, SvcRequestPullGroupMsgSeq paramSvcRequestPullGroupMsgSeq, SvcRequestPullDisMsgSeq paramSvcRequestPullDisMsgSeq, SvcReqRegister paramSvcReqRegister, byte paramByte1, byte paramByte2, byte paramByte3, long paramLong2, SvcRequestPullDisGroupSeq paramSvcRequestPullDisGroupSeq, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, SvcReqGet paramSvcReqGet, byte paramByte4, byte paramByte5, long paramLong3, byte paramByte6, long paramLong4, long paramLong5, byte[] paramArrayOfByte4, long paramLong6)
   {
     this.ulRequestOptional = paramLong1;
     this.c2cmsg = paramSvcRequestGetMsgV2;
@@ -69,6 +70,7 @@ public final class SvcRequestRegisterNew
     this.ulSyncTime = paramLong4;
     this.ulMaxDisGrpMsgTime = paramLong5;
     this.bytes_0x769_reqbody = paramArrayOfByte4;
+    this.ulLastFilterListTime = paramLong6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -132,6 +134,7 @@ public final class SvcRequestRegisterNew
       ((byte[])cache_bytes_0x769_reqbody)[0] = 0;
     }
     this.bytes_0x769_reqbody = ((byte[])paramJceInputStream.read(cache_bytes_0x769_reqbody, 20, false));
+    this.ulLastFilterListTime = paramJceInputStream.read(this.ulLastFilterListTime, 23, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -177,6 +180,7 @@ public final class SvcRequestRegisterNew
     if (this.bytes_0x769_reqbody != null) {
       paramJceOutputStream.write(this.bytes_0x769_reqbody, 20);
     }
+    paramJceOutputStream.write(this.ulLastFilterListTime, 23);
   }
 }
 

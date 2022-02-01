@@ -1,8 +1,26 @@
-import android.view.View;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.util.Pair;
 
-public abstract interface bjwq
+public class bjwq
+  extends Handler
 {
-  public abstract void a(View paramView1, View paramView2, int paramInt1, int paramInt2);
+  public bjwq(bjwp parambjwp, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (Pair)paramMessage.obj;
+    bjwp.a(this.a, bjwp.a(this.a), (byte[])paramMessage.first, ((Integer)paramMessage.second).intValue());
+  }
 }
 
 

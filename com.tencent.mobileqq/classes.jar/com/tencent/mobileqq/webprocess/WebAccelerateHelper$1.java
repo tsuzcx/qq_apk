@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webprocess;
 
-import bgyb;
+import biit;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebAccelerator;
 import java.util.HashMap;
 import java.util.Map;
-import npn;
+import nwo;
 
 class WebAccelerateHelper$1
   implements Runnable
@@ -18,9 +18,9 @@ class WebAccelerateHelper$1
     if (this.val$fisX5PreFetch)
     {
       localHashMap = new HashMap();
-      localHashMap.put("User-Agent", bgyb.a(bgyb.c("x5prefetch_1.0"), "", false));
+      localHashMap.put("User-Agent", biit.a(biit.c("x5prefetch_1.0"), "", false));
       WebAccelerator.prefetchResource(BaseApplicationImpl.getContext(), this.val$fUrl, localHashMap, true);
-      QLog.i("WebAccelerateHelper", 1, "now prefetchResource " + npn.c(this.val$fUrl, new String[0]));
+      QLog.i("WebAccelerateHelper", 1, "now prefetchResource " + nwo.c(this.val$fUrl, new String[0]));
     }
     while (!this.val$fisX5PreConnect)
     {
@@ -28,7 +28,7 @@ class WebAccelerateHelper$1
       return;
     }
     WebAccelerator.preConnect(BaseApplicationImpl.getContext(), this.val$fUrl, 1, true);
-    QLog.i("WebAccelerateHelper", 1, "now preconnect " + npn.c(this.val$fUrl, new String[0]));
+    QLog.i("WebAccelerateHelper", 1, "now preconnect " + nwo.c(this.val$fUrl, new String[0]));
   }
 }
 

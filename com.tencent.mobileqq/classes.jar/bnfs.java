@@ -1,20 +1,37 @@
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
-final class bnfs
+public class bnfs
   implements Animation.AnimationListener
 {
-  bnfs(View paramView) {}
+  public bnfs(AEMaterialPanel paramAEMaterialPanel, Runnable paramRunnable) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.setAnimation(null);
+    AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, false);
+    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null) {
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).b();
+    }
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, true);
+    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null)
+    {
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).setAlpha(1.0F);
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).setVisibility(0);
+      return;
+    }
+    bnrh.d("AEMaterialPanel", "[openWithAnimation] alpha - onAnimationStart, mContentView == null");
+  }
 }
 
 

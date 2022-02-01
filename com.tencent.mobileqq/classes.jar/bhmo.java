@@ -1,99 +1,34 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.res.Resources;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class bhmo
-  extends Handler
+class bhmo
+  implements MediaPlayer.OnCompletionListener
 {
-  private bhmo(bhml parambhml) {}
+  bhmo(bhmn parambhmn, AudioManager paramAudioManager) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCompletion(MediaPlayer arg1)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("TVKVideoController", 4, new Object[] { "PlayerStatusHandler msg:", Integer.valueOf(paramMessage.what), " ,arg:", Integer.valueOf(paramMessage.arg1) });
-    }
-    switch (paramMessage.what)
+    synchronized (this.jdField_a_of_type_Bhmn.jdField_a_of_type_JavaLangObject)
     {
+      ???.release();
+      this.jdField_a_of_type_Bhmn.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+      this.jdField_a_of_type_Bhmn.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Bhmn.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
+      this.jdField_a_of_type_Bhmn.c.setImageDrawable(this.jdField_a_of_type_Bhmn.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130847094));
+      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_Bhmn.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
     }
-    do
+    synchronized (this.jdField_a_of_type_Bhmn.jdField_a_of_type_Bhmu)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if (QLog.isColorLevel()) {
-                  QLog.d("TVKVideoController", 2, new Object[] { "MEDIA_PREPAREING viewW:", Integer.valueOf(bhml.a(this.a).getWidth()), " ,viewH:", Integer.valueOf(bhml.a(this.a).getHeight()), " ,videoW:", Integer.valueOf(bhml.a(this.a)), " ,videoH:", Integer.valueOf(bhml.b(this.a)) });
-                }
-                if (bhml.a(this.a) != null)
-                {
-                  bhml.a(this.a).onSetVideoCover(bhml.a(this.a));
-                  bhml.a(this.a).onVideoSize(bhml.a(this.a), bhml.b(this.a));
-                }
-                this.a.a(bhml.a(this.a), bhml.b(this.a));
-                bhml.a(this.a, 2);
-                return;
-                if (bhml.a(this.a).get())
-                {
-                  if (bhml.a(this.a) != null) {
-                    bhml.a(this.a).onVideoStart((int)bhml.a(this.a).c());
-                  }
-                  bhml.c(this.a);
-                  bhml.a(this.a).set(false);
-                  return;
-                }
-                bhml.a(this.a, 3);
-                return;
-              } while (!QLog.isColorLevel());
-              QLog.d("TVKVideoController", 2, "onSeekComplete");
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("TVKVideoController", 2, "onPlaybackComplete");
-              }
-              bhml.a(this.a, true);
-              bhml.a(this.a, 0);
-              bhml.a(this.a).removeCallbacks(this.a.a);
-              if (bhml.a(this.a) != null) {
-                bhml.a(this.a).e = 0L;
-              }
-              bhml.d(this.a);
-            } while (bhml.a(this.a) == null);
-            bhml.a(this.a).onVideoComplete(true);
-            bhml.a(this.a).onVideoProgressUpdate(0);
-            return;
-          } while (!QLog.isColorLevel());
-          QLog.d("TVKVideoController", 2, "onVideoSizeChanged");
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("TVKVideoController", 2, "MEDIA_INSTALL_SUCCESS");
-          }
-        } while ((bhml.a(this.a) == null) || (bhml.a(this.a) == null));
-        bhml.a(this.a, bhml.a(this.a).a((Context)bhml.a(this.a).get()));
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("TVKVideoController", 2, "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
-        }
-        bhml.a(this.a, paramMessage.arg1, paramMessage.arg2);
-        return;
-      } while ((bhml.a(this.a) == null) || (bhml.c(this.a) == 4));
-      if (paramMessage.arg1 == 929)
-      {
-        bhml.a(this.a).onVideoBuffering();
-        return;
-      }
-    } while (paramMessage.arg1 != 92);
-    bhml.a(this.a).onVideoStart((int)bhml.a(this.a).c());
+      this.jdField_a_of_type_Bhmn.jdField_a_of_type_Bhmu.jdField_a_of_type_Int = 6;
+      return;
+      ??? = finally;
+      throw ???;
+    }
   }
 }
 

@@ -1,11 +1,16 @@
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
+import android.text.Html.ImageGetter;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 class aghu
-  extends aezf
+  implements Html.ImageGetter
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
   aghu(aght paramaght) {}
+  
+  public Drawable getDrawable(String paramString)
+  {
+    return this.a.a(aght.a(this.a).mContext, paramString);
+  }
 }
 
 

@@ -1,35 +1,50 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
 
-public class avym
+class avym
+  implements HookMethodCallback
 {
-  public static int a = 12;
-  public static boolean a;
+  private int a;
   
-  public static int a(Context paramContext)
+  public avym(int paramInt)
   {
-    paramContext = paramContext.getResources();
-    return paramContext.getDisplayMetrics().widthPixels - AIOUtils.dp2px(42.0F, paramContext) * 2;
+    this.a = paramInt;
   }
   
-  public static int a(Context paramContext, int paramInt)
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    paramInt /= 5;
-    int i = a(paramContext);
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    float f = paramContext.heightPixels * 1.0F / paramContext.widthPixels;
-    if (QLog.isColorLevel()) {
-      QLog.d("VelocityUtil", 2, "getInitVelocity() displayMetrics.widthPixels = " + paramContext.widthPixels + ", displayMetrics.heightPixels = " + paramContext.heightPixels + ", ratio = " + f + ", 16.F/9.F = " + 1.777778F + ",viewPagerClientWidth = " + i);
+    if (paramMethodHookParam.throwable == null) {
+      return;
     }
-    if ((f > 1.777778F) && (QLog.isColorLevel())) {
-      QLog.d("VelocityUtil", 2, "getInitVelocity() ratio > 16.F/9.F");
+    Throwable localThrowable;
+    if (paramMethodHookParam.throwable.getCause() != null) {
+      localThrowable = paramMethodHookParam.throwable.getCause();
     }
-    QLog.d("VelocityUtil", 1, "getInitVelocity: pendingVelocity = " + paramInt + ", viewPagerClientWidth = " + i);
-    return paramInt;
+    while ((localThrowable instanceof OutOfMemoryError))
+    {
+      avyl.b();
+      try
+      {
+        paramMethodHookParam.result = JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
+        paramMethodHookParam.throwable = null;
+        avyl.a(true, this.a);
+        return;
+      }
+      catch (Exception paramMethodHookParam)
+      {
+        avyl.a(false, this.a);
+        return;
+        localThrowable = paramMethodHookParam.throwable;
+      }
+      catch (Error paramMethodHookParam)
+      {
+        avyl.a(false, this.a);
+      }
+    }
   }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

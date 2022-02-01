@@ -3,21 +3,21 @@ package dov.com.qq.im.ae.camera.ui;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import bloe;
+import bnbp;
 import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class VideoStoryPiecesPart$3
   implements Runnable
 {
-  public VideoStoryPiecesPart$3(bloe parambloe) {}
+  public VideoStoryPiecesPart$3(bnbp parambnbp) {}
   
   public void run()
   {
-    Drawable localDrawable = bloe.a(this.this$0).getResources().getDrawable(2130849119);
-    int i = AIOUtils.dp2px(36.0F, bloe.b(this.this$0).getResources());
+    Drawable localDrawable = bnbp.a(this.this$0).getResources().getDrawable(2130849211);
+    int i = AIOUtils.dp2px(36.0F, bnbp.b(this.this$0).getResources());
     localDrawable.setBounds(0, 0, i, i);
-    bloe.a(this.this$0).setImageDrawable(localDrawable);
+    bnbp.a(this.this$0).setImageDrawable(localDrawable);
   }
 }
 

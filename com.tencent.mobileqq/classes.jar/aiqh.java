@@ -1,20 +1,25 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.SingleLineTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aiqh
-  extends ainm
+  implements DialogInterface.OnClickListener
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public StringBuilder a;
-  public SingleLineTextView c;
+  public aiqh(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  aiqh()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.b = 11;
+    if (!NetworkUtil.isNetworkAvailable(this.a.getApplicationContext())) {
+      QQToast.a(this.a, 2131694512, 1).a();
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      this.a.d();
+    }
   }
 }
 

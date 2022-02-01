@@ -3,11 +3,15 @@ package com.tencent.qapmsdk.looper;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 import com.tencent.qapmsdk.base.config.PluginCombination;
 import com.tencent.qapmsdk.base.monitorplugin.PluginController;
+import com.tencent.qapmsdk.common.activty.ActivityInfo;
 import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.thread.ThreadManager;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -22,7 +26,6 @@ class GetStackRunnable
   private static final int MAX_TIME_SPAN = 100000;
   private static final String TAG = "QAPM_looper_GetStackRunnable";
   private static final int TIME_TOLERANCE = 10;
-  private static final int TIME_TO_REPORT_DELAY = 3000;
   private static final int WAIT_MORE_BEFORE_STACK = 200;
   private static final String WHITE_LIST = "android.support.v4.";
   @Nullable
@@ -30,6 +33,8 @@ class GetStackRunnable
   @NonNull
   private StringBuilder builder = new StringBuilder(1024);
   private int checkInterval = PluginCombination.loopStackPlugin.threshold;
+  private Object dropFrameInstance = null;
+  private Field dropFrameSceneField = null;
   private int randomRange = 500 - this.checkInterval;
   private ArrayList<String> stackStorage;
   private final String[] systemStackElementPrefix = { "java.", "android.", "com.android.", "dalvik.", "com.google", "libcore.", "sun.", "com.qihoo360.", "com.lbe." };
@@ -46,6 +51,38 @@ class GetStackRunnable
       handler = new Handler(ThreadManager.getStackThreadLooper());
       return;
     }
+  }
+  
+  private String getDropFrameScene()
+  {
+    Object localObject1 = "";
+    try
+    {
+      if ((this.dropFrameInstance == null) && (this.dropFrameSceneField == null))
+      {
+        Object localObject3 = Class.forName("com.tencent.qapmsdk.dropframe.DropFrameMonitor");
+        localObject2 = ((Class)localObject3).getDeclaredMethod("getInstance", new Class[0]).invoke(null, new Object[0]);
+        localObject3 = ((Class)localObject3).getDeclaredField("currentScene");
+        ((Field)localObject3).setAccessible(true);
+        this.dropFrameInstance = localObject2;
+        this.dropFrameSceneField = ((Field)localObject3);
+      }
+      localObject2 = String.valueOf(this.dropFrameSceneField.get(this.dropFrameInstance));
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject2;
+        Logger.INSTANCE.w(new String[] { "QAPM_looper_GetStackRunnable", "get dropFrame scene may be error" });
+      }
+    }
+    localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = ActivityInfo.getCurrentActivityName();
+    }
+    return localObject2;
   }
   
   private String getStack(boolean paramBoolean)
@@ -171,6 +208,9 @@ class GetStackRunnable
     {
       onThreadMonitorEnd((MonitorInfo)localObject);
       return;
+    }
+    if ((((MonitorInfo)localObject).callback != null) && (((MonitorInfo)localObject).lastForceTime != 0L) && (((MonitorInfo)localObject).callback.onAfterStack(((MonitorInfo)localObject).lastForceTime))) {
+      ((MonitorInfo)localObject).lastForceTime = 0L;
     }
     localObject = new GetStackRunnable.Step1Runnable(this, handler, (MonitorInfo)localObject);
     handler.postDelayed((Runnable)localObject, this.checkInterval);

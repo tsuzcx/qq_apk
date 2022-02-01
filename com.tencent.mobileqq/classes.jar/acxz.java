@@ -1,19 +1,13 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qapmsdk.base.meta.DumpResult;
 
-public class acxz
-  implements View.OnClickListener
+public abstract interface acxz
+  extends acxu
 {
-  public acxz(ChatHistory paramChatHistory) {}
+  public abstract DumpResult a(String paramString, acyb paramacyb);
   
-  public void onClick(View paramView)
-  {
-    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(long paramLong, String paramString);
+  
+  public abstract void a(Object paramObject, String paramString);
 }
 
 

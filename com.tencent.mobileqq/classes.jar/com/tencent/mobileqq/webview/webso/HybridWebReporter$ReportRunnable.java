@@ -2,8 +2,8 @@ package com.tencent.mobileqq.webview.webso;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bgyn;
-import bgzd;
+import bijf;
+import bijv;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.http.HttpBaseUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -28,12 +28,12 @@ class HybridWebReporter$ReportRunnable
 {
   int jdField_a_of_type_Int = 0;
   String jdField_a_of_type_JavaLangString;
-  ArrayList<bgyn> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<bijf> jdField_a_of_type_JavaUtilArrayList;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
   boolean jdField_b_of_type_Boolean = false;
   
-  public HybridWebReporter$ReportRunnable(ArrayList<bgyn> paramArrayList)
+  public HybridWebReporter$ReportRunnable(ArrayList<bijf> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -60,7 +60,7 @@ class HybridWebReporter$ReportRunnable
       {
         if (((Iterator)localObject2).hasNext())
         {
-          localJSONArray.put(((bgyn)((Iterator)localObject2).next()).a());
+          localJSONArray.put(((bijf)((Iterator)localObject2).next()).a());
           continue;
           if (localObject1 == null) {
             break;
@@ -88,7 +88,7 @@ class HybridWebReporter$ReportRunnable
   public void run()
   {
     Object localObject = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatCgiURL", "https://h5.qzone.qq.com/report/native");
-    String str2 = (String)localObject + "?uin=" + bgzd.a();
+    String str2 = (String)localObject + "?uin=" + bijv.a();
     a();
     if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
       return;

@@ -1,70 +1,89 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSSwitchManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.pts.nativemodule.PTSNativeModuleRegistry;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import org.json.JSONObject;
+import tencent.im.oidb.articlesummary.articlesummary.WeishiUGInfo;
 
 public class qof
+  implements qqa
 {
-  public static qof a;
-  private boolean a;
-  private boolean b;
-  private boolean c;
-  
-  static
+  private String a(PBBytesField paramPBBytesField)
   {
-    jdField_a_of_type_Qof = new qof();
+    if ((paramPBBytesField.has()) && (paramPBBytesField.get() != null)) {
+      return paramPBBytesField.get().toStringUtf8();
+    }
+    return null;
   }
   
-  private void b()
+  private void a(Context paramContext, String paramString)
   {
-    this.c = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    d();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("big_brother_source_key", "biz_src_kandian_hotnews");
+    localIntent.setAction("android.intent.action.VIEW");
+    localIntent.setData(Uri.parse(paramString));
+    if (six.a(paramContext, localIntent)) {
+      paramContext.startActivity(localIntent);
+    }
   }
   
-  private void c()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    d();
-    qnr.b();
-    PTSNativeModuleRegistry.registerNativeModule("RequestFeedsModule", new qnl());
-    PTSNativeModuleRegistry.registerNativeModule("NavigateToModule", new qnj());
-    PTSNativeModuleRegistry.registerNativeModule("AllInOneJumpModule", new qnd());
-    PTSNativeModuleRegistry.registerNativeModule("LoadFeedsModule", new qng());
-    PTSNativeModuleRegistry.registerNativeModule("HandleJSException", new qnf());
-    PTSNativeModuleRegistry.registerNativeModule("ReportTo1160", new qnk());
-    PTSNativeModuleRegistry.registerNativeModule("MarkArticleRead", new qni());
-    qmv.a().a();
-    qmt.a().a();
+    return null;
   }
   
-  private void d()
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    qnr.c();
-    PTSNativeModuleRegistry.clearNativeModule();
-    qlt.a().a();
+    JSONObject localJSONObject = new JSONObject(paramBaseArticleInfo.proteusItemsData);
+    long l1 = localJSONObject.getLong("updateTime") * 1000L - 10800000L;
+    paramBaseArticleInfo = "";
+    long l2 = System.currentTimeMillis();
+    if (l2 - l1 > 86400000L) {
+      paramBaseArticleInfo = (int)((l2 - l1) / 86400000L) + "天前";
+    }
+    for (;;)
+    {
+      localJSONObject.put("updateTimeStr", paramBaseArticleInfo);
+      if (!bhfn.a(BaseApplicationImpl.getContext(), "com.tencent.reading")) {
+        break;
+      }
+      localJSONObject.put("jump_page", "3");
+      return localJSONObject;
+      if (l2 - l1 > 3600000L) {
+        paramBaseArticleInfo = (int)((l2 - l1) / 3600000L) + "小时前";
+      } else if (l2 - l1 > 60000L) {
+        paramBaseArticleInfo = (int)((l2 - l1) / 60000L) + "分钟前";
+      }
+    }
+    localJSONObject.put("jump_page", "2");
+    return localJSONObject;
   }
   
-  void a()
-  {
-    b();
-    PTSSwitchManager.1 local1 = new PTSSwitchManager.1(this);
-    ThreadManager.getSubThreadHandler().post(local1);
-  }
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2) {}
   
-  public boolean a()
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
   {
-    return this.c;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Boolean) || (this.b);
+    if ((paramViewBase != null) && (!TextUtils.isEmpty(paramViewBase.getClickEvnet())) && (paramViewBase.getClickEvnet().startsWith("cmd_kandian_ten_click"))) {}
+    try
+    {
+      oqt.a(a(paramqfw.a().weishiUGInfo.bytes_report_base_url) + a(paramqfw.a().weishiUGInfo.bytes_exposure_report_tail));
+      label80:
+      paramViewBase.setOnClickListener(new qog(this, paramqfw, paramContainer));
+      return true;
+      return false;
+    }
+    catch (Exception localException)
+    {
+      break label80;
+    }
   }
 }
 

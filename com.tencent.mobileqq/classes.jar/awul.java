@@ -1,12 +1,12 @@
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.widget.ThemeImageView;
+
 class awul
-  implements wxe
 {
-  awul(awuh paramawuh, awtz paramawtz) {}
-  
-  public void a_(wwz paramwwz)
-  {
-    this.jdField_a_of_type_Awtz.a(this.jdField_a_of_type_Awuh);
-  }
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
 }
 
 

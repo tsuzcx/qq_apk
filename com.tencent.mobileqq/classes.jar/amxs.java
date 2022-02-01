@@ -1,25 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
+import java.util.Comparator;
 
-final class amxs
-  implements DialogInterface.OnClickListener
+public class amxs
+  implements Comparator<amxt>
 {
-  amxs(DialogInterface.OnClickListener paramOnClickListener) {}
+  public amxs(CmGameCmdChannel paramCmGameCmdChannel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(amxt paramamxt1, amxt paramamxt2)
   {
-    amxq.a("1");
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
-    }
+    return paramamxt1.a() - paramamxt2.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxs
  * JD-Core Version:    0.7.0.1
  */

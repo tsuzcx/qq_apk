@@ -1,16 +1,14 @@
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-
 public class zfo
-  implements Dispatcher.Dispatchable
 {
-  public int a;
-  public Object a;
-  
-  public zfo(int paramInt, Object... paramVarArgs)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramVarArgs;
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  String c;
+  public String d;
+  String e;
+  public String f;
+  public String g;
 }
 
 

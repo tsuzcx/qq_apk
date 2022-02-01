@@ -1,36 +1,24 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskPreloadMgr.preloadSuperMaskRes.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import kotlin.Metadata;
 
-class ujf
-  implements URLDrawableDownListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskPreloadMgr;", "", "()V", "checkPreloadIfNeed", "", "preloadSuperMaskRes", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ujf
 {
-  ujf(ujd paramujd) {}
+  public static final ujf a = new ujf();
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  private final boolean a()
   {
-    uya.c("RichBlockDialog", "onLoadCanceled - ");
-    if (ujd.a(this.a) != null) {
-      ujd.a(this.a).setImageResource(2130841730);
-    }
+    boolean bool = ujt.a.a("[PRELOAD]", new ujc[] { (ujc)new ujk(), (ujc)new ujo() });
+    return (ujd.a.a() == 1) || (bool);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public final void a()
   {
-    if (ujd.a(this.a) != null) {
-      ujd.a(this.a).setImageResource(2130841730);
+    if (!a()) {
+      return;
     }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    ujd.a(this.a);
-    unt.b(3);
+    ThreadManagerV2.excute((Runnable)SuperMaskPreloadMgr.preloadSuperMaskRes.1.a, 128, null, true);
   }
 }
 

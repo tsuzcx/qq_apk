@@ -1,34 +1,93 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import java.io.File;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 class bkoq
-  implements ServiceConnection
+  implements IActivityResultListener
 {
-  bkoq(bkok parambkok) {}
+  bkoq(bkom parambkom, IActivityResultManager paramIActivityResultManager) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  @SuppressLint({"NewApi"})
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_Bkor = bkos.a(paramIBinder);
-    if (QLog.isColorLevel()) {
-      QLog.d("DatalineRemoteManager", 2, "mDatalineService connected");
+    if (paramInt1 != 10020) {
+      return false;
     }
-    paramComponentName = (amzy)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(10);
-    this.a.a(paramComponentName.a(), paramComponentName.d(), paramComponentName.e(), paramComponentName.f(), paramComponentName.a());
-    bkok.d(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(bkok.a(this.a));
-    this.a.jdField_a_of_type_Bkor = null;
-    this.a.jdField_a_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("DatalineRemoteManager", 2, "mDatalineService disconnected");
+    if (paramInt2 != -1)
+    {
+      bkom.a(this.jdField_a_of_type_Bkom, bkom.a(this.jdField_a_of_type_Bkom), "chooseVideo", null);
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+      return true;
+    }
+    Object localObject = (PublishParam)paramIntent.getParcelableExtra(PublishParam.jdField_a_of_type_JavaLangString);
+    paramIntent = paramIntent.getStringExtra("take_photo_path");
+    if (localObject != null) {}
+    for (;;)
+    {
+      try
+      {
+        paramIntent = new JSONObject();
+        String str = ((PublishParam)localObject).j;
+        l1 = new File(str).length();
+        long l2 = ((PublishParam)localObject).jdField_a_of_type_Long;
+        paramInt1 = ((PublishParam)localObject).jdField_a_of_type_Int;
+        paramInt2 = ((PublishParam)localObject).b;
+        localObject = ((PublishParam)localObject).c;
+        paramIntent.put("tempFilePath", ((IMiniAppFileManager)bkom.a(this.jdField_a_of_type_Bkom).getManager(IMiniAppFileManager.class)).getWxFilePath(str));
+        paramIntent.put("type", "video");
+        paramIntent.put("size", l1);
+        paramIntent.put("duration", l2);
+        paramIntent.put("width", paramInt1);
+        paramIntent.put("height", paramInt2);
+        paramIntent.put("thumbTempFilePath", ((IMiniAppFileManager)bkom.a(this.jdField_a_of_type_Bkom).getManager(IMiniAppFileManager.class)).getWxFilePath((String)localObject));
+        localObject = new JSONArray();
+        ((JSONArray)localObject).put(paramIntent);
+        paramIntent = new JSONObject();
+        paramIntent.put("tempFiles", localObject);
+        bkom.b(this.jdField_a_of_type_Bkom, bkom.a(this.jdField_a_of_type_Bkom), "chooseVideo", paramIntent);
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+        return true;
+      }
+      catch (Exception paramIntent)
+      {
+        QLog.e("MediaChooseJsProxyImpl", 1, "camera for video parse failed", paramIntent);
+        bkom.a(this.jdField_a_of_type_Bkom, bkom.a(this.jdField_a_of_type_Bkom), "chooseVideo", null, "chooseMedia exception:" + paramIntent.getMessage());
+        continue;
+      }
+      if (TextUtils.isEmpty(paramIntent)) {
+        continue;
+      }
+      long l1 = new File(paramIntent).length();
+      try
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("tempFilePath", ((IMiniAppFileManager)bkom.a(this.jdField_a_of_type_Bkom).getManager(IMiniAppFileManager.class)).getWxFilePath(paramIntent));
+        ((JSONObject)localObject).put("type", "image");
+        ((JSONObject)localObject).put("size", l1);
+        paramIntent = new JSONArray();
+        paramIntent.put(localObject);
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("tempFiles", paramIntent);
+        bkom.b(this.jdField_a_of_type_Bkom, bkom.a(this.jdField_a_of_type_Bkom), "chooseVideo", (JSONObject)localObject);
+        bkom.a(this.jdField_a_of_type_Bkom, bkom.a(this.jdField_a_of_type_Bkom), "chooseVideo", null, "chooseMedia fail.");
+      }
+      catch (Exception paramIntent)
+      {
+        for (;;)
+        {
+          QLog.e("MediaChooseJsProxyImpl", 1, "camera for image parse failed", paramIntent);
+          bkom.a(this.jdField_a_of_type_Bkom, bkom.a(this.jdField_a_of_type_Bkom), "chooseVideo", null, "chooseMedia exception:" + paramIntent.getMessage());
+        }
+      }
     }
   }
 }

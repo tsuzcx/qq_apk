@@ -1,55 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
 class bcvd
-  implements WtTicketPromise
+  implements abux
 {
-  bcvd(bcvc parambcvc, TicketManager paramTicketManager, ReSendCmd paramReSendCmd) {}
+  bcvd(bcvc parambcvc, int paramInt) {}
   
-  public void Done(Ticket paramTicket)
+  public void a(int paramInt, String paramString)
   {
-    int i;
-    if (paramTicket == null) {
-      i = 1;
-    }
-    for (;;)
-    {
-      QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
-      paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_Bcvc.mApp.getCurrentAccountUin(), "docs.qq.com");
-      if ((!TextUtils.isEmpty(paramTicket)) && (paramTicket.length() > 0))
-      {
-        bcvc.a(this.jdField_a_of_type_Bcvc, 0);
-        QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server success!");
-      }
-      bcvc.a(this.jdField_a_of_type_Bcvc, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-      return;
-      if ((paramTicket != null) && (paramTicket._pskey_map == null)) {
-        i = 2;
-      } else if ((paramTicket != null) && (paramTicket._pskey_map != null) && (paramTicket._pskey_map.get("docs.qq.com") == null)) {
-        i = 3;
-      } else {
-        i = 0;
-      }
-    }
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
-    bcvc.a(this.jdField_a_of_type_Bcvc, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
-    bcvc.a(this.jdField_a_of_type_Bcvc, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+    QLog.i("GameCenterManagerImp", 1, "on push code=" + paramInt + " cmd=" + this.jdField_a_of_type_Int);
   }
 }
 

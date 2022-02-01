@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.entry;
 
 import android.util.Log;
-import blbw;
-import blbx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.tianshu.TianShuManager;
+import cooperation.vip.tianshu.TianShuReportData;
 import mqq.app.AppRuntime;
 
 public class MiniAppExposureManager$TianShuExposureData
@@ -28,22 +28,22 @@ public class MiniAppExposureManager$TianShuExposureData
   {
     try
     {
-      blbx localblbx = new blbx();
+      TianShuReportData localTianShuReportData = new TianShuReportData();
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       String str = "";
       if (localAppRuntime != null) {
         str = localAppRuntime.getAccount();
       }
       long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-      localblbx.b = (str + "_" + l);
-      localblbx.jdField_a_of_type_Int = 1;
-      localblbx.jdField_e_of_type_JavaLangString = this.appId;
-      localblbx.f = this.pageId;
-      localblbx.g = this.itemId;
-      localblbx.d = this.actionId;
-      localblbx.jdField_e_of_type_Int = 1;
-      localblbx.jdField_a_of_type_Long = l;
-      blbw.a().a(localblbx);
+      localTianShuReportData.mTraceId = (str + "_" + l);
+      localTianShuReportData.mTraceNum = 1;
+      localTianShuReportData.mAppId = this.appId;
+      localTianShuReportData.mPageId = this.pageId;
+      localTianShuReportData.mItemId = this.itemId;
+      localTianShuReportData.mActionId = this.actionId;
+      localTianShuReportData.mActionValue = 1;
+      localTianShuReportData.mOperTime = l;
+      TianShuManager.getInstance().report(localTianShuReportData);
       if (QLog.isColorLevel()) {
         QLog.i("MiniAppExposureManager", 2, "TianShuExposureData, report itemId: " + this.itemId);
       }

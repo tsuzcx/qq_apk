@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.profilecard.vas.component.header;
 
-import ayyb;
+import badm;
 
 public class AbsVasProfileHeaderComponent$1
   implements Runnable
 {
-  public AbsVasProfileHeaderComponent$1(ayyb paramayyb) {}
+  public AbsVasProfileHeaderComponent$1(badm parambadm) {}
   
   public void run()
   {
-    ayyb.a(this.this$0);
+    badm.a(this.this$0);
   }
 }
 

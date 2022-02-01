@@ -1,27 +1,17 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wzn
-  extends QQUIEventReceiver<wzm, voc>
+final class wzn
+  implements DialogInterface.OnClickListener
 {
-  public wzn(@NonNull wzm paramwzm)
-  {
-    super(paramwzm);
-  }
+  wzn(StoryVideoItem paramStoryVideoItem, String paramString) {}
   
-  public void a(@NonNull wzm paramwzm, @NonNull voc paramvoc)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((wzm.a(paramwzm) == null) || (paramvoc.a == null) || (!TextUtils.equals(wzm.a(paramwzm).a, paramvoc.a.mVid))) {
-      return;
-    }
-    paramwzm.a.i();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return voc.class;
+    ykq.d("Q.qqstory.player.PlayModeUtils", "onClick delete =%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem });
+    wcn.a(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.dismiss();
   }
 }
 

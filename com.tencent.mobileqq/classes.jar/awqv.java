@@ -1,16 +1,8 @@
-import android.os.Bundle;
+import android.os.Message;
 
-class awqv
-  extends nme
+public abstract interface awqv
 {
-  awqv(awqu paramawqu, awrb paramawrb) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Awrb != null) {
-      this.jdField_a_of_type_Awrb.a(paramInt, paramArrayOfByte, paramBundle);
-    }
-  }
+  public abstract void a(Message paramMessage);
 }
 
 

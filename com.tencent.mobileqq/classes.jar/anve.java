@@ -1,105 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.data.fts.FTSNewTroopSync;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.fts.FTSOptSync;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import java.lang.ref.WeakReference;
 
 public class anve
-  extends anvg
+  implements Handler.Callback
 {
-  public anve(QQAppInterface paramQQAppInterface, anvf paramanvf)
+  private WeakReference<FrameHelperActivity> a;
+  
+  public anve(FrameHelperActivity paramFrameHelperActivity)
   {
-    super(paramQQAppInterface, paramanvf);
-    this.d = true;
+    this.a = new WeakReference(paramFrameHelperActivity);
   }
   
-  protected FTSOptSync a(int paramInt, long paramLong1, long paramLong2)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new FTSNewTroopSync(paramInt, paramLong1, paramLong2);
-  }
-  
-  protected List<FTSOptSync> a(SQLiteDatabase paramSQLiteDatabase, EntityManager paramEntityManager)
-  {
-    localObject = null;
-    try
-    {
-      if (this.a > 0)
-      {
-        i = paramSQLiteDatabase.delete(FTSNewTroopSync.class.getSimpleName(), "_id<=?", new String[] { String.valueOf(this.a) });
-        if ((QLog.isColorLevel()) && (i > 0)) {
-          QLog.d("Q.fts.troop.operator.new", 2, "delete " + FTSNewTroopSync.class.getSimpleName() + " row=" + i);
-        }
-      }
-      paramEntityManager = paramEntityManager.query(FTSNewTroopSync.class, FTSNewTroopSync.class.getSimpleName(), false, "_id>?", new String[] { String.valueOf(this.a) }, null, null, null, "300");
-      if (paramEntityManager == null) {
-        break label291;
-      }
-      paramSQLiteDatabase = new ArrayList(paramEntityManager.size());
-      try
-      {
-        paramEntityManager = paramEntityManager.iterator();
-        while (paramEntityManager.hasNext()) {
-          paramSQLiteDatabase.add(((FTSNewTroopSync)paramEntityManager.next()).transTroopSync());
-        }
-        QLog.e("Q.fts.troop.operator.new", 1, paramEntityManager, new Object[0]);
-      }
-      catch (Throwable paramEntityManager) {}
+    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
+    if (localFrameHelperActivity != null) {
+      localFrameHelperActivity.a(paramMessage);
     }
-    catch (Throwable paramEntityManager)
-    {
-      for (;;)
-      {
-        int i;
-        paramSQLiteDatabase = localObject;
-        continue;
-        paramSQLiteDatabase = null;
-      }
-    }
-    paramEntityManager = new HashMap();
-    paramEntityManager.put("type", "2");
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication().getApplicationContext()).collectPerformance(null, "actGetOptFailed", true, 0L, 0L, paramEntityManager, null);
-    paramEntityManager = paramSQLiteDatabase;
-    label225:
-    return paramEntityManager;
-    paramEntityManager = paramSQLiteDatabase;
-    for (;;)
-    {
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          break label225;
-        }
-        paramEntityManager = new StringBuilder().append("getOptSyncList size:");
-        if (paramSQLiteDatabase == null) {
-          break label279;
-        }
-        i = paramSQLiteDatabase.size();
-        QLog.d("Q.fts.troop.operator.new", 2, i);
-        return paramSQLiteDatabase;
-      }
-      catch (Throwable paramEntityManager) {}
-      break;
-      label279:
-      i = 0;
-    }
-  }
-  
-  protected String c()
-  {
-    return "NewTroopCursor";
-  }
-  
-  public void f() {}
-  
-  public boolean g()
-  {
     return false;
   }
 }

@@ -1,17 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.ar.ObjectBaseData;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aphf
-  implements AdapterView.OnItemLongClickListener
+  implements ayxl
 {
-  public aphf(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  public aphf(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
   
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    this.a.a();
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ObjectSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
+    }
+    ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.a.a();
   }
 }
 

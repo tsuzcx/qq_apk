@@ -1,48 +1,81 @@
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 class anid
-  implements Comparator<Entity>
+  implements anii
 {
-  anid(anic paramanic) {}
+  anid(anhw paramanhw) {}
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public void a()
   {
-    int j = -1;
-    paramEntity1 = (RecentUser)paramEntity1;
-    paramEntity2 = (RecentUser)paramEntity2;
-    long l1 = Math.max(paramEntity1.lastmsgtime, paramEntity1.lastmsgdrafttime);
-    long l2 = Math.max(paramEntity2.lastmsgtime, paramEntity2.lastmsgdrafttime);
-    int i;
-    if (l1 < l2)
+    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
+    if (this.a.jdField_a_of_type_Bkjp != null) {
+      this.a.jdField_a_of_type_Bkjp.a();
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
+    if (this.a.jdField_a_of_type_Bkjp != null) {
+      this.a.jdField_a_of_type_Bkjp.c(paramInt, paramString);
+    }
+  }
+  
+  public void a(int paramInt, String[] paramArrayOfString)
+  {
+    int k = paramArrayOfString.length;
+    int j = 0;
+    String str;
+    if (j < k)
     {
-      i = 1;
-      if (paramEntity1.getType() != paramEntity2.getType()) {
-        break label80;
+      str = paramArrayOfString[j];
+      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
+      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+        break label237;
       }
     }
-    label80:
-    do
+    label237:
+    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
     {
-      do
+      switch (paramInt)
       {
-        return i;
-        if (l1 == l2)
-        {
-          i = 0;
-          break;
+      default: 
+        label116:
+        if (i != 0) {
+          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
         }
-        i = -1;
         break;
-        i = j;
-      } while (paramEntity1.getType() == 0);
-      if (paramEntity2.getType() == 0) {
-        return 1;
       }
-      i = j;
-    } while (paramEntity1.getType() - paramEntity2.getType() > 0);
-    return 1;
+      for (;;)
+      {
+        j += 1;
+        break;
+        i |= 0x20;
+        break label116;
+        i &= 0xFFFFFFDF;
+        break label116;
+        i |= 0x1;
+        break label116;
+        i &= 0xFFFFFFFE;
+        break label116;
+        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
+        }
+      }
+      if (this.a.jdField_a_of_type_Bkjp != null) {
+        this.a.jdField_a_of_type_Bkjp.a(paramInt, paramArrayOfString);
+      }
+      return;
+    }
+  }
+  
+  public void a(String[] paramArrayOfString)
+  {
+    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
+    if (this.a.jdField_a_of_type_Bkjp != null) {
+      this.a.jdField_a_of_type_Bkjp.a(paramArrayOfString);
+    }
   }
 }
 

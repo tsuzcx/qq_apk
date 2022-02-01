@@ -1,27 +1,30 @@
-import android.opengl.GLSurfaceView;
-import android.view.View;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import dov.com.qq.im.aeeditor.module.music.AEEditorMusicHelper;
 
-public abstract interface bnyf
+public class bnyf
+  extends BroadcastReceiver
 {
-  public abstract float a();
+  public bnyf(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public abstract View a();
-  
-  public abstract void a(bnxt parambnxt, int paramInt, GLSurfaceView paramGLSurfaceView);
-  
-  public abstract void a(boolean paramBoolean, bnyg parambnyg);
-  
-  public abstract boolean a();
-  
-  public abstract void d();
-  
-  public abstract void n();
-  
-  public abstract void setFunctionFlag(int paramInt);
-  
-  public abstract void setMaxDuration(float paramFloat);
-  
-  public abstract void setTouchEnable(boolean paramBoolean);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    bnrh.b(AEEditorVideoEditFragment.f(), "[musicBroadcastReceiver.onReceive]");
+    if (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) {}
+    do
+    {
+      return;
+      AEEditorVideoEditFragment.a(this.a, AEEditorMusicHelper.a(paramIntent));
+    } while (AEEditorVideoEditFragment.a(this.a) == null);
+    if (!this.a.a)
+    {
+      AEEditorVideoEditFragment.a(this.a, AEEditorVideoEditFragment.a(this.a));
+      return;
+    }
+    bnrh.b(AEEditorVideoEditFragment.f(), "[musicBroadcastReceiver.onReceive], fragment not resumed");
+  }
 }
 
 

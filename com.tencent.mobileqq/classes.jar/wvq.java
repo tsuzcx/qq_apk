@@ -1,13 +1,11 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
 
 public class wvq
-  implements wxa
+  extends wfh
 {
-  public wvq(TextureVideoView paramTextureVideoView) {}
-  
-  public void a(wwz paramwwz, int paramInt)
+  public wvq(qqstory_service.RspReportEvil paramRspReportEvil)
   {
-    this.a.f = paramInt;
+    super(paramRspReportEvil.result);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import set;
+import sqy;
 
 public class VideoWebPreDownload$1
   implements Runnable
 {
-  public VideoWebPreDownload$1(set paramset, String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2) {}
+  public VideoWebPreDownload$1(sqy paramsqy, String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2) {}
   
   public void run()
   {
-    set.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
+    sqy.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
   }
 }
 

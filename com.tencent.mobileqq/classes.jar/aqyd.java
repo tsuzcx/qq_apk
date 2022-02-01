@@ -1,193 +1,72 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.SystemFaceData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.concurrent.locks.Lock;
 
 public class aqyd
-  extends aqxl
-  implements Handler.Callback
+  extends aqwt<aqye>
 {
-  public static final String c = SystemFaceData.class.getSimpleName();
-  private Handler a = new Handler(Looper.getMainLooper(), this);
-  private ArrayList<String> b;
-  
-  public aqyd(QQAppInterface paramQQAppInterface)
+  public static aqye a()
   {
-    super("qq.android.system.face.gifv14", paramQQAppInterface);
+    return (aqye)aqxe.a().a(655);
   }
   
-  private void c(String paramString)
+  @NonNull
+  public aqye a(int paramInt)
   {
-    int j = 0;
-    int i = j;
-    try
-    {
-      int m = Integer.parseInt(paramString);
-      i = j;
-      int k = com.tencent.mobileqq.text.EmotcationConstants.STATIC_SYS_EMO_GIF_RES[m];
-      i = j;
-      j = com.tencent.mobileqq.text.EmotcationConstants.STATIC_SYS_EMOTCATION_RESOURCE[m];
-      i = j;
-      localURL = new URL("emotion", BaseApplicationImpl.getContext().getResources().getResourceEntryName(k), "");
-      i = j;
+    return new aqye();
+  }
+  
+  @Nullable
+  public aqye a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return aqye.a(paramArrayOfaqxa);
     }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      Object localObject;
-      do
-      {
-        for (;;)
-        {
-          URL localURL;
-          if (QLog.isColorLevel()) {
-            QLog.d(c, 2, "reloadFaceOnUI() ", localMalformedURLException);
-          }
-          localObject = null;
-        }
-        Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(i);
-        localObject = URLDrawable.getDrawable((URL)localObject, localDrawable, localDrawable, true);
-        if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(c, 2, "reloadFaceOnUI() idx=" + paramString + " d.status!=successed||loading. go to restartDownload");
-          }
-          ((URLDrawable)localObject).addHeader("faceIdx", paramString);
-          ((URLDrawable)localObject).restartDownload();
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(c, 2, "reloadFaceOnUI() idx=" + paramString + " d.status=" + ((URLDrawable)localObject).getStatus() + " do nothing..");
-    }
-    if (localURL == null) {
-      return;
+    return null;
+  }
+  
+  public void a(aqye paramaqye)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIORelatedEmotionConfProcessor", 2, "AIORelatedEmotionConfProcessor onUpdate");
     }
   }
   
-  public int a()
+  public Class<aqye> clazz()
   {
-    return 10055;
+    return aqye.class;
   }
   
-  public Class<? extends XmlData> a()
+  public boolean isAccountRelated()
   {
-    return SystemFaceData.class;
+    return false;
   }
   
-  public String a()
-  {
-    return "actEarlySysFaceGif";
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      File localFile = BaseApplicationImpl.getContext().getDir("systemface", 0);
-      FileUtils.uncompressZip(paramString, localFile.getAbsolutePath(), true);
-      if (QLog.isColorLevel()) {
-        QLog.d(c, 2, "doOnDownloadFinish() uncompressZip to:" + localFile.getAbsolutePath());
-      }
-      super.a(paramString);
-      this.a.sendEmptyMessage(196864);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        localIOException.printStackTrace();
-      }
-    }
-  }
-  
-  public boolean a()
+  public boolean isNeedCompressed()
   {
     return true;
   }
   
-  public String b()
+  public boolean isNeedStoreLargeFile()
   {
-    return null;
+    return false;
   }
   
-  public void b(String paramString)
+  public int migrateOldVersion()
   {
-    aqxc.a.lock();
-    try
-    {
-      if (this.b == null) {
-        this.b = new ArrayList();
-      }
-      if (!this.b.contains(paramString))
-      {
-        this.b.add(0, paramString);
-        if (QLog.isColorLevel()) {
-          QLog.d(c, 2, "addWaittingFace idx=" + paramString);
-        }
-      }
-      return;
-    }
-    finally
-    {
-      aqxc.a.unlock();
-    }
+    return 0;
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramMessage = null;
-      if ((this.b == null) || (this.b.size() <= 0)) {
-        continue;
-      }
-      aqxc.a.lock();
-      try
-      {
-        if (this.b.size() > 0) {
-          paramMessage = (String)this.b.remove(0);
-        }
-        aqxc.a.unlock();
-        if ((paramMessage == null) || (paramMessage.length() <= 0)) {
-          continue;
-        }
-        c(paramMessage);
-        if (this.b.size() <= 0) {
-          continue;
-        }
-        this.a.sendEmptyMessageDelayed(196864, 2000L);
-        return false;
-      }
-      finally
-      {
-        aqxc.a.unlock();
-      }
-    }
+    return 655;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyd
  * JD-Core Version:    0.7.0.1
  */

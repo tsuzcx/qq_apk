@@ -1,17 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bczk
-  implements View.OnClickListener
+public class bczk
 {
-  bczk(bczc parambczc) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a = -1;
+  public bczh a;
 }
 
 

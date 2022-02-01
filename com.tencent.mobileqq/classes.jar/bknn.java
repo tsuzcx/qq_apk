@@ -1,45 +1,25 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.oskplayer.OskPlayerCore;
+import com.tencent.oskplayer.proxy.VideoManager;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayerUtil;
 
 class bknn
-  implements ServiceConnection
+  implements IMediaPlayerUtil
 {
-  bknn(bknm parambknm) {}
+  bknn(bknl parambknl) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public int getContentFlag(String paramString)
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
-    bknm.a(this.a, bkmr.a(paramIBinder));
-    bknm.a(this.a, false);
-    bknm.a(this.a);
+    return VideoManager.getInstance().probeContentFlag(paramString);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public String getUrl(String paramString)
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
-    try
-    {
-      bknm.a(this.a).getApplication().unbindService(bknm.a(this.a));
-      bknm.a(this.a, null);
-      bknm.a(this.a, false);
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
-    }
+    return OskPlayerCore.getInstance().getUrl(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bknn
  * JD-Core Version:    0.7.0.1
  */

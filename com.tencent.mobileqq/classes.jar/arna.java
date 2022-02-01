@@ -1,29 +1,65 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arna
-  extends AnimatorListenerAdapter
+  extends aqwt<armz>
 {
-  public arna(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment, MatchingView paramMatchingView, View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static armz a()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    ExtendFriendLimitChatMatchFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendLimitchatExtendFriendLimitChatMatchFragment, this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.a();
+    return (armz)aqxe.a().a(334);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  @NonNull
+  public armz a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.setVisibility(0);
+    return new armz();
+  }
+  
+  @Nullable
+  public armz a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return armz.a(paramArrayOfaqxa);
+    }
+    return null;
+  }
+  
+  public void a(armz paramarmz) {}
+  
+  public Class<armz> clazz()
+  {
+    return armz.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TencentDocAIOPlusPanelEntryConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 334;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arna
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,68 @@
-import android.content.Intent;
-import android.util.SparseIntArray;
-import mqq.app.MSFServlet;
+import UserGrowth.stSimpleMetaFeed;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class vqh
+  extends vrn
 {
-  public static void a(SparseIntArray paramSparseIntArray)
+  private static final int a;
+  
+  static
   {
-    int[][] arrayOfInt = vpx.a;
-    int j = arrayOfInt.length;
-    int i = 0;
-    if (i < j)
-    {
-      int[] arrayOfInt1 = arrayOfInt[i];
-      int k = arrayOfInt1[0];
-      int m = arrayOfInt1[1];
-      if (k != -1) {
-        paramSparseIntArray.put(vpl.a(k), m);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        paramSparseIntArray.put(m, m);
-      }
-    }
+    jdField_a_of_type_Int = ScreenUtil.dip2px(45.0F);
   }
   
-  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean) {}
+  public vqh(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  {
+    super(paramViewGroup, 2131560067, paramInt, paramWSVerticalPageFragment);
+  }
+  
+  public FrameLayout a()
+  {
+    if ((this.jdField_a_of_type_Uyx instanceof vqe)) {
+      return ((vqe)this.jdField_a_of_type_Uyx).a();
+    }
+    return null;
+  }
+  
+  public vqe a(int paramInt)
+  {
+    return new vrp(a(), this);
+  }
+  
+  public void a() {}
+  
+  protected boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((((vpj)this.jdField_a_of_type_JavaLangObject).a() instanceof stSimpleMetaFeed)))
+    {
+      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)((vpj)this.jdField_a_of_type_JavaLangObject).a();
+      vmp.e("WS_VIDEO_PLAY_TIME", "[WSVerticalCommonVideoHolder.java][isPlayLoop] isLoop:" + localstSimpleMetaFeed.isLoop);
+      return localstSimpleMetaFeed.isLoop;
+    }
+    return super.a();
+  }
+  
+  public int b()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  public void b() {}
+  
+  protected boolean b()
+  {
+    return true;
+  }
+  
+  public void c() {}
+  
+  protected boolean c()
+  {
+    return true;
+  }
 }
 
 

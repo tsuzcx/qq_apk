@@ -1,41 +1,41 @@
 package com.tencent.mobileqq.ar.model;
 
-import aoci;
-import aohs;
-import aolr;
+import apfk;
+import apku;
+import apos;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class QQARSession$23
   implements Runnable
 {
-  public QQARSession$23(aolr paramaolr, int paramInt) {}
+  public QQARSession$23(apos paramapos, int paramInt) {}
   
   public void run()
   {
-    if (!aolr.a(this.this$0).d())
+    if (!apos.a(this.this$0).d())
     {
-      if (aolr.a(this.this$0).j()) {
-        aolr.c(this.this$0);
+      if (apos.a(this.this$0).j()) {
+        apos.c(this.this$0);
       }
-      if (aolr.a(this.this$0) != 1L) {
+      if (apos.a(this.this$0) != 1L) {
         break label132;
       }
       this.this$0.b(1L);
-      aolr.b(this.this$0);
+      apos.b(this.this$0);
     }
     for (;;)
     {
       this.this$0.m();
-      if ((aolr.b(this.this$0)) && (this.this$0.a == 2) && (aolr.a(this.this$0) != null))
+      if ((apos.b(this.this$0)) && (this.this$0.a == 2) && (apos.a(this.this$0) != null))
       {
-        aoci localaoci = new aoci(aolr.a(this.this$0));
-        aolr.a(this.this$0).a(2, localaoci, this.a);
+        apfk localapfk = new apfk(apos.a(this.this$0));
+        apos.a(this.this$0).a(2, localapfk, this.a);
       }
       return;
       label132:
-      if (aolr.a(this.this$0) == 2L) {
+      if (apos.a(this.this$0) == 2L) {
         this.this$0.o();
-      } else if (aolr.a(this.this$0) == 2048L) {
+      } else if (apos.a(this.this$0) == 2048L) {
         this.this$0.q();
       }
     }

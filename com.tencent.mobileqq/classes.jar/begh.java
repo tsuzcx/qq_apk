@@ -1,136 +1,69 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.UUID;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.6.1;
+import com.tencent.mobileqq.troop.widget.CountdownTimeTask;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class begh
+  implements TextWatcher
 {
-  protected int a;
-  protected long a;
-  protected TroopFileTransferManager.Item a;
-  protected String a;
-  zrz a;
+  begh(begb parambegb) {}
   
-  protected begh(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Zrz = new begi(this);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
-    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
+    if (this.a.d) {
+      this.a.d = false;
+    }
+    do
     {
-      this.jdField_a_of_type_JavaLangString = paramItem;
-      this.jdField_a_of_type_Int = paramInt;
       return;
-    }
-  }
-  
-  public static begh a(long paramLong, TroopFileTransferManager.Item paramItem)
-  {
-    if (paramLong == 0L)
-    {
-      befc.a("TroopFileFromTroopForwarder", befc.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. troopuin=0");
-      return null;
-    }
-    if (paramItem == null)
-    {
-      befc.a("TroopFileFromTroopForwarder", befc.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item=null");
-      return null;
-    }
-    if (paramItem.Id == null)
-    {
-      befc.a("TroopFileFromTroopForwarder", befc.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item.id=null");
-      return null;
-    }
-    if (paramItem.ForwardTroopuin == 0L)
-    {
-      befc.a("TroopFileFromTroopForwarder", befc.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. ForwardTroopuin=0");
-      return null;
-    }
-    if (paramItem.BusId != 25)
-    {
-      befc.a("TroopFileFromTroopForwarder", befc.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. BusId err:" + paramItem.BusId);
-      return null;
-    }
-    if (TextUtils.isEmpty(paramItem.ForwardPath))
-    {
-      befc.a("TroopFileFromTroopForwarder", befc.jdField_a_of_type_Int, "get2WeiyunForwarder. ForwardPath=null");
-      return null;
-    }
-    return new begh(paramLong, paramItem, 1);
-  }
-  
-  private final void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
-  {
-    paramInt2 = 601;
-    if (!paramBoolean)
-    {
-      bleg.a(-1);
-      befc.a("TroopFileFromTroopForwarder", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onTroop2weiyunResult isSuccess:false ");
-      paramString1 = new bfay(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, 601);
-      beel.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
-      return;
-    }
-    befc.c("TroopFileFromTroopForwarder", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onTroop2weiyunResult retCode:" + paramInt1 + " sClientWording:" + paramString3);
-    bleg.a(paramInt1);
-    if (paramInt1 != 0)
-    {
-      switch (paramInt1)
+      if (paramEditable == null) {}
+      for (paramEditable = ""; paramEditable.trim().equals(""); paramEditable = paramEditable.toString())
       {
-      default: 
-        paramInt1 = paramInt2;
-      }
-      for (;;)
-      {
-        paramString1 = new bfay(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, paramInt1, paramString3);
-        beel.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
+        this.a.c();
         return;
-        paramInt1 = 202;
-        continue;
-        paramInt1 = 702;
-        continue;
-        paramInt1 = 703;
-        continue;
-        paramInt1 = 702;
-        continue;
-        paramInt1 = 701;
-        continue;
-        paramInt1 = 705;
-        continue;
-        paramInt1 = paramInt2;
-        if (!TextUtils.isEmpty(paramString3)) {
-          paramInt1 = 704;
-        }
       }
-    }
-    paramString1 = new bfay(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, 602);
-    beel.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      if (!NetworkUtil.isNetworkAvailable(this.a.jdField_a_of_type_AndroidAppActivity))
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask != null)
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.b();
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
+        }
+        this.a.b();
+        return;
+      }
+      this.a.c = false;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask == null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = new CountdownTimeTask(new TroopTeamWorkFileSearchDialog.6.1(this), 800);
+        ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask, 5, null, true);
+        return;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.a() > 0L)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.a();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("TroopTeamWorkFileSearchDialog", 2, "!!!!!! 这是个什么情况,逻辑出错了 !!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   }
   
-  private int b()
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    QQAppInterface localQQAppInterface = befa.a();
-    if (localQQAppInterface == null)
+    if ((!this.a.d) || ((this.a.d) && (this.a.jdField_b_of_type_Int <= 0)))
     {
-      befc.a("TroopFileFromTroopForwarder", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] troop2weiyun app=null");
-      return -1;
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      return;
     }
-    befc.c("TroopFileFromTroopForwarder", befc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] troop2weiyun. BusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId + " ForwardBusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardBusId + " ForwardPath:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardPath);
-    zrj.a(localQQAppInterface, true, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, localQQAppInterface.getLongAccountUin(), 0L, this.jdField_a_of_type_Zrz);
-    return 0;
-  }
-  
-  public int a()
-  {
-    if (1 == this.jdField_a_of_type_Int) {
-      return b();
-    }
-    return -1;
-  }
-  
-  public UUID a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
   }
 }
 

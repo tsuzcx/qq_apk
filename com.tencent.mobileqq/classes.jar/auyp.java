@@ -1,12 +1,65 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.BaseFragment;
 
-final class auyp
-  implements Comparator<MessageRecord>
+public class auyp
 {
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public int a;
+  public View.OnClickListener a;
+  public BaseFragment a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = true;
+  public String c;
+  public boolean c = false;
+  public String d;
+  public String e;
+  
+  public auyp(BaseFragment paramBaseFragment)
   {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+    this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment = paramBaseFragment;
+  }
+  
+  public auyp a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public auyp a(String paramString)
+  {
+    this.d = paramString;
+    return this;
+  }
+  
+  public auyp a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment.c();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public auyp b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public auyp b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
   }
 }
 

@@ -1,10 +1,6 @@
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
-
-public class balu
+public abstract interface balu
 {
-  public BaseVideoView a;
-  
-  public balu(balk parambalk) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

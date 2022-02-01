@@ -1,33 +1,35 @@
-import android.widget.TextView;
-import kotlin.Metadata;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PkgInstallInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "updateProgress"}, k=3, mv={1, 1, 16})
-final class qxr
-  implements qzg
+public class qxr
 {
-  qxr(TextView paramTextView1, TextView paramTextView2, TextView paramTextView3, TextView paramTextView4, TextView paramTextView5) {}
+  public int a;
+  public String a;
+  public boolean a;
   
-  public final void a(int paramInt)
+  public qxr()
   {
-    TextView localTextView = this.a;
-    if (localTextView != null) {
-      localTextView.setText((CharSequence)("完成任务需要的时间：" + qxs.a() / 1000 + " 秒"));
-    }
-    localTextView = this.b;
-    if (localTextView != null) {
-      localTextView.setText((CharSequence)("文章最大贡献时长：" + qxs.c() / 1000 + " 秒"));
-    }
-    localTextView = this.c;
-    if (localTextView != null) {
-      localTextView.setText((CharSequence)("文章静止时最大贡献时长：" + qxs.d() / 1000 + " 秒"));
-    }
-    localTextView = this.d;
-    if (localTextView != null) {
-      localTextView.setText((CharSequence)("已完成任务数：" + qxt.a.a().a() + '/' + qxs.b()));
-    }
-    localTextView = this.e;
-    if (localTextView != null) {
-      localTextView.setText((CharSequence)("累积时间：" + paramInt / 1000 + " 秒"));
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public oidb_cmd0x68b.PkgInstallInfo a()
+  {
+    int i = 1;
+    oidb_cmd0x68b.PkgInstallInfo localPkgInstallInfo = new oidb_cmd0x68b.PkgInstallInfo();
+    localPkgInstallInfo.uint32_platform_type.set(1);
+    PBUInt32Field localPBUInt32Field = localPkgInstallInfo.uint32_is_installed;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      localPBUInt32Field.set(i);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        localPkgInstallInfo.bytes_pkg_name.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+      }
+      return localPkgInstallInfo;
+      i = 0;
     }
   }
 }

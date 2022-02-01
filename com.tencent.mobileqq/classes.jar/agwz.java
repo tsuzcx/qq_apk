@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agwz
-  implements View.OnLongClickListener
+class agwz
+  extends ahaa
 {
-  public agwz(PanelIconLinearLayout paramPanelIconLinearLayout) {}
-  
-  public boolean onLongClick(View paramView)
+  agwz(agvm paramagvm)
   {
-    paramView = ((afop)this.a.a.a(62)).a;
-    if (paramView != null) {
-      paramView.a(1);
-    }
-    return true;
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new abkj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, agvm.a(this.a));
   }
 }
 

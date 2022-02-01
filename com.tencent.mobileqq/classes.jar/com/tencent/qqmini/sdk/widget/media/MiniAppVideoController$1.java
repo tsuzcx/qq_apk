@@ -8,7 +8,7 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoViewInit
 class MiniAppVideoController$1
   implements AbsVideoPlayer.OnVideoViewInitListener
 {
-  MiniAppVideoController$1(MiniAppVideoController paramMiniAppVideoController, MiniAppVideoConfig paramMiniAppVideoConfig) {}
+  MiniAppVideoController$1(MiniAppVideoController paramMiniAppVideoController) {}
   
   public void onVideoViewInit(View paramView)
   {

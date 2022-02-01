@@ -1,20 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
 public class bnxw
-  implements Animation.AnimationListener
+  implements boal
 {
-  public bnxw(BeautyBar paramBeautyBar) {}
+  public bnxw(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean a(int paramInt1, int paramInt2)
   {
-    bnsi.a("", "0X8007C05", BeautyBar.a(this.a) + "", "", "", "");
+    return AEEditorImageEditFragment.a(this.a).b(AEEditorImageEditFragment.a(this.a)) != paramInt2;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

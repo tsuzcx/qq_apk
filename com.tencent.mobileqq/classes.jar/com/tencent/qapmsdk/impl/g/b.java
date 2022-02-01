@@ -6,22 +6,27 @@ import com.tencent.qapmsdk.impl.appstate.a;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class b
 {
   public static final List<String> a = Arrays.asList(new String[] { "FIRST_TIME_LAUNCH", "COLD_LAUNCH", "WARM_LAUNCH" });
-  public static AtomicInteger b = new AtomicInteger(a.a.a());
-  public static boolean c = true;
-  public static int d = 0;
-  private static final Random e = new Random();
-  private static Context f;
-  private static boolean g = true;
-  private static boolean h = false;
+  public static final List<String> b = Arrays.asList(new String[] { "LAUNCH_APPLICATION_INIT", "LAUNCH_MAIN_ACTIVITY_INIT", "LAUNCH_ACTIVITY_LAYOUT", "LAUNCH_END_BY_USER", "LAUNCH_ACTIVITY_LOAD" });
+  public static AtomicInteger c = new AtomicInteger(a.a.a());
+  public static AtomicBoolean d = new AtomicBoolean(false);
+  public static AtomicBoolean e = new AtomicBoolean(false);
+  public static AtomicBoolean f = new AtomicBoolean(false);
+  public static boolean g = true;
+  public static int h = 0;
+  private static final Random i = new Random();
+  private static Context j;
+  private static boolean k = true;
+  private static boolean l = false;
   
   public static Random a()
   {
-    return e;
+    return i;
   }
   
   public static void a(int paramInt)
@@ -29,30 +34,40 @@ public class b
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      g = bool;
+      k = bool;
       return;
     }
   }
   
   public static void a(Context paramContext)
   {
-    f = paramContext;
+    j = paramContext;
   }
   
   public static void a(boolean paramBoolean)
   {
-    h = paramBoolean;
-    NetworkWatcher.INSTANCE.setNetMonitor(h);
+    l = paramBoolean;
+    NetworkWatcher.INSTANCE.setNetMonitor(l);
   }
   
   public static Context b()
   {
-    return f;
+    return j;
   }
   
   public static boolean c()
   {
-    return h;
+    return l;
+  }
+  
+  public static boolean d()
+  {
+    return (c.get() == a.b.a()) || (c.get() == a.c.a()) || (c.get() == a.d.a());
+  }
+  
+  public static boolean e()
+  {
+    return f.get();
   }
 }
 

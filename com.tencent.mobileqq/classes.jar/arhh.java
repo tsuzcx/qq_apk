@@ -1,30 +1,58 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-
-class arhh
-  implements BusinessObserver
+public class arhh
 {
-  arhh(arhg paramarhg, String paramString, int paramInt1, int paramInt2) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public int a()
   {
-    if (paramBoolean)
-    {
-      paramObject = (amsw)this.jdField_a_of_type_Arhg.app.getManager(51);
-      Card localCard = paramObject.c(this.jdField_a_of_type_JavaLangString);
-      localCard.clothesId = this.jdField_a_of_type_Int;
-      localCard.fontId = this.b;
-      localCard.updateTime = NetConnInfoCenter.getServerTimeMillis();
-      paramObject.a(localCard);
-      this.jdField_a_of_type_Arhg.notifyUI(1, paramBoolean, null);
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "WatchTogetherBean{version=" + this.jdField_a_of_type_Int + ", jumpType=" + this.jdField_b_of_type_Int + ", jumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", jumpExtensionInfo='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arhh
  * JD-Core Version:    0.7.0.1
  */

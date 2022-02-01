@@ -1,27 +1,17 @@
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
 
 public class ajzg
   implements View.OnClickListener
 {
-  public ajzg(SendHbMainFragment paramSendHbMainFragment, JSONObject paramJSONObject) {}
+  public ajzg(MainFragment paramMainFragment) {}
   
   public void onClick(View paramView)
   {
-    if (bkvx.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-      if (!TextUtils.isEmpty(str)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentSendHbMainFragment.openUrl(str);
-      }
-    }
+    this.a.h();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

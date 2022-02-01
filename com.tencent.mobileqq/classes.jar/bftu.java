@@ -1,23 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.Set;
 
-final class bftu
-  implements avpj
+public class bftu
+  implements AdapterView.OnItemClickListener
 {
-  public void a(int paramInt)
+  public bftu(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramInt)
-    {
+    if (this.a.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
+      this.a.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
     }
-    AppRuntime localAppRuntime;
-    do
+    for (;;)
     {
+      this.a.jdField_a_of_type_Bftw.notifyDataSetChanged();
+      this.a.e();
       return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(localAppRuntime instanceof QQAppInterface));
-    MediaPlayerManager.a((QQAppInterface)localAppRuntime).a(false);
+      this.a.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
+    }
   }
 }
 

@@ -1,32 +1,29 @@
-import com.tencent.superplayer.seamless.SPSeamlessHelper.SeamlessCallback;
-import java.util.Map;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$jumpToColumnPlay$1$1", "Lcom/tencent/superplayer/seamless/SPSeamlessHelper$SeamlessCallback;", "onSeamlessExit", "", "enterToken", "", "exitToken", "map", "", "", "onSeamlessJump", "s", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rty
-  implements SPSeamlessHelper.SeamlessCallback
+public class rty
+  implements tqn
 {
-  public rty(sdj paramsdj) {}
+  public rty(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void onSeamlessExit(@NotNull String paramString1, @NotNull String paramString2, @NotNull Map<String, ? extends Object> paramMap)
+  public void a(int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramString1, "enterToken");
-    Intrinsics.checkParameterIsNotNull(paramString2, "exitToken");
-    Intrinsics.checkParameterIsNotNull(paramMap, "map");
-    paramString2 = this.a;
-    if (paramString2 != null) {
-      paramString2.a(paramString1);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverUGCActivity", 2, "startDrag!");
     }
   }
   
-  public void onSeamlessJump(@NotNull String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "s");
-    paramString = this.a;
-    if (paramString != null) {
-      paramString.o();
+    if (ReadInJoyDeliverUGCActivity.a(this.a) != 0)
+    {
+      Integer localInteger = (Integer)ReadInJoyDeliverUGCActivity.a(this.a).remove(paramInt1);
+      ReadInJoyDeliverUGCActivity.a(this.a).add(paramInt2, localInteger);
+      olh.a(null, "", "0X800953F", "0X800953F", 0, 0, "", "", "", pqf.c(), false);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverUGCActivity", 2, "change position old position=" + paramInt1 + " new position" + paramInt2);
+      }
     }
   }
 }

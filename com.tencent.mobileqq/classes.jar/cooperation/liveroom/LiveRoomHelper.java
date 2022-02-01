@@ -1,12 +1,13 @@
 package cooperation.liveroom;
 
 import android.support.annotation.Nullable;
-import bhwr;
-import bkkq;
+import bjht;
+import blvy;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pluginsdk.PluginStatic;
@@ -149,11 +150,11 @@ public class LiveRoomHelper
   @Nullable
   public static PluginInfo getPluginInfoInQQ()
   {
-    bkkq localbkkq = getPluginManagerInQQ();
-    if (localbkkq == null) {
+    blvy localblvy = getPluginManagerInQQ();
+    if (localblvy == null) {
       return null;
     }
-    return localbkkq.a("LiveRoomPlugin.apk");
+    return localblvy.a("LiveRoomPlugin.apk");
   }
   
   public static boolean getPluginInstalledInTool()
@@ -162,7 +163,7 @@ public class LiveRoomHelper
   }
   
   @Nullable
-  public static bkkq getPluginManagerInQQ()
+  public static blvy getPluginManagerInQQ()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject != null) && ((localObject instanceof QQAppInterface))) {}
@@ -173,7 +174,7 @@ public class LiveRoomHelper
         QLog.e("LiveRoomHelper", 1, "get AppRuntime fail");
         return null;
       }
-      return (bkkq)((QQAppInterface)localObject).getManager(27);
+      return (blvy)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_PLUGIN);
     }
   }
   
@@ -211,7 +212,7 @@ public class LiveRoomHelper
       localJSONObject.put("platform", "androidqq");
       localJSONObject.put("platVersion", AppSetting.f());
       String str = "";
-      if ("com.tencent.mobileqq:tool".equals(bhwr.r())) {
+      if ("com.tencent.mobileqq:tool".equals(bjht.r())) {
         str = getPluginVersionInTool();
       }
       for (;;)

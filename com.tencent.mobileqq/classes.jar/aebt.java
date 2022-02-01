@@ -1,16 +1,38 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
 public class aebt
-  implements BusinessObserver
+  implements bkzq
 {
-  protected void a() {}
+  public aebt(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bkzi parambkzi) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt == 10000) {
-      a();
+    this.jdField_a_of_type_Bkzi.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, "1", "", "", "");
+      return;
+    case 1: 
+      FriendProfilePicBrowserActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, "1", "", "", "");
+      return;
+    case 2: 
+      FriendProfilePicBrowserActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C14", "0X8007C14", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.a, 0, "", "", "", "");
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, "1", "", "", "");
+      return;
+    case 3: 
+      FriendProfilePicBrowserActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, "1", "", "", "");
+      return;
     }
+    FriendProfilePicBrowserActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.app, "dc00898", "", "", "0X8007C15", "0X8007C15", 0, 0, "", "", "", "");
   }
 }
 

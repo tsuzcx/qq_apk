@@ -1,32 +1,22 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
 
-public class anep
-  implements BusinessObserver
+class anep
+  implements anfg
 {
-  public void a() {}
+  anep(anen paramanen) {}
   
-  public void a(int paramInt) {}
-  
-  public void b() {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    switch (paramInt)
+    if (paramBoolean)
     {
-    case 111: 
-    case 112: 
-    case 114: 
-    default: 
-      return;
-    case 113: 
-      a(paramBundle.getInt("key_rt_type"));
-      return;
-    case 115: 
-      a();
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
+      }
+      if (anen.a(this.a) != null) {
+        anen.a(this.a).e();
+      }
+      this.a.c();
     }
-    b();
   }
 }
 

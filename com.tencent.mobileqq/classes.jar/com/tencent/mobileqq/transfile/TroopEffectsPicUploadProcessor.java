@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import ayeo;
-import ayep;
+import azla;
+import azlb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -56,14 +56,14 @@ public class TroopEffectsPicUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       constructCustomFace();
-      ayep localayep = new ayep();
-      localayep.jdField_a_of_type_Long = this.mFileSize;
-      localayep.d = this.mMd5Str;
-      localayep.c = this.mFileName;
-      localayep.jdField_b_of_type_JavaLangString = this.mUiRequest.mLocalPath;
-      localayep.jdField_b_of_type_Long = this.mFileID;
-      localayep.jdField_a_of_type_JavaLangObject = this.customFace;
-      this.mUiRequest.mUpCallBack.onSend(localayep);
+      azlb localazlb = new azlb();
+      localazlb.jdField_a_of_type_Long = this.mFileSize;
+      localazlb.d = this.mMd5Str;
+      localazlb.c = this.mFileName;
+      localazlb.jdField_b_of_type_JavaLangString = this.mUiRequest.mLocalPath;
+      localazlb.jdField_b_of_type_Long = this.mFileID;
+      localazlb.jdField_a_of_type_JavaLangObject = this.customFace;
+      this.mUiRequest.mUpCallBack.onSend(localazlb);
       doReport(true);
     }
   }

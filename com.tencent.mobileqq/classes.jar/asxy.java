@@ -1,10 +1,21 @@
-import android.os.Bundle;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
-public abstract interface asxy
+public class asxy
+  extends BroadcastReceiver
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle);
+  public asxy(FMActivity paramFMActivity) {}
   
-  public abstract void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
+  }
 }
 
 

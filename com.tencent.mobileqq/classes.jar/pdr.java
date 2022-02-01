@@ -1,139 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class pdr
-  implements AladdinConfigHandler
+class pdr
+  extends ClickableSpan
 {
-  private static final Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private static boolean jdField_a_of_type_Boolean = ((Boolean)bkwm.a("readinjjoy_feeds_card_whitelist", Boolean.valueOf(false))).booleanValue();
+  pdr(pdp parampdp, SubCommentData paramSubCommentData) {}
   
-  static
+  public void onClick(View paramView)
   {
-    a();
+    pbq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
+    paramView = new paa(this.jdField_a_of_type_Pdp).a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin).a();
+    olh.a(null, pbq.a(this.jdField_a_of_type_Pdp.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Pdp.a.mArticleID), String.valueOf(this.jdField_a_of_type_Pdp.a.mAlgorithmID), this.jdField_a_of_type_Pdp.a.innerUniqueID, paramView, false);
   }
   
-  private static void a()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    a(1, 6);
-    a(10, 11);
-    a(19, 26);
-    a(28, 32);
-    a(28, 32);
-    a(36, 40);
-    a(43, 43);
-    a(48, 48);
-    a(51, 52);
-    a(60, 60);
-    a(67, 69);
-    a(71, 72);
-    a(78, 79);
-    a(81, 81);
-    a(84, 84);
-    a(102, 102);
-    a(1001, 1004);
-    a(1001, 1004);
-    a(1008, 1008);
-    a(1019, 1020);
-    a(1023, 1027);
-    a(1029, 1037);
-    a(1038, 1042);
-    a(2001, 2006);
-  }
-  
-  private static void a(int paramInt1, int paramInt2)
-  {
-    while (paramInt1 <= paramInt2)
-    {
-      jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt1));
-      paramInt1 += 1;
-    }
-  }
-  
-  public static boolean a(ArticleInfo paramArticleInfo)
-  {
-    boolean bool = false;
-    if (!jdField_a_of_type_Boolean) {
-      QLog.d("WhiteListBidConfigHandler", 1, "isWhiteListCardAndShow: close");
-    }
-    do
-    {
-      do
-      {
-        return true;
-        if (paramArticleInfo == null) {
-          return false;
-        }
-      } while (((paramArticleInfo.mChannelID != 0L) && (paramArticleInfo.mChannelID != 70L) && (!pcl.c((int)paramArticleInfo.mChannelID))) || ((paramArticleInfo instanceof AdvertisementInfo)) || (paramArticleInfo.mFeedType == 29));
-      i = pay.a(paramArticleInfo);
-      if (!jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(i))) {
-        break;
-      }
-    } while (!pay.s(paramArticleInfo));
-    int i = qcv.a(paramArticleInfo);
-    if ((i == 1) || (i == 2)) {
-      bool = true;
-    }
-    return bool;
-    QLog.d("WhiteListBidConfigHandler", 1, "isWhiteListCardAndShow: " + i + " is not white list card: " + paramArticleInfo);
-    return false;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("WhiteListBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    Map localMap = pbt.a(paramString);
-    Object localObject2 = localMap.keySet();
-    paramString = "";
-    Object localObject1 = "";
-    Iterator localIterator = ((Set)localObject2).iterator();
-    String str;
-    boolean bool;
-    if (localIterator.hasNext())
-    {
-      str = (String)localIterator.next();
-      localObject2 = (String)localMap.get(str);
-      QLog.d("WhiteListBidConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
-      if (TextUtils.equals(str, "kandian_feeds_card_whitelist")) {
-        if (Integer.valueOf((String)localObject2).intValue() == 1)
-        {
-          bool = true;
-          label153:
-          jdField_a_of_type_Boolean = bool;
-          bkwm.a("readinjjoy_feeds_card_whitelist", Boolean.valueOf(bool));
-        }
-      }
-    }
-    for (;;)
-    {
-      break;
-      bool = false;
-      break label153;
-      if (TextUtils.equals(str, "kandian_feeds_card_whitelist_bid"))
-      {
-        bkwm.a("default_feeds_proteus_offline_bid", (String)localObject2);
-        new szc().a("default_feeds");
-        localObject1 = localObject2;
-      }
-      else if (TextUtils.equals(str, "kandian_feeds_card_cdn_url"))
-      {
-        paramString = (String)localObject2;
-        continue;
-        szu.a((String)localObject1, paramString);
-        return true;
-      }
-    }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("WhiteListBidConfigHandler", 1, "[onWipeConfig]");
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#737373"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

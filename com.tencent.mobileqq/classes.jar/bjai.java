@@ -1,30 +1,31 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qqmini.nativePlugins.TroopAlbumPlugin.2.1;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import cooperation.qzone.QzonePluginProxyActivity;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjai
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bjai(TroopAlbumPlugin.2.1 param1) {}
+  public bjai(AuthorityAccountView paramAuthorityAccountView, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = BaseApplicationImpl.sApplication.getRuntime().getAccount();
-    Intent localIntent = new Intent();
-    String str = bjae.f(this.a.a.a).getAttachedActivity().getResources().getString(2131716670);
-    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
-    localIntent.putExtra("aid", "jhan_plxz");
-    localIntent.putExtra("success_tips", str);
-    localIntent.putExtra("direct_go", true);
-    QzonePluginProxyActivity.launchPluingActivityForResult(bjae.g(this.a.a.a).getAttachedActivity(), paramDialogInterface, localIntent, 4);
+    if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof AuthorityActivity)) {
+      ((AuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
+    }
+    for (;;)
+    {
+      if (AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) != null) {
+        AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView).dismiss();
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
+        ((QuickLoginAuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
+      }
+    }
   }
 }
 

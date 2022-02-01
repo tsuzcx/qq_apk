@@ -1,8 +1,34 @@
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.qphone.base.util.QLog;
+
 public class bbxt
+  implements Comparable<bbxt>
 {
-  public Object a;
-  public boolean a;
-  public boolean b;
+  public int a;
+  public MessageForScribble a;
+  
+  bbxt(MessageForScribble paramMessageForScribble, int paramInt)
+  {
+    this.jdField_a_of_type_Int = 200;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = paramMessageForScribble;
+    if (paramInt >= 200)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+    }
+    QLog.e("ScribbleDownloadInfo", 1, "err priority");
+  }
+  
+  public int a(bbxt parambbxt)
+  {
+    if (this.jdField_a_of_type_Int < parambbxt.jdField_a_of_type_Int) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_Int > parambbxt.jdField_a_of_type_Int) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

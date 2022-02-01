@@ -1,24 +1,8 @@
-import android.widget.EditText;
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-
-public class atlz
-  implements PopupWindow.OnDismissListener
+public abstract interface atlz
 {
-  public atlz(ForwardFileOption paramForwardFileOption) {}
+  public abstract int a(long paramLong1, long paramLong2);
   
-  public void onDismiss()
-  {
-    if (!this.a.l) {
-      ForwardFileOption.a(this.a, -8);
-    }
-    if (ForwardFileOption.a(this.a) != null)
-    {
-      ForwardFileOption.a(this.a).setFocusable(true);
-      ForwardFileOption.a(this.a).setFocusableInTouchMode(true);
-      ForwardFileOption.a(this.a).requestFocus();
-    }
-  }
+  public abstract void a();
 }
 
 

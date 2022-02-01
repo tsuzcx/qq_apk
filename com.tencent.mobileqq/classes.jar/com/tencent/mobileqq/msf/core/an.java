@@ -1,6 +1,24 @@
 package com.tencent.mobileqq.msf.core;
 
-class an {}
+import android.os.Handler;
+import android.os.Message;
+
+class an
+  extends Handler
+{
+  an(am paramam) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (String)paramMessage.obj;
+    this.a.s.refreshWebviewTickets(paramMessage, "SidExpiredPush");
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

@@ -1,24 +1,6 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class apbw
-  implements bbuj
+public abstract interface apbw
 {
-  public apbw(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
-  
-  public void onCameraException(Exception paramException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DynamicAvatarRecordActivity", 2, "[onCameraException]", paramException);
-    }
-  }
-  
-  public void onDispatchThreadException(RuntimeException paramRuntimeException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DynamicAvatarRecordActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

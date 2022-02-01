@@ -1,36 +1,33 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xhk
-  implements vqp<xhm, xhn>
+public class xhk
+  extends QQUIEventReceiver<xhh, wsb>
 {
-  xhk(xhj paramxhj, boolean paramBoolean) {}
-  
-  public void a(@NonNull xhm paramxhm, @Nullable xhn arg2, @NonNull ErrorMessage paramErrorMessage)
+  public xhk(@NonNull xhh paramxhh)
   {
-    paramxhm = new xhl(paramErrorMessage, xhj.a(this.jdField_a_of_type_Xhj));
-    paramxhm.jdField_b_of_type_Boolean = false;
-    paramxhm.jdField_a_of_type_Boolean = xhj.a(this.jdField_a_of_type_Xhj);
-    paramxhm.jdField_a_of_type_Int = xhj.a(this.jdField_a_of_type_Xhj);
-    if ((??? == null) || (paramErrorMessage.isFail()))
-    {
-      vli.a().dispatch(paramxhm);
+    super(paramxhh);
+  }
+  
+  public void a(@NonNull xhh paramxhh, @NonNull wsb paramwsb)
+  {
+    if ((paramwsb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwsb.jdField_a_of_type_JavaUtilList == null)) {
       return;
     }
-    paramxhm.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
-    paramxhm.jdField_b_of_type_Int = ???.jdField_b_of_type_Int;
-    paramxhm.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    paramxhm.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    ((vuj)vux.a(15)).a(paramxhm.jdField_a_of_type_JavaUtilList, xhj.a(this.jdField_a_of_type_Xhj), xhj.c(this.jdField_a_of_type_Xhj), true);
-    synchronized (this.jdField_a_of_type_Xhj)
+    if (xhh.b(paramxhh))
     {
-      xhj.a(this.jdField_a_of_type_Xhj, true);
-      vli.a().dispatch(paramxhm);
-      xvv.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from network: %s", paramxhm);
+      xhh.b(paramxhh, true);
+      ykq.b("VideoCoverListGroupHolder", "base info return , notify list while idle");
       return;
     }
+    paramxhh.d();
+    ykq.b("VideoCoverListGroupHolder", "base info return , notify list now");
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wsb.class;
   }
 }
 

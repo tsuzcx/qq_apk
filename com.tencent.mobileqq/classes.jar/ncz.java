@@ -1,231 +1,594 @@
-import android.animation.AnimatorSet;
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.media.AudioManager;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.LruCache;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.avgame.gameroom.gamelist.GameGridItemView;
-import com.tencent.avgame.gameroom.gamelist.GameListRecyclerViewAdapter.1;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.avgame.business.AvGameManager.2;
+import com.tencent.avgame.business.AvGameManager.6;
+import com.tencent.avgame.ipc.AVGameUtilService;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class ncz
-  extends RecyclerView.Adapter<ndb>
+  implements Manager
 {
-  protected int a;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private LruCache<String, URLDrawable> jdField_a_of_type_AndroidUtilLruCache = new LruCache(20);
-  protected LayoutInflater a;
-  private View jdField_a_of_type_AndroidViewView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new GameListRecyclerViewAdapter.1(this);
-  protected List<nak> a;
-  protected ncq a;
-  protected nct a;
-  protected boolean a;
-  private int jdField_b_of_type_Int;
-  private LruCache<String, URLDrawable> jdField_b_of_type_AndroidUtilLruCache = new LruCache(20);
+  private volatile int jdField_a_of_type_Int;
+  private ansi jdField_a_of_type_Ansi;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private ndm jdField_a_of_type_Ndm = new nda(this);
+  nho jdField_a_of_type_Nho;
+  nnf jdField_a_of_type_Nnf = null;
   
-  public ncz(Context paramContext, RecyclerView paramRecyclerView, nct paramnct, ncq paramncq)
+  public ncz(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_Ncq = paramncq;
-    this.jdField_a_of_type_Nct = paramnct;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Nnf = new nnf(paramQQAppInterface);
+    this.jdField_a_of_type_Nnf.a();
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Ndm);
   }
   
-  private void b()
+  private void a(Activity paramActivity, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) && (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning()))
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManager", 2, "showRealNameDialog roomId: " + paramString2);
+    }
+    bdla.b(null, "dc00898", "", "", "0X800B077", "0X800B077", paramInt3, 0, "", "", "", "");
+    WeakReference localWeakReference = new WeakReference(paramActivity);
+    paramActivity = bhdj.a(paramActivity, 230, paramActivity.getString(2131690495), paramActivity.getString(2131690494), paramActivity.getString(2131698775), paramActivity.getString(2131698777), new ndf(this, localWeakReference, paramInt3, paramString2, paramInt1, paramString1, paramInt2, paramActivity), new ndh(this));
+    paramActivity.setCancelable(false);
+    paramActivity.show();
+  }
+  
+  private void a(Activity paramActivity, boolean paramBoolean)
+  {
+    String str = paramActivity.getString(2131690313);
+    if (!paramBoolean) {
+      str = paramActivity.getString(2131690354);
+    }
+    QQCustomDialog localQQCustomDialog = bhdj.a(paramActivity, 230);
+    if (localQQCustomDialog != null)
     {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.removeAllListeners();
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
+      localQQCustomDialog.setMessage(str);
+      QLog.d("AvGameManager", 2, "showInPlayDialog  ");
+      paramActivity = new ndd(this, paramActivity);
+      localQQCustomDialog.setPositiveButton(2131690470, paramActivity);
+      localQQCustomDialog.setNegativeButton(2131690697, paramActivity);
+      localQQCustomDialog.show();
+      return;
     }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    QLog.e("AvGameManager", 1, "preCheckIsUserGamePlaying dialog null");
   }
   
-  public nak a(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (nak)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
+    ThreadManager.excute(new AvGameManager.2(paramQQAppInterface), 16, null, true);
   }
   
-  public ndb a(ViewGroup paramViewGroup, int paramInt)
+  private void a(String paramString, boolean paramBoolean)
   {
-    paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558738, null);
-    GameGridItemView localGameGridItemView = (GameGridItemView)paramViewGroup.findViewById(2131367378);
-    localGameGridItemView.a(this.jdField_a_of_type_Nct);
-    return new ndb(paramViewGroup, localGameGridItemView);
+    if (paramString == null) {}
+    do
+    {
+      do
+      {
+        return;
+        TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+        TroopInfo localTroopInfo = localTroopManager.a(paramString);
+        if (localTroopInfo == null) {
+          break;
+        }
+        localTroopInfo.setIsAVGameOpen(paramBoolean);
+        localTroopManager.b(localTroopInfo);
+      } while (!QLog.isColorLevel());
+      QLog.d("AvGameManager", 2, "setIsAVGameOpen: " + paramBoolean + " troopUin: " + paramString);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.e("AvGameManager", 1, "setIsAVGameOpen troopinfo is null! troopUin: " + paramString);
+  }
+  
+  private boolean a(Activity paramActivity, boolean paramBoolean, String paramString)
+  {
+    if (!a()) {
+      return false;
+    }
+    if (paramBoolean) {
+      a(paramActivity, true);
+    }
+    for (;;)
+    {
+      return true;
+      String str = a();
+      if (TextUtils.isEmpty(str))
+      {
+        QLog.e("AvGameManager", 1, "preCheckIsUserGamePlaying join  roomPlayingId empty");
+        return true;
+      }
+      if (str.equals(paramString))
+      {
+        c();
+        AvGameLoadingActivity.a(false, paramActivity, null, str, null, "", false, false, null);
+      }
+      else
+      {
+        a(paramActivity, false);
+      }
+    }
+  }
+  
+  private boolean a(boolean paramBoolean)
+  {
+    QLog.d("AvGameManager", 2, "preCheckIsOtherBusinessOpen bCreate " + paramBoolean);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      QLog.e("AvGameManager", 1, "preCheckIsUserGamePlaying app null");
+    }
+    do
+    {
+      return false;
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().a())
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), 2131690283, 1).a();
+        QLog.e("AvGameManager", 1, "preCheckIsUserGamePlaying isPhoneCalling");
+        return true;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().b())
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), 2131690283, 1).a();
+        QLog.e("AvGameManager", 1, "preCheckIsUserGamePlaying isAvChating");
+        return true;
+      }
+    } while (!blvm.a());
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), 2131698595, 1).a();
+    QLog.e("AvGameManager", 1, "preCheckIsUserGamePlaying qq is in live show");
+    return true;
+  }
+  
+  private boolean b(Activity paramActivity, boolean paramBoolean, String paramString)
+  {
+    if (!nqi.b()) {
+      nqi.a(paramActivity, paramActivity.getString(2131690318));
+    }
+    do
+    {
+      return false;
+      if (!NetworkUtil.isNetworkAvailable())
+      {
+        nqi.a(paramActivity, paramActivity.getString(2131690390));
+        return false;
+      }
+    } while (a(paramBoolean));
+    if (a(paramActivity, paramBoolean, paramString))
+    {
+      QLog.e("AvGameManager", 1, "createAvGameRoom preCheckIsUserGamePlaying  true ");
+      return false;
+    }
+    return true;
+  }
+  
+  private void c()
+  {
+    AudioManager localAudioManager = (AudioManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext().getSystemService("audio");
+    if (localAudioManager != null) {
+      localAudioManager.requestAudioFocus(null, 3, 2);
+    }
+  }
+  
+  private boolean c()
+  {
+    if (this.jdField_a_of_type_Ansi != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AvGameManager", 2, "preCheckRealNameStatus remove observer");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ansi);
+    }
+    return ((ansg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).c();
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public nho a()
+  {
+    if (this.jdField_a_of_type_Nho == null) {
+      this.jdField_a_of_type_Nho = new nho(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+    return this.jdField_a_of_type_Nho;
   }
   
   public void a()
   {
+    boolean bool = a();
     if (QLog.isColorLevel()) {
-      QLog.i("GameListRecyclerViewAdapter", 2, "pauseAnimation: " + this.jdField_a_of_type_Int);
+      QLog.d("AvGameManager", 2, "onEnterBackground isPlaying = " + bool);
     }
-    b();
+    if (bool) {
+      AVGameUtilService.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+    }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    int i = ncp.g;
-    int j = ViewUtils.dip2px(4.0F);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setPadding(ncp.g, ncp.h, i - j, ncp.i);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new GridLayoutManager(this.jdField_a_of_type_AndroidContentContext, paramInt));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this);
-  }
-  
-  public void a(List<nak> paramList, boolean paramBoolean, int paramInt)
-  {
     if (QLog.isColorLevel()) {
-      QLog.i("GameListRecyclerViewAdapter", 2, "gameList: " + paramList + " isHost:" + paramBoolean + " currentGameIndex:" + paramInt);
+      QLog.i("AvGameManager", 2, "startStrangerMatchNotCheck " + paramInt);
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    a(paramBoolean, paramInt, true);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_stranger_match", true);
+    c();
+    AvGameLoadingActivity.a(true, paramInt, null, null, 0, localBundle);
   }
   
-  public void a(ndb paramndb, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    Object localObject1 = paramndb.a.getLayoutParams();
-    int i;
-    nak localnak;
-    label100:
-    Object localObject2;
-    if ((localObject1 instanceof FrameLayout.LayoutParams))
+    if (paramInt == 0)
     {
-      ((ViewGroup.LayoutParams)localObject1).width = ncp.e;
-      ((ViewGroup.LayoutParams)localObject1).height = ncp.f;
-      if (paramInt % this.jdField_b_of_type_Int == 0)
-      {
-        i = 51;
-        ((FrameLayout.LayoutParams)localObject1).gravity = i;
+      this.jdField_a_of_type_JavaLangString = null;
+      AudioManager localAudioManager = (AudioManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext().getSystemService("audio");
+      if (localAudioManager != null) {
+        localAudioManager.abandonAudioFocus(null);
       }
-    }
-    else
-    {
-      paramndb.itemView.setPadding(0, 0, 0, ncp.j);
-      localnak = (nak)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (TextUtils.isEmpty(localnak.k)) {
-        break label375;
-      }
-      localObject1 = localnak.k;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label429;
-      }
-      localObject2 = (URLDrawable)this.jdField_a_of_type_AndroidUtilLruCache.get(localObject1);
-      if (localObject2 != null) {
-        break label422;
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
-      {
-        localObject2 = njh.a("avgame_list_card_bg_small@2x.png");
-        if (localObject2 == null) {
-          break label385;
-        }
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable((Bitmap)localObject2);
-      }
-      label160:
-      localObject2 = URLDrawable.getDrawable((String)localObject1, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      ((URLDrawable)localObject2).startDownload();
-      this.jdField_a_of_type_AndroidUtilLruCache.put(localObject1, localObject2);
-      localObject1 = localObject2;
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(localnak.l))
+      this.jdField_a_of_type_Int = paramInt;
+      QLog.e("AvGameManager", 2, "setCurrentAvGameRoomInfo manager " + paramInt + " roomId" + paramString);
+      return;
+      if (paramInt == 2)
       {
-        localObject2 = (URLDrawable)this.jdField_b_of_type_AndroidUtilLruCache.get(localnak.l);
-        if (localObject2 == null)
+        if (this.jdField_a_of_type_JavaLangString != null)
         {
-          localObject2 = URLDrawable.getDrawable(localnak.l, URLDrawableHelper.TRANSPARENT, URLDrawableHelper.TRANSPARENT);
-          ((URLDrawable)localObject2).startDownload();
-          this.jdField_b_of_type_AndroidUtilLruCache.put(localnak.l, localObject2);
+          this.jdField_a_of_type_JavaLangString = null;
+          QLog.e("AvGameManager", 2, "ac game process death in room playing");
         }
+      }
+      else {
+        this.jdField_a_of_type_JavaLangString = paramString;
+      }
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    if ((paramInt == 1) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      ThreadManager.getSubThreadHandler().post(new AvGameManager.6(this, paramString1, paramString2));
+    }
+    QLog.i("AvGameManager", 2, "notifySendMsg shareType " + paramInt + " friendUin" + paramString1 + "roomId " + paramString2);
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    int k = 1;
+    if ((paramActivity == null) || (paramActivity.isFinishing()))
+    {
+      QLog.e("AvGameManager", 2, "on Permision Denied activity not exist");
+      return;
+    }
+    Object localObject1;
+    label37:
+    Object localObject2;
+    label50:
+    int i;
+    if ((paramActivity instanceof com.tencent.mobileqq.app.BaseActivity))
+    {
+      localObject1 = (com.tencent.mobileqq.app.BaseActivity)paramActivity;
+      if (!(paramActivity instanceof mqq.app.BaseActivity)) {
+        break label141;
+      }
+      localObject2 = (mqq.app.BaseActivity)paramActivity;
+      if ((localObject1 == null) && (localObject2 == null)) {
+        break label145;
+      }
+      if (localObject1 == null) {
+        break label158;
+      }
+      if (((com.tencent.mobileqq.app.BaseActivity)localObject1).checkSelfPermission("android.permission.CAMERA") == 0) {
+        break label147;
+      }
+      i = 1;
+      label78:
+      if (((com.tencent.mobileqq.app.BaseActivity)localObject1).checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
+        break label152;
+      }
+    }
+    for (;;)
+    {
+      label89:
+      if ((i != 0) && (k != 0)) {
+        localObject1 = paramActivity.getResources().getString(2131690400);
       }
       for (;;)
       {
-        paramndb.a.a(localnak, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, paramInt, (URLDrawable)localObject2, (URLDrawable)localObject1);
-        paramndb.itemView.setScaleX(1.0F);
-        paramndb.itemView.setScaleY(1.0F);
-        if (paramInt == this.jdField_a_of_type_Int)
-        {
-          b();
-          this.jdField_a_of_type_AndroidViewView = paramndb.itemView;
-          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+        localObject2 = new nde(this, paramActivity);
+        bhdj.a(paramActivity, null, (String)localObject1, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject2, null);
+        return;
+        localObject1 = null;
+        break label37;
+        label141:
+        localObject2 = null;
+        break label50;
+        label145:
+        break;
+        label147:
+        i = 0;
+        break label78;
+        label152:
+        k = 0;
+        break label89;
+        label158:
+        if (localObject2 == null) {
+          break label236;
         }
-        for (;;)
+        if (((mqq.app.BaseActivity)localObject2).checkSelfPermission("android.permission.CAMERA") != 0) {}
+        for (int j = 1;; j = 0)
         {
-          EventCollector.getInstance().onRecyclerBindViewHolder(paramndb, paramInt, getItemId(paramInt));
-          return;
-          if ((paramInt + 1) % this.jdField_b_of_type_Int == 0)
-          {
-            i = 53;
+          i = j;
+          if (((mqq.app.BaseActivity)localObject2).checkSelfPermission("android.permission.RECORD_AUDIO") != 0) {
             break;
           }
-          i = 49;
+          k = 0;
+          i = j;
           break;
-          label375:
-          localObject1 = localnak.c;
-          break label100;
-          label385:
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = URLDrawableHelper.TRANSPARENT;
-          break label160;
-          if (this.jdField_a_of_type_AndroidViewView == paramndb.itemView) {
-            b();
-          }
         }
-        continue;
-        localObject2 = null;
+        if (i != 0) {
+          localObject1 = paramActivity.getResources().getString(2131690399);
+        } else {
+          localObject1 = paramActivity.getResources().getString(2131690398);
+        }
       }
-      label422:
-      localObject1 = localObject2;
-      continue;
-      label429:
-      localObject1 = null;
+      label236:
+      i = 1;
     }
   }
   
-  public void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  public void a(Activity paramActivity, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Int = paramInt;
-    b();
-    notifyDataSetChanged();
-    if (paramBoolean2) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollToPosition(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManager", 2, "startStrangerMatch " + paramInt);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_stranger_match", true);
+    a(paramActivity, paramInt, null, 0, localBundle);
+  }
+  
+  public void a(Activity paramActivity, int paramInt1, String paramString, int paramInt2)
+  {
+    QLog.i("AvGameManager", 1, "createAvGameRoom fType " + paramInt1 + " pUin" + paramString + " gType" + paramInt2);
+    a(paramActivity, paramInt1, paramString, paramInt2, null);
+  }
+  
+  public void a(Activity paramActivity, int paramInt1, String paramString, int paramInt2, Bundle paramBundle)
+  {
+    AVGameUtilService.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    if ((paramActivity == null) || (paramActivity.isFinishing())) {
+      QLog.e("AvGameManager", 1, "createAvGameRoom activity finish");
+    }
+    do
+    {
+      return;
+      if (!b(paramActivity, true, null))
+      {
+        QLog.e("AvGameManager", 1, "createAvGameRoom preCheckIfOkBeforeEnter finish");
+        return;
+      }
+      if (!c())
+      {
+        if (paramInt1 == 9) {}
+        for (int i = 3;; i = 2)
+        {
+          a(paramActivity, paramInt1, paramString, "", paramInt2, i);
+          return;
+        }
+      }
+      nqc.a().a("param_StepEntrance");
+    } while (!nqi.a(paramActivity, new ndb(this, paramActivity, paramInt1, paramString, paramInt2, paramBundle)));
+    c();
+    AvGameLoadingActivity.a(true, paramInt1, paramString, null, paramInt2, paramBundle);
+  }
+  
+  public void a(Activity paramActivity, int paramInt, String paramString1, String paramString2)
+  {
+    QLog.i("AvGameManager", 1, "joinAvGameRoom fType " + paramInt + " rId" + paramString1 + " sUin" + paramString2);
+    if ((paramActivity == null) || (paramActivity.isFinishing())) {
+      QLog.e("AvGameManager", 2, "joinAvGameRoom activity finish");
+    }
+    do
+    {
+      return;
+      if (!b(paramActivity, false, paramString1))
+      {
+        QLog.e("AvGameManager", 2, "createAvGameRoom preCheckIfOkBeforeEnter finish");
+        return;
+      }
+      if (TextUtils.isEmpty(paramString1))
+      {
+        QQToast.a(paramActivity, 2131690472, 0).a();
+        QLog.e("AvGameManager", 2, "joinAvGameRoom with Empty room id");
+        return;
+      }
+      if (!c())
+      {
+        if (paramInt == 6) {}
+        for (int i = 3;; i = 1)
+        {
+          a(paramActivity, paramInt, paramString2, paramString1, 1, i);
+          return;
+        }
+      }
+      nqc.a().a("param_StepEntrance");
+    } while (!nqi.a(paramActivity, new ndc(this, paramActivity, paramInt, paramString1, paramString2)));
+    c();
+    AvGameLoadingActivity.a(false, paramInt, paramString2, paramString1, 0, null);
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if (!AVGameUtilService.a())
+    {
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_JavaLangString = null;
+      QLog.i("AvGameManager", 2, "isAVGameAlive false");
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (b());
+      bool1 = bool2;
+    } while (this.jdField_a_of_type_JavaLangString != null);
+    return false;
+  }
+  
+  public boolean a(long paramLong1, long paramLong2, String paramString1, int paramInt1, String paramString2, int paramInt2, long paramLong3)
+  {
+    ndj localndj = (ndj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.AV_GAME_HANDLER);
+    if (localndj != null)
+    {
+      localndj.a(paramLong1, paramLong2, paramString1, paramInt1, paramString2, paramInt2, paramLong3);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(Activity paramActivity)
+  {
+    if (!AVGameUtilService.a()) {
+      QLog.i("AvGameManager", 2, "isAVGameAlive false");
+    }
+    while (this.jdField_a_of_type_JavaLangString == null) {
+      return false;
+    }
+    a(paramActivity, false);
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    ndj localndj = (ndj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.AV_GAME_HANDLER);
+    if (localndj != null)
+    {
+      localndj.a(paramString);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString, int paramInt1, int paramInt2)
+  {
+    ndj localndj = (ndj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.AV_GAME_HANDLER);
+    if (localndj != null)
+    {
+      localndj.a(paramString, paramInt1, 10, paramInt2);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString, long paramLong)
+  {
+    ndj localndj = (ndj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.AV_GAME_HANDLER);
+    if (localndj != null)
+    {
+      localndj.a(paramString, paramLong);
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    boolean bool = a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AvGameManager", 2, "onEnterForeground isPlaying = " + bool);
+    }
+    if (bool) {
+      AVGameUtilService.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
     }
   }
   
-  public int getItemCount()
+  public void b(Activity paramActivity, int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManager", 2, "startSurvivalGame " + paramInt);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_pk_type", paramInt);
+    a(paramActivity, 10, null, 0, localBundle);
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == 3;
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    paramString = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramString);
+    if (paramString != null) {}
+    for (boolean bool = paramString.isAVGameOpen();; bool = false)
+    {
+      return bool;
+      if (QLog.isColorLevel()) {
+        QLog.e("AvGameManager", 2, "isAVGameOpen troopinfo is null");
+      }
+    }
+  }
+  
+  public boolean c(String paramString)
+  {
+    paramString = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramString);
+    if (paramString != null) {
+      return paramString.isOnlyAllowManagerCreateAVGame();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("AvGameManager", 1, "isOnlyAllowManagerCreateAVGame troopinfo is null");
+    }
+    return false;
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_Nnf != null) {
+      this.jdField_a_of_type_Nnf.b();
+    }
+    if (this.jdField_a_of_type_Ansi != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AvGameManager", 2, "onDestroy remove observer");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ansi);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ndm);
+    if (this.jdField_a_of_type_Nho != null)
+    {
+      this.jdField_a_of_type_Nho.a();
+      this.jdField_a_of_type_Nho = null;
+    }
   }
 }
 

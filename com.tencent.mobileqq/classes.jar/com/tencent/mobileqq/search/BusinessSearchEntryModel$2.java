@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.search;
 
-import bars;
-import bawy;
-import bjne;
+import bbyh;
+import bcdo;
+import bkyq;
 
 public class BusinessSearchEntryModel$2
   implements Runnable
 {
-  public BusinessSearchEntryModel$2(bars parambars, bawy parambawy) {}
+  public BusinessSearchEntryModel$2(bbyh parambbyh, bcdo parambcdo) {}
   
   public void run()
   {
     this.a.a();
-    bjne.a(new BusinessSearchEntryModel.2.1(this));
+    bkyq.a(new BusinessSearchEntryModel.2.1(this));
   }
 }
 

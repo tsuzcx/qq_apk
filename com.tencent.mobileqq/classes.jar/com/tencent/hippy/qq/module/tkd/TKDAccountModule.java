@@ -1,15 +1,20 @@
 package com.tencent.hippy.qq.module.tkd;
 
 import androidx.annotation.NonNull;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase;
-import ugf;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
+import pkh;
 
 @HippyNativeModule(name="TKDAccountModule")
 public class TKDAccountModule
@@ -31,31 +36,31 @@ public class TKDAccountModule
     localHippyMap.pushString("uin", paramAccountInfo.qqNum);
     localHippyMap.pushString("token", paramAccountInfo.qqNum);
     localHippyMap.pushString("nickname", paramAccountInfo.nickName);
+    localHippyMap.pushString("head", paramAccountInfo.headUrl);
+    localHippyMap.pushString("skey", paramAccountInfo.skey);
+    localHippyMap.pushString("appid", paramAccountInfo.appid);
     return localHippyMap;
   }
   
   @NonNull
   public static TKDAccountModule.AccountInfo getCurAccountInfo()
   {
-    Object localObject3 = "";
-    String str = "";
-    Object localObject2 = str;
-    Object localObject1 = localObject3;
-    if (BaseApplicationImpl.getApplication() != null)
+    long l = pkh.a();
+    TKDAccountModule.AccountInfo localAccountInfo = new TKDAccountModule.AccountInfo();
+    Object localObject = ReadInJoyUserInfoModule.a(l, null);
+    if (localObject != null)
     {
-      localObject2 = str;
-      localObject1 = localObject3;
-      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
-      {
-        localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        localObject1 = ((QQAppInterface)localObject2).getCurrentUin();
-        localObject2 = ugf.a((QQAppInterface)localObject2, (String)localObject1);
-      }
+      localAccountInfo.qqNum = ((ReadInJoyUserInfo)localObject).uin;
+      localAccountInfo.nickName = ((ReadInJoyUserInfo)localObject).nick;
+      localAccountInfo.headUrl = ReadInJoyUserInfoModule.a((ReadInJoyUserInfo)localObject);
     }
-    localObject3 = new TKDAccountModule.AccountInfo();
-    ((TKDAccountModule.AccountInfo)localObject3).qqNum = ((String)localObject1);
-    ((TKDAccountModule.AccountInfo)localObject3).nickName = ((String)localObject2);
-    return localObject3;
+    localObject = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
+    if (localObject != null) {
+      localAccountInfo.skey = ((TicketManager)localObject).getSkey(localAccountInfo.qqNum);
+    }
+    localAccountInfo.appid = (AppSetting.a() + "");
+    QLog.d("AccountModule", 1, "getCurAccountInfo .accountInfo=" + localAccountInfo);
+    return localAccountInfo;
   }
   
   @HippyMethod(name="getAccountInfo")

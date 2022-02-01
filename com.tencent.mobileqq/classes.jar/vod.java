@@ -1,30 +1,100 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec.1;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Context;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class vod
-  extends QQUIEventReceiver<vns, von>
+  extends uyw<Object>
 {
-  public vod(@NonNull vns paramvns)
+  private WSVerticalPageFragment a;
+  private View b;
+  private View c;
+  
+  public vod(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    super(paramvns);
+    super(paramContext);
+    this.a = paramWSVerticalPageFragment;
   }
   
-  public void a(@NonNull vns paramvns, @NonNull von paramvon)
+  private void f()
   {
-    if (paramvon.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      xvv.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramvon.jdField_a_of_type_JavaLangString, paramvon.b);
-      Bosses.get().postLightWeightJob(new StoryVideoUploadManager.VideoCompositeRec.1(this, paramvns, paramvon), 0);
+    if (this.a.a() == null) {
+      return;
+    }
+    vrn localvrn = this.a.a().a();
+    if (localvrn != null) {
+      localvrn.d();
+    }
+    g();
+  }
+  
+  private void g()
+  {
+    if (this.a.a() != null) {
+      this.a.a().a(this.a.a());
     }
   }
   
-  public Class acceptEventClass()
+  protected void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    return von.class;
+    View localView;
+    if (this.c != null)
+    {
+      localView = this.c;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean, vex paramvex)
+  {
+    View localView;
+    if ((this.b != null) && (paramvex != null))
+    {
+      paramvex.a(paramBoolean);
+      localView = this.b;
+      if ((paramvex.a() <= 0) || (!paramBoolean)) {
+        break label42;
+      }
+    }
+    label42:
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      return;
+    }
+  }
+  
+  protected int b()
+  {
+    return 2131560052;
+  }
+  
+  protected void b() {}
+  
+  protected void c() {}
+  
+  protected void e()
+  {
+    if (this.a == null) {
+      return;
+    }
+    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380765);
+    voq.a(this.a.getActivity(), localRelativeLayout);
+    a(2131380766).setOnClickListener(new voe(this));
+    this.c = a(2131380768);
+    this.c.setOnClickListener(new vof(this));
+    this.b = a(2131369305);
+    this.a.a(this.b);
   }
 }
 

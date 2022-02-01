@@ -1,10 +1,13 @@
-public abstract interface avza
+public class avza
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
-  
-  public abstract void b(int paramInt);
+  public double a;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
 }
 
 

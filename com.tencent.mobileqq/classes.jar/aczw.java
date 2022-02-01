@@ -1,41 +1,10 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.ChatHistoryViewBase.1;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
-public abstract class aczw
+public final class aczw
+  extends RecyclablePool.Recyclable
 {
-  public ChatHistoryFileActivity a;
-  public boolean i = true;
-  
-  public abstract View a();
-  
-  public void a(long paramLong) {}
-  
-  public void b() {}
-  
-  public abstract boolean b();
-  
-  public void c() {}
-  
-  protected boolean c()
-  {
-    return this.i;
-  }
-  
-  public void d() {}
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public void i_(int paramInt) {}
-  
-  protected void l()
-  {
-    this.i = false;
-    new Handler().postDelayed(new ChatHistoryViewBase.1(this), 1500L);
-  }
+  public int a;
+  public long a;
 }
 
 

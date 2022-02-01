@@ -1,30 +1,4 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-
-abstract class aghj<T extends aezx>
-{
-  private T a;
-  
-  private aghj(agcw paramagcw) {}
-  
-  protected abstract T a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter);
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  protected T b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    if (this.a == null) {
-      this.a = a(paramChatMessage, paramBaseAdapter);
-    }
-    if (a()) {
-      this.b.a(this.a, paramBaseAdapter);
-    }
-    return this.a;
-  }
-}
+class aghj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

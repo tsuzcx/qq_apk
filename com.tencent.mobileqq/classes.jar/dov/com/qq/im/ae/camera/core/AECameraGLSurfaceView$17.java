@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.core;
 
-import blnq;
+import bbhr;
+import bnhs;
+import bnrh;
 
 class AECameraGLSurfaceView$17
-  implements Runnable
+  implements bbhr
 {
-  AECameraGLSurfaceView$17(AECameraGLSurfaceView paramAECameraGLSurfaceView, int paramInt) {}
+  AECameraGLSurfaceView$17(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
-  public void run()
+  public void onGetLocation()
   {
-    blnq localblnq = (blnq)AECameraGLSurfaceView.access$000(this.this$0);
-    if (localblnq != null) {
-      localblnq.a(this.val$level);
-    }
+    bnrh.b("AECameraGLSurfaceView", "updateWMProps onGetLocation");
+    bnhs.a().a();
   }
 }
 

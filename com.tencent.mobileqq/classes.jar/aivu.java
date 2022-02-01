@@ -1,41 +1,23 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aivu
-  extends AccountObserver
+  implements View.OnClickListener
 {
-  public aivu(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  public aivu(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
   
-  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel())
-    {
-      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
-      if (paramString2 == null)
-      {
-        i = 0;
-        QLog.e("Q.history.C2CAllFragment", 2, i);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener");
     }
-    else
-    {
-      paramString1 = this.a.a.obtainMessage(39);
-      if (!paramBoolean) {
-        break label103;
-      }
-    }
-    label103:
-    for (int i = 1;; i = 0)
-    {
-      paramString1.arg1 = i;
-      paramString1.arg2 = 0;
-      this.a.a.sendMessage(paramString1);
-      return;
-      i = paramString2.length();
-      break;
-    }
+    bdla.b(null, "dc00899", "Grp_find_new", "", "grptab", "location_set_exp", 0, 0, "", "", "", "");
+    this.a.getActivity().requestPermissions(new aivv(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,22 +1,18 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 
-class afqr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract class afqr
+  extends afrk
 {
-  afqr(afqj paramafqj) {}
-  
-  public void onGlobalLayout()
-  {
-    if ((afqj.a(this.a).input.getLineCount() > 3) && (afqj.a(this.a).enableFullScreenInput()) && (afqj.a(this.a).getInputEnable()) && (!bbyp.b()))
-    {
-      this.a.a.setVisibility(0);
-      return;
-    }
-    this.a.a.setVisibility(8);
-  }
+  public int a;
+  public View a;
+  public aqhi a;
+  public BaseChatItemLayout a;
+  public String a;
+  public int b;
+  public View b;
+  public int c;
+  public int d;
 }
 
 

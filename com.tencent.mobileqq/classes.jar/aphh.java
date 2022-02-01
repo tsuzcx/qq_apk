@@ -1,31 +1,99 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.qphone.base.util.QLog;
 
-public class aphh
-  implements View.OnClickListener
+class aphh
+  implements ServiceConnection
 {
-  public aphh(CardPicGalleryActivity paramCardPicGalleryActivity, bjnw parambjnw) {}
+  aphh(aphg paramaphg) {}
   
-  public void onClick(View paramView)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    QQAppInterface localQQAppInterface;
-    if (2 == this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.d)
+    this.a.jdField_a_of_type_Apic = apid.a(paramIBinder);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onServiceConnected configManager=" + this.a.jdField_a_of_type_Apic);
+    }
+    if (this.a.jdField_a_of_type_Apic != null) {}
+    try
     {
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.app;
-      if (!this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b) {
-        break label70;
+      this.a.jdField_a_of_type_Apic.a(this.a.jdField_a_of_type_Apio);
+      this.a.jdField_a_of_type_Apic.a(this.a.jdField_a_of_type_Apif);
+      this.a.jdField_a_of_type_Apic.a(aphg.a(this.a));
+      this.a.jdField_a_of_type_Apic.a(this.a.jdField_a_of_type_Apil);
+      if (aphg.a(this.a) != -1) {
+        this.a.jdField_a_of_type_Apic.c(aphg.a(this.a));
+      }
+      if (aphg.a(this.a) != null) {
+        aphg.a(this.a).sendEmptyMessage(0);
+      }
+      if (this.a.c)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo = this.a.a();
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo != null) && (aphg.a(this.a) != null))
+        {
+          paramComponentName = Message.obtain();
+          paramComponentName.what = 1;
+          paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
+          aphg.a(this.a).sendMessage(paramComponentName);
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = this.a.a();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = new ArEffectConfig();
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) && (aphg.a(this.a) != null))
+      {
+        paramComponentName = Message.obtain();
+        paramComponentName.what = 2;
+        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
+        aphg.a(this.a).sendMessage(paramComponentName);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = this.a.a();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) && (aphg.a(this.a) != null))
+      {
+        paramComponentName = Message.obtain();
+        paramComponentName.what = 9;
+        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+        aphg.a(this.a).sendMessage(paramComponentName);
+      }
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_RemoteArConfigManager", 2, "registerArCallback: " + paramComponentName.getMessage());
+        }
       }
     }
-    label70:
-    for (String str = "1";; str = "2")
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (this.a.jdField_a_of_type_Apic != null) {}
+    try
     {
-      bcef.b(localQQAppInterface, "dc00898", "", "", "0X800A88C", "0X800A88C", 4, 0, str, "", "", "");
-      this.jdField_a_of_type_Bjnw.dismiss();
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.a.jdField_a_of_type_Apic.b(this.a.jdField_a_of_type_Apio);
+      this.a.jdField_a_of_type_Apic.b(this.a.jdField_a_of_type_Apif);
+      this.a.jdField_a_of_type_Apic.b(aphg.a(this.a));
+      this.a.jdField_a_of_type_Apic.b(this.a.jdField_a_of_type_Apil);
+      this.a.jdField_a_of_type_Apic = null;
       return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_RemoteArConfigManager", 2, "unregisterCallback: " + paramComponentName.getMessage());
+        }
+      }
     }
   }
 }

@@ -1,132 +1,210 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Typeface;
-import android.os.Build.VERSION;
-import android.text.TextPaint;
-import android.view.animation.LinearInterpolator;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
-import java.util.Random;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.mobileqq.vas.VasApngUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class bnne
+  extends RecyclerView.Adapter<bnnh>
 {
-  public int a;
-  public TextPaint a;
-  public ArrayList<bnmx> a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private bnng jdField_a_of_type_Bnng;
+  private List<bnkg> jdField_a_of_type_JavaUtilList;
+  private int b;
   
-  public bnne(int paramInt1, int paramInt2, Typeface paramTypeface, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public bnne(Context paramContext, List<bnkg> paramList)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    if (Build.VERSION.SDK_INT >= 21) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
-    }
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramInt2);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-    this.jdField_a_of_type_Int = paramInt3;
-    this.b = paramInt4;
-    this.c = paramInt5;
-    this.d = paramInt6;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public static int a()
+  private void b(int paramInt)
   {
-    Random localRandom = new Random();
-    int i = localRandom.nextInt(5);
-    int j = localRandom.nextInt(9);
-    return localRandom.nextInt(9) + (i * 100 + j * 10);
-  }
-  
-  public static bnne a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Typeface paramTypeface, bnmo parambnmo)
-  {
-    paramTypeface = new bnne(paramInt1, paramInt2, paramTypeface, paramInt3, paramInt4, paramInt5, paramInt6);
-    paramTypeface.f = 1;
-    paramTypeface.a(paramCharSequence, parambnmo);
-    return paramTypeface;
-  }
-  
-  public static void a(int paramInt, Paint paramPaint)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
+    int i;
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
     {
-      if (paramInt == 255) {
-        paramPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
+      LinearLayoutManager localLinearLayoutManager = (LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
+      i = localLinearLayoutManager.findFirstVisibleItemPosition();
+      i = (localLinearLayoutManager.findLastVisibleItemPosition() - i + 1) / 2 + i;
+      if (paramInt <= i) {
+        break label62;
       }
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollBy(bpdd.b(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), 70.0F), 0);
     }
-    else {
+    label62:
+    while (paramInt >= i) {
       return;
     }
-    paramPaint.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollBy(-bpdd.b(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), 70.0F), 0);
   }
   
-  public void a(CharSequence paramCharSequence, bnmo parambnmo)
+  private void c(int paramInt)
   {
-    a(paramCharSequence, parambnmo, 0);
-  }
-  
-  public void a(CharSequence paramCharSequence, bnmo parambnmo, int paramInt)
-  {
-    this.e = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramCharSequence, 0, paramCharSequence.length()));
-    if ((paramInt != 0) && (paramInt > this.e)) {}
-    for (int j = (paramInt - this.e) / (paramCharSequence.length() - 1);; j = 0)
+    int j;
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      int k = 0;
-      paramInt = 0;
-      while (k < paramCharSequence.length())
+      LinearLayoutManager localLinearLayoutManager = (LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
+      int i = localLinearLayoutManager.findFirstVisibleItemPosition();
+      j = (localLinearLayoutManager.findLastVisibleItemPosition() - i + 1) / 2 + i;
+      if ((paramInt >= i) && (paramInt <= j)) {
+        break label58;
+      }
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(paramInt);
+    }
+    label58:
+    do
+    {
+      return;
+      if (paramInt > j)
       {
-        int i = paramCharSequence.charAt(k);
-        if (i == 32)
-        {
-          paramInt = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText("0", 0, 1) + paramInt;
-          k += 1;
+        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollBy(bpdd.b(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), 70.0F), 0);
+        return;
+      }
+    } while (paramInt >= j);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollBy(-bpdd.b(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), 70.0F), 0);
+  }
+  
+  public bnnh a(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
+    }
+    return new bnnh(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558591, paramViewGroup, false));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    bnrh.b("AEGIFStickerAdapter", "[onItemSelectedFromOutside], position=" + paramInt + ", mClickedPos=" + this.jdField_a_of_type_Int + ", mActivatedPos=" + this.b);
+    bnkg localbnkg = (bnkg)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+    if ((localbnkg.jdField_a_of_type_Int == 2) || (localbnkg.b == 1))
+    {
+      bnrh.b("AEGIFStickerAdapter", "[onItemSelectedFromOutside] materialWrapper.state == STATE_DOWNLOADED || materialWrapper.type == AEMaterialWrapper.TYPE_PLACEHOLDER");
+      if (paramInt != this.b)
+      {
+        if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) {
+          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(paramInt);
         }
-        else
-        {
-          bnmx localbnmx = new bnmx();
-          String str = new String(new char[] { i });
-          int m = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str, 0, str.length());
-          Object localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-          float f1 = ((Paint.FontMetrics)localObject).bottom;
-          float f2 = ((Paint.FontMetrics)localObject).top;
-          float f3 = Math.abs(((Paint.FontMetrics)localObject).ascent);
-          localObject = Bitmap.createBitmap(m, (int)(f1 - f2), Bitmap.Config.ARGB_8888);
-          Canvas localCanvas = new Canvas((Bitmap)localObject);
-          BaseApplicationImpl.getContext();
-          localCanvas.drawText(str, 0.0F, f3, this.jdField_a_of_type_AndroidTextTextPaint);
-          if (this.f == 0)
-          {
-            localbnmx.b = parambnmo.a("", this.c + a(), this.d, 0, 255, new LinearInterpolator());
-            label282:
-            localbnmx.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
-            if (k != 0) {
-              break label374;
-            }
-            localbnmx.jdField_a_of_type_Int = paramInt;
-          }
-          for (paramInt = localbnmx.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + paramInt;; paramInt = localbnmx.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + j + paramInt)
-          {
-            this.jdField_a_of_type_JavaUtilArrayList.add(localbnmx);
-            break;
-            localbnmx.b = parambnmo.a("", this.c + this.d * k / paramCharSequence.length(), this.d, 0, 255, new LinearInterpolator());
-            break label282;
-            label374:
-            localbnmx.jdField_a_of_type_Int = (paramInt + j);
-          }
-        }
+        int i = this.b;
+        this.b = paramInt;
+        notifyItemChanged(paramInt);
+        notifyItemChanged(i);
       }
       return;
     }
+    bnrh.b("AEGIFStickerAdapter", "[onItemSelectedFromOutside] materialWrapper.state != STATE_DOWNLOADED");
+  }
+  
+  public void a(@NonNull bnkg parambnkg, boolean paramBoolean)
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(parambnkg);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Int = this.b;
+      notifyItemChanged(i);
+    }
+    do
+    {
+      return;
+      if (parambnkg.jdField_a_of_type_Int != 2) {
+        break;
+      }
+    } while (i != this.jdField_a_of_type_Int);
+    c(i);
+    int j = this.b;
+    this.b = i;
+    notifyItemChanged(i);
+    notifyItemChanged(j);
+    bnqq.a().k(parambnkg.jdField_a_of_type_JavaLangString);
+    bnqm.a().ai();
+    bnrh.b("AEGIFStickerAdapter", "[notifyDownloadStateChanged], gifMaterialDownloaded, id=" + parambnkg.jdField_a_of_type_JavaLangString);
+    return;
+    notifyItemChanged(i);
+  }
+  
+  public void a(bnng parambnng)
+  {
+    this.jdField_a_of_type_Bnng = parambnng;
+  }
+  
+  public void a(bnnh parambnnh, int paramInt)
+  {
+    Object localObject1 = (bnkg)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (((bnkg)localObject1).b == 1)
+    {
+      parambnnh.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837969);
+      parambnnh.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      parambnnh.itemView.setOnClickListener(new bnnf(this, paramInt, (bnkg)localObject1));
+      if (paramInt != this.b) {
+        break label250;
+      }
+      bnqq.a().k(((bnkg)localObject1).jdField_a_of_type_JavaLangString);
+      localObject1 = parambnnh.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).width = bpdd.b(this.jdField_a_of_type_AndroidContentContext, 75.0F);
+      ((ViewGroup.LayoutParams)localObject1).height = bpdd.b(this.jdField_a_of_type_AndroidContentContext, 75.0F);
+      parambnnh.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      parambnnh.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837990);
+      parambnnh.b.setVisibility(0);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(parambnnh, paramInt, getItemId(paramInt));
+      return;
+      Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837993);
+      localObject2 = VasApngUtil.getApngURLDrawable(((bnkg)localObject1).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.thumbUrl, new int[] { 0 }, (Drawable)localObject2);
+      parambnnh.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+      switch (((bnkg)localObject1).jdField_a_of_type_Int)
+      {
+      default: 
+        break;
+      case 0: 
+      case 2: 
+        parambnnh.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+        break;
+      case 1: 
+        parambnnh.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        break;
+        label250:
+        localObject1 = parambnnh.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject1).width = bpdd.b(this.jdField_a_of_type_AndroidContentContext, 60.0F);
+        ((ViewGroup.LayoutParams)localObject1).height = bpdd.b(this.jdField_a_of_type_AndroidContentContext, 60.0F);
+        parambnnh.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        parambnnh.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837989);
+        parambnnh.b.setVisibility(4);
+      }
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
   }
 }
 

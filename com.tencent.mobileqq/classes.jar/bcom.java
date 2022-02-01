@@ -1,65 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class bcom
-  extends aptq<bcon>
+class bcom
 {
-  public static bcon a()
+  public View.OnClickListener a;
+  public View a;
+  public TextView a;
+  public URLImageView a;
+  
+  public bcom(bcol parambcol, Context paramContext)
   {
-    return (bcon)apub.a().a(610);
-  }
-  
-  @NonNull
-  public bcon a(int paramInt)
-  {
-    return new bcon();
-  }
-  
-  @Nullable
-  public bcon a(aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("StudyModeConfigProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return bcon.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(bcon parambcon) {}
-  
-  public Class<bcon> clazz()
-  {
-    return bcon.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 610;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bcon(this);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131561473, parambcol.b, false);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368501));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365513));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
 }
 

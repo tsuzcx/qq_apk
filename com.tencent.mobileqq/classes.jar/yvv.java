@@ -1,18 +1,37 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
 public class yvv
-  implements aytn
+  extends yvr
 {
-  public yvv(QRDisplayActivity paramQRDisplayActivity) {}
+  @NonNull
+  public final wkn a;
+  @NonNull
+  public final String c;
   
-  public void a()
+  public yvv(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull wkn paramwkn)
   {
-    bcef.b(this.a.app, "CliOper", "", "", "0X800AEB1", "0X800AEB1", 0, 0, "", "", "", "");
+    super(paramInt1, paramString1, paramInt2);
+    this.c = paramString2;
+    this.a = paramwkn;
   }
   
-  public void a(String paramString)
+  @NonNull
+  public Class<? extends yvs> a()
   {
-    bcef.b(this.a.app, "CliOper", "", "", "0X800AEB3", "0X800AEB3", 0, 0, "", "", "", "");
+    return yvx.class;
+  }
+  
+  @NonNull
+  public yvs a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new yvx(paramContext, paramViewGroup, null);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
 
 public class acnu
-  implements DialogInterface.OnClickListener
+  implements ProxyListener
 {
-  public acnu(AccountManageActivity paramAccountManageActivity) {}
+  public void onDeleteFinish(String paramString, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bcef.b(this.a.app, "CliOper", "", "", "0X80040A7", "0X80040A7", 0, 0, "", "", "", "");
-    this.a.d();
-  }
+  public void onInsertFinish(String paramString) {}
+  
+  public void onUpdateFinish(String paramString, int paramInt) {}
 }
 
 

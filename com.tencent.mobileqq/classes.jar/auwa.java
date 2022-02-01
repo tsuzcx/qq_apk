@@ -1,29 +1,64 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class auwa
   extends BroadcastReceiver
 {
-  public auwa(UiApiPlugin paramUiApiPlugin) {}
+  public auwa(HotChatFragment paramHotChatFragment) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
+    if ((paramIntent != null) && ("com.tencent.mobileqq.get_banner_rect".equals(paramIntent.getAction())))
     {
-      Iterator localIterator = UiApiPlugin.a.iterator();
-      while (localIterator.hasNext())
-      {
-        UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
-        if (localUiApiPlugin != null) {
-          localUiApiPlugin.a(paramContext, paramIntent);
-        }
+      paramContext = paramIntent.getStringExtra("content");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label31;
       }
     }
+    label31:
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramContext = new JSONObject(paramContext).getJSONObject("params").getJSONArray("bannerHeight");
+          if (paramContext != null)
+          {
+            float f = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density;
+            int j = paramContext.length();
+            this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+            int i = 0;
+            while (i < j)
+            {
+              paramIntent = paramContext.getJSONObject(i);
+              Rect localRect = new Rect();
+              localRect.top = ((int)(paramIntent.getInt("top") * f));
+              localRect.bottom = ((int)(paramIntent.getInt("bottom") * f));
+              this.a.jdField_a_of_type_JavaUtilArrayList.add(localRect);
+              i += 1;
+            }
+            this.a.d = true;
+            return;
+          }
+        }
+        catch (JSONException paramContext) {}
+      }
+    } while (!QLog.isDevelopLevel());
+    paramContext.printStackTrace();
   }
 }
 

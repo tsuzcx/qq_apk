@@ -1,6 +1,23 @@
-public abstract interface bbsx
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
+
+public class bbsx
+  implements bbtb
 {
-  public abstract void notify(Object paramObject, int paramInt, Object... paramVarArgs);
+  public bbsx(EditActivity paramEditActivity) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 102) && (EditActivity.a(this.a).actionId != 0) && (" ".equals(EditActivity.a(this.a).actionText)))
+    {
+      bbsk localbbsk = EditActivity.a(this.a).a(EditActivity.a(this.a).actionId);
+      if (localbbsk != null)
+      {
+        EditActivity.a(this.a).actionText = localbbsk.d;
+        EditActivity.a(this.a, false);
+      }
+    }
+  }
 }
 
 

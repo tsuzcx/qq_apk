@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
-public class bkny
-  implements DialogInterface.OnClickListener
+final class bkny
+  implements MiniAppCmdInterface
 {
-  public bkny(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  bkny(AsyncResult paramAsyncResult) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.a.app.getQQProxyForQlink().a(new QlAndQQInterface.DailogClickInfo(4));
-    this.a.finish();
+    if (this.a != null) {
+      this.a.onReceiveResult(paramBoolean, paramJSONObject);
+    }
   }
 }
 

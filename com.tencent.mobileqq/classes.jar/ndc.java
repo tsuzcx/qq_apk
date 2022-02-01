@@ -1,21 +1,20 @@
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.avgame.gameroom.gamelist.GameListView;
-import com.tencent.avgame.gameroom.gamelist.GameListView.1;
 
-public class ndc
+class ndc
   implements DialogInterface.OnClickListener
 {
-  public ndc(GameListView.1 param1) {}
+  ndc(ncz paramncz, Activity paramActivity, int paramInt, String paramString1, String paramString2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bcef.b(null, "dc00898", "", "", "0X800B49B", "0X800B49B", 0, 0, "", "", "", "");
-    this.a.this$0.a.a(false, 1);
-    ((Activity)this.a.this$0.getContext()).finish();
-    mzl.a().a().a().b();
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Ncz.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+      return;
+    }
+    this.jdField_a_of_type_Ncz.a(this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

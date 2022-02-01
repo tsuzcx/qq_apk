@@ -22,6 +22,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_ACCOUNT_PANEL = 4013;
   public static final int LAUNCH_SCENE_AD_BANNER_POPUP = 2094;
   public static final int LAUNCH_SCENE_AD_SCHEME = 2054;
+  public static final int LAUNCH_SCENE_AIO_INTIMATE_DRAW = 2064;
   public static final int LAUNCH_SCENE_AIO_PANEL = 2053;
   public static final int LAUNCH_SCENE_AIO_SHORTCUT_PANEL = 4008;
   public static final int LAUNCH_SCENE_AIO_SWEET_GREY_TIPS = 2080;
@@ -45,6 +46,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_DESKTOP_FRIENDS_PLAYING_MORE = 3004;
   public static final int LAUNCH_SCENE_DESKTOP_HOT = 3023;
   public static final int LAUNCH_SCENE_DESKTOP_MORE = 3005;
+  public static final int LAUNCH_SCENE_DESKTOP_MOST_COMMONLY_USED = 3027;
   public static final int LAUNCH_SCENE_DESKTOP_MY_APP = 3003;
   public static final int LAUNCH_SCENE_DESKTOP_MY_APP_RED_DOT = 3021;
   public static final int LAUNCH_SCENE_DESKTOP_PLAY = 3024;
@@ -85,6 +87,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_SCAN = 1047;
   public static final int LAUNCH_SCENE_MINI_GAME_PUBLIC_ACCOUNT = 4011;
   public static final int LAUNCH_SCENE_MODIFY_FRIEND_INTERACTIVE_STORAGE = 2218;
+  public static final int LAUNCH_SCENE_MODIFY_PWD = 2201;
   public static final int LAUNCH_SCENE_NAVIGATE_FROM_MINI_APP = 1038;
   public static final int LAUNCH_SCENE_OPEN_BY_MINI_APP = 1037;
   public static final int LAUNCH_SCENE_PENDANTHOLDER = 4004;
@@ -108,13 +111,16 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_QZONE_PUBLISH_MOOD = 2100;
   public static final int LAUNCH_SCENE_QZONE_SHUOSHUO_LIST = 2060;
   public static final int LAUNCH_SCENE_QZONE_SWEET_WIDGET = 2088;
+  public static final int LAUNCH_SCENE_RECENT_COLOR_NOTE = 1132;
   public static final int LAUNCH_SCENE_SAFE_MINIAPP_SCHEME = 2098;
   public static final int LAUNCH_SCENE_SAFE_MINIAPP_SCHEME_2119 = 2119;
   public static final int LAUNCH_SCENE_SCHEME = 2016;
   public static final int LAUNCH_SCENE_SEARCH = 2005;
   public static final int LAUNCH_SCENE_SEARCH_ENTRY = 4001;
+  public static final int LAUNCH_SCENE_SEARCH_GUESS_YOU_LIKE = 3029;
   public static final int LAUNCH_SCENE_SEARCH_HAS_USED = 1027;
   public static final int LAUNCH_SCENE_SEARCH_LIVE = 3017;
+  public static final int LAUNCH_SCENE_SEARCH_RECOMMEND_FOR_YOU = 3028;
   public static final int LAUNCH_SCENE_SEARCH_RESULT_FIND = 1006;
   public static final int LAUNCH_SCENE_SEARCH_RESULT_TOP = 1005;
   public static final int LAUNCH_SCENE_SETTING_ME = 2066;

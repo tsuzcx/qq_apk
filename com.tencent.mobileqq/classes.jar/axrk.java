@@ -1,12 +1,18 @@
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface axrk
+public class axrk
+  implements View.OnClickListener
 {
-  public abstract RelativeLayout a();
+  public axrk(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public abstract void b(anzl paramanzl);
-  
-  public abstract boolean c();
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

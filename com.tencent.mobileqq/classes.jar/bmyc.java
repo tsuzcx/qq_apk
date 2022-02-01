@@ -1,9 +1,19 @@
-import dov.com.qq.im.capture.view.ComboProviderView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.ae.SessionWrap;
 
-public class bmyc
-  extends bmrx
+public final class bmyc
+  implements Parcelable.Creator<SessionWrap>
 {
-  public bmyc(ComboProviderView paramComboProviderView) {}
+  public SessionWrap a(Parcel paramParcel)
+  {
+    return new SessionWrap(paramParcel);
+  }
+  
+  public SessionWrap[] a(int paramInt)
+  {
+    return new SessionWrap[0];
+  }
 }
 
 

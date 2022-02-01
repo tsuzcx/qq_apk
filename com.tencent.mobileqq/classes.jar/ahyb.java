@@ -1,23 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
 public class ahyb
-  extends pkt
+  extends ahya
 {
-  public ahyb(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public Bitmap a;
+  public AnimationView.AnimationInfo a;
   
-  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
+  public ahyb(String paramString)
   {
-    if (paramBoolean)
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
     {
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        this.a.c.clear();
-        this.a.c.addAll(paramList);
-      }
-      ClassificationSearchActivity.b(this.a, true);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
     }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
   }
 }
 

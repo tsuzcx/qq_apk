@@ -1,11 +1,15 @@
-import com.tencent.pts.utils.PTSReportUtil.DefaultPTSReport;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-final class qns
-  extends PTSReportUtil.DefaultPTSReport
+class qns
+  implements ViewBase.OnClickListener
 {
-  public void reportEvent(String paramString1, String paramString2, int paramInt)
+  qns(qnp paramqnp, qfw paramqfw, Container paramContainer) {}
+  
+  public void onClick(ViewBase paramViewBase)
   {
-    qob.a("0X800B241", "", "", "", new qoc().a("tag", paramString1).a("msg", paramString2).a("reportType", "" + paramInt).a());
+    this.jdField_a_of_type_Qnp.a(this.jdField_a_of_type_Qfw, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
   }
 }
 

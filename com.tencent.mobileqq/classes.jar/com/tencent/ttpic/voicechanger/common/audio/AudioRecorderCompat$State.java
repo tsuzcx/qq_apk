@@ -19,8 +19,6 @@ public class AudioRecorderCompat$State
     switch (paramInt)
     {
     default: 
-      return null;
-    case 1: 
       return "STATE_ERROR";
     case 2: 
       return "STATE_IDLE";

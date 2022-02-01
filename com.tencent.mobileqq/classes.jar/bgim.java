@@ -1,8 +1,10 @@
-public abstract interface bgim
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class bgim
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

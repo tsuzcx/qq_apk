@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import avsq;
+import awyr;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityTransaction;
@@ -11,7 +11,7 @@ import java.util.List;
 public class EmoticonManager$7
   implements Runnable
 {
-  public EmoticonManager$7(avsq paramavsq, List paramList) {}
+  public EmoticonManager$7(awyr paramawyr, List paramList) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class EmoticonManager$7
     while (localIterator.hasNext())
     {
       EmoticonPackage localEmoticonPackage = (EmoticonPackage)localIterator.next();
-      if ((localEmoticonPackage != null) && (!avsq.a(this.this$0, localEmoticonPackage))) {
+      if ((localEmoticonPackage != null) && (!awyr.a(this.this$0, localEmoticonPackage))) {
         QLog.e("EmoticonManager", 1, "saveEmoticonPackages fail epId = " + localEmoticonPackage.epId);
       }
     }

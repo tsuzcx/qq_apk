@@ -1,57 +1,126 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class aevl
-  implements URLDrawable.URLDrawableListener
+  extends AsyncTask<String, Void, HashMap<Integer, Integer>>
 {
-  public aevl(ReminderCardItemPage paramReminderCardItemPage, boolean paramBoolean, ImageView paramImageView) {}
+  public aevl(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  protected HashMap<Integer, Integer> a(String... paramVarArgs)
   {
-    QLog.d("ReminderCardItemPage", 1, "setImageFromUrl onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.d("ReminderCardItemPage", 1, "setImageFromUrl onLoadFialed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    QLog.d("ReminderCardItemPage", 1, "setImageFromUrl onLoadProgressed");
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QLog.d("ReminderCardItemPage", 1, "setImageFromUrl onLoadSuccess");
+    int i = 0;
+    if ((this.a.jdField_d_of_type_JavaLangString == null) || (this.a.jdField_d_of_type_JavaLangString.isEmpty()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mSelfUin is null!");
+      }
+      return null;
+    }
+    paramVarArgs = bhhr.e(this.a.jdField_d_of_type_JavaLangString);
+    this.a.b = paramVarArgs.getString(lch.h, "");
+    paramVarArgs = mug.a();
+    this.a.b(paramVarArgs);
+    paramVarArgs = lbt.b(270).a;
+    this.a.a(paramVarArgs);
+    if (this.a.e.isEmpty())
+    {
+      this.a.e = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131695589);
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mProblem_Video config data is invalid, use default!");
+      }
+    }
+    if (this.a.f.isEmpty())
+    {
+      this.a.f = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131695587);
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mProblem_Audio config data is invalid, use default!");
+      }
+    }
+    if (this.a.g.isEmpty())
+    {
+      this.a.g = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131695588);
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mProblem_Net config data is invalid, use default!");
+      }
+    }
+    if (this.a.jdField_d_of_type_Long == 0L) {
+      paramVarArgs = this.a.e + "/" + this.a.f + "/" + this.a.g;
+    }
     try
     {
-      paramURLDrawable = paramURLDrawable.getCurrDrawable();
-      if (this.jdField_a_of_type_Boolean)
+      this.a.jdField_a_of_type_JavaUtilList = Arrays.asList(paramVarArgs.split("/"));
+      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
       {
-        int j = ReminderCardItemPage.a();
-        int i = j;
-        if (j == 0) {
-          i = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
+        i = 0;
+        if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+          break label778;
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.MATRIX);
-        Matrix localMatrix = new Matrix();
-        float f = i * 1.0F / paramURLDrawable.getIntrinsicWidth();
-        localMatrix.setScale(f, f);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageMatrix(localMatrix);
       }
-      return;
     }
-    catch (Throwable paramURLDrawable)
+    catch (Exception paramVarArgs)
     {
-      QLog.e("ReminderCardItemPage", 1, "setImageFromUrl: with a error: ", paramURLDrawable);
+      try
+      {
+        do
+        {
+          for (;;)
+          {
+            paramVarArgs = ((String)this.a.jdField_a_of_type_JavaUtilList.get(i)).split(",");
+            this.a.jdField_a_of_type_JavaUtilList.set(i, paramVarArgs[1]);
+            int j = Integer.parseInt(paramVarArgs[0]);
+            this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(j));
+            i += 1;
+            continue;
+            paramVarArgs = this.a.f + "/" + this.a.g;
+          }
+          paramVarArgs = paramVarArgs;
+          paramVarArgs.printStackTrace();
+        } while (!QLog.isColorLevel());
+        QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          paramVarArgs.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "processDataTask mDatas is invalid, use default!");
+      }
+      this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.a.jdField_a_of_type_JavaUtilList.add(anvx.a(2131713038));
+      this.a.jdField_a_of_type_JavaUtilList.add(anvx.a(2131713031));
+      this.a.jdField_a_of_type_JavaUtilList.add(anvx.a(2131713034));
+      this.a.jdField_a_of_type_JavaUtilList.add(anvx.a(2131713037));
+      this.a.jdField_a_of_type_JavaUtilList.add(anvx.a(2131713032));
+      this.a.jdField_a_of_type_JavaUtilList.add(anvx.a(2131713036));
+      this.a.jdField_a_of_type_JavaUtilList.add(anvx.a(2131713033));
+      this.a.jdField_a_of_type_JavaUtilList.add(anvx.a(2131713035));
+      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+      {
+        this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(i));
+        i += 1;
+      }
     }
+    label778:
+    return this.a.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  protected void a(HashMap<Integer, Integer> paramHashMap)
+  {
+    super.onPostExecute(paramHashMap);
   }
 }
 

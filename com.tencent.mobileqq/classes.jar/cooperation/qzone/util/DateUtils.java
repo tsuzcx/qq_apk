@@ -1,28 +1,28 @@
 package cooperation.qzone.util;
 
-import amtj;
+import anvx;
 import java.util.Calendar;
 
 public class DateUtils
 {
   public static final String BEFOREY_YESTERDAY;
   public static final String COLON = ":";
-  public static final String DAY = amtj.a(2131701978);
+  public static final String DAY = anvx.a(2131702329);
   public static final long DAY_MILLIS_SECOND = 86400000L;
   public static final int DAY_SECOND = 86400;
-  public static final String JUST_MINS = amtj.a(2131701983);
+  public static final String JUST_MINS = anvx.a(2131702334);
   public static final String MONTH;
   public static final String TODAY;
   public static final long TWO_DAY_MILLIS_SECOND = 172800000L;
   public static final String YEAR;
-  public static final String YESTERDAY = amtj.a(2131701954);
+  public static final String YESTERDAY = anvx.a(2131702305);
   
   static
   {
-    TODAY = amtj.a(2131701935);
-    BEFOREY_YESTERDAY = amtj.a(2131701975);
-    YEAR = amtj.a(2131701945);
-    MONTH = amtj.a(2131701939);
+    TODAY = anvx.a(2131702286);
+    BEFOREY_YESTERDAY = anvx.a(2131702326);
+    YEAR = anvx.a(2131702296);
+    MONTH = anvx.a(2131702290);
   }
   
   static String doubleD(int paramInt)
@@ -90,7 +90,7 @@ public class DateUtils
       return YESTERDAY;
     }
     if ((l2 >= 86400000L) && (l2 <= 777600000L)) {
-      return (int)(l2 / 86400000L) + amtj.a(2131701963);
+      return (int)(l2 / 86400000L) + anvx.a(2131702314);
     }
     return "";
   }

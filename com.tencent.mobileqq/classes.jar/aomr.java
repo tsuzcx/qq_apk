@@ -1,18 +1,74 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import android.app.Activity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aomr
-  implements DialogInterface.OnDismissListener
+  extends aona
 {
-  public aomr(ARScanEntryView paramARScanEntryView) {}
+  private static final aomr a;
+  public List<aonb> a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  static
   {
-    ARScanEntryView.a(this.a, null);
-    ARScanEntryView.a(this.a, null);
-    ARScanEntryView.a(this.a).g();
-    ARScanEntryView.a(this.a, true);
+    jdField_a_of_type_Aomr = new aomr();
+  }
+  
+  private aomr()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(new aoms());
+    this.jdField_a_of_type_JavaUtilList.add(aomk.a());
+  }
+  
+  public static aomr a()
+  {
+    return jdField_a_of_type_Aomr;
+  }
+  
+  public aonb a(Class<? extends aonb> paramClass)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      aonb localaonb = (aonb)localIterator.next();
+      if (localaonb.getClass() == paramClass) {
+        return localaonb;
+      }
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aonb)localIterator.next()).a();
+    }
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aonb)localIterator.next()).a(paramActivity);
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aonb)localIterator.next()).b();
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aonb)localIterator.next()).c();
+    }
   }
 }
 

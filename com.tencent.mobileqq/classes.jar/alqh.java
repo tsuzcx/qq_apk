@@ -1,15 +1,18 @@
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.apollo.GLTextureView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class alqh
   implements View.OnLayoutChangeListener
 {
-  public alqh(GLTextureView paramGLTextureView) {}
+  public alqh(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt) {}
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.a.surfaceChanged(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.addOnLayoutChangeListener(new alqi(this));
   }
 }
 

@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class aiug
-  implements DialogInterface.OnClickListener
+public class aiug
+  implements aiuo
 {
-  aiug(aitt paramaitt, boolean paramBoolean, String paramString) {}
+  public aiug(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    bcef.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, aitt.a(this.jdField_a_of_type_Aitt), "", "", "");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      aitt.a(this.jdField_a_of_type_Aitt, aitt.a(this.jdField_a_of_type_Aitt), Long.valueOf(aitt.a(this.jdField_a_of_type_Aitt)).longValue(), false);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
     }
-    aitt.a(this.jdField_a_of_type_Aitt, aitt.a(this.jdField_a_of_type_Aitt), Long.valueOf(aitt.a(this.jdField_a_of_type_Aitt)).longValue(), false, this.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 80000001) {
+      bcnc.a("add_page", "search", "clk_search_grp", this.a.d + 1, 0, new String[] { "", "", paramString, "" });
+    }
+    this.a.a(paramString, false);
   }
 }
 

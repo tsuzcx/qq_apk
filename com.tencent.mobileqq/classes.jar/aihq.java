@@ -1,34 +1,36 @@
-import android.util.SparseArray;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URL;
 
-public class aihq
+public abstract interface aihq
+  extends aiho, aihp
 {
-  public int a;
-  public SparseArray<byte[]> a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
+  public abstract URLDrawable.URLDrawableOptions a();
   
-  public aihq()
-  {
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  }
+  public abstract URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions);
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.d = null;
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-  }
+  public abstract String a();
+  
+  public abstract URL a();
+  
+  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt);
+  
+  public abstract void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  public abstract boolean c();
+  
+  public abstract String d();
 }
 
 

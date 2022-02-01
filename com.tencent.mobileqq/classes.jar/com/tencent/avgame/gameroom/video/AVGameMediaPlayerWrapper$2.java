@@ -2,7 +2,7 @@ package com.tencent.avgame.gameroom.video;
 
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.superplayer.api.ISuperPlayer;
-import nfq;
+import nmi;
 
 public class AVGameMediaPlayerWrapper$2
   implements Runnable
@@ -10,8 +10,8 @@ public class AVGameMediaPlayerWrapper$2
   public void run()
   {
     QLog.d("AVGameMediaPlayerWrapper", 1, "call resumePlay");
-    if (nfq.a(this.this$0) != null) {
-      nfq.a(this.this$0).start();
+    if (nmi.a(this.this$0) != null) {
+      nmi.a(this.this$0).start();
     }
   }
 }

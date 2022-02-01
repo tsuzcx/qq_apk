@@ -1,6 +1,23 @@
-public abstract interface sew
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/CodecReuseHelper$Companion$pullConfigFromServer$1", "Lcom/tencent/biz/pubaccount/readinjoy/viola/view/ViolaBaseView$LoadAsyBack;", "onFail", "", "onProcess", "process", "", "onSucc", "result", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sew
+  implements ucm
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2);
+  public void a()
+  {
+    seu.a(set.a);
+  }
+  
+  public void a(@Nullable String paramString)
+  {
+    if (paramString != null)
+    {
+      set.a.a(set.a.a(paramString));
+      seu.a(set.a, paramString);
+    }
+  }
 }
 
 

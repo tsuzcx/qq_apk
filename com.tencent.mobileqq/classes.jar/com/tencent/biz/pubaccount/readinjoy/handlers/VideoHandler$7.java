@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
-import psf;
-import rtp;
+import qdc;
+import sge;
 
 public class VideoHandler$7
   implements Runnable
 {
-  public VideoHandler$7(psf parampsf) {}
+  public VideoHandler$7(qdc paramqdc) {}
   
   public void run()
   {
-    psf.a(this.this$0).a(false);
-    this.this$0.b(psf.a(this.this$0), 0);
+    qdc.a(this.this$0).a(false);
+    this.this$0.b(qdc.a(this.this$0), 0);
   }
 }
 

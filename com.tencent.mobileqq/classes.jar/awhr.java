@@ -1,57 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.1;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.2;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.3;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class awhr
-  implements Manager
 {
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean = true;
-  boolean b = true;
-  
-  public awhr(QQAppInterface paramQQAppInterface)
+  public static void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("NearbyGeneralConfig", 0);
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null)
-    {
-      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("Notify_on_like", true);
-      this.b = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_allow_nearby_like", true);
-    }
+    ThreadManager.post(new QQMusicPlayReport.2(paramInt1, paramInt2), 5, null, false);
   }
   
-  public void a(boolean paramBoolean)
+  public static void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("Notify_on_like", paramBoolean).commit();
-    }
+    ThreadManager.post(new QQMusicPlayReport.1(paramBoolean, paramInt), 5, null, false);
   }
   
-  public boolean a()
+  public static void b(boolean paramBoolean, int paramInt)
   {
-    return this.jdField_a_of_type_Boolean;
+    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, NetworkUtil.getNetworkType(null), paramInt), 5, null, false);
   }
-  
-  public void b(boolean paramBoolean)
-  {
-    if ((this.b != paramBoolean) && (this.jdField_a_of_type_AndroidContentSharedPreferences != null))
-    {
-      this.b = paramBoolean;
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_allow_nearby_like", paramBoolean).commit();
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public void onDestroy() {}
 }
 
 

@@ -1,101 +1,119 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.gaudio.AVObserver.1;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
 
 public class lmt
-  implements Observer
 {
-  public static final String TAG = "GAudioObserver";
-  Handler mHandler = null;
+  lmo jdField_a_of_type_Lmo = null;
+  lmu jdField_a_of_type_Lmu = null;
+  boolean jdField_a_of_type_Boolean = false;
   
-  protected void onAudioChatting(int paramInt, String paramString1, String paramString2) {}
-  
-  protected void onCallTimeUseUp(boolean paramBoolean, String paramString) {}
-  
-  protected void onGroupSecurityLimit(long paramLong1, int paramInt, long paramLong2, String paramString) {}
-  
-  protected void onManagerForbiddenOpenRoom(long paramLong1, int paramInt1, long paramLong2, int paramInt2) {}
-  
-  protected void onMeetingCancel(int paramInt, long paramLong) {}
-  
-  protected void onMeetingReady(int paramInt, long paramLong) {}
-  
-  protected void onMemberInfo(int paramInt, long paramLong1, long paramLong2) {}
-  
-  protected void onMemberJoin(int paramInt, long paramLong1, long paramLong2) {}
-  
-  protected void onMemberQuit(int paramInt, long paramLong1, long paramLong2) {}
-  
-  protected void onSmallScreenStateChange(String paramString) {}
-  
-  public void onUpdate(Object paramObject)
+  lmt()
   {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    switch (i)
-    {
-    default: 
-      int j = ((Integer)paramObject[1]).intValue();
-      long l1 = ((Long)paramObject[2]).longValue();
-      long l2 = ((Long)paramObject[3]).longValue();
-      if (QLog.isDevelopLevel()) {
-        QLog.w("GAudioObserver", 1, "onUpdate, relationType[" + j + "], discussId[" + l1 + "], memberUin[" + l2 + "], msg[" + i + "]");
-      }
-      onMemberInfo(j, l1, l2);
-      return;
-    case 21: 
-      onMemberInfo(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
-      return;
-    case 22: 
-      onMemberJoin(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
-      return;
-    case 23: 
-      onMemberQuit(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
-      return;
-    case 28: 
-      onAudioChatting(((Integer)paramObject[1]).intValue(), (String)paramObject[2], (String)paramObject[3]);
-      return;
-    case 29: 
-      onUpdateTime((String)paramObject[2], (String)paramObject[3]);
-      return;
-    case 32: 
-      i = ((Integer)paramObject[1]).intValue();
-      onManagerForbiddenOpenRoom(((Long)paramObject[2]).longValue(), i, ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue());
-      return;
-    case 33: 
-      i = ((Integer)paramObject[1]).intValue();
-      onGroupSecurityLimit(((Long)paramObject[2]).longValue(), i, ((Long)paramObject[3]).longValue(), (String)paramObject[4]);
-      return;
-    case 36: 
-      onMeetingReady(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
-      return;
-    case 37: 
-      onMeetingCancel(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
-      return;
-    case 408: 
-      onCallTimeUseUp(((Boolean)paramObject[1]).booleanValue(), (String)paramObject[2]);
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, "QavGPDownloader in QQAppInterface");
     }
-    onSmallScreenStateChange((String)paramObject[1]);
+    this.jdField_a_of_type_Lmu = new lmu();
   }
   
-  protected void onUpdateTime(String paramString1, String paramString2) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  static void a(int paramInt)
   {
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
-    {
-      if (this.mHandler == null) {
-        this.mHandler = new Handler(paramObservable);
-      }
-      this.mHandler.post(new AVObserver.1(this, paramObject));
-      return;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    Intent localIntent = new Intent("tencent.video.qavgameplaysomgr.notify");
+    localIntent.setPackage(localBaseApplicationImpl.getPackageName());
+    localIntent.putExtra("Event_Progress", paramInt);
+    localBaseApplicationImpl.sendBroadcast(localIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, "onEnterBackground");
     }
-    onUpdate(paramObject);
+    a();
+  }
+  
+  public static void a(String paramString)
+  {
+    if (lmp.a()) {
+      lmp.a().a.b(paramString);
+    }
+  }
+  
+  public static void a(lmo paramlmo)
+  {
+    SharedPreferences localSharedPreferences = lmw.a();
+    paramlmo = paramlmo.b;
+    localSharedPreferences.edit().putString("so_zip_md5", paramlmo).commit();
+  }
+  
+  public static boolean a()
+  {
+    return lmp.a().a.b();
+  }
+  
+  private boolean b()
+  {
+    QLog.d("QavGPDownloadManager", 4, "innerDownload, start");
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      if (((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_NET_ENGINE) == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QavGPDownloadManager", 4, "innerDownload, getNetEngine 为空");
+        }
+        return false;
+      }
+    }
+    else
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGPDownloadManager", 4, "appRuntime 不是 QQAppInterface");
+      }
+      return false;
+    }
+    if (this.jdField_a_of_type_Lmo == null) {
+      this.jdField_a_of_type_Lmo = lmo.a();
+    }
+    localObject = this.jdField_a_of_type_Lmo;
+    if (localObject == null)
+    {
+      QLog.d("QavGPDownloadManager", 2, "downloadInfo == null");
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    if (11 == lmw.a((lmo)localObject)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (bool)
+      {
+        QLog.d("QavGPDownloadManager", 2, "downloadTask.start");
+        return this.jdField_a_of_type_Lmu.a((lmo)localObject);
+      }
+      QLog.d("QavGPDownloadManager", 2, "bDownloading = false");
+      return bool;
+    }
+  }
+  
+  void b(String paramString)
+  {
+    lmo locallmo = null;
+    if (!TextUtils.isEmpty(paramString)) {
+      locallmo = lmo.a(paramString);
+    }
+    this.jdField_a_of_type_Lmo = locallmo;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QLog.d("QavGPDownloadManager", 1, "handle_QAG_QavGameplay_Config, mNeedDownloadAfterGetConfig == true");
+      this.jdField_a_of_type_Boolean = false;
+      a();
+    }
   }
 }
 

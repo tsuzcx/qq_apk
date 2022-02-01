@@ -1,45 +1,96 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.graphics.Color;
+import android.support.v4.view.PagerAdapter;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.PinnedDividerListView;
-import com.tencent.open.agent.FriendListOpenFrame;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bhse
-  extends Handler
+  extends PagerAdapter
 {
-  public bhse(FriendListOpenFrame paramFriendListOpenFrame) {}
+  private bhse(QQVipFeedWedFragment paramQQVipFeedWedFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    switch (paramMessage.what)
+    paramViewGroup.removeView((View)paramObject);
+  }
+  
+  public int getCount()
+  {
+    return QQVipFeedWedFragment.a(this.a).size() + 1;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    Object localObject;
+    if ((QQVipFeedWedFragment.a(this.a) == null) || (QQVipFeedWedFragment.a(this.a).size() == 0))
     {
+      localObject = this.a.a();
+      paramViewGroup.addView((View)localObject);
+      return localObject;
     }
-    for (;;)
+    if (paramInt < QQVipFeedWedFragment.a(this.a).size()) {}
+    for (QQVipMsgInfo localQQVipMsgInfo = (QQVipMsgInfo)QQVipFeedWedFragment.a(this.a).get(paramInt);; localQQVipMsgInfo = null)
     {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      return;
-      String str = paramMessage.getData().getString("url");
-      paramMessage = (Bitmap)paramMessage.obj;
-      int j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount();
-      int i = 0;
-      while (i < j)
+      bhsh localbhsh = bhsn.a(localQQVipMsgInfo, this.a.getActivity());
+      if (localbhsh == null) {
+        return null;
+      }
+      this.a.a.add(localbhsh);
+      RelativeLayout localRelativeLayout = new RelativeLayout(paramViewGroup.getContext());
+      if (((View)localbhsh).getParent() != null) {
+        ((ViewGroup)((View)localbhsh).getParent()).removeView((View)localbhsh);
+      }
+      RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
+      localLayoutParams2.addRule(13, ((View)localbhsh).getId());
+      TextView localTextView;
+      if (localQQVipMsgInfo != null)
       {
-        bhsg localbhsg = (bhsg)this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildAt(i).getTag();
-        if ((localbhsg != null) && (str.equals(localbhsg.b)))
-        {
-          localbhsg.a.setImageBitmap(paramMessage);
-          return;
+        localTextView = new TextView(this.a.getActivity());
+        localTextView.setTextColor(-1);
+        localTextView.setTextSize(1, 10.0F);
+        localTextView.setBackgroundColor(Color.parseColor("#FFD69D5A"));
+        localTextView.setText(bhid.a(this.a.getActivity(), 3, localQQVipMsgInfo.msgTime * 1000L));
+        localTextView.setPadding(12, 0, 12, 0);
+        localTextView.setId(2131378912);
+        RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
+        localObject = localLayoutParams1;
+        if (localLayoutParams1 == null) {
+          localObject = new RelativeLayout.LayoutParams(-2, AIOUtils.dp2px(14.0F, this.a.getResources()));
         }
-        i += 1;
+        localTextView.setGravity(17);
+        ((RelativeLayout.LayoutParams)localObject).topMargin = 25;
+        ((RelativeLayout.LayoutParams)localObject).addRule(14);
+        ((RelativeLayout.LayoutParams)localObject).addRule(10);
+        localTextView.bringToFront();
+      }
+      for (;;)
+      {
+        localRelativeLayout.addView((View)localbhsh, localLayoutParams2);
+        if ((localTextView != null) && (localObject != null)) {
+          localRelativeLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject);
+        }
+        paramViewGroup.addView(localRelativeLayout, localLayoutParams2);
+        if ((localbhsh != null) && (localQQVipMsgInfo != null)) {
+          localbhsh.a(localQQVipMsgInfo, this.a.getActivity(), paramInt);
+        }
+        return localRelativeLayout;
+        localTextView = null;
+        localObject = null;
       }
     }
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

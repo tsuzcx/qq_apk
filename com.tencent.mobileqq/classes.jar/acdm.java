@@ -1,26 +1,52 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Activity;
+import com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class acdm
-  implements abzb
+  implements acaq
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  
+  public acdm(GdtDemoMvFragment paramGdtDemoMvFragment, Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "handleC2COnlinePushMsg0x210Resp invoked. info: AIO story feed. msg0x210.uSubMsgType: " + paramMsgType0x210.uSubMsgType);
-    }
-    paramQQAppInterface = (vky)paramQQAppInterface.getManager(253);
-    long l = paramMsgInfo.lFromUin;
-    paramQQAppInterface.a(paramQQAppInterface.a(paramMsgType0x210.vProtobuf, String.valueOf(l)));
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    a(paramabxc.a(), paramMsgInfo, paramMsgType0x210);
-    return null;
+    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
+      return paramGdtAd.getAd().getAId();
+    }
+    return -2147483648L;
+  }
+  
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    GdtDemoMvFragment.a(this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtDemoMvFragment, paramGdtAd);
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, "demo数据构造成功", 0).a();
+    QLog.i("GdtDemoMvFragment", 1, String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    acam.a().a(paramGdtAd.getAd());
+  }
+  
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, acap paramacap)
+  {
+    QLog.e("GdtDemoMvFragment", 1, "onAdFailedToLoad " + paramacap.a());
+  }
+  
+  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("GdtDemoMvFragment", 1, String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("GdtDemoMvFragment", 1, String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("GdtDemoMvFragment", 1, String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
   }
 }
 

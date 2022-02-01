@@ -1,19 +1,16 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class ahhh
-  implements DialogInterface.OnClickListener
+public class ahhh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahhh(ahgz paramahgz) {}
+  public ahhh(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", "https://qun.qq.com/qqweb/m/nearby/charm_level/index.html?_wv=1027&_bid=2747");
-    this.a.mContext.startActivity(paramDialogInterface);
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.biz.game;
 
+import aady;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -23,13 +24,13 @@ import android.os.Message;
 import android.os.Vibrator;
 import android.provider.Settings.Secure;
 import android.text.TextUtils;
-import bgto;
-import bgve;
-import bgzm;
-import bgzu;
-import bhpc;
-import biaq;
-import bjnd;
+import bieg;
+import bifw;
+import bike;
+import bikm;
+import bizw;
+import bjls;
+import bkyp;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.pubaccount.CustomWebView;
@@ -51,32 +52,32 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import mqq.app.AppActivity;
-import nnf;
-import nny;
-import noe;
-import npn;
-import nqe;
-import nqi;
-import nqj;
-import nqk;
-import nql;
-import nqm;
-import nqn;
-import nqo;
-import nqp;
-import nqq;
-import nqr;
-import nqs;
+import nuf;
+import nuz;
+import nvf;
+import nwo;
+import nxf;
+import nxj;
+import nxk;
+import nxl;
+import nxm;
+import nxn;
+import nxo;
+import nxp;
+import nxq;
+import nxr;
+import nxs;
+import nxt;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zon;
 
 public class SensorAPIJavaScript
-  extends bgto
+  extends bieg
 {
-  public static nqe a;
+  public static nxf a;
   protected final byte a;
   protected final int a;
+  aady a;
   public Activity a;
   protected SensorManager a;
   protected MediaRecorder a;
@@ -86,17 +87,16 @@ public class SensorAPIJavaScript
   public String a;
   protected WeakReference<WebView> a;
   protected HashMap<String, Integer> a;
-  protected nqs a;
-  zon a;
+  protected nxt a;
   protected boolean a;
   protected final byte b;
   protected final int b;
   protected String b;
-  protected nqs b;
+  protected nxt b;
   protected boolean b;
   protected final byte c;
   protected final int c;
-  protected nqs c;
+  protected nxt c;
   protected boolean c;
   protected final int d = 291;
   protected final int e = 0;
@@ -118,7 +118,7 @@ public class SensorAPIJavaScript
     this.jdField_b_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_c_of_type_Int = 5;
-    this.jdField_a_of_type_Zon = null;
+    this.jdField_a_of_type_Aady = null;
   }
   
   private void a()
@@ -126,7 +126,7 @@ public class SensorAPIJavaScript
     if (Looper.myLooper() == null) {
       Looper.prepare();
     }
-    this.jdField_a_of_type_AndroidOsHandler = new nqm(this);
+    this.jdField_a_of_type_AndroidOsHandler = new nxn(this);
   }
   
   private void b(String paramString)
@@ -179,12 +179,12 @@ public class SensorAPIJavaScript
           paramString.put("systemName", "android");
           paramString.put("systemVersion", str5);
           paramString.put("isMobileQQ", true);
-          paramString.put("identifier", biaq.c());
+          paramString.put("identifier", bjls.c());
           paramString.put("fingerprint", str6);
           paramString.put("incremental", str7);
-          paramString.put("macAddress", biaq.a());
-          paramString.put("androidID", Settings.Secure.getString(bhpc.a().a().getContentResolver(), "android_id"));
-          paramString.put("imsi", biaq.d());
+          paramString.put("macAddress", bjls.a());
+          paramString.put("androidID", Settings.Secure.getString(bizw.a().a().getContentResolver(), "android_id"));
+          paramString.put("imsi", bjls.d());
           paramString.put("qimei", str1);
           paramString.put("totalMemory", String.valueOf(DeviceInfoUtil.getSystemTotalMemory()));
           paramString.put("availableMemory", String.valueOf(DeviceInfoUtil.getSystemAvaialbeMemory()));
@@ -208,17 +208,17 @@ public class SensorAPIJavaScript
     return "{}";
   }
   
-  public static nqe getMsfToWebViewConnector()
+  public static nxf getMsfToWebViewConnector()
   {
-    return jdField_a_of_type_Nqe;
+    return jdField_a_of_type_Nxf;
   }
   
-  public static void returnToAio(zon paramzon, Activity paramActivity, String paramString, boolean paramBoolean)
+  public static void returnToAio(aady paramaady, Activity paramActivity, String paramString, boolean paramBoolean)
   {
-    if (paramzon == null) {
+    if (paramaady == null) {
       return;
     }
-    paramzon.f(new nqo(paramActivity, paramBoolean, paramString));
+    paramaady.f(new nxp(paramActivity, paramBoolean, paramString));
   }
   
   /* Error */
@@ -562,7 +562,7 @@ public class SensorAPIJavaScript
   
   public void checkUpdate(String paramString1, String paramString2)
   {
-    nny.a(paramString1, this.mRuntime.a(), new nqq(this, paramString2), false);
+    nuz.a(paramString1, this.mRuntime.a(), new nxr(this, paramString2), false);
   }
   
   /* Error */
@@ -728,12 +728,12 @@ public class SensorAPIJavaScript
     paramString2.add(paramString1);
     paramString2 = new HashMap(paramString2.size());
     paramString2.put(paramString1, "0");
-    nny.a(this.mRuntime.a(), paramString2, new nqp(this, paramString4), true, true, false);
+    nuz.a(this.mRuntime.a(), paramString2, new nxq(this, paramString4), true, true, false);
   }
   
   public final String getClientInfo()
   {
-    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "4810" + "\"}";
+    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "4875" + "\"}";
   }
   
   public boolean getCurrentSong(String paramString)
@@ -750,7 +750,7 @@ public class SensorAPIJavaScript
           paramString = paramString.optString("callback");
           if (!TextUtils.isEmpty(paramString))
           {
-            this.jdField_a_of_type_Zon.a().c(new nql(this, paramString));
+            this.jdField_a_of_type_Aady.a().c(new nxm(this, paramString));
             return true;
           }
         }
@@ -850,7 +850,7 @@ public class SensorAPIJavaScript
           paramString = paramString.optString("callback");
           if (!TextUtils.isEmpty(paramString))
           {
-            this.jdField_a_of_type_Zon.a().b(new nqk(this, paramString));
+            this.jdField_a_of_type_Aady.a().b(new nxl(this, paramString));
             return true;
           }
         }
@@ -878,7 +878,7 @@ public class SensorAPIJavaScript
           paramString = paramString.optString("callback");
           if (!TextUtils.isEmpty(paramString))
           {
-            this.jdField_a_of_type_Zon.a().a(new nqj(this, paramString));
+            this.jdField_a_of_type_Aady.a().a(new nxk(this, paramString));
             return true;
           }
         }
@@ -909,7 +909,7 @@ public class SensorAPIJavaScript
     if (TextUtils.isEmpty(paramString2)) {
       return;
     }
-    paramString1 = nny.a(paramString1);
+    paramString1 = nuz.a(paramString1);
     if (TextUtils.isEmpty(paramString1))
     {
       callJs(paramString2, new String[] { "-1" });
@@ -935,7 +935,7 @@ public class SensorAPIJavaScript
     }
     for (;;)
     {
-      callJs(this.jdField_a_of_type_JavaLangString, new String[] { Integer.toString(paramInt), npn.a(str) });
+      callJs(this.jdField_a_of_type_JavaLangString, new String[] { Integer.toString(paramInt), nwo.a(str) });
       return true;
       if (paramInt == 1)
       {
@@ -990,8 +990,8 @@ public class SensorAPIJavaScript
     if (this.mRuntime.a() != null) {
       this.jdField_b_of_type_JavaLangString = this.mRuntime.a().getCurrentAccountUin();
     }
-    this.jdField_a_of_type_Zon = zon.a();
-    this.jdField_a_of_type_Zon.a();
+    this.jdField_a_of_type_Aady = aady.a();
+    this.jdField_a_of_type_Aady.a();
   }
   
   public void onDestroy()
@@ -1032,10 +1032,10 @@ public class SensorAPIJavaScript
           paramString2.putExtra("startOpenPageTime", System.currentTimeMillis());
           paramString2.setFlags(0);
           paramString1 = this.mRuntime.a(this.mRuntime.a());
-          if ((paramString1 != null) && ((paramString1 instanceof bgzu)))
+          if ((paramString1 != null) && ((paramString1 instanceof bikm)))
           {
-            paramString1 = ((bgzu)paramString1).getCurrentUrl();
-            if ((!TextUtils.isEmpty(paramString1)) && (paramString1.contains("closeSpecialLogic")) && (bjnd.a(bjnd.a(paramString1), "closeSpecialLogic", 0) != 0)) {
+            paramString1 = ((bikm)paramString1).getCurrentUrl();
+            if ((!TextUtils.isEmpty(paramString1)) && (paramString1.contains("closeSpecialLogic")) && (bkyp.a(bkyp.a(paramString1), "closeSpecialLogic", 0) != 0)) {
               this.jdField_a_of_type_Boolean = true;
             }
           }
@@ -1085,7 +1085,7 @@ public class SensorAPIJavaScript
   
   public boolean pausePlayMusic()
   {
-    this.jdField_a_of_type_Zon.a().a();
+    this.jdField_a_of_type_Aady.a().a();
     return true;
   }
   
@@ -1136,7 +1136,7 @@ public class SensorAPIJavaScript
         }
       } while (!preloadVoice(paramString1, paramString2, null));
       if (Build.VERSION.SDK_INT >= 8) {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new nqn(this, paramString2));
+        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new nxo(this, paramString2));
       }
       int m;
       do
@@ -1165,7 +1165,7 @@ public class SensorAPIJavaScript
     }
     new StringBuilder().append(Environment.getExternalStorageDirectory().getAbsolutePath()).append(File.separator).toString();
     paramString3 = new StringBuilder();
-    paramString3.append(noe.b());
+    paramString3.append(nvf.b());
     paramString3.append(paramString1);
     paramString3.append('/');
     String str = Uri.parse(paramString2).getScheme();
@@ -1206,7 +1206,7 @@ public class SensorAPIJavaScript
     try
     {
       Object localObject = this.mRuntime.a(this.mRuntime.a());
-      if ((localObject != null) && ((localObject instanceof bgzm))) {
+      if ((localObject != null) && ((localObject instanceof bike))) {
         return this.jdField_a_of_type_AndroidAppActivity.getPackageManager().getPackageInfo("com.tencent.mobileqq", 0).versionName;
       }
       localObject = this.jdField_a_of_type_AndroidAppActivity.getPackageManager().getPackageInfo(this.jdField_a_of_type_AndroidAppActivity.getPackageName(), 0).versionName;
@@ -1237,10 +1237,10 @@ public class SensorAPIJavaScript
       this.jdField_a_of_type_AndroidMediaSoundPool.release();
       this.jdField_a_of_type_AndroidMediaSoundPool = null;
     }
-    if (jdField_a_of_type_Nqe != null)
+    if (jdField_a_of_type_Nxf != null)
     {
-      jdField_a_of_type_Nqe.a();
-      jdField_a_of_type_Nqe = null;
+      jdField_a_of_type_Nxf.a();
+      jdField_a_of_type_Nxf = null;
     }
     stopAccelerometer();
     stopCompass();
@@ -1249,15 +1249,15 @@ public class SensorAPIJavaScript
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
       this.jdField_a_of_type_JavaLangRefWeakReference.clear();
     }
-    if (this.jdField_a_of_type_Zon != null) {
-      this.jdField_a_of_type_Zon.b();
+    if (this.jdField_a_of_type_Aady != null) {
+      this.jdField_a_of_type_Aady.b();
     }
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
   }
   
   public boolean resumePlayMusic()
   {
-    this.jdField_a_of_type_Zon.a().b();
+    this.jdField_a_of_type_Aady.a().b();
     return true;
   }
   
@@ -1276,7 +1276,7 @@ public class SensorAPIJavaScript
         QLog.i("SensorAPIJavaScript", 2, String.format("returnToAIO mBrowserActivity=[%s]", new Object[] { this.jdField_a_of_type_AndroidAppActivity }));
       }
       return;
-      returnToAio(this.jdField_a_of_type_Zon, this.jdField_a_of_type_AndroidAppActivity, "", false);
+      returnToAio(this.jdField_a_of_type_Aady, this.jdField_a_of_type_AndroidAppActivity, "", false);
     }
   }
   
@@ -1317,7 +1317,7 @@ public class SensorAPIJavaScript
           int m = paramString.optInt("mode", -1);
           if (m != -1)
           {
-            this.jdField_a_of_type_Zon.a().a(m);
+            this.jdField_a_of_type_Aady.a().a(m);
             return true;
           }
         }
@@ -1340,11 +1340,11 @@ public class SensorAPIJavaScript
     if (((List)localObject).size() > 0)
     {
       localObject = (Sensor)((List)localObject).get(0);
-      if (this.jdField_a_of_type_Nqs != null) {
+      if (this.jdField_a_of_type_Nxt != null) {
         stopAccelerometer();
       }
-      this.jdField_a_of_type_Nqs = new nqs(this, (byte)0, paramString);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Nqs, (Sensor)localObject, 0);
+      this.jdField_a_of_type_Nxt = new nxt(this, (byte)0, paramString);
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Nxt, (Sensor)localObject, 0);
       return;
     }
     callJs(paramString, new String[] { "false" });
@@ -1359,11 +1359,11 @@ public class SensorAPIJavaScript
     if (((List)localObject).size() > 0)
     {
       localObject = (Sensor)((List)localObject).get(0);
-      if (this.jdField_c_of_type_Nqs != null) {
+      if (this.jdField_c_of_type_Nxt != null) {
         stopCompass();
       }
-      this.jdField_c_of_type_Nqs = new nqs(this, (byte)2, paramString);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_c_of_type_Nqs, (Sensor)localObject, 0);
+      this.jdField_c_of_type_Nxt = new nxt(this, (byte)2, paramString);
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_c_of_type_Nxt, (Sensor)localObject, 0);
       return;
     }
     callJs(paramString, new String[] { "false" });
@@ -1378,11 +1378,11 @@ public class SensorAPIJavaScript
     if (((List)localObject).size() > 0)
     {
       localObject = (Sensor)((List)localObject).get(0);
-      if (this.jdField_b_of_type_Nqs != null) {
+      if (this.jdField_b_of_type_Nxt != null) {
         stopLight();
       }
-      this.jdField_b_of_type_Nqs = new nqs(this, (byte)1, paramString);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_b_of_type_Nqs, (Sensor)localObject, 0);
+      this.jdField_b_of_type_Nxt = new nxt(this, (byte)1, paramString);
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_b_of_type_Nxt, (Sensor)localObject, 0);
       return;
     }
     callJs(paramString, new String[] { "false" });
@@ -1397,7 +1397,7 @@ public class SensorAPIJavaScript
     }
     if ((this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity))
     {
-      ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new nqi(this, paramString), 1, new String[] { "android.permission.RECORD_AUDIO" });
+      ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new nxj(this, paramString), 1, new String[] { "android.permission.RECORD_AUDIO" });
       return;
     }
     callJs(paramString, new String[] { "false", "{result: -1, msg: 'no record activity'}" });
@@ -1411,7 +1411,7 @@ public class SensorAPIJavaScript
     try
     {
       new JSONObject(paramString);
-      this.jdField_a_of_type_Zon.a().a(paramString);
+      this.jdField_a_of_type_Aady.a().a(paramString);
       return true;
     }
     catch (JSONException localJSONException)
@@ -1426,8 +1426,8 @@ public class SensorAPIJavaScript
   
   public void startSyncData(String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_Nqe == null) {
-      jdField_a_of_type_Nqe = new nqe();
+    if (jdField_a_of_type_Nxf == null) {
+      jdField_a_of_type_Nxf = new nxf();
     }
     AppInterface localAppInterface = this.mRuntime.a();
     if (localAppInterface == null)
@@ -1437,33 +1437,33 @@ public class SensorAPIJavaScript
       }
       return;
     }
-    jdField_a_of_type_Nqe.a(paramString1, paramString2, localAppInterface, this.jdField_a_of_type_AndroidAppActivity, new nqr(this));
+    jdField_a_of_type_Nxf.a(paramString1, paramString2, localAppInterface, this.jdField_a_of_type_AndroidAppActivity, new nxs(this));
   }
   
   public final void stopAccelerometer()
   {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_a_of_type_Nqs != null))
+    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_a_of_type_Nxt != null))
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Nqs);
-      this.jdField_a_of_type_Nqs = null;
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Nxt);
+      this.jdField_a_of_type_Nxt = null;
     }
   }
   
   public void stopCompass()
   {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_c_of_type_Nqs != null))
+    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_c_of_type_Nxt != null))
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_c_of_type_Nqs);
-      this.jdField_c_of_type_Nqs = null;
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_c_of_type_Nxt);
+      this.jdField_c_of_type_Nxt = null;
     }
   }
   
   public final void stopLight()
   {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_b_of_type_Nqs != null))
+    if ((this.jdField_a_of_type_AndroidHardwareSensorManager != null) && (this.jdField_b_of_type_Nxt != null))
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_b_of_type_Nqs);
-      this.jdField_b_of_type_Nqs = null;
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_b_of_type_Nxt);
+      this.jdField_b_of_type_Nxt = null;
     }
   }
   
@@ -1480,16 +1480,16 @@ public class SensorAPIJavaScript
   
   public boolean stopPlayMusic()
   {
-    this.jdField_a_of_type_Zon.a().c();
+    this.jdField_a_of_type_Aady.a().c();
     return true;
   }
   
   public void stopSyncData()
   {
-    if (jdField_a_of_type_Nqe != null) {
-      jdField_a_of_type_Nqe.a();
+    if (jdField_a_of_type_Nxf != null) {
+      jdField_a_of_type_Nxf.a();
     }
-    jdField_a_of_type_Nqe = null;
+    jdField_a_of_type_Nxf = null;
   }
   
   public final String systemName()

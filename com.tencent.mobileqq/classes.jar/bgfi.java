@@ -1,23 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
-import eipc.EIPCResult;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class bgfi
-  implements bgfg
+  extends ReportDialog
 {
-  public bgfi(QuickUpdateIPCModule paramQuickUpdateIPCModule, int paramInt) {}
+  private static String a = "https://sola.gtimg.cn/aoi/sola/20200515111445_ChpLurYZBA.png";
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public bgfi(Context paramContext)
   {
-    QuickUpdateIPCModule.Params localParams = new QuickUpdateIPCModule.Params(null);
-    localParams.intVal = paramInt;
-    localParams.strVal1 = paramString1;
-    localParams.strVal2 = paramString2;
-    paramString1 = new Bundle();
-    paramString1.putSerializable("params", localParams);
-    paramString1 = EIPCResult.createResult(0, paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqVasQuickUpdateIPCModule.callbackResult(this.jdField_a_of_type_Int, paramString1);
+    super(paramContext, 2131755174);
+    a();
+  }
+  
+  private void a()
+  {
+    setCancelable(false);
+    setCanceledOnTouchOutside(false);
+    setContentView(2131559048);
+    Object localObject1 = (URLImageView)findViewById(2131368501);
+    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#FFEBEDF5"));
+    ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localColorDrawable;
+    ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localColorDrawable;
+    ((URLImageView)localObject1).setBackgroundDrawable(URLDrawable.getDrawable(a, (URLDrawable.URLDrawableOptions)localObject2));
+    localObject1 = (TextView)findViewById(2131369736);
+    ((TextView)localObject1).setClickable(true);
+    localObject2 = new GradientDrawable();
+    ((GradientDrawable)localObject2).setCornerRadius(12.0F);
+    ((GradientDrawable)localObject2).setColor(-1315339);
+    ((TextView)localObject1).setBackgroundDrawable((Drawable)localObject2);
+    ((TextView)localObject1).setOnClickListener(new bgfj(this));
   }
 }
 

@@ -1,27 +1,26 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.game.WebGameFakeView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class amtj
+  implements View.OnClickListener
 {
-  public static BaseApplicationImpl a = BaseApplicationImpl.sApplication;
+  public amtj(WebGameFakeView paramWebGameFakeView, ImageView paramImageView) {}
   
-  public static String a(int paramInt)
+  public void onClick(View paramView)
   {
-    try
-    {
-      String str = a.getResources().getString(paramInt);
-      return str;
+    amsm.a().a(null);
+    if (amsm.a().a() <= 1) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return "";
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtj
  * JD-Core Version:    0.7.0.1
  */

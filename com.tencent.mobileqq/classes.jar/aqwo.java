@@ -1,329 +1,294 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.doutu.DoutuData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.Cryptor;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.cs.doutu.Doutu.GetImgInfoReq;
-import tencent.im.cs.doutu.Doutu.GetImgInfoRsp;
-import tencent.im.cs.doutu.Doutu.ImgInfo;
-import tencent.im.cs.doutu.Doutu.ReqBody;
-import tencent.im.cs.doutu.Doutu.RspBody;
-import tencent.im.cs.doutu.DoutuRecommend.GetImgInfoReq;
-import tencent.im.cs.doutu.DoutuRecommend.GetImgInfoRsp;
-import tencent.im.cs.doutu.DoutuRecommend.ImgInfo;
-import tencent.im.cs.doutu.DoutuRecommend.ReqBody;
-import tencent.im.cs.doutu.DoutuRecommend.RspBody;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class aqwo
-  extends MSFServlet
 {
-  public List<DoutuData> a(List<DoutuRecommend.ImgInfo> paramList)
+  public static HashMap<String, String> a(String paramString)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    HashMap localHashMap = new HashMap();
+    try
     {
-      DoutuRecommend.ImgInfo localImgInfo = (DoutuRecommend.ImgInfo)paramList.next();
-      DoutuData localDoutuData = new DoutuData();
-      localDoutuData.pic_md5 = localImgInfo.bytes_pic_md5.get().toStringUtf8();
-      localDoutuData.pic_size = localImgInfo.uint64_pic_size.get();
-      localDoutuData.pic_height = localImgInfo.uint32_pic_height.get();
-      localDoutuData.pic_width = localImgInfo.uint32_pic_width.get();
-      localDoutuData.pic_down_url = localImgInfo.bytes_pic_down_url.get().toStringUtf8();
-      localDoutuData.thumb_md5 = localImgInfo.bytes_thumb_file_md5.get().toStringUtf8().toUpperCase();
-      localDoutuData.thumb_size = localImgInfo.uint64_thumb_size.get();
-      localDoutuData.thumb_height = localImgInfo.uint32_thumb_height.get();
-      localDoutuData.thumb_width = localImgInfo.uint32_thumb_width.get();
-      localDoutuData.thumb_down_url = localImgInfo.bytes_thumb_down_url.get().toStringUtf8();
-      localDoutuData.suppliers_name = localImgInfo.bytes_source_name.get().toStringUtf8();
-      localArrayList.add(localDoutuData);
+      a(localHashMap, DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + paramString).getBytes())).getDocumentElement().getChildNodes());
+      return localHashMap;
     }
-    return localArrayList;
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  public List<DoutuData> a(List<Doutu.ImgInfo> paramList, int paramInt)
+  private static void a(int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    paramArrayOfByte = new Cryptor().decrypt(paramArrayOfByte, a());
+    switch (paramInt)
     {
-      Doutu.ImgInfo localImgInfo = (Doutu.ImgInfo)paramList.next();
-      DoutuData localDoutuData = new DoutuData();
-      localDoutuData.pic_md5 = localImgInfo.bytes_pic_md5.get().toStringUtf8();
-      localDoutuData.pic_size = localImgInfo.uint64_pic_size.get();
-      localDoutuData.pic_height = localImgInfo.uint32_pic_height.get();
-      localDoutuData.pic_width = localImgInfo.uint32_pic_width.get();
-      localDoutuData.pic_down_url = localImgInfo.bytes_pic_down_url.get().toStringUtf8();
-      localDoutuData.thumb_md5 = localImgInfo.bytes_thumb_file_md5.get().toStringUtf8().toUpperCase();
-      localDoutuData.thumb_size = localImgInfo.uint64_thumb_size.get();
-      localDoutuData.thumb_height = localImgInfo.uint32_thumb_height.get();
-      localDoutuData.thumb_width = localImgInfo.uint32_thumb_width.get();
-      localDoutuData.thumb_down_url = localImgInfo.bytes_thumb_down_url.get().toStringUtf8();
-      localDoutuData.suppliers_name = localImgInfo.bytes_source_name.get().toStringUtf8();
-      if (paramInt > 0) {
-        localDoutuData.pic_type = paramInt;
-      }
-      localArrayList.add(localDoutuData);
-    }
-    return localArrayList;
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    int j = paramIntent.getIntExtra("KEY_CMD", -1);
-    long l = paramIntent.getLongExtra("key_sequence", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.i("DoutuServlet", 2, "onReceive, cmd = " + j + ", key:" + l);
-    }
-    boolean bool;
-    if (paramFromServiceMsg == null)
-    {
-      bool = false;
-      paramIntent = (aqwg)getAppRuntime().getManager(214);
-      if (!bool) {
-        break label505;
-      }
-    }
-    label616:
-    for (;;)
-    {
-      try
-      {
-        localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
-        ((ByteBuffer)localObject).get(paramFromServiceMsg);
-        switch (j)
-        {
-        case 2: 
-        case 3: 
-        case 4: 
-        default: 
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramIntent)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("DoutuServlet", 2, paramIntent, new Object[0]);
-        return;
-      }
-      bool = paramFromServiceMsg.isSuccess();
-      break;
-      Object localObject = new Doutu.RspBody();
-      ((Doutu.RspBody)localObject).mergeFrom(paramFromServiceMsg);
-      paramFromServiceMsg = (Doutu.GetImgInfoRsp)((Doutu.RspBody)localObject).msg_get_imginfo_rsp.get();
-      int i = paramFromServiceMsg.int32_result.get();
-      if (i == 0)
-      {
-        localObject = paramFromServiceMsg.rpt_msg_img_info.get();
-        if ((localObject == null) || (((List)localObject).size() == 0))
-        {
-          if (paramIntent != null) {
-            paramIntent.a(false, null);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("DoutuServlet", 2, "onReceive: rpt_msg_img_info is null");
-          }
-        }
-        else
-        {
-          paramIntent.a(true, a((List)localObject, paramFromServiceMsg.uint32_rsp_type.get()));
-        }
-      }
-      else
-      {
-        if (paramIntent != null) {
-          paramIntent.a(false, null);
-        }
-        paramFromServiceMsg = paramFromServiceMsg.bytes_fail_msg.get().toStringUtf8();
-        paramIntent = paramFromServiceMsg;
-        if (paramFromServiceMsg == null) {
-          paramIntent = "null";
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.i("DoutuServlet", 2, "onReceive : Failed ! result = " + i + ", errMsg = " + paramIntent);
-          return;
-          localObject = new DoutuRecommend.RspBody();
-          ((DoutuRecommend.RspBody)localObject).mergeFrom(paramFromServiceMsg);
-          paramFromServiceMsg = (DoutuRecommend.GetImgInfoRsp)((DoutuRecommend.RspBody)localObject).msg_get_imginfo_rsp.get();
-          i = paramFromServiceMsg.int32_result.get();
-          if (i == 0)
-          {
-            paramIntent.a(true, a(paramFromServiceMsg.rpt_msg_img_info.get()), l);
-            return;
-          }
-          if (paramIntent != null) {
-            paramIntent.a(false, null, l);
-          }
-          paramIntent = paramFromServiceMsg.bytes_fail_msg.get().toStringUtf8();
-          if (QLog.isColorLevel())
-          {
-            QLog.i("DoutuServlet", 2, "onReceive recommend Failed result:" + i + ", errMsg:" + paramIntent);
-            return;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("DoutuServlet", 2, "onReceive CMD_REPORT_NEW  success .");
-              return;
-              label505:
-              if (paramFromServiceMsg == null)
-              {
-                i = -1;
-                switch (j)
-                {
-                }
-              }
-              for (;;)
-              {
-                if (!QLog.isColorLevel()) {
-                  break label616;
-                }
-                QLog.i("DoutuServlet", 2, "onReceive : Failed, errCode:" + i + ", cmd:" + j);
-                return;
-                i = paramFromServiceMsg.getResultCode();
-                break;
-                if (paramIntent != null)
-                {
-                  paramIntent.a(false, null);
-                  continue;
-                  if (paramIntent != null) {
-                    paramIntent.a(l);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    int i = paramIntent.getIntExtra("KEY_CMD", -1);
-    Object localObject3 = null;
-    Object localObject4 = null;
-    Object localObject1 = localObject4;
-    Object localObject2 = localObject3;
-    switch (i)
-    {
+    case 3: 
     default: 
-      localObject2 = localObject3;
-      localObject1 = localObject4;
+    case 4: 
+      do
+      {
+        return;
+        paramString = aqwk.a();
+      } while (paramString == null);
+      a(paramString.a, paramArrayOfByte);
+      return;
+    case 24: 
+      aqwk.a.b();
+      aqwk.a.a(false);
+      a(aqwk.a, paramArrayOfByte, paramString);
+      return;
+    }
+    aqwk.b.b();
+    aqwk.b.a(false);
+    a(aqwk.b, paramArrayOfByte);
+  }
+  
+  private static void a(aqwn paramaqwn, byte[] paramArrayOfByte)
+  {
+    int i = PkgTools.getShortData(paramArrayOfByte, 0);
+    paramaqwn.jdField_a_of_type_JavaLangString = PkgTools.getUTFString(paramArrayOfByte, 2, i);
+    i += 2;
+    paramaqwn.jdField_a_of_type_Byte = paramArrayOfByte[i];
+    i += 1;
+    paramaqwn.jdField_b_of_type_Byte = paramArrayOfByte[i];
+    int j = i + 1;
+    i = PkgTools.getShortData(paramArrayOfByte, j);
+    j += 2;
+    paramaqwn.jdField_b_of_type_JavaLangString = PkgTools.getUTFString(paramArrayOfByte, j, i);
+  }
+  
+  private static void a(aqwp paramaqwp) {}
+  
+  private static void a(aqwp paramaqwp, String paramString)
+  {
+    int k = 2;
+    int m = 0;
+    int n = PkgTools.getShortData(paramaqwp.jdField_a_of_type_ArrayOfByte, 0);
+    int i = m;
+    int j = k;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ShanPing", 2, "config-huibao--decode---confighParse--itemNum = " + n);
+      j = k;
+      i = m;
+    }
+    while (i < n)
+    {
+      k = PkgTools.getShortData(paramaqwp.jdField_a_of_type_ArrayOfByte, j);
+      m = j + 2;
+      j = PkgTools.getShortData(paramaqwp.jdField_a_of_type_ArrayOfByte, m);
+      m += 2;
+      byte[] arrayOfByte = new byte[j];
+      PkgTools.getBytesData(paramaqwp.jdField_a_of_type_ArrayOfByte, m, arrayOfByte, j);
+      j = m + j;
+      a(k, arrayOfByte, paramString);
+      i += 1;
+    }
+    paramaqwp = aqwk.a();
+    if (paramaqwp != null) {
+      paramaqwp.c();
+    }
+  }
+  
+  private static void a(arpt paramarpt, byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShanPing", 2, "config-huibao--decode---confighParse--buildItem_FlashLogo = ");
+    }
+    paramarpt.jdField_a_of_type_Long = PkgTools.getLongData(paramArrayOfByte, 0);
+    paramarpt.b = (PkgTools.getLongData(paramArrayOfByte, 4) * 1000L);
+    paramarpt.c = (PkgTools.getLongData(paramArrayOfByte, 8) * 1000L);
+    int k = paramArrayOfByte[12];
+    int m;
+    int n;
+    for (int j = 13; i < k; j = n + m)
+    {
+      long l = PkgTools.getLongData(paramArrayOfByte, j);
+      m = j + 4;
+      j = paramArrayOfByte[m];
+      n = m + 1 + 1;
+      m = PkgTools.getShortData(paramArrayOfByte, n);
+      n += 2;
+      String str1 = PkgTools.getUTFString(paramArrayOfByte, n, m);
+      n += m;
+      m = PkgTools.getShortData(paramArrayOfByte, n);
+      n += 2;
+      String str2 = PkgTools.getUTFString(paramArrayOfByte, n, m);
+      if (j == 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShanPing", 2, "flashlogo desc= " + str1 + " src addr = " + str2);
+        }
+        str2 = paramarpt.a(str1, (byte)3);
+        paramarpt.b(str2);
+        paramarpt.a(paramarpt.a(l, str1, str2, null, ""));
+      }
+      i += 1;
+    }
+  }
+  
+  private static void a(arpt paramarpt, byte[] paramArrayOfByte, String paramString)
+  {
+    paramarpt.jdField_a_of_type_Long = PkgTools.getLongData(paramArrayOfByte, 0);
+    paramarpt.b = (PkgTools.getLongData(paramArrayOfByte, 4) * 1000L);
+    paramarpt.c = (PkgTools.getLongData(paramArrayOfByte, 8) * 1000L);
+    int k = paramArrayOfByte[12];
+    int j = 13;
+    if (k > 0)
+    {
+      paramarpt.c();
+      BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + paramString, true).commit();
+    }
+    int i = 0;
+    while (i < k)
+    {
+      long l1 = PkgTools.getLongData(paramArrayOfByte, j);
+      int m = j + 4;
+      j = paramArrayOfByte[m];
+      m = m + 1 + 1;
+      long l2 = PkgTools.getLongData(paramArrayOfByte, m);
+      int n = m + 4;
+      m = PkgTools.getShortData(paramArrayOfByte, n);
+      int i1 = n + 2;
+      n = PkgTools.getShortData(paramArrayOfByte, i1);
+      i1 += 2;
+      paramString = PkgTools.getUTFString(paramArrayOfByte, i1, n);
+      i1 += n;
+      n = PkgTools.getShortData(paramArrayOfByte, i1);
+      i1 += 2;
+      String str2 = PkgTools.getUTFString(paramArrayOfByte, i1, n);
+      i1 += n;
+      n = PkgTools.getShortData(paramArrayOfByte, i1);
+      i1 += 2;
+      String str1 = PkgTools.getUTFString(paramArrayOfByte, i1, n);
+      if (j == 1)
+      {
+        str2 = paramarpt.a(str2, (byte)3);
+        if (!a(String.valueOf(l1))) {
+          paramarpt.b(str2);
+        }
+        paramarpt.a(paramarpt.a(l1, paramString, str2, str1, BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/ADPic/" + l1, "" + l2, (short)m));
+      }
+      i += 1;
+      j = n + i1;
+    }
+  }
+  
+  private static void a(HashMap<String, String> paramHashMap, NodeList paramNodeList)
+  {
+    if ((paramNodeList == null) || (paramNodeList.getLength() == 0)) {
+      return;
+    }
+    int i = 0;
+    label16:
+    Node localNode;
+    if (i < paramNodeList.getLength())
+    {
+      localNode = paramNodeList.item(i);
+      if (!(localNode instanceof Element)) {
+        break label67;
+      }
+      if (localNode.hasChildNodes()) {
+        a(paramHashMap, localNode.getChildNodes());
+      }
     }
     for (;;)
     {
-      if ((localObject2 != null) && (localObject1 != null))
-      {
-        paramPacket.setSSOCommand((String)localObject2);
-        paramPacket.putSendData((byte[])localObject1);
+      i += 1;
+      break label16;
+      break;
+      label67:
+      if (localNode.getParentNode() != null) {
+        paramHashMap.put(localNode.getParentNode().getNodeName(), localNode.getNodeValue());
       }
-      while (!QLog.isColorLevel())
-      {
-        return;
-        localObject1 = new Doutu.GetImgInfoReq();
-        long l1 = paramIntent.getLongExtra("KEY_SRC_UIN", 0L);
-        i = paramIntent.getByteExtra("KEY_AGE", (byte)0);
-        int j = paramIntent.getShortExtra("key_gender", (short)0);
-        ((Doutu.GetImgInfoReq)localObject1).uint64_src_uin.set(l1);
-        ((Doutu.GetImgInfoReq)localObject1).uint32_age.set(i);
-        ((Doutu.GetImgInfoReq)localObject1).uint32_src_term.set(2);
-        ((Doutu.GetImgInfoReq)localObject1).uin32_gender.set(j);
-        if (QLog.isColorLevel()) {
-          QLog.i("DoutuServlet", 2, "onSend, CMD_DOU_TU , src_uin = " + l1 + ", age = " + i + ", gender:" + j);
-        }
-        paramIntent = new Doutu.ReqBody();
-        paramIntent.msg_get_imginfo_req.set((MessageMicro)localObject1);
-        localObject2 = "ImageFight.GetInfo";
-        localObject1 = bgau.a(paramIntent.toByteArray());
-        break;
-        localObject1 = new DoutuRecommend.GetImgInfoReq();
-        l1 = paramIntent.getLongExtra("KEY_SRC_UIN", 0L);
-        long l2 = paramIntent.getLongExtra("KEY_TO_UIN", 0L);
-        localObject2 = paramIntent.getStringExtra("KEY_MD5");
-        i = paramIntent.getByteExtra("KEY_AGE", (byte)0);
-        j = paramIntent.getShortExtra("key_gender", (short)0);
-        localObject3 = paramIntent.getStringExtra("key_url");
-        int k = paramIntent.getIntExtra("KEY_SESSION_TYPE", 0);
-        if (QLog.isColorLevel()) {
-          QLog.i("DoutuServlet", 2, "onSend,CMD_RECOMMEND, srcUin1:" + l1 + ", md5Str:" + (String)localObject2 + ", age = " + i + ", gender:" + j);
-        }
-        ((DoutuRecommend.GetImgInfoReq)localObject1).uint64_src_uin.set(l1);
-        ((DoutuRecommend.GetImgInfoReq)localObject1).uint64_to_uin.set(l2);
-        ((DoutuRecommend.GetImgInfoReq)localObject1).uint32_src_term.set(2);
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          ((DoutuRecommend.GetImgInfoReq)localObject1).bytes_md5.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
-        }
-        if (k == 1) {
-          ((DoutuRecommend.GetImgInfoReq)localObject1).chat_type.set(1);
-        }
-        for (;;)
-        {
-          if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-            ((DoutuRecommend.GetImgInfoReq)localObject1).bytes_url.set(ByteStringMicro.copyFrom(((String)localObject3).getBytes()));
-          }
-          ((DoutuRecommend.GetImgInfoReq)localObject1).uin32_gender.set(j);
-          ((DoutuRecommend.GetImgInfoReq)localObject1).uint32_age.set(i);
-          paramIntent = new DoutuRecommend.ReqBody();
-          paramIntent.msg_get_imginfo_req.set((MessageMicro)localObject1);
-          localObject2 = "ImageFightRecSvc.GetImage";
-          localObject1 = bgau.a(paramIntent.toByteArray());
-          paramPacket.setTimeout(3000L);
-          break;
-          if (k == 2) {
-            ((DoutuRecommend.GetImgInfoReq)localObject1).chat_type.set(2);
-          } else {
-            ((DoutuRecommend.GetImgInfoReq)localObject1).chat_type.set(255);
-          }
-        }
-        localObject1 = bgau.a(paramIntent.getStringExtra("key_report_content").getBytes());
-        if (!QLog.isColorLevel()) {
-          break label676;
-        }
-        localObject2 = paramIntent.getStringExtra("key_report_content");
-        localObject3 = new StringBuilder().append("onSend,CMD_REPORT_NEW, REPORT_CONTENT :");
-        paramIntent = (Intent)localObject2;
-        if (localObject2 == null) {
-          paramIntent = "null";
-        }
-        QLog.d("DoutuServlet", 2, paramIntent);
-        localObject2 = "MQInference.CommonReport";
-        break;
-      }
-      QLog.e("DoutuServlet", 2, "exception request!");
-      return;
-      label676:
-      localObject2 = "MQInference.CommonReport";
     }
+  }
+  
+  private static void a(byte[] paramArrayOfByte, aqwp paramaqwp)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 11)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfByte[0] == 2)
+      {
+        paramaqwp.b = PkgTools.getShortData(paramArrayOfByte, 1);
+        paramaqwp.jdField_a_of_type_Short = PkgTools.getShortData(paramArrayOfByte, 3);
+        paramaqwp.jdField_a_of_type_Long = (PkgTools.getLongData(paramArrayOfByte, 5) * 1000L);
+        paramaqwp.jdField_a_of_type_Byte = paramArrayOfByte[9];
+        int i = paramArrayOfByte.length - 10 - 1;
+        if (paramaqwp.jdField_a_of_type_Byte == 0)
+        {
+          paramaqwp.jdField_a_of_type_ArrayOfByte = new byte[i];
+          PkgTools.getBytesData(paramArrayOfByte, 10, paramaqwp.jdField_a_of_type_ArrayOfByte, i);
+        }
+        while (paramArrayOfByte.length != i + 10 + 1)
+        {
+          return;
+          paramaqwp.jdField_a_of_type_JavaLangString = PkgTools.getUTFString(paramArrayOfByte, 10, i);
+        }
+      }
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return new File(BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/ADPic/" + paramString).exists();
+  }
+  
+  public static boolean a(byte[] paramArrayOfByte, aqwp paramaqwp, String paramString)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
+    do
+    {
+      do
+      {
+        return false;
+        a(paramArrayOfByte, paramaqwp);
+      } while (paramaqwp.b != 768);
+      if (paramaqwp.jdField_a_of_type_Byte != 0)
+      {
+        a(paramaqwp);
+        return false;
+      }
+    } while ((paramaqwp.jdField_a_of_type_ArrayOfByte == null) || (paramaqwp.jdField_a_of_type_ArrayOfByte.length == 0));
+    a(paramaqwp, paramString);
+    return true;
+  }
+  
+  private static byte[] a()
+  {
+    String str = MD5.toMD5(aqwk.a() + AppSetting.d() + "E1D84CC825147ECD").substring(0, 16);
+    try
+    {
+      byte[] arrayOfByte = str.getBytes("ISO8859_1");
+      return arrayOfByte;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
+    return str.getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwo
  * JD-Core Version:    0.7.0.1
  */

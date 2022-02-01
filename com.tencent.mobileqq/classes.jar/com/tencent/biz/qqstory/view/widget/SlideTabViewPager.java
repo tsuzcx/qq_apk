@@ -11,9 +11,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
-import ytd;
-import yte;
-import ytf;
+import zhw;
+import zhx;
+import zhy;
 
 public class SlideTabViewPager
   extends RelativeLayout
@@ -28,7 +28,7 @@ public class SlideTabViewPager
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ViewPagerTapBlockView jdField_a_of_type_ComTencentBizQqstoryViewWidgetViewPagerTapBlockView;
   private ArrayList<TextView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ytf jdField_a_of_type_Ytf;
+  private zhy jdField_a_of_type_Zhy;
   private int jdField_b_of_type_Int = -12143138;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private ArrayList<View> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
@@ -48,8 +48,8 @@ public class SlideTabViewPager
   public SlideTabViewPager(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new ytd(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new yte(this);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new zhw(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new zhx(this);
     a(paramContext);
   }
   
@@ -61,10 +61,10 @@ public class SlideTabViewPager
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(paramContext, 2131561808, this);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetViewPagerTapBlockView = ((ViewPagerTapBlockView)findViewById(2131378217));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378218));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131365278));
+    inflate(paramContext, 2131561876, this);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetViewPagerTapBlockView = ((ViewPagerTapBlockView)findViewById(2131378505));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378506));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131365372));
   }
   
   public void a(int paramInt)
@@ -87,9 +87,9 @@ public class SlideTabViewPager
   
   public void onClick(View paramView) {}
   
-  public void setOnPageSelected(ytf paramytf)
+  public void setOnPageSelected(zhy paramzhy)
   {
-    this.jdField_a_of_type_Ytf = paramytf;
+    this.jdField_a_of_type_Zhy = paramzhy;
   }
   
   public void setSlideBlockColor(int paramInt)

@@ -1,16 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-class okg
-  implements qkh
+public class okg
 {
-  okg(okf paramokf, ViewBase paramViewBase) {}
+  public okg(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString, long paramLong) {}
   
-  public void a()
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData();
-    pay.a(oke.a(this.jdField_a_of_type_Okf.jdField_a_of_type_Oke).getContext(), str);
-    ozp.a(this.jdField_a_of_type_Okf.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    SosoInterface.startLocation(new okm(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel()) {
+      QLog.d("PAjs.location", 2, "SosoInterface.startLocation");
+    }
   }
 }
 

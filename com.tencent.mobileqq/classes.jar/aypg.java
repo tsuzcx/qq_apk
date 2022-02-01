@@ -1,20 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import java.util.List;
 
-public class aypg
-  implements DialogInterface.OnClickListener
+public abstract interface aypg
 {
-  public aypg(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.b.obtainMessage(3, "").sendToTarget();
-    bcef.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 2, 0, "0", "0", "", "");
-  }
+  public abstract void a(List<aypk> paramList);
 }
 
 

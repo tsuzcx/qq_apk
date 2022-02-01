@@ -1,33 +1,99 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class argb
-  implements View.OnClickListener
+public class argb
 {
-  argb(arga paramarga, String paramString) {}
+  private argc[] a = new argc[0];
   
-  public void onClick(View paramView)
+  public static argb a(String paramString)
   {
-    if (arga.a(this.jdField_a_of_type_Arga).a(this.jdField_a_of_type_JavaLangString) == null)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    int i = 0;
+    argb localargb = new argb();
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SingTogetherConfigBean", 0, "parse content is empty");
+      }
     }
-    boolean bool = arga.a(this.jdField_a_of_type_Arga).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Arga.jdField_a_of_type_Int, this.jdField_a_of_type_Arga.jdField_a_of_type_JavaUtilList);
-    String str2 = arga.a(this.jdField_a_of_type_Arga) + "";
-    if (bool) {}
-    for (String str1 = "1";; str1 = "2")
+    for (;;)
     {
-      bcef.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 2, 0, str2, str1, "", "");
-      this.jdField_a_of_type_Arga.notifyDataSetChanged();
-      break;
+      return localargb;
+      try
+      {
+        paramString = new JSONObject(paramString).getJSONArray("array");
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          localargb.a = new argc[paramString.length()];
+          while (i < paramString.length())
+          {
+            argc localargc = argc.a(paramString.getJSONObject(i));
+            localargb.a[i] = localargc;
+            i += 1;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("SingTogetherConfigBean", 0, "parse config=" + localargb);
+            return localargb;
+          }
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
+    return localargb;
+  }
+  
+  public argc a(int paramInt)
+  {
+    Object localObject;
+    if ((this.a == null) || (this.a.length <= 0))
+    {
+      localObject = null;
+      return localObject;
+    }
+    argc[] arrayOfargc = this.a;
+    int j = arrayOfargc.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= j) {
+        break label64;
+      }
+      argc localargc = arrayOfargc[i];
+      localObject = localargc;
+      if (localargc.a == paramInt) {
+        break;
+      }
+      i += 1;
+    }
+    label64:
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(super.toString()).append(" ");
+    if ((this.a != null) && (this.a.length > 0))
+    {
+      argc[] arrayOfargc = this.a;
+      int j = arrayOfargc.length;
+      int i = 0;
+      while (i < j)
+      {
+        localStringBuilder.append(arrayOfargc[i]).append(" ");
+        i += 1;
+      }
+    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     argb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import bkwf;
+import bmho;
 import org.json.JSONArray;
 
 public class KuaKuaHbFragment$KuaKuaHbBundleInfo
-  extends bkwf
+  extends bmho
 {
   public int skinId;
   public JSONArray subjectList;

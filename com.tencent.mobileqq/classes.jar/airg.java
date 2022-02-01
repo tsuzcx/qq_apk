@@ -1,12 +1,14 @@
+import android.view.View;
+import android.widget.TextView;
+
 class airg
-  implements bcoq
 {
-  airg(airf paramairf) {}
+  public TextView a;
   
-  public void a(boolean paramBoolean)
+  public airg(View paramView)
   {
-    paramBoolean = this.a.a();
-    this.a.d(paramBoolean);
+    this.a = ((TextView)paramView.findViewById(2131378658));
+    paramView.setTag(this);
   }
 }
 

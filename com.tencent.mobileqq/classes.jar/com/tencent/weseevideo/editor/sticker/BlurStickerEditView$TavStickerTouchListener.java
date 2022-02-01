@@ -2,6 +2,7 @@ package com.tencent.weseevideo.editor.sticker;
 
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -109,7 +110,7 @@ public class BlurStickerEditView$TavStickerTouchListener
         }
         else if (TAVStickerEditViewEventType.isHandleDrag(BlurStickerEditView.access$3100(this.this$0)))
         {
-          TLog.d("BlurStickerEditView", "单指移动");
+          Log.d("BlurStickerEditView", "单指移动");
           if (!this.isClickSticker) {
             this.operationMode = TAVStickerOperationMode.OP_DRAG;
           }
@@ -176,48 +177,6 @@ public class BlurStickerEditView$TavStickerTouchListener
       paramFloat = f;
       if (f > BlurStickerEditView.access$4700(this.this$0)) {
         paramFloat = BlurStickerEditView.access$4800(this.this$0);
-      }
-    }
-    return paramFloat;
-  }
-  
-  private float handleScaleXLimit(float paramFloat)
-  {
-    float f = paramFloat;
-    if (BlurStickerEditView.access$5600(this.this$0) > 0.0F)
-    {
-      f = paramFloat;
-      if (paramFloat < BlurStickerEditView.access$5600(this.this$0)) {
-        f = BlurStickerEditView.access$5400(this.this$0);
-      }
-    }
-    paramFloat = f;
-    if (BlurStickerEditView.access$5700(this.this$0) > 0.0F)
-    {
-      paramFloat = f;
-      if (f > BlurStickerEditView.access$5700(this.this$0)) {
-        paramFloat = BlurStickerEditView.access$5700(this.this$0);
-      }
-    }
-    return paramFloat;
-  }
-  
-  private float handleScaleYLimit(float paramFloat)
-  {
-    float f = paramFloat;
-    if (BlurStickerEditView.access$5400(this.this$0) > 0.0F)
-    {
-      f = paramFloat;
-      if (paramFloat < BlurStickerEditView.access$5400(this.this$0)) {
-        f = BlurStickerEditView.access$5400(this.this$0);
-      }
-    }
-    paramFloat = f;
-    if (BlurStickerEditView.access$5500(this.this$0) > 0.0F)
-    {
-      paramFloat = f;
-      if (f > BlurStickerEditView.access$5500(this.this$0)) {
-        paramFloat = BlurStickerEditView.access$5500(this.this$0);
       }
     }
     return paramFloat;
@@ -293,8 +252,8 @@ public class BlurStickerEditView$TavStickerTouchListener
     f2 /= this.xDistanceOnDown;
     paramFloat2 = this.lastDownScaleY;
     f1 /= this.yDistanceOnDown;
-    paramFloat1 = handleScaleXLimit(f2 * paramFloat1);
-    paramFloat2 = handleScaleYLimit(f1 * paramFloat2);
+    paramFloat1 = BlurStickerEditView.access$5400(this.this$0, f2 * paramFloat1);
+    paramFloat2 = BlurStickerEditView.access$5500(this.this$0, f1 * paramFloat2);
     setXScale(paramFloat1);
     setYScale(paramFloat2);
   }
@@ -302,7 +261,7 @@ public class BlurStickerEditView$TavStickerTouchListener
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     this.actionIndex = paramMotionEvent.getActionIndex();
-    if ((!BlurStickerEditView.access$6200(this.this$0).isEditable()) || (BlurStickerEditView.access$6300(this.this$0) == 0)) {
+    if ((!BlurStickerEditView.access$6000(this.this$0).isEditable()) || (BlurStickerEditView.access$6100(this.this$0) == 0)) {
       return false;
     }
     if (isTouchInSticker(paramMotionEvent))
@@ -332,25 +291,25 @@ public class BlurStickerEditView$TavStickerTouchListener
   
   protected void setXScale(float paramFloat)
   {
-    if (BlurStickerEditView.access$5800(this.this$0) != null)
+    if (BlurStickerEditView.access$5600(this.this$0) != null)
     {
-      BlurStickerEditView.access$5900(this.this$0).setScaleX(paramFloat);
+      BlurStickerEditView.access$5700(this.this$0).setScaleX(paramFloat);
       BlurStickerEditView.access$1602(this.this$0, paramFloat);
     }
   }
   
   protected void setYScale(float paramFloat)
   {
-    if (BlurStickerEditView.access$6000(this.this$0) != null)
+    if (BlurStickerEditView.access$5800(this.this$0) != null)
     {
-      BlurStickerEditView.access$6100(this.this$0).setScaleY(paramFloat);
+      BlurStickerEditView.access$5900(this.this$0).setScaleY(paramFloat);
       BlurStickerEditView.access$1702(this.this$0, paramFloat);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.BlurStickerEditView.TavStickerTouchListener
  * JD-Core Version:    0.7.0.1
  */

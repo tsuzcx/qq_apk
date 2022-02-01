@@ -1,20 +1,11 @@
-import com.tencent.biz.pubaccount.CustomWebView;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public abstract interface bgzu
-  extends bguj
-{
-  public abstract String getCurrentUrl();
-  
-  public abstract CustomWebView getWebView();
-  
-  public abstract void hideQQBrowserButton();
-  
-  public abstract boolean isActivityResume();
-  
-  public abstract void setBottomBarVisible(boolean paramBoolean);
-  
-  public abstract void showActionSheet();
-}
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface bgzu {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

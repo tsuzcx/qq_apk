@@ -1,24 +1,29 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.27;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aomm
+class aomm
   implements View.OnClickListener
 {
-  public aomm(ARScanEntryView.27 param27) {}
+  aomm(aomk paramaomk, boolean paramBoolean, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Aobd != null) {
-      this.a.jdField_a_of_type_Aobd.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
+    aomk.a(this.jdField_a_of_type_Aomk).dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      AccountManageActivity.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    ARScanEntryView.g(this.a.this$0);
-    ARScanEntryView.d(this.a.this$0);
-    this.a.this$0.a.setOnClickListener(this.a.this$0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "0X800B276";; str = "0X800B273")
+    {
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

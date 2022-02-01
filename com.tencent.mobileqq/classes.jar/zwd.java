@@ -1,136 +1,324 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ValueAnimator;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.animation.Interpolator;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.subscribe.comment.CommentView;
+import com.tencent.biz.subscribe.comment.MoreCommentPanel;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class zwd
+  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 3000L;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private View jdField_a_of_type_AndroidViewView;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private List<zvt> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private zvy jdField_a_of_type_Zvy;
-  private zvz jdField_a_of_type_Zvz;
-  private zwa jdField_a_of_type_Zwa;
-  private zwb jdField_a_of_type_Zwb;
-  private zwd jdField_a_of_type_Zwd;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 1;
-  private long jdField_b_of_type_Long;
-  private zwd jdField_b_of_type_Zwd;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
+  private List<CertifiedAccountMeta.StComment> jdField_a_of_type_JavaUtilList;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
+  private zwe jdField_a_of_type_Zwe;
   
-  public static zvt a(View... paramVarArgs)
+  public zwd(Context paramContext, zwe paramzwe)
   {
-    return new zwd().b(paramVarArgs);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Zwe = paramzwe;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  protected AnimatorSet a()
+  public int a(CertifiedAccountMeta.StComment paramStComment)
   {
-    this.jdField_a_of_type_Boolean = false;
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    Object localObject2;
-    while (((Iterator)localObject1).hasNext())
+    if ((paramStComment != null) && (!TextUtils.isEmpty(paramStComment.id.get())))
     {
-      localObject2 = (zvt)((Iterator)localObject1).next();
-      List localList = ((zvt)localObject2).a();
-      if (((zvt)localObject2).a() != null)
+      this.jdField_a_of_type_JavaUtilMap.put(paramStComment.id.get(), Integer.valueOf(3));
+      notifyDataSetChanged();
+      return 3;
+    }
+    return -1;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilMap.clear();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() > paramInt + 1) {
+      a((CertifiedAccountMeta.StComment)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    }
+  }
+  
+  public void a(int paramInt, CertifiedAccountMeta.StComment paramStComment)
+  {
+    if ((paramStComment != null) && (paramInt <= this.jdField_a_of_type_JavaUtilList.size())) {
+      this.jdField_a_of_type_JavaUtilList.add(paramInt, paramStComment);
+    }
+  }
+  
+  public void a(CertifiedAccountMeta.StComment paramStComment)
+  {
+    if ((paramStComment != null) && (!TextUtils.isEmpty(paramStComment.id.get())))
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramStComment.id.get(), Integer.valueOf(paramStComment.vecReply.size()));
+      notifyDataSetChanged();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, CertifiedAccountMeta.StReply paramStReply)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramStReply != null))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = localList.iterator();
-        while (localIterator.hasNext()) {
-          ((Animator)localIterator.next()).setInterpolator(((zvt)localObject2).a());
+        CertifiedAccountMeta.StComment localStComment = (CertifiedAccountMeta.StComment)localIterator.next();
+        if (paramString.equals(localStComment.id.get())) {
+          localStComment.vecReply.get().add(0, paramStReply);
         }
       }
-      localArrayList.addAll(localList);
     }
-    localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (zvt)((Iterator)localObject1).next();
-      if (((zvt)localObject2).a()) {
-        this.jdField_a_of_type_AndroidViewView = ((zvt)localObject2).a();
-      }
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int i;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = this.jdField_a_of_type_JavaUtilList.size() - 1;
     }
-    localObject1 = localArrayList.iterator();
-    while (((Iterator)localObject1).hasNext())
+    for (;;)
     {
-      localObject2 = (Animator)((Iterator)localObject1).next();
-      if ((localObject2 instanceof ValueAnimator))
+      bool1 = bool2;
+      if (i >= 0)
       {
-        localObject2 = (ValueAnimator)localObject2;
-        ((ValueAnimator)localObject2).setRepeatCount(this.jdField_a_of_type_Int);
-        ((ValueAnimator)localObject2).setRepeatMode(this.jdField_b_of_type_Int);
-        if (!this.jdField_a_of_type_Boolean)
+        if (!paramString.equals(((CertifiedAccountMeta.StComment)this.jdField_a_of_type_JavaUtilList.get(i)).id.get())) {
+          break label91;
+        }
+        if (this.jdField_a_of_type_JavaUtilList.remove(i) == null) {
+          break label86;
+        }
+      }
+      label86:
+      for (bool1 = true;; bool1 = false)
+      {
+        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+        return bool1;
+      }
+      label91:
+      i -= 1;
+    }
+  }
+  
+  public boolean a(String paramString, CertifiedAccountMeta.StComment paramStComment)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int i;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i >= 0)
+      {
+        if (!paramString.equals(((CertifiedAccountMeta.StComment)this.jdField_a_of_type_JavaUtilList.get(i)).id.get())) {
+          break label86;
+        }
+        if (this.jdField_a_of_type_JavaUtilList.set(i, paramStComment) == null) {
+          break label80;
+        }
+      }
+      label80:
+      for (bool1 = true;; bool1 = false) {
+        return bool1;
+      }
+      label86:
+      i -= 1;
+    }
+  }
+  
+  public boolean a(String paramString1, String paramString2)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int i;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        CertifiedAccountMeta.StComment localStComment;
+        do
         {
-          ((ValueAnimator)localObject2).addListener(new zwe(this));
-          this.jdField_a_of_type_Boolean = true;
+          bool1 = bool2;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localStComment = (CertifiedAccountMeta.StComment)localIterator.next();
+        } while (!paramString1.equals(localStComment.id.get()));
+        i = localStComment.vecReply.size() - 1;
+        if (i < 0) {
+          break label153;
         }
+        if (!paramString2.equals(((CertifiedAccountMeta.StReply)localStComment.vecReply.get(i)).id.get())) {
+          break label146;
+        }
+        if (localStComment.vecReply.get().remove(i) == null) {
+          break label140;
+        }
+        bool1 = true;
       }
     }
-    localObject1 = new AnimatorSet();
-    ((AnimatorSet)localObject1).playTogether(localArrayList);
-    ((AnimatorSet)localObject1).setDuration(this.jdField_a_of_type_Long);
-    ((AnimatorSet)localObject1).setStartDelay(this.jdField_b_of_type_Long);
-    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {
-      ((AnimatorSet)localObject1).setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-    }
-    ((AnimatorSet)localObject1).addListener(new zwf(this));
-    return localObject1;
-  }
-  
-  public zwd a()
-  {
-    if (this.jdField_a_of_type_Zwd != null)
+    for (;;)
     {
-      this.jdField_a_of_type_Zwd.a();
-      return this;
+      return bool1;
+      label140:
+      bool1 = false;
+      continue;
+      label146:
+      i -= 1;
+      break;
+      label153:
+      bool1 = false;
     }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = a();
-    if (this.jdField_a_of_type_AndroidViewView != null)
+  }
+  
+  public boolean a(String paramString1, String paramString2, CertifiedAccountMeta.StReply paramStReply)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int i;
+    if (!TextUtils.isEmpty(paramString1))
     {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnPreDrawListener(new zwg(this));
-      return this;
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramStReply.id.get()))
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        CertifiedAccountMeta.StComment localStComment;
+        do
+        {
+          bool1 = bool2;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localStComment = (CertifiedAccountMeta.StComment)localIterator.next();
+        } while (!paramString1.equals(localStComment.id.get()));
+        i = localStComment.vecReply.size() - 1;
+        if (i < 0) {
+          break label166;
+        }
+        if (!paramString2.equals(((CertifiedAccountMeta.StReply)localStComment.vecReply.get(i)).id.get())) {
+          break label157;
+        }
+        if (localStComment.vecReply.get().set(i, paramStReply) == null) {
+          break label151;
+        }
+        bool1 = true;
+      }
     }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
-    return this;
+    for (;;)
+    {
+      return bool1;
+      label151:
+      bool1 = false;
+      continue;
+      label157:
+      i -= 1;
+      break;
+      label166:
+      bool1 = false;
+    }
   }
   
-  public zwd a(long paramLong)
+  public boolean a(Collection<CertifiedAccountMeta.StComment> paramCollection)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
+    boolean bool = false;
+    if (paramCollection != null) {
+      bool = this.jdField_a_of_type_JavaUtilList.addAll(paramCollection);
+    }
+    return bool;
   }
   
-  public zwd a(Interpolator paramInterpolator)
+  public void b(CertifiedAccountMeta.StComment paramStComment)
   {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
-    return this;
+    Integer localInteger;
+    if ((paramStComment != null) && (!TextUtils.isEmpty(paramStComment.id.get())))
+    {
+      localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramStComment.id.get());
+      if (localInteger == null) {
+        break label75;
+      }
+    }
+    label75:
+    for (int i = localInteger.intValue() + 10;; i = 10)
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramStComment.id.get(), Integer.valueOf(i));
+      notifyDataSetChanged();
+      return;
+    }
   }
   
-  public zwd a(zwa paramzwa)
+  public int getCount()
   {
-    this.jdField_a_of_type_Zwa = paramzwa;
-    return this;
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public zwd a(zwb paramzwb)
+  public Object getItem(int paramInt)
   {
-    this.jdField_a_of_type_Zwb = paramzwb;
-    return this;
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public zvt b(View... paramVarArgs)
+  public long getItemId(int paramInt)
   {
-    paramVarArgs = new zvt(this, paramVarArgs);
-    this.jdField_a_of_type_JavaUtilList.add(paramVarArgs);
-    return paramVarArgs;
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    CertifiedAccountMeta.StComment localStComment = (CertifiedAccountMeta.StComment)getItem(paramInt);
+    if ((paramView == null) || ((paramView instanceof MoreCommentPanel)))
+    {
+      paramView = new CommentView(this.jdField_a_of_type_AndroidContentContext);
+      ((CommentView)paramView).setOnCommentElementClickListener(this.jdField_a_of_type_Zwe);
+      paramView.setTag(paramView);
+    }
+    for (;;)
+    {
+      CommentView localCommentView = (CommentView)paramView.getTag();
+      localCommentView.setPosition(paramInt);
+      localCommentView.setDisplayNum(3);
+      Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localStComment.id.get());
+      if (localInteger != null) {}
+      for (int i = localInteger.intValue();; i = 3)
+      {
+        localCommentView.setData(localStComment, i, this.jdField_a_of_type_JavaLangString);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+      }
+    }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    super.notifyDataSetChanged();
   }
 }
 

@@ -1,77 +1,53 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.sign.BoxShadowLayout;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.mobileqq.videoplatform.VideoPlaySDKManager;
+import com.tencent.mobileqq.videoplatform.util.LoadSoUtil;
+import com.tencent.mobileqq.videoplatform.util.LogUtil;
+import com.tencent.mobileqq.videoplatform.util.RegisterTVideoUtil;
+import com.tencent.mobileqq.videoplatform.util.ReportUtil;
+import com.tencent.mobileqq.videoplatform.util.ThreadUtil;
 
 public class bapt
-  extends bapu
 {
-  public int a;
-  public long a;
-  TextView a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
+  private static volatile boolean a;
   
-  public bapt(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
+  static {}
+  
+  public static void a()
   {
-    super(paramContext, paramAppInterface, paramView, paramString);
-    this.e = 2;
-    this.i = 2130846026;
-    VasWebviewUtil.reportCommercialDrainage(paramAppInterface.getCurrentAccountUin(), "signature_aio", "show", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    try
+    {
+      if (!a)
+      {
+        LogUtil.setLogImp(new bapz());
+        ThreadUtil.setThreadImp(new baqc());
+        LoadSoUtil.setLoadSoImp(new bapx());
+        ReportUtil.setReportImp(new baqb());
+        RegisterTVideoUtil.setRegisterTVideoImp(new baqa());
+        a = true;
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  protected int a()
+  public static void a(Context paramContext, SDKInitListener paramSDKInitListener)
   {
-    return 3;
+    VideoPlaySDKManager.getInstance().initSDKAsync(paramContext, paramSDKInitListener);
   }
   
-  public View a(RichStatus paramRichStatus)
+  public static boolean a()
   {
-    paramRichStatus = super.a(paramRichStatus);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mMsgId = this.jdField_a_of_type_Long;
-    l();
-    return paramRichStatus;
+    return VideoPlaySDKManager.getInstance().isSDKReady();
   }
   
-  protected void a()
+  public static boolean b()
   {
-    this.h = AIOUtils.dp2px(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166467);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 12.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    int i = AIOUtils.dp2px(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    Object localObject = new FrameLayout.LayoutParams(-1, i);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.setYOffset(i + AIOUtils.dp2px(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    i = (int)(ScreenUtil.SCREEN_WIDTH * 0.11F);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.a(i);
-    localObject = (ViewGroup.MarginLayoutParams)this.b.getLayoutParams();
-    localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getLayoutParams();
-    ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    ((ViewGroup.MarginLayoutParams)localObject).topMargin = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-  }
-  
-  protected boolean a()
-  {
-    return true;
+    return VideoPlaySDKManager.getInstance().isSoLoadSuc();
   }
 }
 

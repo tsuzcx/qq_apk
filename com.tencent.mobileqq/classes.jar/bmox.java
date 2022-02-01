@@ -1,6 +1,9 @@
-public abstract interface bmox
+import com.tencent.mobileqq.utils.ViewUtils;
+
+public class bmox
 {
-  public abstract void a();
+  public static final int a = (int)(40.0F * ViewUtils.getDensity());
+  public static final int b = (int)(24.0F * ViewUtils.getDensity());
 }
 
 

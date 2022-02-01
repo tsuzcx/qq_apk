@@ -1,51 +1,43 @@
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.intervideo.nowproxy.NowPluginObserver;
+import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
 
 public class avvt
-  implements bhle
+  implements NowPluginObserver
 {
-  public avvt(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  public avvt(LoadingFragment paramLoadingFragment) {}
   
-  public void onItemSelect(View paramView, int paramInt)
+  public void onCloseLoadingView()
   {
-    switch (paramInt)
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (localFragmentActivity != null) {
+      localFragmentActivity.finish();
+    }
+  }
+  
+  public void onEnterAvPlugin(Bundle paramBundle) {}
+  
+  public void onEnterRoom(Bundle paramBundle)
+  {
+    this.a.a();
+  }
+  
+  public void onExitRoom(Bundle paramBundle) {}
+  
+  public void onLoadingViewCreated(View paramView)
+  {
+    if (paramView != null)
     {
-    default: 
-      return;
-    case 2: 
-      MsgBackupTransportFragment.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click cancel btn! sIsShouQiBtnClick= " + avtq.jdField_a_of_type_Boolean + ", isStart = " + this.a.jdField_a_of_type_Boolean);
+      this.a.getActivity();
+      FrameLayout localFrameLayout = (FrameLayout)this.a.getView();
+      if ((paramView != null) && (localFrameLayout != null)) {
+        localFrameLayout.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
       }
-      if (MsgBackupTransportFragment.a(this.a) == 2)
-      {
-        if (!this.a.jdField_d_of_type_Boolean) {
-          break label129;
-        }
-        avwr.a("0X800A243", 2);
-      }
-      while (this.a.jdField_a_of_type_Boolean)
-      {
-        this.a.k();
-        return;
-        label129:
-        avwr.a("0X800A243", 1);
-      }
-      if (MsgBackupTransportFragment.a(this.a) == 1)
-      {
-        this.a.onBackEvent();
-        return;
-      }
-      this.a.a(this.a.getActivity());
-      return;
     }
-    avtq.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + avtq.jdField_a_of_type_Boolean + ", curSpeed = " + this.a.jdField_a_of_type_Long + ", hasFinishedCount = " + this.a.jdField_d_of_type_Int);
-    }
-    avtq.a().a(this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Int, 3, this.a.getActivity());
-    avwr.a("0X800A249");
   }
 }
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/dc6" android:background="@color/br" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/cll" android:scaleType="center" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/dc9" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/list_checkbox_selected" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <ImageView android:id="@id/nsz" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/c_y" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-    <TextView android:textSize="@dimen/ayq" android:textStyle="bold" android:gravity="center|left|top" android:id="@id/no5" android:background="@drawable/gol" android:paddingLeft="6.0dip" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <com.tencent.biz.pubaccount.readinjoy.comment.ui.ConstraindWidthLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/dwi" android:layout_width="wrap_content" android:layout_height="28.0dip" xmlns:app="http://schemas.android.com/apk/res-auto">
+        <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:layout_gravity="center" android:id="@id/icon" android:background="@drawable/dwj" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="28.0dip" android:layout_height="fill_parent" android:layout_margin="1.0dip" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/agu" android:ellipsize="end" android:id="@id/bgt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:maxLines="1" android:singleLine="true" app:layout_constrainedWidth="true" />
+        <View android:background="#ffeeeeee" android:layout_width="1.0px" android:layout_height="16.0dip" />
+        <ImageView android:id="@id/bfl" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="30.0dip" android:layout_height="fill_parent" android:src="@drawable/gos" />
+    </com.tencent.biz.pubaccount.readinjoy.comment.ui.ConstraindWidthLayout>
+</FrameLayout>

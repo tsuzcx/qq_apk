@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import avsq;
+import awyr;
 import com.tencent.mobileqq.data.EmoticonTab;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityTransaction;
@@ -10,7 +10,7 @@ import java.util.List;
 public class EmoticonManager$17
   implements Runnable
 {
-  public EmoticonManager$17(avsq paramavsq) {}
+  public EmoticonManager$17(awyr paramawyr) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class EmoticonManager$17
         while (localIterator1.hasNext())
         {
           str = (String)localIterator1.next();
-          avsq.a(this.this$0, str, true, false);
+          awyr.a(this.this$0, str, true, false);
           continue;
           localObject1 = finally;
         }
@@ -40,7 +40,7 @@ public class EmoticonManager$17
     while (localIterator2.hasNext())
     {
       str = (String)localIterator2.next();
-      avsq.a(this.this$0, str, false, true);
+      awyr.a(this.this$0, str, false, true);
     }
     localObject1.commit();
     localObject1.end();

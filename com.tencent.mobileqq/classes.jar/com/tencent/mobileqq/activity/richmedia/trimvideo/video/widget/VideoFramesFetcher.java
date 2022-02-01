@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import akwe;
-import akwj;
-import akwl;
-import akwp;
+import alua;
+import aluf;
+import aluh;
+import alul;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,26 +12,26 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.PriorityBlockingQueue;
 
 public class VideoFramesFetcher
-  implements akwl
+  implements aluh
 {
   private static long jdField_a_of_type_Long;
   private volatile int jdField_a_of_type_Int = 1;
-  private akwe jdField_a_of_type_Akwe;
-  private BlockingQueue<akwp> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap<Integer, akwp> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private alua jdField_a_of_type_Alua;
+  private BlockingQueue<alul> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private ConcurrentHashMap<Integer, alul> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   private volatile boolean jdField_a_of_type_Boolean;
   private int b = 1000;
   private int c;
   
-  private akwj b(int paramInt)
+  private aluf b(int paramInt)
   {
     if (!a()) {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFramesFetcher", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    akwp localakwp2;
+    alul localalul2;
     do
     {
       return null;
@@ -39,10 +39,10 @@ public class VideoFramesFetcher
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          akwp localakwp1 = (akwp)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          alul localalul1 = (alul)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localakwp1.jdField_a_of_type_Long = l;
+          localalul1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -53,17 +53,17 @@ public class VideoFramesFetcher
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localakwp2 = new akwp(this, l, paramInt, paramInt + this.b);
+      localalul2 = new alul(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localakwp2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localalul2);
     return null;
   }
   
-  public int a(int paramInt1, int paramInt2, akwe paramakwe)
+  public int a(int paramInt1, int paramInt2, alua paramalua)
   {
     this.b = paramInt1;
     this.c = paramInt2;
-    this.jdField_a_of_type_Akwe = paramakwe;
+    this.jdField_a_of_type_Alua = paramalua;
     this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new PriorityBlockingQueue();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
@@ -71,7 +71,7 @@ public class VideoFramesFetcher
     return 0;
   }
   
-  public akwj a(int paramInt)
+  public aluf a(int paramInt)
   {
     if ((!a()) || (paramInt < 0))
     {
@@ -80,8 +80,8 @@ public class VideoFramesFetcher
       }
       return null;
     }
-    if (this.jdField_a_of_type_Akwe.a(paramInt)) {
-      return this.jdField_a_of_type_Akwe.a(paramInt);
+    if (this.jdField_a_of_type_Alua.a(paramInt)) {
+      return this.jdField_a_of_type_Alua.a(paramInt);
     }
     return b(this.b * paramInt);
   }

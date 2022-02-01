@@ -1,32 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.wtogether.view.WatchTogetherAdminControlView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class naw
-  implements apwt
+public class naw
+  implements View.OnClickListener
 {
-  naw(nav paramnav) {}
+  public naw(WatchTogetherAdminControlView paramWatchTogetherAdminControlView) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvGameResDownloadManager", 2, "onGetConfigFinished result:" + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      String str1 = apws.a().a();
-      String str2 = apws.a().b();
-      if (QLog.isColorLevel()) {
-        QLog.i("AvGameResDownloadManager", 2, "onGetConfigFinished url:" + str1 + " md5:" + str2);
-      }
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
-      {
-        nav.a(this.a).b(110);
-        return;
-      }
-      this.a.a(new nay(str1, str2));
-      return;
-    }
-    nav.a(this.a).b(paramInt);
+    WatchTogetherAdminControlView.e(this.a);
+    WatchTogetherAdminControlView.c(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

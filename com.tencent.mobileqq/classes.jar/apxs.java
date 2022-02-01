@@ -1,83 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class apxs
-  extends aptq<apxr>
+class apxs
+  implements apxy
 {
-  @NonNull
-  public static apxr a()
-  {
-    apxr localapxr2 = (apxr)apub.a().a(455);
-    apxr localapxr1 = localapxr2;
-    if (localapxr2 == null) {
-      localapxr1 = new apxr();
-    }
-    return localapxr1;
-  }
+  apxs(apxp paramapxp) {}
   
-  @NonNull
-  public apxr a(int paramInt)
+  public void a(apyb paramapyb, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    return new apxr();
-  }
-  
-  @Nullable
-  public apxr a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    int i = 0;
+    while (i < paramapyb.b.size())
     {
-      apxr localapxr = apxr.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      apxx localapxx = (apxx)paramapyb.b.get(i);
+      if (localapxx != null) {
+        localapxx.b(paramBoolean, paramapyb.a, paramArrayOfByte);
       }
-      return localapxr;
+      i += 1;
     }
-    return new apxr();
-  }
-  
-  public void a(apxr paramapxr)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramapxr);
-    }
-  }
-  
-  public Class<apxr> clazz()
-  {
-    return apxr.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 455;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apxs
  * JD-Core Version:    0.7.0.1
  */

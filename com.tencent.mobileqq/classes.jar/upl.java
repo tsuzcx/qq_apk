@@ -1,59 +1,40 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.view.ViewGroup;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class upl
+  extends upz
 {
-  public static bjwy<stSimpleMetaFeed> a(int paramInt, ViewGroup paramViewGroup, ukg paramukg)
-  {
-    return upk.a(paramViewGroup, paramukg, paramInt);
-  }
+  public upl(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public static upm a(int paramInt)
+  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList)
   {
-    upm localupm = new upm();
-    localupm.jdField_a_of_type_Int = paramInt;
-    localupm.jdField_a_of_type_Boolean = b(paramInt);
-    localupm.b = c(paramInt);
-    localupm.c = d(paramInt);
-    localupm.d = e(paramInt);
-    localupm.e = f(paramInt);
-    localupm.f = g(paramInt);
-    return localupm;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 3) || (paramInt == 6) || (paramInt == 7) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10);
-  }
-  
-  private static boolean b(int paramInt)
-  {
-    return (paramInt == 6) || (paramInt == 7);
-  }
-  
-  private static boolean c(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 3);
-  }
-  
-  private static boolean d(int paramInt)
-  {
-    return paramInt == 1;
-  }
-  
-  private static boolean e(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 3);
-  }
-  
-  private static boolean f(int paramInt)
-  {
-    return (paramInt == 6) || (paramInt == 7);
-  }
-  
-  private static boolean g(int paramInt)
-  {
-    return (paramInt == 3) || (paramInt == 7) || (paramInt == 8);
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
+    }
+    if (!paramBoolean) {}
+    do
+    {
+      do
+      {
+        return;
+        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
+      return;
+    } while (this.a.a == null);
+    Message localMessage = new Message();
+    localMessage.what = 1003;
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
+    localMessage.setData(localBundle);
+    this.a.a.removeMessages(1003);
   }
 }
 

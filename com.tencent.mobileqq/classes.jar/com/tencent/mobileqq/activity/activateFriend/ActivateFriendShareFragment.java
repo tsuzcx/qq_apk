@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import atku;
-import atky;
-import atnh;
-import bcef;
-import bcgt;
-import bcgx;
-import bchg;
-import bcis;
-import bclv;
+import anvx;
+import aupp;
+import aupt;
+import ausc;
+import bdla;
+import bdnr;
+import bdnv;
+import bdoe;
+import bdpq;
+import bdsv;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -36,32 +36,32 @@ public class ActivateFriendShareFragment
   {
     Intent localIntent = new Intent();
     Object localObject = this.c;
-    localObject = new bcgt(StructMsgForGeneralShare.class).c(97).a(amtj.a(2131698919) + this.b).a("web", (String)localObject, (String)localObject, (String)localObject, (String)localObject).a();
-    bcgx localbcgx = bchg.a(27);
-    localbcgx.o = 1;
-    localbcgx.a(new StructMsgItemTitle(this.b));
-    localbcgx.a(new bclv(String.valueOf(this.jdField_a_of_type_Long)));
-    localbcgx.a(new bcis(1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ""));
-    localbcgx.a(new bcis(1, this.jdField_a_of_type_JavaLangString, ""));
-    ((AbsShareMsg)localObject).addItem(localbcgx);
-    ((AbsShareMsg)localObject).mCompatibleText = amtj.a(2131698918);
+    localObject = new bdnr(StructMsgForGeneralShare.class).c(97).a(anvx.a(2131699270) + this.b).a("web", (String)localObject, (String)localObject, (String)localObject, (String)localObject).a();
+    bdnv localbdnv = bdoe.a(27);
+    localbdnv.o = 1;
+    localbdnv.a(new StructMsgItemTitle(this.b));
+    localbdnv.a(new bdsv(String.valueOf(this.jdField_a_of_type_Long)));
+    localbdnv.a(new bdpq(1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ""));
+    localbdnv.a(new bdpq(1, this.jdField_a_of_type_JavaLangString, ""));
+    ((AbsShareMsg)localObject).addItem(localbdnv);
+    ((AbsShareMsg)localObject).mCompatibleText = anvx.a(2131699269);
     localIntent.putExtra("stuctmsg_bytes", ((AbsShareMsg)localObject).getBytes());
     localIntent.putExtra("forward_type", -3);
     localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
     localIntent.putExtra("emoInputType", 2);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007AD9", "0X8007AD9", 1, 0, "", "", "", "");
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007AD9", "0X8007AD9", 1, 0, "", "", "", "");
     return localIntent;
   }
   
   private void a()
   {
-    atky localatky = atnh.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity);
-    localatky.c();
+    aupt localaupt = ausc.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity);
+    localaupt.c();
     Bundle localBundle = new Bundle();
     localBundle.putInt("uintype", 0);
     localBundle.putString("uin", this.jdField_a_of_type_JavaLangString);
     localBundle.putString("uinname", ContactUtils.getFriendShowName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
-    localatky.a(atku.a.intValue(), localBundle);
+    localaupt.a(aupp.a.intValue(), localBundle);
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -97,7 +97,7 @@ public class ActivateFriendShareFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendShareFragment
  * JD-Core Version:    0.7.0.1
  */

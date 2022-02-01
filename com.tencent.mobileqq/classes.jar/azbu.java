@@ -1,148 +1,96 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import androidx.annotation.NonNull;
+import java.util.Arrays;
+import mqq.app.AppRuntime.Status;
 
-public final class azbu
+public class azbu
 {
-  private static int jdField_a_of_type_Int = 4000;
-  private static final Map<String, azbv> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
+  public int a;
+  public long a;
+  public String a;
+  public AppRuntime.Status a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  private static void a(azbv paramazbv, boolean paramBoolean)
+  public azbu()
   {
-    if ((paramazbv != null) && (paramazbv.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
-    {
-      File localFile;
-      if (paramazbv.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
-      {
-        if (paramazbv.jdField_a_of_type_JavaIoFile == null)
-        {
-          localFile = new File(paramazbv.jdField_a_of_type_JavaLangString + "~tmp");
-          if (!localFile.exists()) {
-            localFile.createNewFile();
-          }
-          paramazbv.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
-          paramazbv.jdField_a_of_type_JavaIoFile = localFile;
-        }
-        paramazbv.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(paramazbv.jdField_a_of_type_JavaIoFileOutputStream);
-      }
-      if (paramBoolean)
-      {
-        if (paramazbv.jdField_a_of_type_JavaIoFileOutputStream != null)
-        {
-          paramazbv.jdField_a_of_type_JavaIoFileOutputStream.flush();
-          paramazbv.jdField_a_of_type_JavaIoFileOutputStream.close();
-          paramazbv.jdField_a_of_type_JavaIoFileOutputStream = null;
-        }
-        if (paramazbv.jdField_a_of_type_JavaIoFile != null)
-        {
-          localFile = new File(paramazbv.jdField_a_of_type_JavaLangString);
-          if (localFile.exists()) {
-            localFile.delete();
-          }
-          if (!paramazbv.jdField_a_of_type_JavaIoFile.renameTo(localFile))
-          {
-            FileUtils.copyFile(paramazbv.jdField_a_of_type_JavaIoFile, localFile);
-            paramazbv.jdField_a_of_type_JavaIoFile.delete();
-          }
-          paramazbv.jdField_a_of_type_JavaIoFile = null;
-        }
-      }
-    }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public static void a(String paramString)
+  public azbu(long paramLong, String paramString1, String paramString2)
   {
-    a(paramString, true);
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
   }
   
-  private static void a(String paramString, boolean paramBoolean)
+  public azbu(AppRuntime.Status paramStatus)
   {
-    azbv localazbv = (azbv)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localazbv == null) || (localazbv.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      localazbv.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
-      label31:
-      if (localazbv.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-      try
-      {
-        localazbv.jdField_a_of_type_JavaIoFileOutputStream.close();
-        label45:
-        localazbv.jdField_a_of_type_JavaIoFileOutputStream = null;
-        if ((paramBoolean) && (localazbv.jdField_a_of_type_JavaIoFile != null))
-        {
-          localazbv.jdField_a_of_type_JavaIoFile.delete();
-          localazbv.jdField_a_of_type_JavaIoFile = null;
-        }
-        jdField_a_of_type_JavaUtilMap.remove(paramString);
-        return;
-      }
-      catch (Exception localException1)
-      {
-        break label45;
-      }
-    }
-    catch (Exception localException2)
-    {
-      break label31;
-    }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = azbo.a(paramStatus);
+    this.jdField_b_of_type_JavaLangString = azbo.a(paramStatus);
   }
   
-  public static boolean a(String paramString)
+  public static int a(Object... paramVarArgs)
   {
-    if ((azbv)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
-    {
-      azbv localazbv = new azbv();
-      localazbv.jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_JavaUtilMap.put(paramString, localazbv);
-    }
-    return true;
+    return Arrays.hashCode(paramVarArgs);
   }
   
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
+  public static String a(AppRuntime.Status paramStatus, long paramLong)
   {
-    paramString = (azbv)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null)
+    return paramStatus.getValue() + "" + paramLong + "";
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return paramLong == 1000L;
+  }
+  
+  public static boolean a(Object paramObject1, Object paramObject2)
+  {
+    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
+  }
+  
+  public static boolean a(AppRuntime.Status paramStatus, long paramLong)
+  {
+    return (paramStatus == AppRuntime.Status.online) && (paramLong > 40000L);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
-        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
-      }
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
-    }
-    try
-    {
-      a(paramString, false);
-      label66:
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
       return true;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      break label66;
-    }
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (azbu)paramObject;
+    } while ((this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int) && (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_MqqAppAppRuntime$Status == paramObject.jdField_a_of_type_MqqAppAppRuntime$Status) && (a(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (a(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) && (a(this.c, paramObject.c)) && (a(this.d, paramObject.d)));
+    return false;
   }
   
-  public static boolean b(String paramString)
+  public int hashCode()
   {
-    azbv localazbv = (azbv)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localazbv != null) && (localazbv.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      a(localazbv, true);
-      label29:
-      localazbv.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      a(paramString, true);
-      return true;
-    }
-    catch (IOException localIOException)
-    {
-      break label29;
-    }
+    return a(new Object[] { this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long), this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_MqqAppAppRuntime$Status, Integer.valueOf(this.jdField_b_of_type_Int), this.d, Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "id=" + this.jdField_a_of_type_Long + " title=" + this.jdField_b_of_type_JavaLangString;
   }
 }
 

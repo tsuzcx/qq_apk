@@ -1,15 +1,26 @@
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface azzf
-  extends IInterface
+public class azzf
 {
-  public abstract Bundle a(int paramInt, Bundle paramBundle);
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800B1C8", "0X800B1C8", paramInt, 0, "", "", "", "");
+  }
   
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public static void a(QQAppInterface paramQQAppInterface, azrb paramazrb)
+  {
+    int i = aogw.a(paramQQAppInterface, paramQQAppInterface.getCurrentUin(), false);
+    bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800A8C6", "0X800A8C6", i, 0, String.valueOf(i), "", "", "");
+    if (paramazrb.a.a != 0) {
+      bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800A8C7", "0X800A8C7", i, 0, String.valueOf(i), "", "", "");
+    }
+  }
   
-  public abstract void a(CompressInfo paramCompressInfo);
+  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800B1C9", "0X800B1C9", paramInt, 0, "", "", "", "");
+  }
 }
 
 

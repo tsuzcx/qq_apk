@@ -1,568 +1,538 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
+import UserGrowth.stFeed;
+import UserGrowth.stFollowFeedsGlobalConfig;
+import UserGrowth.stFriendFeed;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.StoryAlbumEntry;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
+import com.tencent.biz.pubaccount.weishi_new.event.FollowEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.LikeRspEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSAddCommentEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSFriendFeedExposureEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSItemExposeEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSPlayerMuteEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSVideoPlayEvent;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class via
-  extends vtt
-  implements vug
+  extends vhx<viq>
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private vht jdField_a_of_type_Vht;
-  private vuq jdField_a_of_type_Vuq;
-  zon jdField_a_of_type_Zon = null;
+  private int jdField_a_of_type_Int;
+  private stFollowFeedsGlobalConfig jdField_a_of_type_UserGrowthStFollowFeedsGlobalConfig;
   
-  public static String a(@NonNull List<vil> paramList)
+  private void a(RecyclerView paramRecyclerView, String paramString)
   {
-    if (paramList.isEmpty()) {
-      return "";
-    }
-    paramList = paramList.iterator();
-    int n = 0;
-    int m = 0;
-    int k = 0;
-    int j = 0;
+    int j = paramRecyclerView.getChildCount();
     int i = 0;
-    if (paramList.hasNext())
+    if (i < j)
     {
-      int i1;
-      int i2;
-      switch (((vil)paramList.next()).jdField_a_of_type_Int)
+      Object localObject = paramRecyclerView.getChildViewHolder(paramRecyclerView.getChildAt(i));
+      stSimpleMetaPerson localstSimpleMetaPerson;
+      if ((localObject instanceof vju))
       {
-      case 5: 
-      default: 
-        i1 = n;
-        i2 = m;
-        n = i;
-        m = j;
-        j = i2;
-        i = i1;
+        localObject = (vju)localObject;
+        localstSimpleMetaPerson = ((vju)localObject).a();
+        if ((localstSimpleMetaPerson != null) && (TextUtils.equals(localstSimpleMetaPerson.id, paramString))) {
+          ((vju)localObject).a();
+        }
       }
       for (;;)
       {
-        i1 = n;
-        i2 = m;
-        n = i;
-        m = j;
-        j = i2;
-        i = i1;
+        i += 1;
         break;
-        i1 = j;
-        i2 = i + 1;
-        i = n;
-        j = m;
-        m = i1;
-        n = i2;
-        continue;
-        i2 = j + 1;
-        i1 = i;
-        i = n;
-        j = m;
-        m = i2;
-        n = i1;
-        continue;
-        k += 1;
-        i1 = j;
-        i2 = i;
-        i = n;
-        j = m;
-        m = i1;
-        n = i2;
-        continue;
-        i2 = m + 1;
-        m = j;
-        i1 = i;
-        i = n;
-        j = i2;
-        n = i1;
-        continue;
-        i2 = n + 1;
-        n = j;
-        i1 = i;
-        i = i2;
-        j = m;
-        m = n;
-        n = i1;
-      }
-    }
-    paramList = new StringBuilder("{");
-    paramList.append("\"festival\":").append(i).append(",");
-    paramList.append("\"birthday\":").append(j).append(",");
-    paramList.append("\"frequent\":").append(k).append(",");
-    paramList.append("\"unfrequent\":").append(m).append(",");
-    paramList.append("\"aboard\":").append(n).append(",");
-    paramList.append("}");
-    return paramList.toString();
-  }
-  
-  public static List<vjq> a(@NonNull HashMap<String, vik> paramHashMap)
-  {
-    ArrayList localArrayList = new ArrayList(paramHashMap.size());
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext())
-    {
-      vik localvik = (vik)((Map.Entry)paramHashMap.next()).getValue();
-      if (localvik.a != null) {
-        localArrayList.add(localvik.a);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static List<vim> a(vil paramvil, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    List localList = paramvil.a();
-    if (localList.size() < paramInt)
-    {
-      localArrayList.addAll(localList);
-      localObject1 = localList.iterator();
-      while (((Iterator)localObject1).hasNext()) {
-        ((vim)((Iterator)localObject1).next()).a(true);
-      }
-      paramvil.a(localList);
-      return localArrayList;
-    }
-    Object localObject1 = localList.iterator();
-    Object localObject2;
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (vim)((Iterator)localObject1).next();
-      if (((vim)localObject2).a()) {
-        ((vim)localObject2).a(false);
-      }
-    }
-    localObject1 = new vjv();
-    ((vjv)localObject1).a(localList);
-    localObject1 = ((vjv)localObject1).a(paramInt, null, 0).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (List)((Iterator)localObject1).next();
-      ((vim)((List)localObject2).get(0)).a(true);
-      localArrayList.add(((List)localObject2).get(0));
-    }
-    paramvil.a(localList);
-    return localArrayList;
-  }
-  
-  private void a(long paramLong1, long paramLong2)
-  {
-    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "saveScanTime lastDateAlbumTime=" + paramLong1 + " ,lastScanPictureTime=" + paramLong2);
-    vuq localvuq = (vuq)vux.a(10);
-    localvuq.b("key_last_pic_scan_time", Long.valueOf(paramLong2));
-    localvuq.b("key_last_date_album_time", Long.valueOf(paramLong1));
-    localvuq.b("key_story_home_scan_time", Long.valueOf(paramLong2));
-  }
-  
-  public static void a(List<vil> paramList)
-  {
-    if (paramList.isEmpty()) {
-      return;
-    }
-    Collections.sort(paramList, new vic());
-  }
-  
-  private void a(viz paramviz)
-  {
-    Object localObject1 = (vuq)vux.a(10);
-    if ((TextUtils.isEmpty(paramviz.a)) || (TextUtils.isEmpty(paramviz.b)))
-    {
-      localObject2 = (String)((vuq)localObject1).b("key_album_debug_k", "");
-      localObject1 = (String)((vuq)localObject1).b("key_album_debug_sse", "");
-      xvv.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", "保存K means 的调试信息失败:" + paramviz.a + " 和 " + paramviz.b);
-      xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "sp K means debug sse info:" + (String)localObject1 + " time info:" + (String)localObject2);
-      return;
-    }
-    if (paramviz.a())
-    {
-      ((vuq)localObject1).b("key_album_debug_k", paramviz.a);
-      ((vuq)localObject1).b("key_album_debug_sse", paramviz.b);
-      xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "sp K means debug sse info:" + paramviz.b + " time info:" + paramviz.a);
-      return;
-    }
-    Object localObject2 = paramviz.a.split(";");
-    paramviz = paramviz.b.split(";");
-    ((vuq)localObject1).b("key_album_debug_k", localObject2[0]);
-    ((vuq)localObject1).b("key_album_debug_sse", paramviz[0]);
-    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "sp K means debug sse info:" + paramviz[0] + " time info:" + localObject2[0]);
-  }
-  
-  public static void b(@NonNull List<vim> paramList)
-  {
-    Collections.sort(paramList, new vid());
-  }
-  
-  public List<vil> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    vuq localvuq = (vuq)vux.a(10);
-    long l = ((Long)localvuq.b("key_last_home_time", Long.valueOf(-1L))).longValue();
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-    Object localObject = vuu.a(localEntityManager, StoryAlbumEntry.class, StoryAlbumEntry.class.getSimpleName(), "state=0 ", null, "startTime desc");
-    if ((localObject == null) || (((List)localObject).isEmpty())) {
-      return localArrayList;
-    }
-    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewStoryAlbum : new album time=%s,last time=%d", new Object[] { Long.valueOf(((StoryAlbumEntry)((List)localObject).get(0)).startTime), Long.valueOf(l) });
-    if (((StoryAlbumEntry)((List)localObject).get(0)).startTime <= l) {
-      return localArrayList;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      StoryAlbumEntry localStoryAlbumEntry = (StoryAlbumEntry)((Iterator)localObject).next();
-      vil localvil;
-      try
-      {
-        localvil = vil.a(localStoryAlbumEntry);
-        if (!localvil.c()) {
-          break label241;
+        if ((localObject instanceof vjo))
+        {
+          localObject = (vjo)localObject;
+          localstSimpleMetaPerson = ((vjo)localObject).a();
+          if ((localstSimpleMetaPerson != null) && (TextUtils.equals(localstSimpleMetaPerson.id, paramString))) {
+            ((vjo)localObject).c();
+          }
         }
-        localArrayList.add(localvil);
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    }
+  }
+  
+  private void a(FollowEvent paramFollowEvent, stFeed paramstFeed)
+  {
+    if ((paramstFeed.friendFeed != null) && (paramstFeed.friendFeed.friendFeeds != null))
+    {
+      paramstFeed = paramstFeed.friendFeed.friendFeeds;
+      int i = 0;
+      while (i < paramstFeed.size())
       {
-        yos.a("getNewStoryAlbum DB info have error:" + localInvalidProtocolBufferMicroException, new Object[0]);
+        stSimpleMetaPerson localstSimpleMetaPerson = ((stSimpleMetaFeed)paramstFeed.get(i)).poster;
+        if ((localstSimpleMetaPerson != null) && (TextUtils.equals(localstSimpleMetaPerson.id, paramFollowEvent.getPersonId())))
+        {
+          localstSimpleMetaPerson.followStatus = paramFollowEvent.getIsFollow();
+          a(localstSimpleMetaPerson.id);
+        }
+        i += 1;
       }
-      continue;
-      label241:
-      xvv.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewStoryAlbum we find the illegal album and deleted it : " + localvil);
-      localInvalidProtocolBufferMicroException.setStatus(1001);
-      localEntityManager.remove(localInvalidProtocolBufferMicroException);
     }
-    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewStoryAlbum reslut=%s", new Object[] { localArrayList });
-    if (localArrayList.isEmpty()) {
-      return localArrayList;
-    }
-    if (((vil)localArrayList.get(0)).f() <= l)
+  }
+  
+  private void a(String paramString)
+  {
+    if ((a() == null) || (((viq)a()).a() == null)) {}
+    RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter;
+    do
     {
-      localArrayList.clear();
-      return localArrayList;
-    }
-    localvuq.b("key_last_home_time", Long.valueOf(((vil)localArrayList.get(0)).f()));
-    return localArrayList;
-  }
-  
-  public List<vif> a(long paramLong1, long paramLong2)
-  {
-    return this.jdField_a_of_type_Vht.a(paramLong1, paramLong2);
-  }
-  
-  @NonNull
-  public List<vim> a(Context paramContext)
-  {
-    vuq localvuq = (vuq)vux.a(10);
-    long l = ((Long)localvuq.b("key_story_home_scan_time", Long.valueOf(-1L))).longValue();
-    paramContext = a(paramContext, Math.max(System.currentTimeMillis() / 1000L - 259200L, l));
-    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewScanPicList  result=" + paramContext);
-    if (paramContext.size() >= 10)
+      return;
+      localRecyclerViewWithHeaderFooter = ((viq)a()).a().a();
+    } while (localRecyclerViewWithHeaderFooter == null);
+    int j = localRecyclerViewWithHeaderFooter.getChildCount();
+    int i = 0;
+    label53:
+    RecyclerView.ViewHolder localViewHolder;
+    if (i < j)
     {
-      localvuq.b("key_story_home_scan_time", Long.valueOf(((vim)paramContext.get(0)).b));
-      return paramContext;
+      localViewHolder = localRecyclerViewWithHeaderFooter.getChildViewHolder(localRecyclerViewWithHeaderFooter.getChildAt(i));
+      if (!(localViewHolder instanceof vdg)) {
+        break label99;
+      }
+      a(((vdg)localViewHolder).a(), paramString);
     }
-    return null;
-  }
-  
-  @NonNull
-  public List<vim> a(Context paramContext, long paramLong)
-  {
-    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewPicList scan time = " + paramLong);
-    new ArrayList();
-    return new vhs().a(paramContext, 1L + paramLong, false, 500);
-  }
-  
-  public vht a()
-  {
-    return this.jdField_a_of_type_Vht;
-  }
-  
-  public void a()
-  {
-    ((vvd)vux.a(26)).a(this);
-    this.jdField_a_of_type_Vuq = ((vuq)vux.a(10));
-    this.jdField_a_of_type_Zon = zon.a();
-    this.jdField_a_of_type_Zon.a();
-    this.jdField_a_of_type_Vht = new vht();
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    for (;;)
     {
-    case 0: 
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "trimMemory to be 5");
-      } while (Build.VERSION.SDK_INT < 17);
+      i += 1;
+      break label53;
+      break;
+      label99:
+      if ((localViewHolder instanceof vdd)) {
+        a(((vdd)localViewHolder).a(), paramString);
+      }
+    }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if ((a() == null) || (((viq)a()).a() == null)) {
       return;
     }
-    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "clearAllMemory");
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    int j = 2;
-    Object localObject = this.jdField_a_of_type_Zon;
-    if (paramBoolean)
+    Iterator localIterator = ((viq)a()).a().a().iterator();
+    label42:
+    StringBuilder localStringBuilder;
+    while (localIterator.hasNext())
     {
-      i = 2;
-      ((zon)localObject).b(i);
-      localObject = (vuq)vux.a(10);
-      if (!paramBoolean) {
-        break label54;
+      localObject = (blij)localIterator.next();
+      if ((localObject instanceof vcu))
+      {
+        localObject = (vcu)localObject;
+        ((vcu)localObject).a(paramBoolean);
+        localStringBuilder = new StringBuilder().append("updateMuteStatus title:");
+        if (((vcu)localObject).a == null) {
+          break label124;
+        }
       }
     }
-    label54:
-    for (int i = j;; i = 1)
+    label124:
+    for (Object localObject = ((vcu)localObject).a.d;; localObject = "videoInfo is null!")
     {
-      ((vuq)localObject).b("sp_key_user_enable_album_scan", Integer.valueOf(i));
-      return;
-      i = 1;
+      vmp.e("WSFollowPresenter", (String)localObject);
+      break label42;
       break;
     }
   }
   
-  public boolean a()
+  private void b(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
-    int i = ((Integer)this.jdField_a_of_type_Vuq.b("sp_key_user_enable_album_scan", Integer.valueOf(0))).intValue();
-    if ((i == 0) || (i == -1)) {
-      return this.jdField_a_of_type_Vht.b();
-    }
-    return i != 1;
+    a(((WSPlayerMuteEvent)paramWSSimpleBaseEvent).isPlayerMute());
   }
   
-  public boolean a(long paramLong)
+  private void b(String paramString)
   {
-    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "deletedAlbumById=" + paramLong);
-    if (paramLong >= 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      yos.a(bool, "It is not allowed to deleted the id<0");
-      EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-      StoryAlbumEntry localStoryAlbumEntry = new StoryAlbumEntry();
-      localStoryAlbumEntry.setId(paramLong);
-      localStoryAlbumEntry.setStatus(1001);
-      return localEntityManager.remove(localStoryAlbumEntry);
-    }
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    boolean bool2;
-    if ((this.jdField_a_of_type_Vht != null) && (this.jdField_a_of_type_Vht.a()))
-    {
-      bool2 = true;
-      if (Build.VERSION.SDK_INT < 18) {
-        break label132;
-      }
-    }
-    label132:
-    for (boolean bool3 = true;; bool3 = false)
-    {
-      boolean bool1;
-      if (Build.VERSION.SDK_INT >= 23) {
-        if (paramContext.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) {
-          bool1 = true;
-        }
-      }
-      for (;;)
-      {
-        label50:
-        if ((bool3) && (bool1) && (bool2)) {}
-        for (boolean bool4 = true;; bool4 = false)
-        {
-          xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "isAlbumModuleEnable :%s , isVersionOk :%s , isStoragePermitOk :%s , isConfigOk :%s", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool3), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-          return bool4;
-          bool2 = false;
-          break;
-          bool1 = false;
-          break label50;
-        }
-        bool1 = true;
-      }
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_Vht.b(paramString);
-  }
-  
-  public boolean a(@NonNull List<vil> paramList, boolean paramBoolean)
-  {
-    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "insertAlbumToDb albums=" + paramList.size() + " append=" + paramBoolean);
-    boolean bool;
-    if (!paramList.isEmpty()) {
-      bool = true;
-    }
-    EntityManager localEntityManager;
+    if ((a() == null) || (((viq)a()).a() == null)) {}
     for (;;)
     {
-      yos.a(bool, "It is not allow save the empty albums to DB ");
-      localEntityManager = QQStoryContext.a().a().createEntityManager();
-      localEntityManager.getTransaction().begin();
-      if (!paramBoolean) {
-        localEntityManager.drop(StoryAlbumEntry.class);
-      }
-      try
+      return;
+      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((viq)a()).a().a();
+      if (localRecyclerViewWithHeaderFooter != null)
       {
-        paramList = paramList.iterator();
-        for (;;)
+        int j = localRecyclerViewWithHeaderFooter.getChildCount();
+        int i = 0;
+        while (i < j)
         {
-          if (!paramList.hasNext()) {
-            break label226;
-          }
-          vil localvil = (vil)paramList.next();
-          localStoryAlbumEntry = localvil.a();
-          if (localStoryAlbumEntry.getId() <= 0L) {
-            break;
-          }
-          localStoryAlbumEntry.setStatus(1001);
-          if (!localEntityManager.update(localStoryAlbumEntry))
+          Object localObject = localRecyclerViewWithHeaderFooter.getChildViewHolder(localRecyclerViewWithHeaderFooter.getChildAt(i));
+          if ((localObject instanceof vcu))
           {
-            localStoryAlbumEntry.setStatus(1000);
-            localEntityManager.persistOrReplace(localStoryAlbumEntry);
+            localObject = (vcu)localObject;
+            stFeed localstFeed = ((vcu)localObject).a();
+            if ((localstFeed != null) && (localstFeed.feed != null) && (localstFeed.feed.poster != null) && (TextUtils.equals(localstFeed.feed.poster.id, paramString))) {
+              ((vcu)localObject).f();
+            }
           }
-          localvil.a(localStoryAlbumEntry.getId());
+          i += 1;
         }
       }
-      catch (Exception paramList)
+    }
+  }
+  
+  private void c(WSSimpleBaseEvent paramWSSimpleBaseEvent)
+  {
+    WSFriendFeedExposureEvent localWSFriendFeedExposureEvent = (WSFriendFeedExposureEvent)paramWSSimpleBaseEvent;
+    Object localObject = new StringBuilder().append("handleOnReceiveEventForFriendFeed event: ");
+    if (localWSFriendFeedExposureEvent == null)
+    {
+      paramWSSimpleBaseEvent = "null";
+      vmp.b("WSFollowPresenter", paramWSSimpleBaseEvent);
+      if ((localWSFriendFeedExposureEvent != null) && (localWSFriendFeedExposureEvent.video != null)) {
+        break label68;
+      }
+    }
+    label195:
+    for (;;)
+    {
+      return;
+      paramWSSimpleBaseEvent = Integer.valueOf(localWSFriendFeedExposureEvent.currentPosition);
+      break;
+      label68:
+      paramWSSimpleBaseEvent = ((viq)a()).a();
+      if ((paramWSSimpleBaseEvent != null) && (paramWSSimpleBaseEvent.b() != null))
       {
-        for (;;)
+        paramWSSimpleBaseEvent = ((viq)a()).a();
+        if ((paramWSSimpleBaseEvent != null) && (paramWSSimpleBaseEvent.a() != null))
         {
-          StoryAlbumEntry localStoryAlbumEntry;
-          xvv.c("Q.qqstory.recommendAlbum.logic.StoryScanManager", "insertAlbumToDb exception=%s", paramList);
-          return false;
-          bool = false;
-          break;
-          localEntityManager.persistOrReplace(localStoryAlbumEntry);
+          paramWSSimpleBaseEvent = paramWSSimpleBaseEvent.a();
+          int j = paramWSSimpleBaseEvent.getChildCount();
+          int i = 0;
+          for (;;)
+          {
+            if (i >= j) {
+              break label195;
+            }
+            localObject = paramWSSimpleBaseEvent.getChildViewHolder(paramWSSimpleBaseEvent.getChildAt(i));
+            if ((localObject instanceof vdd))
+            {
+              paramWSSimpleBaseEvent = ((vdd)localObject).a();
+              paramWSSimpleBaseEvent.smoothScrollToPosition(localWSFriendFeedExposureEvent.currentPosition);
+              if (paramWSSimpleBaseEvent.getAdapter() == null) {
+                break;
+              }
+              paramWSSimpleBaseEvent.getAdapter().notifyItemChanged(localWSFriendFeedExposureEvent.currentPosition);
+              return;
+            }
+            i += 1;
+          }
         }
       }
-      finally
-      {
-        localEntityManager.getTransaction().end();
-      }
     }
-    label226:
-    localEntityManager.getTransaction().commit();
-    localEntityManager.getTransaction().end();
-    return true;
   }
   
-  public boolean a(vil paramvil)
+  private void c(String paramString)
   {
-    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "deletedAlbumById=" + paramvil);
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-    paramvil = paramvil.a();
-    paramvil.setStatus(1001);
-    return localEntityManager.update(paramvil);
-  }
-  
-  public List<vil> b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-    Object localObject = vuu.a(localEntityManager, StoryAlbumEntry.class, StoryAlbumEntry.class.getSimpleName(), null, null);
-    if (localObject == null) {
-      return localArrayList;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    if ((a() == null) || (((viq)a()).a() == null)) {}
+    for (;;)
     {
-      StoryAlbumEntry localStoryAlbumEntry = (StoryAlbumEntry)((Iterator)localObject).next();
-      vil localvil;
-      try
+      return;
+      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((viq)a()).a().a();
+      if (localRecyclerViewWithHeaderFooter != null)
       {
-        localvil = vil.a(localStoryAlbumEntry);
-        if (!localvil.c()) {
-          break label144;
+        int j = localRecyclerViewWithHeaderFooter.getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject = localRecyclerViewWithHeaderFooter.getChildViewHolder(localRecyclerViewWithHeaderFooter.getChildAt(i));
+          if ((localObject instanceof vcu))
+          {
+            localObject = (vcu)localObject;
+            stFeed localstFeed = ((vcu)localObject).a();
+            if ((localstFeed != null) && (localstFeed.feed != null) && (TextUtils.equals(localstFeed.feed.id, paramString)))
+            {
+              vmp.b("WSFollowPresenter", "updateLikeStatus");
+              ((vcu)localObject).e();
+            }
+          }
+          i += 1;
         }
-        if (localvil.c() < 2) {
-          a(localvil, 10);
-        }
-        localArrayList.add(localvil);
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        yos.a("DB info have error:" + localInvalidProtocolBufferMicroException, new Object[0]);
-      }
-      continue;
-      label144:
-      xvv.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getAlbumListFromDB we find the illegal album and deleted it : " + localvil);
-      localInvalidProtocolBufferMicroException.setStatus(1001);
-      localEntityManager.remove(localInvalidProtocolBufferMicroException);
     }
-    a(localArrayList);
-    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getAlbumListFromDB reslut=" + localArrayList);
-    return localArrayList;
   }
   
-  public void b()
+  private void d(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
-    ((vvd)vux.a(26)).b(this);
-    this.jdField_a_of_type_Zon.b();
-  }
-  
-  public boolean b(Context paramContext)
-  {
-    if (a(paramContext)) {
-      return this.jdField_a_of_type_Vht.c();
-    }
-    return false;
-  }
-  
-  public boolean b(String paramString)
-  {
-    return this.jdField_a_of_type_Vht.a(paramString);
-  }
-  
-  public List<vjk> c()
-  {
-    return this.jdField_a_of_type_Vht.a();
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Int != 0)
+    Object localObject1 = (WSItemExposeEvent)paramWSSimpleBaseEvent;
+    Object localObject2 = new StringBuilder().append("handleItemExposeEvent event: ");
+    if (localObject1 == null)
     {
-      xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "scan task is running so ignore this request.");
+      paramWSSimpleBaseEvent = "null";
+      vmp.b("WSFollowPresenter", paramWSSimpleBaseEvent);
+      if ((localObject1 != null) && (((WSItemExposeEvent)localObject1).video != null)) {
+        break label60;
+      }
+    }
+    for (;;)
+    {
+      return;
+      paramWSSimpleBaseEvent = ((WSItemExposeEvent)localObject1).video;
+      break;
+      label60:
+      paramWSSimpleBaseEvent = ((viq)a()).a();
+      if ((paramWSSimpleBaseEvent != null) && (paramWSSimpleBaseEvent.b() != null))
+      {
+        localObject2 = ((viq)a()).a();
+        if ((localObject2 != null) && (((XRecyclerView)localObject2).a() != null))
+        {
+          localObject1 = ((WSItemExposeEvent)localObject1).video;
+          List localList = vbc.a().b;
+          if (paramWSSimpleBaseEvent.b().size() < localList.size()) {
+            ((viq)a()).a(localList);
+          }
+          int i = 0;
+          while (i < localList.size())
+          {
+            if (((stFeed)localList.get(i)).feed == localObject1)
+            {
+              ((XRecyclerView)localObject2).a().scrollToPosition(i);
+              this.jdField_a_of_type_Int = i;
+              vmp.b("WSFollowPresenter", "receive item expose event, position: " + i + ", feed: " + ((stSimpleMetaFeed)localObject1).feed_desc);
+              return;
+            }
+            i += 1;
+          }
+        }
+      }
+    }
+  }
+  
+  private void d(String paramString)
+  {
+    if ((a() == null) || (((viq)a()).a() == null)) {}
+    for (;;)
+    {
+      return;
+      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((viq)a()).a().a();
+      if (localRecyclerViewWithHeaderFooter != null)
+      {
+        int j = localRecyclerViewWithHeaderFooter.getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject = localRecyclerViewWithHeaderFooter.getChildViewHolder(localRecyclerViewWithHeaderFooter.getChildAt(i));
+          if ((localObject instanceof vcu))
+          {
+            localObject = (vcu)localObject;
+            stFeed localstFeed = ((vcu)localObject).a();
+            if ((localstFeed != null) && (localstFeed.feed != null) && (TextUtils.equals(localstFeed.feed.id, paramString))) {
+              ((vcu)localObject).a(localstFeed.feed);
+            }
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  private void e(WSSimpleBaseEvent paramWSSimpleBaseEvent)
+  {
+    vmp.b("WSFollowPresenter", "[handleOnReceiveEventForFollow]");
+    paramWSSimpleBaseEvent = (FollowEvent)paramWSSimpleBaseEvent;
+    Object localObject1 = ((viq)a()).a();
+    if ((localObject1 == null) || (((uxe)localObject1).b() == null)) {
       return;
     }
-    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "start scan");
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Int = 1;
-    viz localviz = new viz();
-    Context localContext = QQStoryContext.a().a().getBaseContext();
-    Stream.of(Integer.valueOf(0)).map(new ThreadOffFunction("Q.qqstory.recommendAlbum.logic.StoryScanManager", 2)).map(new vix(localContext, localviz)).map(new viy(localviz)).map(new viw(localviz)).map(new viv(localviz)).subscribe(new vib(this, localviz));
+    localObject1 = ((uxe)localObject1).b();
+    int i = 0;
+    label50:
+    Object localObject2;
+    if (i < ((List)localObject1).size())
+    {
+      localObject2 = (stFeed)((List)localObject1).get(i);
+      if ((localObject2 != null) && (((stFeed)localObject2).feed != null) && (((stFeed)localObject2).feed.poster != null)) {
+        break label105;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label50;
+      break;
+      label105:
+      if ((((stFeed)localObject2).feed_type == 1) && (((stFeed)localObject2).person_meta != null))
+      {
+        localObject2 = ((stFeed)localObject2).person_meta;
+        int j = 0;
+        while (j < ((ArrayList)localObject2).size())
+        {
+          stSimpleMetaPerson localstSimpleMetaPerson = (stSimpleMetaPerson)((ArrayList)localObject2).get(j);
+          if (TextUtils.equals(localstSimpleMetaPerson.id, paramWSSimpleBaseEvent.getPersonId()))
+          {
+            localstSimpleMetaPerson.followStatus = paramWSSimpleBaseEvent.getIsFollow();
+            a(localstSimpleMetaPerson.id);
+          }
+          j += 1;
+        }
+      }
+      else if ((((stFeed)localObject2).feed_type == 2) && (((stFeed)localObject2).feed != null))
+      {
+        localObject2 = ((stFeed)localObject2).feed.poster;
+        if (TextUtils.equals(((stSimpleMetaPerson)localObject2).id, paramWSSimpleBaseEvent.getPersonId()))
+        {
+          ((stSimpleMetaPerson)localObject2).followStatus = paramWSSimpleBaseEvent.getIsFollow();
+          b(paramWSSimpleBaseEvent.getPersonId());
+        }
+      }
+      else if (((stFeed)localObject2).feed_type == 4)
+      {
+        a(paramWSSimpleBaseEvent, (stFeed)localObject2);
+      }
+    }
   }
   
-  public void d()
+  private void f(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
-    this.jdField_a_of_type_Vht.c();
+    paramWSSimpleBaseEvent = (WSVideoPlayEvent)paramWSSimpleBaseEvent;
+    vmp.b("WSFollowPresenter", "handleVideoPlayEvent mCurrentPosition: " + paramWSSimpleBaseEvent.mCurrentPosition);
   }
   
-  public void e()
+  private void g(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
-    this.jdField_a_of_type_Vht.b();
+    paramWSSimpleBaseEvent = (LikeRspEvent)paramWSSimpleBaseEvent;
+    vmp.b("WSFollowPresenter", "handleLikeEvent feedId: " + paramWSSimpleBaseEvent.getFeedId() + " isDing:" + paramWSSimpleBaseEvent.getRspIsDing());
+    Object localObject = ((viq)a()).a();
+    if ((localObject == null) || (((uxe)localObject).b() == null)) {
+      return;
+    }
+    localObject = ((uxe)localObject).b();
+    int i = 0;
+    label83:
+    stFeed localstFeed;
+    if (i < ((List)localObject).size())
+    {
+      localstFeed = (stFeed)((List)localObject).get(i);
+      if ((localstFeed != null) && (localstFeed.feed != null)) {
+        break label127;
+      }
+    }
+    label127:
+    while (!TextUtils.equals(paramWSSimpleBaseEvent.getFeedId(), localstFeed.feed.id))
+    {
+      i += 1;
+      break label83;
+      break;
+    }
+    int j;
+    label174:
+    stSimpleMetaFeed localstSimpleMetaFeed;
+    if (paramWSSimpleBaseEvent.getRspIsDing() != localstFeed.feed.is_ding)
+    {
+      if (localstFeed.feed.is_ding != 1) {
+        break label220;
+      }
+      j = 1;
+      if (j == 0) {
+        break label225;
+      }
+      localstSimpleMetaFeed = localstFeed.feed;
+    }
+    for (localstSimpleMetaFeed.ding_count -= 1;; localstSimpleMetaFeed.ding_count += 1)
+    {
+      localstFeed.feed.is_ding = paramWSSimpleBaseEvent.getRspIsDing();
+      c(paramWSSimpleBaseEvent.getFeedId());
+      break;
+      label220:
+      j = 0;
+      break label174;
+      label225:
+      localstSimpleMetaFeed = localstFeed.feed;
+    }
+  }
+  
+  private void h(WSSimpleBaseEvent paramWSSimpleBaseEvent)
+  {
+    vmp.b("WSFollowPresenter", "[handleOnReceiveEventForFollow]");
+    paramWSSimpleBaseEvent = (WSAddCommentEvent)paramWSSimpleBaseEvent;
+    Object localObject = ((viq)a()).a();
+    if ((localObject == null) || (((uxe)localObject).b() == null)) {
+      return;
+    }
+    localObject = ((uxe)localObject).b();
+    int i = 0;
+    label45:
+    stFeed localstFeed;
+    if (i < ((List)localObject).size())
+    {
+      localstFeed = (stFeed)((List)localObject).get(i);
+      if ((localstFeed != null) && (localstFeed.feed != null)) {
+        break label87;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label45;
+      break;
+      label87:
+      if (TextUtils.equals(paramWSSimpleBaseEvent.getFeedId(), localstFeed.feed.id)) {
+        d(paramWSSimpleBaseEvent.getFeedId());
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public stFollowFeedsGlobalConfig a()
+  {
+    return this.jdField_a_of_type_UserGrowthStFollowFeedsGlobalConfig;
+  }
+  
+  public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
+  {
+    if ((paramWSSimpleBaseEvent instanceof LikeRspEvent)) {
+      g(paramWSSimpleBaseEvent);
+    }
+    do
+    {
+      return;
+      if ((paramWSSimpleBaseEvent instanceof WSVideoPlayEvent))
+      {
+        f(paramWSSimpleBaseEvent);
+        return;
+      }
+      if ((paramWSSimpleBaseEvent instanceof WSItemExposeEvent))
+      {
+        d(paramWSSimpleBaseEvent);
+        return;
+      }
+      if ((paramWSSimpleBaseEvent instanceof FollowEvent))
+      {
+        e(paramWSSimpleBaseEvent);
+        return;
+      }
+      if ((paramWSSimpleBaseEvent instanceof WSAddCommentEvent))
+      {
+        h(paramWSSimpleBaseEvent);
+        return;
+      }
+      if ((paramWSSimpleBaseEvent instanceof WSFriendFeedExposureEvent))
+      {
+        c(paramWSSimpleBaseEvent);
+        return;
+      }
+    } while (!(paramWSSimpleBaseEvent instanceof WSPlayerMuteEvent));
+    b(paramWSSimpleBaseEvent);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (a() == null) {
+      return;
+    }
+    if (paramBoolean1) {
+      ((viq)a()).c();
+    }
+    long l = System.currentTimeMillis();
+    vbc.a().a(paramBoolean1, paramBoolean2, "", 9, l, new vib(this, paramBoolean1));
   }
 }
 

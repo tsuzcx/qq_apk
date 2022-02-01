@@ -1,89 +1,47 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class aqhm
+class aqhm
+  implements Animator.AnimatorListener
 {
-  private String a;
-  public boolean a;
-  private String b;
-  public boolean b;
-  private String c = "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3";
-  private String d = "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3";
+  aqhm(aqhk paramaqhk, aqhr paramaqhr) {}
   
-  public aqhm()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}";
-    this.jdField_b_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}";
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationCancel " + this.jdField_a_of_type_Aqhr.jdField_a_of_type_Long);
+    }
+    this.jdField_a_of_type_Aqhk.a(this.jdField_a_of_type_Aqhr);
   }
   
-  @NonNull
-  public static aqhm a(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    boolean bool2 = false;
-    aqhm localaqhm = new aqhm();
-    if (TextUtils.isEmpty(paramString)) {
-      return localaqhm;
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationEnd " + this.jdField_a_of_type_Aqhr.jdField_a_of_type_Long);
     }
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.optInt("showCreateIcon") == 1)
-        {
-          bool1 = true;
-          localaqhm.jdField_b_of_type_Boolean = bool1;
-          localaqhm.jdField_a_of_type_JavaLangString = paramString.optString("pretty_home", "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}");
-          localaqhm.jdField_b_of_type_JavaLangString = paramString.optString("pretty_mine", "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}");
-          localaqhm.c = paramString.optString("2k", "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3");
-          localaqhm.d = paramString.optString("3k", "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3");
-          bool1 = bool2;
-          if (paramString.optInt("limit_off", 0) == 1) {
-            bool1 = true;
-          }
-          localaqhm.jdField_a_of_type_Boolean = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("vip_pretty.ConfigProcessor", 1, localaqhm.toString());
-          return localaqhm;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("vip_pretty.ConfigProcessor", 1, "json parse error:" + paramString);
-        return localaqhm;
-      }
-      boolean bool1 = false;
+    this.jdField_a_of_type_Aqhk.a(this.jdField_a_of_type_Aqhr);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationRepeat " + this.jdField_a_of_type_Aqhr.jdField_a_of_type_Long);
     }
   }
   
-  public String a()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return this.c;
-  }
-  
-  public String a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaLangString.replace("{from}", paramString);
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    return this.jdField_b_of_type_JavaLangString.replace("{from}", paramString1).replace("{groupnum}", paramString2);
-  }
-  
-  public String b()
-  {
-    return this.d;
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationStart " + this.jdField_a_of_type_Aqhr.jdField_a_of_type_Long);
+    }
+    this.jdField_a_of_type_Aqhr.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,88 @@
-import android.os.AsyncTask;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.widget.BubbleViewLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
 
 public class ocu
-  extends AsyncTask<String, Integer, String>
+  extends BaseAdapter
 {
-  String jdField_a_of_type_JavaLangString;
+  public ocu(oct paramoct) {}
   
-  protected String a(String... paramVarArgs)
+  public oji a(int paramInt)
   {
-    if (super.isCancelled()) {
-      return null;
+    return (oji)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public int getCount()
+  {
+    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1 = this.a.jdField_a_of_type_AndroidContentContext.getResources();
+    int i = AIOUtils.dp2px(200.0F, (Resources)localObject1);
+    int j = AIOUtils.dp2px(140.0F, (Resources)localObject1);
+    int k = AIOUtils.dp2px(12.0F, (Resources)localObject1);
+    Object localObject2;
+    if (paramView == null)
+    {
+      paramView = new ocv(this);
+      localObject1 = new BubbleViewLayout(this.a.jdField_a_of_type_AndroidContentContext);
+      ((BubbleViewLayout)localObject1).setRadius(6.0F);
+      ((BubbleViewLayout)localObject1).showSharpCorner(false);
+      ((View)localObject1).setLayoutParams(new AbsListView.LayoutParams(j, i));
+      localObject2 = new URLImageView(this.a.jdField_a_of_type_AndroidContentContext);
+      ((URLImageView)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+      ((URLImageView)localObject2).setImageDrawable(new ColorDrawable(Color.parseColor("#33000000")));
+      ((URLImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER_CROP);
+      ((ViewGroup)localObject1).addView((View)localObject2);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject2);
+      localObject2 = new TextView(this.a.jdField_a_of_type_AndroidContentContext);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.addRule(12, -1);
+      localLayoutParams.addRule(14, -1);
+      localLayoutParams.setMargins(k, 0, k, k);
+      ((TextView)localObject2).setLayoutParams(localLayoutParams);
+      ((TextView)localObject2).setTextColor(-1);
+      ((TextView)localObject2).setTextSize(2, 16.0F);
+      ((TextView)localObject2).setMaxLines(2);
+      ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
+      ((ViewGroup)localObject1).addView((View)localObject2);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
+      ((View)localObject1).setTag(paramView);
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(paramVarArgs[0], paramVarArgs[1]);
-  }
-  
-  protected void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "{\"r\" : \"-100\"}";
+    for (;;)
+    {
+      localObject2 = a(paramInt);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(((oji)localObject2).e, null, null, true));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((oji)localObject2).a);
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return localObject1;
+      localObject2 = (ocv)paramView.getTag();
+      localObject1 = paramView;
+      paramView = (View)localObject2;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs("clientCallback", new String[] { npn.a(str), npn.a(this.jdField_a_of_type_JavaLangString) });
   }
-  
-  protected void a(Integer... paramVarArgs) {}
-  
-  protected void onCancelled()
-  {
-    super.onCancelled();
-  }
-  
-  protected void onPreExecute() {}
 }
 
 

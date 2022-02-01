@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.utils;
 
-import amqx;
-import amrb;
 import android.text.TextUtils;
-import bfxn;
-import bfxo;
+import antl;
+import antp;
+import bhgf;
+import bhgg;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +28,7 @@ import org.json.JSONObject;
 public final class QAVHrMeeting$1
   implements Runnable
 {
-  public QAVHrMeeting$1(String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface, String paramString4, bfxo parambfxo) {}
+  public QAVHrMeeting$1(String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface, String paramString4, bhgg parambhgg) {}
   
   public void run()
   {
@@ -64,7 +66,7 @@ public final class QAVHrMeeting$1
         localObject1 = "";
         i = ((HttpResponse)localObject6).getStatusLine().getStatusCode();
         if (i != 200) {
-          break label815;
+          break label817;
         }
       }
       catch (Exception localException2)
@@ -96,12 +98,12 @@ public final class QAVHrMeeting$1
           localObject8 = localObject4;
           localObject9 = localObject4;
           if (((JSONObject)localObject1).getInt("retcode") != 0) {
-            break label807;
+            break label809;
           }
           localObject8 = localObject4;
           localObject9 = localObject4;
           if (!((JSONObject)localObject1).has("result")) {
-            break label807;
+            break label809;
           }
           localObject8 = localObject4;
           localJSONObject = ((JSONObject)localObject1).getJSONObject("result");
@@ -121,19 +123,19 @@ public final class QAVHrMeeting$1
           localObject8 = localObject1;
           localObject9 = localObject1;
           if (!localJSONObject.has("stask")) {
-            break label807;
+            break label809;
           }
           localObject8 = localObject1;
           localObject4 = localJSONObject.getString("stask");
           localObject8 = localObject1;
           localObject9 = localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject4)) {
-            break label807;
+            break label809;
           }
           localObject8 = localObject1;
           localObject9 = localObject1;
           if (((String)localObject4).compareToIgnoreCase("null") == 0) {
-            break label807;
+            break label809;
           }
           localObject8 = localObject1;
           i = Integer.valueOf((String)localObject4).intValue();
@@ -154,36 +156,36 @@ public final class QAVHrMeeting$1
           }
           localDefaultHttpClient.getConnectionManager().shutdown();
           AudioHelper.b("获取hr信息_rsp_" + this.c);
-          localObject4 = (amrb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53);
+          localObject4 = (antp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
           if (TextUtils.equals(this.c, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
           {
-            localObject6 = ((amrb)localObject4).a(this.d);
+            localObject6 = ((antp)localObject4).a(this.d);
             if ((localObject6 != null) && (((DiscussionInfo)localObject6).mSelfRight != i))
             {
               ((DiscussionInfo)localObject6).mSelfRight = i;
-              ((amrb)localObject4).a((DiscussionInfo)localObject6);
-              bfxn.a("getHrConfMemberName", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DiscussionInfo)localObject6);
-              bfxn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((DiscussionInfo)localObject6).uin);
+              ((antp)localObject4).a((DiscussionInfo)localObject6);
+              bhgf.a("getHrConfMemberName", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DiscussionInfo)localObject6);
+              bhgf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((DiscussionInfo)localObject6).uin);
             }
           }
           if ((localObject1 != null) && (((String)localObject1).length() > 0))
           {
-            localObject6 = ((amrb)localObject4).a(this.d, this.c);
+            localObject6 = ((antp)localObject4).a(this.d, this.c);
             if (localObject6 != null)
             {
               ((DiscussionMemberInfo)localObject6).memberName = ((String)localObject1);
               ((DiscussionMemberInfo)localObject6).inteRemark = ((String)localObject1);
-              ((amrb)localObject4).a((DiscussionMemberInfo)localObject6);
+              ((antp)localObject4).a((DiscussionMemberInfo)localObject6);
               localObject4 = new ArrayList(2);
               ((ArrayList)localObject4).add(this.d);
               ((ArrayList)localObject4).add(1, Boolean.valueOf(true));
-              ((amqx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(6)).notifyUI(1001, true, localObject4);
+              ((antl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).notifyUI(1001, true, localObject4);
             }
           }
-          if (this.jdField_a_of_type_Bfxo == null) {
+          if (this.jdField_a_of_type_Bhgg == null) {
             continue;
           }
-          this.jdField_a_of_type_Bfxo.a((String)localObject1, i);
+          this.jdField_a_of_type_Bhgg.a((String)localObject1, i);
           return;
         }
         catch (Exception localException3)
@@ -196,8 +198,8 @@ public final class QAVHrMeeting$1
         localObject1 = localObject4;
         continue;
       }
-      label807:
-      label815:
+      label809:
+      label817:
       Object localObject7 = "";
       int i = 0;
       Object localObject3 = "";

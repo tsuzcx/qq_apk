@@ -1,39 +1,32 @@
+import android.view.View;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
+
 public class bbei
+  implements AdapterView.OnItemSelectedListener
 {
-  boolean jdField_a_of_type_Boolean;
+  public bbei(IosTimepicker paramIosTimepicker) {}
   
-  public bbei(bbee parambbee, boolean paramBoolean)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    IosTimepicker.a(this.a, paramView, 1);
+    if (paramView.getTag() != null)
+    {
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt) {
+          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+        }
+        paramInt += 1;
+      }
+    }
   }
   
-  public void a(boolean paramBoolean)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

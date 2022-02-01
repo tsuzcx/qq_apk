@@ -11,9 +11,9 @@ import android.telephony.CellLocation;
 import android.telephony.TelephonyManager;
 import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
-import com.tencent.mobileqq.msf.core.MsfCoreUtil;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Method;
 
 public class HwNetworkUtil
 {
@@ -21,6 +21,7 @@ public class HwNetworkUtil
   public static final int CARRIER_OPERATOR_TYPE_CHINATELECOM = 4;
   public static final int CARRIER_OPERATOR_TYPE_CHINAUNICOM = 3;
   public static final int CARRIER_OPERATOR_TYPE_UNKOWN = 1;
+  private static final String IMSI_ACCESS_BUS_ID = "7aa881";
   public static final String TAG = "HwNetworkUtil";
   
   public static NetworkInfo getActiveNetworkInfo(Context paramContext)
@@ -30,21 +31,26 @@ public class HwNetworkUtil
   
   public static int getCarrierOperatorType(Context paramContext)
   {
-    paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-    paramContext = MsfCoreUtil.getImsi();
+    int j = 1;
+    paramContext = getIMSI();
+    int i = j;
     if (paramContext != null)
     {
-      if ((paramContext.startsWith("46000")) || (paramContext.startsWith("46002"))) {
-        return 2;
+      if ((!paramContext.startsWith("46000")) && (!paramContext.startsWith("46002"))) {
+        break label34;
       }
+      i = 2;
+    }
+    label34:
+    do
+    {
+      return i;
       if (paramContext.startsWith("46001")) {
         return 3;
       }
-      if (paramContext.startsWith("46003")) {
-        return 4;
-      }
-    }
-    return 1;
+      i = j;
+    } while (!paramContext.startsWith("46003"));
+    return 4;
   }
   
   public static int getCellId(Context paramContext)
@@ -133,25 +139,37 @@ public class HwNetworkUtil
     return null;
   }
   
-  public static String getIMSI(Context paramContext)
+  private static String getIMSI()
   {
-    paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-    if (paramContext == null) {
-      return "46000";
-    }
     try
     {
-      paramContext = paramContext.getSubscriberId();
-      return paramContext;
+      String str = (String)getMethodIMSI().invoke(null, new Object[] { "7aa881" });
+      return str;
     }
-    catch (Exception paramContext)
+    catch (Exception localException)
     {
-      paramContext.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.d("HwNetworkUtil", 2, "getIMSI() error " + paramContext, paramContext);
-      }
+      QLog.e("HwNetworkUtil", 1, "getIMSI() error " + localException, localException);
     }
-    return "46000";
+    return null;
+  }
+  
+  protected static Method getMethodIMSI()
+  {
+    try
+    {
+      Method localMethod = Class.forName("com.tencent.util.QQDeviceInfo").getMethod("getIMSI", new Class[] { String.class });
+      return localMethod;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      localClassNotFoundException.printStackTrace();
+      return null;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      localNoSuchMethodException.printStackTrace();
+    }
+    return null;
   }
   
   public static String getNetworkName(Context paramContext)

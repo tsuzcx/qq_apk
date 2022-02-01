@@ -1,6 +1,7 @@
 package com.tencent.biz.lebasearch;
 
-import akms;
+import aady;
+import alik;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -10,10 +11,10 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bcef;
-import bfur;
-import bfvh;
-import bkmt;
+import bdla;
+import bhdj;
+import bhdz;
+import blyb;
 import com.dataline.activities.LiteActivity;
 import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
 import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
@@ -31,6 +32,7 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 import com.tencent.mobileqq.mini.report.MiniAppBusiReport;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
@@ -41,14 +43,13 @@ import common.config.service.QzoneConfig;
 import cooperation.comic.VipComicJumpActivity;
 import cooperation.qqreader.QRBridgeActivity;
 import java.util.HashMap;
-import ljo;
-import nrp;
-import nrq;
-import nrr;
-import ofx;
+import lka;
+import nyq;
+import nyr;
+import nys;
+import onq;
 import org.json.JSONObject;
-import uyo;
-import zon;
+import vnd;
 
 public class Utils
 {
@@ -107,15 +108,15 @@ public class Utils
   
   public static QQCustomDialog createPluginSetDialogForMain(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, long paramLong, String paramString1, String paramString2, Handler paramHandler)
   {
-    nrq localnrq = new nrq(paramInt, paramQQAppInterface, paramLong, paramHandler);
-    paramHandler = new nrr(paramHandler);
+    nyr localnyr = new nyr(paramInt, paramQQAppInterface, paramLong, paramHandler);
+    paramHandler = new nys(paramHandler);
     int i;
     if (!TextUtils.isEmpty(paramString2))
     {
       if (paramInt != 1) {
         break label116;
       }
-      i = 2131695515;
+      i = 2131695765;
       label42:
       if (paramInt != 1) {
         break label123;
@@ -123,50 +124,50 @@ public class Utils
     }
     label116:
     label123:
-    for (paramInt = 2131695520;; paramInt = 2131695518)
+    for (paramInt = 2131695770;; paramInt = 2131695768)
     {
-      return bfur.a((BaseActivity)paramContext, paramString2, i, paramInt, localnrq, paramHandler);
+      return bhdj.a((BaseActivity)paramContext, paramString2, i, paramInt, localnyr, paramHandler);
       if (paramInt == 1) {}
-      for (paramQQAppInterface = paramContext.getResources().getString(2131695523, new Object[] { paramString1 });; paramQQAppInterface = paramContext.getString(2131695519, new Object[] { paramString1 }))
+      for (paramQQAppInterface = paramContext.getResources().getString(2131695773, new Object[] { paramString1 });; paramQQAppInterface = paramContext.getString(2131695769, new Object[] { paramString1 }))
       {
         paramString2 = paramQQAppInterface;
         break;
       }
-      i = 2131695517;
+      i = 2131695767;
       break label42;
     }
   }
   
-  public static QQCustomDialog createPluginSetDialogForWeb(Context paramContext, zon paramzon, BusinessObserver paramBusinessObserver, int paramInt, long paramLong, String paramString1, String paramString2)
+  public static QQCustomDialog createPluginSetDialogForWeb(Context paramContext, aady paramaady, BusinessObserver paramBusinessObserver, int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    QQCustomDialog localQQCustomDialog = bfur.a(paramContext, 230);
-    paramBusinessObserver = new nrp(paramInt, paramBusinessObserver, paramContext, paramzon, paramLong);
-    paramzon = new TextView(paramContext);
-    paramzon.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    paramzon.setTextSize(14.0F);
-    paramzon.setTextColor(paramContext.getResources().getColor(2131165491));
-    paramzon.setGravity(1);
-    paramzon.setPadding((int)bfvh.a(paramContext, 15.0F), (int)bfvh.a(paramContext, 30.0F), (int)bfvh.a(paramContext, 15.0F), (int)bfvh.a(paramContext, 15.0F));
+    QQCustomDialog localQQCustomDialog = bhdj.a(paramContext, 230);
+    paramBusinessObserver = new nyq(paramInt, paramBusinessObserver, paramContext, paramaady, paramLong);
+    paramaady = new TextView(paramContext);
+    paramaady.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    paramaady.setTextSize(14.0F);
+    paramaady.setTextColor(paramContext.getResources().getColor(2131165497));
+    paramaady.setGravity(1);
+    paramaady.setPadding((int)bhdz.a(paramContext, 15.0F), (int)bhdz.a(paramContext, 30.0F), (int)bhdz.a(paramContext, 15.0F), (int)bhdz.a(paramContext, 15.0F));
     if (paramInt == 1)
     {
-      localQQCustomDialog.setPositiveButton(2131695515, paramBusinessObserver);
-      localQQCustomDialog.setNegativeButton(2131695520, paramBusinessObserver);
+      localQQCustomDialog.setPositiveButton(2131695765, paramBusinessObserver);
+      localQQCustomDialog.setNegativeButton(2131695770, paramBusinessObserver);
       if (paramString2 != null) {}
       for (;;)
       {
-        paramzon.setText(paramString2);
-        localQQCustomDialog.addView(paramzon);
+        paramaady.setText(paramString2);
+        localQQCustomDialog.addView(paramaady);
         return localQQCustomDialog;
-        paramString2 = paramContext.getResources().getString(2131695523, new Object[] { paramString1 });
+        paramString2 = paramContext.getResources().getString(2131695773, new Object[] { paramString1 });
       }
     }
     if (paramString2 != null) {}
     for (;;)
     {
-      localQQCustomDialog.setNegativeButton(2131695518, paramBusinessObserver);
-      localQQCustomDialog.setPositiveButton(2131695517, paramBusinessObserver);
+      localQQCustomDialog.setNegativeButton(2131695768, paramBusinessObserver);
+      localQQCustomDialog.setPositiveButton(2131695767, paramBusinessObserver);
       break;
-      paramString2 = paramContext.getString(2131695519, new Object[] { paramString1 });
+      paramString2 = paramContext.getString(2131695769, new Object[] { paramString1 });
     }
   }
   
@@ -182,14 +183,14 @@ public class Utils
     if ((paramContext != null) && ((paramContext instanceof QQAppInterface))) {}
     for (paramContext = (QQAppInterface)paramContext;; paramContext = null)
     {
-      bcef.b(paramContext, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.hongbao.click", 0, 0, "", "", "", "");
+      bdla.b(paramContext, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.hongbao.click", 0, 0, "", "", "", "");
       return true;
     }
   }
   
   public static boolean gotoFaceToFaceSend(Context paramContext, HashMap<String, Object> paramHashMap)
   {
-    bkmt.a(paramContext, 14, null);
+    blyb.a(paramContext, 14, null);
     return true;
   }
   
@@ -278,7 +279,7 @@ public class Utils
           continue;
           paramHashMap.setClass(paramContext, NearbyActivity.class);
           continue;
-          uyo.a(paramContext, null, 0, null, null, 6);
+          vnd.a(paramContext, null, 0, null, null, 6);
           return true;
           paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
           if (i == 27) {
@@ -306,8 +307,8 @@ public class Utils
           }
           paramHashMap.setClass(paramContext, LiteActivity.class);
           paramHashMap.putExtra("targetUin", AppConstants.DATALINE_PC_UIN);
-          akms.a = true;
-          akms.a(paramHashMap);
+          alik.a = true;
+          alik.a(paramHashMap);
           continue;
           paramHashMap.setClass(paramContext, TroopAssistantActivity.class);
           continue;
@@ -317,9 +318,9 @@ public class Utils
           localObject = BaseApplicationImpl.getApplication().getRuntime();
           if ((localObject != null) && ((localObject instanceof QQAppInterface)))
           {
-            localObject = (ofx)((QQAppInterface)localObject).getManager(88);
+            localObject = (onq)((QQAppInterface)localObject).getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
             if (localObject != null) {
-              ((ofx)localObject).a(paramHashMap, paramContext, -1);
+              ((onq)localObject).a(paramHashMap, paramContext, -1);
             }
           }
           localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappecshopurl", "");
@@ -366,15 +367,15 @@ public class Utils
   
   public static boolean gotoScan(Context paramContext, HashMap<String, Object> paramHashMap)
   {
-    if (ljo.b(BaseApplicationImpl.getContext()))
+    if (lka.b(BaseApplicationImpl.getContext()))
     {
       QLog.e("lebasearch.Utils", 2, "gotoScan method. QavCameraUsage.checkAVCameraUsed false.");
       return false;
     }
     paramHashMap = new Intent(paramContext, ScannerActivity.class);
     paramHashMap.putExtra("from", "Conversation");
-    paramHashMap.putExtra("leftViewText", paramContext.getString(2131690599));
-    paramHashMap.putExtra("selfSet_leftViewText", paramContext.getString(2131690599));
+    paramHashMap.putExtra("leftViewText", paramContext.getString(2131690676));
+    paramHashMap.putExtra("selfSet_leftViewText", paramContext.getString(2131690676));
     paramHashMap.setFlags(67108864);
     paramHashMap.setFlags(276824064);
     paramContext.startActivity(paramHashMap);
@@ -453,13 +454,13 @@ public class Utils
     }
   }
   
-  public static void sendPluginSetMessage(Context paramContext, zon paramzon, BusinessObserver paramBusinessObserver, long paramLong, boolean paramBoolean)
+  public static void sendPluginSetMessage(Context paramContext, aady paramaady, BusinessObserver paramBusinessObserver, long paramLong, boolean paramBoolean)
   {
     paramContext = new Handler(paramContext.getMainLooper());
     Bundle localBundle = new Bundle();
     localBundle.putLong("uiResId", paramLong);
     localBundle.putBoolean("isChecked", paramBoolean);
-    paramContext.post(new Utils.2(paramzon, localBundle, paramBusinessObserver));
+    paramContext.post(new Utils.2(paramaady, localBundle, paramBusinessObserver));
   }
 }
 

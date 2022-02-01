@@ -1,14 +1,37 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import java.util.Comparator;
+import MQQ.PayRuleCfg;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.transfile.URLDrawableHelper.Adapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class aerr
-  implements Comparator<aert>
+  extends URLDrawableHelper.Adapter
 {
-  private aerr(TroopTransferActivity paramTroopTransferActivity) {}
+  public aerr(QQSettingMe paramQQSettingMe, TextView paramTextView) {}
   
-  public int a(aert paramaert1, aert paramaert2)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return paramaert1.f.compareToIgnoreCase(paramaert2.f);
+    QLog.e("QQSettingRedesign", 1, "VipInfoHandler updateVipItemView onLoadFialed: ", paramThrowable);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "VipInfoHandler onLoadSuccessed: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconUrl);
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconText);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol));
+      return;
+    }
+    catch (Exception paramURLDrawable)
+    {
+      QLog.e("QQSettingRedesign", 1, "VipInfoHandler setTextColor: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol, paramURLDrawable);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    }
   }
 }
 

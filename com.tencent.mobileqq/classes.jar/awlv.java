@@ -1,38 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class awlv
-  implements bezd
+class awlv
+  extends anvi
 {
-  public awlv(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  awlv(awlt paramawlt) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (paramJSONObject != null)
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    paramObject = String.valueOf(paramObject);
+    if ((paramBoolean) && (paramObject.equals(awlt.a(this.a).a())))
     {
-      paramInt = paramJSONObject.optInt("retcode", -1);
-      paramBundle = new ArrayList();
-      if (paramInt == 0)
-      {
-        paramJSONObject = paramJSONObject.optJSONObject("data");
-        if (paramJSONObject != null)
-        {
-          paramJSONObject = paramJSONObject.optJSONArray("rpt_board_items");
-          if (paramJSONObject != null)
-          {
-            paramInt = 0;
-            while (paramInt < paramJSONObject.length())
-            {
-              paramBundle.add(paramJSONObject.optJSONObject(paramInt).optString("uint64_uin"));
-              paramInt += 1;
-            }
-          }
-        }
+      awlt.a(awlt.a(this.a), 0, String.valueOf(paramObject));
+      if (awlt.a(this.a) != null) {
+        awlt.a(this.a).finish();
       }
-      this.a.jdField_a_of_type_Awnd.a(this.a.b, "" + this.a.jdField_a_of_type_Long, paramBundle, new awlw(this));
     }
   }
 }

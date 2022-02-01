@@ -1,60 +1,32 @@
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
 class akxo
+  implements EIPCOnGetConnectionListener
 {
-  int jdField_a_of_type_Int = 3;
-  long jdField_a_of_type_Long = 0L;
-  akxo jdField_a_of_type_Akxo = null;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-  boolean jdField_a_of_type_Boolean = false;
+  akxo(akxn paramakxn) {}
   
-  static akxo a()
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    akxo localakxo = new akxo();
-    localakxo.a();
-    return localakxo;
-  }
-  
-  String a()
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return "LBS_REQ_OK";
-    case 1: 
-      return "LBS_REQ_PENDING";
+    if (paramEIPCConnection != null) {
+      akxn.a(this.a, paramEIPCConnection.procName);
     }
-    return "LBS_REQ_PERM_OK";
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_Akxo == null) {
-      this.jdField_a_of_type_Akxo = new akxo();
+    akxn.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
     }
   }
   
-  boolean a(String paramString)
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    akxm.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.jdField_a_of_type_JavaUtilArrayList.toString() }), null);
-    return this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
-  }
-  
-  void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  void c()
-  {
-    this.jdField_a_of_type_Akxo.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Akxo.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Akxo.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Akxo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Akxo.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    if (paramEIPCConnection != null) {
+      akxn.a(this.a, paramEIPCConnection.procName);
+    }
+    akxn.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
+    }
   }
 }
 

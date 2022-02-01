@@ -1,128 +1,130 @@
-import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.PhoneContactAddBuilder.1;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.PhoneContactAdd;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import msf.msgsvc.msg_svc.TransSvrInfo;
+import qqcircle.QQCirclePrivateMsgAIO.PrivateMsgTransSvrInfo;
 
-public class aifn
-  extends aiea
-  implements View.OnClickListener
+class aifn
+  extends anyz
 {
-  public aifn(Context paramContext, QQAppInterface paramQQAppInterface, aifw paramaifw, aigo paramaigo)
-  {
-    super(paramContext, paramQQAppInterface, paramaifw, paramaigo);
-    this.jdField_a_of_type_Bjty = a(paramContext);
-  }
+  aifn(aifl paramaifl) {}
   
-  protected int a()
+  protected void onInsertIntoBlackList(boolean paramBoolean, String paramString)
   {
-    return 1;
-  }
-  
-  public View a(int paramInt, View paramView)
-  {
-    aifo localaifo;
-    PhoneContactAdd localPhoneContactAdd;
-    if ((paramView == null) || (!(paramView.getTag() instanceof aifo)))
+    if ((paramString != null) && (this.a.sessionInfo.curFriendUin != null) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
     {
-      localaifo = new aifo();
-      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2131561479, localaifo);
-      localaifo.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361795));
-      localaifo.h = ((TextView)paramView.findViewById(2131371791));
-      localaifo.i = ((TextView)paramView.findViewById(2131376354));
-      localaifo.l = ((TextView)paramView.findViewById(2131362305));
-      localaifo.j = ((TextView)paramView.findViewById(2131377631));
-      localaifo.k = ((TextView)paramView.findViewById(2131376351));
-      localaifo.a = ((Button)paramView.findViewById(2131376341));
-      b(localaifo.jdField_f_of_type_AndroidWidgetImageView);
-      paramView.setTag(localaifo);
-      localaifo.g.setTag(localaifo);
-      localaifo.g.setOnClickListener(this);
-      a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_Aigo, localaifo, this);
-      a(localaifo.g, false);
-      localPhoneContactAdd = ((aigx)this.jdField_a_of_type_Aigo).a;
-      if (TextUtils.isEmpty(localPhoneContactAdd.name)) {
-        break label346;
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.updateAddFriendAndShieldView();
       }
-      localaifo.h.setVisibility(0);
-      localaifo.h.setText(localPhoneContactAdd.name);
-      label221:
-      localaifo.l.setVisibility(8);
-      localaifo.j.setVisibility(8);
-      if (TextUtils.isEmpty(localPhoneContactAdd.remindInfo)) {
-        break label358;
+    }
+  }
+  
+  public void onMessageRecordAdded(List<MessageRecord> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramList = (MessageRecord)paramList.get(0);
+      if ((!paramList.isSendFromLocal()) && (!(paramList instanceof MessageForUniteGrayTip)) && (paramList.frienduin != null) && (paramList.frienduin.equals(this.a.sessionInfo.curFriendUin)))
+      {
+        aifl.a(this.a);
+        aifl.a(this.a, paramList);
       }
-      localaifo.i.setVisibility(0);
-      localaifo.i.setText(localPhoneContactAdd.remindInfo);
-    }
-    for (;;)
-    {
-      localaifo.k.setVisibility(0);
-      localaifo.a.setVisibility(8);
-      localaifo.k.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131717690));
-      localaifo.jdField_f_of_type_JavaLangString = localPhoneContactAdd.unifiedCode;
-      localaifo.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Aifw.a(11, localPhoneContactAdd.unifiedCode));
-      return paramView;
-      localaifo = (aifo)paramView.getTag();
-      break;
-      label346:
-      localaifo.h.setVisibility(8);
-      break label221;
-      label358:
-      localaifo.i.setVisibility(8);
     }
   }
   
-  protected void a()
+  protected void onRemoveFromBlackList(boolean paramBoolean, String paramString)
   {
-    ThreadManager.postImmediately(new PhoneContactAddBuilder.1(this), null, true);
+    if ((paramString != null) && (this.a.sessionInfo.curFriendUin != null) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.updateAddFriendAndShieldView();
+      }
+    }
   }
   
-  public void onClick(View paramView)
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      a(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "onSendResult, isSucc:" + paramBoolean + " uin:" + paramString + " uniseq:" + paramLong);
     }
-    PhoneContactAdd localPhoneContactAdd;
+    if ((paramString == null) || (paramString.length() == 0)) {}
     do
     {
       do
       {
-        EventCollector.getInstance().onViewClicked(paramView);
         return;
-        localObject = paramView.getTag();
-      } while ((localObject == null) || (!(localObject instanceof aifo)));
-      localPhoneContactAdd = ((aigx)this.jdField_a_of_type_Aigo).a;
-    } while (localPhoneContactAdd == null);
-    Object localObject = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
-    if (((PhoneContactManagerImp)localObject).c(localPhoneContactAdd.unifiedCode) == null) {
-      localObject = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 29);
-    }
-    for (;;)
+      } while (!paramString.equals(this.a.sessionInfo.curFriendUin));
+      this.a.hasSentRecvMsg = true;
+      this.a.refresh(262144, null, paramLong);
+    } while ((!paramBoolean) || (((anvk)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.a.sessionInfo.curFriendUin)));
+    aifl.a(this.a);
+  }
+  
+  protected void onSendResultWithTransInfo(boolean paramBoolean, msg_svc.TransSvrInfo paramTransSvrInfo)
+  {
+    if ((paramBoolean) && (paramTransSvrInfo != null) && (paramTransSvrInfo.bytes_trans_info.has()))
     {
-      ((ProfileActivity.AllInOne)localObject).h = localPhoneContactAdd.name;
-      ProfileActivity.a((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext, (ProfileActivity.AllInOne)localObject, 227);
-      ((aiej)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).g();
-      break;
-      if (((PhoneContactManagerImp)localObject).i()) {
-        localObject = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 34);
-      } else {
-        localObject = new ProfileActivity.AllInOne(localPhoneContactAdd.unifiedCode, 29);
+      byte[] arrayOfByte = paramTransSvrInfo.bytes_trans_info.get().toByteArray();
+      if (arrayOfByte.length > 0) {
+        paramTransSvrInfo = new QQCirclePrivateMsgAIO.PrivateMsgTransSvrInfo();
+      }
+      try
+      {
+        paramTransSvrInfo.mergeFrom(arrayOfByte);
+        int i = paramTransSvrInfo.int32_ret_code.get();
+        paramTransSvrInfo = paramTransSvrInfo.str_err_msg.get();
+        QLog.d(this.a.tag, 2, new Object[] { "onSendResultWithTransInfo isSuc:", Boolean.valueOf(paramBoolean), ",retCode:", Integer.valueOf(i), ",tips:", paramTransSvrInfo });
+        if ((i == 0) && (!TextUtils.isEmpty(paramTransSvrInfo)))
+        {
+          QQToast.a(this.a.mContext, 0, paramTransSvrInfo, 0).a();
+          QLog.d(this.a.tag, 2, new Object[] { "onSendResultWithTransInfo Show Toast,tips:", paramTransSvrInfo });
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        for (;;)
+        {
+          QLog.e(this.a.tag, 1, new Object[] { "onSendResultWithTransInfo isSuc:", Boolean.valueOf(paramBoolean), ",exception:" + localInvalidProtocolBufferMicroException.toString() });
+        }
       }
     }
+    QLog.d(this.a.tag, 1, new Object[] { "onSendResultWithTransInfo isSuc:", Boolean.valueOf(paramBoolean), ",transSvrInfo is empty!" });
+  }
+  
+  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
+  {
+    this.a.refresh(65536);
+  }
+  
+  protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  {
+    if ((paramString1 == null) || (!paramString1.equals(this.a.sessionInfo.curFriendUin)) || (paramInt1 != this.a.sessionInfo.curType))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2 + " errorCode " + paramInt2);
+    }
+    this.a.refresh(196608);
   }
 }
 

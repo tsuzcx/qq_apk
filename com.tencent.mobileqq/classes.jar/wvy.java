@@ -1,19 +1,10 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.3.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import mqq.os.MqqHandler;
-
-public class wvy
-  implements TVK_IMediaPlayer.OnErrorListener
+public abstract interface wvy
 {
-  wvy(wvv paramwvv) {}
+  public abstract void a(wyf paramwyf);
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
-  {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
-    return false;
-  }
+  public abstract void b(wyf paramwyf);
+  
+  public abstract void c(wyf paramwyf);
 }
 
 

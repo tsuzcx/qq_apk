@@ -1,120 +1,154 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.GridView;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class vul
-  implements vuf
 {
-  protected HashMap<String, WeakReference<QQStoryBaseActivity>> a;
-  public Map<String, WeakReference<QQStoryBaseActivity>> a;
-  public boolean a;
+  private static int jdField_a_of_type_Int;
+  private static Context jdField_a_of_type_AndroidContentContext;
+  static ArrayList<vuv> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  static boolean jdField_a_of_type_Boolean;
+  private static int b;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  protected AdapterView.OnItemClickListener a;
   
-  public vul()
+  public vul(Activity paramActivity, ArrayList<vuv> paramArrayList, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new vum(this);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    jdField_a_of_type_AndroidContentContext = paramActivity.getApplicationContext();
+    jdField_a_of_type_Int = paramInt1;
+    b = paramInt2;
+    jdField_a_of_type_Boolean = paramBoolean;
+    jdField_a_of_type_JavaUtilArrayList = a(paramArrayList);
   }
   
-  public ArrayList<Integer> a(QQStoryBaseActivity paramQQStoryBaseActivity)
+  static int a()
   {
-    ArrayList localArrayList1 = new ArrayList(this.jdField_a_of_type_JavaUtilHashMap.values());
-    ArrayList localArrayList2 = new ArrayList();
-    int j = localArrayList1.size();
-    int i = 0;
-    while (i < j)
+    if (jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    int i = jdField_a_of_type_JavaUtilArrayList.size();
+    int j = (jdField_a_of_type_Int - AIOUtils.dp2px(110.0F, jdField_a_of_type_AndroidContentContext.getResources())) / 3;
+    if (i % 2 == 0) {
+      return i / 2 * j;
+    }
+    return (i + 1) / 2 * j;
+  }
+  
+  private ArrayList<vuv> a(ArrayList<vuv> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject;
+    if (paramArrayList == null)
     {
-      QQStoryBaseActivity localQQStoryBaseActivity = (QQStoryBaseActivity)((WeakReference)localArrayList1.get(i)).get();
-      if ((localQQStoryBaseActivity != null) && (!localQQStoryBaseActivity.isFinishing()) && (localQQStoryBaseActivity.getActivityName().equals(paramQQStoryBaseActivity.getActivityName())))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "QQStoryActivityManager getActivityFirstIndex: " + i + ", class = " + paramQQStoryBaseActivity.getActivityName());
-        }
-        localArrayList2.add(Integer.valueOf(i));
+      localObject = null;
+      return localObject;
+    }
+    if (paramArrayList.size() <= 6)
+    {
+      localArrayList.addAll(paramArrayList);
+      return localArrayList;
+    }
+    int i = 0;
+    for (;;)
+    {
+      localObject = localArrayList;
+      if (i >= 6) {
+        break;
       }
+      localArrayList.add(paramArrayList.get(i));
       i += 1;
     }
-    return localArrayList2;
   }
   
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
+  @TargetApi(9)
+  private void a(RelativeLayout paramRelativeLayout)
   {
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilHashMap.values());
-    paramInt2 -= 1;
-    while (paramInt2 >= paramInt1)
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "buildView!");
+    }
+    int i = AIOUtils.dp2px(2.0F, jdField_a_of_type_AndroidContentContext.getResources());
+    int j = (b - i) / 2;
+    paramRelativeLayout = (GridView)paramRelativeLayout.findViewById(2131376346);
+    paramRelativeLayout.setColumnWidth(j);
+    paramRelativeLayout.setStretchMode(0);
+    paramRelativeLayout.setHorizontalSpacing(i);
+    paramRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, a()));
+    paramRelativeLayout.setNumColumns(2);
+    paramRelativeLayout.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
+    if (Build.VERSION.SDK_INT >= 9) {
+      paramRelativeLayout.setOverScrollMode(2);
+    }
+    paramRelativeLayout.setAdapter(new vun(this));
+  }
+  
+  public View a(Activity paramActivity, View paramView, ViewGroup paramViewGroup)
+  {
+    if ((paramView != null) && ((paramView instanceof RelativeLayout)))
     {
-      Object localObject = (QQStoryBaseActivity)((WeakReference)localArrayList.get(paramInt2)).get();
-      if ((localObject != null) && (!((QQStoryBaseActivity)localObject).isFinishing()))
+      paramView = (RelativeLayout)paramView;
+      Object localObject = paramView.getTag();
+      if ((localObject != null) && ((localObject instanceof vup)))
       {
-        ((QQStoryBaseActivity)localObject).finish();
-        localObject = ((QQStoryBaseActivity)localObject).getActivityName() + "_" + localObject.hashCode();
-        this.jdField_a_of_type_JavaUtilHashMap.remove(localObject);
-        if (this.jdField_a_of_type_JavaUtilMap != null) {
-          this.jdField_a_of_type_JavaUtilMap.remove(localObject);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "createView reuse!");
         }
+        return paramView;
       }
-      paramInt2 -= 1;
     }
-  }
-  
-  public void a(QQStoryBaseActivity paramQQStoryBaseActivity)
-  {
-    String str = paramQQStoryBaseActivity.getActivityName() + "_" + paramQQStoryBaseActivity.hashCode();
-    paramQQStoryBaseActivity = new WeakReference(paramQQStoryBaseActivity);
-    this.jdField_a_of_type_JavaUtilHashMap.put(str, paramQQStoryBaseActivity);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilMap != null)) {
-      this.jdField_a_of_type_JavaUtilMap.put(str, paramQQStoryBaseActivity);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "createView new create!");
     }
-  }
-  
-  public boolean a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (localIterator.hasNext())
+    paramActivity = (RelativeLayout)LayoutInflater.from(paramActivity).inflate(2131559633, paramViewGroup, false);
+    paramView = paramActivity.getLayoutParams();
+    paramView.height = jdField_a_of_type_Int;
+    paramActivity.setLayoutParams(paramView);
+    paramView = new vup();
+    paramView.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramActivity.findViewById(2131376346));
+    paramView.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramActivity.findViewById(2131370796));
+    paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131376332));
+    paramActivity.setTag(paramView);
+    if ((jdField_a_of_type_JavaUtilArrayList == null) && (jdField_a_of_type_Boolean))
     {
-      QQStoryBaseActivity localQQStoryBaseActivity = (QQStoryBaseActivity)((WeakReference)localIterator.next()).get();
-      if ((localQQStoryBaseActivity != null) && (!localQQStoryBaseActivity.isFinishing())) {
-        localQQStoryBaseActivity.finish();
+      if (QLog.isDevelopLevel()) {
+        QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "createView getRecommendInfo error");
       }
+      paramView.jdField_a_of_type_ComTencentWidgetGridView.setVisibility(8);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramViewGroup = paramView.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.getLayoutParams();
+      int i = AIOUtils.dp2px(66.0F, jdField_a_of_type_AndroidContentContext.getResources());
+      paramViewGroup.height = (jdField_a_of_type_Int - i);
+      paramView.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setLayoutParams(paramViewGroup);
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    return true;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b(QQStoryBaseActivity paramQQStoryBaseActivity)
-  {
-    paramQQStoryBaseActivity = paramQQStoryBaseActivity.getActivityName() + "_" + paramQQStoryBaseActivity.hashCode();
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramQQStoryBaseActivity);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilMap != null))
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramQQStoryBaseActivity);
-      if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
-      {
-        this.jdField_a_of_type_Boolean = false;
-        if (QLog.isColorLevel()) {
-          QLog.i("qqstory.QQStoryActivityManager", 2, "player activity stack is empty, disable!");
-        }
-      }
+      return paramActivity;
+      paramViewGroup = paramView.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.getLayoutParams();
+      paramViewGroup.height = a();
+      paramView.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setLayoutParams(paramViewGroup);
+      paramView.jdField_a_of_type_ComTencentWidgetGridView.setVisibility(0);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      a(paramActivity);
     }
+  }
+  
+  public void a(ArrayList<vuv> paramArrayList)
+  {
+    jdField_a_of_type_JavaUtilArrayList = a(paramArrayList);
   }
 }
 

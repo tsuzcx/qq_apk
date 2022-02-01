@@ -1,18 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
+import android.content.Context;
 
 public class arzl
-  implements DialogInterface.OnClickListener
+  extends lzg
 {
-  public arzl(QfileLocalFileAppTabView.1.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static boolean a(Context paramContext, String paramString)
   {
-    QfileLocalFileAppTabView.a(this.a.a.this$0);
-    this.a.a.this$0.c(true);
+    return a(paramContext, "TencentDoc_USER_" + paramString, false);
+  }
+  
+  public static void b(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    a(paramContext, "TencentDoc_USER_" + paramString, paramBoolean);
   }
 }
 

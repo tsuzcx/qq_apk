@@ -1,45 +1,51 @@
 package com.tencent.biz.pubaccount.readinjoy.channelCover;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import odq;
-import ofe;
-import opq;
-import org.json.JSONException;
+import com.tencent.qphone.base.util.QLog;
+import olh;
+import omx;
 import org.json.JSONObject;
+import pkh;
+import pqu;
+import suu;
 
-public class ChannelCoverView$2
+public final class ChannelCoverView$2
   implements Runnable
 {
-  public ChannelCoverView$2(opq paramopq, ChannelCoverInfo paramChannelCoverInfo) {}
+  public ChannelCoverView$2(ChannelCoverInfo paramChannelCoverInfo, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
   public void run()
   {
-    for (;;)
+    str = "";
+    try
     {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("is_followed", "1");
-        if (this.a.mIsTopic)
-        {
-          String str1 = "0X80088BB";
-          if (this.a.mIsTopic)
-          {
-            str3 = "0X80088BB";
-            odq.a(null, "", str1, str3, 0, 0, "1", "", "", ofe.a(this.a.mChannelCoverId, localJSONObject), false);
-            return;
-          }
-          String str3 = "0X8007BE6";
-          continue;
-        }
-        String str2 = "0X8007BE6";
+      localObject = new JSONObject();
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
+        ((JSONObject)localObject).put("channel_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId);
       }
-      catch (JSONException localJSONException)
+      ((JSONObject)localObject).put("network_type", omx.a());
+      ((JSONObject)localObject).put("version", omx.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("os", "1");
+      ((JSONObject)localObject).put("imei", pkh.b());
+      ((JSONObject)localObject).put("imsi", pkh.c());
+      ((JSONObject)localObject).put("kandian_mode_new", omx.a());
+      ((JSONObject)localObject).put("kandian_mode", pqu.a());
+      ((JSONObject)localObject).put("entrance", suu.a(this.jdField_a_of_type_Int));
+      localObject = ((JSONObject)localObject).toString();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        localJSONException.printStackTrace();
-        return;
+        Object localObject = str;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ChannelCoverView", 2, "ERROR Exception=" + localException.getMessage());
+          localObject = str;
+        }
       }
     }
+    olh.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, (String)localObject, false);
   }
 }
 

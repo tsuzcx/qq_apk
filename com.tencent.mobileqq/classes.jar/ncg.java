@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.avgame.gamelogic.controller.GameActivityCenterCtrl;
-import com.tencent.avgame.gameroom.GameRoomFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class ncg
-  implements View.OnClickListener
+public abstract interface ncg
 {
-  public ncg(GameRoomFragment paramGameRoomFragment) {}
+  public abstract void a(long paramLong, byte[] paramArrayOfByte);
   
-  public void onClick(View paramView)
-  {
-    GameActivityCenterCtrl.a().c(this.a.getActivity());
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(ncf paramncf);
+  
+  public abstract void b(byte[] paramArrayOfByte);
 }
 
 

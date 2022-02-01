@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DateTimeView android:textAppearance="@style/zh" android:id="@id/jl7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/a4f" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.richmediabrowser.view.recyclerview.DragView android:id="@id/bq8" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.richmediabrowser.view.recyclerview.BrowserRecyclerView android:id="@id/i4l" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    </com.tencent.richmediabrowser.view.recyclerview.DragView>
+    <RelativeLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/g2h" android:visibility="invisible" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_centerInParent="true" />
+</RelativeLayout>

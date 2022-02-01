@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import lbe;
-import lcw;
-import mnr;
+import lbh;
+import ldb;
+import moo;
 
 public class ClientLogReport
   implements IClientLogReport
@@ -96,7 +96,7 @@ public class ClientLogReport
         if (!bool1) {
           break label171;
         }
-        lcw.a(bool2);
+        ldb.a(bool2);
       }
     }
     for (;;)
@@ -111,7 +111,7 @@ public class ClientLogReport
           paramFromServiceMsg.mkdirs();
         }
         paramIntent.writeToFile(new File(REPORT_FAIL_LOG_DIR, String.valueOf(paramIntent.mTimestamp)));
-        lcw.c();
+        ldb.c();
       }
     }
   }
@@ -123,7 +123,7 @@ public class ClientLogReport
       this.mContext = paramContext;
       this.mAppId = paramInt;
       this.mMsfSub = MsfServiceSdk.get();
-      if (mnr.a().q != 1) {
+      if (moo.a().q != 1) {
         break label76;
       }
     }

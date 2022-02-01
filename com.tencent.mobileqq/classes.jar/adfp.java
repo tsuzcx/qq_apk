@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class adfp
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adfp(EditInfoActivity paramEditInfoActivity) {}
+  public adfp(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EditInfoActivity.d(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.finish();
   }
 }
 

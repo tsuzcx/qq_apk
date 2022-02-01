@@ -244,7 +244,7 @@ public class g
     //   13: astore 7
     //   15: aload_1
     //   16: invokevirtual 377	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
-    //   19: ifnull +529 -> 548
+    //   19: ifnull +533 -> 552
     //   22: invokestatic 382	com/tencent/mobileqq/msf/core/net/j:b	()B
     //   25: istore_2
     //   26: iload_2
@@ -295,7 +295,7 @@ public class g
     //   118: astore 7
     //   120: iload 4
     //   122: iconst_1
-    //   123: if_icmpne +258 -> 381
+    //   123: if_icmpne +260 -> 383
     //   126: sipush 591
     //   129: invokestatic 427	com/tencent/qphone/base/util/CodecWarpper:getSharedObjectVersion	()I
     //   132: if_icmpne +136 -> 268
@@ -364,7 +364,7 @@ public class g
     //   274: if_icmpeq +12 -> 286
     //   277: sipush 600
     //   280: invokestatic 427	com/tencent/qphone/base/util/CodecWarpper:getSharedObjectVersion	()I
-    //   283: if_icmpne +50 -> 333
+    //   283: if_icmpne +51 -> 334
     //   286: aload_1
     //   287: invokevirtual 346	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
     //   290: invokestatic 429	com/tencent/mobileqq/msf/core/w:d	()Ljava/lang/String;
@@ -383,130 +383,134 @@ public class g
     //   320: iconst_0
     //   321: iload_2
     //   322: aload 7
-    //   324: aload_1
-    //   325: invokevirtual 377	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
-    //   328: iconst_1
-    //   329: invokestatic 459	com/tencent/qphone/base/util/CodecWarpper:nativeEncodeRequest	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BIILjava/lang/String;BB[B[BZ)[B
-    //   332: areturn
-    //   333: aload_1
-    //   334: invokevirtual 346	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
-    //   337: invokestatic 429	com/tencent/mobileqq/msf/core/w:d	()Ljava/lang/String;
-    //   340: invokestatic 431	com/tencent/mobileqq/msf/core/w:f	()Ljava/lang/String;
-    //   343: invokestatic 433	com/tencent/mobileqq/msf/core/w:g	()Ljava/lang/String;
-    //   346: ldc_w 435
-    //   349: aload 9
-    //   351: aconst_null
-    //   352: aload_1
-    //   353: invokevirtual 438	com/tencent/qphone/base/remote/ToServiceMsg:getAppId	()I
-    //   356: aload_0
-    //   357: getfield 88	com/tencent/mobileqq/msf/core/g:s	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   360: invokevirtual 441	com/tencent/mobileqq/msf/core/MsfCore:getMsfAppid	()I
-    //   363: aload_1
-    //   364: invokevirtual 444	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
-    //   367: iconst_0
-    //   368: iload_2
-    //   369: iload_3
-    //   370: aload 7
-    //   372: aload_1
-    //   373: invokevirtual 377	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
-    //   376: iconst_1
-    //   377: invokestatic 462	com/tencent/qphone/base/util/CodecWarpper:nativeEncodeRequest	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BIILjava/lang/String;BBB[B[BZ)[B
-    //   380: areturn
-    //   381: sipush 591
-    //   384: invokestatic 427	com/tencent/qphone/base/util/CodecWarpper:getSharedObjectVersion	()I
-    //   387: if_icmpne +48 -> 435
-    //   390: aload_1
-    //   391: invokevirtual 346	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
-    //   394: invokestatic 429	com/tencent/mobileqq/msf/core/w:d	()Ljava/lang/String;
-    //   397: invokestatic 431	com/tencent/mobileqq/msf/core/w:f	()Ljava/lang/String;
-    //   400: invokestatic 433	com/tencent/mobileqq/msf/core/w:g	()Ljava/lang/String;
-    //   403: ldc_w 435
-    //   406: aload 9
-    //   408: aconst_null
-    //   409: aload_1
-    //   410: invokevirtual 438	com/tencent/qphone/base/remote/ToServiceMsg:getAppId	()I
-    //   413: aload_0
-    //   414: getfield 88	com/tencent/mobileqq/msf/core/g:s	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   417: invokevirtual 441	com/tencent/mobileqq/msf/core/MsfCore:getMsfAppid	()I
-    //   420: aload_1
-    //   421: invokevirtual 444	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
-    //   424: iconst_0
-    //   425: iload_2
-    //   426: aload_1
-    //   427: invokevirtual 377	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
-    //   430: iconst_1
-    //   431: invokestatic 448	com/tencent/qphone/base/util/CodecWarpper:nativeEncodeRequest	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BIILjava/lang/String;BB[BZ)[B
-    //   434: areturn
-    //   435: sipush 595
-    //   438: invokestatic 427	com/tencent/qphone/base/util/CodecWarpper:getSharedObjectVersion	()I
-    //   441: if_icmpeq +12 -> 453
-    //   444: sipush 600
-    //   447: invokestatic 427	com/tencent/qphone/base/util/CodecWarpper:getSharedObjectVersion	()I
-    //   450: if_icmpne +50 -> 500
-    //   453: aload_1
-    //   454: invokevirtual 346	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
-    //   457: invokestatic 429	com/tencent/mobileqq/msf/core/w:d	()Ljava/lang/String;
-    //   460: invokestatic 431	com/tencent/mobileqq/msf/core/w:f	()Ljava/lang/String;
-    //   463: invokestatic 433	com/tencent/mobileqq/msf/core/w:g	()Ljava/lang/String;
-    //   466: ldc_w 435
-    //   469: aload 9
-    //   471: aconst_null
-    //   472: aload_1
-    //   473: invokevirtual 438	com/tencent/qphone/base/remote/ToServiceMsg:getAppId	()I
-    //   476: aload_0
-    //   477: getfield 88	com/tencent/mobileqq/msf/core/g:s	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   480: invokevirtual 441	com/tencent/mobileqq/msf/core/MsfCore:getMsfAppid	()I
-    //   483: aload_1
-    //   484: invokevirtual 444	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
-    //   487: iconst_0
-    //   488: iload_2
-    //   489: aload 7
-    //   491: aload_1
-    //   492: invokevirtual 377	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
-    //   495: iconst_1
-    //   496: invokestatic 459	com/tencent/qphone/base/util/CodecWarpper:nativeEncodeRequest	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BIILjava/lang/String;BB[B[BZ)[B
-    //   499: areturn
-    //   500: aload_1
-    //   501: invokevirtual 346	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
-    //   504: invokestatic 429	com/tencent/mobileqq/msf/core/w:d	()Ljava/lang/String;
-    //   507: invokestatic 431	com/tencent/mobileqq/msf/core/w:f	()Ljava/lang/String;
-    //   510: invokestatic 433	com/tencent/mobileqq/msf/core/w:g	()Ljava/lang/String;
-    //   513: ldc_w 435
-    //   516: aload 9
-    //   518: aconst_null
-    //   519: aload_1
-    //   520: invokevirtual 438	com/tencent/qphone/base/remote/ToServiceMsg:getAppId	()I
-    //   523: aload_0
-    //   524: getfield 88	com/tencent/mobileqq/msf/core/g:s	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   527: invokevirtual 441	com/tencent/mobileqq/msf/core/MsfCore:getMsfAppid	()I
-    //   530: aload_1
-    //   531: invokevirtual 444	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
-    //   534: iconst_0
-    //   535: iload_2
-    //   536: iload_3
-    //   537: aload 7
-    //   539: aload_1
-    //   540: invokevirtual 377	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
-    //   543: iconst_1
-    //   544: invokestatic 462	com/tencent/qphone/base/util/CodecWarpper:nativeEncodeRequest	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BIILjava/lang/String;BBB[B[BZ)[B
-    //   547: areturn
-    //   548: iconst_0
-    //   549: newarray byte
+    //   324: aconst_null
+    //   325: aload_1
+    //   326: invokevirtual 377	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
+    //   329: iconst_1
+    //   330: invokestatic 459	com/tencent/qphone/base/util/CodecWarpper:nativeEncodeRequest	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BIILjava/lang/String;BB[B[B[BZ)[B
+    //   333: areturn
+    //   334: aload_1
+    //   335: invokevirtual 346	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
+    //   338: invokestatic 429	com/tencent/mobileqq/msf/core/w:d	()Ljava/lang/String;
+    //   341: invokestatic 431	com/tencent/mobileqq/msf/core/w:f	()Ljava/lang/String;
+    //   344: invokestatic 433	com/tencent/mobileqq/msf/core/w:g	()Ljava/lang/String;
+    //   347: ldc_w 435
+    //   350: aload 9
+    //   352: aconst_null
+    //   353: aload_1
+    //   354: invokevirtual 438	com/tencent/qphone/base/remote/ToServiceMsg:getAppId	()I
+    //   357: aload_0
+    //   358: getfield 88	com/tencent/mobileqq/msf/core/g:s	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   361: invokevirtual 441	com/tencent/mobileqq/msf/core/MsfCore:getMsfAppid	()I
+    //   364: aload_1
+    //   365: invokevirtual 444	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
+    //   368: iconst_0
+    //   369: iload_2
+    //   370: iload_3
+    //   371: aload 7
+    //   373: aconst_null
+    //   374: aload_1
+    //   375: invokevirtual 377	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
+    //   378: iconst_1
+    //   379: invokestatic 462	com/tencent/qphone/base/util/CodecWarpper:nativeEncodeRequest	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BIILjava/lang/String;BBB[B[B[BZ)[B
+    //   382: areturn
+    //   383: sipush 591
+    //   386: invokestatic 427	com/tencent/qphone/base/util/CodecWarpper:getSharedObjectVersion	()I
+    //   389: if_icmpne +48 -> 437
+    //   392: aload_1
+    //   393: invokevirtual 346	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
+    //   396: invokestatic 429	com/tencent/mobileqq/msf/core/w:d	()Ljava/lang/String;
+    //   399: invokestatic 431	com/tencent/mobileqq/msf/core/w:f	()Ljava/lang/String;
+    //   402: invokestatic 433	com/tencent/mobileqq/msf/core/w:g	()Ljava/lang/String;
+    //   405: ldc_w 435
+    //   408: aload 9
+    //   410: aconst_null
+    //   411: aload_1
+    //   412: invokevirtual 438	com/tencent/qphone/base/remote/ToServiceMsg:getAppId	()I
+    //   415: aload_0
+    //   416: getfield 88	com/tencent/mobileqq/msf/core/g:s	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   419: invokevirtual 441	com/tencent/mobileqq/msf/core/MsfCore:getMsfAppid	()I
+    //   422: aload_1
+    //   423: invokevirtual 444	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
+    //   426: iconst_0
+    //   427: iload_2
+    //   428: aload_1
+    //   429: invokevirtual 377	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
+    //   432: iconst_1
+    //   433: invokestatic 448	com/tencent/qphone/base/util/CodecWarpper:nativeEncodeRequest	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BIILjava/lang/String;BB[BZ)[B
+    //   436: areturn
+    //   437: sipush 595
+    //   440: invokestatic 427	com/tencent/qphone/base/util/CodecWarpper:getSharedObjectVersion	()I
+    //   443: if_icmpeq +12 -> 455
+    //   446: sipush 600
+    //   449: invokestatic 427	com/tencent/qphone/base/util/CodecWarpper:getSharedObjectVersion	()I
+    //   452: if_icmpne +51 -> 503
+    //   455: aload_1
+    //   456: invokevirtual 346	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
+    //   459: invokestatic 429	com/tencent/mobileqq/msf/core/w:d	()Ljava/lang/String;
+    //   462: invokestatic 431	com/tencent/mobileqq/msf/core/w:f	()Ljava/lang/String;
+    //   465: invokestatic 433	com/tencent/mobileqq/msf/core/w:g	()Ljava/lang/String;
+    //   468: ldc_w 435
+    //   471: aload 9
+    //   473: aconst_null
+    //   474: aload_1
+    //   475: invokevirtual 438	com/tencent/qphone/base/remote/ToServiceMsg:getAppId	()I
+    //   478: aload_0
+    //   479: getfield 88	com/tencent/mobileqq/msf/core/g:s	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   482: invokevirtual 441	com/tencent/mobileqq/msf/core/MsfCore:getMsfAppid	()I
+    //   485: aload_1
+    //   486: invokevirtual 444	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
+    //   489: iconst_0
+    //   490: iload_2
+    //   491: aload 7
+    //   493: aconst_null
+    //   494: aload_1
+    //   495: invokevirtual 377	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
+    //   498: iconst_1
+    //   499: invokestatic 459	com/tencent/qphone/base/util/CodecWarpper:nativeEncodeRequest	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BIILjava/lang/String;BB[B[B[BZ)[B
+    //   502: areturn
+    //   503: aload_1
+    //   504: invokevirtual 346	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
+    //   507: invokestatic 429	com/tencent/mobileqq/msf/core/w:d	()Ljava/lang/String;
+    //   510: invokestatic 431	com/tencent/mobileqq/msf/core/w:f	()Ljava/lang/String;
+    //   513: invokestatic 433	com/tencent/mobileqq/msf/core/w:g	()Ljava/lang/String;
+    //   516: ldc_w 435
+    //   519: aload 9
+    //   521: aconst_null
+    //   522: aload_1
+    //   523: invokevirtual 438	com/tencent/qphone/base/remote/ToServiceMsg:getAppId	()I
+    //   526: aload_0
+    //   527: getfield 88	com/tencent/mobileqq/msf/core/g:s	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   530: invokevirtual 441	com/tencent/mobileqq/msf/core/MsfCore:getMsfAppid	()I
+    //   533: aload_1
+    //   534: invokevirtual 444	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
+    //   537: iconst_0
+    //   538: iload_2
+    //   539: iload_3
+    //   540: aload 7
+    //   542: aconst_null
+    //   543: aload_1
+    //   544: invokevirtual 377	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
+    //   547: iconst_1
+    //   548: invokestatic 462	com/tencent/qphone/base/util/CodecWarpper:nativeEncodeRequest	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BIILjava/lang/String;BBB[B[B[BZ)[B
     //   551: areturn
+    //   552: iconst_0
+    //   553: newarray byte
+    //   555: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	552	0	this	g
-    //   0	552	1	paramToServiceMsg	ToServiceMsg
-    //   25	511	2	b1	byte
-    //   76	461	3	b2	byte
+    //   0	556	0	this	g
+    //   0	556	1	paramToServiceMsg	ToServiceMsg
+    //   25	514	2	b1	byte
+    //   76	464	3	b2	byte
     //   78	46	4	i1	int
     //   33	27	5	l1	long
     //   13	106	7	localObject	Object
-    //   212	326	7	localThrowable1	Throwable
+    //   212	329	7	localThrowable1	Throwable
     //   114	3	8	arrayOfByte	byte[]
     //   180	19	8	localThrowable2	Throwable
     //   252	9	8	localException	Exception
-    //   10	507	9	str	String
+    //   10	510	9	str	String
     // Exception table:
     //   from	to	target	type
     //   64	71	180	java/lang/Throwable
@@ -521,12 +525,12 @@ public class g
     //   182	209	212	java/lang/Throwable
     //   254	265	212	java/lang/Throwable
     //   268	286	212	java/lang/Throwable
-    //   286	333	212	java/lang/Throwable
-    //   333	381	212	java/lang/Throwable
-    //   381	435	212	java/lang/Throwable
-    //   435	453	212	java/lang/Throwable
-    //   453	500	212	java/lang/Throwable
-    //   500	548	212	java/lang/Throwable
+    //   286	334	212	java/lang/Throwable
+    //   334	383	212	java/lang/Throwable
+    //   383	437	212	java/lang/Throwable
+    //   437	455	212	java/lang/Throwable
+    //   455	503	212	java/lang/Throwable
+    //   503	552	212	java/lang/Throwable
     //   109	116	252	java/lang/Exception
   }
   
@@ -1750,11 +1754,11 @@ public class g
     //   2607: pop
     //   2608: aload_0
     //   2609: getfield 88	com/tencent/mobileqq/msf/core/g:s	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2612: invokevirtual 227	com/tencent/mobileqq/msf/core/MsfCore:getSsoRespHandler	()Lcom/tencent/mobileqq/msf/core/al;
+    //   2612: invokevirtual 227	com/tencent/mobileqq/msf/core/MsfCore:getSsoRespHandler	()Lcom/tencent/mobileqq/msf/core/am;
     //   2615: aload_1
     //   2616: aload_3
     //   2617: iload 6
-    //   2619: invokevirtual 709	com/tencent/mobileqq/msf/core/al:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;I)Z
+    //   2619: invokevirtual 709	com/tencent/mobileqq/msf/core/am:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;I)Z
     //   2622: istore 9
     //   2624: iload 9
     //   2626: ifne +40 -> 2666

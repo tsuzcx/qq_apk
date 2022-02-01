@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.search.comm.ItemInfo;
 import com.tencent.mobileqq.mini.entry.search.comm.LiveInfo;
@@ -65,6 +66,7 @@ public class SearchRecommendAdapter
         ((SearchRecommendAdapter.TitleViewHolder)paramViewHolder).update((TitleInfo)this.appList.get(paramInt));
         break;
       case 2: 
+      case 4: 
         ((SearchRecommendAdapter.PlayingViewHolder)paramViewHolder).update((SearchInfo)this.appList.get(paramInt), (Activity)this.mActivityReference.get(), this.mRefer);
         break;
       case 3: 
@@ -80,16 +82,17 @@ public class SearchRecommendAdapter
     default: 
       return null;
     case 1: 
-      return new SearchRecommendAdapter.TitleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559415, paramViewGroup, false));
+      return new SearchRecommendAdapter.TitleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559453, paramViewGroup, false));
     case 2: 
-      return new SearchRecommendAdapter.PlayingViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559413, paramViewGroup, false));
+    case 4: 
+      return new SearchRecommendAdapter.PlayingViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559451, paramViewGroup, false));
     }
-    return new SearchRecommendAdapter.LiveViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559412, paramViewGroup, false));
+    return new SearchRecommendAdapter.LiveViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559450, paramViewGroup, false));
   }
   
   public void onHotSearchDataChanged()
   {
-    setData(((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360)).getHotSearchData());
+    setData(((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER)).getHotSearchData());
     notifyDataSetChanged();
   }
   

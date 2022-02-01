@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
 
-class tdp
-  implements View.OnClickListener
+public class tdp
+  implements orf
 {
-  tdp(tdo paramtdo) {}
+  public tdp(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    tdo.a(this.a).a(tdo.a(this.a), tdo.a(this.a));
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((!ReadinjoyTabFrame.a(this.a)) && (ReadinjoyTabFrame.a(this.a) != null) && (ReadinjoyTabFrame.a(this.a).getVisibility() == 0)) {
+      RecommendFeedsDiandianEntranceManager.a().a(0, paramInt2);
+    }
+    rao.a.a().a(true, "MATCH_ALL_UIN");
   }
 }
 

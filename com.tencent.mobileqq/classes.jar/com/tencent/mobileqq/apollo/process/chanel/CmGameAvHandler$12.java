@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import alvx;
-import alwt;
-import alwv;
-import alym;
-import amgw;
+import amwn;
+import amxj;
+import amxl;
+import amzc;
 import android.text.TextUtils;
+import anie;
 import com.tencent.TMG.sdk.AVContext;
 import com.tencent.TMG.sdk.AVRoomMulti;
 import com.tencent.common.app.AppInterface;
@@ -16,37 +16,37 @@ import org.json.JSONArray;
 public class CmGameAvHandler$12
   implements Runnable
 {
-  public CmGameAvHandler$12(alwt paramalwt, JSONArray paramJSONArray) {}
+  public CmGameAvHandler$12(amxj paramamxj, JSONArray paramJSONArray) {}
   
   public void run()
   {
     if (this.a.length() <= 0)
     {
-      alwt.a(this.this$0).clear();
-      amgw.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new alwv(this));
+      amxj.a(this.this$0).clear();
+      anie.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new amxl(this));
     }
     for (;;)
     {
       return;
-      alwt.a(this.this$0).clear();
+      amxj.a(this.this$0).clear();
       String[] arrayOfString = new String[this.a.length()];
-      String str3 = alvx.a().getCurrentAccountUin();
+      String str3 = amwn.a().getCurrentAccountUin();
       int i = 0;
       while (i < this.a.length())
       {
         try
         {
-          alym localalym = alvx.a(alwt.a(this.this$0));
-          if (localalym != null)
+          amzc localamzc = amwn.a(amxj.a(this.this$0));
+          if (localamzc != null)
           {
-            String str2 = localalym.c(this.a.get(i).toString());
+            String str2 = localamzc.c(this.a.get(i).toString());
             String str1 = str2;
             if (TextUtils.isEmpty(str2)) {
-              str1 = localalym.a(this.a.get(i).toString());
+              str1 = localamzc.a(this.a.get(i).toString());
             }
             arrayOfString[i] = str1;
-            alwt.a(this.this$0).add(str1);
-            alwt.a(this.this$0, arrayOfString, str3);
+            amxj.a(this.this$0).add(str1);
+            amxj.a(this.this$0, arrayOfString, str3);
           }
         }
         catch (Exception localException)

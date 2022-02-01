@@ -1,21 +1,6 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-
-public class arsd
-  implements Animation.AnimationListener
+public abstract interface arsd
 {
-  public arsd(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.setVisibility(4);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract int a();
 }
 
 

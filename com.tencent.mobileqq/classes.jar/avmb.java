@@ -1,30 +1,43 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import mqq.app.AppRuntime;
+import android.util.SparseArray;
+import com.tencent.mobileqq.hotpic.HotPicTagInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-class avmb
-  implements avmg
+public class avmb
 {
-  avmb(avma paramavma) {}
+  private SparseArray<HotPicTagInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private ArrayList<HotPicTagInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public HotPicTagInfo a(int paramInt)
+  {
+    return (HotPicTagInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+  }
+  
+  public List<HotPicTagInfo> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
   
   public void a()
   {
-    AppRuntime localAppRuntime;
-    if (this.a.jdField_a_of_type_Int == 1)
-    {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        bcef.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
-      }
-    }
-    do
-    {
-      return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)));
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    bcef.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+  }
+  
+  public void a(HotPicTagInfo paramHotPicTagInfo)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramHotPicTagInfo);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramHotPicTagInfo.tagId, paramHotPicTagInfo);
+  }
+  
+  public HotPicTagInfo b(int paramInt)
+  {
+    return (HotPicTagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
 }
 

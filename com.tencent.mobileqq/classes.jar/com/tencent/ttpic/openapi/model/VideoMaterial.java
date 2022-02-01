@@ -3,6 +3,7 @@ package com.tencent.ttpic.openapi.model;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.ttpic.constant.MaterialType;
+import com.tencent.ttpic.filter.juyoujinggame.UKYOGameSetting;
 import com.tencent.ttpic.gameplaysdk.model.GameParams;
 import com.tencent.ttpic.gameplaysdk.model.StickerItem3D;
 import com.tencent.ttpic.model.Audio2Text;
@@ -15,6 +16,7 @@ import com.tencent.ttpic.model.FaceMaskItem;
 import com.tencent.ttpic.model.FaceMeshItem;
 import com.tencent.ttpic.model.FaceMoveItem;
 import com.tencent.ttpic.model.ImageMaskItem;
+import com.tencent.ttpic.model.ImagesSetting;
 import com.tencent.ttpic.model.MultiViewerItem;
 import com.tencent.ttpic.model.NonFitItem;
 import com.tencent.ttpic.model.PhantomItem;
@@ -48,6 +50,7 @@ public class VideoMaterial
   private int arMaterialType;
   private List<String> arParticleList;
   private int arParticleType;
+  private float[] arShaderPlanOffset = { 0.0F, 0.0F, 0.0F };
   private Audio2Text audio2Text;
   private GameParams audio3DParams;
   private double autoBrightnessStrength = 1.0D;
@@ -55,8 +58,13 @@ public class VideoMaterial
   private double blendAlpha;
   private int blendMode;
   private BlurEffectItem blurEffectItem;
+  private CameraTransform cameraTransform;
+  private List<CameraViewConfig> cameraViewConfig;
   private int categoryFlag;
   private List<VideoMaterial.ChildPendant> childrenPendants;
+  private boolean closeARGestureRotate;
+  private boolean closeARGestureScale;
+  private boolean closeARGestureTouch;
   private CosFun cosFun;
   private int cosmeticChangeMode;
   private int cosmeticChangeSwitch;
@@ -132,6 +140,9 @@ public class VideoMaterial
   private List<StickerItem> itemList;
   private List<StickerItem3D> itemList3D;
   public String itemTips;
+  private String jsonName = "params";
+  private boolean kapuMaterial;
+  private int kapuMaterialType;
   private String lipsLutPath;
   private String lipsLutStyleMaskPath;
   private int lipsSegType;
@@ -139,11 +150,15 @@ public class VideoMaterial
   private double lowlightAdjustStrength = 1.0D;
   public BigAnimationParam mBigHeadParam;
   private List<VideoMaterial.DIYMaterialParams> mDIYMaterialParamsList = new ArrayList();
+  public int mDepthMaskType = 0;
+  public int mDepthType = 0;
   private String mDiyItemId;
   public boolean mEnableFaceDetect = true;
   public List<String> mFilterList = new ArrayList();
   public String mGuideTips = null;
   public boolean mHasGestureFilter = false;
+  public ImagesSetting mImageSetting;
+  public boolean mNeedDepthMask = false;
   public boolean mUseUlseeSdk = false;
   private String maskPaintImage;
   private int maskPaintRenderId;
@@ -155,12 +170,16 @@ public class VideoMaterial
   private int minAppVersion;
   private List<MultiViewerItem> multiViewerItemList = new ArrayList();
   private String musicID;
+  private int musicPlayCount = -1;
+  private boolean needAvatarFacekit;
   private boolean needBodyInfo = false;
   private boolean needFaceInfo = true;
+  private boolean needFaceMeshFacekit;
   private boolean needReCaculateFace;
   public NonFitItem[] nonFitItems;
   private boolean notAllowBeautySetting = false;
   private int orderMode;
+  private List<OvalDistortionItem> ovalDistortionItemList;
   private String overallAudio;
   private List<PhantomItem> phantomItemList;
   private String preferCameraId;
@@ -192,6 +211,8 @@ public class VideoMaterial
   private int touchFlag = 0;
   private float transformAdjustAlpha = 1.0F;
   private int triggerType;
+  private UKYOGameSetting ukyoGameSetting;
+  private boolean use3DMMTransform;
   private boolean useMesh = false;
   public BuckleFaceItem videoFaceCrop;
   private VideoFilterEffect videoFilterEffect;
@@ -309,6 +330,11 @@ public class VideoMaterial
     return this.arParticleType;
   }
   
+  public float[] getArShaderPlanOffset()
+  {
+    return this.arShaderPlanOffset;
+  }
+  
   public Audio2Text getAudio2Text()
   {
     return this.audio2Text;
@@ -317,6 +343,16 @@ public class VideoMaterial
   public GameParams getAudio3DParams()
   {
     return this.audio3DParams;
+  }
+  
+  public double getAutoBrightnessStrength()
+  {
+    return this.autoBrightnessStrength;
+  }
+  
+  public double getAutoContrastStrength()
+  {
+    return this.autoContrastStrength;
   }
   
   public double getBlendAlpha()
@@ -332,6 +368,16 @@ public class VideoMaterial
   public BlurEffectItem getBlurEffectItem()
   {
     return this.blurEffectItem;
+  }
+  
+  public CameraTransform getCameraTransform()
+  {
+    return this.cameraTransform;
+  }
+  
+  public List<CameraViewConfig> getCameraViewConfig()
+  {
+    return this.cameraViewConfig;
   }
   
   public int getCategoryFlag()
@@ -389,6 +435,19 @@ public class VideoMaterial
     return this.dependencies;
   }
   
+  public int getDepthMaskType()
+  {
+    if (this.mDepthType > 0) {
+      return this.mDepthType;
+    }
+    return this.mDepthMaskType;
+  }
+  
+  public int getDepthType()
+  {
+    return this.mDepthType;
+  }
+  
   public int getDetectorFlag()
   {
     return this.detectorFlag;
@@ -425,6 +484,11 @@ public class VideoMaterial
   public List<FaceBeautyItem> getFaceBeautyItemList()
   {
     return this.faceBeautyItemList;
+  }
+  
+  public double getFaceColorStrength()
+  {
+    return this.faceColorStrength;
   }
   
   public FaceCropItem getFaceCropItem()
@@ -659,6 +723,11 @@ public class VideoMaterial
     return this.imageMaskItemList;
   }
   
+  public ImagesSetting getImageSetting()
+  {
+    return this.mImageSetting;
+  }
+  
   public boolean getIsAR3DMaterial()
   {
     return this.isAR3DMaterial;
@@ -679,6 +748,16 @@ public class VideoMaterial
     return this.itemList3D;
   }
   
+  public String getJsonName()
+  {
+    return this.jsonName;
+  }
+  
+  public int getKapuMaterialType()
+  {
+    return this.kapuMaterialType;
+  }
+  
   public String getLipsLutPath()
   {
     return this.lipsLutPath;
@@ -692,6 +771,11 @@ public class VideoMaterial
   public int getLipsSegType()
   {
     return this.lipsSegType;
+  }
+  
+  public double getLowlightAdjustStrength()
+  {
+    return this.lowlightAdjustStrength;
   }
   
   public String getMaskPaintImage()
@@ -757,6 +841,11 @@ public class VideoMaterial
     return this.musicID;
   }
   
+  public int getMusicPlayCount()
+  {
+    return this.musicPlayCount;
+  }
+  
   public List<StickerItem> getNonFitItemList()
   {
     Object localObject2 = null;
@@ -786,6 +875,11 @@ public class VideoMaterial
   public int getOrderMode()
   {
     return this.orderMode;
+  }
+  
+  public List<OvalDistortionItem> getOvalDistortionItemList()
+  {
+    return this.ovalDistortionItemList;
   }
   
   public List<PhantomItem> getPhantomItemList()
@@ -980,6 +1074,11 @@ public class VideoMaterial
     return this.triggerType;
   }
   
+  public UKYOGameSetting getUkyoGameSetting()
+  {
+    return this.ukyoGameSetting;
+  }
+  
   public VideoFilterEffect getVideoFilterEffect()
   {
     return this.videoFilterEffect;
@@ -1032,6 +1131,21 @@ public class VideoMaterial
   public boolean isCanDiyPitcureVideo()
   {
     return getFirstDiyItemid() != null;
+  }
+  
+  public boolean isCloseARGestureRotate()
+  {
+    return this.closeARGestureRotate;
+  }
+  
+  public boolean isCloseARGestureScale()
+  {
+    return this.closeARGestureScale;
+  }
+  
+  public boolean isCloseARGestureTouch()
+  {
+    return this.closeARGestureTouch;
   }
   
   public boolean isDBTriggered()
@@ -1107,9 +1221,24 @@ public class VideoMaterial
     return this.hideUserHeadModel;
   }
   
+  public boolean isKapuMaterial()
+  {
+    return this.kapuMaterial;
+  }
+  
   public boolean isLoadImageFromCache()
   {
     return this.loadImageFromCache;
+  }
+  
+  public boolean isNeedAvatarFacekit()
+  {
+    return this.needAvatarFacekit;
+  }
+  
+  public boolean isNeedFaceMeshFacekit()
+  {
+    return this.needFaceMeshFacekit;
   }
   
   public boolean isNeedFreezeFrame()
@@ -1171,6 +1300,11 @@ public class VideoMaterial
     return getArParticleType() == VideoMaterialUtil.AR_MATERIAL_TYPE.CLICKABLE.value;
   }
   
+  public boolean isUse3DMMTransform()
+  {
+    return this.use3DMMTransform;
+  }
+  
   public boolean isUseMesh()
   {
     return this.useMesh;
@@ -1179,6 +1313,11 @@ public class VideoMaterial
   public boolean needBodyInfo()
   {
     return this.needBodyInfo;
+  }
+  
+  public boolean needDepthMask()
+  {
+    return (this.mDepthType > 0) || (this.mNeedDepthMask) || (this.mDepthMaskType > 0);
   }
   
   public boolean needFaceInfo()
@@ -1232,6 +1371,11 @@ public class VideoMaterial
     this.arParticleType = paramInt;
   }
   
+  public void setArShaderPlanOffset(float[] paramArrayOfFloat)
+  {
+    this.arShaderPlanOffset = paramArrayOfFloat;
+  }
+  
   public void setAudio2Text(Audio2Text paramAudio2Text)
   {
     this.audio2Text = paramAudio2Text;
@@ -1240,6 +1384,16 @@ public class VideoMaterial
   public void setAudio3DParams(GameParams paramGameParams)
   {
     this.audio3DParams = paramGameParams;
+  }
+  
+  public void setAutoBrightnessStrength(double paramDouble)
+  {
+    this.autoBrightnessStrength = paramDouble;
+  }
+  
+  public void setAutoContrastStrength(double paramDouble)
+  {
+    this.autoContrastStrength = paramDouble;
   }
   
   public void setBlendAlpha(double paramDouble)
@@ -1257,6 +1411,16 @@ public class VideoMaterial
     this.blurEffectItem = paramBlurEffectItem;
   }
   
+  public void setCameraTransform(CameraTransform paramCameraTransform)
+  {
+    this.cameraTransform = paramCameraTransform;
+  }
+  
+  public void setCameraViewConfig(List<CameraViewConfig> paramList)
+  {
+    this.cameraViewConfig = paramList;
+  }
+  
   public void setCategoryFlag(int paramInt)
   {
     this.categoryFlag = paramInt;
@@ -1265,6 +1429,21 @@ public class VideoMaterial
   public void setChildrenPendants(List<VideoMaterial.ChildPendant> paramList)
   {
     this.childrenPendants = paramList;
+  }
+  
+  public void setCloseARGestureRotate(boolean paramBoolean)
+  {
+    this.closeARGestureRotate = paramBoolean;
+  }
+  
+  public void setCloseARGestureScale(boolean paramBoolean)
+  {
+    this.closeARGestureScale = paramBoolean;
+  }
+  
+  public void setCloseARGestureTouch(boolean paramBoolean)
+  {
+    this.closeARGestureTouch = paramBoolean;
   }
   
   public void setCosFun(CosFun paramCosFun)
@@ -1312,6 +1491,16 @@ public class VideoMaterial
     this.dependencies = paramList;
   }
   
+  public void setDepthMaskType(int paramInt)
+  {
+    this.mDepthMaskType = paramInt;
+  }
+  
+  public void setDepthType(int paramInt)
+  {
+    this.mDepthType = paramInt;
+  }
+  
   public void setDetectGender(boolean paramBoolean)
   {
     this.isNeedDetectGender = paramBoolean;
@@ -1355,6 +1544,11 @@ public class VideoMaterial
   public void setFaceCharmRangeMaterial(boolean paramBoolean)
   {
     this.isFaceCharmRangeMaterial = paramBoolean;
+  }
+  
+  public void setFaceColorStrength(double paramDouble)
+  {
+    this.faceColorStrength = paramDouble;
   }
   
   public void setFaceCropItem(FaceCropItem paramFaceCropItem)
@@ -1567,6 +1761,21 @@ public class VideoMaterial
     this.itemList3D = paramList;
   }
   
+  public void setJsonName(String paramString)
+  {
+    this.jsonName = paramString;
+  }
+  
+  public void setKapuMaterial(boolean paramBoolean)
+  {
+    this.kapuMaterial = paramBoolean;
+  }
+  
+  public void setKapuMaterialType(int paramInt)
+  {
+    this.kapuMaterialType = paramInt;
+  }
+  
   public void setLipsLutPath(String paramString)
   {
     this.lipsLutPath = paramString;
@@ -1585,6 +1794,11 @@ public class VideoMaterial
   public void setLoadImageFromCache(boolean paramBoolean)
   {
     this.loadImageFromCache = paramBoolean;
+  }
+  
+  public void setLowlightAdjustStrength(double paramDouble)
+  {
+    this.lowlightAdjustStrength = paramDouble;
   }
   
   public void setMaskPaintImage(String paramString)
@@ -1634,14 +1848,34 @@ public class VideoMaterial
     }
   }
   
+  public void setMusicPlayCount(int paramInt)
+  {
+    this.musicPlayCount = paramInt;
+  }
+  
+  public void setNeedAvatarFacekit(boolean paramBoolean)
+  {
+    this.needAvatarFacekit = paramBoolean;
+  }
+  
   public void setNeedBodyInfo(boolean paramBoolean)
   {
     this.needBodyInfo = paramBoolean;
   }
   
+  public void setNeedDepth()
+  {
+    this.mNeedDepthMask = true;
+  }
+  
   public void setNeedFaceInfo(boolean paramBoolean)
   {
     this.needFaceInfo = paramBoolean;
+  }
+  
+  public void setNeedFaceMeshFacekit(boolean paramBoolean)
+  {
+    this.needFaceMeshFacekit = paramBoolean;
   }
   
   public void setNeedFreezeFrame(boolean paramBoolean)
@@ -1669,6 +1903,11 @@ public class VideoMaterial
   public void setOrderMode(int paramInt)
   {
     this.orderMode = paramInt;
+  }
+  
+  public void setOvalDistortionItemList(List<OvalDistortionItem> paramList)
+  {
+    this.ovalDistortionItemList = paramList;
   }
   
   public void setOverallAudio(String paramString)
@@ -1840,6 +2079,16 @@ public class VideoMaterial
     }
   }
   
+  public void setUkyoGameSetting(UKYOGameSetting paramUKYOGameSetting)
+  {
+    this.ukyoGameSetting = paramUKYOGameSetting;
+  }
+  
+  public void setUse3DMMTransform(boolean paramBoolean)
+  {
+    this.use3DMMTransform = paramBoolean;
+  }
+  
   public void setUseMesh(boolean paramBoolean)
   {
     this.useMesh = paramBoolean;
@@ -1862,7 +2111,7 @@ public class VideoMaterial
   
   public String toString()
   {
-    return "VideoMaterial{dataPath='" + this.dataPath + '\'' + ", hasAudio=" + this.hasAudio + ", minAppVersion=" + this.minAppVersion + ", shaderType=" + this.shaderType + ", faceoffType=" + this.faceoffType + ", maxFaceCount=" + this.maxFaceCount + ", stickerOrderMode=" + this.stickerOrderMode + ", voicekind=" + this.voicekind + ", environment=" + this.environment + ", resourceList=" + this.resourceList + ", renderOrderList=" + this.renderOrderList + ", itemList=" + this.itemList + ", itemList3D=" + this.itemList3D + ", faceOffItemList=" + this.faceOffItemList + ", faceStyleItemList=" + this.faceStyleItemList + ", headCropItemList=" + this.headCropItemList + ", distortionItemList=" + this.distortionItemList + ", faceMeshItemList=" + this.faceMeshItemList + ", faceMoveItemList=" + this.faceMoveItemList + ", multiViewerItemList=" + this.multiViewerItemList + ", facePoints=" + this.facePoints + ", triggerType=" + this.triggerType + ", faceExchangeImage='" + this.faceExchangeImage + '\'' + ", faceExchangeImageDisableFaceCrop='" + this.faceExchangeImageDisableFaceCrop + '\'' + ", imageFacePointsFileName='" + this.imageFacePointsFileName + '\'' + ", blendAlpha=" + this.blendAlpha + ", grayScale=" + this.grayScale + ", orderMode=" + this.orderMode + ", blendMode=" + this.blendMode + ", featureType=" + this.featureType + ", id='" + this.id + '\'' + ", supportLandscape=" + this.supportLandscape + ", randomGroupCount=" + this.randomGroupCount + ", faceMoveTriangles=" + Arrays.toString(this.faceMoveTriangles) + ", filterId='" + this.filterId + '\'' + ", filterBlurStrength='" + this.filterBlurStrength + '\'' + ", videoFilterEffect=" + this.videoFilterEffect + ", faceSwapType=" + this.faceSwapType + ", arParticleType=" + this.arParticleType + ", arParticleList=" + this.arParticleList + ", faceDetectType=" + this.faceDetectType + ", faceExpression=" + this.faceExpression + ", faceImageLayer=" + this.faceImageLayer + ", tipsText='" + this.tipsText + '\'' + ", tipsIcon='" + this.tipsIcon + '\'' + ", faceCropItem=" + this.faceCropItem + ", faceValueDetectType=" + this.faceValueDetectType + ", adIcon='" + this.adIcon + '\'' + ", adLink='" + this.adLink + '\'' + ", adAppLink='" + this.adAppLink + '\'' + ", weiboTag='" + this.weiboTag + '\'' + ", lipsLutPath='" + this.lipsLutPath + '\'' + ", useMesh=" + this.useMesh + ", detectorFlag=" + this.detectorFlag + ", segmentRequired=" + this.segmentRequired + ", segmentStrokeWidth=" + this.segmentStrokeWidth + ", segmentStrokeGap=" + this.segmentStrokeGap + ", segmentStrokeColor=" + Arrays.toString(this.segmentStrokeColor) + ", segmentFeather=" + this.segmentFeather + ", fabbyParts=" + this.fabbyParts + ", categoryFlag=" + this.categoryFlag + ", needFaceInfo=" + this.needFaceInfo + ", fov=" + this.fov + ", gameParams=" + this.gameParams + ", auido2Text=" + this.audio2Text + ", audio3DParams=" + this.audio3DParams + '}';
+    return "VideoMaterial{dataPath='" + this.dataPath + '\'' + ", hasAudio=" + this.hasAudio + ", minAppVersion=" + this.minAppVersion + ", shaderType=" + this.shaderType + ", faceoffType=" + this.faceoffType + ", maxFaceCount=" + this.maxFaceCount + ", stickerOrderMode=" + this.stickerOrderMode + ", voicekind=" + this.voicekind + ", environment=" + this.environment + ", resourceList=" + this.resourceList + ", renderOrderList=" + this.renderOrderList + ", itemList=" + this.itemList + ", itemList3D=" + this.itemList3D + ", faceOffItemList=" + this.faceOffItemList + ", faceStyleItemList=" + this.faceStyleItemList + ", headCropItemList=" + this.headCropItemList + ", distortionItemList=" + this.distortionItemList + ", ovalDistortionItemList" + this.ovalDistortionItemList + ", faceMeshItemList=" + this.faceMeshItemList + ", faceMoveItemList=" + this.faceMoveItemList + ", multiViewerItemList=" + this.multiViewerItemList + ", facePoints=" + this.facePoints + ", triggerType=" + this.triggerType + ", faceExchangeImage='" + this.faceExchangeImage + '\'' + ", faceExchangeImageDisableFaceCrop='" + this.faceExchangeImageDisableFaceCrop + '\'' + ", imageFacePointsFileName='" + this.imageFacePointsFileName + '\'' + ", blendAlpha=" + this.blendAlpha + ", grayScale=" + this.grayScale + ", orderMode=" + this.orderMode + ", blendMode=" + this.blendMode + ", featureType=" + this.featureType + ", id='" + this.id + '\'' + ", supportLandscape=" + this.supportLandscape + ", randomGroupCount=" + this.randomGroupCount + ", faceMoveTriangles=" + Arrays.toString(this.faceMoveTriangles) + ", filterId='" + this.filterId + '\'' + ", filterBlurStrength='" + this.filterBlurStrength + '\'' + ", videoFilterEffect=" + this.videoFilterEffect + ", faceSwapType=" + this.faceSwapType + ", arParticleType=" + this.arParticleType + ", arParticleList=" + this.arParticleList + ", faceDetectType=" + this.faceDetectType + ", faceExpression=" + this.faceExpression + ", faceImageLayer=" + this.faceImageLayer + ", tipsText='" + this.tipsText + '\'' + ", tipsIcon='" + this.tipsIcon + '\'' + ", faceCropItem=" + this.faceCropItem + ", faceValueDetectType=" + this.faceValueDetectType + ", adIcon='" + this.adIcon + '\'' + ", adLink='" + this.adLink + '\'' + ", adAppLink='" + this.adAppLink + '\'' + ", weiboTag='" + this.weiboTag + '\'' + ", lipsLutPath='" + this.lipsLutPath + '\'' + ", useMesh=" + this.useMesh + ", detectorFlag=" + this.detectorFlag + ", segmentRequired=" + this.segmentRequired + ", segmentStrokeWidth=" + this.segmentStrokeWidth + ", segmentStrokeGap=" + this.segmentStrokeGap + ", segmentStrokeColor=" + Arrays.toString(this.segmentStrokeColor) + ", segmentFeather=" + this.segmentFeather + ", fabbyParts=" + this.fabbyParts + ", categoryFlag=" + this.categoryFlag + ", needFaceInfo=" + this.needFaceInfo + ", fov=" + this.fov + ", gameParams=" + this.gameParams + ", auido2Text=" + this.audio2Text + ", audio3DParams=" + this.audio3DParams + '}';
   }
 }
 

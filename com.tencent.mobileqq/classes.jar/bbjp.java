@@ -1,341 +1,317 @@
-import ColorNick.QC.readItemInfoReq;
-import ColorNick.QC.readItemInfoRsp;
-import GROUP.MessageRemindReq;
-import GROUP.MessageRemindRsp;
-import MQQ.GetRoamToastReq;
-import MQQ.GetRoamToastRsp;
-import ProfileLogic.QC.readUserInfoReq;
-import ProfileLogic.QC.readUserInfoRsp;
-import ProfileLogic.QC.setUserFlagReq;
-import ProfileLogic.QC.setUserFlagRsp;
-import ProfileLogic.QC.setUserProfileReq;
-import ProfileLogic.QC.setUserProfileRsp;
-import QC.BubbleRecommendReq;
-import QC.BubbleRecommendRsp;
-import QC.FaceReq;
-import QC.FaceRsp;
-import QC.FontRecommendReq;
-import QC.FontRecommendRsp;
-import QC.SetFontBubbleReq;
-import QC.SetFontBubbleRsp;
-import QC.UniGetRsp;
-import QC.UniLoginCheckReq;
-import QC.UniLoginCheckRsp;
-import QC.UniSetRsp;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.widgets.ElasticHorScrView;
+import com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet.2;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class bbjp
-  extends aafe
 {
-  private static int jdField_a_of_type_Int;
-  private static ConcurrentHashMap<String, bgol> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public int a;
+  protected Context a;
+  protected View a;
+  protected AdapterView.OnItemClickListener a;
+  protected TextView a;
+  protected bbjt a;
+  protected final bkzi a;
+  public ElasticHorScrView a;
+  protected CharSequence a;
+  protected boolean a;
+  private List<ShareActionSheetBuilder.ActionSheetItem>[] a;
+  protected int b;
+  public ElasticHorScrView b;
+  private boolean b;
+  protected int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
   
-  private <T> T a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, T paramT)
+  public bbjp(Context paramContext)
   {
-    if (paramFromServiceMsg == null) {
-      return null;
-    }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = paramToServiceMsg.getByClass("rsp", paramT);
-      return paramToServiceMsg;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.e("VasService", 1, "decodeWUP: ", paramToServiceMsg);
-    }
-    return null;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bkzi = ((bkzi)bkzz.a(this.jdField_a_of_type_AndroidContentContext, null));
+    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
+    this.e = paramContext.getDimensionPixelSize(2131296796);
+    this.f = this.e;
+    this.g = paramContext.getDimensionPixelOffset(2131296798);
+    this.h = paramContext.getDimensionPixelOffset(2131296799);
+    this.jdField_a_of_type_Bbjt = new bbjt();
+    int i = (paramContext.getDisplayMetrics().widthPixels - (int)(a() * 5.2F)) / (((int)5.2F + 1) * 2);
+    b(i);
+    a((int)(i * 6 / 5.5F));
   }
   
-  public static void a(bgol parambgol, String paramString)
+  private String a(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, parambgol);
-  }
-  
-  public static void a(String paramString)
-  {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasService", 2, "decode: cmd=" + paramToServiceMsg.getServiceCmd());
-    }
-    UniPacket localUniPacket = new UniPacket(true);
-    try
+    Object localObject = "";
+    int i = 0;
+    if (i < paramList.size())
     {
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramFromServiceMsg.getWupBuffer());
-      if (paramToServiceMsg.getServiceCmd().equals("FriendClone.CloneAuthStatus"))
+      String str = ((ShareActionSheetBuilder.ActionSheetItem)paramList.get(i)).label;
+      if (str.length() <= ((String)localObject).length()) {
+        break label54;
+      }
+      localObject = str;
+    }
+    label54:
+    for (;;)
+    {
+      i += 1;
+      break;
+      return localObject;
+    }
+  }
+  
+  private static String b(String paramString, int paramInt)
+  {
+    String str = paramString;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramString.length() > paramInt) {
+        str = paramString.substring(0, paramInt) + "\n" + paramString.substring(paramInt);
+      }
+    }
+    return str;
+  }
+  
+  public int a()
+  {
+    return this.e;
+  }
+  
+  @TargetApi(9)
+  protected View a()
+  {
+    View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131558971, null);
+    this.jdField_a_of_type_Bbjt.a((RelativeLayout)localView.findViewById(2131362221));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131361976));
+    Object localObject2;
+    Object localObject1;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (this.jdField_a_of_type_JavaLangCharSequence != null) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      }
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131377144));
+      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131377145));
+      localObject2 = a();
+      if (localObject2.length <= 0) {
+        break label376;
+      }
+      localObject1 = localObject2[0];
+      label122:
+      if (!((List)localObject1).isEmpty()) {
+        break label893;
+      }
+    }
+    label147:
+    label336:
+    label376:
+    label888:
+    label893:
+    for (int j = 0;; j = 1)
+    {
+      if (localObject2.length > 1)
       {
-        int i = ((Integer)localUniPacket.getByClass("", Integer.valueOf(-1))).intValue();
-        paramFromServiceMsg = new ArrayList();
-        int j = paramToServiceMsg.extraData.getInt("operation", -1);
-        paramFromServiceMsg.add(Integer.valueOf(i));
-        paramFromServiceMsg.add(Integer.valueOf(j));
-        if (j == 257)
+        localObject2 = localObject2[1];
+        if (!((List)localObject2).isEmpty()) {
+          break label888;
+        }
+      }
+      for (int k = 0;; k = 1)
+      {
+        Object localObject3 = new TextPaint();
+        ((TextPaint)localObject3).setTextSize(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299008));
+        Object localObject4 = new StaticLayout(b(a((List)localObject1), 6), (TextPaint)localObject3, this.f, Layout.Alignment.ALIGN_CENTER, 1.0F, this.h, true);
+        Object localObject5 = new StaticLayout(b(a((List)localObject2), 6), (TextPaint)localObject3, this.f, Layout.Alignment.ALIGN_CENTER, 1.0F, this.h, true);
+        localObject3 = localObject5;
+        if (((StaticLayout)localObject4).getHeight() >= ((StaticLayout)localObject5).getHeight()) {
+          localObject3 = localObject4;
+        }
+        int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(2131296795);
+        int i;
+        if (j != 0)
         {
-          boolean bool = ((Boolean)localUniPacket.getByClass("bOpenAuth", new Boolean(false))).booleanValue();
-          paramFromServiceMsg.add(Boolean.valueOf(bool));
-          if (QLog.isColorLevel()) {
-            QLog.d("VasService", 2, "decode: ret=" + i + " openAuth=" + bool + " funName=" + localUniPacket.getFuncName());
+          localObject4 = (GridView)localView.findViewById(2131367851);
+          if (Build.VERSION.SDK_INT >= 9) {
+            this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
+          }
+          localObject5 = ((List)localObject1).iterator();
+          i = 0;
+          if (((Iterator)localObject5).hasNext())
+          {
+            if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject5).next()).visibility != 0) {
+              break label885;
+            }
+            i += 1;
           }
         }
-        else if (QLog.isColorLevel())
+        for (;;)
         {
-          QLog.d("VasService", 2, "decode: ret=" + i + " funName=" + localUniPacket.getFuncName());
+          break label336;
+          b();
+          break;
+          localObject1 = new ArrayList(0);
+          break label122;
+          localObject2 = new ArrayList(0);
+          break label147;
+          int n = this.jdField_b_of_type_Int + a() + this.jdField_b_of_type_Int;
+          ((GridView)localObject4).setColumnWidth(n);
+          ((GridView)localObject4).setNumColumns(i);
+          localObject5 = ((GridView)localObject4).getLayoutParams();
+          ((GridView)localObject4).setPadding(this.c, ((GridView)localObject4).getPaddingTop(), this.c, ((GridView)localObject4).getPaddingBottom());
+          ((ViewGroup.LayoutParams)localObject5).width = (n * i + this.c + this.c);
+          this.jdField_a_of_type_Int = ((ViewGroup.LayoutParams)localObject5).width;
+          ((ViewGroup.LayoutParams)localObject5).height = (this.e + this.g + ((StaticLayout)localObject3).getHeight() + m);
+          ((GridView)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
+          ((GridView)localObject4).setAdapter(new bbjr(this.jdField_a_of_type_AndroidContentContext, (List)localObject1));
+          ((GridView)localObject4).setSelector(new ColorDrawable(0));
+          ((GridView)localObject4).setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
+          if (k != 0)
+          {
+            localObject1 = (GridView)localView.findViewById(2131367852);
+            if (Build.VERSION.SDK_INT >= 9) {
+              this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
+            }
+            ((GridView)localObject1).setSmoothScrollbarEnabled(false);
+            localObject4 = ((List)localObject2).iterator();
+            i = 0;
+            if (((Iterator)localObject4).hasNext())
+            {
+              if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject4).next()).visibility != 0) {
+                break label882;
+              }
+              i += 1;
+            }
+          }
+          for (;;)
+          {
+            break;
+            n = this.jdField_b_of_type_Int + a() + this.jdField_b_of_type_Int;
+            ((GridView)localObject1).setColumnWidth(n);
+            ((GridView)localObject1).setNumColumns(i);
+            localObject4 = ((GridView)localObject1).getLayoutParams();
+            ((GridView)localObject1).setPadding(this.c, ((GridView)localObject1).getPaddingTop(), this.c, ((GridView)localObject1).getPaddingBottom());
+            ((ViewGroup.LayoutParams)localObject4).width = (n * i + this.c + this.c);
+            this.d = ((ViewGroup.LayoutParams)localObject4).width;
+            ((ViewGroup.LayoutParams)localObject4).height = (this.e + this.g + ((StaticLayout)localObject3).getHeight() + m);
+            ((GridView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+            ((GridView)localObject1).setNumColumns(i);
+            ((GridView)localObject1).setAdapter(new bbjr(this.jdField_a_of_type_AndroidContentContext, (List)localObject2));
+            ((GridView)localObject1).setSelector(new ColorDrawable(0));
+            ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
+            localObject1 = (TextView)localView.findViewById(2131361968);
+            ((TextView)localObject1).setText(2131690697);
+            ((TextView)localObject1).setOnClickListener(new bbjq(this));
+            if (j == 0) {
+              this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
+            }
+            if (k == 0) {
+              this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
+            }
+            localView.post(new ShareActionSheet.2(this));
+            return localView;
+          }
         }
       }
     }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.e("VasService", 1, "decode error: ", paramToServiceMsg);
-      return null;
-    }
-    if (paramToServiceMsg.getServiceCmd().equals("groupnick.readitem"))
-    {
-      paramFromServiceMsg = (readItemInfoRsp)localUniPacket.getByClass("stRsp", new readItemInfoRsp());
-      paramToServiceMsg = paramFromServiceMsg;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("VasService", 2, "decode: ret =  funName = " + localUniPacket.getFuncName() + " infoRsp = " + paramFromServiceMsg.toString());
-        return paramFromServiceMsg;
-      }
-    }
-    else
-    {
-      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.readUserInfo")) {
-        return (readUserInfoRsp)localUniPacket.getByClass("stRsp", new readUserInfoRsp());
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.setUserProfile")) {
-        return (setUserProfileRsp)localUniPacket.getByClass("stRsp", new setUserProfileRsp());
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.setUserFlag")) {
-        return (setUserFlagRsp)localUniPacket.getByClass("stRsp", new setUserFlagRsp());
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("GroupCare.getMessageRemindInfo")) {
-        return (MessageRemindRsp)localUniPacket.getByClass("stRsp", new MessageRemindRsp());
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getFontRecommend")) {
-        return (FontRecommendRsp)localUniPacket.getByClass("rsp", new FontRecommendRsp());
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getBubbleRecommend")) {
-        return (BubbleRecommendRsp)localUniPacket.getByClass("rsp", new BubbleRecommendRsp());
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.setFontBubble")) {
-        return (SetFontBubbleRsp)localUniPacket.getByClass("rsp", new SetFontBubbleRsp());
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("RoamWrap.GetRoamToast")) {
-        return (GetRoamToastRsp)localUniPacket.getByClass("stRsp", new GetRoamToastRsp());
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("Face.setFace")) {
-        return (FaceRsp)localUniPacket.getByClass("rsp", new FaceRsp());
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("QCUniBusinessLogin.check")) {
-        return (UniLoginCheckRsp)localUniPacket.getByClass("rsp", new UniLoginCheckRsp());
-      }
-      if ("QCUniBusinessLogic.uniSet".equals(paramToServiceMsg.getServiceCmd())) {
-        return a(paramToServiceMsg, paramFromServiceMsg, new UniSetRsp());
-      }
-      if ("QCUniBusinessLogic.uniGet".equals(paramToServiceMsg.getServiceCmd())) {
-        return a(paramToServiceMsg, paramFromServiceMsg, new UniGetRsp());
-      }
-      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(bgol.a(paramToServiceMsg)))
-      {
-        paramToServiceMsg = ((bgol)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(bgol.a(paramToServiceMsg))).a(paramToServiceMsg, paramFromServiceMsg, localUniPacket);
-        return paramToServiceMsg;
-      }
-      return null;
-      paramToServiceMsg = paramFromServiceMsg;
-    }
-    return paramToServiceMsg;
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public bkzi a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasService", 2, "encodeReqMsg: cmd=" + paramToServiceMsg.getServiceCmd());
-    }
-    boolean bool;
-    if (paramToServiceMsg.getServiceCmd().equals("FriendClone.CloneAuthStatus"))
-    {
-      i = paramToServiceMsg.extraData.getInt("operation", -1);
-      if (i == 257)
-      {
-        paramUniPacket.setFuncName("getCloneAuthStatus");
-        paramUniPacket.setServantName("MQQ.FriendCloneServer.FriendCloneObj");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        paramUniPacket.setRequestId(i);
-        localObject = paramToServiceMsg.extraData.getString("uUin");
-        bool = paramToServiceMsg.extraData.getBoolean("bOpenAuth", false);
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          break label153;
-        }
-        QLog.e("VasService", 2, "encodeReqMsg: uin is empty");
-      }
-    }
-    label153:
-    do
-    {
-      do
-      {
-        return false;
-      } while (i != 258);
-      paramUniPacket.setFuncName("setCloneAuthStatus");
-      break;
-      paramUniPacket.put("uUin", Long.valueOf(Long.parseLong((String)localObject)));
-      paramUniPacket.put("bOpenAuth", Boolean.valueOf(bool));
-      if (QLog.isColorLevel()) {
-        QLog.d("VasService", 2, "encodeReqMsg: svName=" + paramUniPacket.getServantName() + " funName=" + paramUniPacket.getFuncName() + " uin=" + paramUniPacket.getByClass("uUin", new Long(1L)) + " openAuth=" + paramUniPacket.getByClass("bOpenAuth", new Boolean(false)));
-      }
-      return true;
-      if (paramToServiceMsg.getServiceCmd().equals("groupnick.readitem"))
-      {
-        paramUniPacket.setFuncName("readItemInfo");
-        paramUniPacket.put("stReq", (readItemInfoReq)paramToServiceMsg.extraData.getSerializable("req"));
-        paramUniPacket.setServantName("QC.readGroupNickServer.readGroupNickObj");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        paramUniPacket.setRequestId(i);
-        return true;
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.readUserInfo"))
-      {
-        paramUniPacket.setServantName("QC.ProfileLogicServer.ProfileLogicObj");
-        paramUniPacket.setFuncName("ReadUserProfile");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        paramUniPacket.setRequestId(i);
-        paramUniPacket.put("stReq", (readUserInfoReq)paramToServiceMsg.extraData.getSerializable("req"));
-        return true;
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.setUserProfile"))
-      {
-        paramUniPacket.setServantName("QC.ProfileLogicServer.ProfileLogicObj");
-        paramUniPacket.setFuncName("SetUserProfile");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        paramUniPacket.setRequestId(i);
-        paramUniPacket.put("stReq", (setUserProfileReq)paramToServiceMsg.extraData.get("req"));
-        return true;
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("profilelogic.setUserFlag"))
-      {
-        paramUniPacket.setServantName("QC.ProfileLogicServer.ProfileLogicObj");
-        paramUniPacket.setFuncName("SetUserFlag");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        paramUniPacket.setRequestId(i);
-        paramUniPacket.put("stReq", (setUserFlagReq)paramToServiceMsg.extraData.get("req"));
-        return true;
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("GroupCare.getMessageRemindInfo"))
-      {
-        paramUniPacket.setServantName("GROUP.GroupCareServer.GroupCareObj");
-        paramUniPacket.setFuncName("getMessageRemindInfo");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        paramUniPacket.setRequestId(i);
-        paramUniPacket.put("stReq", (MessageRemindReq)paramToServiceMsg.extraData.get("req"));
-        return true;
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getFontRecommend"))
-      {
-        paramUniPacket.setServantName("QC.FontBubbleRecommendServer.FontBubbleRecommendObj");
-        paramUniPacket.setFuncName("getFontRecommend");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        paramUniPacket.setRequestId(i);
-        paramUniPacket.put("req", (FontRecommendReq)paramToServiceMsg.extraData.get("req"));
-        return true;
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getBubbleRecommend"))
-      {
-        paramUniPacket.setServantName("QC.FontBubbleRecommendServer.FontBubbleRecommendObj");
-        paramUniPacket.setFuncName("getBubbleRecommend");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        paramUniPacket.setRequestId(i);
-        paramUniPacket.put("req", (BubbleRecommendReq)paramToServiceMsg.extraData.get("req"));
-        return true;
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("QCUniBusinessLogin.check"))
-      {
-        paramUniPacket.setServantName("QC.UniBusinessLoginServer.UniBusinessLoginObj");
-        paramUniPacket.setFuncName("UniLoginCheck");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        paramUniPacket.setRequestId(i);
-        paramUniPacket.put("stReq", (UniLoginCheckReq)paramToServiceMsg.extraData.get("req"));
-        return true;
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("FontBubbleRecommend.setFontBubble"))
-      {
-        paramUniPacket.setServantName("QC.FontBubbleRecommendServer.FontBubbleRecommendObj");
-        paramUniPacket.setFuncName("setFontBubble");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        paramUniPacket.setRequestId(i);
-        paramUniPacket.put("req", (SetFontBubbleReq)paramToServiceMsg.extraData.get("req"));
-        return true;
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("RoamWrap.GetRoamToast"))
-      {
-        paramUniPacket.setServantName("MQQ.RoamWrapServer.RoamWrapObj");
-        paramUniPacket.setFuncName("GetRoamToast");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        paramUniPacket.setRequestId(i);
-        paramUniPacket.put("stReq", (GetRoamToastReq)paramToServiceMsg.extraData.get("req"));
-        return true;
-      }
-      if (paramToServiceMsg.getServiceCmd().equals("Face.setFace"))
-      {
-        paramUniPacket.setServantName("QC.FaceServer.FaceObj");
-        paramUniPacket.setFuncName("setFace");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        paramUniPacket.setRequestId(i);
-        paramUniPacket.put("req", (FaceReq)paramToServiceMsg.extraData.get("req"));
-        return true;
-      }
-      if ("QCUniBusinessLogic.uniSet".equals(paramToServiceMsg.getServiceCmd()))
-      {
-        paramUniPacket.setServantName("QC.UniBusinessLogicServer.UniBusinessLogicObj");
-        paramUniPacket.setFuncName("uniSet");
-        paramUniPacket.put("stReq", paramToServiceMsg.extraData.getSerializable("req"));
-        return true;
-      }
-      if ("QCUniBusinessLogic.uniGet".equals(paramToServiceMsg.getServiceCmd()))
-      {
-        paramUniPacket.setServantName("QC.UniBusinessLogicServer.UniBusinessLogicObj");
-        paramUniPacket.setFuncName("uniGet");
-        paramUniPacket.put("stReq", paramToServiceMsg.extraData.getSerializable("req"));
-        return true;
-      }
-    } while (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(bgol.a(paramToServiceMsg)));
-    Object localObject = (bgol)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(bgol.a(paramToServiceMsg));
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    ((bgol)localObject).a(paramToServiceMsg, paramUniPacket, i);
-    return true;
+    return this.jdField_a_of_type_Bkzi;
   }
   
-  public String[] a()
+  public void a()
   {
-    return bbjo.a;
+    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_AndroidViewView = a();
+    }
+    this.jdField_a_of_type_Bkzi.a(this.jdField_a_of_type_AndroidViewView, null);
+    try
+    {
+      if (!a()) {
+        this.jdField_a_of_type_Bkzi.show();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ShareActionSheet", 2, "actionSheet.show exception=" + localException);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void a(AdapterView.OnItemClickListener paramOnItemClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = paramOnItemClickListener;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    }
+  }
+  
+  public void a(List<ShareActionSheetBuilder.ActionSheetItem>[] paramArrayOfList)
+  {
+    this.jdField_a_of_type_ArrayOfJavaUtilList = paramArrayOfList;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Bkzi.isShowing();
+  }
+  
+  protected List<ShareActionSheetBuilder.ActionSheetItem>[] a()
+  {
+    if (this.jdField_a_of_type_ArrayOfJavaUtilList != null) {
+      return this.jdField_a_of_type_ArrayOfJavaUtilList;
+    }
+    return (List[])new ArrayList[0];
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() != 8)) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
   }
 }
 

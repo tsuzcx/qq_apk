@@ -1,6 +1,5 @@
 package cooperation.qzone.music;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
@@ -13,9 +12,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.TextView;
-import aval;
-import bfur;
-import bgve;
+import anvx;
+import awgo;
+import bhdj;
+import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -361,21 +361,21 @@ public class QzoneWebMusicJsPlugin
   
   private static final void showAutoPlayTips(Context paramContext, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    paramContext = bfur.a(paramContext, 230, null, amtj.a(2131711736), amtj.a(2131711730), amtj.a(2131711732), paramOnClickListener2, paramOnClickListener1);
+    paramContext = bhdj.a(paramContext, 230, null, anvx.a(2131712083), anvx.a(2131712077), anvx.a(2131712079), paramOnClickListener2, paramOnClickListener1);
     paramContext.setOnCancelListener(paramOnCancelListener);
     paramContext.show();
   }
   
   private static final void showPlayTips(Context paramContext, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    bfur.a(paramContext, 230, amtj.a(2131711737), "你正处于非WiFi环境，继续播放将会消耗流量，运营商可能会收取费用，是否继续\n", amtj.a(2131711731), amtj.a(2131711738), paramOnClickListener2, paramOnClickListener1).show();
+    bhdj.a(paramContext, 230, anvx.a(2131712084), "你正处于非WiFi环境，继续播放将会消耗流量，运营商可能会收取费用，是否继续\n", anvx.a(2131712078), anvx.a(2131712085), paramOnClickListener2, paramOnClickListener1).show();
   }
   
   public void changeMusicList(String paramString)
   {
     try
     {
-      aval.a(new JSONObject(paramString), "changeMusicList", null);
+      awgo.a(new JSONObject(paramString), "changeMusicList", null);
       return;
     }
     catch (JSONException paramString)
@@ -683,8 +683,8 @@ public class QzoneWebMusicJsPlugin
     //   119: iconst_2
     //   120: istore_2
     //   121: aload_0
-    //   122: getfield 143	cooperation/qzone/music/QzoneWebMusicJsPlugin:mRuntime	Lbgve;
-    //   125: invokevirtual 400	bgve:a	()Lcom/tencent/common/app/AppInterface;
+    //   122: getfield 143	cooperation/qzone/music/QzoneWebMusicJsPlugin:mRuntime	Lbifw;
+    //   125: invokevirtual 400	bifw:a	()Lcom/tencent/common/app/AppInterface;
     //   128: ldc 2
     //   130: invokevirtual 406	com/tencent/common/app/AppInterface:getHandler	(Ljava/lang/Class;)Lmqq/os/MqqHandler;
     //   133: new 782	cooperation/qzone/music/QzoneWebMusicJsPlugin$9
@@ -798,7 +798,7 @@ public class QzoneWebMusicJsPlugin
               paramString = new JSONObject();
               paramString.put("uin", ((SongInfo)localArrayList.get(i)).jdField_b_of_type_Long);
               paramString.put("coverUrl", ((SongInfo)localArrayList.get(i)).e);
-              aval.a(paramString, "showFloatView", null);
+              awgo.a(paramString, "showFloatView", null);
             }
             if (localArrayList.size() <= 0) {
               break;
@@ -908,7 +908,7 @@ public class QzoneWebMusicJsPlugin
       boolean bool = ((JSONObject)localObject).getBoolean("visible");
       if ((this.mRuntime.a() instanceof QQBrowserActivity))
       {
-        localObject = (TextView)this.mRuntime.a().findViewById(2131369099);
+        localObject = (TextView)this.mRuntime.a().findViewById(2131369262);
         if (bool) {}
         try
         {

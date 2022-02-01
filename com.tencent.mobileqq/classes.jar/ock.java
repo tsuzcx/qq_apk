@@ -1,27 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ock
-  implements DialogInterface.OnClickListener
+class ock
+  implements View.OnClickListener
 {
-  public ock(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2) {}
+  ock(obm paramobm, String paramString, oji paramoji) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
-    if (paramDialogInterface == null) {}
-    do
-    {
-      return;
-      if (paramInt == 0)
-      {
-        paramDialogInterface.loadUrl("javascript:" + this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (paramInt != 1);
-    paramDialogInterface.loadUrl("javascript:" + this.b);
+    obm.c(this.jdField_a_of_type_Obm, this.jdField_a_of_type_JavaLangString);
+    PublicAccountHandler.a(this.jdField_a_of_type_Obm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Obm.jdField_a_of_type_JavaLangString, "Grp_tribe", "interest_data", "Clk_msg");
+    obm.a(this.jdField_a_of_type_Obm, this.jdField_a_of_type_Oji.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin.personalize;
 
-import bfur;
-import bgve;
+import bhdj;
+import bifw;
 import mqq.app.QQPermissionCallback;
 
 class QZoneCoverStoreJsPlugin$2
@@ -11,7 +11,7 @@ class QZoneCoverStoreJsPlugin$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bfur.a(this.this$0.mRuntime.a());
+    bhdj.a(this.this$0.mRuntime.a());
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)

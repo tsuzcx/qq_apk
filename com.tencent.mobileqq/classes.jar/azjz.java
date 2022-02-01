@@ -1,77 +1,86 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import com.tencent.mobileqq.utils.FileUtils;
 
-class azjz
-  extends azkc
+public class azjz
+  extends azka
+  implements azkl
 {
-  private long jdField_a_of_type_Long;
-  private WeakReference<Map<Long, azkc>> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<QQAppInterface> b;
-  private WeakReference<azka> c;
+  public int a;
+  public azjx a;
+  public azkn a;
+  public boolean a;
+  public boolean b = true;
   
-  public azjz(long paramLong, WeakReference<Map<Long, azkc>> paramWeakReference, WeakReference<QQAppInterface> paramWeakReference1, WeakReference<azka> paramWeakReference2)
+  public azjz()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-    this.b = paramWeakReference1;
-    this.c = paramWeakReference2;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Azkn = new azkn();
+    this.jdField_a_of_type_Azjx = new azjx();
   }
   
-  private boolean a()
+  public String a()
   {
-    return (this.c == null) || (this.c.get() == null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nPicFowardInfo");
+    if (this.jdField_a_of_type_Azkn != null) {}
+    for (String str = this.jdField_a_of_type_Azkn.a();; str = "\n |-upInfo=null")
+    {
+      localStringBuilder.append(str);
+      localStringBuilder.append(this.jdField_a_of_type_Azjx);
+      return localStringBuilder.toString();
+    }
   }
   
-  private boolean a(long paramLong)
+  public boolean a()
   {
-    return paramLong != this.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_Azkn == null)
+    {
+      a("PicFowardInfo.check", "upInfo == null");
+      return false;
+    }
+    if (((this.jdField_a_of_type_Azkn.b == 1000) || (this.jdField_a_of_type_Azkn.b == 1020) || (this.jdField_a_of_type_Azkn.b == 1004)) && (this.jdField_a_of_type_Azkn.d == null))
+    {
+      a("PicFowardInfo.check", "secondId invalid,uinType:" + this.jdField_a_of_type_Azkn.b + ",secondId:" + this.jdField_a_of_type_Azkn.d);
+      return false;
+    }
+    if (this.jdField_a_of_type_Azkn.jdField_g_of_type_Int == -1)
+    {
+      a("PicFowardInfo.check", "protocolType invalid,protocolType:" + this.jdField_a_of_type_Azkn.jdField_g_of_type_Int);
+      return false;
+    }
+    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_Azkn.jdField_g_of_type_JavaLangString))
+    {
+      if (this.jdField_a_of_type_Azjx == null)
+      {
+        a("PicFowardInfo.check", "downInfo == null");
+        return false;
+      }
+      if (!this.jdField_a_of_type_Azjx.a())
+      {
+        this.jdField_a_of_type_Azkb = this.jdField_a_of_type_Azjx.jdField_a_of_type_Azkb;
+        return false;
+      }
+    }
+    return true;
   }
   
-  private boolean a(Map<Long, azkc> paramMap, QQAppInterface paramQQAppInterface)
+  public azjx getPicDownloadInfo()
   {
-    QLog.d("QuickLoginObserver", 1, "wrapper.remove");
-    paramMap = (azkc)paramMap.remove(Long.valueOf(this.jdField_a_of_type_Long));
-    if (paramMap == null)
-    {
-      QLog.e("QuickLoginObserver", 1, "onSetPCVerify fail: observer not exist");
-      return true;
-    }
-    QLog.d("QuickLoginObserver", 1, "appInterface.removeObserver");
-    paramQQAppInterface.removeObserver(paramMap);
-    return false;
+    return this.jdField_a_of_type_Azjx;
   }
   
-  private boolean b()
+  public azkn getPicUploadInfo()
   {
-    return (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.b == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.b.get() == null);
+    return this.jdField_a_of_type_Azkn;
   }
   
-  public void a(boolean paramBoolean, long paramLong)
+  public boolean isSendFromLocal()
   {
-    QLog.d("QuickLoginObserver", 1, "onSetPCVerify isSuccess: " + paramBoolean + " mark: " + paramLong);
-    if (a(paramLong))
-    {
-      QLog.e("QuickLoginObserver", 1, "onSetPCVerify fail: observer not match mark: " + paramLong + " mPbMark: " + this.jdField_a_of_type_Long);
-      return;
-    }
-    if (b())
-    {
-      QLog.e("QuickLoginObserver", 1, "onSetPCVerify fail: sanity check fail");
-      return;
-    }
-    if (a((Map)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (QQAppInterface)this.b.get()))
-    {
-      QLog.e("QuickLoginObserver", 1, "cleanObserverAndCheckEmpty observer empty");
-      return;
-    }
-    if (a())
-    {
-      QLog.e("QuickLoginObserver", 1, "onSetPCVerify fail: mProxy == null");
-      return;
-    }
-    ((azka)this.c.get()).a(paramBoolean);
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return a();
   }
 }
 

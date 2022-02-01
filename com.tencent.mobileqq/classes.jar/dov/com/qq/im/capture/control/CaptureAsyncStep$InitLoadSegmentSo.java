@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.control;
 
-import bmbx;
+import bnrh;
 import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
@@ -14,14 +14,14 @@ public class CaptureAsyncStep$InitLoadSegmentSo
     try
     {
       boolean bool = AIManager.installDetector(PTHumanSegmenter.class, FeatureManager.getSoDir(), FeatureManager.getResourceDir());
-      bmbx.d("QQInitHandler", "[InitLoadSegmentSo] isOK:" + bool);
+      bnrh.d("QQInitHandler", "[InitLoadSegmentSo] isOK:" + bool);
       return 7;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        bmbx.d("QQInitHandler", "[InitLoadSegmentSo] failed");
+        bnrh.d("QQInitHandler", "[InitLoadSegmentSo] failed");
       }
     }
   }

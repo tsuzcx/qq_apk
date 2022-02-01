@@ -1,26 +1,46 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.crop.CropNewView;
+import eipc.EIPCResult;
+import java.util.List;
 
-public class bniv
-  extends GestureDetector.SimpleOnGestureListener
+class bniv
+  implements bnkw
 {
-  private bniv(CropNewView paramCropNewView) {}
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public bniv(bnis parambnis, int paramInt)
   {
-    return true;
+    this.c = paramInt;
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onAEDownloadFinish(bnkt parambnkt, String paramString, boolean paramBoolean, int paramInt)
   {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    bnrh.b("AECMShowQipcModule", "CmShowAEDownloadCallBack, localFilePath=" + paramString + ", downloaded=" + paramBoolean + ", errorType=" + paramInt);
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Int += 1;
+        if (this.jdField_a_of_type_Int + this.b == bnis.a(this.jdField_a_of_type_Bnis).size())
+        {
+          parambnkt = new EIPCResult();
+          if (this.b == 0) {
+            break;
+          }
+          parambnkt.code = -1;
+          this.jdField_a_of_type_Bnis.callbackResult(this.c, parambnkt);
+        }
+        return;
+      }
+      finally {}
+      this.b += 1;
+    }
+    parambnkt.code = 0;
+    this.jdField_a_of_type_Bnis.callbackResult(this.c, parambnkt);
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return CropNewView.a(this.a, paramFloat1, paramFloat2);
-  }
+  public void onAEProgressUpdate(bnkt parambnkt, long paramLong1, long paramLong2) {}
 }
 
 

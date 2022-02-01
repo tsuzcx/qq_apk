@@ -2,6 +2,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.dataline.util.file.DLFileInfo;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
@@ -31,13 +32,13 @@ class dt
         break;
       case 0: 
       case 3: 
-        localObject = (amqd)dr.a(this.a).getBusinessHandler(8);
+        localObject = (ansr)dr.a(this.a).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
         if ((localDataLineMsgRecord.strMoloKey != null) && (!localDataLineMsgRecord.isReportPause))
         {
           localDataLineMsgRecord.isReportPause = true;
           dq.m(dr.a(this.a));
         }
-        ((amqd)localObject).a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, false);
+        ((ansr)localObject).a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, false);
         if (localDataLineMsgRecord.isSendFromLocal()) {
           localDLFileInfo.jdField_a_of_type_Int = 1;
         }
@@ -47,12 +48,12 @@ class dt
       case 4: 
         if (NetworkUtil.isNetSupport(dr.a(this.a)))
         {
-          if ((aszt.a()) && (localDLFileInfo.b > 3145728L))
+          if ((auea.a()) && (localDLFileInfo.b > 3145728L))
           {
             if (localDLFileInfo.jdField_a_of_type_Int == 1) {}
             for (;;)
             {
-              aszt.a(bool, dr.a(this.a), new du(this, localDataLineMsgRecord, (dv)localObject));
+              auea.a(bool, dr.a(this.a), new du(this, localDataLineMsgRecord, (dv)localObject));
               break;
               bool = false;
             }
@@ -76,7 +77,7 @@ class dt
         }
         else
         {
-          aszk.a(2131694108);
+          audr.a(2131694305);
         }
         break;
       case 5: 

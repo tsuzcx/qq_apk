@@ -1,36 +1,37 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-class aiwk
-  implements aszj
+public class aiwk
+  implements ajka
 {
-  aiwk(aiwi paramaiwi, FileManagerEntity paramFileManagerEntity) {}
+  public aiwk(TroopView paramTroopView) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Aiwi.a.a.getOnlineFileSessionCenter().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "onRepeatClick. position:" + paramInt);
     }
-    amqd localamqd;
-    ArrayList localArrayList;
-    do
+    if (paramInt != -1)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
+      TroopView.a(this.a).setCurrentPosition(-1, false);
+      int i = TroopView.a(this.a).getCurrentItem();
+      if (QLog.isColorLevel()) {
+        QLog.i("addContacts.TroopView", 2, "onCurrentTabClick. position:" + paramInt + " currentClassifyPos:" + i);
       }
-      localamqd = (amqd)this.jdField_a_of_type_Aiwi.a.a.getBusinessHandler(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localamqd.a(localArrayList));
-    aszk.a(2131692366);
-    return;
-    this.jdField_a_of_type_Aiwi.a.a.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      Object localObject = TroopView.a(this.a).a(i, false);
+      if (localObject != null)
+      {
+        localObject = (AddContactViewPagerTroopFragment)localObject;
+        aivj localaivj = (aivj)this.a.a.get(i);
+        localaivj.b = -1;
+        ((AddContactViewPagerTroopFragment)localObject).a(localaivj.d, "");
+      }
+    }
   }
 }
 

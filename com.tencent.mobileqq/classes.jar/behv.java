@@ -1,22 +1,17 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.BubblePopupWindow;
 
-public class behv
+class behv
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<Long> a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
+  behv(behu parambehu) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "HomeworkInfo{content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", group_id=" + this.jdField_a_of_type_Long + ", uin=" + this.jdField_b_of_type_Long + ", title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", need_feedback=" + this.jdField_a_of_type_Boolean + ", course_name=" + this.jdField_d_of_type_JavaLangString + ", syncgids=" + this.jdField_a_of_type_JavaUtilList + ", hw_id=" + this.jdField_d_of_type_Long + '}';
+    behu.a(this.a).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -13,8 +13,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import mnp;
-import mnq;
+import mom;
+import mon;
 
 public class QavRecordButtonView
   extends View
@@ -25,7 +25,7 @@ public class QavRecordButtonView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private mnq jdField_a_of_type_Mnq;
+  private mon jdField_a_of_type_Mon;
   
   public QavRecordButtonView(Context paramContext)
   {
@@ -73,8 +73,8 @@ public class QavRecordButtonView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130842249);
-    super.setOnTouchListener(new mnp(this));
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130842263);
+    super.setOnTouchListener(new mom(this));
   }
   
   public int a()
@@ -116,9 +116,9 @@ public class QavRecordButtonView
     super.drawableStateChanged();
   }
   
-  public void setListener(mnq parammnq)
+  public void setListener(mon parammon)
   {
-    this.jdField_a_of_type_Mnq = parammnq;
+    this.jdField_a_of_type_Mon = parammon;
   }
   
   public void setProgress(long paramLong1, long paramLong2)
@@ -144,10 +144,10 @@ public class QavRecordButtonView
     for (;;)
     {
       invalidate();
-      if (this.jdField_a_of_type_Mnq == null) {
+      if (this.jdField_a_of_type_Mon == null) {
         break;
       }
-      this.jdField_a_of_type_Mnq.e(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Mon.e(this.jdField_a_of_type_Int);
       return;
       super.setAlpha(1.0F);
       if (paramBoolean)
@@ -156,10 +156,10 @@ public class QavRecordButtonView
         continue;
         if (paramBoolean)
         {
-          super.setContentDescription(getResources().getString(2131695306));
+          super.setContentDescription(getResources().getString(2131695523));
           continue;
           if (paramBoolean) {
-            super.setContentDescription(getResources().getString(2131695307));
+            super.setContentDescription(getResources().getString(2131695524));
           }
           this.jdField_a_of_type_Float = 0.0F;
         }

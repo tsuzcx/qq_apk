@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout android:gravity="bottom" android:id="@id/n6w" android:layout_width="fill_parent" android:layout_height="fill_parent" app:umanoDragView="@id/n74" app:umanoOverlay="true" app:umanoPanelHeight="@dimen/bb5" app:umanoParallaxOffset="100.0dip" app:umanoScrollableView="@id/n77" app:umanoShadowHeight="4.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="vertical" android:id="@id/n75" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/n74" android:layout_width="fill_parent" android:layout_height="@dimen/bb5">
-            <ImageView android:layout_gravity="center" android:id="@id/n76" android:layout_width="45.0dip" android:layout_height="16.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/bif" android:scaleType="fitCenter" />
-            <dov.com.qq.im.aeeditor.lyric.widget.LyricViewSingleLine android:layout_gravity="center" android:id="@id/n78" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" app:aelvLyricHilightColor="@color/fe" app:aelvLyricHilightSize="14.0dip" app:aelvLyricHilightThinColor="@color/fe" app:aelvLyricLineHeight="14.0dip" app:aelvLyricLineMargin="14.0dip" app:aelvLyricLiteratim="false" app:aelvLyricScrollable="false" app:aelvLyricTextColor="@color/fe" app:aelvLyricTextFakeBold="false" app:aelvLyricTextSize="14.0dip" app:aelvLyricTextThinColor="@color/fe" />
-        </LinearLayout>
-        <dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView android:layout_gravity="center_horizontal" android:id="@id/n77" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="25.0dip" />
-    </LinearLayout>
-</dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout>
+<RelativeLayout android:paddingTop="6.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SeekBar android:layout_gravity="center" android:id="@id/mrx" android:paddingLeft="50.0dip" android:paddingRight="50.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:layout_marginBottom="0.0dip" android:maxHeight="6.0dip" android:max="100" android:progress="100" android:progressDrawable="@drawable/bi3" android:minHeight="6.0dip" android:thumb="@drawable/f8f" android:thumbOffset="10.0dip" android:layout_alignParentTop="true" />
+    <Button android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/m4" android:id="@id/loy" android:background="@null" android:paddingLeft="21.0dip" android:paddingTop="16.0dip" android:paddingRight="21.0dip" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w8z" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <android.support.v7.widget.RecyclerView android:orientation="horizontal" android:id="@id/mrw" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:layout_below="@id/mrx" />
+</RelativeLayout>

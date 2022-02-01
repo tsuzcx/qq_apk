@@ -1,12 +1,17 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
-public abstract interface xtw
+public class xtw
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public abstract void a(String paramString1, String paramString2);
+  public xtw(StoryPickerHorizontalListView paramStoryPickerHorizontalListView) {}
   
-  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage);
-  
-  public abstract void b(String paramString1, String paramString2);
+  public void onScrollStateChanged(int paramInt)
+  {
+    if ((paramInt == 4097) && (this.a.jdField_a_of_type_Xtz != null)) {
+      this.a.jdField_a_of_type_Xtz.a(this.a.jdField_a_of_type_Xtt.a);
+    }
+  }
 }
 
 

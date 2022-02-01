@@ -1,26 +1,52 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerModel.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class zqs
-  extends Handler
+public class zqs
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetRecommendUserListRsp>
 {
-  zqs(zqq paramzqq) {}
+  zqs(zqr paramzqr) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp)
   {
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    default: 
-      return;
+      ykq.c("FollowedRecommendBanner", "sendRequest GetRecommendUserList success");
+      if (paramStGetRecommendUserListRsp != null)
+      {
+        paramVSBaseRequest = new ArrayList();
+        if (paramStGetRecommendUserListRsp.vecUser.get() != null)
+        {
+          paramString = paramStGetRecommendUserListRsp.vecUser.get().iterator();
+          while (paramString.hasNext()) {
+            paramVSBaseRequest.add(new zse((CertifiedAccountMeta.StUser)paramString.next()));
+          }
+        }
+        zqr.a(this.a, (COMM.StCommonExt)paramStGetRecommendUserListRsp.extInfo.get());
+        if (paramStGetRecommendUserListRsp.isFinish.get() != 1) {
+          break label158;
+        }
+      }
+      label158:
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        ThreadManager.getUIHandler().post(new FollowedRecommendBannerModel.1.1(this, paramVSBaseRequest, paramBoolean));
+        aanb.a("subscribe_personal_detail_page_request", aanb.a(0L, System.currentTimeMillis() - zqr.a(this.a)));
+        return;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Beba + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Bebb);
-    }
-    if (this.a.jdField_a_of_type_Bebb != null) {
-      this.a.a(this.a.jdField_a_of_type_Bebb);
-    }
-    this.a.a();
+    ykq.c("FollowedRecommendBanner", "sendRequest GetRecommendUserList error");
+    aanb.a("subscribe_personal_detail_page_request", aanb.a(paramLong, System.currentTimeMillis() - zqr.a(this.a)));
   }
 }
 

@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class acmn
-  implements DialogInterface.OnClickListener
+class acmn
 {
-  public acmn(TestAppFragment paramTestAppFragment) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public long a()
   {
-    paramDialogInterface.dismiss();
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public MessageRecord a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

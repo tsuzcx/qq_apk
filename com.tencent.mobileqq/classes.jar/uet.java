@@ -1,477 +1,176 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptBitmapFile;
-import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.HttpDownloader;
-import com.tencent.mobileqq.transfile.IPAddressUtil;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.dns.DomainData;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.mobileqq.transfile.dns.IpData;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.dynamic.Reflect;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.InetAddress;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.channels.FileChannel;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.data.DownloadPercent;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AccountNotMatchException;
-import mqq.os.MqqHandler;
-import org.apache.http.Header;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArraySet;
+import kotlin.Metadata;
+import kotlin.NoWhenBranchMatchedException;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class uet
-  extends HttpDownloader
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/RIJAdDownloadCache;", "", "()V", "downloadCache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "reportPercent_1", "Ljava/util/concurrent/CopyOnWriteArraySet;", "reportPercent_10", "reportPercent_25", "reportPercent_50", "reportPercent_75", "reportPercent_90", "viewCache", "", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "addDownloadCache", "", "data", "addReportCache", "packageName", "percent", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/data/DownloadPercent;", "addViewCache", "view", "getDownloadCache", "hasReportCache", "", "onDestroy", "removeReportCache", "removeViewCache", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class uet
 {
-  private BaseApplicationImpl a;
+  private static final ConcurrentHashMap<String, ule> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private static final CopyOnWriteArraySet<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  public static final uet a;
+  private static final ConcurrentHashMap<Integer, WeakReference<RIJDownloadView>> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private static final CopyOnWriteArraySet<String> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  private static final CopyOnWriteArraySet<String> c = new CopyOnWriteArraySet();
+  private static final CopyOnWriteArraySet<String> d = new CopyOnWriteArraySet();
+  private static final CopyOnWriteArraySet<String> e = new CopyOnWriteArraySet();
+  private static final CopyOnWriteArraySet<String> f = new CopyOnWriteArraySet();
   
-  public uet(BaseApplicationImpl paramBaseApplicationImpl)
+  static
   {
-    this.a = paramBaseApplicationImpl;
-    this.mSupportInnerIp = psn.a.h();
-  }
-  
-  private File a(byte[] paramArrayOfByte, long paramLong)
-  {
-    if (paramArrayOfByte != null) {
-      return new RIJImageOptBitmapFile(paramArrayOfByte, paramLong);
-    }
-    return null;
-  }
-  
-  private String a()
-  {
-    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    String str2 = String.valueOf(NetworkUtil.getSystemNetwork(localContext));
-    String str1 = str2;
-    if (!StringUtil.isEmpty(str2))
-    {
-      str1 = str2;
-      if (str2.equals(String.valueOf(1))) {
-        str1 = azbx.a(localContext);
-      }
-    }
-    return str1;
-  }
-  
-  public static URL a(String paramString, int paramInt)
-  {
-    return a(paramString, paramInt, null);
-  }
-  
-  public static URL a(String paramString, int paramInt, Object paramObject)
-  {
-    return a(paramString, paramInt, paramObject, false);
-  }
-  
-  public static URL a(String paramString, int paramInt, Object paramObject, boolean paramBoolean)
-  {
-    String str;
-    for (;;)
-    {
-      try
-      {
-        if ((!paramString.startsWith("http")) && (!paramString.startsWith("https"))) {
-          return new URL(paramString);
-        }
-        paramObject = bjnd.a(paramString);
-        if (!paramObject.containsKey("busiType")) {
-          continue;
-        }
-        paramString = paramString.replace("busiType=" + (String)paramObject.get("busiType"), "busiType=" + paramInt);
-        if (paramBoolean) {
-          continue;
-        }
-        paramString = new URL("pubaccountimage", null, paramString);
-        str = paramString;
-        try
-        {
-          if (!QLog.isColorLevel()) {
-            break label219;
-          }
-          QLog.d("PubAccountHttpDownloader", 2, "<--generateURL urlString =" + paramString.toString());
-          return paramString;
-        }
-        catch (MalformedURLException paramObject) {}
-      }
-      catch (MalformedURLException paramObject)
-      {
-        paramString = null;
-        continue;
-      }
-      str = paramString;
-      if (!QLog.isColorLevel()) {
-        break label219;
-      }
-      QLog.e("PubAccountHttpDownloader", 2, "<--generateURL urlString", paramObject);
-      return paramString;
-      paramString = bjnd.a(paramString, "busiType", paramInt + "");
-      continue;
-      paramString = new URL(paramString);
-    }
-    label219:
-    return str;
-  }
-  
-  private void a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler, int paramInt1, boolean paramBoolean, int paramInt2, InputStream paramInputStream, long paramLong)
-  {
-    ThreadManager.getFileThreadHandler().post(new PubAccountHttpDownloader.1(this, paramOutputStream, paramDownloadParams, paramURLDrawableHandler, paramInt1, paramBoolean, paramInt2, paramInputStream, paramLong));
-  }
-  
-  private void a(String paramString, long paramLong)
-  {
-    if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1) {}
-    for (String[] arrayOfString = { "param_WIFIPublicPlatDownloadFlow", "param_WIFIFlow", "param_Flow" };; arrayOfString = new String[] { "param_XGPublicPlatDownloadFlow", "param_XGFlow", "param_Flow" }) {
-      try
-      {
-        ((QQAppInterface)this.a.getAppRuntime(paramString)).sendAppDataIncerment(paramString, arrayOfString, paramLong);
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountHttpDownloader", 2, "param_PublicPlatDownloadFlow fileSize: " + paramLong);
-        }
-        return;
-      }
-      catch (AccountNotMatchException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
-  
-  private void a(URL paramURL)
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = InnerDns.getInstance().reqSerAddrList(paramURL.getHost(), 1002);
-        if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0)) {
-          break;
-        }
-        Object localObject2 = new ArrayList();
-        localObject1 = InetAddress.getAllByName(paramURL.getHost());
-        if ((localObject1 == null) || (localObject1.length <= 0)) {
-          break;
-        }
-        int k = localObject1.length;
-        int i = 0;
-        HashMap localHashMap1;
-        Object localObject3;
-        if (i < k)
-        {
-          localHashMap1 = localObject1[i];
-          localObject3 = new IpData();
-          ((IpData)localObject3).mIp = localHashMap1.getHostAddress();
-          ((IpData)localObject3).mPort = 80;
-          if (IPAddressUtil.isIPv4LiteralAddress(((IpData)localObject3).mIp))
-          {
-            j = 1;
-            ((IpData)localObject3).mType = j;
-            ((ArrayList)localObject2).add(localObject3);
-            i += 1;
-          }
-        }
-        else
-        {
-          localObject2 = new DomainData(paramURL.getHost(), (ArrayList)localObject2);
-          localHashMap1 = (HashMap)Reflect.on(InnerDns.getInstance()).get("mNetMap");
-          localObject3 = a();
-          if (localHashMap1 != null)
-          {
-            if (localHashMap1.containsKey(localObject3)) {
-              ((HashMap)localHashMap1.get(localObject3)).put(paramURL.getHost(), localObject2);
-            }
-          }
-          else
-          {
-            QLog.d("PubAccountHttpDownloader", 1, "hook success: " + Arrays.toString((Object[])localObject1));
-            return;
-          }
-          HashMap localHashMap2 = new HashMap();
-          localHashMap2.put(paramURL.getHost(), localObject2);
-          localHashMap1.put(localObject3, localHashMap2);
-          continue;
-        }
-        int j = 28;
-      }
-      catch (Exception paramURL)
-      {
-        QLog.d("PubAccountHttpDownloader", 1, paramURL.getMessage());
-        return;
-      }
-    }
-  }
-  
-  private byte[] a(InputStream paramInputStream, long paramLong)
-  {
-    return awrq.a(paramInputStream, (int)paramLong);
-  }
-  
-  public void copyRespInfo(NetResp paramNetResp, URLDrawableHandler paramURLDrawableHandler)
-  {
-    if ((paramURLDrawableHandler instanceof uew))
-    {
-      uev localuev = ((uew)paramURLDrawableHandler).a();
-      if (localuev != null)
-      {
-        localuev.a(paramNetResp, paramNetResp.mErrDesc);
-        ((uew)paramURLDrawableHandler).a("image/" + uev.a(localuev));
-      }
-    }
-  }
-  
-  public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    String str = paramDownloadParams.urlStr;
-    if (str.startsWith("pubaccountimage")) {
-      str = paramDownloadParams.url.getFile();
-    }
-    for (;;)
-    {
-      Object localObject1 = bjnd.a(str);
-      if (((Map)localObject1).get("busiType") != null) {}
-      int i;
-      uev localuev;
-      int j;
-      Object localObject4;
-      for (;;)
-      {
-        try
-        {
-          i = Integer.parseInt((String)((Map)localObject1).get("busiType"));
-          paramDownloadParams.url = new URL(str);
-          paramDownloadParams.urlStr = str;
-          localuev = new uev(this, this.a, i);
-          localuev.a(paramDownloadParams, (Map)localObject1);
-          localObject1 = null;
-          if (paramDownloadParams.headers == null) {
-            break label812;
-          }
-          Header[] arrayOfHeader = paramDownloadParams.headers;
-          j = arrayOfHeader.length;
-          i = 0;
-          if (i >= j) {
-            break;
-          }
-          localObject4 = arrayOfHeader[i];
-          if ("my_uin".equals(((Header)localObject4).getName())) {
-            localObject1 = ((Header)localObject4).getValue();
-          }
-          i += 1;
-          continue;
-          i = -1;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          QLog.e("PubAccountHttpDownloader", 2, "urlString: " + str + "  busiType:" + (String)((Map)localObject1).get("busiType"), localNumberFormatException);
-        }
-      }
-      label799:
-      label802:
-      label809:
-      label812:
-      for (Object localObject5 = localObject1;; localObject5 = null)
-      {
-        ueu localueu = new ueu(this, paramOutputStream);
-        Object localObject3 = null;
-        j = 0;
-        int k = 1;
-        i = k - 1;
-        localObject1 = localObject3;
-        if (k > 0)
-        {
-          j += 1;
-          localObject1 = localObject3;
-          localObject4 = localObject3;
-        }
-        for (;;)
-        {
-          try
-          {
-            localuev.a();
-            localObject1 = localObject3;
-            localObject4 = localObject3;
-            if (this.mSupportInnerIp)
-            {
-              localObject1 = localObject3;
-              localObject4 = localObject3;
-              if (psn.a.i())
-              {
-                localObject1 = localObject3;
-                localObject4 = localObject3;
-                a(paramDownloadParams.url);
-              }
-            }
-            localObject1 = localObject3;
-            localObject4 = localObject3;
-            localObject3 = super.downloadImage(localueu, paramDownloadParams, localuev.a(paramURLDrawableHandler));
-            if (localObject3 != null)
-            {
-              localObject1 = localObject3;
-              localObject4 = localObject3;
-              boolean bool = localObject3 instanceof RIJImageOptBitmapFile;
-              if (!bool) {
-                break label809;
-              }
-            }
-            i = -1;
-            if (!this.isCancelled.get()) {
-              continue;
-            }
-            localuev.a(j, paramDownloadParams);
-            localObject1 = localObject3;
-          }
-          catch (IOException localIOException)
-          {
-            localObject4 = localObject2;
-            if (!localIOException.getMessage().contains(" response error! response code: ")) {
-              continue;
-            }
-            if (i != 0) {
-              continue;
-            }
-            localObject4 = localObject2;
-            throw localIOException;
-          }
-          finally
-          {
-            if (!this.isCancelled.get()) {
-              continue;
-            }
-            localuev.a(j, paramDownloadParams);
-            localObject2 = localObject4;
-            continue;
-            localObject4 = localObject2;
-            localuev.a(-1, localIOException.getMessage());
-            continue;
-            localObject4 = localObject2;
-            try
-            {
-              ((FileOutputStream)paramOutputStream).getChannel().truncate(0L);
-              if (this.isCancelled.get()) {
-                localuev.a(j, paramDownloadParams);
-              }
-            }
-            catch (Exception localException)
-            {
-              localObject4 = localObject2;
-              QLog.e("PubAccountHttpDownloader", 2, "urlString: " + str, localException);
-              continue;
-              if ((i == -1) || (i == 0))
-              {
-                if ((uev.a(localuev) != 0) && (paramDownloadParams.retryCount != syo.g)) {
-                  break label799;
-                }
-                localuev.a(j, paramDownloadParams);
-                continue;
-              }
-              try
-              {
-                Thread.sleep(5L);
-              }
-              catch (InterruptedException localInterruptedException2)
-              {
-                localInterruptedException2.printStackTrace();
-              }
-            }
-            continue;
-            if ((i != -1) && (i != 0)) {
-              continue;
-            }
-            if ((uev.a(localuev) != 0) && (paramDownloadParams.retryCount != syo.g)) {
-              continue;
-            }
-            localuev.a(j, paramDownloadParams);
-            throw paramOutputStream;
-            try
-            {
-              Thread.sleep(5L);
-            }
-            catch (InterruptedException paramDownloadParams)
-            {
-              paramDownloadParams.printStackTrace();
-            }
-            continue;
-            if (localObject5 == null) {
-              continue;
-            }
-            a(localObject5, localueu.a);
-            return localObject2;
-          }
-          if (this.isCancelled.get())
-          {
-            throw new IOException("cancelled");
-            if ((i == -1) || (i == 0))
-            {
-              if ((uev.a(localuev) != 0) && (paramDownloadParams.retryCount != syo.g)) {
-                break label802;
-              }
-              localuev.a(j, paramDownloadParams);
-              localObject1 = localObject3;
-              localObject3 = localObject1;
-              k = i;
-              break;
-            }
-            try
-            {
-              Thread.sleep(5L);
-              localObject1 = localObject3;
-            }
-            catch (InterruptedException localInterruptedException1)
-            {
-              localInterruptedException1.printStackTrace();
-              localObject2 = localObject3;
-            }
-            continue;
-          }
-          continue;
-          Object localObject2 = localInterruptedException2;
-        }
-      }
-    }
+    jdField_a_of_type_Uet = new uet();
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
   @Nullable
-  public File getDownloadFile(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler, int paramInt1, boolean paramBoolean, int paramInt2, InputStream paramInputStream, long paramLong)
+  public final ule a(@Nullable String paramString)
   {
-    if (psn.a.d())
-    {
-      byte[] arrayOfByte = a(paramInputStream, paramLong);
-      QLog.d("PubAccountHttpDownloader", 1, "read into memory done");
-      if (arrayOfByte != null)
-      {
-        a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler, paramInt1, paramBoolean, paramInt2, new ByteArrayInputStream(arrayOfByte), paramLong);
-        return a(arrayOfByte, paramLong);
-      }
+    if (TextUtils.isEmpty((CharSequence)paramString)) {
+      return null;
     }
-    return super.getDownloadFile(paramOutputStream, paramDownloadParams, paramURLDrawableHandler, paramInt1, paramBoolean, paramInt2, paramInputStream, paramLong);
+    return (ule)((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).get(paramString);
   }
   
-  public boolean isCommitBimapFileAsyn(File paramFile)
+  public final void a()
   {
-    return paramFile instanceof RIJImageOptBitmapFile;
+    Iterator localIterator = ((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).entrySet().iterator();
+    Object localObject1;
+    while (localIterator.hasNext())
+    {
+      localObject1 = (Map.Entry)localIterator.next();
+      Object localObject2 = (ule)((Map.Entry)localObject1).getValue();
+      if (localObject2 != null)
+      {
+        localObject2 = ufc.a((ule)localObject2);
+        if (localObject2 != null) {
+          ((uex)localObject2).c(null, (ule)((Map.Entry)localObject1).getValue());
+        }
+      }
+    }
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    localIterator = ((Map)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap).entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      localObject1 = (WeakReference)((Map.Entry)localIterator.next()).getValue();
+      if (localObject1 != null)
+      {
+        localObject1 = (RIJDownloadView)((WeakReference)localObject1).get();
+        if (localObject1 != null)
+        {
+          bmqk.a().b((bmqi)localObject1);
+          bjjq.a().b((DownloadListener)localObject1);
+        }
+      }
+    }
+  }
+  
+  public final void a(@Nullable RIJDownloadView paramRIJDownloadView)
+  {
+    if (paramRIJDownloadView != null) {
+      paramRIJDownloadView = (WeakReference)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramRIJDownloadView.hashCode()), new WeakReference(paramRIJDownloadView));
+    }
+  }
+  
+  public final void a(@Nullable String paramString)
+  {
+    if ((paramString == null) || (TextUtils.isEmpty((CharSequence)paramString))) {
+      return;
+    }
+    jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramString);
+    jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramString);
+    c.remove(paramString);
+    d.remove(paramString);
+    e.remove(paramString);
+    f.remove(paramString);
+  }
+  
+  public final void a(@Nullable String paramString, @NotNull DownloadPercent paramDownloadPercent)
+  {
+    Intrinsics.checkParameterIsNotNull(paramDownloadPercent, "percent");
+    if ((paramString == null) || (TextUtils.isEmpty((CharSequence)paramString))) {
+      return;
+    }
+    switch (ueu.a[paramDownloadPercent.ordinal()])
+    {
+    default: 
+      return;
+    case 1: 
+      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
+      return;
+    case 2: 
+      jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
+      return;
+    case 3: 
+      c.add(paramString);
+      return;
+    case 4: 
+      d.add(paramString);
+      return;
+    case 5: 
+      e.add(paramString);
+      return;
+    }
+    f.add(paramString);
+  }
+  
+  public final void a(@Nullable ule paramule)
+  {
+    if (paramule != null)
+    {
+      Map localMap = (Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      String str = paramule.d;
+      Intrinsics.checkExpressionValueIsNotNull(str, "data.mPackageName");
+      localMap.put(str, paramule);
+    }
+  }
+  
+  public final boolean a(@Nullable String paramString, @NotNull DownloadPercent paramDownloadPercent)
+  {
+    Intrinsics.checkParameterIsNotNull(paramDownloadPercent, "percent");
+    if (TextUtils.isEmpty((CharSequence)paramString)) {
+      return false;
+    }
+    switch (ueu.b[paramDownloadPercent.ordinal()])
+    {
+    default: 
+      throw new NoWhenBranchMatchedException();
+    case 1: 
+      return jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(paramString);
+    case 2: 
+      return jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(paramString);
+    case 3: 
+      return c.contains(paramString);
+    case 4: 
+      return d.contains(paramString);
+    case 5: 
+      return e.contains(paramString);
+    }
+    return f.contains(paramString);
+  }
+  
+  public final void b(@Nullable RIJDownloadView paramRIJDownloadView)
+  {
+    if (paramRIJDownloadView != null) {
+      paramRIJDownloadView = (WeakReference)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramRIJDownloadView.hashCode()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uet
  * JD-Core Version:    0.7.0.1
  */

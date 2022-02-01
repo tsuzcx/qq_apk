@@ -1,26 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
+import com.tencent.image.URLImageView;
 
 public class bacl
-  extends Animation
+  extends RecyclerView.ViewHolder
 {
-  public bacl(CircleBarView paramCircleBarView) {}
+  public TextView a;
+  public URLImageView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  bacl(View paramView)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
-    CircleBarView.b(this.a, 30.0F);
-    if (CircleBarView.a(this.a) != null)
-    {
-      if (CircleBarView.a(this.a) != null) {
-        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
-      }
-      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
-    }
-    this.a.postInvalidate();
+    super(paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368063));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374829));
+    this.b = ((TextView)paramView.findViewById(2131374828));
+    this.c = ((TextView)paramView.findViewById(2131376080));
+    this.d = ((TextView)paramView.findViewById(2131371803));
   }
 }
 

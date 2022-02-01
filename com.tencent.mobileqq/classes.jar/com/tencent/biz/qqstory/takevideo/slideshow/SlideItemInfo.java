@@ -7,19 +7,19 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import java.net.URL;
-import vil;
-import ykw;
+import vxg;
+import yzp;
 
 public class SlideItemInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SlideItemInfo> CREATOR = new ykw();
+  public static final Parcelable.Creator<SlideItemInfo> CREATOR = new yzp();
   public int a;
   public long a;
   public LocalMediaInfo a;
   public String a;
   public URL a;
-  public vil a;
+  public vxg a;
   public boolean a;
   public int b;
   public long b;

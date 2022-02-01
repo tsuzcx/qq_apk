@@ -1,24 +1,24 @@
-import UserGrowth.stFeed;
-import android.view.ViewGroup;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
+import cooperation.vip.pb.TianShuAccess.AdItem;
+import java.util.List;
 
 public class upe
+  implements ViewPager.OnPageChangeListener
 {
-  public static bjwy<stFeed> a(int paramInt, ViewGroup paramViewGroup, ujh paramujh)
+  public upe(FolderRecommendTabFragment.FolderRecommendHeadItemView paramFolderRecommendHeadItemView) {}
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return uou.a(paramViewGroup, paramujh);
-    case 1: 
-      return upf.a(paramViewGroup, paramujh);
-    case 2: 
-      return uou.a(paramViewGroup, paramujh);
-    case 101: 
-      return upg.a(paramViewGroup, paramujh);
-    case 102: 
-      return uph.a(paramViewGroup, paramujh);
+    bekc localbekc = (bekc)FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.a).a().get(paramInt);
+    if (localbekc != null) {
+      FolderRecommendTabFragment.a("227", "227", localbekc.a.iAdId + "", 101, 1);
     }
-    return upc.a(paramViewGroup, paramujh);
   }
 }
 

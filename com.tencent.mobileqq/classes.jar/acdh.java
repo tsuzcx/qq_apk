@@ -1,46 +1,28 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.arch.lifecycle.MutableLiveData;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.apollo_push_msgInfo.STPushMsgElem;
-import tencent.im.s2c.msgtype0x210.submsgtype0xe8.submsgtype0xe8.MsgBody;
+import kotlin.Metadata;
+import rx.Subscription;
+import rx.functions.Action1;
 
-public class acdh
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "call", "(Ljava/lang/Long;)V"}, k=3, mv={1, 1, 16})
+final class acdh<T>
+  implements Action1<Long>
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    QLog.d("ApolloPushManager", 1, "recv action push message 0x210_0xe8, [C2C.OnlinePush]");
-    try
-    {
-      submsgtype0xe8.MsgBody localMsgBody = new submsgtype0xe8.MsgBody();
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      if (localMsgBody.msg_item.has())
-      {
-        paramMsgType0x210 = (apollo_push_msgInfo.STPushMsgElem)localMsgBody.msg_item.get();
-        if (paramQQAppInterface != null)
-        {
-          paramQQAppInterface = (alom)paramQQAppInterface.getManager(227);
-          paramQQAppInterface.a(0, paramMsgType0x210);
-          paramQQAppInterface.c(paramMsgType0x210);
-          paramQQAppInterface.b(paramMsgType0x210);
-          paramQQAppInterface.a(paramMsgType0x210);
-        }
-      }
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-      QLog.e("ApolloPushManager", 1, "[msg0x210.uSubMsgType == 0xe8], errInfo->" + paramQQAppInterface.getMessage());
-    }
-  }
+  acdh(acde paramacde) {}
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public final void a(Long paramLong)
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    paramLong = this.a;
+    acde.a(paramLong, acde.a(paramLong) - 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtMotiveBrowsingViewModel", 2, "onCountDown subscribe value : " + acde.a(this.a));
+    }
+    if (acde.a(this.a) <= 0)
+    {
+      acde.a(this.a, acde.a(this.a));
+      acde.b(this.a, (Subscription)null);
+    }
+    this.a.a().setValue(new acdi(1, null, acde.a(this.a), 2, null));
   }
 }
 

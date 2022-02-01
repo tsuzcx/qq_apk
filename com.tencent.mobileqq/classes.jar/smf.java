@@ -1,64 +1,56 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
-import com.tencent.widget.ListView;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class smf
-  implements snm
+  extends MSFServlet
 {
-  public smf(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
-  
-  public void a(int paramInt1, View paramView, ListView paramListView, int paramInt2)
+  public String[] getPreferSSOCommands()
   {
-    this.a.a(paramInt1, paramView, paramListView, paramInt2);
+    return null;
   }
   
-  public void a(View paramView, ListView paramListView, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.a.a(paramView, paramListView, paramInt);
-  }
-  
-  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bjsd)localIterator.next()).onNotCompleteVisable(paramInt, paramView, paramListView);
-    }
-  }
-  
-  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bjsd)localIterator.next()).onViewCompleteVisable(paramInt, paramView, paramListView);
-    }
-  }
-  
-  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.a.iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
+    if (paramIntent != null)
     {
-      if (!((bjsd)localIterator.next()).onViewCompleteVisableAndReleased(paramInt, paramView, paramListView)) {
-        break label57;
-      }
-      bool = true;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-    label57:
     for (;;)
     {
-      break;
-      return bool;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("VideoFeedsServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
+      }
+      ((VideoFeedsAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
   }
   
-  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bjsd)localIterator.next()).onViewNotCompleteVisableAndReleased(paramInt, paramView, paramListView);
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.i("VideoFeedsServlet", 4, "send: " + paramIntent.getServiceCmd());
+        }
+      }
     }
   }
 }

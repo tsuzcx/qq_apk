@@ -1,19 +1,35 @@
-import android.text.Editable;
-import java.util.Comparator;
+import android.os.Handler;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.20.1;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.20.2;
 
-final class besw
-  implements Comparator
+public class besw
+  implements INetInfoHandler
 {
-  besw(Editable paramEditable) {}
+  public besw(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.20.1(this));
   }
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.20.2(this));
+  }
+  
+  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besw
  * JD-Core Version:    0.7.0.1
  */

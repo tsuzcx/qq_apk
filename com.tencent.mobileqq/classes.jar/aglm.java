@@ -1,28 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.intimate.IntimateScoreCardView;
 
-class aglm
-  extends GestureDetector.SimpleOnGestureListener
+public class aglm
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aglm(agll paramagll) {}
+  public aglm(IntimateScoreCardView paramIntimateScoreCardView) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.jdField_a_of_type_Aglj.a()) {
-      return false;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (f < 0.5F)
+    {
+      IntimateScoreCardView.a(this.a).setAlpha(1.0F - f * 2.0F);
+      return;
     }
-    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_Aglj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Aglj.jdField_a_of_type_AndroidContentContext);
-    return true;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_Afce != null) {
-      this.a.jdField_a_of_type_Afce.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
-    }
+    IntimateScoreCardView.a(this.a).setAlpha(f * 2.0F - 1.0F);
   }
 }
 

@@ -123,6 +123,9 @@ public class ShareJsPlugin
     if (paramInt == 4) {
       return 4;
     }
+    if (paramInt == 5) {
+      return 5;
+    }
     if (MoreItem.isValidExtendedItemId(paramInt)) {
       return 6;
     }

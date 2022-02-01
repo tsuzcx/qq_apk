@@ -1,23 +1,25 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 public class zkm
+  implements biyn
 {
-  private static SharedPreferences a;
+  public zkm(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public static SharedPreferences a(Context paramContext)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (a == null)
-    {
-      if (paramContext == null)
-      {
-        QLog.e("SubscribeSpUtil", 2, "getPreference error, context is null");
-        return null;
-      }
-      a = paramContext.getSharedPreferences("biz_subscribe", 0);
+    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
+      return;
     }
-    return a;
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      znl.a(1, 2131718766);
+      return;
+    }
+    znl.a(2, 2131718784);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajdm;
-import bcec;
+import ajza;
+import bdkx;
 
 public class Conversation$UICallBack$3
   implements Runnable
 {
-  public Conversation$UICallBack$3(ajdm paramajdm) {}
+  public Conversation$UICallBack$3(ajza paramajza) {}
   
   public void run()
   {
-    bcec.a(this.a.a.a);
+    bdkx.a(this.a.a.a);
   }
 }
 

@@ -1,12 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.animation.Transformation;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
 
 public class nse
-  implements agwi
+  implements bhir<Integer>
 {
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public nse(PoiMapActivity paramPoiMapActivity) {}
+  
+  public void a(bhil<Integer> parambhil, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    nsf.a.a(paramMessageRecord);
+    parambhil = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
+    parambhil.bottomMargin = (this.a.q + this.a.t);
+    PoiMapActivity.c(this.a).setLayoutParams(parambhil);
   }
 }
 

@@ -1,9 +1,6 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.os.Process;
 import android.text.TextUtils;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.launcher.annotation.BindClass;
@@ -21,10 +18,9 @@ import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniCacheFreeManager;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniServer;
 import com.tencent.qqmini.sdk.launcher.utils.AppBrandUtil;
+import com.tencent.qqmini.sdk.launcher.utils.ProcessUtil;
 import java.lang.reflect.Field;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 
 @MiniKeep
 public class AppLoaderFactory
@@ -165,28 +161,8 @@ public class AppLoaderFactory
   
   public String getProcessName()
   {
-    if (!TextUtils.isEmpty(this.mProcessName)) {
-      return this.mProcessName;
-    }
-    try
-    {
-      Object localObject = (ActivityManager)this.mContext.getSystemService("activity");
-      int i = Process.myPid();
-      localObject = ((ActivityManager)localObject).getRunningAppProcesses().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-        if (localRunningAppProcessInfo.pid == i) {
-          this.mProcessName = localRunningAppProcessInfo.processName;
-        }
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QMLog.e("minisdk-start", "getProcessName exception!", localThrowable);
-      }
+    if (TextUtils.isEmpty(this.mProcessName)) {
+      this.mProcessName = ProcessUtil.getProcessName(this.mContext);
     }
     return this.mProcessName;
   }
@@ -249,7 +225,7 @@ public class AppLoaderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.AppLoaderFactory
  * JD-Core Version:    0.7.0.1
  */

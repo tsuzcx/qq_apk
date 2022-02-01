@@ -1,6 +1,15 @@
-public abstract interface qkh
+import android.os.Bundle;
+
+class qkh
+  implements aaea
 {
-  public abstract void a();
+  qkh(qka paramqka, String paramString) {}
+  
+  public void callback(Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getString("BUNDLE_KEY_JS_OBJ", "");
+    this.jdField_a_of_type_Qka.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+  }
 }
 
 

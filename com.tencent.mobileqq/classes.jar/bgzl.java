@@ -1,9 +1,8 @@
+import android.graphics.drawable.Drawable;
+
 public abstract interface bgzl
-  extends bguj
 {
-  public abstract long getLoadShareJsTime();
-  
-  public abstract boolean isNotNeedLoadShareJs(String paramString);
+  public abstract Drawable a();
 }
 
 

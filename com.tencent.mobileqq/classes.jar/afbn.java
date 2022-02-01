@@ -1,21 +1,13 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
-class afbn
-  extends amsu
+public class afbn
+  implements blem
 {
-  afbn(afbj paramafbj) {}
+  public afbn(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a()
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
-    {
-      paramString = this.a.a.getFaceBitmap(this.a.a.getCurrentAccountUin(), (byte)3, false);
-      if ((paramString != null) && (afbj.a(this.a) != null)) {
-        afbj.a(this.a).setImageBitmap(paramString);
-      }
-    }
+    bgyd.b(this.a.findViewById(2131379112), true);
   }
 }
 

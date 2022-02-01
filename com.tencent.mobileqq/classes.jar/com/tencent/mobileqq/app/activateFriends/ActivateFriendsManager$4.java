@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app.activateFriends;
 
-import aneo;
-import anep;
+import aohe;
+import aohf;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ActivateFriendsManager$4
   implements Runnable
 {
-  public ActivateFriendsManager$4(aneo paramaneo) {}
+  public ActivateFriendsManager$4(aohe paramaohe) {}
   
   public void run()
   {
-    aneo.a(this.this$0).notifyObservers(anep.class, 115, true, null);
+    aohe.a(this.this$0).notifyObservers(aohf.class, 115, true, null);
   }
 }
 

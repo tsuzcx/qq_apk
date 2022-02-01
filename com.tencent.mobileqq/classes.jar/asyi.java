@@ -1,14 +1,21 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class asyi
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public byte[] b;
-  public long c;
-  public long d;
+  public asyi(FilePreviewActivity paramFilePreviewActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.setResult(0, new Intent());
+    this.a.finish();
+    this.a.overridePendingTransition(2130771977, 2130771978);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

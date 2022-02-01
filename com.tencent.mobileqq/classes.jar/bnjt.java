@@ -1,47 +1,32 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import dov.com.qq.im.ae.play.FaceChangeUtils.CropFaceCallback;
 
-public class bnjt
-  implements bngy
+class bnjt
+  implements FaceChangeUtils.CropFaceCallback
 {
-  ArrayList<bngv> a = null;
+  bnjt(bnjs parambnjs, ToServiceMsg paramToServiceMsg) {}
   
-  public bnjt(bngv... paramVarArgs)
+  public void onFail(int paramInt)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      throw new IllegalArgumentException("layers should not be null or empty");
-    }
-    this.a = new ArrayList(paramVarArgs.length);
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      bngv localbngv = paramVarArgs[i];
-      if (localbngv != null) {
-        this.a.add(localbngv);
-      }
-      i += 1;
-    }
+    bnjs.a(this.jdField_a_of_type_Bnjs, null, null);
   }
   
-  public bngv a(String paramString)
+  public void onSuccess(Bitmap paramBitmap)
   {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
+    if (paramBitmap != null)
     {
-      if (((bngv)this.a.get(i)).a().equals(paramString)) {
-        return (bngv)this.a.get(i);
+      paramBitmap = bnjs.a(this.jdField_a_of_type_Bnjs.mApp.getApp(), paramBitmap);
+      if ((paramBitmap == null) || (paramBitmap.length() < 1))
+      {
+        bnjs.a(this.jdField_a_of_type_Bnjs, null, null);
+        return;
       }
-      i += 1;
+      bnjs.a(this.jdField_a_of_type_Bnjs, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, paramBitmap);
+      return;
     }
-    return null;
-  }
-  
-  public void a(List<bngv> paramList, DoodleView paramDoodleView)
-  {
-    paramList.addAll(this.a);
+    bnjs.a(this.jdField_a_of_type_Bnjs, null, null);
   }
 }
 

@@ -1,399 +1,214 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.content.pm.Signature;
 import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.forward.ForwardMultServerShare.2;
-import com.tencent.mobileqq.mini.share.opensdk.OpenSdkShareModel;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.ad.tangram.util.AdHexUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.turingfd.sdk.xq.IteApkInfoReq;
+import com.tencent.turingfd.sdk.xq.IteApkInfoReq.Builder;
+import com.tencent.turingfd.sdk.xq.TuringFdService;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import java.util.List<Ltencent.im.oidb.cmd0xdc2.oidb_cmd0xdc2.BatchSendRsp;>;
 import java.util.Map;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xb77.oidb_cmd0xb77.ImageInfo;
-import tencent.im.oidb.cmd0xb77.oidb_cmd0xb77.ReqBody;
-import tencent.im.oidb.cmd0xb77.oidb_cmd0xb77.RspBody;
-import tencent.im.oidb.cmd0xdc2.oidb_cmd0xdc2.BatchSendReq;
-import tencent.im.oidb.cmd0xdc2.oidb_cmd0xdc2.BatchSendRsp;
-import tencent.im.oidb.cmd0xdc2.oidb_cmd0xdc2.ReqBody;
+import java.util.Set;
+import java.util.Timer;
 
 public class atms
-  implements Handler.Callback
 {
-  private static String jdField_a_of_type_JavaLangString = "ForwardMultServerShare";
-  private long jdField_a_of_type_Long = -1L;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private atlt jdField_a_of_type_Atlt;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private OpenSdkShareModel jdField_a_of_type_ComTencentMobileqqMiniShareOpensdkOpenSdkShareModel;
-  private AbsShareMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
-  private List<ResultRecord> jdField_a_of_type_JavaUtilList;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bjmp(Looper.getMainLooper(), this);
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  long jdField_a_of_type_Long;
+  atmv jdField_a_of_type_Atmv;
+  atmz jdField_a_of_type_Atmz;
+  String jdField_a_of_type_JavaLangString;
+  Set<atmx> jdField_a_of_type_JavaUtilSet = new HashSet();
+  Timer jdField_a_of_type_JavaUtilTimer;
+  public volatile boolean a;
+  Signature[] jdField_a_of_type_ArrayOfAndroidContentPmSignature;
+  String b;
+  String c;
   
-  public atms(Bundle paramBundle)
+  atms(atmo paramatmo, String paramString1, String paramString2, Signature[] paramArrayOfSignature, long paramLong, atmv paramatmv, atmz paramatmz)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_ComTencentMobileqqMiniShareOpensdkOpenSdkShareModel = ((OpenSdkShareModel)paramBundle.getParcelable("KEY_MINI_PROGRAM_SHARE_OBJ"));
+    this.jdField_a_of_type_Boolean = true;
+    this.b = paramString1;
+    this.jdField_a_of_type_JavaLangString = auea.a(paramString1);
+    this.c = paramString2;
+    this.jdField_a_of_type_ArrayOfAndroidContentPmSignature = paramArrayOfSignature;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Atmv = paramatmv;
+    this.jdField_a_of_type_Atmz = paramatmz;
+    int i = atmo.jdField_a_of_type_Int;
+    atmo.jdField_a_of_type_Int = i + 1;
+    this.jdField_a_of_type_Int = i;
   }
   
-  private ResultRecord a(long paramLong)
+  void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] <" + this.jdField_a_of_type_Int + "> start check task. filePath:" + this.b);
+    this.jdField_a_of_type_Boolean = false;
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_Atmv.f)) || (!TextUtils.isEmpty(this.jdField_a_of_type_Atmv.g)))
     {
-      ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-      if (Long.toString(paramLong).equals(localResultRecord.uin)) {
-        return localResultRecord;
-      }
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "recvUin not found");
-    return null;
-  }
-  
-  private oidb_cmd0xb77.ImageInfo a(ayep paramayep)
-  {
-    if (paramayep == null) {
-      return null;
-    }
-    if (!(paramayep.a instanceof int[])) {
-      return null;
-    }
-    int[] arrayOfInt = (int[])paramayep.a;
-    if (arrayOfInt.length != 5) {
-      return null;
-    }
-    oidb_cmd0xb77.ImageInfo localImageInfo = new oidb_cmd0xb77.ImageInfo();
-    localImageInfo.md5.set(paramayep.d);
-    localImageInfo.uuid.set(paramayep.c);
-    localImageInfo.file_size.set(arrayOfInt[0]);
-    localImageInfo.img_type.set(arrayOfInt[1]);
-    localImageInfo.width.set(arrayOfInt[2]);
-    localImageInfo.height.set(arrayOfInt[3]);
-    localImageInfo.original.set(arrayOfInt[4]);
-    localImageInfo.file_id.set((int)paramayep.b);
-    return localImageInfo;
-  }
-  
-  private oidb_cmd0xdc2.ReqBody a(String paramString1, String paramString2, Map<ResultRecord, ayep> paramMap)
-  {
-    oidb_cmd0xdc2.ReqBody localReqBody = new oidb_cmd0xdc2.ReqBody();
-    localReqBody.msg_body.set(atpn.a(this.jdField_a_of_type_AndroidOsBundle, paramString1, paramString2, null));
-    paramString1 = new ArrayList();
-    paramString2 = this.jdField_a_of_type_JavaUtilList.iterator();
-    if (paramString2.hasNext())
-    {
-      ResultRecord localResultRecord = (ResultRecord)paramString2.next();
-      oidb_cmd0xdc2.BatchSendReq localBatchSendReq = new oidb_cmd0xdc2.BatchSendReq();
-      localBatchSendReq.recv_uin.set(ForwardUtils.parseLong(localResultRecord.uin));
-      if (localResultRecord.uinType == 0) {
-        localBatchSendReq.send_type.set(0);
-      }
-      for (;;)
-      {
-        a(paramMap, localResultRecord, localBatchSendReq);
-        paramString1.add(localBatchSendReq);
-        break;
-        if (localResultRecord.uinType == 1) {
-          localBatchSendReq.send_type.set(1);
-        } else if (localResultRecord.uinType == 3000) {
-          localBatchSendReq.send_type.set(2);
-        }
-      }
-    }
-    localReqBody.batch_send_req.set(paramString1);
-    return localReqBody;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(93), 500L);
-    if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg instanceof StructMsgForImageShare))
-    {
-      d();
+      b();
       return;
     }
-    b();
+    long l = System.currentTimeMillis();
+    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] <" + this.jdField_a_of_type_Int + "> to get digest of file");
+    this.jdField_a_of_type_Atmz.a(this.b, new atmt(this, l));
   }
   
-  private void a(Intent paramIntent, List<oidb_cmd0xdc2.BatchSendRsp> paramList)
+  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
   {
-    paramIntent.putExtra("sdk_mult_share_total_count", paramList.size());
-    if (paramList.size() == 1)
+    if (this.jdField_a_of_type_Boolean) {}
+    do
     {
-      localObject1 = (oidb_cmd0xdc2.BatchSendRsp)paramList.get(0);
-      if (((oidb_cmd0xdc2.BatchSendRsp)localObject1).err_code.get() == 901503)
+      return;
+      QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] <" + this.jdField_a_of_type_Int + "> task complete. errCode:" + paramInt1 + " safeLevel:" + paramInt2 + " tipString:" + paramString1 + " jumpDetailUrl:" + paramString2);
+      this.jdField_a_of_type_Boolean = true;
+      e();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext()) {
+        ((atmx)localIterator.next()).a(paramInt1, paramInt2, paramString1, paramString2, paramBundle);
+      }
+    } while (this.jdField_a_of_type_Atmz == null);
+    this.jdField_a_of_type_Atmz.a(this.b, null);
+  }
+  
+  void a(atmx paramatmx)
+  {
+    if (paramatmx != null) {
+      this.jdField_a_of_type_JavaUtilSet.add(paramatmx);
+    }
+  }
+  
+  public void b()
+  {
+    Object localObject3 = "";
+    Object localObject1 = localObject3;
+    if (this.jdField_a_of_type_ArrayOfAndroidContentPmSignature != null)
+    {
+      localObject1 = localObject3;
+      if (this.jdField_a_of_type_ArrayOfAndroidContentPmSignature.length <= 0) {}
+    }
+    try
+    {
+      localObject1 = MessageDigest.getInstance("MD5");
+      ((MessageDigest)localObject1).update(this.jdField_a_of_type_ArrayOfAndroidContentPmSignature[0].toByteArray());
+      localObject1 = AdHexUtil.bytes2HexString(((MessageDigest)localObject1).digest());
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+      for (localObject1 = ((String)localObject1).toUpperCase();; localObject1 = "")
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "buildResult SHARE_ERROR_NOT_FRIEND");
+        localObject3 = new HashMap();
+        localBuilder = IteApkInfoReq.newBuilder().pkgName(this.c).certMd5((String)localObject1).fileName(this.jdField_a_of_type_JavaLangString).fileSize(this.jdField_a_of_type_Long).fileMd5(this.jdField_a_of_type_Atmv.f).fileSha1(this.jdField_a_of_type_Atmv.g).localQQ("");
+        if (this.jdField_a_of_type_Atmv.jdField_a_of_type_Int != 1) {
+          break;
         }
-        paramIntent.putExtra("sdk_mult_share_result_code", 901503);
-        localObject1 = ((oidb_cmd0xdc2.BatchSendRsp)localObject1).rsp_body.wording.get();
-        paramList = (List<oidb_cmd0xdc2.BatchSendRsp>)localObject1;
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          paramList = atpn.jdField_a_of_type_JavaLangString;
-        }
-        paramIntent.putExtra("sdk_mult_share_error_wording", paramList);
+        localBuilder.chattingQQ(new ArrayList());
+        QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] <" + this.jdField_a_of_type_Int + "> run check task. fileName:" + this.jdField_a_of_type_JavaLangString + " pkgName:" + this.c + " fileSize:" + this.jdField_a_of_type_Long + " pkgSignMd5:" + (String)localObject1 + " " + this.jdField_a_of_type_Atmv.toString());
+        localObject1 = localBuilder.build();
+        ((Map)localObject3).put(Integer.valueOf(this.jdField_a_of_type_Int), localObject1);
+        TuringFdService.checkApk((Map)localObject3, new atmu(this));
+        d();
         return;
       }
     }
-    Object localObject1 = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    catch (Exception localException)
     {
-      Object localObject2 = (oidb_cmd0xdc2.BatchSendRsp)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "rsp.recv_uin=", ((oidb_cmd0xdc2.BatchSendRsp)localObject2).recv_uin, ", rsp.err_msg=", ((oidb_cmd0xdc2.BatchSendRsp)localObject2).err_msg, ", rsp.err_code=", ((oidb_cmd0xdc2.BatchSendRsp)localObject2).err_code });
-      }
-      if (((oidb_cmd0xdc2.BatchSendRsp)localObject2).err_code.get() != 0)
+      for (;;)
       {
-        localObject2 = a(((oidb_cmd0xdc2.BatchSendRsp)localObject2).recv_uin.get());
-        if (localObject2 != null) {
-          ((ArrayList)localObject1).add(localObject2);
+        IteApkInfoReq.Builder localBuilder;
+        QLog.e("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] <" + this.jdField_a_of_type_Int + "> sign md5 calc err");
+        Object localObject2 = localObject3;
+        continue;
+        if (this.jdField_a_of_type_Atmv.jdField_a_of_type_Int == 2) {
+          localBuilder.chattingRoomQQ(new ArrayList());
         }
       }
     }
-    if (((ArrayList)localObject1).isEmpty())
-    {
-      paramIntent.putExtra("sdk_mult_share_result_code", 0);
-      return;
-    }
-    if (((ArrayList)localObject1).size() == this.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramIntent.putExtra("sdk_mult_share_result_code", 2);
-      return;
-    }
-    paramIntent.putExtra("sdk_mult_share_result_code", 1);
-    paramIntent.putParcelableArrayListExtra("sdk_mult_share_fail_record", (ArrayList)localObject1);
   }
   
-  private void a(String paramString1, String paramString2)
+  void c()
   {
-    paramString1 = a(paramString1, paramString2, null);
-    atpn.a(this.jdField_a_of_type_ComTencentMobileqqMiniShareOpensdkOpenSdkShareModel, this.jdField_a_of_type_AndroidOsBundle, paramString1.msg_body);
-    paramString2 = BaseApplicationImpl.getApplication().getRuntime();
-    if (paramString2 == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "notifyNormalSendMessage send runtime = null");
-      c();
-      return;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("0xdc2_9_sendTime", this.jdField_a_of_type_Long);
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "notifyNormalSendMessage sendOIDBRequest");
-    }
-    atqa.a("KEY_STAGE_2_NORMAL_DC2");
-    nmb.a(paramString2, new atmw(this), paramString1.toByteArray(), "OidbSvc.0xdc2_9", 3522, 9, localBundle, 0L);
+    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] <" + this.jdField_a_of_type_Int + "> stop task");
+    this.jdField_a_of_type_Boolean = true;
+    e();
+    this.jdField_a_of_type_JavaUtilSet.clear();
   }
   
-  private void a(Map<ResultRecord, ayep> paramMap)
+  /* Error */
+  void d()
   {
-    paramMap = a(null, null, paramMap);
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "notifyImageSendMessage runtime = null ");
-      c();
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    localBundle.putLong("0xdc2_9_sendTime", this.jdField_a_of_type_Long);
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "notifyImageSendMessage OIDBRequest ");
-    atqa.a("KEY_STAGE_2_IMAGE_DC2");
-    nmb.a(localAppRuntime, new atmv(this), paramMap.toByteArray(), "OidbSvc.0xdc2_9", 3522, 9, localBundle, 0L);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 293	atms:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: ifnull +6 -> 14
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: return
+    //   14: ldc 59
+    //   16: iconst_1
+    //   17: new 61	java/lang/StringBuilder
+    //   20: dup
+    //   21: invokespecial 62	java/lang/StringBuilder:<init>	()V
+    //   24: ldc 64
+    //   26: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: aload_0
+    //   30: getfield 56	atms:jdField_a_of_type_Int	I
+    //   33: invokevirtual 71	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   36: ldc_w 295
+    //   39: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokestatic 83	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   48: aload_0
+    //   49: new 297	java/util/Timer
+    //   52: dup
+    //   53: invokespecial 298	java/util/Timer:<init>	()V
+    //   56: putfield 293	atms:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
+    //   59: aload_0
+    //   60: getfield 293	atms:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
+    //   63: new 300	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$CheckTask$3
+    //   66: dup
+    //   67: aload_0
+    //   68: invokespecial 301	com/tencent/mobileqq/filemanager/core/MMApkFileSafeChecker$CheckTask$3:<init>	(Latms;)V
+    //   71: ldc2_w 302
+    //   74: invokevirtual 307	java/util/Timer:schedule	(Ljava/util/TimerTask;J)V
+    //   77: goto -66 -> 11
+    //   80: astore_1
+    //   81: aload_0
+    //   82: monitorexit
+    //   83: aload_1
+    //   84: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	85	0	this	atms
+    //   6	2	1	localTimer	Timer
+    //   80	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	80	finally
+    //   14	77	80	finally
   }
   
-  private void a(Map<ResultRecord, ayep> paramMap, ResultRecord paramResultRecord, oidb_cmd0xdc2.BatchSendReq paramBatchSendReq)
+  public void e()
   {
-    if (paramMap != null)
+    try
     {
-      paramMap = a((ayep)paramMap.get(paramResultRecord));
-      if (paramMap != null) {
-        paramBatchSendReq.image_info.set(paramMap);
-      }
-    }
-  }
-  
-  private void b()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "-->ForwardMultServerShare requestNormalShare");
-    WeakReference localWeakReference = new WeakReference(new atmt(this));
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin");
-    atqa.a("KEY_STAGE_2_SEND_MSG_BY_SERVER");
-    AbsShareMsg.sendSdkShareMessageByServer(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg, str1, i, str2, (ayeo)localWeakReference.get());
-  }
-  
-  private void b(List<oidb_cmd0xdc2.BatchSendRsp> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onShareEnd");
-    }
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(94);
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(93);
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    localIntent.putExtra("k_from_login", true);
-    localIntent.putExtra("sdk_mult_share_app_name", this.jdField_a_of_type_AndroidOsBundle.getString("app_name"));
-    localIntent.putExtra("sdk_mult_share_source_app_id", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid);
-    localIntent.putExtra("sdk_mult_share_msg_service_id", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID);
-    localIntent.putExtra("sdk_mult_share", true);
-    a(localIntent, paramList);
-    if (this.jdField_a_of_type_AndroidOsBundle.getInt("forward_type", -1) == 11)
-    {
-      long l = this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id");
-      ForwardUtils.backToThirdAppIntent(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle.getString("pkg_name"), localIntent, l);
-    }
-    if (!this.jdField_a_of_type_AndroidOsBundle.getBoolean("share_from_aio", false))
-    {
-      paramList = AIOUtils.setOpenAIOIntent(localIntent, new int[] { 2 });
-      this.jdField_a_of_type_AndroidOsBundle.remove("share_from_aio");
-    }
-    for (;;)
-    {
-      paramList.putExtra("open_chatfragment", false);
-      paramList.putExtra("fragment_id", 1);
-      paramList.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramList);
-      this.jdField_a_of_type_Atlt.b(this.jdField_a_of_type_AndroidAppActivity);
-      ForwardUtils.finishRecentActivity(this.jdField_a_of_type_AndroidAppActivity);
-      return;
-      paramList = AIOUtils.setOpenAIOIntent(localIntent, null);
-      paramList.putExtra("share_from_aio", true);
-    }
-  }
-  
-  private void c()
-  {
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "onError");
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(94);
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(93);
-    this.jdField_a_of_type_Atlt.b(this.jdField_a_of_type_AndroidAppActivity);
-    ForwardUtils.jumpToMainFragment4Server(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, atpn.jdField_a_of_type_JavaLangString);
-  }
-  
-  private void d()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "-->ForwardMultServerShare requestImageShare");
-    HashMap localHashMap = new HashMap();
-    atqa.a("KEY_STAGE_2_UPLOAD_IMAGE_MULT");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ThreadManager.post(new ForwardMultServerShare.2(this, (ResultRecord)localIterator.next(), localHashMap), 8, null, false);
-    }
-  }
-  
-  private void e()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "reportException");
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ForwardUtils.report(localQQAppInterface, "0X800A739", new String[] { Integer.toString(i) });
-      return;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Atlt = new atlt();
-  }
-  
-  public void a(List<ResultRecord> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "null == multiTargetWithoutDataLine || multiTargetWithoutDataLine.isEmpty()");
-      e();
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error null == mApp");
-      e();
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidOsBundle == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error null == mExtraData");
-      e();
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidAppActivity == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error null == mActivity");
-      e();
-      return;
-    }
-    paramList = bchh.a(this.jdField_a_of_type_AndroidOsBundle);
-    if (!(paramList instanceof AbsShareMsg))
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, " sendArkWithStruct error !(structMsg instanceof AbsShareMsg)");
-      e();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)paramList);
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidAppActivity))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "sendArkWithStruct no network");
-      ForwardUtils.jumpToMainFragment4Server(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, amtj.a(2131703919));
-      return;
-    }
-    a();
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "MSG_SDK_SHARE_REQUEST_LOADING_STATUS");
-      this.jdField_a_of_type_Atlt.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(94), 10000L);
-      continue;
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "MSG_SDK_SHARE_REQUEST_TIMEOUT_STATUS");
-      this.jdField_a_of_type_Boolean = true;
-      if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
+      if (this.jdField_a_of_type_JavaUtilTimer != null)
       {
-        this.jdField_a_of_type_Atlt.b(this.jdField_a_of_type_AndroidAppActivity);
-        ForwardUtils.jumpToMainFragment4Server(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, amtj.a(2131703918));
+        this.jdField_a_of_type_JavaUtilTimer.cancel();
+        this.jdField_a_of_type_JavaUtilTimer = null;
       }
-      else
-      {
-        e();
-      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }

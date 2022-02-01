@@ -1,327 +1,191 @@
-import com.tencent.avgame.session.AVGameUserInfo;
-import com.tencent.qav.QavDef.MultiUserInfo;
+import android.app.Activity;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.gamelogic.data.GameRecordInfo;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.util.AVGameNodeReportUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nhn
+  implements ngw, nhs
 {
-  public int a;
-  public long a;
-  public String a;
-  public final ArrayList<lno> a;
-  private final List<AVGameUserInfo> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c = 0;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  private int f = 0;
-  public boolean f;
-  public boolean g;
+  protected nht a;
   
-  public nhn(int paramInt, String paramString)
+  public nhn(nht paramnht)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(8);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(8);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramnht;
   }
   
-  public static String a(int paramInt, long paramLong)
+  private void a(GameRecordInfo paramGameRecordInfo)
   {
-    return String.format("%s-%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-  }
-  
-  public int a()
-  {
-    return this.f;
-  }
-  
-  public AVGameUserInfo a()
-  {
-    return a(this.jdField_b_of_type_Long);
-  }
-  
-  public AVGameUserInfo a(long paramLong)
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    int i = 0;
+    Object localObject1 = null;
+    if (paramGameRecordInfo.extraJsonData != null) {}
     for (;;)
     {
       try
       {
-        if (i < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          if (((AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i)).mUin != paramLong) {
-            break label80;
-          }
-          AVGameUserInfo localAVGameUserInfo = (AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          return localAVGameUserInfo;
-        }
+        localObject2 = new JSONObject(paramGameRecordInfo.extraJsonData);
+        paramGameRecordInfo = ((JSONObject)localObject2).optString("textContent", null);
       }
-      finally {}
-      Object localObject2 = null;
-      continue;
-      label80:
-      i += 1;
+      catch (JSONException paramGameRecordInfo)
+      {
+        Object localObject2;
+        paramGameRecordInfo = null;
+        continue;
+      }
+      try
+      {
+        localObject2 = ((JSONObject)localObject2).optString("bgUrl", null);
+        localObject1 = localObject2;
+      }
+      catch (JSONException localJSONException)
+      {
+        continue;
+      }
+      this.a.a(paramGameRecordInfo, localObject1);
+      return;
+      paramGameRecordInfo = null;
     }
   }
   
-  public AVGameUserInfo a(QavDef.MultiUserInfo paramMultiUserInfo)
+  private void g()
   {
-    if (paramMultiUserInfo == null) {
-      return null;
-    }
-    ??? = a(paramMultiUserInfo.mUin);
-    if (??? != null)
-    {
-      QavDef.MultiUserInfo.copyTo(paramMultiUserInfo, (QavDef.MultiUserInfo)???);
-      return ???;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      paramMultiUserInfo = new AVGameUserInfo(paramMultiUserInfo, this.jdField_b_of_type_Long);
-      this.jdField_a_of_type_JavaUtilList.add(paramMultiUserInfo);
-      return paramMultiUserInfo;
-    }
+    nfv localnfv = nfc.a().a();
+    nfc.a().a(localnfv.b());
   }
   
   public void a()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    int i = 0;
-    for (;;)
+    nfc.a().a(this);
+    GameRecordInfo localGameRecordInfo = nfc.a().a().a();
+    if (localGameRecordInfo.gameType == 5)
     {
-      try
-      {
-        if (i < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          if ((((AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i)).hasVideo()) && (((AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i)).mBigVideo)) {
-            ((AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i)).mBigVideo = false;
-          }
-        }
-        else
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("AVGameSession", 4, "clearUserBigVideoFlag");
-          }
-          return;
-        }
-      }
-      finally {}
-      i += 1;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    bija.d("AVGameSession", "setSessionStatus. old status = " + this.f + ", new status = " + paramInt);
-    this.f = paramInt;
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    int i = this.c;
-    if (paramBoolean) {}
-    for (this.c &= (paramInt ^ 0xFFFFFFFF);; this.c |= paramInt)
-    {
-      if (i != this.c) {
-        bija.d("AVGameSession", "setLocalVideoFlag, mask[" + paramInt + "], clear[" + paramBoolean + "], [" + i + "->" + this.c + "]");
-      }
+      a(localGameRecordInfo);
       return;
     }
+    String str1 = localGameRecordInfo.photoFilePath;
+    String str2 = localGameRecordInfo.videoFilePath;
+    if (QLog.isColorLevel()) {
+      QLog.i("GameResultPresenterImp_GameRC", 1, "pic:" + str1 + ",\nvod:" + str2);
+    }
+    nfc.a().a(str1, str2);
+    this.a.a(localGameRecordInfo.gameType, str1, str2);
   }
   
-  public void a(long paramLong)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    AVGameUserInfo localAVGameUserInfo = a(paramLong);
-    if (localAVGameUserInfo != null) {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(localAVGameUserInfo);
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("GameResultPresenterImp", 1, "uploadRes:" + paramInt + " " + paramString1 + " " + paramString2);
+    }
+    this.a.a(paramInt, paramString2, paramString1);
+    nfc.a().a(paramString2, paramString1);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.i("GameResultPresenterImp", 1, "onChangeUserStatusFailed " + paramString + " and from = " + paramInt2);
+    if (paramInt2 == 4) {
+      this.a.a(paramString);
     }
   }
   
-  public void a(List<Long> paramList)
+  public void a(String paramString, int paramInt, nfv paramnfv)
   {
-    if ((paramList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("GameResultPresenterImp", 2, "pushOnChangeUserStatus uin = " + paramString);
     }
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
-    localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
-    for (;;)
-    {
-      Long localLong;
-      int i;
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        Iterator localIterator = paramList.iterator();
-        if (!localIterator.hasNext()) {
-          break label213;
-        }
-        localLong = (Long)localIterator.next();
-        i = 0;
-        if (i >= localArrayList.size()) {
-          break label273;
-        }
-        if (((AVGameUserInfo)localArrayList.get(i)).mUin == localLong.longValue())
-        {
-          paramList = (AVGameUserInfo)localArrayList.get(i);
-          if (paramList == null) {
-            break label180;
-          }
-          this.jdField_a_of_type_JavaUtilList.add(paramList);
-          localArrayList.remove(paramList);
-        }
-      }
-      i += 1;
-      continue;
-      label180:
-      bija.d("AVGameSession", "updateUserPos cur[" + localLong + "] not exist. ");
-      continue;
-      label213:
-      if (localArrayList.size() > 0)
-      {
-        bija.d("AVGameSession", "updateUserPos, user[" + localArrayList.size() + "] not in list.");
-        this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
-      }
-      return;
-      label273:
-      paramList = null;
+    if ((paramString.equals(nfc.a().a().getAccount())) && (paramInt == 1)) {
+      this.a.b(paramnfv);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (this.a != null) {
+      this.a.a(paramString1, paramString2, paramString3);
+    }
+  }
+  
+  public void a(nfv paramnfv, int paramInt)
+  {
+    QLog.i("GameResultPresenterImp", 1, "onChangeUserStatusSuccess " + paramnfv + " and from = " + paramInt);
+    if (paramInt == 4) {
+      this.a.b(paramnfv);
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  {
+    if (QLog.isDebugVersion()) {
+      QLog.i("GameResultPresenterImp_GameRC", 1, String.format("onGameResultUpload isSucc[%b],playId[%s],fileType[%d],fileUrl[%s]", new Object[] { Boolean.valueOf(paramBoolean), paramString1, Integer.valueOf(paramInt), paramString2 }));
+    }
+    if ((paramBoolean) && (paramInt == 0)) {
+      aojq.a().a(paramString1, paramString2);
     }
   }
   
   public boolean a()
   {
-    return (this.f == 0) || (this.f == 4);
+    return nfc.a().d();
   }
   
-  public boolean a(int paramInt)
+  public void b()
   {
-    return (this.c & paramInt) == paramInt;
+    if (this.a != null) {
+      ndx.a().a(this.a.a(), false, true);
+    }
   }
   
-  public boolean a(long paramLong, boolean paramBoolean)
+  public void c()
   {
-    boolean bool2 = false;
-    AVGameUserInfo localAVGameUserInfo = a(paramLong);
-    boolean bool1 = bool2;
-    if (localAVGameUserInfo != null)
+    g();
+    QLog.i("GameResultPresenterImp", 1, "exitGameRoom from result.");
+    nfc.a().a(false, 1);
+    if (this.a.a() != null) {
+      this.a.a().finish();
+    }
+  }
+  
+  public void d()
+  {
+    nfc.a().c();
+    AVGameAppInterface localAVGameAppInterface = nfc.a().a();
+    String str1 = localAVGameAppInterface.getCurrentAccountUin();
+    nfv localnfv = nfc.a().a();
+    long l = localnfv.a();
+    String str2 = localnfv.a().getNick(str1);
+    String str3 = localnfv.b();
+    int i = localnfv.c();
+    int j = localnfv.d();
+    if ((i == 2) || (i == 4) || (i == 5))
     {
-      bool1 = bool2;
-      if (localAVGameUserInfo.hasVideo())
-      {
-        localAVGameUserInfo.mBigVideo = paramBoolean;
-        bool1 = true;
-      }
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameSession", 4, "updateUserBigVideoFlag, uin[" + paramLong + "], bigVideoFlag[" + paramBoolean + "], updateSuccess[" + bool1 + "]");
-    }
-    return bool1;
-  }
-  
-  public boolean a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    boolean bool = false;
-    AVGameUserInfo localAVGameUserInfo = a(paramLong);
-    if (localAVGameUserInfo != null)
-    {
-      localAVGameUserInfo.mVideoOn = paramBoolean;
-      localAVGameUserInfo.mVideoSrc = paramInt;
-      bool = true;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameSession", 4, "updateUserVideoStatus, uin[" + paramLong + "], on[" + paramBoolean + "], src[" + paramInt + "]");
-    }
-    return bool;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.jdField_d_of_type_Int != paramInt)
-    {
-      bija.d("AVGameSession", "updateStageStatus, [" + this.jdField_d_of_type_Int + "->" + paramInt + "]");
-      this.jdField_d_of_type_Int = paramInt;
-    }
-  }
-  
-  public void b(List<AVGameUserInfo> paramList)
-  {
-    if (paramList == null) {
+      this.a.a(localAVGameAppInterface, l, str1, j, str2, str3);
       return;
     }
-    paramList.clear();
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      paramList.addAll(this.jdField_a_of_type_JavaUtilList);
-      return;
-    }
+    aojq.a().a(localAVGameAppInterface, this.a.a(), l, Long.valueOf(str1).longValue(), str2, str3, j);
   }
   
-  public boolean b(long paramLong, boolean paramBoolean, int paramInt)
+  public void e()
   {
-    boolean bool = false;
-    AVGameUserInfo localAVGameUserInfo = a(paramLong);
-    if (localAVGameUserInfo != null)
-    {
-      localAVGameUserInfo.mSubVideoOn = paramBoolean;
-      localAVGameUserInfo.mSubVideoSrc = paramInt;
-      bool = true;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameSession", 4, "updateUserVideoStatus, uin[" + paramLong + "], on[" + paramBoolean + "], src[" + paramInt + "]");
-    }
-    return bool;
+    nfv localnfv = nfc.a().a();
+    nfc.a().a(localnfv.a(), nfc.a().a().getAccount(), 1, 4);
+    g();
+    nfc.a().a().a(null, null, 0L);
+    nfc.a().a().a(null);
+    AVGameNodeReportUtil.f();
   }
   
-  public void c(List<AVGameUserInfo> paramList)
+  public void f()
   {
-    if (paramList == null) {
-      return;
-    }
-    paramList.clear();
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (i < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          if (((AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i)).hasVideo()) {
-            paramList.add(this.jdField_a_of_type_JavaUtilList.get(i));
-          }
-        }
-        else {
-          return;
-        }
-      }
-      finally {}
-      i += 1;
-    }
+    nfc.a().b(this);
   }
   
-  public String toString()
+  public void i(nfv paramnfv)
   {
-    StringBuilder localStringBuilder = new StringBuilder(200);
-    localStringBuilder.append("[sessionId: ").append(this.jdField_a_of_type_JavaLangString).append(", relationType: ").append(this.jdField_b_of_type_Int).append(", relationId: ").append(this.jdField_a_of_type_Long).append(", localSpeakerOn: ").append(this.jdField_d_of_type_Boolean).append(", localMute: ").append(this.jdField_e_of_type_Boolean).append(", localVideoFlag: ").append(this.c).append(", isAutoGoOnStage: ").append(this.g).append(", stageStatus: ").append(this.jdField_d_of_type_Int).append("]");
-    return localStringBuilder.toString();
+    if (this.a != null) {
+      this.a.a(paramnfv);
+    }
   }
 }
 

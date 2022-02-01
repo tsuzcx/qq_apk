@@ -1,19 +1,31 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface wmt
+class wmt
+  implements wfk<wmy, wmz>
 {
-  public abstract Context a();
+  wmt(wms paramwms, vzu paramvzu, vzv paramvzv) {}
   
-  public abstract View a();
-  
-  public abstract void finish();
-  
-  public abstract Activity getActivity();
-  
-  public abstract void startActivity(Intent paramIntent);
+  public void a(@NonNull wmy paramwmy, @Nullable wmz paramwmz, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if ((paramErrorMessage.isFail()) || (paramwmz == null))
+    {
+      QLog.w("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 1, "get active fail" + paramErrorMessage.getErrorMessage());
+      return;
+    }
+    if (paramwmz.b == 1)
+    {
+      this.jdField_a_of_type_Wms.a(true);
+      this.jdField_a_of_type_Vzu.b(2);
+      this.jdField_a_of_type_Wms.a = 2;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "active value is " + paramwmz.b);
+    }
+    this.jdField_a_of_type_Vzv.a(paramwmz.a);
+  }
 }
 
 

@@ -16,13 +16,13 @@ import java.util.List;
 public class HairSegmentInitializer
   extends Feature
 {
-  private static final String NAME_RAPIDMODEL_BIG = "hair_v2_deconv_k4_320x320_299_softmax_concat4_iter.onnx.opt.onnx";
-  private static final String NAME_RAPIDMODEL_SMALL = "hair_v2_deconv_k4_depthwise_192x256_799999_softmax_iter.onnx.opt.onnx";
-  public static final SizeI NET_SIZE_BIG = new SizeI(320, 320);
-  public static final SizeI NET_SIZE_SMALL = new SizeI(192, 256);
+  private static final String NAME_RAPIDMODEL_BIG = "hair_MobileNetV2_Depthwise_SADv4_256x256_200.onnx.opt.onnx";
+  private static final String NAME_RAPIDMODEL_SMALL = "hair_MobileNetV2_Depthwise_finetune_192x192_200.onnx.opt.onnx";
+  public static final SizeI NET_SIZE_BIG = new SizeI(256, 256);
+  public static final SizeI NET_SIZE_SMALL = new SizeI(192, 192);
   private static final String TAG = HairSegmentInitializer.class.getSimpleName();
-  private static final ModelInfo[] rapidBigModels = { new ModelInfo(true, "hairsegment", "hair_v2_deconv_k4_320x320_299_softmax_concat4_iter.onnx.opt.onnx.rapidmodel.wmc"), new ModelInfo(true, "hairsegment", "hair_v2_deconv_k4_320x320_299_softmax_concat4_iter.onnx.opt.onnx.rapidproto.wmc") };
-  private static final ModelInfo[] rapidSmallModels = { new ModelInfo(true, "hairsegment", "hair_v2_deconv_k4_depthwise_192x256_799999_softmax_iter.onnx.opt.onnx.rapidmodel.wmc"), new ModelInfo(true, "hairsegment", "hair_v2_deconv_k4_depthwise_192x256_799999_softmax_iter.onnx.opt.onnx.rapidproto.wmc") };
+  private static final ModelInfo[] rapidBigModels = { new ModelInfo(true, "hairsegment", "hair_MobileNetV2_Depthwise_SADv4_256x256_200.onnx.opt.onnx.rapidmodel.wmc"), new ModelInfo(true, "hairsegment", "hair_MobileNetV2_Depthwise_SADv4_256x256_200.onnx.opt.onnx.rapidproto.wmc") };
+  private static final ModelInfo[] rapidSmallModels = { new ModelInfo(true, "hairsegment", "hair_MobileNetV2_Depthwise_finetune_192x192_200.onnx.opt.onnx.rapidmodel.wmc"), new ModelInfo(true, "hairsegment", "hair_MobileNetV2_Depthwise_finetune_192x192_200.onnx.opt.onnx.rapidproto.wmc") };
   private HairSegmentImpl mHairSegmentImpl;
   private boolean useSmallModel = false;
   
@@ -38,7 +38,7 @@ public class HairSegmentInitializer
       localObject = FeatureManager.Features.RAPID_NET_SEG_CPU;
       str2 = getFinalResourcesDir();
       if (paramBoolean) {}
-      for (str1 = "hair_v2_deconv_k4_depthwise_192x256_799999_softmax_iter.onnx.opt.onnx";; str1 = "hair_v2_deconv_k4_320x320_299_softmax_concat4_iter.onnx.opt.onnx")
+      for (str1 = "hair_MobileNetV2_Depthwise_finetune_192x192_200.onnx.opt.onnx";; str1 = "hair_MobileNetV2_Depthwise_SADv4_256x256_200.onnx.opt.onnx")
       {
         bool = ((TNNSegCpuInitializer)localObject).loadRapidModelFrom(str2, str1, false, true, 0, 0, 1);
         if ((bool) || (paramBoolean)) {
@@ -51,7 +51,7 @@ public class HairSegmentInitializer
     Object localObject = FeatureManager.Features.RAPID_NET_SEG_GPU;
     String str2 = getFinalResourcesDir();
     if (paramBoolean) {}
-    for (String str1 = "hair_v2_deconv_k4_depthwise_192x256_799999_softmax_iter.onnx.opt.onnx";; str1 = "hair_v2_deconv_k4_320x320_299_softmax_concat4_iter.onnx.opt.onnx")
+    for (String str1 = "hair_MobileNetV2_Depthwise_finetune_192x192_200.onnx.opt.onnx";; str1 = "hair_MobileNetV2_Depthwise_SADv4_256x256_200.onnx.opt.onnx")
     {
       bool = ((TNNSegGpuInitializer)localObject).loadRapidModelFrom(str2, str1, false, true, 0, 1, 1);
       break;

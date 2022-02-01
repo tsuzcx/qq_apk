@@ -1,16 +1,9 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
-
 public class bmyz
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bmyl
 {
-  public bmyz(QIMCircleProgress paramQIMCircleProgress) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected bmzd a()
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.c();
+    return bmzg.a(this);
   }
 }
 

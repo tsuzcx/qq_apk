@@ -9,17 +9,19 @@ public final class stTroopNumSimplify
 {
   public long GroupCode;
   public long dwGroupFlagExt;
+  public long dwGroupInfoExtSeq;
   public long dwGroupInfoSeq;
   public long dwGroupRankSeq;
   
   public stTroopNumSimplify() {}
   
-  public stTroopNumSimplify(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
+  public stTroopNumSimplify(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5)
   {
     this.GroupCode = paramLong1;
     this.dwGroupInfoSeq = paramLong2;
     this.dwGroupFlagExt = paramLong3;
     this.dwGroupRankSeq = paramLong4;
+    this.dwGroupInfoExtSeq = paramLong5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -28,6 +30,7 @@ public final class stTroopNumSimplify
     this.dwGroupInfoSeq = paramJceInputStream.read(this.dwGroupInfoSeq, 1, false);
     this.dwGroupFlagExt = paramJceInputStream.read(this.dwGroupFlagExt, 2, false);
     this.dwGroupRankSeq = paramJceInputStream.read(this.dwGroupRankSeq, 3, false);
+    this.dwGroupInfoExtSeq = paramJceInputStream.read(this.dwGroupInfoExtSeq, 4, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -36,6 +39,7 @@ public final class stTroopNumSimplify
     paramJceOutputStream.write(this.dwGroupInfoSeq, 1);
     paramJceOutputStream.write(this.dwGroupFlagExt, 2);
     paramJceOutputStream.write(this.dwGroupRankSeq, 3);
+    paramJceOutputStream.write(this.dwGroupInfoExtSeq, 4);
   }
 }
 

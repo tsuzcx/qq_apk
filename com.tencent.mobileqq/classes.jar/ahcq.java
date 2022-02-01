@@ -1,18 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
 
 class ahcq
-  implements bkvz
+  implements bkzq
 {
-  ahcq(ahcp paramahcp) {}
+  ahcq(ahcp paramahcp, MessageForPokeEmo paramMessageForPokeEmo, bkzi parambkzi) {}
   
-  public void a(int paramInt, String... paramVarArgs)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
+    switch (paramInt)
     {
-      QLog.i(ahcp.a, 2, "error get pskey...");
-      return;
     }
-    ahcp.a(this.a, paramVarArgs[0]);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Ahcp.c < 500L);
+      this.jdField_a_of_type_Ahcp.c = l;
+      admh.b(this.jdField_a_of_type_Ahcp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahcp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahcp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
+    }
   }
 }
 

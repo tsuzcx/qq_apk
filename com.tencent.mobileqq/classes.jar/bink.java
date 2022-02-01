@@ -1,41 +1,48 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qidian.proto.mobileqq_qidian.GroupItem;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class bink
+class bink
+  extends Animation
 {
-  public int a;
-  public long a;
-  public String a;
+  private int jdField_a_of_type_Int;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
   
-  public bink() {}
-  
-  public bink(mobileqq_qidian.GroupItem paramGroupItem)
+  public bink(View paramView)
   {
-    a(paramGroupItem);
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public mobileqq_qidian.GroupItem a()
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    mobileqq_qidian.GroupItem localGroupItem = new mobileqq_qidian.GroupItem();
-    localGroupItem.uint64_groupid.set(this.jdField_a_of_type_Long);
-    localGroupItem.uint32_group_level.set(this.jdField_a_of_type_Int);
-    localGroupItem.str_group_name.set(this.jdField_a_of_type_JavaLangString);
-    return localGroupItem;
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramFloat = 90.0F * paramFloat;
+    this.jdField_a_of_type_AndroidGraphicsCamera.save();
+    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - paramFloat / 90.0F);
+      this.jdField_a_of_type_AndroidViewView.invalidate();
+    }
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int, -this.b);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int, this.b);
+    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
   }
   
-  public void a(mobileqq_qidian.GroupItem paramGroupItem)
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (paramGroupItem.uint64_groupid.has()) {
-      this.jdField_a_of_type_Long = paramGroupItem.uint64_groupid.get();
-    }
-    if (paramGroupItem.uint32_group_level.has()) {
-      this.jdField_a_of_type_Int = paramGroupItem.uint32_group_level.get();
-    }
-    if (paramGroupItem.str_group_name.has()) {
-      this.jdField_a_of_type_JavaLangString = paramGroupItem.str_group_name.get();
-    }
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

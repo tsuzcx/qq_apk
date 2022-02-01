@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import amtj;
 import android.widget.Toast;
+import anvx;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class CameraCaptureView$12
@@ -11,7 +11,7 @@ class CameraCaptureView$12
   
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), amtj.a(2131700446), 1).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), anvx.a(2131700797), 1).show();
   }
 }
 

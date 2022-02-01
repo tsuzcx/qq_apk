@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import avtb;
+import awzc;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.data.EmoticonPackage;
 
 class PicEmoticonInfo$1
-  implements avtb<EmoticonPackage>
+  implements awzc<EmoticonPackage>
 {
   PicEmoticonInfo$1(PicEmoticonInfo paramPicEmoticonInfo, String paramString) {}
   
@@ -18,7 +18,7 @@ class PicEmoticonInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.PicEmoticonInfo.1
  * JD-Core Version:    0.7.0.1
  */

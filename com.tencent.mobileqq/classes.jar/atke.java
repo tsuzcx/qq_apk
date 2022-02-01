@@ -1,236 +1,237 @@
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import com.idlefish.flutterboost.FlutterBoost;
-import com.idlefish.flutterboost.FlutterBoost.BoostLifecycleListener;
-import com.idlefish.flutterboost.FlutterBoost.ConfigBuilder;
-import com.qflutter.native_resources.QFlutterSkinEnginePlugin;
-import com.qflutter.qflutter_network_image.QFlutterNetworkImage;
-import com.qflutter.qqface.loader.QQFaceLoader;
-import com.qflutter.resource_loader.QFlutterResourceLoader;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.flutter.launch.QFlutterLauncher.2;
-import com.tencent.mobileqq.flutter.launch.QFlutterLauncher.4;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.QQFavProxy.1;
+import com.tencent.mobileqq.filemanager.app.QQFavProxy.2;
+import com.tencent.mobileqq.filemanager.app.QQFavProxy.3;
+import com.tencent.mobileqq.filemanager.app.QQFavProxy.4;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import io.flutter.embedding.android.FlutterView.RenderMode;
-import io.flutter.view.FlutterMain;
-import java.io.File;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import java.util.List;
 
 public class atke
 {
-  private static atke jdField_a_of_type_Atke;
-  private int jdField_a_of_type_Int = 0;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsLooper);
-  private final Looper jdField_a_of_type_AndroidOsLooper = Looper.getMainLooper();
-  private atkd jdField_a_of_type_Atkd = new atkd();
-  private FlutterBoost.BoostLifecycleListener jdField_a_of_type_ComIdlefishFlutterboostFlutterBoost$BoostLifecycleListener = new atkg(this);
-  private final Set<atkb> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean;
+  static String jdField_a_of_type_JavaLangString = "QQFavProxy<FileAssistant>";
+  static String b = "FavFileS ";
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<Long, atkf> jdField_a_of_type_JavaUtilHashMap;
+  private HashSet<atkg> jdField_a_of_type_JavaUtilHashSet = new HashSet();
   
-  public static atke a()
+  public atke(QQAppInterface paramQQAppInterface)
   {
-    if (jdField_a_of_type_Atke == null) {}
-    try
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void b(long paramLong, List<FavFileInfo> paramList, Bundle paramBundle)
+  {
+    Object localObject = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder().append(b).append("onGettedFileList. reqTimeStamp:").append(paramLong).append(" size:");
+    int i;
+    if (paramList != null)
     {
-      if (jdField_a_of_type_Atke == null) {
-        jdField_a_of_type_Atke = new atke();
+      i = paramList.size();
+      QLog.i((String)localObject, 1, i);
+      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+        if (paramBundle == null) {
+          break label257;
+        }
       }
-      return jdField_a_of_type_Atke;
     }
-    finally {}
-  }
-  
-  private void a()
-  {
-    if (Looper.myLooper() != this.jdField_a_of_type_AndroidOsLooper) {}
-  }
-  
-  private void a(int paramInt, boolean paramBoolean)
-  {
-    QLog.d("QFlutter.launcher", 1, String.format("notifyResult, errCode: %s, isFirstLaunch: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) }));
-    if (Looper.myLooper() == this.jdField_a_of_type_AndroidOsLooper)
+    label257:
+    for (boolean bool = paramBundle.getBoolean("fecth_operate_end");; bool = true)
     {
-      b(paramInt, paramBoolean);
-      return;
-    }
-    ThreadManager.getUIHandler().post(new QFlutterLauncher.4(this, paramInt, paramBoolean));
-  }
-  
-  private void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.launcher", 2, "start install");
-    }
-    this.jdField_a_of_type_Atkd.a();
-    if (atka.a())
-    {
-      this.jdField_a_of_type_Boolean = true;
-      atka.a();
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    atjz.a();
-    Bundle localBundle = new Bundle();
-    if (2 == BaseApplicationImpl.sProcessId) {
-      localBundle.putString("FlutterCallerIpcProcessName", "com.tencent.mobileqq:qzone");
-    }
-    QIPCClientHelper.getInstance().getClient().callServer("FlutterMainQIPCModule", "ACTION_INSTALL_ENGINE", localBundle, new atkf(this));
-  }
-  
-  private void b(int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    if (paramInt == 0) {}
-    for (this.jdField_a_of_type_Int = 2;; this.jdField_a_of_type_Int = 0)
-    {
-      atkc localatkc = new atkc(paramInt, paramBoolean, this.jdField_a_of_type_Boolean);
-      if (paramBoolean)
+      localObject = (atkf)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      if (localObject == null) {}
+      do
       {
-        this.jdField_a_of_type_Atkd.a(paramInt, this.jdField_a_of_type_Boolean);
-        localatkc.a(this.jdField_a_of_type_Atkd);
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext()) {
-        ((atkb)localIterator.next()).a(localatkc);
-      }
-    }
-  }
-  
-  private void b(atkb paramatkb)
-  {
-    if (paramatkb == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilSet)
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(paramatkb);
-      return;
-    }
-  }
-  
-  public void a(atkb paramatkb)
-  {
-    if (paramatkb == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilSet)
-    {
-      this.jdField_a_of_type_JavaUtilSet.remove(paramatkb);
-      return;
-    }
-  }
-  
-  public void a(atkb paramatkb, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a();
-    b(paramatkb);
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      QLog.d("QFlutter.launcher", 1, "engine is running");
-      a(0, false);
-      return;
-    }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      QLog.d("QFlutter.launcher", 1, "engine is launching");
-      return;
-    }
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Atkd.f();
-    this.jdField_a_of_type_Atkd.a(paramBoolean1, paramBoolean2);
-    b();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Atkd.b();
-    String str = paramString + File.separator + "res.apk";
-    if (FileUtil.isFileExists(str)) {
-      try
-      {
-        AssetManager localAssetManager = BaseApplicationImpl.getContext().getAssets();
-        Method localMethod = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
-        localMethod.setAccessible(true);
-        localMethod.invoke(localAssetManager, new Object[] { str });
-        this.jdField_a_of_type_Atkd.c();
-        if (Looper.myLooper() == this.jdField_a_of_type_AndroidOsLooper)
+        return;
+        i = 0;
+        break;
+        if (((atkf)localObject).jdField_a_of_type_JavaUtilList == null) {
+          ((atkf)localObject).jdField_a_of_type_JavaUtilList = new ArrayList();
+        }
+        if (bool)
         {
-          b(paramString);
+          this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+          if (paramList != null) {
+            ((atkf)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
+          }
+          if (paramBundle != null) {
+            ((atkf)localObject).jdField_a_of_type_Long = paramBundle.getLong("resultTimestamp");
+          }
+          ((atkf)localObject).a(0, ((atkf)localObject).jdField_a_of_type_JavaUtilList, paramBundle);
           return;
         }
-        ThreadManager.getUIHandler().postAtFrontOfQueue(new QFlutterLauncher.2(this, paramString));
-        return;
+        QLog.i(jdField_a_of_type_JavaLangString, 1, b + "onGettedFileList. fav is getting and waiting");
+        if (paramList != null) {
+          ((atkf)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
+        }
+      } while (paramBundle == null);
+      ((atkf)localObject).jdField_a_of_type_Long = paramBundle.getLong("resultTimestamp");
+      return;
+    }
+  }
+  
+  public long a(long paramLong, List<FavFileInfo> paramList)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      atkf localatkf = (atkf)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      if (paramList != null) {
+        paramList.addAll(localatkf.jdField_a_of_type_JavaUtilList);
       }
-      catch (Exception paramString)
+      if (localatkf != null) {
+        return localatkf.jdField_a_of_type_Long;
+      }
+    }
+    return 0L;
+  }
+  
+  public void a(long paramLong)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "cancelGetFileList. reqTimeStamp:" + paramLong);
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+    }
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "onFileDownloaded. favId:" + paramLong + " strSavePath:" + paramString + "lz:" + this.jdField_a_of_type_JavaUtilHashSet.size());
+    if (this.jdField_a_of_type_JavaUtilHashSet.size() == 0) {}
+    for (;;)
+    {
+      return;
+      Object localObject = Looper.getMainLooper();
+      if (Thread.currentThread() != ((Looper)localObject).getThread())
       {
-        QLog.e("QFlutter.launcher", 1, "loadAsset", paramString);
-        a(5, true);
+        new Handler((Looper)localObject).post(new QQFavProxy.4(this, paramLong, paramString));
         return;
       }
+      localObject = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((atkg)((Iterator)localObject).next()).a(paramLong, paramString);
+      }
     }
-    QLog.e("QFlutter.launcher", 1, String.format("assetsPath: %s not exist", new Object[] { str }));
-    a(4, true);
   }
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  public void a(long paramLong, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.launcher", 2, String.format("onInstallResult, isSuccess: %s, installDir: %s, isLocalEngineExist: %s, isLocalAppExist: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
-    }
-    if ((paramBoolean1) && (FileUtil.isFileExists(paramString)))
+    int i = 0;
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "onFileThumbUpdated. favId:" + paramLong + " strThumbPath:" + paramString + " format:" + paramInt + " lz:" + this.jdField_a_of_type_JavaUtilHashSet.size());
+    if (this.jdField_a_of_type_JavaUtilHashSet.size() == 0) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Atkd.b(paramBoolean2, paramBoolean3);
-      a(paramString);
+      return;
+      if (paramInt == 64) {}
+      for (;;)
+      {
+        localObject = Looper.getMainLooper();
+        if (Thread.currentThread() == ((Looper)localObject).getThread()) {
+          break;
+        }
+        new Handler((Looper)localObject).post(new QQFavProxy.3(this, paramLong, i, paramString));
+        return;
+        if (paramInt == 128) {
+          i = 1;
+        } else if (paramInt == 320) {
+          i = 2;
+        }
+      }
+      Object localObject = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((atkg)((Iterator)localObject).next()).a(paramLong, i, paramString);
+      }
+    }
+  }
+  
+  public void a(long paramLong, List<FavFileInfo> paramList, Bundle paramBundle)
+  {
+    new Handler(Looper.getMainLooper()).post(new QQFavProxy.1(this, paramLong, paramList, paramBundle));
+  }
+  
+  public void a(long paramLong, boolean paramBoolean, Bundle paramBundle, atkf paramatkf)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "getFileList. lastTimestamp:" + paramLong);
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    if (paramatkf != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramatkf);
+    }
+    bmaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramLong, Boolean.valueOf(paramBoolean), paramBundle);
+  }
+  
+  public void a(atkg paramatkg)
+  {
+    if (paramatkg == null) {
       return;
     }
-    QLog.d("QFlutter.launcher", 1, String.format("onInstallResult, isSuccess: %s, installDir: %s, fileIsExist: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(FileUtil.isFileExists(paramString)) }));
-    a(3, true);
+    this.jdField_a_of_type_JavaUtilHashSet.add(paramatkg);
   }
   
-  public boolean a()
+  public void a(FavFileInfo paramFavFileInfo, int paramInt)
   {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public void b(String paramString)
-  {
-    a();
-    this.jdField_a_of_type_Atkd.d();
-    FlutterMain.setNativeLibDir(paramString);
-    com.tencent.qflutter.utils.FLog.sLog = new atjr();
-    QFlutterResourceLoader.get().init(BaseApplicationImpl.getContext(), new atjv(BaseApplicationImpl.getContext()));
-    QQFaceLoader.instance().init(new atkj());
-    atjs.a(paramString + File.separator + "libqflutter-resource-loader.so");
-    QFlutterNetworkImage.g().init(new atjs());
-    QFlutterSkinEnginePlugin.setCurrentThemeId(ThemeUtil.getCurrentThemeId());
-    paramString = new FlutterBoost.ConfigBuilder(BaseApplicationImpl.getApplication(), atjq.a()).isDebug(false).whenEngineStart(FlutterBoost.ConfigBuilder.IMMEDIATELY).renderMode(FlutterView.RenderMode.texture).lifecycleListener(this.jdField_a_of_type_ComIdlefishFlutterboostFlutterBoost$BoostLifecycleListener).build();
-    try
+    int i = 64;
+    if (paramInt == 0) {}
+    for (;;)
     {
-      FlutterBoost.instance().init(paramString);
+      QLog.i(jdField_a_of_type_JavaLangString, 1, b + "downloadThumb. favId:" + paramFavFileInfo.jdField_a_of_type_Long + " format:" + i);
+      bmaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramFavFileInfo, i);
+      return;
+      if (paramInt == 1) {
+        i = 128;
+      } else if (paramInt == 2) {
+        i = 320;
+      } else if (paramInt == 3) {
+        i = 640;
+      } else if (paramInt == 4) {
+        i = 1024;
+      }
+    }
+  }
+  
+  public void a(List<FavFileInfo> paramList, String paramString, int paramInt, Bundle paramBundle)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "sendFavFiles. size:" + paramList.size() + " strToUin:" + paramString + " toUinType:" + paramInt);
+    bmaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList, paramString, paramInt);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    String str = "";
+    if (paramBundle != null) {
+      str = paramBundle.getString("delete_favids");
+    }
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "onFileListRefreshed. bSuc:" + paramBoolean + " delFavIds:" + str);
+    if (this.jdField_a_of_type_JavaUtilHashSet.size() == 0) {
       return;
     }
-    catch (Exception paramString)
-    {
-      QLog.d("QFlutter.launcher", 1, "loadEngine", paramString);
-      a(6, true);
+    new Handler(Looper.getMainLooper()).post(new QQFavProxy.2(this, paramBoolean, paramBundle));
+  }
+  
+  public boolean a(Bundle paramBundle)
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, b + "refreshList.");
+    return bmaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramBundle);
+  }
+  
+  public void b(atkg paramatkg)
+  {
+    if (paramatkg == null) {
+      return;
     }
+    this.jdField_a_of_type_JavaUtilHashSet.remove(paramatkg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atke
  * JD-Core Version:    0.7.0.1
  */

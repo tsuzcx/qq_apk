@@ -1,33 +1,35 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.util.WeakReference;
+import androidx.annotation.NonNull;
+import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
 
-class ngj
-  extends amsu
+public class ngj
+  extends ngf
 {
-  private final WeakReference<ngg> a;
-  private final WeakReference<QQAppInterface> b;
-  
-  public ngj(ngg paramngg, QQAppInterface paramQQAppInterface)
+  protected ngf a()
   {
-    this.a = new WeakReference(paramngg);
-    this.b = new WeakReference(paramQQAppInterface);
+    return new ngj();
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(ngf paramngf)
   {
-    ngg localngg = (ngg)this.a.get();
-    if ((paramBoolean) && (localngg != null) && (ngg.a(localngg, paramString, 0))) {
-      localngg.a(1, paramString, 200);
-    }
+    super.a(paramngf);
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
   {
-    ngg localngg = (ngg)this.a.get();
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if ((paramBoolean) && (localngg != null) && (ngg.a(localngg, paramString, 1))) {
-      localngg.a(0, paramString, ngg.a(localngg, 0, paramString, localQQAppInterface));
-    }
+    super.a(paramCommonQuestionInfo);
+  }
+  
+  public int b()
+  {
+    return 5;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    return localStringBuilder.toString();
   }
 }
 

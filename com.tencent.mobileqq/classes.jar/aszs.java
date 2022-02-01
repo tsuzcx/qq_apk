@@ -1,21 +1,23 @@
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+
 public class aszs
+  implements URLDrawable.URLDrawableListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b = 1;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
-  private String e;
+  public aszs(UniformDownloadActivity paramUniformDownloadActivity, ImageView paramImageView) {}
   
-  public aszs()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_JavaLangString = "share_file";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 

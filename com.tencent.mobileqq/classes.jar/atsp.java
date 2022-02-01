@@ -1,58 +1,79 @@
-import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import java.util.HashMap;
 
-public class atsp
-  extends amsu
+public abstract class atsp
+  extends atrt
 {
-  public atsp(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
+  protected String a;
+  protected String b;
+  protected int d;
+  protected long d;
+  protected long e;
+  protected long f;
+  protected long g;
   
-  protected void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map<String, Integer> paramMap)
+  public atsp(QQAppInterface paramQQAppInterface)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
-    }
-    this.a.a();
-    paramMap = this.a.getActivity();
-    if (paramMap == null)
-    {
-      QLog.e("QQSettingChatOperationFragment", 1, "onSetGeneralSettingsC2CRoaming: activity is null");
-      return;
-    }
-    if (paramBoolean)
-    {
-      QQToast.a(paramMap.getApplicationContext(), 2, 2131694574, 0).b(this.a.getActivity().getTitleBarHeight());
-      return;
-    }
-    FormSwitchItem localFormSwitchItem;
-    if (QQSettingChatOperationFragment.a(this.a) != null)
-    {
-      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(null);
-      localFormSwitchItem = QQSettingChatOperationFragment.a(this.a);
-      if (QQSettingChatOperationFragment.a(this.a).getC2CRoamingSetting() != 1) {
-        break label176;
-      }
-    }
-    label176:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localFormSwitchItem.setChecked(paramBoolean);
-      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(this.a);
-      QQToast.a(paramMap.getApplicationContext(), 2131694573, 0).b(paramMap.getTitleBarHeight());
-      return;
-    }
+    super(paramQQAppInterface);
   }
   
-  protected void onSetMessageRaoam(boolean paramBoolean)
+  protected abstract int a();
+  
+  protected HashMap<String, String> a()
   {
-    if (paramBoolean) {
-      QQSettingChatOperationFragment.a(this.a);
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_ReportVer", String.valueOf(1));
+    localHashMap.put("param_TransferType", String.valueOf(a()));
+    localHashMap.put("param_Platform", String.valueOf(2));
+    localHashMap.put("param_AppType", String.valueOf(0));
+    localHashMap.put("param_Result", String.valueOf(this.jdField_d_of_type_Int));
+    localHashMap.put("param_FileName", String.valueOf(this.a));
+    localHashMap.put("param_Suffix", String.valueOf(this.b));
+    localHashMap.put("param_TargetUin", String.valueOf(this.e));
+    localHashMap.put("param_GroupCode", String.valueOf(this.f));
+    localHashMap.put("param_FileSize", String.valueOf(this.g));
+    return localHashMap;
+  }
+  
+  public void a()
+  {
+    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] reportNetError no implement. please check call");
+  }
+  
+  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
+  {
+    this.e = paramLong1;
+    this.f = paramLong2;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.g = paramLong3;
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
+  
+  protected HashMap<String, String> b()
+  {
+    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] getOldReportData no implement. please check call");
+    return null;
+  }
+  
+  public void b()
+  {
+    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] reportUserCancel no implement. please check call");
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+  }
+  
+  public void c(long paramLong)
+  {
+    this.jdField_d_of_type_Long = paramLong;
   }
 }
 

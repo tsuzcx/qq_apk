@@ -1,7 +1,4 @@
-public class bkwh
-{
-  public static bkwg a = new bkwg(null);
-}
+class bkwh {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

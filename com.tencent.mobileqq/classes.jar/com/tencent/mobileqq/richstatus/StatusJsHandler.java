@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.richstatus;
 
-import amxz;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import ausw;
-import baow;
-import baox;
+import aoan;
+import avyv;
+import bbvl;
+import bbvm;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -25,21 +26,21 @@ import com.tencent.smtt.sdk.WebView;
 import java.lang.ref.WeakReference;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import odq;
-import odw;
+import olh;
+import oln;
 
 public class StatusJsHandler
-  extends ausw
+  extends avyv
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   public AccountDetail a;
   public String a;
   public WeakReference<BaseActivity> a;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new baow(this);
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new bbvl(this);
   boolean jdField_a_of_type_Boolean = false;
   String jdField_b_of_type_JavaLangString;
   WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
-  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new baox(this);
+  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new bbvm(this);
   boolean jdField_b_of_type_Boolean = false;
   public String c;
   
@@ -56,11 +57,11 @@ public class StatusJsHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.", 2, "sendDetailInfoRequest");
     }
-    NewIntent localNewIntent = new NewIntent(paramBaseActivity, odw.class);
+    NewIntent localNewIntent = new NewIntent(paramBaseActivity, oln.class);
     localNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
     localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.8,3,4810");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.10,3,4875");
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     try
     {
@@ -84,7 +85,7 @@ public class StatusJsHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.", 2, "follow");
     }
-    NewIntent localNewIntent = new NewIntent(paramBaseActivity, odw.class);
+    NewIntent localNewIntent = new NewIntent(paramBaseActivity, oln.class);
     localNewIntent.putExtra("cmd", "follow");
     mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
     try
@@ -94,7 +95,7 @@ public class StatusJsHandler
       localNewIntent.putExtra("data", localFollowRequest.toByteArray());
       localNewIntent.setObserver(this.jdField_b_of_type_MqqObserverBusinessObserver);
       paramBaseActivity.app.startServlet(localNewIntent);
-      odq.a(paramBaseActivity.app, paramString, 0);
+      olh.a(paramBaseActivity.app, paramString, 0);
       if (QLog.isColorLevel()) {
         QLog.d("Q.richstatus.", 2, "follow exit");
       }
@@ -131,7 +132,7 @@ public class StatusJsHandler
     for (;;)
     {
       localEntityManager.close();
-      paramBaseActivity = (amxz)paramBaseActivity.app.getManager(56);
+      paramBaseActivity = (aoan)paramBaseActivity.app.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
       if (paramBaseActivity != null) {
         paramBaseActivity.a(paramAccountDetail);
       }
@@ -197,8 +198,8 @@ public class StatusJsHandler
     if (localObject == null) {
       return false;
     }
-    localObject = (amxz)((BaseActivity)localObject).app.getManager(56);
-    return (localObject != null) && (((amxz)localObject).b(paramString) != null);
+    localObject = (aoan)((BaseActivity)localObject).app.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+    return (localObject != null) && (((aoan)localObject).b(paramString) != null);
   }
   
   public void setData(String paramString1, String paramString2)

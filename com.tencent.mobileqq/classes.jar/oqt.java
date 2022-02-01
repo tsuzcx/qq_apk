@@ -1,21 +1,43 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.KandianUGStatisticUtils.1;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initCommentActivityClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oqt
-  implements oqp
+public class oqt
 {
-  public void a(int paramInt, @NotNull Container paramContainer, @NotNull ouc paramouc, @NotNull ouo paramouo, @NotNull ViewBase paramViewBase)
+  private static ExecutorService a;
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
   {
-    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
-    Intrinsics.checkParameterIsNotNull(paramouc, "adapter");
-    Intrinsics.checkParameterIsNotNull(paramouo, "commentViewItem");
-    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oqu(paramouc, paramouo));
+    if (TextUtils.isEmpty(paramString1)) {
+      return null;
+    }
+    if (paramString1.contains("?")) {
+      return paramString1 + "&acttype=" + paramString3 + "&itemid=" + paramString2;
+    }
+    return paramString1 + "?acttype=" + paramString3 + "&itemid=" + paramString2;
+  }
+  
+  public static void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    if (a == null) {
+      a = Executors.newFixedThreadPool(1);
+    }
+    a.execute(new KandianUGStatisticUtils.1(paramString));
+  }
+  
+  public static String b(String paramString1, String paramString2, String paramString3)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return null;
+    }
+    if (paramString1.contains("?")) {
+      return paramString1 + "&acttype=" + paramString2 + "&subpos=" + paramString3;
+    }
+    return paramString1 + "?acttype=" + paramString2 + "&subpos=" + paramString3;
   }
 }
 

@@ -1,41 +1,27 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x120.SubMsgType0x120.MsgBody;
+import android.content.Context;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import java.lang.ref.WeakReference;
 
 public class abzv
-  implements abzb
+  implements AdQQMINIProgramAdapter
 {
-  private static void a(abxc paramabxc, MsgType0x210 paramMsgType0x210)
+  public AdError show(AdQQMINIProgramAdapter.Params paramParams)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x120,");
-    }
-    try
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
-      SubMsgType0x120.MsgBody localMsgBody = new SubMsgType0x120.MsgBody();
-      if (paramabxc.a(paramMsgType0x210))
-      {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        VipUtils.a(paramabxc.a(), localMsgBody);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x120, handle0x210_0x120push");
-        }
-      }
-      return;
+      acho.d("GdtQQMINIProgramAdapter", "show error");
+      return new AdError(4);
     }
-    catch (Exception paramabxc)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0x120], errInfo->" + paramabxc.getMessage());
-    }
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc, paramMsgType0x210);
-    return null;
+    GdtAd localGdtAd = (GdtAd)GdtAd.class.cast(paramParams.ad);
+    acho.b("GdtQQMINIProgramAdapter", String.format("show %s", new Object[] { localGdtAd.getUrlForLandingPage() }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramStart((Context)paramParams.context.get(), localGdtAd);
+    MiniAppLauncher.startMiniApp((Context)paramParams.context.get(), localGdtAd.getUrlForLandingPage(), 2054, new abzw(this, paramParams, localGdtAd));
+    return new AdError(0);
   }
 }
 

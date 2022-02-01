@@ -1,14 +1,8 @@
-import android.widget.TextView;
-import java.util.List;
+import android.view.MotionEvent;
 
 public abstract interface bbha
-  extends bbhc
 {
-  public abstract TextView a();
-  
-  public abstract List<bbhb> a();
-  
-  public abstract TextView b();
+  public abstract void a(MotionEvent paramMotionEvent);
 }
 
 

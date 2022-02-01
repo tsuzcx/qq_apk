@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.applets;
 
-import algh;
+import amed;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class PublicAccountEventReport$1
@@ -10,7 +10,7 @@ public final class PublicAccountEventReport$1
   
   public void run()
   {
-    algh.a().a(this.a);
+    amed.a().a(this.a);
   }
 }
 

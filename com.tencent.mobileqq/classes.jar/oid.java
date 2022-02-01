@@ -1,67 +1,58 @@
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-public class oid
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/AppReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "appInstallStatus", "", "getKey", "", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oid
+  extends ohv
 {
-  public static void a(Drawable paramDrawable)
+  private int a;
+  
+  @NotNull
+  public String a()
   {
-    if (!a()) {
-      QLog.i("DailyDynamicHeaderBackgroundController", 1, "blurBackground, isNeedToBlurBackground : NO");
-    }
-    while (!(paramDrawable instanceof URLDrawable)) {
-      return;
-    }
-    ((URLDrawable)paramDrawable).setDecodeHandler(new oie());
+    return "app";
   }
   
-  public static void a(ImageView paramImageView)
+  @Nullable
+  public JSONObject a()
   {
-    if (paramImageView == null) {
-      return;
-    }
-    if (b())
-    {
-      paramImageView.setColorFilter(855638016, PorterDuff.Mode.DARKEN);
-      return;
-    }
-    paramImageView.clearColorFilter();
+    JSONObject localJSONObject = new JSONObject();
+    ohy.a(localJSONObject, "appInstallStatus", Integer.valueOf(this.a));
+    return localJSONObject;
   }
   
-  private static boolean a()
+  public void a(@NotNull ufw paramufw)
   {
-    Object localObject = (pks)((QQAppInterface)pay.a()).getManager(163);
-    if (localObject != null)
+    Intrinsics.checkParameterIsNotNull(paramufw, "adReportData");
+    if (paramufw.a() == null) {}
+    for (;;)
     {
-      localObject = ((pks)localObject).a().a();
-      if (localObject != null)
+      return;
+      String str = paramufw.a().packageName;
+      Intrinsics.checkExpressionValueIsNotNull(str, "adReportData.advertisementInfo.packageName");
+      if (((CharSequence)str).length() > 0) {}
+      for (int i = 1; i != 0; i = 0)
       {
-        localObject = ((JSONObject)localObject).optString("is_blur_background", "0");
-        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedToBlurBackground, isBlurBackground = " + (String)localObject);
-        return "1".equals(localObject);
+        if (!oik.a((Context)BaseApplication.context, paramufw.a().getPackageName())) {
+          break label76;
+        }
+        this.a = 1;
+        return;
       }
     }
-    return false;
+    label76:
+    this.a = 2;
   }
   
-  private static boolean b()
+  public boolean a()
   {
-    Object localObject = (pks)((QQAppInterface)pay.a()).getManager(163);
-    if (localObject != null)
-    {
-      localObject = ((pks)localObject).a().a();
-      if (localObject != null)
-      {
-        localObject = ((JSONObject)localObject).optString("is_cover_background", "0");
-        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedGrayLayer, isCoverBackground = " + (String)localObject);
-        return "1".equals(localObject);
-      }
-    }
-    return false;
+    return this.a != 0;
   }
 }
 

@@ -1,30 +1,22 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileGameView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import mqq.app.QQPermissionCallback;
 
 public class ayyi
-  extends ayyb
+  implements QQPermissionCallback
 {
-  public ayyi(aysx paramaysx, aymg paramaymg)
+  public ayyi(ScanTorchActivity paramScanTorchActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramaysx, paramaymg);
+    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission deny i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
+    bhdj.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public String a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return "VasProfileHeaderGameComponent";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
-    {
-      VasProfileGameView localVasProfileGameView = new VasProfileGameView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (aymg)this.b);
-      localVasProfileGameView.setClickListener(this);
-      localVasProfileGameView.a();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileGameView;
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
-    }
+    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission grant i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
   }
 }
 

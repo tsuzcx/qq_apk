@@ -1,16 +1,46 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aiut
-  extends RecyclerView.ViewHolder
+public class aiut
+  extends Handler
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public aiut(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
   
-  aiut(aius paramaius, View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377697));
+    if (paramMessage.what == 5)
+    {
+      Face2FaceAddContactFragment.a(this.a).setText(2131692104);
+      Face2FaceAddContactFragment.a(this.a).setVisibility(8);
+      Face2FaceAddContactFragment.a(this.a).setVisibility(0);
+    }
+    do
+    {
+      return;
+      if (paramMessage.what == 301)
+      {
+        Face2FaceAddContactFragment.a(this.a);
+        return;
+      }
+      if (paramMessage.what == 500)
+      {
+        Face2FaceAddContactFragment.b(this.a);
+        return;
+      }
+      if (paramMessage.what == 401)
+      {
+        removeMessages(301);
+        this.a.d();
+        return;
+      }
+    } while (paramMessage.what != 6);
+    Face2FaceAddContactFragment.c(this.a);
+    QQToast.a(this.a.getActivity(), this.a.getString(2131691021), 0).a();
   }
 }
 

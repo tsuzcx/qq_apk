@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import areb;
-import avsq;
+import asih;
+import awyr;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -9,17 +9,17 @@ import java.util.ArrayList;
 public final class ChatActivityFacade$19
   implements Runnable
 {
-  public ChatActivityFacade$19(Emoticon paramEmoticon, avsq paramavsq, areb paramareb) {}
+  public ChatActivityFacade$19(Emoticon paramEmoticon, awyr paramawyr, asih paramasih) {}
   
   public void run()
   {
     ArrayList localArrayList;
     if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 0)
     {
-      localArrayList = (ArrayList)this.jdField_a_of_type_Avsq.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, true);
+      localArrayList = (ArrayList)this.jdField_a_of_type_Awyr.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, true);
       if ((localArrayList != null) && (localArrayList.size() > 0))
       {
-        this.jdField_a_of_type_Areb.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, localArrayList);
+        this.jdField_a_of_type_Asih.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, localArrayList);
         if (QLog.isColorLevel()) {
           QLog.d("ChatActivityFacade", 2, "func tryFetchEmosmKey, try fetch normal emotion keys. epId:" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId + ",cur emo id:" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
         }
@@ -33,7 +33,7 @@ public final class ChatActivityFacade$19
       } while ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType != 2) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType != 4));
       localArrayList = new ArrayList();
       localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-      this.jdField_a_of_type_Areb.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, localArrayList);
+      this.jdField_a_of_type_Asih.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, localArrayList);
     } while (!QLog.isColorLevel());
     QLog.d("ChatActivityFacade", 2, "func tryFetchEmosmKey, try fetch magic emotion key. epId:" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId + ",cur emo id:" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
   }

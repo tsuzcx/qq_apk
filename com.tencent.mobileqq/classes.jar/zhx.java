@@ -1,20 +1,18 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zhx
-  extends apkq
+  implements View.OnClickListener
 {
-  public zhx(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
+  public zhx(SlideTabViewPager paramSlideTabViewPager) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
+    Integer localInteger = (Integer)paramView.getTag();
+    this.a.setTab(localInteger.intValue());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

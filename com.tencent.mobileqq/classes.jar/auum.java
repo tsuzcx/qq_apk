@@ -1,38 +1,25 @@
-import NS_MOBILE_EXTRA.mobile_get_urlinfo_req;
-import QMF_PROTOCAL.RetryInfo;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
 
-public class auum
-  extends QzoneExternalRequest
+class auum
+  implements DialogInterface.OnClickListener
 {
-  private JceStruct a;
+  auum(auui paramauui) {}
   
-  public auum(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    mobile_get_urlinfo_req localmobile_get_urlinfo_req = new mobile_get_urlinfo_req();
-    localmobile_get_urlinfo_req.url = paramString;
-    this.a = localmobile_get_urlinfo_req;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.getUrlInfo";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public Object getRetryInfo()
-  {
-    return new RetryInfo((short)0, 0, System.currentTimeMillis());
-  }
-  
-  public String uniKey()
-  {
-    return "getUrlInfo";
+    if (paramInt == 1)
+    {
+      ForwardSdkBaseOption.a(auui.a(this.a), false, "shareToQQ", auui.a(this.a));
+      nwo.a(auui.a(this.a), 0, "", "");
+      if (auui.a(this.a) != null) {
+        auui.a(this.a).finish(1);
+      }
+      auui.a(this.a).moveTaskToBack(true);
+    }
   }
 }
 

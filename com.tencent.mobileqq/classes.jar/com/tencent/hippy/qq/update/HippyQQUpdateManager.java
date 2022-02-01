@@ -43,14 +43,19 @@ public class HippyQQUpdateManager
     return ((StringBuffer)localObject2).toString();
   }
   
-  public void checkUpdate(String paramString, int paramInt, HippyQQUpdateManager.PackageUpdateListener paramPackageUpdateListener)
+  public void checkUpdate(String paramString, HippyQQUpdateManager.PackageUpdateListener paramPackageUpdateListener)
   {
     try
     {
       if (!TextUtils.isEmpty(paramString))
       {
         this.mUpdateListener = paramPackageUpdateListener;
-        sendUpdateRequest(paramString, paramInt, this);
+        int j = UpdateSetting.getInstance().getModuleVersion(paramString);
+        int i = j;
+        if (j < 0) {
+          i = 0;
+        }
+        sendUpdateRequest(paramString, i, this);
       }
       return;
     }
@@ -136,7 +141,7 @@ public class HippyQQUpdateManager
     JSONObject localJSONObject2 = new JSONObject();
     localJSONObject2.put("iPlatform", 0);
     localJSONObject2.put("sAppKey", "mqq");
-    localJSONObject2.put("sAppVer", "8.4.8.4810");
+    localJSONObject2.put("sAppVer", "8.4.10.4875");
     localJSONObject2.put("sSdkVer", "3.0");
     localJSONObject2.put("sChannel", "10001");
     localJSONObject2.put("sGuid", getGuid());

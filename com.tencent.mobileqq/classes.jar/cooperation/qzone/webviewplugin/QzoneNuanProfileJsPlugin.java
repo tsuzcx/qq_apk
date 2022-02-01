@@ -1,6 +1,6 @@
 package cooperation.qzone.webviewplugin;
 
-import bgve;
+import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;

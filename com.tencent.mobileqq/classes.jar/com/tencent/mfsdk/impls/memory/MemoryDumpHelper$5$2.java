@@ -1,6 +1,6 @@
 package com.tencent.mfsdk.impls.memory;
 
-import achr;
+import acxz;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.qapmsdk.base.meta.DumpResult;
 

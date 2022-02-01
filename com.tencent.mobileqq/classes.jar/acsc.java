@@ -1,27 +1,36 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x92.SubMsgType0x92.MsgBody;
 
 public class acsc
-  implements CompoundButton.OnCheckedChangeListener
+  implements acpi
 {
-  public acsc(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    AssistantSettingActivity.a(this.a, this.a.g.a(), paramBoolean);
-    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
-    if (paramBoolean) {
-      bcef.b(this.a.app, "dc00898", "", "", "0X8009C0C", "0X8009C0C", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("Qidian0x92Push", 2, "<---receive qidian0x92 push : forward to qidianHandler");
     }
-    for (;;)
+    try
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      paramMsgType0x210 = (SubMsgType0x92.MsgBody)new SubMsgType0x92.MsgBody().mergeFrom(paramMsgType0x210.vProtobuf);
+      ((bjyi)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).a(paramMsgType0x210);
       return;
-      bcef.b(this.a.app, "dc00898", "", "", "0X8009C0D", "0X8009C0D", 0, 0, "", "", "", "");
     }
+    catch (Exception paramQQAppInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.msg.BaseMessageProcessor", 2, "<---decode0x92push parse failed.", paramQQAppInterface);
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

@@ -1,13 +1,9 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.apollo.view.ApolloMessageProgressView;
 
 public class agni
-  extends aezf
+  extends agol
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  public agni(agne paramagne) {}
+  public ApolloMessageProgressView a;
 }
 
 

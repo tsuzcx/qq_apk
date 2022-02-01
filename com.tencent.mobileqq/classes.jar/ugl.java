@@ -1,59 +1,19 @@
-import android.content.Context;
 import android.view.View;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class ugl
-  implements bjoe
+public class ugl
+  implements View.OnClickListener
 {
-  ugl(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean, Context paramContext, bjnw parambjnw) {}
+  public ugl(ReadinjoyAdHippyFragment paramReadinjoyAdHippyFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_Boolean) {
-        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().onCurrentMessageDeleted(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        break;
-        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
-      }
-    } while (!this.jdField_a_of_type_JavaLangString.equals("2010741172"));
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getMsgItemByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    if (paramView != null)
-    {
-      paramView = afdj.a(paramView);
-      if (paramView != null)
-      {
-        paramView = (PAMessage.Item)paramView.items.get(0);
-        if (paramView.url != null) {
-          ugf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView.url);
-        }
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_Boolean) {
-      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().onCurrentMessageDeleted(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      break;
-      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
-    }
+    ReadinjoyAdHippyFragment.a(this.a).d();
+    ReadinjoyAdHippyFragment.a(this.a);
+    ReadinjoyAdHippyFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

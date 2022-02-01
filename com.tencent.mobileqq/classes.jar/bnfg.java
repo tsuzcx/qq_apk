@@ -1,19 +1,9 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
+import android.support.annotation.NonNull;
+import java.util.List;
 
-public class bnfg
-  implements wxe
+public abstract interface bnfg
 {
-  public bnfg(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
-  
-  public void a_(wwz paramwwz)
-  {
-    xvv.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
-  }
+  public abstract void a(@NonNull List<bnes> paramList, @NonNull List<bner> paramList1);
 }
 
 

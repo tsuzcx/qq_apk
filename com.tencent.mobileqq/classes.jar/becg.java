@@ -1,57 +1,54 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class becg
-  extends amop
+public class becg
+  extends MiniMsgUser
 {
-  becg(becf parambecf) {}
+  int jdField_a_of_type_Int = -1;
+  MiniMsgUserParam jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam;
+  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
   
-  protected void c(Object paramObject)
+  public becg(BaseActivity paramBaseActivity, MiniMsgUserParam paramMiniMsgUserParam, String paramString1, int paramInt, String paramString2)
   {
-    bfbu localbfbu = (bfbu)paramObject;
-    Object localObject1 = localbfbu.c;
-    if (!NetworkUtil.isNetworkAvailable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
-      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692367);
-    }
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject2 = localObject1;
-      if (((String)localObject1).length() >= 1) {}
-    }
-    else
-    {
-      localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693496);
-    }
-    if (asld.jdField_a_of_type_Boolean)
-    {
-      localbfbu.jdField_a_of_type_JavaLangString = "183.61.37.13";
-      localbfbu.b = "443";
-    }
-    if ((bfby.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (!TextUtils.isEmpty(localbfbu.f)))
-    {
-      short s2 = localbfbu.jdField_a_of_type_Short;
-      short s1 = s2;
-      if (s2 == 0) {
-        s1 = 443;
-      }
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putBoolean("ishttps", true);
-      ((Bundle)localObject1).putString("httpsdomain", localbfbu.f);
-      ((Bundle)localObject1).putShort("httpsport", s1);
-    }
+    super(paramBaseActivity, paramMiniMsgUserParam);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam = paramMiniMsgUserParam;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.b = paramString2;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam == null) {}
     for (;;)
     {
-      if (this.a.jdField_a_of_type_Aruk != null) {
-        this.a.jdField_a_of_type_Aruk.a(localbfbu.jdField_a_of_type_Boolean, localbfbu.jdField_a_of_type_JavaLangString, localbfbu.b, localbfbu.jdField_a_of_type_Int, (String)localObject2, localbfbu.d, null, localbfbu.e, (Bundle)localObject1);
-      }
-      super.c(paramObject);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      localObject1 = null;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback.onOpenMiniAIOCallback();
+      }
+      String str = this.jdField_a_of_type_JavaLangString;
+      int i = this.jdField_a_of_type_Int;
+      if ((i != -1) && (!TextUtils.isEmpty(str)))
+      {
+        MiniChatActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, i, str, this.b);
+        hideUnread();
+      }
     }
+  }
+  
+  public void updateUnreadCountSync(int paramInt)
+  {
+    super.updateUnreadCountSync(0);
   }
 }
 

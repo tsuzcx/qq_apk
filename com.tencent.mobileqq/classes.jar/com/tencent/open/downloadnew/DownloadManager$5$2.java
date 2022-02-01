@@ -1,26 +1,26 @@
 package com.tencent.open.downloadnew;
 
-import bhzm;
-import biby;
-import bice;
+import bjko;
+import bjna;
+import bjng;
 
 public class DownloadManager$5$2
   implements Runnable
 {
-  public DownloadManager$5$2(bice parambice, long paramLong1, long paramLong2, String paramString) {}
+  public DownloadManager$5$2(bjng parambjng, long paramLong1, long paramLong2, String paramString) {}
   
   public void run()
   {
     int i = (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b);
-    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Bice.a.c(this.jdField_a_of_type_JavaLangString, i);
+    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Bjng.a.c(this.jdField_a_of_type_JavaLangString, i);
     if (localDownloadInfo == null) {
-      bhzm.d("DownloadManager_", "OnDownloadSDKTaskProgressChanged info == null");
+      bjko.d("DownloadManager_", "OnDownloadSDKTaskProgressChanged info == null");
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bice.a.a(2, localDownloadInfo);
+      this.jdField_a_of_type_Bjng.a.a(2, localDownloadInfo);
       return;
-      bhzm.a("DownloadManager_", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
+      bjko.a("DownloadManager_", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
     }
   }
 }

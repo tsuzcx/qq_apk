@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.nearby.guide;
 
-import amtj;
 import android.text.TextUtils;
-import awka;
-import awnn;
+import anvx;
+import axqc;
+import axtp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class NearbyGuideActivity$2$1
   implements Runnable
 {
-  public NearbyGuideActivity$2$1(awnn paramawnn, boolean paramBoolean, String paramString) {}
+  public NearbyGuideActivity$2$1(axtp paramaxtp, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Awnn.a.l();
+    this.jdField_a_of_type_Axtp.a.l();
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Awnn.a.a(2, amtj.a(2131706293));
-      this.jdField_a_of_type_Awnn.a.a(true);
-      this.jdField_a_of_type_Awnn.a.finish();
-      awka.a(this.jdField_a_of_type_Awnn.a.app.getAccount(), "nearby_need_show_guide", Boolean.valueOf(false));
+      this.jdField_a_of_type_Axtp.a.a(2, anvx.a(2131706645));
+      this.jdField_a_of_type_Axtp.a.a(true);
+      this.jdField_a_of_type_Axtp.a.finish();
+      axqc.a(this.jdField_a_of_type_Axtp.a.app.getAccount(), "nearby_need_show_guide", Boolean.valueOf(false));
       return;
     }
     String str2 = this.jdField_a_of_type_JavaLangString;
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = amtj.a(2131706307);
+      str1 = anvx.a(2131706659);
     }
-    this.jdField_a_of_type_Awnn.a.a(1, str1);
+    this.jdField_a_of_type_Axtp.a.a(1, str1);
   }
 }
 

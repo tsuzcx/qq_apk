@@ -1,17 +1,26 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class zku
-  implements View.OnTouchListener
+  implements bkzq
 {
-  public zku(VideoPlayerView paramVideoPlayerView) {}
+  public zku(QRDisplayActivity paramQRDisplayActivity, bkzi parambkzi) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    VideoPlayerView.a(this.a);
-    return false;
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      bdla.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, "CliOper", "", "", "0X800AEB6", "0X800AEB6", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.b(7);
+      continue;
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.b(8);
+      bdla.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, "CliOper", "", "", "0X800AEB7", "0X800AEB7", 0, 0, "", "", "", "");
+    }
   }
 }
 

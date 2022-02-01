@@ -1,25 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.AccountDetail;
 
 public class adsj
-  implements DialogInterface.OnClickListener
+  extends bgix
 {
-  public adsj(NotificationActivity paramNotificationActivity) {}
+  public adsj(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
   {
-    bcef.a(this.a.app, "dc00898", "", NotificationActivity.d(this.a), "0X800AA31", "0X800AA31", 0, 0, "", "", "", NotificationActivity.a(this.a));
-    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    this.a.startActivity(paramDialogInterface.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"));
-    this.a.finish();
+    if (paramBoolean)
+    {
+      Message localMessage = Message.obtain();
+      localMessage.what = 16;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("uinname", paramAccountDetail.name);
+      localBundle.putString("extra_type", paramAccountDetail.summary);
+      localBundle.putLong("uin", paramLong);
+      localMessage.setData(localBundle);
+      this.a.a.sendMessage(localMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsj
  * JD-Core Version:    0.7.0.1
  */

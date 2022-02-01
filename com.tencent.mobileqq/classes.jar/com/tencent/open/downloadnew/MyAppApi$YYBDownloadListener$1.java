@@ -2,22 +2,22 @@ package com.tencent.open.downloadnew;
 
 import android.os.Handler;
 import android.os.Looper;
-import biby;
-import bicl;
-import bicy;
-import bicz;
+import bjna;
+import bjnn;
+import bjoa;
+import bjob;
 
 public class MyAppApi$YYBDownloadListener$1
   implements Runnable
 {
-  public MyAppApi$YYBDownloadListener$1(bicy parambicy, DownloadInfo paramDownloadInfo) {}
+  public MyAppApi$YYBDownloadListener$1(bjoa parambjoa, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bicy.a.a != null) && (this.jdField_a_of_type_Bicy.a.a.isShowing())) {
-      this.jdField_a_of_type_Bicy.a.a.dismiss();
+    if ((this.jdField_a_of_type_Bjoa.a.a != null) && (this.jdField_a_of_type_Bjoa.a.a.isShowing())) {
+      this.jdField_a_of_type_Bjoa.a.a.dismiss();
     }
-    biby.a().c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    bjna.a().c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
     new Handler(Looper.getMainLooper()).postAtTime(new MyAppApi.YYBDownloadListener.1.1(this), 1000L);
   }
 }

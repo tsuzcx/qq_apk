@@ -1,19 +1,45 @@
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
+
 public class yda
+  extends yce<ycz>
 {
-  public int a;
-  public ycy a;
-  public int b;
-  
-  private yda(ydc paramydc)
+  public yda(@Nullable yci paramyci)
   {
-    this.jdField_a_of_type_Ycy = ydc.a(paramydc);
-    this.jdField_a_of_type_Int = ydc.a(paramydc);
-    this.b = ydc.b(paramydc);
+    super(paramyci);
   }
   
-  public String toString()
+  protected JobSegment<ych, ycz> a()
   {
-    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Ycy + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
+    return new ycu();
+  }
+  
+  protected JobSegment<Integer, ych> a(ycg paramycg)
+  {
+    return new ydb(paramycg, this.a);
+  }
+  
+  protected ycz a()
+  {
+    yck localyck = (yck)wjs.a(11);
+    List localList = localyck.a();
+    ycz localycz = new ycz(new ErrorMessage());
+    localycz.jdField_b_of_type_JavaUtilList = localyck.b(localList);
+    localycz.jdField_b_of_type_Boolean = true;
+    localycz.a = localycz.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localycz;
+  }
+  
+  protected ycz a(ErrorMessage paramErrorMessage)
+  {
+    return new ycz(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((yck)wjs.a(11)).a(paramList, paramBoolean);
   }
 }
 

@@ -6,7 +6,7 @@ import NS_MINI_INTERFACE.INTERFACE.StGetExtConfigDetailRsp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgau;
+import bhjl;
 import com.tencent.mobileqq.mini.apkg.ExtConfigInfo;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
@@ -88,7 +88,7 @@ public class MiniAppGetExtConfigDetailServlet
           localObject1 = new byte[4];
         }
         paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetExtConfigDetail");
-        paramPacket.putSendData(bgau.a((byte[])localObject1));
+        paramPacket.putSendData(bhjl.a((byte[])localObject1));
         paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
         super.onSend(paramIntent, paramPacket);
         return;

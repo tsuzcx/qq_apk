@@ -1,51 +1,25 @@
-public class twx
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+
+final class twx
+  implements nuw
 {
-  private static volatile twx jdField_a_of_type_Twx;
-  public static boolean a;
-  twy jdField_a_of_type_Twy = null;
+  twx(BridgeModule paramBridgeModule, String paramString) {}
   
-  public static twx a()
+  public void loaded(String paramString, int paramInt)
   {
-    if (jdField_a_of_type_Twx == null) {}
-    try
+    if (paramInt == 0)
     {
-      if (jdField_a_of_type_Twx == null) {
-        jdField_a_of_type_Twx = new twx();
-      }
-      return jdField_a_of_type_Twx;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
+      return;
     }
-    finally {}
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramString);
   }
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Twy != null) {
-      this.jdField_a_of_type_Twy = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Twy != null) {
-      this.jdField_a_of_type_Twy.a(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Twy != null) {
-      this.jdField_a_of_type_Twy.a(paramInt, paramBoolean);
-    }
-  }
-  
-  public void a(twy paramtwy)
-  {
-    this.jdField_a_of_type_Twy = paramtwy;
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     twx
  * JD-Core Version:    0.7.0.1
  */

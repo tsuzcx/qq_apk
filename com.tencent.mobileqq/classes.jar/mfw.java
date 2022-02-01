@@ -1,28 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.av.ui.MultiMembersVideoUI;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class mfw
-  implements DialogInterface.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public mfw(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
+  public mfw(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a != null) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d()))
+    if (this.a.jdField_a_of_type_Msy == null) {}
+    for (;;)
     {
-      MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.e();
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.i(this.jdField_a_of_type_Long, 65535);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().aq = true;
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      mfu localmfu = (mfu)paramView.getTag();
+      if (localmfu == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MultiMembersVideoUI", 2, "onItemClick-->holder is null");
+        }
+      }
+      else if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2))) {
+        this.a.jdField_a_of_type_Msy.a(localmfu.jdField_a_of_type_Long, localmfu.jdField_a_of_type_Int, paramInt, true);
+      } else {
+        this.a.jdField_a_of_type_Msy.a(localmfu.jdField_a_of_type_Long, localmfu.jdField_a_of_type_Int, paramInt, false);
+      }
     }
-    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mfw
  * JD-Core Version:    0.7.0.1
  */

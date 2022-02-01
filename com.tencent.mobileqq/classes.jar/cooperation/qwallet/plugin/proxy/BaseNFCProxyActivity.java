@@ -1,7 +1,6 @@
 package cooperation.qwallet.plugin.proxy;
 
 import Override;
-import amtj;
 import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -11,11 +10,13 @@ import android.nfc.NfcAdapter;
 import android.nfc.NfcAdapter.ReaderCallback;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bfur;
+import anvx;
+import bhdj;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.buscard.BuscardHelper;
 
 @TargetApi(19)
@@ -29,9 +30,14 @@ public class BaseNFCProxyActivity
   private PendingIntent pendingIntent;
   private String[][] techListsArray;
   
+  private void initNavigationBarColor()
+  {
+    ImmersiveUtils.c(getWindow());
+  }
+  
   private void showNoNfcDialog(String paramString1, String paramString2)
   {
-    bfur.a(this, 0, paramString1, paramString2, amtj.a(2131700192), amtj.a(2131700193), new BaseNFCProxyActivity.1(this), new BaseNFCProxyActivity.2(this)).show();
+    bhdj.a(this, 0, paramString1, paramString2, anvx.a(2131700543), anvx.a(2131700544), new BaseNFCProxyActivity.1(this), new BaseNFCProxyActivity.2(this)).show();
   }
   
   @Override
@@ -53,6 +59,7 @@ public class BaseNFCProxyActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    initNavigationBarColor();
     this.nfcAdapter = NfcAdapter.getDefaultAdapter(this);
     if (this.nfcAdapter == null) {}
     do

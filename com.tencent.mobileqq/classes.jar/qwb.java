@@ -1,41 +1,28 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView.RadiusView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView.RadiusView.1.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class qwb
-  implements pwy
+  implements View.OnLayoutChangeListener
 {
-  public qwb(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
+  public qwb(NativeMiddleBodyView.RadiusView paramRadiusView) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    ComponentHeaderRecommend.a(this.a).setText(amtj.a(2131701448));
-    ComponentHeaderRecommend.a(this.a).setTextColor(Color.parseColor("#BBBBBB"));
-    ComponentHeaderRecommend.a(this.a).setEnabled(false);
-    ComponentHeaderRecommend.a(this.a).getPaint().setFakeBoldText(false);
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderRecommend", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    ArticleInfo localArticleInfo;
-    String str;
-    if ((this.a.a.a != null) && (this.a.a.a.a() != null))
+    paramView = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
+    paramInt1 = paramInt3 - paramInt1;
+    paramInt2 = paramInt4 - paramInt2;
+    if ((paramView.width != paramInt1) || (paramView.height != paramInt2))
     {
-      localArticleInfo = this.a.a.a.a();
-      str = pay.a(localArticleInfo.mAlgorithmID, pay.a(localArticleInfo), this.a.a.a.e(), 0, 0, NetworkUtil.isWifiConnected(this.a.getContext()), ComponentHeaderRecommend.a(this.a) + "", null, localArticleInfo.innerUniqueID, null, localArticleInfo);
-      if (!uhv.a(this.a.a.a.e())) {
-        break label305;
-      }
+      paramView.width = paramInt1;
+      paramView.height = paramInt2;
+      this.a.post(new NativeMiddleBodyView.RadiusView.1.1(this, paramInt1, paramInt2, paramView));
     }
-    label305:
-    for (paramString = "0X800941D";; paramString = "0X80080EC")
-    {
-      odq.a(null, ComponentHeaderRecommend.a(this.a) + "", paramString, paramString, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), Integer.toString(localArticleInfo.mStrategyId), str, false);
-      return;
-    }
+    QLog.i(NativeMiddleBodyView.a(), 1, "width:" + paramInt1 + " height:" + paramInt2 + " old: " + paramView.width + ":" + paramView.height);
   }
 }
 

@@ -1,22 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class acqr
-  implements DialogInterface.OnClickListener
+  implements acpi
 {
-  public acqr(AddRequestActivity paramAddRequestActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    if (AddRequestActivity.c(this.a, AddRequestActivity.e(this.a)))
-    {
-      AddRequestActivity.b(this.a, 2131718142, 1000L, false);
-      AddRequestActivity.a(this.a, AddRequestActivity.e(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("ShieldListSvrPush", 2, "<---receive shieldlist push : forward to shieldlisthandler");
     }
-    AddRequestActivity.a(this.a).dismiss();
-    AddRequestActivity.b(this.a, false);
+    ((aodl)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SHIELD_LIST_HANDLER)).a(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

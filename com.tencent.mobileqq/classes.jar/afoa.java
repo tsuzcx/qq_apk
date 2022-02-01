@@ -1,147 +1,65 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class afoa
 {
-  private static afoa jdField_a_of_type_Afoa;
-  private SparseArray<afnz> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  
-  private afnz a(long paramLong, boolean paramBoolean)
+  public static void a(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = this.jdField_a_of_type_AndroidUtilSparseArray.size() - 1;
-    while (i >= 0)
-    {
-      afnz localafnz = (afnz)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      if ((localafnz != null) && (localafnz.a(paramLong, paramBoolean))) {
-        return localafnz;
-      }
-      i -= 1;
-    }
-    return null;
-  }
-  
-  public static afoa a()
-  {
-    if (jdField_a_of_type_Afoa == null) {}
-    try
-    {
-      if (jdField_a_of_type_Afoa == null) {
-        jdField_a_of_type_Afoa = new afoa();
-      }
-      return jdField_a_of_type_Afoa;
-    }
-    finally {}
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOrderManager", 2, "mapUniSeqId:: newSeq -> " + paramLong1 + ", originSeq -> " + paramLong2 + ", id -> " + paramInt);
-    }
-    afnz localafnz = (afnz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localafnz != null) {
-      localafnz.a(paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(SessionInfo paramSessionInfo, String paramString, int paramInt)
-  {
-    a(paramSessionInfo, paramString, new ArrayList(), 1, paramInt);
-  }
-  
-  public void a(SessionInfo paramSessionInfo, String paramString, List<MessageRecord> paramList, int paramInt1, int paramInt2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        localArrayList.add(Long.valueOf(localMessageRecord.uniseq));
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOrderManager", 2, "onPreForward :: mr.uniseq -> " + localMessageRecord.uniseq + ", forwardID -> " + paramInt2);
-        }
+    boolean bool = true;
+    if (paramMotionEvent.getAction() == 0) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiMsg_TAG", 4, "BaseChatItemLayout onTouchEvent...down ");
       }
     }
-    if (paramInt1 == 1) {}
-    for (paramList = new afog();; paramList = new afob())
-    {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt2, paramList.a(paramSessionInfo, paramString, localArrayList, paramInt2));
+    while ((paramMotionEvent.getAction() == 2) || (paramMotionEvent.getAction() != 1)) {
       return;
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOrderManager", 2, "onSendResult newSeq -> " + paramLong + ", mForwardEntities.size() => " + this.jdField_a_of_type_AndroidUtilSparseArray.size());
-    }
-    afnz localafnz = a(paramLong, false);
-    if ((localafnz != null) && (localafnz.a(paramQQAppInterface, paramLong))) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(localafnz.a);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
-  {
-    afnz localafnz = (afnz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localafnz != null) {
-      localafnz.a(paramQQAppInterface, paramLong);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    try
+    paramView = paramView.findViewById(2131364548);
+    int i;
+    label68:
+    int j;
+    if ((paramView != null) && ((paramView instanceof CheckBox)) && (paramView.getVisibility() == 0))
     {
-      afnz localafnz = a(paramMessageRecord.uniseq, true);
-      if (localafnz != null) {
-        localafnz.a(paramQQAppInterface, paramMessageRecord);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, List<MessageRecord> paramList)
-  {
-    if (paramList != null) {
-      try
+      i = 1;
+      paramMotionEvent = AIOLongShotHelper.a();
+      j = i;
+      if (paramMotionEvent != null)
       {
-        if (paramList.size() > 0)
+        j = i;
+        if (paramMotionEvent.a())
         {
-          paramList = paramList.iterator();
-          while (paramList.hasNext()) {
-            a(paramQQAppInterface, (MessageRecord)paramList.next());
+          if ((paramView == null) || (!(paramView instanceof CheckBox))) {
+            break label128;
           }
+          j = 1;
         }
       }
-      finally {}
+      label100:
+      if (j == 0) {
+        break label131;
+      }
+      paramView = (CheckBox)paramView;
+      if (paramView.isChecked()) {
+        break label133;
+      }
     }
-  }
-  
-  public void a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, int paramInt)
-  {
-    try
+    for (;;)
     {
-      ((afnz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).b(paramMessageRecord1.uniseq, paramMessageRecord2.uniseq);
+      paramView.setChecked(bool);
       return;
+      i = 0;
+      break label68;
+      label128:
+      j = 0;
+      break label100;
+      label131:
+      break;
+      label133:
+      bool = false;
     }
-    finally {}
   }
 }
 

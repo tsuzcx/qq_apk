@@ -1,13 +1,15 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agvj
-  implements agut
+class agvj
+  implements DialogInterface.OnClickListener
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  agvj(agvh paramagvh, ChatMessage paramChatMessage) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramagap.d(paramagcc, paramString);
+    admh.b(this.jdField_a_of_type_Agvh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agvh.b, this.jdField_a_of_type_Agvh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
   }
 }
 

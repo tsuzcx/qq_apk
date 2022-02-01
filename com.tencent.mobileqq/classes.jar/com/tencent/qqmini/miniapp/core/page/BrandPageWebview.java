@@ -20,6 +20,8 @@ import com.tencent.qqmini.miniapp.util.AppBrandUtil;
 import com.tencent.qqmini.miniapp.util.IPV6OnlyUtils;
 import com.tencent.qqmini.sdk.action.AppStateEvent;
 import com.tencent.qqmini.sdk.core.BaseRuntimeImpl.BaselibProvider;
+import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
+import com.tencent.qqmini.sdk.core.utils.ImageUtil;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
@@ -57,6 +59,7 @@ public class BrandPageWebview
   public static final int EVENT_JS_DEBUG_READY = 9;
   public static final int EVENT_JS_PAGE_FRAME_HTML_READY = 11;
   public static final int EVENT_JS_PAGE_FRAME_READY = 12;
+  public static final int EVENT_JS_PAGE_GENERATE_FUNC_READY = 14;
   public static final int EVENT_JS_PAGE_READY = 13;
   public static final int EVENT_JS_REMOTE_DEBUG_READY = 7;
   public static final int EVENT_JS_WA_READY = 6;
@@ -83,6 +86,7 @@ public class BrandPageWebview
   private StateMachine.State stateDebugJsLoadSucc = new StateMachine.State(this, Integer.valueOf(14));
   private StateMachine.State stateDefaultConfigJsLoadSucc = new StateMachine.State(this, Integer.valueOf(6));
   private JsStatMachine.JsState stateDefaultConfigJsLoading = new JsStatMachine.JsState(this, 5).nextState(this.stateDefaultConfigJsLoadSucc);
+  private StateMachine.State stateGenerateFuncReady = new StateMachine.State(this, Integer.valueOf(23));
   private StateMachine.State stateGlobalConfigJsLoadSucc = new StateMachine.State(this, Integer.valueOf(12));
   private JsStatMachine.JsState stateGlobalConfigJsLoading = new JsStatMachine.JsState(this, 11).nextState(this.stateGlobalConfigJsLoadSucc);
   private StateMachine.State stateInited = new StateMachine.State(this, Integer.valueOf(2));
@@ -120,334 +124,240 @@ public class BrandPageWebview
     return WnsConfig.getConfig("qqminiapp", "ipv6_proxy_enable", 0) == 1;
   }
   
+  private WebResourceResponse doInterceptPrefFile(String paramString, WebResourceResponse paramWebResourceResponse)
+  {
+    String str = paramString.substring("https://appservice.qq.com/".length());
+    str = ((MiniAppFileManager)this.mContext.getManager(MiniAppFileManager.class)).getAbsolutePath(str);
+    if ((ImageUtil.isJpgFile(paramString)) || (ImageUtil.isPngFile(paramString)))
+    {
+      bool = ImageUtil.isPngFile(paramString);
+      if (bool)
+      {
+        paramString = "image/png";
+        paramWebResourceResponse = new WebResourceResponse(paramString, "UTF-8", ImageUtil.getLocalImageStream(str, bool));
+      }
+    }
+    while ((!paramString.endsWith(".gif")) && (!paramString.endsWith(".svg"))) {
+      for (;;)
+      {
+        boolean bool;
+        return paramWebResourceResponse;
+        paramString = "image/jpg";
+      }
+    }
+    if (paramString.endsWith(".gif")) {}
+    for (paramString = "image/gif";; paramString = "image/svg+xml") {
+      return new WebResourceResponse(paramString, "UTF-8", ImageUtil.getLocalNoBitmapImageStream(str));
+    }
+  }
+  
   /* Error */
-  private WebResourceResponse doInterceptRequest(WebView paramWebView, String paramString)
+  private WebResourceResponse doInterceptPrefHtml(WebResourceResponse paramWebResourceResponse)
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
-    //   3: aload_2
-    //   4: ldc 36
-    //   6: invokevirtual 246	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   9: ifeq +264 -> 273
-    //   12: aload_2
-    //   13: ldc 248
-    //   15: invokevirtual 251	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   18: ifeq +255 -> 273
-    //   21: aload_0
-    //   22: getfield 177	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:mContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   25: ldc 253
-    //   27: invokeinterface 259 2 0
-    //   32: checkcast 253	com/tencent/qqmini/sdk/core/BaseRuntimeImpl$BaselibProvider
-    //   35: invokevirtual 263	com/tencent/qqmini/sdk/core/BaseRuntimeImpl$BaselibProvider:getBasePageFrameStr	()Ljava/lang/String;
-    //   38: astore_1
-    //   39: aload_1
-    //   40: invokestatic 269	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   43: ifne +552 -> 595
-    //   46: aload_0
-    //   47: getfield 271	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   50: ifnull +11 -> 61
-    //   53: aload_0
-    //   54: getfield 271	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   57: arraylength
-    //   58: ifne +14 -> 72
-    //   61: aload_0
-    //   62: aload_1
-    //   63: ldc_w 273
-    //   66: invokevirtual 277	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   69: putfield 271	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   72: new 279	java/io/ByteArrayInputStream
-    //   75: dup
-    //   76: aload_0
-    //   77: getfield 271	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   80: iconst_0
-    //   81: aload_0
-    //   82: getfield 271	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   85: arraylength
-    //   86: invokespecial 282	java/io/ByteArrayInputStream:<init>	([BII)V
-    //   89: astore 5
-    //   91: aload 5
-    //   93: astore_2
-    //   94: new 284	com/tencent/smtt/export/external/interfaces/WebResourceResponse
-    //   97: dup
-    //   98: ldc_w 286
-    //   101: ldc_w 273
-    //   104: aload 5
-    //   106: invokespecial 289	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
-    //   109: astore_1
-    //   110: aload 5
-    //   112: astore_2
-    //   113: new 291	java/lang/StringBuilder
-    //   116: dup
-    //   117: invokespecial 292	java/lang/StringBuilder:<init>	()V
-    //   120: ldc_w 294
-    //   123: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: astore 6
-    //   128: aload 5
-    //   130: astore_2
-    //   131: aload_0
-    //   132: getfield 271	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   135: ifnull +47 -> 182
-    //   138: aload 5
-    //   140: astore_2
-    //   141: aload_0
-    //   142: getfield 271	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
-    //   145: arraylength
-    //   146: istore_3
-    //   147: aload 5
-    //   149: astore_2
-    //   150: ldc 39
-    //   152: aload 6
-    //   154: iload_3
-    //   155: invokevirtual 301	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   158: invokevirtual 304	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   161: invokestatic 310	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   164: aload_1
-    //   165: astore_2
-    //   166: aload 5
-    //   168: ifnull +10 -> 178
-    //   171: aload 5
-    //   173: invokevirtual 313	java/io/ByteArrayInputStream:close	()V
-    //   176: aload_1
-    //   177: astore_2
-    //   178: aload_2
-    //   179: astore_1
-    //   180: aload_1
-    //   181: areturn
-    //   182: iconst_0
-    //   183: istore_3
-    //   184: goto -37 -> 147
-    //   187: astore_2
-    //   188: aload_2
-    //   189: invokevirtual 316	java/io/IOException:printStackTrace	()V
-    //   192: aload_1
-    //   193: astore_2
-    //   194: goto -16 -> 178
-    //   197: astore 6
-    //   199: aconst_null
-    //   200: astore 5
-    //   202: aconst_null
-    //   203: astore_1
-    //   204: aload 5
-    //   206: astore_2
-    //   207: aload 6
-    //   209: invokevirtual 317	java/io/UnsupportedEncodingException:printStackTrace	()V
-    //   212: aload 5
-    //   214: astore_2
-    //   215: ldc 39
-    //   217: ldc_w 319
-    //   220: aload 6
-    //   222: invokestatic 323	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   225: aload_1
-    //   226: astore_2
-    //   227: aload 5
-    //   229: ifnull -51 -> 178
-    //   232: aload 5
-    //   234: invokevirtual 313	java/io/ByteArrayInputStream:close	()V
-    //   237: aload_1
-    //   238: astore_2
-    //   239: goto -61 -> 178
-    //   242: astore_2
-    //   243: aload_2
-    //   244: invokevirtual 316	java/io/IOException:printStackTrace	()V
-    //   247: aload_1
-    //   248: astore_2
-    //   249: goto -71 -> 178
-    //   252: astore_1
-    //   253: aconst_null
-    //   254: astore_2
-    //   255: aload_2
-    //   256: ifnull +7 -> 263
-    //   259: aload_2
-    //   260: invokevirtual 313	java/io/ByteArrayInputStream:close	()V
-    //   263: aload_1
-    //   264: athrow
-    //   265: astore_2
-    //   266: aload_2
-    //   267: invokevirtual 316	java/io/IOException:printStackTrace	()V
-    //   270: goto -7 -> 263
-    //   273: aload_2
-    //   274: ldc 36
-    //   276: invokevirtual 246	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   279: ifeq +150 -> 429
-    //   282: aload_2
-    //   283: ldc 36
-    //   285: invokevirtual 327	java/lang/String:length	()I
-    //   288: invokevirtual 331	java/lang/String:substring	(I)Ljava/lang/String;
-    //   291: astore_1
-    //   292: aload_0
-    //   293: getfield 177	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:mContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   296: ldc_w 333
-    //   299: invokeinterface 259 2 0
-    //   304: checkcast 333	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
-    //   307: aload_1
-    //   308: invokevirtual 337	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   311: astore 6
-    //   313: aload_2
-    //   314: invokestatic 342	com/tencent/qqmini/sdk/core/utils/ImageUtil:isJpgFile	(Ljava/lang/String;)Z
-    //   317: ifne +10 -> 327
-    //   320: aload_2
-    //   321: invokestatic 345	com/tencent/qqmini/sdk/core/utils/ImageUtil:isPngFile	(Ljava/lang/String;)Z
-    //   324: ifeq +44 -> 368
-    //   327: aload_2
-    //   328: invokestatic 345	com/tencent/qqmini/sdk/core/utils/ImageUtil:isPngFile	(Ljava/lang/String;)Z
-    //   331: istore 4
-    //   333: iload 4
-    //   335: ifeq +26 -> 361
-    //   338: ldc_w 347
-    //   341: astore_1
-    //   342: new 284	com/tencent/smtt/export/external/interfaces/WebResourceResponse
-    //   345: dup
-    //   346: aload_1
-    //   347: ldc_w 273
-    //   350: aload 6
-    //   352: iload 4
-    //   354: invokestatic 351	com/tencent/qqmini/sdk/core/utils/ImageUtil:getLocalImageStream	(Ljava/lang/String;Z)Ljava/io/InputStream;
-    //   357: invokespecial 289	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
-    //   360: areturn
-    //   361: ldc_w 353
-    //   364: astore_1
-    //   365: goto -23 -> 342
-    //   368: aload_2
-    //   369: ldc_w 355
-    //   372: invokevirtual 251	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   375: ifne +16 -> 391
-    //   378: aload 5
-    //   380: astore_1
-    //   381: aload_2
-    //   382: ldc_w 357
-    //   385: invokevirtual 251	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   388: ifeq -208 -> 180
-    //   391: aload_2
-    //   392: ldc_w 355
-    //   395: invokevirtual 251	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   398: ifeq +24 -> 422
-    //   401: ldc_w 359
-    //   404: astore_1
-    //   405: new 284	com/tencent/smtt/export/external/interfaces/WebResourceResponse
-    //   408: dup
-    //   409: aload_1
-    //   410: ldc_w 273
-    //   413: aload 6
-    //   415: invokestatic 363	com/tencent/qqmini/sdk/core/utils/ImageUtil:getLocalNoBitmapImageStream	(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
-    //   418: invokespecial 289	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
-    //   421: areturn
-    //   422: ldc_w 365
-    //   425: astore_1
-    //   426: goto -21 -> 405
-    //   429: aload 5
-    //   431: astore_1
-    //   432: aload_2
-    //   433: ldc_w 367
-    //   436: invokevirtual 246	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   439: ifeq -259 -> 180
-    //   442: aload_0
-    //   443: getfield 177	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:mContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   446: ldc_w 333
-    //   449: invokeinterface 259 2 0
-    //   454: checkcast 333	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
-    //   457: aload_2
-    //   458: invokevirtual 337	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   461: astore 6
-    //   463: aload_2
-    //   464: invokestatic 342	com/tencent/qqmini/sdk/core/utils/ImageUtil:isJpgFile	(Ljava/lang/String;)Z
-    //   467: ifne +10 -> 477
-    //   470: aload_2
-    //   471: invokestatic 345	com/tencent/qqmini/sdk/core/utils/ImageUtil:isPngFile	(Ljava/lang/String;)Z
-    //   474: ifeq +44 -> 518
-    //   477: aload_2
-    //   478: invokestatic 345	com/tencent/qqmini/sdk/core/utils/ImageUtil:isPngFile	(Ljava/lang/String;)Z
-    //   481: istore 4
-    //   483: iload 4
-    //   485: ifeq +26 -> 511
-    //   488: ldc_w 347
-    //   491: astore_1
-    //   492: new 284	com/tencent/smtt/export/external/interfaces/WebResourceResponse
-    //   495: dup
-    //   496: aload_1
-    //   497: ldc_w 273
-    //   500: aload 6
-    //   502: iload 4
-    //   504: invokestatic 351	com/tencent/qqmini/sdk/core/utils/ImageUtil:getLocalImageStream	(Ljava/lang/String;Z)Ljava/io/InputStream;
-    //   507: invokespecial 289	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
-    //   510: areturn
-    //   511: ldc_w 353
-    //   514: astore_1
-    //   515: goto -23 -> 492
-    //   518: aload_2
-    //   519: ldc_w 355
-    //   522: invokevirtual 251	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   525: ifne +16 -> 541
-    //   528: aload 5
-    //   530: astore_1
-    //   531: aload_2
-    //   532: ldc_w 357
-    //   535: invokevirtual 251	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   538: ifeq -358 -> 180
-    //   541: aload_2
-    //   542: ldc_w 355
-    //   545: invokevirtual 251	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   548: ifeq +24 -> 572
-    //   551: ldc_w 359
-    //   554: astore_1
-    //   555: new 284	com/tencent/smtt/export/external/interfaces/WebResourceResponse
-    //   558: dup
-    //   559: aload_1
-    //   560: ldc_w 273
-    //   563: aload 6
-    //   565: invokestatic 363	com/tencent/qqmini/sdk/core/utils/ImageUtil:getLocalNoBitmapImageStream	(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
-    //   568: invokespecial 289	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
-    //   571: areturn
-    //   572: ldc_w 365
-    //   575: astore_1
-    //   576: goto -21 -> 555
-    //   579: astore_1
-    //   580: goto -325 -> 255
-    //   583: astore 6
-    //   585: aconst_null
-    //   586: astore_1
-    //   587: goto -383 -> 204
-    //   590: astore 6
-    //   592: goto -388 -> 204
-    //   595: aconst_null
-    //   596: astore_2
-    //   597: goto -419 -> 178
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore 5
+    //   5: aload_0
+    //   6: getfield 182	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:mContext	Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   9: ldc_w 312
+    //   12: invokeinterface 261 2 0
+    //   17: checkcast 312	com/tencent/qqmini/sdk/core/BaseRuntimeImpl$BaselibProvider
+    //   20: invokevirtual 316	com/tencent/qqmini/sdk/core/BaseRuntimeImpl$BaselibProvider:getBasePageFrameStr	()Ljava/lang/String;
+    //   23: astore 6
+    //   25: aload_1
+    //   26: astore 4
+    //   28: aload 6
+    //   30: invokestatic 322	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   33: ifne +124 -> 157
+    //   36: aload_3
+    //   37: astore 4
+    //   39: aload_0
+    //   40: getfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   43: ifnull +14 -> 57
+    //   46: aload_3
+    //   47: astore 4
+    //   49: aload_0
+    //   50: getfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   53: arraylength
+    //   54: ifne +18 -> 72
+    //   57: aload_3
+    //   58: astore 4
+    //   60: aload_0
+    //   61: aload 6
+    //   63: ldc_w 280
+    //   66: invokevirtual 328	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   69: putfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   72: aload_3
+    //   73: astore 4
+    //   75: new 330	java/io/ByteArrayInputStream
+    //   78: dup
+    //   79: aload_0
+    //   80: getfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   83: iconst_0
+    //   84: aload_0
+    //   85: getfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   88: arraylength
+    //   89: invokespecial 333	java/io/ByteArrayInputStream:<init>	([BII)V
+    //   92: astore_3
+    //   93: new 278	com/tencent/smtt/export/external/interfaces/WebResourceResponse
+    //   96: dup
+    //   97: ldc_w 335
+    //   100: ldc_w 280
+    //   103: aload_3
+    //   104: invokespecial 287	com/tencent/smtt/export/external/interfaces/WebResourceResponse:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/io/InputStream;)V
+    //   107: astore 4
+    //   109: new 337	java/lang/StringBuilder
+    //   112: dup
+    //   113: invokespecial 338	java/lang/StringBuilder:<init>	()V
+    //   116: ldc_w 340
+    //   119: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: astore_1
+    //   123: aload_0
+    //   124: getfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   127: ifnull +33 -> 160
+    //   130: aload_0
+    //   131: getfield 324	com/tencent/qqmini/miniapp/core/page/BrandPageWebview:defaultPageHtmlBytes	[B
+    //   134: arraylength
+    //   135: istore_2
+    //   136: ldc 41
+    //   138: aload_1
+    //   139: iload_2
+    //   140: invokevirtual 347	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   143: invokevirtual 350	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   146: invokestatic 356	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   149: aload_3
+    //   150: ifnull +114 -> 264
+    //   153: aload_3
+    //   154: invokevirtual 359	java/io/ByteArrayInputStream:close	()V
+    //   157: aload 4
+    //   159: areturn
+    //   160: iconst_0
+    //   161: istore_2
+    //   162: goto -26 -> 136
+    //   165: astore_1
+    //   166: aload_1
+    //   167: invokevirtual 362	java/io/IOException:printStackTrace	()V
+    //   170: aload 4
+    //   172: areturn
+    //   173: astore 4
+    //   175: aload 5
+    //   177: astore_3
+    //   178: aload 4
+    //   180: astore 5
+    //   182: aload_3
+    //   183: astore 4
+    //   185: aload 5
+    //   187: invokevirtual 363	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   190: aload_3
+    //   191: astore 4
+    //   193: ldc 41
+    //   195: ldc_w 365
+    //   198: aload 5
+    //   200: invokestatic 369	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   203: aload_1
+    //   204: astore 4
+    //   206: aload_3
+    //   207: ifnull -50 -> 157
+    //   210: aload_3
+    //   211: invokevirtual 359	java/io/ByteArrayInputStream:close	()V
+    //   214: aload_1
+    //   215: areturn
+    //   216: astore_3
+    //   217: aload_3
+    //   218: invokevirtual 362	java/io/IOException:printStackTrace	()V
+    //   221: aload_1
+    //   222: areturn
+    //   223: astore_1
+    //   224: aload 4
+    //   226: ifnull +8 -> 234
+    //   229: aload 4
+    //   231: invokevirtual 359	java/io/ByteArrayInputStream:close	()V
+    //   234: aload_1
+    //   235: athrow
+    //   236: astore_3
+    //   237: aload_3
+    //   238: invokevirtual 362	java/io/IOException:printStackTrace	()V
+    //   241: goto -7 -> 234
+    //   244: astore_1
+    //   245: aload_3
+    //   246: astore 4
+    //   248: goto -24 -> 224
+    //   251: astore 5
+    //   253: goto -71 -> 182
+    //   256: astore 5
+    //   258: aload 4
+    //   260: astore_1
+    //   261: goto -79 -> 182
+    //   264: aload 4
+    //   266: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	600	0	this	BrandPageWebview
-    //   0	600	1	paramWebView	WebView
-    //   0	600	2	paramString	String
-    //   146	38	3	i	int
-    //   331	172	4	bool	boolean
-    //   1	528	5	localByteArrayInputStream	java.io.ByteArrayInputStream
-    //   126	27	6	localStringBuilder	StringBuilder
-    //   197	24	6	localUnsupportedEncodingException1	java.io.UnsupportedEncodingException
-    //   311	253	6	str	String
-    //   583	1	6	localUnsupportedEncodingException2	java.io.UnsupportedEncodingException
-    //   590	1	6	localUnsupportedEncodingException3	java.io.UnsupportedEncodingException
+    //   0	267	0	this	BrandPageWebview
+    //   0	267	1	paramWebResourceResponse	WebResourceResponse
+    //   135	27	2	i	int
+    //   1	210	3	localObject1	Object
+    //   216	2	3	localIOException1	java.io.IOException
+    //   236	10	3	localIOException2	java.io.IOException
+    //   26	145	4	localObject2	Object
+    //   173	6	4	localUnsupportedEncodingException1	java.io.UnsupportedEncodingException
+    //   183	82	4	localObject3	Object
+    //   3	196	5	localObject4	Object
+    //   251	1	5	localUnsupportedEncodingException2	java.io.UnsupportedEncodingException
+    //   256	1	5	localUnsupportedEncodingException3	java.io.UnsupportedEncodingException
+    //   23	39	6	str	String
     // Exception table:
     //   from	to	target	type
-    //   171	176	187	java/io/IOException
-    //   46	61	197	java/io/UnsupportedEncodingException
-    //   61	72	197	java/io/UnsupportedEncodingException
-    //   72	91	197	java/io/UnsupportedEncodingException
-    //   232	237	242	java/io/IOException
-    //   46	61	252	finally
-    //   61	72	252	finally
-    //   72	91	252	finally
-    //   259	263	265	java/io/IOException
-    //   94	110	579	finally
-    //   113	128	579	finally
-    //   131	138	579	finally
-    //   141	147	579	finally
-    //   150	164	579	finally
-    //   207	212	579	finally
-    //   215	225	579	finally
-    //   94	110	583	java/io/UnsupportedEncodingException
-    //   113	128	590	java/io/UnsupportedEncodingException
-    //   131	138	590	java/io/UnsupportedEncodingException
-    //   141	147	590	java/io/UnsupportedEncodingException
-    //   150	164	590	java/io/UnsupportedEncodingException
+    //   153	157	165	java/io/IOException
+    //   39	46	173	java/io/UnsupportedEncodingException
+    //   49	57	173	java/io/UnsupportedEncodingException
+    //   60	72	173	java/io/UnsupportedEncodingException
+    //   75	93	173	java/io/UnsupportedEncodingException
+    //   210	214	216	java/io/IOException
+    //   39	46	223	finally
+    //   49	57	223	finally
+    //   60	72	223	finally
+    //   75	93	223	finally
+    //   185	190	223	finally
+    //   193	203	223	finally
+    //   229	234	236	java/io/IOException
+    //   93	109	244	finally
+    //   109	136	244	finally
+    //   136	149	244	finally
+    //   93	109	251	java/io/UnsupportedEncodingException
+    //   109	136	256	java/io/UnsupportedEncodingException
+    //   136	149	256	java/io/UnsupportedEncodingException
+  }
+  
+  private WebResourceResponse doInterceptRequest(WebView paramWebView, String paramString)
+  {
+    if ((paramString.startsWith("https://appservice.qq.com/")) && (paramString.endsWith(".html"))) {
+      return doInterceptPrefHtml(null);
+    }
+    if (paramString.startsWith("https://appservice.qq.com/")) {
+      return doInterceptPrefFile(paramString, null);
+    }
+    if (paramString.startsWith("wxfile://"))
+    {
+      String str = ((MiniAppFileManager)this.mContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
+      if ((ImageUtil.isJpgFile(paramString)) || (ImageUtil.isPngFile(paramString)))
+      {
+        boolean bool = ImageUtil.isPngFile(paramString);
+        if (bool) {}
+        for (paramWebView = "image/png";; paramWebView = "image/jpg") {
+          return new WebResourceResponse(paramWebView, "UTF-8", ImageUtil.getLocalImageStream(str, bool));
+        }
+      }
+      if ((paramString.endsWith(".gif")) || (paramString.endsWith(".svg")))
+      {
+        if (paramString.endsWith(".gif")) {}
+        for (paramWebView = "image/gif";; paramWebView = "image/svg+xml") {
+          return new WebResourceResponse(paramWebView, "UTF-8", ImageUtil.getLocalNoBitmapImageStream(str));
+        }
+      }
+    }
+    return null;
   }
   
   private void initPageWebview()
@@ -578,12 +488,25 @@ public class BrandPageWebview
   
   public void evaluateJs(String paramString1, ValueCallback paramValueCallback, String paramString2)
   {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    int i = 150;
+    if (QMLog.isColorLevel()) {
+      if (paramString1.length() <= 150) {
+        break label109;
+      }
+    }
+    for (;;)
     {
+      paramString2 = paramString1.substring(0, i);
+      QMLog.d("BrandPageWebview", "evaluateJs: " + paramString2 + "   (" + this + ") --> id:" + getWebViewId());
+      if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+        break;
+      }
       if (this.mRealWebView != null) {
         this.mRealWebView.evaluateJavascript(paramString1, AppBrandUtil.convertValueCallback(paramValueCallback));
       }
       return;
+      label109:
+      i = paramString1.length();
     }
     this.mMainHandler.post(new BrandPageWebview.6(this, paramString1, paramValueCallback));
   }
@@ -739,6 +662,7 @@ public class BrandPageWebview
     addStateTransfer(new StateMachine.StateTransfer(this).from(this.stateWxssJsLoadSucc).next(this.statePageFrameHtmlJsLoading).registEvent(Integer.valueOf(11)));
     addStateTransfer(new StateMachine.StateTransfer(this).from(this.statePageFrameHtmlJsLoadSucc).next(this.statePageFrameJsLoading).registEvent(Integer.valueOf(12)));
     addStateTransfer(new StateMachine.StateTransfer(this).from(this.statePageFrameJsLoadSucc).next(this.statePageJsLoading).registEvent(Integer.valueOf(13)));
+    addStateTransfer(new StateMachine.StateTransfer(this).from(this.stateLoadSucc).next(this.stateGenerateFuncReady).registEvent(Integer.valueOf(14)));
     setCurrState(this.stateInitial);
   }
   
@@ -752,6 +676,11 @@ public class BrandPageWebview
       return this.mEventListener.onWebViewNativeRequest(paramString1, paramString2, this, paramInt);
     }
     return "";
+  }
+  
+  public boolean isReady()
+  {
+    return this.stateGenerateFuncReady == getCurrState();
   }
   
   public void loadDefaultHtml()
@@ -785,9 +714,14 @@ public class BrandPageWebview
     if (this.mEventListener != null) {
       this.mEventListener.onWebViewEvent(paramString1, paramString2, this.mRealWebView.getPageWebViewId());
     }
+    if ((paramString1.equals("custom_event_GenerateFuncReady")) && (this.mAppBrandPageContainer != null))
+    {
+      QMLog.i("BrandPageWebview", "custom_event_GenerateFuncReady.(" + this + ") id:" + getWebViewId());
+      appendEvent(Integer.valueOf(14));
+    }
     if ((paramString1.equals("custom_event_PAGE_EVENT")) && (paramString2.contains("DOMReady")) && (this.mAppBrandPageContainer != null))
     {
-      QMLog.i("BrandPageWebview", "custom_event_PAGE_EVENT __DOMReady.  Show the page.");
+      QMLog.i("BrandPageWebview", "custom_event_PAGE_EVENT __DOMReady.  Show the page.(" + this + ") id:" + getWebViewId());
       this.mContext.performAction(AppStateEvent.obtain(11));
       if (this.mAppBrandPageContainer.getAppBrandPagePool() != null) {
         AppBrandTask.runTaskOnUiThreadDelay(new BrandPageWebview.4(this), 1000L);
@@ -829,17 +763,30 @@ public class BrandPageWebview
   
   public void setCurrState(StateMachine.State paramState)
   {
-    if ((paramState == this.stateLoadSucc) && (this.mEventListener != null)) {
-      this.mEventListener.onWebViewReady(this.mOpenType, this.mShowingUrl, this.mRealWebView.getPageWebViewId());
+    StateMachine.State localState;
+    if (paramState == this.stateGenerateFuncReady)
+    {
+      if (this.mEventListener != null)
+      {
+        QMLog.d("BrandPageWebview", "onWebViewReady  (" + this + ")");
+        this.mEventListener.onWebViewReady(this.mOpenType, this.mShowingUrl, this.mRealWebView.getPageWebViewId());
+      }
     }
-    StateMachine.State localState = getCurrState();
-    if (localState == this.stateWaJsLoading) {
+    else
+    {
+      localState = getCurrState();
+      if (localState != this.stateWaJsLoading) {
+        break label140;
+      }
       MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 18, "0");
     }
     for (;;)
     {
       super.setCurrState(paramState);
       return;
+      QMLog.d("BrandPageWebview", "onWebViewReady no listener  (" + this + ")");
+      break;
+      label140:
       if (this.stateRemoteDebugJsLoadSucc == localState) {
         MiniReportManager.reportEventType(this.mContext.getMiniAppInfo(), 19, "0");
       }

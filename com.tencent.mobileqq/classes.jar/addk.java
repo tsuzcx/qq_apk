@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.grayversion.ShareAppLogActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class addk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public addk(DialogActivity paramDialogActivity) {}
+  public addk(AboutActivity paramAboutActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList cancel.");
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    this.a.startActivity(ShareAppLogActivity.buildIntent(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

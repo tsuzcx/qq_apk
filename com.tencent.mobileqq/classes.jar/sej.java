@@ -1,19 +1,38 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
 
 class sej
-  implements ayeo
+  implements bcyc
 {
-  sej(seh paramseh) {}
+  sej(seg paramseg) {}
   
-  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  public void onConfigResult(int paramInt1, int paramInt2)
   {
-    return null;
+    VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", "onConfigResult result=" + paramInt1 + ", serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
+    {
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", anvx.a(2131707074) + paramInt2 + "]", null);
+        bcxc.a(1, paramInt2);
+        return;
+      }
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(seg.a(this.a), localArrayList);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", anvx.a(2131707071), null);
+        ShortVideoResourceManager.a(seg.a(this.a), localArrayList, this.a.a);
+        return;
+      }
+      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", anvx.a(2131707072) + paramInt1 + "]", null);
+      bcxc.a(1, paramInt1);
+      return;
+    }
+    VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", anvx.a(2131707065) + paramInt2 + "]", null);
+    bcxc.a(1, paramInt2);
   }
-  
-  public void onSend(ayep paramayep) {}
-  
-  public void updateMsg(ayep paramayep) {}
 }
 
 

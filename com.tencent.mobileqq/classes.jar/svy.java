@@ -1,132 +1,200 @@
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.PtsData;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.itemview.PTSItemData.Builder;
+import com.tencent.mobileqq.shortvideo.mediacodec.ShortVideoCodec;
+import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
 
 public class svy
+  extends AsyncTask<String, Void, Integer>
 {
-  static PtsData a(JSONObject paramJSONObject)
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private VideoConverter jdField_a_of_type_ComTencentMobileqqShortvideoUtilVideoconverterVideoConverter;
+  private String jdField_a_of_type_JavaLangString;
+  private swa jdField_a_of_type_Swa;
+  private swc jdField_a_of_type_Swc;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private swc jdField_b_of_type_Swc;
+  private String c;
+  
+  public svy(Context paramContext, swa paramswa)
   {
-    String str = d(paramJSONObject);
-    if (paramJSONObject != null) {}
-    for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = "")
-    {
-      paramJSONObject = new PtsData(str, str, paramJSONObject);
-      paramJSONObject.a();
-      return paramJSONObject;
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Swa = paramswa;
   }
   
-  private static String a(JSONObject paramJSONObject)
+  private int a(Context paramContext, String paramString1, swc paramswc, String paramString2)
   {
-    if ((paramJSONObject != null) && (TextUtils.equals("ReadInjoy_native_recommend_small_cell", paramJSONObject.optString("style_ID")))) {
-      return "recommend_small_card";
-    }
-    return "";
-  }
-  
-  public static void a(ProteusItemData paramProteusItemData)
-  {
-    if (!qny.a().b()) {}
-    String str3;
-    do
+    if (Build.VERSION.SDK_INT >= 18)
     {
-      do
+      int i = ShortVideoCodec.checkSupportMediaCodecFeature(paramContext);
+      if (((i & 0x1) > 0) && ((i & 0x2) > 0)) {}
+      for (boolean bool = true;; bool = false)
       {
-        return;
-        if ((paramProteusItemData == null) || (paramProteusItemData.c == null))
-        {
-          QLog.i("FastWebPtsLiteDataUtil", 1, "[processProteusItemData] error, proteusItemData is null.");
-          return;
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoCompressTask", 2, "CompressTask, step: isHWCodecSupported = " + bool);
         }
-        localObject = paramProteusItemData.c;
-      } while (!TextUtils.isEmpty(((JSONObject)localObject).optString("id_recommend_category_txt")));
-      String str1 = a((JSONObject)localObject);
-      String str2 = b((JSONObject)localObject);
-      Object localObject = c((JSONObject)localObject);
-      str3 = qoe.a().a("native_article", str1);
-      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str3)))
+        if (!bool) {
+          break label198;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoCompressTask", 2, "CompressTask, step: Try to compress using MediaCodec");
+        }
+        paramContext = new File(paramString1);
+        paramString1 = new svz(this, paramString2, (int)(paramswc.jdField_b_of_type_Long * 1024L), (int)paramswc.jdField_a_of_type_Long, 0L, paramswc.c);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilVideoconverterVideoConverter = new VideoConverter();
+        if ((!this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilVideoconverterVideoConverter.start(paramContext, paramString1, true)) || (paramString1.a != null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoCompressTask", 2, "CompressTask, step: compress completed using MediaCodec");
+        }
+        return 0;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCompressTask", 2, "CompressTask, step: compress failed using MediaCodecr", paramString1.a);
+      }
+      return -4;
+    }
+    return -2;
+    label198:
+    return -4;
+  }
+  
+  protected Integer a(String... paramVarArgs)
+  {
+    paramVarArgs = paramVarArgs[0];
+    this.jdField_a_of_type_Swa.a(0.0F);
+    if (TextUtils.isEmpty(paramVarArgs))
+    {
+      QLog.d("VideoCompressTask", 1, "CompressTask failed, error params:" + paramVarArgs);
+      return Integer.valueOf(-1);
+    }
+    if (Build.VERSION.SDK_INT < 18)
+    {
+      QLog.d("VideoCompressTask", 1, "CompressTask failed, sdk version too low: " + Build.VERSION.SDK_INT);
+      return Integer.valueOf(-2);
+    }
+    this.jdField_a_of_type_JavaLangString = paramVarArgs;
+    this.jdField_a_of_type_Swc = swc.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Swc == null)
+    {
+      QLog.e("VideoCompressTask", 1, "CompressTask failed, retrive mSourceMediaInfo failed! ");
+      return Integer.valueOf(-3);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressTask", 2, "CompressTask, step: retrive mSourceMediaInfo = " + this.jdField_a_of_type_Swc);
+    }
+    if (!swb.a(this.jdField_a_of_type_Swc))
+    {
+      QLog.e("VideoCompressTask", 1, "CompressTask failed, no need compress! ");
+      return Integer.valueOf(-5);
+    }
+    long l1 = System.currentTimeMillis();
+    File localFile = new File(swb.a());
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    int i = this.jdField_a_of_type_JavaLangString.lastIndexOf(".");
+    if (i == -1)
+    {
+      QLog.d("VideoCompressTask", 1, "CompressTask failed, error params:" + paramVarArgs);
+      return Integer.valueOf(-1);
+    }
+    this.jdField_b_of_type_JavaLangString = swb.a(paramVarArgs, paramVarArgs.substring(i + 1));
+    i = a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Swc, this.jdField_b_of_type_JavaLangString);
+    if (i == 0) {
+      this.jdField_b_of_type_Swc = swc.a(this.jdField_b_of_type_JavaLangString);
+    }
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCompressTask", 2, "CompressTask run finish! compress ret = " + i + ", cost:" + (l2 - l1) + "ms, mTargetMdeiaInfo=" + this.jdField_b_of_type_Swc);
+    }
+    return Integer.valueOf(i);
+  }
+  
+  public void a()
+  {
+    cancel(false);
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilVideoconverterVideoConverter != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilVideoconverterVideoConverter.stop();
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilVideoconverterVideoConverter.cancel();
+    }
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    int i = 2;
+    super.onPostExecute(paramInteger);
+    if (isCancelled()) {}
+    label261:
+    for (;;)
+    {
+      return;
+      if (paramInteger.intValue() != 0)
       {
-        paramProteusItemData.R = str1;
-        paramProteusItemData.Q = str2;
-        paramProteusItemData.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData = new PTSItemData.Builder().withPageName(str1).withItemID(str2).withJsonData((String)localObject).withFrameTreeJson(str3).build();
-        paramProteusItemData.jdField_a_of_type_ComTencentPtsCorePTSComposer = PTSComposer.buildComposer(str1, str3, (String)localObject, null, paramProteusItemData.jdField_a_of_type_ComTencentPtsCorePTSComposer$IPTSUpdateDataListener);
+        if (QLog.isColorLevel()) {
+          QLog.e("VideoCompressTask", 2, "CompressTask, compress failed, errorCode:" + paramInteger);
+        }
+        if (paramInteger.intValue() != -2) {}
       }
-      if ((QLog.isDebugVersion()) || (QLog.isColorLevel())) {
-        QLog.i("FastWebPtsLiteDataUtil", 2, "[processProteusItemData] finished, pageName = " + str1 + ", itemId = " + str2 + ", jsonData = " + (String)localObject);
-      }
-    } while (!TextUtils.isEmpty(str3));
-    QLog.i("FastWebPtsLiteDataUtil", 1, "[processProteusItemData] finished, frameTreeJson is empty.");
-  }
-  
-  static boolean a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    while (!paramJSONObject.has("pts_page_name")) {
-      return false;
-    }
-    return true;
-  }
-  
-  private static String b(JSONObject paramJSONObject)
-  {
-    if ((paramJSONObject != null) && (paramJSONObject.optJSONObject("card_info") != null)) {
-      return paramJSONObject.optJSONObject("card_info").optString("rowKey");
-    }
-    QLog.e("FastWebPtsLiteDataUtil", 1, "[getItemId], rowKey is null.");
-    return "";
-  }
-  
-  private static String c(JSONObject paramJSONObject)
-  {
-    if ((paramJSONObject == null) || (paramJSONObject.optJSONObject("card_info") == null))
-    {
-      QLog.i("FastWebPtsLiteDataUtil", 1, "[getJsonData], card_info is null.");
-      return "";
-    }
-    JSONObject localJSONObject2 = paramJSONObject.optJSONObject("card_info");
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      localJSONObject1.put("rowKey", localJSONObject2.optString("rowKey"));
-      if (paramJSONObject.optJSONObject("id_recommend_title") != null) {
-        localJSONObject1.put("title", paramJSONObject.optJSONObject("id_recommend_title").optString("text"));
-      }
-      if (paramJSONObject.optJSONObject("id_native_recommend_small_container") != null) {
-        localJSONObject1.put("jumpUrl", paramJSONObject.optJSONObject("id_native_recommend_small_container").optString("jump_url"));
-      }
-      if (paramJSONObject.optJSONObject("id_recommend_cover_img") != null) {
-        localJSONObject1.put("image_url", paramJSONObject.optJSONObject("id_recommend_cover_img").optString("image_url"));
-      }
-      if (!TextUtils.isEmpty(paramJSONObject.optString("label_separator_line_top_bg_color"))) {
-        localJSONObject1.put("top_separator", "1");
-      }
-      if (!TextUtils.isEmpty(paramJSONObject.optString("label_separator_line_bottom_bg_color"))) {
-        localJSONObject1.put("bottom_separator", "1");
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
       for (;;)
       {
-        QLog.e("FastWebPtsLiteDataUtil", 1, "[getJsonData], e = " + paramJSONObject);
+        if (this.jdField_a_of_type_Swa == null) {
+          break label261;
+        }
+        this.jdField_a_of_type_Swa.a(i, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Swc);
+        return;
+        if (paramInteger.intValue() == -3)
+        {
+          i = 3;
+        }
+        else
+        {
+          if (paramInteger.intValue() == -5)
+          {
+            i = 1;
+            continue;
+            this.jdField_b_of_type_Long = System.currentTimeMillis();
+            if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
+            for (paramInteger = this.jdField_a_of_type_JavaLangString;; paramInteger = this.jdField_b_of_type_JavaLangString)
+            {
+              this.c = paramInteger;
+              long l = new File(this.c).length();
+              if (QLog.isColorLevel()) {
+                QLog.d("VideoCompressTask", 2, "CompressTask, finalSize:" + l);
+              }
+              if (l <= swb.b()) {
+                break label232;
+              }
+              if (this.jdField_a_of_type_Swa == null) {
+                break;
+              }
+              this.jdField_a_of_type_Swa.a(5, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Swc);
+              return;
+            }
+            label232:
+            if (this.jdField_a_of_type_Swa == null) {
+              break;
+            }
+            this.jdField_a_of_type_Swa.a(0, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Swc);
+            return;
+          }
+          i = 4;
+        }
       }
     }
-    QLog.i("FastWebPtsLiteDataUtil", 1, "[getJsonData], res = " + localJSONObject1.toString());
-    return localJSONObject1.toString();
   }
   
-  private static String d(JSONObject paramJSONObject)
+  protected void onPreExecute()
   {
-    String str = "";
-    if (paramJSONObject != null) {
-      str = paramJSONObject.optString("pts_page_name", "");
-    }
-    return str;
+    super.onPreExecute();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
 }
 

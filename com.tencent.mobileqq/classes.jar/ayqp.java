@@ -1,23 +1,48 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.view.CircularProgressBar;
-
 public class ayqp
-  extends Handler
 {
-  public ayqp(CircularProgressBar paramCircularProgressBar) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static void a()
   {
-    this.a.invalidate();
-    if (CircularProgressBar.a(this.a))
-    {
-      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
-      if (CircularProgressBar.a(this.a) > 360) {
-        CircularProgressBar.a(this.a, 0);
-      }
-      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
-    }
+    new ayqs().a("now_qq_gzh").b("notice_click").a();
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2)
+  {
+    new ayqs().a("now_qq_gzh").b("msg_exp").a(paramInt).d(paramString1).e(paramString2).a();
+  }
+  
+  public static void a(String paramString)
+  {
+    new ayqs().a("now_qq_gzh").b("homepage_view").c(paramString).a();
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    new ayqs().a("now_qq_gzh").b("follow_anchor_click").a("anchor", paramString).a(paramInt).a();
+  }
+  
+  public static void b()
+  {
+    new ayqs().a("now_qq_gzh").b("notice_page_view").a();
+  }
+  
+  public static void b(int paramInt, String paramString1, String paramString2)
+  {
+    new ayqs().a("now_qq_gzh").b("msg_click").a(paramInt).d(paramString1).e(paramString2).a();
+  }
+  
+  public static void b(String paramString)
+  {
+    new ayqs().a("now_qq_gzh").b("follow_anchor_exp").a("anchor", paramString).a();
+  }
+  
+  public static void b(String paramString, int paramInt)
+  {
+    new ayqs().a("now_qq_gzh").b("rec_anchor_click").a("anchor", paramString).a(paramInt).a();
+  }
+  
+  public static void c(String paramString)
+  {
+    new ayqs().a("now_qq_gzh").b("rec_anchor_exp").a("anchor", paramString).a();
   }
 }
 

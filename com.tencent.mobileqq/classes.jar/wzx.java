@@ -1,55 +1,96 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.VideoUrlEntry;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoUrl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class wzx
-  implements DialogInterface.OnClickListener
+public abstract class wzx
+  extends ntd
 {
-  wzx(wzo paramwzo, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem, xnv paramxnv) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-    switch (paramInt)
+    long l = paramBundle.getLong("key_for_start_time");
+    l = System.currentTimeMillis() - l;
+    Object localObject1 = new qqstory_service.RspBatchGetVideoFullInfoList();
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-    case 0: 
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_Wzo.a("");
-    if (StoryVideoItem.isFakeVid(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
-    {
-      ((vns)vux.a(3)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-      paramDialogInterface = new vuc(new ErrorMessage(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
-      paramDialogInterface.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
-      paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
-      if (paramDialogInterface.a == 0L) {
-        paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
-      }
-      vli.a().dispatch(paramDialogInterface);
+      a(paramInt, null, null);
+      ykv.b("story_net", wtz.a, 0, paramInt, new String[] { "", l + "", ykv.a(BaseApplication.getContext()) });
+      return null;
     }
     for (;;)
     {
-      xwa.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      return;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType == 2)
+      try
       {
-        ((ynq)wkp.a().getManager(208)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0, false, new wzy(this));
+        ((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).result.get();
+        Object localObject2 = (qqstory_struct.StoryVideoFullInfo)((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).video_list.get(0);
+        paramBundle = paramArrayOfByte.error_desc.get().toStringUtf8();
+        paramInt = paramArrayOfByte.error_code.get();
+        if (paramInt == 0)
+        {
+          paramBundle = new StoryVideoItem();
+          paramBundle.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject2);
+          paramBundle.mInteractStatus = ((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).interact_status.get();
+          if (paramBundle.mErrorCode == 0) {
+            ((wjp)wjs.a(5)).a(paramBundle.mVid, paramBundle);
+          }
+          localObject2 = ((qqstory_struct.StoryVideoFullInfo)localObject2).compressed_video.get();
+          if (localObject2 != null)
+          {
+            localObject1 = new ArrayList(((List)localObject2).size());
+            localObject2 = ((List)localObject2).iterator();
+            if (((Iterator)localObject2).hasNext())
+            {
+              qqstory_struct.VideoUrl localVideoUrl = (qqstory_struct.VideoUrl)((Iterator)localObject2).next();
+              VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
+              localVideoUrlEntry.vid = paramBundle.mVid;
+              localVideoUrlEntry.videoUrlLevel = localVideoUrl.video_level.get();
+              localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
+              ((List)localObject1).add(localVideoUrlEntry);
+              continue;
+            }
+          }
+        }
+        a(paramInt, paramBundle, null);
       }
-      else
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        this.jdField_a_of_type_Xnv.a(this.jdField_a_of_type_Wzo.a.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        this.jdField_a_of_type_Xnv.a(this.jdField_a_of_type_Wzo.a.b, 1, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        new wbi().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.qqstory.player.PlayModeUtils", 2, "getVideoInfo - onResult, InvalidProtocolBufferMicroException, e:" + paramArrayOfByte.getMessage());
+        }
+        a(-1, null, null);
+        return null;
+        ((wan)wjs.a(28)).b((List)localObject1);
+        a(paramInt, null, paramBundle);
+        ykv.b("story_net", wtz.a, 0, paramInt, new String[] { "", l + "", ykv.a(BaseApplication.getContext()) });
+        return paramArrayOfByte;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.qqstory.player.PlayModeUtils", 2, "getVideoInfo - onResult, other exception, e:" + paramArrayOfByte.getMessage());
+        }
+        a(-1, null, null);
+        return null;
       }
     }
   }
+  
+  public abstract void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem);
 }
 
 

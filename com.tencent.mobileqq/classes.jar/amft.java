@@ -1,27 +1,35 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class amft
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public List<amfr> a;
-  public List<amfq> b = new ArrayList();
+  amft(amfs paramamfs, akgu paramakgu, int paramInt) {}
   
-  public amft()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("ThunderConfig{");
-    localStringBuffer.append("mPageId=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mMd5='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mCmdConfigs=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuffer.append(", mCGIConfigs=").append(this.b);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    Intent localIntent = new Intent(this.jdField_a_of_type_Amfs.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_Akgu.b);
+    localIntent.putExtra("isShowAd", false);
+    this.jdField_a_of_type_Amfs.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    if ((this.jdField_a_of_type_Amfs.jdField_a_of_type_AndroidContentContext instanceof AvatarPendantActivity)) {
+      ((AvatarPendantActivity)this.jdField_a_of_type_Amfs.jdField_a_of_type_AndroidContentContext).a = -1L;
+    }
+    if (this.jdField_a_of_type_Int == 1) {
+      VasWebviewUtil.reportCommercialDrainage("", "faceaddon", "0X8008486", "", 1, 0, 0, "", "", "");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdla.b(this.jdField_a_of_type_Amfs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006334", "0X8006334", 0, 0, "", "", "", "");
+    }
   }
 }
 

@@ -1,27 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class akjg
-  implements View.OnClickListener
+public class akjg
 {
-  akjg(akho paramakho) {}
-  
-  public void onClick(View paramView)
-  {
-    if (akho.a(this.a) != null) {}
-    for (QQAppInterface localQQAppInterface = akho.a(this.a).app;; localQQAppInterface = null)
-    {
-      if (localQQAppInterface != null) {
-        aowk.a().a(akho.a(this.a), localQQAppInterface);
-      }
-      aowk.a().a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public boolean d;
+  public boolean e = true;
 }
 
 

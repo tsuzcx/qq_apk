@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import amtj;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -9,6 +8,7 @@ import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
+import anvx;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -48,17 +48,17 @@ class PressToSpeakPanel$15
     com.tencent.mobileqq.transfile.PttInfoCollector.sCostUntilPrepare = SystemClock.uptimeMillis();
     if (!QQRecorder.a(((QQRecorder.RecorderParam)localObject).c))
     {
-      QQToast.a(BaseApplication.getContext(), 2131693124, 0).b(i);
+      QQToast.a(BaseApplication.getContext(), 2131693292, 0).b(i);
       return;
     }
     if (PressToSpeakPanel.a(this.this$0).isRecording())
     {
-      QQToast.a(BaseApplication.getContext(), amtj.a(2131707519), 0).b(i);
+      QQToast.a(BaseApplication.getContext(), anvx.a(2131707866), 0).b(i);
       return;
     }
     if (PressToSpeakPanel.a(this.this$0).isVideoChatting())
     {
-      QQToast.a(BaseApplication.getContext(), 2131694732, 0).b(i);
+      QQToast.a(BaseApplication.getContext(), 2131694935, 0).b(i);
       return;
     }
     if (AudioHelper.b(1))
@@ -99,7 +99,7 @@ class PressToSpeakPanel$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel.15
  * JD-Core Version:    0.7.0.1
  */

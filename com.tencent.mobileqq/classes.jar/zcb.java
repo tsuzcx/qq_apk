@@ -1,24 +1,8 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-
-public class zcb
-  implements zjq
+public abstract interface zcb
 {
-  public zcb(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean)
-  {
-    String str2 = RecommendBannerFeedItemView.a(this.a).poster.id.get();
-    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
-    if (paramBoolean) {}
-    for (String str1 = "cancel";; str1 = "dislike")
-    {
-      zxp.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
-      return;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

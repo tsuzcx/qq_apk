@@ -1,58 +1,92 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.magicface.DecoderUtil;
+import com.tencent.mobileqq.magicface.model.MagicfaceXBigDecoder.1;
+import com.tencent.mobileqq.magicface.model.MagicfaceXBigDecoder.2;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awsd
-  implements View.OnClickListener
+  extends awsa
 {
-  public awsd(ShortVideoCommentsView paramShortVideoCommentsView, LocationInfo paramLocationInfo) {}
+  public Object a;
+  Runnable a;
+  public Object b;
+  Runnable b;
+  public volatile boolean b;
   
-  public void onClick(View paramView)
+  public awsd()
   {
-    Object localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.getContext(), QQBrowserActivity.class);
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.lng;
-    String str4 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.lat;
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.name;
-    String str1;
-    if (TextUtils.isEmpty(str2))
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangRunnable = new MagicfaceXBigDecoder.1(this);
+    this.jdField_b_of_type_JavaLangRunnable = new MagicfaceXBigDecoder.2(this);
+    if (QLog.isColorLevel()) {
+      QLog.i("MagicfaceXBigDecoder", 2, "==MagicfaceXBigDecoder init=");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = new DecoderUtil();
+    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createVideoDecoder() == 0) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createAlphaDecoder() != 0)) {}
+  }
+  
+  public void a()
+  {
+    try
     {
-      str1 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.getCity();
-      str1 = String.format("https://3gimg.qq.com/lightmap/v1/marker/?key=%s&referer=qqnearby&marker=coord:%s,%s;title:%s;addr:%s", new Object[] { "25TBZ-W4HCP-2BKDM-LBYH3-L4QRT-G3BDP", str4, str3, str1, str2 });
-      ((Intent)localObject).putExtra("url", str1);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.getContext().startActivity((Intent)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.i("ShortVideoComments", 2, "when click location label ; the url is :" + str1);
+      this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_Awrw.b;
+      if (this.jdField_a_of_type_ArrayOfByte == null) {
+        return;
       }
-      localObject = new bcek(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a).a("dc00899").b("grp_lbs").c("data_card").d("clk_lbs").e(String.valueOf(ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Long));
-      if (!TextUtils.equals(String.valueOf(ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a.getCurrentAccountUin())) {
-        break label292;
-      }
-      str1 = "1";
-      label228:
-      if (ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView) == null) {
-        break label298;
+      this.d = this.jdField_a_of_type_Awrw.jdField_a_of_type_ArrayOfByte;
+      if (this.d != null)
+      {
+        b();
+        if ((this.c != null) && (this.f != null))
+        {
+          new Thread(this.jdField_b_of_type_JavaLangRunnable).start();
+          this.jdField_a_of_type_JavaLangRunnable.run();
+          return;
+        }
       }
     }
-    label292:
-    label298:
-    for (str2 = ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_JavaLangString;; str2 = "0")
+    catch (Exception localException)
     {
-      ((bcek)localObject).a(new String[] { str1, "", "", str2 }).a();
-      EventCollector.getInstance().onViewClicked(paramView);
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.i("MagicfaceXBigDecoder", 2, "Exception=" + localException.toString());
+      }
+    }
+  }
+  
+  void b()
+  {
+    try
+    {
+      this.c = new byte[921600];
+      this.f = new byte[921600];
       return;
-      str1 = str2;
-      break;
-      str1 = "2";
-      break label228;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MagicfaceXBigDecoder", 2, "==MagicfaceXBigDecoder release=");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil != null) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+      label37:
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = null;
+      super.c();
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      break label37;
     }
   }
 }

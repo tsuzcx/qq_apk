@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.persistence.notColumn;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 
-public class trq
+public abstract interface trq
 {
-  @notColumn
-  public int a;
-  @notColumn
-  public long a;
-  @notColumn
-  public boolean a;
-  @notColumn
-  public int b;
-  @notColumn
-  public boolean b;
-  @notColumn
-  public int c;
-  @notColumn
-  public boolean c;
+  public abstract void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     trq
  * JD-Core Version:    0.7.0.1
  */

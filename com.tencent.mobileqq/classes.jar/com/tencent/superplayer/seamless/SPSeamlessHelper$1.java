@@ -1,25 +1,23 @@
 package com.tencent.superplayer.seamless;
 
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.superplayer.view.ISPlayerVideoView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class SPSeamlessHelper$1
-  implements Animation.AnimationListener
+  implements Animator.AnimatorListener
 {
-  SPSeamlessHelper$1(SPSeamlessHelper paramSPSeamlessHelper, ISPlayerVideoView paramISPlayerVideoView, ViewGroup paramViewGroup) {}
+  SPSeamlessHelper$1(SPSeamlessHelper paramSPSeamlessHelper) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ((View)this.val$videoView).clearAnimation();
-    this.val$parent.post(new SPSeamlessHelper.1.1(this));
+    SPSeamlessHelper.access$000(this.this$0);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

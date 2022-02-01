@@ -1,22 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.qphone.base.util.QLog;
-
-class wzv
-  implements DialogInterface.OnDismissListener
+public abstract interface wzv
 {
-  wzv(wzo paramwzo, Boolean[] paramArrayOfBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.jdField_a_of_type_Wzo.b, 2, "[az]isResumeVideoPlaySelf === >" + this.jdField_a_of_type_ArrayOfJavaLangBoolean);
-    }
-    if ((!this.jdField_a_of_type_ArrayOfJavaLangBoolean[0].booleanValue()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

@@ -1,41 +1,57 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.MsgTabWorkThreadHandler.1;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.Iterator;
+import java.util.List;
 
 public class vxo
-  extends Handler
+  extends wfm<vxp>
 {
-  public vxo(vxi paramvxi, Looper paramLooper)
+  private static final String jdField_a_of_type_JavaLangString = weg.a("StorySvc.check_location_blacklist");
+  private List<vyl> jdField_a_of_type_JavaUtilList;
+  
+  public String a()
   {
-    super(paramLooper);
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public void handleMessage(Message paramMessage)
+  public wfh a(byte[] paramArrayOfByte)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    qqstory_service.RspCheckBlackList localRspCheckBlackList = new qqstory_service.RspCheckBlackList();
+    try
     {
+      localRspCheckBlackList.mergeFrom(paramArrayOfByte);
+      return new vxp(localRspCheckBlackList);
     }
-    do
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      do
-      {
-        return;
-        removeMessages(1);
-        xvv.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_LOAD_USER_ITEM_FROM_UI");
-        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
-        this.a.jdField_a_of_type_JavaUtilSet.clear();
-      } while (!vxi.a(this.a, paramMessage, false));
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.MsgTabWorkThreadHandler.1(this));
-      return;
-      xvv.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_SCHEDULE_REQUIRE_USER_ITEM");
-      paramMessage = (String)paramMessage.obj;
-    } while (this.a.jdField_a_of_type_JavaUtilSet.contains(paramMessage));
-    this.a.jdField_a_of_type_JavaUtilSet.add(paramMessage);
-    sendEmptyMessageDelayed(1, 2500L);
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  public void a(@NonNull List<vyl> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  protected byte[] a()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
+    }
+    qqstory_service.ReqCheckBlackList localReqCheckBlackList = new qqstory_service.ReqCheckBlackList();
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(((vyl)localIterator.next()).a());
+    }
+    localReqCheckBlackList.gps_list.addAll(localArrayList);
+    return localReqCheckBlackList.toByteArray();
   }
 }
 

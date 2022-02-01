@@ -1,42 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCPUMonitor.1.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.Spanned;
+import java.util.Comparator;
 
-public final class rvz
-  extends BroadcastReceiver
+public class rvz
+  implements Comparator<Object>
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private Spanned a;
+  
+  public rvz(Spanned paramSpanned)
   {
-    paramContext = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(rvy.a(), 2, "Intent.ACTION_SCREEN_OFF");
-      }
-      if ((rvy.a().get() == 0) && (rvy.b().get() < rvy.a()))
-      {
-        rvy.a(new Thread(new VideoFeedsCPUMonitor.1.1(this)));
-        rvy.a().set(1);
-        rvy.a().start();
-      }
+    this.a = paramSpanned;
+  }
+  
+  public int compare(Object paramObject1, Object paramObject2)
+  {
+    int i = this.a.getSpanStart(paramObject1);
+    int j = this.a.getSpanStart(paramObject2);
+    if (i > j) {
+      return 1;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (!"android.intent.action.SCREEN_ON".equals(paramContext));
-      if (QLog.isColorLevel()) {
-        QLog.d(rvy.a(), 2, "Intent.ACTION_SCREEN_ON");
-      }
-    } while (rvy.a().get() != 1);
-    if ((rvy.a() != null) && (rvy.a().isAlive())) {
-      rvy.a().interrupt();
+    if (i < j) {
+      return -1;
     }
-    rvy.a().set(3);
+    return 0;
   }
 }
 

@@ -1,23 +1,23 @@
 package dov.com.qq.im.capture.text;
 
-import bmvl;
-import bmvm;
-import bmvo;
+import bold;
+import bole;
+import bolg;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 class DynamicTextConfigManager$1
   implements Runnable
 {
-  DynamicTextConfigManager$1(DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, bmvo parambmvo) {}
+  DynamicTextConfigManager$1(DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, bolg parambolg) {}
   
   public void run()
   {
     Iterator localIterator = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean.fontInfos.iterator();
     while (localIterator.hasNext())
     {
-      bmvl localbmvl = (bmvl)localIterator.next();
-      DynamicTextConfigManager.a(this.this$0).a(localbmvl, this.jdField_a_of_type_Bmvo);
+      bold localbold = (bold)localIterator.next();
+      DynamicTextConfigManager.a(this.this$0).a(localbold, this.jdField_a_of_type_Bolg);
     }
   }
 }

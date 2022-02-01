@@ -1,11 +1,21 @@
-public class ayns
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ayns
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  ayns(aynr paramaynr) {}
+  
+  public void onClick(View paramView)
+  {
+    if (((paramView.getTag() instanceof aynt)) && (this.a.a != null))
+    {
+      aynt localaynt = (aynt)paramView.getTag();
+      this.a.a.a(this.a, paramView, localaynt);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

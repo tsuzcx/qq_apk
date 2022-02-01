@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.1;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.2;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.3;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class avbo
 {
-  public static void a(int paramInt1, int paramInt2)
-  {
-    ThreadManager.post(new QQMusicPlayReport.2(paramInt1, paramInt2), 5, null, false);
-  }
-  
-  public static void a(boolean paramBoolean, int paramInt)
-  {
-    ThreadManager.post(new QQMusicPlayReport.1(paramBoolean, paramInt), 5, null, false);
-  }
-  
-  public static void b(boolean paramBoolean, int paramInt)
-  {
-    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, NetworkUtil.getNetworkType(null), paramInt), 5, null, false);
-  }
+  public ImageSwitcher a;
+  public ImageView a;
+  public TextView a;
+  public avfq a;
+  public ImageSwitcher b;
+  public ImageView b;
+  public TextView b;
 }
 
 

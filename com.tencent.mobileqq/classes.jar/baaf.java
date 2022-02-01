@@ -1,12 +1,30 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.ArrayList;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class baaf
+  extends RecyclerView.ItemDecoration
 {
-  public int a;
-  public bbpy a;
-  public PtvTemplateManager.PtvTemplateInfo a;
-  public ArrayList<baae> a = new ArrayList();
+  private int a;
+  private int b;
+  
+  public baaf(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    if (paramRecyclerView.getChildPosition(paramView) == 0)
+    {
+      paramRect.left = this.b;
+      return;
+    }
+    paramRect.left = this.a;
+  }
 }
 
 

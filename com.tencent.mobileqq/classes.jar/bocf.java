@@ -1,8 +1,28 @@
-public abstract interface bocf
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
+
+public class bocf
+  implements Animator.AnimatorListener
 {
-  public abstract bock a();
+  public bocf(AEEditorTextControlPanel paramAEEditorTextControlPanel) {}
   
-  public abstract bock a(int paramInt);
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    AEEditorTextControlPanel.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AEEditorTextControlPanel.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.setVisibility(0);
+  }
 }
 
 

@@ -52,15 +52,15 @@ public class StoryGuideLineView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131562821, this, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageView = ((PressDarkImageView)findViewById(2131374341));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374446));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378181));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368639));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131374386));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131374387);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131374395);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131374392);
+    LayoutInflater.from(paramContext).inflate(2131562892, this, true);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageView = ((PressDarkImageView)findViewById(2131374579));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374684));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378469));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368798));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131374624));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131374625);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131374633);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131374630);
     setViewAlpha(this.jdField_c_of_type_AndroidWidgetLinearLayout);
   }
   

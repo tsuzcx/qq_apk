@@ -1,106 +1,46 @@
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import mqq.app.AppRuntime;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
+import java.util.concurrent.ConcurrentHashMap;
+import javax.annotation.Nullable;
+import okhttp3.Headers;
+import okhttp3.Response;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
+import okio.ByteString;
 
-public class bksj
+class bksj
+  extends WebSocketListener
 {
-  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  bksj(bksi parambksi, bksh parambksh) {}
+  
+  public void onClosed(WebSocket paramWebSocket, int paramInt, String paramString)
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(bksb.a, 2, "createQQPimRuntime() application == null || processName == null");
-      }
-      return null;
-    }
-    try
-    {
-      Class localClass1 = Class.forName("com.qqpim.application.QQPimPluginRuntime");
-      if (localClass1 != null) {}
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        try
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d(bksb.a, 2, "createQQPimRuntime() cls == null");
-        }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
-        {
-          ClassLoader localClassLoader;
-          paramBaseApplicationImpl.printStackTrace();
-        }
-        localClassNotFoundException = localClassNotFoundException;
-        localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqpim_plugin.apk");
-        Class localClass2 = localClassLoader.loadClass("com.qqpim.application.QQPimPluginRuntime");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-        continue;
-        do
-        {
-          return null;
-          if (QLog.isColorLevel()) {
-            QLog.d(bksb.a, 2, "createQQPimRuntime() 1 ");
-          }
-          paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
-        } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
-        if (QLog.isColorLevel()) {
-          QLog.d(bksb.a, 2, "createQQPimRuntime() succ");
-        }
-        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-        return paramBaseApplicationImpl;
-      }
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    return null;
+    this.jdField_a_of_type_Bksi.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bksi.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onClose(this.jdField_a_of_type_Bksi.jdField_a_of_type_Int, paramInt, paramString);
+    this.jdField_a_of_type_Bksi.jdField_a_of_type_Bksh.a.remove(Integer.valueOf(this.jdField_a_of_type_Bksi.jdField_a_of_type_Int));
+  }
+  
+  public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, @Nullable Response paramResponse)
+  {
+    QLog.e("WebSocketProxyImpl", 1, "onFailure : ", paramThrowable);
+    this.jdField_a_of_type_Bksi.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onError(this.jdField_a_of_type_Bksi.jdField_a_of_type_Int, bkoh.a(paramThrowable, -1), paramThrowable.getMessage());
+    this.jdField_a_of_type_Bksi.jdField_a_of_type_Bksh.a.remove(Integer.valueOf(this.jdField_a_of_type_Bksi.jdField_a_of_type_Int));
+  }
+  
+  public void onMessage(WebSocket paramWebSocket, String paramString)
+  {
+    this.jdField_a_of_type_Bksi.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onMessage(this.jdField_a_of_type_Bksi.jdField_a_of_type_Int, paramString);
+  }
+  
+  public void onMessage(WebSocket paramWebSocket, ByteString paramByteString)
+  {
+    this.jdField_a_of_type_Bksi.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onMessage(this.jdField_a_of_type_Bksi.jdField_a_of_type_Int, paramByteString.toByteArray());
+  }
+  
+  public void onOpen(WebSocket paramWebSocket, Response paramResponse)
+  {
+    this.jdField_a_of_type_Bksi.jdField_a_of_type_Okhttp3WebSocket = paramWebSocket;
+    this.jdField_a_of_type_Bksi.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onOpen(this.jdField_a_of_type_Bksi.jdField_a_of_type_Int, paramResponse.code(), paramResponse.headers().toMultimap());
   }
 }
 

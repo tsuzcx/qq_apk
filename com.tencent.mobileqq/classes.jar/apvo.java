@@ -1,22 +1,28 @@
-public class apvo
-  extends apvk
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+
+class apvo
+  implements apvq
 {
-  private apwi a;
+  apvo(apvn paramapvn, apvk paramapvk) {}
   
-  public apvo(String paramString, apwi paramapwi)
+  public void a(String paramString1, long paramLong, String paramString2, String paramString3)
   {
-    super(paramString);
-    this.a = paramapwi;
-  }
-  
-  public apwi a()
-  {
-    return this.a;
+    Bundle localBundle = new Bundle();
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      localBundle.putString("userAccount", paramString1);
+      localBundle.putString("openID", paramString2);
+      localBundle.putString("openToken", paramString3);
+      localBundle.putLong("dstAppID", paramLong);
+    }
+    this.jdField_a_of_type_Apvk.a(EIPCResult.createResult(0, localBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,86 +1,197 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.2.1;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.hlyyb.HalleyAgent;
+import com.tencent.hlyyb.downloader.Downloader;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.hlyyb.downloader.DownloaderTaskCategory;
+import com.tencent.hlyyb.downloader.DownloaderTaskStatus;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class bdwl
-  implements View.OnClickListener
 {
-  bdwl(bdwj parambdwj) {}
+  public static bdwl a;
+  private int jdField_a_of_type_Int;
+  private bdwi jdField_a_of_type_Bdwi;
+  private bdwk jdField_a_of_type_Bdwk = new bdwm(this);
+  private Downloader jdField_a_of_type_ComTencentHlyybDownloaderDownloader;
+  private HashMap<String, bdwj> jdField_a_of_type_JavaUtilHashMap;
+  Map<String, bdwn> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  static
   {
-    QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick");
-    bdwr localbdwr = (bdwr)paramView.getTag();
-    Object localObject;
-    boolean bool;
-    if ((localbdwr != null) && (localbdwr.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localbdwr.jdField_a_of_type_JavaLangObject != null))
+    jdField_a_of_type_Bdwl = new bdwl();
+  }
+  
+  private DownloaderTask a(String paramString)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.getAllTasks();
+    if ((TextUtils.isEmpty(paramString)) || (localObject == null)) {
+      return null;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      localObject = "";
-      if (!(localbdwr.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        break label263;
-      }
-      localObject = ((Friends)localbdwr.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      if (localbdwr.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      DownloaderTask localDownloaderTask = (DownloaderTask)((Iterator)localObject).next();
+      if (localDownloaderTask.getUrl().equals(paramString))
       {
-        if (!localbdwr.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          break label329;
-        }
-        bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(localbdwr.jdField_a_of_type_JavaLangString, (String)localObject, 4, "-1");
-        label108:
-        if (QLog.isDevelopLevel()) {
-          QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick = " + bool);
-        }
-        if (localbdwr.jdField_a_of_type_Long == 1007L) {
-          this.a.jdField_a_of_type_Bdxn.b();
-        }
-        localbdwr.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.c)
-        {
-          if (!localbdwr.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label352;
-          }
-          paramView.setContentDescription(localbdwr.d.getText().toString() + amtj.a(2131701641));
-        }
+        QLog.i("DownloadManager_Now_for_qq", 4, "isHalleyTaskAlreadyExist:YES");
+        return localDownloaderTask;
       }
     }
-    for (;;)
+    return null;
+  }
+  
+  private void a(String paramString)
+  {
+    try
     {
-      this.a.a();
-      if (AppSetting.c) {
-        paramView.postDelayed(new ContactListAdapter.2.1(this, paramView), 2000L);
+      QLog.d("DownloadManager_Now_for_qq", 1, String.format("removeNowDownloadTask taskUrl=%s", new Object[] { paramString }));
+      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
+      {
+        paramString = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        while (paramString.hasNext())
+        {
+          bdwn localbdwn = (bdwn)((Map.Entry)paramString.next()).getValue();
+          if (localbdwn != null)
+          {
+            QLog.d("DownloadManager_Now_for_qq", 1, String.format("removeNowDownloadTask next task url=%s", new Object[] { localbdwn.b }));
+            a(localbdwn);
+          }
+        }
       }
+      return;
+    }
+    finally {}
+  }
+  
+  private void b(Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.setProgressInterval(1000);
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.setTaskNumForCategory(DownloaderTaskCategory.Cate_CustomMass1, 3);
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.enableUserAction(true);
+    UserAction.initUserAction(paramContext);
+  }
+  
+  private void b(bdwn parambdwn)
+  {
+    DownloaderTask localDownloaderTask = this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.createNewTask(parambdwn.b, parambdwn.g, parambdwn.h, this.jdField_a_of_type_Bdwi);
+    localDownloaderTask.setCategory(DownloaderTaskCategory.Cate_CustomMass1);
+    localDownloaderTask.setAppScene(parambdwn.d);
+    if (!TextUtils.isEmpty(parambdwn.e)) {
+      localDownloaderTask.setApkId(parambdwn.e);
+    }
+    localDownloaderTask.setNotUseTempFile();
+    parambdwn.a(localDownloaderTask);
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    HalleyAgent.init(paramContext, "1", "now_for_qq");
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader = HalleyAgent.getDownloader();
+    b(paramContext);
+    this.jdField_a_of_type_Bdwi = new bdwi(this.jdField_a_of_type_Bdwk);
+  }
+  
+  public void a(bdwn parambdwn)
+  {
+    if (this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader == null) {}
+    String str;
+    do
+    {
       for (;;)
       {
-        EventCollector.getInstance().onViewClicked(paramView);
         return;
-        label263:
-        if ((localbdwr.jdField_a_of_type_JavaLangObject instanceof PhoneContact))
+        DownloaderTask localDownloaderTask = a(parambdwn.b);
+        try
         {
-          localObject = ((PhoneContact)localbdwr.jdField_a_of_type_JavaLangObject).name;
-          break;
+          str = parambdwn.b;
+          if (!TextUtils.isEmpty(str)) {
+            break label134;
+          }
+          QLog.i("DownloadManager_Now_for_qq", 4, "startDownload, wurl:" + str + "wrong status or parammter");
+          if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str)))
+          {
+            ((bdwj)this.jdField_a_of_type_JavaUtilHashMap.get(str)).a(-1000, -1, "url is invalid");
+            return;
+          }
         }
-        if (!(localbdwr.jdField_a_of_type_JavaLangObject instanceof RelationTroopEntity)) {
-          break;
+        catch (Exception localException)
+        {
+          QLog.i("DownloadManager_Now_for_qq", 4, "startDownload---exception happend:", localException);
         }
-        localObject = (RelationTroopEntity)localbdwr.jdField_a_of_type_JavaLangObject;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(((RelationTroopEntity)localObject).troopInfo.troopuin);
       }
-      label329:
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(localbdwr.jdField_a_of_type_JavaLangString, (String)localObject, 0, "-1");
-      break label108;
-      label352:
-      paramView.setContentDescription(localbdwr.d.getText().toString() + amtj.a(2131701640));
+    } while (this.jdField_a_of_type_Int >= 3);
+    this.jdField_a_of_type_Int += 1;
+    a(parambdwn);
+    return;
+    label134:
+    if ((localException == null) || (!str.equals(localException.getUrl())))
+    {
+      QLog.i("DownloadManager_Now_for_qq", 4, "startDownload: url is changed, thread = " + Thread.currentThread().getId() + "," + str + "path = " + parambdwn.h);
+      if (localException != null) {}
+      b(parambdwn);
+      this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.addNewTask(parambdwn.a());
+      QLog.i("DownloadManager_Now_for_qq", 4, "mHellyDownloader.addNewTask");
+      return;
     }
+    parambdwn.a(localException);
+    DownloaderTaskStatus localDownloaderTaskStatus = localException.getStatus();
+    QLog.i("DownloadManager_Now_for_qq", 4, "startDownload----hstatus:" + localDownloaderTaskStatus);
+    if (localDownloaderTaskStatus == DownloaderTaskStatus.COMPLETE)
+    {
+      if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
+        ((bdwj)this.jdField_a_of_type_JavaUtilHashMap.get(str)).a();
+      }
+      a(localException.getUrl(), false);
+      return;
+    }
+    if (localDownloaderTaskStatus == DownloaderTaskStatus.DOWNLOADING)
+    {
+      QLog.i("DownloadManager_Now_for_qq", 4, "startDownload----Task is already Downloading!");
+      return;
+    }
+    QLog.i("DownloadManager_Now_for_qq", 4, "startDownload----resume halley task");
+    localException.resume();
+  }
+  
+  public void a(String paramString, bdwj parambdwj)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, parambdwj);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.getAllTasks();
+    if ((TextUtils.isEmpty(paramString)) || (localObject == null)) {}
+    DownloaderTask localDownloaderTask;
+    do
+    {
+      return;
+      while (!((Iterator)localObject).hasNext()) {
+        localObject = ((List)localObject).iterator();
+      }
+      localDownloaderTask = (DownloaderTask)((Iterator)localObject).next();
+    } while (!localDownloaderTask.getUrl().equals(paramString));
+    bjqp.c("DownloadManager_Now_for_qq", "removeDownloadTask---delete unactive halley task, Id:" + localDownloaderTask.getId());
+    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.deleteTask(localDownloaderTask, paramBoolean);
   }
 }
 

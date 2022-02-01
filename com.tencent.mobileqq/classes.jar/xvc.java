@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-class xvc
-  implements View.OnClickListener
+public class xvc
+  extends SimpleJob<Void>
 {
-  xvc(xvb paramxvb) {}
-  
-  public void onClick(View paramView)
+  public xvc(StoryTransitionActivity paramStoryTransitionActivity, String paramString)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    ykq.d("StoryTransitionActivity", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(wcn.a()) });
+    return null;
   }
 }
 

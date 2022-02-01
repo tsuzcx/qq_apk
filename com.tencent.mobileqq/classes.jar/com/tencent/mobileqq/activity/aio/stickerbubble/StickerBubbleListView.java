@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import agkg;
-import ahlx;
-import ahly;
-import ahlz;
-import ahmg;
-import ahmj;
-import ahml;
-import ahmm;
-import ahmn;
-import ahmo;
-import ahmp;
+import ahcw;
+import aigr;
+import aigs;
+import aigt;
+import aiha;
+import aihd;
+import aihf;
+import aihg;
+import aihh;
+import aihi;
+import aihj;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,9 +27,9 @@ import java.lang.ref.WeakReference;
 
 public class StickerBubbleListView
   extends ListView
-  implements ahmj, ahmp
+  implements aihd, aihj
 {
-  private ahmo jdField_a_of_type_Ahmo;
+  private aihi jdField_a_of_type_Aihi;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   private WeakReference<StickerBubbleImageView> jdField_a_of_type_JavaLangRefWeakReference;
@@ -38,11 +38,11 @@ public class StickerBubbleListView
   public StickerBubbleListView(Context paramContext, BaseChatPie paramBaseChatPie)
   {
     super(paramContext);
-    this.jdField_a_of_type_Ahmo = new ahmo(this, this, agkg.b(paramBaseChatPie.app));
+    this.jdField_a_of_type_Aihi = new aihi(this, this, ahcw.b(paramBaseChatPie.app));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
   
-  private void a(float paramFloat1, float paramFloat2, ahmn paramahmn)
+  private void a(float paramFloat1, float paramFloat2, aihh paramaihh)
   {
     int i = 0;
     for (;;)
@@ -57,7 +57,7 @@ public class StickerBubbleListView
         {
           localView = ((StickerBubbleLinearLayout)localView).a(paramFloat1 - localView.getLeft(), paramFloat2 - localView.getTop());
           if (((localView instanceof LinearLayout)) && (((LinearLayout)localView).getChildAt(0) != null)) {
-            paramahmn.a(((LinearLayout)localView).getChildAt(0));
+            paramaihh.a(((LinearLayout)localView).getChildAt(0));
           }
         }
       }
@@ -78,14 +78,14 @@ public class StickerBubbleListView
   
   public int a()
   {
-    return agkg.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, 10);
+    return ahcw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, 10);
   }
   
   public int a(float paramFloat1, float paramFloat2)
   {
     int[] arrayOfInt = new int[1];
     arrayOfInt[0] = -1;
-    a(paramFloat1, paramFloat2, new ahml(this, arrayOfInt));
+    a(paramFloat1, paramFloat2, new aihf(this, arrayOfInt));
     return arrayOfInt[0];
   }
   
@@ -93,39 +93,39 @@ public class StickerBubbleListView
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    a(paramFloat1, paramFloat2, new ahmm(this));
+    a(paramFloat1, paramFloat2, new aihg(this));
   }
   
   public void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    Object localObject = ahly.a(paramInt1);
+    Object localObject = aigs.a(paramInt1);
     if (localObject == null) {}
     StickerBubbleAnimationView localStickerBubbleAnimationView;
     do
     {
       return;
-      localObject = ((ahlx)localObject).jdField_a_of_type_JavaLangString;
-      localStickerBubbleAnimationView = ahmg.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.afRoot, getContext());
+      localObject = ((aigr)localObject).jdField_a_of_type_JavaLangString;
+      localStickerBubbleAnimationView = aiha.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.afRoot, getContext());
       if (this.jdField_a_of_type_Boolean)
       {
         localStickerBubbleAnimationView.bringToFront();
-        ahmg.a().b(this);
+        aiha.a().b(this);
         this.jdField_a_of_type_Boolean = false;
       }
     } while (localObject == null);
-    localStickerBubbleAnimationView.a(ahlz.a(new Point((int)paramFloat1, (int)paramFloat2), (String)localObject, paramInt2));
+    localStickerBubbleAnimationView.a(aigt.a(new Point((int)paramFloat1, (int)paramFloat2), (String)localObject, paramInt2));
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    ahmg.a().d(getContext()).a();
-    ahlx localahlx = ahly.a(paramInt1);
-    if (localahlx != null)
+    aiha.a().d(getContext()).a();
+    aigr localaigr = aigs.a(paramInt1);
+    if (localaigr != null)
     {
-      ahlz.a(localahlx, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getCurrentUin());
+      aigt.a(localaigr, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getCurrentUin());
       this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.showStickerBubbleQuickButtonIfNeeded(null);
-      ThreadManager.post(new StickerBubbleListView.2(this, localahlx, paramInt2), 10, null, false);
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getApp(), "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin, "0X8009222", "0X8009222", localahlx.jdField_a_of_type_Int, 0, Integer.toString(paramInt2), "", "", "");
+      ThreadManager.post(new StickerBubbleListView.2(this, localaigr, paramInt2), 10, null, false);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getApp(), "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin, "0X8009222", "0X8009222", localaigr.jdField_a_of_type_Int, 0, Integer.toString(paramInt2), "", "", "");
     }
   }
   
@@ -137,17 +137,17 @@ public class StickerBubbleListView
   public void b()
   {
     d();
-    this.jdField_a_of_type_Ahmo.a();
+    this.jdField_a_of_type_Aihi.a();
   }
   
   public void c()
   {
-    ahlz.b(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.afRoot);
+    aigt.b(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.afRoot);
   }
   
   public void d()
   {
-    ahlz.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.afRoot);
+    aigt.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.afRoot);
   }
   
   public void e()
@@ -168,7 +168,7 @@ public class StickerBubbleListView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = this.jdField_a_of_type_Ahmo.a(paramMotionEvent);
+    boolean bool2 = this.jdField_a_of_type_Aihi.a(paramMotionEvent);
     boolean bool1 = bool2;
     if (!bool2) {
       bool1 = super.onTouchEvent(paramMotionEvent);

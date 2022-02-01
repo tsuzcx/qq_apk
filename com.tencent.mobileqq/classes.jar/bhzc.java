@@ -1,158 +1,229 @@
-import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
+import okhttp3.Request;
+import okhttp3.Request.Builder;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+import org.json.JSONObject;
 
 public class bhzc
-  implements DownloadListener
 {
-  protected static bhzc a;
-  protected bhzb a;
+  public static Map<String, Long> a;
+  private int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString;
+  private int b = -1;
   
-  public static bhzc a()
+  static
+  {
+    jdField_a_of_type_JavaUtilMap = new HashMap(10);
+  }
+  
+  public bhzc(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  private String a()
+  {
+    return MD5.toMD5("cmd=rsp&key=a4d7ea5belhtimecard&uin=" + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  private String a(int paramInt)
+  {
+    return MD5.toMD5("cmd=" + paramInt + "&key=" + "a4d7ea5belhtimecard" + "&uin=" + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  private OkHttpClient a()
+  {
+    return new OkHttpClient().newBuilder().connectTimeout(5L, TimeUnit.SECONDS).readTimeout(5L, TimeUnit.SECONDS).build();
+  }
+  
+  private JSONObject a(int paramInt)
+  {
+    int i;
+    try
+    {
+      Object localObject = b(paramInt);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return null;
+      }
+      QLog.d("LhHelper", 1, "reqCgi cmd = " + paramInt);
+      localObject = new Request.Builder().url((String)localObject).build();
+      localObject = a().newCall((Request)localObject).execute();
+      i = ((Response)localObject).code();
+      if (i == 200)
+      {
+        localObject = new JSONObject(((Response)localObject).body().string()).optJSONObject("12042");
+        if (localObject == null) {
+          break label280;
+        }
+        localObject = ((JSONObject)localObject).optJSONObject("data");
+        if (localObject == null) {
+          break label280;
+        }
+        localObject = ((JSONObject)localObject).optJSONObject("rsp");
+        if (localObject == null) {
+          break label280;
+        }
+        i = ((JSONObject)localObject).optInt("ret");
+        String str = ((JSONObject)localObject).optString("sign");
+        QLog.d("LhHelper", 1, "reqCgi retCode = " + i);
+        if ((i == 0) && (a().equalsIgnoreCase(str))) {
+          return localObject;
+        }
+        QLog.e("LhHelper", 1, "reqCgi rsp sign error, cmd = " + paramInt);
+        return null;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("LhHelper", 1, "reqCgi exception cmd =" + paramInt + ", e = ", localThrowable);
+      return null;
+    }
+    QLog.e("LhHelper", 1, "reqCgi http errorCode = " + i + " ,cmd = " + paramInt);
+    label280:
+    return null;
+  }
+  
+  private JSONObject a(JSONObject paramJSONObject)
   {
     try
     {
-      if (jdField_a_of_type_Bhzc == null) {
-        jdField_a_of_type_Bhzc = new bhzc();
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("req", paramJSONObject);
+      localJSONObject1.put("12042", localJSONObject2);
+      return localJSONObject1;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      QLog.e("LhHelper", 1, "buildReqData exception e = ", paramJSONObject);
+    }
+    return null;
+  }
+  
+  private String b(int paramInt)
+  {
+    try
+    {
+      String str = a(paramInt);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("cmd", paramInt);
+      localJSONObject.put("sign", str);
+      localJSONObject.put("uin", this.jdField_a_of_type_JavaLangString);
+      str = "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi?data=" + a(localJSONObject);
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("LhHelper", 1, "buildReqUrl cmd = " + paramInt + "exception e = ", localThrowable);
+    }
+    return null;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      if (a(2) != null) {
+        return true;
       }
-      bhzc localbhzc = jdField_a_of_type_Bhzc;
-      return localbhzc;
+      QLog.e("LhHelper", 1, "receiveReq rsp data is error");
     }
-    finally {}
-  }
-  
-  public void a(Looper paramLooper)
-  {
-    this.jdField_a_of_type_Bhzb = new bhzb(paramLooper);
-  }
-  
-  protected void a(Message paramMessage)
-  {
-    if (this.jdField_a_of_type_Bhzb == null) {
-      this.jdField_a_of_type_Bhzb = new bhzb();
-    }
-    this.jdField_a_of_type_Bhzb.sendMessage(paramMessage);
-  }
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    bhzm.a("NoticeListener", "onInstallSucceed ,appId" + paramString1);
-    paramString1 = biby.a().b(paramString2);
-    if (paramString1 != null)
+    catch (Throwable localThrowable)
     {
-      paramString2 = this.jdField_a_of_type_Bhzb.obtainMessage();
-      paramString2.what = 6;
-      Bundle localBundle = new Bundle();
-      localBundle.putString(bibw.a, paramString1.jdField_b_of_type_JavaLangString);
-      paramString2.setData(localBundle);
-      a(paramString2);
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    bhzm.a("NoticeListener", "onDownloadError ,downloadInfo" + paramDownloadInfo);
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
-    while (paramDownloadInfo.jdField_b_of_type_Boolean) {
-      return;
-    }
-    Message localMessage = this.jdField_a_of_type_Bhzb.obtainMessage();
-    localMessage.what = -2;
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bibw.a, paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    localMessage.obj = paramString;
-    localMessage.arg2 = paramInt2;
-    a(localMessage);
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    bhzm.a("NoticeListener", "onDownloadFinish ");
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
-    while (paramDownloadInfo.jdField_b_of_type_Boolean) {
-      return;
-    }
-    Message localMessage = this.jdField_a_of_type_Bhzb.obtainMessage();
-    localMessage.what = 4;
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bibw.a, paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    a(localMessage);
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo == null) {}
-    do
-    {
-      return;
-      bhzm.a("NoticeListener", "onDownloadPause " + paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    } while ((paramDownloadInfo.jdField_c_of_type_Int == 1) || (paramDownloadInfo.jdField_b_of_type_Boolean));
-    Message localMessage = this.jdField_a_of_type_Bhzb.obtainMessage();
-    localMessage.what = 3;
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bibw.a, paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    a(localMessage);
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    bhzm.a("NoticeListener", "onDownloadUpdate notify enter infos=" + paramList.size());
-    paramList = paramList.iterator();
-    for (;;)
-    {
-      DownloadInfo localDownloadInfo;
-      if (paramList.hasNext())
+      for (;;)
       {
-        localDownloadInfo = (DownloadInfo)paramList.next();
-        if ((localDownloadInfo == null) || (localDownloadInfo.jdField_c_of_type_Int == 1)) {
-          continue;
+        QLog.e("LhHelper", 1, "receiveReq exception e = ", localThrowable);
+      }
+    }
+    return false;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public boolean b()
+  {
+    try
+    {
+      JSONObject localJSONObject = a(3);
+      if (localJSONObject != null)
+      {
+        int i = localJSONObject.optInt("lhState", -1);
+        QLog.d("LhHelper", 1, "reqLhStatus lhState = " + i);
+        if (i == 2) {
+          return true;
         }
-        if (!localDownloadInfo.jdField_b_of_type_Boolean) {}
       }
       else
       {
-        return;
+        QLog.e("LhHelper", 1, "reqLhStatus rsp data is error");
       }
-      Message localMessage = this.jdField_a_of_type_Bhzb.obtainMessage();
-      localMessage.what = 2;
-      Bundle localBundle = new Bundle();
-      localBundle.putString(bibw.a, localDownloadInfo.jdField_b_of_type_JavaLangString);
-      localMessage.setData(localBundle);
-      a(localMessage);
     }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("LhHelper", 1, "reqLhStatus exception e = ", localThrowable);
+      }
+    }
+    return false;
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public int c()
   {
-    if ((paramDownloadInfo == null) || (paramDownloadInfo.jdField_c_of_type_Int == 1)) {}
-    while (paramDownloadInfo.jdField_b_of_type_Boolean) {
-      return;
+    try
+    {
+      JSONObject localJSONObject = a(1);
+      if (localJSONObject != null)
+      {
+        this.jdField_a_of_type_Int = localJSONObject.optInt("buyoutMonth", -1);
+        this.b = localJSONObject.optInt("buyoutType", -1);
+        int i = localJSONObject.optInt("cardState", -1);
+        if ((this.jdField_a_of_type_Int != -1) && (this.b != -1))
+        {
+          if (i == 0) {
+            return 1;
+          }
+        }
+        else
+        {
+          QLog.e("LhHelper", 1, "checkUserStatus buyoutData is error");
+          break label101;
+        }
+      }
+      else
+      {
+        QLog.e("LhHelper", 1, "checkUserStatus rsp data is empty");
+      }
     }
-    bhzm.a("NoticeListener", "onDownloadWait notify enter info.id=" + paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    Message localMessage = this.jdField_a_of_type_Bhzb.obtainMessage();
-    localMessage.what = 20;
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bibw.a, paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    localMessage.setData(localBundle);
-    a(localMessage);
+    catch (Throwable localThrowable)
+    {
+      QLog.e("LhHelper", 1, "checkUserStatus exception e = ", localThrowable);
+    }
+    return 2;
+    label101:
+    return 3;
   }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhzc
  * JD-Core Version:    0.7.0.1
  */

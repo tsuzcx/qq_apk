@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ayex
-  extends ayew
+class ayex
+  implements DialogInterface.OnClickListener
 {
-  ayex(CompressInfo paramCompressInfo)
-  {
-    super(paramCompressInfo);
-  }
+  ayex(ayek paramayek) {}
   
-  protected int a(CompressInfo paramCompressInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 2;
-  }
-  
-  protected boolean d()
-  {
-    return false;
+    axql.a(this.a.a, 1032);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
+    }
   }
 }
 

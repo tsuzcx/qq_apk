@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aoic;
-import aoid;
-import aoig;
+import aple;
+import aplf;
+import apli;
 import com.tencent.qphone.base.util.QLog;
 
 class ARLocalGestureCircleRecog$ProcessWorker
@@ -88,10 +88,10 @@ class ARLocalGestureCircleRecog$ProcessWorker
         ARLocalGestureCircleRecog.a(this.this$0, true);
         try
         {
-          aoid localaoid = this.this$0.a(this.jdField_a_of_type_ArrayOfByte, ARLocalGestureCircleRecog.a(this.this$0), ARLocalGestureCircleRecog.b(this.this$0), 17);
-          QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecog. recogResult = " + localaoid + ",mRecogResult.gestureResult.mode = " + ARLocalGestureCircleRecog.a(this.this$0).a.d);
+          aplf localaplf = this.this$0.a(this.jdField_a_of_type_ArrayOfByte, ARLocalGestureCircleRecog.a(this.this$0), ARLocalGestureCircleRecog.b(this.this$0), 17);
+          QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecog. recogResult = " + localaplf + ",mRecogResult.gestureResult.mode = " + ARLocalGestureCircleRecog.a(this.this$0).a.d);
           if ((ARLocalGestureCircleRecog.a(this.this$0)) && (!ARLocalGestureCircleRecog.b(this.this$0)) && (ARLocalGestureCircleRecog.a(this.this$0) != null) && (ARLocalGestureCircleRecog.a(this.this$0).a.d == 0)) {
-            ARLocalGestureCircleRecog.a(this.this$0).a(localaoid);
+            ARLocalGestureCircleRecog.a(this.this$0).a(localaplf);
           }
           ARLocalGestureCircleRecog.a(this.this$0, false);
           yield();

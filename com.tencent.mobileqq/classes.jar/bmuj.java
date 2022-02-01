@@ -1,8 +1,30 @@
-public abstract interface bmuj
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+
+class bmuj
+  extends Handler
 {
-  public abstract void a(float paramFloat, String paramString, int paramInt);
+  public bmuj(Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(boolean paramBoolean, String paramString, bnli parambnli);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 3000: 
+      bmuf.c((Activity)paramMessage.obj, paramMessage.arg1);
+      return;
+    }
+    bmuf.a(null);
+    bmuf.a(SystemClock.uptimeMillis());
+  }
 }
 
 

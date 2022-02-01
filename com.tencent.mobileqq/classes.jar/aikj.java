@@ -1,37 +1,32 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
 
-public class aikj
+class aikj
   implements View.OnClickListener
 {
-  public aikj(TroopActivity paramTroopActivity) {}
+  aikj(aiki paramaiki) {}
   
   public void onClick(View paramView)
   {
-    int i = bcsz.a().a(this.a.app);
-    MqqHandler localMqqHandler1 = this.a.app.getHandler(NotificationView.class);
-    MqqHandler localMqqHandler2 = this.a.app.getHandler(TroopNotifyAndRecommendView.class);
-    if (localMqqHandler1 != null) {
-      localMqqHandler1.sendEmptyMessage(1014);
+    bdla.b(aiki.a(this.a), "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
+    aiki.c(aiki.a(this.a), aiki.a(this.a).curFriendUin);
+    aiki.a(this.a).a();
+    String str1 = null;
+    String str2 = null;
+    if (aiki.a(this.a).curType == 1006) {
+      str2 = aiki.a(this.a).curFriendUin;
     }
-    if (localMqqHandler2 != null) {
-      localMqqHandler2.sendEmptyMessage(1014);
+    for (;;)
+    {
+      ChatActivityUtils.a(aiki.a(this.a), aiki.a(this.a), aiki.a(this.a).curType, str1, aiki.a(this.a).curFriendNick, str2, true, aiki.a(this.a).troopUin, true, true, null, "from_internal");
+      bdla.b(aiki.a(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str1 = aiki.a(this.a).curFriendUin;
     }
-    this.a.app.getConversationFacade().d(AppConstants.TROOP_NOTIFICATION_UIN, 9000, -i);
-    ((amzo)this.a.app.getManager(33)).a(AppConstants.TROOP_NOTIFICATION_UIN, 9000);
-    localMqqHandler1 = this.a.app.getHandler(Conversation.class);
-    if (localMqqHandler1 != null) {
-      localMqqHandler1.sendMessage(localMqqHandler1.obtainMessage(1009));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

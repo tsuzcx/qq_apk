@@ -1,18 +1,16 @@
-public final class atfx
+class atfx
+  implements athg
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  atfx(atfq paramatfq) {}
   
-  public atfx()
+  public void a(Object[] paramArrayOfObject)
   {
-    this.a = 1;
+    atfq.e(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atfx
  * JD-Core Version:    0.7.0.1
  */

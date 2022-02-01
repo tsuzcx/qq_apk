@@ -138,17 +138,17 @@ public class EmoticonGuideBubbleView
       return false;
     }
     if (paramBoolean) {
-      this.mEmoIconView = paramRelativeLayout.findViewById(2131367353);
+      this.mEmoIconView = paramRelativeLayout.findViewById(2131367477);
     }
     while (this.mEmoIconView == null)
     {
       return false;
-      this.mEmoIconView = paramLinearLayout.findViewById(2131373965);
+      this.mEmoIconView = paramLinearLayout.findViewById(2131374194);
       if (this.mEmoIconView == null) {
-        this.mEmoIconView = paramLinearLayout.findViewById(2131373966);
+        this.mEmoIconView = paramLinearLayout.findViewById(2131374195);
       }
     }
-    View localView = paramRelativeLayout.findViewById(2131368751);
+    View localView = paramRelativeLayout.findViewById(2131368910);
     if (localView == null) {
       return false;
     }
@@ -168,7 +168,7 @@ public class EmoticonGuideBubbleView
     for (paramInt1 = i * paramInt2 / paramInt1;; paramInt1 = i)
     {
       localImageView.setLayoutParams(new ViewGroup.LayoutParams(paramInt2, paramInt1));
-      localImageView.setBackgroundResource(2130838029);
+      localImageView.setBackgroundResource(2130838043);
       addView(localImageView);
       setVisibility(0);
       paramString = new AlphaAnimation(0.0F, 1.0F);
@@ -177,14 +177,14 @@ public class EmoticonGuideBubbleView
       paramString.setFillAfter(true);
       startAnimation(paramString);
       paramString = new RelativeLayout.LayoutParams(-2, -2);
-      paramString.addRule(2, 2131368751);
-      paramString.addRule(7, 2131368751);
+      paramString.addRule(2, 2131368910);
+      paramString.addRule(7, 2131368910);
       paramInt1 = calcOffset(paramLinearLayout, paramBoolean);
       if (paramInt1 > 0)
       {
         paramString.rightMargin = paramInt1;
         localImageView = new ImageView(this.mContext);
-        localImageView.setImageDrawable(getResources().getDrawable(2130839686));
+        localImageView.setImageDrawable(getResources().getDrawable(2130839707));
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(ViewUtils.dip2px(13.0F), ViewUtils.dip2px(8.0F));
         localLayoutParams.gravity = 8388613;
         localLayoutParams.rightMargin = calcArrowOffset(paramLinearLayout, localImageView, paramInt1, paramBoolean);
@@ -201,7 +201,7 @@ public class EmoticonGuideBubbleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonGuideBubbleView
  * JD-Core Version:    0.7.0.1
  */

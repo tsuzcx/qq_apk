@@ -1,14 +1,37 @@
-import android.os.Build.VERSION;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public final class bfyt
+public class bfyt
+  extends bfyf
 {
-  public static int a()
+  public bfyt(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (Build.VERSION.SDK_INT > 10) {
-      return 4;
-    }
-    return 0;
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.a = 7;
   }
+  
+  @Nullable
+  public bfyg a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  {
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject, String paramString) {}
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    return false;
+  }
+  
+  public void b(int paramInt, Object paramObject, String paramString) {}
 }
 
 

@@ -1,35 +1,27 @@
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfoTitle;
 
-public class rqc<K, V>
+public final class rqc
+  implements Parcelable.Creator<RecommendFollowInfoTitle>
 {
-  private Map a = new LinkedHashMap();
-  
-  public void a(V paramV, rqd paramrqd)
+  public RecommendFollowInfoTitle a(Parcel paramParcel)
   {
-    this.a.put(paramrqd, paramV);
+    boolean bool = true;
+    RecommendFollowInfoTitle localRecommendFollowInfoTitle = new RecommendFollowInfoTitle();
+    localRecommendFollowInfoTitle.title = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      localRecommendFollowInfoTitle.isAllFollowed = bool;
+      return localRecommendFollowInfoTitle;
+      bool = false;
+    }
   }
   
-  public boolean a(K paramK, rqe paramrqe)
+  public RecommendFollowInfoTitle[] a(int paramInt)
   {
-    Iterator localIterator = this.a.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      rqd localrqd = (rqd)localIterator.next();
-      if ((localrqd != null) && (!localrqd.a(paramK)))
-      {
-        if ((paramrqe != null) && (this.a.get(localrqd) != null)) {
-          paramrqe.a(this.a.get(localrqd));
-        }
-        return false;
-      }
-    }
-    if (paramrqe != null) {
-      paramrqe.a();
-    }
-    return true;
+    return new RecommendFollowInfoTitle[paramInt];
   }
 }
 

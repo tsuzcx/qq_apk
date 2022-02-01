@@ -1,15 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import android.os.Bundle;
 
-public class adah
-  extends arht
+public abstract class adah
+  implements aaea
 {
-  public adah(ChatSettingActivity paramChatSettingActivity) {}
+  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
   
-  protected void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  public void callback(Bundle paramBundle)
   {
-    if (TextUtils.equals(paramString, ChatSettingActivity.a(this.a))) {
-      armh.a(this.a.app, this.a, paramBoolean1, paramInt, paramString, paramBoolean2, this.a);
+    paramBundle = paramBundle.getBundle("key_result");
+    if (paramBundle != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool, paramBundle);
+      return;
     }
   }
 }

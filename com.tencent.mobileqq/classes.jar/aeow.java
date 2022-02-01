@@ -1,29 +1,72 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
-class aeow
-  implements View.OnClickListener
+public class aeow
 {
-  aeow(aeov paramaeov) {}
-  
-  public void onClick(View paramView)
+  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
   {
-    this.a.a.jdField_d_of_type_Boolean = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691727);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131369068));
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.b);
-    if (this.a.a.jdField_a_of_type_Aeoz != null) {
-      this.a.a.jdField_a_of_type_Aeoz.a();
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    localIntent.setClass(paramActivity, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramActivity.startActivityForResult(localIntent, paramInt);
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(paramContext, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(paramContext, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
+  }
+  
+  public static void a(Context paramContext, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  {
+    a(paramContext, null, paramClass, paramClass1);
+  }
+  
+  public static void a(Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(BaseApplicationImpl.getApplication(), paramClass);
+    localIntent.addFlags(268435456);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    BaseApplicationImpl.getApplication().startActivity(localIntent);
+  }
+  
+  public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(paramFragment.getActivity(), paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramFragment.startActivityForResult(localIntent, paramInt);
   }
 }
 

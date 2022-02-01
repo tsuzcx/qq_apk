@@ -1,95 +1,93 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ProgressBar;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.search.util.VADHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bclt
-  extends bcgw
+  extends bclv
 {
-  private int o;
-  
-  public bclt()
+  public bclt(GroupSearchEngine paramGroupSearchEngine, bclw parambclw, String paramString, int paramInt)
   {
-    this.a = "progress";
+    super(paramGroupSearchEngine, parambclw, paramString, paramInt);
   }
   
-  public bclt(int paramInt)
+  public bcfi a(List<bcfj> paramList, String paramString)
   {
-    this.o = paramInt;
-    this.a = "progress";
+    if (SearchConfigManager.needSeparate) {
+      return null;
+    }
+    return new bcet(paramList, paramString, GroupSearchEngine.a(this.a));
   }
   
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  public List<bcfi> a(bcmk parambcmk)
   {
-    if ((paramView != null) && ((paramView instanceof ProgressBar))) {}
-    for (paramContext = (ProgressBar)paramView;; paramContext = paramView)
+    VADHelper.a("voice_search_accurate_cost");
+    List localList = super.a(parambcmk);
+    VADHelper.b("voice_search_accurate_cost");
+    if ((localList != null) && (!localList.isEmpty()))
     {
-      paramContext.setTag(this);
-      paramContext.setProgress(this.o);
-      if (this.o == paramContext.getMax()) {
-        paramContext.setVisibility(8);
+      if (parambcmk.a == null) {
+        parambcmk.a = new Bundle();
       }
-      return paramContext;
-      paramView = new ProgressBar(paramContext, null, 16842872);
-      paramView.setId(2131377849);
-      paramView.setMax(100);
-      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130838052));
-    }
-  }
-  
-  public String a()
-  {
-    return "Progress";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.o = paramObjectInput.readInt();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.o);
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "progress");
-    paramXmlSerializer.text(String.valueOf(this.o));
-    paramXmlSerializer.endTag(null, "progress");
-  }
-  
-  public boolean a(bcin parambcin)
-  {
-    parambcin = bchh.a(parambcin);
-    try
-    {
-      this.o = Integer.valueOf(parambcin).intValue();
-      return true;
-    }
-    catch (NumberFormatException parambcin)
-    {
-      for (;;)
+      parambcmk.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
+      if (localList.size() >= 2)
       {
-        this.o = 0;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((bcfi)localList.get(1)).a().size());
+        }
+        parambcmk.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((bcfi)localList.get(1)).a().size());
+      }
+      return localList;
+    }
+    parambcmk.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
+    return localList;
+  }
+  
+  protected bcfi b(List<bcfj> paramList, String paramString)
+  {
+    if (!SearchConfigManager.needSeparate) {
+      return null;
+    }
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      bcfj localbcfj = (bcfj)paramList.next();
+      if (!bcnc.a(localbcfj)) {
+        localArrayList.add(localbcfj);
       }
     }
+    if (localArrayList.size() == 0) {
+      return null;
+    }
+    return new bcet(localArrayList, paramString, GroupSearchEngine.a(this.a));
   }
   
-  public int b()
+  protected bcfi c(List<bcfj> paramList, String paramString)
   {
-    return this.o;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.o = paramInt;
+    if (!SearchConfigManager.needSeparate) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      bcfj localbcfj = (bcfj)paramList.next();
+      if (bcnc.a(localbcfj)) {
+        localArrayList.add(localbcfj);
+      }
+    }
+    if (localArrayList.size() == 0) {
+      return null;
+    }
+    return new bcev(localArrayList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 

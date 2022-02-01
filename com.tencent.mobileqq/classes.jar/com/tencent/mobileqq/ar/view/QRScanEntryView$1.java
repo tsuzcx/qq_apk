@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
-import aoln;
-import aolz;
+import apoo;
+import appa;
 
 class QRScanEntryView$1
   implements Runnable
@@ -10,7 +10,7 @@ class QRScanEntryView$1
   
   public void run()
   {
-    aoln.a().a(QRScanEntryView.a(this.this$0), QRScanEntryView.b(this.this$0), aolz.a, aolz.b);
+    apoo.a().a(QRScanEntryView.a(this.this$0), QRScanEntryView.b(this.this$0), appa.a, appa.b);
   }
 }
 

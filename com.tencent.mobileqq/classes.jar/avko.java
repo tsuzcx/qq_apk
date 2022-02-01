@@ -1,21 +1,6 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
-
-public class avko
-  extends Handler
+public abstract interface avko
 {
-  public avko(LyricViewInternal paramLyricViewInternal, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.requestLayout();
-    this.a.invalidate();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

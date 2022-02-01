@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import ajyg;
-import ajze;
-import akgd;
+import aktz;
+import akux;
+import albw;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -13,10 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bkwf;
+import bmho;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -34,30 +35,30 @@ public abstract class BaseHbFragment
   protected boolean isUIVisible;
   protected boolean isViewCreated;
   public SendHbActivity mActivity;
-  protected ajze mLogic;
+  protected akux mLogic;
   protected QQAppInterface mQApp;
   
   public static JSONObject getHbPannelConfig(int paramInt)
   {
     Object localObject1 = null;
     Object localObject3 = null;
-    Object localObject2 = akgd.a();
-    ajyg localajyg1;
+    Object localObject2 = albw.a();
+    aktz localaktz1;
     if (localObject2 != null)
     {
-      ajyg localajyg2 = (ajyg)((QQAppInterface)localObject2).getManager(245);
-      JSONArray localJSONArray = localajyg2.a("redPackPanel", new String[] { "panelRedPkgList" });
-      localajyg1 = localajyg2;
+      aktz localaktz2 = (aktz)((QQAppInterface)localObject2).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
+      JSONArray localJSONArray = localaktz2.a("redPackPanel", new String[] { "panelRedPkgList" });
+      localaktz1 = localaktz2;
       localObject2 = localObject1;
       if (localJSONArray != null)
       {
-        localajyg1 = localajyg2;
+        localaktz1 = localaktz2;
         localObject2 = localObject1;
         if (localJSONArray.length() > 0)
         {
           int i = 0;
           localObject1 = localObject3;
-          localajyg1 = localajyg2;
+          localaktz1 = localaktz2;
           localObject2 = localObject1;
           if (i < localJSONArray.length())
           {
@@ -77,11 +78,11 @@ public abstract class BaseHbFragment
     }
     else
     {
-      localajyg1 = null;
+      localaktz1 = null;
       localObject2 = localObject1;
     }
-    if ((localObject2 == null) && (localajyg1 != null)) {
-      localajyg1.b(0);
+    if ((localObject2 == null) && (localaktz1 != null)) {
+      localaktz1.b(0);
     }
     return localObject2;
   }
@@ -135,14 +136,14 @@ public abstract class BaseHbFragment
       if ((paramString.indexOf('.') <= 0) || (paramString.indexOf('.') >= paramString.length() - 3)) {
         break;
       }
-      paramString = getString(2131696259);
+      paramString = getString(2131696513);
     } while (this.mActivity == null);
     this.mActivity.c(paramString);
     return false;
     return true;
   }
   
-  protected void combineUploadData(bkwf parambkwf, int paramInt1, int paramInt2, String paramString1, String paramString2)
+  protected void combineUploadData(bmho parambmho, int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
     try
     {
@@ -150,7 +151,7 @@ public abstract class BaseHbFragment
       localStringBuffer.append("number#");
       localStringBuffer.append(paramInt2);
       localStringBuffer.append(",type#");
-      if (("1".equals(parambkwf.recv_type)) || ("7".equals(parambkwf.recv_type)) || ("4".equals(parambkwf.recv_type)) || ("5".equals(parambkwf.recv_type))) {
+      if (("1".equals(parambmho.recv_type)) || ("7".equals(parambmho.recv_type)) || ("4".equals(parambmho.recv_type)) || ("5".equals(parambmho.recv_type))) {
         localStringBuffer.append("person");
       }
       for (;;)
@@ -161,7 +162,7 @@ public abstract class BaseHbFragment
         localStringBuffer.append(paramString1);
         addUploadData(paramString2, localStringBuffer.toString());
         return;
-        if ("2".equals(parambkwf.recv_type)) {
+        if ("2".equals(parambmho.recv_type)) {
           localStringBuffer.append("crowd");
         } else {
           localStringBuffer.append("group");
@@ -169,7 +170,7 @@ public abstract class BaseHbFragment
       }
       return;
     }
-    catch (Throwable parambkwf) {}
+    catch (Throwable parambmho) {}
   }
   
   public int getChooseViewHeight()
@@ -189,7 +190,7 @@ public abstract class BaseHbFragment
     QLog.i("BaseHbFragment", 2, "onCreateView: " + getClass().getSimpleName());
     SendHbActivity localSendHbActivity = (SendHbActivity)getActivity();
     this.mActivity = localSendHbActivity;
-    this.mLogic = new ajze(localSendHbActivity);
+    this.mLogic = new akux(localSendHbActivity);
     this.mQApp = ((QQAppInterface)this.mActivity.getAppRuntime());
     this.mActivity.getWindow().setSoftInputMode(19);
     preInitParams();

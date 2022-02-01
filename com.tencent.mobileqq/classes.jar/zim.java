@@ -1,24 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.richframework.eventbus.SimpleEventBus;
-import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-public class zim
-  extends BroadcastReceiver
+public abstract interface zim
 {
-  private zim(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")))
-    {
-      SubscribePersonalDetailFragment.b(this.a, false);
-      SimpleEventBus.getInstance().dispatchEvent(new UserStateUpdateEvent());
-    }
-  }
+  public abstract void a(RecyclerView.Adapter paramAdapter);
 }
 
 

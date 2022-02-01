@@ -1,24 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.RichTitleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class sjf
-  extends sif
+final class sjf
+  implements View.OnClickListener
 {
-  sjf(sig paramsig) {}
+  private long jdField_a_of_type_Long;
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    sig.a(this.a, paramInt, paramBaseArticleInfo, paramString);
-  }
+  sjf(TextView paramTextView, VideoInfo.RichTitleInfo paramRichTitleInfo, VideoInfo paramVideoInfo) {}
   
-  public int b()
+  public void onClick(View paramView)
   {
-    return 2;
-  }
-  
-  public int c()
-  {
-    return 3;
+    if ((this.jdField_a_of_type_Long == 0L) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 2000L))
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      pkh.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$RichTitleInfo.d);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$RichTitleInfo.a != 1) {
+        break label78;
+      }
+      sly.a.b(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label78:
+      sly.a.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$RichTitleInfo.b);
+    }
   }
 }
 

@@ -1,92 +1,209 @@
-import cooperation.weiyun.channel.pb.WeiyunPB.MsgBody;
-import cooperation.weiyun.channel.pb.WeiyunPB.RspMsgBody;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import java.util.Stack;
 
-class blfk<T>
-  implements blfi
+public abstract class blfk
 {
-  private static final String jdField_a_of_type_JavaLangString = amtj.a(2131700100);
-  private final int jdField_a_of_type_Int;
-  private final blfl<T> jdField_a_of_type_Blfl;
+  protected String a;
+  protected final blfm[] a;
+  protected final Stack<View>[] a;
+  protected final int b;
   
-  blfk(int paramInt, blfl<T> paramblfl)
+  public blfk(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Blfl = paramblfl;
+    this.jdField_a_of_type_JavaLangString = blfk.class.getSimpleName();
+    this.b = paramInt1;
+    if ((this.b < 0) || ((this.b > 0) && (paramInt2 < 1))) {
+      throw new IllegalArgumentException("SwipRightMenuBuilder, menuTypeCount = " + paramInt2);
+    }
+    this.jdField_a_of_type_ArrayOfJavaUtilStack = new Stack[paramInt2];
+    paramInt1 = 0;
+    while (paramInt1 < paramInt2)
+    {
+      this.jdField_a_of_type_ArrayOfJavaUtilStack[paramInt1] = new Stack();
+      paramInt1 += 1;
+    }
+    this.jdField_a_of_type_ArrayOfBlfm = new blfm[this.b];
+    paramInt1 = i;
+    while (paramInt1 < this.b)
+    {
+      this.jdField_a_of_type_ArrayOfBlfm[paramInt1] = new blfm();
+      paramInt1 += 1;
+    }
   }
   
-  public void a(int paramInt, String paramString, byte[] paramArrayOfByte)
+  public int a(Context paramContext, View paramView, int paramInt, Object paramObject, blfl paramblfl, View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_Blfl == null) {
-      return;
+    int i = 0;
+    if ((!(paramView instanceof LinearLayout)) || (paramblfl == null) || (paramblfl.jdField_a_of_type_ArrayOfBlfm == null) || (paramblfl.jdField_a_of_type_ArrayOfBlfm.length == 0) || (paramblfl.jdField_a_of_type_ArrayOfBlfm.length > this.b)) {
+      return 0;
     }
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    LinearLayout localLinearLayout = (LinearLayout)paramView;
+    a(paramInt, paramObject, this.jdField_a_of_type_ArrayOfBlfm);
+    int j = 0;
+    int n = 0;
+    while (n < this.b)
     {
-      this.jdField_a_of_type_Blfl.a(paramInt, paramString, null);
-      return;
-    }
-    try
-    {
-      paramString = (WeiyunPB.MsgBody)new WeiyunPB.MsgBody().mergeFrom(paramArrayOfByte);
-      paramString = (WeiyunPB.RspMsgBody)paramString.RspMsg_body.get();
-      if (paramString == null)
+      if ((this.jdField_a_of_type_ArrayOfJavaUtilStack.length > 1) && (paramblfl.jdField_a_of_type_ArrayOfBlfm[n].jdField_a_of_type_Int != this.jdField_a_of_type_ArrayOfBlfm[n].jdField_a_of_type_Int)) {
+        a(paramblfl.jdField_a_of_type_ArrayOfBlfm[n]);
+      }
+      paramblfl.jdField_a_of_type_ArrayOfBlfm[n].jdField_a_of_type_Int = this.jdField_a_of_type_ArrayOfBlfm[n].jdField_a_of_type_Int;
+      paramblfl.jdField_a_of_type_ArrayOfBlfm[n].b = this.jdField_a_of_type_ArrayOfBlfm[n].b;
+      paramblfl.jdField_a_of_type_ArrayOfBlfm[n].c = 0;
+      paramblfl.jdField_a_of_type_ArrayOfBlfm[n].d = -1;
+      int k = paramblfl.jdField_a_of_type_ArrayOfBlfm[n].jdField_a_of_type_Int;
+      Object localObject1 = paramblfl.jdField_a_of_type_ArrayOfBlfm[n].jdField_a_of_type_AndroidViewView;
+      int m;
+      if ((k < 0) || (k >= this.jdField_a_of_type_ArrayOfJavaUtilStack.length))
       {
-        blhl.a().w("BaseCallback", "rspMsgBody is null.");
-        paramString = jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_Blfl.a(1828003, paramString, null);
-        return;
+        m = j;
+        k = i;
+        if (localObject1 != null)
+        {
+          ((View)localObject1).setVisibility(8);
+          k = j + 1;
+          j = i;
+          i = k;
+          n += 1;
+          k = j;
+          j = i;
+          i = k;
+        }
+      }
+      else
+      {
+        int i1;
+        if (localObject1 == null)
+        {
+          synchronized (this.jdField_a_of_type_ArrayOfJavaUtilStack)
+          {
+            if (!this.jdField_a_of_type_ArrayOfJavaUtilStack[k].isEmpty()) {
+              localObject1 = (View)this.jdField_a_of_type_ArrayOfJavaUtilStack[k].pop();
+            }
+            ??? = localObject1;
+            if (localObject1 == null) {
+              ??? = a(paramContext, k);
+            }
+            if (??? == null) {
+              throw new NullPointerException("updateRightMenuView menuView is null");
+            }
+          }
+          paramblfl.jdField_a_of_type_ArrayOfBlfm[n].jdField_a_of_type_AndroidViewView = ((View)???);
+          i1 = 1;
+          localObject1 = ???;
+        }
+        for (;;)
+        {
+          a(paramInt, paramObject, paramblfl.jdField_a_of_type_ArrayOfBlfm[n], paramOnClickListener);
+          if (paramblfl.jdField_a_of_type_ArrayOfBlfm[n].c >= 0) {
+            break;
+          }
+          throw new IllegalArgumentException("updateRightMenuView, menuWidth = " + paramblfl.jdField_a_of_type_ArrayOfBlfm[n].c);
+          i1 = 0;
+        }
+        i += paramblfl.jdField_a_of_type_ArrayOfBlfm[n].c;
+        j += 1;
+        ((View)localObject1).setVisibility(0);
+        m = j;
+        k = i;
+        if (i1 != 0)
+        {
+          ??? = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
+          if (??? != null) {
+            break label594;
+          }
+          ??? = new LinearLayout.LayoutParams(paramblfl.jdField_a_of_type_ArrayOfBlfm[n].c, paramblfl.jdField_a_of_type_ArrayOfBlfm[n].d);
+          ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)???);
+        }
+      }
+      for (;;)
+      {
+        ((LinearLayout.LayoutParams)???).gravity = 16;
+        localLinearLayout.addView((View)localObject1, j);
+        k = i;
+        m = j;
+        i = m;
+        j = k;
+        break;
+        label594:
+        ((LinearLayout.LayoutParams)???).width = paramblfl.jdField_a_of_type_ArrayOfBlfm[n].c;
+        ((LinearLayout.LayoutParams)???).height = paramblfl.jdField_a_of_type_ArrayOfBlfm[n].d;
       }
     }
-    catch (Throwable paramString)
+    paramView.setTag(-3, Integer.valueOf(i));
+    return i;
+  }
+  
+  public abstract View a(int paramInt, Object paramObject, blfm paramblfm, View.OnClickListener paramOnClickListener);
+  
+  public abstract View a(Context paramContext, int paramInt);
+  
+  public View a(Context paramContext, View paramView, blfl paramblfl, int paramInt)
+  {
+    if ((paramblfl == null) || (paramView == null)) {
+      throw new NullPointerException("SwipRightMenuBuilder.createView holder is null or leftView is null");
+    }
+    if (this.b > 0)
     {
-      blhl.a().w("BaseCallback", "decode Rsp Body failed.", paramString);
-      paramString = jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Blfl.a(1828003, paramString, null);
+      paramblfl.jdField_a_of_type_ArrayOfBlfm = new blfm[this.b];
+      int i = 0;
+      while (i < this.b)
+      {
+        paramblfl.jdField_a_of_type_ArrayOfBlfm[i] = new blfm();
+        paramblfl.jdField_a_of_type_ArrayOfBlfm[i].jdField_a_of_type_Int = -1;
+        paramblfl.jdField_a_of_type_ArrayOfBlfm[i].c = 0;
+        paramblfl.jdField_a_of_type_ArrayOfBlfm[i].jdField_a_of_type_AndroidViewView = null;
+        i += 1;
+      }
+      paramContext = new LinearLayout(paramContext);
+      paramContext.setOrientation(0);
+      paramContext.addView(paramView, new LinearLayout.LayoutParams(paramInt, -2));
+    }
+    for (;;)
+    {
+      paramblfl.g = paramView;
+      return paramContext;
+      paramblfl.jdField_a_of_type_ArrayOfBlfm = null;
+      paramContext = paramView;
+    }
+  }
+  
+  public abstract void a(int paramInt, Object paramObject, blfm[] paramArrayOfblfm);
+  
+  protected void a(blfm paramblfm)
+  {
+    if (paramblfm == null) {
       return;
     }
-    switch (this.jdField_a_of_type_Int)
+    if (paramblfm.jdField_a_of_type_AndroidViewView != null)
     {
-    default: 
-      paramString = jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Blfl.a(1828001, paramString, null);
-      return;
-    case 26113: 
-      this.jdField_a_of_type_Blfl.a(paramString.LibInfoListGetMsgRsp_body);
-      return;
-    case 2402: 
-      this.jdField_a_of_type_Blfl.a(paramString.DiskFileBatchDownloadMsgRsp_body);
-      return;
-    case 2414: 
-      this.jdField_a_of_type_Blfl.a(paramString.DiskFileDocDownloadAbsMsgRsp_body);
-      return;
-    case 2509: 
-      this.jdField_a_of_type_Blfl.a(paramString.DiskDirFileBatchDeleteExMsgRsp_body);
-      return;
-    case 2803: 
-      this.jdField_a_of_type_Blfl.a(paramString.DiskPicBackupRsp_body);
-      return;
-    case 2804: 
-      this.jdField_a_of_type_Blfl.a(paramString.DiskAlbumStatusReportRsp_body);
-      return;
-    case 11001: 
-      this.jdField_a_of_type_Blfl.a(paramString.PwdQueryMsgRsp_body);
-      return;
-    case 11005: 
-      this.jdField_a_of_type_Blfl.a(paramString.PwdVerifyMsgRsp_body);
-      return;
-    case 245700: 
-      this.jdField_a_of_type_Blfl.a(paramString.CrossBidProxyCopyFileToOtherBidMsgRsp_body);
-      return;
-    case 245706: 
-      this.jdField_a_of_type_Blfl.a(paramString.CrossBidProxyOfflineFileGetListMsgRsp_body);
-      return;
-    case 246000: 
-      this.jdField_a_of_type_Blfl.a(paramString.QqSdkFileUploadMsgRsp_body);
-      return;
-    case 246001: 
-      this.jdField_a_of_type_Blfl.a(paramString.AioPicAndVideoCopyToWeiyunMsgRsp_body);
-      return;
+      ??? = paramblfm.jdField_a_of_type_AndroidViewView.getParent();
+      if (??? != null) {
+        break label74;
+      }
     }
-    this.jdField_a_of_type_Blfl.a(paramString.WeiyunShareAddFromMobileQQMsgRsp_body);
+    synchronized (this.jdField_a_of_type_ArrayOfJavaUtilStack)
+    {
+      for (;;)
+      {
+        if ((paramblfm.jdField_a_of_type_Int >= 0) && (paramblfm.jdField_a_of_type_Int < this.jdField_a_of_type_ArrayOfJavaUtilStack.length)) {
+          this.jdField_a_of_type_ArrayOfJavaUtilStack[paramblfm.jdField_a_of_type_Int].push(paramblfm.jdField_a_of_type_AndroidViewView);
+        }
+        paramblfm.a();
+        return;
+        label74:
+        if (!(??? instanceof ViewGroup)) {
+          break;
+        }
+        ((ViewGroup)???).removeView(paramblfm.jdField_a_of_type_AndroidViewView);
+      }
+      throw new IllegalArgumentException("recycleMenuView, parent is not ViewGroup");
+    }
   }
 }
 

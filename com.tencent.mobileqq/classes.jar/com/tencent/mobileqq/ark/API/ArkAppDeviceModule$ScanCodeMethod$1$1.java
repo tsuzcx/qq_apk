@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ark.API;
 
-import aonx;
-import aooi;
-import aooj;
+import apqy;
+import aprj;
+import aprk;
 
 public class ArkAppDeviceModule$ScanCodeMethod$1$1
   implements Runnable
 {
-  public ArkAppDeviceModule$ScanCodeMethod$1$1(aooj paramaooj, String paramString1, String paramString2) {}
+  public ArkAppDeviceModule$ScanCodeMethod$1$1(aprk paramaprk, String paramString1, String paramString2) {}
   
   public void run()
   {
-    aonx.a(this.jdField_a_of_type_Aooj.jdField_a_of_type_Aooi.a, this.jdField_a_of_type_Aooj.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+    apqy.a(this.jdField_a_of_type_Aprk.jdField_a_of_type_Aprj.a, this.jdField_a_of_type_Aprk.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

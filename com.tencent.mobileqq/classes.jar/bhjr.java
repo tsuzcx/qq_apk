@@ -1,59 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
+import com.tencent.widget.BubblePopupWindow;
 
-public final class bhjr
-  implements ValueAnimator.AnimatorUpdateListener
+public class bhjr
+  extends TextView
 {
-  float jdField_a_of_type_Float = 0.0F;
-  private final TabDragAnimationView jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView;
-  float b = 0.0F;
-  private float c;
-  private float d;
-  private float e;
-  private float f;
-  
-  public bhjr(TabDragAnimationView paramTabDragAnimationView)
+  public bhjr(QQCustomMenuImageLayout paramQQCustomMenuImageLayout, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
+    super(paramContext);
   }
   
-  public void a()
+  public boolean performClick()
   {
-    this.c = this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c;
-    this.jdField_d_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.jdField_d_of_type_Float;
-    this.e = (this.c - this.jdField_a_of_type_Float);
-    this.f = (this.jdField_d_of_type_Float - this.b);
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((f2 < 0.1F) && (this.jdField_a_of_type_Float == 0.0F) && (this.b == 0.0F))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.jdField_d_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-      paramValueAnimator.cancel();
-      paramValueAnimator.removeUpdateListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a = null;
-      return;
-    }
-    float f1;
-    if (f2 < 0.1F)
-    {
-      f1 = this.e;
-      if (f2 >= 0.1F) {
-        break label126;
-      }
-    }
-    label126:
-    for (f2 = this.f;; f2 = this.f * (1.0F - f2))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a(this.c - f1, this.jdField_d_of_type_Float - f2, false);
-      return;
-      f1 = this.e * (1.0F - f2);
-      break;
-    }
+    boolean bool = super.performClick();
+    QQCustomMenuImageLayout.a(this.a).a();
+    return bool;
   }
 }
 

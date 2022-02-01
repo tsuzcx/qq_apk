@@ -1,148 +1,138 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
+import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QlinkReliableReport.1;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.AbsInterstitialAdView;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.InterstitialADLisener;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class bknh
+  extends AdProxy.AbsInterstitialAdView
 {
-  private static bknh jdField_a_of_type_Bknh;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private List<bkni> jdField_a_of_type_JavaUtilList;
+  int jdField_a_of_type_Int = 53;
+  volatile long jdField_a_of_type_Long;
+  acbz jdField_a_of_type_Acbz;
+  AdProxy.InterstitialADLisener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  WeakReference<IMiniAppContext> jdField_b_of_type_JavaLangRefWeakReference;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  String d;
+  String e;
+  String f;
+  String g;
+  String h;
   
-  public static bknh a()
+  public bknh(AdProxyImpl paramAdProxyImpl, Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, AdProxy.InterstitialADLisener paramInterstitialADLisener, IMiniAppContext paramIMiniAppContext)
   {
-    if (jdField_a_of_type_Bknh == null) {}
+    super(paramAdProxyImpl);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener = paramInterstitialADLisener;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.g = paramString7;
+    this.h = paramString8;
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramIMiniAppContext);
+  }
+  
+  private GdtHandler.Options a(qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  {
+    GdtHandler.Options localOptions = new GdtHandler.Options();
+    localOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramAdInfo);
+    localOptions.jdField_a_of_type_Boolean = true;
+    localOptions.b = true;
+    paramAdInfo = new Bundle();
+    paramAdInfo.putString("big_brother_ref_source_key", "biz_src_miniapp");
+    localOptions.jdField_a_of_type_AndroidOsBundle = paramAdInfo;
+    return localOptions;
+  }
+  
+  public void destroy()
+  {
+    this.jdField_a_of_type_Acbz = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener = null;
+  }
+  
+  public void loadAD()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject != null) {
+        break label91;
+      }
+      localObject = new StringBuilder().append("loadAD, act is null, ");
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener == null) {
+        break label86;
+      }
+    }
+    label86:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.e("AdProxyImpl", 1, bool);
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null) {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+      }
+      return;
+      localObject = null;
+      break;
+    }
+    label91:
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl.requestAdInfo((Context)localObject, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.d, this.e, this.f, this.g, this.h, 1, new bkni(this, (Activity)localObject));
+  }
+  
+  public void onClose(Activity paramActivity, int paramInt, Intent paramIntent)
+  {
     try
     {
-      if (jdField_a_of_type_Bknh == null) {
-        jdField_a_of_type_Bknh = new bknh();
+      if ((this.jdField_a_of_type_Acbz != null) && (paramActivity != null)) {
+        this.jdField_a_of_type_Acbz.a(paramActivity, paramInt, paramIntent);
       }
-      return jdField_a_of_type_Bknh;
-    }
-    finally {}
-  }
-  
-  public static void a()
-  {
-    bknh localbknh = a();
-    if (localbknh != null) {
-      localbknh.e();
-    }
-  }
-  
-  private void a(bkni parambkni)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QlinkReliableReport", 2, "addPerformanceReporting:" + parambkni);
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      }
-      this.jdField_a_of_type_JavaUtilList.add(parambkni);
       return;
     }
-  }
-  
-  public static void a(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QlinkReliableReport", 2, "collectPerformance:tagName[" + paramString2 + "]");
-    }
-    bknh localbknh = a();
-    if (localbknh != null) {
-      localbknh.a(new bkni(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap));
-    }
-  }
-  
-  public static void b()
-  {
-    bknh localbknh = a();
-    if (localbknh != null) {
-      localbknh.f();
-    }
-  }
-  
-  private static void h()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QlinkReliableReport", 2, "start:");
-    }
-    bknh localbknh = a();
-    if (localbknh != null) {
-      localbknh.i();
-    }
-  }
-  
-  private void i()
-  {
-    if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QlinkReliableReport", 2, "doReportPerformance: network is not surpport");
-      }
-    }
-    for (;;)
+    catch (Exception paramActivity)
     {
-      return;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      QLog.e("AdProxyImpl", 1, "onClose", paramActivity);
+    }
+  }
+  
+  public boolean show(Activity paramActivity)
+  {
+    if ((this.jdField_a_of_type_Acbz != null) && (paramActivity != null))
+    {
+      if (this.jdField_b_of_type_JavaLangRefWeakReference != null) {}
+      for (Object localObject = (IMiniAppContext)this.jdField_b_of_type_JavaLangRefWeakReference.get();; localObject = null)
       {
-        List localList = this.jdField_a_of_type_JavaUtilList;
-        this.jdField_a_of_type_JavaUtilList = null;
-        if ((localList != null) && (localList.size() != 0))
-        {
-          ??? = StatisticCollector.getInstance(BaseApplication.getContext());
-          Iterator localIterator = localList.iterator();
-          if (localIterator.hasNext())
-          {
-            bkni localbkni = (bkni)localIterator.next();
-            ((StatisticCollector)???).collectPerformance(localbkni.a(), localbkni.b(), localbkni.a(), localbkni.a(), localbkni.b(), localbkni.a(), null);
-          }
+        localObject = bkpa.a((IMiniAppContext)localObject, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_Acbz.a((JSONObject)localObject);
+        boolean bool = this.jdField_a_of_type_Acbz.a(paramActivity);
+        if ((bool) && (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null)) {
+          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onShow();
         }
+        return bool;
       }
     }
-    localObject1.clear();
-  }
-  
-  protected void c() {}
-  
-  protected void d()
-  {
-    f();
-    try
-    {
-      jdField_a_of_type_Bknh = null;
-      return;
-    }
-    finally {}
-  }
-  
-  public void e()
-  {
-    QLog.d("QlinkReliableReport", 2, "doStartReportTimer");
-    if (this.jdField_a_of_type_JavaLangRunnable == null)
-    {
-      this.jdField_a_of_type_JavaLangRunnable = new QlinkReliableReport.1(this);
-      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
-    }
-  }
-  
-  public void f()
-  {
-    QLog.d("QlinkReliableReport", 2, "doStopReportTimer");
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
-    {
-      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
-    }
+    return false;
   }
 }
 

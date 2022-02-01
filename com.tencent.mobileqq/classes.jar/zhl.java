@@ -1,24 +1,27 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
-class zhl
-  implements TextView.OnEditorActionListener
+public class zhl
+  extends AccessibilityDelegateCompat
 {
-  zhl(zhf paramzhf) {}
+  public zhl(LeftTabBarView paramLeftTabBarView) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    switch (paramInt)
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-    case 5: 
-    default: 
-      return false;
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
+      return;
     }
-    if (zhf.a(this.a) != null) {
-      zhf.a(this.a).a();
-    }
-    return true;
+  }
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 

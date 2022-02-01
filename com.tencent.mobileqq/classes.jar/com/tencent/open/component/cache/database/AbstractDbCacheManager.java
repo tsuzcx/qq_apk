@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import bibn;
+import bjmp;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,7 +28,7 @@ public abstract class AbstractDbCacheManager
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaLangString = paramString;
     a(paramClass);
-    c();
+    f();
     a(a());
   }
   
@@ -117,7 +117,11 @@ public abstract class AbstractDbCacheManager
     return a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
   }
   
-  protected abstract void a();
+  public void a()
+  {
+    b();
+    c();
+  }
   
   protected void a(int paramInt, DbCacheData... paramVarArgs)
   {
@@ -179,7 +183,7 @@ public abstract class AbstractDbCacheManager
       try
       {
         localSQLiteDatabase.endTransaction();
-        b();
+        e();
         return;
       }
       catch (Exception paramVarArgs)
@@ -320,7 +324,7 @@ public abstract class AbstractDbCacheManager
             if (i == 0) {
               break;
             }
-            b();
+            e();
             return;
           }
           catch (Exception paramDbCacheData)
@@ -398,7 +402,7 @@ public abstract class AbstractDbCacheManager
     try
     {
       a(localSQLiteDatabase, paramString);
-      b();
+      e();
       return;
     }
     catch (SQLException paramString)
@@ -442,7 +446,18 @@ public abstract class AbstractDbCacheManager
   
   protected void b()
   {
-    a();
+    if (a()) {
+      return;
+    }
+    try
+    {
+      if (a()) {
+        return;
+      }
+    }
+    finally {}
+    this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheDatabase.detach(hashCode());
+    this.b = true;
   }
   
   protected void b(SQLiteDatabase paramSQLiteDatabase)
@@ -456,10 +471,19 @@ public abstract class AbstractDbCacheManager
     return "DROP TABLE IF EXISTS " + this.jdField_a_of_type_JavaLangString;
   }
   
-  protected void c()
+  protected abstract void c();
+  
+  protected abstract void d();
+  
+  protected void e()
+  {
+    d();
+  }
+  
+  protected void f()
   {
     int i = this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator.version();
-    int j = bibn.a(this.jdField_a_of_type_JavaLangString + "_cache_db_version", -1, this.jdField_a_of_type_Long);
+    int j = bjmp.a(this.jdField_a_of_type_JavaLangString + "_cache_db_version", -1, this.jdField_a_of_type_Long);
     SQLiteDatabase localSQLiteDatabase;
     if ((j == -1) || (j != i))
     {
@@ -469,7 +493,7 @@ public abstract class AbstractDbCacheManager
     try
     {
       b(localSQLiteDatabase);
-      bibn.a(this.jdField_a_of_type_JavaLangString + "_cache_db_version", i, this.jdField_a_of_type_Long);
+      bjmp.a(this.jdField_a_of_type_JavaLangString + "_cache_db_version", i, this.jdField_a_of_type_Long);
       return;
     }
     catch (SQLException localSQLException)

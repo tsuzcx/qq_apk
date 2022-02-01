@@ -1,19 +1,12 @@
-import android.os.Message;
-import mqq.os.MqqHandler;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class aqvc
-  implements ayoo
 {
-  aqvc(aqvb paramaqvb, int paramInt) {}
-  
-  public void a(int paramInt1, ayon paramayon, int paramInt2, String paramString)
-  {
-    if (this.jdField_a_of_type_Aqvb.a.hasMessages(0))
-    {
-      this.jdField_a_of_type_Aqvb.a.removeMessages(0);
-      this.jdField_a_of_type_Aqvb.a.obtainMessage(0, this.jdField_a_of_type_Int, 0).sendToTarget();
-    }
-  }
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

@@ -1,38 +1,12 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class atxh
-  implements View.OnClickListener
+public abstract interface atxh
 {
-  atxh(atxg paramatxg, FeedsItemData paramFeedsItemData) {}
+  public abstract void a(long paramLong);
   
-  public void onClick(View paramView)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl.startsWith("mqqapi://miniapp/")) {
-        MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Atxg.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl, 2016, null);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Intent localIntent = new Intent(this.jdField_a_of_type_Atxg.a, QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.jumpUrl);
-      this.jdField_a_of_type_Atxg.a.startActivity(localIntent);
-      continue;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.groupId)) {
-        atzc.a(this.jdField_a_of_type_Atxg.a, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.groupId);
-      }
-    }
-  }
+  public abstract void a(List<auao> paramList, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, short paramShort);
+  
+  public abstract void b(String paramString1, String paramString2);
 }
 
 

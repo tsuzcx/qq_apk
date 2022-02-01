@@ -1,81 +1,53 @@
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementPanelView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.PendingIntent;
 import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
+import org.jetbrains.annotations.NotNull;
 
-public class ayoi
-  implements ayob
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/AudioRoomScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "modifyAudioRoomScheme", "", "scheme", "needCustomJump", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayoi
+  extends ayoc
 {
-  public ayoi(LifeAchivementPanelView paramLifeAchivementPanelView) {}
+  public static final ayoj a = new ayoj(null);
   
-  public void a(View paramView, int paramInt)
+  private final String a(String paramString)
   {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.i("LifeAchivementPanelView", 2, "onClickAchivement position = " + paramInt);
+    QLog.d("AudioRoomScheme", 2, "before modify scheme: " + paramString);
+    String str = StringsKt.replace$default(paramString, "mqqapi://now/audioroom", "mqqapi://now/openroom", false, 4, null);
+    paramString = str;
+    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"src_type", false, 2, null)) {
+      paramString = str + "&src_type=app";
     }
-    paramView = this.a.jdField_a_of_type_Aynw.a(paramInt);
-    if (paramView != null)
-    {
-      if (paramView.jdField_a_of_type_Int == 2)
-      {
-        ayod.a(LifeAchivementPanelView.c(this.a), this.a.jdField_a_of_type_JavaLangString);
-        if (LifeAchivementPanelView.a(this.a)) {
-          i = 1;
-        }
-        bcef.b(null, "", "", "", "0X800AE59", "0X800AE59", i, 0, "", "", "", "");
-      }
+    str = paramString;
+    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"version", false, 2, null)) {
+      str = paramString + "&version=1";
     }
-    else {
-      return;
+    paramString = str;
+    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"fromid", false, 2, null)) {
+      paramString = str + "&fromid=10026";
     }
-    if (paramView.jdField_a_of_type_Int == 1)
-    {
-      ayod.a(LifeAchivementPanelView.d(this.a));
-      bcef.b(null, "", "", "", "0X800AE54", "0X800AE54", 2, 0, "", "", "", "");
-      return;
+    str = paramString;
+    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"roomtype", false, 2, null)) {
+      str = paramString + "&roomtype=10001";
     }
-    ayod.a(LifeAchivementPanelView.e(this.a), this.a.jdField_a_of_type_JavaLangString, paramView.b);
-    if (LifeAchivementPanelView.a(this.a)) {
-      i = 1;
-    }
-    bcef.b(null, "", "", "", "0X800AE58", "0X800AE58", i, 0, "", "", "", "");
+    QLog.d("AudioRoomScheme", 2, "after modify: " + str);
+    return str;
   }
   
-  public void b(View paramView, int paramInt)
+  @NotNull
+  protected PendingIntent a(@NotNull ayog paramayog)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LifeAchivementPanelView", 2, "onClickPraise position = " + paramInt + ",isSelf = " + LifeAchivementPanelView.a(this.a) + ",isFriend = " + LifeAchivementPanelView.b(this.a));
+    Intrinsics.checkParameterIsNotNull(paramayog, "pushComponent");
+    if (StringsKt.startsWith$default(paramayog.d, "mqqapi://now/audioroom", false, 2, null)) {
+      paramayog.d = a(paramayog.d);
     }
-    ayod.a(paramView);
-    if ((!LifeAchivementPanelView.a(this.a)) && (!LifeAchivementPanelView.b(this.a))) {
-      QQToast.a(LifeAchivementPanelView.f(this.a), paramView.getResources().getString(2131698305), 0).a();
-    }
-    do
-    {
-      return;
-      paramView = this.a.jdField_a_of_type_Aynw.a(paramInt);
-      if (paramView != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("LifeAchivementPanelView", 2, "onClickPraise return for null data");
-    return;
-    if (paramView.jdField_a_of_type_Boolean) {}
-    for (int i = 2;; i = 1)
-    {
-      LifeAchivementPanelView.a(this.a, paramView, paramInt, i);
-      if (this.a.jdField_a_of_type_Amov != null) {
-        this.a.jdField_a_of_type_Amov.a(this.a.jdField_a_of_type_Long, paramView.b, i);
-      }
-      if (LifeAchivementPanelView.a(this.a)) {}
-      for (paramInt = 1;; paramInt = 2)
-      {
-        bcef.b(null, "", "", "", "0X800AE56", "0X800AE56", paramInt, 0, "", "", "", "");
-        return;
-      }
-    }
+    return d(paramayog);
+  }
+  
+  protected boolean a()
+  {
+    return true;
   }
 }
 

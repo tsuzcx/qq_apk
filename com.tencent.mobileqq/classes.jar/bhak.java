@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.lang.ref.WeakReference;
 
-public class bhak
-  implements awla
+final class bhak
+  implements URLDrawable.URLDrawableListener
 {
-  public bhak(WerewolvesHostInterface paramWerewolvesHostInterface) {}
+  bhak(WeakReference paramWeakReference) {}
   
-  public void g()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.mGameRoomAVController.c();
+    if (this.a != null)
+    {
+      paramURLDrawable = (View)this.a.get();
+      if (paramURLDrawable != null) {
+        paramURLDrawable.postInvalidate();
+      }
+    }
   }
-  
-  public void h() {}
 }
 
 

@@ -2,33 +2,33 @@ package com.tencent.biz.richframework.animation.drawable;
 
 import com.tencent.mobileqq.bubble.QQAnimationDrawable;
 import com.tencent.qphone.base.util.QLog;
-import yyk;
-import yyl;
-import yym;
-import yyr;
+import znn;
+import znq;
+import znr;
+import znw;
 
 public class AnimationDrawableFactory$1$1
   implements Runnable
 {
-  public AnimationDrawableFactory$1$1(yym paramyym, String[] paramArrayOfString) {}
+  public AnimationDrawableFactory$1$1(znr paramznr, String[] paramArrayOfString) {}
   
   public void run()
   {
     QQAnimationDrawable localQQAnimationDrawable = new QQAnimationDrawable();
     localQQAnimationDrawable.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-    if (this.jdField_a_of_type_Yym.jdField_a_of_type_Yyk.a() != 0) {
-      localQQAnimationDrawable.a(this.jdField_a_of_type_Yym.jdField_a_of_type_Yyk.a());
+    if (this.jdField_a_of_type_Znr.jdField_a_of_type_Znn.a() != 0) {
+      localQQAnimationDrawable.a(this.jdField_a_of_type_Znr.jdField_a_of_type_Znn.a());
     }
     for (;;)
     {
       QLog.d("AnimationDrawableFactory", 1, "create animationDrawable success");
-      this.jdField_a_of_type_Yym.jdField_a_of_type_Yyr.a(true, localQQAnimationDrawable);
-      if (this.jdField_a_of_type_Yym.jdField_a_of_type_Yyk.a()) {
-        yyl.a(this.jdField_a_of_type_Yym.jdField_a_of_type_Yyl, this.jdField_a_of_type_Yym.jdField_a_of_type_Yyk.a(), localQQAnimationDrawable);
+      this.jdField_a_of_type_Znr.jdField_a_of_type_Znw.a(true, localQQAnimationDrawable);
+      if (this.jdField_a_of_type_Znr.jdField_a_of_type_Znn.a()) {
+        znq.a(this.jdField_a_of_type_Znr.jdField_a_of_type_Znq, this.jdField_a_of_type_Znr.jdField_a_of_type_Znn.a(), localQQAnimationDrawable);
       }
       return;
-      if (this.jdField_a_of_type_Yym.jdField_a_of_type_Yyk.b() != 0) {
-        localQQAnimationDrawable.a(this.jdField_a_of_type_ArrayOfJavaLangString.length * this.jdField_a_of_type_Yym.jdField_a_of_type_Yyk.b());
+      if (this.jdField_a_of_type_Znr.jdField_a_of_type_Znn.b() != 0) {
+        localQQAnimationDrawable.a(this.jdField_a_of_type_ArrayOfJavaLangString.length * this.jdField_a_of_type_Znr.jdField_a_of_type_Znn.b());
       }
     }
   }

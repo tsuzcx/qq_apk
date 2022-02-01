@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.fragment;
 
-import bbfe;
+import bclw;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 

@@ -1,58 +1,56 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.MessageForTofuAskAnonymously;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.Nullable;
 
-class ahkc
-  extends amyh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/activity/aio/item/TofuAskAnonymouslyItemBuilder$mAnonymousObserver$1", "Lcom/tencent/mobileqq/profilecard/bussiness/anonymous/handler/AnonymousObserver;", "onGetLatestAnonymousInfo", "", "success", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ahkc
+  extends azzo
 {
-  ahkc(ahiu paramahiu) {}
-  
-  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void a(boolean paramBoolean, @Nullable Object paramObject)
   {
-    if (paramInt == 0) {
-      this.a.updateSession(this.a.mActivity.getIntent());
+    if (QLog.isColorLevel()) {
+      QLog.i("TofuAskAnonymouslyItemBuilder", 2, "onGetLatestAnonymousInfo() success = " + paramBoolean + " and data is " + paramObject);
     }
-  }
-  
-  public void onGetHistoryMsgRet(int paramInt)
-  {
-    this.a.d(paramInt);
-  }
-  
-  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0)
+    if ((paramBoolean) && ((paramObject instanceof Object[])) && (((Object[])paramObject).length == 5))
     {
-      if ((paramPublicAccountInfo != null) && (this.a.sessionInfo != null) && (this.a.sessionInfo.curFriendUin.equals(paramPublicAccountInfo.getUin()))) {
-        this.a.finish(1);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.updateSession(this.a.mActivity.getIntent());
-  }
-  
-  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.updateSession(this.a.mActivity.getIntent());
-    }
-    if ((paramBoolean) && (!ahiu.b(this.a)))
-    {
-      localObject = (amxz)this.a.app.getManager(56);
+      ahjx.a(this.a).a(true);
+      ahka localahka = ahjx.a(this.a);
+      Object localObject = ((Object[])paramObject)[0];
       if (localObject == null) {
-        break label102;
+        throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
       }
-    }
-    label102:
-    for (Object localObject = ((amxz)localObject).b(this.a.sessionInfo.curFriendUin);; localObject = null)
-    {
-      if ((localObject != null) && (this.a.a != null) && (!ahiu.c(this.a))) {
-        this.a.c();
+      localahka.a((String)localObject);
+      localahka = ahjx.a(this.a);
+      localObject = ((Object[])paramObject)[1];
+      if (localObject == null) {
+        throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
       }
-      return;
+      localahka.a(((Long)localObject).longValue());
+      localahka = ahjx.a(this.a);
+      localObject = ((Object[])paramObject)[2];
+      if (localObject == null) {
+        throw new TypeCastException("null cannot be cast to non-null type kotlin.Boolean");
+      }
+      localahka.b(((Boolean)localObject).booleanValue());
+      localahka = ahjx.a(this.a);
+      localObject = ((Object[])paramObject)[3];
+      if (localObject == null) {
+        throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
+      }
+      localahka.b(((Long)localObject).longValue());
+      localahka = ahjx.a(this.a);
+      paramObject = ((Object[])paramObject)[4];
+      if (paramObject == null) {
+        throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
+      }
+      localahka.c(((Long)paramObject).longValue());
+      if ((ahjx.a(this.a).equals(ahjx.a(this.a).a())) && (ahjx.a(this.a).getAskAnonymouslyQuestion() != null))
+      {
+        ahjx.a(this.a);
+        ahjx.b(this.a);
+      }
     }
   }
 }

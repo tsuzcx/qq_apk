@@ -1,13 +1,20 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axol
+class axol
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public List<axml> a;
-  public boolean a;
-  public int b;
-  public String b;
+  axol(axoj paramaxoj) {}
+  
+  public void onClick(View paramView)
+  {
+    axoo localaxoo = (axoo)paramView.getTag();
+    if (this.a.a != null) {
+      this.a.a.a(paramView, localaxoo.a, localaxoo.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

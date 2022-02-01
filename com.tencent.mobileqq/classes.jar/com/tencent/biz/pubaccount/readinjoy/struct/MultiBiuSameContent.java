@@ -13,14 +13,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import rdk;
+import rpq;
 import tencent.im.oidb.articlesummary.articlesummary.BiuOneLevelItem;
 import tencent.im.oidb.articlesummary.articlesummary.MultiBiuSameContent;
 
 public class MultiBiuSameContent
   implements Parcelable
 {
-  public static final Parcelable.Creator<MultiBiuSameContent> CREATOR = new rdk();
+  public static final Parcelable.Creator<MultiBiuSameContent> CREATOR = new rpq();
   public int a;
   public long a;
   public String a;

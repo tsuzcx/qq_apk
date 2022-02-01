@@ -1,20 +1,21 @@
-import cooperation.liveroom.LiveRoomGiftCallback;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "type", "", "args", "", "onCall"}, k=3, mv={1, 1, 16})
-final class qyd
-  implements LiveRoomGiftCallback
+public class qyd
+  extends RecyclerView.OnScrollListener
 {
-  qyd(qyb paramqyb) {}
+  public qyd(PTSFragment paramPTSFragment) {}
   
-  public final void onCall(int paramInt, @Nullable String paramString)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (paramInt == 7)
+    if (paramInt == 0)
     {
-      qyb.a(this.a);
-      qyb.b(this.a);
+      DropFrameMonitor.getInstance().stopMonitorScene("list_kandian_daily_new", false);
+      return;
     }
+    DropFrameMonitor.getInstance().startMonitorScene("list_kandian_daily_new");
   }
 }
 

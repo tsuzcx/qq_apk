@@ -8,25 +8,37 @@ import java.util.ArrayList;
 public final class ExtraAppInfo
   extends JceStruct
 {
+  static ArrayList<FuncallOp> cache_funcallOplist;
   static ArrayList<Integer> cache_usableScene = new ArrayList();
   public String desc = "";
   public int fontType;
+  public ArrayList<FuncallOp> funcallOplist;
+  public String hideWordName = "";
+  public int ringid;
   public int specialType;
+  public int styleid;
   public ArrayList<Integer> usableScene;
   
   static
   {
     cache_usableScene.add(Integer.valueOf(0));
+    cache_funcallOplist = new ArrayList();
+    FuncallOp localFuncallOp = new FuncallOp();
+    cache_funcallOplist.add(localFuncallOp);
   }
   
   public ExtraAppInfo() {}
   
-  public ExtraAppInfo(int paramInt1, int paramInt2, String paramString, ArrayList<Integer> paramArrayList)
+  public ExtraAppInfo(int paramInt1, int paramInt2, String paramString1, ArrayList<Integer> paramArrayList, String paramString2, int paramInt3, int paramInt4, ArrayList<FuncallOp> paramArrayList1)
   {
     this.fontType = paramInt1;
     this.specialType = paramInt2;
-    this.desc = paramString;
+    this.desc = paramString1;
     this.usableScene = paramArrayList;
+    this.hideWordName = paramString2;
+    this.styleid = paramInt3;
+    this.ringid = paramInt4;
+    this.funcallOplist = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -35,6 +47,10 @@ public final class ExtraAppInfo
     this.specialType = paramJceInputStream.read(this.specialType, 1, false);
     this.desc = paramJceInputStream.readString(2, false);
     this.usableScene = ((ArrayList)paramJceInputStream.read(cache_usableScene, 3, false));
+    this.hideWordName = paramJceInputStream.readString(4, false);
+    this.styleid = paramJceInputStream.read(this.styleid, 5, false);
+    this.ringid = paramJceInputStream.read(this.ringid, 6, false);
+    this.funcallOplist = ((ArrayList)paramJceInputStream.read(cache_funcallOplist, 7, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -46,6 +62,14 @@ public final class ExtraAppInfo
     }
     if (this.usableScene != null) {
       paramJceOutputStream.write(this.usableScene, 3);
+    }
+    if (this.hideWordName != null) {
+      paramJceOutputStream.write(this.hideWordName, 4);
+    }
+    paramJceOutputStream.write(this.styleid, 5);
+    paramJceOutputStream.write(this.ringid, 6);
+    if (this.funcallOplist != null) {
+      paramJceOutputStream.write(this.funcallOplist, 7);
     }
   }
 }

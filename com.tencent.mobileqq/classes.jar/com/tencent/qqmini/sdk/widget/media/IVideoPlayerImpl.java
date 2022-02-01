@@ -5,12 +5,6 @@ import android.util.Log;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCaptureImageListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCompletionListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnControllerClickListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnErrorListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnInfoListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnSeekCompleteListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoPreparedListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoViewInitListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
@@ -27,14 +21,59 @@ public class IVideoPlayerImpl
     this.activity = paramActivity;
   }
   
+  private void updatePlayerListener(MiniAppVideoPlayerListenerHolder paramMiniAppVideoPlayerListenerHolder)
+  {
+    if (paramMiniAppVideoPlayerListenerHolder != null)
+    {
+      if (paramMiniAppVideoPlayerListenerHolder.onControllerClickListener != null) {
+        this.absVideoPlayer.setOnControllerClickListener(paramMiniAppVideoPlayerListenerHolder.onControllerClickListener);
+      }
+      if (paramMiniAppVideoPlayerListenerHolder.onVideoPreparedListener != null) {
+        this.absVideoPlayer.setOnVideoPreparedListener(paramMiniAppVideoPlayerListenerHolder.onVideoPreparedListener);
+      }
+      if (paramMiniAppVideoPlayerListenerHolder.onCompletionListener != null) {
+        this.absVideoPlayer.setOnCompletionListener(paramMiniAppVideoPlayerListenerHolder.onCompletionListener);
+      }
+      if (paramMiniAppVideoPlayerListenerHolder.onErrorListener != null) {
+        this.absVideoPlayer.setOnErrorListener(paramMiniAppVideoPlayerListenerHolder.onErrorListener);
+      }
+      if (paramMiniAppVideoPlayerListenerHolder.onInfoListener != null) {
+        this.absVideoPlayer.setOnInfoListener(paramMiniAppVideoPlayerListenerHolder.onInfoListener);
+      }
+      if (paramMiniAppVideoPlayerListenerHolder.onSeekCompleteListener != null) {
+        this.absVideoPlayer.setOnSeekCompleteListener(paramMiniAppVideoPlayerListenerHolder.onSeekCompleteListener);
+      }
+      if (paramMiniAppVideoPlayerListenerHolder.onCaptureImageListener != null) {
+        this.absVideoPlayer.setOnCaptureImageListener(paramMiniAppVideoPlayerListenerHolder.onCaptureImageListener);
+      }
+    }
+  }
+  
   public void captureImageInTime(int paramInt1, int paramInt2)
   {
     this.absVideoPlayer.captureImageInTime(paramInt1, paramInt2);
   }
   
-  public AbsVideoPlayer getAbsVideoPlayer()
+  public void createVideoView(AbsVideoPlayer.OnVideoViewInitListener paramOnVideoViewInitListener)
   {
-    return null;
+    if (this.absVideoPlayer == null)
+    {
+      localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+      if (localObject == null) {
+        break label47;
+      }
+    }
+    label47:
+    for (Object localObject = ((ChannelProxy)localObject).getVideoPlayer();; localObject = null)
+    {
+      this.absVideoPlayer = ((AbsVideoPlayer)localObject);
+      if (this.absVideoPlayer != null) {
+        break;
+      }
+      QMLog.e("IVideoPlayerImpl", "initPlayer absVideoPlayer is null, return.");
+      return;
+    }
+    this.absVideoPlayer.createVideoView(this.activity, paramOnVideoViewInitListener);
   }
   
   public long getCurrentPostion()
@@ -92,31 +131,17 @@ public class IVideoPlayerImpl
     this.absVideoPlayer.setOnCaptureImageListener(paramOnCaptureImageListener);
   }
   
-  public void setOutputMute(boolean paramBoolean)
+  public void setupPlayer(MiniAppVideoConfig paramMiniAppVideoConfig, MiniAppVideoPlayerListenerHolder paramMiniAppVideoPlayerListenerHolder)
   {
-    this.absVideoPlayer.setOutputMute(paramBoolean);
-  }
-  
-  public void setUpPlayer(MiniAppVideoConfig paramMiniAppVideoConfig, AbsVideoPlayer.OnVideoViewInitListener paramOnVideoViewInitListener, AbsVideoPlayer.OnControllerClickListener paramOnControllerClickListener, AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener, AbsVideoPlayer.OnCompletionListener paramOnCompletionListener, AbsVideoPlayer.OnErrorListener paramOnErrorListener, AbsVideoPlayer.OnInfoListener paramOnInfoListener, AbsVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
-  {
-    if (this.absVideoPlayer == null)
+    updatePlayerListener(paramMiniAppVideoPlayerListenerHolder);
+    this.absVideoPlayer.setLoopback(paramMiniAppVideoConfig.loop);
+    paramMiniAppVideoPlayerListenerHolder = this.absVideoPlayer;
+    if ("contain".equals(paramMiniAppVideoConfig.objectFit)) {}
+    for (int i = 0;; i = 1)
     {
-      localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      if (localObject == null) {
-        break label52;
-      }
-    }
-    label52:
-    for (Object localObject = ((ChannelProxy)localObject).getVideoPlayer();; localObject = null)
-    {
-      this.absVideoPlayer = ((AbsVideoPlayer)localObject);
-      if (this.absVideoPlayer != null) {
-        break;
-      }
-      QMLog.e("IVideoPlayerImpl", "initPlayer absVideoPlayer is null, return.");
+      paramMiniAppVideoPlayerListenerHolder.setXYaxis(i);
       return;
     }
-    this.absVideoPlayer.createVideoView(this.activity, new IVideoPlayerImpl.1(this, paramMiniAppVideoConfig, paramOnControllerClickListener, paramOnVideoPreparedListener, paramOnCompletionListener, paramOnErrorListener, paramOnInfoListener, paramOnSeekCompleteListener, paramOnVideoViewInitListener));
   }
   
   public void start()

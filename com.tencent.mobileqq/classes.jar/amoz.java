@@ -1,8 +1,8 @@
+import java.util.List;
+
 public abstract interface amoz
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void b(byte[] paramArrayOfByte);
+  public abstract void a(boolean paramBoolean, String paramString1, List<amow> paramList, String paramString2);
 }
 
 

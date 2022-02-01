@@ -1,6 +1,6 @@
 public abstract interface bnye
 {
-  public abstract void a(String paramString);
+  public abstract void a(int paramInt);
 }
 
 

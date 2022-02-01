@@ -1,22 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class wov
-  implements vqp<weo, wep>
+public class wov
+  extends DataSetObserver
 {
-  wov(wou paramwou, woj paramwoj) {}
+  wov(woo paramwoo) {}
   
-  public void a(@NonNull weo paramweo, @Nullable wep paramwep, @NonNull ErrorMessage paramErrorMessage)
+  public void onChanged()
   {
-    if ((paramErrorMessage.isFail()) || (paramwep == null))
-    {
-      xvv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Woj.a(paramErrorMessage, null, false);
-      return;
+    if (this.a.a == 0) {
+      ThreadManager.getUIHandler().post(new MsgTabStoryNodeListManager.7.1(this));
     }
-    this.jdField_a_of_type_Wou.a.a(paramwep.jdField_a_of_type_JavaUtilList, paramwep.jdField_a_of_type_JavaLangString, paramwep.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Woj.a(paramErrorMessage, wnr.b(paramwep.jdField_a_of_type_JavaUtilList), paramwep.jdField_a_of_type_Boolean);
   }
 }
 

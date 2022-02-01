@@ -1,56 +1,64 @@
+import android.app.Activity;
 import android.content.Context;
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentVerticalSmallVideo;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class qrv
-  extends qpk
+  implements ViewBase.OnClickListener
 {
-  public qrv(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  
+  public qrv(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    super(paramContext, paramFaceDecoder, paramslt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public qpk a()
+  private void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g();
-  }
-  
-  public qpk d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
+      return;
     }
-    ComponentContentVerticalSmallVideo localComponentContentVerticalSmallVideo = (ComponentContentVerticalSmallVideo)this.jdField_a_of_type_Qpj;
-    Pair localPair;
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pwe)))
+    if (QLog.isColorLevel()) {
+      QLog.d("OnTopicRecommendHeaderClickListener", 2, "business url is " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl);
+    }
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.size() > 0)) {}
+    for (Object localObject = (rsj)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.get(0);; localObject = null)
     {
-      localPair = pai.a(((pwe)this.jdField_a_of_type_JavaLangObject).f(), ((pwe)this.jdField_a_of_type_JavaLangObject).e());
-      if (!pay.s(((pwe)this.jdField_a_of_type_JavaLangObject).a())) {
-        break label105;
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (localObject == null))
+      {
+        QLog.d("OnTopicRecommendHeaderClickListener", 1, new Object[] { "articleInfo is null or topicRecommendInfo is null, articleInfo: ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, " topicRecommendInfo: ", localObject });
+        return;
       }
-      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(-2, -2));
-    }
-    for (;;)
-    {
-      a(localComponentContentVerticalSmallVideo);
-      return this;
-      label105:
-      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue()));
+      String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl;
+      if (TextUtils.isEmpty(str)) {
+        break;
+      }
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
+      localIntent.putExtra("url", str);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      str = pqw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      localObject = pqf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, ((rsj)localObject).a + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      olh.a(null, str, "0X8008A63", "0X8008A63", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), (String)localObject, false);
+      pqb.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      pqb.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      return;
     }
   }
   
-  public qpk e()
+  public void onClick(ViewBase paramViewBase)
   {
-    return null;
-  }
-  
-  public qpk g()
-  {
-    this.jdField_a_of_type_Qpj = new ComponentContentVerticalSmallVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    int i = ppe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (i != 79)) {
+      a();
+    }
   }
 }
 

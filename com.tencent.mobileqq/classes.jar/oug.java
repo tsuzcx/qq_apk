@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
-
-class oug
-  implements DialogInterface.OnClickListener
+public class oug
 {
-  oug(ouf paramouf, String paramString, int paramInt) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public oug(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    QQToast.a(this.jdField_a_of_type_Ouf.jdField_a_of_type_Ouc.a, 2, amtj.a(2131712154), 0).a();
-    if (this.jdField_a_of_type_Ouf.jdField_a_of_type_Otu != null) {
-      this.jdField_a_of_type_Ouf.jdField_a_of_type_Otu.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import aoai;
-import aoal;
+import apdk;
+import apdn;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARVideoRecordUIControllerImpl$1
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$1(aoai paramaoai) {}
+  public ARVideoRecordUIControllerImpl$1(apdk paramapdk) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ARVideoRecordUIControllerImpl$1
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("showVideoRecordButton inner run +");
-      if (aoai.a(this.this$0) == null) {
+      if (apdk.a(this.this$0) == null) {
         break label81;
       }
     }
@@ -23,10 +23,10 @@ public class ARVideoRecordUIControllerImpl$1
     for (boolean bool = true;; bool = false)
     {
       QLog.i("ARVideoRecordUIControllerImpl", 2, bool);
-      if (aoai.a(this.this$0) != null)
+      if (apdk.a(this.this$0) != null)
       {
-        aoai.a(this.this$0).a();
-        aoai.a(this.this$0).a(0);
+        apdk.a(this.this$0).a();
+        apdk.a(this.this$0).a(0);
       }
       return;
     }

@@ -1,87 +1,271 @@
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.av.VideoController;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import org.json.JSONObject;
+import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.GamePlayView;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.ui.funchat.zimu.ZimuView;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class mpl
-  extends mql
 {
-  public final int a;
-  public final String a;
-  public final String b = "appid#0|bargainor_id#0|channel#bqredpacket2";
-  public final String c = "appid#0|bargainor_id#0|channel#bqredpacket";
-  public final String d = "2";
-  public final String e = "16384";
-  public final String f = "1";
+  Context jdField_a_of_type_AndroidContentContext;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  ZimuView jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView = null;
+  lix jdField_a_of_type_Lix = null;
+  ljd jdField_a_of_type_Ljd = null;
   
-  mpl(mpe parammpe)
+  public mpl(VideoAppInterface paramVideoAppInterface, Context paramContext)
   {
-    super(parammpe);
-    this.jdField_a_of_type_JavaLangString = "appid#0|bargainor_id#0|channel#bqredpacket1";
-    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  static long a(VideoAppInterface paramVideoAppInterface)
+  private boolean a(long paramLong, ViewGroup paramViewGroup)
   {
-    paramVideoAppInterface = paramVideoAppInterface.a().a().d;
-    try
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null)
     {
-      long l = Long.valueOf(paramVideoAppInterface).longValue();
-      return l;
+      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.h();
+      paramViewGroup.removeView(this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView);
+      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView = null;
+      return true;
     }
-    catch (Exception paramVideoAppInterface) {}
-    return 0L;
-  }
-  
-  static String a(VideoAppInterface paramVideoAppInterface)
-  {
-    return paramVideoAppInterface.getDisplayName(0, paramVideoAppInterface.getCurrentAccountUin(), null);
-  }
-  
-  public static void a(VideoAppInterface paramVideoAppInterface, String paramString)
-  {
-    long l = mqa.a(paramVideoAppInterface);
-    paramVideoAppInterface = new JSONObject();
-    try
+    if (this.jdField_a_of_type_Lix != null)
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("url", paramString);
-      paramVideoAppInterface.put("userId", l);
-      paramVideoAppInterface.put("viewTag", "openEmbelUrl");
-      paramVideoAppInterface.put("come_from", 2);
-      paramVideoAppInterface.put("extra_data", localObject);
-      paramString = BaseApplicationImpl.getApplication();
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("json", paramVideoAppInterface.toString());
-      ((Bundle)localObject).putString("callbackSn", "0");
-      paramVideoAppInterface = new Intent(paramString.getApplicationContext(), PayBridgeActivity.class);
-      paramVideoAppInterface.addFlags(268435456);
-      paramVideoAppInterface.putExtras((Bundle)localObject);
-      paramVideoAppInterface.putExtra("pay_requestcode", 5);
-      paramString.getBaseContext().startActivity(paramVideoAppInterface);
-      return;
+      this.jdField_a_of_type_Lix.b();
+      lja locallja = this.jdField_a_of_type_Lix.a();
+      if (locallja != null) {
+        paramViewGroup.removeView((View)locallja);
+      }
+      this.jdField_a_of_type_Lix = null;
+      return true;
     }
-    catch (Exception paramString)
+    return false;
+  }
+  
+  private boolean a(long paramLong, ViewGroup paramViewGroup, String paramString)
+  {
+    this.jdField_a_of_type_Lix = null;
+    this.jdField_a_of_type_Lix = ljb.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
+    paramString = (GamePlayView)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559741, null);
+    if (this.jdField_a_of_type_Lix == null)
     {
-      for (;;)
+      QLog.w("ZimuViewProxy", 1, "creatARZimuTask, fail");
+      return false;
+    }
+    int i = this.jdField_a_of_type_Lix.a();
+    String str = this.jdField_a_of_type_Lix.c();
+    paramString.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, (AVActivity)this.jdField_a_of_type_AndroidContentContext, str, i);
+    this.jdField_a_of_type_Lix.a(paramString);
+    paramViewGroup.addView(paramString);
+    this.jdField_a_of_type_Lix.a();
+    return true;
+  }
+  
+  private boolean c(long paramLong, String paramString, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
+  {
+    float f2 = 0.0F;
+    this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView = mpi.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
+    float f1;
+    RelativeLayout.LayoutParams localLayoutParams;
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null)
+    {
+      f1 = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a();
+      Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)f1);
+      if (!paramString.equals("film")) {
+        break label121;
+      }
+      f1 = paramInt2 - localResources.getDimension(2131297717);
+      localLayoutParams.addRule(12);
+    }
+    for (;;)
+    {
+      localLayoutParams.setMargins(0, (int)f2, 0, (int)f1);
+      paramViewGroup.addView(this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView, localLayoutParams);
+      if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView == null) {
+        break;
+      }
+      return true;
+      label121:
+      f2 = paramInt1;
+      f1 = 0.0F;
+    }
+    return false;
+  }
+  
+  public ZimuItem a()
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0))
+    {
+      a();
+      return (ZimuItem)this.jdField_a_of_type_Ljd.a();
+    }
+    return null;
+  }
+  
+  public ljd a()
+  {
+    if (this.jdField_a_of_type_Ljd == null) {
+      this.jdField_a_of_type_Ljd = ((ljd)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0));
+    }
+    return this.jdField_a_of_type_Ljd;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0))
+    {
+      Object localObject = a();
+      if (localObject != null)
       {
-        paramString.printStackTrace();
+        localObject = (ZimuItem)((ljd)localObject).a();
+        if (localObject != null)
+        {
+          localObject = ((ZimuItem)localObject).getId();
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            new mdd(AudioHelper.b(), "maybeShowZimu", 1, (String)localObject).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+          }
+        }
       }
     }
   }
   
-  static String b(VideoAppInterface paramVideoAppInterface)
+  public void a(long paramLong)
   {
-    return paramVideoAppInterface.a().a().e;
+    a(false);
+    if (this.jdField_a_of_type_Lix != null)
+    {
+      this.jdField_a_of_type_Ljd.a(paramLong, null);
+      this.jdField_a_of_type_Ljd.a("DisableARZimu", paramLong);
+      this.jdField_a_of_type_Lix.b();
+      this.jdField_a_of_type_Lix = null;
+    }
+  }
+  
+  public void a(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2)
+  {
+    RelativeLayout.LayoutParams localLayoutParams;
+    Resources localResources;
+    float f;
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null)
+    {
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.getLayoutParams();
+      localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+      if (!this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a().equals("film")) {
+        break label110;
+      }
+      if (!paramVideoLayerUI.i()) {
+        break label91;
+      }
+      f = paramVideoLayerUI.c() - mjp.b(paramVideoLayerUI.b());
+      localLayoutParams.bottomMargin = ((int)(localResources.getDimension(2131297613) + f));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.setLayoutParams(localLayoutParams);
+      return;
+      label91:
+      localLayoutParams.bottomMargin = ((int)(paramInt2 - localResources.getDimension(2131297717)));
+      continue;
+      label110:
+      f = paramInt1;
+      localLayoutParams.topMargin = ((int)(localResources.getDimension(2131297731) + f));
+    }
+  }
+  
+  public void a(lgo paramlgo)
+  {
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null) {
+      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a(paramlgo);
+    }
+    while (this.jdField_a_of_type_Lix == null) {
+      return;
+    }
+    this.jdField_a_of_type_Lix.a(paramlgo);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    a();
+    ljc.a(paramBoolean);
+    this.jdField_a_of_type_Ljd.a(paramBoolean);
+  }
+  
+  public boolean a(long paramLong, ViewGroup paramViewGroup, boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("ZimuViewProxy", 1, "hideZimuView, exchangeItem[" + paramBoolean + "], seq[" + paramLong + "]");
+    }
+    a();
+    if (paramBoolean) {
+      this.jdField_a_of_type_Ljd.a(paramLong, null);
+    }
+    return a(paramLong, paramViewGroup);
+  }
+  
+  public boolean a(long paramLong, String paramString, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Lix != null) {
+      a(paramLong, paramViewGroup);
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView == null) {
+      return c(paramLong, paramString, paramViewGroup, paramInt1, paramInt2);
+    }
+    if (!this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a().equals(paramString))
+    {
+      a(paramLong, paramViewGroup);
+      return c(paramLong, paramString, paramViewGroup, paramInt1, paramInt2);
+    }
+    return true;
+  }
+  
+  public boolean a(ViewGroup paramViewGroup, long paramLong)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("ZimuViewProxy", 1, "stopZimuView, seq[" + paramLong + "]");
+    }
+    a();
+    a(paramLong, paramViewGroup);
+    this.jdField_a_of_type_Ljd.a(paramLong, null);
+    this.jdField_a_of_type_Ljd.a("stopZimuView", paramLong);
+    return true;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null) {
+      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a(paramBoolean);
+    }
+    if (this.jdField_a_of_type_Lix != null) {
+      this.jdField_a_of_type_Lix.b();
+    }
+  }
+  
+  public boolean b(long paramLong, String paramString, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null) {
+      a(paramLong, paramViewGroup);
+    }
+    if (!ljc.a()) {
+      return false;
+    }
+    if (this.jdField_a_of_type_Lix == null) {
+      return a(paramLong, paramViewGroup, paramString);
+    }
+    a(paramLong, paramViewGroup);
+    return a(paramLong, paramViewGroup, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,49 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.media.MediaCodec.BufferInfo;
+import java.util.ArrayList;
 
-final class bboq
-  implements bbos
+public class bboq
 {
-  bboq(BusinessObserver paramBusinessObserver) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private String jdField_b_of_type_JavaLangString;
+  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void a(int paramInt, String paramString)
+  public bboq(String paramString, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("dataErrorMsg", paramString);
-    localBundle.putInt("dataErrorCode", paramInt);
-    this.a.onReceive(0, false, localBundle);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "segment" + paramInt + ".mp4");
   }
   
-  public void a(String paramString)
+  public int a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("data", paramString.getBytes());
-    localBundle.putString("cmd", "getAppConfig");
-    this.a.onReceive(0, true, localBundle);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      return ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(0)).longValue();
+    }
+    return 0L;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void a(bbmp parambbmp)
+  {
+    parambbmp = parambbmp.a;
+    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(parambbmp.presentationTimeUs));
+    this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(parambbmp.flags));
+  }
+  
+  public String toString()
+  {
+    return "SegmentInfo{mSegmentPath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mFrames=" + this.jdField_a_of_type_JavaUtilArrayList + ", mFlags=" + this.jdField_b_of_type_JavaUtilArrayList + '}';
   }
 }
 

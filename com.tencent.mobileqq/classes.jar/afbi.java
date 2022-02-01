@@ -1,19 +1,37 @@
-import android.graphics.Bitmap;
-import mqq.app.QQPermissionCallback;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class afbi
-  implements QQPermissionCallback
+public class afbi
+  extends anrc
 {
-  afbi(afbf paramafbf, Bitmap paramBitmap) {}
+  public afbi(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    bfur.a(afbf.a(this.jdField_a_of_type_Afbf), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Afbf.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (paramInt2 != 0)
+    {
+      paramString1 = paramString2;
+      if (!this.a.isFinishing())
+      {
+        paramString1 = paramString2;
+        if (this.a.isResume())
+        {
+          paramString1 = paramString2;
+          if (TextUtils.isEmpty(paramString2)) {
+            paramString1 = this.a.getResources().getString(2131694475);
+          }
+          QQToast.a(this.a, 1, paramString1, 0).a();
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopAssistantActivity", 2, "onSetCommonUsedTroop error, retCode = " + paramInt2 + " , wording = " + paramString1);
+      }
+      return;
+    }
+    this.a.c();
   }
 }
 

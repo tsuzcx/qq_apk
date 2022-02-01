@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
-import com.tencent.mobileqq.mini.app.BaseAppLoaderManager;
 import com.tencent.qphone.base.util.QLog;
 
 class AppBrandUI$6
@@ -15,7 +14,7 @@ class AppBrandUI$6
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     QLog.i("miniapp-start_AppBrandUI", 1, "confirm");
-    AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().exitProcess();
+    AppLoaderFactory.getMiniAppInterface().exitProcess();
   }
 }
 

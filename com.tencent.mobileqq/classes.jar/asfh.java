@@ -1,53 +1,52 @@
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonIPCModule.1;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
-class asfh
-  extends asfq
+public class asfh
+  extends QIPCModule
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  private static asfh a;
   
-  asfh(ases paramases, MessageRecord paramMessageRecord)
+  private asfh(String paramString)
   {
-    super(paramases);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    super(paramString);
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, asfo paramasfo)
+  public static asfh a()
   {
-    if ("1".equals(this.g))
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new asfh("EmoticonIPCModule");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonIPCModule", 2, "onCall action = " + paramString);
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+        QLog.d("EmoticonIPCModule", 2, "cannot get QQAppInterface.");
       }
-      paramasfo.a(ases.a(this.jdField_a_of_type_Long, false), false);
-      return;
+      return null;
     }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild uuid is null");
-      }
-      paramasfo.a(ases.a(this.jdField_a_of_type_Long, true), false);
-      return;
-    }
-    ases.a(this.jdField_a_of_type_Ases).getFileManagerEngine().a().a(paramString, paramInt, this.d, 102, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new asfi(this, paramString, paramasfo));
+    ThreadManager.post(new EmoticonIPCModule.1(this, paramBundle, paramString, ((bhou)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a, paramInt), 5, null, true);
+    return null;
   }
 }
 

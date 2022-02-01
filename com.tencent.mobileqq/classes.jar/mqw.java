@@ -1,368 +1,315 @@
-import android.os.Environment;
-import com.tencent.av.core.VcControllerImpl;
-import com.tencent.av.gaudio.QQGAudioCtrl;
-import java.io.File;
-import java.util.Calendar;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.BaseToolbar;
+import com.tencent.av.ui.RedbagToolbar;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class mqw
-  implements mnz
 {
-  private static volatile mqw jdField_a_of_type_Mqw;
-  private int jdField_a_of_type_Int = 0;
-  private VcControllerImpl jdField_a_of_type_ComTencentAvCoreVcControllerImpl;
-  private QQGAudioCtrl jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = "";
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private int c;
+  public static int a;
+  public static long a;
+  public static String a;
+  public static int b;
   
-  public mqw()
+  static
   {
-    c();
+    jdField_a_of_type_Int = 0;
   }
   
-  public static mqw a()
+  static int a(int paramInt)
   {
-    if (jdField_a_of_type_Mqw == null) {}
-    try
-    {
-      if (jdField_a_of_type_Mqw == null) {
-        jdField_a_of_type_Mqw = new mqw();
-      }
-      return jdField_a_of_type_Mqw;
+    int i = 1;
+    if ((paramInt & 0x3F) != 0) {
+      i = 2;
     }
-    finally {}
+    return i;
   }
   
   public static void a()
   {
-    if (jdField_a_of_type_Mqw != null) {
-      try
+    a("0X8008984", null);
+  }
+  
+  public static void a(int paramInt)
+  {
+    jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static void a(long paramLong)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("RedBagReport", 1, "setCurRoomId, RoomId[" + jdField_a_of_type_JavaLangString + "->" + paramLong + "]");
+    }
+    jdField_a_of_type_JavaLangString = String.valueOf(paramLong);
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, BaseToolbar paramBaseToolbar)
+  {
+    if (paramBaseToolbar != null)
+    {
+      paramBaseToolbar = new mjn();
+      RedbagToolbar.getRedBagBtnStatus(paramVideoAppInterface, paramBaseToolbar);
+    }
+    for (int j = paramBaseToolbar.jdField_a_of_type_Int;; j = -1)
+    {
+      int n;
+      int k;
+      int i;
+      if (j != -1)
       {
-        if (jdField_a_of_type_Mqw != null) {
-          jdField_a_of_type_Mqw.b();
+        n = a(j);
+        if (n != 2) {
+          break label243;
         }
-        jdField_a_of_type_Mqw = null;
-        bija.c("AudioDump", "destroyInstance.", new Throwable("打印调用栈"));
-        return;
-      }
-      finally {}
-    }
-  }
-  
-  /* Error */
-  private static void a(byte[] paramArrayOfByte, int paramInt, String paramString)
-  {
-    // Byte code:
-    //   0: iload_1
-    //   1: ifgt +4 -> 5
-    //   4: return
-    //   5: new 64	java/io/DataOutputStream
-    //   8: dup
-    //   9: new 66	java/io/FileOutputStream
-    //   12: dup
-    //   13: aload_2
-    //   14: invokespecial 67	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   17: invokespecial 70	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   20: astore_3
-    //   21: aload_3
-    //   22: astore_2
-    //   23: aload_3
-    //   24: aload_0
-    //   25: iconst_0
-    //   26: iload_1
-    //   27: invokevirtual 74	java/io/DataOutputStream:write	([BII)V
-    //   30: aload_3
-    //   31: astore_2
-    //   32: ldc 43
-    //   34: ldc 76
-    //   36: invokestatic 80	bija:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   39: aload_3
-    //   40: ifnull -36 -> 4
-    //   43: aload_3
-    //   44: invokevirtual 83	java/io/DataOutputStream:close	()V
-    //   47: return
-    //   48: astore_0
-    //   49: return
-    //   50: astore 4
-    //   52: aconst_null
-    //   53: astore_0
-    //   54: aload_0
-    //   55: astore_2
-    //   56: ldc 43
-    //   58: ldc 85
-    //   60: aload 4
-    //   62: invokestatic 87	bija:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   65: aload_0
-    //   66: ifnull -62 -> 4
-    //   69: aload_0
-    //   70: invokevirtual 83	java/io/DataOutputStream:close	()V
-    //   73: return
-    //   74: astore_0
-    //   75: return
-    //   76: astore_0
-    //   77: aconst_null
-    //   78: astore_2
-    //   79: aload_2
-    //   80: ifnull +7 -> 87
-    //   83: aload_2
-    //   84: invokevirtual 83	java/io/DataOutputStream:close	()V
-    //   87: aload_0
-    //   88: athrow
-    //   89: astore_2
-    //   90: goto -3 -> 87
-    //   93: astore_0
-    //   94: goto -15 -> 79
-    //   97: astore 4
-    //   99: aload_3
-    //   100: astore_0
-    //   101: goto -47 -> 54
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	104	0	paramArrayOfByte	byte[]
-    //   0	104	1	paramInt	int
-    //   0	104	2	paramString	String
-    //   20	80	3	localDataOutputStream	java.io.DataOutputStream
-    //   50	11	4	localException1	Exception
-    //   97	1	4	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   43	47	48	java/io/IOException
-    //   5	21	50	java/lang/Exception
-    //   69	73	74	java/io/IOException
-    //   5	21	76	finally
-    //   83	87	89	java/io/IOException
-    //   23	30	93	finally
-    //   32	39	93	finally
-    //   56	65	93	finally
-    //   23	30	97	java/lang/Exception
-    //   32	39	97	java/lang/Exception
-  }
-  
-  public static boolean a()
-  {
-    return false;
-  }
-  
-  private static boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  private boolean a(int paramInt, boolean paramBoolean)
-  {
-    int i = -1;
-    boolean bool = true;
-    int j;
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null)
-    {
-      j = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.registerAudioDataCallback(paramInt, paramBoolean);
-      i = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setAudioDataFormat(paramInt, 16000, 1, 16);
-    }
-    for (;;)
-    {
-      if (j == 0)
-      {
-        paramBoolean = bool;
-        if (i == 0) {}
-      }
-      else
-      {
-        bija.a("AudioDump", "registerAudioDataCallback failed. srcType = " + paramInt + ", ret1 = " + j + ", ret2 = " + i);
-        paramBoolean = false;
-      }
-      return paramBoolean;
-      if (this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl != null)
-      {
-        j = this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.registerAudioDataCallback(paramInt, paramBoolean);
-        i = this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.setAudioDataFormat(paramInt, 16000, 1, 16);
-      }
-      else
-      {
-        j = -1;
-      }
-    }
-  }
-  
-  private boolean a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.enableDumpAudioData(paramBoolean);
-    }
-    for (;;)
-    {
-      return true;
-      if (this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl != null) {
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.enableDumpAudioData(paramBoolean);
-      }
-    }
-  }
-  
-  private boolean b(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.unregisterAudioDataCallback(paramInt);
-    }
-    for (;;)
-    {
-      return true;
-      if (this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl != null) {
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.unregisterAudioDataCallback(paramInt, false);
-      }
-    }
-  }
-  
-  private boolean c()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return true;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    bija.d("AudioDump", "init successfully.");
-    return true;
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != 1)) {
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
-    if (paramInt1 == 0) {}
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_ArrayOfByte != null)
-        {
-          System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_Int, paramInt2);
-          this.jdField_b_of_type_Int += paramInt2;
+        k = 0;
+        i = 1;
+        if (k >= 32) {
+          break label243;
         }
-        return;
+        if ((j & i) != i) {}
       }
-      finally {}
-      if ((paramInt1 == 2) && (this.jdField_b_of_type_ArrayOfByte != null))
+      for (;;)
       {
-        System.arraycopy(paramArrayOfByte, 0, this.jdField_b_of_type_ArrayOfByte, this.c, paramInt2);
-        this.c += paramInt2;
-      }
-    }
-  }
-  
-  public boolean a(VcControllerImpl arg1, QQGAudioCtrl paramQQGAudioCtrl)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      bija.a("AudioDump", "startSave failed. !mIsInited.");
-    }
-    for (;;)
-    {
-      return false;
-      if (b()) {
-        return true;
-      }
-      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl = ???;
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = paramQQGAudioCtrl;
-      if (a(35))
-      {
-        a(true);
-        a(0, false);
-        a(2, false);
-      }
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        for (;;)
+        k = 0;
+        int m = 1;
+        label65:
+        if (k < 32)
         {
-          this.jdField_a_of_type_ArrayOfByte = new byte[52428800];
-          this.jdField_b_of_type_ArrayOfByte = new byte[52428800];
-          this.jdField_b_of_type_Int = 0;
-          this.c = 0;
-          paramQQGAudioCtrl = Calendar.getInstance();
-          int i = paramQQGAudioCtrl.get(1);
-          int j = paramQQGAudioCtrl.get(2) + 1;
-          int k = paramQQGAudioCtrl.get(5);
-          int m = paramQQGAudioCtrl.get(11);
-          int n = paramQQGAudioCtrl.get(12);
-          int i1 = paramQQGAudioCtrl.get(13);
-          this.jdField_a_of_type_JavaLangString = (Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + String.format("trae-dump-%04d-%02d-%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }) + File.separator + String.format("%04d-%02d-%02d-%02d-%02d-%02d-%s-%d_%d.pcm", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), "after3A", Integer.valueOf(16000), Integer.valueOf(1) }));
-          this.jdField_b_of_type_JavaLangString = (Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + String.format("trae-dump-%04d-%02d-%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }) + File.separator + String.format("%04d-%02d-%02d-%02d-%02d-%02d-%s-%d_%d.pcm", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), "afterVAD", Integer.valueOf(16000), Integer.valueOf(1) }));
-          this.jdField_a_of_type_Int = 1;
-          bija.d("AudioDump", "startSave successfully. ");
-          return true;
-          if (a(36))
-          {
-            a(true);
-          }
-          else
-          {
-            if (!a(37)) {
-              break;
+          if ((j & m) == m) {
+            if ((m & 0x3F) == 0) {
+              break label130;
             }
-            a(0, false);
+          }
+          for (boolean bool = true;; bool = false)
+          {
+            lts.a(bool, String.valueOf(m));
+            m <<= 1;
+            k += 1;
+            break label65;
+            k += 1;
+            i <<= 1;
+            break;
           }
         }
-        if (!a(38)) {
-          continue;
+        label130:
+        if (QLog.isDevelopLevel()) {
+          QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X8008977" + "], statusFixedEntrance[" + j + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], light[" + n + "], first[" + i + "]");
         }
-        a(2, false);
+        bdla.b(null, "dc00898", "", "", "0X8008977", "0X8008977", n, 0, String.valueOf(i), String.valueOf(j), jdField_a_of_type_JavaLangString, "");
+        return;
+        label243:
+        i = 0;
       }
     }
   }
   
-  public void b()
+  public static void a(String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    c();
-    this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl = null;
-    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = null;
-    this.jdField_a_of_type_Boolean = false;
-    bija.d("AudioDump", "uninit successfully.");
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int != 0;
-  }
-  
-  public void c()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (!b()) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 0;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    long l1 = jdField_a_of_type_Long;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
     {
-      a(this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      a(this.jdField_b_of_type_ArrayOfByte, this.c, this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_ArrayOfByte = null;
-      this.jdField_b_of_type_ArrayOfByte = null;
-      this.jdField_b_of_type_Int = 0;
-      this.c = 0;
-      try
+      bool1 = bool2;
+      if (jdField_a_of_type_Long > 0L)
       {
-        a(false);
-        b(0);
-        b(2);
-        bija.d("AudioDump", "stopSave sucessfully.");
-        return;
-      }
-      catch (Exception localException)
-      {
-        bija.a("AudioDump", "stopSave failed.", localException);
-        return;
+        long l2 = System.currentTimeMillis();
+        long l3 = jdField_a_of_type_Long;
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("time", String.valueOf(l2 - l3));
+        localHashMap.put("redbagId", String.valueOf(paramString));
+        localHashMap.put("roomid", jdField_a_of_type_JavaLangString);
+        bool1 = UserAction.onUserAction("reportAVRedbagGameTime", true, -1L, -1L, localHashMap, true);
+        jdField_a_of_type_Long = 0L;
       }
     }
+    if (AudioHelper.e()) {
+      QLog.w("RedBagReport", 1, "reportRedbagCount, count[" + b + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], begin[" + l1 + "], ret[" + bool1 + "]");
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("RedBagReport", 1, "reportClickEvent, key[" + paramString1 + "], mFromType[" + jdField_a_of_type_Int + "], value[" + paramString2 + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
+    }
+    bdla.b(null, "dc00898", "", "", paramString1, paramString1, jdField_a_of_type_Int, 0, "", "", jdField_a_of_type_JavaLangString, paramString2);
+  }
+  
+  public static void a(mqy parammqy)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X800897F" + "], fromType[" + jdField_a_of_type_Int + "], mSucAboutGame[" + parammqy.jdField_a_of_type_Boolean + "], mExceptionType[" + parammqy.jdField_f_of_type_Int + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
+    }
+    int i = jdField_a_of_type_Int;
+    int j = parammqy.jdField_f_of_type_Int;
+    if (parammqy.jdField_a_of_type_Boolean) {}
+    for (parammqy = "1";; parammqy = "0")
+    {
+      bdla.b(null, "dc00898", "", "", "0X800897F", "0X800897F", i, 0, String.valueOf(j), parammqy, jdField_a_of_type_JavaLangString, "");
+      return;
+    }
+  }
+  
+  public static void a(boolean paramBoolean, int paramInt)
+  {
+    int i = 1;
+    int j = a(paramInt);
+    if (QLog.isDevelopLevel()) {
+      QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X8008978" + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], ret[" + paramBoolean + "], disableType[" + paramInt + "], light[" + j + "]");
+    }
+    if (paramBoolean) {}
+    for (;;)
+    {
+      bdla.b(null, "dc00898", "", "", "0X8008978", "0X8008978", j, i, String.valueOf(paramInt), "", jdField_a_of_type_JavaLangString, String.valueOf(j));
+      return;
+      i = 0;
+    }
+  }
+  
+  public static void b()
+  {
+    a("0X8008985", null);
+  }
+  
+  public static void b(int paramInt)
+  {
+    String str;
+    if (paramInt == 0)
+    {
+      str = "0X800897B";
+      f();
+    }
+    for (;;)
+    {
+      a(str, null);
+      return;
+      if (paramInt == 4) {
+        str = "0X800897C";
+      } else {
+        str = "0X800897D";
+      }
+    }
+  }
+  
+  public static void b(mqy parammqy)
+  {
+    String str2 = "0X8008982";
+    String str1 = str2;
+    switch (parammqy.jdField_e_of_type_Int)
+    {
+    default: 
+      str1 = str2;
+    }
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w("RedBagReport", 1, "reportClickEvent, key[" + str1 + "], fromType[" + jdField_a_of_type_Int + "], getRedbag_ResultCode[" + parammqy.jdField_e_of_type_JavaLangString + "], getRedbag_ResultState[" + parammqy.jdField_f_of_type_JavaLangString + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], hitScore[" + parammqy.jdField_a_of_type_Int + "]");
+      }
+      bdla.b(null, "dc00898", "", "", str1, str1, jdField_a_of_type_Int, parammqy.jdField_a_of_type_Int, String.valueOf(parammqy.jdField_f_of_type_Int), parammqy.jdField_e_of_type_JavaLangString, jdField_a_of_type_JavaLangString, parammqy.jdField_f_of_type_JavaLangString);
+      return;
+      str1 = "0X800897E";
+      continue;
+      str1 = "0X8008983";
+      continue;
+      str1 = "0X8008981";
+      continue;
+      str1 = "0X8008980";
+    }
+  }
+  
+  public static void b(boolean paramBoolean, int paramInt)
+  {
+    String str = "0X8008A99";
+    if (!paramBoolean) {
+      str = "0X8008A9A";
+    }
+    bdla.b(null, "dc00898", "", "", str, str, jdField_a_of_type_Int, 0, String.valueOf(paramInt), "", jdField_a_of_type_JavaLangString, null);
+  }
+  
+  public static void c()
+  {
+    a("0X8008986", null);
+  }
+  
+  public static void d()
+  {
+    a("0X8008987", null);
+  }
+  
+  public static void e()
+  {
+    a("0X8008988", null);
+  }
+  
+  public static void f()
+  {
+    b += 1;
+  }
+  
+  public static void g()
+  {
+    b = 0;
+  }
+  
+  public static void h()
+  {
+    if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (b > 0))
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("count", String.valueOf(b));
+      localHashMap.put("roomid", jdField_a_of_type_JavaLangString);
+      UserAction.onUserAction("reportAVRedbagCount", true, -1L, -1L, localHashMap, true);
+    }
+    if (AudioHelper.e()) {
+      QLog.w("RedBagReport", 1, "reportRedbagCount, count[" + b + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
+    }
+  }
+  
+  public static void i()
+  {
+    jdField_a_of_type_Long = System.currentTimeMillis();
+    if (AudioHelper.e()) {
+      QLog.w("RedBagReport", 1, "setGameBeginTime, mGameBeginTime[" + jdField_a_of_type_Long + "]");
+    }
+  }
+  
+  public static void j()
+  {
+    a("0X8008A98", null);
+  }
+  
+  public static void k()
+  {
+    a("0X8008CF0", null);
+  }
+  
+  public static void l()
+  {
+    a("0X8008CF1", null);
+  }
+  
+  public static void m()
+  {
+    a("0X8008A9B", null);
+  }
+  
+  public static void n()
+  {
+    a("0X8008CF2", null);
+  }
+  
+  public static void o()
+  {
+    a("0X8008CF3", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mqw
  * JD-Core Version:    0.7.0.1
  */

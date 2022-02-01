@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import amwl;
-import amwm;
+import anyz;
+import anza;
 
 class C2CPttUploadProcessor$1
-  extends amwl
+  extends anyz
 {
   C2CPttUploadProcessor$1(C2CPttUploadProcessor paramC2CPttUploadProcessor) {}
   
-  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, amwm paramamwm)
+  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, anza paramanza)
   {
     this.this$0.logRichMediaEvent("sendMsgFinish", "success:" + paramBoolean);
-    this.this$0.copyStatisInfo(this.this$0.mStepMsg, false, paramBoolean, paramamwm);
+    this.this$0.copyStatisInfo(this.this$0.mStepMsg, false, paramBoolean, paramanza);
     if (paramBoolean)
     {
       this.this$0.onSuccess();

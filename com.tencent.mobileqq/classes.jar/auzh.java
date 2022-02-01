@@ -1,138 +1,105 @@
 import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import com.tencent.mobileqq.listentogether.data.ISong;
-import java.util.List;
+import com.tencent.mobileqq.data.IntimateInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class auzh
   implements BusinessObserver
 {
-  protected void a() {}
+  protected void a(boolean paramBoolean, int paramInt, ArrayList<ajfl> paramArrayList) {}
   
-  protected void a(int paramInt, String paramString) {}
+  protected void a(boolean paramBoolean, long paramLong) {}
   
-  protected void a(int paramInt, String paramString1, String paramString2) {}
+  protected void a(boolean paramBoolean, long paramLong, ArrayList<Long> paramArrayList) {}
   
-  protected void a(int paramInt, String paramString, boolean paramBoolean) {}
+  protected void a(boolean paramBoolean, String paramString) {}
   
-  protected void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3) {}
   
-  protected void a(ListenTogetherSession paramListenTogetherSession) {}
+  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo) {}
   
-  protected void a(ISong paramISong) {}
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
   
-  protected void a(String paramString, int paramInt) {}
+  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject) {}
   
-  protected void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  protected void a(String paramString1, String paramString2, boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3) {}
-  
-  protected void a(boolean paramBoolean, ListenTogetherSession paramListenTogetherSession) {}
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt, List<String> paramList) {}
-  
-  protected void b(int paramInt, String paramString) {}
-  
-  protected void c(int paramInt, String paramString) {}
-  
-  protected void d(int paramInt, String paramString) {}
-  
-  protected void e(int paramInt, String paramString) {}
-  
-  protected void f(int paramInt, String paramString) {}
-  
-  protected void g(int paramInt, String paramString) {}
-  
-  protected void h(int paramInt, String paramString) {}
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     switch (paramInt)
     {
-    default: 
-      return;
-    case 4: 
-      a((ListenTogetherSession)((Object[])(Object[])paramObject)[0]);
-      return;
-    case 5: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue());
-      return;
-    case 19: 
-      paramObject = (Object[])paramObject;
-      b(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 6: 
-      paramObject = (Object[])paramObject;
-      c(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 7: 
-      paramObject = (Object[])paramObject;
-      d(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 21: 
-      paramObject = (Object[])paramObject;
-      f(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 20: 
-      paramObject = (Object[])paramObject;
-      e(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 8: 
-      paramObject = (Object[])paramObject;
-      g(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 9: 
-      paramObject = (Object[])paramObject;
-      a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
-      return;
-    case 10: 
-      paramObject = (Object[])paramObject;
-      a((String)paramObject[0], (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue());
-      return;
-    case 11: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue(), ((Boolean)paramObject[3]).booleanValue());
-      return;
-    case 12: 
-      paramObject = (Object[])paramObject;
-      a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
-      return;
-    case 13: 
-      a((ISong)((Object[])(Object[])paramObject)[0]);
-      return;
-    case 14: 
-      paramObject = (Object[])paramObject;
-      h(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 15: 
-      paramObject = (Object[])paramObject;
-      a(((Boolean)paramObject[0]).booleanValue(), (ListenTogetherSession)paramObject[1]);
-      return;
-    case 16: 
-      a();
-      return;
-    case 18: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (String)paramObject[2]);
-      return;
-    case 22: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 23: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), (String)paramObject[4]);
-      return;
     }
-    paramObject = (Object[])paramObject;
-    if (paramBoolean)
+    do
     {
-      a(true, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, (String)paramObject[0], (IntimateInfo)paramObject[1]);
+                    return;
+                  }
+                  a(false, "", null);
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
+                    return;
+                  }
+                  a(paramBoolean, "", false);
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    a(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
+                    return;
+                  }
+                  a(false, "");
+                  return;
+                  if ((paramObject instanceof Object[]))
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+                    return;
+                  }
+                  a(false, "", -1, -1, -1);
+                  return;
+                  if ((paramBoolean) && ((paramObject instanceof Object[])))
+                  {
+                    a(paramBoolean, (Object[])paramObject);
+                    return;
+                  }
+                  a(false, null);
+                  return;
+                } while (!(paramObject instanceof Object[]));
+                paramObject = (Object[])paramObject;
+              } while (paramObject.length < 2);
+              a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
+              return;
+            } while (!(paramObject instanceof Object[]));
+            paramObject = (Object[])paramObject;
+          } while (paramObject.length < 1);
+          a(paramBoolean, ((Long)paramObject[0]).longValue());
+          return;
+        } while (!(paramObject instanceof Object[]));
+        paramObject = (Object[])paramObject;
+      } while (paramObject.length < 2);
+      a(paramBoolean, (HashMap)paramObject[0], paramObject[1]);
       return;
-    }
-    a(true, (String)paramObject[0], 0, null);
+    } while (!(paramObject instanceof Object[]));
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (ArrayList)paramObject[1]);
   }
 }
 

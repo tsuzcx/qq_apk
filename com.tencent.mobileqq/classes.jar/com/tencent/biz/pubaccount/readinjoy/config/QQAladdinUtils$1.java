@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.readinjoy.config;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import pby;
+import pkz;
 
 public final class QQAladdinUtils$1
   implements Runnable
 {
   public void run()
   {
-    int[] arrayOfInt = pby.a;
+    int[] arrayOfInt = pkz.a;
     int k = arrayOfInt.length;
     int i = 0;
     if (i < k)

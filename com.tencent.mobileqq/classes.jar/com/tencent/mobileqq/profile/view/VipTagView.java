@@ -12,25 +12,25 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
-import ayri;
-import ayrj;
-import ayrm;
-import bfzt;
-import bgbl;
-import bgbm;
-import bgbn;
+import azwd;
+import azwe;
+import azwh;
+import bhil;
+import bhkc;
+import bhkd;
+import bhke;
 
 public final class VipTagView
   extends TextView
-  implements bgbm
+  implements bhkd
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131298550, 2131298551, 2131298552, 2131298553, 2131298554 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131298554, 2131298555, 2131298556, 2131298557, 2131298558 };
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private ayrm jdField_a_of_type_Ayrm;
-  private bfzt<Float> jdField_a_of_type_Bfzt;
+  private azwh jdField_a_of_type_Azwh;
+  private bhil<Float> jdField_a_of_type_Bhil;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -69,7 +69,7 @@ public final class VipTagView
   
   private void a(int paramInt)
   {
-    setBackgroundResource(2130847331);
+    setBackgroundResource(2130847418);
     if ((paramInt > 0) && (paramInt <= 5))
     {
       Object localObject = getBackground();
@@ -107,19 +107,19 @@ public final class VipTagView
   {
     setClickable(true);
     Resources localResources = getResources();
-    setTextSize(0, localResources.getDimensionPixelSize(2131298541));
-    int i = localResources.getDimensionPixelSize(2131298546);
+    setTextSize(0, localResources.getDimensionPixelSize(2131298545));
+    int i = localResources.getDimensionPixelSize(2131298550);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(i);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
     this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText("+1"), i, Bitmap.Config.ARGB_4444);
     new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawText("+1", 0.0F, i, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_Ayrm = new ayrm(this);
-    this.jdField_a_of_type_Bfzt = new bfzt(Float.valueOf(0.0F), Float.valueOf(1.0F), new ayri(this));
-    this.jdField_a_of_type_Bfzt.setDuration(800L);
-    this.jdField_a_of_type_Bfzt.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_Bfzt.setAnimationListener(new ayrj(this));
+    this.jdField_a_of_type_Azwh = new azwh(this);
+    this.jdField_a_of_type_Bhil = new bhil(Float.valueOf(0.0F), Float.valueOf(1.0F), new azwd(this));
+    this.jdField_a_of_type_Bhil.setDuration(800L);
+    this.jdField_a_of_type_Bhil.setInterpolator(new DecelerateInterpolator());
+    this.jdField_a_of_type_Bhil.setAnimationListener(new azwe(this));
   }
   
   private void c()
@@ -141,23 +141,23 @@ public final class VipTagView
   {
     this.jdField_a_of_type_Int += 1;
     this.b = true;
-    startAnimation(this.jdField_a_of_type_Bfzt);
+    startAnimation(this.jdField_a_of_type_Bhil);
     c();
   }
   
-  public void a(bgbl parambgbl, float paramFloat1, float paramFloat2) {}
+  public void a(bhkc parambhkc, float paramFloat1, float paramFloat2) {}
   
-  public void a(bgbl parambgbl, bgbn parambgbn, float paramFloat1, float paramFloat2) {}
+  public void a(bhkc parambhkc, bhke parambhke, float paramFloat1, float paramFloat2) {}
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Ayrm.a();
+    return this.jdField_a_of_type_Azwh.a();
   }
   
-  public boolean a(bgbl parambgbl, float paramFloat1, float paramFloat2)
+  public boolean a(bhkc parambhkc, float paramFloat1, float paramFloat2)
   {
     bringToFront();
-    this.jdField_a_of_type_Ayrm.b();
+    this.jdField_a_of_type_Azwh.b();
     return true;
   }
   
@@ -201,10 +201,10 @@ public final class VipTagView
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Ayrm.a();
+      this.jdField_a_of_type_Azwh.a();
       return;
     }
-    this.jdField_a_of_type_Ayrm.b();
+    this.jdField_a_of_type_Azwh.b();
   }
   
   public void setTagColor(int paramInt1, int paramInt2)

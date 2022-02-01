@@ -3,17 +3,18 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.qphone.base.util.QLog;
-import odq;
-import ofe;
+import olh;
+import omx;
 import org.json.JSONObject;
-import pay;
-import rau;
-import rwh;
+import pqf;
+import pqu;
+import rna;
+import sij;
 
 class ReadinjoyTabFrame$21
   implements Runnable
 {
-  ReadinjoyTabFrame$21(ReadinjoyTabFrame paramReadinjoyTabFrame, VideoInfo paramVideoInfo, rau paramrau) {}
+  ReadinjoyTabFrame$21(ReadinjoyTabFrame paramReadinjoyTabFrame, VideoInfo paramVideoInfo, rna paramrna) {}
   
   public void run()
   {
@@ -22,28 +23,28 @@ class ReadinjoyTabFrame$21
     {
       try
       {
-        JSONObject localJSONObject = pay.a();
-        localJSONObject.put("kandian_mode", pay.e());
+        JSONObject localJSONObject = pqf.a();
+        localJSONObject.put("kandian_mode", pqu.a());
         if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
         {
           localJSONObject.put("reddot", i);
-          localJSONObject.put("kandian_mode_new", ofe.a());
-          if ((this.jdField_a_of_type_Rau.a() != 1) || (TextUtils.isEmpty(this.jdField_a_of_type_Rau.a()))) {
+          localJSONObject.put("kandian_mode_new", omx.a());
+          if ((this.jdField_a_of_type_Rna.a() != 1) || (TextUtils.isEmpty(this.jdField_a_of_type_Rna.a()))) {
             break label219;
           }
-          String str1 = this.jdField_a_of_type_Rau.a();
+          String str1 = this.jdField_a_of_type_Rna.a();
           localJSONObject.put("skin_id", str1);
           if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
           {
             str1 = this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g;
             localJSONObject.put("rwokey", str1);
-            localJSONObject.put("diandianfeeds_type", RecommendFeedsDiandianEntranceManager.a().a());
-            odq.a(this.this$0.a, "CliOper", "", "", "0X8007DB0", "0X8007DB0", 0, 0, "5", "", "", localJSONObject.toString(), false);
+            localJSONObject.put("diandianfeeds_type", RecommendFeedsDiandianEntranceManager.a().b());
+            olh.a(this.this$0.a, "CliOper", "", "", "0X8007DB0", "0X8007DB0", 0, 0, "5", "", "", localJSONObject.toString(), false);
             if (QLog.isColorLevel()) {
               QLog.d("Q.readinjoy.4tab", 2, "reportForVideoEntranceRedDotButtonClicked has finished,  r5: " + localJSONObject.toString());
             }
             if (ReadinjoyTabFrame.a(this.this$0) != null) {
-              rwh.b(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+              sij.b(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
             }
           }
           else
@@ -67,7 +68,7 @@ class ReadinjoyTabFrame$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.21
  * JD-Core Version:    0.7.0.1
  */

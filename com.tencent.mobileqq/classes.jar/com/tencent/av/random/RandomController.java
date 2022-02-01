@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.text.TextUtils;
-import bcef;
+import bdla;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.PopupDialog;
@@ -14,25 +14,25 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import lbu;
-import lcp;
-import lez;
-import lfa;
-import lsg;
-import lsh;
-import lsi;
-import lsk;
-import lsl;
-import lsm;
-import lsn;
+import lbz;
+import lcu;
+import lfe;
+import lff;
 import lst;
 import lsu;
-import lsw;
-import lzb;
-import mra;
-import msc;
-import mse;
-import msw;
+import lsv;
+import lsx;
+import lsy;
+import lsz;
+import lta;
+import ltg;
+import lth;
+import ltj;
+import lzr;
+import mrx;
+import msz;
+import mtb;
+import mtt;
 
 public class RandomController
 {
@@ -46,12 +46,12 @@ public class RandomController
   private RandomWebProtocol jdField_a_of_type_ComTencentAvRandomRandomWebProtocol;
   private Runnable jdField_a_of_type_JavaLangRunnable = new RandomController.3(this);
   public String a;
-  private List<lsm> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<lsz> jdField_a_of_type_JavaUtilList = new ArrayList();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  public lez a;
-  private lsn jdField_a_of_type_Lsn = new lsg(this);
-  private msc jdField_a_of_type_Msc;
-  private mse jdField_a_of_type_Mse = new lsi(this);
+  public lfe a;
+  private lta jdField_a_of_type_Lta = new lst(this);
+  private msz jdField_a_of_type_Msz;
+  private mtb jdField_a_of_type_Mtb = new lsv(this);
   public boolean a;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private long[] jdField_a_of_type_ArrayOfLong;
@@ -102,18 +102,18 @@ public class RandomController
     }
     int n = -1;
     int m;
-    if ((!this.jdField_a_of_type_Lez.f()) && (!this.jdField_a_of_type_Lez.g()))
+    if ((!this.jdField_a_of_type_Lfe.f()) && (!this.jdField_a_of_type_Lfe.g()))
     {
       m = n;
-      if (!this.jdField_a_of_type_Lez.j()) {}
+      if (!this.jdField_a_of_type_Lfe.j()) {}
     }
     else
     {
       if (this.jdField_g_of_type_Boolean) {
         break label147;
       }
-      this.jdField_a_of_type_Lez.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_c_of_type_JavaLangString;
-      m = this.jdField_a_of_type_ComTencentAvVideoController.a(0L, this.jdField_a_of_type_Lez.jdField_d_of_type_JavaLangString, 0, 4, this.jdField_a_of_type_Lez.i, this.jdField_a_of_type_Lez.jdField_j_of_type_JavaLangString, this.jdField_a_of_type_Lez.a(), this.jdField_c_of_type_Int, this.jdField_a_of_type_Lez.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_Lez.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_Lez.jdField_a_of_type_ArrayOfByte, this.jdField_c_of_type_JavaLangString, null, 0, 0, null, null);
+      this.jdField_a_of_type_Lfe.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_c_of_type_JavaLangString;
+      m = this.jdField_a_of_type_ComTencentAvVideoController.a(0L, this.jdField_a_of_type_Lfe.jdField_d_of_type_JavaLangString, 0, 4, this.jdField_a_of_type_Lfe.i, this.jdField_a_of_type_Lfe.jdField_j_of_type_JavaLangString, this.jdField_a_of_type_Lfe.a(), this.jdField_c_of_type_Int, this.jdField_a_of_type_Lfe.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_Lfe.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_Lfe.jdField_a_of_type_ArrayOfByte, this.jdField_c_of_type_JavaLangString, null, 0, 0, null, null);
     }
     label147:
     do
@@ -122,10 +122,10 @@ public class RandomController
       {
         return m;
         m = n;
-      } while (!this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_b_of_type_Boolean);
+      } while (!this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_b_of_type_Boolean);
       m = n;
-    } while (!TextUtils.equals(this.jdField_a_of_type_Lez.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_c_of_type_JavaLangString));
-    return this.jdField_a_of_type_ComTencentAvVideoController.a(0L, this.jdField_a_of_type_Lez.jdField_d_of_type_JavaLangString, 0, 4);
+    } while (!TextUtils.equals(this.jdField_a_of_type_Lfe.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_c_of_type_JavaLangString));
+    return this.jdField_a_of_type_ComTencentAvVideoController.a(0L, this.jdField_a_of_type_Lfe.jdField_d_of_type_JavaLangString, 0, 4);
   }
   
   private int a(boolean paramBoolean)
@@ -156,15 +156,15 @@ public class RandomController
         this.jdField_a_of_type_Long = this.jdField_a_of_type_ArrayOfLong[this.k];
         this.k += 1;
       } while (this.jdField_a_of_type_Long == 0L);
-      String str = this.jdField_a_of_type_Lez.jdField_c_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = lbu.a(this.jdField_d_of_type_Int, String.valueOf(this.jdField_a_of_type_Long), new int[0]);
-      lbu.a().a(str, this.jdField_b_of_type_JavaLangString);
-      msw localmsw = msw.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      if ((localmsw != null) && (localmsw.a())) {
-        localmsw.a(str, this.jdField_b_of_type_JavaLangString);
+      String str = this.jdField_a_of_type_Lfe.jdField_c_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = lbz.a(this.jdField_d_of_type_Int, String.valueOf(this.jdField_a_of_type_Long), new int[0]);
+      lbz.a().a(str, this.jdField_b_of_type_JavaLangString);
+      mtt localmtt = mtt.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      if ((localmtt != null) && (localmtt.a())) {
+        localmtt.a(str, this.jdField_b_of_type_JavaLangString);
       }
-      this.jdField_a_of_type_Msc.a(this.jdField_b_of_type_JavaLangString);
-      n = this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_d_of_type_Int, this.jdField_a_of_type_Long, this.jdField_e_of_type_Int, this.jdField_a_of_type_Lez.jdField_a_of_type_ArrayOfLong, false);
+      this.jdField_a_of_type_Msz.a(this.jdField_b_of_type_JavaLangString);
+      n = this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_d_of_type_Int, this.jdField_a_of_type_Long, this.jdField_e_of_type_Int, this.jdField_a_of_type_Lfe.jdField_a_of_type_ArrayOfLong, false);
       if (QLog.isColorLevel()) {
         QLog.d("RandomController", 2, "startOrEnterGAudio: ret(" + n + ")==0 mCurrGroupId(" + this.jdField_a_of_type_Long + ") mRelationType(" + this.jdField_d_of_type_Int + ") mBusinessId(" + this.jdField_e_of_type_Int + ")");
       }
@@ -184,7 +184,7 @@ public class RandomController
   
   private String a(int paramInt)
   {
-    String str2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695257);
+    String str2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695474);
     int n = paramInt / 86400;
     int i1 = paramInt % 86400 / 3600;
     int m = paramInt % 3600 / 60;
@@ -269,11 +269,11 @@ public class RandomController
     this.jdField_b_of_type_Boolean = false;
   }
   
-  private void a(lst paramlst)
+  private void a(ltg paramltg)
   {
     Object localObject1 = null;
     this.jdField_c_of_type_Int = 1011;
-    if ((paramlst instanceof lsu)) {
+    if ((paramltg instanceof lth)) {
       if (this.jdField_a_of_type_Boolean) {
         if (QLog.isColorLevel()) {
           QLog.w("RandomController", 2, "[1v1] processWebProtocol RspDouble discard this push");
@@ -284,31 +284,31 @@ public class RandomController
     {
       return;
       this.jdField_a_of_type_Boolean = true;
-      Object localObject2 = (lsu)paramlst;
-      a(((lsu)localObject2).jdField_b_of_type_JavaLangString, ((lsu)localObject2).jdField_c_of_type_JavaLangString, ((lsu)localObject2).jdField_a_of_type_ArrayOfByte, ((lsu)localObject2).jdField_e_of_type_JavaLangString, ((lsu)localObject2).jdField_a_of_type_AndroidGraphicsBitmap, ((lsu)localObject2).jdField_d_of_type_JavaLangString, ((lsu)localObject2).jdField_f_of_type_Int);
+      Object localObject2 = (lth)paramltg;
+      a(((lth)localObject2).jdField_b_of_type_JavaLangString, ((lth)localObject2).jdField_c_of_type_JavaLangString, ((lth)localObject2).jdField_a_of_type_ArrayOfByte, ((lth)localObject2).jdField_e_of_type_JavaLangString, ((lth)localObject2).jdField_a_of_type_AndroidGraphicsBitmap, ((lth)localObject2).jdField_d_of_type_JavaLangString, ((lth)localObject2).jdField_f_of_type_Int);
       this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString);
       do
       {
-        localObject2 = this.jdField_a_of_type_Lez.jdField_c_of_type_JavaLangString;
-        this.jdField_b_of_type_JavaLangString = lbu.a(3, this.jdField_d_of_type_JavaLangString, new int[0]);
-        lbu.a().a((String)localObject2, this.jdField_b_of_type_JavaLangString);
+        localObject2 = this.jdField_a_of_type_Lfe.jdField_c_of_type_JavaLangString;
+        this.jdField_b_of_type_JavaLangString = lbz.a(3, this.jdField_d_of_type_JavaLangString, new int[0]);
+        lbz.a().a((String)localObject2, this.jdField_b_of_type_JavaLangString);
         if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
         {
-          msw localmsw = msw.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-          if ((localmsw != null) && (localmsw.a())) {
-            localmsw.a((String)localObject2, this.jdField_b_of_type_JavaLangString);
+          mtt localmtt = mtt.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+          if ((localmtt != null) && (localmtt.a())) {
+            localmtt.a((String)localObject2, this.jdField_b_of_type_JavaLangString);
           }
         }
-        if (this.jdField_a_of_type_Msc != null) {
-          this.jdField_a_of_type_Msc.a(this.jdField_b_of_type_JavaLangString);
+        if (this.jdField_a_of_type_Msz != null) {
+          this.jdField_a_of_type_Msz.a(this.jdField_b_of_type_JavaLangString);
         }
-        if ((this.jdField_a_of_type_Lez.jdField_j_of_type_Int != 1011) && (!TextUtils.equals(this.jdField_a_of_type_Lez.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString)) && (this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_b_of_type_Boolean))
+        if ((this.jdField_a_of_type_Lfe.jdField_j_of_type_Int != 1011) && (!TextUtils.equals(this.jdField_a_of_type_Lfe.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString)) && (this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_b_of_type_Boolean))
         {
-          this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Lez.jdField_d_of_type_JavaLangString, 221);
+          this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Lfe.jdField_d_of_type_JavaLangString, 221);
           this.jdField_a_of_type_ComTencentAvVideoController.b(221);
         }
         if ((this.jdField_h_of_type_JavaLangString != null) && (!TextUtils.isEmpty(this.jdField_h_of_type_JavaLangString))) {
-          this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_e_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentAvVideoController.a().getString(2131695273) + this.jdField_h_of_type_JavaLangString);
+          this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_e_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentAvVideoController.a().getString(2131695490) + this.jdField_h_of_type_JavaLangString);
         }
         if (this.jdField_f_of_type_Int != 1) {
           break label984;
@@ -321,19 +321,19 @@ public class RandomController
         }
         QLog.d("RandomController", 2, "uin is empty");
         return;
-      } while (!(paramlst instanceof lsw));
-      localObject2 = (lsw)paramlst;
+      } while (!(paramltg instanceof ltj));
+      localObject2 = (ltj)paramltg;
       if (QLog.isColorLevel()) {
         QLog.d("RandomController", 2, "processWebProtocol RspMulti [random room owner]");
       }
-      if (((lsw)localObject2).jdField_f_of_type_Int > 0) {
+      if (((ltj)localObject2).jdField_f_of_type_Int > 0) {
         this.jdField_b_of_type_Boolean = true;
       }
       for (;;)
       {
-        this.jdField_e_of_type_Int = ((lsw)localObject2).jdField_g_of_type_Int;
-        this.jdField_g_of_type_JavaLangString = ((lsw)localObject2).jdField_c_of_type_JavaLangString;
-        this.jdField_h_of_type_Boolean = ((lsw)localObject2).jdField_a_of_type_Boolean;
+        this.jdField_e_of_type_Int = ((ltj)localObject2).jdField_g_of_type_Int;
+        this.jdField_g_of_type_JavaLangString = ((ltj)localObject2).jdField_c_of_type_JavaLangString;
+        this.jdField_h_of_type_Boolean = ((ltj)localObject2).jdField_a_of_type_Boolean;
         if ((TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) && (this.jdField_h_of_type_Boolean)) {
           this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 7000L);
         }
@@ -345,7 +345,7 @@ public class RandomController
         }
         QLog.d("RandomController", 2, "[random room owner] processWebProtocol RspMulti mRoomOwnerUin = " + this.jdField_g_of_type_JavaLangString + ",mRoomOwnerEnable = " + this.jdField_h_of_type_Boolean);
         break;
-        if (((lsw)localObject2).jdField_f_of_type_Int == 0) {
+        if (((ltj)localObject2).jdField_f_of_type_Int == 0) {
           this.jdField_b_of_type_Boolean = false;
         }
       }
@@ -364,21 +364,21 @@ public class RandomController
       }
       try
       {
-        paramlst = mra.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2);
-        if (paramlst != null) {
-          this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_a_of_type_AndroidGraphicsBitmap = paramlst;
+        paramltg = mrx.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2);
+        if (paramltg != null) {
+          this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_a_of_type_AndroidGraphicsBitmap = paramltg;
         }
-        this.jdField_a_of_type_Lez.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
-        this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_b_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+        this.jdField_a_of_type_Lfe.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+        this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_b_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
         for (;;)
         {
-          this.jdField_a_of_type_Lez.a(-1032L, "processWebProtocol", this.jdField_h_of_type_Int);
-          this.jdField_a_of_type_Lez.jdField_j_of_type_Int = this.jdField_c_of_type_Int;
-          this.jdField_a_of_type_Lez.S = true;
-          this.jdField_a_of_type_Lez.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-          this.jdField_a_of_type_Lez.N = false;
-          this.jdField_a_of_type_Lez.jdField_f_of_type_Int = this.jdField_h_of_type_Int;
-          this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_c_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+          this.jdField_a_of_type_Lfe.a(-1032L, "processWebProtocol", this.jdField_h_of_type_Int);
+          this.jdField_a_of_type_Lfe.jdField_j_of_type_Int = this.jdField_c_of_type_Int;
+          this.jdField_a_of_type_Lfe.S = true;
+          this.jdField_a_of_type_Lfe.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+          this.jdField_a_of_type_Lfe.N = false;
+          this.jdField_a_of_type_Lfe.jdField_f_of_type_Int = this.jdField_h_of_type_Int;
+          this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_c_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
           if (QLog.isColorLevel()) {
             QLog.d("RandomController", 2, "processWebProtocol  uinType = " + this.jdField_c_of_type_Int + " # peerUin = " + this.jdField_d_of_type_JavaLangString + " # signature = " + this.jdField_a_of_type_ArrayOfByte + " # BeginSessionType = " + this.jdField_h_of_type_Int + " # nickName = " + this.jdField_e_of_type_JavaLangString + " # roomTopic = " + this.jdField_c_of_type_JavaLangString + " # topTips = " + this.jdField_h_of_type_JavaLangString + ", isMask: " + this.jdField_b_of_type_Boolean);
           }
@@ -386,18 +386,18 @@ public class RandomController
             this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
           }
           PopupDialog.a();
-          paramlst = this.jdField_a_of_type_JavaUtilList.iterator();
-          while (paramlst.hasNext()) {
-            ((lsm)paramlst.next()).a();
+          paramltg = this.jdField_a_of_type_JavaUtilList.iterator();
+          while (paramltg.hasNext()) {
+            ((lsz)paramltg.next()).a();
           }
           bool = false;
           break label591;
           label948:
           a(this.jdField_d_of_type_JavaLangString);
-          paramlst = a(this.jdField_d_of_type_JavaLangString, false);
-          if (paramlst != null)
+          paramltg = a(this.jdField_d_of_type_JavaLangString, false);
+          if (paramltg != null)
           {
-            this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_a_of_type_AndroidGraphicsBitmap = paramlst;
+            this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_a_of_type_AndroidGraphicsBitmap = paramltg;
             continue;
             label984:
             if (this.jdField_f_of_type_Int == 2)
@@ -405,22 +405,22 @@ public class RandomController
               this.jdField_h_of_type_Int = 3;
               this.jdField_d_of_type_Int = 7;
               this.k = 0;
-              if (!(paramlst instanceof lsw)) {
+              if (!(paramltg instanceof ltj)) {
                 break label1316;
               }
-              paramlst = ((lsw)paramlst).jdField_b_of_type_JavaLangString;
-              if ((paramlst == null) || (paramlst.equals(""))) {
+              paramltg = ((ltj)paramltg).jdField_b_of_type_JavaLangString;
+              if ((paramltg == null) || (paramltg.equals(""))) {
                 break;
               }
-              paramlst = paramlst.split(",");
-              this.jdField_a_of_type_ArrayOfLong = new long[paramlst.length];
+              paramltg = paramltg.split(",");
+              this.jdField_a_of_type_ArrayOfLong = new long[paramltg.length];
               int m = 0;
               for (;;)
               {
-                if (m < paramlst.length) {
+                if (m < paramltg.length) {
                   try
                   {
-                    this.jdField_a_of_type_ArrayOfLong[m] = Long.parseLong(paramlst[m].trim());
+                    this.jdField_a_of_type_ArrayOfLong[m] = Long.parseLong(paramltg[m].trim());
                     m += 1;
                   }
                   catch (NumberFormatException localNumberFormatException)
@@ -434,16 +434,16 @@ public class RandomController
                 }
               }
               if ((this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 4)) {
-                this.jdField_a_of_type_Lez.jdField_g_of_type_Long = this.jdField_a_of_type_Long;
+                this.jdField_a_of_type_Lfe.jdField_g_of_type_Long = this.jdField_a_of_type_Long;
               }
               if (QLog.isColorLevel()) {
                 QLog.d("RandomController", 2, "[random room owner] mRelationType = " + this.jdField_d_of_type_Int);
               }
-              this.jdField_a_of_type_Lez.F = this.jdField_d_of_type_Int;
-              this.jdField_a_of_type_Lez.jdField_e_of_type_Boolean = false;
-              this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_a_of_type_JavaLangString = null;
-              this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_b_of_type_JavaLangString = null;
-              this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_a_of_type_Boolean = false;
+              this.jdField_a_of_type_Lfe.F = this.jdField_d_of_type_Int;
+              this.jdField_a_of_type_Lfe.jdField_e_of_type_Boolean = false;
+              this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_a_of_type_JavaLangString = null;
+              this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_b_of_type_JavaLangString = null;
+              this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_a_of_type_Boolean = false;
             }
           }
         }
@@ -465,27 +465,27 @@ public class RandomController
         a(false);
         return;
       }
-      catch (OutOfMemoryError paramlst)
+      catch (OutOfMemoryError paramltg)
       {
         for (;;)
         {
-          paramlst = localNumberFormatException;
+          paramltg = localNumberFormatException;
         }
       }
-      catch (Exception paramlst)
+      catch (Exception paramltg)
       {
         for (;;)
         {
-          paramlst = localNumberFormatException;
+          paramltg = localNumberFormatException;
           continue;
           label1316:
-          paramlst = null;
+          paramltg = null;
         }
       }
     }
   }
   
-  private void b(lst paramlst)
+  private void b(ltg paramltg)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     if (this.jdField_a_of_type_Int == -3) {
@@ -493,22 +493,22 @@ public class RandomController
     }
     PopupDialog.a();
     if (this.jdField_f_of_type_Int == 2) {
-      bcef.b(null, "CliOper", "", "", "0X8005728", "0X8005728", 0, 0, "", "", "", "");
+      bdla.b(null, "CliOper", "", "", "0X8005728", "0X8005728", 0, 0, "", "", "", "");
     }
     for (;;)
     {
       this.jdField_a_of_type_Int = -3;
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((lsm)((Iterator)localObject).next()).a();
+        ((lsz)((Iterator)localObject).next()).a();
       }
       if (this.jdField_f_of_type_Int == 1) {
-        bcef.b(null, "CliOper", "", "", "0X8005726", "0X8005726", 0, 0, "", "", "", "");
+        bdla.b(null, "CliOper", "", "", "0X8005726", "0X8005726", 0, 0, "", "", "", "");
       }
     }
     Object localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getApplicationContext();
-    this.jdField_i_of_type_Int = paramlst.jdField_e_of_type_Int;
-    PopupDialog.b((Context)localObject, 230, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695258), a(this.jdField_i_of_type_Int), 2131719509, 0, null, new lsk(this));
+    this.jdField_i_of_type_Int = paramltg.jdField_e_of_type_Int;
+    PopupDialog.b((Context)localObject, 230, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695475), a(this.jdField_i_of_type_Int), 2131719961, 0, null, new lsx(this));
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_d_of_type_JavaLangRunnable, 60000L);
     this.jdField_i_of_type_Int -= 60;
   }
@@ -541,16 +541,16 @@ public class RandomController
     {
       return;
       if (this.jdField_f_of_type_Int == 1) {
-        bcef.b(null, "CliOper", "", "", "0X80053B3", "0X80053B3", 0, 0, "", "", "", "");
+        bdla.b(null, "CliOper", "", "", "0X80053B3", "0X80053B3", 0, 0, "", "", "", "");
       }
-      while (!this.jdField_a_of_type_Lez.l())
+      while (!this.jdField_a_of_type_Lfe.l())
       {
         Context localContext = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getApplicationContext();
-        PopupDialog.b(localContext, 230, null, localContext.getString(2131695260), 2131719459, 2131695366, new lsl(this), new lsh(this));
+        PopupDialog.b(localContext, 230, null, localContext.getString(2131695477), 2131719911, 2131695583, new lsy(this), new lsu(this));
         this.jdField_i_of_type_Boolean = true;
         return;
         if (this.jdField_f_of_type_Int == 2) {
-          bcef.b(null, "CliOper", "", "", "0X80053BF", "0X80053BF", 0, 0, "", "", "", "");
+          bdla.b(null, "CliOper", "", "", "0X80053BF", "0X80053BF", 0, 0, "", "", "", "");
         }
       }
     }
@@ -559,8 +559,8 @@ public class RandomController
   public int a(String paramString)
   {
     int m = -1;
-    if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin().equals(paramString)) && (this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_d_of_type_Int != -1)) {
-      m = this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_d_of_type_Int;
+    if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin().equals(paramString)) && (this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_d_of_type_Int != -1)) {
+      m = this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_d_of_type_Int;
     }
     do
     {
@@ -640,8 +640,8 @@ public class RandomController
   
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_Msc != null) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
-      this.jdField_a_of_type_Msc.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramString);
+    if ((this.jdField_a_of_type_Msz != null) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
+      this.jdField_a_of_type_Msz.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramString);
     }
   }
   
@@ -652,19 +652,19 @@ public class RandomController
     }
     this.jdField_a_of_type_Boolean = false;
     this.jdField_h_of_type_JavaLangString = null;
-    if (this.jdField_a_of_type_Msc == null)
+    if (this.jdField_a_of_type_Msz == null)
     {
-      this.jdField_a_of_type_Msc = msc.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      this.jdField_a_of_type_Msc.a(this.jdField_a_of_type_Mse);
+      this.jdField_a_of_type_Msz = msz.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      this.jdField_a_of_type_Msz.a(this.jdField_a_of_type_Mtb);
     }
-    if (this.jdField_a_of_type_Lez == null)
+    if (this.jdField_a_of_type_Lfe == null)
     {
       this.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-      if (!lbu.a().a(this.jdField_b_of_type_JavaLangString)) {
-        this.jdField_a_of_type_Lez = lbu.a().a(this.jdField_b_of_type_JavaLangString, false);
+      if (!lbz.a().a(this.jdField_b_of_type_JavaLangString)) {
+        this.jdField_a_of_type_Lfe = lbz.a().a(this.jdField_b_of_type_JavaLangString, false);
       }
     }
-    if (this.jdField_a_of_type_Lez == null)
+    if (this.jdField_a_of_type_Lfe == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("RandomController", 2, "start random matching mSessionInfo is null!");
@@ -675,8 +675,8 @@ public class RandomController
     if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() != null)) {
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 7000L);
     }
-    if (this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_b_of_type_Int != 2) {
-      this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_b_of_type_Int = 1;
+    if (this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_b_of_type_Int != 2) {
+      this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_b_of_type_Int = 1;
     }
     if (this.jdField_f_of_type_Int == 1) {
       if (!this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol.a())
@@ -685,16 +685,16 @@ public class RandomController
         if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() != null)) {
           this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_e_of_type_JavaLangRunnable, 2000L);
         }
-        this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_b_of_type_Int, 1, this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_d_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_b_of_type_Int, 1, this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_d_of_type_JavaLangString);
       }
     }
     for (;;)
     {
       label271:
-      if (this.jdField_a_of_type_Lez != null)
+      if (this.jdField_a_of_type_Lfe != null)
       {
-        this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_d_of_type_Boolean = this.jdField_b_of_type_Boolean;
-        this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+        this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_d_of_type_Boolean = this.jdField_b_of_type_Boolean;
+        this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
         return;
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
         this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol.a(this.jdField_g_of_type_Int, this.jdField_j_of_type_Int, 1, new String[0]);
@@ -713,7 +713,7 @@ public class RandomController
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_b_of_type_Int, 3, this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_d_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_b_of_type_Int, 3, this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_d_of_type_JavaLangString);
       break label271;
       break;
       label427:
@@ -746,15 +746,15 @@ public class RandomController
         } while (!QLog.isColorLevel());
         QLog.d("RandomController", 2, "stop random matching mType is invalid!");
         return;
-        if (this.jdField_a_of_type_Lez != null) {
+        if (this.jdField_a_of_type_Lfe != null) {
           break;
         }
       } while (!QLog.isColorLevel());
       QLog.d("RandomController", 2, "stop random matching mSessionInfo = null!");
       return;
-      Object localObject = msw.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      Object localObject = mtt.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
       if (localObject != null) {
-        ((msw)localObject).a(this.jdField_b_of_type_JavaLangString);
+        ((mtt)localObject).a(this.jdField_b_of_type_JavaLangString);
       }
       this.jdField_a_of_type_ComTencentAvVideoController.s();
       if (this.jdField_a_of_type_Int == 1) {
@@ -769,32 +769,32 @@ public class RandomController
       if (this.jdField_f_of_type_Int == 1)
       {
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvRandomRandomController$RequestFetchRunnable);
-        localObject = this.jdField_a_of_type_Lez.jdField_d_of_type_JavaLangString;
+        localObject = this.jdField_a_of_type_Lfe.jdField_d_of_type_JavaLangString;
         if ((this.jdField_d_of_type_JavaLangString != null) && (this.jdField_d_of_type_JavaLangString.equals(localObject)))
         {
           this.jdField_a_of_type_ComTencentAvVideoController.a((String)localObject, 223);
           this.jdField_a_of_type_ComTencentAvVideoController.b(223);
-          if (this.jdField_a_of_type_Lez.z == -1) {
-            this.jdField_a_of_type_Lez.z = 0;
+          if (this.jdField_a_of_type_Lfe.z == -1) {
+            this.jdField_a_of_type_Lfe.z = 0;
           }
-          this.jdField_a_of_type_Lez.t = true;
-          this.jdField_a_of_type_Lez.jdField_g_of_type_Boolean = false;
-          this.jdField_a_of_type_ComTencentAvVideoController.b((String)localObject, this.jdField_a_of_type_Lez.z);
+          this.jdField_a_of_type_Lfe.t = true;
+          this.jdField_a_of_type_Lfe.jdField_g_of_type_Boolean = false;
+          this.jdField_a_of_type_ComTencentAvVideoController.b((String)localObject, this.jdField_a_of_type_Lfe.z);
         }
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_Msc != null)
+        if (this.jdField_a_of_type_Msz != null)
         {
-          this.jdField_a_of_type_Msc.a();
-          this.jdField_a_of_type_Msc = null;
+          this.jdField_a_of_type_Msz.a();
+          this.jdField_a_of_type_Msz = null;
         }
         this.jdField_a_of_type_Int = 4;
-        lbu.a().a().jdField_a_of_type_Lfa.jdField_b_of_type_Int = 0;
+        lbz.a().a().jdField_a_of_type_Lff.jdField_b_of_type_Int = 0;
         this.jdField_a_of_type_ComTencentAvVideoController.a(0, 0, null);
         localObject = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((lsm)((Iterator)localObject).next()).a();
+          ((lsz)((Iterator)localObject).next()).a();
         }
         if (this.jdField_f_of_type_Int == 2)
         {
@@ -806,21 +806,21 @@ public class RandomController
             localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
             this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol.a(this.jdField_g_of_type_Int, 4, (String)localObject, a((String)localObject), this.jdField_a_of_type_Long);
           }
-          this.jdField_a_of_type_Lez.jdField_a_of_type_Lfa.jdField_f_of_type_Boolean = false;
+          this.jdField_a_of_type_Lfe.jdField_a_of_type_Lff.jdField_f_of_type_Boolean = false;
           this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_d_of_type_Int, this.jdField_a_of_type_Long, 90);
         }
       }
       if (QLog.isColorLevel()) {
         QLog.d("RandomController", 2, "stop random matching mSessionId = " + this.jdField_b_of_type_JavaLangString);
       }
-      if ((this.jdField_d_of_type_JavaLangString != null) && (this.jdField_d_of_type_JavaLangString.equals(lbu.a().a().jdField_d_of_type_JavaLangString))) {
-        lbu.a().a().b(0L);
+      if ((this.jdField_d_of_type_JavaLangString != null) && (this.jdField_d_of_type_JavaLangString.equals(lbz.a().a().jdField_d_of_type_JavaLangString))) {
+        lbz.a().a().b(0L);
       }
-      lbu.a().a().a();
-      lbu.a().a(-1042L, this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_Lez = null;
+      lbz.a().a().a();
+      lbz.a().a(-1042L, this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_Lfe = null;
       this.jdField_b_of_type_JavaLangString = null;
-      lzb.a(0L, 4, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+      lzr.a(0L, 4, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
     } while (!QLog.isColorLevel());
     QLog.d("RandomController", 2, "stop random matching end");
   }

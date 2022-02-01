@@ -1,31 +1,83 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoReaderConf;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
 import java.util.List;
 
 public class vzs
-  extends QQUIEventReceiver<vzf, wci>
 {
-  public vzs(@NonNull vzf paramvzf)
+  public int a;
+  public List<QQUserUIItem> a;
+  public List<Long> b;
+  
+  public vzs(AppInterface paramAppInterface, qqstory_struct.VideoReaderConf paramVideoReaderConf)
   {
-    super(paramvzf);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramVideoReaderConf.ban_type.get();
+    List localList = paramVideoReaderConf.user_list.get();
+    paramVideoReaderConf = paramVideoReaderConf.user_unionid_list.get();
+    wke localwke = (wke)wjs.a(2);
+    if ((localList != null) && (!localList.isEmpty()) && (paramVideoReaderConf != null) && (!paramVideoReaderConf.isEmpty()) && (localList.size() == paramVideoReaderConf.size()))
+    {
+      int j = localList.size();
+      this.jdField_a_of_type_JavaUtilList = new ArrayList(j);
+      int i = 0;
+      while (i < j)
+      {
+        String str = String.valueOf(localList.get(i));
+        Object localObject = ((ByteStringMicro)paramVideoReaderConf.get(i)).toStringUtf8();
+        localwke.a((String)localObject, str);
+        localObject = a(paramAppInterface, (String)localObject, str, false);
+        if (localObject != null) {
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, "StoryPlayVideoPrivacyActivity " + i + ": qq = " + str + ", user = " + localObject);
+        }
+        i += 1;
+      }
+    }
   }
   
-  public void a(@NonNull vzf paramvzf, @NonNull wci paramwci)
+  private static QQUserUIItem a(AppInterface paramAppInterface, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwci.jdField_a_of_type_JavaUtilList != null) && (!paramwci.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      paramvzf.a.b(paramwci);
+    QQUserUIItem localQQUserUIItem = new QQUserUIItem();
+    localQQUserUIItem.qq = paramString2;
+    localQQUserUIItem.uid = paramString1;
+    paramAppInterface = ((anvk)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(String.valueOf(paramString2));
+    if (paramAppInterface == null) {
+      return null;
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: " + paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", userUIItems = " + paramwci.jdField_a_of_type_JavaUtilList);
+    localQQUserUIItem.nickName = paramAppInterface.name;
+    localQQUserUIItem.remark = paramAppInterface.remark;
+    return localQQUserUIItem;
   }
   
-  public Class acceptEventClass()
+  public String toString()
   {
-    return wci.class;
+    int j = 0;
+    StringBuilder localStringBuilder = new StringBuilder().append("QQStoryBanInfo banType = ").append(this.jdField_a_of_type_Int).append(", uinSize = ");
+    if (this.jdField_a_of_type_JavaUtilList == null)
+    {
+      i = 0;
+      localStringBuilder = localStringBuilder.append(i).append(", grouplistSize =");
+      if (this.b != null) {
+        break label78;
+      }
+    }
+    label78:
+    for (int i = j;; i = this.b.size())
+    {
+      return i;
+      i = this.jdField_a_of_type_JavaUtilList.size();
+      break;
+    }
   }
 }
 

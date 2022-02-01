@@ -1,25 +1,80 @@
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import java.util.HashMap;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 
-class blgb
-  implements ThreadPool.Job<Void>
+public class blgb
 {
-  blgb(blfu paramblfu, Long paramLong, NetReq paramNetReq) {}
+  private TypedArray a;
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public blgb(TypedArray paramTypedArray)
   {
-    paramJobContext = (blfr)blfu.a(this.jdField_a_of_type_Blfu).get(this.jdField_a_of_type_JavaLangLong);
-    if ((paramJobContext == null) || (paramJobContext.d())) {
-      blfu.a(this.jdField_a_of_type_Blfu, this.jdField_a_of_type_JavaLangLong.longValue());
+    this.a = paramTypedArray;
+  }
+  
+  public int a(int paramInt1, int paramInt2)
+  {
+    int i = paramInt2;
+    if (paramInt1 >= 0) {
+      i = this.a.getInt(paramInt1, paramInt2);
     }
-    for (;;)
-    {
-      return null;
-      blfu.b(this.jdField_a_of_type_Blfu).sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq);
+    return i;
+  }
+  
+  public Drawable a(int paramInt)
+  {
+    if (paramInt >= 0) {
+      return this.a.getDrawable(paramInt);
     }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.a.recycle();
+  }
+  
+  public boolean a(int paramInt, boolean paramBoolean)
+  {
+    boolean bool = paramBoolean;
+    if (paramInt >= 0) {
+      bool = this.a.getBoolean(paramInt, paramBoolean);
+    }
+    return bool;
+  }
+  
+  public CharSequence[] a(int paramInt)
+  {
+    if (paramInt >= 0) {
+      return this.a.getTextArray(paramInt);
+    }
+    return null;
+  }
+  
+  public int b(int paramInt1, int paramInt2)
+  {
+    int i = paramInt2;
+    if (paramInt1 >= 0) {
+      i = this.a.getColor(paramInt1, paramInt2);
+    }
+    return i;
+  }
+  
+  public int c(int paramInt1, int paramInt2)
+  {
+    int i = paramInt2;
+    if (paramInt1 >= 0) {
+      i = this.a.getDimensionPixelSize(paramInt1, paramInt2);
+    }
+    return i;
+  }
+  
+  public int hashCode()
+  {
+    return this.a.hashCode();
+  }
+  
+  public String toString()
+  {
+    return this.a.toString();
   }
 }
 

@@ -1,38 +1,37 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import java.util.concurrent.ConcurrentHashMap;
 
-class auiu
-  extends RecyclerView.AdapterDataObserver
+public class auiu
 {
-  auiu(auit paramauit) {}
+  private static auiu jdField_a_of_type_Auiu;
+  public static String a;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new auiv(this, "Module_WeiyunDownloadService");
+  private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void onChanged()
+  public static auiu a()
   {
-    super.onChanged();
-    this.a.notifyDataSetChanged();
+    if (jdField_a_of_type_Auiu == null) {}
+    try
+    {
+      jdField_a_of_type_Auiu = new auiu();
+      return jdField_a_of_type_Auiu;
+    }
+    finally {}
   }
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  private QQAppInterface a()
   {
-    super.onItemRangeChanged(paramInt1, paramInt2);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2);
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    return null;
   }
   
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  public QIPCModule a()
   {
-    super.onItemRangeInserted(paramInt1, paramInt2);
-    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2 + paramInt3);
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeRemoved(paramInt1, paramInt2);
-    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
 }
 

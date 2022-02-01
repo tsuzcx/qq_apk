@@ -1,78 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqlj
-  extends aptq<String>
 {
-  @NonNull
-  public String a(int paramInt)
-  {
-    return "";
-  }
+  @avyw(a="isShowAssistantEntrance")
+  public int a;
+  @avyw(a="kuolieAIOEnable")
+  public int b;
   
-  @Nullable
-  public String a(aptx[] paramArrayOfaptx)
+  public static aqlj a(String paramString)
   {
+    aqlj localaqlj = (aqlj)avyx.a(paramString, aqlj.class);
     if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onParsed");
+      if ("parse: " + localaqlj == null) {
+        break label52;
+      }
     }
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0)) {
-      paramArrayOfaptx = null;
-    }
-    String str;
-    do
+    label52:
+    for (paramString = localaqlj.toString();; paramString = " C2CShortcutBarConfBean is null")
     {
-      return paramArrayOfaptx;
-      str = paramArrayOfaptx[0].a;
-      paramArrayOfaptx = str;
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoDrawConfProcessor", 2, " onParsed, content:" + str);
-    return str;
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onUpdate");
+      QLog.d("C2CShortcutBarConfBean", 2, paramString);
+      return localaqlj;
     }
   }
   
-  public Class<String> clazz()
+  public boolean a()
   {
-    return String.class;
+    return this.a == 1;
   }
   
-  public boolean isNeedCompressed()
+  public boolean b()
   {
-    return true;
+    return this.b == 1;
   }
   
-  public boolean isNeedStoreLargeFile()
+  public String toString()
   {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onReqFailed");
-    }
-  }
-  
-  public int type()
-  {
-    return 462;
+    return "C2CShortcutBarConfBean{isShowAssistantEntrance = " + this.a + "kuolieAIOEnable = " + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqlj
  * JD-Core Version:    0.7.0.1
  */

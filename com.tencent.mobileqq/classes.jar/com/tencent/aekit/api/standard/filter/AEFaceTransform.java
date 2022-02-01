@@ -118,6 +118,11 @@ public class AEFaceTransform
   
   public Frame render(Frame paramFrame)
   {
+    if (((this.mAllFacePoints == null) || (this.mAllFacePoints.size() == 0) || (this.faceAttr.getAllFacePoints() == null) || (this.faceAttr.getAllFacePoints().size() == 0)) && (this.faceAttr.getReusedFaceAttr() != null))
+    {
+      this.faceAttr = this.faceAttr.getReusedFaceAttr();
+      setFaceStatus(this.faceAttr.getAllFacePoints(), this.faceAttr.getAllFaceAngles(), this.faceAttr.getFaceStatusList(), this.mFaceScale, this.mPhoneRotate);
+    }
     if ((this.mBeautyTransformList != null) && (this.mIsApplied)) {
       paramFrame = this.mBeautyTransformList.process(paramFrame, this.mAllFacePoints, this.mStatusList, this.mFaceScale, this.mFacesAngles, this.mPhoneRotate, this.mIsAgeDetectOn);
     }

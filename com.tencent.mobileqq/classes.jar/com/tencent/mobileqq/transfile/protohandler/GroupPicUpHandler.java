@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
 import android.text.TextUtils;
+import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -34,7 +34,7 @@ public class GroupPicUpHandler
 {
   int mReqNetType;
   
-  private void handleSucResult(amwm paramamwm, cmd0x388.TryUpImgRsp paramTryUpImgRsp, RichProto.RichProtoResp.GroupPicUpResp paramGroupPicUpResp)
+  private void handleSucResult(anza paramanza, cmd0x388.TryUpImgRsp paramTryUpImgRsp, RichProto.RichProtoResp.GroupPicUpResp paramGroupPicUpResp)
   {
     paramGroupPicUpResp.groupFileID = paramTryUpImgRsp.uint64_fileid.get();
     List localList;
@@ -99,7 +99,7 @@ public class GroupPicUpHandler
       if ((paramTryUpImgRsp.bool_new_big_chan.has()) && (paramTryUpImgRsp.bool_new_big_chan.get() == true)) {
         paramGroupPicUpResp.isUseBdh = true;
       }
-      setResult(0, 0, "", "", paramamwm, paramGroupPicUpResp);
+      setResult(0, 0, "", "", paramanza, paramGroupPicUpResp);
       return;
     }
   }
@@ -185,7 +185,7 @@ public class GroupPicUpHandler
     }
   }
   
-  protected void handleSucResp(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, amwm paramamwm, ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  protected void handleSucResp(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, anza paramanza, ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
     try
     {
@@ -196,7 +196,7 @@ public class GroupPicUpHandler
     }
     catch (Exception paramFromServiceMsg)
     {
-      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramFromServiceMsg.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramamwm, paramRichProtoResp.resps);
+      setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramFromServiceMsg.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, paramRichProtoResp.resps);
     }
     for (;;)
     {
@@ -220,7 +220,7 @@ public class GroupPicUpHandler
             if (i != 0) {
               break label284;
             }
-            handleSucResult(paramamwm, paramProtoResp, localGroupPicUpResp);
+            handleSucResult(paramanza, paramProtoResp, localGroupPicUpResp);
           }
           catch (Exception paramProtoResp) {}
         }
@@ -232,7 +232,7 @@ public class GroupPicUpHandler
             RichProto.RichProtoResp.GroupPicUpResp localGroupPicUpResp = null;
           }
         }
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramamwm, localGroupPicUpResp);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(paramArrayOfByte), paramanza, localGroupPicUpResp);
         continue;
         label284:
         if (shouldRetryByRetCode(i))
@@ -244,7 +244,7 @@ public class GroupPicUpHandler
             return;
           }
         }
-        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", paramamwm, localGroupPicUpResp);
+        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", paramanza, localGroupPicUpResp);
       }
     }
   }

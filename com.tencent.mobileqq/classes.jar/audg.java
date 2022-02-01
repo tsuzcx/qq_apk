@@ -1,74 +1,50 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.4;
 
 public class audg
-  implements afrc
+  implements aude
 {
-  private bjve jdField_a_of_type_Bjve = new audh(this);
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  public boolean a;
+  public audg(FMSettings.4 param4) {}
   
-  public audg(BaseChatPie paramBaseChatPie)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-  }
-  
-  public static audg a(BaseChatPie paramBaseChatPie)
-  {
-    return (audg)paramBaseChatPie.getHelper(6);
-  }
-  
-  private void b(XEditTextEx paramXEditTextEx)
-  {
-    try
+    synchronized (this.a.this$0)
     {
-      paramXEditTextEx.b(this.jdField_a_of_type_Bjve);
+      audf localaudf2 = this.a.this$0;
+      localaudf2.jdField_a_of_type_Int += 1;
+      audf.a(1, "onMovedOver,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
+      {
+        audf.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_Aude.a();
+      }
       return;
     }
-    catch (Throwable paramXEditTextEx) {}
   }
   
   public void a(int paramInt)
   {
-    if (paramInt == 3) {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input);
-    }
-    do
+    synchronized (this.a.this$0)
     {
-      return;
-      if (paramInt == 13)
+      audf localaudf2 = this.a.this$0;
+      localaudf2.jdField_a_of_type_Int += 1;
+      audf.a(1, "onMoveFail,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
       {
-        b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input);
-        return;
+        audf.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_Aude.a(16);
       }
-    } while (paramInt != 5);
-    bjnm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo);
-  }
-  
-  public void a(XEditTextEx paramXEditTextEx)
-  {
-    try
-    {
-      paramXEditTextEx.a(this.jdField_a_of_type_Bjve);
       return;
     }
-    catch (Throwable paramXEditTextEx)
-    {
-      paramXEditTextEx.printStackTrace();
-    }
   }
   
-  public int[] a()
+  public void a(long paramLong1, long paramLong2)
   {
-    return new int[] { 3, 13, 5 };
+    audf localaudf = this.a.this$0;
+    localaudf.jdField_a_of_type_Long += paramLong1;
+    this.a.jdField_a_of_type_Aude.a(this.a.this$0.jdField_a_of_type_Long, this.a.this$0.b);
   }
   
-  public void b(int paramInt)
-  {
-    if (paramInt >= 30) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
+  public void a(String paramString1, String paramString2) {}
 }
 
 

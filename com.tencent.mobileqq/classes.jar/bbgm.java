@@ -1,22 +1,6 @@
-class bbgm
+public abstract interface bbgm
 {
-  int jdField_a_of_type_Int;
-  CharSequence jdField_a_of_type_JavaLangCharSequence;
-  int b;
-  
-  public bbgm(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = -1;
-    this.b = 0;
-  }
-  
-  public bbgm(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a();
 }
 
 

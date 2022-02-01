@@ -1,223 +1,147 @@
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.richmedia.segment.VideoSend.1;
-import com.tencent.mobileqq.richmedia.segment.VideoSend.2;
-import com.tencent.mobileqq.richmedia.segment.VideoSend.3;
-import com.tencent.mobileqq.richmedia.segment.VideoSend.4;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.LightVideoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Random;
-import mqq.os.MqqHandler;
-import tencent.im.msg.im_msg_body.RichText;
 
 public class baie
-  extends baia
-  implements ayeo
 {
-  public int a;
-  public ayep a;
-  baid jdField_a_of_type_Baid;
-  public QQAppInterface a;
-  public MessageForLightVideo a;
-  public LightVideoUploadProcessor a;
-  TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
-  public ArrayList<baid> a;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManagerV2.getSubThreadLooper());
-  boolean jdField_a_of_type_Boolean = false;
-  public int b;
-  public long b;
-  public baid b;
-  protected String b;
-  public ArrayList<baid> b;
-  boolean b;
-  public baid c;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  long jdField_b_of_type_Long;
+  int[] jdField_b_of_type_ArrayOfInt = new int[2];
   
-  public baie(long paramLong)
+  public baie(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, long paramLong)
   {
-    super(paramLong);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaLangString = Long.toString((int)(System.currentTimeMillis() / 1000L) << 32 | Math.abs(new Random().nextInt()));
+    this.jdField_b_of_type_ArrayOfInt[0] = paramInt1;
+    this.jdField_b_of_type_ArrayOfInt[1] = paramInt2;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
   }
   
-  private MessageForLightVideo a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  private void b()
   {
-    paramBundle = (SessionInfo)paramBundle.getParcelable("PhotoConst.SEND_SESSION_INFO");
-    paramQQAppInterface = bbli.a(paramQQAppInterface, paramBundle.curFriendUin, paramBundle.troopUin, paramBundle.curType);
-    paramBundle = a();
-    if (FileUtil.fileExistsAndNotEmpty(paramBundle))
-    {
-      Object localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(paramBundle);
-      paramQQAppInterface.thumbWidth = ((BitmapFactory.Options)localObject).outWidth;
-      paramQQAppInterface.thumbHeight = ((BitmapFactory.Options)localObject).outHeight;
-      paramQQAppInterface.thumbMD5 = barq.a(paramBundle);
-      paramQQAppInterface.thumbFileSize = ((int)new File(paramBundle).length());
-      localObject = ShortVideoUtils.getShortVideoThumbPicPath(paramQQAppInterface.thumbMD5, "jpg");
-      FileUtils.copyFile(paramBundle, (String)localObject);
-      paramQQAppInterface.mThumbFilePath = ((String)localObject);
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0);
+    this.jdField_a_of_type_ArrayOfInt[0] = localSharedPreferences.getInt("avaliableflowxg", this.jdField_b_of_type_ArrayOfInt[0]);
+    this.jdField_a_of_type_ArrayOfInt[1] = localSharedPreferences.getInt("avaliableflowifi", this.jdField_b_of_type_ArrayOfInt[1]);
+    this.jdField_a_of_type_Long = localSharedPreferences.getLong("lastdaymillion", 0L);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PttPreSendManager", 4, "PttPreFlowController.loadCfg, lastDayMillion " + this.jdField_a_of_type_Long);
     }
-    paramQQAppInterface.lastModified = 0L;
-    paramQQAppInterface.fileSource = "camera";
-    paramQQAppInterface.extraflag = 32772;
-    paramQQAppInterface.videoFileStatus = 999;
-    paramQQAppInterface.videoFileFormat = 2;
-    paramQQAppInterface.videoFileProgress = 0;
-    paramQQAppInterface.busiType = 1;
-    paramQQAppInterface.fileType = 327689;
-    paramQQAppInterface.fromChatType = -1;
-    paramQQAppInterface.toChatType = -1;
-    paramQQAppInterface.uiOperatorFlag = 1;
-    paramQQAppInterface.mPreUpload = true;
-    paramQQAppInterface.serial();
-    return paramQQAppInterface;
-  }
-  
-  public static TransferRequest a(MessageForLightVideo paramMessageForLightVideo)
-  {
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.mRec = paramMessageForLightVideo;
-    localTransferRequest.mSelfUin = paramMessageForLightVideo.selfuin;
-    localTransferRequest.mPeerUin = paramMessageForLightVideo.frienduin;
-    localTransferRequest.mUinType = paramMessageForLightVideo.istroop;
-    localTransferRequest.mUniseq = paramMessageForLightVideo.uniseq;
-    localTransferRequest.mFileType = paramMessageForLightVideo.fileType;
-    localTransferRequest.mThumbPath = paramMessageForLightVideo.mThumbFilePath;
-    localTransferRequest.mThumbMd5 = paramMessageForLightVideo.thumbMD5;
-    localTransferRequest.mIsUp = true;
-    localTransferRequest.mBusiType = paramMessageForLightVideo.busiType;
-    return localTransferRequest;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo != null) && (!this.jdField_b_of_type_Boolean))
+    BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0).edit().putInt("avaliableflowxg", this.jdField_a_of_type_ArrayOfInt[0]).putInt("avaliableflowifi", this.jdField_a_of_type_ArrayOfInt[1]).commit();
+  }
+  
+  public void a(boolean paramBoolean, long paramLong)
+  {
+    int i;
+    int[] arrayOfInt;
+    if (paramBoolean)
     {
+      i = 1;
+      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      arrayOfInt[i] = ((int)(arrayOfInt[i] + paramLong));
+      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      if (this.jdField_a_of_type_ArrayOfInt[i] <= this.jdField_b_of_type_ArrayOfInt[i]) {
+        break label128;
+      }
+    }
+    label128:
+    for (int j = this.jdField_b_of_type_ArrayOfInt[i];; j = this.jdField_a_of_type_ArrayOfInt[i])
+    {
+      arrayOfInt[i] = j;
       if (QLog.isColorLevel()) {
-        QLog.d("VideoSend", 2, "addMsg");
-      }
-      this.jdField_b_of_type_Boolean = true;
-      Object localObject = (bahm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(326);
-      ((bahm)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.uniseq);
-      ((bahm)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo, null);
-      if (this.jdField_a_of_type_ComTencentMobileqqTransfileLightVideoUploadProcessor != null)
-      {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileLightVideoUploadProcessor.getFileMsg();
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoSend", 2, "check processor status:" + ((FileMsg)localObject).status);
-        }
-        if (((FileMsg)localObject).status == 1007) {
-          this.jdField_a_of_type_ComTencentMobileqqTransfileLightVideoUploadProcessor.sendMsg(false);
-        }
-      }
-    }
-  }
-  
-  public void a(baid parambaid)
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new VideoSend.2(this, parambaid));
-  }
-  
-  public void a(baid parambaid, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new VideoSend.1(this, parambaid, paramBundle));
-  }
-  
-  public void a(LightVideoUploadProcessor paramLightVideoUploadProcessor)
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new VideoSend.3(this, paramLightVideoUploadProcessor));
-  }
-  
-  public boolean a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoSend", 2, "checkAllSliceDone, mThumbInfo:" + this.jdField_a_of_type_Baid + " mAudioInfo:" + this.jdField_b_of_type_Baid);
-    }
-    return (this.jdField_a_of_type_Baid != null) && (this.jdField_b_of_type_Baid != null);
-  }
-  
-  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
-  {
-    return null;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileLightVideoUploadProcessor != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoSend", 2, "cancelTask");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTransfileLightVideoUploadProcessor.cancel();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileLightVideoUploadProcessor = null;
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-    }
-  }
-  
-  public void b(baid parambaid, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Baid = parambaid;
-    paramBundle = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
-    paramBundle.uniseq = Long.parseLong(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo = paramBundle;
-    TransferRequest localTransferRequest = a(paramBundle);
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (localTransferRequest.mIsPresend = true;; localTransferRequest.mIsPresend = false)
-    {
-      localTransferRequest.mUpCallBack = this;
-      localTransferRequest.extraObject = this;
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = localTransferRequest;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
-      parambaid.jdField_b_of_type_JavaLangString = paramBundle.thumbMD5;
-      parambaid.a = paramBundle.thumbFileSize;
-      a(parambaid);
-      if (this.jdField_a_of_type_Boolean) {
-        a();
+        QLog.d("PttPreSendManager", 2, "doOnRealSend : guess hit, give back  " + paramLong + ", avaliableFlow " + this.jdField_a_of_type_ArrayOfInt[i] + ", iswifi " + paramBoolean);
       }
       return;
+      i = 0;
+      break;
     }
   }
   
-  public boolean b()
+  public boolean a(boolean paramBoolean)
   {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_Ayep != null) && (this.c != null))
+    int i;
+    int j;
+    if (paramBoolean)
+    {
+      i = 1;
+      if (!paramBoolean) {
+        break label249;
+      }
+      j = 10000;
+      label14:
+      long l = System.currentTimeMillis();
+      if ((this.jdField_a_of_type_Long <= 0L) || (l <= this.jdField_a_of_type_Long) || (l - this.jdField_a_of_type_Long >= this.jdField_b_of_type_Long))
+      {
+        this.jdField_a_of_type_ArrayOfInt[0] = this.jdField_b_of_type_ArrayOfInt[0];
+        this.jdField_a_of_type_ArrayOfInt[1] = this.jdField_b_of_type_ArrayOfInt[1];
+        if (QLog.isColorLevel()) {
+          QLog.d("PttPreSendManager", 2, "check flow : refresh flow avalia， limitation xg: " + this.jdField_b_of_type_ArrayOfInt[0] + ", wifi: " + this.jdField_b_of_type_ArrayOfInt[1]);
+        }
+        this.jdField_a_of_type_Long = l;
+        BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0).edit().putLong("lastdaymillion", this.jdField_a_of_type_Long).commit();
+      }
+      if (this.jdField_a_of_type_ArrayOfInt[i] < j) {
+        break label256;
+      }
+    }
+    label256:
+    for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("VideoSend", 2, "destroy");
+        QLog.e("PttPreSendManager", 2, "check flow : support ? " + bool + " iswifi : " + paramBoolean);
       }
-      bahz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+      return bool;
+      i = 0;
+      break;
+      label249:
+      j = 4000;
+      break label14;
     }
   }
   
-  public void onSend(ayep paramayep)
+  public boolean a(boolean paramBoolean, long paramLong)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new VideoSend.4(this, paramayep));
+    boolean bool = true;
+    int i;
+    int[] arrayOfInt;
+    if (paramBoolean)
+    {
+      i = 1;
+      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      arrayOfInt[i] = ((int)(arrayOfInt[i] - paramLong));
+      if (this.jdField_a_of_type_ArrayOfInt[i] < 0) {
+        break label143;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PttPreSendManager", 2, "flow consume result : " + bool + " flow " + paramLong + ", avaliableFlow " + this.jdField_a_of_type_ArrayOfInt[i] + ", iswifi " + paramBoolean);
+      }
+      i = this.jdField_a_of_type_Int + 1;
+      this.jdField_a_of_type_Int = i;
+      if (i >= 3)
+      {
+        a();
+        this.jdField_a_of_type_Int = 0;
+      }
+      return bool;
+      i = 0;
+      break;
+      label143:
+      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      arrayOfInt[i] = ((int)(arrayOfInt[i] + paramLong));
+      bool = false;
+    }
   }
-  
-  public void updateMsg(ayep paramayep) {}
 }
 
 

@@ -1,38 +1,27 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class ozg
-  implements INetInfoHandler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class ozg
+  implements ViewBase.OnClickListener
 {
-  public void onNetMobile2None() {}
+  ozg(pcf parampcf, pdp parampdp) {}
   
-  public void onNetMobile2Wifi(String paramString)
+  public final void onClick(ViewBase paramViewBase)
   {
-    QLog.d("KBPreDownloadUtils", 2, "[onNetMobile2Wifi] ");
-    AppNetConnInfo.unregisterNetInfoHandler(oze.a());
-    oze.a();
-  }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    QLog.d("KBPreDownloadUtils", 2, "[onNetNone2Wifi] ");
-    AppNetConnInfo.unregisterNetInfoHandler(oze.a());
-    oze.a();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2Mobile] pause download");
-    biby.a().a("101480433");
-  }
-  
-  public void onNetWifi2None()
-  {
-    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2None] pause download");
-    biby.a().a("101480433");
+    ArrayList localArrayList = new ArrayList();
+    Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "viewBase");
+    localArrayList.add(paramViewBase.getEventAttachedData());
+    QLog.d("CommentProteusUtil", 2, "comment media url : " + paramViewBase.getEventAttachedData());
+    bfxp.a((Activity)this.jdField_a_of_type_Pcf.a(), 0, localArrayList, true, "", 1888);
+    if (this.jdField_a_of_type_Pcf.a() != null) {
+      this.jdField_a_of_type_Pcf.a().f(this.jdField_a_of_type_Pdp);
+    }
   }
 }
 

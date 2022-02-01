@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.arengine;
 
 import android.os.Build;
-import aoji;
+import apmk;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
@@ -12,15 +12,15 @@ public class ARReport$1
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    if (aoji.a(this.this$0, this.a)) {
+    if (apmk.a(this.this$0, this.a)) {
       localHashMap.put("total_render_all_time", String.valueOf(this.a));
     }
-    if (aoji.a(this.this$0, this.b)) {
+    if (apmk.a(this.this$0, this.b)) {
       localHashMap.put("total_render_success_time", String.valueOf(this.b));
     }
     localHashMap.put("buildmodel", Build.MODEL);
-    localHashMap.put("cpuNumber", String.valueOf(aoji.a()));
-    localHashMap.put("totalram", aoji.a(BaseApplication.getContext()));
+    localHashMap.put("cpuNumber", String.valueOf(apmk.a()));
+    localHashMap.put("totalram", apmk.a(BaseApplication.getContext()));
     localHashMap.put("cpuname", this.this$0.a());
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AndroidactARTotal", true, this.a, 0L, localHashMap, "");
   }

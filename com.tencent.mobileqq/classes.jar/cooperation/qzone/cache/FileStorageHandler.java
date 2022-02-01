@@ -157,7 +157,7 @@ public class FileStorageHandler
     if (!shouldShowWarning()) {
       return;
     }
-    QQToast.a(BaseApplication.getContext(), 2131689937, 1).a();
+    QQToast.a(BaseApplication.getContext(), 2131689966, 1).a();
   }
   
   private boolean shouldShowWarning()

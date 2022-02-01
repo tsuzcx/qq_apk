@@ -1,6 +1,5 @@
 package cooperation.liveroom;
 
-import anbg;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -19,11 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bgtl;
-import bgtn;
-import bgyb;
-import bgyf;
-import bhkb;
+import aodv;
+import bied;
+import bief;
+import biit;
+import biix;
+import biur;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.haoliyou.JefsClass;
@@ -38,14 +38,14 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
-import nko;
+import nro;
 
 public class LiveRoomWebViewBuilder
-  extends bgtl
+  extends bied
 {
   public static final String TAG = "LiveRoomWebViewBuilder";
   private final WebAccelerateHelper.CommonJsPluginFactory LIVEROOM_COMMON_JS = new LiveRoomWebViewBuilder.1(this);
-  protected nko authConfig = nko.a();
+  protected nro authConfig = nro.a();
   private boolean loading;
   private ArrayList<WebViewPlugin> mBussinessPluginList;
   private View mContentView;
@@ -83,31 +83,31 @@ public class LiveRoomWebViewBuilder
   @TargetApi(14)
   public View buildLayoutOnly()
   {
-    View localView = LayoutInflater.from(this.mContext).inflate(2131562992, null);
-    this.mViewRoot = localView.findViewById(2131381027);
+    View localView = LayoutInflater.from(this.mContext).inflate(2131563068, null);
+    this.mViewRoot = localView.findViewById(2131381386);
     if (this.mViewRoot == null) {
       return localView;
     }
     if ((this.bNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1) && (Build.VERSION.SDK_INT >= 14)) {
       this.mViewRoot.setFitsSystemWindows(this.bFitSystemWindow);
     }
-    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131378747));
-    this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131363641));
-    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131381046));
-    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131376213));
-    this.maskView = this.mViewRoot.findViewById(2131381049);
-    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131365083));
+    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131379040));
+    this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131363710));
+    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131381405));
+    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131376461));
+    this.maskView = this.mViewRoot.findViewById(2131381408);
+    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131365167));
     if ((this.mIntent != null) && (!this.mIntent.getBooleanExtra("webview_hide_progress", false)))
     {
-      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131373019));
-      this.mProgressBarController = new bhkb();
+      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131373229));
+      this.mProgressBarController = new biur();
       this.mLoadingProgressBar.setController(this.mProgressBarController);
       if ((this.mIsFirstOnPageStart) && (this.mProgressBarController != null) && (this.mProgressBarController.b() != 0)) {
         this.mProgressBarController.a((byte)0);
       }
     }
     this.mWebview = new TouchWebView(this.mContext);
-    this.mWebview.setId(2131381043);
+    this.mWebview.setId(2131381402);
     WebSettings localWebSettings = this.mWebview.getSettings();
     String str1 = " gflive/" + this.sdkVersion;
     StringBuilder localStringBuilder = new StringBuilder();
@@ -116,7 +116,7 @@ public class LiveRoomWebViewBuilder
     if (this.mWebview.getX5WebViewExtension() != null) {}
     for (boolean bool = true;; bool = false)
     {
-      localWebSettings.setUserAgentString(bgyb.a(str2, str3, bool) + " gflivesdk" + str1);
+      localWebSettings.setUserAgentString(biit.a(str2, str3, bool) + " gflivesdk" + str1);
       localWebSettings.setMixedContentMode(0);
       this.webviewContainer.addView(this.mWebview, new RelativeLayout.LayoutParams(-1, -1));
       return localView;
@@ -126,10 +126,10 @@ public class LiveRoomWebViewBuilder
   public void buildTitleBar()
   {
     this.titleContainer.setBackgroundColor(getResources().getColor(17170445));
-    bgtn localbgtn = new bgtn();
-    localbgtn.a = this.webviewContainer;
-    localbgtn.b = this.titleContainer;
-    setTittlebarImmersive(true, localbgtn);
+    bief localbief = new bief();
+    localbief.a = this.webviewContainer;
+    localbief.b = this.titleContainer;
+    setTittlebarImmersive(true, localbief);
   }
   
   public Object doInterceptRequest(WebView paramWebView, String paramString)
@@ -163,7 +163,7 @@ public class LiveRoomWebViewBuilder
     return this.LIVEROOM_COMMON_JS;
   }
   
-  public void onImmersive(boolean paramBoolean, bgtn parambgtn)
+  public void onImmersive(boolean paramBoolean, bief parambief)
   {
     if (QLog.isColorLevel()) {
       QLog.d("LiveRoomWebViewBuilder", 2, "onImmersive");
@@ -173,8 +173,8 @@ public class LiveRoomWebViewBuilder
       if (this.mSystemBarComp != null) {
         this.mSystemBarComp.setgetStatusBarVisible(false, 0);
       }
-      if (parambgtn.b != null) {
-        parambgtn.b.getBackground().setAlpha(0);
+      if (parambief.b != null) {
+        parambief.b.getBackground().setAlpha(0);
       }
     }
     do
@@ -183,8 +183,8 @@ public class LiveRoomWebViewBuilder
       if (this.mSystemBarComp != null) {
         this.mSystemBarComp.setgetStatusBarVisible(true, 0);
       }
-      if (parambgtn.b != null) {
-        parambgtn.b.setBackgroundResource(2130850016);
+      if (parambief.b != null) {
+        parambief.b.setBackgroundResource(2130850109);
       }
     } while (this.mTitleBar == null);
     this.mTitleBar.a(255, 0);
@@ -248,7 +248,7 @@ public class LiveRoomWebViewBuilder
             localObject1 = ((ActivityInfo)localObject3).packageName;
           }
           localObject3 = this.mInActivity.getClass().getName();
-          anbg.a("scheme", paramWebView.getUrl(), (String)localObject1, "1", "web", (String)localObject3);
+          aodv.a("scheme", paramWebView.getUrl(), (String)localObject1, "1", "web", (String)localObject3);
         }
         catch (Exception paramWebView)
         {

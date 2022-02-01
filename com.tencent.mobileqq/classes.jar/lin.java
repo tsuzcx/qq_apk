@@ -1,108 +1,146 @@
-import android.graphics.PointF;
+import com.tencent.av.app.VideoAppInterface;
 
 public class lin
+  extends lgp
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = null;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = null;
-  int c = 0;
-  int d = 0;
-  int e = 0;
-  int f = 0;
-  int g = 0;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private lip jdField_a_of_type_Lip;
+  private lio[] jdField_a_of_type_ArrayOfLio = new lio[16];
   
-  public PointF a(PointF paramPointF)
+  public lin(VideoAppInterface paramVideoAppInterface)
   {
-    if ((!a()) || (paramPointF == null)) {
-      return null;
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_Lip = new lip(paramVideoAppInterface);
+  }
+  
+  private lio a(int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_ArrayOfLio[paramInt];
+    if (localObject1 != null) {
+      return localObject1;
     }
-    float f1 = paramPointF.x * this.d;
-    float f2 = paramPointF.y * this.c;
-    float f4 = this.jdField_a_of_type_Int;
-    float f3 = this.jdField_b_of_type_Int;
-    f4 = (f4 + f1) / this.f;
-    f3 = (f3 + f2) / this.e;
-    lil.a("getSmallPointInBigScreen: " + f1 + "|" + f2 + "|" + f4 + "|" + f3 + "|" + this.jdField_a_of_type_Int + "|" + this.jdField_b_of_type_Int);
-    return new PointF(f4, f3);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      lio locallio = this.jdField_a_of_type_ArrayOfLio[paramInt];
+      localObject1 = locallio;
+      if (locallio == null)
+      {
+        locallio = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
+        localObject1 = locallio;
+        if (locallio != null)
+        {
+          this.jdField_a_of_type_ArrayOfLio[paramInt] = locallio;
+          localObject1 = locallio;
+        }
+      }
+      return localObject1;
+    }
   }
   
-  public String a()
+  private lio a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    long l1 = System.currentTimeMillis();
+    Object localObject = null;
+    switch (paramInt)
+    {
+    default: 
+      localObject = this.jdField_a_of_type_Lip;
+    }
+    for (;;)
+    {
+      if (localObject != null) {
+        ((lio)localObject).a();
+      }
+      long l2 = System.currentTimeMillis();
+      lbd.f("EffectSupportManager", "create Manager,cost time:" + (l2 - l1));
+      return localObject;
+      localObject = new lis(paramVideoAppInterface);
+      continue;
+      localObject = new liq(paramVideoAppInterface);
+      continue;
+      localObject = new lir(paramVideoAppInterface);
+    }
   }
+  
+  public int a(int paramInt, String paramString)
+  {
+    int i = 1;
+    lio locallio = a(paramInt);
+    paramInt = i;
+    if (locallio != null) {
+      paramInt = locallio.a(paramString);
+    }
+    return paramInt;
+  }
+  
+  protected void a() {}
   
   public void a(int paramInt)
   {
-    this.g = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    int i;
-    int j;
-    if (this.jdField_b_of_type_JavaLangString != null)
+    int i = 0;
+    while (i < 16)
     {
-      i = 1;
-      if ((this.e <= 0) || (this.f <= 0)) {
-        break label60;
+      if ((paramInt == 255) || (paramInt == i))
+      {
+        lio locallio = a(i);
+        if (locallio != null) {
+          locallio.b();
+        }
       }
-      j = 1;
-      label25:
-      if ((this.c <= 0) || (this.d <= 0)) {
-        break label65;
-      }
+      i += 1;
     }
-    label60:
-    label65:
-    for (int k = 1;; k = 0)
+  }
+  
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    lbd.f("EffectSupportManager", "EffectFaceSupportManager onSessionStatusChanged " + paramInt);
+    switch (paramInt)
     {
-      if ((i == 0) || (j == 0) || (k == 0)) {
-        break label70;
-      }
-      return true;
-      i = 0;
-      break;
-      j = 0;
-      break label25;
+    case 2: 
+    default: 
+      return;
+    case 1: 
+      a(255);
+      return;
     }
-    label70:
+    b();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, String paramString)
+  {
+    lio locallio = a(paramInt1);
+    if (locallio != null) {
+      return locallio.a(paramInt2, paramString);
+    }
     return false;
   }
   
-  public String b()
+  public boolean a(int paramInt, String paramString)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    boolean bool = true;
+    lio locallio = a(paramInt);
+    if (locallio != null) {
+      bool = locallio.a(paramString);
+    }
+    return bool;
   }
   
-  public void b(int paramInt1, int paramInt2)
+  protected boolean a(String paramString)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
+    return true;
   }
   
-  public void c(int paramInt1, int paramInt2)
+  public void b()
   {
-    this.e = paramInt1;
-    this.f = paramInt2;
+    int i = 0;
+    while (i < 16)
+    {
+      lio locallio = a(i);
+      if (locallio != null) {
+        locallio.c();
+      }
+      i += 1;
+    }
   }
 }
 

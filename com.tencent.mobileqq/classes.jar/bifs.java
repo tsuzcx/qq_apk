@@ -1,219 +1,124 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.open.wadl.WadlJsBridgeCall.1;
-import com.tencent.open.wadl.WadlJsBridgeDownloadInfo;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.util.Pair;
-import cooperation.wadl.ipc.WadlParams;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
 
-public class bifs
+class bifs
+  extends biim
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private static Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
-  
-  public bifs(Activity paramActivity, WebView paramWebView)
+  bifs(bifq parambifq, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+    super(paramInt);
   }
   
-  private void a(WadlParams paramWadlParams)
+  public int a()
   {
-    bifn.a("WadlJsBridgeCall", 2, "dispatchAction wadlParams:" + paramWadlParams);
-    switch (paramWadlParams.jdField_b_of_type_Int)
-    {
-    case 6: 
-    case 7: 
-    case 8: 
-    case 9: 
-    case 11: 
-    default: 
-      return;
-    case 2: 
-    case 12: 
-      bldt.a().a(paramWadlParams);
-      if (this.jdField_a_of_type_AndroidAppActivity == null) {
-        break;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("WebViewModule", 2, "TASK_ID_BROWSER_ACTIVITY_RUN_ONCE.");
     }
-    for (Object localObject = this.jdField_a_of_type_AndroidAppActivity.getIntent();; localObject = null)
+    long l;
+    boolean bool7;
+    boolean bool8;
+    boolean bool9;
+    boolean bool10;
+    boolean bool6;
+    if (Build.VERSION.SDK_INT < 19)
     {
-      Pair localPair = abet.a((Intent)localObject);
-      if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null)
+      l = System.currentTimeMillis();
+      bool7 = false;
+      bool8 = false;
+      bool9 = false;
+      bool10 = false;
+      bool6 = false;
+      bool2 = bool6;
+      bool3 = bool7;
+      bool4 = bool8;
+      bool5 = bool9;
+    }
+    for (;;)
+    {
+      try
       {
-        localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView.getUrl();
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView.getOriginalUrl();
+        Object localObject = Class.forName("android.webkit.WebViewCore");
+        bool2 = bool6;
+        bool3 = bool7;
+        bool4 = bool8;
+        bool5 = bool9;
+        Field localField = ((Class)localObject).getDeclaredField("sWebCoreHandler");
+        bool2 = bool6;
+        bool3 = bool7;
+        bool4 = bool8;
+        bool5 = bool9;
+        localField.setAccessible(true);
+        bool2 = bool6;
+        bool3 = bool7;
+        bool4 = bool8;
+        bool5 = bool9;
+        localObject = (Handler)localField.get(localObject);
+        bool1 = bool10;
+        if (localObject == null) {
+          continue;
         }
+        bool2 = bool6;
+        bool3 = bool7;
+        bool4 = bool8;
+        bool5 = bool9;
+        localObject = ((Handler)localObject).getLooper();
+        bool1 = bool10;
+        if (localObject == null) {
+          continue;
+        }
+        bool2 = bool6;
+        bool3 = bool7;
+        bool4 = bool8;
+        bool5 = bool9;
+        bool1 = bool10;
+        if (((Looper)localObject).getThread().getState() != Thread.State.WAITING) {
+          continue;
+        }
+        bool1 = true;
       }
-      for (;;)
+      catch (ClassNotFoundException localClassNotFoundException)
       {
-        abet.a(null, "558", "205906", paramWadlParams.jdField_a_of_type_JavaLangString, "55801", "4", "430", new String[] { String.valueOf(localPair.first), (String)localPair.second, paramWadlParams.c, paramWadlParams.e, localObject });
-        return;
-        bldt.a().a(paramWadlParams.d, paramWadlParams.jdField_a_of_type_JavaLangString);
-        return;
-        bldt.a().b(paramWadlParams.d, paramWadlParams.jdField_a_of_type_JavaLangString);
-        return;
-        bldt.a().b(paramWadlParams);
-        return;
+        bool1 = bool2;
+        localClassNotFoundException.printStackTrace();
         continue;
-        localObject = null;
       }
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    jdField_a_of_type_JavaUtilMap.put(paramString, new Boolean(true));
-    jdField_a_of_type_AndroidOsHandler.postDelayed(new WadlJsBridgeCall.1(paramString), 2000L);
-  }
-  
-  private void a(List<WadlJsBridgeDownloadInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(((WadlJsBridgeDownloadInfo)paramList.next()).jdField_a_of_type_JavaLangString);
-    }
-    if (localArrayList.size() > 0) {
-      bldt.a().a(localArrayList);
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    paramString = (Boolean)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {
-      return paramString.booleanValue();
-    }
-    return false;
-  }
-  
-  public static void b(String paramString)
-  {
-    jdField_a_of_type_JavaUtilMap.put(paramString, new Boolean(false));
-  }
-  
-  public int a(String paramString1, boolean paramBoolean, int paramInt, String paramString2)
-  {
-    bifn.c("WadlJsBridgeCall", "doDownloadAction params:" + paramString1 + ",fromWeb:" + paramBoolean + ",from:" + paramInt + ",weburl:" + paramString2);
-    WadlParams localWadlParams = new WadlParams(paramString1);
-    if (localWadlParams.jdField_a_of_type_Boolean) {
-      localWadlParams.a(1);
-    }
-    if (paramInt != 0)
-    {
-      localWadlParams.d = paramInt;
-      localWadlParams.m = paramString2;
-    }
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      localWadlParams.b(8);
-      if ((paramInt == 1) && (!localWadlParams.jdField_a_of_type_Boolean)) {
-        localWadlParams.b(4);
-      }
-    }
-    paramString2 = localWadlParams.jdField_a_of_type_JavaLangString;
-    paramInt = localWadlParams.jdField_b_of_type_Int;
-    if (paramBoolean) {}
-    try
-    {
-      if (localWadlParams.jdField_b_of_type_Boolean)
+      catch (NoSuchFieldException localNoSuchFieldException)
       {
-        abet.c(paramString2, "DELAY_LIST");
-        abet.a(paramString2, paramString1, "DELAY_APPID_DETAIL_");
-        abep.a();
-        return 0;
+        bool1 = bool3;
+        localNoSuchFieldException.printStackTrace();
+        continue;
       }
-      if (!localWadlParams.jdField_a_of_type_Boolean)
+      catch (IllegalAccessException localIllegalAccessException)
       {
-        abet.b(paramString2, "DELAY_LIST");
-        abet.d(paramString2, "DELAY_APPID_DETAIL_");
+        bool1 = bool4;
+        localIllegalAccessException.printStackTrace();
+        continue;
       }
-      if (localWadlParams.jdField_a_of_type_Boolean)
+      catch (ClassCastException localClassCastException)
       {
-        if (a(localWadlParams.h))
-        {
-          bifn.c("WadlJsBridgeCall", "##@Operation for wadlParams.resName:" + localWadlParams.h + " is not returned! The opertion of action: " + paramInt + " is ignored!");
-          return 1;
+        boolean bool1 = bool5;
+        localClassCastException.printStackTrace();
+        continue;
+        if (!bool1) {
+          continue;
         }
-        a(localWadlParams.h);
+        int i = 0;
+        continue;
       }
-      while ((TextUtils.isEmpty(localWadlParams.e)) && (!localWadlParams.jdField_a_of_type_Boolean))
-      {
-        abet.a(null, "558", "202982", paramString2, "55801", "4", "430");
-        bifn.c("WadlJsBridgeCall", "invalid url:" + localWadlParams);
-        return -1;
-        if (a(paramString2))
-        {
-          bifn.c("WadlJsBridgeCall", "##@Operation for appid:" + paramString2 + " is not returned! The opertion of action: " + paramInt + " is ignored!");
-          return 1;
-        }
-        a(paramString2);
+      bool2 = bool1;
+      bool3 = bool1;
+      bool4 = bool1;
+      bool5 = bool1;
+      bdla.b(null, "P_CliOper", "BizTechReport", "", "web", "webcore_wait", 0, 1, i, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("WebViewModule", 2, "check if WebViewCordThread is waiting: " + bool1 + ", cost: " + (System.currentTimeMillis() - l));
       }
-      a(localWadlParams);
+      return 1;
+      i = 1;
     }
-    catch (Exception paramString1)
-    {
-      bifn.a("WadlJsBridgeCall", "doDownloadAction:", paramString1);
-      return -1;
-    }
-    return 0;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      paramString1 = new JSONArray(paramString1);
-      int j = paramString1.length();
-      paramString2 = new ArrayList();
-      int i = 0;
-      while (i < j)
-      {
-        JSONObject localJSONObject = paramString1.getJSONObject(i);
-        WadlJsBridgeDownloadInfo localWadlJsBridgeDownloadInfo = new WadlJsBridgeDownloadInfo();
-        localWadlJsBridgeDownloadInfo.jdField_a_of_type_JavaLangString = localJSONObject.optString("appid");
-        localWadlJsBridgeDownloadInfo.h = localJSONObject.optString("myAppId");
-        localWadlJsBridgeDownloadInfo.i = localJSONObject.optString("apkId");
-        localWadlJsBridgeDownloadInfo.c = localJSONObject.optString("packageName");
-        localWadlJsBridgeDownloadInfo.jdField_b_of_type_Int = localJSONObject.optInt("versionCode");
-        paramString2.add(localWadlJsBridgeDownloadInfo);
-        i += 1;
-      }
-      a(paramString2);
-      return;
-    }
-    catch (JSONException paramString1)
-    {
-      bifn.a("WadlJsBridgeCall", "getQueryDownloadAction(String,String)>>>", paramString1);
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    bifn.c("WadlJsBridgeCall", "startDownload delay task" + paramString + " ," + paramBoolean + "," + paramInt + ",isWiFi=" + AppNetConnInfo.isWifiConn());
-    if (1 == paramInt) {
-      a(paramString, false, 1, "YUYUE");
-    }
-    while (2 != paramInt) {
-      return;
-    }
-    a(paramString, false, 2, "YANCHI");
   }
 }
 

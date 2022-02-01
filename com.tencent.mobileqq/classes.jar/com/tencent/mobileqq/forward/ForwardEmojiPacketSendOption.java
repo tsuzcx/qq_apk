@@ -5,15 +5,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import atky;
-import bcef;
+import aupt;
+import bdla;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import java.util.Set;
 
 public class ForwardEmojiPacketSendOption
-  extends atky
+  extends aupt
 {
   int e;
   
@@ -48,7 +48,7 @@ public class ForwardEmojiPacketSendOption
     this.jdField_a_of_type_AndroidContentIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
     this.jdField_a_of_type_AndroidAppActivity.getSharedPreferences("mobileQQ", 0).edit().putBoolean("FORWARD_EMOPGK_ID", true).commit();
     this.jdField_a_of_type_AndroidAppActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "Clk_send_nonaio_suc", 0, 0, "", "", "", "FORWARD_EMOPGK_ID");
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "Clk_send_nonaio_suc", 0, 0, "", "", "", "FORWARD_EMOPGK_ID");
   }
   
   public boolean a()
@@ -61,7 +61,7 @@ public class ForwardEmojiPacketSendOption
   public void c()
   {
     super.c();
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "Clk_send_nonaio", 0, 0, "", "", "", this.jdField_a_of_type_AndroidContentIntent.getIntExtra("FORWARD_EMOPGK_ID", -1) + "");
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "Clk_send_nonaio", 0, 0, "", "", "", this.jdField_a_of_type_AndroidContentIntent.getIntExtra("FORWARD_EMOPGK_ID", -1) + "");
   }
 }
 

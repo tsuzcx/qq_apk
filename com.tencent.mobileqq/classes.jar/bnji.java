@@ -1,24 +1,92 @@
-import android.graphics.Bitmap;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.ttpic.util.GsonUtils;
+import dov.com.qq.im.ae.cmshow.config.AECMShowConfig;
+import dov.com.qq.im.ae.cmshow.config.AECMShowConfig.RequestConfig;
+import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class bnji
-  implements bngk
 {
-  public bnji(DoodleLayout paramDoodleLayout) {}
+  public static final Type a = new bnjj().getType();
+  public static final Type b = new bnjk().getType();
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public static bnji a()
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
-    }
+    return bnjl.a;
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  @Nullable
+  public static AECMShowConfig a(String paramString)
   {
-    if (this.a.a != null)
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (AECMShowConfig)GsonUtils.json2Obj(paramString, a);
+  }
+  
+  public int a()
+  {
+    return bnqu.a().a("KEY_CMSHOW_IMG_MAX_LENGTH", 763, 0);
+  }
+  
+  @NonNull
+  public HashMap<String, AEEditorDownloadResBean> a()
+  {
+    Object localObject = bnqu.a().a("KEY_CMSHOW_PRE_DOWNLOAD_RES_INFO", "", 0);
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      localObject = AECMShowConfig.DEFAULT_RES_INFO_MAP;
+    }
+    HashMap localHashMap;
+    do
     {
-      xvv.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
-      this.a.a.a(paramArrayOfByte);
+      return localObject;
+      localHashMap = (HashMap)GsonUtils.json2Obj((String)localObject, b);
+      if (localHashMap == null) {
+        break;
+      }
+      localObject = localHashMap;
+    } while (localHashMap.size() >= 2);
+    return AECMShowConfig.DEFAULT_RES_INFO_MAP;
+  }
+  
+  public void a(@Nullable AECMShowConfig paramAECMShowConfig)
+  {
+    if (paramAECMShowConfig == null) {}
+    do
+    {
+      do
+      {
+        return;
+        Object localObject = AECMShowConfig.convert2DownloadBeanMap(paramAECMShowConfig);
+        if (localObject != null)
+        {
+          bnqu.a().a("KEY_CMSHOW_PRE_DOWNLOAD_RES_INFO", GsonUtils.obj2Json(localObject, b), 0);
+          localObject = new LinkedList();
+          ((List)localObject).add("video_limishow_base");
+          bnjd.a().a((List)localObject, null);
+        }
+      } while (paramAECMShowConfig.requestConfig == null);
+      if (paramAECMShowConfig.requestConfig.imgMaxLength > 0) {
+        bnqu.a().a("KEY_CMSHOW_IMG_MAX_LENGTH", paramAECMShowConfig.requestConfig.imgMaxLength, 0);
+      }
+    } while ((paramAECMShowConfig.requestConfig.imgQuality <= 0.0F) || (paramAECMShowConfig.requestConfig.imgQuality > 1.0F));
+    bnqu.a().a("KEY_CMSHOW_IMG_QUALITY", paramAECMShowConfig.requestConfig.imgQuality, 0);
+  }
+  
+  public int b()
+  {
+    float f1 = 0.9F;
+    float f2 = bnqu.a().a("KEY_CMSHOW_IMG_QUALITY", 0.9F, 0);
+    if (f2 <= 0.0F) {}
+    for (;;)
+    {
+      return (int)(f1 * 100.0F);
+      f1 = f2;
     }
   }
 }

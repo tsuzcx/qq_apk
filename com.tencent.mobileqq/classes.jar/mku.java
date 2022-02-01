@@ -1,28 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.ui.QavPanel;
 import com.tencent.av.ui.VideoInviteActivity;
 
 class mku
-  implements DialogInterface.OnClickListener
+  implements mik
 {
-  mku(mks parammks) {}
+  mku(mkt parammkt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    mrd.e(false, false);
-    if (paramDialogInterface != null)
+    if (this.a.a.a != null)
     {
-      paramDialogInterface.dismiss();
-      if ((this.a.a.a != null) && (this.a.a.a.a != null)) {
-        this.a.a.a.a.b();
-      }
+      this.a.a.a.setViewEnable(2131373624, false);
+      this.a.a.a.setViewEnable(2131363128, false);
+      this.a.a.a.setViewEnable(2131363140, false);
+      this.a.a.a.setViewEnable(2131363139, false);
     }
+  }
+  
+  public void b()
+  {
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 2130772177);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mku
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,18 @@
+package dov.com.qq.im.ae.cmshow;
+
+class AECMShowPhotoPreviewFragment$3
+  implements Runnable
+{
+  AECMShowPhotoPreviewFragment$3(AECMShowPhotoPreviewFragment paramAECMShowPhotoPreviewFragment) {}
+  
+  public void run()
+  {
+    AECMShowPhotoPreviewFragment.a(this.this$0).a(AECMShowPhotoPreviewFragment.a(this.this$0));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     dov.com.qq.im.ae.cmshow.AECMShowPhotoPreviewFragment.3
+ * JD-Core Version:    0.7.0.1
+ */

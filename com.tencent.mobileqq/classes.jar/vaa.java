@@ -1,10 +1,13 @@
-import java.util.List;
-
-public abstract interface vaa
+class vaa
 {
-  public abstract void a(int paramInt, String paramString);
+  public String a;
+  public boolean a;
+  public boolean b;
   
-  public abstract void a(List<vaq> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject);
+  public String toString()
+  {
+    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_JavaLangString + '\'' + ", hasResponse='" + this.b + '\'' + '}';
+  }
 }
 
 

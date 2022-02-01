@@ -1,49 +1,10 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class axsz
-  extends anbq
+final class axsz
+  implements DialogInterface.OnClickListener
 {
-  axsz(axsv paramaxsv) {}
-  
-  protected void a(boolean paramBoolean, bcqu parambcqu)
-  {
-    if ((!paramBoolean) || (axsv.a(this.a) == null) || (axsv.a(this.a).isFinishing()) || (axsv.a(this.a) == null) || (parambcqu == null)) {
-      QLog.d("AccountPanel", 1, String.format("onGetBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    do
-    {
-      return;
-      axsv.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountPanel", 2, String.format("onGetBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-  }
-  
-  protected void b(boolean paramBoolean, bcqu parambcqu)
-  {
-    if ((!paramBoolean) || (axsv.a(this.a) == null) || (axsv.a(this.a).isFinishing()) || (axsv.a(this.a) == null) || (parambcqu == null)) {
-      QLog.d("AccountPanel", 1, String.format("onBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    do
-    {
-      return;
-      axsv.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountPanel", 2, String.format("onBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-  }
-  
-  protected void c(boolean paramBoolean, bcqu parambcqu)
-  {
-    if ((!paramBoolean) || (axsv.a(this.a) == null) || (axsv.a(this.a).isFinishing()) || (axsv.a(this.a) == null) || (parambcqu == null)) {
-      QLog.d("AccountPanel", 1, String.format("onUnBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    do
-    {
-      return;
-      axsv.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountPanel", 2, String.format("onUnBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

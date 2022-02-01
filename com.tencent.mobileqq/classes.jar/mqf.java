@@ -1,34 +1,25 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import com.tencent.qphone.base.util.QLog;
 
 class mqf
-  implements View.OnTouchListener
+  implements mql
 {
-  mqf(mqc parammqc) {}
+  mqf(mqb parammqb) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(mqk parammqk)
   {
-    try
+    if (parammqk == this.a.jdField_a_of_type_Mqk)
     {
-      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
-      this.a.a("result_root OnTouch");
-      return true;
+      this.a.jdField_a_of_type_Mqk = null;
+      this.a.jdField_a_of_type_Mql = null;
+      this.a.a("onGetRedBagResult", mqb.d(this.a), parammqk.a);
+      return;
     }
-    catch (Exception paramMotionEvent)
-    {
-      for (;;)
-      {
-        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
-      }
-    }
+    QLog.w("AVRedBag", 1, "onGetRedBagResult,  GetRedBag不一致，callback[" + parammqk + "], src[" + this.a.jdField_a_of_type_Mqk + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mqf
  * JD-Core Version:    0.7.0.1
  */

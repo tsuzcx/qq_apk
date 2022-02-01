@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-public class ayty
-  implements View.OnClickListener
+final class ayty
+  implements ante
 {
-  public ayty(AbsProfileHeaderView paramAbsProfileHeaderView, aymg paramaymg) {}
-  
-  public void onClick(View paramView)
+  public void onDpcPullFinished(boolean paramBoolean)
   {
-    AbsProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView, this.jdField_a_of_type_Aymg);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean) {
+      aytx.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.dpc", 2, "onDpcPullFinished, hasChanged=" + paramBoolean);
+    }
   }
 }
 

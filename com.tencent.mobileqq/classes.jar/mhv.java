@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.QQLogo;
 
 public class mhv
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public mhv(QavPanel paramQavPanel) {}
+  public mhv(QQLogo paramQQLogo) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.a != null) && (this.a.a.a != null)) {
-      this.a.a.a.a(true);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mhv
  * JD-Core Version:    0.7.0.1
  */

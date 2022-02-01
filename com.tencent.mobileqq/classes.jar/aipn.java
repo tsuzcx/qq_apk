@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
 
 public class aipn
-  extends CardObserver
+  implements aips
 {
-  private aipn(FriendFragment paramFriendFragment) {}
+  public aipn(BlessActivity paramBlessActivity) {}
   
-  public void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void a()
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
-      FriendFragment.a(this.a, 1400L, true);
-    }
-  }
-  
-  public void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
+    if (BlessActivity.a(this.a) < this.a.jdField_a_of_type_Aipw.l())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      FriendFragment.a(this.a, 1400L, false);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.start();
+      BlessActivity.b(this.a);
     }
   }
 }

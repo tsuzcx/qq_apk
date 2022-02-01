@@ -1,6 +1,6 @@
 package com.tencent.device.utils;
 
-import abda;
+import absm;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class LightAppSettingInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<LightAppSettingInfo> CREATOR = new abda();
+  public static final Parcelable.Creator<LightAppSettingInfo> CREATOR = new absm();
   public int a;
   public long a;
   public String a;

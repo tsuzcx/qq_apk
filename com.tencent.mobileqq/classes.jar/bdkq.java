@@ -1,42 +1,52 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
-import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class bdkq
-  extends bdgm
+  extends aqwt<bdkr>
 {
-  public bdkq(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
-  
-  public void a(int paramInt, boolean paramBoolean, bdhl parambdhl)
+  @NonNull
+  public bdkr a(int paramInt)
   {
-    super.a(paramInt, paramBoolean, parambdhl);
-    WriteTogetherEditorFragment.a(this.a, paramBoolean, parambdhl);
+    return new bdkr();
   }
   
-  public void a(int paramInt, boolean paramBoolean, OpenDocParam paramOpenDocParam)
+  @Nullable
+  public bdkr a(aqxa[] paramArrayOfaqxa)
   {
-    super.a(paramInt, paramBoolean, paramOpenDocParam);
-    WriteTogetherEditorFragment.a(this.a, paramBoolean, paramOpenDocParam);
+    bdkr localbdkr = new bdkr();
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0) && (paramArrayOfaqxa[0] != null)) {
+      bdkr.a(localbdkr, paramArrayOfaqxa[0].a);
+    }
+    return localbdkr;
   }
   
-  public void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  public void a(bdkr parambdkr) {}
+  
+  public Class<bdkr> clazz()
   {
-    super.a(paramInt, paramBoolean, paramArrayOfObject);
-    WriteTogetherEditorFragment.a(this.a, false);
-    WriteTogetherEditorFragment.b(this.a, paramBoolean);
-    WriteTogetherEditorFragment.a(this.a);
-    if (!paramBoolean) {
-      QQToast.a(WriteTogetherEditorFragment.a(this.a), WriteTogetherEditorFragment.a(this.a).getResources().getString(2131719718), 0).a();
-    }
-    if (paramBoolean)
-    {
-      this.a.getActivity().setResult(15);
-      this.a.getActivity().finish();
-      WriteTogetherEditorFragment.b(this.a);
-    }
+    return bdkr.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 577;
   }
 }
 

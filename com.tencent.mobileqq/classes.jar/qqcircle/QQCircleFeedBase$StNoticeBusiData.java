@@ -9,8 +9,9 @@ import feedcloud.FeedCloudCommon.Entry;
 public final class QQCircleFeedBase$StNoticeBusiData
   extends MessageMicro<StNoticeBusiData>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "urlInfo", "busiInfo" }, new Object[] { null, null }, StNoticeBusiData.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "urlInfo", "busiInfo", "pattonInfo" }, new Object[] { null, null, null }, StNoticeBusiData.class);
   public final PBRepeatMessageField<FeedCloudCommon.Entry> busiInfo = PBField.initRepeatMessage(FeedCloudCommon.Entry.class);
+  public QQCircleFeedBase.StNoticePattonInfo pattonInfo = new QQCircleFeedBase.StNoticePattonInfo();
   public final PBRepeatMessageField<FeedCloudCommon.Entry> urlInfo = PBField.initRepeatMessage(FeedCloudCommon.Entry.class);
 }
 

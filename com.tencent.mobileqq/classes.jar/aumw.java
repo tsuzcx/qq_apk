@@ -1,56 +1,34 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.flutter.channel.qqcircle.QCircleFlutterRequest;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.MethodChannel.Result;
+import java.util.HashMap;
+import java.util.Map;
 
-public class aumw
-  implements aung
+class aumw
+  implements VSDispatchObserver.onVSRspCallBack
 {
-  public aumw(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  aumw(aumv paramaumv, MethodChannel.Result paramResult) {}
   
-  public void a(boolean paramBoolean)
+  public void onReceive(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, Object paramObject)
   {
-    int k = 1;
-    IVPluginDataReporter localIVPluginDataReporter;
-    int j;
-    if (!NetworkUtil.isWifiEnabled(GroupVideoLoadingFragment.a(this.a)))
+    paramObject = paramVSBaseRequest.getCmdName();
+    QLog.i("QQCircleMethodImpl", 1, "[sendSsoRequest][onReceive] cmd=" + paramObject + ", success=" + paramBoolean + ", retCode=" + paramLong + ", errMsg=" + paramString);
+    if (!(paramVSBaseRequest instanceof QCircleFlutterRequest))
     {
-      i = 1;
-      if (!paramBoolean) {
-        break label80;
-      }
-      GroupVideoLoadingFragment.a(this.a, false);
-      localIVPluginDataReporter = GroupVideoLoadingFragment.a(this.a).opType("enterPage");
-      if (!paramBoolean) {
-        break label111;
-      }
-      j = 1;
-      label50:
-      localIVPluginDataReporter = localIVPluginDataReporter.opIn(j);
-      if (i == 0) {
-        break label116;
-      }
-    }
-    label80:
-    label111:
-    label116:
-    for (int i = k;; i = 0)
-    {
-      localIVPluginDataReporter.opResult(i).report();
+      QLog.e("QQCircleMethodImpl", 1, "[onReceive] invalid request, request=" + paramVSBaseRequest);
       return;
-      i = 0;
-      break;
-      if (i != 0) {
-        GroupVideoLoadingFragment.a(this.a, true);
-      }
-      for (;;)
-      {
-        auoj.b("2880338");
-        break;
-        GroupVideoLoadingFragment.a(this.a, false);
-      }
-      j = 0;
-      break label50;
     }
+    byte[] arrayOfByte = ((QCircleFlutterRequest)paramVSBaseRequest).getResponseByteData();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("cmd", paramObject);
+    localHashMap.put("isSuc", Boolean.valueOf(paramBoolean));
+    localHashMap.put("errCode", Long.valueOf(paramLong));
+    localHashMap.put("errDesc", paramString);
+    localHashMap.put("body", arrayOfByte);
+    localHashMap.put("ssoSeq", Integer.valueOf(paramVSBaseRequest.getCurrentSeq()));
+    this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result.success(localHashMap);
   }
 }
 

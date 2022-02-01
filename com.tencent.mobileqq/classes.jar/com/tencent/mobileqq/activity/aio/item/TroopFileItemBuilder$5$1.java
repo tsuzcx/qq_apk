@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agrx;
+import ahkv;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;

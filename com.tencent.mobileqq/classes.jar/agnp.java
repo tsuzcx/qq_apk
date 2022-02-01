@@ -1,16 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import java.io.File;
+import java.io.OutputStream;
 
-class agnp
-  implements DialogInterface.OnClickListener
+public class agnp
+  extends AbsDownloader
 {
-  agnp(agnj paramagnj, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static final String a(int paramInt)
   {
-    this.jdField_a_of_type_Agnj.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
-    bbqf.jdField_a_of_type_Boolean = true;
+    return "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/action/" + paramInt + "/panelGif.gif";
+  }
+  
+  public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if (paramURLDrawableHandler != null) {
+      paramURLDrawableHandler.onFileDownloadStarted();
+    }
+    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof Integer)))
+    {
+      paramDownloadParams = (Integer)paramDownloadParams.tag;
+      paramOutputStream = new File(a(paramDownloadParams.intValue()));
+      if (paramOutputStream.exists())
+      {
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
+        }
+        return paramOutputStream;
+      }
+      paramOutputStream.getParentFile().mkdirs();
+      if ((BaseApplicationImpl.sApplication != null) && (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
+        paramURLDrawableHandler.onFileDownloadFailed(0);
+      }
+      paramDownloadParams = new bhyo("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramDownloadParams + "/preview.gif", paramOutputStream);
+      paramDownloadParams.b = 1;
+      paramDownloadParams.p = false;
+      if (bhyq.a(paramDownloadParams, null) == 0)
+      {
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
+        }
+        return paramOutputStream;
+      }
+    }
+    if (paramURLDrawableHandler != null) {
+      paramURLDrawableHandler.onFileDownloadFailed(0);
+    }
+    return null;
   }
 }
 

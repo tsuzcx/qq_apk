@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.vas;
 
 import android.text.TextUtils;
-import bgfg;
-import bggc;
-import bgit;
-import bgjd;
-import bgkc;
+import bhob;
+import bhow;
+import bhro;
+import bhry;
+import bhul;
 import com.google.gson.stream.JsonReader;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
@@ -126,10 +128,10 @@ public class VasQuickUpdateManager
   private static final String TAG = "VasQuickUpdateManager";
   public QQAppInterface app;
   ConcurrentHashMap<Integer, VasQuickUpdateManager.CallBacker> callBackers = new ConcurrentHashMap();
-  private bgit defaultCallback = new VasQuickUpdateManager.DefaultUpdateCallback(this);
-  bgkc mEngineProxy;
+  private bhro defaultCallback = new VasQuickUpdateManager.DefaultUpdateCallback(this);
+  bhul mEngineProxy;
   AtomicInteger mKey = new AtomicInteger(0);
-  public bggc mQuickUpdateObserver = new VasQuickUpdateManager.DefaultVasExtensionObserver(this);
+  public bhow mQuickUpdateObserver = new VasQuickUpdateManager.DefaultVasExtensionObserver(this);
   
   public VasQuickUpdateManager(QQAppInterface paramQQAppInterface)
   {
@@ -153,7 +155,7 @@ public class VasQuickUpdateManager
     //   16: aload_0
     //   17: invokestatic 386	com/tencent/mobileqq/theme/ThemeCleaner:a	(Landroid/content/Context;)V
     //   20: aload_0
-    //   21: invokestatic 389	bgjd:a	(Landroid/content/Context;)V
+    //   21: invokestatic 389	bhry:a	(Landroid/content/Context;)V
     //   24: ldc 2
     //   26: monitorexit
     //   27: return
@@ -198,7 +200,7 @@ public class VasQuickUpdateManager
   private static void downloadItem(AppRuntime paramAppRuntime, long paramLong, String paramString1, String paramString2, VasQuickUpdateManager.CallBacker paramCallBacker)
   {
     if (paramAppRuntime != null) {}
-    for (Manager localManager = paramAppRuntime.getManager(184); (localManager == null) || (!(localManager instanceof VasQuickUpdateManager)); localManager = null)
+    for (Manager localManager = paramAppRuntime.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER); (localManager == null) || (!(localManager instanceof VasQuickUpdateManager)); localManager = null)
     {
       QLog.e("VasQuickUpdateManager", 1, "getFileFromLocal, Err0, bid=" + paramLong + ",scid:" + paramString1 + ", mgr:" + localManager + ", app=" + paramAppRuntime + ", filePaht=" + paramString2);
       return;
@@ -266,7 +268,7 @@ public class VasQuickUpdateManager
     }
     if (paramBoolean)
     {
-      localObject = paramAppRuntime.getManager(184);
+      localObject = paramAppRuntime.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
       if ((localObject == null) || (!(localObject instanceof VasQuickUpdateManager)))
       {
         QLog.e("VasQuickUpdateManager", 1, "getJSONFromLocal, manager == null; scid:" + paramString + ", mgr:" + localObject + ", app=" + paramAppRuntime);
@@ -306,7 +308,7 @@ public class VasQuickUpdateManager
     }
     if (paramBoolean)
     {
-      localObject = paramAppRuntime.getManager(184);
+      localObject = paramAppRuntime.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
       if ((localObject == null) || (!(localObject instanceof VasQuickUpdateManager)))
       {
         QLog.e("VasQuickUpdateManager", 1, "getJSONFromLocalByStreamRead, manager == null; scid:" + paramString + ", mgr:" + localObject + ", app=" + paramAppRuntime);
@@ -325,9 +327,9 @@ public class VasQuickUpdateManager
   private void initEngine()
   {
     QLog.e("VasQuickUpdateManager", 1, "initEngine: " + this);
-    this.mEngineProxy = new bgkc(this.app);
-    bgjd.a(this.defaultCallback);
-    this.mEngineProxy.setWeakHandler(new WeakReference((VasExtensionHandler)this.app.getBusinessHandler(71)));
+    this.mEngineProxy = new bhul(this.app);
+    bhry.a(this.defaultCallback);
+    this.mEngineProxy.setWeakHandler(new WeakReference((VasExtensionHandler)this.app.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)));
     this.mEngineProxy.startUpdateAllItem();
   }
   
@@ -406,7 +408,7 @@ public class VasQuickUpdateManager
   {
     QLog.e("VasQuickUpdateManager", 1, "onDestroy: " + this);
     this.app.removeObserver(this.mQuickUpdateObserver);
-    bgjd.b(this.defaultCallback);
+    bhry.b(this.defaultCallback);
     this.callBackers.clear();
     if (this.mEngineProxy != null) {
       this.mEngineProxy.onDestory();
@@ -428,18 +430,18 @@ public class VasQuickUpdateManager
     }
   }
   
-  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, bgfg parambgfg)
+  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, bhob parambhob)
   {
     if (this.mEngineProxy != null)
     {
-      parambgfg = new VasQuickUpdateManager.TimeoutWrapper(parambgfg, paramBoolean2, null);
+      parambhob = new VasQuickUpdateManager.TimeoutWrapper(parambhob, paramBoolean2, null);
       if (paramLong > 0L) {
-        ThreadManager.getSubThreadHandler().postDelayed(parambgfg, paramLong);
+        ThreadManager.getSubThreadHandler().postDelayed(parambhob, paramLong);
       }
-      this.mEngineProxy.queryItemVersion(paramInt, paramString, paramBoolean1, parambgfg);
+      this.mEngineProxy.queryItemVersion(paramInt, paramString, paramBoolean1, parambhob);
       return;
     }
-    parambgfg.a(2, "", "");
+    parambhob.a(2, "", "");
   }
   
   public void removeCallBacker(VasQuickUpdateManager.CallBacker paramCallBacker)

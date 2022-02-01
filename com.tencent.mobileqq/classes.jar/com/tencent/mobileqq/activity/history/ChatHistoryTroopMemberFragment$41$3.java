@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.activity.history;
 
-import aizs;
-import anca;
+import ajvh;
+import aoep;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -13,12 +15,12 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 public class ChatHistoryTroopMemberFragment$41$3
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$41$3(aizs paramaizs, List paramList) {}
+  public ChatHistoryTroopMemberFragment$41$3(ajvh paramajvh, List paramList) {}
   
   public void run()
   {
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_Aizs.a.b.getManager(52);
-    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_Aizs.a.c);
+    Object localObject1 = (TroopManager)this.jdField_a_of_type_Ajvh.a.b.getManager(QQManagerFactory.TROOP_MANAGER);
+    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_Ajvh.a.c);
     if (localTroopInfo == null) {
       return;
     }
@@ -37,13 +39,13 @@ public class ChatHistoryTroopMemberFragment$41$3
         }
       }
       ((TroopManager)localObject1).b(localTroopInfo);
-      localObject1 = (anca)this.jdField_a_of_type_Aizs.a.b.getBusinessHandler(20);
+      localObject1 = (aoep)this.jdField_a_of_type_Ajvh.a.b.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
       if (localObject1 == null) {
         break;
       }
       try
       {
-        ((anca)localObject1).a(Long.parseLong(this.jdField_a_of_type_Aizs.a.c), 0L, 2, 0, 0);
+        ((aoep)localObject1).a(Long.parseLong(this.jdField_a_of_type_Ajvh.a.c), 0L, 2, 0, 0);
         return;
       }
       catch (Exception localException) {}

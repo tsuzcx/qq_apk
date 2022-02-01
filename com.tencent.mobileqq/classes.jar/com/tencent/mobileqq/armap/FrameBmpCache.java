@@ -8,7 +8,7 @@ import android.graphics.BitmapFactory.Options;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import aozs;
+import aqcw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -23,7 +23,7 @@ public class FrameBmpCache
   Resources jdField_a_of_type_AndroidContentResResources;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public MQLruCache<String, Object> a;
-  private aozs jdField_a_of_type_Aozs;
+  private aqcw jdField_a_of_type_Aqcw;
   volatile FrameBmpCache.CancelAbleRunnable jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable;
   Object jdField_a_of_type_JavaLangObject = new Object();
   LinkedList<FrameBmpCache.CancelAbleRunnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
@@ -214,8 +214,8 @@ public class FrameBmpCache
       }
       this.jdField_c_of_type_Int = (this.jdField_a_of_type_JavaUtilList.size() - 1);
       this.jdField_b_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Aozs != null) {
-        this.jdField_a_of_type_Aozs.a(null);
+      if (this.jdField_a_of_type_Aqcw != null) {
+        this.jdField_a_of_type_Aqcw.a(null);
       }
     } while (!this.jdField_d_of_type_Boolean);
     return (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_c_of_type_Int)));
@@ -299,9 +299,9 @@ public class FrameBmpCache
     this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / 2.0F));
   }
   
-  public void a(aozs paramaozs)
+  public void a(aqcw paramaqcw)
   {
-    this.jdField_a_of_type_Aozs = paramaozs;
+    this.jdField_a_of_type_Aqcw = paramaqcw;
   }
   
   public void a(List<String> paramList)

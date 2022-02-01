@@ -1,29 +1,22 @@
-import android.view.View;
-import android.widget.ExpandableListAdapter;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.widget.ExpandableListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aejy
-  implements bjqh
+  implements DialogInterface.OnClickListener
 {
-  public aejy(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public aejy(NotificationActivity paramNotificationActivity) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (((almi)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
-      return true;
-    }
-    bcex.b(this.a.getActivity(), this.a.app.getCurrentAccountUin());
-    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
-    this.a.a(paramExpandableListView);
-    return true;
+    NotificationActivity.a(this.a, "0X800B657");
+    bdla.a(this.a.app, "dc00898", "", NotificationActivity.c(this.a), "0X800AA32", "0X800AA32", 0, 0, "", "", "", NotificationActivity.a(this.a));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejy
  * JD-Core Version:    0.7.0.1
  */

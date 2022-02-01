@@ -1,40 +1,41 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import org.json.JSONException;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
-class bdvy
-  implements zop
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/StudyModeSwitchDialogConfigProcessor$Config;", "", "()V", "showStudyModeSwitchDialog", "", "getShowStudyModeSwitchDialog", "()Z", "setShowStudyModeSwitchDialog", "(Z)V", "parse", "", "configText", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bdvy
 {
-  bdvy(bdvx parambdvx, String paramString) {}
+  private boolean a;
   
-  public void callback(Bundle paramBundle)
+  public final void a(@NotNull String paramString)
   {
-    long l = paramBundle.getLong("lastMsgTime");
-    paramBundle = paramBundle.getString("lastMsgContent");
+    Intrinsics.checkParameterIsNotNull(paramString, "configText");
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyModeSwitchDialogConfigProcessor", 2, paramString);
+    }
+    if (!TextUtils.isEmpty((CharSequence)paramString)) {}
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("lastMsgTime", l);
-      localJSONObject.put("lastMsgContent", paramBundle);
-      if (!TextUtils.isEmpty(paramBundle))
+      if (new JSONObject(paramString).optInt("ConfigEnableStudyModeGuide", 0) == 1) {}
+      for (boolean bool = true;; bool = false)
       {
-        localJSONObject.put("ret", 0);
-        localJSONObject.put("errorMsg", "");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Bdvx.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        this.a = bool;
         return;
-        localJSONObject.put("ret", -1);
-        localJSONObject.put("errorMsg", "lastSpeakMsg is empty");
       }
       return;
     }
-    catch (JSONException paramBundle)
+    catch (Throwable paramString)
     {
-      paramBundle.printStackTrace();
+      QLog.e("StudyModeSwitchDialogConfigProcessor", 1, paramString, new Object[0]);
     }
+  }
+  
+  public final boolean a()
+  {
+    return this.a;
   }
 }
 

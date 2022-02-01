@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ark.browser;
 
-import aclu;
-import acmy;
+import adcd;
+import addh;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aowt;
-import aowx;
-import bgvt;
-import bgww;
+import apzx;
+import aqab;
+import bigl;
+import biho;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
@@ -24,7 +24,7 @@ public class ArkBrowserFragment
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     Object localObject = this.webView.getPluginEngine();
     String str = getCurrentUrl();
-    if (TextUtils.isEmpty(acmy.a(str))) {}
+    if (TextUtils.isEmpty(addh.a(str))) {}
     do
     {
       do
@@ -32,9 +32,9 @@ public class ArkBrowserFragment
         return;
         localObject = ((WebViewPluginEngine)localObject).a(str);
       } while (localObject == null);
-      localObject = (aowx)((aclu)localObject).a(aowx.class, false);
+      localObject = (aqab)((adcd)localObject).a(aqab.class, false);
     } while (localObject == null);
-    ((aowx)localObject).a(paramIntent, (byte)paramInt1, paramInt2);
+    ((aqab)localObject).a(paramIntent, (byte)paramInt1, paramInt2);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -45,11 +45,11 @@ public class ArkBrowserFragment
   
   public void showActionSheet()
   {
-    bgww localbgww = (bgww)this.mComponentsProvider.a(4);
-    if (localbgww != null)
+    biho localbiho = (biho)this.mComponentsProvider.a(4);
+    if (localbiho != null)
     {
-      localbgww.a(new aowt(this));
-      localbgww.a(ensureShare(), this.mUIStyle.mRulesFromUrl);
+      localbiho.a(new apzx(this));
+      localbiho.a(ensureShare(), this.mUIStyle.mRulesFromUrl);
     }
   }
 }

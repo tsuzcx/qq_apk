@@ -28,6 +28,7 @@ public class QCircleFakeFeed
   private String nickename = "";
   private LbsDataV2.PoiInfo poiInfo;
   private String puin = "";
+  private ArrayList<Integer> showCircleTakeSame;
   private ArrayList<String> simulateName;
   private ArrayList<String> simulateSchema;
   private String title = "";
@@ -138,6 +139,11 @@ public class QCircleFakeFeed
   public String getPuin()
   {
     return this.puin;
+  }
+  
+  public ArrayList<Integer> getShowCircleTakeSame()
+  {
+    return this.showCircleTakeSame;
   }
   
   public ArrayList<String> getSimulateName()

@@ -1,17 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
 
 public class bnza
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bofs
 {
-  public bnza(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  public bnza(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(long paramLong)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    bnrh.b("AEEditorMultiCutEditFragment", "updateTimeBarCurrentTime >> curTime:" + paramLong);
+    AEEditorMultiCutEditFragment.a(this.a, true);
+  }
+  
+  public void b(long paramLong)
+  {
+    AEEditorMultiCutEditFragment.b(this.a, true);
   }
 }
 

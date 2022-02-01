@@ -1,24 +1,9 @@
 import android.support.annotation.NonNull;
+import android.view.View;
 
-public class xje
-  extends vll<xin, wcy>
+public abstract interface xje
 {
-  public xje(xin paramxin)
-  {
-    super(paramxin);
-  }
-  
-  public void a(@NonNull xin paramxin, @NonNull wcy paramwcy)
-  {
-    xin.a(paramxin, paramwcy.a, this.TAG);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wcy.class;
-  }
-  
-  public void b(@NonNull xin paramxin, @NonNull wcy paramwcy) {}
+  public abstract void a(@NonNull View paramView, int paramInt);
 }
 
 

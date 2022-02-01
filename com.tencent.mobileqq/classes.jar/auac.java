@@ -1,35 +1,63 @@
-import android.text.TextUtils;
+import android.media.AudioManager;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.view.QQGameStatusView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class auac
+class auac
   implements View.OnClickListener
 {
-  public auac(QQGameStatusView paramQQGameStatusView) {}
+  auac(auaa paramauaa) {}
   
   public void onClick(View paramView)
   {
-    if ((QQGameStatusView.a(this.a) == null) || (QQGameStatusView.a(this.a))) {}
+    boolean bool1 = true;
+    switch (paramView.getId())
+    {
+    }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (QQGameStatusView.a(this.a) == 1) {
-        QQGameStatusView.a(this.a).b(QQGameStatusView.a(this.a));
-      } else if (QQGameStatusView.a(this.a) == 2) {
-        QQGameStatusView.a(this.a).a(QQGameStatusView.a(this.a));
-      } else if (QQGameStatusView.a(this.a) == 3) {
-        QQGameStatusView.a(this.a).c(QQGameStatusView.a(this.a));
-      } else if (QQGameStatusView.a(this.a) == 5) {
-        QQGameStatusView.a(this.a).d(QQGameStatusView.a(this.a));
-      } else if (QQGameStatusView.a(this.a) == 6) {
-        if (!TextUtils.isEmpty(QQGameStatusView.b(this.a))) {
-          QQGameStatusView.a(this.a).a(QQGameStatusView.a(this.a), QQGameStatusView.b(this.a));
-        } else if (QLog.isColorLevel()) {
-          QLog.d("QQGameStatusView", 1, "downloadFilePath is null,install faile");
+      if (auaa.a(this.a) != null)
+      {
+        boolean bool2 = auaa.a(this.a).isPlaying();
+        if (bool2)
+        {
+          auaa.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+          audy.a("0X8004BE5");
+          this.a.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(auaa.a(this.a));
+          auaa.a(this.a);
+          label130:
+          localObject = this.a.jdField_a_of_type_Aubg;
+          if (bool2) {
+            break label171;
+          }
+        }
+        for (;;)
+        {
+          ((aubg)localObject).d(bool1);
+          break;
+          auaa.b(this.a);
+          auaa.c(this.a);
+          break label130;
+          label171:
+          bool1 = false;
+        }
+        Object localObject = this.a.jdField_a_of_type_Atxa.b();
+        auaa.a(this.a, (ArrayList[])localObject);
+        String str = this.a.a() + "(" + FileUtil.filesizeToString(this.a.jdField_a_of_type_Atxa.c()) + ")";
+        this.a.a((ArrayList[])localObject, str);
+        continue;
+        this.a.n();
+        continue;
+        int i = this.a.jdField_a_of_type_Atxa.i();
+        int j = this.a.jdField_a_of_type_Atxa.h();
+        if ((i == 6) && (j == 1) && (this.a.jdField_a_of_type_Atxa.a() != null)) {
+          this.a.jdField_a_of_type_Atxa.a().a();
         }
       }
     }

@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
 
-class agze
-  implements DialogInterface.OnClickListener
+final class agze
+  implements ahab
 {
-  agze(agzc paramagzc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    if ((((MessageForStructing)paramChatMessage).structingMsg instanceof StructMsgSubImageVideo)) {
+      return 111;
+    }
+    return 5;
+  }
 }
 
 

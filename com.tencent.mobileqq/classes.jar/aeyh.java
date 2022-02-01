@@ -1,49 +1,25 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class aeyh
+  implements View.OnClickListener
 {
-  public int a;
-  bfts jdField_a_of_type_Bfts;
-  volatile boolean jdField_a_of_type_Boolean;
+  public aeyh(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public aeyh(bfts parambfts, int paramInt)
+  public void onClick(View paramView)
   {
-    this(parambfts, paramInt, false);
-  }
-  
-  public aeyh(bfts parambfts, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Bfts = parambfts;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public bfts a()
-  {
-    return this.jdField_a_of_type_Bfts;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(aeyh paramaeyh)
-  {
-    if ((paramaeyh == null) || (this.jdField_a_of_type_Bfts == null)) {
-      return false;
-    }
-    return this.jdField_a_of_type_Bfts.equals(paramaeyh.jdField_a_of_type_Bfts);
+    bdla.b(null, "dc00898", "", "", "0X800A3C5", "0X800A3C5", 4, 0, "", "", "", "");
+    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "bell", "click", "", 1, 0, 0, "", "", "");
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", bhnp.a("specialCareRingUrl").replace("[uid]", "").replace("[lType]", "1"));
+    this.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.content.Intent;
-import bhov;
+import bizo;
 import com.tencent.mobileqq.ac.ArticleComment.ReportNetConnectInfoRequest;
 import com.tencent.mobileqq.ac.ArticleComment.ReportNetConnectInfoResponse;
 import com.tencent.mobileqq.ac.ArticleComment.RetInfo;
@@ -15,7 +15,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
-import odw;
+import oln;
 
 public class PublicAccountWebReport
 {
@@ -45,7 +45,7 @@ public class PublicAccountWebReport
   public static boolean netShouldReport(int paramInt)
   {
     boolean bool = true;
-    switch (bhov.a(null))
+    switch (bizo.a(null))
     {
     default: 
       bool = false;
@@ -71,19 +71,19 @@ public class PublicAccountWebReport
   
   public static void reportPublicAccountNetInfoRequest(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2)
   {
-    int i = bhov.a(null);
+    int i = bizo.a(null);
     if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountWebReport", 2, "urlStr: " + paramString1 + ",errorcode:" + paramInt3 + ",netType:" + i + ",DNSCost" + paramInt2 + ",connectCost:" + paramInt1 + ",receiveCost:" + paramInt4 + ",website_address:" + paramString2 + ",AppSetting.subVersion:" + "8.4.8,3,4810");
+      QLog.i("PublicAccountWebReport", 2, "urlStr: " + paramString1 + ",errorcode:" + paramInt3 + ",netType:" + i + ",DNSCost" + paramInt2 + ",connectCost:" + paramInt1 + ",receiveCost:" + paramInt4 + ",website_address:" + paramString2 + ",AppSetting.subVersion:" + "8.4.10,3,4875");
     }
     if (paramAppRuntime == null) {}
     while (!netShouldReport(paramInt1 + paramInt2 + paramInt4)) {
       return;
     }
-    NewIntent localNewIntent = new NewIntent(BaseApplication.getContext(), odw.class);
+    NewIntent localNewIntent = new NewIntent(BaseApplication.getContext(), oln.class);
     localNewIntent.putExtra("cmd", "PubAccountSvc.net_connect_info");
     ArticleComment.ReportNetConnectInfoRequest localReportNetConnectInfoRequest = new ArticleComment.ReportNetConnectInfoRequest();
     localReportNetConnectInfoRequest.netType.set(i);
-    localReportNetConnectInfoRequest.versionInfo.set("8.4.8,3,4810");
+    localReportNetConnectInfoRequest.versionInfo.set("8.4.10,3,4875");
     localReportNetConnectInfoRequest.connectCost.set(paramInt1);
     localReportNetConnectInfoRequest.DNSCost.set(paramInt2);
     localReportNetConnectInfoRequest.errorcode.set(paramInt3);

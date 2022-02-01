@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import blnp;
+import bnay;
 import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
 
 public abstract interface AECameraGLSurfaceView$CaptureListener
@@ -12,7 +12,7 @@ public abstract interface AECameraGLSurfaceView$CaptureListener
   
   public abstract void onCaptureError(int paramInt);
   
-  public abstract void onPhotoCaptured(blnp paramblnp);
+  public abstract void onPhotoCaptured(bnay parambnay);
   
   public abstract void onVideoCaptureStart();
   

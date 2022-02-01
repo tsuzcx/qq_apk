@@ -1,21 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import kotlin.Metadata;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
-final class arml
-  implements DialogInterface.OnClickListener
+public class arml
 {
-  arml(arng paramarng) {}
+  public static int a = 1;
+  public static int b = 2;
+  public int c = b;
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private static arml b(String paramString)
   {
-    this.a.d();
+    arml localarml = new arml();
+    try
+    {
+      localarml.c = new JSONObject(paramString).optInt("action", b);
+      return localarml;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("UinSearchConfProcessor", 1, paramString, new Object[0]);
+    }
+    return localarml;
+  }
+  
+  public boolean a()
+  {
+    return this.c == a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arml
  * JD-Core Version:    0.7.0.1
  */

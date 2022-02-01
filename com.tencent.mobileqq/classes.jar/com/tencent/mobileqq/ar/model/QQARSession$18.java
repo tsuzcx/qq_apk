@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ar.model;
 
-import aoai;
-import aoci;
-import aohs;
-import aolr;
+import apdk;
+import apfk;
+import apku;
+import apos;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -12,27 +12,27 @@ import mqq.os.MqqHandler;
 public class QQARSession$18
   implements Runnable
 {
-  public QQARSession$18(aolr paramaolr, boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  public QQARSession$18(apos paramapos, boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo) {}
   
   public void run()
   {
     int i;
-    if (((!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.b())) && (aolr.b(this.this$0)) && (this.this$0.jdField_a_of_type_Int == 2) && (aolr.a(this.this$0) != null))
+    if (((!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.b())) && (apos.b(this.this$0)) && (this.this$0.jdField_a_of_type_Int == 2) && (apos.a(this.this$0) != null))
     {
-      aohs localaohs = aolr.a(this.this$0);
+      apku localapku = apos.a(this.this$0);
       if (this.jdField_a_of_type_Boolean)
       {
         i = 4;
-        localaohs.a(1, i);
+        localapku.a(1, i);
       }
     }
     else
     {
-      if (aolr.a(this.this$0) != null)
+      if (apos.a(this.this$0) != null)
       {
         QLog.i("AREngine_QQARSession", 1, "processCloudSceneRecogResult post task for handle timeout");
-        aolr.b(aolr.a(this.this$0));
-        aolr.a(this.this$0, null);
+        apos.b(apos.a(this.this$0));
+        apos.a(this.this$0, null);
       }
       if (this.jdField_a_of_type_Boolean) {
         break label161;
@@ -54,11 +54,11 @@ public class QQARSession$18
         if (!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.b()) {
           break label265;
         }
-      } while ((!aolr.b(this.this$0)) || (this.this$0.jdField_a_of_type_Int != 2));
+      } while ((!apos.b(this.this$0)) || (this.this$0.jdField_a_of_type_Int != 2));
       this.this$0.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
       return;
-      if ((aolr.b(this.this$0)) && (this.this$0.jdField_a_of_type_Int == 2) && (aolr.a(this.this$0) != null)) {
-        aolr.a(this.this$0).a(2048L, new aoci(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo));
+      if ((apos.b(this.this$0)) && (this.this$0.jdField_a_of_type_Int == 2) && (apos.a(this.this$0) != null)) {
+        apos.a(this.this$0).a(2048L, new apfk(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo));
       }
       if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d())
       {
@@ -67,11 +67,11 @@ public class QQARSession$18
       }
       if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.f())
       {
-        aoai.a().a(2);
+        apdk.a().a(2);
         if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.j()) {
-          aolr.c(this.this$0, false);
+          apos.c(this.this$0, false);
         }
-        aolr.a(this.this$0, 2048L, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, -1, 0.0F, 0.0F, 0.0F);
+        apos.a(this.this$0, 2048L, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, -1, 0.0F, 0.0F, 0.0F);
         return;
       }
       if ((!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.h()) && (!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.g())) {
@@ -79,7 +79,7 @@ public class QQARSession$18
       }
     } while ((!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.g()) || (!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.j()));
     label265:
-    aolr.c(this.this$0, true);
+    apos.c(this.this$0, true);
     return;
     label446:
     this.this$0.q();

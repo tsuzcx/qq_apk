@@ -1,36 +1,70 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel.1.1;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel.1.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
 
-class anok
-  implements View.OnTouchListener
+public class anok
+  extends bhow
 {
-  anok(anoh paramanoh, ImageView paramImageView) {}
+  private volatile String a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public anok(ApolloPanel paramApolloPanel) {}
+  
+  private boolean a(@NotNull String paramString, ArrayList<String> paramArrayList)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
-    {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
-      }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
-    }
-    for (;;)
-    {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+    }
+    if (paramArrayList.contains(paramString))
+    {
+      paramString = anlw.a(paramString);
+      QLog.d("ApolloPanel", 1, "check needReGetFrame, current dressInfo:" + paramString + ", old dressInfo:" + this.jdField_a_of_type_JavaLangString);
+      if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(this.jdField_a_of_type_JavaLangString)))
+      {
+        this.jdField_a_of_type_JavaLangString = paramString;
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
+  {
+    super.onApolloDressChange(paramBoolean, paramObject);
+    QLog.d("ApolloPanel", 1, this + " onApolloDressChange " + paramBoolean + "; data : " + paramObject);
+    if (paramBoolean) {
+      paramBoolean = false;
+    }
+    try
+    {
+      paramObject = (ArrayList)paramObject;
+      boolean bool = a(this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanel.a.app.getCurrentUin(), paramObject);
+      paramBoolean = bool;
+    }
+    catch (Exception paramObject)
+    {
+      do
+      {
+        for (;;)
+        {
+          QLog.e("ApolloPanel", 1, "onApolloDressChange needReGetFrame exception", paramObject);
+        }
+        paramObject = (amme)this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanel.a.app.getManager(QQManagerFactory.APOLLO_MANAGER);
+      } while ((paramObject == null) || (amme.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanel.a.app) == 2));
+      ThreadManager.getSubThreadHandler().post(new ApolloPanel.1.1(this, paramObject));
+      ThreadManager.getSubThreadHandler().postDelayed(new ApolloPanel.1.2(this, paramObject), 100L);
+    }
+    QLog.d("ApolloPanel", 1, "onApolloDressChange reGetFrame:" + paramBoolean);
+    if (!paramBoolean) {
+      return;
     }
   }
 }

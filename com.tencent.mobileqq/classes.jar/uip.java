@@ -1,34 +1,27 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class uip
-  extends Handler
+  implements qqa
 {
-  public uip(SwipeBackLayout paramSwipeBackLayout) {}
-  
-  public void handleMessage(Message paramMessage)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (SwipeBackLayout.a(this.a));
-      SwipeBackLayout.a(this.a, true);
-    } while (!(this.a.a instanceof Activity));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
-    }
-    this.a.c = true;
-    ((Activity)this.a.a).finish();
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return qlo.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

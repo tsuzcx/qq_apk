@@ -1,87 +1,18 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.Locale;
-import mqq.observer.WtloginObserver;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopGameCardView;
 
-class bgpt
-  extends WtloginObserver
+public class bgpt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  final Intent jdField_a_of_type_AndroidContentIntent;
-  final bgpu jdField_a_of_type_Bgpu;
-  final String jdField_a_of_type_JavaLangString;
+  public bgpt(TroopGameCardView paramTroopGameCardView, View paramView) {}
   
-  bgpt(Intent paramIntent, String paramString, bgpu parambgpu)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bgpu = parambgpu;
-  }
-  
-  public void onRegGetSMSVerifyLoginAccountWithLhSig(int paramInt, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
-    if (paramArrayOfByte3 != null) {}
-    label295:
-    label310:
-    label323:
-    label329:
-    for (;;)
-    {
-      try
-      {
-        paramArrayOfByte1 = new String(paramArrayOfByte3, "utf-8");
-        if (QLog.isDevelopLevel()) {
-          QLog.i("LHLoginMng", 4, String.format(Locale.getDefault(), "OnRegGetSMSVerifyLoginAccountWithLhSig ret: %s, uin: %s, error: %s, contactssig: %s, lhsig: %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), paramArrayOfByte1, MD5.toMD5(paramArrayOfByte2), MD5.toMD5(paramArrayOfByte4) }));
-        }
-        if (paramInt != 0) {
-          break label323;
-        }
-        bool = true;
-        paramArrayOfByte3 = String.valueOf(paramLong);
-        if ((!TextUtils.isEmpty(paramArrayOfByte3)) && (paramArrayOfByte3.equals(this.jdField_a_of_type_JavaLangString))) {
-          break label295;
-        }
-        bool = false;
-        if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.length != 0)) {
-          break label310;
-        }
-        bool = false;
-        if (!TextUtils.isEmpty(paramArrayOfByte1)) {
-          break label329;
-        }
-        paramArrayOfByte1 = BaseApplicationImpl.getContext().getString(2131716113);
-        localIntent.putExtra("key_register_prompt_info", paramArrayOfByte1);
-        if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0)) {
-          localIntent.putExtra("key_register_lhsig", paramArrayOfByte4);
-        }
-        if (QLog.isDevelopLevel()) {
-          bgpv.a("LHLoginMng -- OnRegGetSMSVerifyLoginAccountWithLhSig", localIntent);
-        }
-        if (this.jdField_a_of_type_Bgpu != null) {
-          this.jdField_a_of_type_Bgpu.a(localIntent, bool, this.jdField_a_of_type_JavaLangString, paramArrayOfByte4, paramArrayOfByte1);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "OnRegGetSMSVerifyLoginAccountWithLhSig, lhUin: %s, isSuc: %s, error: %s, ret: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool), paramArrayOfByte1, Integer.valueOf(paramInt) }));
-        }
-        return;
-      }
-      catch (UnsupportedEncodingException paramArrayOfByte1)
-      {
-        paramArrayOfByte1.printStackTrace();
-      }
-      paramArrayOfByte1 = null;
-      continue;
-      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      continue;
-      localIntent.putExtra("key_register_sign", paramArrayOfByte2);
-      continue;
-      boolean bool = false;
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue("startColor")).intValue();
+    int j = ((Integer)paramValueAnimator.getAnimatedValue("endColor")).intValue();
+    TroopGameCardView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopGameCardView, this.jdField_a_of_type_AndroidViewView, i, j);
   }
 }
 

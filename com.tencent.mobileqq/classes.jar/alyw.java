@@ -1,39 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class alyw
-  extends bgod
+  implements View.OnClickListener
 {
   alyw(alyu paramalyu) {}
   
-  public void onDone(bgoe parambgoe)
+  public void onClick(View paramView)
   {
-    super.onDone(parambgoe);
-    QLog.i("cmgame_process.CmGameRscDownloader", 2, "[onDone], status:" + parambgoe.a());
-  }
-  
-  public void onDoneFile(bgoe parambgoe)
-  {
-    if ((parambgoe == null) || (alyu.a(this.a) == null)) {
-      return;
-    }
-    if (parambgoe.a() != 3)
-    {
-      alyu.a(this.a, 2);
-      if (alyu.a(this.a) != null) {
-        alyu.a(this.a).c(-1005, alyu.a(this.a).jdField_b_of_type_JavaLangString);
-      }
-      QLog.e("cmgame_process.CmGameRscDownloader", 1, "downLoad game res fail retCode: " + parambgoe.a());
-      return;
-    }
-    alyu.a(this.a);
-  }
-  
-  public void onProgress(bgoe parambgoe)
-  {
-    int i = (int)parambgoe.a;
-    if (alyu.a(this.a) != null) {
-      alyu.a(this.a).a(i, alyu.a(this.a).jdField_b_of_type_Int, alyu.a(this.a).jdField_b_of_type_JavaLangString);
-    }
+    alyu.a(this.a).onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

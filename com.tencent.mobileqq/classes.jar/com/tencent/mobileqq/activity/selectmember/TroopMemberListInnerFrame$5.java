@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.selectmember;
 
 import android.os.Handler;
 import android.os.Message;
-import bftf;
+import bhbx;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.utils.ChnToSpell;
@@ -44,7 +44,7 @@ class TroopMemberListInnerFrame$5
           this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo = localTroopMemberInfo;
           break;
         }
-        if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mUinsToHide.contains(localTroopMemberInfo.memberuin)) || (!bftf.d(localTroopMemberInfo.memberuin))) {
+        if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mUinsToHide.contains(localTroopMemberInfo.memberuin)) || (!bhbx.d(localTroopMemberInfo.memberuin))) {
           break;
         }
         if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null) && (this.this$0.jdField_b_of_type_Int == 2) && (!this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isTroopAdmin(localTroopMemberInfo.memberuin)) && (!this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isTroopOwner(localTroopMemberInfo.memberuin)))

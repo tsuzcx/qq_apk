@@ -1,25 +1,15 @@
-import UserGrowth.stSimpleMetaFeed;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ukm
-  implements ukh
+final class ukm
+  implements DialogInterface.OnClickListener
 {
-  public ukm(WSRecommendFragment paramWSRecommendFragment) {}
+  ukm(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a(bjwy<stSimpleMetaFeed> parambjwy)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i;
-    if (WSRecommendFragment.d(this.a))
-    {
-      i = parambjwy.getAdapterPosition();
-      parambjwy = (stSimpleMetaFeed)WSRecommendFragment.a(this.a).a(i);
-      if (parambjwy != null) {}
-    }
-    else
-    {
-      return;
-    }
-    WSRecommendFragment.a(this.a, parambjwy, i);
+    paramDialogInterface.dismiss();
+    this.a.onClick(paramDialogInterface, paramInt);
   }
 }
 

@@ -1,30 +1,49 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.Friends;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public class yiu
+class yiu
+  extends yev
 {
-  @NonNull
-  protected final Friends a;
-  protected boolean a;
+  yiu(yis paramyis) {}
   
-  public yiu(@NonNull Friends paramFriends)
+  public void a(int paramInt, View paramView, Object paramObject, yhc paramyhc)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    if ((paramView == paramyhc.a(2131374639)) || (paramView == paramyhc.a(2131374640)) || (paramView == paramyhc.a(2131374643))) {
+      if (yis.a(this.a)) {
+        ykq.d("Q.qqstory.home.LocalVideoPushSegment", "now is opening the new page, so ignore the click");
+      }
     }
+    while (paramView != paramyhc.a(2131374638))
+    {
+      return;
+      yis.a(this.a, true);
+      paramObject = new Bundle();
+      paramObject.putInt("capture_intent_mode", 3);
+      if (yis.a(this.a) == 1) {
+        paramObject.putString("story_capture_album_id", "default_id");
+      }
+      for (;;)
+      {
+        zcf.a().a((Activity)yis.a(this.a), paramObject, 20000);
+        ykv.a("home_page", "clk_smartalbum", 0, 0, new String[] { yis.a(this.a, yis.a(this.a)) });
+        return;
+        if (yis.a(this.a) == 2)
+        {
+          if (yis.a(this.a) != null) {}
+          for (paramView = String.valueOf(yis.a(this.a).a());; paramView = "default_id")
+          {
+            paramObject.putString("story_capture_album_id", paramView);
+            break;
+          }
+        }
+        if (yis.a(this.a) != 3) {}
+      }
+    }
+    this.a.a.b("last_cancel_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
+    this.a.a(null, 4);
+    ykv.a("home_page", "close_smartalbum", 0, 0, new String[] { yis.a(this.a, yis.a(this.a)) });
   }
 }
 

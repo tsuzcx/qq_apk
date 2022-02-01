@@ -1,19 +1,60 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 
-class axbc
-  implements TextWatcher
+public class axbc
+  implements aquk
 {
-  axbc(axax paramaxax) {}
+  public axbc(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a()
   {
-    awkj.a(this.a.e, 90);
+    if ((MsgBackupDateFragment.a(this.a) != null) && (MsgBackupDateFragment.a(this.a).isShowing()))
+    {
+      MsgBackupDateFragment.a(this.a).dismiss();
+      MsgBackupDateFragment.b(this.a);
+      MsgBackupDateFragment.a(this.a);
+      MsgBackupDateFragment.b(this.a, MsgBackupDateFragment.b(this.a));
+    }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      MsgBackupDateFragment.a(this.a, MsgBackupDateFragment.b(this.a));
+      MsgBackupDateFragment.a(this.a);
+      if ((MsgBackupDateFragment.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        MsgBackupDateFragment.a(this.a).a(2);
+      }
+      return;
+      if (MsgBackupDateFragment.b(this.a) == 1)
+      {
+        MsgBackupDateFragment.b(this.a, paramInt2);
+      }
+      else if (MsgBackupDateFragment.b(this.a) == 2)
+      {
+        MsgBackupDateFragment.c(this.a, paramInt2);
+        continue;
+        if (MsgBackupDateFragment.b(this.a) == 1)
+        {
+          MsgBackupDateFragment.d(this.a, paramInt2);
+        }
+        else if (MsgBackupDateFragment.b(this.a) == 2)
+        {
+          MsgBackupDateFragment.e(this.a, paramInt2);
+          continue;
+          if (MsgBackupDateFragment.b(this.a) == 1) {
+            MsgBackupDateFragment.f(this.a, paramInt2);
+          } else if (MsgBackupDateFragment.b(this.a) == 2) {
+            MsgBackupDateFragment.g(this.a, paramInt2);
+          }
+        }
+      }
+    }
+  }
 }
 
 

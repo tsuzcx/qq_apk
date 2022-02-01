@@ -1,56 +1,94 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonIPCModule.1;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
 
 public class arax
-  extends QIPCModule
+  extends aqwt<araw>
 {
-  private static arax a;
-  
-  private arax(String paramString)
+  @NonNull
+  public araw a(int paramInt)
   {
-    super(paramString);
+    return new araw();
   }
   
-  public static arax a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new arax("EmoticonIPCModule");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  @Nullable
+  public araw a(aqxa[] paramArrayOfaqxa)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("EmoticonIPCModule", 2, "onCall action = " + paramString);
+      QLog.d("GameCenterConfProcessor", 2, "[onParsed]");
     }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localAppRuntime instanceof QQAppInterface))
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonIPCModule", 2, "cannot get QQAppInterface.");
-      }
-      return null;
+      araw localaraw = new araw();
+      localaraw.a = paramArrayOfaqxa[0].a;
+      return localaraw;
     }
-    ThreadManager.post(new EmoticonIPCModule.1(this, paramBundle, paramString, ((bgga)((QQAppInterface)localAppRuntime).getManager(235)).a, paramInt), 5, null, true);
     return null;
+  }
+  
+  public void a(araw paramaraw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterConfProcessor", 2, "[onUpdate]");
+    }
+    amme localamme = (amme)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.APOLLO_MANAGER);
+    if (paramaraw != null) {}
+    for (paramaraw = paramaraw.a;; paramaraw = null)
+    {
+      localamme.d(paramaraw);
+      return;
+    }
+  }
+  
+  public Class<araw> clazz()
+  {
+    return araw.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void onReqNoReceive()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterConfProcessor", 2, "[onReqNoReceive]");
+    }
+    araw localaraw = (araw)aqxe.a().a(417);
+    if (localaraw != null) {
+      ((amme)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.APOLLO_MANAGER)).d(localaraw.a);
+    }
+  }
+  
+  public int type()
+  {
+    return 417;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arax
  * JD-Core Version:    0.7.0.1
  */

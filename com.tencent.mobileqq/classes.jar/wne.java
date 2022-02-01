@@ -1,27 +1,87 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Build;
 import android.text.TextUtils;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-final class wne
-  extends SimpleJob<Object>
+public class wne
+  extends wfm<wnf>
 {
-  wne(String paramString, vlm paramvlm, String[] paramArrayOfString, int paramInt, wnf paramwnf, TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  static final String jdField_a_of_type_JavaLangString = weg.a("StorySvc.get_tab_node_vid_list");
+  wly jdField_a_of_type_Wly;
+  String b = "";
+  String c = "";
+  
+  public wne(wly paramwly, String paramString1, String paramString2)
   {
-    super(paramString);
+    this.jdField_a_of_type_Wly = paramwly;
+    this.b = paramString1;
+    this.c = paramString2;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public static wnf a(wly paramwly, byte[] paramArrayOfByte)
   {
-    paramJobContext = this.jdField_a_of_type_Vlm.a();
-    if (!TextUtils.isEmpty(paramJobContext)) {
-      this.jdField_a_of_type_ArrayOfJavaLangString[0] = bjnd.a(this.jdField_a_of_type_ArrayOfJavaLangString[0], "authkey", paramJobContext);
+    qqstory_service.RspMsgTabNodeVideoList localRspMsgTabNodeVideoList = new qqstory_service.RspMsgTabNodeVideoList();
+    if (paramArrayOfByte != null) {}
+    try
+    {
+      localRspMsgTabNodeVideoList.mergeFrom(paramArrayOfByte);
+      return new wnf(paramwly, localRspMsgTabNodeVideoList, paramArrayOfByte);
     }
-    wmz.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_Wnf);
+    catch (InvalidProtocolBufferMicroException paramwly)
+    {
+      ykq.d("Q.qqstory:ReqMsgTabNodeVideoList", "" + paramwly);
+    }
     return null;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wnf a(byte[] paramArrayOfByte)
+  {
+    return a(this.jdField_a_of_type_Wly, paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMsgTabNodeVideoList localReqMsgTabNodeVideoList = new qqstory_service.ReqMsgTabNodeVideoList();
+    localReqMsgTabNodeVideoList.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Wly.jdField_a_of_type_JavaLangString));
+    localReqMsgTabNodeVideoList.req_time_stamp.set(this.jdField_a_of_type_Wly.c);
+    localReqMsgTabNodeVideoList.node_type.set(this.jdField_a_of_type_Wly.jdField_a_of_type_Int);
+    localReqMsgTabNodeVideoList.recommend_id.set(this.jdField_a_of_type_Wly.e);
+    localReqMsgTabNodeVideoList.source.set(this.jdField_a_of_type_Wly.f);
+    if (this.jdField_a_of_type_Wly.jdField_a_of_type_Int == 12)
+    {
+      if ((TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c))) {
+        localReqMsgTabNodeVideoList.start_vid.set(this.c);
+      }
+      if (!TextUtils.isEmpty(this.b)) {
+        localReqMsgTabNodeVideoList.cookie.set(this.b);
+      }
+      localReqMsgTabNodeVideoList.page_size.set(20);
+    }
+    Long localLong = zeh.a();
+    if (localLong != null) {
+      localReqMsgTabNodeVideoList.adcode.set(localLong.longValue());
+    }
+    localReqMsgTabNodeVideoList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Wly.k)) {
+      localReqMsgTabNodeVideoList.passthrough.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Wly.k));
+    }
+    return localReqMsgTabNodeVideoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabNodeVidListRequest{nodeInfo.unionId=" + this.jdField_a_of_type_Wly.jdField_a_of_type_JavaLangString + ", mCookie='" + this.b + '\'' + ", mStartVid='" + this.c + '\'' + "} " + super.toString();
   }
 }
 

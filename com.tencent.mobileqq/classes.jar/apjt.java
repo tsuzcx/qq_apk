@@ -1,76 +1,76 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
 public class apjt
+  extends apkj
 {
-  private static final apjt jdField_a_of_type_Apjt = new apjt();
-  private static String jdField_a_of_type_JavaLangString = apjt.class.getSimpleName();
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "motorola", "mot", "FIH", "Sony Ericsson", "samsung", "HTC", "HUN", "LGE", "alps", "OPPO", "TCL", "LENOVO", "ZTE", "Meizu", "Xiaomi", "HUAWEI", "TIANYU", "sprd", "K-Touch", "YuLong", "CoolPad", "Amazon", "Hisense", "Acer", "GIONEE", "Philips", "asus", "snda.com", "koobee", "AMOI", "Fason", "ainol", "Dell", "dlkjl12389", "haier", "sharp", "BBK", "nubia", "KONKA" };
-  private static final String[] b = { "MOTOROLA", "MOTOROLA", "MOTOROLA", "SONYERICSSON", "SAMSUNG", "HTC", "HTC", "LG", "OPPO", "OPPO", "TCL", "LENOVO", "ZTE", "MEIZU", "XIAOMI", "HUAWEI", "TIANYU", "TIANYU", "TIANYU", "COOLPAD", "COOLPAD", "AMAZON", "HISENSE", "ACER", "JINLI", "PHILIPS", "GOOGLE", "SHENGDA", "KUBI", "XIAXIN", "FANSHANG", "AINUO", "DELL", "DPD", "HAIER", "SHARP", "BBK", "NUBIA", "KONKA" };
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public int a;
+  public String a;
+  public apju[] a;
+  public int b = -1;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 0;
   
-  private apjt()
+  public apjt()
   {
-    int i = 0;
-    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(jdField_a_of_type_ArrayOfJavaLangString[i].toUpperCase(), b[i]);
-      i += 1;
-    }
-    a();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfApju = null;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
   }
   
-  public static apjt a()
+  public static boolean a(apjt paramapjt)
   {
-    return jdField_a_of_type_Apjt;
-  }
-  
-  private void a()
-  {
-    if (QLog.isColorLevel())
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramapjt != null)
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "****** DeviceInfo  (+) *****");
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND_KEYS.len = " + jdField_a_of_type_ArrayOfJavaLangString.length);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND_NAMES.len = " + b.length);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "DeviceTypeName = " + a());
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "SubTagName = " + a() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase());
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "MODEL = " + Build.MODEL);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "SDK_INT = " + Build.VERSION.SDK_INT);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND = " + Build.BRAND);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "DEVICE = " + Build.DEVICE);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "DISPLAY = " + Build.DISPLAY);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "HARDWARE = " + Build.HARDWARE);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "MANUFACTURER = " + Build.MANUFACTURER);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "PRODUCT = " + Build.PRODUCT);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "TAGS = " + Build.TAGS);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "USER = " + Build.USER);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "TYPE = " + Build.TYPE);
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "****** DeviceInfo (-) *****");
-    }
-  }
-  
-  public String a()
-  {
-    String str;
-    if (Build.MODEL.equalsIgnoreCase("K-Touch W619")) {
-      str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("TIANYU") + " " + Build.MODEL;
-    }
-    for (;;)
-    {
-      return str.replace(" ", "_").replace("+", "").replace("(t)", "");
-      if ((Build.MODEL.equalsIgnoreCase("8150")) && (Build.BRAND.equalsIgnoreCase("COOLPAD"))) {
-        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("COOLPAD") + " " + Build.MODEL;
-      } else {
-        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get(Build.MANUFACTURER.toUpperCase()) + " " + Build.MODEL;
+      bool1 = bool2;
+      if (paramapjt.jdField_a_of_type_Int == 0)
+      {
+        bool1 = bool2;
+        if (paramapjt.b == 0)
+        {
+          bool1 = bool2;
+          if (paramapjt.jdField_a_of_type_ArrayOfApju != null)
+          {
+            bool1 = bool2;
+            if (paramapjt.jdField_a_of_type_ArrayOfApju[0].jdField_c_of_type_Int == 0)
+            {
+              bool1 = bool2;
+              if (paramapjt.jdField_a_of_type_ArrayOfApju[0].a != null) {
+                bool1 = true;
+              }
+            }
+          }
+        }
       }
     }
+    return bool1;
   }
   
-  public String b()
+  public String toString()
   {
-    return a() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase();
+    if (this.jdField_a_of_type_ArrayOfApju != null)
+    {
+      String str1 = "ImageTags{";
+      int i = 0;
+      for (;;)
+      {
+        str2 = str1;
+        if (i >= this.jdField_a_of_type_ArrayOfApju.length) {
+          break;
+        }
+        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfApju[i];
+        i += 1;
+      }
+    }
+    String str2 = "null";
+    return "ARCloudMarkerRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

@@ -1,50 +1,37 @@
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class axjm
-  implements afce
+class axjm
+  implements auci
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
+  axjm(axjk paramaxjk, auch paramauch) {}
   
-  public boolean onClick(View paramView)
+  public void a()
   {
-    return false;
+    Message localMessage = axjk.a(this.jdField_a_of_type_Axjk).obtainMessage(1);
+    axjg localaxjg = this.jdField_a_of_type_Axjk.a(this.jdField_a_of_type_Auch.a());
+    if (localaxjg != null)
+    {
+      localaxjg.jdField_a_of_type_Int = 0;
+      localMessage.obj = localaxjg;
+      axjk.a(this.jdField_a_of_type_Axjk).sendMessage(localMessage);
+    }
   }
   
-  public boolean onLongClick(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    return false;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.e("MultiRichMediaSaveManager", 2, "saveVideoFile fail, errorCode = " + paramInt + " ,errorMsg = " + paramString);
     }
-    while ((paramView instanceof ArkAppView))
+    axjg localaxjg = this.jdField_a_of_type_Axjk.a(this.jdField_a_of_type_Auch.a());
+    if (localaxjg != null)
     {
-      return ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.b = paramMotionEvent.getY();
-      this.c = 0.0F;
-      this.d = 0.0F;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      continue;
-      this.c += Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float);
-      this.d += Math.abs(paramMotionEvent.getY() - this.b);
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.b = paramMotionEvent.getY();
-      continue;
-      if (((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 200L) || ((this.c <= 20.0F) && (this.d <= 20.0F))) && (onClick(paramView))) {
-        return true;
-      }
+      localaxjg.jdField_a_of_type_Int = -1;
+      localaxjg.b = paramInt;
+      localaxjg.jdField_a_of_type_JavaLangString = paramString;
+      axjk.a(this.jdField_a_of_type_Axjk, localaxjg);
     }
-    return false;
   }
 }
 

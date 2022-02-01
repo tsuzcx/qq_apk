@@ -1,26 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
 
-class arrf
-  implements Animator.AnimatorListener
+public class arrf
+  implements arrj
 {
-  arrf(arre paramarre) {}
+  public arrf(DanmakuManager paramDanmakuManager) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(arrl paramarrl)
   {
-    paramAnimator = ObjectAnimator.ofFloat(SignalBombAnimationView.b(this.a.a), "alpha", new float[] { 1.0F, 0.0F });
-    paramAnimator.setDuration(280L);
-    paramAnimator.addListener(new arrg(this));
-    paramAnimator.start();
+    DanmakuManager.a(this.a).b(paramarrl);
+    if (DanmakuManager.a(this.a) != null) {
+      DanmakuManager.a(this.a).f();
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

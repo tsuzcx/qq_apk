@@ -1,11 +1,16 @@
-public class bkng
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IBoxADLisener;
+
+class bkng
+  implements acbd
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  bkng(bknf parambknf) {}
+  
+  public void a()
+  {
+    if (this.a.a.a != null) {
+      this.a.a.a.onDismiss();
+    }
+  }
 }
 
 

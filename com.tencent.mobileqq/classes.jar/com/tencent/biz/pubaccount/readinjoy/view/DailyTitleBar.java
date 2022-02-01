@@ -16,7 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
-import pai;
+import pjr;
 
 public class DailyTitleBar
   extends FrameLayout
@@ -31,11 +31,11 @@ public class DailyTitleBar
   {
     super(paramContext, paramAttributeSet);
     a(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370420);
-    this.b = findViewById(2131370428);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379887));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131369404));
-    this.c = findViewById(2131378816);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370603);
+    this.b = findViewById(2131370611);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380223));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131369571));
+    this.c = findViewById(2131379109);
   }
   
   private void a(Context paramContext)
@@ -45,7 +45,7 @@ public class DailyTitleBar
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    View.inflate(paramContext, 2131560160, this);
+    View.inflate(paramContext, 2131560207, this);
     paramAttributeSet = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.DailyTitleBar, 0, 0);
     for (;;)
     {
@@ -54,17 +54,17 @@ public class DailyTitleBar
       {
         String str = paramAttributeSet.getString(3);
         i = paramAttributeSet.getColor(4, -16777216);
-        int j = paramAttributeSet.getResourceId(0, 2131167337);
-        k = paramAttributeSet.getResourceId(2, 2130843007);
-        m = paramAttributeSet.getResourceId(1, 2130843222);
+        int j = paramAttributeSet.getResourceId(0, 2131167363);
+        k = paramAttributeSet.getResourceId(2, 2130843041);
+        m = paramAttributeSet.getResourceId(1, 2130843258);
         setBackgroundResource(j);
-        localTextView = (TextView)findViewById(2131379887);
+        localTextView = (TextView)findViewById(2131380223);
         localTextView.setText(str);
         localTextView.setTextColor(i);
         if ((i != -1) && (i != 16777215)) {
           break label175;
         }
-        findViewById(2131369404).setVisibility(8);
+        findViewById(2131369571).setVisibility(8);
       }
       finally
       {
@@ -74,8 +74,8 @@ public class DailyTitleBar
         paramAttributeSet.recycle();
       }
       localTextView.setVisibility(8);
-      findViewById(2131369162).setBackgroundResource(k);
-      findViewById(2131369371).setBackgroundResource(m);
+      findViewById(2131369324).setBackgroundResource(k);
+      findViewById(2131369537).setBackgroundResource(m);
       paramAttributeSet.recycle();
       setClickable(true);
       a(paramContext);
@@ -90,7 +90,7 @@ public class DailyTitleBar
   
   private void b(Context paramContext)
   {
-    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)findViewById(2131369404);
+    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)findViewById(2131369571);
     Object localObject;
     if (localKandianUrlImageView != null)
     {
@@ -105,7 +105,7 @@ public class DailyTitleBar
     }
     try
     {
-      pai.a(localKandianUrlImageView, new URL((String)localObject), paramContext);
+      pjr.a(localKandianUrlImageView, new URL((String)localObject), paramContext);
       return;
     }
     catch (MalformedURLException paramContext)
@@ -116,7 +116,9 @@ public class DailyTitleBar
   
   public void setOnLeftButtonClickListener(View.OnClickListener paramOnClickListener)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramOnClickListener != null)) {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramOnClickListener != null))
+    {
+      QLog.d("DailyTitleBar", 1, "on startButton click!");
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
     }
   }

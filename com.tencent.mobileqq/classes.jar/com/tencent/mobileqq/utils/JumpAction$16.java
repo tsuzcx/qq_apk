@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import atqa;
-import bfuc;
-import bfvp;
+import auuv;
+import bhcu;
+import bheh;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class JumpAction$16
   implements Runnable
 {
-  public JumpAction$16(bfvp parambfvp, String paramString, long paramLong, HashMap paramHashMap) {}
+  public JumpAction$16(bheh parambheh, String paramString, long paramLong, HashMap paramHashMap) {}
   
   public void run()
   {
@@ -22,12 +22,12 @@ public class JumpAction$16
     if (!TextUtils.isEmpty(str1)) {}
     try
     {
-      String str2 = new String(bfuc.encode(str1.getBytes("UTF-8"), 0));
+      String str2 = new String(bhcu.encode(str1.getBytes("UTF-8"), 0));
       this.this$0.jdField_a_of_type_JavaUtilHashMap.put("file_data", str2);
       long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-      atqa.a("KEY_STAGE_1_SAVE_IMAGE", l, this.jdField_a_of_type_JavaUtilHashMap, true);
+      auuv.a("KEY_STAGE_1_SAVE_IMAGE", l, this.jdField_a_of_type_JavaUtilHashMap, true);
       QLog.i("JumpAction", 1, "gotoShareMsgCheck save file to:" + str1 + ",cost=" + l);
-      bfvp.e(this.this$0);
+      bheh.e(this.this$0);
       if ((!this.this$0.f) && (!MiniProgramOpenSdkUtil.isSharingMiniProgram(this.this$0.jdField_a_of_type_JavaUtilHashMap)) && ((this.this$0.jdField_a_of_type_AndroidContentContext instanceof JumpActivity))) {
         ((JumpActivity)this.this$0.jdField_a_of_type_AndroidContentContext).finish();
       }

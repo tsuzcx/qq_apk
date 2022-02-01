@@ -3,8 +3,8 @@ package com.tencent.mobileqq.transfile;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.util.Log;
-import bcel;
-import bftf;
+import bdlg;
+import bhbx;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
@@ -121,7 +121,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
           bool = false;
           continue;
           label264:
-          bcel.a("Http_Download_Queen_Full", this.this$0.mHttpExcuter.getFullQueue());
+          bdlg.a("Http_Download_Queen_Full", this.this$0.mHttpExcuter.getFullQueue());
         }
       }
     }
@@ -294,7 +294,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
       }
       if ((paramNetResp.contains("ENOSPC")) || (paramNetResp.contains("space")))
       {
-        long l = bftf.b();
+        long l = bhbx.b();
         if (this.httpReq != null)
         {
           paramIOException = this.httpReq.mOutPath;

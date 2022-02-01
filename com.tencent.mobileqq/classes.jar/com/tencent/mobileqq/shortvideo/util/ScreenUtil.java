@@ -21,7 +21,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import xvv;
+import ykq;
 
 public class ScreenUtil
 {
@@ -145,24 +145,24 @@ public class ScreenUtil
       }
       catch (IllegalArgumentException paramContext)
       {
-        xvv.e("ScreenUtil", paramContext.getMessage());
+        ykq.e("ScreenUtil", paramContext.getMessage());
         return -1;
       }
       catch (IllegalAccessException paramContext)
       {
-        xvv.e("ScreenUtil", paramContext.getMessage());
+        ykq.e("ScreenUtil", paramContext.getMessage());
         return -1;
       }
       catch (InvocationTargetException paramContext)
       {
-        xvv.e("ScreenUtil", paramContext.getMessage());
+        ykq.e("ScreenUtil", paramContext.getMessage());
       }
     }
     catch (NoSuchMethodException paramContext)
     {
       for (;;)
       {
-        xvv.e("ScreenUtil", paramContext.getMessage());
+        ykq.e("ScreenUtil", paramContext.getMessage());
       }
     }
     return -1;
@@ -187,24 +187,24 @@ public class ScreenUtil
       }
       catch (IllegalArgumentException paramContext)
       {
-        xvv.e("ScreenUtil", paramContext.getMessage());
+        ykq.e("ScreenUtil", paramContext.getMessage());
         return -1;
       }
       catch (IllegalAccessException paramContext)
       {
-        xvv.e("ScreenUtil", paramContext.getMessage());
+        ykq.e("ScreenUtil", paramContext.getMessage());
         return -1;
       }
       catch (InvocationTargetException paramContext)
       {
-        xvv.e("ScreenUtil", paramContext.getMessage());
+        ykq.e("ScreenUtil", paramContext.getMessage());
       }
     }
     catch (NoSuchMethodException paramContext)
     {
       for (;;)
       {
-        xvv.f("ScreenUtil", paramContext.getMessage());
+        ykq.f("ScreenUtil", paramContext.getMessage());
       }
     }
     return -1;
@@ -242,7 +242,7 @@ public class ScreenUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.ScreenUtil
  * JD-Core Version:    0.7.0.1
  */

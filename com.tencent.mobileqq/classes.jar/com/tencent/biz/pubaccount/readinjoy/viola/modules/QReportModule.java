@@ -18,10 +18,10 @@ import com.tencent.viola.module.BaseModule;
 import dw;
 import java.util.HashMap;
 import java.util.Iterator;
-import odq;
+import olh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pay;
+import pkh;
 
 public class QReportModule
   extends BaseModule
@@ -33,7 +33,7 @@ public class QReportModule
   private HashMap getDTBase()
   {
     HashMap localHashMap = new HashMap();
-    Object localObject = (QQAppInterface)pay.a();
+    Object localObject = (QQAppInterface)pkh.a();
     if (localObject != null)
     {
       localObject = ((QQAppInterface)localObject).getAccount();
@@ -42,7 +42,7 @@ public class QReportModule
       }
     }
     localHashMap.put("app", "qq");
-    localHashMap.put("av", "8.4.8");
+    localHashMap.put("av", "8.4.10");
     localHashMap.put("imei", DeviceInfoUtil.getIMEI());
     localHashMap.put("oper_time", Long.toString(System.currentTimeMillis()));
     localHashMap.put("domain", "1");
@@ -119,14 +119,14 @@ public class QReportModule
     if (paramJSONObject != null) {}
     for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = "")
     {
-      odq.a(null, null, paramString, paramString, 0, 0, str1, str2, str3, paramJSONObject, false);
+      olh.a(null, null, paramString, paramString, 0, 0, str1, str2, str3, paramJSONObject, false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.QReportModule
  * JD-Core Version:    0.7.0.1
  */

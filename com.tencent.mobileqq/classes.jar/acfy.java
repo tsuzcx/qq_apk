@@ -1,42 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class acfy
-  implements abyl
+  implements acgx
 {
-  public int a()
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    return 1037;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(159);
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.getMsgCache().b(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (paramMessageRecord != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    if (paramacfw != null) {}
+    for (paramString = paramacfw.a(); (paramacfw == null) || (paramString == null); paramString = null)
+    {
+      acho.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
+    try
+    {
+      GdtBannerFragmentForJS.a(paramString, new JSONObject(paramVarArgs[0]), GdtBannerFragmentForJS.class);
+      return true;
+    }
+    catch (JSONException paramacfw)
+    {
+      acho.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramacfw);
+    }
     return true;
-  }
-  
-  public int b()
-  {
-    return 8037;
   }
 }
 

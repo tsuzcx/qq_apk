@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Bitmap;
 
-class agct
-  implements DialogInterface.OnClickListener
+public abstract interface agct
 {
-  agct(agcr paramagcr, ChatMessage paramChatMessage) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    acvv.b(this.jdField_a_of_type_Agcr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agcr.b, this.jdField_a_of_type_Agcr.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
-  }
+  public abstract void onSend(Bitmap paramBitmap, agcb paramagcb, int paramInt);
 }
 
 

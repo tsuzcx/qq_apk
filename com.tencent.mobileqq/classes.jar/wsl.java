@@ -1,49 +1,43 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class wsl
-  extends woe
 {
-  public final ErrorMessage a;
-  public final boolean a;
-  public final String b;
+  public int a;
+  public String a;
+  public List<CommentEntry> a;
+  public int b;
+  public String b;
   
-  public wsl(@NonNull ErrorMessage paramErrorMessage, boolean paramBoolean)
+  public wsl()
   {
-    super(new wod("ERROR_" + paramErrorMessage));
-    this.b = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("ERROR");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put("ERROR", "ERROR");
   }
   
-  public wsl(@NonNull String paramString, boolean paramBoolean)
+  public boolean equals(Object paramObject)
   {
-    super(new wod("LOADING_" + paramString));
-    this.b = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("LOADING");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put("LOADING", "LOADING");
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (wsl)paramObject;
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      }
+    } while (paramObject.jdField_a_of_type_JavaLangString == null);
+    return false;
   }
   
-  public boolean b()
+  public int hashCode()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
-  }
-  
-  public boolean c()
-  {
-    return this.b != null;
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.hashCode();
+    }
+    return 0;
   }
 }
 

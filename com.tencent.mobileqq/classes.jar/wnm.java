@@ -1,12 +1,54 @@
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
-public abstract interface wnm
+class wnm
+  extends wbz
 {
-  public abstract List<String> a();
+  private final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
   
-  public abstract boolean a();
+  public wnm(wni paramwni)
+  {
+    super("MsgTabStoryVideoPreloader");
+  }
   
-  public abstract boolean b();
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, wbk paramwbk)
+  {
+    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramwbk);
+    if (paramInt2 == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("MsgTabStoryVideoPreloader", 2, "download error: vid=" + paramString + " fileType=" + paramInt1, paramErrorMessage);
+      }
+      this.jdField_a_of_type_Wni.a(paramwbk.c, true);
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, wbk paramwbk)
+  {
+    super.a(paramString, paramInt1, paramFile, paramInt2, paramwbk);
+    if (paramInt2 == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "download success before: vid=" + paramString + " fileType=" + paramInt1);
+      }
+      this.jdField_a_of_type_Wni.a(paramwbk.c, true);
+    }
+  }
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, wbk paramwbk)
+  {
+    super.b(paramString, paramInt1, paramFile, paramInt2, paramwbk);
+    if (paramInt2 == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "download success: vid=" + paramString + " fileType=" + paramInt1);
+      }
+      this.jdField_a_of_type_Wni.a(paramwbk.c, this.jdField_a_of_type_JavaUtilSet.add(paramString));
+    }
+  }
 }
 
 

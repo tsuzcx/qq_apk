@@ -1,75 +1,60 @@
-import android.graphics.Bitmap;
-import android.media.ThumbnailUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.RoundRectBitmap;
-import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.downloader.GalleryDecoder;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.widget.Gallery;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahbc
-  extends GalleryDecoder
+class ahbc
+  implements awzc<EmoticonPackage>
 {
-  private BaseApplicationImpl mApp;
+  ahbc(ahaw paramahaw, int paramInt, ChatMessage paramChatMessage) {}
   
-  public ahbc(BaseApplicationImpl paramBaseApplicationImpl)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    super(BaseApplicationImpl.getContext());
-    this.mApp = paramBaseApplicationImpl;
-  }
-  
-  public Object decodeVideo(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    int i = 0;
-    if (paramDownloadParams.tag != null) {
-      i = ((Integer)paramDownloadParams.tag).intValue();
-    }
-    if (i == 3)
+    String str = "0";
+    int i = -1;
+    if (paramEmoticonPackage != null)
     {
-      paramURLDrawableHandler = ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
-      int j = paramURLDrawableHandler.getWidth();
-      i = paramURLDrawableHandler.getHeight();
-      float f = Gallery.a(j, i, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, null);
-      j = (int)(j * f);
-      i = (int)(i * f);
-      return ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
+      str = paramEmoticonPackage.epId;
+      if ((3 == paramEmoticonPackage.jobType) || (5 == paramEmoticonPackage.jobType)) {
+        i = 2;
+      }
     }
-    return null;
-  }
-  
-  public String getLogTag()
-  {
-    return "PEAK";
-  }
-  
-  public void reportSafeDecode(SafeBitmapFactory.SafeDecodeOption paramSafeDecodeOption)
-  {
-    if ((!paramSafeDecodeOption.isInJustDecodeBounds) && (paramSafeDecodeOption.needRegionDecode))
+    else
     {
-      HashMap localHashMap = paramSafeDecodeOption.getInfo();
-      localHashMap.put("from", "GalleryDecoder");
-      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "safeDecode", paramSafeDecodeOption.isGetBitmap, paramSafeDecodeOption.runTime, paramSafeDecodeOption.rawHeight * paramSafeDecodeOption.rawWidth, localHashMap, "");
+      if (this.jdField_a_of_type_Int != 2131365475) {
+        break label98;
+      }
+      admh.b(this.jdField_a_of_type_Ahaw.b, this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      bdla.b(this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006447", "0X8006447", 0, 0, "4", "", "", "");
     }
-  }
-  
-  public RoundRectBitmap resizeAndClipBitmap(Bitmap paramBitmap, int paramInt)
-  {
-    try
+    label98:
+    do
     {
-      RoundRectBitmap localRoundRectBitmap = new RoundRectBitmap(paramBitmap, paramInt);
-      return localRoundRectBitmap;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
-    return new RoundRectBitmap(paramBitmap, 12.0F);
-  }
-  
-  public boolean useJpegTurbo()
-  {
-    return ayfc.b();
+      do
+      {
+        return;
+        i = 1;
+        break;
+        if (this.jdField_a_of_type_Int == 2131362198)
+        {
+          this.jdField_a_of_type_Ahaw.a(paramEmoticonPackage, str, i);
+          return;
+        }
+        if ((this.jdField_a_of_type_Int == 2131367230) || (this.jdField_a_of_type_Int == 2131366945))
+        {
+          this.jdField_a_of_type_Ahaw.a(paramEmoticonPackage, str, i, this.jdField_a_of_type_Int);
+          return;
+        }
+      } while (this.jdField_a_of_type_Int != 2131371640);
+      if (QLog.isColorLevel()) {
+        QLog.d("MarketFaceItemBuilder", 4, "marketface related click");
+      }
+    } while ((ahaw.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo == null) || (ahaw.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (ahaw.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon == null));
+    bdla.b(this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "0X800B115", "0X800B115", EmoticonUtils.getRelatedEmotionReportFromType(this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, "1", "", ahaw.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.epId, ahaw.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.eId);
+    this.jdField_a_of_type_Ahaw.h(ahaw.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
   }
 }
 

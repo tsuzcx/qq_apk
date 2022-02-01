@@ -2,8 +2,10 @@ package dov.com.qq.im.ae.play;
 
 import android.graphics.Bitmap;
 import android.graphics.PointF;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bmbx;
+import bnrh;
+import bolh;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
@@ -30,6 +32,7 @@ import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.view.RendererUtils;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public final class FaceChangeUtils
@@ -62,7 +65,7 @@ public final class FaceChangeUtils
   {
     if ((paramBitmap == null) || (paramString == null))
     {
-      bmbx.d("FaceChangeUtils", "changeFaceInternal---null parameters: userFace, materialDir");
+      bnrh.d("FaceChangeUtils", "changeFaceInternal---null parameters: userFace, materialDir");
       return FaceChangeUtils.ChangeFaceResult.access$000(-1, "null parameters, material=" + paramString);
     }
     Object localObject1 = paramString.split("/");
@@ -70,19 +73,19 @@ public final class FaceChangeUtils
     Object localObject2 = CfTemplateParser.parseCrazyFace(FileUtils.getRealPath(paramString), (String)localObject1);
     if (localObject2 == null)
     {
-      bmbx.d("FaceChangeUtils", "changeFaceInternal---failed to parse CrazyFace: " + paramString);
+      bnrh.d("FaceChangeUtils", "changeFaceInternal---failed to parse CrazyFace: " + paramString);
       return FaceChangeUtils.ChangeFaceResult.access$000(-2, "failed to parse material, material=" + paramString);
     }
     localObject1 = detectFace(paramBitmap);
     if ((localObject1 == null) || (((PTFaceAttr)localObject1).getAllFacePoints() == null) || (((PTFaceAttr)localObject1).getAllFacePoints().isEmpty()))
     {
-      bmbx.d("FaceChangeUtils", "changeFaceInternal---failed to detect face");
+      bnrh.d("FaceChangeUtils", "changeFaceInternal---failed to detect face");
       return FaceChangeUtils.ChangeFaceResult.access$000(-3, "failed to detect face");
     }
     Object localObject3 = getMaxFacePoints(((PTFaceAttr)localObject1).getAllFacePoints(), ((PTFaceAttr)localObject1).getFaceDetectScale());
     if (((List)localObject3).isEmpty())
     {
-      bmbx.d("FaceChangeUtils", "changeFaceInternal---userFacePointsList is empty");
+      bnrh.d("FaceChangeUtils", "changeFaceInternal---userFacePointsList is empty");
       return FaceChangeUtils.ChangeFaceResult.access$000(-4, "no face points");
     }
     localObject1 = ((CrazyFaceDataTemplate)localObject2).faceLayers;
@@ -144,7 +147,7 @@ public final class FaceChangeUtils
       RendererUtils.clearTexture(((CosFunParam)localArrayList.get(i)).mFaceTexture);
       i += 1;
     }
-    bmbx.b("FaceChangeUtils", "success : + result");
+    bnrh.b("FaceChangeUtils", "success : + result");
     return FaceChangeUtils.ChangeFaceResult.access$200(paramString);
   }
   
@@ -163,7 +166,7 @@ public final class FaceChangeUtils
       paramCropFaceCallback.onFail(-3);
       return;
     }
-    runInGLThread(new FaceChangeUtils.5(paramBitmap, paramCropFaceCallback), paramBoolean, "GLThread-cropFace");
+    runInGLThread(new FaceChangeUtils.6(paramBitmap, paramCropFaceCallback), paramBoolean, "GLThread-cropFace");
   }
   
   private static void cropFaceInternal(Bitmap paramBitmap, FaceChangeUtils.CropFaceCallback paramCropFaceCallback)
@@ -206,6 +209,14 @@ public final class FaceChangeUtils
     paramCropFaceCallback.onSuccess((Bitmap)localObject2);
   }
   
+  public static bolh<Integer, List<PointF>> detectBiggestFaceInGLThread(Bitmap paramBitmap)
+  {
+    PTFaceAttr[] arrayOfPTFaceAttr = new PTFaceAttr[1];
+    bolh localbolh = new bolh(Integer.valueOf(0), null);
+    runInGLThread(new FaceChangeUtils.4(arrayOfPTFaceAttr, paramBitmap, localbolh), true, "GLThread-checkHasFaceInPic");
+    return localbolh;
+  }
+  
   public static PTFaceAttr detectFace(Bitmap paramBitmap)
   {
     return detectFace(paramBitmap, 0.1666666666666667D);
@@ -217,7 +228,7 @@ public final class FaceChangeUtils
     paramBitmap = new Frame(0, i, paramBitmap.getWidth(), paramBitmap.getHeight());
     PTFaceDetector localPTFaceDetector = new PTFaceDetector();
     localPTFaceDetector.init(true);
-    PTFaceAttr localPTFaceAttr = localPTFaceDetector.detectFrame(paramBitmap, System.currentTimeMillis(), 0, false, paramDouble, 0.0F, true, false, null);
+    PTFaceAttr localPTFaceAttr = localPTFaceDetector.detectFrame(paramBitmap, System.currentTimeMillis(), 0, paramDouble, 0.0F, true, false, null);
     paramBitmap.clear();
     RendererUtils.clearTexture(i);
     localPTFaceDetector.destroy();
@@ -271,7 +282,12 @@ public final class FaceChangeUtils
   {
     PTFaceAttr[] arrayOfPTFaceAttr = new PTFaceAttr[1];
     runInGLThread(new FaceChangeUtils.3(arrayOfPTFaceAttr, paramBitmap), true, "GLThread-checkHasFaceInPic");
-    return (arrayOfPTFaceAttr[0] != null) && (arrayOfPTFaceAttr[0].getAllFacePoints() != null) && (arrayOfPTFaceAttr[0].getAllFacePoints().size() > 0);
+    return hasValidFace(arrayOfPTFaceAttr[0]);
+  }
+  
+  public static boolean hasValidFace(PTFaceAttr paramPTFaceAttr)
+  {
+    return (paramPTFaceAttr != null) && (paramPTFaceAttr.getAllFacePoints() != null) && (paramPTFaceAttr.getAllFacePoints().size() > 0);
   }
   
   private static SizeI initMaxLength()
@@ -347,13 +363,44 @@ public final class FaceChangeUtils
       str = "GLThread-default";
     }
     paramString = new SimpleGLThread(null, str);
-    paramRunnable = new FaceChangeUtils.4(paramRunnable, paramString);
+    paramRunnable = new FaceChangeUtils.5(paramRunnable, paramString);
     if (paramBoolean)
     {
       paramString.postJobSync(paramRunnable);
       return;
     }
     paramString.postJob(paramRunnable);
+  }
+  
+  public static List<PointF> transFromImageSpace2ContainerSpace(int paramInt1, int paramInt2, int paramInt3, int paramInt4, @NonNull List<PointF> paramList)
+  {
+    float f1 = paramInt1 * 1.0F / paramInt2;
+    float f2 = paramInt3 * 1.0F / paramInt4;
+    paramList = new LinkedList(paramList);
+    LinkedList localLinkedList = new LinkedList();
+    PointF localPointF;
+    if (f1 <= f2)
+    {
+      f1 = paramInt4 * 1.0F / paramInt2;
+      f2 = (paramInt3 - paramInt1 * f1) / 2.0F;
+      paramInt1 = 0;
+      while (paramInt1 < paramList.size())
+      {
+        localPointF = (PointF)paramList.get(paramInt1);
+        localLinkedList.add(new PointF(localPointF.x * f1 + f2, localPointF.y * f1));
+        paramInt1 += 1;
+      }
+    }
+    f1 = paramInt3 * 1.0F / paramInt1;
+    f2 = (paramInt4 - paramInt2 * f1) / 2.0F;
+    paramInt1 = 0;
+    while (paramInt1 < paramList.size())
+    {
+      localPointF = (PointF)paramList.get(paramInt1);
+      localLinkedList.add(new PointF(localPointF.x * f1, localPointF.y * f1 + f2));
+      paramInt1 += 1;
+    }
+    return localLinkedList;
   }
 }
 

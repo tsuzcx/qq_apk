@@ -4,13 +4,13 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import qpk;
-import slf;
-import slh;
+import rbp;
+import syp;
+import syr;
 
 public class ReadInJoyLifeCycleLinearLayout
   extends LinearLayout
-  implements slf
+  implements syp
 {
   private boolean a;
   
@@ -22,11 +22,11 @@ public class ReadInJoyLifeCycleLinearLayout
   public void a()
   {
     Object localObject = getTag();
-    if ((localObject instanceof qpk))
+    if ((localObject instanceof rbp))
     {
-      localObject = ((qpk)localObject).a();
-      if ((localObject instanceof slh)) {
-        ((slh)localObject).a();
+      localObject = ((rbp)localObject).a();
+      if ((localObject instanceof syr)) {
+        ((syr)localObject).a();
       }
     }
   }
@@ -39,11 +39,11 @@ public class ReadInJoyLifeCycleLinearLayout
   public void b()
   {
     Object localObject = getTag();
-    if ((localObject instanceof qpk))
+    if ((localObject instanceof rbp))
     {
-      localObject = ((qpk)localObject).a();
-      if ((localObject instanceof slh)) {
-        ((slh)localObject).b();
+      localObject = ((rbp)localObject).a();
+      if ((localObject instanceof syr)) {
+        ((syr)localObject).b();
       }
     }
   }

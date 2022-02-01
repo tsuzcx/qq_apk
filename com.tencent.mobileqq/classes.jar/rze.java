@@ -1,29 +1,48 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class rze
-  extends ofb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/managecolumn/CreateTopicDispatcher;", "", "()V", "createTopicListenerList", "", "Lkotlin/Function1;", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ColumnInfo;", "Lkotlin/ParameterName;", "name", "topicInfo", "", "addCreateTopicListener", "listener", "notifyTopicCreate", "removeCreateTopicListener", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rze
 {
-  private rze(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  private static final List<Function1<ColumnInfo, Unit>> a;
+  public static final rze a;
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    VideoFeedsPlayActivity.a("onGetVideoPlayCount isSuccess: " + paramBoolean);
-    if ((!paramBoolean) || (paramBundle == null)) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        localObject = paramBundle.getString("VALUE_VIDEO_VID");
-      } while (localObject == null);
-      localObject = VideoFeedsRecommendFragment.a(this.a).b((String)localObject);
-    } while (localObject == null);
-    ((VideoInfo)localObject).r = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
-    VideoFeedsRecommendFragment.a(this.a).b((VideoInfo)localObject);
+    jdField_a_of_type_Rze = new rze();
+    jdField_a_of_type_JavaUtilList = (List)new ArrayList();
+  }
+  
+  @JvmStatic
+  public static final void a(@NotNull ColumnInfo paramColumnInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramColumnInfo, "topicInfo");
+    Iterator localIterator = ((Iterable)jdField_a_of_type_JavaUtilList).iterator();
+    while (localIterator.hasNext()) {
+      ((Function1)localIterator.next()).invoke(paramColumnInfo);
+    }
+  }
+  
+  @JvmStatic
+  public static final void a(@NotNull Function1<? super ColumnInfo, Unit> paramFunction1)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "listener");
+    jdField_a_of_type_JavaUtilList.add(paramFunction1);
+  }
+  
+  @JvmStatic
+  public static final void b(@NotNull Function1<? super ColumnInfo, Unit> paramFunction1)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "listener");
+    jdField_a_of_type_JavaUtilList.remove(paramFunction1);
   }
 }
 

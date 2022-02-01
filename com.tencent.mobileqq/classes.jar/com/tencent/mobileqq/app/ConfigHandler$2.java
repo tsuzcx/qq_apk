@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import ampt;
-import bfwe;
+import ansg;
+import bhew;
 
 public class ConfigHandler$2
   implements Runnable
 {
-  public ConfigHandler$2(ampt paramampt) {}
+  public ConfigHandler$2(ansg paramansg) {}
   
   public void run()
   {
-    bfwe.a().a(this.this$0.app.getApplication());
+    bhew.a().a(this.this$0.app.getApplication());
   }
 }
 

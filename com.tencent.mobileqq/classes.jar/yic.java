@@ -1,35 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
 class yic
-  extends vwx
+  extends SimpleJob<Void>
 {
-  yic(yib paramyib, vmd paramvmd, long paramLong)
+  yic(yhn paramyhn, String paramString, List paramList)
   {
-    super(paramvmd);
+    super(paramString);
   }
   
-  protected void a(vxa paramvxa)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (paramvxa.jdField_a_of_type_Int == 0)
+    xbu.a();
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.toArray();
+    int j = paramJobContext.length;
+    int i = 0;
+    while (i < j)
     {
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
-      }
-      yib.a().sendMessage(Message.obtain(yib.a(), 1, null));
+      xbu.a(paramJobContext[i].toString());
+      i += 1;
     }
-    for (;;)
-    {
-      yib.a(this.jdField_a_of_type_Yib);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramvxa.jdField_a_of_type_Int + ", errMsg:" + paramvxa.jdField_a_of_type_JavaLangString);
-      }
-    }
+    return null;
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsMsg;
-import aevc;
-import aevl;
-import aevm;
-import aewc;
+import afmn;
+import afmw;
+import afmx;
+import afnn;
 import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -17,9 +17,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bcef;
-import bfzl;
-import bodx;
+import bdla;
+import bhid;
+import bptp;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -75,7 +75,7 @@ public class ReminderCardItemPage
     if (paramString == null) {
       return;
     }
-    paramString.setURLDrawableListener(new aevl(this, paramBoolean, paramImageView));
+    paramString.setURLDrawableListener(new afmw(this, paramBoolean, paramImageView));
     paramImageView.setImageDrawable(paramString);
   }
   
@@ -126,7 +126,7 @@ public class ReminderCardItemPage
   
   private void b(View paramView)
   {
-    String str = (String)paramView.getTag(2131364241);
+    String str = (String)paramView.getTag(2131364319);
     if (a(str))
     {
       MiniAppLauncher.startMiniApp(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity, str, 2102, null);
@@ -142,23 +142,23 @@ public class ReminderCardItemPage
       if (jdField_a_of_type_Int == 0) {
         jdField_a_of_type_Int = ViewUtils.getScreenWidth() - ViewUtils.dpToPx(84.0F);
       }
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560908, this, false);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364248));
-      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364249));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364247));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364244));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364245));
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560969, this, false);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364326));
+      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364327));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364325));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364322));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364323));
       this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius(UIUtils.dip2px(getContext(), 4.0F), true);
-      this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364250));
-      this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364243));
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364240)).setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364241));
+      this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364328));
+      this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364321));
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364318)).setOnClickListener(this);
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364319));
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.k = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364246));
-      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364242));
+      this.k = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364324));
+      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364320));
       this.g.setOnClickListener(this);
-      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364272));
-      int m = bodx.a(getContext()) * 452 / 1334;
+      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364350));
+      int m = bptp.a(getContext()) * 452 / 1334;
       ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.getLayoutParams();
       localLayoutParams.height = m;
       this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setLayoutParams(localLayoutParams);
@@ -194,7 +194,7 @@ public class ReminderCardItemPage
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
         this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-        localObject = bfzl.a(getContext(), 3, paramAcsMsg.notice_time * 1000L);
+        localObject = bhid.a(getContext(), 3, paramAcsMsg.notice_time * 1000L);
         this.f.setText((CharSequence)localObject);
         if (paramAcsMsg.banner_type == 1)
         {
@@ -209,7 +209,7 @@ public class ReminderCardItemPage
           this.j.setText(paramAcsMsg.content);
           this.jdField_b_of_type_AndroidWidgetButton.setText(paramAcsMsg.btn_text);
           this.jdField_b_of_type_AndroidWidgetButton.setTag(paramAcsMsg.jump_url);
-          this.jdField_b_of_type_AndroidWidgetButton.setTag(2131364241, paramAcsMsg.applet_jump_url);
+          this.jdField_b_of_type_AndroidWidgetButton.setTag(2131364319, paramAcsMsg.applet_jump_url);
           if (paramAcsMsg.type != 1) {
             break;
           }
@@ -249,8 +249,8 @@ public class ReminderCardItemPage
         if (QLog.isColorLevel()) {
           QLog.d("ReminderCardItemPage", 2, "do report: QQnotice.aio.detail.all");
         }
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.all", 0, 0, "", "", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id);
-        aevc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "remindcontentpage_allclick", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id, null, null);
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.all", 0, 0, "", "", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id);
+        afmn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "remindcontentpage_allclick", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id, null, String.valueOf(this.jdField_a_of_type_WalletAcsMsg.mn_reserved));
       }
       a("https://ti.qq.com/remind/index", 2001);
       continue;
@@ -259,20 +259,27 @@ public class ReminderCardItemPage
         if (QLog.isColorLevel()) {
           QLog.d("ReminderCardItemPage", 2, "do report: QQnotice.aio.detail.click");
         }
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.click", 0, 0, "", "", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id);
-        MobileReportManager.getInstance().reportActionOfNotice("qqremind", "3", "2", 102, this.jdField_a_of_type_WalletAcsMsg.msg_id, "15", 1);
-        aevc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "remindcontentpage_contentclick", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id, null, null);
+        if (this.jdField_a_of_type_WalletAcsMsg.type != 0) {
+          break label308;
+        }
       }
-      b(paramView);
-      continue;
-      aevc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "remindcontentpage_rejectclick", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id, null, null);
-      aewc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_WalletAcsMsg.msg_id, new aevm(this));
+      label308:
+      for (int m = 1;; m = 2)
+      {
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "QQnotice", "", "", "QQnotice.aio.detail.click", 0, 0, "", "", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id);
+        MobileReportManager.getInstance().reportActionOfNotice("qqremind", "3", "2", 102, this.jdField_a_of_type_WalletAcsMsg.msg_id, "15", 1);
+        afmn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "remindcontentpage_contentclick", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id, String.valueOf(m), String.valueOf(this.jdField_a_of_type_WalletAcsMsg.mn_reserved));
+        b(paramView);
+        break;
+      }
+      afmn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "remindcontentpage_rejectclick", this.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_WalletAcsMsg.msg_id, null, this.jdField_a_of_type_WalletAcsMsg.mn_reserved);
+      afnn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_WalletAcsMsg.msg_id, this.jdField_a_of_type_WalletAcsMsg.mn_appid, 1, new afmx(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.view;
 
-import anzl;
+import apcn;
 
 class ScanEntryProviderContainerView$4
   implements Runnable
 {
-  ScanEntryProviderContainerView$4(ScanEntryProviderContainerView paramScanEntryProviderContainerView, anzl paramanzl) {}
+  ScanEntryProviderContainerView$4(ScanEntryProviderContainerView paramScanEntryProviderContainerView, apcn paramapcn) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ class ScanEntryProviderContainerView$4
     if (localObject1 != null) {
       ((ARScanEntryView)localObject1).a(this.a);
     }
-    if (this.this$0.c())
+    if (this.this$0.d())
     {
       this.this$0.a("onTransferDoorAllReady", this.a, true);
       if (localObject1 != null) {

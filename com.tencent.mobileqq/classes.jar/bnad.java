@@ -1,17 +1,14 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bnad
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+class bnad
+  implements DialogInterface.OnClickListener
 {
-  public bnad(CropVideoActivity paramCropVideoActivity) {}
+  bnad(bnaa parambnaa, Runnable paramRunnable) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    CropVideoActivity.a(this.a).b(f, f, 1.0F);
-    return true;
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

@@ -1,35 +1,44 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoxe
-  implements CompoundButton.OnCheckedChangeListener
+  extends aouc
 {
-  public aoxe(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public aoxe(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (paramBoolean)
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private void d()
+  {
+    String str = b("buddyuin");
+    if (!str.isEmpty())
     {
-      AboutActivity.a(5);
-      if (!this.a.b().equals("close")) {
-        this.a.b();
+      long l = Long.parseLong(str);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopOneWayAction", 2, "grayTip,openTroopWithCommonFriendsFragment:" + l);
       }
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is opened and IDE debug is also open ,state=%s", new Object[] { AboutActivity.b() }));
-      ArkAppCenter.a(true);
+      TroopWithCommonFriendsFragment.a(str);
+      TroopWithCommonFriendsFragment.a(this.a, 1);
+      bdla.b(null, "dc00898", "", "", "0X800AD20", "0X800AD20", 0, 0, "0", "0", "", "");
     }
-    for (;;)
+  }
+  
+  public boolean a()
+  {
+    try
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      AboutActivity.a(0);
-      this.a.c();
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is closed and IDE debug is also closed,state=%s", new Object[] { AboutActivity.b() }));
-      ArkAppCenter.a(false);
+      d();
+      return true;
     }
+    catch (Exception localException)
+    {
+      QLog.e("TroopOneWayAction", 1, "doAction error: " + localException.getMessage());
+      a("TroopOneWayAction");
+    }
+    return false;
   }
 }
 

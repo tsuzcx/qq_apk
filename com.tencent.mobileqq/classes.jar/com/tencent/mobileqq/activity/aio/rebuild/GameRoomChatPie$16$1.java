@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahgc;
+import aiav;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import bhar;
+import bilj;
 import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,10 +21,10 @@ class GameRoomChatPie$16$1
     if ((!this.a.this$0.hasDestory) && (this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView != null))
     {
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.c();
-      ahgc.a(this.a.this$0).removeView(this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView);
+      aiav.a(this.a.this$0).removeView(this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView);
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setBackgroundDrawable(null);
       this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.b.setBackgroundDrawable(null);
-      this.a.this$0.jdField_a_of_type_Bhar.a((ViewGroup)this.a.this$0.jdField_a_of_type_AndroidViewView);
+      this.a.this$0.jdField_a_of_type_Bilj.a((ViewGroup)this.a.this$0.jdField_a_of_type_AndroidViewView);
       this.a.this$0.a(false, false);
     }
   }

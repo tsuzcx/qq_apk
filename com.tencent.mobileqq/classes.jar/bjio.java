@@ -1,8 +1,9 @@
-import android.util.Pair;
+import com.tencent.smtt.sdk.WebView;
 
-abstract interface bjio
+class bjio
 {
-  public abstract Pair<String, String> a(String paramString);
+  WebView jdField_a_of_type_ComTencentSmttSdkWebView;
+  String jdField_a_of_type_JavaLangString;
 }
 
 

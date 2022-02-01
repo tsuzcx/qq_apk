@@ -1,60 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.tkd.comment.publisher.qq.bridge.QQUrlImageBridge;
+import com.tencent.tkd.comment.publisher.qq.bridge.QQUrlImageBridge.Callback;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class pdb
-  implements AladdinConfigHandler
+  implements QQUrlImageBridge
 {
-  private static final Set<String> a = ;
-  
-  public static Set<String> a()
+  public void loadUrlImage(String paramString, int paramInt1, int paramInt2, QQUrlImageBridge.Callback paramCallback)
   {
-    return a;
-  }
-  
-  private static Set<String> b()
-  {
-    HashSet localHashSet = new HashSet();
-    Object localObject = (String)bkwm.a("comment_feeds_aladdin_keys", "");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return localHashSet;
-    }
-    localObject = ((String)localObject).split("\\|");
-    int j = localObject.length;
-    int i = 0;
-    while (i < j)
+    try
     {
-      localHashSet.add(localObject[i]);
-      i += 1;
-    }
-    return localHashSet;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("PtsCommentFeedsAladdinKeyConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = pbt.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      if ("native_article_aladdin_keys".equalsIgnoreCase(str1))
+      URL localURL2 = uro.a.a(paramString);
+      URL localURL1 = localURL2;
+      if (localURL2 == null)
       {
-        String str2 = (String)paramString.get(str1);
-        QLog.d("PtsCommentFeedsAladdinKeyConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-        bkwm.a("comment_feeds_aladdin_keys", str2);
+        localURL1 = new URL(paramString);
+        uro.a.a(localURL1);
       }
+      paramString = new tlw();
+      qdn.a.a(paramString, localURL1.toString());
+      paramString.a = paramInt1;
+      paramString.b = paramInt2;
+      qdm.a(1, paramString);
+      tlv.a().a(paramString, new pdc(this, paramCallback));
+      return;
     }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("PtsCommentFeedsAladdinKeyConfigHandler", 1, "[onWipeConfig]");
+    catch (MalformedURLException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

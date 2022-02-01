@@ -1,44 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-final class aujy
-  implements EIPCResultCallback
+class aujy
+  implements audq
 {
-  aujy(aujz paramaujz) {}
+  aujy(aujx paramaujx) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    String str = null;
-    QLog.d("FaceLoginHelper", 1, "callServer error_code:" + paramEIPCResult.code);
-    FaceDetectForThirdPartyManager.AppConf localAppConf;
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      str = amtj.a(2131713551);
-      localAppConf = null;
+    aujv.a(this.a.a);
+    if (aujv.k(this.a.a) != null) {
+      aujv.l(this.a.a).d();
     }
-    while ((paramEIPCResult.code != 0) || (paramEIPCResult.data == null))
-    {
-      this.a.a(paramEIPCResult.code, str);
-      return;
-      if (paramEIPCResult.data != null)
-      {
-        localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf");
-        QLog.d("FaceLoginHelper", 1, "callServer error_code:" + localAppConf);
-      }
-      else
-      {
-        str = amtj.a(2131713551);
-        localAppConf = null;
-        continue;
-        str = amtj.a(2131691999);
-        localAppConf = null;
-      }
-    }
-    this.a.a(localAppConf);
   }
 }
 

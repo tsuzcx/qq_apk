@@ -1,46 +1,57 @@
+import android.content.res.Resources;
+import android.os.Build.VERSION;
 import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.TMG.utils.QLog;
+import android.os.Looper;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Field;
 
-class arqy
-  implements Handler.Callback
+public class arqy
+  implements arqx
 {
-  arqy(arqt paramarqt) {}
+  private Handler a;
   
-  public boolean handleMessage(Message paramMessage)
+  public Resources a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 1: 
-      if (this.a.b.size() == 0)
-      {
-        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
-        return false;
-      }
-      this.a.b();
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
-      arid.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), (String)this.a.b.get(this.a.b.size() - 1));
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
-      return false;
+    return BaseApplicationImpl.getApplication().getResources();
+  }
+  
+  public Handler a()
+  {
+    if (this.a == null) {
+      this.a = new Handler(Looper.getMainLooper());
     }
-    paramMessage = (ArrayList)paramMessage.obj;
-    if (this.a.jdField_a_of_type_Boolean)
+    return this.a;
+  }
+  
+  public Object a(Class<?> paramClass, String paramString, Object paramObject)
+  {
+    try
     {
-      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
-      return false;
+      paramClass = paramClass.getDeclaredField(paramString);
+      paramClass.setAccessible(true);
+      paramClass = paramClass.get(paramObject);
+      return paramClass;
     }
-    arqt.a(this.a, paramMessage);
+    catch (Exception paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+    return null;
+  }
+  
+  public boolean a()
+  {
     return false;
+  }
+  
+  public boolean b()
+  {
+    return Build.VERSION.SDK_INT >= 26;
+  }
+  
+  public boolean c()
+  {
+    return Build.VERSION.SDK_INT >= 11;
   }
 }
 

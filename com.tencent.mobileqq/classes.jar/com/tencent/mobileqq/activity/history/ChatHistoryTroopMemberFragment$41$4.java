@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.activity.history;
 
-import aizs;
+import ajvh;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -15,15 +16,15 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 public class ChatHistoryTroopMemberFragment$41$4
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$41$4(aizs paramaizs, List paramList) {}
+  public ChatHistoryTroopMemberFragment$41$4(ajvh paramajvh, List paramList) {}
   
   public void run()
   {
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_Aizs.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_Aizs.a.c);
+    Object localObject1 = (TroopManager)this.jdField_a_of_type_Ajvh.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_Ajvh.a.c);
     if (localTroopInfo == null) {}
-    label68:
-    label124:
+    label69:
+    label125:
     do
     {
       do
@@ -39,17 +40,17 @@ public class ChatHistoryTroopMemberFragment$41$4
         i = 0;
         j = 0;
         if (j >= i) {
-          break label204;
+          break label205;
         }
         localObject2 = (oidb_0x899.memberlist)this.jdField_a_of_type_JavaUtilList.get(j);
         if ((localObject2 != null) && (((oidb_0x899.memberlist)localObject2).uint64_member_uin.has())) {
-          break label124;
+          break label125;
         }
       }
       for (;;)
       {
         j += 1;
-        break label68;
+        break label69;
         i = this.jdField_a_of_type_JavaUtilList.size();
         break;
         localObject2 = String.valueOf(((oidb_0x899.memberlist)localObject2).uint64_member_uin.get());
@@ -58,12 +59,12 @@ public class ChatHistoryTroopMemberFragment$41$4
         }
       }
       ((TroopManager)localObject1).b(localTroopInfo);
-      localObject1 = this.jdField_a_of_type_Aizs.a.jdField_b_of_type_AndroidOsHandler.obtainMessage();
+      localObject1 = this.jdField_a_of_type_Ajvh.a.jdField_b_of_type_AndroidOsHandler.obtainMessage();
       ((Message)localObject1).what = 11;
       ((Message)localObject1).obj = localTroopInfo;
-      this.jdField_a_of_type_Aizs.a.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
+      this.jdField_a_of_type_Ajvh.a.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
     } while (!QLog.isColorLevel());
-    label204:
+    label205:
     QLog.i("Q.history.BaseFragment", 2, localTroopInfo.Administrator);
   }
 }

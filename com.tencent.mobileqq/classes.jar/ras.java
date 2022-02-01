@@ -1,43 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RspBody;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import kotlin.Lazy;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-class ras
-  extends nmf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule;", "getInstance", "()Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule;", "instance$delegate", "Lkotlin/Lazy;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ras
 {
-  ras(rar paramrar) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  @NotNull
+  public final rar a()
   {
-    boolean bool = true;
-    paramBundle = new oidb_0x5bd.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoySkinHandler", 2, "errorCode = " + paramInt + ", rspBody.msg_next_guide_info.has = " + paramBundle.msg_next_guide_info.has());
-      }
-      int i = paramBundle.uint32_source.get();
-      paramArrayOfByte = this.a;
-      if (paramInt == 0) {}
-      for (;;)
-      {
-        paramArrayOfByte.notifyUI(1, bool, new Object[] { paramBundle.msg_now_skin_info.get(), paramBundle.msg_next_guide_info.get(), paramBundle.msg_operation_guide_info.get(), paramBundle.msg_operation_refresh_info.get(), Integer.valueOf(i) });
-        return;
-        bool = false;
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    Lazy localLazy = rar.a();
+    ras localras = rar.a;
+    return (rar)localLazy.getValue();
   }
 }
 

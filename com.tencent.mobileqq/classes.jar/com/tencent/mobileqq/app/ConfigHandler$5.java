@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ampt;
+import ansg;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -10,7 +10,7 @@ import protocol.KQQConfig.GetResourceRespInfo;
 public class ConfigHandler$5
   implements Runnable
 {
-  public ConfigHandler$5(ampt paramampt, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public ConfigHandler$5(ansg paramansg, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {

@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class aylo
-  implements Parcelable.Creator<PersonalityLabelPhoto>
+public class aylo
+  extends ayka
 {
-  public PersonalityLabelPhoto a(Parcel paramParcel)
-  {
-    return new PersonalityLabelPhoto(paramParcel);
-  }
+  public ImageView e;
+  public TextView g;
   
-  public PersonalityLabelPhoto[] a(int paramInt)
+  public aylo(ayln paramayln)
   {
-    return new PersonalityLabelPhoto[paramInt];
+    super(paramayln);
   }
 }
 

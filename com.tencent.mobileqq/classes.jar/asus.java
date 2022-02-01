@@ -1,15 +1,7 @@
-import android.view.View;
+import kotlin.Metadata;
 
-class asus
-  implements atah
-{
-  asus(asur paramasur) {}
-  
-  public void onClick(View paramView)
-  {
-    aszt.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Asst.d());
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class asus {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

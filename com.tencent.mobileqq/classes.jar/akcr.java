@@ -1,36 +1,17 @@
-import Wallet.RedInfoSyncRsp;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akcr
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  akcr(akcq paramakcq) {}
+  akcr(akcp paramakcp) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "redInfoSyncReq onReceive" + paramBoolean);
-    }
-    StringBuilder localStringBuilder;
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = (RedInfoSyncRsp)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("RedInfoSyncRsp|");
-        if (paramBundle == null) {
-          break label97;
-        }
-      }
-    }
-    label97:
-    for (paramBundle = Integer.valueOf(paramBundle.result);; paramBundle = "")
-    {
-      QLog.d("QWalletRedManager", 2, paramBundle);
-      return;
-    }
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

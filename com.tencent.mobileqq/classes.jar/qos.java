@@ -1,28 +1,223 @@
-import java.util.List;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function3;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Build.VERSION;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
+import com.tencent.biz.pubaccount.readinjoy.notecard.SoundCheckRunnable;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.NoteCardProteusItem.5;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/push/mvp/RIJPushNotifyDialog$1", "Lcom/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyObserver;", "onChannelRefreshed", "", "success", "", "channelID", "", "articleSeqList", "", "", "noMoreData", "onPushNotifyDialogDismiss", "needAnimation", "uin", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qos
-  extends pkt
+public class qos
+  implements qjx, qqa
 {
-  public void a(boolean paramBoolean1, int paramInt, @Nullable List<Long> paramList, boolean paramBoolean2)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SoundCheckRunnable jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable;
+  private qfw jdField_a_of_type_Qfw;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  private SpannableStringBuilder a(JSONArray paramJSONArray)
   {
-    this.a.b(true);
-    qor.a(this.a).a().invoke(Boolean.valueOf(false), Boolean.valueOf(qor.a(this.a)), Integer.valueOf(0));
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      Object localObject = new JSONObject(paramJSONArray.get(i).toString());
+      String str = ((JSONObject)localObject).optString("word", "    ");
+      int j = Color.parseColor(((JSONObject)localObject).optString("color", "#C3C0D6"));
+      int k = Integer.valueOf(((JSONObject)localObject).optString("size", "15")).intValue();
+      localObject = new SpannableString(str);
+      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(j), 0, str.length(), 33);
+      ((SpannableString)localObject).setSpan(new AbsoluteSizeSpan(k, true), 0, str.length(), 33);
+      localSpannableStringBuilder.append((CharSequence)localObject);
+      i += 1;
+    }
+    return localSpannableStringBuilder;
   }
   
-  public void a(boolean paramBoolean, @NotNull String paramString)
+  private void a(Activity paramActivity)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    if ((Intrinsics.areEqual(paramString, qor.a(this.a).b())) || (Intrinsics.areEqual(paramString, "MATCH_ALL_UIN")))
+    try
     {
-      this.a.b(paramBoolean);
-      qor.a(this.a).a().invoke(Boolean.valueOf(false), Boolean.valueOf(qor.a(this.a)), Integer.valueOf(0));
+      new azis(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getPackageName()).a();
+      mvk.a(paramActivity);
+      return;
     }
+    catch (Exception paramActivity)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("NoteCardProteusItem", 1, paramActivity, new Object[0]);
+    }
+  }
+  
+  private void b()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable == null) || (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable.a()))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable = new SoundCheckRunnable();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable.a(this);
+      ThreadManager.excute(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable, 16, null, true);
+      ThreadManager.getUIHandler().removeCallbacksAndMessages(null);
+      ThreadManager.getUIHandler().postDelayed(new NoteCardProteusItem.5(this), 60000L);
+    }
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable.a(null);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable = null;
+    }
+    ThreadManager.getUIHandler().removeCallbacksAndMessages(null);
+  }
+  
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  {
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    int i = 0;
+    paramInt = 0;
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("style_ID", "ReadInjoy_zhitiao_view");
+    for (;;)
+    {
+      rqh localrqh;
+      try
+      {
+        localrqh = paramBaseArticleInfo.scripCmsInfo;
+        if (localrqh == null) {
+          break;
+        }
+        if ((localrqh.jdField_a_of_type_Int == 1) || ((TextUtils.isEmpty(localrqh.g)) && (TextUtils.isEmpty(localrqh.h))))
+        {
+          paramBaseArticleInfo = new JSONObject(localrqh.jdField_a_of_type_JavaLangString).getJSONArray("S");
+          Object localObject = new JSONObject(localrqh.b).getJSONArray("S");
+          localJSONObject.put("main_title_rich", a(paramBaseArticleInfo));
+          localJSONObject.put("sub_title_rich", a((JSONArray)localObject));
+          localJSONObject.put("privacy_text", localrqh.jdField_d_of_type_JavaLangString);
+          paramBaseArticleInfo = qjw.c();
+          localObject = BaseApplicationImpl.getContext();
+          if ((Build.VERSION.SDK_INT < 23) || (localObject == null)) {
+            break label408;
+          }
+          if (((Context)localObject).checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
+            paramInt = 1;
+          }
+          if ((paramInt == 0) && (qjw.a() == 1))
+          {
+            localJSONObject.put("tips_text", ((Context)localObject).getString(2131717811));
+            localJSONObject.put("icon_image_url", localrqh.e);
+            localJSONObject.put("bg_image_url", localrqh.c);
+            localJSONObject.put("animation_url", localrqh.f);
+            return localJSONObject;
+          }
+          localJSONObject.put("tips_text", paramBaseArticleInfo);
+          continue;
+        }
+        localJSONObject.put("main_title_rich", localrqh.g.replace("#$%", qjw.a()));
+      }
+      catch (Exception paramBaseArticleInfo)
+      {
+        QLog.d("NoteCardProteusItem", 2, paramBaseArticleInfo.getMessage());
+        return localJSONObject;
+      }
+      paramBaseArticleInfo = BaseApplicationImpl.getContext();
+      if ((Build.VERSION.SDK_INT >= 23) && (paramBaseArticleInfo != null))
+      {
+        paramInt = i;
+        if (paramBaseArticleInfo.checkSelfPermission("android.permission.RECORD_AUDIO") != 0) {}
+      }
+      for (paramInt = 1;; paramInt = 1)
+      {
+        if ((paramInt == 0) && (qjw.a() == 1)) {}
+        for (paramBaseArticleInfo = localrqh.h.replace("#$%", paramBaseArticleInfo.getString(2131717810));; paramBaseArticleInfo = localrqh.h.replace("#$%", qjw.b()))
+        {
+          localJSONObject.put("sub_title_rich", paramBaseArticleInfo);
+          localJSONObject.put("bg_image_url", localrqh.i);
+          return localJSONObject;
+        }
+      }
+      label408:
+      paramInt = 1;
+    }
+    return localJSONObject;
+  }
+  
+  public void a(int paramInt1, Container paramContainer, qfw paramqfw, int paramInt2)
+  {
+    szd localszd;
+    if ((paramqfw != null) && (paramqfw.a() != null))
+    {
+      localszd = paramqfw.a();
+      this.jdField_a_of_type_AndroidContentContext = paramContainer.getContext();
+      this.jdField_a_of_type_Qfw = paramqfw;
+      localObject = paramContainer.getViewIdMapping();
+      if ((((Map)localObject).get("id_lottie_view") == null) || (!(((Map)localObject).get("id_lottie_view") instanceof qua))) {
+        break label102;
+      }
+    }
+    label102:
+    for (Object localObject = (qua)((Map)localObject).get("id_lottie_view");; localObject = null)
+    {
+      localszd.a(new qot(this, (qua)localObject, paramqfw, paramContainer));
+      return;
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, qfw paramqfw, ViewBase paramViewBase)
+  {
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      return false;
+    case 1165: 
+      paramViewBase.setOnClickListener(new qou(this, paramqfw, paramContainer));
+      return true;
+    case 1166: 
+      paramViewBase.setOnClickListener(new qov(this, paramContainer));
+      return true;
+    }
+    paramViewBase.setOnClickListener(new qow(this, paramContainer));
+    return true;
+  }
+  
+  public void z_()
+  {
+    if (this.jdField_a_of_type_AndroidContentContext != null)
+    {
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      if (qjw.a(this.jdField_a_of_type_AndroidContentContext, str) >= rqh.jdField_d_of_type_Int) {
+        break label51;
+      }
+      if (this.jdField_a_of_type_Qfw != null) {
+        this.jdField_a_of_type_Qfw.a().h();
+      }
+    }
+    return;
+    label51:
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, this.jdField_a_of_type_AndroidContentContext.getString(2131717912), 0).a();
   }
 }
 

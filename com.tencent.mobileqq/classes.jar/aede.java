@@ -1,20 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class aede
-  extends MqqHandler
+  implements DialogInterface.OnDismissListener
 {
-  public aede(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public aede(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    GroupManagerActivity.b(this.a, null);
   }
 }
 

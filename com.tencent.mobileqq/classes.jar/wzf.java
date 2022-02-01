@@ -1,37 +1,11 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.ArrayList;
 
-public final class wzf
-  extends QQUIEventReceiver<wyy, wbm>
+public abstract interface wzf
 {
-  public wzf(@NonNull wyy paramwyy)
-  {
-    super(paramwyy);
-  }
+  public abstract void a();
   
-  public void a(@NonNull wyy paramwyy, @NonNull wbm paramwbm)
-  {
-    if ((paramwbm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwbm.jdField_a_of_type_JavaUtilList != null) && (paramwyy.a != null))
-    {
-      paramwbm = paramwbm.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramwbm.hasNext())
-      {
-        vwa localvwa = (vwa)paramwbm.next();
-        if (TextUtils.equals(paramwyy.a.b, localvwa.a)) {
-          paramwyy.i();
-        }
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wbm.class;
-  }
+  public abstract void a(ArrayList<StoryVideoItem> paramArrayList);
 }
 
 

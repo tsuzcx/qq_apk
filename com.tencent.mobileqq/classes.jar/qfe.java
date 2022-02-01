@@ -1,27 +1,16 @@
-import android.app.Activity;
-import com.tencent.mobileqq.widget.QQToast;
-
-class qfe
-  implements tcn
+public class qfe
 {
-  qfe(qfd paramqfd) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public String toString()
   {
-    if ((paramBoolean) && ((qfb.a(this.a.a) instanceof Activity)))
-    {
-      if (qfb.a(this.a.a) == null) {
-        qfb.a(this.a.a, new swi());
-      }
-      qfb.a(this.a.a).a(qfd.a(this.a), qfd.a(this.a, paramInt), (Activity)qfb.a(this.a.a), "", "", paramString2, "", 0, "");
-      return;
-    }
-    QQToast.a(qfb.a(this.a.a), 1, 2131717380, 0).a();
+    return "ColumnInfoForSelfPage{myVideoCount=" + this.jdField_a_of_type_Int + ", myColumnCount=" + this.jdField_b_of_type_Int + ", mySubscribeCount=" + this.jdField_c_of_type_Int + ", myVideoJumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", myColumnJumpUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mySubscribeJumpUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + '}';
   }
-  
-  public void b(boolean paramBoolean, String paramString) {}
 }
 
 

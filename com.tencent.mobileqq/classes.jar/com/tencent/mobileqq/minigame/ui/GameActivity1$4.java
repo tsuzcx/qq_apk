@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import apoh;
-import apoj;
+import aqrl;
+import aqrn;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class GameActivity1$4
-  implements apoj
+  implements aqrn
 {
   GameActivity1$4(GameActivity1 paramGameActivity1) {}
   
   public void onServiceSyncSucc(boolean paramBoolean)
   {
-    apoh.a(BaseApplicationImpl.getContext(), 2, false);
+    aqrl.a(BaseApplicationImpl.getContext(), 2, false);
   }
 }
 

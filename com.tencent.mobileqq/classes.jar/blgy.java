@@ -1,6 +1,6 @@
 public abstract interface blgy
 {
-  public abstract int a();
+  public abstract void onReadyToShowChanged(boolean paramBoolean);
 }
 
 

@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import java.util.List;
 
 class nks
-  implements DialogInterface.OnDismissListener
+  implements Animator.AnimatorListener
 {
-  nks(nkr paramnkr) {}
+  nks(nkp paramnkp) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.jdField_a_of_type_Nku.c();
-    this.a.jdField_a_of_type_Long = 0L;
+    nkp.a(this.a).remove(paramAnimator);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    nkp.a(this.a).remove(paramAnimator);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    nkp.a(this.a).add(paramAnimator);
   }
 }
 

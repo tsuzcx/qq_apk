@@ -1,22 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class ahjb
-  implements Animation.AnimationListener
+public class ahjb
+  extends afqr
 {
-  ahjb(ahiu paramahiu) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.e = false;
-    this.a.n = false;
-    this.a.a(this.a.a);
-    this.a.c = 1;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  long jdField_a_of_type_Long;
+  aftk jdField_a_of_type_Aftk;
+  public alvu a;
+  public ImageView b;
+  public ImageView c;
+  public View d;
+  public TextView d;
 }
 
 

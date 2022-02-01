@@ -1,118 +1,83 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.JpegSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.PttTransitonAnimData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import mqq.app.AppRuntime;
 
 public class aqxw
-  extends aqxl
+  extends aqwt<aqxv>
 {
-  public aqxw(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public aqxv a(int paramInt)
   {
-    super("ptt.transition.anim.res.zip", paramQQAppInterface);
+    QLog.d("TroopNotificationEntryConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new aqxv();
   }
   
-  public int a()
+  @Nullable
+  public aqxv a(aqxa[] paramArrayOfaqxa)
   {
-    return 10094;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PttTransitonAnimData.class;
-  }
-  
-  public String a()
-  {
-    return "PttTransitionAnimZip";
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EarlyDown", 2, "PttTransitionAnimHandler onDownloadProgeress() curOffset=" + paramLong1 + " totalLen=" + paramLong2);
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return aqxv.a(paramArrayOfaqxa[0].a);
     }
-    super.a(paramLong1, paramLong2);
-  }
-  
-  public void a(XmlData paramXmlData)
-  {
-    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof JpegSoData))) {
-      QLog.d("EarlyDown", 2, new Object[] { "PttTransitionAnimHandler doOnServerResp, xmlData=", paramXmlData });
-    }
-    super.a(paramXmlData);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EarlyDown", 2, " PttTransitionAnimHandler download success: " + paramString);
-    }
-    try
-    {
-      String str = afgw.a;
-      if ((str != null) && (!str.equals("")))
-      {
-        FileUtils.deleteDirectory(str);
-        if (new File(str).mkdir())
-        {
-          FileUtils.uncompressZip(paramString, str, false);
-          if (QLog.isColorLevel()) {
-            QLog.d("EarlyDown", 2, " PttTransitionAnimHandler uncompressZip success: " + paramString + " tempPath=" + str);
-          }
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("EarlyDown", 2, "PttTransitionAnimHandler uncompressZip failed: " + localException.getMessage());
-        }
-      }
-    }
-    super.a(paramString);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
     return null;
   }
   
-  public void b(XmlData paramXmlData)
+  public void a(aqxv paramaqxv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EarlyDown", 2, "PttTransitionAnimHandler onDownloadBegin()");
+    QLog.d("TroopNotificationEntryConfigProcessor", 1, "onUpdate, newConf = " + paramaqxv);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (ajfn)((AppRuntime)localObject).getManager(QQManagerFactory.TROOP_NOTIFICATION_MANAGER);
+      if (localObject != null)
+      {
+        QLog.d("TroopNotificationEntryConfigProcessor", 1, "call troopNotificationManager.onTroopNotificationConfigUpdate(newConf)");
+        ((ajfn)localObject).a(paramaqxv);
+      }
     }
-    super.b(paramXmlData);
   }
   
-  public boolean h()
+  public Class<aqxv> clazz()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EarlyDown", 2, "PttTransitionAnimHandler isUserNeedDownload");
-    }
-    if ((PttTransitonAnimData)a() == null) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EarlyDown", 2, "PttTransitionAnimHandler isUserNeedDownload return " + true);
-    }
+    return aqxv.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
     return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TroopNotificationEntryConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 691;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,59 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class wts
-  implements wuv
+public class wts
+  extends wfm
 {
-  wts(wtr paramwtr) {}
+  public static final String a;
+  public wlk a;
+  public String b;
   
-  public boolean a(wur paramwur, int paramInt, Object paramObject)
+  static
   {
-    if (this.a.isCanceled()) {
-      return false;
-    }
-    xvv.a(this.a.a.jdField_a_of_type_JavaLangString, "onInfo, [videoView=%d, what=%d, extra=%s]", Integer.valueOf(System.identityHashCode(paramwur)), Integer.valueOf(paramInt), paramObject);
-    switch (paramInt)
+    jdField_a_of_type_JavaLangString = weg.a("StorySvc.homepage_batch_feeds_720");
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wfh a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspStoryFeedIdList localRspStoryFeedIdList = new qqstory_service.RspStoryFeedIdList();
+    try
     {
+      localRspStoryFeedIdList.mergeFrom(paramArrayOfByte);
+      return new wtt(localRspStoryFeedIdList);
     }
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      VideoViewVideoHolder.a(this.a.a).a(this.a.a, paramwur, paramInt, paramObject);
-      return false;
-      xvv.d(this.a.a.jdField_a_of_type_JavaLangString, "PLAYER_INFO_HW_DECODE_FAILED. extra=%s", new Object[] { paramObject });
-      continue;
-      VideoViewVideoHolder.d(this.a.a, ((Integer)paramObject).intValue());
-      continue;
-      VideoViewVideoHolder.a(this.a.a, 0L, "rendering-Start");
-      continue;
-      xvv.d(this.a.a.jdField_a_of_type_JavaLangString, "start buffering, show loading view");
-      VideoViewVideoHolder.e(this.a.a, VideoViewVideoHolder.c(this.a.a) + 1);
-      VideoViewVideoHolder.a(this.a.a, SystemClock.uptimeMillis());
-      VideoViewVideoHolder.a(this.a.a, 8);
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      continue;
-      VideoViewVideoHolder.f(this.a.a, (int)(VideoViewVideoHolder.d(this.a.a) + (SystemClock.uptimeMillis() - VideoViewVideoHolder.a(this.a.a))));
-      xvv.d(this.a.a.jdField_a_of_type_JavaLangString, "end buffering, hide loading view");
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqStoryFeedIdList localReqStoryFeedIdList = new qqstory_service.ReqStoryFeedIdList();
+    localReqStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
+    if (this.jdField_a_of_type_Wlk != null)
+    {
+      localReqStoryFeedIdList.coordinate.set(this.jdField_a_of_type_Wlk.c);
+      localReqStoryFeedIdList.gps.setHasFlag(true);
+      localReqStoryFeedIdList.gps.lat.set(this.jdField_a_of_type_Wlk.a);
+      localReqStoryFeedIdList.gps.lng.set(this.jdField_a_of_type_Wlk.b);
+    }
+    localReqStoryFeedIdList.client_version.set(6);
+    return localReqStoryFeedIdList.toByteArray();
   }
 }
 

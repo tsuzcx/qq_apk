@@ -1,10 +1,10 @@
 package dov.com.qq.im.ae.play;
 
 import android.support.v4.view.ViewPager;
-import bmzp;
+import boph;
 
 class AEPlayShowPart$2
-  implements bmzp
+  implements boph
 {
   AEPlayShowPart$2(AEPlayShowPart paramAEPlayShowPart) {}
   

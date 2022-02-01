@@ -1,61 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import java.util.ArrayList;
 
 public class aqla
-  extends aptq<aqkz>
 {
-  public static aqkz a()
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<aqlb> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  
+  public String toString()
   {
-    return (aqkz)apub.a().a(348);
-  }
-  
-  @NonNull
-  public aqkz a(int paramInt)
-  {
-    return new aqkz();
-  }
-  
-  @Nullable
-  public aqkz a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqkz.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(aqkz paramaqkz) {}
-  
-  public Class<aqkz> clazz()
-  {
-    return aqkz.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 348;
+    return "C2CShortcutAppInfo{appId=" + this.jdField_a_of_type_JavaLangString + ", type=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", jumpUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", desc='" + this.e + '\'' + ", cmdTrace='" + this.f + '\'' + ", redPoint=" + this.jdField_a_of_type_Int + ", showFrame=" + this.jdField_b_of_type_Int + ", playingNum=" + this.jdField_c_of_type_Int + ", canSendArkMsg=" + this.jdField_a_of_type_Boolean + ", arkLabelWording=" + this.g + ", labels=" + this.jdField_a_of_type_JavaUtilArrayList + ", jumpType=" + this.jdField_d_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqla
  * JD-Core Version:    0.7.0.1
  */

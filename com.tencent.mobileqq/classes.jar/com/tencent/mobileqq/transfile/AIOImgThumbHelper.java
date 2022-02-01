@@ -2,8 +2,8 @@ package com.tencent.mobileqq.transfile;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-import apuy;
-import apuz;
+import aqyb;
+import aqyc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -11,31 +11,18 @@ import com.tencent.qphone.base.util.QLog;
 public class AIOImgThumbHelper
 {
   private static final String TAG = "AIOImgThumbHelper";
+  private static float density = -1.0F;
   private static AIOImgThumbHelper mInstance;
   private static int sAioImageDynamicMax;
   private static int sAioImageDynamicMin;
   private static int sAioImageMaxSize;
-  private static int sAioImageMinSize = 45;
-  private static int sAioThumbnailDynamicMax = sAioImageDynamicMax;
-  private static int sAioThumbnailDynamicMin;
-  private static int sAioThumbnailMax;
-  private static int sAioThumbnailMin;
+  private static int sAioImageMaxSizeUnderLimit;
+  private static int sAioImageMinSize;
+  private static int sAioImageMinSizeUnderLimit;
+  private static int sPicSizeLimit = 650;
   private static boolean sSizeInited;
-  public float abTestMaxRatio;
-  public float abTestMinRatio;
-  public boolean useABTest;
   
-  static
-  {
-    sAioImageMaxSize = 135;
-    sAioImageDynamicMin = 45;
-    sAioImageDynamicMax = 135;
-    sAioThumbnailMin = sAioImageMinSize;
-    sAioThumbnailMax = sAioImageMaxSize;
-    sAioThumbnailDynamicMin = sAioImageDynamicMin;
-  }
-  
-  public static int getAioThumbMaxDp(boolean paramBoolean1, boolean paramBoolean2)
+  public static int getAioThumbMaxDp(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     if (paramBoolean2)
     {
@@ -43,25 +30,20 @@ public class AIOImgThumbHelper
       if (paramBoolean1) {
         return sAioImageDynamicMax;
       }
-      return sAioImageMaxSize;
+      if (paramInt > sPicSizeLimit) {
+        return sAioImageMaxSize;
+      }
+      return sAioImageMaxSizeUnderLimit;
     }
     return CommonImgThumbHelper.getImgThumbMaxDp(paramBoolean1);
   }
   
-  public static int getAioThumbMaxPx(boolean paramBoolean1, boolean paramBoolean2)
+  public static int getAioThumbMaxPx(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (paramBoolean2)
-    {
-      initAioThumbSize();
-      if (paramBoolean1) {
-        return sAioThumbnailDynamicMax;
-      }
-      return sAioThumbnailMax;
-    }
-    return CommonImgThumbHelper.getImgThumbMaxPx(paramBoolean1);
+    return (int)(getAioThumbMaxDp(paramBoolean1, paramBoolean2, paramInt) * getDensity());
   }
   
-  public static int getAioThumbMinDp(boolean paramBoolean1, boolean paramBoolean2)
+  public static int getAioThumbMinDp(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     if (paramBoolean2)
     {
@@ -69,22 +51,29 @@ public class AIOImgThumbHelper
       if (paramBoolean1) {
         return sAioImageDynamicMin;
       }
-      return sAioImageMinSize;
+      if (paramInt > sPicSizeLimit) {
+        return sAioImageMinSize;
+      }
+      return sAioImageMinSizeUnderLimit;
     }
     return CommonImgThumbHelper.getImgThumbMinDp(paramBoolean1);
   }
   
-  public static int getAioThumbMinPx(boolean paramBoolean1, boolean paramBoolean2)
+  public static int getAioThumbMinPx(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (paramBoolean2)
+    return (int)(getAioThumbMinDp(paramBoolean1, paramBoolean2, paramInt) * getDensity());
+  }
+  
+  public static float getDensity()
+  {
+    if (density == -1.0F)
     {
-      initAioThumbSize();
-      if (paramBoolean1) {
-        return sAioThumbnailDynamicMin;
+      density = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density;
+      if (density <= 0.0F) {
+        density = 1.0F;
       }
-      return sAioThumbnailMin;
     }
-    return CommonImgThumbHelper.getImgThumbMinPx(paramBoolean1);
+    return density;
   }
   
   public static AIOImgThumbHelper getInstance()
@@ -115,70 +104,32 @@ public class AIOImgThumbHelper
         if (bool) {
           return;
         }
-        float f = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density;
-        if (!this.useABTest)
+        aqyc localaqyc = aqyb.a();
+        if ((localaqyc != null) && (localaqyc.jdField_a_of_type_Boolean))
         {
-          apuz localapuz = apuy.a();
-          if ((localapuz == null) || (!localapuz.jdField_a_of_type_Boolean)) {
-            break label283;
-          }
-          sAioImageMinSize = localapuz.c;
-          sAioImageMaxSize = localapuz.jdField_b_of_type_Int;
-          sAioImageDynamicMin = localapuz.e;
-          sAioImageDynamicMax = localapuz.d;
-          if (f > 0.0F)
-          {
-            i = (int)(sAioImageMinSize * f);
-            sAioThumbnailMin = i;
-            if (f <= 0.0F) {
-              break label262;
-            }
-            i = (int)(sAioImageMaxSize * f);
-            sAioThumbnailMax = i;
-            if (f <= 0.0F) {
-              break label269;
-            }
-            i = (int)(sAioImageDynamicMin * f);
-            sAioThumbnailDynamicMin = i;
-            if (f <= 0.0F) {
-              break label276;
-            }
-            i = (int)(sAioImageDynamicMax * f);
-            sAioThumbnailDynamicMax = i;
-            QLog.d("AIOImgThumbHelper", 1, new Object[] { "maxRatio:", Double.valueOf(localapuz.jdField_a_of_type_Double), ", minRatio:", Double.valueOf(localapuz.jdField_b_of_type_Double) });
-          }
-        }
-        else
-        {
+          sAioImageMinSize = localaqyc.d;
+          sAioImageMaxSize = localaqyc.c;
+          sAioImageDynamicMin = localaqyc.h;
+          sAioImageDynamicMax = localaqyc.g;
+          sAioImageMinSizeUnderLimit = localaqyc.f;
+          sAioImageMaxSizeUnderLimit = localaqyc.e;
+          sPicSizeLimit = localaqyc.jdField_b_of_type_Int;
+          QLog.d("AIOImgThumbHelper", 1, new Object[] { "maxRatio:", Double.valueOf(localaqyc.jdField_a_of_type_Double), ", minRatio:", Double.valueOf(localaqyc.jdField_b_of_type_Double), ", picSizeLimit:", Integer.valueOf(sPicSizeLimit) });
           sSizeInited = true;
           if (!QLog.isColorLevel()) {
             continue;
           }
-          QLog.d("AIOImgThumbHelper", 2, new Object[] { "thumbMax:", Integer.valueOf(sAioThumbnailMax), ", thumbMin:", Integer.valueOf(sAioThumbnailDynamicMax) });
+          QLog.d("AIOImgThumbHelper", 2, new Object[] { "thumbMax:", Integer.valueOf(sAioImageMaxSize), ", thumbMin:", Integer.valueOf(sAioImageMinSize) });
           continue;
         }
-        i = sAioImageMinSize;
+        sAioImageMinSize = CommonImgThumbHelper.getImgThumbMinDp(false);
       }
       finally {}
-      continue;
-      label262:
-      int i = sAioImageMaxSize;
-      continue;
-      label269:
-      i = sAioImageDynamicMin;
-      continue;
-      label276:
-      i = sAioImageDynamicMax;
-      continue;
-      label283:
-      sAioImageMinSize = CommonImgThumbHelper.getImgThumbMinDp(false);
       sAioImageMaxSize = CommonImgThumbHelper.getImgThumbMaxDp(false);
       sAioImageDynamicMin = CommonImgThumbHelper.getImgThumbMinDp(true);
       sAioImageDynamicMax = CommonImgThumbHelper.getImgThumbMaxDp(true);
-      sAioThumbnailMin = CommonImgThumbHelper.getImgThumbMinPx(false);
-      sAioThumbnailMax = CommonImgThumbHelper.getImgThumbMaxPx(false);
-      sAioThumbnailDynamicMin = CommonImgThumbHelper.getImgThumbMinPx(true);
-      sAioThumbnailDynamicMax = CommonImgThumbHelper.getImgThumbMaxPx(true);
+      sAioImageMinSizeUnderLimit = sAioImageMinSize;
+      sAioImageMaxSizeUnderLimit = sAioImageMaxSize;
     }
   }
 }

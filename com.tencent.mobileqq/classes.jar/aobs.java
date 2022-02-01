@@ -1,29 +1,112 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 
-public class aobs
-  extends aobf
+class aobs
+  extends anxj
 {
-  public String b;
-  public String c;
+  aobs(aobq paramaobq) {}
   
-  public aobs(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3)
+  protected void a(boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    if (!TextUtils.isEmpty(paramString2))
+    String str2 = "";
+    String str1 = str2;
+    if (paramBoolean)
     {
-      paramString1 = paramString2.split("\\|");
-      if (paramString1.length > 0) {
-        this.b = paramString1[0];
+      str1 = str2;
+      if (paramArrayOfByte != null)
+      {
+        str1 = new String(paramArrayOfByte);
+        aobq.a(this.a).sendBroadcast(new Intent().setAction("com.tencent.mobileqq.onGetStreetViewUrl").putExtra("streetViewUrl", str1));
       }
     }
-    this.c = paramString3;
-    QLog.d("GreetingCardResourceInfo", 2, String.format("GreetingCardResourceInfo mLuaScriptPath=%s mResourceDirPath=%s", new Object[] { this.b, this.c }));
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMapActivityProxy", 2, "mLbsObserver, onGetStreetViewUrl: isSuccess=" + paramBoolean + ", hashCode=" + hashCode() + ",url=" + str1);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("mLbsObserver, onGetLbsShareSearch: isSuccess=").append(paramBoolean).append(", isDataNull=");
+      if (paramArrayOfObject != null) {
+        break label65;
+      }
+    }
+    label65:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
+      if (paramArrayOfObject != null) {
+        break;
+      }
+      return;
+    }
+    Object localObject = (ToServiceMsg)paramArrayOfObject[0];
+    paramArrayOfObject = (byte[])paramArrayOfObject[1];
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.mobileqq.onGetLbsShareSearch");
+    localIntent.putExtra("data", paramArrayOfObject);
+    localIntent.putExtra("req", ((ToServiceMsg)localObject).extraData.getBundle("req"));
+    aobq.a(this.a).sendBroadcast(localIntent);
+  }
+  
+  protected void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("mLbsObserver, onGetLbsShareShop: isSuccess=").append(paramBoolean).append(", isDataNull=");
+      if (paramArrayOfObject != null) {
+        break label65;
+      }
+    }
+    label65:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
+      if (paramArrayOfObject != null) {
+        break;
+      }
+      return;
+    }
+    Object localObject = new Intent();
+    ((Intent)localObject).setAction("com.tencent.mobileqq.onGetLbsShareShop");
+    ((Intent)localObject).putExtra("data", (byte[])paramArrayOfObject[1]);
+    ((Intent)localObject).putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
+    aobq.a(this.a).sendBroadcast((Intent)localObject);
+  }
+  
+  protected void c(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("mLbsObserver, onGetShareShopDetail: isSuccess=").append(paramBoolean).append(", isDataNull=");
+      if (paramArrayOfObject != null) {
+        break label65;
+      }
+    }
+    label65:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
+      if (paramArrayOfObject != null) {
+        break;
+      }
+      return;
+    }
+    Object localObject = new Intent();
+    ((Intent)localObject).setAction("com.tencent.mobileqq.onGetShareShopDetail");
+    ((Intent)localObject).putExtra("data", (byte[])paramArrayOfObject[1]);
+    ((Intent)localObject).putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
+    aobq.a(this.a).sendBroadcast((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aobs
  * JD-Core Version:    0.7.0.1
  */

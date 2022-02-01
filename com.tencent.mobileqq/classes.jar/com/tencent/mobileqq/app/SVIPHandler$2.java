@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app;
 
-import almr;
-import anaj;
-import anal;
+import amks;
+import aocy;
+import aoda;
 
 public class SVIPHandler$2
   implements Runnable
 {
-  public SVIPHandler$2(anaj paramanaj, String paramString) {}
+  public SVIPHandler$2(aocy paramaocy, String paramString) {}
   
   public void run()
   {
-    almr localalmr = almr.a();
-    localalmr.a(this.this$0.app, this.a, new anal(this, localalmr));
+    amks localamks = amks.a();
+    localamks.a(this.this$0.app, this.a, new aoda(this, localamks));
   }
 }
 

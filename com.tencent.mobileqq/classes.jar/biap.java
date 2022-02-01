@@ -1,61 +1,31 @@
-import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class biap
 {
-  protected static biap a;
-  protected ArrayList<biao> a;
+  public int a;
+  public boolean a;
   
-  public static biap a()
+  public biap()
   {
-    try
-    {
-      if (jdField_a_of_type_Biap == null)
-      {
-        jdField_a_of_type_Biap = new biap();
-        jdField_a_of_type_Biap.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      biap localbiap = jdField_a_of_type_Biap;
-      return localbiap;
-    }
-    finally {}
+    this.jdField_a_of_type_Int = -30009;
   }
   
-  public ArrayList<biao> a()
+  public biap(JSONObject paramJSONObject)
   {
-    return jdField_a_of_type_Biap.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(biao parambiao)
-  {
-    int j = jdField_a_of_type_Biap.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      if ((biao)jdField_a_of_type_Biap.jdField_a_of_type_JavaUtilArrayList.get(i) == parambiao) {
-        return;
-      }
-      i += 1;
-    }
-    jdField_a_of_type_Biap.jdField_a_of_type_JavaUtilArrayList.add(parambiao);
-  }
-  
-  public void b(biao parambiao)
-  {
-    int j = jdField_a_of_type_Biap.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
+    this.jdField_a_of_type_Int = -30009;
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
+    if ((this.jdField_a_of_type_Int == 0) && (paramJSONObject.optInt("flag", 0) == 1)) {}
     for (;;)
     {
-      if (i < j)
-      {
-        if ((biao)jdField_a_of_type_Biap.jdField_a_of_type_JavaUtilArrayList.get(i) == parambiao) {
-          jdField_a_of_type_Biap.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+      bool = false;
     }
+  }
+  
+  public String toString()
+  {
+    return "LiangHaoStatusRsp{ret=" + this.jdField_a_of_type_Int + ", flag=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

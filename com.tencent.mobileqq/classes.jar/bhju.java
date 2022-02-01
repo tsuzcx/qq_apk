@@ -1,6 +1,21 @@
-public abstract interface bhju
+import java.util.Comparator;
+
+final class bhju
+  implements Comparator<bhjs>
 {
-  public abstract void a();
+  public int a(bhjs parambhjs1, bhjs parambhjs2)
+  {
+    if (parambhjs1 == parambhjs2) {
+      return 0;
+    }
+    if (parambhjs1 == null) {
+      return 1;
+    }
+    if (parambhjs2 == null) {
+      return -1;
+    }
+    return parambhjs2.c - parambhjs1.c;
+  }
 }
 
 

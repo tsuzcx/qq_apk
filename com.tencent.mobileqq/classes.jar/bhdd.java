@@ -1,21 +1,79 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.AppConstants;
 
 public class bhdd
-  implements Animation.AnimationListener
 {
-  public bhdd(DraggableGridView paramDraggableGridView, int paramInt1, int paramInt2) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static long a(Context paramContext, String paramString)
   {
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, this.b);
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
+    return paramContext.getSharedPreferences("mobileQQ", 0).getLong("pref_req_self_level_time" + paramString, 0L);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = paramInt * 60 * 1000;
+    paramContext = paramContext.getSharedPreferences(paramString, 0).edit();
+    paramContext.putLong("fl_pre_get_last_login_info", l1);
+    paramContext.putLong("fl_get_last_login_info_time_period", l2);
+    paramContext.commit();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public static void a(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext.getSharedPreferences("mobileQQ", 0).edit().putLong("pref_req_self_level_time" + paramString, System.currentTimeMillis()).commit();
+  }
+  
+  public static void a(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    paramContext = paramContext.getSharedPreferences(paramString, 0).edit();
+    paramContext.putBoolean("fl_show_pc_icon", paramBoolean);
+    paramContext.commit();
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences(paramString, 0).getBoolean("fl_show_pc_icon", false);
+  }
+  
+  public static long b(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("mobileQQ", 0).getLong("pref_req_x_man_prefix" + paramString, 0L);
+  }
+  
+  public static void b(Context paramContext, String paramString, int paramInt)
+  {
+    paramContext.getSharedPreferences(String.valueOf(AppConstants.SYSTEM_MSG_UIN), 0).edit().putInt(paramString, paramInt).commit();
+  }
+  
+  public static void b(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext.getSharedPreferences("mobileQQ", 0).edit().putLong("pref_req_x_man_prefix" + paramString, paramLong).commit();
+  }
+  
+  public static boolean b(Context paramContext, String paramString)
+  {
+    boolean bool = false;
+    paramContext = paramContext.getSharedPreferences(paramString, 0);
+    long l1 = paramContext.getLong("fl_pre_get_last_login_info", 0L);
+    long l2 = paramContext.getLong("fl_get_last_login_info_time_period", 0L);
+    long l3 = System.currentTimeMillis();
+    if ((l1 >= l3) || (l3 >= l1 + l2)) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static long c(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("mobileQQ", 0).getLong("pref_last_req_x_man_scene_2_time_prefix_" + paramString, 0L);
+  }
+  
+  public static void c(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext.getSharedPreferences("mobileQQ", 0).edit().putLong("pref_last_req_x_man_scene_2_time_prefix_" + paramString, paramLong).commit();
+  }
 }
 
 

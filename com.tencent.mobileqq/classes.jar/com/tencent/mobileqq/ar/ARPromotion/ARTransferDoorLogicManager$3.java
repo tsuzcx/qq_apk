@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import anzc;
-import bcef;
+import apce;
+import bdla;
 
 public class ARTransferDoorLogicManager$3
   implements Runnable
 {
-  public ARTransferDoorLogicManager$3(anzc paramanzc) {}
+  public ARTransferDoorLogicManager$3(apce paramapce) {}
   
   public void run()
   {
-    bcef.b(null, "dc00898", "", "", "0X80098C9", "0X80098C9", 0, 0, anzc.a(this.this$0), "", "", "");
+    bdla.b(null, "dc00898", "", "", "0X80098C9", "0X80098C9", 0, 0, apce.a(this.this$0), "", "", "");
   }
 }
 

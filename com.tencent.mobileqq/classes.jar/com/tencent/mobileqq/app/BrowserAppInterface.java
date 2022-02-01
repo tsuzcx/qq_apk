@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ahtj;
-import amoq;
-import amor;
+import aioi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.ComponentName;
@@ -14,18 +12,20 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anwo;
-import aurn;
-import autn;
-import awkn;
-import bfci;
-import bfpm;
-import bfzg;
-import bgfs;
-import bgog;
-import bgxr;
-import bkgy;
-import bkum;
+import anrd;
+import anre;
+import aozq;
+import avxi;
+import avzm;
+import axqp;
+import bgko;
+import bgyd;
+import bhhy;
+import bhon;
+import bhyq;
+import biij;
+import blsk;
+import bmfv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -62,13 +62,13 @@ import mqq.app.MSFServlet;
 import mqq.app.TicketManagerImpl;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import nny;
-import noo;
-import nop;
-import npk;
-import nqd;
-import ogr;
-import pks;
+import nuz;
+import nvp;
+import nvq;
+import nwl;
+import nxe;
+import ook;
+import pvp;
 
 public class BrowserAppInterface
   extends AppInterface
@@ -80,13 +80,13 @@ public class BrowserAppInterface
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long;
   public Intent a;
-  anwo jdField_a_of_type_Anwo = new anwo(this);
-  protected awkn a;
-  public bgfs a;
+  aozq jdField_a_of_type_Aozq = new aozq(this);
+  protected axqp a;
+  public bhon a;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
   Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
-  protected pks a;
+  protected pvp a;
   public boolean a;
   private BusinessHandler[] jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler = new BusinessHandler[1];
   public int b;
@@ -110,7 +110,7 @@ public class BrowserAppInterface
   
   private void a()
   {
-    QbSdk.setTbsLogClient(new amoq(this, BaseApplicationImpl.getContext()));
+    QbSdk.setTbsLogClient(new anrd(this, BaseApplicationImpl.getContext()));
   }
   
   public static void a(int paramInt)
@@ -249,11 +249,11 @@ public class BrowserAppInterface
           this.jdField_a_of_type_AndroidContentIntent = paramIntent;
           return true;
         }
-        paramContext = (PathTraceManager)getManager(210);
+        paramContext = (PathTraceManager)getManager(QQManagerFactory.PATH_TRACE_MANAGER);
         if ((paramContext != null) && (paramContext.a())) {
           return true;
         }
-        if ((!aurn.a()) && (paramIntent.getBooleanExtra("qq_mode_foreground", false)))
+        if ((!avxi.a()) && (paramIntent.getBooleanExtra("qq_mode_foreground", false)))
         {
           if (QLog.isColorLevel()) {
             QLog.d("BrowserAppInterface", 2, " has floating window， not exit tool process");
@@ -349,15 +349,15 @@ public class BrowserAppInterface
     default: 
       return null;
     }
-    return new ogr(this);
+    return new ook(this);
   }
   
-  public awkn a()
+  public axqp a()
   {
-    if (this.jdField_a_of_type_Awkn == null) {
-      this.jdField_a_of_type_Awkn = new awkn(this);
+    if (this.jdField_a_of_type_Axqp == null) {
+      this.jdField_a_of_type_Axqp = new axqp(this);
     }
-    return this.jdField_a_of_type_Awkn;
+    return this.jdField_a_of_type_Axqp;
   }
   
   public BusinessHandler a(int paramInt)
@@ -389,12 +389,12 @@ public class BrowserAppInterface
     return null;
   }
   
-  public pks a()
+  public pvp a()
   {
-    if (this.jdField_a_of_type_Pks == null) {
-      this.jdField_a_of_type_Pks = new pks(this);
+    if (this.jdField_a_of_type_Pvp == null) {
+      this.jdField_a_of_type_Pvp = new pvp(this);
     }
-    return this.jdField_a_of_type_Pks;
+    return this.jdField_a_of_type_Pvp;
   }
   
   public void a(boolean paramBoolean)
@@ -429,7 +429,7 @@ public class BrowserAppInterface
         QbSdk.setUploadCode(BaseApplication.getContext(), 154);
         long l = System.currentTimeMillis();
         localObject = ((Context)localObject).getSharedPreferences(((Context)localObject).getPackageName() + "_preferences", 4);
-        QbSdk.setTbsListener(new amor(this, (SharedPreferences)localObject, l));
+        QbSdk.setTbsListener(new anre(this, (SharedPreferences)localObject, l));
         QLog.d("TBS_update", 1, "tbs start download");
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putBoolean("tbs_downloading", true);
@@ -485,49 +485,56 @@ public class BrowserAppInterface
   {
     Object localObject1 = (Manager)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
     Object localObject4 = localObject1;
-    Map localMap;
-    if (localObject1 == null)
-    {
-      localMap = this.jdField_a_of_type_JavaUtilMap;
-      switch (paramInt)
-      {
-      }
-    }
+    if (localObject1 == null) {}
     for (;;)
     {
-      try
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
       {
-        if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) == null) {
-          break label239;
+        if (paramInt == QQManagerFactory.DOWNLOADER_FACTORY)
+        {
+          localObject1 = new bhyq(this);
+          if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) == null) {
+            break label215;
+          }
+          localObject4 = (Manager)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+          localObject1 = localObject4;
+          if (localObject4 == null) {
+            localObject1 = super.getManager(paramInt);
+          }
+          return localObject1;
         }
-        localObject4 = (Manager)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-        localObject1 = localObject4;
-        if (localObject4 == null) {
-          localObject1 = super.getManager(paramInt);
+        if (paramInt == QQManagerFactory.TROOP_GIFT_MANAGER) {
+          localObject1 = new bgko(this);
         }
-        return localObject1;
       }
-      finally {}
-      localObject1 = new bgog(this);
-      continue;
-      Object localObject3 = new bfci(this);
-      continue;
-      localObject3 = new TicketManagerImpl(this);
-      continue;
-      localObject3 = new bkgy(this);
-      continue;
-      localObject3 = new PathTraceManager(this);
-      continue;
-      localObject3 = new ahtj(this);
-      continue;
-      localObject3 = new bkum();
-      continue;
-      label239:
-      localObject4 = localObject3;
-      if (localObject3 != null)
+      Object localObject3;
+      if (paramInt == 2)
       {
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject3);
+        localObject3 = new TicketManagerImpl(this);
+      }
+      else if (paramInt == QQManagerFactory.COMIC_RED_TOUCH_MANAGER)
+      {
+        localObject3 = new blsk(this);
+      }
+      else if (paramInt == QQManagerFactory.PATH_TRACE_MANAGER)
+      {
+        localObject3 = new PathTraceManager(this);
+      }
+      else if (paramInt == QQManagerFactory.ZHITU_MANAGER)
+      {
+        localObject3 = new aioi(this);
+      }
+      else if (paramInt == QQManagerFactory.READER_RED_TOUCH_MANAGER)
+      {
+        localObject3 = new bmfv();
+        continue;
+        label215:
         localObject4 = localObject3;
+        if (localObject3 != null)
+        {
+          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject3);
+          localObject4 = localObject3;
+        }
       }
     }
   }
@@ -539,7 +546,7 @@ public class BrowserAppInterface
   
   public Class<? extends MSFServlet>[] getMessagePushServlets()
   {
-    return new Class[] { nqd.class };
+    return new Class[] { nxe.class };
   }
   
   public String getModuleId()
@@ -581,7 +588,7 @@ public class BrowserAppInterface
   
   public void onCreate(Bundle paramBundle)
   {
-    bfzg.a(null, "web_browserAppinterface_onCreate");
+    bhhy.a(null, "web_browserAppinterface_onCreate");
     super.onCreate(paramBundle);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     try
@@ -589,22 +596,22 @@ public class BrowserAppInterface
       if (Build.VERSION.SDK_INT >= 28) {
         android.webkit.WebView.setDataDirectorySuffix("tool");
       }
-      bgxr.a(this);
+      biij.a(this);
       a();
       str = getAccount();
       if (TextUtils.isEmpty(str))
       {
         paramBundle = null;
         QbSdk.setCurrentID(paramBundle);
-        nny.a(new npk());
-        nny.a(new nop());
-        nny.a(new noo());
-        nny.a(BaseApplicationImpl.getContext());
+        nuz.a(new nwl());
+        nuz.a(new nvq());
+        nuz.a(new nvp());
+        nuz.a(BaseApplicationImpl.getContext());
         if (getLongAccountUin() % 10L != 6L) {
           break label261;
         }
         bool = true;
-        nny.jdField_a_of_type_Boolean = bool;
+        nuz.jdField_a_of_type_Boolean = bool;
         if (!jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
         {
           if (QLog.isColorLevel()) {
@@ -616,8 +623,8 @@ public class BrowserAppInterface
         if (!paramBundle.getBoolean("is_set", false)) {
           paramBundle.edit().putBoolean("hide_back_text", true).putBoolean("is_set", true).commit();
         }
-        bgxd.A = SystemClock.elapsedRealtime();
-        bfzg.a("web_browserAppinterface_onCreate", null);
+        bihv.A = SystemClock.elapsedRealtime();
+        bhhy.a("web_browserAppinterface_onCreate", null);
       }
     }
     catch (Throwable paramBundle)
@@ -638,11 +645,11 @@ public class BrowserAppInterface
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Awkn != null) {}
+    if (this.jdField_a_of_type_Axqp != null) {}
     try
     {
-      this.jdField_a_of_type_Awkn.onDestroy();
-      this.jdField_a_of_type_Awkn = null;
+      this.jdField_a_of_type_Axqp.onDestroy();
+      this.jdField_a_of_type_Axqp = null;
       if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory != null) {
         this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.onDestroy();
       }
@@ -716,10 +723,10 @@ public class BrowserAppInterface
           if (InnerDns.mInstance != null) {
             InnerDns.getInstance().onAppDestroy();
           }
-          autn.a();
+          avzm.a();
           UiApiPlugin.f();
-          if (this.jdField_a_of_type_Pks != null) {
-            this.jdField_a_of_type_Pks.b();
+          if (this.jdField_a_of_type_Pvp != null) {
+            this.jdField_a_of_type_Pvp.b();
           }
           return;
         }
@@ -780,12 +787,12 @@ public class BrowserAppInterface
     super.onRunningForeground();
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentIntent = null;
-    bfpm.a(getApp());
+    bgyd.a(getApp());
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Anwo.a(paramToServiceMsg);
+    this.jdField_a_of_type_Aozq.a(paramToServiceMsg);
   }
 }
 

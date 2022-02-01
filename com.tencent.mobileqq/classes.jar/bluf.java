@@ -1,22 +1,17 @@
-import android.widget.DatePicker;
-import android.widget.EditText;
-import dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class bluf
-  implements blue
+class bluf
+  implements Callable<File>
 {
-  public bluf(WatermarkEditView paramWatermarkEditView) {}
+  bluf(blue paramblue) {}
   
-  public void a()
+  public File a()
   {
-    WatermarkEditView.a(this.a).setVisibility(8);
-  }
-  
-  public void a(int paramInt, String paramString, EditText paramEditText)
-  {
-    paramString = paramString.split("-");
-    WatermarkEditView.a(this.a).init(Integer.parseInt(paramString[0]), Integer.parseInt(paramString[1]) - 1, Integer.parseInt(paramString[2]), WatermarkEditView.a(this.a));
-    WatermarkEditView.a(this.a).setVisibility(0);
+    if (blue.a(this.a).exists()) {
+      return blue.a(this.a);
+    }
+    return null;
   }
 }
 

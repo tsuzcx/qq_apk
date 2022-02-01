@@ -1,18 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class qws
-  implements View.OnClickListener
+class qws
+  implements Application.ActivityLifecycleCallbacks
 {
-  public qws(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
+  qws(qwn paramqwn, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  private void a(Activity paramActivity, boolean paramBoolean)
   {
-    pyr.a(2, this.jdField_a_of_type_JavaLangString);
-    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramActivity != this.jdField_a_of_type_AndroidAppActivity) {}
+    do
+    {
+      return;
+      QLog.d("RvPolymericContainer", 1, "visibility changed, visible :  " + paramBoolean);
+      if (paramBoolean)
+      {
+        qwn.c(this.jdField_a_of_type_Qwn);
+        return;
+      }
+    } while (qwn.a(this.jdField_a_of_type_Qwn) == null);
+    qwn.a(this.jdField_a_of_type_Qwn).b();
+  }
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    if ((paramActivity == this.jdField_a_of_type_AndroidAppActivity) && (BaseApplication.getContext() != null)) {
+      BaseApplication.getContext().unregisterActivityLifecycleCallbacks(this);
+    }
+  }
+  
+  public void onActivityPaused(Activity paramActivity)
+  {
+    a(paramActivity, false);
+  }
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    a(paramActivity, true);
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    a(paramActivity, true);
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    a(paramActivity, false);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.adapter;
 
-import alhu;
+import amfu;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 public class AvatarPendantAdapter$2$1
   implements Runnable
 {
-  public AvatarPendantAdapter$2$1(alhu paramalhu, TextView paramTextView, int paramInt) {}
+  public AvatarPendantAdapter$2$1(amfu paramamfu, TextView paramTextView, int paramInt) {}
   
   public void run()
   {

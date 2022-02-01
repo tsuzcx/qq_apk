@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
-import bjqv;
-import bjqw;
+import blch;
+import blci;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GestureSelectGridView
@@ -13,7 +13,7 @@ public class GestureSelectGridView
 {
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
-  public bjqw a;
+  public blci a;
   public AbsListView.OnScrollListener a;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   public boolean a;
@@ -39,7 +39,7 @@ public class GestureSelectGridView
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Int = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 15);
-    super.setOnScrollListener(new bjqv(this));
+    super.setOnScrollListener(new blch(this));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -146,8 +146,8 @@ public class GestureSelectGridView
       {
         if ((!this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_b_of_type_Int != -1))
         {
-          if (this.jdField_a_of_type_Bjqw != null) {
-            this.jdField_a_of_type_Bjqw.a(this.jdField_b_of_type_Int);
+          if (this.jdField_a_of_type_Blci != null) {
+            this.jdField_a_of_type_Blci.a(this.jdField_b_of_type_Int);
           }
           this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
         }
@@ -160,8 +160,8 @@ public class GestureSelectGridView
         }
         this.jdField_c_of_type_Int = i;
         this.jdField_b_of_type_Int = i;
-        if (this.jdField_a_of_type_Bjqw != null) {
-          this.jdField_a_of_type_Bjqw.a(this.jdField_b_of_type_Int);
+        if (this.jdField_a_of_type_Blci != null) {
+          this.jdField_a_of_type_Blci.a(this.jdField_b_of_type_Int);
         }
         this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
         break;
@@ -183,10 +183,10 @@ public class GestureSelectGridView
         break;
       }
       this.jdField_c_of_type_Int = i;
-      if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Bjqw == null)) {
+      if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Blci == null)) {
         break;
       }
-      this.jdField_a_of_type_Bjqw.a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Blci.a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
       break;
       this.jdField_a_of_type_Float = f1;
       this.jdField_b_of_type_Float = f2;
@@ -201,8 +201,8 @@ public class GestureSelectGridView
       this.jdField_c_of_type_Int = -1;
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if ((bool) && (this.jdField_a_of_type_Bjqw != null)) {
-        this.jdField_a_of_type_Bjqw.h();
+      if ((bool) && (this.jdField_a_of_type_Blci != null)) {
+        this.jdField_a_of_type_Blci.h();
       }
       if (!bool) {
         break;
@@ -214,9 +214,9 @@ public class GestureSelectGridView
     }
   }
   
-  public void setOnIndexChangedListener(bjqw parambjqw)
+  public void setOnIndexChangedListener(blci paramblci)
   {
-    this.jdField_a_of_type_Bjqw = parambjqw;
+    this.jdField_a_of_type_Blci = paramblci;
   }
   
   public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
@@ -236,7 +236,7 @@ public class GestureSelectGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.GestureSelectGridView
  * JD-Core Version:    0.7.0.1
  */

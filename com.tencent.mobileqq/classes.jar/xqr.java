@@ -1,65 +1,92 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Calendar;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.CircleImageView;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class xqr
-  implements xrq
 {
-  protected xqt a;
-  protected xrr a;
-  protected xrs a;
-  
-  public Object a()
+  public static void a(Context paramContext, LinearLayout paramLinearLayout, int paramInt1, QQUserUIItem paramQQUserUIItem, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Xqt;
+    Object localObject1 = LayoutInflater.from(paramContext);
+    int i = UIUtils.dip2px(paramContext, paramInt1);
+    if ((paramInt2 != 1) || (!paramBoolean))
+    {
+      localObject1 = ((LayoutInflater)localObject1).inflate(2131561787, null);
+      localObject2 = (CircleImageView)((View)localObject1).findViewById(2131368542);
+      localObject3 = ((CircleImageView)localObject2).getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject3).height = i;
+      ((ViewGroup.LayoutParams)localObject3).width = i;
+      ((CircleImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+      ((CircleImageView)localObject2).setBorderColor(-1);
+      ((CircleImageView)localObject2).setBorderWidth(UIUtils.dip2px(paramContext, 1.0F));
+      UIUtils.setImageWithAnim((ImageView)localObject2, paramQQUserUIItem.headUrl, i, i, new yeh(null, null));
+      paramQQUserUIItem = new LinearLayout.LayoutParams(i, i);
+      if (paramInt2 != -1) {
+        paramQQUserUIItem.setMargins(-AIOUtils.dp2px(8.0F, paramContext.getResources()), 0, 0, 0);
+      }
+      paramLinearLayout.addView((View)localObject1, paramQQUserUIItem);
+      return;
+    }
+    Object localObject2 = ((LayoutInflater)localObject1).inflate(2131561788, null);
+    Object localObject3 = (TextView)((View)localObject2).findViewById(2131379304);
+    if (paramInt3 > 99) {}
+    for (localObject1 = "99+";; localObject1 = paramInt3 + "")
+    {
+      ((TextView)localObject3).setText((CharSequence)localObject1);
+      ((TextView)localObject3).setVisibility(0);
+      localObject1 = ((View)localObject2).findViewById(2131368543);
+      localObject3 = ((View)localObject1).getLayoutParams();
+      paramInt1 = UIUtils.dip2px(paramContext, paramInt1 - 2);
+      ((ViewGroup.LayoutParams)localObject3).height = paramInt1;
+      ((ViewGroup.LayoutParams)localObject3).width = paramInt1;
+      ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+      localObject1 = localObject2;
+      break;
+    }
   }
   
-  public String a()
+  public static boolean a()
   {
-    return getClass().getSimpleName();
+    return (((wjl)wjs.a(10)).a() & 0x1) != 0;
   }
   
-  public void a()
+  public static boolean a(ShareGroupItem paramShareGroupItem)
   {
-    xvv.c("GetMyStoryVideoListStep", "GetMyStoryVideoListStep");
-    d();
+    boolean bool = true;
+    int i = ((wjl)wjs.a(10)).a();
+    if (paramShareGroupItem.isPublic()) {
+      return (i & 0x1) != 0;
+    }
+    if ((i & 0x2) != 0) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
   }
   
-  public void a(Object paramObject) {}
-  
-  public void a(xrr paramxrr)
+  public static boolean a(ShareGroupFeedItem paramShareGroupFeedItem)
   {
-    this.jdField_a_of_type_Xrr = paramxrr;
-  }
-  
-  public void a(xrs paramxrs)
-  {
-    this.jdField_a_of_type_Xrs = paramxrs;
-  }
-  
-  public boolean a()
-  {
+    if (paramShareGroupFeedItem != null)
+    {
+      paramShareGroupFeedItem = paramShareGroupFeedItem.getOwner();
+      if ((paramShareGroupFeedItem != null) && (paramShareGroupFeedItem.type == 2))
+      {
+        ykq.b("ShareGroupUtil", "屏蔽掉圈子类型 %s", paramShareGroupFeedItem);
+        return true;
+      }
+    }
     return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  protected void d()
-  {
-    String str = vpl.a("StorySvc.homepage_my_day_710");
-    qqstory_service.ReqTodayStoryVidList localReqTodayStoryVidList = new qqstory_service.ReqTodayStoryVidList();
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(l);
-    int i = localCalendar.get(1);
-    int j = localCalendar.get(2);
-    int k = localCalendar.get(5);
-    localReqTodayStoryVidList.date.set(i * 10000 + (j + 1) * 100 + k);
-    this.jdField_a_of_type_Xqt = new xqt();
-    vqn.a().a(new wdw(str, localReqTodayStoryVidList, null), new xqs(this, localReqTodayStoryVidList, str));
   }
 }
 

@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
 
 public class akvc
-  implements yih
 {
-  public akvc(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  public int a;
+  public BaseHbFragment a;
+  public String a;
   
-  public void a() {}
-  
-  public void a(yir paramyir)
+  public akvc(int paramInt, String paramString, BaseHbFragment paramBaseHbFragment)
   {
-    this.a.b(paramyir);
-  }
-  
-  public void b()
-  {
-    this.a.a();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment = paramBaseHbFragment;
   }
 }
 

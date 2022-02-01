@@ -1,28 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.widgets.TabLayout;
-import java.io.PrintStream;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-public class aaes
-  implements ValueAnimator.AnimatorUpdateListener
+class aaes
+  implements bids
 {
-  public aaes(TabLayout paramTabLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView, int paramInt5) {}
+  aaes(aaeq paramaaeq, int paramInt, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(Bundle paramBundle)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    System.out.println("value = " + f);
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int - this.b)
-    {
-      paramValueAnimator = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getChildAt(this.c + i);
-      if (paramValueAnimator != null) {
-        paramValueAnimator.setTranslationX(this.d * f);
-      }
-      i += 1;
-    }
-    this.jdField_a_of_type_AndroidViewView.setTranslationX(f * -this.e);
+    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
+    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aaeq.a.a(146, paramBundle);
   }
 }
 

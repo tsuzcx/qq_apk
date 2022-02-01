@@ -152,7 +152,7 @@ public class SegmentClipUtils
     //   217: getfield 88	com/tencent/biz/qqstory/takevideo/slideshow/SlideItemInfo:jdField_a_of_type_Long	J
     //   220: l2f
     //   221: fdiv
-    //   222: fstore_2
+    //   222: fstore_1
     //   223: aload_0
     //   224: getfield 86	com/tencent/biz/qqstory/takevideo/slideshow/SlideItemInfo:jdField_c_of_type_Long	J
     //   227: l2f
@@ -162,7 +162,7 @@ public class SegmentClipUtils
     //   231: getfield 88	com/tencent/biz/qqstory/takevideo/slideshow/SlideItemInfo:jdField_a_of_type_Long	J
     //   234: l2f
     //   235: fdiv
-    //   236: fstore_1
+    //   236: fstore_2
     //   237: new 98	java/lang/StringBuilder
     //   240: dup
     //   241: invokespecial 99	java/lang/StringBuilder:<init>	()V
@@ -207,7 +207,7 @@ public class SegmentClipUtils
     //   329: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   332: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   335: invokestatic 156	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   338: fload_2
+    //   338: fload_1
     //   339: lload 7
     //   341: l2f
     //   342: fmul
@@ -215,7 +215,7 @@ public class SegmentClipUtils
     //   344: lstore 5
     //   346: lload 7
     //   348: l2f
-    //   349: fload_1
+    //   349: fload_2
     //   350: fmul
     //   351: f2l
     //   352: lstore 9
@@ -296,7 +296,7 @@ public class SegmentClipUtils
     //   513: lstore 7
     //   515: sipush 2048
     //   518: newarray byte
-    //   520: astore 16
+    //   520: astore 17
     //   522: new 166	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData
     //   525: dup
     //   526: aconst_null
@@ -306,7 +306,7 @@ public class SegmentClipUtils
     //   535: dup
     //   536: aconst_null
     //   537: invokespecial 169	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData:<init>	(Lcom/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$1;)V
-    //   540: astore 17
+    //   540: astore 16
     //   542: ldc 170
     //   544: aload_0
     //   545: getfield 90	com/tencent/biz/qqstory/takevideo/slideshow/SlideItemInfo:jdField_c_of_type_Int	I
@@ -316,14 +316,14 @@ public class SegmentClipUtils
     //   553: sipush 2048
     //   556: imul
     //   557: istore_3
-    //   558: aload 17
+    //   558: aload 16
     //   560: iconst_0
     //   561: putfield 179	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData:offset	I
-    //   564: aload 17
+    //   564: aload 16
     //   566: iload_3
     //   567: newarray byte
     //   569: putfield 183	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData:data	[B
-    //   572: aload 17
+    //   572: aload 16
     //   574: iload_3
     //   575: putfield 186	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData:size	I
     //   578: new 188	java/io/FileInputStream
@@ -366,7 +366,7 @@ public class SegmentClipUtils
     //   653: lcmp
     //   654: ifge +226 -> 880
     //   657: aload 15
-    //   659: aload 16
+    //   659: aload 17
     //   661: invokevirtual 208	java/io/FileInputStream:read	([B)I
     //   664: istore_3
     //   665: iload_3
@@ -384,7 +384,7 @@ public class SegmentClipUtils
     //   687: ldc 91
     //   689: if_icmpeq +51 -> 740
     //   692: aload 18
-    //   694: aload 16
+    //   694: aload 17
     //   696: iconst_0
     //   697: iload_3
     //   698: invokevirtual 212	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData:set	([BII)V
@@ -392,20 +392,20 @@ public class SegmentClipUtils
     //   702: getfield 90	com/tencent/biz/qqstory/takevideo/slideshow/SlideItemInfo:jdField_c_of_type_Int	I
     //   705: ldc 91
     //   707: aload 18
-    //   709: aload 17
+    //   709: aload 16
     //   711: invokestatic 216	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils:convertAudioData	(IILcom/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData;Lcom/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData;)Z
     //   714: ifeq +289 -> 1003
     //   717: aload 14
-    //   719: aload 17
+    //   719: aload 16
     //   721: getfield 183	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData:data	[B
-    //   724: aload 17
+    //   724: aload 16
     //   726: getfield 179	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData:offset	I
-    //   729: aload 17
+    //   729: aload 16
     //   731: getfield 186	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData:size	I
     //   734: invokevirtual 219	java/io/FileOutputStream:write	([BII)V
     //   737: goto +266 -> 1003
     //   740: aload 14
-    //   742: aload 16
+    //   742: aload 17
     //   744: iconst_0
     //   745: iload_3
     //   746: invokevirtual 219	java/io/FileOutputStream:write	([BII)V
@@ -432,7 +432,7 @@ public class SegmentClipUtils
     //   790: ldc 91
     //   792: if_icmpeq +75 -> 867
     //   795: aload 18
-    //   797: aload 16
+    //   797: aload 17
     //   799: iconst_0
     //   800: iload 4
     //   802: invokevirtual 212	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData:set	([BII)V
@@ -440,15 +440,15 @@ public class SegmentClipUtils
     //   806: getfield 90	com/tencent/biz/qqstory/takevideo/slideshow/SlideItemInfo:jdField_c_of_type_Int	I
     //   809: ldc 91
     //   811: aload 18
-    //   813: aload 17
+    //   813: aload 16
     //   815: invokestatic 216	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils:convertAudioData	(IILcom/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData;Lcom/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData;)Z
     //   818: ifeq +185 -> 1003
     //   821: aload 14
-    //   823: aload 17
+    //   823: aload 16
     //   825: getfield 183	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData:data	[B
-    //   828: aload 17
+    //   828: aload 16
     //   830: getfield 179	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData:offset	I
-    //   833: aload 17
+    //   833: aload 16
     //   835: getfield 186	com/tencent/biz/qqstory/utils/ffmpeg/SegmentClipUtils$MAudioData:size	I
     //   838: invokevirtual 219	java/io/FileOutputStream:write	([BII)V
     //   841: goto +162 -> 1003
@@ -464,7 +464,7 @@ public class SegmentClipUtils
     //   865: aload_0
     //   866: athrow
     //   867: aload 14
-    //   869: aload 16
+    //   869: aload 17
     //   871: iconst_0
     //   872: iload 4
     //   874: invokevirtual 219	java/io/FileOutputStream:write	([BII)V
@@ -542,8 +542,8 @@ public class SegmentClipUtils
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	1013	0	paramSlideItemInfo	SlideItemInfo
-    //   236	114	1	f1	float
-    //   222	117	2	f2	float
+    //   222	117	1	f1	float
+    //   236	114	2	f2	float
     //   557	449	3	i	int
     //   675	198	4	j	int
     //   344	665	5	l1	long
@@ -559,11 +559,11 @@ public class SegmentClipUtils
     //   942	19	15	localSlideItemInfo	SlideItemInfo
     //   968	16	15	localException1	java.lang.Exception
     //   988	1	15	localException2	java.lang.Exception
-    //   520	223	16	arrayOfByte	byte[]
-    //   752	118	16	localException3	java.lang.Exception
+    //   540	190	16	localMAudioData1	SegmentClipUtils.MAudioData
+    //   752	82	16	localException3	java.lang.Exception
     //   957	6	16	localObject4	Object
     //   978	9	16	localException4	java.lang.Exception
-    //   540	294	17	localMAudioData1	SegmentClipUtils.MAudioData
+    //   520	350	17	arrayOfByte	byte[]
     //   530	282	18	localMAudioData2	SegmentClipUtils.MAudioData
     //   259	623	19	str	String
     // Exception table:

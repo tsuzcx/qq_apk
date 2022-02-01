@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 class zzp
-  implements View.OnClickListener
+  extends aoav
 {
-  zzp(zzo paramzzo, int paramInt, VsMusicItemInfo paramVsMusicItemInfo) {}
+  WeakReference<zzq> a;
   
-  public void onClick(View paramView)
+  public zzp(zzq paramzzq)
   {
-    if (zzo.a(this.jdField_a_of_type_Zzo) != null) {
-      zzo.a(this.jdField_a_of_type_Zzo).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
+    this.a = new WeakReference(paramzzq);
+  }
+  
+  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString)
+  {
+    super.onFollowPublicAccount(paramBoolean, paramString);
+    zzq localzzq = (zzq)this.a.get();
+    if (localzzq != null) {
+      localzzq.a(paramBoolean, paramString, false);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

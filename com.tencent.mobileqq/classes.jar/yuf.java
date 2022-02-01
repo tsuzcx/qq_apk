@@ -1,15 +1,8 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
+import android.view.MotionEvent;
 
-public final class yuf
-  extends SparseArray<RotateCircleImageView.BorderStyle>
+public abstract class yuf
 {
-  public yuf(int paramInt)
-  {
-    super(paramInt);
-    append(0, RotateCircleImageView.BorderStyle.STILL);
-    append(1, RotateCircleImageView.BorderStyle.ROTATE);
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

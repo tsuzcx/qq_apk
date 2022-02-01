@@ -1,24 +1,6 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-
-public class aabi
-  implements apri
+public abstract interface aabi
 {
-  public aabi(NewerGuidePlugin paramNewerGuidePlugin, String[] paramArrayOfString) {}
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt2];
-  }
+  public abstract void a(int paramInt);
 }
 
 

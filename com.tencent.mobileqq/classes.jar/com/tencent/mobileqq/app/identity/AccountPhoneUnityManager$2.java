@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.identity;
 
-import anjz;
+import aoms;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class AccountPhoneUnityManager$2
   implements Runnable
 {
-  public AccountPhoneUnityManager$2(anjz paramanjz, QQAppInterface paramQQAppInterface) {}
+  public AccountPhoneUnityManager$2(aoms paramaoms, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

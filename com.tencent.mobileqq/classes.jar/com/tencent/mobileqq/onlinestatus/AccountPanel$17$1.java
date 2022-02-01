@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.content.res.Resources;
-import axsv;
-import axtd;
-import axuy;
-import axys;
+import ayzg;
+import ayzo;
+import azbj;
+import azfe;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -13,38 +13,38 @@ import mqq.app.AppRuntime.Status;
 public class AccountPanel$17$1
   implements Runnable
 {
-  public AccountPanel$17$1(axtd paramaxtd, boolean paramBoolean, AppRuntime.Status paramStatus) {}
+  public AccountPanel$17$1(ayzo paramayzo, boolean paramBoolean, AppRuntime.Status paramStatus) {}
   
   public void run()
   {
     long l;
     if (this.jdField_a_of_type_Boolean)
     {
-      l = axuy.a().a(axsv.a(this.jdField_a_of_type_Axtd.a));
-      if ((axsv.a(this.jdField_a_of_type_Axtd.a) != 1000L) || (l != 1000L)) {
+      l = azbj.a().a(ayzg.a(this.jdField_a_of_type_Ayzo.a));
+      if ((ayzg.a(this.jdField_a_of_type_Ayzo.a) != 1000L) || (l != 1000L)) {
         break label219;
       }
     }
     label219:
     for (int i = 0;; i = 1)
     {
-      if ((i != 0) && (axsv.a(this.jdField_a_of_type_Axtd.a)))
+      if ((i != 0) && (ayzg.a(this.jdField_a_of_type_Ayzo.a)))
       {
-        String str = axuy.a().a(l, this.jdField_a_of_type_MqqAppAppRuntime$Status);
-        str = axsv.a(this.jdField_a_of_type_Axtd.a).getResources().getString(2131697884, new Object[] { str });
-        QQToast.a(axsv.a(this.jdField_a_of_type_Axtd.a), 2, str, 1).a();
+        String str = azbj.a().a(l, this.jdField_a_of_type_MqqAppAppRuntime$Status);
+        str = ayzg.a(this.jdField_a_of_type_Ayzo.a).getResources().getString(2131698167, new Object[] { str });
+        QQToast.a(ayzg.a(this.jdField_a_of_type_Ayzo.a), 2, str, 1).a();
         if (QLog.isColorLevel()) {
           QLog.d("AccountPanel", 2, "Show toast in account panel mAccountObserver");
         }
       }
-      axsv.a(this.jdField_a_of_type_Axtd.a);
-      axys.a().a(axsv.a(this.jdField_a_of_type_Axtd.a), l);
-      axsv.a(this.jdField_a_of_type_Axtd.a, l);
+      ayzg.a(this.jdField_a_of_type_Ayzo.a);
+      azfe.a().a(ayzg.a(this.jdField_a_of_type_Ayzo.a), l);
+      ayzg.a(this.jdField_a_of_type_Ayzo.a, l);
       for (;;)
       {
-        this.jdField_a_of_type_Axtd.a.c();
+        this.jdField_a_of_type_Ayzo.a.c();
         return;
-        QQToast.a(axsv.a(this.jdField_a_of_type_Axtd.a), 1, 2131697871, 1).a();
+        QQToast.a(ayzg.a(this.jdField_a_of_type_Ayzo.a), 1, 2131698154, 1).a();
       }
     }
   }

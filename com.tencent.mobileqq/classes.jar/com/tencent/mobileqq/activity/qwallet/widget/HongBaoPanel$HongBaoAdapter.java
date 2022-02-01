@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import akcq;
-import akcs;
-import akct;
+import akyj;
+import akyl;
+import akym;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -25,7 +25,7 @@ import java.util.List;
 class HongBaoPanel$HongBaoAdapter
   extends RecyclerView.Adapter<HongBaoPanel.MyViewHolder>
 {
-  private List<akct> mDatas = new ArrayList();
+  private List<akym> mDatas = new ArrayList();
   private HongBaoPanel.OnHolderItemClickListener mHolderItemClickListener;
   
   HongBaoPanel$HongBaoAdapter(HongBaoPanel paramHongBaoPanel) {}
@@ -36,7 +36,7 @@ class HongBaoPanel$HongBaoAdapter
     notifyDataSetChanged();
   }
   
-  public List<akct> getDatas()
+  public List<akym> getDatas()
   {
     return this.mDatas;
   }
@@ -49,12 +49,12 @@ class HongBaoPanel$HongBaoAdapter
     return 0;
   }
   
-  public akct getPanelDataAtPos(int paramInt)
+  public akym getPanelDataAtPos(int paramInt)
   {
     if ((this.mDatas == null) || (this.mDatas.size() <= 0) || (this.mDatas.size() <= paramInt)) {
       return null;
     }
-    return (akct)this.mDatas.get(paramInt);
+    return (akym)this.mDatas.get(paramInt);
   }
   
   public void onBindViewHolder(HongBaoPanel.MyViewHolder paramMyViewHolder, int paramInt)
@@ -64,20 +64,20 @@ class HongBaoPanel$HongBaoAdapter
     {
       EventCollector.getInstance().onRecyclerBindViewHolder(paramMyViewHolder, paramInt, getItemId(paramInt));
       return;
-      Object localObject1 = (akct)this.mDatas.get(paramInt);
+      Object localObject1 = (akym)this.mDatas.get(paramInt);
       Object localObject2 = this.this$0;
       Object localObject3 = paramMyViewHolder.hongbaoText;
-      String str = ((akct)this.mDatas.get(paramInt)).b;
+      String str = ((akym)this.mDatas.get(paramInt)).b;
       if (HongBaoPanel.access$300(this.this$0).equals("#5B6175"))
       {
-        i = this.this$0.mContext.getResources().getColor(2131167012);
+        i = this.this$0.mContext.getResources().getColor(2131167026);
         label122:
         HongBaoPanel.access$400((HongBaoPanel)localObject2, (TextView)localObject3, str, i, 0);
-        paramMyViewHolder.hongbaoPic.setImageResource(2130843437);
-        if (!StringUtil.isEmpty(((akct)localObject1).c))
+        paramMyViewHolder.hongbaoPic.setImageResource(2130843474);
+        if (!StringUtil.isEmpty(((akym)localObject1).c))
         {
-          paramMyViewHolder.hongbaoPic.setTag(((akct)localObject1).c);
-          localObject2 = HongBaoPanel.access$500(this.this$0, paramInt, ((akct)localObject1).c, paramMyViewHolder.hongbaoPic);
+          paramMyViewHolder.hongbaoPic.setTag(((akym)localObject1).c);
+          localObject2 = HongBaoPanel.access$500(this.this$0, paramInt, ((akym)localObject1).c, paramMyViewHolder.hongbaoPic);
           if ((localObject2 != null) && (((CustomizeStrategyFactory.RedPacketInfo)localObject2).icon != null)) {
             paramMyViewHolder.hongbaoPic.setImageBitmap(((CustomizeStrategyFactory.RedPacketInfo)localObject2).icon);
           }
@@ -85,12 +85,12 @@ class HongBaoPanel$HongBaoAdapter
         if (this.this$0.redManager == null) {
           continue;
         }
-        localObject1 = this.this$0.redManager.a(((akct)localObject1).jdField_a_of_type_JavaLangString);
+        localObject1 = this.this$0.redManager.a(((akym)localObject1).jdField_a_of_type_JavaLangString);
         if (localObject1 == null) {
           continue;
         }
         localObject2 = paramMyViewHolder.hbRedPointContainer;
-        if (!((akcs)localObject1).jdField_a_of_type_Boolean) {
+        if (!((akyl)localObject1).jdField_a_of_type_Boolean) {
           break label362;
         }
       }
@@ -100,7 +100,7 @@ class HongBaoPanel$HongBaoAdapter
         for (;;)
         {
           ((RelativeLayout)localObject2).setVisibility(i);
-          if (!((akcs)localObject1).b) {
+          if (!((akyl)localObject1).b) {
             break label368;
           }
           paramMyViewHolder.imgFlag.setVisibility(0);
@@ -111,7 +111,7 @@ class HongBaoPanel$HongBaoAdapter
             localObject3 = URLDrawable.URLDrawableOptions.obtain();
             ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject2);
             ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject2);
-            localObject1 = URLDrawable.getDrawable(((akcs)localObject1).jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject3);
+            localObject1 = URLDrawable.getDrawable(((akyl)localObject1).jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject3);
             paramMyViewHolder.imgFlag.setImageDrawable((Drawable)localObject1);
           }
           catch (Throwable localThrowable)
@@ -130,10 +130,10 @@ class HongBaoPanel$HongBaoAdapter
   
   public HongBaoPanel.MyViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new HongBaoPanel.MyViewHolder(this.this$0, LayoutInflater.from(this.this$0.mContext).inflate(2131560498, paramViewGroup, false), this.mHolderItemClickListener);
+    return new HongBaoPanel.MyViewHolder(this.this$0, LayoutInflater.from(this.this$0.mContext).inflate(2131560549, paramViewGroup, false), this.mHolderItemClickListener);
   }
   
-  public void setDatas(List<akct> paramList)
+  public void setDatas(List<akym> paramList)
   {
     if ((paramList == null) || (paramList.size() <= 0)) {
       return;

@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.home.MainFragment;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public class ajdt
-  implements bhjo
+class ajdt
+  implements View.OnLongClickListener
 {
-  public ajdt(MainFragment paramMainFragment) {}
+  ajdt(ajdq paramajdq, ajdw paramajdw) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    MainFragment.c(this.a);
+    if (this.jdField_a_of_type_Ajdq.a != null)
+    {
+      int i = this.jdField_a_of_type_Ajdw.getAdapterPosition();
+      return this.jdField_a_of_type_Ajdq.a.a(paramView, this.jdField_a_of_type_Ajdw, i);
+    }
+    return false;
   }
 }
 

@@ -1,42 +1,37 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
 
-class axbo
-  extends TransProcessorHandler
+public class axbo
+  implements DialogInterface.OnClickListener
 {
-  axbo(axax paramaxax) {}
+  public axbo(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    switch (paramMessage.what)
+    axcw.a("MsgBackup_MsgBackupPcBaseFragment", "showDisConnDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.e) });
+    awzs.a().a().c();
+    awzs.a().d();
+    if (this.a.jdField_a_of_type_Boolean) {
+      if ((!this.a.e) && (this.a.b == 1)) {
+        this.a.a(this.a.getActivity());
+      }
+    }
+    do
     {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
-      {
-        do
-        {
-          return;
-        } while (localFileMsg.fileType != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.mPhotoId);
-        }
-      } while (axax.a(this.a) == null);
-      axax.a(this.a).a = NearbyPeoplePhotoUploadProcessor.mPhotoId;
-      axax.d(this.a);
       return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
-    }
-    this.a.a.b();
-    this.a.a.b(amtj.a(2131706419));
+      this.a.m();
+      return;
+      if (!this.a.e) {
+        break;
+      }
+    } while (this.a.getActivity() == null);
+    this.a.getActivity().setResult(1001);
+    this.a.getActivity().finish();
+    return;
+    this.a.a(this.a.getActivity());
   }
 }
 

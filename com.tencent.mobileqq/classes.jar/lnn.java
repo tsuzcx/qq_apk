@@ -1,20 +1,41 @@
-import com.tencent.avcore.jni.data.AVUserInfo;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteActivity;
 
-public abstract interface lnn
-  extends mwm
+public class lnn
+  implements DialogInterface.OnClickListener
 {
-  public abstract long a(int paramInt1, int paramInt2, long paramLong);
+  int jdField_a_of_type_Int;
   
-  public abstract lez a();
+  public lnn(GaInviteActivity paramGaInviteActivity, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract void a(long paramLong1, long paramLong2, ArrayList<lnl> paramArrayList);
-  
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void b(long paramLong1, long paramLong2, String paramString);
-  
-  public abstract void b(long paramLong, ArrayList<AVUserInfo> paramArrayList);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.g(true);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
+        break;
+        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e) {
+          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l();
+        }
+      }
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
+    }
+  }
 }
 
 

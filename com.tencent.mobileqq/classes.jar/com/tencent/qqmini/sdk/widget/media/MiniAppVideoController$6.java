@@ -7,7 +7,7 @@ class MiniAppVideoController$6
   
   public void run()
   {
-    MiniAppVideoController.access$100(this.this$0).smallScreen(MiniAppVideoController.access$1400(this.this$0), MiniAppVideoController.access$800(this.this$0));
+    MiniAppVideoController.access$300(this.this$0).smallScreen(MiniAppVideoController.access$1400(this.this$0), MiniAppVideoController.access$000(this.this$0));
     MiniAppVideoController.access$1500(this.this$0);
   }
 }

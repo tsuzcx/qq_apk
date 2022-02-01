@@ -1,76 +1,43 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity.5.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aehz
-  extends amsu
+  extends WtloginObserver
 {
-  public aehz(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public aehz(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
   
-  void a(String paramString, int paramInt)
+  public void onCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
   {
-    ThreadManager.getFileThreadHandler().post(new SubAccountBindActivity.5.1(this, paramString, paramInt));
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      return;
-      int i;
-      if (SubAccountBindActivity.a(this.a) != null) {
-        i = SubAccountBindActivity.a(this.a).getChildCount();
-      }
-      while (j < SubAccountBindActivity.a(this.a).size())
-      {
-        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
-        {
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + paramString2);
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
+      if (paramErrMsg != null) {
+        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
       }
     }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
-    {
+    this.a.c();
+    if (this.a.isFinishing()) {
       return;
-      int i;
-      if (SubAccountBindActivity.a(this.a) != null) {
-        i = SubAccountBindActivity.a(this.a).getChildCount();
-      }
-      while (j < SubAccountBindActivity.a(this.a).size())
-      {
-        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
-        {
-          TextView localTextView1 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131371615);
-          TextView localTextView2 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131361856);
-          localTextView1.setText(ContactUtils.getAccountNickName(this.a.app, paramString));
-          localTextView2.setText(paramString);
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
-      }
     }
+    if (paramInt3 == 0)
+    {
+      this.a.a();
+      return;
+    }
+    paramString1 = null;
+    if (paramErrMsg != null) {
+      paramString1 = paramErrMsg.getMessage();
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      this.a.a(null, paramString1);
+      return;
+    }
+    this.a.b();
   }
 }
 

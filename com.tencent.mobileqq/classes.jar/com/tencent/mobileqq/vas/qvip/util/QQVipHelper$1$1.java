@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas.qvip.util;
 
-import bgjl;
+import bhsg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 public class QQVipHelper$1$1
   implements Runnable
 {
-  public QQVipHelper$1$1(bgjl parambgjl, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
+  public QQVipHelper$1$1(bhsg parambhsg, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
   
   public void run()
   {

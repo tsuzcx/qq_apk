@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video.bandwidth;
 
-import sdj;
-import sfl;
+import spn;
+import srq;
 
 public class VideoBufferRangeController$1
   implements Runnable
 {
-  public VideoBufferRangeController$1(sfl paramsfl, sdj paramsdj, int[] paramArrayOfInt) {}
+  public VideoBufferRangeController$1(srq paramsrq, spn paramspn, int[] paramArrayOfInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Sdj.a(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfInt[1]);
+    this.jdField_a_of_type_Spn.a(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfInt[1]);
   }
 }
 

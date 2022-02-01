@@ -1,12 +1,6 @@
-import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class afzs
@@ -16,24 +10,7 @@ class afzs
   
   public void onClick(View paramView)
   {
-    Object localObject = AIOUtils.getMessage(paramView);
-    if ((localObject instanceof MessageForFoldMsgGrayTips))
-    {
-      ((MessageForFoldMsgGrayTips)localObject).isOpen = true;
-      afzt localafzt = (afzt)AIOUtils.getHolder(paramView);
-      localafzt.jdField_b_of_type_AndroidWidgetTextView.setText(((MessageForFoldMsgGrayTips)localObject).getShowMsgContent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext));
-      localObject = localafzt.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-      if ((localObject instanceof ViewGroup.MarginLayoutParams))
-      {
-        localObject = (ViewGroup.MarginLayoutParams)localObject;
-        if (((ViewGroup.MarginLayoutParams)localObject).rightMargin != AIOUtils.dp2px(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources())) {
-          ((ViewGroup.MarginLayoutParams)localObject).rightMargin = AIOUtils.dp2px(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources());
-        }
-      }
-      localafzt.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      localafzt.a.requestLayout();
-      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80064BD", "0X80064BD", 0, 0, "", "", "", "");
-    }
+    ahmu.a(this.a.app, this.a.getActivity(), this.a.sessionInfo, 1, false, this.a.app.getCurrentUin(), "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

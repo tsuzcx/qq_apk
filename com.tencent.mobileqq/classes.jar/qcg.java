@@ -1,122 +1,86 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 public class qcg
-  implements qdy
 {
-  private void a(BaseArticleInfo paramBaseArticleInfo, JSONObject paramJSONObject)
+  public static String a()
   {
-    paramJSONObject.put("info_avator_uin", paramBaseArticleInfo.mSubscribeID);
-    String str2 = " ";
-    String str1 = str2;
-    if (paramBaseArticleInfo.mSubscribeName != null)
-    {
-      str1 = str2;
-      if (paramBaseArticleInfo.mSubscribeName.length() > 0)
-      {
-        if (paramBaseArticleInfo.mSubscribeName.length() <= 10) {
-          break label112;
-        }
-        str1 = paramBaseArticleInfo.mSubscribeName.substring(0, 10);
-      }
-    }
-    label112:
-    for (str1 = str1 + "...";; str1 = paramBaseArticleInfo.mSubscribeName)
-    {
-      paramJSONObject.put("nickname_text", str1);
-      b(paramBaseArticleInfo, paramJSONObject);
-      paramJSONObject.put("user_info_text", paramBaseArticleInfo.mTitle);
-      qai.b(paramJSONObject, paramBaseArticleInfo);
-      return;
-    }
-  }
-  
-  private void b(BaseArticleInfo paramBaseArticleInfo, JSONObject paramJSONObject)
-  {
-    if (paramBaseArticleInfo.mSocialFeedInfo.h == 2) {}
-    for (int i = 1; (i != 0) && (!qai.c(paramBaseArticleInfo)); i = 0)
-    {
-      paramJSONObject.put("user_desc_follow_text", pay.g(2131717611));
-      paramJSONObject.put("is_show_followed", 1);
-      paramBaseArticleInfo.showMyFollowText = 1;
-      return;
-    }
-    paramJSONObject.put("is_show_followed", 0);
-    paramBaseArticleInfo.showMyFollowText = 0;
-  }
-  
-  private void c(BaseArticleInfo paramBaseArticleInfo, JSONObject paramJSONObject)
-  {
-    paramBaseArticleInfo = paramBaseArticleInfo.mKdLiveInfo;
-    if (!TextUtils.isEmpty(paramBaseArticleInfo.jdField_a_of_type_JavaLangString)) {
-      paramJSONObject.put("live_status_bg_url", paramBaseArticleInfo.jdField_a_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(paramBaseArticleInfo.b)) {
-      paramJSONObject.put("live_status_icon_url", paramBaseArticleInfo.b);
-    }
-    paramJSONObject.put("live_status_text", paramBaseArticleInfo.c);
-    if (!TextUtils.isEmpty(paramBaseArticleInfo.d)) {
-      paramJSONObject.put("live_hot_icon_url", paramBaseArticleInfo.d);
-    }
-    paramJSONObject.put("live_hot_text", paramBaseArticleInfo.e);
-    paramJSONObject.put("jump_report_info", paramBaseArticleInfo.g);
-  }
-  
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mKdLiveInfo == null)) {
-      return new JSONObject();
-    }
-    Object localObject = new pzf();
-    ((pzf)localObject).a(paramBaseArticleInfo).b(paramBaseArticleInfo).g(paramBaseArticleInfo).h(paramBaseArticleInfo);
     try
     {
-      ((pzf)localObject).a(paramBaseArticleInfo, Long.parseLong(paramBaseArticleInfo.mSubscribeID));
-      localObject = ((pzf)localObject).a();
-      ((JSONObject)localObject).put("style_ID", "ReadInJoy_live_video_cell");
-      a(paramBaseArticleInfo, (JSONObject)localObject);
-      ((JSONObject)localObject).put("article_large_imge_url", paramBaseArticleInfo.mFirstPagePicUrl);
-      ((JSONObject)localObject).put("play_icon_url", "rij_multi_video_column_play");
-      c(paramBaseArticleInfo, (JSONObject)localObject);
-      switch (paramBaseArticleInfo.mKdLiveInfo.jdField_a_of_type_Int)
+      InetAddress localInetAddress;
+      do
       {
-      default: 
-        ((JSONObject)localObject).put("video_info_visibility", "1");
-        ((JSONObject)localObject).put("video_jump_url", paramBaseArticleInfo.mArticleContentUrl);
-        ((JSONObject)localObject).put("video_jump_report_info", paramBaseArticleInfo.mReportCommonData);
-        QLog.d("LiveSingleVideoProteusItem", 1, ((JSONObject)localObject).toString());
-        return localObject;
-      }
+        localObject = NetworkInterface.getNetworkInterfaces();
+        Enumeration localEnumeration;
+        while (!localEnumeration.hasMoreElements())
+        {
+          if (!((Enumeration)localObject).hasMoreElements()) {
+            break;
+          }
+          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
+        }
+        localInetAddress = (InetAddress)localEnumeration.nextElement();
+      } while ((localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
+      Object localObject = localInetAddress.getHostAddress();
+      return localObject;
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        QLog.e("LiveSingleVideoProteusItem", 1, localNumberFormatException.toString());
-        continue;
-        ((JSONObject)localObject).put("avatar_info_visibility", "1");
-        continue;
-        ((JSONObject)localObject).put("bottom_info_visibility", "1");
-      }
-    }
+    catch (SocketException localSocketException) {}
+    return "0.0.0.0";
   }
   
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2) {}
-  
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  protected static String a(int paramInt)
   {
-    return false;
+    return (paramInt & 0xFF) + "." + (paramInt >> 8 & 0xFF) + "." + (paramInt >> 16 & 0xFF) + "." + (paramInt >> 24 & 0xFF);
+  }
+  
+  public static String a(Context paramContext)
+  {
+    Object localObject = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+    if ((localObject != null) && (((NetworkInfo)localObject).isConnected()))
+    {
+      if (((NetworkInfo)localObject).getType() != 0) {
+        break label104;
+      }
+      try
+      {
+        InetAddress localInetAddress;
+        do
+        {
+          paramContext = NetworkInterface.getNetworkInterfaces();
+          while (!((Enumeration)localObject).hasMoreElements())
+          {
+            if (!paramContext.hasMoreElements()) {
+              break;
+            }
+            localObject = ((NetworkInterface)paramContext.nextElement()).getInetAddresses();
+          }
+          localInetAddress = (InetAddress)((Enumeration)localObject).nextElement();
+        } while ((localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
+        paramContext = localInetAddress.getHostAddress();
+        return paramContext;
+      }
+      catch (SocketException paramContext)
+      {
+        paramContext.printStackTrace();
+      }
+    }
+    label104:
+    do
+    {
+      return null;
+      if (((NetworkInfo)localObject).getType() == 1) {
+        return a(((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getIpAddress());
+      }
+    } while (((NetworkInfo)localObject).getType() != 9);
+    return a();
   }
 }
 

@@ -1,13 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
-
-public class bmhr
-  implements DialogInterface.OnClickListener
+public abstract interface bmhr
 {
-  public bmhr(AEEditorCommonEditFragment paramAEEditorCommonEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract byte[] flushMsgData(int paramInt);
 }
 
 

@@ -1,18 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xsc
-  implements View.OnClickListener
+public class xsc
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, xgg>
 {
-  xsc(xru paramxru, xvb paramxvb) {}
-  
-  public void onClick(View paramView)
+  public xsc(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    xwa.a("home_page", "guide_shoot", 0, 0, new String[0]);
-    this.jdField_a_of_type_Xru.a.a(false, true, 13, null);
-    this.jdField_a_of_type_Xvb.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull xgg paramxgg)
+  {
+    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramxgg.jdField_a_of_type_JavaLangString)) && ((paramxgg.jdField_a_of_type_Xcy instanceof xdj)))
+    {
+      paramxgg = ((xdj)paramxgg.jdField_a_of_type_Xcy).a;
+      if (paramxgg != null) {
+        paramQQStoryShareGroupProfileActivity.a(paramxgg.jdField_a_of_type_JavaLangString);
+      }
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xgg.class;
   }
 }
 

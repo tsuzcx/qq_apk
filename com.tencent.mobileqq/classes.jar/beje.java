@@ -1,26 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.tofumsg.TofuItem;
+import org.jetbrains.annotations.NotNull;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfo;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
 
-public class beje
-  implements QQPermissionCallback
+public abstract interface beje
 {
-  public beje(PublishHomeWorkFragment paramPublishHomeWorkFragment, int paramInt) {}
+  public abstract int a();
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bfur.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity());
-  }
+  public abstract TofuItem a(@NotNull TofuItem paramTofuItem, long paramLong, int paramInt);
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    paramArrayOfString = TroopHWJsPlugin.a(10 - this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a.getCurrentAccountUin());
-    paramArrayOfString.putExtra("HomeWorkConstants:homework_request_code_key", 259);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.startActivityForResult(paramArrayOfString, 259);
-    bjmm.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity());
-  }
+  public abstract oidb_0xe61.BeancurdCubeInfo a(TofuItem paramTofuItem);
+  
+  public abstract void a();
+  
+  public abstract void a(@NotNull TofuItem paramTofuItem, @NotNull oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult, long paramLong);
 }
 
 

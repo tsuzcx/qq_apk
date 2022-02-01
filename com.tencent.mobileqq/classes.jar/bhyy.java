@@ -1,14 +1,20 @@
-import com.tencent.open.appstore.js.DINewForCommonWebView.2;
-import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.mobileqq.vip.KCWraperV2.1;
+import com.tencent.qphone.base.util.QLog;
+import dualsim.common.ILogPrint;
 
 public class bhyy
-  implements ValueCallback<String>
+  implements ILogPrint
 {
-  public bhyy(DINewForCommonWebView.2 param2) {}
+  public bhyy(KCWraperV2.1 param1) {}
   
-  public void a(String paramString)
+  public void print(String paramString)
   {
-    bhzm.b("DINewForCommonWebView", "[jsCallBack]:" + paramString);
+    String str2 = this.a.this$0.a();
+    String str1 = paramString;
+    if (paramString == null) {
+      str1 = "\n";
+    }
+    QLog.e(str2, 1, str1);
   }
 }
 

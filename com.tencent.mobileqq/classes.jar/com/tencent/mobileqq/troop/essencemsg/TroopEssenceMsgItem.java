@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import bedw;
-import bedx;
+import bfkz;
+import bfla;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
@@ -26,21 +26,21 @@ public class TroopEssenceMsgItem
   
   public TroopEssenceMsgItem() {}
   
-  public TroopEssenceMsgItem(bedw parambedw, bedx parambedx)
+  public TroopEssenceMsgItem(bfkz parambfkz, bfla parambfla)
   {
-    if (parambedw != null)
+    if (parambfkz != null)
     {
-      this.troopUin = parambedw.jdField_a_of_type_Long;
-      this.msgSeq = parambedw.jdField_b_of_type_Long;
-      this.msgRandom = parambedw.jdField_a_of_type_Int;
+      this.troopUin = parambfkz.jdField_a_of_type_Long;
+      this.msgSeq = parambfkz.jdField_b_of_type_Long;
+      this.msgRandom = parambfkz.jdField_a_of_type_Int;
     }
-    if (parambedx != null)
+    if (parambfla != null)
     {
-      this.opType = parambedx.jdField_a_of_type_Int;
-      this.msgSenderUin = parambedx.jdField_a_of_type_JavaLangString;
-      this.opUin = parambedx.jdField_b_of_type_JavaLangString;
-      this.opTime = parambedx.jdField_a_of_type_Long;
-      this.graytipuniseq = parambedx.jdField_b_of_type_Long;
+      this.opType = parambfla.jdField_a_of_type_Int;
+      this.msgSenderUin = parambfla.jdField_a_of_type_JavaLangString;
+      this.opUin = parambfla.jdField_b_of_type_JavaLangString;
+      this.opTime = parambfla.jdField_a_of_type_Long;
+      this.graytipuniseq = parambfla.jdField_b_of_type_Long;
     }
   }
   

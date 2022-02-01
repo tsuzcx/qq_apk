@@ -1,24 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pmk
-  implements View.OnClickListener
+public class pmk
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pmk(pmj parampmj, FrameLayout paramFrameLayout, int paramInt, QQAppInterface paramQQAppInterface) {}
-  
-  public void onClick(View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    pmj.a(this.jdField_a_of_type_Pmj).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(pmj.a(this.jdField_a_of_type_Pmj));
-    pmj.a(this.jdField_a_of_type_Pmj, null);
-    if (261 == this.jdField_a_of_type_Int) {
-      bfyz.s(pmj.a(this.jdField_a_of_type_Pmj), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoEntranceTypeConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = pku.a(paramString);
+    Object localObject = paramString.keySet();
+    try
+    {
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)paramString.get(str1);
+        if (TextUtils.equals(str1, "readinjoy_video_recommend_entrance_direct")) {
+          bmhv.i(Integer.parseInt(str2));
+        }
+      }
+      return true;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bmhv.i(2);
   }
 }
 

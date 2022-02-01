@@ -1,27 +1,16 @@
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 
-public class amuc
+public abstract interface amuc
 {
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.sendMessage(paramQQAppInterface.obtainMessage(1009));
-    }
-  }
+  public abstract void a(MsfSocketInputBuffer paramMsfSocketInputBuffer);
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    paramQQAppInterface = paramQQAppInterface.getProxyManager().a();
-    paramString = (RecentUser)paramQQAppInterface.findRecentUser(paramString, 1);
-    if (paramString != null) {
-      paramQQAppInterface.delRecentUser(paramString);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract byte[] a();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

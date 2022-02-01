@@ -1,37 +1,53 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
-final class ugm
-  extends anxq
+public class ugm
+  implements ucq
 {
-  ugm(amyh paramamyh, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
+  public ugm(ReadinjoyAdHippyFragment paramReadinjoyAdHippyFragment) {}
   
-  public int a()
+  public void a()
   {
-    return 4;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.jdField_a_of_type_Amyh != null) {
-      this.jdField_a_of_type_Amyh.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadinjoyAdHippyFragment.2.1(this), 200L);
     }
-    ugf.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    if (this.jdField_a_of_type_Amyh != null) {
-      this.jdField_a_of_type_Amyh.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, "initViola success!");
     }
-    if (this.jdField_a_of_type_Boolean) {
-      ugf.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
+    if ((this.a.a != null) && (this.a.a.c()) && (this.a.c()) && (ReadinjoyTabFrame.d_())) {
+      this.a.a.a(true);
     }
   }
   
-  public void b(boolean paramBoolean, Object paramObject) {}
+  public void a(int paramInt)
+  {
+    ReadinjoyAdHippyFragment.a(this.a);
+    ReadinjoyAdHippyFragment.a(this.a).c();
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadinjoyAdMiniGameFragment", 2, "initViola error,error code=" + paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    if ((1 == paramInt) && (pli.a())) {
+      pvm.a().l();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyAdMiniGameFragment", 2, "initViola process,process code=" + paramInt);
+    }
+  }
 }
 
 

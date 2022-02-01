@@ -1,25 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.av.ui.BaseToolbar;
+import android.view.View;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.ui.AVActivity;
 
 public class mbp
-  extends AnimatorListenerAdapter
+  implements bkzq
 {
-  public mbp(BaseToolbar paramBaseToolbar) {}
+  public mbp(AVActivity paramAVActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
+    if (this.a.a != null)
+    {
+      this.a.a.a();
+      this.a.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mbp
  * JD-Core Version:    0.7.0.1
  */

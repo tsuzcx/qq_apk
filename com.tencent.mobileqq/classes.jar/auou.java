@@ -1,7 +1,13 @@
-public class auou
+import java.io.File;
+import java.io.FilenameFilter;
+
+final class auou
+  implements FilenameFilter
 {
-  public String a;
-  public String b;
+  public boolean accept(File paramFile, String paramString)
+  {
+    return paramString.startsWith("res_timestamp-");
+  }
 }
 
 

@@ -1,28 +1,18 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 
-public class axui
-  implements View.OnClickListener
+public final class axui
+  implements Parcelable.Creator<InterestTagInfo>
 {
-  public axui(AutoReplyEditActivity paramAutoReplyEditActivity) {}
-  
-  public void onClick(View paramView)
+  public InterestTagInfo a(Parcel paramParcel)
   {
-    axvf.a(AutoReplyEditActivity.a(this.a), true);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("AutoReplyEditActivity:new_text", AutoReplyEditActivity.b(this.a));
-    if (AutoReplyEditActivity.a(this.a) != null) {
-      localIntent.putExtra("AutoReplyEditActivity:text", new AutoReplyText(AutoReplyText.trimRawString(String.valueOf(AutoReplyEditActivity.a(this.a).getText()), false), AutoReplyEditActivity.a(this.a).getTextId()));
-    }
-    this.a.getActivity().setResult(325, localIntent);
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new InterestTagInfo(paramParcel);
+  }
+  
+  public InterestTagInfo[] a(int paramInt)
+  {
+    return new InterestTagInfo[paramInt];
   }
 }
 

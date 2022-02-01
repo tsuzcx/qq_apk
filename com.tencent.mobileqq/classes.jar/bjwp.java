@@ -1,31 +1,215 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.annotation.TargetApi;
+import android.media.AudioTrack;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.util.Pair;
+import java.nio.ByteBuffer;
 
-public abstract class bjwp
-  extends bjwj
+@TargetApi(16)
+public class bjwp
+  extends bjwr
 {
-  private int a;
-  private int b;
+  private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private bjwq jdField_a_of_type_Bjwq;
+  public bppl a;
   
-  public bjwp(int paramInt1, int paramInt2)
+  private AudioTrack a()
   {
-    this.a = paramInt2;
-    this.b = paramInt1;
+    int j = 3;
+    AudioTrack localAudioTrack;
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_Bppl.jdField_a_of_type_Bddl.e == 1)
+        {
+          i = 4;
+          if (this.jdField_a_of_type_Bppl.jdField_a_of_type_Bddl.b == 16) {
+            j = 2;
+          }
+          int k = AudioTrack.getMinBufferSize(this.jdField_a_of_type_Bppl.jdField_a_of_type_Bddl.d, i, j);
+          localAudioTrack = new AudioTrack(3, this.jdField_a_of_type_Bppl.jdField_a_of_type_Bddl.d, i, j, k, 1);
+        }
+      }
+      catch (Throwable localThrowable1)
+      {
+        int i;
+        localAudioTrack = null;
+      }
+      try
+      {
+        localAudioTrack.play();
+        return localAudioTrack;
+      }
+      catch (Throwable localThrowable2)
+      {
+        break label94;
+      }
+      i = 12;
+    }
+    label94:
+    ykq.c("Q.qqstory.mediadecoderMediaCodecAudioRender", "AudioTrack init fail :%s", localThrowable1);
+    return localAudioTrack;
   }
   
-  public int a(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  private void a(AudioTrack paramAudioTrack, byte[] paramArrayOfByte, int paramInt)
   {
-    return this.a;
+    int i;
+    switch (this.jdField_a_of_type_Bppl.jdField_a_of_type_Int)
+    {
+    default: 
+      if (!this.jdField_a_of_type_Bjwt.a) {
+        paramAudioTrack.write(paramArrayOfByte, 0, paramInt);
+      }
+      paramInt = 1;
+      paramArrayOfByte = null;
+      i = 0;
+    }
+    for (;;)
+    {
+      if ((!this.jdField_a_of_type_Bjwt.a) && (paramInt == 0) && (paramArrayOfByte != null)) {
+        paramAudioTrack.write(paramArrayOfByte, 0, i);
+      }
+      return;
+      i = paramArrayOfByte.length / 2;
+      byte[] arrayOfByte = new byte[i];
+      bpqa.a(paramArrayOfByte, 0, arrayOfByte, i);
+      paramArrayOfByte = arrayOfByte;
+      paramInt = 0;
+      continue;
+      i = paramArrayOfByte.length * 2;
+      arrayOfByte = new byte[i];
+      bpqa.a(paramArrayOfByte, 0, arrayOfByte, i, 2);
+      paramArrayOfByte = arrayOfByte;
+      paramInt = 0;
+      continue;
+      i = paramArrayOfByte.length * 2 / 3;
+      arrayOfByte = new byte[i];
+      bpqa.b(paramArrayOfByte, 0, arrayOfByte, i);
+      paramArrayOfByte = arrayOfByte;
+      paramInt = 0;
+      continue;
+      i = paramArrayOfByte.length * 4;
+      arrayOfByte = new byte[i];
+      bpqa.a(paramArrayOfByte, 0, arrayOfByte, i, 4);
+      paramArrayOfByte = arrayOfByte;
+      paramInt = 0;
+    }
   }
   
-  public int b(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  public long a(long paramLong)
   {
-    return this.b;
+    this.jdField_a_of_type_AndroidMediaAudioTrack.flush();
+    return super.a(paramLong);
   }
   
-  public int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  protected String a()
   {
-    return makeMovementFlags(b(paramRecyclerView, paramViewHolder), a(paramRecyclerView, paramViewHolder));
+    return "Q.qqstory.mediadecoderMediaCodecAudioRender";
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidMediaAudioTrack.play();
+  }
+  
+  protected void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
+  {
+    int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 10000L);
+    switch (i)
+    {
+    default: 
+      if ((paramBufferInfo.flags & 0x4) != 0)
+      {
+        ykq.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "output EOS");
+        this.jdField_b_of_type_Boolean = true;
+      }
+      break;
+    }
+    for (;;)
+    {
+      paramMediaCodec.releaseOutputBuffer(i, false);
+      return;
+      ykq.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "INFO_OUTPUT_BUFFERS_CHANGED");
+      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = paramMediaCodec.getOutputBuffers();
+      return;
+      ykq.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "New format " + paramMediaCodec.getOutputFormat());
+      return;
+      ykq.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "dequeueOutputBuffer timed out!");
+      return;
+      try
+      {
+        localObject = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
+        if (localObject == null)
+        {
+          ykq.e("Q.qqstory.mediadecoderMediaCodecAudioRender", "find no data");
+          return;
+        }
+      }
+      catch (Exception paramMediaCodec)
+      {
+        ykq.c("Q.qqstory.mediadecoderMediaCodecAudioRender", "handle data error :%s", paramMediaCodec);
+        return;
+      }
+      if (paramBufferInfo.size != 0)
+      {
+        ((ByteBuffer)localObject).position(paramBufferInfo.offset);
+        ((ByteBuffer)localObject).limit(paramBufferInfo.offset + paramBufferInfo.size);
+      }
+      int j = ((ByteBuffer)localObject).remaining();
+      paramBufferInfo = new byte[j];
+      ((ByteBuffer)localObject).get(paramBufferInfo, 0, j);
+      Object localObject = Message.obtain();
+      ((Message)localObject).what = 1;
+      ((Message)localObject).obj = new Pair(paramBufferInfo, Integer.valueOf(j));
+      this.jdField_a_of_type_Bjwq.sendMessage((Message)localObject);
+    }
+  }
+  
+  protected void a(bjws parambjws, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
+  {
+    try
+    {
+      this.jdField_a_of_type_Bppl.jdField_a_of_type_Bddl.e = paramMediaFormat.getInteger("channel-count");
+      this.jdField_a_of_type_Bppl.jdField_a_of_type_Bddl.d = zdm.a(paramMediaFormat);
+      ykq.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "config after b=" + this.jdField_a_of_type_Bppl.jdField_a_of_type_Bddl.c + " c=" + this.jdField_a_of_type_Bppl.jdField_a_of_type_Bddl.e + " sc=" + this.jdField_a_of_type_Bppl.jdField_a_of_type_Bddl.d);
+      paramMediaCodec.configure(paramMediaFormat, null, null, 0);
+      this.jdField_a_of_type_AndroidMediaAudioTrack = a();
+      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("mc_audio_thread");
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      this.jdField_a_of_type_Bjwq = new bjwq(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      return;
+    }
+    catch (Throwable parambjws)
+    {
+      for (;;)
+      {
+        parambjws.printStackTrace();
+      }
+    }
+  }
+  
+  public void b()
+  {
+    super.b();
+    if (this.jdField_a_of_type_AndroidMediaAudioTrack != null)
+    {
+      this.jdField_a_of_type_AndroidMediaAudioTrack.stop();
+      this.jdField_a_of_type_AndroidMediaAudioTrack.release();
+      this.jdField_a_of_type_AndroidMediaAudioTrack = null;
+    }
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quit();
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.jdField_a_of_type_Bjwq = null;
+    }
   }
 }
 

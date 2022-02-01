@@ -1,33 +1,22 @@
-import android.app.Dialog;
-import android.graphics.Color;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
 
 public class adec
-  implements bhdc
+  implements DialogInterface.OnClickListener
 {
-  public adec(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public adec(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.app.getMessageFacade().clearHistory(DiscussionInfoCardActivity.a(this.a), 3000);
-    this.a.app.getMessageFacade().onCurrentMessageDeleted(DiscussionInfoCardActivity.a(this.a), 3000);
-    amat.a(this.a.app, "chat_history_confirm_del_msg");
-    paramDialog = this.a.app.getHandler(Conversation.class);
-    paramView = paramDialog.obtainMessage(1017);
-    paramView.obj = DiscussionInfoCardActivity.a(this.a);
-    paramView.arg1 = 3000;
-    paramDialog.sendMessage(paramView);
-    QQToast.a(this.a, 2, this.a.getString(2131690758), 0).a();
-    if (this.a.a != null) {
-      ((TextView)this.a.a.findViewById(2131378707)).setTextColor(Color.parseColor("#cccccc"));
-    }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setClass(this.a, SubAccountBindActivity.class);
+    paramDialogInterface.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+    this.a.startActivity(paramDialogInterface);
+    bdla.b(this.a.app, "CliOper", "", "", "0X80040A6", "0X80040A6", 0, 0, "", "", "", "");
+    this.a.d();
   }
 }
 

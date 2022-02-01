@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
-
-public final class rgm
-  implements Parcelable.Creator<WeishiRedDotInfo>
+public abstract interface rgm
 {
-  public WeishiRedDotInfo a(Parcel paramParcel)
-  {
-    return new WeishiRedDotInfo(paramParcel);
-  }
-  
-  public WeishiRedDotInfo[] a(int paramInt)
-  {
-    return new WeishiRedDotInfo[paramInt];
-  }
+  public abstract void a();
 }
 
 

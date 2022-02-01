@@ -1,0 +1,40 @@
+package QC;
+
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+
+public final class CommSetRsp
+  extends JceStruct
+{
+  public int ret;
+  public String strRsp = "";
+  
+  public CommSetRsp() {}
+  
+  public CommSetRsp(int paramInt, String paramString)
+  {
+    this.ret = paramInt;
+    this.strRsp = paramString;
+  }
+  
+  public void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.ret = paramJceInputStream.read(this.ret, 0, false);
+    this.strRsp = paramJceInputStream.readString(1, false);
+  }
+  
+  public void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.ret, 0);
+    if (this.strRsp != null) {
+      paramJceOutputStream.write(this.strRsp, 1);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     QC.CommSetRsp
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,30 +1,26 @@
-import android.os.Bundle;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class pxz
-  implements zop
+public class pxz
+  implements View.OnClickListener
 {
-  pxz(pxw parampxw, String paramString) {}
+  public pxz(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, String paramString) {}
   
-  public void callback(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReadInJoyWebviewPlugin", 4, "receive notifyLoadSkin callback resp:" + paramBundle.toString());
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity().startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyChannelPanelFragment", 2, "info.mChannelJumpUrl:" + this.jdField_a_of_type_JavaLangString);
     }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId")).put("rate", paramBundle.getInt("rate"));
-      this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "notifyLoadSkin error " + paramBundle.toString());
-      this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

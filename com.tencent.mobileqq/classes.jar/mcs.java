@@ -1,62 +1,86 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.DoubleVideoCtrlUI.RecordInfo.1;
+import com.tencent.av.ui.ConferenceFlyTicketActivity;
 import com.tencent.qphone.base.util.QLog;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class mcs
+  extends mvq
 {
-  private int jdField_a_of_type_Int = 0;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private AVActivity jdField_a_of_type_ComTencentAvUiAVActivity;
-  public Runnable a;
-  private int b;
-  private int c = 2130842216;
-  
-  private mcs()
+  public mcs(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new DoubleVideoCtrlUI.RecordInfo.1(this);
+    SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
   }
   
-  public void a()
+  public void a(mvt parammvt)
   {
-    this.c = 2130842216;
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-    this.jdField_a_of_type_ComTencentAvUiAVActivity = null;
-  }
-  
-  void a(long paramLong)
-  {
-    QLog.w("RecordInfo", 1, "onClick_Record, cancel, seq[" + paramLong + "]");
-    a();
-  }
-  
-  public void a(long paramLong, VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
-  {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    if (this.jdField_a_of_type_Int == 0) {
-      a(paramLong, paramAVActivity);
+    String str3 = "";
+    if (parammvt.a.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      try
+      {
+        String str1 = new String(parammvt.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
+        if (str1 != null)
+        {
+          try
+          {
+            JSONObject localJSONObject = new JSONObject(str1);
+            i = localJSONObject.getInt("retcode");
+            if (QLog.isColorLevel()) {
+              QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "OnAfterCreateDiscussionAsyncTask.onPostDownloadComplete : retcode = " + i);
+            }
+            str1 = str3;
+            if (localJSONObject.has("result"))
+            {
+              localJSONObject = localJSONObject.getJSONObject("result");
+              str1 = str3;
+              if (localJSONObject.has("result_code")) {
+                str1 = localJSONObject.getString("result_code");
+              }
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            Object localObject;
+            if (!QLog.isColorLevel()) {
+              break label368;
+            }
+            QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete : result_code = " + "" + ",retcode = " + -2);
+            str2 = "";
+            i = -2;
+            continue;
+            this.a.jdField_a_of_type_Antl.c(Long.parseLong(this.a.h));
+            this.a.a(1, 0);
+            return;
+          }
+          QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "OnAfterCreateDiscussionAsyncTask, IsSucc[" + parammvt.a.jdField_a_of_type_Boolean + "], retcode[" + i + "], result_code[" + str1 + "], mDiscID[" + this.a.h + "]");
+          if ((i == 0) && (str1.equals("0")))
+          {
+            this.a.jdField_a_of_type_Antl.a(Long.parseLong(this.a.h), this.a.c);
+            this.a.a(this.a.h, this.a.c);
+            this.a.finish();
+            return;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete :" + localException.toString());
+        }
+        localObject = null;
+        continue;
+      }
+      label368:
+      String str2 = "";
+      int i = 1;
     }
-    while (this.jdField_a_of_type_Int != 1) {
-      return;
-    }
-    a(paramLong);
-  }
-  
-  void a(long paramLong, AVActivity paramAVActivity)
-  {
-    QLog.w("RecordInfo", 1, "onClick_Record, start, seq[" + paramLong + "]");
-    this.jdField_a_of_type_Int = 1;
-    this.c = 2130842219;
-    this.jdField_a_of_type_ComTencentAvUiAVActivity = paramAVActivity;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mcs
  * JD-Core Version:    0.7.0.1
  */

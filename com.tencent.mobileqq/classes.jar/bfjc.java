@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class bfjc
-  implements bcrz
+class bfjc
+  implements DialogInterface.OnClickListener
 {
-  public bfjc(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, bcrz parambcrz) {}
+  bfjc(bfis parambfis, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Bcrz != null) {
-      this.jdField_a_of_type_Bcrz.a();
+    if (paramInt == 1) {
+      bfis.a(this.jdField_a_of_type_Bfis, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     }
   }
 }

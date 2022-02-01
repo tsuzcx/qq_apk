@@ -1,38 +1,38 @@
 package com.tencent.mobileqq.imaxad;
 
-import aukv;
-import aukx;
-import aukz;
-import aula;
+import avqq;
+import avqs;
+import avqu;
+import avqv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import nxq;
-import nxr;
+import oeq;
+import oer;
 
 public class ImaxAdRecentUserManager$1
   implements Runnable
 {
-  public ImaxAdRecentUserManager$1(aukx paramaukx, boolean paramBoolean, QQAppInterface paramQQAppInterface, nxq paramnxq, RecentUser paramRecentUser) {}
+  public ImaxAdRecentUserManager$1(avqs paramavqs, boolean paramBoolean, QQAppInterface paramQQAppInterface, oeq paramoeq, RecentUser paramRecentUser) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {
-      aukv.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nxq);
+      avqq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Oeq);
     }
-    if (this.jdField_a_of_type_Nxq != null)
+    if (this.jdField_a_of_type_Oeq != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ImaxAdvertisement", 2, "doDeleteItem disk  uin:" + this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
       }
-      Iterator localIterator = this.jdField_a_of_type_Nxq.a.iterator();
+      Iterator localIterator = this.jdField_a_of_type_Oeq.a.iterator();
       while (localIterator.hasNext()) {
-        aula.b(((nxr)localIterator.next()).b);
+        avqv.b(((oer)localIterator.next()).b);
       }
     }
-    aukz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+    avqu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
   }
 }
 

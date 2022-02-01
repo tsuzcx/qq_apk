@@ -1,24 +1,24 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import mqq.util.WeakReference;
 
 public class aeph
-  extends ClickableSpan
+  implements biuc
 {
-  public aeph(TroopRequestActivity paramTroopRequestActivity, String paramString) {}
+  final WeakReference<QQBrowserActivity> a;
   
-  public void onClick(View paramView)
+  public aeph(QQBrowserActivity paramQQBrowserActivity)
   {
-    if (paramView == null) {
-      return;
-    }
-    bdvm.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, this.jdField_a_of_type_JavaLangString);
+    this.a = new WeakReference(paramQQBrowserActivity);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    paramTextPaint.setUnderlineText(false);
+    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
+    if (localQQBrowserActivity == null) {}
+    while (paramInt1 == paramInt2) {
+      return;
+    }
+    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
   }
 }
 

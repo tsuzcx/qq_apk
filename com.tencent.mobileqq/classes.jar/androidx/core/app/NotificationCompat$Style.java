@@ -29,8 +29,8 @@ public abstract class NotificationCompat$Style
   private int calculateTopPadding()
   {
     Resources localResources = this.mBuilder.mContext.getResources();
-    int i = localResources.getDimensionPixelSize(2131297448);
-    int j = localResources.getDimensionPixelSize(2131297449);
+    int i = localResources.getDimensionPixelSize(2131297449);
+    int j = localResources.getDimensionPixelSize(2131297450);
     float f1 = (constrain(localResources.getConfiguration().fontScale, 1.0F, 1.3F) - 1.0F) / 0.3F;
     float f2 = i;
     return Math.round(f1 * j + f2 * (1.0F - f1));
@@ -78,7 +78,7 @@ public abstract class NotificationCompat$Style
     if (paramInt4 == 0) {
       i = 0;
     }
-    Bitmap localBitmap = createColoredBitmap(2130841433, i, paramInt2);
+    Bitmap localBitmap = createColoredBitmap(2130841439, i, paramInt2);
     Canvas localCanvas = new Canvas(localBitmap);
     Drawable localDrawable = this.mBuilder.mContext.getResources().getDrawable(paramInt1).mutate();
     localDrawable.setFilterBitmap(true);
@@ -91,9 +91,9 @@ public abstract class NotificationCompat$Style
   
   private void hideNormalContent(RemoteViews paramRemoteViews)
   {
-    paramRemoteViews.setViewVisibility(2131378707, 8);
-    paramRemoteViews.setViewVisibility(2131378370, 8);
-    paramRemoteViews.setViewVisibility(2131378367, 8);
+    paramRemoteViews.setViewVisibility(2131379001, 8);
+    paramRemoteViews.setViewVisibility(2131378661, 8);
+    paramRemoteViews.setViewVisibility(2131378658, 8);
   }
   
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
@@ -118,8 +118,8 @@ public abstract class NotificationCompat$Style
         if (paramInt == 0) {
           break label578;
         }
-        localRemoteViews.setInt(2131371914, "setBackgroundResource", 2130841428);
-        localRemoteViews.setInt(2131368236, "setBackgroundResource", 2130841436);
+        localRemoteViews.setInt(2131372105, "setBackgroundResource", 2130841434);
+        localRemoteViews.setInt(2131368381, "setBackgroundResource", 2130841442);
       }
       if (this.mBuilder.mLargeIcon == null) {
         break label642;
@@ -127,27 +127,27 @@ public abstract class NotificationCompat$Style
       if (Build.VERSION.SDK_INT < 16) {
         break label605;
       }
-      localRemoteViews.setViewVisibility(2131368236, 0);
-      localRemoteViews.setImageViewBitmap(2131368236, this.mBuilder.mLargeIcon);
+      localRemoteViews.setViewVisibility(2131368381, 0);
+      localRemoteViews.setImageViewBitmap(2131368381, this.mBuilder.mLargeIcon);
       if ((paramBoolean1) && (this.mBuilder.mNotification.icon != 0))
       {
-        paramInt = localResources.getDimensionPixelSize(2131297443);
-        i = localResources.getDimensionPixelSize(2131297445);
+        paramInt = localResources.getDimensionPixelSize(2131297444);
+        i = localResources.getDimensionPixelSize(2131297446);
         if (Build.VERSION.SDK_INT < 21) {
           break label617;
         }
-        localRemoteViews.setImageViewBitmap(2131376441, createIconWithBackground(this.mBuilder.mNotification.icon, paramInt, paramInt - i * 2, this.mBuilder.getColor()));
+        localRemoteViews.setImageViewBitmap(2131376696, createIconWithBackground(this.mBuilder.mNotification.icon, paramInt, paramInt - i * 2, this.mBuilder.getColor()));
         label204:
-        localRemoteViews.setViewVisibility(2131376441, 0);
+        localRemoteViews.setViewVisibility(2131376696, 0);
       }
       label212:
       if (this.mBuilder.mContentTitle != null) {
-        localRemoteViews.setTextViewText(2131378707, this.mBuilder.mContentTitle);
+        localRemoteViews.setTextViewText(2131379001, this.mBuilder.mContentTitle);
       }
       if (this.mBuilder.mContentText == null) {
         break label936;
       }
-      localRemoteViews.setTextViewText(2131378367, this.mBuilder.mContentText);
+      localRemoteViews.setTextViewText(2131378658, this.mBuilder.mContentText);
     }
     label283:
     label545:
@@ -163,37 +163,37 @@ public abstract class NotificationCompat$Style
         if (this.mBuilder.mContentInfo == null) {
           break label772;
         }
-        localRemoteViews.setTextViewText(2131368660, this.mBuilder.mContentInfo);
-        localRemoteViews.setViewVisibility(2131368660, 0);
+        localRemoteViews.setTextViewText(2131368819, this.mBuilder.mContentInfo);
+        localRemoteViews.setViewVisibility(2131368819, 0);
         paramInt = 1;
         i = 1;
         if ((this.mBuilder.mSubText == null) || (Build.VERSION.SDK_INT < 16)) {
           break label888;
         }
-        localRemoteViews.setTextViewText(2131378367, this.mBuilder.mSubText);
+        localRemoteViews.setTextViewText(2131378658, this.mBuilder.mSubText);
         if (this.mBuilder.mContentText == null) {
           break label879;
         }
-        localRemoteViews.setTextViewText(2131378370, this.mBuilder.mContentText);
-        localRemoteViews.setViewVisibility(2131378370, 0);
+        localRemoteViews.setTextViewText(2131378661, this.mBuilder.mContentText);
+        localRemoteViews.setViewVisibility(2131378661, 0);
         j = 1;
         if ((j != 0) && (Build.VERSION.SDK_INT >= 16))
         {
           if (paramBoolean2) {
-            localRemoteViews.setTextViewTextSize(2131378367, 0, localResources.getDimensionPixelSize(2131297447));
+            localRemoteViews.setTextViewTextSize(2131378658, 0, localResources.getDimensionPixelSize(2131297448));
           }
-          localRemoteViews.setViewPadding(2131369941, 0, 0, 0, 0);
+          localRemoteViews.setViewPadding(2131370111, 0, 0, 0, 0);
         }
         if (this.mBuilder.getWhenIfShowing() != 0L)
         {
           if ((!this.mBuilder.mUseChronometer) || (Build.VERSION.SDK_INT < 16)) {
             break label894;
           }
-          localRemoteViews.setViewVisibility(2131364553, 0);
-          localRemoteViews.setLong(2131364553, "setBase", this.mBuilder.getWhenIfShowing() + (SystemClock.elapsedRealtime() - System.currentTimeMillis()));
-          localRemoteViews.setBoolean(2131364553, "setStarted", true);
+          localRemoteViews.setViewVisibility(2131364635, 0);
+          localRemoteViews.setLong(2131364635, "setBase", this.mBuilder.getWhenIfShowing() + (SystemClock.elapsedRealtime() - System.currentTimeMillis()));
+          localRemoteViews.setBoolean(2131364635, "setStarted", true);
           if ((this.mBuilder.mChronometerCountDown) && (Build.VERSION.SDK_INT >= 24)) {
-            localRemoteViews.setChronometerCountDown(2131364553, this.mBuilder.mChronometerCountDown);
+            localRemoteViews.setChronometerCountDown(2131364635, this.mBuilder.mChronometerCountDown);
           }
           paramInt = 1;
         }
@@ -201,40 +201,40 @@ public abstract class NotificationCompat$Style
           break label924;
         }
         paramInt = 0;
-        localRemoteViews.setViewVisibility(2131376464, paramInt);
+        localRemoteViews.setViewVisibility(2131376719, paramInt);
         if (i == 0) {
           break label930;
         }
       }
       for (paramInt = 0;; paramInt = 8)
       {
-        localRemoteViews.setViewVisibility(2131369943, paramInt);
+        localRemoteViews.setViewVisibility(2131370113, paramInt);
         return localRemoteViews;
         paramInt = 0;
         break;
         label578:
-        localRemoteViews.setInt(2131371914, "setBackgroundResource", 2130841427);
-        localRemoteViews.setInt(2131368236, "setBackgroundResource", 2130841435);
+        localRemoteViews.setInt(2131372105, "setBackgroundResource", 2130841433);
+        localRemoteViews.setInt(2131368381, "setBackgroundResource", 2130841441);
         break label87;
         label605:
-        localRemoteViews.setViewVisibility(2131368236, 8);
+        localRemoteViews.setViewVisibility(2131368381, 8);
         break label127;
         label617:
-        localRemoteViews.setImageViewBitmap(2131376441, createColoredBitmap(this.mBuilder.mNotification.icon, -1));
+        localRemoteViews.setImageViewBitmap(2131376696, createColoredBitmap(this.mBuilder.mNotification.icon, -1));
         break label204;
         if ((!paramBoolean1) || (this.mBuilder.mNotification.icon == 0)) {
           break label212;
         }
-        localRemoteViews.setViewVisibility(2131368236, 0);
+        localRemoteViews.setViewVisibility(2131368381, 0);
         if (Build.VERSION.SDK_INT >= 21)
         {
-          paramInt = localResources.getDimensionPixelSize(2131297440);
-          i = localResources.getDimensionPixelSize(2131297437);
-          j = localResources.getDimensionPixelSize(2131297446);
-          localRemoteViews.setImageViewBitmap(2131368236, createIconWithBackground(this.mBuilder.mNotification.icon, paramInt - i, j, this.mBuilder.getColor()));
+          paramInt = localResources.getDimensionPixelSize(2131297441);
+          i = localResources.getDimensionPixelSize(2131297438);
+          j = localResources.getDimensionPixelSize(2131297447);
+          localRemoteViews.setImageViewBitmap(2131368381, createIconWithBackground(this.mBuilder.mNotification.icon, paramInt - i, j, this.mBuilder.getColor()));
           break label212;
         }
-        localRemoteViews.setImageViewBitmap(2131368236, createColoredBitmap(this.mBuilder.mNotification.icon, -1));
+        localRemoteViews.setImageViewBitmap(2131368381, createColoredBitmap(this.mBuilder.mNotification.icon, -1));
         break label212;
         i = 0;
         break label283;
@@ -242,30 +242,30 @@ public abstract class NotificationCompat$Style
         {
           paramInt = localResources.getInteger(2131427372);
           if (this.mBuilder.mNumber > paramInt) {
-            localRemoteViews.setTextViewText(2131368660, localResources.getString(2131718579));
+            localRemoteViews.setTextViewText(2131368819, localResources.getString(2131718968));
           }
           for (;;)
           {
-            localRemoteViews.setViewVisibility(2131368660, 0);
+            localRemoteViews.setViewVisibility(2131368819, 0);
             paramInt = 1;
             i = 1;
             break;
-            localRemoteViews.setTextViewText(2131368660, NumberFormat.getIntegerInstance().format(this.mBuilder.mNumber));
+            localRemoteViews.setTextViewText(2131368819, NumberFormat.getIntegerInstance().format(this.mBuilder.mNumber));
           }
         }
-        localRemoteViews.setViewVisibility(2131368660, 8);
+        localRemoteViews.setViewVisibility(2131368819, 8);
         j = paramInt;
         paramInt = i;
         i = j;
         break label320;
         label879:
-        localRemoteViews.setViewVisibility(2131378370, 8);
+        localRemoteViews.setViewVisibility(2131378661, 8);
         label888:
         j = 0;
         break label387;
         label894:
-        localRemoteViews.setViewVisibility(2131378611, 0);
-        localRemoteViews.setLong(2131378611, "setTime", this.mBuilder.getWhenIfShowing());
+        localRemoteViews.setViewVisibility(2131378905, 0);
+        localRemoteViews.setLong(2131378905, "setTime", this.mBuilder.getWhenIfShowing());
         break label537;
         paramInt = 8;
         break label545;
@@ -286,11 +286,11 @@ public abstract class NotificationCompat$Style
   public void buildIntoRemoteViews(RemoteViews paramRemoteViews1, RemoteViews paramRemoteViews2)
   {
     hideNormalContent(paramRemoteViews1);
-    paramRemoteViews1.removeAllViews(2131371919);
-    paramRemoteViews1.addView(2131371919, paramRemoteViews2.clone());
-    paramRemoteViews1.setViewVisibility(2131371919, 0);
+    paramRemoteViews1.removeAllViews(2131372110);
+    paramRemoteViews1.addView(2131372110, paramRemoteViews2.clone());
+    paramRemoteViews1.setViewVisibility(2131372110, 0);
     if (Build.VERSION.SDK_INT >= 21) {
-      paramRemoteViews1.setViewPadding(2131371920, 0, calculateTopPadding(), 0, 0);
+      paramRemoteViews1.setViewPadding(2131372111, 0, calculateTopPadding(), 0, 0);
     }
   }
   

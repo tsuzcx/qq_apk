@@ -1,6 +1,17 @@
-public abstract interface bjoy
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.open.filedownload.ApkFileDownloadFragment.2.1;
+import mqq.os.MqqHandler;
+
+public class bjoy
+  extends bjpi
 {
-  public abstract void a();
+  public bjoy(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  
+  public void a()
+  {
+    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.2.1(this));
+  }
 }
 
 

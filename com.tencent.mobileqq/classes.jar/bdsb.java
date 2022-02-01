@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public final class bdsb
-  implements QQPermissionCallback
+class bdsb
+  extends afqr
 {
-  public bdsb(bdsg parambdsg, BaseActivity paramBaseActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bfur.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Bdsg.a(bfaj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, AppConstants.SDCARD_IMG_SAVE, 1001));
-  }
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

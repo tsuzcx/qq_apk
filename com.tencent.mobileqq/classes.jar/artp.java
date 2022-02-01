@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.AutoReplyText;
 
-public class artp
-  implements View.OnClickListener
+public final class artp
+  implements Parcelable.Creator<AutoReplyText>
 {
-  public artp(FMActivity paramFMActivity) {}
-  
-  public void onClick(View paramView)
+  public AutoReplyText a(Parcel paramParcel)
   {
-    FMActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new AutoReplyText(paramParcel);
+  }
+  
+  public AutoReplyText[] a(int paramInt)
+  {
+    return new AutoReplyText[paramInt];
   }
 }
 

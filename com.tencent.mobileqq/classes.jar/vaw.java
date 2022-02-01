@@ -1,18 +1,6 @@
-import android.view.View;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.qflutter.utils.FLog;
-import java.lang.ref.WeakReference;
-
 class vaw
-  implements AdExposureChecker.ExposureCallback
 {
-  vaw(vav paramvav) {}
-  
-  public void onExposure(WeakReference<View> paramWeakReference)
-  {
-    FLog.e("AdExposureChecker", "onExposure");
-    var.a(vav.a(this.a), (vaq)this.a.a());
-  }
+  private static final vau a = new vau(null);
 }
 
 

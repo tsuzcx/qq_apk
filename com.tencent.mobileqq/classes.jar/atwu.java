@@ -1,36 +1,52 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 
-public final class atwu
-  implements Parcelable.Creator<GameCenterSessionInfo>
+class atwu
+  implements atvr
 {
-  public GameCenterSessionInfo a(Parcel paramParcel)
-  {
-    GameCenterSessionInfo localGameCenterSessionInfo = new GameCenterSessionInfo();
-    localGameCenterSessionInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.e = paramParcel.readString();
-    localGameCenterSessionInfo.f = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localGameCenterSessionInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.g = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localGameCenterSessionInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.h = paramParcel.readString();
-    localGameCenterSessionInfo.i = paramParcel.readString();
-    localGameCenterSessionInfo.j = paramParcel.readString();
-    localGameCenterSessionInfo.k = paramParcel.readString();
-    return localGameCenterSessionInfo;
-  }
+  atwu(atwq paramatwq) {}
   
-  public GameCenterSessionInfo[] a(int paramInt)
+  public void a(atxc paramatxc)
   {
-    return new GameCenterSessionInfo[paramInt];
+    atuz localatuz = ((atvu)paramatxc).a();
+    if (localatuz != null)
+    {
+      if (1 != localatuz.c()) {
+        break label147;
+      }
+      if (!localatuz.a().isZipInnerFile) {
+        break label91;
+      }
+      paramatxc = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().c(localatuz.a());
+      if ((paramatxc != null) && (this.a.jdField_a_of_type_Atxf != null)) {
+        this.a.jdField_a_of_type_Atxf.a(String.valueOf(localatuz.a()), paramatxc);
+      }
+    }
+    label91:
+    while (2 != localatuz.c())
+    {
+      do
+      {
+        return;
+        paramatxc = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localatuz.a(), 7);
+      } while ((paramatxc == null) || (this.a.jdField_a_of_type_Atxf == null));
+      this.a.jdField_a_of_type_Atxf.a(localatuz.c(), paramatxc);
+      return;
+    }
+    label147:
+    athn localathn = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine();
+    String str = localatuz.e();
+    if (localatuz.a() == null) {}
+    for (paramatxc = null;; paramatxc = localatuz.a().e)
+    {
+      paramatxc = localathn.a(str, paramatxc, 7, localatuz);
+      if ((paramatxc == null) || (this.a.jdField_a_of_type_Atxf == null)) {
+        break;
+      }
+      this.a.jdField_a_of_type_Atxf.a(localatuz.e(), paramatxc);
+      return;
+    }
   }
 }
 

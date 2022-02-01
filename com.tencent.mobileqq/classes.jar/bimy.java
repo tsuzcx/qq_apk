@@ -1,49 +1,49 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ConfigClearableEditText;
 
-public final class bimy
-  implements Parcelable.Creator<QidianProfileCardActivity.QidianSimpleProfileItem>
+public class bimy
+  implements View.OnTouchListener
 {
-  public QidianProfileCardActivity.QidianSimpleProfileItem a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    QidianProfileCardActivity.QidianSimpleProfileItem localQidianSimpleProfileItem = new QidianProfileCardActivity.QidianSimpleProfileItem();
-    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localQidianSimpleProfileItem.jdField_a_of_type_Boolean = bool1;
-      localQidianSimpleProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
-      localQidianSimpleProfileItem.jdField_b_of_type_Int = paramParcel.readInt();
-      localQidianSimpleProfileItem.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label109;
-      }
-      bool1 = true;
-      label80:
-      localQidianSimpleProfileItem.jdField_b_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label114;
-      }
-    }
-    label109:
-    label114:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localQidianSimpleProfileItem.jdField_c_of_type_Boolean = bool1;
-      return localQidianSimpleProfileItem;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label80;
-    }
-  }
+  public bimy(ConfigClearableEditText paramConfigClearableEditText) {}
   
-  public QidianProfileCardActivity.QidianSimpleProfileItem[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new QidianProfileCardActivity.QidianSimpleProfileItem[paramInt];
+    paramView = this.a;
+    int i;
+    if (paramMotionEvent.getX() > ConfigClearableEditText.a(this.a))
+    {
+      i = 1;
+      if (ConfigClearableEditText.a(this.a) != null)
+      {
+        if ((i == 0) || (paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+          break label102;
+        }
+        ConfigClearableEditText.a(this.a).b(true);
+      }
+      label66:
+      if ((paramView.getCompoundDrawables()[2] != null) || ((ConfigClearableEditText.a(this.a)) && (ConfigClearableEditText.a(this.a) != null))) {
+        break label118;
+      }
+    }
+    label102:
+    label118:
+    do
+    {
+      do
+      {
+        return false;
+        i = 0;
+        break;
+        ConfigClearableEditText.a(this.a).b(false);
+        break label66;
+      } while ((paramMotionEvent.getAction() != 1) || (i == 0));
+      this.a.setText("");
+      this.a.setClearButtonVisible(false);
+    } while (this.a.a == null);
+    this.a.a.a();
+    return false;
   }
 }
 

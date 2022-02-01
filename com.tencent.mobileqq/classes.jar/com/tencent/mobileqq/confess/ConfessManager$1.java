@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.confess;
 
-import apsa;
-import apsm;
+import aqvd;
+import aqvp;
 
 public class ConfessManager$1
   implements Runnable
 {
-  public ConfessManager$1(apsa paramapsa) {}
+  public ConfessManager$1(aqvd paramaqvd) {}
   
   public void run()
   {

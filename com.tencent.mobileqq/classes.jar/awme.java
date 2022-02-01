@@ -1,31 +1,24 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awme
-  implements bhai<oidb_0x8e4.RspBody>
+class awme
+  implements View.OnClickListener
 {
-  public awme(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  awme(awmd paramawmd, awlt paramawlt) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
+    if (this.jdField_a_of_type_Awmd.jdField_a_of_type_Awlt.a()) {}
+    for (;;)
     {
-      paramRspBody = paramRspBody.poi_info;
-      String str = paramRspBody.bytes_uid.get().toStringUtf8();
-      this.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
-    }
-    do
-    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.a(paramInt, paramRspBody, amtj.a(2131704255));
-    } while (!QLog.isColorLevel());
-    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
+      awlt.a(this.jdField_a_of_type_Awmd.jdField_a_of_type_Awlt).c(true);
+      awlt.a(this.jdField_a_of_type_Awmd.jdField_a_of_type_Awlt);
+      bdla.b(null, "CliOper", "", "", "0X800A973", "0X800A973", 0, 0, "0", "0", "0", "");
+    }
   }
 }
 

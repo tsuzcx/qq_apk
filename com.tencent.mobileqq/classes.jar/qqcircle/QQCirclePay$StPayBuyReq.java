@@ -3,15 +3,19 @@ package qqcircle;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import feedcloud.FeedCloudCommon.StCommonExt;
 
 public final class QQCirclePay$StPayBuyReq
   extends MessageMicro<StPayBuyReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "extInfo", "goodsID" }, new Object[] { null, "" }, StPayBuyReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40 }, new String[] { "extInfo", "giftData", "opTime", "retryDetail", "opTimeNs" }, new Object[] { null, null, Long.valueOf(0L), null, Long.valueOf(0L) }, StPayBuyReq.class);
   public FeedCloudCommon.StCommonExt extInfo = new FeedCloudCommon.StCommonExt();
-  public final PBStringField goodsID = PBField.initString("");
+  public QQCirclePaybase.StGiftData giftData = new QQCirclePaybase.StGiftData();
+  public final PBUInt64Field opTime = PBField.initUInt64(0L);
+  public final PBInt64Field opTimeNs = PBField.initInt64(0L);
+  public QQCirclePay.StPayRetryDetail retryDetail = new QQCirclePay.StPayRetryDetail();
 }
 
 

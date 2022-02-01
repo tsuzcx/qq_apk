@@ -1,41 +1,19 @@
-import android.content.Intent;
-import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnErrorListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+import tv.danmaku.ijk.media.player.IMediaPlayer.OnErrorListener;
 
-public abstract interface bkqn
+class bkqn
+  implements IMediaPlayer.OnErrorListener
 {
-  public abstract int a();
+  bkqn(bkqg parambkqg, ReliableVideoPlayer.OnErrorListener paramOnErrorListener) {}
   
-  public abstract Intent a();
-  
-  public abstract void a();
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
-  
-  public abstract void k();
-  
-  public abstract void l();
-  
-  public abstract void m();
-  
-  public abstract void n();
+  public boolean onError(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnErrorListener != null) {
+      return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bkqg, paramInt1, paramInt2);
+    }
+    return false;
+  }
 }
 
 

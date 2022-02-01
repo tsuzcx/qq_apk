@@ -1,27 +1,18 @@
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.camera.CameraManagerImpl.AFCallbackForward.1;
 
 public class aqmn
-  extends Handler
+  implements Camera.AutoFocusCallback
 {
-  public aqmn(ContactSyncManager paramContactSyncManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aqme jdField_a_of_type_Aqme;
+  private final aqmk jdField_a_of_type_Aqmk;
   
-  public void handleMessage(Message paramMessage)
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      ContactSyncManager.a(this.a);
-      return;
-    }
-    ContactSyncManager.b(this.a);
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.AFCallbackForward.1(this, paramBoolean));
   }
 }
 

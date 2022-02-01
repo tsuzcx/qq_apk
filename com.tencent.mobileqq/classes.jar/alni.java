@@ -1,23 +1,28 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.1.1;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alni
-  extends AVVideoCtrl.LocalVideoPreviewCallback
+  implements View.OnClickListener
 {
-  alni(alnh paramalnh) {}
+  public alni(LoginView paramLoginView) {}
   
-  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  public void onClick(View paramView)
   {
-    Object localObject = alvx.a(alng.a(this.a.a));
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ((alxy)localObject).a();
-    } while (localObject == null);
-    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.1.1(this, (ApolloSurfaceView)localObject, paramVideoFrame));
+    if ((this.a.b != null) && (this.a.b.isShown())) {
+      this.a.b.setVisibility(8);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("");
+    LoginView.c(this.a);
+    libsafeedit.clearPassBuffer();
+    LoginView.d(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

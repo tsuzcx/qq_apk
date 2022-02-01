@@ -1,28 +1,16 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.appinfo.data.AppDetail;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class beew
-  implements aseq
+public class beew
+  implements DialogInterface.OnClickListener
 {
-  beew(beev parambeev) {}
+  public beew(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("TroopFileTransferMgr", 1, "waterTest, onGetAppDetailTimeLimit. apkName[" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkName + "]");
-    if (NetworkUtil.getSystemNetwork(BaseApplication.getContext()) == 0) {
-      this.a.jdField_a_of_type_Bees.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, 106);
-    }
-    behe.a().a(bees.e(this.a.jdField_a_of_type_Bees), this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, null);
-  }
-  
-  public void a(boolean paramBoolean, AppDetail paramAppDetail)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkPackageName = paramAppDetail.packageName;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkName = paramAppDetail.appName;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.yybApkIconUrl = paramAppDetail.iconUrl;
+    ((QQCustomDialog)paramDialogInterface).getCheckBoxState();
   }
 }
 

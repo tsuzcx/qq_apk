@@ -1,9 +1,6 @@
-public class auek
+public abstract interface auek
 {
-  public int a;
-  public String a;
-  public int[] a;
-  public int[] b;
+  public abstract void a(boolean paramBoolean);
 }
 
 

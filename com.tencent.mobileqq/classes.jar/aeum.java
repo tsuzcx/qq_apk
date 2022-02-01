@@ -1,39 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class aeum
-  implements View.OnClickListener
+  implements aeun
 {
-  public aeum(ActivateFriendGrid paramActivateFriendGrid) {}
-  
-  public void onClick(View paramView)
+  public boolean a(int paramInt)
   {
-    ActivateFriendGridItem localActivateFriendGridItem = (ActivateFriendGridItem)paramView;
-    if (localActivateFriendGridItem.jdField_a_of_type_Boolean)
-    {
-      ActivateFriendGrid.a(this.a);
-      if (localActivateFriendGridItem.jdField_a_of_type_Boolean) {
-        break label108;
-      }
-    }
-    label108:
-    for (boolean bool = true;; bool = false)
-    {
-      localActivateFriendGridItem.setChecked(bool);
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
-      }
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(localActivateFriendGridItem.jdField_a_of_type_Int);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ActivateFriendGrid.b(this.a);
-      break;
-    }
+    return paramInt % 4 == 2;
   }
 }
 

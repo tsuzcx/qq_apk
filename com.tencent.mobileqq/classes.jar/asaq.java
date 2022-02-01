@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.download.unite.DownloadDialogFragment;
 
 public class asaq
-  extends asbj
+  implements DialogInterface.OnClickListener
 {
-  public asaq(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  public asaq(DownloadDialogFragment paramDownloadDialogFragment) {}
   
-  protected void onThumbDownLoadSuccess(aslv paramaslv)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onThumbDownLoadSuccess(paramaslv);
-    if ((paramaslv.b != null) && (paramaslv.b.length() > 0)) {
-      this.a.i();
-    }
+    DownloadDialogFragment.a(this.a, 2);
+    azcl.a("0X800B53E");
   }
 }
 

@@ -1,22 +1,23 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adop
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  public adop(Leba paramLeba) {}
+  public adop(ChatHistory paramChatHistory) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    long l = System.currentTimeMillis();
+    if (l - this.a.b > 1000L)
     {
-      paramView.clearFocus();
-      bbda.a(null, 0, 21, "0X8009D15", 0, 0, null, null);
-      UniteSearchActivity.a(this.a.a(), null, 21, 0L, null, 3);
-      bcef.b(this.a.a, "CliOper", "", "", "0x8004B21", "0x8004B21", 0, 0, "", "", "", "");
+      this.a.b = l;
+      this.a.b();
+      bdla.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

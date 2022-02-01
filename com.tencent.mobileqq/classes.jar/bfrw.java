@@ -1,37 +1,6 @@
-import android.annotation.TargetApi;
-import android.app.ActivityManager;
-import android.content.Context;
-import android.graphics.Paint;
-import android.os.PowerManager;
-import android.view.View;
-import com.tencent.util.VersionUtils;
-
-@Deprecated
-public class bfrw
+public abstract interface bfrw
 {
-  public static int a(Context paramContext)
-  {
-    return ((ActivityManager)paramContext.getSystemService("activity")).getMemoryClass();
-  }
-  
-  @TargetApi(11)
-  public static void a(View paramView, int paramInt, Paint paramPaint)
-  {
-    if (VersionUtils.isHoneycomb()) {
-      paramView.setLayerType(paramInt, paramPaint);
-    }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    try
-    {
-      boolean bool = ((PowerManager)paramContext.getSystemService("power")).isScreenOn();
-      return bool;
-    }
-    catch (Exception paramContext) {}
-    return false;
-  }
+  public abstract void b(boolean paramBoolean, int paramInt);
 }
 
 

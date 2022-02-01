@@ -1,42 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.IInterface;
 
-public class apif
+public abstract interface apif
+  extends IInterface
 {
-  @ausx(a="isShowAssistantEntrance")
-  public int a;
-  @ausx(a="kuolieAIOEnable")
-  public int b;
+  public abstract void a(int paramInt);
   
-  public static apif a(String paramString)
-  {
-    apif localapif = (apif)ausy.a(paramString, apif.class);
-    if (QLog.isColorLevel()) {
-      if ("parse: " + localapif == null) {
-        break label52;
-      }
-    }
-    label52:
-    for (paramString = localapif.toString();; paramString = " C2CShortcutBarConfBean is null")
-    {
-      QLog.d("C2CShortcutBarConfBean", 2, paramString);
-      return localapif;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean a()
-  {
-    return this.a == 1;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 1;
-  }
-  
-  public String toString()
-  {
-    return "C2CShortcutBarConfBean{isShowAssistantEntrance = " + this.a + "kuolieAIOEnable = " + this.b + '}';
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

@@ -1,20 +1,33 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import mqq.os.MqqHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class wwa
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements wvz
 {
-  wwa(wvv paramwvv) {}
+  public void a() {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a(int paramInt)
   {
-    ThreadManager.executeOnSubThread(new VideoViewTVKImpl.5.1(this, paramTVK_IMediaPlayer));
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.5.2(this));
+    if (paramInt == 6) {
+      QQToast.a(BaseApplicationImpl.getContext(), 2131690035, 0).a();
+    }
   }
+  
+  public void b() {}
+  
+  public void b(int paramInt) {}
+  
+  public void c() {}
+  
+  public void c(int paramInt)
+  {
+    QQToast.a(BaseApplication.getContext(), anvx.a(2131707296), 0).a();
+  }
+  
+  public void d() {}
+  
+  public void d(int paramInt) {}
 }
 
 

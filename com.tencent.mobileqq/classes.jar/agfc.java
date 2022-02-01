@@ -1,17 +1,12 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agfc
-  extends aghj
+public class agfc
+  implements ahpi
 {
-  agfc(agcw paramagcw)
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    super(paramagcw, null);
-  }
-  
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agmf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    agfb.a(paramQQAppInterface, paramMessageRecord, 1);
   }
 }
 

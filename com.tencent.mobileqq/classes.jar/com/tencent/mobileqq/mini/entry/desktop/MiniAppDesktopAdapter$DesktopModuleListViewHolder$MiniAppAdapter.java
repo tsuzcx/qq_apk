@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
@@ -89,7 +90,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
   
   public MiniAppDesktopAdapter.MicroAppViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(MiniAppDesktopAdapter.access$3500(this.this$1.this$0)).inflate(2131562336, paramViewGroup, false));
+    return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(MiniAppDesktopAdapter.access$3500(this.this$1.this$0)).inflate(2131562404, paramViewGroup, false));
   }
   
   public void onDragFinish(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -187,7 +188,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
     DesktopAppInfo localDesktopAppInfo = (DesktopAppInfo)this.mData.get(paramInt);
     this.mDeleteTarget = paramInt;
     super.onItemDelete(paramInt);
-    ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(336)).onItemDeleted(localDesktopAppInfo);
+    ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).onItemDeleted(localDesktopAppInfo);
   }
   
   public void setData(List<DesktopAppInfo> paramList)

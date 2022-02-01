@@ -1,25 +1,18 @@
 package com.tencent.biz.qrcode.activity;
 
-import android.view.View;
-import yvx;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+import znl;
 
-public class QRDisplayActivity$24
+class QRDisplayActivity$24
   implements Runnable
 {
-  QRDisplayActivity$24(QRDisplayActivity paramQRDisplayActivity, boolean paramBoolean) {}
+  QRDisplayActivity$24(QRDisplayActivity paramQRDisplayActivity, String paramString) {}
   
   public void run()
   {
-    if (this.a)
-    {
-      this.this$0.d.setOnClickListener(null);
-      this.this$0.d.setClickable(false);
-      this.this$0.d.setOnTouchListener(new yvx(this));
-      return;
-    }
-    this.this$0.d.setClickable(true);
-    this.this$0.d.setOnClickListener(this.this$0);
-    this.this$0.d.setTouchDelegate(null);
+    String str = znl.a(this.this$0, this.a, this.this$0.b);
+    ThreadManager.getUIHandler().post(new QRDisplayActivity.24.1(this, str));
   }
 }
 

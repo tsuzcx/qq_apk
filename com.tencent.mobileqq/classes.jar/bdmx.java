@@ -1,8 +1,10 @@
-import java.util.ArrayList;
-
-public abstract interface bdmx
+public abstract class bdmx
 {
-  public abstract void a(int paramInt, String paramString, ArrayList<bdmu> paramArrayList);
+  public String a;
+  public String b;
+  public String c;
+  
+  public abstract String a();
 }
 
 

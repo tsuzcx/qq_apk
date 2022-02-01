@@ -1,10 +1,10 @@
 package cooperation.qzone.contentbox;
 
 import android.view.animation.Animation;
-import bjmc;
+import bkxp;
 
 class PlusMenuContainer$1
-  extends bjmc
+  extends bkxp
 {
   PlusMenuContainer$1(PlusMenuContainer paramPlusMenuContainer) {}
   

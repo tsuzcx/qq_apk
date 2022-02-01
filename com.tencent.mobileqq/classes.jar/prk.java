@@ -1,7 +1,4 @@
-public abstract interface prk
-{
-  public abstract void a(String paramString, prl paramprl);
-}
+class prk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

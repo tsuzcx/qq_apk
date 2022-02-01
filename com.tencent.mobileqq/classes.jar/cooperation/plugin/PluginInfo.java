@@ -1,27 +1,27 @@
 package cooperation.plugin;
 
-import amtj;
+import anvx;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 
 public class PluginInfo
   extends PluginBaseInfo
   implements Cloneable
 {
-  public static final String a = amtj.a(2131707390);
-  public static final String b = amtj.a(2131707389);
-  public static final String c = amtj.a(2131707378);
-  public static final String d = amtj.a(2131707381);
-  public static final String e = amtj.a(2131707388);
-  public static final String f = amtj.a(2131707383);
-  public static final String g = amtj.a(2131707385);
-  public static final String h = amtj.a(2131707387);
-  public static final String i = amtj.a(2131707379);
-  public static final String j = amtj.a(2131707382);
-  public static final String k = amtj.a(2131707384);
-  public static final String l = amtj.a(2131707391);
-  public static final String m = amtj.a(2131707377);
-  public static final String n = amtj.a(2131707380);
-  public static final String o = amtj.a(2131707386);
+  public static final String a = anvx.a(2131707737);
+  public static final String b = anvx.a(2131707736);
+  public static final String c = anvx.a(2131707725);
+  public static final String d = anvx.a(2131707728);
+  public static final String e = anvx.a(2131707735);
+  public static final String f = anvx.a(2131707730);
+  public static final String g = anvx.a(2131707732);
+  public static final String h = anvx.a(2131707734);
+  public static final String i = anvx.a(2131707726);
+  public static final String j = anvx.a(2131707729);
+  public static final String k = anvx.a(2131707731);
+  public static final String l = anvx.a(2131707738);
+  public static final String m = anvx.a(2131707724);
+  public static final String n = anvx.a(2131707727);
+  public static final String o = anvx.a(2131707733);
   public int a;
   
   public PluginInfo a()

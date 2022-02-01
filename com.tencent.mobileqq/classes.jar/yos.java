@@ -1,99 +1,28 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class yos
+class yos
+  implements TextWatcher
 {
-  public static <T> T a(T paramT)
-  {
-    if (paramT == null) {
-      xvv.e("Q.qqstory.AssertUtils", "checkNotNull failed:" + a(2));
-    }
-    return paramT;
-  }
+  yos(yop paramyop) {}
   
-  public static String a(int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    for (;;)
+    ynw localynw = this.a.a;
+    if (this.a.a.a()) {}
+    for (paramEditable = "2";; paramEditable = "1")
     {
-      try
-      {
-        localObject = new RuntimeException("getStackTrace").getStackTrace();
-        localStringBuilder = new StringBuilder();
-        i = paramInt;
-        if (localObject.length > paramInt) {
-          break label87;
-        }
-        i = localObject.length;
-      }
-      catch (Exception localException)
-      {
-        Object localObject;
-        StringBuilder localStringBuilder;
-        int i;
-        return "";
-      }
-      if (paramInt < i)
-      {
-        localStringBuilder.append("\n" + localObject[paramInt].toString());
-        paramInt += 1;
-      }
-      else
-      {
-        localObject = localStringBuilder.toString();
-        return localObject;
-        label87:
-        paramInt = 2;
-      }
-    }
-  }
-  
-  public static void a() {}
-  
-  public static <T> void a(T paramT)
-  {
-    if (paramT == null)
-    {
-      paramT = yqj.a("StoryAssertUtils Exception!");
-      bcdb.a(paramT, "StoryAssertUtils assertNotNull_DEBUG()");
-      xvv.c("Q.qqstory.AssertUtils", "assertNotNull_DEBUG failed: ", paramT);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
+      localynw.a("search_poi", 0, 0, new String[] { paramEditable });
+      ykw.a("0X80076D1");
+      ykw.b("0X80075E6");
+      yop.a(this.a);
       return;
     }
-    xvv.e("Q.qqstory.AssertUtils", "checkNotEmpty failed :" + a(2));
   }
   
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    if (paramVarArgs.length == 0) {}
-    for (;;)
-    {
-      xvv.e("Q.qqstory.AssertUtils", paramString);
-      return;
-      paramString = String.format(paramString, paramVarArgs);
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public static void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      xvv.e("Q.qqstory.AssertUtils", "assertTrue failed:" + a(4));
-    }
-  }
-  
-  public static void a(boolean paramBoolean, @NonNull String paramString)
-  {
-    if (paramBoolean) {
-      return;
-    }
-    xvv.e("Q.qqstory.AssertUtils", paramString);
-  }
-  
-  public static void b() {}
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

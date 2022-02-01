@@ -1,7 +1,7 @@
 package com.tencent.biz.lebasearch;
 
 import Override;
-import ajek;
+import ajzy;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -28,9 +28,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aqmf;
-import bcef;
-import bfvo;
+import arpq;
+import bdla;
+import bheg;
 import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -39,11 +39,11 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
 import java.util.List;
-import nrg;
-import nrh;
-import nri;
-import nrk;
-import nrl;
+import nyh;
+import nyi;
+import nyj;
+import nyl;
+import nym;
 
 public class LebaSearchPluginManagerActivity
   extends BaseActivity
@@ -56,16 +56,16 @@ public class LebaSearchPluginManagerActivity
   public float a;
   long jdField_a_of_type_Long = -1L;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Handler jdField_a_of_type_AndroidOsHandler = new nrl(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new nym(this);
   public View a;
   protected Button a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   public LinearLayout a;
   protected TextView a;
-  public aqmf a;
+  public arpq a;
   public AccountDetailBounceScrollView a;
   QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-  List<aqmf> jdField_a_of_type_JavaUtilList = null;
+  List<arpq> jdField_a_of_type_JavaUtilList = null;
   private boolean jdField_a_of_type_Boolean = true;
   public int b;
   View jdField_b_of_type_AndroidViewView;
@@ -84,30 +84,30 @@ public class LebaSearchPluginManagerActivity
   public LebaSearchPluginManagerActivity()
   {
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Aqmf = null;
+    this.jdField_a_of_type_Arpq = null;
   }
   
   private void a()
   {
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131376679);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131372772);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new nrg(this));
-    this.jdField_b_of_type_AndroidViewView.addOnLayoutChangeListener(new nrh(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365791));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131376947);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131372965);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new nyh(this));
+    this.jdField_b_of_type_AndroidViewView.addOnLayoutChangeListener(new nyi(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365889));
     ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams()).height = ((int)(this.jdField_b_of_type_Int * jdField_a_of_type_Double));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setMinimumHeight((int)(this.jdField_b_of_type_Int - getTitleBarHeight() - 56.0F * this.jdField_a_of_type_Float));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377193));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377466));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372768));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372771));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131368248));
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841629);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378938));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372776));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369068));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131690599));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372961));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372964));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131368393));
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841639);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131379232));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372969));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369231));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131690676));
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView = ((AccountDetailBounceScrollView)super.findViewById(2131377572));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView = ((AccountDetailBounceScrollView)super.findViewById(2131377846));
     if (!this.jdField_a_of_type_Boolean)
     {
       localObject1 = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
@@ -119,15 +119,15 @@ public class LebaSearchPluginManagerActivity
         ((RelativeLayout.LayoutParams)localObject2).topMargin += i;
       }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setOnTouchListener(new nri(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setOnScrollChangedListener(new nrk(this));
-    Object localObject2 = this.jdField_a_of_type_Aqmf.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setOnTouchListener(new nyj(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setOnScrollChangedListener(new nyl(this));
+    Object localObject2 = this.jdField_a_of_type_Arpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo;
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
     for (Object localObject1 = null;; localObject1 = new BitmapDrawable(getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap))
     {
       this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(((LebaPluginInfo)localObject2).strResName);
-      localObject1 = findViewById(2131369903);
+      localObject1 = findViewById(2131370073);
       if (!this.jdField_a_of_type_Boolean) {
         ((View)localObject1).setBackgroundColor(Color.parseColor("#59D3FF"));
       }
@@ -141,7 +141,7 @@ public class LebaSearchPluginManagerActivity
     if (paramBoolean)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = Utils.createPluginSetDialogForMain(this.app, this, 1, this.jdField_a_of_type_Aqmf.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId, this.jdField_a_of_type_Aqmf.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName, null, this.jdField_a_of_type_AndroidOsHandler);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = Utils.createPluginSetDialogForMain(this.app, this, 1, this.jdField_a_of_type_Arpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId, this.jdField_a_of_type_Arpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName, null, this.jdField_a_of_type_AndroidOsHandler);
       }
       if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {}
     }
@@ -151,7 +151,7 @@ public class LebaSearchPluginManagerActivity
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
       if (this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-        this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = Utils.createPluginSetDialogForMain(this.app, this, 2, this.jdField_a_of_type_Aqmf.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId, this.jdField_a_of_type_Aqmf.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName, "", this.jdField_a_of_type_AndroidOsHandler);
+        this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = Utils.createPluginSetDialogForMain(this.app, this, 2, this.jdField_a_of_type_Arpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId, this.jdField_a_of_type_Arpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName, "", this.jdField_a_of_type_AndroidOsHandler);
       }
     } while (this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing());
     this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
@@ -165,23 +165,23 @@ public class LebaSearchPluginManagerActivity
     this.jdField_b_of_type_Int = (getResources().getDisplayMetrics().heightPixels - i);
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_Long = getIntent().getLongExtra("id", 0L);
-    this.jdField_a_of_type_JavaUtilList = ajek.a().a();
+    this.jdField_a_of_type_JavaUtilList = ajzy.a().a();
     localObject = this.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      aqmf localaqmf = (aqmf)((Iterator)localObject).next();
-      if ((localaqmf.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (localaqmf.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == this.jdField_a_of_type_Long)) {
-        this.jdField_a_of_type_Aqmf = localaqmf;
+      arpq localarpq = (arpq)((Iterator)localObject).next();
+      if ((localarpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (localarpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId == this.jdField_a_of_type_Long)) {
+        this.jdField_a_of_type_Arpq = localarpq;
       }
     }
-    if ((this.jdField_a_of_type_Aqmf == null) || (this.jdField_a_of_type_Aqmf.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null)) {
+    if ((this.jdField_a_of_type_Arpq == null) || (this.jdField_a_of_type_Arpq.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null)) {
       return false;
     }
-    this.jdField_a_of_type_Byte = this.jdField_a_of_type_Aqmf.jdField_a_of_type_Byte;
+    this.jdField_a_of_type_Byte = this.jdField_a_of_type_Arpq.jdField_a_of_type_Byte;
     try
     {
-      localObject = BitmapFactory.decodeResource(getResources(), 2130842350);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = bfvo.c((Bitmap)localObject, 110, 110);
+      localObject = BitmapFactory.decodeResource(getResources(), 2130842380);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = bheg.c((Bitmap)localObject, 110, 110);
       ((Bitmap)localObject).recycle();
       label192:
       if ((Build.BRAND.startsWith("samsung")) || (Build.BRAND.startsWith("Coolpad"))) {}
@@ -199,11 +199,11 @@ public class LebaSearchPluginManagerActivity
   
   private void b()
   {
-    if (this.jdField_a_of_type_Aqmf.jdField_a_of_type_Byte == 0)
+    if (this.jdField_a_of_type_Arpq.jdField_a_of_type_Byte == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839343);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131695516);
-      if (this.jdField_a_of_type_Aqmf.jdField_a_of_type_Byte == this.jdField_a_of_type_Byte) {
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839364);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131695766);
+      if (this.jdField_a_of_type_Arpq.jdField_a_of_type_Byte == this.jdField_a_of_type_Byte) {
         break label75;
       }
     }
@@ -212,8 +212,8 @@ public class LebaSearchPluginManagerActivity
     {
       setResult(i);
       return;
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839326);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131695520);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839347);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131695770);
       break;
     }
   }
@@ -362,8 +362,8 @@ public class LebaSearchPluginManagerActivity
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131559816);
-    ajek.jdField_a_of_type_Int |= 0x1;
+    setContentView(2131559860);
+    ajzy.jdField_a_of_type_Int |= 0x1;
     if (!a())
     {
       finish();
@@ -371,7 +371,7 @@ public class LebaSearchPluginManagerActivity
     }
     a();
     if (this.jdField_a_of_type_Long == 886L) {
-      bcef.b(this.app, "dc00899", "Grp_nearby", "", "dyn_set", "visit_nearby_intro", 0, 0, "", "", "", "");
+      bdla.b(this.app, "dc00899", "Grp_nearby", "", "dyn_set", "visit_nearby_intro", 0, 0, "", "", "", "");
     }
     return true;
   }
@@ -393,7 +393,7 @@ public class LebaSearchPluginManagerActivity
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Aqmf.jdField_a_of_type_Byte != 0) {}
+      if (this.jdField_a_of_type_Arpq.jdField_a_of_type_Byte != 0) {}
       for (boolean bool = true;; bool = false)
       {
         a(bool);

@@ -1,50 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class osc
+class osc
+  implements ViewFactory.FoundClickableViewListener
 {
-  private static List<owg> a;
+  osc(osb paramosb, TemplateBean paramTemplateBean) {}
   
-  private osc()
+  public void onFound(ViewBase paramViewBase)
   {
-    a = new ArrayList();
-  }
-  
-  public static osc a()
-  {
-    return ose.a();
-  }
-  
-  public List<owg> a()
-  {
-    if (a == null) {
-      return null;
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
     }
-    return a;
-  }
-  
-  public void a()
-  {
-    if (a != null) {
-      a.clear();
-    }
-  }
-  
-  public void a(owg paramowg)
-  {
-    if ((paramowg == null) || (a == null)) {}
-    while (a.contains(paramowg)) {
+    do
+    {
       return;
-    }
-    a.add(paramowg);
-  }
-  
-  public void b(owg paramowg)
-  {
-    if ((a == null) || (a.size() == 0)) {
-      return;
-    }
-    a.remove(paramowg);
+    } while (!(paramViewBase instanceof qwn));
+    ((qwn)paramViewBase).a(new osd(this, paramViewBase));
   }
 }
 

@@ -1,60 +1,85 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-class vxs
-  implements wkk
+public class vxs
+  extends JobSegment<Integer, List<vxh>>
 {
-  vxs(vxq paramvxq, List paramList) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private vxu jdField_a_of_type_Vxu;
   
-  public void a()
+  public vxs(Context paramContext, vxu paramvxu)
   {
-    QLog.e("Q.qqstory.msgTab.jobPullBasicInfo", 1, "pull video info failed");
-    vxq.b(this.jdField_a_of_type_Vxq, new ErrorMessage(102, "pull video info failed"));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Vxu = paramvxu;
   }
   
-  public void a(ArrayList<StoryVideoItem> paramArrayList)
+  protected void a(JobContext paramJobContext, Integer paramInteger)
   {
-    if (paramArrayList == null)
+    ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "start GalleryScanSegment");
+    paramInteger = (wjl)wjs.a(10);
+    paramJobContext = new vwn();
+    long l2 = ((Long)paramInteger.b("key_last_pic_scan_time", Long.valueOf(-1L))).longValue();
+    long l1 = ((Long)paramInteger.b("key_last_date_album_time", Long.valueOf(-1L))).longValue();
+    if ((l2 != -1L) && (l1 != -1L))
     {
-      xvv.e("Q.qqstory.msgTab.jobPullBasicInfo", "video list empty !");
-      vxq.a(this.jdField_a_of_type_Vxq, new ErrorMessage(102, "video list empty !"));
+      this.jdField_a_of_type_Vxu.a(true);
+      paramInteger = paramJobContext.a(this.jdField_a_of_type_AndroidContentContext, 1L + l2, true, 10);
+      if (paramInteger.isEmpty())
+      {
+        ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "No new picture scanned.");
+        notifyResult(paramInteger);
+        return;
+      }
+      paramInteger = ((vwv)wjs.a(30)).a();
+      if (!this.jdField_a_of_type_Vxu.a()) {
+        break label255;
+      }
+    }
+    label255:
+    for (paramJobContext = paramJobContext.a(this.jdField_a_of_type_AndroidContentContext, l1 + 1L, true, paramInteger.a(true));; paramJobContext = paramJobContext.a(this.jdField_a_of_type_AndroidContentContext, l1, false, paramInteger.a(false)))
+    {
+      if ((paramJobContext != null) && (!paramJobContext.isEmpty())) {
+        break label275;
+      }
+      ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "No picture scanned in your phone");
+      notifyResult(paramJobContext);
+      return;
+      ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "It is not inc scan :" + true + ",lastPicScanTime" + l2 + " ,lastDateAlbumTime=" + l1);
+      this.jdField_a_of_type_Vxu.a(false);
+      l1 = -1L;
+      break;
+    }
+    label275:
+    vwv.b(paramJobContext);
+    this.jdField_a_of_type_Vxu.b(((vxh)paramJobContext.get(paramJobContext.size() - 1)).d);
+    paramInteger = paramJobContext.iterator();
+    while (paramInteger.hasNext()) {
+      ykq.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "scan pic result=%s", (vxh)paramInteger.next());
+    }
+    paramInteger = new ArrayList();
+    int i = 0;
+    while (i < paramJobContext.size() - 1)
+    {
+      if (((vxh)paramJobContext.get(i + 1)).b - ((vxh)paramJobContext.get(i)).b > 2L) {
+        paramInteger.add(paramJobContext.get(i));
+      }
+      i += 1;
+    }
+    paramInteger.add(paramJobContext.get(paramJobContext.size() - 1));
+    i = paramJobContext.size() - paramInteger.size();
+    l2 = ((vxh)paramJobContext.get(0)).b;
+    if (paramJobContext.size() > 1) {}
+    for (l1 = ((vxh)paramJobContext.get(paramJobContext.size() - 1)).b;; l1 = l2)
+    {
+      ykq.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.GalleryScanSegment", "filter the similar last=%d repeatPicCount=%d time span=%d", new Object[] { Integer.valueOf(paramInteger.size()), Integer.valueOf(i), Long.valueOf(l1 - l2) });
+      ykv.a("video_shoot_slides", "same_reject", 0, 0, new String[] { "" + i, l1 - l2 + "" });
+      notifyResult(paramInteger);
       return;
     }
-    HashMap localHashMap = new HashMap();
-    paramArrayList = paramArrayList.iterator();
-    Object localObject;
-    while (paramArrayList.hasNext())
-    {
-      localObject = (StoryVideoItem)paramArrayList.next();
-      localHashMap.put(((StoryVideoItem)localObject).mVid, localObject);
-    }
-    paramArrayList = new ArrayList();
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    if (i < j)
-    {
-      localObject = (wkm)this.jdField_a_of_type_JavaUtilList.get(i);
-      StoryVideoItem localStoryVideoItem = (StoryVideoItem)localHashMap.get(((wkm)localObject).b);
-      if (localStoryVideoItem == null) {
-        xvv.e("Q.qqstory.msgTab.jobPullBasicInfo", "not found video!");
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        ((wkm)localObject).a = localStoryVideoItem;
-        paramArrayList.add(localObject);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info succeed, info");
-    }
-    vxq.a(this.jdField_a_of_type_Vxq, paramArrayList);
   }
 }
 

@@ -5,9 +5,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
-import nny;
-import noe;
-import yqz;
+import nuz;
+import nvf;
+import zfs;
 
 public final class PngQuantUtils
 {
@@ -15,14 +15,14 @@ public final class PngQuantUtils
   
   public static void a(AppRuntime paramAppRuntime)
   {
-    nny.b("1017", paramAppRuntime, true, new yqz());
+    nuz.b("1017", paramAppRuntime, true, new zfs());
   }
   
   public static boolean a()
   {
-    if ((!a.get()) && (nny.c("1017")) && (nny.a("1017", "https://libpngquantandroid.so")))
+    if ((!a.get()) && (nuz.c("1017")) && (nuz.a("1017", "https://libpngquantandroid.so")))
     {
-      String str = noe.a("1017") + "1017" + File.separator + "libpngquantandroid.so";
+      String str = nvf.a("1017") + "1017" + File.separator + "libpngquantandroid.so";
       if (FileUtils.fileExists(str))
       {
         System.load(str);

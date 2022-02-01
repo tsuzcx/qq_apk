@@ -1,102 +1,81 @@
-import android.content.Context;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import java.util.Arrays;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class aqgg
+final class aqgg
+  implements DownloadListener
 {
-  private final String jdField_a_of_type_JavaLangString;
-  public final boolean a;
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private final String jdField_b_of_type_JavaLangString;
-  private final String[] jdField_b_of_type_ArrayOfJavaLangString;
-  private final String c;
-  private final String d;
+  aqgg(RockDownloaderTask paramRockDownloaderTask, boolean paramBoolean) {}
   
-  public aqgg()
+  public void installSucceed(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ArrayOfJavaLangString = null;
-    this.jdField_b_of_type_ArrayOfJavaLangString = null;
-    this.c = null;
-    this.d = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "installSucceed: appid=", paramString1, " packageName=", paramString2 });
+    }
   }
   
-  public aqgg(String paramString1, boolean paramBoolean, String paramString2, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString1;
-    this.jdField_b_of_type_ArrayOfJavaLangString = paramArrayOfString2;
-    if ("AIO".equals(paramString1))
-    {
-      this.c = "0X800A647";
-      this.d = "0X800A648";
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
       return;
     }
-    if ("group".equals(paramString1))
-    {
-      this.c = "0X800A649";
-      this.d = "0X800A64A";
+    aqge.a(paramDownloadInfo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
+    bjjq.a().b(this);
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
       return;
     }
-    if ("download".equals(paramString1))
-    {
-      this.c = "0X800A64B";
-      this.d = "0X800A64C";
+    aqge.a(paramDownloadInfo, paramInt1, paramString, paramInt2, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
+    bjjq.a().b(this);
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
       return;
     }
-    this.c = null;
-    this.d = null;
+    aqge.a(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask, paramDownloadInfo, this.jdField_a_of_type_Boolean);
+    bjjq.a().b(this);
   }
   
-  public SpannableString a(Context paramContext, CharSequence paramCharSequence)
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    paramCharSequence = paramCharSequence + this.jdField_b_of_type_JavaLangString;
-    SpannableString localSpannableString = new SpannableString(paramCharSequence);
-    int i = 0;
-    if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      String str1 = this.jdField_a_of_type_ArrayOfJavaLangString[i];
-      String str2 = this.jdField_b_of_type_ArrayOfJavaLangString[i];
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        int j = paramCharSequence.indexOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-        localSpannableString.setSpan(new aqgh(this, str2, paramContext), j, str1.length() + j, 33);
-      }
+    aqge.a(paramDownloadInfo, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    aqge.a(paramList, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    aqge.a(paramDownloadInfo, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask, this.jdField_a_of_type_Boolean);
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "packageReplaced: appid=", paramString1, " packageName=", paramString2 });
     }
-    bcef.b(null, "dc00898", "", "", this.c, this.c, 2, 0, "", "", "", "");
-    return localSpannableString;
   }
   
-  public String a()
+  public void uninstallSucceed(String paramString1, String paramString2)
   {
-    if ((this.jdField_b_of_type_ArrayOfJavaLangString == null) || (this.jdField_b_of_type_ArrayOfJavaLangString.length <= 0)) {
-      return "";
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "uninstallSucceed: appid=", paramString1, " packageName=", paramString2 });
     }
-    bcef.b(null, "dc00898", "", "", this.c, this.c, 2, 0, "", "", "", "");
-    return this.jdField_b_of_type_ArrayOfJavaLangString[0];
-  }
-  
-  public void a()
-  {
-    bcef.b(null, "dc00898", "", "", this.d, this.d, 2, 0, "", "", "", "");
-  }
-  
-  public String toString()
-  {
-    return "Item{enable=" + this.jdField_a_of_type_Boolean + ", content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", keyWords=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + ", actionUrls=" + Arrays.toString(this.jdField_b_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgg
  * JD-Core Version:    0.7.0.1
  */

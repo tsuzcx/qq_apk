@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.nearby.now;
 
 import android.text.TextUtils;
-import awhw;
-import awrs;
-import bcek;
+import axny;
+import axxu;
+import bdlf;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
 
 class StoryPlayController$7
   implements Runnable
 {
-  StoryPlayController$7(StoryPlayController paramStoryPlayController, VideoData paramVideoData, awhw paramawhw) {}
+  StoryPlayController$7(StoryPlayController paramStoryPlayController, VideoData paramVideoData, axny paramaxny) {}
   
   public void run()
   {
-    bcek localbcek = new bcek(this.this$0.a).a("dc00899").b("grp_lbs").c("video").d("playpage_right_slide").e(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Long));
-    int i = this.jdField_a_of_type_Awhw.b();
-    String str2 = awrs.jdField_a_of_type_JavaLangString;
-    if (TextUtils.equals(awrs.jdField_a_of_type_JavaLangString, "2")) {}
+    bdlf localbdlf = new bdlf(this.this$0.a).a("dc00899").b("grp_lbs").c("video").d("playpage_right_slide").e(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Long));
+    int i = this.jdField_a_of_type_Axny.b();
+    String str2 = axxu.jdField_a_of_type_JavaLangString;
+    if (TextUtils.equals(axxu.jdField_a_of_type_JavaLangString, "2")) {}
     for (String str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);; str1 = "")
     {
-      localbcek.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
+      localbdlf.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
       return;
     }
   }

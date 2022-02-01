@@ -1,61 +1,25 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class alen
+class alen
+  implements View.OnClickListener
 {
-  public List<aleo> a = new ArrayList();
+  alen(aldh paramaldh) {}
   
-  public static alen a(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    if (paramJSONObject == null) {
-      paramJSONObject = new alen();
+    if (bgvx.a().a() == 4) {
+      bdla.b(aldh.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bgvw.b(), bgvx.b(), bgvx.a(), "0");
     }
     for (;;)
     {
-      return paramJSONObject;
-      localalen = new alen();
-      try
-      {
-        JSONArray localJSONArray = new JSONArray(paramJSONObject.getString("items"));
-        paramJSONObject = localalen;
-        if (localJSONArray == null) {
-          continue;
-        }
-        paramJSONObject = localalen;
-        if (localJSONArray.length() < 0) {
-          continue;
-        }
-        int j = localJSONArray.length();
-        int i = 0;
-        for (;;)
-        {
-          paramJSONObject = localalen;
-          if (i >= j) {
-            break;
-          }
-          paramJSONObject = aleo.a(localJSONArray.getJSONObject(i));
-          localalen.a.add(paramJSONObject);
-          i += 1;
-        }
-        return localalen;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return localalen;
-      }
-      catch (OutOfMemoryError paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return localalen;
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
+      this.a.a(17, 0);
+      this.a.a(-1, null);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdla.b(aldh.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bgvw.b(), bgvx.b(), bgvx.a(), "0");
     }
   }
 }

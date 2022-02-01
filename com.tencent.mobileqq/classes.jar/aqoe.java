@@ -1,26 +1,39 @@
-public final class aqoe
-  implements Comparable<aqoe>
+import android.content.Context;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+
+public class aqoe
+  extends LottieDrawable
+  implements aqod
 {
-  public long a;
-  public final aqod a;
+  private LottieDrawable a;
   
-  public int a(aqoe paramaqoe)
+  public void a(int paramInt) {}
+  
+  public void a(Context paramContext, int paramInt1, int paramInt2) {}
+  
+  public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public int getIntrinsicHeight()
   {
-    if (paramaqoe == null) {}
-    do
-    {
-      return 1;
-      if (this.a > paramaqoe.a) {
-        return -1;
-      }
-    } while (this.a < paramaqoe.a);
-    return 0;
+    return this.a.getIntrinsicHeight();
   }
   
-  public String toString()
+  public int getIntrinsicWidth()
   {
-    return "mRemainTime:" + this.a;
+    return this.a.getIntrinsicWidth();
   }
+  
+  public void playAnimation()
+  {
+    this.a.playAnimation();
+  }
+  
+  public void setRepeatCount(int paramInt)
+  {
+    this.a.setRepeatCount(paramInt);
+  }
+  
+  public void stop() {}
 }
 
 

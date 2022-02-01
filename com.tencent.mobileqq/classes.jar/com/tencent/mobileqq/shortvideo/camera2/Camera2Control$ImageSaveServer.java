@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.shortvideo.camera2;
 
-import akwr;
-import apju;
-import bbsn;
-import bbsr;
-import bfvo;
+import alun;
+import aqmy;
+import bczi;
+import bczm;
+import bheg;
 import java.io.File;
 
 public class Camera2Control$ImageSaveServer
   implements Runnable
 {
-  private final bbsn jdField_a_of_type_Bbsn;
+  private final bczi jdField_a_of_type_Bczi;
   private final byte[] jdField_a_of_type_ArrayOfByte;
   
-  public Camera2Control$ImageSaveServer(byte[] paramArrayOfByte, bbsn parambbsn)
+  public Camera2Control$ImageSaveServer(byte[] paramArrayOfByte, bczi parambczi)
   {
     this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Bbsn = parambbsn;
+    this.jdField_a_of_type_Bczi = parambczi;
   }
   
   public void run()
@@ -24,46 +24,46 @@ public class Camera2Control$ImageSaveServer
     int i = 0;
     if (this.jdField_a_of_type_ArrayOfByte == null)
     {
-      bbsr.a(2, "[Camera2]ImageSaveServer params error!");
-      if (this.jdField_a_of_type_Bbsn.jdField_a_of_type_Akwr != null) {
-        this.jdField_a_of_type_Bbsn.jdField_a_of_type_Akwr.a(null);
+      bczm.a(2, "[Camera2]ImageSaveServer params error!");
+      if (this.jdField_a_of_type_Bczi.jdField_a_of_type_Alun != null) {
+        this.jdField_a_of_type_Bczi.jdField_a_of_type_Alun.a(null);
       }
     }
     do
     {
       return;
-      int j = bbsr.a(this.jdField_a_of_type_Bbsn.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics, this.jdField_a_of_type_Bbsn.jdField_a_of_type_Int);
-      boolean bool = this.jdField_a_of_type_Bbsn.jdField_a_of_type_Boolean;
+      int j = bczm.a(this.jdField_a_of_type_Bczi.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics, this.jdField_a_of_type_Bczi.jdField_a_of_type_Int);
+      boolean bool = this.jdField_a_of_type_Bczi.jdField_a_of_type_Boolean;
       try
       {
-        bfvo.a(apju.b(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Bbsn.jdField_a_of_type_AndroidGraphicsRect, bool, j), this.jdField_a_of_type_Bbsn.jdField_a_of_type_JavaIoFile);
+        bheg.a(aqmy.b(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Bczi.jdField_a_of_type_AndroidGraphicsRect, bool, j), this.jdField_a_of_type_Bczi.jdField_a_of_type_JavaIoFile);
         i = 1;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          akwr localakwr;
+          alun localalun;
           String str;
           localException.printStackTrace();
-          bbsr.a(2, "[Camera2]ImageSaveServer Exception:" + localException);
+          bczm.a(2, "[Camera2]ImageSaveServer Exception:" + localException);
         }
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         for (;;)
         {
-          bbsr.a(2, "[Camera2]ImageSaveServer OutOfMemoryError:" + localOutOfMemoryError);
+          bczm.a(2, "[Camera2]ImageSaveServer OutOfMemoryError:" + localOutOfMemoryError);
           continue;
           Object localObject = null;
         }
       }
-    } while (this.jdField_a_of_type_Bbsn.jdField_a_of_type_Akwr == null);
-    localakwr = this.jdField_a_of_type_Bbsn.jdField_a_of_type_Akwr;
+    } while (this.jdField_a_of_type_Bczi.jdField_a_of_type_Alun == null);
+    localalun = this.jdField_a_of_type_Bczi.jdField_a_of_type_Alun;
     if (i != 0)
     {
-      str = this.jdField_a_of_type_Bbsn.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-      localakwr.a(str);
+      str = this.jdField_a_of_type_Bczi.jdField_a_of_type_JavaIoFile.getAbsolutePath();
+      localalun.a(str);
       return;
     }
   }

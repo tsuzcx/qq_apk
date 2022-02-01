@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahdr;
-import ahds;
-import amtj;
+import ahyj;
+import ahyk;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
-import aouk;
-import aovl;
-import aowj;
-import bfur;
+import anvx;
+import apxo;
+import apyp;
+import apzn;
+import bhdj;
 import com.tencent.ark.open.ArkAppCacheMgr;
 import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -34,7 +34,7 @@ import org.json.JSONObject;
 public class ArkDebugChatPie$1$1$4
   implements Runnable
 {
-  public ArkDebugChatPie$1$1$4(ahds paramahds, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  public ArkDebugChatPie$1$1$4(ahyk paramahyk, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
   public void run()
   {
@@ -54,14 +54,14 @@ public class ArkDebugChatPie$1$1$4
             localObject1 = ((ChatFragment)localObject1).a();
             if (localObject1 != null)
             {
-              localObject2 = ArkAppMgr.getInstance().getAppPathByNameFromLocal(ahdr.a(this.jdField_a_of_type_Ahds.a.this$0), this.c, null, false);
+              localObject2 = ArkAppMgr.getInstance().getAppPathByNameFromLocal(ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0), this.c, null, false);
               localObject3 = new ArrayList();
-              aouk localaouk = new aouk();
-              localaouk.jdField_a_of_type_JavaLangString = ahdr.a(this.jdField_a_of_type_Ahds.a.this$0);
-              localaouk.d = ((String)localObject2);
-              localaouk.f = this.d;
-              localaouk.b = this.c;
-              ((List)localObject3).add(localaouk);
+              apxo localapxo = new apxo();
+              localapxo.jdField_a_of_type_JavaLangString = ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0);
+              localapxo.d = ((String)localObject2);
+              localapxo.f = this.d;
+              localapxo.b = this.c;
+              ((List)localObject3).add(localapxo);
               ((BaseChatPie)localObject1).mArkController.a((List)localObject3, 0);
             }
           }
@@ -76,18 +76,18 @@ public class ArkDebugChatPie$1$1$4
           if (!(localObject1 instanceof FragmentActivity)) {
             continue;
           }
-          localObject2 = QQCustomArkDialog.AppInfo.zipArgs(ahdr.a(this.jdField_a_of_type_Ahds.a.this$0), this.c, "0.0.0.1", this.d, ArkAppCenterUtil.getDensity(), null, null);
-          ahdr.a(this.jdField_a_of_type_Ahds.a.this$0, bfur.a((Context)localObject1, null, (Bundle)localObject2));
-          ahdr.a(this.jdField_a_of_type_Ahds.a.this$0).setNegativeButton(2131690620, null);
-          ahdr.a(this.jdField_a_of_type_Ahds.a.this$0).setPositiveButton(2131694201, null);
-          ahdr.a(this.jdField_a_of_type_Ahds.a.this$0).show();
+          localObject2 = QQCustomArkDialog.AppInfo.zipArgs(ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0), this.c, "0.0.0.1", this.d, ArkAppCenterUtil.getDensity(), null, null);
+          ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0, bhdj.a((Context)localObject1, null, (Bundle)localObject2));
+          ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0).setNegativeButton(2131690697, null);
+          ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0).setPositiveButton(2131694399, null);
+          ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0).show();
           return;
         }
         if (this.b.equals("card"))
         {
           localObject3 = new ArkAppMessage();
           ((ArkAppMessage)localObject3).appMinVersion = "0.0.0.1";
-          ((ArkAppMessage)localObject3).appName = ahdr.a(this.jdField_a_of_type_Ahds.a.this$0);
+          ((ArkAppMessage)localObject3).appName = ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0);
           ((ArkAppMessage)localObject3).appView = this.c;
           localObject2 = ArkAppCacheMgr.getApplicationFromManifest(((ArkAppMessage)localObject3).appName, ((ArkAppMessage)localObject3).appMinVersion);
           if (localObject2 != null)
@@ -98,7 +98,7 @@ public class ArkDebugChatPie$1$1$4
           if (TextUtils.isEmpty(((ArkAppMessage)localObject3).appDesc)) {
             ((ArkAppMessage)localObject3).appDesc = ((ArkAppMessage)localObject3).appName;
           }
-          ((ArkAppMessage)localObject3).promptText = String.format(amtj.a(2131699813), new Object[] { ((ArkAppMessage)localObject3).appDesc });
+          ((ArkAppMessage)localObject3).promptText = String.format(anvx.a(2131700164), new Object[] { ((ArkAppMessage)localObject3).appDesc });
           ((ArkAppMessage)localObject3).metaList = this.d;
           if (localObject1 != null) {}
         }
@@ -113,7 +113,7 @@ public class ArkDebugChatPie$1$1$4
           {
             try
             {
-              ahdr.a((JSONObject)localObject1);
+              ahyj.a((JSONObject)localObject1);
               ((JSONObject)localObject1).put("type", "card");
               for (;;)
               {
@@ -121,11 +121,11 @@ public class ArkDebugChatPie$1$1$4
                 {
                   label505:
                   ((ArkAppMessage)localObject3).config = ((JSONObject)localObject1).toString();
-                  localObject1 = this.jdField_a_of_type_Ahds.a.this$0.getSessionInfo();
+                  localObject1 = this.jdField_a_of_type_Ahyk.a.this$0.getSessionInfo();
                   if (localObject1 == null) {
                     break;
                   }
-                  ahdr.a(this.jdField_a_of_type_Ahds.a.this$0, (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), (SessionInfo)localObject1, (ArkAppMessage)localObject3);
+                  ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0, (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), (SessionInfo)localObject1, (ArkAppMessage)localObject3);
                   return;
                   if (this.b.equals("fullscreen"))
                   {
@@ -133,8 +133,8 @@ public class ArkDebugChatPie$1$1$4
                       break;
                     }
                     localObject1 = (FragmentActivity)BaseActivity.sTopActivity;
-                    aovl.a(null, ahdr.a(this.jdField_a_of_type_Ahds.a.this$0), "FullScreenOrH5ShowForAI", 0, 0, 0L, 0L, 0L, "", "");
-                    ArkFullScreenAppActivity.a((Context)localObject1, ahdr.a(this.jdField_a_of_type_Ahds.a.this$0), this.c, "0.0.0.1", this.d, ArkAppCenterUtil.getDensity(), null, 0);
+                    apyp.a(null, ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0), "FullScreenOrH5ShowForAI", 0, 0, 0L, 0L, 0L, "", "");
+                    ArkFullScreenAppActivity.a((Context)localObject1, ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0), this.c, "0.0.0.1", this.d, ArkAppCenterUtil.getDensity(), null, 0);
                     return;
                   }
                   if (!this.b.equals("default")) {
@@ -142,7 +142,7 @@ public class ArkDebugChatPie$1$1$4
                   }
                   localObject3 = new ArkAppMessage();
                   ((ArkAppMessage)localObject3).appMinVersion = "0.0.0.1";
-                  ((ArkAppMessage)localObject3).appName = ahdr.a(this.jdField_a_of_type_Ahds.a.this$0);
+                  ((ArkAppMessage)localObject3).appName = ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0);
                   ((ArkAppMessage)localObject3).appView = this.c;
                   localObject2 = ArkAppCacheMgr.getApplicationFromManifest(((ArkAppMessage)localObject3).appName, ((ArkAppMessage)localObject3).appMinVersion);
                   if (localObject2 != null)
@@ -153,7 +153,7 @@ public class ArkDebugChatPie$1$1$4
                   if (TextUtils.isEmpty(((ArkAppMessage)localObject3).appDesc)) {
                     ((ArkAppMessage)localObject3).appDesc = ((ArkAppMessage)localObject3).appName;
                   }
-                  ((ArkAppMessage)localObject3).promptText = String.format(amtj.a(2131699809), new Object[] { ((ArkAppMessage)localObject3).appDesc });
+                  ((ArkAppMessage)localObject3).promptText = String.format(anvx.a(2131700160), new Object[] { ((ArkAppMessage)localObject3).appDesc });
                   ((ArkAppMessage)localObject3).metaList = this.d;
                   if (localObject1 != null) {
                     break label900;
@@ -167,17 +167,17 @@ public class ArkDebugChatPie$1$1$4
                   {
                     try
                     {
-                      ahdr.a((JSONObject)localObject1);
+                      ahyj.a((JSONObject)localObject1);
                       ((JSONObject)localObject1).put("type", "normal");
                       for (;;)
                       {
                         label826:
                         ((ArkAppMessage)localObject3).config = ((JSONObject)localObject1).toString();
-                        localObject1 = this.jdField_a_of_type_Ahds.a.this$0.getSessionInfo();
+                        localObject1 = this.jdField_a_of_type_Ahyk.a.this$0.getSessionInfo();
                         if (localObject1 == null) {
                           break;
                         }
-                        ahdr.a(this.jdField_a_of_type_Ahds.a.this$0, (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), (SessionInfo)localObject1, (ArkAppMessage)localObject3);
+                        ahyj.a(this.jdField_a_of_type_Ahyk.a.this$0, (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), (SessionInfo)localObject1, (ArkAppMessage)localObject3);
                         return;
                         localJSONException3 = localJSONException3;
                       }

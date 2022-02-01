@@ -49,7 +49,7 @@ public class ScrollLinearLayout
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.b = findViewById(2131366611);
+    this.b = findViewById(2131366722);
     this.jdField_a_of_type_AndroidWidgetOverScroller = new OverScroller(getContext());
   }
   

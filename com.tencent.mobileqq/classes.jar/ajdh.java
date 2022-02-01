@@ -1,31 +1,29 @@
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqcircle.chat.QCircleObserver;
-import java.lang.ref.WeakReference;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
 
 public class ajdh
-  extends QCircleObserver
+  extends RecyclerView.OnScrollListener
 {
-  private WeakReference<Conversation> a;
+  public ajdh(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
   
-  public ajdh(Conversation paramConversation)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a = new WeakReference(paramConversation);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    TroopRecommendFriendFragment.a(this.a, paramInt);
+    if (paramInt == 0)
+    {
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopRecommendFriendFragment.a(this.a).getItemCount())) {
+        TroopRecommendFriendFragment.a(this.a);
+      }
+    }
   }
   
-  public void onUpdateRedPoint(int paramInt)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    Conversation localConversation = (Conversation)this.a.get();
-    StringBuilder localStringBuilder = new StringBuilder().append("QCircleObserver onUpdateRedPoint: ");
-    if (localConversation != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("Q.recent", 2, bool);
-      if (localConversation != null) {
-        localConversation.q();
-      }
-      return;
-    }
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

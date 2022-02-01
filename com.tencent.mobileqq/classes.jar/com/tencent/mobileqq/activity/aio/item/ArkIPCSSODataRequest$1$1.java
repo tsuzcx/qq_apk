@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afxf;
-import afxg;
+import agpu;
+import agpv;
 import java.lang.ref.WeakReference;
 
 public class ArkIPCSSODataRequest$1$1
   implements Runnable
 {
-  public ArkIPCSSODataRequest$1$1(afxg paramafxg, int paramInt1, int paramInt2, String paramString) {}
+  public ArkIPCSSODataRequest$1$1(agpv paramagpv, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    afxf localafxf = (afxf)this.jdField_a_of_type_Afxg.a.get();
-    if (localafxf == null) {
+    agpu localagpu = (agpu)this.jdField_a_of_type_Agpv.a.get();
+    if (localagpu == null) {
       return;
     }
-    localafxf.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    localagpu.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

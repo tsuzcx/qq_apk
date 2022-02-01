@@ -1,29 +1,28 @@
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+
 public class apvm
-  extends apvk
+  implements apvl
 {
-  private apwd jdField_a_of_type_Apwd;
-  private apwn jdField_a_of_type_Apwn;
-  
-  public apvm(String paramString, apwd paramapwd, apwn paramapwn)
+  public EIPCResult a(Bundle paramBundle)
   {
-    super(paramString);
-    this.jdField_a_of_type_Apwd = paramapwd;
-    this.jdField_a_of_type_Apwn = paramapwn;
-  }
-  
-  public apwd a()
-  {
-    return this.jdField_a_of_type_Apwd;
-  }
-  
-  public apwn a()
-  {
-    return this.jdField_a_of_type_Apwn;
+    if (apuj.a() == null)
+    {
+      QLog.e("ArkApp.LaunchMiniappHandler", 1, "LaunchMiniappHandler.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
+    }
+    if (!aptq.a(paramBundle.getString("url")))
+    {
+      QLog.e("ArkApp.LaunchMiniappHandler", 1, "LaunchMiniappHandler.onCall, launch failed");
+      return EIPCResult.createResult(-102, new Bundle());
+    }
+    return EIPCResult.createResult(0, new Bundle());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvm
  * JD-Core Version:    0.7.0.1
  */

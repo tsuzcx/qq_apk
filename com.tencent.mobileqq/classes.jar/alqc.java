@@ -1,111 +1,39 @@
-import android.text.TextUtils;
-import java.io.File;
+import android.os.Handler;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-public class alqc
+class alqc
+  extends SosoInterface.OnLocationListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
+  private int jdField_a_of_type_Int = -1;
   
-  public static String a(String paramString1, long paramLong, int paramInt, String paramString2)
+  public alqc(alpz paramalpz, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return "";
-    }
-    if (paramString1.endsWith("/")) {
-      return paramString1 + paramLong + "/" + paramInt + "/" + paramString2;
-    }
-    return paramString1 + "/" + paramLong + "/" + paramInt + "/" + paramString2;
+    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public static boolean a(int paramInt, long paramLong, String paramString1, String paramString2)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (100 == paramInt) {
-      return new File(amip.jdField_b_of_type_JavaLangString + paramInt + "_" + paramLong + "_" + paramString1 + File.separator + paramString2).exists();
-    }
-    return false;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_Int + "_" + this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    if (100 == this.jdField_a_of_type_Int) {
-      return amip.jdField_b_of_type_JavaLangString + a() + File.separator;
-    }
-    return "";
-  }
-  
-  public String c()
-  {
-    if (100 == this.jdField_a_of_type_Int) {
-      return b() + this.jdField_b_of_type_Int + ".zip";
-    }
-    return "";
-  }
-  
-  public String d()
-  {
-    if (100 == this.jdField_a_of_type_Int) {
-      return b() + this.jdField_b_of_type_Int + "_patch.zip";
-    }
-    return "";
-  }
-  
-  public String e()
-  {
-    if (100 == this.jdField_a_of_type_Int) {
-      return b() + this.jdField_c_of_type_Int + ".zip";
-    }
-    return "";
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("ContentUpdateCheckResult{");
-    localStringBuffer.append("mBuzId=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mItemId=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", mName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mVersion=").append(this.jdField_b_of_type_Int);
-    localStringBuffer.append(", mOldVersion=").append(this.jdField_c_of_type_Int);
-    localStringBuffer.append(", mDownloadFileUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mIsPatch=").append(this.jdField_a_of_type_Boolean);
-    localStringBuffer.append(", mPatchData=");
-    if (this.jdField_a_of_type_ArrayOfByte == null) {
-      localStringBuffer.append("null");
-    }
-    for (;;)
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
-      localStringBuffer.append(", mPatchSize=").append(this.jdField_b_of_type_Long);
-      localStringBuffer.append(", mDownloadPatchFileUrl='").append(this.jdField_c_of_type_JavaLangString).append('\'');
-      localStringBuffer.append(", mMd5='").append(this.jdField_d_of_type_JavaLangString).append('\'');
-      localStringBuffer.append(", mDownloadFileName='").append(this.jdField_e_of_type_JavaLangString).append('\'');
-      localStringBuffer.append(", mDownloadPatchFileName='").append(this.jdField_f_of_type_JavaLangString).append('\'');
-      localStringBuffer.append(", mFlagWriteIntervalTs=").append(this.jdField_b_of_type_Boolean);
-      localStringBuffer.append(", mCheckServerInterval=").append(this.jdField_d_of_type_Int);
-      localStringBuffer.append(", mCheckRequestId=").append(this.jdField_e_of_type_Int);
-      localStringBuffer.append(", mDomainId=").append(this.jdField_f_of_type_Int);
-      localStringBuffer.append('}');
-      return localStringBuffer.toString();
-      localStringBuffer.append("mPatchData:").append(this.jdField_a_of_type_ArrayOfByte);
+      double d1 = paramSosoLbsInfo.mLocation.mLat02;
+      double d2 = paramSosoLbsInfo.mLocation.mLon02;
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2);
+      }
+      alpz.a(this.jdField_a_of_type_Alpz, d1, d2, this.jdField_a_of_type_Int);
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
+      }
+    } while ((alpz.a(this.jdField_a_of_type_Alpz) == null) || (!alpz.a(this.jdField_a_of_type_Alpz).hasMessages(this.jdField_a_of_type_Int)));
+    alpz.a(this.jdField_a_of_type_Alpz, false, null, this.jdField_a_of_type_Int);
   }
 }
 

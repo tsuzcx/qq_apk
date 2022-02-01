@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.mini.entry.desktop.widget;
 
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
@@ -19,7 +20,7 @@ class DragAdapter$2$1
       try
       {
         if (this.this$1.val$desktopAppInfo.mModuleType == 1) {
-          ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(336)).loadMoreRecentIfNeed();
+          ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).loadMoreRecentIfNeed();
         }
         return;
       }

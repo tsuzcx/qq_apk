@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.home;
 
-import ocw;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import pkh;
 
 class Conversation$24
   implements Runnable
@@ -9,7 +10,7 @@ class Conversation$24
   
   public void run()
   {
-    ocw.a().a(this.this$0.a);
+    pkh.a(Conversation.a(this.this$0).getMeasuredHeight(), Conversation.a(this.this$0).getResources());
   }
 }
 

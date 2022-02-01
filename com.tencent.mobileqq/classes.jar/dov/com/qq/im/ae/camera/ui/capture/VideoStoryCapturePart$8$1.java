@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.ui.capture;
 
 import android.view.View;
-import blqw;
-import blre;
+import bnef;
+import bnen;
 
 public class VideoStoryCapturePart$8$1
   implements Runnable
 {
-  public VideoStoryCapturePart$8$1(blre paramblre) {}
+  public VideoStoryCapturePart$8$1(bnen parambnen) {}
   
   public void run()
   {
-    if (blqw.a(this.a.a)) {
-      blqw.e(this.a.a).setVisibility(8);
+    if (bnef.a(this.a.a)) {
+      bnef.e(this.a.a).setVisibility(8);
     }
   }
 }

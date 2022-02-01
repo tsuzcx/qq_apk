@@ -11,7 +11,7 @@
                 <include android:id="@id/fam" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" layout="@layout/ae4" />
                 <include android:id="@id/cwb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" layout="@layout/ae6" />
                 <ImageButton android:id="@id/az9" android:background="@null" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:layout_width="22.0dip" android:layout_height="22.0dip" android:src="@drawable/dws" android:layout_alignParentRight="true" />
-                <include layout="@layout/cnb" />
+                <include layout="@layout/cp_" />
             </RelativeLayout>
             <include layout="@layout/ae8" />
         </RelativeLayout>

@@ -1,26 +1,28 @@
+import com.tencent.qphone.base.util.QLog;
+
 class aibu
-  implements Comparable<aibu>
+  implements anwu
 {
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
+  aibu(aibs paramaibs) {}
   
-  aibu(aibs paramaibs, String paramString, Long paramLong)
+  public boolean a(anwz paramanwz)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-  }
-  
-  public int a(aibu paramaibu)
-  {
-    if (this.jdField_a_of_type_JavaLangLong.longValue() > paramaibu.jdField_a_of_type_JavaLangLong.longValue()) {
-      return -1;
+    if (QLog.isDevelopLevel()) {
+      axql.a(this.a.tag, "onShowHotchatNote", new Object[] { paramanwz });
     }
-    return 1;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    if (paramanwz == null)
+    {
+      if ((this.a.a.b) && (aibs.a(this.a) != null)) {
+        aibs.b(this.a).a(this.a.app, this.a.mContext, null, null);
+      }
+      return false;
+    }
+    if (aibs.c(this.a) == null) {
+      aibs.a(this.a, new bfxw(this.a.app, this.a.mActivity, this.a.sessionInfo, aibs.a(this.a), aibs.a(this.a), this.a.mTroopTips, aibs.a(this.a), null));
+    }
+    aibs.d(this.a).a(this.a.app, this.a.mContext, paramanwz.a, paramanwz.b);
+    this.a.a.b = true;
+    return true;
   }
 }
 

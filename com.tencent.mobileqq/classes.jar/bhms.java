@@ -1,15 +1,14 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bhms
-  implements MediaPlayer.OnErrorListener
+class bhms
+  implements DialogInterface.OnClickListener
 {
-  public bhms(VideoTextureView paramVideoTextureView) {}
+  bhms(bhmn parambhmn, long paramLong, int paramInt, String paramString) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    this.jdField_a_of_type_Bhmn.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

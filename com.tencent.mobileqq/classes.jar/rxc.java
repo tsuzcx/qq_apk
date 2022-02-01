@@ -1,16 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.graphics.Bitmap;
 
-final class rxc
-  extends AnimatorListenerAdapter
+class rxc
+  implements rxj
 {
-  rxc(View paramView) {}
+  rxc(rxb paramrxb, rwo paramrwo) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a() {}
+  
+  public void a(Bitmap paramBitmap, rxh paramrxh)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setTag(2131362701, null);
+    this.jdField_a_of_type_Rwo.a(paramBitmap);
+    rxb.a(this.jdField_a_of_type_Rxb, paramBitmap, paramrxh.c);
   }
 }
 

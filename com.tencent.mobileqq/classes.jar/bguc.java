@@ -1,40 +1,20 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class bguc
-  implements RadioGroup.OnCheckedChangeListener
+  implements DialogInterface.OnDismissListener
 {
-  bguc(bgtw parambgtw) {}
+  bguc(bgua parambgua) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.a.mTopTabHelper != null) && (!TextUtils.isEmpty(this.a.mTopTabHelper.a))) {
-      this.a.mTopTabHelper.a(paramInt);
-    }
-    for (;;)
+    if ((this.a.jdField_a_of_type_Int == -1) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)))
     {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
-      TouchWebView localTouchWebView = this.a.mUIStyleHandler.getWebView();
-      if (localTouchWebView != null)
-      {
-        String str2 = localTouchWebView.getUrl();
-        String str1 = str2;
-        if (TextUtils.isEmpty(str2))
-        {
-          str1 = str2;
-          if (this.a.intent != null) {
-            str1 = this.a.intent.getStringExtra("url");
-          }
-        }
-        if (!TextUtils.isEmpty(str1)) {
-          localTouchWebView.loadUrl(str1.replaceAll("(?<=[?&])subIndex=[^&]*", "subIndex=" + paramInt));
-        }
+      ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopShareUtility", 2, "mShareActionSheet noItemClick, onDismiss");
       }
     }
   }

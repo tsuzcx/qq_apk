@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.QQWalletMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public class aces
-  extends acew
+class aces
+  implements ValueCallback<String>
 {
-  public int a()
-  {
-    return 1000;
-  }
+  aces(acer paramacer) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
+  public void a(String paramString)
   {
-    new bblb().e(paramList, paramList1, paramStringBuilder, paramMsg, parambdyi);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.qqwallet_msg.has();
+    QLog.i("GdtMvElementsHelper", 1, "callJs onReceiveValue " + paramString);
   }
 }
 

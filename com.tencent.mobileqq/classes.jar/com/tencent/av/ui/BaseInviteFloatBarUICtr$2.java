@@ -1,12 +1,12 @@
 package com.tencent.av.ui;
 
 import com.tencent.qphone.base.util.QLog;
-import mbn;
+import mci;
 
 public class BaseInviteFloatBarUICtr$2
   implements Runnable
 {
-  public BaseInviteFloatBarUICtr$2(mbn parammbn) {}
+  public BaseInviteFloatBarUICtr$2(mci parammci) {}
   
   public void run()
   {

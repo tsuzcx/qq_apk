@@ -17,22 +17,22 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.ArrayList;
 import java.util.List;
-import pay;
-import pgb;
-import pvc;
-import qpj;
-import qps;
-import qtr;
-import rdm;
-import rdn;
-import rfj;
-import rfl;
+import ppe;
+import pqw;
+import qfw;
+import rbo;
+import rbx;
+import rfw;
+import rps;
+import rpt;
+import rrq;
+import rrs;
 
 public class ComponentTitle
   extends FrameLayout
-  implements qpj
+  implements rbo
 {
-  qtr a;
+  rfw a;
   TextView c;
   
   public ComponentTitle(Context paramContext)
@@ -62,16 +62,16 @@ public class ComponentTitle
   private void a(Context paramContext, Object paramObject)
   {
     b(paramContext);
-    if ((paramObject instanceof pvc))
+    if ((paramObject instanceof qfw))
     {
-      this.a.a((pvc)paramObject);
+      this.a.a((qfw)paramObject);
       b();
     }
   }
   
   private void b(Context paramContext)
   {
-    this.a = new qtr();
+    this.a = new rfw();
     a(paramContext);
     a();
   }
@@ -80,30 +80,30 @@ public class ComponentTitle
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131560144, this, true);
-    this.c = ((TextView)findViewById(2131364958));
+    LayoutInflater.from(paramContext).inflate(2131560191, this, true);
+    this.c = ((TextView)findViewById(2131365042));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pvc))
+    if ((paramObject instanceof qfw))
     {
-      paramObject = (pvc)paramObject;
+      paramObject = (qfw)paramObject;
       this.a.a(paramObject);
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       try
       {
         ArticleInfo localArticleInfo = paramObject.a();
-        if (((pgb.g(localArticleInfo)) || (pgb.i(localArticleInfo)) || (pgb.j(localArticleInfo)) || (pgb.k(localArticleInfo))) && (!pgb.q(paramObject.a()))) {
-          paramObject = ((rfl)paramObject.a().mSocialFeedInfo.a.b.get(0)).e;
+        if (((ppe.g(localArticleInfo)) || (ppe.i(localArticleInfo)) || (ppe.j(localArticleInfo)) || (ppe.k(localArticleInfo))) && (!ppe.q(paramObject.a()))) {
+          paramObject = ((rrs)paramObject.a().mSocialFeedInfo.a.b.get(0)).e;
         }
         for (;;)
         {
           localSpannableStringBuilder.append(paramObject);
           this.c.setText(localSpannableStringBuilder);
           return;
-          if (pay.s(localArticleInfo)) {
-            paramObject = ((rdn)localArticleInfo.mNewPolymericInfo.a.get(0)).a;
+          if (pqw.g(localArticleInfo)) {
+            paramObject = ((rpt)localArticleInfo.mNewPolymericInfo.a.get(0)).a;
           } else {
             paramObject = paramObject.a().mTitle;
           }
@@ -117,9 +117,9 @@ public class ComponentTitle
     }
   }
   
-  public void a(qps paramqps)
+  public void a(rbx paramrbx)
   {
-    this.a.a(paramqps);
+    this.a.a(paramrbx);
   }
   
   public void b()
@@ -141,7 +141,7 @@ public class ComponentTitle
       }
       this.c.setLayoutParams(localLayoutParams1);
       return;
-      if (pay.s(this.a.a.a()))
+      if (pqw.g(this.a.a.a()))
       {
         this.c.setTextSize(14.0F);
         this.c.setTextColor(Color.parseColor("#D8FFFFFF"));
@@ -194,7 +194,7 @@ public class ComponentTitle
         localLayoutParams1.leftMargin = AIOUtils.dp2px(12.0F, getResources());
         localLayoutParams1.rightMargin = AIOUtils.dp2px(20.0F, getResources());
       }
-      else if ((this.a.e()) || (this.a.g()) || (qtr.b(this.a.a.a())) || (this.a.h()))
+      else if ((this.a.e()) || (this.a.g()) || (rfw.b(this.a.a.a())) || (this.a.h()))
       {
         localLayoutParams1.topMargin = AIOUtils.dp2px(13.0F, getResources());
         localLayoutParams1.bottomMargin = AIOUtils.dp2px(17.0F, getResources());
@@ -224,16 +224,16 @@ public class ComponentTitle
   
   public void setReadedStatus(boolean paramBoolean)
   {
-    if ((!this.a.i()) && (!this.a.k()) && (!qtr.b(this.a.a.a())))
+    if ((!this.a.i()) && (!this.a.k()) && (!rfw.b(this.a.a.a())))
     {
       if (!paramBoolean) {
-        this.c.setTextColor(getContext().getResources().getColor(2131165351));
+        this.c.setTextColor(getContext().getResources().getColor(2131165357));
       }
     }
     else {
       return;
     }
-    this.c.setTextColor(getContext().getResources().getColor(2131166477));
+    this.c.setTextColor(getContext().getResources().getColor(2131166491));
   }
 }
 

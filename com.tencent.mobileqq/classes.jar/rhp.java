@@ -1,112 +1,40 @@
-import android.graphics.BitmapFactory.Options;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUGCVoice;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class rhp
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options;
-  private CompressInfo jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public rhp(ComponentContentUGCVoice paramComponentContentUGCVoice) {}
   
-  public rhp(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity, String paramString, long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  private boolean a(String paramString, CompressInfo paramCompressInfo, boolean paramBoolean, BitmapFactory.Options paramOptions)
-  {
-    if (paramBoolean) {
-      if (ReadInJoyDeliverUGCActivity.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity))
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((ComponentContentUGCVoice.a(this.a) != null) && (!TextUtils.isEmpty(ComponentContentUGCVoice.a(this.a).voiceUrl))) {
+      if (ComponentContentUGCVoice.a(this.a).isPlaying)
       {
-        paramBoolean = ayeu.a(paramCompressInfo);
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyDeliverUGCActivity", 2, "compress result= " + paramBoolean);
-        }
-        if (paramBoolean) {
-          break label129;
-        }
-        ReadInJoyDeliverUGCActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity, 1001);
-        QLog.d("ReadInJoyDeliverUGCActivity", 2, "startUploadPic compressPath=" + paramCompressInfo.jdField_e_of_type_JavaLangString + ", path=" + paramString + ", width=" + paramCompressInfo.d + ", height=" + paramCompressInfo.jdField_e_of_type_Int);
+        olh.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, localQQAppInterface.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "2", "", false);
+        sen.a().a();
       }
     }
     for (;;)
     {
-      return false;
-      return true;
-      label129:
-      ReadInJoyDeliverUGCActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity).add(paramCompressInfo.jdField_e_of_type_JavaLangString);
-      break;
-      paramCompressInfo.d = paramOptions.outWidth;
-      paramCompressInfo.jdField_e_of_type_Int = paramOptions.outHeight;
-    }
-  }
-  
-  private boolean a(String paramString, boolean paramBoolean, BitmapFactory.Options paramOptions)
-  {
-    int i;
-    try
-    {
-      paramOptions.inJustDecodeBounds = true;
-      bfvo.a(paramString, paramOptions);
-      if (paramOptions.outHeight > paramOptions.outWidth) {
-        i = paramOptions.outHeight;
-      } else {
-        i = paramOptions.outWidth;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      olh.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, localQQAppInterface.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "1", "", false);
+      sen.a().a(this.a, ComponentContentUGCVoice.a(this.a));
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.d(ComponentContentUGCVoice.a, 2, "mUGCVoiceInfo or its voiceUrl is null");
       }
     }
-    catch (Exception paramString)
-    {
-      QLog.d("ReadInJoyDeliverUGCActivity", 2, "isNeedCompress error" + paramString.toString());
-      return paramBoolean;
-    }
-    if (i <= 2560) {
-      paramBoolean = false;
-    }
-    return paramBoolean;
-  }
-  
-  public BitmapFactory.Options a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options;
-  }
-  
-  public CompressInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
-  }
-  
-  public rhp a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo = new CompressInfo(this.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.f = 0;
-    this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.a = 1036;
-    this.b = true;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
-    this.b = a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
-    QLog.d("ReadInJoyDeliverUGCActivity", 2, "beforeCompress picture: w:" + this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.outWidth + "  h:" + this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.outHeight + " size:" + this.jdField_a_of_type_Long / 1024L + "kb isNeedCompress:" + this.b);
-    if (a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo, this.b, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return this;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    return this;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
   }
 }
 

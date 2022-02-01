@@ -1,118 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class avtu
-  implements avtl
+class avtu
+  extends Handler
 {
-  public static String a;
-  
-  static
+  avtu(avts paramavts, Looper paramLooper)
   {
-    jdField_a_of_type_JavaLangString = "MsgBackup_MsgBackupMultiMsgProcessor";
+    super(paramLooper);
   }
   
-  public avtu(QQAppInterface paramQQAppInterface) {}
-  
-  public static String a(String paramString, MessageRecord paramMessageRecord)
+  public void handleMessage(Message paramMessage)
   {
-    String str = ((MessageForStructing)paramMessageRecord).structingMsg.mFileName;
-    paramMessageRecord = new JSONObject();
+    int i = paramMessage.arg1;
+    if ((i < avts.b(this.a)) || (i > 95)) {
+      return;
+    }
+    avts.b(this.a, i);
+    avts.a(this.a, "STATE_Loading:" + i);
+    paramMessage = new JSONObject();
     try
     {
-      paramMessageRecord.put("selfuin", paramString);
-      paramMessageRecord.put("uuid", str);
-      paramMessageRecord.put("msgType", 4);
-      paramMessageRecord.put("msgSubType", 10);
-      return paramMessageRecord.toString();
+      paramMessage.putOpt("state", Integer.valueOf(4));
+      paramMessage.putOpt("totalSize", Integer.valueOf(100));
+      paramMessage.putOpt("pro", Integer.valueOf(i));
+      this.a.callJs(this.a.a, new String[] { paramMessage.toString() });
+      paramMessage = Message.obtain();
+      paramMessage.arg1 = (i + 5);
+      sendMessageDelayed(paramMessage, 500L);
+      return;
     }
-    catch (JSONException paramString)
+    catch (JSONException localJSONException)
     {
       for (;;)
       {
-        paramString.printStackTrace();
+        localJSONException.printStackTrace();
       }
     }
   }
-  
-  public static List<MessageRecord> a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll((Collection)paramHashMap.get((String)localIterator.next()));
-    }
-    return localArrayList;
-  }
-  
-  public static String b(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
-      try
-      {
-        paramMessageRecord = avwu.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
-        return paramMessageRecord;
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
-    }
-    return "";
-  }
-  
-  public avty a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    avty localavty = new avty();
-    localavty.jdField_a_of_type_JavaLangString = a(paramMessageRecord, paramMsgBackupResEntity);
-    localavty.jdField_a_of_type_Boolean = true;
-    return localavty;
-  }
-  
-  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
-      try
-      {
-        paramMessageRecord = avwu.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
-        return paramMessageRecord;
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
-    }
-    return "";
-  }
-  
-  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof ChatMessage)) {
-      return awct.a((ChatMessage)paramMessageRecord);
-    }
-    return false;
-  }
-  
-  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    return paramMsgBackupResEntity.msgType == 4;
-  }
-  
-  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
 }
 
 

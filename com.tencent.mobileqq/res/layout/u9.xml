@@ -5,15 +5,15 @@
     <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="18.0dip">
         <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:gravity="left" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginRight="18.0dip" android:layout_marginBottom="10.0dip" android:text="@string/p36" />
         <LinearLayout android:gravity="center" android:id="@id/fmj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/fmk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wqu" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/fmk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ww6" />
             <TextView android:textSize="14.0sp" android:textColor="#ffff8343" android:id="@id/fml" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
         </LinearLayout>
         <LinearLayout android:gravity="center" android:id="@id/fn7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/fnd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wql" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:id="@id/fnd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wvx" />
             <TextView android:textSize="14.0sp" android:textColor="#ffff8343" android:id="@id/fne" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
         </LinearLayout>
         <LinearLayout android:gravity="center" android:id="@id/fms" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:gravity="right" android:id="@id/fmt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wqt" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:gravity="right" android:id="@id/fmt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ww5" />
             <TextView android:textSize="14.0sp" android:textColor="#ffff8343" android:id="@id/fmu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
         </LinearLayout>
     </LinearLayout>

@@ -1,23 +1,22 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.List;
-import java.util.Map;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajuz
-  implements akbj
+public class ajuz
+  implements View.OnClickListener
 {
-  ajuz(ajux paramajux, AppInterface paramAppInterface) {}
+  public ajuz(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(View paramView)
   {
-    List localList = (List)ajux.a(this.jdField_a_of_type_Ajux).get(paramPathResult.url);
-    if (paramPathResult.url.endsWith(".zip")) {
-      ajux.a(this.jdField_a_of_type_Ajux, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, paramPathResult.folderPath, localList);
+    if (this.a.jdField_d_of_type_Int == 11) {
+      bdla.b(this.a.getActivity().app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
     }
-    while (!paramPathResult.url.endsWith(".png")) {
-      return;
-    }
-    ajux.a(this.jdField_a_of_type_Ajux, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, localList);
+    this.a.jdField_d_of_type_AndroidAppDialog.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

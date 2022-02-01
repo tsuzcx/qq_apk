@@ -9,6 +9,6 @@
         <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/hul" android:background="@drawable/ci0" android:paddingLeft="10.0dip" android:paddingTop="11.0dip" android:paddingRight="10.0dip" android:paddingBottom="11.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:includeFontPadding="false" android:layout_below="@id/hk9" />
     </RelativeLayout>
     <include android:id="@id/e7g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="2.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" layout="@layout/y6" />
-    <include android:id="@id/mzq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="2.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" layout="@layout/cjz" />
+    <include android:id="@id/n4v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="2.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" layout="@layout/clf" />
     <include layout="@layout/za" />
 </RelativeLayout>

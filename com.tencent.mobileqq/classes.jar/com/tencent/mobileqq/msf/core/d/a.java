@@ -177,7 +177,7 @@ public class a
     if ((MsfCore.sCore != null) && (MsfCore.sCore.quicksender != null))
     {
       com.tencent.mobileqq.a.a.a.a().a(n());
-      MsfCore.sCore.quicksender.b(true);
+      MsfCore.sCore.quicksender.c(true);
     }
   }
   
@@ -197,7 +197,7 @@ public class a
       if ((MsfCore.sCore != null) && (MsfCore.sCore.quicksender != null))
       {
         com.tencent.mobileqq.a.a.a.a().d();
-        MsfCore.sCore.quicksender.h();
+        MsfCore.sCore.quicksender.g();
       }
       return;
       QLog.d("StandbyModeManager", 1, "stop try start standby by lockScreenMsg ON when screenoff");

@@ -1,11 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import java.util.List;
 
-public class spv
-  implements bjsz
+public abstract interface spv
 {
-  public spv(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public abstract List<spw> a(int paramInt, boolean paramBoolean);
   
-  public void a(bjsy parambjsy) {}
+  public abstract boolean a();
 }
 
 

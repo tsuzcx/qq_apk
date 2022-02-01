@@ -51,6 +51,11 @@ public class i
     com.tencent.beacon.core.a.f.a(paramContext).b().a("GEN_QIMEI_TIMES", Integer.valueOf(i + 1)).a();
   }
   
+  public static void a(Context paramContext, long paramLong)
+  {
+    com.tencent.beacon.core.a.f.a(paramContext).b().a("QIMEI_TINE", Long.valueOf(paramLong)).a();
+  }
+  
   public static void a(Context paramContext, String paramString)
   {
     if (j.b(paramString)) {
@@ -76,7 +81,13 @@ public class i
   
   public static boolean b(Context paramContext)
   {
-    return (b.a().equals(d(paramContext))) && (e(paramContext) >= e.a(paramContext).a());
+    long l = com.tencent.beacon.core.a.f.a(paramContext).a("QIMEI_TINE", 0L);
+    if ((l == 0L) || (System.currentTimeMillis() - l >= 86400000L)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      d.a("[qimei] lastUpdateQimei time: " + l + ", isOver24h: " + bool, new Object[0]);
+      return bool;
+    }
   }
   
   public static String c(Context paramContext)

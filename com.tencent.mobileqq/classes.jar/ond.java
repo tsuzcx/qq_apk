@@ -1,46 +1,35 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ond
-  extends Handler
+class ond
+  implements URLDrawableDownListener
 {
-  public ond(ReadInJoyUploadAvatarFragment paramReadInJoyUploadAvatarFragment, Looper paramLooper)
+  ond(onc paramonc) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.i("PubAccountTipsManager", 2, "img Load Failed.");
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    super.handleMessage(paramMessage);
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("PubAccountTipsManager", 2, "img Load Interrupted.");
     }
-    Intent localIntent = localFragmentActivity.getIntent();
-    Bundle localBundle = new Bundle();
-    switch (paramMessage.what)
-    {
-    default: 
-      localBundle.putString("msg", amtj.a(2131712138));
-      localBundle.putInt("retCode", 3);
-      localIntent.putExtra("Bundle", localBundle);
-      localFragmentActivity.setResult(-1, localIntent);
-    }
-    for (;;)
-    {
-      localFragmentActivity.finish();
-      return;
-      localBundle.putString("url", (String)paramMessage.obj);
-      localBundle.putInt("retCode", 0);
-      localBundle.putString("msg", amtj.a(2131712197));
-      localIntent.putExtra("Bundle", localBundle);
-      localFragmentActivity.setResult(-1, localIntent);
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (onc.a(this.a) != null) {
+      onc.a(this.a).setVisibility(0);
     }
   }
 }

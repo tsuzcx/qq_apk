@@ -1,15 +1,15 @@
 package com.tencent.open.appstore.dl;
 
-import bhyo;
-import bhzd;
-import bhzm;
+import bjjq;
+import bjkf;
+import bjko;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 
 public class DownloadManagerV2$6
   implements Runnable
 {
-  public DownloadManagerV2$6(bhyo parambhyo, DownloadInfo paramDownloadInfo) {}
+  public DownloadManagerV2$6(bjjq parambjjq, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -22,14 +22,14 @@ public class DownloadManagerV2$6
         this.this$0.c(this.a);
         this.this$0.a(4, this.a);
       }
-      bhzm.b("AppCenterReporter", "from:[onDownloadComplete]");
-      bhzd.b(this.a);
+      bjko.b("AppCenterReporter", "from:[onDownloadComplete]");
+      bjkf.b(this.a);
       this.this$0.a(this.a, false);
       return;
     }
     catch (Exception localException)
     {
-      bhzm.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
+      bjko.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
     }
   }
 }

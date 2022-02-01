@@ -1,74 +1,186 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity.2.1;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.SafeModeUtil.1;
+import com.tencent.common.app.SafeModeUtil.6;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.os.MqqHandler;
 
 public class aauu
-  implements BusinessObserver
 {
-  public aauu(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  private static final int jdField_a_of_type_Int;
+  public static long a;
+  private static final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
+  private static final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  public static long b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    this.a.jdField_a_of_type_Bhht.dismiss();
-    if (!paramBoolean)
+    if ((System.currentTimeMillis() & 1L) == 0L) {}
+    for (int i = 30;; i = 15)
     {
-      bhzt.a().a(this.a.getString(2131692713));
-      DeviceMsgSettingActivity.b(this.a);
+      jdField_a_of_type_Int = i;
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+      jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(2);
+      b = -1L;
       return;
     }
-    if (paramBundle.getInt("cgiResultCode", -1) != 0)
+  }
+  
+  public static void a()
+  {
+    aqxb.a().b();
+  }
+  
+  public static void a(Context paramContext, int paramInt)
+  {
+    if ((StatisticCollector.sCatchedNotExit) && (paramContext.getSharedPreferences("pref_safemode_not_exit", 4).getBoolean("key_not_exit_enable", false))) {}
+    SharedPreferences localSharedPreferences;
+    do
     {
-      bhzt.a().a(this.a.getString(2131692713));
-      return;
+      do
+      {
+        return;
+        localSharedPreferences = paramContext.getSharedPreferences("sp_safe_mode", 0);
+        switch (paramInt)
+        {
+        default: 
+          return;
+        case 1: 
+          paramInt = localSharedPreferences.getInt("key_count_crash", 0);
+        }
+      } while (paramInt <= 0);
+      localSharedPreferences.edit().putInt("key_count_crash", 0).commit();
+    } while ((!a()) || (paramInt <= 3));
+    StatisticCollector.getInstance(paramContext).collectPerformance("", "exitSafeModeCrash", true, 0L, 0L, null, null);
+    return;
+    paramInt = localSharedPreferences.getInt("key_count_start_fail", 0);
+    if (paramInt > 0)
+    {
+      localSharedPreferences.edit().putInt("key_count_start_fail", 0).commit();
+      if ((a()) && (paramInt > 3)) {
+        StatisticCollector.getInstance(paramContext).collectPerformance("", "exitSafeModeStart_" + jdField_a_of_type_Int, true, 0L, 0L, null, null);
+      }
+    }
+    aqxb.a().a();
+  }
+  
+  public static void a(Context paramContext, Object paramObject)
+  {
+    if ((paramObject != null) && (paramObject.toString().contains("Activity")) && (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)))
+    {
+      paramObject = paramContext.getSharedPreferences("sp_safe_mode", 0);
+      int i = paramObject.getInt("key_count_start_fail", 0);
+      if ((i > 3) && (a())) {
+        StatisticCollector.getInstance(paramContext).collectPerformance("", "enterSafeModeStart_" + jdField_a_of_type_Int, true, 0L, 0L, null, null);
+      }
+      aqxb.a().a = true;
+      aqxb.a().b = true;
+      paramObject.edit().putInt("key_count_start_fail", i + 1).commit();
+      ThreadManager.getSubThreadHandler().postDelayed(new SafeModeUtil.1(paramContext), jdField_a_of_type_Int * 1000L);
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    Object localObject = paramContext.getSharedPreferences("sp_safe_mode", 0);
+    int i = ((SharedPreferences)localObject).getInt("key_count_crash", 0);
+    String str = ((SharedPreferences)localObject).getString("key_crash_info", "");
+    long l = ((SharedPreferences)localObject).getLong("key_crash_time", 0L);
+    localObject = ((SharedPreferences)localObject).edit();
+    if (str.equals(paramString)) {
+      if (Math.abs(System.currentTimeMillis() - l) > 21600000L)
+      {
+        ((SharedPreferences.Editor)localObject).putInt("key_count_crash", 1);
+        ((SharedPreferences.Editor)localObject).putLong("key_crash_time", System.currentTimeMillis());
+      }
     }
     for (;;)
     {
-      try
+      ((SharedPreferences.Editor)localObject).commit();
+      return;
+      if (i <= 3)
       {
-        paramBundle = new JSONObject(new String(paramBundle.getByteArray("data")));
-        if (paramBundle.optInt("ret", -1) != 0)
-        {
-          bhzt.a().a(this.a.getString(2131692713));
-          this.a.jdField_a_of_type_AndroidOsHandler.post(new DeviceMsgSettingActivity.2.1(this));
-          return;
+        if ((i == 3) && (a())) {
+          StatisticCollector.getInstance(paramContext).collectPerformance("", "enterSafeModeCrash", true, 0L, 0L, null, null);
         }
-        paramBundle = paramBundle.optJSONArray("data");
-        if (paramBundle == null)
-        {
-          bhzt.a().a(this.a.getString(2131694114));
-          DeviceMsgSettingActivity.b(this.a);
-          return;
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        bhzm.e("DeviceMsgSettingActivity", "get msg setting json format faild!");
-        bhzt.a().a(this.a.getString(2131692713));
+        aqxb.a().a(false);
+        ((SharedPreferences.Editor)localObject).putInt("key_count_crash", i + 1);
         continue;
-        paramInt = 0;
+        aqxb.a().a(false);
+        ((SharedPreferences.Editor)localObject).putInt("key_count_crash", 1);
+        ((SharedPreferences.Editor)localObject).putString("key_crash_info", paramString);
+        ((SharedPreferences.Editor)localObject).putLong("key_crash_time", System.currentTimeMillis());
       }
-      while (paramInt < paramBundle.length())
-      {
-        JSONObject localJSONObject = paramBundle.getJSONObject(paramInt);
-        aauw localaauw = new aauw(this.a, null);
-        localaauw.jdField_a_of_type_Int = localJSONObject.getInt("id");
-        localaauw.jdField_a_of_type_JavaLangString = localJSONObject.getString("name");
-        localaauw.b = localJSONObject.getInt("enable");
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(localaauw);
-        paramInt += 1;
+    }
+  }
+  
+  public static void a(String paramString) {}
+  
+  private static boolean a()
+  {
+    return true;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool = false;
+    paramContext = paramContext.getSharedPreferences("sp_safe_mode", 0);
+    int i = paramContext.getInt("key_count_start_fail", 0);
+    int j = paramContext.getInt("key_count_crash", 0);
+    if ((i > 3) || (j > 3)) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      jdField_a_of_type_JavaUtilConcurrentCountDownLatch.await(10000L, TimeUnit.MILLISECONDS);
+      return;
+    }
+    catch (InterruptedException localInterruptedException) {}
+  }
+  
+  public static void c()
+  {
+    jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
+  
+  public static void d() {}
+  
+  public static void e() {}
+  
+  public static void f()
+  {
+    if (BaseApplicationImpl.processName.equals("com.tencent.mobileqq")) {}
+    try
+    {
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("not_restart_control_file", 4);
+      boolean bool = localSharedPreferences.getBoolean("allowAutoRestart", true);
+      int i = localSharedPreferences.getInt("key_not_restart_delay_mill", 100);
+      if (!bool) {
+        ThreadManager.getSubThreadHandler().postDelayed(new SafeModeUtil.6(localSharedPreferences), i);
       }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("SafeModeUtil", 1, "checkAutoRestart error", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aauu
  * JD-Core Version:    0.7.0.1
  */

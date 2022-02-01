@@ -1,26 +1,56 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class adhr
-  extends BroadcastReceiver
+  implements agph
 {
-  public adhr(ForwardRecentActivity paramForwardRecentActivity) {}
+  public adhr(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (!this.a.isFinishing())
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
+    }
+    Object localObject;
+    boolean bool;
+    if (ArkFullScreenAppActivity.a(this.a) != null)
     {
-      this.a.finish();
-      QLog.i("ForwardOption.ForwardEntranceActivity", 1, "ForwardRecentActivity has finished by broadcastReceiver.");
+      localObject = ArkFullScreenAppActivity.a(this.a).container;
+      if (localObject != null)
+      {
+        if ((!((agnx)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).showShareMenu)) {
+          break label135;
+        }
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
+        }
+        localObject = this.a.rightViewImg;
+        if (!bool) {
+          break label140;
+        }
+      }
+    }
+    for (;;)
+    {
+      ((ImageView)localObject).setVisibility(i);
+      return;
+      label135:
+      bool = false;
+      break;
+      label140:
+      i = 4;
     }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhr
  * JD-Core Version:    0.7.0.1
  */

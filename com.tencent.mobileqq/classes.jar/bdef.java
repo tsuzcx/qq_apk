@@ -1,88 +1,22 @@
-import android.support.v4.util.ArrayMap;
-import android.support.v4.util.SparseArrayCompat;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializer;
-import com.tencent.util.Pair;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdef
 {
-  int jdField_a_of_type_Int;
-  ArrayMap<String, Integer> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
-  SparseArrayCompat<Pair<String, String>> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
+  private static final String[] a = { "libgnustl_shared.so", "libSNPE.so", "libQMCF_snpe.so" };
   
-  public static bdef a(String paramString)
+  private static boolean b()
   {
-    GsonBuilder localGsonBuilder = new GsonBuilder();
-    localGsonBuilder.registerTypeAdapter(bdef.class, a());
-    return (bdef)localGsonBuilder.create().fromJson(paramString, bdef.class);
-  }
-  
-  public static JsonDeserializer<bdef> a()
-  {
-    return new bdeh();
-  }
-  
-  public static JsonSerializer<bdef> a()
-  {
-    return new bdeg();
-  }
-  
-  private static String b(String paramString1, String paramString2)
-  {
-    return paramString1 + "," + paramString2;
-  }
-  
-  public int a(Pair<String, String> paramPair)
-  {
-    return a((String)paramPair.first, (String)paramPair.second, false);
-  }
-  
-  public int a(Pair<String, String> paramPair, boolean paramBoolean)
-  {
-    return a((String)paramPair.first, (String)paramPair.second, paramBoolean);
-  }
-  
-  public int a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    String str = b(paramString1, paramString2);
-    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(str)) {
-      return ((Integer)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(str)).intValue();
+    String str = bdee.b();
+    synchronized (bdee.a())
+    {
+      boolean bool1 = FileUtils.fileExists(str + "libQMCF.so");
+      boolean bool2 = FileUtils.fileExists(str + a[2]);
+      if (QLog.isColorLevel()) {
+        QLog.i("SVAF_SoLoad", 2, String.format("isArtFilterSoExist, qmcfso[%s], snpeso[%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      }
+      return bool1;
     }
-    if (paramBoolean) {
-      return -1;
-    }
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(str, Integer.valueOf(i));
-    SparseArrayCompat localSparseArrayCompat = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
-    str = paramString1;
-    if (paramString1 == null) {
-      str = "";
-    }
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    localSparseArrayCompat.put(i, new Pair(str, paramString1));
-    return i;
-  }
-  
-  public Pair<String, String> a(int paramInt)
-  {
-    if (paramInt >= this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size()) {
-      return null;
-    }
-    Pair localPair = (Pair)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
-    return new Pair(localPair.first, localPair.second);
-  }
-  
-  public String a()
-  {
-    GsonBuilder localGsonBuilder = new GsonBuilder();
-    localGsonBuilder.registerTypeAdapter(bdef.class, a());
-    return localGsonBuilder.create().toJson(this);
   }
 }
 

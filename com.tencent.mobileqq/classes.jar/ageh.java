@@ -1,17 +1,27 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-
-class ageh
-  extends aghj
+public class ageh
+  extends agek
 {
-  ageh(agcw paramagcw)
+  public int a;
+  public int b;
+  
+  public ageh(int paramInt1, int paramInt2)
   {
-    super(paramagcw, null);
+    this.b = paramInt1;
+    this.a = paramInt2;
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean equals(Object paramObject)
   {
-    return new agkm(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, agcw.a(this.a));
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!(paramObject instanceof ageh));
+      paramObject = (ageh)paramObject;
+    } while ((this.b != paramObject.b) || (this.a != paramObject.a));
+    return true;
   }
 }
 

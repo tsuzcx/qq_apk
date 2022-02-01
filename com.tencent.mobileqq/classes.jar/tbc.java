@@ -1,8 +1,15 @@
-import android.graphics.RectF;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import com.tencent.widget.XListView.DrawFinishedListener;
 
-public abstract interface tbc
+public class tbc
+  implements XListView.DrawFinishedListener
 {
-  public abstract void a(RectF paramRectF);
+  public tbc(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  
+  public void drawFinished()
+  {
+    this.a.a.f();
+  }
 }
 
 

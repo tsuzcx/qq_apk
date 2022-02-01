@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
 import java.util.Properties;
-import pay;
-import sdj;
-import sgx;
+import prg;
+import spn;
+import stn;
 
 public class VideoPlayerWrapper$1
   implements Runnable
 {
-  public VideoPlayerWrapper$1(sdj paramsdj, sgx paramsgx) {}
+  public VideoPlayerWrapper$1(spn paramspn, stn paramstn) {}
   
   public void run()
   {
     Object localObject = this.a.a();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = pay.a((String)localObject);
+      localObject = prg.a((String)localObject);
       if (localObject == null) {
         break label52;
       }

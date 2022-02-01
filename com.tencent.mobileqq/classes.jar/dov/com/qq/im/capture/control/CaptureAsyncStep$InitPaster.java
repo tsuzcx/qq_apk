@@ -1,9 +1,9 @@
 package dov.com.qq.im.capture.control;
 
-import bmqh;
-import bmql;
-import bmua;
-import bnvx;
+import bofz;
+import bogd;
+import bojs;
+import bplp;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 
 public class CaptureAsyncStep$InitPaster
@@ -11,10 +11,10 @@ public class CaptureAsyncStep$InitPaster
 {
   public int a()
   {
-    bnvx.a(bmqh.a());
-    bmua localbmua = (bmua)bmql.a().c(4);
-    localbmua.forceInit();
-    localbmua.a();
+    bplp.a(bofz.a());
+    bojs localbojs = (bojs)bogd.a().c(4);
+    localbojs.forceInit();
+    localbojs.a();
     return 7;
   }
 }

@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-
 public class arsi
-  implements DialogInterface.OnClickListener
 {
-  public arsi(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  private static arrx jdField_a_of_type_Arrx;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(arsj paramarsj)
   {
-    this.a.a = false;
-    this.a.l = false;
-    this.a.doOnBackPressed();
+    if (paramarsj != null) {
+      artm.a(paramarsj);
+    }
+  }
+  
+  public static boolean a()
+  {
+    return (jdField_a_of_type_Boolean) && (b());
+  }
+  
+  private static boolean b()
+  {
+    if (jdField_a_of_type_Arrx != null) {
+      return jdField_a_of_type_Arrx.a();
+    }
+    return true;
   }
 }
 

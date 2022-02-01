@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-final class rjs
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rjs
+  implements Parcelable.Creator<RIJRewardTask>
 {
-  rjs(View paramView) {}
-  
-  public void onClick(View paramView)
+  @NotNull
+  public RIJRewardTask a(@NotNull Parcel paramParcel)
   {
-    this.a.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
+    return new RIJRewardTask(paramParcel);
+  }
+  
+  @NotNull
+  public RIJRewardTask[] a(int paramInt)
+  {
+    return new RIJRewardTask[paramInt];
   }
 }
 

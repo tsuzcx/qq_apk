@@ -1,17 +1,12 @@
-import android.view.MotionEvent;
-import com.tencent.qphone.base.util.QLog;
-
-class aftm
-  implements bhdq
+public final class aftm
 {
-  aftm(aftj paramaftj) {}
+  private int a;
+  private int b;
   
-  public boolean a(MotionEvent paramMotionEvent)
+  private aftm(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopRobotHelper", 2, "TroopRobotHelper.DrawerFrame.TouchEventConsumer");
-    }
-    return this.a.a(paramMotionEvent);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

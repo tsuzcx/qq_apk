@@ -1,32 +1,18 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0xa8.SubMsgType0xa8.MsgBody;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
 
-public class acce
-  implements abzb
+public final class acce
+  implements Parcelable.Creator<GdtInterstitialParams>
 {
-  private static void a(abxc paramabxc, MsgType0x210 paramMsgType0x210)
+  public GdtInterstitialParams a(Parcel paramParcel)
   {
-    SubMsgType0xa8.MsgBody localMsgBody = new SubMsgType0xa8.MsgBody();
-    try
-    {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramabxc.a(localMsgBody);
-      return;
-    }
-    catch (Exception paramabxc)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("PullActive", 2, "recv 0x210_0xa8, prase msgBody error");
-    }
+    return new GdtInterstitialParams(paramParcel);
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public GdtInterstitialParams[] a(int paramInt)
   {
-    a(paramabxc, paramMsgType0x210);
-    return null;
+    return new GdtInterstitialParams[paramInt];
   }
 }
 

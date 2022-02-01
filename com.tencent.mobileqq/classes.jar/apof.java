@@ -1,31 +1,18 @@
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenFullToast;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ARRelationShip;
 
-public class apof
-  implements ahrt
+public final class apof
+  implements Parcelable.Creator<ARRelationShip>
 {
-  public apof(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
-  
-  public void a() {}
-  
-  public void a(int paramInt)
+  public ARRelationShip a(Parcel paramParcel)
   {
-    if ((ColorNoteSmallScreenService.a(this.a) != null) && (ColorNoteSmallScreenService.a(this.a).a()))
-    {
-      ColorNoteSmallScreenService.a(this.a).a();
-      ColorNoteSmallScreenService.a(this.a).b();
-    }
-    while ((this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.a)) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.onClick(this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast);
+    return new ARRelationShip(paramParcel);
   }
   
-  public void b()
+  public ARRelationShip[] a(int paramInt)
   {
-    ColorNoteSmallScreenService.a(this.a);
-    this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.f();
+    return new ARRelationShip[paramInt];
   }
 }
 

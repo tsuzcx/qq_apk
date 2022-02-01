@@ -1,18 +1,104 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class avgx
-  implements View.OnLayoutChangeListener
+  extends WebViewPlugin
 {
-  public avgx(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  public static String a = "qqgame_api";
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public avgx()
   {
-    paramView.setTop(paramInt6);
-    paramView.setBottom(paramInt8);
-    paramView.setLeft(paramInt5);
-    paramView.setRight(paramInt7);
+    this.mPluginNameSpace = a;
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    super.handleEvent(paramString, paramLong, paramMap);
+    if (paramLong == 8589934621L)
+    {
+      paramString = new JSONObject();
+      if (paramMap != null) {}
+      for (;;)
+      {
+        try
+        {
+          localInteger = (Integer)paramMap.get("action");
+          if ((localInteger.intValue() != 1) && (localInteger.intValue() != 2) && (localInteger.intValue() != 3)) {
+            continue;
+          }
+          paramString.put("action", localInteger);
+          if (paramMap.containsKey("height")) {
+            paramString.put("height", paramMap.get("height"));
+          }
+          if (paramMap.containsKey("index")) {
+            paramString.put("index", paramMap.get("index"));
+          }
+          if (paramMap.containsKey("gameData")) {
+            paramString.put("gameData", paramMap.get("gameData"));
+          }
+        }
+        catch (ClassCastException paramMap)
+        {
+          Integer localInteger;
+          paramMap.printStackTrace();
+          continue;
+        }
+        catch (JSONException paramMap)
+        {
+          paramMap.printStackTrace();
+          continue;
+        }
+        dispatchJsEvent("gameFeedsEvent", paramString, null);
+        return true;
+        if (localInteger.intValue() == 4)
+        {
+          paramString.put("action", localInteger);
+          paramString.put("perfData", paramMap.get("perfData"));
+        }
+      }
+    }
+    if (paramLong == 8589934625L) {
+      dispatchJsEvent("gameFeedsPause", new JSONObject(), null);
+    }
+    return super.handleEvent(paramString, paramLong, paramMap);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (a.equals(paramString2))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQGameWebViewJsPlugin", 1, "pkgName:" + paramString2 + " method:" + paramString3);
+      }
+      if ("notifyWebLoaded".equals(paramString3))
+      {
+        paramJsBridgeListener = new Intent("action_qgame_jaspi_webloaded");
+        paramJsBridgeListener.setPackage(BaseApplicationImpl.getApplication().getPackageName());
+        BaseApplicationImpl.getApplication().sendBroadcast(paramJsBridgeListener);
+        return true;
+      }
+      if ("playVideo".equals(paramString3))
+      {
+        paramJsBridgeListener = new Intent("action_qgame_h5_video_play");
+        paramJsBridgeListener.setPackage(BaseApplicationImpl.getApplication().getPackageName());
+        BaseApplicationImpl.getApplication().sendBroadcast(paramJsBridgeListener);
+        return true;
+      }
+      if ("videoPause".equals(paramString3))
+      {
+        paramJsBridgeListener = new Intent("action_qgame_h5_video_pause");
+        paramJsBridgeListener.setPackage(BaseApplicationImpl.getApplication().getPackageName());
+        BaseApplicationImpl.getApplication().sendBroadcast(paramJsBridgeListener);
+        return true;
+      }
+    }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 

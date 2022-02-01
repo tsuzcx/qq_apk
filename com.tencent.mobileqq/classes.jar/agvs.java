@@ -1,13 +1,25 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Set;
 
-public class agvs
-  implements agut
+class agvs
+  extends ahaa
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  agvs(agvm paramagvm)
   {
-    paramagap.a(paramagcc.b);
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    paramChatMessage = new ahah(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    agvm.a(this.a).add(paramChatMessage);
+    return paramChatMessage;
+  }
+  
+  protected boolean a()
+  {
+    return false;
   }
 }
 

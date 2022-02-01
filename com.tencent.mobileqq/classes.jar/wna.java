@@ -1,18 +1,47 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.1.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public final class wna
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+public class wna
+  extends wfm<wnb>
 {
-  public void onComplete(String arg1, String paramString2)
+  static final String a = weg.a("StorySvc.msgtab_node_click");
+  public long b;
+  public String b;
+  public int c;
+  
+  public String a()
   {
-    synchronized ()
+    return a;
+  }
+  
+  public wfh a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
+    try
     {
-      paramString2 = wmz.a();
-      wmz.a().post(new TVKPreloader.1.1(this, paramString2));
-      return;
+      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
+      return new wnb(localRspMsgTabNodeWatched);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      ykq.d("Q.qqstory.msgTab:ReqMsgTabNodeClick", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
+    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    localReqMsgTabNodeWatched.node_type.set(this.c);
+    localReqMsgTabNodeWatched.operation.set(3);
+    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
+    return localReqMsgTabNodeWatched.toByteArray();
   }
 }
 

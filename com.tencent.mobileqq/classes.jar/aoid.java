@@ -1,36 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
 public class aoid
-  extends aoim
+  implements Comparator<File>
 {
-  public long a;
-  public aoif a;
-  public aoig a;
+  public aoid(CleanCache paramCleanCache) {}
   
-  public aoid()
+  public int a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_Aoig = new aoig();
-    this.jdField_a_of_type_Aoif = new aoif();
-    a();
-  }
-  
-  public void a()
-  {
-    QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecogResult.reset");
-    this.b = 4096L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Aoig.a();
-    this.jdField_a_of_type_Aoif.a();
-  }
-  
-  public String toString()
-  {
-    return "ARLocalGestureCircleRecogResult{recogType = " + this.b + ", frameIdx = " + this.jdField_a_of_type_Long + ", gestureResult = " + this.jdField_a_of_type_Aoig + ", circleResult = " + this.jdField_a_of_type_Aoif + '}';
+    long l = paramFile1.lastModified() - paramFile2.lastModified();
+    if (l > 0L) {
+      return -1;
+    }
+    if (l < 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoid
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.teamwork.ReSendCmd;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class becc
-  implements DialogInterface.OnClickListener
+  implements WtTicketPromise
 {
-  becc(bebp parambebp, bebc parambebc) {}
+  becc(becb parambecb, TicketManager paramTicketManager, ReSendCmd paramReSendCmd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void Done(Ticket paramTicket)
   {
-    switch (paramInt)
+    int i;
+    if (paramTicket == null) {
+      i = 1;
+    }
+    for (;;)
     {
-    case 0: 
-    default: 
+      QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
+      paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_Becb.mApp.getCurrentAccountUin(), "docs.qq.com");
+      if ((!TextUtils.isEmpty(paramTicket)) && (paramTicket.length() > 0))
+      {
+        becb.a(this.jdField_a_of_type_Becb, 0);
+        QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server success!");
+      }
+      becb.a(this.jdField_a_of_type_Becb, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
       return;
+      if ((paramTicket != null) && (paramTicket._pskey_map == null)) {
+        i = 2;
+      } else if ((paramTicket != null) && (paramTicket._pskey_map != null) && (paramTicket._pskey_map.get("docs.qq.com") == null)) {
+        i = 3;
+      } else {
+        i = 0;
+      }
     }
-    TroopFileTransferManager.a(this.jdField_a_of_type_Bebp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bebp.jdField_a_of_type_Long).a(this.jdField_a_of_type_Bebc.jdField_a_of_type_JavaUtilUUID);
-    paramDialogInterface = (bebc)bfbb.a(this.jdField_a_of_type_Bebp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bebp.jdField_a_of_type_Long).c.get(this.jdField_a_of_type_Bebc.f);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Bebc.b);
-    }
-    bcef.b(this.jdField_a_of_type_Bebp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_download", 0, 0, "", this.jdField_a_of_type_Bebp.jdField_a_of_type_Long + "", "", "");
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
+    becb.a(this.jdField_a_of_type_Becb, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
+    becb.a(this.jdField_a_of_type_Becb, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
   }
 }
 

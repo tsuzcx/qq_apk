@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.AccountDetail.model;
 
-import nua;
-import nud;
-import nug;
+import obb;
+import obe;
+import obh;
 
 public class AccountDetailVideoManager$3$1
   implements Runnable
 {
-  public AccountDetailVideoManager$3$1(nud paramnud) {}
+  public AccountDetailVideoManager$3$1(obe paramobe) {}
   
   public void run()
   {

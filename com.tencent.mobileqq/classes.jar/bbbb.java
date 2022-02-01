@@ -1,16 +1,20 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class bbbb
-  implements View.OnClickListener
+public class bbbb
+  extends RecyclerView.ViewHolder
 {
-  bbbb(bbba parambbba, bayt parambayt) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  private bbbb(View paramView)
   {
-    this.jdField_a_of_type_Bayt.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380038));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369417));
   }
 }
 

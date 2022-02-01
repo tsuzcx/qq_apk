@@ -1,7 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import Override;
-import amtj;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,17 +16,18 @@ import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import anvx;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tribe.async.dispatch.Dispatcher;
-import vli;
-import xqb;
-import xvv;
-import yba;
-import ybb;
+import wad;
+import yew;
+import ykq;
+import ypt;
+import ypu;
 
 public class QQStoryTakeVideoCloseAnimationActivity
   extends QQStoryBaseActivity
@@ -37,7 +37,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
   public static boolean a;
   private float a;
   protected ImageView a;
-  protected ybb a;
+  protected ypu a;
   private float jdField_b_of_type_Float;
   private Handler jdField_b_of_type_AndroidOsHandler;
   private float c;
@@ -51,7 +51,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
   @TargetApi(14)
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    xqb.b("Q.qqstory.home:FeedSegment_animation", new Object[] { amtj.a(2131710164), Float.valueOf(paramFloat1), ",bottom:", Float.valueOf(paramFloat4) });
+    yew.b("Q.qqstory.home:FeedSegment_animation", new Object[] { anvx.a(2131710511), Float.valueOf(paramFloat1), ",bottom:", Float.valueOf(paramFloat4) });
     this.jdField_b_of_type_AndroidOsHandler.removeMessages(1);
     float f3 = UIUtils.getWindowScreenHeight(this);
     float f4 = UIUtils.getWindowScreenWidth(this);
@@ -62,7 +62,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
     paramFloat4 = (paramFloat4 - paramFloat1) / 2.0F;
     f3 /= 2.0F;
     ViewPropertyAnimator localViewPropertyAnimator = this.jdField_a_of_type_AndroidWidgetImageView.animate().setDuration(250L).scaleXBy(1.0F).scaleX(f2).scaleYBy(1.0F).scaleY(f1).x(paramFloat3 + paramFloat2 - f4).y(paramFloat4 + paramFloat1 - f3);
-    localViewPropertyAnimator.setListener(new yba(this));
+    localViewPropertyAnimator.setListener(new ypt(this));
     localViewPropertyAnimator.start();
   }
   
@@ -91,10 +91,10 @@ public class QQStoryTakeVideoCloseAnimationActivity
     this.jdField_b_of_type_Float = paramBundle.getIntExtra("target_right", 0);
     this.c = paramBundle.getIntExtra("target_left", 0);
     this.d = paramBundle.getIntExtra("target_bottom", 0);
-    xvv.b("Q.qqstory.home:FeedSegment_animation", "动画activity终于 OnCreate 了！！！");
+    ykq.b("Q.qqstory.home:FeedSegment_animation", "动画activity终于 OnCreate 了！！！");
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_Ybb = new ybb(this);
-    vli.a().registerSubscriber(this.jdField_a_of_type_Ybb);
+    this.jdField_a_of_type_Ypu = new ypu(this);
+    wad.a().registerSubscriber(this.jdField_a_of_type_Ypu);
     try
     {
       paramBundle = BitmapFactory.decodeFile(str);
@@ -126,8 +126,8 @@ public class QQStoryTakeVideoCloseAnimationActivity
   {
     super.doOnDestroy();
     jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Ybb != null) {
-      vli.a().unRegisterSubscriber(this.jdField_a_of_type_Ybb);
+    if (this.jdField_a_of_type_Ypu != null) {
+      wad.a().unRegisterSubscriber(this.jdField_a_of_type_Ypu);
     }
   }
   
@@ -160,7 +160,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
     for (;;)
     {
       return true;
-      xvv.b("Q.qqstory:QQStoryTakeVideoCloseAnimationActivity", "动画等超时了");
+      ykq.b("Q.qqstory:QQStoryTakeVideoCloseAnimationActivity", "动画等超时了");
       a(0.0F, 0.0F, 0.0F, 0.0F);
     }
   }

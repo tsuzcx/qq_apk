@@ -1,11 +1,12 @@
 package cooperation.qqpim;
 
-import bcef;
-import bkkq;
-import bksb;
-import bksi;
+import bdla;
+import blvy;
+import bmdk;
+import bmdr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.PluginInfo;
@@ -15,13 +16,13 @@ public class QQPimPluginLoadRunnable
   implements Runnable
 {
   private long jdField_a_of_type_Long;
-  private bkkq jdField_a_of_type_Bkkq;
-  private bksi jdField_a_of_type_Bksi;
+  private blvy jdField_a_of_type_Blvy;
+  private bmdr jdField_a_of_type_Bmdr;
   private boolean jdField_a_of_type_Boolean;
   
-  public QQPimPluginLoadRunnable(bksi parambksi)
+  public QQPimPluginLoadRunnable(bmdr parambmdr)
   {
-    this.jdField_a_of_type_Bksi = parambksi;
+    this.jdField_a_of_type_Bmdr = parambmdr;
   }
   
   private QQAppInterface a()
@@ -35,7 +36,7 @@ public class QQPimPluginLoadRunnable
   
   public void a()
   {
-    this.jdField_a_of_type_Bksi = null;
+    this.jdField_a_of_type_Bmdr = null;
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -44,8 +45,8 @@ public class QQPimPluginLoadRunnable
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface == null) {}
-    label114:
-    label249:
+    label115:
+    label250:
     do
     {
       do
@@ -60,20 +61,20 @@ public class QQPimPluginLoadRunnable
               do
               {
                 return;
-                this.jdField_a_of_type_Bkkq = ((bkkq)localQQAppInterface.getManager(27));
-              } while (this.jdField_a_of_type_Bkkq == null);
-              localPluginInfo = this.jdField_a_of_type_Bkkq.a("qqpim_plugin.apk");
+                this.jdField_a_of_type_Blvy = ((blvy)localQQAppInterface.getManager(QQManagerFactory.MGR_PLUGIN));
+              } while (this.jdField_a_of_type_Blvy == null);
+              localPluginInfo = this.jdField_a_of_type_Blvy.a("qqpim_plugin.apk");
               if (localPluginInfo != null)
               {
                 if (localPluginInfo.mState != 4) {
-                  break label182;
+                  break label183;
                 }
                 if (QLog.isDevelopLevel()) {
-                  QLog.i(bksb.a, 1, "onPluginManagerLoaded has installed");
+                  QLog.i(bmdk.a, 1, "onPluginManagerLoaded has installed");
                 }
-                bcef.b(localQQAppInterface, "CliOper", "", "", "0X8006716", "0X8006716", 0, 0, "", "", "", "");
-                if (this.jdField_a_of_type_Bksi != null) {
-                  this.jdField_a_of_type_Bksi.a();
+                bdla.b(localQQAppInterface, "CliOper", "", "", "0X8006716", "0X8006716", 0, 0, "", "", "", "");
+                if (this.jdField_a_of_type_Bmdr != null) {
+                  this.jdField_a_of_type_Bmdr.a();
                 }
               }
               do
@@ -81,50 +82,50 @@ public class QQPimPluginLoadRunnable
                 for (;;)
                 {
                   if (this.jdField_a_of_type_Boolean) {
-                    break label460;
+                    break label461;
                   }
                   if (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 30000L) {
-                    break label249;
+                    break label250;
                   }
-                  bcef.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-                  if (this.jdField_a_of_type_Bksi == null) {
+                  bdla.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+                  if (this.jdField_a_of_type_Bmdr == null) {
                     break;
                   }
-                  this.jdField_a_of_type_Bksi.a(-5);
+                  this.jdField_a_of_type_Bmdr.a(-5);
                   return;
                   if (QLog.isDevelopLevel()) {
-                    QLog.i(bksb.a, 1, "onPluginManagerLoaded start down or install...");
+                    QLog.i(bmdk.a, 1, "onPluginManagerLoaded start down or install...");
                   }
-                  bcef.b(localQQAppInterface, "CliOper", "", "", "0X8006717", "0X8006717", 0, 0, "", "", "", "");
-                  this.jdField_a_of_type_Bkkq.a("qqpim_plugin.apk");
-                  if (this.jdField_a_of_type_Bksi != null) {
-                    this.jdField_a_of_type_Bksi.b();
+                  bdla.b(localQQAppInterface, "CliOper", "", "", "0X8006717", "0X8006717", 0, 0, "", "", "", "");
+                  this.jdField_a_of_type_Blvy.a("qqpim_plugin.apk");
+                  if (this.jdField_a_of_type_Bmdr != null) {
+                    this.jdField_a_of_type_Bmdr.b();
                   }
                 }
-                localPluginInfo = this.jdField_a_of_type_Bkkq.a("qqpim_plugin.apk");
+                localPluginInfo = this.jdField_a_of_type_Blvy.a("qqpim_plugin.apk");
                 if (localPluginInfo != null) {
-                  break label333;
+                  break label334;
                 }
                 if (QLog.isDevelopLevel()) {
-                  QLog.d(bksb.a, 4, "null == pluginInfo");
+                  QLog.d(bmdk.a, 4, "null == pluginInfo");
                 }
-              } while (!this.jdField_a_of_type_Bkkq.isReady());
-              bcef.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-            } while (this.jdField_a_of_type_Bksi == null);
-            this.jdField_a_of_type_Bksi.a(-1);
+              } while (!this.jdField_a_of_type_Blvy.isReady());
+              bdla.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+            } while (this.jdField_a_of_type_Bmdr == null);
+            this.jdField_a_of_type_Bmdr.a(-1);
             return;
             if (QLog.isDevelopLevel()) {
-              QLog.d(bksb.a, 4, "queryPluginInfo mState : " + localPluginInfo.mState + " progress:" + localPluginInfo.mDownloadProgress);
+              QLog.d(bmdk.a, 4, "queryPluginInfo mState : " + localPluginInfo.mState + " progress:" + localPluginInfo.mDownloadProgress);
             }
             if (localPluginInfo.mState != 4) {
               break;
             }
-            bcef.b(localQQAppInterface, "CliOper", "", "", "0X8006718", "0X8006718", 0, 0, "", "", "", "");
-          } while (this.jdField_a_of_type_Bksi == null);
-          this.jdField_a_of_type_Bksi.a();
+            bdla.b(localQQAppInterface, "CliOper", "", "", "0X8006718", "0X8006718", 0, 0, "", "", "", "");
+          } while (this.jdField_a_of_type_Bmdr == null);
+          this.jdField_a_of_type_Bmdr.a();
           return;
           if (localPluginInfo.mState == 0) {
-            this.jdField_a_of_type_Bkkq.a("qqpim_plugin.apk");
+            this.jdField_a_of_type_Blvy.a("qqpim_plugin.apk");
           }
           for (;;)
           {
@@ -136,50 +137,50 @@ public class QQPimPluginLoadRunnable
             {
               localInterruptedException.printStackTrace();
             }
-            break label114;
+            break label115;
             break;
             if (localInterruptedException.mState == 3)
             {
-              if (this.jdField_a_of_type_Bksi != null) {
-                this.jdField_a_of_type_Bksi.a(localInterruptedException.mDownloadProgress);
+              if (this.jdField_a_of_type_Bmdr != null) {
+                this.jdField_a_of_type_Bmdr.a(localInterruptedException.mDownloadProgress);
               }
             }
             else if (localInterruptedException.mState == 1)
             {
-              if (this.jdField_a_of_type_Bksi != null) {
-                this.jdField_a_of_type_Bksi.a(localInterruptedException.mDownloadProgress);
+              if (this.jdField_a_of_type_Bmdr != null) {
+                this.jdField_a_of_type_Bmdr.a(localInterruptedException.mDownloadProgress);
               }
             }
             else
             {
               if (localInterruptedException.mState != 2) {
-                break label555;
+                break label556;
               }
-              if (this.jdField_a_of_type_Bksi != null) {
-                this.jdField_a_of_type_Bksi.a(localInterruptedException.mDownloadProgress);
+              if (this.jdField_a_of_type_Bmdr != null) {
+                this.jdField_a_of_type_Bmdr.a(localInterruptedException.mDownloadProgress);
               }
             }
           }
           if (localInterruptedException.mState != -1) {
             break;
           }
-          bcef.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-        } while (this.jdField_a_of_type_Bksi == null);
-        this.jdField_a_of_type_Bksi.a(-6);
+          bdla.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+        } while (this.jdField_a_of_type_Bmdr == null);
+        this.jdField_a_of_type_Bmdr.a(-6);
         return;
         if (localInterruptedException.mState != -2) {
           break;
         }
-        bcef.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-      } while (this.jdField_a_of_type_Bksi == null);
-      this.jdField_a_of_type_Bksi.a(-3);
+        bdla.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+      } while (this.jdField_a_of_type_Bmdr == null);
+      this.jdField_a_of_type_Bmdr.a(-3);
       return;
-      bcef.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-    } while (this.jdField_a_of_type_Bksi == null);
-    label182:
-    label333:
-    this.jdField_a_of_type_Bksi.a(-2);
-    label460:
+      bdla.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+    } while (this.jdField_a_of_type_Bmdr == null);
+    label183:
+    label334:
+    this.jdField_a_of_type_Bmdr.a(-2);
+    label461:
   }
 }
 

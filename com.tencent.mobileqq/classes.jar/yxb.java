@@ -1,13 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class yxb
-  implements DialogInterface.OnClickListener
+  implements yxa
 {
-  public yxb(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  public yxb(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    this.a.a.c(true);
+  }
+  
+  public void a(yxk paramyxk)
+  {
+    this.a.b(paramyxk);
+  }
+  
+  public void b()
+  {
+    this.a.a();
+  }
 }
 
 

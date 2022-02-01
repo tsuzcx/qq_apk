@@ -1,65 +1,29 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
 class aurv
-  implements bhlz
+  implements View.OnTouchListener
 {
-  private long jdField_a_of_type_Long;
+  aurv(aurs paramaurs) {}
   
-  aurv(aurt paramaurt, Context paramContext) {}
-  
-  public boolean a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchFloatingWindowController", 2, "onCloseClick");
-    }
-    if (aurt.a(this.jdField_a_of_type_Aurt) == null) {
-      return true;
-    }
-    if (aurt.a(this.jdField_a_of_type_Aurt).isIsAdm())
+    aurs.a(this.a).setImageResource(2130840191);
+    aurs.a(this.a).setTag(Integer.valueOf(2130840191));
+    if (aurs.a(this.a))
     {
-      aurn.a(this.jdField_a_of_type_AndroidContentContext, 5, aurt.a(this.jdField_a_of_type_Aurt).getCurUin());
-      return true;
+      aurs.a(this.a);
+      aurs.a(this.a).removeView(aurs.a(this.a));
+      aurs.a(this.a, false);
+      paramView = this.a.getWindow().getAttributes();
+      paramView.y = 0;
+      this.a.getWindow().setAttributes(paramView);
     }
-    bcef.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_member", 0, 0, aurt.a(this.jdField_a_of_type_Aurt).getCurUin(), "", "", "");
-    this.jdField_a_of_type_Aurt.b();
-    return true;
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchFloatingWindowController", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
-    }
-    if ((aurt.a(this.jdField_a_of_type_Aurt) == null) || (aurt.a(this.jdField_a_of_type_Aurt) == null)) {
-      return false;
-    }
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WatchFloatingWindowController", 2, "click button too frequently pastTime=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-      }
-      return true;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramInt1 = aurt.a(this.jdField_a_of_type_Aurt).a();
-    if (paramInt1 == 1)
-    {
-      bddg.a(this.jdField_a_of_type_AndroidContentContext, 1, aurt.a(this.jdField_a_of_type_Aurt).getBigUrl(), null, new Bundle(), aurt.a(this.jdField_a_of_type_Aurt).getCurType());
-      this.jdField_a_of_type_Aurt.a(aurt.a(this.jdField_a_of_type_Aurt).getCurUin(), aurt.a(this.jdField_a_of_type_Aurt).getCurType(), false);
-    }
-    for (;;)
-    {
-      return true;
-      if (paramInt1 == 2)
-      {
-        aurt.a(this.jdField_a_of_type_Aurt).a(aurt.a(this.jdField_a_of_type_Aurt).getSmallUrl());
-        bcef.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_refresh", 0, 0, aurt.a(this.jdField_a_of_type_Aurt).getCurUin(), "", "", "");
-      }
-    }
+    return false;
   }
 }
 

@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.loginwelcome;
 
-import avin;
-import aviq;
+import awoq;
+import awou;
+import tencent.im.login.GatewayVerify.SelfPhoneUrl;
 
 public class GateWayVerifyManager$3
   implements Runnable
 {
-  public GateWayVerifyManager$3(avin paramavin, String paramString, aviq paramaviq) {}
+  public GateWayVerifyManager$3(awoq paramawoq, GatewayVerify.SelfPhoneUrl paramSelfPhoneUrl, awou paramawou) {}
   
   /* Error */
   public void run()
@@ -17,34 +18,31 @@ public class GateWayVerifyManager$3
     //   3: ldc 30
     //   5: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   8: aconst_null
-    //   9: astore_2
+    //   9: astore_1
     //   10: aconst_null
     //   11: astore_3
-    //   12: aload_2
-    //   13: astore_1
-    //   14: new 38	java/net/URL
-    //   17: dup
-    //   18: aload_0
-    //   19: getfield 17	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$3:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   22: invokespecial 41	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   25: astore 4
-    //   27: aload_2
-    //   28: astore_1
-    //   29: aload 4
-    //   31: invokevirtual 45	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   34: checkcast 47	java/net/HttpURLConnection
-    //   37: astore_2
-    //   38: aload_0
-    //   39: getfield 15	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$3:this$0	Lavin;
-    //   42: aload_2
-    //   43: aload 4
+    //   12: new 38	java/net/URL
+    //   15: dup
+    //   16: aload_0
+    //   17: getfield 17	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$3:jdField_a_of_type_TencentImLoginGatewayVerify$SelfPhoneUrl	Ltencent/im/login/GatewayVerify$SelfPhoneUrl;
+    //   20: getfield 44	tencent/im/login/GatewayVerify$SelfPhoneUrl:str_upload_url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   23: invokevirtual 50	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   26: invokespecial 53	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   29: invokevirtual 57	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   32: checkcast 59	java/net/HttpURLConnection
+    //   35: astore_2
+    //   36: aload_0
+    //   37: getfield 15	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$3:this$0	Lawoq;
+    //   40: aload_2
+    //   41: aload_0
+    //   42: getfield 17	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$3:jdField_a_of_type_TencentImLoginGatewayVerify$SelfPhoneUrl	Ltencent/im/login/GatewayVerify$SelfPhoneUrl;
     //   45: aload_0
-    //   46: getfield 19	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$3:jdField_a_of_type_Aviq	Laviq;
-    //   49: invokestatic 52	avin:a	(Lavin;Ljava/net/HttpURLConnection;Ljava/net/URL;Laviq;)V
+    //   46: getfield 19	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$3:jdField_a_of_type_Awou	Lawou;
+    //   49: invokestatic 64	awoq:a	(Lawoq;Ljava/net/HttpURLConnection;Ltencent/im/login/GatewayVerify$SelfPhoneUrl;Lawou;)V
     //   52: aload_2
     //   53: ifnull +7 -> 60
     //   56: aload_2
-    //   57: invokevirtual 55	java/net/HttpURLConnection:disconnect	()V
+    //   57: invokevirtual 67	java/net/HttpURLConnection:disconnect	()V
     //   60: return
     //   61: astore_1
     //   62: aload_3
@@ -59,25 +57,25 @@ public class GateWayVerifyManager$3
     //   72: anewarray 4	java/lang/Object
     //   75: dup
     //   76: iconst_0
-    //   77: ldc 57
+    //   77: ldc 69
     //   79: aastore
     //   80: dup
     //   81: iconst_1
     //   82: aload_3
-    //   83: invokevirtual 61	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   83: invokevirtual 72	java/io/IOException:getMessage	()Ljava/lang/String;
     //   86: aastore
-    //   87: invokestatic 65	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   87: invokestatic 76	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   90: aload_2
     //   91: astore_1
     //   92: aload_0
-    //   93: getfield 19	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$3:jdField_a_of_type_Aviq	Laviq;
+    //   93: getfield 19	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$3:jdField_a_of_type_Awou	Lawou;
     //   96: iconst_m1
     //   97: aload_3
-    //   98: invokeinterface 70 3 0
+    //   98: invokeinterface 81 3 0
     //   103: aload_2
     //   104: ifnull -44 -> 60
     //   107: aload_2
-    //   108: invokevirtual 55	java/net/HttpURLConnection:disconnect	()V
+    //   108: invokevirtual 67	java/net/HttpURLConnection:disconnect	()V
     //   111: return
     //   112: astore_3
     //   113: aload_1
@@ -87,7 +85,7 @@ public class GateWayVerifyManager$3
     //   117: aload_2
     //   118: ifnull +7 -> 125
     //   121: aload_2
-    //   122: invokevirtual 55	java/net/HttpURLConnection:disconnect	()V
+    //   122: invokevirtual 67	java/net/HttpURLConnection:disconnect	()V
     //   125: aload_1
     //   126: athrow
     //   127: astore_1
@@ -97,25 +95,22 @@ public class GateWayVerifyManager$3
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	135	0	this	3
-    //   13	16	1	localObject1	Object
+    //   9	1	1	localObject1	Object
     //   61	4	1	localIOException1	java.io.IOException
     //   67	59	1	localObject2	Object
     //   127	1	1	localObject3	Object
-    //   9	113	2	localObject4	Object
-    //   11	87	3	localObject5	Object
-    //   112	4	3	localObject6	Object
-    //   131	1	3	localIOException2	java.io.IOException
-    //   25	19	4	localURL	java.net.URL
+    //   35	87	2	localObject4	Object
+    //   11	87	3	localIOException2	java.io.IOException
+    //   112	4	3	localObject5	Object
+    //   131	1	3	localIOException3	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   14	27	61	java/io/IOException
-    //   29	38	61	java/io/IOException
-    //   14	27	112	finally
-    //   29	38	112	finally
+    //   12	36	61	java/io/IOException
+    //   12	36	112	finally
     //   68	90	112	finally
     //   92	103	112	finally
-    //   38	52	127	finally
-    //   38	52	131	java/io/IOException
+    //   36	52	127	finally
+    //   36	52	131	java/io/IOException
   }
 }
 

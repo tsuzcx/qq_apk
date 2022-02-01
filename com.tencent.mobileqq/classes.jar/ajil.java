@@ -1,18 +1,60 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 class ajil
-  implements View.OnTouchListener
+  implements Comparator<ajin>
 {
-  ajil(ajif paramajif) {}
+  ajil(ajik paramajik) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(ajin paramajin1, ajin paramajin2)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if ((paramajin1 == null) && (paramajin2 == null)) {}
+    int j;
+    int k;
+    do
+    {
+      do
+      {
+        return 0;
+        if ((paramajin1 == null) && (paramajin2 != null)) {
+          return -1;
+        }
+        if ((paramajin1 != null) && (paramajin2 == null)) {
+          return 1;
+        }
+        paramajin1 = paramajin1.b;
+        paramajin2 = paramajin2.b;
+      } while ((paramajin1 == null) && (paramajin2 == null));
+      if ((paramajin1 == null) && (paramajin2 != null)) {
+        return -1;
+      }
+      if ((paramajin1 != null) && (paramajin2 == null)) {
+        return 1;
+      }
+      j = paramajin1.length();
+      k = paramajin2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
+      {
+        char c1 = paramajin1.charAt(i);
+        char c2 = paramajin2.charAt(i);
+        if (c1 != c2)
+        {
+          paramajin1 = ChnToSpell.a(c1);
+          paramajin2 = ChnToSpell.a(c2);
+          if (paramajin1.jdField_a_of_type_Int == paramajin2.jdField_a_of_type_Int) {
+            return paramajin1.jdField_a_of_type_JavaLangString.compareTo(paramajin2.jdField_a_of_type_JavaLangString);
+          }
+          return paramajin1.jdField_a_of_type_Int - paramajin2.jdField_a_of_type_Int;
+        }
+        i += 1;
+      }
+      if (j < k) {
+        return -1;
+      }
+    } while (j <= k);
+    return 1;
   }
 }
 

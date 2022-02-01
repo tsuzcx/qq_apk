@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class aijv
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aijv(aijs paramaijs) {}
+  aijv(aijr paramaijr) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
-    TroopUtils.openRecommendTroop(aijs.a(this.a), localRecommendTroopItem, 17, 10029);
-    bftc.a("Grp_contacts_news", "notice", "recom_clk", 1, 0, new String[] { localRecommendTroopItem.uin, localRecommendTroopItem.recomAlgol });
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface = (ncz)aijr.a(this.a).getManager(QQManagerFactory.AV_GAME_MANAGER);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a(aijr.a(this.a).curFriendUin);
+    }
   }
 }
 

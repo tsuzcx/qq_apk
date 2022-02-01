@@ -1,45 +1,32 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 
 public class ayto
+  implements View.OnTouchListener
 {
-  public List<aytp> a = new ArrayList(1);
+  public ayto(ScanOcrActivity paramScanOcrActivity) {}
   
-  public String a(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    switch (paramMotionEvent.getAction())
     {
-      aytp localaytp = (aytp)localIterator.next();
-      if ((paramString != null) && (paramString.equals(localaytp.a))) {
-        return localaytp.b;
+    }
+    for (;;)
+    {
+      return false;
+      if (paramView == ScanOcrActivity.a(this.a))
+      {
+        paramView.setAlpha(0.7F);
+      }
+      else
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        paramView.setAlpha(1.0F);
       }
     }
-    return null;
-  }
-  
-  public void a(bgaz parambgaz)
-  {
-    if (parambgaz != null)
-    {
-      parambgaz.a();
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        parambgaz.a(2131365216, ((aytp)localIterator.next()).a, 0);
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.a.add(new aytp(paramString1, paramString2));
-  }
-  
-  public String toString()
-  {
-    return Arrays.toString(this.a.toArray());
   }
 }
 

@@ -1,21 +1,12 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import java.util.Comparator;
 
-class bhks
-  implements Animator.AnimatorListener
+final class bhks
+  implements Comparator<bhkt>
 {
-  bhks(bhkq parambhkq) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a(bhkt parambhkt1, bhkt parambhkt2)
   {
-    this.a.a();
+    return parambhkt2.a() - parambhkt1.a();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

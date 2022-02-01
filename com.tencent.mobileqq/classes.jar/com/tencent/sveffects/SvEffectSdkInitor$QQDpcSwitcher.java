@@ -1,34 +1,34 @@
 package com.tencent.sveffects;
 
-import bbwy;
-import bbxj;
+import bddt;
+import bdee;
 
 public class SvEffectSdkInitor$QQDpcSwitcher
   implements DpcSwitcher
 {
   public float getBeatyRate()
   {
-    return bbwy.a();
+    return bddt.a();
   }
   
   public boolean isBeautySwitchOpen()
   {
-    return bbwy.b();
+    return bddt.b();
   }
   
   public boolean isDeNoiseSwitchOpen()
   {
-    return bbwy.e();
+    return bddt.e();
   }
   
   public boolean isPortraitSwitchOpen()
   {
-    return bbxj.e();
+    return bdee.e();
   }
   
   public boolean isSvafSwitchOpen()
   {
-    return bbwy.c();
+    return bddt.c();
   }
 }
 

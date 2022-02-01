@@ -1,80 +1,70 @@
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.OldHttpEngine;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
-class auki
-  implements INetEngine.INetEngineListener
+final class auki
+  implements auir
 {
-  auki(auke paramauke, String paramString1, String paramString2, String paramString3, int paramInt) {}
+  private final int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  private final WeakReference<aukg> jdField_a_of_type_MqqUtilWeakReference;
+  private final boolean jdField_a_of_type_Boolean;
+  private final String b;
   
-  public void onResp(NetResp paramNetResp)
+  private auki(aukg paramaukg, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (paramNetResp.mResult == 3)
+    if (paramaukg == null) {}
+    for (paramaukg = null;; paramaukg = new WeakReference(paramaukg))
     {
-      QLog.d("qqidentification_server", 2, "identification res download repeating ");
+      this.jdField_a_of_type_MqqUtilWeakReference = paramaukg;
+      this.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_JavaLangString = paramString1;
+      this.b = paramString2;
+      this.jdField_a_of_type_Boolean = paramBoolean;
       return;
-    }
-    if (paramNetResp.mResult == 0)
-    {
-      paramNetResp = paramNetResp.mReq.mOutPath;
-      String str = FileUtils.calcMd5(paramNetResp);
-      if ((str == null) || (!str.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        FileUtils.uncompressZip(paramNetResp, this.b, false);
-        QLog.d("qqidentification_server", 1, "downloadRes.onResp download succ but unzip is failed");
-      }
-      catch (IOException localIOException1)
-      {
-        try
-        {
-          auke.a(this.jdField_a_of_type_Auke).destroy();
-          auke.a(this.jdField_a_of_type_Auke, null);
-          bool = true;
-          FileUtils.deleteFile(paramNetResp);
-          if (QLog.isColorLevel()) {
-            QLog.d("qqidentification_server", 2, "downloadRes.onResp download path : " + this.b);
-          }
-          QLog.d("qqidentification_server", 1, new Object[] { "download face res success : ", Boolean.valueOf(bool) });
-          if (bool)
-          {
-            bfyz.c(this.b);
-            bfyz.b(this.jdField_a_of_type_Int);
-            bfyz.c(aukc.b());
-          }
-          auke.a(this.jdField_a_of_type_Auke, 1, bool);
-          return;
-        }
-        catch (IOException localIOException2)
-        {
-          for (;;)
-          {
-            boolean bool = true;
-          }
-        }
-        localIOException1 = localIOException1;
-        bool = false;
-      }
-      continue;
-      QLog.d("qqidentification_server", 1, "downloadRes.onResp download succ but md5 is mismatched ");
-      if (QLog.isColorLevel()) {
-        QLog.d("qqidentification_server", 2, "downloadRes.onResp download succ but md5 is mismatched,fileSize = " + FileUtils.getFileSizes(paramNetResp) + ",md5 = " + localIOException1 + ",url = " + this.c);
-      }
-      bool = false;
-      continue;
-      QLog.d("qqidentification_server", 1, new Object[] { "downloadRes.onResp failed  isSuccess is false, code is : ", Integer.valueOf(paramNetResp.mErrCode), " msg : ", paramNetResp.mErrDesc });
-      bool = false;
     }
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public void a(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {}
+    for (aukg localaukg = null; (localaukg == null) || (aukg.a(localaukg)); localaukg = (aukg)this.jdField_a_of_type_MqqUtilWeakReference.get()) {
+      return;
+    }
+    if ((!bmqx.b(paramInt)) && (!TextUtils.isEmpty(this.b)) && (aukg.a(localaukg) == null))
+    {
+      QLog.w("WeiyunShareProcessController<FileAssistant>", 2, "GetShareLink errorCode=" + paramInt + ", errorMsg=" + paramString);
+      aukg.a(localaukg, this.b);
+      return;
+    }
+    Message localMessage = new Message();
+    localMessage.what = 6;
+    localMessage.obj = new Object[] { Integer.valueOf(paramInt), paramString };
+    aukg.a(localaukg).sendMessage(localMessage);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {}
+    for (aukg localaukg = null; (paramObject == null) || (localaukg == null) || (aukg.a(localaukg)); localaukg = (aukg)this.jdField_a_of_type_MqqUtilWeakReference.get()) {
+      return;
+    }
+    Object localObject = (String)paramObject;
+    paramObject = localObject;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramObject = localObject;
+      if (!((String)localObject).contains("?weiyun_qr_code=1")) {
+        paramObject = (String)localObject + "?weiyun_qr_code=1";
+      }
+    }
+    localObject = new Message();
+    ((Message)localObject).what = 5;
+    ((Message)localObject).obj = new Object[] { paramObject, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString };
+    aukg.a(localaukg).sendMessage((Message)localObject);
+  }
 }
 
 

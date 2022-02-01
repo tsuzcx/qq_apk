@@ -1,14 +1,18 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.view.AECompoundButton;
 
 class bnhi
-  implements FileFilter
+  implements Observer<bnhq>
 {
-  bnhi(bnhh parambnhh) {}
+  bnhi(bnhf parambnhf) {}
   
-  public boolean accept(File paramFile)
+  public void a(@Nullable bnhq parambnhq)
   {
-    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
+    if (parambnhq == null) {
+      return;
+    }
+    bnhf.e(this.a).setSelected(parambnhq.a());
   }
 }
 

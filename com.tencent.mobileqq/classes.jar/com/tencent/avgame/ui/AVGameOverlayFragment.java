@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import bfur;
+import bhdj;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import nhw;
+import nop;
 
 public class AVGameOverlayFragment
   extends PublicBaseFragment
@@ -27,11 +27,11 @@ public class AVGameOverlayFragment
     if (QLog.isColorLevel()) {
       QLog.i("ListenTogetherOverlayFragment", 2, "showKickMeDialog");
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setMessage(null).setNegativeButton(null, null).setPositiveButton(2131690252, new nhw(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setMessage(null).setNegativeButton(null, null).setPositiveButton(2131690290, new nop(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(null);
     QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    for (String str = getString(2131690295);; str = this.jdField_a_of_type_JavaLangString)
+    for (String str = getString(2131690333);; str = this.jdField_a_of_type_JavaLangString)
     {
       localQQCustomDialog.setMessage(str);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);

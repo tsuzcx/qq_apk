@@ -1,44 +1,19 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.os.MessageQueue.IdleHandler;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import com.tencent.widget.XListView;
 
-public class bmyn
-  extends bmte
+class bmyn
+  implements MessageQueue.IdleHandler
 {
-  public bmyn(MusicProviderView paramMusicProviderView) {}
+  bmyn(bmyl parambmyl, int paramInt1, int paramInt2) {}
   
-  public void onCancel(String paramString) {}
-  
-  public void onFinish(String paramString, boolean paramBoolean, int paramInt)
+  public boolean queueIdle()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, new Object[] { "onFinish, succ:", Boolean.valueOf(paramBoolean), ", failcode:", Integer.valueOf(paramInt) });
+      QLog.d("AlbumListActivity", 2, "load Scroll Position,index:" + this.jdField_a_of_type_Int + " top:" + this.b);
     }
-    this.a.jdField_a_of_type_Bjng.sendEmptyMessage(2);
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath().equals(paramString))) {
-      this.a.jdField_a_of_type_Bjng.sendEmptyMessage(1);
-    }
-    if ((!paramBoolean) && (paramInt == -104)) {
-      this.a.jdField_a_of_type_Bjng.sendEmptyMessage(5);
-    }
-  }
-  
-  public void onNetChange(int paramInt) {}
-  
-  public void onProgress(String paramString, int paramInt)
-  {
-    long l = SystemClock.uptimeMillis();
-    if ((this.a.jdField_a_of_type_Long == 0L) || (l - this.a.jdField_a_of_type_Long > 16L))
-    {
-      this.a.jdField_a_of_type_Bjng.sendEmptyMessage(2);
-      this.a.jdField_a_of_type_Long = l;
-    }
-  }
-  
-  public void onStart(String paramString, boolean paramBoolean)
-  {
-    this.a.jdField_a_of_type_Bjng.sendEmptyMessage(2);
+    this.jdField_a_of_type_Bmyl.a.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
+    return false;
   }
 }
 

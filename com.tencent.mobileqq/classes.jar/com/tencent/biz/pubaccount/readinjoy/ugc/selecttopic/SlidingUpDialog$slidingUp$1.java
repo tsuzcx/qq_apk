@@ -3,17 +3,17 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic;
 import android.view.View;
 import android.widget.RelativeLayout;
 import kotlin.Metadata;
-import rpw;
+import scl;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class SlidingUpDialog$slidingUp$1
   implements Runnable
 {
-  public SlidingUpDialog$slidingUp$1(rpw paramrpw) {}
+  public SlidingUpDialog$slidingUp$1(scl paramscl) {}
   
   public final void run()
   {
-    rpw.a(this.this$0, (View)rpw.a(this.this$0), rpw.a(this.this$0).getHeight(), 0.0F, 200L, null, 16, null);
+    scl.a(this.this$0, (View)scl.a(this.this$0), scl.a(this.this$0).getHeight(), 0.0F, 200L, null, 16, null);
   }
 }
 

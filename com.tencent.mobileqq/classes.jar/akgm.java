@@ -1,32 +1,42 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
-import java.util.Iterator;
-import java.util.List;
+import QC.CommonRsp;
+import QC.FaceRsp;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class akgm
-  implements ValueAnimator.AnimatorUpdateListener
+  extends aodb
 {
-  public akgm(KSongMicView paramKSongMicView) {}
+  public akgm(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, FaceRsp paramFaceRsp)
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = KSongMicView.a(this.a).iterator();
-    while (paramValueAnimator.hasNext())
+    if (paramFaceRsp != null)
     {
-      akgn localakgn = (akgn)paramValueAnimator.next();
-      localakgn.jdField_c_of_type_Float = (localakgn.f + (localakgn.g - localakgn.f) * f);
-      localakgn.d = (localakgn.h + (localakgn.i - localakgn.h) * f);
-      localakgn.e = (localakgn.j + (localakgn.k - localakgn.j) * f);
-      localakgn.a = (localakgn.b + (int)((localakgn.jdField_c_of_type_Int - localakgn.b) * f));
+      int i = paramFaceRsp.authRet;
+      localObject = "null";
+      if (paramFaceRsp.stRet != null) {
+        localObject = "ret:" + paramFaceRsp.stRet.ret + " auth:" + paramFaceRsp.authRet + " url:" + paramFaceRsp.url;
+      }
+      QLog.d("AvatarPendantActivity", 2, "onSetFace: " + paramBoolean + "," + (String)localObject);
+      if (i == 0) {
+        this.a.r = 0;
+      }
     }
-    this.a.invalidate();
+    else
+    {
+      return;
+    }
+    this.a.r = 1;
+    Object localObject = new Intent(this.a, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramFaceRsp.url);
+    this.a.startActivity((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akgm
  * JD-Core Version:    0.7.0.1
  */

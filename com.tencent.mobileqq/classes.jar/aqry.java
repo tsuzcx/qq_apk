@@ -1,45 +1,60 @@
 import android.content.Context;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ShareHotChatGrayTips;
-import java.lang.ref.WeakReference;
+import android.content.res.Resources;
+import android.view.Display;
+import android.view.MotionEvent;
+import android.view.WindowManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqry
-  extends ClickableSpan
 {
-  private amud jdField_a_of_type_Amud;
-  private ShareHotChatGrayTips jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Context> b;
+  private static double jdField_a_of_type_Double = 0.25D;
+  private static float jdField_a_of_type_Float;
+  private static double jdField_b_of_type_Double = 0.5D;
+  private static float jdField_b_of_type_Float;
+  private static float c;
+  private int jdField_a_of_type_Int;
+  private int jdField_b_of_type_Int;
   
-  public aqry(QQAppInterface paramQQAppInterface, Context paramContext, ShareHotChatGrayTips paramShareHotChatGrayTips, String paramString)
+  public aqry(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips = paramShareHotChatGrayTips;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Amud = new amud((BaseActivity)paramContext, paramQQAppInterface, null);
+    a(paramContext);
+    paramContext = paramContext.getResources();
+    jdField_a_of_type_Float = paramContext.getDimensionPixelSize(2131297522);
+    jdField_b_of_type_Float = paramContext.getDimensionPixelSize(2131297523);
+    c = paramContext.getDimensionPixelSize(2131297521);
   }
   
-  public void onClick(View paramView)
+  private void a(Context paramContext)
   {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (((Context)this.b.get() != null) && (this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips != null))
+    try
     {
-      paramView = ((HotChatManager)paramView.getManager(60)).a(this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips.mTroopUin);
-      this.jdField_a_of_type_Amud.a(paramView);
+      paramContext = (WindowManager)paramContext.getSystemService("window");
+      this.jdField_a_of_type_Int = paramContext.getDefaultDisplay().getWidth();
+      this.jdField_b_of_type_Int = paramContext.getDefaultDisplay().getHeight();
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("TouchStateDetector", 1, paramContext, new Object[0]);
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public double a(MotionEvent paramMotionEvent)
   {
-    paramTextPaint.setColor(-12541697);
-    paramTextPaint.setUnderlineText(false);
+    float f = paramMotionEvent.getRawX();
+    paramMotionEvent.getRawY();
+    if (f <= jdField_a_of_type_Double * this.jdField_a_of_type_Int) {
+      return 0.0D;
+    }
+    if (f >= jdField_b_of_type_Double * this.jdField_a_of_type_Int) {
+      return 1.0D;
+    }
+    return (f - jdField_a_of_type_Double * this.jdField_a_of_type_Int) / ((jdField_b_of_type_Double - jdField_a_of_type_Double) * this.jdField_a_of_type_Int);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent, Context paramContext)
+  {
+    return (a(paramMotionEvent) + 1.0E-008D > 1.0D) && (paramMotionEvent.getRawX() > this.jdField_a_of_type_Int - jdField_b_of_type_Float) && (paramMotionEvent.getRawY() > this.jdField_b_of_type_Int - jdField_a_of_type_Float - c);
   }
 }
 

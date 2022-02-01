@@ -1,21 +1,21 @@
 package com.tencent.av.perfstat;
 
-import bjng;
+import bkys;
 import com.tencent.common.app.BaseApplicationImpl;
-import lse;
+import lsr;
 
 public class MemoryPerfStat$1
   implements Runnable
 {
-  public MemoryPerfStat$1(lse paramlse) {}
+  public MemoryPerfStat$1(lsr paramlsr) {}
   
   public void run()
   {
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    lse.a(this.this$0, localBaseApplicationImpl);
-    lse.a(this.this$0);
-    if (lse.a(this.this$0) == 1) {
-      lse.a(this.this$0).sendEmptyMessageDelayed(1, 30000L);
+    lsr.a(this.this$0, localBaseApplicationImpl);
+    lsr.a(this.this$0);
+    if (lsr.a(this.this$0) == 1) {
+      lsr.a(this.this$0).sendEmptyMessageDelayed(1, 30000L);
     }
   }
 }

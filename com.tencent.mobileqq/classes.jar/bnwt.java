@@ -1,24 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.coremedia.CMTimeRange;
 
-public class bnwt
-  extends BroadcastReceiver
+public abstract interface bnwt
 {
-  public bnwt(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      this.a.c();
-    }
-  }
+  public abstract void a(CMTime paramCMTime);
+  
+  public abstract void a(CMTimeRange paramCMTimeRange);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

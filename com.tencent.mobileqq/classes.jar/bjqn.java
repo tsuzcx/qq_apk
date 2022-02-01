@@ -1,16 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.FitSystemWindowsRelativeLayout;
-
 public class bjqn
-  implements View.OnTouchListener
 {
-  public bjqn(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bjqn(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    return true;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.d = paramString3;
+    this.c = paramString4;
+    this.e = paramString5;
+  }
+  
+  public String toString()
+  {
+    return " appId=" + this.a + ",appName=" + this.b + ",pkgName=" + this.c + ",channel=" + this.d + ",defUrl=" + this.e;
   }
 }
 

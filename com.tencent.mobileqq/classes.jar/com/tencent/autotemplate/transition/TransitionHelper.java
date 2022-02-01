@@ -1,16 +1,18 @@
 package com.tencent.autotemplate.transition;
 
+import android.os.Bundle;
+import com.tencent.autotemplate.TAVAutomaticTemplate;
 import com.tencent.autotemplate.extra.ExtraData;
 import com.tencent.autotemplate.extra.FaceInfo;
 import com.tencent.autotemplate.model.TAVEffectParameter;
 import com.tencent.autotemplate.model.TAVTransitionAutomaticEffect;
+import com.tencent.autotemplate.utils.TavStickerUtils;
 import com.tencent.autotemplate.utils.TemplateUtils;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tavkit.composition.TAVClip;
 import com.tencent.tavkit.composition.TAVComposition;
 import com.tencent.tavkit.composition.model.TAVTransitionableVideo;
-import com.tencent.tavmovie.sticker.TAVMovieSticker;
 import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.tavsticker.utils.CollectionUtil;
 import java.io.File;
@@ -23,6 +25,7 @@ public class TransitionHelper
   private ExtraData extraData;
   private List<FaceTransition> faceTransitions;
   protected String templateDir;
+  protected List<TransitionEffectModel> transitionEffectModels = new ArrayList();
   protected List<TAVSticker> transitionStickers;
   protected List<TAVTransitionAutomaticEffect> transitions;
   
@@ -71,23 +74,46 @@ public class TransitionHelper
       FaceTransition localFaceTransition;
       return;
     }
-    applyNormalTransitionsToChannel(paramTransitionStruct, randomTransition(paramTAVTransitionAutomaticEffect.getSubTransitions()));
+    paramTAVTransitionAutomaticEffect = randomTransition(paramTAVTransitionAutomaticEffect.getSubTransitions());
+    if (TAVAutomaticTemplate.isMapping)
+    {
+      applyNormalTransitionInChannel(paramTransitionStruct, paramTAVTransitionAutomaticEffect);
+      return;
+    }
+    applyNormalTransitionsToChannel(paramTransitionStruct, paramTAVTransitionAutomaticEffect);
   }
   
+  private void applyNormalTransitionInChannel(TransitionStruct paramTransitionStruct, TAVTransitionAutomaticEffect paramTAVTransitionAutomaticEffect)
+  {
+    TAVSticker localTAVSticker = getTAVSticker(paramTAVTransitionAutomaticEffect);
+    if (localTAVSticker != null)
+    {
+      paramTAVTransitionAutomaticEffect = TransitionUtils.getTransitionParams(localTAVSticker, paramTAVTransitionAutomaticEffect.effectId);
+      if (shouldAddTransition(paramTAVTransitionAutomaticEffect, paramTransitionStruct))
+      {
+        applyTransitionsToClip(paramTransitionStruct, paramTAVTransitionAutomaticEffect, localTAVSticker);
+        return;
+      }
+    }
+    paramTransitionStruct.lastChannel.add(paramTransitionStruct.curClip);
+    paramTransitionStruct.lastClip = paramTransitionStruct.curClip;
+    paramTransitionStruct.totalDurationMsInTimeLine += paramTransitionStruct.curClip.getDuration().getTimeUs() / 1000L;
+  }
+  
+  @Deprecated
   private void applyNormalTransitionsToChannel(TransitionStruct paramTransitionStruct, TAVTransitionAutomaticEffect paramTAVTransitionAutomaticEffect)
   {
     long l = 0L;
-    Object localObject = null;
+    CMTime localCMTime = null;
     TAVSticker localTAVSticker = getTAVSticker(paramTAVTransitionAutomaticEffect);
-    paramTAVTransitionAutomaticEffect = localObject;
     if (localTAVSticker != null)
     {
       l = ((float)localTAVSticker.durationTime() / 1000.0F);
-      paramTAVTransitionAutomaticEffect = new CMTime(paramTransitionStruct.totalDurationMsInTimeLine - l, 1000);
+      localCMTime = new CMTime(paramTransitionStruct.totalDurationMsInTimeLine - l, 1000);
     }
-    if ((localTAVSticker != null) && (paramTAVTransitionAutomaticEffect.bigThan(paramTransitionStruct.lastTransitionEndTime)))
+    if ((localTAVSticker != null) && (localCMTime.bigThan(paramTransitionStruct.lastTransitionEndTime)))
     {
-      applyTransitionsToClip(paramTransitionStruct, l, paramTAVTransitionAutomaticEffect, localTAVSticker);
+      applyTransitionsToClip(paramTransitionStruct, l, localCMTime, localTAVSticker, paramTAVTransitionAutomaticEffect.effectId);
       return;
     }
     paramTransitionStruct.lastChannel.add(paramTransitionStruct.curClip);
@@ -112,6 +138,11 @@ public class TransitionHelper
       applyFaceTransitionsToChannel(paramTransitionStruct, localTAVTransitionAutomaticEffect);
       return;
     }
+    if (TAVAutomaticTemplate.isMapping)
+    {
+      applyNormalTransitionInChannel(paramTransitionStruct, localTAVTransitionAutomaticEffect);
+      return;
+    }
     applyNormalTransitionsToChannel(paramTransitionStruct, localTAVTransitionAutomaticEffect);
   }
   
@@ -123,6 +154,7 @@ public class TransitionHelper
     localTransitionStruct.lastChannel = null;
     localTransitionStruct.lastClip = null;
     localTransitionStruct.channels = paramList1;
+    this.transitionEffectModels.clear();
     int i = 0;
     while (i < paramList.size())
     {
@@ -134,7 +166,8 @@ public class TransitionHelper
     }
   }
   
-  private void applyTransitionsToClip(TransitionStruct paramTransitionStruct, long paramLong, CMTime paramCMTime, TAVSticker paramTAVSticker)
+  @Deprecated
+  private void applyTransitionsToClip(TransitionStruct paramTransitionStruct, long paramLong, CMTime paramCMTime, TAVSticker paramTAVSticker, String paramString)
   {
     paramTransitionStruct.curChannel.add(new TAVClip(paramCMTime));
     paramTransitionStruct.curClip.setStartTime(paramCMTime);
@@ -142,10 +175,71 @@ public class TransitionHelper
     paramTransitionStruct.totalDurationMsInTimeLine = (paramTransitionStruct.totalDurationMsInTimeLine - paramLong + paramTransitionStruct.curClip.getDuration().getTimeUs() / 1000L);
     paramTAVSticker.setTimeRange(new CMTimeRange(paramCMTime, new CMTime(paramLong, 1000)));
     this.transitionStickers.add(paramTAVSticker);
+    paramCMTime = new TransitionEffectModel();
+    paramCMTime.setTransitionPosition(paramTransitionStruct.index - 1);
+    paramCMTime.setStickerId(paramTAVSticker.getStickerId());
+    paramCMTime.setFilePath(paramTAVSticker.getFilePath());
+    paramCMTime.setEffectId(paramString);
+    this.transitionEffectModels.add(paramCMTime);
     paramTransitionStruct.lastTransitionEndTime = paramTAVSticker.getTimeRange().getEnd();
     paramTransitionStruct.lastChannel = paramTransitionStruct.curChannel;
     paramTransitionStruct.lastClip = paramTransitionStruct.curClip;
     paramTransitionStruct.channels.add(paramTransitionStruct.curChannel);
+  }
+  
+  private void applyTransitionsToClip(TransitionStruct paramTransitionStruct, TransitionEffectParam paramTransitionEffectParam, TAVSticker paramTAVSticker)
+  {
+    long l = paramTransitionEffectParam.getOverlayTime().getTimeUs() / 1000L;
+    CMTime localCMTime1 = new CMTime(paramTransitionStruct.totalDurationMsInTimeLine - l, 1000);
+    paramTransitionStruct.curChannel.add(new TAVClip(localCMTime1));
+    paramTransitionStruct.curClip.setStartTime(localCMTime1);
+    paramTransitionStruct.curChannel.add(paramTransitionStruct.curClip);
+    paramTransitionStruct.totalDurationMsInTimeLine = (paramTransitionStruct.totalDurationMsInTimeLine - l + paramTransitionStruct.curClip.getDuration().getTimeUs() / 1000L);
+    CMTime localCMTime2 = CMTime.fromUs(paramTAVSticker.durationTime());
+    Object localObject = localCMTime1;
+    if (TAVAutomaticTemplate.isMapping) {
+      localObject = localCMTime1.add(paramTransitionEffectParam.getOverlayTime()).sub(paramTransitionEffectParam.getLeftTransitionTime());
+    }
+    paramTAVSticker.setTimeRange(new CMTimeRange((CMTime)localObject, localCMTime2));
+    if (TAVAutomaticTemplate.isMapping) {
+      paramTAVSticker.getExtraBundle().putString("key_extra_sticker_type", "sticker_video_transition");
+    }
+    this.transitionStickers.add(paramTAVSticker);
+    localObject = new TransitionEffectModel();
+    ((TransitionEffectModel)localObject).setTransitionPosition(paramTransitionStruct.index - 1);
+    ((TransitionEffectModel)localObject).setStickerId(paramTAVSticker.getStickerId());
+    ((TransitionEffectModel)localObject).setFilePath(paramTAVSticker.getFilePath());
+    ((TransitionEffectModel)localObject).setEffectId(paramTransitionEffectParam.getEffectId());
+    ((TransitionEffectModel)localObject).setLeftTransitionMs(paramTransitionEffectParam.getLeftTransitionTime().getTimeUs() / 1000L);
+    ((TransitionEffectModel)localObject).setRightTransitionMs(paramTransitionEffectParam.getRightTransitionTime().getTimeUs() / 1000L);
+    ((TransitionEffectModel)localObject).setOverlayTransitionMs(paramTransitionEffectParam.getOverlayTime().getTimeUs() / 1000L);
+    ((TransitionEffectModel)localObject).setTimeRange(paramTAVSticker.getTimeRange());
+    this.transitionEffectModels.add(localObject);
+    paramTransitionStruct.lastTransitionEndTime = paramTAVSticker.getTimeRange().getEnd();
+    paramTransitionStruct.lastChannel = paramTransitionStruct.curChannel;
+    paramTransitionStruct.lastClip = paramTransitionStruct.curClip;
+    paramTransitionStruct.channels.add(paramTransitionStruct.curChannel);
+  }
+  
+  private boolean shouldAddTransition(TransitionEffectParam paramTransitionEffectParam, TransitionStruct paramTransitionStruct)
+  {
+    if (paramTransitionStruct.index == 0) {
+      return false;
+    }
+    List localList = paramTransitionStruct.lastChannel;
+    TAVClip localTAVClip = null;
+    if (!CollectionUtil.isEmptyCollection(localList)) {
+      localTAVClip = (TAVClip)localList.get(localList.size() - 1);
+    }
+    if (localTAVClip != null) {}
+    for (boolean bool1 = localTAVClip.getTimeRange().getEnd().sub(paramTransitionStruct.lastTransitionEndTime).bigThan(paramTransitionEffectParam.getLeftTransitionTime());; bool1 = false)
+    {
+      boolean bool2 = paramTransitionStruct.curClip.getDuration().bigThan(paramTransitionEffectParam.getRightTransitionTime());
+      if ((!bool1) || (!bool2)) {
+        break;
+      }
+      return true;
+    }
   }
   
   public void applyTransitionToComposition(TAVComposition paramTAVComposition)
@@ -179,12 +273,12 @@ public class TransitionHelper
   
   public TAVSticker getTAVSticker(TAVTransitionAutomaticEffect paramTAVTransitionAutomaticEffect)
   {
-    paramTAVTransitionAutomaticEffect = this.templateDir + File.separator + paramTAVTransitionAutomaticEffect.parameter.filePath;
-    TAVMovieSticker localTAVMovieSticker = new TAVMovieSticker(paramTAVTransitionAutomaticEffect);
-    if ((localTAVMovieSticker == null) || (localTAVMovieSticker.getSticker() == null)) {
+    TAVSticker localTAVSticker = TavStickerUtils.createSticker(this.templateDir + File.separator + paramTAVTransitionAutomaticEffect.parameter.filePath, false);
+    if (localTAVSticker == null) {
       return null;
     }
-    return new TAVMovieSticker(paramTAVTransitionAutomaticEffect).getSticker();
+    localTAVSticker.setStickerId(paramTAVTransitionAutomaticEffect.effectId);
+    return localTAVSticker;
   }
   
   public boolean needTransition(TAVComposition paramTAVComposition)
@@ -196,6 +290,11 @@ public class TransitionHelper
   public TAVTransitionAutomaticEffect randomTransition(List<TAVTransitionAutomaticEffect> paramList)
   {
     return (TAVTransitionAutomaticEffect)paramList.get((int)(Math.random() * paramList.size()));
+  }
+  
+  public void setTransitionEffectModels(List<TransitionEffectModel> paramList)
+  {
+    this.transitionEffectModels = paramList;
   }
 }
 

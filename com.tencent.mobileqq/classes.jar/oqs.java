@@ -1,19 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oqs
-  implements ViewBase.OnClickListener
+public class oqs
+  extends Handler
 {
-  oqs(ouc paramouc) {}
+  private WeakReference<oqo> a;
   
-  public final void onClick(ViewBase paramViewBase)
+  public oqs(oqo paramoqo)
   {
-    paramViewBase = this.a;
-    if (paramViewBase != null) {
-      paramViewBase.i();
-    }
+    this.a = new WeakReference(paramoqo);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    oqo localoqo = (oqo)this.a.get();
+    if (localoqo == null) {}
+    do
+    {
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 1: 
+          oqo.a(localoqo);
+          return;
+        }
+      } while (oqo.a(localoqo) == null);
+      oqo.a(localoqo).a(oqo.a(localoqo));
+      return;
+    } while (oqo.a(localoqo) == null);
+    oqo.a(localoqo).b();
   }
 }
 

@@ -1,222 +1,124 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.recent.data.RecentItemTroopMsgData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFuDai;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.activity.photo.album.logicImp.PhotoListLogicDataline.1;
+import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendVideoInfo;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class aknr
+  extends akmj
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bese jdField_a_of_type_Bese;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Object jdField_a_of_type_JavaLangObject;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public aknr(RecentItemTroopMsgData paramRecentItemTroopMsgData, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, bese parambese, Object paramObject, boolean paramBoolean)
+  protected aknr(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bese = parambese;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.b = paramBoolean;
+    super(paramNewPhotoListActivity);
   }
   
-  private void a(akns paramakns, MessageRecord paramMessageRecord)
+  public void a(Activity paramActivity, Intent paramIntent, ArrayList<String> paramArrayList)
   {
-    if ((MessageForQQWalletMsg.isRedPacketMsg(paramMessageRecord)) || ((paramMessageRecord instanceof MessageForFuDai)) || ((this.jdField_a_of_type_JavaLangObject instanceof aknx))) {}
-    do
-    {
-      do
-      {
-        return;
-        if (!(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.a().msg instanceof akoi)) {
-          break;
-        }
-        if (((akoi)this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.a().msg).c == 1)
-        {
-          this.jdField_a_of_type_Int = 2131167096;
-          return;
-        }
-      } while (!bfdg.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin));
-      this.jdField_a_of_type_Int = 2131167096;
-      return;
-      if (((this.jdField_a_of_type_JavaLangObject instanceof bkyo)) && (((bkyo)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131696900))))
-      {
-        this.jdField_a_of_type_Int = 2131167096;
-        return;
-      }
-      if (((this.jdField_a_of_type_JavaLangObject instanceof akoh)) && (((akoh)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131696885))))
-      {
-        this.jdField_a_of_type_Int = 2131167096;
-        return;
-      }
-    } while ((!(this.jdField_a_of_type_JavaLangObject instanceof akod)) || ((!((akod)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131696881))) && (!((akod)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131692591)))));
-    this.jdField_a_of_type_Int = 2131167096;
-  }
-  
-  private void b(akns paramakns, MessageRecord paramMessageRecord)
-  {
-    if (MessageForQQWalletMsg.isRedPacketMsg(paramMessageRecord))
-    {
-      paramakns = (MessageForQQWalletMsg)paramMessageRecord;
-      if ((paramakns.messageType == 7) || (paramakns.messageType == 8)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = this.jdField_a_of_type_AndroidContentContext.getString(2131718133);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "sendPicAndVideoToDataline...");
     }
-    do
+    paramIntent.setClassName("com.tencent.mobileqq", "com.dataline.activities.LiteActivity");
+    paramIntent.addFlags(603979776);
+    paramIntent.putExtra("param_compressInitTime", System.currentTimeMillis());
+    paramIntent.putExtra("PhotoConst.PHOTO_PATHS", paramArrayList);
+    paramActivity.startActivityForResult(paramIntent, 2);
+    paramActivity.finish();
+    AlbumUtil.anim(paramActivity, false, false);
+  }
+  
+  protected void a(Intent paramIntent, boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    int i2 = PhotoUtils.getTypeforReportSpcialDiscuss(this.a.a);
+    paramArrayList = new HashMap();
+    int j = 0;
+    int i = 0;
+    int i1 = 0;
+    int k = 0;
+    while (i1 < this.mPhotoCommonData.selectedPhotoList.size())
     {
-      return;
-      if ((paramMessageRecord instanceof MessageForFuDai))
+      localObject1 = (String)this.mPhotoCommonData.selectedPhotoList.get(i1);
+      int m;
+      if (ImageManager.isNetworkUrl((String)localObject1))
       {
-        ((MessageForFuDai)paramMessageRecord).parse();
-        paramakns = ((MessageForFuDai)paramMessageRecord).highlightMsg();
-        if (!TextUtils.isEmpty(paramakns))
-        {
-          paramakns = amtj.a(2131712303) + paramakns + "]";
-          this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = paramakns;
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
-        return;
+        m = k;
+        k = i;
+        i = m;
+        i1 += 1;
+        m = k;
+        k = i;
+        i = m;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.a().msg instanceof akoi))
+      else
       {
-        paramMessageRecord = (akoi)this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.a().msg;
-        bfdf localbfdf = bfdg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin);
-        if (paramMessageRecord.c == 1)
+        int n;
+        if (((akmq)this.mOtherCommonData).a(this.mPhotoCommonData, (String)localObject1) == 1)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = this.jdField_a_of_type_AndroidContentContext.getString(2131696786);
-          return;
-        }
-        if (bfdg.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = paramakns.a;
-          return;
-        }
-        if (localbfdf != null)
-        {
-          if (localbfdf.a.isEmpty())
+          localObject1 = ((akmq)this.mOtherCommonData).a(this.mPhotoCommonData, (String)localObject1);
+          n = j;
+          m = i;
+          if (localObject1 != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
-            return;
+            localObject2 = new SendVideoActivity.SendVideoInfo();
+            ((SendVideoActivity.SendVideoInfo)localObject2).fileSize = ((LocalMediaInfo)localObject1).fileSize;
+            ((SendVideoActivity.SendVideoInfo)localObject2).duration = ((LocalMediaInfo)localObject1).mDuration;
+            paramArrayList.put(Integer.valueOf(k), localObject2);
+            m = i + 1;
+            n = j;
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = paramakns.a;
-          return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
-        return;
-      }
-      if ((this.jdField_a_of_type_JavaLangObject instanceof akoe))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
-        return;
-      }
-      if (((this.jdField_a_of_type_JavaLangObject instanceof akol)) && (((akol)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131696883))))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
-        return;
-      }
-      if (((this.jdField_a_of_type_JavaLangObject instanceof akoc)) && (((akoc)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131696886))))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
-        return;
-      }
-      if (((this.jdField_a_of_type_JavaLangObject instanceof akoj)) && (((akoj)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131696888))))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
-        return;
-      }
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof akog));
-    this.b = true;
-  }
-  
-  private void c(akns paramakns, MessageRecord paramMessageRecord)
-  {
-    if (MessageForQQWalletMsg.isRedPacketMsg(paramMessageRecord))
-    {
-      paramakns = (MessageForQQWalletMsg)paramMessageRecord;
-      if ((paramakns.messageType == 7) || (paramakns.messageType == 8)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = this.jdField_a_of_type_AndroidContentContext.getString(2131718133);
+        for (;;)
+        {
+          i = k + 1;
+          j = n;
+          k = m;
+          break;
+          n = j + 1;
+          m = i;
+        }
       }
     }
-    do
+    Object localObject1 = String.valueOf(j);
+    Object localObject2 = String.valueOf(i);
+    if (!paramArrayList.isEmpty()) {
+      paramIntent.putExtra("PhotoConst.VIDEO_INFOS", paramArrayList);
+    }
+    for (i = 1;; i = 0)
     {
-      return;
-      if ((paramMessageRecord instanceof MessageForFuDai))
-      {
-        ((MessageForFuDai)paramMessageRecord).parse();
-        paramakns = ((MessageForFuDai)paramMessageRecord).highlightMsg();
-        if (!TextUtils.isEmpty(paramakns))
-        {
-          paramakns = amtj.a(2131712303) + paramakns + "]";
-          this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = paramakns;
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = "";
-        return;
-      }
-      if ((this.jdField_a_of_type_JavaLangObject instanceof aknx))
-      {
-        paramakns = String.format(amtj.a(2131712276), new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mTitleName });
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = paramakns;
-        return;
-      }
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof akog));
-    this.b = true;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public aknr a()
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof akns))
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUnreadNum == 0) && (!(this.jdField_a_of_type_JavaLangObject instanceof akoi)))
+      if ((bcwz.b != 0L) && (System.currentTimeMillis() - bcwz.b < 300000L)) {}
+      for (paramBoolean = true;; paramBoolean = false)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("RecentItemTroopMsgData", 2, "dealMsgAttention, mUnreadNum:" + this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUnreadNum);
+          QLog.d("PhotoListActivity", 2, "PhotoListLogicDataline isConfirmed=" + paramBoolean + " allowUploadInXGTime=" + bcwz.b);
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = "";
-        this.jdField_a_of_type_Boolean = true;
-        return this;
+        if ((!NetworkUtil.isMobileNetWork(BaseApplicationImpl.getContext())) || (paramBoolean) || (i == 0)) {
+          break;
+        }
+        paramArrayList = ((NewPhotoListActivity)this.mActivity).getResources().getString(2131718496);
+        paramIntent = new PhotoListLogicDataline.1(this, paramIntent, i2, (String)localObject1, (String)localObject2);
+        if (bixr.a(this.mActivity, 4, new akns(this, paramIntent))) {
+          bhdj.a(this.mActivity, 232, null, paramArrayList, new aknt(this, paramIntent), new aknu(this)).show();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("PhotoListActivity", 2, "show datalinephoto_mobile_send_confirm dialog");
+        }
+        return;
       }
-      akns localakns = (akns)this.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = localakns.a;
-      this.jdField_a_of_type_Int = 2131167124;
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = localakns.b;
-      long l = this.jdField_a_of_type_Bese.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin);
-      MessageRecord localMessageRecord = null;
-      if (l != 0L) {
-        localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByShmsgseq4Troop(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.getType(), l);
-      }
-      a(localakns, localMessageRecord);
-      b(localakns, localMessageRecord);
-      c(localakns, localMessageRecord);
+      a(this.mActivity, paramIntent, this.mPhotoCommonData.selectedPhotoList);
+      bdla.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", i2, 0, (String)localObject1, (String)localObject2, "", "");
+      return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    return this;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
   }
 }
 

@@ -1,44 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-
 public class apqv
-  implements bjsd
 {
-  public apqv(SearchResultActivity paramSearchResultActivity) {}
+  public int a;
+  public String a;
   
-  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  public apqv(int paramInt, String paramString)
   {
-    SearchResultActivity.a(this.a).c(SearchResultActivity.a(this.a));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
-  
-  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
-  {
-    SearchResultActivity.a(this.a).b(SearchResultActivity.a(this.a));
-  }
-  
-  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
-  {
-    SearchResultActivity.a(this.a).a(SearchResultActivity.a(this.a));
-    if (NetworkUtil.isNetSupport(this.a)) {
-      SearchResultActivity.c(this.a);
-    }
-    for (;;)
-    {
-      SearchResultActivity.a(this.a, System.currentTimeMillis());
-      return true;
-      SearchResultActivity.a(this.a).a(1);
-      paramView = Message.obtain();
-      paramView.what = 3;
-      SearchResultActivity.a(this.a).sendMessageDelayed(paramView, 1000L);
-    }
-  }
-  
-  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

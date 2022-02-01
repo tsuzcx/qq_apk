@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
 
-public class bamk
-  implements View.OnClickListener
+class bamk
+  extends bamd
 {
-  public bamk(EditActivity paramEditActivity) {}
+  private bamk(bami parambami) {}
   
-  public void onClick(View paramView)
+  public boolean a(Message paramMessage)
   {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
   }
 }
 

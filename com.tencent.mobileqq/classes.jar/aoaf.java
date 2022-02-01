@@ -1,17 +1,24 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
 
-public class aoaf
+final class aoaf
   implements DialogInterface.OnClickListener
 {
-  public aoaf(ARRecordUtils.1 param1) {}
+  aoaf(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, paramInt);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoaf
  * JD-Core Version:    0.7.0.1
  */

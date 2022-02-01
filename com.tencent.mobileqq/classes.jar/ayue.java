@@ -1,276 +1,114 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ayue
 {
-  public static long a(aymg paramaymg)
-  {
-    long l2 = 0L;
-    long l1 = l2;
-    if (paramaymg != null)
-    {
-      l1 = l2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        l1 = l2;
-        if (a(41607, paramaymg)) {
-          l1 = paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.lBirthday;
-        }
-      }
-    }
-    return l1;
-  }
+  public List<String> a;
   
-  public static String a(aymg paramaymg)
+  public ayue(List<String> paramList, String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramaymg != null)
-    {
-      localObject1 = localObject2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (a(41609, paramaymg)) {
-          localObject1 = bfre.c(paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.constellation);
-        }
-      }
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
     }
-    return localObject1;
+    if ((paramString != null) && (!((List)localObject).contains(paramString))) {
+      ((List)localObject).add(paramString);
+    }
+    Collections.sort((List)localObject, new ayuf(this));
+    this.a = ((List)localObject);
   }
   
   public static String a(String paramString)
   {
-    String str = null;
-    if (paramString != null) {
-      str = paramString.trim();
-    }
-    return str;
+    return Pattern.compile("[\\s|\\t|\\r|\\n]+").matcher(paramString).replaceAll("");
   }
   
-  public static short a(aymg paramaymg)
+  public int a(String paramString1, String paramString2, int paramInt)
   {
-    short s2 = -1;
-    short s1 = s2;
-    if (paramaymg != null)
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return -1;
+    }
+    return paramString1.toLowerCase().indexOf(paramString2.toLowerCase(), paramInt);
+  }
+  
+  public SpannableString a(String paramString)
+  {
+    return a(paramString, false);
+  }
+  
+  public SpannableString a(String paramString, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      s1 = s2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
+      localObject = null;
+      return localObject;
+    }
+    Object localObject = new SpannableString(paramString);
+    if ((this.a == null) || (this.a.size() <= 0)) {
+      return localObject;
+    }
+    Object[] arrayOfObject = this.a.toArray();
+    int k = 0;
+    int i = 0;
+    int j = 0;
+    String str1 = paramString;
+    paramString = (String)localObject;
+    String str2;
+    int m;
+    for (;;)
+    {
+      localObject = paramString;
+      if (k >= arrayOfObject.length) {
+        break;
+      }
+      str2 = (String)arrayOfObject[k];
+      if (str2.length() <= 1)
       {
-        s1 = s2;
-        if (a(41611, paramaymg)) {
-          s1 = paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.shGender;
+        localObject = paramString;
+        if (i != 0) {
+          break;
         }
       }
+      m = 0;
+      m = a(str1, str2, m);
+      if (m != -1) {
+        break label137;
+      }
+      k += 1;
     }
-    return s1;
-  }
-  
-  public static boolean a(int paramInt, aymg paramaymg)
-  {
-    if (paramaymg.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) {}
-    for (int i = 1; (i == 0) || (azbc.a.a(paramInt, paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard, null) != 2); i = 0) {
-      return true;
-    }
-    return false;
-  }
-  
-  public static String b(aymg paramaymg)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramaymg != null)
+    label137:
+    if ((m > 10) && (j == 0) && (!paramBoolean))
     {
-      localObject1 = localObject2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
+      str1 = "…" + str1.substring(m - 6);
+      paramString = new SpannableString(str1);
+      m = 7;
+      j = 1;
+    }
+    for (;;)
+    {
+      if (str2.length() > 1) {
+        j = 1;
+      }
+      int n;
+      for (i = 1;; i = n)
       {
-        localObject1 = localObject2;
-        if (a(41619, paramaymg)) {
-          localObject1 = a(paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.strSchool);
-        }
+        paramString.setSpan(new ForegroundColorSpan(Color.parseColor("#12b7f5")), m, str2.length() + m, 34);
+        n = i;
+        m += 1;
+        i = j;
+        j = n;
+        break;
+        n = j;
+        j = i;
       }
     }
-    return localObject1;
-  }
-  
-  public static short b(aymg paramaymg)
-  {
-    short s2 = 0;
-    short s1 = s2;
-    if (paramaymg != null)
-    {
-      s1 = s2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        s1 = s2;
-        if (a(41610, paramaymg)) {
-          s1 = (short)paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.age;
-        }
-      }
-    }
-    return s1;
-  }
-  
-  public static String c(aymg paramaymg)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramaymg != null)
-    {
-      localObject1 = localObject2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (a(41614, paramaymg)) {
-          localObject1 = a(paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.strCountry);
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static String d(aymg paramaymg)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramaymg != null)
-    {
-      localObject1 = localObject2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (a(41614, paramaymg)) {
-          localObject1 = a(paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.strProvince);
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static String e(aymg paramaymg)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramaymg != null)
-    {
-      localObject1 = localObject2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (a(41614, paramaymg)) {
-          localObject1 = a(paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.strCity);
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static String f(aymg paramaymg)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramaymg != null)
-    {
-      localObject1 = localObject2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (a(41613, paramaymg)) {
-          localObject1 = a(paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.strHometownDesc);
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static String g(aymg paramaymg)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramaymg != null)
-    {
-      localObject1 = localObject2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (a(41613, paramaymg)) {
-          localObject1 = a(paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.strHometownProvince);
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static String h(aymg paramaymg)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramaymg != null)
-    {
-      localObject1 = localObject2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (a(41613, paramaymg)) {
-          localObject1 = a(paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.strHometownCity);
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static String i(aymg paramaymg)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramaymg != null)
-    {
-      localObject1 = localObject2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (a(40272, paramaymg)) {
-          localObject1 = a(paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.strCompany);
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static String j(aymg paramaymg)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramaymg != null)
-    {
-      localObject1 = localObject2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (a(41618, paramaymg)) {
-          localObject1 = bfre.d(paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.iProfession);
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static String k(aymg paramaymg)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramaymg != null)
-    {
-      localObject1 = localObject2;
-      if (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        localObject1 = localObject2;
-        if (a(41622, paramaymg)) {
-          localObject1 = a(paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.strEmail);
-        }
-      }
-    }
-    return localObject1;
   }
 }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:id="@id/jl5" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ViewStub android:id="@id/nu6" android:visibility="gone" android:layout="@layout/cmk" android:layout_width="wrap_content" android:layout_height="32.0dip" />
+    <ViewStub android:id="@id/o4n" android:visibility="gone" android:layout="@layout/cof" android:layout_width="wrap_content" android:layout_height="32.0dip" />
     <ViewStub android:id="@id/krd" android:visibility="gone" android:layout="@layout/ab6" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginBottom="8.0dip" />
     <ViewStub android:id="@id/krc" android:visibility="gone" android:layout="@layout/ab4" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginBottom="8.0dip" />
 </LinearLayout>

@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
 class avoy
-  implements DialogInterface.OnDismissListener
+  implements TVK_IMediaPlayer.OnNetVideoInfoListener
 {
-  avoy(avow paramavow, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  avoy(avor paramavor) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onNetVideoInfo what=" + paramTVK_NetVideoInfo.getErrInfo() + ",extra=" + paramTVK_NetVideoInfo.getState() + ",mCacheProgress=");
     }
   }
 }

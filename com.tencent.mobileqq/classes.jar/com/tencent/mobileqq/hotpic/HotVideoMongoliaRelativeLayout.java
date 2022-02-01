@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import akur;
-import amtj;
+import alsn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -18,15 +17,16 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import auhu;
-import auhv;
-import auhw;
-import auhx;
-import auhy;
-import auhz;
-import auia;
-import auib;
-import auix;
+import anvx;
+import avno;
+import avnp;
+import avnq;
+import avnr;
+import avns;
+import avnt;
+import avnu;
+import avnv;
+import avor;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -38,22 +38,22 @@ public class HotVideoMongoliaRelativeLayout
 {
   public static final String a;
   public static final String b;
-  public static final String c = amtj.a(2131704747);
-  public static final String d = amtj.a(2131704748);
+  public static final String c = anvx.a(2131705098);
+  public static final String d = anvx.a(2131705099);
   final float jdField_a_of_type_Float = 1.777778F;
   public int a;
-  public akur a;
+  public alsn a;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   public View a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  auhx jdField_a_of_type_Auhx;
-  private auhy jdField_a_of_type_Auhy;
-  private auhz jdField_a_of_type_Auhz;
-  public auia a;
-  public auib a;
+  avnr jdField_a_of_type_Avnr;
+  private avns jdField_a_of_type_Avns;
+  private avnt jdField_a_of_type_Avnt;
+  public avnu a;
+  public avnv a;
   public CircleProgressView a;
   private HotVideoData jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData;
   boolean jdField_a_of_type_Boolean = false;
@@ -63,8 +63,8 @@ public class HotVideoMongoliaRelativeLayout
   
   static
   {
-    jdField_a_of_type_JavaLangString = amtj.a(2131704749);
-    jdField_b_of_type_JavaLangString = amtj.a(2131704745);
+    jdField_a_of_type_JavaLangString = anvx.a(2131705100);
+    jdField_b_of_type_JavaLangString = anvx.a(2131705096);
   }
   
   public HotVideoMongoliaRelativeLayout(Context paramContext)
@@ -90,8 +90,8 @@ public class HotVideoMongoliaRelativeLayout
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Auhy != null) {
-        this.jdField_a_of_type_Auhy.c(paramInt2);
+      if (this.jdField_a_of_type_Avns != null) {
+        this.jdField_a_of_type_Avns.c(paramInt2);
       }
       return;
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
@@ -132,18 +132,18 @@ public class HotVideoMongoliaRelativeLayout
     }
   }
   
-  private void a(auia paramauia, auib paramauib)
+  private void a(avnu paramavnu, avnv paramavnv)
   {
-    this.jdField_a_of_type_Auia = paramauia;
-    this.jdField_a_of_type_Auib = paramauib;
-    this.jdField_a_of_type_Auia.a(this);
+    this.jdField_a_of_type_Avnu = paramavnu;
+    this.jdField_a_of_type_Avnv = paramavnv;
+    this.jdField_a_of_type_Avnu.a(this);
   }
   
   private void f()
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = auix.a(getContext());
+      this.jdField_a_of_type_AndroidViewView = avor.a(getContext());
       if (this.jdField_a_of_type_AndroidViewView == null)
       {
         b(-11);
@@ -156,9 +156,9 @@ public class HotVideoMongoliaRelativeLayout
     }
     for (;;)
     {
-      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131377637);
+      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131377911);
       localFrameLayout.removeAllViews();
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.jdField_a_of_type_Auib.jdField_a_of_type_Int, -1);
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.jdField_a_of_type_Avnv.jdField_a_of_type_Int, -1);
       localFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return;
@@ -169,36 +169,36 @@ public class HotVideoMongoliaRelativeLayout
   
   private void g()
   {
-    QLog.d("HotVideoRelativeLayout", 2, "mVideoTitle is" + this.jdField_a_of_type_Auib.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377069));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377068));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131380596);
-    this.jdField_a_of_type_ComTencentMobileqqHotpicCircleProgressView = ((CircleProgressView)findViewById(2131365744));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372965));
+    QLog.d("HotVideoRelativeLayout", 2, "mVideoTitle is" + this.jdField_a_of_type_Avnv.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377343));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377342));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131380942);
+    this.jdField_a_of_type_ComTencentMobileqqHotpicCircleProgressView = ((CircleProgressView)findViewById(2131365838));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373175));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(10000);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131380492));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380491));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131380832));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380831));
     f();
     b(2);
     setOnTouchListener(this);
-    setOnClickListener(new auhu(this));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new auhv(this));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new auhw(this));
+    setOnClickListener(new avno(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new avnp(this));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new avnq(this));
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Auia == null) {}
+    if (this.jdField_a_of_type_Avnu == null) {}
     do
     {
       return;
       if (this.jdField_a_of_type_Int == 6)
       {
-        this.jdField_a_of_type_Auia.a(7, this);
+        this.jdField_a_of_type_Avnu.a(7, this);
         return;
       }
     } while (this.jdField_a_of_type_Int != 3);
-    this.jdField_a_of_type_Auia.a(8, this);
+    this.jdField_a_of_type_Avnu.a(8, this);
   }
   
   public void a(int paramInt)
@@ -218,8 +218,8 @@ public class HotVideoMongoliaRelativeLayout
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Auhy != null) {
-      this.jdField_a_of_type_Auhy.a(paramString);
+    if (this.jdField_a_of_type_Avns != null) {
+      this.jdField_a_of_type_Avns.a(paramString);
     }
   }
   
@@ -232,7 +232,7 @@ public class HotVideoMongoliaRelativeLayout
       if (!paramBoolean) {
         break label74;
       }
-      i = 2130838077;
+      i = 2130838091;
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getContext().getResources().getDrawable(i));
       localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
       if (!paramBoolean) {
@@ -241,14 +241,14 @@ public class HotVideoMongoliaRelativeLayout
     }
     label74:
     label81:
-    for (String str = amtj.a(2131704750);; str = amtj.a(2131704751))
+    for (String str = anvx.a(2131705101);; str = anvx.a(2131705102))
     {
       localImageView.setContentDescription(str);
-      if (this.jdField_a_of_type_Auia != null) {
-        this.jdField_a_of_type_Auia.a(paramBoolean);
+      if (this.jdField_a_of_type_Avnu != null) {
+        this.jdField_a_of_type_Avnu.a(paramBoolean);
       }
       return;
-      i = 2130838078;
+      i = 2130838092;
       break;
     }
   }
@@ -258,20 +258,20 @@ public class HotVideoMongoliaRelativeLayout
     return Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId();
   }
   
-  public boolean a(auia paramauia, auib paramauib)
+  public boolean a(avnu paramavnu, avnv paramavnv)
   {
-    a(paramauia, paramauib);
+    a(paramavnu, paramavnv);
     g();
     return true;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Auia == null) {}
+    if (this.jdField_a_of_type_Avnu == null) {}
     while (this.jdField_a_of_type_Int != 5) {
       return;
     }
-    this.jdField_a_of_type_Auia.a(9, this);
+    this.jdField_a_of_type_Avnu.a(9, this);
   }
   
   public void b(int paramInt)
@@ -291,48 +291,48 @@ public class HotVideoMongoliaRelativeLayout
   
   public void c()
   {
-    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Auia != null))
+    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Avnu != null))
     {
-      this.jdField_a_of_type_Auia.a(0, this);
+      this.jdField_a_of_type_Avnu.a(0, this);
       a(HotPicPageView.jdField_a_of_type_Boolean);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Auia != null) {
-      this.jdField_a_of_type_Auia.b();
+    if (this.jdField_a_of_type_Avnu != null) {
+      this.jdField_a_of_type_Avnu.b();
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Auhz != null) {
-      this.jdField_a_of_type_Auhz.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
+    if (this.jdField_a_of_type_Avnt != null) {
+      this.jdField_a_of_type_Avnt.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
     }
   }
   
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Auia != null) {
-      this.jdField_a_of_type_Auia.a();
+    if (this.jdField_a_of_type_Avnu != null) {
+      this.jdField_a_of_type_Avnu.a();
     }
-    this.jdField_a_of_type_Auia = null;
+    this.jdField_a_of_type_Avnu = null;
     if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
     {
       this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
       this.jdField_a_of_type_AndroidViewVelocityTracker = null;
     }
-    this.jdField_a_of_type_Auhz = null;
-    if ((this.jdField_a_of_type_Auhy != null) && (this.jdField_a_of_type_Int != 0))
+    this.jdField_a_of_type_Avnt = null;
+    if ((this.jdField_a_of_type_Avns != null) && (this.jdField_a_of_type_Int != 0))
     {
       this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Auhy.c(0);
+      this.jdField_a_of_type_Avns.c(0);
       if (QLog.isColorLevel()) {
         QLog.i("HotVideoRelativeLayout", 2, "HotVideoCtl onDetachedFromWindow OnStateChanged(PLAY_STATE_PREVIEW)");
       }
-      this.jdField_a_of_type_Auhy = null;
+      this.jdField_a_of_type_Avns = null;
       return;
     }
     b(-11);
@@ -369,8 +369,8 @@ public class HotVideoMongoliaRelativeLayout
       return false;
       if (paramMotionEvent.getAction() == 1)
       {
-        if ((this.jdField_a_of_type_Auhx != null) && (!this.jdField_a_of_type_Boolean)) {
-          this.jdField_a_of_type_Auhx.onClick(paramView);
+        if ((this.jdField_a_of_type_Avnr != null) && (!this.jdField_a_of_type_Boolean)) {
+          this.jdField_a_of_type_Avnr.onClick(paramView);
         }
       }
       else if (paramMotionEvent.getAction() == 3) {
@@ -379,9 +379,9 @@ public class HotVideoMongoliaRelativeLayout
     }
   }
   
-  public void setControlStateListener(auhy paramauhy)
+  public void setControlStateListener(avns paramavns)
   {
-    this.jdField_a_of_type_Auhy = paramauhy;
+    this.jdField_a_of_type_Avns = paramavns;
   }
   
   public void setHotVideoData(HotVideoData paramHotVideoData)
@@ -389,14 +389,14 @@ public class HotVideoMongoliaRelativeLayout
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData = paramHotVideoData;
   }
   
-  public void setOnClickListener(auhx paramauhx)
+  public void setOnClickListener(avnr paramavnr)
   {
-    this.jdField_a_of_type_Auhx = paramauhx;
+    this.jdField_a_of_type_Avnr = paramavnr;
   }
   
-  public void setVidoeControlListener(auhz paramauhz)
+  public void setVidoeControlListener(avnt paramavnt)
   {
-    this.jdField_a_of_type_Auhz = paramauhz;
+    this.jdField_a_of_type_Avnt = paramavnt;
   }
 }
 

@@ -1,16 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aoxl
-  implements bjoe
+public class aoxl
+  extends aoui
 {
-  aoxl(aoxj paramaoxj, bjnw parambjnw) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    this.jdField_a_of_type_Aoxj.a.e();
-    this.jdField_a_of_type_Aoxj.a.b(amtj.a(2131699843));
-    this.jdField_a_of_type_Bjnw.dismiss();
+    if (paramString.startsWith("mqqapi://gamecenter/install"))
+    {
+      paramQQAppInterface = new aoxk(paramQQAppInterface, paramContext);
+      paramQQAppInterface.a = paramString;
+      paramQQAppInterface.b = "gamecenter";
+      paramQQAppInterface.c = "install";
+      return paramQQAppInterface;
+    }
+    return null;
   }
 }
 

@@ -1,18 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
-import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 
 public class bmjn
-  implements View.OnClickListener
+  extends Handler
 {
-  public bmjn(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
+  public bmjn(TroopHWJsPlugin paramTroopHWJsPlugin) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.d();
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131697173, 0).a();
+      return;
+    case 1: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131697191, 0).a();
+      return;
+    case 3: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131697171, 0).a();
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2131697172, 0).a();
   }
 }
 

@@ -1,27 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class tdj
-  extends Handler
+  implements View.OnClickListener
 {
-  private WeakReference a;
+  public tdj(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public tdj(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramReadInJoyScrollViewSwitcher);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    paramMessage = (ReadInJoyScrollViewSwitcher)this.a.get();
-    if (paramMessage != null)
-    {
-      paramMessage.a();
-      paramMessage.b();
-    }
+    ReadinjoyTabFrame.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

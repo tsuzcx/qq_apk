@@ -1,19 +1,32 @@
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
 
-class pzc
-  implements View.OnClickListener
+public class pzc
+  extends RecyclerView.ItemDecoration
 {
-  pzc(pyz parampyz, String paramString, ArticleInfo paramArticleInfo) {}
+  private int jdField_a_of_type_Int;
   
-  public void onClick(View paramView)
+  public pzc(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt)
   {
-    String str = paa.g + bfuc.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 2);
-    pay.a(pyz.a(this.jdField_a_of_type_Pyz), str);
-    pyz.a(this.jdField_a_of_type_Pyz, pay.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0)
+    {
+      paramRect.left = (this.jdField_a_of_type_Int * 2);
+      paramRect.right = this.jdField_a_of_type_Int;
+      return;
+    }
+    paramRect.left = (this.jdField_a_of_type_Int / 2);
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 

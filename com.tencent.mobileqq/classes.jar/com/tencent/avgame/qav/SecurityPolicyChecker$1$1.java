@@ -1,7 +1,7 @@
 package com.tencent.avgame.qav;
 
 import mqq.util.WeakReference;
-import nhm;
+import noe;
 
 class SecurityPolicyChecker$1$1
   implements Runnable
@@ -10,9 +10,9 @@ class SecurityPolicyChecker$1$1
   
   public void run()
   {
-    nhm localnhm = (nhm)this.jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker$1.a.get();
-    if (localnhm != null) {
-      localnhm.a(this.jdField_a_of_type_Boolean);
+    noe localnoe = (noe)this.jdField_a_of_type_ComTencentAvgameQavSecurityPolicyChecker$1.a.get();
+    if (localnoe != null) {
+      localnoe.a(this.jdField_a_of_type_Boolean);
     }
   }
 }

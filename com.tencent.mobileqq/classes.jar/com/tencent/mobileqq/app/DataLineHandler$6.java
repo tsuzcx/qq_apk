@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import amqd;
+import ansr;
 import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.litetransfersdk.MsgSCBody;
 import com.tencent.litetransfersdk.ProtocolHelper;
@@ -13,7 +13,7 @@ import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 public class DataLineHandler$6
   implements Runnable
 {
-  public DataLineHandler$6(amqd paramamqd, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt) {}
+  public DataLineHandler$6(ansr paramansr, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt) {}
   
   public void run()
   {

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo.tag;
 
-import yme;
-import ymf;
+import zax;
+import zay;
 
 public class EditVideoTagPresenter$1$1
   implements Runnable
 {
-  public EditVideoTagPresenter$1$1(ymf paramymf) {}
+  public EditVideoTagPresenter$1$1(zay paramzay) {}
   
   public void run()
   {
-    yme.a(yme.a(this.a.a), yme.a(this.a.a));
+    zax.a(zax.a(this.a.a), zax.a(this.a.a));
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import amrc;
 import android.content.Intent;
 import android.view.View;
-import bcef;
-import bhht;
+import antq;
+import bdla;
+import bisl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 class SelectMemberActivity$13
-  extends amrc
+  extends antq
 {
   SelectMemberActivity$13(SelectMemberActivity paramSelectMemberActivity) {}
   
@@ -58,9 +58,9 @@ class SelectMemberActivity$13
       QLog.d("SelectMemberActivity", 2, "add discussion member fail");
     }
     if (paramInt == 1000) {
-      bcef.b(this.this$0.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
+      bdla.b(this.this$0.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
     }
-    QQToast.a(this.this$0, this.this$0.getString(2131691634), 2000).b(this.this$0.mTitleBar.getHeight());
+    QQToast.a(this.this$0, this.this$0.getString(2131691719), 2000).b(this.this$0.mTitleBar.getHeight());
   }
   
   public void onCreateDiscussion(boolean paramBoolean, int paramInt, long paramLong, String paramString)
@@ -109,11 +109,11 @@ class SelectMemberActivity$13
     QLog.d("SelectMemberActivity", 1, "create discussion fail, errCode=" + paramInt);
     if (paramInt == 1000)
     {
-      QQToast.a(this.this$0, this.this$0.getString(2131697088), 2000).b(this.this$0.mTitleBar.getHeight());
-      bcef.b(this.this$0.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
+      QQToast.a(this.this$0, this.this$0.getString(2131697365), 2000).b(this.this$0.mTitleBar.getHeight());
+      bdla.b(this.this$0.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
       return;
     }
-    QQToast.a(this.this$0, this.this$0.getString(2131691636), 2000).b(this.this$0.mTitleBar.getHeight());
+    QQToast.a(this.this$0, this.this$0.getString(2131691721), 2000).b(this.this$0.mTitleBar.getHeight());
   }
   
   public void onHeaderFailed(Object[] paramArrayOfObject)
@@ -130,7 +130,7 @@ class SelectMemberActivity$13
     } while (!this.this$0.mGroupCode.equals(str));
     int i = ((Integer)paramArrayOfObject[1]).intValue();
     QLog.d("SelectMemberActivity", 2, "add discussion member failed, error code: " + i);
-    QQToast.a(this.this$0, this.this$0.getString(2131691634), 0).b(this.this$0.getTitleBarHeight());
+    QQToast.a(this.this$0, this.this$0.getString(2131691719), 0).b(this.this$0.getTitleBarHeight());
   }
 }
 

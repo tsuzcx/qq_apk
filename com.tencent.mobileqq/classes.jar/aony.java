@@ -1,36 +1,113 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aony
-  implements aonz
 {
-  private aony(aonx paramaonx) {}
-  
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public static int a(MessageRecord paramMessageRecord, int paramInt)
   {
-    if (!aonw.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
-      return false;
+    paramMessageRecord = a(paramMessageRecord);
+    int j;
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord = paramMessageRecord.iterator();
+      int i = 0;
+      j = i;
+      if (!paramMessageRecord.hasNext()) {
+        break label62;
+      }
+      aonz localaonz = (aonz)paramMessageRecord.next();
+      if (localaonz.a != paramInt) {
+        break label64;
+      }
+      i = localaonz.b + i;
     }
-    if (!AppNetConnInfo.isNetSupport()) {
-      paramVariantWrapper.SetString("none");
+    label62:
+    label64:
+    for (;;)
+    {
+      break;
+      j = 0;
+      return j;
+    }
+  }
+  
+  public static List<aonz> a(MessageRecord paramMessageRecord)
+  {
+    ArrayList localArrayList;
+    String str;
+    int j;
+    int i;
+    if (((paramMessageRecord instanceof MessageForStructing)) && ((((MessageForStructing)paramMessageRecord).structingMsg instanceof AbsShareMsg)) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 52))
+    {
+      paramMessageRecord = (AbsShareMsg)((MessageForStructing)paramMessageRecord).structingMsg;
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramMessageRecord.iterator();
+      for (;;)
+      {
+        if (localIterator.hasNext())
+        {
+          paramMessageRecord = (bdnu)localIterator.next();
+          if (paramMessageRecord != null)
+          {
+            str = anvx.a(2131704742);
+            j = 1;
+            if ((paramMessageRecord instanceof bdqg))
+            {
+              i = ((bdqg)paramMessageRecord).a.getInt("count");
+              j = 1;
+              paramMessageRecord = str;
+            }
+          }
+        }
+      }
     }
     for (;;)
     {
-      return true;
-      if (AppNetConnInfo.isWifiConn())
+      localArrayList.add(new aonz(paramMessageRecord, j, i));
+      break;
+      Object localObject = paramMessageRecord.h;
+      if (localObject != null)
       {
-        paramVariantWrapper.SetString("wifi");
-      }
-      else if (AppNetConnInfo.isMobileConn())
-      {
-        int i = AppNetConnInfo.getMobileInfo();
-        if (i == 0) {
-          paramVariantWrapper.SetString("none");
-        } else if (-1 == i) {
-          paramVariantWrapper.SetString("other");
-        } else {
-          paramVariantWrapper.SetString("cellular");
+        i = j;
+        paramMessageRecord = str;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          i = j;
+          paramMessageRecord = str;
+          str = ((JSONObject)localObject).getString("giftName");
+          i = j;
+          paramMessageRecord = str;
+          j = ((JSONObject)localObject).getInt("giftType");
+          i = j;
+          paramMessageRecord = str;
+          int k = ((JSONObject)localObject).getInt("giftCount");
+          i = k;
+          paramMessageRecord = str;
         }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          j = i;
+          i = 0;
+        }
+        continue;
+        return localArrayList;
+        return null;
+      }
+      else
+      {
+        i = 0;
+        j = 1;
+        paramMessageRecord = localJSONException;
       }
     }
   }

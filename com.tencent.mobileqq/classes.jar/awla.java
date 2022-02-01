@@ -1,8 +1,10 @@
-public abstract interface awla
+import android.graphics.Bitmap;
+
+class awla
 {
-  public abstract void g();
-  
-  public abstract void h();
+  long jdField_a_of_type_Long;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  long b;
 }
 
 

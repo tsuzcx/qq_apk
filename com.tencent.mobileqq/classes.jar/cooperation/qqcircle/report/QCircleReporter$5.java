@@ -1,25 +1,20 @@
 package cooperation.qqcircle.report;
 
-import java.util.List;
-import qqcircle.QQCircleReport.SingleDcData;
+import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.StDataReportRsp;
+import android.text.TextUtils;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.qphone.base.util.QLog;
 
 class QCircleReporter$5
-  implements Runnable
+  implements VSDispatchObserver.onVSRspCallBack<APP_REPORT_TRANSFER.StDataReportRsp>
 {
-  QCircleReporter$5(QCircleReporter paramQCircleReporter, boolean paramBoolean, QQCircleReport.SingleDcData paramSingleDcData) {}
+  QCircleReporter$5(QCircleReporter paramQCircleReporter) {}
   
-  public void run()
+  public void onReceive(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, APP_REPORT_TRANSFER.StDataReportRsp paramStDataReportRsp)
   {
-    if (this.val$isReportNow)
-    {
-      QCircleReporter.access$400(this.this$0).add(this.val$singleDcData);
-      QCircleReporter.access$500(this.this$0);
-    }
-    for (;;)
-    {
-      QCircleReporter.access$000(this.this$0);
-      return;
-      QCircleReporter.access$600(this.this$0).add(this.val$singleDcData);
+    if (((!paramBoolean) || (paramLong != 0L) || (paramStDataReportRsp == null)) && (!TextUtils.isEmpty(paramString))) {
+      QLog.e("QCircleReporter", 1, "performCommandReport error:" + paramString + ",traceId:" + paramVSBaseRequest.getTraceId());
     }
   }
 }

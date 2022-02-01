@@ -1,19 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class ayuo
+public abstract interface ayuo
 {
-  public int a;
-  public List<ayup> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  
-  public ayuo()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public abstract void a(ayun paramayun);
 }
 
 

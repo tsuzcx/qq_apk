@@ -1,10 +1,12 @@
-import com.tencent.mobileqq.data.troop.TroopInfo;
-
 public class aija
 {
   public int a;
-  public TroopInfo a;
+  public long a;
   public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

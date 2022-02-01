@@ -1,9 +1,14 @@
-import java.util.List;
-
-public final class wbm
-  extends vko
+public class wbm
+  implements vzk
 {
-  public List<vwa> a;
+  public String a;
+  
+  public void copy(Object paramObject)
+  {
+    if ((paramObject instanceof wbm)) {
+      this.a = ((wbm)paramObject).a;
+    }
+  }
 }
 
 

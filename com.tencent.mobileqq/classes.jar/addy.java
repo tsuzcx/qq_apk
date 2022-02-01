@@ -1,28 +1,28 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class addy
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public addy(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public addy(AccountManageActivity paramAccountManageActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((paramMotionEvent != null) && (this.a.a != null))
+    View localView = (View)paramView.getParent().getParent();
+    if ((localView == null) || (localView.getTag() == null)) {}
+    for (;;)
     {
-      paramView = this.a.a;
-      if (paramMotionEvent.getAction() != 0) {
-        break label39;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      int i = ((Integer)localView.getTag()).intValue();
+      if ((i != 0) || (azit.a().a(this.a.app, this.a)))
+      {
+        this.a.a(i);
+        bdla.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
       }
-    }
-    label39:
-    for (float f = 0.5F;; f = 1.0F)
-    {
-      paramView.setAlpha(f);
-      return false;
     }
   }
 }

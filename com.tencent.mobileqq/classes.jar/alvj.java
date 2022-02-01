@@ -1,15 +1,33 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-class alvj
+public class alvj
+  implements INetInfoHandler
 {
-  public ImageView a;
-  public TextView a;
-  public CornerImageView a;
-  public CornerImageView b;
-  
   alvj(alvi paramalvi) {}
+  
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    long l = Thread.currentThread().getId();
+    if (alvi.a(this.a) == l) {
+      alvi.a(this.a);
+    }
+    while (alvi.a(this.a) == null) {
+      return;
+    }
+    alvi.a(this.a).post(new LbsFilterStatusManager.3.1(this));
+  }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

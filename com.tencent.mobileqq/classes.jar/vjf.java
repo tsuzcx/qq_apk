@@ -1,19 +1,73 @@
-import java.util.Comparator;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-class vjf
-  implements Comparator<vim>
+public class vjf
+  extends vjd<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  vjf(vje paramvje) {}
+  private int a;
   
-  public int a(vim paramvim1, vim paramvim2)
+  public vjf(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
   {
-    if (paramvim1.b == paramvim2.b) {
-      return 0;
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    int i = 2;
+    boolean bool1 = true;
+    if (paramWSPushStrategyInfo == null) {
+      return false;
     }
-    if (paramvim1.b > paramvim2.b) {
-      return 1;
+    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
+    if (!bool2)
+    {
+      uyt.a(paramContext, paramWSPushStrategyInfo.mScheme);
+      paramContext = vnd.a();
+      if (paramContext != null) {
+        paramContext.a(null);
+      }
+      vnd.a();
     }
-    return -1;
+    if (this.jdField_a_of_type_Int == 2) {
+      if (bool2)
+      {
+        i = 2;
+        if (this.jdField_a_of_type_Viu != null) {
+          break label93;
+        }
+        paramContext = "";
+        label74:
+        vkf.a(i, 1, paramContext);
+        label80:
+        if (bool2) {
+          break label133;
+        }
+      }
+    }
+    for (;;)
+    {
+      return bool1;
+      i = 1;
+      break;
+      label93:
+      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_Viu).mFeedIds;
+      break label74;
+      if (this.jdField_a_of_type_Int != 6) {
+        break label80;
+      }
+      if (bool2) {}
+      for (;;)
+      {
+        vkf.d(i);
+        break;
+        i = 1;
+      }
+      label133:
+      bool1 = false;
+    }
   }
 }
 

@@ -1,8 +1,13 @@
-import android.view.MotionEvent;
-
-public abstract interface bngw<T extends bngv>
+class bngw
 {
-  public abstract boolean a(T paramT, MotionEvent paramMotionEvent);
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  
+  bngw(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

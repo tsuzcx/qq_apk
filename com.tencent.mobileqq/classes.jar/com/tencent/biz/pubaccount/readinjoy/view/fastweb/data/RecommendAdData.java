@@ -5,12 +5,12 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import obb;
+import ois;
 import org.json.JSONException;
 import org.json.JSONObject;
-import syz;
-import tws;
-import uet;
+import tmh;
+import ukt;
+import usq;
 
 public class RecommendAdData
   extends AdData
@@ -85,7 +85,7 @@ public class RecommendAdData
           }
           if (!TextUtils.isEmpty(this.d))
           {
-            localObject = uet.a(this.d, 4);
+            localObject = usq.a(this.d, 4);
             JSONObject localJSONObject2 = new JSONObject();
             localJSONObject2.put("image_url", ((URL)localObject).toString());
             localJSONObject1.put("id_recommend_cover_img", localJSONObject2);
@@ -107,7 +107,7 @@ public class RecommendAdData
             if (!TextUtils.isEmpty(this.h))
             {
               localObject = new JSONObject();
-              if (!obb.a(BaseApplicationImpl.getContext(), this.h)) {
+              if (!ois.a(BaseApplicationImpl.getContext(), this.h)) {
                 break label452;
               }
               ((JSONObject)localObject).put("text", "打开APP");
@@ -151,10 +151,10 @@ public class RecommendAdData
     this.c = a();
     try
     {
-      syz localsyz = syz.a("native_article", true);
+      tmh localtmh = tmh.a("native_article", true);
       localObject1 = localObject3;
-      if (localsyz != null) {
-        localObject1 = localsyz.getTemplateBean(this.c);
+      if (localtmh != null) {
+        localObject1 = localtmh.getTemplateBean(this.c);
       }
     }
     catch (JSONException localJSONException)
@@ -175,7 +175,7 @@ public class RecommendAdData
   {
     super.a(paramJSONObject, paramInt);
     this.w = paramInt;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = tws.a(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ukt.a(this);
     if (paramJSONObject != null)
     {
       this.x = paramJSONObject.optInt("material_id");
@@ -186,7 +186,7 @@ public class RecommendAdData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData
  * JD-Core Version:    0.7.0.1
  */

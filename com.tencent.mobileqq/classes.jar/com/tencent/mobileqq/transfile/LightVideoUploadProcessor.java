@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.transfile;
 
-import amtj;
-import amwl;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Handler;
 import android.os.SystemClock;
-import ayeo;
-import ayep;
-import bahm;
-import baid;
-import baie;
-import barq;
-import bbxa;
-import bbxb;
+import anvx;
+import anyz;
+import azla;
+import azlb;
+import bbob;
+import bbos;
+import bbot;
+import bbyf;
+import bddv;
+import bddw;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForLightVideo;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
@@ -84,16 +85,16 @@ public class LightVideoUploadProcessor
   public static boolean mIsPreSendAckToBDHServer;
   QQAppInterface app = (QQAppInterface)this.app;
   private volatile int mCacheIp;
-  baid mCombineInfo;
+  bbos mCombineInfo;
   private Handler mHandler;
   String mLocalFilePath;
   int mLocalVideoTime;
   private MessageForLightVideo mMessage;
-  amwl mMessageObserver = new LightVideoUploadProcessor.1(this);
-  ArrayList<baid> mReadyToSendInfos = new ArrayList();
+  anyz mMessageObserver = new LightVideoUploadProcessor.1(this);
+  ArrayList<bbos> mReadyToSendInfos = new ArrayList();
   RequestAck mRequestAck;
   boolean mSendFileSliceFailed = false;
-  Map<Integer, baid> mSendingInfos = new HashMap();
+  Map<Integer, bbos> mSendingInfos = new HashMap();
   long mSessionId;
   protected int mThumbFileHeight;
   private byte[] mThumbFileMd5;
@@ -105,15 +106,15 @@ public class LightVideoUploadProcessor
   List<Transaction> mTransactions = new ArrayList();
   int mUploadType = -1;
   Map<Integer, Bdh_extinfo.VideoInfo> mVideoInfos = new HashMap();
-  private baie mVideoSend;
+  private bbot mVideoSend;
   private long mVideoTime;
   
   public LightVideoUploadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
     super(paramBaseTransFileController, paramTransferRequest);
     paramBaseTransFileController = paramTransferRequest.extraObject;
-    if ((paramBaseTransFileController != null) && ((paramBaseTransFileController instanceof baie))) {
-      this.mVideoSend = ((baie)paramTransferRequest.extraObject);
+    if ((paramBaseTransFileController != null) && ((paramBaseTransFileController instanceof bbot))) {
+      this.mVideoSend = ((bbot)paramTransferRequest.extraObject);
     }
     if ((this.mController != null) && (this.mController.mHandler != null)) {
       this.mHandler = this.mController.mHandler;
@@ -172,8 +173,8 @@ public class LightVideoUploadProcessor
             localVideoFile.uint32_to_chat_type.set(-1);
             localObject3 = new im_msg_body.Text();
             ((im_msg_body.Text)localObject3).setHasFlag(true);
-            localObject1 = amtj.a(2131705182);
-            ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFromUtf8(BaseApplication.getContext().getString(2131691170)));
+            localObject1 = anvx.a(2131705533);
+            ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFromUtf8(BaseApplication.getContext().getString(2131691255)));
             Object localObject4 = new TextMsgExtPb.ResvAttr();
             ((TextMsgExtPb.ResvAttr)localObject4).wording.set(ByteStringMicro.copyFromUtf8((String)localObject1));
             ((im_msg_body.Text)localObject3).bytes_pb_reserve.set(ByteStringMicro.copyFrom(((TextMsgExtPb.ResvAttr)localObject4).toByteArray()));
@@ -365,23 +366,23 @@ public class LightVideoUploadProcessor
     }
   }
   
-  public void addToSendQuene(baid parambaid)
+  public void addToSendQuene(bbos parambbos)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoSend", 2, "addToSendQuene, info:" + parambaid + " mSendingInfos:" + this.mSendingInfos.size() + " mReadyToSendInfos:" + this.mReadyToSendInfos.size() + " mUploadType" + this.mUploadType);
+      QLog.d("VideoSend", 2, "addToSendQuene, info:" + parambbos + " mSendingInfos:" + this.mSendingInfos.size() + " mReadyToSendInfos:" + this.mReadyToSendInfos.size() + " mUploadType" + this.mUploadType);
     }
-    if (parambaid.c())
+    if (parambbos.c())
     {
-      this.mCombineInfo = parambaid;
+      this.mCombineInfo = parambbos;
       checkNeedSendCompleteFile();
     }
     while (this.mUploadType != 0) {
       return;
     }
     FileMsg localFileMsg = this.file;
-    localFileMsg.fileSize += parambaid.jdField_a_of_type_Long;
-    this.mFileSize += parambaid.jdField_a_of_type_Long;
-    this.mReadyToSendInfos.add(parambaid);
+    localFileMsg.fileSize += parambbos.jdField_a_of_type_Long;
+    this.mFileSize += parambbos.jdField_a_of_type_Long;
+    this.mReadyToSendInfos.add(parambbos);
     sendSlice();
   }
   
@@ -562,11 +563,11 @@ public class LightVideoUploadProcessor
     }
     if (this.mUiRequest.mUpCallBack != null)
     {
-      ayep localayep = new ayep();
-      localayep.jdField_a_of_type_Int = -1;
-      localayep.jdField_b_of_type_Int = this.errCode;
-      localayep.jdField_a_of_type_JavaLangString = this.errDesc;
-      this.mUiRequest.mUpCallBack.onSend(localayep);
+      azlb localazlb = new azlb();
+      localazlb.jdField_a_of_type_Int = -1;
+      localazlb.jdField_b_of_type_Int = this.errCode;
+      localazlb.jdField_a_of_type_JavaLangString = this.errDesc;
+      this.mUiRequest.mUpCallBack.onSend(localazlb);
     }
   }
   
@@ -586,36 +587,36 @@ public class LightVideoUploadProcessor
     }
   }
   
-  public void onSendSliceFinish(baid parambaid)
+  public void onSendSliceFinish(bbos parambbos)
   {
-    this.mHandler.post(new LightVideoUploadProcessor.5(this, parambaid));
+    this.mHandler.post(new LightVideoUploadProcessor.5(this, parambbos));
   }
   
   void onSuccess()
   {
     this.errCode = 0;
     super.onSuccess();
-    ayep localayep = new ayep();
-    localayep.jdField_a_of_type_Int = 0;
-    localayep.jdField_a_of_type_Long = (this.mFileSize - this.mThumbFileSize);
-    localayep.d = this.mMd5Str;
+    azlb localazlb = new azlb();
+    localazlb.jdField_a_of_type_Int = 0;
+    localazlb.jdField_a_of_type_Long = (this.mFileSize - this.mThumbFileSize);
+    localazlb.d = this.mMd5Str;
     if (this.mResid == null) {}
     for (String str = this.mUuid;; str = this.mResid)
     {
-      localayep.jdField_c_of_type_JavaLangString = str;
-      localayep.jdField_c_of_type_Long = this.mThumbFileSize;
+      localazlb.jdField_c_of_type_JavaLangString = str;
+      localazlb.jdField_c_of_type_Long = this.mThumbFileSize;
       if (QLog.isColorLevel()) {
-        QLog.d("LightVideoUploadProcessor", 2, "onSuccess uuid = " + localayep.jdField_c_of_type_JavaLangString);
+        QLog.d("LightVideoUploadProcessor", 2, "onSuccess uuid = " + localazlb.jdField_c_of_type_JavaLangString);
       }
       if (this.mUiRequest.mUpCallBack == null) {
         break;
       }
-      this.mUiRequest.mUpCallBack.onSend(localayep);
+      this.mUiRequest.mUpCallBack.onSend(localazlb);
       this.mHandler.post(new LightVideoUploadProcessor.2(this));
       return;
     }
-    this.mMessage.uuid = localayep.jdField_c_of_type_JavaLangString;
-    this.mMessage.md5 = localayep.d;
+    this.mMessage.uuid = localazlb.jdField_c_of_type_JavaLangString;
+    this.mMessage.md5 = localazlb.d;
     sendMessageToUpdate(1003);
   }
   
@@ -688,16 +689,16 @@ public class LightVideoUploadProcessor
     }
   }
   
-  void sendAudioSliceByBDH(baid parambaid)
+  void sendAudioSliceByBDH(bbos parambbos)
   {
-    String str = parambaid.jdField_a_of_type_JavaLangString;
+    String str = parambbos.jdField_a_of_type_JavaLangString;
     int i = (int)new File(str).length();
     byte[] arrayOfByte1 = this.mThumbFileMd5;
-    byte[] arrayOfByte2 = HexUtil.hexStr2Bytes(parambaid.jdField_b_of_type_JavaLangString);
-    int j = parambaid.d;
-    int k = parambaid.jdField_b_of_type_Int;
-    int m = parambaid.jdField_a_of_type_Int;
-    int n = parambaid.e;
+    byte[] arrayOfByte2 = HexUtil.hexStr2Bytes(parambbos.jdField_b_of_type_JavaLangString);
+    int j = parambbos.d;
+    int k = parambbos.jdField_b_of_type_Int;
+    int m = parambbos.jdField_a_of_type_Int;
+    int n = parambbos.e;
     if (QLog.isColorLevel()) {
       QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>sendVideoSegByBDH  filePath:" + str + " index :" + j + " md5:" + HexUtil.bytes2HexStr(arrayOfByte2) + "fileSize:" + i);
     }
@@ -731,7 +732,7 @@ public class LightVideoUploadProcessor
       ((LightVideoUploadProcessor.FileSlice)localObject2).extendInfo = ((byte[])localObject1);
       ((LightVideoUploadProcessor.FileSlice)localObject2).index = j;
       ((LightVideoUploadProcessor.FileSlice)localObject2).fileMD5 = arrayOfByte2;
-      ((LightVideoUploadProcessor.FileSlice)localObject2).sendInfo = parambaid;
+      ((LightVideoUploadProcessor.FileSlice)localObject2).sendInfo = parambbos;
       ((LightVideoUploadProcessor.FileSlice)localObject2).fileSize = i;
       sendFileSliceByBDH((LightVideoUploadProcessor.FileSlice)localObject2);
       return;
@@ -783,7 +784,7 @@ public class LightVideoUploadProcessor
     //   32: getfield 1143	com/tencent/mobileqq/transfile/LightVideoUploadProcessor$FileSlice:fileMD5	[B
     //   35: astore 9
     //   37: aload_1
-    //   38: getfield 1146	com/tencent/mobileqq/transfile/LightVideoUploadProcessor$FileSlice:sendInfo	Lbaid;
+    //   38: getfield 1146	com/tencent/mobileqq/transfile/LightVideoUploadProcessor$FileSlice:sendInfo	Lbbos;
     //   41: astore 9
     //   43: aload_1
     //   44: getfield 1147	com/tencent/mobileqq/transfile/LightVideoUploadProcessor$FileSlice:fileSize	J
@@ -822,7 +823,7 @@ public class LightVideoUploadProcessor
     //   109: putfield 1171	com/tencent/mobileqq/transfile/LightVideoUploadProcessor$TransactionListener:index	I
     //   112: aload_1
     //   113: aload 9
-    //   115: putfield 1172	com/tencent/mobileqq/transfile/LightVideoUploadProcessor$TransactionListener:sendInfo	Lbaid;
+    //   115: putfield 1172	com/tencent/mobileqq/transfile/LightVideoUploadProcessor$TransactionListener:sendInfo	Lbbos;
     //   118: aload_0
     //   119: getfield 121	com/tencent/mobileqq/transfile/LightVideoUploadProcessor:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   122: invokevirtual 711	com/tencent/mobileqq/app/QQAppInterface:getHwEngine	()Lcom/tencent/mobileqq/highway/HwEngine;
@@ -900,7 +901,7 @@ public class LightVideoUploadProcessor
       return;
     }
     this.mMessage.richText = localRichText;
-    ((bahm)this.app.getManager(326)).a(this.mMessage, this.mMessageObserver);
+    ((bbob)this.app.getManager(QQManagerFactory.MEDIA_MSG_ORDER_SEND_MANAGER)).a(this.mMessage, this.mMessageObserver);
   }
   
   protected void sendProgressMessage()
@@ -938,30 +939,30 @@ public class LightVideoUploadProcessor
         if ((this.mSendingInfos.size() >= 3) || (this.mReadyToSendInfos.size() <= 0)) {
           break label144;
         }
-        baid localbaid = (baid)this.mReadyToSendInfos.remove(0);
-        if (localbaid == null) {
+        bbos localbbos = (bbos)this.mReadyToSendInfos.remove(0);
+        if (localbbos == null) {
           break;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("VideoSend", 2, "sendSlice, info:" + localbaid + " mSendingInfos:" + this.mSendingInfos.size() + " mReadyToSendInfos:" + this.mReadyToSendInfos.size());
+          QLog.d("VideoSend", 2, "sendSlice, info:" + localbbos + " mSendingInfos:" + this.mSendingInfos.size() + " mReadyToSendInfos:" + this.mReadyToSendInfos.size());
         }
-        this.mSendingInfos.put(Integer.valueOf(localbaid.d), localbaid);
-        submitSlice(localbaid);
+        this.mSendingInfos.put(Integer.valueOf(localbbos.d), localbbos);
+        submitSlice(localbbos);
       }
     }
   }
   
-  void sendVideoSliceByBDH(baid parambaid)
+  void sendVideoSliceByBDH(bbos parambbos)
   {
-    String str = parambaid.jdField_a_of_type_JavaLangString;
+    String str = parambbos.jdField_a_of_type_JavaLangString;
     int i = (int)new File(str).length();
     byte[] arrayOfByte1 = this.mThumbFileMd5;
-    byte[] arrayOfByte2 = HexUtil.hexStr2Bytes(parambaid.jdField_b_of_type_JavaLangString);
-    int j = parambaid.d;
-    int k = parambaid.jdField_b_of_type_Int;
-    int m = parambaid.jdField_a_of_type_Int;
-    int n = parambaid.e;
-    long l = parambaid.jdField_b_of_type_Long;
+    byte[] arrayOfByte2 = HexUtil.hexStr2Bytes(parambbos.jdField_b_of_type_JavaLangString);
+    int j = parambbos.d;
+    int k = parambbos.jdField_b_of_type_Int;
+    int m = parambbos.jdField_a_of_type_Int;
+    int n = parambbos.e;
+    long l = parambbos.jdField_b_of_type_Long;
     if (QLog.isColorLevel()) {
       QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>sendVideoSegByBDH  filePath:" + str + " index :" + j + " md5:" + HexUtil.bytes2HexStr(arrayOfByte2) + " fileSize:" + i);
     }
@@ -996,7 +997,7 @@ public class LightVideoUploadProcessor
       ((LightVideoUploadProcessor.FileSlice)localObject2).extendInfo = ((byte[])localObject1);
       ((LightVideoUploadProcessor.FileSlice)localObject2).index = j;
       ((LightVideoUploadProcessor.FileSlice)localObject2).fileMD5 = arrayOfByte2;
-      ((LightVideoUploadProcessor.FileSlice)localObject2).sendInfo = parambaid;
+      ((LightVideoUploadProcessor.FileSlice)localObject2).sendInfo = parambbos;
       ((LightVideoUploadProcessor.FileSlice)localObject2).fileSize = i;
       sendFileSliceByBDH((LightVideoUploadProcessor.FileSlice)localObject2);
       return;
@@ -1004,16 +1005,16 @@ public class LightVideoUploadProcessor
     }
   }
   
-  void sendVideoThumbByBDH(baid parambaid)
+  void sendVideoThumbByBDH(bbos parambbos)
   {
-    String str = parambaid.jdField_a_of_type_JavaLangString;
+    String str = parambbos.jdField_a_of_type_JavaLangString;
     int i = (int)this.mThumbFileSize;
     byte[] arrayOfByte1 = this.mSigSession;
     byte[] arrayOfByte3 = this.mSessionKey;
     byte[] arrayOfByte2 = this.mThumbFileMd5;
     long l = this.mSessionId;
     if (QLog.isColorLevel()) {
-      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>sendVideoThumbByBDH  filePath:" + str + " index :" + parambaid.d + " md5:" + HexUtil.bytes2HexStr(arrayOfByte2) + " fileSize:" + i);
+      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>sendVideoThumbByBDH  filePath:" + str + " index :" + parambbos.d + " md5:" + HexUtil.bytes2HexStr(arrayOfByte2) + " fileSize:" + i);
     }
     Object localObject = new Bdh_extinfo.ShortVideoReqExtInfo();
     ((Bdh_extinfo.ShortVideoReqExtInfo)localObject).uint32_cmd.set(1);
@@ -1038,7 +1039,7 @@ public class LightVideoUploadProcessor
       ((LightVideoUploadProcessor.FileSlice)localObject).extendInfo = arrayOfByte3;
       ((LightVideoUploadProcessor.FileSlice)localObject).index = 0;
       ((LightVideoUploadProcessor.FileSlice)localObject).fileMD5 = arrayOfByte2;
-      ((LightVideoUploadProcessor.FileSlice)localObject).sendInfo = parambaid;
+      ((LightVideoUploadProcessor.FileSlice)localObject).sendInfo = parambbos;
       ((LightVideoUploadProcessor.FileSlice)localObject).fileSize = i;
       sendFileSliceByBDH((LightVideoUploadProcessor.FileSlice)localObject);
       return;
@@ -1052,7 +1053,7 @@ public class LightVideoUploadProcessor
     this.mThumbFilePath = this.mUiRequest.mThumbPath;
     this.mSessionId = this.mUiRequest.mUniseq;
     if (this.mUiRequest.mThumbMd5 == null) {
-      this.mThumbFileMd5 = HexUtil.hexStr2Bytes(barq.a(this.mThumbFilePath));
+      this.mThumbFileMd5 = HexUtil.hexStr2Bytes(bbyf.a(this.mThumbFilePath));
     }
     this.mThumbFileMd5 = HexUtil.hexStr2Bytes(this.mUiRequest.mThumbMd5);
     Object localObject;
@@ -1091,7 +1092,7 @@ public class LightVideoUploadProcessor
       this.mUploadType = 2;
       this.mLocalFilePath = this.mUiRequest.mLocalPath;
       if (this.mUiRequest.mMd5 == null) {
-        this.mUiRequest.mMd5 = barq.a(this.mLocalFilePath);
+        this.mUiRequest.mMd5 = bbyf.a(this.mLocalFilePath);
       }
       localObject = this.file;
       String str = this.mUiRequest.mMd5;
@@ -1100,8 +1101,8 @@ public class LightVideoUploadProcessor
       this.mLocalMd5 = HexUtil.hexStr2Bytes(this.mUiRequest.mMd5);
       if ((this.mMessage.videoFileSize == 0) || (this.mMessage.videoFileTime == 0))
       {
-        localObject = new bbxb();
-        bbxa.a(this.mLocalFilePath, (bbxb)localObject);
+        localObject = new bddw();
+        bddv.a(this.mLocalFilePath, (bddw)localObject);
         int i = localObject.a[3];
         this.mMessage.videoFileSize = ((int)new File(this.mLocalFilePath).length());
         this.mMessage.videoFileTime = (i / 1000);
@@ -1125,19 +1126,19 @@ public class LightVideoUploadProcessor
     this.mRequestAck = paramShortVideoReqExtInfo;
   }
   
-  public void submitSlice(baid parambaid)
+  public void submitSlice(bbos parambbos)
   {
-    if (parambaid.a())
+    if (parambbos.a())
     {
-      sendVideoThumbByBDH(parambaid);
+      sendVideoThumbByBDH(parambbos);
       return;
     }
-    if (parambaid.b())
+    if (parambbos.b())
     {
-      sendAudioSliceByBDH(parambaid);
+      sendAudioSliceByBDH(parambbos);
       return;
     }
-    sendVideoSliceByBDH(parambaid);
+    sendVideoSliceByBDH(parambbos);
   }
 }
 

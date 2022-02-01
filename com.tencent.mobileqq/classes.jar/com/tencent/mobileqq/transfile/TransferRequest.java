@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aycx;
-import ayeo;
+import azjj;
+import azla;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.activity.photo.PhotoSendParams;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -21,7 +21,7 @@ public class TransferRequest
   public int mCommandId;
   public int mDbRecVersion = 5;
   public String mDisplayOutFilePath;
-  public aycx mDownCallBack;
+  public azjj mDownCallBack;
   public int mDownMode;
   public byte[] mExtentionInfo;
   public Object mExtraObj;
@@ -67,7 +67,7 @@ public class TransferRequest
   public String mThumbPath;
   public int mUinType;
   public long mUniseq;
-  public ayeo mUpCallBack;
+  public azla mUpCallBack;
   public int multiMsgType;
   public boolean myPresendInvalid;
   public boolean needSendMsg = true;

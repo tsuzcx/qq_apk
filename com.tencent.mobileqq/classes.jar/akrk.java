@@ -1,42 +1,16 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
 public class akrk
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public akrk(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile, Button paramButton) {}
+  public akrk(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (new File(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b).exists())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.i();
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b);
-      akrx.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2, localArrayList);
-      this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.setResult(1001);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.finish();
-      if (akrw.a != 1) {
-        break label127;
-      }
-      akrx.b("", "0X8005F5C", "0");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label127:
-      akrx.b("", "0X8005F5C", "1");
-    }
+    this.a.getActivity().finish();
   }
 }
 

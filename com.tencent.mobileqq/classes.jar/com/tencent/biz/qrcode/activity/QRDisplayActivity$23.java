@@ -1,8 +1,8 @@
 package com.tencent.biz.qrcode.activity;
 
-import android.view.View;
-import bfpm;
-import yuv;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+import znl;
 
 class QRDisplayActivity$23
   implements Runnable
@@ -11,9 +11,9 @@ class QRDisplayActivity$23
   
   public void run()
   {
-    yuv localyuv = new yuv(this.this$0.d, this.this$0);
-    this.this$0.d.setAccessibilityDelegate(localyuv);
-    bfpm.a(this.this$0.a, false);
+    String str = "temp_qrcode_share_" + this.this$0.c + ".png";
+    str = znl.a(this.this$0, str, this.this$0.b);
+    ThreadManager.getUIHandler().post(new QRDisplayActivity.23.1(this, str));
   }
 }
 

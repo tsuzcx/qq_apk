@@ -1,47 +1,53 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendFeedView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arig
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  implements aqwv<String>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  armg jdField_a_of_type_Armg;
-  public blda a;
-  public ExtendFriendFeedView a;
+  public boolean a;
   
-  public arig(View paramView, Context paramContext, armg paramarmg, blda paramblda)
+  public void a(String paramString)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView = ((ExtendFriendFeedView)paramView);
-    this.jdField_a_of_type_Blda = paramblda;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Armg = paramarmg;
-    if (this.jdField_a_of_type_Blda != null) {
-      this.jdField_a_of_type_Blda.a(this.jdField_a_of_type_Blda.a(), new arih(this));
+    QLog.i("QFileApkCheckConfigBean", 1, "configID:663 onParse apkcheckConfig:" + paramString);
+    String str = "";
+    if (!TextUtils.isEmpty(paramString)) {
+      str = paramString.toLowerCase();
     }
-  }
-  
-  public void a(arig paramarig, arjk paramarjk, int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView != null) && (paramarjk != null))
+    if (TextUtils.isEmpty(str))
     {
-      int i = paramarig.getPosition();
-      paramarig.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView.setFeedBgParams(i, paramarjk.mVoiceUrl, paramInt, false);
+      QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is empty, configID:663 use default value");
+      this.a = false;
+      return;
     }
-    if ((this.jdField_a_of_type_Blda != null) && (paramarjk != null) && (paramarjk.mAlumbasicdata != null)) {
-      paramarig.jdField_a_of_type_Blda.a(paramarjk.mAlumbasicdata, paramarig.getAdapterPosition());
+    try
+    {
+      paramString = new JSONObject(str).getJSONObject("apkcheckconfig");
+      if (paramString == null) {
+        break label118;
+      }
+      if (paramString.has("enable"))
+      {
+        this.a = paramString.getBoolean("enable");
+        return;
+      }
     }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileApkCheckConfigBean", 1, paramString, new Object[0]);
+      return;
+    }
+    this.a = false;
+    return;
+    label118:
+    QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is no enable. use default value");
+    this.a = false;
   }
-  
-  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arig
  * JD-Core Version:    0.7.0.1
  */

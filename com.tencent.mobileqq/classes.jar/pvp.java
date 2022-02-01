@@ -1,19 +1,38 @@
-import org.jetbrains.annotations.NotNull;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class pvp
+  implements Manager
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  private AppInterface a;
   
-  @NotNull
-  public String toString()
+  public pvp(AppInterface paramAppInterface)
   {
-    return "LiveStatus{living='" + this.jdField_a_of_type_Int + '\'' + ", liveTime='" + this.jdField_a_of_type_Long + '\'' + ", source='" + this.jdField_a_of_type_Long + '\'' + ", account='" + this.jdField_a_of_type_Long + '\'' + ", roomId='" + this.jdField_a_of_type_Long + '\'' + ", rowKey='" + this.jdField_a_of_type_Long + '\'' + ", url='" + this.jdField_a_of_type_Long + '\'' + '}';
+    QLog.i("ReadInJoyLogicManager", 1, "[ReadInJoyLogicManager] constructed.");
+    this.a = paramAppInterface;
+    a();
+  }
+  
+  public pvj a()
+  {
+    return pvj.a();
+  }
+  
+  public void a()
+  {
+    pkz.a();
+    pvj.a().a(this.a);
+  }
+  
+  public void b()
+  {
+    pvj.a().a(false);
+  }
+  
+  public void onDestroy()
+  {
+    b();
   }
 }
 

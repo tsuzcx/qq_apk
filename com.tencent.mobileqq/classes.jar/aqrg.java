@@ -1,154 +1,149 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.text.style.ImageSpan;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aqrg
-  extends ImageSpan
+  extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  public String a;
+  public aqrg(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
   
-  public aqrg(Context paramContext, int paramInt, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramContext, paramInt, 1);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public aqrg(Context paramContext, int paramInt1, String paramString, int paramInt2)
-  {
-    super(paramContext, paramInt1, 1);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  private void a(Drawable paramDrawable, int paramInt)
-  {
-    if ((!(paramDrawable instanceof URLDrawable)) || (((URLDrawable)paramDrawable).getStatus() != 1)) {
-      return;
-    }
-    int i = paramDrawable.getIntrinsicWidth() / 2;
-    int j = paramDrawable.getIntrinsicHeight() / 2;
-    if (afhw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))
+    String str2 = paramIntent.getAction();
+    paramContext = null;
+    for (;;)
     {
-      float f = paramInt * 1.0F / j;
-      paramDrawable.setBounds(0, 0, (int)(i * f), paramInt);
-      return;
-    }
-    paramDrawable.setBounds(0, 0, i, j);
-  }
-  
-  public void a(Drawable.Callback paramCallback)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = paramCallback;
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = getDrawable();
-    if (paramCharSequence == null) {}
-    do
-    {
-      do
+      Object localObject;
+      try
       {
-        return;
-        paramPaint = paramPaint.getFontMetricsInt();
-        a(paramCharSequence, paramPaint.bottom - paramPaint.top);
-        paramCanvas.save();
-        paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
-        paramCharSequence.draw(paramCanvas);
-        paramCanvas.restore();
-      } while ((this.jdField_a_of_type_JavaLangString == null) || ((!this.jdField_a_of_type_JavaLangString.endsWith(".gif")) && (!this.jdField_a_of_type_JavaLangString.endsWith(".apng"))));
-      paramCanvas = paramCharSequence.getCallback();
-    } while (!(paramCanvas instanceof View));
-    ((View)paramCanvas).invalidate();
-  }
-  
-  public Drawable getDrawable()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-        return this.jdField_a_of_type_ComTencentImageURLDrawable;
-      }
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      if (this.jdField_a_of_type_Int > 0)
-      {
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_a_of_type_Int;
-      }
-      StringBuilder localStringBuilder;
-      if (this.jdField_a_of_type_JavaLangString.endsWith(".gif"))
-      {
-        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-        this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-        if (QLog.isColorLevel())
+        String str1 = paramIntent.getStringExtra("process_name");
+        localObject = str1;
+        paramContext = str1;
+        if (QLog.isDevelopLevel())
         {
-          localStringBuilder = new StringBuilder().append("UrlCenterImageSpan.getDrawable. url:").append(this.jdField_a_of_type_JavaLangString).append(" drawable:");
-          if (this.jdField_a_of_type_ComTencentImageURLDrawable == null) {
-            break label204;
+          paramContext = str1;
+          QLog.w("ColorNoteSmallScreenService", 1, "mReceiver action : " + str2 + ", process_name :" + str1);
+          localObject = str1;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ColorNoteSmallScreenService", 1, "action: " + str2, localException);
+        localObject = paramContext;
+        continue;
+        this.a.e = paramIntent.getBooleanExtra("param_not_in_colornote_list", true);
+      }
+      try
+      {
+        if (this.a.b == null) {
+          break;
+        }
+        this.a.a().removeCallbacks(this.a.b);
+        if (!str2.equals("action_update_cn_smallscreen_state")) {
+          break label549;
+        }
+        i = paramIntent.getIntExtra("param_from", -1);
+        if (!QLog.isDevelopLevel()) {
+          break label690;
+        }
+        QLog.w("ColorNoteSmallScreenService", 1, "mReceiver from : " + i);
+      }
+      catch (Throwable paramContext)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ColorNoteSmallScreenService", 2, "mReceiver fail", paramContext);
+        return;
+      }
+      if (i != 0)
+      {
+        this.a.a().removeCallbacks(this.a.b);
+        this.a.a().postDelayed(this.a.b, 200L);
+      }
+      return;
+      ColorNoteSmallScreenService.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("param_shoule_show_smallscreen", true);
+      if (QLog.isDevelopLevel())
+      {
+        QLog.w("ColorNoteSmallScreenService", 1, "mReceiver from : FromType_BusinessLimit mShouldShow = " + ColorNoteSmallScreenService.jdField_a_of_type_Boolean);
+        break label728;
+        paramContext = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a();
+        if ((paramContext != null) && (paramContext.size() != 0))
+        {
+          this.a.jdField_a_of_type_Int = paramContext.size();
+          this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a(paramContext);
+          if (aqoq.a(paramContext)) {
+            ColorNoteSmallScreenService.a(this.a).a();
+          }
+          if (QLog.isColorLevel())
+          {
+            aqoq.a("ColorNoteSmallScreenService", "[onReceive->FromType_UpdateData]\n[visibleColorNotes]: " + this.a.jdField_a_of_type_Int + "\n" + aqoq.b(paramContext));
+            break label728;
+            paramContext = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a();
+            if ((!aqny.a()) && (((paramContext.size() == 1) && (aqoq.b((ColorNote)paramContext.get(0)))) || (paramContext.size() == 0)))
+            {
+              this.a.f();
+              break label728;
+              boolean bool = paramIntent.getBooleanExtra("param_custom_night_mode", false);
+              this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setCustomNightMode(bool);
+              aqoq.a("ColorNoteSmallScreenService", "[onReceive->FromType_CustomNightMode]\n[setCustomNightMode]: " + bool);
+              break label728;
+              label549:
+              if ("mqq.intent.action.QQ_BACKGROUND".equals(str2))
+              {
+                this.a.d = false;
+                this.a.f = false;
+                i = 1;
+              }
+              else if ("mqq.intent.action.QQ_FOREGROUND".equals(str2))
+              {
+                if ((localObject == null) || (!((String)localObject).contains("openSdk"))) {
+                  break label733;
+                }
+              }
+            }
           }
         }
       }
-      label204:
-      for (localObject = this.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicWidth() + "";; localObject = null)
+    }
+    label690:
+    label728:
+    label733:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
       {
-        QLog.e(".troop.send_gift", 2, (String)localObject);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new aqrh(this));
-        return this.jdField_a_of_type_ComTencentImageURLDrawable;
-        if (!this.jdField_a_of_type_JavaLangString.endsWith(".apng")) {
-          break;
-        }
-        ((URLDrawable.URLDrawableOptions)localObject).mUseApngImage = true;
+        this.a.d = true;
+        this.a.f = false;
+        i = 1;
         break;
       }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a() > 0)
+      {
+        this.a.f = true;
+        i = 0;
+        break;
+      }
+      this.a.d = true;
+      this.a.f = false;
+      i = 0;
+      break;
+      i = 1;
+      break;
+      switch (i)
+      {
+      }
+      i = 1;
+      break;
     }
-    return super.getDrawable();
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    paramCharSequence = getDrawable();
-    if (paramCharSequence == null) {
-      return 0;
-    }
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt2 = paramPaint.bottom - paramPaint.top;
-    a(paramCharSequence, paramInt2);
-    paramPaint = paramCharSequence.getBounds();
-    if (paramFontMetricsInt != null)
-    {
-      int i = paramPaint.bottom - paramPaint.top;
-      paramInt1 = i / 2 - paramInt2 / 4;
-      i /= 2;
-      paramInt2 = paramInt2 / 4 + i;
-      paramFontMetricsInt.ascent = (-paramInt2);
-      paramFontMetricsInt.top = (-paramInt2);
-      paramFontMetricsInt.bottom = paramInt1;
-      paramFontMetricsInt.descent = paramInt1;
-    }
-    return paramPaint.right;
   }
 }
 

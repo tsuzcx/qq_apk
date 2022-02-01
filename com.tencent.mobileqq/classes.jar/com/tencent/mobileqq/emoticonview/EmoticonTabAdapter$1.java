@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.emoticonview;
 
-import avsq;
+import awyr;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,18 +16,18 @@ class EmoticonTabAdapter$1
     if (QLog.isColorLevel()) {
       QLog.w("EmoticonTabAdapter", 2, "package lossY");
     }
-    avsq localavsq = (avsq)this.this$0.app.getManager(14);
-    EmoticonPackage localEmoticonPackage = localavsq.a(this.val$item.epId);
+    awyr localawyr = (awyr)this.this$0.app.getManager(QQManagerFactory.EMOTICON_MANAGER);
+    EmoticonPackage localEmoticonPackage = localawyr.a(this.val$item.epId);
     if (localEmoticonPackage != null)
     {
       localEmoticonPackage.status = 0;
-      localavsq.a(localEmoticonPackage);
+      localawyr.a(localEmoticonPackage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonTabAdapter.1
  * JD-Core Version:    0.7.0.1
  */

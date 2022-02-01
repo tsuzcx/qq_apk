@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
+import aido;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.PublicAccountHandler;
@@ -8,13 +8,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import ocw;
-import ugf;
+import okn;
+import uuc;
 
 public class PublicAccountChatPie$29
   implements Runnable
 {
-  public PublicAccountChatPie$29(ahiu paramahiu, AccountDetail paramAccountDetail) {}
+  public PublicAccountChatPie$29(aido paramaido, AccountDetail paramAccountDetail) {}
   
   public void run()
   {
@@ -23,16 +23,16 @@ public class PublicAccountChatPie$29
     }
     if (this.this$0.i)
     {
-      int i = ugf.a(this.a.accountFlag);
+      int i = uuc.a(this.a.accountFlag);
       if ((i == -3) || (i == -4)) {
-        ocw.a().a(this.this$0.app, this.a.uin);
+        okn.a().a(this.this$0.app, this.a.uin);
       }
     }
     if (this.this$0.a != null) {
       this.this$0.a.b(this.a);
     }
-    ahiu.b(this.this$0, this.a);
-    ahiu.a(this.this$0).post(new PublicAccountChatPie.29.1(this));
+    aido.b(this.this$0, this.a);
+    aido.a(this.this$0).post(new PublicAccountChatPie.29.1(this));
     this.this$0.app.getMessageFacade().clearHistory(this.this$0.sessionInfo.curFriendUin, 1008);
   }
 }

@@ -25,26 +25,27 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ListAdapter;
+import androidx.annotation.VisibleForTesting;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import tco;
-import tcp;
-import tcq;
-import tcr;
-import tcs;
-import tct;
-import tcv;
-import tcx;
-import tcy;
-import tda;
-import tdc;
-import tdd;
-import tde;
-import tdf;
-import tdg;
-import tdh;
+import tpz;
+import tqa;
+import tqb;
+import tqc;
+import tqd;
+import tqe;
+import tqg;
+import tqi;
+import tqj;
+import tql;
+import tqn;
+import tqo;
+import tqp;
+import tqq;
+import tqr;
+import tqs;
 
 public class ReadInJoyNinePicDeliverDynamicGridView
   extends GridView
@@ -57,15 +58,15 @@ public class ReadInJoyNinePicDeliverDynamicGridView
   private AbsListView.OnScrollListener jdField_a_of_type_AndroidWidgetAbsListView$OnScrollListener;
   private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
   private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private tdc jdField_a_of_type_Tdc;
-  private tdd jdField_a_of_type_Tdd;
-  private tde jdField_a_of_type_Tde;
-  private tdf jdField_a_of_type_Tdf;
+  private tqn jdField_a_of_type_Tqn;
+  private tqo jdField_a_of_type_Tqo;
+  private tqp jdField_a_of_type_Tqp;
+  private tqq jdField_a_of_type_Tqq;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private AbsListView.OnScrollListener jdField_b_of_type_AndroidWidgetAbsListView$OnScrollListener = new tct(this);
-  private AdapterView.OnItemClickListener jdField_b_of_type_AndroidWidgetAdapterView$OnItemClickListener = new tco(this);
+  private AbsListView.OnScrollListener jdField_b_of_type_AndroidWidgetAbsListView$OnScrollListener = new tqe(this);
+  private AdapterView.OnItemClickListener jdField_b_of_type_AndroidWidgetAdapterView$OnItemClickListener = new tpz(this);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -1;
   private boolean jdField_c_of_type_Boolean;
@@ -183,17 +184,55 @@ public class ReadInJoyNinePicDeliverDynamicGridView
     return paramView;
   }
   
-  private tcx a()
+  private tqi a()
   {
-    return (tcx)getAdapter();
+    return (tqi)getAdapter();
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Tdc != null) {
-      this.jdField_a_of_type_Tdc.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Tqn != null) {
+      this.jdField_a_of_type_Tqn.a(paramInt1, paramInt2);
     }
     a().a(paramInt1, paramInt2);
+  }
+  
+  private void a(int paramInt1, int paramInt2, View paramView)
+  {
+    int k;
+    int m;
+    if (paramView != null)
+    {
+      k = getPositionForView(this.jdField_a_of_type_AndroidViewView);
+      m = getPositionForView(paramView);
+      if (!((tqg)getAdapter()).a().get(m).equals(""))
+      {
+        paramView = a();
+        if ((m != -1) && (paramView.a(k)) && (paramView.a(m))) {
+          break label89;
+        }
+        a(this.jdField_a_of_type_Long);
+      }
+    }
+    return;
+    label89:
+    a(k, m);
+    this.jdField_d_of_type_Int = this.jdField_e_of_type_Int;
+    this.jdField_c_of_type_Int = this.jdField_f_of_type_Int;
+    if ((c()) && (b())) {
+      paramView = new tqj(this, paramInt2, paramInt1);
+    }
+    for (;;)
+    {
+      a(this.jdField_a_of_type_Long);
+      paramView.a(k, m);
+      return;
+      if (b()) {
+        paramView = new tqr(this, paramInt2, paramInt1);
+      } else {
+        paramView = new tql(this, paramInt2, paramInt1);
+      }
+    }
   }
   
   private void a(long paramLong)
@@ -213,10 +252,10 @@ public class ReadInJoyNinePicDeliverDynamicGridView
   @TargetApi(11)
   private void a(View paramView)
   {
-    Object localObject = new tcp(this);
+    Object localObject = new tqa(this);
     localObject = ObjectAnimator.ofObject(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable, "bounds", (TypeEvaluator)localObject, new Object[] { this.jdField_a_of_type_AndroidGraphicsRect });
-    ((ObjectAnimator)localObject).addUpdateListener(new tcq(this));
-    ((ObjectAnimator)localObject).addListener(new tcr(this, paramView));
+    ((ObjectAnimator)localObject).addUpdateListener(new tqb(this));
+    ((ObjectAnimator)localObject).addListener(new tqc(this, paramView));
     ((ObjectAnimator)localObject).start();
   }
   
@@ -248,20 +287,20 @@ public class ReadInJoyNinePicDeliverDynamicGridView
     if (localView != null)
     {
       this.jdField_a_of_type_Long = getAdapter().getItemId(paramInt);
-      if (this.jdField_a_of_type_Tdf != null) {
-        this.jdField_a_of_type_Tdf.a(localView, paramInt, this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_Tqq != null) {
+        this.jdField_a_of_type_Tqq.a(localView, paramInt, this.jdField_a_of_type_Long);
       }
       this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = a(localView);
-      if (this.jdField_a_of_type_Tdf != null) {
-        this.jdField_a_of_type_Tdf.b(localView, paramInt, this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_Tqq != null) {
+        this.jdField_a_of_type_Tqq.b(localView, paramInt, this.jdField_a_of_type_Long);
       }
       if (c()) {
         localView.setVisibility(4);
       }
       this.jdField_a_of_type_Boolean = true;
       a(this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_Tdc != null) {
-        this.jdField_a_of_type_Tdc.a(paramInt);
+      if (this.jdField_a_of_type_Tqn != null) {
+        this.jdField_a_of_type_Tqn.a(paramInt);
       }
     }
   }
@@ -317,7 +356,7 @@ public class ReadInJoyNinePicDeliverDynamicGridView
     ((AnimatorSet)localObject).playTogether(localLinkedList);
     ((AnimatorSet)localObject).setDuration(300L);
     ((AnimatorSet)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
-    ((AnimatorSet)localObject).addListener(new tcs(this));
+    ((AnimatorSet)localObject).addListener(new tqd(this));
     ((AnimatorSet)localObject).start();
   }
   
@@ -342,6 +381,11 @@ public class ReadInJoyNinePicDeliverDynamicGridView
   public static boolean b()
   {
     return Build.VERSION.SDK_INT < 21;
+  }
+  
+  private boolean b(int paramInt1, int paramInt2, Point paramPoint1, View paramView, Point paramPoint2)
+  {
+    return ((d(paramPoint2, paramPoint1)) && (paramInt1 < paramView.getBottom()) && (paramInt2 > paramView.getLeft())) || ((c(paramPoint2, paramPoint1)) && (paramInt1 < paramView.getBottom()) && (paramInt2 < paramView.getRight())) || ((b(paramPoint2, paramPoint1)) && (paramInt1 > paramView.getTop()) && (paramInt2 > paramView.getLeft())) || ((a(paramPoint2, paramPoint1)) && (paramInt1 > paramView.getTop()) && (paramInt2 < paramView.getRight()));
   }
   
   private boolean b(Point paramPoint1, Point paramPoint2)
@@ -380,6 +424,11 @@ public class ReadInJoyNinePicDeliverDynamicGridView
   private boolean c()
   {
     return Build.VERSION.SDK_INT >= 11;
+  }
+  
+  private boolean c(int paramInt1, int paramInt2, Point paramPoint1, View paramView, Point paramPoint2)
+  {
+    return ((e(paramPoint2, paramPoint1)) && (paramInt1 < paramView.getBottom() - this.jdField_g_of_type_Int)) || ((f(paramPoint2, paramPoint1)) && (paramInt1 > paramView.getTop() + this.jdField_g_of_type_Int)) || ((g(paramPoint2, paramPoint1)) && (paramInt2 > paramView.getLeft() + this.jdField_g_of_type_Int)) || ((h(paramPoint2, paramPoint1)) && (paramInt2 < paramView.getRight() - this.jdField_g_of_type_Int));
   }
   
   private boolean c(Point paramPoint1, Point paramPoint2)
@@ -423,75 +472,36 @@ public class ReadInJoyNinePicDeliverDynamicGridView
     float f2 = 0.0F;
     int k = this.jdField_e_of_type_Int - this.jdField_d_of_type_Int;
     int m = this.jdField_f_of_type_Int - this.jdField_c_of_type_Int;
-    int n = this.jdField_b_of_type_AndroidGraphicsRect.centerY() + this.jdField_a_of_type_Int + k;
-    int i1 = this.jdField_b_of_type_AndroidGraphicsRect.centerX() + this.jdField_b_of_type_Int + m;
+    int n = this.jdField_b_of_type_AndroidGraphicsRect.centerY();
+    int i1 = this.jdField_a_of_type_Int;
+    int i2 = this.jdField_b_of_type_AndroidGraphicsRect.centerX();
+    int i3 = this.jdField_b_of_type_Int;
     this.jdField_a_of_type_AndroidViewView = a(this.jdField_a_of_type_Long);
     Object localObject = null;
-    Point localPoint1 = a(this.jdField_a_of_type_AndroidViewView);
+    Point localPoint = a(this.jdField_a_of_type_AndroidViewView);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     float f1 = 0.0F;
-    float f3;
     if (localIterator.hasNext())
     {
       View localView = a(((Long)localIterator.next()).longValue());
-      if (localView == null) {
-        break label637;
-      }
-      Point localPoint2 = a(localView);
-      if (((!d(localPoint2, localPoint1)) || (n >= localView.getBottom()) || (i1 <= localView.getLeft())) && ((!c(localPoint2, localPoint1)) || (n >= localView.getBottom()) || (i1 >= localView.getRight())) && ((!b(localPoint2, localPoint1)) || (n <= localView.getTop()) || (i1 <= localView.getLeft())) && ((!a(localPoint2, localPoint1)) || (n <= localView.getTop()) || (i1 >= localView.getRight())) && ((!e(localPoint2, localPoint1)) || (n >= localView.getBottom() - this.jdField_g_of_type_Int)) && ((!f(localPoint2, localPoint1)) || (n <= localView.getTop() + this.jdField_g_of_type_Int)) && ((!g(localPoint2, localPoint1)) || (i1 <= localView.getLeft() + this.jdField_g_of_type_Int)) && ((!h(localPoint2, localPoint1)) || (i1 >= localView.getRight() - this.jdField_g_of_type_Int))) {
-        break label637;
+      if ((localView == null) || (!a(n + i1 + k, i2 + i3 + m, localPoint, localView, a(localView)))) {
+        break label230;
       }
       float f4 = Math.abs(a(localView) - a(this.jdField_a_of_type_AndroidViewView));
-      f3 = Math.abs(b(localView) - b(this.jdField_a_of_type_AndroidViewView));
+      float f3 = Math.abs(b(localView) - b(this.jdField_a_of_type_AndroidViewView));
       if ((f4 < f1) || (f3 < f2)) {
-        break label637;
+        break label230;
       }
-      f2 = f4;
       localObject = localView;
-      f1 = f3;
+      f1 = f4;
+      f2 = f3;
     }
+    label230:
     for (;;)
     {
-      f3 = f2;
-      f2 = f1;
-      f1 = f3;
       break;
-      if (localObject != null)
-      {
-        n = getPositionForView(this.jdField_a_of_type_AndroidViewView);
-        i1 = getPositionForView((View)localObject);
-        if (!((tcv)getAdapter()).a().get(i1).equals(""))
-        {
-          localObject = a();
-          if ((i1 != -1) && (((tcx)localObject).a(n)) && (((tcx)localObject).a(i1))) {
-            break label526;
-          }
-          a(this.jdField_a_of_type_Long);
-        }
-      }
+      a(k, m, localObject);
       return;
-      label526:
-      a(n, i1);
-      this.jdField_d_of_type_Int = this.jdField_e_of_type_Int;
-      this.jdField_c_of_type_Int = this.jdField_f_of_type_Int;
-      if ((c()) && (b())) {
-        localObject = new tcy(this, m, k);
-      }
-      for (;;)
-      {
-        a(this.jdField_a_of_type_Long);
-        ((tdh)localObject).a(n, i1);
-        return;
-        if (b()) {
-          localObject = new tdg(this, m, k);
-        } else {
-          localObject = new tda(this, m, k);
-        }
-      }
-      label637:
-      f3 = f1;
-      f1 = f2;
-      f2 = f3;
     }
   }
   
@@ -539,8 +549,8 @@ public class ReadInJoyNinePicDeliverDynamicGridView
   {
     this.jdField_d_of_type_Boolean = false;
     requestDisallowInterceptTouchEvent(false);
-    if (this.jdField_a_of_type_Tde != null) {
-      this.jdField_a_of_type_Tde.a(false);
+    if (this.jdField_a_of_type_Tqp != null) {
+      this.jdField_a_of_type_Tqp.a(false);
     }
   }
   
@@ -555,8 +565,8 @@ public class ReadInJoyNinePicDeliverDynamicGridView
         b(paramInt);
       }
       this.jdField_d_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_Tde == null);
-    this.jdField_a_of_type_Tde.a(true);
+    } while (this.jdField_a_of_type_Tqp == null);
+    this.jdField_a_of_type_Tqp.a(true);
   }
   
   public void a(Context paramContext)
@@ -570,6 +580,12 @@ public class ReadInJoyNinePicDeliverDynamicGridView
   public boolean a()
   {
     return this.jdField_d_of_type_Boolean;
+  }
+  
+  @VisibleForTesting
+  boolean a(int paramInt1, int paramInt2, Point paramPoint1, View paramView, Point paramPoint2)
+  {
+    return (b(paramInt1, paramInt2, paramPoint1, paramView, paramPoint2)) || (c(paramInt1, paramInt2, paramPoint1, paramView, paramPoint2));
   }
   
   public boolean a(Rect paramRect)
@@ -650,14 +666,14 @@ public class ReadInJoyNinePicDeliverDynamicGridView
             b();
             return false;
             c();
-            if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Tdd != null))
+            if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Tqo != null))
             {
-              this.jdField_a_of_type_Tdd.a();
+              this.jdField_a_of_type_Tqo.a();
               continue;
               e();
-              if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Tdd != null))
+              if ((this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) && (this.jdField_a_of_type_Tqo != null))
               {
-                this.jdField_a_of_type_Tdd.a();
+                this.jdField_a_of_type_Tqo.a();
                 continue;
                 if (paramMotionEvent.getPointerId((paramMotionEvent.getAction() & 0xFF00) >> 8) == this.jdField_h_of_type_Int) {
                   c();
@@ -685,19 +701,19 @@ public class ReadInJoyNinePicDeliverDynamicGridView
     this.jdField_h_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnDragListener(tdc paramtdc)
+  public void setOnDragListener(tqn paramtqn)
   {
-    this.jdField_a_of_type_Tdc = paramtdc;
+    this.jdField_a_of_type_Tqn = paramtqn;
   }
   
-  public void setOnDropListener(tdd paramtdd)
+  public void setOnDropListener(tqo paramtqo)
   {
-    this.jdField_a_of_type_Tdd = paramtdd;
+    this.jdField_a_of_type_Tqo = paramtqo;
   }
   
-  public void setOnEditModeChangeListener(tde paramtde)
+  public void setOnEditModeChangeListener(tqp paramtqp)
   {
-    this.jdField_a_of_type_Tde = paramtde;
+    this.jdField_a_of_type_Tqp = paramtqp;
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
@@ -711,14 +727,14 @@ public class ReadInJoyNinePicDeliverDynamicGridView
     this.jdField_a_of_type_AndroidWidgetAbsListView$OnScrollListener = paramOnScrollListener;
   }
   
-  public void setOnSelectedItemBitmapCreationListener(tdf paramtdf)
+  public void setOnSelectedItemBitmapCreationListener(tqq paramtqq)
   {
-    this.jdField_a_of_type_Tdf = paramtdf;
+    this.jdField_a_of_type_Tqq = paramtqq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView
  * JD-Core Version:    0.7.0.1
  */

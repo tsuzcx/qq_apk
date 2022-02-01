@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="40.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/nte" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <View android:background="@drawable/dqo" android:layout_width="fill_parent" android:layout_height="133.29999dip" android:alpha="0.7" />
-        <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:id="@id/kbs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="13.299988dip" android:layout_marginRight="16.0dip" android:text="" android:maxLines="2" android:lineSpacingExtra="0.0dip" />
-        <View android:background="@drawable/dqn" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentBottom="true" android:alpha="0.5" />
-        <ImageButton android:id="@id/fv0" android:background="@null" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/duf" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:layout_alignParentBottom="true">
-            <TextView android:textSize="11.0sp" android:textColor="@color/al3" android:id="@id/nup" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:minWidth="24.0dip" android:minHeight="11.0dip" android:text="01:32" />
-            <SeekBar android:layout_gravity="center" android:id="@id/ilh" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="2.0dip" android:progressDrawable="@drawable/a1k" android:minHeight="2.0dip" android:thumb="@drawable/a2f" android:thumbOffset="3.0dip" android:layout_weight="1.0" />
-            <TextView android:textSize="11.0sp" android:textColor="@color/al3" android:id="@id/nth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:minWidth="24.0dip" android:minHeight="11.0dip" android:text="01:32" />
-        </LinearLayout>
-    </RelativeLayout>
-    <ProgressBar android:id="@id/nuo" android:layout_width="fill_parent" android:layout_height="2.0dip" android:progressDrawable="@drawable/a1l" android:thumb="@color/ajr" android:layout_alignParentBottom="true" style="@android:style/Widget.ProgressBar.Horizontal" />
-    <ImageView android:id="@id/bb4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
+    <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/e85" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/xt_" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/m_b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <CheckBox android:layout_gravity="center_vertical" android:id="@id/j95" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="6.0dip" android:button="@drawable/nj" android:scaleX="0.67" android:scaleY="0.67" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xth" />
+    </LinearLayout>
 </RelativeLayout>

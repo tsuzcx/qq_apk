@@ -1,6 +1,19 @@
-public abstract interface bibj
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+
+final class bibj
+  implements MediaPlayer.OnPreparedListener
 {
-  public abstract void a(bibi parambibi);
+  bibj(bibn parambibn) {}
+  
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    paramMediaPlayer.start();
+    paramMediaPlayer.setLooping(true);
+    if (this.a != null) {
+      this.a.a();
+    }
+  }
 }
 
 

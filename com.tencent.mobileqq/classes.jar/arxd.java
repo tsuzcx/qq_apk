@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-class arxd
-  implements View.OnClickListener
+public class arxd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  arxd(arxc paramarxc) {}
+  public arxd(DataReportViewer paramDataReportViewer) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QfileCloudFileTabView.a(this.a.a, false);
-    this.a.a.h();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

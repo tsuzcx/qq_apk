@@ -1,26 +1,53 @@
+import android.annotation.TargetApi;
+import android.view.DragEvent;
 import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View.OnDragListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.OnPicDragListener.1;
+import com.tencent.qphone.base.util.QLog;
 
-class ayif
-  implements ValueAnimator.AnimatorUpdateListener
+@TargetApi(11)
+public class ayif
+  implements View.OnDragListener
 {
-  ayif(ayhx paramayhx, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  private int a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ayif(ayhd paramayhd, int paramInt)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean onDrag(View paramView, DragEvent paramDragEvent)
+  {
+    switch (paramDragEvent.getAction())
     {
-      return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-ayhx.a(this.jdField_a_of_type_Ayhx) * (1.0F - f));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Ayhx.f);
-    this.b.setAlpha(f);
+    }
+    for (;;)
+    {
+      return true;
+      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
+      continue;
+      RelativeLayout localRelativeLayout = ayhd.a(this.jdField_a_of_type_Ayhd);
+      int i = this.jdField_a_of_type_Ayhd.a.indexOfChild(paramView);
+      int j = this.jdField_a_of_type_Ayhd.a.indexOfChild(localRelativeLayout);
+      if ((i != -1) && (j != -1) && (((i > j) && (paramDragEvent.getX() > this.jdField_a_of_type_Int / 2)) || ((i < j) && (paramDragEvent.getX() < this.jdField_a_of_type_Int / 2))))
+      {
+        try
+        {
+          this.jdField_a_of_type_Ayhd.a.removeView(localRelativeLayout);
+          this.jdField_a_of_type_Ayhd.a.addView(localRelativeLayout, i);
+          ayhd.e(this.jdField_a_of_type_Ayhd);
+        }
+        catch (Exception paramView) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.nearby_people_card.", 2, "drag between small pics exception" + paramView.getMessage());
+          continue;
+          this.jdField_a_of_type_Ayhd.a.post(new NearbyProfileEditPanel.OnPicDragListener.1(this));
+        }
+      }
+    }
   }
 }
 

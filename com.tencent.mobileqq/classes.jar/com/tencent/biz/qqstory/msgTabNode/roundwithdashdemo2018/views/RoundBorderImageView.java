@@ -31,7 +31,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
-import xvv;
+import ykq;
 
 @SuppressLint({"AppCompatCustomView"})
 public class RoundBorderImageView
@@ -169,7 +169,7 @@ public class RoundBorderImageView
     Path localPath = new Path();
     localPath.addRoundRect(localRectF, this.jdField_b_of_type_ArrayOfFloat, Path.Direction.CW);
     this.jdField_c_of_type_Float = new PathMeasure(localPath, true).getLength();
-    xvv.b("RoundBorderImageView", "width=%d, height=%d, hLength=%f, vLength=%f, roundLength=%f, mStrokeWidth=%d", new Object[] { Integer.valueOf(m), Integer.valueOf(n), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Double.valueOf(this.jdField_a_of_type_Double), Integer.valueOf(this.jdField_f_of_type_Int) });
+    ykq.b("RoundBorderImageView", "width=%d, height=%d, hLength=%f, vLength=%f, roundLength=%f, mStrokeWidth=%d", new Object[] { Integer.valueOf(m), Integer.valueOf(n), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Double.valueOf(this.jdField_a_of_type_Double), Integer.valueOf(this.jdField_f_of_type_Int) });
     localRectF = new RectF(getPaddingLeft(), getPaddingTop(), m - getPaddingRight(), n - getPaddingBottom());
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
@@ -177,11 +177,11 @@ public class RoundBorderImageView
     if (this.jdField_c_of_type_Float > 0.0F)
     {
       this.jdField_b_of_type_Int = ((int)Math.floor(this.jdField_c_of_type_Float * 1.0F / (this.k * 2)));
-      xvv.a("RoundBorderImageView", "mBoarderLength = %f, gapLength = %d, max segment count = %d", Float.valueOf(this.jdField_c_of_type_Float), Integer.valueOf(this.k), Integer.valueOf(this.jdField_b_of_type_Int));
+      ykq.a("RoundBorderImageView", "mBoarderLength = %f, gapLength = %d, max segment count = %d", Float.valueOf(this.jdField_c_of_type_Float), Integer.valueOf(this.k), Integer.valueOf(this.jdField_b_of_type_Int));
       return;
     }
     this.jdField_b_of_type_Int = 1;
-    xvv.a("RoundBorderImageView", "mBoarderLength = %f, gapLength = %d, max segment count fallback to %d", Float.valueOf(this.jdField_c_of_type_Float), Integer.valueOf(this.k), Integer.valueOf(this.jdField_b_of_type_Int));
+    ykq.a("RoundBorderImageView", "mBoarderLength = %f, gapLength = %d, max segment count fallback to %d", Float.valueOf(this.jdField_c_of_type_Float), Integer.valueOf(this.k), Integer.valueOf(this.jdField_b_of_type_Int));
   }
   
   float a()
@@ -367,21 +367,21 @@ public class RoundBorderImageView
       }
     }
     this.jdField_b_of_type_AndroidGraphicsDashPathEffect = new DashPathEffect(arrayOfFloat, f1);
-    xvv.a("RoundBorderImageView", "buildDashes length (%d), %s, %s, hash:%d", Integer.valueOf(arrayOfFloat.length), this.jdField_a_of_type_AndroidGraphicsDashPathEffect, this.jdField_b_of_type_AndroidGraphicsDashPathEffect, Integer.valueOf(hashCode()));
+    ykq.a("RoundBorderImageView", "buildDashes length (%d), %s, %s, hash:%d", Integer.valueOf(arrayOfFloat.length), this.jdField_a_of_type_AndroidGraphicsDashPathEffect, this.jdField_b_of_type_AndroidGraphicsDashPathEffect, Integer.valueOf(hashCode()));
   }
   
   public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
     if (this.jdField_c_of_type_Boolean) {
-      xvv.a("RoundBorderImageView", "[DEBUG] before invalidateDrawable %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
+      ykq.a("RoundBorderImageView", "[DEBUG] before invalidateDrawable %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
     if (a(paramDrawable)) {
-      xvv.b("RoundBorderImageView", "[PATCH] PATCH for vivo");
+      ykq.b("RoundBorderImageView", "[PATCH] PATCH for vivo");
     }
     for (;;)
     {
       if (this.jdField_c_of_type_Boolean) {
-        xvv.a("RoundBorderImageView", "[DEBUG] after invalidateDrawable %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
+        ykq.a("RoundBorderImageView", "[DEBUG] after invalidateDrawable %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
       }
       paramDrawable = getDrawable();
       if (((paramDrawable instanceof URLDrawable)) && ((((URLDrawable)paramDrawable).getCurrDrawable() instanceof GifDrawable)) && ((Build.MODEL.equalsIgnoreCase("MI 8")) || (Build.MODEL.equalsIgnoreCase("VIVO NEX A")) || (Build.MODEL.equalsIgnoreCase("PACM00")) || (Build.MODEL.equalsIgnoreCase("PAFM00")))) {
@@ -416,7 +416,7 @@ public class RoundBorderImageView
   public void requestLayout()
   {
     if (this.jdField_c_of_type_Boolean) {
-      xvv.a("RoundBorderImageView", "[DEBUG] requestLayout %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
+      ykq.a("RoundBorderImageView", "[DEBUG] requestLayout %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
     super.requestLayout();
   }
@@ -446,11 +446,11 @@ public class RoundBorderImageView
   public void setImageDrawable(@Nullable Drawable paramDrawable)
   {
     if ((this.jdField_c_of_type_Boolean) && (paramDrawable != null)) {
-      xvv.a("RoundBorderImageView", "[DEBUG] before set %d %d type %s matrix:%s", Integer.valueOf(paramDrawable.getIntrinsicWidth()), Integer.valueOf(paramDrawable.getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
+      ykq.a("RoundBorderImageView", "[DEBUG] before set %d %d type %s matrix:%s", Integer.valueOf(paramDrawable.getIntrinsicWidth()), Integer.valueOf(paramDrawable.getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
     super.setImageDrawable(paramDrawable);
     if ((this.jdField_c_of_type_Boolean) && (paramDrawable != null)) {
-      xvv.a("RoundBorderImageView", "[DEBUG] after set %d %d type %s, matrix:%s", Integer.valueOf(paramDrawable.getIntrinsicWidth()), Integer.valueOf(paramDrawable.getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
+      ykq.a("RoundBorderImageView", "[DEBUG] after set %d %d type %s, matrix:%s", Integer.valueOf(paramDrawable.getIntrinsicWidth()), Integer.valueOf(paramDrawable.getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
   }
   
@@ -482,7 +482,7 @@ public class RoundBorderImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views.RoundBorderImageView
  * JD-Core Version:    0.7.0.1
  */

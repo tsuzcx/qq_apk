@@ -1,7 +1,7 @@
 package com.tencent.qqmini.miniapp.core.page;
 
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
+import com.tencent.qqmini.miniapp.core.page.widget.MiniSwipeRefreshLayout;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.action.NativeViewRequestEvent;
@@ -30,6 +30,11 @@ class PageWebviewContainer$5
         ((HashMap)localObject).put("style", "1");
         ((HashMap)localObject).put("local", "true");
         ((HashMap)localObject).put("topBarBgColor", "#808080");
+        if (PageWebviewContainer.access$400(this.this$0).getAttachedActivity() == null)
+        {
+          QMLog.e("PageWebviewContainer", "can't openFileReader because of activity is null.");
+          return;
+        }
         if (QbSdk.openFileReader(PageWebviewContainer.access$400(this.this$0).getAttachedActivity(), str, (HashMap)localObject, new PageWebviewContainer.5.1(this)) > 0) {
           this.val$req.ok();
         }

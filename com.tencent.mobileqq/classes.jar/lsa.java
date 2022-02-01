@@ -1,260 +1,120 @@
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.opengl.program.TextureProgram;
+import com.tencent.av.opengl.texture.YUVTexture;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.List;
 
 public class lsa
+  extends YUVTexture
 {
-  private float A;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private lrp jdField_a_of_type_Lrp;
-  private lsb jdField_a_of_type_Lsb;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 1000;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
-  private boolean jdField_d_of_type_Boolean;
-  private float jdField_e_of_type_Float;
-  private boolean jdField_e_of_type_Boolean;
-  private float f;
-  private float g;
-  private float h;
-  private float i;
-  private float j = 1.0F;
-  private float k = 1.0F;
-  private float l;
-  private float m = 1.0F;
-  private float n = 1.0F;
-  private float o = 1.0F;
-  private float p = 1.0F;
-  private float q;
-  private float r;
-  private float s;
-  private float t;
-  private float u;
-  private float v;
-  private float w;
-  private float x;
-  private float y;
-  private float z;
+  private static String jdField_a_of_type_JavaLangString;
+  private static String b;
+  private static boolean e;
+  private static boolean f;
+  public static int n = 480;
+  private static int o = 1;
+  private lru jdField_a_of_type_Lru;
+  private meu jdField_a_of_type_Meu;
   
-  public float a()
+  public lsa(Context paramContext, meu parammeu, String paramString, long paramLong)
   {
-    return this.jdField_c_of_type_Float;
+    super(paramContext, paramString, paramLong);
+    this.jdField_a_of_type_Meu = parammeu;
   }
   
-  public void a()
+  private static void a(Context paramContext)
   {
-    this.jdField_a_of_type_Long = -1L;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.jdField_d_of_type_Boolean = true;
-    this.m = paramFloat1;
-    this.q = paramFloat1;
-    this.n = paramFloat2;
-    this.r = paramFloat2;
-    this.o = paramFloat3;
-    this.p = paramFloat4;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_c_of_type_Float = paramFloat1;
-    this.jdField_d_of_type_Float = paramFloat2;
-    this.f = paramFloat2;
-    this.g = paramFloat3;
-    this.i = paramFloat3;
-    this.jdField_b_of_type_Float = paramFloat4;
-    this.jdField_e_of_type_Float = paramFloat5;
-    this.h = paramFloat6;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(lrp paramlrp)
-  {
-    this.jdField_a_of_type_Lrp = paramlrp;
-  }
-  
-  public void a(lsb paramlsb)
-  {
-    this.jdField_a_of_type_Lsb = paramlsb;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      b();
-      return this.jdField_a_of_type_Boolean;
-    }
-    if (this.jdField_a_of_type_Long == -1L) {
-      this.jdField_a_of_type_Long = paramLong;
-    }
-    long l1 = paramLong - this.jdField_a_of_type_Long;
-    if (l1 == 0L) {
-      return false;
-    }
-    paramLong = l1;
-    if (l1 >= this.jdField_b_of_type_Int)
-    {
-      paramLong = this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_Boolean = true;
-      b();
-    }
-    float f1;
-    if (this.jdField_a_of_type_Int == 0) {
-      f1 = (float)paramLong * 1.0F / this.jdField_b_of_type_Int;
-    }
+    int i = 0;
+    if (e) {}
     for (;;)
     {
-      if (this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * f1);
-        this.f = (this.jdField_d_of_type_Float + (this.jdField_e_of_type_Float - this.jdField_d_of_type_Float) * f1);
-        this.i = (this.g + (this.h - this.g) * f1);
+      return;
+      e = true;
+      if (jdField_a_of_type_JavaLangString == null) {
+        jdField_a_of_type_JavaLangString = DeviceInfoUtil.getQQVersion();
       }
-      if (this.jdField_d_of_type_Boolean)
-      {
-        this.q = (this.m + (this.o - this.m) * f1);
-        this.r = (this.n + (this.p - this.n) * f1);
+      paramContext = loo.a();
+      f = false;
+      if ((paramContext == null) || (paramContext.jdField_a_of_type_Int != 1)) {
+        continue;
       }
-      if (this.jdField_e_of_type_Boolean)
+      n = paramContext.b;
+      o = paramContext.c;
+      jdField_b_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
+      try
       {
-        this.y = (this.s + (this.t - this.s) * f1);
-        this.z = (this.u + (this.v - this.u) * f1);
-        this.A = (this.w + (this.x - this.w) * f1);
-      }
-      if (!this.jdField_c_of_type_Boolean) {
-        break;
-      }
-      float f2 = this.j;
-      this.l = (f1 * (this.k - this.j) + f2);
-      break;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        f1 = (float)paramLong;
-        f1 = (float)paramLong * (1.0F * f1) / this.jdField_b_of_type_Int / this.jdField_b_of_type_Int;
-      }
-      else if (this.jdField_a_of_type_Int == 2)
-      {
-        l1 = this.jdField_b_of_type_Int;
-        if (paramLong == 0L)
-        {
-          f1 = 0.0F;
+        if ((TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))) {
+          continue;
         }
-        else
+        paramContext = jdField_b_of_type_JavaLangString.split("\\.");
+        String[] arrayOfString = jdField_a_of_type_JavaLangString.split("\\.");
+        while ((i < 3) && (i < paramContext.length) && (i < arrayOfString.length))
         {
-          f1 = (float)paramLong * 1.0F * (float)paramLong / (float)l1 / (float)l1;
-          f1 = ((float)l1 * 2.0F / (float)paramLong - 1.0F) * f1;
+          if (Integer.valueOf(arrayOfString[i]).intValue() > Integer.valueOf(paramContext[i]).intValue())
+          {
+            f = true;
+            return;
+          }
+          if (Integer.valueOf(arrayOfString[i]).intValue() < Integer.valueOf(paramContext[i]).intValue())
+          {
+            f = false;
+            return;
+          }
+          if (i == 2) {
+            f = true;
+          }
+          i += 1;
         }
+        return;
       }
-      else
-      {
-        f1 = 1.0F;
-      }
+      catch (Exception paramContext) {}
     }
   }
   
-  public float b()
+  public lrp[] a(lqo paramlqo)
   {
-    return this.f;
+    if (a() > b())
+    {
+      i = a();
+      a(this.jdField_a_of_type_AndroidContentContext);
+      if ((!f) || (getImgWidth() > n) || (i <= ((lqp)paramlqo).c() / 3 * 2) || (getImgWidth() >= i) || (getImgWidth() == 0) || (this.jdField_a_of_type_Meu.a().size() != 0) || (VideoController.a().a().d != 2)) {
+        break label211;
+      }
+    }
+    label211:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        if (this.jdField_a_of_type_Lru == null) {
+          this.jdField_a_of_type_Lru = lru.a();
+        }
+        super.a(paramlqo);
+        if (super.a() != null) {
+          this.jdField_a_of_type_Lru.a(paramlqo, getImgWidth(), getImgHeight(), ((lqp)paramlqo).c(), ((lqp)paramlqo).d(), a()[0], a()[1], a()[2], this.jdField_b_of_type_ArrayOfFloat, this.k, o);
+        }
+        return lrn.a(0).a();
+        i = b();
+        break;
+      }
+      return super.a(paramlqo);
+    }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Lrp != null) {}
-    synchronized (this.jdField_a_of_type_Lrp.a())
-    {
-      this.jdField_a_of_type_Lrp.a().remove(this);
-      if (this.jdField_a_of_type_Lsb != null)
-      {
-        this.jdField_a_of_type_Lsb.a();
-        this.jdField_a_of_type_Lsb = null;
-      }
-      return;
+    super.b();
+    if (this.jdField_a_of_type_Lru != null) {
+      this.jdField_a_of_type_Lru.a();
     }
-  }
-  
-  public void b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
-  {
-    this.jdField_e_of_type_Boolean = true;
-    this.s = paramFloat1;
-    this.y = paramFloat1;
-    this.t = paramFloat2;
-    this.u = paramFloat3;
-    this.z = paramFloat3;
-    this.v = paramFloat4;
-    this.w = paramFloat5;
-    this.A = paramFloat5;
-    this.x = paramFloat6;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = Math.abs(paramInt);
-    if (this.jdField_b_of_type_Int == 0) {
-      this.jdField_b_of_type_Int = 1;
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public float c()
-  {
-    return this.i;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_e_of_type_Boolean;
-  }
-  
-  public float d()
-  {
-    return this.q;
-  }
-  
-  public float e()
-  {
-    return this.r;
-  }
-  
-  public float f()
-  {
-    return this.y;
-  }
-  
-  public float g()
-  {
-    return this.z;
-  }
-  
-  public float h()
-  {
-    return this.A;
+    e = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lsa
  * JD-Core Version:    0.7.0.1
  */

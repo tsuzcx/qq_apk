@@ -13,24 +13,25 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import pay;
-import pkm;
-import pvc;
-import qpi;
-import qps;
-import qtr;
-import rdy;
-import rer;
-import slt;
+import pkh;
+import pqw;
+import pvj;
+import qfw;
+import rbn;
+import rbx;
+import rfw;
+import rqf;
+import rqy;
+import szd;
 
 public abstract class ComponentHeaderBase
   extends FrameLayout
-  implements qpi
+  implements rbn
 {
   public ComponentNotIntrest a;
   FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
-  public qtr a;
-  slt jdField_a_of_type_Slt;
+  public rfw a;
+  szd jdField_a_of_type_Szd;
   
   public ComponentHeaderBase(Context paramContext)
   {
@@ -52,14 +53,14 @@ public abstract class ComponentHeaderBase
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qtr = new qtr();
+    this.jdField_a_of_type_Rfw = new rfw();
     a(paramContext);
     a();
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560129, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560176, this, true);
   }
   
   public void a() {}
@@ -71,15 +72,15 @@ public abstract class ComponentHeaderBase
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131371878));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131372069));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pvc))
+    if ((paramObject instanceof qfw))
     {
-      pvc localpvc = (pvc)paramObject;
-      this.jdField_a_of_type_Qtr.a(localpvc);
+      qfw localqfw = (qfw)paramObject;
+      this.jdField_a_of_type_Rfw.a(localqfw);
       b();
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest != null)
       {
@@ -95,25 +96,25 @@ public abstract class ComponentHeaderBase
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.setVisibility(0);
   }
   
-  public void a(qps paramqps)
+  public void a(rbx paramrbx)
   {
-    this.jdField_a_of_type_Qtr.a(paramqps);
+    this.jdField_a_of_type_Rfw.a(paramrbx);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(paramqps);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(paramrbx);
     }
   }
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_Qtr.a == null) || (this.jdField_a_of_type_Qtr.a.a() == null)) {
+    if ((this.jdField_a_of_type_Rfw.a == null) || (this.jdField_a_of_type_Rfw.a.a() == null)) {
       QLog.d("ComponentHeaderBase", 2, "isHideNotInterestView model or articleInfo is null !");
     }
     ArticleInfo localArticleInfo;
     do
     {
       return false;
-      localArticleInfo = this.jdField_a_of_type_Qtr.a.a();
-    } while (((pay.c(localArticleInfo)) || (pay.d(localArticleInfo)) || (pay.f(localArticleInfo)) || (pay.g(localArticleInfo))) && ((localArticleInfo.mChannelID != 70L) || ((!this.jdField_a_of_type_Qtr.a()) && (localArticleInfo.mChannelID != 70L) && ((localArticleInfo.mSocialFeedInfo == null) || (localArticleInfo.mSocialFeedInfo.h != 1)))));
+      localArticleInfo = this.jdField_a_of_type_Rfw.a.a();
+    } while (((pqw.c(localArticleInfo)) || (pqw.d(localArticleInfo)) || (pqw.f(localArticleInfo)) || (pqw.g(localArticleInfo))) && ((localArticleInfo.mChannelID != 70L) || ((!this.jdField_a_of_type_Rfw.a()) && (localArticleInfo.mChannelID != 70L) && ((localArticleInfo.mSocialFeedInfo == null) || (localArticleInfo.mSocialFeedInfo.h != 1)))));
     return true;
   }
   
@@ -122,12 +123,12 @@ public abstract class ComponentHeaderBase
   protected void c()
   {
     ReportInfo localReportInfo = new ReportInfo();
-    Object localObject2 = this.jdField_a_of_type_Qtr.a.a();
+    Object localObject2 = this.jdField_a_of_type_Rfw.a.a();
     if (localObject2 != null)
     {
       Object localObject3 = ((ArticleInfo)localObject2).mSocialFeedInfo;
-      localObject1 = new rdy();
-      localReportInfo.mUin = pay.a();
+      localObject1 = new rqf();
+      localReportInfo.mUin = pkh.a();
       localReportInfo.mSource = 0;
       localReportInfo.mSourceArticleId = ((ArticleInfo)localObject2).mArticleID;
       localReportInfo.mChannelId = ((int)((ArticleInfo)localObject2).mChannelID);
@@ -137,37 +138,37 @@ public abstract class ComponentHeaderBase
       localReportInfo.mReadTimeLength = -1;
       if (localObject3 != null)
       {
-        ((rdy)localObject1).jdField_a_of_type_Long = ((SocializeFeedsInfo)localObject3).jdField_a_of_type_Long;
-        if (((SocializeFeedsInfo)localObject3).jdField_a_of_type_Rer != null) {
-          ((rdy)localObject1).jdField_b_of_type_Long = ((SocializeFeedsInfo)localObject3).jdField_a_of_type_Rer.jdField_a_of_type_Long;
+        ((rqf)localObject1).jdField_a_of_type_Long = ((SocializeFeedsInfo)localObject3).jdField_a_of_type_Long;
+        if (((SocializeFeedsInfo)localObject3).jdField_a_of_type_Rqy != null) {
+          ((rqf)localObject1).jdField_b_of_type_Long = ((SocializeFeedsInfo)localObject3).jdField_a_of_type_Rqy.jdField_a_of_type_Long;
         }
-        ((rdy)localObject1).jdField_a_of_type_Int = ((SocializeFeedsInfo)localObject3).jdField_b_of_type_Int;
-        ((rdy)localObject1).jdField_b_of_type_Int = ((SocializeFeedsInfo)localObject3).d;
+        ((rqf)localObject1).jdField_a_of_type_Int = ((SocializeFeedsInfo)localObject3).jdField_b_of_type_Int;
+        ((rqf)localObject1).jdField_b_of_type_Int = ((SocializeFeedsInfo)localObject3).d;
         localObject2 = ((SocializeFeedsInfo)localObject3).jdField_a_of_type_JavaUtilList;
         if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
         {
-          ((rdy)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+          ((rqf)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
           localObject2 = ((List)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            localObject3 = (rer)((Iterator)localObject2).next();
+            localObject3 = (rqy)((Iterator)localObject2).next();
             if (localObject3 != null) {
-              ((rdy)localObject1).jdField_a_of_type_JavaUtilList.add(Long.valueOf(((rer)localObject3).jdField_a_of_type_Long));
+              ((rqf)localObject1).jdField_a_of_type_JavaUtilList.add(Long.valueOf(((rqy)localObject3).jdField_a_of_type_Long));
             }
           }
         }
       }
       localReportInfo.mOperation = 14;
-      localReportInfo.mFeedsReportData = ((rdy)localObject1);
+      localReportInfo.mFeedsReportData = ((rqf)localObject1);
     }
     Object localObject1 = new ArrayList();
     ((List)localObject1).add(localReportInfo);
-    pkm.a().a((List)localObject1);
+    pvj.a().a((List)localObject1);
   }
   
-  public void setLogic(slt paramslt, FaceDecoder paramFaceDecoder)
+  public void setLogic(szd paramszd, FaceDecoder paramFaceDecoder)
   {
-    this.jdField_a_of_type_Slt = paramslt;
+    this.jdField_a_of_type_Szd = paramszd;
     this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = paramFaceDecoder;
   }
 }

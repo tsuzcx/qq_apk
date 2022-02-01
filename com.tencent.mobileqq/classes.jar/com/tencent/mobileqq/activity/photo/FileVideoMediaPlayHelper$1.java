@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ajob;
-import ajqi;
-import aszt;
+import akjp;
+import aklw;
+import auea;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 
 public class FileVideoMediaPlayHelper$1
   implements Runnable
 {
-  public FileVideoMediaPlayHelper$1(ajob paramajob, int paramInt) {}
+  public FileVideoMediaPlayHelper$1(akjp paramakjp, int paramInt) {}
   
   public void run()
   {
-    if (ajob.a(this.this$0) == null) {}
+    if (akjp.a(this.this$0) == null) {}
     do
     {
       return;
-      if (ajob.a(this.this$0) > 0)
+      if (akjp.a(this.this$0) > 0)
       {
-        ajob.a(this.this$0).setRemainTime(20160714, ajob.b(this.this$0), 2147483647);
-        ajob.a(this.this$0).stopPreLoad(ajob.a(this.this$0));
+        akjp.a(this.this$0).setRemainTime(20160714, akjp.b(this.this$0), 2147483647);
+        akjp.a(this.this$0).stopPreLoad(akjp.a(this.this$0));
       }
-      int i = ajob.a(this.this$0).startPreLoadWithSavePath(20160714, this.this$0.a.jdField_a_of_type_ArrayOfJavaLangString[0], aszt.a(this.this$0.a.jdField_a_of_type_JavaLangString), 0L, 0, this.this$0.a.jdField_a_of_type_JavaLangString, 0);
-      ajob.a(this.this$0, i);
-      ajob.a(this.this$0).setPlayerState(20160714, i, 6);
+      int i = akjp.a(this.this$0).startPreLoadWithSavePath(20160714, this.this$0.a.jdField_a_of_type_ArrayOfJavaLangString[0], auea.a(this.this$0.a.jdField_a_of_type_JavaLangString), 0L, 0, this.this$0.a.jdField_a_of_type_JavaLangString, 0);
+      akjp.a(this.this$0, i);
+      akjp.a(this.this$0).setPlayerState(20160714, i, 6);
     } while (!QLog.isDevelopLevel());
-    QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, "[" + this.this$0.a.jdField_a_of_type_Long + "],playid +[" + this.a + "] download Block, new blockId:" + ajob.a(this.this$0));
+    QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, "[" + this.this$0.a.jdField_a_of_type_Long + "],playid +[" + this.a + "] download Block, new blockId:" + akjp.a(this.this$0));
   }
 }
 

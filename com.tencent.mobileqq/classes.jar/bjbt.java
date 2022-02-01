@@ -1,99 +1,81 @@
 import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.open.agent.BindGroupConfirmActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.AdProxyImpl;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IBannerAdListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ICmdListener;
-import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 
-class bjbt
-  implements AdProxy.ICmdListener
+public class bjbt
+  implements bghi
 {
-  bjbt(bjbr parambjbr, Activity paramActivity) {}
+  public bjbt(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if ((!paramBoolean) || (paramJSONObject == null)) {
-      if (this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener != null) {
-        this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener.onNoAD(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
-      }
+    switch (paramInt)
+    {
     }
-    int i;
-    String str;
-    label322:
-    label333:
-    label362:
     do
     {
-      do
+      for (;;)
       {
         return;
-        for (;;)
-        {
+        if (paramJSONObject != null) {
           try
           {
-            i = paramJSONObject.getInt("retCode");
-            str = paramJSONObject.getString("errMsg");
-            paramJSONObject = paramJSONObject.getString("response");
-            if ((i != 0) || (TextUtils.isEmpty(paramJSONObject))) {
-              break label362;
-            }
-            str = AdProxyImpl.a(this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, paramJSONObject);
-            paramJSONObject = null;
-            if (!TextUtils.isEmpty(str)) {
-              paramJSONObject = AdProxyImpl.a(this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, str);
-            }
-            if (paramJSONObject == null) {
-              break label322;
-            }
-            GdtAd localGdtAd = new GdtAd(paramJSONObject);
-            abkw.a().a(localGdtAd);
-            this.jdField_a_of_type_Bjbr.i = paramJSONObject.report_info.exposure_url.get();
-            this.jdField_a_of_type_Bjbr.jdField_a_of_type_Long = paramJSONObject.report_info.trace_info.aid.get();
-            this.jdField_a_of_type_Bjbr.jdField_a_of_type_Ablv = bjbr.a(this.jdField_a_of_type_Bjbr, this.jdField_a_of_type_AndroidAppActivity, paramJSONObject, this.jdField_a_of_type_Bjbr.d, this.jdField_a_of_type_Bjbr.e, this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext);
-            this.jdField_a_of_type_Bjbr.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = paramJSONObject;
-            if (this.jdField_a_of_type_Bjbr.jdField_a_of_type_Ablv == null) {
-              break label333;
-            }
-            if (this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener != null)
+            paramJSONObject = (JSONObject)paramJSONObject.get("data");
+            if (paramJSONObject != null)
             {
-              this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener.onADReceive();
-              AdProxyImpl.a(this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext, paramJSONObject);
+              paramJSONObject = (JSONObject)paramJSONObject.get("key");
+              if (paramJSONObject != null)
+              {
+                paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
+                paramBundle = (String)paramJSONObject.get("retMsg");
+                if (paramInt != 0) {
+                  break label336;
+                }
+                if (this.a.jdField_a_of_type_Aatx == null)
+                {
+                  this.a.jdField_a_of_type_Aatx = new aatx(this.a);
+                  this.a.jdField_a_of_type_Aatx.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690621));
+                  this.a.jdField_a_of_type_Aatx.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690620, new Object[] { this.a.e }), this.a);
+                  this.a.jdField_a_of_type_Aatx.a(this.a);
+                }
+                if (!this.a.jdField_a_of_type_Aatx.isShowing()) {
+                  this.a.jdField_a_of_type_Aatx.show();
+                }
+                bdla.b(this.a.app, "CliOper", "", "", "0x80084B1", "0x80084B1", 0, 0, "", "", "", "");
+                if (QLog.isColorLevel())
+                {
+                  QLog.i("BindGroupConfirmActivity", 2, "bindGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
+                  return;
+                }
+              }
             }
-            AdProxyImpl.a(this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, str, this.jdField_a_of_type_Bjbr.b);
-            return;
           }
-          catch (JSONException paramJSONObject)
+          catch (Exception paramJSONObject)
           {
-            QLog.e("AdProxyImpl", 1, "loadAD, err", paramJSONObject);
+            BindGroupConfirmActivity.a(this.a, this.a.getActivity().getResources().getString(2131719594));
           }
-          if (this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener == null) {
-            break;
-          }
-          this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener.onNoAD(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
-          return;
-          QLog.e("AdProxyImpl", 1, "adInfo is null");
         }
-      } while (this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener == null);
-      this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener.onNoAD(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
-      return;
-    } while (this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener == null);
-    int j = PluginConst.AdConst.getRetCodeByServerResult(i);
-    if (j != -1) {
-      i = j;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("BindGroupConfirmActivity", 2, "bindGroup onResult " + paramJSONObject.toString());
+    return;
+    label336:
+    paramJSONObject = this.a.getActivity().getResources().getString(2131719594);
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bjbr.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener.onNoAD(i, str);
-      return;
+      BindGroupConfirmActivity.a(this.a, paramJSONObject);
+      break;
+      paramJSONObject = this.a.getActivity().getResources().getString(2131719597);
+      continue;
+      paramJSONObject = this.a.getActivity().getResources().getString(2131719596);
+      continue;
+      paramJSONObject = this.a.getActivity().getResources().getString(2131719592);
     }
   }
 }

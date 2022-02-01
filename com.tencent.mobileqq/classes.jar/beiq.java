@@ -1,59 +1,47 @@
-import android.os.Handler;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.lang.ref.WeakReference;
 
-class beiq
-  implements INetEngine.INetEngineListener
+public final class beiq
+  extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean;
-  
-  beiq(beip parambeip, Handler paramHandler, int paramInt, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onResp(NetResp paramNetResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener onResp: " + paramNetResp.mResult + ", desc: " + paramNetResp.mErrDesc);
+    String str2 = paramIntent.getStringExtra("themePath");
+    String str3 = paramIntent.getStringExtra("themeId");
+    String str1 = paramIntent.getStringExtra("bg3D");
+    String str4 = paramIntent.getStringExtra("aio");
+    String str5 = paramIntent.getStringExtra("playerSkin");
+    if ((!TextUtils.isEmpty(str2)) || (!TextUtils.isEmpty(str3))) {
+      ThemeUtil.validLocalTheme(paramContext, str2, str3);
     }
-    if (paramNetResp.mResult == 3) {
-      return;
-    }
-    if (paramNetResp.mResult == 0)
+    do
     {
-      paramNetResp = beip.a(paramNetResp.mReq.mOutPath);
-      if (beip.a(this.jdField_a_of_type_Beip).equalsIgnoreCase(paramNetResp))
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener download success");
+        return;
+        if (TextUtils.isEmpty(str1)) {
+          break;
         }
-        beip.a(this.jdField_a_of_type_Beip, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+        paramIntent = (QQAppInterface)ThemeUtil.weakApp.get();
+      } while (paramIntent == null);
+      ThemeUtil.access$000(paramContext, paramIntent, paramIntent.getCurrentAccountUin(), str1);
+      return;
+      if (!TextUtils.isEmpty(str4))
+      {
+        ThemeUtil.previewAIOTheme(paramContext, str4);
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener download success, md5 check failed");
+      if (!TextUtils.isEmpty(str5))
+      {
+        ThemeUtil.previewPlayerSkin(paramContext, str5);
+        return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1112);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener onResp error");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1113);
-  }
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener Dowloading " + paramLong1 + "/" + paramLong2 + " " + 100L * paramLong1 / paramLong2);
-    }
+    } while (!ThemeUtil.themeFont(paramIntent, "themeFont"));
   }
 }
 

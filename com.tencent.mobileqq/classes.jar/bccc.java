@@ -1,34 +1,25 @@
-import com.tencent.mobileqq.startup.step.RecordTracer;
-import com.tencent.trackrecordlib.core.IRecordConfig;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bccc
-  implements IRecordConfig
+  implements View.OnTouchListener
 {
-  public bccc(RecordTracer paramRecordTracer) {}
+  public bccc(ContactSearchFragment paramContactSearchFragment) {}
   
-  public int getCachedEventSize()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return 0;
-  }
-  
-  public String getTitleBarId()
-  {
-    return "com.tencent.mobileqq:id/ivTitleName";
-  }
-  
-  public boolean isEnableRelease()
-  {
-    return true;
-  }
-  
-  public boolean isFilterUGC()
-  {
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bccc
  * JD-Core Version:    0.7.0.1
  */

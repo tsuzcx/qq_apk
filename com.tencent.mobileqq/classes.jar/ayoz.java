@@ -1,17 +1,29 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.widget.RoundedImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayoz
-  extends RecyclerView.ViewHolder
+class ayoz
+  implements View.OnClickListener
 {
-  public RoundedImageView a;
-  public boolean a;
+  ayoz(ayoy paramayoy) {}
   
-  public ayoz(ayox paramayox, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView = ((RoundedImageView)paramView.findViewById(2131376498));
+    if (System.currentTimeMillis() < ayoy.a(this.a) + 1000L) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ayoy.a(this.a, System.currentTimeMillis());
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("url", ayoq.a());
+      localIntent.putExtra("hide_more_button", true);
+      localIntent.addFlags(536870912);
+      paramView.getContext().startActivity(localIntent);
+    }
   }
 }
 

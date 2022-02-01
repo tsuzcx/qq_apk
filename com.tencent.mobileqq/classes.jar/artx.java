@@ -1,25 +1,26 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.GameRich;
 
-public class artx
-  extends bcuz
+public final class artx
+  implements Parcelable.Creator
 {
-  public artx(FilePreviewActivity paramFilePreviewActivity) {}
-  
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public IPSiteModel.GameRich a(Parcel paramParcel)
   {
-    super.a(paramTeamWorkFileImportInfo);
-    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
-      FilePreviewActivity.a(this.a).dismiss();
-    }
+    IPSiteModel.GameRich localGameRich = new IPSiteModel.GameRich();
+    localGameRich.anchorFaceUrl = paramParcel.readString();
+    localGameRich.anchorId = paramParcel.readString();
+    localGameRich.anchorName = paramParcel.readString();
+    localGameRich.coverUrl = paramParcel.readString();
+    localGameRich.online = paramParcel.readString();
+    localGameRich.title = paramParcel.readString();
+    localGameRich.richJumpUrl = paramParcel.readString();
+    return localGameRich;
   }
   
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public IPSiteModel.GameRich[] a(int paramInt)
   {
-    super.a(paramString, paramTeamWorkFileImportInfo);
-    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
-      FilePreviewActivity.a(this.a).dismiss();
-    }
+    return new IPSiteModel.GameRich[paramInt];
   }
 }
 

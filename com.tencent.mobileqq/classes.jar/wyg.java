@@ -1,16 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class wyg
-  implements DialogInterface.OnClickListener
+public class wyg
+  extends wyf
 {
-  wyg(wyc paramwyc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    wyc.a(this.a);
-    xwa.a("play_video", "clk_window", 0, 0, new String[0]);
-  }
+  public String a;
+  public int b = 0;
+  public int c = 16296448;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 1;
+  public String e;
+  public String f = vzh.a;
+  public String g = "mqqapi://qstory/open?src_type=internal&version=1";
+  public String h;
+  public String i = "";
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n = "";
+  public String o;
+  public String p;
 }
 
 

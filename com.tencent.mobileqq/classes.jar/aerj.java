@@ -1,23 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class aerj
+public class aerj
   implements DialogInterface.OnClickListener
 {
-  aerj(aeri paramaeri, QQCustomDialog paramQQCustomDialog) {}
+  public aerj(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bcef.b(this.jdField_a_of_type_Aeri.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Aeri.a.a, "", "", "");
-    paramDialogInterface = new Intent(this.jdField_a_of_type_Aeri.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", "https://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
-    paramDialogInterface.putExtra("webStyle", "noBottomBar");
-    this.jdField_a_of_type_Aeri.a.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    ThreadManager.executeOnNetWorkThread(new QQSettingCleanActivity.2.1(this));
   }
 }
 

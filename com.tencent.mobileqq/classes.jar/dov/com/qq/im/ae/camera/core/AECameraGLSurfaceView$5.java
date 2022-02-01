@@ -1,15 +1,19 @@
 package dov.com.qq.im.ae.camera.core;
 
-import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
+import bnbc;
+import bnrh;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 class AECameraGLSurfaceView$5
-  implements Runnable
+  implements bnbc
 {
-  AECameraGLSurfaceView$5(AECameraGLSurfaceView paramAECameraGLSurfaceView, AEVideoCaptureResult paramAEVideoCaptureResult) {}
+  AECameraGLSurfaceView$5(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
-  public void run()
+  public void recover(VideoMaterial paramVideoMaterial)
   {
-    this.this$0.captureListener.onVideoCaptured(this.val$videoCaptureResult);
+    bnrh.b("AECameraGLSurfaceView", "EditableWatermarkMaterialRecover recover---");
+    AECameraGLSurfaceView.access$502(this.this$0, null);
+    this.this$0.setMaterial(paramVideoMaterial.getDataPath());
   }
 }
 

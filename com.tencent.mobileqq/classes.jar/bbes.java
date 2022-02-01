@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.resourcesgrab.ResourceGrabView;
 
 public class bbes
-  extends bbfd
 {
-  public bbes(GroupSearchEngine paramGroupSearchEngine, bbfe parambbfe, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambbfe, paramString, paramInt);
-  }
+  public ResourceGrabView a;
   
-  public bays a(List<bayt> paramList, String paramString)
+  public static bbes a()
   {
-    return new bkpw(paramList, paramString);
+    return bbeu.a();
   }
 }
 

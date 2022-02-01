@@ -1,14 +1,6 @@
-public final class amjp
-  implements amka
+public abstract interface amjp
 {
-  public amjp(amjz paramamjz) {}
-  
-  public void a(int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a(paramInt);
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

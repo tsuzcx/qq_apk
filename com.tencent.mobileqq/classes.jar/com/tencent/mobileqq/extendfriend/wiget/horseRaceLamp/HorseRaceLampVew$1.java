@@ -5,10 +5,10 @@ import android.content.res.Resources;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
-import arrl;
-import arrn;
-import arro;
-import arrp;
+import asvr;
+import asvt;
+import asvu;
+import asvv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -32,12 +32,12 @@ public class HorseRaceLampVew$1
         i = ((WindowManager)this.this$0.getContext().getSystemService("window")).getDefaultDisplay().getWidth();
         QLog.e("HorseRaceLampVew + horserace", 2, "INIT WIDH in screen Width: " + i);
       }
-      int k = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297288);
-      int m = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297292);
+      int k = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297289);
+      int m = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297293);
       j = 0;
       while (j < 4)
       {
-        HorseRaceLampVew.a(this.this$0).add(new arrn(j, i, k, m));
+        HorseRaceLampVew.a(this.this$0).add(new asvt(j, i, k, m));
         j += 1;
       }
       if (HorseRaceLampVew.a(this.this$0) == null)
@@ -49,20 +49,20 @@ public class HorseRaceLampVew$1
       Object localObject;
       while (i < HorseRaceLampVew.a(this.this$0).a())
       {
-        localObject = new arro(HorseRaceLampVew.a(this.this$0).a(i));
-        ((arrn)HorseRaceLampVew.a(this.this$0).get(i % 4)).a((arro)localObject);
+        localObject = new asvu(HorseRaceLampVew.a(this.this$0).a(i));
+        ((asvt)HorseRaceLampVew.a(this.this$0).get(i % 4)).a((asvu)localObject);
         i += 1;
       }
       i = 0;
       while (i < HorseRaceLampVew.a(this.this$0).size())
       {
-        ((arrn)HorseRaceLampVew.a(this.this$0).get(i)).a();
+        ((asvt)HorseRaceLampVew.a(this.this$0).get(i)).a();
         i += 1;
       }
       i = 0;
       if (i < HorseRaceLampVew.a(this.this$0).size())
       {
-        localObject = ((arrn)HorseRaceLampVew.a(this.this$0).get(i)).a();
+        localObject = ((asvt)HorseRaceLampVew.a(this.this$0).get(i)).a();
         if (localObject == null) {}
         for (;;)
         {
@@ -71,10 +71,10 @@ public class HorseRaceLampVew$1
           j = 0;
           while (j < ((ArrayList)localObject).size())
           {
-            arro localarro = (arro)((ArrayList)localObject).get(j);
-            View localView = HorseRaceLampVew.a(this.this$0).a(this.this$0.getContext(), localarro.a, this.this$0);
-            localView.setTag(localarro);
-            localView.setOnClickListener(new arrl(this));
+            asvu localasvu = (asvu)((ArrayList)localObject).get(j);
+            View localView = HorseRaceLampVew.a(this.this$0).a(this.this$0.getContext(), localasvu.a, this.this$0);
+            localView.setTag(localasvu);
+            localView.setOnClickListener(new asvr(this));
             this.this$0.addView(localView);
             localView.setVisibility(4);
             j += 1;
@@ -87,7 +87,7 @@ public class HorseRaceLampVew$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew.1
  * JD-Core Version:    0.7.0.1
  */

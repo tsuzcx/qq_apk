@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 class amao
-  implements amjf
+  implements DialogInterface.OnClickListener
 {
-  amao(amam paramamam, boolean paramBoolean, int paramInt, int[] paramArrayOfInt) {}
+  amao(aman paramaman) {}
   
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    amam.a(this.jdField_a_of_type_Amam, this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
+    if (this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get() != null) {
+      ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.jdField_b_of_type_JavaLangString, (MqqHandler)this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get(), this.a.a.g + ".mp4", true));
+    }
   }
 }
 

@@ -1,40 +1,24 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
-final class aspj
-  implements View.OnClickListener
+public class aspj
+  implements View.OnTouchListener
 {
-  aspj(Activity paramActivity, String paramString) {}
+  public aspj(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    bcef.b(null, "dc00898", "", "", "0X800AEE0", "0X800AEE0", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_AndroidAppActivity == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      long l = FileUtil.getFileSize(this.jdField_a_of_type_JavaLangString);
-      WXShareHelper localWXShareHelper = WXShareHelper.getInstance();
-      if (l <= 10485760L)
-      {
-        int i = aszt.b(this.jdField_a_of_type_JavaLangString);
-        Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidAppActivity.getResources(), i);
-        localWXShareHelper.shareFileToWx(this.jdField_a_of_type_JavaLangString, localBitmap);
-        bcef.b(null, "dc00898", "", "", "0X800AEE1", "0X800AEE1", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        bcef.b(null, "dc00898", "", "", "0X800AEE2", "0X800AEE2", 0, 0, "", "", "", "");
-        aszg.a(this.jdField_a_of_type_AndroidAppActivity, "", 2131697632, new aspk(this));
-      }
+    int i = paramMotionEvent.getAction();
+    if (i == 0) {
+      ExtendFriendProfileEditFragment.a(this.a).setVisibility(0);
     }
+    while ((i != 1) && (i != 3)) {
+      return false;
+    }
+    ExtendFriendProfileEditFragment.a(this.a).setVisibility(8);
+    return false;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.av;
 
-import lez;
+import lfe;
 
 class VideoController$20
   implements Runnable

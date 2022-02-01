@@ -1,8 +1,8 @@
 package com.tencent.gdtad.api.motivebrowsing;
 
-import abnl;
-import abnm;
-import abnn;
+import acdb;
+import acdc;
+import acdd;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import awhf;
+import axnh;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import kotlin.Metadata;
@@ -32,14 +32,14 @@ import org.jetbrains.annotations.Nullable;
 public final class GdtMotiveBrowsingTitle
   extends RelativeLayout
 {
-  public static final abnl a;
+  public static final acdb a;
   private View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   
   static
   {
-    jdField_a_of_type_Abnl = new abnl(null);
+    jdField_a_of_type_Acdb = new acdb(null);
   }
   
   public GdtMotiveBrowsingTitle(@NotNull Context paramContext)
@@ -83,13 +83,13 @@ public final class GdtMotiveBrowsingTitle
   {
     if (paramInt > 0)
     {
-      abnm localabnm = new abnm(AIOUtils.dp2px(23.0F, getResources()));
+      acdc localacdc = new acdc(AIOUtils.dp2px(23.0F, getResources()));
       String str = String.valueOf(paramInt);
-      SpannableString localSpannableString = new SpannableString((CharSequence)getResources().getString(2131692645, new Object[] { str }));
-      localSpannableString.setSpan(localabnm, 2, str.length() + 2, 17);
+      SpannableString localSpannableString = new SpannableString((CharSequence)getResources().getString(2131692747, new Object[] { str }));
+      localSpannableString.setSpan(localacdc, 2, str.length() + 2, 17);
       return (CharSequence)localSpannableString;
     }
-    return (CharSequence)getResources().getString(2131692647);
+    return (CharSequence)getResources().getString(2131692749);
   }
   
   private final void a()
@@ -101,7 +101,7 @@ public final class GdtMotiveBrowsingTitle
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
     }
-    awhf.a((View)localObject2, a());
+    axnh.a((View)localObject2, a());
     localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("countDownContainer");
@@ -123,8 +123,8 @@ public final class GdtMotiveBrowsingTitle
     }
     ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
     localObject1 = new TextView(getContext());
-    ((TextView)localObject1).setText((CharSequence)getResources().getString(2131692648));
-    ((TextView)localObject1).setId(2131367467);
+    ((TextView)localObject1).setText((CharSequence)getResources().getString(2131692750));
+    ((TextView)localObject1).setId(2131367599);
     ((TextView)localObject1).setTextColor(-16777216);
     ((TextView)localObject1).setTextSize(1, 14.0F);
     localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -151,7 +151,7 @@ public final class GdtMotiveBrowsingTitle
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("tvBrowsing");
     }
-    ((TextView)localObject1).setId(2131367466);
+    ((TextView)localObject1).setId(2131367598);
     localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("tvBrowsing");
@@ -229,7 +229,7 @@ public final class GdtMotiveBrowsingTitle
     if (localView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("imgClose");
     }
-    localView.setOnClickListener((View.OnClickListener)new abnn(paramFunction0));
+    localView.setOnClickListener((View.OnClickListener)new acdd(paramFunction0));
   }
 }
 

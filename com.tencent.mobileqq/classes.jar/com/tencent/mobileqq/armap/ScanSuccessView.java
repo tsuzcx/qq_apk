@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.armap;
 
-import amtj;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -8,6 +7,7 @@ import android.graphics.Paint.FontMetrics;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.View;
+import anvx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.Random;
 
@@ -18,7 +18,7 @@ public class ScanSuccessView
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  String jdField_a_of_type_JavaLangString = amtj.a(2131712632);
+  String jdField_a_of_type_JavaLangString = anvx.a(2131712979);
   boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;

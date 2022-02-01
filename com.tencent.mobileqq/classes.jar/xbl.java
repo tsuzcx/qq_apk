@@ -1,59 +1,17 @@
-import com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
-public class xbl
-  extends vlc
+class xbl
+  implements MessageQueue.IdleHandler
 {
-  public xbl(QQStoryBasicSettingsActivity paramQQStoryBasicSettingsActivity) {}
+  xbl(xbg paramxbg) {}
   
-  public void b(int paramInt)
+  public boolean queueIdle()
   {
-    QQStoryBasicSettingsActivity.a(this.a);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-    case 1001: 
-      this.a.a(0);
-      return;
-    case 2: 
-      this.a.a(1);
-      return;
-    case 3: 
-      this.a.a(2);
-      return;
-    }
-    QQToast.a(this.a, amtj.a(2131709918), 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_Bhhw != null) {
-      this.a.jdField_a_of_type_Bhhw.b();
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_Vla.a(this.a.b(this.a.jdField_a_of_type_Int));
-      this.a.jdField_a_of_type_Vla.b(this.a.b(this.a.jdField_a_of_type_Int));
-      if (this.a.jdField_a_of_type_Int == 2) {
-        xwa.a("browse_friend_settings", "close", 0, 0, new String[] { "", "", "", "" });
-      }
-      do
-      {
-        return;
-        if (this.a.jdField_a_of_type_Int == 0)
-        {
-          xwa.a("browse_friend_settings", "choose_all", 0, 0, new String[] { "", "", "", "" });
-          return;
-        }
-      } while (this.a.jdField_a_of_type_Int != 1);
-      xwa.a("browse_friend_settings", "choose_wifi", 0, 0, new String[] { "", "", "", "" });
-      return;
-    }
-    QQToast.a(this.a, 2131694314, 0).b(this.a.getTitleBarHeight());
-    this.a.a(this.a.b);
-    this.a.jdField_a_of_type_Vkz.d();
+    ykq.b("Q.qqstory.playernew.StoryPlayerImpl", "initSdk");
+    TVK_SDKMgr.initSdk(xbg.a(this.a).a().getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+    return false;
   }
 }
 

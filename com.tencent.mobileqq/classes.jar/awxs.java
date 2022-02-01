@@ -1,29 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.16.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class awxs
-  implements apbf
+  extends vzj
 {
-  public awxs(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public int a;
+  public awxt a;
+  public String a;
+  public boolean a;
+  public Object[] a;
   
-  public void a(String paramString, int paramInt)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDownloadUpdate  url:" + paramString + "   progress:" + paramInt);
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (!this.a.p)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
-    }
-    this.a.runOnUiThread(new NearbyPeopleProfileActivity.16.1(this, paramString, paramBoolean1));
+    return "MiniAppEvent {, isSuccess=" + this.jdField_a_of_type_Boolean + ", type=" + this.jdField_a_of_type_Int + ", src=" + this.jdField_a_of_type_JavaLangString + " }";
   }
 }
 

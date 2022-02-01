@@ -1,34 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class bexb
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public bexb(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public bexb(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool1 = this.a.a.canScrollVertically(-1);
-    boolean bool2 = this.a.a.canScrollVertically(1);
-    if ((paramView.isFocused()) && ((bool1) || (bool2))) {
-      paramView.getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    default: 
-      return false;
-    }
-    paramView.getParent().requestDisallowInterceptTouchEvent(false);
-    return false;
+    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexb
  * JD-Core Version:    0.7.0.1
  */

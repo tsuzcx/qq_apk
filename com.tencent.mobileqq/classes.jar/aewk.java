@@ -1,9 +1,19 @@
-import Wallet.AcsMsg;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public abstract interface aewk
+class aewk
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(List<AcsMsg> paramList);
+  aewk(aewg paramaewg) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.b = true;
+    aewg.b(this.a);
+    this.a.a.setResult(-1);
+    this.a.a.finish();
+  }
 }
 
 

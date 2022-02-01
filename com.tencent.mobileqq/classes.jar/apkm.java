@@ -1,53 +1,20 @@
 public class apkm
 {
-  public static final int a(int paramInt)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  
+  public apkm()
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 16842752: 
-      return 3;
-    case 16908288: 
-      return 1;
-    case 17039360: 
-      return 2;
-    case 16908290: 
-      return 4;
-    case 16908289: 
-      return 5;
-    case 16973824: 
-      return 6;
-    case 17104896: 
-      return 7;
-    case 16908292: 
-      return 8;
-    case 16908291: 
-      return 9;
-    case 17170432: 
-      return 10;
-    }
-    return 11;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public static int b(int paramInt)
+  public String toString()
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 16908288: 
-      return 1;
-    case 17039360: 
-      return 2;
-    case 16908290: 
-      return 3;
-    case 16908289: 
-      return 4;
-    case 16842752: 
-      return 5;
-    }
-    return 6;
+    return "ARCloudReqFileInfo{fileName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileFormat=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", width=" + this.c + ", previewPath='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

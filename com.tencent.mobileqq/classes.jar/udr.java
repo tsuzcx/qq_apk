@@ -1,74 +1,84 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.util.FluencyOptUtils.addUrlStrToCache.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.net.URL;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import android.content.Context;
+import android.text.TextUtils;
+import android.webkit.ValueCallback;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.download_action.AdAppDownloadUtil.getAppDownloadState.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.io.File;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/FluencyOptUtils;", "", "()V", "config", "Lcom/tencent/aladdin/config/AladdinConfig;", "urlStrToObjMap", "", "", "Ljava/net/URL;", "addUrlObjToCache", "", "url", "addUrlStrToCache", "getUrlObjFromCache", "isEnableCardCreateCostReport", "", "isEnableGestureDataReport", "isEnablePreloadProteusView", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_action/download_action/AdAppDownloadUtil;", "", "()V", "TAG", "", "coverStateToAdState", "", "state", "getAppDownloadState", "", "downloadData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "callback", "Landroid/webkit/ValueCallback;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_action/download_action/AdAppDownloadUtil$DownloadStateInfo;", "getDownloadInfo", "Lcom/tencent/open/downloadnew/DownloadInfo;", "getDownloadInfoByPkgName", "packageName", "getDownloadInfoByUrl", "url", "isAppInstalled", "", "pkgName", "isPackageExistByDownloadInfo", "info", "DownloadStateInfo", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class udr
 {
-  private static final AladdinConfig jdField_a_of_type_ComTencentAladdinConfigAladdinConfig;
-  private static final Map<String, URL> jdField_a_of_type_JavaUtilMap;
-  public static final udr a;
+  public static final udr a = new udr();
   
-  static
+  public final int a(int paramInt)
   {
-    jdField_a_of_type_Udr = new udr();
-    jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(330);
-    Intrinsics.checkExpressionValueIsNotNull(localAladdinConfig, "Aladdin.getConfig(QQAlad…ONFIG_FLUENCY_OPT_SWITCH)");
-    jdField_a_of_type_ComTencentAladdinConfigAladdinConfig = localAladdinConfig;
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 2: 
+      return 3;
+    case 3: 
+      return 4;
+    }
+    return 5;
   }
   
   @Nullable
-  public final URL a(@Nullable String paramString)
+  public final DownloadInfo a(@Nullable String paramString)
   {
     if (paramString == null) {
       return null;
     }
-    return (URL)jdField_a_of_type_JavaUtilMap.get(paramString);
+    return bjjq.a().b(paramString);
   }
   
-  public final void a(@Nullable String paramString)
+  @Nullable
+  public final DownloadInfo a(@Nullable ule paramule)
   {
-    if ((paramString != null) && (!jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
-      ThreadManager.executeOnSubThread((Runnable)new FluencyOptUtils.addUrlStrToCache.1(paramString));
+    if (paramule == null) {
+      return null;
+    }
+    String str = paramule.c;
+    paramule = paramule.d;
+    return a(str);
+  }
+  
+  public final void a(@Nullable ule paramule, @NotNull ValueCallback<uds> paramValueCallback)
+  {
+    Intrinsics.checkParameterIsNotNull(paramValueCallback, "callback");
+    ThreadManagerV2.executeOnSubThread((Runnable)new AdAppDownloadUtil.getAppDownloadState.1(paramule, paramValueCallback));
+  }
+  
+  public final boolean a(@Nullable DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo == null) {
+      return false;
+    }
+    paramDownloadInfo = paramDownloadInfo.l;
+    if ((!TextUtils.isEmpty((CharSequence)paramDownloadInfo)) && (new File(paramDownloadInfo).exists())) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
   
-  public final void a(@NotNull URL paramURL)
+  public final boolean a(@Nullable String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramURL, "url");
-    Map localMap = jdField_a_of_type_JavaUtilMap;
-    String str = paramURL.toString();
-    Intrinsics.checkExpressionValueIsNotNull(str, "url.toString()");
-    localMap.put(str, paramURL);
-  }
-  
-  public final boolean a()
-  {
-    return jdField_a_of_type_ComTencentAladdinConfigAladdinConfig.getIntegerFromString("card_create_cost_report_switch", 0) == 1;
-  }
-  
-  public final boolean b()
-  {
-    return jdField_a_of_type_ComTencentAladdinConfigAladdinConfig.getIntegerFromString("asynce_create_view_switch", 0) == 1;
-  }
-  
-  public final boolean c()
-  {
-    return jdField_a_of_type_ComTencentAladdinConfigAladdinConfig.getIntegerFromString("gesture_data_switch", 0) == 1;
+    if (paramString == null) {
+      return false;
+    }
+    return ois.a((Context)BaseApplicationImpl.getContext(), paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     udr
  * JD-Core Version:    0.7.0.1
  */

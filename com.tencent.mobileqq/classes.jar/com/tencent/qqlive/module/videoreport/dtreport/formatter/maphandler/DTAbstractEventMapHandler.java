@@ -1,12 +1,15 @@
 package com.tencent.qqlive.module.videoreport.dtreport.formatter.maphandler;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.qqlive.module.videoreport.utils.BaseUtils;
 import java.util.Map;
 
 abstract class DTAbstractEventMapHandler
   implements IEventMapHandler
 {
+  static final String CUR_PAGE_PREFIX = "pg_";
+  static final String REF_PAGE_PREFIX = "refpg_";
+  
   private Object getAndRemoveInteractiveFlag(Map<?, ?> paramMap)
   {
     if (!isValidMap(paramMap)) {
@@ -15,33 +18,33 @@ abstract class DTAbstractEventMapHandler
     return paramMap.remove("is_interactive_flag");
   }
   
-  private String getContentId(Map<?, ?> paramMap)
+  private String removeContentId(Map paramMap)
   {
     if (!isValidMap(paramMap)) {}
     do
     {
       return null;
-      paramMap = paramMap.get("pg_contentid");
+      paramMap = getOrRemove(paramMap, "pg_contentid");
     } while (paramMap == null);
     return paramMap.toString();
   }
   
-  private String getPageId(Map<?, ?> paramMap)
+  private String removePageId(Map<?, ?> paramMap)
   {
     if (!isValidMap(paramMap)) {}
     do
     {
       return null;
-      paramMap = paramMap.get("pgid");
+      paramMap = getOrRemove(paramMap, "pgid");
     } while (paramMap == null);
     return paramMap.toString();
   }
   
-  private String getPageStp(Map<?, ?> paramMap)
+  private String removePageStp(Map<?, ?> paramMap)
   {
     if ((isValidMap(paramMap)) && (paramMap.containsKey("pg_stp")))
     {
-      paramMap = paramMap.get("pg_stp");
+      paramMap = getOrRemove(paramMap, "pg_stp");
       if (paramMap != null) {}
     }
     else
@@ -51,7 +54,7 @@ abstract class DTAbstractEventMapHandler
     return paramMap.toString();
   }
   
-  private String getRefPageId(Map<?, ?> paramMap)
+  private String removeRefPageParams(Map<?, ?> paramMap, String paramString)
   {
     if ((isValidMap(paramMap)) && (paramMap.containsKey("ref_pg")))
     {
@@ -59,9 +62,9 @@ abstract class DTAbstractEventMapHandler
       if (isValidMap(paramMap))
       {
         paramMap = (Map)paramMap;
-        if (paramMap.containsKey("pgid"))
+        if (paramMap.containsKey(paramString))
         {
-          paramMap = paramMap.get("pgid");
+          paramMap = getOrRemove(paramMap, paramString);
           if (paramMap == null) {
             return null;
           }
@@ -81,20 +84,21 @@ abstract class DTAbstractEventMapHandler
       {
         return;
       } while (!paramMap2.containsKey("lvtm"));
-      paramMap2 = paramMap2.get("lvtm");
+      paramMap2 = getOrRemove(paramMap2, "lvtm");
     } while (paramMap2 == null);
-    paramMap1.put("dt_lvtm", paramMap2.toString());
+    paramMap1.put("dt_lvtm", paramMap2);
   }
   
   void formatPage(Map<String, Object> paramMap, Map paramMap1)
   {
-    if ((isValidMap(paramMap1)) && (paramMap != null))
+    if ((isValidMap(paramMap1)) && (isValidMap(paramMap)))
     {
-      String str1 = getPageId(paramMap1);
-      String str2 = getContentId(paramMap1);
-      String str3 = getRefPageId(paramMap1);
-      String str4 = getPageStp(paramMap1);
       Object localObject = getAndRemoveInteractiveFlag(paramMap1);
+      String str1 = removePageId(paramMap1);
+      String str2 = removeContentId(paramMap1);
+      String str3 = removeRefPageParams(paramMap1, "pgid");
+      String str4 = removeRefPageParams(paramMap1, "pg_contentid");
+      String str5 = removePageStp(paramMap1);
       if (!TextUtils.isEmpty(str1)) {
         paramMap.put("dt_pgid", str1);
       }
@@ -105,7 +109,10 @@ abstract class DTAbstractEventMapHandler
         paramMap.put("dt_ref_pgid", str3);
       }
       if (!TextUtils.isEmpty(str4)) {
-        paramMap.put("dt_pgstp", str4);
+        paramMap.put("dt_refpg_contentid", str4);
+      }
+      if (!TextUtils.isEmpty(str5)) {
+        paramMap.put("dt_pgstp", str5);
       }
       if (localObject != null) {
         paramMap1.put("dt_is_interactive_flag", localObject);
@@ -129,9 +136,21 @@ abstract class DTAbstractEventMapHandler
     paramMap.put("dt_coldstart", paramMap.remove("coldstart"));
   }
   
+  Object getOrRemove(@NonNull Map<?, ?> paramMap, String paramString)
+  {
+    return paramMap.get(paramString);
+  }
+  
   boolean isValidMap(Object paramObject)
   {
-    return ((paramObject instanceof Map)) && (!BaseUtils.isEmpty((Map)paramObject));
+    return paramObject instanceof Map;
+  }
+  
+  void transferIfExist(Map<String, Object> paramMap1, Map<String, Object> paramMap2, String paramString)
+  {
+    if (paramMap2.containsKey(paramString)) {
+      paramMap1.put(paramString, getOrRemove(paramMap2, paramString));
+    }
   }
 }
 

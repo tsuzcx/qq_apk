@@ -1,8 +1,29 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
-public abstract interface aezt
+public class aezt
+  implements View.OnFocusChangeListener
 {
-  public abstract void a(MessageRecord paramMessageRecord);
+  public aezt(SubLoginActivity paramSubLoginActivity) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
+  {
+    if (true == paramBoolean)
+    {
+      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
+        SubLoginActivity.a(this.a).setVisibility(0);
+      }
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    }
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+      return;
+    }
+    SubLoginActivity.a(this.a).setVisibility(8);
+  }
 }
 
 

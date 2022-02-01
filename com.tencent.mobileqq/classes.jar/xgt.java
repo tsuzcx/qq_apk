@@ -1,22 +1,43 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-public class xgt
+public abstract class xgt
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public boolean a;
-  public boolean b;
+  public abstract Activity a();
   
-  public xgt(boolean paramBoolean1, List<CommentEntry> paramList, int paramInt, boolean paramBoolean2, String paramString)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract OpenPlayerBuilder.Data a();
+  
+  public abstract XViewPager a();
+  
+  public abstract String a(String paramString);
+  
+  public abstract xcy a();
+  
+  public abstract xdb a();
+  
+  public abstract xgl a();
+  
+  public abstract xhe a();
+  
+  public abstract void a();
+  
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(vzx paramvzx);
+  
+  public abstract void a(xfj paramxfj);
+  
+  public abstract void a(xhm paramxhm);
+  
+  public abstract boolean a();
+  
+  public abstract void b(vzx paramvzx);
+  
+  public abstract void b(xfj paramxfj);
+  
+  public abstract boolean b();
 }
 
 

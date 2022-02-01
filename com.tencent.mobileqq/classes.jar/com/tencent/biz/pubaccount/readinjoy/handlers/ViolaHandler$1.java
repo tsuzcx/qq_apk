@@ -3,24 +3,25 @@ package com.tencent.biz.pubaccount.readinjoy.handlers;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.viola.core.ViolaSDKManager;
-import pay;
-import psl;
+import pqw;
+import psv;
+import qdi;
 
 public class ViolaHandler$1
   implements Runnable
 {
-  public ViolaHandler$1(psl parampsl, BaseArticleInfo paramBaseArticleInfo) {}
+  public ViolaHandler$1(qdi paramqdi, BaseArticleInfo paramBaseArticleInfo) {}
   
   public void run()
   {
-    Object localObject2 = pay.a(this.a);
+    Object localObject2 = pqw.a(this.a);
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = pay.b(this.a);
+      localObject1 = psv.a(this.a);
     }
     localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = pay.c(this.a);
+      localObject2 = psv.b(this.a);
     }
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       ViolaSDKManager.getInstance().postOnUiThread(new ViolaHandler.1.1(this, (String)localObject2));

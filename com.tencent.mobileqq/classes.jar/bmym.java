@@ -1,13 +1,18 @@
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bmym
-  extends bmtc
+class bmym
+  implements View.OnClickListener
 {
-  public bmym(MusicProviderView paramMusicProviderView) {}
+  bmym(bmyl parambmyl) {}
   
-  public void b()
+  public void onClick(View paramView)
   {
-    this.a.a(false);
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

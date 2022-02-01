@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
 
-class avxb
-  implements DialogInterface.OnClickListener
+public abstract interface avxb
 {
-  avxb(avwv paramavwv) {}
+  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
+  
+  public abstract void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
 }
 
 

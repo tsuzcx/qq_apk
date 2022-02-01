@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import ahwg;
+import airf;
 import android.os.Handler;
-import bfvk;
+import bhec;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +11,7 @@ public class SearchHistoryAdapter$1
 {
   public void run()
   {
-    String[] arrayOfString = bfvk.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    String[] arrayOfString = bhec.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     if (QLog.isColorLevel()) {
       QLog.i("chatHistory.searchHistory", 2, "loadHistory, histories = " + arrayOfString);
     }

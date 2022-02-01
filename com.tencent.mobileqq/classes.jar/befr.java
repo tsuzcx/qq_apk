@@ -1,21 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.mobileqq.troop.filemanager.data.TroopMemberListRefresher.1.1;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class befr
-  extends andd
+class befr
+  implements DialogInterface.OnDismissListener
 {
-  befr(befq parambefq) {}
+  befr(befp parambefp) {}
   
-  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {}
-    while ((!paramBoolean) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {
-      return;
+    if (befp.a(this.a) != null) {
+      befp.a(this.a).a();
     }
-    ThreadManager.post(new TroopMemberListRefresher.1.1(this), 5, null, true);
   }
 }
 

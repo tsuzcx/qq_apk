@@ -1,51 +1,102 @@
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.armap.sensor.rotation.Matrix4;
 
-public class aqee
+public final class aqee
 {
-  private Map<String, aqef> a = new HashMap();
+  private static aqee a;
+  private static aqee b;
+  private static aqee c;
+  public float a;
+  public float b;
+  public float c;
+  public float d;
   
-  public static aqee a(aptx[] paramArrayOfaptx)
+  static
   {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0)) {
-      return null;
-    }
-    localaqee = new aqee();
-    try
+    jdField_a_of_type_Aqee = new aqee();
+    jdField_b_of_type_Aqee = new aqee();
+    jdField_c_of_type_Aqee = new aqee();
+  }
+  
+  public aqee a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.d = paramFloat4;
+    return this;
+  }
+  
+  public aqee a(Matrix4 paramMatrix4)
+  {
+    paramMatrix4 = paramMatrix4.val;
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = paramMatrix4[0];
+    float f3 = this.jdField_b_of_type_Float;
+    float f4 = paramMatrix4[4];
+    float f5 = this.jdField_c_of_type_Float;
+    float f6 = paramMatrix4[8];
+    float f7 = this.d;
+    float f8 = paramMatrix4[12];
+    float f9 = this.jdField_a_of_type_Float;
+    float f10 = paramMatrix4[1];
+    float f11 = this.jdField_b_of_type_Float;
+    float f12 = paramMatrix4[5];
+    float f13 = this.jdField_c_of_type_Float;
+    float f14 = paramMatrix4[9];
+    float f15 = this.d;
+    float f16 = paramMatrix4[13];
+    float f17 = this.jdField_a_of_type_Float;
+    float f18 = paramMatrix4[2];
+    float f19 = this.jdField_b_of_type_Float;
+    float f20 = paramMatrix4[6];
+    float f21 = this.jdField_c_of_type_Float;
+    float f22 = paramMatrix4[10];
+    float f23 = this.d;
+    float f24 = paramMatrix4[14];
+    float f25 = this.jdField_a_of_type_Float;
+    float f26 = paramMatrix4[3];
+    float f27 = this.jdField_b_of_type_Float;
+    float f28 = paramMatrix4[7];
+    float f29 = this.jdField_c_of_type_Float;
+    float f30 = paramMatrix4[11];
+    float f31 = this.d;
+    return a(f1 * f2 + f3 * f4 + f5 * f6 + f7 * f8, f9 * f10 + f11 * f12 + f13 * f14 + f15 * f16, f17 * f18 + f19 * f20 + f21 * f22 + f23 * f24, paramMatrix4[15] * f31 + (f25 * f26 + f27 * f28 + f29 * f30));
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      paramArrayOfaptx = new JSONObject(paramArrayOfaptx[0].a);
-      Iterator localIterator = paramArrayOfaptx.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        JSONObject localJSONObject = paramArrayOfaptx.getJSONObject(str);
-        localaqee.a.put(str, aqef.a(localJSONObject));
+      return true;
+      if (paramObject == null) {
+        return false;
       }
-      return localaqee;
-    }
-    catch (JSONException paramArrayOfaptx) {}
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (aqee)paramObject;
+      if (Float.floatToIntBits(this.jdField_a_of_type_Float) != Float.floatToIntBits(paramObject.jdField_a_of_type_Float)) {
+        return false;
+      }
+      if (Float.floatToIntBits(this.jdField_b_of_type_Float) != Float.floatToIntBits(paramObject.jdField_b_of_type_Float)) {
+        return false;
+      }
+      if (Float.floatToIntBits(this.jdField_c_of_type_Float) != Float.floatToIntBits(paramObject.jdField_c_of_type_Float)) {
+        return false;
+      }
+    } while (Float.floatToIntBits(this.d) == Float.floatToIntBits(paramObject.d));
+    return false;
   }
   
-  public static aqef a(String paramString)
+  public int hashCode()
   {
-    if ((!TextUtils.isEmpty(paramString)) && (aqeb.a() != null)) {
-      return (aqef)aqeb.a().a().get(paramString);
-    }
-    return null;
-  }
-  
-  public Map<String, aqef> a()
-  {
-    return this.a;
+    return (((Float.floatToIntBits(this.jdField_a_of_type_Float) + 31) * 31 + Float.floatToIntBits(this.jdField_b_of_type_Float)) * 31 + Float.floatToIntBits(this.jdField_c_of_type_Float)) * 31 + Float.floatToIntBits(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqee
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.register;
 
-import amtj;
 import android.content.Intent;
-import azvp;
-import bcef;
+import anvx;
+import bbbv;
+import bdla;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
 public class QueryAccount$1
   implements Runnable
 {
-  public QueryAccount$1(azvp paramazvp, String paramString) {}
+  public QueryAccount$1(bbbv parambbbv, String paramString) {}
   
   public void run()
   {
@@ -27,9 +27,9 @@ public class QueryAccount$1
       }
     }
     localObject2 = new Intent(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("selfSet_leftViewText", amtj.a(2131710335));
+    ((Intent)localObject2).putExtra("selfSet_leftViewText", anvx.a(2131710682));
     this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
-    bcef.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800665B", "0X800665B", 0, 0, "", "", "", "");
+    bdla.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800665B", "0X800665B", 0, 0, "", "", "", "");
   }
 }
 

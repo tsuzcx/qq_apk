@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket;
 
 import Wallet.GetGroupRedPackListRsp;
-import akgj;
+import alcc;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceOutputStream;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -19,7 +19,7 @@ class RedPacketManager$8
     }
     try
     {
-      String str = akgj.f + this.jdField_a_of_type_JavaLangString + this.b + "_" + this.jdField_a_of_type_Int;
+      String str = alcc.f + this.jdField_a_of_type_JavaLangString + this.b + "_" + this.jdField_a_of_type_Int;
       Object localObject = new File(str);
       if (((File)localObject).exists()) {
         ((File)localObject).delete();

@@ -1,18 +1,17 @@
-import android.support.annotation.NonNull;
+import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
+import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import com.tencent.ttpic.util.Coffee;
+import com.tencent.ttpic.util.DecryptListener;
 
-class bmwe
-  implements bmvq
+final class bmwe
+  implements DecryptListener
 {
-  bmwe(bmwc parambmwc) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public byte[] decrypt(byte[] paramArrayOfByte)
   {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = bfby.b(paramString);
+    if (!FeatureManager.Features.PTU_TOOLS.isFunctionReady()) {
+      return paramArrayOfByte;
     }
-    return str;
+    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
   }
 }
 

@@ -3,8 +3,9 @@ package com.tencent.hippy.qq.module;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.hippy.qq.fragment.BaseHippyFragment;
 import com.tencent.hippy.qq.fragment.BaseHippyFragment.HippyActivityLifecycleListener;
+import com.tencent.hippy.qq.fragment.HippyActivityLifecycleDispatcher;
+import com.tencent.hippy.qq.fragment.HippyActivityLifecycleOwner;
 import com.tencent.mtt.hippy.HippyEngineContext;
 
 public class QQBaseLifecycleModule
@@ -14,16 +15,24 @@ public class QQBaseLifecycleModule
   public QQBaseLifecycleModule(HippyEngineContext paramHippyEngineContext)
   {
     super(paramHippyEngineContext);
-    if ((getFragment() instanceof BaseHippyFragment)) {
-      ((BaseHippyFragment)getFragment()).addActivityLifecycleListener(this);
+    if ((getFragment() instanceof HippyActivityLifecycleOwner))
+    {
+      paramHippyEngineContext = ((HippyActivityLifecycleOwner)getFragment()).getDispatcher();
+      if (paramHippyEngineContext != null) {
+        paramHippyEngineContext.addActivityLifecycleListener(this);
+      }
     }
   }
   
   public void destroy()
   {
     super.destroy();
-    if ((getFragment() instanceof BaseHippyFragment)) {
-      ((BaseHippyFragment)getFragment()).removeActivityLifecycleListener(this);
+    if ((getFragment() instanceof HippyActivityLifecycleOwner))
+    {
+      HippyActivityLifecycleDispatcher localHippyActivityLifecycleDispatcher = ((HippyActivityLifecycleOwner)getFragment()).getDispatcher();
+      if (localHippyActivityLifecycleDispatcher != null) {
+        localHippyActivityLifecycleDispatcher.removeActivityLifecycleListener(this);
+      }
     }
   }
   

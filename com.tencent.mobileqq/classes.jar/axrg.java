@@ -1,30 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
-public class axrg
-  implements View.OnClickListener
+class axrg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public axrg(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
+  axrg(axre paramaxre, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramView.getId())
+    if (this.jdField_a_of_type_Axre.b)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = i;
+      this.jdField_a_of_type_Axre.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Axre.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
       return;
-      this.a.b();
-      continue;
-      this.a.c();
-      continue;
-      this.a.d();
-      continue;
-      this.a.doOnBackPressed();
     }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 

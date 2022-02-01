@@ -1,61 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import java.util.List;
 
-public class ryv
-  implements rwf
+public abstract interface ryv
 {
-  private ryv(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
-  
-  public void a()
-  {
-    this.a.c(true);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    boolean bool2 = true;
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsRecommendFragment.a(this.a).a.e(paramBoolean);
-    }
-    Object localObject;
-    if (paramBoolean)
-    {
-      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
-      if (!VideoFeedsRecommendFragment.b(this.a))
-      {
-        localObject = VideoFeedsRecommendFragment.a(this.a);
-        if (paramBoolean) {
-          break label174;
-        }
-        bool1 = true;
-        label75:
-        ((VideoFeedsRecyclerView)localObject).setScrollable(bool1);
-        if ((!paramBoolean) && (VideoFeedsRecommendFragment.c(this.a)))
-        {
-          VideoFeedsRecommendFragment.a(this.a).a();
-          VideoFeedsRecommendFragment.a(this.a, false);
-        }
-      }
-      localObject = this.a;
-      if (paramBoolean) {
-        break label179;
-      }
-    }
-    label174:
-    label179:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ((VideoFeedsRecommendFragment)localObject).b(bool1);
-      if (VideoFeedsRecommendFragment.a(this.a) != null) {
-        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
-      }
-      return;
-      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
-      break;
-      bool1 = false;
-      break label75;
-    }
-  }
+  public abstract void a(List<String> paramList);
 }
 
 

@@ -1,80 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.RoundRectUrlImageView;
+import com.tencent.mobileqq.together.ui.RoundRectView;
 
 public class benf
-  implements beol
 {
-  public benf(XMediaEditor paramXMediaEditor) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    paramInt1 = paramInt2 - paramInt1;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(XMediaEditor.a(this.a), XMediaEditor.a(this.a) + paramInt1);
-    }
-    XMediaEditor.a(this.a, paramInt1 + XMediaEditor.a(this.a));
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = ((beon)paramViewHolder).jdField_a_of_type_Beno;
-    this.a.a(paramViewHolder.c);
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
-  {
-    if (XMediaEditor.a(this.a) != this.a.a.a())
-    {
-      paramViewHolder = this.a;
-      if (XMediaEditor.a(this.a)) {
-        break label73;
-      }
-    }
-    label73:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      XMediaEditor.a(paramViewHolder, paramBoolean);
-      if (XMediaEditor.a(this.a) != null) {
-        XMediaEditor.a(this.a).a(XMediaEditor.a(this.a));
-      }
-      return;
-    }
-  }
-  
-  public void b(RecyclerView.ViewHolder paramViewHolder)
-  {
-    int i = ((beon)paramViewHolder).jdField_a_of_type_Beno.c;
-    if (i == 0) {}
-    do
-    {
-      return;
-      paramViewHolder = this.a.a.a(i - 1);
-    } while ((paramViewHolder != null) && (paramViewHolder.b() == -1));
-    this.a.a(i - 1);
-  }
-  
-  public void c(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bepc)paramViewHolder;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a = false;
-    }
-    XMediaEditor.a(this.a, (benx)paramViewHolder.jdField_a_of_type_Beno);
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, true);
-    }
-  }
-  
-  public void d(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bepc)paramViewHolder;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, false);
-    }
-  }
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  bemr jdField_a_of_type_Bemr;
+  RoundRectUrlImageView jdField_a_of_type_ComTencentMobileqqActivityAioItemRoundRectUrlImageView = null;
+  RoundRectView jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView = null;
+  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout = null;
+  TextView jdField_b_of_type_AndroidWidgetTextView = null;
 }
 
 

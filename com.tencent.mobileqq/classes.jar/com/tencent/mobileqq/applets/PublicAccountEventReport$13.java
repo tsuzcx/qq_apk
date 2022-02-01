@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.applets;
 
-import blbw;
-import blbx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import cooperation.vip.tianshu.TianShuManager;
+import cooperation.vip.tianshu.TianShuReportData;
 import mqq.app.AppRuntime;
 
 public final class PublicAccountEventReport$13
@@ -13,26 +13,26 @@ public final class PublicAccountEventReport$13
   
   public void run()
   {
-    blbx localblbx = new blbx();
+    TianShuReportData localTianShuReportData = new TianShuReportData();
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     String str = "";
     if (localAppRuntime != null) {
       str = localAppRuntime.getAccount();
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localblbx.jdField_e_of_type_JavaLangString = "vab_push";
-    localblbx.jdField_f_of_type_JavaLangString = "vab_push";
-    localblbx.jdField_b_of_type_JavaLangString = (str + "_" + l);
-    localblbx.jdField_a_of_type_Int = 1;
-    localblbx.g = this.jdField_a_of_type_JavaLangString;
-    localblbx.h = "";
-    localblbx.jdField_a_of_type_Long = l;
-    localblbx.d = this.jdField_a_of_type_Int;
-    localblbx.k = Integer.toString(this.jdField_b_of_type_Int);
-    localblbx.jdField_e_of_type_Int = 1;
-    localblbx.jdField_f_of_type_Int = this.c;
-    localblbx.l = this.jdField_b_of_type_JavaLangString;
-    blbw.a().a(localblbx);
+    localTianShuReportData.mAppId = "vab_push";
+    localTianShuReportData.mPageId = "vab_push";
+    localTianShuReportData.mTraceId = (str + "_" + l);
+    localTianShuReportData.mTraceNum = 1;
+    localTianShuReportData.mItemId = this.jdField_a_of_type_JavaLangString;
+    localTianShuReportData.mSubItemId = "";
+    localTianShuReportData.mOperTime = l;
+    localTianShuReportData.mActionId = this.jdField_a_of_type_Int;
+    localTianShuReportData.mPositionId = Integer.toString(this.jdField_b_of_type_Int);
+    localTianShuReportData.mActionValue = 1;
+    localTianShuReportData.mActionAttr = this.c;
+    localTianShuReportData.mTriggerInfo = this.jdField_b_of_type_JavaLangString;
+    TianShuManager.getInstance().report(localTianShuReportData);
   }
 }
 

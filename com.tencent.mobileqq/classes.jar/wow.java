@@ -1,57 +1,29 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
-public class wow
-  extends woi
+class wow
+  implements View.OnLayoutChangeListener
 {
-  private ShareFromMemoryPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo;
-  private String jdField_a_of_type_JavaLangString = "";
-  private wod jdField_a_of_type_Wod;
+  wow(woo paramwoo, wjl paramwjl) {}
   
-  public wow(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo = paramShareFromMemoryPlayInfo;
-    this.jdField_a_of_type_Wod = new wod(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
-  }
-  
-  public List<wok> a(List<wod> paramList)
-  {
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(new wox(this, (wod)paramList.next()));
-    }
-    return localArrayList;
-  }
-  
-  public wog a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.videoListOrder == 0)
+    ykq.b(woo.b(), "onLayoutChange");
+    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && ((this.jdField_a_of_type_Woo.d) || (this.jdField_a_of_type_Woo.e)) && (!this.jdField_a_of_type_Woo.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.mForStory))
     {
-      localObject = ((xnv)vux.a(12)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId, 1);
-      if ((localObject == null) || (((FeedVideoInfo)localObject).mVideoItemList.size() <= 0)) {}
-    }
-    for (Object localObject = ((StoryVideoItem)((FeedVideoInfo)localObject).mVideoItemList.get(0)).mVid;; localObject = null)
-    {
-      xvv.d("Q.qqstory.player.data.ShareFromMemoryPlayPageLoader", "getStartInfo GroupId=" + this.jdField_a_of_type_Wod + ",vid=" + (String)localObject + ",feedId=" + this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
-      return new wog(this.jdField_a_of_type_Wod, (String)localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
+      ykq.b(woo.b(), "first show node, showStoryNode");
+      if (this.jdField_a_of_type_Woo.d)
+      {
+        this.jdField_a_of_type_Woo.d = false;
+        this.jdField_a_of_type_Wjl.b("first_show_node", Boolean.valueOf(false));
+      }
+      this.jdField_a_of_type_Woo.e = false;
+      if (this.jdField_a_of_type_Woo.a()) {
+        this.jdField_a_of_type_Woo.jdField_a_of_type_Woa.a("exp_story", 4);
+      }
     }
   }
-  
-  public void a() {}
-  
-  public void a(int paramInt, woj paramwoj)
-  {
-    paramwoj.a(new ErrorMessage(), Collections.singletonList(this.jdField_a_of_type_Wod), true);
-  }
-  
-  public void b() {}
 }
 
 

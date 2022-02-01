@@ -1,33 +1,17 @@
-import android.os.MessageQueue.IdleHandler;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.4.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class akrr
-  implements MessageQueue.IdleHandler
+  implements akxc
 {
-  public akrr(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public akrr(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
   
-  public boolean queueIdle()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (bbub.d(bbub.b)) {
-      this.a.b(true);
-    }
-    for (;;)
-    {
-      if ((this.a.f) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      this.a.c.setEnabled(false);
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-      }
-      return false;
-      this.a.f();
-    }
+    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.4.1(this, paramInt, paramPathResult));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import abet;
-import alvx;
+import abuf;
+import amwn;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +17,7 @@ class QQGameFeedWebFragment$13
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(24), "1");
     localHashMap.put(Integer.valueOf(4), "20");
-    abet.a(alvx.a(), "769", "205036", "", "76901", "1", "160", localHashMap);
+    abuf.a(amwn.a(), "769", "205036", "", "76901", "1", "160", localHashMap);
   }
 }
 

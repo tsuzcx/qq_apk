@@ -19,6 +19,7 @@ public final class SSOReserveField$ReserveFields
   public final PBStringField extra = PBField.initString("");
   public final PBUInt32Field flag = PBField.initUInt32(0);
   public final PBUInt32Field locale_id = PBField.initUInt32(0);
+  public final PBBytesField qimei = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt64Field sdk_recv = PBField.initUInt64(0L);
   public final PBUInt64Field sdk_send = PBField.initUInt64(0L);
   public final PBUInt64Field sso_recv = PBField.initUInt64(0L);
@@ -27,8 +28,9 @@ public final class SSOReserveField$ReserveFields
   
   static
   {
-    ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 66, 72, 80, 88 }, new String[] { "type", "extra", "app_recv", "sdk_send", "sdk_recv", "sso_send", "sso_recv", "client_ipcookie", "flag", "env_id", "locale_id" }, new Object[] { Integer.valueOf(0), "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ReserveFields.class);
+    ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 66, 72, 80, 88, 98 }, new String[] { "type", "extra", "app_recv", "sdk_send", "sdk_recv", "sso_send", "sso_recv", "client_ipcookie", "flag", "env_id", "locale_id", "qimei" }, new Object[] { Integer.valueOf(0), "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, ReserveFields.class);
   }
 }
 

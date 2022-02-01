@@ -1,34 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
-public class mic
-  implements mht
+class mic
+  implements DialogInterface.OnClickListener
 {
-  public mic(QavPanel paramQavPanel) {}
+  mic(mhw parammhw) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = this.a.a(paramInt);
-    if ((paramView instanceof QavBeautyMenuPanel)) {
-      ((QavBeautyMenuPanel)paramView).f();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    long l = AudioHelper.b();
-    this.a.a(l, paramInt, true);
-  }
-  
-  public void a(View paramView1, View paramView2)
-  {
-    if (this.a.a != null) {
-      this.a.a.onClick(paramView2);
+    mhw.a(this.a, false);
+    if (paramInt == 1)
+    {
+      bdla.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      this.a.c();
+      if (!mvk.a(mhw.a(this.a))) {
+        mhw.a(this.a).a(mhw.a(this.a));
+      }
     }
+    while (paramInt != 0)
+    {
+      return;
+      mhw.a(this.a).b(mhw.a(this.a));
+      return;
+    }
+    mhw.a(this.a, mhw.a(this.a).a().w);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mic
  * JD-Core Version:    0.7.0.1
  */

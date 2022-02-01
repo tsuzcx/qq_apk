@@ -1,31 +1,16 @@
-public abstract class aogt
-  extends aohh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+
+public class aogt
+  implements DialogInterface.OnClickListener
 {
-  private int a = 1;
-  private int b = 1;
+  public aogt(VideoBroadcastReceiver paramVideoBroadcastReceiver) {}
   
-  public aogt(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this(paramInt1, paramInt2, 5);
+    paramDialogInterface.dismiss();
   }
-  
-  public aogt(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static boolean a(aogt paramaogt)
-  {
-    return (paramaogt != null) && (paramaogt.a());
-  }
-  
-  public int a()
-  {
-    return this.b;
-  }
-  
-  public abstract boolean a();
 }
 
 

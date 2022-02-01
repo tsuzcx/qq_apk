@@ -1,105 +1,35 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.report.JumpMode;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class uef
-  extends TransProcessorHandler
+  implements DialogInterface.OnClickListener
 {
-  uef(uee paramuee) {}
+  uef(ued paramued, boolean paramBoolean) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || ((localFileMsg.fileType != 24) && (localFileMsg.fileType != 32))) {}
-    do
+    if (paramInt != 1) {
+      ueb.a(JumpMode.UNKNOWN, this.jdField_a_of_type_Ued.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 10, ued.a(this.jdField_a_of_type_Ued));
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!this.jdField_a_of_type_Ued.a()) {}
+    }
+    while (!(this.jdField_a_of_type_Ued.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                  } while ((localFileMsg.fileType == 24) && (localFileMsg.commandId != 10));
-                  switch (paramMessage.what)
-                  {
-                  case 1002: 
-                  case 1004: 
-                  default: 
-                    return;
-                  case 1001: 
-                    paramMessage = (Bundle)this.a.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(localFileMsg.uniseq));
-                  }
-                } while ((paramMessage == null) || (paramMessage.getInt("is_showProgress_tips") != 1));
-                this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(23, paramMessage);
-              } while (!QLog.isColorLevel());
-              QLog.d("PAH5Manager", 2, "start" + localFileMsg.uniseq);
-              return;
-              paramMessage = (Bundle)this.a.b.remove(Long.valueOf(localFileMsg.uniseq));
-              this.a.a(localFileMsg.uniseq);
-              this.a.b(localFileMsg.uniseq);
-            } while (paramMessage == null);
-            if (localFileMsg.fileType == 32)
-            {
-              new ufa();
-              paramMessage.putLong("uniseq", localFileMsg.uniseq);
-              paramMessage.putString("pic_server_id", ufa.a());
-            }
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("PAH5Manager", 2, "finished" + localFileMsg.uniseq);
-              }
-              this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(24, paramMessage);
-              return;
-              paramMessage.putLong("uniseq", localFileMsg.uniseq);
-              paramMessage.putString("pic_server_id", localFileMsg.fileUrl);
-            }
-            paramMessage = (Bundle)this.a.b.remove(Long.valueOf(localFileMsg.uniseq));
-            this.a.a(localFileMsg.uniseq);
-            this.a.b(localFileMsg.uniseq);
-          } while (paramMessage == null);
-          if (QLog.isColorLevel()) {
-            QLog.d("PAH5Manager", 2, "error" + localFileMsg.uniseq);
-          }
-          paramMessage.putLong("uniseq", localFileMsg.uniseq);
-          paramMessage.putString("pic_server_id", "-1");
-          this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(24, paramMessage);
-          return;
-          paramMessage = (Bundle)this.a.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(localFileMsg.uniseq));
-        } while ((paramMessage == null) || (paramMessage.getInt("is_showProgress_tips") != 1));
-        this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(25, paramMessage);
-        return;
-        this.a.b(localFileMsg.uniseq);
-        paramMessage = (Bundle)this.a.b.remove(Long.valueOf(localFileMsg.uniseq));
-      } while (paramMessage == null);
-      if (localFileMsg.fileType == 32) {
-        paramMessage.putString("pic_local_id", new ufa().a(null));
-      }
-      this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(26, paramMessage);
       return;
-      this.a.b(localFileMsg.uniseq);
-      paramMessage = (Bundle)this.a.b.remove(Long.valueOf(localFileMsg.uniseq));
-    } while (paramMessage == null);
-    paramMessage.putString("pic_local_id", "-1");
-    this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(26, paramMessage);
+      ued.a(this.jdField_a_of_type_Ued).set(true);
+      this.jdField_a_of_type_Ued.b();
+      return;
+    }
+    udy.a(this.jdField_a_of_type_Ued.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, (Activity)this.jdField_a_of_type_Ued.jdField_a_of_type_AndroidContentContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uef
  * JD-Core Version:    0.7.0.1
  */

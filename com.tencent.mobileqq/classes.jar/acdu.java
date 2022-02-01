@@ -1,28 +1,6 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
-
-public class acdu
-  extends acew
+public abstract interface acdu
 {
-  public int a()
-  {
-    return 1000;
-  }
-  
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bdyi parambdyi, bblm parambblm, bbkm parambbkm)
-  {
-    new bblb().d(paramList, paramList1, paramStringBuilder, paramMsg, parambdyi);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (20 == paramElem.common_elem.uint32_service_type.get());
-  }
+  public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

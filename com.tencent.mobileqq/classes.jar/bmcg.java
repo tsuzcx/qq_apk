@@ -1,50 +1,33 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.widget.QfavJumpActivity;
+import java.io.InputStream;
 
 public class bmcg
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public bmcg(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  public bmcg(QfavJumpActivity paramQfavJumpActivity, String paramString, InputStream paramInputStream, long paramLong) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bmbx.b("CameraCaptureLayout", "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    bmbx.b("CameraCaptureLayout", "scaleAnimator end, shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", mActionUpAnimator:" + this.a.b.get());
-    if (!this.a.b.get())
+    try
     {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      this.a.f();
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
-      this.a.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCountTimeLayout.setVisibility(0);
+      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
       return;
-      this.a.g();
-      this.a.a(1.0F);
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    bmbx.b("CameraCaptureLayout", "scaleAnimator start!");
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+    catch (Exception paramDialogInterface)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("qqfav|QfavJumpActivity", 2, "copy file error", paramDialogInterface);
+      }
+      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bmcg
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
 import android.content.res.Resources;
-import bkwm;
+import bmhv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.RecentUser;
-import pay;
+import pkh;
 
 @Deprecated
 public class RecentItemKandianMergeData
@@ -21,10 +21,10 @@ public class RecentItemKandianMergeData
   public RecentItemKandianMergeData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    if (bkwm.C(BaseApplicationImpl.getApplication().getRuntime()) == 1) {}
+    if (bmhv.C(BaseApplicationImpl.getApplication().getRuntime()) == 1) {}
     for (this.mUnreadFlag = 1;; this.mUnreadFlag = 2)
     {
-      this.mExtraInfoColor = BaseApplicationImpl.getApplication().getResources().getColor(2131167124);
+      this.mExtraInfoColor = BaseApplicationImpl.getApplication().getResources().getColor(2131167138);
       return;
     }
   }
@@ -39,7 +39,7 @@ public class RecentItemKandianMergeData
   
   public long getFaceExtraFlag()
   {
-    Object localObject = (QQAppInterface)pay.a();
+    Object localObject = (QQAppInterface)pkh.a();
     if (localObject == null) {
       return super.getFaceExtraFlag();
     }
@@ -57,7 +57,7 @@ public class RecentItemKandianMergeData
           ((MessageForStructing)localObject).parse();
         }
       }
-      pay.e = pay.a();
+      prp.b = pkh.b();
     }
     return super.getFaceExtraFlag();
   }

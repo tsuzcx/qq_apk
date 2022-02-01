@@ -1,8 +1,22 @@
-import cooperation.qqpim.QQPimTipsInfo;
-
-public abstract interface bksf
+class bksf
+  implements bjtw
 {
-  public abstract void a(QQPimTipsInfo paramQQPimTipsInfo);
+  bksf(bkse parambkse) {}
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public boolean b(int paramInt)
+  {
+    if (paramInt - 32 == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bjuc.c("VoIPProxyImpl", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
+      return bool;
+    }
+  }
 }
 
 

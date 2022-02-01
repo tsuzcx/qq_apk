@@ -46,6 +46,7 @@ import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
@@ -53,7 +54,10 @@ public class HippyQQEngine
   implements HippyQQLibraryManager.LibraryLoadListener
 {
   protected static final String TAG = "HippyQQEngine";
-  public static SparseArray<HippyQQEngine> mEngines = new SparseArray();
+  private static String mDebugMoudleName = "Demo";
+  private static String mDebugServerHost = "localhost:38989";
+  private static boolean mDebugSwitch;
+  public static SparseArray<WeakReference<HippyQQEngine>> mEngines = new SparseArray();
   private static HashMap<String, Long> mModuleUpdateTime = new HashMap();
   protected String componentName;
   private JSONObject mBusinessData;
@@ -63,7 +67,6 @@ public class HippyQQEngine
   private JSONObject mGlobalData;
   private HippyEngine mHippyEngine;
   private HippyRootView mHippyRootView;
-  private boolean mIsDebugMode;
   private String mJsBundleType = "vue";
   protected HashMap<String, Long> mMapLoadStepsTime = new HashMap();
   private String mModuleName;
@@ -95,10 +98,14 @@ public class HippyQQEngine
       int i = 0;
       try
       {
-        while (i < mEngines.size())
+        if (i >= mEngines.size()) {
+          continue;
+        }
+        Object localObject = (WeakReference)mEngines.valueAt(i);
+        if (localObject != null) {}
+        for (localObject = (HippyQQEngine)((WeakReference)localObject).get();; localObject = null)
         {
-          Object localObject = (HippyQQEngine)mEngines.valueAt(i);
-          if ((TextUtils.isEmpty(paramString2)) || (paramString2.equals(((HippyQQEngine)localObject).mModuleName)))
+          if ((localObject != null) && ((TextUtils.isEmpty(paramString2)) || (paramString2.equals(((HippyQQEngine)localObject).mModuleName))))
           {
             localObject = ((HippyQQEngine)localObject).mHippyEngine;
             if ((localObject != null) && (((HippyEngine)localObject).getEngineState() == HippyEngine.EngineState.INITED)) {
@@ -106,6 +113,7 @@ public class HippyQQEngine
             }
           }
           i += 1;
+          break;
         }
         return;
       }
@@ -113,9 +121,28 @@ public class HippyQQEngine
     }
   }
   
+  public static String getDebugMoudleName()
+  {
+    return mDebugMoudleName;
+  }
+  
+  public static String getDebugServerHost()
+  {
+    return mDebugServerHost;
+  }
+  
+  public static boolean getDebugSwitch()
+  {
+    return mDebugSwitch;
+  }
+  
   public static HippyQQEngine getEngineInstance(int paramInt)
   {
-    return (HippyQQEngine)mEngines.get(paramInt);
+    WeakReference localWeakReference = (WeakReference)mEngines.get(paramInt);
+    if (localWeakReference != null) {
+      return (HippyQQEngine)localWeakReference.get();
+    }
+    return null;
   }
   
   @NotNull
@@ -195,6 +222,21 @@ public class HippyQQEngine
     return Looper.getMainLooper() == Looper.myLooper();
   }
   
+  public static void onDebugModuleAndPortChanged(String paramString1, String paramString2)
+  {
+    if (!TextUtils.isEmpty(paramString1)) {
+      mDebugMoudleName = paramString1;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      mDebugServerHost = paramString2;
+    }
+  }
+  
+  public static void onDebugSwitchChanged(boolean paramBoolean)
+  {
+    mDebugSwitch = paramBoolean;
+  }
+  
   public static void runTaskInUIThread(Runnable paramRunnable)
   {
     if (isMainThread())
@@ -212,7 +254,7 @@ public class HippyQQEngine
       mModuleUpdateTime.put(this.mModuleName, Long.valueOf(System.currentTimeMillis()));
       this.mUpdateManager = new HippyQQUpdateManager();
       long l = System.currentTimeMillis();
-      this.mUpdateManager.checkUpdate(this.mModuleName, this.mModuleVersion, new HippyQQEngine.1(this, l));
+      this.mUpdateManager.checkUpdate(this.mModuleName, new HippyQQEngine.1(this, l));
     }
   }
   
@@ -250,7 +292,7 @@ public class HippyQQEngine
   
   protected Context getInitHippyEngineContext()
   {
-    if (this.mFragment != null) {
+    if ((this.mFragment != null) && (this.mFragment.getActivity() != null)) {
       return this.mFragment.getActivity();
     }
     return BaseApplicationImpl.getContext().getApplicationContext();
@@ -284,7 +326,7 @@ public class HippyQQEngine
   
   public void initHippy(@android.support.annotation.NonNull ViewGroup paramViewGroup, @android.support.annotation.NonNull JSONObject paramJSONObject, boolean paramBoolean, HippyQQEngine.HippyQQEngineListener paramHippyQQEngineListener)
   {
-    this.mContainer = ((ViewGroup)paramViewGroup.findViewById(2131380865));
+    this.mContainer = ((ViewGroup)paramViewGroup.findViewById(2131381217));
     initHippyInContainer(this.mContainer, paramJSONObject, paramBoolean, paramHippyQQEngineListener);
   }
   
@@ -310,19 +352,21 @@ public class HippyQQEngine
     label89:
     HippyEngine.EngineInitParams localEngineInitParams = new HippyEngine.EngineInitParams();
     localEngineInitParams.context = getInitHippyEngineContext();
+    localEngineInitParams.appContext = BaseApplicationImpl.getContext().getApplicationContext();
     localEngineInitParams.imageLoader = new HippyQQImageLoader();
     localEngineInitParams.fontScaleAdapter = new HippyQQFontAdapter();
     localEngineInitParams.thirdPartyAdapter = new HippyQQThirdPartyAdapter();
     localEngineInitParams.thirdPartyAdapter.setPageUrl(this.mUrl);
     localEngineInitParams.thirdPartyAdapter.setExtraData(this.mGlobalData);
-    localEngineInitParams.debugMode = this.mIsDebugMode;
+    localEngineInitParams.debugMode = isDebugMode();
+    if (localEngineInitParams.debugMode) {}
     localEngineInitParams.enableLog = false;
     localEngineInitParams.coreJSFilePath = str;
     localEngineInitParams.exceptionHandler = new HippyQQEngine.3(this);
     this.providers.add(new HippyQQAPIProvider());
     localEngineInitParams.providers = this.providers;
     this.mHippyEngine = HippyEngine.create(localEngineInitParams);
-    mEngines.put(this.mHippyEngine.getId(), this);
+    mEngines.put(this.mHippyEngine.getId(), new WeakReference(this));
     this.mHippyEngine.initEngine(new HippyQQEngine.4(this));
   }
   
@@ -377,9 +421,9 @@ public class HippyQQEngine
     return !isFragmentDestroyed();
   }
   
-  public boolean isDebugMode()
+  protected boolean isDebugMode()
   {
-    return this.mIsDebugMode;
+    return false;
   }
   
   public boolean isReady()
@@ -401,7 +445,6 @@ public class HippyQQEngine
   
   protected void loadModule()
   {
-    this.mMapLoadStepsTime.put("initEngineEnd", Long.valueOf(System.currentTimeMillis()));
     int i = UpdateSetting.getInstance().getModuleVersion(this.mModuleName);
     if (i != -1)
     {
@@ -468,6 +511,11 @@ public class HippyQQEngine
       }
       return;
     }
+    if (isDebugMode())
+    {
+      loadModule("index.android.jsbundle");
+      return;
+    }
     loadModule();
   }
   
@@ -518,10 +566,8 @@ public class HippyQQEngine
     this.componentName = paramString;
   }
   
-  public void setDebugMode(boolean paramBoolean)
-  {
-    this.mIsDebugMode = paramBoolean;
-  }
+  @Deprecated
+  public void setDebugMode(boolean paramBoolean) {}
   
   public void setInitData(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {

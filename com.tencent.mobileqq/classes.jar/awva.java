@@ -1,43 +1,57 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-class awva
-  implements awrb
+public class awva
+  extends Animation
 {
-  awva(awur paramawur) {}
+  private final float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private final float b;
+  private final float c;
+  private final float d;
+  private final float e;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public awva(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
+    this.e = paramFloat5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.b;
+    float f3 = this.c;
+    float f4 = this.d;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    paramTransformation = paramTransformation.getMatrix();
+    localCamera.save();
+    if (this.jdField_a_of_type_Boolean) {
+      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
     }
-    try
+    for (;;)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + awur.c(this.a));
-      }
-      if (paramBundle.busi_buf.has())
-      {
-        paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + awur.c(this.a));
-        }
-      }
+      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f3, -f4);
+      paramTransformation.postTranslate(f3, f4);
       return;
+      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
   }
 }
 

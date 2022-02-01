@@ -1,148 +1,52 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.text.QQTextBuilder;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.api.QZoneApiProxy;
-import cooperation.qzone.publishInterface.QzonePublishMoodCallback;
-import cooperation.qzone.widget.QzoneEmotionUtils;
-import java.lang.reflect.Method;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.now.enter.pb.NowPushMsgList.NowPushMsg;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class ayow
+  implements Manager
 {
-  public static int a = -16692;
-  public static int b = -16693;
+  private QQAppInterface a;
   
-  public static Drawable a(int paramInt)
+  public ayow(QQAppInterface paramQQAppInterface)
   {
-    Iterator localIterator = ayov.a.iterator();
-    while (localIterator.hasNext())
-    {
-      aypb localaypb = (aypb)localIterator.next();
-      if (paramInt == localaypb.jdField_a_of_type_Long) {
-        return localaypb.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
-      }
-    }
-    return null;
+    this.a = paramQQAppInterface;
   }
   
-  private static Class<?> a(Context paramContext, String paramString)
+  private boolean a(NowPushMsgList.NowPushMsg paramNowPushMsg)
   {
-    Object localObject1 = null;
-    try
+    if ((paramNowPushMsg.uint32_version.get() == 0L) && (paramNowPushMsg.uint64_start_time.get() == 0L) && (paramNowPushMsg.uint64_end_time.get() == 0L))
     {
-      localObject2 = Class.forName(paramString);
-      localObject1 = localObject2;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        try
-        {
-          Object localObject2 = QzonePluginProxyActivity.getQZonePluginClassLoader(paramContext).loadClass(paramString);
-          return localObject2;
-        }
-        catch (Throwable paramContext)
-        {
-          QLog.e("StickyNotePublishUtils", 1, "loadQZoneClass, failed to load class from qzone plugin class loader.");
-        }
-        localThrowable = localThrowable;
-        QLog.e("StickyNotePublishUtils", 1, "loadQZoneClass, failed to load class from normal class loader.");
+      if (QLog.isColorLevel()) {
+        QLog.i("NowHongbaoPushManager", 2, "发送wns日志请求");
       }
+      ((avux)this.a.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).c();
+      return true;
     }
-    localObject2 = localObject1;
-    if (localObject1 == null) {}
-    return localObject1;
+    return false;
   }
   
-  public static String a(EditText paramEditText)
+  private void c(NowPushMsgList.NowPushMsg paramNowPushMsg)
   {
-    if (paramEditText != null)
-    {
-      if ((paramEditText.getText() instanceof QQTextBuilder))
-      {
-        QQTextBuilder localQQTextBuilder = (QQTextBuilder)paramEditText.getText();
-        if (localQQTextBuilder != null) {
-          return localQQTextBuilder.toPlainText();
-        }
-      }
-      if ((paramEditText != null) && (paramEditText.getEditableText() != null)) {
-        return paramEditText.getEditableText().toString();
-      }
-    }
-    return null;
+    if (a(paramNowPushMsg)) {}
   }
   
-  public static void a(Context paramContext, long paramLong1, long paramLong2, String paramString, boolean paramBoolean, QzonePublishMoodCallback paramQzonePublishMoodCallback)
+  public void a(NowPushMsgList.NowPushMsg paramNowPushMsg)
   {
-    try
-    {
-      paramContext = a(paramContext, "com.qzone.publish.stickynote.StickyNotePublishProxy");
-      if (paramContext != null) {
-        paramContext.getMethod("modifyStickyNotePriv", new Class[] { Long.TYPE, Long.TYPE, String.class, Boolean.TYPE, QzonePublishMoodCallback.class }).invoke(null, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString, Boolean.valueOf(paramBoolean), paramQzonePublishMoodCallback });
-      }
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("StickyNotePublishUtils", 1, "modifyStickyNotePriv fail.", paramContext);
-    }
+    QLog.i("NowHongbaoPushManager", 1, "receiveOnLinePush ： type=" + paramNowPushMsg.uint32_type.get() + ", show=" + paramNowPushMsg.uint32_switch.get() + ", startTime=" + paramNowPushMsg.uint64_start_time.get() + ", endTime=" + paramNowPushMsg.uint64_end_time.get() + ",taskId =" + paramNowPushMsg.uint32_task_id.get() + ",version =" + paramNowPushMsg.uint32_version.get());
+    c(paramNowPushMsg);
   }
   
-  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, QzonePublishMoodCallback paramQzonePublishMoodCallback)
+  public void b(NowPushMsgList.NowPushMsg paramNowPushMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickyNotePublishUtils", 0, String.format("publishStickyNote, hostUin=%s publishUin=%s isPublic=%s bgColor=%s bgVersion=%s vasExtendInfo=%s content=%s callback=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3, paramString4, paramQzonePublishMoodCallback }));
-    }
-    if ((paramContext == null) || (paramQQAppInterface == null) || (paramLong1 == 0L) || (paramLong2 == 0L) || (TextUtils.isEmpty(paramString4))) {
-      QLog.e("StickyNotePublishUtils", 1, "publishStickyNote, params invalid.");
-    }
-    for (;;)
-    {
-      return;
-      boolean bool1 = QZoneApiProxy.initEnv(paramContext, paramQQAppInterface);
-      boolean bool2 = QZoneApiProxy.initServlet(paramContext, paramQQAppInterface);
-      if ((!bool1) || (!bool2))
-      {
-        QLog.e("StickyNotePublishUtils", 1, String.format("publishStickyNote, init fail. initEnv=%s initServlet=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-        return;
-      }
-      try
-      {
-        paramContext = a(paramContext, "com.qzone.publish.stickynote.StickyNotePublishProxy");
-        if (paramContext != null)
-        {
-          paramContext.getMethod("publishStickyNote", new Class[] { Long.TYPE, Long.TYPE, Boolean.TYPE, String.class, String.class, String.class, String.class, QzonePublishMoodCallback.class }).invoke(null, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3, paramString4, paramQzonePublishMoodCallback });
-          return;
-        }
-      }
-      catch (Exception paramContext)
-      {
-        QLog.e("StickyNotePublishUtils", 1, "publishStickyNote fail.", paramContext);
-      }
-    }
+    QLog.i("NowHongbaoPushManager", 1, "receiveOfflinePush ： type=" + paramNowPushMsg.uint32_type.get() + ", show=" + paramNowPushMsg.uint32_switch.get() + ", startTime=" + paramNowPushMsg.uint64_start_time.get() + ", endTime=" + paramNowPushMsg.uint64_end_time.get() + ",taskId =" + paramNowPushMsg.uint32_task_id.get() + ",version =" + paramNowPushMsg.uint32_version.get());
+    c(paramNowPushMsg);
   }
   
-  public static String b(EditText paramEditText)
-  {
-    if (paramEditText != null)
-    {
-      paramEditText = a(paramEditText);
-      if (!TextUtils.isEmpty(paramEditText)) {
-        return QzoneEmotionUtils.splash2Emo(paramEditText.replaceAll(amtj.a(2131704924), amtj.a(2131704926)).replaceAll(amtj.a(2131704923), "/MM").replaceAll(BaseApplicationImpl.sApplication.getResources().getString(2131716664), "/chigua"));
-      }
-    }
-    return "";
-  }
+  public void onDestroy() {}
 }
 
 

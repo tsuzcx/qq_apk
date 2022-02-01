@@ -10,12 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import bljy;
-import blvb;
-import bmas;
-import bmbc;
-import bmbg;
-import bmbx;
+import bmxa;
+import bnke;
+import bnqc;
+import bnqm;
+import bnqq;
+import bnrh;
 import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.List;
 
@@ -26,27 +26,27 @@ public class AEPlayShowPageView
   private static final String TAG = "AEPlayShowPageView";
   private static final AEPlayShowGridAdapter.SizeInfo TWO_COLUMN_SIZE = calcSizeInfo(2);
   private GridLayoutManager gridLayoutManager;
-  private List<blvb> mInfoWrappers;
+  private List<bnke> mInfoWrappers;
   private int mLayoutType = 2;
-  private bmas mPartManger;
+  private bnqc mPartManger;
   private AEPlayShowGridAdapter mPlayShowGridAdapter;
   private RecyclerView mPlayShowGridView;
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, @NonNull bmas parambmas, int paramInt2, @NonNull List<blvb> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, @NonNull bnqc parambnqc, int paramInt2, @NonNull List<bnke> paramList)
   {
     super(paramContext, paramAttributeSet, paramInt1);
-    initConfig(parambmas, paramInt2, paramList);
+    initConfig(parambnqc, paramInt2, paramList);
     initViews(paramContext);
   }
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull bmas parambmas, int paramInt, @NonNull List<blvb> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull bnqc parambnqc, int paramInt, @NonNull List<bnke> paramList)
   {
-    this(paramContext, paramAttributeSet, 0, parambmas, paramInt, paramList);
+    this(paramContext, paramAttributeSet, 0, parambnqc, paramInt, paramList);
   }
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @NonNull bmas parambmas, int paramInt, @NonNull List<blvb> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @NonNull bnqc parambnqc, int paramInt, @NonNull List<bnke> paramList)
   {
-    this(paramContext, null, parambmas, paramInt, paramList);
+    this(paramContext, null, parambnqc, paramInt, paramList);
   }
   
   private static AEPlayShowGridAdapter.SizeInfo calcSizeInfo(int paramInt)
@@ -80,25 +80,25 @@ public class AEPlayShowPageView
       {
         return;
         localObject = this.mPartManger.a(65537, new Object[0]);
-      } while (!(localObject instanceof bljy));
-      localObject = (bljy)localObject;
-    } while ((((bljy)localObject).a() == null) || (((bljy)localObject).a().getIntent() == null));
-    ((bljy)localObject).a().getIntent().putExtra("KEY_CURRENT_SELECT_ID", "");
-    ((bljy)localObject).a().getIntent().putExtra("KEY_CURRENT_TYPE", "");
+      } while (!(localObject instanceof bmxa));
+      localObject = (bmxa)localObject;
+    } while ((((bmxa)localObject).a() == null) || (((bmxa)localObject).a().getIntent() == null));
+    ((bmxa)localObject).a().getIntent().putExtra("KEY_CURRENT_SELECT_ID", "");
+    ((bmxa)localObject).a().getIntent().putExtra("KEY_CURRENT_TYPE", "");
   }
   
-  private void initConfig(@NonNull bmas parambmas, int paramInt, @NonNull List<blvb> paramList)
+  private void initConfig(@NonNull bnqc parambnqc, int paramInt, @NonNull List<bnke> paramList)
   {
-    this.mPartManger = parambmas;
+    this.mPartManger = parambnqc;
     this.mLayoutType = paramInt;
     this.mInfoWrappers = paramList;
   }
   
   private void initViews(@NonNull Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131558537, this, true);
-    this.mPlayShowGridView = ((RecyclerView)findViewById(2131362277));
-    bmbx.a("AEPlayShowPart", "rv toString " + this.mPlayShowGridView.toString());
+    LayoutInflater.from(paramContext).inflate(2131558548, this, true);
+    this.mPlayShowGridView = ((RecyclerView)findViewById(2131362282));
+    bnrh.a("AEPlayShowPart", "rv toString " + this.mPlayShowGridView.toString());
     this.mPlayShowGridView.addOnScrollListener(new AEPlayShowPageView.1(this));
     if (this.mLayoutType == 1)
     {
@@ -154,10 +154,10 @@ public class AEPlayShowPageView
       return;
       while ((i < this.mInfoWrappers.size()) && (i <= j))
       {
-        blvb localblvb = (blvb)this.mInfoWrappers.get(i);
-        bmbg.a().d(localblvb.g);
-        bmbg.a().c(i + 1);
-        bmbc.a().g(localblvb.a);
+        bnke localbnke = (bnke)this.mInfoWrappers.get(i);
+        bnqq.a().d(localbnke.g);
+        bnqq.a().c(i + 1);
+        bnqm.a().g(localbnke.a);
         i += 1;
       }
     }
@@ -177,7 +177,7 @@ public class AEPlayShowPageView
       if (this.gridLayoutManager != null) {
         this.gridLayoutManager.scrollToPositionWithOffset(paramInt, 0);
       }
-      bmbx.a("AEPlayShowPart", "out........" + this.mPlayShowGridView.toString());
+      bnrh.a("AEPlayShowPart", "out........" + this.mPlayShowGridView.toString());
       this.mPlayShowGridView.post(new AEPlayShowPageView.3(this, paramInt));
     }
   }
@@ -187,7 +187,7 @@ public class AEPlayShowPageView
     this.mPlayShowGridAdapter.setCurTabId(paramString);
   }
   
-  public void updateData(@NonNull List<blvb> paramList)
+  public void updateData(@NonNull List<bnke> paramList)
   {
     if (this.mPlayShowGridAdapter != null) {
       this.mPlayShowGridAdapter.putData(paramList);

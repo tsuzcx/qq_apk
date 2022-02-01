@@ -1,25 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class akls
-  implements View.OnTouchListener
+public abstract interface akls
 {
-  akls(aklr paramaklr) {}
+  public abstract void a(long paramLong, float paramFloat, String paramString);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
-  }
+  public abstract void b(long paramLong);
 }
 
 

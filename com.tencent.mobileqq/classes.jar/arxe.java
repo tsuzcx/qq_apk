@@ -1,71 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 public class arxe
-  extends asbj
+  implements Animation.AnimationListener
 {
-  public arxe(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public arxe(DataReportViewer paramDataReportViewer) {}
   
-  protected void onFileTransferProgress(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_Arvv.notifyDataSetChanged();
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
   }
   
-  protected void onWeiYunOneClassificationInfoFaild(int paramInt, String paramString1, String paramString2)
-  {
-    super.onWeiYunOneClassificationInfoFaild(paramInt, paramString1, paramString2);
-    this.a.c(false);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void onWeiYunOneClassificationInfoSuccess(String paramString1, boolean paramBoolean, int paramInt1, String paramString2, List<WeiYunFileInfo> paramList, int paramInt2)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    QfileCloudFileTabView.b(this.a, true);
-    QfileCloudFileTabView.c(this.a, paramBoolean);
-    this.a.jdField_c_of_type_Int = paramInt2;
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
-      paramInt1 = aszt.a(localWeiYunFileInfo.jdField_c_of_type_JavaLangString);
-      String str;
-      if (paramInt1 == 0)
-      {
-        str = QfileCloudFileTabView.a(this.a).getFileManagerEngine().a(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo.e, 3, localWeiYunFileInfo);
-        if (str != null) {
-          localWeiYunFileInfo.h = str;
-        }
-      }
-      else if (2 == paramInt1)
-      {
-        str = QfileCloudFileTabView.b(this.a).getFileManagerEngine().b(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo.e, 2, localWeiYunFileInfo);
-        if (str != null) {
-          localWeiYunFileInfo.h = str;
-        }
-      }
-    }
-    if (!paramString1.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if (QfileCloudFileTabView.b(this.a)) {
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    if (!this.a.jdField_a_of_type_JavaLangString.equalsIgnoreCase("picture")) {
-      this.a.setListFooter();
-    }
-    this.a.jdField_c_of_type_JavaLangString = paramString2;
-    this.a.jdField_c_of_type_Boolean = true;
-    this.a.g();
-    this.a.a();
-  }
-  
-  protected void onWeiYunSendToOfflineFaild(Integer paramInteger, long paramLong, String paramString)
-  {
-    aszt.a(paramLong, paramInteger.intValue(), paramString);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.e();
   }
 }
 

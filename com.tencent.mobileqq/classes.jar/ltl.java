@@ -1,31 +1,24 @@
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
 
 public class ltl
-  implements ltu
+  extends ltg
 {
-  public ltl(AVRedPacketManager.2 param2, long paramLong) {}
+  String b;
   
-  public void a()
+  public ltl(RandomWebProtocol paramRandomWebProtocol) {}
+  
+  void a(String paramString)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    QLog.d("AVRedPacketManager", 1, "preloadCountDownRes, music load finish,cost =" + (l1 - l2));
-    l1 = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$2.this$0.jdField_a_of_type_Ltm != null)
-    {
-      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$2.this$0.jdField_a_of_type_Ltm.a(1, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$2.this$0.jdField_a_of_type_Ltn);
-      l2 = System.currentTimeMillis();
-      QLog.d("AVRedPacketManager", 1, "preloadCountDownRes, preloadRes finish,cost =" + (l2 - l1));
-      return;
+    super.a(paramString);
+    if ((this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) {
+      this.b = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
     }
-    QLog.d("AVRedPacketManager", 1, "preloadCountDownRes,  mRedPacketGameShower is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ltl
  * JD-Core Version:    0.7.0.1
  */

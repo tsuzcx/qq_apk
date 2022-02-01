@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.ocr.activity;
 
 import Override;
-import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,15 +9,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anyd;
-import aock;
-import aocz;
-import aogg;
-import axlb;
-import bhht;
+import anvx;
+import apbf;
+import apfm;
+import apgb;
+import apji;
+import ayrg;
+import bisl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 import com.tencent.mobileqq.ocr.data.OcrConfig;
@@ -31,7 +32,7 @@ public class ScanBaseActivity
   extends FragmentActivity
 {
   protected TextView a;
-  private bhht a;
+  private bisl a;
   public AppInterface a;
   public QQAppInterface a;
   public OcrConfig a;
@@ -48,10 +49,10 @@ public class ScanBaseActivity
       QLog.d("ScanBaseActivity", 1, "checkOcrEnable config is null");
       return false;
     }
-    boolean bool1 = axlb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
+    boolean bool1 = ayrg.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
     if (bool1)
     {
-      boolean bool2 = aogg.a();
+      boolean bool2 = apji.a();
       if (!bool2)
       {
         QLog.d("ScanBaseActivity", 1, "checkOcrEnable load so failed!");
@@ -59,16 +60,16 @@ public class ScanBaseActivity
       }
       return bool1 & bool2;
     }
-    Object localObject = ((anyd)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(220)).a(true);
+    Object localObject = ((apbf)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER)).a(true);
     if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0))
     {
       new ArrayList();
       new ArrayList();
       ArrayList localArrayList = ((ARCommonConfigInfo)localObject).nativeSoResList;
       localObject = ((ARCommonConfigInfo)localObject).nativeSoResList;
-      aocz localaocz = new aocz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (!aock.a()) {
-        localaocz.a(localArrayList, (ArrayList)localObject, "arcloud");
+      apgb localapgb = new apgb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (!apfm.a()) {
+        localapgb.a(localArrayList, (ArrayList)localObject, "arcloud");
       }
     }
     return bool1;
@@ -86,7 +87,7 @@ public class ScanBaseActivity
     {
       localObject = localOcrConfig;
       if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-        localObject = ((axlb)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(228)).a(false);
+        localObject = ((ayrg)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.OCR_MANAGER)).a(false);
       }
     }
     if (QLog.isColorLevel()) {
@@ -97,18 +98,18 @@ public class ScanBaseActivity
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369068));
-    this.b = ((TextView)findViewById(2131369115));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369231));
+    this.b = ((TextView)findViewById(2131369278));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       int i = ImmersiveUtils.getStatusBarHeight(this);
-      View localView = findViewById(2131378721);
+      View localView = findViewById(2131379015);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.topMargin = i;
       localView.setLayoutParams(localLayoutParams);
     }
     if (AppSetting.c) {
-      findViewById(2131369068).setContentDescription(amtj.a(2131712619));
+      findViewById(2131369231).setContentDescription(anvx.a(2131712966));
     }
   }
   
@@ -136,8 +137,8 @@ public class ScanBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bhht != null) {
-      this.jdField_a_of_type_Bhht.dismiss();
+    if (this.jdField_a_of_type_Bisl != null) {
+      this.jdField_a_of_type_Bisl.dismiss();
     }
   }
   

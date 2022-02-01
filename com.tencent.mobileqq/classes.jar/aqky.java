@@ -1,65 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
 public class aqky
-  extends aptq<aqkx>
+  implements TextWatcher
 {
-  public static aqkx a()
-  {
-    return (aqkx)apub.a().a(335);
-  }
+  public aqky(ClearEllipsisEditText paramClearEllipsisEditText) {}
   
-  @NonNull
-  public aqkx a(int paramInt)
-  {
-    return new aqkx();
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  @Nullable
-  public aqkx a(aptx[] paramArrayOfaptx)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqkx.a(paramArrayOfaptx);
+    if ((ClearEllipsisEditText.a(this.a)) && (!ClearEllipsisEditText.b(this.a))) {
+      ClearEllipsisEditText.a(this.a, paramCharSequence.toString());
     }
-    return null;
-  }
-  
-  public void a(aqkx paramaqkx) {}
-  
-  public Class<aqkx> clazz()
-  {
-    return aqkx.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TencentDocSelectAddDocsProcessor", 1, "handleTencentDocUniversalEntry FILE_SELECT_ADD_DOCS failed, resultCode:" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 335;
+    ClearEllipsisEditText.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqky
  * JD-Core Version:    0.7.0.1
  */

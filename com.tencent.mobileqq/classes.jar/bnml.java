@@ -1,43 +1,33 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel.2.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel.2.2;
-import mqq.os.MqqHandler;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
 public class bnml
-  implements bmvo
 {
-  public bnml(EditTextPanel paramEditTextPanel) {}
+  public int a;
+  public MetaMaterial a;
+  public String a;
+  private boolean a;
+  public int b;
+  public String b;
+  public String c = "";
   
-  public void a(float paramFloat, String paramString, int paramInt)
+  public bnml()
   {
-    this.a.post(new EditTextPanel.2.1(this, paramString, paramInt));
+    this.jdField_a_of_type_Int = 10;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(boolean paramBoolean)
   {
-    if ((this.a.a == null) || (this.a.a.a == null)) {}
-    for (;;)
-    {
-      return;
-      int j = this.a.a.a.getChildCount();
-      DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)bmql.a(7);
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = this.a.a.a.getChildAt(i);
-        localObject = (bnmk)this.a.a.getChildViewHolder((View)localObject);
-        if (((bnmk)localObject).a.isContainsResUrl(paramString)) {
-          ThreadManager.getUIHandler().post(new EditTextPanel.2.2(this, paramBoolean, (bnmk)localObject, localDynamicTextConfigManager));
-        }
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

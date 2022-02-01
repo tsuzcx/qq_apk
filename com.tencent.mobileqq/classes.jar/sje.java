@@ -1,24 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-class sje
-  extends sif
+final class sje
+  extends AnimatorListenerAdapter
 {
-  sje(sig paramsig) {}
+  sje(View paramView) {}
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    sig.a(this.a, paramInt, paramBaseArticleInfo, paramString);
-  }
-  
-  public int b()
-  {
-    return 4;
-  }
-  
-  public int c()
-  {
-    return 4;
+    super.onAnimationEnd(paramAnimator);
+    this.a.setTag(2131362716, null);
   }
 }
 

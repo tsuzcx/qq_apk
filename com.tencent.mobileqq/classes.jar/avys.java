@@ -1,12 +1,12 @@
-import android.view.animation.Interpolator;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import com.tencent.mobileqq.javahooksdk.ReplaceMethodCallback;
 
-public final class avys
-  implements Interpolator
+class avys
+  implements ReplaceMethodCallback
 {
-  public float getInterpolation(float paramFloat)
+  public void replaceMethod(MethodHookParam paramMethodHookParam)
   {
-    paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+    avyq.a(true);
   }
 }
 

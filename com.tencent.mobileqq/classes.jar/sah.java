@@ -1,21 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
 class sah
-  implements DialogInterface.OnCancelListener
+  implements ovy
 {
-  sah(sab paramsab) {}
+  sah(sad paramsad) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(@NotNull String paramString1, @NotNull String paramString2)
   {
-    sab.a(this.a, "mShareActionSheet cancle button OnClick");
-    if (sab.a(this.a) != null) {
-      sab.a(this.a).c();
-    }
-    paramDialogInterface = sab.a(this.a);
-    sab.a(this.a, paramDialogInterface, String.valueOf(pay.a()), paramDialogInterface.g, paramDialogInterface.a, paramDialogInterface.f, -1, -1, true);
+    QLog.d(paramString1, 1, paramString2);
   }
 }
 

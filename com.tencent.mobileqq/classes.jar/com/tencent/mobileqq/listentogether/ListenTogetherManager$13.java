@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.listentogether;
 
-import avau;
+import awgx;
 
 class ListenTogetherManager$13
   implements Runnable

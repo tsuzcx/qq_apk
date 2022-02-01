@@ -1,21 +1,34 @@
 package com.tencent.qqlive.module.videoreport.dtreport.time.audio;
 
+import android.support.annotation.NonNull;
 import com.tencent.qqlive.module.videoreport.page.PageInfo;
 import com.tencent.qqlive.module.videoreport.page.PageManager.IPageListener;
+import java.util.Iterator;
+import java.util.Set;
 
 class AudioSession$3
   implements PageManager.IPageListener
 {
   AudioSession$3(AudioSession paramAudioSession) {}
   
-  public void onPageIn(PageInfo paramPageInfo)
+  public void onPageIn(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet)
   {
-    AudioSession.access$200(this.this$0, paramPageInfo);
+    paramPageInfo = paramSet.iterator();
+    while (paramPageInfo.hasNext())
+    {
+      paramSet = (PageInfo)paramPageInfo.next();
+      AudioSession.access$200(this.this$0, paramSet);
+    }
   }
   
-  public void onPageOut(PageInfo paramPageInfo, boolean paramBoolean)
+  public void onPageOut(@NonNull PageInfo paramPageInfo, @NonNull Set<PageInfo> paramSet, boolean paramBoolean)
   {
-    AudioSession.access$300(this.this$0, paramPageInfo);
+    paramPageInfo = paramSet.iterator();
+    while (paramPageInfo.hasNext())
+    {
+      paramSet = (PageInfo)paramPageInfo.next();
+      AudioSession.access$300(this.this$0, paramSet);
+    }
   }
   
   public void onPageUpdate(PageInfo paramPageInfo) {}

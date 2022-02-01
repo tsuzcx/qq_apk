@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aafi;
-import acjp;
-import aehq;
-import aehr;
-import aewr;
-import aewu;
-import akho;
-import akxv;
-import amxv;
+import aauu;
+import aczy;
+import aeyy;
+import aeyz;
+import afoc;
+import afof;
+import aldh;
+import alvr;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -33,23 +32,25 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import apjz;
-import aujj;
-import avnh;
-import azem;
-import azep;
-import azid;
-import azie;
-import bbkv;
-import bbzy;
-import bcef;
-import bcer;
-import bfur;
-import bfvp;
-import bfwg;
-import bfzg;
-import bkwm;
-import bkzh;
+import aoaj;
+import aqnd;
+import avpd;
+import awtm;
+import bakd;
+import bakg;
+import baol;
+import baom;
+import bcrn;
+import bdgt;
+import bdla;
+import bdlm;
+import bhdj;
+import bheh;
+import bhey;
+import bhhy;
+import bibb;
+import bmhv;
+import bmll;
 import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -67,6 +68,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadRegulator;
 import com.tencent.mobileqq.fpsreport.FPSSwipListView;
@@ -87,7 +89,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import mqq.app.Constants.LogoutReason;
 import mqq.os.MqqHandler;
-import nru;
+import nyv;
 
 public class SplashActivity
   extends FragmentActivity
@@ -142,7 +144,7 @@ public class SplashActivity
   {
     if (paramIntent.getBooleanExtra("open_chatfragment", false))
     {
-      akho.a(this.app, paramIntent);
+      aldh.a(this.app, paramIntent);
       setIntent(paramIntent);
       getIntent().putExtra("isBack2Root", true);
       a(false, 0);
@@ -168,46 +170,46 @@ public class SplashActivity
     return true;
   }
   
-  public static boolean a(SplashActivity paramSplashActivity, QQAppInterface paramQQAppInterface, azie paramazie)
+  public static boolean a(SplashActivity paramSplashActivity, QQAppInterface paramQQAppInterface, baom parambaom)
   {
-    if (paramazie == null) {}
+    if (parambaom == null) {}
     for (;;)
     {
       return false;
       try
       {
-        int i = paramazie.jdField_b_of_type_Int;
-        azid.jdField_a_of_type_Boolean = false;
+        int i = parambaom.jdField_b_of_type_Int;
+        baol.jdField_a_of_type_Boolean = false;
         switch (i)
         {
         case 1: 
-          if (TextUtils.isEmpty(paramazie.f))
+          if (TextUtils.isEmpty(parambaom.f))
           {
             QLog.i("QSplash@QbossSplashUtil", 1, "jumpH5Url is null");
             return false;
           }
           Intent localIntent = new Intent(paramSplashActivity, QQBrowserActivity.class);
-          localIntent.putExtra("url", paramazie.f);
+          localIntent.putExtra("url", parambaom.f);
           localIntent.putExtra("key_from_splash_ad", true);
           localIntent.putExtra("big_brother_source_key", "biz_src_jc_vip");
           paramSplashActivity.startActivity(localIntent);
           if (paramQQAppInterface != null)
           {
-            azid.a(paramazie.j, null, 2);
-            bkzh.a(paramQQAppInterface.getCurrentUin() + "", 102, paramazie.jdField_b_of_type_JavaLangString, paramazie.j);
+            baol.a(parambaom.j, null, 2);
+            bmll.a(paramQQAppInterface.getCurrentUin() + "", 102, parambaom.jdField_b_of_type_JavaLangString, parambaom.j);
           }
           break;
         case 4: 
-          if (TextUtils.isEmpty(paramazie.f))
+          if (TextUtils.isEmpty(parambaom.f))
           {
             QLog.i("QSplash@QbossSplashUtil", 1, "scheme is null");
             return false;
           }
-          bfwg.a(paramQQAppInterface, paramSplashActivity, paramazie.f).a();
+          bhey.a(paramQQAppInterface, paramSplashActivity, parambaom.f).a();
           if (paramQQAppInterface != null)
           {
-            azid.a(paramazie.j, null, 2);
-            bkzh.a(paramQQAppInterface.getCurrentUin() + "", 102, paramazie.jdField_b_of_type_JavaLangString, paramazie.j);
+            baol.a(parambaom.j, null, 2);
+            bmll.a(paramQQAppInterface.getCurrentUin() + "", 102, parambaom.jdField_b_of_type_JavaLangString, parambaom.j);
             return false;
           }
           break;
@@ -247,7 +249,7 @@ public class SplashActivity
   private boolean b(Intent paramIntent)
   {
     int i = 0;
-    if ((paramIntent.getBooleanExtra("open_kandian_tab_fragment", false)) && (bkwm.k()))
+    if ((paramIntent.getBooleanExtra("open_kandian_tab_fragment", false)) && (bmhv.n()))
     {
       setIntent(paramIntent);
       Object localObject = getSupportFragmentManager();
@@ -277,9 +279,9 @@ public class SplashActivity
   {
     int i = paramIntent.getIntExtra("forward", -1);
     int j = paramIntent.getIntExtra("uintype", -1);
-    if ((i > 0) && ((j == 1035) || (j == 1041) || (j == 1042)) && (this.app.isCreateManager(284)))
+    if ((i > 0) && ((j == 1035) || (j == 1041) || (j == 1042)) && (this.app.isCreateManager(QQManagerFactory.PUSH_NOTICE_MANAGER)))
     {
-      ((avnh)this.app.getManager(284)).a(this, paramIntent);
+      ((awtm)this.app.getManager(QQManagerFactory.PUSH_NOTICE_MANAGER)).a(this, paramIntent);
       return;
     }
     switch (i)
@@ -311,9 +313,9 @@ public class SplashActivity
         if (j != -1)
         {
           localIntent.putExtra("uintype", j);
-          if ((j == 1030) && (this.app.isCreateManager(240)))
+          if ((j == 1030) && (this.app.isCreateManager(QQManagerFactory.CAMPUS_NOTICE_MANAGER)))
           {
-            ((apjz)this.app.getManager(240)).a(null);
+            ((aqnd)this.app.getManager(QQManagerFactory.CAMPUS_NOTICE_MANAGER)).a(null);
             if (QLog.isColorLevel()) {
               QLog.d("CampusNoticeManager", 2, "remove campus notice");
             }
@@ -327,7 +329,7 @@ public class SplashActivity
   
   private boolean c()
   {
-    if ((azid.jdField_a_of_type_Boolean) && (azid.jdField_a_of_type_Azie != null) && (a(this, this.app, azid.jdField_a_of_type_Azie)))
+    if ((baol.jdField_a_of_type_Boolean) && (baol.jdField_a_of_type_Baom != null) && (a(this, this.app, baol.jdField_a_of_type_Baom)))
     {
       finish();
       return false;
@@ -374,15 +376,15 @@ public class SplashActivity
     String str2;
     if (GesturePWDUtils.getGestureUnlockFailed(this, this.app.getCurrentAccountUin()))
     {
-      str2 = getString(2131692693);
+      str2 = getString(2131692795);
       if (GesturePWDUtils.getGestureUnlockFailedType(this) != 1) {
         break label73;
       }
     }
     label73:
-    for (String str1 = getString(2131692696);; str1 = getString(2131692695))
+    for (String str1 = getString(2131692798);; str1 = getString(2131692797))
     {
-      bfur.a(this, 230, str2, str1, 2131690620, 2131692694, new aehq(this), new aehr(this)).show();
+      bhdj.a(this, 230, str2, str1, 2131690697, 2131692796, new aeyy(this), new aeyz(this)).show();
       return;
     }
   }
@@ -542,7 +544,7 @@ public class SplashActivity
       if (localObject1 != null) {
         startActivity((Intent)localObject1);
       }
-      bcef.b(this.app, "CliOper", "", "", "0X8006593", "0X8006593", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "0X8006593", "0X8006593", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
       return;
       localObject1 = localObject2;
       if (i == 1) {
@@ -552,11 +554,11 @@ public class SplashActivity
           localObject1 = localObject2;
           break;
         case 1: 
-          new bfvp(this.app, this).h();
+          new bheh(this.app, this).h();
           localObject1 = localObject2;
           break;
         case 2: 
-          new bfvp(this.app, this).o();
+          new bheh(this.app, this).o();
           localObject1 = localObject2;
           break;
         case 3: 
@@ -577,11 +579,11 @@ public class SplashActivity
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    aewu.a().b();
+    afof.a().b();
     ThreadRegulator.a().a(1);
-    jdField_b_of_type_Int = acjp.a().a(0, 1, 0, 0, 2000, 301, 4L, Process.myTid(), "openAIO");
-    bcer.a().a("ChatFragment", true);
-    bfzg.b(null, "AIO_Start_cost");
+    jdField_b_of_type_Int = aczy.a().a(0, 1, 0, 0, 2000, 301, 4L, Process.myTid(), "openAIO");
+    bdlm.a().a("ChatFragment", true);
+    bhhy.b(null, "AIO_Start_cost");
     if ((AIOUtils.beforeEnterAIO(this, this.app, paramBoolean, getIntent())) || (d())) {}
     label568:
     for (;;)
@@ -629,11 +631,11 @@ public class SplashActivity
           if (!getIntent().getBooleanExtra("activepull_push_flag", false)) {
             break label568;
           }
-          bcef.b(this.app, "CliOper", "", "", "0X8006593", "0X8006593", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
+          bdla.b(this.app, "CliOper", "", "", "0X8006593", "0X8006593", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
           return;
           if (!((Fragment)localObject1).isVisible())
           {
-            if ((paramBoolean) && (amxv.a() > 1)) {
+            if ((paramBoolean) && (aoaj.a() > 1)) {
               localFragmentTransaction.setCustomAnimations(2130772048, 2130772053);
             }
             localFragmentTransaction.show((Fragment)localObject1);
@@ -649,7 +651,7 @@ public class SplashActivity
               return;
             }
             this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-            if ((paramBoolean) && (amxv.a() > 1)) {
+            if ((paramBoolean) && (aoaj.a() > 1)) {
               localFragmentTransaction.setCustomAnimations(2130772048, 2130772053);
             }
             localObject1 = ChatFragment.a();
@@ -657,7 +659,7 @@ public class SplashActivity
             localFragmentTransaction.add(16908290, (Fragment)localObject1, ChatFragment.class.getName());
             localFragmentTransaction.hide((Fragment)localObject2);
             localFragmentTransaction.commitAllowingStateLoss();
-            aewu.a().b();
+            afof.a().b();
             if (QLog.isColorLevel()) {
               QLog.i("SplashActivity", 2, "openAIO f == null ");
             }
@@ -697,17 +699,17 @@ public class SplashActivity
       String str1 = ((SharedPreferences)localObject2).getString("qq_version_full", "");
       String str2 = AppSetting.a();
       localObject2 = ((SharedPreferences)localObject2).edit();
-      if (!TextUtils.equals((CharSequence)localObject1, "4810")) {
+      if (!TextUtils.equals((CharSequence)localObject1, "4875")) {
         ((SharedPreferences.Editor)localObject2).putString("qq_version_pre", (String)localObject1);
       }
       if (!TextUtils.equals(str1, str2)) {
         ((SharedPreferences.Editor)localObject2).putString("qq_version_full_pre", str1);
       }
-      ((SharedPreferences.Editor)localObject2).putString("qq_version", "4810");
+      ((SharedPreferences.Editor)localObject2).putString("qq_version", "4875");
       ((SharedPreferences.Editor)localObject2).putString("qq_version_full", str2);
       ((SharedPreferences.Editor)localObject2).commit();
       if (QLog.isColorLevel()) {
-        QLog.e("SplashActivity", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { localObject1, str1, "4810", str2 }));
+        QLog.e("SplashActivity", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { localObject1, str1, "4875", str2 }));
       }
       startActivity(new Intent(this, LoginActivity.class));
       return true;
@@ -720,7 +722,7 @@ public class SplashActivity
     if (QLog.isColorLevel()) {
       QLog.d("SplashActivity", 4, "clearAIO");
     }
-    aewu.a().b();
+    afof.a().b();
     Object localObject = getSupportFragmentManager();
     Fragment localFragment1 = ((FragmentManager)localObject).findFragmentByTag(MainFragment.class.getName());
     Fragment localFragment2 = ((FragmentManager)localObject).findFragmentByTag(ChatFragment.class.getName());
@@ -743,8 +745,8 @@ public class SplashActivity
     for (;;)
     {
       ((FragmentTransaction)localObject).remove(localFragment2).commitAllowingStateLoss();
-      if (akxv.a().c()) {
-        akxv.a().d();
+      if (alvr.a().c()) {
+        alvr.a().d();
       }
       return;
       label136:
@@ -848,7 +850,7 @@ public class SplashActivity
     //   0: getstatic 76	com/tencent/common/app/BaseApplicationImpl:sSplashActivityEscapedMsg	Ljava/lang/String;
     //   3: ifnull +586 -> 589
     //   6: getstatic 76	com/tencent/common/app/BaseApplicationImpl:sSplashActivityEscapedMsg	Ljava/lang/String;
-    //   9: invokevirtual 910	java/lang/String:length	()I
+    //   9: invokevirtual 919	java/lang/String:length	()I
     //   12: ifle +577 -> 589
     //   15: iconst_1
     //   16: istore_2
@@ -858,68 +860,68 @@ public class SplashActivity
     //   24: dup
     //   25: aload_0
     //   26: invokevirtual 126	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
-    //   29: invokespecial 912	android/content/Intent:<init>	(Landroid/content/Intent;)V
+    //   29: invokespecial 921	android/content/Intent:<init>	(Landroid/content/Intent;)V
     //   32: astore_3
     //   33: aload_3
-    //   34: ldc_w 913
+    //   34: ldc_w 922
     //   37: invokevirtual 177	android/content/Intent:addFlags	(I)Landroid/content/Intent;
     //   40: pop
     //   41: aload_0
-    //   42: invokespecial 914	android/support/v4/app/FragmentActivity:finish	()V
+    //   42: invokespecial 923	android/support/v4/app/FragmentActivity:finish	()V
     //   45: aload_0
     //   46: aload_3
     //   47: iconst_m1
     //   48: aconst_null
-    //   49: invokespecial 918	android/support/v4/app/FragmentActivity:superStartActivityForResult	(Landroid/content/Intent;ILandroid/os/Bundle;)V
-    //   52: ldc2_w 919
-    //   55: invokestatic 926	java/lang/Thread:sleep	(J)V
+    //   49: invokespecial 927	android/support/v4/app/FragmentActivity:superStartActivityForResult	(Landroid/content/Intent;ILandroid/os/Bundle;)V
+    //   52: ldc2_w 928
+    //   55: invokestatic 935	java/lang/Thread:sleep	(J)V
     //   58: iconst_m1
-    //   59: invokestatic 929	java/lang/System:exit	(I)V
+    //   59: invokestatic 938	java/lang/System:exit	(I)V
     //   62: aconst_null
-    //   63: ldc_w 931
-    //   66: invokestatic 933	bfzg:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   63: ldc_w 940
+    //   66: invokestatic 942	bhhy:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   69: aconst_null
-    //   70: ldc_w 935
-    //   73: invokestatic 933	bfzg:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   70: ldc_w 944
+    //   73: invokestatic 942	bhhy:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   76: aconst_null
-    //   77: ldc_w 937
-    //   80: invokestatic 933	bfzg:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   77: ldc_w 946
+    //   80: invokestatic 942	bhhy:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   83: aload_0
     //   84: iconst_0
-    //   85: putfield 940	com/tencent/mobileqq/activity/SplashActivity:mActNeedImmersive	Z
+    //   85: putfield 949	com/tencent/mobileqq/activity/SplashActivity:mActNeedImmersive	Z
     //   88: aload_0
     //   89: aload_1
-    //   90: invokespecial 942	android/support/v4/app/FragmentActivity:doOnCreate	(Landroid/os/Bundle;)Z
+    //   90: invokespecial 951	android/support/v4/app/FragmentActivity:doOnCreate	(Landroid/os/Bundle;)Z
     //   93: pop
-    //   94: ldc_w 937
+    //   94: ldc_w 946
     //   97: aconst_null
-    //   98: invokestatic 933	bfzg:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   98: invokestatic 942	bhhy:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   101: aload_0
-    //   102: invokevirtual 943	com/tencent/mobileqq/activity/SplashActivity:a	()Z
+    //   102: invokevirtual 952	com/tencent/mobileqq/activity/SplashActivity:a	()Z
     //   105: ifne +10 -> 115
     //   108: aload_0
-    //   109: invokespecial 945	com/tencent/mobileqq/activity/SplashActivity:b	()Z
+    //   109: invokespecial 954	com/tencent/mobileqq/activity/SplashActivity:b	()Z
     //   112: ifeq +23 -> 135
     //   115: aload_0
     //   116: invokevirtual 305	com/tencent/mobileqq/activity/SplashActivity:finish	()V
-    //   119: ldc_w 935
+    //   119: ldc_w 944
     //   122: aconst_null
-    //   123: invokestatic 933	bfzg:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   126: ldc_w 931
+    //   123: invokestatic 942	bhhy:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   126: ldc_w 940
     //   129: aconst_null
-    //   130: invokestatic 933	bfzg:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   130: invokestatic 942	bhhy:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   133: iconst_0
     //   134: ireturn
     //   135: aload_0
-    //   136: invokespecial 946	com/tencent/mobileqq/activity/SplashActivity:c	()Z
+    //   136: invokespecial 955	com/tencent/mobileqq/activity/SplashActivity:c	()Z
     //   139: ifeq +448 -> 587
     //   142: aload_0
     //   143: invokevirtual 126	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
-    //   146: invokevirtual 949	android/content/Intent:getAction	()Ljava/lang/String;
+    //   146: invokevirtual 958	android/content/Intent:getAction	()Ljava/lang/String;
     //   149: astore_3
     //   150: aload_3
     //   151: ifnull +33 -> 184
-    //   154: ldc_w 951
+    //   154: ldc_w 960
     //   157: aload_3
     //   158: invokevirtual 43	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   161: ifeq +23 -> 184
@@ -932,14 +934,14 @@ public class SplashActivity
     //   173: iconst_2
     //   174: aload_1
     //   175: iconst_0
-    //   176: anewarray 499	java/lang/Object
-    //   179: invokestatic 502	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   176: anewarray 507	java/lang/Object
+    //   179: invokestatic 510	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   182: iconst_1
     //   183: ireturn
     //   184: new 281	java/lang/ref/WeakReference
     //   187: dup
     //   188: aload_0
-    //   189: invokespecial 954	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   189: invokespecial 963	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
     //   192: putstatic 279	com/tencent/mobileqq/activity/SplashActivity:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
     //   195: aload_1
     //   196: ifnull +41 -> 237
@@ -947,7 +949,7 @@ public class SplashActivity
     //   202: ifeq +12 -> 214
     //   205: ldc 138
     //   207: iconst_2
-    //   208: ldc_w 956
+    //   208: ldc_w 965
     //   211: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   214: aload_0
     //   215: invokevirtual 126	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
@@ -964,22 +966,22 @@ public class SplashActivity
     //   237: aload_0
     //   238: getfield 113	com/tencent/mobileqq/activity/SplashActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   241: iconst_0
-    //   242: putfield 959	com/tencent/mobileqq/app/QQAppInterface:isClearTaskBySystem	Z
+    //   242: putfield 968	com/tencent/mobileqq/app/QQAppInterface:isClearTaskBySystem	Z
     //   245: aload_0
-    //   246: invokespecial 961	com/tencent/mobileqq/activity/SplashActivity:e	()V
+    //   246: invokespecial 970	com/tencent/mobileqq/activity/SplashActivity:e	()V
     //   249: aload_0
     //   250: invokevirtual 126	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
     //   253: astore_3
     //   254: aload_3
-    //   255: invokevirtual 571	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   255: invokevirtual 579	android/content/Intent:getExtras	()Landroid/os/Bundle;
     //   258: ifnull +79 -> 337
     //   261: aload_3
-    //   262: invokevirtual 571	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   262: invokevirtual 579	android/content/Intent:getExtras	()Landroid/os/Bundle;
     //   265: ldc_w 358
-    //   268: invokevirtual 967	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
+    //   268: invokevirtual 976	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
     //   271: ifne +18 -> 289
     //   274: aload_3
-    //   275: ldc_w 969
+    //   275: ldc_w 978
     //   278: iconst_0
     //   279: invokevirtual 109	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
     //   282: ifeq +27 -> 309
@@ -989,42 +991,42 @@ public class SplashActivity
     //   292: ifeq +12 -> 304
     //   295: ldc 138
     //   297: iconst_2
-    //   298: ldc_w 971
+    //   298: ldc_w 980
     //   301: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   304: aload_0
     //   305: iconst_0
-    //   306: putfield 974	com/tencent/mobileqq/activity/SplashActivity:mCanLock	Z
+    //   306: putfield 983	com/tencent/mobileqq/activity/SplashActivity:mCanLock	Z
     //   309: aload_0
     //   310: aload_0
     //   311: invokevirtual 126	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
-    //   314: ldc_w 976
-    //   317: invokevirtual 392	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   320: putfield 978	com/tencent/mobileqq/activity/SplashActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   314: ldc_w 985
+    //   317: invokevirtual 397	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   320: putfield 987	com/tencent/mobileqq/activity/SplashActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   323: aload_0
     //   324: aload_0
     //   325: invokevirtual 126	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
-    //   328: ldc_w 980
-    //   331: invokevirtual 392	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   334: putfield 981	com/tencent/mobileqq/activity/SplashActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   328: ldc_w 989
+    //   331: invokevirtual 397	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   334: putfield 990	com/tencent/mobileqq/activity/SplashActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   337: aload_0
     //   338: aload_0
     //   339: invokevirtual 126	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
-    //   342: invokespecial 983	com/tencent/mobileqq/activity/SplashActivity:a	(Landroid/content/Intent;)Z
+    //   342: invokespecial 992	com/tencent/mobileqq/activity/SplashActivity:a	(Landroid/content/Intent;)Z
     //   345: ifne +249 -> 594
     //   348: aload_0
     //   349: aload_0
     //   350: invokevirtual 126	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
-    //   353: invokespecial 985	com/tencent/mobileqq/activity/SplashActivity:d	(Landroid/content/Intent;)Z
+    //   353: invokespecial 994	com/tencent/mobileqq/activity/SplashActivity:d	(Landroid/content/Intent;)Z
     //   356: ifne +238 -> 594
     //   359: aload_0
     //   360: aload_0
     //   361: invokevirtual 126	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
-    //   364: invokespecial 987	com/tencent/mobileqq/activity/SplashActivity:b	(Landroid/content/Intent;)Z
+    //   364: invokespecial 996	com/tencent/mobileqq/activity/SplashActivity:b	(Landroid/content/Intent;)Z
     //   367: ifne +227 -> 594
     //   370: aload_0
     //   371: aload_0
     //   372: invokevirtual 126	com/tencent/mobileqq/activity/SplashActivity:getIntent	()Landroid/content/Intent;
-    //   375: invokespecial 989	com/tencent/mobileqq/activity/SplashActivity:c	(Landroid/content/Intent;)Z
+    //   375: invokespecial 998	com/tencent/mobileqq/activity/SplashActivity:c	(Landroid/content/Intent;)Z
     //   378: ifeq +196 -> 574
     //   381: goto +213 -> 594
     //   384: iload_2
@@ -1043,58 +1045,58 @@ public class SplashActivity
     //   413: invokevirtual 346	android/support/v4/app/FragmentTransaction:add	(ILandroid/support/v4/app/Fragment;Ljava/lang/String;)Landroid/support/v4/app/FragmentTransaction;
     //   416: invokevirtual 349	android/support/v4/app/FragmentTransaction:commitAllowingStateLoss	()I
     //   419: pop
-    //   420: invokestatic 995	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   423: new 997	com/tencent/mobileqq/activity/SplashActivity$1
+    //   420: invokestatic 1004	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
+    //   423: new 1006	com/tencent/mobileqq/activity/SplashActivity$1
     //   426: dup
     //   427: aload_0
-    //   428: invokespecial 998	com/tencent/mobileqq/activity/SplashActivity$1:<init>	(Lcom/tencent/mobileqq/activity/SplashActivity;)V
-    //   431: ldc2_w 742
-    //   434: invokevirtual 1004	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   428: invokespecial 1007	com/tencent/mobileqq/activity/SplashActivity$1:<init>	(Lcom/tencent/mobileqq/activity/SplashActivity;)V
+    //   431: ldc2_w 751
+    //   434: invokevirtual 1013	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   437: pop
     //   438: aload_0
     //   439: aload_3
-    //   440: invokespecial 1006	com/tencent/mobileqq/activity/SplashActivity:e	(Landroid/content/Intent;)Z
+    //   440: invokespecial 1015	com/tencent/mobileqq/activity/SplashActivity:e	(Landroid/content/Intent;)Z
     //   443: pop
     //   444: iconst_1
-    //   445: putstatic 1009	com/tencent/common/app/BaseApplicationImpl:appMainActivityHasLanuch	Z
-    //   448: ldc_w 935
+    //   445: putstatic 1018	com/tencent/common/app/BaseApplicationImpl:appMainActivityHasLanuch	Z
+    //   448: ldc_w 944
     //   451: aconst_null
-    //   452: invokestatic 933	bfzg:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   455: getstatic 1013	com/tencent/widget/immersive/ImmersiveUtils:c	Z
+    //   452: invokestatic 942	bhhy:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   455: getstatic 1022	com/tencent/widget/immersive/ImmersiveUtils:c	Z
     //   458: ifne +29 -> 487
     //   461: aload_0
-    //   462: invokevirtual 1016	com/tencent/mobileqq/activity/SplashActivity:isInMultiWindow	()Z
+    //   462: invokevirtual 1025	com/tencent/mobileqq/activity/SplashActivity:isInMultiWindow	()Z
     //   465: ifne +22 -> 487
     //   468: aload_0
-    //   469: invokevirtual 1020	com/tencent/mobileqq/activity/SplashActivity:getWindow	()Landroid/view/Window;
-    //   472: invokevirtual 1026	android/view/Window:getDecorView	()Landroid/view/View;
-    //   475: new 1028	com/tencent/mobileqq/activity/SplashActivity$2
+    //   469: invokevirtual 1029	com/tencent/mobileqq/activity/SplashActivity:getWindow	()Landroid/view/Window;
+    //   472: invokevirtual 1035	android/view/Window:getDecorView	()Landroid/view/View;
+    //   475: new 1037	com/tencent/mobileqq/activity/SplashActivity$2
     //   478: dup
     //   479: aload_0
-    //   480: invokespecial 1029	com/tencent/mobileqq/activity/SplashActivity$2:<init>	(Lcom/tencent/mobileqq/activity/SplashActivity;)V
-    //   483: invokevirtual 1035	android/view/View:post	(Ljava/lang/Runnable;)Z
+    //   480: invokespecial 1038	com/tencent/mobileqq/activity/SplashActivity$2:<init>	(Lcom/tencent/mobileqq/activity/SplashActivity;)V
+    //   483: invokevirtual 1044	android/view/View:post	(Ljava/lang/Runnable;)Z
     //   486: pop
-    //   487: invokestatic 1039	com/tencent/mobileqq/activity/SplashActivity:getActivityRoutes	()Ljava/util/ArrayList;
+    //   487: invokestatic 1048	com/tencent/mobileqq/activity/SplashActivity:getActivityRoutes	()Ljava/util/ArrayList;
     //   490: astore_1
     //   491: getstatic 24	com/tencent/mobileqq/activity/SplashActivity:jdField_a_of_type_Int	I
     //   494: iconst_1
     //   495: if_icmpne +43 -> 538
     //   498: aload_0
-    //   499: invokevirtual 1040	com/tencent/mobileqq/activity/SplashActivity:a	()I
-    //   502: getstatic 692	com/tencent/mobileqq/activity/home/MainFragment:jdField_b_of_type_Int	I
+    //   499: invokevirtual 1049	com/tencent/mobileqq/activity/SplashActivity:a	()I
+    //   502: getstatic 701	com/tencent/mobileqq/activity/home/MainFragment:jdField_b_of_type_Int	I
     //   505: if_icmpne +33 -> 538
     //   508: aload_1
-    //   509: invokevirtual 1045	java/util/ArrayList:size	()I
+    //   509: invokevirtual 1054	java/util/ArrayList:size	()I
     //   512: iconst_2
     //   513: if_icmpgt +25 -> 538
     //   516: aload_1
-    //   517: invokevirtual 1045	java/util/ArrayList:size	()I
+    //   517: invokevirtual 1054	java/util/ArrayList:size	()I
     //   520: iconst_2
     //   521: if_icmpne +21 -> 542
-    //   524: ldc_w 1047
+    //   524: ldc_w 1056
     //   527: aload_1
     //   528: iconst_0
-    //   529: invokevirtual 1050	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   529: invokevirtual 1059	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   532: invokevirtual 43	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   535: ifne +7 -> 542
     //   538: iconst_0
@@ -1103,7 +1105,7 @@ public class SplashActivity
     //   545: iconst_1
     //   546: if_icmpne -364 -> 182
     //   549: aload_3
-    //   550: invokestatic 1055	azep:a	(Landroid/content/Intent;)Lazem;
+    //   550: invokestatic 1064	bakg:a	(Landroid/content/Intent;)Lbakd;
     //   553: astore_1
     //   554: aload_1
     //   555: ifnull -373 -> 182
@@ -1111,8 +1113,8 @@ public class SplashActivity
     //   559: aload_0
     //   560: getfield 113	com/tencent/mobileqq/activity/SplashActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   563: aload_0
-    //   564: invokevirtual 1059	com/tencent/mobileqq/activity/SplashActivity:getActivity	()Landroid/app/Activity;
-    //   567: invokevirtual 1064	azem:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;)Z
+    //   564: invokevirtual 1068	com/tencent/mobileqq/activity/SplashActivity:getActivity	()Landroid/app/Activity;
+    //   567: invokevirtual 1073	bakd:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/content/Context;)Z
     //   570: pop
     //   571: goto -389 -> 182
     //   574: iconst_0
@@ -1182,6 +1184,11 @@ public class SplashActivity
         QQPlayerService.c(getApplicationContext());
       }
       a();
+      if ((bibb.jdField_a_of_type_ComTencentMobileqqVasUiVasPagView != null) && (bibb.jdField_a_of_type_JavaLangString == "setting"))
+      {
+        bibb.jdField_a_of_type_ComTencentMobileqqVasUiVasPagView = null;
+        bibb.jdField_a_of_type_JavaLangString = "";
+      }
       return;
     }
     catch (Throwable localThrowable)
@@ -1229,7 +1236,7 @@ public class SplashActivity
         }
       }
     }
-    if (((paramInt == 24) || (paramInt == 25)) && (aujj.a(this).a()))
+    if (((paramInt == 24) || (paramInt == 25)) && (avpd.a(this).a()))
     {
       localObject = new Intent();
       ((Intent)localObject).setAction("VolumeBtnDown");
@@ -1291,7 +1298,7 @@ public class SplashActivity
       {
         setIntent(paramIntent);
         b(paramIntent);
-        paramIntent = azep.a(paramIntent);
+        paramIntent = bakg.a(paramIntent);
         if (paramIntent == null) {
           return;
         }
@@ -1306,7 +1313,7 @@ public class SplashActivity
       {
         setIntent(paramIntent);
         ((MainFragment)localObject).a(paramIntent);
-        paramIntent = azep.a(paramIntent);
+        paramIntent = bakg.a(paramIntent);
         if (paramIntent != null) {
           paramIntent.a(this.app, getActivity());
         }
@@ -1458,10 +1465,10 @@ public class SplashActivity
       break label484;
       Fragment localFragment = ((FragmentManager)localObject3).findFragmentByTag(MainFragment.class.getName());
       if (localFragment == null) {
-        break label657;
+        break label675;
       }
       ((MainFragment)localFragment).l();
-      break label657;
+      break label675;
     }
     localObject7 = new Intent(this, DevlockPushActivity.class);
     ((Intent)localObject7).putExtra("canCancel", bool2);
@@ -1481,24 +1488,25 @@ public class SplashActivity
       }
       localObject1 = BaseApplicationImpl.getApplication().getPCActiveNoticeIntent();
       if (localObject1 != null) {
-        break label691;
+        break label709;
       }
       if (QLog.isColorLevel()) {
         QLog.i("SplashActivity", 2, "Intent is null");
       }
     }
     label484:
-    bfzg.a(null, "Main_Resume_PCActive");
+    bhhy.a(null, "Main_Resume_PCActive");
     if ((!TextUtils.isEmpty(this.app.getAccount())) && (!"0".equals(this.app.getAccount()))) {
       ThreadManager.getSubThreadHandler().postDelayed(new SplashActivity.3(this), 800L);
     }
-    bfzg.a("Main_Resume_PCActive", null);
     ThreadManager.getSubThreadHandler().postDelayed(new SplashActivity.4(this), 800L);
+    bhhy.a("Main_Resume_PCActive", null);
+    ThreadManager.getSubThreadHandler().postDelayed(new SplashActivity.5(this), 800L);
     localObject1 = getIntent();
-    if ((((Intent)localObject1).getExtras() != null) && (((Intent)localObject1).getBooleanExtra(bbkv.h, false)))
+    if ((((Intent)localObject1).getExtras() != null) && (((Intent)localObject1).getBooleanExtra(bcrn.h, false)))
     {
-      ((Intent)localObject1).removeExtra(bbkv.h);
-      ThreadManager.post(new SplashActivity.5(this), 8, null, false);
+      ((Intent)localObject1).removeExtra(bcrn.h);
+      ThreadManager.post(new SplashActivity.6(this), 8, null, false);
     }
     if (isInMultiWindow())
     {
@@ -1512,11 +1520,11 @@ public class SplashActivity
     }
     else
     {
-      label657:
-      aafi.d();
+      label675:
+      aauu.d();
       return;
     }
-    label691:
+    label709:
   }
   
   public void doOnStart()
@@ -1527,9 +1535,9 @@ public class SplashActivity
     }
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0) && ("pakage_from_h5".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)))
     {
-      bfvp localbfvp = bfwg.a(this.app, this, this.jdField_a_of_type_JavaLangString);
-      localbfvp.c(this.jdField_b_of_type_JavaLangString);
-      localbfvp.a();
+      bheh localbheh = bhey.a(this.app, this, this.jdField_a_of_type_JavaLangString);
+      localbheh.c(this.jdField_b_of_type_JavaLangString);
+      localbheh.a();
       this.jdField_a_of_type_JavaLangString = null;
       this.jdField_b_of_type_JavaLangString = null;
     }
@@ -1629,8 +1637,8 @@ public class SplashActivity
     if (localObject != null) {
       ((ChatFragment)localObject).b();
     }
-    aewr.a(this.app);
-    bbzy.a(BaseApplicationImpl.getContext(), this.app.getLongAccountUin());
+    afoc.a(this.app);
+    bdgt.a(BaseApplicationImpl.getContext(), this.app.getLongAccountUin());
   }
   
   public void onAccoutChangeFailed()
@@ -1736,10 +1744,10 @@ public class SplashActivity
     {
       LayoutInflater localLayoutInflater = LayoutInflater.from(this);
       this.jdField_a_of_type_ArrayOfAndroidViewView = MainFragment.a(localLayoutInflater);
-      this.jdField_a_of_type_AndroidViewView = localLayoutInflater.inflate(2131558976, null);
-      FPSSwipListView localFPSSwipListView = (FPSSwipListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376025);
+      this.jdField_a_of_type_AndroidViewView = localLayoutInflater.inflate(2131559003, null);
+      FPSSwipListView localFPSSwipListView = (FPSSwipListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376272);
       if (localFPSSwipListView != null) {
-        this.jdField_b_of_type_AndroidViewView = localLayoutInflater.inflate(2131562734, localFPSSwipListView, false);
+        this.jdField_b_of_type_AndroidViewView = localLayoutInflater.inflate(2131562805, localFPSSwipListView, false);
       }
       return;
     }

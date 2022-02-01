@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.zimu;
 
-import lgl;
+import lgx;
 
 public class ZimuItem
-  extends lgl
+  extends lgx
 {
   private String desc;
   private String iconurl;

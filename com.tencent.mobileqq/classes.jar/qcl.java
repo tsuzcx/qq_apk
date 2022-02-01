@@ -1,22 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
-class qcl
-  implements ViewBase.OnClickListener
+public class qcl
+  implements qci
 {
-  qcl(qch paramqch, ArticleInfo paramArticleInfo, Container paramContainer) {}
+  private static qcl a = new qcl();
   
-  public void onClick(ViewBase paramViewBase)
+  public static qcl a()
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.b;
-    if (paramViewBase != null)
-    {
-      rwv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-      qch.a(this.jdField_a_of_type_Qch, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 3, paramViewBase.e, "");
-    }
+    return a;
+  }
+  
+  public void a(String paramString, qcj paramqcj)
+  {
+    swx.a().a(paramString, new qcm(this, paramqcj));
   }
 }
 

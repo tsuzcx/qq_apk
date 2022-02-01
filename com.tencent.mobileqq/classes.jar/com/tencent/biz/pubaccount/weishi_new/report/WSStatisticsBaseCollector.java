@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.weishi_new.report;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bcdb;
-import biaq;
+import bdjw;
+import bjls;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -16,15 +16,16 @@ import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Map;
-import uvu;
-import uyo;
-import yqu;
+import vki;
+import vnd;
+import zfn;
 
 public class WSStatisticsBaseCollector
 {
   private static final String APP_VERSION = AppSetting.a(BaseApplicationImpl.getContext());
   public static final String KEY_REF_PAGE_ID = "key_ref_page_id";
   private static final String SCREEN_RES = ;
+  private static final int[] TEST_ID_ARRAY = { 1, 2, 9, 12, 10007 };
   private static final String UI_VERSION = ROMUtil.getRomName() + ROMUtil.getRomVersion();
   private String mExtendInfo;
   private String mOperationId;
@@ -47,7 +48,7 @@ public class WSStatisticsBaseCollector
     }
     catch (NullPointerException localNullPointerException)
     {
-      bcdb.a(localNullPointerException);
+      bdjw.a(localNullPointerException);
     }
     return "";
   }
@@ -64,10 +65,10 @@ public class WSStatisticsBaseCollector
   
   private String getRefPageId()
   {
-    if (TextUtils.isEmpty(uvu.b)) {
+    if (TextUtils.isEmpty(vki.b)) {
       return LocalMultiProcConfig.getString("weishi_usergrowth", "key_ref_page_id", "");
     }
-    return uvu.b;
+    return vki.b;
   }
   
   private String getSceneFrom()
@@ -77,7 +78,26 @@ public class WSStatisticsBaseCollector
   
   private String getTestId()
   {
+    if (TextUtils.isEmpty(this.mTestId)) {
+      this.mTestId = getValidTestId();
+    }
     return this.mTestId;
+  }
+  
+  private String getValidTestId()
+  {
+    int[] arrayOfInt = TEST_ID_ARRAY;
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = vnd.a(arrayOfInt[i]);
+      if (!TextUtils.isEmpty(str)) {
+        return str;
+      }
+      i += 1;
+    }
+    return "";
   }
   
   public Map<String, String> getBaseParams()
@@ -85,8 +105,8 @@ public class WSStatisticsBaseCollector
     HashMap localHashMap = new HashMap(38);
     localHashMap.put("qimei", UserAction.getQIMEI());
     localHashMap.put("imsi", DeviceInfoUtil.getIMSI());
-    localHashMap.put("imei", biaq.c());
-    localHashMap.put("mac", biaq.a());
+    localHashMap.put("imei", bjls.c());
+    localHashMap.put("mac", bjls.a());
     localHashMap.put("dev_brand", GlobalUtil.getInstance().getBrand());
     localHashMap.put("dev_model", Build.MODEL);
     localHashMap.put("os", "Android");
@@ -94,7 +114,7 @@ public class WSStatisticsBaseCollector
     localHashMap.put("operating_system_version", Build.VERSION.RELEASE);
     localHashMap.put("ui_version", UI_VERSION);
     localHashMap.put("app_ver", APP_VERSION);
-    localHashMap.put("wifiBssid", uyo.e());
+    localHashMap.put("wifiBssid", vnd.e());
     localHashMap.put("push_id", getPushId());
     localHashMap.put("ip", getLocalIpAddress());
     localHashMap.put("session_id", WSPublicAccReport.getInstance().getSessionId());
@@ -102,14 +122,14 @@ public class WSStatisticsBaseCollector
     localHashMap.put("sop_name", getSopName());
     localHashMap.put("qua", QUA.getQUA3());
     localHashMap.put("android_id", DeviceInfoUtil.getAndroidID());
-    localHashMap.put("qq", uyo.a());
-    if (yqu.a(BaseApplicationImpl.getApplication())) {}
+    localHashMap.put("qq", vnd.a());
+    if (zfn.a(BaseApplicationImpl.getApplication())) {}
     for (String str = "1";; str = "0")
     {
       localHashMap.put("if_install_weishi", str);
-      localHashMap.put("person_id", uyo.f());
+      localHashMap.put("person_id", vnd.f());
       localHashMap.put("time", String.valueOf(System.currentTimeMillis()));
-      localHashMap.put("network_type", uyo.d());
+      localHashMap.put("network_type", vnd.d());
       localHashMap.put("extended_fields", getExtendInfo());
       localHashMap.put("scenes_from", getSceneFrom());
       localHashMap.put("operation_id", getOperationId());
@@ -156,7 +176,7 @@ public class WSStatisticsBaseCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsBaseCollector
  * JD-Core Version:    0.7.0.1
  */

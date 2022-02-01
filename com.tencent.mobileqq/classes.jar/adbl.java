@@ -1,27 +1,18 @@
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.AccountDetail;
 
-public class adbl
-  extends bfar
+class adbl
+  extends adah
 {
-  public adbl(ChatSettingForTroop paramChatSettingForTroop) {}
+  adbl(adbk paramadbk, adaa paramadaa) {}
   
-  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean)
+    if (paramBundle != null)
     {
-      Message localMessage = Message.obtain();
-      localMessage.what = 16;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("uinname", paramAccountDetail.name);
-      localBundle.putString("extra_type", paramAccountDetail.summary);
-      localBundle.putLong("uin", paramLong);
-      localMessage.setData(localBundle);
-      this.a.a.sendMessage(localMessage);
+      addh.a(this.jdField_a_of_type_Adaa, adac.a(paramBundle));
+      return;
     }
+    addh.a(this.jdField_a_of_type_Adaa, 1, "get user info error, try again");
   }
 }
 

@@ -1,39 +1,45 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoDelete;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ynr
-  extends nmd
+  implements View.OnClickListener
 {
-  ynr(ynq paramynq) {}
+  ynr(yno paramyno) {}
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "troop story revoke result, code=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
+    String str;
+    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Ywf.jdField_a_of_type_JavaLangString))
+    {
+      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Ywf.jdField_a_of_type_JavaLangString;
+      str = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
+      if ((str.equals("##")) || (TextUtils.isEmpty(str)) || (!str.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
       {
-        paramBundle = new qqstory_group.RspGroupVideoDelete();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
-        if (paramArrayOfByte.error_code.has()) {
-          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "revoke rsp.result.error_code=" + paramArrayOfByte.error_code.get());
-        }
-        return paramArrayOfByte;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
+        ynw localynw = this.a.jdField_a_of_type_Ynw;
+        if (this.a.jdField_a_of_type_Ynw.a())
+        {
+          str = "2";
+          localynw.a("use_custom_tag", 0, 0, new String[] { str });
         }
       }
+      else
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
+      }
     }
-    return null;
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Ynw.a(0);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      str = "1";
+      break;
+      this.a.jdField_a_of_type_JavaLangString = "";
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    }
   }
 }
 

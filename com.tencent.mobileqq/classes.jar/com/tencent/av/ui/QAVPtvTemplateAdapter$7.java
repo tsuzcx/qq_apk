@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mgr;
+import mhn;
 
 public class QAVPtvTemplateAdapter$7
   implements Runnable
 {
-  public QAVPtvTemplateAdapter$7(mgr parammgr, String paramString, int paramInt) {}
+  public QAVPtvTemplateAdapter$7(mhn parammhn, String paramString, int paramInt) {}
   
   public void run()
   {

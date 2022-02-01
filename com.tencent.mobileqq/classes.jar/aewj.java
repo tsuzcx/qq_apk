@@ -1,6 +1,22 @@
-public abstract interface aewj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+
+class aewj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  aewj(aewg paramaewg) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+      this.a.b = true;
+      aewg.a(this.a);
+      this.a.b();
+    }
+  }
 }
 
 

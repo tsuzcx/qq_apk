@@ -1,16 +1,13 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnInfoListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
 
-class bjba
-  implements TVK_IMediaPlayer.OnInfoListener
+public class bjba
+  implements DialogInterface.OnClickListener
 {
-  bjba(bjau parambjau, AbsVideoPlayer.OnInfoListener paramOnInfoListener) {}
+  public bjba(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnInfoListener.onInfo(this.jdField_a_of_type_Bjau, paramInt, 0);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

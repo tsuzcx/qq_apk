@@ -1,10 +1,20 @@
-public abstract interface vkl
+public abstract class vkl
 {
-  public abstract void a(vil paramvil);
+  private int a;
   
-  public abstract void a(vil paramvil, int paramInt);
+  public vkl(int paramInt)
+  {
+    this.a = paramInt;
+  }
   
-  public abstract void b();
+  abstract String a();
+  
+  abstract String b();
+  
+  public String c()
+  {
+    return vnd.a(this.a);
+  }
 }
 
 

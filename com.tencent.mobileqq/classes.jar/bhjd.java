@@ -1,18 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDownFrameLayout;
-
 public class bhjd
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bhjd(SlideDownFrameLayout paramSlideDownFrameLayout) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bhjd()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    SlideDownFrameLayout.a(this.a).a().setY(f);
-    SlideDownFrameLayout.a(this.a).a(f, SlideDownFrameLayout.a(this.a).a().getHeight());
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

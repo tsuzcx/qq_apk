@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aitn
-  implements DialogInterface.OnClickListener
+public class aitn
+  implements View.OnClickListener
 {
-  aitn(aitl paramaitl) {}
+  public aitn(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText()))
+    {
+      this.a.setResult(0);
+      this.a.finish();
     }
-    if (paramInt == 1) {
-      bgge.a(aitl.a(this.a), aitl.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", aitl.a(this.a).getApp().getString(2131718745), "");
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), false);
     }
   }
 }

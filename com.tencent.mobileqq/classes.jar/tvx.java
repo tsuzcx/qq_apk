@@ -1,27 +1,63 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class tvx
+  implements INetInfoHandler
 {
-  private CopyOnWriteArrayList<String> a = new CopyOnWriteArrayList();
+  public tvx(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void a(Context paramContext, pvc parampvc, int paramInt1, int paramInt2)
+  public void onNetMobile2None()
   {
-    if ((this.a == null) || (parampvc.a() == null) || (parampvc.a().mSmallMiniGameInfo == null) || (parampvc.a().mSmallMiniGameInfo.a == null)) {}
-    String str;
-    do
-    {
-      return;
-      str = parampvc.a().mSmallMiniGameInfo.b + "_" + ((tru)parampvc.a().mSmallMiniGameInfo.a.get(paramInt1)).a;
-    } while (this.a.contains(str));
-    this.a.add(str);
-    obb.a(paramContext, parampvc.a(), parampvc.g(), paramInt1, paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_NONE");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_WIFI,ssid=" + paramString);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_XG,ssid=" + paramString);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_WIFI,ssid=" + paramString);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_XG,ssid=" + paramString);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(BridgeModule.TAG, 2, "INetInfoHandler onNetNone2Wifi():NET_NONE");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getNetType(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tvx
  * JD-Core Version:    0.7.0.1
  */

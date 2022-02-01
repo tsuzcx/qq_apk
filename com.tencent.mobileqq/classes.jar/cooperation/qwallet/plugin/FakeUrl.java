@@ -125,7 +125,7 @@ public class FakeUrl
           }
           SpannableString localSpannableString = new SpannableString(str1);
           localSpannableString.setSpan(new FakeUrl.3(this, str2), 0, str1.length(), 33);
-          localSpannableString.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131165793)), 0, str1.length(), 33);
+          localSpannableString.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131165802)), 0, str1.length(), 33);
           localSpannableStringBuilder.append(localSpannableString);
           m = 1;
           i = j;
@@ -179,8 +179,8 @@ public class FakeUrl
     if (TextUtils.isEmpty(paramFakeListener)) {}
     for (paramString = null;; paramString = this.lListener)
     {
-      this.mDialog = new QQCustomDialog(this.context, 2131755826);
-      this.mDialog.setContentView(2131559016);
+      this.mDialog = new QQCustomDialog(this.context, 2131755829);
+      this.mDialog.setContentView(2131559043);
       this.mDialog.setTitle(paramJSONObject.optString("title", null));
       this.mDialog.setMessageWithoutAutoLink(getSpanStr(this.fakeInfo.retmsg));
       this.mDialog.setNegativeButton(paramFakeListener, paramString);

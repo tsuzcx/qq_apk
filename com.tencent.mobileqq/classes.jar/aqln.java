@@ -1,73 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public final class aqln
-  extends aptq<aqlm>
+class aqln
+  implements aqlt
 {
-  public static void a()
-  {
-    QLog.d("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "initConfig");
-    aqlm.a(false, (aqlm)apub.a().a(501));
-  }
+  aqln(aqlm paramaqlm, BaseChatPie paramBaseChatPie) {}
   
-  @NonNull
-  public aqlm a(int paramInt)
+  public void a(int paramInt, aqla paramaqla)
   {
-    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    return new aqlm();
-  }
-  
-  @Nullable
-  public aqlm a(aptx[] paramArrayOfaptx)
-  {
-    return aqlm.a(paramArrayOfaptx);
-  }
-  
-  public void a(aqlm paramaqlm)
-  {
-    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onUpdate");
-    aqlm.a(true, paramaqlm);
-  }
-  
-  public Class<aqlm> clazz()
-  {
-    return aqlm.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.e("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 501;
+    this.jdField_a_of_type_Aqlm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, paramaqla, false);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "dc00898", "", "", "0X800B32D", "0X800B32D", aqlp.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin), 0, paramaqla.a, paramInt + "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqln
  * JD-Core Version:    0.7.0.1
  */

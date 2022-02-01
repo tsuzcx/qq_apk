@@ -1,136 +1,218 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.vas.avatar.VasAvatar;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
+import com.tencent.mobileqq.conditionsearch.data.AddressData.NO_LIMIT_ADDRESS;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class afhr
-  extends GestureDetector.SimpleOnGestureListener
+  implements aquk
 {
-  private afhq a;
+  bkzi jdField_a_of_type_Bkzi;
+  public TroopRobotPickerActivity.RobotPickerData a;
+  IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
   
-  private void a(VasAvatar paramVasAvatar, ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface)
+  public afhr(TroopRobotPickerActivity paramTroopRobotPickerActivity, TroopRobotPickerActivity.RobotPickerData paramRobotPickerData, IphonePickerView paramIphonePickerView, bkzi parambkzi)
   {
-    int i = 1;
-    new afht(paramVasAvatar).a();
-    ((ayap)paramQQAppInterface.getBusinessHandler(193)).a(paramChatMessage.senderuin, paramChatMessage.frienduin, paramChatMessage.istroop);
-    if (paramChatMessage.istroop == 0) {}
-    for (;;)
-    {
-      bcef.b(null, "dc00898", "", "", "0X800B3A1", "0X800B3A1", i, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData = paramRobotPickerData;
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = paramIphonePickerView;
+    this.jdField_a_of_type_Bkzi = parambkzi;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 2) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1 > this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2 != 0)) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.getResources().getString(2131691017), 0).a();
+    }
+    while ((this.jdField_a_of_type_Bkzi == null) || (!this.jdField_a_of_type_Bkzi.isShowing())) {
       return;
-      if (paramChatMessage.istroop == 1) {
-        i = 2;
-      } else {
-        i = 10;
-      }
     }
+    this.jdField_a_of_type_Bkzi.dismiss();
   }
   
-  public void a(afhq paramafhq)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a = paramafhq;
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
-    }
-    this.a.setIsLongpressEnabled(false);
-    Object localObject = this.a.a();
-    ChatMessage localChatMessage = (ChatMessage)((VasAvatar)localObject).getTag();
-    QQAppInterface localQQAppInterface = BaseActivity.sTopActivity.app;
-    if ((((VasAvatar)localObject).getContext() instanceof MultiForwardActivity))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() MultiForwardActivity");
-      }
-      return super.onDoubleTap(paramMotionEvent);
-    }
-    if (!NetworkUtil.isNetSupport(((VasAvatar)localObject).getContext()))
-    {
-      QQToast.a(((VasAvatar)localObject).getContext(), amtj.a(2131713911), 0).a();
-      return super.onDoubleTap(paramMotionEvent);
-    }
-    if (localChatMessage.istroop == 0) {
-      a((VasAvatar)localObject, localChatMessage, localQQAppInterface);
-    }
-    TroopManager localTroopManager;
-    TroopInfo localTroopInfo;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData == null) {}
     do
     {
       do
       {
-        return super.onDoubleTap(paramMotionEvent);
-      } while (localChatMessage.istroop != 1);
-      if (((bfbz)localQQAppInterface.getManager(48)).a(localChatMessage.frienduin, true).a)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() DisableSendMsg");
+        ArrayList localArrayList2;
+        do
+        {
+          do
+          {
+            for (;;)
+            {
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d(TroopRobotPickerActivity.a, 2, "onItemSelected|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType + ", column : " + paramInt1 + ", row : " + paramInt2);
+              }
+              if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 2)
+              {
+                int i;
+                if (paramInt2 >= 0)
+                {
+                  i = paramInt2;
+                  if (paramInt2 < anrz.b.length) {}
+                }
+                else
+                {
+                  i = 0;
+                }
+                switch (paramInt1)
+                {
+                }
+                while ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1 <= this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2) || (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2 == 0))
+                {
+                  this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1;
+                  this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex2 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2;
+                  return;
+                  this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1 = i;
+                  continue;
+                  this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2 = i;
+                }
+              }
+              else
+              {
+                if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 1)
+                {
+                  if (paramInt2 >= 0)
+                  {
+                    paramInt1 = paramInt2;
+                    if (paramInt2 < anrz.c.length) {}
+                  }
+                  else
+                  {
+                    paramInt1 = 0;
+                  }
+                  this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mSexIndex = paramInt1;
+                  return;
+                }
+                switch (paramInt1)
+                {
+                default: 
+                  return;
+                case 0: 
+                  if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[0] != null) && (((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[0]).size() > 0))
+                  {
+                    if (paramInt2 >= 0)
+                    {
+                      paramInt1 = paramInt2;
+                      if (paramInt2 < ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[0]).size()) {}
+                    }
+                    else
+                    {
+                      paramInt1 = 0;
+                    }
+                    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[0] = paramInt1;
+                    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[0] = ((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[0]).get(paramInt1));
+                    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[0] = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[0].code;
+                    ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[0].getDataList();
+                    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount > 1)
+                    {
+                      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1] = localArrayList1;
+                      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[1] = 0;
+                      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[1] = new AddressData.NO_LIMIT_ADDRESS(2);
+                      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[1] = "0";
+                      try
+                      {
+                        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1);
+                        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, 0);
+                        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount > 2)
+                        {
+                          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2] = null;
+                          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[2] = 0;
+                          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[2] = new AddressData.NO_LIMIT_ADDRESS(2);
+                          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[2] = "0";
+                          try
+                          {
+                            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+                            this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, 0);
+                            return;
+                          }
+                          catch (Exception localException1)
+                          {
+                            if (QLog.isColorLevel()) {
+                              QLog.d(TroopRobotPickerActivity.a, 2, localException1, new Object[0]);
+                            }
+                          }
+                          if ((this.jdField_a_of_type_Bkzi != null) && (this.jdField_a_of_type_Bkzi.isShowing()))
+                          {
+                            this.jdField_a_of_type_Bkzi.dismiss();
+                            return;
+                          }
+                        }
+                      }
+                      catch (Exception localException2)
+                      {
+                        for (;;)
+                        {
+                          if (QLog.isColorLevel()) {
+                            QLog.d(TroopRobotPickerActivity.a, 2, localException2, new Object[0]);
+                          }
+                          if ((this.jdField_a_of_type_Bkzi != null) && (this.jdField_a_of_type_Bkzi.isShowing())) {
+                            this.jdField_a_of_type_Bkzi.dismiss();
+                          }
+                        }
+                      }
+                    }
+                  }
+                  break;
+                }
+              }
+            }
+          } while ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1] == null) || (((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1]).size() <= 0));
+          if (paramInt2 >= 0)
+          {
+            paramInt1 = paramInt2;
+            if (paramInt2 < ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1]).size()) {}
+          }
+          else
+          {
+            paramInt1 = 0;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[1] = paramInt1;
+          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[1] = ((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[1]).get(paramInt1));
+          this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[1] = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[1].code;
+          localArrayList2 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[1].getDataList();
+        } while (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount <= 2);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2] = localArrayList2;
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[2] = 0;
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[2] = new AddressData.NO_LIMIT_ADDRESS(2);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[2] = "0";
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, 0);
+          return;
         }
-        return super.onDoubleTap(paramMotionEvent);
-      }
-      if (nmy.a().a(localChatMessage.frienduin))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() AioAnonymous");
+        catch (Exception localException3)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(TroopRobotPickerActivity.a, 2, localException3, new Object[0]);
+          }
         }
-        return super.onDoubleTap(paramMotionEvent);
-      }
-      if (localQQAppInterface.getTroopMask(localChatMessage.frienduin) == 3)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() MSG_FILTER_CLOSE");
-        }
-        return super.onDoubleTap(paramMotionEvent);
-      }
-      localTroopManager = (TroopManager)localQQAppInterface.getManager(52);
-      localTroopInfo = localTroopManager.a(localChatMessage.frienduin, true);
-    } while (localTroopInfo == null);
-    if (localTroopInfo.isDisband())
+      } while ((this.jdField_a_of_type_Bkzi == null) || (!this.jdField_a_of_type_Bkzi.isShowing()));
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2] == null) || (((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2]).size() <= 0));
+    if (paramInt2 >= 0)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694296, 0).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() isDisband");
-      }
-      return super.onDoubleTap(paramMotionEvent);
+      paramInt1 = paramInt2;
+      if (paramInt2 < ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2]).size()) {}
     }
-    localObject = new afhs((VasAvatar)localObject, localChatMessage, localQQAppInterface, this);
-    localTroopManager.a(localChatMessage.frienduin, localChatMessage.senderuin, (ancx)localObject);
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    super.onLongPress(paramMotionEvent);
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarOnGestureListener", 2, "onLongPress() called with: e = [" + paramMotionEvent + "]");
+    else
+    {
+      paramInt1 = 0;
     }
-    paramMotionEvent = this.a.a();
-    if (paramMotionEvent.a()) {
-      paramMotionEvent.performLongClick();
-    }
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarOnGestureListener", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
-    }
-    VasAvatar localVasAvatar = this.a.a();
-    if (localVasAvatar.hasOnClickListeners()) {
-      localVasAvatar.performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationIndexArray[2] = paramInt1;
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[2] = ((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[2]).get(paramInt1));
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[2] = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[2].code;
   }
 }
 

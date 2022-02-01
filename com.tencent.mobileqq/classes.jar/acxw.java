@@ -1,28 +1,8 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-
-public class acxw
-  implements AbsListView.OnScrollListener
+public abstract interface acxw
 {
-  public acxw(ChatHistory paramChatHistory) {}
+  public abstract void a(int paramInt, aauy paramaauy);
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    this.a.m = paramInt;
-    if (paramInt == 0)
-    {
-      AbstractGifImage.resumeAll();
-      return;
-    }
-    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
-      this.a.a.d();
-    }
-    AbstractGifImage.pauseAll();
-  }
+  public abstract void a(long paramLong);
 }
 
 

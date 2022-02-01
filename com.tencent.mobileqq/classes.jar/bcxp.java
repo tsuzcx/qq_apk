@@ -1,14 +1,15 @@
-public class bcxp
-  implements bcyo
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+
+class bcxp
+  implements SDKInitListener
 {
-  public int getCloudFileType()
-  {
-    return 10;
-  }
+  bcxp(bcxo parambcxo) {}
   
-  public boolean isClickable()
+  public void onSDKInited(boolean paramBoolean)
   {
-    return false;
+    bcxo.a(this.a);
+    BaseShortVideoOprerator.a(this.a.a.a, bcxo.a(this.a));
   }
 }
 

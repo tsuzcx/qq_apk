@@ -1,65 +1,60 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.connections.TriangleView;
 
 public class aixz
-  implements bjsd
 {
-  public aixz(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  public ImageView a;
+  public TextView a;
+  public TriangleView a;
+  public ImageView b;
+  public TextView b;
   
-  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  public aixz(View paramView)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.c(l);
-      return;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371939));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371936));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371940));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371938));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView = ((TriangleView)paramView.findViewById(2131379371));
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(true);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
+      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(true);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(true);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setSelected(true);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView.setVisibility(0);
     }
   }
   
-  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisable");
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(false);
     }
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.b(l);
-      return;
+    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
+      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(false);
     }
-  }
-  
-  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisableAndReleased");
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(false);
     }
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.a(l);
-      if (!NetworkUtil.isNetworkAvailable(this.a.getActivity())) {
-        break;
-      }
-      ChatHistoryTroopFileFragment.a(this.a).a(0, 0);
-      return true;
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setSelected(false);
     }
-    ChatHistoryTroopFileFragment.a(this.a, 1);
-    bfby.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.a));
-    return true;
-  }
-  
-  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewNotCompleteVisableAndReleased");
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView.setVisibility(4);
     }
   }
 }

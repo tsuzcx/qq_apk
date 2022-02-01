@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
+import anza;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
 import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
@@ -11,7 +11,7 @@ public abstract class PicDownHandler
 {
   protected void handleRespIp() {}
   
-  protected abstract void handleSucResponse(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, amwm paramamwm);
+  protected abstract void handleSucResponse(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, anza paramanza);
   
   public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
@@ -19,7 +19,7 @@ public abstract class PicDownHandler
     Object localObject = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    amwm localamwm = paramProtoResp.statisInfo;
+    anza localanza = paramProtoResp.statisInfo;
     if (localFromServiceMsg.getResultCode() != 1000)
     {
       int i = localFromServiceMsg.getResultCode();
@@ -31,7 +31,7 @@ public abstract class PicDownHandler
         if (paramProtoReq == null) {
           paramProtoResp = "";
         }
-        setResult(-1, 9311, (String)localObject, paramProtoResp, localamwm, localRichProtoResp.resps);
+        setResult(-1, 9311, (String)localObject, paramProtoResp, localanza, localRichProtoResp.resps);
       }
     }
     for (;;)
@@ -44,9 +44,9 @@ public abstract class PicDownHandler
       if (paramProtoReq == null) {
         paramProtoResp = "";
       }
-      setResult(-1, 9044, (String)localObject, paramProtoResp, localamwm, localRichProtoResp.resps);
+      setResult(-1, 9044, (String)localObject, paramProtoResp, localanza, localRichProtoResp.resps);
       continue;
-      handleSucResponse(paramProtoResp, paramProtoReq, localFromServiceMsg, (byte[])localObject, localRichProtoReq, localRichProtoResp, localamwm);
+      handleSucResponse(paramProtoResp, paramProtoReq, localFromServiceMsg, (byte[])localObject, localRichProtoReq, localRichProtoResp, localanza);
     }
   }
 }

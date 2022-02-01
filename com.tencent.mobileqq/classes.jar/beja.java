@@ -1,19 +1,33 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.effect.engine.QEffectData;
 
-class beja
-  implements CompoundButton.OnCheckedChangeListener
+public class beja
+  implements OnCompositionLoadedListener
 {
-  beja(beiz parambeiz, bejd parambejd) {}
+  public beja(QEffectLottieImageView paramQEffectLottieImageView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if ((paramCompoundButton.isEnabled()) && (!((TroopInfo)this.jdField_a_of_type_Bejd.a).troopuin.equals(beiz.a(this.jdField_a_of_type_Beiz)))) {
-      this.jdField_a_of_type_Bejd.b = Boolean.valueOf(paramBoolean);
+    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
+      QLog.e("QEffectLottieImageView", 1, "onCompositionLoaded: composition= " + paramLottieComposition);
     }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    if (paramLottieComposition == null) {
+      return;
+    }
+    if (QEffectLottieImageView.a(this.a))
+    {
+      QLog.e("QEffectLottieImageView", 1, "onCompositionLoaded: mIsStop " + QEffectLottieImageView.a(this.a));
+      return;
+    }
+    this.a.cancelAnimation();
+    this.a.setComposition(paramLottieComposition);
+    this.a.setProgress(0.0F);
+    this.a.setRepeatCount(QEffectLottieImageView.a(this.a).repeat);
+    this.a.setVisibility(0);
+    this.a.playAnimation();
   }
 }
 

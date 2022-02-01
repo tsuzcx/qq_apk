@@ -1,47 +1,55 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.widget.DrawerFrame;
+import Wallet.AcsMsg;
+import Wallet.AcsPullMsgRsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 class afnp
-  implements View.OnLayoutChangeListener
+  implements afnw
 {
-  afnp(afnn paramafnn, View paramView) {}
+  afnp(afno paramafno, String paramString, afnt paramafnt) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramInt1 == paramInt5) && (paramInt2 == paramInt6) && (paramInt3 == paramInt7) && (paramInt4 == paramInt8)) {
-      return;
-    }
-    paramView = new int[2];
-    paramInt1 = 0;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    do
     {
-      this.jdField_a_of_type_AndroidViewView.getLocationInWindow(paramView);
-      paramInt1 = paramView[1] + this.jdField_a_of_type_AndroidViewView.getHeight();
-    }
-    if (afnn.a(this.jdField_a_of_type_Afnn) != null)
-    {
-      paramInt2 = afnn.a(this.jdField_a_of_type_Afnn).getRight();
-      label81:
-      if (afnn.a(this.jdField_a_of_type_Afnn) == null) {
-        break label180;
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("ReminderDataManagerNew", 2, "getReminderListByday onProcessReminderList isSucc : " + paramBoolean);
+        }
+        if (paramBoolean)
+        {
+          afno.a(this.jdField_a_of_type_Afno).edit().putString("sp_key_new_fetch_reminder_list_time", this.jdField_a_of_type_JavaLangString).apply();
+          paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
+          if (paramBundle != null)
+          {
+            Object localObject = paramBundle.msgs;
+            afno.a(this.jdField_a_of_type_Afno, (List)localObject);
+            if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+            {
+              this.jdField_a_of_type_Afno.a((List)localObject);
+              paramBundle = new ArrayList();
+              localObject = ((ArrayList)localObject).iterator();
+              while (((Iterator)localObject).hasNext()) {
+                paramBundle.add(((AcsMsg)((Iterator)localObject).next()).msg_id);
+              }
+              afnn.a(afno.a(this.jdField_a_of_type_Afno), paramBundle, new afnq(this));
+            }
+          }
+        }
       }
-    }
-    label180:
-    for (paramInt3 = afnn.a(this.jdField_a_of_type_Afnn).getHeight();; paramInt3 = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseChatDrawer", 2, String.format("setTouchableBound, drawerWidth: %s, drawerHeight: %s, titleBarBottom: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1) }));
+      catch (Throwable paramBundle)
+      {
+        QLog.e("ReminderDataManagerNew", 1, "checkTodayReminder throw an exception: " + paramBundle);
+        return;
       }
-      if ((paramInt2 <= 0) || (paramInt3 <= 0) || (paramInt1 <= 0)) {
-        break;
-      }
-      afnn.a(this.jdField_a_of_type_Afnn).setTouchableBound(0, paramInt1, paramInt2, paramInt3);
-      return;
-      paramInt2 = 0;
-      break label81;
-    }
+    } while (this.jdField_a_of_type_Afnt == null);
+    this.jdField_a_of_type_Afnt.a();
   }
 }
 

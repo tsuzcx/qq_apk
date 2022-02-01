@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-final class bnbc
-  implements View.OnClickListener
+public abstract interface bnbc
 {
-  bnbc(AIOLongCaptureCtrl paramAIOLongCaptureCtrl) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void recover(VideoMaterial paramVideoMaterial);
 }
 
 

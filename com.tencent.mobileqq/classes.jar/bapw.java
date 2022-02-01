@@ -1,33 +1,35 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
+import java.io.File;
 
-class bapw
-  implements Observer
+public class bapw
 {
-  bapw(bapu parambapu) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public static boolean a(int paramInt, VideoPlayParam paramVideoPlayParam)
   {
-    if ((paramObject instanceof Integer)) {
-      switch (((Integer)paramObject).intValue())
-      {
+    if ((paramInt == 11022003) && (paramVideoPlayParam.mIsLocal) && (!TextUtils.isEmpty(paramVideoPlayParam.mVideoPath)))
+    {
+      Object localObject = (aqyg)aqxe.a().a(537);
+      if ((localObject != null) && (((aqyg)localObject).e)) {
+        try
+        {
+          localObject = new File(paramVideoPlayParam.mVideoPath);
+          if (((File)localObject).exists())
+          {
+            ((File)localObject).delete();
+            if (QLog.isColorLevel()) {
+              QLog.d("VideoPlatformUtils", 0, "autoDelBadCache, delete file , path = " + paramVideoPlayParam.mVideoPath);
+            }
+            return true;
+          }
+        }
+        catch (Exception paramVideoPlayParam)
+        {
+          QLog.e("VideoPlatformUtils", 1, "autoDelBadCache error.", paramVideoPlayParam);
+        }
       }
     }
-    do
-    {
-      return;
-      paramObservable = this.a.a();
-    } while ((paramObservable == null) || (paramObservable.a.get()) || (this.a.b != true) || (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus == null) || (this.a.c) || (this.a.d));
-    if (QLog.isColorLevel()) {
-      QLog.i("BaseSignViewHolder", 2, "update tplId=" + this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
-    }
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    ThreadManager.getUIHandlerV2().post(this.a.jdField_a_of_type_JavaLangRunnable);
+    return false;
   }
 }
 

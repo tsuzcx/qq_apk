@@ -1,13 +1,15 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-public abstract interface awbm
+public class awbm
+  implements aakw
 {
-  public abstract void a(MultiCardRootLayout paramMultiCardRootLayout);
+  public awbm(UiApiPlugin paramUiApiPlugin) {}
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public void a()
+  {
+    this.a.dispatchJsEvent("qbrowserPullDown", null, null);
+    this.a.h = true;
+  }
 }
 
 

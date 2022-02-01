@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.app;
 
-import amov;
-import amsw;
+import anri;
+import anvk;
 import com.tencent.mobileqq.data.Card;
 import java.util.ArrayList;
 
 public class CardHandler$1
   implements Runnable
 {
-  public CardHandler$1(amov paramamov, int paramInt, ArrayList paramArrayList) {}
+  public CardHandler$1(anri paramanri, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
     String str = this.this$0.app.getCurrentAccountUin();
-    amsw localamsw = (amsw)this.this$0.app.getManager(51);
-    Card localCard = localamsw.b(str);
+    anvk localanvk = (anvk)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Card localCard = localanvk.b(str);
     if (localCard != null)
     {
       localCard.iVoteIncrement = this.jdField_a_of_type_Int;
-      localamsw.a(localCard);
+      localanvk.a(localCard);
     }
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      amov.a(str, this.jdField_a_of_type_JavaUtilArrayList);
+      anri.a(str, this.jdField_a_of_type_JavaUtilArrayList);
     }
   }
 }

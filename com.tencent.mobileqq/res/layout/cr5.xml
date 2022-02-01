@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/nee" android:background="#55000000" android:padding="10.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="?android:actionBarSize"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/al3" android:id="@id/nmx" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <TextView android:textColor="@color/al3" android:id="@id/lip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <TextView android:textColor="@color/al3" android:id="@id/ljh" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <TextView android:textColor="@color/al3" android:id="@id/juw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
-    <TextView android:textColor="@color/al3" android:id="@id/bcp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <View android:id="@id/mrc" android:paddingBottom="3.0dip" android:visibility="invisible" android:layout_width="@dimen/bcr" android:layout_height="@dimen/b66" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/nr_" android:layout_width="@dimen/bcs" android:layout_height="@dimen/bcs" android:layout_marginLeft="@dimen/bct" android:scaleType="fitCenter" android:layout_toRightOf="@id/mrc" android:layout_alignTop="@id/mrc" />
+    <ImageView android:id="@id/mjl" android:background="@drawable/gyg" android:visibility="invisible" android:layout_width="@dimen/bd0" android:layout_height="@dimen/bcy" android:layout_marginLeft="@dimen/bcz" android:layout_alignLeft="@id/nr_" android:layout_alignTop="@id/mrc" />
+    <ImageView android:id="@id/nrc" android:layout_width="@dimen/bcx" android:layout_height="@dimen/bcx" android:layout_marginTop="@dimen/bcu" android:layout_marginRight="@dimen/bcw" android:layout_alignRight="@id/mjl" />
+    <View android:id="@id/mrb" android:background="@drawable/gyg" android:visibility="invisible" android:layout_width="@dimen/bd0" android:layout_height="@dimen/bcy" android:layout_marginTop="@dimen/bcv" android:layout_alignTop="@id/nrc" android:layout_alignRight="@id/mjl" />
+</RelativeLayout>

@@ -1,13 +1,45 @@
-class zkd
-  implements zke
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+
+public class zkd
+  implements View.OnLongClickListener
 {
-  zkd(zkc paramzkc) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new zkf(this);
+  View jdField_a_of_type_AndroidViewView;
   
-  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
+  public zkd(QRCardActivity paramQRCardActivity) {}
+  
+  @SuppressLint({"ServiceCast", "NewApi"})
+  void a(String paramString)
   {
-    if (this.a.jdField_a_of_type_Zkl != null) {
-      this.a.jdField_a_of_type_Zkl.a(paramBoolean, this.a.jdField_a_of_type_JavaLangString, false);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (Build.VERSION.SDK_INT < 11) {
+        ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+      }
     }
+    else {
+      return;
+    }
+    ((android.content.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (paramView == null) {
+      return false;
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramView.setSelected(true);
+    bhjq localbhjq = new bhjq();
+    localbhjq.a(2131365307, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131691264), 2130838982);
+    bhcw.a(paramView, localbhjq, this.jdField_a_of_type_AndroidViewView$OnClickListener, new zke(this, paramView));
+    return true;
   }
 }
 

@@ -1,28 +1,21 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aejr
   implements DialogInterface.OnClickListener
 {
-  public aejr(TranslucentTRansferFragment paramTranslucentTRansferFragment, QQCustomDialog paramQQCustomDialog) {}
+  public aejr(NotificationActivity paramNotificationActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity(), RegisterPhoneNumActivity.class);
-    paramDialogInterface.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity().getIntent().getStringExtra("invite_code"));
-    this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.startActivity(paramDialogInterface);
-    bcef.b(null, "dc00898", "", "", "0X800970C", "0X800970C", 0, 0, "", "", "", "");
+    bdla.a(this.a.app, "dc00898", "", "", "0X800B42D", "0X800B42D", 0, 0, "", "", "", "");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejr
  * JD-Core Version:    0.7.0.1
  */

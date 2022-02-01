@@ -1,37 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class srp
-  implements std
+final class srp
+  extends sro
 {
-  public srp(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
+  private final int jdField_a_of_type_Int;
+  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
   
-  public int a()
+  public srp(int paramInt)
   {
-    return nwz.a().a();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public BaseData a()
+  public long a(long paramLong)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+    if ((this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    for (paramLong = 0L; localIterator.hasNext(); paramLong = ((Long)localIterator.next()).longValue() + paramLong) {}
+    return paramLong / this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
   public void a()
   {
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    super.a();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
   
   public void b()
   {
-    if (AdData.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData))
-    {
-      AdData localAdData = (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-      if (localAdData.a != null) {
-        nwz.a().a(Long.valueOf(localAdData.a.mAdAid));
-      }
-    }
+    super.b();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public String toString()
+  {
+    return "MoveAvgPredictor(" + this.jdField_a_of_type_Int + ')';
   }
 }
 

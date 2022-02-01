@@ -1,71 +1,68 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqreader.view.ReaderTabBarView;
-import java.util.List;
-import mqq.util.WeakReference;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bkvl
-  implements View.OnClickListener
 {
-  final int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  final List<WebViewTabBarData> jdField_a_of_type_JavaUtilList;
-  final WeakReference<ReaderTabBarView> jdField_a_of_type_MqqUtilWeakReference;
+  private AtomicInteger a = new AtomicInteger(0);
   
-  public bkvl(ReaderTabBarView paramReaderTabBarView, int paramInt, @NonNull List<WebViewTabBarData> paramList)
+  public void a()
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramReaderTabBarView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    int i;
+    do
+    {
+      i = this.a.get();
+      if ((i & 0xFFFFFFFE) == 0) {}
+      do
+      {
+        return;
+        if ((i & 0x1) == 0) {
+          break;
+        }
+      } while ((this.a.addAndGet(-2) & 0xFFFFFFFE) != 0);
+      synchronized (this.a)
+      {
+        this.a.notifyAll();
+        return;
+      }
+    } while (!this.a.compareAndSet(i, i - 2));
   }
   
-  public void onClick(View paramView)
+  public boolean a()
   {
-    ReaderTabBarView localReaderTabBarView = (ReaderTabBarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localReaderTabBarView == null) {}
-    for (;;)
+    int i;
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      i = this.a.get();
+      if ((i & 0x1) != 0) {
+        return false;
+      }
+    } while (!this.a.compareAndSet(i, i + 2));
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a.compareAndSet(0, 1)) {}
+    while (this.a.compareAndSet(1, 1)) {
       return;
-      if (this.jdField_a_of_type_Int != ReaderTabBarView.a(localReaderTabBarView))
+    }
+    int i;
+    do
+    {
+      i = this.a.get();
+    } while (!this.a.compareAndSet(i, i | 0x1));
+    try
+    {
+      synchronized (this.a)
       {
-        long l = System.currentTimeMillis();
-        if (l - this.jdField_a_of_type_Long >= 500L)
-        {
-          this.jdField_a_of_type_Long = l;
-          localReaderTabBarView.setSelectedTab(this.jdField_a_of_type_Int);
-          int i = ReaderTabBarView.a(localReaderTabBarView)[this.jdField_a_of_type_Int];
-          localReaderTabBarView.setCurrentItemId(i);
-          localReaderTabBarView.a();
-          ReaderTabBarView.a(localReaderTabBarView, i);
-          String str1 = localReaderTabBarView.b();
-          String str2 = localReaderTabBarView.a();
-          switch (i)
-          {
-          default: 
-            break;
-          case 0: 
-            bkvg.a(str1, str2, "297", "0", "3", "", "");
-            if (localReaderTabBarView.a(i)) {
-              bkvg.a(str1, str2, "69", "336", "0", "3", "", "", "");
-            }
-            break;
-          case 1: 
-            bkvg.a(str1, str2, "298", "0", "3", "", "");
-            break;
-          case 3: 
-            if (bkvb.f(localReaderTabBarView.getContext())) {
-              bkvb.f(localReaderTabBarView.getContext(), false);
-            }
-            bkvg.a(str1, str2, "300", "0", "3", "", "");
-            break;
-          case 2: 
-            bkvg.a(str1, str2, "1847", "0", "3", "", "");
-          }
-        }
+        this.a.wait();
+        return;
+      }
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
       }
     }
   }

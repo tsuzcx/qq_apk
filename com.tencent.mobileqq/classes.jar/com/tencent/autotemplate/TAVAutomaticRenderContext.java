@@ -41,8 +41,9 @@ public class TAVAutomaticRenderContext
   extends TAVStickerRenderContext
 {
   private static final String KEY_EXTRA_STICKER_SPEED = "key_extra_sticker_speed";
-  private static final String KEY_EXTRA_STICKER_TYPE = "key_extra_sticker_type";
-  private static final String STICKER_VIDEO_TRANSITION = "sticker_video_transition";
+  public static final String KEY_EXTRA_STICKER_TYPE = "key_extra_sticker_type";
+  public static final String STICKER_VIDEO_TRANSITION = "sticker_video_transition";
+  public static final int TRANSITION_LAYER_SUM = 2;
   public static final String VIDEO_TRACK = "videoTrack";
   private final String TAG = "TAVAutomaticRenderConte@" + Integer.toHexString(hashCode());
   private List<TAVSourceImage> cacheImagesForRelease = null;
@@ -116,7 +117,7 @@ public class TAVAutomaticRenderContext
     return null;
   }
   
-  private static boolean isLayerFillAble(TAVStickerLayerInfo paramTAVStickerLayerInfo)
+  public static boolean isLayerFillAble(TAVStickerLayerInfo paramTAVStickerLayerInfo)
   {
     label4:
     Iterator localIterator;
@@ -175,10 +176,11 @@ public class TAVAutomaticRenderContext
     {
       localObject1 = (List)this.mapVideoTrack.get(paramTAVSticker.getUniqueId());
       if (CollectionUtil.isEmptyList((List)localObject1)) {
-        break label535;
+        break label594;
       }
     }
-    label535:
+    label454:
+    label594:
     for (int i = ((List)localObject1).size();; i = 0)
     {
       int k = paramList.size();
@@ -201,17 +203,32 @@ public class TAVAutomaticRenderContext
         }
       }
       boolean bool = "sticker_video_transition".equals(paramTAVSticker.getExtraBundle().getString("key_extra_sticker_type"));
-      if ((CollectionUtil.isEmptyList((List)localObject1)) && (bool)) {}
-      do
+      if ((CollectionUtil.isEmptyList((List)localObject1)) && (bool))
       {
-        return false;
+        localObject2 = paramTAVSticker.getStickerImageItems();
+        if (((ArrayList)localObject2).size() == 2)
+        {
+          i = 0;
+          while (i < ((ArrayList)localObject2).size())
+          {
+            ((List)localObject1).add(((TAVStickerImageItem)((ArrayList)localObject2).get(i)).getLayerInfo());
+            i += 1;
+          }
+        }
+      }
+      else
+      {
         Collections.sort((List)localObject1, new TAVAutomaticRenderContext.1(this));
         float f = paramTAVSticker.getExtraBundle().getFloat("key_extra_sticker_speed", 1.0F);
         if ((!bool) || (k != 1) || (((List)localObject1).size() != 2)) {
-          break;
+          break label569;
         }
         localObject2 = new CMTime(paramLong, 1000).sub(paramTAVSticker.getTimeRange().getStart()).multi(f);
-      } while ((((TAVStickerLayerInfo)((List)localObject1).get(0)).getTimeRange().getEnd().bigThan(((TAVStickerLayerInfo)((List)localObject1).get(1)).getTimeRange().getStart())) && (((CMTime)localObject2).bigThan(((TAVStickerLayerInfo)((List)localObject1).get(1)).getTimeRange().getStart())) && (((TAVStickerLayerInfo)((List)localObject1).get(0)).getTimeRange().getEnd().bigThan((CMTime)localObject2)));
+        if ((!((TAVStickerLayerInfo)((List)localObject1).get(0)).getTimeRange().getEnd().bigThan(((TAVStickerLayerInfo)((List)localObject1).get(1)).getTimeRange().getStart())) || (!((CMTime)localObject2).bigThan(((TAVStickerLayerInfo)((List)localObject1).get(1)).getTimeRange().getStart())) || (!((TAVStickerLayerInfo)((List)localObject1).get(0)).getTimeRange().getEnd().bigThan((CMTime)localObject2))) {
+          break label454;
+        }
+      }
+      return false;
       if (((CMTime)localObject2).sub(((TAVStickerLayerInfo)((List)localObject1).get(0)).getTimeRange().getEnd()).getTimeUs() >= 0L) {}
       for (bool = true;; bool = false)
       {
@@ -281,6 +298,7 @@ public class TAVAutomaticRenderContext
   public void readAllVideoTracks()
   {
     checkStickerList();
+    this.mapVideoTrack.clear();
     Iterator localIterator = this.stickers.iterator();
     while (localIterator.hasNext())
     {
@@ -302,15 +320,15 @@ public class TAVAutomaticRenderContext
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 86	com/tencent/autotemplate/TAVAutomaticRenderContext:renderThreadId	J
-    //   6: ldc2_w 83
+    //   3: getfield 89	com/tencent/autotemplate/TAVAutomaticRenderContext:renderThreadId	J
+    //   6: ldc2_w 86
     //   9: lcmp
     //   10: ifeq +24 -> 34
     //   13: aload_0
-    //   14: getfield 86	com/tencent/autotemplate/TAVAutomaticRenderContext:renderThreadId	J
+    //   14: getfield 89	com/tencent/autotemplate/TAVAutomaticRenderContext:renderThreadId	J
     //   17: lstore_1
-    //   18: invokestatic 444	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   21: invokevirtual 447	java/lang/Thread:getId	()J
+    //   18: invokestatic 451	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   21: invokevirtual 454	java/lang/Thread:getId	()J
     //   24: lstore_3
     //   25: lload_1
     //   26: lload_3
@@ -320,16 +338,16 @@ public class TAVAutomaticRenderContext
     //   32: monitorexit
     //   33: return
     //   34: aload_0
-    //   35: invokespecial 449	com/tencent/tavsticker/core/TAVStickerRenderContext:release	()V
+    //   35: invokespecial 456	com/tencent/tavsticker/core/TAVStickerRenderContext:release	()V
     //   38: aload_0
-    //   39: getfield 384	com/tencent/autotemplate/TAVAutomaticRenderContext:mCopyTextureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
+    //   39: getfield 388	com/tencent/autotemplate/TAVAutomaticRenderContext:mCopyTextureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
     //   42: ifnull -11 -> 31
     //   45: aload_0
-    //   46: getfield 384	com/tencent/autotemplate/TAVAutomaticRenderContext:mCopyTextureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
-    //   49: invokevirtual 450	com/tencent/tav/coremedia/TextureInfo:release	()V
+    //   46: getfield 388	com/tencent/autotemplate/TAVAutomaticRenderContext:mCopyTextureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
+    //   49: invokevirtual 457	com/tencent/tav/coremedia/TextureInfo:release	()V
     //   52: aload_0
     //   53: aconst_null
-    //   54: putfield 384	com/tencent/autotemplate/TAVAutomaticRenderContext:mCopyTextureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
+    //   54: putfield 388	com/tencent/autotemplate/TAVAutomaticRenderContext:mCopyTextureInfo	Lcom/tencent/tav/coremedia/TextureInfo;
     //   57: goto -26 -> 31
     //   60: astore 5
     //   62: aload_0

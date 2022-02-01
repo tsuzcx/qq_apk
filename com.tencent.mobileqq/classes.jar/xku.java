@@ -1,26 +1,52 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import mqq.os.MqqHandler;
 
-class xku
-  extends QQUIEventReceiver<xks, wdj>
+public class xku
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public xku(@NonNull xks paramxks)
-  {
-    super(paramxks);
-  }
+  xku(xkq paramxkq) {}
   
-  public void a(@NonNull xks paramxks, @NonNull wdj paramwdj)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    xvv.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video info list. %s.", paramwdj.toString());
-    if (paramwdj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      xks.a(paramxks).a(paramwdj.jdField_a_of_type_JavaLangString, paramwdj.jdField_a_of_type_JavaUtilList);
+    switch (paramInt)
+    {
+    default: 
+      ykq.d(this.a.a, "onInfo. what=%d (%s), extra=%s", new Object[] { Integer.valueOf(paramInt), xka.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt, "UNKNOWN"), paramObject });
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wdj.class;
+    for (;;)
+    {
+      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.4.1(this, paramInt, paramObject));
+      return false;
+      int i = ((Integer)paramObject).intValue();
+      if ((i >= 0) && (i <= xka.b.length))
+      {
+        ykq.d(this.a.a, "onInfo. playerType %s", new Object[] { xka.b[i] });
+      }
+      else
+      {
+        ykq.d(this.a.a, "onInfo. playerType %d", new Object[] { Integer.valueOf(i) });
+        continue;
+        ykq.d(this.a.a, "onInfo. start buffering");
+        continue;
+        ykq.d(this.a.a, "onInfo. end buffering");
+        continue;
+        i = ((Integer)paramObject).intValue();
+        if ((i >= 0) && (i < xka.jdField_a_of_type_ArrayOfJavaLangString.length))
+        {
+          ykq.d(this.a.a, "onInfo. set decoder. %s", new Object[] { xka.jdField_a_of_type_ArrayOfJavaLangString[i] });
+          xkq.a(this.a).d = xka.jdField_a_of_type_ArrayOfJavaLangString[i];
+        }
+        else
+        {
+          ykq.d(this.a.a, "onInfo. set decoder. %d", new Object[] { Integer.valueOf(i) });
+          xkq.a(this.a).d = ("Unknown " + i);
+        }
+      }
+    }
   }
 }
 

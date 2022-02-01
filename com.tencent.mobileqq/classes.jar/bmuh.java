@@ -1,22 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bmuh
-  implements bmuj
+final class bmuh
+  implements DialogInterface.OnClickListener
 {
-  public bmuh(QIMInformationPasterManager.2 param2) {}
-  
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, bnli parambnli)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "isSucess:" + paramBoolean + " url:" + paramString + " item:" + parambnli);
-    }
-    if (parambnli.a() != null) {
-      parambnli.a().a(paramBoolean);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

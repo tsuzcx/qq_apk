@@ -1,31 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.Face;
+import tencent.im.msg.im_msg_body.OnlineImage;
+import tencent.im.msg.im_msg_body.SmallEmoji;
+import tencent.im.msg.im_msg_body.Text;
 
-final class acvg
-  implements DialogInterface.OnClickListener
+public class acvg
+  extends acve
 {
-  acvg(acxb paramacxb, int paramInt, acxa paramacxa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static Boolean a(im_msg_body.Elem paramElem)
   {
-    if (this.jdField_a_of_type_Acxb.a)
-    {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label59;
-      }
-      bcef.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
+    boolean bool = true;
+    if ((paramElem.text.has()) || (paramElem.face.has()) || (paramElem.small_emoji.has()) || (paramElem.online_image.has()) || (paramElem.bankcode_ctrl_info.has())) {
+      return Boolean.valueOf(true);
     }
-    for (;;)
+    if (paramElem.common_elem.has())
     {
-      if (this.jdField_a_of_type_Acxa != null) {
-        this.jdField_a_of_type_Acxa.onCancel();
-      }
-      return;
-      label59:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        bcef.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
+      if (33 == paramElem.common_elem.uint32_service_type.get()) {}
+      for (;;)
+      {
+        return Boolean.valueOf(bool);
+        bool = false;
       }
     }
+    return Boolean.valueOf(false);
+  }
+  
+  public int a()
+  {
+    return -1;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
+  {
+    new bcrt().i(paramList, paramList1, paramStringBuilder, paramMsg, parambffl);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return a(paramElem).booleanValue();
   }
 }
 

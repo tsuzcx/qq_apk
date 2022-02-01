@@ -1,17 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
 
-class ageq
-  extends aghj
+final class ageq
+  implements ante
 {
-  ageq(agcw paramagcw)
+  public void onDpcPullFinished(boolean paramBoolean)
   {
-    super(paramagcw, null);
-  }
-  
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agtw(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (paramBoolean) {
+      agep.a(true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+    }
   }
 }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.PointF;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Pair;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,6 +20,12 @@ import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.constant.MaterialType;
 import com.tencent.ttpic.factory.ShakaFilterFactory.FILTER_TYPE;
 import com.tencent.ttpic.filament.FilamentUtil;
+import com.tencent.ttpic.filter.juyoujinggame.AppleItemSetting;
+import com.tencent.ttpic.filter.juyoujinggame.FlashItemSetting;
+import com.tencent.ttpic.filter.juyoujinggame.ScoreItemSetting;
+import com.tencent.ttpic.filter.juyoujinggame.TachiSetting;
+import com.tencent.ttpic.filter.juyoujinggame.UKYOGameSetting;
+import com.tencent.ttpic.filter.juyoujinggame.UKYOScorePositions;
 import com.tencent.ttpic.gameplaysdk.model.GameParams;
 import com.tencent.ttpic.gameplaysdk.model.NodeParameter;
 import com.tencent.ttpic.gameplaysdk.model.Range;
@@ -41,6 +48,7 @@ import com.tencent.ttpic.model.GenderRange;
 import com.tencent.ttpic.model.GridModel;
 import com.tencent.ttpic.model.GridSettingModel;
 import com.tencent.ttpic.model.ImageMaskItem;
+import com.tencent.ttpic.model.ImagesSetting;
 import com.tencent.ttpic.model.MultiViewerItem;
 import com.tencent.ttpic.model.NonFitItem;
 import com.tencent.ttpic.model.PhantomItem;
@@ -65,6 +73,8 @@ import com.tencent.ttpic.openapi.model.BigItem;
 import com.tencent.ttpic.openapi.model.BloomParam;
 import com.tencent.ttpic.openapi.model.BuckleFaceItem;
 import com.tencent.ttpic.openapi.model.BuckleFrameItem;
+import com.tencent.ttpic.openapi.model.CameraTransform;
+import com.tencent.ttpic.openapi.model.CameraViewConfig;
 import com.tencent.ttpic.openapi.model.CustomMaterialItem;
 import com.tencent.ttpic.openapi.model.CustomMaterialItem.CustomMaterialParams;
 import com.tencent.ttpic.openapi.model.DistortionItem;
@@ -76,16 +86,19 @@ import com.tencent.ttpic.openapi.model.FaceImageLayer;
 import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.model.FaceStyleItem;
 import com.tencent.ttpic.openapi.model.FaceStyleItem.CartoonFaceLine;
+import com.tencent.ttpic.openapi.model.FaceStyleItem.ChangeGenderCropParams;
+import com.tencent.ttpic.openapi.model.FaceStyleItem.ChangeGenderParams;
 import com.tencent.ttpic.openapi.model.FaceStyleItem.ModelConfig;
 import com.tencent.ttpic.openapi.model.FaceStyleItem.ModelConfigItem;
 import com.tencent.ttpic.openapi.model.FaceStyleItem.Process;
 import com.tencent.ttpic.openapi.model.FaceStyleItem.Render;
-import com.tencent.ttpic.openapi.model.FaceStyleItem.STYLE_CHANGE_TYPE;
+import com.tencent.ttpic.openapi.model.FaceStyleItem.StyleChangeType;
 import com.tencent.ttpic.openapi.model.GLBItemJava;
 import com.tencent.ttpic.openapi.model.GridViewerItem;
 import com.tencent.ttpic.openapi.model.LightItem;
 import com.tencent.ttpic.openapi.model.MaterialStateEdgeItem;
 import com.tencent.ttpic.openapi.model.NodeItemJava;
+import com.tencent.ttpic.openapi.model.OvalDistortionItem;
 import com.tencent.ttpic.openapi.model.Rect;
 import com.tencent.ttpic.openapi.model.StarParam;
 import com.tencent.ttpic.openapi.model.StickerItem;
@@ -118,7 +131,6 @@ import com.tencent.ttpic.trigger.TriggerTimeUpdater;
 import com.tencent.ttpic.util.ActUtil;
 import com.tencent.ttpic.util.DecryptListener;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
 import com.tencent.ttpic.util.GsonUtils;
 import com.tencent.ttpic.util.StrokeUtil;
 import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
@@ -138,6 +150,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -333,7 +346,7 @@ public class VideoTemplateParser
         i = 0;
         k = 0;
         if (k >= localJsonArray.size()) {
-          break label3567;
+          break label3584;
         }
         localJsonObject = GsonUtils.getJsonObjectUnsafe(localJsonArray, k);
         localStickerItem3D = new StickerItem3D();
@@ -406,6 +419,9 @@ public class VideoTemplateParser
           localStickerItem3D.blendMode = GsonUtils.optInt(localJsonObject, "blendMode", -1);
           localStickerItem3D.zIndex = GsonUtils.optInt(localJsonObject, "zIndex", 0);
           localStickerItem3D.audioLoopCount = GsonUtils.optInt(localJsonObject, "audioLoopCount", -1);
+          if (localStickerItem3D.audioLoopCount >= 0) {
+            paramVideoMaterial.setMusicPlayCount(localStickerItem3D.audioLoopCount);
+          }
           paramJsonObject = GsonUtils.optJsonObject(localJsonObject, VideoMaterialUtil.FIELD.CHARM_RANGE.value);
           if (paramJsonObject != null)
           {
@@ -435,10 +451,10 @@ public class VideoTemplateParser
           if ((localStickerItem3D.stickerType == VideoFilterFactory.STICKER_TYPE.VIDEO_UP_DOWN.type) || (localStickerItem3D.stickerType == VideoFilterFactory.STICKER_TYPE.VIDEO_LEFT_RIGHT.type))
           {
             if (localStickerItem3D.stickerType != VideoFilterFactory.STICKER_TYPE.VIDEO_UP_DOWN.type) {
-              break label982;
+              break label999;
             }
             paramJsonObject = VideoMaterialUtil.ITEM_SOURCE_TYPE.VIDEO_UP_DOWN;
-            label823:
+            label840:
             localStickerItem3D.sourceType = paramJsonObject;
           }
           localStickerItem3D.width = GsonUtils.optInt(localJsonObject, "width");
@@ -448,7 +464,7 @@ public class VideoTemplateParser
           localStickerItem3D.support3D = GsonUtils.optInt(localJsonObject, "enable3D", 1);
           paramJsonObject = GsonUtils.optJsonArray(localJsonObject, "position");
           if (paramJsonObject == null) {
-            break label989;
+            break label1006;
           }
           localStickerItem3D.position = new double[paramJsonObject.size()];
           j = 0;
@@ -465,23 +481,25 @@ public class VideoTemplateParser
     {
       LogUtils.e(TAG, paramString);
     }
-    label975:
-    label982:
-    label989:
+    label992:
+    label999:
+    label1006:
     int m;
-    label1059:
-    label1573:
-    label1910:
+    label1076:
+    label1590:
+    label2365:
+    label2663:
+    label2793:
     do
     {
       bool = false;
       break;
       paramJsonObject = VideoMaterialUtil.ITEM_SOURCE_TYPE.VIDEO_LEFT_RIGHT;
-      break label823;
+      break label840;
       localStickerItem3D.position = new double[] { 0.0D, 0.0D };
       localStickerItem3D.audio = GsonUtils.optString(localJsonObject, "audio");
       if ((!TextUtils.isEmpty(localStickerItem3D.audio)) && (!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("assets://camera/camera_video/video_")) || (paramString.contains("/files/olm/camera/video_")))) {
-        break label3515;
+        break label3532;
       }
       paramJsonObject = GsonUtils.optJsonArray(localJsonObject, "anchorPoint");
       if (paramJsonObject != null)
@@ -559,7 +577,7 @@ public class VideoTemplateParser
         {
           Object localObject2 = GsonUtils.optJsonObject(paramJsonObject, j);
           if (localObject2 == null) {
-            break label3546;
+            break label3563;
           }
           m = GsonUtils.optInt((JsonObject)localObject2, VideoMaterialUtil.WATERMARK_ELEMENT.WMTYPE.value);
           WMElementConfig localWMElementConfig = new WMElementConfig();
@@ -573,7 +591,7 @@ public class VideoTemplateParser
             localWMElementConfig.relativeAnchor = new PointF((float)GsonUtils.getDoubleUnsafe((JsonArray)localObject3, 0), (float)GsonUtils.getDoubleUnsafe((JsonArray)localObject3, 1));
             localObject3 = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.WATERMARK_ELEMENT.ANCHOR.value);
             if ((localObject3 == null) || (((JsonArray)localObject3).size() != 2)) {
-              break label2646;
+              break label2663;
             }
           }
           Object localObject4;
@@ -590,12 +608,12 @@ public class VideoTemplateParser
             localWMElementConfig.fmtstr = GsonUtils.optString((JsonObject)localObject2, VideoMaterialUtil.WATERMARK_ELEMENT.FMTSTR.value);
             localWMElementConfig.fontName = GsonUtils.optString((JsonObject)localObject2, VideoMaterialUtil.WATERMARK_ELEMENT.FONT_NAME.value);
             if (GsonUtils.optInt((JsonObject)localObject2, VideoMaterialUtil.WATERMARK_ELEMENT.FONT_BOLD.value) != 1) {
-              break label3522;
+              break label3539;
             }
             bool = true;
             localWMElementConfig.fontBold = bool;
             if (GsonUtils.optInt((JsonObject)localObject2, VideoMaterialUtil.WATERMARK_ELEMENT.FONT_ITALICS.value) != 1) {
-              break label3528;
+              break label3545;
             }
             bool = true;
             localWMElementConfig.fontItalics = bool;
@@ -620,12 +638,12 @@ public class VideoTemplateParser
             localWMElementConfig.outerStrokeSize = ((float)GsonUtils.optDouble((JsonObject)localObject2, VideoMaterialUtil.WATERMARK_ELEMENT.OUTER_STROKE_SIZE.value, -1.0D));
             localWMElementConfig.shaderBmp = GsonUtils.optString((JsonObject)localObject2, VideoMaterialUtil.WATERMARK_ELEMENT.SHADER_BMP.value, null);
             if (GsonUtils.optInt((JsonObject)localObject2, VideoMaterialUtil.WATERMARK_ELEMENT.EMBOSS.value, 0) != 1) {
-              break label3534;
+              break label3551;
             }
             bool = true;
             localWMElementConfig.emboss = bool;
             if (GsonUtils.optInt((JsonObject)localObject2, VideoMaterialUtil.WATERMARK_ELEMENT.MULTI_ROW.value, 0) != 1) {
-              break label3540;
+              break label3557;
             }
             bool = true;
             localWMElementConfig.multiRow = bool;
@@ -637,7 +655,7 @@ public class VideoTemplateParser
             localWMElementConfig.textSource = GsonUtils.optString((JsonObject)localObject2, VideoMaterialUtil.WATERMARK_ELEMENT.TEXTSOURCE.value);
             localObject3 = GsonUtils.optJsonObject((JsonObject)localObject2, VideoMaterialUtil.WATERMARK_ELEMENT.LOGIC.value);
             if (localObject3 == null) {
-              break label2776;
+              break label2793;
             }
             localObject2 = new WMLogic();
             ((WMLogic)localObject2).type = GsonUtils.optString((JsonObject)localObject3, VideoMaterialUtil.WATERMARK_LOGIC.TYPE.value);
@@ -645,7 +663,7 @@ public class VideoTemplateParser
             ((WMLogic)localObject2).data = GsonUtils.optString((JsonObject)localObject3, VideoMaterialUtil.WATERMARK_LOGIC.DATA.value);
             localObject4 = GsonUtils.optJsonObject((JsonObject)localObject3, VideoMaterialUtil.WATERMARK_LOGIC.RANGE.value);
             if (localObject4 == null) {
-              break label2671;
+              break label2688;
             }
             ((WMLogic)localObject2).range = new ArrayList();
             localObject5 = ((JsonObject)localObject4).keySet().iterator();
@@ -673,7 +691,7 @@ public class VideoTemplateParser
           }
           localWMElementConfig.logic = ((WMLogic)localObject2);
           localWMGroupConfig.wmElementConfigs.add(localWMElementConfig);
-          break label3546;
+          break label3563;
         }
         localStickerItem3D.wmGroupConfig = localWMGroupConfig;
       }
@@ -686,10 +704,10 @@ public class VideoTemplateParser
       }
       paramVideoMaterial.setMusicID(GsonUtils.optString(localJsonObject, "musicID"));
       if ((localStickerItem3D.getTriggerTypeInt() != PTFaceAttr.PTExpression.ALWAYS.value) || (TextUtils.isEmpty(localStickerItem3D.audio))) {
-        break label3555;
+        break label3572;
       }
       paramVideoMaterial.setOverallAudio(localStickerItem3D.id + File.separator + localStickerItem3D.audio);
-      break label3555;
+      break label3572;
       paramString = localArrayList.iterator();
       while (paramString.hasNext())
       {
@@ -708,16 +726,14 @@ public class VideoTemplateParser
       paramVideoMaterial.setItemList3D(localArrayList);
       paramVideoMaterial = paramVideoMaterial.getGameParams();
     } while (paramVideoMaterial == null);
-    label1935:
-    label2322:
-    label2348:
-    label2646:
-    label2671:
-    label2932:
+    label1927:
+    label1952:
+    label2339:
     int j = 0;
     for (;;)
     {
-      label2776:
+      label2688:
+      label2949:
       if (j < localArrayList.size())
       {
         paramArrayOfBoolean = (StickerItem3D)localArrayList.get(j);
@@ -796,40 +812,40 @@ public class VideoTemplateParser
       else
       {
         if (TextUtils.isEmpty(paramVideoMaterial.nodeInitialTransform)) {
-          break label975;
+          break label992;
         }
         paramVideoMaterial.nodeInitialTransform = paramVideoMaterial.nodeInitialTransform.substring(0, paramVideoMaterial.nodeInitialTransform.length() - 1);
         return;
-        label3546:
-        label3555:
-        label3567:
+        label3532:
+        label3539:
+        label3545:
+        label3551:
+        label3557:
+        label3563:
+        label3572:
         do
         {
           i = j;
-          break label2932;
+          break label2949;
           paramArrayOfBoolean[0] = true;
-          break label1059;
+          break label1076;
           bool = false;
-          break label1910;
+          break label1927;
           bool = false;
-          break label1935;
+          break label1952;
           bool = false;
-          break label2322;
+          break label2339;
           bool = false;
-          break label2348;
+          break label2365;
           j += 1;
-          break label1573;
+          break label1590;
           k += 1;
           paramJsonObject = (JsonObject)localObject1;
           break;
         } while (i <= 0);
-        break label2932;
+        break label2949;
       }
-      label3515:
-      label3522:
-      label3528:
-      label3534:
-      label3540:
+      label3584:
       j += 1;
     }
   }
@@ -844,7 +860,7 @@ public class VideoTemplateParser
     AnimationItem localAnimationItem;
     Object localObject2;
     boolean bool;
-    label694:
+    label711:
     int m;
     Object localObject3;
     for (;;)
@@ -863,7 +879,7 @@ public class VideoTemplateParser
           localObject1 = "";
           j = 0;
           if (k >= localJsonArray1.size()) {
-            break label3815;
+            break label3832;
           }
           localJsonObject = GsonUtils.getJsonObjectUnsafe(localJsonArray1, k);
           localAnimationItem = new AnimationItem();
@@ -887,6 +903,9 @@ public class VideoTemplateParser
           localAnimationItem.blendMode = GsonUtils.optInt(localJsonObject, "blendMode", -1);
           localAnimationItem.zIndex = GsonUtils.optInt(localJsonObject, "zIndex");
           localAnimationItem.audioLoopCount = GsonUtils.optInt(localJsonObject, "audioLoopCount", -1);
+          if (localAnimationItem.audioLoopCount >= 0) {
+            paramVideoMaterial.setMusicPlayCount(localAnimationItem.audioLoopCount);
+          }
           localAnimationItem.randomGroupNum = GsonUtils.optInt(localJsonObject, "randomGroupNum");
           localAnimationItem.externalTriggerWords = GsonUtils.optString(localJsonObject, "externalTriggerWords");
           localObject2 = localAnimationItem.externalTriggerWords;
@@ -933,7 +952,7 @@ public class VideoTemplateParser
           localAnimationItem.setTriggerType(GsonUtils.optString(localJsonObject, "triggerType"));
           localAnimationItem.audioTriggerType = GsonUtils.optInt(localJsonObject, "audioTriggerType");
           if (GsonUtils.optInt(localJsonObject, "audioNeedAdjust", 1) != 1) {
-            break label3762;
+            break label3779;
           }
           bool = true;
           localAnimationItem.audioNeedAdjust = bool;
@@ -964,11 +983,11 @@ public class VideoTemplateParser
               localAnimationItem.frameDuration = GsonUtils.optDouble(localJsonObject, "frameDuration");
               localObject1 = GsonUtils.optJsonArray(localJsonObject, "triggerFrameStartTime");
               if (localObject1 == null) {
-                break label1378;
+                break label1395;
               }
               m = ((JsonArray)localObject1).size();
               if (m <= 1) {
-                break label1364;
+                break label1381;
               }
               localObject3 = new long[m];
               j = 0;
@@ -1002,13 +1021,11 @@ public class VideoTemplateParser
     localAnimationItem.stickerType = GsonUtils.optInt(localJsonObject, "stickerType");
     if ((localAnimationItem.stickerType == VideoFilterFactory.STICKER_TYPE.VIDEO_UP_DOWN.type) || (localAnimationItem.stickerType == VideoFilterFactory.STICKER_TYPE.VIDEO_LEFT_RIGHT.type)) {
       if (localAnimationItem.stickerType != VideoFilterFactory.STICKER_TYPE.VIDEO_UP_DOWN.type) {
-        break label1394;
+        break label1411;
       }
     }
     Object localObject4;
-    label1364:
-    label1378:
-    label1394:
+    label1411:
     for (Object localObject1 = VideoMaterialUtil.ITEM_SOURCE_TYPE.VIDEO_UP_DOWN;; localObject1 = VideoMaterialUtil.ITEM_SOURCE_TYPE.VIDEO_LEFT_RIGHT)
     {
       localAnimationItem.sourceType = ((VideoMaterialUtil.ITEM_SOURCE_TYPE)localObject1);
@@ -1023,7 +1040,7 @@ public class VideoTemplateParser
       localAnimationItem.scaleDirection = GsonUtils.optInt(localJsonObject, "scaleDirection");
       localObject1 = GsonUtils.optJsonObject(localJsonObject, "zoomScale");
       if (localObject1 == null) {
-        break label1413;
+        break label1430;
       }
       localObject3 = ((JsonObject)localObject1).keySet().iterator();
       localAnimationItem.zoomScale = new ArrayList();
@@ -1032,13 +1049,15 @@ public class VideoTemplateParser
         localObject4 = (String)((Iterator)localObject3).next();
         localAnimationItem.zoomScale.add(Pair.create(Float.valueOf((String)localObject4), Double.valueOf(GsonUtils.optDouble((JsonObject)localObject1, (String)localObject4, 0.0D))));
       }
+      label1381:
       localAnimationItem.triggerFrameStartTime = GsonUtils.optInt((JsonArray)localObject1, 0);
       break;
+      label1395:
       localAnimationItem.triggerFrameStartTime = GsonUtils.optInt(localJsonObject, "triggerFrameStartTime");
       break;
     }
     Collections.sort(localAnimationItem.zoomScale, mRangeValueComp);
-    label1413:
+    label1430:
     localObject1 = GsonUtils.optJsonArray(localJsonObject, "activeParts");
     if (localObject1 != null)
     {
@@ -1160,7 +1179,7 @@ public class VideoTemplateParser
     localAnimationItem.bodyTriggerDistance = GsonUtils.optInt(localJsonObject, "bodyTriggerDistance", 0);
     localAnimationItem.bodyTriggerTimeGap = GsonUtils.optDouble(localJsonObject, "bodyTriggerTimeGap", 0.0D);
     localAnimationItem.relativeScaleType = GsonUtils.optInt(localJsonObject, "relativeScaleType");
-    label2260:
+    label2277:
     int n;
     if (GsonUtils.optInt(localJsonObject, "orienting") == 1)
     {
@@ -1214,10 +1233,10 @@ public class VideoTemplateParser
         localAnimationItem.transition.emissionMode = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.TRANSITION.EMISSION_MODE.value);
         localObject3 = localAnimationItem.transition;
         if (GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.TRANSITION.PARTICLE_ALWAYS_UPDATE.value) != 1) {
-          break label3774;
+          break label3791;
         }
         bool = true;
-        label2713:
+        label2730:
         ((Transition)localObject3).particleAlwaysUpdate = bool;
         localAnimationItem.transition.emissionRate = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.TRANSITION.EMISSION_RATE.value);
         localAnimationItem.transition.scale = GsonUtils.optString((JsonObject)localObject1, VideoMaterialUtil.TRANSITION.SCALE.value);
@@ -1240,10 +1259,10 @@ public class VideoTemplateParser
         i = localAnimationItem.getTriggerTypeInt();
       }
       if (GsonUtils.optInt(localJsonObject, "followPhoneAngle", 0) != 1) {
-        break label3780;
+        break label3797;
       }
       bool = true;
-      label3020:
+      label3037:
       localAnimationItem.followPhoneAngle = bool;
       localAnimationItem.strokeType = GsonUtils.optInt(localJsonObject, "strokeType", 0);
       localAnimationItem.strokeStyle = GsonUtils.optInt(localJsonObject, "strokeStyle", 0);
@@ -1251,10 +1270,10 @@ public class VideoTemplateParser
       localAnimationItem.strokeWidth = GsonUtils.optDouble(localJsonObject, "strokeWidth", 0.0D);
       localAnimationItem.strokeGap = GsonUtils.optDouble(localJsonObject, "strokeGap", 0.0D);
       if (GsonUtils.optInt(localJsonObject, "isStrokeBlur", 0) != 1) {
-        break label3786;
+        break label3803;
       }
       bool = true;
-      label3118:
+      label3135:
       localAnimationItem.isStrokeBlur = bool;
       localAnimationItem.hairLutName = GsonUtils.optString(localJsonObject, "hairLutName");
       localAnimationItem.hairMaskType = Integer.valueOf(GsonUtils.optInt(localJsonObject, "hairMaskType", 0));
@@ -1282,13 +1301,13 @@ public class VideoTemplateParser
       {
         localAnimationItem.triggerArea = new ArrayList();
         j = 0;
-        label3349:
+        label3366:
         if (j < ((JsonArray)localObject1).size())
         {
           localObject3 = new StickerItem.TriggerArea();
           localObject4 = GsonUtils.optJsonObject((JsonArray)localObject1, j);
           if (localObject4 == null) {
-            break label3792;
+            break label3809;
           }
           ((StickerItem.TriggerArea)localObject3).type = GsonUtils.optInt((JsonObject)localObject4, "type");
           JsonArray localJsonArray2 = GsonUtils.optJsonArray((JsonObject)localObject4, "rect");
@@ -1314,28 +1333,28 @@ public class VideoTemplateParser
             }
           }
           localAnimationItem.triggerArea.add(localObject3);
-          break label3792;
+          break label3809;
         }
         if (localAnimationItem.triggerArea.size() > 0)
         {
           paramJsonObject = localAnimationItem.triggerArea;
-          label3552:
+          label3569:
           localAnimationItem.isDefault = GsonUtils.optInt(localJsonObject, "isDefault");
           paramVideoMaterial.setMusicID(GsonUtils.optString(localJsonObject, "musicID"));
           if ((localAnimationItem.getTriggerTypeInt() == PTFaceAttr.PTExpression.ALWAYS.value) && (!TextUtils.isEmpty(localAnimationItem.audio))) {
             paramVideoMaterial.setOverallAudio(localAnimationItem.id + File.separator + localAnimationItem.audio);
           }
           if ((localAnimationItem.type != VideoFilterFactory.POSITION_TYPE.CAT.type) && (localAnimationItem.getTriggerTypeInt() != 700)) {
-            break label3799;
+            break label3816;
           }
           paramVideoMaterial.addMaterialType(MaterialType.CAT_DETECT);
-          break label3799;
+          break label3816;
         }
       }
     }
     for (;;)
     {
-      label3673:
+      label3690:
       paramVideoMaterial = localArrayList.iterator();
       while (paramVideoMaterial.hasNext())
       {
@@ -1353,30 +1372,30 @@ public class VideoTemplateParser
         }
       }
       return localArrayList;
-      label3762:
-      label3774:
-      label3780:
-      label3786:
-      label3792:
-      label3799:
-      label3815:
+      label3779:
+      label3791:
+      label3797:
+      label3803:
+      label3809:
+      label3816:
+      label3832:
       do
       {
         i = j;
-        break label3673;
-        break label3552;
+        break label3690;
+        break label3569;
         bool = false;
-        break label694;
+        break label711;
         bool = false;
-        break label2260;
+        break label2277;
         bool = false;
-        break label2713;
+        break label2730;
         bool = false;
-        break label3020;
+        break label3037;
         bool = false;
-        break label3118;
+        break label3135;
         j += 1;
-        break label3349;
+        break label3366;
         k += 1;
         j = n;
         localObject1 = localObject2;
@@ -1480,17 +1499,6 @@ public class VideoTemplateParser
     paramVideoMaterial.setBlendMode(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.BLEND_MODE.value));
     paramVideoMaterial.setFilterId(GsonUtils.optString(paramJsonObject, VideoMaterialUtil.FIELD.FILTER_ID.value));
     paramVideoMaterial.setFilterBlurStrength(GsonUtils.optDouble(paramJsonObject, VideoMaterialUtil.FIELD.FILTER_BLUR_STRENGTH.value, 0.0D));
-    label223:
-    label246:
-    int i;
-    label270:
-    label294:
-    label318:
-    label342:
-    int j;
-    label428:
-    label446:
-    int k;
     if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.SUPPORT_LANDSCAPE.value, 1) == 1)
     {
       bool1 = true;
@@ -1503,57 +1511,147 @@ public class VideoTemplateParser
       paramVideoMaterial.setTouchFlag(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.TOUCH_FLAG.value, 0));
       paramVideoMaterial.setStateVersion(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.STATE_VERSION.value, 1));
       if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.USE_MESH.value, 0) == 0) {
-        break label943;
+        break label509;
       }
       bool1 = true;
+      label223:
       paramVideoMaterial.setUseMesh(bool1);
       if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.NOT_ALLOW_BEAUTY_SETTING.value, 0) == 0) {
-        break label949;
+        break label515;
       }
       bool1 = true;
+      label246:
       paramVideoMaterial.setNotAllowBeautySetting(bool1);
       if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.RESET_WHEN_START_RECORD.value, 0) != 1) {
-        break label955;
+        break label521;
       }
       bool1 = true;
+      label270:
       paramVideoMaterial.setResetWhenStartRecord(bool1);
       if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.SUPPORT_PAUSE.value, 0) != 1) {
-        break label961;
+        break label527;
       }
       bool1 = true;
+      label294:
       paramVideoMaterial.setSupportPause(bool1);
       if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.IS_INTERNAL_RECORD.value, 0) != 1) {
-        break label967;
+        break label533;
       }
       bool1 = true;
+      label318:
       paramVideoMaterial.setIsInternalRecord(bool1);
       if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.IS_AR_3D_Material.value, 0) != 1) {
-        break label973;
+        break label539;
       }
       bool1 = true;
+      label342:
       paramVideoMaterial.setIsAR3DMaterial(bool1);
-      paramVideoMaterial.setArMaterialType(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.AR_Material_Type.value, 0));
-      paramVideoMaterial.setVoicekind(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.VOICE_KIND.value, -999999));
-      paramVideoMaterial.setEnvironment(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.ENVIRONMENT.value, -999999));
-      paramVideoMaterial.setFaceExchangeImage(GsonUtils.optString(paramJsonObject, VideoMaterialUtil.FIELD.FACE_EXCHANGE_IMAGE.value));
-      if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.FACE_EXCHANGE_IMAGE_FULL_FACE.value, 0) != 1) {
-        break label979;
+      if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.IS_KAPU_Material.value, 0) != 1) {
+        break label545;
       }
+      bool1 = true;
+      label366:
+      paramVideoMaterial.setKapuMaterial(bool1);
+      if (GsonUtils.optInt(paramJsonObject, "closeARGestureTouch", 0) != 1) {
+        break label551;
+      }
+      bool1 = true;
+      label387:
+      paramVideoMaterial.setCloseARGestureTouch(bool1);
+      if (GsonUtils.optInt(paramJsonObject, "closeARGestureScale", 0) != 1) {
+        break label557;
+      }
+      bool1 = true;
+      label408:
+      paramVideoMaterial.setCloseARGestureScale(bool1);
+      if (GsonUtils.optInt(paramJsonObject, "closeARGestureRotate", 0) != 1) {
+        break label563;
+      }
+    }
+    float[] arrayOfFloat;
+    int i;
+    label515:
+    label521:
+    label527:
+    label533:
+    label539:
+    label545:
+    label551:
+    label557:
+    label563:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      paramVideoMaterial.setCloseARGestureRotate(bool1);
+      JsonArray localJsonArray = GsonUtils.optJsonArray(paramJsonObject, "arShaderPlanOffset");
+      if (localJsonArray == null) {
+        break label575;
+      }
+      arrayOfFloat = new float[3];
+      tmp456_454 = arrayOfFloat;
+      tmp456_454[0] = 0.0F;
+      tmp460_456 = tmp456_454;
+      tmp460_456[1] = 0.0F;
+      tmp464_460 = tmp460_456;
+      tmp464_460[2] = 0.0F;
+      tmp464_460;
+      i = 0;
+      while ((i < localJsonArray.size()) && (i < 3))
+      {
+        arrayOfFloat[i] = ((float)GsonUtils.optDouble(localJsonArray, i));
+        i += 1;
+      }
+      bool1 = false;
+      break;
+      label509:
+      bool1 = false;
+      break label223;
+      bool1 = false;
+      break label246;
+      bool1 = false;
+      break label270;
+      bool1 = false;
+      break label294;
+      bool1 = false;
+      break label318;
+      bool1 = false;
+      break label342;
+      bool1 = false;
+      break label366;
+      bool1 = false;
+      break label387;
+      bool1 = false;
+      break label408;
+    }
+    paramVideoMaterial.setArShaderPlanOffset(arrayOfFloat);
+    label575:
+    paramVideoMaterial.setArMaterialType(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.AR_Material_Type.value, 0));
+    paramVideoMaterial.setAutoBrightnessStrength(GsonUtils.optDouble(paramJsonObject, VideoMaterialUtil.FIELD.AUTO_BRIGHTNESS_STRENGTH.value, 1.0D));
+    paramVideoMaterial.setAutoContrastStrength(GsonUtils.optDouble(paramJsonObject, VideoMaterialUtil.FIELD.AUTO_CONTRAST_STRENGTH.value, 1.0D));
+    paramVideoMaterial.setFaceColorStrength(GsonUtils.optDouble(paramJsonObject, VideoMaterialUtil.FIELD.FACE_COLOR_STRENGTH.value, 1.0D));
+    paramVideoMaterial.setLowlightAdjustStrength(GsonUtils.optDouble(paramJsonObject, VideoMaterialUtil.FIELD.LOWLIGHT_BRIGHTNESS_STRENGTH.value, 1.0D));
+    paramVideoMaterial.setVoicekind(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.VOICE_KIND.value, -999999));
+    paramVideoMaterial.setEnvironment(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.ENVIRONMENT.value, -999999));
+    paramVideoMaterial.setFaceExchangeImage(GsonUtils.optString(paramJsonObject, VideoMaterialUtil.FIELD.FACE_EXCHANGE_IMAGE.value));
+    int j;
+    label733:
+    int k;
+    if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.FACE_EXCHANGE_IMAGE_FULL_FACE.value, 0) == 1)
+    {
       i = 1;
       if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.FACE_EXCHANGE_IMAGE_DISABLE_OPACITY.value, 0) != 1) {
-        break label984;
+        break label1243;
       }
       j = 1;
       if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.FACE_EXCHANGE_IMAGE_DISABLE_FACECROP.value, 0) != 1) {
-        break label990;
+        break label1249;
       }
       k = 1;
-      label464:
+      label751:
       if ((i == 0) && (j == 0) && (k == 0)) {
-        break label996;
+        break label1255;
       }
       bool1 = true;
-      label481:
+      label768:
       paramVideoMaterial.setFaceExchangeImageDisableFaceCrop(bool1);
       paramVideoMaterial.setCosmeticShelterSwitchClose(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.COSMETIC_SHELTER_SWITCH_CLOSE.value));
       paramVideoMaterial.setCosmeticChangeSwitch(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.COSMETIC_CHANGE_SWITCH.value));
@@ -1581,50 +1679,30 @@ public class VideoTemplateParser
       paramVideoMaterial.setMaskPaintRenderId(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.MASK_PAINT_RENDER_ID.value));
       paramVideoMaterial.setPreferCameraId(GsonUtils.optString(paramJsonObject, VideoMaterialUtil.FIELD.PREFER_CAMERA_ID.value));
       if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.NEED_RECALCULATE_FACE.value, 0) != 1) {
-        break label1002;
+        break label1261;
       }
     }
-    label943:
-    label949:
-    label955:
-    label961:
-    label967:
-    label973:
-    label979:
-    label984:
-    label990:
-    label996:
-    label1002:
-    for (boolean bool1 = bool2;; bool1 = false)
+    label1243:
+    label1249:
+    label1255:
+    label1261:
+    for (bool1 = bool2;; bool1 = false)
     {
       paramVideoMaterial.setNeedReCaculateFace(bool1);
       paramVideoMaterial.setMinAppVersion(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.MIN_APP_VERSION.value));
       paramVideoMaterial.setCategoryFlag(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.CATEGORY_FLAG.value, 0));
       paramVideoMaterial.setOrderMode(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.ORDER_MODE.value));
       paramVideoMaterial.setStickerOrderMode(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.STICKER_ORDER_MODE.value));
+      paramVideoMaterial.setDepthType(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FIELD.DEPTHTYPE.value));
       return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label223;
-      bool1 = false;
-      break label246;
-      bool1 = false;
-      break label270;
-      bool1 = false;
-      break label294;
-      bool1 = false;
-      break label318;
-      bool1 = false;
-      break label342;
       i = 0;
-      break label428;
+      break;
       j = 0;
-      break label446;
+      break label733;
       k = 0;
-      break label464;
+      break label751;
       bool1 = false;
-      break label481;
+      break label768;
     }
   }
   
@@ -1778,6 +1856,100 @@ public class VideoTemplateParser
     return paramVideoMaterial;
   }
   
+  private static void parseCameraTransformParams(JsonObject paramJsonObject, VideoMaterial paramVideoMaterial)
+  {
+    int j = 0;
+    Object localObject1 = GsonUtils.optJsonObject(paramJsonObject, VideoMaterialUtil.FIELD.CAMERA_TRANSFORM.value);
+    if (localObject1 != null)
+    {
+      paramJsonObject = new CameraTransform();
+      ArrayList localArrayList = new ArrayList();
+      Object localObject2 = GsonUtils.optJsonArray((JsonObject)localObject1, VideoMaterialUtil.CAMERA_TRANSFORM.POSITION.value);
+      int i;
+      if (localObject2 != null)
+      {
+        i = 0;
+        while (i < ((JsonArray)localObject2).size())
+        {
+          localArrayList.add(Float.valueOf(((JsonArray)localObject2).get(i).getAsFloat()));
+          i += 1;
+        }
+      }
+      localArrayList.add(Float.valueOf(0.0F));
+      localArrayList.add(Float.valueOf(0.0F));
+      localArrayList.add(Float.valueOf(0.0F));
+      localObject2 = new ArrayList();
+      localObject1 = GsonUtils.optJsonArray((JsonObject)localObject1, VideoMaterialUtil.CAMERA_TRANSFORM.ROTATION.value);
+      if (localObject1 != null)
+      {
+        i = j;
+        while (i < ((JsonArray)localObject1).size())
+        {
+          ((List)localObject2).add(Float.valueOf(((JsonArray)localObject1).get(i).getAsFloat()));
+          i += 1;
+        }
+      }
+      ((List)localObject2).add(Float.valueOf(0.0F));
+      ((List)localObject2).add(Float.valueOf(0.0F));
+      ((List)localObject2).add(Float.valueOf(0.0F));
+      paramJsonObject.setCameraPosition(localArrayList);
+      paramJsonObject.setCameraRotation((List)localObject2);
+      paramVideoMaterial.setCameraTransform(paramJsonObject);
+    }
+  }
+  
+  private static void parseCameraViewConfigParams(JsonObject paramJsonObject, VideoMaterial paramVideoMaterial)
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    paramJsonObject = GsonUtils.optJsonArray(paramJsonObject, VideoMaterialUtil.FIELD.CAMERA_VIEW_CONFIG.value);
+    if (paramJsonObject != null)
+    {
+      int i = 0;
+      while (i < paramJsonObject.size())
+      {
+        CameraViewConfig localCameraViewConfig = new CameraViewConfig();
+        Object localObject1 = (JsonObject)paramJsonObject.get(i);
+        localCameraViewConfig.setCameraViewType(GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.CAMERA_VIEW_CONFIG_FIELD.CAMERA_VIEW_TYPE.value, 0));
+        localCameraViewConfig.setAnimationTime(GsonUtils.optFloat((JsonObject)localObject1, VideoMaterialUtil.CAMERA_VIEW_CONFIG_FIELD.ANIMATION_TIME.value, 0.0F));
+        localCameraViewConfig.setAnimationType(GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.CAMERA_VIEW_CONFIG_FIELD.ANIMATION_TYPE.value, 0));
+        ArrayList localArrayList2 = new ArrayList();
+        Object localObject2 = GsonUtils.optJsonArray((JsonObject)localObject1, VideoMaterialUtil.CAMERA_VIEW_CONFIG_FIELD.CAMERA_POSITION.value);
+        int j;
+        if (localObject2 != null)
+        {
+          j = 0;
+          while (j < ((JsonArray)localObject2).size())
+          {
+            localArrayList2.add(Float.valueOf(((JsonArray)localObject2).get(j).getAsFloat()));
+            j += 1;
+          }
+        }
+        localArrayList2.add(Float.valueOf(0.0F));
+        localArrayList2.add(Float.valueOf(0.0F));
+        localArrayList2.add(Float.valueOf(0.0F));
+        localObject2 = new ArrayList();
+        localObject1 = GsonUtils.optJsonArray((JsonObject)localObject1, VideoMaterialUtil.CAMERA_VIEW_CONFIG_FIELD.CAMERA_ROTATION.value);
+        if (localObject1 != null)
+        {
+          j = 0;
+          while (j < ((JsonArray)localObject1).size())
+          {
+            ((List)localObject2).add(Float.valueOf(((JsonArray)localObject1).get(j).getAsFloat()));
+            j += 1;
+          }
+        }
+        ((List)localObject2).add(Float.valueOf(0.0F));
+        ((List)localObject2).add(Float.valueOf(0.0F));
+        ((List)localObject2).add(Float.valueOf(0.0F));
+        localCameraViewConfig.setCameraPosition(localArrayList2);
+        localCameraViewConfig.setCameraRotation((List)localObject2);
+        localArrayList1.add(localCameraViewConfig);
+        i += 1;
+      }
+      paramVideoMaterial.setCameraViewConfig(localArrayList1);
+    }
+  }
+  
   private static CharmRange parseCharmRange(JsonObject paramJsonObject)
   {
     paramJsonObject = GsonUtils.optJsonObject(paramJsonObject, "charmRange");
@@ -1816,11 +1988,11 @@ public class VideoTemplateParser
       JsonArray localJsonArray = GsonUtils.optJsonArray(paramJsonObject, VideoMaterialUtil.COS_FUN_FIELD.COS_FUN_GROUP.value);
       localArrayList1 = new ArrayList();
       if (localJsonArray == null) {
-        break label906;
+        break label955;
       }
       i = 0;
       if (i >= localJsonArray.size()) {
-        break label906;
+        break label955;
       }
       localObject1 = GsonUtils.optJsonObject(localJsonArray, i);
       if (localObject1 != null) {
@@ -1857,7 +2029,7 @@ public class VideoTemplateParser
         }
         j = 0;
         if (j >= ((JsonArray)localObject1).size()) {
-          break label888;
+          break label937;
         }
         localObject2 = GsonUtils.optJsonObject((JsonArray)localObject1, j);
         if (localObject2 != null) {
@@ -1887,24 +2059,31 @@ public class VideoTemplateParser
         localCosFunItem.setBackgroundMode1(GsonUtils.optInt((JsonObject)localObject2, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_BACKGROUND_MODE1.value));
         localCosFunItem.setBackgroundMode2(GsonUtils.optInt((JsonObject)localObject2, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_BACKGROUND_MODE2.value));
         localCosFunItem.setPagPath(GsonUtils.optString((JsonObject)localObject2, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_PAG_PATH.value));
-        if (!TextUtils.isEmpty(GsonUtils.optString((JsonObject)localObject2, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_CUSTOM_FILTER_CONFIG_FILE.value))) {
-          localCosFunItem.setCustomFilterItemList(parseCustomFilterConfig(paramString, (JsonObject)localObject2, paramVideoMaterial, paramDecryptListener, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_CUSTOM_FILTER_CONFIG_FILE.value));
-        }
-        ArrayList localArrayList3 = new ArrayList();
-        Object localObject3 = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_TEXTURE_MATERIALS_FOR_GAN.value);
-        if (localObject3 != null)
+        localCosFunItem.setTransType(GsonUtils.optInt((JsonObject)localObject2, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_TRANS_TYPE.value, 2));
+        if (GsonUtils.optInt((JsonObject)localObject2, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_CLAMP_TO_EDGE.value, 0) == 1) {}
+        for (bool = true;; bool = false)
         {
+          localCosFunItem.setClampToEdge(bool);
+          if (!TextUtils.isEmpty(GsonUtils.optString((JsonObject)localObject2, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_CUSTOM_FILTER_CONFIG_FILE.value))) {
+            localCosFunItem.setCustomFilterItemList(parseCustomFilterConfig(paramString, (JsonObject)localObject2, paramVideoMaterial, paramDecryptListener, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_CUSTOM_FILTER_CONFIG_FILE.value));
+          }
+          localArrayList3 = new ArrayList();
+          localObject3 = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_TEXTURE_MATERIALS_FOR_GAN.value);
+          if (localObject3 == null) {
+            break label830;
+          }
           k = 0;
           while (k < ((JsonArray)localObject3).size())
           {
             localArrayList3.add(GsonUtils.getStringUnsafe((JsonArray)localObject3, k));
             k += 1;
           }
-          localCosFunItem.setTextureMaterialsForGAN(localArrayList3);
         }
-        localObject3 = GsonUtils.optJsonObject((JsonObject)localObject2, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_PAG_INDEX_LIST.value);
+        localCosFunItem.setTextureMaterialsForGAN(localArrayList3);
+        label830:
+        Object localObject3 = GsonUtils.optJsonObject((JsonObject)localObject2, VideoMaterialUtil.COS_FUN_GROUP_FIELD.COSFUN_ITEMS_PAG_INDEX_LIST.value);
         localObject2 = new CosFun.PagIndexList();
-        localArrayList3 = new ArrayList();
+        ArrayList localArrayList3 = new ArrayList();
         localObject3 = GsonUtils.optJsonArray((JsonObject)localObject3, VideoMaterialUtil.PAG_INDEX_LIST.COS_FUN.value);
         int k = 0;
         while (k < ((JsonArray)localObject3).size())
@@ -1916,11 +2095,11 @@ public class VideoTemplateParser
         localCosFunItem.setPagIndexList((CosFun.PagIndexList)localObject2);
         localArrayList2.add(localCosFunItem);
       }
-      label888:
+      label937:
       localCosFunGroupItem.setCosFunItems(localArrayList2);
       localArrayList1.add(localCosFunGroupItem);
     }
-    label906:
+    label955:
     localCosFun.setCosFunGroupItem(localArrayList1);
     paramVideoMaterial.setCosFun(localCosFun);
   }
@@ -2270,13 +2449,13 @@ public class VideoTemplateParser
   private static List<AnimojiExpressionJava> parseExpressionList(JsonObject paramJsonObject)
   {
     ArrayList localArrayList = new ArrayList();
-    JsonArray localJsonArray = GsonUtils.optJsonArray(paramJsonObject, VideoMaterialUtil.GLB_FIELD.EXPRESSION_CONFIG_LIST.value);
-    if (localJsonArray != null)
+    JsonArray localJsonArray1 = GsonUtils.optJsonArray(paramJsonObject, VideoMaterialUtil.GLB_FIELD.EXPRESSION_CONFIG_LIST.value);
+    if (localJsonArray1 != null)
     {
       int i = 0;
-      if (i < localJsonArray.size())
+      if (i < localJsonArray1.size())
       {
-        Object localObject = GsonUtils.optJsonObject(localJsonArray, i);
+        Object localObject = GsonUtils.optJsonObject(localJsonArray1, i);
         AnimojiExpressionJava localAnimojiExpressionJava;
         if (localObject != null)
         {
@@ -2284,21 +2463,32 @@ public class VideoTemplateParser
           localAnimojiExpressionJava.shapeName = GsonUtils.optString((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.SHAPE_NAME.value, "");
           localAnimojiExpressionJava.controlledName = GsonUtils.optString((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.CONTROLLED_NAME.value, localAnimojiExpressionJava.shapeName);
           paramJsonObject = new Range();
-          localObject = GsonUtils.optJsonArray((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.SHAPE_RANGE.value);
-          if (((JsonArray)localObject).size() < 2) {
-            break label166;
+          JsonArray localJsonArray2 = GsonUtils.optJsonArray((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.SHAPE_RANGE.value);
+          if (localJsonArray2.size() < 2) {
+            break label226;
           }
-          paramJsonObject.min = GsonUtils.getFloatUnsafe((JsonArray)localObject, 0);
-          paramJsonObject.max = GsonUtils.getFloatUnsafe((JsonArray)localObject, 1);
-        }
-        for (;;)
-        {
+          paramJsonObject.min = GsonUtils.getFloatUnsafe(localJsonArray2, 0);
+          paramJsonObject.max = GsonUtils.getFloatUnsafe(localJsonArray2, 1);
+          label144:
           localAnimojiExpressionJava.shapeRange = paramJsonObject;
+          paramJsonObject = GsonUtils.optJsonArray((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.CONTROLLED_RANGE.value);
+          localObject = new Range();
+          if ((paramJsonObject == null) || (paramJsonObject.size() < 2)) {
+            break label238;
+          }
+          ((Range)localObject).min = GsonUtils.getFloatUnsafe(paramJsonObject, 0);
+        }
+        for (((Range)localObject).max = GsonUtils.getFloatUnsafe(paramJsonObject, 1);; ((Range)localObject).max = 1.0F)
+        {
+          localAnimojiExpressionJava.controlledRange = ((Range)localObject);
           localArrayList.add(localAnimojiExpressionJava);
           i += 1;
           break;
-          label166:
+          label226:
           paramJsonObject = FilamentUtil.getDefaultExpressionRange(localAnimojiExpressionJava.shapeName);
+          break label144;
+          label238:
+          ((Range)localObject).min = 0.0F;
         }
       }
     }
@@ -2887,10 +3077,10 @@ public class VideoTemplateParser
           localObject2 = GsonUtils.optString((JsonObject)localObject5, "maskImageName");
           j = GsonUtils.optInt((JsonObject)localObject5, "transitionFunction", 0);
           if ((TextUtils.isEmpty((CharSequence)localObject1)) && (TextUtils.isEmpty((CharSequence)localObject2))) {
-            break label4971;
+            break label4968;
           }
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label4896;
+            break label4893;
           }
           k = ((String)localObject1).lastIndexOf("/");
           ((StickerItem)localObject6).id = ((String)localObject1).substring(k + 1, ((String)localObject1).length());
@@ -2910,12 +3100,12 @@ public class VideoTemplateParser
               ((StickerItem)localObject6).setTriggerType(String.valueOf(((StickerItem)localObject1).getTriggerTypeInt()));
               ((StickerItem)localObject6).triggerArea = ((StickerItem)localObject1).triggerArea;
               ((StickerItem)localObject6).triggerHandPoint = ((StickerItem)localObject1).triggerHandPoint;
+              ((StickerItem)localObject6).externalTriggerWords = ((StickerItem)localObject1).externalTriggerWords;
             }
             if (k > 0) {
               ((StickerItem)localObject6).setTriggerType(String.valueOf(k));
             }
           }
-          ((StickerItem)localObject6).externalTriggerWords = GsonUtils.optString((JsonObject)localObject5, "externalTriggerWords");
           localFabbyMvPart.transitionItem = ((StickerItem)localObject6);
           localFabbyMvPart.transitionDuration = ((GsonUtils.optDouble((JsonObject)localObject5, "duration", 0.0D) * 1000.0D));
           localFabbyMvPart.transitionEase = GsonUtils.optInt((JsonObject)localObject5, "easeCurve", 0);
@@ -2924,7 +3114,7 @@ public class VideoTemplateParser
           localFabbyMvPart.triggerDelay = GsonUtils.optInt((JsonObject)localObject5, "triggerDelay", 1);
           localObject1 = GsonUtils.optJsonObject(localJsonObject, "filterEffect");
           if (localObject1 == null) {
-            break label5001;
+            break label4998;
           }
           localFabbyMvPart.filterType = GsonUtils.optInt((JsonObject)localObject1, "type", 0);
           localFabbyMvPart.filterId = GsonUtils.optString((JsonObject)localObject1, "filter");
@@ -2933,7 +3123,7 @@ public class VideoTemplateParser
           localFabbyMvPart.filterParamMap.clear();
           localObject1 = GsonUtils.optJsonObject((JsonObject)localObject1, "param");
           if (localObject1 == null) {
-            break label5001;
+            break label4998;
           }
           localObject2 = ((JsonObject)localObject1).keySet().iterator();
           while (((Iterator)localObject2).hasNext())
@@ -2941,7 +3131,7 @@ public class VideoTemplateParser
             localObject5 = (String)((Iterator)localObject2).next();
             localFabbyMvPart.filterParamMap.add(Pair.create(Float.valueOf((String)localObject5), Integer.valueOf(GsonUtils.optInt((JsonObject)localObject1, (String)localObject5, 0))));
           }
-          label4896:
+          label4893:
           localObject1 = localObject2;
           if (((String)localObject2).endsWith("_")) {
             localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
@@ -2950,12 +3140,12 @@ public class VideoTemplateParser
           ((StickerItem)localObject6).id = ((String)localObject1).substring(k + 1, ((String)localObject1).length());
           ((StickerItem)localObject6).subFolder = ((String)localObject1).substring(0, k);
           continue;
-          label4971:
+          label4968:
           ((StickerItem)localObject6).id = "";
           ((StickerItem)localObject6).subFolder = "";
         }
         Collections.sort(localFabbyMvPart.filterParamMap, mDivideValueComp);
-        label5001:
+        label4998:
         localObject1 = GsonUtils.optJsonObject(localJsonObject, "bgFilterEffect");
         if (localObject1 != null)
         {
@@ -3010,10 +3200,10 @@ public class VideoTemplateParser
             }
           }
           if (GsonUtils.optInt((JsonObject)localObject3, "needOriginFrame", 1) != 1) {
-            break label5414;
+            break label5411;
           }
         }
-        label5414:
+        label5411:
         for (bool = true;; bool = false)
         {
           ((MultiViewerItem)localObject2).needOriginFrame = bool;
@@ -3033,18 +3223,22 @@ public class VideoTemplateParser
     {
       ArrayList localArrayList = new ArrayList();
       int i = 0;
-      if (i < paramJsonObject.size())
+      while (i < paramJsonObject.size())
       {
         JsonObject localJsonObject = GsonUtils.optJsonObject(paramJsonObject, i);
-        if (localJsonObject == null) {}
-        for (;;)
+        if (localJsonObject == null)
         {
           i += 1;
-          break;
+        }
+        else
+        {
           FaceBeautyItem localFaceBeautyItem = new FaceBeautyItem();
           localFaceBeautyItem.id = GsonUtils.optString(localJsonObject, VideoMaterialUtil.FACE_MESH_ITEM_LIST.ID.value);
           localFaceBeautyItem.personID = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.FACE_MESH_ITEM_LIST.PERSON_ID.value, -1);
           localFaceBeautyItem.genderType = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.FACE_MESH_ITEM_LIST.GENDER_TYPE.value, 0);
+          localFaceBeautyItem.activateTriggerType = GsonUtils.optInt(localJsonObject, "activateTriggerType", 0);
+          localFaceBeautyItem.activateTriggerCount = GsonUtils.optInt(localJsonObject, "activateTriggerCount", 0);
+          localFaceBeautyItem.activateTriggerTotalCount = GsonUtils.optInt(localJsonObject, "activateTriggerTotalCount", 0);
           if (localFaceBeautyItem.genderType > 0) {
             paramVideoMaterial.setDetectGender(true);
           }
@@ -3102,7 +3296,13 @@ public class VideoTemplateParser
               localFaceBeautyItem.putBeautyValues(str, GsonUtils.optString(localJsonObject, str));
             }
           }
-          localArrayList.add(localFaceBeautyItem);
+          if (localFaceBeautyItem.activateTriggerType == 0) {}
+          for (localFaceBeautyItem.countTriggerType = localFaceBeautyItem.getTriggerTypeInt();; localFaceBeautyItem.countTriggerType = PTFaceAttr.PTExpression.MV_PART_INDEX.value)
+          {
+            localArrayList.add(localFaceBeautyItem);
+            break;
+            localFaceBeautyItem.playCount = 0;
+          }
         }
       }
       paramVideoMaterial.setFaceBeautyItemList(localArrayList);
@@ -3544,18 +3744,22 @@ public class VideoTemplateParser
     {
       ArrayList localArrayList = new ArrayList();
       int i = 0;
-      if (i < paramJsonObject.size())
+      while (i < paramJsonObject.size())
       {
         Object localObject1 = GsonUtils.optJsonObject(paramJsonObject, i);
-        if (localObject1 == null) {}
-        for (;;)
+        if (localObject1 == null)
         {
           i += 1;
-          break;
+        }
+        else
+        {
           FaceMeshItem localFaceMeshItem = new FaceMeshItem();
           localFaceMeshItem.id = GsonUtils.optString((JsonObject)localObject1, VideoMaterialUtil.FACE_MESH_ITEM_LIST.ID.value);
           localFaceMeshItem.personID = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.FACE_MESH_ITEM_LIST.PERSON_ID.value, -1);
           localFaceMeshItem.genderType = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.FACE_MESH_ITEM_LIST.GENDER_TYPE.value, 0);
+          localFaceMeshItem.activateTriggerType = GsonUtils.optInt((JsonObject)localObject1, "activateTriggerType", 0);
+          localFaceMeshItem.activateTriggerCount = GsonUtils.optInt((JsonObject)localObject1, "activateTriggerCount", 0);
+          localFaceMeshItem.activateTriggerTotalCount = GsonUtils.optInt((JsonObject)localObject1, "activateTriggerTotalCount", 0);
           if (localFaceMeshItem.genderType > 0) {
             paramVideoMaterial.setDetectGender(true);
           }
@@ -3602,7 +3806,13 @@ public class VideoTemplateParser
           if ((localObject1 != null) && (!"".equals(localObject1))) {
             localFaceMeshItem.triggerState.add(localObject1);
           }
-          localArrayList.add(localFaceMeshItem);
+          if (localFaceMeshItem.activateTriggerType == 0) {}
+          for (localFaceMeshItem.countTriggerType = localFaceMeshItem.getTriggerTypeInt();; localFaceMeshItem.countTriggerType = PTFaceAttr.PTExpression.MV_PART_INDEX.value)
+          {
+            localArrayList.add(localFaceMeshItem);
+            break;
+            localFaceMeshItem.playCount = 0;
+          }
         }
       }
       paramVideoMaterial.setFaceMeshItemList(localArrayList);
@@ -3702,23 +3912,19 @@ public class VideoTemplateParser
           localFaceItem.personID = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.PERSON_ID.value, -1);
           localFaceItem.genderType = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.GENDER_TYPE.value, 0);
           localFaceItem.randomGroupNum = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.RANDOM_GROUP_NUM.value);
-          if (GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.COS_3D.value, 0) == 1)
-          {
-            bool = true;
-            localFaceItem.is3DCos = bool;
-            if (GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.DISABLE_3D_CORRECT.value, 0) != 1) {
-              break label376;
-            }
-          }
+          localFaceItem.is3DCos = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.COS_3D.value, 0);
+          localFaceItem.cos3DAmbientStrength = GsonUtils.optFloat((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.COS3D_AMBIENT_STRENGTH.value, 1.0F);
+          localFaceItem.cos3DDiffuseStrength = GsonUtils.optFloat((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.COS3D_DIFFUSE_STRENGTH.value, 1.0F);
+          localFaceItem.filterSkin = GsonUtils.optFloat((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.FILTER_SKIN.value, 0.0F);
+          if (GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.DISABLE_3D_CORRECT.value, 0) == 1) {}
           int n;
-          label376:
           for (boolean bool = true;; bool = false)
           {
             localFaceItem.disable3DCorrect = bool;
             localFaceItem.triggerState = new ArrayList();
             localObject2 = GsonUtils.optJsonArray((JsonObject)localObject1, "triggerStateList");
             if ((localObject2 == null) || (((JsonArray)localObject2).size() <= 0)) {
-              break label382;
+              break;
             }
             n = 0;
             while (n < ((JsonArray)localObject2).size())
@@ -3726,48 +3932,38 @@ public class VideoTemplateParser
               localFaceItem.triggerState.add(GsonUtils.getStringUnsafe((JsonArray)localObject2, n));
               n += 1;
             }
-            bool = false;
-            break;
           }
-          label382:
           Object localObject2 = GsonUtils.optString((JsonObject)localObject1, "triggerState");
           if ((localObject2 != null) && (!"".equals(localObject2))) {
             localFaceItem.triggerState.add(localObject2);
           }
-          if (localFaceItem.is3DCos)
-          {
-            localFaceItem.grayScale = 1;
-            localFaceItem.featureType = FaceOffUtil.FEATURE_TYPE.FACE_COS3D_MASK;
-          }
           int i1;
-          label479:
+          label493:
           int i2;
           if (GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.FACE_EXCHANGE_IMAGE_FULL_FACE.value, 0) == 1)
           {
             n = 1;
             if (GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.FACE_EXCHANGE_IMAGE_DISABLE_OPACITY.value, 0) != 1) {
-              break label619;
+              break label633;
             }
             i1 = 1;
             if (GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.FACE_EXCHANGE_IMAGE_DISABLE_FACECROP.value, 0) != 1) {
-              break label625;
+              break label639;
             }
             i2 = 1;
-            label498:
+            label512:
             if ((n == 0) && (i1 == 0) && (i2 == 0)) {
-              break label631;
+              break label645;
             }
           }
-          label619:
-          label625:
-          label631:
+          label645:
           for (bool = true;; bool = false)
           {
             localFaceItem.faceExchangeImageDisableFaceCrop = bool;
             localFaceItem.lipsStyleMask = GsonUtils.optString((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.LIPS_STYLE_MASK.value, null);
             localObject2 = GsonUtils.optJsonArray((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.LIPS_RGBA.value);
             if ((localObject2 == null) || (((JsonArray)localObject2).size() != 4)) {
-              break label637;
+              break label651;
             }
             localFaceItem.lipsRGBA = new float[4];
             n = 0;
@@ -3778,12 +3974,14 @@ public class VideoTemplateParser
             }
             n = 0;
             break;
+            label633:
             i1 = 0;
-            break label479;
+            break label493;
+            label639:
             i2 = 0;
-            break label498;
+            break label512;
           }
-          label637:
+          label651:
           localFaceItem.lipsRGBA = null;
           localObject2 = GsonUtils.optJsonArray((JsonObject)localObject1, VideoMaterialUtil.FACE_OFF_ITEM_FIELD.FACE_POINTS.value);
           if (localObject2 != null)
@@ -3813,7 +4011,7 @@ public class VideoTemplateParser
           if (GsonUtils.optInt((JsonObject)localObject1, "alwaysTriggered", 1) == 1)
           {
             bool = true;
-            label901:
+            label915:
             localFaceItem.alwaysTriggered = bool;
             localFaceItem.featureStatType = GsonUtils.optInt((JsonObject)localObject1, "featureStatType");
             localObject2 = GsonUtils.optJsonObject((JsonObject)localObject1, "featureStatValueRange");
@@ -3831,7 +4029,7 @@ public class VideoTemplateParser
             localFaceItem.countTriggerType = localFaceItem.getTriggerTypeInt();
             localFaceItem.externalTriggerWords = GsonUtils.optString((JsonObject)localObject1, "externalTriggerWords");
             if (k != -1) {
-              break label1116;
+              break label1130;
             }
             k = localFaceItem.getTriggerTypeInt();
           }
@@ -3843,14 +4041,14 @@ public class VideoTemplateParser
             localArrayList1.add(localFaceItem);
             break;
             bool = false;
-            break label901;
-            label1116:
+            break label915;
+            label1130:
             j = Math.max(j, localFaceItem.getTriggerTypeInt());
           }
         }
       }
       if (i <= 0) {
-        break label1207;
+        break label1221;
       }
     }
     for (;;)
@@ -3871,7 +4069,7 @@ public class VideoTemplateParser
         }
       }
       return localArrayList1;
-      label1207:
+      label1221:
       i = j;
     }
   }
@@ -3895,7 +4093,6 @@ public class VideoTemplateParser
   private static FaceStyleItem parseFaceStyleItem(JsonObject paramJsonObject, VideoMaterial paramVideoMaterial, String paramString)
   {
     boolean bool2 = true;
-    int j = 0;
     if (paramJsonObject == null) {
       return null;
     }
@@ -3911,6 +4108,9 @@ public class VideoTemplateParser
       localFaceStyleItem.setTriggerType(GsonUtils.optString(paramJsonObject, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.TRIGGER_TYPE.value));
       localFaceStyleItem.styleChangeType = GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.STYLE_CHANGE_TYPE.value);
       localFaceStyleItem.crazyFacePath = GsonUtils.optString(paramJsonObject, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.CRAY_FACE_PATH.value);
+      localFaceStyleItem.activateTriggerType = GsonUtils.optInt(paramJsonObject, "activateTriggerType", 0);
+      localFaceStyleItem.activateTriggerCount = GsonUtils.optInt(paramJsonObject, "activateTriggerCount", 0);
+      localFaceStyleItem.activateTriggerTotalCount = GsonUtils.optInt(paramJsonObject, "activateTriggerTotalCount", 0);
       localFaceStyleItem.externalTriggerWords = GsonUtils.optString(paramJsonObject, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.EXTERNAL_TRIGGER_WORDS.value);
       localFaceStyleItem.transformMask = GsonUtils.optString(paramJsonObject, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.TRANSFORM_MASK.value);
       localFaceStyleItem.limitDeviceLevel = GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.LIMIT_DEVICE_LEVEL.value);
@@ -3935,6 +4135,7 @@ public class VideoTemplateParser
     localFaceStyleItem.preProcess = parseFaceStyleItemProcess(paramJsonObject, localFaceStyleItem, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.PRE_PROCESS.value);
     localFaceStyleItem.postProcess = parseFaceStyleItemProcess(paramJsonObject, localFaceStyleItem, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.POST_PROCESS.value);
     localFaceStyleItem.postRender = parseFaceStyleItemRender(paramJsonObject, localFaceStyleItem, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.POST_RENDER.value);
+    localFaceStyleItem.changeGenderParams = parseFaceStyleItemChangeGenderParams(paramJsonObject, localFaceStyleItem, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.CHANGE_GENDER_PARAMS.value);
     localFaceStyleItem.cartoonFaceLine = parseFaceStyleItemCartoonFaceLine(paramJsonObject, localFaceStyleItem, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.CARTOON_FACE_LINE.value);
     localFaceStyleItem.lutPaths = parseFaceStyleItemPaths(paramJsonObject, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.BACKGROUND_LUT_PATHS.value, paramString);
     localFaceStyleItem.materialPaths = parseFaceStyleItemPaths(paramJsonObject, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.BACKGROUND_MATERIAL_PATHS.value, paramString);
@@ -4049,19 +4250,19 @@ public class VideoTemplateParser
     else
     {
       if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.RETURN_POST_PROCESS_TEXTURE.value) != 1) {
-        break label1310;
+        break label1361;
       }
     }
-    label1310:
+    label1361:
     for (bool1 = bool2;; bool1 = false)
     {
       localFaceStyleItem.returnPostProcessTexture = bool1;
       localFaceStyleItem.textureMaterials = new ArrayList();
       paramJsonObject = GsonUtils.optJsonArray(paramJsonObject, VideoMaterialUtil.FACE_STYLE_ITEM_FIELD.TEXTURE_MATERIALS.value);
       if (paramJsonObject == null) {
-        break label1316;
+        break label1367;
       }
-      i = j;
+      i = 0;
       while (i < paramJsonObject.size())
       {
         localFaceStyleItem.textureMaterials.add(GsonUtils.getStringUnsafe(paramJsonObject, i));
@@ -4071,23 +4272,33 @@ public class VideoTemplateParser
       localFaceStyleItem.libraryText = FileUtils.load(AEModule.getContext(), paramString);
       break;
     }
-    label1316:
+    label1367:
     if (!TextUtils.isEmpty(localFaceStyleItem.modelName))
     {
-      if (localFaceStyleItem.styleChangeType != FaceStyleItem.STYLE_CHANGE_TYPE.FACE_CHANGE.value) {
-        break label1351;
+      if (localFaceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.FACE_CHANGE.value) {
+        paramVideoMaterial.addMaterialType(MaterialType.STYLE_BEAUTY);
       }
-      paramVideoMaterial.addMaterialType(MaterialType.STYLE_BEAUTY);
     }
-    for (;;)
+    else {
+      if (localFaceStyleItem.activateTriggerType != 0) {
+        break label1468;
+      }
+    }
+    for (localFaceStyleItem.countTriggerType = localFaceStyleItem.getTriggerTypeInt();; localFaceStyleItem.countTriggerType = PTFaceAttr.PTExpression.MV_PART_INDEX.value)
     {
       return localFaceStyleItem;
-      label1351:
-      if (localFaceStyleItem.styleChangeType == FaceStyleItem.STYLE_CHANGE_TYPE.CHILD_STYLE.value) {
+      if (localFaceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CHILD_STYLE.value)
+      {
         paramVideoMaterial.addMaterialType(MaterialType.STYLE_CHILD);
-      } else if (localFaceStyleItem.styleChangeType == FaceStyleItem.STYLE_CHANGE_TYPE.CARTOON_STYLE.value) {
-        paramVideoMaterial.addMaterialType(MaterialType.STYLE_CARTOON);
+        break;
       }
+      if (localFaceStyleItem.styleChangeType != FaceStyleItem.StyleChangeType.CARTOON_STYLE.value) {
+        break;
+      }
+      paramVideoMaterial.addMaterialType(MaterialType.STYLE_CARTOON);
+      break;
+      label1468:
+      localFaceStyleItem.playCount = 0;
     }
   }
   
@@ -4098,6 +4309,53 @@ public class VideoTemplateParser
       return (FaceStyleItem.CartoonFaceLine)GsonUtils.json2Obj(paramJsonObject.toString(), FaceStyleItem.CartoonFaceLine.class);
     }
     return null;
+  }
+  
+  private static FaceStyleItem.ChangeGenderCropParams parseFaceStyleItemChangeGenderCropParams(JsonObject paramJsonObject, FaceStyleItem.ChangeGenderCropParams paramChangeGenderCropParams)
+  {
+    if (paramJsonObject != null)
+    {
+      FaceStyleItem.ChangeGenderCropParams localChangeGenderCropParams = (FaceStyleItem.ChangeGenderCropParams)GsonUtils.json2Obj(paramJsonObject.toString(), FaceStyleItem.ChangeGenderCropParams.class);
+      if (!paramJsonObject.has("x")) {
+        localChangeGenderCropParams.x = paramChangeGenderCropParams.x;
+      }
+      if (!paramJsonObject.has("y")) {
+        localChangeGenderCropParams.y = paramChangeGenderCropParams.y;
+      }
+      if (!paramJsonObject.has("w")) {
+        localChangeGenderCropParams.w = paramChangeGenderCropParams.w;
+      }
+      if (!paramJsonObject.has("h")) {
+        localChangeGenderCropParams.h = paramChangeGenderCropParams.h;
+      }
+      if (!paramJsonObject.has("margin")) {
+        localChangeGenderCropParams.margin = paramChangeGenderCropParams.margin;
+      }
+      if (!paramJsonObject.has("preSize")) {
+        localChangeGenderCropParams.preSize = paramChangeGenderCropParams.preSize;
+      }
+      return localChangeGenderCropParams;
+    }
+    return paramChangeGenderCropParams;
+  }
+  
+  private static FaceStyleItem.ChangeGenderParams parseFaceStyleItemChangeGenderParams(JsonObject paramJsonObject, FaceStyleItem paramFaceStyleItem, String paramString)
+  {
+    paramJsonObject = GsonUtils.optJsonObject(paramJsonObject, paramString);
+    if (paramJsonObject != null)
+    {
+      paramFaceStyleItem = new FaceStyleItem.ChangeGenderParams();
+      paramFaceStyleItem.face = parseFaceStyleItemChangeGenderCropParams(GsonUtils.optJsonObject(paramJsonObject, "face"), FaceStyleItem.ChangeGenderParams.defaultParams.face);
+      paramFaceStyleItem.hair = parseFaceStyleItemChangeGenderCropParams(GsonUtils.optJsonObject(paramJsonObject, "hair"), FaceStyleItem.ChangeGenderParams.defaultParams.hair);
+      if (paramJsonObject.has("offsetY")) {
+        paramFaceStyleItem.offsetY = GsonUtils.optInt(paramJsonObject, "offsetY");
+      }
+      if (paramJsonObject.has("outputTextureCount")) {
+        paramFaceStyleItem.outputTextureCount = GsonUtils.optInt(paramJsonObject, "outputTextureCount");
+      }
+      return paramFaceStyleItem;
+    }
+    return FaceStyleItem.ChangeGenderParams.defaultParams;
   }
   
   private static HashMap<String, String> parseFaceStyleItemPaths(JsonObject paramJsonObject, String paramString1, String paramString2)
@@ -4465,7 +4723,10 @@ public class VideoTemplateParser
     boolean bool;
     label40:
     label64:
+    label88:
+    label112:
     Object localObject1;
+    label136:
     int i;
     int j;
     int k;
@@ -4474,23 +4735,39 @@ public class VideoTemplateParser
       bool = true;
       paramVideoMaterial.setFlattenEar(bool);
       if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.GAME_FIELD.NOT_FLATTEN_NOSE.value, 0) != 0) {
-        break label431;
+        break label532;
       }
       bool = true;
       paramVideoMaterial.setFlattenNose(bool);
       if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.GLB_FIELD.HIDE_USER_HEAD_MODEL.value, 0) != 1) {
-        break label437;
+        break label538;
       }
       bool = true;
       paramVideoMaterial.setHideUserHeadModel(bool);
+      if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.GLB_FIELD.USE_3DMM_TRANSFORM.value, 0) != 1) {
+        break label544;
+      }
+      bool = true;
+      paramVideoMaterial.setUse3DMMTransform(bool);
+      if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.GLB_FIELD.NEED_AVATAR_FACEKIT.value, 0) != 1) {
+        break label550;
+      }
+      bool = true;
+      paramVideoMaterial.setNeedAvatarFacekit(bool);
+      if (GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.GLB_FIELD.NEED_FACE_MESH_FACEKIT.value, 0) != 1) {
+        break label556;
+      }
+      bool = true;
+      paramVideoMaterial.setNeedFaceMeshFacekit(bool);
       paramVideoMaterial.setTransformAdjustAlpha((float)GsonUtils.optDouble(paramJsonObject, VideoMaterialUtil.GLB_FIELD.TRANSFORM_ADJUST_ALPHA.value, 1.0D));
       paramVideoMaterial.setFov((float)GsonUtils.optDouble(paramJsonObject, VideoMaterialUtil.GLB_FIELD.FOV.value, 60.0D));
+      paramVideoMaterial.setKapuMaterialType(GsonUtils.optInt(paramJsonObject, VideoMaterialUtil.GLB_FIELD.KAPU_MATERIAL_TYPE.value, 0));
       localObject1 = new ArrayList();
       paramJsonObject = GsonUtils.optJsonArray(paramJsonObject, VideoMaterialUtil.GLB_FIELD.GLB_LIST.value);
       i = 0;
       j = 0;
       if (paramJsonObject == null) {
-        break label999;
+        break label1223;
       }
       k = 0;
       i = j;
@@ -4499,7 +4776,7 @@ public class VideoTemplateParser
     for (;;)
     {
       if (j >= paramJsonObject.size()) {
-        break label992;
+        break label1216;
       }
       JsonObject localJsonObject = GsonUtils.optJsonObject(paramJsonObject, j);
       if (localJsonObject != null)
@@ -4521,6 +4798,7 @@ public class VideoTemplateParser
         localGLBItemJava.iblRotation = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.GLB_FIELD.IBL_ROTATION.value, 0);
         localGLBItemJava.enableSSAO = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.GLB_FIELD.ENABLE_SSAO.value, 0);
         localGLBItemJava.positionType = GsonUtils.optInt(localJsonObject, VideoMaterialUtil.GLB_FIELD.POSITION_TYPE.value, 0);
+        localGLBItemJava.arTranslateType = GsonUtils.optInt(localJsonObject, "arTranslateType", 0);
         localObject2 = GsonUtils.optJsonArray(localJsonObject, VideoMaterialUtil.GLB_FIELD.TRANSLATE.value);
         if (localObject2 != null)
         {
@@ -4534,12 +4812,21 @@ public class VideoTemplateParser
               continue;
               bool = false;
               break;
-              label431:
+              label532:
               bool = false;
               break label40;
-              label437:
+              label538:
               bool = false;
               break label64;
+              label544:
+              bool = false;
+              break label88;
+              label550:
+              bool = false;
+              break label112;
+              label556:
+              bool = false;
+              break label136;
             }
           }
         }
@@ -4624,6 +4911,21 @@ public class VideoTemplateParser
         localGLBItemJava.bloom = parseBloomParam(localJsonObject);
         localGLBItemJava.charmRange = parseCharmRange(localJsonObject);
         localGLBItemJava.triggerConfig = parseTriggerConfig(localJsonObject);
+        localGLBItemJava.triggerState = new ArrayList();
+        localObject2 = GsonUtils.optJsonArray(localJsonObject, "triggerStateList");
+        if ((localObject2 != null) && (((JsonArray)localObject2).size() > 0)) {
+          i = 0;
+        }
+        while (i < ((JsonArray)localObject2).size())
+        {
+          localGLBItemJava.triggerState.add(GsonUtils.getStringUnsafe((JsonArray)localObject2, i));
+          i += 1;
+          continue;
+          localObject2 = GsonUtils.optString(localJsonObject, "triggerState");
+          if ((localObject2 != null) && (!"".equals(localObject2))) {
+            localGLBItemJava.triggerState.add(localObject2);
+          }
+        }
         localGLBItemJava.triggerCtrlItem = new TriggerCtrlItem(localGLBItemJava);
         localGLBItemJava.customMaterialItems = parseCustomMaterials(localJsonObject);
         localGLBItemJava.animationList = parseAnimationItems(paramVideoMaterial, localJsonObject);
@@ -4632,12 +4934,12 @@ public class VideoTemplateParser
       }
       j += 1;
     }
-    label992:
+    label1216:
     paramVideoMaterial.addMaterialType(MaterialType.THREE_DIM_IBL);
-    label999:
+    label1223:
     paramString = new ArrayList();
     paramJsonObject = ((List)localObject1).iterator();
-    label1102:
+    label1326:
     while (paramJsonObject.hasNext())
     {
       localObject1 = (GLBItemJava)paramJsonObject.next();
@@ -4645,7 +4947,7 @@ public class VideoTemplateParser
       for (((GLBItemJava)localObject1).triggerConfig.countTriggerType = i;; ((GLBItemJava)localObject1).triggerConfig.countTriggerType = PTFaceAttr.PTExpression.MV_PART_INDEX.value)
       {
         if (TextUtils.isEmpty(((GLBItemJava)localObject1).path)) {
-          break label1102;
+          break label1326;
         }
         paramString.add(localObject1);
         break;
@@ -4928,6 +5230,26 @@ public class VideoTemplateParser
     paramVideoMaterial.setImageMaskItemList(localArrayList);
   }
   
+  private static StickerItem parseItem(JsonObject paramJsonObject, String paramString, VideoMaterial paramVideoMaterial)
+  {
+    Object localObject = null;
+    paramString = GsonUtils.optJsonArray(paramJsonObject, paramString);
+    paramJsonObject = localObject;
+    if (paramString != null)
+    {
+      paramString = parseItemListParams(null, paramString, VideoFilterFactory.STICKER_TYPE.NORMAL.type, paramVideoMaterial, paramVideoMaterial.getBlendMode(), null, null, null);
+      paramJsonObject = localObject;
+      if (paramString != null)
+      {
+        paramJsonObject = localObject;
+        if (paramString.size() > 0) {
+          paramJsonObject = (StickerItem)paramString.get(0);
+        }
+      }
+    }
+    return paramJsonObject;
+  }
+  
   private static List<StickerItem> parseItemListParams(String paramString, JsonArray paramJsonArray, int paramInt1, VideoMaterial paramVideoMaterial, int paramInt2, boolean[] paramArrayOfBoolean, int[] paramArrayOfInt, DecryptListener paramDecryptListener)
   {
     HashMap localHashMap1;
@@ -4941,9 +5263,6 @@ public class VideoTemplateParser
     StickerItem localStickerItem;
     String str;
     boolean bool;
-    label930:
-    int m;
-    Object localObject2;
     for (;;)
     {
       try
@@ -4959,7 +5278,7 @@ public class VideoTemplateParser
           localObject1 = "";
           j = 0;
           if (k >= paramJsonArray.size()) {
-            break label4936;
+            break label5514;
           }
           localJsonObject = GsonUtils.getJsonObjectUnsafe(paramJsonArray, k);
           localStickerItem = new StickerItem();
@@ -4983,6 +5302,9 @@ public class VideoTemplateParser
           localStickerItem.blendMode = GsonUtils.optInt(localJsonObject, "blendMode", -1);
           localStickerItem.zIndex = GsonUtils.optInt(localJsonObject, "zIndex");
           localStickerItem.audioLoopCount = GsonUtils.optInt(localJsonObject, "audioLoopCount", -1);
+          if (localStickerItem.audioLoopCount >= 0) {
+            paramVideoMaterial.setMusicPlayCount(localStickerItem.audioLoopCount);
+          }
           localStickerItem.randomGroupNum = GsonUtils.optInt(localJsonObject, "randomGroupNum");
           localStickerItem.externalTriggerWords = GsonUtils.optString(localJsonObject, "externalTriggerWords");
           str = localStickerItem.externalTriggerWords;
@@ -5058,9 +5380,10 @@ public class VideoTemplateParser
           localStickerItem.crazyFacePath = GsonUtils.optString(localJsonObject, "crazyFacePath");
           localStickerItem.audioTriggerType = GsonUtils.optInt(localJsonObject, "audioTriggerType");
           if (GsonUtils.optInt(localJsonObject, "audioNeedAdjust", 1) != 1) {
-            break label4874;
+            break label5452;
           }
           bool = true;
+          label947:
           localStickerItem.audioNeedAdjust = bool;
           if (GsonUtils.optInt(localJsonObject, "orderMode", 1) == 1)
           {
@@ -5086,17 +5409,18 @@ public class VideoTemplateParser
               if (!TextUtils.isEmpty(localStickerItem.styleFilter)) {
                 paramVideoMaterial.addMaterialType(MaterialType.STYLE_MASK);
               }
+              localStickerItem.pluginFilterPath = GsonUtils.optString(localJsonObject, "pluginFilterParams");
               localStickerItem.triggerFrameDurationTime = GsonUtils.optInt(localJsonObject, "triggerFrameDurationTime");
               localStickerItem.triggedTimes = GsonUtils.optInt(localJsonObject, "triggeredTimes");
               localStickerItem.delayedTriggedTime = GsonUtils.optInt(localJsonObject, "triggeredDelayTime");
               localStickerItem.frameDuration = GsonUtils.optDouble(localJsonObject, "frameDuration");
               localObject1 = GsonUtils.optJsonArray(localJsonObject, "triggerFrameStartTime");
               if (localObject1 == null) {
-                break label1513;
+                break label1543;
               }
               m = ((JsonArray)localObject1).size();
               if (m <= 1) {
-                break label1499;
+                break label1529;
               }
               localObject2 = new long[m];
               j = 0;
@@ -5146,19 +5470,18 @@ public class VideoTemplateParser
         localStickerItem.disableDetectors[j] = GsonUtils.getStringUnsafe((JsonArray)localObject1, j);
         j += 1;
       }
-      label1499:
+      label1529:
       localStickerItem.triggerFrameStartTime = GsonUtils.optInt((JsonArray)localObject1, 0);
       continue;
-      label1513:
+      label1543:
       localStickerItem.triggerFrameStartTime = GsonUtils.optInt(localJsonObject, "triggerFrameStartTime");
     }
     if ((localStickerItem.stickerType == VideoFilterFactory.STICKER_TYPE.VIDEO_UP_DOWN.type) || (localStickerItem.stickerType == VideoFilterFactory.STICKER_TYPE.VIDEO_LEFT_RIGHT.type)) {
       if (localStickerItem.stickerType != VideoFilterFactory.STICKER_TYPE.VIDEO_UP_DOWN.type) {
-        break label1814;
+        break label1844;
       }
     }
-    Object localObject3;
-    label1814:
+    label1844:
     for (Object localObject1 = VideoMaterialUtil.ITEM_SOURCE_TYPE.VIDEO_UP_DOWN;; localObject1 = VideoMaterialUtil.ITEM_SOURCE_TYPE.VIDEO_LEFT_RIGHT)
     {
       localStickerItem.sourceType = ((VideoMaterialUtil.ITEM_SOURCE_TYPE)localObject1);
@@ -5176,7 +5499,7 @@ public class VideoTemplateParser
       localStickerItem.scaleDirection = GsonUtils.optInt(localJsonObject, "scaleDirection");
       localObject1 = GsonUtils.optJsonObject(localJsonObject, "zoomScale");
       if (localObject1 == null) {
-        break label1833;
+        break label1863;
       }
       localObject2 = ((JsonObject)localObject1).keySet().iterator();
       localStickerItem.zoomScale = new ArrayList();
@@ -5187,7 +5510,7 @@ public class VideoTemplateParser
       }
     }
     Collections.sort(localStickerItem.zoomScale, mRangeValueComp);
-    label1833:
+    label1863:
     localObject1 = GsonUtils.optJsonArray(localJsonObject, "activeParts");
     if (localObject1 != null)
     {
@@ -5254,6 +5577,17 @@ public class VideoTemplateParser
         j += 1;
       }
     }
+    localObject1 = GsonUtils.optJsonArray(localJsonObject, "uvValues");
+    if (localObject1 != null)
+    {
+      localStickerItem.uvValues = new float[((JsonArray)localObject1).size()];
+      j = 0;
+      while (j < ((JsonArray)localObject1).size())
+      {
+        localStickerItem.uvValues[j] = GsonUtils.getFloatUnsafe((JsonArray)localObject1, j);
+        j += 1;
+      }
+    }
     localObject1 = GsonUtils.optJsonArray(localJsonObject, "anchorPoint");
     if (localObject1 != null)
     {
@@ -5264,6 +5598,59 @@ public class VideoTemplateParser
         localStickerItem.anchorPoint[j] = GsonUtils.getIntUnsafe((JsonArray)localObject1, j);
         j += 1;
       }
+    }
+    localObject1 = null;
+    Object localObject3 = GsonUtils.optJsonArray(localJsonObject, "anchorUKYOPoint");
+    if (localObject3 != null)
+    {
+      localObject2 = new int[((JsonArray)localObject3).size()];
+      j = 0;
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (j >= ((JsonArray)localObject3).size()) {
+          break;
+        }
+        localObject2[j] = GsonUtils.getIntUnsafe((JsonArray)localObject3, j);
+        j += 1;
+      }
+    }
+    int m = GsonUtils.optInt(localJsonObject, "widthUKYO");
+    int n = GsonUtils.optInt(localJsonObject, "heightUKYO");
+    Object localObject2 = null;
+    Object localObject4 = GsonUtils.optJsonArray(localJsonObject, "anchorSinglePoint");
+    if (localObject4 != null)
+    {
+      localObject3 = new int[((JsonArray)localObject4).size()];
+      j = 0;
+      for (;;)
+      {
+        localObject2 = localObject3;
+        if (j >= ((JsonArray)localObject4).size()) {
+          break;
+        }
+        localObject3[j] = GsonUtils.getIntUnsafe((JsonArray)localObject4, j);
+        j += 1;
+      }
+    }
+    localObject3 = null;
+    JsonArray localJsonArray = GsonUtils.optJsonArray(localJsonObject, "anchorSinOvPoint");
+    if (localJsonArray != null)
+    {
+      localObject4 = new int[localJsonArray.size()];
+      j = 0;
+      for (;;)
+      {
+        localObject3 = localObject4;
+        if (j >= localJsonArray.size()) {
+          break;
+        }
+        localObject4[j] = GsonUtils.getIntUnsafe(localJsonArray, j);
+        j += 1;
+      }
+    }
+    if (localObject1 != null) {
+      localStickerItem.positionsUKYO = new UKYOScorePositions(localStickerItem.width, localStickerItem.height, m, n, localStickerItem.anchorPoint, (int[])localObject1, (int[])localObject2, (int[])localObject3);
     }
     localObject1 = GsonUtils.optJsonArray(localJsonObject, "anchorPointAudio");
     if (localObject1 != null)
@@ -5312,11 +5699,10 @@ public class VideoTemplateParser
     localStickerItem.bodyTriggerDistance = GsonUtils.optInt(localJsonObject, "bodyTriggerDistance", 0);
     localStickerItem.bodyTriggerTimeGap = GsonUtils.optDouble(localJsonObject, "bodyTriggerTimeGap", 0.0D);
     localStickerItem.relativeScaleType = GsonUtils.optInt(localJsonObject, "relativeScaleType");
-    label2755:
-    int n;
     if (GsonUtils.optInt(localJsonObject, "orienting") == 1)
     {
       bool = true;
+      label3106:
       localStickerItem.orienting = bool;
       localObject1 = GsonUtils.optJsonObject(localJsonObject, "ageRange");
       if (localObject1 != null)
@@ -5366,10 +5752,10 @@ public class VideoTemplateParser
         localStickerItem.transition.emissionMode = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.TRANSITION.EMISSION_MODE.value);
         localObject2 = localStickerItem.transition;
         if (GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.TRANSITION.PARTICLE_ALWAYS_UPDATE.value) != 1) {
-          break label4886;
+          break label5464;
         }
         bool = true;
-        label3208:
+        label3559:
         ((Transition)localObject2).particleAlwaysUpdate = bool;
         localStickerItem.transition.emissionRate = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.TRANSITION.EMISSION_RATE.value);
         localStickerItem.transition.scale = GsonUtils.optString((JsonObject)localObject1, VideoMaterialUtil.TRANSITION.SCALE.value);
@@ -5391,10 +5777,10 @@ public class VideoTemplateParser
           {
             n = localStickerItem.transition.particleCountMax / localStickerItem.transition.repeatCount;
             if (localStickerItem.transition.clearMode != VideoMaterialUtil.PARTICLE_CLEAR_MODE.CLEAR_ALL.value) {
-              break label4892;
+              break label5470;
             }
             m = 1;
-            label3500:
+            label3851:
             if (j >= m + n) {
               break;
             }
@@ -5426,7 +5812,7 @@ public class VideoTemplateParser
         localStickerItem.particleConfig = ((ParticleConfig)localHashMap1.get(localObject1));
         localObject1 = paramString + File.separator + localStickerItem.id + File.separator + GsonUtils.optString(localJsonObject, "gpuParticleConfigFile");
         if (!localHashMap2.containsKey(localObject1)) {
-          break label4198;
+          break label4549;
         }
         localStickerItem.gpuParticleConfig = ((GPUParticleConfig)localHashMap2.get(localObject1));
       }
@@ -5440,10 +5826,10 @@ public class VideoTemplateParser
           }
         }
         if (GsonUtils.optInt(localJsonObject, "followPhoneAngle", 0) != 1) {
-          break label4898;
+          break label5476;
         }
         bool = true;
-        label3878:
+        label4229:
         localStickerItem.followPhoneAngle = bool;
         localStickerItem.strokeType = GsonUtils.optInt(localJsonObject, "strokeType", 0);
         localStickerItem.strokeStyle = GsonUtils.optInt(localJsonObject, "strokeStyle", 0);
@@ -5451,10 +5837,10 @@ public class VideoTemplateParser
         localStickerItem.strokeWidth = GsonUtils.optDouble(localJsonObject, "strokeWidth", 0.0D);
         localStickerItem.strokeGap = GsonUtils.optDouble(localJsonObject, "strokeGap", 0.0D);
         if (GsonUtils.optInt(localJsonObject, "isStrokeBlur", 0) != 1) {
-          break label4904;
+          break label5482;
         }
         bool = true;
-        label3976:
+        label4327:
         localStickerItem.isStrokeBlur = bool;
         localStickerItem.hairLutName = GsonUtils.optString(localJsonObject, "hairLutName");
         localStickerItem.hairMaskType = Integer.valueOf(GsonUtils.optInt(localJsonObject, "hairMaskType", 0));
@@ -5464,7 +5850,7 @@ public class VideoTemplateParser
         localStickerItem.framePositionsBean = parseFramePosition(paramVideoMaterial, localJsonObject);
         localObject1 = GsonUtils.optJsonArray(localJsonObject, "hotArea");
         if ((localObject1 == null) || (((JsonArray)localObject1).size() <= 0)) {
-          break label4269;
+          break label4620;
         }
         localStickerItem.hotArea = new double[((JsonArray)localObject1).size()];
         j = 0;
@@ -5476,12 +5862,12 @@ public class VideoTemplateParser
         localStickerItem.particleConfig = parseParticleConfig(paramString + File.separator + localStickerItem.id, GsonUtils.optString(localJsonObject, "dexName"), paramDecryptListener);
         localHashMap1.put(localObject1, localStickerItem.particleConfig);
         break;
-        label4198:
+        label4549:
         localStickerItem.gpuParticleConfig = parseGpuParticleConfig(localJsonObject, paramString + File.separator + localStickerItem.id, GsonUtils.optString(localJsonObject, "gpuParticleConfigFile"), paramDecryptListener);
         localHashMap2.put(localObject1, localStickerItem.gpuParticleConfig);
       }
       paramVideoMaterial.addMaterialType(MaterialType.HOT_AREA);
-      label4269:
+      label4620:
       localStickerItem.redPacketStartFrame = GsonUtils.optInt(localJsonObject, "hotAreaStartFrame");
       localStickerItem.redPacketEndFrame = GsonUtils.optInt(localJsonObject, "hotAreaEndFrame");
       localStickerItem.activateTriggerCountOnce = GsonUtils.optInt(localJsonObject, "activateTriggerCountOnce");
@@ -5491,23 +5877,23 @@ public class VideoTemplateParser
       {
         localStickerItem.triggerArea = new ArrayList();
         j = 0;
-        label4351:
+        label4702:
         if (j < ((JsonArray)localObject1).size())
         {
           localObject2 = new StickerItem.TriggerArea();
           localObject3 = GsonUtils.optJsonObject((JsonArray)localObject1, j);
           if (localObject3 == null) {
-            break label4910;
+            break label5488;
           }
           ((StickerItem.TriggerArea)localObject2).type = GsonUtils.optInt((JsonObject)localObject3, "type");
-          JsonArray localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject3, "rect");
-          if (localJsonArray != null)
+          localObject4 = GsonUtils.optJsonArray((JsonObject)localObject3, "rect");
+          if (localObject4 != null)
           {
-            ((StickerItem.TriggerArea)localObject2).rect = new float[localJsonArray.size()];
+            ((StickerItem.TriggerArea)localObject2).rect = new float[((JsonArray)localObject4).size()];
             m = 0;
-            while (m < localJsonArray.size())
+            while (m < ((JsonArray)localObject4).size())
             {
-              ((StickerItem.TriggerArea)localObject2).rect[m] = GsonUtils.getFloatSafe(localJsonArray, m);
+              ((StickerItem.TriggerArea)localObject2).rect[m] = GsonUtils.getFloatSafe((JsonArray)localObject4, m);
               m += 1;
             }
           }
@@ -5523,12 +5909,41 @@ public class VideoTemplateParser
             }
           }
           localStickerItem.triggerArea.add(localObject2);
-          break label4910;
+          break label5488;
         }
         if (localStickerItem.triggerArea.size() > 0)
         {
           localArrayList1 = localStickerItem.triggerArea;
-          label4557:
+          label4908:
+          localStickerItem.fragmentShaderPath = GsonUtils.optString(localJsonObject, "fragment", null);
+          localStickerItem.vertexShaderPath = GsonUtils.optString(localJsonObject, "vertex", null);
+          localStickerItem.maskBlurStrength = GsonUtils.optFloat(localJsonObject, "maskBlurStrength", 0.0F);
+          localObject1 = GsonUtils.optJsonObject(localJsonObject, "texturesPath");
+          if ((localObject1 != null) && (((JsonObject)localObject1).size() > 0))
+          {
+            localObject2 = ((JsonObject)localObject1).keySet();
+            if ((localObject2 != null) && (((Set)localObject2).size() > 0))
+            {
+              localStickerItem.texturesMap = new LinkedHashMap();
+              localObject2 = ((Set)localObject2).iterator();
+              while (((Iterator)localObject2).hasNext())
+              {
+                localObject3 = (String)((Iterator)localObject2).next();
+                localStickerItem.texturesMap.put(localObject3, Integer.valueOf(GsonUtils.optInt((JsonObject)localObject1, (String)localObject3, 1)));
+              }
+            }
+            if (paramVideoMaterial.mImageSetting == null) {
+              paramVideoMaterial.mImageSetting = new ImagesSetting();
+            }
+            paramVideoMaterial.mImageSetting.creatItems(localStickerItem, localStickerItem.texturesMap);
+          }
+          if (localStickerItem.stickerType == VideoFilterFactory.STICKER_TYPE.DEPTH_SMOKE.type) {
+            paramVideoMaterial.setNeedDepth();
+          }
+          j = GsonUtils.optInt(localJsonObject, "detectMaskType", -1);
+          if (j > 0) {
+            paramVideoMaterial.setDepthMaskType(j);
+          }
           localStickerItem.isCanDiyPitcureVideo = GsonUtils.optInt(localJsonObject, "isCanDiyPitcureVideo");
           if (localStickerItem.isCanDiyPitcureVideo == 1)
           {
@@ -5548,16 +5963,16 @@ public class VideoTemplateParser
           }
           paramVideoMaterial.setMusicID(GsonUtils.optString(localJsonObject, "musicID"));
           if ((localStickerItem.getTriggerTypeInt() != PTFaceAttr.PTExpression.ALWAYS.value) || (TextUtils.isEmpty(localStickerItem.audio))) {
-            break label4919;
+            break label5497;
           }
           paramVideoMaterial.setOverallAudio(localStickerItem.id + File.separator + localStickerItem.audio);
-          break label4919;
+          break label5497;
         }
       }
     }
     for (;;)
     {
-      label4790:
+      label5368:
       paramString = localArrayList2.iterator();
       while (paramString.hasNext())
       {
@@ -5575,38 +5990,38 @@ public class VideoTemplateParser
         }
       }
       return localArrayList2;
-      label4874:
-      label4886:
-      label4892:
-      label4898:
-      label4904:
-      label4910:
-      label4919:
-      label4936:
+      label5452:
+      label5464:
+      label5470:
+      label5476:
+      label5482:
+      label5488:
+      label5497:
       do
       {
         paramInt1 = j;
-        break label4790;
-        break label4557;
+        break label5368;
+        break label4908;
         bool = false;
-        break label930;
+        break label947;
         bool = false;
-        break label2755;
+        break label3106;
         bool = false;
-        break label3208;
+        break label3559;
         m = 0;
-        break label3500;
+        break label3851;
         bool = false;
-        break label3878;
+        break label4229;
         bool = false;
-        break label3976;
+        break label4327;
         j += 1;
-        break label4351;
+        break label4702;
         k += 1;
         j = n;
         localObject1 = str;
         break;
       } while (i <= 0);
+      label5514:
       paramInt1 = i;
     }
   }
@@ -5731,59 +6146,58 @@ public class VideoTemplateParser
       j = 0;
       while (k < paramJsonObject.size())
       {
-        Object localObject = GsonUtils.optJsonObject(paramJsonObject, k);
+        Object localObject1 = GsonUtils.optJsonObject(paramJsonObject, k);
         int m = i;
-        if (localObject != null)
+        if (localObject1 != null)
         {
           localNodeItemJava = new NodeItemJava();
-          localNodeItemJava.name = GsonUtils.optString((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.NAME.value, "");
-          localNodeItemJava.needFaceMesh = GsonUtils.optInt((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.FACEMESH.value, 0);
-          localNodeItemJava.content = GsonUtils.optString((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.CONTENT.value, "");
-          localNodeItemJava.modelId = GsonUtils.optString((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.MODEL_ID.value, "");
-          localNodeItemJava.triggerType = GsonUtils.optString((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.TRIGGER_TYPE.value, "");
-          localNodeItemJava.externalTriggerWords = GsonUtils.optString((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.EXTERNAL_TRIGGER_WORDS.value, "");
-          localNodeItemJava.frames = GsonUtils.optInt((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.FRAMES.value, 1);
-          localNodeItemJava.frameDuration = GsonUtils.optInt((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.FRAME_DURATION.value, 1);
-          if (GsonUtils.optInt((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.ALWAYS_TRIGGERED.value, 1) == 1)
+          localNodeItemJava.name = GsonUtils.optString((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.NAME.value, "");
+          localNodeItemJava.needFaceMesh = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.FACEMESH.value, 0);
+          localNodeItemJava.content = GsonUtils.optString((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.CONTENT.value, "");
+          localNodeItemJava.modelId = GsonUtils.optString((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.MODEL_ID.value, "");
+          localNodeItemJava.triggerType = GsonUtils.optString((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.TRIGGER_TYPE.value, "");
+          localNodeItemJava.externalTriggerWords = GsonUtils.optString((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.EXTERNAL_TRIGGER_WORDS.value, "");
+          localNodeItemJava.frames = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.FRAMES.value, 1);
+          localNodeItemJava.frameDuration = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.FRAME_DURATION.value, 1);
+          if (GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.ALWAYS_TRIGGERED.value, 1) == 1)
           {
             bool = true;
             localNodeItemJava.alwaysTriggered = bool;
-            localNodeItemJava.playCount = GsonUtils.optInt((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.PLAY_COUNT.value, 0);
-            localNodeItemJava.rotateRequied = GsonUtils.optInt((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.ROTATE_REQUIRED.value, 1);
-            localNodeItemJava.material = GsonUtils.optString((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.MATERIAL.value, "baseColorMap");
-            localNodeItemJava.activateTriggerCount = GsonUtils.optInt((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.ACTIVE_COUNT.value, 0);
-            localNodeItemJava.activateTriggerType = GsonUtils.optInt((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.ACTIVE_TYPE.value, 0);
-            localNodeItemJava.activateTriggerTotalCount = GsonUtils.optInt((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.ACTIVE_TOTAL_COUNT.value, 0);
-            localNodeItemJava.expressionConfigList = parseExpressionList((JsonObject)localObject);
-            if (GsonUtils.optDouble((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.EXPRESSION_CONFIG_VERSION.value) < 1.1D) {
+            localNodeItemJava.playCount = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.PLAY_COUNT.value, 0);
+            localNodeItemJava.rotateRequied = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.ROTATE_REQUIRED.value, 1);
+            localNodeItemJava.material = GsonUtils.optString((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.MATERIAL.value, "baseColorMap");
+            localNodeItemJava.activateTriggerCount = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.ACTIVE_COUNT.value, 0);
+            localNodeItemJava.activateTriggerType = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.ACTIVE_TYPE.value, 0);
+            localNodeItemJava.activateTriggerTotalCount = GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.ACTIVE_TOTAL_COUNT.value, 0);
+            localNodeItemJava.expressionConfigList = parseExpressionList((JsonObject)localObject1);
+            if (GsonUtils.optDouble((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.EXPRESSION_CONFIG_VERSION.value) < 1.1D) {
               break label496;
             }
             bool = true;
             label369:
             localNodeItemJava.enableExpressionConfigRemap = bool;
-            if (GsonUtils.optInt((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.NEED_SHOW.value, 1) != 1) {
+            if (GsonUtils.optInt((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.NEED_SHOW.value, 1) != 1) {
               break label502;
             }
           }
-          HashMap localHashMap;
           label496:
           label502:
           for (boolean bool = true;; bool = false)
           {
             localNodeItemJava.needShow = bool;
             m = localNodeItemJava.getTriggerTypeInt();
-            if (GsonUtils.optInt((JsonObject)localObject, "isElementTriggerMVPart", 0) != 0) {
+            if (GsonUtils.optInt((JsonObject)localObject1, "isElementTriggerMVPart", 0) != 0) {
               i = localNodeItemJava.getTriggerTypeInt();
             }
-            localHashMap = new HashMap();
-            localObject = GsonUtils.optJsonArray((JsonObject)localObject, VideoMaterialUtil.GLB_FIELD.EXPRESSION_ORDER_LIST.value);
-            if (localObject == null) {
+            localObject2 = new HashMap();
+            JsonArray localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject1, VideoMaterialUtil.GLB_FIELD.EXPRESSION_ORDER_LIST.value);
+            if (localJsonArray == null) {
               break label508;
             }
             j = 0;
-            while (j < ((JsonArray)localObject).size())
+            while (j < localJsonArray.size())
             {
-              localHashMap.put(GsonUtils.optString((JsonArray)localObject, j), Integer.valueOf(j));
+              ((Map)localObject2).put(GsonUtils.optString(localJsonArray, j), Integer.valueOf(j));
               j += 1;
             }
             bool = false;
@@ -5792,7 +6206,22 @@ public class VideoTemplateParser
             break label369;
           }
           label508:
-          localNodeItemJava.expressionOrderList = localHashMap;
+          localNodeItemJava.expressionOrderList = ((Map)localObject2);
+          localNodeItemJava.triggerState = new ArrayList();
+          Object localObject2 = GsonUtils.optJsonArray((JsonObject)localObject1, "triggerStateList");
+          if ((localObject2 != null) && (((JsonArray)localObject2).size() > 0)) {
+            j = 0;
+          }
+          while (j < ((JsonArray)localObject2).size())
+          {
+            localNodeItemJava.triggerState.add(GsonUtils.getStringUnsafe((JsonArray)localObject2, j));
+            j += 1;
+            continue;
+            localObject1 = GsonUtils.optString((JsonObject)localObject1, "triggerState");
+            if ((localObject1 != null) && (!"".equals(localObject1))) {
+              localNodeItemJava.triggerState.add(localObject1);
+            }
+          }
           localArrayList.add(localNodeItemJava);
           j = m;
           m = i;
@@ -5824,6 +6253,154 @@ public class VideoTemplateParser
       i = 0;
       j = 0;
     }
+  }
+  
+  private static List<OvalDistortionItem> parseOvalDistortionItemListParams(JsonArray paramJsonArray)
+  {
+    Object localObject1;
+    if (paramJsonArray != null) {
+      try
+      {
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        for (;;)
+        {
+          localObject1 = localArrayList;
+          if (i >= paramJsonArray.size()) {
+            break;
+          }
+          localObject1 = new OvalDistortionItem();
+          Object localObject2 = GsonUtils.getJsonObjectUnsafe(paramJsonArray, i);
+          ((OvalDistortionItem)localObject1).distortionType = GsonUtils.optInt((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.DISTORTION_TYPE.value);
+          ((OvalDistortionItem)localObject1).strength = GsonUtils.optFloat((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.STRENGH.value);
+          JsonArray localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.CENTER.value);
+          int j;
+          if (localJsonArray != null)
+          {
+            j = 0;
+            while (j < localJsonArray.size())
+            {
+              ((OvalDistortionItem)localObject1).center[j] = GsonUtils.optInt(localJsonArray, j);
+              j += 1;
+            }
+          }
+          localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.CENTER_OFFSET_START.value);
+          if (localJsonArray != null)
+          {
+            j = 0;
+            while (j < localJsonArray.size())
+            {
+              ((OvalDistortionItem)localObject1).centerOffsetStart[j] = GsonUtils.optInt(localJsonArray, j);
+              j += 1;
+            }
+          }
+          localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.CENTER_OFFSET_END.value);
+          if (localJsonArray != null)
+          {
+            j = 0;
+            while (j < localJsonArray.size())
+            {
+              ((OvalDistortionItem)localObject1).centerOffsetEnd[j] = GsonUtils.optInt(localJsonArray, j);
+              j += 1;
+            }
+          }
+          ((OvalDistortionItem)localObject1).centerOffsetMultiplier = GsonUtils.optFloat((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.CENTER_OFFSET_MULTIPLIER.value);
+          localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.LENGTH_START.value);
+          if (localJsonArray != null)
+          {
+            j = 0;
+            while (j < localJsonArray.size())
+            {
+              ((OvalDistortionItem)localObject1).lengthStart[j] = GsonUtils.optInt(localJsonArray, j);
+              j += 1;
+            }
+          }
+          localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.LENGTH_END.value);
+          if (localJsonArray != null)
+          {
+            j = 0;
+            while (j < localJsonArray.size())
+            {
+              ((OvalDistortionItem)localObject1).lengthEnd[j] = GsonUtils.optInt(localJsonArray, j);
+              j += 1;
+            }
+          }
+          ((OvalDistortionItem)localObject1).lengthMultiplier = GsonUtils.optFloat((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.LENGTH_MULTIPLIER.value);
+          localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.WIDTH_START.value);
+          if (localJsonArray != null)
+          {
+            j = 0;
+            while (j < localJsonArray.size())
+            {
+              ((OvalDistortionItem)localObject1).widthStart[j] = GsonUtils.optInt(localJsonArray, j);
+              j += 1;
+            }
+          }
+          localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.WIDTH_END.value);
+          if (localJsonArray != null)
+          {
+            j = 0;
+            while (j < localJsonArray.size())
+            {
+              ((OvalDistortionItem)localObject1).widthEnd[j] = GsonUtils.optInt(localJsonArray, j);
+              j += 1;
+            }
+          }
+          ((OvalDistortionItem)localObject1).widthMultiplier = GsonUtils.optFloat((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.WIDTH_MULTIPLIER.value);
+          localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.ANGLE_START.value);
+          if (localJsonArray != null)
+          {
+            j = 0;
+            while (j < localJsonArray.size())
+            {
+              ((OvalDistortionItem)localObject1).angleStart[j] = GsonUtils.optInt(localJsonArray, j);
+              j += 1;
+            }
+          }
+          localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.ANGLE_END.value);
+          if (localJsonArray != null)
+          {
+            j = 0;
+            while (j < localJsonArray.size())
+            {
+              ((OvalDistortionItem)localObject1).angleEnd[j] = GsonUtils.optInt(localJsonArray, j);
+              j += 1;
+            }
+          }
+          ((OvalDistortionItem)localObject1).innerCircle = GsonUtils.optFloat((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.INNER_CIRCLE.value);
+          ((OvalDistortionItem)localObject1).outerCircle = GsonUtils.optFloat((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.OUTER_CIRCLE.value);
+          ((OvalDistortionItem)localObject1).scaleArea = GsonUtils.optInt((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.SCALE_AREA.value);
+          localJsonArray = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.PUSH_START.value);
+          if (localJsonArray != null)
+          {
+            j = 0;
+            while (j < localJsonArray.size())
+            {
+              ((OvalDistortionItem)localObject1).pushStart[j] = GsonUtils.optInt(localJsonArray, j);
+              j += 1;
+            }
+          }
+          localObject2 = GsonUtils.optJsonArray((JsonObject)localObject2, VideoMaterialUtil.OVAL_DISTORTION_ITEM_FILED.PUSH_END.value);
+          if (localObject2 != null)
+          {
+            j = 0;
+            while (j < ((JsonArray)localObject2).size())
+            {
+              ((OvalDistortionItem)localObject1).pushEnd[j] = GsonUtils.optInt((JsonArray)localObject2, j);
+              j += 1;
+            }
+          }
+          localArrayList.add(localObject1);
+          i += 1;
+        }
+        localObject1 = null;
+      }
+      catch (Exception paramJsonArray)
+      {
+        LogUtils.e(TAG, paramJsonArray);
+      }
+    }
+    return localObject1;
   }
   
   public static ParticleConfig parseParticleConfig(String paramString1, String paramString2, DecryptListener paramDecryptListener)
@@ -5945,14 +6522,15 @@ public class VideoTemplateParser
       localObject[0] = 0;
       parse3DItemListParams(paramString, paramJsonObject, paramVideoMaterial, (boolean[])localObject);
       if ((i == 0) && (localObject[0] == 0)) {
-        break label531;
+        break label563;
       }
     }
-    label531:
+    label563:
     for (int i = 1;; i = 0)
     {
       parseHeadCropItemListParams(paramJsonObject, paramVideoMaterial);
       paramVideoMaterial.setDistortionItemList(parseDistortionItemListParams(GsonUtils.optJsonArray(paramJsonObject, VideoMaterialUtil.FIELD.DISTORTION_LIST.value)));
+      paramVideoMaterial.setOvalDistortionItemList(parseOvalDistortionItemListParams(GsonUtils.optJsonArray(paramJsonObject, VideoMaterialUtil.FIELD.OVAL_DISTORTION_LIST.value)));
       parseFaceMoveItemListParams(paramJsonObject, paramVideoMaterial);
       parseFaceMoveTrianglesParams(paramJsonObject, paramVideoMaterial);
       parseFacePointsListParams(paramJsonObject, paramVideoMaterial);
@@ -5987,11 +6565,14 @@ public class VideoTemplateParser
       parseRapidNetFaceStyleItemList(paramJsonObject, paramVideoMaterial, paramString);
       parseCosFunParams(paramString, paramJsonObject, paramVideoMaterial, paramDecryptListener);
       parseShowTipsItem(paramJsonObject, paramVideoMaterial);
+      parseUKYOGamesItem(paramJsonObject, paramVideoMaterial);
       parseFaceBeautyItemListParams(paramJsonObject, paramVideoMaterial);
       parseTriggerStateEdgeItemList(paramJsonObject, paramVideoMaterial);
       parseTriggerStateActionItemList(paramJsonObject, paramVideoMaterial);
       parseStyleFilterConfigFile(paramString, paramJsonObject, paramVideoMaterial, paramDecryptListener);
       parseCustomFilterGroupConfigFile(paramString, paramJsonObject, paramVideoMaterial, paramDecryptListener);
+      parseCameraTransformParams(paramJsonObject, paramVideoMaterial);
+      parseCameraViewConfigParams(paramJsonObject, paramVideoMaterial);
       VideoMaterialUtil.updateSupportLandscape(paramVideoMaterial);
       VideoMaterialUtil.updateMaxFaceCount(paramVideoMaterial);
       VideoMaterialUtil.updateFaceValueDetectType(paramVideoMaterial);
@@ -6368,6 +6949,149 @@ public class VideoTemplateParser
     paramVideoMaterial.setTriggerStateEdgeItemList(localArrayList);
   }
   
+  private static void parseUKYOGamesItem(JsonObject paramJsonObject, VideoMaterial paramVideoMaterial)
+  {
+    JsonObject localJsonObject = GsonUtils.optJsonObject(paramJsonObject, "appleGame");
+    if (localJsonObject == null) {
+      return;
+    }
+    JsonArray localJsonArray = GsonUtils.optJsonArray(localJsonObject, "appleTime");
+    String str1 = GsonUtils.optString(localJsonObject, "appleAnimeDead");
+    int j = GsonUtils.optInt(localJsonObject, "appleCountDead");
+    String str2 = GsonUtils.optString(localJsonObject, "appleAnimeComob");
+    int k = GsonUtils.optInt(localJsonObject, "appleCountComob");
+    Object localObject3 = GsonUtils.optString(localJsonObject, "roleAnimeAttack");
+    int i = GsonUtils.optInt(localJsonObject, "roleCountAttack");
+    float f1 = GsonUtils.optFloat(localJsonObject, "roleY");
+    float f2 = GsonUtils.optFloat(localJsonObject, "deadY");
+    float f3 = GsonUtils.optFloat(localJsonObject, "speed");
+    float f4 = GsonUtils.optFloat(localJsonObject, "maxWidth", 1.0F);
+    int m = GsonUtils.optInt(localJsonObject, "comobScore");
+    Object localObject2 = parseItem(localJsonObject, "audioattack", paramVideoMaterial);
+    StickerItem localStickerItem2 = parseItem(localJsonObject, "audiostart", paramVideoMaterial);
+    StickerItem localStickerItem3 = parseItem(localJsonObject, "audioend", paramVideoMaterial);
+    StickerItem localStickerItem4 = parseItem(localJsonObject, "audiocombo", paramVideoMaterial);
+    StickerItem localStickerItem5 = parseItem(localJsonObject, "audior", paramVideoMaterial);
+    StickerItem localStickerItem1 = parseItem(localJsonObject, "defen", paramVideoMaterial);
+    Object localObject4 = GsonUtils.optJsonArray(localJsonObject, "role");
+    Object localObject1 = null;
+    paramJsonObject = (JsonObject)localObject1;
+    if (localObject4 != null)
+    {
+      localObject4 = parseItemListParams(null, (JsonArray)localObject4, VideoFilterFactory.STICKER_TYPE.NORMAL.type, paramVideoMaterial, paramVideoMaterial.getBlendMode(), null, null, null);
+      Log.d(TAG, "parseAppleGamesItem: " + ((List)localObject4).size());
+      paramJsonObject = (JsonObject)localObject1;
+      if (localObject4 != null)
+      {
+        paramJsonObject = (JsonObject)localObject1;
+        if (((List)localObject4).size() > 0) {
+          if (0 != 0) {
+            break label1202;
+          }
+        }
+      }
+    }
+    label1202:
+    for (paramJsonObject = new UKYOGameSetting();; paramJsonObject = null)
+    {
+      paramJsonObject.tachiItem = ((StickerItem)((List)localObject4).get(0));
+      localObject1 = new TachiSetting();
+      ((TachiSetting)localObject1).alignFacePoints = paramJsonObject.tachiItem.alignFacePoints;
+      ((TachiSetting)localObject1).anchorPoint = paramJsonObject.tachiItem.anchorPoint;
+      ((TachiSetting)localObject1).mItemWidth = paramJsonObject.tachiItem.width;
+      ((TachiSetting)localObject1).mItemHeight = paramJsonObject.tachiItem.height;
+      ((TachiSetting)localObject1).mImages[com.tencent.ttpic.filter.juyoujinggame.UKYOTachi.UKYOTACHISTATUS.MOVING.getValue()] = paramJsonObject.tachiItem.id;
+      ((TachiSetting)localObject1).mImages[com.tencent.ttpic.filter.juyoujinggame.UKYOTachi.UKYOTACHISTATUS.HITTING.getValue()] = localObject3;
+      ((TachiSetting)localObject1).mFrames[com.tencent.ttpic.filter.juyoujinggame.UKYOTachi.UKYOTACHISTATUS.MOVING.getValue()] = Math.max(paramJsonObject.tachiItem.frames, 1);
+      ((TachiSetting)localObject1).mFrames[com.tencent.ttpic.filter.juyoujinggame.UKYOTachi.UKYOTACHISTATUS.HITTING.getValue()] = i;
+      ((TachiSetting)localObject1).mFrameDuration[com.tencent.ttpic.filter.juyoujinggame.UKYOTachi.UKYOTACHISTATUS.MOVING.getValue()] = paramJsonObject.tachiItem.frameDuration;
+      ((TachiSetting)localObject1).mFrameDuration[com.tencent.ttpic.filter.juyoujinggame.UKYOTachi.UKYOTACHISTATUS.HITTING.getValue()] = paramJsonObject.tachiItem.frameDuration;
+      ((TachiSetting)localObject1).mPlayCounts[com.tencent.ttpic.filter.juyoujinggame.UKYOTachi.UKYOTACHISTATUS.MOVING.getValue()] = 99999;
+      ((TachiSetting)localObject1).mPlayCounts[com.tencent.ttpic.filter.juyoujinggame.UKYOTachi.UKYOTACHISTATUS.HITTING.getValue()] = 1;
+      ((TachiSetting)localObject1).mHittingTime = ((int)(paramJsonObject.tachiItem.frameDuration * i));
+      ((TachiSetting)localObject1).mScaleFactor = paramJsonObject.tachiItem.scaleFactor;
+      ((TachiSetting)localObject1).mRoleSizeYFactor = f1;
+      paramJsonObject.tachiSetting = ((TachiSetting)localObject1);
+      paramJsonObject.tachiHitItem = paramJsonObject.createStickerItem((String)localObject3, i, paramJsonObject.tachiItem);
+      localObject3 = GsonUtils.optJsonArray(localJsonObject, "apple");
+      localObject1 = paramJsonObject;
+      if (localObject3 != null)
+      {
+        localObject3 = parseItemListParams(null, (JsonArray)localObject3, VideoFilterFactory.STICKER_TYPE.NORMAL.type, paramVideoMaterial, paramVideoMaterial.getBlendMode(), null, null, null);
+        localObject1 = paramJsonObject;
+        if (localObject3 != null)
+        {
+          localObject1 = paramJsonObject;
+          if (((List)localObject3).size() > 0)
+          {
+            localObject1 = paramJsonObject;
+            if (paramJsonObject == null) {
+              localObject1 = new UKYOGameSetting();
+            }
+            ((UKYOGameSetting)localObject1).appleItem = ((StickerItem)((List)localObject3).get(0));
+            paramJsonObject = new AppleItemSetting();
+            paramJsonObject.mItemWidth = ((UKYOGameSetting)localObject1).appleItem.width;
+            paramJsonObject.mItemHeight = ((UKYOGameSetting)localObject1).appleItem.height;
+            paramJsonObject.mScaleFactor = ((UKYOGameSetting)localObject1).appleItem.scaleFactor;
+            paramJsonObject.maxWidth = f4;
+            paramJsonObject.mImages[com.tencent.ttpic.filter.juyoujinggame.UKYOApple.APPLE_STATUS.DROPPING.getValue()] = ((UKYOGameSetting)localObject1).appleItem.id;
+            paramJsonObject.mImages[com.tencent.ttpic.filter.juyoujinggame.UKYOApple.APPLE_STATUS.HITTING.getValue()] = str1;
+            paramJsonObject.mFrames[com.tencent.ttpic.filter.juyoujinggame.UKYOApple.APPLE_STATUS.DROPPING.getValue()] = Math.max(((UKYOGameSetting)localObject1).appleItem.frames, 1);
+            paramJsonObject.mFrames[com.tencent.ttpic.filter.juyoujinggame.UKYOApple.APPLE_STATUS.HITTING.getValue()] = j;
+            paramJsonObject.mFrameDuration[com.tencent.ttpic.filter.juyoujinggame.UKYOApple.APPLE_STATUS.DROPPING.getValue()] = ((UKYOGameSetting)localObject1).appleItem.frameDuration;
+            paramJsonObject.mFrameDuration[com.tencent.ttpic.filter.juyoujinggame.UKYOApple.APPLE_STATUS.HITTING.getValue()] = ((UKYOGameSetting)localObject1).appleItem.frameDuration;
+            paramJsonObject.mPlayCounts[com.tencent.ttpic.filter.juyoujinggame.UKYOApple.APPLE_STATUS.DROPPING.getValue()] = 99999;
+            paramJsonObject.mPlayCounts[com.tencent.ttpic.filter.juyoujinggame.UKYOApple.APPLE_STATUS.HITTING.getValue()] = 1;
+            paramJsonObject.mDropSpeed = f3;
+            paramJsonObject.mDeadY = f2;
+            paramJsonObject.audioattack = ((StickerItem)localObject2);
+            paramJsonObject.audiostart = localStickerItem2;
+            paramJsonObject.audioend = localStickerItem3;
+            paramJsonObject.audiocombo = localStickerItem4;
+            paramJsonObject.audior = localStickerItem5;
+            paramJsonObject.dataPath = paramVideoMaterial.getDataPath();
+            if (localJsonArray != null)
+            {
+              localObject2 = new ArrayList();
+              i = 0;
+              while (i < localJsonArray.size())
+              {
+                ((ArrayList)localObject2).add(Float.valueOf(localJsonArray.get(i).getAsFloat()));
+                i += 1;
+              }
+              paramJsonObject.mAppleAppearTime = ((ArrayList)localObject2);
+            }
+            ((UKYOGameSetting)localObject1).appleItemSetting = paramJsonObject;
+            paramJsonObject = new FlashItemSetting();
+            ((UKYOGameSetting)localObject1).flashItemSetting = paramJsonObject;
+            paramJsonObject.mImageID = str2;
+            paramJsonObject.mFrameDuration = ((UKYOGameSetting)localObject1).appleItem.frameDuration;
+            paramJsonObject.mFrames = k;
+            paramJsonObject.mPlayCounts = 1;
+            paramJsonObject.COMBO_FLASH_COUNT = m;
+            ((UKYOGameSetting)localObject1).appleDisapearItem = ((UKYOGameSetting)localObject1).createStickerItem(str1, j, ((UKYOGameSetting)localObject1).appleItem);
+            ((UKYOGameSetting)localObject1).appleComboItem = ((UKYOGameSetting)localObject1).createStickerItem(str2, k, ((UKYOGameSetting)localObject1).appleItem);
+          }
+        }
+      }
+      ((UKYOGameSetting)localObject1).score1Item = parseItem(localJsonObject, "score1", paramVideoMaterial);
+      ((UKYOGameSetting)localObject1).score2Item = parseItem(localJsonObject, "score2", paramVideoMaterial);
+      ((UKYOGameSetting)localObject1).scoreEffectItem = parseItem(localJsonObject, "scoreeffect", paramVideoMaterial);
+      ((UKYOGameSetting)localObject1).comboItem = parseItem(localJsonObject, "combo", paramVideoMaterial);
+      ((UKYOGameSetting)localObject1).combo1Item = parseItem(localJsonObject, "combo1", paramVideoMaterial);
+      ((UKYOGameSetting)localObject1).combo2Item = parseItem(localJsonObject, "combo2", paramVideoMaterial);
+      ((UKYOGameSetting)localObject1).scoreSetting = new ScoreItemSetting();
+      ((UKYOGameSetting)localObject1).scoreSetting.dataPath = paramVideoMaterial.getDataPath();
+      ((UKYOGameSetting)localObject1).scoreSetting.audiodefen = localStickerItem1;
+      ((UKYOGameSetting)localObject1).scoreValueItems = ((UKYOGameSetting)localObject1).createScoreItems(((UKYOGameSetting)localObject1).scoreSetting, ((UKYOGameSetting)localObject1).score1Item);
+      if (localObject1 == null) {
+        break;
+      }
+      paramVideoMaterial.setUkyoGameSetting((UKYOGameSetting)localObject1);
+      return;
+    }
+  }
+  
   public static VideoMaterial parseVideoMaterial(String paramString)
   {
     return parseVideoMaterial(paramString, "params", true, decryptListener);
@@ -6417,12 +7141,16 @@ public class VideoTemplateParser
   
   public static VideoMaterial parseVideoMaterial(String paramString1, String paramString2, boolean paramBoolean, DecryptListener paramDecryptListener)
   {
-    return parseVideoMaterial(paramString1, parseVideoMaterialFileAsJSONObject(paramString1, paramString2, paramBoolean, paramDecryptListener), paramDecryptListener);
+    paramString1 = parseVideoMaterial(paramString1, parseVideoMaterialFileAsJSONObject(paramString1, paramString2, paramBoolean, paramDecryptListener), paramDecryptListener);
+    paramString1.setJsonName(paramString2);
+    return paramString1;
   }
   
   public static VideoMaterial parseVideoMaterial(String paramString1, String paramString2, boolean paramBoolean, DecryptListener paramDecryptListener, HashMap<String, Object> paramHashMap)
   {
-    return parseVideoMaterial(paramString1, parseVideoMaterialFileAsJSONObject(paramString1, paramString2, paramBoolean, paramDecryptListener), paramDecryptListener, paramHashMap);
+    paramString1 = parseVideoMaterial(paramString1, parseVideoMaterialFileAsJSONObject(paramString1, paramString2, paramBoolean, paramDecryptListener), paramDecryptListener, paramHashMap);
+    paramString1.setJsonName(paramString2);
+    return paramString1;
   }
   
   public static JsonObject parseVideoMaterialFileAsJSONObject(String paramString1, String paramString2, boolean paramBoolean, DecryptListener paramDecryptListener)
@@ -6813,7 +7541,7 @@ public class VideoTemplateParser
     //   15: invokespecial 191	java/lang/StringBuilder:<init>	()V
     //   18: aload_0
     //   19: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: ldc_w 1052
+    //   22: ldc_w 1055
     //   25: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: aload_1
     //   29: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -6824,7 +7552,7 @@ public class VideoTemplateParser
     //   41: invokespecial 191	java/lang/StringBuilder:<init>	()V
     //   44: aload_0
     //   45: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: ldc_w 1052
+    //   48: ldc_w 1055
     //   51: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: aload_1
     //   55: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -6836,14 +7564,14 @@ public class VideoTemplateParser
     //   69: astore_0
     //   70: aload 5
     //   72: ldc 34
-    //   74: invokevirtual 2871	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   74: invokevirtual 3027	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   77: ifne +25 -> 102
     //   80: new 190	java/lang/StringBuilder
     //   83: dup
     //   84: invokespecial 191	java/lang/StringBuilder:<init>	()V
     //   87: aload 5
     //   89: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: ldc_w 5839
+    //   92: ldc_w 6555
     //   95: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   98: invokevirtual 203	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   101: astore_0
@@ -6851,55 +7579,55 @@ public class VideoTemplateParser
     //   103: astore_1
     //   104: aload 7
     //   106: ldc 31
-    //   108: invokevirtual 2871	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   108: invokevirtual 3027	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   111: ifne +884 -> 995
     //   114: new 190	java/lang/StringBuilder
     //   117: dup
     //   118: invokespecial 191	java/lang/StringBuilder:<init>	()V
     //   121: aload 7
     //   123: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: ldc_w 5841
+    //   126: ldc_w 6557
     //   129: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   132: invokevirtual 203	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   135: astore_1
     //   136: new 197	java/io/File
     //   139: dup
     //   140: aload_0
-    //   141: invokespecial 5842	java/io/File:<init>	(Ljava/lang/String;)V
-    //   144: astore 7
+    //   141: invokespecial 6558	java/io/File:<init>	(Ljava/lang/String;)V
+    //   144: astore 5
     //   146: new 197	java/io/File
     //   149: dup
     //   150: aload_1
-    //   151: invokespecial 5842	java/io/File:<init>	(Ljava/lang/String;)V
-    //   154: astore 5
-    //   156: aload 7
-    //   158: invokevirtual 5845	java/io/File:exists	()Z
+    //   151: invokespecial 6558	java/io/File:<init>	(Ljava/lang/String;)V
+    //   154: astore 7
+    //   156: aload 5
+    //   158: invokevirtual 6561	java/io/File:exists	()Z
     //   161: ifeq +11 -> 172
-    //   164: aload 7
-    //   166: invokevirtual 5848	java/io/File:isFile	()Z
+    //   164: aload 5
+    //   166: invokevirtual 6564	java/io/File:isFile	()Z
     //   169: ifne +19 -> 188
-    //   172: aload 5
-    //   174: invokevirtual 5845	java/io/File:exists	()Z
+    //   172: aload 7
+    //   174: invokevirtual 6561	java/io/File:exists	()Z
     //   177: ifeq +357 -> 534
-    //   180: aload 5
-    //   182: invokevirtual 5848	java/io/File:isFile	()Z
+    //   180: aload 7
+    //   182: invokevirtual 6564	java/io/File:isFile	()Z
     //   185: ifeq +349 -> 534
-    //   188: aload 7
-    //   190: invokevirtual 5845	java/io/File:exists	()Z
+    //   188: aload 5
+    //   190: invokevirtual 6561	java/io/File:exists	()Z
     //   193: ifeq +296 -> 489
-    //   196: aload 7
-    //   198: invokevirtual 5848	java/io/File:isFile	()Z
+    //   196: aload 5
+    //   198: invokevirtual 6564	java/io/File:isFile	()Z
     //   201: ifeq +288 -> 489
-    //   204: new 5850	java/io/FileInputStream
+    //   204: new 6566	java/io/FileInputStream
     //   207: dup
-    //   208: aload 7
-    //   210: invokespecial 5853	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   208: aload 5
+    //   210: invokespecial 6569	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   213: astore_1
     //   214: iload_2
     //   215: ifne +314 -> 529
     //   218: aload_1
     //   219: aload_3
-    //   220: invokestatic 5742	com/tencent/ttpic/openapi/util/VideoTemplateParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
+    //   220: invokestatic 6458	com/tencent/ttpic/openapi/util/VideoTemplateParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
     //   223: astore_0
     //   224: aload_1
     //   225: astore 5
@@ -6910,7 +7638,7 @@ public class VideoTemplateParser
     //   232: aload_0
     //   233: astore 7
     //   235: aload_1
-    //   236: invokestatic 5856	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   236: invokestatic 6572	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   239: aload_0
     //   240: ifnull +454 -> 694
     //   243: aload_1
@@ -6921,16 +7649,16 @@ public class VideoTemplateParser
     //   250: astore_3
     //   251: aload_0
     //   252: astore 7
-    //   254: new 5729	java/io/InputStreamReader
+    //   254: new 6445	java/io/InputStreamReader
     //   257: dup
     //   258: aload_0
-    //   259: invokespecial 5745	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   259: invokespecial 6461	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   262: astore 6
-    //   264: new 5727	java/io/BufferedReader
+    //   264: new 6443	java/io/BufferedReader
     //   267: dup
     //   268: aload 6
     //   270: sipush 1024
-    //   273: invokespecial 5748	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   273: invokespecial 6464	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   276: astore_3
     //   277: aload_1
     //   278: astore 10
@@ -6943,7 +7671,7 @@ public class VideoTemplateParser
     //   290: new 190	java/lang/StringBuilder
     //   293: dup
     //   294: invokespecial 191	java/lang/StringBuilder:<init>	()V
-    //   297: astore 5
+    //   297: astore 11
     //   299: aload_1
     //   300: astore 10
     //   302: aload 6
@@ -6953,9 +7681,9 @@ public class VideoTemplateParser
     //   309: aload_0
     //   310: astore 7
     //   312: aload_3
-    //   313: invokevirtual 5751	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   316: astore 11
-    //   318: aload 11
+    //   313: invokevirtual 6467	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   316: astore 5
+    //   318: aload 5
     //   320: ifnull +310 -> 630
     //   323: aload_1
     //   324: astore 10
@@ -6965,8 +7693,8 @@ public class VideoTemplateParser
     //   331: astore 8
     //   333: aload_0
     //   334: astore 7
-    //   336: aload 5
-    //   338: aload 11
+    //   336: aload 11
+    //   338: aload 5
     //   340: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   343: pop
     //   344: goto -45 -> 299
@@ -6981,27 +7709,27 @@ public class VideoTemplateParser
     //   360: astore 7
     //   362: getstatic 56	com/tencent/ttpic/openapi/util/VideoTemplateParser:TAG	Ljava/lang/String;
     //   365: aload 5
-    //   367: invokevirtual 5835	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   367: invokevirtual 6551	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   370: aload 5
     //   372: iconst_0
     //   373: anewarray 4	java/lang/Object
-    //   376: invokestatic 5859	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
+    //   376: invokestatic 6575	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
     //   379: aload_3
     //   380: ifnull +7 -> 387
     //   383: aload_3
-    //   384: invokevirtual 5862	java/io/BufferedReader:close	()V
+    //   384: invokevirtual 6578	java/io/BufferedReader:close	()V
     //   387: aload 6
     //   389: ifnull +8 -> 397
     //   392: aload 6
-    //   394: invokevirtual 5863	java/io/InputStreamReader:close	()V
+    //   394: invokevirtual 6579	java/io/InputStreamReader:close	()V
     //   397: aload_0
     //   398: ifnull +7 -> 405
     //   401: aload_0
-    //   402: invokevirtual 5866	java/io/InputStream:close	()V
+    //   402: invokevirtual 6582	java/io/InputStream:close	()V
     //   405: aload_1
     //   406: ifnull +7 -> 413
     //   409: aload_1
-    //   410: invokevirtual 5867	java/io/FileInputStream:close	()V
+    //   410: invokevirtual 6583	java/io/FileInputStream:close	()V
     //   413: aconst_null
     //   414: astore_0
     //   415: aload_0
@@ -7010,14 +7738,14 @@ public class VideoTemplateParser
     //   419: astore_0
     //   420: aload 5
     //   422: ldc 31
-    //   424: invokevirtual 2871	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   424: invokevirtual 3027	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   427: ifne +25 -> 452
     //   430: new 190	java/lang/StringBuilder
     //   433: dup
     //   434: invokespecial 191	java/lang/StringBuilder:<init>	()V
     //   437: aload 5
     //   439: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   442: ldc_w 5841
+    //   442: ldc_w 6557
     //   445: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   448: invokevirtual 203	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   451: astore_0
@@ -7025,28 +7753,28 @@ public class VideoTemplateParser
     //   453: astore_1
     //   454: aload 7
     //   456: ldc 34
-    //   458: invokevirtual 2871	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   458: invokevirtual 3027	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   461: ifne +534 -> 995
     //   464: new 190	java/lang/StringBuilder
     //   467: dup
     //   468: invokespecial 191	java/lang/StringBuilder:<init>	()V
     //   471: aload 7
     //   473: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   476: ldc_w 5839
+    //   476: ldc_w 6555
     //   479: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   482: invokevirtual 203	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   485: astore_1
     //   486: goto -350 -> 136
-    //   489: aload 5
-    //   491: invokevirtual 5845	java/io/File:exists	()Z
+    //   489: aload 7
+    //   491: invokevirtual 6561	java/io/File:exists	()Z
     //   494: ifeq +496 -> 990
-    //   497: aload 5
-    //   499: invokevirtual 5848	java/io/File:isFile	()Z
+    //   497: aload 7
+    //   499: invokevirtual 6564	java/io/File:isFile	()Z
     //   502: ifeq +488 -> 990
-    //   505: new 5850	java/io/FileInputStream
+    //   505: new 6566	java/io/FileInputStream
     //   508: dup
-    //   509: aload 5
-    //   511: invokespecial 5853	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   509: aload 7
+    //   511: invokespecial 6569	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   514: astore_1
     //   515: iload_2
     //   516: ifne +8 -> 524
@@ -7059,19 +7787,19 @@ public class VideoTemplateParser
     //   529: aload_1
     //   530: astore_0
     //   531: goto -292 -> 239
-    //   534: invokestatic 2235	com/tencent/aekit/api/standard/AEModule:getContext	()Landroid/content/Context;
-    //   537: invokevirtual 5871	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   534: invokestatic 2376	com/tencent/aekit/api/standard/AEModule:getContext	()Landroid/content/Context;
+    //   537: invokevirtual 6587	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   540: aload_0
-    //   541: invokevirtual 5877	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   541: invokevirtual 6593	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   544: astore 5
     //   546: iload_2
     //   547: ifne +20 -> 567
     //   550: aload 5
     //   552: aload_3
-    //   553: invokestatic 5742	com/tencent/ttpic/openapi/util/VideoTemplateParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
+    //   553: invokestatic 6458	com/tencent/ttpic/openapi/util/VideoTemplateParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
     //   556: astore_0
     //   557: aload 5
-    //   559: invokestatic 5856	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   559: invokestatic 6572	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   562: aconst_null
     //   563: astore_1
     //   564: goto -325 -> 239
@@ -7081,10 +7809,10 @@ public class VideoTemplateParser
     //   573: astore_0
     //   574: aconst_null
     //   575: astore_0
-    //   576: invokestatic 2235	com/tencent/aekit/api/standard/AEModule:getContext	()Landroid/content/Context;
-    //   579: invokevirtual 5871	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   576: invokestatic 2376	com/tencent/aekit/api/standard/AEModule:getContext	()Landroid/content/Context;
+    //   579: invokevirtual 6587	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   582: aload_1
-    //   583: invokevirtual 5877	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   583: invokevirtual 6593	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   586: astore_1
     //   587: iload_2
     //   588: ifne +25 -> 613
@@ -7092,12 +7820,12 @@ public class VideoTemplateParser
     //   593: ifne +26 -> 619
     //   596: aload_1
     //   597: aload_3
-    //   598: invokestatic 5742	com/tencent/ttpic/openapi/util/VideoTemplateParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
+    //   598: invokestatic 6458	com/tencent/ttpic/openapi/util/VideoTemplateParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
     //   601: astore_3
     //   602: aload_3
     //   603: astore_0
     //   604: aload_1
-    //   605: invokestatic 5856	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   605: invokestatic 6572	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   608: aconst_null
     //   609: astore_1
     //   610: goto -371 -> 239
@@ -7119,27 +7847,27 @@ public class VideoTemplateParser
     //   638: astore 8
     //   640: aload_0
     //   641: astore 7
-    //   643: aload 5
+    //   643: aload 11
     //   645: invokevirtual 203	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   648: astore 5
     //   650: aload_3
     //   651: ifnull +7 -> 658
     //   654: aload_3
-    //   655: invokevirtual 5862	java/io/BufferedReader:close	()V
+    //   655: invokevirtual 6578	java/io/BufferedReader:close	()V
     //   658: aload 6
     //   660: ifnull +8 -> 668
     //   663: aload 6
-    //   665: invokevirtual 5863	java/io/InputStreamReader:close	()V
+    //   665: invokevirtual 6579	java/io/InputStreamReader:close	()V
     //   668: aload_0
     //   669: ifnull +7 -> 676
     //   672: aload_0
-    //   673: invokevirtual 5866	java/io/InputStream:close	()V
+    //   673: invokevirtual 6582	java/io/InputStream:close	()V
     //   676: aload 5
     //   678: astore_0
     //   679: aload_1
     //   680: ifnull -265 -> 415
     //   683: aload_1
-    //   684: invokevirtual 5867	java/io/FileInputStream:close	()V
+    //   684: invokevirtual 6583	java/io/FileInputStream:close	()V
     //   687: aload 5
     //   689: areturn
     //   690: astore_0
@@ -7147,24 +7875,24 @@ public class VideoTemplateParser
     //   693: areturn
     //   694: iconst_0
     //   695: ifeq +11 -> 706
-    //   698: new 5879	java/lang/NullPointerException
+    //   698: new 6595	java/lang/NullPointerException
     //   701: dup
-    //   702: invokespecial 5880	java/lang/NullPointerException:<init>	()V
+    //   702: invokespecial 6596	java/lang/NullPointerException:<init>	()V
     //   705: athrow
     //   706: iconst_0
     //   707: ifeq +11 -> 718
-    //   710: new 5879	java/lang/NullPointerException
+    //   710: new 6595	java/lang/NullPointerException
     //   713: dup
-    //   714: invokespecial 5880	java/lang/NullPointerException:<init>	()V
+    //   714: invokespecial 6596	java/lang/NullPointerException:<init>	()V
     //   717: athrow
     //   718: aload_0
     //   719: ifnull +7 -> 726
     //   722: aload_0
-    //   723: invokevirtual 5866	java/io/InputStream:close	()V
+    //   723: invokevirtual 6582	java/io/InputStream:close	()V
     //   726: aload_1
     //   727: ifnull -314 -> 413
     //   730: aload_1
-    //   731: invokevirtual 5867	java/io/FileInputStream:close	()V
+    //   731: invokevirtual 6583	java/io/FileInputStream:close	()V
     //   734: goto -321 -> 413
     //   737: astore_0
     //   738: goto -325 -> 413
@@ -7178,19 +7906,19 @@ public class VideoTemplateParser
     //   749: aload 5
     //   751: ifnull +8 -> 759
     //   754: aload 5
-    //   756: invokevirtual 5862	java/io/BufferedReader:close	()V
+    //   756: invokevirtual 6578	java/io/BufferedReader:close	()V
     //   759: aload_3
     //   760: ifnull +7 -> 767
     //   763: aload_3
-    //   764: invokevirtual 5863	java/io/InputStreamReader:close	()V
+    //   764: invokevirtual 6579	java/io/InputStreamReader:close	()V
     //   767: aload_0
     //   768: ifnull +7 -> 775
     //   771: aload_0
-    //   772: invokevirtual 5866	java/io/InputStream:close	()V
+    //   772: invokevirtual 6582	java/io/InputStream:close	()V
     //   775: aload 6
     //   777: ifnull +8 -> 785
     //   780: aload 6
-    //   782: invokevirtual 5867	java/io/FileInputStream:close	()V
+    //   782: invokevirtual 6583	java/io/FileInputStream:close	()V
     //   785: aload_1
     //   786: athrow
     //   787: astore_0
@@ -7338,8 +8066,8 @@ public class VideoTemplateParser
     //   0	1003	2	paramBoolean	boolean
     //   0	1003	3	paramDecryptListener	DecryptListener
     //   1	614	4	i	int
-    //   35	302	5	localObject1	Object
-    //   347	163	5	localException1	Exception
+    //   35	304	5	localObject1	Object
+    //   347	91	5	localException1	Exception
     //   544	340	5	localObject2	Object
     //   895	1	5	localException2	Exception
     //   909	1	5	localException3	Exception
@@ -7356,7 +8084,7 @@ public class VideoTemplateParser
     //   228	654	8	localObject6	Object
     //   282	597	9	localObject7	Object
     //   278	597	10	str2	String
-    //   316	23	11	str3	String
+    //   297	347	11	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
     //   290	299	347	java/lang/Exception
@@ -7432,8 +8160,8 @@ public class VideoTemplateParser
     //   7: astore 7
     //   9: aload_1
     //   10: ldc 31
-    //   12: invokevirtual 2871	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   15: ifne +327 -> 342
+    //   12: invokevirtual 3027	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   15: ifne +330 -> 345
     //   18: iconst_1
     //   19: istore_3
     //   20: aload_0
@@ -7444,7 +8172,7 @@ public class VideoTemplateParser
     //   30: invokespecial 191	java/lang/StringBuilder:<init>	()V
     //   33: aload 6
     //   35: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: ldc_w 1052
+    //   38: ldc_w 1055
     //   41: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: aload_1
     //   45: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -7455,7 +8183,7 @@ public class VideoTemplateParser
     //   56: invokespecial 191	java/lang/StringBuilder:<init>	()V
     //   59: aload 6
     //   61: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: ldc_w 1052
+    //   64: ldc_w 1055
     //   67: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   70: aload_1
     //   71: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -7464,148 +8192,148 @@ public class VideoTemplateParser
     //   79: new 197	java/io/File
     //   82: dup
     //   83: aload_0
-    //   84: invokespecial 5842	java/io/File:<init>	(Ljava/lang/String;)V
-    //   87: astore_1
-    //   88: new 197	java/io/File
-    //   91: dup
-    //   92: aload 6
-    //   94: invokespecial 5842	java/io/File:<init>	(Ljava/lang/String;)V
-    //   97: astore 8
-    //   99: aload_1
-    //   100: invokevirtual 5845	java/io/File:exists	()Z
-    //   103: ifeq +10 -> 113
-    //   106: aload_1
-    //   107: invokevirtual 5848	java/io/File:isFile	()Z
-    //   110: ifne +19 -> 129
-    //   113: aload 8
-    //   115: invokevirtual 5845	java/io/File:exists	()Z
-    //   118: ifeq +280 -> 398
-    //   121: aload 8
-    //   123: invokevirtual 5848	java/io/File:isFile	()Z
+    //   84: invokespecial 6558	java/io/File:<init>	(Ljava/lang/String;)V
+    //   87: astore 8
+    //   89: new 197	java/io/File
+    //   92: dup
+    //   93: aload 6
+    //   95: invokespecial 6558	java/io/File:<init>	(Ljava/lang/String;)V
+    //   98: astore_1
+    //   99: aload 8
+    //   101: invokevirtual 6561	java/io/File:exists	()Z
+    //   104: ifeq +11 -> 115
+    //   107: aload 8
+    //   109: invokevirtual 6564	java/io/File:isFile	()Z
+    //   112: ifne +17 -> 129
+    //   115: aload_1
+    //   116: invokevirtual 6561	java/io/File:exists	()Z
+    //   119: ifeq +279 -> 398
+    //   122: aload_1
+    //   123: invokevirtual 6564	java/io/File:isFile	()Z
     //   126: ifeq +272 -> 398
-    //   129: aload_1
-    //   130: invokevirtual 5845	java/io/File:exists	()Z
-    //   133: ifeq +214 -> 347
-    //   136: aload_1
-    //   137: invokevirtual 5848	java/io/File:isFile	()Z
-    //   140: ifeq +207 -> 347
-    //   143: new 5850	java/io/FileInputStream
-    //   146: dup
-    //   147: aload_1
-    //   148: invokespecial 5853	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   151: astore_0
-    //   152: aload_0
-    //   153: astore 7
-    //   155: iload_3
-    //   156: ifne +235 -> 391
-    //   159: aload 7
-    //   161: aload_2
-    //   162: invokestatic 5742	com/tencent/ttpic/openapi/util/VideoTemplateParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
-    //   165: astore_0
-    //   166: aload 7
-    //   168: invokestatic 5856	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   171: aload_0
-    //   172: astore 6
-    //   174: aload 6
-    //   176: ifnull +405 -> 581
-    //   179: new 5729	java/io/InputStreamReader
-    //   182: dup
-    //   183: aload 6
-    //   185: invokespecial 5745	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   188: astore_2
-    //   189: new 5727	java/io/BufferedReader
-    //   192: dup
-    //   193: aload_2
-    //   194: sipush 1024
-    //   197: invokespecial 5748	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
-    //   200: astore_0
-    //   201: aload 7
-    //   203: astore 11
-    //   205: aload_2
-    //   206: astore 10
-    //   208: aload_0
-    //   209: astore 9
-    //   211: aload 6
-    //   213: astore 8
-    //   215: new 190	java/lang/StringBuilder
-    //   218: dup
-    //   219: invokespecial 191	java/lang/StringBuilder:<init>	()V
-    //   222: astore_1
-    //   223: aload 7
-    //   225: astore 11
-    //   227: aload_2
-    //   228: astore 10
-    //   230: aload_0
-    //   231: astore 9
-    //   233: aload 6
-    //   235: astore 8
-    //   237: aload_0
-    //   238: invokevirtual 5751	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   241: astore 12
-    //   243: aload 12
-    //   245: ifnull +259 -> 504
-    //   248: aload 7
-    //   250: astore 11
-    //   252: aload_2
-    //   253: astore 10
-    //   255: aload_0
-    //   256: astore 9
-    //   258: aload 6
-    //   260: astore 8
-    //   262: aload_1
-    //   263: aload 12
-    //   265: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: pop
-    //   269: goto -46 -> 223
-    //   272: astore_1
-    //   273: aload 7
-    //   275: astore 11
-    //   277: aload_2
-    //   278: astore 10
-    //   280: aload_0
-    //   281: astore 9
-    //   283: aload 6
-    //   285: astore 8
-    //   287: getstatic 56	com/tencent/ttpic/openapi/util/VideoTemplateParser:TAG	Ljava/lang/String;
-    //   290: aload_1
-    //   291: invokevirtual 5835	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   294: aload_1
-    //   295: iconst_0
-    //   296: anewarray 4	java/lang/Object
-    //   299: invokestatic 5859	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
-    //   302: aload_0
-    //   303: ifnull +7 -> 310
-    //   306: aload_0
-    //   307: invokevirtual 5862	java/io/BufferedReader:close	()V
-    //   310: aload_2
-    //   311: ifnull +7 -> 318
-    //   314: aload_2
-    //   315: invokevirtual 5863	java/io/InputStreamReader:close	()V
-    //   318: aload 6
-    //   320: ifnull +8 -> 328
-    //   323: aload 6
-    //   325: invokevirtual 5866	java/io/InputStream:close	()V
-    //   328: aload 7
-    //   330: ifnull +8 -> 338
-    //   333: aload 7
-    //   335: invokevirtual 5867	java/io/FileInputStream:close	()V
-    //   338: aconst_null
-    //   339: astore_0
-    //   340: aload_0
-    //   341: areturn
-    //   342: iconst_0
-    //   343: istore_3
-    //   344: goto -324 -> 20
-    //   347: aload 8
-    //   349: invokevirtual 5845	java/io/File:exists	()Z
-    //   352: ifeq +598 -> 950
-    //   355: aload 8
-    //   357: invokevirtual 5848	java/io/File:isFile	()Z
-    //   360: ifeq +590 -> 950
-    //   363: new 5850	java/io/FileInputStream
-    //   366: dup
-    //   367: aload 8
-    //   369: invokespecial 5853	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   129: aload 8
+    //   131: invokevirtual 6561	java/io/File:exists	()Z
+    //   134: ifeq +216 -> 350
+    //   137: aload 8
+    //   139: invokevirtual 6564	java/io/File:isFile	()Z
+    //   142: ifeq +208 -> 350
+    //   145: new 6566	java/io/FileInputStream
+    //   148: dup
+    //   149: aload 8
+    //   151: invokespecial 6569	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   154: astore_0
+    //   155: aload_0
+    //   156: astore 7
+    //   158: iload_3
+    //   159: ifne +232 -> 391
+    //   162: aload 7
+    //   164: aload_2
+    //   165: invokestatic 6458	com/tencent/ttpic/openapi/util/VideoTemplateParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
+    //   168: astore_0
+    //   169: aload 7
+    //   171: invokestatic 6572	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   174: aload_0
+    //   175: astore 6
+    //   177: aload 6
+    //   179: ifnull +402 -> 581
+    //   182: new 6445	java/io/InputStreamReader
+    //   185: dup
+    //   186: aload 6
+    //   188: invokespecial 6461	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   191: astore_2
+    //   192: new 6443	java/io/BufferedReader
+    //   195: dup
+    //   196: aload_2
+    //   197: sipush 1024
+    //   200: invokespecial 6464	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   203: astore_0
+    //   204: aload 7
+    //   206: astore 11
+    //   208: aload_2
+    //   209: astore 10
+    //   211: aload_0
+    //   212: astore 9
+    //   214: aload 6
+    //   216: astore 8
+    //   218: new 190	java/lang/StringBuilder
+    //   221: dup
+    //   222: invokespecial 191	java/lang/StringBuilder:<init>	()V
+    //   225: astore_1
+    //   226: aload 7
+    //   228: astore 11
+    //   230: aload_2
+    //   231: astore 10
+    //   233: aload_0
+    //   234: astore 9
+    //   236: aload 6
+    //   238: astore 8
+    //   240: aload_0
+    //   241: invokevirtual 6467	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   244: astore 12
+    //   246: aload 12
+    //   248: ifnull +256 -> 504
+    //   251: aload 7
+    //   253: astore 11
+    //   255: aload_2
+    //   256: astore 10
+    //   258: aload_0
+    //   259: astore 9
+    //   261: aload 6
+    //   263: astore 8
+    //   265: aload_1
+    //   266: aload 12
+    //   268: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: pop
+    //   272: goto -46 -> 226
+    //   275: astore_1
+    //   276: aload 7
+    //   278: astore 11
+    //   280: aload_2
+    //   281: astore 10
+    //   283: aload_0
+    //   284: astore 9
+    //   286: aload 6
+    //   288: astore 8
+    //   290: getstatic 56	com/tencent/ttpic/openapi/util/VideoTemplateParser:TAG	Ljava/lang/String;
+    //   293: aload_1
+    //   294: invokevirtual 6551	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   297: aload_1
+    //   298: iconst_0
+    //   299: anewarray 4	java/lang/Object
+    //   302: invokestatic 6575	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
+    //   305: aload_0
+    //   306: ifnull +7 -> 313
+    //   309: aload_0
+    //   310: invokevirtual 6578	java/io/BufferedReader:close	()V
+    //   313: aload_2
+    //   314: ifnull +7 -> 321
+    //   317: aload_2
+    //   318: invokevirtual 6579	java/io/InputStreamReader:close	()V
+    //   321: aload 6
+    //   323: ifnull +8 -> 331
+    //   326: aload 6
+    //   328: invokevirtual 6582	java/io/InputStream:close	()V
+    //   331: aload 7
+    //   333: ifnull +8 -> 341
+    //   336: aload 7
+    //   338: invokevirtual 6583	java/io/FileInputStream:close	()V
+    //   341: aconst_null
+    //   342: astore_0
+    //   343: aload_0
+    //   344: areturn
+    //   345: iconst_0
+    //   346: istore_3
+    //   347: goto -327 -> 20
+    //   350: aload_1
+    //   351: invokevirtual 6561	java/io/File:exists	()Z
+    //   354: ifeq +594 -> 948
+    //   357: aload_1
+    //   358: invokevirtual 6564	java/io/File:isFile	()Z
+    //   361: ifeq +587 -> 948
+    //   364: new 6566	java/io/FileInputStream
+    //   367: dup
+    //   368: aload_1
+    //   369: invokespecial 6569	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   372: astore_0
     //   373: iload_3
     //   374: ifne +12 -> 386
@@ -7613,41 +8341,41 @@ public class VideoTemplateParser
     //   379: istore_3
     //   380: aload_0
     //   381: astore 7
-    //   383: goto -228 -> 155
+    //   383: goto -225 -> 158
     //   386: iconst_0
     //   387: istore_3
     //   388: goto -8 -> 380
     //   391: aload 7
     //   393: astore 6
-    //   395: goto -221 -> 174
-    //   398: invokestatic 2235	com/tencent/aekit/api/standard/AEModule:getContext	()Landroid/content/Context;
-    //   401: invokevirtual 5871	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   395: goto -218 -> 177
+    //   398: invokestatic 2376	com/tencent/aekit/api/standard/AEModule:getContext	()Landroid/content/Context;
+    //   401: invokevirtual 6587	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   404: aload_0
-    //   405: invokevirtual 5877	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   405: invokevirtual 6593	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   408: astore_1
     //   409: iload_3
     //   410: ifne +22 -> 432
     //   413: aload_1
     //   414: aload_2
-    //   415: invokestatic 5742	com/tencent/ttpic/openapi/util/VideoTemplateParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
+    //   415: invokestatic 6458	com/tencent/ttpic/openapi/util/VideoTemplateParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
     //   418: astore_0
     //   419: aload_1
-    //   420: invokestatic 5856	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   420: invokestatic 6572	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   423: aconst_null
     //   424: astore 7
     //   426: aload_0
     //   427: astore 6
-    //   429: goto -255 -> 174
+    //   429: goto -252 -> 177
     //   432: aload_1
     //   433: astore_0
     //   434: goto -11 -> 423
     //   437: astore_0
     //   438: aconst_null
     //   439: astore_0
-    //   440: invokestatic 2235	com/tencent/aekit/api/standard/AEModule:getContext	()Landroid/content/Context;
-    //   443: invokevirtual 5871	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   440: invokestatic 2376	com/tencent/aekit/api/standard/AEModule:getContext	()Landroid/content/Context;
+    //   443: invokevirtual 6587	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   446: aload 6
-    //   448: invokevirtual 5877	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   448: invokevirtual 6593	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   451: astore_1
     //   452: iload_3
     //   453: ifne +31 -> 484
@@ -7657,17 +8385,17 @@ public class VideoTemplateParser
     //   460: ifne +29 -> 489
     //   463: aload_1
     //   464: aload_2
-    //   465: invokestatic 5742	com/tencent/ttpic/openapi/util/VideoTemplateParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
+    //   465: invokestatic 6458	com/tencent/ttpic/openapi/util/VideoTemplateParser:drinkACupOfCoffee	(Ljava/io/InputStream;Lcom/tencent/ttpic/util/DecryptListener;)Ljava/io/InputStream;
     //   468: astore_2
     //   469: aload_2
     //   470: astore_0
     //   471: aload_1
-    //   472: invokestatic 5856	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   472: invokestatic 6572	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
     //   475: aconst_null
     //   476: astore 7
     //   478: aload_0
     //   479: astore 6
-    //   481: goto -307 -> 174
+    //   481: goto -304 -> 177
     //   484: iconst_0
     //   485: istore_3
     //   486: goto -27 -> 459
@@ -7679,7 +8407,7 @@ public class VideoTemplateParser
     //   496: astore 7
     //   498: aload_0
     //   499: astore 6
-    //   501: goto -327 -> 174
+    //   501: goto -324 -> 177
     //   504: aload 7
     //   506: astore 11
     //   508: aload_2
@@ -7694,72 +8422,72 @@ public class VideoTemplateParser
     //   523: aload_0
     //   524: ifnull +7 -> 531
     //   527: aload_0
-    //   528: invokevirtual 5862	java/io/BufferedReader:close	()V
+    //   528: invokevirtual 6578	java/io/BufferedReader:close	()V
     //   531: aload_2
     //   532: ifnull +7 -> 539
     //   535: aload_2
-    //   536: invokevirtual 5863	java/io/InputStreamReader:close	()V
+    //   536: invokevirtual 6579	java/io/InputStreamReader:close	()V
     //   539: aload 6
     //   541: ifnull +8 -> 549
     //   544: aload 6
-    //   546: invokevirtual 5866	java/io/InputStream:close	()V
+    //   546: invokevirtual 6582	java/io/InputStream:close	()V
     //   549: aload_1
     //   550: astore_0
     //   551: aload 7
-    //   553: ifnull -213 -> 340
+    //   553: ifnull -210 -> 343
     //   556: aload 7
-    //   558: invokevirtual 5867	java/io/FileInputStream:close	()V
+    //   558: invokevirtual 6583	java/io/FileInputStream:close	()V
     //   561: aload_1
     //   562: areturn
     //   563: astore_0
     //   564: getstatic 56	com/tencent/ttpic/openapi/util/VideoTemplateParser:TAG	Ljava/lang/String;
     //   567: aload_0
-    //   568: invokevirtual 5881	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   568: invokevirtual 6597	java/io/IOException:getMessage	()Ljava/lang/String;
     //   571: aload_0
     //   572: iconst_0
     //   573: anewarray 4	java/lang/Object
-    //   576: invokestatic 5859	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
+    //   576: invokestatic 6575	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
     //   579: aload_1
     //   580: areturn
     //   581: iconst_0
     //   582: ifeq +11 -> 593
-    //   585: new 5879	java/lang/NullPointerException
+    //   585: new 6595	java/lang/NullPointerException
     //   588: dup
-    //   589: invokespecial 5880	java/lang/NullPointerException:<init>	()V
+    //   589: invokespecial 6596	java/lang/NullPointerException:<init>	()V
     //   592: athrow
     //   593: iconst_0
     //   594: ifeq +11 -> 605
-    //   597: new 5879	java/lang/NullPointerException
+    //   597: new 6595	java/lang/NullPointerException
     //   600: dup
-    //   601: invokespecial 5880	java/lang/NullPointerException:<init>	()V
+    //   601: invokespecial 6596	java/lang/NullPointerException:<init>	()V
     //   604: athrow
     //   605: aload 6
     //   607: ifnull +8 -> 615
     //   610: aload 6
-    //   612: invokevirtual 5866	java/io/InputStream:close	()V
+    //   612: invokevirtual 6582	java/io/InputStream:close	()V
     //   615: aload 7
-    //   617: ifnull -279 -> 338
+    //   617: ifnull -276 -> 341
     //   620: aload 7
-    //   622: invokevirtual 5867	java/io/FileInputStream:close	()V
-    //   625: goto -287 -> 338
+    //   622: invokevirtual 6583	java/io/FileInputStream:close	()V
+    //   625: goto -284 -> 341
     //   628: astore_0
     //   629: getstatic 56	com/tencent/ttpic/openapi/util/VideoTemplateParser:TAG	Ljava/lang/String;
     //   632: aload_0
-    //   633: invokevirtual 5881	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   633: invokevirtual 6597	java/io/IOException:getMessage	()Ljava/lang/String;
     //   636: aload_0
     //   637: iconst_0
     //   638: anewarray 4	java/lang/Object
-    //   641: invokestatic 5859	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
-    //   644: goto -306 -> 338
+    //   641: invokestatic 6575	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
+    //   644: goto -303 -> 341
     //   647: astore_0
     //   648: getstatic 56	com/tencent/ttpic/openapi/util/VideoTemplateParser:TAG	Ljava/lang/String;
     //   651: aload_0
-    //   652: invokevirtual 5881	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   652: invokevirtual 6597	java/io/IOException:getMessage	()Ljava/lang/String;
     //   655: aload_0
     //   656: iconst_0
     //   657: anewarray 4	java/lang/Object
-    //   660: invokestatic 5859	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
-    //   663: goto -325 -> 338
+    //   660: invokestatic 6575	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
+    //   663: goto -322 -> 341
     //   666: astore_0
     //   667: aconst_null
     //   668: astore_1
@@ -7770,29 +8498,29 @@ public class VideoTemplateParser
     //   674: aload_2
     //   675: ifnull +7 -> 682
     //   678: aload_2
-    //   679: invokevirtual 5862	java/io/BufferedReader:close	()V
+    //   679: invokevirtual 6578	java/io/BufferedReader:close	()V
     //   682: aload_1
     //   683: ifnull +7 -> 690
     //   686: aload_1
-    //   687: invokevirtual 5863	java/io/InputStreamReader:close	()V
+    //   687: invokevirtual 6579	java/io/InputStreamReader:close	()V
     //   690: aload 6
     //   692: ifnull +8 -> 700
     //   695: aload 6
-    //   697: invokevirtual 5866	java/io/InputStream:close	()V
+    //   697: invokevirtual 6582	java/io/InputStream:close	()V
     //   700: aload 7
     //   702: ifnull +8 -> 710
     //   705: aload 7
-    //   707: invokevirtual 5867	java/io/FileInputStream:close	()V
+    //   707: invokevirtual 6583	java/io/FileInputStream:close	()V
     //   710: aload_0
     //   711: athrow
     //   712: astore_1
     //   713: getstatic 56	com/tencent/ttpic/openapi/util/VideoTemplateParser:TAG	Ljava/lang/String;
     //   716: aload_1
-    //   717: invokevirtual 5881	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   717: invokevirtual 6597	java/io/IOException:getMessage	()Ljava/lang/String;
     //   720: aload_1
     //   721: iconst_0
     //   722: anewarray 4	java/lang/Object
-    //   725: invokestatic 5859	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
+    //   725: invokestatic 6575	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;[Ljava/lang/Object;)V
     //   728: goto -18 -> 710
     //   731: astore_0
     //   732: aconst_null
@@ -7812,165 +8540,163 @@ public class VideoTemplateParser
     //   751: aload 8
     //   753: astore_0
     //   754: goto -80 -> 674
-    //   757: astore_1
-    //   758: aconst_null
-    //   759: astore_2
-    //   760: aload_0
-    //   761: astore 6
-    //   763: aconst_null
-    //   764: astore 8
-    //   766: aload_1
-    //   767: astore_0
-    //   768: aload 8
-    //   770: astore_1
-    //   771: goto -97 -> 674
-    //   774: astore 8
-    //   776: aconst_null
-    //   777: astore_1
-    //   778: aload_0
-    //   779: astore 6
-    //   781: aconst_null
-    //   782: astore_2
-    //   783: aload 8
-    //   785: astore_0
-    //   786: goto -112 -> 674
-    //   789: astore 8
+    //   757: astore 8
+    //   759: aconst_null
+    //   760: astore_2
+    //   761: aload_0
+    //   762: astore 6
+    //   764: aconst_null
+    //   765: astore_1
+    //   766: aload 8
+    //   768: astore_0
+    //   769: goto -95 -> 674
+    //   772: astore 8
+    //   774: aconst_null
+    //   775: astore_1
+    //   776: aload_0
+    //   777: astore 6
+    //   779: aconst_null
+    //   780: astore_2
+    //   781: aload 8
+    //   783: astore_0
+    //   784: goto -110 -> 674
+    //   787: astore 8
+    //   789: aconst_null
+    //   790: astore_1
     //   791: aconst_null
-    //   792: astore_1
-    //   793: aconst_null
-    //   794: astore_2
-    //   795: aload_0
-    //   796: astore 6
-    //   798: aload 8
-    //   800: astore_0
-    //   801: goto -127 -> 674
-    //   804: astore_0
+    //   792: astore_2
+    //   793: aload_0
+    //   794: astore 6
+    //   796: aload 8
+    //   798: astore_0
+    //   799: goto -125 -> 674
+    //   802: astore_0
+    //   803: aconst_null
+    //   804: astore_1
     //   805: aconst_null
-    //   806: astore_1
-    //   807: aconst_null
-    //   808: astore_2
-    //   809: goto -135 -> 674
-    //   812: astore_0
-    //   813: aconst_null
-    //   814: astore 8
-    //   816: aload_2
-    //   817: astore_1
-    //   818: aload 8
-    //   820: astore_2
-    //   821: goto -147 -> 674
-    //   824: astore_0
-    //   825: aload 11
-    //   827: astore 7
-    //   829: aload 10
-    //   831: astore_1
-    //   832: aload 9
-    //   834: astore_2
-    //   835: aload 8
-    //   837: astore 6
-    //   839: goto -165 -> 674
-    //   842: astore_1
-    //   843: aconst_null
-    //   844: astore 7
+    //   806: astore_2
+    //   807: goto -133 -> 674
+    //   810: astore_0
+    //   811: aconst_null
+    //   812: astore 8
+    //   814: aload_2
+    //   815: astore_1
+    //   816: aload 8
+    //   818: astore_2
+    //   819: goto -145 -> 674
+    //   822: astore_0
+    //   823: aload 11
+    //   825: astore 7
+    //   827: aload 10
+    //   829: astore_1
+    //   830: aload 9
+    //   832: astore_2
+    //   833: aload 8
+    //   835: astore 6
+    //   837: goto -163 -> 674
+    //   840: astore_1
+    //   841: aconst_null
+    //   842: astore 7
+    //   844: aconst_null
+    //   845: astore_2
     //   846: aconst_null
-    //   847: astore_2
+    //   847: astore_0
     //   848: aconst_null
-    //   849: astore_0
-    //   850: aconst_null
-    //   851: astore 6
-    //   853: goto -580 -> 273
-    //   856: astore_1
+    //   849: astore 6
+    //   851: goto -575 -> 276
+    //   854: astore_1
+    //   855: aconst_null
+    //   856: astore_2
     //   857: aconst_null
-    //   858: astore_2
+    //   858: astore_0
     //   859: aconst_null
-    //   860: astore_0
-    //   861: aconst_null
-    //   862: astore 6
-    //   864: goto -591 -> 273
-    //   867: astore_1
-    //   868: aconst_null
-    //   869: astore_2
-    //   870: aload_0
-    //   871: astore 6
-    //   873: aconst_null
-    //   874: astore_0
-    //   875: goto -602 -> 273
-    //   878: astore_1
-    //   879: aconst_null
-    //   880: astore 7
-    //   882: aconst_null
-    //   883: astore 8
-    //   885: aload_0
-    //   886: astore 6
-    //   888: aconst_null
-    //   889: astore_2
-    //   890: aload 8
-    //   892: astore_0
-    //   893: goto -620 -> 273
-    //   896: astore_1
-    //   897: aconst_null
-    //   898: astore 7
-    //   900: aconst_null
-    //   901: astore_2
-    //   902: aload_0
-    //   903: astore 6
-    //   905: aconst_null
-    //   906: astore_0
-    //   907: goto -634 -> 273
-    //   910: astore_1
+    //   860: astore 6
+    //   862: goto -586 -> 276
+    //   865: astore_1
+    //   866: aconst_null
+    //   867: astore_2
+    //   868: aload_0
+    //   869: astore 6
+    //   871: aconst_null
+    //   872: astore_0
+    //   873: goto -597 -> 276
+    //   876: astore_1
+    //   877: aconst_null
+    //   878: astore 7
+    //   880: aconst_null
+    //   881: astore 8
+    //   883: aload_0
+    //   884: astore 6
+    //   886: aconst_null
+    //   887: astore_2
+    //   888: aload 8
+    //   890: astore_0
+    //   891: goto -615 -> 276
+    //   894: astore_1
+    //   895: aconst_null
+    //   896: astore 7
+    //   898: aconst_null
+    //   899: astore_2
+    //   900: aload_0
+    //   901: astore 6
+    //   903: aconst_null
+    //   904: astore_0
+    //   905: goto -629 -> 276
+    //   908: astore_1
+    //   909: aconst_null
+    //   910: astore_2
     //   911: aconst_null
-    //   912: astore_2
-    //   913: aconst_null
-    //   914: astore 8
-    //   916: aload_0
-    //   917: astore 6
-    //   919: aconst_null
-    //   920: astore 7
-    //   922: aload 8
-    //   924: astore_0
-    //   925: goto -652 -> 273
-    //   928: astore_1
+    //   912: astore 8
+    //   914: aload_0
+    //   915: astore 6
+    //   917: aconst_null
+    //   918: astore 7
+    //   920: aload 8
+    //   922: astore_0
+    //   923: goto -647 -> 276
+    //   926: astore_1
+    //   927: aconst_null
+    //   928: astore_2
     //   929: aconst_null
-    //   930: astore_2
-    //   931: aconst_null
-    //   932: astore_0
-    //   933: goto -660 -> 273
-    //   936: astore_1
-    //   937: aconst_null
-    //   938: astore_0
-    //   939: goto -666 -> 273
-    //   942: astore_1
-    //   943: goto -448 -> 495
-    //   946: astore_1
-    //   947: goto -507 -> 440
-    //   950: aconst_null
-    //   951: astore 7
-    //   953: goto -798 -> 155
+    //   930: astore_0
+    //   931: goto -655 -> 276
+    //   934: astore_1
+    //   935: aconst_null
+    //   936: astore_0
+    //   937: goto -661 -> 276
+    //   940: astore_1
+    //   941: goto -446 -> 495
+    //   944: astore_1
+    //   945: goto -505 -> 440
+    //   948: aconst_null
+    //   949: astore 7
+    //   951: goto -793 -> 158
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	956	0	paramString1	String
-    //   0	956	1	paramString2	String
-    //   0	956	2	paramDecryptListener	DecryptListener
+    //   0	954	0	paramString1	String
+    //   0	954	1	paramString2	String
+    //   0	954	2	paramDecryptListener	DecryptListener
     //   19	467	3	i	int
     //   1	456	4	j	int
     //   4	374	5	k	int
-    //   24	894	6	localObject1	Object
-    //   7	945	7	localObject2	Object
-    //   97	420	8	localObject3	Object
+    //   24	892	6	localObject1	Object
+    //   7	943	7	localObject2	Object
+    //   87	430	8	localObject3	Object
     //   742	10	8	localObject4	Object
-    //   764	5	8	localObject5	Object
-    //   774	10	8	localObject6	Object
-    //   789	10	8	localObject7	Object
-    //   814	109	8	localObject8	Object
-    //   209	624	9	str1	String
-    //   206	624	10	localDecryptListener	DecryptListener
-    //   203	623	11	localObject9	Object
-    //   241	23	12	str2	String
+    //   757	10	8	localObject5	Object
+    //   772	10	8	localObject6	Object
+    //   787	10	8	localObject7	Object
+    //   812	109	8	localObject8	Object
+    //   212	619	9	str1	String
+    //   209	619	10	localDecryptListener	DecryptListener
+    //   206	618	11	localObject9	Object
+    //   244	23	12	str2	String
     // Exception table:
     //   from	to	target	type
-    //   215	223	272	java/lang/Exception
-    //   237	243	272	java/lang/Exception
-    //   262	269	272	java/lang/Exception
-    //   518	523	272	java/lang/Exception
+    //   218	226	275	java/lang/Exception
+    //   240	246	275	java/lang/Exception
+    //   265	272	275	java/lang/Exception
+    //   518	523	275	java/lang/Exception
     //   398	409	437	java/io/IOException
     //   413	419	437	java/io/IOException
     //   440	452	494	java/io/IOException
@@ -7983,49 +8709,49 @@ public class VideoTemplateParser
     //   597	605	628	java/io/IOException
     //   610	615	628	java/io/IOException
     //   620	625	628	java/io/IOException
-    //   306	310	647	java/io/IOException
-    //   314	318	647	java/io/IOException
-    //   323	328	647	java/io/IOException
-    //   333	338	647	java/io/IOException
-    //   79	113	666	finally
-    //   113	129	666	finally
-    //   129	152	666	finally
-    //   347	373	666	finally
+    //   309	313	647	java/io/IOException
+    //   317	321	647	java/io/IOException
+    //   326	331	647	java/io/IOException
+    //   336	341	647	java/io/IOException
+    //   79	115	666	finally
+    //   115	129	666	finally
+    //   129	155	666	finally
+    //   350	373	666	finally
     //   398	409	666	finally
     //   413	419	666	finally
     //   678	682	712	java/io/IOException
     //   686	690	712	java/io/IOException
     //   695	700	712	java/io/IOException
     //   705	710	712	java/io/IOException
-    //   159	166	731	finally
-    //   166	171	742	finally
+    //   162	169	731	finally
+    //   169	174	742	finally
     //   419	423	757	finally
-    //   440	452	774	finally
-    //   463	469	774	finally
-    //   471	475	789	finally
-    //   179	189	804	finally
-    //   189	201	812	finally
-    //   215	223	824	finally
-    //   237	243	824	finally
-    //   262	269	824	finally
-    //   287	302	824	finally
-    //   518	523	824	finally
-    //   79	113	842	java/lang/Exception
-    //   113	129	842	java/lang/Exception
-    //   129	152	842	java/lang/Exception
-    //   347	373	842	java/lang/Exception
-    //   398	409	842	java/lang/Exception
-    //   413	419	842	java/lang/Exception
-    //   159	166	856	java/lang/Exception
-    //   166	171	867	java/lang/Exception
-    //   419	423	878	java/lang/Exception
-    //   440	452	896	java/lang/Exception
-    //   463	469	896	java/lang/Exception
-    //   471	475	910	java/lang/Exception
-    //   179	189	928	java/lang/Exception
-    //   189	201	936	java/lang/Exception
-    //   471	475	942	java/io/IOException
-    //   419	423	946	java/io/IOException
+    //   440	452	772	finally
+    //   463	469	772	finally
+    //   471	475	787	finally
+    //   182	192	802	finally
+    //   192	204	810	finally
+    //   218	226	822	finally
+    //   240	246	822	finally
+    //   265	272	822	finally
+    //   290	305	822	finally
+    //   518	523	822	finally
+    //   79	115	840	java/lang/Exception
+    //   115	129	840	java/lang/Exception
+    //   129	155	840	java/lang/Exception
+    //   350	373	840	java/lang/Exception
+    //   398	409	840	java/lang/Exception
+    //   413	419	840	java/lang/Exception
+    //   162	169	854	java/lang/Exception
+    //   169	174	865	java/lang/Exception
+    //   419	423	876	java/lang/Exception
+    //   440	452	894	java/lang/Exception
+    //   463	469	894	java/lang/Exception
+    //   471	475	908	java/lang/Exception
+    //   182	192	926	java/lang/Exception
+    //   192	204	934	java/lang/Exception
+    //   471	475	940	java/io/IOException
+    //   419	423	944	java/io/IOException
   }
 }
 

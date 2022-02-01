@@ -7,6 +7,7 @@ public class GdtMotiveVideoPageData
 {
   public static final int CONTAINER_ACTIVITY = 0;
   public static final int CONTAINER_WINDOW = 1;
+  public static final int DEFAULT_BOTTOM_CARD_LOAD_SEC = 2;
   public static final int DEFAULT_ENDCARD_LOADTIME = 5;
   public static String TAG = "GdtMotiveVideoAd";
   public long adId;
@@ -16,6 +17,8 @@ public class GdtMotiveVideoPageData
   public String bannerBaseInfoText;
   public String bannerImgName;
   public String bannerLogo;
+  public int bottomCardLoadTime = 2;
+  public String bottomCardUrl;
   public int containerType = 0;
   public long downloadNum;
   public int endcardLoadTime = 5;
@@ -30,6 +33,7 @@ public class GdtMotiveVideoPageData
   private String rewardText;
   public int screenOrientation = 0;
   public int style;
+  public String traceId;
   public String url;
   public int vSize;
   public String vid;

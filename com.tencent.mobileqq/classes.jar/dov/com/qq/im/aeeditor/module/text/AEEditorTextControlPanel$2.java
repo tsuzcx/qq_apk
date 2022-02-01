@@ -1,7 +1,7 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bmbx;
-import bmnb;
+import bnrh;
+import boct;
 
 class AEEditorTextControlPanel$2
   implements Runnable
@@ -21,7 +21,7 @@ class AEEditorTextControlPanel$2
       {
         for (;;)
         {
-          bmbx.d("AEEditorTextControlPanel", "[updateItem] IllegalMonitorStateException");
+          bnrh.d("AEEditorTextControlPanel", "[updateItem] IllegalMonitorStateException");
         }
       }
     }

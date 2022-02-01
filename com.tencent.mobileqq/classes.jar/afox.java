@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class afox
-  implements View.OnClickListener
+final class afox
+  implements afpm
 {
-  public afox(AIOLongShotHelper paramAIOLongShotHelper) {}
-  
-  public void onClick(View paramView)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    AIOLongShotHelper.a(this.a, paramView);
-    AIOLongShotHelper.a("0X8009DE6");
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 74);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

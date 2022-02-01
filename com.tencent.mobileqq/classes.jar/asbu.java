@@ -1,16 +1,10 @@
-class asbu
-  implements ascz
+public abstract interface asbu
 {
-  asbu(asbj paramasbj) {}
-  
-  public void a(Object[] paramArrayOfObject)
-  {
-    asbj.access$100(this.a, paramArrayOfObject);
-  }
+  public abstract void m();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asbu
  * JD-Core Version:    0.7.0.1
  */

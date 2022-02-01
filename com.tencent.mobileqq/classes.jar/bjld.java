@@ -1,124 +1,55 @@
-import android.util.Pair;
-import java.io.RandomAccessFile;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import android.content.ContentValues;
+import android.os.Parcel;
+import com.tencent.open.base.MD5Utils;
+import com.tencent.open.component.cache.database.DbCacheData;
+import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
 
-public abstract class bjld
+public class bjld
+  extends DbCacheData
 {
-  private static int a(ByteBuffer paramByteBuffer)
+  public static final DbCacheData.DbCreator<bjld> a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  
+  static
   {
-    a(paramByteBuffer);
-    int j = paramByteBuffer.capacity();
-    if (j < 22) {}
-    for (;;)
-    {
-      return -1;
-      int k = Math.min(j - 22, 65535);
-      int i = 0;
-      while (i < k)
-      {
-        int m = j - 22 - i;
-        if ((paramByteBuffer.getInt(m) == 101010256) && (a(paramByteBuffer, m + 20) == i)) {
-          return m;
-        }
-        i += 1;
-      }
-    }
+    jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = new bjle();
   }
   
-  private static int a(ByteBuffer paramByteBuffer, int paramInt)
+  protected bjld(String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3)
   {
-    return paramByteBuffer.getShort(paramInt) & 0xFFFF;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.c = paramString3;
   }
   
-  public static long a(ByteBuffer paramByteBuffer)
+  bjld(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
   {
-    a(paramByteBuffer);
-    return a(paramByteBuffer, paramByteBuffer.position() + 16);
+    this.jdField_a_of_type_JavaLangString = MD5Utils.encodeHexStr(paramString1);
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.c = paramString3;
+    this.d = paramString4;
   }
   
-  private static long a(ByteBuffer paramByteBuffer, int paramInt)
+  public void writeTo(ContentValues paramContentValues)
   {
-    return paramByteBuffer.getInt(paramInt) & 0xFFFFFFFF;
-  }
-  
-  public static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile)
-  {
-    Object localObject;
-    if (paramRandomAccessFile.length() < 22L) {
-      localObject = null;
-    }
-    Pair localPair;
-    do
-    {
-      return localObject;
-      localPair = a(paramRandomAccessFile, 0);
-      localObject = localPair;
-    } while (localPair != null);
-    return a(paramRandomAccessFile, 65535);
-  }
-  
-  private static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile, int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt > 65535)) {
-      throw new IllegalArgumentException("maxCommentSize: " + paramInt);
-    }
-    long l = paramRandomAccessFile.length();
-    if (l < 22L) {}
-    ByteBuffer localByteBuffer;
-    do
-    {
-      return null;
-      localByteBuffer = ByteBuffer.allocate((int)Math.min(paramInt, l - 22L) + 22);
-      localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-      l -= localByteBuffer.capacity();
-      paramRandomAccessFile.seek(l);
-      paramRandomAccessFile.readFully(localByteBuffer.array(), localByteBuffer.arrayOffset(), localByteBuffer.capacity());
-      paramInt = a(localByteBuffer);
-    } while (paramInt == -1);
-    localByteBuffer.position(paramInt);
-    paramRandomAccessFile = localByteBuffer.slice();
-    paramRandomAccessFile.order(ByteOrder.LITTLE_ENDIAN);
-    return Pair.create(paramRandomAccessFile, Long.valueOf(l + paramInt));
-  }
-  
-  private static void a(ByteBuffer paramByteBuffer)
-  {
-    if (paramByteBuffer.order() != ByteOrder.LITTLE_ENDIAN) {
-      throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
-    }
-  }
-  
-  private static void a(ByteBuffer paramByteBuffer, int paramInt, long paramLong)
-  {
-    if ((paramLong < 0L) || (paramLong > 4294967295L)) {
-      throw new IllegalArgumentException("uint32 value of out range: " + paramLong);
-    }
-    paramByteBuffer.putInt(paramByteBuffer.position() + paramInt, (int)paramLong);
-  }
-  
-  static void a(ByteBuffer paramByteBuffer, long paramLong)
-  {
-    a(paramByteBuffer);
-    a(paramByteBuffer, paramByteBuffer.position() + 16, paramLong);
-  }
-  
-  public static final boolean a(RandomAccessFile paramRandomAccessFile, long paramLong)
-  {
-    paramLong -= 20L;
-    if (paramLong < 0L) {}
-    do
-    {
-      return false;
-      paramRandomAccessFile.seek(paramLong);
-    } while (paramRandomAccessFile.readInt() != 1347094023);
-    return true;
-  }
-  
-  public static long b(ByteBuffer paramByteBuffer)
-  {
-    a(paramByteBuffer);
-    return a(paramByteBuffer, paramByteBuffer.position() + 12);
+    paramContentValues.put("urlKey", this.jdField_a_of_type_JavaLangString);
+    paramContentValues.put("ETag", this.jdField_b_of_type_JavaLangString);
+    paramContentValues.put("lastModify", Long.valueOf(this.jdField_a_of_type_Long));
+    paramContentValues.put("cacheTime", Long.valueOf(this.jdField_b_of_type_Long));
+    Parcel localParcel = Parcel.obtain();
+    localParcel.writeString(this.c);
+    byte[] arrayOfByte = localParcel.marshall();
+    localParcel.recycle();
+    paramContentValues.put("response", arrayOfByte);
   }
 }
 

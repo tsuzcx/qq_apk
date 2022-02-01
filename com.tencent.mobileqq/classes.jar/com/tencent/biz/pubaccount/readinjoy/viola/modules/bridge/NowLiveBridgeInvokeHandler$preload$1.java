@@ -1,8 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge;
 
-import aupc;
+import avux;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
@@ -21,17 +22,17 @@ public final class NowLiveBridgeInvokeHandler$preload$1
     localObject = ((BaseApplicationImpl)localObject).getRuntime();
     if ((localObject instanceof QQAppInterface))
     {
-      localObject = ((AppRuntime)localObject).getManager(306);
+      localObject = ((AppRuntime)localObject).getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER);
       if (localObject == null) {
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager");
       }
-      ((aupc)localObject).a();
+      ((avux)localObject).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.NowLiveBridgeInvokeHandler.preload.1
  * JD-Core Version:    0.7.0.1
  */

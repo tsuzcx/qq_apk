@@ -1,13 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.LocalMultiProcConfig;
 
 public class aekx
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aekx(TroopDisbandActivity paramTroopDisbandActivity) {}
+  public aekx(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131718174) + this.a.a, paramBoolean);
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.e(this.a).setContentDescription(anvx.a(2131707116));
+    }
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
+    {
+      i = 1;
+      if (!paramBoolean) {
+        break label119;
+      }
+    }
+    label119:
+    for (String str = "1";; str = "0")
+    {
+      bdla.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, str, "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 0;
+      break;
+    }
+  }
 }
 
 

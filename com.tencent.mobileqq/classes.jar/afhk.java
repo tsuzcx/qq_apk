@@ -1,21 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
-class afhk
-  implements Animator.AnimatorListener
+public class afhk
+  extends bgix
 {
-  afhk(afhj paramafhj, ViewGroup paramViewGroup) {}
+  public afhk(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+    if ((paramBoolean) && (paramAccountDetail != null))
+    {
+      this.a.j.setText(paramAccountDetail.name);
+      this.a.b.setVisibility(0);
+      this.a.d();
+    }
   }
 }
 

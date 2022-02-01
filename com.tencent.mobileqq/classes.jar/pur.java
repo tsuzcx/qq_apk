@@ -1,40 +1,57 @@
-public class pur<T>
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+
+public class pur
+  implements qhl
 {
-  private long jdField_a_of_type_Long;
-  T jdField_a_of_type_JavaLangObject;
-  public boolean a;
-  private long b;
+  public pur(KandianDailyManager paramKandianDailyManager) {}
   
-  public pur(T paramT)
+  public void onLoadUserInfoFailed(String paramString1, String paramString2) {}
+  
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    this(paramT, localObject, 600000L);
-    if (localObject == null) {
-      this.jdField_a_of_type_Boolean = true;
+    QQAppInterface localQQAppInterface = (QQAppInterface)pkh.a();
+    if (localQQAppInterface == null) {}
+    QQMessageFacade localQQMessageFacade;
+    MessageForStructing localMessageForStructing;
+    String str1;
+    String str2;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localQQMessageFacade = localQQAppInterface.getMessageFacade();
+          localMessageForStructing = (MessageForStructing)localQQMessageFacade.getLastMsgForMsgTab(AppConstants.KANDIAN_DAILY_UIN, 1008);
+        } while (localMessageForStructing == null);
+        if (!localMessageForStructing.mIsParsed) {
+          localMessageForStructing.parse();
+        }
+      } while (localMessageForStructing.structingMsg == null);
+      str1 = localMessageForStructing.getExtInfoFromExtStr("puin");
+      str2 = localMessageForStructing.structingMsg.mMsgBrief;
+    } while ((!localMessageForStructing.isread) || (TextUtils.isEmpty(str2)) || (!str2.contains(ReadInJoyUserInfoModule.a())) || (!TextUtils.equals(str1, paramString)));
+    localMessageForStructing.structingMsg.mMsgBrief = str2.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
+    localMessageForStructing.createMessageUniseq();
+    localMessageForStructing.doPrewrite();
+    localQQMessageFacade.updateMsgContentByUniseq(localMessageForStructing.frienduin, localMessageForStructing.istroop, localMessageForStructing.uniseq, localMessageForStructing.msgData);
+    paramReadInJoyUserInfo = localQQAppInterface.getHandler(Conversation.class);
+    if (paramReadInJoyUserInfo != null) {
+      paramReadInJoyUserInfo.sendEmptyMessage(1009);
     }
-  }
-  
-  public pur(T paramT, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramLong;
-    this.b = System.currentTimeMillis();
-    Object localObject;
-    this.jdField_a_of_type_Long = localObject;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a(T paramT)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.b = System.currentTimeMillis();
-  }
-  
-  public boolean a()
-  {
-    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
+    QLog.d("KandianDailyManager", 2, "update msg bref, uin : " + paramString + ", msg : " + localMessageForStructing);
   }
 }
 

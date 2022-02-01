@@ -1,10 +1,11 @@
-import android.app.Dialog;
+import android.graphics.drawable.Drawable;
 
-public abstract interface afqc
+public class afqc
 {
-  public abstract Dialog a(int paramInt);
-  
-  public abstract void a(int paramInt, Dialog paramDialog);
+  public int a;
+  public Drawable a;
+  public String a;
+  public boolean a;
 }
 
 

@@ -15,30 +15,30 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import arpy;
-import arpz;
-import arqc;
-import arqd;
-import arqe;
-import arqf;
-import arqg;
+import asue;
+import asuf;
+import asui;
+import asuj;
+import asuk;
+import asul;
+import asum;
 import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import mum;
+import mvk;
 
 public class ExtendFriendSearchBarView
   extends FrameLayout
-  implements View.OnClickListener, arpy
+  implements View.OnClickListener, asue
 {
   private int jdField_a_of_type_Int = -1;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new LinearInterpolator();
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private arqg jdField_a_of_type_Arqg;
+  private asum jdField_a_of_type_Asum;
   private Animator.AnimatorListener jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener;
   private ValueAnimator jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator;
   private ExtendFriendHorizontalTagsView jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView;
@@ -61,7 +61,7 @@ public class ExtendFriendSearchBarView
   public ExtendFriendSearchBarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131561079, this);
+    inflate(paramContext, 2131561140, this);
     d();
   }
   
@@ -85,8 +85,8 @@ public class ExtendFriendSearchBarView
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(200L);
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new arqc(this, localLayoutParams, paramView));
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new arqd(this);
+      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new asui(this, localLayoutParams, paramView));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new asuj(this);
     }
     if ((this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator != null) && (this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.isRunning()))
     {
@@ -113,8 +113,8 @@ public class ExtendFriendSearchBarView
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(200L);
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new arqe(this, localLayoutParams, paramView));
-      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new arqf(this, paramView);
+      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new asuk(this, localLayoutParams, paramView));
+      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new asul(this, paramView);
     }
     if ((this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator != null) && (this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.isRunning()))
     {
@@ -129,18 +129,18 @@ public class ExtendFriendSearchBarView
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376884));
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetInterceptHorizontalScrollView = ((InterceptHorizontalScrollView)findViewById(2131376952));
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView = ((ExtendFriendHorizontalTagsView)findViewById(2131376948));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376907));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376885));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377156));
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetInterceptHorizontalScrollView = ((InterceptHorizontalScrollView)findViewById(2131377224));
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView = ((ExtendFriendHorizontalTagsView)findViewById(2131377220));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377179));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377157));
     if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView != null) {
       this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView.setOnItemClickListener(this);
     }
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(mum.a);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(mvk.a);
     }
     if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -202,7 +202,7 @@ public class ExtendFriendSearchBarView
       if (i < this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView.getChildCount())
       {
         localObject1 = (TextView)this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendHorizontalTagsView.getChildAt(i);
-        if ((!(((TextView)localObject1).getTag() instanceof arpz)) || (!paramString.equals(((arpz)((TextView)localObject1).getTag()).a))) {}
+        if ((!(((TextView)localObject1).getTag() instanceof asuf)) || (!paramString.equals(((asuf)((TextView)localObject1).getTag()).a))) {}
       }
     }
     for (int i = ((TextView)localObject1).getRight();; i = 0)
@@ -219,8 +219,8 @@ public class ExtendFriendSearchBarView
   
   public void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Arqg != null) {
-      this.jdField_a_of_type_Arqg.a(paramString, paramInt);
+    if (this.jdField_a_of_type_Asum != null) {
+      this.jdField_a_of_type_Asum.a(paramString, paramInt);
     }
   }
   
@@ -242,15 +242,15 @@ public class ExtendFriendSearchBarView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Arqg != null) {
-      this.jdField_a_of_type_Arqg.b();
+    if (this.jdField_a_of_type_Asum != null) {
+      this.jdField_a_of_type_Asum.b();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setItemClickListener(arqg paramarqg)
+  public void setItemClickListener(asum paramasum)
   {
-    this.jdField_a_of_type_Arqg = paramarqg;
+    this.jdField_a_of_type_Asum = paramasum;
   }
   
   public void setSearchButtonEnable(boolean paramBoolean)
@@ -300,7 +300,7 @@ public class ExtendFriendSearchBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView
  * JD-Core Version:    0.7.0.1
  */

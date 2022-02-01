@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import ajrg;
-import boaj;
+import akmu;
+import bpqb;
 import java.io.File;
 
 public class PhotoPreviewLogicDefault$9
   implements Runnable
 {
-  public PhotoPreviewLogicDefault$9(ajrg paramajrg, String paramString) {}
+  public PhotoPreviewLogicDefault$9(akmu paramakmu, String paramString) {}
   
   public void run()
   {
-    boaj.a(new File(this.a).getParent());
+    bpqb.a(new File(this.a).getParent());
   }
 }
 

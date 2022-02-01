@@ -1,104 +1,64 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.tribe.view.TEditText;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class beyd
+  implements beui
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public List<String> b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f = 0;
-  public int g = 0;
-  public int h = 0;
+  public beyd(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public beyd()
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    while ((!(paramObject instanceof beyd)) || (((beyd)paramObject).jdField_b_of_type_Long != this.jdField_b_of_type_Long)) {
-      return false;
-    }
-    return true;
-  }
-  
-  public String toString()
-  {
-    int j = 0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("TroopAppInfo{app_showtype='" + this.jdField_a_of_type_Int + '\'' + ", app_type='" + this.jdField_a_of_type_Long + '\'' + ", app_appid='" + this.jdField_b_of_type_Long + '\'' + ", app_removable='" + this.jdField_b_of_type_Int + '\'' + ", app_source='" + this.jdField_c_of_type_Int + '\'' + ", app_name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", app_icon='" + this.jdField_b_of_type_JavaLangString + '\'' + ", app_url='" + this.jdField_c_of_type_JavaLangString + '\'' + ", app_desc='" + this.jdField_d_of_type_JavaLangString + '\'' + ", app_added='" + this.jdField_a_of_type_Boolean + '\'' + ", app_redpoint='" + this.jdField_d_of_type_Int + '\'' + ", app_trace='" + this.jdField_e_of_type_JavaLangString + '\'' + ", app_showframe='" + this.jdField_e_of_type_Int + '\'' + ", app_playingnum='" + this.f + '\'' + ", app_friend_playingnum='" + this.g + '\'' + ", app_total_playingnum='" + this.h + '\'');
-    int k;
-    int i;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    int k = 1;
+    if (this.a.b.getText().length() <= 0) {}
+    for (;;)
     {
-      localStringBuilder.append(", app_playing_users='");
-      k = this.jdField_a_of_type_JavaUtilList.size();
-      i = 0;
-      if (i < k)
+      return;
+      if (paramInt1 < 0)
       {
-        if (i == k - 1) {
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilList.get(i) + "'");
-        }
+        if (paramInt2 > this.a.x.length() + 1) {}
         for (;;)
         {
-          i += 1;
-          break;
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilList.get(i) + "、 ");
+          this.a.b.setSelection(paramInt2);
+          return;
+          paramInt2 = this.a.x.length() + 1;
+        }
+      }
+      if (paramInt2 < 0)
+      {
+        if (paramInt1 > this.a.x.length() + 1) {}
+        for (;;)
+        {
+          this.a.b.setSelection(paramInt1);
+          return;
+          paramInt1 = this.a.x.length() + 1;
+        }
+      }
+      if (!TextUtils.isEmpty(this.a.x))
+      {
+        int i = 0;
+        int j = paramInt1;
+        if (paramInt1 < this.a.x.length() + 1)
+        {
+          j = this.a.x.length() + 1;
+          i = 1;
+        }
+        if (paramInt2 < this.a.x.length() + 1) {
+          paramInt2 = this.a.x.length() + 1;
+        }
+        for (paramInt1 = k; paramInt1 != 0; paramInt1 = i)
+        {
+          this.a.b.setSelection(j, paramInt2);
+          return;
         }
       }
     }
-    if (this.jdField_b_of_type_JavaUtilList != null)
-    {
-      localStringBuilder.append(", app_recommend_tags='");
-      k = this.jdField_b_of_type_JavaUtilList.size();
-      i = j;
-      if (i < k)
-      {
-        if (i == k - 1) {
-          localStringBuilder.append((String)this.jdField_b_of_type_JavaUtilList.get(i) + "'");
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localStringBuilder.append((String)this.jdField_b_of_type_JavaUtilList.get(i) + "、 ");
-        }
-      }
-    }
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyd
  * JD-Core Version:    0.7.0.1
  */

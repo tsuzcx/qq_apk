@@ -1,6 +1,7 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
@@ -15,7 +16,7 @@ class ba
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    amqd localamqd = (amqd)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(8);
+    ansr localansr = (ansr)this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     Object localObject;
     if ((!this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335))
     {
@@ -30,17 +31,17 @@ class ba
         dq.o(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
       }
       if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) || (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335)) {
-        break label251;
+        break label252;
       }
-      localamqd.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupId(), 0L, true);
+      localansr.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupId(), 0L, true);
       localObject = null;
       paramInt = 0;
     }
     for (;;)
     {
-      localamqd.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
+      localansr.a(this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
       if (paramInt != 0) {
-        localamqd.a((DataLineMsgSet)localObject);
+        localansr.a((DataLineMsgSet)localObject);
       }
       this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_Dy.b();
       this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_Dy.notifyDataSetChanged();
@@ -48,12 +49,12 @@ class ba
       return;
       dq.k(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
       break;
-      label251:
+      label252:
       localObject = this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
       while (((Iterator)localObject).hasNext())
       {
         DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
-        localamqd.a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, true);
+        localansr.a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, true);
       }
       if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().size() == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2005))
       {

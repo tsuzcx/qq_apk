@@ -1,59 +1,79 @@
-import java.util.HashMap;
+import android.content.Intent;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class badw
-  extends badu
+  extends badm
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public int i;
-  public int j = -1;
-  public int k = -1;
-  public int l = 1001;
-  public int m = -1;
-  
-  public badw()
+  public badw(azxt paramazxt, azrb paramazrb)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Long = 0L;
+    super(paramazxt, paramazrb);
   }
   
-  public HashMap<String, String> a(String paramString)
+  private void j()
   {
-    if ("ShortVideo.Send".equals(paramString))
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ProfileLabelEditorActivity.class);
+    localIntent.putExtra("uin", ((azrb)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivityForResult(localIntent, 1004);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "card_mall", "0X80066C6", 0, 0, "1", "", "", "");
+  }
+  
+  public String a()
+  {
+    return "VasProfileHeaderTagComponent";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
     {
-      paramString = new HashMap();
-      paramString.put("param_DetailUrl", this.jdField_a_of_type_JavaLangString);
-      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_isForward", this.jdField_a_of_type_Boolean + "");
-      paramString.put("param_isExist", this.jdField_b_of_type_Boolean + "");
-      paramString.put("param_forwardSourceUinType", this.jdField_a_of_type_Int + "");
-      paramString.put("param_forwardSourceGroupMemberCount", this.i + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_userType", this.l + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_shortVideoSourceType", this.j + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_fileInterval", this.k + "");
-      paramString.put("param_netType", this.h + "");
-      paramString.put("param_md5", this.jdField_b_of_type_JavaLangString);
-      paramString.put("param_fileSize", this.jdField_a_of_type_Long + "");
-      paramString.put("param_duration", this.jdField_b_of_type_Long + "");
-      paramString.put("param_status", this.m + "");
-      return paramString;
+      VasProfileTagView localVasProfileTagView = new VasProfileTagView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azrb)this.b);
+      localVasProfileTagView.setProfileArgs(this.jdField_a_of_type_Azxt);
+      localVasProfileTagView.setClickListener(this);
+      localVasProfileTagView.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileTagView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
     }
-    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    switch (paramInt1)
+    {
+    }
+    do
+    {
+      return;
+      paramIntent = ((anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    } while (paramIntent == null);
+    ((azrb)this.b).jdField_a_of_type_ComTencentMobileqqDataCard = paramIntent;
+    this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.j((azrb)this.b);
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    if ((paramView.getTag() instanceof azpb)) {
+      switch (((azpb)paramView.getTag()).a)
+      {
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      j();
+    }
   }
 }
 

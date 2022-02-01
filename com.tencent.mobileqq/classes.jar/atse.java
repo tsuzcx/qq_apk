@@ -1,55 +1,86 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.fragment.NowLiveFragment.3.1;
-import com.tencent.mobileqq.fragment.NowLiveFragment.3.2;
-import com.tencent.mobileqq.fragment.NowLiveFragment.3.3;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
-import com.tencent.smtt.sdk.CookieSyncManager;
-import java.util.Map;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.downloader.BaseDownloader.1;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.IExcitingTransferRecvListener;
+import java.util.concurrent.Executor;
 
-public class atse
-  implements WtTicketPromise
+public abstract class atse
+  implements atrs, IExcitingTransferRecvListener
 {
-  public atse(NowLiveFragment paramNowLiveFragment) {}
+  protected long a;
+  protected atrt a;
+  public audf a;
+  private ExcitingTransferDownloadReqInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo = new ExcitingTransferDownloadReqInfo();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void Done(Ticket paramTicket)
+  public atse(QQAppInterface paramQQAppInterface)
   {
-    if (paramTicket != null)
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Atrt = a(paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  protected abstract atrt a(QQAppInterface paramQQAppInterface);
+  
+  public abstract void a(ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo);
+  
+  public boolean a()
+  {
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService : Done");
-      }
-      String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
-      this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie("now.qq.com", "p_skey=" + str);
-      CookieSyncManager.getInstance().sync();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putString("pskey", "" + str).commit();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
-      NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NowLiveFragment.3.1(this));
+    finally {}
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void av_()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
+    try
+    {
+      this.jdField_a_of_type_Boolean = false;
+      auel.a().execute(new BaseDownloader.1(this));
+      return;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NowLiveFragment.3.2(this));
+    finally {}
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    try
+    {
+      this.jdField_a_of_type_Boolean = true;
+      ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
+      return;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NowLiveFragment.3.3(this));
+    finally {}
+  }
+  
+  public void c()
+  {
+    b();
+    this.jdField_a_of_type_Atrt.a();
+  }
+  
+  public void d()
+  {
+    b();
+    this.jdField_a_of_type_Atrt.b();
+  }
+  
+  public void e()
+  {
+    b();
+  }
+  
+  protected void f()
+  {
+    this.jdField_a_of_type_Long = ExcitingTransferEngine.getInstance().recvFileEx(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo, atrv.a().a(), this);
   }
 }
 

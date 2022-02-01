@@ -14,8 +14,8 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import ygv;
-import ygw;
+import yvo;
+import yvp;
 
 @TargetApi(14)
 public class DisplayUtil
@@ -29,28 +29,28 @@ public class DisplayUtil
     return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
   }
   
-  public static void drawEditRect(Canvas paramCanvas, ygv paramygv, ygw paramygw, int paramInt1, int paramInt2, int paramInt3)
+  public static void drawEditRect(Canvas paramCanvas, yvo paramyvo, yvp paramyvp, int paramInt1, int paramInt2, int paramInt3)
   {
     paramInt1 = getStickerButtonSize();
-    paramCanvas.concat(paramygv.b(paramygw));
-    int i = (int)(paramygw.n * paramygw.j * paramygw.p) + paramygw.e * 2;
-    int j = (int)(paramygw.o * paramygw.j * paramygw.p) + paramygw.e * 2;
+    paramCanvas.concat(paramyvo.b(paramyvp));
+    int i = (int)(paramyvp.n * paramyvp.j * paramyvp.p) + paramyvp.e * 2;
+    int j = (int)(paramyvp.o * paramyvp.j * paramyvp.p) + paramyvp.e * 2;
     paramCanvas.translate(-i * 1.0F / 2.0F, -j * 1.0F / 2.0F);
-    paramygv = new Paint();
-    paramygv.setStyle(Paint.Style.STROKE);
-    paramygv.setColor(BaseApplicationImpl.getApplication().getResources().getColor(2131167350));
-    paramygv.setStrokeWidth(dip2px(BaseApplicationImpl.getApplication().getBaseContext(), 1.0F));
+    paramyvo = new Paint();
+    paramyvo.setStyle(Paint.Style.STROKE);
+    paramyvo.setColor(BaseApplicationImpl.getApplication().getResources().getColor(2131167376));
+    paramyvo.setStrokeWidth(dip2px(BaseApplicationImpl.getApplication().getBaseContext(), 1.0F));
     int k = dip2px(BaseApplicationImpl.getApplication().getBaseContext(), 3.0F);
-    paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, i, j), k, k, paramygv);
+    paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, i, j), k, k, paramyvo);
     paramCanvas.translate(-paramInt1 / 2, -paramInt1 / 2);
     paramCanvas.translate(i, j);
-    paramygv = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt3);
-    paramygv.setBounds(0, 0, paramInt1, paramInt1);
-    paramygv.draw(paramCanvas);
+    paramyvo = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt3);
+    paramyvo.setBounds(0, 0, paramInt1, paramInt1);
+    paramyvo.draw(paramCanvas);
     paramCanvas.translate(0.0F, -j);
-    paramygv = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt2);
-    paramygv.setBounds(0, 0, paramInt1, paramInt1);
-    paramygv.draw(paramCanvas);
+    paramyvo = BaseApplicationImpl.getApplication().getResources().getDrawable(paramInt2);
+    paramyvo.setBounds(0, 0, paramInt1, paramInt1);
+    paramyvo.draw(paramCanvas);
   }
   
   public static float getFitScaleValue(int paramInt1, int paramInt2, int paramInt3, int paramInt4)

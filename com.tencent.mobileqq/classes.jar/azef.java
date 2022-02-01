@@ -1,18 +1,29 @@
-public class azef
-  implements azeb
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.lbssearch.TencentSearch;
+import com.tencent.lbssearch.object.param.Geo2AddressParam;
+import com.tencent.lbssearch.object.param.Geo2AddressParam.PoiOptions;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+
+class azef
+  extends azec
 {
-  private azfa a;
+  private TencentSearch a;
   
-  public azef(azfa paramazfa)
+  azef(String paramString)
   {
-    this.a = paramazfa;
+    super(paramString);
+    jdField_a_of_type_JavaLangString = "NetworkLoader";
+    this.jdField_a_of_type_ComTencentLbssearchTencentSearch = new TencentSearch(BaseApplicationImpl.getContext());
   }
   
-  public void a(azfk paramazfk)
+  public boolean a(LatLng paramLatLng, int paramInt, azel paramazel)
   {
-    if (this.a != null) {
-      this.a.m(paramazfk);
+    if (QLog.isColorLevel()) {
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] netGet. latLng: " + paramLatLng);
     }
+    this.jdField_a_of_type_ComTencentLbssearchTencentSearch.geo2address(new Geo2AddressParam(paramLatLng).getPoi(true).setPoiOptions(new Geo2AddressParam.PoiOptions().setPolicy(1).setPageSize(azcv.d).setPageIndex(0)), new azeg(this, paramLatLng, paramazel));
+    return true;
   }
 }
 

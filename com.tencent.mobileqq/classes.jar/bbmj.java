@@ -1,68 +1,103 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.ContentHead;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.msg.im_msg_body.MsgBody;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.VideoFlowDecodeTask;
 
 public class bbmj
-  implements bbls
 {
-  private void a(MessageHandler paramMessageHandler, List<MessageRecord> paramList, msg_comm.Msg paramMsg, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  private int jdField_a_of_type_Int;
+  private VideoFlowDecodeTask jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+  private Thread jdField_a_of_type_JavaLangThread;
+  
+  public void a()
   {
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()) || (!((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.has())) {}
-    do
-    {
-      return;
-      if (paramMsg.content_head.has()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("NormalBuddyDecoder", 2, "<---decodeC2CMessagePackage: msg doesn't has the contentHead.");
-    return;
-    Object localObject = (msg_comm.ContentHead)paramMsg.content_head.get();
-    if ((((msg_comm.ContentHead)localObject).auto_reply.has()) && (((msg_comm.ContentHead)localObject).auto_reply.get() == 1)) {}
-    for (paramBoolean2 = true;; paramBoolean2 = false)
-    {
-      localObject = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get();
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder(128);
-        localStringBuilder.append("<---decodeC2CMsgPkg_Buddy:elems size:").append(((List)localObject).size()).append(" isAutoReply:").append(paramBoolean2);
-        QLog.d("NormalBuddyDecoder", 2, localStringBuilder.toString());
-      }
-      if (!paramBoolean2) {
-        break label303;
-      }
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break;
-      }
-      paramMessageHandler = BaseApplicationImpl.getApplication().getString(2131690220);
-      paramMsg = new bblb().a((List)localObject);
-      if (TextUtils.isEmpty(paramMsg)) {
-        break;
-      }
-      paramMessageHandler = paramMessageHandler + " " + paramMsg;
-      paramMsg = bbli.a(-10000);
-      paramMsg.msgtype = -10000;
-      paramMsg.msg = paramMessageHandler;
-      paramList.add(paramMsg);
-      return;
+    if (this.jdField_a_of_type_JavaLangThread != null) {
+      this.jdField_a_of_type_JavaLangThread.interrupt();
     }
-    label303:
-    bblf.a(paramMessageHandler, paramList, paramMsg, true, paramBoolean1, null);
+    this.jdField_a_of_type_JavaLangThread = null;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask = null;
   }
   
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm)
+  public void a(int paramInt)
   {
-    a(paramMessageHandler, paramList, paramMsg, parambbkm.e, parambbkm.b, parambbkm.a, parambbkm.d);
+    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+    if (localVideoFlowDecodeTask != null)
+    {
+      localVideoFlowDecodeTask.a(paramInt);
+      ykq.b("FlowEdit_VideoFlowDecoder", "setSpeedType:" + paramInt);
+      return;
+    }
+    ykq.d("FlowEdit_VideoFlowDecoder", "setSpeedType:" + paramInt + " failed, can not find DecodeRunnable");
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+    if (localVideoFlowDecodeTask != null)
+    {
+      ykq.d("FlowEdit_VideoFlowDecoder", "setPlayRange [" + paramLong1 + " ms, " + paramLong2 + " ms]");
+      localVideoFlowDecodeTask.a(paramLong1, paramLong2);
+      return;
+    }
+    ykq.d("FlowEdit_VideoFlowDecoder", "setPlayRange failed, can not find DecodeRunnable");
+  }
+  
+  public void a(bblh parambblh, bblb parambblb, bbli parambbli)
+  {
+    Thread localThread;
+    if (this.jdField_a_of_type_JavaLangThread != null)
+    {
+      ykq.b("FlowEdit_VideoFlowDecoder", "stopDecode before startDecode, current thread : %s", this.jdField_a_of_type_JavaLangThread.getName());
+      localThread = this.jdField_a_of_type_JavaLangThread;
+      a();
+    }
+    try
+    {
+      localThread.join();
+      ykq.c("FlowEdit_VideoFlowDecoder", "startDecode, create decode runnable");
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask = new VideoFlowDecodeTask(parambblh.a, parambblb, parambbli);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask.a(parambblh);
+      parambblh = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+      parambblb = new StringBuilder().append("HWVideoDecoder-Thread-");
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i + 1);
+      this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(parambblh, i, 8);
+      this.jdField_a_of_type_JavaLangThread.start();
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
+      }
+    }
+  }
+  
+  public void b()
+  {
+    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+    if (localVideoFlowDecodeTask != null)
+    {
+      localVideoFlowDecodeTask.jdField_a_of_type_Boolean = true;
+      ykq.b("FlowEdit_VideoFlowDecoder", "pauseDecode");
+      return;
+    }
+    ykq.d("FlowEdit_VideoFlowDecoder", "pauseDecode failed, can not find DecodeRunnable");
+  }
+  
+  public void c()
+  {
+    VideoFlowDecodeTask localVideoFlowDecodeTask = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeTask;
+    if (localVideoFlowDecodeTask != null)
+    {
+      localVideoFlowDecodeTask.jdField_a_of_type_Boolean = false;
+      synchronized (localVideoFlowDecodeTask.jdField_a_of_type_JavaLangObject)
+      {
+        localVideoFlowDecodeTask.jdField_a_of_type_JavaLangObject.notifyAll();
+        ykq.b("FlowEdit_VideoFlowDecoder", "pauseDecode");
+        return;
+      }
+    }
+    ykq.d("FlowEdit_VideoFlowDecoder", "pauseDecode failed, can not find DecodeRunnable");
   }
 }
 

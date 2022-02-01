@@ -1,27 +1,17 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.widget.ListView;
-import com.tencent.widget.XPanelContainer;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agww
-  implements Handler.Callback
+class agww
+  extends ahaa
 {
-  public agww(PEPanel paramPEPanel) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  agww(agvm paramagvm)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    PEPanel.a(this.a).setVisibility(0);
-    paramMessage = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
-    paramMessage.setDuration(200L);
-    PEPanel.a(this.a).startAnimation(paramMessage);
-    return true;
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahcj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

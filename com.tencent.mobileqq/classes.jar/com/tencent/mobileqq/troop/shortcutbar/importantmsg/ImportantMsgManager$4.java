@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.shortcutbar.importantmsg;
 
-import beur;
+import bgbv;
 
 public class ImportantMsgManager$4
   implements Runnable
 {
   public void run()
   {
-    beur.b(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilArrayList);
+    bgbv.b(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

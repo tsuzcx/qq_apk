@@ -1,92 +1,54 @@
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.debug.EnvSwitchActivity;
-import com.tencent.mobileqq.emoticonview.CameraEmoticonInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import dov.com.qq.im.ae.SessionWrap;
-import eipc.EIPCResult;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.List;
 
 public class bmba
-  extends QIPCModule
+  implements bcif<bcfi, bcnt>
 {
-  public bmba()
+  public void a(bcfi parambcfi, bcnt parambcnt)
   {
-    super("AECameraGetInfoServer");
-  }
-  
-  public static bmba a()
-  {
-    return bmbb.a;
-  }
-  
-  private QQAppInterface a()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
-  }
-  
-  private String a(@NonNull String paramString)
-  {
-    if (paramString.contains("14.18.180.90")) {
-      return "IPv4";
-    }
-    if (paramString.contains("240e:e1:a900:50::18")) {
-      return "IPv6";
-    }
-    return "Unknown";
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (a() == null) {
-      return null;
-    }
-    Object localObject;
-    if ("ACTION_GET_ENV_INFO".equals(paramString))
+    bmbe localbmbe;
+    int i;
+    if (((parambcfi instanceof bmbe)) && ((parambcnt instanceof bcpj)))
     {
-      paramBundle = new Bundle();
-      if (EnvSwitchActivity.isTestEnvironment())
-      {
-        localObject = EnvSwitchActivity.loadTestEnvironment()[0];
-        paramString = "Unknown";
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          paramString = a((String)localObject);
-        }
-        paramBundle.putString("KEY_ENV_INFO", "Test Env: " + paramString);
+      localbmbe = (bmbe)parambcfi;
+      parambcnt = (bcpj)parambcnt;
+      parambcfi = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20170310/4c615c46286c40e78851635a63a22dae.png", URLDrawable.URLDrawableOptions.obtain());
+      if ((parambcfi != null) && (parambcfi.getStatus() == 2)) {
+        parambcfi.restartDownload();
       }
-      for (;;)
-      {
-        paramString = EIPCResult.createSuccessResult(paramBundle);
-        callbackResult(paramInt, paramString);
-        return paramString;
-        paramBundle.putString("KEY_ENV_INFO", "Prod Env");
+      parambcnt.b().setImageDrawable(parambcfi);
+      parambcnt.a().setText(bmbe.b);
+      if (localbmbe.a() != null) {
+        break label204;
+      }
+      i = 0;
+      if (i > 10) {
+        break label218;
       }
     }
-    if ("ACTION_SEND_GIF".equals(paramString)) {
-      if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-        break label251;
-      }
-    }
-    label251:
-    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    label204:
+    label218:
+    for (parambcfi = String.valueOf(i);; parambcfi = "10+")
     {
-      if (paramString == null) {
-        return null;
+      ((TextView)parambcnt.a().findViewById(2131365532)).setText(String.format("%s条与\"", new Object[] { parambcfi }));
+      parambcfi = (TextView)parambcnt.a().findViewById(2131365526);
+      if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+        parambcfi.setTextColor(Color.parseColor("#004080"));
       }
-      localObject = new SessionWrap(paramBundle.getString("curFriendUin"), paramBundle.getString("curFriendNick"), paramBundle.getInt("curType"), paramBundle.getString("troopUin"));
-      CameraEmoticonInfo localCameraEmoticonInfo = new CameraEmoticonInfo();
-      localCameraEmoticonInfo.path = paramBundle.getString("ARG_GIF_PATH");
-      localCameraEmoticonInfo.url = localCameraEmoticonInfo.path;
-      localCameraEmoticonInfo.contextKey = paramBundle.getString("forward_summary_extra", "");
-      localCameraEmoticonInfo.templateId = paramBundle.getString("widgetinfo", "");
-      localCameraEmoticonInfo.send(paramString, BaseApplicationImpl.getContext(), null, ((SessionWrap)localObject).a());
-      return null;
-      return null;
+      parambcfi.setText(localbmbe.b());
+      ((TextView)parambcnt.a().findViewById(2131365533)).setText("\"相关收藏");
+      parambcnt.a().setVisibility(8);
+      parambcnt.a().setOnClickListener(new bmbb(this, localbmbe));
+      return;
+      i = localbmbe.a().size();
+      break;
     }
   }
 }

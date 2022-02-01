@@ -1,180 +1,153 @@
-import android.opengl.GLES20;
-import com.tencent.maxvideo.common.AVIOStruct;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.data.MessageForScribble;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class bbxv
+class bbxv
 {
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
-  private bbxs[] jdField_a_of_type_ArrayOfBbxs = new bbxs[3];
+  public final int a;
+  private ArrayList<bbxt> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private PriorityBlockingQueue<bbxt> jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue = new PriorityBlockingQueue();
+  private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
+  public final int b = 0;
+  public final int c = 1;
+  public final int d = 2;
+  public final int e = 0;
+  public final int f = -1;
   
-  private boolean c()
+  bbxv(bbxu parambbxu)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1;
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public bbxs a()
+  public int a()
   {
-    if (!c()) {
-      return null;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
+    {
+      int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      bbxu.a(this.jdField_a_of_type_Bbxu, "getDownloadingSize", "downing size is " + i);
+      return i;
     }
-    int i = 0;
-    bbxs localbbxs;
-    if (i < this.jdField_a_of_type_ArrayOfBbxs.length) {
-      if (this.jdField_a_of_type_ArrayOfBbxs[i].b() == 0)
-      {
-        localbbxs = this.jdField_a_of_type_ArrayOfBbxs[i];
-        localbbxs.d();
-      }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
     }
+  }
+  
+  public int a(bbxt parambbxt)
+  {
+    int k = 1;
+    int m = -1;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
     for (;;)
     {
-      return localbbxs;
-      i += 1;
-      break;
-      localbbxs = null;
-    }
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-    while (i < this.jdField_a_of_type_ArrayOfBbxs.length)
-    {
-      this.jdField_a_of_type_ArrayOfBbxs[i] = new bbxs(this.jdField_a_of_type_ArrayOfInt[i]);
-      i += 1;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(1);
-  }
-  
-  public void a(bbxu parambbxu)
-  {
-    if (c())
-    {
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfBbxs.length)
+      try
       {
-        this.jdField_a_of_type_ArrayOfBbxs[i].a(parambbxu);
-        i += 1;
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    if (!c()) {}
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfBbxs.length)
-      {
-        if (this.jdField_a_of_type_ArrayOfBbxs[i].a() == 3) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public bbxs b()
-  {
-    if (!c()) {
-      return null;
-    }
-    int i = 0;
-    bbxs localbbxs;
-    if (i < this.jdField_a_of_type_ArrayOfBbxs.length)
-    {
-      if (this.jdField_a_of_type_ArrayOfBbxs[i].c() == 0) {}
-      while (this.jdField_a_of_type_ArrayOfBbxs[i].a() != 0)
-      {
-        i += 1;
-        break;
-      }
-      localbbxs = this.jdField_a_of_type_ArrayOfBbxs[i];
-      localbbxs.d();
-    }
-    for (;;)
-    {
-      return localbbxs;
-      localbbxs = null;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0) == 1)
-    {
-      GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfBbxs.length)
-      {
-        if (this.jdField_a_of_type_ArrayOfBbxs[i] != null)
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
         {
-          this.jdField_a_of_type_ArrayOfBbxs[i].b();
-          this.jdField_a_of_type_ArrayOfBbxs[i] = null;
+          i = 0;
+          if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+          {
+            if (parambbxt.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq == ((bbxt)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq)
+            {
+              j = 1;
+              i = 1;
+              if ((j == 0) && (this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.size() > 0))
+              {
+                Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
+                if (localIterator.hasNext())
+                {
+                  bbxt localbbxt = (bbxt)localIterator.next();
+                  if (localbbxt.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq != parambbxt.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq) {
+                    continue;
+                  }
+                  if (localbbxt.jdField_a_of_type_Int >= parambbxt.jdField_a_of_type_Int) {
+                    break label214;
+                  }
+                  localbbxt.jdField_a_of_type_Int = parambbxt.jdField_a_of_type_Int;
+                  break label214;
+                  if (j == 0)
+                  {
+                    this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.add(parambbxt);
+                    i = 0;
+                  }
+                  return i;
+                }
+              }
+            }
+            else
+            {
+              i += 1;
+              continue;
+            }
+            continue;
+          }
         }
-        this.jdField_a_of_type_ArrayOfInt[i] = 0;
-        i += 1;
       }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+      int j = 0;
+      int i = m;
+      continue;
+      label214:
+      i = 2;
+      j = k;
     }
   }
   
-  public boolean b()
+  public int a(MessageForScribble paramMessageForScribble)
   {
-    int i = 0;
-    if (!c()) {
-      return false;
-    }
-    while (i < this.jdField_a_of_type_ArrayOfBbxs.length)
-    {
-      this.jdField_a_of_type_ArrayOfBbxs[i].c();
-      i += 1;
-    }
-    return true;
-  }
-  
-  public bbxs c()
-  {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (!c()) {}
-    int i;
-    label18:
-    do
-    {
-      return localObject2;
-      i = 0;
-      localObject2 = localObject1;
-    } while (i >= this.jdField_a_of_type_ArrayOfBbxs.length);
-    bbxs localbbxs;
-    if (this.jdField_a_of_type_ArrayOfBbxs[i].a() == 2)
-    {
-      localbbxs = this.jdField_a_of_type_ArrayOfBbxs[i];
-      if (localObject1 == null) {
-        localObject1 = localbbxs;
-      }
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
     for (;;)
     {
-      i += 1;
-      break label18;
-      AVIOStruct localAVIOStruct = (AVIOStruct)localObject1.a.a;
-      localObject2 = (AVIOStruct)localbbxs.a.a;
-      long l = localAVIOStruct.vFrameTime;
-      if (((AVIOStruct)localObject2).vFrameTime > l)
+      try
       {
-        localObject2 = localObject1;
-        if (localAVIOStruct.pFrameIndex == 0) {
-          break;
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        {
+          i = 0;
+          if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+          {
+            if (paramMessageForScribble.uniseq == ((bbxt)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq)
+            {
+              this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+              i = 0;
+              return i;
+            }
+            i += 1;
+            continue;
+          }
         }
-        localObject1.c();
-        localObject1 = localbbxs;
-        continue;
+        int i = -1;
       }
-      localbbxs.c();
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+    }
+  }
+  
+  public bbxt a()
+  {
+    bbxt localbbxt = null;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.size() > 0)
+      {
+        localbbxt = (bbxt)this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.poll();
+        this.jdField_a_of_type_JavaUtilArrayList.add(localbbxt);
+      }
+      return localbbxt;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
     }
   }
 }

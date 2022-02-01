@@ -1,16 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
+import android.graphics.Bitmap;
 
-public class aiyb
-  extends atbh
+class aiyb
+  implements bbtd
 {
-  public aiyb(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  aiyb(aiya paramaiya) {}
   
-  public void a(View paramView)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    bcef.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
-    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
+    if ((paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.notifyDataSetChanged();
+    }
   }
 }
 

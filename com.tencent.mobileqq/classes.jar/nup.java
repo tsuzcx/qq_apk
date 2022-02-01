@@ -1,16 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 class nup
-  implements View.OnClickListener
+  extends Handler
 {
-  nup(num paramnum) {}
-  
-  public void onClick(View paramView)
+  nup(nuo paramnuo, Looper paramLooper)
   {
-    this.a.a(this.a.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
+      }
+      this.a.a.clear();
+    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
+    }
+    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
   }
 }
 

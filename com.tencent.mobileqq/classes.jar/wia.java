@@ -1,68 +1,46 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import android.content.Context;
+import android.support.annotation.IdRes;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class wia
-  extends wid
+public class wia<M>
+  extends RecyclerView.ViewHolder
 {
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  private final int[] a;
-  private int c;
-  private String k;
-  private String l;
+  private SparseArray<View> a = new SparseArray();
   
-  static
+  public wia(View paramView)
   {
-    jdField_a_of_type_JavaLangString = "src_type=internal&version=1&uin=%s&usertype=%s&unionid=%s&fromId=%s&storysharefrom=%s" + vpl.a(2131698833);
-    b = "mqqapi://qstory/infoCard?" + jdField_a_of_type_JavaLangString;
-    jdField_c_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?" + jdField_a_of_type_JavaLangString + "&actionnamekey=3&one_page=0";
+    super(paramView);
   }
   
-  public wia(QQUserUIItem paramQQUserUIItem)
+  public wia(ViewGroup paramViewGroup, int paramInt)
   {
-    this.k = paramQQUserUIItem.qq;
-    this.i = paramQQUserUIItem.headUrl;
-    int i;
-    if (paramQQUserUIItem.isVip)
+    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
+  }
+  
+  protected Context a()
+  {
+    return this.itemView.getContext();
+  }
+  
+  protected <T extends View> T a(@IdRes int paramInt)
+  {
+    View localView2 = (View)this.a.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
     {
-      i = 1;
-      this.jdField_c_of_type_Int = i;
-      this.l = paramQQUserUIItem.uid;
-      this.d = (paramQQUserUIItem.nickName + amtj.a(2131704882) + vkm.jdField_a_of_type_JavaLangString);
-      this.f = ("[" + vkm.jdField_a_of_type_JavaLangString + amtj.a(2131704885) + paramQQUserUIItem.nickName + amtj.a(2131704888) + vkm.jdField_a_of_type_JavaLangString);
-      this.g = (paramQQUserUIItem.nickName + amtj.a(2131704887) + vkm.jdField_a_of_type_JavaLangString + amtj.a(2131704881) + vkm.jdField_a_of_type_JavaLangString + amtj.a(2131704884) + vpl.a(2131698830) + amtj.a(2131704883));
-      if (paramQQUserUIItem.videoCount > 0) {
-        break label331;
-      }
+      localView1 = this.itemView.findViewById(paramInt);
+      this.a.put(paramInt, localView1);
     }
-    label331:
-    for (this.e = "0个小视频";; this.e = (paramQQUserUIItem.videoCount + amtj.a(2131704886)))
-    {
-      this.j = ("#" + vkm.jdField_a_of_type_JavaLangString + "# " + this.d + "（" + this.e + "）");
-      this.jdField_a_of_type_Int = 102;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 13, 14, 15, 16, 17, 18 };
-      return;
-      i = 0;
-      break;
-    }
+    return localView1;
   }
   
-  protected String a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return String.format(b, new Object[] { this.k, Integer.valueOf(this.jdField_c_of_type_Int), this.l, Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), b(paramInt) });
-    }
-    return String.format(jdField_c_of_type_JavaLangString, new Object[] { this.k, Integer.valueOf(this.jdField_c_of_type_Int), this.l, Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), b(paramInt) });
-  }
+  public void a() {}
   
-  protected void a(wjk paramwjk)
-  {
-    super.a(paramwjk);
-    if ((paramwjk != null) && ((paramwjk instanceof wjl))) {
-      ((wjl)paramwjk).jdField_a_of_type_JavaLangString = (wjv.b(this.i) + "#private_share_cache");
-    }
-  }
+  public void a(M paramM) {}
 }
 
 

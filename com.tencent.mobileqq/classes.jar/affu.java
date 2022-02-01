@@ -1,16 +1,42 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class affu
+public class affu
   implements View.OnClickListener
 {
-  affu(afft paramafft) {}
+  public affu(TroopMemberListActivity paramTroopMemberListActivity, List paramList, CheckBox paramCheckBox, boolean paramBoolean, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    Object localObject = (aoep)this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+    String str;
+    if (localObject != null)
+    {
+      ((aoep)localObject).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), this.jdField_a_of_type_Boolean);
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.n;
+      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label153;
+      }
+    }
+    label153:
+    for (localObject = "0";; localObject = "1")
+    {
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, str, (String)localObject, "");
+      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.i();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidAppDialog.show();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

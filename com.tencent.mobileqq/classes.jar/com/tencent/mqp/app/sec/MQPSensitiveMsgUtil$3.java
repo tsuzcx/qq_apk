@@ -2,17 +2,17 @@ package com.tencent.mqp.app.sec;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhoa;
+import biyt;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class MQPSensitiveMsgUtil$3
   implements Runnable
 {
-  public MQPSensitiveMsgUtil$3(bhoa parambhoa, String paramString1, String paramString2) {}
+  public MQPSensitiveMsgUtil$3(biyt parambiyt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    Object localObject = "sp_confirmed_sensmsg_" + bhoa.a();
+    Object localObject = "sp_confirmed_sensmsg_" + biyt.a();
     localObject = BaseApplication.getContext().getSharedPreferences((String)localObject, 0).edit();
     ((SharedPreferences.Editor)localObject).putString(this.a, this.b);
     ((SharedPreferences.Editor)localObject).commit();

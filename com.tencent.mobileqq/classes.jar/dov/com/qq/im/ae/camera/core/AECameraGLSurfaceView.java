@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.camera.core;
 
-import amtj;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.PointF;
@@ -15,40 +15,43 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import azzu;
-import azzv;
-import babc;
-import babd;
-import babk;
-import bafx;
-import bagj;
-import bagl;
-import bbuc;
-import bljd;
-import blno;
-import blnp;
-import blnq;
-import blns;
-import blnt;
-import blnu;
-import blnv;
-import blpl;
-import blqi;
-import blrg;
-import blrx;
-import bluh;
-import blvb;
-import blwa;
-import blwc;
-import blyb;
-import bmat;
-import bmau;
-import bmax;
-import bmbc;
-import bmbg;
-import bmbx;
-import bnxr;
-import bobr;
+import androidx.annotation.MainThread;
+import anvx;
+import bbgd;
+import bbge;
+import bbhl;
+import bbhm;
+import bbhq;
+import bbht;
+import bbmm;
+import bbmy;
+import bbna;
+import bdax;
+import bmwb;
+import bnax;
+import bnay;
+import bnaz;
+import bnbb;
+import bnbe;
+import bnbf;
+import bnbg;
+import bndr;
+import bnep;
+import bnfg;
+import bnil;
+import bnke;
+import bnky;
+import bnlk;
+import bnlm;
+import bnnl;
+import bnqd;
+import bnqe;
+import bnqh;
+import bnqm;
+import bnqq;
+import bnrh;
+import bpnj;
+import bprj;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.api.standard.filter.AEFilterManager;
 import com.tencent.aekit.api.standard.filter.AEFilterManager.StickerInnerEffectFilterListener;
@@ -79,7 +82,6 @@ import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import com.tencent.ttpic.util.SensorUtil2;
 import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
-import dov.com.qq.im.ae.download.AEResUtil;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -91,7 +93,7 @@ import mqq.os.MqqHandler;
 @TargetApi(17)
 public class AECameraGLSurfaceView
   extends GLSurfaceView
-  implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer, azzu, bagj, blns
+  implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer, bbgd, bbmy, bnbb
 {
   private static final long GIF_SKIP_FRAME_INTERVAL = 83L;
   private static final int GIF_WANTED_SIZE = 640;
@@ -101,27 +103,27 @@ public class AECameraGLSurfaceView
   private static final String TAG = "AECameraGLSurfaceView";
   private static volatile boolean isSdkInited;
   private int activityOrientation;
-  private blno aeCaptureParam;
-  private blqi aeEditMaterialSelectedListener;
-  private blwa aeExpressionRecognizer;
+  private bnax aeCaptureParam;
+  private bndr aeEditMaterialSelectedListener;
+  private bnlk aeExpressionRecognizer;
   private AECameraGLSurfaceView.AEGLSurfaceListener aeGLSurfaceListener;
   protected AudioCapture audioCapture;
   private boolean beautyEnable = true;
   protected AECameraGLSurfaceView.CaptureListener captureListener;
-  public blrx debugInfoCallback;
+  public bnfg debugInfoCallback;
   private int drawFrameCount;
   protected AECameraGLSurfaceView.AEEffectListener effectListener;
   private EGLContext eglContext;
-  private bafx encodeConfig;
+  private bbmm encodeConfig;
   private boolean faceEffectEnable = true;
   private boolean filterEnable = true;
   private boolean firstFrameActionDone;
-  private bmax fpsReporter = new bmat();
+  private bnqh fpsReporter = new bnqd();
   private int gifPreviewHeight;
   private int gifPreviewWidth;
   private long gifRecordFrameIndex;
   private long gifRecordStartTimestamp;
-  private bagl hwVideoRecorder;
+  private bbna hwVideoRecorder;
   private boolean isDynamicResolutionMode;
   protected boolean isFirstFrame = true;
   private boolean isGIFMode;
@@ -131,15 +133,16 @@ public class AECameraGLSurfaceView
   private boolean lastDetected;
   private boolean logTillHaveFrame = true;
   private AECameraGLSurfaceView.AEKitInitListener mAEKitInitListener;
-  protected azzv mAudioChangeCapture;
-  private blnv mController;
-  private blnt mFilterProcess;
+  protected bbge mAudioChangeCapture;
+  private bnbg mController;
+  private bnbe mFilterProcess;
   private volatile boolean mHaveFrame;
   private final int mIdentityHashCode;
-  private boolean mIsTryLocationPermission;
+  private volatile boolean mIsTryLocationPermission;
   private VideoMaterial mLastVideoMaterial;
   private Runnable mOnFrameDrawCallback;
-  private bluh mOrientationEventListener;
+  private bnil mOrientationEventListener;
+  private volatile boolean mPendingReqLocationPermission;
   private int mRecordingStatus;
   private float[] mSensorRotationMatrix = new float[16];
   protected int mSurfaceHeight = 480;
@@ -149,10 +152,10 @@ public class AECameraGLSurfaceView
   private int notDetectedTimes;
   private boolean onFrameAvailableLogged;
   private int orientation = 90;
+  protected boolean pauseFilterChainWhenCapture = true;
   private boolean preExtractFrame;
-  protected blwc recommendTextCallback;
+  protected bnlm recommendTextCallback;
   private volatile boolean recordingEnabled;
-  private blpl sceneListener;
   protected int selectedCamera = 2;
   private volatile SensorUtil2 sensorUtil;
   private boolean sharpFaceEnable = true;
@@ -162,7 +165,7 @@ public class AECameraGLSurfaceView
   private AEVideoCaptureResult videoCaptureResult;
   private int videoHeight;
   private int videoWidth;
-  private bobr voiceRecognizer = new bobr();
+  private bprj voiceRecognizer = new bprj();
   
   public AECameraGLSurfaceView(Context paramContext)
   {
@@ -174,25 +177,25 @@ public class AECameraGLSurfaceView
   public AECameraGLSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    bmau.a().a("glSurfaceViewConstruct-begin");
+    bnqe.a().a("glSurfaceViewConstruct-begin");
     initEGL();
     this.mIdentityHashCode = System.identityHashCode(this);
-    bmau.a().a("glSurfaceViewConstruct-end");
+    bnqe.a().a("glSurfaceViewConstruct-end");
   }
   
   private void addAEInitQueue(Runnable paramRunnable)
   {
     if (isAEKitAvailable()) {
-      ((blnq)this.mFilterProcess).a(paramRunnable);
+      ((bnaz)this.mFilterProcess).a(paramRunnable);
     }
   }
   
   private void checkShowTips()
   {
-    if ((this.mFilterProcess != null) && (((blnq)this.mFilterProcess).a()))
+    if ((this.mFilterProcess != null) && (((bnaz)this.mFilterProcess).a()))
     {
-      ((blnq)this.mFilterProcess).b();
-      ((blnq)this.mFilterProcess).c();
+      ((bnaz)this.mFilterProcess).b();
+      ((bnaz)this.mFilterProcess).c();
     }
   }
   
@@ -203,16 +206,17 @@ public class AECameraGLSurfaceView
     if (this.mFilterProcess != null) {
       return;
     }
-    bmbx.b("AECameraGLSurfaceView", "createFilterProcess---BEGIN");
-    bljd.a();
+    bnrh.b("AECameraGLSurfaceView", "createFilterProcess---BEGIN");
+    bmwb.a();
     if (FeatureManager.loadBasicFeatures())
     {
-      this.mFilterProcess = new blnq(this.mIdentityHashCode);
-      bmbx.b("AECameraGLSurfaceView", "createFilterProcess---create AEFilterProcessTex");
+      this.mFilterProcess = new bnaz(this.mIdentityHashCode);
+      ((bnaz)this.mFilterProcess).a(new AECameraGLSurfaceView.5(this));
+      bnrh.b("AECameraGLSurfaceView", "createFilterProcess---create AEFilterProcessTex");
       return;
     }
-    this.mFilterProcess = new blnu();
-    bmbx.d("AECameraGLSurfaceView", "createFilterProcess---create NonAEFilterProcess");
+    this.mFilterProcess = new bnbf();
+    bnrh.d("AECameraGLSurfaceView", "createFilterProcess---create NonAEFilterProcess");
   }
   
   private void destroyFilterProcess()
@@ -226,6 +230,13 @@ public class AECameraGLSurfaceView
       }
     }
     AEFilterManagerHolder.setFilterProcess(null);
+  }
+  
+  @MainThread
+  private void doLocationPermissionReqAndUpdateWMProps()
+  {
+    bnrh.b("AECameraGLSurfaceView", "doLocationPermissionReqAndUpdateWMProps");
+    new bbhq((Activity)getContext(), new AECameraGLSurfaceView.17(this)).a();
   }
   
   private void drawToMediaCodec(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
@@ -246,32 +257,32 @@ public class AECameraGLSurfaceView
     do
     {
       return;
-      localObject = (blnq)this.mFilterProcess;
+      localObject = (bnaz)this.mFilterProcess;
       if (this.gifRecordStartTimestamp == 0L)
       {
         QLog.d("AECameraGLSurfaceView", 4, "frameToMediaCodec, gifRecordStartTimestamp == 0");
         this.gifRecordStartTimestamp = paramLong;
-        blyb.jdField_a_of_type_JavaUtilList = new ArrayList();
-        blyb.b = new ArrayList();
+        bnnl.jdField_a_of_type_JavaUtilList = new ArrayList();
+        bnnl.b = new ArrayList();
       }
-      paramInt2 = ((blnq)localObject).a(paramInt2);
+      paramInt2 = ((bnaz)localObject).a(paramInt2);
     } while ((paramLong - this.gifRecordStartTimestamp) / 1000000L <= 83L * this.gifRecordFrameIndex);
     QLog.d("AECameraGLSurfaceView", 4, new Object[] { "frameToMediaCodec, encode frame, gifRecordFrameIndex = ", Long.valueOf(this.gifRecordFrameIndex) });
     this.gifRecordFrameIndex += 1L;
-    if (((blnq)localObject).a() != null)
+    if (((bnaz)localObject).a() != null)
     {
-      localObject = (PTFaceAttr)((blnq)localObject).a().getFaceAttr();
-      blyb.jdField_a_of_type_JavaUtilList.add(((PTFaceAttr)localObject).getAllFacePoints());
-      blyb.b.add(((PTFaceAttr)localObject).getAllFaceAngles());
-      blyb.jdField_a_of_type_Double = ((PTFaceAttr)localObject).getFaceDetectScale();
+      localObject = (PTFaceAttr)((bnaz)localObject).a().getFaceAttr();
+      bnnl.jdField_a_of_type_JavaUtilList.add(((PTFaceAttr)localObject).getAllFacePoints());
+      bnnl.b.add(((PTFaceAttr)localObject).getAllFaceAngles());
+      bnnl.jdField_a_of_type_Double = ((PTFaceAttr)localObject).getFaceDetectScale();
     }
     frameToMediaCodecVideo(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, (paramLong / 1.5D));
   }
   
-  private void finishCapturePhoto(blnp paramblnp)
+  private void finishCapturePhoto(bnay parambnay)
   {
     if (this.captureListener != null) {
-      this.captureListener.onPhotoCaptured(paramblnp);
+      this.captureListener.onPhotoCaptured(parambnay);
     }
   }
   
@@ -293,32 +304,33 @@ public class AECameraGLSurfaceView
   
   private void initFilterProcess()
   {
-    bmau.a().a("AECameraGLSurfaceView", "initFilterProcess---begin");
+    bnqe.a().a("AECameraGLSurfaceView", "initFilterProcess---begin");
     if (this.mFilterProcess == null) {
       createFilterProcess();
     }
     initOrientationEventListener();
-    if ((this.mFilterProcess instanceof blnq))
+    if ((this.mFilterProcess instanceof bnaz))
     {
-      AEFilterManagerHolder.setFilterProcess((blnq)this.mFilterProcess);
+      AEFilterManagerHolder.setFilterProcess((bnaz)this.mFilterProcess);
       if (this.mAEKitInitListener != null) {
         this.mAEKitInitListener.onAEKitInited();
       }
-      ((blnq)this.mFilterProcess).b(false);
-      ((blnq)this.mFilterProcess).a(this.stickerInnerLutFilterListener);
-      ((blnq)this.mFilterProcess).a().setParam("SET_AEPROFILER_OBJ", this.fpsReporter);
+      ((bnaz)this.mFilterProcess).c(false);
+      ((bnaz)this.mFilterProcess).a(this.stickerInnerLutFilterListener);
+      ((bnaz)this.mFilterProcess).a(new AECameraGLSurfaceView.6(this));
+      ((bnaz)this.mFilterProcess).a().setParam("SET_AEPROFILER_OBJ", this.fpsReporter);
     }
     SurfaceTexture localSurfaceTexture = this.mFilterProcess.a();
     localSurfaceTexture.setOnFrameAvailableListener(this);
     if (this.aeGLSurfaceListener != null) {
       this.aeGLSurfaceListener.onPreviewSurfaceTextureCreate(localSurfaceTexture);
     }
-    bmau.a().a("AECameraGLSurfaceView", "initFilterProcess---end");
+    bnqe.a().a("AECameraGLSurfaceView", "initFilterProcess---end");
   }
   
   private void initOrientationEventListener()
   {
-    this.mOrientationEventListener = new AECameraGLSurfaceView.11(this, getContext());
+    this.mOrientationEventListener = new AECameraGLSurfaceView.13(this, getContext());
     if (this.mOrientationEventListener.canDetectOrientation()) {
       this.mOrientationEventListener.enable();
     }
@@ -328,19 +340,19 @@ public class AECameraGLSurfaceView
   {
     try
     {
-      bmbx.b("AECameraGLSurfaceView", "[initSdk] + BEGIN, isSdkInited = " + isSdkInited);
+      bnrh.b("AECameraGLSurfaceView", "[initSdk] + BEGIN, isSdkInited = " + isSdkInited);
       long l = System.currentTimeMillis();
       if (!isSdkInited)
       {
-        bmbx.b("AECameraGLSurfaceView", "[initSdk] do init");
+        bnrh.b("AECameraGLSurfaceView", "[initSdk] do init");
         isSdkInited = true;
-        bmau.a().a("glSurfaceViewStaticInit-begin");
-        if (bljd.a()) {
+        bnqe.a().a("glSurfaceViewStaticInit-begin");
+        if (bmwb.a()) {
           VideoPrefsUtil.init(BaseApplicationImpl.getContext(), ShortVideoUtils.getPtvTemplateSDKPref());
         }
-        bmau.a().a("glSurfaceViewStaticInit-end");
+        bnqe.a().a("glSurfaceViewStaticInit-end");
       }
-      bmbx.b("AECameraGLSurfaceView", "[initSdk] + END, time cost = " + (System.currentTimeMillis() - l));
+      bnrh.b("AECameraGLSurfaceView", "[initSdk] + END, time cost = " + (System.currentTimeMillis() - l));
       return;
     }
     finally {}
@@ -349,28 +361,28 @@ public class AECameraGLSurfaceView
   private void initVideoSize(int paramInt1, int paramInt2)
   {
     int i = (int)(this.mSurfaceHeight * 1.0F / this.mSurfaceWidth * this.aeCaptureParam.c());
-    if (bnxr.a().e()) {
+    if (bpnj.a().e()) {
       i = this.aeCaptureParam.b();
     }
     if (this.isDynamicResolutionMode)
     {
-      arrayOfInt = babd.a(i, paramInt1, paramInt2);
-      arrayOfInt = babd.a(arrayOfInt[0], arrayOfInt[1], this.aeCaptureParam.d(), this.aeCaptureParam.e(), 1.0F);
+      arrayOfInt = bbhm.a(i, paramInt1, paramInt2);
+      arrayOfInt = bbhm.a(arrayOfInt[0], arrayOfInt[1], this.aeCaptureParam.d(), this.aeCaptureParam.e(), 1.0F);
       this.videoWidth = arrayOfInt[0];
       this.videoHeight = arrayOfInt[1];
       return;
     }
-    int[] arrayOfInt = babd.a(paramInt1, paramInt2, this.mSurfaceWidth, this.mSurfaceHeight, this.aeCaptureParam.a());
+    int[] arrayOfInt = bbhm.a(paramInt1, paramInt2, this.mSurfaceWidth, this.mSurfaceHeight, this.aeCaptureParam.a());
     this.videoWidth = arrayOfInt[0];
     this.videoHeight = arrayOfInt[1];
-    arrayOfInt = babd.a(i, this.videoWidth, this.videoHeight);
+    arrayOfInt = bbhm.a(i, this.videoWidth, this.videoHeight);
     this.videoWidth = arrayOfInt[0];
     this.videoHeight = arrayOfInt[1];
   }
   
   private boolean isAEKitAvailable()
   {
-    return (AEResUtil.isAEBaseSoReady()) && (this.mFilterProcess != null) && ((this.mFilterProcess instanceof blnq));
+    return (bnky.a()) && (this.mFilterProcess != null) && ((this.mFilterProcess instanceof bnaz));
   }
   
   private boolean isFrontCamera()
@@ -392,7 +404,7 @@ public class AECameraGLSurfaceView
   
   private void preAction()
   {
-    bmbx.b("AECameraGLSurfaceView", "preAction");
+    bnrh.b("AECameraGLSurfaceView", "preAction");
     if (!isSdkInited) {
       initSdk();
     }
@@ -411,19 +423,19 @@ public class AECameraGLSurfaceView
   {
     if ((isRecordingGIF()) && (this.gifRecordStartTimestamp > 0L))
     {
-      Object localObject = (blnq)this.mFilterProcess;
+      Object localObject = (bnaz)this.mFilterProcess;
       if (this.aeExpressionRecognizer == null)
       {
         QLog.d("AECameraGLSurfaceView", 4, "recording gif, aeExpressionRecognizer == null, create it");
-        this.aeExpressionRecognizer = new blwa();
+        this.aeExpressionRecognizer = new bnlk();
         this.aeExpressionRecognizer.a();
       }
       long l = (SystemClock.elapsedRealtimeNanos() - this.gifRecordStartTimestamp) / 1000000L;
       int i = this.aeExpressionRecognizer.a();
       QLog.d("AECameraGLSurfaceView", 4, "recording gif, aeExpressionRecognizer.getFrameCount() == " + i);
-      if ((i < 3) && ((float)l > (i + 0.5F) * 1000.0F) && (((blnq)localObject).c()))
+      if ((i < 3) && ((float)l > (i + 0.5F) * 1000.0F) && (((bnaz)localObject).c()))
       {
-        localObject = (PTFaceAttr)((blnq)localObject).a().getFaceAttr();
+        localObject = (PTFaceAttr)((bnaz)localObject).a().getFaceAttr();
         this.aeExpressionRecognizer.a(paramInt, (List)((PTFaceAttr)localObject).getAllFacePoints().get(0), (int)(this.gifPreviewWidth * ((PTFaceAttr)localObject).getFaceDetectScale()), (int)(this.gifPreviewHeight * ((PTFaceAttr)localObject).getFaceDetectScale()));
       }
     }
@@ -436,16 +448,16 @@ public class AECameraGLSurfaceView
     }
   }
   
-  private void setTipsHandler(blnq paramblnq)
+  private void setTipsHandler(bnaz parambnaz)
   {
     if (this.effectListener != null) {
-      this.effectListener.onSetFilterProcess(paramblnq);
+      this.effectListener.onSetFilterProcess(parambnaz);
     }
   }
   
   private void showToast(String paramString)
   {
-    ThreadManager.getUIHandler().post(new AECameraGLSurfaceView.12(this, paramString));
+    ThreadManager.getUIHandler().post(new AECameraGLSurfaceView.14(this, paramString));
   }
   
   private short[] toShortArray(byte[] paramArrayOfByte)
@@ -466,44 +478,55 @@ public class AECameraGLSurfaceView
     if (!isAEKitAvailable()) {
       return;
     }
-    blnq localblnq = (blnq)this.mFilterProcess;
-    if ((localblnq.b()) && (!localblnq.c()) && (!this.lastDetected))
+    bnaz localbnaz = (bnaz)this.mFilterProcess;
+    if ((localbnaz.b()) && (!localbnaz.c()) && (!this.lastDetected))
     {
       this.notDetectedTimes += 1;
       if (this.notDetectedTimes >= 4)
       {
-        notifyDetectChange(localblnq.b(), localblnq.c());
+        notifyDetectChange(localbnaz.b(), localbnaz.c());
         this.notDetectedTimes = 0;
       }
     }
-    if ((!this.lastDetected) && (localblnq.c())) {
-      notifyDetectChange(localblnq.b(), localblnq.c());
+    if ((!this.lastDetected) && (localbnaz.c())) {
+      notifyDetectChange(localbnaz.b(), localbnaz.c());
     }
-    if (!localblnq.b()) {
-      notifyDetectChange(localblnq.b(), localblnq.c());
+    if (!localbnaz.b()) {
+      notifyDetectChange(localbnaz.b(), localbnaz.c());
     }
-    if ((this.lastDetected) && (localblnq.c())) {
-      notifyDetectChange(localblnq.b(), localblnq.c());
+    if ((this.lastDetected) && (localbnaz.c())) {
+      notifyDetectChange(localbnaz.b(), localbnaz.c());
     }
-    this.lastDetected = localblnq.c();
+    this.lastDetected = localbnaz.c();
+  }
+  
+  public boolean captureByCameraProxy()
+  {
+    if (!isAEKitAvailable()) {
+      return true;
+    }
+    if (!((bnaz)this.mFilterProcess).e()) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
   
   public void capturePhotoByAEKit(int paramInt)
   {
-    ThreadManager.getUIHandler().postDelayed(new AECameraGLSurfaceView.16(this), paramInt);
+    ThreadManager.getUIHandler().postDelayed(new AECameraGLSurfaceView.19(this), paramInt);
   }
   
   protected void finishCaptureVideo(AEVideoCaptureResult paramAEVideoCaptureResult)
   {
     int i = 1;
     if (this.captureListener != null) {
-      ThreadManager.getUIHandler().post(new AECameraGLSurfaceView.5(this, paramAEVideoCaptureResult));
+      ThreadManager.getUIHandler().post(new AECameraGLSurfaceView.7(this, paramAEVideoCaptureResult));
     }
-    babk.c();
-    if (bbuc.a().a == 1) {}
+    bbht.c();
+    if (bdax.a().a == 1) {}
     for (;;)
     {
-      babc.g(i);
+      bbhl.g(i);
       return;
       i = 2;
     }
@@ -580,28 +603,28 @@ public class AECameraGLSurfaceView
   
   public boolean hasTapEffect()
   {
-    return ((this.mFilterProcess instanceof blnq)) && (((blnq)this.mFilterProcess).a() != null) && (((blnq)this.mFilterProcess).a().getmPTSticker() != null) && (((blnq)this.mFilterProcess).a().getmPTSticker().needTouchTriggerEvent());
+    return ((this.mFilterProcess instanceof bnaz)) && (((bnaz)this.mFilterProcess).a() != null) && (((bnaz)this.mFilterProcess).a().getmPTSticker() != null) && (((bnaz)this.mFilterProcess).a().getmPTSticker().needTouchTriggerEvent());
   }
   
-  public void init(blno paramblno, AudioCapture paramAudioCapture)
+  public void init(bnax parambnax, AudioCapture paramAudioCapture)
   {
     if (this.aeCaptureParam != null) {
       throw new RuntimeException("init is already called");
     }
-    if (paramblno == null) {
+    if (parambnax == null) {
       throw new IllegalArgumentException("param captureParam is null");
     }
-    this.aeCaptureParam = paramblno;
+    this.aeCaptureParam = parambnax;
     if (QLog.isColorLevel()) {
-      QLog.d("AECameraGLSurfaceView", 2, "setCaptureParam : " + paramblno);
+      QLog.d("AECameraGLSurfaceView", 2, "setCaptureParam : " + parambnax);
     }
-    this.hwVideoRecorder = new bagl();
+    this.hwVideoRecorder = new bbna();
     this.audioCapture = paramAudioCapture;
-    this.mAudioChangeCapture = new azzv(this.aeCaptureParam.a, CodecParam.mAudioSampleRate, this);
+    this.mAudioChangeCapture = new bbge(this.aeCaptureParam.a, CodecParam.mAudioSampleRate, this);
     if (this.isNeedVoiceEncode)
     {
-      paramblno = this.aeCaptureParam.a + File.separator + System.currentTimeMillis() + ".aac";
-      this.audioCapture.a(true, paramblno);
+      parambnax = this.aeCaptureParam.a + File.separator + System.currentTimeMillis() + ".aac";
+      this.audioCapture.a(true, parambnax);
     }
     this.fpsReporter.f();
     this.isInit = true;
@@ -610,17 +633,6 @@ public class AECameraGLSurfaceView
   public boolean isBeautyEnable()
   {
     return this.beautyEnable;
-  }
-  
-  public boolean isEffectAvailable()
-  {
-    if (!isAEKitAvailable()) {
-      return true;
-    }
-    if (!((blnq)this.mFilterProcess).e()) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
   }
   
   public boolean isFaceEffectEnable()
@@ -645,16 +657,16 @@ public class AECameraGLSurfaceView
   
   protected void onAttachedToWindow()
   {
-    bmbx.b("AECameraGLSurfaceView", "[onAttachedToWindow]" + toString());
+    bnrh.b("AECameraGLSurfaceView", "[onAttachedToWindow]" + toString());
     super.onAttachedToWindow();
-    bmbx.b("AECameraGLSurfaceView", "[onAttachedToWindow] end");
+    bnrh.b("AECameraGLSurfaceView", "[onAttachedToWindow] end");
   }
   
   public void onAudioCaptured(String paramString)
   {
     if ((!this.isNeedVoiceEncode) && (!this.mAudioChangeCapture.a()))
     {
-      bmbx.d("AECameraGLSurfaceView", "onAudioCaptured---filePath=" + paramString);
+      bnrh.d("AECameraGLSurfaceView", "onAudioCaptured---filePath=" + paramString);
       this.videoCaptureResult.audioDataFilePath = paramString;
       if (this.videoCaptureResult.videoMp4FilePath != null) {
         finishCaptureVideo(this.videoCaptureResult);
@@ -666,7 +678,7 @@ public class AECameraGLSurfaceView
   {
     if (this.mAudioChangeCapture.a())
     {
-      bmbx.d("AECameraGLSurfaceView", "onAudioChangeCaptured---filePath=" + paramString);
+      bnrh.d("AECameraGLSurfaceView", "onAudioChangeCaptured---filePath=" + paramString);
       this.videoCaptureResult.audioDataFilePath = paramString;
       if (this.videoCaptureResult.videoMp4FilePath != null) {
         finishCaptureVideo(this.videoCaptureResult);
@@ -678,7 +690,7 @@ public class AECameraGLSurfaceView
   {
     if ((this.isNeedVoiceEncode) && (!this.mAudioChangeCapture.a()))
     {
-      bmbx.d("AECameraGLSurfaceView", "onAudioError---errorCode=" + paramInt);
+      bnrh.d("AECameraGLSurfaceView", "onAudioError---errorCode=" + paramInt);
       this.videoCaptureResult.audioDataFilePath = "";
       if (this.videoCaptureResult.videoMp4FilePath != null) {
         finishCaptureVideo(this.videoCaptureResult);
@@ -704,7 +716,7 @@ public class AECameraGLSurfaceView
   public void onAudioInit()
   {
     if (this.audioCapture != null) {
-      queueEvent(new AECameraGLSurfaceView.6(this));
+      queueEvent(new AECameraGLSurfaceView.8(this));
     }
   }
   
@@ -713,7 +725,7 @@ public class AECameraGLSurfaceView
   public void onCameraPreviewSizeChanged(int paramInt1, int paramInt2)
   {
     int k = 720;
-    bmbx.b("AECameraGLSurfaceView", "onCameraPreviewSizeChanged---cameraWidth=" + paramInt1 + ", cameraHeight=" + paramInt2 + ", mSurfaceWidth=" + this.mSurfaceWidth + ", mSurfaceHeight=" + this.mSurfaceHeight);
+    bnrh.b("AECameraGLSurfaceView", "onCameraPreviewSizeChanged---cameraWidth=" + paramInt1 + ", cameraHeight=" + paramInt2 + ", mSurfaceWidth=" + this.mSurfaceWidth + ", mSurfaceHeight=" + this.mSurfaceHeight);
     double d = this.mSurfaceWidth / this.mSurfaceHeight;
     this.videoWidth = paramInt1;
     this.videoHeight = ((int)(this.videoWidth / d));
@@ -721,8 +733,8 @@ public class AECameraGLSurfaceView
     int j;
     if (this.isGIFMode)
     {
-      int[] arrayOfInt = babd.a(paramInt1, paramInt2, this.mSurfaceWidth, this.mSurfaceHeight, 1.0F);
-      arrayOfInt = babd.a(640, arrayOfInt[0], arrayOfInt[1]);
+      int[] arrayOfInt = bbhm.a(paramInt1, paramInt2, this.mSurfaceWidth, this.mSurfaceHeight, 1.0F);
+      arrayOfInt = bbhm.a(640, arrayOfInt[0], arrayOfInt[1]);
       i = arrayOfInt[0];
       j = arrayOfInt[1];
       this.gifPreviewWidth = i;
@@ -766,36 +778,37 @@ public class AECameraGLSurfaceView
   {
     this.selectedCamera = paramInt;
     if (this.mFilterProcess != null) {
-      this.mFilterProcess.a(false);
+      this.mFilterProcess.b(false);
     }
     this.fpsReporter.a(isFrontCamera());
   }
   
   public void onDestroy()
   {
-    bmbx.d("AECameraGLSurfaceView", "[onDestroy]");
+    bnrh.d("AECameraGLSurfaceView", "[onDestroy]");
     if (QLog.isDevelopLevel()) {
-      bmbx.a("AECameraGLSurfaceView", "### onDestroy, hashCode=" + this.mIdentityHashCode + " ###");
+      bnrh.a("AECameraGLSurfaceView", "### onDestroy, hashCode=" + this.mIdentityHashCode + " ###");
     }
+    this.mIsTryLocationPermission = false;
     if (this.voiceRecognizer != null) {
       this.voiceRecognizer.a();
     }
     if (this.mFilterProcess != null) {
-      this.mFilterProcess.a(true);
+      this.mFilterProcess.b(true);
     }
     this.fpsReporter.g();
     if (this.hwVideoRecorder != null) {
       this.hwVideoRecorder.c();
     }
     queueEvent(new AECameraGLSurfaceView.4(this));
-    bmbx.d("AECameraGLSurfaceView", "[onDestroy] end");
+    bnrh.d("AECameraGLSurfaceView", "[onDestroy] end");
   }
   
   protected void onDetachedFromWindow()
   {
-    bmbx.d("AECameraGLSurfaceView", "[onDetachedFromWindow]" + toString());
+    bnrh.d("AECameraGLSurfaceView", "[onDetachedFromWindow]" + toString());
     super.onDetachedFromWindow();
-    bmbx.d("AECameraGLSurfaceView", "[onDetachedFromWindow] end");
+    bnrh.d("AECameraGLSurfaceView", "[onDetachedFromWindow] end");
   }
   
   public void onDrawFrame(GL10 paramGL10)
@@ -811,27 +824,27 @@ public class AECameraGLSurfaceView
     label45:
     for (paramGL10 = "onDrawFrameReal-begin";; paramGL10 = "onDrawFrameFake-begin" + this.drawFrameCount)
     {
-      bmau.a().a(paramGL10);
+      bnqe.a().a(paramGL10);
       if (this.mFilterProcess != null) {
         break;
       }
       return;
     }
     if (this.logTillHaveFrame) {
-      bmau.a().a("FilterProcessInitFilters-begin");
+      bnqe.a().a("FilterProcessInitFilters-begin");
     }
     this.mFilterProcess.g();
     if (this.logTillHaveFrame) {
-      bmau.a().a("FilterProcessInitFilters-end");
+      bnqe.a().a("FilterProcessInitFilters-end");
     }
     paramGL10 = this.mFilterProcess.a(this.mSurfaceWidth, this.mSurfaceHeight, this.isGIFMode);
     if (isAEKitAvailable())
     {
-      blnq localblnq = (blnq)this.mFilterProcess;
+      bnaz localbnaz = (bnaz)this.mFilterProcess;
       updateTipsView();
       checkShowTips();
-      if (this.sceneListener != null) {
-        this.sceneListener.a(this.selectedCamera, localblnq.a());
+      if (this.aeGLSurfaceListener != null) {
+        this.aeGLSurfaceListener.onDrawFrameWithEffect(this.selectedCamera, localbnaz.a());
       }
       recordGifFrames(paramGL10[1]);
     }
@@ -840,16 +853,16 @@ public class AECameraGLSurfaceView
     }
     drawToMediaCodec(paramGL10[1], null, null);
     if (this.mOnFrameDrawCallback != null) {
-      queueEvent(new AECameraGLSurfaceView.10(this));
+      queueEvent(new AECameraGLSurfaceView.12(this));
     }
     this.fpsReporter.d();
     if (!this.firstFrameActionDone)
     {
       this.firstFrameActionDone = true;
-      bmbg.a().f();
-      bmbc.a().ab();
-      if (blrg.a()) {
-        blrg.a(this.debugInfoCallback, 5000L);
+      bnqq.a().f();
+      bnqm.a().ab();
+      if (bnep.a()) {
+        bnep.a(this.debugInfoCallback, 5000L);
       }
       if (this.aeGLSurfaceListener != null) {
         this.aeGLSurfaceListener.onFirstFrameDone();
@@ -863,7 +876,7 @@ public class AECameraGLSurfaceView
     label381:
     for (paramGL10 = "onDrawFrameReal-end";; paramGL10 = "onDrawFrameFake-end" + this.drawFrameCount)
     {
-      bmau.a().a(paramGL10);
+      bnqe.a().a(paramGL10);
       if (bool) {
         this.logTillHaveFrame = false;
       }
@@ -875,7 +888,7 @@ public class AECameraGLSurfaceView
         this.captureListener.reportFirstFrameShown();
       }
       this.fpsReporter.c();
-      bmau.a().c();
+      bnqe.a().c();
       return;
     }
   }
@@ -884,7 +897,7 @@ public class AECameraGLSurfaceView
   {
     if ((this.isNeedVoiceEncode) && (!this.mAudioChangeCapture.a()))
     {
-      bmbx.d("AECameraGLSurfaceView", "onEncodeAudioCaptured---filePath=" + paramString);
+      bnrh.d("AECameraGLSurfaceView", "onEncodeAudioCaptured---filePath=" + paramString);
       this.videoCaptureResult.audioDataFilePath = paramString;
       if (this.videoCaptureResult.videoMp4FilePath != null) {
         finishCaptureVideo(this.videoCaptureResult);
@@ -896,7 +909,7 @@ public class AECameraGLSurfaceView
   {
     this.videoCaptureResult.errorCode = paramInt;
     if (this.captureListener != null) {
-      ThreadManager.getUIHandler().post(new AECameraGLSurfaceView.9(this));
+      ThreadManager.getUIHandler().post(new AECameraGLSurfaceView.11(this));
     }
   }
   
@@ -948,7 +961,7 @@ public class AECameraGLSurfaceView
     for (;;)
     {
       if (this.captureListener != null) {
-        ThreadManager.getUIHandler().post(new AECameraGLSurfaceView.8(this));
+        ThreadManager.getUIHandler().post(new AECameraGLSurfaceView.10(this));
       }
       return;
       label62:
@@ -962,7 +975,7 @@ public class AECameraGLSurfaceView
     if (!this.onFrameAvailableLogged)
     {
       this.onFrameAvailableLogged = true;
-      bmau.a().a("onFrameAvailable");
+      bnqe.a().a("onFrameAvailable");
     }
     if (this.sensorUtil != null) {
       this.sensorUtil.getRotation(this.mSensorRotationMatrix);
@@ -990,7 +1003,7 @@ public class AECameraGLSurfaceView
   
   public void onPause()
   {
-    bmbx.d("AECameraGLSurfaceView", "[onPause] hashCode=" + this.mIdentityHashCode + " ###");
+    bnrh.d("AECameraGLSurfaceView", "[onPause] hashCode=" + this.mIdentityHashCode + " ###");
     queueEvent(new AECameraGLSurfaceView.3(this));
     this.isPaused = true;
     if (this.mOrientationEventListener != null) {
@@ -1000,12 +1013,12 @@ public class AECameraGLSurfaceView
       this.sensorUtil.stop();
     }
     super.onPause();
-    bmbx.d("AECameraGLSurfaceView", "[onPause] end");
+    bnrh.d("AECameraGLSurfaceView", "[onPause] end");
   }
   
   public void onPhotoCaptured(Bitmap paramBitmap)
   {
-    ThreadManager.excute(new AECameraGLSurfaceView.7(this, paramBitmap), 64, null, false);
+    ThreadManager.excute(new AECameraGLSurfaceView.9(this, paramBitmap), 64, null, false);
   }
   
   public void onResume()
@@ -1016,11 +1029,17 @@ public class AECameraGLSurfaceView
       this.sensorUtil.start();
     }
     if (QLog.isDevelopLevel()) {
-      bmbx.a("AECameraGLSurfaceView", "### onResume, hashCode=" + this.mIdentityHashCode + " ###");
+      bnrh.a("AECameraGLSurfaceView", "### onResume, hashCode=" + this.mIdentityHashCode + " ###");
     }
     this.recordingEnabled = false;
     if ((this.mOrientationEventListener != null) && (this.mOrientationEventListener.canDetectOrientation())) {
       this.mOrientationEventListener.enable();
+    }
+    if (this.mPendingReqLocationPermission)
+    {
+      this.mPendingReqLocationPermission = false;
+      this.mIsTryLocationPermission = true;
+      doLocationPermissionReqAndUpdateWMProps();
     }
   }
   
@@ -1035,8 +1054,8 @@ public class AECameraGLSurfaceView
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    bmbx.b("AECameraGLSurfaceView", "[onSurfaceChanged] + BEGIN, width = " + paramInt1 + ", height = " + paramInt2);
-    bmau.a().a("onSurfaceChanged-begin");
+    bnrh.b("AECameraGLSurfaceView", "[onSurfaceChanged] + BEGIN, width = " + paramInt1 + ", height = " + paramInt2);
+    bnqe.a().a("onSurfaceChanged-begin");
     this.mSurfaceWidth = paramInt1;
     this.mSurfaceHeight = paramInt2;
     if (this.mFilterProcess != null) {
@@ -1045,22 +1064,17 @@ public class AECameraGLSurfaceView
     if (this.smoothLevel != 0) {
       setBeautyLevel(this.smoothLevel);
     }
-    bmau.a().a("onSurfaceChanged-end");
-    bmbx.b("AECameraGLSurfaceView", "[onSurfaceChanged] + END, width = " + paramInt1 + ", height = " + paramInt2);
+    bnqe.a().a("onSurfaceChanged-end");
+    bnrh.b("AECameraGLSurfaceView", "[onSurfaceChanged] + END, width = " + paramInt1 + ", height = " + paramInt2);
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    bmbx.b("AECameraGLSurfaceView", "[onSurfaceCreated] + BEGIN");
-    bmau.a().a("onSurfaceCreated-begin");
+    bnrh.b("AECameraGLSurfaceView", "[onSurfaceCreated] + BEGIN");
+    bnqe.a().a("onSurfaceCreated-begin");
     initFilterProcess();
-    bmau.a().a("onSurfaceCreated-end");
-    bmbx.b("AECameraGLSurfaceView", "[onSurfaceCreated] + END");
-  }
-  
-  protected void onSurfaceDestroy()
-  {
-    this.mIsTryLocationPermission = false;
+    bnqe.a().a("onSurfaceCreated-end");
+    bnrh.b("AECameraGLSurfaceView", "[onSurfaceCreated] + END");
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -1071,8 +1085,8 @@ public class AECameraGLSurfaceView
     if ((!isAEKitAvailable()) || (this.mController == null)) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    blnq localblnq = (blnq)this.mFilterProcess;
-    if ((paramMotionEvent != null) && (localblnq.d()) && (!this.mController.c()))
+    bnaz localbnaz = (bnaz)this.mFilterProcess;
+    if ((paramMotionEvent != null) && (localbnaz.d()) && (!this.mController.c()))
     {
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
@@ -1085,13 +1099,13 @@ public class AECameraGLSurfaceView
         return true;
         this.mTouchStartPoint.x = f1;
         this.mTouchStartPoint.y = f2;
-        queueEvent(new AECameraGLSurfaceView.19(this, localblnq, f1, f2, i));
+        queueEvent(new AECameraGLSurfaceView.22(this, localbnaz, f1, f2, i));
         continue;
         if (getDist(this.mTouchStartPoint.x, this.mTouchStartPoint.y, f1, f2) > i * 0.05F)
         {
-          queueEvent(new AECameraGLSurfaceView.20(this, localblnq, f1, f2, i));
+          queueEvent(new AECameraGLSurfaceView.23(this, localbnaz, f1, f2, i));
           continue;
-          queueEvent(new AECameraGLSurfaceView.21(this, localblnq, f1, f2, i));
+          queueEvent(new AECameraGLSurfaceView.24(this, localbnaz, f1, f2, i));
         }
       }
     }
@@ -1104,12 +1118,12 @@ public class AECameraGLSurfaceView
     while (this.mFilterProcess == null) {
       return;
     }
-    queueEvent(new AECameraGLSurfaceView.15(this));
+    queueEvent(new AECameraGLSurfaceView.18(this));
   }
   
-  public void setAECaptureController(blnv paramblnv)
+  public void setAECaptureController(bnbg parambnbg)
   {
-    this.mController = paramblnv;
+    this.mController = parambnbg;
   }
   
   public void setAEKitInitListener(AECameraGLSurfaceView.AEKitInitListener paramAEKitInitListener)
@@ -1117,9 +1131,9 @@ public class AECameraGLSurfaceView
     this.mAEKitInitListener = paramAEKitInitListener;
   }
   
-  public void setAeEditMaterialSelectedListener(blqi paramblqi)
+  public void setAeEditMaterialSelectedListener(bndr parambndr)
   {
-    this.aeEditMaterialSelectedListener = paramblqi;
+    this.aeEditMaterialSelectedListener = parambndr;
   }
   
   public void setAeGLSurfaceListener(AECameraGLSurfaceView.AEGLSurfaceListener paramAEGLSurfaceListener)
@@ -1136,11 +1150,11 @@ public class AECameraGLSurfaceView
   {
     if ((!isAEKitAvailable()) || (!isBeautyEnable()))
     {
-      bmbx.b("AECameraGLSurfaceView", "[setBeautyLevel] level = " + paramInt + ", isAEKitAvailable is false");
+      bnrh.b("AECameraGLSurfaceView", "[setBeautyLevel] level = " + paramInt + ", isAEKitAvailable is false");
       return;
     }
     this.smoothLevel = paramInt;
-    queueEvent(new AECameraGLSurfaceView.17(this, paramInt));
+    queueEvent(new AECameraGLSurfaceView.20(this, paramInt));
   }
   
   public void setCaptureListener(AECameraGLSurfaceView.CaptureListener paramCaptureListener)
@@ -1173,7 +1187,7 @@ public class AECameraGLSurfaceView
   public void setFilter(FilterCategoryItem paramFilterCategoryItem)
   {
     if ((!isAEKitAvailable()) || (!isFilterEnable())) {}
-    blnq localblnq;
+    bnaz localbnaz;
     do
     {
       Object localObject;
@@ -1184,7 +1198,7 @@ public class AECameraGLSurfaceView
           do
           {
             return;
-            localblnq = (blnq)this.mFilterProcess;
+            localbnaz = (bnaz)this.mFilterProcess;
           } while (paramFilterCategoryItem == null);
           localObject = paramFilterCategoryItem.a();
         } while (localObject == null);
@@ -1197,7 +1211,7 @@ public class AECameraGLSurfaceView
       } while (localObject == null);
       paramFilterCategoryItem = paramFilterCategoryItem + ((QQPtColorFilterInfo)localObject).getColorPng();
     } while (!new File(paramFilterCategoryItem).exists());
-    localblnq.a(paramFilterCategoryItem);
+    localbnaz.a(paramFilterCategoryItem);
   }
   
   public void setFilterEnable(boolean paramBoolean)
@@ -1218,17 +1232,26 @@ public class AECameraGLSurfaceView
   
   public void setMaterial(String paramString)
   {
-    ThreadManager.excute(new AECameraGLSurfaceView.14(this, new AECameraGLSurfaceView.13(this, paramString)), 64, null, true);
+    bnrh.b("AECameraGLSurfaceView", "[setMaterial] in set materialPath:" + paramString);
+    ThreadManager.excute(new AECameraGLSurfaceView.16(this, new AECameraGLSurfaceView.15(this, paramString)), 64, null, true);
   }
   
-  public void setMaterialMetaData(blvb paramblvb)
+  public void setMaterialMetaData(bnke parambnke)
   {
-    if ((paramblvb == null) || (paramblvb.equals(blvb.a)))
+    if ((parambnke == null) || (parambnke.equals(bnke.a)))
     {
       setMaterial(null);
       return;
     }
-    setMaterial(paramblvb.a());
+    setMaterial(parambnke.a());
+  }
+  
+  public void setPauseFilterChainWhenCapture(boolean paramBoolean)
+  {
+    this.pauseFilterChainWhenCapture = paramBoolean;
+    if ((this.mFilterProcess != null) && ((this.mFilterProcess instanceof bnaz))) {
+      ((bnaz)this.mFilterProcess).a(paramBoolean);
+    }
   }
   
   public void setPreExtractFrame(boolean paramBoolean)
@@ -1236,14 +1259,9 @@ public class AECameraGLSurfaceView
     this.preExtractFrame = paramBoolean;
   }
   
-  public void setRecommendTextCallback(blwc paramblwc)
+  public void setRecommendTextCallback(bnlm parambnlm)
   {
-    this.recommendTextCallback = paramblwc;
-  }
-  
-  public void setSceneListener(blpl paramblpl)
-  {
-    this.sceneListener = paramblpl;
+    this.recommendTextCallback = parambnlm;
   }
   
   public void setSharpFaceEnable(boolean paramBoolean)
@@ -1256,14 +1274,14 @@ public class AECameraGLSurfaceView
     if ((!isAEKitAvailable()) || (!isSharpFaceEnable())) {
       return;
     }
-    queueEvent(new AECameraGLSurfaceView.18(this, paramInt));
+    queueEvent(new AECameraGLSurfaceView.21(this, paramInt));
   }
   
   public void setStickerInnerLutFilterListener(AEFilterManager.StickerInnerEffectFilterListener paramStickerInnerEffectFilterListener)
   {
     this.stickerInnerLutFilterListener = paramStickerInnerEffectFilterListener;
-    if ((this.mFilterProcess != null) && ((this.mFilterProcess instanceof blnq))) {
-      ((blnq)this.mFilterProcess).a(paramStickerInnerEffectFilterListener);
+    if ((this.mFilterProcess != null) && ((this.mFilterProcess instanceof bnaz))) {
+      ((bnaz)this.mFilterProcess).a(paramStickerInnerEffectFilterListener);
     }
   }
   
@@ -1279,13 +1297,13 @@ public class AECameraGLSurfaceView
   
   public void startCaptureVideo()
   {
-    bmbx.b("AECameraGLSurfaceView", "startCaptureVideo---recordingEnabled=" + this.recordingEnabled);
+    bnrh.b("AECameraGLSurfaceView", "startCaptureVideo---recordingEnabled=" + this.recordingEnabled);
     this.fpsReporter.e();
     String str = this.aeCaptureParam.a + File.separator + System.currentTimeMillis() + ".mp4";
     if ((this.useVideoOrientation) && (!this.isGIFMode)) {}
-    for (int i = babd.b(this.orientation);; i = 0)
+    for (int i = bbhm.b(this.orientation);; i = 0)
     {
-      this.encodeConfig = new bafx(str, this.videoWidth, this.videoHeight, this.aeCaptureParam.a(), this.aeCaptureParam.f(), false, i);
+      this.encodeConfig = new bbmm(str, this.videoWidth, this.videoHeight, this.aeCaptureParam.a(), this.aeCaptureParam.f(), false, i);
       this.encodeConfig.j = this.aeCaptureParam.h();
       this.encodeConfig.k = this.aeCaptureParam.i();
       this.videoCaptureResult = new AEVideoCaptureResult();
@@ -1293,14 +1311,14 @@ public class AECameraGLSurfaceView
       this.videoCaptureResult.orientation = this.orientation;
       this.videoCaptureResult.type = 0;
       this.recordingEnabled = true;
-      babd.a(false, false);
+      bbhm.a(false, false);
       return;
     }
   }
   
   public void stopCaptureVideo()
   {
-    bmbx.b("AECameraGLSurfaceView", "stopCaptureVideo---recordingEnabled=" + this.recordingEnabled + ", recordingStatus=" + this.mRecordingStatus + ", isPaused=" + this.isPaused);
+    bnrh.b("AECameraGLSurfaceView", "stopCaptureVideo---recordingEnabled=" + this.recordingEnabled + ", recordingStatus=" + this.mRecordingStatus + ", isPaused=" + this.isPaused);
     if (this.recordingEnabled)
     {
       this.recordingEnabled = false;
@@ -1321,12 +1339,12 @@ public class AECameraGLSurfaceView
   public void switchSegment(boolean paramBoolean)
   {
     if ((!PTHumanSegmenter.HUMAN_SEGMENT.isFunctionReady()) && (paramBoolean)) {
-      QQToast.a(BaseApplicationImpl.getContext(), amtj.a(2131689790), 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), anvx.a(2131689799), 0).a();
     }
     while (!isAEKitAvailable()) {
       return;
     }
-    ((blnq)this.mFilterProcess).b(paramBoolean);
+    ((bnaz)this.mFilterProcess).c(paramBoolean);
   }
 }
 

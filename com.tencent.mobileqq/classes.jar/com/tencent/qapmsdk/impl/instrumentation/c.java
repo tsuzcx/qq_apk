@@ -1,772 +1,438 @@
 package com.tencent.qapmsdk.impl.instrumentation;
 
-import android.support.annotation.NonNull;
 import com.tencent.qapmsdk.common.logger.Logger;
-import com.tencent.qapmsdk.impl.instrumentation.b.a;
+import com.tencent.qapmsdk.common.network.NetworkWatcher;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.security.Permission;
-import java.util.List;
+import java.net.ConnectException;
+import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
+import java.net.URI;
+import java.net.UnknownHostException;
 import java.util.Map;
+import java.util.TreeMap;
+import javax.net.ssl.SSLException;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpEntityEnclosingRequest;
+import org.apache.http.HttpHost;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
+import org.apache.http.RequestLine;
+import org.apache.http.StatusLine;
+import org.apache.http.auth.AuthenticationException;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpResponseException;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpHead;
+import org.apache.http.client.methods.HttpOptions;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.methods.HttpTrace;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.http.entity.HttpEntityWrapper;
 
 public class c
-  extends HttpURLConnection
 {
-  a a;
-  private HttpURLConnection b;
-  private g c;
-  
-  public c(@NonNull HttpURLConnection paramHttpURLConnection)
+  public static Map<String, Object> a(HttpResponse paramHttpResponse)
   {
-    super(paramHttpURLConnection.getURL());
-    this.b = paramHttpURLConnection;
-    b();
-    if (com.tencent.qapmsdk.impl.g.b.c())
+    TreeMap localTreeMap = new TreeMap();
+    if (paramHttpResponse != null)
     {
-      b();
-      this.c.b(0);
-    }
-  }
-  
-  private void a()
-  {
-    if (!b().f()) {
-      h.c(b(), this.b);
-    }
-  }
-  
-  /* Error */
-  private void a(g paramg)
-  {
-    // Byte code:
-    //   0: invokestatic 30	com/tencent/qapmsdk/impl/g/b:c	()Z
-    //   3: istore_2
-    //   4: iload_2
-    //   5: ifne +4 -> 9
-    //   8: return
-    //   9: aload_1
-    //   10: aload_0
-    //   11: getfield 22	com/tencent/qapmsdk/impl/instrumentation/c:b	Ljava/net/HttpURLConnection;
-    //   14: invokevirtual 63	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
-    //   17: invokestatic 68	com/tencent/qapmsdk/impl/g/a:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   20: invokevirtual 72	com/tencent/qapmsdk/impl/instrumentation/g:g	(Ljava/lang/String;)V
-    //   23: aload_1
-    //   24: invokevirtual 76	com/tencent/qapmsdk/impl/instrumentation/g:j	()Lcom/tencent/qapmsdk/impl/a/a/a;
-    //   27: astore 4
-    //   29: aload 4
-    //   31: ifnull -23 -> 8
-    //   34: aload_1
-    //   35: invokevirtual 79	com/tencent/qapmsdk/impl/instrumentation/g:h	()Z
-    //   38: ifeq +254 -> 292
-    //   41: new 81	java/lang/StringBuilder
-    //   44: dup
-    //   45: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   48: astore_3
-    //   49: aload_0
-    //   50: invokevirtual 87	com/tencent/qapmsdk/impl/instrumentation/c:getErrorStream	()Ljava/io/InputStream;
-    //   53: astore 5
-    //   55: aload 5
-    //   57: instanceof 89
-    //   60: ifeq +16 -> 76
-    //   63: aload_3
-    //   64: aload 5
-    //   66: checkcast 89	com/tencent/qapmsdk/impl/instrumentation/b/a
-    //   69: invokevirtual 91	com/tencent/qapmsdk/impl/instrumentation/b/a:b	()Ljava/lang/String;
-    //   72: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: pop
-    //   76: new 97	java/util/TreeMap
-    //   79: dup
-    //   80: invokespecial 98	java/util/TreeMap:<init>	()V
-    //   83: astore 5
-    //   85: aload_0
-    //   86: getfield 22	com/tencent/qapmsdk/impl/instrumentation/c:b	Ljava/net/HttpURLConnection;
-    //   89: invokevirtual 102	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
-    //   92: ifnull +98 -> 190
-    //   95: aload_0
-    //   96: getfield 22	com/tencent/qapmsdk/impl/instrumentation/c:b	Ljava/net/HttpURLConnection;
-    //   99: invokevirtual 102	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
-    //   102: invokeinterface 108 1 0
-    //   107: ifle +83 -> 190
-    //   110: aload_0
-    //   111: getfield 22	com/tencent/qapmsdk/impl/instrumentation/c:b	Ljava/net/HttpURLConnection;
-    //   114: invokevirtual 102	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
-    //   117: astore_3
-    //   118: aload_3
-    //   119: invokeinterface 112 1 0
-    //   124: invokeinterface 118 1 0
-    //   129: astore 6
-    //   131: aload 6
-    //   133: invokeinterface 123 1 0
-    //   138: ifeq +52 -> 190
-    //   141: aload 6
-    //   143: invokeinterface 127 1 0
-    //   148: checkcast 129	java/lang/String
-    //   151: astore 7
-    //   153: aload 7
-    //   155: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   158: ifne -27 -> 131
-    //   161: aload 5
-    //   163: aload 7
-    //   165: aload_3
-    //   166: aload 7
-    //   168: invokeinterface 139 2 0
-    //   173: checkcast 141	java/util/List
-    //   176: iconst_0
-    //   177: invokeinterface 144 2 0
-    //   182: invokevirtual 148	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   185: pop
-    //   186: goto -55 -> 131
-    //   189: astore_3
-    //   190: ldc 150
-    //   192: astore_3
-    //   193: aload_1
-    //   194: invokevirtual 153	com/tencent/qapmsdk/impl/instrumentation/g:k	()Ljava/lang/String;
-    //   197: ifnull +8 -> 205
-    //   200: aload_1
-    //   201: invokevirtual 153	com/tencent/qapmsdk/impl/instrumentation/g:k	()Ljava/lang/String;
-    //   204: astore_3
-    //   205: getstatic 159	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   208: iconst_3
-    //   209: anewarray 129	java/lang/String
-    //   212: dup
-    //   213: iconst_0
-    //   214: ldc 161
-    //   216: aastore
-    //   217: dup
-    //   218: iconst_1
-    //   219: ldc 163
-    //   221: aastore
-    //   222: dup
-    //   223: iconst_2
-    //   224: aload_3
-    //   225: aastore
-    //   226: invokevirtual 167	com/tencent/qapmsdk/common/logger/Logger:d	([Ljava/lang/String;)V
-    //   229: aload 4
-    //   231: aload 5
-    //   233: aload_3
-    //   234: invokestatic 172	com/tencent/qapmsdk/impl/d/a:a	(Lcom/tencent/qapmsdk/impl/a/a/a;Ljava/util/TreeMap;Ljava/lang/String;)V
-    //   237: return
-    //   238: astore_1
-    //   239: getstatic 159	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   242: ldc 161
-    //   244: ldc 174
-    //   246: aload_1
-    //   247: invokevirtual 178	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   250: return
-    //   251: astore_3
-    //   252: getstatic 159	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   255: ldc 161
-    //   257: ldc 180
-    //   259: aload_3
-    //   260: invokevirtual 178	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   263: goto -240 -> 23
-    //   266: astore_3
-    //   267: getstatic 159	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   270: iconst_2
-    //   271: anewarray 129	java/lang/String
-    //   274: dup
-    //   275: iconst_0
-    //   276: ldc 161
-    //   278: aastore
-    //   279: dup
-    //   280: iconst_1
-    //   281: aload_3
-    //   282: invokevirtual 183	java/lang/Exception:toString	()Ljava/lang/String;
-    //   285: aastore
-    //   286: invokevirtual 186	com/tencent/qapmsdk/common/logger/Logger:e	([Ljava/lang/String;)V
-    //   289: goto -213 -> 76
-    //   292: aload 4
-    //   294: invokestatic 189	com/tencent/qapmsdk/impl/d/a:a	(Lcom/tencent/qapmsdk/impl/a/a/a;)V
-    //   297: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	298	0	this	c
-    //   0	298	1	paramg	g
-    //   3	2	2	bool	boolean
-    //   48	118	3	localObject1	Object
-    //   189	1	3	localException1	Exception
-    //   192	42	3	str1	String
-    //   251	9	3	localException2	Exception
-    //   266	16	3	localException3	Exception
-    //   27	266	4	locala	com.tencent.qapmsdk.impl.a.a.a
-    //   53	179	5	localObject2	Object
-    //   129	13	6	localIterator	java.util.Iterator
-    //   151	16	7	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   85	131	189	java/lang/Exception
-    //   131	186	189	java/lang/Exception
-    //   0	4	238	java/lang/Exception
-    //   23	29	238	java/lang/Exception
-    //   34	49	238	java/lang/Exception
-    //   76	85	238	java/lang/Exception
-    //   193	205	238	java/lang/Exception
-    //   205	237	238	java/lang/Exception
-    //   252	263	238	java/lang/Exception
-    //   267	289	238	java/lang/Exception
-    //   292	297	238	java/lang/Exception
-    //   9	23	251	java/lang/Exception
-    //   49	76	266	java/lang/Exception
-  }
-  
-  /* Error */
-  private void a(Exception paramException)
-  {
-    // Byte code:
-    //   0: invokestatic 30	com/tencent/qapmsdk/impl/g/b:c	()Z
-    //   3: ifne +4 -> 7
-    //   6: return
-    //   7: aload_0
-    //   8: invokespecial 25	com/tencent/qapmsdk/impl/instrumentation/c:b	()Lcom/tencent/qapmsdk/impl/instrumentation/g;
-    //   11: astore_2
-    //   12: aload_2
-    //   13: aload_0
-    //   14: getfield 22	com/tencent/qapmsdk/impl/instrumentation/c:b	Ljava/net/HttpURLConnection;
-    //   17: invokevirtual 63	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
-    //   20: invokestatic 68	com/tencent/qapmsdk/impl/g/a:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   23: invokevirtual 72	com/tencent/qapmsdk/impl/instrumentation/g:g	(Ljava/lang/String;)V
-    //   26: aload_2
-    //   27: ifnull +18 -> 45
-    //   30: aload_2
-    //   31: getfield 192	com/tencent/qapmsdk/impl/instrumentation/g:a	Z
-    //   34: ifne +11 -> 45
-    //   37: aload_2
-    //   38: aload_0
-    //   39: getfield 22	com/tencent/qapmsdk/impl/instrumentation/c:b	Ljava/net/HttpURLConnection;
-    //   42: invokestatic 194	com/tencent/qapmsdk/impl/instrumentation/h:b	(Lcom/tencent/qapmsdk/impl/instrumentation/g;Ljava/net/HttpURLConnection;)V
-    //   45: aload_2
-    //   46: aload_1
-    //   47: invokestatic 197	com/tencent/qapmsdk/impl/instrumentation/h:a	(Lcom/tencent/qapmsdk/impl/instrumentation/g;Ljava/lang/Exception;)V
-    //   50: aload_2
-    //   51: invokevirtual 44	com/tencent/qapmsdk/impl/instrumentation/g:f	()Z
-    //   54: ifne +137 -> 191
-    //   57: ldc 150
-    //   59: astore_1
-    //   60: aload_2
-    //   61: invokevirtual 153	com/tencent/qapmsdk/impl/instrumentation/g:k	()Ljava/lang/String;
-    //   64: ifnull +8 -> 72
-    //   67: aload_2
-    //   68: invokevirtual 153	com/tencent/qapmsdk/impl/instrumentation/g:k	()Ljava/lang/String;
-    //   71: astore_1
-    //   72: getstatic 159	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   75: iconst_3
-    //   76: anewarray 129	java/lang/String
-    //   79: dup
-    //   80: iconst_0
-    //   81: ldc 161
-    //   83: aastore
-    //   84: dup
-    //   85: iconst_1
-    //   86: ldc 163
-    //   88: aastore
-    //   89: dup
-    //   90: iconst_2
-    //   91: aload_1
-    //   92: aastore
-    //   93: invokevirtual 167	com/tencent/qapmsdk/common/logger/Logger:d	([Ljava/lang/String;)V
-    //   96: aload_2
-    //   97: invokevirtual 76	com/tencent/qapmsdk/impl/instrumentation/g:j	()Lcom/tencent/qapmsdk/impl/a/a/a;
-    //   100: astore_3
-    //   101: getstatic 159	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   104: iconst_3
-    //   105: anewarray 129	java/lang/String
-    //   108: dup
-    //   109: iconst_0
-    //   110: ldc 161
-    //   112: aastore
-    //   113: dup
-    //   114: iconst_1
-    //   115: ldc 199
-    //   117: aastore
-    //   118: dup
-    //   119: iconst_2
-    //   120: aload_2
-    //   121: invokevirtual 79	com/tencent/qapmsdk/impl/instrumentation/g:h	()Z
-    //   124: invokestatic 203	java/lang/String:valueOf	(Z)Ljava/lang/String;
-    //   127: aastore
-    //   128: invokevirtual 167	com/tencent/qapmsdk/common/logger/Logger:d	([Ljava/lang/String;)V
-    //   131: aload_2
-    //   132: invokevirtual 79	com/tencent/qapmsdk/impl/instrumentation/g:h	()Z
-    //   135: ifeq +52 -> 187
-    //   138: aload_3
-    //   139: aload_1
-    //   140: invokestatic 206	com/tencent/qapmsdk/impl/d/a:a	(Lcom/tencent/qapmsdk/impl/a/a/a;Ljava/lang/String;)V
-    //   143: return
-    //   144: astore_1
-    //   145: getstatic 159	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   148: ldc 161
-    //   150: ldc 208
-    //   152: aload_1
-    //   153: invokevirtual 178	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   156: return
-    //   157: astore_3
-    //   158: getstatic 159	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   161: ldc 161
-    //   163: ldc 180
-    //   165: aload_3
-    //   166: invokevirtual 178	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   169: goto -143 -> 26
-    //   172: astore_3
-    //   173: getstatic 159	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   176: ldc 161
-    //   178: ldc 210
-    //   180: aload_3
-    //   181: invokevirtual 178	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   184: goto -139 -> 45
-    //   187: aload_3
-    //   188: invokestatic 189	com/tencent/qapmsdk/impl/d/a:a	(Lcom/tencent/qapmsdk/impl/a/a/a;)V
-    //   191: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	192	0	this	c
-    //   0	192	1	paramException	Exception
-    //   11	121	2	localg	g
-    //   100	39	3	locala	com.tencent.qapmsdk.impl.a.a.a
-    //   157	9	3	localException1	Exception
-    //   172	16	3	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   0	6	144	java/lang/Exception
-    //   7	12	144	java/lang/Exception
-    //   45	57	144	java/lang/Exception
-    //   60	72	144	java/lang/Exception
-    //   72	143	144	java/lang/Exception
-    //   158	169	144	java/lang/Exception
-    //   173	184	144	java/lang/Exception
-    //   187	191	144	java/lang/Exception
-    //   12	26	157	java/lang/Exception
-    //   30	45	172	java/lang/Exception
-  }
-  
-  private g b()
-  {
-    if (this.c == null)
-    {
-      this.c = new g();
-      h.a(this.c, this.b);
-    }
-    return this.c;
-  }
-  
-  public void addRequestProperty(String paramString1, String paramString2)
-  {
-    this.b.addRequestProperty(paramString1, paramString2);
-  }
-  
-  public void connect()
-  {
-    b();
-    try
-    {
-      this.b.connect();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      a(localIOException);
-      throw localIOException;
-    }
-  }
-  
-  public void disconnect()
-  {
-    if ((this.c != null) && (!this.c.f())) {
-      a(this.c);
-    }
-    this.b.disconnect();
-  }
-  
-  public boolean getAllowUserInteraction()
-  {
-    return this.b.getAllowUserInteraction();
-  }
-  
-  public int getConnectTimeout()
-  {
-    return this.b.getConnectTimeout();
-  }
-  
-  public Object getContent()
-  {
-    b();
-    try
-    {
-      Object localObject = this.b.getContent();
-      int i = this.b.getContentLength();
-      if (i >= 0)
+      paramHttpResponse = paramHttpResponse.getAllHeaders();
+      if (paramHttpResponse != null)
       {
-        g localg = b();
-        if (!localg.f())
+        int i = 0;
+        while (i < paramHttpResponse.length)
         {
-          localg.d(i);
-          a(localg);
+          Object localObject = paramHttpResponse[i];
+          localTreeMap.put(localObject.getName(), localObject.getValue());
+          i += 1;
         }
       }
-      return localObject;
     }
-    catch (IOException localIOException)
+    return localTreeMap;
+  }
+  
+  public static HttpRequest a(h paramh, HttpHost paramHttpHost, HttpRequest paramHttpRequest)
+  {
+    Object localObject = null;
+    if (paramHttpRequest == null) {
+      return paramHttpRequest;
+    }
+    paramHttpHost = paramHttpRequest.getRequestLine();
+    if (paramHttpHost != null)
     {
-      a(localIOException);
-      throw localIOException;
-    }
-  }
-  
-  public Object getContent(Class[] paramArrayOfClass)
-  {
-    b();
-    try
-    {
-      paramArrayOfClass = this.b.getContent(paramArrayOfClass);
-      a();
-      return paramArrayOfClass;
-    }
-    catch (IOException paramArrayOfClass)
-    {
-      a(paramArrayOfClass);
-      throw paramArrayOfClass;
-    }
-  }
-  
-  public String getContentEncoding()
-  {
-    b();
-    String str = this.b.getContentEncoding();
-    a();
-    return str;
-  }
-  
-  public int getContentLength()
-  {
-    b();
-    int i = this.b.getContentLength();
-    a();
-    return i;
-  }
-  
-  public String getContentType()
-  {
-    b();
-    String str = this.b.getContentType();
-    a();
-    return str;
-  }
-  
-  public long getDate()
-  {
-    b();
-    long l = this.b.getDate();
-    a();
-    return l;
-  }
-  
-  public boolean getDefaultUseCaches()
-  {
-    return this.b.getDefaultUseCaches();
-  }
-  
-  public boolean getDoInput()
-  {
-    return this.b.getDoInput();
-  }
-  
-  public boolean getDoOutput()
-  {
-    return this.b.getDoOutput();
-  }
-  
-  public InputStream getErrorStream()
-  {
-    b();
-    if (this.a != null) {
-      return this.a;
-    }
-    try
-    {
-      this.a = new a(this.b.getErrorStream(), true);
-      this.a.a(new c.2(this));
-      return this.a;
-    }
-    catch (Exception localException)
-    {
-      Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMHttpURLConnectionExtension", "errorStream :", localException.toString() });
-    }
-    return this.b.getErrorStream();
-  }
-  
-  public long getExpiration()
-  {
-    b();
-    long l = this.b.getExpiration();
-    a();
-    return l;
-  }
-  
-  public String getHeaderField(int paramInt)
-  {
-    b();
-    String str = this.b.getHeaderField(paramInt);
-    a();
-    return str;
-  }
-  
-  public String getHeaderField(String paramString)
-  {
-    b();
-    paramString = this.b.getHeaderField(paramString);
-    a();
-    return paramString;
-  }
-  
-  public long getHeaderFieldDate(String paramString, long paramLong)
-  {
-    b();
-    paramLong = this.b.getHeaderFieldDate(paramString, paramLong);
-    a();
-    return paramLong;
-  }
-  
-  public int getHeaderFieldInt(String paramString, int paramInt)
-  {
-    b();
-    paramInt = this.b.getHeaderFieldInt(paramString, paramInt);
-    a();
-    return paramInt;
-  }
-  
-  public String getHeaderFieldKey(int paramInt)
-  {
-    b();
-    String str = this.b.getHeaderFieldKey(paramInt);
-    a();
-    return str;
-  }
-  
-  public Map<String, List<String>> getHeaderFields()
-  {
-    b();
-    Map localMap = this.b.getHeaderFields();
-    a();
-    return localMap;
-  }
-  
-  public long getIfModifiedSince()
-  {
-    b();
-    long l = this.b.getIfModifiedSince();
-    a();
-    return l;
-  }
-  
-  public InputStream getInputStream()
-  {
-    g localg = b();
-    try
-    {
-      a locala = new a(this.b.getInputStream());
-      h.c(localg, this.b);
-      if (locala != null) {
-        locala.a(new c.1(this, localg));
+      paramHttpHost = paramHttpHost.getUri();
+      if (paramHttpHost.contains("?"))
+      {
+        int i = paramHttpHost.indexOf("?");
+        localObject = paramHttpHost.substring(0, i);
+        String str = paramHttpHost.substring(i + 1);
+        paramHttpHost = (HttpHost)localObject;
+        localObject = str;
       }
-      return locala;
     }
-    catch (IOException localIOException)
+    for (;;)
     {
-      a(localIOException);
-      throw localIOException;
+      paramh.f(paramHttpHost);
+      paramh.b((String)localObject);
+      paramh.a((String)localObject);
+      paramh.a(com.tencent.qapmsdk.impl.b.b.c);
+      a(paramh, paramHttpRequest, (String)localObject);
+      paramh.c(NetworkWatcher.INSTANCE.activeNetworkCarrier());
+      b(paramh, paramHttpRequest);
+      return paramHttpRequest;
+      continue;
+      paramHttpHost = null;
     }
   }
   
-  public boolean getInstanceFollowRedirects()
+  public static HttpRequest a(HttpRequest paramHttpRequest)
   {
-    return this.b.getInstanceFollowRedirects();
+    return paramHttpRequest;
   }
   
-  public long getLastModified()
-  {
-    b();
-    long l = this.b.getLastModified();
-    a();
-    return l;
-  }
-  
-  public OutputStream getOutputStream()
+  public static HttpResponse a(h paramh, HttpResponse paramHttpResponse)
   {
     try
     {
-      com.tencent.qapmsdk.impl.instrumentation.b.b localb = new com.tencent.qapmsdk.impl.instrumentation.b.b(this.b.getOutputStream());
-      if (localb != null) {
-        localb.a(new c.3(this));
+      paramh.c(paramHttpResponse.getStatusLine().getStatusCode());
+      Object localObject = paramHttpResponse.getHeaders("Content-Type");
+      if ((localObject != null) && (localObject.length > 0)) {
+        paramh.g(com.tencent.qapmsdk.impl.g.a.a(localObject[0].getValue()));
       }
-      return localb;
+      localObject = paramHttpResponse.getHeaders("Content-Length");
+      if (localObject == null) {
+        break label222;
+      }
+      int i = localObject.length;
+      if (i <= 0) {
+        break label222;
+      }
+      long l;
+      try
+      {
+        l = Long.parseLong(localObject[0].getValue());
+        paramh.d(l);
+        localObject = paramHttpResponse.getEntity();
+        if (localObject == null)
+        {
+          paramHttpResponse.setEntity((HttpEntity)null);
+          return paramHttpResponse;
+        }
+        if ((localObject instanceof HttpEntityWrapper))
+        {
+          paramHttpResponse.setEntity(new com.tencent.qapmsdk.impl.instrumentation.a.d(paramHttpResponse, paramh, l));
+          return paramHttpResponse;
+        }
+      }
+      catch (NumberFormatException paramh)
+      {
+        Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMHttpClientUtil", "Failed to parse content length: ", paramh.toString() });
+        return paramHttpResponse;
+      }
+      paramHttpResponse.setEntity(new com.tencent.qapmsdk.impl.instrumentation.a.c(paramHttpResponse, paramh, l));
     }
-    catch (IOException localIOException)
+    catch (Exception paramh)
     {
-      a(localIOException);
-      throw localIOException;
+      Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMHttpClientUtil", " java.lang.NoSuchMethodError: org.apache.http.HttpResponse.getHeaders", paramh.toString() });
+      return paramHttpResponse;
+    }
+    return paramHttpResponse;
+    label222:
+    if (paramHttpResponse.getEntity() != null)
+    {
+      if ((paramHttpResponse.getEntity() instanceof HttpEntityWrapper))
+      {
+        paramHttpResponse.setEntity(new com.tencent.qapmsdk.impl.instrumentation.a.d(paramHttpResponse, paramh, -1L));
+        return paramHttpResponse;
+      }
+      paramHttpResponse.setEntity(new com.tencent.qapmsdk.impl.instrumentation.a.c(paramHttpResponse, paramh, -1L));
+      return paramHttpResponse;
+    }
+    paramh.d(0L);
+    b(paramh, (HttpResponse)null);
+    return paramHttpResponse;
+  }
+  
+  public static HttpUriRequest a(h paramh, HttpUriRequest paramHttpUriRequest)
+  {
+    if (paramHttpUriRequest == null) {
+      return paramHttpUriRequest;
+    }
+    Object localObject1 = paramHttpUriRequest.getRequestLine();
+    Object localObject2 = null;
+    if (localObject1 != null)
+    {
+      localObject1 = ((RequestLine)localObject1).getUri();
+      if (!((String)localObject1).contains("?")) {
+        break label138;
+      }
+      int i = ((String)localObject1).indexOf("?");
+      localObject2 = ((String)localObject1).substring(0, i);
+      String str = ((String)localObject1).substring(i + 1);
+      localObject1 = localObject2;
+      localObject2 = str;
+    }
+    label138:
+    for (;;)
+    {
+      paramh.f((String)localObject1);
+      paramh.c(NetworkWatcher.INSTANCE.activeNetworkCarrier());
+      paramh.e(paramHttpUriRequest.getMethod());
+      paramh.b((String)localObject2);
+      paramh.a((String)localObject2);
+      paramh.a(com.tencent.qapmsdk.impl.b.b.c);
+      a(paramh, paramHttpUriRequest, (String)localObject2);
+      b(paramh, paramHttpUriRequest);
+      return paramHttpUriRequest;
+      localObject1 = paramHttpUriRequest.getURI().toString();
     }
   }
   
-  public Permission getPermission()
+  public static void a(h paramh, Exception paramException)
   {
-    return this.b.getPermission();
-  }
-  
-  public int getReadTimeout()
-  {
-    return this.b.getReadTimeout();
-  }
-  
-  public String getRequestMethod()
-  {
-    g localg = b();
-    String str = this.b.getRequestMethod();
-    h.a(localg, str);
-    this.c.a(com.tencent.qapmsdk.impl.b.b.a);
-    return str;
-  }
-  
-  public Map<String, List<String>> getRequestProperties()
-  {
-    return this.b.getRequestProperties();
-  }
-  
-  public String getRequestProperty(String paramString)
-  {
-    return this.b.getRequestProperty(paramString);
-  }
-  
-  public int getResponseCode()
-  {
-    b();
-    try
+    if ((paramException instanceof IOException))
     {
-      int i = this.b.getResponseCode();
-      a();
-      return i;
+      if (i.a(paramException))
+      {
+        paramh.a(911, paramException.toString());
+        paramh.c(911);
+        return;
+      }
+      String str = paramException.getMessage();
+      if ((str != null) && (str.contains("ftruncate failed: ENOENT (No such file or directory)")))
+      {
+        paramh.a(917, paramException.toString());
+        paramh.c(917);
+        return;
+      }
     }
-    catch (IOException localIOException)
+    if ((paramException instanceof UnknownHostException))
     {
-      a(localIOException);
-      throw localIOException;
-    }
-  }
-  
-  public String getResponseMessage()
-  {
-    b();
-    try
-    {
-      String str = this.b.getResponseMessage();
-      a();
-      return str;
-    }
-    catch (IOException localIOException)
-    {
-      a(localIOException);
-      throw localIOException;
-    }
-  }
-  
-  public URL getURL()
-  {
-    return this.b.getURL();
-  }
-  
-  public boolean getUseCaches()
-  {
-    return this.b.getUseCaches();
-  }
-  
-  public void setAllowUserInteraction(boolean paramBoolean)
-  {
-    this.b.setAllowUserInteraction(paramBoolean);
-  }
-  
-  public void setChunkedStreamingMode(int paramInt)
-  {
-    this.b.setChunkedStreamingMode(paramInt);
-  }
-  
-  public void setConnectTimeout(int paramInt)
-  {
-    this.b.setConnectTimeout(paramInt);
-  }
-  
-  public void setDefaultUseCaches(boolean paramBoolean)
-  {
-    this.b.setDefaultUseCaches(paramBoolean);
-  }
-  
-  public void setDoInput(boolean paramBoolean)
-  {
-    this.b.setDoInput(paramBoolean);
-  }
-  
-  public void setDoOutput(boolean paramBoolean)
-  {
-    this.b.setDoOutput(paramBoolean);
-  }
-  
-  public void setFixedLengthStreamingMode(int paramInt)
-  {
-    this.b.setFixedLengthStreamingMode(paramInt);
-  }
-  
-  public void setIfModifiedSince(long paramLong)
-  {
-    this.b.setIfModifiedSince(paramLong);
-  }
-  
-  public void setInstanceFollowRedirects(boolean paramBoolean)
-  {
-    this.b.setInstanceFollowRedirects(paramBoolean);
-  }
-  
-  public void setReadTimeout(int paramInt)
-  {
-    this.b.setReadTimeout(paramInt);
-  }
-  
-  public void setRequestMethod(String paramString)
-  {
-    b();
-    try
-    {
-      this.b.setRequestMethod(paramString);
-      this.c.e(paramString);
-      this.c.a(com.tencent.qapmsdk.impl.b.b.a);
-      h.a(b(), paramString);
+      paramh.a(901, paramException.toString());
+      paramh.c(901);
       return;
     }
-    catch (ProtocolException paramString)
+    if ((!(paramException instanceof SocketTimeoutException)) && (!(paramException instanceof ConnectTimeoutException)))
     {
-      a(paramString);
-      throw paramString;
+      if ((paramException instanceof ConnectException))
+      {
+        paramh.a(902, paramException.toString());
+        paramh.c(902);
+        return;
+      }
+      if ((paramException instanceof MalformedURLException))
+      {
+        paramh.a(900, paramException.toString());
+        paramh.c(900);
+        return;
+      }
+      if ((paramException instanceof SSLException))
+      {
+        paramh.a(908, paramException.toString());
+        paramh.c(908);
+        return;
+      }
+      if ((paramException instanceof HttpResponseException))
+      {
+        paramh.c(((HttpResponseException)paramException).getStatusCode());
+        return;
+      }
+      if ((paramException instanceof ClientProtocolException))
+      {
+        paramh.a(904, paramException.toString());
+        paramh.c(904);
+        return;
+      }
+      if ((paramException instanceof AuthenticationException))
+      {
+        paramh.a(907, paramException.toString());
+        paramh.c(907);
+        return;
+      }
+      paramh.a(-1, paramException.toString());
+      paramh.c(-1);
+      return;
+    }
+    paramh.a(903, paramException.toString());
+    paramh.c(903);
+  }
+  
+  public static void a(h paramh, HttpRequest paramHttpRequest)
+  {
+    if ((paramHttpRequest instanceof HttpOptions))
+    {
+      paramh.a(com.tencent.qapmsdk.impl.b.d.g);
+      return;
+    }
+    if ((paramHttpRequest instanceof HttpGet))
+    {
+      paramh.a(com.tencent.qapmsdk.impl.b.d.a);
+      return;
+    }
+    if ((paramHttpRequest instanceof HttpHead))
+    {
+      paramh.a(com.tencent.qapmsdk.impl.b.d.e);
+      return;
+    }
+    if ((paramHttpRequest instanceof HttpPost))
+    {
+      paramh.a(com.tencent.qapmsdk.impl.b.d.b);
+      return;
+    }
+    if ((paramHttpRequest instanceof HttpPut))
+    {
+      paramh.a(com.tencent.qapmsdk.impl.b.d.c);
+      return;
+    }
+    if ((paramHttpRequest instanceof HttpDelete))
+    {
+      paramh.a(com.tencent.qapmsdk.impl.b.d.d);
+      return;
+    }
+    if ((paramHttpRequest instanceof HttpTrace))
+    {
+      paramh.a(com.tencent.qapmsdk.impl.b.d.f);
+      return;
+    }
+    paramh.a(com.tencent.qapmsdk.impl.b.d.a);
+  }
+  
+  private static void a(h paramh, HttpRequest paramHttpRequest, String paramString)
+  {
+    a(paramh, paramHttpRequest);
+    i.b(paramh, paramh.b());
+    paramHttpRequest = new c.1(paramHttpRequest);
+    i.a(paramh.d(), paramHttpRequest, paramh);
+  }
+  
+  private static void b(h paramh, HttpRequest paramHttpRequest)
+  {
+    if ((paramHttpRequest instanceof HttpEntityEnclosingRequest))
+    {
+      paramHttpRequest = (HttpEntityEnclosingRequest)paramHttpRequest;
+      if (paramHttpRequest.getEntity() != null) {
+        paramHttpRequest.setEntity(new com.tencent.qapmsdk.impl.instrumentation.a.b(paramHttpRequest.getEntity(), paramh));
+      }
     }
   }
   
-  public void setRequestProperty(String paramString1, String paramString2)
+  private static void b(h paramh, HttpResponse paramHttpResponse)
   {
-    this.b.setRequestProperty(paramString1, paramString2);
-  }
-  
-  public void setUseCaches(boolean paramBoolean)
-  {
-    this.b.setUseCaches(paramBoolean);
-  }
-  
-  public String toString()
-  {
-    return this.b.toString();
-  }
-  
-  public boolean usingProxy()
-  {
-    return this.b.usingProxy();
+    if (com.tencent.qapmsdk.impl.g.b.c())
+    {
+      com.tencent.qapmsdk.impl.a.a.a locala;
+      InputStream localInputStream1;
+      Object localObject1;
+      for (;;)
+      {
+        InputStream localInputStream2;
+        try
+        {
+          locala = paramh.j();
+          if (locala == null)
+          {
+            Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMHttpClientUtil", "HttpResponseEntityWrapperImpl transactionData is null!" });
+            return;
+          }
+          if (!paramh.h()) {
+            break label426;
+          }
+          localStringBuilder = new StringBuilder();
+          if (paramHttpResponse != null)
+          {
+            localObject3 = null;
+            localObject4 = null;
+            localInputStream2 = null;
+            localInputStream1 = localInputStream2;
+            localObject2 = localObject3;
+            localObject1 = localObject4;
+          }
+        }
+        catch (Exception paramh)
+        {
+          StringBuilder localStringBuilder;
+          Object localObject3;
+          Object localObject4;
+          Logger.INSTANCE.exception("QAPM_Impl_QAPMHttpClientUtil", "addTransactionAndErrorData", paramh);
+          return;
+        }
+        try
+        {
+          if (!(paramHttpResponse.getEntity() instanceof com.tencent.qapmsdk.impl.instrumentation.a.b))
+          {
+            localInputStream1 = localInputStream2;
+            localObject2 = localObject3;
+            localObject1 = localObject4;
+            paramHttpResponse.setEntity(new com.tencent.qapmsdk.impl.instrumentation.a.a(paramHttpResponse.getEntity()));
+          }
+          localInputStream1 = localInputStream2;
+          localObject2 = localObject3;
+          localObject1 = localObject4;
+          localInputStream2 = paramHttpResponse.getEntity().getContent();
+          localInputStream1 = localInputStream2;
+          localObject2 = localInputStream2;
+          localObject1 = localInputStream2;
+          if (!(localInputStream2 instanceof com.tencent.qapmsdk.impl.instrumentation.b.a)) {
+            break label304;
+          }
+          localInputStream1 = localInputStream2;
+          localObject2 = localInputStream2;
+          localObject1 = localInputStream2;
+          localStringBuilder.append(((com.tencent.qapmsdk.impl.instrumentation.b.a)localInputStream2).b());
+          if (localInputStream2 != null) {
+            localInputStream2.close();
+          }
+        }
+        catch (IllegalStateException localIllegalStateException)
+        {
+          localObject1 = localInputStream1;
+          Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMHttpClientUtil", localIllegalStateException.toString() });
+          if (localInputStream1 == null) {
+            continue;
+          }
+          localInputStream1.close();
+          continue;
+        }
+        catch (IOException localIOException)
+        {
+          localObject1 = localIllegalStateException;
+          Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMHttpClientUtil", localIOException.toString() });
+          if (localIllegalStateException == null) {
+            continue;
+          }
+          localIllegalStateException.close();
+          continue;
+        }
+        finally
+        {
+          if (localObject1 == null) {
+            break;
+          }
+          ((InputStream)localObject1).close();
+        }
+        a(paramHttpResponse).put("Content-Length", Long.valueOf(paramh.i()));
+        Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMHttpClientUtil", "response body content:", localStringBuilder.toString() });
+        paramHttpResponse = "";
+        if (paramh.k() != null) {
+          paramHttpResponse = paramh.k();
+        }
+        Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMHttpClientUtil", "error message:", paramHttpResponse });
+        com.tencent.qapmsdk.impl.d.a.a(locala, paramHttpResponse);
+        return;
+        label304:
+        localInputStream1 = localInputStream2;
+        Object localObject2 = localInputStream2;
+        localObject1 = localInputStream2;
+        Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMHttpClientUtil", "Unable to wrap content stream for entity" });
+      }
+      label426:
+      com.tencent.qapmsdk.impl.d.a.a(locala);
+    }
   }
 }
 

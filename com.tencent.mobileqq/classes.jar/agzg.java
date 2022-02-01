@@ -1,54 +1,17 @@
-import android.app.Activity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-final class agzg
-  implements URLDrawable.URLDrawableListener
+class agzg
+  extends ahaa
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  
-  agzg(agyh paramagyh) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  agzg(agvm paramagvm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadCanceled URL():" + paramURLDrawable.getURL());
-    }
-    this.a.a(false);
-    this.a.jdField_a_of_type_Agzg = null;
+    super(paramagvm, null);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadFialed URL():" + paramURLDrawable.getURL());
-    }
-    QQToast.a(agyh.b(this.a), agyh.c(this.a).getString(2131694569), 0).a();
-    this.a.c(true);
-    this.a.a(false);
-    this.a.jdField_a_of_type_Agzg = null;
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "rawPhotoBtn decode onLoadSuccessed URL():" + paramURLDrawable.getURL());
-    }
-    this.a.c(false);
-    this.a.a(false);
-    this.a.jdField_a_of_type_Agzn.b.b = paramURLDrawable.getExifOrientation();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(paramURLDrawable, agyh.c(this.a).getSelectedItemPosition());
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.notifyDataSetChanged();
-    agyh.d(this.a).e();
-    this.a.jdField_a_of_type_Agzg = null;
+    return new agpc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

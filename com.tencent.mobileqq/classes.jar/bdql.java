@@ -1,24 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import java.util.ArrayList;
+import com.tencent.biz.now.NowVideoLayout;
 
 public class bdql
-  implements DialogInterface.OnClickListener
 {
-  public bdql(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, Bundle paramBundle, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    long l1 = this.jdField_a_of_type_AndroidOsBundle.getLong("label_id", 0L);
-    long l2 = Long.valueOf((String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b.get(this.jdField_a_of_type_Int)).longValue();
-    ((ayll)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.getBusinessHandler(112)).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.getCurrentAccountUin(), l1, l2);
-    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getResources().getString(2131691388));
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a);
-  }
+  public bdpd a;
+  public NowVideoLayout a;
 }
 
 

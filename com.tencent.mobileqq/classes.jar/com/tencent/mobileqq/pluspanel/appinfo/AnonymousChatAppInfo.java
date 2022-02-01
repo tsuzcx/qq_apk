@@ -1,24 +1,26 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import agwt;
-import anca;
-import ayfu;
-import bcef;
-import bdav;
+import ahpt;
+import ahvi;
+import aoep;
+import bdla;
+import behu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import nmy;
+import nty;
 
 public class AnonymousChatAppInfo
   extends PlusPanelAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130843687;
+    return 2130843725;
   }
   
   public int getAppID()
@@ -31,30 +33,30 @@ public class AnonymousChatAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690013);
+    return BaseApplicationImpl.getContext().getString(2131690042);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     QQAppInterface localQQAppInterface = paramBaseChatPie.app;
-    if (!nmy.a().a(paramSessionInfo.curFriendUin))
+    if (!nty.a().a(paramSessionInfo.curFriendUin))
     {
-      bdav.a().b(true);
-      paramayfu.a("chat_tool_anonymous", localQQAppInterface.getCurrentAccountUin());
+      behu.a().d(true);
+      paramahvi.a("chat_tool_anonymous", localQQAppInterface.getCurrentAccountUin());
       if ((paramBaseChatPie instanceof TroopChatPie))
       {
         ((TroopChatPie)paramBaseChatPie).a(2, "");
-        ((anca)localQQAppInterface.getBusinessHandler(20)).a(1, localQQAppInterface.getCurrentAccountUin(), paramSessionInfo.curFriendUin);
-        bcef.a(null, "P_CliOper", "Grp_anon", "", "norm_aio", "Clk_anon", 0, 0, String.valueOf(paramSessionInfo.curFriendUin), "", "", "");
-        agwt.a(localQQAppInterface, "0X8005CB4", paramSessionInfo.curType);
+        ((aoep)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(1, localQQAppInterface.getCurrentAccountUin(), paramSessionInfo.curFriendUin);
+        bdla.a(null, "P_CliOper", "Grp_anon", "", "norm_aio", "Clk_anon", 0, 0, String.valueOf(paramSessionInfo.curFriendUin), "", "", "");
+        ahpt.a(localQQAppInterface, "0X8005CB4", paramSessionInfo.curType);
       }
     }
     while (!(paramBaseChatPie instanceof TroopChatPie)) {
       return;
     }
-    ((TroopChatPie)paramBaseChatPie).b(false);
-    bdav.a().b(false);
-    bcef.a(null, "P_CliOper", "Grp_anon", "", "norm_aio", "Clk_quit", 0, 0, String.valueOf(paramSessionInfo.curFriendUin), "", "", "");
+    ((TroopChatPie)paramBaseChatPie).c(false);
+    behu.a().d(false);
+    bdla.a(null, "P_CliOper", "Grp_anon", "", "norm_aio", "Clk_quit", 0, 0, String.valueOf(paramSessionInfo.curFriendUin), "", "", "");
   }
 }
 

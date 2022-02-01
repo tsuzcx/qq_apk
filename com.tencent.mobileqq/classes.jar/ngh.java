@@ -1,26 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import androidx.annotation.NonNull;
+import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
 
-class ngh
-  implements nbt
+public class ngh
+  extends ngf
 {
-  final WeakReference<ngg> a;
-  
-  ngh(ngg paramngg)
+  protected ngf a()
   {
-    this.a = new WeakReference(paramngg);
+    return new ngh();
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a(ngf paramngf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameServerIPCModule_GameRC", 2, "GameResultCallback onReslut, playId[" + paramString1 + "], fileType[" + paramInt + "], url[" + paramString2 + "]");
-    }
-    ngg localngg = (ngg)this.a.get();
-    if (localngg == null) {
-      return;
-    }
-    localngg.a(true, paramString1, paramInt, paramString2);
+    super.a(paramngf);
+  }
+  
+  public void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
+  {
+    super.a(paramCommonQuestionInfo);
+  }
+  
+  public int b()
+  {
+    return 3;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    return localStringBuilder.toString();
   }
 }
 

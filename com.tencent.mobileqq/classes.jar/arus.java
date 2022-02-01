@@ -1,16 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class arus
-  implements DialogInterface.OnCancelListener
+class arus
+  implements URLDrawable.URLDrawableListener
 {
-  public arus(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  arus(arur paramarur) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageForGrayTips", 2, "onLoadSuccessed() called with: urlDrawable = [" + paramURLDrawable + "]");
+    }
+    paramURLDrawable = paramURLDrawable.getCallback();
+    if ((paramURLDrawable instanceof View))
+    {
+      ((View)paramURLDrawable).invalidate();
+      ((View)paramURLDrawable).requestLayout();
+    }
   }
 }
 

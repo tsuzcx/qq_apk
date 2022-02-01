@@ -1,22 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
-class ahkq
-  extends BroadcastReceiver
+public class ahkq
 {
-  private ahkq(ahiu paramahiu) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ahkq(int paramInt1, String paramString, int paramInt2)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
-      ahiu.a(this.a, 1);
-    }
-    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
-      return;
-    }
-    ahiu.a(this.a, 1);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
   }
 }
 

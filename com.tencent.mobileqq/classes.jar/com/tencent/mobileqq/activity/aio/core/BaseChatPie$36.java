@@ -1,18 +1,15 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import aezn;
-import akya;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 class BaseChatPie$36
   implements Runnable
 {
-  BaseChatPie$36(BaseChatPie paramBaseChatPie, akya paramakya) {}
+  BaseChatPie$36(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    if ((!this.val$helper.b()) && (this.this$0.listAdapter != null)) {
-      this.this$0.listAdapter.d();
-    }
+    this.this$0.listView.showOverScrollHeader();
   }
 }
 

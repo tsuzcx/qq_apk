@@ -1,15 +1,28 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.MsgUtils.Proxy;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
 
-public final class bcbv
-  implements RecentRoute.MsgUtils.Proxy
+public class bcbv
+  implements View.OnTouchListener
 {
-  public void buildMsgSummaryForMsg(Context paramContext, IMCoreAppRuntime paramIMCoreAppRuntime, IMCoreMessageStub paramIMCoreMessageStub, int paramInt, MsgSummary paramMsgSummary, boolean paramBoolean1, boolean paramBoolean2)
+  public bcbv(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    bfwr.a(paramContext, paramIMCoreAppRuntime, paramIMCoreMessageStub, paramInt, paramMsgSummary, paramBoolean1, paramBoolean2);
+    paramView = this.a.getActivity();
+    if ((paramView instanceof ActiveEntitySearchActivity)) {
+      ((ActiveEntitySearchActivity)paramView).c();
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramView instanceof UniteSearchActivity)) {
+        ((UniteSearchActivity)paramView).b();
+      }
+    }
   }
 }
 

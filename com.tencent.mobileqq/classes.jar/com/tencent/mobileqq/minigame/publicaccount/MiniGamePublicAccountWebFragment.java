@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
-import akbm;
-import akfp;
-import alvx;
-import amtj;
+import akxf;
+import albi;
+import amwn;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -29,10 +28,11 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aoye;
-import atzp;
-import bbyp;
-import bgtj;
+import anvx;
+import aqbi;
+import avfh;
+import bdfk;
+import bieb;
 import com.tencent.ark.ark;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.image.URLDrawable;
@@ -79,7 +79,7 @@ public class MiniGamePublicAccountWebFragment
   private List<String> arkAppNameList = new ArrayList();
   private List<Boolean> arkInited = new ArrayList();
   private View contentView;
-  private atzp currIHeaderView;
+  private avfh currIHeaderView;
   private URLImageView emptyImage;
   private LinearLayout emptyLayout;
   public long enterQQGamePubTime;
@@ -90,7 +90,7 @@ public class MiniGamePublicAccountWebFragment
   private LinearLayout loadLayout;
   public long loadUrlEndTime;
   private GestureDetector mGestureDetector;
-  List<atzp> mHeaderRecords = new ArrayList();
+  List<avfh> mHeaderRecords = new ArrayList();
   private MiniGamePublicAccountViewPagerIndicator mIndicator;
   private RelativeLayout moreMsgLayout;
   private List<QQGameMsgInfo> msgInfoList;
@@ -106,8 +106,8 @@ public class MiniGamePublicAccountWebFragment
   
   static
   {
-    aoye.a(true);
-    aoye.a();
+    aqbi.a(true);
+    aqbi.a();
   }
   
   private boolean checkTianshuData(String paramString)
@@ -156,7 +156,7 @@ public class MiniGamePublicAccountWebFragment
       localIntent.setClass(getActivity(), ChatActivity.class);
       localIntent.putExtra("uin", AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN);
       localIntent.putExtra("uintype", 1008);
-      localIntent.putExtra("uinname", getString(2131693821));
+      localIntent.putExtra("uinname", getString(2131694012));
       localIntent.putExtra("entrance", 1);
       localIntent.putExtra("aio_msg_source", 0);
       getActivity().startActivity(localIntent);
@@ -205,12 +205,12 @@ public class MiniGamePublicAccountWebFragment
     TextView localTextView = new TextView(getActivity());
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.leftMargin = AIOUtils.dp2px(7.0F, getActivity().getResources());
-    localTextView.setText(amtj.a(2131709407));
+    localTextView.setText(anvx.a(2131709754));
     localTextView.setTextColor(2130706432);
     ImageView localImageView = new ImageView(getActivity());
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = getActivity().getResources().getDrawable(2130847085);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getActivity().getResources().getDrawable(2130847085);
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = getActivity().getResources().getDrawable(2130847183);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getActivity().getResources().getDrawable(2130847183);
     localImageView.setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_refresh_small_gray@2x.png", (URLDrawable.URLDrawableOptions)localObject));
     localImageView.setVisibility(0);
     localObject = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
@@ -224,34 +224,36 @@ public class MiniGamePublicAccountWebFragment
   
   private void initArk(int paramInt)
   {
-    if ((paramInt >= this.msgInfoList.size()) || (paramInt < 0)) {}
+    if ((paramInt >= this.msgInfoList.size()) || (paramInt < 0) || (paramInt >= this.arkInited.size()) || (paramInt >= this.mHeaderRecords.size())) {}
     while (((Boolean)this.arkInited.get(paramInt)).booleanValue()) {
       return;
     }
     QQGameMsgInfo localQQGameMsgInfo2 = (QQGameMsgInfo)this.msgInfoList.get(paramInt);
-    atzp localatzp = (atzp)this.mHeaderRecords.get(paramInt);
+    avfh localavfh = (avfh)this.mHeaderRecords.get(paramInt);
     QQGameMsgInfo localQQGameMsgInfo1 = localQQGameMsgInfo2;
     if (localQQGameMsgInfo2 == null) {
       localQQGameMsgInfo1 = new QQGameMsgInfo();
     }
-    localatzp.a(localQQGameMsgInfo1, getActivity(), paramInt);
+    if (localavfh != null) {
+      localavfh.a(localQQGameMsgInfo1, getActivity(), paramInt);
+    }
     this.arkInited.set(paramInt, Boolean.valueOf(true));
   }
   
   private void initHead(View paramView)
   {
-    MiniGamePublicAccountHeadLayout localMiniGamePublicAccountHeadLayout = (MiniGamePublicAccountHeadLayout)paramView.findViewById(2131374277);
-    this.webView = ((MiniGamePublicAccountWebView)paramView.findViewById(2131374278));
+    MiniGamePublicAccountHeadLayout localMiniGamePublicAccountHeadLayout = (MiniGamePublicAccountHeadLayout)paramView.findViewById(2131374515);
+    this.webView = ((MiniGamePublicAccountWebView)paramView.findViewById(2131374516));
     localMiniGamePublicAccountHeadLayout.attachToRootView();
     this.webView.attachHeaderView(localMiniGamePublicAccountHeadLayout);
-    this.pagerContainer = ((LinearLayout)localMiniGamePublicAccountHeadLayout.findViewById(2131369702));
-    this.viewPager = ((QQGamePubViewpager)localMiniGamePublicAccountHeadLayout.findViewById(2131366610));
-    this.mIndicator = ((MiniGamePublicAccountViewPagerIndicator)localMiniGamePublicAccountHeadLayout.findViewById(2131372206));
-    paramView = (URLImageView)localMiniGamePublicAccountHeadLayout.findViewById(2131367392);
-    TextView localTextView = (TextView)localMiniGamePublicAccountHeadLayout.findViewById(2131371381);
-    this.moreMsgLayout = ((RelativeLayout)localMiniGamePublicAccountHeadLayout.findViewById(2131371382));
-    this.emptyLayout = ((LinearLayout)localMiniGamePublicAccountHeadLayout.findViewById(2131366056));
-    this.emptyImage = ((URLImageView)localMiniGamePublicAccountHeadLayout.findViewById(2131366058));
+    this.pagerContainer = ((LinearLayout)localMiniGamePublicAccountHeadLayout.findViewById(2131369871));
+    this.viewPager = ((QQGamePubViewpager)localMiniGamePublicAccountHeadLayout.findViewById(2131366721));
+    this.mIndicator = ((MiniGamePublicAccountViewPagerIndicator)localMiniGamePublicAccountHeadLayout.findViewById(2131372397));
+    paramView = (URLImageView)localMiniGamePublicAccountHeadLayout.findViewById(2131367518);
+    TextView localTextView = (TextView)localMiniGamePublicAccountHeadLayout.findViewById(2131371566);
+    this.moreMsgLayout = ((RelativeLayout)localMiniGamePublicAccountHeadLayout.findViewById(2131371567));
+    this.emptyLayout = ((LinearLayout)localMiniGamePublicAccountHeadLayout.findViewById(2131366157));
+    this.emptyImage = ((URLImageView)localMiniGamePublicAccountHeadLayout.findViewById(2131366159));
     paramView.setBackgroundURL(GameWnsUtils.getMiniGamePublicAccountGameStoreButtonUrl());
     paramView.setOnClickListener(this);
     localTextView.setOnClickListener(this);
@@ -272,16 +274,16 @@ public class MiniGamePublicAccountWebFragment
     int i = ((DisplayMetrics)localObject).heightPixels;
     try
     {
-      this.loadLayout = ((LinearLayout)paramView.findViewById(2131370257));
+      this.loadLayout = ((LinearLayout)paramView.findViewById(2131370436));
       int j = AIOUtils.dp2px(418.0F, getActivity().getResources());
       localObject = this.loadLayout.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject).height = AIOUtils.dp2px(i - j, getActivity().getResources());
       this.loadLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = akbm.a();
+      localObject = akxf.a();
       if (TextUtils.isEmpty(PreloadManager.a("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", false, 0).filePath))
       {
         handleDefaultLoading();
-        ((akbm)localObject).c("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", new MiniGamePublicAccountWebFragment.3(this));
+        ((akxf)localObject).c("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", new MiniGamePublicAccountWebFragment.3(this));
         return;
       }
     }
@@ -290,7 +292,7 @@ public class MiniGamePublicAccountWebFragment
       this.loadLayout = null;
       return;
     }
-    ((akbm)localObject).c("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", new MiniGamePublicAccountWebFragment.4(this, paramView));
+    ((akxf)localObject).c("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", new MiniGamePublicAccountWebFragment.4(this, paramView));
   }
   
   private void refreshHead(int paramInt)
@@ -337,18 +339,18 @@ public class MiniGamePublicAccountWebFragment
   
   public View createEmptyView()
   {
-    View localView = LayoutInflater.from(getActivity()).inflate(2131559207, null, false);
-    ((ImageView)localView.findViewById(2131366060)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
+    View localView = LayoutInflater.from(getActivity()).inflate(2131559240, null, false);
+    ((ImageView)localView.findViewById(2131366161)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
     return localView;
   }
   
   public void initTitle(View paramView)
   {
-    this.titleBar = ((MiniGamePublicAccountNavBar)paramView.findViewById(2131376501));
-    this.titleBar.setRightImage(getResources().getDrawable(2130848232));
+    this.titleBar = ((MiniGamePublicAccountNavBar)paramView.findViewById(2131376760));
+    this.titleBar.setRightImage(getResources().getDrawable(2130848323));
     this.titleBar.setTitleBackground();
     this.navTitle = this.titleBar.getTitleTextView();
-    this.navTitle.setText(2131693821);
+    this.navTitle.setText(2131694012);
     this.navTitle.setTextColor(-1);
     this.titleBar.setOnItemSelectListener(new MiniGamePublicAccountWebFragment.6(this));
     initTitleEvent();
@@ -367,9 +369,9 @@ public class MiniGamePublicAccountWebFragment
     if (this.webView == null) {
       this.webView = new MiniGamePublicAccountWebView(getActivity());
     }
-    this.webViewBuilder = new MiniGamePublicAccountWebFragment.5(this, getActivity(), getActivity(), alvx.a(), this.webView);
+    this.webViewBuilder = new MiniGamePublicAccountWebFragment.5(this, getActivity(), getActivity(), amwn.a(), this.webView);
     this.webViewBuilder.setmTimeBeforeLoadUrl(System.currentTimeMillis());
-    new bgtj(this.webViewBuilder).a(null, alvx.a(), null);
+    new bieb(this.webViewBuilder).a(null, amwn.a(), null);
     this.webView = ((MiniGamePublicAccountWebView)this.webViewBuilder.getWebView());
     this.webView.setWillNotCacheDrawing(false);
     this.webView.setDrawingCacheEnabled(true);
@@ -446,8 +448,8 @@ public class MiniGamePublicAccountWebFragment
         this.enterQQGamePubTime = (SystemClock.elapsedRealtime() - l);
       }
     }
-    this.contentView = paramLayoutInflater.inflate(2131559428, paramViewGroup, false);
-    if (!bbyp.b())
+    this.contentView = paramLayoutInflater.inflate(2131559461, paramViewGroup, false);
+    if (!bdfk.b())
     {
       getActivity().mSystemBarComp = null;
       getActivity().setImmersiveStatus(0);
@@ -496,7 +498,7 @@ public class MiniGamePublicAccountWebFragment
         String str;
         QLog.e("MiniGamePublicAccountWebFragment", 1, "header destroy error=" + localThrowable.toString());
         continue;
-        akfp.a().a(new String[0]);
+        albi.a().a(new String[0]);
         return;
       }
       if (this.webViewBuilder != null) {
@@ -506,7 +508,7 @@ public class MiniGamePublicAccountWebFragment
       if (localIterator.hasNext())
       {
         str = (String)localIterator.next();
-        akfp.a().b(str);
+        albi.a().b(str);
       }
       else
       {
@@ -519,7 +521,7 @@ public class MiniGamePublicAccountWebFragment
   public void onDestroyView()
   {
     if (this.arkAppNameList != null) {
-      akfp.a().b(this.arkAppNameList);
+      albi.a().b(this.arkAppNameList);
     }
     super.onDestroyView();
   }

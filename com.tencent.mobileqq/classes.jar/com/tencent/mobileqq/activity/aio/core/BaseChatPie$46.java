@@ -1,28 +1,22 @@
 package com.tencent.mobileqq.activity.aio.core;
 
 import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.XEditTextEx;
+import android.content.Intent;
+import bimp;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 class BaseChatPie$46
-  implements Runnable
+  implements bimp
 {
-  BaseChatPie$46(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
+  BaseChatPie$46(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    this.this$0.setRequestedOrientation4Recording(true);
-    this.this$0.cancelRemainScreenOn();
-    this.this$0.recorderVolumeChange(0);
-    this.this$0.input.setEnabled(true);
-    if (this.val$isNoPermission)
-    {
-      this.this$0.showAbnormalRecordDlg();
-      return;
-    }
-    QQToast.a(this.this$0.app.getApp(), 2131689990, 1).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131299076));
+    paramClickableColorSpanTextView = new Intent(this.this$0.mContext, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.this$0.mContext.startActivity(paramClickableColorSpanTextView);
   }
 }
 

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amrg;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,8 +10,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import ares;
+import antu;
+import asiy;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
@@ -92,7 +93,7 @@ public class EmoticonMainPanel
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonMainPanel", 2, "sendRecommendSSORequest send req to recommend");
     }
-    ((amrg)paramQQAppInterface.getBusinessHandler(12)).a();
+    ((antu)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).a();
     localSharedPreferences.edit().putLong("last_get_recommendemotion_time_" + paramQQAppInterface.getCurrentUin(), System.currentTimeMillis()).apply();
   }
   
@@ -128,7 +129,7 @@ public class EmoticonMainPanel
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonMainPanel", 2, "func doAutoDownload begins.");
     }
-    ares.a().a(paramInt);
+    asiy.a().a(paramInt);
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonMainPanel", 2, "func doAutoDownload ends.");
     }
@@ -363,7 +364,7 @@ public class EmoticonMainPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonMainPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,9 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-
-class blrc
-  implements Observer<Boolean>
+final class blrc
+  extends ThreadLocal<char[]>
 {
-  blrc(blqw paramblqw) {}
-  
-  public void a(@Nullable Boolean paramBoolean)
+  protected char[] a()
   {
-    bmbx.a("VideoStoryCapturePart", "【抠背开关】->observe:" + paramBoolean);
-    if (paramBoolean == null) {}
-    while (blqw.a(this.a) == null) {
-      return;
-    }
-    blqw.a(this.a).switchSegment(paramBoolean.booleanValue());
+    return new char[1024];
   }
 }
 

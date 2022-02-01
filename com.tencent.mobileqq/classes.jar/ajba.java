@@ -1,28 +1,22 @@
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.qphone.base.util.QLog;
 
-class ajba
+public class ajba
+  extends aixn
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
-  private TextView c;
+  public ajba(SystemMsgListView paramSystemMsgListView) {}
   
-  public ajba(View paramView)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369032);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369992));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369999));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378800));
-    this.b = ((TextView)paramView.findViewById(2131365315));
-    this.c = ((TextView)paramView.findViewById(2131371789));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365438));
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendVerification.manager", 2, "ui.onRefreshBlockedEntrance");
+    }
+    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {}
+    while ((!paramBoolean) || (SystemMsgListView.a(this.a) == null)) {
+      return;
+    }
+    SystemMsgListView.a(this.a).c();
   }
 }
 

@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import oen;
+import ome;
 
 public class VideoInfo$DownloadBarInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DownloadBarInfo> CREATOR = new oen();
+  public static final Parcelable.Creator<DownloadBarInfo> CREATOR = new ome();
   public int a;
   public UrlJumpInfo a;
   public String a;

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import bgev;
-import bgxy;
-import bgyb;
+import bhnp;
+import biiq;
+import biit;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.log.VipWebViewReportLog;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import mqq.app.AppRuntime;
 public class SwiftWebAccelerator$6
   implements Runnable
 {
-  public SwiftWebAccelerator$6(bgxy parambgxy, long paramLong) {}
+  public SwiftWebAccelerator$6(biiq parambiiq, long paramLong) {}
   
   public void run()
   {
@@ -25,10 +25,10 @@ public class SwiftWebAccelerator$6
     }
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load http core data config, cost " + (System.currentTimeMillis() - l) + "ms.");
     l = System.currentTimeMillis();
-    bgyb.a();
+    biit.a();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load cdn cache config, cost " + (System.currentTimeMillis() - l) + "ms.");
     l = System.currentTimeMillis();
-    bgev.a(BaseApplicationImpl.sApplication.getRuntime());
+    bhnp.a(BaseApplicationImpl.sApplication.getRuntime());
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load Individuation url config, cost " + (System.currentTimeMillis() - l) + "ms.");
   }
 }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import anca;
 import android.os.Bundle;
-import bfkq;
+import aoep;
+import bgth;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -15,17 +15,17 @@ import tencent.im.oidb.cmd0xa2a.oidb_0xa2a.ReqBody;
 public class TroopHandler$7
   implements Runnable
 {
-  public TroopHandler$7(anca paramanca, String paramString) {}
+  public TroopHandler$7(aoep paramaoep, String paramString) {}
   
   public void run()
   {
-    Object localObject = (bfkq)this.this$0.app.getManager(234);
-    if (NetConnInfoCenter.getServerTime() < ((bfkq)localObject).d(this.a))
+    Object localObject = (bgth)this.this$0.app.getManager(QQManagerFactory.TROOP_ONLINE_MEMBER_MANAGER);
+    if (NetConnInfoCenter.getServerTime() < ((bgth)localObject).d(this.a))
     {
       if (QLog.isColorLevel()) {
         QLog.i("TroopHandler", 2, "getAllGameOnlineMemberList, too frequency");
       }
-      localObject = ((bfkq)localObject).c(this.a);
+      localObject = ((bgth)localObject).c(this.a);
       this.this$0.notifyUI(102, true, new Object[] { this.a, localObject });
       return;
     }
@@ -34,7 +34,7 @@ public class TroopHandler$7
       localObject = new oidb_0xa2a.ReqBody();
       ((oidb_0xa2a.ReqBody)localObject).group_id.set(Long.valueOf(this.a).longValue());
       ((oidb_0xa2a.ReqBody)localObject).is_private.set(TroopInfo.isQidianPrivateTroop(this.this$0.app, this.a));
-      TroopInfo localTroopInfo = ((TroopManager)this.this$0.app.getManager(52)).c(this.a);
+      TroopInfo localTroopInfo = ((TroopManager)this.this$0.app.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.a);
       if (localTroopInfo != null)
       {
         ((oidb_0xa2a.ReqBody)localObject).hok_appid.set((int)localTroopInfo.hlGuildAppid);

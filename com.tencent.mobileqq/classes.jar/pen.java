@@ -1,8 +1,17 @@
-import android.view.View;
+import java.util.List;
 
-public abstract interface pen
+class pen
+  extends pfe
 {
-  public abstract void onClick(View paramView);
+  pen(pdv parampdv, boolean paramBoolean1, List paramList, boolean paramBoolean2)
+  {
+    super(parampdv, null);
+  }
+  
+  void a(pfh parampfh)
+  {
+    parampfh.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 3);
+  }
 }
 
 

@@ -1,33 +1,32 @@
-import java.util.HashMap;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipDiyView;
 
 public class bads
-  extends badu
+  extends badm
 {
-  public long a = 0L;
-  public long b;
-  
-  public bads()
+  public bads(azxt paramazxt, azrb paramazrb)
   {
-    this.jdField_b_of_type_Long = -1L;
+    super(paramazxt, paramazrb);
   }
   
-  public HashMap<String, String> a(String paramString)
+  public String a()
   {
-    if ("ShortVideo.FullscreenPreview".equals(paramString))
+    return "VasProfileHeaderDiyComponent";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
     {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_duration", this.a + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      paramString.put("param_playTimeCost", this.jdField_b_of_type_Long + "");
-      return paramString;
+      VasProfileQVipDiyView localVasProfileQVipDiyView = new VasProfileQVipDiyView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (azrb)this.b);
+      localVasProfileQVipDiyView.setProfileArgs(this.jdField_a_of_type_AndroidViewViewGroup);
+      localVasProfileQVipDiyView.setClickListener(this);
+      localVasProfileQVipDiyView.a();
+      localVasProfileQVipDiyView.e();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileQVipDiyView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
     }
-    return null;
   }
 }
 

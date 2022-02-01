@@ -1,6 +1,18 @@
-public abstract interface avmf
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+
+public class avmf
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  public avmf(HotPicMainPanel paramHotPicMainPanel) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    HotPicMainPanel.a(this.a);
+    return true;
+  }
 }
 
 

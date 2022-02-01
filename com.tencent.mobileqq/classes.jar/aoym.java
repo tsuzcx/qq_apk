@@ -1,16 +1,20 @@
-import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aoym
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  aoym(aoyk paramaoyk, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
+  aoym(aoyl paramaoyl, String paramString) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
-      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(paramInt, paramBoolean, paramObject);
-    }
+    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString), 120);
+    localOpenPlayerBuilder.a();
+    xbp.a(this.jdField_a_of_type_Aoyl.a, localOpenPlayerBuilder.a(), null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

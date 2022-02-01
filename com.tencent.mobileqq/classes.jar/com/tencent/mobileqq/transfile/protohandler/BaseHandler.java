@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
+import anza;
 import com.tencent.mobileqq.app.AppConstants.RichMediaErrorCode;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.transfile.NetworkCenter;
@@ -55,7 +55,7 @@ public abstract class BaseHandler
   
   public void cancel(RichProto.RichProtoReq paramRichProtoReq) {}
   
-  protected void handleSucResp(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, amwm paramamwm, ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq) {}
+  protected void handleSucResp(FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte, RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp, anza paramanza, ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq) {}
   
   abstract void initResps(RichProto.RichProtoReq paramRichProtoReq);
   
@@ -74,7 +74,7 @@ public abstract class BaseHandler
     Object localObject = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    amwm localamwm = paramProtoResp.statisInfo;
+    anza localanza = paramProtoResp.statisInfo;
     int i;
     if (localFromServiceMsg.getResultCode() != 1000)
     {
@@ -90,7 +90,7 @@ public abstract class BaseHandler
           if (paramProtoReq == null) {
             paramProtoResp = "";
           }
-          setResult(-1, 9311, (String)localObject, paramProtoResp, localamwm, localRichProtoResp.resps);
+          setResult(-1, 9311, (String)localObject, paramProtoResp, localanza, localRichProtoResp.resps);
         }
       }
     }
@@ -103,15 +103,15 @@ public abstract class BaseHandler
       if (paramProtoReq == null) {
         paramProtoResp = "";
       }
-      setResult(-1, 9044, String.valueOf(i), paramProtoResp, localamwm, localRichProtoResp.resps);
+      setResult(-1, 9044, String.valueOf(i), paramProtoResp, localanza, localRichProtoResp.resps);
       continue;
-      setResult(-1, 9313, paramProtoResp, localFromServiceMsg.getBusinessFailMsg(), localamwm, localRichProtoResp.resps);
+      setResult(-1, 9313, paramProtoResp, localFromServiceMsg.getBusinessFailMsg(), localanza, localRichProtoResp.resps);
       continue;
-      handleSucResp(localFromServiceMsg, (byte[])localObject, localRichProtoReq, localRichProtoResp, localamwm, paramProtoResp, paramProtoReq);
+      handleSucResp(localFromServiceMsg, (byte[])localObject, localRichProtoReq, localRichProtoResp, localanza, paramProtoResp, paramProtoReq);
     }
   }
   
-  public void setResult(int paramInt1, int paramInt2, String paramString1, String paramString2, amwm paramamwm, RichProto.RichProtoResp.RespCommon paramRespCommon)
+  public void setResult(int paramInt1, int paramInt2, String paramString1, String paramString2, anza paramanza, RichProto.RichProtoResp.RespCommon paramRespCommon)
   {
     paramRespCommon.result = paramInt1;
     paramRespCommon.errCode = paramInt2;
@@ -120,19 +120,19 @@ public abstract class BaseHandler
     if (paramInt1 == 0)
     {
       paramRespCommon.successCount = 1;
-      paramRespCommon.failCount = (paramamwm.c - 1);
+      paramRespCommon.failCount = (paramanza.c - 1);
       return;
     }
     paramRespCommon.successCount = 0;
-    paramRespCommon.failCount = paramamwm.c;
+    paramRespCommon.failCount = paramanza.c;
     QLog.d("Q.richmedia.BaseHandler", 1, "result:" + paramInt1 + " errCode:" + paramInt2 + " reason:" + paramString1 + " errStr:" + paramString2);
   }
   
-  public void setResult(int paramInt1, int paramInt2, String paramString1, String paramString2, amwm paramamwm, List<RichProto.RichProtoResp.RespCommon> paramList)
+  public void setResult(int paramInt1, int paramInt2, String paramString1, String paramString2, anza paramanza, List<RichProto.RichProtoResp.RespCommon> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      setResult(paramInt1, paramInt2, paramString1, paramString2, paramamwm, (RichProto.RichProtoResp.RespCommon)paramList.next());
+      setResult(paramInt1, paramInt2, paramString1, paramString2, paramanza, (RichProto.RichProtoResp.RespCommon)paramList.next());
     }
   }
 }

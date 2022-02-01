@@ -1,22 +1,27 @@
-import android.annotation.TargetApi;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class asov
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public asov(FileBrowserActivity paramFileBrowserActivity) {}
+  public asov(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  @TargetApi(5)
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    String str = "";
+    paramDialogInterface = str;
+    if (ExtendFriendEditFragment.a(this.a) != null)
     {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      paramDialogInterface = str;
+      if (ExtendFriendEditFragment.a(this.a).app != null) {
+        paramDialogInterface = ((aslo)ExtendFriendEditFragment.a(this.a).app.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).f();
+      }
     }
+    assp.a(this.a.getActivity(), paramDialogInterface);
   }
 }
 

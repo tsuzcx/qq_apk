@@ -4,9 +4,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import auef;
-import bgae;
-import bgok;
+import avjz;
+import bhiw;
+import bhyu;
 import com.tencent.qphone.base.util.BaseApplication;
 import gb;
 import gk;
@@ -32,10 +32,10 @@ public class FontManager$3
       localObject2 = null;
       if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
       {
-        if (!bgae.a((String)localObject2, bgae.a() + File.separator, (String)localObject1)) {
+        if (!bhiw.a((String)localObject2, bhiw.a() + File.separator, (String)localObject1)) {
           break label390;
         }
-        if (bgae.a(bgae.a(), (String)localObject1) != 0) {
+        if (bhiw.a(bhiw.a(), (String)localObject1) != 0) {
           break label377;
         }
         gk.a().a(this.a, 0);
@@ -47,7 +47,7 @@ public class FontManager$3
     }
     for (;;)
     {
-      bgae.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bhiw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       gb.a(this.this$0);
       return;
       localObject2 = gb.jdField_a_of_type_JavaLangString + File.separator + "libColorFont.zip";
@@ -57,19 +57,19 @@ public class FontManager$3
       localObject1 = "libvipfont808.so";
       break;
       l.a().b.set(true);
-      auef.a().a();
+      avjz.a().a();
       continue;
-      if ((!TextUtils.isEmpty(this.this$0.e)) && (this.this$0.jdField_a_of_type_Bgok != null))
+      if ((!TextUtils.isEmpty(this.this$0.e)) && (this.this$0.jdField_a_of_type_Bhyu != null))
       {
         localObject1 = new Bundle();
         ((Bundle)localObject1).putString("callbackId", this.this$0.e);
         ((Bundle)localObject1).putInt("srcType", 9);
-        this.this$0.jdField_a_of_type_Bgok.a(0L, 0, (Bundle)localObject1);
+        this.this$0.jdField_a_of_type_Bhyu.a(0L, 0, (Bundle)localObject1);
         this.this$0.e = null;
       }
       ETEngine.isSOLoaded.set(true);
       BaseApplication.getContext().getSharedPreferences("early_qq.android.native.vipfont.v5", 0).edit().putBoolean("vip_font_so_downloaded", true).commit();
-      auef.a().a();
+      avjz.a().a();
       FontSoLoader.sIsVipFontSoLoaded.set(true);
       this.this$0.a(false);
     }

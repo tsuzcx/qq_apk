@@ -1,65 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class alab
-  implements View.OnClickListener
+public class alab
+  extends Handler
 {
-  alab(alaa paramalaa) {}
-  
-  public void onClick(View paramView)
+  public alab(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, Looper paramLooper)
   {
-    if (paramView.getId() == 2131365619) {}
-    alaf localalaf;
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+    }
+    FragmentActivity localFragmentActivity;
+    do
+    {
       return;
-      localalaf = (alaf)paramView.getTag();
-      if ((localalaf != null) && (localalaf.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localalaf.jdField_a_of_type_ComTencentMobileqqDataPhoneContact != null))
-      {
-        PhoneContact localPhoneContact = localalaf.jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
-        if (localalaf.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
-        {
-          if (localalaf.jdField_a_of_type_JavaLangString.startsWith("+")) {}
-          for (boolean bool = this.a.a.a.onListViewItemClick(localalaf.jdField_a_of_type_JavaLangString, localPhoneContact.name, 4, "-1", localPhoneContact.mobileNo);; bool = this.a.a.a.onListViewItemClick(localalaf.jdField_a_of_type_JavaLangString, localPhoneContact.name, 0, "-1", localPhoneContact.mobileNo))
-          {
-            localalaf.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-            if (!AppSetting.c) {
-              break;
-            }
-            if (!localalaf.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-              break label266;
-            }
-            if (!localalaf.jdField_a_of_type_Boolean) {
-              break label225;
-            }
-            paramView.setContentDescription(localalaf.b.getText() + this.a.a.a.getString(2131718095));
-            break;
-          }
-          label225:
-          paramView.setContentDescription(localalaf.b.getText().toString() + amtj.a(2131707108));
-        }
+      paramMessage = (alal)paramMessage.obj;
+      if (QLog.isColorLevel()) {
+        QLog.d(DrawRedpacketPannelPreviewFragment.jdField_a_of_type_JavaLangString, 2, "save path: " + paramMessage.c + " thread name: " + Thread.currentThread().getName());
       }
+      localFragmentActivity = this.a.getActivity();
+    } while (localFragmentActivity == null);
+    Intent localIntent = new Intent(localFragmentActivity, SendPhotoActivity.class);
+    localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1007);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramMessage.c);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+    localIntent.putExtra("PhotoConst.PHOTO_COUNT", localArrayList.size());
+    localIntent.putExtra("uin", paramMessage.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("uintype", paramMessage.jdField_a_of_type_Int);
+    localIntent.putExtra("troop_uin", paramMessage.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("key_confess_topicid", paramMessage.jdField_b_of_type_Int);
+    localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+    localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
+    if (localArrayList.size() == 1) {
+      localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
     }
-    label266:
-    if (localalaf.jdField_a_of_type_Boolean) {}
-    for (int i = this.a.a.a.getCheckPhoneNumberResId(localalaf.jdField_a_of_type_JavaLangString);; i = 0)
-    {
-      if ((localalaf.jdField_a_of_type_Boolean) && (i != 0))
-      {
-        paramView.setContentDescription(localalaf.b.getText() + this.a.a.a.getString(i));
-        break;
-      }
-      paramView.setContentDescription(localalaf.b.getText().toString() + amtj.a(2131707105));
-      break;
-    }
+    localFragmentActivity.startActivity(localIntent);
+    localFragmentActivity.finish();
   }
 }
 

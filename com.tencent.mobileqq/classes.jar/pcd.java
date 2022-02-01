@@ -1,44 +1,24 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/config/handlers/BarrageConfigHandler;", "Lcom/tencent/aladdin/config/handlers/AladdinConfigHandler;", "()V", "onReceiveConfig", "", "id", "", "version", "content", "", "onWipeConfig", "", "p0", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pcd
-  implements AladdinConfigHandler
+public class pcd
+  implements AbsListView.OnScrollListener
 {
-  public static final pce a = new pce(null);
+  public pcd(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, @Nullable String paramString)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    try
-    {
-      paramString = pbt.a(paramString);
-      paramString = new GsonBuilder().create().toJson(paramString);
-      if (paramString != null) {}
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BarrageConfigHandler", 2, "onReceiveConfig configJson:" + paramString);
-        }
-        bkwm.n(paramString);
-        break;
-        paramString = "";
-      }
-      return true;
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      QLog.e("BarrageConfigHandler", 2, "[PersonalHomePageConfigHandler]: onReceiveConfig Error in:" + paramString);
-    }
+    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
   
-  public void onWipeConfig(int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    bkwm.n("");
+    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
+    if ((ReadInJoySecondCommentListFragment.a(this.a) != null) && (ReadInJoySecondCommentListFragment.a(this.a).a() != null)) {
+      ReadInJoySecondCommentListFragment.a(this.a).a().a(ReadInJoySecondCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoySecondCommentListFragment.a(this.a).getLastVisiblePosition());
+    }
   }
 }
 

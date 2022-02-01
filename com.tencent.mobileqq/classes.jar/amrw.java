@@ -1,103 +1,88 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.apollo.debug.log.CmGameDebugLogView.1;
+import com.tencent.mobileqq.util.DisplayUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 public class amrw
-  extends amti
 {
-  protected long a;
-  private String a;
-  protected long b;
+  private int jdField_a_of_type_Int;
+  private amry jdField_a_of_type_Amry;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   
-  protected void a()
+  public amrw(Context paramContext, int paramInt)
   {
-    boolean bool2 = true;
-    super.a();
-    this.jdField_a_of_type_Long += 1L;
-    this.b += 1L;
-    if (this.d >= 3L)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
-        break label203;
-      }
-      bool1 = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, new String[] { "com.tencent.mobileqq:tool", "com.tencent.mobileqq:qzone", "com.tencent.mobileqq:mini", this.jdField_a_of_type_JavaLangString });
-      this.d = 0L;
-      if (!bool1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-      }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private List<amrx> a()
+  {
+    amro localamro = amwn.a();
+    if (localamro != null) {
+      return localamro.a(this.jdField_a_of_type_Int);
     }
-    if ((this.jdField_a_of_type_Long >= 15L) && (!DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_qzone_kill.name())))
+    return new ArrayList();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public View a()
+  {
+    View localView = b();
+    a(localView);
+    return localView;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new CmGameDebugLogView.1(this));
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131364756));
+    paramView = new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
+    this.jdField_a_of_type_Amry = new amry(this.jdField_a_of_type_AndroidContentContext, a());
+    paramView = new View(this.jdField_a_of_type_AndroidContentContext);
+    paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 32.0F)));
+    this.jdField_a_of_type_Amry.a(paramView);
+    paramView.setId(2131362772);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Amry);
+    a();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Amry != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null)
-      {
-        bool1 = true;
-        label139:
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b(bool1, "com.tencent.mobileqq:qzone");
-        bcew.a().d(bcew.a());
-        this.jdField_a_of_type_Long = 0L;
+      if (paramBoolean) {
+        a();
       }
-    }
-    else if (this.b >= GuardManager.d) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
-        break label213;
-      }
-    }
-    label203:
-    label213:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b(bool1, "com.tencent.mobileqq:tool");
-      this.b = 0L;
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label139;
+      this.jdField_a_of_type_Amry.a(a());
+      this.jdField_a_of_type_Amry.notifyDataSetChanged();
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(this.jdField_a_of_type_Amry.getItemCount() - 1);
     }
   }
   
-  protected void a(String paramString)
+  public View b()
   {
-    if (!"com.tencent.mobileqq".equals(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
-      aowc.a();
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    QQAppInterface.getBatteryStats().c();
-    amrq.a().a(paramString);
-    apoh.a(true);
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    CoreService.startCoreService(amtg.a().a);
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
-  }
-  
-  protected void c(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void d(String paramString)
-  {
-    if ("com.tencent.mobileqq".equals(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-      aowc.b();
-      apoh.a(false);
-    }
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558936, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amrw
  * JD-Core Version:    0.7.0.1
  */

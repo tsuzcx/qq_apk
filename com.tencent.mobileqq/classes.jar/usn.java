@@ -1,14 +1,50 @@
-public abstract interface usn<U, V>
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+
+public final class usn
 {
-  public abstract void a();
+  private ProfileParams a = new ProfileParams(null);
   
-  public abstract void a(usj<U, V> paramusj);
+  public ProfileParams a()
+  {
+    return this.a;
+  }
   
-  public abstract void a(uso paramuso);
+  public usn a(int paramInt)
+  {
+    this.a.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
   
-  public abstract boolean a(usj<U, V> paramusj);
+  public usn a(ProfileParams.CurLoginUsr paramCurLoginUsr)
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams$CurLoginUsr = paramCurLoginUsr;
+    return this;
+  }
   
-  public abstract void b();
+  public usn a(String paramString)
+  {
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public usn b(String paramString)
+  {
+    this.a.b = paramString;
+    return this;
+  }
+  
+  public usn c(String paramString)
+  {
+    this.a.c = paramString;
+    return this;
+  }
+  
+  public usn d(String paramString)
+  {
+    this.a.d = paramString;
+    return this;
+  }
 }
 
 

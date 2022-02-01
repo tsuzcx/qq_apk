@@ -1,92 +1,12 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.trpcprotocol.gamecenter.trpcproxy.TrpcProxy.TrpcInovkeRsp;
+import java.util.HashSet;
 
-class bmqv
-  implements bmqz
+public abstract interface bmqv
 {
-  bmqv(bmqu parambmqu) {}
+  public abstract HashSet<String> a();
   
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
-    }
-    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-    do
-    {
-      return;
-      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    } while (localPtvTemplateInfo == null);
-    if (localPtvTemplateInfo.isWsBanner())
-    {
-      yqu.a(this.a.jdField_a_of_type_AndroidContentContext, localPtvTemplateInfo);
-      return;
-    }
-    if (bmqu.a(this.a) == paramInt)
-    {
-      bmqu.jdField_c_of_type_Boolean = true;
-      bmqu.a(this.a, paramInt);
-      bmqu.jdField_c_of_type_Int = paramInt;
-      bmqu.jdField_b_of_type_Int = localPtvTemplateInfo.categoryId;
-      bmqu.jdField_b_of_type_JavaLangString = localPtvTemplateInfo.id;
-    }
-    try
-    {
-      localJSONObject = new JSONObject();
-      if (TextUtils.isEmpty(bmqu.jdField_b_of_type_JavaLangString)) {
-        break label406;
-      }
-      if (!"0".equals(bmqu.jdField_b_of_type_JavaLangString)) {
-        break label381;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        JSONObject localJSONObject;
-        label163:
-        Object localObject;
-        QLog.d("Q.videostory.capture", 1, "report failed");
-        continue;
-        String str = "empty";
-      }
-    }
-    localJSONObject.put("lens_id", localObject);
-    if (bmqu.jdField_b_of_type_Int != 0) {}
-    for (localObject = Integer.valueOf(bmqu.jdField_b_of_type_Int);; localObject = "empty")
-    {
-      localJSONObject.put("lens_tab", localObject);
-      localJSONObject.put("id_pos", bmqu.jdField_c_of_type_Int);
-      zxp.a("mystatus_shoot", "lens_select", 0, 0, new String[] { "", String.valueOf(akrw.a), localJSONObject.toString() });
-      QLog.d("Q.videostory.capture", 1, "change material result:" + localJSONObject.toString());
-      ((bmuq)bmql.a(14)).a(localPtvTemplateInfo.id, 3);
-      if (!localPtvTemplateInfo.id.equals("0"))
-      {
-        bmqu.jdField_b_of_type_Boolean = true;
-        if (!bmqu.jdField_c_of_type_Boolean) {
-          bmqu.jdField_a_of_type_Boolean = false;
-        }
-        this.a.jdField_a_of_type_Boba.a(localPtvTemplateInfo, 111);
-      }
-      this.a.a(null);
-      if (!localPtvTemplateInfo.usable) {
-        bnsi.a("", "0X8006A1A");
-      }
-      ((bmrr)bmql.a(5)).a(this.a.d, (Activity)this.a.jdField_a_of_type_AndroidContentContext);
-      return;
-      bmqu.jdField_c_of_type_Boolean = false;
-      break;
-      label381:
-      localObject = bmqu.jdField_b_of_type_JavaLangString;
-      break label163;
-    }
-  }
+  public abstract void a(Intent paramIntent, String paramString, long paramLong, TrpcProxy.TrpcInovkeRsp paramTrpcInovkeRsp);
 }
 
 

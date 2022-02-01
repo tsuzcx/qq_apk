@@ -1,110 +1,106 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.event.ForeBackgroundEvent;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
-public final class amrq
+public class amrq
+  implements View.OnTouchListener
 {
-  private List<amrs> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int jdField_a_of_type_Int;
   private boolean jdField_a_of_type_Boolean;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
   
-  public static amrq a()
-  {
-    return amrt.a();
-  }
+  public amrq(CmGameDebugView paramCmGameDebugView) {}
   
-  public List<amrs> a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
+    if (paramView == CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView))
     {
-      List localList = this.jdField_a_of_type_JavaUtilList;
-      return localList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForeBackgroundSwitch", 2, "onAppBackground: invoked. ");
-    }
-    unw.a().a(new ForeBackgroundEvent(true));
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppBackground ==============");
-    uxn.a().a();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((amrs)localIterator.next()).b();
-    }
-  }
-  
-  public void a(amrs paramamrs)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramamrs);
-      return;
-    }
-    finally
-    {
-      paramamrs = finally;
-      throw paramamrs;
-    }
-  }
-  
-  public final void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForeBackgroundSwitch", 2, "onAppForeground: invoked. " + paramString);
-    }
-    if (aafi.b <= 0L)
-    {
-      aafi.b = System.currentTimeMillis();
-      QLog.d("ForeBackgroundSwitch", 1, new Object[] { "onAppForeground: invoked. ", " sFirstForegroundTimestamp: ", Long.valueOf(aafi.b) });
-    }
-    avhh.a();
-    if ((TextUtils.equals("com.tencent.mobileqq:qzone", paramString)) || ((!TextUtils.isEmpty(paramString)) && (paramString.contains("mini")))) {
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
+      this.b = ((int)paramMotionEvent.getRawY());
+      switch (paramMotionEvent.getAction())
+      {
+      default: 
+      case 0: 
+        for (;;)
+        {
+          return true;
+          this.c = this.jdField_a_of_type_Int;
+          this.d = this.b;
+        }
+      case 2: 
+        int i = this.jdField_a_of_type_Int - this.c;
+        int j = this.b - this.d;
+        this.e = (paramView.getLeft() + i);
+        this.f = (paramView.getTop() + j);
+        this.g = (i + paramView.getRight());
+        this.h = (paramView.getBottom() + j);
+        if (this.e < 0)
+        {
+          this.e = 0;
+          this.g = (this.e + paramView.getWidth());
+          label173:
+          if (this.f >= 0) {
+            break label355;
+          }
+          this.f = 0;
+          this.h = (this.f + paramView.getHeight());
+        }
+        for (;;)
+        {
+          paramMotionEvent = (FrameLayout.LayoutParams)paramView.getLayoutParams();
+          paramMotionEvent.setMargins(this.e, this.f, 0, 0);
+          paramView.setLayoutParams(paramMotionEvent);
+          if ((!this.jdField_a_of_type_Boolean) && ((Math.abs(this.jdField_a_of_type_Int - this.c) > CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView).density * 2.0F) || (Math.abs(this.b - this.d) > CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView).density * 2.0F))) {
+            this.jdField_a_of_type_Boolean = true;
+          }
+          this.c = this.jdField_a_of_type_Int;
+          this.d = this.b;
+          break;
+          if (this.g <= this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.jdField_a_of_type_Int) {
+            break label173;
+          }
+          this.g = this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.jdField_a_of_type_Int;
+          this.e = (this.g - paramView.getWidth());
+          break label173;
+          label355:
+          if (this.h > this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b)
+          {
+            this.h = this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b;
+            this.f = (this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b - paramView.getHeight());
+          }
+        }
+      }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        if (CmGameDebugView.a(this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView).getVisibility() == 0) {
+          break label434;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.al_();
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        break;
+        label434:
+        this.jdField_a_of_type_ComTencentMobileqqApolloDebugCmGameDebugView.b();
       }
     }
-    for (;;)
-    {
-      QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppForeground ==============");
-      paramString = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramString.hasNext()) {
-        ((amrs)paramString.next()).a();
-      }
-      paramString = new ForeBackgroundEvent(false);
-      unw.a().a(paramString);
-      continue;
-      paramString = new ForeBackgroundEvent(false);
-      unw.a().a(paramString);
-    }
-  }
-  
-  public void b(amrs paramamrs)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramamrs);
-      return;
-    }
-    finally
-    {
-      paramamrs = finally;
-      throw paramamrs;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amrq
  * JD-Core Version:    0.7.0.1
  */

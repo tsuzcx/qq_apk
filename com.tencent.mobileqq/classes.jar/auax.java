@@ -1,161 +1,132 @@
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.web.QQGameIPCModule.1;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class auax
-  extends QIPCModule
+  extends auav
 {
-  private static volatile auax a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
+  private TextView d;
+  private TextView e;
+  private TextView f;
+  private TextView g;
+  private TextView h;
   
-  public auax(String paramString)
+  public auax(Activity paramActivity)
   {
-    super(paramString);
+    super(paramActivity);
   }
   
-  public static auax a()
+  public void a()
   {
-    if (a == null) {}
-    try
+    QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: MusicFileViewer initFileView");
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      if (a == null) {
-        a = new auax("QQGameIPCModule");
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560871, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371744));
+      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372237));
+      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366753));
+      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131372960));
+      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362678));
+      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373098));
+      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366750));
+      if (Build.VERSION.SDK_INT >= 21) {
+        this.jdField_a_of_type_AndroidWidgetSeekBar.setSplitTrack(false);
       }
-      return a;
     }
-    finally {}
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(SeekBar.OnSeekBarChangeListener paramOnSeekBarChangeListener)
   {
-    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject2 == null) || (!(localObject2 instanceof QQAppInterface))) {}
-    do
+    if (paramOnSeekBarChangeListener != null) {
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(paramOnSeekBarChangeListener);
+    }
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    }
+  }
+  
+  public void c()
+  {
+    if (FontSettingManager.getFontLevel() > 17.0F)
     {
-      int i;
-      Object localObject1;
-      do
-      {
-        return null;
-        if ("findMessage".equals(paramString)) {
-          for (;;)
-          {
-            try
-            {
-              paramBundle = ((QQAppInterface)localObject2).getMessageFacade().getMessages("2747277822", 1008, 10);
-              if ((paramBundle == null) || (paramBundle.size() <= 0)) {
-                break;
-              }
-              paramString = new ArrayList();
-              i = paramBundle.size() - 1;
-              if (i >= 0)
-              {
-                localObject1 = (MessageRecord)paramBundle.get(i);
-                if (("2747277822".equals(((MessageRecord)localObject1).frienduin)) && (((localObject1 instanceof MessageForArkApp)) || ((localObject1 instanceof MessageForPubAccount)) || ((localObject1 instanceof MessageForStructing))))
-                {
-                  localObject1 = QQGameMsgInfo.parseMessageRecord((MessageRecord)localObject1);
-                  if (localObject1 != null) {
-                    paramString.add(localObject1);
-                  }
-                }
-                if (paramString.size() != 3) {}
-              }
-              else
-              {
-                paramBundle = new Bundle();
-                paramBundle.putSerializable("key_get_msg", paramString);
-                callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
-                return null;
-              }
-            }
-            catch (Throwable paramString)
-            {
-              paramString.printStackTrace();
-              return null;
-            }
-            i -= 1;
-          }
-        }
-        if ("getGameMsg".equals(paramString))
-        {
-          paramString = (atyd)((AppRuntime)localObject2).getManager(358);
-          localObject1 = paramString.a();
-          paramBundle = new ArrayList();
-          if (localObject1 != null) {
-            paramBundle.addAll(paramString.a());
-          }
-          localObject1 = new Bundle();
-          ((Bundle)localObject1).putSerializable("key_get_game_msg", paramBundle);
-          ((Bundle)localObject1).putInt("key_get_game_view_type", paramString.d());
-          ((Bundle)localObject1).putBoolean("key_get_game_show_on_list", paramString.c);
-          ((Bundle)localObject1).putBoolean("key_get_game_show_req_msg_unread", paramString.d);
-          ((Bundle)localObject1).putBoolean("key_get_game_gray_user", paramString.c());
-          callbackResult(paramInt, EIPCResult.createSuccessResult((Bundle)localObject1));
-          return null;
-        }
-        if ("doOnResume".equals(paramString))
-        {
-          ((atyd)((AppRuntime)localObject2).getManager(358)).c(0);
-          ((QQAppInterface)localObject2).getMessageFacade().setReaded("2747277822", 1008, true, true);
-          return null;
-        }
-        if ("doOnDestory".equals(paramString))
-        {
-          ((atyd)((AppRuntime)localObject2).getManager(358)).c(0);
-          return null;
-        }
-        if ("getGameMsgUrl".equals(paramString))
-        {
-          paramString = (atyd)((AppRuntime)localObject2).getManager(358);
-          paramBundle = new Bundle();
-          paramBundle.putString("key_get_msg_list_url", paramString.b());
-          callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
-          return null;
-        }
-        if (!"saveGalleryDataToMsg".equals(paramString)) {
-          break;
-        }
-        paramString = paramBundle.getString("game_source_pic_txt");
-        localObject1 = paramBundle.getString("game_source_pic_url");
-        paramInt = paramBundle.getInt("game_source_type_pic", 0);
-        i = paramBundle.getInt("game_source_subtype_pic", 0);
-        long l = paramBundle.getLong("uniseq");
-        int j = paramBundle.getInt("is_troop");
-        paramBundle = paramBundle.getString("friend_uin");
-        localObject2 = (QQAppInterface)localObject2;
-        paramBundle = ((QQAppInterface)localObject2).getMessageFacade().queryMsgItemByUniseq(paramBundle, j, l);
-      } while (paramBundle == null);
-      atyv.a("game_source_pic_txt", paramString, paramBundle);
-      atyv.a("game_source_pic_url", (String)localObject1, paramBundle);
-      atyv.a("game_source_type_pic", paramInt + "", paramBundle);
-      atyv.a("game_source_subtype_pic", i + "", paramBundle);
-      ThreadManager.excute(new QQGameIPCModule.1(this, (QQAppInterface)localObject2, paramBundle), 32, null, false);
-      return null;
-      if ("clearUnreadMsg".equals(paramString))
-      {
-        ((QQAppInterface)localObject2).getConversationFacade().a("2747277822", 1008, false);
-        return null;
-      }
-      if ("openSessionPage".equals(paramString))
-      {
-        atyf.a(((atyd)((AppRuntime)localObject2).getManager(358)).b(), ((AppRuntime)localObject2).getApplication(), null);
-        return null;
-      }
-    } while (!"action_set_clean_req_time".equals(paramString));
-    atyf.a(((AppRuntime)localObject2).getAccount(), System.currentTimeMillis());
-    return null;
+      float f1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().density;
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams((int)(150.0F * f1), (int)(f1 * 150.0F));
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(paramInt);
+  }
+  
+  public void c(String paramString)
+  {
+    this.f.setText(paramString);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(paramBoolean);
+  }
+  
+  public void d(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(paramInt);
+    }
+  }
+  
+  public void d(String paramString)
+  {
+    this.e.setText(paramString);
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844286);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131691110));
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844287);
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131691112));
+  }
+  
+  public void e(String paramString)
+  {
+    if (this.g.getMeasuredWidth() <= 0)
+    {
+      this.g.post(new MusicFileViewer.1(this, paramString));
+      return;
+    }
+    this.g.setText(auea.a(paramString, false, this.g.getMeasuredWidth(), this.g.getPaint(), 2));
+  }
+  
+  public void f(String paramString)
+  {
+    this.h.setText(paramString);
   }
 }
 

@@ -1,62 +1,36 @@
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
-public class bmgs
-  extends bmgv
+final class bmgs
+  extends bmfr
 {
-  public bmgs(TAVCutVideoSession paramTAVCutVideoSession)
-  {
-    super(paramTAVCutVideoSession);
-  }
+  bmgs(Context paramContext) {}
   
-  protected bmgl a(List<bmgk> paramList)
+  public void b(@NonNull bmfs parambmfs)
   {
-    bmgw localbmgw = new bmgw();
-    ArrayList localArrayList = new ArrayList();
-    bmgk localbmgk;
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      String str = a(paramList);
-      paramList = paramList.iterator();
-      do
-      {
-        if (!paramList.hasNext()) {
-          break;
-        }
-        localbmgk = (bmgk)paramList.next();
-      } while (!localbmgk.jdField_a_of_type_JavaLangString.equals(str));
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.e("Utility", 2, "-->getEntryControl:connection recv data!");
     }
-    for (paramList = localbmgk.jdField_a_of_type_JavaUtilList;; paramList = localArrayList)
+    parambmfs = parambmfs.a();
+    boolean bool1 = bool2;
+    if (parambmfs != null)
     {
-      localbmgw.jdField_a_of_type_JavaUtilList = paramList;
-      return localbmgw;
-    }
-  }
-  
-  protected List<Long> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((this.a != null) && (this.a.getDuration() != null))
-    {
-      long l1 = this.a.getDuration().getTimeUs() / 1000L;
-      int i = 3000;
-      if (l1 > 30000L) {
-        i = 6000;
-      }
-      int j = 0;
-      while ((j <= l1 / i) && (j < 3))
-      {
-        long l2 = j * i;
-        if (l2 < l1) {
-          localArrayList.add(Long.valueOf(l2));
-        }
-        j += 1;
+      parambmfs = bmgr.a("on_off", parambmfs);
+      if (parambmfs == null) {
+        bool1 = bool2;
       }
     }
-    return localArrayList;
+    else
+    {
+      bmgq.a(this.a, bool1);
+      return;
+    }
+    if (((Integer)parambmfs).intValue() == 1) {}
+    for (bool1 = true;; bool1 = false) {
+      break;
+    }
   }
 }
 

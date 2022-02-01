@@ -1,41 +1,30 @@
-import android.content.Context;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import kotlin.Metadata;
 
-class sop
-  implements AdapterView.OnItemClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+public final class sop
+  implements View.OnClickListener
 {
-  sop(soo paramsoo, Context paramContext) {}
+  public sop(VideoFeedsStressFollowLayout paramVideoFeedsStressFollowLayout) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final void onClick(View paramView)
   {
-    pwo localpwo = (pwo)this.jdField_a_of_type_Soo.getItem(paramInt);
-    Object localObject;
-    if ((localpwo != null) && (!TextUtils.isEmpty(localpwo.b)))
-    {
-      if (!localpwo.b.startsWith("mqq://")) {
-        break label178;
-      }
-      localObject = bfwg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, localpwo.b);
-      if (localObject != null) {
-        ((bfvp)localObject).a();
-      }
-    }
+    Object localObject = VideoFeedsStressFollowLayout.a(this.a);
+    if ((localObject != null) && (((VideoInfo)localObject).q == true)) {}
     for (;;)
     {
-      localObject = new pbg().b().a();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        odq.a(null, "CliOper", "", "", "0X80092FE", "0X80092FE", 0, 0, "" + localpwo.c, "" + localpwo.a, "", (String)localObject, false);
-      }
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      label178:
-      pay.b(soo.a(this.jdField_a_of_type_Soo), localpwo.b);
+      localObject = VideoFeedsStressFollowLayout.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((sor)((Iterator)localObject).next()).a(VideoFeedsStressFollowLayout.a(this.a));
+      }
     }
   }
 }

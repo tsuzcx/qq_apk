@@ -1,19 +1,17 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
 import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.QQToast;
 
 final class ShareUtils$2
-  implements MiniAppController.ActivityResultListener
+  implements Runnable
 {
   ShareUtils$2(Activity paramActivity) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void run()
   {
-    MiniAppController.getInstance().removeActivityResultListener(this);
-    return ShareUtils.access$000(this.val$activity, paramInt1, paramInt2, paramIntent);
+    QQToast.a(this.val$activity, 0, 2131720175, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131299080));
   }
 }
 

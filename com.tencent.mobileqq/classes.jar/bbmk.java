@@ -1,172 +1,168 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.PttInfoCollector;
-import com.tencent.mobileqq.transfile.TransfileUtile;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.opengl.EGL14;
+import android.opengl.EGLConfig;
+import android.opengl.EGLContext;
+import android.opengl.EGLDisplay;
+import android.opengl.EGLExt;
+import android.opengl.EGLSurface;
+import android.view.Surface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import localpb.richMsg.RichMsg.PicRec;
-import localpb.richMsg.RichMsg.PttRec;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.msg.im_msg_body.MsgBody;
-import tencent.im.msg.im_msg_body.NotOnlineFile;
-import tencent.im.msg.im_msg_body.RichText;
 
-public class bbmk
-  implements bbls
+@TargetApi(18)
+public final class bbmk
 {
-  private void a(MessageHandler paramMessageHandler, List<MessageRecord> paramList, int paramInt1, msg_comm.Msg paramMsg, long paramLong1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong2, boolean paramBoolean4, int paramInt2)
+  private EGLConfig jdField_a_of_type_AndroidOpenglEGLConfig;
+  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext = EGL14.EGL_NO_CONTEXT;
+  private EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.EGL_NO_DISPLAY;
+  
+  public bbmk(EGLContext paramEGLContext, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder("<---decodeC2CMsgPkg_OfflineFile : ");
-    localStringBuilder.append(" c2cCmd:").append(paramInt1).append(";friendUin:").append(paramLong1).append(";isReaded:").append(paramBoolean1).append(";isPullRoam:").append(paramBoolean2).append(";isSelfSender:").append(paramBoolean3).append(";\n");
-    long l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-    long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has())) {
-      if (QLog.isColorLevel()) {
-        QLog.e("OfflineFileDecoder", 2, "<---decodeC2CMsgPkg_OfflineFile return null:hasBody:" + paramMsg.msg_body.has() + "hasRichT:" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has());
+    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay != EGL14.EGL_NO_DISPLAY) {
+      throw new RuntimeException("EGL already set up");
+    }
+    EGLContext localEGLContext1 = paramEGLContext;
+    if (paramEGLContext == null)
+    {
+      localEGLContext1 = EGL14.EGL_NO_CONTEXT;
+      QLog.e("EglCore", 2, "sharedContext == null");
+    }
+    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
+    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay == EGL14.EGL_NO_DISPLAY) {
+      throw new RuntimeException("unable to get EGL14 display");
+    }
+    paramEGLContext = new int[2];
+    if (!EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, 0, paramEGLContext, 1))
+    {
+      this.jdField_a_of_type_AndroidOpenglEGLDisplay = null;
+      throw new RuntimeException("unable to initialize EGL14");
+    }
+    if ((paramInt & 0x2) != 0)
+    {
+      paramEGLContext = a(paramInt, 3);
+      if (paramEGLContext != null)
+      {
+        EGLContext localEGLContext2 = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, localEGLContext1, new int[] { 12440, 3, 12344 }, 0);
+        if (EGL14.eglGetError() == 12288)
+        {
+          this.jdField_a_of_type_AndroidOpenglEGLConfig = paramEGLContext;
+          this.jdField_a_of_type_AndroidOpenglEGLContext = localEGLContext2;
+        }
       }
     }
-    label1086:
-    for (;;)
+    if (this.jdField_a_of_type_AndroidOpenglEGLContext == EGL14.EGL_NO_CONTEXT)
     {
-      return;
-      Object localObject1 = (im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get();
-      Object localObject2 = (im_msg_body.NotOnlineFile)((im_msg_body.RichText)localObject1).not_online_file.get();
-      if (!((im_msg_body.RichText)localObject1).not_online_file.has())
-      {
-        localStringBuilder.append("hasNotOnlineFile:").append(((im_msg_body.RichText)localObject1).not_online_file.has()).append(";hasUUID:").append(((im_msg_body.NotOnlineFile)localObject2).bytes_file_uuid.has());
-        if (QLog.isColorLevel()) {
-          QLog.d("OfflineFileDecoder", 2, localStringBuilder.toString());
-        }
+      paramEGLContext = a(paramInt, 2);
+      if (paramEGLContext == null) {
+        throw new RuntimeException("Unable to find a suitable EGLConfig");
       }
-      else if ((paramInt1 == 169) || (paramInt1 == 243))
-      {
-        if (!paramBoolean4)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("OfflineFileDecoder", 2, "<FileAssistant>offlineFile come: c2cCmd[" + paramInt1 + "]");
-          }
-          paramMessageHandler.app.getFileTransferHandler().a(paramMessageHandler, paramList, paramMsg, (im_msg_body.NotOnlineFile)localObject2, String.valueOf(paramLong1), paramBoolean1, paramBoolean2, paramLong2, paramInt2, null);
-        }
-      }
-      else
-      {
-        paramMsg = null;
-        String str = ((im_msg_body.NotOnlineFile)localObject2).bytes_file_uuid.get().toStringUtf8() + l1;
-        localObject1 = ((im_msg_body.NotOnlineFile)localObject2).bytes_file_uuid.get().toStringUtf8();
-        localStringBuilder.append("     NotOnLineFile info : serverPath:").append((String)localObject1).append(";fileKey :").append(str).append(";");
-        if (!paramMessageHandler.a().a(str))
-        {
-          str = ((im_msg_body.NotOnlineFile)localObject2).bytes_file_name.get().toStringUtf8();
-          localStringBuilder.append("strFileName:").append(str).append(";");
-          paramLong1 = ((im_msg_body.NotOnlineFile)localObject2).uint64_file_size.get();
-          if ((paramInt1 == 241) || (bblk.a(str, paramInt1)))
-          {
-            paramMessageHandler = new RichMsg.PicRec();
-            paramMessageHandler.localPath.set((String)localObject1);
-            paramMessageHandler.size.set(paramLong1);
-            paramMessageHandler.type.set(1);
-            paramMessageHandler.isRead.set(false);
-            paramMessageHandler.uuid.set((String)localObject1);
-            paramMessageHandler.serverStorageSource.set("ftn");
-            paramMessageHandler.version.set(5);
-            paramMessageHandler.isReport.set(0);
-            paramMsg = (MessageForPic)bbli.a(-2000);
-            paramMsg.msgtype = -2000;
-            paramMsg.msgData = paramMessageHandler.toByteArray();
-            paramMsg.parse();
-            paramList.add(paramMsg);
-            paramMsg = null;
-            localStringBuilder.append("protocolStr:").append(paramMsg).append(";");
-          }
-        }
-        for (;;)
-        {
-          if (!QLog.isColorLevel()) {
-            break label1086;
-          }
-          QLog.d("OfflineFileDecoder", 2, localStringBuilder.toString());
-          return;
-          if ((paramInt1 != 242) && (!bblk.b(str, paramInt1))) {
-            break;
-          }
-          if (!str.equals(""))
-          {
-            if (!str.contains("_")) {}
-            for (paramMsg = str.substring(0, str.length() - 4);; paramMsg = str.substring(str.lastIndexOf("_") + 1, str.length() - 4))
-            {
-              paramMsg = l2 + paramMsg;
-              localStringBuilder.append("c2cCmd:0xf2;key:").append(paramMsg).append(";");
-              if (paramBoolean4) {
-                break label872;
-              }
-              if (!bcgn.e(paramMsg)) {
-                break;
-              }
-              localStringBuilder.append("DuplicateKey:").append(paramMsg).append(";");
-              if (QLog.isColorLevel()) {
-                QLog.d("OfflineFileDecoder", 2, localStringBuilder.toString());
-              }
-              bcgn.d(paramMsg);
-              return;
-            }
-            bcgn.c(paramMsg);
-          }
-          for (;;)
-          {
-            label872:
-            paramMsg = TransfileUtile.makeTransFileProtocolData((String)localObject1, paramLong1, 2, false, (String)localObject1, null, "ftn");
-            localObject2 = new RichMsg.PttRec();
-            ((RichMsg.PttRec)localObject2).localPath.set((String)localObject1);
-            ((RichMsg.PttRec)localObject2).size.set(paramLong1);
-            ((RichMsg.PttRec)localObject2).type.set(2);
-            ((RichMsg.PttRec)localObject2).uuid.set((String)localObject1);
-            ((RichMsg.PttRec)localObject2).isRead.set(false);
-            ((RichMsg.PttRec)localObject2).serverStorageSource.set("ftn");
-            ((RichMsg.PttRec)localObject2).isReport.set(0);
-            ((RichMsg.PttRec)localObject2).version.set(5);
-            paramLong1 = System.currentTimeMillis() / 1000L;
-            ((RichMsg.PttRec)localObject2).msgRecTime.set(paramLong1);
-            ((RichMsg.PttRec)localObject2).msgTime.set(l1);
-            localObject1 = (MessageForPtt)bbli.a(-2002);
-            ((MessageForPtt)localObject1).msgtype = -2002;
-            ((MessageForPtt)localObject1).msgData = ((RichMsg.PttRec)localObject2).toByteArray();
-            ((MessageForPtt)localObject1).parse();
-            paramList.add(localObject1);
-            PttInfoCollector.reportPTTPV(paramMessageHandler.app, 1, false, 4);
-            break;
-            if (QLog.isColorLevel()) {
-              QLog.d("OfflineFileDecoder", 2, "offline ptt no filename");
-            }
-          }
-          localStringBuilder.append("rcv a repeated offline file push msg");
-        }
-      }
+      localEGLContext1 = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, localEGLContext1, new int[] { 12440, 2, 12344 }, 0);
+      a("eglCreateContext");
+      this.jdField_a_of_type_AndroidOpenglEGLConfig = paramEGLContext;
+      this.jdField_a_of_type_AndroidOpenglEGLContext = localEGLContext1;
+    }
+    paramEGLContext = new int[1];
+    EGL14.eglQueryContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext, 12440, paramEGLContext, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("EglCore", 2, "EGLContext created, client version " + paramEGLContext[0]);
     }
   }
   
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm)
+  private EGLConfig a(int paramInt1, int paramInt2)
   {
-    long l1 = paramMsg.msg_head.from_uin.get();
-    int i = paramMsg.msg_head.c2c_cmd.get();
-    long l2 = parambbkm.e;
-    boolean bool2 = parambbkm.jdField_a_of_type_Boolean;
-    boolean bool3 = parambbkm.b;
-    if (l1 == parambbkm.jdField_a_of_type_Long) {}
-    for (boolean bool1 = true;; bool1 = false)
+    if (paramInt2 >= 3) {}
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    EGLDisplay localEGLDisplay = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
+    paramInt1 = arrayOfEGLConfig.length;
+    if (!EGL14.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, 0, arrayOfEGLConfig, 0, paramInt1, arrayOfInt, 0))
     {
-      a(paramMessageHandler, paramList, i, paramMsg, l2, bool2, bool3, bool1, parambbkm.jdField_d_of_type_Long, parambbkm.jdField_d_of_type_Boolean, parambbkm.jdField_a_of_type_Int);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.w("EglCore", 2, "unable to find RGB8888 / " + paramInt2 + " EGLConfig");
+      }
+      return null;
+    }
+    return arrayOfEGLConfig[0];
+  }
+  
+  private void b(String paramString)
+  {
+    int i = EGL14.eglGetError();
+    if (i != 12288) {
+      QLog.e("EglCore", 2, new RuntimeException(paramString + ": EGL error: 0x" + Integer.toHexString(i)), new Object[0]);
+    }
+  }
+  
+  public EGLSurface a(int paramInt1, int paramInt2)
+  {
+    EGLSurface localEGLSurface = EGL14.eglCreatePbufferSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLConfig, new int[] { 12375, paramInt1, 12374, paramInt2, 12344 }, 0);
+    b("eglCreatePbufferSurface");
+    if (localEGLSurface == null) {
+      throw new RuntimeException("surface was null");
+    }
+    return localEGLSurface;
+  }
+  
+  public EGLSurface a(Object paramObject)
+  {
+    if ((!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceTexture))) {
+      throw new RuntimeException("invalid surface: " + paramObject);
+    }
+    paramObject = EGL14.eglCreateWindowSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLConfig, paramObject, new int[] { 12344 }, 0);
+    b("eglCreateWindowSurface");
+    if (paramObject == null) {
+      throw new RuntimeException("surface was null");
+    }
+    return paramObject;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay != EGL14.EGL_NO_DISPLAY)
+    {
+      EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
+      EGL14.eglDestroyContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext);
+      EGL14.eglReleaseThread();
+      EGL14.eglTerminate(this.jdField_a_of_type_AndroidOpenglEGLDisplay);
+    }
+    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.EGL_NO_DISPLAY;
+    this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.EGL_NO_CONTEXT;
+    this.jdField_a_of_type_AndroidOpenglEGLConfig = null;
+  }
+  
+  public void a(EGLSurface paramEGLSurface)
+  {
+    EGL14.eglDestroySurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface);
+  }
+  
+  public void a(EGLSurface paramEGLSurface, long paramLong)
+  {
+    EGLExt.eglPresentationTimeANDROID(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface, paramLong);
+  }
+  
+  void a(String paramString)
+  {
+    int i = EGL14.eglGetError();
+    if (i != 12288)
+    {
+      new RuntimeException(paramString + ": EGL error: 0x" + Integer.toHexString(i));
+      new StringBuilder().append("EGL14.eglGetCurrentContext() = ").append(EGL14.eglGetCurrentContext()).append(", mEGLContext = ").append(this.jdField_a_of_type_AndroidOpenglEGLContext).toString();
+      a();
+    }
+  }
+  
+  public boolean a(EGLSurface paramEGLSurface)
+  {
+    return EGL14.eglSwapBuffers(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface);
+  }
+  
+  public void b(EGLSurface paramEGLSurface)
+  {
+    if ((this.jdField_a_of_type_AndroidOpenglEGLDisplay == EGL14.EGL_NO_DISPLAY) && (QLog.isColorLevel())) {
+      QLog.d("EglCore", 2, "NOTE: makeCurrent w/o display");
+    }
+    if (!EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface, paramEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLContext)) {
+      throw new RuntimeException("eglMakeCurrent failed");
     }
   }
 }

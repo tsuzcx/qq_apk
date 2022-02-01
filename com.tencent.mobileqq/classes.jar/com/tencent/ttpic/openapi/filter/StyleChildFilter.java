@@ -14,6 +14,7 @@ import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.ttpic.GPUImageLookupFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.model.SizeI;
 import com.tencent.ttpic.openapi.PTFaceAttr;
@@ -25,9 +26,10 @@ import com.tencent.ttpic.openapi.filter.stylizefilter.toonFilter.TTToonFilterGro
 import com.tencent.ttpic.openapi.initializer.TNNStyleChildInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.model.FaceStyleItem;
+import com.tencent.ttpic.openapi.model.FaceStyleItem.ChangeGenderParams;
 import com.tencent.ttpic.openapi.model.FaceStyleItem.Process;
 import com.tencent.ttpic.openapi.model.FaceStyleItem.Render;
-import com.tencent.ttpic.openapi.model.FaceStyleItem.STYLE_CHANGE_TYPE;
+import com.tencent.ttpic.openapi.model.FaceStyleItem.StyleChangeType;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.offlineset.utils.FileOfflineUtil;
@@ -53,6 +55,7 @@ public class StyleChildFilter
   private SizeI NET_SIZE = new SizeI(256, 256);
   private CartoonFusionFilter cartoonFusionFilter;
   private CartoonStylePreProcessFilter cartoonStylePreProcessFilter;
+  Bitmap changeGenderBitmap;
   private VideoFilterBase copyFilter = new VideoFilterBase("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private CosFunTransitionFilter cosFunTransitionFilter;
   private BGColorCropFilter cropFilter = new BGColorCropFilter();
@@ -90,6 +93,7 @@ public class StyleChildFilter
   private float[] rgbaAfterLutA;
   private StyleChildPostMaskRender styleChildPostMaskRender;
   private StyleChildPostRender styleChildPostRender;
+  private StyleChildPostRender styleChildPostRenderHair;
   private StyleChildTransformFilter styleChildWarpFilter;
   private StyleCustomFilterGroup styleCustomFilterGroup;
   private int[] tex = new int[2];
@@ -106,16 +110,33 @@ public class StyleChildFilter
     this.faceStyleItem = paramFaceStyleItem;
     this.customFilterList = paramList;
     setImageNetSize(paramFaceStyleItem.imageSize[0], paramFaceStyleItem.imageSize[1]);
-    if (this.faceStyleItem.postRender == null) {}
-    for (paramFaceStyleItem = null;; paramFaceStyleItem = FileUtils.load(AEModule.getContext(), FileUtils.genSeperateFileDir(this.faceStyleItem.dataPath) + this.faceStyleItem.postRender.function))
+    int i;
+    int j;
+    if (this.faceStyleItem.postRender == null)
     {
-      int i = this.NET_SIZE.width;
-      int j = this.NET_SIZE.height;
-      paramList = paramFaceStyleItem;
-      if (TextUtils.isEmpty(paramFaceStyleItem)) {
-        paramList = StyleChildPostRender.FRAGMENT_SHADER;
+      paramFaceStyleItem = null;
+      i = this.NET_SIZE.width;
+      j = this.NET_SIZE.height;
+      if (!TextUtils.isEmpty(paramFaceStyleItem)) {
+        break label955;
       }
+    }
+    label955:
+    for (paramList = StyleChildPostRender.FRAGMENT_SHADER;; paramList = paramFaceStyleItem)
+    {
       this.styleChildPostRender = new StyleChildPostRender(i, j, paramList);
+      if (this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CHANGE_GENDER.value)
+      {
+        i = this.NET_SIZE.width;
+        j = this.NET_SIZE.height;
+        paramList = paramFaceStyleItem;
+        if (TextUtils.isEmpty(paramFaceStyleItem))
+        {
+          paramFaceStyleItem = this.styleChildPostRenderHair;
+          paramList = StyleChildPostRender.FRAGMENT_SHADER;
+        }
+        this.styleChildPostRenderHair = new StyleChildPostRender(i, j, paramList);
+      }
       this.styleChildPostMaskRender = new StyleChildPostMaskRender(this.NET_SIZE.width, this.NET_SIZE.height);
       paramFaceStyleItem = FileUtils.genSeperateFileDir(this.faceStyleItem.dataPath) + this.faceStyleItem.transformMask;
       this.styleChildWarpFilter = new StyleChildTransformFilter(this.NET_SIZE.width, this.NET_SIZE.height, paramFaceStyleItem);
@@ -131,6 +152,9 @@ public class StyleChildFilter
       this.warpArr = new float[this.NET_SIZE.width * this.NET_SIZE.height * 2];
       this.warpMat = Bitmap.createBitmap(this.NET_SIZE.width, this.NET_SIZE.height, Bitmap.Config.ARGB_8888);
       this.outBitmap = Bitmap.createBitmap(this.NET_SIZE.width, this.NET_SIZE.height, Bitmap.Config.ARGB_8888);
+      if (this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CHANGE_GENDER.value) {
+        this.changeGenderBitmap = Bitmap.createBitmap(this.NET_SIZE.width * 2, this.NET_SIZE.height, Bitmap.Config.ARGB_8888);
+      }
       this.faceRectFeatherMask = this.faceStyleItem.postRender.faceRectFeatherMask;
       FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.setParams(6, this.faceStyleItem.libraryText, this.faceStyleItem.styleChangeType, this.faceStyleItem.initProcess.function, this.faceStyleItem.preProcess.function, this.faceStyleItem.postProcess.function, processBlobNames(this.faceStyleItem.initProcess.blobNames), processBlobNames(this.faceStyleItem.preProcess.blobNames), processBlobNames(this.faceStyleItem.postProcess.blobNames), this.faceStyleItem.initProcess.scale, this.faceStyleItem.initProcess.bias, this.faceStyleItem.preProcess.scale, this.faceStyleItem.preProcess.bias, this.faceStyleItem.postProcess.scale, this.faceStyleItem.postProcess.bias);
       decodeMaterialBitmap();
@@ -144,6 +168,8 @@ public class StyleChildFilter
       initCustomGroup();
       init();
       return;
+      paramFaceStyleItem = FileUtils.load(AEModule.getContext(), FileUtils.genSeperateFileDir(this.faceStyleItem.dataPath) + this.faceStyleItem.postRender.function);
+      break;
     }
   }
   
@@ -254,6 +280,39 @@ public class StyleChildFilter
     return new float[] { arrayOfFloat[0][0], arrayOfFloat[0][1], f1, arrayOfFloat[1][0], arrayOfFloat[1][1], f2 };
   }
   
+  private float[] getPositionHair(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
+  {
+    int k = 0;
+    float[] arrayOfFloat1 = new float[8];
+    float[] arrayOfFloat2 = new float[8];
+    arrayOfFloat2[0] = paramArrayOfFloat[2];
+    arrayOfFloat2[1] = paramArrayOfFloat[5];
+    arrayOfFloat2[2] = (this.NET_SIZE.height * paramArrayOfFloat[1] + paramArrayOfFloat[2]);
+    arrayOfFloat2[3] = (this.NET_SIZE.height * paramArrayOfFloat[4] + paramArrayOfFloat[5]);
+    arrayOfFloat2[4] = (this.NET_SIZE.width * paramArrayOfFloat[0] + this.NET_SIZE.height * paramArrayOfFloat[1] + paramArrayOfFloat[2]);
+    arrayOfFloat2[5] = (this.NET_SIZE.width * paramArrayOfFloat[3] + this.NET_SIZE.height * paramArrayOfFloat[4] + paramArrayOfFloat[5]);
+    arrayOfFloat2[6] = (this.NET_SIZE.width * paramArrayOfFloat[0] + paramArrayOfFloat[2]);
+    arrayOfFloat2[7] = (this.NET_SIZE.width * paramArrayOfFloat[3] + paramArrayOfFloat[5]);
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= 8) {
+        break;
+      }
+      arrayOfFloat2[i] /= paramInt1;
+      arrayOfFloat2[(i + 1)] /= paramInt2;
+      i += 2;
+    }
+    while (j < arrayOfFloat2.length)
+    {
+      arrayOfFloat1[j] = (arrayOfFloat2[j] * 2.0F - 1.0F);
+      j += 1;
+    }
+    return arrayOfFloat1;
+  }
+  
   private List<PointF> getTransFacePoints(List<PointF> paramList, float[] paramArrayOfFloat)
   {
     if (paramList == null) {
@@ -285,7 +344,7 @@ public class StyleChildFilter
     this.ttCartoonFilterGroup.updateLutPaths(this.faceStyleItem.lutPaths);
     this.ttCartoonFilterGroup.updateScaleValue(this.faceStyleItem.postRender.faceMaskBold);
     this.gpuImageLookupFilter.updateLut(this.faceStyleItem.cartoonEnlightLut);
-    if ((this.faceStyleItem != null) && (this.faceStyleItem.styleChangeType == FaceStyleItem.STYLE_CHANGE_TYPE.CARTOON_STYLE.value))
+    if ((this.faceStyleItem != null) && (this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CARTOON_STYLE.value))
     {
       bool = true;
       this.isCartoonStyleMaterial = bool;
@@ -427,6 +486,9 @@ public class StyleChildFilter
     this.cropFilter.clearGLSLSelf();
     this.fillFilter.clearGLSLSelf();
     this.styleChildPostRender.clearGLSLSelf();
+    if (this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CHANGE_GENDER.value) {
+      this.styleChildPostRenderHair.clearGLSLSelf();
+    }
     this.styleChildPostMaskRender.clearGLSLSelf();
     this.styleChildWarpFilter.clearGLSLSelf();
     this.faceOffFilter.clearGLSLSelf();
@@ -476,6 +538,9 @@ public class StyleChildFilter
     this.cropFilter.ApplyGLSLFilter();
     this.fillFilter.ApplyGLSLFilter();
     this.styleChildPostRender.ApplyGLSLFilter();
+    if (this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CHANGE_GENDER.value) {
+      this.styleChildPostRenderHair.ApplyGLSLFilter();
+    }
     this.styleChildPostMaskRender.ApplyGLSLFilter();
     this.styleChildWarpFilter.ApplyGLSLFilter();
     this.faceOffFilter.ApplyGLSLFilter();
@@ -535,7 +600,7 @@ public class StyleChildFilter
   
   public Frame render(Frame paramFrame)
   {
-    if (this.faceStyleItem.styleChangeType == FaceStyleItem.STYLE_CHANGE_TYPE.GENDER_SWITCH.value) {
+    if (this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.GENDER_SWITCH.value) {
       return this.postRenderFrame;
     }
     if ((!this.isCurrentFrameHasFace) && (this.isCartoonStyleMaterial))
@@ -554,10 +619,11 @@ public class StyleChildFilter
     if (localFrame1 != this.postRenderFrame) {
       this.postRenderFrame.unlock();
     }
+    Frame localFrame2;
     if ((this.faceRectFeatherMask) || (this.isCartoonStyleMaterial))
     {
       this.styleChildPostRender.render(paramFrame, localFrame1, true, false);
-      Frame localFrame2 = localFrame1;
+      localFrame2 = localFrame1;
       if (this.isCartoonStyleMaterial)
       {
         localFrame2 = localFrame1;
@@ -584,7 +650,7 @@ public class StyleChildFilter
       if (this.isCartoonStyleMaterial)
       {
         if (this.faceStyleItem.faceFilterType != 99) {
-          break label582;
+          break label587;
         }
         this.resultFrame = this.styleCustomFilterGroup.render(this.fillFrame2);
         if (this.fillFrame2 != this.resultFrame) {
@@ -597,7 +663,7 @@ public class StyleChildFilter
         label442:
         localFrame1 = paramFrame;
         if (paramFrame == this.frameTmp2) {
-          break label692;
+          break label774;
         }
         this.frameTmp2.unlock();
       }
@@ -611,8 +677,9 @@ public class StyleChildFilter
         FrameUtil.clearFrame(this.faceOffMask, 0.0F, 0.0F, 0.0F, 0.0F, this.faceMask.getWidth(), this.faceMask.getHeight());
         this.faceOffMaskFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.faceOffMask);
       }
+      paramFrame.unlock();
       return this.resultFrame;
-      label582:
+      label587:
       if (this.faceStyleItem.faceFilterType == 1)
       {
         this.resultFrame = this.ttCartoonFilterGroup.render(this.fillFrame2);
@@ -622,7 +689,14 @@ public class StyleChildFilter
       break;
       paramFrame = this.cartoonFusionFilter.renderFeather(this.resultFrame, this.frameTmp2, this.postRenderMaskFrame);
       break label442;
-      if (this.faceStyleItem.returnPostProcessTexture)
+      if ((this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CHANGE_GENDER.value) && (this.faceStyleItem.changeGenderParams.outputTextureCount == 2))
+      {
+        localFrame2 = this.copyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+        this.styleChildPostRender.render(paramFrame, localFrame2, false, false);
+        this.styleChildPostRenderHair.render(localFrame2, localFrame1, false, false);
+        paramFrame = localFrame1;
+      }
+      else if (this.faceStyleItem.returnPostProcessTexture)
       {
         this.styleChildPostRender.render(this.cropFrame, localFrame1, false, true);
         paramFrame = localFrame1;
@@ -630,7 +704,7 @@ public class StyleChildFilter
       else
       {
         this.styleChildPostRender.render(paramFrame, localFrame1, false, false);
-        label692:
+        label774:
         paramFrame = localFrame1;
       }
     }
@@ -638,7 +712,7 @@ public class StyleChildFilter
   
   public Frame renderWarp(Frame paramFrame)
   {
-    if (this.faceStyleItem.styleChangeType != FaceStyleItem.STYLE_CHANGE_TYPE.CHILD_STYLE.value) {
+    if (this.faceStyleItem.styleChangeType != FaceStyleItem.StyleChangeType.CHILD_STYLE.value) {
       return paramFrame;
     }
     this.copyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.warpFrame);
@@ -705,144 +779,168 @@ public class StyleChildFilter
           float f4 = this.rgba[3];
           f1 = f1 * 0.2126F + f2 * 0.7152F + 0.0722F * f3;
           if (f1 <= 0.7F) {
-            break label680;
+            break label768;
           }
           f1 = 0.0F;
+          this.gpuImageLookupFilter.setAdjustParam(1.0F - f1);
+          this.copyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.frameTmp);
+          localObject1 = this.gpuImageLookupFilter.render(this.frameTmp);
+          if (this.frameTmp != localObject1) {
+            this.frameTmp.unlock();
+          }
+          this.rgbaAfterLutA = FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.pixelLUT(this.lutABitmap, this.rgba, f1, false);
         }
       }
     }
-    Object localObject2;
-    int j;
-    int k;
-    Object localObject3;
-    Iterator localIterator;
-    Bitmap localBitmap;
-    for (;;)
+    paramFrame = (List)paramPTFaceAttr.getAllFacePoints().get(0);
+    int i = ((Frame)localObject1).getTextureId();
+    int j = ((Frame)localObject1).width;
+    int k = ((Frame)localObject1).height;
+    Object localObject2 = VideoMaterialUtil.copyList(paramFrame);
+    List localList = VideoMaterialUtil.copyList(paramFrame);
+    paramFrame = VideoMaterialUtil.copyList(paramFrame);
+    scale(paramFrame, 1.0D / paramDouble);
+    scale((List)localObject2, 1.0D / paramDouble);
+    FaceOffUtil.getFullCoords(paramFrame, 2.5F);
+    float[] arrayOfFloat = FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.computeFaceCropTransform(paramFrame, this.faceStyleItem.faceCropType, this.faceStyleItem.faceExpandFactor, this.faceStyleItem.faceCropExpandInset, this.NET_SIZE.width, this.NET_SIZE.height, this.faceStyleItem.changeGenderParams.toFloatArray());
+    if ((this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CHANGE_GENDER.value) && (this.faceStyleItem.changeGenderParams.outputTextureCount == 2)) {}
+    for (paramFrame = FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.computeFaceCropTransform(paramFrame, 1003, this.faceStyleItem.faceExpandFactor, this.faceStyleItem.faceCropExpandInset, this.NET_SIZE.width, this.NET_SIZE.height, this.faceStyleItem.changeGenderParams.toFloatArray());; paramFrame = null)
     {
-      this.gpuImageLookupFilter.setAdjustParam(1.0F - f1);
-      this.copyFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.frameTmp);
-      localObject1 = this.gpuImageLookupFilter.render(this.frameTmp);
-      if (this.frameTmp != localObject1) {
-        this.frameTmp.unlock();
-      }
-      this.rgbaAfterLutA = FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.pixelLUT(this.lutABitmap, this.rgba, f1, false);
-      localObject2 = (List)paramPTFaceAttr.getAllFacePoints().get(0);
-      i = ((Frame)localObject1).getTextureId();
-      j = ((Frame)localObject1).width;
-      k = ((Frame)localObject1).height;
-      localObject3 = VideoMaterialUtil.copyList((List)localObject2);
-      paramFrame = VideoMaterialUtil.copyList((List)localObject2);
-      localObject2 = VideoMaterialUtil.copyList((List)localObject2);
-      scale((List)localObject2, 1.0D / paramDouble);
-      scale((List)localObject3, 1.0D / paramDouble);
-      FaceOffUtil.getFullCoords((List)localObject2, 2.5F);
-      localObject2 = FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.computeFaceCropTransform((List)localObject2, this.faceStyleItem.faceCropType, this.faceStyleItem.faceExpandFactor, this.faceStyleItem.faceCropExpandInset, this.NET_SIZE.width, this.NET_SIZE.height);
-      updateCoords((float[])localObject2, j, k);
+      updateCoords(arrayOfFloat, j, k);
       this.cropFilter.setBackgroundColor(this.faceStyleItem.cropBorderColorRGBA);
       this.cropFilter.setTexCords(this.texCoords);
       this.cropFilter.RenderProcess(i, this.NET_SIZE.width, this.NET_SIZE.height, -1, 0.0D, this.cropFrame);
-      if (this.faceStyleItem.styleChangeType == FaceStyleItem.STYLE_CHANGE_TYPE.CARTOON_STYLE.value)
+      if (this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CARTOON_STYLE.value)
       {
-        localObject3 = getTransFacePoints((List)localObject3, getInvTransData((float[])localObject2));
-        this.cartoonStylePreProcessFilter.updatePoints((List)localObject3, this.cropFrame.width, this.cropFrame.height, ((float[])paramPTFaceAttr.getAllFaceAngles().get(0))[1] / 3.141593F * 180.0F, this.faceStyleItem.cartoonFaceLine);
+        localObject2 = getTransFacePoints((List)localObject2, getInvTransData(arrayOfFloat));
+        this.cartoonStylePreProcessFilter.updatePoints((List)localObject2, this.cropFrame.width, this.cropFrame.height, ((float[])paramPTFaceAttr.getAllFaceAngles().get(0))[1] / 3.141593F * 180.0F, this.faceStyleItem.cartoonFaceLine);
         this.cartoonStylePreProcessFilter.render(this.cropFrame.getTextureId(), this.cropFrame.width, this.cropFrame.height);
       }
-      localObject3 = GlUtil.saveTexture(this.cropFrame);
-      FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPreMat(6, (Bitmap)localObject3, true);
-      if (TextUtils.isEmpty(this.faceStyleItem.preProcess.function)) {
-        break;
-      }
-      localIterator = this.textureBitmapList.iterator();
-      while (localIterator.hasNext())
+      localObject2 = GlUtil.saveTexture(this.cropFrame);
+      BenchUtil.benchStart("tnn_time");
+      FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPreMat(6, (Bitmap)localObject2, true);
+      Object localObject3;
+      Bitmap localBitmap;
+      if (!TextUtils.isEmpty(this.faceStyleItem.preProcess.function))
       {
-        localBitmap = (Bitmap)localIterator.next();
-        FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPreMat(6, localBitmap, true);
-      }
-      label680:
-      if (f1 < 0.54F) {
-        f1 = 1.0F;
-      } else {
-        f1 = Math.abs(0.7F - f1) * 1.0F / (0.7F - 0.54F);
-      }
-    }
-    FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPostMat(6, this.outBitmap, false);
-    if (this.faceStyleItem.styleChangeType == FaceStyleItem.STYLE_CHANGE_TYPE.CHILD_STYLE.value) {
-      FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPostMat(6, this.warpMat, false);
-    }
-    if (!TextUtils.isEmpty(this.faceStyleItem.postProcess.function))
-    {
-      localIterator = this.textureBitmapList.iterator();
-      while (localIterator.hasNext())
-      {
-        localBitmap = (Bitmap)localIterator.next();
-        FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPostMat(6, localBitmap, true);
-      }
-    }
-    FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPostMat(6, (Bitmap)localObject3, true);
-    FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.forward(6, 0);
-    GlUtil.loadTexture(this.tex[0], this.outBitmap);
-    this.copyFilter.RenderProcess(i, j, k, -1, 0.0D, this.postRenderFrame);
-    this.copyFilter.RenderProcess(i, j, k, -1, 0.0D, this.postRenderMaskFrame);
-    if (this.faceStyleItem.styleChangeType == FaceStyleItem.STYLE_CHANGE_TYPE.GENDER_SWITCH.value)
-    {
-      this.fillFilter.setPositions(this.position);
-      GlUtil.setBlendMode(true);
-      this.fillFilter.RenderProcess(this.tex[0], j, k, -1, 0.0D, this.postRenderFrame);
-      this.fillFilter.RenderProcess(this.tex[0], j, k, -1, 0.0D, this.postRenderMaskFrame);
-      GlUtil.setBlendMode(false);
-    }
-    for (;;)
-    {
-      if (BitmapUtils.isLegal(this.faceMask))
-      {
-        this.faceOffFilter.updateVideoSize(j, k, paramDouble);
-        this.faceOffFilter.updateParam(paramFrame, i);
-        this.faceOffMaskFilter.updateVideoSize(j, k, paramDouble);
-        this.faceOffMaskFilter.updateParam(paramFrame, i);
-      }
-      ((Bitmap)localObject3).recycle();
-      if (!this.faceRectFeatherMask)
-      {
-        paramFrame = (Frame)localObject1;
-        if (!this.isCartoonStyleMaterial) {
-          break;
+        localObject3 = this.textureBitmapList.iterator();
+        for (;;)
+        {
+          if (((Iterator)localObject3).hasNext())
+          {
+            localBitmap = (Bitmap)((Iterator)localObject3).next();
+            FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPreMat(6, localBitmap, true);
+            continue;
+            label768:
+            if (f1 < 0.54F)
+            {
+              f1 = 1.0F;
+              break;
+            }
+            f1 = Math.abs(0.7F - f1) * 1.0F / (0.7F - 0.54F);
+            break;
+          }
         }
       }
-      paramFrame = (Frame)localObject1;
-      if (paramPTFaceAttr.getFaceInfoList() == null) {
-        break;
+      if (this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CHANGE_GENDER.value) {
+        FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPostMat(6, this.changeGenderBitmap, false);
       }
-      paramFrame = (Frame)localObject1;
-      if (paramPTFaceAttr.getFaceInfoList().size() <= 0) {
-        break;
-      }
-      f1 = ((com.tencent.ttpic.openapi.facedetect.FaceInfo)paramPTFaceAttr.getFaceInfoList().get(0)).rect[2] / paramPTFaceAttr.getFaceDetWidth();
-      if (this.faceStyleItem.verticalMinRadius <= 0) {
-        break label1323;
-      }
-      f2 = this.featherMaskWidth;
-      f3 = this.featherMaskHeight;
-      j = (int)(f2 * f1 * this.faceStyleItem.horizontalFaceRadiusPercent);
-      i = (int)(f1 * f3 * this.faceStyleItem.verticalFaceRadiusPercent);
-      j = Math.max(j, this.faceStyleItem.horizontalMinRadius);
-      i = Math.max(i, this.faceStyleItem.verticalMinRadius);
-      this.cartoonFusionFilter.updateFaceFeatherRadius(j, i);
-      return localObject1;
-      this.styleChildWarpFilter.updateParams(this.outBitmap, this.warpMat, this.faceOffMask, (float[])localObject2, this.position, paramFrame, j, k, paramDouble);
-      this.styleChildPostRender.updateParams(this.outBitmap, this.warpMat, (float[])localObject2);
-      if (!this.faceStyleItem.returnPostProcessTexture) {
-        this.styleChildPostRender.setPositions(this.position);
-      }
-      if ((this.faceRectFeatherMask) || (this.isCartoonStyleMaterial))
+      for (;;)
       {
-        this.styleChildPostMaskRender.updateParams(this.outBitmap, this.warpMat, (float[])localObject2);
-        this.styleChildPostMaskRender.setPositions(this.position);
+        if (this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CHILD_STYLE.value) {
+          FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPostMat(6, this.warpMat, false);
+        }
+        if (TextUtils.isEmpty(this.faceStyleItem.postProcess.function)) {
+          break;
+        }
+        localObject3 = this.textureBitmapList.iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          localBitmap = (Bitmap)((Iterator)localObject3).next();
+          FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPostMat(6, localBitmap, true);
+        }
+        FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPostMat(6, this.outBitmap, false);
       }
+      FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.addPostMat(6, (Bitmap)localObject2, true);
+      FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.forward(6, 0);
+      BenchUtil.benchEnd("tnn_time");
+      if (this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CHANGE_GENDER.value)
+      {
+        this.outBitmap = Bitmap.createBitmap(this.changeGenderBitmap, 0, 0, this.NET_SIZE.width, this.NET_SIZE.height);
+        this.warpMat = Bitmap.createBitmap(this.changeGenderBitmap, this.NET_SIZE.width, 0, this.NET_SIZE.width, this.NET_SIZE.height);
+      }
+      GlUtil.loadTexture(this.tex[0], this.outBitmap);
+      this.copyFilter.RenderProcess(i, j, k, -1, 0.0D, this.postRenderFrame);
+      this.copyFilter.RenderProcess(i, j, k, -1, 0.0D, this.postRenderMaskFrame);
+      if (this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.GENDER_SWITCH.value)
+      {
+        this.fillFilter.setPositions(this.position);
+        GlUtil.setBlendMode(true);
+        this.fillFilter.RenderProcess(this.tex[0], j, k, -1, 0.0D, this.postRenderFrame);
+        this.fillFilter.RenderProcess(this.tex[0], j, k, -1, 0.0D, this.postRenderMaskFrame);
+        GlUtil.setBlendMode(false);
+      }
+      for (;;)
+      {
+        if (BitmapUtils.isLegal(this.faceMask))
+        {
+          this.faceOffFilter.updateVideoSize(j, k, paramDouble);
+          this.faceOffFilter.updateParam(localList, i);
+          this.faceOffMaskFilter.updateVideoSize(j, k, paramDouble);
+          this.faceOffMaskFilter.updateParam(localList, i);
+        }
+        ((Bitmap)localObject2).recycle();
+        if (!this.faceRectFeatherMask)
+        {
+          paramFrame = (Frame)localObject1;
+          if (!this.isCartoonStyleMaterial) {
+            break;
+          }
+        }
+        paramFrame = (Frame)localObject1;
+        if (paramPTFaceAttr.getFaceInfoList() == null) {
+          break;
+        }
+        paramFrame = (Frame)localObject1;
+        if (paramPTFaceAttr.getFaceInfoList().size() <= 0) {
+          break;
+        }
+        f1 = ((com.tencent.ttpic.openapi.facedetect.FaceInfo)paramPTFaceAttr.getFaceInfoList().get(0)).rect[2] / paramPTFaceAttr.getFaceDetWidth();
+        if (this.faceStyleItem.verticalMinRadius <= 0) {
+          break label1628;
+        }
+        f2 = this.featherMaskWidth;
+        f3 = this.featherMaskHeight;
+        j = (int)(f2 * f1 * this.faceStyleItem.horizontalFaceRadiusPercent);
+        i = (int)(f1 * f3 * this.faceStyleItem.verticalFaceRadiusPercent);
+        j = Math.max(j, this.faceStyleItem.horizontalMinRadius);
+        i = Math.max(i, this.faceStyleItem.verticalMinRadius);
+        this.cartoonFusionFilter.updateFaceFeatherRadius(j, i);
+        return localObject1;
+        this.styleChildWarpFilter.updateParams(this.outBitmap, this.warpMat, this.faceOffMask, arrayOfFloat, this.position, localList, j, k, paramDouble);
+        this.styleChildPostRender.updateParams(this.outBitmap, this.warpMat, arrayOfFloat);
+        if (!this.faceStyleItem.returnPostProcessTexture) {
+          this.styleChildPostRender.setPositions(this.position);
+        }
+        if ((this.faceStyleItem.styleChangeType == FaceStyleItem.StyleChangeType.CHANGE_GENDER.value) && (paramFrame != null) && (this.faceStyleItem.changeGenderParams.outputTextureCount == 2))
+        {
+          localObject3 = getPositionHair(paramFrame, j, k);
+          localBitmap = Bitmap.createScaledBitmap(this.warpMat, this.NET_SIZE.width, this.NET_SIZE.height, true);
+          this.styleChildPostRenderHair.updateParams(localBitmap, this.outBitmap, paramFrame);
+          this.styleChildPostRenderHair.setPositions((float[])localObject3);
+          localBitmap.recycle();
+        }
+        if ((this.faceRectFeatherMask) || (this.isCartoonStyleMaterial))
+        {
+          this.styleChildPostMaskRender.updateParams(this.outBitmap, this.warpMat, arrayOfFloat);
+          this.styleChildPostMaskRender.setPositions(this.position);
+        }
+      }
+      label1628:
+      i = (int)(f1 * this.featherMaskWidth * 0.12D);
+      this.cartoonFusionFilter.updateFaceFeatherRadius(i, i);
+      return localObject1;
     }
-    label1323:
-    int i = (int)(f1 * this.featherMaskWidth * 0.12D);
-    this.cartoonFusionFilter.updateFaceFeatherRadius(i, i);
-    return localObject1;
   }
   
   public void updatePreview(Object paramObject) {}

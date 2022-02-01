@@ -1,18 +1,28 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
 import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.AFCallbackForward.1;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class apjj
-  implements Camera.AutoFocusCallback
+class apjj
+  implements apiy
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final apja jdField_a_of_type_Apja;
-  private final apjg jdField_a_of_type_Apjg;
+  apjj(apji paramapji) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void a(apjq paramapjq)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.AFCallbackForward.1(this, paramBoolean));
+    apji.f(this.a, false);
+    if (apji.a(this.a)) {
+      return;
+    }
+    if (apji.a(this.a) != null) {
+      apji.a(this.a).removeMessages(2);
+    }
+    QLog.i("AREngine_ARCloudControl", 1, "onARCloudLBSLocationCheckComplete. retCode = " + paramapjq.jdField_a_of_type_Int + ", imageId = " + paramapjq.jdField_a_of_type_JavaLangString);
+    if (apji.a(this.a) != null)
+    {
+      apki.a(this.a.a.recognitions, apji.a(this.a), paramapjq);
+      apji.a(this.a).a(0, apji.a(this.a));
+    }
+    apji.a(this.a, null);
   }
 }
 

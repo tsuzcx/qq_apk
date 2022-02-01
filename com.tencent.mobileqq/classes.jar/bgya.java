@@ -1,42 +1,28 @@
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.WebAccelerator;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bgya
+final class bgya
+  implements DownloadParams.DecodeHandler
 {
-  public static long a;
-  static final AtomicBoolean a;
-  
-  static
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public static boolean b()
-  {
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-    {
-      long l = System.currentTimeMillis();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("use_speedy_classloader", Boolean.valueOf(true));
-      localHashMap.put("use_dexloader_service", Boolean.valueOf(false));
-      QbSdk.initTbsSettings(localHashMap);
-      WebAccelerator.initTbsEnvironment(BaseApplicationImpl.sApplication.getApplicationContext(), 2);
-      bgxd.D = SystemClock.elapsedRealtime();
-      jdField_a_of_type_Long = System.currentTimeMillis() - l;
-      QLog.d("WebLog_SwiftWebAccelerator", 1, "WebAccelerator.initTbsEnvironment, cost=" + (System.currentTimeMillis() - l));
-      return true;
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    return false;
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return bheg.e(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

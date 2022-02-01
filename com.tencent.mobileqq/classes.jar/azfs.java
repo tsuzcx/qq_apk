@@ -1,14 +1,19 @@
-public class azfs
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/onlinestatus/view/ConstellationView$bindTextView$2$1"}, k=3, mv={1, 1, 16})
+final class azfs
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  azfs(azfo paramazfo, String paramString) {}
   
-  public azfs(azfq paramazfq, String paramString1, String paramString2, String paramString3)
+  public final void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    azes.a.a(this.jdField_a_of_type_Azfo.a(), "VAL_FROM_STATUS_MSG_TAB");
+    azcl.a("0X800AF45", 0, null, null, 14, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

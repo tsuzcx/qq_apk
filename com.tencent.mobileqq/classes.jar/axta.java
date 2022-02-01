@@ -1,53 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class axta
-  extends amwl
+public class axta
+  implements View.OnClickListener
 {
-  axta(axsv paramaxsv) {}
+  public axta(PlayerInvitePanel paramPlayerInvitePanel, int paramInt) {}
   
-  public void onGetSubAccountMsg(boolean paramBoolean, String paramString, bcqu parambcqu)
+  public void onClick(View paramView)
   {
-    if (axsv.a(this.a, paramString, parambcqu))
-    {
-      QLog.d("AccountPanel", 1, String.format("onGetSubAccountMsg return, isSuccess: %s, subAccount: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
-      return;
+    if (PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel) != null) {
+      PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel).onItemClick(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
     }
-    axsv.a(this.a, paramBoolean, paramString, true);
-  }
-  
-  public void onSubAccountMsgNumConfirm(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (axsv.a(this.a) == null)) {
-      return;
-    }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("AccountPanel onSubAccountMsgNumConfirm isSuccess=").append(paramBoolean).append(" subUin=").append(paramString1).append(" set need2ConfirmMsgNum=");
-      if (paramBoolean) {
-        break label127;
-      }
-    }
-    label127:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("AccountPanel", 2, paramBoolean + " nextAction=" + paramString2);
-      if (paramString1.equals(axsv.a(this.a).getUin())) {
-        this.a.a(axsv.a(this.a));
-      }
-      axsv.a(this.a, null);
-      return;
-    }
-  }
-  
-  public void onSubAccountThirdQQUnreadMsgNum(boolean paramBoolean, String paramString, bcqv parambcqv)
-  {
-    if (axsv.a(this.a, paramBoolean, paramString, parambcqv)) {
-      return;
-    }
-    axsv.a(this.a, paramBoolean, paramString, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

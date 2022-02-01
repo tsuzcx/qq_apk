@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amtj;
-import aobx;
+import anvx;
+import apez;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class MultiFragmentAnimRenderable$1
   implements Runnable
 {
-  public MultiFragmentAnimRenderable$1(aobx paramaobx) {}
+  public MultiFragmentAnimRenderable$1(apez paramapez) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131706124), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, anvx.a(2131706476), 1).a();
   }
 }
 

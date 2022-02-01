@@ -1,13 +1,6 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public abstract class axfk
-  extends axdo
+public abstract interface axfk
 {
-  public axfk(Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, paramQQAppInterface);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

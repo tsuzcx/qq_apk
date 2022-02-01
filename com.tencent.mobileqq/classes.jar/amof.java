@@ -1,39 +1,8 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.apollo.ApolloResManager.ApolloDressInfo;
 
-public class amof
-  implements BusinessObserver
+public abstract interface amof
 {
-  protected void a() {}
-  
-  protected void a(Object paramObject) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      a(paramObject);
-      return;
-    case 3: 
-      a();
-      return;
-    case 4: 
-      b(paramBoolean, paramObject);
-      return;
-    }
-    a(paramBoolean);
-  }
+  public abstract void a(ApolloResManager.ApolloDressInfo paramApolloDressInfo, String paramString, int paramInt);
 }
 
 

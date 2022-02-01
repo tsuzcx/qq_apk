@@ -1,23 +1,12 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.AIOUtils.Proxy;
 
-class bdin
-  extends bdji<EditorState>
+public final class bdin
+  implements IMCoreProxyRoute.AIOUtils.Proxy
 {
-  bdin(bdid parambdid, EditorState paramEditorState, List paramList)
+  public boolean getLogcatDBOperation()
   {
-    super(paramEditorState, paramList);
-  }
-  
-  public void a(EditorState paramEditorState)
-  {
-    super.a(paramEditorState);
-    bdid.a(this.a).a();
-  }
-  
-  public boolean a()
-  {
-    return true;
+    return AIOUtils.logcatDBOperation;
   }
 }
 

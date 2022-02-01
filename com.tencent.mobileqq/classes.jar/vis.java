@@ -1,9 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.support.annotation.UiThread;
 
-public abstract interface vis
+public abstract interface vis<M>
+  extends uww
 {
-  public abstract void a(ErrorMessage paramErrorMessage, List<String> paramList);
+  @UiThread
+  public abstract void a(int paramInt, String paramString);
+  
+  @UiThread
+  public abstract void a(M paramM);
+  
+  @UiThread
+  public abstract void c();
+  
+  @UiThread
+  public abstract void e();
 }
 
 

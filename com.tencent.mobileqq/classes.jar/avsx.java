@@ -1,14 +1,16 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.concurrent.Callable;
 
 class avsx
-  implements avtc<Pair<String, Integer>, EmoticonPackage>
+  implements Callable<avrx>
 {
-  avsx(avsq paramavsq) {}
+  avsx(avsv paramavsv) {}
   
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  public avrx a()
   {
-    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    return avsg.b(avsv.a(this.a).getApplication(), "GVideo", localQQAppInterface.getCurrentUin());
   }
 }
 

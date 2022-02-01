@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.widget.Scroller;
-import skn;
-import sko;
+import sxx;
+import sxy;
 
 public class CaptureOperateTouchLayout$IndicatorTouchListener$1
   implements Runnable
 {
-  public CaptureOperateTouchLayout$IndicatorTouchListener$1(sko paramsko) {}
+  public CaptureOperateTouchLayout$IndicatorTouchListener$1(sxy paramsxy) {}
   
   public void run()
   {
     CaptureOperateTouchLayout.a(this.a.a, true);
     CaptureOperateTouchLayout.a(this.a.a).abortAnimation();
-    sko.a(this.a).a();
+    sxy.a(this.a).a();
   }
 }
 

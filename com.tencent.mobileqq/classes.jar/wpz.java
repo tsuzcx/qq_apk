@@ -1,33 +1,24 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class wpz
-  extends SimpleObserver<xhh>
+class wpz
+  extends SimpleJob<Object>
 {
-  public wpz(wpu paramwpu) {}
-  
-  public void a(xhh paramxhh)
+  wpz(wpy paramwpy, String paramString)
   {
-    super.onNext(paramxhh);
-    wpu.a(this.a, paramxhh, new ErrorMessage(), true);
+    super(paramString);
   }
   
-  public void onCancel()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    super.onCancel();
-    xvv.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    if (((ErrorMessage)paramError).errorCode == 2223)
-    {
-      wpu.a(this.a, wpu.a(this.a), new ErrorMessage(), false);
-      return;
+    if (this.a.jdField_a_of_type_Wqb == null) {
+      this.a.jdField_a_of_type_Wqb = new wqb(this.a, this.a.d);
     }
-    wpu.a(this.a, wpu.a(this.a), (ErrorMessage)paramError, false);
+    this.a.jdField_a_of_type_JavaLangString = "";
+    wpy.a(this.a);
+    return null;
   }
 }
 

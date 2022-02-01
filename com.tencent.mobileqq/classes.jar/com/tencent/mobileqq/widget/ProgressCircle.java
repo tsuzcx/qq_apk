@@ -39,8 +39,8 @@ public class ProgressCircle
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.e = 2;
     this.f = 18;
-    this.jdField_a_of_type_Int = getResources().getColor(2131167053);
-    this.jdField_b_of_type_Int = getResources().getColor(2131167053);
+    this.jdField_a_of_type_Int = getResources().getColor(2131167067);
+    this.jdField_b_of_type_Int = getResources().getColor(2131167067);
   }
   
   protected void onDraw(Canvas paramCanvas)

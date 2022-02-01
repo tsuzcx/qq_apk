@@ -1,21 +1,8 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import mqq.os.MqqHandler;
-
-public class aeid
-  extends MqqHandler
+public abstract interface aeid
 {
-  public aeid(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
-  }
+  public abstract void b();
 }
 
 

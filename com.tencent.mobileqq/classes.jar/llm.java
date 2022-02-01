@@ -1,67 +1,59 @@
-import java.util.Random;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.avcore.jni.data.SDKConfigInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public final class llm
+public class llm
 {
-  private static final float jdField_a_of_type_Float;
-  static final int jdField_a_of_type_Int = (int)Math.sqrt(16384.0D);
-  public static Random a;
+  private final SDKConfigInfo a;
   
-  static
+  public llm()
   {
-    jdField_a_of_type_Float = 1.0F / (jdField_a_of_type_Int - 1);
-    jdField_a_of_type_JavaUtilRandom = new Random();
-  }
-  
-  public static final float a()
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextFloat();
-  }
-  
-  public static final float a(float paramFloat)
-  {
-    return lln.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
-  }
-  
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (paramFloat1 < paramFloat2) {
-      return paramFloat2;
+    String str2 = lbh.k();
+    String str1 = "com.tencent.mobileqq";
+    Object localObject2 = "";
+    int i = Process.myPid();
+    Object localObject3 = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses().iterator();
+    do
+    {
+      localObject1 = localObject2;
+      if (!((Iterator)localObject3).hasNext()) {
+        break;
+      }
+      localObject1 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject3).next();
+    } while (((ActivityManager.RunningAppProcessInfo)localObject1).pid != i);
+    Object localObject1 = ((ActivityManager.RunningAppProcessInfo)localObject1).processName;
+    localObject3 = "";
+    i = ((String)localObject1).lastIndexOf(':');
+    localObject2 = localObject3;
+    if (i > 0)
+    {
+      localObject2 = localObject3;
+      if (i < ((String)localObject1).length() - 1) {
+        localObject2 = ((String)localObject1).substring(i + 1);
+      }
     }
-    if (paramFloat1 > paramFloat3) {
-      return paramFloat3;
+    localObject3 = str1;
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localObject3 = str1;
+      if (!TextUtils.equals((CharSequence)localObject2, "video")) {
+        localObject3 = "com.tencent.mobileqq" + "_" + (String)localObject2;
+      }
     }
-    return paramFloat1;
+    this.a = new SDKConfigInfo(str2, (String)localObject3, (String)localObject1, false, false, true);
+    QLog.i("SDKConfigInfoBuilder", 1, "SDKConfigInfo, info[" + this.a.toString() + "]");
   }
   
-  public static final int a(int paramInt)
+  public SDKConfigInfo a()
   {
-    return jdField_a_of_type_JavaUtilRandom.nextInt(paramInt + 1);
-  }
-  
-  public static int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt1 < paramInt2) {
-      return paramInt2;
-    }
-    if (paramInt1 > paramInt3) {
-      return paramInt3;
-    }
-    return paramInt1;
-  }
-  
-  public static final boolean a()
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextBoolean();
-  }
-  
-  public static final float b(float paramFloat)
-  {
-    return lln.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
-  }
-  
-  public static final float c(float paramFloat)
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextFloat() * paramFloat;
+    return this.a;
   }
 }
 

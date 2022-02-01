@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
-import sgs;
+import ssx;
 
 public class ReadInjoyPlayer$4
   implements Runnable
 {
-  public ReadInjoyPlayer$4(sgs paramsgs) {}
+  public ReadInjoyPlayer$4(ssx paramssx) {}
   
   public void run()
   {
-    sgs.a(this.this$0);
+    ssx.a(this.this$0);
   }
 }
 

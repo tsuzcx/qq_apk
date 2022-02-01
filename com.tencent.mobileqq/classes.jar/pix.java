@@ -1,10 +1,21 @@
-public class pix
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+
+class pix
+  implements ViewBase.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  pix(piw parampiw) {}
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity() != null)
+    {
+      piv.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity().finish();
+    }
+  }
 }
 
 

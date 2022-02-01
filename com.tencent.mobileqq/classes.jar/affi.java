@@ -1,15 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class affi
-  implements ValueAnimator.AnimatorUpdateListener
+public class affi
+  extends bgkn
 {
-  affi(affh paramaffh) {}
+  public affi(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, String paramString)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    affh.a(this.a, f);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList error");
+    }
+    TroopMemberListActivity.a(this.a, true);
+    if (TroopMemberListActivity.b(this.a))
+    {
+      paramString = this.a.a.obtainMessage(12, null);
+      this.a.a.sendMessage(paramString);
+    }
+  }
+  
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList");
+    }
+    TroopMemberListActivity.a(this.a, paramArrayOfLong1);
+    TroopMemberListActivity.b(this.a, paramArrayOfLong2);
+    TroopMemberListActivity.c(this.a, paramArrayOfLong3);
+    TroopMemberListActivity.a(this.a, true);
+    if (TroopMemberListActivity.b(this.a))
+    {
+      paramArrayOfLong1 = this.a.a.obtainMessage(12, null);
+      this.a.a.sendMessage(paramArrayOfLong1);
+    }
   }
 }
 

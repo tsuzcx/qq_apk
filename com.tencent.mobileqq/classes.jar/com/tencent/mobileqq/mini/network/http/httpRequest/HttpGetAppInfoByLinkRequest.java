@@ -4,7 +4,7 @@ import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkReq;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.util.Log;
-import bgau;
+import bhjl;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.network.http.HttpProtoBufRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -52,7 +52,7 @@ public class HttpGetAppInfoByLinkRequest
     Object localObject = new INTERFACE.StGetAppInfoByLinkRsp();
     try
     {
-      localStQWebRsp.mergeFrom(bgau.b(paramArrayOfByte));
+      localStQWebRsp.mergeFrom(bhjl.b(paramArrayOfByte));
       ((INTERFACE.StGetAppInfoByLinkRsp)localObject).mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
       paramArrayOfByte = new JSONObject();
       MiniAppInfo localMiniAppInfo = MiniAppInfo.from(((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo);

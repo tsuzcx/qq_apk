@@ -1,6 +1,6 @@
 package cooperation.qzone.networkedmodule;
 
-import bkea;
+import blpl;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.QUA;
@@ -203,8 +203,8 @@ public class QzoneModuleRecordFactory
   @QzoneModuleId("libsuperresolution.jar")
   public QzoneModuleConfigManager.QzoneModuleRecord createRecordForSuperResolutionSo()
   {
-    String str1 = bkea.a().a("QZoneSetting", "libSuperResolutionJarUrl", "https://d3g.qq.com/sngapp/app/update/20181204152623_3844/libsuperresolution.jar");
-    String str2 = bkea.a().a("QZoneSetting", "libSuperResolutionJarMD5", "6dc8f2f6f95d50ef6daef91c0f1595ec");
+    String str1 = blpl.a().a("QZoneSetting", "libSuperResolutionJarUrl", "https://d3g.qq.com/sngapp/app/update/20181204152623_3844/libsuperresolution.jar");
+    String str2 = blpl.a().a("QZoneSetting", "libSuperResolutionJarMD5", "6dc8f2f6f95d50ef6daef91c0f1595ec");
     QzoneModuleConfigManager.QzoneModuleRecordBuilder localQzoneModuleRecordBuilder = new QzoneModuleConfigManager.QzoneModuleRecordBuilder();
     localQzoneModuleRecordBuilder.setModuleId("libsuperresolution.jar").setUrl(str1).setMD5(str2).setVersion("1").setMainVersion(QUA.getQUA3());
     return localQzoneModuleRecordBuilder.build();

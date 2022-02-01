@@ -1,22 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
 
-public class atsx
-  implements DialogInterface.OnClickListener
+public abstract interface atsx
 {
-  public atsx(QQSettingMsgClearFragment paramQQSettingMsgClearFragment, DialogInterface.OnClickListener paramOnClickListener, QQCustomDialog paramQQCustomDialog) {}
+  public abstract void a(int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-    }
-  }
+  public abstract void a(int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp);
+  
+  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
+  
+  public abstract void aq_();
 }
 
 

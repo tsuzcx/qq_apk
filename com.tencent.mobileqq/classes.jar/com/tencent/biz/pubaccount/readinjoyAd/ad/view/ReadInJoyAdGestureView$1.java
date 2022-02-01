@@ -17,7 +17,7 @@ class ReadInJoyAdGestureView$1
     if (this.this$0.m >= 15.0F)
     {
       this.this$0.m -= 2.0F;
-      this.this$0.f = false;
+      this.this$0.e = false;
     }
     for (;;)
     {
@@ -30,11 +30,11 @@ class ReadInJoyAdGestureView$1
       if (this.this$0.m <= -15.0F)
       {
         this.this$0.m += 2.0F;
-        this.this$0.f = true;
+        this.this$0.e = true;
       }
       else if (this.this$0.m == 0.0F)
       {
-        if (this.this$0.f) {
+        if (this.this$0.e) {
           this.this$0.m += 2.0F;
         } else {
           this.this$0.m -= 2.0F;
@@ -42,7 +42,7 @@ class ReadInJoyAdGestureView$1
       }
       else if ((this.this$0.m > -15.0F) && (this.this$0.m < 15.0F))
       {
-        if (this.this$0.f) {
+        if (this.this$0.e) {
           this.this$0.m += 2.0F;
         } else {
           this.this$0.m -= 2.0F;
@@ -53,7 +53,7 @@ class ReadInJoyAdGestureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdGestureView.1
  * JD-Core Version:    0.7.0.1
  */

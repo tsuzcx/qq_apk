@@ -1,83 +1,149 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.upgrade.NewUpgradeConfig;
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 public class bfnm
-  implements Manager
 {
-  private final QQAppInterface a;
+  protected int a;
+  protected long a;
+  aahl a;
+  protected Map<UUID, TroopFileTransferManager.Item> a;
+  protected Map<UUID, Integer> b = new HashMap();
   
-  public bfnm(QQAppInterface paramQQAppInterface)
+  protected bfnm(long paramLong, List<TroopFileTransferManager.Item> paramList, int paramInt)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public static bfnm a(QQAppInterface paramQQAppInterface)
-  {
-    return (bfnm)paramQQAppInterface.getManager(189);
-  }
-  
-  public boolean a()
-  {
-    if (bfng.a().a() == 4) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_Aahl = new bfnn(this);
+    this.jdField_a_of_type_Long = paramLong;
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeManager", 2, new Object[] { "hasNewApkDownloaded: invoked. ", " hasDl: ", Boolean.valueOf(bool) });
+      TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)paramList.next();
+      this.jdField_a_of_type_JavaUtilMap.put(localItem.Id, localItem);
+    }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static bfnm a(long paramLong, List<TroopFileTransferManager.Item> paramList)
+  {
+    if (paramLong == 0L)
+    {
+      bfmf.a("TroopFileFromTroopForwarder", bfmf.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. troopuin=0");
+      return null;
+    }
+    if (paramList == null)
+    {
+      bfmf.a("TroopFileFromTroopForwarder", bfmf.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item=null");
+      return null;
+    }
+    return new bfnm(paramLong, paramList, 1);
+  }
+  
+  private final void a(TroopFileTransferManager.Item paramItem, boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
+  {
+    if (!paramBoolean) {}
+    try
+    {
+      bmqx.a(-1);
+      this.b.put(paramItem.Id, Integer.valueOf(-1));
+      bfmf.a("TroopFileFromTroopForwarder", bfmf.jdField_a_of_type_Int, "[" + paramItem.Id.toString() + "] onRspMultiCopyToWeiyun fail. isSuc:" + paramBoolean);
+      return;
+    }
+    finally {}
+    bfmf.c("TroopFileFromTroopForwarder", bfmf.jdField_a_of_type_Int, "[" + paramItem.Id.toString() + "] onRspMultiCopyToWeiyun retCode:" + paramInt1);
+    bmqx.a(paramInt1);
+    if (paramInt1 == 0)
+    {
+      this.b.remove(paramItem.Id);
+      if (this.b.size() != 0) {
+        break label212;
       }
-      return bool;
+      paramString1 = new bgje(paramItem.FileName, this.jdField_a_of_type_Long, 5, 604);
+      bflo.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
+    }
+    label316:
+    for (;;)
+    {
+      return;
+      this.b.put(paramItem.Id, Integer.valueOf(paramInt1));
+      break;
+      label212:
+      paramString1 = this.b.keySet().iterator();
+      do
+      {
+        if (!paramString1.hasNext()) {
+          break;
+        }
+        paramString2 = (UUID)paramString1.next();
+      } while (((Integer)this.b.get(paramString2)).intValue() != 2147483647);
+      for (paramInt1 = 0;; paramInt1 = 1)
+      {
+        if (paramInt1 == 0) {
+          break label316;
+        }
+        paramString1 = new bgje(paramItem.FileName, this.jdField_a_of_type_Long, 5, 605);
+        bflo.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
+        break;
+      }
     }
   }
   
-  public boolean a(UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  private int b()
   {
-    if ((paramUpgradeDetailWrapper == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog == null)) {}
-    int i;
-    int j;
-    int k;
-    long l1;
-    long l2;
-    do
+    QQAppInterface localQQAppInterface = bfmd.a();
+    if (localQQAppInterface == null)
     {
-      return false;
-      i = bfyz.aO(this.a.getApp(), this.a.getCurrentUin());
-      j = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.c;
-      k = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.d;
-      l1 = bfyz.k(this.a.getApp(), this.a.getCurrentUin());
-      l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeManager", 2, new Object[] { "needShowDownloadDialog: invoked. ", " downloadDialogMaxTimes: ", Integer.valueOf(j), " downloadDialogShownTimes: ", Integer.valueOf(i), " downloadDialogDayRate: ", Integer.valueOf(k), " downloadDialogShownTimestamp: ", Long.valueOf(l1), " now: ", Long.valueOf(l2) });
+      bfmf.a("TroopFileFromTroopForwarder", bfmf.jdField_a_of_type_Int, "multiTroop2weiyun app=null");
+      return -1;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)localIterator.next();
+      if (localItem.Id == null)
+      {
+        bfmf.a("TroopFileFromTroopForwarder", bfmf.jdField_a_of_type_Int, "multiTroop2weiyun. item.id=null");
       }
-    } while ((i >= j) || (l2 - l1 < k * 86400000L));
-    return true;
+      else if (localItem.ForwardTroopuin == 0L)
+      {
+        bfmf.a("TroopFileFromTroopForwarder", bfmf.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardTroopuin=0");
+      }
+      else if (localItem.BusId != 25)
+      {
+        bfmf.a("TroopFileFromTroopForwarder", bfmf.jdField_a_of_type_Int, "multiTroop2weiyun. BusId err:" + localItem.BusId);
+      }
+      else if (TextUtils.isEmpty(localItem.ForwardPath))
+      {
+        bfmf.a("TroopFileFromTroopForwarder", bfmf.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardPath=null");
+      }
+      else
+      {
+        bfmf.c("TroopFileFromTroopForwarder", bfmf.jdField_a_of_type_Int, "[" + localItem.Id.toString() + "] multiTroop2weiyun. BusId:" + localItem.BusId + " ForwardBusId:" + localItem.ForwardBusId + " ForwardPath:" + localItem.ForwardPath);
+        try
+        {
+          this.b.put(localItem.Id, Integer.valueOf(2147483647));
+          aagu.a(localQQAppInterface, true, this.jdField_a_of_type_Long, localItem, localQQAppInterface.getLongAccountUin(), 0L, this.jdField_a_of_type_Aahl);
+        }
+        finally {}
+      }
+    }
+    return 0;
   }
   
-  public boolean b(UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public int a()
   {
-    if ((paramUpgradeDetailWrapper == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog == null)) {}
-    int i;
-    int j;
-    int k;
-    long l1;
-    long l2;
-    do
-    {
-      return false;
-      i = bfyz.aP(this.a.getApp(), this.a.getCurrentUin());
-      j = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.e;
-      k = paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.f;
-      l1 = bfyz.l(this.a.getApp(), this.a.getCurrentUin());
-      l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeManager", 2, new Object[] { "needShowInstallDialog: invoked. ", " installDialogMaxTimes: ", Integer.valueOf(j), " installDialogShownTimes: ", Integer.valueOf(i), " installDialogDayRate: ", Integer.valueOf(k), " installDialogShownTimestamp: ", Long.valueOf(l1), " now: ", Long.valueOf(l2) });
-      }
-    } while ((i >= j) || (l2 - l1 < k * 86400000L));
-    return true;
+    if (1 == this.jdField_a_of_type_Int) {
+      return b();
+    }
+    return -1;
   }
-  
-  public void onDestroy() {}
 }
 
 

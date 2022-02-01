@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.servlet;
 
 import android.os.Build.VERSION;
-import bboz;
+import bcvt;
 import com.tencent.mobileqq.app.soso.LbsManagerService;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -15,8 +15,8 @@ public final class QZoneNotifyServlet$4
     if ((Build.VERSION.SDK_INT < 23) || (BaseApplication.getContext() == null) || (BaseApplication.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0)) {
       try
       {
-        bboz.a(System.currentTimeMillis());
-        LbsManagerService.startLocation(bboz.a());
+        bcvt.a(System.currentTimeMillis());
+        LbsManagerService.startLocation(bcvt.a());
         return;
       }
       catch (Exception localException)

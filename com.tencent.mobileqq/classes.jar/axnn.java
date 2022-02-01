@@ -1,18 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.OcrConfig;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public final class axnn
-  implements Parcelable.Creator<OcrConfig>
+public class axnn
 {
-  public OcrConfig a(Parcel paramParcel)
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c = "";
+  
+  public axnn()
   {
-    return new OcrConfig(paramParcel);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public OcrConfig[] a(int paramInt)
+  public axnn(boolean paramBoolean1, boolean paramBoolean2, long paramLong, String paramString1, String paramString2, String paramString3)
   {
-    return new OcrConfig[paramInt];
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+  }
+  
+  public boolean a()
+  {
+    long l = NetConnInfoCenter.getServerTime();
+    return (this.jdField_a_of_type_Long <= 0L) || (l > this.jdField_a_of_type_Long);
   }
 }
 

@@ -1,25 +1,14 @@
-import java.io.File;
-import java.util.Comparator;
-
-class aqmh
-  implements Comparator<File>
+public abstract interface aqmh
 {
-  aqmh(aqmg paramaqmg) {}
+  public abstract void a(int paramInt);
   
-  public int a(File paramFile1, File paramFile2)
-  {
-    if (paramFile2.lastModified() > paramFile1.lastModified()) {
-      return 1;
-    }
-    if (paramFile2.lastModified() < paramFile1.lastModified()) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void a(aqmd paramaqmd);
+  
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmh
  * JD-Core Version:    0.7.0.1
  */

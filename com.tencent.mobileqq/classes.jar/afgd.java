@@ -1,21 +1,19 @@
-import android.support.annotation.IntRange;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface afgd
+public class afgd
+  implements View.OnClickListener
 {
-  @IntRange(from=0L, to=3L)
-  public abstract int a();
+  public afgd(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public abstract void a();
-  
-  public abstract void a(afge paramafge);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void onClick(View paramView)
+  {
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

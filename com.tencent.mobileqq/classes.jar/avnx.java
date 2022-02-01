@@ -1,24 +1,26 @@
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.Window;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.hotpic.HotVideoData;
+import java.io.File;
 
-public class avnx
+class avnx
+  implements avnm
 {
-  public static ProgressDialog a(Context paramContext, String paramString)
+  avnx(avnw paramavnw, HotVideoData paramHotVideoData, File paramFile, URLDrawableHandler paramURLDrawableHandler) {}
+  
+  public void a(avnn paramavnn)
   {
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130849518);
-    paramContext = new ReportProgressDialog(paramContext, 2131755826);
-    paramContext.show();
-    paramContext.getWindow().setContentView(2131558434);
-    paramContext.setContentView(2131558434);
-    ((TextView)paramContext.findViewById(2131365552)).setText(paramString);
-    ((ProgressBar)paramContext.findViewById(2131367022)).setIndeterminateDrawable(localDrawable);
-    return paramContext;
+    if (paramavnn.a)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramavnn.a();
+      avnw.a(this.jdField_a_of_type_Avnw, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData, this.jdField_a_of_type_ComTencentImageURLDrawableHandler);
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_JavaIoFile.delete();
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
+    } while (this.jdField_a_of_type_ComTencentImageURLDrawableHandler == null);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
   }
 }
 

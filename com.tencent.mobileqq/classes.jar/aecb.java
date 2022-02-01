@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class aecb
-  implements View.OnClickListener
+  implements behm
 {
-  public aecb(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public aecb(GeneralSettingActivity paramGeneralSettingActivity, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void onCancel()
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    GeneralSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity, this.jdField_a_of_type_Int, this.b);
+  }
+  
+  public void onConfirm()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity.b();
+    GeneralSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity, this.jdField_a_of_type_Int, this.b);
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.app.face;
 
 import AvatarInfo.QQHeadInfo;
 import android.text.TextUtils;
-import awjn;
-import bfqq;
-import bfrj;
+import aoks;
+import axpp;
+import bgzh;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -28,6 +28,13 @@ class QQHeadDownloadHandler$UpdateSettingRunnable
     this.mFaceInfo = paramFaceInfo;
   }
   
+  private void clearAvatar(String paramString)
+  {
+    aoks.a(paramString);
+    aoks.b(paramString);
+    aoks.a(QQHeadDownloadHandler.access$100(this.this$0), paramString);
+  }
+  
   public void run()
   {
     int i = 0;
@@ -44,7 +51,7 @@ class QQHeadDownloadHandler$UpdateSettingRunnable
       {
         localObject1 = QQHeadDownloadHandler.access$100(this.this$0).getNearbyProxy().a(true);
         if (localObject1 != null) {
-          ((bfqq)localObject1).a(32, this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.b);
+          ((bgzh)localObject1).a(32, this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.b);
         }
       }
       localObject1 = QQHeadDownloadHandler.access$000(this.this$0).getUinOrMobile(this.mInfo.uin, this.mInfo.phoneNum);
@@ -80,23 +87,15 @@ class QQHeadDownloadHandler$UpdateSettingRunnable
         if (this.mInfo.dstUsrType != 16) {
           continue;
         }
-        localObject1 = "qcall_" + this.mInfo.idType + "_" + (String)localObject1;
-        bfrj.a((String)localObject1);
-        bfrj.b((String)localObject1);
-        bfrj.a(QQHeadDownloadHandler.access$100(this.this$0), (String)localObject1);
+        clearAvatar("qcall_" + this.mInfo.idType + "_" + (String)localObject1);
         continue;
-        bfrj.a((String)localObject1);
-        bfrj.b((String)localObject1);
-        bfrj.a(QQHeadDownloadHandler.access$100(this.this$0), (String)localObject1);
+        clearAvatar((String)localObject1);
         continue;
       }
       if (this.mInfo.dstUsrType != 32) {
         continue;
       }
-      localObject1 = "stranger_" + this.mInfo.idType + "_" + (String)localObject1;
-      bfrj.a((String)localObject1);
-      bfrj.b((String)localObject1);
-      bfrj.a(QQHeadDownloadHandler.access$100(this.this$0), (String)localObject1);
+      clearAvatar("stranger_" + this.mInfo.idType + "_" + (String)localObject1);
       QQHeadDownloadHandler.access$000(this.this$0).notifyUI(45, true, this.mSetting);
       return;
       if ((this.mSetting.getStatus() != 1001) && (this.mSetting.getStatus() != 1002)) {

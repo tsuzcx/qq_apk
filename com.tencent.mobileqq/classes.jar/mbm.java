@@ -1,87 +1,27 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.view.Display;
-import android.view.OrientationEventListener;
-import android.view.WindowManager;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.AVActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public abstract class mbm
-  extends OrientationEventListener
+public class mbm
+  implements MessageQueue.IdleHandler
 {
-  int jdField_a_of_type_Int = -25;
-  protected Context a;
-  Configuration jdField_a_of_type_AndroidContentResConfiguration;
-  Display jdField_a_of_type_AndroidViewDisplay;
-  boolean jdField_a_of_type_Boolean = false;
-  public boolean b;
+  public mbm(AVActivity paramAVActivity) {}
   
-  public mbm(Context paramContext, int paramInt)
+  public boolean queueIdle()
   {
-    super(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentResConfiguration = this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration();
-    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    this.jdField_a_of_type_Boolean = msm.f(paramContext);
-  }
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public void onOrientationChanged(int paramInt)
-  {
-    if (paramInt == -1) {
-      this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.b, 1, "call IdleHandler mPeerUin:=" + this.a.c);
     }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int < 0) {
-        this.jdField_a_of_type_Int = 0;
-      }
-    } while ((paramInt - this.jdField_a_of_type_Int < 20) && (paramInt - this.jdField_a_of_type_Int > -20) && (!this.b));
-    int i = paramInt;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramInt -= 90;
-      i = paramInt;
-      if (paramInt < 0) {
-        i = paramInt + 360;
-      }
-    }
-    if (this.b) {}
-    for (paramInt = lkq.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90;; paramInt = lkq.b(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90)
-    {
-      int j = paramInt;
-      if (paramInt > 360) {
-        j = paramInt % 360;
-      }
-      i -= j;
-      paramInt = i;
-      if (i < 0) {
-        paramInt = i + 360;
-      }
-      this.jdField_a_of_type_Int = paramInt;
-      if ((paramInt <= 314) && (paramInt >= 45)) {
-        break;
-      }
-      a(0, this.b);
-      return;
-    }
-    if ((paramInt > 44) && (paramInt < 135))
-    {
-      a(90, this.b);
-      return;
-    }
-    if ((paramInt > 134) && (paramInt < 225))
-    {
-      a(180, this.b);
-      return;
-    }
-    a(270, this.b);
+    ThreadManager.getSubThreadHandler().postDelayed(new AVActivity.1.1(this), 2000L);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mbm
  * JD-Core Version:    0.7.0.1
  */

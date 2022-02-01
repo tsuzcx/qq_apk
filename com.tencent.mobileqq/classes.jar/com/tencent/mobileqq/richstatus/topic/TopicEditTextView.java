@@ -10,10 +10,10 @@ import android.view.ActionMode.Callback;
 import android.view.ContextMenu;
 import android.view.MotionEvent;
 import android.widget.EditText;
-import baqc;
-import baqf;
-import baqg;
-import baqi;
+import bbwr;
+import bbwu;
+import bbwv;
+import bbwx;
 import com.tencent.qphone.base.util.QLog;
 
 public class TopicEditTextView
@@ -23,15 +23,15 @@ public class TopicEditTextView
   public static Editable.Factory a;
   int jdField_a_of_type_Int;
   private TextWatcher jdField_a_of_type_AndroidTextTextWatcher;
-  ActionMode.Callback jdField_a_of_type_AndroidViewActionMode$Callback = new baqg(this);
-  baqc jdField_a_of_type_Baqc;
+  ActionMode.Callback jdField_a_of_type_AndroidViewActionMode$Callback = new bbwv(this);
+  bbwr jdField_a_of_type_Bbwr;
   boolean jdField_a_of_type_Boolean;
   int b;
   public boolean b;
   
   static
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new baqf();
+    jdField_a_of_type_AndroidTextEditable$Factory = new bbwu();
   }
   
   public TopicEditTextView(Context paramContext)
@@ -66,11 +66,11 @@ public class TopicEditTextView
     if (getEditableText() == null) {
       return false;
     }
-    baqc[] arrayOfbaqc = (baqc[])getEditableText().getSpans(i, j, baqc.class);
-    if ((arrayOfbaqc != null) && (arrayOfbaqc.length > 0) && ((arrayOfbaqc[0] instanceof baqc)))
+    bbwr[] arrayOfbbwr = (bbwr[])getEditableText().getSpans(i, j, bbwr.class);
+    if ((arrayOfbbwr != null) && (arrayOfbbwr.length > 0) && ((arrayOfbbwr[0] instanceof bbwr)))
     {
-      i = getEditableText().getSpanEnd(arrayOfbaqc[0]);
-      j = getEditableText().getSpanStart(arrayOfbaqc[0]);
+      i = getEditableText().getSpanEnd(arrayOfbbwr[0]);
+      j = getEditableText().getSpanStart(arrayOfbbwr[0]);
       if ((j >= 0) && (i > j)) {
         return false;
       }
@@ -90,12 +90,12 @@ public class TopicEditTextView
     {
       return;
       if (QLog.isColorLevel()) {
-        QLog.i("TopicEditTextView", 2, String.format("afterTextChanged [delTopic=%s] src=%s", new Object[] { this.jdField_a_of_type_Baqc, paramEditable }));
+        QLog.i("TopicEditTextView", 2, String.format("afterTextChanged [delTopic=%s] src=%s", new Object[] { this.jdField_a_of_type_Bbwr, paramEditable }));
       }
-      if (this.jdField_a_of_type_Baqc != null)
+      if (this.jdField_a_of_type_Bbwr != null)
       {
-        int i = paramEditable.getSpanStart(this.jdField_a_of_type_Baqc);
-        int j = paramEditable.getSpanEnd(this.jdField_a_of_type_Baqc);
+        int i = paramEditable.getSpanStart(this.jdField_a_of_type_Bbwr);
+        int j = paramEditable.getSpanEnd(this.jdField_a_of_type_Bbwr);
         if ((i >= 0) && (j > i))
         {
           this.jdField_b_of_type_Boolean = true;
@@ -121,17 +121,17 @@ public class TopicEditTextView
     if (this.jdField_b_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Baqc = null;
+    this.jdField_a_of_type_Bbwr = null;
     if ((paramCharSequence instanceof Spannable))
     {
       Spannable localSpannable = (Spannable)paramCharSequence;
-      baqc localbaqc = baqi.a(localSpannable, paramInt1);
-      if (localbaqc != null)
+      bbwr localbbwr = bbwx.a(localSpannable, paramInt1);
+      if (localbbwr != null)
       {
-        int i = localSpannable.getSpanStart(localbaqc);
-        int j = localSpannable.getSpanEnd(localbaqc);
+        int i = localSpannable.getSpanStart(localbbwr);
+        int j = localSpannable.getSpanEnd(localbbwr);
         if ((j >= 0) && (j >= i) && (paramInt2 > paramInt3)) {
-          this.jdField_a_of_type_Baqc = localbaqc;
+          this.jdField_a_of_type_Bbwr = localbbwr;
         }
       }
     }
@@ -142,7 +142,7 @@ public class TopicEditTextView
       this.jdField_a_of_type_Int = paramInt1;
       this.jdField_b_of_type_Int = paramInt3;
       if (QLog.isColorLevel()) {
-        QLog.i("TopicEditTextView", 2, String.format("beforeTextChanged [bAdd=%b][delTopic=%s][edit=%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_Baqc, paramCharSequence }));
+        QLog.i("TopicEditTextView", 2, String.format("beforeTextChanged [bAdd=%b][delTopic=%s][edit=%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_Bbwr, paramCharSequence }));
       }
       if (this.jdField_a_of_type_AndroidTextTextWatcher == null) {
         break;
@@ -169,14 +169,14 @@ public class TopicEditTextView
     {
       do
       {
-        baqc[] arrayOfbaqc;
+        bbwr[] arrayOfbbwr;
         do
         {
           return;
-          arrayOfbaqc = (baqc[])getEditableText().getSpans(paramInt1, paramInt2, baqc.class);
-        } while ((arrayOfbaqc == null) || (arrayOfbaqc.length <= 0));
-        i = getEditableText().getSpanEnd(arrayOfbaqc[0]);
-        j = getEditableText().getSpanStart(arrayOfbaqc[0]);
+          arrayOfbbwr = (bbwr[])getEditableText().getSpans(paramInt1, paramInt2, bbwr.class);
+        } while ((arrayOfbbwr == null) || (arrayOfbbwr.length <= 0));
+        i = getEditableText().getSpanEnd(arrayOfbbwr[0]);
+        j = getEditableText().getSpanStart(arrayOfbbwr[0]);
       } while ((i <= j) || (j < 0));
       if ((paramInt1 == j) && (paramInt2 == i))
       {

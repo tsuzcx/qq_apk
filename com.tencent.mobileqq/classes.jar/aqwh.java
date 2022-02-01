@@ -1,20 +1,15 @@
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
-
-class aqwh
-  implements HorizontalListView.OnScrollStateChangedListener
+public class aqwh
 {
-  aqwh(aqwg paramaqwg) {}
-  
-  public void onScrollStateChanged(int paramInt)
-  {
-    if (paramInt == 4097) {
-      bcef.b(aqwg.a(this.a), "dc00898", "", "", "0X8007FAA", "0X8007FAA", 0, 0, "", "", "", "");
-    }
-  }
+  public int a;
+  public String a = "";
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwh
  * JD-Core Version:    0.7.0.1
  */

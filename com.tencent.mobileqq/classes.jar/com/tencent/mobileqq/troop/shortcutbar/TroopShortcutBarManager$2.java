@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.shortcutbar;
 
 import android.text.TextUtils;
-import beua;
+import bgbg;
 
 public class TroopShortcutBarManager$2
   implements Runnable
 {
-  public TroopShortcutBarManager$2(beua parambeua, long paramLong1, long paramLong2) {}
+  public TroopShortcutBarManager$2(bgbg parambgbg, long paramLong1, long paramLong2) {}
   
   public void run()
   {

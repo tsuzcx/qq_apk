@@ -1,18 +1,26 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-final class bnap
-  implements EIPCResultCallback
+public class bnap
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  private bnap(AECropperImageView paramAECropperImageView) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramEIPCResult != null)
+    if (!AECropperImageView.a(this.a)) {}
+    do
     {
-      boolean bool = paramEIPCResult.data.getBoolean("key_result");
-      QLog.d("PeakIpcController", 2, "reSendMessage result:" + bool);
-    }
+      return false;
+      if (AECropperImageView.b(this.a))
+      {
+        bnrh.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
+        return false;
+      }
+    } while ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (paramMotionEvent1.getPointerCount() > 1) || (paramMotionEvent2.getPointerCount() > 1));
+    this.a.a(paramFloat1, paramFloat2);
+    return false;
   }
 }
 

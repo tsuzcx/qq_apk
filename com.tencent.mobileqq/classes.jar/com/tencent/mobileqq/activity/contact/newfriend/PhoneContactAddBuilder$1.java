@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import aifn;
-import aigx;
+import ajam;
+import ajbw;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class PhoneContactAddBuilder$1
   implements Runnable
 {
-  public PhoneContactAddBuilder$1(aifn paramaifn) {}
+  public PhoneContactAddBuilder$1(ajam paramajam) {}
   
   public void run()
   {
-    ((PhoneContactManagerImp)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).a(((aigx)this.this$0.jdField_a_of_type_Aigo).a);
+    ((PhoneContactManagerImp)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).a(((ajbw)this.this$0.jdField_a_of_type_Ajbn).a);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new PhoneContactAddBuilder.1.1(this));
   }
 }

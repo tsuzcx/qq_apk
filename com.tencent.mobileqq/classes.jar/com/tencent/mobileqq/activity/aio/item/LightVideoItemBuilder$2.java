@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import bbkv;
+import bcrn;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,7 +24,7 @@ class LightVideoItemBuilder$2
       {
         ChatMessage localChatMessage = (ChatMessage)((Iterator)localObject).next();
         if (((localChatMessage instanceof MessageForLightVideo)) && (localChatMessage.uniseq == this.a.uniseq)) {
-          localChatMessage.saveExtInfoToExtStr(bbkv.u, "1");
+          localChatMessage.saveExtInfoToExtStr(bcrn.u, "1");
         }
       }
     }

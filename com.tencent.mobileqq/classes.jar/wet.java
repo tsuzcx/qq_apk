@@ -1,51 +1,75 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetShareGroupInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class wet
-  extends vqr<wgj>
 {
-  private final String a;
-  public List<String> a;
+  public static ConcurrentHashMap<Class<?>, Class<?>> a = new ConcurrentHashMap();
+  public static ConcurrentHashMap<Class<?>, Class<?>> b = new ConcurrentHashMap();
   
-  public wet()
+  static
   {
-    this.jdField_a_of_type_JavaLangString = vpl.a("StorySvc.get_share_group_info");
+    a.put(xqh.class, weq.class);
+    b.put(wjh.class, wer.class);
   }
   
-  public String a()
+  public static <I> I a(Class<? extends I> paramClass, Class<I> paramClass1, Object... paramVarArgs)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetShareGroupInfo localRspGetShareGroupInfo = new qqstory_service.RspGetShareGroupInfo();
     try
     {
-      localRspGetShareGroupInfo.mergeFrom(paramArrayOfByte);
-      return new wgj(localRspGetShareGroupInfo);
+      if (paramClass.equals(xqh.class))
+      {
+        Object localObject = paramClass1.cast(new weq());
+        return localObject;
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (NumberFormatException localNumberFormatException)
     {
-      xvv.b("Q.qqstory.shareGroup:GetShareGroupInfoRequest", a(), paramArrayOfByte);
+      ykq.e("ExtensionFactoryImplement", "parse int exception");
+      try
+      {
+        paramClass = (Class)a.get(paramClass);
+        if (paramClass != null)
+        {
+          if (wef.class.isAssignableFrom(paramClass)) {
+            break label110;
+          }
+          throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
+        }
+      }
+      catch (Exception paramClass)
+      {
+        ykq.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
+      }
+      return weu.a(paramClass1);
     }
-    return null;
+    label110:
+    paramClass = weu.a(paramClass, paramVarArgs);
+    return paramClass;
   }
   
-  protected byte[] a()
+  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
   {
-    qqstory_service.ReqGetShareGroupInfo localReqGetShareGroupInfo = new qqstory_service.ReqGetShareGroupInfo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqGetShareGroupInfo.share_group_id_list.add(str);
+    if (!wef.class.isAssignableFrom(paramClass)) {
+      throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
     }
-    return localReqGetShareGroupInfo.toByteArray();
+    try
+    {
+      Class localClass = (Class)b.get(paramClass);
+      if (localClass != null)
+      {
+        if (wef.class.isAssignableFrom(localClass)) {
+          break label124;
+        }
+        throw new IllegalArgumentException("createExtendableObject class " + localClass.getName() + " should have a KeepConstructor interface");
+      }
+    }
+    catch (Exception localException)
+    {
+      ykq.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
+    }
+    return weu.a(paramClass, paramVarArgs);
+    label124:
+    Object localObject = weu.a(localException, paramVarArgs);
+    return localObject;
   }
 }
 

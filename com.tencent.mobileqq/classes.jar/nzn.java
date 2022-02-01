@@ -1,19 +1,15 @@
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
 public class nzn
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public HashMap<String, Long> a;
-  public int b;
-  public String b;
+  public nzn(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a != null) {
-      this.a.clear();
-    }
+    this.a.b = false;
   }
 }
 

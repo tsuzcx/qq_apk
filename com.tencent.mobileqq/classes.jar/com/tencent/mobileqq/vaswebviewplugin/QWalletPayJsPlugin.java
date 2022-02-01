@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import akfz;
+import albs;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bgve;
-import bkwg;
+import bifw;
+import bmhp;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
@@ -72,7 +72,7 @@ public class QWalletPayJsPlugin
     String str2 = paramJSONObject.optString("uin", "");
     if ((!StringUtil.isEmpty(str1)) && (str2.equals(this.app.getCurrentAccountUin())))
     {
-      Object localObject = bkwg.a().b(str1);
+      Object localObject = bmhp.a().b(str1);
       paramJSONObject = (JSONObject)localObject;
       if (StringUtil.isEmpty((String)localObject)) {
         paramJSONObject = SharedPreferencesProxyManager.getInstance().getProxy("common_h5_hb_info" + str2, 0).getString(str1, "");
@@ -142,7 +142,7 @@ public class QWalletPayJsPlugin
       if (QLog.isColorLevel()) {
         QLog.d("QWalletPayJsHandler", 2, "grapH5CommonHb params: " + paramJSONObject);
       }
-      paramJSONObject = akfz.a(this.app, paramJSONObject);
+      paramJSONObject = albs.a(this.app, paramJSONObject);
       if (QLog.isColorLevel()) {
         QLog.d("QWalletPayJsHandler", 2, "grapH5CommonHb extraData: " + paramJSONObject);
       }
@@ -151,7 +151,7 @@ public class QWalletPayJsPlugin
         if ((this.mRuntime != null) && (this.mRuntime.a() != null) && (this.mRuntime.a().getUrl() != null)) {
           paramJSONObject.put("domain", new URL(this.mRuntime.a().getUrl()).getHost());
         }
-        akfz.a(this.app, paramJSONObject.toString(), this.mRecevicer);
+        albs.a(this.app, paramJSONObject.toString(), this.mRecevicer);
         return;
       }
       handJsError("-1001", "params error");
@@ -289,7 +289,7 @@ public class QWalletPayJsPlugin
       if (bool) {
         try
         {
-          akfz.a(this.app, localJSONObject, "redgiftH5CommonDetail", this.mRecevicer);
+          albs.a(this.app, localJSONObject, "redgiftH5CommonDetail", this.mRecevicer);
         }
         catch (Throwable localThrowable)
         {
@@ -406,6 +406,8 @@ public class QWalletPayJsPlugin
       mFirstUrls.remove(localActivity.hashCode());
       mSequence.remove(Integer.valueOf(localActivity.hashCode()));
     }
+    this.mActivity = null;
+    this.app = null;
     super.onDestroy();
   }
   

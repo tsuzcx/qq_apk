@@ -1,17 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoxm
-  implements View.OnClickListener
+  extends aouc
 {
-  public aoxm(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void onClick(View paramView)
+  public aoxm(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    ArkIDESettingFragment.a(this.a, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      uyt.a(this.a, "from_search_rzh_ws", 2, false);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("WeishiPublicAccountAction", 1, "doAction error: " + localException.getMessage());
+      a("WeishiPublicAccountAction");
+    }
+    return false;
   }
 }
 

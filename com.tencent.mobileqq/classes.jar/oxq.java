@@ -1,28 +1,94 @@
-import android.os.Bundle;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/helper/RIJBiuNetworkHelper$requestBiuAfterComment$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oxq
-  extends nmf
+class oxq
+  extends pvq
 {
-  oxq(Function2 paramFunction2) {}
+  private oxq(oxo paramoxo) {}
   
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
+  public void a(int paramInt, boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    if ((paramBoolean) && (paramList != null) && (oxo.a(this.a) == paramInt))
     {
-      this.a.invoke(Boolean.valueOf(true), Integer.valueOf(paramInt));
-      return;
+      oxo.a(this.a, (ArrayList)paramList);
+      if ((oxo.a(this.a) == null) || (oxo.a(this.a) == null) || (oxo.a(this.a).size() <= 0)) {
+        break label200;
+      }
+      oxo.a(this.a).a(oxo.a(this.a));
+      oxo.a(this.a).notifyDataSetChanged();
+      if (oxo.a(this.a).findHeaderViewPosition(oxo.a(this.a)) < 0) {
+        oxo.a(this.a).addHeaderView(oxo.a(this.a));
+      }
     }
-    this.a.invoke(Boolean.valueOf(false), Integer.valueOf(paramInt));
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onSubChannelListUpdate infos size" + oxo.a(this.a).size());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onSubChannelListUpdate" + paramBoolean);
+      }
+      return;
+      label200:
+      oxo.a(this.a).removeHeaderView(oxo.a(this.a));
+    }
   }
   
-  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    this.a.invoke(Boolean.valueOf(false), Integer.valueOf(paramInt));
-    return true;
+    if ((paramBoolean) && (paramList != null) && (oxo.a(this.a) == 0))
+    {
+      oxo.a(this.a, (ArrayList)paramList);
+      if ((oxo.a(this.a) == null) || (oxo.a(this.a).size() <= 0)) {
+        break label183;
+      }
+      oxo.a(this.a).a(oxo.a(this.a));
+      oxo.a(this.a).notifyDataSetChanged();
+      if (oxo.a(this.a).findHeaderViewPosition(oxo.a(this.a)) < 0) {
+        oxo.a(this.a).addHeaderView(oxo.a(this.a));
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate infos size" + oxo.a(this.a).size());
+      }
+      QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate" + paramBoolean);
+      return;
+      label183:
+      oxo.a(this.a).removeHeaderView(oxo.a(this.a));
+    }
+  }
+  
+  public void c(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  {
+    if ((paramBoolean) && (paramList != null) && (oxo.a(this.a) == 56))
+    {
+      oxo.a(this.a, (ArrayList)paramList);
+      if ((oxo.a(this.a) == null) || (oxo.a(this.a) == null) || (oxo.a(this.a).size() <= 0)) {
+        break label201;
+      }
+      oxo.a(this.a).a(oxo.a(this.a));
+      oxo.a(this.a).notifyDataSetChanged();
+      if (oxo.a(this.a).findHeaderViewPosition(oxo.a(this.a)) < 0) {
+        oxo.a(this.a).addHeaderView(oxo.a(this.a));
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onVideoChannelListUpdate infos size" + oxo.a(this.a).size());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onVideoChannelListUpdate" + paramBoolean);
+      }
+      return;
+      label201:
+      oxo.a(this.a).removeHeaderView(oxo.a(this.a));
+    }
   }
 }
 

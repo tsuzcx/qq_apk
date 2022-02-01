@@ -1,65 +1,211 @@
-import android.content.Context;
-import android.media.AudioManager;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import Wallet.SkinInfo;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.image.ApngImage;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import com.tencent.widget.HorizontalListView;
+import cooperation.qwallet.plugin.QwAdapter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.observer.BusinessObserver;
 
 public class akvw
 {
-  public static long a;
-  public static Context a;
-  public static String a;
+  private static final String jdField_a_of_type_JavaLangString = anvx.a(2131704915);
+  private int jdField_a_of_type_Int = -1;
+  private akvt jdField_a_of_type_Akvt = akvv.a(jdField_a_of_type_JavaLangString);
+  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new akvz(this);
+  private anxc jdField_a_of_type_Anxc;
+  private SendHbActivity jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity;
+  private IRedPacket.OnGetSkinListener jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener = new akvy(this);
+  private QwAdapter jdField_a_of_type_CooperationQwalletPluginQwAdapter;
+  List<akwd> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new akvx(this);
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = -1;
+  private List<akvt> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_b_of_type_Boolean;
+  private List<LinearLayout> c = new ArrayList();
   
-  static
+  public akvw(SendHbActivity paramSendHbActivity)
   {
-    jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
-    jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity = paramSendHbActivity;
+    d();
   }
   
-  public static void a()
+  private void a(List<akvt> paramList)
   {
-    try
+    paramList.add(akvv.b(jdField_a_of_type_JavaLangString));
+    if ((b()) && (!paramList.contains(this.jdField_a_of_type_Akvt)))
     {
-      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).requestAudioFocus(null, 3, 1);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      QLog.d("HbSkinLogic", 2, "add vip info to list!");
+      paramList.add(this.jdField_a_of_type_Akvt);
     }
   }
   
-  public static boolean a(long paramLong)
+  private void b(List<akvt> paramList)
   {
-    if ((jdField_a_of_type_Long > 0L) && (jdField_a_of_type_Long == paramLong)) {}
-    Object localObject;
-    do
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      return true;
-      localObject = akvx.a().a();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return false;
-      }
-      jdField_a_of_type_JavaLangString = (String)localObject + File.separator + "cover" + File.separator + paramLong;
-      localObject = new File(jdField_a_of_type_JavaLangString);
-    } while ((((File)localObject).mkdirs()) || (((File)localObject).isDirectory()));
-    QLog.e("GloableValue", 2, "make cover dir: " + jdField_a_of_type_JavaLangString + " failed.");
+      SkinInfo localSkinInfo = ((akvt)paramList.next()).jdField_a_of_type_WalletSkinInfo;
+      RedPacketInfoBase localRedPacketInfoBase = new RedPacketInfoBase();
+      localRedPacketInfoBase.skinType = 1;
+      localRedPacketInfoBase.skinId = localSkinInfo.skin_id;
+      localRedPacketInfoBase.isCache = akvt.jdField_a_of_type_Boolean;
+      RedPacketManager.getInstance().getSkin(localRedPacketInfoBase, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener);
+    }
+  }
+  
+  private boolean b()
+  {
+    if (this.jdField_a_of_type_Anxc != null) {
+      return this.jdField_a_of_type_Anxc.a();
+    }
     return false;
   }
   
-  public static void b()
+  private void d()
   {
-    try
+    ArrayList localArrayList = new ArrayList();
+    a(localArrayList);
+    this.jdField_a_of_type_CooperationQwalletPluginQwAdapter = new QwAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity, localArrayList, 2131560547, new akwc(this));
+    this.jdField_a_of_type_Anxc = ((anxc)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.getAppRuntime().getManager(QQManagerFactory.INDIVIDUAL_RED_PACKET_MANAGER));
+    RedPacketManager.getInstance().registRedPacketSkinListObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
+    ApngImage.playByTag(0);
+  }
+  
+  public int a()
+  {
+    return akvt.a(this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.getList());
+  }
+  
+  public void a()
+  {
+    QLog.i("HbSkinLogic", 2, "onDestroy called...");
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity = null;
+    this.c.clear();
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.getList().clear();
+    RedPacketManager.getInstance().unregistRedPacketSkinListObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(akwd paramakwd)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramakwd);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (RedPacketManager.getInstance().isRiskSwitchOpen()) {}
+    do
     {
-      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).abandonAudioFocus(null);
+      return;
+      b(0);
+    } while (this.jdField_b_of_type_Boolean);
+    QLog.i("HbSkinLogic", 2, "request skin list...");
+    String str = paramBundle.getString("hb_from_type", "");
+    if ("100".equals(str))
+    {
+      paramBundle = paramBundle.getString("hb_from", "");
+      RedPacketManager.getInstance().requestRedPacketSkinList(str, paramBundle, this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_Boolean = true;
+      return;
+      RedPacketManager.getInstance().requestRedPacketSkinList();
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    this.c.remove(paramView);
+  }
+  
+  public void a(LinearLayout paramLinearLayout)
+  {
+    this.c.add(paramLinearLayout);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, AIOUtils.dp2px(226.0F, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.getResources()));
+    HorizontalListView localHorizontalListView = new HorizontalListView(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity);
+    localHorizontalListView.setDividerWidth(AIOUtils.dp2px(12.0F, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.getResources()));
+    paramLinearLayout.addView(localHorizontalListView, localLayoutParams);
+    localHorizontalListView.setAdapter(this.jdField_a_of_type_CooperationQwalletPluginQwAdapter);
+    localHorizontalListView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
+    this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.notifyDataSetChanged();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    int i = a();
+    QLog.i("HbSkinLogic", 2, "set select skin: " + i);
+    if (this.jdField_b_of_type_Int != i)
+    {
+      QLog.i("HbSkinLogic", 2, "set select skin id : " + i + " serverSkinId = " + this.jdField_b_of_type_Int);
+      RedPacketManager.getInstance().setSelectedSkin(i, this.jdField_a_of_type_MqqObserverBusinessObserver);
+    }
+    if (-2 != i)
+    {
+      QLog.i("HbSkinLogic", 2, "clear vip info...");
+      if (this.jdField_a_of_type_Anxc != null) {
+        this.jdField_a_of_type_Anxc.a(0, 0, true);
+      }
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    Iterator localIterator = this.c.iterator();
+    while (localIterator.hasNext()) {
+      ((ViewGroup)((LinearLayout)localIterator.next()).getParent()).setVisibility(paramInt);
+    }
+  }
+  
+  public void c()
+  {
+    List localList = this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.getList();
+    QLog.d("HbSkinLogic", 2, "is vip: " + b());
+    if (b()) {
+      if (!localList.contains(this.jdField_a_of_type_Akvt))
+      {
+        QLog.d("HbSkinLogic", 2, "add vip info to list!");
+        localList.add(this.jdField_a_of_type_Akvt);
+        akvt.c = this.jdField_a_of_type_Akvt.jdField_a_of_type_WalletSkinInfo.skin_id;
+        akvt.a(localList);
+        this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.notifyDataSetChanged();
+      }
+    }
+    while (!localList.contains(this.jdField_a_of_type_Akvt)) {
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    QLog.d("HbSkinLogic", 2, "remove vip info to list!");
+    localList.remove(this.jdField_a_of_type_Akvt);
+    akvt.c = 0;
+    akvt.a(localList);
+    this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.notifyDataSetChanged();
   }
 }
 

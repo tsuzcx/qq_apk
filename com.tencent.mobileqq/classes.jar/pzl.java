@@ -1,57 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.List;
 
 public class pzl
+  implements AdapterView.OnItemClickListener
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public pzl(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    JSONObject localJSONObject = new JSONObject();
-    String str4 = "";
-    String str5 = "";
-    String str6 = "";
-    qai.a(paramBaseArticleInfo, localJSONObject, true);
-    qai.a(paramBaseArticleInfo, localJSONObject);
-    qai.d(paramBaseArticleInfo, localJSONObject);
-    qai.n(paramBaseArticleInfo, localJSONObject);
-    qai.g(paramBaseArticleInfo, localJSONObject);
-    qai.h(paramBaseArticleInfo, localJSONObject);
-    qai.Z(paramBaseArticleInfo, localJSONObject);
-    qai.ac(paramBaseArticleInfo, localJSONObject);
-    qai.ad(paramBaseArticleInfo, localJSONObject);
-    localJSONObject.put("style_ID", "ReadInjoy_ad_small_game_triple_img_cell");
-    qai.a(localJSONObject, paramBaseArticleInfo);
-    String str1 = str6;
-    String str2 = str5;
-    String str3 = str4;
-    if (paramBaseArticleInfo.mSmallMiniGameInfo != null)
+    if (paramInt <= 0) {}
+    do
     {
-      str1 = str6;
-      str2 = str5;
-      str3 = str4;
-      if (paramBaseArticleInfo.mSmallMiniGameInfo.a != null)
-      {
-        str1 = str6;
-        str2 = str5;
-        str3 = str4;
-        if (paramBaseArticleInfo.mSmallMiniGameInfo.a.length() > 2)
-        {
-          str3 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(0);
-          str2 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(1);
-          str1 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(2);
-        }
-      }
-    }
-    paramBaseArticleInfo = new JSONObject();
-    paramBaseArticleInfo.put("multi_img_url1", str3);
-    localJSONObject.put("id_multi_img_1", paramBaseArticleInfo);
-    paramBaseArticleInfo = new JSONObject();
-    paramBaseArticleInfo.put("multi_img_url2", str2);
-    localJSONObject.put("id_multi_img_2", paramBaseArticleInfo);
-    paramBaseArticleInfo = new JSONObject();
-    paramBaseArticleInfo.put("multi_img_url3", str1);
-    localJSONObject.put("id_multi_img_3", paramBaseArticleInfo);
-    return localJSONObject;
+      return;
+      paramAdapterView = (qkk)ReadInJoySelectPositionFragment.a(this.a).get(paramInt - 1);
+    } while (paramAdapterView.a != 2);
+    this.a.a(new SelectPositionModule.PositionData(paramAdapterView.d, paramAdapterView.c, paramAdapterView.b, paramAdapterView.e));
   }
 }
 

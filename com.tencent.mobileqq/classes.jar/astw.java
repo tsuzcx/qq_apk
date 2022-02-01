@@ -1,54 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class astw
-  implements asrk
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$SpacesItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "space", "", "firstItemTopSpace", "(II)V", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class astw
+  extends RecyclerView.ItemDecoration
 {
-  astw(astk paramastk) {}
+  private final int a;
+  private final int b;
   
-  public void a(assv paramassv)
+  public astw(int paramInt1, int paramInt2)
   {
-    paramassv = ((asrn)paramassv).a();
-    if (paramassv == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-      } while ((aszt.a(paramassv.a()) != 0) || (TextUtils.isEmpty(paramassv.a())) || (!TextUtils.isEmpty(paramassv.g())));
-      FileManagerEntity localFileManagerEntity = paramassv.a();
-      if (localFileManagerEntity == null)
-      {
-        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : can not get the troop file entity, return.");
-        return;
-      }
-      localObject = bfby.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.strTroopFileID, localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId);
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : troopUin[" + localFileManagerEntity.TroopUin + "] troopFileId[" + localFileManagerEntity.strTroopFileID + "] troopFilePath[" + localFileManagerEntity.strTroopFilePath + "]");
-      }
-      if (TextUtils.isEmpty(((becp)localObject).c))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can not find local thumb file, download.");
-        }
-        localObject = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin);
-        if (localFileManagerEntity.strTroopFileID == null)
-        {
-          ((TroopFileTransferManager)localObject).a(localFileManagerEntity.strTroopFilePath, paramassv.a(), localFileManagerEntity.busId, 640);
-          return;
-        }
-        ((TroopFileTransferManager)localObject).a(UUID.fromString(localFileManagerEntity.strTroopFileID), 640);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can find local thumb file, refresh the picture browser.");
-      }
-    } while (this.a.jdField_a_of_type_Assy == null);
-    this.a.jdField_a_of_type_Assy.a(((becp)localObject).e, ((becp)localObject).c);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void getItemOffsets(@NotNull Rect paramRect, @NotNull View paramView, @NotNull RecyclerView paramRecyclerView, @NotNull RecyclerView.State paramState)
+  {
+    Intrinsics.checkParameterIsNotNull(paramRect, "outRect");
+    Intrinsics.checkParameterIsNotNull(paramView, "view");
+    Intrinsics.checkParameterIsNotNull(paramRecyclerView, "parent");
+    Intrinsics.checkParameterIsNotNull(paramState, "state");
+    paramRect.bottom = this.a;
+    if (paramRecyclerView.getChildPosition(paramView) == 0) {
+      paramRect.top = this.b;
+    }
   }
 }
 

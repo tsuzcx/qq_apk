@@ -1,355 +1,172 @@
-import com.tencent.commonsdk.cache.QQConcurrentHashMap;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.ShieldListInfo;
-import com.tencent.mobileqq.managers.ShieldMsgManger.1;
-import com.tencent.mobileqq.managers.ShieldMsgManger.2;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
 
 public class avnk
-  implements Manager
 {
-  private QQConcurrentHashMap<String, ShieldListInfo> jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  public static avnk a;
+  public int a;
+  public boolean a;
+  public int b = 1;
+  public int c = 256;
   
-  public avnk(QQAppInterface paramQQAppInterface)
+  public avnk()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      throw new IllegalArgumentException("ShieldMsgManger this.app = null");
-    }
-    ThreadManager.post(new ShieldMsgManger.1(this), 2, null, false);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  private ShieldListInfo a(int paramInt, String paramString)
+  public static int a()
   {
-    for (;;)
+    avnk localavnk = a();
+    if (localavnk != null) {
+      return localavnk.c;
+    }
+    return 256;
+  }
+  
+  public static int a(String paramString, int paramInt)
+  {
+    if (paramString == null) {}
+    do
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      return paramInt;
+      try
       {
-        if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap == null) {
-          b();
-        }
-        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap != null) && (paramString != null) && (paramString.length() > 0))
-        {
-          if (paramInt == 2)
-          {
-            str = a(paramString);
-            paramString = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str);
-            return paramString;
-          }
-        }
-        else {
-          return null;
-        }
+        int i = Integer.valueOf(paramString).intValue();
+        return i;
       }
-      String str = paramString;
-      if (paramInt == 1) {
-        str = paramString;
-      }
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("HotVideoDPC", 2, "StringToInt Exception! " + paramString);
+    return paramInt;
   }
   
-  private String a(String paramString)
+  public static avnk a()
   {
-    String str2 = paramString.trim();
-    String str1 = str2;
-    if (!str2.startsWith("+"))
-    {
-      str1 = str2;
-      if (str2.length() == 11) {
-        str1 = "+86" + paramString;
-      }
+    if ((jdField_a_of_type_Avnk == null) || (jdField_a_of_type_Avnk.jdField_a_of_type_Boolean)) {
+      jdField_a_of_type_Avnk = b();
     }
-    return str1;
+    return jdField_a_of_type_Avnk;
   }
   
-  private void a() {}
-  
-  private boolean a(int paramInt, String paramString)
+  public static boolean a()
   {
+    avnk localavnk = a();
+    return (localavnk != null) && (localavnk.b == 1);
+  }
+  
+  public static avnk b()
+  {
+    int i1 = 256;
     boolean bool = false;
-    paramString = a(paramInt, paramString);
-    if (paramString != null) {
-      bool = paramString.isShieldMsg();
-    }
-    return bool;
-  }
-  
-  private boolean a(EntityManager paramEntityManager, Entity paramEntity)
-  {
-    boolean bool = false;
-    if (paramEntity.getStatus() == 1000)
-    {
-      paramEntityManager.persistOrReplace(paramEntity);
-      if (paramEntity.getStatus() == 1001) {
-        bool = true;
-      }
-    }
-    while ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
-      return bool;
-    }
-    return paramEntityManager.update(paramEntity);
-  }
-  
-  private void b()
-  {
-    for (;;)
-    {
-      EntityManager localEntityManager;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        try
-        {
-          QQConcurrentHashMap localQQConcurrentHashMap = new QQConcurrentHashMap(1006, 0, 36);
-          List localList = localEntityManager.query(ShieldListInfo.class);
-          int i;
-          if (localList == null)
-          {
-            i = 0;
-            break label169;
-            if (j < i)
-            {
-              ShieldListInfo localShieldListInfo = (ShieldListInfo)localList.get(j);
-              if ((localShieldListInfo == null) || (localShieldListInfo.uin == null)) {
-                break label174;
-              }
-              localQQConcurrentHashMap.put(localShieldListInfo.uin, localShieldListInfo);
-              break label174;
-            }
-          }
-          else
-          {
-            i = localList.size();
-            break label169;
-          }
-          this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap = localQQConcurrentHashMap;
-        }
-        catch (Exception localException)
-        {
-          if (!QLog.isColorLevel()) {
-            break label144;
-          }
-          QLog.d("ShieldMsgManger", 2, localException.toString());
-          localEntityManager.close();
-          continue;
-          localObject2 = finally;
-          throw localObject2;
-        }
-        finally
-        {
-          localObject2.close();
-        }
-        return;
-      }
-      label144:
-      label169:
-      int j = 0;
-      continue;
-      label174:
-      j += 1;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap == null) {
-          b();
-        }
-        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap != null) && (paramString != null) && (paramString.length() > 0))
-        {
-          if (paramInt2 != 2) {
-            break label114;
-          }
-          localObject1 = a(paramString);
-          paramString = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject1);
-          if (paramString != null)
-          {
-            paramString.flags = paramInt1;
-            localObject1 = new ArrayList();
-            ((ArrayList)localObject1).add(paramString);
-            ThreadManager.post(new ShieldMsgManger.2(this, (ArrayList)localObject1), 5, null, false);
-          }
-        }
-        return;
-      }
-      label114:
-      Object localObject1 = paramString;
-      if (paramInt2 == 1) {
-        localObject1 = paramString;
-      }
-    }
-  }
-  
-  public void a(int paramInt, List<Long> paramList)
-  {
-    a(paramInt, paramList, 0);
-  }
-  
-  public void a(int paramInt1, List<Long> paramList, int paramInt2)
-  {
-    anaw localanaw = (anaw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(18);
-    int j = paramList.size();
-    long[] arrayOfLong = new long[j];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfLong[i] = ((Long)paramList.get(i)).longValue();
-      i += 1;
-    }
-    localanaw.a(paramInt1, arrayOfLong, paramInt2);
-  }
-  
-  public boolean a(String paramString)
-  {
-    a();
-    boolean bool = a(1, paramString);
     if (QLog.isColorLevel()) {
-      QLog.d("ShieldMsgManger", 2, "isUinInShieldList:" + paramString + ",result:" + bool);
+      QLog.d("HotVideoDPC", 2, "loadHotVideoDPC!");
     }
-    return bool;
-  }
-  
-  public boolean a(List<ShieldListInfo> paramList)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return true;
-    }
+    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HotVCfg.name());
+    QLog.i("HotVideoDPC", 2, "loadHotVideoDPC dpcValue: " + str);
+    if (!TextUtils.isEmpty(str)) {}
     for (;;)
     {
-      EntityManager localEntityManager;
-      EntityTransaction localEntityTransaction;
+      int k;
+      int m;
       int i;
-      ShieldListInfo localShieldListInfo1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      int j;
+      int n;
+      try
       {
-        localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap == null) {
-          b();
+        localObject = str.split("\\|");
+        if ((localObject != null) && (localObject.length >= 3))
+        {
+          k = a(localObject[0], 0);
+          m = k;
         }
-        localEntityTransaction = localEntityManager.getTransaction();
+      }
+      catch (Exception localException2)
+      {
+        Object localObject;
+        m = 0;
+        j = 1;
+        continue;
+      }
+      try
+      {
+        i = a(localObject[1], 0);
+        j = i;
+        m = k;
         try
         {
-          localEntityTransaction.begin();
-          int j = paramList.size();
-          i = 0;
-          if (i >= j) {
-            break label333;
+          n = a(localObject[2], 256);
+          localObject = new avnk();
+          ((avnk)localObject).jdField_a_of_type_Int = k;
+          ((avnk)localObject).b = i;
+          ((avnk)localObject).c = n;
+          if ((str == null) || (str.isEmpty())) {
+            bool = true;
           }
-          localShieldListInfo1 = (ShieldListInfo)paramList.get(i);
-          localShieldListInfo2 = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localShieldListInfo1.uin);
-          if ((localShieldListInfo1.flags == 0) && (localShieldListInfo2 == null)) {
-            break label349;
-          }
-          if ((localShieldListInfo2 != null) && ((localShieldListInfo2.getStatus() == 1001) || (localShieldListInfo2.getStatus() == 1002))) {
-            if (localShieldListInfo1.flags != localShieldListInfo2.flags)
-            {
-              localShieldListInfo2.flags = localShieldListInfo1.flags;
-              localShieldListInfo2.source_id = localShieldListInfo1.source_id;
-              localShieldListInfo2.source_sub_id = localShieldListInfo1.source_sub_id;
-              a(localEntityManager, localShieldListInfo2);
-            }
-          }
+          ((avnk)localObject).jdField_a_of_type_Boolean = bool;
+          return localObject;
         }
-        catch (Exception paramList)
-        {
-          ShieldListInfo localShieldListInfo2;
-          paramList.printStackTrace();
-          localEntityTransaction.end();
-          bool = false;
-          localEntityManager.close();
-          a();
-          return bool;
-          if ((localShieldListInfo1.flags != 1) || (localShieldListInfo2.source_id == localShieldListInfo1.source_id)) {
-            break label349;
-          }
-          localShieldListInfo2.flags = localShieldListInfo1.flags;
-          localShieldListInfo2.source_id = localShieldListInfo1.source_id;
-          localShieldListInfo2.source_sub_id = localShieldListInfo1.source_sub_id;
-          a(localEntityManager, localShieldListInfo2);
-        }
-        finally
-        {
-          localEntityTransaction.end();
+        catch (Exception localException1) {}
+        if ((localObject != null) && (localObject.length == 1)) {
+          k = a(localObject[0], 0);
         }
       }
-      a(localEntityManager, localShieldListInfo1);
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.put(localShieldListInfo1.uin, localShieldListInfo1);
-      break label349;
-      label333:
-      localEntityTransaction.commit();
-      localEntityTransaction.end();
-      boolean bool = true;
-      continue;
-      label349:
-      i += 1;
-    }
-  }
-  
-  public boolean a(ConcurrentHashMap<String, ShieldListInfo> paramConcurrentHashMap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShieldMsgManger", 2, "<---saveShieldListTotal : begin....");
-    }
-    Object localObject2;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getWritableDatabase();
-      if (localObject2 != null)
+      catch (Exception localException3)
       {
-        localObject3 = new ShieldListInfo().getTableName();
-        ((SQLiteDatabase)localObject2).execSQL("delete from " + (String)localObject3);
+        j = 1;
+        continue;
       }
-      if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap != null) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.size() > 0)) {
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.clear();
+      try
+      {
+        QLog.i("HotVideoDPC", 2, "loadHotVideoDPC configs.length == 1");
+        i = 1;
+        n = i1;
       }
-      localObject2 = new ArrayList();
-      Object localObject3 = paramConcurrentHashMap.keySet().iterator();
-      if (((Iterator)localObject3).hasNext()) {
-        ((ArrayList)localObject2).add(paramConcurrentHashMap.get((String)((Iterator)localObject3).next()));
+      catch (Exception localException4)
+      {
+        m = k;
+        j = 1;
+        continue;
+      }
+      if ((localObject != null) && (localObject.length == 2))
+      {
+        k = a(localObject[0], 0);
+        m = k;
+        i = a(localObject[1], 0);
+        j = i;
+        m = k;
+        QLog.i("HotVideoDPC", 2, "loadHotVideoDPC configs.length == 2");
+        n = i1;
+        continue;
+        n = i1;
+        i = j;
+        k = m;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("HotVideoDPC", 2, "loadHotVideoDPC exception:", localException1);
+          n = i1;
+          i = j;
+          k = m;
+        }
+      }
+      else
+      {
+        i = 1;
+        k = 0;
+        n = i1;
       }
     }
-    boolean bool = a((List)localObject2);
-    return bool;
   }
   
-  public void b(int paramInt, List<Long> paramList)
+  public String toString()
   {
-    b(paramInt, paramList, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hotVideoSwitch: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" hotVideoBlurSwitch: ").append(this.b);
+    localStringBuilder.append(" hotVideoBlurMemory: ").append(this.c);
+    return localStringBuilder.toString();
   }
-  
-  public void b(int paramInt1, List<Long> paramList, int paramInt2)
-  {
-    anaw localanaw = (anaw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(18);
-    int j = paramList.size();
-    long[] arrayOfLong = new long[j];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfLong[i] = ((Long)paramList.get(i)).longValue();
-      i += 1;
-    }
-    localanaw.b(paramInt1, arrayOfLong, paramInt2);
-  }
-  
-  public void onDestroy() {}
 }
 
 

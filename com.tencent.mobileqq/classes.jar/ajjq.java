@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-
 public abstract interface ajjq
 {
-  public abstract void a(RecentBaseData paramRecentBaseData);
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

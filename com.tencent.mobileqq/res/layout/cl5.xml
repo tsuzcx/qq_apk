@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/my_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/mxj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:maxWidth="17.0dip" android:maxHeight="19.5dip" android:layout_centerVertical="true" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:id="@id/npo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:text="1111" android:includeFontPadding="false" android:layout_toRightOf="@id/mxj" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/nx2" android:background="@drawable/dkz" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginTop="11.599976dip" android:layout_toRightOf="@id/npo" />
-</RelativeLayout>
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/b64" android:focusable="true" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik">
+        <View android:layout_gravity="center_vertical" android:id="@id/icon" android:background="@drawable/gzj" android:duplicateParentState="false" style="@style/bw" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:layout_gravity="center" android:id="@id/jj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xgr" android:includeFontPadding="false" android:layout_weight="1.0" />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/d9m" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="49.0dip" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" />
+</LinearLayout>

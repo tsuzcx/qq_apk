@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app.friendlist.receiver;
 
-import aniz;
+import aols;
 import com.tencent.mobileqq.app.FriendListHandler;
 import java.util.ArrayList;
 
 public class MakeFriendReceiver$1
   implements Runnable
 {
-  public MakeFriendReceiver$1(aniz paramaniz, ArrayList paramArrayList1, String paramString, int paramInt1, int paramInt2, ArrayList paramArrayList2) {}
+  public MakeFriendReceiver$1(aols paramaols, ArrayList paramArrayList1, String paramString, int paramInt1, int paramInt2, ArrayList paramArrayList2) {}
   
   public void run()
   {

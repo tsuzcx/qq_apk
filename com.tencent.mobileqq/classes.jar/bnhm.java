@@ -1,31 +1,23 @@
-import android.support.annotation.NonNull;
+import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
 
 class bnhm
-  implements vqp<wen, wgh>
+  implements Observer<Boolean>
 {
-  bnhm(bnhh parambnhh, WeakReference paramWeakReference) {}
+  bnhm(bnhf parambnhf) {}
   
-  public void a(@NonNull wen paramwen, @Nullable wgh paramwgh, @NonNull ErrorMessage paramErrorMessage)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (paramwgh == null)
-    {
-      paramwen = (bnhs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramwen != null) {
-        paramwen.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
-      }
+    if (paramBoolean == null) {
       return;
     }
-    paramwen = (bnhs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramwen != null)
+    bnhf localbnhf = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramwen.a(0, paramwgh.a);
+      bnhf.a(localbnhf, bool);
       return;
     }
-    xvv.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 

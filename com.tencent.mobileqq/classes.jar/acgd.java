@@ -1,50 +1,152 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.NearByDatingTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingData;
+import com.tencent.gdtad.views.videoimax.GdtImaxData;
+import org.json.JSONObject;
 
-public class acgd
-  implements abyl
+public final class acgd
+  implements acgx
 {
-  public int a()
+  private static GdtAd a(Intent paramIntent)
   {
-    return 1010;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.NearByDatingTmp localNearByDatingTmp = new msg_svc.NearByDatingTmp();
-    localNearByDatingTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    QQMessageFacade.Message localMessage = paramQQAppInterface.getMessageFacade().getLastMessage(paramMessageRecord.frienduin, 1010);
-    localNearByDatingTmp.reply.set(localMessage.hasReply);
-    paramMessageRecord = paramQQAppInterface.getMsgCache().q(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("nearby_dating", 4, "发送附近人约会临时会话消息 有keyNearbyDating------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localNearByDatingTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    if (paramIntent == null) {}
+    while (!paramIntent.hasExtra("gdt_ad")) {
+      return null;
     }
-    paramRoutingHead.nearby_dating_tmp.set(localNearByDatingTmp);
-    return true;
+    return (GdtAd)paramIntent.getParcelableExtra("gdt_ad");
   }
   
-  public int b()
+  private static JSONObject a(GdtAd paramGdtAd)
   {
-    return 8012;
+    JSONObject localJSONObject = new JSONObject();
+    if (paramGdtAd != null) {}
+    for (;;)
+    {
+      try
+      {
+        boolean bool = paramGdtAd.isValid();
+        if (bool) {
+          continue;
+        }
+      }
+      catch (Throwable paramGdtAd)
+      {
+        Object localObject;
+        acho.d("GdtCanvasJSONJsCallHandler", "handleJsCallRequest error", paramGdtAd);
+        continue;
+      }
+      if (localJSONObject.length() <= 0) {
+        break label98;
+      }
+      return localJSONObject;
+      localObject = achn.a(paramGdtAd.info);
+      if ((localObject != null) && (!JSONObject.NULL.equals(localObject))) {
+        localJSONObject.put("adInfo", localObject.toString());
+      }
+      paramGdtAd = paramGdtAd.getCanvasForXiJingOffline();
+      if (!TextUtils.isEmpty(paramGdtAd)) {
+        localJSONObject.put("canvasJson", paramGdtAd);
+      }
+    }
+    label98:
+    return null;
+  }
+  
+  private static GdtAd b(Intent paramIntent)
+  {
+    if (paramIntent == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return null;
+        } while (!paramIntent.hasExtra("data"));
+        paramIntent = paramIntent.getSerializableExtra("data");
+      } while ((paramIntent == null) || (!(paramIntent instanceof GdtVideoCeilingData)));
+      paramIntent = (GdtVideoCeilingData)GdtVideoCeilingData.class.cast(paramIntent);
+    } while (paramIntent == null);
+    return paramIntent.getAd();
+  }
+  
+  private static GdtAd c(Intent paramIntent)
+  {
+    if (paramIntent == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return null;
+        } while (!paramIntent.hasExtra("data"));
+        paramIntent = paramIntent.getSerializableExtra("data");
+      } while ((paramIntent == null) || (!(paramIntent instanceof GdtImaxData)));
+      paramIntent = (GdtImaxData)GdtImaxData.class.cast(paramIntent);
+    } while (paramIntent == null);
+    return paramIntent.getAd();
+  }
+  
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
+  {
+    Object localObject2 = null;
+    long l1 = System.currentTimeMillis();
+    if (paramacfw != null) {}
+    for (Activity localActivity = paramacfw.a(); (paramacfw == null) || (localActivity == null); localActivity = null)
+    {
+      acho.d("GdtCanvasJSONJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    GdtAd localGdtAd = a(localActivity.getIntent());
+    paramVarArgs = a(localGdtAd);
+    if ((paramVarArgs != null) && (!JSONObject.NULL.equals(paramVarArgs)) && (paramVarArgs.length() > 0)) {}
+    for (;;)
+    {
+      Object localObject1;
+      if (paramVarArgs != null)
+      {
+        localObject1 = paramVarArgs;
+        if (!JSONObject.NULL.equals(paramVarArgs)) {}
+      }
+      else
+      {
+        localObject1 = new JSONObject();
+      }
+      acho.b("GdtCanvasJSONJsCallHandler", String.format("handleJsCallRequest adInfo:%b canvasJson:%b", new Object[] { Boolean.valueOf(((JSONObject)localObject1).has("adInfo")), Boolean.valueOf(((JSONObject)localObject1).has("canvasJson")) }));
+      try
+      {
+        paramacfw.callJs(paramString, new String[] { ((JSONObject)localObject1).toString() });
+        long l2 = System.currentTimeMillis();
+        paramString = localObject2;
+        if (paramacfw != null) {
+          paramString = paramacfw.a();
+        }
+        AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "getCanvasJson", paramString, localGdtAd, l2 - l1);
+        return true;
+        localGdtAd = b(localActivity.getIntent());
+        localObject1 = a(localGdtAd);
+        if ((localObject1 != null) && (!JSONObject.NULL.equals(localObject1)))
+        {
+          paramVarArgs = (String[])localObject1;
+          if (((JSONObject)localObject1).length() > 0) {
+            continue;
+          }
+        }
+        localGdtAd = c(localActivity.getIntent());
+        paramVarArgs = a(localGdtAd);
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          acho.d("GdtCanvasJSONJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
+    }
   }
 }
 

@@ -1,36 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class acfm
-  implements abyl
+class acfm
+  extends BroadcastReceiver
 {
-  public int a()
-  {
-    return 1036;
-  }
+  private acfm(acfk paramacfk) {}
   
-  public boolean a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new msg_svc.CommTmp();
-    paramQQAppInterface.c2c_type.set(1);
-    paramQQAppInterface.svr_type.set(160);
-    paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.comm_tmp.set(paramQQAppInterface);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 3022;
+    int i = paramIntent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_TYPE", -1);
+    if (i == 3) {}
+    for (boolean bool = true;; bool = false)
+    {
+      acho.a("VolumeBroadcastReceiver", "VolumeBroadcastReceiver action type = " + paramIntent.getAction() + ", isStreamMusic = " + bool + ", streamType = " + i);
+      if (("android.media.VOLUME_CHANGED_ACTION".equals(paramIntent.getAction())) && (bool) && (acfk.a(this.a) != null)) {
+        acfk.a(this.a).a(new Object[0]);
+      }
+      return;
+    }
   }
 }
 

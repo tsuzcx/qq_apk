@@ -1,16 +1,37 @@
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aacw
-  implements QzoneZipCacheHelperCallBack
+public class aacw
+  extends aoav
 {
-  aacw(aacu paramaacu, String paramString1, String paramString2, String paramString3) {}
+  public aacw(FollowTextView paramFollowTextView) {}
   
-  public void onResult(boolean paramBoolean)
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
   {
-    aacu.a(this.jdField_a_of_type_Aacu, paramBoolean, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    super.onFollowPublicAccount(paramBoolean, paramString);
+    FollowTextView.a(this.a, true);
+    if (paramBoolean)
+    {
+      if (!FollowTextView.a(this.a)) {
+        FollowTextView.a(this.a, true, FollowTextView.a(this.a));
+      }
+      this.a.a(1);
+      if (FollowTextView.a(this.a) != null)
+      {
+        if (FollowTextView.a(this.a) != null) {
+          FollowTextView.a(this.a).a(true, FollowTextView.a(this.a));
+        }
+        SimpleEventBus.getInstance().dispatchEvent(new FollowUpdateEvent(1, FollowTextView.a(this.a).poster.id.get()));
+      }
+      return;
+    }
+    QQToast.a(this.a.getContext(), 2131690737, 0).a();
   }
-  
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 

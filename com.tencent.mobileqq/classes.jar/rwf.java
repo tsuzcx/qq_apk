@@ -1,8 +1,17 @@
-public abstract interface rwf
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+final class rwf
+  implements View.OnClickListener
 {
-  public abstract void a();
+  rwf(View paramView) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    this.a.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

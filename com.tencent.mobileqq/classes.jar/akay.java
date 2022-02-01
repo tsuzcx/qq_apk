@@ -1,21 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.mobileqq.app.CardObserver;
 
 class akay
-  extends AbsPreDownloadTask
+  extends CardObserver
 {
-  akay(akaw paramakaw, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, bgod parambgod, DownloadParam paramDownloadParam)
+  akay(akam paramakam) {}
+  
+  public void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramQQAppInterface, paramString);
+    if (paramBoolean1) {
+      this.a.e();
+    }
   }
   
-  public void realCancel() {}
-  
-  public void realStart()
+  public void onGetSignInInfo(boolean paramBoolean)
   {
-    akaw.a(this.jdField_a_of_type_Akaw, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bgod, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam);
+    if (paramBoolean) {
+      this.a.e();
+    }
   }
 }
 

@@ -1,21 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
+import android.content.res.ColorStateList;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-class aacn
-  implements Animation.AnimationListener
+public class aacn
+  extends ClickableSpan
 {
-  aacn(aach paramaach, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  private int jdField_a_of_type_Int;
+  private aaco jdField_a_of_type_Aaco;
+  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Aaco != null)) {
+      this.jdField_a_of_type_Aaco.a(this.jdField_a_of_type_JavaLangString);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
+      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
+    }
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

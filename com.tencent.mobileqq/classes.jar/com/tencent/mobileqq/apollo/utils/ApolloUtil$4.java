@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import amar;
-import amaz;
+import anbz;
+import anch;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.qphone.base.util.QLog;
@@ -21,7 +22,7 @@ final class ApolloUtil$4
     Object localObject2;
     if (localObject1 != null)
     {
-      localObject2 = (QQMessageFacade)((AppRuntime)localObject1).getManager(20);
+      localObject2 = (QQMessageFacade)((AppRuntime)localObject1).getManager(QQManagerFactory.MGR_MSG_FACADE);
       if (localObject2 != null) {
         ((QQMessageFacade)localObject2).updateMsgFieldByUniseq(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extStr);
       }
@@ -41,12 +42,12 @@ final class ApolloUtil$4
           }
         } while (i <= 0);
         this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.saveExtInfoToExtStr("is_share_ark_message_action_played", "2");
-        localObject2 = ((amaz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249)).a();
+        localObject2 = ((anch)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SPRITE_SCRIPT_MANAGER)).a();
         if (localObject2 != null) {
-          ((amar)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, i);
+          ((anbz)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, i);
         }
       } while (localObject1 == null);
-      localObject1 = (QQMessageFacade)((AppRuntime)localObject1).getManager(20);
+      localObject1 = (QQMessageFacade)((AppRuntime)localObject1).getManager(QQManagerFactory.MGR_MSG_FACADE);
     } while (localObject1 == null);
     ((QQMessageFacade)localObject1).updateMsgFieldByUniseq(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extStr);
   }

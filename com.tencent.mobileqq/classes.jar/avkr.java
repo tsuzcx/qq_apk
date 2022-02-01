@@ -1,8 +1,48 @@
-import android.graphics.Bitmap;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
 
-public abstract interface avkr
+public class avkr
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(Bitmap paramBitmap);
+  public avkr(HiBoomTextView paramHiBoomTextView) {}
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    if (this.a.jdField_a_of_type_Avkx != null)
+    {
+      this.a.jdField_a_of_type_Avkx.a(this.a);
+      return true;
+    }
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    avkb localavkb = avjz.a().a(this.a.jdField_a_of_type_Int, this.a.b, this.a.jdField_a_of_type_Avka);
+    if (this.a.b())
+    {
+      localavkb.a(true);
+      this.a.invalidate();
+      return true;
+    }
+    if (HiBoomTextView.a(this.a)) {
+      this.a.a();
+    }
+    for (;;)
+    {
+      return super.onSingleTapConfirmed(paramMotionEvent);
+      if (localavkb.jdField_a_of_type_Int == 3)
+      {
+        this.a.a(true);
+      }
+      else if (localavkb.jdField_a_of_type_Int == 4)
+      {
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.invalidate();
+      }
+    }
+  }
 }
 
 

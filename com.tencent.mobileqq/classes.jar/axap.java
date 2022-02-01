@@ -1,16 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class axap
-  implements View.OnClickListener
+public class axap
 {
-  axap(awzr paramawzr) {}
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public void onClick(View paramView)
+  public axap()
   {
-    awzr.c(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public String toString()
+  {
+    return "MsgBackupSessionTask[msg = " + this.jdField_a_of_type_JavaLangString + ", cmd = " + this.jdField_a_of_type_Int + ", isFileTask = " + this.jdField_a_of_type_Boolean + ", sessionId = " + this.jdField_a_of_type_Long + ", path = " + this.jdField_b_of_type_JavaLangString + ", url = " + this.c + ", retryTimes = " + this.jdField_a_of_type_Short + "]";
   }
 }
 

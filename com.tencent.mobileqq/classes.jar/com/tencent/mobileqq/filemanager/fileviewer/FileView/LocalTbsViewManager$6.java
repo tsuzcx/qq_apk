@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
-import aspt;
-import aspy;
+import atua;
+import atuf;
 
 public class LocalTbsViewManager$6
   implements Runnable
 {
-  public LocalTbsViewManager$6(aspt paramaspt, int paramInt, aspy paramaspy) {}
+  public LocalTbsViewManager$6(atua paramatua, int paramInt, atuf paramatuf) {}
   
   public void run()
   {
@@ -17,15 +17,15 @@ public class LocalTbsViewManager$6
     default: 
       return;
     case 5001: 
-      this.jdField_a_of_type_Aspy.a(true);
+      this.jdField_a_of_type_Atuf.a(true);
       return;
     }
-    this.jdField_a_of_type_Aspy.a(false);
+    this.jdField_a_of_type_Atuf.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager.6
  * JD-Core Version:    0.7.0.1
  */

@@ -81,7 +81,7 @@ public class CaptureActItem
   
   public void clear()
   {
-    this.copyFilter.ClearGLSL();
+    this.copyFilter.clearGLSL();
     Object localObject = this.copyFrames;
     int j = localObject.length;
     int i = 0;

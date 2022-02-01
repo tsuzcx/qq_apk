@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-final class akml
-  implements Animation.AnimationListener
+class akml
+  implements biyc
 {
-  akml(View paramView, Animation paramAnimation) {}
+  akml(akmj paramakmj, Runnable paramRunnable) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

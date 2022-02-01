@@ -1,45 +1,12 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation.1;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
-public class amji
-  implements WXShareHelper.WXShareListener
+class amji
 {
-  public amji(ApolloGameInvitation.1 param1) {}
+  bglr jdField_a_of_type_Bglr;
+  Boolean jdField_a_of_type_JavaLangBoolean;
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public amji(amjc paramamjc, bglr parambglr)
   {
-    if (paramBaseResp == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((amjh.a(this.a.this$0) == null) || (!amjh.a(this.a.this$0).equals(paramBaseResp.transaction)));
-      QLog.i("ApolloGameInvitation", 1, "[onWXShareResp], resp.errCode:" + paramBaseResp.errCode);
-      if (paramBaseResp.errCode != 0) {
-        break;
-      }
-    } while ((amjh.a(this.a.this$0) == null) || (amjh.a(this.a.this$0) == null) || ((AppInterface)amjh.a(this.a.this$0).get() == null));
-    VipUtils.a(null, "cmshow", "Apollo", "wechat_invite_sent", 0, 0, new String[] { Integer.toString(amjh.a(this.a.this$0).a) });
-    if (paramBaseResp.errCode == 0) {
-      amjh.a(this.a.this$0, 0, 2);
-    }
-    for (;;)
-    {
-      WXShareHelper.getInstance().removeObserver(this);
-      return;
-      if (paramBaseResp.errCode == -2) {
-        amjh.a(this.a.this$0, 2, 2);
-      } else {
-        amjh.a(this.a.this$0, 1, 2);
-      }
-    }
+    this.jdField_a_of_type_Bglr = parambglr;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
   }
 }
 

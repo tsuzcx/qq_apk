@@ -1,115 +1,101 @@
 import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.avgame.gamelogic.data.Player;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView.LayoutParams;
+import com.dataline.util.widget.AsyncImageView;
+import com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.contact.connections.OverlappingImgLayout;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
 public class nep
-  implements ned
+  extends new<nej>
 {
-  nee jdField_a_of_type_Nee;
-  neg jdField_a_of_type_Neg;
+  private View jdField_a_of_type_AndroidViewView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private RecyclerView.LayoutParams jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView$LayoutParams;
+  private AsyncImageView jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView;
+  private AutoResizeAsyncImageView jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView;
+  private OverlappingImgLayout jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsOverlappingImgLayout;
+  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
+  private int jdField_b_of_type_Int;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private int c;
   
-  public nep(nee paramnee)
+  public nep(@NonNull View paramView)
   {
-    this.jdField_a_of_type_Nee = paramnee;
+    super(paramView);
+    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView$LayoutParams = ((RecyclerView.LayoutParams)paramView.getLayoutParams());
+    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView$LayoutParams.width;
+    this.c = this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView$LayoutParams.height;
+    this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131363217));
+    this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultColorDrawable(0);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363214));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363213);
+    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView = ((AutoResizeAsyncImageView)paramView.findViewById(2131363215));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363211));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsOverlappingImgLayout = ((OverlappingImgLayout)paramView.findViewById(2131363210));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363212));
+    paramView.setOnTouchListener(new neq(this));
+    a(paramView);
   }
   
-  public String a(Context paramContext, naf paramnaf)
+  private void a(AppInterface paramAppInterface)
   {
-    if (paramContext == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder == null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(paramAppInterface);
+    }
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
+    }
+    super.a();
+  }
+  
+  public void a(nfa paramnfa, nej paramnej, int paramInt)
+  {
+    super.a(paramnfa, paramnej, paramInt);
+    if (paramnej == null) {
+      return;
+    }
+    if ((paramnej.a()) && (!nej.b()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GuessActionStagePresenter", 2, "getGamePrepareBottomTip null context");
-      }
-      return "";
+      this.itemView.setVisibility(8);
+      this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView$LayoutParams.width = 0;
+      this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView$LayoutParams.height = 0;
+      return;
     }
-    boolean bool = mzl.a(paramnaf);
-    paramnaf = paramnaf.a().jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.nick;
-    if (bool) {
-      return paramContext.getResources().getString(2131690238);
-    }
-    return String.format(paramContext.getResources().getString(2131690239), new Object[] { ContactUtils.getFitString(paramnaf, 8.0F) });
-  }
-  
-  public String a(Context paramContext, boolean paramBoolean)
-  {
-    if (paramContext == null)
+    this.itemView.setVisibility(0);
+    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView$LayoutParams.width = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_AndroidxRecyclerviewWidgetRecyclerView$LayoutParams.height = this.c;
+    this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage(paramnej.b());
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramnej.b());
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(paramnej.c());
+    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.a(paramnej.c());
+    if (paramnej.a())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GuessActionStagePresenter", 2, "getGameRuleAnswerTip null context");
+      if ((paramnfa instanceof neu)) {
+        a(((neu)paramnfa).a());
       }
-      return "";
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsOverlappingImgLayout.a(17, 17, paramnej.a(), this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.itemView.getContext().getString(2131690375, new Object[] { Integer.valueOf(paramnej.d()) }));
+      if (paramnej.d() > 0)
+      {
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        return;
+      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      return;
     }
-    if (paramBoolean) {
-      return paramContext.getResources().getString(2131690242);
-    }
-    return paramContext.getResources().getString(2131690237);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
   }
-  
-  public neg a()
-  {
-    return this.jdField_a_of_type_Neg;
-  }
-  
-  public void a(mzq parammzq)
-  {
-    this.jdField_a_of_type_Nee.a(parammzq);
-  }
-  
-  public void a(naf paramnaf)
-  {
-    a(mzl.a(paramnaf), false);
-    this.jdField_a_of_type_Neg.a().d(false);
-  }
-  
-  public void a(neg paramneg)
-  {
-    this.jdField_a_of_type_Neg = paramneg;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Nee.a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Nee.a(paramBoolean1, paramBoolean2);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return paramBoolean;
-  }
-  
-  public void b(naf paramnaf)
-  {
-    a(mzl.a(paramnaf), true);
-    a(paramnaf.a());
-    this.jdField_a_of_type_Neg.a().d(true);
-    this.jdField_a_of_type_Neg.a().a(paramnaf.a().jdField_a_of_type_Naj.c * 1000, paramnaf.a().e());
-    this.jdField_a_of_type_Neg.a(this.jdField_a_of_type_Nee.a(), paramnaf.a().jdField_a_of_type_Naj.e * 1000, paramnaf.a().d());
-  }
-  
-  public void c(naf paramnaf)
-  {
-    a(mzl.a(paramnaf), true);
-    a(paramnaf.a());
-    this.jdField_a_of_type_Neg.a(this.jdField_a_of_type_Nee.a(), paramnaf.a().jdField_a_of_type_Naj.e * 1000, paramnaf.a().d());
-    this.jdField_a_of_type_Neg.a().a(paramnaf.a().jdField_a_of_type_Naj.c * 1000, paramnaf.a().e());
-  }
-  
-  public void d(naf paramnaf) {}
-  
-  public void e(naf paramnaf) {}
-  
-  public void f(naf paramnaf) {}
 }
 
 

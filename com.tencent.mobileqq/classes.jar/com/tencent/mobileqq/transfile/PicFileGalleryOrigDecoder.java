@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.transfile;
 
-import ahbc;
+import ahuc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.URI;
@@ -10,7 +11,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 public class PicFileGalleryOrigDecoder
-  extends ahbc
+  extends ahuc
 {
   public PicFileGalleryOrigDecoder(BaseApplicationImpl paramBaseApplicationImpl)
   {
@@ -19,32 +20,40 @@ public class PicFileGalleryOrigDecoder
   
   public File getFile(DownloadParams paramDownloadParams)
   {
-    paramDownloadParams = paramDownloadParams.url;
-    try
-    {
-      File localFile1 = new File(paramDownloadParams.toURI().getPath());
-      return localFile1;
-    }
-    catch (URISyntaxException localURISyntaxException)
+    URL localURL = paramDownloadParams.url;
+    for (;;)
     {
       try
       {
-        File localFile2 = new File(paramDownloadParams.toString().replaceFirst("filegalleryorigimage:", ""));
-        return localFile2;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + paramDownloadParams, localException);
+        paramDownloadParams = localURL.getFile();
+        if (!FileUtils.fileExists(paramDownloadParams))
+        {
+          paramDownloadParams = localURL.toURI().getPath();
+          paramDownloadParams = new File(paramDownloadParams);
+          return paramDownloadParams;
         }
+      }
+      catch (URISyntaxException paramDownloadParams)
+      {
+        try
+        {
+          paramDownloadParams = new File(localURL.toString().replaceFirst("filegalleryorigimage:", ""));
+          return paramDownloadParams;
+        }
+        catch (Exception paramDownloadParams)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + localURL, paramDownloadParams);
+          }
+          return null;
+        }
+      }
+      catch (NullPointerException paramDownloadParams)
+      {
+        paramDownloadParams.printStackTrace();
         return null;
       }
     }
-    catch (NullPointerException paramDownloadParams)
-    {
-      paramDownloadParams.printStackTrace();
-    }
-    return null;
   }
 }
 

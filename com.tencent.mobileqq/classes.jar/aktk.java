@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 public class aktk
-  implements bbuj
+  extends RecyclerView.OnScrollListener
 {
-  public aktk(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public aktk(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onCameraException(Exception paramException)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "[onCameraException]", paramException);
-    }
-  }
-  
-  public void onDispatchThreadException(RuntimeException paramRuntimeException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ahxs.a(bool);
+      return;
     }
   }
 }

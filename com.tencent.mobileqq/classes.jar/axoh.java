@@ -1,18 +1,28 @@
-import android.support.v4.view.ViewPager;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.NearbyFakeActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class axoh
-  implements nrt
+  extends Handler
 {
-  public axoh(SearchResultFragment paramSearchResultFragment) {}
+  public axoh(NearbyFakeActivity paramNearbyFakeActivity) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(paramInt);
-    this.a.jdField_a_of_type_Axnu.a(false);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyFakeActivity", 2, "procPreload time out");
+      }
+      NearbyFakeActivity.a(this.a, 1);
+    }
   }
-  
-  public void b(int paramInt) {}
 }
 
 

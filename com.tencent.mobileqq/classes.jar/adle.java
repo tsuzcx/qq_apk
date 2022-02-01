@@ -1,23 +1,64 @@
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AutoLoginHelper.4.1;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.observer.AccountObserver;
 
 public class adle
-  implements View.OnClickListener
+  extends AccountObserver
 {
-  public adle(GeneralSettingActivity paramGeneralSettingActivity) {}
+  adle(adlb paramadlb) {}
   
-  public void onClick(View paramView)
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, String paramString4)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("set_display_type", 1);
-    PublicFragmentActivity.a(this.a.getActivity(), localIntent, QQSettingChatOperationFragment.class);
-    bcef.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2, paramString4);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), adlb.a(this.a), paramString2, paramString1 }));
+    }
+    this.a.c = false;
+    adlb.a(this.a);
+    if (adlb.a(this.a) != null)
+    {
+      paramString1 = new Intent(adlb.a(this.a), LoginActivity.class);
+      paramString1.putExtra("uin", adlb.a(this.a));
+      paramString1.putExtra("tab_index", MainFragment.b);
+      paramString1.addFlags(131072);
+      adlb.a(this.a).startActivity(paramString1);
+      adlb.a(this.a).finish();
+    }
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    super.onLoginSuccess(paramString1, paramString2);
+    this.a.c = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginSuccess ");
+    }
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginTimeout ");
+    }
+    this.a.c = false;
+    adlb.a(this.a);
+    adlb.a(this.a).a.post(new AutoLoginHelper.4.1(this));
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    this.a.c = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onUserCancel ");
+    }
   }
 }
 

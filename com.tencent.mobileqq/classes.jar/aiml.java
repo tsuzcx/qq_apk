@@ -1,87 +1,86 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopView.MyTroopObserver.1;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class aiml
-  extends andd
 {
-  public aiml(TroopView paramTroopView) {}
-  
-  protected void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  public static String a(int paramInt)
   {
-    if (paramBoolean) {
-      this.a.j();
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "星期日";
+    case 2: 
+      return "星期一";
+    case 3: 
+      return "星期二";
+    case 4: 
+      return "星期三";
+    case 5: 
+      return "星期四";
+    case 6: 
+      return "星期五";
+    }
+    return "星期六";
+  }
+  
+  public static String a(long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    String str1 = b(paramLong);
+    if (!a(paramLong, l)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      String str2 = a(paramLong, bool, true, true);
+      return str2 + " " + str1;
     }
   }
   
-  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
+  public static String a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (paramBoolean) {
-      this.a.j();
-    }
-  }
-  
-  protected void onModifyTroopInfo(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
-  {
-    if (paramBoolean) {
-      this.a.j();
-    }
-  }
-  
-  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.j();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramBoolean1)
+    {
+      str = localCalendar.get(1) + "-";
+      localStringBuilder = localStringBuilder.append(str);
+      if (!paramBoolean2) {
+        break label143;
+      }
+      str = String.format("%02d-", new Object[] { Integer.valueOf(localCalendar.get(2) + 1) });
+      label88:
+      localStringBuilder = localStringBuilder.append(str);
+      if (!paramBoolean3) {
+        break label150;
       }
     }
-    do
+    label143:
+    label150:
+    for (String str = String.format("%02d", new Object[] { Integer.valueOf(localCalendar.get(5)) });; str = "")
     {
-      do
-      {
-        return;
-        if (paramInt1 != 2) {
-          break;
-        }
-      } while (paramInt2 != 0);
-      this.a.j();
-      return;
-    } while ((paramInt1 != 9) || (paramInt2 != 0));
-    this.a.j();
-  }
-  
-  protected void onUpdateTroopList(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      TroopView.a(this.a);
-    }
-    if (this.a.c)
-    {
-      this.a.c = false;
-      if (!paramBoolean) {
-        break label79;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-      this.a.a(101, 800L);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.postDelayed(new TroopView.MyTroopObserver.1(this), 1200L);
-      return;
-      label79:
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
-      this.a.b(2131718604);
+      return str;
+      str = "";
+      break;
+      str = "";
+      break label88;
     }
   }
   
-  protected void onUpdateTroopNickname(boolean paramBoolean)
+  public static boolean a(long paramLong1, long paramLong2)
   {
-    if (paramBoolean) {
-      this.a.j();
-    }
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.setTimeInMillis(paramLong1);
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.setTimeInMillis(paramLong2);
+    return localCalendar1.get(1) == localCalendar2.get(1);
+  }
+  
+  public static String b(long paramLong)
+  {
+    Date localDate = new Date(paramLong);
+    return String.format("%02d:%02d", new Object[] { Integer.valueOf(localDate.getHours()), Integer.valueOf(localDate.getMinutes()) });
   }
 }
 

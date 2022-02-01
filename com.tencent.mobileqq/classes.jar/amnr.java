@@ -1,26 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
 
-class amnr
-  extends bgod
+public final class amnr
+  implements adaa
 {
-  amnr(amnq paramamnq, String paramString1, String paramString2, String paramString3) {}
+  public amnr(View paramView, adad paramadad, long paramLong, int paramInt, String paramString) {}
   
-  public void onDone(bgoe parambgoe)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    super.onDone(parambgoe);
-    if (3 == parambgoe.a()) {
-      this.jdField_a_of_type_Amnq.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleFrameZipDecoder", 2, "downloadZip onDone task.getStatus()->" + parambgoe.a());
-      }
-      return;
-      this.jdField_a_of_type_Amnq.a = 2;
-      this.jdField_a_of_type_Amnq.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adad, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login permision code");
   }
+  
+  public void a(int paramInt, String paramString)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adad, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login failed," + paramString);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    ApolloRender.getLocationDoLocation(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Adad, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void b(JSONObject paramJSONObject) {}
 }
 
 

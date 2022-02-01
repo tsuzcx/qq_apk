@@ -1,6 +1,6 @@
 package cooperation.qzone.webviewplugin;
 
-import amtj;
+import anvx;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -19,7 +19,7 @@ class QZoneSharePictureJsPlugin$10
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
     QZLog.w("QZoneSharePictureJsPlugin", "下载GIF组件失败，请稍后重试");
-    QZoneSharePictureJsPlugin.access$600(this.this$0, amtj.a(2131711445), 1);
+    QZoneSharePictureJsPlugin.access$600(this.this$0, anvx.a(2131711792), 1);
   }
   
   public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
@@ -33,7 +33,7 @@ class QZoneSharePictureJsPlugin$10
       return;
     }
     QZLog.w("QZoneSharePictureJsPlugin", "parentPlugin is null");
-    QZoneSharePictureJsPlugin.access$600(this.this$0, amtj.a(2131711424), 1);
+    QZoneSharePictureJsPlugin.access$600(this.this$0, anvx.a(2131711771), 1);
   }
 }
 

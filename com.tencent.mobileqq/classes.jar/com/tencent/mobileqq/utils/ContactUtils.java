@@ -1,41 +1,43 @@
 package com.tencent.mobileqq.utils;
 
-import aara;
-import abdn;
-import aips;
-import ampw;
-import ampx;
-import amqa;
-import amqb;
-import amrb;
-import amrk;
-import amsw;
-import amtj;
-import amxz;
-import anca;
+import abgm;
+import absz;
+import ajlh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.TextUtils;
-import avsy;
-import bezm;
-import bfqg;
-import bftd;
-import bftf;
-import bfun;
-import bfxn;
-import bgeg;
-import bily;
+import ansj;
+import ansk;
+import ansn;
+import anso;
+import antp;
+import anty;
+import anvk;
+import anvx;
+import aoan;
+import aoep;
+import awyz;
+import bghs;
+import bgyx;
+import bhbv;
+import bhbx;
+import bhdf;
+import bhgf;
+import bhmz;
+import bjxa;
 import com.tencent.av.gaudio.AVPhoneUserInfo;
 import com.tencent.av.gaudio.AVPhoneUserInfo.TelInfo;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.AccountDetail;
@@ -65,7 +67,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import mqq.app.Constants.PropertiesKey;
 import mqq.app.MobileQQ;
-import mst;
+import mtq;
 import org.jetbrains.annotations.NotNull;
 
 public class ContactUtils
@@ -133,7 +135,7 @@ public class ContactUtils
     if ((paramString1 == null) || (paramString1.equals("")) || (paramString2 == null) || (paramString2.equals(""))) {
       return;
     }
-    ((avsy)paramQQAppInterface.getManager(11)).c(paramString1, paramString2);
+    ((awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).c(paramString1, paramString2);
   }
   
   public static void clearRequestPathKey()
@@ -165,27 +167,27 @@ public class ContactUtils
     if (paramString == null) {
       paramString = null;
     }
-    label91:
-    label94:
+    label92:
+    label95:
     for (;;)
     {
       return paramString;
       String str = paramQQAppInterface.getApplication().getProperty(Constants.PropertiesKey.nickName.toString() + paramString);
       if (TextUtils.isEmpty(str))
       {
-        paramQQAppInterface = (amsw)paramQQAppInterface.getManager(51);
+        paramQQAppInterface = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
         if (paramQQAppInterface == null)
         {
           paramQQAppInterface = localObject;
           if (paramQQAppInterface == null) {
-            break label91;
+            break label92;
           }
         }
       }
       for (paramQQAppInterface = paramQQAppInterface.name;; paramQQAppInterface = str)
       {
         if (TextUtils.isEmpty(paramQQAppInterface)) {
-          break label94;
+          break label95;
         }
         return paramQQAppInterface;
         paramQQAppInterface = paramQQAppInterface.e(paramString);
@@ -201,24 +203,24 @@ public class ContactUtils
       localObject = "";
     }
     String str;
-    label189:
-    label198:
-    label207:
-    label210:
+    label190:
+    label199:
+    label208:
+    label211:
     do
     {
       return localObject;
-      amsw localamsw = (amsw)paramQQAppInterface.getManager(51);
-      if (localamsw != null)
+      anvk localanvk = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (localanvk != null)
       {
-        localObject = localamsw.e(paramString);
+        localObject = localanvk.e(paramString);
         if (localObject != null)
         {
           if (!((Friends)localObject).isFriend()) {
-            break label198;
+            break label199;
           }
           if ((((Friends)localObject).remark == null) || ("".equals(((Friends)localObject).remark))) {
-            break label189;
+            break label190;
           }
           str = ((Friends)localObject).remark;
         }
@@ -234,17 +236,17 @@ public class ContactUtils
         if (isValideName(str, paramString)) {
           break;
         }
-        if ((localamsw == null) || (isValideName(str, paramString))) {
-          break label207;
+        if ((localanvk == null) || (isValideName(str, paramString))) {
+          break label208;
         }
-        localObject = localamsw.b(paramString);
+        localObject = localanvk.b(paramString);
         if (localObject == null) {
-          break label207;
+          break label208;
         }
         str = ((Card)localObject).strNick;
         localObject = str;
         if (!isValideName(str, paramString)) {
-          break label210;
+          break label211;
         }
         if (QLog.isColorLevel()) {
           QLog.d("ContactUtils", 2, StringUtil.makeLogMsg(new Object[] { "getBuddyName()", paramString, Boolean.valueOf(paramBoolean) }));
@@ -258,11 +260,11 @@ public class ContactUtils
       if (isValideName((String)localObject, paramString)) {
         break;
       }
-      localObject = (amxz)paramQQAppInterface.getManager(56);
+      localObject = (aoan)paramQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
       if (localObject == null) {
         break;
       }
-      localObject = ((amxz)localObject).c(paramString);
+      localObject = ((aoan)localObject).c(paramString);
       if (localObject == null) {
         break;
       }
@@ -275,7 +277,7 @@ public class ContactUtils
     QLog.d("ContactUtils", 2, StringUtil.makeLogMsg(new Object[] { "getBuddyName()", paramString, Boolean.valueOf(paramBoolean) }));
     return str;
     if (paramBoolean) {
-      ((ampw)paramQQAppInterface.getManager(54)).a().b(paramString);
+      ((ansj)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_FACADE)).a().b(paramString);
     }
     return paramString;
   }
@@ -290,10 +292,10 @@ public class ContactUtils
       return localObject1;
       localObject1 = paramString;
     } while (paramQQAppInterface == null);
-    Object localObject1 = (amsw)paramQQAppInterface.getManager(51);
+    Object localObject1 = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localObject1 != null)
     {
-      Object localObject2 = ((amsw)localObject1).e(paramString);
+      Object localObject2 = ((anvk)localObject1).e(paramString);
       if (localObject2 != null)
       {
         localObject2 = ((Friends)localObject2).name;
@@ -307,7 +309,7 @@ public class ContactUtils
       }
     }
     if (localObject1 != null) {}
-    for (localObject1 = ((amsw)localObject1).b(paramString);; localObject1 = null)
+    for (localObject1 = ((anvk)localObject1).b(paramString);; localObject1 = null)
     {
       if (localObject1 != null)
       {
@@ -321,7 +323,7 @@ public class ContactUtils
         }
       }
       if (paramBoolean) {
-        ((ampw)paramQQAppInterface.getManager(54)).a().b(paramString);
+        ((ansj)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_FACADE)).a().b(paramString);
       }
       localObject1 = paramString;
       if (!QLog.isColorLevel()) {
@@ -392,13 +394,13 @@ public class ContactUtils
       return localObject;
     }
     if (TextUtils.equals(paramString, AppConstants.MSG_BOX_DAREN_ASSISTANT_UIN)) {
-      return BaseApplicationImpl.getContext().getString(2131693939);
+      return BaseApplicationImpl.getContext().getString(2131694130);
     }
     if (TextUtils.equals(paramString, AppConstants.MSG_BOX_YANZHI_UIN)) {
-      return BaseApplicationImpl.getContext().getString(2131693944);
+      return BaseApplicationImpl.getContext().getString(2131694135);
     }
     long l = 0L;
-    Object localObject = ((amsw)paramQQAppInterface.getManager(51)).a(paramString);
+    Object localObject = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString);
     String str;
     if (localObject != null)
     {
@@ -419,7 +421,7 @@ public class ContactUtils
       }
       for (;;)
       {
-        ((ampw)paramQQAppInterface.getManager(54)).a().c(paramString);
+        ((ansj)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_FACADE)).a().c(paramString);
         return str;
       }
       str = null;
@@ -439,7 +441,7 @@ public class ContactUtils
       }
       return paramString;
     }
-    localObject = new amqa(paramQQAppInterface, paramString, paramQQAppInterface.getCurrentAccountUin());
+    localObject = new ansn(paramQQAppInterface, paramString, paramQQAppInterface.getCurrentAccountUin());
     ArrayList localArrayList = new ArrayList(paramMap.values());
     for (paramString = "";; paramString = paramMap)
     {
@@ -459,12 +461,12 @@ public class ContactUtils
   
   public static String getDiscussionMemberName(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    Friends localFriends = ((amsw)paramQQAppInterface.getManager(51)).b(paramString2);
+    Friends localFriends = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString2);
     if ((localFriends == null) || (!localFriends.isFriend()))
     {
-      paramQQAppInterface = ((amrb)paramQQAppInterface.getManager(53)).a(paramString1, paramString2);
+      paramQQAppInterface = ((antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString1, paramString2);
       if (paramQQAppInterface == null) {
-        break label75;
+        break label77;
       }
       paramQQAppInterface = paramQQAppInterface.inteRemark;
     }
@@ -478,7 +480,7 @@ public class ContactUtils
       else
       {
         return paramQQAppInterface;
-        label75:
+        label77:
         paramQQAppInterface = "";
       }
     }
@@ -486,7 +488,7 @@ public class ContactUtils
   
   public static String getDiscussionMemberName(DiscussionMemberInfo paramDiscussionMemberInfo, QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = ((amsw)paramQQAppInterface.getManager(51)).b(paramDiscussionMemberInfo.memberUin);
+    paramQQAppInterface = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramDiscussionMemberInfo.memberUin);
     if ((paramQQAppInterface != null) && (paramQQAppInterface.isFriend())) {}
     for (Object localObject = paramQQAppInterface.getFriendNick();; localObject = paramDiscussionMemberInfo.inteRemark)
     {
@@ -504,8 +506,8 @@ public class ContactUtils
   
   public static String getDiscussionMemberShowName(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    amsw localamsw = (amsw)paramQQAppInterface.getManager(51);
-    Object localObject1 = (amrb)paramQQAppInterface.getManager(53);
+    anvk localanvk = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject1 = (antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
     if (paramString2 == null)
     {
       if (QLog.isColorLevel()) {
@@ -514,11 +516,11 @@ public class ContactUtils
       paramQQAppInterface = "";
       return paramQQAppInterface;
     }
-    Object localObject2 = ((amrb)localObject1).a(paramString1);
+    Object localObject2 = ((antp)localObject1).a(paramString1);
     if ((localObject2 != null) && (((DiscussionInfo)localObject2).isDiscussHrMeeting())) {}
     for (boolean bool = true;; bool = false)
     {
-      localObject2 = localamsw.b(paramString2);
+      localObject2 = localanvk.b(paramString2);
       if ((localObject2 != null) && (((Friends)localObject2).isFriend()) && (!bool))
       {
         if (!TextUtils.isEmpty(((Friends)localObject2).remark)) {
@@ -534,7 +536,7 @@ public class ContactUtils
         QLog.d("ContactUtils", 2, "getDiscussionMemberShowName is friend but no name.");
         return paramString2;
       }
-      localObject1 = ((amrb)localObject1).a(paramString1);
+      localObject1 = ((antp)localObject1).a(paramString1);
       if (localObject1 != null)
       {
         localObject2 = (DiscussionMemberInfo)((Map)localObject1).get(paramString2);
@@ -545,7 +547,7 @@ public class ContactUtils
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
             if (QLog.isDevelopLevel()) {
-              QLog.w("ContactUtils", 1, "getDiscussionMemberShowName, discussionShowName[" + bftf.a((String)localObject1) + "], discussionUin[" + paramString1 + "], memberUin[" + paramString2 + "], bIsDiscHrMeeting[" + bool + "]");
+              QLog.w("ContactUtils", 1, "getDiscussionMemberShowName, discussionShowName[" + bhbx.a((String)localObject1) + "], discussionUin[" + paramString1 + "], memberUin[" + paramString2 + "], bIsDiscHrMeeting[" + bool + "]");
             }
             if (localObject1 != null)
             {
@@ -555,9 +557,9 @@ public class ContactUtils
             else
             {
               if (!bool) {
-                break label319;
+                break label321;
               }
-              paramString1 = bfxn.a();
+              paramString1 = bhgf.a();
             }
           }
         }
@@ -571,15 +573,15 @@ public class ContactUtils
         }
         localObject1 = null;
         break;
-        label319:
-        paramString1 = localamsw.e(paramString2);
+        label321:
+        paramString1 = localanvk.e(paramString2);
         if (paramString1 != null)
         {
           paramString1 = paramString1.name;
         }
         else
         {
-          ((FriendListHandler)paramQQAppInterface.getBusinessHandler(1)).getFriendInfo(paramString2, false);
+          ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(paramString2, false);
           paramString1 = paramString2;
         }
       }
@@ -612,14 +614,14 @@ public class ContactUtils
     }
     else
     {
-      paramDiscussionInfo = paramContext.getResources().getString(2131691637);
+      paramDiscussionInfo = paramContext.getResources().getString(2131691722);
     }
     return paramDiscussionInfo;
   }
   
   public static String getDiscussionName(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
   {
-    paramQQAppInterface = (amrb)paramQQAppInterface.getManager(53);
+    paramQQAppInterface = (antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
     if (paramQQAppInterface != null) {}
     for (paramQQAppInterface = paramQQAppInterface.a(paramString);; paramQQAppInterface = null) {
       return getDiscussionName(paramContext, paramQQAppInterface);
@@ -628,7 +630,7 @@ public class ContactUtils
   
   public static String getDiscussionNameCanNull(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface = ((amrb)paramQQAppInterface.getManager(53)).a(paramString);
+    paramQQAppInterface = ((antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString);
     if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.discussionName))) {
       return paramQQAppInterface.discussionName;
     }
@@ -637,7 +639,7 @@ public class ContactUtils
   
   public static String getDiscussionNameDefaultUin(QQAppInterface paramQQAppInterface, String paramString)
   {
-    DiscussionInfo localDiscussionInfo = ((amrb)paramQQAppInterface.getManager(53)).a(paramString);
+    DiscussionInfo localDiscussionInfo = ((antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString);
     paramQQAppInterface = paramString;
     if (localDiscussionInfo != null)
     {
@@ -651,12 +653,12 @@ public class ContactUtils
   
   public static String getDisplayName(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    Object localObject = (ampw)paramQQAppInterface.getManager(54);
-    amrb localamrb = (amrb)paramQQAppInterface.getManager(53);
-    localObject = (amsw)paramQQAppInterface.getManager(51);
-    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
+    Object localObject = (ansj)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_FACADE);
+    antp localantp = (antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    localObject = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if ((localObject != null) && (paramInt1 != 1) && (paramInt1 != 7) && (paramInt1 != 6) && (paramInt1 != 2) && (paramInt1 != 5)) {}
-    for (localObject = ((amsw)localObject).e(paramString1);; localObject = null)
+    for (localObject = ((anvk)localObject).e(paramString1);; localObject = null)
     {
       switch (paramInt1)
       {
@@ -672,7 +674,7 @@ public class ContactUtils
         if (TextUtils.isEmpty(paramQQAppInterface))
         {
           return paramString1;
-          paramQQAppInterface = getDisplayNameForEntryFriendList(paramInt2, paramString1, (Friends)localObject, ((avsy)paramQQAppInterface.getManager(11)).a(paramString1));
+          paramQQAppInterface = getDisplayNameForEntryFriendList(paramInt2, paramString1, (Friends)localObject, ((awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).a(paramString1));
           continue;
           paramQQAppInterface = getNickName(paramQQAppInterface, paramString1, 1008);
           continue;
@@ -689,15 +691,15 @@ public class ContactUtils
             continue;
             paramQQAppInterface = getDiscussionMemberShowName(paramQQAppInterface, paramString2, paramString1);
             continue;
-            paramQQAppInterface = getDisplayNameForEntryPhoneContactList(paramInt2, paramString1, (Friends)localObject, ((avsy)paramQQAppInterface.getManager(11)).a(paramString1));
+            paramQQAppInterface = getDisplayNameForEntryPhoneContactList(paramInt2, paramString1, (Friends)localObject, ((awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).a(paramString1));
             continue;
-            paramQQAppInterface = getDisplayNameForEntryFriendRecommendList(paramInt2, paramString1, (Friends)localObject, ((avsy)paramQQAppInterface.getManager(11)).a(paramString1));
+            paramQQAppInterface = getDisplayNameForEntryFriendRecommendList(paramInt2, paramString1, (Friends)localObject, ((awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).a(paramString1));
             continue;
-            paramQQAppInterface = getDiscussionName(paramQQAppInterface.getApp(), localamrb.a(paramString1));
+            paramQQAppInterface = getDiscussionName(paramQQAppInterface.getApp(), localantp.a(paramString1));
             continue;
             paramQQAppInterface = localTroopManager.b(paramString1);
             if (paramQQAppInterface == null) {
-              break label358;
+              break label364;
             }
             paramQQAppInterface = paramQQAppInterface.getTroopName();
             break;
@@ -706,7 +708,7 @@ public class ContactUtils
         else
         {
           return paramQQAppInterface;
-          label358:
+          label364:
           paramQQAppInterface = null;
         }
       }
@@ -858,8 +860,8 @@ public class ContactUtils
   @NotNull
   public static String getFriendDisplayName(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Friends localFriends = ((amsw)paramQQAppInterface.getManager(51)).e(paramString);
-    paramQQAppInterface = (avsy)paramQQAppInterface.getManager(11);
+    Friends localFriends = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
+    paramQQAppInterface = (awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = paramQQAppInterface.a(paramString);
@@ -876,8 +878,8 @@ public class ContactUtils
   
   public static String getFriendDisplayName2(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramString = ((amsw)paramQQAppInterface.getManager(51)).e(paramString);
-    paramQQAppInterface = (avsy)paramQQAppInterface.getManager(11);
+    paramString = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
+    paramQQAppInterface = (awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = paramQQAppInterface.a("");
@@ -895,8 +897,8 @@ public class ContactUtils
   @NotNull
   public static String getFriendDisplayNameJustCache(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Friends localFriends = ((amsw)paramQQAppInterface.getManager(51)).c(paramString);
-    paramQQAppInterface = (avsy)paramQQAppInterface.getManager(11);
+    Friends localFriends = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramString);
+    paramQQAppInterface = (awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = paramQQAppInterface.a(paramString);
@@ -913,7 +915,7 @@ public class ContactUtils
   
   public static String getFriendName(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface = ((amsw)paramQQAppInterface.getManager(51)).e(paramString);
+    paramQQAppInterface = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
     if (paramQQAppInterface != null) {
       paramString = paramQQAppInterface.getFriendName();
     }
@@ -979,7 +981,7 @@ public class ContactUtils
         do
         {
           return paramQQAppInterface;
-          localFriends = ((amsw)paramQQAppInterface.getManager(51)).b(paramString);
+          localFriends = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
           paramQQAppInterface = paramString;
         } while (localFriends == null);
         paramQQAppInterface = paramString;
@@ -994,7 +996,7 @@ public class ContactUtils
   
   public static String getFriendNick(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface = ((amsw)paramQQAppInterface.getManager(51)).e(paramString);
+    paramQQAppInterface = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
     if (paramQQAppInterface != null) {
       paramString = paramQQAppInterface.getFriendNick();
     }
@@ -1003,7 +1005,7 @@ public class ContactUtils
   
   public static String getFriendNickName(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface = (amsw)paramQQAppInterface.getManager(51);
+    paramQQAppInterface = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     Object localObject = paramQQAppInterface.e(paramString);
     if ((localObject != null) && (!TextUtils.isEmpty(((Friends)localObject).name))) {
       paramQQAppInterface = ((Friends)localObject).name;
@@ -1023,8 +1025,8 @@ public class ContactUtils
   
   public static String getFriendShowName(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Friends localFriends = ((amsw)paramQQAppInterface.getManager(51)).e(paramString);
-    paramQQAppInterface = (avsy)paramQQAppInterface.getManager(11);
+    Friends localFriends = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
+    paramQQAppInterface = (awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = paramQQAppInterface.a(paramString);
@@ -1063,7 +1065,7 @@ public class ContactUtils
       }
       break;
     }
-    while ((paramInt1 != 0) && (paramInt1 != 1) && (paramInt1 != 2) && (paramInt1 != 7) && (paramInt1 != 6) && (paramInt1 != 3) && (paramInt1 != 4) && (aips.a().a(paramInt2)))
+    while ((paramInt1 != 0) && (paramInt1 != 1) && (paramInt1 != 2) && (paramInt1 != 7) && (paramInt1 != 6) && (paramInt1 != 3) && (paramInt1 != 4) && (ajlh.a().a(paramInt2)))
     {
       return i;
       paramInt1 = 8;
@@ -1109,22 +1111,22 @@ public class ContactUtils
   
   public static int getFriendTermType(Friends paramFriends, QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = (FriendListHandler)paramQQAppInterface.getBusinessHandler(1);
+    paramQQAppInterface = (FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
     int i = getFriendStatus(paramFriends.detalStatusFlag, paramFriends.iTermType);
     if ((i != 0) && (i != 6))
     {
-      aips localaips = aips.a();
-      if (1 == localaips.a(paramFriends.iTermType, 0))
+      ajlh localajlh = ajlh.a();
+      if (1 == localajlh.a(paramFriends.iTermType, 0))
       {
         if (paramQQAppInterface.getShowPcOnlineIconConfig()) {
           return 2;
         }
         return 3;
       }
-      if (2 == localaips.a(paramFriends.iTermType, 0)) {
+      if (2 == localajlh.a(paramFriends.iTermType, 0)) {
         return 1;
       }
-      if (3 == localaips.a(paramFriends.iTermType, 0)) {
+      if (3 == localajlh.a(paramFriends.iTermType, 0)) {
         return 0;
       }
       if (paramQQAppInterface.getShowPcOnlineIconConfig()) {
@@ -1146,7 +1148,7 @@ public class ContactUtils
   
   public static String getGrayBarShowName(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    Friends localFriends = ((amsw)paramQQAppInterface.getManager(51)).b(paramString2);
+    Friends localFriends = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString2);
     if ((localFriends != null) && (!TextUtils.isEmpty(localFriends.remark))) {
       paramString2 = localFriends.remark;
     }
@@ -1156,9 +1158,9 @@ public class ContactUtils
       do
       {
         return paramString2;
-        localTroopMemberInfo = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString1, paramString2);
+        localTroopMemberInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString1, paramString2);
         if (localTroopMemberInfo == null) {
-          break label151;
+          break label153;
         }
         if (!TextUtils.isEmpty(localTroopMemberInfo.troopnick)) {
           return localTroopMemberInfo.troopnick;
@@ -1176,18 +1178,18 @@ public class ContactUtils
       }
     } while (TextUtils.isEmpty(localTroopMemberInfo.friendnick));
     return localTroopMemberInfo.friendnick;
-    label151:
-    ((anca)paramQQAppInterface.getBusinessHandler(20)).a(Long.parseLong(paramString1), Long.parseLong(paramString2));
+    label153:
+    ((aoep)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(Long.parseLong(paramString1), Long.parseLong(paramString2));
     return paramString2;
   }
   
   public static ContactUtils.NameInfo getGrayBarShowNameInCache(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    Friends localFriends = ((amsw)paramQQAppInterface.getManager(51)).b(paramString2);
+    Friends localFriends = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString2);
     if ((localFriends != null) && (!TextUtils.isEmpty(localFriends.remark))) {
       return new ContactUtils.NameInfo(localFriends.remark, false);
     }
-    paramString1 = ((TroopManager)paramQQAppInterface.getManager(52)).a(paramString1, paramString2);
+    paramString1 = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramString1, paramString2);
     boolean bool;
     if (paramString1 != null) {
       if (!TextUtils.isEmpty(paramString1.troopnick))
@@ -1278,19 +1280,19 @@ public class ContactUtils
     case 12: 
       return "5G网络";
     case 5: 
-      return amtj.a(2131701720);
+      return anvx.a(2131702071);
     case 6: 
-      return amtj.a(2131701722);
+      return anvx.a(2131702073);
     case 7: 
-      return amtj.a(2131701724);
+      return anvx.a(2131702075);
     case 8: 
-      return amtj.a(2131701723);
+      return anvx.a(2131702074);
     case 9: 
-      return amtj.a(2131701726);
+      return anvx.a(2131702077);
     case 100: 
       return "iPhone在线";
     case 101: 
-      return amtj.a(2131701721);
+      return anvx.a(2131702072);
     }
     return "TIM在线";
   }
@@ -1301,27 +1303,27 @@ public class ContactUtils
     {
     case 2: 
     default: 
-      return 2130850477;
+      return 2130850584;
     case 1: 
-      return 2130850499;
+      return 2130850606;
     case 3: 
-      return 2130850478;
+      return 2130850585;
     case 4: 
-      return 2130850479;
+      return 2130850586;
     case 5: 
-      return 2130850494;
+      return 2130850601;
     case 6: 
-      return 2130850492;
+      return 2130850599;
     case 7: 
-      return 2130850497;
+      return 2130850604;
     case 8: 
-      return 2130850481;
+      return 2130850588;
     case 9: 
-      return 2130850484;
+      return 2130850591;
     case 100: 
-      return 2130850487;
+      return 2130850594;
     }
-    return 2130850490;
+    return 2130850597;
   }
   
   public static String getNetOnlineStatus(int paramInt)
@@ -1341,11 +1343,11 @@ public class ContactUtils
     case 12: 
       return "5G在线";
     case 5: 
-      return amtj.a(2131701719);
+      return anvx.a(2131702070);
     case 6: 
-      return amtj.a(2131701730);
+      return anvx.a(2131702081);
     case 7: 
-      return amtj.a(2131701725);
+      return anvx.a(2131702076);
     case 8: 
       return "BMW QQ在线";
     case 9: 
@@ -1353,11 +1355,11 @@ public class ContactUtils
     case 100: 
       return "iPhone在线";
     case 101: 
-      return amtj.a(2131701727);
+      return anvx.a(2131702078);
     case 10: 
       return "TIM在线";
     }
-    return amtj.a(2131701729);
+    return anvx.a(2131702080);
   }
   
   public static String getNick(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -1382,9 +1384,9 @@ public class ContactUtils
   
   public static String getNickName(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    Object localObject1 = (amrb)paramQQAppInterface.getManager(53);
-    localObject1 = (amsw)paramQQAppInterface.getManager(51);
-    Object localObject2 = (amxz)paramQQAppInterface.getManager(56);
+    Object localObject1 = (antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    localObject1 = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject2 = (aoan)paramQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
     if (paramInt == 1) {
       paramQQAppInterface = getTroopNameByID(paramQQAppInterface, paramString);
     }
@@ -1399,18 +1401,18 @@ public class ContactUtils
         if ((1008 != paramInt) && (1024 != paramInt)) {
           break;
         }
-        if (bily.b(paramQQAppInterface, paramString)) {
-          return bily.a(paramQQAppInterface, paramString);
+        if (bjxa.b(paramQQAppInterface, paramString)) {
+          return bjxa.a(paramQQAppInterface, paramString);
         }
-        localObject1 = ((amxz)localObject2).b(paramString);
+        localObject1 = ((aoan)localObject2).b(paramString);
         if ((localObject1 != null) && (((PublicAccountInfo)localObject1).name != null)) {
           return ((PublicAccountInfo)localObject1).name;
         }
-        localObject1 = ((amxz)localObject2).a(paramString);
+        localObject1 = ((aoan)localObject2).a(paramString);
         if ((localObject1 != null) && (((AccountDetail)localObject1).name != null)) {
           return ((AccountDetail)localObject1).name;
         }
-        localObject1 = ((amrk)paramQQAppInterface.getManager(69)).a(paramString);
+        localObject1 = ((anty)paramQQAppInterface.getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER)).a(paramString);
         paramQQAppInterface = paramString;
       } while (localObject1 == null);
       paramQQAppInterface = paramString;
@@ -1418,21 +1420,21 @@ public class ContactUtils
     return ((EqqDetail)localObject1).name;
     if (paramInt == 1006)
     {
-      paramQQAppInterface = (avsy)paramQQAppInterface.getManager(11);
+      paramQQAppInterface = (awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
       localObject2 = paramQQAppInterface.c(paramString);
       if (localObject2 != null) {
         return ((PhoneContact)localObject2).name;
       }
       localObject2 = paramQQAppInterface.a(paramString);
       if (localObject2 == null) {
-        break label295;
+        break label301;
       }
-      paramQQAppInterface = ((amsw)localObject1).e((String)localObject2);
+      paramQQAppInterface = ((anvk)localObject1).e((String)localObject2);
       if (paramQQAppInterface == null) {
-        break label295;
+        break label301;
       }
     }
-    label295:
+    label301:
     for (localObject1 = getFriendName(paramQQAppInterface);; localObject1 = null)
     {
       paramQQAppInterface = paramString;
@@ -1445,7 +1447,7 @@ public class ContactUtils
       }
       return localObject1;
       if ((paramInt == 9500) || (paramInt == 9501)) {
-        return abdn.a(((aara)paramQQAppInterface.getBusinessHandler(51)).a(Long.parseLong(paramString)));
+        return absz.a(((abgm)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(paramString)));
       }
       return getFriendNick(paramQQAppInterface, paramString);
     }
@@ -1526,7 +1528,7 @@ public class ContactUtils
   
   public static String getPhoneNumByUin(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return ((avsy)paramQQAppInterface.getManager(11)).b(paramString);
+    return ((awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).b(paramString);
   }
   
   public static String getPhoneNumFirst(String paramString)
@@ -1547,7 +1549,7 @@ public class ContactUtils
   {
     int j = 0;
     int i = 1;
-    Object localObject2 = (amrb)paramQQAppInterface.getManager(53);
+    Object localObject2 = (antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
     if (localObject2 == null)
     {
       if (QLog.isColorLevel()) {
@@ -1556,7 +1558,7 @@ public class ContactUtils
       localObject2 = "";
       return localObject2;
     }
-    Object localObject1 = ((amrb)localObject2).a(paramString);
+    Object localObject1 = ((antp)localObject2).a(paramString);
     if (localObject1 == null)
     {
       if (QLog.isColorLevel()) {
@@ -1567,7 +1569,7 @@ public class ContactUtils
     if ((i != 0) && (((DiscussionInfo)localObject1).hasRenamed())) {
       return getDiscussionName(BaseApplicationImpl.getContext(), (DiscussionInfo)localObject1);
     }
-    localObject2 = ((amrb)localObject2).a(paramString);
+    localObject2 = ((antp)localObject2).a(paramString);
     if (i != 0) {}
     for (localObject1 = getDiscussionCombinedName(paramQQAppInterface, ((DiscussionInfo)localObject1).ownerUin, (Map)localObject2);; localObject1 = "")
     {
@@ -1575,8 +1577,8 @@ public class ContactUtils
       if (((String)localObject1).length() >= 47) {
         break;
       }
-      Object localObject3 = (avsy)paramQQAppInterface.getManager(11);
-      List localList = mst.a(paramQQAppInterface, paramString, 3000);
+      Object localObject3 = (awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
+      List localList = mtq.a(paramQQAppInterface, paramString, 3000);
       localObject2 = localObject1;
       if (localList == null) {
         break;
@@ -1590,7 +1592,7 @@ public class ContactUtils
       if (i < localList.size())
       {
         localObject2 = ((AVPhoneUserInfo)localList.get(i)).telInfo.mobile;
-        paramString = ((avsy)localObject3).b((String)localObject2);
+        paramString = ((awyz)localObject3).b((String)localObject2);
         paramQQAppInterface = "?";
         if (paramString != null) {
           if (!TextUtils.isEmpty(paramString.name))
@@ -1615,7 +1617,7 @@ public class ContactUtils
           }
         }
       }
-      localObject3 = new amqb();
+      localObject3 = new anso();
       paramQQAppInterface = (QQAppInterface)localObject1;
       if (localArrayList != null)
       {
@@ -1655,7 +1657,7 @@ public class ContactUtils
       paramString1 = getTroopMemberNameWithoutRemark(paramQQAppInterface, paramString1, paramString2);
       if (TextUtils.isEmpty(paramString1))
       {
-        ((FriendListHandler)paramQQAppInterface.getBusinessHandler(1)).getFriendInfo(paramString2, false);
+        ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(paramString2, false);
         return paramString2;
       }
       return paramString1;
@@ -1667,7 +1669,7 @@ public class ContactUtils
   {
     if (TextUtils.equals(paramString, paramQQAppInterface.getCurrentAccountUin()))
     {
-      localObject = ((amsw)paramQQAppInterface.getManager(51)).e(paramString);
+      localObject = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
       if (localObject != null)
       {
         if (!TextUtils.isEmpty(((Friends)localObject).name)) {
@@ -1675,12 +1677,12 @@ public class ContactUtils
         }
         return paramString;
       }
-      ((FriendListHandler)paramQQAppInterface.getBusinessHandler(1)).getFriendInfo(paramString, false);
+      ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(paramString, false);
       return paramString;
     }
     Object localObject = getFriendShowName(paramQQAppInterface, paramString);
     if (((String)localObject).equals(paramString)) {
-      ((FriendListHandler)paramQQAppInterface.getBusinessHandler(1)).getFriendInfo(paramString, false);
+      ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(paramString, false);
     }
     return localObject;
   }
@@ -1740,7 +1742,7 @@ public class ContactUtils
     if (i == 4)
     {
       localObject2 = str;
-      if (bgeg.a(paramFriends.customOnlineStatusType))
+      if (bhmz.a(paramFriends.customOnlineStatusType))
       {
         localObject2 = str;
         if (!TextUtils.isEmpty(paramFriends.customOnlineStatus)) {
@@ -1808,7 +1810,7 @@ public class ContactUtils
       case 5: 
       case 6: 
       default: 
-        return paramContext.getString(2131718587);
+        return paramContext.getString(2131718976);
         i = 0;
         continue;
         i = 1;
@@ -1822,9 +1824,9 @@ public class ContactUtils
         i = 7;
       }
     }
-    return paramContext.getString(2131718578);
-    return paramContext.getString(2131718580);
-    return paramContext.getString(2131718588);
+    return paramContext.getString(2131718967);
+    return paramContext.getString(2131718969);
+    return paramContext.getString(2131718977);
   }
   
   public static String getTeamworkAuthorzShowName(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
@@ -1850,7 +1852,7 @@ public class ContactUtils
     if (paramQQAppInterface == null) {
       return "";
     }
-    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
       if (QLog.isColorLevel()) {
@@ -1863,6 +1865,26 @@ public class ContactUtils
       return paramQQAppInterface.troopColorNick;
     }
     return "";
+  }
+  
+  public static int getTroopMemberColorNickId(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return 0;
+      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ContactUtils", 2, "getTroopMemberNick uin is null");
+    return 0;
+    paramQQAppInterface = paramQQAppInterface.b(paramString1, paramString2);
+    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.troopColorNick))) {}
+    for (int i = paramQQAppInterface.troopColorNickId;; i = 0) {
+      return i;
+    }
   }
   
   public static String getTroopMemberName(QQAppInterface paramQQAppInterface, TroopMemberInfo paramTroopMemberInfo)
@@ -1884,8 +1906,8 @@ public class ContactUtils
   
   public static String getTroopMemberName(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean)
   {
-    Object localObject1 = (amsw)paramQQAppInterface.getManager(51);
-    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
+    Object localObject1 = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
       if (QLog.isColorLevel()) {
@@ -1894,19 +1916,19 @@ public class ContactUtils
       localObject1 = "";
       return localObject1;
     }
-    Friends localFriends = ((amsw)localObject1).b(paramString2);
+    Friends localFriends = ((anvk)localObject1).b(paramString2);
     TroopMemberInfo localTroopMemberInfo = localTroopManager.b(paramString1, paramString2);
     if ((localTroopMemberInfo != null) && (paramBoolean) && (!TextUtils.isEmpty(localTroopMemberInfo.troopColorNick))) {
       localObject1 = localTroopMemberInfo.troopColorNick;
     }
     for (;;)
     {
-      label102:
+      label104:
       Object localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject2 = localObject1;
-        if (bezm.b(paramQQAppInterface, paramString2))
+        if (bghs.b(paramQQAppInterface, paramString2))
         {
           localObject2 = localObject1;
           if (localFriends != null)
@@ -1917,14 +1939,14 @@ public class ContactUtils
               localObject2 = localObject1;
               if (localTroopMemberInfo != null) {
                 if (TextUtils.isEmpty(localTroopMemberInfo.autoremark)) {
-                  break label376;
+                  break label378;
                 }
               }
             }
           }
         }
       }
-      label376:
+      label378:
       for (localObject2 = localTroopMemberInfo.autoremark;; localObject2 = localTroopMemberInfo.friendnick)
       {
         paramQQAppInterface = (QQAppInterface)localObject2;
@@ -1952,35 +1974,35 @@ public class ContactUtils
         if ((localTroopMemberInfo != null) && (!paramBoolean) && (!TextUtils.isEmpty(localTroopMemberInfo.troopnick)))
         {
           localObject1 = localTroopMemberInfo.troopnick;
-          break label102;
+          break label104;
         }
         if ((localFriends != null) && (localFriends.isFriend()) && (!TextUtils.isEmpty(localFriends.remark)))
         {
           localObject1 = localFriends.remark;
-          break label102;
+          break label104;
         }
         if ((localFriends != null) && (localFriends.isFriend()))
         {
           localObject1 = localFriends.name;
-          break label102;
+          break label104;
         }
         if (localTroopMemberInfo == null) {
-          break label386;
+          break label388;
         }
         if (paramString2.equals(paramQQAppInterface.getCurrentAccountUin()))
         {
           localObject1 = paramQQAppInterface.getCurrentNickname();
-          break label102;
+          break label104;
         }
         if (!TextUtils.isEmpty(localTroopMemberInfo.autoremark))
         {
           localObject1 = localTroopMemberInfo.autoremark;
-          break label102;
+          break label104;
         }
         localObject1 = localTroopMemberInfo.friendnick;
-        break label102;
+        break label104;
       }
-      label386:
+      label388:
       localObject1 = null;
     }
   }
@@ -1992,8 +2014,8 @@ public class ContactUtils
   
   public static String getTroopMemberNameFromCache(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean)
   {
-    Object localObject = (amsw)paramQQAppInterface.getManager(51);
-    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
+    Object localObject = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
       if (QLog.isColorLevel()) {
@@ -2002,7 +2024,7 @@ public class ContactUtils
       paramQQAppInterface = "";
       return paramQQAppInterface;
     }
-    localObject = ((amsw)localObject).a(paramString2);
+    localObject = ((anvk)localObject).a(paramString2);
     TroopMemberInfo localTroopMemberInfo = localTroopManager.a(paramString1, paramString2);
     if ((localTroopMemberInfo != null) && (paramBoolean) && (!TextUtils.isEmpty(localTroopMemberInfo.troopColorNick))) {
       paramQQAppInterface = localTroopMemberInfo.troopColorNick;
@@ -2055,8 +2077,8 @@ public class ContactUtils
   
   public static String getTroopMemberNameInUI(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    Object localObject = (amsw)paramQQAppInterface.getManager(51);
-    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
+    Object localObject = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
       if (QLog.isColorLevel()) {
@@ -2065,7 +2087,7 @@ public class ContactUtils
       localObject = "";
       return localObject;
     }
-    localObject = ((amsw)localObject).a(paramString2);
+    localObject = ((anvk)localObject).a(paramString2);
     TroopMemberInfo localTroopMemberInfo = localTroopManager.a(paramString1, paramString2);
     if ((localTroopMemberInfo != null) && (!TextUtils.isEmpty(localTroopMemberInfo.troopnick))) {
       paramQQAppInterface = localTroopMemberInfo.troopnick;
@@ -2112,7 +2134,7 @@ public class ContactUtils
   
   public static String getTroopMemberNameRemarkFirst(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    Friends localFriends = ((amsw)paramQQAppInterface.getManager(51)).b(paramString2);
+    Friends localFriends = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString2);
     if ((localFriends != null) && (localFriends.isFriend()) && (!TextUtils.isEmpty(localFriends.remark))) {
       return localFriends.remark;
     }
@@ -2126,7 +2148,7 @@ public class ContactUtils
   
   public static String getTroopMemberNameWithoutRemark(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean)
   {
-    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
+    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
       if (QLog.isColorLevel()) {
@@ -2135,7 +2157,7 @@ public class ContactUtils
       return "";
     }
     TroopMemberInfo localTroopMemberInfo = localTroopManager.b(paramString1, paramString2);
-    paramQQAppInterface = ((amsw)paramQQAppInterface.getManager(51)).b(paramString2);
+    paramQQAppInterface = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString2);
     if ((localTroopMemberInfo != null) && (paramBoolean) && (!TextUtils.isEmpty(localTroopMemberInfo.troopColorNick))) {
       paramQQAppInterface = localTroopMemberInfo.troopColorNick;
     }
@@ -2158,14 +2180,14 @@ public class ContactUtils
             continue;
           }
           if ((localTroopMemberInfo == null) || (TextUtils.isEmpty(localTroopMemberInfo.friendnick))) {
-            break label201;
+            break label203;
           }
           paramQQAppInterface = localTroopMemberInfo.friendnick;
           continue;
         }
       }
       return paramQQAppInterface;
-      label201:
+      label203:
       paramQQAppInterface = "";
     }
   }
@@ -2175,7 +2197,7 @@ public class ContactUtils
     if (paramQQAppInterface == null) {
       return "";
     }
-    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
       if (QLog.isColorLevel()) {
@@ -2192,7 +2214,7 @@ public class ContactUtils
   
   public static String getTroopMemberNickByTroopCode(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     paramString2 = paramQQAppInterface.c(paramString2);
     if (paramString2 == null) {
       return paramString1;
@@ -2224,13 +2246,13 @@ public class ContactUtils
     {
       localObject1 = localObject2;
       if (!isValideName((String)localObject2)) {
-        localObject1 = bftd.a(paramQQAppInterface.getApp(), paramString);
+        localObject1 = bhbv.a(paramQQAppInterface.getApp(), paramString);
       }
       localObject2 = localObject1;
       if (!isValideName((String)localObject1))
       {
         if (paramBoolean) {
-          ((ampw)paramQQAppInterface.getManager(54)).a().a(paramString);
+          ((ansj)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_FACADE)).a().a(paramString);
         }
         localObject2 = paramString;
       }
@@ -2245,16 +2267,16 @@ public class ContactUtils
   
   public static String getTroopNameByID(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject = ((HotChatManager)paramQQAppInterface.getManager(60)).a(paramString);
+    Object localObject = ((HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(paramString);
     if (localObject != null) {
-      paramQQAppInterface = ((HotChatInfo)localObject).name + amtj.a(2131701728);
+      paramQQAppInterface = ((HotChatInfo)localObject).name + anvx.a(2131702079);
     }
     do
     {
       do
       {
         return paramQQAppInterface;
-        localObject = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString);
+        localObject = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
         paramQQAppInterface = paramString;
       } while (localObject == null);
       paramQQAppInterface = paramString;
@@ -2281,7 +2303,7 @@ public class ContactUtils
         QLog.d("ContactUtils", 2, StringUtil.makeLogMsg(new Object[] { "getTroopNickName()", paramString1, paramString2, paramString3, Boolean.valueOf(paramBoolean), localObject1 }));
       }
     } while (bool);
-    TroopMemberInfo localTroopMemberInfo = bfun.a().a(paramQQAppInterface, paramString2, paramString1);
+    TroopMemberInfo localTroopMemberInfo = bhdf.a().a(paramQQAppInterface, paramString2, paramString1);
     Object localObject2;
     if (localTroopMemberInfo != null)
     {
@@ -2295,7 +2317,7 @@ public class ContactUtils
       if (!isValideName((String)localObject1))
       {
         if (paramBoolean) {
-          ((ampw)paramQQAppInterface.getManager(54)).a().a(paramString1, paramString2, paramString3, paramBundle);
+          ((ansj)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_FACADE)).a().a(paramString1, paramString2, paramString3, paramBundle);
         }
         localObject2 = paramString1;
       }
@@ -2310,7 +2332,7 @@ public class ContactUtils
   
   public static String getTroopNickNameByTroopCode(QQAppInterface paramQQAppInterface, String paramString)
   {
-    String str = ((TroopManager)paramQQAppInterface.getManager(52)).c(paramString);
+    String str = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
     if (str == null) {
       return paramString;
     }
@@ -2319,7 +2341,7 @@ public class ContactUtils
   
   public static String getUinByPhoneNum(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface = (avsy)paramQQAppInterface.getManager(11);
+    paramQQAppInterface = (awyz)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
     if (paramQQAppInterface != null) {
       return paramQQAppInterface.a(paramString);
     }
@@ -2329,7 +2351,7 @@ public class ContactUtils
   public static boolean hasCustomOnlineStatusName(Friends paramFriends)
   {
     if (paramFriends == null) {}
-    while ((getFriendStatus(paramFriends.detalStatusFlag, paramFriends.iTermType) != 4) || (!bgeg.a(paramFriends.customOnlineStatusType)) || (TextUtils.isEmpty(paramFriends.customOnlineStatus))) {
+    while ((getFriendStatus(paramFriends.detalStatusFlag, paramFriends.iTermType) != 4) || (!bhmz.a(paramFriends.customOnlineStatusType)) || (TextUtils.isEmpty(paramFriends.customOnlineStatus))) {
       return false;
     }
     return true;
@@ -2342,7 +2364,7 @@ public class ContactUtils
   
   public static boolean isDiscussionMeeting(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface = ((amrb)paramQQAppInterface.getManager(53)).a(paramString);
+    paramQQAppInterface = ((antp)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString);
     if (paramQQAppInterface != null) {
       return paramQQAppInterface.isDiscussHrMeeting();
     }
@@ -2367,7 +2389,7 @@ public class ContactUtils
   public static boolean isNeedRenamedDisName(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
   {
     if (unrenamedNamesReg == null) {
-      unrenamedNamesReg = paramQQAppInterface.getApp().getString(2131719366);
+      unrenamedNamesReg = paramQQAppInterface.getApp().getString(2131719789);
     }
     return (((0x40 & paramLong) >>> 6 == 1L) && ((0x20000000 & paramLong) >>> 29 == 1L)) || (paramString == null) || (paramString.matches(unrenamedNamesReg)) || (paramString.length() == 0);
   }
@@ -2479,7 +2501,7 @@ public class ContactUtils
         if (isNeedRenamedDisName(paramQQAppInterface, paramDiscussionInfo)) {}
         for (boolean bool = setDiscussionName(paramQQAppInterface, paramString, paramDiscussionInfo, paramMap); (paramBoolean) || (bool) || (paramDiscussionInfo.mCompareSpell == null) || (paramDiscussionInfo.mCompareSpell.length() == 0); bool = false)
         {
-          ampx.a(paramDiscussionInfo);
+          ansk.a(paramDiscussionInfo);
           paramDiscussionInfo.DiscussionFlag &= 0xDFFFFFFF;
           return true;
         }

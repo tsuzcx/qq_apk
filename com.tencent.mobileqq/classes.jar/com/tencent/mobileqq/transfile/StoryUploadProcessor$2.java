@@ -3,7 +3,7 @@ package com.tencent.mobileqq.transfile;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.highway.config.HwServlet;
 import com.tencent.mobileqq.highway.openup.SessionInfo;
-import xvv;
+import ykq;
 
 final class StoryUploadProcessor$2
   implements Runnable
@@ -31,7 +31,7 @@ final class StoryUploadProcessor$2
           {
             QQStoryContext.a();
             HwServlet.getConfig(QQStoryContext.a(), str);
-            xvv.d(StoryUploadProcessor.TAG, "pull session key");
+            ykq.d(StoryUploadProcessor.TAG, "pull session key");
           }
           return;
         }

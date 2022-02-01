@@ -1,77 +1,17 @@
-import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
-public abstract class zcv<T>
-  extends zcu<T>
+public abstract interface zcv
 {
-  protected int c = -1;
+  public abstract void a();
   
-  public zcv(Context paramContext, boolean paramBoolean)
-  {
-    super(paramContext, paramBoolean);
-  }
+  public abstract void a(int paramInt, View paramView);
   
-  protected abstract View a();
+  public abstract void a(View paramView, int paramInt1, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt2);
   
-  protected View a(int paramInt)
-  {
-    if (this.a != null) {
-      return this.a.findViewById(paramInt);
-    }
-    return null;
-  }
+  public abstract void a(View paramView, TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt);
   
-  protected void a()
-  {
-    this.a = a();
-    g();
-  }
-  
-  public void a(View paramView)
-  {
-    if ((paramView != null) && (a())) {
-      ((ViewGroup)this.a).addView(paramView);
-    }
-  }
-  
-  public void a(ViewStub paramViewStub)
-  {
-    if (paramViewStub == null) {
-      return;
-    }
-    if (this.c != -1)
-    {
-      a(paramViewStub, this.c);
-      return;
-    }
-    paramViewStub.setLayoutResource(b());
-    this.a = paramViewStub.inflate();
-    if (b() == 2131562428) {
-      a(a());
-    }
-    g();
-  }
-  
-  public void a(ViewStub paramViewStub, int paramInt)
-  {
-    if (paramViewStub != null)
-    {
-      paramViewStub.setLayoutResource(paramInt);
-      this.a = paramViewStub.inflate();
-      g();
-    }
-  }
-  
-  protected boolean a()
-  {
-    return (this.a != null) && ((this.a instanceof ViewGroup));
-  }
-  
-  protected abstract int b();
-  
-  protected abstract void g();
+  public abstract boolean a(View paramView, int paramInt);
 }
 
 

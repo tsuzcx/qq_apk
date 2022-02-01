@@ -1,17 +1,19 @@
-import java.util.Comparator;
-
-final class awft
-  implements Comparator<awfu>
+public class awft
 {
-  public int a(awfu paramawfu1, awfu paramawfu2)
+  public String a;
+  public boolean a;
+  public boolean b;
+  
+  public awft(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramawfu1.b < paramawfu2.b) {
-      return -1;
-    }
-    if (paramawfu1.b > paramawfu2.b) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
+  
+  public String toString()
+  {
+    return "MusicExtendedReqParam{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", needUrl=" + this.jdField_a_of_type_Boolean + ", needLyric=" + this.b + '}';
   }
 }
 

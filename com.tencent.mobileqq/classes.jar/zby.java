@@ -1,25 +1,108 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneHelper;
-import mqq.app.AppRuntime;
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.media.MediaMetadataRetriever;
+import android.os.Build.VERSION;
+import android.support.v4.util.LruCache;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
 
 public class zby
-  implements View.OnClickListener
+  extends zgn<Integer>
 {
-  public zby(RecommendBannerEntryItemView paramRecommendBannerEntryItemView) {}
+  private int jdField_a_of_type_Int;
+  private MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
+  private LruCache<Integer, Drawable> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(180);
+  private String jdField_a_of_type_JavaLangString;
+  public zca a;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int c;
+  private int d;
   
-  public void onClick(View paramView)
+  public zby(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    String str = QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverPageSchema", "mqqapi://miniapp/open?_atype=0&_mappid=1109786902&_mvid=&_vt=3&_sig=f945854d8893417d87b3599d8dce7bdde77f409be5548044ed67383266b1fbf4");
-    MiniAppLauncher.startMiniApp(this.a.getContext(), str, 2016, null, null);
-    QZoneHelper.prepareForQQPublicAccountPublishPage();
-    zxp.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "auth_page", "clk_find", 0, 0, new String[0]);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramString);
+    this.jdField_a_of_type_Zca = new zca();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public LruCache<Integer, Drawable> a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV4UtilLruCache;
+  }
+  
+  public zgo a(ImageView paramImageView, Integer paramInteger)
+  {
+    return new zbz(paramImageView, this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever, paramInteger, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.d, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Zca, this.jdField_b_of_type_Boolean);
+  }
+  
+  @TargetApi(10)
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+    if (this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever != null) {
+      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.release();
+    }
+  }
+  
+  public void a(LocalMediaInfo paramLocalMediaInfo)
+  {
+    if (this.jdField_a_of_type_Zca == null) {
+      return;
+    }
+    ykv.b("upload_local_video", "get_frame_cost", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_Zca.jdField_a_of_type_Int), this.jdField_a_of_type_Zca.toString(), QQStoryFlowCallback.a(paramLocalMediaInfo) });
+  }
+  
+  @TargetApi(10)
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    this.d = paramInt1;
+    ykq.a("Q.qqstory.frameWidget.FrameLoader", "initVideo,duration=%s,path=%s", Integer.valueOf(paramInt1), paramString);
+    try
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        altw.a(paramString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, 0, 0, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+        this.jdField_b_of_type_Boolean = true;
+      }
+    }
+    catch (Exception localException1)
+    {
+      try
+      {
+        for (;;)
+        {
+          this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = new MediaMetadataRetriever();
+          this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.setDataSource(paramString);
+          if (Build.VERSION.SDK_INT >= 26) {
+            this.jdField_b_of_type_Boolean = false;
+          }
+          this.jdField_a_of_type_JavaLangString = paramString;
+          this.c = paramInt2;
+          c();
+          return;
+          altw.a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+          continue;
+          localException1 = localException1;
+          this.jdField_b_of_type_Boolean = false;
+          ykq.c("Q.qqstory.frameWidget.FrameLoader", "ThumbnailUtils init failed! e:%s", localException1);
+        }
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          ykq.e("Q.qqstory.frameWidget.FrameLoader", yey.a(new Object[] { "MediaMetadataRetriever init failed! mVideoPath = ", paramString, "  e=", localException2 }));
+          ykv.b("story_local_video", "frame_loader", 0, 0, new String[] { paramString, localException2.getMessage() });
+          this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = null;
+        }
+      }
+    }
   }
 }
 

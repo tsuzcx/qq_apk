@@ -1,23 +1,25 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import java.util.HashMap;
 
-public class arxk
+class arxk
+  extends BroadcastReceiver
 {
-  public int a;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  FileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
-  AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-  EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
-  public int b;
-  ImageView b;
+  arxk(arxi paramarxi) {}
   
-  public arxk(arxj paramarxj) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
+    paramIntent = (arxl)arxi.a(this.a).get(paramContext.actionName);
+    if ((paramIntent != null) && (paramIntent.b()))
+    {
+      this.a.a();
+      arxi.a(this.a).a(paramContext);
+    }
+  }
 }
 
 

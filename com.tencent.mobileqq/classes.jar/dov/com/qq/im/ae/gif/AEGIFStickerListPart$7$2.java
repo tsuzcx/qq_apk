@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.gif;
 
-import blwd;
-import blwl;
-import blxu;
+import bnln;
+import bnlv;
+import bnne;
 
 public class AEGIFStickerListPart$7$2
   implements Runnable
 {
-  public AEGIFStickerListPart$7$2(blwl paramblwl, int paramInt) {}
+  public AEGIFStickerListPart$7$2(bnlv parambnlv, int paramInt) {}
   
   public void run()
   {
-    blwd.a(this.jdField_a_of_type_Blwl.a).a(this.jdField_a_of_type_Int);
+    bnln.a(this.jdField_a_of_type_Bnlv.a).a(this.jdField_a_of_type_Int);
   }
 }
 

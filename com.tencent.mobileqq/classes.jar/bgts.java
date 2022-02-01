@@ -1,28 +1,45 @@
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.webviewplugin.Hole;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import java.lang.ref.WeakReference;
+import tencent.im.msg.im_msg_body.CustomFace;
+import tencent.im.msg.im_msg_body.RichText;
 
-class bgts
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class bgts
+  implements azla
 {
-  bgts(bgtr parambgtr, View paramView, DisplayMetrics paramDisplayMetrics) {}
+  protected WeakReference<TroopPicEffectsEditActivity> a;
   
-  public void onGlobalLayout()
+  public bgts(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bgtr.jdField_a_of_type_ComTencentBizWebviewpluginHole.setHole((this.jdField_a_of_type_Bgtr.jdField_a_of_type_AndroidViewView.getLeft() + this.jdField_a_of_type_Bgtr.jdField_a_of_type_AndroidViewView.getRight()) / 2 - 1, (this.jdField_a_of_type_Bgtr.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_Bgtr.jdField_a_of_type_AndroidViewView.getBottom()) / 2 - 1, (int)(30.0F * this.jdField_a_of_type_AndroidUtilDisplayMetrics.density));
-      this.jdField_a_of_type_Bgtr.jdField_a_of_type_ComTencentBizWebviewpluginHole.invalidate();
-      return;
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
+    this.a = new WeakReference(paramTroopPicEffectsEditActivity);
   }
+  
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void onSend(azlb paramazlb)
+  {
+    TroopPicEffectsEditActivity localTroopPicEffectsEditActivity = (TroopPicEffectsEditActivity)this.a.get();
+    if (localTroopPicEffectsEditActivity == null) {
+      return;
+    }
+    localTroopPicEffectsEditActivity.c();
+    Intent localIntent = new Intent(localTroopPicEffectsEditActivity, SplashActivity.class);
+    localIntent.putExtra("uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("friendUin"));
+    localIntent.putExtra("uintype", 1);
+    localIntent.putExtra("troop_uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("troopUin"));
+    localIntent.putExtra("isFromTroopEffectPic", true);
+    localTroopPicEffectsEditActivity.startActivity(AIOUtils.setOpenAIOIntent(localIntent, new int[] { 1 }));
+    localTroopPicEffectsEditActivity.finish();
+    localTroopPicEffectsEditActivity.a(localTroopPicEffectsEditActivity.a, (im_msg_body.CustomFace)paramazlb.a, new bgtt(this, localTroopPicEffectsEditActivity));
+  }
+  
+  public void updateMsg(azlb paramazlb) {}
 }
 
 

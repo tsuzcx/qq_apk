@@ -1,5 +1,9 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
+import aaby;
+import aabz;
+import aaca;
+import aanb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
@@ -26,20 +30,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import yzj;
-import yzn;
-import yzp;
-import zhq;
-import zka;
-import zmt;
-import zmu;
-import zmv;
-import zxp;
+import zoo;
+import zos;
+import zou;
+import zwv;
+import zzf;
 
 public class RelativePersonalBottomView
-  extends BaseWidgetView<yzn>
+  extends BaseWidgetView<zos>
   implements SimpleEventReceiver
 {
+  private aaca jdField_a_of_type_Aaca;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
   private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
@@ -47,9 +48,8 @@ public class RelativePersonalBottomView
   private SubscribePersonalBottomOpusFragment jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment;
   private String jdField_a_of_type_JavaLangString;
   private List<SubscribeBaseBottomPersonalFragment> jdField_a_of_type_JavaUtilList;
-  private yzn jdField_a_of_type_Yzn;
-  private yzp jdField_a_of_type_Yzp;
-  private zmv jdField_a_of_type_Zmv;
+  private zos jdField_a_of_type_Zos;
+  private zou jdField_a_of_type_Zou;
   private RadioButton b;
   
   public RelativePersonalBottomView(@NonNull Context paramContext)
@@ -57,11 +57,11 @@ public class RelativePersonalBottomView
     super(paramContext);
   }
   
-  public RelativePersonalBottomView(Context paramContext, yzp paramyzp)
+  public RelativePersonalBottomView(Context paramContext, zou paramzou)
   {
     this(paramContext);
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_Yzp = paramyzp;
+    this.jdField_a_of_type_Zou = paramzou;
     SimpleEventBus.getInstance().registerReceiver(this);
   }
   
@@ -77,31 +77,31 @@ public class RelativePersonalBottomView
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new zmt(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new zmu(this));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new aaby(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new aabz(this));
   }
   
   private void c()
   {
-    if (zka.a().a(this.jdField_a_of_type_JavaLangString))
+    if (zzf.a().a(this.jdField_a_of_type_JavaLangString))
     {
       if (this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment == null)
       {
         this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment = new SubscribePersonalBottomDraftsFragment();
-        if ((this.jdField_a_of_type_Yzn != null) && ((this.jdField_a_of_type_Yzn.a instanceof zhq)))
+        if ((this.jdField_a_of_type_Zos != null) && ((this.jdField_a_of_type_Zos.a instanceof zwv)))
         {
-          zhq localzhq = (zhq)this.jdField_a_of_type_Yzn.a;
-          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localzhq.jdField_a_of_type_JavaLangString, localzhq);
+          zwv localzwv = (zwv)this.jdField_a_of_type_Zos.a;
+          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localzwv.jdField_a_of_type_JavaLangString, localzwv);
         }
       }
       if (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment))
       {
-        zxp.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
+        aanb.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
         this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(0);
-        this.jdField_a_of_type_Zmv.notifyDataSetChanged();
+        this.jdField_a_of_type_Aaca.notifyDataSetChanged();
       }
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130839000));
+      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130839020));
     }
     for (;;)
     {
@@ -112,7 +112,7 @@ public class RelativePersonalBottomView
       {
         this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(8);
-        this.jdField_a_of_type_Zmv.notifyDataSetChanged();
+        this.jdField_a_of_type_Aaca.notifyDataSetChanged();
         this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(null);
       }
     }
@@ -120,12 +120,12 @@ public class RelativePersonalBottomView
   
   private void d()
   {
-    if ((this.jdField_a_of_type_Yzn != null) && ((this.jdField_a_of_type_Yzn.a instanceof zhq)))
+    if ((this.jdField_a_of_type_Zos != null) && ((this.jdField_a_of_type_Zos.a instanceof zwv)))
     {
-      Object localObject = (zhq)this.jdField_a_of_type_Yzn.a;
-      if (((((zhq)localObject).jdField_a_of_type_JavaUtilList == null) || (((zhq)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Yzp != null))
+      Object localObject = (zwv)this.jdField_a_of_type_Zos.a;
+      if (((((zwv)localObject).jdField_a_of_type_JavaUtilList == null) || (((zwv)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Zou != null))
       {
-        localObject = this.jdField_a_of_type_Yzp.a().a().a().getChildAt(0);
+        localObject = this.jdField_a_of_type_Zou.a().a().a().getChildAt(0);
         ThreadManager.getUIHandler().post(new RelativePersonalBottomView.4(this, (View)localObject));
       }
     }
@@ -137,35 +137,35 @@ public class RelativePersonalBottomView
   
   public int a()
   {
-    return 2131558787;
+    return 2131558812;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131376388));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131372114));
-    this.b = ((RadioButton)paramView.findViewById(2131365777));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131376643));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131372307));
+    this.b = ((RadioButton)paramView.findViewById(2131365875));
     this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131372383));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131372577));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(1);
-    this.jdField_a_of_type_Zmv = new zmv(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
+    this.jdField_a_of_type_Aaca = new aaca(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
     a();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Zmv);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Aaca);
     b();
   }
   
-  public void a(yzn paramyzn)
+  public void a(zos paramzos)
   {
-    if ((paramyzn != null) && ((paramyzn.a instanceof zhq)))
+    if ((paramzos != null) && ((paramzos.a instanceof zwv)))
     {
-      this.jdField_a_of_type_Yzn = paramyzn;
-      paramyzn = (zhq)paramyzn.a;
+      this.jdField_a_of_type_Zos = paramzos;
+      paramzos = (zwv)paramzos.a;
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramyzn.jdField_a_of_type_JavaLangString, paramyzn);
+        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramzos.jdField_a_of_type_JavaLangString, paramzos);
       }
       d();
-      if (paramyzn.b) {
+      if (paramzos.b) {
         c();
       }
     }

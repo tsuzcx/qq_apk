@@ -10,12 +10,12 @@ class BridgeModuleHelper$19$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131694485, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131694686, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModuleHelper.19.1
  * JD-Core Version:    0.7.0.1
  */

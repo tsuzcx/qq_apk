@@ -1,327 +1,280 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.core.HttpThumbDownloader.1;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.emosm.Client;
+import com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator.1;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator.2;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator.3;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator.4;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.util.Iterator;
+import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ashz
-  implements IHttpCommunicatorListener
 {
-  private final int jdField_a_of_type_Int = 3;
-  private long jdField_a_of_type_Long = -1L;
-  private asia jdField_a_of_type_Asia;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private long jdField_d_of_type_Long;
-  private String jdField_d_of_type_JavaLangString;
-  private long e;
+  private static ashz jdField_a_of_type_Ashz;
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private asgr jdField_a_of_type_Asgr = new asia(this);
+  private Client jdField_a_of_type_ComTencentMobileqqEmosmClient = new Client();
+  EmojiIPCAlarmer jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer = null;
+  private Vector<asib> jdField_a_of_type_JavaUtilVector = new Vector();
+  private CopyOnWriteArrayList<ascz> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   
-  public ashz(QQAppInterface paramQQAppInterface)
+  public static ashz a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_JavaIoFileOutputStream == null) {}
+    if (jdField_a_of_type_Ashz == null) {}
     try
     {
-      QLog.i("ZipThumbDownloader", 1, "[downloadThumb]  ID[" + this.jdField_a_of_type_Long + "] runDownload...tmpname[" + String.valueOf(this.jdField_d_of_type_JavaLangString) + "]");
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_d_of_type_JavaLangString, true);
-      HttpMsg localHttpMsg = new HttpMsg(this.jdField_a_of_type_JavaLangString, null, this, true);
-      String str = "gprs";
-      if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1) {
-        str = "wifi";
+      if (jdField_a_of_type_Ashz == null) {
+        jdField_a_of_type_Ashz = new ashz();
       }
-      localHttpMsg.setRequestProperty("Net-type", str);
-      localHttpMsg.setRequestProperty("Range", "bytes=0-");
-      localHttpMsg.setPriority(5);
-      localHttpMsg.setDataSlice(true);
-      localHttpMsg.fileType = 0;
-      localHttpMsg.busiType = 0;
-      localHttpMsg.msgId = String.valueOf(this.jdField_a_of_type_Long);
-      QLog.d("ZipThumbDownloader", 1, "[downloadThumb]  ID[" + this.jdField_a_of_type_Long + "] start runDownload... , url[" + this.jdField_a_of_type_JavaLangString + "] data RANGE[" + String.valueOf("bytes=0-") + "], peerType[" + String.valueOf(localHttpMsg.busiType) + "]");
-      localHttpMsg.setRequestProperty("Accept-Encoding", "identity");
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        localHttpMsg.setRequestProperty("Cookie", this.jdField_b_of_type_JavaLangString);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ZipThumbDownloader", 1, "cookie:" + this.jdField_b_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().sendMsg(localHttpMsg);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = localHttpMsg;
-      return;
+      return jdField_a_of_type_Ashz;
     }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      do
-      {
-        a(true);
-      } while (this.jdField_a_of_type_Asia == null);
-      this.jdField_a_of_type_Asia.a(this.jdField_a_of_type_JavaLangString, false, -2, null, this.jdField_a_of_type_Long);
-    }
+    finally {}
   }
   
-  private void a(boolean paramBoolean)
+  private boolean a(String paramString)
   {
-    this.jdField_c_of_type_Long = 0L;
-    try
-    {
-      if (this.jdField_a_of_type_JavaIoFileOutputStream != null)
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        QLog.i("ZipThumbDownloader", 1, "stopDownload : [thumbtaskId] = " + this.jdField_a_of_type_Long + " closeFileStream");
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().cancelMsg(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
-        }
-        if (paramBoolean) {
-          FileUtil.deleteFile(this.jdField_d_of_type_JavaLangString);
-        }
-        return;
-        QLog.w("ZipThumbDownloader", 1, "stopDownload : [thumbtaskId] = " + this.jdField_a_of_type_Long + " closeFileStream had closed: stream = null");
-      }
+    if (TextUtils.isEmpty(paramString)) {}
+    while ((!paramString.equals("ipc_apollo_changerole")) && (!paramString.equals("ipc_apollo_preview")) && (!paramString.equals("ipc_apollo_check_avatar_res")) && (!paramString.equals("ipc_apollo_preview_audio_action")) && (!paramString.equals("ipc_apollo_preview_action")) && (!paramString.equals("IPC_APOLLO_DOWNLOAD_GAME")) && (!paramString.equals("ipc_apollo_downloadImageOnFrame")) && (!paramString.equals("ipc_cmd_apollo_exec_script")) && (!paramString.equals("ipc_apollo_get_playmate_msg"))) {
+      return false;
     }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        QLog.e("ZipThumbDownloader", 1, "stopDownload : [thumbtaskId] = " + this.jdField_a_of_type_Long + " closeFileStream");
-        localIOException.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(long paramLong, String paramString1, String paramString2, asia paramasia)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString1;
-    this.jdField_d_of_type_JavaLangString = (paramString1 + ".tmp");
-    this.jdField_a_of_type_Asia = paramasia;
-    QLog.i("ZipThumbDownloader", 1, "[downloadThumb]  ID[" + this.jdField_a_of_type_Long + "] add WaitDowloadTask waiting...");
-    this.jdField_d_of_type_Long = System.currentTimeMillis();
-    ThreadManager.post(new HttpThumbDownloader.1(this), 8, null, false);
-  }
-  
-  public void decode(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
-  {
-    boolean bool = false;
-    long l1 = -1L;
-    if (paramHttpMsg2 != null) {
-      l1 = Long.parseLong(paramHttpMsg2.msgId);
-    }
-    if (l1 != this.jdField_a_of_type_Long) {
-      QLog.e("ZipThumbDownloader", 1, "decode : [thumbId] = " + l1 + " but [currentTaskId] = " + this.jdField_a_of_type_Long);
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (paramHttpMsg2 != null) {
-            break;
-          }
-          QLog.e("ZipThumbDownloader", 1, "decode : [thumbId] = " + l1 + "] decode resp = null ");
-          a(true);
-        } while (this.jdField_a_of_type_Asia == null);
-        this.jdField_a_of_type_Asia.a(this.jdField_a_of_type_JavaLangString, false, -7, null, this.jdField_a_of_type_Long);
-        return;
-      } while ((paramHttpMsg2.getResponseCode() != 206) && (paramHttpMsg2.getResponseCode() != 200));
-      if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {
-        break;
-      }
-      a(true);
-    } while (this.jdField_a_of_type_Asia == null);
-    this.jdField_a_of_type_Asia.a(this.jdField_a_of_type_JavaLangString, false, -8, null, this.jdField_a_of_type_Long);
-    return;
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramHttpMsg2.getRecvData());
-        if (0L == this.jdField_b_of_type_Long)
-        {
-          long l2 = paramHttpMsg2.getTotalLen();
-          QLog.i("ZipThumbDownloader", 1, "decode : [thumbId] = " + l1 + "]  [thumb Size] = " + String.valueOf(l2));
-          this.jdField_b_of_type_Long = l2;
-        }
-        this.e = paramHttpMsg2.getRecvData().length;
-        this.jdField_c_of_type_Long += this.e;
-        QLog.d("ZipThumbDownloader", 4, "decode : recv packeg[" + this.e + "],total[" + String.valueOf(this.jdField_c_of_type_Long) + "] thumb Size[" + String.valueOf(this.jdField_b_of_type_Long) + "]");
-        if (this.jdField_c_of_type_Long < this.jdField_b_of_type_Long) {
-          break label578;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
-      }
-      catch (Exception paramHttpMsg1)
-      {
-        try
-        {
-          this.jdField_a_of_type_JavaIoFileOutputStream.flush();
-          this.jdField_a_of_type_JavaIoFileOutputStream.getFD().sync();
-          a(false);
-          if (FileUtils.renameFile(new File(this.jdField_d_of_type_JavaLangString), new File(this.jdField_c_of_type_JavaLangString))) {
-            break label617;
-          }
-          i = -9;
-          QLog.e("ZipThumbDownloader", 1, "decode : [downloadThumb] = " + this.jdField_a_of_type_Long + " renameFile failed");
-          if (this.jdField_a_of_type_Asia == null) {
-            break;
-          }
-          this.jdField_a_of_type_Asia.a(this.jdField_a_of_type_JavaLangString, bool, i, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Long);
-          return;
-        }
-        catch (IOException paramHttpMsg1)
-        {
-          paramHttpMsg1.printStackTrace();
-          a(true);
-        }
-        paramHttpMsg1 = paramHttpMsg1;
-        paramHttpMsg1.printStackTrace();
-        a(true);
-      }
-      if (this.jdField_a_of_type_Asia == null) {
-        break;
-      }
-      this.jdField_a_of_type_Asia.a(this.jdField_a_of_type_JavaLangString, false, -8, null, this.jdField_a_of_type_Long);
-      return;
-      if (this.jdField_a_of_type_Asia == null) {
-        break;
-      }
-      this.jdField_a_of_type_Asia.a(this.jdField_a_of_type_JavaLangString, false, -8, null, this.jdField_a_of_type_Long);
-      return;
-      label578:
-      int i = (int)((float)this.jdField_c_of_type_Long / (float)this.jdField_b_of_type_Long * 10000.0F);
-      if (this.jdField_a_of_type_Asia == null) {
-        break;
-      }
-      this.jdField_a_of_type_Asia.a(this.jdField_a_of_type_JavaLangString, i);
-      return;
-      label617:
-      i = 0;
-      bool = true;
-    }
-  }
-  
-  public void handleError(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
-  {
-    int i = -1;
-    long l = -1L;
-    if (paramHttpMsg1 != null) {
-      l = Long.parseLong(paramHttpMsg1.msgId);
-    }
-    if (l != this.jdField_a_of_type_Long) {
-      QLog.e("ZipThumbDownloader", 1, "handleError : [thumbId] = " + l + " but [currentTaskId] = " + this.jdField_a_of_type_Long);
-    }
-    int j;
-    do
-    {
-      do
-      {
-        return;
-        if (paramHttpMsg2 != null) {
-          break;
-        }
-        QLog.e("ZipThumbDownloader", 1, "[downloadThumb] = " + this.jdField_a_of_type_Long + " response is null");
-        a(true);
-      } while (this.jdField_a_of_type_Asia == null);
-      this.jdField_a_of_type_Asia.a(this.jdField_a_of_type_JavaLangString, false, -1, null, this.jdField_a_of_type_Long);
-      return;
-      String str2 = paramHttpMsg2.getErrorString();
-      String str1 = str2;
-      if (str2 == null) {
-        str1 = "null";
-      }
-      j = paramHttpMsg2.errCode;
-      QLog.e("ZipThumbDownloader", 1, "[downloadThumb] = " + this.jdField_a_of_type_Long + " handleError retCode [errCode] = " + j + ", [retMsg] = " + str1);
-      if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-        break;
-      }
-      QLog.e("ZipThumbDownloader", 1, "[downloadThumb] = " + this.jdField_a_of_type_Long + " net is broken");
-      a(true);
-    } while (this.jdField_a_of_type_Asia == null);
-    this.jdField_a_of_type_Asia.a(this.jdField_a_of_type_JavaLangString, false, -3, null, this.jdField_a_of_type_Long);
-    return;
-    if (paramHttpMsg1 == null)
-    {
-      i = -6;
-      QLog.e("ZipThumbDownloader", 1, "[downloadThumb] = " + this.jdField_a_of_type_Long + " request = null. over");
-    }
-    for (;;)
-    {
-      a(true);
-      if (this.jdField_a_of_type_Asia == null) {
-        break;
-      }
-      this.jdField_a_of_type_Asia.a(this.jdField_a_of_type_JavaLangString, false, i, null, this.jdField_a_of_type_Long);
-      return;
-      if (!paramHttpMsg2.permitRetry())
-      {
-        i = -4;
-        QLog.e("ZipThumbDownloader", 1, "[downloadThumb] = " + this.jdField_a_of_type_Long + " response.permitRetry = false. over");
-      }
-      else
-      {
-        if (this.jdField_b_of_type_Int < 3)
-        {
-          QLog.w("ZipThumbDownloader", 1, "[downloadThumb] = " + this.jdField_a_of_type_Long + " try it. [retryTimes] = " + this.jdField_b_of_type_Int + " [eofRetry] = " + this.jdField_d_of_type_Int);
-          this.jdField_b_of_type_Int += 1;
-          if ((j == 9056) && (this.jdField_d_of_type_Int < 3))
-          {
-            QLog.w("ZipThumbDownloader", 1, "[downloadThumb] = " + this.jdField_a_of_type_Long + " [Error_Exp_Eof retryTimes] = " + this.jdField_b_of_type_Int + " [eofRetry] = " + this.jdField_d_of_type_Int);
-            this.jdField_b_of_type_Int -= 1;
-          }
-          for (this.jdField_d_of_type_Int += 1;; this.jdField_d_of_type_Int = 0)
-          {
-            a(true);
-            if (this.jdField_a_of_type_Asia != null) {
-              this.jdField_a_of_type_Asia.a(this.jdField_a_of_type_JavaLangString);
-            }
-            this.jdField_c_of_type_Int += 1;
-            a();
-            return;
-          }
-        }
-        QLog.w("ZipThumbDownloader", 1, "[downloadThumb] = " + this.jdField_a_of_type_Long + " try it. retryTimes > " + 3 + " download over....");
-      }
-    }
-  }
-  
-  public void handleRedirect(String paramString) {}
-  
-  public void onFlowEvent(HttpMsg paramHttpMsg) {}
-  
-  public boolean statusChanged(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
-  {
     return true;
+  }
+  
+  private void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchBindToClient suc");
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((ascz)localIterator.next()).onBindedToClient();
+    }
+  }
+  
+  private void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchBindToClient suc");
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((ascz)localIterator.next()).onDisconnectWithService();
+    }
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "alarm init");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer = new EmojiIPCAlarmer(this.jdField_a_of_type_Asgr);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a();
+    }
+  }
+  
+  private void f(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchPushMsg suc");
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((ascz)localIterator.next()).onPushMsg(paramBundle);
+    }
+  }
+  
+  public asib a(int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
+      while (localIterator.hasNext())
+      {
+        asib localasib = (asib)localIterator.next();
+        if (localasib.jdField_a_of_type_Int == paramInt)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "remove req queue seq:" + paramInt);
+          }
+          this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a(localasib.jdField_a_of_type_JavaLangRunnable);
+          this.jdField_a_of_type_JavaUtilVector.remove(localasib);
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "after remove req queue size:" + this.jdField_a_of_type_JavaUtilVector.size());
+          }
+          return localasib;
+        }
+      }
+      return null;
+    }
+  }
+  
+  public asib a(Bundle paramBundle)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    {
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i + 1);
+      paramBundle = new asib(i, paramBundle);
+      e();
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "add to req queue seq: " + paramBundle.jdField_a_of_type_Int);
+      }
+      paramBundle.jdField_a_of_type_JavaLangRunnable = this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a(paramBundle.jdField_a_of_type_Int, 30000L);
+      this.jdField_a_of_type_JavaUtilVector.add(paramBundle);
+      return paramBundle;
+    }
+  }
+  
+  public Client a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqEmosmClient;
+  }
+  
+  public void a()
+  {
+    c();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      QLog.e("Q.emoji.web.EmoWebIPCOperator", 1, "error:reqbundle is null.");
+    }
+    do
+    {
+      do
+      {
+        return;
+        localObject = a(paramBundle);
+      } while ((localObject == null) || ((this.jdField_a_of_type_ComTencentMobileqqEmosmClient != null) && (this.jdField_a_of_type_ComTencentMobileqqEmosmClient.onReqToServer(((asib)localObject).jdField_a_of_type_AndroidOsBundle))));
+      paramBundle = a(paramBundle.getInt("seq"));
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "sendServiceIpcReq unbind fail seq:" + this.jdField_a_of_type_Int);
+      }
+    } while (paramBundle == null);
+    Object localObject = new Bundle();
+    a((Bundle)localObject, 1002);
+    paramBundle.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
+    a(new WebIPCOperator.1(this, paramBundle));
+  }
+  
+  void a(Bundle paramBundle, int paramInt)
+  {
+    if (paramBundle != null) {
+      paramBundle.putInt("failcode", paramInt);
+    }
+  }
+  
+  public void a(ascz paramascz)
+  {
+    if (paramascz == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "RegisterObserver key:" + paramascz.key);
+      }
+    } while (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramascz));
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramascz);
+  }
+  
+  void a(Runnable paramRunnable)
+  {
+    if (paramRunnable != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqEmosmClient != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqEmosmClient.isClientBinded();
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    d();
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    if ((paramBundle != null) && ((this.jdField_a_of_type_ComTencentMobileqqEmosmClient == null) || (!this.jdField_a_of_type_ComTencentMobileqqEmosmClient.onReqToServer(paramBundle))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "sendServiceIpcReq unbind fail seq:" + this.jdField_a_of_type_Int);
+      }
+      Bundle localBundle = new Bundle();
+      a(localBundle, 1002);
+      paramBundle.putBundle("response", localBundle);
+      a(new WebIPCOperator.2(this, paramBundle));
+    }
+  }
+  
+  public void b(ascz paramascz)
+  {
+    if (paramascz != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "unRegisterObserver key:" + paramascz.key);
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramascz)) {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramascz);
+      }
+    }
+  }
+  
+  public void c(Bundle paramBundle)
+  {
+    Object localObject;
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("seq");
+      localObject = a(i);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchResp seq:" + i);
+      }
+      if (localObject == null) {
+        break label75;
+      }
+      a(paramBundle, 1000);
+      a(new WebIPCOperator.3(this, paramBundle));
+    }
+    label75:
+    do
+    {
+      return;
+      localObject = paramBundle.getString("cmd");
+    } while ((localObject == null) || ((!a((String)localObject)) && (!((String)localObject).equals("startDownloadEmoji")) && (!((String)localObject).equals("stopdownload")) && (!((String)localObject).equals("openEquipmentLock")) && (!((String)localObject).equals("card_setSummaryCard")) && (!((String)localObject).equals("card_getVipInfo")) && (!((String)localObject).equals("closeWeb")) && (!((String)localObject).equals("setMobileResult")) && (!((String)localObject).equals("setWaitingResponse")) && (!((String)localObject).equals("openEmojiMall")) && (!((String)localObject).equals("openProfileCard")) && (!((String)localObject).equals("close_version")) && (!((String)localObject).equals("openEmojiDetail")) && (!((String)localObject).equals("openFontSetting")) && (!((String)localObject).equals("startDownloadColorRing")) && (!((String)localObject).equals("stopDownloadColorRing")) && (!((String)localObject).equals("funcall_download")) && (!((String)localObject).equals("funcall_set")) && (!((String)localObject).equals("getA2")) && (!((String)localObject).equals("openDevLock")) && (!((String)localObject).equals("queryDevLockStatus")) && (!((String)localObject).equals("ipc_funnypic_add")) && (!((String)localObject).equals("ipc_video_isinstalled")) && (!((String)localObject).equals("ipc_video_install_plugin")) && (!((String)localObject).equals("gamecenter_delaydownload")) && (!((String)localObject).equals("emojiStickerRecall")) && (!((String)localObject).equals("ipc_cmd_get_team_work_url"))));
+    a(paramBundle, 1000);
+    a(new WebIPCOperator.4(this, paramBundle));
+  }
+  
+  public void d(Bundle paramBundle)
+  {
+    f(paramBundle);
+  }
+  
+  public void e(Bundle paramBundle)
+  {
+    Object localObject = paramBundle.getString("cmd");
+    int i = paramBundle.getInt("failcode");
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "dispatchResp suc: " + (String)localObject + ", retCode: " + i);
+    }
+    localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((ascz)((Iterator)localObject).next()).onResponse(paramBundle);
+    }
   }
 }
 

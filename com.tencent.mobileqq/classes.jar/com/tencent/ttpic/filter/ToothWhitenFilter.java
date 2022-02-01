@@ -7,7 +7,7 @@ import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
-import com.tencent.faceBeauty.FaceParam;
+import com.tencent.facebeauty.FaceParam;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;

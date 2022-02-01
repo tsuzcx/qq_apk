@@ -1,18 +1,58 @@
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
 class aasn
+  extends ascz
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
+  aasn(aasm paramaasm) {}
   
-  public aasn(aasi paramaasi, String paramString1, long paramLong1, int paramInt, String paramString2, long paramLong2)
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Long = paramLong2;
+    int i;
+    Object localObject;
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == aasm.a(this.a).key))
+    {
+      i = paramBundle.getInt("failcode");
+      localObject = paramBundle.getBundle("request");
+      if (i == 1000) {
+        break label80;
+      }
+      QLog.e("SSOWebviewPlugin", 2, "IPC failed ! failcode: " + i + "  reqParams: " + localObject);
+    }
+    for (;;)
+    {
+      return;
+      label80:
+      String str = paramBundle.getString("cmd");
+      paramBundle = paramBundle.getBundle("response");
+      if (("ipc_cmd_certified_account_web_plugin_follow".equals(str)) && (localObject != null) && (paramBundle != null))
+      {
+        localObject = ((Bundle)localObject).getString("callback");
+        i = paramBundle.getInt("retCode");
+        paramBundle = new JSONObject();
+        try
+        {
+          paramBundle.put("retCode", i);
+          this.a.callJs((String)localObject, new String[] { paramBundle.toString() });
+          if (QLog.isColorLevel())
+          {
+            QLog.d("SSOWebviewPlugin", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW return! retCode: " + i);
+            return;
+          }
+        }
+        catch (Throwable paramBundle)
+        {
+          QLog.e("SSOWebviewPlugin", 2, "sso.PublicFollow failed! " + QLog.getStackTraceString(paramBundle));
+        }
+      }
+    }
   }
 }
 

@@ -25,8 +25,11 @@ class MiniAppTextArea$MyOnFocusChangeListener
     {
       int i;
       int j;
-      if ((!MiniAppTextArea.access$1500(this.this$0)) && (paramBoolean))
+      if (!MiniAppTextArea.access$1500(this.this$0))
       {
+        if (!paramBoolean) {
+          break label512;
+        }
         MiniAppTextArea.access$802(this.this$0, true);
         InputMethodManager localInputMethodManager = (InputMethodManager)MiniAppTextArea.access$100(this.this$0).getContext().getSystemService("input_method");
         if (localInputMethodManager != null) {
@@ -80,6 +83,9 @@ class MiniAppTextArea$MyOnFocusChangeListener
             return;
             localPageWebviewContainer = null;
             break;
+            MiniAppTextArea.access$1600(this.this$0);
+            break label218;
+            label512:
             MiniAppTextArea.access$1600(this.this$0);
             break label218;
             i = 0;

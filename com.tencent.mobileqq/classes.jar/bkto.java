@@ -1,19 +1,18 @@
-import cooperation.qqreader.VipProxyRreLoadReaderProcess.1;
-
-public class bkto
-  implements nnv
+final class bkto
 {
-  public bkto(VipProxyRreLoadReaderProcess.1 param1) {}
+  int jdField_a_of_type_Int;
+  bkud jdField_a_of_type_Bkud;
+  bkue jdField_a_of_type_Bkue;
+  String jdField_a_of_type_JavaLangString = "";
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  public void loaded(String paramString, int paramInt)
+  public String toString()
   {
-    bkvd.d("VipProxyRreLoadReaderProcess", "Load offline package finish, code = " + paramInt);
-    if (paramInt != 0) {
-      bkvd.a("VipProxyRreLoadReaderProcess", "offline update failed.");
-    }
+    return "[EntryId:" + this.jdField_a_of_type_Int + ",UseCache:" + this.jdField_a_of_type_Boolean + ",rightnow:" + this.jdField_b_of_type_Boolean + ",Retry:" + this.jdField_b_of_type_Int + ",localKey:" + this.jdField_a_of_type_JavaLangString + ",content:" + this.jdField_a_of_type_Bkud.toString() + "]";
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

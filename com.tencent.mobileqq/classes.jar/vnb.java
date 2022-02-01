@@ -1,6 +1,15 @@
-public abstract interface vnb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+
+final class vnb
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(int paramInt);
+  vnb(vln paramvln) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    vms.b(this.a);
+  }
 }
 
 

@@ -1,8 +1,23 @@
-import mqq.app.AppRuntime.Status;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.1;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.3.2;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0x5ea.UpdatePhotoList.HeadInfo;
 
-public abstract interface axtq
+public class axtq
+  extends axqx
 {
-  public abstract void a(AppRuntime.Status paramStatus);
+  public axtq(NearbyGuideActivity paramNearbyGuideActivity) {}
+  
+  protected void a(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.runOnUiThread(new NearbyGuideActivity.3.1(this, paramBoolean, paramInt1, paramArrayList));
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList<UpdatePhotoList.HeadInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.runOnUiThread(new NearbyGuideActivity.3.2(this, paramBoolean, paramInt1, paramArrayList));
+  }
 }
 
 

@@ -12,7 +12,7 @@ import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.util.List;
 
 public class HeadCropFilter
@@ -39,14 +39,14 @@ public class HeadCropFilter
   public void initAttribParams()
   {
     super.initAttribParams();
-    addAttribParam("inputGrayTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getFullCoords(FaceOffUtil.getGrayCoords(FaceOffUtil.FEATURE_TYPE.FACE_HEAD_CROP), 3.0F), this.grayImageWidth, this.grayImageHeight, this.grayVertices));
+    addAttribParam("inputGrayTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getFullCoords(FaceOffUtil.getGrayCoords(FaceOffUtil.FeatureType.FACE_HEAD_CROP), 3.0F), this.grayImageWidth, this.grayImageHeight, this.grayVertices));
     setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLES);
     setCoordNum(690);
   }
   
   public void initParams()
   {
-    Bitmap localBitmap = FaceOffUtil.getGrayBitmap(FaceOffUtil.FEATURE_TYPE.FACE_HEAD_CROP);
+    Bitmap localBitmap = FaceOffUtil.getGrayBitmap(FaceOffUtil.FeatureType.FACE_HEAD_CROP);
     this.grayImageWidth = localBitmap.getWidth();
     this.grayImageHeight = localBitmap.getHeight();
     addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", localBitmap, 33986, true));

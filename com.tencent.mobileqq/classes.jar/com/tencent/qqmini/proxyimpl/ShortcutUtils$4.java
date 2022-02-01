@@ -1,10 +1,10 @@
 package com.tencent.qqmini.proxyimpl;
 
-import amtj;
 import android.app.Activity;
-import bjga;
-import bjgb;
-import bjgd;
+import anvx;
+import bkrk;
+import bkrl;
+import bkrn;
 
 public final class ShortcutUtils$4
   implements Runnable
@@ -13,14 +13,14 @@ public final class ShortcutUtils$4
   
   public void run()
   {
-    if (bjgd.a()) {
-      bjgd.a(this.a, amtj.a(2131713118), amtj.a(2131713124), amtj.a(2131713105), new bjga(this), new bjgb(this)).show();
+    if (bkrn.a()) {
+      bkrn.a(this.a, anvx.a(2131713465), anvx.a(2131713471), anvx.a(2131713452), new bkrk(this), new bkrl(this)).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShortcutUtils.4
  * JD-Core Version:    0.7.0.1
  */

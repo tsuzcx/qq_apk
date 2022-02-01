@@ -1,189 +1,103 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.KCWraperV2.1;
-import com.tencent.mobileqq.vip.KCWraperV2.2;
-import com.tencent.mobileqq.vip.KingCardActivationFragment;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_dc04233;
-import dualsim.common.IKcActivationViewer;
-import dualsim.common.IKingCardInterface;
-import dualsim.common.OrderCheckResult;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
-import tmsdk.common.KcSdkShellManager;
+import java.lang.ref.WeakReference;
+import java.net.URL;
 
-public class bgon
-  extends bgom
+class bgon
+  implements URLDrawableDownListener
 {
-  public AtomicBoolean a = new AtomicBoolean(false);
+  bgon(bgom parambgom, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
   
-  private void a(OrderCheckResult paramOrderCheckResult)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    int i = 1;
-    String str1;
-    if (paramOrderCheckResult != null)
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
     {
-      str1 = paramOrderCheckResult.toString();
-      a(str1);
-      if (paramOrderCheckResult != null) {
-        break label30;
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
       }
     }
-    label30:
-    label46:
-    boolean bool2;
-    do
+    QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadCancelled urlStr : " + paramView);
+    bdla.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
     {
-      return;
-      str1 = "result == null";
-      break;
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (localObject != null) {
-        break label186;
-      }
-      str1 = null;
-      if (TextUtils.isEmpty(str1)) {
-        break label206;
-      }
-      bool2 = a(str1, paramOrderCheckResult);
-    } while (!(localObject instanceof QQAppInterface));
-    Object localObject = (QQAppInterface)localObject;
-    String str2 = paramOrderCheckResult.phoneNum;
-    aneg localaneg = (aneg)((QQAppInterface)localObject).getBusinessHandler(27);
-    boolean bool1;
-    label113:
-    long l;
-    if (paramOrderCheckResult.operator == 1)
-    {
-      if (paramOrderCheckResult.kingcard != 1) {
-        break label196;
-      }
-      bool1 = true;
-      localaneg.a(str1, str2, bool1, paramOrderCheckResult.product, "");
-      l = Long.parseLong(str1);
-      if (paramOrderCheckResult.kingcard != 1) {
-        break label201;
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
       }
     }
-    for (;;)
+    if (paramThrowable == null) {}
+    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
     {
-      new LpReportInfo_dc04233(l, i).report();
-      if (!bool2) {
-        break;
-      }
-      localaneg.a(((TicketManager)((QQAppInterface)localObject).getManager(2)).getSkey(str1), str1);
-      return;
-      label186:
-      str1 = ((AppRuntime)localObject).getAccount();
-      break label46;
-      label196:
-      bool1 = false;
-      break label113;
-      label201:
-      i = 0;
-    }
-    label206:
-    QLog.e("KC.TMSManager", 1, "tmsQuery can't get uin");
-  }
-  
-  public String a()
-  {
-    return "KC.KCWraperV2";
-  }
-  
-  void a(ViewGroup paramViewGroup)
-  {
-    Object localObject = KcSdkShellManager.getInstance().getKingCardInterface();
-    if (localObject != null)
-    {
-      localObject = ((IKingCardInterface)localObject).generateActivationView(paramViewGroup.getContext());
-      if (localObject != null)
-      {
-        paramViewGroup.addView(((IKcActivationViewer)localObject).getWebView());
-        ((IKcActivationViewer)localObject).startLoad();
-        return;
-      }
-      QLog.e("KC.TMSManager", 1, "activationViewer == null");
-    }
-    QLog.e("KC.TMSManager", 1, "kingCardInterface == null");
-  }
-  
-  public void a(bgoy parambgoy, boolean paramBoolean)
-  {
-    ThreadManager.post(new KCWraperV2.2(this, parambgoy, paramBoolean), 5, null, false);
-  }
-  
-  void a(Runnable paramRunnable)
-  {
-    a("load jar");
-    if (this.a.get()) {
+      QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadFailed urlStr : " + paramView + "; errorMsg : " + paramURLDrawable);
+      bdla.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
       return;
     }
-    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    File localFile = new File(bgox.a().a(localContext));
-    if (!localFile.exists())
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
     {
-      if (paramRunnable != null) {
-        paramRunnable.run();
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
       }
-      a(false);
+    }
+    if (paramInterruptedException == null) {}
+    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
+    {
+      QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadInterrupted urlStr : " + paramView + "; errorMsg : " + paramURLDrawable);
+      bdla.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
       return;
     }
-    ThreadManager.post(new KCWraperV2.1(this, localFile, localContext), 5, null, false);
   }
   
-  boolean a()
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    if (this.a.get()) {
-      return true;
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
     }
-    if (!new File(bgox.a().a(BaseApplicationImpl.getApplication())).exists()) {
-      return false;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
+    if ((this.jdField_a_of_type_Bgom.a != null) && (this.jdField_a_of_type_Bgom.a.get() != null)) {
+      ((TextView)this.jdField_a_of_type_Bgom.a.get()).setText(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.a());
     }
-    synchronized (this.a)
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_Bgom.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
     {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(a(), 1, "wait load");
-        }
-        this.a.wait(500L);
-        if (QLog.isColorLevel()) {
-          QLog.e(a(), 1, "wait end");
-        }
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          localInterruptedException.printStackTrace();
-          QLog.e(a(), 1, localInterruptedException, new Object[0]);
-        }
-      }
-      return this.a.get();
     }
-  }
-  
-  boolean a(Activity paramActivity)
-  {
-    PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
-    return true;
-  }
-  
-  boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("KC.TMSManager", 1, "supportActivationView == true");
+    if ((this.jdField_a_of_type_Bgom.a != null) && (this.jdField_a_of_type_Bgom.a.get() != null)) {
+      ((TextView)this.jdField_a_of_type_Bgom.a.get()).setVisibility(8);
     }
-    return true;
+    this.jdField_a_of_type_Bgom.a = null;
+    this.jdField_a_of_type_Bgom.c = false;
+    bdla.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
   }
 }
 

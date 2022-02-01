@@ -1,24 +1,53 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.avgame.gameroom.gamelist.GameListView;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class ndg
-  implements View.OnTouchListener
+class ndg
+  extends ansi
 {
-  public ndg(GameListView paramGameListView) {}
+  ndg(ndf paramndf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onGetRealNameStatusForAV(boolean paramBoolean)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
+    Activity localActivity;
+    if (paramBoolean)
     {
+      localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localActivity != null) && (!localActivity.isFinishing()))
+      {
+        bdla.b(null, "dc00898", "", "", "0X800B079", "0X800B079", this.a.jdField_a_of_type_Int, 0, "", "", "", "");
+        if (!this.a.jdField_a_of_type_JavaLangString.isEmpty()) {
+          break label206;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("AvGameManager", 2, "onGetRealNameStatusForAV createAvGameRoom");
+        }
+        if (this.a.jdField_b_of_type_Int != 9) {
+          break label171;
+        }
+        this.a.jdField_a_of_type_Ncz.a(localActivity, 9);
+      }
     }
     for (;;)
     {
-      return false;
-      this.a.setPreparePressImage();
+      if (QLog.isColorLevel()) {
+        QLog.i("RealName", 2, "onGetRealNameStatusForAV authed: " + paramBoolean + ". Remove observer.");
+      }
+      ncz.a(this.a.jdField_a_of_type_Ncz).removeObserver(ncz.a(this.a.jdField_a_of_type_Ncz));
+      return;
+      label171:
+      this.a.jdField_a_of_type_Ncz.a(localActivity, this.a.jdField_b_of_type_Int, this.a.jdField_b_of_type_JavaLangString, this.a.c);
       continue;
-      this.a.setPrepareNorImage();
+      label206:
+      if (QLog.isColorLevel()) {
+        QLog.i("AvGameManager", 2, "onGetRealNameStatusForAV joinAvGameRoom. roomId: " + this.a.jdField_a_of_type_JavaLangString);
+      }
+      if (this.a.jdField_b_of_type_Int == 6) {
+        this.a.jdField_a_of_type_Ncz.a(localActivity, 9);
+      } else {
+        this.a.jdField_a_of_type_Ncz.a(localActivity, this.a.jdField_b_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString);
+      }
     }
   }
 }

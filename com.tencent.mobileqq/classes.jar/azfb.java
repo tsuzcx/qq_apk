@@ -1,12 +1,8 @@
 public abstract interface azfb
 {
-  public abstract void a();
-  
   public abstract void a(int paramInt);
   
-  public abstract void a(azfm paramazfm);
-  
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(azex paramazex, Double paramDouble, boolean paramBoolean);
 }
 
 

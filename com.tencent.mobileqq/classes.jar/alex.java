@@ -1,27 +1,30 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class alex
-  implements Animation.AnimationListener
+class alex
+  implements View.OnClickListener
 {
-  public alex(SpecailCareListActivity paramSpecailCareListActivity, alfk paramalfk, int paramInt) {}
+  alex(aldh paramaldh) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Alfk.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(1, 2131368236);
-    paramAnimation.addRule(10);
-    paramAnimation.setMargins(0, (int)(10.0F * SpecailCareListActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), this.jdField_a_of_type_Int, 0);
-    this.jdField_a_of_type_Alfk.a.setLayoutParams(paramAnimation);
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim()))) {
+      this.a.l();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Intent localIntent = new Intent(aldh.a(this.a), QRLoginMgrActivity.class);
+      localIntent.putExtra("qrlogin_position", this.a.b);
+      localIntent.putExtra("qrlogin_appid", this.a.a);
+      aldh.a(this.a).startActivity(localIntent);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.click;
 
-import pgk;
-import pgm;
-import slt;
+import ppo;
+import ppq;
+import szd;
 
 public class RIJListViewGroupHandlerClick$1
   implements Runnable
 {
-  public RIJListViewGroupHandlerClick$1(pgk parampgk, pgm parampgm) {}
+  public RIJListViewGroupHandlerClick$1(ppo paramppo, ppq paramppq) {}
   
   public void run()
   {

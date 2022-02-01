@@ -1,16 +1,16 @@
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
-import com.tencent.qqmini.sdk.launcher.core.action.Action;
-import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityFragment;
 
-final class bjeb
-  implements Action<Object>
+class bjeb
+  implements DialogInterface.OnClickListener
 {
-  public Object perform(BaseRuntime paramBaseRuntime)
+  bjeb(bjea parambjea) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppLoaderFactory.g().getAppBrandProxy().onAppDestroy(paramBaseRuntime.getMiniAppInfo(), (Bundle)null);
-    return null;
+    paramDialogInterface.dismiss();
+    this.a.a.b(110405, "", "", "");
   }
 }
 

@@ -1,25 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.superplayer.api.ISuperPlayer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRJumpActivity;
 
 public class zlh
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public zlh(VideoPlayerView paramVideoPlayerView) {}
+  public zlh(QRJumpActivity paramQRJumpActivity) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (zvo.a("mLLSkipForwardWrapper", 500L))
-    {
-      VideoPlayerView.e(this.a);
-      VideoPlayerView.a(this.a, VideoPlayerView.c(this.a), 0, 1, true);
-      if (this.a.a() != null) {
-        this.a.a(this.a.a().getCurrentPositionMs() + 10000L);
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.finish();
   }
 }
 

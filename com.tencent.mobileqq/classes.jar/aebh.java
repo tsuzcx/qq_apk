@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
-class aebh
-  implements QQPermissionCallback
+public class aebh
+  implements DialogInterface.OnDismissListener
 {
-  aebh(aebg paramaebg, QQSettingMe paramQQSettingMe) {}
+  public aebh(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QLog.d("QQSettingRedesign", 1, "User requestPermissions denied...");
-    bfur.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d("QQSettingRedesign", 1, "User requestPermissions grant...");
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.g();
+    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
   }
 }
 

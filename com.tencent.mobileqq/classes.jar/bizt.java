@@ -2,53 +2,21 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 class bizt
   extends BroadcastReceiver
 {
-  private bizt(bizr parambizr) {}
+  bizt(bizq parambizq) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (bizr.a(this.a).getContext() == null) {
-      return;
-    }
-    paramContext = new JSONObject();
-    for (;;)
+    if (paramIntent == null)
     {
-      try
-      {
-        String str1 = paramIntent.getStringExtra("file_path");
-        String str2 = paramIntent.getStringExtra("video_thumb_path");
-        long l = paramIntent.getLongExtra("video_duration", 0L);
-        boolean bool = paramIntent.getBooleanExtra("is_video", false);
-        paramContext.put("filePath", ((IMiniAppFileManager)bizr.b(this.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str1));
-        if (!bool) {
-          continue;
-        }
-        i = 1;
-        paramContext.put("isVideo", i);
-        if (bool)
-        {
-          paramContext.put("videoDuration", (l + 999L) / 1000L);
-          paramContext.put("cover", ((IMiniAppFileManager)bizr.c(this.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str2));
-        }
-      }
-      catch (JSONException paramIntent)
-      {
-        int i;
-        paramIntent.printStackTrace();
-        continue;
-      }
-      QLog.e("LaunchCameraPlugin", 1, "data: " + paramContext);
-      bizr.a(this.a, "custom_event_checkin_onCameraInfoEvent", paramContext.toString());
+      QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "mPuzzleVerifyCodeReceiver onReceive null == oldIntent");
       return;
-      i = 0;
     }
+    QLog.d("Q.quicklogin.OpenSdkQIPCClient", 1, "mPuzzleVerifyCodeReceiver onReceive");
+    bjhh.a(paramIntent, paramContext);
   }
 }
 

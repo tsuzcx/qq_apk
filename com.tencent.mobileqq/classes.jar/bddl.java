@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bddl
-  implements DialogInterface.OnClickListener
+public class bddl
 {
-  bddl(bddh parambddh, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bddh.a(this.jdField_a_of_type_Bddh, this.jdField_a_of_type_JavaLangString, "clk_unableframe_cancel");
-    paramDialogInterface.dismiss();
-  }
+  public float a = 1.0F;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

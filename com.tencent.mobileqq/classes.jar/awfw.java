@@ -1,6 +1,19 @@
-public abstract interface awfw
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+
+public final class awfw
+  implements Parcelable.Creator<MusicInfo>
 {
-  public abstract void a();
+  public MusicInfo a(Parcel paramParcel)
+  {
+    return new MusicInfo(paramParcel, null);
+  }
+  
+  public MusicInfo[] a(int paramInt)
+  {
+    return new MusicInfo[paramInt];
+  }
 }
 
 

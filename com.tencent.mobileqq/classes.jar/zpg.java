@@ -1,54 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import tencent.im.group.nearbybanner.nearbybanner.Banners;
-import tencent.im.group.nearbybanner.nearbybanner.RspBody;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.richframework.part.block.base.RefreshHeaderView;
 
-class zpg
-  implements BusinessObserver
+public class zpg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  zpg(zpf paramzpf, Bundle paramBundle) {}
+  public zpg(RefreshHeaderView paramRefreshHeaderView, int paramInt) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidOsBundle.remove("data");
-    if (!paramBoolean)
-    {
-      this.jdField_a_of_type_Zpf.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
+    this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseRefreshHeaderView.setVisibleHeight(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    if ((this.jdField_a_of_type_Int == 0) && (((Integer)paramValueAnimator.getAnimatedValue()).intValue() == 0)) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkPartBlockBaseRefreshHeaderView.setState(0);
     }
-    paramBundle = paramBundle.getByteArray("data");
-    nearbybanner.RspBody localRspBody = new nearbybanner.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(paramBundle);
-      if ((localRspBody.uint32_result.get() != 0) && (!localRspBody.msg_banners.has()))
-      {
-        this.jdField_a_of_type_Zpf.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      this.jdField_a_of_type_Zpf.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      paramBundle = (nearbybanner.Banners)localRspBody.msg_banners.get();
-      if (!paramBundle.rpt_banner_info.has())
-      {
-        this.jdField_a_of_type_Zpf.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-        return;
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      this.jdField_a_of_type_Zpf.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsBundle.putByteArray("data", paramBundle.toByteArray());
-    this.jdField_a_of_type_Zpf.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

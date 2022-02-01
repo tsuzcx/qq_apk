@@ -1,6 +1,19 @@
-public abstract interface apom
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+
+public final class apom
+  implements Parcelable.Creator<ArVideoResourceInfo>
 {
-  public abstract void onColorNoteAnimFinish();
+  public ArVideoResourceInfo a(Parcel paramParcel)
+  {
+    return new ArVideoResourceInfo(paramParcel);
+  }
+  
+  public ArVideoResourceInfo[] a(int paramInt)
+  {
+    return new ArVideoResourceInfo[paramInt];
+  }
 }
 
 

@@ -44,14 +44,19 @@ public class AEEditorImageViewPager
     if (paramMotionEvent.getAction() == 0) {
       this.b = true;
     }
-    if ((this.a) && (this.b))
-    {
+    if ((this.a) && (this.b)) {
       if (paramMotionEvent.getAction() == 1) {
         this.b = false;
       }
-      return super.onTouchEvent(paramMotionEvent);
     }
+    try
+    {
+      boolean bool = super.onTouchEvent(paramMotionEvent);
+      return bool;
+    }
+    catch (Exception paramMotionEvent) {}
     this.b = false;
+    return false;
     return false;
   }
   

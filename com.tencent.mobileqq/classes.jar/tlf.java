@@ -1,10 +1,44 @@
-import kotlin.Metadata;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+import mqq.util.WeakReference;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/GDTBridgeInvokeHandler$Companion;", "", "()V", "C2S_REPORT", "", "DWELL_TIMEMILLIS_REPORT", "GET_DEVICE_INFO", "GET_MOTIVE_AD", "HANDLE_CLICK", "NS_GDT", "OPEN_MINI_APP", "PRELOAD_AFTER_AD_LOADED", "SHOW_MOTIVE_AD", "adFreshAddAdId", "adFreshFlushSceneAds", "adFreshGetExposeRate", "adFreshGetRequestAdIds", "adFreshRemoveAdId", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tlf {}
+class tlf
+{
+  private static Map<AbstractGifImage, List<WeakReference<tlh>>> a = new WeakHashMap();
+  private static Map<AbstractGifImage, tlg> b = new WeakHashMap();
+  
+  public void a()
+  {
+    a.clear();
+    b.clear();
+  }
+  
+  void a(tlh paramtlh, URLDrawable paramURLDrawable)
+  {
+    if ((paramURLDrawable.getCurrDrawable() instanceof GifDrawable))
+    {
+      AbstractGifImage localAbstractGifImage = ((GifDrawable)paramURLDrawable.getCurrDrawable()).getImage();
+      paramURLDrawable = new tlg(localAbstractGifImage);
+      localAbstractGifImage.setGIFPlayOnceListener(paramURLDrawable);
+      b.put(localAbstractGifImage, paramURLDrawable);
+      List localList = (List)a.get(localAbstractGifImage);
+      paramURLDrawable = localList;
+      if (localList == null) {
+        paramURLDrawable = new ArrayList();
+      }
+      paramURLDrawable.add(new WeakReference(paramtlh));
+      a.put(localAbstractGifImage, paramURLDrawable);
+    }
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tlf
  * JD-Core Version:    0.7.0.1
  */

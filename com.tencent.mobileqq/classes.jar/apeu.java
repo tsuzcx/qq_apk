@@ -1,55 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class apeu
-  extends AnimatorListenerAdapter
+public class apeu
+  extends apeh
 {
-  apeu(apet paramapet) {}
+  public String b;
+  public String c;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public apeu(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3)
   {
-    this.a.a("animator set end!");
-    if (this.a.c != null)
+    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    if (!TextUtils.isEmpty(paramString2))
     {
-      apet.a(this.a).removeView(this.a.c);
-      this.a.c = null;
-      if (this.a.d == null) {
-        break label186;
+      paramString1 = paramString2.split("\\|");
+      if (paramString1.length > 0) {
+        this.b = paramString1[0];
       }
-      apet.b(this.a).removeView(this.a.d);
-      this.a.d = null;
     }
-    for (;;)
-    {
-      if (this.a.e != null)
-      {
-        this.a.e.setVisibility(0);
-        paramAnimator = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
-        paramAnimator.a = -1L;
-        paramAnimator.b();
-      }
-      if (this.a.jdField_b_of_type_AndroidViewView != null) {
-        this.a.jdField_b_of_type_AndroidViewView.invalidate();
-      }
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.a(true);
-      return;
-      this.a.a("something wrong, bubble view is null!");
-      break;
-      label186:
-      this.a.a("something wrong, pendview is null!");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a("animator set start!");
-    this.a.a(false);
+    this.c = paramString3;
+    QLog.d("GreetingCardResourceInfo", 2, String.format("GreetingCardResourceInfo mLuaScriptPath=%s mResourceDirPath=%s", new Object[] { this.b, this.c }));
   }
 }
 

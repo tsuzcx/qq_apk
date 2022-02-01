@@ -1,8 +1,21 @@
-import android.os.Bundle;
+import android.util.Log;
 
-public abstract interface awqs
+class awqs
+  implements awqu
 {
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  awqs(awqr paramawqr) {}
+  
+  public void a(int paramInt)
+  {
+    this.a.a = true;
+    this.a.c(paramInt);
+  }
+  
+  public void b(int paramInt)
+  {
+    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
+    this.a.b(paramInt);
+  }
 }
 
 

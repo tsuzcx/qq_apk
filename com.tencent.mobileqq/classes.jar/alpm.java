@@ -1,32 +1,40 @@
-import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
 
 public class alpm
-  implements GLSurfaceView.EGLConfigChooser
+  extends BroadcastReceiver
 {
-  private int a;
+  public alpm(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public alpm(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.i("ApolloSurfaceView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
-    this.a = paramInt;
-  }
-  
-  public EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
-  {
-    int i = this.a;
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
-    if (arrayOfInt[0] == 0)
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-      QLog.e("ApolloSurfaceView", 1, "[ApolloConfigChooser], fail to set config");
-      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d("FlowCameraActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
+      }
+      paramContext = BaseActivity2.findViewById(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366959);
+      if (paramContext != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
+      }
+      if (this.a.e) {
+        this.a.i();
+      }
+      if ((this.a.f) && (this.a.c)) {
+        this.a.c(false);
+      }
+      this.a.b();
     }
-    return arrayOfEGLConfig[0];
   }
 }
 

@@ -1,20 +1,25 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.app.Activity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoStateCallback;", "", "onVideoComplete", "", "url", "", "onVideoError", "onVideoPause", "onVideoStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface txt
+public class txt
 {
-  public abstract void a(@Nullable String paramString);
+  public Activity a;
+  public JSONObject a;
+  public txq b;
   
-  public abstract void b(@Nullable String paramString);
+  txt(txq paramtxq1, Activity paramActivity, txq paramtxq2, JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramtxq2;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+  }
   
-  public abstract void c(@Nullable String paramString);
-  
-  public abstract void d(@Nullable String paramString);
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     txt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
+import ahvi;
 import android.content.Intent;
-import ayfu;
-import bfks;
-import bfyz;
+import bgtj;
+import bhhr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
@@ -18,7 +19,7 @@ public class TroopEffectPicAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130850627;
+    return 2130850758;
   }
   
   public int getAppID()
@@ -31,23 +32,23 @@ public class TroopEffectPicAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697177);
+    return BaseApplicationImpl.getContext().getString(2131697454);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if (bfyz.q(paramBaseChatPie.getActivity(), paramBaseChatPie.app.getCurrentAccountUin())) {
+    if (bhhr.q(paramBaseChatPie.getActivity(), paramBaseChatPie.app.getCurrentAccountUin())) {
       TroopPicEffectsEditActivity.a(paramBaseChatPie.getActivity(), paramSessionInfo.curFriendUin, paramSessionInfo.troopUin);
     }
     for (;;)
     {
-      bfks.a("app_entry", "page_clk");
+      bgtj.a("app_entry", "page_clk");
       return;
-      bfyz.z(paramBaseChatPie.getActivity(), paramBaseChatPie.app.getCurrentAccountUin());
-      paramayfu = new Intent(paramBaseChatPie.getActivity(), TroopPicEffectGuidePicActivity.class);
-      paramayfu.putExtra("friendUin", paramSessionInfo.curFriendUin);
-      paramayfu.putExtra("troopUin", paramSessionInfo.troopUin);
-      paramBaseChatPie.getActivity().startActivity(paramayfu);
+      bhhr.z(paramBaseChatPie.getActivity(), paramBaseChatPie.app.getCurrentAccountUin());
+      paramahvi = new Intent(paramBaseChatPie.getActivity(), TroopPicEffectGuidePicActivity.class);
+      paramahvi.putExtra("friendUin", paramSessionInfo.curFriendUin);
+      paramahvi.putExtra("troopUin", paramSessionInfo.troopUin);
+      paramBaseChatPie.getActivity().startActivity(paramahvi);
     }
   }
 }

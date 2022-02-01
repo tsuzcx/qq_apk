@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import awfy;
+import android.text.TextUtils;
+import axma;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -48,7 +49,7 @@ public class IntimateInfo$MutualMarkInfo
         }
         localMutualMarkInfo.days = i;
         if (!paramMutualMarkInfo.uint64_sub_level.has()) {
-          break label264;
+          break label284;
         }
         l = paramMutualMarkInfo.uint64_sub_level.get();
         localMutualMarkInfo.subLevel = l;
@@ -60,16 +61,16 @@ public class IntimateInfo$MutualMarkInfo
         if ((paramMutualMarkInfo.msg_special_word_info.has()) && (((oidb_0xcf4.SpecialWordInfo)paramMutualMarkInfo.msg_special_word_info.get()).bytes_static_url.has())) {
           localMutualMarkInfo.iconStaticUrl = ((oidb_0xcf4.SpecialWordInfo)paramMutualMarkInfo.msg_special_word_info.get()).bytes_static_url.get().toStringUtf8();
         }
-        if ((localMutualMarkInfo.gradeResourceInfo != null) && (localMutualMarkInfo.gradeResourceInfo.bytes_static_url.has())) {
+        if ((localMutualMarkInfo.gradeResourceInfo != null) && (localMutualMarkInfo.gradeResourceInfo.bytes_static_url.has()) && (!TextUtils.isEmpty(localMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8()))) {
           localMutualMarkInfo.iconStaticUrl = localMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8();
         }
-        localMutualMarkInfo.iconStaticUrl = awfy.c(localMutualMarkInfo.iconStaticUrl);
+        localMutualMarkInfo.iconStaticUrl = axma.c(localMutualMarkInfo.iconStaticUrl);
         return localMutualMarkInfo;
         i = 0;
         continue;
         i = 0;
         break label59;
-        label264:
+        label284:
         l = 0L;
       }
       catch (Throwable localThrowable)
@@ -120,7 +121,7 @@ public class IntimateInfo$MutualMarkInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.IntimateInfo.MutualMarkInfo
  * JD-Core Version:    0.7.0.1
  */

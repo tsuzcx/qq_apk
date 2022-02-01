@@ -1,50 +1,31 @@
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.text.method.MovementMethod;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.TextView;
-import java.lang.reflect.Field;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.turingfd.sdk.xq.TuringFdConfig;
+import com.tencent.turingfd.sdk.xq.TuringFdConfig.Builder;
+import com.tencent.turingfd.sdk.xq.TuringFdService;
 
 public class bhbw
-  extends LinkMovementMethod
 {
-  private static MovementMethod jdField_a_of_type_AndroidTextMethodMovementMethod;
-  private static Field jdField_a_of_type_JavaLangReflectField;
+  private static boolean a;
   
-  public static MovementMethod a()
+  public static void a()
   {
-    if (jdField_a_of_type_AndroidTextMethodMovementMethod == null) {
-      jdField_a_of_type_AndroidTextMethodMovementMethod = new bhbw();
+    Context localContext = BaseApplicationImpl.getContext().getApplicationContext();
+    if (!a) {
+      QLog.d("TuringSdkInitHelper", 1, "init TuringSDK");
     }
-    return jdField_a_of_type_AndroidTextMethodMovementMethod;
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getActionMasked() == 1) {}
     try
     {
-      if (jdField_a_of_type_JavaLangReflectField == null) {
-        jdField_a_of_type_JavaLangReflectField = View.class.getDeclaredField("mHasPerformedLongPress");
-      }
-      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
-      boolean bool = jdField_a_of_type_JavaLangReflectField.getBoolean(paramTextView);
-      if (bool) {
-        return true;
-      }
+      TuringFdService.init(TuringFdConfig.newBuilder(localContext, "").appid("1109803375").build());
+      a = true;
+      return;
     }
-    catch (NoSuchFieldException localNoSuchFieldException)
+    catch (Throwable localThrowable)
     {
-      localNoSuchFieldException.printStackTrace();
-      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        localIllegalAccessException.printStackTrace();
-      }
+      QLog.e("TuringSdkInitHelper", 1, localThrowable, new Object[] { "Turing init crash fail" });
+      throw localThrowable;
     }
   }
 }

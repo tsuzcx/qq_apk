@@ -1,28 +1,28 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.io.File;
 
 class xgy
-  extends ParallelJobSegment<String, xgu>
+  implements xit
 {
-  public int a;
+  private xgy(xgv paramxgv) {}
   
-  public xgy(xgs paramxgs, int paramInt)
+  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean) {}
+  
+  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, xjm paramxjm) {}
+  
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, xjm paramxjm, int paramInt, Object paramObject)
   {
-    super("RequestLikeListSegment");
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
+    return false;
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, xjm paramxjm, boolean paramBoolean)
   {
-    xhm localxhm = new xhm();
-    localxhm.jdField_a_of_type_JavaLangString = paramString;
-    localxhm.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int != -1) {
-      localxhm.c = this.jdField_a_of_type_Int;
-    }
-    vqn.a().a(localxhm, new xgz(this, paramJobContext, paramString));
+    return this.a.a.a(paramVideoViewVideoHolder, paramxjm, paramBoolean);
   }
+  
+  public void b(VideoViewVideoHolder paramVideoViewVideoHolder, xjm paramxjm) {}
+  
+  public void c(VideoViewVideoHolder paramVideoViewVideoHolder, xjm paramxjm) {}
 }
 
 

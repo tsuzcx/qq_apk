@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import bcef;
-import bfys;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import bjmq;
+import com.tencent.open.agent.OpenSdkIMBlockFragment;
 
 class SplashActivity$4
   implements Runnable
@@ -12,20 +10,7 @@ class SplashActivity$4
   
   public void run()
   {
-    long l = SpaceLowNoticeActiviy.a(this.this$0.app, "conf_space_low_shreshold", 104857600L);
-    if (SpaceLowNoticeActiviy.a(SpaceLowNoticeActiviy.a(this.this$0.app, "conf_space_check_interval", 259200000L)))
-    {
-      if (bfys.b(this.this$0) + bfys.b() < l)
-      {
-        QLog.i("SplashActivity", 1, "qqclean conf did notice");
-        SpaceLowNoticeActiviy.a(this.this$0);
-        bcef.b(this.this$0.app, "dc00898", "", "", "0X8007545", "0X8007545", 0, 0, this.this$0.app.getCurrentAccountUin(), "", "", "");
-      }
-    }
-    else {
-      return;
-    }
-    QLog.i("SplashActivity", 1, "qqclean conf not need notice");
+    OpenSdkIMBlockFragment.a(this.this$0, bjmq.a(), false);
   }
 }
 

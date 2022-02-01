@@ -1,81 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class own
-  implements BusinessObserver
+public class own
+  implements View.OnClickListener
 {
-  own(owm paramowm, BaseCommentData paramBaseCommentData) {}
+  public own(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (paramBoolean) {}
+    if ((ReadInJoyDeliverBiuActivity.c(this.a)) && ((!ReadInJoyDeliverBiuActivity.d(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1))) {
+      this.a.e(ReadInJoyDeliverBiuActivity.l(this.a));
+    }
     for (;;)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label253;
-        }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        paramInt = localWebSsoResponseBody.ret.get();
-        paramBundle = localWebSsoResponseBody.data.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyCommentSSOModule", 2, "deleteComment ret=" + paramBundle);
-        }
-        paramBundle = new JSONObject(paramBundle);
-        if (paramInt != 0)
-        {
-          paramBundle.optString("msg");
-          paramInt = 0;
-          i = paramInt;
-          if ((i == 0) && (owm.a(this.jdField_a_of_type_Owm) != null)) {
-            owm.a(this.jdField_a_of_type_Owm).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
-          }
-          return;
-        }
-        paramInt = paramBundle.optInt("ret");
-        if (paramInt != 0) {
-          break label253;
-        }
-        paramInt = i;
-        try
-        {
-          if (owm.a(this.jdField_a_of_type_Owm) == null) {
-            continue;
-          }
-          owm.a(this.jdField_a_of_type_Owm).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
-          paramInt = i;
-        }
-        catch (Exception paramBundle)
-        {
-          paramInt = 1;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramInt = 0;
-        continue;
-      }
-      paramBundle.getLocalizedMessage();
-      paramBundle.printStackTrace();
-      i = paramInt;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
-        i = paramInt;
-        continue;
-        label253:
-        paramInt = 0;
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      olh.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+      this.a.finish();
+      ReadInJoyDeliverBiuActivity.a(this.a, false);
     }
   }
 }

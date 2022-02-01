@@ -1,10 +1,41 @@
-public abstract interface apff
+public class apff
+  extends apeh
 {
-  public abstract void onEventComplite();
+  public aphz a;
+  public apoa a;
+  public boolean a;
+  public long b;
+  public String b;
+  public int d;
+  public int e = 1;
   
-  public abstract void onOverScrollTargetValue();
+  public apff(String paramString1, int paramInt1, int paramInt2, int paramInt3, apoa paramapoa, aphz paramaphz, String paramString2, long paramLong, boolean paramBoolean, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    super(paramString1, paramInt1, paramInt2, paramInt5, paramFloat1, paramFloat2, paramFloat3);
+    this.d = paramInt3;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramInt4;
+    this.jdField_a_of_type_Apoa = paramapoa;
+    this.jdField_a_of_type_Aphz = paramaphz;
+  }
   
-  public abstract boolean shouldRecordPositionY();
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("OnlineVideoARRenderableInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mRealRenderType=").append(this.d);
+    localStringBuilder.append(", mKeyingParams='").append(this.jdField_a_of_type_Apoa).append('\'');
+    localStringBuilder.append(", mVideoUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", mVideoSize='").append(this.jdField_b_of_type_Long).append('\'');
+    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aphz).append('\'');
+    localStringBuilder.append(", isSoftPlay='").append(this.jdField_a_of_type_Boolean).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
 }
 
 

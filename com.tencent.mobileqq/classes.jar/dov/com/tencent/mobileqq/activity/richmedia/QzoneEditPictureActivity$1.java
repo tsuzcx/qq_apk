@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import babd;
-import bnst;
-import bnub;
+import bbhm;
+import bpil;
+import bpjt;
 
 public class QzoneEditPictureActivity$1
   implements Runnable
@@ -12,8 +12,8 @@ public class QzoneEditPictureActivity$1
   public void run()
   {
     com.tencent.sveffects.SvEffectSdkInitor.isDovCapture = true;
-    babd.b();
-    bnub.a().a(this.this$0.a(), new bnst(this), true);
+    bbhm.b();
+    bpjt.a().a(this.this$0.a(), new bpil(this), true);
   }
 }
 

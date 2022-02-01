@@ -1,18 +1,75 @@
 public class avjd
 {
-  public int a;
-  public String a;
+  public final avjf a = new avjf();
   
-  public avjd()
+  public static avjd a()
   {
-    this.jdField_a_of_type_Int = 0;
+    return avjg.a();
   }
   
-  public String toString()
+  public String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("CommonGuideInfo|").append("webUrl=").append(this.jdField_a_of_type_JavaLangString).append(",type=").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    return this.a.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.a.d.a();
+  }
+  
+  public String b()
+  {
+    return this.a.jdField_b_of_type_JavaLangString;
+  }
+  
+  public boolean b()
+  {
+    return this.a.c.a();
+  }
+  
+  public boolean c()
+  {
+    return this.a.jdField_a_of_type_Avjh.a();
+  }
+  
+  public boolean d()
+  {
+    return this.a.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean e()
+  {
+    return this.a.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean f()
+  {
+    return this.a.e.a();
+  }
+  
+  public boolean g()
+  {
+    return this.a.g.a();
+  }
+  
+  public boolean h()
+  {
+    return this.a.f.a();
+  }
+  
+  public boolean i()
+  {
+    return this.a.h.a();
+  }
+  
+  public boolean j()
+  {
+    return this.a.i.a();
+  }
+  
+  public boolean k()
+  {
+    return this.a.j.a();
   }
 }
 

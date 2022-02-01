@@ -1,172 +1,253 @@
-import KQQ.RespBatchProcess;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import friendlist.GetMultiTroopInfoResp;
-import friendlist.GetTroopAppointRemarkResp;
-import friendlist.GetTroopListRespV2;
-import friendlist.GetTroopMemberListResp;
-import friendlist.GetTroopRemarkResp;
-import friendlist.ModifyGroupCardResp;
-import friendlist.ModifyGroupInfoResp;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.manager.Manager;
 
 public class bbob
+  implements bboi, Manager
 {
-  private final <T> T a(byte[] paramArrayOfByte, String paramString, T paramT)
+  private anyz jdField_a_of_type_Anyz;
+  private bbnz jdField_a_of_type_Bbnz;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<String, bbof> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  
+  public bbob(QQAppInterface paramQQAppInterface)
   {
-    UniPacket localUniPacket = new UniPacket(true);
-    try
-    {
-      localUniPacket.setEncodeName("utf-8");
-      localUniPacket.decode(paramArrayOfByte);
-      return localUniPacket.getByClass(paramString, paramT);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private bbnz a()
+  {
+    if (this.jdField_a_of_type_Bbnz == null) {
+      this.jdField_a_of_type_Bbnz = new bbnz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    catch (Exception paramArrayOfByte)
-    {
+    return this.jdField_a_of_type_Bbnz;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  {
+    ((bbob)paramQQAppInterface.getManager(QQManagerFactory.MEDIA_MSG_ORDER_SEND_MANAGER)).b(paramString, paramLong);
+  }
+  
+  public bbof a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    catch (RuntimeException paramArrayOfByte) {}
-    return null;
-  }
-  
-  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return (GetMultiTroopInfoResp)a(paramFromServiceMsg.getWupBuffer(), "GMTIRESP", new GetMultiTroopInfoResp());
-  }
-  
-  private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramFromServiceMsg = (GetTroopListRespV2)a(paramFromServiceMsg.getWupBuffer(), "GetTroopListRespV2", new GetTroopListRespV2());
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.result != 1))
+    for (;;)
     {
-      paramToServiceMsg = paramFromServiceMsg;
-      if (paramFromServiceMsg.vecTroopList == null)
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        paramToServiceMsg = paramFromServiceMsg;
-        if (paramFromServiceMsg.vecTroopListDel == null)
+        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
         {
-          paramToServiceMsg = paramFromServiceMsg;
-          if (paramFromServiceMsg.vecTroopRank == null)
+          paramString = (bbof)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+          return paramString;
+        }
+      }
+      bbof localbbof = new bbof(paramString, a());
+      localbbof.a(this);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localbbof);
+      paramString = localbbof;
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Anyz == null)
+    {
+      this.jdField_a_of_type_Anyz = new bboc(this);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anyz);
+    }
+  }
+  
+  public void a(MessageRecord paramMessageRecord, anyz paramanyz)
+  {
+    a(paramMessageRecord, paramanyz, null);
+  }
+  
+  public void a(MessageRecord paramMessageRecord, anyz paramanyz, bbod parambbod)
+  {
+    bbof localbbof = a(paramMessageRecord.frienduin);
+    String str = null;
+    if ((paramMessageRecord instanceof MessageForShortVideo)) {
+      str = ((MessageForShortVideo)paramMessageRecord).videoFileName;
+    }
+    while (localbbof.a(paramMessageRecord.uniseq, str))
+    {
+      localbbof.a(paramMessageRecord, paramanyz, parambbod);
+      return;
+      if ((paramMessageRecord instanceof MessageForPic)) {
+        str = ((MessageForPic)paramMessageRecord).path;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OrderMediaMsgManager", 2, "sendOrderMsg but not in queue, uniseq:" + paramMessageRecord.uniseq);
+    }
+    a().a(paramMessageRecord, paramanyz, parambbod);
+  }
+  
+  public void a(MessageRecord paramMessageRecord, String paramString)
+  {
+    Object localObject = a(paramMessageRecord.frienduin);
+    if (((bbof)localObject).a(paramMessageRecord.uniseq, paramString))
+    {
+      ((bbof)localObject).a(paramMessageRecord, paramMessageRecord.uniseq, paramString, true);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("addOrderMsg but not in queue, uniseq:").append(paramMessageRecord.uniseq).append(", path:").append(paramString);
+      QLog.d("OrderMediaMsgManager", 2, ((StringBuilder)localObject).toString());
+    }
+    a().a(paramMessageRecord);
+  }
+  
+  public void a(String paramString)
+  {
+    bbof localbbof = null;
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        localbbof = (bbof)this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder();
+          StringBuilder localStringBuilder = ((StringBuilder)???).append("remove orderSession, suin = ").append(paramString).append(", addr = ");
+          if (localbbof != null)
           {
-            paramToServiceMsg = paramFromServiceMsg;
-            if (paramFromServiceMsg.vecFavGroup != null) {}
+            paramString = localbbof.toString();
+            localStringBuilder.append(paramString);
+            QLog.d("OrderMediaMsgManager", 2, ((StringBuilder)???).toString());
           }
         }
-      }
-    }
-    else
-    {
-      paramToServiceMsg = null;
-    }
-    return paramToServiceMsg;
-  }
-  
-  private Object d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramFromServiceMsg = (GetTroopRemarkResp)a(paramFromServiceMsg.getWupBuffer(), "GTRRESP", new GetTroopRemarkResp());
-    if (paramFromServiceMsg == null) {
-      paramToServiceMsg = null;
-    }
-    do
-    {
-      return paramToServiceMsg;
-      paramToServiceMsg = paramFromServiceMsg;
-    } while (paramFromServiceMsg.result != 1);
-    return null;
-  }
-  
-  private Object e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    try
-    {
-      paramToServiceMsg = (GetTroopMemberListResp)a(paramFromServiceMsg.getWupBuffer(), "GTMLRESP", new GetTroopMemberListResp());
-      paramFromServiceMsg = paramToServiceMsg;
-      StringBuilder localStringBuilder;
-      label74:
-      return paramFromServiceMsg;
-    }
-    catch (OutOfMemoryError paramToServiceMsg)
-    {
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          return paramFromServiceMsg;
-        }
-        localStringBuilder = new StringBuilder().append("FriendListService.decodeTroopGetMemberList");
-        if (paramToServiceMsg == null) {}
-        for (paramFromServiceMsg = "resp == null";; paramFromServiceMsg = "resp != null")
+        else
         {
-          QLog.d("get_troop_member", 2, paramFromServiceMsg);
-          return paramToServiceMsg;
+          return;
         }
-        paramToServiceMsg = paramToServiceMsg;
-        paramToServiceMsg = null;
       }
-      catch (OutOfMemoryError paramFromServiceMsg)
+      paramString = Integer.valueOf(0);
+    }
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    a(paramString).a(paramLong, "");
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    a(paramString).a(paramLong1, paramLong2);
+  }
+  
+  public void a(String paramString1, MessageRecord paramMessageRecord, String paramString2)
+  {
+    bbof localbbof = a(paramMessageRecord.frienduin);
+    if (!localbbof.a(paramMessageRecord.uniseq, paramString2)) {
+      a(paramString1, paramMessageRecord.uniseq);
+    }
+    localbbof.a(paramMessageRecord, paramMessageRecord.uniseq, paramString2, false);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (a().a(paramString2)) {
+      return;
+    }
+    a(paramString1).a(0L, paramString2);
+  }
+  
+  public void a(String paramString, ArrayList<ChatMessage> paramArrayList)
+  {
+    if (paramArrayList != null)
+    {
+      paramArrayList = paramArrayList.iterator();
+      int i = 0;
+      int k;
+      for (int j = 0; paramArrayList.hasNext(); j = k)
       {
-        break label74;
+        ChatMessage localChatMessage = (ChatMessage)paramArrayList.next();
+        k = j + 1;
+        j = i;
+        if (bbnz.a(localChatMessage.msgtype))
+        {
+          j = i + 1;
+          a(paramString).a(localChatMessage.uniseq, "", a().a(localChatMessage));
+        }
+        i = j;
       }
-      paramFromServiceMsg = paramToServiceMsg;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("TroopReceiver", 2, "decodeTroopGetMemberList OOM");
-        return paramToServiceMsg;
+      bboe.b(j, i);
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {}
+    while (a(paramString).a()) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean a(String paramString, long paramLong)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {}
+    while (a(paramString).a().a(paramLong) == 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean a(String paramString, long paramLong, View paramView, afsn paramafsn)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {
+      return false;
+    }
+    return a(paramString).a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong, paramView, paramafsn);
+  }
+  
+  public void b(String paramString, long paramLong)
+  {
+    a(paramString).a(paramLong);
+  }
+  
+  public boolean b(String paramString, long paramLong)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {}
+    while (a(paramString).a().a(paramLong) != 2) {
+      return false;
+    }
+    return true;
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext()) {
+        ((bbof)localIterator.next()).a();
       }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
     }
-  }
-  
-  private Object f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return (ModifyGroupCardResp)a(paramFromServiceMsg.getWupBuffer(), "MGCRESP", new ModifyGroupCardResp());
-  }
-  
-  private Object g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return (ModifyGroupInfoResp)a(paramFromServiceMsg.getWupBuffer(), "MGIRESP", new ModifyGroupInfoResp());
-  }
-  
-  private Object h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return (GetTroopAppointRemarkResp)a(paramFromServiceMsg.getWupBuffer(), "GTARESP", new GetTroopAppointRemarkResp());
-  }
-  
-  private Object i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return (RespBatchProcess)a(paramFromServiceMsg.getWupBuffer(), "RespBatchProcess", new RespBatchProcess());
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopReceiver", 2, "~~~decode cmd: " + str);
+    if (this.jdField_a_of_type_Anyz != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anyz);
+      this.jdField_a_of_type_Anyz = null;
     }
-    if ("friendlist.GetMultiTroopInfoReq".equalsIgnoreCase(str)) {
-      return b(paramToServiceMsg, paramFromServiceMsg);
-    }
-    if ("friendlist.GetTroopListReqV2".equalsIgnoreCase(str)) {
-      return c(paramToServiceMsg, paramFromServiceMsg);
-    }
-    if ("friendlist.getTroopRemark".equalsIgnoreCase(str)) {
-      return d(paramToServiceMsg, paramFromServiceMsg);
-    }
-    if ("friendlist.getTroopMemberList".equalsIgnoreCase(str)) {
-      return e(paramToServiceMsg, paramFromServiceMsg);
-    }
-    if ("friendlist.ModifyGroupCardReq".equalsIgnoreCase(str)) {
-      return f(paramToServiceMsg, paramFromServiceMsg);
-    }
-    if ("friendlist.ModifyGroupInfoReq".equalsIgnoreCase(str)) {
-      return g(paramToServiceMsg, paramFromServiceMsg);
-    }
-    if ("friendlist.GetTroopAppointRemarkReq".equalsIgnoreCase(str)) {
-      return h(paramToServiceMsg, paramFromServiceMsg);
-    }
-    if ("ProfileService.ReqBatchProcess".equalsIgnoreCase(str)) {
-      return i(paramToServiceMsg, paramFromServiceMsg);
-    }
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

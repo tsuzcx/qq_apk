@@ -1,27 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.tavcut.exporter.ImageExporter;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.20;
 
 public class bnxu
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
-  public bnxu(BeautyBar paramBeautyBar) {}
+  public bnxu(AEEditorImageEditFragment.20 param20) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
-      }
-    } while (BeautyBar.a(this.a) == null);
-    BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
+    AEEditorImageEditFragment.a(this.a.this$0).cancel();
   }
 }
 

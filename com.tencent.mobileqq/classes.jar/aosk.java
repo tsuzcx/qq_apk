@@ -1,45 +1,64 @@
-import android.os.Bundle;
+import android.content.Intent;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.manager.WtloginManager;
-import mqq.observer.WtloginObserver;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class aosk
-  implements aosg
+public abstract class aosk
+  implements aosl
 {
-  private WtloginObserver a;
+  protected final aosm a;
+  protected final QQAppInterface a;
   
-  private void a(long paramLong1, long paramLong2, aosn paramaosn)
+  protected aosk(QQAppInterface paramQQAppInterface, aosm paramaosm)
   {
-    QQAppInterface localQQAppInterface = aori.a();
-    if (localQQAppInterface == null)
-    {
-      paramaosn.a(null, 0L, null, null);
-      return;
-    }
-    if (this.a == null) {
-      this.a = new aosm(this, paramaosn);
-    }
-    ((WtloginManager)localQQAppInterface.getManager(1)).getOpenKeyWithoutPasswd(localQQAppInterface.getCurrentUin(), paramLong1, paramLong2, this.a);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aosm = paramaosm;
   }
   
-  public void a(Bundle paramBundle, aosi paramaosi)
+  public abstract int a(QQMessageFacade.Message paramMessage);
+  
+  protected final Intent a()
   {
-    if (aori.a() == null)
+    return this.jdField_a_of_type_Aosm.a();
+  }
+  
+  protected final String a()
+  {
+    return this.jdField_a_of_type_Aosm.c();
+  }
+  
+  protected final void a()
+  {
+    String str = this.jdField_a_of_type_Aosm.b() + this.jdField_a_of_type_Aosm.a();
+    this.jdField_a_of_type_Aosm.b(str);
+  }
+  
+  protected final void a(QQMessageFacade.Message paramMessage, aosm paramaosm)
+  {
+    String str;
+    if (paramMessage.counter > 1)
     {
-      QLog.e("ArkApp.LoginHandler", 1, "LoginHandler.onCall, qq app is null");
-      paramaosi.a(EIPCResult.createResult(-102, new Bundle()));
+      str = paramaosm.c();
+      if (paramMessage.counter <= 100) {
+        break label68;
+      }
+    }
+    label68:
+    for (paramMessage = str + " (" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694340) + ")";; paramMessage = str + " (" + paramMessage.counter + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694276) + ")")
+    {
+      paramaosm.c(paramMessage);
       return;
     }
-    long l1 = paramBundle.getLong("srcAppID", 0L);
-    long l2 = paramBundle.getLong("dstAppID", 0L);
-    if ((l1 == 0L) || (l2 == 0L))
-    {
-      paramaosi.a(EIPCResult.createResult(0, new Bundle()));
-      return;
-    }
-    a(l1, l2, new aosl(this, paramaosi));
+  }
+  
+  protected final String b()
+  {
+    return this.jdField_a_of_type_Aosm.d();
+  }
+  
+  protected final String c()
+  {
+    return this.jdField_a_of_type_Aosm.a();
   }
 }
 

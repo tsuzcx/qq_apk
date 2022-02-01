@@ -1,34 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acry
-  implements CompoundButton.OnCheckedChangeListener
+  implements acpi
 {
-  public acry(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    boolean bool = true;
-    if (!NetworkUtil.isNetSupport(this.a.getActivity()))
-    {
-      AssistantSettingActivity.a(this.a, 2131694108, 1);
-      AssistantSettingActivity localAssistantSettingActivity = this.a;
-      if (!paramBoolean) {
-        AssistantSettingActivity.a(localAssistantSettingActivity, bool, this);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
-      ((amov)this.a.app.getBusinessHandler(2)).q(paramBoolean);
-    }
+    ((bbbq)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

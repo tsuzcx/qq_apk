@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multiaio;
 
-import aezp;
-import ajjs;
+import afrb;
+import akfg;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -20,14 +20,14 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
-import avxz;
-import avya;
-import avyb;
-import avyc;
-import avyd;
-import avye;
-import avyk;
-import avze;
+import axeb;
+import axec;
+import axed;
+import axee;
+import axef;
+import axeg;
+import axem;
+import axfg;
 import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
@@ -44,10 +44,10 @@ public class MultiAIOItemFragment
   extends PublicBaseFragment
 {
   private int jdField_a_of_type_Int;
-  private ajjs jdField_a_of_type_Ajjs;
+  private akfg jdField_a_of_type_Akfg;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private avze jdField_a_of_type_Avze;
+  private axfg jdField_a_of_type_Axfg;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
@@ -64,22 +64,22 @@ public class MultiAIOItemFragment
   @Nullable
   private View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    avyk localavyk = a();
-    if (localavyk == null)
+    axem localaxem = a();
+    if (localaxem == null)
     {
       getActivity().finish();
       return null;
     }
-    this.jdField_a_of_type_Ajjs = localavyk.a(this);
-    if (this.jdField_a_of_type_Ajjs == null)
+    this.jdField_a_of_type_Akfg = localaxem.a(this);
+    if (this.jdField_a_of_type_Akfg == null)
     {
       getActivity().finish();
       return null;
     }
     if ((paramBundle == null) && (!getUserVisibleHint())) {}
-    paramBundle = localavyk.a(this.jdField_a_of_type_Int);
-    paramLayoutInflater = this.jdField_a_of_type_Ajjs.a(paramLayoutInflater, paramBundle, paramViewGroup);
-    this.jdField_a_of_type_Ajjs.a();
+    paramBundle = localaxem.a(this.jdField_a_of_type_Int);
+    paramLayoutInflater = this.jdField_a_of_type_Akfg.a(paramLayoutInflater, paramBundle, paramViewGroup);
+    this.jdField_a_of_type_Akfg.a();
     this.jdField_a_of_type_Boolean = true;
     if (paramLayoutInflater == null)
     {
@@ -89,7 +89,7 @@ public class MultiAIOItemFragment
     return paramLayoutInflater;
   }
   
-  private avyk a()
+  private axem a()
   {
     Fragment localFragment = getParentFragment();
     if ((localFragment instanceof MultiAIOFragment)) {
@@ -118,25 +118,25 @@ public class MultiAIOItemFragment
   
   private void a()
   {
-    ListView localListView = (ListView)getView().findViewById(2131370017);
+    ListView localListView = (ListView)getView().findViewById(2131370188);
     Object localObject = localListView.getOnScrollListener();
-    localListView.setOnScrollListener(new avyc(this, (AbsListView.OnScrollListener)localObject));
+    localListView.setOnScrollListener(new axee(this, (AbsListView.OnScrollListener)localObject));
     MultiAIOBaseViewPager localMultiAIOBaseViewPager = a();
     if (localMultiAIOBaseViewPager != null)
     {
-      this.jdField_a_of_type_Avze = new avyd(this, (AbsListView.OnScrollListener)localObject, localListView);
-      localMultiAIOBaseViewPager.a(this.jdField_a_of_type_Avze);
+      this.jdField_a_of_type_Axfg = new axef(this, (AbsListView.OnScrollListener)localObject, localListView);
+      localMultiAIOBaseViewPager.a(this.jdField_a_of_type_Axfg);
     }
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Ajjs != null) && ((localListView instanceof ChatXListView)))
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Akfg != null) && ((localListView instanceof ChatXListView)))
     {
       localObject = b();
       if ((localObject != null) && (localObject.length == 2) && (localObject[0] >= 0))
       {
         localListView.post(new MultiAIOItemFragment.6(this, localListView, (int[])localObject));
-        this.jdField_a_of_type_Ajjs.b(true);
+        this.jdField_a_of_type_Akfg.b(true);
         localListView.postDelayed(new MultiAIOItemFragment.7(this), 500L);
       }
-      localListView.addOnLayoutChangeListener(new avye(this, localListView));
+      localListView.addOnLayoutChangeListener(new axeg(this, localListView));
     }
   }
   
@@ -166,9 +166,9 @@ public class MultiAIOItemFragment
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendNick = ((RecentBaseData)localObject).getTitleName();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.isFromForward = paramBundle.getIntExtra("key_mini_from", 0);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.chatBg = new aezp();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.chatBg.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849955);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.chatBg.jdField_a_of_type_AndroidContentResColorStateList = getResources().getColorStateList(2131165345);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.chatBg = new afrb();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.chatBg.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850048);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.chatBg.jdField_a_of_type_AndroidContentResColorStateList = getResources().getColorStateList(2131165351);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.textSizeForTextItem = ChatTextSizeSettingActivity.a(getActivity());
     localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.getExtras();
     paramBundle = (Bundle)localObject;
@@ -185,7 +185,7 @@ public class MultiAIOItemFragment
   
   private void a(View paramView)
   {
-    FitSystemWindowsRelativeLayout localFitSystemWindowsRelativeLayout = (FitSystemWindowsRelativeLayout)paramView.findViewById(2131362294);
+    FitSystemWindowsRelativeLayout localFitSystemWindowsRelativeLayout = (FitSystemWindowsRelativeLayout)paramView.findViewById(2131362299);
     if (localFitSystemWindowsRelativeLayout == null) {
       if (QLog.isColorLevel()) {
         QLog.d("MultiAIOItemFragment", 2, "initAIORootView() afRoot == null");
@@ -194,9 +194,9 @@ public class MultiAIOItemFragment
     do
     {
       return;
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramView.getContext(), new avxz(this), new Handler(Looper.getMainLooper()));
-      localFitSystemWindowsRelativeLayout.setDispatchTouchEventListener(new avya(this));
-      localFitSystemWindowsRelativeLayout.setOnInterceptTouchEventListener(new avyb(this));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramView.getContext(), new axeb(this), new Handler(Looper.getMainLooper()));
+      localFitSystemWindowsRelativeLayout.setDispatchTouchEventListener(new axec(this));
+      localFitSystemWindowsRelativeLayout.setOnInterceptTouchEventListener(new axed(this));
       paramView = getParentFragment();
     } while ((paramView == null) || (!(paramView instanceof MultiAIOFragment)));
     paramView = ((MultiAIOFragment)paramView).a();
@@ -247,10 +247,10 @@ public class MultiAIOItemFragment
   
   public void a(int paramInt)
   {
-    ajjs localajjs;
-    if (this.jdField_a_of_type_Ajjs != null)
+    akfg localakfg;
+    if (this.jdField_a_of_type_Akfg != null)
     {
-      localajjs = this.jdField_a_of_type_Ajjs;
+      localakfg = this.jdField_a_of_type_Akfg;
       if (this.jdField_a_of_type_Int == paramInt) {
         break label35;
       }
@@ -258,16 +258,16 @@ public class MultiAIOItemFragment
     label35:
     for (boolean bool = true;; bool = false)
     {
-      localajjs.d(bool);
-      this.jdField_a_of_type_Ajjs.x();
+      localakfg.d(bool);
+      this.jdField_a_of_type_Akfg.x();
       return;
     }
   }
   
   public void b(int paramInt)
   {
-    if ((this.jdField_a_of_type_Ajjs != null) && (paramInt == this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_Ajjs.l();
+    if ((this.jdField_a_of_type_Akfg != null) && (paramInt == this.jdField_a_of_type_Int)) {
+      this.jdField_a_of_type_Akfg.l();
     }
   }
   
@@ -283,8 +283,8 @@ public class MultiAIOItemFragment
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Ajjs != null) {
-      this.jdField_a_of_type_Ajjs.r();
+    if (this.jdField_a_of_type_Akfg != null) {
+      this.jdField_a_of_type_Akfg.r();
     }
     return true;
   }
@@ -320,9 +320,9 @@ public class MultiAIOItemFragment
     }
     try
     {
-      if (this.jdField_a_of_type_Ajjs != null)
+      if (this.jdField_a_of_type_Akfg != null)
       {
-        this.jdField_a_of_type_Ajjs.p();
+        this.jdField_a_of_type_Akfg.p();
         this.f = true;
       }
       return;
@@ -339,23 +339,23 @@ public class MultiAIOItemFragment
     Object localObject = getView();
     if (localObject != null)
     {
-      localObject = ((View)localObject).findViewById(2131362294);
-      avyk localavyk = a();
-      if (localavyk != null) {
-        localavyk.a((View)localObject);
+      localObject = ((View)localObject).findViewById(2131362299);
+      axem localaxem = a();
+      if (localaxem != null) {
+        localaxem.a((View)localObject);
       }
     }
     localObject = a();
     if (localObject != null) {
-      ((MultiAIOBaseViewPager)localObject).b(this.jdField_a_of_type_Avze);
+      ((MultiAIOBaseViewPager)localObject).b(this.jdField_a_of_type_Axfg);
     }
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
-    if (this.jdField_a_of_type_Ajjs != null) {
-      this.jdField_a_of_type_Ajjs.j();
+    if (this.jdField_a_of_type_Akfg != null) {
+      this.jdField_a_of_type_Akfg.j();
     }
   }
   
@@ -365,9 +365,9 @@ public class MultiAIOItemFragment
     if (QLog.isColorLevel()) {
       QLog.d("MultiAIOItemFragment", 2, "onPause() called " + this.jdField_a_of_type_Int);
     }
-    if ((this.jdField_a_of_type_Ajjs != null) && (this.jdField_a_of_type_Boolean) && (this.b) && (this.c))
+    if ((this.jdField_a_of_type_Akfg != null) && (this.jdField_a_of_type_Boolean) && (this.b) && (this.c))
     {
-      this.jdField_a_of_type_Ajjs.m();
+      this.jdField_a_of_type_Akfg.m();
       this.d = true;
     }
   }
@@ -378,9 +378,9 @@ public class MultiAIOItemFragment
     if (QLog.isColorLevel()) {
       QLog.d("MultiAIOItemFragment", 2, "onResume() called " + this.jdField_a_of_type_Int);
     }
-    if ((this.jdField_a_of_type_Ajjs != null) && (getUserVisibleHint()))
+    if ((this.jdField_a_of_type_Akfg != null) && (getUserVisibleHint()))
     {
-      this.jdField_a_of_type_Ajjs.k();
+      this.jdField_a_of_type_Akfg.k();
       this.c = true;
     }
   }
@@ -397,9 +397,9 @@ public class MultiAIOItemFragment
     if (QLog.isColorLevel()) {
       QLog.d("MultiAIOItemFragment", 2, "onStart() called " + this.jdField_a_of_type_Int);
     }
-    if ((this.jdField_a_of_type_Ajjs != null) && (getUserVisibleHint()) && (this.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_Akfg != null) && (getUserVisibleHint()) && (this.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_Ajjs.n();
+      this.jdField_a_of_type_Akfg.n();
       this.b = true;
     }
   }
@@ -410,9 +410,9 @@ public class MultiAIOItemFragment
     if (QLog.isColorLevel()) {
       QLog.d("MultiAIOItemFragment", 2, "onStop() called");
     }
-    if ((this.jdField_a_of_type_Ajjs != null) && (this.d))
+    if ((this.jdField_a_of_type_Akfg != null) && (this.d))
     {
-      this.jdField_a_of_type_Ajjs.o();
+      this.jdField_a_of_type_Akfg.o();
       this.e = true;
     }
   }
@@ -428,7 +428,7 @@ public class MultiAIOItemFragment
     if ((paramView instanceof FrameLayout))
     {
       paramBundle = new View(getActivity());
-      paramBundle.setId(2131371504);
+      paramBundle.setId(2131371690);
       paramBundle.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       ((FrameLayout)paramView).addView(paramBundle);
     }
@@ -440,8 +440,8 @@ public class MultiAIOItemFragment
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_Ajjs != null) {
-      this.jdField_a_of_type_Ajjs.c(paramBoolean);
+    if (this.jdField_a_of_type_Akfg != null) {
+      this.jdField_a_of_type_Akfg.c(paramBoolean);
     }
   }
   
@@ -451,34 +451,34 @@ public class MultiAIOItemFragment
       QLog.d("MultiAIOItemFragment", 2, "setUserVisibleHint() called with: isVisibleToUser = [" + paramBoolean + "]");
     }
     super.setUserVisibleHint(paramBoolean);
-    if (this.jdField_a_of_type_Ajjs == null) {}
+    if (this.jdField_a_of_type_Akfg == null) {}
     do
     {
       return;
       if (paramBoolean)
       {
-        this.jdField_a_of_type_Ajjs.d(false);
+        this.jdField_a_of_type_Akfg.d(false);
         if (!this.jdField_a_of_type_Boolean)
         {
           View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-          localView = this.jdField_a_of_type_Ajjs.a(null, localView, null);
-          this.jdField_a_of_type_Ajjs.a();
+          localView = this.jdField_a_of_type_Akfg.a(null, localView, null);
+          this.jdField_a_of_type_Akfg.a();
           this.jdField_a_of_type_Boolean = true;
           a(localView);
           a();
         }
         if (!this.b)
         {
-          this.jdField_a_of_type_Ajjs.n();
+          this.jdField_a_of_type_Akfg.n();
           this.b = true;
         }
-        this.jdField_a_of_type_Ajjs.k();
+        this.jdField_a_of_type_Akfg.k();
         this.c = true;
         return;
       }
-      this.jdField_a_of_type_Ajjs.d(true);
+      this.jdField_a_of_type_Akfg.d(true);
     } while ((!this.jdField_a_of_type_Boolean) || (!this.b) || (!this.c));
-    this.jdField_a_of_type_Ajjs.m();
+    this.jdField_a_of_type_Akfg.m();
     this.d = true;
   }
 }

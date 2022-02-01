@@ -1,18 +1,17 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adem
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public adem(DiscussionMemberActivity paramDiscussionMemberActivity, InputMethodManager paramInputMethodManager) {}
+  public adem(AccountManageActivity paramAccountManageActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.a.i();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

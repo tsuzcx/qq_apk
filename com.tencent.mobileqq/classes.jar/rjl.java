@@ -1,376 +1,378 @@
-import android.os.Build.VERSION;
-import android.text.Editable;
-import android.text.Spannable;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.Pair;
 import android.view.View;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.biu.AtFriendsSpan;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.text.TopicSpan;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import tencent.im.oidb.articlesummary.articlesummary.FriendRecommendInfo;
+import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
+import tencent.im.oidb.articlesummary.articlesummary.SpecialTopicInfo;
+import tencent.im.oidb.articlesummary.articlesummary.SubscribeInfo;
 
 public class rjl
 {
-  private static Pattern a = Pattern.compile(bfwx.c.pattern() + "|" + bfwx.d.pattern(), 2);
-  
-  private static int a(Spannable paramSpannable, int paramInt1, int paramInt2)
+  public static int a(ArticleInfo paramArticleInfo)
   {
-    Matcher localMatcher = a.matcher(paramSpannable.subSequence(paramInt1, paramInt2));
-    paramInt2 = 0;
-    while (localMatcher.find())
-    {
-      int i = localMatcher.start() + paramInt1;
-      int j = localMatcher.end() + paramInt1;
-      String str = paramSpannable.subSequence(i, j).toString();
-      paramInt2 += 1;
-      paramSpannable.setSpan(new tam(str), i, j, 0);
-    }
-    return paramInt2;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("readinjoy.ugc.Utils", 2, "beforeXml:" + paramString1);
-    }
-    if (TextUtils.isEmpty(paramString1)) {}
+    if (paramArticleInfo == null) {}
+    label84:
     do
     {
-      return paramString1;
-      if (Character.codePointCount(paramString1, 0, paramString1.length()) != paramString1.length()) {
-        break;
-      }
-    } while (!paramString1.contains(new String(new char[] { '\024' })));
-    StringBuilder localStringBuilder1 = new StringBuilder("[emoji:0x%05x");
-    StringBuilder localStringBuilder2 = new StringBuilder("[sysEmo:%03d");
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      localStringBuilder1.append(paramString2);
-      localStringBuilder2.append(paramString2);
-    }
-    localStringBuilder1.append(']');
-    localStringBuilder2.append(']');
-    paramString2 = null;
-    if (QLog.isColorLevel()) {
-      paramString2 = new StringBuilder(1024).append("beforeXml start");
-    }
-    int m = paramString1.length();
-    int k = 0;
-    String str1 = paramString1;
-    if (k < m)
-    {
-      int n = str1.codePointAt(k);
-      String str2;
-      int i;
-      int j;
-      if (n > 65535)
+      do
       {
-        str2 = str1.substring(k, k + 2);
-        paramString1 = String.format(localStringBuilder1.toString(), new Object[] { Integer.valueOf(n) });
-        str1 = str1.replace(str2, paramString1);
-        k += paramString1.length() - 1;
-        m = str1.length();
-        i = k;
-        j = m;
-        paramString1 = str1;
-        if (QLog.isColorLevel())
+        do
         {
-          paramString2.append("\n").append("unicode").append(":").append(n);
-          paramString1 = str1;
-          j = m;
-          i = k;
-        }
-      }
-      for (;;)
-      {
-        k = i + 1;
-        m = j;
-        str1 = paramString1;
-        break;
-        i = k;
-        j = m;
-        paramString1 = str1;
-        if (n == 20)
-        {
-          i = k;
-          j = m;
-          paramString1 = str1;
-          if (k + 1 < m)
-          {
-            i = str1.charAt(k + 1);
-            paramString1 = str1.substring(k, k + 2);
-            str2 = String.format(localStringBuilder2.toString(), new Object[] { Integer.valueOf(i) });
-            paramString1 = str1.replace(paramString1, str2);
-            i = k + (str2.length() - 1);
-            j = paramString1.length();
+          return 0;
+          if ((paramArticleInfo.mPackInfoObj == null) || (!paramArticleInfo.mPackInfoObj.pack_type.has())) {
+            break label84;
           }
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("readinjoy.ugc.Utils", 2, paramString2.toString());
-    }
-    return str1;
+          if (paramArticleInfo.mPackInfoObj.pack_type.get() != 2) {
+            break;
+          }
+        } while (!paramArticleInfo.mPackInfoObj.msg_special_topic_info.has());
+        return 1;
+      } while ((paramArticleInfo.mPackInfoObj.pack_type.get() != 3) || (!paramArticleInfo.mPackInfoObj.msg_friend_recommend_info.has()));
+      return 2;
+    } while ((paramArticleInfo.mSubscribeInfoObj == null) || (!paramArticleInfo.mSubscribeInfoObj.uint32_is_subscribed.has()) || (paramArticleInfo.mSubscribeInfoObj.uint32_is_subscribed.get() != 1));
+    return 3;
   }
   
-  public static void a(PublicBaseFragment paramPublicBaseFragment)
+  public static Pair<Integer, Integer> a()
   {
-    Object localObject = paramPublicBaseFragment.getActivity();
-    SystemBarCompact localSystemBarCompact;
-    if ((localObject != null) && ((localObject instanceof PublicFragmentActivity)))
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.562F)));
+  }
+  
+  public static String a(int paramInt)
+  {
+    int i = paramInt / 3600;
+    int j = (paramInt - i * 60) / 60;
+    paramInt %= 60;
+    String str1;
+    String str2;
+    if (j >= 10)
     {
-      localObject = (PublicFragmentActivity)localObject;
-      localSystemBarCompact = ((PublicFragmentActivity)localObject).mSystemBarComp;
-      if ((localSystemBarCompact != null) && (paramPublicBaseFragment.needImmersive()) && (paramPublicBaseFragment.needStatusTrans()) && (ImmersiveUtils.isSupporImmersive() == 1))
-      {
-        if (!ThemeUtil.isInNightMode(((PublicFragmentActivity)localObject).getAppRuntime())) {
-          break label92;
-        }
-        if ((SystemUtil.isMIUI()) || (SystemUtil.isFlyme())) {
-          break label80;
-        }
-        localSystemBarCompact.setStatusBarColor(-7829368);
+      str1 = String.valueOf(j);
+      if (paramInt < 10) {
+        break label104;
+      }
+      str2 = String.valueOf(paramInt);
+      label44:
+      if (i <= 0) {
+        break label146;
+      }
+      if (i < 10) {
+        break label125;
       }
     }
-    return;
+    label104:
+    label125:
+    for (String str3 = String.valueOf(i);; str3 = String.format("0%d", new Object[] { Integer.valueOf(i) }))
+    {
+      return String.format("%s:%s:%s", new Object[] { str3, str1, str2 });
+      str1 = String.format("0%d", new Object[] { Integer.valueOf(j) });
+      break;
+      str2 = String.format("0%d", new Object[] { Integer.valueOf(paramInt) });
+      break label44;
+    }
+    label146:
+    return String.format("%s:%s", new Object[] { str1, str2 });
+  }
+  
+  public static void a(Context paramContext, KandianUrlImageView paramKandianUrlImageView)
+  {
+    paramContext = a();
+    int i = ((Integer)paramContext.first).intValue();
+    int j = ((Integer)paramContext.second).intValue();
+    paramContext = paramKandianUrlImageView.getLayoutParams();
+    paramContext.width = i;
+    paramContext.height = j;
+    paramKandianUrlImageView.setLayoutParams(paramContext);
+    paramKandianUrlImageView.setPadding(0, 0, 0, 0);
+    paramKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+  }
+  
+  public static void a(Context paramContext, KandianUrlImageView paramKandianUrlImageView, double paramDouble)
+  {
+    int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+    int j = (int)(i / paramDouble);
+    paramContext = new RelativeLayout.LayoutParams(i, j);
+    paramContext.width = i;
+    paramContext.height = j;
+    paramContext.setMargins(0, 0, 0, 0);
+    paramKandianUrlImageView.setLayoutParams(paramContext);
+    paramKandianUrlImageView.setPadding(0, 0, 0, 0);
+    paramKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+  }
+  
+  public static void a(Context paramContext, KandianUrlImageView paramKandianUrlImageView, boolean paramBoolean)
+  {
+    paramContext = b();
+    int i = ((Integer)paramContext.first).intValue();
+    int j = ((Integer)paramContext.second).intValue();
+    ViewGroup.LayoutParams localLayoutParams = paramKandianUrlImageView.getLayoutParams();
+    paramContext = localLayoutParams;
+    if (localLayoutParams == null) {
+      if (!paramBoolean) {
+        break label80;
+      }
+    }
     label80:
-    localSystemBarCompact.setStatusBarColor(-7829368);
-    localSystemBarCompact.setStatusBarDarkMode(true);
-    return;
-    label92:
-    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isMIUI()) && (!SystemUtil.isFlyme()))
+    for (paramContext = new LinearLayout.LayoutParams(i, j);; paramContext = new RelativeLayout.LayoutParams(i, j))
     {
-      ((PublicFragmentActivity)localObject).getWindow().getDecorView().setSystemUiVisibility(9216);
-      localSystemBarCompact.setStatusBarColor(-1);
+      paramContext.width = i;
+      paramContext.height = j;
+      paramKandianUrlImageView.setLayoutParams(paramContext);
+      paramKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       return;
     }
-    if (!SystemUtil.isFlyme())
+  }
+  
+  public static void a(Context paramContext, qfw paramqfw, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    a(paramContext, paramqfw, paramLayoutParams, null);
+  }
+  
+  public static void a(Context paramContext, qfw paramqfw, ViewGroup.LayoutParams paramLayoutParams, View paramView)
+  {
+    ArticleInfo localArticleInfo = paramqfw.a();
+    if (localArticleInfo == null)
     {
-      localSystemBarCompact.setStatusBarColor(-2368549);
+      QLog.d("UtilsForComponent", 1, "configDividerHeight failed, articleInfo is null.");
       return;
     }
-    localSystemBarCompact.setStatusBarColor(-1);
-    localSystemBarCompact.setStatusBarDarkMode(true);
-  }
-  
-  public static boolean a(Spannable paramSpannable)
-  {
-    int m = paramSpannable.length();
-    if (m <= 0) {}
+    paramLayoutParams.height = paramContext.getResources().getDimensionPixelSize(2131298736);
+    int i = paramqfw.a();
+    int j = paramqfw.b();
+    if (localArticleInfo.mChannelID == 70L)
+    {
+      paramLayoutParams.height = Utils.dp2px(5.0D);
+      return;
+    }
+    if (paramqfw.e() == 56)
+    {
+      paramLayoutParams.height = Utils.dp2px(5.0D);
+      return;
+    }
+    if ((i == 29) || (i == 30) || (j == 29) || (j == 30))
+    {
+      paramLayoutParams.height = Utils.dp2px(5.0D);
+      return;
+    }
+    if (i == 53)
+    {
+      paramLayoutParams.height = Utils.dp2px(0.5D);
+      return;
+    }
+    if ((localArticleInfo.mChannelID == 0L) && ((i == 6) || (i == 128) || (i == 46))) {
+      if (i == 6) {
+        i = Utils.dp2px(13.0D);
+      }
+    }
     for (;;)
     {
-      return false;
-      if (bfwx.b.matcher(paramSpannable).find())
+      if ((paramLayoutParams instanceof LinearLayout.LayoutParams))
       {
-        Object localObject = (tam[])paramSpannable.getSpans(0, m, tam.class);
-        int j;
-        int n;
-        int i;
-        if ((localObject != null) && (localObject.length > 0))
+        ((LinearLayout.LayoutParams)paramLayoutParams).topMargin = i;
+        ((LinearLayout.LayoutParams)paramLayoutParams).leftMargin = Utils.dp2px(6.0D);
+        ((LinearLayout.LayoutParams)paramLayoutParams).rightMargin = Utils.dp2px(6.0D);
+      }
+      paramLayoutParams.height = Utils.dp2px(0.5D);
+      paramView.setBackgroundColor(Color.parseColor("#e5e5e5"));
+      return;
+      if (i == 46)
+      {
+        i = Utils.dp2px(8.0D);
+      }
+      else if (i == 128)
+      {
+        i = Utils.dp2px(0.0D);
+        continue;
+        if (piv.a(i, j, paramqfw.a()))
         {
-          j = localObject.length;
-          n = localObject.length;
-          i = 0;
-          for (;;)
-          {
-            k = j;
-            if (i >= n) {
-              break;
-            }
-            paramSpannable.removeSpan(localObject[i]);
-            i += 1;
-          }
+          paramLayoutParams.height = Utils.dp2px(5.0D);
+          return;
         }
-        int k = 0;
-        localObject = (tak[])paramSpannable.getSpans(0, m, tak.class);
-        if ((localObject != null) && (localObject.length > 0))
-        {
-          Arrays.sort((Object[])localObject, new rjm(paramSpannable));
-          int i2 = localObject.length;
-          m = 0;
-          i = 0;
-          j = 0;
-          while (m < i2)
-          {
-            int i3 = paramSpannable.getSpanStart(localObject[m]);
-            int i1 = paramSpannable.getSpanEnd(localObject[m]);
-            n = i;
-            if (j < i3) {
-              n = i + a(paramSpannable, j, i3);
-            }
-            m += 1;
-            j = i1;
-            i = n;
-          }
-        }
-        while (a(paramSpannable, j, paramSpannable.length()) + i > k)
-        {
-          return true;
-          i = 0;
-          j = 0;
-        }
+        paramLayoutParams.height = Utils.dp2px(5.0D);
+      }
+      else
+      {
+        i = 0;
       }
     }
   }
   
-  public static boolean a(EditText paramEditText, String paramString, boolean paramBoolean, List<SocializeFeedsInfo.BiuCommentInfo> paramList)
+  public static void a(qfw paramqfw, RingAvatarView paramRingAvatarView, ImageView paramImageView)
   {
-    return a(paramEditText, paramString, paramBoolean, false, paramList);
+    if ((paramRingAvatarView == null) || (paramImageView == null) || (paramqfw == null)) {}
+    do
+    {
+      return;
+      paramqfw = paramqfw.a();
+    } while ((paramqfw == null) || (paramqfw.mSocialFeedInfo == null) || (paramqfw.mSocialFeedInfo.a == null));
+    if (paramqfw.mSocialFeedInfo.a.a())
+    {
+      paramRingAvatarView.showStarRing();
+      paramImageView.setVisibility(0);
+      return;
+    }
+    paramRingAvatarView.showNormal();
+    paramImageView.setVisibility(8);
   }
   
-  public static boolean a(EditText paramEditText, String paramString, boolean paramBoolean1, boolean paramBoolean2, List<SocializeFeedsInfo.BiuCommentInfo> paramList)
+  public static void a(rrq paramrrq, ReadInJoyYAFolderTextView paramReadInJoyYAFolderTextView, rfw paramrfw, SpannableStringBuilder paramSpannableStringBuilder)
   {
-    if (paramEditText == null) {
-      return true;
+    SpannableStringBuilder localSpannableStringBuilder = paramSpannableStringBuilder;
+    if (paramSpannableStringBuilder == null) {
+      localSpannableStringBuilder = new SpannableStringBuilder();
     }
-    if (paramBoolean2) {}
-    Editable localEditable;
-    for (Object localObject = "：";; localObject = "")
+    if (pqw.a(paramrrq))
     {
-      localEditable = paramEditText.getText();
-      if ((localEditable != null) && (!TextUtils.isEmpty(localEditable.toString()))) {
-        break;
-      }
-      paramList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), ""));
-      return true;
-    }
-    String str = UUID.randomUUID().toString();
-    paramEditText = paw.b(a(localEditable.toString(), str));
-    if (TextUtils.isEmpty(paramEditText))
-    {
-      paramList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), ""));
-      return true;
-    }
-    tak[] arrayOftak = (tak[])localEditable.getSpans(0, localEditable.length(), tak.class);
-    if ((arrayOftak == null) || (arrayOftak.length <= 0))
-    {
-      if (paramBoolean1) {
-        break label650;
-      }
-      paramEditText = paramEditText.replaceAll("\n|\r\n", "");
-    }
-    label650:
-    for (;;)
-    {
-      paramList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), bblk.a(b((String)localObject + paramEditText, str))));
-      return true;
-      int m = arrayOftak.length;
-      Arrays.sort(arrayOftak, new rjm(localEditable));
-      paramEditText = bblk.a(b(localEditable.subSequence(0, localEditable.getSpanStart(arrayOftak[0])).toString(), str));
-      paramList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), (String)localObject + paramEditText.replaceAll("^\\s+", ""), 0));
-      int k = localEditable.length();
-      int i = 0;
-      if (i < m)
+      List localList = paramrrq.jdField_a_of_type_Rqw.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      Object localObject = new ArrayList();
+      int i = localList.size();
+      paramSpannableStringBuilder = ((SocializeFeedsInfo.BiuCommentInfo)localList.get(i - 1)).mBiuComment;
+      int j;
+      label130:
+      SocializeFeedsInfo.BiuCommentInfo localBiuCommentInfo;
+      long l;
+      if ((!TextUtils.isEmpty(paramSpannableStringBuilder)) && ((paramSpannableStringBuilder.startsWith(":")) || (paramSpannableStringBuilder.startsWith("："))))
       {
-        localObject = arrayOftak[i];
-        int n = localEditable.getSpanEnd(localObject);
-        int j;
-        if (i == m - 1)
-        {
-          j = k;
-          label372:
-          paramEditText = "";
-          if (j - n > 0) {
-            paramEditText = bblk.a(b(localEditable.subSequence(n, j).toString(), str));
-          }
-          if (!(localObject instanceof AtFriendsSpan)) {
-            break label481;
-          }
-          paramList.add(new SocializeFeedsInfo.BiuCommentInfo(((BiuNicknameSpan)localObject).jdField_a_of_type_JavaLangString, Long.valueOf(((BiuNicknameSpan)localObject).jdField_a_of_type_Long), paramEditText, 1));
+        paramrrq = paramSpannableStringBuilder.substring(1);
+        localStringBuilder.append(paramrrq);
+        j = localStringBuilder.length();
+        i -= 2;
+        if (i < 0) {
+          break label329;
         }
-        for (;;)
-        {
-          i += 1;
+        localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)localList.get(i);
+        l = localBiuCommentInfo.mUin.longValue();
+        paramrrq = ContactUtils.getBuddyName((QQAppInterface)pkh.a(), String.valueOf(l), true);
+        paramSpannableStringBuilder = "@" + paramrrq;
+        paramrrq = paramSpannableStringBuilder;
+        if (localBiuCommentInfo.mOpType == 1) {
+          paramrrq = paramSpannableStringBuilder + " ";
+        }
+        if (localBiuCommentInfo.mBiuComment != null) {
+          break label320;
+        }
+      }
+      label320:
+      for (paramSpannableStringBuilder = "";; paramSpannableStringBuilder = localBiuCommentInfo.mBiuComment)
+      {
+        localStringBuilder.append(paramrrq).append(paramSpannableStringBuilder);
+        paramSpannableStringBuilder = new rhw();
+        paramSpannableStringBuilder.jdField_a_of_type_Int = j;
+        paramSpannableStringBuilder.b = (paramrrq.length() + j);
+        paramSpannableStringBuilder.jdField_a_of_type_Long = l;
+        ((List)localObject).add(paramSpannableStringBuilder);
+        j = localStringBuilder.length();
+        i -= 1;
+        break label130;
+        paramrrq = paramSpannableStringBuilder;
+        if (paramSpannableStringBuilder != null) {
           break;
-          j = localEditable.getSpanStart(arrayOftak[(i + 1)]);
-          break label372;
-          label481:
-          if ((localObject instanceof BiuNicknameSpan))
-          {
-            paramList.add(new SocializeFeedsInfo.BiuCommentInfo(((BiuNicknameSpan)localObject).jdField_a_of_type_JavaLangString, Long.valueOf(((BiuNicknameSpan)localObject).jdField_a_of_type_Long), paramEditText, 0));
-          }
-          else if ((localObject instanceof TopicSpan))
-          {
-            localObject = ((TopicSpan)localObject).a();
-            paramList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), paramEditText, 2, new SocializeFeedsInfo.JumpInfo(((TopicInfo)localObject).a(), ((TopicInfo)localObject).a(), ((TopicInfo)localObject).d())));
-          }
-          else if ((localObject instanceof tal))
-          {
-            paramList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), paramEditText, 3, new SocializeFeedsInfo.JumpInfo(0L, amtj.a(2131715033), ((tal)localObject).a())));
-          }
+        }
+        paramrrq = "";
+        break;
+      }
+      label329:
+      paramrrq = new SpannableStringBuilder(new QQText(localStringBuilder, 7, 16));
+      paramSpannableStringBuilder = ((List)localObject).iterator();
+      while (paramSpannableStringBuilder.hasNext())
+      {
+        localObject = (rhw)paramSpannableStringBuilder.next();
+        paramrrq.setSpan(new rfy(((rhw)localObject).jdField_a_of_type_Long, -3355444, paramrfw), ((rhw)localObject).jdField_a_of_type_Int, ((rhw)localObject).b, 17);
+      }
+      localSpannableStringBuilder.append(paramrrq);
+    }
+    for (;;)
+    {
+      paramReadInJoyYAFolderTextView.setText(localSpannableStringBuilder);
+      return;
+      if (!TextUtils.isEmpty(paramrrq.jdField_a_of_type_JavaLangString)) {
+        try
+        {
+          localSpannableStringBuilder.append(new QQText(bcsc.b(paramrrq.jdField_a_of_type_JavaLangString), 7, 16));
+        }
+        catch (Exception paramrrq)
+        {
+          QLog.d("UtilsForComponent", 1, "parse bytes_comments failed ", paramrrq);
         }
       }
-      return false;
     }
   }
   
-  public static String b(String paramString1, String paramString2)
+  public static boolean a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return paramString1;
+    return (paramInt == 1) || (paramInt == 5) || (paramInt == 7);
+  }
+  
+  public static boolean a(ArticleInfo paramArticleInfo)
+  {
+    boolean bool2 = true;
+    if (paramArticleInfo == null) {
+      return false;
     }
-    Object localObject2 = new StringBuilder("\\[emoji:0x[a-fA-F0-9]{5}");
-    Object localObject1 = new StringBuilder("\\[sysEmo:[0-9]{3}");
-    if (!TextUtils.isEmpty(paramString2))
+    if (paramArticleInfo.mFeedType == 1)
     {
-      ((StringBuilder)localObject2).append(paramString2);
-      ((StringBuilder)localObject1).append(paramString2);
-    }
-    for (int j = paramString2.length();; j = 0)
-    {
-      ((StringBuilder)localObject2).append("\\]");
-      ((StringBuilder)localObject1).append("\\]");
-      localObject2 = Pattern.compile(((StringBuilder)localObject2).toString()).matcher(paramString1);
-      StringBuffer localStringBuffer = new StringBuffer();
-      paramString2 = null;
-      if (QLog.isColorLevel()) {
-        paramString2 = new StringBuilder(1024).append("afterXml start");
-      }
-      for (int i = 0; ((Matcher)localObject2).find(); i = 1)
-      {
-        i = Integer.valueOf(paramString1.substring(((Matcher)localObject2).start() + 9, ((Matcher)localObject2).end() - 1 - j), 16).intValue();
-        if (i > 65535) {
-          ((Matcher)localObject2).appendReplacement(localStringBuffer, new String(new int[] { i }, 0, 1));
-        }
-        if (QLog.isColorLevel()) {
-          paramString2.append("\n").append("unicode").append(":").append(i);
+      bool1 = bool2;
+      if (!ppe.i(paramArticleInfo)) {
+        if (!ppe.k(paramArticleInfo)) {
+          break label36;
         }
       }
-      ((Matcher)localObject2).appendTail(localStringBuffer);
-      localObject2 = localStringBuffer.toString();
-      localObject1 = Pattern.compile(((StringBuilder)localObject1).toString()).matcher((CharSequence)localObject2);
-      localStringBuffer = new StringBuffer();
-      while (((Matcher)localObject1).find())
-      {
-        i = Integer.valueOf(((String)localObject2).substring(((Matcher)localObject1).start() + 8, ((Matcher)localObject1).end() - 1 - j), 10).intValue();
-        ((Matcher)localObject1).appendReplacement(localStringBuffer, new String(new char[] { '\024' }));
-        localStringBuffer.append((char)i);
-        i = 1;
-      }
-      ((Matcher)localObject1).appendTail(localStringBuffer);
-      if (QLog.isColorLevel()) {
-        QLog.d("readinjoy.ugc.Utils", 2, paramString2.toString());
-      }
-      if (i == 0) {
-        break;
-      }
-      return localStringBuffer.toString();
     }
+    label36:
+    for (boolean bool1 = bool2;; bool1 = false) {
+      return bool1;
+    }
+  }
+  
+  public static Pair<Integer, Integer> b()
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - AIOUtils.dp2px(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131298742)));
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 10) || (paramInt == 11) || (paramInt == 12) || (paramInt == 27) || (paramInt == 28) || (paramInt == 33) || (paramInt == 35) || (paramInt == 43) || (paramInt == 44) || (paramInt == 45) || (paramInt == 49) || (paramInt == 62) || (paramInt == 63) || (paramInt == 94) || (paramInt == 95) || (paramInt == 112) || (paramInt == 113) || (paramInt == 114);
+  }
+  
+  public static boolean b(ArticleInfo paramArticleInfo)
+  {
+    return (ppe.b(paramArticleInfo) == 23) || (ppe.c(paramArticleInfo) == 56);
+  }
+  
+  public static boolean c(int paramInt)
+  {
+    return (paramInt == 22) || (paramInt == 21) || (paramInt == 23) || (paramInt == 107) || (paramInt == 108) || (paramInt == 54) || (paramInt == 55) || (paramInt == 56);
   }
 }
 

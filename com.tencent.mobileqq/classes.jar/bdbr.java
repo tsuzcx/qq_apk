@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.ThemeUtil.2.1;
-import mqq.os.MqqHandler;
+import android.os.Message;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.WaitDoneBundle.1;
 
-public final class bdbr
-  extends bdbp
+public class bdbr
 {
-  public bdbr(QQAppInterface paramQQAppInterface) {}
+  public final Object a;
+  public final Runnable a;
   
-  public boolean a(int paramInt)
+  bdbr()
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new ThemeUtil.2.1(this), 1000L);
-    return super.a(paramInt);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaLangRunnable = new CameraProxy.WaitDoneBundle.1(this);
+  }
+  
+  static void a(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    while (!(paramMessage.obj instanceof bdbr)) {
+      return;
+    }
+    ((bdbr)paramMessage.obj).jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

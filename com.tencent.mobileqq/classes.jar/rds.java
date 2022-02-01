@@ -1,17 +1,20 @@
-public class rds
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class rds
+  implements View.OnClickListener
 {
-  public static int a = 1;
-  public static int b = 2;
-  public static int c = 3;
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public int g;
+  rds(rdq paramrdq) {}
+  
+  public void onClick(View paramView)
+  {
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,45 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import mqq.os.MqqHandler;
 
 public class ofu
-  extends BroadcastReceiver
+  implements TVK_SDKMgr.InstallListener
 {
-  public ofu(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  public ofu(VideoCoverView.5 param5) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if ("action_decode_finish".equals(paramContext))
-    {
-      paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = (Bitmap)paramIntent.getParcelableExtra("bitmap");
-      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramContext)) && (paramIntent != null)) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramIntent);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "installSDK onInstalledFailed arg0=" + paramInt);
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!"action_follow_status_finish".equals(paramContext)) || (!String.valueOf(paramIntent.getStringExtra("uin")).equals(this.a.jdField_a_of_type_JavaLangString)));
-      this.a.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isFollow", false);
-    } while (this.a.jdField_a_of_type_AndroidWidgetTextView == null);
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131700404));
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-      return;
+    this.a.this$0.b = false;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "installSDK onInstalledSuccessed");
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131700416));
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130847005);
+    this.a.this$0.b = true;
+    ThreadManager.getUIHandler().post(new VideoCoverView.5.1.1(this));
   }
 }
 

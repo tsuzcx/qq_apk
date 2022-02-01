@@ -1,6 +1,8 @@
-public abstract interface yxp
+class yxp
 {
-  public abstract void a();
+  int jdField_a_of_type_Int;
+  yxn jdField_a_of_type_Yxn;
+  yxo jdField_a_of_type_Yxo;
 }
 
 

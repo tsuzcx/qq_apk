@@ -1,41 +1,34 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-class wzp
-  implements View.OnLongClickListener
+final class wzp
+  implements bkzq
 {
-  wzp(wzo paramwzo) {}
+  wzp(QQUserUIItem paramQQUserUIItem, bkzi parambkzi) {}
   
-  public boolean onLongClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = 0;
-    paramView = (vuq)vux.a(10);
-    boolean bool;
-    if (!((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue())
+    switch (paramInt)
     {
-      bool = true;
-      paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
-      paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
-      if (paramView != null)
-      {
-        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
-        if (paramView != null) {
-          if (!bool) {
-            break label90;
-          }
-        }
+    default: 
+      paramView = "16384";
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq))) {
+        new wro().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
       }
+      break;
     }
     for (;;)
     {
-      paramView.a(i);
-      return true;
-      bool = false;
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      paramView = "2";
       break;
-      label90:
-      i = 8;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      ykq.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
     }
   }
 }

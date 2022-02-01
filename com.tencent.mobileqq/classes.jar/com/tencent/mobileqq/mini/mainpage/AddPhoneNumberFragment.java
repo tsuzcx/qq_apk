@@ -78,7 +78,7 @@ public class AddPhoneNumberFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559378, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559427, null);
     if (Build.VERSION.SDK_INT >= 23)
     {
       getActivity().getWindow().clearFlags(67108864);
@@ -98,19 +98,19 @@ public class AddPhoneNumberFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.mLeftBtnView = ((ImageView)paramView.findViewById(2131371076));
-    this.mSendSmsCodeBtn = ((Button)paramView.findViewById(2131370965));
+    this.mLeftBtnView = ((ImageView)paramView.findViewById(2131371268));
+    this.mSendSmsCodeBtn = ((Button)paramView.findViewById(2131371150));
     this.mSendSmsCodeBtn.setText("获取验证码");
     this.mSendSmsCodeBtn.setTextColor(Color.parseColor("#B0B3BF"));
     this.mSendSmsCodeBtn.setEnabled(false);
     this.mSendSmsCodeBtn.setClickable(false);
-    this.mPhoneNumberLayout = ((RelativeLayout)paramView.findViewById(2131370964));
-    this.mPhoneNumberEditText = ((EditText)paramView.findViewById(2131370967));
-    this.mSmsCodeLayout = ((RelativeLayout)paramView.findViewById(2131370975));
-    this.mSmsCodeEditText = ((EditText)paramView.findViewById(2131370976));
-    this.mSaveSwitch = ((Switch)paramView.findViewById(2131370973));
+    this.mPhoneNumberLayout = ((RelativeLayout)paramView.findViewById(2131371149));
+    this.mPhoneNumberEditText = ((EditText)paramView.findViewById(2131371152));
+    this.mSmsCodeLayout = ((RelativeLayout)paramView.findViewById(2131371160));
+    this.mSmsCodeEditText = ((EditText)paramView.findViewById(2131371161));
+    this.mSaveSwitch = ((Switch)paramView.findViewById(2131371158));
     this.mSaveSwitch.setChecked(false);
-    this.mCommitBtn = ((Button)paramView.findViewById(2131370966));
+    this.mCommitBtn = ((Button)paramView.findViewById(2131371151));
     this.mCommitBtn.setEnabled(false);
     this.mCommitBtn.setClickable(false);
     this.mCommitBtn.setTextColor(Color.parseColor("#3303081A"));

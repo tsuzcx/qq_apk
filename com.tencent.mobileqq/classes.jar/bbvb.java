@@ -1,43 +1,38 @@
-import android.hardware.Camera;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.HistorySignItem;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
+import java.util.List;
 
-public class bbvb
-  extends PreviewContext
-  implements SurfaceHolder.Callback, bbur
+class bbvb
+  implements bbwd
 {
-  public bbvb(bbuk parambbuk, int paramInt1, int paramInt2)
-  {
-    super(parambbuk, paramInt1, paramInt2);
-  }
+  bbvb(bbuy parambbuy, HistorySignItem paramHistorySignItem) {}
   
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  public void a(int paramInt, View paramView)
   {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
-  }
-  
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.mCamera.a(paramInt1, paramInt2, paramInt3);
-    this.mCamera.a(null, paramSurfaceHolder, this, true);
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    this.mCamera.a();
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.mCamera != null)
+    if (SignatureHistoryFragment.b(this.jdField_a_of_type_Bbuy.a)) {}
+    Object localObject;
+    bbvv localbbvv;
+    do
     {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
-      }
+      do
+      {
+        return;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusHistorySignItem.commentItemList;
+      } while ((localObject == null) || (((List)localObject).size() <= paramInt));
+      localObject = (CommentItem)((List)localObject).get(paramInt);
+      localbbvv = ((CommentItem)localObject).user;
+    } while ((localbbvv == null) || (TextUtils.isEmpty(localbbvv.a)));
+    paramView.setSelected(true);
+    bhjq localbhjq = new bhjq();
+    SignatureHistoryFragment.a(this.jdField_a_of_type_Bbuy.a, (CommentItem)localObject);
+    localbhjq.a(2131365307, this.jdField_a_of_type_Bbuy.a.getString(2131691264), 0);
+    if ((localbbvv.a.equals(SignatureHistoryFragment.b(this.jdField_a_of_type_Bbuy.a))) || (bhbx.a(SignatureHistoryFragment.b(this.jdField_a_of_type_Bbuy.a), SignatureHistoryFragment.a(this.jdField_a_of_type_Bbuy.a)))) {
+      localbhjq.a(2131365475, this.jdField_a_of_type_Bbuy.a.getString(2131692540), 0);
     }
+    bhcw.a(paramView, localbhjq, this.jdField_a_of_type_Bbuy.a, new bbvc(this, paramView));
   }
 }
 

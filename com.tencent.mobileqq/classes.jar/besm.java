@@ -1,20 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.quickat.ui.AllMemberItemViewWrapper.3.1;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class besm
-  extends andd
+  implements bkzs
 {
-  besm(besj parambesj) {}
+  public besm(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  protected void onGetAtAllRemianCountInfo(boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3)
+  public void onDismiss()
   {
-    ThreadManager.getUIHandlerV2().post(new AllMemberItemViewWrapper.3.1(this, paramBoolean1, paramString1, paramBoolean2, paramString2, paramString3, paramBoolean3));
+    TribeVideoListPlayerFragment.a(this.a);
+    this.a.e = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besm
  * JD-Core Version:    0.7.0.1
  */

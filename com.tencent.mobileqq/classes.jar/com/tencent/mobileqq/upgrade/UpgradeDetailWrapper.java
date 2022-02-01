@@ -4,10 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.Xml;
-import axsb;
-import bfmx;
-import bfnk;
-import bfnl;
+import ayym;
+import bgvo;
+import bgwb;
+import bgwc;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
@@ -18,10 +18,10 @@ import protocol.KQQConfig.UpgradeInfo;
 public class UpgradeDetailWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator<UpgradeDetailWrapper> CREATOR = new bfnk();
+  public static final Parcelable.Creator<UpgradeDetailWrapper> CREATOR = new bgwb();
   static String a;
   public int a;
-  public bfnl a;
+  public bgwc a;
   public ApkUpdateDetail a;
   public NewUpgradeConfig a;
   public UpgradeInfo a;
@@ -64,12 +64,12 @@ public class UpgradeDetailWrapper
     }
     if (paramString.equalsIgnoreCase("taskTime"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Long = axsb.a(paramXmlPullParser.nextText());
+      this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Long = ayym.a(paramXmlPullParser.nextText());
       return true;
     }
     if (paramString.equalsIgnoreCase("showTime"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Long = axsb.a(paramXmlPullParser.nextText());
+      this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Long = ayym.a(paramXmlPullParser.nextText());
       return true;
     }
     if (paramString.equalsIgnoreCase("title"))

@@ -1,26 +1,18 @@
-import java.util.ArrayList;
-
-class owc
-  extends owd
+public class owc
 {
-  owc(ouu paramouu, int paramInt)
+  public static int a()
   {
-    super(paramouu, null);
+    return ((Integer)bmhv.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
   }
   
-  void a(owg paramowg)
+  public static void a()
   {
-    if (paramowg == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        paramowg.onCommentListLoad(1, false, new ArrayList(), false, 2, 2);
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 2);
-    paramowg.onCommentLoadMore(1, false, new ArrayList(), false, 2);
+    bmhv.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bmhv.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
+  }
+  
+  public static int b()
+  {
+    return ((Integer)bmhv.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
   }
 }
 

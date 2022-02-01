@@ -1,9 +1,17 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bcjf
+class bcjf
+  implements View.OnClickListener
 {
-  public View a;
-  public View b;
+  bcjf(bcje parambcje, bcfs parambcfs) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Bcfs.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

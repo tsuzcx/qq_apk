@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-
-class balr
-  implements DialogInterface.OnCancelListener
+public abstract interface balr
 {
-  balr(balk parambalk) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 

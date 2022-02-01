@@ -67,7 +67,7 @@ public class AEAdjust
   {
     if (this.mVibranceBaseFilter != null)
     {
-      this.mVibranceBaseFilter.ClearGLSL();
+      this.mVibranceBaseFilter.clearGLSL();
       this.mVibranceBaseFilter = null;
     }
     if (this.mHighPassSharpenFilter != null)

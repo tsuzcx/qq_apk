@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.open.agent.BindGroupFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class bhqz
-  implements View.OnClickListener
+class bhqz
+  implements bhrh
 {
-  public bhqz(BindGroupFragment paramBindGroupFragment) {}
+  bhqz(bhqx parambhqx) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    BindGroupFragment.a(this.a, amtj.a(2131700271));
-    ((anca)BindGroupFragment.a(this.a).getBusinessHandler(20)).a(Integer.valueOf(BindGroupFragment.a(this.a)).intValue(), Integer.valueOf(BindGroupFragment.b(this.a)).intValue());
-    EventCollector.getInstance().onViewClicked(paramView);
+    List localList = bhqx.a(this.a);
+    int i = 0;
+    try
+    {
+      while (i < bhqx.a(this.a).size())
+      {
+        ((bhrh)bhqx.a(this.a).get(i)).a();
+        i += 1;
+      }
+      bhqx.a(this.a).clear();
+      return;
+    }
+    finally {}
   }
+  
+  public void b() {}
 }
 
 

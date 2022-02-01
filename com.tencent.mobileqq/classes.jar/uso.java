@@ -1,8 +1,19 @@
-public abstract interface uso
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+
+public final class uso
+  implements Parcelable.Creator<ProfileParams.CurLoginUsr>
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2);
+  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
+  {
+    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
+  }
   
-  public abstract void a(String paramString1, String paramString2);
+  public ProfileParams.CurLoginUsr[] a(int paramInt)
+  {
+    return new ProfileParams.CurLoginUsr[paramInt];
+  }
 }
 
 

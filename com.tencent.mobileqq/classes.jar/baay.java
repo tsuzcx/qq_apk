@@ -1,114 +1,17 @@
-import android.opengl.GLSurfaceView;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import java.math.BigDecimal;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
+import com.tencent.mobileqq.app.CardObserver;
 
-public class baay
-  implements GLGestureListener
+class baay
+  extends CardObserver
 {
-  public float a;
-  public GLSurfaceView a;
-  baaz a;
-  private float b;
-  private float c;
+  baay(baax parambaax) {}
   
-  public baay(GLSurfaceView paramGLSurfaceView)
+  public void onGetQZonePhotoWall(boolean paramBoolean, String paramString1, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp, String paramString2)
   {
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
-  }
-  
-  public baay(baaz parambaaz)
-  {
-    this.jdField_a_of_type_Baaz = parambaaz;
-  }
-  
-  protected void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
-      ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(paramInt);
-    }
-  }
-  
-  public int onGetPriority()
-  {
-    return 0;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    int i = paramMotionEvent.getPointerCount();
-    int j = paramMotionEvent.getAction() & 0xFF;
-    if ((j != 3) || ((i == 1) && (paramBoolean))) {
-      switch (j)
-      {
-      }
-    }
-    while ((i != 2) || (paramBoolean))
+    if ((baax.a(this.a)) && (!baax.b(this.a)) && (!baax.c(this.a)))
     {
-      return false;
-      this.c = this.jdField_a_of_type_Float;
-      return false;
-      if (paramMotionEvent.getY() >= this.jdField_a_of_type_Float)
-      {
-        this.c = this.jdField_a_of_type_Float;
-        return false;
-      }
-      i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
-      if (this.jdField_a_of_type_Baaz != null) {
-        this.jdField_a_of_type_Baaz.a(i);
-      }
-      for (;;)
-      {
-        this.c = paramMotionEvent.getY();
-        return false;
-        if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
-          a(i);
-        }
-      }
-    }
-    xvv.a("CameraZoomGesture", "onTouchEvent %s", new Object[] { paramMotionEvent });
-    float f4;
-    float f2;
-    float f3;
-    float f1;
-    if (i == 2)
-    {
-      f4 = paramMotionEvent.getX(0);
-      f2 = paramMotionEvent.getY(0);
-      f3 = paramMotionEvent.getX(1);
-      f1 = paramMotionEvent.getY(1);
-      switch (j)
-      {
-      case 6: 
-      case 3: 
-      case 4: 
-      default: 
-        return false;
-      case 2: 
-        f1 = ybe.a(f4, f2, f3, f1);
-        i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
-        if (this.jdField_a_of_type_Baaz != null) {
-          this.jdField_a_of_type_Baaz.a(i);
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      return true;
-      f4 = paramMotionEvent.getX(1);
-      f2 = paramMotionEvent.getY(1);
-      f3 = paramMotionEvent.getX(2);
-      f1 = paramMotionEvent.getY(2);
-      break;
-      this.b = ybe.a(f4, f2, f3, f1);
-      return false;
-      if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
-      {
-        a(i);
-        this.b = f1;
-      }
+      baax.a(this.a, true);
+      baax.a(this.a);
     }
   }
 }

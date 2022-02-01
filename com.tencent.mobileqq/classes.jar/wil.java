@@ -1,15 +1,19 @@
-import java.util.HashMap;
-
 class wil
-  extends whs
+  implements wlo
 {
-  wil(wif paramwif, wjj paramwjj) {}
+  wil(wik paramwik) {}
   
-  public boolean b()
+  public void a(boolean paramBoolean, wlk paramwlk)
   {
-    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
-    this.jdField_a_of_type_Wjj.a = ((String)localHashMap.get(this.jdField_a_of_type_Wjj.a));
-    return true;
+    ykq.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramwlk != null))
+    {
+      ykq.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramwlk.b), Integer.valueOf(paramwlk.a));
+      this.a.a(paramwlk.b, paramwlk.a);
+      return;
+    }
+    ykq.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
+    this.a.a(false, null);
   }
 }
 

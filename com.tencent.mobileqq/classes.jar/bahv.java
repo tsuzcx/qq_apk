@@ -1,41 +1,34 @@
-import android.view.View;
-import com.tencent.mobileqq.transfile.FileMsg;
-import java.lang.ref.WeakReference;
-
-class bahv
+public abstract interface bahv
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<afbb> b;
-  WeakReference<FileMsg> c;
+  public abstract int a();
   
-  public bahv(bahu parambahu, View paramView, afbb paramafbb)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramafbb);
-  }
+  public abstract void a();
   
-  public afbb a()
-  {
-    return (afbb)this.b.get();
-  }
+  public abstract void a(float paramFloat);
   
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
+  public abstract void a(int paramInt);
   
-  public FileMsg a()
-  {
-    if (this.c == null) {
-      return null;
-    }
-    return (FileMsg)this.c.get();
-  }
+  public abstract void a(int paramInt, byte paramByte);
   
-  public void a(FileMsg paramFileMsg)
-  {
-    this.c = new WeakReference(paramFileMsg);
-  }
+  public abstract void a(bahw parambahw);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
-class audv
-  implements DialogInterface.OnClickListener
+final class audv
+  implements Comparator<FileInfo>
 {
-  audv(audt paramaudt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    audt.a(this.a, null);
-    audt.b(this.a, null);
-    paramDialogInterface.dismiss();
+    return (int)(paramFileInfo2.b() / 1000L - paramFileInfo1.b() / 1000L);
   }
 }
 

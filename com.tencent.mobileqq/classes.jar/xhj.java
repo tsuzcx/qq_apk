@@ -1,37 +1,45 @@
-public class xhj
+import android.os.SystemClock;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class xhj
+  implements AbsListView.OnScrollListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  xhj(xhh paramxhh) {}
   
-  public xhj(String paramString, boolean paramBoolean)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (SystemClock.uptimeMillis() - xhh.a(this.a) < 500L) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        xhh.a(this.a, SystemClock.uptimeMillis());
+      } while (!(this.a.jdField_a_of_type_Xcy instanceof xdm));
+      i = paramInt1 + paramInt2;
+      ((xdm)this.a.jdField_a_of_type_Xcy).a = i;
+    } while ((paramInt3 <= 0) || (paramInt3 - paramInt1 - paramInt2 >= 10));
+    this.a.jdField_a_of_type_Xfv.a();
+    ykq.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.jdField_a_of_type_Xcy.toString());
   }
   
-  public xhj(String paramString, boolean paramBoolean, int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != 0));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    xhm localxhm = new xhm();
-    localxhm.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localxhm.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if (this.jdField_a_of_type_Int != -1) {
-      localxhm.c = this.jdField_a_of_type_Int;
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    if (paramInt == 0) {
+      xhh.a(this.a, false);
     }
-    vqn.a().a(localxhm, new xhk(this, paramBoolean));
+    for (;;)
+    {
+      if ((paramInt == 0) && (xhh.a(this.a))) {
+        this.a.d();
+      }
+      return;
+      xhh.a(this.a, true);
+    }
   }
 }
 

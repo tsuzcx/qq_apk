@@ -1,23 +1,20 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class auko
-  implements EIPCResultCallback
+final class auko
+  implements View.OnClickListener
 {
-  auko(aukn paramaukn) {}
+  auko(QQAppInterface paramQQAppInterface, String paramString, aukq paramaukq, arnm paramarnm) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    aukn.a(paramEIPCResult, "action");
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      return;
-    case -102: 
-      aukn.a(this.a).a(2, paramEIPCResult.data);
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
     }
-    aukn.a(this.a).a(1, paramEIPCResult.data);
+    this.jdField_a_of_type_Aukq.a(this.jdField_a_of_type_Arnm.b());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

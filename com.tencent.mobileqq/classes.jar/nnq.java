@@ -1,20 +1,6 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
-
-public class nnq
-  implements BusinessObserver
+public abstract interface nnq
 {
-  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBoolean, (BmqqUserSimpleInfo)paramObject);
-  }
+  public abstract void a(int paramInt);
 }
 
 

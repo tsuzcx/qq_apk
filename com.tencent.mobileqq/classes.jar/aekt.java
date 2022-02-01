@@ -1,98 +1,43 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
 
 public class aekt
-  extends BaseAdapter
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aekt(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
+  public aekt(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public int getCount()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {}
-    for (View localView = this.a.getLayoutInflater().inflate(2131562905, null);; localView = paramView)
+    if (!NotifyPushSettingActivity.a(this.a).c())
     {
-      TextView localTextView1 = (TextView)localView.findViewById(2131379134);
-      TextView localTextView2 = (TextView)localView.findViewById(2131379133);
-      ImageView localImageView = (ImageView)localView.findViewById(2131372044);
-      bfkb localbfkb2 = (bfkb)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      int j = 0;
-      Object localObject;
-      if ((this.a.jdField_a_of_type_Bfkb != null) && (localbfkb2.jdField_a_of_type_Int < this.a.jdField_a_of_type_Bfkb.jdField_a_of_type_Int))
-      {
-        localObject = this.a.jdField_a_of_type_Bfkb;
-        paramView = ((bfkb)localObject).jdField_a_of_type_Bfkb;
-        int i = j;
-        if (paramView != null)
-        {
-          i = j;
-          if (paramView.jdField_a_of_type_Int >= localbfkb2.jdField_a_of_type_Int)
-          {
-            if (!localbfkb2.b.equals(paramView.b)) {
-              break label243;
-            }
-            i = 1;
-          }
-        }
-        if (i != 0)
-        {
-          localTextView2.setVisibility(0);
-          localTextView2.setText(((bfkb)localObject).jdField_a_of_type_JavaLangString);
-          localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130850621, 0);
-          label190:
-          localTextView1.setText(localbfkb2.jdField_a_of_type_JavaLangString);
-          if ((localbfkb2.jdField_a_of_type_JavaUtilArrayList == null) || (localbfkb2.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-            break label333;
-          }
-          localImageView.setVisibility(0);
-        }
+      NotifyPushSettingActivity.a(this.a).a(this.a);
+      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(null);
+      FormSwitchItem localFormSwitchItem = NotifyPushSettingActivity.a(this.a);
+      if (!NotifyPushSettingActivity.a(this.a).a()) {
+        bool = true;
       }
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-        return localView;
-        label243:
-        bfkb localbfkb1 = paramView.jdField_a_of_type_Bfkb;
-        localObject = paramView;
-        paramView = localbfkb1;
-        break;
-        localTextView2.setVisibility(4);
-        break label190;
-        if ((this.a.jdField_a_of_type_Bfkb != null) && (localbfkb2.b.equals(this.a.jdField_a_of_type_Bfkb.b)))
-        {
-          localTextView2.setVisibility(0);
-          localTextView2.setText("");
-          localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130850621, 0);
-          break label190;
-        }
-        localTextView2.setVisibility(4);
-        break label190;
-        label333:
-        localImageView.setVisibility(4);
+      localFormSwitchItem.setChecked(bool);
+      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(this.a.a);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      mrr.a(this.a.app.getCurrentAccountUin(), paramBoolean);
+      if (!paramBoolean) {
+        bdla.b(this.a.app, "dc00898", "", "", "0X800A33D", "0X800A33D", 0, 0, "", "", "", "");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 2, "isChecked[" + paramBoolean + "]");
       }
     }
   }

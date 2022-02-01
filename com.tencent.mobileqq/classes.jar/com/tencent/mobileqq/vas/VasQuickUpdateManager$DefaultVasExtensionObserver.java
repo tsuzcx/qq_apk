@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.vas;
 
-import bggc;
-import bgkc;
+import bhow;
+import bhul;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class VasQuickUpdateManager$DefaultVasExtensionObserver
-  extends bggc
+  extends bhow
 {
   public VasQuickUpdateManager$DefaultVasExtensionObserver(VasQuickUpdateManager paramVasQuickUpdateManager) {}
   

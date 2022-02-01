@@ -3,22 +3,22 @@ package com.tencent.biz.pubaccount.readinjoy.fragment;
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
-import pay;
-import pbg;
-import pcg;
-import rcn;
+import pkh;
+import plh;
+import pqg;
+import rot;
 
 class ReadInJoyChannelPanelFragment$7
   implements Runnable
 {
-  ReadInJoyChannelPanelFragment$7(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, TabChannelCoverInfo paramTabChannelCoverInfo, rcn paramrcn, int paramInt) {}
+  ReadInJoyChannelPanelFragment$7(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, TabChannelCoverInfo paramTabChannelCoverInfo, rot paramrot, int paramInt) {}
   
   public void run()
   {
     try
     {
-      int i = pcg.a(pay.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo.mChannelCoverId);
-      ReadInJoyChannelPanelFragment.a("0X8009954", new pbg().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo.mChannelCoverId).b().n(ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo)).b(this.jdField_a_of_type_Rcn.l + 1).c(this.jdField_a_of_type_Int).b("is_change", i).b("style", 0).a());
+      int i = plh.a(pkh.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo.mChannelCoverId);
+      ReadInJoyChannelPanelFragment.a("0X8009954", new pqg().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo.mChannelCoverId).b().n(ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo)).b(this.jdField_a_of_type_Rot.l + 1).c(this.jdField_a_of_type_Int).b("is_change", i).b("style", 0).a());
       return;
     }
     catch (JSONException localJSONException)

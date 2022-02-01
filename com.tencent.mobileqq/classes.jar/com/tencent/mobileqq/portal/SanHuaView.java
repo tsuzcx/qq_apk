@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.view.View;
-import ayjd;
+import azny;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
 
@@ -19,9 +19,9 @@ public class SanHuaView
   long jdField_a_of_type_Long;
   Resources jdField_a_of_type_AndroidContentResResources = getResources();
   Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  ArrayList<ayjd> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<azny> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt = { 2130845171, 2130845172, 2130845173, 2130845174, 2130845175, 2130845176, 2130845177, 2130845178 };
+  private int[] jdField_a_of_type_ArrayOfInt = { 2130845245, 2130845246, 2130845247, 2130845248, 2130845249, 2130845250, 2130845251, 2130845252 };
   private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[this.jdField_a_of_type_ArrayOfInt.length];
   float jdField_b_of_type_Float;
   int jdField_b_of_type_Int;
@@ -62,7 +62,7 @@ public class SanHuaView
     {
       int j = (int)(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length * Math.random());
       if (this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j] != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(ayjd.a(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j], this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidContentResResources));
+        this.jdField_a_of_type_JavaUtilArrayList.add(azny.a(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j], this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidContentResResources));
       }
       i += 1;
     }
@@ -85,11 +85,11 @@ public class SanHuaView
       super.onDraw(paramCanvas);
       float f1 = (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F;
       int i = 0;
-      ayjd localayjd;
+      azny localazny;
       if (i < this.jdField_a_of_type_Int)
       {
-        localayjd = (ayjd)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (localayjd == null) {}
+        localazny = (azny)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if (localazny == null) {}
         for (;;)
         {
           i += 1;
@@ -97,21 +97,21 @@ public class SanHuaView
           float f2;
           float f3;
           float f4;
-          if (localayjd.jdField_a_of_type_Double < 0.0D)
+          if (localazny.jdField_a_of_type_Double < 0.0D)
           {
-            f2 = localayjd.c;
-            f3 = localayjd.d;
+            f2 = localazny.c;
+            f3 = localazny.d;
             f4 = AIOUtils.dp2px(270.0F, this.jdField_a_of_type_AndroidContentResResources);
-            localayjd.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_a_of_type_Float - f2 * f1);
-            localayjd.jdField_a_of_type_ArrayOfFloat[1] = (this.jdField_b_of_type_Float + (f3 * f1 + f4 * 0.5F * f1 * f1));
+            localazny.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_a_of_type_Float - f2 * f1);
+            localazny.jdField_a_of_type_ArrayOfFloat[1] = (this.jdField_b_of_type_Float + (f3 * f1 + f4 * 0.5F * f1 * f1));
           }
           else
           {
-            f2 = localayjd.c;
-            f3 = localayjd.d;
+            f2 = localazny.c;
+            f3 = localazny.d;
             f4 = AIOUtils.dp2px(270.0F, this.jdField_a_of_type_AndroidContentResResources);
-            localayjd.jdField_a_of_type_ArrayOfFloat[0] = (f2 * f1 + this.jdField_a_of_type_Float);
-            localayjd.jdField_a_of_type_ArrayOfFloat[1] = (this.jdField_b_of_type_Float - (f3 * f1 - f4 * 0.5F * f1 * f1));
+            localazny.jdField_a_of_type_ArrayOfFloat[0] = (f2 * f1 + this.jdField_a_of_type_Float);
+            localazny.jdField_a_of_type_ArrayOfFloat[1] = (this.jdField_b_of_type_Float - (f3 * f1 - f4 * 0.5F * f1 * f1));
           }
         }
       }
@@ -119,9 +119,9 @@ public class SanHuaView
       int j = 0;
       if (i < this.jdField_a_of_type_Int)
       {
-        localayjd = (ayjd)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localazny = (azny)this.jdField_a_of_type_JavaUtilArrayList.get(i);
         int k;
-        if (localayjd == null) {
+        if (localazny == null) {
           k = j;
         }
         for (;;)
@@ -130,21 +130,21 @@ public class SanHuaView
           j = k;
           break;
           k = j;
-          if (localayjd.jdField_a_of_type_ArrayOfFloat[0] < this.jdField_b_of_type_Int)
+          if (localazny.jdField_a_of_type_ArrayOfFloat[0] < this.jdField_b_of_type_Int)
           {
             k = j;
-            if (localayjd.jdField_a_of_type_ArrayOfFloat[0] > 0.0F)
+            if (localazny.jdField_a_of_type_ArrayOfFloat[0] > 0.0F)
             {
               k = j;
-              if (localayjd.jdField_a_of_type_ArrayOfFloat[1] < this.c)
+              if (localazny.jdField_a_of_type_ArrayOfFloat[1] < this.c)
               {
                 k = j;
-                if (localayjd.jdField_a_of_type_ArrayOfFloat[1] > 0.0F)
+                if (localazny.jdField_a_of_type_ArrayOfFloat[1] > 0.0F)
                 {
-                  this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localayjd.jdField_a_of_type_Int / 2, -localayjd.jdField_b_of_type_Int / 2);
-                  this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localayjd.jdField_a_of_type_Float);
-                  this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localayjd.jdField_a_of_type_Int / 2 + localayjd.jdField_a_of_type_ArrayOfFloat[0], localayjd.jdField_b_of_type_Int / 2 + localayjd.jdField_a_of_type_ArrayOfFloat[1]);
-                  paramCanvas.drawBitmap(localayjd.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
+                  this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localazny.jdField_a_of_type_Int / 2, -localazny.jdField_b_of_type_Int / 2);
+                  this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localazny.jdField_a_of_type_Float);
+                  this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localazny.jdField_a_of_type_Int / 2 + localazny.jdField_a_of_type_ArrayOfFloat[0], localazny.jdField_b_of_type_Int / 2 + localazny.jdField_a_of_type_ArrayOfFloat[1]);
+                  paramCanvas.drawBitmap(localazny.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
                   k = j + 1;
                 }
               }

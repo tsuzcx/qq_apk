@@ -1,13 +1,24 @@
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.widget.DynamicGridView;
 
-class blay
-  implements blbv
+public class blay
+  extends AnimatorListenerAdapter
 {
-  blay(blax paramblax) {}
+  public blay(DynamicGridView paramDynamicGridView, View paramView) {}
   
-  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a(paramBoolean, paramGetAdsRsp);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, false);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, true);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
   }
 }
 

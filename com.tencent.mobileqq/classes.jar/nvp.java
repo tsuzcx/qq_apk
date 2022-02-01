@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
-class nvp
-  implements View.OnClickListener
+public class nvp
+  implements nvm
 {
-  nvp(num paramnum, int paramInt, obr paramobr) {}
-  
-  public void onClick(View paramView)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    zsf.a((BaseActivity)this.jdField_a_of_type_Num.jdField_a_of_type_JavaLangRefWeakReference.get(), new zsh(this.jdField_a_of_type_Num.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, num.a(this.jdField_a_of_type_Num), this.jdField_a_of_type_Int);
-    num.a(this.jdField_a_of_type_Num, this.jdField_a_of_type_Obr.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.i(paramString1, paramInt, paramString2);
+  }
+  
+  public boolean a()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void b(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.d(paramString1, paramInt, paramString2);
+  }
+  
+  public boolean b()
+  {
+    return QLog.isDevelopLevel();
   }
 }
 

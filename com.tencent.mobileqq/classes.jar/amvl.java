@@ -1,34 +1,21 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.apollo.player.CMSActionStatus;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class amvl
-  implements BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface
+@Metadata(bv={1, 0, 3}, k=3, mv={1, 1, 16})
+public final class amvl
 {
-  private List<String> a = new ArrayList();
-  
-  public void a()
+  public static void a(amvk paramamvk, @NotNull CMSAction paramCMSAction)
   {
-    if (this.a.isEmpty()) {
-      this.a.add("100066");
-    }
+    Intrinsics.checkParameterIsNotNull(paramCMSAction, "action");
   }
   
-  public void b()
+  public static void a(amvk paramamvk, @NotNull CMSAction paramCMSAction, @NotNull CMSActionStatus paramCMSActionStatus)
   {
-    if (!this.a.isEmpty()) {
-      this.a.remove("100066");
-    }
-  }
-  
-  public List<String> getRedPointPaths(AppInterface paramAppInterface)
-  {
-    if (((paramAppInterface instanceof QQAppInterface)) && (!this.a.isEmpty())) {
-      return this.a;
-    }
-    return null;
+    Intrinsics.checkParameterIsNotNull(paramCMSAction, "action");
+    Intrinsics.checkParameterIsNotNull(paramCMSActionStatus, "status");
   }
 }
 

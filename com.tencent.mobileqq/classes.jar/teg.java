@@ -1,43 +1,31 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.qphone.base.util.QLog;
 
 public class teg
-  implements ViewPager.OnPageChangeListener
+  extends AnimatorListenerAdapter
 {
-  private teg(ViewPagerCompat paramViewPagerCompat) {}
+  public teg(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
+    super.onAnimationCancel(paramAnimator);
+    SlideActiveAnimController.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationCancel");
     }
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
+    super.onAnimationEnd(paramAnimator);
+    SlideActiveAnimController.a(this.a, false);
+    SlideActiveAnimController.a(this.a, SlideActiveAnimController.a());
+    SlideActiveAnimController.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationEnd");
     }
   }
 }

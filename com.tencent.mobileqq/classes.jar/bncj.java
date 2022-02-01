@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-
-public final class bncj
-  implements Parcelable.Creator<EditLocalVideoSource>
+class bncj
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
-  {
-    return new EditLocalVideoSource(paramParcel);
-  }
+  public double a;
+  public boolean a;
+  public boolean b;
   
-  public EditLocalVideoSource[] a(int paramInt)
-  {
-    return new EditLocalVideoSource[paramInt];
-  }
+  bncj(bnci parambnci) {}
 }
 
 

@@ -5,8 +5,8 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import auiv;
-import auiw;
+import avop;
+import avoq;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ import com.tencent.widget.ListView;
 import java.util.List;
 
 public class EmoticonPanelOnScrollListener
-  implements View.OnTouchListener, auiw, AbsListView.OnScrollListener
+  implements View.OnTouchListener, avoq, AbsListView.OnScrollListener
 {
   private static final int PULL_UP_THRESHOLD = 120;
   private static final String TAG = "EmotionPanelListView";
@@ -26,7 +26,7 @@ public class EmoticonPanelOnScrollListener
   private boolean mDisUpdateAlpha;
   private int mLastState = 0;
   private int mLastTop;
-  private auiv mScrollVelometer = new auiv(120, this);
+  private avop mScrollVelometer = new avop(120, this);
   private int minAlphaLeft;
   private int minAlphaTop;
   private AbsListView.OnScrollListener onScrollListener;
@@ -134,7 +134,7 @@ public class EmoticonPanelOnScrollListener
     paramView.setAlpha(1.0F);
   }
   
-  public auiv getScrollVelometer()
+  public avop getScrollVelometer()
   {
     return this.mScrollVelometer;
   }
@@ -257,7 +257,7 @@ public class EmoticonPanelOnScrollListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelOnScrollListener
  * JD-Core Version:    0.7.0.1
  */

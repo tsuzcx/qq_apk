@@ -1,33 +1,14 @@
-import android.widget.EditText;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 
-public class akap
-  extends ajzw
+class akap
+  extends ansi
 {
-  public akap(EditText paramEditText)
-  {
-    super(paramEditText);
-  }
+  akap(akam paramakam) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  protected void onUpgradeConfig(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    paramInt1 = 1;
-    paramCharSequence = paramCharSequence.toString();
-    if (paramCharSequence.startsWith("0"))
-    {
-      paramInt2 = bkvx.a(paramCharSequence, 1);
-      if (paramInt2 != 0) {
-        break label53;
-      }
-    }
-    for (;;)
-    {
-      paramCharSequence = String.valueOf(paramInt1);
-      this.a.setText(paramCharSequence);
-      this.a.setSelection(paramCharSequence.length());
-      return;
-      label53:
-      paramInt1 = paramInt2;
-    }
+    akam.a(this.a, paramUpgradeDetailWrapper);
+    this.a.e();
   }
 }
 

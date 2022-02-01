@@ -1,37 +1,26 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+
 public class aogs
+  implements DialogInterface.OnClickListener
 {
-  public float a;
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c = -1;
+  public aogs(VideoBroadcastReceiver paramVideoBroadcastReceiver, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public aogs()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-  }
-  
-  public String toString()
-  {
-    try
+    msa.e(false, false);
+    if (this.jdField_a_of_type_Int == 3000)
     {
-      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
-      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
+      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
+      VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, this.d);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        String str2 = "";
-      }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
+    msa.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause);
   }
 }
 

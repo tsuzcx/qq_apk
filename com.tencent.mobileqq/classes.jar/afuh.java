@@ -1,76 +1,17 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import com.tencent.mobileqq.data.IntimateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-class afuh
-  extends atuh
+public class afuh
 {
-  afuh(afud paramafud) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView b;
+  ImageView c;
+  ImageView d;
   
-  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos");
-    }
-    if ((this.a.jdField_a_of_type_Awac != null) && (this.a.jdField_a_of_type_Awac.a() == 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, in card mode, return");
-      }
-    }
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_Awac != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mViewDelegate == null :" + afud.a(this.a));
-      }
-    } while (afud.a(this.a));
-    paramObject = null;
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      long l1 = 0L;
-      try
-      {
-        long l2 = Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue();
-        l1 = l2;
-      }
-      catch (NumberFormatException paramObject)
-      {
-        for (;;)
-        {
-          QLog.e("intimate_relationship", 2, "valueOf string err ");
-        }
-      }
-    }
-    for (paramHashMap = (IntimateInfo)paramHashMap.get(Long.valueOf(l1));; paramHashMap = paramObject)
-    {
-      if (paramHashMap == null) {
-        break label272;
-      }
-      paramObject = afud.a(this.a).obtainMessage();
-      paramObject.what = 0;
-      paramObject.obj = paramHashMap;
-      afud.a(this.a).removeMessages(0);
-      afud.a(this.a).sendMessage(paramObject);
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mode: " + this.a.jdField_a_of_type_Awac.a());
-      break;
-      QLog.e("intimate_relationship", 2, "onGetGroupIntimateInfos failed !");
-    }
-    label272:
-    paramHashMap = afud.a(this.a).obtainMessage();
-    paramHashMap.what = 1;
-    paramHashMap.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693152);
-    afud.a(this.a).sendMessage(paramHashMap);
-  }
+  public afuh(afug paramafug) {}
 }
 
 

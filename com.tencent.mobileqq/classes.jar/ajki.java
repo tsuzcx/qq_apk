@@ -1,23 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.widget.QQToast;
-
 public class ajki
-  extends CardObserver
 {
-  public ajki(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public int c;
+  public int d;
+  public String f;
   
-  public void onUpdateAvatar(boolean paramBoolean, String paramString, int paramInt)
+  public ajki() {}
+  
+  public ajki(int paramInt1, int paramInt2, String paramString)
   {
-    if (!paramBoolean)
-    {
-      int i = 2131718157;
-      if (paramInt == 1503) {
-        i = 2131698461;
-      }
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, i, 0).b(this.a.getTitleBarHeight());
-    }
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.f = paramString;
   }
 }
 

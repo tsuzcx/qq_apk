@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import ayeo;
-import ayep;
+import azla;
+import azlb;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -44,16 +44,16 @@ public class ForwardSdkShareProcessor$SendMsgByServerStep
     }
     if ((this.this$0.mUiRequest != null) && (this.this$0.mUiRequest.mUpCallBack != null))
     {
-      ayep localayep = new ayep();
+      azlb localazlb = new azlb();
       String str2 = (String)this.this$0.mUrlMap.get("audioUrl");
       String str3 = this.this$0.mRemoteImgUrl;
       String str1 = str2;
       if (TextUtils.isEmpty(str2)) {
         str1 = this.this$0.mAudioUrl;
       }
-      localayep.jdField_a_of_type_JavaLangObject = new String[] { str3, str1 };
-      localayep.jdField_a_of_type_Int = 0;
-      this.this$0.mUiRequest.mUpCallBack.onSend(localayep);
+      localazlb.jdField_a_of_type_JavaLangObject = new String[] { str3, str1 };
+      localazlb.jdField_a_of_type_Int = 0;
+      this.this$0.mUiRequest.mUpCallBack.onSend(localazlb);
     }
     this.isFinished = true;
     doNextStep();

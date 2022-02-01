@@ -1,22 +1,19 @@
-public final class bnvo
-  implements akxd
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
+
+public class bnvo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
-  }
+  public bnvo(AEEditorAILoadingView paramAEEditorAILoadingView) {}
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
+    if ((AEEditorAILoadingView.a(this.a) >= 2) && (AEEditorAILoadingView.a(this.a)))
+    {
+      AEEditorAILoadingView.a(this.a, false);
+      AEEditorAILoadingView.a(this.a);
     }
-    return -paramInt1;
   }
 }
 

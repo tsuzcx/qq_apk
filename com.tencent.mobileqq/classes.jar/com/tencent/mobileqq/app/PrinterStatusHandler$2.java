@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import amxn;
+import aoab;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class PrinterStatusHandler$2
   implements Runnable
 {
-  public PrinterStatusHandler$2(amxn paramamxn, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public PrinterStatusHandler$2(aoab paramaoab, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   public void run()
   {

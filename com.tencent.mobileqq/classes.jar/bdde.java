@@ -1,20 +1,53 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.aio.media.aio_media.RspLatestPlayingState;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bdde
+class bdde
+  extends AsyncTask<String, Integer, Boolean>
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  bdde(bdcw parambdcw) {}
   
-  public abstract void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, Object paramObject);
+  protected Boolean a(String... paramVarArgs)
+  {
+    paramVarArgs = paramVarArgs[0];
+    if (paramVarArgs == null) {
+      paramVarArgs = Boolean.valueOf(false);
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramVarArgs;
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("VALUE_MSG_VIDEO_ID", paramVarArgs);
+        paramVarArgs = bddh.a().a("CMD_QUERY_VIDEO_REDBAG_STAT", (Bundle)localObject);
+        if (paramVarArgs == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("RedBagVideoManager", 2, "QueryRewardedTask VideoPlayIPCClient.callServer value=null");
+          }
+          return Boolean.valueOf(false);
+        }
+        localObject = Boolean.valueOf(paramVarArgs.getBoolean("VALUE_MSG_REDBAG_STAT"));
+        paramVarArgs = (String[])localObject;
+      } while (!((Boolean)localObject).booleanValue());
+      paramVarArgs = (String[])localObject;
+    } while (bdcw.b(this.a) == null);
+    bdcw.b(this.a).h = 1;
+    return localObject;
+  }
   
-  public abstract void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean);
-  
-  public abstract void a(ToServiceMsg paramToServiceMsg, aio_media.RspLatestPlayingState paramRspLatestPlayingState);
-  
-  public abstract void a(Object paramObject);
-  
-  public abstract void a(String paramString, int paramInt);
+  protected void a(Boolean paramBoolean)
+  {
+    if (paramBoolean.booleanValue()) {
+      bdcw.c(this.a);
+    }
+    while (bdcw.a(this.a)) {
+      return;
+    }
+    bdcw.d(this.a);
+  }
 }
 
 

@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pushdialog.AIOPushDialogHelper.1.1;
-import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
-import java.util.List;
-import mqq.os.MqqHandler;
-
-public class azda
-  implements azdg
+public abstract interface azda
 {
-  azda(azcz paramazcz) {}
-  
-  public void a(List<PushDialogTemplate> paramList)
-  {
-    ThreadManager.getUIHandler().post(new AIOPushDialogHelper.1.1(this, paramList));
-  }
+  public abstract void a();
 }
 
 

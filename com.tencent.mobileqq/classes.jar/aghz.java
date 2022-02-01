@@ -1,19 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-
 class aghz
-  implements bhba
+  implements blgo
 {
-  aghz(aghv paramaghv) {}
+  aghz(aght paramaght) {}
   
-  public void a(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (auyo.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
+    if (paramBoolean)
+    {
+      aght.c(this.a);
       return;
     }
-    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    aght.d(this.a);
   }
 }
 

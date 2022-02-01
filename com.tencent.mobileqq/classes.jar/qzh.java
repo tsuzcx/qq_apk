@@ -1,60 +1,23 @@
-import androidx.annotation.Nullable;
-import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.qphone.base.util.QLog;
 
-public class qzh
-  implements qzf
+class qzh
+  implements bdgc
 {
-  public int a()
-  {
-    return qxt.b().b();
-  }
+  qzh(qzg paramqzg, String paramString) {}
   
-  @Nullable
-  public RIJRewardTask a()
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    return qxt.b().a();
-  }
-  
-  public void a(int paramInt)
-  {
-    qxt.b().b(paramInt);
-  }
-  
-  public void a(RIJRewardTask paramRIJRewardTask)
-  {
-    qxt.b().a(paramRIJRewardTask);
-  }
-  
-  public void a(@NotNull String paramString)
-  {
-    qxt.b().a(paramString);
-  }
-  
-  public void a(String paramString, int paramInt, qxx paramqxx)
-  {
-    qxv.b().a(paramString, paramInt, new qzi(this, paramqxx));
-  }
-  
-  public boolean a(@NotNull String paramString)
-  {
-    return qxt.b().a(paramString);
-  }
-  
-  public int b()
-  {
-    return qxt.b().a();
-  }
-  
-  @Nullable
-  public RIJRewardTask b()
-  {
-    return qxt.b().b();
-  }
-  
-  public void b(RIJRewardTask paramRIJRewardTask)
-  {
-    qxt.b().b(paramRIJRewardTask);
+    QLog.i("PTSSoLoader", 1, "[onLoadResult], resCode = " + paramInt);
+    if (paramInt == 0)
+    {
+      paramLoadExtResult = bdfo.a(this.jdField_a_of_type_JavaLangString);
+      QLog.i("PTSSoLoader", 1, "[onLoadResult], load so succeeded, name = " + this.jdField_a_of_type_JavaLangString + ", currentVersion = " + paramLoadExtResult);
+      if (qzg.a(this.jdField_a_of_type_Qzg, paramLoadExtResult, "1.1.2")) {
+        qzg.a(this.jdField_a_of_type_Qzg, true);
+      }
+    }
+    qzg.a(this.jdField_a_of_type_Qzg, this.jdField_a_of_type_JavaLangString, paramInt, bdfo.a(this.jdField_a_of_type_JavaLangString));
   }
 }
 

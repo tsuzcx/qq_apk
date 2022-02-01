@@ -1,60 +1,35 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class aejz
-  extends amsu
+  extends ClickableSpan
 {
-  public aejz(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public aejz(NotificationActivity paramNotificationActivity, boolean paramBoolean) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Almi == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramBoolean1);
-      this.a.jdField_a_of_type_JavaUtilMap = avnu.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
-    this.a.jdField_a_of_type_Almi.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_Almi.notifyDataSetChanged();
-    this.a.b();
+    if (!this.jdField_a_of_type_Boolean) {
+      bdla.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, "dc00898", "", NotificationActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity), "0X800AA31", "0X800AA31", 0, 0, "", "", "", NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
+    }
+    NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, "0X800B656");
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.getActivity(), QQBrowserActivity.class);
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(paramView.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"));
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
   }
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (this.a.jdField_a_of_type_Almi == null) {
-      return;
-    }
-    if ((paramBoolean) && (paramMap != null))
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Integer localInteger = (Integer)paramMap.get(str);
-        if (localInteger != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, localInteger);
-        }
-      }
-      this.a.jdField_a_of_type_Almi.a(this.a.jdField_a_of_type_JavaUtilMap);
-      this.a.jdField_a_of_type_Almi.notifyDataSetChanged();
-      this.a.b();
-      return;
-    }
-    this.a.jdField_a_of_type_Almi.notifyDataSetChanged();
-    this.a.b();
-    QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131719243), 0).b(this.a.getTitleBarHeight());
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejz
  * JD-Core Version:    0.7.0.1
  */

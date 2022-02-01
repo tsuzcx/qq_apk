@@ -1,44 +1,86 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.subscribe.comment.EmoView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import java.lang.ref.WeakReference;
+import java.util.WeakHashMap;
 
-public class zgo
-  implements AdapterView.OnItemClickListener
+public abstract class zgo
 {
-  public zgo(EmoView paramEmoView, int paramInt) {}
+  public int a;
+  public Drawable a;
+  public Object a;
+  protected WeakReference<ImageView> a;
+  public zgn a;
+  protected zgp a;
+  protected volatile boolean a;
+  public Drawable b;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public zgo(ImageView paramImageView)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (paramInt == 27)
-    {
-      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
-        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
-      }
-      if (!bool1) {
-        EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
-      }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
+  }
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public void a(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    if (this.jdField_a_of_type_Zgp != null) {
+      this.jdField_a_of_type_Zgp.a(this);
     }
-    for (;;)
+  }
+  
+  public void a(Drawable paramDrawable, String paramString)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    if (this.jdField_a_of_type_Zgp != null) {
+      this.jdField_a_of_type_Zgp.a(this, paramString);
+    }
+  }
+  
+  public void a(WeakHashMap<ImageView, Drawable> paramWeakHashMap, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean) {}
+    ImageView localImageView;
+    do
     {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
       return;
-      int i = (this.jdField_a_of_type_Int - 1) * 27 + paramInt;
-      if (i < 107)
-      {
-        String str = zhb.b[zgs.b[i]];
-        bool1 = bool2;
-        if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
-          bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(str);
-        }
-        if (!bool1) {
-          EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(str);
-        }
-      }
+      localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while ((localImageView == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null));
+    if ((paramBoolean) && (this.jdField_a_of_type_Int == 0))
+    {
+      ykq.a("Q.qqstory.newImageLoader", "save to waiting queue t:%s", this.jdField_a_of_type_JavaLangObject);
+      paramWeakHashMap.put(localImageView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      return;
     }
+    localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    yew.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localImageView.getTag(2131369720), " and change to: ", this.jdField_a_of_type_JavaLangObject.toString(), " view hash:" + localImageView.hashCode() });
+    localImageView.setTag(2131369720, this.jdField_a_of_type_JavaLangObject.toString());
+  }
+  
+  public void a(zgp paramzgp)
+  {
+    this.jdField_a_of_type_Zgp = paramzgp;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    yew.b("Q.qqstory.newImageLoader", new Object[] { anvx.a(2131714109), this.jdField_a_of_type_JavaLangObject });
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_Zgp = null;
+    this.jdField_a_of_type_Zgn = null;
+    yew.b("Q.qqstory.newImageLoader", new Object[] { anvx.a(2131714110), this.jdField_a_of_type_JavaLangObject });
   }
 }
 

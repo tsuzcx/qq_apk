@@ -3,7 +3,7 @@ package com.tencent.mobileqq.tribe.fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdml;
+import beto;
 
 class TribeVideoListPlayerFragment$26
   implements Runnable
@@ -12,8 +12,8 @@ class TribeVideoListPlayerFragment$26
   
   public void run()
   {
-    bdml localbdml = (bdml)((View)this.this$0.a).getTag();
-    if (localbdml == null) {
+    beto localbeto = (beto)((View)this.this$0.a).getTag();
+    if (localbeto == null) {
       return;
     }
     switch (TribeVideoListPlayerFragment.a(this.this$0).a)
@@ -21,19 +21,19 @@ class TribeVideoListPlayerFragment$26
     default: 
       return;
     case 0: 
-      localbdml.j.setVisibility(0);
-      localbdml.i.setVisibility(8);
-      localbdml.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
+      localbeto.j.setVisibility(0);
+      localbeto.i.setVisibility(8);
+      localbeto.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
     case 1: 
-      localbdml.f.setVisibility(0);
-      localbdml.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
-      localbdml.a.setVisibility(8);
+      localbeto.f.setVisibility(0);
+      localbeto.jdField_e_of_type_AndroidWidgetImageView.setVisibility(8);
+      localbeto.a.setVisibility(8);
       return;
     }
-    localbdml.h.setVisibility(0);
-    localbdml.g.setVisibility(8);
-    localbdml.d.setVisibility(8);
+    localbeto.h.setVisibility(0);
+    localbeto.g.setVisibility(8);
+    localbeto.d.setVisibility(8);
   }
 }
 

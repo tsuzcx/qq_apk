@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Process;
 import android.util.DisplayMetrics;
-import anxf;
+import apah;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -48,7 +48,7 @@ public class FontSettingManager
     if (paramContext == null) {
       return -1000.0F;
     }
-    float f2 = Float.valueOf(anxf.a(paramContext, "key_font_level", String.valueOf(16.0F))).floatValue();
+    float f2 = Float.valueOf(apah.a(paramContext, "key_font_level", String.valueOf(16.0F))).floatValue();
     float f1;
     if (f2 >= 13.92F)
     {
@@ -233,7 +233,7 @@ public class FontSettingManager
     if (paramContext == null) {
       return;
     }
-    anxf.a(paramContext, "key_font_level", String.valueOf(paramFloat));
+    apah.a(paramContext, "key_font_level", String.valueOf(paramFloat));
   }
   
   private static void updateSystemMetrics(DisplayMetrics paramDisplayMetrics)

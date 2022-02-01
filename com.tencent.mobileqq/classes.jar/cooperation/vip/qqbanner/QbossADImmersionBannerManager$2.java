@@ -1,40 +1,40 @@
 package cooperation.vip.qqbanner;
 
-import akke;
-import akkf;
+import alfw;
+import alfx;
 import android.util.SparseArray;
 import android.widget.ImageView;
 import android.widget.TextView;
-import blbp;
-import blbs;
+import bmod;
+import bmog;
 import com.tencent.mobileqq.utils.ViewUtils;
 import cooperation.qzone.zipanimate.ZipAnimationDrawable;
 
 public class QbossADImmersionBannerManager$2
   implements Runnable
 {
-  public QbossADImmersionBannerManager$2(blbs paramblbs, akke paramakke) {}
+  public QbossADImmersionBannerManager$2(bmog parambmog, alfw paramalfw) {}
   
   public void run()
   {
     if (this.a == null) {}
-    while (!(this.a instanceof blbp)) {
+    while (!(this.a instanceof bmod)) {
       return;
     }
-    blbs.a(this.this$0, (blbp)this.a);
-    blbs.a(this.this$0).setText(blbs.a(this.this$0, blbs.a(this.this$0).e));
-    blbs.b(this.this$0).setText(blbs.b(this.this$0, blbs.a(this.this$0).f));
-    blbs.a(this.this$0).setTextColor(blbs.a(this.this$0, blbs.a(this.this$0).g));
-    blbs.b(this.this$0).setTextColor(blbs.b(this.this$0, blbs.a(this.this$0).g));
-    akkf localakkf = (akkf)this.a.a.get(2);
-    blbs.a(this.this$0, new ZipAnimationDrawable());
-    blbs.a(this.this$0).setAnimationRes(localakkf.c, blbs.a(this.this$0, blbs.a(this.this$0)));
-    blbs.a(this.this$0).setScale(ViewUtils.getScreenWidth() / 720.0F);
-    blbs.a(this.this$0).clearFirstFrame();
-    blbs.a(this.this$0).setRepeatAnimation(true);
-    blbs.a(this.this$0).setShowLastFrameWhenStop(true);
-    blbs.a(this.this$0).start();
-    blbs.a(this.this$0).setImageDrawable(blbs.a(this.this$0));
+    bmog.a(this.this$0, (bmod)this.a);
+    bmog.a(this.this$0).setText(bmog.a(this.this$0, bmog.a(this.this$0).e));
+    bmog.b(this.this$0).setText(bmog.b(this.this$0, bmog.a(this.this$0).f));
+    bmog.a(this.this$0).setTextColor(bmog.a(this.this$0, bmog.a(this.this$0).g));
+    bmog.b(this.this$0).setTextColor(bmog.b(this.this$0, bmog.a(this.this$0).g));
+    alfx localalfx = (alfx)this.a.a.get(2);
+    bmog.a(this.this$0, new ZipAnimationDrawable());
+    bmog.a(this.this$0).setAnimationRes(localalfx.c, bmog.a(this.this$0, bmog.a(this.this$0)));
+    bmog.a(this.this$0).setScale(ViewUtils.getScreenWidth() / 720.0F);
+    bmog.a(this.this$0).clearFirstFrame();
+    bmog.a(this.this$0).setRepeatAnimation(true);
+    bmog.a(this.this$0).setShowLastFrameWhenStop(true);
+    bmog.a(this.this$0).start();
+    bmog.a(this.this$0).setImageDrawable(bmog.a(this.this$0));
   }
 }
 

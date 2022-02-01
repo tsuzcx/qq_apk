@@ -1,14 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.os.SystemClock;
 
-public abstract interface std
+public class std
+  extends stj
 {
-  public abstract int a();
+  public std(ssz paramssz)
+  {
+    super(paramssz);
+  }
   
-  public abstract BaseData a();
-  
-  public abstract void a();
-  
-  public abstract void b();
+  public void a(int paramInt, Object paramObject)
+  {
+    if (this.a.a.b > 0L)
+    {
+      paramInt = 1;
+      if (paramInt == 0) {
+        break label75;
+      }
+    }
+    label75:
+    for (this.a.a.v = (SystemClock.uptimeMillis() - this.a.a.b);; this.a.a.v = 0L)
+    {
+      this.a.a.w = (SystemClock.uptimeMillis() - this.a.a.c);
+      return;
+      paramInt = 0;
+      break;
+    }
+  }
 }
 
 

@@ -1,194 +1,43 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager.TopicInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
 public class allv
-  extends BaseAdapter
 {
-  private allw jdField_a_of_type_Allw;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private List<SignatureManager.TopicInfo> jdField_a_of_type_JavaUtilList;
-  private List<SignatureManager.TopicInfo> b;
-  
-  public allv(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, allw paramallw)
+  public static List<RecentUser> a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_Allw = paramallw;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
-  
-  private float a(int paramInt)
-  {
-    return Math.round(paramInt / 10000.0F * 100.0F) / 100.0F;
-  }
-  
-  private String a(SignatureManager.TopicInfo paramTopicInfo)
-  {
-    if ((paramTopicInfo == null) || ((paramTopicInfo.totalNum <= 0) && (paramTopicInfo.friendNum <= 0))) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramTopicInfo.friendNum > 0)
+    ArrayList localArrayList = new ArrayList();
+    List localList = paramQQAppInterface.getProxyManager().a().getRecentList(true, false);
+    int i = 0;
+    while (i < localList.size())
     {
-      if (paramTopicInfo.friendNum >= 10000)
-      {
-        localStringBuilder.append(a(paramTopicInfo.friendNum));
-        localStringBuilder.append("万好友");
+      RecentUser localRecentUser = (RecentUser)localList.get(i);
+      if (QLog.isColorLevel()) {
+        QLog.d("FilterMsgBoxRecentUserUtil", 2, "getFilterBoxRecentUsers() called with: user = [" + localRecentUser.uin + "]");
       }
+      if (((almg)paramQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_BOX)).a(localRecentUser.uin, localRecentUser.getType())) {
+        localArrayList.add(localRecentUser);
+      }
+      i += 1;
     }
-    else
+    return localArrayList;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    Object localObject = a(paramQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("FilterMsgBoxRecentUserUtil", 2, "onRecentBaseDataDelete() called with: filterBoxRecentUsers = [" + localObject + "]");
+    }
+    if (((List)localObject).isEmpty())
     {
-      if ((paramTopicInfo.friendNum > 0) && (paramTopicInfo.totalNum > 0)) {
-        localStringBuilder.append("、");
-      }
-      if (paramTopicInfo.totalNum > 0)
-      {
-        if (paramTopicInfo.totalNum < 10000) {
-          break label168;
-        }
-        localStringBuilder.append(a(paramTopicInfo.totalNum));
-        localStringBuilder.append("万人添加该话题");
-      }
-    }
-    for (;;)
-    {
-      if ((paramTopicInfo.totalNum <= 0) && (paramTopicInfo.friendNum > 0)) {
-        localStringBuilder.append("添加该话题");
-      }
-      return localStringBuilder.toString();
-      localStringBuilder.append(paramTopicInfo.friendNum);
-      localStringBuilder.append("个好友");
-      break;
-      label168:
-      localStringBuilder.append(paramTopicInfo.totalNum);
-      localStringBuilder.append("人添加该话题");
-    }
-  }
-  
-  private String a(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) && (paramString.length() <= 2)) {}
-    String str;
-    do
-    {
-      return paramString;
-      str = paramString;
-      if (paramString.charAt(0) == '#') {
-        str = paramString.substring(1);
-      }
-      paramString = str;
-    } while (str.charAt(str.length() - 1) != '#');
-    return str.substring(0, str.length() - 1);
-  }
-  
-  public SignatureManager.TopicInfo a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
-    }
-    return (SignatureManager.TopicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public List<SignatureManager.TopicInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a(List<SignatureManager.TopicInfo> paramList, boolean paramBoolean)
-  {
-    if (paramList != this.jdField_a_of_type_JavaUtilList) {
-      this.jdField_a_of_type_JavaUtilList = ((ArrayList)paramList);
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      if ((paramBoolean) && (paramList != this.b)) {
-        this.b = ((ArrayList)paramList);
-      }
-      return bool;
-    }
-  }
-  
-  public List<SignatureManager.TopicInfo> b()
-  {
-    return this.b;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    String str;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562006, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramView = new allx();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369141));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379888));
-      paramView.b = ((TextView)localView.findViewById(2131379889));
-      localView.setTag(paramView);
-      localObject = a(paramInt);
-      if (localObject != null)
-      {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((SignatureManager.TopicInfo)localObject).topicStr);
-        paramView.jdField_a_of_type_Int = ((SignatureManager.TopicInfo)localObject).topicId;
-        str = a((SignatureManager.TopicInfo)localObject);
-        if (!TextUtils.isEmpty(str)) {
-          break label242;
-        }
-        paramView.b.setVisibility(8);
-        label134:
-        localView.setContentDescription(amtj.a(2131714057) + a(((SignatureManager.TopicInfo)localObject).topicStr) + amtj.a(2131714056));
-      }
-      if (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        break label262;
-      }
-      localView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839429));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (allx)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label242:
-      paramView.b.setVisibility(0);
-      paramView.b.setText(str);
-      break label134;
-      label262:
-      localView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839428));
+      localObject = (RecentUser)paramQQAppInterface.getRecentUserProxy().findRecentUserByUin(AppConstants.FILTER_MSG_UIN, 10012);
+      paramQQAppInterface.getRecentUserProxy().c((RecentUser)localObject, paramBoolean);
     }
   }
 }

@@ -1,266 +1,136 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
-import java.util.List;
+import common.qzone.component.cache.common.FastLruCache.1;
+import java.lang.ref.ReferenceQueue;
+import java.util.HashMap;
 
-public class blpq
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+public class blpq<K, V>
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public blvb a;
-  private AEBottomListScrollView jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView;
-  private boolean jdField_a_of_type_Boolean;
-  private ImageView b;
-  private ImageView c;
-  private ImageView d;
+  private final int jdField_a_of_type_Int;
+  private ReferenceQueue<V> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
+  private final HashMap<K, V> jdField_a_of_type_JavaUtilHashMap;
+  private final HashMap<K, blpr<K, V>> b = new HashMap();
   
-  public blpq(View paramView, AEBottomListScrollView paramAEBottomListScrollView, boolean paramBoolean)
+  public blpq(int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380685));
-    this.d = ((ImageView)paramView.findViewById(2131380692));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380698);
-    this.b = ((ImageView)paramView.findViewById(2131380699));
-    this.c = ((ImageView)paramView.findViewById(2131380694));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131380750));
-    this.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView = paramAEBottomListScrollView;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramInt <= 0) {
+      throw new IllegalArgumentException("maxSize <= 0");
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilHashMap = new FastLruCache.1(this, 16, 0.75F, true, paramInt);
   }
   
-  protected String a(int paramInt)
+  private void a()
   {
-    if (this.jdField_a_of_type_Blvb.jdField_a_of_type_JavaLangString.equals("0")) {
-      return (String)blpm.a().get(5);
-    }
-    if (this.jdField_a_of_type_Blvb.jdField_a_of_type_JavaLangString.equals("call_material_id")) {
-      return (String)blpm.a().get(6);
-    }
-    if (blpm.a()) {
-      if (paramInt == 1) {
-        paramInt = 3;
-      }
-    }
-    for (;;)
-    {
-      return (String)blpm.a().get(paramInt);
-      paramInt = (paramInt - 1 - 1) % 4;
-      continue;
-      paramInt = (paramInt - 1) % 4;
+    for (blpr localblpr = (blpr)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll(); localblpr != null; localblpr = (blpr)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll()) {
+      this.b.remove(localblpr.a);
     }
   }
   
-  public void a(int paramInt)
+  /* Error */
+  public final V a(K paramK)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (this.jdField_a_of_type_AndroidViewView == null);
-          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          return;
-        } while (this.jdField_a_of_type_AndroidViewView == null);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        return;
-      } while (this.jdField_a_of_type_AndroidViewView == null);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-    case 3: 
-      if ((this.c != null) && (!this.jdField_a_of_type_Boolean)) {
-        this.c.setVisibility(0);
-      }
-      if ((this.jdField_a_of_type_Blvb.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
-      {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        return;
-      }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-      return;
-    }
-    if (this.c != null) {
-      this.c.setVisibility(4);
-    }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: invokespecial 61	blpq:a	()V
+    //   6: aload_0
+    //   7: getfield 45	blpq:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   10: aload_1
+    //   11: invokevirtual 64	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   14: astore_2
+    //   15: aload_2
+    //   16: ifnull +9 -> 25
+    //   19: aload_2
+    //   20: astore_1
+    //   21: aload_0
+    //   22: monitorexit
+    //   23: aload_1
+    //   24: areturn
+    //   25: aload_0
+    //   26: getfield 23	blpq:b	Ljava/util/HashMap;
+    //   29: aload_1
+    //   30: invokevirtual 64	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   33: checkcast 52	blpr
+    //   36: astore_1
+    //   37: aload_1
+    //   38: ifnonnull +8 -> 46
+    //   41: aconst_null
+    //   42: astore_1
+    //   43: goto -22 -> 21
+    //   46: aload_1
+    //   47: invokevirtual 67	blpr:get	()Ljava/lang/Object;
+    //   50: astore_1
+    //   51: goto -30 -> 21
+    //   54: astore_1
+    //   55: aload_0
+    //   56: monitorexit
+    //   57: aload_1
+    //   58: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	59	0	this	blpq
+    //   0	59	1	paramK	K
+    //   14	6	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	15	54	finally
+    //   25	37	54	finally
+    //   46	51	54	finally
   }
   
-  public void a(blvb paramblvb)
+  /* Error */
+  public final V a(K paramK, V paramV)
   {
-    this.jdField_a_of_type_Blvb = paramblvb;
-    if (this.jdField_a_of_type_Blvb != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-      if ((!"0".equals(this.jdField_a_of_type_Blvb.jdField_a_of_type_JavaLangString)) && (!"call_material_id".equals(this.jdField_a_of_type_Blvb.jdField_a_of_type_JavaLangString))) {
-        break label273;
-      }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.b.setVisibility(8);
-      this.d.setVisibility(8);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label262;
-      }
-      if (!"0".equals(this.jdField_a_of_type_Blvb.jdField_a_of_type_JavaLangString)) {
-        break label198;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      if (!this.jdField_a_of_type_Blvb.b()) {
-        break label641;
-      }
-      this.b.setVisibility(0);
-      this.b.setImageResource(this.jdField_a_of_type_Blvb.a());
-    }
-    for (;;)
-    {
-      this.itemView.setOnClickListener(this);
-      paramblvb = a(getAdapterPosition());
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(2131378207, paramblvb);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(2131378172, Boolean.valueOf(false));
-      if (!this.jdField_a_of_type_Boolean) {
-        break label683;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(blpm.c);
-      return;
-      label198:
-      this.d.setVisibility(0);
-      UIUtils.setViewByURL(this.d, "https://downv6.qq.com/shadow_qqcamera/Android/image/material_more.png", UIUtils.dip2px(this.itemView.getContext(), blpm.a()), UIUtils.dip2px(this.itemView.getContext(), blpm.a()), this.itemView.getContext().getResources().getDrawable(2130850704), null);
-      break;
-      label262:
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      break;
-      label273:
-      if ("stub_placeholder_material_id".equals(this.jdField_a_of_type_Blvb.jdField_a_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.b.setVisibility(8);
-        this.d.setVisibility(0);
-        this.d.setImageResource(2130844473);
-        break;
-      }
-      if (this.jdField_a_of_type_Blvb.a())
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.d.setVisibility(0);
-        this.d.setTag(2131378207, this.jdField_a_of_type_Blvb.c);
-        this.d.setTag(2131378172, Boolean.valueOf(false));
-        UIUtils.setViewByURL(this.d, this.jdField_a_of_type_Blvb.c, UIUtils.dip2px(this.itemView.getContext(), blpm.a()), UIUtils.dip2px(this.itemView.getContext(), blpm.a()), this.itemView.getContext().getResources().getDrawable(2130844473), null);
-        this.d.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.b.setVisibility(0);
-        this.b.setImageResource(2130845854);
-        break;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.d.setVisibility(0);
-      this.d.setTag(2131378207, this.jdField_a_of_type_Blvb.c);
-      this.d.setTag(2131378172, Boolean.valueOf(false));
-      UIUtils.setViewByURL(this.d, this.jdField_a_of_type_Blvb.c, UIUtils.dip2px(this.itemView.getContext(), blpm.a()), UIUtils.dip2px(this.itemView.getContext(), blpm.a()), this.itemView.getContext().getResources().getDrawable(2130844473), null);
-      if (this.jdField_a_of_type_Blvb.e) {
-        a(2);
-      }
-      for (;;)
-      {
-        this.b.setVisibility(8);
-        break;
-        if (this.jdField_a_of_type_Blvb.f) {
-          a(1);
-        } else {
-          a(0);
-        }
-      }
-      label641:
-      if (this.jdField_a_of_type_Blvb.a())
-      {
-        this.b.setVisibility(0);
-        this.b.setImageResource(2130845854);
-      }
-      else
-      {
-        this.b.setVisibility(8);
-      }
-    }
-    label683:
-    UIUtils.setViewByURL(this.jdField_a_of_type_AndroidWidgetImageView, paramblvb, UIUtils.dip2px(this.itemView.getContext(), blpm.b()), UIUtils.dip2px(this.itemView.getContext(), blpm.b()), this.itemView.getContext().getResources().getDrawable(2130850704), null);
-  }
-  
-  public void b(blvb paramblvb)
-  {
-    this.jdField_a_of_type_Blvb = paramblvb;
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = getAdapterPosition();
-    if ((this.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView != null) && (i >= 0))
-    {
-      blpm.a = blpm.b;
-      blpm.b = i;
-      this.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.smoothScrollToPosition(i);
-    }
-    if ((this.jdField_a_of_type_Blvb != null) && ("call_material_id".equals(this.jdField_a_of_type_Blvb.jdField_a_of_type_JavaLangString)))
-    {
-      bmbc.a().X();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    bmbg.a().g("none");
-    bmbg.a().f("2");
-    bmbg.a().d(0);
-    label104:
-    Object localObject2;
-    if (i == 0)
-    {
-      bmbg.a().c(-1);
-      localObject2 = bmbc.a();
-      if (this.jdField_a_of_type_Blvb != null) {
-        break label214;
-      }
-      localObject1 = "";
-      label119:
-      ((bmbc)localObject2).d((String)localObject1);
-      localObject2 = new StringBuilder().append("【Click】Item :");
-      if (this.jdField_a_of_type_Blvb != null) {
-        break label225;
-      }
-      localObject1 = "";
-      label149:
-      bmbx.b("AEBottomListAdapter", (String)localObject1);
-      localObject2 = new StringBuilder().append("【Click】Usable :");
-      if (this.jdField_a_of_type_Blvb != null) {
-        break label236;
-      }
-    }
-    label214:
-    label225:
-    label236:
-    for (Object localObject1 = "";; localObject1 = Boolean.valueOf(this.jdField_a_of_type_Blvb.e))
-    {
-      bmbx.b("AEBottomListAdapter", localObject1);
-      break;
-      bmbg.a().c(i);
-      break label104;
-      localObject1 = this.jdField_a_of_type_Blvb.jdField_a_of_type_JavaLangString;
-      break label119;
-      localObject1 = this.jdField_a_of_type_Blvb.jdField_a_of_type_JavaLangString;
-      break label149;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: invokespecial 61	blpq:a	()V
+    //   6: aload_0
+    //   7: getfield 45	blpq:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   10: aload_1
+    //   11: aload_2
+    //   12: invokevirtual 73	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   15: pop
+    //   16: aload_0
+    //   17: getfield 23	blpq:b	Ljava/util/HashMap;
+    //   20: aload_1
+    //   21: new 52	blpr
+    //   24: dup
+    //   25: aload_1
+    //   26: aload_2
+    //   27: aload_0
+    //   28: getfield 28	blpq:jdField_a_of_type_JavaLangRefReferenceQueue	Ljava/lang/ref/ReferenceQueue;
+    //   31: invokespecial 76	blpr:<init>	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+    //   34: invokevirtual 73	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   37: checkcast 52	blpr
+    //   40: astore_1
+    //   41: aload_1
+    //   42: ifnonnull +9 -> 51
+    //   45: aconst_null
+    //   46: astore_1
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: aload_1
+    //   50: areturn
+    //   51: aload_1
+    //   52: invokevirtual 67	blpr:get	()Ljava/lang/Object;
+    //   55: astore_1
+    //   56: goto -9 -> 47
+    //   59: astore_1
+    //   60: aload_0
+    //   61: monitorexit
+    //   62: aload_1
+    //   63: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	64	0	this	blpq
+    //   0	64	1	paramK	K
+    //   0	64	2	paramV	V
+    // Exception table:
+    //   from	to	target	type
+    //   2	41	59	finally
+    //   51	56	59	finally
   }
 }
 

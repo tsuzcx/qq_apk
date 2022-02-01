@@ -1,37 +1,16 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
 
-public class ayzm
-  implements BusinessObserver
+class ayzm
+  extends azbd
 {
-  private void a(int paramInt, boolean paramBoolean, Object paramObject)
+  ayzm(ayzg paramayzg) {}
+  
+  public void a(int paramInt)
   {
-    if (paramInt == 1) {
-      a(paramBoolean, ((Integer)paramObject).intValue());
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPanel", 2, "onBatteryChanged updateOnlineStatusItem");
     }
-  }
-  
-  private void b(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt == 2) {}
-    try
-    {
-      a(paramBoolean, ((Boolean)paramObject).booleanValue());
-      return;
-    }
-    catch (Exception paramObject)
-    {
-      azeu.a("HelloQQWake", "onUpdate_onGetQQAssistantValue error:" + paramObject.getMessage());
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    a(paramInt, paramBoolean, paramObject);
-    b(paramInt, paramBoolean, paramObject);
+    ayzg.a(this.a).b();
   }
 }
 

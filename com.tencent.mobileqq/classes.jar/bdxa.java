@@ -1,38 +1,18 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.widget.PinnedFooterExpandableListView;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class bdxa
-  implements TextWatcher
+class bdxa
+  implements Callable<Boolean>
 {
-  public bdxa(NewTroopContactView paramNewTroopContactView) {}
+  bdxa(bdwy parambdwy, File paramFile) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public Boolean a()
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setVisibility(0);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment.a(paramEditable);
-      }
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setVisibility(8);
+    if ((bdwy.a(this.jdField_a_of_type_Bdwy).exists()) && (this.jdField_a_of_type_JavaIoFile == bdwy.a(this.jdField_a_of_type_Bdwy))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

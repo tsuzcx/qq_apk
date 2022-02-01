@@ -2,7 +2,6 @@ package com.tencent.ttpic.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.RectF;
@@ -29,6 +28,18 @@ public class AlgoUtils
   private static final String TAG = "AlgoUtils";
   private static int mAverageHistogram = -1;
   private static final Random mRandom = new Random(System.currentTimeMillis());
+  
+  private static float[] GLKVector4Subtract(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    float[] arrayOfFloat = new float[paramArrayOfFloat1.length];
+    int i = 0;
+    while (i < paramArrayOfFloat1.length)
+    {
+      paramArrayOfFloat1[i] -= paramArrayOfFloat2[i];
+      i += 1;
+    }
+    return arrayOfFloat;
+  }
   
   public static native void RGBA2YUV420SP(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2);
   
@@ -391,24 +402,83 @@ public class AlgoUtils
     return GlUtil.ORIGIN_TEX_COORDS;
   }
   
+  public static float[] calcPerspectiveProjTransformMatrix(float[] paramArrayOfFloat, int paramInt1, int paramInt2, float paramFloat)
+  {
+    float[] arrayOfFloat1 = new float[3];
+    arrayOfFloat1[0] = paramArrayOfFloat[0];
+    arrayOfFloat1[1] = paramArrayOfFloat[1];
+    arrayOfFloat1[2] = paramArrayOfFloat[2];
+    paramFloat = paramArrayOfFloat[3];
+    float[] arrayOfFloat2 = new float[2];
+    arrayOfFloat2[0] = (paramArrayOfFloat[4] * paramArrayOfFloat[3]);
+    arrayOfFloat2[1] = (paramArrayOfFloat[5] * paramArrayOfFloat[3]);
+    paramFloat *= 110.0F;
+    float f = (float)(paramInt2 / 2.0D / Math.tan(0.5235987755982988D));
+    paramArrayOfFloat = new float[16];
+    android.opengl.Matrix.setIdentityM(paramArrayOfFloat, 0);
+    android.opengl.Matrix.translateM(paramArrayOfFloat, 0, arrayOfFloat2[0] - paramInt1 * 0.5F, -(arrayOfFloat2[1] - paramInt2 * 0.5F), f);
+    android.opengl.Matrix.rotateM(paramArrayOfFloat, 0, -arrayOfFloat1[2], 0.0F, 0.0F, 1.0F);
+    android.opengl.Matrix.rotateM(paramArrayOfFloat, 0, -arrayOfFloat1[1], 0.0F, 1.0F, 0.0F);
+    android.opengl.Matrix.rotateM(paramArrayOfFloat, 0, arrayOfFloat1[0], 1.0F, 0.0F, 0.0F);
+    android.opengl.Matrix.scaleM(paramArrayOfFloat, 0, paramFloat, paramFloat, paramFloat);
+    arrayOfFloat1 = new float[4];
+    arrayOfFloat2 = new float[4];
+    float[] arrayOfFloat3 = new float[4];
+    arrayOfFloat3 = new float[16];
+    float[] arrayOfFloat4 = new float[16];
+    android.opengl.Matrix.multiplyMV(arrayOfFloat1, 0, paramArrayOfFloat, 0, new float[] { 0.0F, 11.8F / 110.0F, 113.2F / 110.0F, 1.0F }, 0);
+    android.opengl.Matrix.multiplyMV(arrayOfFloat2, 0, paramArrayOfFloat, 0, new float[] { 0.0F, 0.0F, 0.0F, 1.0F }, 0);
+    arrayOfFloat1 = GLKVector4Subtract(arrayOfFloat1, arrayOfFloat2);
+    android.opengl.Matrix.setIdentityM(arrayOfFloat3, 0);
+    android.opengl.Matrix.translateM(arrayOfFloat3, 0, arrayOfFloat1[0], arrayOfFloat1[1], arrayOfFloat1[2]);
+    android.opengl.Matrix.multiplyMM(arrayOfFloat4, 0, arrayOfFloat3, 0, paramArrayOfFloat, 0);
+    return arrayOfFloat4;
+  }
+  
+  public static void calcRotateMatrix(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    float f1 = (float)Math.cos(paramArrayOfFloat1[0]);
+    float f2 = (float)Math.sin(paramArrayOfFloat1[0]);
+    float f3 = (float)Math.cos(paramArrayOfFloat1[1]);
+    float f4 = (float)Math.sin(paramArrayOfFloat1[1]);
+    float f5 = (float)Math.cos(paramArrayOfFloat1[2]);
+    float f6 = (float)Math.sin(paramArrayOfFloat1[2]);
+    paramArrayOfFloat2[0] = (f3 * f5);
+    paramArrayOfFloat2[1] = (f3 * f6);
+    paramArrayOfFloat2[2] = (-f4);
+    paramArrayOfFloat2[3] = 0.0F;
+    paramArrayOfFloat2[4] = (f5 * f4 * f2 - f1 * f6);
+    paramArrayOfFloat2[5] = (f5 * f1 + f2 * f4 * f6);
+    paramArrayOfFloat2[6] = (f3 * f2);
+    paramArrayOfFloat2[7] = 0.0F;
+    paramArrayOfFloat2[8] = (f6 * f2 + f5 * f1 * f4);
+    paramArrayOfFloat2[9] = (f4 * f1 * f6 - f2 * f5);
+    paramArrayOfFloat2[10] = (f1 * f3);
+    paramArrayOfFloat2[11] = 0.0F;
+    paramArrayOfFloat2[12] = 0.0F;
+    paramArrayOfFloat2[13] = 0.0F;
+    paramArrayOfFloat2[14] = 0.0F;
+    paramArrayOfFloat2[15] = 1.0F;
+  }
+  
   public static void calcTransformMatrix(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat)
   {
     float f1 = (float)Math.cos(paramArrayOfFloat1[0]);
     float f2 = (float)Math.sin(paramArrayOfFloat1[0]);
     float f3 = (float)Math.cos(paramArrayOfFloat1[1]);
     float f4 = (float)Math.sin(paramArrayOfFloat1[1]);
-    float f5 = (float)Math.cos(-paramArrayOfFloat1[2]);
-    float f6 = (float)Math.sin(-paramArrayOfFloat1[2]);
-    paramArrayOfFloat2[0] = (f3 * f5 + f2 * f4 * f6);
-    paramArrayOfFloat2[1] = (f1 * f6);
-    paramArrayOfFloat2[2] = (f3 * f2 * f6 - f5 * f4);
+    float f5 = (float)Math.cos(paramArrayOfFloat1[2]);
+    float f6 = (float)Math.sin(paramArrayOfFloat1[2]);
+    paramArrayOfFloat2[0] = (f3 * f5);
+    paramArrayOfFloat2[1] = (f3 * f6);
+    paramArrayOfFloat2[2] = (-f4);
     paramArrayOfFloat2[3] = 0.0F;
-    paramArrayOfFloat2[4] = (f5 * f2 * f4 - f3 * f6);
-    paramArrayOfFloat2[5] = (f1 * f5);
-    paramArrayOfFloat2[6] = (f5 * f3 * f2 + f6 * f4);
+    paramArrayOfFloat2[4] = (f5 * f4 * f2 - f1 * f6);
+    paramArrayOfFloat2[5] = (f5 * f1 + f2 * f4 * f6);
+    paramArrayOfFloat2[6] = (f3 * f2);
     paramArrayOfFloat2[7] = 0.0F;
-    paramArrayOfFloat2[8] = (f4 * f1);
-    paramArrayOfFloat2[9] = (-f2);
+    paramArrayOfFloat2[8] = (f6 * f2 + f5 * f1 * f4);
+    paramArrayOfFloat2[9] = (f4 * f1 * f6 - f2 * f5);
     paramArrayOfFloat2[10] = (f1 * f3);
     paramArrayOfFloat2[11] = 0.0F;
     paramArrayOfFloat2[12] = paramArrayOfFloat1[4];
@@ -1122,7 +1192,7 @@ public class AlgoUtils
     return new float[] { f1, f5 - f1 * f4 };
   }
   
-  public static PointF mapPoint(PointF paramPointF, Matrix paramMatrix)
+  public static PointF mapPoint(PointF paramPointF, android.graphics.Matrix paramMatrix)
   {
     float[] arrayOfFloat = new float[2];
     paramMatrix.mapPoints(arrayOfFloat, new float[] { paramPointF.x, paramPointF.y });
@@ -1131,7 +1201,7 @@ public class AlgoUtils
     return paramPointF;
   }
   
-  public static List<PointF> mapPoints(List<PointF> paramList, Matrix paramMatrix)
+  public static List<PointF> mapPoints(List<PointF> paramList, android.graphics.Matrix paramMatrix)
   {
     float[] arrayOfFloat1 = new float[2];
     float[] arrayOfFloat2 = new float[2];
@@ -1168,6 +1238,30 @@ public class AlgoUtils
       arrayOfInt[i] = paramArrayOfInt2[paramArrayOfInt1[i]];
       i += 1;
     }
+  }
+  
+  public static int[] mergeCurve(int[] paramArrayOfInt1, int[] paramArrayOfInt2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramArrayOfInt1 == null) || (paramArrayOfInt2 == null)) {
+      return null;
+    }
+    int k = Math.min(paramArrayOfInt1.length, paramArrayOfInt2.length);
+    int[] arrayOfInt = new int[k];
+    int i = 0;
+    if (i < k)
+    {
+      int j = (int)(paramArrayOfInt1[i] * paramFloat1 + i * (1.0F - paramFloat1));
+      if (j >= 0) {}
+      for (;;)
+      {
+        float f = paramArrayOfInt2[j];
+        arrayOfInt[i] = ((int)(j * (1.0F - paramFloat2) + f * paramFloat2));
+        i += 1;
+        break;
+        j = 0;
+      }
+    }
+    return arrayOfInt;
   }
   
   public static PointF middlePoint(PointF paramPointF1, PointF paramPointF2)
@@ -1305,14 +1399,14 @@ public class AlgoUtils
         i = (i + 360) % 360;
         float f;
         label93:
-        Matrix localMatrix;
+        android.graphics.Matrix localMatrix;
         if (i == 90)
         {
           f = localFaceStatus.pitch;
           localFaceStatus.pitch = (-localFaceStatus.yaw);
           localFaceStatus.yaw = f;
           localFaceStatus.roll += i;
-          localMatrix = new Matrix();
+          localMatrix = new android.graphics.Matrix();
           localMatrix.reset();
           localMatrix.postTranslate(-paramInt1 / 2.0F, -paramInt2 / 2.0F);
           localMatrix.postRotate(i, 0.0F, 0.0F);
@@ -1358,7 +1452,7 @@ public class AlgoUtils
       return null;
     }
     paramInt3 = (paramInt3 + 360) % 360;
-    Matrix localMatrix = new Matrix();
+    android.graphics.Matrix localMatrix = new android.graphics.Matrix();
     localMatrix.reset();
     localMatrix.postTranslate(-paramInt1 / 2.0F, -paramInt2 / 2.0F);
     localMatrix.postRotate(paramInt3, 0.0F, 0.0F);
@@ -1385,7 +1479,7 @@ public class AlgoUtils
       return localObject;
     }
     paramInt3 = (paramInt3 + 360) % 360;
-    Matrix localMatrix = new Matrix();
+    android.graphics.Matrix localMatrix = new android.graphics.Matrix();
     localMatrix.reset();
     localMatrix.postTranslate(-paramInt1 / 2.0F, -paramInt2 / 2.0F);
     localMatrix.postRotate(paramInt3, 0.0F, 0.0F);

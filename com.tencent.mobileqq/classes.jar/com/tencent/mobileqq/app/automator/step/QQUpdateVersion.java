@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import abwe;
-import abwp;
-import abwz;
+import acml;
+import acmw;
+import acnh;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bbli;
+import bcsa;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -32,13 +32,13 @@ public class QQUpdateVersion
     int j;
     Object localObject3;
     Object localObject1;
-    if (i < abwz.c.length)
+    if (i < acnh.c.length)
     {
-      str = abwz.c[i];
-      j = abwz.u[i];
+      str = acnh.c[i];
+      j = acnh.u[i];
       localObject3 = this.a.app.getMessageFacade().getMsgList(str, j);
       localObject1 = AppConstants.LBS_SAY_HELLO_LIST_UIN;
-      if ((abwz.a(j) != 1001) && (abwz.a(j) != 10002)) {
+      if ((acnh.a(j) != 1001) && (acnh.a(j) != 10002)) {
         break label85;
       }
       localObject1 = AppConstants.LBS_SAY_HELLO_LIST_UIN;
@@ -49,7 +49,7 @@ public class QQUpdateVersion
       {
         return;
         label85:
-        if (abwz.a(j) == 1010) {
+        if (acnh.a(j) == 1010) {
           localObject1 = AppConstants.DATE_SAY_HELLO_LIST_UIN;
         }
       }
@@ -62,7 +62,7 @@ public class QQUpdateVersion
         while (localIterator.hasNext())
         {
           localObject3 = (MessageRecord)localIterator.next();
-          if ((!((String)localObject1).equals(((MessageRecord)localObject3).senderuin)) && (abwz.d((MessageRecord)localObject3)))
+          if ((!((String)localObject1).equals(((MessageRecord)localObject3).senderuin)) && (acnh.d((MessageRecord)localObject3)))
           {
             if (QLog.isColorLevel()) {
               QLog.d("QQUpdateVersion", 2, "doMergeSayHelloBox oneWay=" + ((MessageRecord)localObject3).getBaseInfoString());
@@ -87,7 +87,7 @@ public class QQUpdateVersion
           if (localObject2 != null)
           {
             this.a.app.getMessageFacade().removeMsgFromMsgBox(str, j, localObject2.frienduin, localObject2.selfuin);
-            localObject3 = bbli.a(localObject2.msgtype);
+            localObject3 = bcsa.a(localObject2.msgtype);
             MessageRecord.copyMessageRecordBaseField((MessageRecord)localObject3, localObject2);
             ((MessageRecord)localObject3).senderuin = ((String)localObject1);
             ((MessageRecord)localObject3).frienduin = str;
@@ -145,7 +145,7 @@ public class QQUpdateVersion
     }
     try
     {
-      String[] arrayOfString = "8.4.8".split("\\.");
+      String[] arrayOfString = "8.4.10".split("\\.");
       if ((arrayOfString != null) && (arrayOfString.length >= 2))
       {
         int i = Integer.parseInt(arrayOfString[0]);
@@ -163,13 +163,13 @@ public class QQUpdateVersion
         {
           d();
           localSharedPreferences.edit().putBoolean("qq_update_6.5.5", false).commit();
-          if (!"8.4.8".equals(str))
+          if (!"8.4.10".equals(str))
           {
             if (QLog.isColorLevel()) {
-              QLog.d("QQUpdateVersion", 2, String.format("version update, old=%s, new=%s", new Object[] { str, "8.4.8" }));
+              QLog.d("QQUpdateVersion", 2, String.format("version update, old=%s, new=%s", new Object[] { str, "8.4.10" }));
             }
             this.a.app.getApp().getSharedPreferences("loginwelcome_" + this.a.app.getCurrentAccountUin(), 0).edit().putBoolean("request_state", true).commit();
-            localSharedPreferences.edit().putString("qq_update_version", "8.4.8").commit();
+            localSharedPreferences.edit().putString("qq_update_version", "8.4.10").commit();
           }
           return 7;
           localException1 = localException1;

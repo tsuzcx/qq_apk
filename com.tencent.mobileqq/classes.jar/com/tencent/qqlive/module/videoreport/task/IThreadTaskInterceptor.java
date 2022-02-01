@@ -2,6 +2,8 @@ package com.tencent.qqlive.module.videoreport.task;
 
 public abstract interface IThreadTaskInterceptor
 {
+  public abstract boolean removePendingTask(Runnable paramRunnable);
+  
   public abstract boolean shouldInterceptTask(Runnable paramRunnable);
 }
 

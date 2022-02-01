@@ -1,8 +1,17 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aygv
+class aygv
+  implements View.OnClickListener
 {
-  public abstract boolean a(Context paramContext, String paramString);
+  aygv(ayfx paramayfx) {}
+  
+  public void onClick(View paramView)
+  {
+    ayfx.c(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

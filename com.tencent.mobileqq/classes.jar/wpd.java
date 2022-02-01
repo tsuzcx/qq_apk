@@ -1,27 +1,48 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.FriendNodeViewHolder.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class wpd
-  extends Subscriber.SingleEventSubscriberNoRefect<wcy>
+  extends wpg
 {
-  woz a;
-  
-  public wpd(@NonNull woz paramwoz)
+  public wpd(ViewGroup paramViewGroup)
   {
-    this.a = paramwoz;
+    super(paramViewGroup, 2131561731);
   }
   
-  protected void a(@NonNull wcy paramwcy)
+  public void a(wly paramwly)
   {
-    if (paramwcy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      this.a.a(paramwcy.jdField_a_of_type_JavaLangString);
+    ykq.a("FriendNodeViewHolder", "bindData %s", paramwly);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    QQAppInterface localQQAppInterface;
+    String str;
+    if ((localObject instanceof QQAppInterface))
+    {
+      localQQAppInterface = (QQAppInterface)localObject;
+      str = String.valueOf(paramwly.b);
+      b(zfe.b(paramwly.g));
+      if (!woo.h) {
+        break label180;
+      }
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wcy.class;
+    label180:
+    for (localObject = ContactUtils.getFriendShowName(localQQAppInterface, str);; localObject = str)
+    {
+      this.a.setNodeName((String)localObject, false);
+      ThreadManager.post(new FriendNodeViewHolder.1(this, localQQAppInterface, str), 8, null, true);
+      if (QLog.isColorLevel())
+      {
+        QLog.e("FriendNodeViewHolder", 2, new Object[] { "userItem = " + paramwly.b + ", name = " + (String)localObject, " list: ", String.valueOf(paramwly.a) });
+        QLog.e("FriendNodeViewHolder", 2, new Object[] { "data: ", String.valueOf(paramwly) });
+      }
+      super.a(paramwly);
+      return;
+    }
   }
 }
 

@@ -3,11 +3,12 @@ package cooperation.qzone.contentbox;
 import NS_MOBILE_FEEDS.single_feed;
 import android.content.Intent;
 import android.view.View;
-import bfvp;
-import bfwg;
+import bheh;
+import bhey;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -47,7 +48,7 @@ class QZoneMsgFragment$9
       {
         return;
         if ((paramMQMsg != null) && (paramMQMsg.msgInteractData != null)) {
-          ((QZoneMsgManager)this.this$0.app.getManager(293)).likeFeed(paramMQMsg.msgInteractData.likeCell, paramMQMsg.pushTime);
+          ((QZoneMsgManager)this.this$0.app.getManager(QQManagerFactory.QZONE_MSG_MANAGER)).likeFeed(paramMQMsg.msgInteractData.likeCell, paramMQMsg.pushTime);
         }
         LpReportInfo_pf00064.allReport(133, 5, String.valueOf(paramMQMsg.msgType));
         return;
@@ -106,7 +107,7 @@ class QZoneMsgFragment$9
             QZoneShareManager.shareToQzone(this.this$0.getActivity(), BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramView, null, 0);
           }
         }
-        paramMQMsg = bfwg.a(this.this$0.app, this.this$0.getActivity(), "mqqzone://arouse/activefeed");
+        paramMQMsg = bhey.a(this.this$0.app, this.this$0.getActivity(), "mqqzone://arouse/activefeed");
       } while (paramMQMsg == null);
       label504:
       paramMQMsg.a();

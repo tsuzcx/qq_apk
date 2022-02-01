@@ -1,21 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.upgrade.UpgradeTIMManager;
-import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
 
-public class ajbn
-  implements DialogInterface.OnClickListener
+public abstract class ajbn
 {
-  public ajbn(Conversation paramConversation, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public long a;
+  public String a;
+  public boolean b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String a()
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation, null);
-    ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a(), this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.c);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a, "CliOper", "", "", "0X800815D", "0X800815D", 0, 0, "", "", "", "");
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a, "CliOper", "", "", "0X8008657", "0X8008657", 0, 0, "", "", "", "");
+    return "";
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return this.a;
+  }
+  
+  public abstract boolean a();
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return false;
   }
 }
 

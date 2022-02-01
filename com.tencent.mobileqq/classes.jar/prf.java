@@ -1,28 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
 public class prf
-  implements Animator.AnimatorListener
 {
-  public prf(VideoView paramVideoView) {}
+  private static long jdField_a_of_type_Long = 300000L;
+  private static SosoInterface.SosoLbsInfo jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo;
+  private static long b;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static SosoInterface.SosoLbsInfo a()
   {
-    if (VideoView.access$2700(this.a) != null) {
-      VideoView.access$2700(this.a).setVisibility(4);
+    long l = System.currentTimeMillis();
+    if (l - b > jdField_a_of_type_Long)
+    {
+      jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo = LbsManagerService.getCachedLbsInfo("readinjoy_anti_cheating");
+      b = l;
     }
-    if (VideoView.access$2800(this.a) != null) {
-      VideoView.access$2800(this.a).setVisibility(4);
-    }
+    return jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,15 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class tdq
+public class tdq
   implements View.OnClickListener
 {
-  tdq(tdo paramtdo) {}
+  public tdq(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
   public void onClick(View paramView)
   {
-    this.a.dismiss();
+    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

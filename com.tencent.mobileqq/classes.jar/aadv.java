@@ -1,55 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
-class aadv
+public class aadv
+  implements DialogInterface.OnClickListener
 {
-  private WebSoService.WebSoState.WebSo3 jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3;
-  private String jdField_a_of_type_JavaLangString;
+  public aadv(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  private void a(aadt paramaadt, String paramString, WebSoService.WebSoState.WebSo3 paramWebSo3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramWebSo3 != null) && (!TextUtils.isEmpty(paramString))) {
-      bgzd.a("callJs");
-    }
-    try
-    {
-      paramaadt.callJs(paramString, new String[] { this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.a() });
-      this.jdField_a_of_type_JavaLangString = null;
-      return;
-    }
-    catch (Exception paramaadt)
-    {
-      for (;;)
-      {
-        paramaadt.printStackTrace();
-      }
-    }
-  }
-  
-  public WebSoService.WebSoState.WebSo3 a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3;
-  }
-  
-  public void a()
-  {
-    bgzd.a("clearJsCallback");
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = null;
-  }
-  
-  public void a(aadt paramaadt, WebSoService.WebSoState.WebSo3 paramWebSo3)
-  {
-    bgzd.a("setUpWebso3");
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = paramWebSo3;
-    a(paramaadt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
-  }
-  
-  public void a(aadt paramaadt, String paramString)
-  {
-    bgzd.a("registerGetData");
-    this.jdField_a_of_type_JavaLangString = paramString;
-    a(paramaadt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
+    EditUniqueTitleActivity.a(this.a);
   }
 }
 

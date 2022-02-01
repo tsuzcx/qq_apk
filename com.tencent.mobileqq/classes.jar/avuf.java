@@ -1,46 +1,91 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.intervideo.huayang.MonitorConfig.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
 public class avuf
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  public static Map<String, avuf> a;
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
   
-  public avue a()
+  static
   {
-    return new avue(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
+    jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  public avuf a(int paramInt)
+  public static void a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null) {}
+    do
+    {
+      return;
+      paramContext = paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).getString("pre_monitor" + paramString, null);
+    } while (paramContext == null);
+    a(paramString, paramContext);
   }
   
-  public avuf a(MsgBackupUserData paramMsgBackupUserData)
+  public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    return this;
+    if ((jdField_a_of_type_JavaUtilMap.get(paramString1) != null) || (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).edit().putString("pre_monitor" + paramString1, paramString2).commit();
+    a(paramString1, paramString2);
   }
   
-  public avuf a(String paramString)
+  private static void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    try
+    {
+      paramString2 = new JSONObject(paramString2);
+      avuf localavuf = new avuf();
+      localavuf.jdField_a_of_type_Int = paramString2.optInt("startupId");
+      localavuf.b = paramString2.optInt("downloadSucId");
+      localavuf.c = paramString2.optInt("downloadFailId");
+      localavuf.d = paramString2.optInt("loadSucId");
+      localavuf.e = paramString2.optInt("loadFailId");
+      localavuf.f = paramString2.optInt("startSucId");
+      localavuf.g = paramString2.optInt("firstUserId");
+      localavuf.h = paramString2.optInt("exitId");
+      jdField_a_of_type_JavaUtilMap.put(paramString1, localavuf);
+      if (QLog.isColorLevel()) {
+        QLog.d("MonitorConfig", 2, paramString1 + localavuf);
+      }
+      return;
+    }
+    catch (Throwable paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MonitorConfig", 2, "pareMonitorConfig exception :" + paramString1);
+    }
   }
   
-  public avuf b(String paramString)
+  public static void b(Context paramContext, String paramString)
   {
-    this.b = paramString;
-    return this;
-  }
-  
-  public avuf c(String paramString)
-  {
-    this.c = paramString;
-    return this;
+    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null)
+    {
+      avue.b(String.valueOf(((avuf)jdField_a_of_type_JavaUtilMap.get(paramString)).jdField_a_of_type_Int));
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MonitorConfig", 2, "没有找到匹配的monitor离线配置文件，重新拉取一次");
+    }
+    avue.b("3235982");
+    new Handler(Looper.getMainLooper()).postDelayed(new MonitorConfig.1(paramContext, paramString), 1500L);
   }
 }
 

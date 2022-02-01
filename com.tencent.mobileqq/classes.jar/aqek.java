@@ -1,23 +1,31 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Arrays;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.RspBody;
 
 public class aqek
 {
-  @SerializedName("seqList")
-  public int[] a;
-  @SerializedName("troopType")
-  public long[] a;
+  public ArrayList<aqel> a;
   
-  @NotNull
-  public String toString()
+  public static aqek a(oidb_0x74b.RspBody paramRspBody)
   {
-    return "TemplateBean{troopType=" + Arrays.toString(this.jdField_a_of_type_ArrayOfLong) + ", seqList=" + Arrays.toString(this.jdField_a_of_type_ArrayOfInt) + '}';
+    Object localObject;
+    if (paramRspBody == null) {
+      localObject = null;
+    }
+    aqek localaqek;
+    do
+    {
+      return localObject;
+      localaqek = new aqek();
+      localObject = localaqek;
+    } while (!paramRspBody.rpt_msg_uin_head_list.has());
+    localaqek.a = aqel.a(paramRspBody.rpt_msg_uin_head_list.get());
+    return localaqek;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqek
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,23 @@
-public class qpf
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import java.util.ArrayList;
+
+class qpf
+  implements rgl
 {
-  private static final qpd a = new qpd(null);
+  qpf(qpa paramqpa, qfw paramqfw, Container paramContainer, int paramInt) {}
+  
+  public void a(int paramInt)
+  {
+    Object localObject = this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.a;
+    ArrayList localArrayList = ((rrl)localObject).a;
+    if ((localArrayList == null) || (localArrayList.size() == 0)) {
+      return;
+    }
+    localObject = (rrm)((rrl)localObject).a.get(paramInt);
+    qpa.a(this.jdField_a_of_type_Qpa, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Qfw.a(), (int)((rrm)localObject).a, this.jdField_a_of_type_Qfw.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Qfw.a());
+  }
 }
 
 

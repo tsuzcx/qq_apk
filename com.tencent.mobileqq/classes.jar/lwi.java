@@ -1,26 +1,23 @@
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.av.service.RecvGVideoLevelInfo;
-import com.tencent.av.service.RecvMsg;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public abstract interface lwi
-  extends IInterface
+public final class lwi
+  implements Parcelable.Creator<AVRedPacketConfig>
 {
-  public abstract Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle);
+  public AVRedPacketConfig a(Parcel paramParcel)
+  {
+    return new AVRedPacketConfig(paramParcel);
+  }
   
-  public abstract void a(RecvMsg paramRecvMsg);
-  
-  public abstract void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
-  
-  public abstract void a(String paramString, int paramInt, byte[] paramArrayOfByte);
-  
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo);
+  public AVRedPacketConfig[] a(int paramInt)
+  {
+    return new AVRedPacketConfig[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lwi
  * JD-Core Version:    0.7.0.1
  */

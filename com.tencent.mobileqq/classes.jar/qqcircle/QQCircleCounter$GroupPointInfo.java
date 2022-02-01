@@ -9,7 +9,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class QQCircleCounter$GroupPointInfo
   extends MessageMicro<GroupPointInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "touin", "num" }, new Object[] { "", Integer.valueOf(0) }, GroupPointInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26 }, new String[] { "touin", "num", "jumpSchema" }, new Object[] { "", Integer.valueOf(0), "" }, GroupPointInfo.class);
+  public final PBStringField jumpSchema = PBField.initString("");
   public final PBInt32Field num = PBField.initInt32(0);
   public final PBStringField touin = PBField.initString("");
 }

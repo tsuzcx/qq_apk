@@ -1,42 +1,24 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class aejh
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public aejh(TextPreviewSettingActivity paramTextPreviewSettingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aejh(NotificationActivity paramNotificationActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ImageView localImageView = (ImageView)this.a.findViewById(2131367013);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
-        return;
-      } while (!(paramMessage.obj instanceof Drawable));
-      localImageView.setImageDrawable((Drawable)paramMessage.obj);
-      return;
-    } while (!(paramMessage.obj instanceof Bitmap));
-    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
+    SettingCloneUtil.writeValue(this.a.app.getApp(), null, "security_scan_key", "qqsetting_security_scan_key", true);
+    this.a.app.startSecurityScan();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejh
  * JD-Core Version:    0.7.0.1
  */

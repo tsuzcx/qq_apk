@@ -1,31 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactPresenter.3;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.ArrayList;
 
-public class aiac
-  extends SosoInterface.OnLocationListener
+class aiac
+  implements DialogInterface.OnClickListener
 {
-  public aiac(Face2FaceAddContactPresenter.3 param3, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  aiac(ahzx paramahzx, ArrayList paramArrayList, String paramString) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactPresenter", 2, "onLocationFinish errCode = " + paramInt + " info = " + paramSosoLbsInfo);
-    }
-    if ((paramInt != 0) || (paramSosoLbsInfo == null)) {
-      if (aiaa.a(this.a.this$0) != null) {
-        aiaa.a(this.a.this$0).b();
-      }
-    }
-    while ((TextUtils.isEmpty(this.a.a)) || (this.a.a.length() != 4)) {
-      return;
-    }
-    aiaa.a(this.a.this$0, paramSosoLbsInfo, this.a.a, this.a.b);
+    paramDialogInterface.dismiss();
+    ahzx.a(this.jdField_a_of_type_Ahzx.app, this.jdField_a_of_type_Ahzx.sessionInfo.curFriendUin, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString);
   }
 }
 

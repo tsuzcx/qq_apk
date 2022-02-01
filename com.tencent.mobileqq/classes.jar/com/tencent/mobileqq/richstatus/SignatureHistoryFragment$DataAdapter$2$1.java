@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.richstatus;
 
-import baoj;
-import baol;
+import bbuy;
+import bbva;
 
 public class SignatureHistoryFragment$DataAdapter$2$1
   implements Runnable
 {
-  public SignatureHistoryFragment$DataAdapter$2$1(baol parambaol, int paramInt1, int paramInt2) {}
+  public SignatureHistoryFragment$DataAdapter$2$1(bbva parambbva, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    SignatureHistoryFragment.a(this.jdField_a_of_type_Baol.a.a, this.jdField_a_of_type_Int, this.b, true);
+    SignatureHistoryFragment.a(this.jdField_a_of_type_Bbva.a.a, this.jdField_a_of_type_Int, this.b, true);
   }
 }
 

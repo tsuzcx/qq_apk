@@ -1,21 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
 class awvi
-  implements View.OnTouchListener
+  implements EIPCOnGetConnectionListener
 {
-  awvi(awur paramawur) {}
+  awvi(awvg paramawvg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131364832).setAlpha(0.5F);
+    if (paramEIPCConnection != null) {
+      awvg.a(this.a, paramEIPCConnection.procName);
     }
-    for (;;)
-    {
-      return false;
-      this.a.a.findViewById(2131364832).setAlpha(1.0F);
+    awvg.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaFocusIpcClient", 2, "onConnectBind");
+    }
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      awvg.a(this.a, paramEIPCConnection.procName);
+    }
+    awvg.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaFocusIpcClient", 2, "onConnectUnbind");
     }
   }
 }

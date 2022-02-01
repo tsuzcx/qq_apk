@@ -1,28 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class aetn
-  extends bjmc
+  implements DialogInterface.OnClickListener
 {
-  public aetn(VisitorsActivity paramVisitorsActivity) {}
+  public aetn(RegisterActivity paramRegisterActivity, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.c > 0)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
-      return;
-    }
-    this.a.f.setVisibility(4);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    paramAnimation = this.a;
-    paramAnimation.c -= 1;
-    this.a.f.setVisibility(0);
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity.a.sendEmptyMessage(1);
   }
 }
 

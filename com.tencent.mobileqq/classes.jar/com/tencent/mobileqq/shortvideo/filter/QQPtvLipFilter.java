@@ -62,10 +62,10 @@ public class QQPtvLipFilter
       this.mHasInit = true;
       return;
       label112:
-      this.mFlipFaceFilter.ClearGLSL();
+      this.mFlipFaceFilter.clearGLSL();
       break;
       label122:
-      this.mCopyFaceFilter.ClearGLSL();
+      this.mCopyFaceFilter.clearGLSL();
     }
   }
   
@@ -124,10 +124,10 @@ public class QQPtvLipFilter
     {
       GLES20.glDeleteTextures(this.mFlipFaceTextureID.length, this.mFlipFaceTextureID, 0);
       if (this.mFlipFaceFilter != null) {
-        this.mFlipFaceFilter.ClearGLSL();
+        this.mFlipFaceFilter.clearGLSL();
       }
       if (this.mCopyFaceFilter != null) {
-        this.mCopyFaceFilter.ClearGLSL();
+        this.mCopyFaceFilter.clearGLSL();
       }
       if (this.mLipsFilter != null) {
         this.mLipsFilter.clear();
@@ -180,7 +180,7 @@ public class QQPtvLipFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQPtvLipFilter
  * JD-Core Version:    0.7.0.1
  */

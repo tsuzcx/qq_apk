@@ -1,19 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.event.WSCommentShowEvent;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class umm
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  umm(umj paramumj) {}
+  umm(umk paramumk) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    uya.a("comment", "onClick hide comment");
-    umj.a(this.a);
-    unw.a().a(new WSCommentShowEvent(false));
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      if (System.currentTimeMillis() - umk.a(this.a) > 1500L)
+      {
+        umk.a(this.a, false);
+        QLog.d("ReadInJoySuperMaskAd", 2, "time up do not update volume");
+      }
+      if (umk.b(this.a))
+      {
+        umk.a(this.a).sendEmptyMessageDelayed(1, 300L);
+        this.a.d();
+        return false;
+      }
+      umk.a(this.a).removeMessages(1);
+      return false;
+    }
+    umk.a(this.a);
+    return false;
   }
 }
 

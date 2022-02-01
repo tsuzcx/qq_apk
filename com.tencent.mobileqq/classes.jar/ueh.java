@@ -1,138 +1,147 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.PAReportInfo;
-import com.tencent.biz.pubaccount.util.PAReportManager.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.CommonAdBar;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import java.util.Iterator;
 import java.util.List;
-import mqq.manager.Manager;
 
 public class ueh
-  implements Handler.Callback, Manager
 {
-  private volatile int jdField_a_of_type_Int = -1;
-  private bjmp jdField_a_of_type_Bjmp;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private List<PAReportInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public ueh(QQAppInterface paramQQAppInterface)
+  public static GradientDrawable a(Context paramContext, String paramString1, float paramFloat1, float paramFloat2, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Bjmp = new bjmp(ThreadManager.getSubThreadLooper(), this);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setCornerRadius(AIOUtils.dp2px(paramFloat1, paramContext.getResources()));
+    if (!TextUtils.isEmpty(paramString2)) {
+      localGradientDrawable.setStroke(AIOUtils.dp2px(paramFloat2, paramContext.getResources()), Color.parseColor(paramString2));
+    }
+    if (!TextUtils.isEmpty(paramString1)) {
+      localGradientDrawable.setColor(Color.parseColor(paramString1));
+    }
+    return localGradientDrawable;
   }
   
-  public void a()
+  public static void a(Activity paramActivity, CommonAdBar paramCommonAdBar, List<BaseData> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "scheduleReport ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if ((this.jdField_a_of_type_JavaUtilList.size() == 0) && (this.jdField_a_of_type_Int == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PAReport", 2, "scheduleReport ... No need query DB");
-      }
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Bjmp.hasMessages(100001));
-    this.jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(100001, 3000L);
-    return;
-    this.jdField_a_of_type_Bjmp.sendEmptyMessage(100002);
-  }
-  
-  public void a(PAReportInfo paramPAReportInfo)
-  {
-    this.jdField_a_of_type_Bjmp.post(new PAReportManager.1(this, paramPAReportInfo));
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "queryDatabases ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getReadableDatabase().getCount(PAReportInfo.class.getSimpleName());
-    }
-    List localList2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(PAReportInfo.class, true, null, (String[])null, null, null, null, String.valueOf(20));
-    if (localList2 != null) {}
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.addAll(localList2);
-      this.jdField_a_of_type_Bjmp.sendEmptyMessage(100002);
+    if ((paramActivity == null) || (paramCommonAdBar == null) || (paramList == null)) {
       return;
     }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "reporting ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
+    label20:
+    BaseData localBaseData;
+    for (paramList = paramList.iterator();; paramList = (ProteusInnerData)localBaseData) {
+      for (;;)
+      {
+        if (paramList.hasNext())
+        {
+          localBaseData = (BaseData)paramList.next();
+          if (((localBaseData instanceof ProteusInnerData)) && (localBaseData.d)) {
+            if (!((ProteusInnerData)localBaseData).f()) {
+              break;
+            }
+          }
+        }
+      }
     }
-    if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {}
     for (;;)
     {
-      return;
-      Object localObject1 = (PAReportInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-      if (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove((Entity)localObject1)) {
-        continue;
+      a(paramCommonAdBar, paramList);
+      paramActivity = ues.a(paramActivity, paramList);
+      if (paramActivity == null) {
+        break;
       }
-      this.jdField_a_of_type_Int -= 1;
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      paramCommonAdBar.a(paramActivity);
+      paramActivity.a(paramList);
+      if (Build.VERSION.SDK_INT < 21) {
+        break;
+      }
+      paramCommonAdBar.setElevation(9.0F);
+      return;
+      if (!((ProteusInnerData)localBaseData).g()) {
+        break label20;
+      }
+      paramList = (ProteusInnerData)localBaseData;
+      continue;
+      paramList = null;
+    }
+  }
+  
+  public static void a(CommonAdBar paramCommonAdBar, AdData paramAdData)
+  {
+    if ((paramCommonAdBar == null) || (paramAdData == null)) {
+      return;
+    }
+    paramCommonAdBar.a();
+    ViewGroup.LayoutParams localLayoutParams = paramCommonAdBar.getLayoutParams();
+    GradientDrawable localGradientDrawable;
+    if (((paramAdData instanceof ProteusInnerData)) && (((ProteusInnerData)paramAdData).g()))
+    {
+      localLayoutParams.height = AIOUtils.dp2px(64.0F, paramCommonAdBar.getResources());
+      localGradientDrawable = a(paramCommonAdBar.getContext(), "#ffffff", 2.0F, 0.0F, "");
+      paramAdData = localGradientDrawable;
+      if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
+        break label208;
+      }
+      ((RelativeLayout.LayoutParams)localLayoutParams).leftMargin = AIOUtils.dp2px(12.0F, paramCommonAdBar.getResources());
+      ((RelativeLayout.LayoutParams)localLayoutParams).rightMargin = AIOUtils.dp2px(12.0F, paramCommonAdBar.getResources());
+      paramAdData = localGradientDrawable;
+    }
+    for (;;)
+    {
+      paramCommonAdBar.setLayoutParams(localLayoutParams);
+      if (paramAdData == null) {
+        break;
+      }
+      paramCommonAdBar.setBackgroundDrawable(paramAdData);
+      return;
+      if (((paramAdData instanceof ProteusInnerData)) && (((ProteusInnerData)paramAdData).f()))
       {
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        ??? = new ArrayList();
-        localObject1 = ((PAReportInfo)localObject1).msgIds.split("\\|");
-        int j = localObject1.length;
-        int i = 0;
-        if (i >= j) {
-          continue;
+        localLayoutParams.height = AIOUtils.dp2px(46.0F, paramCommonAdBar.getResources());
+        localGradientDrawable = a(paramCommonAdBar.getContext(), "#f7f7f7", 3.0F, 0.0F, "");
+        paramAdData = localGradientDrawable;
+        if ((localLayoutParams instanceof RelativeLayout.LayoutParams))
+        {
+          ((RelativeLayout.LayoutParams)localLayoutParams).leftMargin = AIOUtils.dp2px(7.0F, paramCommonAdBar.getResources());
+          ((RelativeLayout.LayoutParams)localLayoutParams).rightMargin = AIOUtils.dp2px(7.0F, paramCommonAdBar.getResources());
+          paramAdData = localGradientDrawable;
         }
-        ((List)???).add(localObject1[i]);
-        i += 1;
+      }
+      else
+      {
+        label208:
+        paramAdData = null;
       }
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public static boolean a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (paramMessage.what == 100001)
-    {
-      b();
-      return true;
-    }
-    if (paramMessage.what == 100002)
-    {
-      c();
-      return true;
-    }
-    return false;
+    return (!paramBoolean2) && (!paramBoolean3) && (paramBoolean1) && ((paramInt3 == 0) || (paramInt1 <= paramInt3)) && (paramInt1 * 2 >= paramInt2 * 3);
   }
   
-  public void onDestroy()
+  public static boolean a(uer paramuer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Int = -1;
-      return;
+    if ((paramuer instanceof uep)) {
+      return true;
     }
+    return paramuer instanceof uen;
+  }
+  
+  public static boolean a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    return (!paramBoolean1) && (paramBoolean2) && (!paramBoolean3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ueh
  * JD-Core Version:    0.7.0.1
  */

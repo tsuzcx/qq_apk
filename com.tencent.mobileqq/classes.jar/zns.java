@@ -1,8 +1,16 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import com.tencent.biz.richframework.animation.drawable.AnimationDrawableFactory.2;
+import java.io.File;
+import java.util.Comparator;
 
-public abstract interface zns
+public class zns
+  implements Comparator<File>
 {
-  public abstract void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed);
+  public zns(AnimationDrawableFactory.2 param2) {}
+  
+  public int a(File paramFile1, File paramFile2)
+  {
+    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
+  }
 }
 
 

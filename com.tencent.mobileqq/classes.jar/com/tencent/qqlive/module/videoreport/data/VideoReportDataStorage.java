@@ -12,6 +12,11 @@ public class VideoReportDataStorage<T>
     return this.DATA_MAP.get(paramObject);
   }
   
+  public void removeData(@NonNull Object paramObject)
+  {
+    this.DATA_MAP.remove(paramObject);
+  }
+  
   public void setData(@NonNull Object paramObject, T paramT)
   {
     this.DATA_MAP.put(paramObject, paramT);

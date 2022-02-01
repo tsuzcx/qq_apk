@@ -1,19 +1,15 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class aeuw
-  implements aeup
+  implements DialogInterface.OnClickListener
 {
-  public aeuw(BirthdayActivatePage paramBirthdayActivatePage) {}
+  public aeuw(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt > 0)
-    {
-      this.a.a.setEnabled(true);
-      return;
-    }
-    this.a.a.setEnabled(false);
+    this.a.a(this.a.b);
   }
 }
 

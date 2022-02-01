@@ -1,13 +1,21 @@
-import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
-final class pba
-  implements tgk
+public class pba
+  extends pvq
 {
-  pba(Context paramContext, String paramString) {}
+  public pba(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void a()
+  public void b(String paramString)
   {
-    pay.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    super.b(paramString);
+    if (ReadInJoyCommentListFragment.a(this.a) != null)
+    {
+      paramString = ReadInJoyCommentListFragment.a(this.a).a(paramString, ReadInJoyCommentListFragment.a(this.a));
+      if (paramString != null) {
+        ReadInJoyCommentListFragment.a(this.a).a(paramString, ozx.a(paramString, 0), 2);
+      }
+      ReadInJoyCommentListFragment.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 

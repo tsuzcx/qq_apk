@@ -1,6 +1,8 @@
 public abstract interface awro
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

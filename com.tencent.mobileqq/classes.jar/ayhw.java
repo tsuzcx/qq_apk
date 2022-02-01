@@ -1,13 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.portal.BreathEffectView;
-
-public class ayhw
-  implements ValueAnimator.AnimatorUpdateListener
+class ayhw
+  implements aqul
 {
-  public ayhw(BreathEffectView paramBreathEffectView) {}
+  ayhw(ayhd paramayhd) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
+  public int a()
+  {
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 >= 0)
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 1) {}
+    }
+    else
+    {
+      paramInt1 = 0;
+    }
+    if (paramInt1 == 0) {
+      return anvx.a(2131706760);
+    }
+    return anvx.a(2131706731);
+  }
 }
 
 

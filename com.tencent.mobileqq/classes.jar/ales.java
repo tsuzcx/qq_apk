@@ -1,27 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public class ales
-  implements Animation.AnimationListener
+class ales
+  implements View.OnClickListener
 {
-  public ales(SpecailCareListActivity paramSpecailCareListActivity, alfk paramalfk, int paramInt) {}
+  ales(aldh paramaldh) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Alfk.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(10);
-    paramAnimation.addRule(1, 2131368236);
-    paramAnimation.setMargins(0, (int)(22.0F * SpecailCareListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), (int)(23.0F * SpecailCareListActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity) + this.jdField_a_of_type_Int), 0);
-    this.jdField_a_of_type_Alfk.a.setLayoutParams(paramAnimation);
+    Intent localIntent = new Intent(aldh.a(this.a), GuideBindPhoneActivity.class);
+    localIntent.putExtra("fromKeyForContactBind", 4);
+    aldh.a(this.a).startActivity(localIntent);
+    aldh.a(this.a).getSharedPreferences("contact_bind_info" + aldh.a(this.a).app.getAccount(), 0).edit().putBoolean("key_show_contact_banner", false).commit();
+    this.a.a(18, 0);
+    aldh.a(this.a).removeMessages(11);
+    bdla.a(aldh.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 13, 0, "", "", "", "");
+    bdla.b(aldh.a(this.a).app, "CliOper", "", "", "0X80053D9", "0X80053D9", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

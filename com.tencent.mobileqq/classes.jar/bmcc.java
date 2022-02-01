@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
-class bmcc
-  implements DialogInterface.OnClickListener
+public class bmcc
+  implements aqrq
 {
-  bmcc(bmcb parambmcb, Runnable paramRunnable) {}
+  public bmcc(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onColorNoteAnimFinish()
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.a.superFinish();
   }
 }
 

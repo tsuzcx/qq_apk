@@ -1,39 +1,7 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-class aadr
-  implements nmh
-{
-  aadr(aadq paramaadq) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.TAG, 2, "onSoftKeyboardToggled");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.TAG, 2, "isCheatDialogShow:" + this.a.e);
-    }
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.f < 1) || (this.a.f > 2) || (this.a.jdField_a_of_type_Boolean));
-      if (this.a.e != aadq.c) {
-        break;
-      }
-    } while (this.a.f != 2);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.a();
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(2131691342);
-    return;
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(2131691342);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/tribe/TribeWebViewPlugin$Companion;", "", "()V", "NAME_SPACE", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class aadr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

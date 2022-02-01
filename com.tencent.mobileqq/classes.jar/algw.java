@@ -1,42 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherPreloadWebPageConfigProcessor$Config;", "", "()V", "preloadWebProcess", "", "getPreloadWebProcess", "()Z", "setPreloadWebProcess", "(Z)V", "parse", "", "configText", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class algw
+public class algw
+  extends alhf
 {
-  private boolean a = true;
-  
-  public final void a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "configText");
-    if (QLog.isColorLevel()) {
-      QLog.d("WeatherPreloadWebPageConfigProcessor", 2, paramString);
-    }
-    if (!TextUtils.isEmpty((CharSequence)paramString)) {}
-    try
-    {
-      if (new JSONObject(paramString).optInt("ConfigEnablePreloadWebProcess", 1) == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.a = bool;
-        return;
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("WeatherPreloadWebPageConfigProcessor", 1, paramString, new Object[0]);
-    }
-  }
-  
-  public final boolean a()
-  {
-    return this.a;
-  }
+  public ImageView a;
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public ImageView b;
+  public SingleLineTextView b;
 }
 
 

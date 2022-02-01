@@ -1,103 +1,42 @@
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.Transformation;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class ayhu
+class ayhu
+  extends TransProcessorHandler
 {
-  public float a;
-  public Drawable a;
-  public Transformation a;
-  public ArrayList<Animation> a;
-  public float b = 1.0F;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j = 255;
+  ayhu(ayhd paramayhd) {}
   
-  public ayhu()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
-  {
-    this.f = paramInt1;
-    this.g = paramInt2;
-    this.h = paramInt3;
-    this.i = paramInt4;
-  }
-  
-  public void a(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramAnimation);
-    paramAnimation.start();
-  }
-  
-  public boolean a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      Animation localAnimation = (Animation)localIterator.next();
-      if ((bool) || (localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation))) {}
-      for (bool = true;; bool = false) {
-        break;
-      }
+    case 1004: 
+    default: 
+    case 1003: 
+      do
+      {
+        do
+        {
+          return;
+        } while (localFileMsg.fileType != 8);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.mPhotoId);
+        }
+      } while (ayhd.a(this.a) == null);
+      ayhd.a(this.a).a = NearbyPeoplePhotoUploadProcessor.mPhotoId;
+      ayhd.d(this.a);
+      return;
     }
-    return bool;
-  }
-  
-  public boolean a(Canvas paramCanvas)
-  {
-    if ((this.j != 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
-    {
-      paramCanvas.save();
-      paramCanvas.translate(this.f, this.g);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.j);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.h, this.i);
-      paramCanvas.scale(this.jdField_a_of_type_Float, this.b, this.h / 2, this.i / 2);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      paramCanvas.restore();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
     }
-    paramCanvas = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    boolean bool = false;
-    if (paramCanvas.hasNext())
-    {
-      Animation localAnimation = (Animation)paramCanvas.next();
-      if ((bool) || (localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation))) {}
-      for (bool = true;; bool = false) {
-        break;
-      }
-    }
-    return bool;
-  }
-  
-  public void c(Canvas paramCanvas)
-  {
-    if ((this.j != 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
-    {
-      paramCanvas.save();
-      paramCanvas.translate(this.f, this.g);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.j);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.h, this.i);
-      paramCanvas.scale(this.jdField_a_of_type_Float, this.b, this.h / 2, this.i / 2);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      paramCanvas.restore();
-    }
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.a.b();
+    this.a.a.b(anvx.a(2131706771));
   }
 }
 

@@ -1,42 +1,54 @@
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface.TBSLogRunnable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.smtt.utils.TbsLogClient;
+import mqq.os.MqqHandler;
 
 public class anrd
-  extends anrh
+  extends TbsLogClient
 {
-  public anrd(QQAppInterface paramQQAppInterface, Context paramContext)
+  public anrd(BrowserAppInterface paramBrowserAppInterface, Context paramContext)
   {
-    super(paramQQAppInterface, paramContext);
+    super(paramContext);
   }
   
-  public boolean a()
+  public void d(String paramString1, String paramString2)
   {
-    try
-    {
-      String str = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("url"));
-      if ((TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("appid"))) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("openid"))))
-      {
-        QLog.e("IdentifierWebJumpAction", 1, "identification with illegal params");
-        return true;
-      }
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097E8", "0X80097E8", 0, 0, "", "", (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid"), "");
-      aukc.a();
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
-    catch (Exception localException)
-    {
-      QLog.e("IdentifierWebJumpAction", 1, "doAction error: " + localException.getMessage());
-      a("IdentifierWebJumpAction");
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
     }
-    return false;
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void showLog(String paramString)
+  {
+    if (this.a.b == -1) {
+      this.a.b = 0;
+    }
+    if (this.a.b == 1) {
+      this.a.getHandler(BrowserAppInterface.class).post(new BrowserAppInterface.TBSLogRunnable(this.a, paramString));
+    }
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
   }
 }
 

@@ -3,11 +3,11 @@ package com.tencent.mobileqq.service.qzone;
 import NS_UNDEAL_COUNT.entrance_cfg;
 import NS_UNDEAL_COUNT.mobile_count_rsp_new;
 import NS_UNDEAL_COUNT.st_report_info;
-import amtj;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import anvx;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -60,7 +60,7 @@ public class QZoneTitleTabManager
           localObject1 = localTabInfo.jdField_a_of_type_JavaLangString;
           paramArrayList = (ArrayList<QZoneTitleTabManager.TabInfo>)localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramArrayList = amtj.a(2131718769);
+            paramArrayList = anvx.a(2131719159);
           }
           ((ArrayList)localObject2).add(new QZoneTitleTabManager.TabInfo(localTabInfo.jdField_a_of_type_Int, paramArrayList));
         }
@@ -73,7 +73,7 @@ public class QZoneTitleTabManager
     if (((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_Int == 50) {
       if (!TextUtils.isEmpty(((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString)) {}
     }
-    for (((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString = amtj.a(2131711494);; ((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString = amtj.a(2131711495))
+    for (((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString = anvx.a(2131711841);; ((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString = anvx.a(2131711842))
     {
       ((ArrayList)localObject1).add(localObject2);
       if (!a(paramArrayList)) {

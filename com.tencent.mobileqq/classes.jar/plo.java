@@ -1,39 +1,41 @@
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class plo
+public class plo
+  implements AladdinConfigHandler
 {
-  public long a;
-  public ArrayList<Pair<BaseArticleInfo, Float>> a;
-  public long b;
-  
-  private plo(ple parample)
+  public static String a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    return (String)bmhv.a("double_short_video_font_size", "14");
   }
   
-  public ArrayList<Long> a()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(Long.valueOf(((BaseArticleInfo)((Pair)localIterator.next()).first).mArticleID));
-    }
-    return localArrayList;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("screenInfo : \n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    QLog.d("DoubleShortVideoFontSize", 2, "[onReceiveConfig] " + paramString);
+    paramString = pku.a(paramString);
+    try
     {
-      Pair localPair = (Pair)localIterator.next();
-      localStringBuilder.append("【").append(((BaseArticleInfo)localPair.first).mTitle).append("】");
+      paramString = (String)paramString.get("double_videocard_textsize");
+      if (!TextUtils.isEmpty(paramString)) {
+        bmhv.a("double_short_video_font_size", paramString);
+      }
+      label55:
+      return true;
     }
-    return localStringBuilder.toString();
+    catch (Exception paramString)
+    {
+      break label55;
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bmhv.a("double_short_video_font_size", "14");
+    if (QLog.isColorLevel()) {
+      QLog.d("DoubleShortVideoFontSize", 2, "font size: " + paramInt);
+    }
   }
 }
 

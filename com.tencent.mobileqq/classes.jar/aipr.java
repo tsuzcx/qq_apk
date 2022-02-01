@@ -1,16 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aipr
-  implements bamo
+  implements MediaPlayer.OnErrorListener
 {
-  private aipr(FriendFragment paramFriendFragment) {}
+  public aipr(BlessActivity paramBlessActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
-      FriendFragment.a(this.a, 1400L, false);
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onError what=" + paramInt1 + ", extra=" + paramInt2);
     }
+    BlessActivity.a(this.a, true);
+    return true;
   }
 }
 

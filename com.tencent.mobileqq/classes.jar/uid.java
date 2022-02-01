@@ -1,26 +1,13 @@
-import android.os.FileObserver;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-
 class uid
-  extends FileObserver
+  extends uib
 {
-  uid(uic paramuic, String paramString1, int paramInt, String paramString2)
-  {
-    super(paramString1, paramInt);
-  }
+  uid(uic paramuic) {}
   
-  public void onEvent(int paramInt, String paramString)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScreenshotContentObserver", 2, "onEvent->time:" + System.currentTimeMillis() + ", path:" + paramString);
+    if (paramBoolean) {
+      uic.a(this.a, paramString);
     }
-    if ((TextUtils.isEmpty(paramString)) || (paramInt != 256)) {}
-    while ((paramString.equalsIgnoreCase(uic.a(this.jdField_a_of_type_Uic))) || (paramString.contains("temp")) || (uic.a(this.jdField_a_of_type_Uic) == null)) {
-      return;
-    }
-    uic.a(this.jdField_a_of_type_Uic).a(null, this.jdField_a_of_type_JavaLangString + paramString, 1);
-    uic.a(this.jdField_a_of_type_Uic, paramString);
   }
 }
 

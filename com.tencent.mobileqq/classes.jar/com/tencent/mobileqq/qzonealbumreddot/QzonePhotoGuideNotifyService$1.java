@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.qzonealbumreddot;
 
-import azkd;
-import azkg;
+import baql;
+import baqo;
 import com.tencent.qphone.base.util.QLog;
 
 public class QzonePhotoGuideNotifyService$1
   implements Runnable
 {
-  public QzonePhotoGuideNotifyService$1(azkg paramazkg) {}
+  public QzonePhotoGuideNotifyService$1(baqo parambaqo) {}
   
   public void run()
   {

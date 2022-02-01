@@ -1,79 +1,35 @@
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+
 public class zaw
 {
-  public static String a(int paramInt)
+  public final int a;
+  public final String a;
+  public final boolean a;
+  public final String b;
+  public final String c;
+  public final String d;
+  
+  public zaw(qqstory_struct.CompInfoBase paramCompInfoBase)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_JavaLangString = paramCompInfoBase.title.get();
+    this.b = paramCompInfoBase.backgroud_url.get();
+    this.c = paramCompInfoBase.compared_vid.get();
+    if (paramCompInfoBase.is_compared_able.get() == 1) {}
+    for (;;)
     {
-    default: 
-      return String.valueOf(paramInt);
-    case 0: 
-      return "PLAYER_INFO_UNKNOW";
-    case 100: 
-      return "PLAYER_INFO_FIRST_CLIP_OPENED";
-    case 101: 
-      return "PLAYER_INFO_PACKET_READ";
-    case 102: 
-      return "PLAYER_INFO_FIRST_AUDIO_DECODER_START";
-    case 103: 
-      return "PLAYER_INFO_FIRST_VIDEO_DECODER_START";
-    case 104: 
-      return "PLAYER_INFO_FIRST_AUDIO_FRAME_RENDERED";
-    case 105: 
-      return "PLAYER_INFO_FIRST_VIDEO_FRAME_RENDERED";
-    case 106: 
-      return "PLAYER_INFO_FIRST_PACKET_READ";
-    case 107: 
-      return "PLAYER_INFO_CURRENT_LOOP_START";
-    case 108: 
-      return "PLAYER_INFO_CURRENT_LOOP_END";
-    case 109: 
-      return "PLAYER_INFO_CLIP_EOS";
-    case 110: 
-      return "PLAYER_INFO_EOS";
-    case 111: 
-      return "PLAYER_INFO_SWITCH_DEFINITION";
-    case 112: 
-      return "PLAYER_INFO_BUFFERING_START";
-    case 113: 
-      return "PLAYER_INFO_BUFFERING_END";
-    case 114: 
-      return "PLAYER_INFO_AUDIO_DECODER_TYPE";
-    case 115: 
-      return "PLAYER_INFO_VIDEO_DECODER_TYPE";
-    case 116: 
-      return "PLAYER_INFO_AUDIO_SW_DECODING_SLOW";
-    case 117: 
-      return "PLAYER_INFO_AUDIO_HW_DECODING_SLOW";
-    case 118: 
-      return "PLAYER_INFO_VIDEO_SW_DECODING_SLOW";
-    case 119: 
-      return "PLAYER_INFO_VIDEO_HW_DECODING_SLOW";
-    case 121: 
-      return "PLAYER_INFO_NEED_TO_ROTATE_SURFACE";
-    case 122: 
-      return "PLAYER_INFO_MEDIACODEC_VIDEO_CROP";
-    case 123: 
-      return "PLAYER_INFO_PRIVATE_HLS_TAG";
-    case 124: 
-      return "PLAYER_INFO_PLAYER_TYPE";
-    case 200: 
-      return "PLAYER_INFO_RETRY_PLAYER";
-    case 201: 
-      return "PLAYER_INFO_ALL_DOWNLOAD_FINISH";
-    case 203: 
-      return "PLAYER_INFO_OBJECT_PLAY_CDN_URL_CHANGED";
-    case 204: 
-      return "PLAYER_INFO_OBJECT_PLAY_CDN_INFO_UPDATE";
-    case 205: 
-      return "PLAYER_INFO_PROTOCOL_UPDATE";
-    case 206: 
-      return "PLAYER_INFO_DOWNLOAD_STATUS_UPDATE";
-    case 207: 
-      return "TP_PLAYER_INFO_OBJECT_DOWNLOAD_PROGRESS_UPDATE";
-    case 208: 
-      return "PLAYER_INFO_OBJECT_MEDIA_CODEC_INFO";
+      this.jdField_a_of_type_Boolean = bool;
+      this.d = paramCompInfoBase.icon_url.get();
+      this.jdField_a_of_type_Int = paramCompInfoBase.oa_task_id.get();
+      return;
+      bool = false;
     }
-    return "PLAYER_INFO_VIDEO_FRAME_CHECK_INFO";
+  }
+  
+  public String toString()
+  {
+    return "CompInfoBase{title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", linkUrl='" + this.b + '\'' + ", comparedVid='" + this.c + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.d + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

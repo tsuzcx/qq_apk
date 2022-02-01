@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.os.HandlerThread;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import aozs;
+import aqcw;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -13,10 +13,10 @@ import mqq.os.MqqHandler;
 
 public class SdCardImageAnimView
   extends ImageView
-  implements aozs
+  implements aqcw
 {
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  aozs jdField_a_of_type_Aozs = null;
+  aqcw jdField_a_of_type_Aqcw = null;
   private FrameBmpCache jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache;
   private Runnable jdField_a_of_type_JavaLangRunnable = new SdCardImageAnimView.1(this);
   public boolean a;
@@ -109,8 +109,8 @@ public class SdCardImageAnimView
   
   public void a(SdCardImageAnimView paramSdCardImageAnimView)
   {
-    if (this.jdField_a_of_type_Aozs != null) {
-      this.jdField_a_of_type_Aozs.a(this);
+    if (this.jdField_a_of_type_Aqcw != null) {
+      this.jdField_a_of_type_Aqcw.a(this);
     }
   }
   
@@ -152,9 +152,9 @@ public class SdCardImageAnimView
     ThreadManager.getSubThreadHandler().post(this.jdField_b_of_type_JavaLangRunnable);
   }
   
-  public void setEndListener(aozs paramaozs)
+  public void setEndListener(aqcw paramaqcw)
   {
-    this.jdField_a_of_type_Aozs = paramaozs;
+    this.jdField_a_of_type_Aqcw = paramaqcw;
   }
   
   public void setFPS(int paramInt)

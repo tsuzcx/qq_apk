@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.doutu.DoutuData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.confess.data.TroopConfessMsg;
+import com.tencent.mobileqq.data.MessageForTroopConfess;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public final class aqwa
-  implements Parcelable.Creator<DoutuData>
+class aqwa
+  implements View.OnClickListener
 {
-  public DoutuData a(Parcel paramParcel)
-  {
-    return new DoutuData(paramParcel);
-  }
+  aqwa(aqvz paramaqvz, MessageForTroopConfess paramMessageForTroopConfess) {}
   
-  public DoutuData[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new DoutuData[paramInt];
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items.isEmpty())) {
+      aqwc.a(this.jdField_a_of_type_Aqvz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aqvz.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_Aqvz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessTopicId(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.confessorUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessToUin()));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

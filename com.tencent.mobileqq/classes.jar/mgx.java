@@ -1,12 +1,23 @@
-public abstract interface mgx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+
+public class mgx
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(long paramLong);
+  public mgx(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public abstract void a(long paramLong, mhr parammhr);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    msa.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mgx
  * JD-Core Version:    0.7.0.1
  */

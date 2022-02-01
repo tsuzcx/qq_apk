@@ -1,140 +1,110 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.webview.utils.WebStateReporter.1;
-import com.tencent.mobileqq.webview.utils.WebStateReporter.2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.UnsupportedEncodingException;
 
 public class bgyk
 {
-  public static HashMap<String, Integer> a;
-  public static int c;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public long c;
-  
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_c_of_type_Int = 6;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("WebStateReporter_report", 2, "Current State = " + paramInt);
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-  }
-  
-  public void a(Context paramContext)
-  {
-    paramContext = new File(paramContext.getFilesDir(), bgcw.e.jdField_a_of_type_JavaLangString);
-    if (!paramContext.exists()) {}
-    do
+    if (!bgyk.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      do
-      {
-        return;
-        paramContext = FileUtils.readFileContent(paramContext);
-      } while (TextUtils.isEmpty(paramContext));
-      try
-      {
-        paramContext = new JSONObject(paramContext);
-        int i = paramContext.getInt("sample_rate");
-        jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(i));
-        JSONArray localJSONArray = paramContext.getJSONArray("rules");
-        int j = localJSONArray.length();
-        i = 0;
-        while (i < j)
-        {
-          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-          jdField_a_of_type_JavaUtilHashMap.put(localJSONObject.getString("distUrl"), Integer.valueOf(localJSONObject.getInt("rate")));
-          i += 1;
-        }
-        jdField_c_of_type_Int = paramContext.getInt("tail_number");
-        return;
-      }
-      catch (JSONException paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("WebStateReporter", 2, "" + paramContext);
-  }
-  
-  public void a(Context paramContext, long paramLong, String paramString, boolean paramBoolean)
-  {
-    if ((paramContext == null) || (paramLong <= 0L) || (TextUtils.isEmpty(paramString))) {
+      jdField_a_of_type_Boolean = bool;
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Boolean = false;
-    }
+  }
+  
+  public static String a(byte[] paramArrayOfByte, int paramInt)
+  {
     try
     {
-      i = NetworkUtil.getSystemNetwork(paramContext);
-      switch (i)
+      paramArrayOfByte = new String(b(paramArrayOfByte, paramInt), "US-ASCII");
+      return paramArrayOfByte;
+    }
+    catch (UnsupportedEncodingException paramArrayOfByte)
+    {
+      throw new AssertionError(paramArrayOfByte);
+    }
+  }
+  
+  public static byte[] a(String paramString, int paramInt)
+  {
+    return a(paramString.getBytes(), paramInt);
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
+  {
+    return a(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    bgym localbgym = new bgym(paramInt3, new byte[paramInt2 * 3 / 4]);
+    if (!localbgym.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
+      throw new IllegalArgumentException("bad base-64");
+    }
+    if (localbgym.jdField_a_of_type_Int == localbgym.jdField_a_of_type_ArrayOfByte.length) {
+      return localbgym.jdField_a_of_type_ArrayOfByte;
+    }
+    paramArrayOfByte = new byte[localbgym.jdField_a_of_type_Int];
+    System.arraycopy(localbgym.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localbgym.jdField_a_of_type_Int);
+    return paramArrayOfByte;
+  }
+  
+  public static byte[] b(byte[] paramArrayOfByte, int paramInt)
+  {
+    return b(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
+  }
+  
+  public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    bgyn localbgyn = new bgyn(paramInt3, null);
+    int i = paramInt2 / 3 * 4;
+    int j;
+    if (localbgyn.jdField_a_of_type_Boolean)
+    {
+      paramInt3 = i;
+      if (paramInt2 % 3 > 0) {
+        paramInt3 = i + 4;
+      }
+      i = paramInt3;
+      if (localbgyn.b)
       {
+        i = paramInt3;
+        if (paramInt2 > 0)
+        {
+          j = (paramInt2 - 1) / 57;
+          if (!localbgyn.c) {
+            break label186;
+          }
+        }
+      }
+    }
+    label186:
+    for (i = 2;; i = 1)
+    {
+      i = paramInt3 + i * (j + 1);
+      localbgyn.jdField_a_of_type_ArrayOfByte = new byte[i];
+      localbgyn.a(paramArrayOfByte, paramInt1, paramInt2, true);
+      if ((jdField_a_of_type_Boolean) || (localbgyn.jdField_a_of_type_Int == i)) {
+        break label192;
+      }
+      throw new AssertionError();
+      paramInt3 = i;
+      switch (paramInt2 % 3)
+      {
+      case 0: 
       default: 
-        String str1 = "Unknown";
-        ThreadManager.post(new WebStateReporter.1(this, paramBoolean, paramString, paramContext, paramLong, str1), 5, null, false);
-        return;
+        paramInt3 = i;
+        break;
+      case 1: 
+        paramInt3 = i + 2;
+        break;
+      case 2: 
+        paramInt3 = i + 3;
+        break;
       }
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i = 0;
-        continue;
-        String str2 = "2G";
-        continue;
-        str2 = "3G";
-        continue;
-        str2 = "4G";
-        continue;
-        str2 = "wifi";
-      }
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString, int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      return;
-      if (paramAppInterface == null) {}
-      for (long l = 0L; !TextUtils.isEmpty(paramString); l = paramAppInterface.getLongAccountUin())
-      {
-        ThreadManager.post(new WebStateReporter.2(this, paramString, l, paramInt), 5, null, false);
-        return;
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    label192:
+    return localbgyn.jdField_a_of_type_ArrayOfByte;
   }
 }
 

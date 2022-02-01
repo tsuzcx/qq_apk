@@ -1,22 +1,26 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
+import android.view.View;
 
-public class ayjv
-  implements URLDrawable.URLDrawableListener
+class ayjv
+  implements bkzq
 {
-  public ayjv(CoverDetailFragment paramCoverDetailFragment) {}
+  ayjv(ayjt paramayjt, ayka paramayka, aylx paramaylx, bkzi parambkzi) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void OnClick(View paramView, int paramInt)
   {
-    CoverDetailFragment.b(this.a).setImageDrawable(this.a.a(paramURLDrawable));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    axxu localaxxu = new axxu().h("data_card").i("feed_delete").d("2").a(this.jdField_a_of_type_Ayjt.a(this.jdField_a_of_type_Ayka)).b(this.jdField_a_of_type_Aylx.c).c(String.valueOf(this.jdField_a_of_type_Ayjt.a(this.jdField_a_of_type_Ayka)));
+    if (this.jdField_a_of_type_Ayjt.jdField_a_of_type_Boolean) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      localaxxu.e(paramView).b(this.jdField_a_of_type_Ayjt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ayjt.a(this.jdField_a_of_type_Ayjt, this.jdField_a_of_type_Ayka);
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+    }
   }
 }
 

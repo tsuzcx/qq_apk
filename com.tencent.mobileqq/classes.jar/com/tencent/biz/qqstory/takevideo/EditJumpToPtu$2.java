@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import com.tencent.mobileqq.utils.FileUtils;
-import xwo;
+import ylh;
 
 public class EditJumpToPtu$2
   implements Runnable
 {
-  public EditJumpToPtu$2(xwo paramxwo, String paramString) {}
+  public EditJumpToPtu$2(ylh paramylh, String paramString) {}
   
   public void run()
   {

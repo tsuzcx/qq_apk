@@ -2,18 +2,18 @@ package com.tencent.biz.subscribe.comment;
 
 import android.view.View;
 import android.widget.LinearLayout;
-import zeq;
+import ztv;
 
 public class ActionSheetDialog$1
   implements Runnable
 {
-  public ActionSheetDialog$1(zeq paramzeq) {}
+  public ActionSheetDialog$1(ztv paramztv) {}
   
   public void run()
   {
-    zeq.a(this.this$0).setVisibility(0);
-    zeq.a(this.this$0).setVisibility(0);
-    zeq.a(this.this$0);
+    ztv.a(this.this$0).setVisibility(0);
+    ztv.a(this.this$0).setVisibility(0);
+    ztv.a(this.this$0);
   }
 }
 

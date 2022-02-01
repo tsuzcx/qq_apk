@@ -1,10 +1,16 @@
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public abstract class xqa
+class xqa
+  implements wzg
 {
-  public abstract void a(int paramInt, View paramView, Object paramObject, xsh paramxsh);
+  xqa(xpz paramxpz) {}
   
-  public void b(int paramInt, View paramView, Object paramObject, xsh paramxsh) {}
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return (!paramStoryVideoItem.isBasicInfoOK()) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
+  }
 }
 
 

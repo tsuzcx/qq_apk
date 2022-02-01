@@ -1,30 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import tencent.im.oidb.articlesummary.articlesummary.UGCFeedsInfo;
 
-class rqm
-  implements rqd<rgo>
+public final class rqm
+  implements qdt<articlesummary.UGCFeedsInfo, rrq>
 {
-  rqm(rqj paramrqj) {}
+  public rqm(SocializeFeedsInfo paramSocializeFeedsInfo) {}
   
-  public boolean a(rgo paramrgo)
+  public rrq a(articlesummary.UGCFeedsInfo paramUGCFeedsInfo)
   {
-    try
-    {
-      paramrgo = new File(paramrgo.b);
-      if (paramrgo.isFile())
-      {
-        boolean bool = paramrgo.exists();
-        if (bool) {
-          return true;
-        }
-      }
-      return false;
-    }
-    catch (Throwable paramrgo)
-    {
-      QLog.e("RIJUGC.SelectVideoPresenter", 1, "SelectVideoPresenter check error, file not found", paramrgo);
-    }
-    return false;
+    return rrq.a(this.a, paramUGCFeedsInfo);
   }
 }
 

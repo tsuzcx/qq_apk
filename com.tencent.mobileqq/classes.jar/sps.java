@@ -1,17 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.SDKInstallListener.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class sps
-  implements DialogInterface.OnClickListener
+  implements stt
 {
-  public sps(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  private Handler a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public sps(Handler paramHandler)
+  {
+    this.a = paramHandler;
+  }
+  
+  private void a(boolean paramBoolean, int paramInt)
+  {
+    ThreadManager.excute(new VideoPluginInstall.SDKInstallListener.1(this, paramBoolean, paramInt), 16, null, true);
+  }
+  
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog change cancel");
+      QLog.d("Q.readinjoy.video", 2, "onInstalledSuccessed: ");
+    }
+    a(true, 0);
+    if (this.a != null) {
+      this.a.sendEmptyMessage(0);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "onInstalledFailed: code=" + paramInt);
+    }
+    a(false, paramInt);
+    if (this.a != null) {
+      this.a.sendEmptyMessage(1);
     }
   }
 }

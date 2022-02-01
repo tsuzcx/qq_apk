@@ -1,7 +1,7 @@
 package cooperation.weiyun.sdk.api;
 
 import android.content.Context;
-import blhe;
+import bmtv;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
@@ -14,12 +14,12 @@ public final class WeiyunApi$1
   public void run()
   {
     long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-    boolean bool1 = blhe.a(this.a, String.valueOf(l), "key_pwd_queried", false);
-    boolean bool2 = blhe.a(this.a, String.valueOf(l), "key_pwd_has", false);
-    boolean bool3 = blhe.a(this.a, String.valueOf(l), "key_pwd_verified", false);
-    blfm.a()[0].set(bool1);
-    blfm.a()[1].set(bool2);
-    blfm.a()[2].set(bool3);
+    boolean bool1 = bmtv.a(this.a, String.valueOf(l), "key_pwd_queried", false);
+    boolean bool2 = bmtv.a(this.a, String.valueOf(l), "key_pwd_has", false);
+    boolean bool3 = bmtv.a(this.a, String.valueOf(l), "key_pwd_verified", false);
+    bmsd.a()[0].set(bool1);
+    bmsd.a()[1].set(bool2);
+    bmsd.a()[2].set(bool3);
   }
 }
 

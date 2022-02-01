@@ -1,39 +1,26 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
-
 public class asak
-  extends ataq
 {
-  public asak(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
+  public int a;
+  public String a;
+  public boolean a;
   
-  public void a()
+  public asak(String paramString, int paramInt)
   {
-    this.a.a.a().b();
+    this(paramString, paramInt, true);
   }
   
-  public void b()
+  public asak(String paramString, int paramInt, boolean paramBoolean)
   {
-    this.a.a.a().o();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void c()
+  public String toString()
   {
-    this.a.a.a().p();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    StringBuffer localStringBuffer = new StringBuffer("ComboObject:");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append(',').append(this.jdField_a_of_type_Int).append(',').append(this.jdField_a_of_type_Boolean);
+    return localStringBuffer.toString();
   }
 }
 

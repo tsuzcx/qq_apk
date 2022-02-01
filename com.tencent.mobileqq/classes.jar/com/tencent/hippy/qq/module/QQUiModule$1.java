@@ -1,6 +1,6 @@
 package com.tencent.hippy.qq.module;
 
-import akfw;
+import albp;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -20,7 +20,7 @@ class QQUiModule$1
         ((Bundle)localObject).putBoolean("isStatusBarDarkFont", this.val$isDarkFont);
       }
       if (localFragment.getUserVisibleHint()) {
-        akfw.a(this.this$0.getActivity(), this.val$isDarkFont);
+        albp.a(this.this$0.getActivity(), this.val$isDarkFont);
       }
     }
   }

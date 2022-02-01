@@ -1,8 +1,15 @@
-public abstract interface nnv
+public class nnv
 {
-  public abstract void loaded(String paramString, int paramInt);
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
   
-  public abstract void progress(int paramInt);
+  public String toString()
+  {
+    return "AVGameMediaFileInfo{mMediaFileUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMediaFormat=" + this.jdField_a_of_type_Int + ", mMediaFileDuration=" + this.jdField_a_of_type_Long + ", mMediaFileSize=" + this.jdField_b_of_type_Long + ", mMediaFileMd5='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+  }
 }
 
 

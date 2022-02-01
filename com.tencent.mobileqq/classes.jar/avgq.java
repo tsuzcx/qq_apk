@@ -1,22 +1,51 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.MessageQGameReceiver.1;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.MessageQGameReceiver.2;
+import java.util.ArrayList;
 
 public class avgq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends BroadcastReceiver
 {
-  public avgq(MapWidget paramMapWidget, LocationRoom.Venue paramVenue) {}
+  private avgq(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void onGlobalLayout()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(true, Float.valueOf(15.0F));
+      do
+      {
+        do
+        {
+          return;
+          if (!"action_qgame_tool_messgae".equals(paramContext)) {
+            break;
+          }
+          paramContext = paramIntent.getExtras();
+        } while (paramContext == null);
+        paramContext = (ArrayList)paramContext.getSerializable("key_get_msg");
+      } while ((paramContext == null) || (paramContext.size() <= 0));
+      ThreadManagerV2.getUIHandlerV2().post(new QQGameFeedWebFragment.MessageQGameReceiver.1(this, paramContext));
       return;
-    }
-    MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
+      if ("action_qgame_jaspi_webloaded".equals(paramContext))
+      {
+        ThreadManagerV2.getUIHandlerV2().post(new QQGameFeedWebFragment.MessageQGameReceiver.2(this));
+        return;
+      }
+      if ("action_qgame_h5_video_play".equals(paramContext))
+      {
+        avdq.b(2);
+        return;
+      }
+    } while (!"action_qgame_h5_video_pause".equals(paramContext));
+    avdq.b(1);
   }
 }
 

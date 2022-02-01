@@ -1,27 +1,13 @@
 public class ahsi
 {
-  String a = "";
-  String b = "";
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  boolean c = false;
+  boolean d = false;
+  boolean e = false;
+  boolean f = false;
   
-  public String a()
-  {
-    return this.b;
-  }
-  
-  public void a(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public String b()
-  {
-    return this.a;
-  }
-  
-  public void b(String paramString)
-  {
-    this.a = paramString;
-  }
+  public ahsi(ahri paramahri) {}
 }
 
 

@@ -1,36 +1,90 @@
-import android.animation.ValueAnimator;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
 
 public class ayvw
-  extends Handler
+  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, aywb
 {
-  public static boolean a;
+  private GestureController a;
   
-  public void a(Message paramMessage)
+  public ayvw(GestureController paramGestureController)
   {
-    View localView = (View)paramMessage.obj;
-    int i = paramMessage.getData().getInt("iTipsTimes");
-    long l = paramMessage.getData().getLong("iRemindTime");
-    int j = paramMessage.what;
-    paramMessage = ValueAnimator.ofFloat(new float[] { 3.0F });
-    paramMessage.setEvaluator(new ayvz(this));
-    paramMessage.setDuration(3000L);
-    if (i >= 1) {
-      paramMessage.setRepeatCount(i - 1);
-    }
-    paramMessage.addUpdateListener(new ayvx(this, localView));
-    paramMessage.addListener(new ayvy(this, localView, l, j));
-    paramMessage.start();
+    this.a = paramGestureController;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(aywa paramaywa)
   {
-    if (1 == paramMessage.arg1) {
-      a(paramMessage);
-    }
+    this.a.a(paramaywa);
+  }
+  
+  public boolean a(aywa paramaywa)
+  {
+    return this.a.b(paramaywa);
+  }
+  
+  public boolean b(aywa paramaywa)
+  {
+    return this.a.a(paramaywa);
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return this.a.e(paramMotionEvent);
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return this.a.b(paramMotionEvent);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return this.a.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    this.a.b(paramMotionEvent);
+  }
+  
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return this.a.b(paramScaleGestureDetector);
+  }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return this.a.a(paramScaleGestureDetector);
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    this.a.a(paramScaleGestureDetector);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return this.a.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return this.a.d(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return this.a.c(paramMotionEvent);
   }
 }
 

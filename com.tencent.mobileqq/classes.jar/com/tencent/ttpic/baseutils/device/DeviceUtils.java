@@ -1539,66 +1539,68 @@ public class DeviceUtils
     // Byte code:
     //   0: getstatic 877	android/os/Build$VERSION:SDK_INT	I
     //   3: bipush 16
-    //   5: if_icmplt +42 -> 47
-    //   8: new 879	android/app/ActivityManager$MemoryInfo
-    //   11: dup
-    //   12: invokespecial 880	android/app/ActivityManager$MemoryInfo:<init>	()V
-    //   15: astore 4
-    //   17: aload_0
-    //   18: ldc_w 383
-    //   21: invokevirtual 389	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   24: checkcast 391	android/app/ActivityManager
-    //   27: aload 4
-    //   29: invokevirtual 883	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
-    //   32: aload 4
-    //   34: ifnull +9 -> 43
-    //   37: aload 4
-    //   39: getfield 886	android/app/ActivityManager$MemoryInfo:totalMem	J
-    //   42: lreturn
-    //   43: ldc2_w 674
+    //   5: if_icmplt +46 -> 51
+    //   8: aload_0
+    //   9: ifnull +42 -> 51
+    //   12: new 879	android/app/ActivityManager$MemoryInfo
+    //   15: dup
+    //   16: invokespecial 880	android/app/ActivityManager$MemoryInfo:<init>	()V
+    //   19: astore 4
+    //   21: aload_0
+    //   22: ldc_w 383
+    //   25: invokevirtual 389	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   28: checkcast 391	android/app/ActivityManager
+    //   31: aload 4
+    //   33: invokevirtual 883	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
+    //   36: aload 4
+    //   38: ifnull +9 -> 47
+    //   41: aload 4
+    //   43: getfield 886	android/app/ActivityManager$MemoryInfo:totalMem	J
     //   46: lreturn
-    //   47: new 657	java/io/FileInputStream
-    //   50: dup
-    //   51: ldc_w 888
-    //   54: invokespecial 680	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   57: astore_0
-    //   58: ldc_w 890
-    //   61: aload_0
-    //   62: invokestatic 686	com/tencent/ttpic/baseutils/device/DeviceUtils:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
-    //   65: istore_1
-    //   66: iload_1
-    //   67: i2l
-    //   68: ldc2_w 799
-    //   71: lmul
-    //   72: lstore_2
-    //   73: aload_0
-    //   74: invokevirtual 673	java/io/FileInputStream:close	()V
-    //   77: lload_2
-    //   78: lreturn
-    //   79: astore_0
-    //   80: lload_2
-    //   81: lreturn
-    //   82: astore 4
-    //   84: aload_0
-    //   85: invokevirtual 673	java/io/FileInputStream:close	()V
-    //   88: aload 4
-    //   90: athrow
-    //   91: astore_0
-    //   92: ldc2_w 674
-    //   95: lreturn
+    //   47: ldc2_w 674
+    //   50: lreturn
+    //   51: new 657	java/io/FileInputStream
+    //   54: dup
+    //   55: ldc_w 888
+    //   58: invokespecial 680	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   61: astore_0
+    //   62: ldc_w 890
+    //   65: aload_0
+    //   66: invokestatic 686	com/tencent/ttpic/baseutils/device/DeviceUtils:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
+    //   69: istore_1
+    //   70: iload_1
+    //   71: i2l
+    //   72: ldc2_w 799
+    //   75: lmul
+    //   76: lstore_2
+    //   77: aload_0
+    //   78: invokevirtual 673	java/io/FileInputStream:close	()V
+    //   81: lload_2
+    //   82: lreturn
+    //   83: astore_0
+    //   84: lload_2
+    //   85: lreturn
+    //   86: astore 4
+    //   88: aload_0
+    //   89: invokevirtual 673	java/io/FileInputStream:close	()V
+    //   92: aload 4
+    //   94: athrow
+    //   95: astore_0
+    //   96: ldc2_w 674
+    //   99: lreturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	96	0	paramContext	Context
-    //   65	2	1	i	int
-    //   72	9	2	l	long
-    //   15	23	4	localMemoryInfo	android.app.ActivityManager.MemoryInfo
-    //   82	7	4	localObject	Object
+    //   0	100	0	paramContext	Context
+    //   69	2	1	i	int
+    //   76	9	2	l	long
+    //   19	23	4	localMemoryInfo	android.app.ActivityManager.MemoryInfo
+    //   86	7	4	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   73	77	79	java/io/IOException
-    //   58	66	82	finally
-    //   47	58	91	java/io/IOException
-    //   84	91	91	java/io/IOException
+    //   77	81	83	java/io/IOException
+    //   62	70	86	finally
+    //   51	62	95	java/io/IOException
+    //   88	95	95	java/io/IOException
   }
   
   @TargetApi(18)

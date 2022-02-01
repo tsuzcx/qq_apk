@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import abet;
-import alvx;
+import abuf;
+import amwn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,22 +13,23 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import atzc;
-import atzd;
-import atzp;
-import atzq;
-import atzr;
-import atzs;
-import atzt;
-import bcgw;
-import bcgx;
-import bciz;
-import blec;
+import aver;
+import aves;
+import avfh;
+import avfi;
+import avfj;
+import avfk;
+import avfl;
+import bdnu;
+import bdnv;
+import bdpx;
+import bmqt;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.data.MessageForPubAccount;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -41,11 +42,11 @@ import com.tencent.mobileqq.vas.VasExtensionHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import ueg;
+import usd;
 
 public class ImgHeaderView
   extends RelativeLayout
-  implements atzp
+  implements avfh
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -64,11 +65,11 @@ public class ImgHeaderView
     localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
     paramActivity.startActivity(localIntent);
     paramActivity = new HashMap();
-    abet.a(paramActivity, atzc.a(paramMessageRecord, 0));
-    paramActivity.put(Integer.valueOf(2), atzc.a(paramMessageRecord));
+    abuf.a(paramActivity, aver.a(paramMessageRecord, 0));
+    paramActivity.put(Integer.valueOf(2), aver.a(paramMessageRecord));
     paramActivity.put(Integer.valueOf(4), "20");
-    abet.a(alvx.a(), "769", "205019", atzc.a(paramMessageRecord, 0), "76901", "1", "160", paramActivity);
-    ((VasExtensionHandler)alvx.a().getBusinessHandler(71)).a(3, paramMessageRecord.getExtInfoFromExtStr("pa_msgId"), this.jdField_a_of_type_JavaLangString);
+    abuf.a(amwn.a(), "769", "205019", aver.a(paramMessageRecord, 0), "76901", "1", "160", paramActivity);
+    ((VasExtensionHandler)amwn.a().getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(3, paramMessageRecord.getExtInfoFromExtStr("pa_msgId"), this.jdField_a_of_type_JavaLangString);
   }
   
   private void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, QQGameMsgInfo paramQQGameMsgInfo)
@@ -80,11 +81,11 @@ public class ImgHeaderView
     paramActivity.put(Integer.valueOf(2), paramString1);
     paramActivity.put(Integer.valueOf(4), "20");
     paramActivity.put(Integer.valueOf(24), "1");
-    abet.a(alvx.a(), "769", "205019", paramString2, "76901", "1", "160", paramActivity);
-    blec.a(3, paramString1, this.jdField_a_of_type_JavaLangString);
+    abuf.a(amwn.a(), "769", "205019", paramString2, "76901", "1", "160", paramActivity);
+    bmqt.a(3, paramString1, this.jdField_a_of_type_JavaLangString);
     try
     {
-      atzd.a(118, paramQQGameMsgInfo, paramInt);
+      aves.a(118, paramQQGameMsgInfo, paramInt);
       return;
     }
     catch (Throwable paramActivity)
@@ -123,10 +124,10 @@ public class ImgHeaderView
             {
               localObject3 = localObject2;
               localObject5 = localObject1;
-              if (!(localArrayList.get(k) instanceof bcgx)) {
+              if (!(localArrayList.get(k) instanceof bdnv)) {
                 break;
               }
-              localObject4 = ((bcgx)localArrayList.get(k)).a;
+              localObject4 = ((bdnv)localArrayList.get(k)).a;
               m = 0;
               j = 0;
               i = 0;
@@ -142,7 +143,7 @@ public class ImgHeaderView
                 localObject1 = localObject2;
                 localObject2 = localObject3;
                 break label606;
-                this.jdField_a_of_type_JavaLangString = ((bcgw)localArrayList.get(k)).b;
+                this.jdField_a_of_type_JavaLangString = ((bdnu)localArrayList.get(k)).b;
                 localObject3 = localObject1;
                 localObject5 = localObject4;
                 if (j == 0) {
@@ -158,23 +159,23 @@ public class ImgHeaderView
             }
             else
             {
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559208, this, false));
-              this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368516));
+              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559241, this, false));
+              this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368674));
               localObject1 = URLDrawable.getDrawable((String)localObject4);
               this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-              this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378367));
+              this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378658));
               this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject3);
-              ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370601)).setImageDrawable(URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20190412124557_I8OGtzphYZ.png"));
-              this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365456));
-              this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(atzc.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
-              this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new atzq(this, paramActivity, paramMessageRecord));
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new atzr(this, paramActivity, paramMessageRecord));
+              ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370784)).setImageDrawable(URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20190412124557_I8OGtzphYZ.png"));
+              this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365549));
+              this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(aver.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
+              this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new avfi(this, paramActivity, paramMessageRecord));
+              this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new avfj(this, paramActivity, paramMessageRecord));
               addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
               return;
             }
-            if ((((ArrayList)localObject4).get(m) instanceof bciz))
+            if ((((ArrayList)localObject4).get(m) instanceof bdpx))
             {
-              localObject3 = ((bciz)((ArrayList)localObject4).get(m)).ac;
+              localObject3 = ((bdpx)((ArrayList)localObject4).get(m)).ac;
               n = 1;
               j = i;
               localObject1 = localObject2;
@@ -191,7 +192,7 @@ public class ImgHeaderView
               continue;
             }
             localObject1 = (MessageForPubAccount)paramMessageRecord;
-            ((MessageForPubAccount)localObject1).mPAMessage = ueg.a(((MessageForPubAccount)localObject1).msgData);
+            ((MessageForPubAccount)localObject1).mPAMessage = usd.a(((MessageForPubAccount)localObject1).msgData);
             localObject4 = ((PAMessage.Item)((MessageForPubAccount)localObject1).mPAMessage.items.get(0)).cover;
             localObject3 = ((PAMessage.Item)((MessageForPubAccount)localObject1).mPAMessage.items.get(0)).title;
             this.jdField_a_of_type_JavaLangString = ((PAMessage.Item)((MessageForPubAccount)localObject1).mPAMessage.items.get(0)).url;
@@ -246,23 +247,23 @@ public class ImgHeaderView
       Object localObject2 = paramQQGameMsgInfo.coverUrl;
       Object localObject1 = paramQQGameMsgInfo.title;
       this.jdField_a_of_type_JavaLangString = paramQQGameMsgInfo.url;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559208, this, false));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368516));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559241, this, false));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368674));
       localObject2 = URLDrawable.getDrawable((String)localObject2);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378367));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378658));
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-      localObject1 = (ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370601);
+      localObject1 = (ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370784);
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = new ColorDrawable(0);
       ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = new ColorDrawable(-1);
       localObject2 = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20190412124557_I8OGtzphYZ.png", (URLDrawable.URLDrawableOptions)localObject2);
       ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
       ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365456));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(atzc.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new atzs(this, paramActivity, paramQQGameMsgInfo, paramInt));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new atzt(this, paramActivity, paramQQGameMsgInfo, paramInt));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365549));
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(aver.a("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", getContext()));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new avfk(this, paramActivity, paramQQGameMsgInfo, paramInt));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new avfl(this, paramActivity, paramQQGameMsgInfo, paramInt));
       addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       return;
     }

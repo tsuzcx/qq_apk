@@ -1,13 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.util.Pair;
+import android.text.Editable;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 import java.util.Comparator;
 
-final class pan
-  implements Comparator<Pair<Long, BaseArticleInfo>>
+public class pan
+  implements Comparator<BiuNicknameSpan>
 {
-  public int a(Pair<Long, BaseArticleInfo> paramPair1, Pair<Long, BaseArticleInfo> paramPair2)
+  private Editable jdField_a_of_type_AndroidTextEditable;
+  
+  public pan(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, Editable paramEditable)
   {
-    return ((Long)paramPair2.first).compareTo((Long)paramPair1.first);
+    this.jdField_a_of_type_AndroidTextEditable = paramEditable;
+  }
+  
+  public int a(BiuNicknameSpan paramBiuNicknameSpan1, BiuNicknameSpan paramBiuNicknameSpan2)
+  {
+    int i = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan1);
+    int j = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan2);
+    if (i > j) {
+      return 1;
+    }
+    if (i < j) {
+      return -1;
+    }
+    return 0;
   }
 }
 

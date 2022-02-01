@@ -1,43 +1,32 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.hce.HcePluginInstallActivity;
-import java.util.HashMap;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class ansv
-  extends anrh
+class ansv
+  implements INetInfoHandler
 {
-  public ansv(QQAppInterface paramQQAppInterface, Context paramContext)
+  ansv(ansr paramansr) {}
+  
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
   {
-    super(paramQQAppInterface, paramContext);
+    this.a.b();
   }
   
-  private boolean C()
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, HcePluginInstallActivity.class);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    return true;
+    this.a.b();
   }
   
-  public boolean a()
+  public void onNetWifi2Mobile(String paramString)
   {
-    try
-    {
-      if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey("from_type")) && (!StringUtil.isEmpty((String)this.jdField_a_of_type_JavaUtilHashMap.get("from_type"))) && ("2".equals(this.jdField_a_of_type_JavaUtilHashMap.get("from_type"))))
-      {
-        boolean bool = C();
-        return bool;
-      }
-      return false;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QwalletToBuscardAction", 1, "doAction error: " + localException.getMessage());
-      a("QwalletToBuscardAction");
-    }
-    return false;
+    this.a.c();
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.c();
   }
 }
 

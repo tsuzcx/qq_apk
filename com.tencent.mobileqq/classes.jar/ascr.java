@@ -1,16 +1,21 @@
-class ascr
-  implements ascz
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface ascr
 {
-  ascr(asbj paramasbj) {}
+  boolean a() default false;
   
-  public void a(Object[] paramArrayOfObject)
-  {
-    asbj.access$2800(this.a, paramArrayOfObject);
-  }
+  boolean b() default false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ascr
  * JD-Core Version:    0.7.0.1
  */

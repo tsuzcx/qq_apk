@@ -1,11 +1,8 @@
 package com.tencent.mobileqq.apollo.store;
 
-import alpf;
-import alqv;
-import alqx;
-import amdn;
-import amge;
-import amtj;
+import amnw;
+import ampw;
+import ampy;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -27,13 +24,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aqwx;
-import bfrj;
-import bhht;
-import bjng;
-import bjnw;
-import bjoe;
-import bjok;
+import anev;
+import anhm;
+import anvx;
+import aoks;
+import asbh;
+import bhaa;
+import bisl;
+import bkys;
+import bkzi;
+import bkzq;
+import bkzw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.Utils;
@@ -58,7 +59,7 @@ import java.util.List;
 
 public class ApolloImageShareLayout
   extends RelativeLayout
-  implements alqv, alqx, DialogInterface.OnDismissListener, Handler.Callback, View.OnClickListener, AdapterView.OnItemClickListener, bjoe
+  implements ampw, ampy, DialogInterface.OnDismissListener, Handler.Callback, View.OnClickListener, AdapterView.OnItemClickListener, bkzq
 {
   private float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
@@ -67,10 +68,10 @@ public class ApolloImageShareLayout
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bhht jdField_a_of_type_Bhht;
-  bjng jdField_a_of_type_Bjng = new bjng(Looper.getMainLooper(), this);
-  private bjnw jdField_a_of_type_Bjnw;
-  private bjok jdField_a_of_type_Bjok;
+  bisl jdField_a_of_type_Bisl;
+  bkys jdField_a_of_type_Bkys = new bkys(Looper.getMainLooper(), this);
+  private bkzi jdField_a_of_type_Bkzi;
+  private bkzw jdField_a_of_type_Bkzw;
   ApolloTextureView jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView;
   private String jdField_a_of_type_JavaLangString = "apollo_fakeurl";
   private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
@@ -133,15 +134,15 @@ public class ApolloImageShareLayout
           this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a(1, null, this.jdField_a_of_type_ArrayOfInt, null);
         }
       }
-      String[] arrayOfString = amge.a(5, -1, this.jdField_c_of_type_Int, true);
+      String[] arrayOfString = anhm.a(5, -1, this.jdField_c_of_type_Int, true);
       this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a(1, null, 5, 1000000, arrayOfString[0], arrayOfString[1]);
     }
   }
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bjnw != null) {
-      this.jdField_a_of_type_Bjnw.dismiss();
+    if (this.jdField_a_of_type_Bkzi != null) {
+      this.jdField_a_of_type_Bkzi.dismiss();
     }
   }
   
@@ -152,17 +153,17 @@ public class ApolloImageShareLayout
     {
       return;
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(bjok.a(1));
-      localArrayList.add(bjok.a(0));
-      if (this.jdField_a_of_type_Bjok == null) {
-        this.jdField_a_of_type_Bjok = new bjok(this.jdField_a_of_type_AndroidAppActivity);
+      localArrayList.add(bkzw.a(1));
+      localArrayList.add(bkzw.a(0));
+      if (this.jdField_a_of_type_Bkzw == null) {
+        this.jdField_a_of_type_Bkzw = new bkzw(this.jdField_a_of_type_AndroidAppActivity);
       }
-      this.jdField_a_of_type_Bjok.a(localArrayList);
-      if (this.jdField_a_of_type_Bjnw == null) {
-        this.jdField_a_of_type_Bjnw = bjok.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bjok, this, this, this, false);
+      this.jdField_a_of_type_Bkzw.a(localArrayList);
+      if (this.jdField_a_of_type_Bkzi == null) {
+        this.jdField_a_of_type_Bkzi = bkzw.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bkzw, this, this, this, false);
       }
-    } while ((this.jdField_a_of_type_Bjnw == null) || (this.jdField_a_of_type_Bjnw.isShowing()));
-    this.jdField_a_of_type_Bjnw.show();
+    } while ((this.jdField_a_of_type_Bkzi == null) || (this.jdField_a_of_type_Bkzi.isShowing()));
+    this.jdField_a_of_type_Bkzi.show();
   }
   
   public void a(int paramInt1, int paramInt2, AppInterface paramAppInterface, int paramInt3, int[] paramArrayOfInt, float paramFloat)
@@ -209,7 +210,7 @@ public class ApolloImageShareLayout
       this.g = (this.jdField_d_of_type_Int + paramInt1 + this.jdField_b_of_type_Int / 2);
       i = (int)(AIOUtils.dp2px(40.0F, getResources()) * 0.96F);
       this.jdField_e_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      this.jdField_e_of_type_AndroidWidgetImageView.setBackgroundResource(2130838480);
+      this.jdField_e_of_type_AndroidWidgetImageView.setBackgroundResource(2130838496);
       paramAppInterface = new RelativeLayout.LayoutParams(i, i);
       paramAppInterface.addRule(14, -1);
       paramAppInterface.addRule(12, -1);
@@ -232,7 +233,7 @@ public class ApolloImageShareLayout
       paramArrayOfInt.addRule(10);
       paramArrayOfInt.addRule(14);
       paramArrayOfInt.topMargin = ((int)(this.f + paramInt1 - AIOUtils.dp2px(55.0F, super.getResources()) * 0.96F));
-      paramAppInterface.setBackgroundResource(2130838491);
+      paramAppInterface.setBackgroundResource(2130838507);
       super.addView(paramAppInterface, paramArrayOfInt);
       paramInt3 = (int)(AIOUtils.dp2px(25.0F, getResources()) * 0.96F);
       paramFloat = AIOUtils.dp2px(41.0F, super.getResources()) * 0.96F;
@@ -245,7 +246,7 @@ public class ApolloImageShareLayout
       paramAppInterface.addRule(9);
       super.addView(this.jdField_b_of_type_AndroidWidgetImageView, paramAppInterface);
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838639);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838655);
       this.jdField_d_of_type_AndroidWidgetImageView = new ImageView(getContext());
       paramAppInterface = new RelativeLayout.LayoutParams(paramInt3, paramInt3);
       paramAppInterface.topMargin = ((int)(this.f + paramInt1 - AIOUtils.dp2px(42.0F, super.getResources()) * 0.96F));
@@ -254,7 +255,7 @@ public class ApolloImageShareLayout
       paramAppInterface.addRule(9);
       super.addView(this.jdField_d_of_type_AndroidWidgetImageView, paramAppInterface);
       this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838637);
+      this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838653);
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
       paramAppInterface = new RelativeLayout.LayoutParams(paramInt3, paramInt3);
       paramAppInterface.topMargin = ((int)(this.f + paramInt1 - AIOUtils.dp2px(42.0F, super.getResources()) * 0.96F));
@@ -263,7 +264,7 @@ public class ApolloImageShareLayout
       paramAppInterface.addRule(11);
       super.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramAppInterface);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838638);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838654);
       this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(getContext());
       paramAppInterface = new RelativeLayout.LayoutParams(paramInt3, paramInt3);
       paramAppInterface.topMargin = ((int)(paramInt1 + this.f - 0.96F * AIOUtils.dp2px(42.0F, super.getResources())));
@@ -272,7 +273,7 @@ public class ApolloImageShareLayout
       paramAppInterface.addRule(11);
       super.addView(this.jdField_c_of_type_AndroidWidgetImageView, paramAppInterface);
       this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130838640);
+      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130838656);
     }
   }
   
@@ -310,10 +311,10 @@ public class ApolloImageShareLayout
         paramArrayOfInt = URLDrawable.URLDrawableOptions.obtain();
         paramArrayOfInt.mRequestHeight = this.f;
         paramArrayOfInt.mRequestWidth = this.jdField_e_of_type_Int;
-        paramString1 = new aqwx(-8305182, 20.0F, this.jdField_e_of_type_Int, this.f);
+        paramString1 = new asbh(-8305182, 20.0F, this.jdField_e_of_type_Int, this.f);
         paramArrayOfInt.mLoadingDrawable = paramString1;
         paramArrayOfInt.mFailedDrawable = paramString1;
-        paramArrayOfInt = amdn.a(Utils.Crc64String(this.jdField_a_of_type_JavaLangString), paramArrayOfInt, this.jdField_a_of_type_JavaLangString);
+        paramArrayOfInt = anev.a(Utils.Crc64String(this.jdField_a_of_type_JavaLangString), paramArrayOfInt, this.jdField_a_of_type_JavaLangString);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(paramArrayOfInt);
       }
       VipUtils.a(null, "cmshow", "Apollo", "PageView", 2, 0, new String[0]);
@@ -324,11 +325,11 @@ public class ApolloImageShareLayout
   
   void a(String paramString)
   {
-    if (this.jdField_a_of_type_Bhht == null) {
-      this.jdField_a_of_type_Bhht = new bhht(this.jdField_a_of_type_AndroidAppActivity, this.g);
+    if (this.jdField_a_of_type_Bisl == null) {
+      this.jdField_a_of_type_Bisl = new bisl(this.jdField_a_of_type_AndroidAppActivity, this.g);
     }
-    this.jdField_a_of_type_Bhht.a(paramString);
-    this.jdField_a_of_type_Bhht.show();
+    this.jdField_a_of_type_Bisl.a(paramString);
+    this.jdField_a_of_type_Bisl.show();
   }
   
   public void a(boolean paramBoolean)
@@ -341,17 +342,17 @@ public class ApolloImageShareLayout
         this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().c();
       }
     }
-    this.jdField_a_of_type_Bjng.removeCallbacksAndMessages(null);
-    if (this.jdField_a_of_type_Bjnw != null) {
-      this.jdField_a_of_type_Bjnw.dismiss();
+    this.jdField_a_of_type_Bkys.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_Bkzi != null) {
+      this.jdField_a_of_type_Bkzi.dismiss();
     }
     b();
   }
   
   void b()
   {
-    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
-      this.jdField_a_of_type_Bhht.dismiss();
+    if ((this.jdField_a_of_type_Bisl != null) && (this.jdField_a_of_type_Bisl.isShowing())) {
+      this.jdField_a_of_type_Bisl.dismiss();
     }
   }
   
@@ -389,10 +390,10 @@ public class ApolloImageShareLayout
                           } while (super.getVisibility() != 0);
                           paramMessage = (String)paramMessage.obj;
                         } while (TextUtils.isEmpty(paramMessage));
-                        QQToast.a(getContext(), amtj.a(2131699547) + paramMessage, 1).a();
+                        QQToast.a(getContext(), anvx.a(2131699898) + paramMessage, 1).a();
                         return false;
-                        if (this.jdField_a_of_type_Bjnw != null) {
-                          this.jdField_a_of_type_Bjnw.dismiss();
+                        if (this.jdField_a_of_type_Bkzi != null) {
+                          this.jdField_a_of_type_Bkzi.dismiss();
                         }
                       } while ((super.getVisibility() != 0) || (this.jdField_a_of_type_JavaLangRefWeakReference == null));
                       localObject = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
@@ -410,7 +411,7 @@ public class ApolloImageShareLayout
                   {
                     localArrayList.add(URLDecoder.decode(paramMessage));
                     localBundle.putStringArrayList("images", localArrayList);
-                    localBundle.putString("summary", amtj.a(2131699549));
+                    localBundle.putString("summary", anvx.a(2131699900));
                     localBundle.putInt("req_type", 7);
                     localBundle.putBoolean("key_need_save_draft", false);
                     QZoneShareManager.publishToQzone((AppInterface)localObject, this.jdField_a_of_type_AndroidAppActivity, localBundle, this, 15);
@@ -421,8 +422,8 @@ public class ApolloImageShareLayout
                     QLog.d("ApolloImageShareLayout", 2, "publishToQzone:" + paramMessage.getMessage());
                     return false;
                   }
-                  if (this.jdField_a_of_type_Bjnw != null) {
-                    this.jdField_a_of_type_Bjnw.dismiss();
+                  if (this.jdField_a_of_type_Bkzi != null) {
+                    this.jdField_a_of_type_Bkzi.dismiss();
                   }
                 } while (super.getVisibility() != 0);
                 paramMessage = (String)paramMessage.obj;
@@ -455,11 +456,11 @@ public class ApolloImageShareLayout
     } while (!QLog.isColorLevel());
     QLog.e("ApolloImageShareLayout", 1, "update avatar share QQ apolloImage no file");
     return false;
-    int i = bfrj.b(this.jdField_a_of_type_AndroidAppActivity);
+    int i = bhaa.b(this.jdField_a_of_type_AndroidAppActivity);
     Object localObject = new Intent();
     ((Intent)localObject).putExtra("keyFromUpdateAvatar", true);
     ((Intent)localObject).putExtra("Business_Origin", 100);
-    PhotoUtils.startPhotoEdit((Intent)localObject, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getClass().getName(), i, i, 1080, 1080, paramMessage, bfrj.a());
+    PhotoUtils.startPhotoEdit((Intent)localObject, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getClass().getName(), i, i, 1080, 1080, paramMessage, aoks.a());
     return false;
   }
   
@@ -479,7 +480,7 @@ public class ApolloImageShareLayout
       this.jdField_a_of_type_Long = l;
       if (this.jdField_a_of_type_Boolean)
       {
-        QQToast.a(getContext(), amtj.a(2131699546), 0).a();
+        QQToast.a(getContext(), anvx.a(2131699897), 0).a();
       }
       else
       {
@@ -489,7 +490,7 @@ public class ApolloImageShareLayout
         }
         if (Build.VERSION.SDK_INT >= 14)
         {
-          a(amtj.a(2131699545));
+          a(anvx.a(2131699896));
           ThreadManager.executeOnSubThread(new ApolloImageShareLayout.SaveImageTask(this, a(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getHeight(), 15, l));
         }
         VipUtils.a(null, "cmshow", "Apollo", "SaveClick", 0, 0, new String[0]);
@@ -498,7 +499,7 @@ public class ApolloImageShareLayout
         {
           if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null))
           {
-            String[] arrayOfString = amge.a(5, -1, this.jdField_c_of_type_Int, true);
+            String[] arrayOfString = anhm.a(5, -1, this.jdField_c_of_type_Int, true);
             this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a(1, null, 5, 1000000, arrayOfString[0], arrayOfString[1]);
           }
           VipUtils.a(null, "cmshow", "Apollo", "PoseClick", 0, 0, new String[0]);
@@ -521,13 +522,13 @@ public class ApolloImageShareLayout
             this.jdField_b_of_type_Long = l;
             if (this.jdField_a_of_type_Boolean)
             {
-              QQToast.a(getContext(), amtj.a(2131699543), 0).a();
+              QQToast.a(getContext(), anvx.a(2131699894), 0).a();
             }
             else
             {
               this.jdField_a_of_type_Boolean = true;
               VipUtils.a(null, "cmshow", "Apollo", "headClick", 0, 0, new String[0]);
-              a(amtj.a(2131699544));
+              a(anvx.a(2131699895));
               ThreadManager.executeOnSubThread(new ApolloImageShareLayout.SaveImageTask(this, a(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getHeight(), 18, System.currentTimeMillis()));
             }
           }
@@ -552,7 +553,7 @@ public class ApolloImageShareLayout
       {
         if (Build.VERSION.SDK_INT >= 14)
         {
-          a(amtj.a(2131699542));
+          a(anvx.a(2131699893));
           ThreadManager.executeOnSubThread(new ApolloImageShareLayout.SaveImageTask(this, a(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getHeight(), 16, l));
         }
         VipUtils.a(null, "cmshow", "Apollo", "Share2Qzone", 0, 0, new String[0]);
@@ -561,7 +562,7 @@ public class ApolloImageShareLayout
       {
         if (Build.VERSION.SDK_INT >= 14)
         {
-          a(amtj.a(2131699548));
+          a(anvx.a(2131699899));
           ThreadManager.executeOnSubThread(new ApolloImageShareLayout.SaveImageTask(this, a(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getHeight(), 17, l));
         }
         VipUtils.a(null, "cmshow", "Apollo", "Share2QQ", 0, 0, new String[0]);

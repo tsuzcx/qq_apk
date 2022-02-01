@@ -1,23 +1,14 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-class agbl
-  implements bjoe
+public class agbl
+  implements bgma
 {
-  agbl(agbj paramagbj, bjnw parambjnw) {}
+  public agbl(TroopChatPie paramTroopChatPie) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    ChatActivityUtils.a(this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Agbj.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendNick, null, true, this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin, true, true, null, "from_internal");
-    bcef.b(this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
+    if (paramInt == 0) {}
   }
 }
 

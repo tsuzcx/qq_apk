@@ -1,29 +1,51 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
-
 public class aimr
-  extends atuh
 {
-  public aimr(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  private int jdField_a_of_type_Int = 1;
+  private aims jdField_a_of_type_Aims;
   
-  protected void a(boolean paramBoolean, int paramInt, ArrayList<aiko> paramArrayList)
+  public aimr() {}
+  
+  public aimr(aims paramaims)
   {
-    if (TroopWithCommonFriendsFragment.a(this.a) != null) {
-      TroopWithCommonFriendsFragment.a(this.a).dismiss();
+    this.jdField_a_of_type_Aims = paramaims;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      if (this.jdField_a_of_type_Aims != null)
+      {
+        this.jdField_a_of_type_Aims.a(1);
+        this.jdField_a_of_type_Int = 2;
+      }
     }
-    if (!paramBoolean)
-    {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1014);
+    while ((this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_Aims == null)) {
       return;
     }
-    aimu.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramArrayList);
-    aimu.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramInt);
-    this.a.b = paramInt;
-    this.a.jdField_a_of_type_JavaUtilList = aimu.a(paramArrayList, TroopWithCommonFriendsFragment.a(this.a));
-    TroopWithCommonFriendsFragment.a(this.a).a();
-    TroopWithCommonFriendsFragment.a(this.a).a(this.a.jdField_a_of_type_JavaUtilList);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1012);
+    this.jdField_a_of_type_Aims.a(2);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Aims != null))
+    {
+      this.jdField_a_of_type_Aims.a();
+      this.jdField_a_of_type_Int = 3;
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_Int == 3) && (this.jdField_a_of_type_Aims != null))
+    {
+      this.jdField_a_of_type_Aims.b();
+      this.jdField_a_of_type_Int = 1;
+    }
   }
 }
 

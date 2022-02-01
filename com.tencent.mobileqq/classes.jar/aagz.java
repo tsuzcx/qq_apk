@@ -1,29 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.JNICallCenter.DataPoint;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-public final class aagz
-  implements Parcelable.Creator<DataPoint>
+public class aagz
 {
-  public DataPoint a(Parcel paramParcel)
-  {
-    DataPoint localDataPoint = new DataPoint();
-    localDataPoint.mDin = paramParcel.readLong();
-    localDataPoint.mSendUinType = paramParcel.readInt();
-    localDataPoint.mApiName = paramParcel.readString();
-    localDataPoint.mProperityId = paramParcel.readInt();
-    localDataPoint.mValueType = paramParcel.readString();
-    localDataPoint.mValue = paramParcel.readString();
-    localDataPoint.mRetCode = paramParcel.readInt();
-    localDataPoint.mErrMsg = paramParcel.readString();
-    localDataPoint.mSeq = paramParcel.readString();
-    return localDataPoint;
-  }
-  
-  public DataPoint[] a(int paramInt)
-  {
-    return new DataPoint[paramInt];
-  }
+  public View a;
+  public TextView a;
+  public auao a;
+  public AsyncImageView a;
+  public TextView b;
 }
 
 

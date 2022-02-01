@@ -1,18 +1,42 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import tencent.im.oidb.oidb_0x5e1.RspBody;
+import tencent.im.oidb.oidb_0x5e1.UdcUinData;
 
 public class adkd
-  extends apgj
+  extends ayra
 {
-  public adkd(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public adkd(AuthDevActivity paramAuthDevActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void getFaceStateSuccess(oidb_0x5e1.RspBody paramRspBody)
   {
-    if (paramBoolean)
+    super.getFaceStateSuccess(paramRspBody);
+    AuthDevActivity.a(this.a, paramRspBody);
+    int i = ((oidb_0x5e1.UdcUinData)AuthDevActivity.a(this.a).rpt_msg_uin_data.get(0)).user_login_guard_face.get();
+    FormSimpleItem localFormSimpleItem = AuthDevActivity.a(this.a);
+    if (i == 1)
     {
-      apgi localapgi = (apgi)this.a.app.getManager(112);
-      this.a.a = localapgi.a(paramString);
+      paramRspBody = this.a.getString(2131692088);
+      localFormSimpleItem.setRightText(paramRspBody);
+      if (i != 1) {
+        break label111;
+      }
     }
+    label111:
+    for (paramRspBody = "1";; paramRspBody = "0")
+    {
+      bdla.b(null, "dc00898", "", "", "0X800AA7C", "0X800AA7C", 0, 0, paramRspBody, "", "", "");
+      return;
+      paramRspBody = this.a.getString(2131692093);
+      break;
+    }
+  }
+  
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  {
+    super.onFailedResponse(paramString1, paramInt, paramString2);
   }
 }
 

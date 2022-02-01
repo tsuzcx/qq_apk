@@ -1,28 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.1;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.2;
+import java.util.List;
+import mqq.util.WeakReference;
 
-class qkm
-  implements pqz
+public class qkm
+  implements qhr
 {
-  qkm(qkl paramqkl) {}
+  private SelectPositionModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule = pvj.a().a();
+  private WeakReference<qkn> jdField_a_of_type_MqqUtilWeakReference;
   
-  public void a()
+  public qkm(qkn paramqkn)
   {
-    QLog.d("RvPolymericContainer", 2, "stopScroll as videoplayer start");
-    qki.b(this.a.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule.a(this);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramqkn);
   }
   
-  public void b()
+  private void b(List<qkk> paramList)
   {
-    QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer stop");
-    if (qki.a(this.a.a) != null) {
-      qki.a(this.a.a, qki.a(this.a.a).a());
+    qkn localqkn = (qkn)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if ((localqkn != null) && (paramList != null)) {
+      localqkn.a(paramList);
     }
   }
   
-  public void c()
+  public void a()
   {
-    QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer complete");
-    qki.a(this.a.a, 1000L);
+    SelectPositionModule localSelectPositionModule = pvj.a().a();
+    if (localSelectPositionModule != null) {
+      b(localSelectPositionModule.a());
+    }
+  }
+  
+  public void a(SelectPositionModule.PositionData paramPositionData)
+  {
+    bjum.a().post(new SelectCityPresenter.2(this, paramPositionData));
+  }
+  
+  public void a(List<qkk> paramList)
+  {
+    bjum.a().post(new SelectCityPresenter.1(this, paramList));
   }
 }
 

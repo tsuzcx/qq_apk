@@ -1,100 +1,93 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FontSettingManager;
-import com.tencent.widget.RangeButtonView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class sld
+  implements sff, spd, spe
 {
-  private int jdField_a_of_type_Int;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private bjtg jdField_a_of_type_Bjtg;
-  private List<bjtk> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private List<String> b;
+  private sld(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public sld(LayoutInflater paramLayoutInflater)
+  public List<ses> a(List<VideoInfo> paramList)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(a((VideoInfo)paramList.next()));
+    }
+    return localArrayList;
   }
   
-  private float a(float paramFloat)
+  public sle a(VideoInfo paramVideoInfo)
   {
-    float f = TypedValue.applyDimension(1, 16.0F, FontSettingManager.systemMetrics);
-    if (paramFloat == 15.0F) {
-      f = TypedValue.applyDimension(1, 15.0F, FontSettingManager.systemMetrics);
-    }
-    do
+    sle localsle = new sle(null);
+    sle.a(localsle, paramVideoInfo);
+    localsle.jdField_b_of_type_Long = 409409L;
+    localsle.jdField_a_of_type_Int = 0;
+    localsle.jdField_a_of_type_JavaLangString = paramVideoInfo.c;
+    localsle.jdField_b_of_type_JavaLangString = paramVideoInfo.jdField_b_of_type_JavaLangString;
+    localsle.c = paramVideoInfo.jdField_a_of_type_JavaLangString;
+    localsle.jdField_a_of_type_Long = paramVideoInfo.jdField_b_of_type_Long;
+    return localsle;
+  }
+  
+  public void a()
+  {
+    VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Sfc.g(false);
+    VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Sow.a(6);
+  }
+  
+  public void a(ses paramses)
+  {
+    swu localswu = VideoFeedsRecommendFragment.a(this.a);
+    if (((paramses instanceof sle)) && (localswu != null))
     {
-      return f;
-      if (paramFloat == 17.0F) {
-        return TypedValue.applyDimension(1, 17.0F, FontSettingManager.systemMetrics);
+      paramses = sle.a((sle)paramses);
+      if (paramses != localswu.jdField_a_of_type_Skq.a) {
+        break label64;
       }
-      if (paramFloat == 18.0F) {
-        return TypedValue.applyDimension(1, 18.0F, FontSettingManager.systemMetrics);
-      }
-    } while (paramFloat != 20.0F);
-    return TypedValue.applyDimension(1, 20.0F, FontSettingManager.systemMetrics);
-  }
-  
-  public slb a()
-  {
-    slb localslb = new slb(null);
-    Object localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559161, null);
-    slb.a(localslb, new PopupWindow((View)localObject, -1, -2));
-    slb.a(localslb).setBackgroundDrawable(new BitmapDrawable());
-    slb.a(localslb).setOutsideTouchable(true);
-    localObject = (RangeButtonView)((View)localObject).findViewById(2131367009);
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
+      VideoFeedsRecommendFragment.a(this.a).a(localswu.jdField_a_of_type_Skq, false);
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(new bjtk(amtj.a(2131703826), a(15.0F)));
-      this.jdField_a_of_type_JavaUtilList.add(new bjtk(amtj.a(2131703823), a(16.0F)));
-      this.jdField_a_of_type_JavaUtilList.add(new bjtk("", a(17.0F)));
-      this.jdField_a_of_type_JavaUtilList.add(new bjtk("", a(18.0F)));
-      this.jdField_a_of_type_JavaUtilList.add(new bjtk(amtj.a(2131701568), a(20.0F)));
+      VideoFeedsRecommendFragment.a(this.a).d();
+      return;
+      label64:
+      int i = localswu.c;
+      VideoFeedsRecommendFragment.a(this.a).remove(i);
+      VideoFeedsRecommendFragment.a(this.a).add(i, paramses);
+      VideoFeedsRecommendFragment.a(this.a).notifyItemChanged(i);
     }
-    ((RangeButtonView)localObject).setTitleData(this.jdField_a_of_type_JavaUtilList);
-    slb.a(localslb, this.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_a_of_type_Bjtg != null) {
-      ((RangeButtonView)localObject).setOnChangerListener(this.jdField_a_of_type_Bjtg);
-    }
-    ((RangeButtonView)localObject).setThumbPosition(this.jdField_a_of_type_Int);
-    if ((this.b == null) || (this.b.isEmpty()))
+  }
+  
+  public void a(ses paramses1, ses paramses2, int paramInt, boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject = sle.a((sle)VideoFeedsRecommendFragment.a(this.a).a());
+    VideoInfo localVideoInfo = VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Skq.a;
+    if (VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Skq.a != localObject)
     {
-      this.b = new ArrayList();
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131691007));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131691008));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131691009));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131691010));
-      this.b.add(BaseApplicationImpl.getApplication().getString(2131691011));
+      VideoFeedsRecommendFragment.a(this.a).add(VideoFeedsRecommendFragment.a(this.a).c, localObject);
+      VideoFeedsRecommendFragment.a(this.a).notifyItemInserted(VideoFeedsRecommendFragment.a(this.a).c);
+      localObject = VideoFeedsRecommendFragment.a(this.a);
+      ((swu)localObject).b += 1;
+      localObject = VideoFeedsRecommendFragment.a(this.a);
+      ((swu)localObject).c += 1;
+      VideoFeedsRecommendFragment.a(this.a).scrollToPosition(VideoFeedsRecommendFragment.a(this.a).c);
     }
-    ((RangeButtonView)localObject).setContentDescList(this.b);
-    slb.a(localslb, this.jdField_a_of_type_Boolean);
-    return localslb;
+    if (paramBoolean) {
+      VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Skq, false);
+    }
+    olh.a(null, "", "0X8009505", "0X8009505", 0, 0, "", "0", "", new suu(null, null, localVideoInfo.jdField_a_of_type_JavaLangString, localVideoInfo.g).a(409409).a().a(), false);
   }
   
-  public sld a(int paramInt)
+  public void j()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public sld a(bjtg parambjtg)
-  {
-    this.jdField_a_of_type_Bjtg = parambjtg;
-    return this;
-  }
-  
-  public sld a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
+    VideoFeedsRecommendFragment.a(this.a).b();
   }
 }
 

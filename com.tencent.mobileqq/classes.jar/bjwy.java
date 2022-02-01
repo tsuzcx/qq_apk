@@ -1,46 +1,12 @@
-import android.content.Context;
-import android.support.annotation.IdRes;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class bjwy<M>
-  extends RecyclerView.ViewHolder
+class bjwy
 {
-  private SparseArray<View> a = new SparseArray();
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public bjwy(View paramView)
-  {
-    super(paramView);
-  }
-  
-  public bjwy(ViewGroup paramViewGroup, int paramInt)
-  {
-    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
-  }
-  
-  protected Context a()
-  {
-    return this.itemView.getContext();
-  }
-  
-  protected <T extends View> T a(@IdRes int paramInt)
-  {
-    View localView2 = (View)this.a.get(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = this.itemView.findViewById(paramInt);
-      this.a.put(paramInt, localView1);
-    }
-    return localView1;
-  }
-  
-  public void a(M paramM) {}
-  
-  public void g() {}
+  bjwy(bjwx parambjwx) {}
 }
 
 

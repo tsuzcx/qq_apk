@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ampm;
-import amsw;
+import anrz;
+import anvk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,24 +14,27 @@ class AddContactsView$10
   
   public void run()
   {
-    int i = this.this$0.jdField_a_of_type_Ampm.d();
-    if (i != 0) {
-      this.a.append(ampm.jdField_a_of_type_ArrayOfJavaLangString[i]).append("、");
+    int i = this.this$0.jdField_a_of_type_Anrz.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "fillSearchConditions | sexIndex = " + i);
     }
-    Object localObject = this.this$0.jdField_a_of_type_Ampm.a();
-    localObject = this.this$0.jdField_a_of_type_Ampm.a(localObject[0], localObject[1]);
-    if (!ampm.b[0].equals(localObject)) {
+    if ((i != 0) && (i < anrz.jdField_a_of_type_ArrayOfJavaLangString.length)) {
+      this.a.append(anrz.jdField_a_of_type_ArrayOfJavaLangString[i]).append("、");
+    }
+    Object localObject = this.this$0.jdField_a_of_type_Anrz.a();
+    localObject = this.this$0.jdField_a_of_type_Anrz.a(localObject[0], localObject[1]);
+    if (!anrz.b[0].equals(localObject)) {
       this.a.append((String)localObject).append("、");
     }
-    i = this.this$0.jdField_a_of_type_Ampm.b();
-    if ((i != 0) && (i != ampm.d.length - 1)) {
-      this.a.append(ampm.e[i]).append("、");
+    i = this.this$0.jdField_a_of_type_Anrz.b();
+    if ((i != 0) && (i != anrz.d.length - 1)) {
+      this.a.append(anrz.e[i]).append("、");
     }
     if (this.this$0.c) {
       if ((this.this$0.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.this$0.d)) {
         if ("-1".equals(this.this$0.jdField_a_of_type_ArrayOfJavaLangString[0]))
         {
-          localObject = ((amsw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          localObject = ((anvk)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
           if (localObject == null) {}
         }
       }
@@ -49,21 +53,21 @@ class AddContactsView$10
         try
         {
           this.this$0.jdField_a_of_type_ArrayOfJavaLangString[3] = "0";
-          localObject = this.this$0.jdField_a_of_type_Ampm.b(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
-          this.this$0.jdField_a_of_type_Ampm.b(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
-          this.this$0.jdField_a_of_type_Ampm.a(0, (String)localObject);
+          localObject = this.this$0.jdField_a_of_type_Anrz.b(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
+          this.this$0.jdField_a_of_type_Anrz.b(this.this$0.jdField_a_of_type_ArrayOfJavaLangString);
+          this.this$0.jdField_a_of_type_Anrz.a(0, (String)localObject);
           if (!"0".equals(this.this$0.jdField_a_of_type_ArrayOfJavaLangString[0])) {
-            this.a.append(this.this$0.jdField_a_of_type_Ampm.b((String)localObject)).append("、");
+            this.a.append(this.this$0.jdField_a_of_type_Anrz.b((String)localObject)).append("、");
           }
-          localObject = this.this$0.jdField_a_of_type_Ampm.a(1);
+          localObject = this.this$0.jdField_a_of_type_Anrz.a(1);
           if (!((String)localObject).startsWith("不限")) {
-            this.a.append(this.this$0.jdField_a_of_type_Ampm.b((String)localObject)).append("、");
+            this.a.append(this.this$0.jdField_a_of_type_Anrz.b((String)localObject)).append("、");
           }
-          i = this.this$0.jdField_a_of_type_Ampm.c();
+          i = this.this$0.jdField_a_of_type_Anrz.c();
           if (i != 0) {
-            this.a.append(ampm.c[i]).append("、");
+            this.a.append(anrz.c[i]).append("、");
           }
-          this.this$0.jdField_a_of_type_Ampm.b();
+          this.this$0.jdField_a_of_type_Anrz.b();
           this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new AddContactsView.10.1(this));
           return;
           localException1 = localException1;
@@ -82,9 +86,9 @@ class AddContactsView$10
           continue;
         }
       }
-      String str = this.this$0.jdField_a_of_type_Ampm.a(0);
+      String str = this.this$0.jdField_a_of_type_Anrz.a(0);
       if (!str.startsWith("不限")) {
-        this.a.append(this.this$0.jdField_a_of_type_Ampm.b(str)).append("、");
+        this.a.append(this.this$0.jdField_a_of_type_Anrz.b(str)).append("、");
       }
     }
   }

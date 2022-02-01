@@ -1,17 +1,16 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
-import com.tencent.qphone.base.util.QLog;
-
-class bjer
-  implements IBinder.DeathRecipient
+public class bjer
 {
-  bjer(bjeq parambjeq, IBinder paramIBinder) {}
+  public long a;
+  String a;
+  public boolean a;
+  String b;
   
-  public void binderDied()
+  public bjer(long paramLong, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidOsIBinder.unlinkToDeath(this, 0);
-    bjep.a(this.jdField_a_of_type_Bjeq.a, null);
-    QLog.i("MusicPlayerProxyImpl", 2, "linkToDeath binderDied");
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

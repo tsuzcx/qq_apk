@@ -1,17 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
 class bicr
-  extends BroadcastReceiver
 {
-  bicr(bicl parambicl) {}
+  int jdField_a_of_type_Int;
+  char[] jdField_a_of_type_ArrayOfChar = new char[4];
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private void a(byte[] paramArrayOfByte)
   {
-    bhzm.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
-    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))) {
-      this.a.f();
+    this.jdField_a_of_type_Int = bicp.a(paramArrayOfByte);
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfChar.length)
+    {
+      this.jdField_a_of_type_ArrayOfChar[i] = ((char)paramArrayOfByte[(i + 4)]);
+      i += 1;
     }
   }
 }

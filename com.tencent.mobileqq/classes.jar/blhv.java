@@ -1,11 +1,11 @@
-class blhv
-  implements baav
+import android.view.animation.Interpolator;
+
+final class blhv
+  implements Interpolator
 {
-  blhv(blhu paramblhu) {}
-  
-  public void a()
+  public float getInterpolation(float paramFloat)
   {
-    this.a.s();
+    return paramFloat * paramFloat * paramFloat * paramFloat * paramFloat;
   }
 }
 

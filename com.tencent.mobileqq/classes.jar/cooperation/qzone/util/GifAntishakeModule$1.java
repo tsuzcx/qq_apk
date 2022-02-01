@@ -2,7 +2,7 @@ package cooperation.qzone.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import bfvo;
+import bheg;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.pfc.opencv.QzoneVision;
@@ -32,7 +32,7 @@ class GifAntishakeModule$1
           QLog.d("QzoneVision", 2, "frame: " + this.val$frame + ", endAntishake and startSave at " + System.currentTimeMillis());
         }
         String str = PhotoUtils.getCameraPath(GifAntishakeModule.access$000(this.this$0), ".IMG" + this.val$frame, ".jpg");
-        bfvo.a(localBitmap2, new File(str));
+        bheg.a(localBitmap2, new File(str));
         if (!localBitmap1.isRecycled()) {
           localBitmap1.recycle();
         }

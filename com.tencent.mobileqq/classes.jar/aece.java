@@ -1,30 +1,20 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
-public class aece
-  extends MqqHandler
+class aece
+  implements behm
 {
-  public aece(RegisterActivity paramRegisterActivity) {}
+  aece(aecd paramaecd, CompoundButton paramCompoundButton, boolean paramBoolean, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCancel()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterActivity.b(this.a, paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
+    this.jdField_a_of_type_Aecd.a.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, false);
+  }
+  
+  public void onConfirm()
+  {
+    this.jdField_a_of_type_Aecd.a.b();
+    GeneralSettingActivity.a(this.jdField_a_of_type_Aecd.a, this.jdField_a_of_type_AndroidWidgetCompoundButton, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 

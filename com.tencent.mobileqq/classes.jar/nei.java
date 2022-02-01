@@ -1,30 +1,95 @@
-import android.graphics.RectF;
-import android.view.View;
-import android.widget.ImageView;
+import androidx.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract interface nei
+public class nei
+  implements nem
 {
-  public abstract RectF a();
+  private List<neg> a = new ArrayList();
   
-  public abstract View a();
+  private boolean a(List<? extends neg> paramList)
+  {
+    if ((paramList.size() <= 0) || (!(paramList.get(0) instanceof nek))) {
+      return false;
+    }
+    paramList = this.a.iterator();
+    while (paramList.hasNext()) {
+      if (((neg)paramList.next() instanceof nek)) {
+        return true;
+      }
+    }
+    return false;
+  }
   
-  public abstract void a();
+  public int a()
+  {
+    return this.a.size();
+  }
   
-  public abstract void a(ImageView paramImageView, long paramLong1, long paramLong2);
+  @Nullable
+  public String a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return ((neg)this.a.get(paramInt)).a();
+    }
+    return null;
+  }
   
-  public abstract void a(String paramString);
+  @Nullable
+  public neg a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (neg)this.a.get(paramInt);
+    }
+    return null;
+  }
   
-  public abstract void a(naf paramnaf);
+  @Nullable
+  public <T extends nel> T a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (nel)this.a.get(paramInt);
+    }
+    return null;
+  }
   
-  public abstract void a(boolean paramBoolean, long paramLong1, long paramLong2);
+  public void a()
+  {
+    a(new neh());
+    a(new nej("https://static-res.qq.com/static-res/avgames/strangerMatch/avgame_match_random.png", 2131690374, 2130838748, 0, "https://static-res.qq.com/static-res/avgames/strangerMatch/avgame_lobby_ufo5.png", null, 1));
+    a(new nej("https://static-res.qq.com/static-res/avgames/strangerMatch/avgame_match_create_room.png", 2131690373, 2130838747, 0, "https://static-res.qq.com/static-res/avgames/strangerMatch/avgame_lobby_house5.png", null, 2));
+    a(new nej("https://static-res.qq.com/static-res/avgames/strangerMatch/avgame_match_search_room.png", 2131690376, 2130838749, 0, "https://static-res.qq.com/static-res/avgames/strangerMatch/avgame_lobby_door5.png", null, 3));
+  }
   
-  public abstract void b();
+  public void a(List<? extends neg> paramList, int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.size()) && (!a(paramList))) {
+      this.a.addAll(paramInt, paramList);
+    }
+  }
   
-  public abstract void b(String paramString);
+  public void a(neg paramneg)
+  {
+    this.a.add(paramneg);
+  }
   
-  public abstract void b(naf paramnaf);
-  
-  public abstract void c();
+  public void b()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      neg localneg = (neg)localIterator.next();
+      switch (localneg.a())
+      {
+      default: 
+        break;
+      case 4: 
+        ((nek)localneg).d("https://static-res.qq.com/static-res/avgames/survival/avgame_room_survival_order.png");
+        ((nek)localneg).e("https://static-res.qq.com/static-res/avgames/survival/avgame_room_survival_no_order.png");
+      }
+    }
+  }
 }
 
 

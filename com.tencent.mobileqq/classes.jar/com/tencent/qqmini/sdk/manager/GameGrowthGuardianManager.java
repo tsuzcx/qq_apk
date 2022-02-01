@@ -52,6 +52,25 @@ public class GameGrowthGuardianManager
     sOnStopCallback = null;
   }
   
+  private static void doJuddgeTiming(Context paramContext, MiniAppInfo paramMiniAppInfo, @GameGrowthGuardianManager.JudgeTimingRequestFactType int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int paramInt4, String paramString3)
+  {
+    ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+    long l = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+    if (paramString1 != null) {
+      if (paramMiniAppInfo.via == null) {
+        break label90;
+      }
+    }
+    label90:
+    for (String str = paramMiniAppInfo.via;; str = "")
+    {
+      localChannelProxy.JudgeTiming(paramString2, paramInt2, paramInt3, paramInt1, l, paramInt4, paramString1, 0, str, paramMiniAppInfo.gameAdsTotalTime, previousExtInfo, paramMiniAppInfo.customInfo, paramString3, new GameGrowthGuardianManager.2(paramMiniAppInfo, paramContext, paramInt1));
+      return;
+      paramString1 = "";
+      break;
+    }
+  }
+  
   private static boolean enableHeartBeatCheck(MiniAppInfo paramMiniAppInfo)
   {
     if (paramMiniAppInfo != null)
@@ -178,71 +197,50 @@ public class GameGrowthGuardianManager
         return;
       }
     } while (!enableHeartBeatCheck(paramMiniAppInfo));
-    String str3 = MiniProgramReportHelper.launchIdForMiniAppConfig(paramMiniAppInfo);
+    String str4 = MiniProgramReportHelper.launchIdForMiniAppConfig(paramMiniAppInfo);
     String str1;
     int i;
     label70:
     int j;
-    label86:
-    int k;
-    label95:
-    Object localObject;
-    String str2;
-    long l;
     if (paramMiniAppInfo.appId != null)
     {
       str1 = paramMiniAppInfo.appId;
       if (!paramMiniAppInfo.isEngineTypeMiniGame()) {
-        break label232;
+        break label165;
       }
       i = 1;
       if (paramMiniAppInfo.launchParam == null) {
-        break label237;
+        break label170;
       }
       j = paramMiniAppInfo.launchParam.scene;
+      label86:
       if (paramInt != 11) {
-        break label243;
-      }
-      k = 0;
-      localObject = paramMiniAppInfo.launchParam.entryModel;
-      str4 = "";
-      str2 = str4;
-      if (localObject != null)
-      {
-        str2 = str4;
-        if (((EntryModel)localObject).type == 1) {
-          str2 = String.valueOf(((EntryModel)localObject).uin);
-        }
-      }
-      localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      l = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-      if (str3 == null) {
-        break label262;
-      }
-      label166:
-      if (paramMiniAppInfo.via == null) {
-        break label269;
+        break label176;
       }
     }
-    label262:
-    label269:
-    for (String str4 = paramMiniAppInfo.via;; str4 = "")
+    label165:
+    label170:
+    label176:
+    for (int k = 0;; k = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - beginExecuteMillis))
     {
-      ((ChannelProxy)localObject).JudgeTiming(str1, i, j, paramInt, l, k, str3, 0, str4, paramMiniAppInfo.gameAdsTotalTime, previousExtInfo, paramMiniAppInfo.customInfo, str2, new GameGrowthGuardianManager.2(paramMiniAppInfo, paramContext, paramInt));
+      EntryModel localEntryModel = paramMiniAppInfo.launchParam.entryModel;
+      String str3 = "";
+      String str2 = str3;
+      if (localEntryModel != null)
+      {
+        str2 = str3;
+        if (localEntryModel.type == 1) {
+          str2 = String.valueOf(localEntryModel.uin);
+        }
+      }
+      doJuddgeTiming(paramContext, paramMiniAppInfo, paramInt, str4, str1, i, j, k, str2);
       return;
       str1 = "";
       break;
-      label232:
       i = 0;
       break label70;
-      label237:
       j = 0;
       break label86;
-      label243:
-      k = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - beginExecuteMillis);
-      break label95;
-      str3 = "";
-      break label166;
     }
   }
   
@@ -407,7 +405,7 @@ public class GameGrowthGuardianManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.GameGrowthGuardianManager
  * JD-Core Version:    0.7.0.1
  */

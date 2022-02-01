@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import java.util.Comparator;
 
 public class advs
-  implements bjog
+  implements Comparator<advq>
 {
-  public advs(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  private advs(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onDismiss()
+  public int a(advq paramadvq1, advq paramadvq2)
   {
-    if (this.a.a) {
-      this.a.finish();
-    }
+    return paramadvq1.c.compareToIgnoreCase(paramadvq2.c);
   }
 }
 

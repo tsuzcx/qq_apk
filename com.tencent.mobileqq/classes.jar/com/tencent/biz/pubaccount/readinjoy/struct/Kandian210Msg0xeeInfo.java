@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import pay;
+import prd;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.AccountInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.ContextInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.ControlInfo;
@@ -341,7 +341,7 @@ public class Kandian210Msg0xeeInfo
   
   public static Kandian210Msg0xeeInfo getKandian210Msg0xeeInfoFromSp(QQAppInterface paramQQAppInterface)
   {
-    return (Kandian210Msg0xeeInfo)pay.a(paramQQAppInterface, "kandian_push_0x210_ee", true);
+    return (Kandian210Msg0xeeInfo)prd.a(paramQQAppInterface, "kandian_push_0x210_ee", true);
   }
   
   private static void h(submsgtype0xee.NotifyInfo paramNotifyInfo, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo1)
@@ -368,12 +368,12 @@ public class Kandian210Msg0xeeInfo
   
   public static void removeKandian210Msg0xeeInfoFromSp()
   {
-    pay.a("kandian_push_0x210_ee", true);
+    prd.a("kandian_push_0x210_ee", true);
   }
   
   public static void writeToSpAsync(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo)
   {
-    pay.a("kandian_push_0x210_ee", paramKandian210Msg0xeeInfo, true);
+    prd.a("kandian_push_0x210_ee", paramKandian210Msg0xeeInfo, true);
   }
   
   public boolean isArticleAppInPush()

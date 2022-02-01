@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.support.v4.app.FragmentActivity;
-import anoe;
-import bbko;
+import aoqx;
+import bcrg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.HashMap;
 import mqq.app.MobileQQ;
@@ -17,13 +17,13 @@ class ChatFragment$1
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(anoe.a, 0);
-    long l = ((SharedPreferences)localObject).getLong(anoe.d, 0L);
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(aoqx.a, 0);
+    long l = ((SharedPreferences)localObject).getLong(aoqx.d, 0L);
     if ((l == 0L) || (l > System.currentTimeMillis()) || (System.currentTimeMillis() - l > 14400000L)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        ((SharedPreferences)localObject).edit().putLong(anoe.d, System.currentTimeMillis()).commit();
+        ((SharedPreferences)localObject).edit().putLong(aoqx.d, System.currentTimeMillis()).commit();
       }
       if (i != 0)
       {
@@ -31,7 +31,7 @@ class ChatFragment$1
         localObject = this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
         this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a((String)localObject, this.a, i, this.b);
       }
-      bbko.b.clear();
+      bcrg.b.clear();
       return;
     }
   }

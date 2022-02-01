@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-import tencent.im.oidb.cmd0xea3.oidb_0xea3.BackMsg;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import mqq.app.QQPermissionCallback;
 
-class beus
-  extends beud
+public class beus
+  implements QQPermissionCallback
 {
-  beus(beur parambeur, QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public beus(AbsPublishActivity paramAbsPublishActivity) {}
   
-  protected void a(long paramLong, boolean paramBoolean, List<oidb_0xea3.BackMsg> paramList, List<Long> paramList1)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    beur.a(this.a, paramLong, paramBoolean, paramList, paramList1);
+    this.a.a(this.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beus
  * JD-Core Version:    0.7.0.1
  */

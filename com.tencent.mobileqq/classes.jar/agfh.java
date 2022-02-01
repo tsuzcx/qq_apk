@@ -1,17 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class agfh
-  extends aghj
+  implements DialogInterface.OnClickListener
 {
-  agfh(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  agfh(agfg paramagfg, BaseActivity paramBaseActivity) {}
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new afyf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    agfg.a(null);
+    if (agfg.a(this.jdField_a_of_type_Agfg) != null) {
+      agfg.a(this.jdField_a_of_type_Agfg).b();
+    }
   }
 }
 

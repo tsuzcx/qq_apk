@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import ped;
-import peg;
-import pkm;
+import pne;
+import pnh;
+import pvj;
 
 public final class RIJReportDataCollectionManager$2
   implements Runnable
 {
-  public RIJReportDataCollectionManager$2(ped paramped, BaseArticleInfo paramBaseArticleInfo) {}
+  public RIJReportDataCollectionManager$2(pne parampne, BaseArticleInfo paramBaseArticleInfo) {}
   
   public void run()
   {
-    pkm.a().b(this.jdField_a_of_type_Ped.a().b(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    pvj.a().b(this.jdField_a_of_type_Pne.a().b(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
   }
 }
 

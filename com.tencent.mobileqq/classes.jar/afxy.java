@@ -1,10 +1,23 @@
-import android.os.Bundle;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.ImageView;
 
-public abstract interface afxy
+class afxy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  afxy(afxx paramafxx) {}
   
-  public abstract void a(Bundle paramBundle);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (afxx.a(this.a) != null) {
+      afxx.a(this.a).setAlpha((float)d);
+    }
+    if (afxx.a(this.a) != null) {
+      afxx.a(this.a).setAlpha((float)d * 2.0F);
+    }
+  }
 }
 
 

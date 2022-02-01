@@ -1,19 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adiz
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public adiz(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public adiz(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_Aymg.a.a.equals(this.a.app.getCurrentAccountUin())) && (this.a.jdField_a_of_type_Bjng != null)) {
-      this.a.jdField_a_of_type_Bjng.sendEmptyMessage(4);
+    if ((Build.VERSION.SDK_INT < 23) || (BaseApplicationImpl.getContext().checkSelfPermission("android.permission.RECORD_AUDIO") == 0)) {}
+    for (int i = 1;; i = 0)
+    {
+      boolean bool = FloatingScreenPermission.checkPermission(BaseApplicationImpl.getContext());
+      if (i == 0) {
+        this.a.requestPermissions(new adja(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+      }
+      if (!bool) {
+        FloatingScreenPermission.requestPermission(this.a);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

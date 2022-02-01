@@ -1,19 +1,52 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class bczr
-  extends QQText
+class bczr<K, V>
 {
-  public bczr(CharSequence paramCharSequence, int paramInt1, int paramInt2, MessageRecord paramMessageRecord, Object paramObject)
+  private HashMap<K, ArrayList<V>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  
+  public bczr(bczq parambczq) {}
+  
+  public ArrayList<V> a(K paramK)
   {
-    super(paramCharSequence, paramInt1, paramInt2, paramMessageRecord);
-    a(paramObject);
+    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
   }
   
-  private void a(Object paramObject)
+  public void a(V paramV)
   {
-    addSpan(paramObject, 0, BaseApplication.getContext().getString(2131690220).length(), 33);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      ArrayList localArrayList = (ArrayList)localEntry.getValue();
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        Object localObject = localArrayList.get(i);
+        if ((localObject == paramV) || ((localObject != null) && (localObject.equals(paramV)))) {
+          ((ArrayList)localEntry.getValue()).remove(paramV);
+        } else {
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void a(K paramK, V paramV)
+  {
+    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null)
+    {
+      localArrayList1 = new ArrayList();
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramK, localArrayList1);
+    }
+    if (!localArrayList1.contains(paramV)) {
+      localArrayList1.add(paramV);
+    }
   }
 }
 

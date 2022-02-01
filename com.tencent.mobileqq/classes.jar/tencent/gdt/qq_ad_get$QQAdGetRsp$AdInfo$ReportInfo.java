@@ -8,8 +8,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class qq_ad_get$QQAdGetRsp$AdInfo$ReportInfo
   extends MessageMicro<ReportInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74 }, new String[] { "exposure_url", "click_url", "effect_url", "landing_page_report_url", "negative_feedback_url", "trace_info", "video_report_url", "thirdparty_monitor_urls", "original_exposure_url" }, new Object[] { "", "", "", "", "", null, "", null, "" }, ReportInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 82 }, new String[] { "exposure_url", "click_url", "effect_url", "landing_page_report_url", "negative_feedback_url", "trace_info", "video_report_url", "thirdparty_monitor_urls", "original_exposure_url", "complaint_url" }, new Object[] { "", "", "", "", "", null, "", null, "", "" }, ReportInfo.class);
   public final PBStringField click_url = PBField.initString("");
+  public final PBStringField complaint_url = PBField.initString("");
   public final PBStringField effect_url = PBField.initString("");
   public final PBStringField exposure_url = PBField.initString("");
   public final PBStringField landing_page_report_url = PBField.initString("");

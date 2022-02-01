@@ -1,16 +1,60 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"set", "", "Lcom/tencent/biz/pubaccount/readinjoy/common/ReadInJoyUtils$ReportR5Builder;", "key", "", "value", "", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class pbk
+public class pbk
+  implements AbsListView.OnScrollListener
 {
-  public static final void a(@NotNull pbg parampbg, @NotNull String paramString, @NotNull Object paramObject)
+  private List<AbsListView.OnScrollListener> a = new ArrayList();
+  
+  public void a(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    Intrinsics.checkParameterIsNotNull(parampbg, "$this$set");
-    Intrinsics.checkParameterIsNotNull(paramString, "key");
-    Intrinsics.checkParameterIsNotNull(paramObject, "value");
-    parampbg.a(paramString, paramObject);
+    if ((this.a != null) && (!this.a.contains(paramOnScrollListener))) {
+      this.a.add(paramOnScrollListener);
+    }
+  }
+  
+  public void b(AbsListView.OnScrollListener paramOnScrollListener)
+  {
+    if (this.a != null) {
+      this.a.remove(paramOnScrollListener);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((this.a == null) || (this.a.size() <= 0)) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        AbsListView.OnScrollListener localOnScrollListener = (AbsListView.OnScrollListener)localIterator.next();
+        if (localOnScrollListener != null) {
+          localOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+        }
+      }
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((this.a == null) || (this.a.size() <= 0)) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        AbsListView.OnScrollListener localOnScrollListener = (AbsListView.OnScrollListener)localIterator.next();
+        if (localOnScrollListener != null) {
+          localOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
+        }
+      }
+    }
   }
 }
 

@@ -1,33 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.statistics.UEC.UECItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.List;
+import pb.unify.search.UnifySearchUnite.TabItemGroup;
+import pb.unite.search.UniteSearch.TabItemGroup;
 
-public final class bcfd
-  implements Parcelable.Creator<UEC.UECItem>
+public class bcfd
 {
-  public UEC.UECItem a(Parcel paramParcel)
+  public String a;
+  public List<Long> a;
+  
+  public bcfd() {}
+  
+  public bcfd(UnifySearchUnite.TabItemGroup paramTabItemGroup)
   {
-    UEC.UECItem localUECItem = new UEC.UECItem();
-    localUECItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_a_of_type_Long = paramParcel.readLong();
-    localUECItem.jdField_b_of_type_Int = paramParcel.readInt();
-    localUECItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localUECItem.c = paramParcel.readString();
-    localUECItem.d = paramParcel.readString();
-    localUECItem.e = paramParcel.readString();
-    localUECItem.f = paramParcel.readString();
-    return localUECItem;
+    if (paramTabItemGroup == null) {
+      throw new RuntimeException("group is null in GroupTabModel Constructor.");
+    }
+    this.jdField_a_of_type_JavaLangString = paramTabItemGroup.tab_name.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilList = paramTabItemGroup.rpt_group_mask.get();
   }
   
-  public UEC.UECItem[] a(int paramInt)
+  public bcfd(UniteSearch.TabItemGroup paramTabItemGroup)
   {
-    return new UEC.UECItem[paramInt];
+    if (paramTabItemGroup == null) {
+      throw new RuntimeException("group is null in GroupTabModel Constructor.");
+    }
+    this.jdField_a_of_type_JavaLangString = paramTabItemGroup.tab_name.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilList = paramTabItemGroup.rpt_group_mask.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcfd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,8 @@
-import android.view.View;
-import java.util.List;
-
-class afrm
-  implements bjoe
+public abstract interface afrm
 {
-  afrm(afrl paramafrl, List paramList, bjnw parambjnw) {}
+  public abstract void onHeadsetChanged(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      afrl.a(this.jdField_a_of_type_Afrl, this.jdField_a_of_type_JavaUtilList);
-      afnx.a(afrl.a(this.jdField_a_of_type_Afrl), this.jdField_a_of_type_JavaUtilList, 3);
-      continue;
-      this.jdField_a_of_type_Afrl.a(this.jdField_a_of_type_JavaUtilList, 0);
-      afnx.a(afrl.a(this.jdField_a_of_type_Afrl), this.jdField_a_of_type_JavaUtilList, 3);
-    }
-  }
+  public abstract void onNearToEar(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

@@ -1,28 +1,32 @@
-import org.json.JSONException;
 import org.json.JSONObject;
 
-class ufv
-  implements qol
+public class ufv
 {
-  ufv(ufd paramufd, String paramString) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(int paramInt1, int paramInt2)
+  public ufv(JSONObject paramJSONObject)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    if (paramJSONObject != null)
     {
-      localJSONObject.put("button", paramInt1);
-      localJSONObject.put("result", paramInt2);
-      this.jdField_a_of_type_Ufd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
+      this.a = paramJSONObject.optString("dest_url");
+      this.b = paramJSONObject.optString("rl");
+      this.c = paramJSONObject.optString("button_txt");
+      this.d = paramJSONObject.optString("button_bg");
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("AdPKImageData{");
+    localStringBuilder.append("destUrl=").append(this.a);
+    localStringBuilder.append(",rl=").append(this.b);
+    localStringBuilder.append(",buttonTxt=").append(this.c);
+    localStringBuilder.append(",buttonBg=").append(this.d);
+    localStringBuilder.append("}");
+    return super.toString();
   }
 }
 

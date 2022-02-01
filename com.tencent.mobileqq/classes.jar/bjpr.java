@@ -1,36 +1,18 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.widget.DynamicGridView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.VirtualInfo;
 
-class bjpr
-  implements ViewTreeObserver.OnPreDrawListener
+public final class bjpr
+  implements Parcelable.Creator<VirtualInfo>
 {
-  private final int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final int b;
-  
-  bjpr(bjpq parambjpq, View paramView, int paramInt1, int paramInt2)
+  public VirtualInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    return new VirtualInfo(paramParcel);
   }
   
-  public boolean onPreDraw()
+  public VirtualInfo[] a(int paramInt)
   {
-    this.jdField_a_of_type_Bjpq.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    DynamicGridView.a(this.jdField_a_of_type_Bjpq.a, DynamicGridView.a(this.jdField_a_of_type_Bjpq.a) + bjpq.a(this.jdField_a_of_type_Bjpq));
-    DynamicGridView.b(this.jdField_a_of_type_Bjpq.a, DynamicGridView.b(this.jdField_a_of_type_Bjpq.a) + bjpq.b(this.jdField_a_of_type_Bjpq));
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    DynamicGridView.a(this.jdField_a_of_type_Bjpq.a, this.jdField_a_of_type_Bjpq.a.a(DynamicGridView.a(this.jdField_a_of_type_Bjpq.a)));
-    if (DynamicGridView.a(this.jdField_a_of_type_Bjpq.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_Bjpq.a).setVisibility(4);
-    }
-    DynamicGridView.a(this.jdField_a_of_type_Bjpq.a, this.jdField_a_of_type_Int, this.b);
-    return true;
+    return new VirtualInfo[paramInt];
   }
 }
 

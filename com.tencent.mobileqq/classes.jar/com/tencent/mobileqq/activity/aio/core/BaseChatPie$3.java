@@ -1,19 +1,22 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import bjvn;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.widget.XEditTextEx;
 
 class BaseChatPie$3
-  implements bjvn
+  implements View.OnLongClickListener
 {
   BaseChatPie$3(BaseChatPie paramBaseChatPie) {}
   
-  public void onReadyToShowChanged(boolean paramBoolean)
+  public boolean onLongClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      BaseChatPie.access$000(this.this$0);
-      BaseChatPie.access$100(this.this$0);
+    if ("//findcrash".equals(this.this$0.input.getText().toString())) {
+      ThreadManager.post(new LocalCrashCollector(this.this$0), 8, null, true);
     }
+    return true;
   }
 }
 

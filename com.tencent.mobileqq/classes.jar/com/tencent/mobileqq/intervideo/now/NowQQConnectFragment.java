@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aupc;
+import avux;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -28,7 +29,7 @@ public class NowQQConnectFragment
       if (paramBundle == null) {
         QLog.e("NowQQConnectFragment", 1, "argsBundle is null");
       } else {
-        ((aupc)aupc.a().getManager(306)).a(paramViewGroup, paramBundle);
+        ((avux)avux.a().getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).a(paramViewGroup, paramBundle);
       }
     }
   }

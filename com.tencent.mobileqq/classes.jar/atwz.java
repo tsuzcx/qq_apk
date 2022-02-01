@@ -1,18 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class atwz
-  implements Parcelable.Creator<PadFaceAd>
+class atwz
+  implements View.OnClickListener
 {
-  public PadFaceAd a(Parcel paramParcel)
-  {
-    return new PadFaceAd(paramParcel);
-  }
+  atwz(atwq paramatwq, int paramInt) {}
   
-  public PadFaceAd[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new PadFaceAd[paramInt];
+    if (this.jdField_a_of_type_Atwq.a != null)
+    {
+      if (this.jdField_a_of_type_Int != 1) {
+        break label86;
+      }
+      bdla.b(null, "dc00898", "", "", "0X800A745", "0X800A745", aufd.c(this.jdField_a_of_type_Atwq.e()), 0, "", "", "", "");
+      if (this.jdField_a_of_type_Atwq.a.d()) {
+        this.jdField_a_of_type_Atwq.a.b();
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label86:
+      if (this.jdField_a_of_type_Int == 2) {
+        this.jdField_a_of_type_Atwq.a.g();
+      }
+    }
   }
 }
 

@@ -1,16 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import java.util.List;
 
-public class ayqm
-  extends AnimatorListenerAdapter
+public abstract interface ayqm
 {
-  public ayqm(BreatheEffectView paramBreatheEffectView, ayqo paramayqo) {}
+  public abstract void a(List<ayqn> paramList);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Ayqo.a();
-  }
+  public abstract void b();
 }
 
 

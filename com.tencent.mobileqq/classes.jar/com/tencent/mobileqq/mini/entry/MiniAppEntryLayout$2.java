@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.entry;
 
 import android.graphics.Bitmap;
 import android.graphics.Rect;
-import bfvo;
+import bheg;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -30,7 +30,7 @@ class MiniAppEntryLayout$2
       paramDownloadParams = localBitmap2;
       localRect.bottom = Math.min(paramBitmap.getHeight(), i);
       paramDownloadParams = localBitmap2;
-      localBitmap2 = bfvo.a(paramBitmap, localRect, 2);
+      localBitmap2 = bheg.a(paramBitmap, localRect, 2);
       localBitmap1 = localBitmap2;
       paramDownloadParams = localBitmap2;
       if (QLog.isColorLevel())

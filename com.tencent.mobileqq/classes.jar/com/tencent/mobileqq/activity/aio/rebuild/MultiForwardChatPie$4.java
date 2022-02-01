@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahia;
+import aict;
 import com.tencent.qphone.base.util.QLog;
 
 public class MultiForwardChatPie$4
   implements Runnable
 {
-  public MultiForwardChatPie$4(ahia paramahia) {}
+  public MultiForwardChatPie$4(aict paramaict) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class MultiForwardChatPie$4
       QLog.i(this.this$0.tag, 1, "onShowFirst return|3 hasDestory:" + this.this$0.hasDestory);
       return;
     }
-    ahia.a(this.this$0);
+    aict.a(this.this$0);
   }
 }
 

@@ -1,50 +1,43 @@
-import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.VideoDrawable;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aqfb
-  implements apts<String>
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  public String a;
-  public boolean a;
-  public String b = "";
-  public String c = "{}";
+  public aqfb(DynamicAvatarView paramDynamicAvatarView) {}
   
-  public aqfb()
+  public void onPlayRepeat(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("QFileAppStorePromoteConfigBean<QFile>", 1, "onParse: but configContent is null!");
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.dynamicAvatar", 2, "onPlayRepeat: " + paramInt);
     }
-    this.c = paramString;
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (paramString.has("actionSwitch")) {
-        this.jdField_a_of_type_Boolean = paramString.getBoolean("actionSwitch");
-      }
-      if (paramString.has("actionHint")) {
-        this.jdField_a_of_type_JavaLangString = paramString.getString("actionHint");
-      }
-      if (paramString.has("actionYYBDownloadUrl")) {
-        this.b = paramString.getString("actionYYBDownloadUrl");
-      }
+    if ((this.a.b) || (paramInt < 1)) {}
+    while (this.a.a == null) {
       return;
     }
-    catch (JSONException paramString)
+    Object localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
+    if ((localObject instanceof URLDrawable))
     {
-      QLog.e("QFileAppStorePromoteConfigBean<QFile>", 1, QLog.getStackTraceString(paramString));
+      localObject = ((URLDrawable)localObject).getCurrDrawable();
+      if ((localObject instanceof VideoDrawable))
+      {
+        ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
+        this.a.a.jdField_a_of_type_Aqeq.a(this.a.a, true);
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
+        }
+      }
     }
+    this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfb
  * JD-Core Version:    0.7.0.1
  */

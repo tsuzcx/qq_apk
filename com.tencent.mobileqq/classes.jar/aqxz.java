@@ -1,84 +1,82 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavImageData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqxz
-  extends aqxl
+  extends aqwt<aqya>
 {
-  QQAppInterface b = null;
-  
-  public aqxz(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public aqya a(int paramInt)
   {
-    super("qq.android.qav.image2", paramQQAppInterface);
-    this.b = paramQQAppInterface;
+    return new aqya();
   }
   
-  public int a()
+  @Nullable
+  public aqya a(aqxa[] paramArrayOfaqxa)
   {
-    return 10047;
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      aqya localaqya = aqya.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("AEPituCameraConfigProcessor", 2, "onParsed:" + paramArrayOfaqxa[0].a);
+      }
+      return localaqya;
+    }
+    return null;
   }
   
-  public Class<? extends XmlData> a()
-  {
-    return QavImageData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadImageDuration";
-  }
-  
-  public void a(String paramString)
+  public void a(aqya paramaqya)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QavImageHandler", 2, "download success: " + paramString);
+      QLog.d("AEPituCameraConfigProcessor", 2, "onUpdate: " + paramaqya.a());
     }
-    try
-    {
-      FileUtils.uncompressZip(paramString, mrz.b(), false);
-      super.a(paramString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    ShortVideoUtils.setAEPituCameraTaKeSameSwitch(paramaqya.a());
   }
   
-  public void a(boolean paramBoolean)
+  public Class<aqya> clazz()
   {
-    QavImageData localQavImageData = (QavImageData)a();
-    if ((localQavImageData != null) && (!localQavImageData.autoDownload))
-    {
-      localQavImageData.autoDownload = true;
-      aqxb.a(localQavImageData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
+    return aqya.class;
   }
   
-  public boolean a()
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
   {
     return true;
   }
   
-  public String b()
+  public boolean isNeedStoreLargeFile()
   {
-    return null;
+    return false;
   }
   
-  public boolean h()
+  public int migrateOldVersion()
   {
-    return ((QavImageData)a()).autoDownload;
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int onSend(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEPituCameraConfigProcessor", 2, "onSend: " + paramInt + ", isOpen:" + ShortVideoUtils.isAEPituTakeSameOpen());
+    }
+    return super.onSend(paramInt);
+  }
+  
+  public int type()
+  {
+    return 574;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxz
  * JD-Core Version:    0.7.0.1
  */

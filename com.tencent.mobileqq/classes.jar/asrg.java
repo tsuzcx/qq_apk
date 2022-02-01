@@ -1,27 +1,24 @@
-import android.content.Context;
-import android.content.Intent;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
 
 public class asrg
-  implements apnn
+  extends AnimatorListenerAdapter
 {
-  public String a()
+  public asrg(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment, MatchingView paramMatchingView, View paramView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return amtj.a(2131698529);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    ExtendFriendLimitChatMatchFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendLimitchatExtendFriendLimitChatMatchFragment, this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.a();
   }
   
-  public void a(View paramView, int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (paramView == null) {}
-    while (paramInt != 17039360) {
-      return;
-    }
-    paramView = paramView.getContext();
-    Intent localIntent = new Intent(paramView, FileAssistantActivity.class);
-    localIntent.putExtra("from", "FileAssistant");
-    paramView.startActivity(localIntent);
-    bcef.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 1, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.setVisibility(0);
   }
 }
 

@@ -1,31 +1,26 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.WebPreloadTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class aebf
-  implements bgso
+  implements aqul
 {
-  public aebf(QQSettingMe.WebPreloadTask paramWebPreloadTask, QQSettingMe paramQQSettingMe) {}
+  public aebf(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onResult(boolean paramBoolean)
+  public int a()
   {
-    if ((paramBoolean) && (QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe) != null)) {
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).a();
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {
+      return this.a.getString(2131693752);
     }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("WebPreloadTask preloadWebProcess isProcessExist: ");
-      if (paramBoolean) {
-        break label64;
-      }
-    }
-    label64:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQSettingRedesign", 2, paramBoolean);
-      return;
-    }
+    return this.a.getString(2131692198);
   }
 }
 

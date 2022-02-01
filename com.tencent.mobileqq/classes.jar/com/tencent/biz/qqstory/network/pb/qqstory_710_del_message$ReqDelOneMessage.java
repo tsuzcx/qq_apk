@@ -22,7 +22,7 @@ public final class qqstory_710_del_message$ReqDelOneMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ReqDelOneMessage
  * JD-Core Version:    0.7.0.1
  */

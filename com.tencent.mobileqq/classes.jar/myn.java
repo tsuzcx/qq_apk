@@ -1,22 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.wtogether.data.ChooseFileInfo;
 
-class myn
-  implements DialogInterface.OnDismissListener
+public final class myn
+  implements Parcelable.Creator<ChooseFileInfo>
 {
-  myn(myl parammyl, Activity paramActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ChooseFileInfo a(Parcel paramParcel)
   {
-    if (!this.jdField_a_of_type_Myl.c)
-    {
-      if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-      return;
-    }
-    this.jdField_a_of_type_Myl.c = false;
+    return new ChooseFileInfo(paramParcel);
+  }
+  
+  public ChooseFileInfo[] a(int paramInt)
+  {
+    return new ChooseFileInfo[paramInt];
   }
 }
 

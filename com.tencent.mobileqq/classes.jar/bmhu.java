@@ -1,29 +1,25 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bmhu
-  implements bmob
 {
-  public bmhu(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
-  
-  public boolean a(MotionEvent paramMotionEvent)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    if (AEEditorImageEditFragment.a(this.a).getVisibility() == 0)
-    {
-      Rect localRect = new Rect();
-      AEEditorImageEditFragment.a(this.a).getGlobalVisibleRect(localRect);
-      if (!localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
-        AEEditorImageEditFragment.a(this.a);
-      }
-    }
-    return false;
+    return paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).getInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), 0);
   }
   
-  public boolean b(MotionEvent paramMotionEvent)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    return false;
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4).edit();
+    paramQQAppInterface.putInt("hot_shortvideo_multi_video_support_799", paramInt);
+    paramQQAppInterface.commit();
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).edit().putInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), paramInt).commit();
   }
 }
 

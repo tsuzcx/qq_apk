@@ -1,8 +1,27 @@
-public abstract interface avme
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+
+public class avme
+  implements Animator.AnimatorListener
 {
-  public abstract void a(avli paramavli);
+  public avme(HotPicMainPanel paramHotPicMainPanel) {}
   
-  public abstract void b(avli paramavli);
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+    this.a.b.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

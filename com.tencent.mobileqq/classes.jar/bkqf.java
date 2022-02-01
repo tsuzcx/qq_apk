@@ -1,29 +1,33 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2.1;
+import android.app.Activity;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.microapp.ext.GameProxy;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.qqmini.proxyimpl.NavigationProxyImpl.1;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.NavigationProxy;
+import org.json.JSONObject;
 
+@ProxyService(proxy=NavigationProxy.class)
 public class bkqf
-  implements ServiceConnection
+  extends NavigationProxy
 {
-  bkqf(bkqe parambkqe) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  private void a(MiniAppInfo paramMiniAppInfo)
   {
-    this.a.jdField_a_of_type_Bkqa = bkqb.a(paramIBinder);
-    if (this.a.jdField_a_of_type_Bkqa != null)
-    {
-      paramComponentName = new QfavRemoteProxyForQQ.2.1(this);
-      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
-      paramComponentName.start();
-    }
+    ThreadManagerV2.excute(new NavigationProxyImpl.1(this, paramMiniAppInfo), 32, null, true);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public boolean launchByAppType(int paramInt1, Activity paramActivity, String paramString, int paramInt2, JSONObject paramJSONObject, ResultReceiver paramResultReceiver)
   {
-    this.a.jdField_a_of_type_Bkqa = null;
-    this.a.jdField_a_of_type_Boolean = false;
+    return GameProxy.startGameByMiniApp(paramActivity, paramString, paramJSONObject);
   }
+  
+  public void onAfterLaunchByAppInfo(JSONObject paramJSONObject)
+  {
+    a(MiniAppInfo.createMiniAppInfo(paramJSONObject));
+  }
+  
+  public void onBeforeNavigateToMiniProgram() {}
 }
 
 

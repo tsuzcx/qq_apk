@@ -1,56 +1,8 @@
-import android.annotation.TargetApi;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import android.view.Surface;
+import android.view.View;
 
-@TargetApi(16)
-public class bils
-  extends bilp
+public abstract interface bils
 {
-  private Surface a;
-  
-  protected String a()
-  {
-    return "Q.qqstory.mediadecoderMediaCodecVideoRender";
-  }
-  
-  protected void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
-  {
-    boolean bool = true;
-    int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 10000L);
-    switch (i)
-    {
-    default: 
-      if ((paramBufferInfo.flags & 0x4) != 0)
-      {
-        xvv.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "output EOS");
-        this.jdField_b_of_type_Boolean = true;
-      }
-      if (paramBufferInfo.size == 0) {
-        break;
-      }
-    }
-    for (;;)
-    {
-      paramMediaCodec.releaseOutputBuffer(i, bool);
-      xvv.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer render");
-      return;
-      xvv.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "INFO_OUTPUT_BUFFERS_CHANGED");
-      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = paramMediaCodec.getOutputBuffers();
-      return;
-      xvv.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "New format " + this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat());
-      return;
-      xvv.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer timed out!");
-      return;
-      bool = false;
-    }
-  }
-  
-  protected void a(bilq parambilq, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
-  {
-    paramMediaCodec.configure(paramMediaFormat, this.jdField_a_of_type_AndroidViewSurface, null, 0);
-  }
+  public abstract void a(View paramView);
 }
 
 

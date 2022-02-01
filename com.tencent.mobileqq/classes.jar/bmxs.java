@@ -1,21 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Color;
+import android.os.Build.VERSION;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-final class bmxs
-  implements ValueAnimator.AnimatorUpdateListener
+class bmxs
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  final int jdField_a_of_type_Int = Color.red(this.d);
-  final int b = Color.green(this.d);
-  final int c = Color.blue(this.d);
+  private int jdField_a_of_type_Int;
   
-  bmxs(int paramInt, View paramView) {}
+  bmxs(bmxa parambmxa) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onGlobalLayout()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
+    int i = this.jdField_a_of_type_Int + 1;
+    this.jdField_a_of_type_Int = i;
+    ViewTreeObserver localViewTreeObserver;
+    if (i > 1)
+    {
+      localViewTreeObserver = this.jdField_a_of_type_Bmxa.b.getViewTreeObserver();
+      if (localViewTreeObserver.isAlive())
+      {
+        if (Build.VERSION.SDK_INT < 16) {
+          break label110;
+        }
+        localViewTreeObserver.removeOnGlobalLayoutListener(this);
+      }
+    }
+    for (;;)
+    {
+      bnrg.a(new alsn(this.jdField_a_of_type_Bmxa.b.getMeasuredWidth(), this.jdField_a_of_type_Bmxa.b.getMeasuredHeight()));
+      bnrh.b(this.jdField_a_of_type_Bmxa.a, "mMaxPreviewSize set: " + bnrg.a());
+      return;
+      label110:
+      localViewTreeObserver.removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

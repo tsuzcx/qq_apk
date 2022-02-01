@@ -1,87 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.config.business.QuickAuthorityConfBean.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
+import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqbz
+  implements View.OnClickListener
 {
-  public int a;
-  public ConcurrentHashMap<String, String> a;
-  public int b;
-  public int c = 1;
-  public int d;
-  public int e;
+  public aqbz(ArkAppListActivity paramArkAppListActivity, String paramString) {}
   
-  public aqbz()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
-  }
-  
-  public static aqbz a(String paramString)
-  {
-    aqbz localaqbz = new aqbz();
-    if (paramString == null) {
-      return localaqbz;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localaqbz.jdField_a_of_type_Int = paramString.optInt("kCheckSignatureSwitch", 0);
-      localaqbz.b = paramString.optInt("kDisableChooseSwitch", 0);
-      localaqbz.c = paramString.optInt("kShowKickDialog", 1);
-      localaqbz.d = paramString.optInt("kFDHookSwitch", 0);
-      localaqbz.e = paramString.optInt("kWtloginPowTest", 0);
-      paramString = paramString.optJSONObject("kSignatureList");
-      if (paramString != null)
-      {
-        Iterator localIterator = paramString.keys();
-        while (localIterator.hasNext())
-        {
-          String str1 = (String)localIterator.next();
-          String str2 = paramString.optString(str1);
-          if (!TextUtils.isEmpty(str2))
-          {
-            localaqbz.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, str2);
-            if (QLog.isColorLevel()) {
-              QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "package: ", str1, " signature:", str2 });
-            }
-          }
-        }
-      }
-      QLog.d("QuickAuthorityConfProcessor", 2, "confBean = " + localaqbz.toString());
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QuickAuthorityConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-      }
-      return null;
-    }
-    if (localaqbz.e == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ThreadManagerV2.executeOnSubThread(new QuickAuthorityConfBean.1(bool));
-      return localaqbz;
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("kCheckSignatureSwitch:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" kDisableChooseSwitch:").append(this.b);
-    localStringBuilder.append(" signatureMaps:").append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-    localStringBuilder.append(" fdSwitch:").append(this.d);
-    localStringBuilder.append(" wtloginPowTest:").append(this.e);
-    return localStringBuilder.toString();
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity, ArkAuthorityInfoActivity.class);
+    localIntent.putExtra("intent_extra_authority_app_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,15 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-import com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 
 public class qux
+  extends quz
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
-  ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
-  RingAvatarView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView;
-  TextView b;
-  
-  public qux(ComponentContentRecommend paramComponentContentRecommend) {}
+  public qux(VafContext paramVafContext)
+  {
+    super(paramVafContext);
+    this.a.setIsCacheIcon(true);
+    this.a.setIsClosedoAlphaAniamation(true);
+  }
 }
 
 

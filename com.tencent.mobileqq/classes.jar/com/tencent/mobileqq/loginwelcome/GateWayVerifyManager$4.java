@@ -4,10 +4,11 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
-import avin;
-import aviq;
-import bgzz;
+import awoq;
+import awou;
+import bikr;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
 import java.math.BigInteger;
@@ -15,11 +16,12 @@ import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.URL;
+import tencent.im.login.GatewayVerify.SelfPhoneUrl;
 
 public class GateWayVerifyManager$4
   implements Runnable
 {
-  public GateWayVerifyManager$4(avin paramavin, String paramString, aviq paramaviq) {}
+  public GateWayVerifyManager$4(awoq paramawoq, GatewayVerify.SelfPhoneUrl paramSelfPhoneUrl, awou paramawou) {}
   
   public void run()
   {
@@ -31,7 +33,7 @@ public class GateWayVerifyManager$4
       try
       {
         Object localObject1 = (ConnectivityManager)BaseApplicationImpl.getApplication().getSystemService("connectivity");
-        bgzz.a(ConnectivityManager.class, "startUsingNetworkFeature", new Class[] { Integer.TYPE, String.class }).invoke(localObject1, new Object[] { Integer.valueOf(0), "enableHIPRI" });
+        bikr.a(ConnectivityManager.class, "startUsingNetworkFeature", new Class[] { Integer.TYPE, String.class }).invoke(localObject1, new Object[] { Integer.valueOf(0), "enableHIPRI" });
         i = 0;
         if (i < 4)
         {
@@ -42,21 +44,21 @@ public class GateWayVerifyManager$4
         }
         else
         {
-          localObject2 = InetAddress.getByName(new URL(this.jdField_a_of_type_JavaLangString).getHost());
+          localObject2 = InetAddress.getByName(new URL(this.jdField_a_of_type_TencentImLoginGatewayVerify$SelfPhoneUrl.str_upload_url.get()).getHost());
           if (!(localObject2 instanceof Inet4Address)) {
-            break label310;
+            break label316;
           }
-          i = avin.a(this.this$0, ((InetAddress)localObject2).getHostAddress());
-          localObject1 = bgzz.a(ConnectivityManager.class, "requestRouteToHost", new Class[] { Integer.TYPE, Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(5), Integer.valueOf(i) });
+          i = awoq.a(this.this$0, ((InetAddress)localObject2).getHostAddress());
+          localObject1 = bikr.a(ConnectivityManager.class, "requestRouteToHost", new Class[] { Integer.TYPE, Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(5), Integer.valueOf(i) });
           if ((!(localObject1 instanceof Boolean)) || (!((Boolean)localObject1).booleanValue())) {
-            break label369;
+            break label375;
           }
           bool = true;
           QLog.d("GateWayVerifyManager", 1, new Object[] { "changeNetTypeToMobileV19 finish: ", Boolean.valueOf(bool) });
           if (!bool) {
-            break label337;
+            break label343;
           }
-          avin.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aviq);
+          awoq.a(this.this$0, this.jdField_a_of_type_TencentImLoginGatewayVerify$SelfPhoneUrl, this.jdField_a_of_type_Awou);
           return;
         }
         localObject2 = ((NetworkInfo)localObject2).getState();
@@ -72,26 +74,26 @@ public class GateWayVerifyManager$4
       catch (Exception localException)
       {
         QLog.e("GateWayVerifyManager", 1, new Object[] { "switch network error", localException.getMessage() });
-        this.jdField_a_of_type_Aviq.a(localException);
+        this.jdField_a_of_type_Awou.a(localException);
         return;
       }
       Thread.sleep(1000L);
       i += 1;
       continue;
-      label310:
+      label316:
       if ((localObject2 instanceof Inet6Address))
       {
-        i = avin.a(this.this$0, ((InetAddress)localObject2).getHostAddress()).intValue();
+        i = awoq.a(this.this$0, ((InetAddress)localObject2).getHostAddress()).intValue();
         continue;
-        label337:
+        label343:
         QLog.e("GateWayVerifyManager", 1, "切换网络失败or无数据网络");
-        this.jdField_a_of_type_Aviq.a(new Exception("change network to mobile failed or no mobile network"));
+        this.jdField_a_of_type_Awou.a(new Exception("change network to mobile failed or no mobile network"));
       }
       else
       {
         i = 0;
         continue;
-        label369:
+        label375:
         bool = false;
       }
     }

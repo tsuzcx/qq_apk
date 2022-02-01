@@ -23,8 +23,9 @@ public class NetOcrReqResultState
   extends YtFSMBaseState
 {
   private static final String TAG = NetOcrReqResultState.class.getSimpleName();
-  private HashMap<String, String> _requestOptions = null;
+  private HashMap<String, Object> _requestOptions = null;
   private String appId;
+  private int jpegQuality;
   private String ocrtype;
   private String resultUrl;
   private String secretId;
@@ -46,24 +47,62 @@ public class NetOcrReqResultState
     int i = ((YuvImage)localObject1).getWidth();
     int j = ((YuvImage)localObject1).getHeight();
     localObject2 = new ByteArrayOutputStream();
-    ((YuvImage)localObject1).compressToJpeg(new Rect(0, 0, i, j), 95, (OutputStream)localObject2);
-    localObject2 = Base64.encode(((ByteArrayOutputStream)localObject2).toByteArray(), 2);
-    Iterator localIterator = this._requestOptions.entrySet().iterator();
+    ((YuvImage)localObject1).compressToJpeg(new Rect(0, 0, i, j), this.jpegQuality, (OutputStream)localObject2);
+    byte[] arrayOfByte = Base64.encode(((ByteArrayOutputStream)localObject2).toByteArray(), 2);
+    localObject1 = "";
+    label163:
     Map.Entry localEntry;
-    for (localObject1 = ""; localIterator.hasNext(); localObject1 = String.format("%s, \"%s\":%s", new Object[] { localObject1, localEntry.getKey(), localEntry.getValue() })) {
-      localEntry = (Map.Entry)localIterator.next();
+    if (this._requestOptions.size() > 0) {
+      if (this.ocrtype != "idcard")
+      {
+        localObject1 = ",\"options\":{";
+        localObject2 = this._requestOptions.entrySet().iterator();
+        i = 0;
+        if (!((Iterator)localObject2).hasNext()) {
+          break label307;
+        }
+        localEntry = (Map.Entry)((Iterator)localObject2).next();
+        if (!(localEntry.getValue() instanceof String)) {
+          break label270;
+        }
+        localObject1 = String.format("%s\"%s\":\"%s\"", new Object[] { localObject1, localEntry.getKey(), localEntry.getValue() });
+        label232:
+        i += 1;
+        if (i >= this._requestOptions.size()) {
+          break label505;
+        }
+        localObject1 = String.format("%s,", new Object[] { localObject1 });
+      }
     }
-    localObject1 = String.format("{\"app_id\":\"%s\"%s,\"image\":\"%s\"}", new Object[] { this.appId, localObject1, new String((byte[])localObject2) });
-    try
+    label270:
+    label307:
+    label505:
+    for (;;)
     {
-      localObject2 = CommonUtils.getYoutuOpenAppSign(this.appId, this.secretId, this.secretKey, this.userId);
-      YtFSM.getInstance().sendNetworkRequset(this.resultUrl, (String)localObject1, new NetOcrReqResultState.5(this, (String)localObject2), new NetOcrReqResultState.6(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      YtLogger.e(TAG, "Failed to compose sign " + localException.getLocalizedMessage());
-      YtFSM.getInstance().sendFSMEvent(new NetOcrReqResultState.4(this, localException));
+      break label163;
+      localObject1 = ",";
+      break;
+      localObject1 = String.format("%s\"%s\":%s", new Object[] { localObject1, localEntry.getKey(), localEntry.getValue() });
+      break label232;
+      localObject2 = localObject1;
+      if (this.ocrtype != "idcard") {
+        localObject2 = String.format("%s}", new Object[] { localObject1 });
+      }
+      localObject1 = String.format("%s,", new Object[] { localObject2 });
+      localObject1 = String.format("{\"app_id\":\"%s\"%s\"image\":\"%s\"}", new Object[] { this.appId, localObject1, new String(arrayOfByte) });
+      YtLogger.d(TAG, "request:" + (String)localObject1);
+      try
+      {
+        localObject2 = CommonUtils.getYoutuOpenAppSign(this.appId, this.secretId, this.secretKey, this.userId);
+        YtFSM.getInstance().sendNetworkRequest("net_reporting", this.resultUrl, (String)localObject1, new NetOcrReqResultState.5(this, (String)localObject2), new NetOcrReqResultState.6(this));
+        return;
+      }
+      catch (Exception localException)
+      {
+        YtLogger.e(TAG, "Failed to compose sign " + localException.getLocalizedMessage());
+        YtFSM.getInstance().sendFSMEvent(new NetOcrReqResultState.4(this, localException));
+        return;
+      }
     }
   }
   
@@ -84,51 +123,59 @@ public class NetOcrReqResultState
   public void loadStateWith(String paramString, JSONObject paramJSONObject)
   {
     super.loadStateWith(paramString, paramJSONObject);
-    try
+    for (;;)
     {
-      paramString = YtSDKKitConfigHelper.getConfigStringBy(paramJSONObject, "app_id", true);
-      this.appId = paramString;
-      if (paramString == null) {
-        return;
-      }
-      paramString = YtSDKKitConfigHelper.getConfigStringBy(paramJSONObject, "secret_key", true);
-      this.secretKey = paramString;
-      if (paramString != null)
+      try
       {
+        paramString = YtSDKKitConfigHelper.getConfigStringBy(paramJSONObject, "app_id", true);
+        this.appId = paramString;
+        if (paramString == null) {
+          return;
+        }
+        paramString = YtSDKKitConfigHelper.getConfigStringBy(paramJSONObject, "secret_key", true);
+        this.secretKey = paramString;
+        if (paramString == null) {
+          break;
+        }
         paramString = YtSDKKitConfigHelper.getConfigStringBy(paramJSONObject, "secret_id", true);
         this.secretId = paramString;
-        if (paramString != null)
-        {
-          paramString = YtSDKKitConfigHelper.getConfigStringBy(paramJSONObject, "user_id", true);
-          this.userId = paramString;
-          if (paramString != null)
-          {
-            this.ocrtype = paramJSONObject.getString("ocrtype");
-            paramString = paramJSONObject.getJSONObject(this.ocrtype).getJSONObject("request_options");
-            this.resultUrl = paramJSONObject.getJSONObject(this.ocrtype).getString("result_api_url");
-            paramJSONObject = paramString.keys();
-            this._requestOptions = new HashMap();
-            while (paramJSONObject.hasNext())
-            {
-              String str1 = (String)paramJSONObject.next();
-              String str2 = paramString.getString(str1);
-              this._requestOptions.put(str1, str2);
-            }
-          }
+        if (paramString == null) {
+          break;
         }
+        paramString = YtSDKKitConfigHelper.getConfigStringBy(paramJSONObject, "user_id", true);
+        this.userId = paramString;
+        if (paramString == null) {
+          break;
+        }
+        if (paramJSONObject.has("jpeg_quality"))
+        {
+          this.jpegQuality = paramJSONObject.getInt("jpeg_quality");
+          this.jpegQuality = Math.min(Math.max(this.jpegQuality, 50), 99);
+          this.ocrtype = paramJSONObject.getString("ocrtype");
+          this.resultUrl = paramJSONObject.getJSONObject(this.ocrtype).getString("result_api_url");
+          this._requestOptions = new HashMap();
+          if (!paramJSONObject.getJSONObject(this.ocrtype).has("request_options")) {
+            break;
+          }
+          paramString = paramJSONObject.getJSONObject(this.ocrtype).getJSONObject("request_options");
+          paramJSONObject = paramString.keys();
+          if (!paramJSONObject.hasNext()) {
+            break;
+          }
+          String str = (String)paramJSONObject.next();
+          Object localObject = paramString.get(str);
+          this._requestOptions.put(str, localObject);
+          continue;
+        }
+        this.jpegQuality = 80;
       }
-      return;
+      catch (JSONException paramString)
+      {
+        YtLogger.e(TAG, paramString.getMessage());
+        YtFSM.getInstance().sendFSMEvent(new NetOcrReqResultState.1(this, paramString));
+        return;
+      }
     }
-    catch (JSONException paramString)
-    {
-      YtLogger.e(TAG, paramString.getMessage());
-      YtFSM.getInstance().sendFSMEvent(new NetOcrReqResultState.1(this, paramString));
-    }
-  }
-  
-  public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.update(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
   }
 }
 

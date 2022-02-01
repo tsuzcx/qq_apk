@@ -1,69 +1,106 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.util.DisplayUtil;
-import java.util.ArrayList;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 
 public class bbho
-  extends bbhi
 {
-  public final ArrayList<bbhn> a = new ArrayList();
+  public int a;
+  private long jdField_a_of_type_Long;
+  private final int[] jdField_a_of_type_ArrayOfInt = new int[256];
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private int c = 125;
   
-  public bbho(ViewGroup paramViewGroup, int paramInt)
+  public void a()
   {
-    super(paramViewGroup, paramInt);
-    LinearLayout localLinearLayout = (LinearLayout)a(paramInt);
-    localLinearLayout.setOrientation(0);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    paramInt = DisplayUtil.dip2px(paramViewGroup.getContext(), 13.5F);
-    localLayoutParams.rightMargin = paramInt;
-    localLayoutParams.leftMargin = paramInt;
-    localLinearLayout.setLayoutParams(localLayoutParams);
-    localLinearLayout.setBackgroundDrawable(null);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    if (QLog.isColorLevel()) {
+      QLog.d("DarkModeChecker", 2, "refreshTimer ");
+    }
   }
   
-  public void a(bazj parambazj)
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, bbhp parambbhp)
   {
-    int i = 3;
-    this.a.clear();
-    LinearLayout localLinearLayout = (LinearLayout)a(this.c);
-    localLinearLayout.removeAllViews();
-    if ((parambazj.a == null) || (parambazj.a.size() == 0)) {}
-    int j;
-    int k;
-    label90:
+    if ((parambbhp == null) || (paramArrayOfByte == null)) {}
+    int[] arrayOfInt;
     do
     {
-      return;
-      localObject = localLinearLayout.getContext();
-      j = parambazj.a.size();
-      if (j >= 3) {
+      do
+      {
+        return;
+        arrayOfInt = ShortVideoUtils.getDarkModeDPCValues();
+      } while (arrayOfInt[0] != 1);
+      this.jdField_a_of_type_Int += 1;
+    } while (this.jdField_a_of_type_Int % 8 != 0);
+    this.jdField_b_of_type_Int = (paramInt1 * paramInt2 * (100 - arrayOfInt[1]) / 100);
+    this.c = arrayOfInt[2];
+    Arrays.fill(this.jdField_a_of_type_ArrayOfInt, 0);
+    int i = 1;
+    while (i < paramInt2)
+    {
+      int j = 1;
+      while (j < paramInt1)
+      {
+        if (i * paramInt1 + j < paramArrayOfByte.length)
+        {
+          arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+          int k = paramArrayOfByte[(i * paramInt1 + j)] & 0xFF;
+          arrayOfInt[k] += 64;
+        }
+        j += 8;
+      }
+      i += 8;
+    }
+    i = 0;
+    paramInt2 = 255;
+    paramInt1 = 255;
+    label172:
+    if (paramInt1 >= 51)
+    {
+      i += this.jdField_a_of_type_ArrayOfInt[paramInt1];
+      if (i < this.jdField_b_of_type_Int) {}
+    }
+    for (;;)
+    {
+      if (paramInt1 <= this.c)
+      {
+        QLog.w("DarkModeChecker", 1, "darkmode = true!");
+        this.jdField_b_of_type_Long = 0L;
+        if (this.jdField_a_of_type_Long == 0L)
+        {
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          return;
+          paramInt2 = paramInt1;
+          paramInt1 -= 1;
+          break label172;
+        }
+        if ((this.jdField_a_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1500L)) {
+          break;
+        }
+        this.jdField_a_of_type_Long = -1L;
+        QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE on!");
+        this.jdField_b_of_type_Long = 0L;
+        parambbhp.a(true);
+        return;
+      }
+      if (this.jdField_a_of_type_Long > 0L) {
+        this.jdField_a_of_type_Long = 0L;
+      }
+      if (this.jdField_b_of_type_Long == 0L)
+      {
+        this.jdField_b_of_type_Long = System.currentTimeMillis();
+        return;
+      }
+      if ((this.jdField_b_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_b_of_type_Long < 2000L)) {
         break;
       }
-      k = (((Context)localObject).getResources().getDisplayMetrics().widthPixels - DisplayUtil.dip2px((Context)localObject, 27.0F)) / i;
-      i = 0;
-    } while (i >= j);
-    Object localObject = (bazi)parambazj.a.get(i);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(k, -2);
-    switch (((bazi)localObject).a)
-    {
-    }
-    for (localObject = null;; localObject = new bbhp((ViewGroup)a(), 0))
-    {
-      if (localObject != null)
-      {
-        ((bbhn)localObject).a().setLayoutParams(localLayoutParams);
-        localLinearLayout.addView(((bbhn)localObject).a());
-        this.a.add(localObject);
-      }
-      i += 1;
-      break label90;
-      i = parambazj.a.size();
-      break;
+      this.jdField_b_of_type_Long = -1L;
+      QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE off!");
+      this.jdField_a_of_type_Long = 0L;
+      parambbhp.a(false);
+      return;
+      paramInt1 = paramInt2;
     }
   }
 }

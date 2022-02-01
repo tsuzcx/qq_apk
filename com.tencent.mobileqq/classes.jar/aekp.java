@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class aekp
-  extends lmt
+  implements DialogInterface.OnClickListener
 {
-  public aekp(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public aekp(NotifyPCActiveActivity paramNotifyPCActiveActivity, anri paramanri) {}
   
-  protected void onMeetingCancel(int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c();
-  }
-  
-  protected void onMeetingReady(int paramInt, long paramLong)
-  {
-    this.a.c();
-  }
-  
-  protected void onMemberInfo(int paramInt, long paramLong1, long paramLong2)
-  {
-    this.a.c();
+    this.jdField_a_of_type_Anri.b(true);
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
   }
 }
 

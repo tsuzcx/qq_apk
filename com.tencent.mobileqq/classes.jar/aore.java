@@ -1,25 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.7;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aore
-  implements DialogInterface.OnClickListener
+final class aore
+  extends bhyn
 {
-  public aore(ArkAppYYBDownloadModule.7 param7) {}
+  aore(String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(bhyo parambhyo)
   {
-    try
+    aora.jdField_a_of_type_Bhyo = null;
+    QLog.d(aora.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
+  }
+  
+  public void onDone(bhyo parambhyo)
+  {
+    aora.jdField_a_of_type_Bhyo = null;
+    if (parambhyo.a() == 3)
     {
-      paramDialogInterface.dismiss();
-      label6:
-      bhyo.a().a(10, this.a.a);
+      QLog.d(aora.jdField_a_of_type_JavaLangString, 1, "download finished " + aora.f);
+      parambhyo = new File(this.jdField_a_of_type_JavaLangString);
+      if ((parambhyo.exists()) && (aora.a(parambhyo))) {
+        QLog.d(aora.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
+      }
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
+    QLog.d(aora.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", parambhyo.b, " code=", Integer.valueOf(parambhyo.a) });
   }
 }
 

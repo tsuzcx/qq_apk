@@ -1,41 +1,112 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
 import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class aich
-  extends Handler
+  implements bjlh
 {
-  private WeakReference<PublicView> a;
+  int jdField_a_of_type_Int = 1;
+  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<amhn> b;
+  WeakReference<XListView> c;
+  WeakReference<PullRefreshHeader> d;
+  WeakReference<TextView> e;
   
-  public aich(PublicView paramPublicView)
+  public aich(Context paramContext, XListView paramXListView, amhn paramamhn, PullRefreshHeader paramPullRefreshHeader, TextView paramTextView, int paramInt)
   {
-    this.a = new WeakReference(paramPublicView);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.c = new WeakReference(paramXListView);
+    this.b = new WeakReference(paramamhn);
+    this.d = new WeakReference(paramPullRefreshHeader);
+    this.e = new WeakReference(paramTextView);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(Exception paramException)
   {
-    PublicView localPublicView = (PublicView)this.a.get();
-    if (localPublicView == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat.aio_post_list_req", 2, paramException.getMessage());
     }
-    switch (paramMessage.what)
+    paramException = (PullRefreshHeader)this.d.get();
+    if ((paramException != null) && (paramException.getVisibility() == 0)) {
+      paramException.a(1);
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat.aio_post_list_req", 2, "result " + paramJSONObject);
+    }
+    XListView localXListView = (XListView)this.c.get();
+    if (localXListView == null) {}
+    amhn localamhn;
+    do
     {
-    default: 
+      do
+      {
+        do
+        {
+          return;
+          localObject = (TextView)this.e.get();
+        } while (localObject == null);
+        localamhn = (amhn)this.b.get();
+      } while (localamhn == null);
+      if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode") == 0)) {
+        break;
+      }
+      if (localXListView.getVisibility() == 8) {
+        ((TextView)localObject).setText(anvx.a(2131705063));
+      }
+      paramJSONObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (paramJSONObject == null);
+    QQToast.a(paramJSONObject, 1, anvx.a(2131705065), 0).a();
+    localamhn.a();
+    return;
+    ((TextView)localObject).setVisibility(8);
+    localXListView.setVisibility(0);
+    Object localObject = paramJSONObject.optJSONObject("result");
+    label193:
+    int j;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      localamhn.b(((JSONObject)localObject).optJSONArray("posts"));
+      j = paramJSONObject.optInt("retcode");
+      paramJSONObject = (PullRefreshHeader)this.d.get();
+      if ((paramJSONObject != null) && (paramJSONObject.getVisibility() == 0)) {
+        if (j != 0) {
+          break label315;
+        }
+      }
+    }
+    label315:
+    for (int i = 0;; i = 1)
+    {
+      paramJSONObject.a(i);
+      localXListView.springBackOverScrollHeaderView();
+      if (j != 0) {
+        break;
+      }
+      aibs.c = System.currentTimeMillis();
       return;
-    case 1: 
-      PublicView.a(localPublicView).springBackOverScrollHeaderView();
-      return;
-    case 2: 
-      PublicView.a(localPublicView).springBackOverScrollHeaderView();
-      PublicView.a(localPublicView, 1, 2131718604);
-      return;
-    case 3: 
-      PublicView.a(localPublicView, true);
+      if (((JSONObject)localObject).optInt("isend") == 0)
+      {
+        localamhn.a(((JSONObject)localObject).optJSONArray("posts"));
+        localamhn.a();
+        break label193;
+      }
+      paramJSONObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramJSONObject != null) {
+        QQToast.a(paramJSONObject, 2, anvx.a(2131705055), 0).a();
+      }
+      localamhn.a();
       return;
     }
-    PublicView.b(localPublicView);
   }
 }
 

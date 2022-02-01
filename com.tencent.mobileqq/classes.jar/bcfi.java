@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.statistics.WtloginReporter.1;
+import android.view.View;
+import java.util.List;
 
-public class bcfi
+public abstract interface bcfi
+  extends bcfh
 {
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    ThreadManagerV2.executeOnFileThread(new WtloginReporter.1(paramQQAppInterface.getCurrentAccountUin()));
-  }
+  public abstract int a();
+  
+  public abstract String a();
+  
+  public abstract List<bcfj> a();
+  
+  public abstract void a(View paramView);
+  
+  public abstract String b();
 }
 
 

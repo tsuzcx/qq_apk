@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import aokg;
-import aokh;
+import apnh;
+import com.tencent.qphone.base.util.QLog;
 
 public class MiniRecog$2
   implements Runnable
 {
-  public MiniRecog$2(aokg paramaokg, long paramLong) {}
+  public MiniRecog$2(apnh paramapnh) {}
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("QRSession.MiniRecog", 2, "[------ onDetectReady------]");
     }
+    this.this$0.a = true;
   }
 }
 

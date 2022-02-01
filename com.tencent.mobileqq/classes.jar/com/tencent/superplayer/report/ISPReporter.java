@@ -5,10 +5,15 @@ import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.player.SuperPlayerMgr;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
+import java.util.Map;
 
 public abstract interface ISPReporter
 {
   public abstract void addConfigExt(String paramString, Object paramObject);
+  
+  public abstract void addExtReportData(String paramString1, String paramString2);
+  
+  public abstract void addExtReportData(Map<String, String> paramMap);
   
   public abstract void init(SuperPlayerMgr paramSuperPlayerMgr, int paramInt);
   
@@ -25,6 +30,10 @@ public abstract interface ISPReporter
   public abstract void onPrePlayViewShow();
   
   public abstract void onPrepared();
+  
+  public abstract void onSeek(long paramLong1, long paramLong2);
+  
+  public abstract void onStart();
   
   public abstract void onStop();
   

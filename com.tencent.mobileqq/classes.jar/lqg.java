@@ -1,185 +1,162 @@
-import android.graphics.PointF;
-import android.text.TextUtils;
-import com.tencent.aekit.api.standard.filter.AESimpleSticker;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.aekit.plugin.core.AIAttr;
-import com.tencent.aekit.plugin.core.AIAttrProvider;
-import com.tencent.filter.BaseFilter;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
-import com.tencent.ttpic.openapi.PTFaceAttr;
-import com.tencent.ttpic.openapi.filter.FacePointsFilter;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-import com.tencent.ttpic.openapi.util.FaceDetectUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
-import com.tencent.ttpic.openapi.util.VideoSDKMaterialParser;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.List<Llqt;>;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
+@TargetApi(16)
 public class lqg
-  extends lqp
+  implements lpx
 {
-  private AESimpleSticker jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  private AIAttr jdField_a_of_type_ComTencentAekitPluginCoreAIAttr = new AIAttr(new AIAttrProvider(null));
-  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter;
-  private FacePointsFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterFacePointsFilter;
-  private VideoMaterial jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial;
-  private final String jdField_a_of_type_JavaLangString = "AEFilter-" + Integer.toHexString(hashCode());
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  private int jdField_a_of_type_Int;
+  public final SurfaceTexture a;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private boolean jdField_a_of_type_Boolean = true;
+  private final float[] jdField_a_of_type_ArrayOfFloat;
+  private final float[] b;
   
-  public lqg()
+  public lqg(SurfaceTexture paramSurfaceTexture)
   {
-    super(1);
+    if (QLog.isColorLevel()) {
+      QLog.i("SurfaceTag", 2, "SurfacePreRender");
+    }
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
+    lox.a("SurfaceMode");
+    this.jdField_a_of_type_ArrayOfFloat = new float[16];
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+    this.jdField_a_of_type_Boolean = true;
+    this.b = new float[16];
+    Matrix.setIdentityM(this.b, 0);
+    Matrix.scaleM(this.b, 0, -1.0F, -1.0F, 1.0F);
   }
   
-  private Frame a(List<lqu> paramList, Frame paramFrame)
+  public lps a(lpl paramlpl, lox paramlox, lps paramlps)
   {
-    ArrayList localArrayList1 = new ArrayList();
-    int i = 0;
-    while (i < paramList.size())
+    try
     {
-      float[][] arrayOfFloat = ((TTFaceOriginDataModel)((lqu)paramList.get(i)).jdField_a_of_type_JavaUtilList.get(0)).facePoint;
-      ArrayList localArrayList2 = new ArrayList(arrayOfFloat.length);
-      int j = 0;
-      while (j < arrayOfFloat.length)
+      paramlox.a(this.jdField_a_of_type_ArrayOfFloat);
+      if (paramlox.jdField_a_of_type_Boolean != this.jdField_a_of_type_Boolean)
       {
-        localArrayList2.add(new PointF(arrayOfFloat[j][0], arrayOfFloat[j][1]));
-        j += 1;
+        this.jdField_a_of_type_Boolean = paramlox.jdField_a_of_type_Boolean;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          Matrix.setIdentityM(this.b, 0);
+          Matrix.scaleM(this.b, 0, -1.0F, -1.0F, 1.0F);
+        }
       }
-      localArrayList1.add(localArrayList2);
-      i += 1;
+      else
+      {
+        int i = paramlox.b;
+        int j = paramlox.jdField_a_of_type_Int;
+        GLES20.glBindFramebuffer(36160, paramlps.jdField_a_of_type_Int);
+        GLES20.glViewport(0, 0, i, j);
+        GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+        GLES20.glClear(16640);
+        if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null) {
+          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.b);
+        }
+        GLES20.glBindFramebuffer(36160, 0);
+      }
     }
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterFacePointsFilter.updateVideoSize(paramFrame.width, paramFrame.height, 1.0D);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterFacePointsFilter.updateMultiPoints(localArrayList1);
-    return this.jdField_a_of_type_ComTencentTtpicOpenapiFilterFacePointsFilter.render(paramFrame);
+    catch (Throwable paramlpl)
+    {
+      try
+      {
+        for (;;)
+        {
+          if (Build.VERSION.SDK_INT >= 19) {
+            paramlox.jdField_a_of_type_AndroidGraphicsSurfaceTexture.releaseTexImage();
+          }
+          return paramlps;
+          paramlpl = paramlpl;
+          if (QLog.isDevelopLevel()) {
+            QLog.i("SurfaceTag", 4, "render, surface[" + paramlox.jdField_a_of_type_AndroidGraphicsSurfaceTexture + "]", paramlpl);
+          }
+        }
+        Matrix.setIdentityM(this.b, 0);
+        Matrix.scaleM(this.b, 0, 1.0F, -1.0F, 1.0F);
+      }
+      catch (Throwable paramlpl)
+      {
+        while (!QLog.isDevelopLevel()) {}
+        QLog.i("SurfaceTag", 4, "render", paramlpl);
+      }
+    }
+    return paramlps;
   }
   
-  @NotNull
-  protected Frame a(List<lqt> paramList, long paramLong)
+  public void a()
   {
-    Object localObject2 = (lqt)paramList.get(0);
-    Object localObject1 = ((lqt)paramList.get(0)).jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(((Frame)localObject1).getTextureId(), ((Frame)localObject1).width, ((Frame)localObject1).height, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-    paramList = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-    ArrayList localArrayList = new ArrayList();
-    if (((lqt)localObject2).a())
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    this.jdField_a_of_type_Int = GlUtil.createTexture(36197);
+    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {}
+    try
     {
-      int i = 0;
-      while (i < ((lqt)localObject2).jdField_a_of_type_JavaUtilList.size())
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
+    }
+    catch (Throwable localThrowable1)
+    {
+      try
       {
-        localArrayList.addAll(((lqu)((lqt)localObject2).jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaUtilList);
-        i += 1;
+        for (;;)
+        {
+          this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.attachToGLContext(this.jdField_a_of_type_Int);
+          if (QLog.isColorLevel()) {
+            QLog.i("SurfaceTag", 2, "genTexture");
+          }
+          return;
+          localThrowable1 = localThrowable1;
+          QLog.i("SurfaceTag", 2, "genTexture1", localThrowable1);
+        }
       }
-    }
-    localObject1 = FaceDetectUtil.genFaceAttr(localArrayList, ((Frame)localObject1).width, ((Frame)localObject1).height, 0);
-    this.jdField_a_of_type_ComTencentAekitPluginCoreAIAttr.setFaceAttr(localObject1);
-    this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.setAIAttr(this.jdField_a_of_type_ComTencentAekitPluginCoreAIAttr);
-    this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.setFaceAttr((PTFaceAttr)localObject1);
-    this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.updateVideoSize(paramList.width, paramList.height, ((PTFaceAttr)localObject1).getFaceDetectScale());
-    this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.setRatio(paramList.width / paramList.height);
-    localObject1 = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.render(paramList);
-    if ((paramList != localObject1) && (!paramList.unlock())) {
-      paramList.clear();
-    }
-    if ((this.d) && (((lqt)localObject2).a()))
-    {
-      localObject2 = a(((lqt)localObject2).jdField_a_of_type_JavaUtilList, (Frame)localObject1);
-      paramList = (List<lqt>)localObject2;
-      if (localObject2 != localObject1)
+      catch (Throwable localThrowable2)
       {
-        paramList = (List<lqt>)localObject2;
-        if (!((Frame)localObject1).unlock()) {
-          ((Frame)localObject1).clear();
+        for (;;)
+        {
+          QLog.i("SurfaceTag", 2, "genTexture2", localThrowable2);
         }
       }
     }
-    for (paramList = (List<lqt>)localObject2;; paramList = (List<lqt>)localObject1)
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public boolean a(lox paramlox)
+  {
+    return (paramlox != null) && (paramlox.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (paramlox.jdField_a_of_type_AndroidGraphicsSurfaceTexture == this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {}
+    try
     {
-      localObject1 = this.jdField_a_of_type_ComTencentFilterBaseFilter.render(paramList);
-      if (paramList != localObject1) {
-        paramList.unlock();
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
+      int[] arrayOfInt = new int[1];
+      arrayOfInt[0] = this.jdField_a_of_type_Int;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+      if (QLog.isColorLevel()) {
+        QLog.i("SurfaceTag", 2, "delTexture");
       }
-      return localObject1;
-    }
-  }
-  
-  protected void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial != null) && (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker == null))
-    {
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker = new AESimpleSticker(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create sticker#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.hashCode()) + ", material=" + this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial.getId());
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.apply();
-    }
-    if ((this.d) && (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterFacePointsFilter == null))
-    {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterFacePointsFilter = new FacePointsFilter();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterFacePointsFilter.apply();
-    }
-    this.jdField_a_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create filter#" + Integer.toHexString(this.jdField_a_of_type_ComTencentFilterBaseFilter.hashCode()));
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.setRotationAndFlip(0, 0, 1);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create frame#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.hashCode()));
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.clear();
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker = null;
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker != null)
+    catch (Throwable localThrowable)
     {
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.clear();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: sticker#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.hashCode()) + " cleared");
-    }
-    this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = VideoSDKMaterialParser.parseVideoMaterial(this.jdField_b_of_type_JavaLangString, "params");
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: parse material=" + this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial.getId());
-    this.jdField_a_of_type_Boolean = VideoMaterialUtil.isGestureDetectMaterial(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
-    this.jdField_b_of_type_Boolean = VideoMaterialUtil.isBodyDetectMaterial(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
-    this.c = VideoMaterialUtil.isSegmentMaterial(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: gesture=" + this.jdField_a_of_type_Boolean + ", body=" + this.jdField_b_of_type_Boolean + ", segment=" + this.c);
-    this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker = new AESimpleSticker(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create sticker#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.hashCode()) + ", material=" + this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial.getId());
-    this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.apply();
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker != null)
-    {
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.clear();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: sticker#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker.hashCode()) + " cleared");
-      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAESimpleSticker = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null)
-    {
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: frame#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.hashCode()) + " cleared");
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = null;
-    }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterFacePointsFilter != null)
-    {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterFacePointsFilter.clear();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterFacePointsFilter = null;
+      for (;;)
+      {
+        QLog.i("SurfaceTag", 2, "delTexture", localThrowable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lqg
  * JD-Core Version:    0.7.0.1
  */

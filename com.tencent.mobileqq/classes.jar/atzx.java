@@ -1,141 +1,47 @@
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.FriendInfo;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class atzx
-  extends BaseAdapter
+  implements aujg
 {
-  public Context a;
-  public List<FeedsItemData.FriendInfo> a;
+  atzx(atzu paramatzu) {}
   
-  public atzx(Context paramContext, List<FeedsItemData.FriendInfo> paramList)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramList;
-    List localList;
-    a(localList);
-  }
-  
-  public void a(List<FeedsItemData.FriendInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Atux != null)) {
+      this.a.jdField_a_of_type_Atux.a();
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject2 = (FeedsItemData.FriendInfo)atzv.a(this.jdField_a_of_type_Atzv).get(paramInt);
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    CornerImageView localCornerImageView = new CornerImageView(this.jdField_a_of_type_AndroidContentContext);
-    localCornerImageView.setId(2131367396);
-    Object localObject3 = ((FeedsItemData.FriendInfo)localObject2).uin;
-    localCornerImageView.setRadius(AIOUtils.dp2px(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) / 2);
-    Object localObject1 = atzv.a(this.jdField_a_of_type_Atzv).getBitmapFromCache(1, (String)localObject3);
-    paramView = (View)localObject1;
-    if (localObject1 == null)
+    if (paramBoolean)
     {
-      paramView = bfvo.a();
-      atzv.a(this.jdField_a_of_type_Atzv).requestDecodeFace((String)localObject3, 1, false);
-    }
-    localCornerImageView.setImageBitmap(paramView);
-    paramView = new RelativeLayout.LayoutParams(AIOUtils.dp2px(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    paramView.addRule(9);
-    paramView.setMargins(AIOUtils.dp2px(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, AIOUtils.dp2px(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    localObject1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(15);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(1, localCornerImageView.getId());
-    ((RelativeLayout.LayoutParams)localObject3).leftMargin = AIOUtils.dp2px(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    ((RelativeLayout.LayoutParams)localObject3).rightMargin = AIOUtils.dp2px(80.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    Object localObject4 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject4).setText(((FeedsItemData.FriendInfo)localObject2).name);
-    ((TextView)localObject4).setTextSize(16.0F);
-    ((TextView)localObject4).setTextColor(-16777216);
-    ((TextView)localObject4).setMaxLines(1);
-    ((TextView)localObject4).setEllipsize(TextUtils.TruncateAt.END);
-    ((TextView)localObject4).setId(2131371615);
-    ((TextView)localObject4).setMaxWidth(AIOUtils.dp2px(110.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    ((RelativeLayout)localObject1).addView((View)localObject4);
-    TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    localTextView.setTextSize(10.0F);
-    localTextView.setTextColor(-2145246686);
-    if (((FeedsItemData.FriendInfo)localObject2).loginTime < 0L)
-    {
-      localTextView.setVisibility(4);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(1, ((TextView)localObject4).getId());
-      localLayoutParams.addRule(8, ((TextView)localObject4).getId());
-      localLayoutParams.leftMargin = AIOUtils.dp2px(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams.bottomMargin = AIOUtils.dp2px(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((RelativeLayout)localObject1).addView(localTextView, localLayoutParams);
-      localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      localTextView.setTextSize(10.0F);
-      localTextView.setTextColor(-6579301);
-      if ((!TextUtils.isEmpty(((FeedsItemData.FriendInfo)localObject2).partition)) || (!TextUtils.isEmpty(((FeedsItemData.FriendInfo)localObject2).roleName))) {
-        break label852;
+      if (this.a.jdField_a_of_type_Atxa.e() == 10) {
+        atvd.a(this.a.jdField_a_of_type_Atxa.c());
       }
-      localTextView.setText(amtj.a(2131709405));
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Atxa.d(), this);
+      atzu.c(this.a, true);
+      this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(4);
+      atzu.a(this.a);
+      return;
     }
-    for (;;)
+    if (atzu.b(this.a))
     {
-      localTextView.setBackgroundColor(1270796256);
-      localTextView.setPadding(AIOUtils.dp2px(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, ((TextView)localObject4).getId());
-      ((RelativeLayout.LayoutParams)localObject2).topMargin = AIOUtils.dp2px(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((RelativeLayout)localObject1).addView(localTextView, (ViewGroup.LayoutParams)localObject2);
-      localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      ((TextView)localObject2).setText(amtj.a(2131709406));
-      ((TextView)localObject2).setTextColor(-1);
-      ((TextView)localObject2).setTextSize(16.0F);
-      ((TextView)localObject2).setGravity(17);
-      ((TextView)localObject2).setBackgroundDrawable(atzc.a(new ColorDrawable(-16776961), new ColorDrawable(-16776961), "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png"));
-      localObject4 = new RelativeLayout.LayoutParams(AIOUtils.dp2px(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(40.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((RelativeLayout.LayoutParams)localObject4).addRule(11);
-      ((RelativeLayout.LayoutParams)localObject4).addRule(15);
-      ((RelativeLayout.LayoutParams)localObject4).rightMargin = AIOUtils.dp2px(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localRelativeLayout.addView(localCornerImageView, paramView);
-      localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
-      localRelativeLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject4);
-      EventCollector.getInstance().onListGetView(paramInt, localRelativeLayout, paramViewGroup, getItemId(paramInt));
-      return localRelativeLayout;
-      localTextView.setText(atzv.a(this.jdField_a_of_type_Atzv, ((FeedsItemData.FriendInfo)localObject2).loginTime));
-      break;
-      label852:
-      localTextView.setText(((FeedsItemData.FriendInfo)localObject2).partition + " " + ((FeedsItemData.FriendInfo)localObject2).roleName);
+      atzu.c(this.a, false);
+      if (this.a.d) {
+        this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+      }
+      atzu.d(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d();
+      if (this.a.jdField_a_of_type_Atuw != null) {
+        this.a.jdField_a_of_type_Atuw.a();
+      }
     }
+    atua.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Atxa.d(), atzu.a(this.a), true);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    atzu.b(this.a, paramBoolean2);
+    atzu.a(this.a, paramBoolean1);
   }
 }
 

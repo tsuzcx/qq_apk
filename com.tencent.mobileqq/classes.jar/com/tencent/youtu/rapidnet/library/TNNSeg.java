@@ -21,6 +21,8 @@ public class TNNSeg
   
   public native int init(String paramString1, String paramString2, String paramString3);
   
+  public native void setMode(int paramInt);
+  
   public void setNativePtr(long paramLong)
   {
     this.nativePtr = paramLong;

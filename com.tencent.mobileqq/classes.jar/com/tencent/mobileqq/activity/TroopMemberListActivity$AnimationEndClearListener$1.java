@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aeoy;
+import afgj;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
@@ -8,7 +8,7 @@ import android.widget.RelativeLayout.LayoutParams;
 public class TroopMemberListActivity$AnimationEndClearListener$1
   implements Runnable
 {
-  public TroopMemberListActivity$AnimationEndClearListener$1(aeoy paramaeoy) {}
+  public TroopMemberListActivity$AnimationEndClearListener$1(afgj paramafgj) {}
   
   public void run()
   {
@@ -35,9 +35,9 @@ public class TroopMemberListActivity$AnimationEndClearListener$1
       this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
       this.a.jdField_a_of_type_AndroidViewView.setTag("left");
       continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130849591);
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130849684);
       continue;
-      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130849590);
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130849683);
       continue;
       this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
       continue;
@@ -47,7 +47,7 @@ public class TroopMemberListActivity$AnimationEndClearListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.AnimationEndClearListener.1
  * JD-Core Version:    0.7.0.1
  */

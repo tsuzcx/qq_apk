@@ -1,52 +1,63 @@
-import android.support.annotation.NonNull;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeShareView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public final class quf
+public class quf
+  extends ViewBase
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<sqw> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private NativeShareView a;
   
-  public que a()
+  public quf(VafContext paramVafContext)
   {
-    return new que(this, null);
+    super(paramVafContext);
+    this.a = new NativeShareView(paramVafContext.getContext());
   }
   
-  public quf a(int paramInt)
+  public void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    this.a.setScreenBitmap(paramBitmap);
   }
   
-  public quf a(@NonNull String paramString)
+  public void a(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    this.a.setInitRunnable(paramRunnable);
   }
   
-  public quf a(@NonNull List<sqw> paramList)
+  public void a(String paramString)
   {
-    if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() == 1)) {
-      ((sqw)this.jdField_b_of_type_JavaUtilList.get(0)).a(true);
-    }
-    this.jdField_b_of_type_JavaUtilList = paramList;
-    return this;
+    this.a.setCurrentPath(paramString);
   }
   
-  public quf b(@NonNull String paramString)
+  public int getComMeasuredHeight()
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
+    return this.a.getComMeasuredHeight();
   }
   
-  public quf b(@NonNull List<URL> paramList)
+  public int getComMeasuredWidth()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
   }
 }
 

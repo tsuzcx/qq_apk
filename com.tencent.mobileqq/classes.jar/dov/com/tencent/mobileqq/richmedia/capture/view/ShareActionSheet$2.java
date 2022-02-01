@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.richmedia.capture.view;
 
-import bnzp;
+import bpph;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class ShareActionSheet$2
@@ -11,7 +11,7 @@ public class ShareActionSheet$2
     if (this.this$0.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.this$0.jdField_a_of_type_Int) {
       this.this$0.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
     }
-    while (this.this$0.b.getWidth() < bnzp.a(this.this$0))
+    while (this.this$0.b.getWidth() < bpph.a(this.this$0))
     {
       this.this$0.b.setMove(true);
       return;

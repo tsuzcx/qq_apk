@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.friends.intimate;
 
 import android.app.Activity;
-import atuq;
+import auzq;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class MiniGamePlayTogetherHandler$1$1
   implements Runnable
 {
-  public MiniGamePlayTogetherHandler$1$1(atuq paramatuq, Activity paramActivity, String paramString) {}
+  public MiniGamePlayTogetherHandler$1$1(auzq paramauzq, Activity paramActivity, String paramString) {}
   
   public void run()
   {

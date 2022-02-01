@@ -1,15 +1,15 @@
 package com.tencent.av.app;
 
-import leo;
+import let;
 
 public class InviteMemberObserverWithoutCache$1
   implements Runnable
 {
-  public InviteMemberObserverWithoutCache$1(leo paramleo, Object paramObject) {}
+  public InviteMemberObserverWithoutCache$1(let paramlet, Object paramObject) {}
   
   public void run()
   {
-    leo.a(this.this$0, this.a);
+    let.a(this.this$0, this.a);
   }
 }
 

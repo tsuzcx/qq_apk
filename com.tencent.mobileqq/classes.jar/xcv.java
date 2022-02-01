@@ -1,29 +1,26 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import java.util.List;
+import android.support.annotation.Nullable;
+import android.support.annotation.UiThread;
 
-class xcv
-  implements xct
+public abstract interface xcv
 {
-  xcv(xcu paramxcu, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
+  public abstract xcw a(@Nullable xcy paramxcy, int paramInt);
   
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-    xcb.b(xcu.a(this.jdField_a_of_type_Xcu), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
-  }
+  @UiThread
+  public abstract xdb a();
   
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-    xcb.c(xcu.a(this.jdField_a_of_type_Xcu), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
-  }
+  public abstract void a();
+  
+  @UiThread
+  public abstract void a(@Nullable xcy paramxcy, int paramInt1, int paramInt2, String paramString);
+  
+  @UiThread
+  public abstract void a(@Nullable xcy paramxcy, String paramString);
+  
+  public abstract void a(xda paramxda);
+  
+  public abstract void b();
+  
+  public abstract void b(xda paramxda);
 }
 
 

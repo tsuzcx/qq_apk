@@ -1,203 +1,32 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.view.View;
-import com.tribe.async.dispatch.IEventReceiver;
+import android.graphics.Point;
 
-public abstract class bnec
-  implements IEventReceiver
+abstract interface bnec
 {
-  protected long a;
-  @NonNull
-  public final bnee a;
-  public bnew a;
-  public boolean g;
+  public abstract float a(Point paramPoint, int paramInt1, int paramInt2);
   
-  public bnec(@NonNull bnee parambnee)
-  {
-    this.jdField_a_of_type_Bnee = parambnee;
-  }
+  public abstract int a(int paramInt);
   
-  private void b()
-  {
-    if (this.jdField_a_of_type_Bnew == null) {
-      bahf.a(new IllegalStateException("have not attached ui"));
-    }
-  }
+  public abstract int a(int paramInt1, int paramInt2);
   
-  @NonNull
-  public Context a()
-  {
-    b();
-    return this.jdField_a_of_type_Bnew.a();
-  }
+  public abstract void a(int paramInt, aalv paramaalv);
   
-  @NonNull
-  public Resources a()
-  {
-    b();
-    return this.jdField_a_of_type_Bnew.a().getResources();
-  }
+  public abstract void a(Point paramPoint1, int paramInt, Point paramPoint2);
   
-  @NonNull
-  public View a(int paramInt)
-  {
-    b();
-    View localView = this.jdField_a_of_type_Bnew.a().findViewById(paramInt);
-    if (localView == null) {
-      throw new IllegalArgumentException("can not find view by id " + paramInt);
-    }
-    return localView;
-  }
+  public abstract void a(bnbk parambnbk, int paramInt, Point paramPoint);
   
-  public bned a(Class<? extends bned> paramClass)
-  {
-    b();
-    return this.jdField_a_of_type_Bnee.a(paramClass);
-  }
+  public abstract boolean a();
   
-  @NonNull
-  public bnew a()
-  {
-    b();
-    return this.jdField_a_of_type_Bnew;
-  }
+  public abstract boolean a(Point paramPoint, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  protected String a(int paramInt)
-  {
-    b();
-    return a().getString(paramInt);
-  }
+  public abstract boolean a(bndm parambndm);
   
-  public void a()
-  {
-    b();
-  }
+  public abstract int b(int paramInt);
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    b();
-  }
+  public abstract int b(int paramInt1, int paramInt2);
   
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    a(paramInt2, paramObject);
-  }
+  public abstract boolean b();
   
-  public void a(int paramInt, @NonNull bnot parambnot)
-  {
-    a(parambnot);
-  }
-  
-  public void a(int paramInt, Object paramObject) {}
-  
-  public void a(Bundle paramBundle)
-  {
-    b();
-  }
-  
-  public void a(bnew parambnew)
-  {
-    if (this.jdField_a_of_type_Bnew != null) {
-      throw new IllegalStateException("attach context duplicate");
-    }
-    if (parambnew == null) {
-      throw new IllegalArgumentException("ui should not be null");
-    }
-    this.jdField_a_of_type_Bnew = parambnew;
-  }
-  
-  @Deprecated
-  public void a(@NonNull bnot parambnot) {}
-  
-  public void a(Class<? extends bned> paramClass, bned parambned)
-  {
-    b();
-    this.jdField_a_of_type_Bnee.a(paramClass, parambned);
-  }
-  
-  public void a(@NonNull Error paramError) {}
-  
-  protected boolean a(Message paramMessage)
-  {
-    return false;
-  }
-  
-  public void aF_()
-  {
-    b();
-  }
-  
-  public void aG_()
-  {
-    b();
-  }
-  
-  public void aJ_()
-  {
-    b();
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    b();
-  }
-  
-  public void b(@NonNull bnot parambnot)
-  {
-    ((bmrr)bmql.a(5)).a(this.jdField_a_of_type_Bnew.getActivity());
-  }
-  
-  public final boolean b(@NonNull Message paramMessage)
-  {
-    boolean bool = a(paramMessage);
-    paramMessage.recycle();
-    return bool;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Bnee.h();
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    b();
-  }
-  
-  public void g()
-  {
-    this.g = true;
-    o();
-  }
-  
-  public boolean isValidate()
-  {
-    return this.jdField_a_of_type_Bnee.isValidate();
-  }
-  
-  public void j()
-  {
-    b();
-  }
-  
-  public boolean j_()
-  {
-    b();
-    return false;
-  }
-  
-  public void m() {}
-  
-  public void o()
-  {
-    this.jdField_a_of_type_Bnew = null;
-  }
-  
-  public void p() {}
+  public abstract int c(int paramInt1, int paramInt2);
 }
 
 

@@ -1,19 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class sqf
-  implements View.OnClickListener
+class sqf
+  implements spe
 {
-  public sqf(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  sqf(sqd paramsqd) {}
   
-  public void onClick(View paramView)
+  public List<ses> a(List<VideoInfo> paramList)
   {
-    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = (VideoInfo)paramList.next();
+        if (localObject != null)
+        {
+          localObject = sfa.a((VideoInfo)localObject);
+          if (localObject != null) {
+            localArrayList.add(szd.a((BaseArticleInfo)localObject, true));
+          }
+        }
+      }
+    }
+    return localArrayList;
   }
 }
 

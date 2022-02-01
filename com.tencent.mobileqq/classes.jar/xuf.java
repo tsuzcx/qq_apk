@@ -1,95 +1,212 @@
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.widget.ImageView;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-class xuf
-  extends nmd
+public class xuf
 {
-  WeakReference<xue> b;
-  WeakReference<ImageView> c;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private xug jdField_a_of_type_Xug;
   
-  public xuf(xue paramxue, ImageView paramImageView)
+  public xuf(Activity paramActivity, xug paramxug)
   {
-    this.b = new WeakReference(paramxue);
-    this.c = new WeakReference(paramImageView);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Xug = paramxug;
   }
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static void a(Activity paramActivity, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list result, code=" + paramInt);
-    }
-    xue localxue = (xue)this.b.get();
-    paramBundle = (ImageView)this.c.get();
-    if ((localxue == null) || (paramBundle == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "weak reference null.");
-      }
-    }
-    do
+    long l = paramIntent.getLongExtra("qq_number", -1L);
+    int i = paramIntent.getIntExtra("source", 0);
+    paramIntent = paramIntent.getStringExtra("union_id");
+    if (TextUtils.isEmpty(paramIntent))
     {
-      for (;;)
+      QQStoryMemoriesActivity.a(paramActivity, i, l);
+      return;
+    }
+    weg.a(paramActivity, i, paramIntent);
+  }
+  
+  public static void b(Activity paramActivity, Intent paramIntent)
+  {
+    Object localObject = paramIntent.getStringExtra("union_id");
+    int i = paramIntent.getIntExtra("source", 0);
+    paramIntent = paramIntent.getStringExtra("extra_share_from_uid");
+    localObject = QQStoryShareGroupProfileActivity.a(paramActivity, 2, (String)localObject, null, i, 0);
+    ((Intent)localObject).putExtra("extra_share_from_user_uid", paramIntent);
+    paramActivity.startActivity((Intent)localObject);
+  }
+  
+  public static void c(Activity paramActivity, Intent paramIntent)
+  {
+    String str = paramIntent.getStringExtra("tag_id");
+    paramIntent = paramIntent.getStringExtra("tag_type");
+    if ((str == null) || (paramIntent == null))
+    {
+      ykq.e("Q.qqstory.home.QQStoryHomeJumpHelper", "handleOpenTagAction parm error");
+      return;
+    }
+    xab.a(paramActivity, str, paramIntent);
+  }
+  
+  public static void d(Activity paramActivity, Intent paramIntent)
+  {
+    paramIntent = (String)((wjl)wjs.a(10)).b("mainHallConfig", "");
+    if (!TextUtils.isEmpty(paramIntent)) {}
+    for (;;)
+    {
+      try
       {
-        return null;
-        if ((paramInt == 0) && (paramArrayOfByte != null)) {
-          try
-          {
-            Object localObject = new qqstory_710_message.RspStoryMessageList();
-            ((qqstory_710_message.RspStoryMessageList)localObject).mergeFrom(paramArrayOfByte);
-            if ((((qqstory_710_message.RspStoryMessageList)localObject).errinfo.error_code.has()) && (((qqstory_710_message.RspStoryMessageList)localObject).errinfo.error_code.get() == 0) && (((qqstory_710_message.RspStoryMessageList)localObject).message_num.get() > 0) && (!((qqstory_710_message.RspStoryMessageList)localObject).message_list.get().isEmpty()))
-            {
-              paramArrayOfByte = ((qqstory_710_message.RspStoryMessageList)localObject).message_list.get().iterator();
-              for (;;)
-              {
-                if (paramArrayOfByte.hasNext())
-                {
-                  localObject = new xmj((qqstory_710_message.StoryMessage)paramArrayOfByte.next());
-                  if (((xmj)localObject).d)
-                  {
-                    paramArrayOfByte = ((xmj)localObject).a;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "set bigV avatar from MessageData. unionId=" + paramArrayOfByte);
-                    }
-                    if (TextUtils.isEmpty(paramArrayOfByte)) {
-                      break;
-                    }
-                    wkp.a(paramBundle, wkp.b(paramArrayOfByte), true, (int)bfvh.a(xue.b(localxue), 33.0F));
-                    return null;
-                  }
-                }
-              }
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "parse RspStoryMessageList error", paramArrayOfByte);
-            }
-          }
+        paramIntent = new JSONObject(paramIntent).optString("url");
+        if (!TextUtils.isEmpty(paramIntent)) {
+          break;
         }
+        ykq.d("Q.qqstory.home.QQStoryHomeJumpHelper", "square config not ready , use default config instead");
+        return;
       }
-      paramArrayOfByte = bfvo.b();
-      QQStoryContext.a();
-      paramArrayOfByte = FaceDrawable.getFaceDrawable(QQStoryContext.a(), 1, Long.toString(xue.a(localxue)), 3, paramArrayOfByte, paramArrayOfByte);
-      if (paramArrayOfByte != null) {
-        paramBundle.setImageDrawable(paramArrayOfByte);
+      catch (Exception paramIntent)
+      {
+        ykq.d("Q.qqstory.home.QQStoryHomeJumpHelper", "analyze config error , error :%s", new Object[] { paramIntent.getMessage() });
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list failed");
-    return null;
+      paramIntent = "";
+    }
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramIntent);
+    paramActivity.startActivity(localIntent);
+  }
+  
+  private void e(Intent paramIntent)
+  {
+    paramIntent = (HashMap)paramIntent.getSerializableExtra("extra_jump_attrs");
+    String str = (String)paramIntent.get("parter_api");
+    bheh.c(QQStoryContext.a(), this.jdField_a_of_type_AndroidAppActivity, paramIntent, str);
+  }
+  
+  private void f(Intent paramIntent)
+  {
+    int i = paramIntent.getIntExtra("extra_share_from_type", -1);
+    paramIntent.getLongExtra("extra_topic_id", -1L);
+    paramIntent.getStringExtra("extra_topic_name");
+    bheh.d(i + "");
+  }
+  
+  private void g(Intent paramIntent)
+  {
+    int i = paramIntent.getIntExtra("extra_share_from_type", -1);
+    bheh.d(i + "");
+    if ("1".equals(paramIntent.getStringExtra("to_new_version"))) {}
+  }
+  
+  private void h(Intent paramIntent)
+  {
+    paramIntent.getStringExtra("EXTRA_USER_UIN");
+    String str = paramIntent.getStringExtra("EXTRA_USER_UNION_ID");
+    paramIntent.getBooleanExtra("extra_is_show_info_card", false);
+    paramIntent.getIntExtra("extra_share_from_type", 0);
+    weg.a(this.jdField_a_of_type_AndroidAppActivity, 23, str);
+  }
+  
+  private void i(Intent paramIntent) {}
+  
+  public void a(Intent paramIntent)
+  {
+    int i = paramIntent.getIntExtra("usertype", 0);
+    String str = paramIntent.getStringExtra("unionid");
+    paramIntent.getStringExtra("userid");
+    paramIntent.getBooleanExtra("showinfocard", true);
+    paramIntent.getIntExtra("storysharefrom", 0);
+    if (i == 1) {
+      weg.a(this.jdField_a_of_type_AndroidAppActivity, 23, str);
+    }
+  }
+  
+  public boolean a(int paramInt, Intent paramIntent)
+  {
+    ykq.b("Q.qqstory.home.QQStoryHomeJumpHelper", "handleAction=" + paramInt);
+    switch (paramInt)
+    {
+    case 3: 
+    default: 
+      return false;
+    case 1: 
+      this.jdField_a_of_type_AndroidAppActivity.setIntent(paramIntent);
+      this.jdField_a_of_type_Xug.a(false, true, 16, null);
+      return true;
+    case 2: 
+      a(paramIntent);
+      return true;
+    case 5: 
+      e(paramIntent);
+      return true;
+    case 4: 
+      f(paramIntent);
+      return true;
+    case 12: 
+      g(paramIntent);
+      return true;
+    case 7: 
+      h(paramIntent);
+      return true;
+    case 6: 
+      i(paramIntent);
+      return true;
+    case 8: 
+      b(paramIntent);
+      return true;
+    case 9: 
+      c(paramIntent);
+      return true;
+    case 10: 
+      d(paramIntent);
+      return true;
+    case 11: 
+      a(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
+      return true;
+    case 13: 
+      b(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
+      return true;
+    case 14: 
+      c(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
+      return true;
+    }
+    d(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
+    return true;
+  }
+  
+  protected void b(Intent paramIntent)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, StoryMessageListActivity.class);
+    if (((wms)QQStoryContext.a().getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a) {
+      paramIntent.putExtra("qqstory_message_list_source", 2);
+    }
+    localIntent.replaceExtras(paramIntent.getExtras());
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+  }
+  
+  protected void c(Intent paramIntent)
+  {
+    paramIntent = paramIntent.getSerializableExtra("EXTRA_PLAY_INFO");
+    if (paramIntent == null)
+    {
+      ykq.e("Q.qqstory.home.QQStoryHomeJumpHelper", "handle open play list error , no play info !");
+      return;
+    }
+    xbp.a(this.jdField_a_of_type_AndroidAppActivity, paramIntent, 31, null);
+  }
+  
+  protected void d(Intent paramIntent)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    localIntent.replaceExtras(paramIntent.getExtras());
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
   }
 }
 

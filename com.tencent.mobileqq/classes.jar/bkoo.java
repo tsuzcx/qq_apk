@@ -1,16 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.proxyimpl.MediaChooseJsProxyImpl.2;
 
-class bkoo
+public class bkoo
   implements DialogInterface.OnClickListener
 {
-  bkoo(bkok parambkok) {}
+  public bkoo(MediaChooseJsProxyImpl.2 param2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b = true;
-    bkok.a(this.a, 1);
-    bkok.c(this.a);
+    bkom.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Int);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

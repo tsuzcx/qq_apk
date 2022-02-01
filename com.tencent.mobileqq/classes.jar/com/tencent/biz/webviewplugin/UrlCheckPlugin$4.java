@@ -1,11 +1,11 @@
 package com.tencent.biz.webviewplugin;
 
-import aadq;
+import aatc;
 
 public class UrlCheckPlugin$4
   implements Runnable
 {
-  public UrlCheckPlugin$4(aadq paramaadq) {}
+  public UrlCheckPlugin$4(aatc paramaatc) {}
   
   public void run()
   {

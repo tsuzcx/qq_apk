@@ -1,52 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class avcq
+  implements ArkViewImplement.LoadCallback
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  public avcq(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
   
-  public avcq(int paramInt, String paramString)
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    onLoadState(paramInt1);
   }
   
-  public int a()
+  public void onLoadState(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    return (this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_JavaLangString.equals(paramString));
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (!(paramObject instanceof avcq)) {}
-    do
-    {
-      return false;
-      paramObject = (avcq)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.a()) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.a())));
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "RoomKey{mHashCode='" + hashCode() + ", mSessionType=" + this.jdField_a_of_type_Int + ", mSessionUin=" + this.jdField_a_of_type_JavaLangString + '}';
+    if ((QLog.isColorLevel()) || (paramInt == -1)) {
+      QLog.d("QQGamePadFaceFragment", 2, new Object[] { "onLoadFinish, ret=", Integer.valueOf(paramInt), ", ", QQGamePadFaceFragment.a(this.a) });
+    }
+    if (paramInt == 1) {
+      QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
+    }
+    while (paramInt != -1) {
+      return;
+    }
+    QQGamePadFaceFragment.a(this.a).a(QQGamePadFaceFragment.a(this.a).padFaceId);
+    QQGamePadFaceFragment.b(this.a);
   }
 }
 

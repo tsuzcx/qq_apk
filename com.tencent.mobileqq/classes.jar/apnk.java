@@ -1,34 +1,8 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import cooperation.qqreader.QRBridgeActivity;
-
-public class apnk
-  implements apnn
+public abstract interface apnk
 {
-  public String a()
-  {
-    return amtj.a(2131716061);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(View paramView, int paramInt)
-  {
-    if (paramView == null) {}
-    Context localContext;
-    do
-    {
-      do
-      {
-        return;
-      } while (paramInt != 16908289);
-      localContext = paramView.getContext();
-    } while (localContext == null);
-    paramView = new Intent(paramView.getContext(), QRBridgeActivity.class);
-    paramView.putExtra("readtype", "18");
-    paramView.addFlags(268435456);
-    localContext.startActivity(paramView);
-    bcef.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 3, 0, "", "", "", "");
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

@@ -5,40 +5,40 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import sdc;
-import sek;
+import spg;
+import sqp;
 
 public class VideoVolumeControl$1
   implements Runnable
 {
-  public VideoVolumeControl$1(sek paramsek) {}
+  public VideoVolumeControl$1(sqp paramsqp) {}
   
   public void run()
   {
-    if (sek.a(this.this$0)) {
-      if (sek.a(this.this$0) != null)
+    if (sqp.a(this.this$0)) {
+      if (sqp.a(this.this$0) != null)
       {
-        sek.a(this.this$0).requestAudioFocus(null, 3, 2);
+        sqp.a(this.this$0).requestAudioFocus(null, 3, 2);
         break label71;
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "mRequestOrAbandonAudioFocusCallBack isFocusAudio:" + sek.a(this.this$0));
+        QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "mRequestOrAbandonAudioFocusCallBack isFocusAudio:" + sqp.a(this.this$0));
       }
       label71:
       return;
-      if (sek.a(this.this$0) != null)
+      if (sqp.a(this.this$0) != null)
       {
-        Iterator localIterator = sek.a(this.this$0).keySet().iterator();
+        Iterator localIterator = sqp.a(this.this$0).keySet().iterator();
         Object localObject;
         for (;;)
         {
           if (localIterator.hasNext())
           {
-            localObject = (sdc)localIterator.next();
-            if ((localObject != null) && (((sdc)localObject).b()) && (!((sdc)localObject).a()))
+            localObject = (spg)localIterator.next();
+            if ((localObject != null) && (((spg)localObject).b()) && (!((spg)localObject).a()))
             {
               if (!QLog.isColorLevel()) {
                 break;
@@ -48,7 +48,7 @@ public class VideoVolumeControl$1
             }
           }
         }
-        localIterator = sek.b(this.this$0).keySet().iterator();
+        localIterator = sqp.b(this.this$0).keySet().iterator();
         for (;;)
         {
           if (localIterator.hasNext())
@@ -64,7 +64,7 @@ public class VideoVolumeControl$1
             }
           }
         }
-        sek.a(this.this$0).abandonAudioFocus(null);
+        sqp.a(this.this$0).abandonAudioFocus(null);
       }
     }
   }

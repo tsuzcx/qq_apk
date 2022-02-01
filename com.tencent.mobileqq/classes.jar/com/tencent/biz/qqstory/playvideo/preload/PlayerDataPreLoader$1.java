@@ -1,27 +1,27 @@
 package com.tencent.biz.qqstory.playvideo.preload;
 
-import xbe;
-import xbg;
-import xvv;
+import xpz;
+import xqb;
+import ykq;
 
 public class PlayerDataPreLoader$1
   implements Runnable
 {
-  public PlayerDataPreLoader$1(xbe paramxbe) {}
+  public PlayerDataPreLoader$1(xpz paramxpz) {}
   
   public void run()
   {
-    xbg localxbg = xbe.a(this.this$0, xbe.a(this.this$0), xbe.a(this.this$0), xbe.a(this.this$0), 5, 5, 5, 20);
-    xbe.a(this.this$0, localxbg.a);
-    xbe.b(this.this$0, localxbg.b);
+    xqb localxqb = xpz.a(this.this$0, xpz.a(this.this$0), xpz.a(this.this$0), xpz.a(this.this$0), 5, 5, 5, 20);
+    xpz.a(this.this$0, localxqb.a);
+    xpz.b(this.this$0, localxqb.b);
     try
     {
-      xbe.a(this.this$0);
+      xpz.a(this.this$0);
       return;
     }
     catch (Exception localException)
     {
-      xvv.c("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info error:%s", localException);
+      ykq.c("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info error:%s", localException);
     }
   }
 }

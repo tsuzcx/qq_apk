@@ -1,22 +1,33 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.util.Iterator;
+import java.util.List;
 
 public class adpn
-  extends amzt
+  implements biyc
 {
-  public adpn(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public adpn(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, athn paramathn) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void a(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
+    if (paramInt == 2)
+    {
+      audr.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692595));
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          if (FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.getFilePath())) {
+            this.jdField_a_of_type_Athn.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+          } else {
+            this.jdField_a_of_type_Athn.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+          }
+        }
+      }
     }
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
-      return;
-    }
-    paramObject = ajek.a().a();
-    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
   }
 }
 

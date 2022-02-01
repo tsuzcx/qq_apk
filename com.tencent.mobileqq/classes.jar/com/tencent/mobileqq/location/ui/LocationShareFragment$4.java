@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.location.ui;
 
-import avcw;
-import avfq;
+import awiz;
+import awlt;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class LocationShareFragment$4
@@ -11,7 +11,7 @@ class LocationShareFragment$4
   
   public void run()
   {
-    avcw.a(this.a.app).c();
+    awiz.a(this.a.app).c();
     if (LocationShareFragment.a(this.this$0) != null)
     {
       LocationShareFragment.a(this.this$0).onStop();

@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
-import bjuk;
+import blfw;
 
 class ShareActionSheetV2$ActionSheetItemAdapter$IconFactory
 {
@@ -18,7 +18,7 @@ class ShareActionSheetV2$ActionSheetItemAdapter$IconFactory
   {
     paramContext = paramContext.getResources();
     int i = 2130837561;
-    if (bjuk.a()) {
+    if (blfw.a()) {
       i = 2130837560;
     }
     this.mIconBg = paramContext.getDrawable(i);

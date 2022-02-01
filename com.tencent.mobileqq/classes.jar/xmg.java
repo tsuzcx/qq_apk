@@ -1,12 +1,14 @@
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+
 class xmg
-  extends ysw
+  implements MediaPlayer.OnCompletionListener
 {
-  xmg(xmf paramxmf) {}
+  xmg(xme paramxme, xlw paramxlw) {}
   
-  public boolean a(boolean paramBoolean)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.a.b();
-    return true;
+    this.jdField_a_of_type_Xlw.a(this.jdField_a_of_type_Xme);
   }
 }
 

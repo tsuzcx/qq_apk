@@ -1,74 +1,83 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.manager.Manager;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.emoticonview.EmotionPreviewFragment;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aknv
-  implements Manager
+class aknv
+  extends akmj
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Map<Integer, akns> jdField_a_of_type_JavaUtilMap = new HashMap();
-  
-  public aknv(QQAppInterface paramQQAppInterface)
+  protected aknv(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramNewPhotoListActivity);
   }
   
-  /* Error */
-  @android.support.annotation.Nullable
-  public akns a(int paramInt)
+  protected void b()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 20	aknv:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   6: iload_1
-    //   7: invokestatic 31	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   10: invokeinterface 37 2 0
-    //   15: ifeq +24 -> 39
-    //   18: aload_0
-    //   19: getfield 20	aknv:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   22: iload_1
-    //   23: invokestatic 31	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   26: invokeinterface 41 2 0
-    //   31: checkcast 43	akns
-    //   34: astore_2
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: aload_2
-    //   38: areturn
-    //   39: iload_1
-    //   40: invokestatic 47	aknw:a	(I)Lakns;
-    //   43: astore_2
-    //   44: aload_0
-    //   45: getfield 20	aknv:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   48: iload_1
-    //   49: invokestatic 31	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   52: aload_2
-    //   53: invokeinterface 51 3 0
-    //   58: pop
-    //   59: goto -24 -> 35
-    //   62: astore_2
-    //   63: aload_0
-    //   64: monitorexit
-    //   65: aload_2
-    //   66: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	67	0	this	aknv
-    //   0	67	1	paramInt	int
-    //   34	19	2	localakns	akns
-    //   62	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	35	62	finally
-    //   39	59	62	finally
+    if (this.mPhotoCommonData.selectedPhotoList != null) {}
+    for (int i = this.mPhotoCommonData.selectedPhotoList.size();; i = 0)
+    {
+      bdla.b(null, "CliOper", "", "", "0X800A6D8", "0X800A6D8", 0, 0, String.valueOf(i), "", "", "");
+      Intent localIntent = new Intent();
+      localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.mPhotoCommonData.selectedPhotoList);
+      ((NewPhotoListActivity)this.mActivity).setResult(-1, localIntent);
+      ((NewPhotoListActivity)this.mActivity).finish();
+      AlbumUtil.anim(this.mActivity, false, false);
+      return;
+    }
   }
   
-  public void onDestroy()
+  public void enterAlbumListFragment(Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    bdla.b(null, "dc00898", "", "", "0X800A6DF", "0X800A6DF", 0, 0, "", "", "", "");
+    super.enterAlbumListFragment(paramIntent);
+  }
+  
+  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
+  {
+    int i = this.mPhotoCommonData.maxSelectNum;
+    return ((NewPhotoListActivity)this.mActivity).getString(2131694625, new Object[] { Integer.valueOf(i) });
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.a.customSendBtnText = ((NewPhotoListActivity)this.mActivity).getString(2131694661);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    ArrayList localArrayList = this.mPhotoCommonData.selectedPhotoList;
+    if ((QLog.isDevelopLevel()) && (localArrayList != null) && (localArrayList.size() != 0)) {
+      QLog.d("PhotoListActivity", 4, "[NewPhotoListActivity] [onActivityResult] selectedPhotoList = " + localArrayList.size());
+    }
+    if ((paramInt2 == -1) && (paramInt1 == 100015))
+    {
+      ((NewPhotoListActivity)this.mActivity).setResult(-1, paramIntent);
+      ((NewPhotoListActivity)this.mActivity).finish();
+    }
+  }
+  
+  public void onPreviewBtnClick(View paramView)
+  {
+    EmotionPreviewFragment.enterEmotionPreview(this.mActivity, ((NewPhotoListActivity)this.mActivity).getIntent(), this.mPhotoCommonData.selectedPhotoList);
+    bdla.b(null, "dc00898", "", "", "0X800A6DC", "0X800A6DC", 0, 0, "", "", "", "");
+  }
+  
+  public void onTitleBtnCancelClick(View paramView)
+  {
+    bdla.b(null, "dc00898", "", "", "0X800A6E0", "0X800A6E0", 0, 0, "", "", "", "");
+    super.onTitleBtnCancelClick(paramView);
+  }
+  
+  public void startPhotoPreviewActivity(Intent paramIntent)
+  {
+    bdla.b(null, "CliOper", "", "", "0X800A6D9", "0X800A6D9", 0, 0, "", "", "", "");
+    ((NewPhotoListActivity)this.mActivity).startActivityForResult(paramIntent, 100015);
   }
 }
 

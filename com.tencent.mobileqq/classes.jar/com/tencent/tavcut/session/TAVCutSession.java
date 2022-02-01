@@ -267,6 +267,15 @@ public abstract class TAVCutSession
   public void onPause()
   {
     StickerEventDispatcher.getInstance().removeStickerEventListener(this.stickerEventListener);
+    if ((this.stickerControllers != null) && (this.stickerControllers.size() > 0))
+    {
+      int i = 0;
+      while (i < this.stickerControllers.size())
+      {
+        StickerEventDispatcher.getInstance().removeStickerEventListener((IStickerEventListener)this.stickerControllers.get(i));
+        i += 1;
+      }
+    }
   }
   
   public void onResume()

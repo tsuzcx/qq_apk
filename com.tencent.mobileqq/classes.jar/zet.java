@@ -1,17 +1,40 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
 
 public class zet
-  implements View.OnClickListener
+  extends zev
 {
-  public zet(CommentBottomBar paramCommentBottomBar) {}
+  TextView a;
   
-  public void onClick(View paramView)
+  public zet(zex paramzex, View paramView)
   {
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramzex, paramView);
+    this.a = ((TextView)paramView.findViewById(2131378697));
+    this.a.setMaxLines(1);
+    this.a.setSingleLine();
+  }
+  
+  public CharSequence a()
+  {
+    return this.a.getText();
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    paramCharSequence = paramCharSequence.toString();
+    this.a.setText(paramCharSequence);
+    paramCharSequence = zem.a(this.a, 1);
+    this.a.setText(paramCharSequence);
+  }
+  
+  public void e_(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.setBackgroundResource(2130844549);
+      return;
+    }
+    this.a.setBackgroundResource(0);
   }
 }
 

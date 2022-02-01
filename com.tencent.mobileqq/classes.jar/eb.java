@@ -1,15 +1,16 @@
 import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 class eb
-  implements atah
+  implements aueo
 {
   eb(dy paramdy, DataLineMsgRecord paramDataLineMsgRecord) {}
   
   public void onClick(View paramView)
   {
-    ((bcxe)this.jdField_a_of_type_Dy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(305)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, this.jdField_a_of_type_Dy.jdField_a_of_type_AndroidContentContext);
+    ((beed)this.jdField_a_of_type_Dy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER_DATALINE)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, this.jdField_a_of_type_Dy.jdField_a_of_type_AndroidContentContext);
   }
 }
 

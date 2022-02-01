@@ -1,25 +1,19 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arxa
-  implements Cloneable
+  implements View.OnClickListener
 {
-  public int a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public int b;
-  public TextView b;
-  public int c;
-  public TextView c;
+  public arxa(DataReportViewer paramDataReportViewer, WindowManager paramWindowManager) {}
   
-  public arxa(arwz paramarwz) {}
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

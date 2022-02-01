@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import azzx;
-import bbxj;
+import bbgg;
+import bdee;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -10,12 +10,12 @@ import com.tencent.qphone.base.util.QLog;
 public class CapturePtvTemplateManager$4
   implements Runnable
 {
-  public CapturePtvTemplateManager$4(azzx paramazzx) {}
+  public CapturePtvTemplateManager$4(bbgg parambbgg) {}
   
   public void run()
   {
     int i = 1;
-    boolean bool1 = bbxj.a();
+    boolean bool1 = bdee.a();
     boolean bool2 = NetworkUtil.isNetSupport(BaseApplication.getContext());
     if (BaseApplicationImpl.sProcessId == 1) {
       i = 0;

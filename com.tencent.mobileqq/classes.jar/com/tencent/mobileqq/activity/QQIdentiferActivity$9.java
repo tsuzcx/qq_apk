@@ -9,7 +9,7 @@ import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.Size;
 import android.os.Handler;
-import bbuc;
+import bdax;
 import com.enrique.stackblur.StackBlurManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
@@ -29,7 +29,7 @@ class QQIdentiferActivity$9
         QLog.e("qq_Identification.act", 1, "blur bmp error, mLastPreviewData is null");
         return;
       }
-      Camera localCamera = bbuc.a().a;
+      Camera localCamera = bdax.a().a;
       if (localCamera == null)
       {
         QLog.e("qq_Identification.act", 1, "blur bmp error, camera is null");
@@ -45,7 +45,7 @@ class QQIdentiferActivity$9
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       ((YuvImage)localObject2).compressToJpeg(new Rect(0, 0, ((Camera.Size)localObject1).width, ((Camera.Size)localObject1).height), 100, localByteArrayOutputStream);
       localObject2 = new StackBlurManager(BitmapFactory.decodeByteArray(localByteArrayOutputStream.toByteArray(), 0, localByteArrayOutputStream.size())).process(15);
-      int i = bbuc.a().b();
+      int i = bdax.a().b();
       localObject1 = new Matrix();
       ((Matrix)localObject1).setRotate(i);
       localObject2 = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight(), (Matrix)localObject1, false);
@@ -64,7 +64,7 @@ class QQIdentiferActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity.9
  * JD-Core Version:    0.7.0.1
  */

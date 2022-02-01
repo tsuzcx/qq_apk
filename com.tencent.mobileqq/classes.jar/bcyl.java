@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import java.util.Comparator;
+import java.util.ArrayList;
 
-public class bcyl
-  implements Comparator<PadInfo>
+public abstract interface bcyl
 {
-  public bcyl(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  public abstract void a(int paramInt);
   
-  public int a(PadInfo paramPadInfo1, PadInfo paramPadInfo2)
-  {
-    long l = paramPadInfo2.lastEditTime - paramPadInfo1.lastEditTime;
-    if (l > 0L) {
-      return 1;
-    }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void a(int paramInt, bcyf parambcyf);
+  
+  public abstract void a(int paramInt, ArrayList<bcyf> paramArrayList);
+  
+  public abstract void b(int paramInt, bcyf parambcyf);
 }
 
 

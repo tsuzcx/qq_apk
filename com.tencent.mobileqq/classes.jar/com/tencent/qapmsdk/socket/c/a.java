@@ -3,7 +3,7 @@ package com.tencent.qapmsdk.socket.c;
 import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.network.Apn;
 import com.tencent.qapmsdk.common.network.NetworkWatcher;
-import com.tencent.qapmsdk.impl.instrumentation.h;
+import com.tencent.qapmsdk.impl.instrumentation.i;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.MalformedURLException;
@@ -59,7 +59,7 @@ public class a
   {
     if ((paramException instanceof IOException))
     {
-      if (h.a(paramException)) {
+      if (i.a(paramException)) {
         return 911;
       }
       String str = paramException.getMessage();

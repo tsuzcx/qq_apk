@@ -1,23 +1,9 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.togetherui.writetogether.SavingAnimView;
+import java.util.HashMap;
 
 public class bdke
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bdke(SavingAnimView paramSavingAnimView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = this.a;
-    float f1 = f2;
-    if (SavingAnimView.a(this.a) == 0) {
-      f1 = 1.0F - f2;
-    }
-    SavingAnimView.e(paramValueAnimator, f1);
-    this.a.invalidate();
-  }
+  HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "socket", "pipe", "anon_inode", "/dev/null", "/dev/ashmem" };
 }
 
 

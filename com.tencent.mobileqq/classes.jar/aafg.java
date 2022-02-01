@@ -1,23 +1,29 @@
-import com.tencent.common.app.MSFInterfaceAdapterImpl.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.MSFInterfaceAdapter;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class aafg
-  extends MSFInterfaceAdapter
+class aafg
+  extends aafw
 {
-  public void clearStartupPatchFailCount()
+  aafg(aafb paramaafb, aafj paramaafj, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFInterfaceAdapterImpl", 2, "clearStartupPatchFailCount");
+    super(paramaafb);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "splitVideoUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "splitVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Aafb.a));
+      this.jdField_a_of_type_Aafb.a = System.currentTimeMillis();
     }
-    ThreadManager.getSubThreadHandler().post(new MSFInterfaceAdapterImpl.1(this));
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Aafj.a(this.jdField_a_of_type_JavaLangString, false, "splitVideo done.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aafg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,40 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.open.base.MD5Utils;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bjmp
-  extends MqqHandler
 {
-  private WeakReference<Handler.Callback> a;
-  
-  public bjmp(Handler.Callback paramCallback)
+  public static int a(String paramString, int paramInt, long paramLong)
   {
-    this.a = new WeakReference(paramCallback);
+    return a(paramLong).getInt(paramString, paramInt);
   }
   
-  public bjmp(Looper paramLooper, Handler.Callback paramCallback)
+  public static SharedPreferences a()
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
-  }
-  
-  public bjmp(Looper paramLooper, Handler.Callback paramCallback, boolean paramBoolean)
-  {
-    super(paramLooper, null, paramBoolean);
-    this.a = new WeakReference(paramCallback);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
+    int i = Build.VERSION.SDK_INT;
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    if (i > 10) {}
+    for (i = 4;; i = 0) {
+      return localBaseApplication.getSharedPreferences("OPENSDK_setting", i);
     }
   }
   
-  public String toString()
+  public static SharedPreferences a(long paramLong)
   {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    return super.toString() + " " + localCallback;
+    if (paramLong == 0L) {
+      return a();
+    }
+    String str = MD5Utils.encodeHexStr(String.valueOf(paramLong)) + "_" + "preference";
+    return BaseApplication.getContext().getSharedPreferences(str, 0);
+  }
+  
+  public static void a(String paramString, int paramInt, long paramLong)
+  {
+    SharedPreferences.Editor localEditor = a(paramLong).edit();
+    localEditor.putInt(paramString, paramInt);
+    localEditor.commit();
   }
 }
 

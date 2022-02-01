@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
+import aady;
+import aaea;
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import zon;
-import zop;
 
 public class NowLiveNativePlugin
   implements NativePlugin
@@ -14,8 +14,8 @@ public class NowLiveNativePlugin
   private static final String ACTION_PRELOAD = "preload";
   public static final String PLUGIN_NAME = "nowlive";
   private static final String TAG = "NowLiveNativePlugin";
-  private zon mApiClient;
-  final zop mCallback = new NowLiveNativePlugin.1(this);
+  private aady mApiClient;
+  final aaea mCallback = new NowLiveNativePlugin.1(this);
   private int mPluginState;
   
   private void preload()
@@ -25,11 +25,11 @@ public class NowLiveNativePlugin
     }
     if (this.mApiClient == null)
     {
-      this.mApiClient = zon.a();
+      this.mApiClient = aady.a();
       this.mApiClient.a();
       this.mApiClient.g(this.mCallback);
     }
-    this.mApiClient.g();
+    this.mApiClient.a(null);
   }
   
   public void onDestroy()
@@ -38,7 +38,7 @@ public class NowLiveNativePlugin
       QLog.d("NowLiveNativePlugin", 2, "NowLiveNativePlugin | onDestroy()");
     }
     if (this.mApiClient != null) {
-      this.mApiClient.h();
+      this.mApiClient.g();
     }
   }
   

@@ -1,40 +1,13 @@
-import UserGrowth.stNotificationRsp;
+import org.json.JSONObject;
 
 class uty
-  implements uqy
+  implements twh
 {
-  uty(utx paramutx) {}
+  uty(uta paramuta) {}
   
-  public void a(urj paramurj)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    uya.b("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse-resultCode:" + paramurj.b + " | resultBean:" + paramurj.jdField_a_of_type_JavaLangObject + " | thread:" + Thread.currentThread().getName());
-    if (this.a.a() == null)
-    {
-      uya.d("WSRecommendFragmentPresenter", "getNotification onTaskResponse getView(): null");
-      return;
-    }
-    if (paramurj.a())
-    {
-      if ((paramurj.jdField_a_of_type_JavaLangObject instanceof stNotificationRsp))
-      {
-        stNotificationRsp localstNotificationRsp = (stNotificationRsp)paramurj.jdField_a_of_type_JavaLangObject;
-        uqz localuqz = paramurj.jdField_a_of_type_Uqz;
-        if (localuqz != null) {
-          uvo.a().a(localstNotificationRsp.trace_id, localuqz.a);
-        }
-        if (localstNotificationRsp.type > 0)
-        {
-          ((uuz)this.a.a()).a(localstNotificationRsp, localuqz);
-          return;
-        }
-        ((uuz)this.a.a()).b(paramurj.b, paramurj.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      ((uuz)this.a.a()).b(paramurj.b, paramurj.jdField_a_of_type_JavaLangString);
-      uya.d("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse error:" + paramurj.b + " | " + paramurj.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    ((uuz)this.a.a()).b(paramurj.jdField_a_of_type_Int, paramurj.jdField_a_of_type_JavaLangString);
+    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
   }
 }
 

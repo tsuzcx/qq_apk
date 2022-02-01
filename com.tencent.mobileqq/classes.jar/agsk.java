@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
 
-class agsk
-  extends agsg
+public class agsk
 {
-  public agsk(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public int a;
+  public agsl a;
+  public View a;
+  private Runnable a;
+  public int[] a;
+  public int b;
+  public int c;
 }
 
 

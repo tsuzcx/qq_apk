@@ -1,19 +1,47 @@
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
+
 public class bnhb
+  extends bnbj
 {
-  public int a;
-  public bngy a;
-  public int b;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  private bnhb(bnhd parambnhd)
+  public bnhb(ViewStub paramViewStub)
   {
-    this.jdField_a_of_type_Bngy = bnhd.a(parambnhd);
-    this.jdField_a_of_type_Int = bnhd.a(parambnhd);
-    this.b = bnhd.b(parambnhd);
+    super(paramViewStub);
   }
   
-  public String toString()
+  protected void a(View paramView)
   {
-    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Bngy + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366360);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366361));
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692435);
+  }
+  
+  public void c()
+  {
+    if (a())
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+  }
+  
+  public void d()
+  {
+    if (!a()) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

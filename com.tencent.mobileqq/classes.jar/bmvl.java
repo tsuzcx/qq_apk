@@ -1,27 +1,21 @@
-import org.json.JSONObject;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
+import com.tencent.ttpic.filament.CMShowUserLoader;
+import dov.com.qq.im.ae.AECMShowCameraUnit.13;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class bmvl
+  implements bmya
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  public bmvl(AECMShowCameraUnit.13 param13) {}
   
-  public static bmvl a(JSONObject paramJSONObject)
-  {
-    bmvl localbmvl = new bmvl();
-    localbmvl.jdField_a_of_type_JavaLangString = paramJSONObject.optString("resurl");
-    localbmvl.jdField_b_of_type_JavaLangString = paramJSONObject.optString("md5");
-    localbmvl.c = paramJSONObject.optString("name");
-    localbmvl.jdField_a_of_type_Int = paramJSONObject.optInt("text_id");
-    localbmvl.jdField_b_of_type_Int = paramJSONObject.optInt("progress");
-    return localbmvl;
-  }
+  public void a(int paramInt, String paramString, HashMap<String, float[]> paramHashMap) {}
   
-  public String a()
+  public void a(CMShowUserLoader paramCMShowUserLoader)
   {
-    return this.c + "_" + this.jdField_b_of_type_JavaLangString;
+    bmvk.a(this.a.this$0);
+    bmvk.a(this.a.this$0).add(paramCMShowUserLoader);
+    bmvk.a(this.a.this$0).setParam("setFilamentUserLoader", bmvk.a(this.a.this$0));
   }
 }
 

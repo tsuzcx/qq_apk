@@ -1,13 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import tencent.im.oidb.cmd0xef9.oidb_cmd0xef9.PrivilegeRspBody;
 
-public class qgy
-  implements ViewBase.IBuilder
+class qgy
+  extends pvq
 {
-  public ViewBase build(VafContext paramVafContext)
+  qgy(qgx paramqgx) {}
+  
+  public void a(oidb_cmd0xef9.PrivilegeRspBody paramPrivilegeRspBody, long paramLong, int paramInt)
   {
-    return new qgx(paramVafContext);
+    qgx.a(this.a, paramPrivilegeRspBody, paramLong, paramInt);
   }
 }
 

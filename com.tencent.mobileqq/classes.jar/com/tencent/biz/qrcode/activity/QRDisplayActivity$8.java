@@ -1,5 +1,8 @@
 package com.tencent.biz.qrcode.activity;
 
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+
 class QRDisplayActivity$8
   implements Runnable
 {
@@ -7,8 +10,13 @@ class QRDisplayActivity$8
   
   public void run()
   {
-    this.this$0.b = true;
-    this.this$0.i();
+    int i = this.this$0.c.getHeight();
+    if (this.this$0.b.getHeight() < i)
+    {
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.this$0.b.getLayoutParams();
+      localLayoutParams.gravity = 17;
+      this.this$0.b.setLayoutParams(localLayoutParams);
+    }
   }
 }
 

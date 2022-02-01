@@ -1,38 +1,21 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.VideoDrawable;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class apbx
-  implements VideoDrawable.OnPlayRepeatListener
+public final class apbx
 {
-  public apbx(DynamicAvatarView paramDynamicAvatarView) {}
+  public static String a = "_model.zip";
   
-  public void onPlayRepeat(int paramInt)
+  public static String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.dynamicAvatar", 2, "onPlayRepeat: " + paramInt);
-    }
-    if ((this.a.b) || (paramInt < 1)) {}
-    while (this.a.a == null) {
-      return;
-    }
-    Object localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
-    if ((localObject instanceof URLDrawable))
-    {
-      localObject = ((URLDrawable)localObject).getCurrDrawable();
-      if ((localObject instanceof VideoDrawable))
-      {
-        ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
-        this.a.a.jdField_a_of_type_Apbm.a(this.a.a, true);
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
-        }
-      }
-    }
-    this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
-    this.a.a();
+    String str = apmm.a() + "ar_cloud_marker_model/" + 8 + File.separator;
+    apmm.a(str + ".nomedia");
+    return str;
+  }
+  
+  public static String b()
+  {
+    String str = apmm.a() + "ar_cloud_transfer/";
+    apmm.a(str + ".nomedia");
+    return str;
   }
 }
 

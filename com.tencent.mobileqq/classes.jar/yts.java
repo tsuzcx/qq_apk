@@ -1,12 +1,28 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-class yts
-  extends RecyclerView.ViewHolder
+public class yts
 {
-  yts(ytp paramytp, View paramView)
+  public final ArrayList<yro> a;
+  @NonNull
+  public final yqu a;
+  @NonNull
+  public final yqv a;
+  @NonNull
+  public final yre a;
+  @NonNull
+  public final yri a;
+  
+  public yts(@NonNull yri paramyri, @NonNull yre paramyre, @NonNull yqv paramyqv, @NonNull yqu paramyqu)
   {
-    super(paramView);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Yri = paramyri;
+    this.jdField_a_of_type_Yre = paramyre;
+    this.jdField_a_of_type_Yqv = paramyqv;
+    this.jdField_a_of_type_Yqu = paramyqu;
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramyqv);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramyre);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramyri);
   }
 }
 

@@ -1,32 +1,45 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.gif.GifView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicLong;
 
-class qbv
-  implements ViewBase.OnClickListener
+public class qbv
+  implements URLDrawable.DownloadListener
 {
-  qbv(qbu paramqbu, pvc parampvc, BaseArticleInfo paramBaseArticleInfo) {}
+  public qbv(GifView paramGifView, AtomicLong paramAtomicLong1, AtomicLong paramAtomicLong2, long paramLong, AtomicLong paramAtomicLong3, AtomicLong paramAtomicLong4, URLDrawable paramURLDrawable) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onFileDownloadFailed(int paramInt)
   {
-    EventCollector.getInstance().onViewClicked(paramViewBase.getNativeView());
-    TemplateBean localTemplateBean = this.jdField_a_of_type_Pvc.a().mProteusTemplateBean;
-    if (localTemplateBean != null)
+    if (GifView.access$000(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView))
     {
-      paramViewBase = qbu.a(this.jdField_a_of_type_Qbu, localTemplateBean, paramViewBase);
-      if (twr.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) {
-        twr.a((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Pvc.a().getContext(), this.jdField_a_of_type_Pvc.g());
+      if (!GifView.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView)) {
+        break label104;
       }
+      GifView.access$200(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView);
     }
-    else
+    for (;;)
     {
+      QLog.d("gifvideo.GifView", 1, "onLoadFialed! mIsBigImg=" + GifView.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " w=" + GifView.access$300(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView) + " h=" + GifView.access$400(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView));
+      GifView localGifView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseGifGifView;
+      localGifView.mTryCounts += 1;
       return;
+      label104:
+      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
     }
-    this.jdField_a_of_type_Pvc.a().a(true, (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, paramViewBase);
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    this.b.set(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    this.c.set(System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get());
+    this.d.set(paramLong);
+    QLog.d("gifvideo.GifView", 1, "gif download success");
   }
 }
 

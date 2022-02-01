@@ -1,37 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class asqx
-  extends asbj
+class asqx
+  implements DialogInterface.OnClickListener
 {
-  public asqx(TroopFileDetailBrowserActivity paramTroopFileDetailBrowserActivity) {}
+  asqx(asqt paramasqt) {}
   
-  protected void onTroopFileCopyToC2cDisc(long paramLong, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if (!paramBoolean) {
-      if ((paramString != null) && (paramString.length() > 0)) {
-        aszt.c(paramString);
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((this.a.b == null) || (this.a.app == null));
-        if (this.a.b.b() == paramLong) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("FileBrowserActivity<FileAssistant>", 4, "difference nSessionId");
-      return;
-    } while (this.a.app.getFileManagerDataCenter().b(paramLong) != null);
-    QLog.e("FileBrowserActivity<FileAssistant>", 1, "OnTroopFileCopyToC2cDisc->,but entity is null SessionId[" + paramLong + "]");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

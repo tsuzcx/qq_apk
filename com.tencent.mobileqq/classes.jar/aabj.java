@@ -1,40 +1,18 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement;
 
-public class aabj
-  implements aprh
+public final class aabj
+  implements Parcelable.Creator<ContentElement>
 {
-  public aabj(NewerGuidePlugin paramNewerGuidePlugin, bjnw parambjnw) {}
-  
-  public void a()
+  public ContentElement a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("onConfirmBtClicked mSelectedIndex=%s", new Object[] { Integer.valueOf(NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin)) }));
-    }
-    if ((this.jdField_a_of_type_Bjnw != null) && (this.jdField_a_of_type_Bjnw.isShowing())) {
-      this.jdField_a_of_type_Bjnw.dismiss();
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("result", 1);
-      localJSONObject.put("index", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respSelector", new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "sendSelectorResp fail", localException);
-      }
-    }
+    return new ContentElement();
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public ContentElement[] a(int paramInt)
   {
-    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+    return new ContentElement[paramInt];
   }
 }
 

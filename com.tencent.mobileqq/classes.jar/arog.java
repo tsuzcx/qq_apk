@@ -1,32 +1,45 @@
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arog
 {
-  public static void a(View paramView, Drawable paramDrawable)
+  private Map<String, Long> a = new HashMap();
+  
+  public static arog a(aqxa[] paramArrayOfaqxa)
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      aroh.a(paramView, paramDrawable);
-      return;
+    if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length <= 0)) {
+      return null;
     }
-    paramView.setBackgroundDrawable(paramDrawable);
+    localarog = new arog();
+    try
+    {
+      paramArrayOfaqxa = new JSONObject(paramArrayOfaqxa[0].a);
+      Iterator localIterator = paramArrayOfaqxa.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localarog.a.put(str, Long.valueOf(paramArrayOfaqxa.getLong(str)));
+      }
+      return localarog;
+    }
+    catch (JSONException paramArrayOfaqxa)
+    {
+      QLog.e("TencentDocPreviewConfigBean", 1, paramArrayOfaqxa.getLocalizedMessage(), paramArrayOfaqxa);
+    }
   }
   
-  public static void a(View paramView, Runnable paramRunnable)
+  public Map<String, Long> a()
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      aroh.a(paramView, paramRunnable);
-      return;
-    }
-    paramView.postDelayed(paramRunnable, 16L);
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arog
  * JD-Core Version:    0.7.0.1
  */

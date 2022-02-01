@@ -1,17 +1,9 @@
-import com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 
-public class aftk
-  implements bffx
-{
-  aftk(aftj paramaftj) {}
-  
-  public void a(String paramString)
-  {
-    ThreadManager.getUIHandler().post(new TroopRobotHelper.1.1(this));
-  }
-}
+public abstract interface aftk
+  extends View.OnLongClickListener, View.OnTouchListener
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

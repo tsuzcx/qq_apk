@@ -1,140 +1,32 @@
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
+
 public class vux
-  implements vuf
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public final vuf[] a = new vuf[40];
+  private final vuy jdField_a_of_type_Vuy;
   
-  public static vuf a(int paramInt)
+  public vux(PublicAccountImageView paramPublicAccountImageView, vuy paramvuy)
   {
-    return vuz.a.b(paramInt);
+    this.jdField_a_of_type_Vuy = paramvuy;
   }
   
-  public static vux a()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    return vuz.a;
+    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    return false;
   }
   
-  private void a(int paramInt, vuf paramvuf)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.a[paramInt] = paramvuf;
+    return true;
   }
   
-  public void a() {}
-  
-  public vuf b(int paramInt)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    vuf localvuf1 = this.a[paramInt];
-    if (localvuf1 == null) {}
-    for (;;)
-    {
-      vuf localvuf2;
-      synchronized (this.a)
-      {
-        localvuf2 = this.a[paramInt];
-        if (localvuf2 == null) {
-          break label408;
-        }
-        return localvuf2;
-        if (localvuf1 != null)
-        {
-          localvuf1.a();
-          xvv.b("Q.qqstory.SuperManager", "onInit manager : %s", localvuf1);
-        }
-        a(paramInt, localvuf1);
-        return localvuf1;
-      }
-      Object localObject2 = this;
-      continue;
-      localObject2 = new vvd();
-      continue;
-      localObject2 = new xck();
-      continue;
-      localObject2 = new vvv();
-      continue;
-      localObject2 = new vuq();
-      continue;
-      localObject2 = new vwq();
-      continue;
-      localObject2 = new ydh();
-      continue;
-      localObject2 = new bnhh();
-      continue;
-      localObject2 = new vvj();
-      continue;
-      localObject2 = new vna();
-      continue;
-      localObject2 = new vlm();
-      continue;
-      localObject2 = new vns();
-      continue;
-      localObject2 = new vuu();
-      continue;
-      localObject2 = new vun();
-      continue;
-      localObject2 = new voj();
-      continue;
-      localObject2 = new vuj();
-      continue;
-      localObject2 = new vul();
-      continue;
-      localObject2 = new vtu();
-      continue;
-      localObject2 = new vuk();
-      continue;
-      localObject2 = new vty();
-      continue;
-      localObject2 = new vvi();
-      continue;
-      localObject2 = new vud();
-      continue;
-      localObject2 = new xnp();
-      continue;
-      localObject2 = new xnv();
-      continue;
-      localObject2 = new vvf();
-      continue;
-      localObject2 = new xen();
-      continue;
-      localObject2 = new vue();
-      continue;
-      localObject2 = new vva();
-      continue;
-      localObject2 = new vls();
-      continue;
-      localObject2 = new vuv();
-      continue;
-      localObject2 = new via();
-      continue;
-      return localObject2;
-      label408:
-      localObject2 = localvuf2;
-      switch (paramInt)
-      {
-      }
-      localObject2 = localvuf2;
-    }
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    vuf[] arrayOfvuf = this.a;
-    int i = 0;
-    try
-    {
-      while (i < this.a.length)
-      {
-        vuf localvuf = this.a[i];
-        xvv.b("Q.qqstory.SuperManager", "destroy manager : %s", localvuf);
-        if (localvuf != null) {
-          localvuf.b();
-        }
-        this.a[i] = null;
-        i += 1;
-      }
-      return;
-    }
-    finally {}
+    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

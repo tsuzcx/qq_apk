@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.msf.core.quicksend;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -9,7 +11,7 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.ao;
+import com.tencent.mobileqq.msf.core.ap;
 import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.g;
 import com.tencent.mobileqq.msf.core.h;
@@ -38,18 +40,19 @@ public class b
   public static final int e = 3;
   public static final long g = 2000L;
   private static final String i = "MSF.C.QuickSendManager";
-  private static final long q = 120000L;
+  private static final String n = "isSendQuickHBBackToForeground";
+  private static final long r = 120000L;
   public d f = new d();
   Handler h = new c(this);
   private MsfCore j;
   private final int k = 1;
   private HashSet l = new HashSet();
   private ConcurrentHashMap m = new ConcurrentHashMap();
-  private ConcurrentHashMap n = new ConcurrentHashMap();
-  private long o = 0L;
-  private volatile Handler p;
-  private long r = 0L;
-  private AtomicBoolean s = new AtomicBoolean(true);
+  private ConcurrentHashMap o = new ConcurrentHashMap();
+  private long p = 0L;
+  private volatile Handler q;
+  private long s = 0L;
+  private AtomicBoolean t = new AtomicBoolean(true);
   
   public b(MsfCore paramMsfCore)
   {
@@ -57,17 +60,17 @@ public class b
     this.m.clear();
     paramMsfCore = new HandlerThread("MsfCoreHttpTimeoutChecker", 5);
     paramMsfCore.start();
-    this.p = new Handler(paramMsfCore.getLooper());
+    this.q = new Handler(paramMsfCore.getLooper());
     b();
   }
   
   private void a(long paramLong, boolean paramBoolean)
   {
-    AtomicBoolean localAtomicBoolean = (AtomicBoolean)this.n.get(Long.valueOf(paramLong));
+    AtomicBoolean localAtomicBoolean = (AtomicBoolean)this.o.get(Long.valueOf(paramLong));
     if (localAtomicBoolean == null)
     {
       localAtomicBoolean = new AtomicBoolean(paramBoolean);
-      this.n.put(Long.valueOf(paramLong), localAtomicBoolean);
+      this.o.put(Long.valueOf(paramLong), localAtomicBoolean);
       return;
     }
     localAtomicBoolean.set(paramBoolean);
@@ -90,13 +93,13 @@ public class b
   
   private boolean c(long paramLong)
   {
-    Iterator localIterator = this.n.keySet().iterator();
+    Iterator localIterator = this.o.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Long)localIterator.next();
       if (((Long)localObject).longValue() < paramLong)
       {
-        localObject = (AtomicBoolean)this.n.get(localObject);
+        localObject = (AtomicBoolean)this.o.get(localObject);
         if ((localObject != null) && (((AtomicBoolean)localObject).get())) {
           return false;
         }
@@ -120,11 +123,11 @@ public class b
         return;
       }
       this.j.lightSender.a(paramToServiceMsg);
-    } while ((this.j.lightTcpSender == null) || (!g()) || (!com.tencent.mobileqq.a.a.a.b()));
+    } while ((this.j.lightTcpSender == null) || (!f()) || (!com.tencent.mobileqq.a.a.a.b()));
     this.j.lightTcpSender.b(paramToServiceMsg);
   }
   
-  public static boolean g()
+  public static boolean f()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
@@ -182,7 +185,7 @@ public class b
           }
         }
       }
-      i();
+      h();
       Message localMessage = this.h.obtainMessage();
       localMessage.what = 1;
       localMessage.arg1 = paramToServiceMsg.getRequestSsoSeq();
@@ -191,6 +194,17 @@ public class b
         QLog.d("MSF.C.QuickSendManager", 2, "tryResendMsg cmd:" + paramToServiceMsg.getServiceCmd() + " ssoSeq:" + paramToServiceMsg.getRequestSsoSeq() + " resendIndex: " + (i1 + 1) + " delayed: " + locala.b);
       }
       return true;
+    }
+  }
+  
+  public static void h()
+  {
+    if ((f()) && (com.tencent.mobileqq.msf.core.a.a.bu()) && (com.tencent.mobileqq.a.a.a.b()))
+    {
+      NetConnInfoCenter.checkConnInfo();
+      if (!NetConnInfoCenter.isMobileConn()) {
+        l.a(BaseApplication.getContext());
+      }
     }
   }
   
@@ -213,20 +227,18 @@ public class b
   
   public static void i()
   {
-    if ((g()) && (com.tencent.mobileqq.msf.core.a.a.bu()) && (com.tencent.mobileqq.a.a.a.b()))
-    {
-      NetConnInfoCenter.checkConnInfo();
-      if (!NetConnInfoCenter.isMobileConn()) {
-        l.a(BaseApplication.getContext());
-      }
-    }
-  }
-  
-  public static void j()
-  {
     if ((MsfCore.sCore.lightTcpSender != null) && (com.tencent.mobileqq.msf.core.a.a.bu()) && (MsfCore.sCore.lightTcpSender.a())) {
       MsfCore.sCore.lightTcpSender.b();
     }
+  }
+  
+  private boolean j()
+  {
+    boolean bool = BaseApplication.getContext().getSharedPreferences("common_sp_for_msf", 4).getBoolean("isSendQuickHBBackToForeground", false);
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.QuickSendManager", 2, "isSendQuickHBBackToForeground = " + bool);
+    }
+    return bool;
   }
   
   public Map a()
@@ -331,7 +343,7 @@ public class b
     {
       try
       {
-        ao.a(paramToServiceMsg, paramFromServiceMsg, true);
+        ap.a(paramToServiceMsg, paramFromServiceMsg, true);
         com.tencent.mobileqq.a.a.a.a().a(paramToServiceMsg, paramFromServiceMsg, true, 0);
         if (com.tencent.mobileqq.msf.core.a.a.aH())
         {
@@ -426,9 +438,9 @@ public class b
           break;
         }
         l2 = SystemClock.elapsedRealtime();
-        if (l2 > this.o + com.tencent.mobileqq.msf.core.a.a.H())
+        if (l2 > this.p + com.tencent.mobileqq.msf.core.a.a.H())
         {
-          this.o = l2;
+          this.p = l2;
           try
           {
             QLog.d("MSF.C.QuickSendManager", 1, "handleQuickHeartbeat disconn: " + System.currentTimeMillis() + " mLastDetectDisconnTime:" + l2 + " closeConn closeByNetDetectFailedNew");
@@ -472,7 +484,7 @@ public class b
   public void a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      d();
+      b(j());
     }
   }
   
@@ -501,19 +513,22 @@ public class b
   
   public void b(boolean paramBoolean)
   {
-    if ((g()) && (com.tencent.mobileqq.msf.core.a.a.bu())) {
-      j();
+    long l1 = SystemClock.elapsedRealtime();
+    if ((q.a().d()) && (l1 - this.s > 120000L) && ((this.t.compareAndSet(false, true)) || (paramBoolean)))
+    {
+      a(2000L);
+      this.s = l1;
     }
   }
   
   public boolean b(long paramLong)
   {
-    AtomicBoolean localAtomicBoolean2 = (AtomicBoolean)this.n.get(Long.valueOf(paramLong));
+    AtomicBoolean localAtomicBoolean2 = (AtomicBoolean)this.o.get(Long.valueOf(paramLong));
     AtomicBoolean localAtomicBoolean1 = localAtomicBoolean2;
     if (localAtomicBoolean2 == null)
     {
       localAtomicBoolean1 = new AtomicBoolean();
-      this.n.put(Long.valueOf(paramLong), localAtomicBoolean1);
+      this.o.put(Long.valueOf(paramLong), localAtomicBoolean1);
     }
     return localAtomicBoolean1.get();
   }
@@ -533,7 +548,7 @@ public class b
   
   public void c()
   {
-    this.s.set(false);
+    this.t.set(false);
   }
   
   public void c(ToServiceMsg paramToServiceMsg)
@@ -549,7 +564,7 @@ public class b
         if (!com.tencent.mobileqq.msf.core.a.a.aH()) {
           break label68;
         }
-        this.p.postDelayed(locala1, 1000L);
+        this.q.postDelayed(locala1, 1000L);
       }
     }
     for (;;)
@@ -557,17 +572,22 @@ public class b
       paramToServiceMsg.getAttributes().put("to_msgtimeoutCallbacker", locala1);
       return;
       label68:
-      this.p.postDelayed(locala1, locala.a);
+      this.q.postDelayed(locala1, locala.a);
+    }
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    if ((f()) && (com.tencent.mobileqq.msf.core.a.a.bu())) {
+      i();
     }
   }
   
   public void d()
   {
-    long l1 = SystemClock.elapsedRealtime();
-    if ((q.a().d()) && (l1 - this.r > 120000L) && (this.s.compareAndSet(false, true)))
-    {
-      a(2000L);
-      this.r = l1;
+    MsfCore.sCore.lightSender.a();
+    if (MsfCore.sCore.lightTcpSender != null) {
+      MsfCore.sCore.lightTcpSender.c();
     }
   }
   
@@ -577,16 +597,16 @@ public class b
     {
       QLog.d("MSF.C.QuickSendManager", 1, "remove timoutchecker for msg");
       Runnable localRunnable = (Runnable)paramToServiceMsg.getAttributes().get("to_msgtimeoutCallbacker");
-      this.p.removeCallbacks(localRunnable);
+      this.q.removeCallbacks(localRunnable);
       paramToServiceMsg.getAttributes().remove("to_msgtimeoutCallbacker");
     }
   }
   
   public void e()
   {
-    MsfCore.sCore.lightSender.a();
+    MsfCore.sCore.lightSender.b();
     if (MsfCore.sCore.lightTcpSender != null) {
-      MsfCore.sCore.lightTcpSender.c();
+      MsfCore.sCore.lightTcpSender.d();
     }
   }
   
@@ -614,17 +634,9 @@ public class b
     return false;
   }
   
-  public void f()
+  public void g()
   {
-    MsfCore.sCore.lightSender.b();
-    if (MsfCore.sCore.lightTcpSender != null) {
-      MsfCore.sCore.lightTcpSender.d();
-    }
-  }
-  
-  public void h()
-  {
-    if ((g()) && (com.tencent.mobileqq.msf.core.a.a.bu())) {
+    if ((f()) && (com.tencent.mobileqq.msf.core.a.a.bu())) {
       b(30000);
     }
   }

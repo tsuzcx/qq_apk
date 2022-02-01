@@ -1,42 +1,134 @@
-import android.annotation.TargetApi;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import org.json.JSONException;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.widget.AbsListView;
+import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
-final class uhi
-  implements DialogInterface.OnClickListener
+public class uhi
+  implements tgs, tgx
 {
-  uhi(int paramInt1, int paramInt2, Runnable paramRunnable) {}
+  private View jdField_a_of_type_AndroidViewView;
+  protected BaseData a;
+  protected VafContext a;
+  protected WeakReference<Context> a;
+  protected tgr a;
+  protected tjk a;
+  private ufn jdField_a_of_type_Ufn;
   
-  @TargetApi(11)
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public uhi()
   {
-    paramInt = 1;
-    bkwm.a("readinjoy_user_data_switch", Integer.valueOf(0));
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
+    this.jdField_a_of_type_Tjk = new tjk();
+  }
+  
+  public int a(BaseData paramBaseData)
+  {
+    return 0;
+  }
+  
+  public tgr a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_Tgr != null) {
+      return this.jdField_a_of_type_Tgr;
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qxj();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
+      piv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    }
+    ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
     try
     {
-      if (this.jdField_a_of_type_Int == 1) {
-        paramInt = 0;
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
+      piv.a(((Container)this.jdField_a_of_type_AndroidViewView).getVirtualView(), localProteusItemData.a.getViewBean());
+      paramViewGroup = localProteusItemData.c.toString();
+      boolean bool = false;
+      if (this.jdField_a_of_type_AndroidViewView == null)
+      {
+        this.jdField_a_of_type_AndroidViewView = new View(paramContext);
+        bool = true;
       }
-      paramDialogInterface.put("click_src", paramInt);
-      paramDialogInterface.put("user_data_alert_interval", this.b);
-      paramDialogInterface.put("click_opt", 1);
+      this.jdField_a_of_type_AndroidViewView.setTag(paramBaseData);
+      ukq.a("WebFastBaseProteusAdCreator", "createViewHolder viewIsNull=" + bool + "  proteusData=" + paramViewGroup);
+      this.jdField_a_of_type_Tgr = a(this.jdField_a_of_type_AndroidViewView, localProteusItemData);
+      if ((this.jdField_a_of_type_Ufn == null) && ((this.jdField_a_of_type_AndroidViewView instanceof Container)) && (((Container)this.jdField_a_of_type_AndroidViewView).getVirtualView() != null)) {
+        this.jdField_a_of_type_Ufn = ((ufn)((Container)this.jdField_a_of_type_AndroidViewView).getVirtualView().findViewBaseByName("id_view_AdDownloadView"));
+      }
+      return this.jdField_a_of_type_Tgr;
     }
-    catch (JSONException localJSONException)
+    catch (Exception paramViewGroup)
     {
       for (;;)
       {
-        localJSONException.printStackTrace();
+        paramViewGroup = "error!! msg=" + paramViewGroup.toString();
       }
     }
-    odq.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+  }
+  
+  protected tgr a(View paramView, BaseData paramBaseData)
+  {
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Tjk != null) {
+      this.jdField_a_of_type_Tjk.a();
+    }
+    if ((this.jdField_a_of_type_Tgr instanceof uhj))
+    {
+      localObject = this.jdField_a_of_type_Tgr.jdField_a_of_type_AndroidViewView;
+      if (!(localObject instanceof Container)) {
+        break label71;
+      }
+    }
+    label71:
+    for (Object localObject = (Container)localObject;; localObject = null)
+    {
+      if (localObject == null) {}
+      while ((((Container)localObject).getVirtualView() == null) || (this.jdField_a_of_type_Ufn == null)) {
+        return;
+      }
+      this.jdField_a_of_type_Ufn.a();
+      return;
     }
   }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Ufn != null) {
+      this.jdField_a_of_type_Ufn.b();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Tjk != null) {
+      this.jdField_a_of_type_Tjk.b();
+    }
+  }
+  
+  public void e() {}
 }
 
 

@@ -1,44 +1,35 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
 
 public class ajjz
+  implements Handler.Callback
 {
-  public static ajjs a(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  public ajjz(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = paramSessionInfo.curType;
-    Object localObject = null;
-    if (paramSessionInfo.isFromForward == 3) {
-      paramSessionInfo = new ajkc(paramContext, paramSessionInfo, paramQQAppInterface);
-    }
-    do
+    if (paramMessage.what == SimpleCheckableSlidingIndicator.d)
     {
-      return paramSessionInfo;
-      switch (i)
+      if (this.a.getScrollX() == SimpleCheckableSlidingIndicator.a(this.a))
       {
-      default: 
-        paramContext = localObject;
-        paramSessionInfo = paramContext;
+        SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.a);
+        if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
+          SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+        }
+        SimpleCheckableSlidingIndicator.a(this.a).removeMessages(SimpleCheckableSlidingIndicator.d);
       }
-    } while (!QLog.isColorLevel());
-    paramQQAppInterface = new StringBuilder().append("getChatPie uinType = ").append(i).append(" miniPie ");
-    if (paramContext == null) {}
-    for (paramSessionInfo = "null";; paramSessionInfo = Integer.valueOf(paramContext.hashCode()))
-    {
-      QLog.i("MiniPieFactory", 2, paramSessionInfo);
-      return paramContext;
-      paramContext = new ajka(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-      paramContext = new ajkb(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-      paramContext = new ajkf(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-      paramContext = new ajke(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
-      paramContext = new ajkd(paramContext, paramSessionInfo, paramQQAppInterface);
-      break;
     }
+    else {
+      return false;
+    }
+    SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
+    if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
+      SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+    }
+    SimpleCheckableSlidingIndicator.b(this.a, this.a.getScrollX());
+    SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
+    return false;
   }
 }
 

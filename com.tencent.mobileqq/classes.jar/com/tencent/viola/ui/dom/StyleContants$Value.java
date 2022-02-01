@@ -11,6 +11,7 @@ public abstract interface StyleContants$Value
   public static final String LEFT = "left";
   public static final String LOW = "low";
   public static final String NORMAL = "normal";
+  public static final float NO_EMOJI_SIZE = -1.0F;
   public static final String ORIGINAL = "original";
   public static final String RIGHT = "right";
   public static final String VISIBLE = "visible";

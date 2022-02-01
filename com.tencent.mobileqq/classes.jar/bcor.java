@@ -1,65 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class bcor
-  extends aptq<bcos>
+  extends bcoa
 {
-  public static bcos a()
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public TextView b;
+  
+  public bcor(ViewGroup paramViewGroup, int paramInt)
   {
-    return (bcos)apub.a().a(615);
+    super(paramViewGroup, paramInt);
   }
   
-  @NonNull
-  public bcos a(int paramInt)
+  protected void a()
   {
-    return new bcos();
-  }
-  
-  @Nullable
-  public bcos a(aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("StudyModePushConfigProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return bcos.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(bcos parambcos) {}
-  
-  public Class<bcos> clazz()
-  {
-    return bcos.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 615;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131377222));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370039));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376724));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131369048));
   }
 }
 

@@ -1,33 +1,7 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import kotlin.Metadata;
 
-class oye
-  implements ValueAnimator.AnimatorUpdateListener
-{
-  String jdField_a_of_type_JavaLangString = oyc.a(this.jdField_a_of_type_Oyc).a.commentId;
-  
-  oye(oyc paramoyc, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if ((oyc.a(this.jdField_a_of_type_Oyc) == null) || (oyc.a(this.jdField_a_of_type_Oyc).a == null) || (this.jdField_a_of_type_JavaLangString == null))
-    {
-      oyc.a(this.jdField_a_of_type_Oyc, this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
-    if (!this.jdField_a_of_type_JavaLangString.equals(oyc.a(this.jdField_a_of_type_Oyc).a.commentId))
-    {
-      oyc.a(this.jdField_a_of_type_Oyc, this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    oyc.a(this.jdField_a_of_type_Oyc).setAlpha(i);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(oyc.a(this.jdField_a_of_type_Oyc));
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerReport$Companion;", "", "()V", "ACTION_NAME_HORIZONTAL_AVATAR_CARD_CLICK", "", "ACTION_NAME_HORIZONTAL_AVATAR_CARD_EXPOSURE", "ACTION_NAME_HORIZONTAL_AVATAR_ITEM_CLICK", "ACTION_NAME_HORIZONTAL_AVATAR_ITEM_EXPOSURE", "KEY_CHANNEL_ID", "KEY_IS_LIVE", "KEY_IS_UPDATE", "KEY_PUIN", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oye {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

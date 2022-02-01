@@ -1,19 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 
-class awok
-  implements View.OnClickListener
+final class awok
+  implements IHttpCommunicatorListener
 {
-  awok(awoj paramawoj) {}
-  
-  public void onClick(View paramView)
+  public void decode(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
   {
-    if (awoj.a(this.a) != null) {
-      awoj.a(this.a).a(awoj.a(this.a));
-    }
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    awoi.a().sendEmptyMessage(10000001);
+  }
+  
+  public void handleError(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
+  {
+    awoi.a = false;
+    awoi.a().sendEmptyMessage(10000001);
+  }
+  
+  public void handleRedirect(String paramString) {}
+  
+  public void onFlowEvent(HttpMsg paramHttpMsg) {}
+  
+  public boolean statusChanged(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
+  {
+    return true;
   }
 }
 

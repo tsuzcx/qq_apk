@@ -1,35 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aepq
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public aepq(TroopRequestActivity paramTroopRequestActivity) {}
+  public aepq(QQIdentiferLegacy paramQQIdentiferLegacy) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ProfileActivity.AllInOne localAllInOne;
-    if (((amsw)this.a.app.getManager(51)).b(TroopRequestActivity.a(this.a))) {
-      localAllInOne = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 1);
-    }
-    for (;;)
+    paramContext = paramIntent.getAction();
+    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
     {
-      bcef.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
-      ProfileActivity.b(this.a, localAllInOne);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localAllInOne = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 24);
-      TroopUtils.prepareTroopNotifyData(this.a.a, localAllInOne);
+      i = paramIntent.getIntExtra("sessionType", 0);
+      QLog.d("QQIdentiferLegacy", 1, "received video chat broadcast: " + i);
+      if ((i == 2) || (i == 4))
+      {
+        paramContext = new Intent();
+        paramIntent = new Bundle();
+        paramIntent.putInt("ret", 204);
+        paramIntent.putString("errMsg", avzr.a);
+        paramContext.putExtra("data", paramIntent);
+        QQIdentiferLegacy.a(this.a).setResult(2, paramContext);
+        QQIdentiferLegacy.a(this.a).finish();
+      }
     }
+    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
+    {
+      int i;
+      return;
+    }
+    QLog.d("QQIdentiferLegacy", 1, "received account kicked broadcast");
+    QQIdentiferLegacy.a(this.a).finish();
   }
 }
 

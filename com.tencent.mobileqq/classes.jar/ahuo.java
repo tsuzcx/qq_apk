@@ -1,20 +1,6 @@
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
-
-public class ahuo
-  implements ahut
+public abstract interface ahuo
 {
-  public ahuo(BlessActivity paramBlessActivity) {}
-  
-  public void a()
-  {
-    if (BlessActivity.a(this.a) < this.a.jdField_a_of_type_Ahux.l())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.start();
-      BlessActivity.b(this.a);
-    }
-  }
+  public abstract void a();
 }
 
 

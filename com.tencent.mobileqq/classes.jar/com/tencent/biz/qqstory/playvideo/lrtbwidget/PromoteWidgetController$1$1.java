@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
-import wrr;
+import xgm;
 
 class PromoteWidgetController$1$1
   implements Runnable

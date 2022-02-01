@@ -1,50 +1,24 @@
-import UserGrowth.stCollection;
 import UserGrowth.stSimpleMetaFeed;
-import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class vde
-  extends vdc
+class vde
+  implements blih
 {
-  private stSimpleMetaFeed a;
+  vde(vdd paramvdd) {}
   
-  public vde(uzq paramuzq)
+  public void a(View paramView, int paramInt)
   {
-    super(paramuzq);
-  }
-  
-  public List<vaq> a(ArrayList paramArrayList)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0) && ((paramArrayList.get(0) instanceof stSimpleMetaFeed))) {
-      this.a = ((stSimpleMetaFeed)paramArrayList.get(0));
-    }
-    return null;
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if ((this.a != null) && (this.a.collection != null) && (!TextUtils.isEmpty(this.a.collection.cid)))
+    if ((vdd.a(this.a) == null) || (vdd.a(this.a).b() == null) || (paramInt >= vdd.a(this.a).b().size())) {}
+    do
     {
-      vae.a().a(this.a.collection.cid, 2, this);
-      return true;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    super.b();
-    vae.a().a();
-  }
-  
-  public void c()
-  {
-    super.c();
-    uzq localuzq = a();
-    if ((localuzq != null) && (this.a != null)) {
-      localuzq.b(this.a);
-    }
+      return;
+      paramView = (vcf)vdd.a(this.a).b().get(paramInt);
+    } while (paramView == null);
+    WSVerticalPageFragment.a(vdd.a(this.a), "friend_feed", "friend", null, paramView.b() + 1);
+    vka.a(paramInt + 1, 1000001, (stSimpleMetaFeed)((ArrayList)paramView.a()).get(0), paramView.a(), paramView.a());
   }
 }
 

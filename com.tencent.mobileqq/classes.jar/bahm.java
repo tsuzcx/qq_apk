@@ -1,252 +1,247 @@
-import android.text.TextUtils;
-import android.view.View;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.manager.Manager;
 
 public class bahm
-  implements baht, Manager
 {
-  private amwl jdField_a_of_type_Amwl;
-  private bahk jdField_a_of_type_Bahk;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<String, bahq> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static int jdField_a_of_type_Int = 1;
+  private static long jdField_a_of_type_Long = 1L;
+  private static boolean jdField_a_of_type_Boolean;
+  private static int jdField_b_of_type_Int = 1;
+  private static long jdField_b_of_type_Long = 2L;
+  private static int jdField_c_of_type_Int = 1;
+  private static long jdField_c_of_type_Long = 4L;
+  private static int jdField_d_of_type_Int = 1;
+  private static long jdField_d_of_type_Long = 8L;
+  private static int jdField_e_of_type_Int = 480000;
+  private static long jdField_e_of_type_Long = 16L;
+  private static int f = 9;
+  private static int g = 3;
+  private static int h = 1;
   
-  public bahm(QQAppInterface paramQQAppInterface)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a(paramQQAppInterface, false);
+    return jdField_e_of_type_Int;
   }
   
-  private bahk a()
+  public static long a(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_Bahk == null) {
-      this.jdField_a_of_type_Bahk = new bahk(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    return this.jdField_a_of_type_Bahk;
+    return a(paramQQAppInterface, false);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  public static long a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    ((bahm)paramQQAppInterface.getManager(326)).b(paramString, paramLong);
+    long l2 = 0L;
+    if (a(paramQQAppInterface)) {
+      l2 = 0L | jdField_a_of_type_Long;
+    }
+    long l1 = l2;
+    if (b(paramQQAppInterface)) {
+      l1 = l2 | jdField_b_of_type_Long;
+    }
+    l2 = l1;
+    if (c(paramQQAppInterface)) {
+      l2 = l1 | jdField_c_of_type_Long;
+    }
+    l1 = l2;
+    if (d(paramQQAppInterface)) {
+      l1 = l2 | jdField_d_of_type_Long;
+    }
+    l2 = l1;
+    if (paramBoolean) {
+      l2 = l1 | jdField_e_of_type_Long;
+    }
+    return l2;
   }
   
-  public bahq a(String paramString)
+  private static String a(QQAppInterface paramQQAppInterface)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-        {
-          paramString = (bahq)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-          return paramString;
-        }
-      }
-      bahq localbahq = new bahq(paramString, a());
-      localbahq.a(this);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localbahq);
-      paramString = localbahq;
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Amwl == null)
-    {
-      this.jdField_a_of_type_Amwl = new bahn(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amwl);
-    }
-  }
-  
-  public void a(MessageRecord paramMessageRecord, amwl paramamwl)
-  {
-    a(paramMessageRecord, paramamwl, null);
-  }
-  
-  public void a(MessageRecord paramMessageRecord, amwl paramamwl, baho parambaho)
-  {
-    bahq localbahq = a(paramMessageRecord.frienduin);
-    String str = null;
-    if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      str = ((MessageForShortVideo)paramMessageRecord).videoFileName;
-    }
-    while (localbahq.a(paramMessageRecord.uniseq, str))
-    {
-      localbahq.a(paramMessageRecord, paramamwl, parambaho);
-      return;
-      if ((paramMessageRecord instanceof MessageForPic)) {
-        str = ((MessageForPic)paramMessageRecord).path;
-      }
-    }
+    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface.getCurrentAccountUin(), 0).getString("ptt_optimize_cfg_v2", null);
     if (QLog.isColorLevel()) {
-      QLog.d("OrderMediaMsgManager", 2, "sendOrderMsg but not in queue, uniseq:" + paramMessageRecord.uniseq);
+      QLog.d("PttOptimizeParams", 2, "getSavedPttOptimizeCfg: " + paramQQAppInterface);
     }
-    a().a(paramMessageRecord, paramamwl, parambaho);
+    return paramQQAppInterface;
   }
   
-  public void a(MessageRecord paramMessageRecord, String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject = a(paramMessageRecord.frienduin);
-    if (((bahq)localObject).a(paramMessageRecord.uniseq, paramString))
-    {
-      ((bahq)localObject).a(paramMessageRecord, paramMessageRecord.uniseq, paramString, true);
-      return;
+    BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putString("ptt_optimize_cfg_v2", paramString).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("PttOptimizeParams", 2, "savePttOptimizeCfg: " + paramString);
     }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("addOrderMsg but not in queue, uniseq:").append(paramMessageRecord.uniseq).append(", path:").append(paramString);
-      QLog.d("OrderMediaMsgManager", 2, ((StringBuilder)localObject).toString());
-    }
-    a().a(paramMessageRecord);
   }
   
-  public void a(String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    bahq localbahq = null;
-    if (!TextUtils.isEmpty(paramString)) {}
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      try
       {
-        localbahq = (bahq)this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-        if (QLog.isColorLevel())
-        {
-          ??? = new StringBuilder();
-          StringBuilder localStringBuilder = ((StringBuilder)???).append("remove orderSession, suin = ").append(paramString).append(", addr = ");
-          if (localbahq != null)
-          {
-            paramString = localbahq.toString();
-            localStringBuilder.append(paramString);
-            QLog.d("OrderMediaMsgManager", 2, ((StringBuilder)???).toString());
-          }
-        }
-        else
-        {
+        boolean bool = jdField_a_of_type_Boolean;
+        if ((bool) && (!paramBoolean)) {
           return;
         }
-      }
-      paramString = Integer.valueOf(0);
-    }
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    a(paramString).a(paramLong, "");
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    a(paramString).a(paramLong1, paramLong2);
-  }
-  
-  public void a(String paramString1, MessageRecord paramMessageRecord, String paramString2)
-  {
-    bahq localbahq = a(paramMessageRecord.frienduin);
-    if (!localbahq.a(paramMessageRecord.uniseq, paramString2)) {
-      a(paramString1, paramMessageRecord.uniseq);
-    }
-    localbahq.a(paramMessageRecord, paramMessageRecord.uniseq, paramString2, false);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (a().a(paramString2)) {
-      return;
-    }
-    a(paramString1).a(0L, paramString2);
-  }
-  
-  public void a(String paramString, ArrayList<ChatMessage> paramArrayList)
-  {
-    if (paramArrayList != null)
-    {
-      paramArrayList = paramArrayList.iterator();
-      int i = 0;
-      int k;
-      for (int j = 0; paramArrayList.hasNext(); j = k)
-      {
-        ChatMessage localChatMessage = (ChatMessage)paramArrayList.next();
-        k = j + 1;
-        j = i;
-        if (bahk.a(localChatMessage.msgtype))
+        jdField_a_of_type_Boolean = true;
+        try
         {
-          j = i + 1;
-          a(paramString).a(localChatMessage.uniseq, "", a().a(localChatMessage));
+          Object localObject = a(paramQQAppInterface);
+          if (QLog.isColorLevel()) {
+            QLog.d("PttOptimizeParams", 2, "initPttOptimizeCfgStr: " + (String)localObject);
+          }
+          if (localObject != null)
+          {
+            localObject = ((String)localObject).split("\\|");
+            jdField_a_of_type_Int = Integer.valueOf(localObject[0]).intValue();
+            jdField_b_of_type_Int = Integer.valueOf(localObject[1]).intValue();
+            jdField_e_of_type_Int = Integer.valueOf(localObject[2]).intValue();
+            f = Integer.valueOf(localObject[3]).intValue();
+            g = Integer.valueOf(localObject[4]).intValue();
+            jdField_c_of_type_Int = Integer.valueOf(localObject[5]).intValue();
+            jdField_d_of_type_Int = Integer.valueOf(localObject[6]).intValue();
+            h = Integer.valueOf(localObject[7]).intValue();
+          }
+          localObject = paramQQAppInterface.getCurrentAccountUin();
+          if (jdField_a_of_type_Int == 0)
+          {
+            if (!((String)localObject).endsWith("1")) {
+              break label514;
+            }
+            jdField_a_of_type_Int = 2;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("PttOptimizeParams", 2, "initDirectDownloadCfgStr: " + jdField_a_of_type_Int);
+          }
+          if (jdField_b_of_type_Int == 0)
+          {
+            if (!((String)localObject).endsWith("2")) {
+              break label521;
+            }
+            jdField_b_of_type_Int = 2;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("PttOptimizeParams", 2, "initSSCMCfgStr: " + jdField_b_of_type_Int);
+          }
+          if (jdField_c_of_type_Int == 0)
+          {
+            if (!((String)localObject).endsWith("3")) {
+              break label528;
+            }
+            jdField_c_of_type_Int = 2;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("PttOptimizeParams", 2, "initActivateNet: " + jdField_c_of_type_Int);
+          }
+          if (jdField_d_of_type_Int == 0)
+          {
+            if (!paramQQAppInterface.getCurrentAccountUin().endsWith("5")) {
+              break label535;
+            }
+            jdField_d_of_type_Int = 2;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("PttOptimizeParams", 2, "initHttpSideWay: " + jdField_d_of_type_Int);
+          }
+          if (h == 0)
+          {
+            if (!((String)localObject).endsWith("4")) {
+              break label542;
+            }
+            h = 2;
+          }
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("PttOptimizeParams", 2, "sPreSendSwitch: " + h);
         }
-        i = j;
+        catch (Exception paramQQAppInterface)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PttOptimizeParams", 2, "initOptimizeCfg exception: " + paramQQAppInterface);
+          }
+          jdField_a_of_type_Int = 1;
+          jdField_b_of_type_Int = 1;
+          jdField_e_of_type_Int = 480000;
+          f = 9;
+          g = 3;
+          jdField_c_of_type_Int = 1;
+          jdField_d_of_type_Int = 1;
+          h = 1;
+        }
+        continue;
+        jdField_a_of_type_Int = 1;
       }
-      bahp.b(j, i);
+      finally {}
+      label514:
+      continue;
+      label521:
+      jdField_b_of_type_Int = 1;
+      continue;
+      label528:
+      jdField_c_of_type_Int = 1;
+      continue;
+      label535:
+      jdField_d_of_type_Int = 1;
+      continue;
+      label542:
+      h = 1;
     }
   }
   
-  public boolean a(String paramString)
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {}
-    while (a(paramString).a()) {
-      return false;
+    a(paramQQAppInterface, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PttOptimizeParams", 2, "doesSupportDirectDownload:" + jdField_a_of_type_Int);
     }
-    return true;
+    return jdField_a_of_type_Int == 1;
   }
   
-  public boolean a(String paramString, long paramLong)
+  public static int b(QQAppInterface paramQQAppInterface)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {}
-    while (a(paramString).a().a(paramLong) == 0) {
-      return false;
-    }
-    return true;
+    a(paramQQAppInterface, false);
+    return f;
   }
   
-  public boolean a(String paramString, long paramLong, View paramView, afbb paramafbb)
+  public static boolean b(QQAppInterface paramQQAppInterface)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {
-      return false;
+    a(paramQQAppInterface, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PttOptimizeParams", 2, "doesSupportSSCM:" + jdField_b_of_type_Int);
     }
-    return a(paramString).a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong, paramView, paramafbb);
+    return jdField_b_of_type_Int == 1;
   }
   
-  public void b(String paramString, long paramLong)
+  public static int c(QQAppInterface paramQQAppInterface)
   {
-    a(paramString).a(paramLong);
+    a(paramQQAppInterface, false);
+    return g;
   }
   
-  public boolean b(String paramString, long paramLong)
+  public static boolean c(QQAppInterface paramQQAppInterface)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {}
-    while (a(paramString).a().a(paramLong) != 2) {
-      return false;
+    a(paramQQAppInterface, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PttOptimizeParams", 2, "doesSupportActivateNet:" + jdField_c_of_type_Int);
     }
-    return true;
+    return jdField_c_of_type_Int == 1;
   }
   
-  public void onDestroy()
+  public static int d(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((bahq)localIterator.next()).a();
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    a(paramQQAppInterface, false);
+    return h;
+  }
+  
+  public static boolean d(QQAppInterface paramQQAppInterface)
+  {
+    a(paramQQAppInterface, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PttOptimizeParams", 2, "doesSupportHttpSideWay:" + jdField_d_of_type_Int);
     }
-    if (this.jdField_a_of_type_Amwl != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amwl);
-      this.jdField_a_of_type_Amwl = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    return jdField_d_of_type_Int == 1;
   }
 }
 

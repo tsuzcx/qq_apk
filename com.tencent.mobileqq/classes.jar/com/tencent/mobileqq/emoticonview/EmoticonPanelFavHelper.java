@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amrn;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import arbb;
-import arbj;
-import arcd;
-import areb;
-import bcef;
+import anub;
+import asfl;
+import asft;
+import asgn;
+import asih;
+import bdla;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.CustomEmotionData;
@@ -26,8 +28,8 @@ public class EmoticonPanelFavHelper
   private static final String LOG_TAG = "EmoticonPanelFavHelper";
   protected QQAppInterface app;
   Runnable comicEmoticon = new EmoticonPanelFavHelper.3(this);
-  amrn favEmoRoamingObserver = new EmoticonPanelFavHelper.5(this);
-  arbj<CustomEmotionData> sListener = new EmoticonPanelFavHelper.4(this);
+  anub favEmoRoamingObserver = new EmoticonPanelFavHelper.5(this);
+  asft<CustomEmotionData> sListener = new EmoticonPanelFavHelper.4(this);
   
   public EmoticonPanelFavHelper(EmoticonPanelController paramEmoticonPanelController)
   {
@@ -41,16 +43,16 @@ public class EmoticonPanelFavHelper
     int j = this.mPanelController.businessType;
     if (localQQAppInterface != null)
     {
-      areb localareb = (areb)localQQAppInterface.getManager(43);
-      if (!localareb.e)
+      asih localasih = (asih)localQQAppInterface.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
+      if (!localasih.e)
       {
-        localareb.e = true;
+        localasih.e = true;
         if (QLog.isColorLevel()) {
           QLog.d("EmoticonPanelFavHelper", 2, "doSyncFavEmotion");
         }
         doSyncFavEmotion();
       }
-      if (!localareb.d)
+      if (!localasih.d)
       {
         localObject = new ArrayList((Collection)localObject);
         if (QLog.isColorLevel()) {
@@ -64,7 +66,7 @@ public class EmoticonPanelFavHelper
           i += 1;
           if ((localEmoticonPackage != null) && ((localEmoticonPackage.jobType == 0) || (localEmoticonPackage.jobType == 4)) && (localEmoticonPackage.status != 2))
           {
-            localareb.d = true;
+            localasih.d = true;
             if (i <= 10) {
               EmoticonUtils.downloadNormalEmotion(localQQAppInterface, localEmoticonPackage, j);
             }
@@ -133,21 +135,21 @@ public class EmoticonPanelFavHelper
     Object localObject = this.mPanelController.context;
     QQAppInterface localQQAppInterface = this.mPanelController.app;
     if ((!NetworkUtil.isNetSupport((Context)localObject)) || (localQQAppInterface == null)) {}
-    arcd localarcd;
+    asgn localasgn;
     do
     {
       return;
-      localObject = (arbb)localQQAppInterface.getManager(103);
-      localarcd = (arcd)localQQAppInterface.getBusinessHandler(80);
-    } while (!((arbb)localObject).a());
-    localarcd.a();
+      localObject = (asfl)localQQAppInterface.getManager(QQManagerFactory.FAV_ROAMING_MANAGER);
+      localasgn = (asgn)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MQQ_COMIC_HANDLER);
+    } while (!((asfl)localObject).a());
+    localasgn.a();
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonPanelFavHelper", 2, "comicHandler.GetMyComicFavorEmotIcons");
     }
-    ((arbb)localObject).a(this.sListener);
-    ((arbb)localObject).c();
+    ((asfl)localObject).a(this.sListener);
+    ((asfl)localObject).c();
     this.comicEmoticon.run();
-    bcef.b(localQQAppInterface, "CliOper", "", "", "0X8005CED", "0X8005CED", 0, 0, "", "", "", "");
+    bdla.b(localQQAppInterface, "CliOper", "", "", "0X8005CED", "0X8005CED", 0, 0, "", "", "", "");
   }
   
   public void updateFavEmoticonPanel()
@@ -160,7 +162,7 @@ public class EmoticonPanelFavHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper
  * JD-Core Version:    0.7.0.1
  */

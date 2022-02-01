@@ -1,17 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
 public class axsh
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public axsh(ScanIconAnimateView paramScanIconAnimateView) {}
+  public String a;
+  public boolean a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
-  }
+  axsh(GameRoomInviteActivity paramGameRoomInviteActivity) {}
 }
 
 

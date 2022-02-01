@@ -1,33 +1,20 @@
-import NS_MINI_INTERFACE.INTERFACE.StReportExecuteRsp;
-import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.MiniAppCmdCallback;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import mqq.app.QQPermissionCallback;
 
 class bjcl
-  implements MiniAppSSOCmdHelper.MiniAppCmdCallback<INTERFACE.StReportExecuteRsp>
+  implements QQPermissionCallback
 {
-  bjcl(bjce parambjce, AsyncResult paramAsyncResult) {}
+  bjcl(bjck parambjck) {}
   
-  public void a(boolean paramBoolean, INTERFACE.StReportExecuteRsp paramStReportExecuteRsp)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    JSONObject localJSONObject;
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("response", paramStReportExecuteRsp);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(paramBoolean, localJSONObject);
-      return;
-    }
-    catch (Throwable paramStReportExecuteRsp)
-    {
-      for (;;)
-      {
-        QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramStReportExecuteRsp);
-      }
-    }
+    bhdj.a(this.a.a.getActivity(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a.a = ProfileActivity.a(this.a.a.getActivity(), 257);
   }
 }
 

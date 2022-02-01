@@ -1,6 +1,9 @@
+import com.tencent.mobileqq.apollo.GLTextureView;
+
 public class ampu
+  extends ampj
 {
-  public ampu(ampt paramampt) {}
+  public ampu(GLTextureView paramGLTextureView, boolean paramBoolean) {}
 }
 
 

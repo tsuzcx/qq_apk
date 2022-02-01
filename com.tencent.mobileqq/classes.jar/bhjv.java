@@ -1,26 +1,15 @@
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.VerticalCenterImageSpan;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
 
 public class bhjv
-  extends VerticalCenterImageSpan
+  implements blan
 {
-  private int a;
+  public bhjv(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout) {}
   
-  public bhjv(Drawable paramDrawable)
+  public void a()
   {
-    super(paramDrawable, 0);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return super.getSize(paramPaint, paramCharSequence, paramInt1, paramInt2, paramFontMetricsInt) + this.a;
+    if (alvr.a().c()) {
+      alvr.a().d();
+    }
   }
 }
 

@@ -1,38 +1,35 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 class ahef
-  extends amyh
+  implements View.OnTouchListener
 {
-  ahef(ahdt paramahdt) {}
+  ahef(ahee paramahee) {}
   
-  public void onDownPublicAccount()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return true;
+    case 0: 
+      ahee.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      ahee.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(true);
+      return true;
+    case 3: 
+      ahee.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      ahee.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
+      return true;
     }
-  }
-  
-  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.updateSession(this.a.mActivity.getIntent());
-    }
-  }
-  
-  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.updateSession(this.a.mActivity.getIntent());
-    }
-  }
-  
-  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.updateSession(this.a.mActivity.getIntent());
-    }
+    ahee.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    ahee.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
+    paramView.performClick();
+    ahee.a(this.a, paramView);
+    return true;
   }
 }
 

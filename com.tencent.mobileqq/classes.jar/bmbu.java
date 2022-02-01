@@ -1,6 +1,18 @@
-public class bmbu
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+
+class bmbu
+  implements ShareActionSheet.OnItemClickListener
 {
-  public static bmbr a = new bmbr();
+  bmbu(bmbt parambmbt) {}
+  
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  {
+    this.a.a.dismiss();
+    int i = paramActionSheetItem.action;
+    this.a.a(i, paramActionSheetItem);
+  }
 }
 
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agqa;
+import ahiq;
 import android.app.Activity;
 import android.content.Context;
-import bcef;
-import bcgx;
-import bciz;
-import bclk;
-import bclp;
-import bclv;
+import bdla;
+import bdnv;
+import bdpx;
+import bdsk;
+import bdsp;
+import bdsv;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -20,7 +20,7 @@ import com.tencent.qphone.base.util.QLog;
 public class StructingMsgItemBuilderMenuHelper$1
   implements Runnable
 {
-  public StructingMsgItemBuilderMenuHelper$1(agqa paramagqa, MessageForStructing paramMessageForStructing, SessionInfo paramSessionInfo, Activity paramActivity, QQAppInterface paramQQAppInterface, Context paramContext) {}
+  public StructingMsgItemBuilderMenuHelper$1(ahiq paramahiq, MessageForStructing paramMessageForStructing, SessionInfo paramSessionInfo, Activity paramActivity, QQAppInterface paramQQAppInterface, Context paramContext) {}
   
   public void run()
   {
@@ -33,7 +33,7 @@ public class StructingMsgItemBuilderMenuHelper$1
     {
       localAbsShareMsg = (AbsShareMsg)localMessageForStructing.structingMsg;
       if (((localAbsShareMsg instanceof StructMsgForGeneralShare)) && (((StructMsgForGeneralShare)localAbsShareMsg).mIsPAVideoStructMsg)) {
-        agqa.a(this.this$0, localAbsShareMsg, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidAppActivity);
+        ahiq.a(this.this$0, localAbsShareMsg, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidAppActivity);
       }
     }
     else
@@ -59,30 +59,30 @@ public class StructingMsgItemBuilderMenuHelper$1
       StructingMsgItemBuilder.c = StructMsgForGeneralShare.clickedItemIndex;
       if (StructingMsgItemBuilder.c == 0) {}
     }
-    for (Object localObject7 = agqa.a(this.this$0, localAbsShareMsg, null);; localObject7 = null)
+    for (Object localObject7 = ahiq.a(this.this$0, localAbsShareMsg, null);; localObject7 = null)
     {
       if (localObject7 != null)
       {
-        if (!(localObject7 instanceof bcgx)) {
+        if (!(localObject7 instanceof bdnv)) {
           break label931;
         }
-        localObject7 = (bcgx)localObject7;
-        localObject1 = ((bcgx)localObject7).a;
-        localObject6 = ((bcgx)localObject7).c;
-        localObject1 = ((bcgx)localObject7).b;
-        localObject2 = ((bcgx)localObject7).d;
-        localObject3 = ((bcgx)localObject7).e;
-        localObject4 = ((bcgx)localObject7).f;
-        localObject5 = ((bcgx)localObject7).g;
-        localObject9 = agqa.a(this.this$0, (bcgx)localObject7, StructMsgItemTitle.class);
-        localObject8 = agqa.a(this.this$0, (bcgx)localObject7, bclv.class);
-        localObject7 = agqa.a(this.this$0, (bcgx)localObject7, bciz.class);
+        localObject7 = (bdnv)localObject7;
+        localObject1 = ((bdnv)localObject7).a;
+        localObject6 = ((bdnv)localObject7).c;
+        localObject1 = ((bdnv)localObject7).b;
+        localObject2 = ((bdnv)localObject7).d;
+        localObject3 = ((bdnv)localObject7).e;
+        localObject4 = ((bdnv)localObject7).f;
+        localObject5 = ((bdnv)localObject7).g;
+        localObject9 = ahiq.a(this.this$0, (bdnv)localObject7, StructMsgItemTitle.class);
+        localObject8 = ahiq.a(this.this$0, (bdnv)localObject7, bdsv.class);
+        localObject7 = ahiq.a(this.this$0, (bdnv)localObject7, bdpx.class);
       }
       for (;;)
       {
         localObject10 = localMessageForStructing.senderuin;
         Object localObject11 = Long.toString(localAbsShareMsg.msgId);
-        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, (String)localObject10, (String)localObject1, (String)localObject11, "");
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, (String)localObject10, (String)localObject1, (String)localObject11, "");
         int i;
         label485:
         Object localObject15;
@@ -91,8 +91,8 @@ public class StructingMsgItemBuilderMenuHelper$1
         if ((str3 == null) || ("".equals(str3)))
         {
           localObject10 = "https://url.cn/JS8oE7";
-          agqa.a(this.this$0).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, (String)localObject9, (String)localObject8, (String)localObject7, str4, (String)localObject1, (String)localObject10, (String)localObject6, (String)localObject2, (String)localObject3, (String)localObject4, (String)localObject5, l, str5);
-          bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, str5, "" + l, "" + StructingMsgItemBuilder.c, "android");
+          ahiq.a(this.this$0).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, (String)localObject9, (String)localObject8, (String)localObject7, str4, (String)localObject1, (String)localObject10, (String)localObject6, (String)localObject2, (String)localObject3, (String)localObject4, (String)localObject5, l, str5);
+          bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, str5, "" + l, "" + StructingMsgItemBuilder.c, "android");
           return;
           i = 0;
           localObject7 = localObject10;
@@ -106,23 +106,23 @@ public class StructingMsgItemBuilderMenuHelper$1
           localObject12 = localObject5;
           localObject11 = localObject6;
           localObject10 = localObject1;
-          if (!(localObject16 instanceof bcgx)) {
+          if (!(localObject16 instanceof bdnv)) {
             break label853;
           }
-          bcgx localbcgx = (bcgx)localObject16;
-          localObject7 = localbcgx.a;
-          localObject6 = agqa.a(this.this$0, (String)localObject6, localbcgx.c);
-          localObject16 = agqa.a(this.this$0, (String)localObject1, localbcgx.b);
-          localObject5 = agqa.a(this.this$0, (String)localObject5, localbcgx.d);
-          localObject4 = agqa.a(this.this$0, (String)localObject4, localbcgx.e);
-          localObject3 = agqa.a(this.this$0, (String)localObject3, localbcgx.f);
-          localObject2 = agqa.a(this.this$0, (String)localObject2, localbcgx.g);
-          String str1 = agqa.a(this.this$0, localbcgx, StructMsgItemTitle.class);
-          String str2 = agqa.a(this.this$0, localbcgx, bclv.class);
-          localObject7 = agqa.a(this.this$0, localbcgx, bciz.class);
+          bdnv localbdnv = (bdnv)localObject16;
+          localObject7 = localbdnv.a;
+          localObject6 = ahiq.a(this.this$0, (String)localObject6, localbdnv.c);
+          localObject16 = ahiq.a(this.this$0, (String)localObject1, localbdnv.b);
+          localObject5 = ahiq.a(this.this$0, (String)localObject5, localbdnv.d);
+          localObject4 = ahiq.a(this.this$0, (String)localObject4, localbdnv.e);
+          localObject3 = ahiq.a(this.this$0, (String)localObject3, localbdnv.f);
+          localObject2 = ahiq.a(this.this$0, (String)localObject2, localbdnv.g);
+          String str1 = ahiq.a(this.this$0, localbdnv, StructMsgItemTitle.class);
+          String str2 = ahiq.a(this.this$0, localbdnv, bdsv.class);
+          localObject7 = ahiq.a(this.this$0, localbdnv, bdpx.class);
           localObject1 = localObject7;
           if (localObject7 == null) {
-            localObject1 = agqa.a(this.this$0, localbcgx, bclp.class);
+            localObject1 = ahiq.a(this.this$0, localbdnv, bdsp.class);
           }
           localObject15 = localObject2;
           localObject14 = localObject3;
@@ -136,7 +136,7 @@ public class StructingMsgItemBuilderMenuHelper$1
           if (localObject1 != null) {
             break label853;
           }
-          localObject7 = agqa.a(this.this$0, localbcgx, bclk.class);
+          localObject7 = ahiq.a(this.this$0, localbdnv, bdsk.class);
           localObject8 = str2;
           localObject9 = str1;
           localObject1 = localObject5;

@@ -1,21 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.4.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
 public class bedp
-  implements bcrz
+  implements DialogInterface.OnClickListener
 {
-  public bedp(TroopEnterEffectController.3 param3) {}
+  public bedp(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
   
-  public void a()
-  {
-    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null)
-    {
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.n();
-      this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.4.1(this));
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

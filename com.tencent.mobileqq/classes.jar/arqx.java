@@ -1,21 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.content.res.Resources;
+import android.os.Handler;
 
-class arqx
-  implements Animation.AnimationListener
+public abstract interface arqx
 {
-  arqx(arqw paramarqw) {}
+  public abstract Resources a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.c.setVisibility(8);
-    this.a.a.a = false;
-  }
+  public abstract Handler a();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract Object a(Class<?> paramClass, String paramString, Object paramObject);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

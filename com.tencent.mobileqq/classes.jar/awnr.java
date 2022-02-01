@@ -1,22 +1,15 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awnr
+class awnr
   implements View.OnClickListener
 {
-  public awnr(NearbyGuideActivity paramNearbyGuideActivity) {}
+  awnr(awnm paramawnm, View.OnClickListener paramOnClickListener) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
-      this.a.e("0X800590A");
-    }
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

@@ -1,171 +1,132 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.location.net.ReportLocationHandler.1;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.concurrent.atomic.AtomicBoolean;
-import tencent.im.oidb.location.RoomOperate.ReqReportLocation;
-import tencent.im.oidb.location.RoomOperate.RspReportLocation;
-import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
-import tencent.im.oidb.location.qq_lbs_share.RoomKey;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
+import androidx.core.util.Pools.Pool;
+import com.tencent.mobileqq.gamecenter.media.DanmakuLayout;
+import com.tencent.mobileqq.text.QQText;
 
 public class avdg
-  extends avcs<avcw>
 {
-  private static int jdField_a_of_type_Int = 2000;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private avdh jdField_a_of_type_Avdh;
-  private Long jdField_a_of_type_JavaLangLong;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
-  private int b;
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long = -1L;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  avde jdField_a_of_type_Avde;
+  boolean jdField_a_of_type_Boolean = true;
+  float jdField_b_of_type_Float;
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long;
+  float c;
+  public int c;
   
-  public avdg(QQAppInterface paramQQAppInterface)
+  private avdg(DanmakuLayout paramDanmakuLayout)
   {
-    super(paramQQAppInterface);
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_Float = 0.0F;
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramDanmakuLayout.getContext());
+    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
   }
   
-  private void b() {}
-  
-  private void c()
+  private long a(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportLocationHandler", 2, new Object[] { "stopReport: invoked. ", " loopReportStopped: ", this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean });
+    if (paramFloat < 40.0F) {
+      return 4000L;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (paramFloat <= 50.0F) {
+      return 4500L;
     }
+    if (paramFloat <= 130.0F) {
+      return 5000L;
+    }
+    return 6000L;
   }
   
-  int a()
+  private void b()
   {
-    return this.b;
-  }
-  
-  protected avcw a()
-  {
-    return avcw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  String a()
-  {
-    return this.jdField_a_of_type_JavaLangLong + "";
+    if (this.jdField_b_of_type_Float == 0.0F)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(new QQText(this.jdField_a_of_type_Avde.jdField_a_of_type_JavaLangString, 3, 16, -1));
+      this.jdField_a_of_type_AndroidWidgetTextView.measure(0, 0);
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
+      this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredHeight();
+      this.jdField_c_of_type_Float = (this.jdField_b_of_type_Int + DanmakuLayout.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout));
+      if (this.jdField_a_of_type_Avde.jdField_b_of_type_Double != 0.0D) {
+        break label122;
+      }
+    }
+    label122:
+    for (this.jdField_b_of_type_Long = a(this.jdField_b_of_type_Int);; this.jdField_b_of_type_Long = ((this.jdField_a_of_type_Avde.jdField_b_of_type_Double * 1000.0D)))
+    {
+      this.jdField_b_of_type_Float = (this.jdField_c_of_type_Float / (float)this.jdField_b_of_type_Long);
+      return;
+    }
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportLocationHandler", 2, "destroy: invoked. ");
+    this.jdField_a_of_type_Avde = null;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_Float = 0.0F;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+    if (this.jdField_a_of_type_AndroidWidgetTextView.getParent() != null) {
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout.removeView(this.jdField_a_of_type_AndroidWidgetTextView);
     }
-    c();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    DanmakuLayout.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout).release(this);
   }
   
-  public void a(int paramInt, long paramLong, avco paramavco)
+  public void a(avde paramavde)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocation: invoked. ", "uinType = [" + paramInt + "], sessionUin = [" + paramLong + "], locationItem = [" + paramavco + "]" });
+    this.jdField_a_of_type_Avde = paramavde;
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, DanmakuLayout.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout));
+    if (this.jdField_a_of_type_Avde.jdField_b_of_type_Int != 0) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundColor(this.jdField_a_of_type_Avde.jdField_b_of_type_Int);
     }
-    RoomOperate.ReqReportLocation localReqReportLocation = new RoomOperate.ReqReportLocation();
-    qq_lbs_share.RoomKey localRoomKey = avhg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, paramLong);
-    localReqReportLocation.room_key.set(localRoomKey);
-    localReqReportLocation.room_key.setHasFlag(true);
-    localReqReportLocation.direction.set(paramavco.a());
-    paramavco = paramavco.a();
-    if (paramavco == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocation: invoked. ", " latLng: ", paramavco });
-      }
-      return;
-    }
-    localReqReportLocation.lat.set(paramavco.latitude);
-    localReqReportLocation.lon.set(paramavco.longitude);
-    paramavco = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "QQLBSShareSvc.report_location");
-    paramavco.putWupBuffer(localReqReportLocation.toByteArray());
-    a().sendPbReq(paramavco);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Avde.jdField_a_of_type_Int);
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  boolean a(long paramLong, int paramInt)
   {
+    if (this.jdField_a_of_type_Long == -1L) {
+      this.jdField_a_of_type_Long = paramLong;
+    }
+    b();
+    float f;
     int i;
-    if (a(paramToServiceMsg, paramFromServiceMsg, paramObject))
+    if (this.jdField_b_of_type_Long != 0L)
     {
-      try
-      {
-        paramToServiceMsg = (RoomOperate.RspReportLocation)new RoomOperate.RspReportLocation().mergeFrom((byte[])paramObject);
-        if (avhg.a((qq_lbs_share.ResultInfo)paramToServiceMsg.msg_result.get()))
-        {
-          i = paramToServiceMsg.req_interval.get();
-          if (i != 0) {
-            jdField_a_of_type_Int = i * 1000;
-          }
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocationResp: invoked. ", " intervalMillis: ", Integer.valueOf(jdField_a_of_type_Int) });
-          return;
-        }
-        b();
-        return;
+      f = (float)(paramLong - this.jdField_a_of_type_Long) / (float)this.jdField_b_of_type_Long;
+      if (f < 1.0F) {
+        break label158;
       }
-      catch (Exception paramToServiceMsg)
-      {
-        QLog.e("ReportLocationHandler", 1, "requestReportLocationResp: failed. ", paramToServiceMsg);
-        return;
+      i = 1;
+      label54:
+      if (i != 0) {
+        break label164;
       }
     }
-    else
+    label158:
+    label164:
+    for (boolean bool = true;; bool = false)
     {
-      if (paramFromServiceMsg != null)
-      {
-        i = paramFromServiceMsg.getResultCode();
-        if (QLog.isColorLevel()) {
-          QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocationResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
-        }
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Float = (Math.max(Math.min(f, 1.0F), 0.0F) * this.jdField_c_of_type_Float);
+      this.jdField_a_of_type_Int = ((int)(DanmakuLayout.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuLayout) - this.jdField_a_of_type_Float));
+      this.jdField_a_of_type_AndroidWidgetTextView.layout(this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, this.jdField_c_of_type_Int + paramInt);
+      return this.jdField_a_of_type_Boolean;
+      if (paramLong < this.jdField_a_of_type_Long) {}
+      for (f = 0.0F;; f = 1.0F) {
+        break;
       }
-      b();
+      i = 0;
+      break label54;
     }
-  }
-  
-  public void a(String paramString, avdh paramavdh)
-  {
-    this.jdField_a_of_type_Avdh = paramavdh;
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportLocationHandler", 2, new Object[] { "startReportInLoop: invoked. still in loop, no need re-request ", " sessionUin: ", paramString });
-      }
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.jdField_a_of_type_JavaLangRunnable = new ReportLocationHandler.1(this);
-    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public boolean a()
-  {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public boolean a(avcq paramavcq)
-  {
-    if (!a()) {
-      return false;
-    }
-    return new avcq(this.b, "" + this.jdField_a_of_type_JavaLangLong).equals(paramavcq);
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    return (!TextUtils.isEmpty(a())) && (a().equals(paramString)) && (a() == paramInt);
   }
 }
 

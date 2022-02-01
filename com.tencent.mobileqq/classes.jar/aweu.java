@@ -1,24 +1,6 @@
-import com.tencent.mobileqq.music.SongInfo;
-
 class aweu
-  extends awdx
 {
-  aweu(awes paramawes) {}
-  
-  public void onPlaySongChanged(SongInfo paramSongInfo)
-  {
-    if (awes.a(this.a) != null) {
-      awes.a(this.a, awes.a(this.a).a());
-    }
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    awes.a(this.a, paramInt);
-    if (paramInt == 2) {
-      awes.a(this.a, awes.a(this.a).c());
-    }
-  }
+  private static final awes a = new awes(null);
 }
 
 

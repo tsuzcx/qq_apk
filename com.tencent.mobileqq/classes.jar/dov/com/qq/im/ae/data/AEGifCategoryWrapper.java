@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.data;
 
-import blvd;
+import bnkg;
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class AEGifCategoryWrapper
   public String categoryId = "";
   public String categoryName = "";
   public String fontId = "";
-  public List<blvd> materialWrapperList;
+  public List<bnkg> materialWrapperList;
   public boolean selected;
   public boolean showCategory;
 }

@@ -1,17 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import org.jetbrains.annotations.NotNull;
 
-class ovy
-  extends owd
+public abstract interface ovy
 {
-  ovy(ouu paramouu, BaseCommentData paramBaseCommentData)
-  {
-    super(paramouu, null);
-  }
-  
-  void a(owg paramowg)
-  {
-    paramowg.onCommentReply(true, new ouo(0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, ouu.a(this.jdField_a_of_type_Ouu)));
-  }
+  public abstract void a(@NotNull String paramString1, @NotNull String paramString2);
 }
 
 

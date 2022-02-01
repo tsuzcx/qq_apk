@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.qassistant.view.VoicePanelSlideContainer;
 
 public class bamz
-  implements bamr
+  implements Animator.AnimatorListener
 {
-  public bamz(SignTextEditFragment paramSignTextEditFragment) {}
+  public bamz(VoicePanelSlideContainer paramVoicePanelSlideContainer) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    SignTextEditFragment.a(this.a, this.a.a, paramBoolean);
+    VoicePanelSlideContainer.a(this.a, false);
   }
   
-  public void b(int paramInt, boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramInt == -1) {
-      QQToast.a(this.a.getActivity(), 2131718207, 1).a();
-    }
-    SignTextEditFragment.a(this.a, this.a.a, SignTextEditFragment.a(this.a).b());
+    VoicePanelSlideContainer.a(this.a, false);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

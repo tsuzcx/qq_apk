@@ -1,57 +1,62 @@
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
-public class bbgj
+class bbgj
+  implements INetEngine.INetEngineListener
 {
-  private static int jdField_a_of_type_Int;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static Map<Integer, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  bbgj(bbgg parambbgg, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, bcws parambcws) {}
   
-  public static int a(int paramInt)
+  public void onResp(NetResp paramNetResp)
   {
-    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    if (localInteger == null) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.mHttpCode);
     }
-    return localInteger.intValue();
-  }
-  
-  public static String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static void a()
-  {
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Bbgg.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
+    paramNetResp = this.jdField_a_of_type_Bbgg.a.iterator();
+    while (paramNetResp.hasNext())
+    {
+      Object localObject = (bbgy)paramNetResp.next();
+      if (((bbgy)localObject).a != null)
+      {
+        localObject = ((bbgy)localObject).a.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
+          if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
+            localPtvTemplateInfo.usable = this.jdField_a_of_type_Bbgg.a(localPtvTemplateInfo);
+          }
+        }
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
     try
     {
-      jdField_a_of_type_JavaLangString = "";
-      jdField_a_of_type_Int = 0;
-      jdField_a_of_type_JavaUtilMap.clear();
+      nwp.a(new File(bbgg.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), bbgg.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
+      if (this.jdField_a_of_type_Bcws != null) {
+        this.jdField_a_of_type_Bcws.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable);
+      }
       return;
     }
-    finally
+    catch (IOException paramNetResp)
     {
-      localObject = finally;
-      throw localObject;
+      for (;;)
+      {
+        paramNetResp.printStackTrace();
+      }
     }
   }
   
-  public static void a(int paramInt)
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return;
-      try
-      {
-        jdField_a_of_type_Int += 1;
-        jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaLangString + paramInt + "|";
-        jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Integer.valueOf(jdField_a_of_type_Int));
-      }
-      finally {}
+    if (this.jdField_a_of_type_Bcws != null) {
+      this.jdField_a_of_type_Bcws.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, (int)(100L * paramLong1 / paramLong2));
     }
   }
 }

@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExposureData;
@@ -63,12 +64,12 @@ public class HotSearchAdapter
     HotSearchAdapter.HotSearchViewHolder localHotSearchViewHolder;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559413, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559451, paramViewGroup, false);
       localHotSearchViewHolder = new HotSearchAdapter.HotSearchViewHolder();
-      localHotSearchViewHolder.icon = ((ImageView)paramView.findViewById(2131371123));
-      localHotSearchViewHolder.ranking = ((ImageView)paramView.findViewById(2131371125));
-      localHotSearchViewHolder.name = ((TextView)paramView.findViewById(2131371127));
-      localHotSearchViewHolder.category = ((TextView)paramView.findViewById(2131371128));
+      localHotSearchViewHolder.icon = ((ImageView)paramView.findViewById(2131371320));
+      localHotSearchViewHolder.ranking = ((ImageView)paramView.findViewById(2131371322));
+      localHotSearchViewHolder.name = ((TextView)paramView.findViewById(2131371324));
+      localHotSearchViewHolder.category = ((TextView)paramView.findViewById(2131371325));
       paramView.setTag(localHotSearchViewHolder);
     }
     for (;;)
@@ -93,13 +94,13 @@ public class HotSearchAdapter
   
   public void onHotSearchDataChanged()
   {
-    Object localObject = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360);
+    Object localObject = (MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER);
     setData(((MiniAppSearchDataManager)localObject).getHotSearchData());
     notifyDataSetChanged();
     if (!TextUtils.isEmpty(((MiniAppSearchDataManager)localObject).getHotSearchTitle())) {
       this.mHotTitleView.setText(((MiniAppSearchDataManager)localObject).getHotSearchTitle());
     }
-    localObject = (MiniAppExposureManager)MiniAppUtils.getAppInterface().getManager(322);
+    localObject = (MiniAppExposureManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);
     Iterator localIterator = this.appList.iterator();
     while (localIterator.hasNext())
     {

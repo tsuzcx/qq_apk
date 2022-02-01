@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import puh;
+import qfb;
 
 public class ChannelInfoModule$6
   implements Runnable
 {
-  public ChannelInfoModule$6(puh parampuh, ChannelInfo paramChannelInfo) {}
+  public ChannelInfoModule$6(qfb paramqfb, ChannelInfo paramChannelInfo) {}
   
   public void run()
   {

@@ -5,8 +5,8 @@ import android.util.SparseIntArray;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import androidx.collection.ArrayMap;
-import atxz;
-import azjl;
+import avdj;
+import bapt;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 import com.tencent.mtt.hippy.common.HippyArray;
 import com.tencent.mtt.hippy.common.HippyMap;
@@ -65,7 +65,7 @@ public class GameCenterVideoView
   
   private void doActionAfterSDKInit(Runnable paramRunnable)
   {
-    if (azjl.a())
+    if (bapt.a())
     {
       paramRunnable.run();
       return;
@@ -73,7 +73,7 @@ public class GameCenterVideoView
     if (this.mSDKInitListener == null)
     {
       this.mSDKInitListener = new GameCenterVideoView.SDKInitListenerWithAction(this, paramRunnable);
-      azjl.a(BaseApplication.getContext(), this.mSDKInitListener);
+      bapt.a(BaseApplication.getContext(), this.mSDKInitListener);
       return;
     }
     this.mSDKInitListener.action = paramRunnable;
@@ -143,8 +143,8 @@ public class GameCenterVideoView
   {
     super.onDetachedFromWindow();
     this.mVideoView.release();
-    if (atxz.a().a() == this.mVideoView) {
-      atxz.a().a();
+    if (avdj.a().a() == this.mVideoView) {
+      avdj.a().a();
     }
   }
   

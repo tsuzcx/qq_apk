@@ -172,26 +172,12 @@ public class AppUIProxy
   
   protected void onRuntimeReady()
   {
-    if (this.mCurrRuntimeLoader != null)
-    {
-      if (this.mCurrRuntimeLoader.dismissLoadingAfterLoaded()) {
-        break label104;
-      }
-      this.mCurrRuntimeLoader.addRuntimeStateObserver(new AppUIProxy.4(this));
-    }
-    for (;;)
-    {
-      this.mCurrRuntimeLoader.startLoadMiniAppContent(false);
-      this.mCurrRuntimeLoader.onAttachActivity(this.mActivity, null, this.mRootLayout);
-      showKingcardTip();
-      ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      MiniAppInfo localMiniAppInfo = getMiniAppInfo();
-      if ((localChannelProxy != null) && (localMiniAppInfo != null)) {
-        localChannelProxy.syncForceGroundAndRefreshBadge(this.mActivity, localMiniAppInfo.appId, AppLoaderFactory.g().getProcessName());
-      }
-      return;
-      label104:
-      hideLoading();
+    AppBrandTask.runTaskOnUiThread(new AppUIProxy.4(this));
+    showKingcardTip();
+    ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+    MiniAppInfo localMiniAppInfo = getMiniAppInfo();
+    if ((localChannelProxy != null) && (localMiniAppInfo != null)) {
+      localChannelProxy.syncForceGroundAndRefreshBadge(this.mActivity, localMiniAppInfo.appId, AppLoaderFactory.g().getProcessName());
     }
   }
   
@@ -285,9 +271,9 @@ public class AppUIProxy
     super.startMiniAppInfo(paramMiniAppInfo, paramBundle);
   }
   
-  protected void updateLoadingAdUI(Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong)
+  protected void updateLoadingAdUI(Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong1, long paramLong2)
   {
-    paramActivity.runOnUiThread(new AppUIProxy.9(this, paramActivity, paramMiniAppInfo, paramString, paramLong));
+    paramActivity.runOnUiThread(new AppUIProxy.9(this, paramActivity, paramMiniAppInfo, paramString, paramLong1, paramLong2));
   }
 }
 

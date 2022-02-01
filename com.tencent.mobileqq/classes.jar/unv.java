@@ -1,9 +1,13 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
 public class unv
-  extends zfo
+  implements ViewBase.IBuilder
 {
-  public unv(int paramInt, Object... paramVarArgs)
+  public ViewBase build(VafContext paramVafContext)
   {
-    super(paramInt, paramVarArgs);
+    return new unu(paramVafContext);
   }
 }
 

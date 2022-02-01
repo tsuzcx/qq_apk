@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.18.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ajga
-  implements aiep
+public class ajga
+  extends aofu
 {
-  ajga(ajey paramajey) {}
+  public ajga(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void ad_() {}
-  
-  public void b()
+  protected void onRecommendTroopBack(boolean paramBoolean, List<RecommendTroopItem> paramList)
   {
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
+    if ((paramBoolean) && (paramList != null)) {
+      this.a.a(paramList);
     }
-    ((aiej)this.a.a.app.getManager(34)).d();
   }
   
-  public void j_(int paramInt)
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
   {
-    this.a.f();
+    if (1 == paramInt1) {
+      ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.18.1(this, paramString));
+    }
   }
 }
 

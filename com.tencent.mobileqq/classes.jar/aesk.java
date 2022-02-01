@@ -1,29 +1,36 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.WebPreloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class aesk
-  implements TextWatcher
+  implements bide
 {
-  public aesk(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public aesk(QQSettingMe.WebPreloadTask paramWebPreloadTask, QQSettingMe paramQQSettingMe) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onResult(boolean paramBoolean)
   {
-    if (paramEditable.length() >= 4)
+    if ((paramBoolean) && (QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe) != null)) {
+      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).a();
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      VerifyCodeActivity.c(this.a, true);
+      localStringBuilder = new StringBuilder().append("WebPreloadTask preloadWebProcess isProcessExist: ");
+      if (paramBoolean) {
+        break label64;
+      }
+    }
+    label64:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("QQSettingRedesign", 2, paramBoolean);
       return;
     }
-    VerifyCodeActivity.d(this.a, false);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesk
  * JD-Core Version:    0.7.0.1
  */

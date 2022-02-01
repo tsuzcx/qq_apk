@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.vas.qvip.view;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bgjm;
+import anvx;
+import bhsh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
 
 public class MoreMsgHeaderView
   extends RelativeLayout
-  implements bgjm
+  implements bhsh
 {
   public MoreMsgHeaderView(Context paramContext)
   {
@@ -23,7 +23,7 @@ public class MoreMsgHeaderView
   public void a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity, int paramInt)
   {
     paramQQVipMsgInfo = new TextView(getContext());
-    paramQQVipMsgInfo.setText(amtj.a(2131705997));
+    paramQQVipMsgInfo.setText(anvx.a(2131706348));
     paramQQVipMsgInfo.setTextColor(-16777216);
     paramQQVipMsgInfo.setAlpha(0.5F);
     paramQQVipMsgInfo.setEms(1);

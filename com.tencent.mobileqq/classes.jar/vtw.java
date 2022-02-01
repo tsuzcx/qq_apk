@@ -1,72 +1,27 @@
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class vtw<DATA>
+public class vtw
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static final String a;
-  protected DATA a;
-  protected List<vtx<DATA>> a;
+  public vtw(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  static
+  public void onGlobalLayout()
   {
-    jdField_a_of_type_JavaLangString = vtw.class.getName();
-  }
-  
-  public vtw()
-  {
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  }
-  
-  public DATA a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a()
-  {
-    a(null);
-  }
-  
-  public void a(@NonNull vtx<DATA> paramvtx)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramvtx)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramvtx);
+    int i = PublicAccountImageCollectionCommentActivity.a(this.a).getRootView().getHeight() - PublicAccountImageCollectionCommentActivity.a(this.a).getHeight();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ImageCollectionCommentActivity", 2, "heightDiff:" + i);
     }
-  }
-  
-  protected abstract void a(vwp paramvwp);
-  
-  protected void a(boolean paramBoolean, DATA paramDATA)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((vtx)localIterator.next()).a(paramBoolean, paramDATA);
+    if (i > 150) {
+      PublicAccountImageCollectionCommentActivity.a(this.a, true);
     }
-  }
-  
-  public void b()
-  {
-    xvv.b(jdField_a_of_type_JavaLangString, "onInit");
-  }
-  
-  public void b(@NonNull vtx<DATA> paramvtx)
-  {
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramvtx)) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramvtx);
+    while (!PublicAccountImageCollectionCommentActivity.a(this.a)) {
+      return;
     }
-  }
-  
-  public void b(vwp paramvwp)
-  {
-    a(paramvwp);
-  }
-  
-  public void c()
-  {
-    xvv.b(jdField_a_of_type_JavaLangString, "onDestroy");
-    this.jdField_a_of_type_JavaUtilList.clear();
+    PublicAccountImageCollectionCommentActivity.a(this.a, false);
+    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
   }
 }
 

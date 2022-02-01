@@ -1,103 +1,200 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import java.util.List;
 
-class ajqb
-  extends Handler
+public class ajqb
+  extends ReportDialog
 {
-  private ajqb(ajqa paramajqa) {}
+  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  private TextView f;
   
-  public void handleMessage(Message paramMessage)
+  public ajqb(Context paramContext)
   {
-    switch (paramMessage.what)
-    {
+    super(paramContext, 2131755829);
+    if (Build.VERSION.SDK_INT >= 14) {
+      getWindow().setDimAmount(0.5F);
     }
+    setContentView(2131559041);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365648));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365644));
+    this.c = ((TextView)findViewById(2131365633));
+    this.d = ((TextView)findViewById(2131365639));
+    this.e = ((TextView)findViewById(2131365605));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367272));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131377332));
+    this.f = ((TextView)findViewById(2131373247));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131366139));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365651));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365677));
+  }
+  
+  public ajqb a(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.c.setVisibility(8);
+      return this;
+    }
+    this.c.setText(paramInt);
+    this.c.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691087));
+    this.c.setVisibility(0);
+    this.c.setOnClickListener(new ajqc(this, paramOnClickListener));
+    return this;
+  }
+  
+  public ajqb a(String paramString)
+  {
+    if (paramString != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramString);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      return this;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    return this;
+  }
+  
+  public ajqb a(List<String> paramList, View.OnClickListener paramOnClickListener)
+  {
+    if ((paramList == null) || (paramOnClickListener == null)) {
+      return this;
+    }
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(new ajqh(paramList));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(new DefaultItemAnimator());
+    paramList = new asfu(paramOnClickListener);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramList);
+    return this;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (paramInt > 0)) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    }
+    if ((this.f == null) || (this.jdField_a_of_type_AndroidWidgetProgressBar == null)) {}
     do
     {
-      do
+      return;
+      if (!TextUtils.isEmpty(paramString))
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("carverW VideoPlayController", 2, "MEDIA_PREPAREING ");
-                    }
-                    ajqa.a(this.a, 2);
-                    return;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("carverW VideoPlayController", 2, "onPrepared  getAutoPlayFlag=" + this.a.a());
-                    }
-                    if (this.a.jdField_a_of_type_Ajqc != null) {
-                      this.a.jdField_a_of_type_Ajqc.a(this.a.jdField_a_of_type_Ajqi, this.a.b());
-                    }
-                    if (this.a.a())
-                    {
-                      this.a.l();
-                      this.a.a(false);
-                      return;
-                    }
-                    ajqa.a(this.a, 3);
-                    return;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("carverW VideoPlayController", 2, "onSeekComplete");
-                    }
-                  } while (this.a.jdField_a_of_type_Ajqc == null);
-                  this.a.jdField_a_of_type_Ajqc.v();
-                  return;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("carverW VideoPlayController", 2, "onPlaybackComplete");
-                  }
-                  ajqa.a(this.a, true);
-                  this.a.a(0);
-                  this.a.b(0);
-                  if (this.a.jdField_a_of_type_Ajqc != null) {
-                    this.a.jdField_a_of_type_Ajqc.c(this.a.jdField_a_of_type_Ajqi);
-                  }
-                  ajqa.a(this.a, 0);
-                  return;
-                } while (!QLog.isColorLevel());
-                QLog.d("carverW VideoPlayController", 2, "onVideoSizeChanged");
-                return;
-                if (QLog.isColorLevel()) {
-                  QLog.d("carverW VideoPlayController", 2, "MEDIA_INSTALL_SUCCESS");
-                }
-              } while ((this.a.jdField_a_of_type_Ajoe == null) || (this.a.jdField_a_of_type_AndroidAppActivity == null));
-              this.a.jdField_a_of_type_AndroidViewView = this.a.jdField_a_of_type_Ajoe.a(this.a.jdField_a_of_type_AndroidAppActivity);
-            } while ((this.a.jdField_a_of_type_AndroidViewView == null) || (this.a.jdField_a_of_type_AndroidAppActivity == null));
-            ajqa.a(this.a, this.a.jdField_a_of_type_AndroidAppActivity);
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("carverW VideoPlayController", 2, "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
-            }
-            this.a.a(paramMessage.arg1, paramMessage.arg2);
-            return;
-          } while (this.a.jdField_a_of_type_Ajqc == null);
-          if (paramMessage.arg1 == 929)
-          {
-            this.a.jdField_a_of_type_Ajqc.d(this.a.jdField_a_of_type_Ajqi);
-            this.a.b(8);
-            return;
-          }
-        } while (paramMessage.arg1 != 92);
-        this.a.jdField_a_of_type_Ajqc.a(this.a.jdField_a_of_type_Ajqi, paramMessage.arg2);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("carverW VideoPlayController", 2, "onDownloading isClickToStart=" + ajqa.a(this.a));
-        }
-      } while ((this.a.jdField_a_of_type_Ajqc == null) || (!ajqa.a(this.a)));
-      this.a.jdField_a_of_type_Ajqc.b(this.a.jdField_a_of_type_Ajqi, paramMessage.arg1);
-    } while (ajqa.a(this.a) == 4);
-    this.a.b(8);
+        this.f.setVisibility(0);
+        this.f.setText(paramString);
+      }
+    } while ((paramInt < 0) || (paramInt > 100));
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt, true);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+  }
+  
+  public ajqb b(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.e.setVisibility(8);
+      return this;
+    }
+    this.e.setText(paramInt);
+    this.e.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691087));
+    this.e.setVisibility(0);
+    this.e.setOnClickListener(new ajqd(this, paramOnClickListener));
+    return this;
+  }
+  
+  public ajqb b(String paramString)
+  {
+    if ((this.f == null) || (this.jdField_a_of_type_AndroidWidgetProgressBar == null)) {
+      return this;
+    }
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.f.setVisibility(0);
+      this.f.setText(paramString);
+      return this;
+    }
+    this.f.setVisibility(4);
+    return this;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetProgressBar == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ajqf.a(this.jdField_a_of_type_AndroidWidgetProgressBar, paramInt);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+  }
+  
+  public ajqb c(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.d.setVisibility(8);
+      return this;
+    }
+    this.d.setText(paramInt);
+    this.d.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691087));
+    this.d.setVisibility(0);
+    this.d.setOnClickListener(new ajqe(this, paramOnClickListener));
+    return this;
+  }
+  
+  public void dismiss()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      }
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException) {}finally
+    {
+      acxo.a(this);
+    }
   }
 }
 

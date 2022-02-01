@@ -1,17 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.io.File;
 
-public class yww
-  implements DialogInterface.OnClickListener
+class yww
+  implements bibz
 {
-  public yww(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  private String jdField_a_of_type_JavaLangString;
+  private yxk jdField_a_of_type_Yxk;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  yww(yxk paramyxk, String paramString)
   {
-    QRLoginMgrActivity.a(this.a, true, 0L);
-    bcef.b(null, "dc00898", "", "", "0X800A478", "0X800A478", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Yxk = paramyxk;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
+  
+  public void onError() {}
+  
+  public void onPlayEnd()
+  {
+    Object localObject = new File(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_JavaLangString.lastIndexOf(".af")).concat("_").concat(String.valueOf(this.jdField_a_of_type_Yxk.c)).concat(".pcm"));
+    if (((File)localObject).exists())
+    {
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      FileUtils.copyFile((File)localObject, new File(this.jdField_a_of_type_JavaLangString));
+      if (ywu.a() != null)
+      {
+        localObject = ywu.a().obtainMessage(10);
+        ((Message)localObject).obj = this.jdField_a_of_type_Yxk;
+        ywu.a().sendMessage((Message)localObject);
+      }
+    }
+  }
+  
+  public void onPlayStop() {}
+  
+  public void onSlicePlayed(int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

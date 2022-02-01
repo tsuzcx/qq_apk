@@ -1,8 +1,35 @@
-public abstract interface axrd
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import java.lang.ref.WeakReference;
+
+public class axrd
+  implements ServiceConnection
 {
-  public abstract void a();
+  private WeakReference<axrc> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public abstract void b();
+  public axrd(axrb paramaxrb, axrc paramaxrc)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaxrc);
+  }
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    axrb.a(this.jdField_a_of_type_Axrb, lwt.a(paramIBinder));
+    paramComponentName = (axrc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramComponentName != null) {
+      paramComponentName.g();
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    axrb.a(this.jdField_a_of_type_Axrb, null);
+    paramComponentName = (axrc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramComponentName != null) {
+      paramComponentName.h();
+    }
+  }
 }
 
 

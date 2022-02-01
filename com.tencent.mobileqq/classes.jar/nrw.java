@@ -1,23 +1,33 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.JoinGroupTransitActivity;
+import java.lang.ref.WeakReference;
 
 public class nrw
+  extends Handler
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  String b;
+  private WeakReference<JoinGroupTransitActivity> a;
   
-  nrw(nru paramnru)
+  public nrw(JoinGroupTransitActivity paramJoinGroupTransitActivity)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = new WeakReference(paramJoinGroupTransitActivity);
   }
   
-  public String a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long;
+    JoinGroupTransitActivity localJoinGroupTransitActivity = (JoinGroupTransitActivity)this.a.get();
+    if ((paramMessage == null) || (localJoinGroupTransitActivity == null) || (localJoinGroupTransitActivity.isFinishing())) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
+      return;
+    }
+    localJoinGroupTransitActivity.finish();
   }
 }
 

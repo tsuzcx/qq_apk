@@ -1,117 +1,154 @@
-import android.graphics.Bitmap;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
-import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qassistant.core.LoadManager.1;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class bakt
-  implements VideoPlayerCallback
+public class bakt
 {
-  bakt(bakr parambakr, VideoPlayParam paramVideoPlayParam) {}
+  private static String jdField_a_of_type_JavaLangString = "";
+  public static final List<String> a;
+  public static volatile AtomicBoolean a;
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private static String b;
+  public static volatile AtomicBoolean b;
   
-  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, "onCapFrame, id:" + paramLong + ", isSuccess:" + paramBoolean + ", w:" + paramInt1 + ", h:" + paramInt2);
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    jdField_a_of_type_JavaUtilList = new ArrayList(Arrays.asList(new String[] { "network_tip.mp3", "quit_voice_panel_tip.mp3", "voice_not_support_tip.mp3", "voice_not_understant_tip.mp3", "wake_default_tip.mp3" }));
+    jdField_b_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  }
+  
+  public static String a()
+  {
+    if ("".equals(jdField_b_of_type_JavaLangString)) {
+      jdField_b_of_type_JavaLangString = BaseApplicationImpl.getApplication().getSharedPreferences("qq_assistant_sp_key", 0).getString("resAnimation", "animation1");
     }
-    bakr.a(this.jdField_a_of_type_Bakr, paramBitmap);
+    return jdField_b_of_type_JavaLangString;
   }
   
-  public void onDownloadComplete(long paramLong)
+  public static String a(String paramString)
   {
-    QLog.i("AIOFileVideoView<FileAssistant>XOXO", 1, "@@@@@@@@@@@ videoView Download Success:" + paramLong);
-    AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_Bakr.a();
-    if (!localAIOFileVideoData.f) {
-      this.jdField_a_of_type_Bakr.jdField_a_of_type_Bajo.d(localAIOFileVideoData);
+    return a("voice", b()) + "/" + paramString;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    return "/data/data/com.tencent.mobileqq/voiceAssistant/" + paramString1 + "/" + paramString2;
+  }
+  
+  public static void a(List<String> paramList, String paramString, bakv parambakv)
+  {
+    if ((paramString == null) || (paramString == "")) {
+      paramString = "HelloQQWake";
     }
-  }
-  
-  public void onDownloadProgress(long paramLong1, long paramLong2) {}
-  
-  public void onFirstFrameRendered(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, "onFirstFrameRendered, id:" + paramLong);
-    }
-  }
-  
-  public void onLoopBack(long paramLong1, long paramLong2) {}
-  
-  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    BrowserLogHelper.getInstance().getGalleryLog().e("AIOFileVideoView<FileAssistant>XOXO", 1, "onPlayError, id = " + paramLong + " ,module = " + paramInt1 + " , errorType = " + paramInt2 + ", errCode = " + paramInt3 + " , exInfo = " + paramString);
-    bakr.a(this.jdField_a_of_type_Bakr, paramInt1, paramInt3, this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiVideoPlayParam);
-  }
-  
-  public void onPlayProgress(long paramLong1, long paramLong2)
-  {
-    bakr.a(this.jdField_a_of_type_Bakr, paramLong2);
-    int i = (int)(paramLong2 / this.jdField_a_of_type_Bakr.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs() * 10000.0D);
-    this.jdField_a_of_type_Bakr.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.stringForTime(paramLong2));
-    this.jdField_a_of_type_Bakr.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(i);
-  }
-  
-  public void onStateChange(long paramLong, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOFileVideoView<FileAssistant>XOXO", 2, "onStateChange , state = " + bakr.a(this.jdField_a_of_type_Bakr, paramInt) + ", msgUniseq=" + paramLong);
-    }
-    switch (paramInt)
+    for (;;)
     {
-    case 7: 
-    default: 
-      return;
-    case 4: 
-      Object localObject = this.jdField_a_of_type_Bakr.a();
-      if (localObject == null)
-      {
-        QLog.w("AIOFileVideoView<FileAssistant>XOXO", 1, "onStateChange , state = " + bakr.a(this.jdField_a_of_type_Bakr, paramInt) + ", msgUniseq=" + paramLong + " get videoData is null!");
-        return;
+      if (!a(paramList)) {
+        a("voice", b(), paramList, jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean, paramString, parambakv);
       }
-      if (((AIOFileVideoData)localObject).f) {
-        bakr.a(this.jdField_a_of_type_Bakr, 5);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Bakr.updateUI();
-        this.jdField_a_of_type_Bakr.jdField_a_of_type_Bajo.b(((AIOFileVideoData)localObject).a);
-        this.jdField_a_of_type_Bakr.jdField_a_of_type_Bajo.a(((AIOFileVideoData)localObject).a);
-        if (!this.jdField_a_of_type_Bakr.jdField_a_of_type_Bajo.a(this.jdField_a_of_type_Bakr.jdField_a_of_type_Bajo.getCurrentPosition())) {
-          break;
-        }
-        this.jdField_a_of_type_Bakr.jdField_a_of_type_Bajo.a();
-        localObject = this.jdField_a_of_type_Bakr.jdField_a_of_type_Bajo.getSelectedItem();
-        if ((localObject == null) || (!(((RichMediaBrowserInfo)localObject).baseData instanceof AIOBrowserBaseData)) || (this.jdField_a_of_type_Bakr.jdField_a_of_type_Bajo.a() == null) || (this.jdField_a_of_type_Bakr.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView == null)) {
-          break;
-        }
-        this.jdField_a_of_type_Bakr.jdField_a_of_type_Bajo.a().a(baiq.a(((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData).d, this.jdField_a_of_type_Bakr.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getCurPlayingPos(), this.jdField_a_of_type_Bakr.jdField_a_of_type_Bajo.a(), this.jdField_a_of_type_Bakr.jdField_a_of_type_Bajo.a));
-        return;
-        bakr.a(this.jdField_a_of_type_Bakr, 1);
-      }
-    case 8: 
-      this.jdField_a_of_type_Bakr.jdField_a_of_type_AndroidWidgetTextView.setText(ShortVideoUtils.stringForTime(this.jdField_a_of_type_Bakr.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.getVideoDurationMs()));
-      this.jdField_a_of_type_Bakr.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(100);
-      bakr.a(this.jdField_a_of_type_Bakr, 0);
-      this.jdField_a_of_type_Bakr.updateUI();
-      return;
-    case 9: 
-      bakr.a(this.jdField_a_of_type_Bakr);
-      return;
-    case 6: 
-      bakr.a(this.jdField_a_of_type_Bakr, 6);
-      this.jdField_a_of_type_Bakr.updateUI();
       return;
     }
-    bakr.a(this.jdField_a_of_type_Bakr, 3);
-    this.jdField_a_of_type_Bakr.updateUI();
+  }
+  
+  public static boolean a()
+  {
+    if (jdField_a_of_type_Boolean) {
+      return true;
+    }
+    if ((!band.a()) || (band.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+      return false;
+    }
+    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return false;
+    }
+    if ((!a(a(), null)) || (jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+      return false;
+    }
+    jdField_a_of_type_Boolean = true;
+    return true;
+  }
+  
+  public static boolean a(bakv parambakv)
+  {
+    boolean bool = a();
+    if (!bool)
+    {
+      a("wake", band.a(), band.jdField_a_of_type_JavaUtilList, band.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean, "HelloQQWake", parambakv);
+      a(jdField_a_of_type_JavaUtilList, "HelloQQWake", parambakv);
+    }
+    return bool;
+  }
+  
+  public static boolean a(String paramString1, String paramString2, List<String> paramList, AtomicBoolean paramAtomicBoolean, String paramString3, bakv parambakv)
+  {
+    String str = a(paramString1, paramString2);
+    boolean bool = a(str, paramList);
+    if (!bool)
+    {
+      bakl.a(paramString3, "loadRes hasRes no res");
+      paramList = new File(str + ".zip");
+      if ((!paramList.getParentFile().exists()) && (!paramList.getParentFile().mkdirs()))
+      {
+        bakl.a(paramString3, "DownLoadZipFile  mkdirs failure：" + paramList.getPath());
+        return bool;
+      }
+      if (paramAtomicBoolean.compareAndSet(false, true)) {
+        ThreadManagerV2.excute(new LoadManager.1(paramString3, paramList, paramString1, paramAtomicBoolean, parambakv, "https://down.qq.com/helloqq/" + paramString2 + ".zip"), 128, null, true);
+      }
+    }
+    for (;;)
+    {
+      return bool;
+      bakl.a("HelloQQWake", "loadRes hasRes no res");
+    }
+  }
+  
+  public static boolean a(String paramString, List<String> paramList)
+  {
+    if (paramList == null) {
+      return true;
+    }
+    paramString = paramString + "/";
+    try
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        if (!new File(paramString + str).exists())
+        {
+          bakl.a("HelloQQWake", "hasModel() not file :" + paramString + str);
+          return false;
+        }
+      }
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(List<String> paramList)
+  {
+    return a(a("voice", b()), paramList);
+  }
+  
+  public static String b()
+  {
+    if ("".equals(jdField_a_of_type_JavaLangString)) {
+      jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getSharedPreferences("qq_assistant_sp_key", 0).getString("resVoice", "voice1");
+    }
+    return jdField_a_of_type_JavaLangString;
   }
 }
 

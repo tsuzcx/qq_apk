@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agrx;
-import amoo;
+import ahkv;
 import android.app.Activity;
+import anrb;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.HashMap;
 
@@ -11,17 +12,17 @@ public final class TroopFileItemBuilder$1
 {
   public void run()
   {
-    agrx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Becp, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
+    ahkv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bfjs, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
     long l1 = 0L;
-    if (agrx.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
-      l1 = ((Long)agrx.a.get(this.jdField_a_of_type_JavaLangString)).longValue();
+    if (ahkv.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
+      l1 = ((Long)ahkv.a.get(this.jdField_a_of_type_JavaLangString)).longValue();
     }
     long l2 = System.currentTimeMillis();
     if (l2 - l1 > 10000L)
     {
-      amoo localamoo = (amoo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(22);
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).runOnUiThread(new TroopFileItemBuilder.1.1(this, localamoo));
-      agrx.a.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(l2));
+      anrb localanrb = (anrb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.BIZ_TROOP_HANDLER);
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).runOnUiThread(new TroopFileItemBuilder.1.1(this, localanrb));
+      ahkv.a.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(l2));
     }
   }
 }

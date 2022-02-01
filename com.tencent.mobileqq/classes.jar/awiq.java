@@ -1,41 +1,15 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class awiq
-  implements zop
+class awiq
+  implements DialogInterface.OnClickListener
 {
-  public awiq(NearbyJsInterface paramNearbyJsInterface) {}
+  awiq(awio paramawio, QQCustomDialog paramQQCustomDialog) {}
   
-  public void callback(Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject;
-    Intent localIntent;
-    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
-    {
-      localObject = paramBundle.getStringArrayList("uins");
-      paramBundle.getStringArrayList("tinyIds");
-      paramBundle = (String)((ArrayList)localObject).get(0);
-      localObject = this.a.mRuntime.a();
-      localIntent = new Intent((Context)localObject, ChatActivity.class);
-      localIntent.putExtra("PREVIOUS_UIN", paramBundle);
-      localIntent.putExtra("uin", paramBundle);
-      if (NearbyJsInterface.a(this.a) != 1) {
-        break label125;
-      }
-    }
-    label125:
-    for (int i = 10002;; i = 1001)
-    {
-      localIntent.putExtra("uintype", i);
-      localIntent.putExtra("gender", 1);
-      localIntent.addFlags(67108864);
-      ((Context)localObject).startActivity(localIntent);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

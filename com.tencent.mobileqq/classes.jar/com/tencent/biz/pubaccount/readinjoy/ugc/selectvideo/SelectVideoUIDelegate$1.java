@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo;
 
-import rgo;
-import rqs;
-import sgs;
+import rsv;
+import sdh;
+import ssx;
 
 public class SelectVideoUIDelegate$1
   implements Runnable
 {
-  public SelectVideoUIDelegate$1(rqs paramrqs, rgo paramrgo) {}
+  public SelectVideoUIDelegate$1(sdh paramsdh, rsv paramrsv) {}
   
   public void run()
   {
-    rqs.b(this.this$0);
-    rqs.a(this.this$0).a(10000, null, this.a.b, 0L, 0);
+    sdh.b(this.this$0);
+    sdh.a(this.this$0).a(10000, null, this.a.b, 0L, 0);
   }
 }
 

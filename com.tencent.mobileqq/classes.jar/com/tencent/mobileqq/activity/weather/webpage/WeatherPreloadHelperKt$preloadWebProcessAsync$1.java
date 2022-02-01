@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.weather.webpage;
 
-import algs;
+import ames;
 import kotlin.Metadata;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})

@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.data;
 
-import bmsa;
+import bohs;
 
 public class CaptureTemplateManager$1
   implements Runnable
 {
-  public CaptureTemplateManager$1(bmsa parambmsa) {}
+  public CaptureTemplateManager$1(bohs parambohs) {}
   
   public void run()
   {

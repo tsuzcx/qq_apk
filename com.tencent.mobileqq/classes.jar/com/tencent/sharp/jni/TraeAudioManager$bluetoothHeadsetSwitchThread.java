@@ -2,7 +2,7 @@ package com.tencent.sharp.jni;
 
 import android.media.AudioManager;
 import android.os.Build.VERSION;
-import bjlj;
+import bkwu;
 import com.tencent.qphone.base.util.QLog;
 
 class TraeAudioManager$bluetoothHeadsetSwitchThread

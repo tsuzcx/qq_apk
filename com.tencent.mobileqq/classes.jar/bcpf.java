@@ -1,99 +1,51 @@
-import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.jungle.videohub.proto.CommProtocolProto.commRequest;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.manager.TicketManager;
-import tencent.im.troop.studyroom.self_study_room_troop.StudyRoomMemberInfoReq;
+import java.util.List;
 
 public class bcpf
-  extends BusinessHandler
+  implements bcns
 {
-  private Map<Integer, CommProtocolProto.commRequest> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(100);
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public bcpf(QQAppInterface paramQQAppInterface)
+  public bcpf(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt1, paramViewGroup, false);
+    paramViewGroup = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368501);
+    if ((paramViewGroup != null) && (paramInt2 > 0)) {
+      paramViewGroup.setImageResource(paramInt2);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369722));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365538));
+    if (paramInt3 == 12) {
+      this.b.setText(anvx.a(2131713116) + usu.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext()) + anvx.a(2131713115));
+    }
   }
   
-  private CommProtocolProto.commRequest a(int paramInt)
+  public View a()
   {
-    CommProtocolProto.commRequest localcommRequest = new CommProtocolProto.commRequest();
-    localcommRequest.seq.set(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
-    localcommRequest.cmd.set(paramInt);
-    paramInt = NetworkUtil.getNetworkType(BaseApplicationImpl.getApplication());
-    localcommRequest.network.set(paramInt);
-    String str = ((TicketManager)this.app.getManager(2)).getA2(this.app.getAccount());
-    localcommRequest.auth_type.set(8);
-    localcommRequest.auth_key.set(ByteStringMicro.copyFromUtf8(str));
-    localcommRequest.microtime.set(System.currentTimeMillis());
-    return localcommRequest;
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  private void a(CommProtocolProto.commRequest paramcommRequest, String paramString)
+  public TextView a()
   {
-    if (paramcommRequest == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("studyroom.proto", 2, "sendPbRequest. request is null.");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("studyroom.proto", 2, "sendPbRequest. cmd=" + paramcommRequest.cmd.get());
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf((int)paramcommRequest.seq.get()), paramcommRequest);
-    paramString = createToServiceMsg(paramString);
-    paramString.putWupBuffer(paramcommRequest.toByteArray());
-    paramString.extraData.putInt("extra_seq", (int)paramcommRequest.seq.get());
-    paramString.extraData.putLong("extra_start_time", System.currentTimeMillis());
-    super.sendPbReq(paramString);
+    return null;
   }
   
-  public void a(String paramString)
+  public List<bcnt> a()
   {
-    self_study_room_troop.StudyRoomMemberInfoReq localStudyRoomMemberInfoReq = new self_study_room_troop.StudyRoomMemberInfoReq();
-    localStudyRoomMemberInfoReq.troop_uin.set(paramString);
-    paramString = a(17101);
-    paramString.body.set(ByteStringMicro.copyFrom(localStudyRoomMemberInfoReq.toByteArray()));
-    a(paramString, "SelfStudyRoomForQQ.17101");
+    return null;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  public TextView b()
   {
-    return bcpg.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    paramObject = paramFromServiceMsg.getServiceCmd();
-    int i = paramToServiceMsg.extraData.getInt("extra_seq");
-    if (QLog.isColorLevel()) {
-      QLog.d("studyroom.proto", 2, "StudyRoomHandler onReceive. cmd=" + paramObject + " seq:" + i);
-    }
-    paramToServiceMsg = (CommProtocolProto.commRequest)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-    if (paramToServiceMsg == null) {
-      QLog.w("studyroom.proto", 1, "can't find request");
-    }
-    while (!"SelfStudyRoomForQQ.17101".equals(paramObject)) {
-      return;
-    }
-    notifyUI(1, true, new Object[] { paramToServiceMsg, paramFromServiceMsg });
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

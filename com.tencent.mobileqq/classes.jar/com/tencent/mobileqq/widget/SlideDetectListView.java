@@ -78,7 +78,7 @@ public class SlideDetectListView
   {
     if (this.mMotionView != null)
     {
-      View localView = this.mMotionView.findViewById(2131377244);
+      View localView = this.mMotionView.findViewById(2131377517);
       if (localView != null) {
         localView.setVisibility(8);
       }

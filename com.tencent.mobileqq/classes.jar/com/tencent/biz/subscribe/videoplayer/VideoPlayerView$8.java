@@ -25,13 +25,13 @@ class VideoPlayerView$8
     if ((this.this$0.a() == null) || (this.this$0.a().getRenderViewWidth() > this.this$0.a().getRenderViewHeight()))
     {
       bool = true;
-      localObject = ((FloatingScreenParams.FloatingBuilder)localObject).setIsHorizontal(bool).setCanMove(true).build();
+      localObject = ((FloatingScreenParams.FloatingBuilder)localObject).setIsHorizontal(bool).setCanMove(true).setCanZoom(false).build();
       if (FloatingScreenManager.getInstance().enterFloatingScreen(BaseApplicationImpl.getContext(), (View)this.this$0.a(), (FloatingScreenParams)localObject, 28) != 1) {
-        break label102;
+        break label106;
       }
       FloatingScreenPermission.enterPermissionRequestDialog(this.this$0.getContext());
     }
-    label102:
+    label106:
     do
     {
       return;

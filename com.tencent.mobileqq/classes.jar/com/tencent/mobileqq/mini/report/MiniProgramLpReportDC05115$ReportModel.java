@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
-import bhpc;
+import bizw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 public class MiniProgramLpReportDC05115$ReportModel
 {
   private String androidID;
-  private String clientVersion = "8.4.8.4810";
+  private String clientVersion = "8.4.10.4875";
   private int cpuAVG;
   private long crashErrorNum;
   private String deviceManufacturer = Build.MANUFACTURER;
@@ -77,10 +77,10 @@ public class MiniProgramLpReportDC05115$ReportModel
     try
     {
       if (this.networkSSID == null) {
-        this.networkSSID = NetworkUtil.getCurrentWifiSSID(bhpc.a().a());
+        this.networkSSID = NetworkUtil.getCurrentWifiSSID(bizw.a().a());
       }
       if (this.androidID == null) {
-        this.androidID = Settings.Secure.getString(bhpc.a().a().getContentResolver(), "android_id");
+        this.androidID = Settings.Secure.getString(bizw.a().a().getContentResolver(), "android_id");
       }
     }
     catch (Throwable localThrowable)
@@ -139,32 +139,32 @@ public class MiniProgramLpReportDC05115$ReportModel
     //   1: monitorenter
     //   2: aload_0
     //   3: aload_0
-    //   4: getfield 257	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestNum	J
+    //   4: getfield 253	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestNum	J
     //   7: lconst_1
     //   8: ladd
-    //   9: putfield 257	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestNum	J
+    //   9: putfield 253	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestNum	J
     //   12: iload 5
     //   14: ifeq +16 -> 30
     //   17: aload_0
     //   18: aload_0
-    //   19: getfield 259	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestErrorNum	J
+    //   19: getfield 255	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestErrorNum	J
     //   22: lconst_1
     //   23: ladd
-    //   24: putfield 259	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestErrorNum	J
+    //   24: putfield 255	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestErrorNum	J
     //   27: aload_0
     //   28: monitorexit
     //   29: return
     //   30: aload_0
     //   31: getfield 134	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestCostList	Ljava/util/List;
     //   34: lload_1
-    //   35: invokestatic 262	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   38: invokeinterface 266 2 0
+    //   35: invokestatic 258	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   38: invokeinterface 262 2 0
     //   43: pop
     //   44: aload_0
     //   45: getfield 136	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:downloadRequestLengths	Ljava/util/List;
     //   48: lload_3
-    //   49: invokestatic 262	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   52: invokeinterface 266 2 0
+    //   49: invokestatic 258	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   52: invokeinterface 262 2 0
     //   57: pop
     //   58: goto -31 -> 27
     //   61: astore 6
@@ -194,32 +194,32 @@ public class MiniProgramLpReportDC05115$ReportModel
     //   1: monitorenter
     //   2: aload_0
     //   3: aload_0
-    //   4: getfield 270	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestNum	J
+    //   4: getfield 266	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestNum	J
     //   7: lconst_1
     //   8: ladd
-    //   9: putfield 270	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestNum	J
+    //   9: putfield 266	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestNum	J
     //   12: iload 5
     //   14: ifge +16 -> 30
     //   17: aload_0
     //   18: aload_0
-    //   19: getfield 272	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestErrorNum	J
+    //   19: getfield 268	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestErrorNum	J
     //   22: lconst_1
     //   23: ladd
-    //   24: putfield 272	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestErrorNum	J
+    //   24: putfield 268	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestErrorNum	J
     //   27: aload_0
     //   28: monitorexit
     //   29: return
     //   30: aload_0
     //   31: getfield 130	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestCostList	Ljava/util/List;
     //   34: lload_1
-    //   35: invokestatic 262	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   38: invokeinterface 266 2 0
+    //   35: invokestatic 258	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   38: invokeinterface 262 2 0
     //   43: pop
     //   44: aload_0
     //   45: getfield 132	com/tencent/mobileqq/mini/report/MiniProgramLpReportDC05115$ReportModel:httpRequestLengths	Ljava/util/List;
     //   48: lload_3
-    //   49: invokestatic 262	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   52: invokeinterface 266 2 0
+    //   49: invokestatic 258	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   52: invokeinterface 262 2 0
     //   57: pop
     //   58: goto -31 -> 27
     //   61: astore 6

@@ -1,11 +1,37 @@
-import android.graphics.drawable.Drawable;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeyq
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
+  public aeyq(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    int i = 1;
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
+    {
+      this.a.app.setTroopGeneralSettingRing(1);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label78;
+      }
+    }
+    for (;;)
+    {
+      bdla.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      this.a.app.setTroopGeneralSettingRing(0);
+      break;
+      label78:
+      i = 0;
+    }
+  }
 }
 
 

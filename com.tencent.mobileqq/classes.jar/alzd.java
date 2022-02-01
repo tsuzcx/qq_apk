@@ -1,16 +1,24 @@
-public abstract interface alzd
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
+
+public class alzd
+  extends ntf
 {
-  public abstract String a(int paramInt, String paramString);
+  alzd(alzc paramalzc) {}
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(alsd paramalsd, long paramLong);
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void c(int paramInt, String paramString);
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
+      return;
+    }
+    ThreadManager.post(new TroopListAdapter.1.1(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
+  }
 }
 
 

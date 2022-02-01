@@ -1,6 +1,6 @@
 public abstract interface arrm
 {
-  public abstract void a(arjn paramarjn);
+  public abstract void a(arrl paramarrl);
 }
 
 

@@ -1,16 +1,17 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-class axoo
+public class axoo
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  
-  axoo(axom paramaxom) {}
+  public int a;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public RedTouch a;
+  public URLImageView b;
+  public URLImageView c;
 }
 
 

@@ -1,412 +1,380 @@
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import mqq.manager.Manager;
 
 public class bhhi
-  extends Drawable
+  implements Manager
 {
-  static LruCache<String, Typeface> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(8);
-  public float a;
-  public int a;
-  public Paint a;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  RectF jdField_a_of_type_AndroidGraphicsRectF;
-  public Drawable a;
-  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
-  public bhhj a;
-  public String a;
-  WeakReference<bhhk> jdField_a_of_type_JavaLangRefWeakReference;
-  public boolean a;
-  public float b;
-  public int b;
-  public Paint b;
-  RectF b;
-  public String b;
-  public WeakReference<Context> b;
-  public boolean b;
-  public float c;
-  public int c;
-  public Paint c;
-  public boolean c;
-  float d;
-  public int d;
-  public Paint d;
-  public boolean d;
-  public int e;
-  private Paint e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  private boolean g;
-  private boolean h;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  Lock jdField_a_of_type_JavaUtilConcurrentLocksLock;
+  boolean jdField_a_of_type_Boolean = false;
+  public ConcurrentHashMap<String, Integer> b;
+  boolean b;
+  public ConcurrentHashMap<String, Boolean> c;
+  boolean c;
   
-  public bhhi(Context paramContext)
+  public bhhi(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = -90;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = 1.5F;
-    this.jdField_b_of_type_Float = 4.0F;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_c_of_type_Float = 14.0F;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = 1;
-    this.jdField_e_of_type_Int = 25;
-    this.jdField_f_of_type_Int = 2;
-    this.jdField_a_of_type_Bhhj = new bhhj(this);
-    this.jdField_f_of_type_Boolean = true;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    a(paramContext);
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
   }
   
-  public int a()
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public Resources a()
-  {
-    if (this.jdField_b_of_type_JavaLangRefWeakReference.get() == null) {
-      return null;
+    paramQQAppInterface = (bhhi)paramQQAppInterface.getManager(QQManagerFactory.MGR_TROOP_FILTER);
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface.b("message.ring.care", 0);
     }
-    return ((Context)this.jdField_b_of_type_JavaLangRefWeakReference.get()).getResources();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bhhj.removeMessages(0);
-    this.jdField_a_of_type_Bhhj.a(this.jdField_b_of_type_Int);
-    invalidateSelf();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_d_of_type_Float = paramInt;
-  }
-  
-  void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidUtilDisplayMetrics = paramContext.getResources().getDisplayMetrics();
-    this.jdField_a_of_type_Float *= this.jdField_a_of_type_AndroidUtilDisplayMetrics.density;
-    this.jdField_b_of_type_Float *= this.jdField_a_of_type_AndroidUtilDisplayMetrics.density;
-    this.jdField_c_of_type_Float *= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-    this.jdField_d_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(0);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_e_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_e_of_type_AndroidGraphicsPaint.setColor(-1493172225);
-    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(16777215);
-    if (this.jdField_d_of_type_Int == 1)
-    {
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
-      this.jdField_e_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_e_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(16777215);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
-      this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(3355443);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_c_of_type_Float);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-      return;
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_e_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    }
-  }
-  
-  public void a(bhhk parambhhk)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambhhk);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    invalidateSelf();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.g = paramBoolean;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (paramInt >= 0) && (paramInt <= this.jdField_a_of_type_Int);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Bhhj.removeMessages(0);
-    if (!a(paramInt)) {
-      throw new IllegalArgumentException(String.format("Animation progress (%d) is greater than the max progress (%d) or lower than 0 ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int) }));
-    }
-    this.jdField_a_of_type_Bhhj.a(paramInt);
-    this.jdField_a_of_type_Bhhj.sendEmptyMessage(0);
-    invalidateSelf();
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    invalidateSelf();
-  }
-  
-  public void c(int paramInt)
-  {
-    if (!a(paramInt)) {
-      throw new IllegalArgumentException(String.format("Progress (%d) must be between %d and %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(0), Integer.valueOf(this.jdField_a_of_type_Int) }));
-    }
-    this.jdField_b_of_type_Int = paramInt;
-    bhhk localbhhk;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      localbhhk = (bhhk)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbhhk != null)
-      {
-        if (this.jdField_b_of_type_Int != this.jdField_a_of_type_Int) {
-          break label99;
-        }
-        localbhhk.onProgressCompleted(this);
-      }
-    }
-    for (;;)
-    {
-      invalidateSelf();
-      return;
-      label99:
-      localbhhk.onProgressChanged(this, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    invalidateSelf();
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    invalidateSelf();
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    invalidateSelf();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if (!isVisible()) {
-      return;
-    }
-    Rect localRect = getBounds();
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_d_of_type_Float, this.jdField_d_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsRectF.offset((localRect.width() - this.jdField_d_of_type_Float) / 2.0F, (localRect.height() - this.jdField_d_of_type_Float) / 2.0F);
-    int i;
-    if (this.jdField_c_of_type_Boolean)
-    {
-      i = (int)(this.jdField_a_of_type_AndroidGraphicsPaint.getStrokeWidth() / 2.0F + 0.5F);
-      this.jdField_a_of_type_AndroidGraphicsRectF.inset(i, i);
-    }
-    float f3 = this.jdField_a_of_type_AndroidGraphicsRectF.centerX();
-    float f4 = this.jdField_a_of_type_AndroidGraphicsRectF.centerY();
-    float f2;
-    float f1;
-    if (this.jdField_f_of_type_Boolean)
-    {
-      this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRectF);
-      paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, 0.0F, 360.0F, true, this.jdField_d_of_type_AndroidGraphicsPaint);
-      switch (this.jdField_d_of_type_Int)
-      {
-      default: 
-        throw new IllegalArgumentException("Invalid Progress Fill = " + this.jdField_d_of_type_Int);
-      case 0: 
-      case 1: 
-        f2 = this.jdField_b_of_type_Int * 360 / this.jdField_a_of_type_Int;
-        f1 = f2;
-        if (this.jdField_a_of_type_Boolean) {
-          f1 = f2 - 360.0F;
-        }
-        if (this.jdField_b_of_type_Boolean) {
-          f1 = -f1;
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_d_of_type_Int == 0)
-      {
-        if (this.h) {
-          paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, 0.0F, 360.0F, true, this.jdField_e_of_type_AndroidGraphicsPaint);
-        }
-        paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Int, f1, true, this.jdField_c_of_type_AndroidGraphicsPaint);
-        label305:
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_d_of_type_Boolean))
-        {
-          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-          {
-            Typeface localTypeface2 = (Typeface)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_b_of_type_JavaLangString);
-            Typeface localTypeface1 = localTypeface2;
-            if (localTypeface2 == null)
-            {
-              localTypeface1 = localTypeface2;
-              if (a() != null)
-              {
-                AssetManager localAssetManager = a().getAssets();
-                localTypeface1 = localTypeface2;
-                if (localAssetManager != null)
-                {
-                  localTypeface1 = Typeface.createFromAsset(localAssetManager, this.jdField_b_of_type_JavaLangString);
-                  jdField_a_of_type_AndroidSupportV4UtilLruCache.put(this.jdField_b_of_type_JavaLangString, localTypeface1);
-                }
-              }
-            }
-            this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(localTypeface1);
-          }
-          i = (int)f3;
-          int j = (int)(f4 - (this.jdField_b_of_type_AndroidGraphicsPaint.descent() + this.jdField_b_of_type_AndroidGraphicsPaint.ascent()) / 2.0F);
-          paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, i, j, this.jdField_b_of_type_AndroidGraphicsPaint);
-        }
-        if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_e_of_type_Boolean))
-        {
-          if (!this.g) {
-            break label684;
-          }
-          this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localRect.width(), localRect.height());
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-        if ((!this.jdField_c_of_type_Boolean) || (!this.jdField_f_of_type_Boolean)) {
-          break;
-        }
-        paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-        i = (int)(this.jdField_c_of_type_AndroidGraphicsPaint.getStrokeWidth() / 2.0F + 0.5F);
-        this.jdField_b_of_type_AndroidGraphicsRectF.inset(i, i);
-        if (this.h) {
-          paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, 0.0F, 360.0F, false, this.jdField_e_of_type_AndroidGraphicsPaint);
-        }
-        paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Int, f1, false, this.jdField_c_of_type_AndroidGraphicsPaint);
-        break label305;
-        f2 = this.jdField_d_of_type_Float / 2.0F * (this.jdField_b_of_type_Int / this.jdField_a_of_type_Int);
-        f1 = f2;
-        if (this.jdField_c_of_type_Boolean) {
-          f1 = f2 + 0.5F - this.jdField_a_of_type_AndroidGraphicsPaint.getStrokeWidth();
-        }
-        paramCanvas.drawCircle(f3, f4, f1, this.jdField_c_of_type_AndroidGraphicsPaint);
-        break label305;
-        label684:
-        i = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, i, i);
-        this.jdField_a_of_type_AndroidGraphicsRect.offset((localRect.width() - i) / 2, (localRect.height() - i) / 2);
-      }
-    }
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_e_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    invalidateSelf();
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    this.h = paramBoolean;
-  }
-  
-  public void f(int paramInt)
-  {
-    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    invalidateSelf();
-  }
-  
-  public void g(int paramInt)
-  {
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    invalidateSelf();
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return (int)this.jdField_d_of_type_Float;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return (int)this.jdField_d_of_type_Float;
-  }
-  
-  public int getOpacity()
-  {
     return 0;
   }
   
-  public void h(int paramInt)
+  public static int a(String paramString)
   {
-    this.jdField_c_of_type_Float = (paramInt * this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_c_of_type_Float);
-    invalidateSelf();
+    if (paramString.contains("message.group.policy.")) {
+      return 1;
+    }
+    if (paramString.contains("message.group.ring")) {
+      return 2;
+    }
+    if (paramString.contains("message.group.vibrate")) {
+      return 3;
+    }
+    if (paramString.contains("message.ring.switch")) {
+      return 4;
+    }
+    if (paramString.contains("message.vibrate.switch")) {
+      return 5;
+    }
+    if (paramString.contains("sync.c2c_message")) {
+      return 6;
+    }
+    if (paramString.contains("message.ring.care")) {
+      return 7;
+    }
+    return -1;
   }
   
-  public void i(int paramInt)
+  public static String a(String paramString, int paramInt)
   {
-    if (this.jdField_c_of_type_AndroidGraphicsPaint.getStyle() == Paint.Style.STROKE)
+    if (paramInt == 1) {
+      paramString = "message.group.policy." + paramString;
+    }
+    do
     {
-      this.jdField_b_of_type_Float = (paramInt * this.jdField_a_of_type_AndroidUtilDisplayMetrics.density);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
-      this.jdField_e_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
-      invalidateSelf();
+      return paramString;
+      if (paramInt == 2) {
+        return "message.group.ring";
+      }
+      if (paramInt == 3) {
+        return "message.group.vibrate";
+      }
+      if (paramInt == 4) {
+        return "message.ring.switch";
+      }
+      if (paramInt == 5) {
+        return "message.vibrate.switch";
+      }
+      if (paramInt == 6) {
+        return "sync.c2c_message";
+      }
+    } while (paramInt != 7);
+    return "message.ring.care";
+  }
+  
+  private void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RoamSetting", 2, "uploadNewValue...");
+    }
+    Object localObject;
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRunning())) {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("uploadNewValue return directly, app.isRunning=");
+        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+          break label75;
+        }
+        localObject = "null";
+        QLog.d("RoamSetting", 2, localObject);
+      }
+    }
+    label75:
+    label207:
+    do
+    {
+      do
+      {
+        return;
+        localObject = Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRunning());
+        break;
+        if (this.jdField_b_of_type_Boolean)
+        {
+          if ((this.jdField_a_of_type_Long <= 0L) || (this.jdField_a_of_type_Long + 45000L >= System.currentTimeMillis())) {
+            break label207;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("RoamSetting", 2, "uploadNewValue state_allLoading=" + this.jdField_b_of_type_Boolean + " more than 45s, forced to stop");
+          }
+          this.jdField_a_of_type_Long = 0L;
+          this.jdField_b_of_type_Boolean = false;
+        }
+        b();
+        localObject = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      } while (localObject == null);
+      ((FriendListHandler)localObject).setRoamSettingNewValue(a().a(), this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("RoamSetting", 2, "uploadNewValue but return, state_allLoading=" + this.jdField_b_of_type_Boolean + ", time_allLoading less than 60s, waitting...");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    paramQQAppInterface = (bhhi)paramQQAppInterface.getManager(QQManagerFactory.MGR_TROOP_FILTER);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a("message.ring.care", Integer.valueOf(paramInt));
     }
   }
   
-  protected boolean onLevelChange(int paramInt)
+  private void b()
   {
-    return super.onLevelChange(paramInt);
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
+    {
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.jdField_c_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      if (QLog.isColorLevel()) {
+        QLog.d("RoamSetting", 2, "copyNewValue2Uploading, change state_newValue=false, mapUploading:" + this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.toString());
+      }
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
   }
   
-  public void setAlpha(int paramInt) {}
-  
-  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void c()
   {
-    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
+    {
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
   }
   
-  public void setBounds(Rect paramRect)
+  public int a(String paramString, int paramInt)
   {
-    super.setBounds(paramRect);
+    if (paramString == null) {
+      return 1;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramString);
+    return ((Integer)a(localArrayList, paramInt).get(paramString)).intValue();
   }
   
-  public void setColorFilter(ColorFilter paramColorFilter) {}
+  aocx a()
+  {
+    return (aocx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.ROAM_SETTING_MANAGER);
+  }
+  
+  public Map<String, Integer> a(List<String> paramList, int paramInt)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return new HashMap();
+    }
+    Map localMap = bhdf.a().a(paramList, paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    for (;;)
+    {
+      try
+      {
+        paramList = paramList.iterator();
+        if (paramList.hasNext())
+        {
+          str = (String)paramList.next();
+          StringBuilder localStringBuilder = new StringBuilder(40);
+          localStringBuilder.append("message.group.policy.");
+          localStringBuilder.append(str);
+          str = localStringBuilder.toString();
+          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+          {
+            localMap.put(str, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).intValue()));
+            continue;
+          }
+        }
+      }
+      catch (OutOfMemoryError paramList)
+      {
+        String str;
+        if (QLog.isColorLevel()) {
+          QLog.e("RoamSetting", 2, "getTroopMsgFilterList OutOfMemoryError");
+        }
+        return localMap;
+        if (!this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
+          continue;
+        }
+        localMap.put(str, Integer.valueOf(((Integer)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).intValue()));
+        continue;
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  public void a(int paramInt1, long paramLong, int paramInt2, boolean paramBoolean, FriendListHandler paramFriendListHandler)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RoamSetting", 2, "loadRoamSettingsByPage,localRevision=" + paramInt1 + " offset=" + paramLong + " respRevision=" + paramInt2 + " needTroopSettings=" + paramBoolean + " thread=" + Thread.currentThread().getName());
+    }
+    if (paramFriendListHandler == null) {
+      paramFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+    }
+    for (;;)
+    {
+      paramFriendListHandler.getAllGeneralSettings(paramInt1, paramLong, paramInt2, paramBoolean);
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      return;
+    }
+  }
+  
+  public void a(String paramString, Integer paramInteger)
+  {
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramInteger);
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      if (QLog.isColorLevel()) {
+        QLog.d("RoamSetting", 2, "state_newValue=" + this.jdField_c_of_type_Boolean + " setRoamSettingNewValue, path=" + paramString + " value=" + paramInteger + " uploadingCount=" + this.jdField_a_of_type_Int);
+      }
+      a();
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  public void a(boolean paramBoolean, FriendListHandler paramFriendListHandler)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRunning())) {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("loadAllRoamSetting return directly, app.isRunning=");
+        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+          break label64;
+        }
+        paramFriendListHandler = "null";
+        QLog.d("RoamSetting", 2, paramFriendListHandler);
+      }
+    }
+    label64:
+    do
+    {
+      return;
+      paramFriendListHandler = Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRunning());
+      break;
+      if (!this.jdField_b_of_type_Boolean) {
+        break label121;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("RoamSetting", 2, "loadAllRoamSettings but return, state_allUpdating=" + this.jdField_b_of_type_Boolean);
+    return;
+    label121:
+    this.jdField_b_of_type_Boolean = true;
+    int i = a().a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RoamSetting", 2, "loadAllRoamSettings, localRevision=" + i + " needTroopSettings=" + paramBoolean + " thread=" + Thread.currentThread().getName());
+    }
+    a(i, 0L, -1, paramBoolean, paramFriendListHandler);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RoamSetting", 2, "onGetAllSettingsFinish isSucc=" + paramBoolean1 + " next=" + paramBoolean2);
+    }
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    if ((paramBoolean2) && (this.jdField_c_of_type_Boolean)) {
+      a();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int < 3;
+  }
+  
+  public int b(String paramString, int paramInt)
+  {
+    if (paramString == null) {
+      return paramInt;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+      {
+        paramInt = ((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).intValue();
+        return paramInt;
+      }
+      if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+      {
+        paramInt = ((Integer)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).intValue();
+        return paramInt;
+      }
+      return a().a(paramString, paramInt);
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RoamSetting", 2, "onUploadRomingSettingsFinish isSuccess=" + paramBoolean1 + " reload=" + paramBoolean2);
+    }
+    c();
+    if ((paramBoolean1) && (paramBoolean2)) {
+      a(true, null);
+    }
+  }
+  
+  public void onDestroy() {}
 }
 
 

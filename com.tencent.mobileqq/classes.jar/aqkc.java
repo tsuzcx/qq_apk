@@ -1,61 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqkc
-  extends aptq<aqka>
+  implements View.OnClickListener
 {
-  public static aqka a()
-  {
-    return (aqka)apub.a().a(429);
-  }
+  public aqkc(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  @NonNull
-  public aqka a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new aqka();
-  }
-  
-  @Nullable
-  public aqka a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqka.a(paramArrayOfaptx);
+    String str = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(str)) {
+      this.a.a(str);
     }
-    return null;
-  }
-  
-  public void a(aqka paramaqka) {}
-  
-  public Class<aqka> clazz()
-  {
-    return aqka.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 429;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,10 @@
-import org.json.JSONObject;
+import android.view.View;
 
-public class bgqf
+public abstract interface bgqf
 {
-  public int a;
-  public boolean a;
+  public abstract void a(View paramView);
   
-  public bgqf()
-  {
-    this.jdField_a_of_type_Int = -30009;
-  }
-  
-  public bgqf(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Int = -30009;
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
-    if ((this.jdField_a_of_type_Int == 0) && (paramJSONObject.optInt("flag", 0) == 1)) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-      bool = false;
-    }
-  }
-  
-  public String toString()
-  {
-    return "LiangHaoStatusRsp{ret=" + this.jdField_a_of_type_Int + ", flag=" + this.jdField_a_of_type_Boolean + '}';
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import alnn;
-import alnr;
-import altz;
-import amge;
-import amkk;
+import amma;
+import amme;
+import amta;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anwk;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import anhm;
+import anmb;
+import aozm;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
@@ -26,49 +27,49 @@ public class GetApolloContentUpdateStatus
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "[GetApolloContentUpdateStatus]system time" + System.currentTimeMillis() + ",last update time:");
     }
-    alnr localalnr = (alnr)this.a.app.getManager(153);
+    amme localamme = (amme)this.a.app.getManager(QQManagerFactory.APOLLO_MANAGER);
     SharedPreferences localSharedPreferences = this.a.app.getApp().getSharedPreferences("mobileQQ", 0);
     long l = localSharedPreferences.getLong("last_pull_apollo_content_update_time", 0L);
-    if (amge.a(this.a.app.getCurrentUin(), this.a.app) == 0)
+    if (anhm.a(this.a.app.getCurrentUin(), this.a.app) == 0)
     {
-      ((VasExtensionHandler)this.a.app.getBusinessHandler(71)).a(this.a.app.getCurrentUin(), 1073741824, "cmshow asyncStep");
+      ((VasExtensionHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(this.a.app.getCurrentUin(), 1073741824, "cmshow asyncStep");
       QLog.i("QQInitHandler", 1, "sava doStep cmshow asyncStep getUserApolloInfo RECOMMEND_ACTION");
     }
-    anwk localanwk = (anwk)this.a.app.getBusinessHandler(115);
+    aozm localaozm = (aozm)this.a.app.getBusinessHandler(BusinessHandlerFactory.APOLLO_CONTENT_UPDATE_HANDLER);
     if ((System.currentTimeMillis() - l > 21600000L) || (System.currentTimeMillis() < l)) {
-      if (localanwk != null)
+      if (localaozm != null)
       {
-        localanwk.a(null);
+        localaozm.a(null);
         localSharedPreferences.edit().putLong("last_pull_apollo_content_update_time", System.currentTimeMillis()).commit();
       }
     }
     for (;;)
     {
-      alnn.b();
-      ((alnn)this.a.app.getManager(211)).e();
+      amma.b();
+      ((amma)this.a.app.getManager(QQManagerFactory.APOLLO_GAME_MANAGER)).e();
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "get game list on login.");
       }
-      if (localalnr.j()) {
-        ((UsedAppListManager)this.a.app.getManager(288)).getUsedAppList();
+      if (localamme.j()) {
+        ((UsedAppListManager)this.a.app.getManager(QQManagerFactory.USED_APP_LIST_MANAGER)).getUsedAppList();
       }
-      amkk.a("login");
-      alnr.a = this.a.app.getCurrentAccountUin();
-      altz.a(this.a.app);
-      if (localalnr.c(this.a.app.getCurrentAccountUin())) {
-        ((VasExtensionHandler)this.a.app.getBusinessHandler(71)).b();
+      anmb.a("login");
+      amme.a = this.a.app.getCurrentAccountUin();
+      amta.a(this.a.app);
+      if (localamme.c(this.a.app.getCurrentAccountUin())) {
+        ((VasExtensionHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).b();
       }
-      if (alnr.a(this.a.app.getApp())) {
-        localalnr.n();
+      if (amme.a(this.a.app.getApp())) {
+        localamme.n();
       }
       return 7;
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "system time" + System.currentTimeMillis() + ",last update time:" + l);
       }
-      if (alnr.b(this.a.app.getApp())) {
-        localalnr.a(false, "login check file", 1);
-      } else if (FileUtil.isFileExists(ApolloUtil.a)) {
-        alnr.a(this.a.app);
+      if (amme.b(this.a.app.getApp())) {
+        localamme.a(false, "login check file", 1);
+      } else if (FileUtil.isFileExists("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/action/action_v730.json")) {
+        amme.a(this.a.app);
       }
     }
   }

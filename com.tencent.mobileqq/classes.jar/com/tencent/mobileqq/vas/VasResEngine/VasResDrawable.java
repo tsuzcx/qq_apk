@@ -16,12 +16,12 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bggt;
-import bggu;
-import bggw;
-import bggx;
-import bggy;
-import bggz;
+import bhpn;
+import bhpo;
+import bhpq;
+import bhpr;
+import bhps;
+import bhpt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
@@ -39,28 +39,47 @@ public class VasResDrawable
   extends VipPngPlayAnimationDrawable
   implements Handler.Callback
 {
-  private float jdField_a_of_type_Float;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bggu jdField_a_of_type_Bggu;
-  private bggx jdField_a_of_type_Bggx;
-  private bggy jdField_a_of_type_Bggy;
-  private bggz jdField_a_of_type_Bggz;
-  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new bggw(this);
-  private Handler b;
-  private int i;
+  protected float a;
+  protected Context a;
+  protected Path a;
+  protected RectF a;
+  public Drawable a;
+  protected bhpo a;
+  protected bhpr a;
+  protected bhps a;
+  protected bhpt a;
+  private URLDrawable.URLDrawableListener a;
+  protected Handler b;
+  protected int i;
   
-  public VasResDrawable(AppRuntime paramAppRuntime, int paramInt)
+  public VasResDrawable(Context paramContext, int paramInt)
   {
-    super(paramAppRuntime.getApplication().getApplicationContext().getResources());
-    a(paramAppRuntime, paramInt, new bggx(this));
+    super(paramContext.getResources());
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new bhpq(this);
+    a(paramContext, paramInt, new bhpr(this));
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   }
   
-  private Drawable a(String paramString1, String paramString2)
+  public VasResDrawable(AppRuntime paramAppRuntime, int paramInt)
+  {
+    super(paramAppRuntime.getApplication().getApplicationContext().getResources());
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new bhpq(this);
+    a(paramAppRuntime.getApplication().getApplicationContext(), paramInt, new bhpr(this));
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  }
+  
+  private void a(Context paramContext, int paramInt, bhpr parambhpr)
+  {
+    this.i = paramInt;
+    this.jdField_a_of_type_Bhpr = parambhpr;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Bhpo = new bhpo(paramInt, this.b);
+  }
+  
+  protected Drawable a(String paramString1, String paramString2)
   {
     Drawable localDrawable = null;
     if (this.jdField_a_of_type_AndroidContentContext == null) {
@@ -77,7 +96,7 @@ public class VasResDrawable
       {
         if (!TextUtils.isEmpty(a().jdField_a_of_type_JavaLangString)) {}
         for (paramString1 = new URL(a().jdField_a_of_type_JavaLangString, paramString2, paramString1); paramString1 == null; paramString1 = new URL("http", paramString2, paramString1)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846027);
+          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846115);
         }
       }
       catch (MalformedURLException paramString2)
@@ -117,35 +136,26 @@ public class VasResDrawable
     return null;
   }
   
-  private void a(AppRuntime paramAppRuntime, int paramInt, bggx parambggx)
+  public bhpn a()
   {
-    this.i = paramInt;
-    this.jdField_a_of_type_Bggx = parambggx;
-    this.jdField_a_of_type_AndroidContentContext = paramAppRuntime.getApplication().getApplicationContext();
-    this.b = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Bggu = new bggu(paramInt, this.b);
+    return this.jdField_a_of_type_Bhpt;
   }
   
-  public bggt a()
+  public bhpo a()
   {
-    return this.jdField_a_of_type_Bggz;
+    return this.jdField_a_of_type_Bhpo;
   }
   
-  public bggu a()
+  public bhpr a()
   {
-    return this.jdField_a_of_type_Bggu;
-  }
-  
-  public bggx a()
-  {
-    return this.jdField_a_of_type_Bggx;
+    return this.jdField_a_of_type_Bhpr;
   }
   
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_Bggz != null) {
-      this.jdField_a_of_type_Bggz.c();
+    if (this.jdField_a_of_type_Bhpt != null) {
+      this.jdField_a_of_type_Bhpt.c();
     }
   }
   
@@ -154,46 +164,7 @@ public class VasResDrawable
     this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public void a(bggy parambggy)
-  {
-    this.jdField_a_of_type_Bggy = parambggy;
-  }
-  
-  public void a(bggz parambggz)
-  {
-    this.jdField_a_of_type_Bggz = parambggz;
-    if (this.jdField_a_of_type_Bggz != null) {
-      this.jdField_a_of_type_Bggz.b();
-    }
-    invalidateSelf();
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Bggx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader != null) && (this.jdField_a_of_type_Bggx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length != 0))
-    {
-      Header[] arrayOfHeader = new Header[this.jdField_a_of_type_Bggx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length + 1];
-      System.arraycopy(this.jdField_a_of_type_Bggx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader, 0, arrayOfHeader, 0, this.jdField_a_of_type_Bggx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length);
-      arrayOfHeader[this.jdField_a_of_type_Bggx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length] = new BasicHeader(paramString1, paramString2);
-      this.jdField_a_of_type_Bggx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader = arrayOfHeader;
-      return;
-    }
-    this.jdField_a_of_type_Bggx.jdField_a_of_type_ArrayOfOrgApacheHttpHeader = new Header[] { new BasicHeader(paramString1, paramString2) };
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((a().b > 0) && (this.jdField_a_of_type_AndroidContentContext != null)) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(this.jdField_a_of_type_Bggx.b);
-    }
-    super.a();
-    this.jdField_a_of_type_Bggu.a(paramInt);
-    if (this.jdField_a_of_type_Bggz != null) {
-      this.jdField_a_of_type_Bggz.b();
-    }
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
+  protected void a(@NonNull Canvas paramCanvas)
   {
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     this.jdField_a_of_type_AndroidGraphicsRectF.set(getBounds());
@@ -204,7 +175,51 @@ public class VasResDrawable
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(getBounds());
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     }
-    if (this.jdField_a_of_type_Bggz.a()) {
+  }
+  
+  public void a(bhps parambhps)
+  {
+    this.jdField_a_of_type_Bhps = parambhps;
+  }
+  
+  public void a(bhpt parambhpt)
+  {
+    this.jdField_a_of_type_Bhpt = parambhpt;
+    if (this.jdField_a_of_type_Bhpt != null) {
+      this.jdField_a_of_type_Bhpt.b();
+    }
+    invalidateSelf();
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((this.jdField_a_of_type_Bhpr.jdField_a_of_type_ArrayOfOrgApacheHttpHeader != null) && (this.jdField_a_of_type_Bhpr.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length != 0))
+    {
+      Header[] arrayOfHeader = new Header[this.jdField_a_of_type_Bhpr.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length + 1];
+      System.arraycopy(this.jdField_a_of_type_Bhpr.jdField_a_of_type_ArrayOfOrgApacheHttpHeader, 0, arrayOfHeader, 0, this.jdField_a_of_type_Bhpr.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length);
+      arrayOfHeader[this.jdField_a_of_type_Bhpr.jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length] = new BasicHeader(paramString1, paramString2);
+      this.jdField_a_of_type_Bhpr.jdField_a_of_type_ArrayOfOrgApacheHttpHeader = arrayOfHeader;
+      return;
+    }
+    this.jdField_a_of_type_Bhpr.jdField_a_of_type_ArrayOfOrgApacheHttpHeader = new Header[] { new BasicHeader(paramString1, paramString2) };
+  }
+  
+  public void b(int paramInt)
+  {
+    if ((a().b > 0) && (this.jdField_a_of_type_AndroidContentContext != null)) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(this.jdField_a_of_type_Bhpr.b);
+    }
+    super.a();
+    this.jdField_a_of_type_Bhpo.a(paramInt);
+    if (this.jdField_a_of_type_Bhpt != null) {
+      this.jdField_a_of_type_Bhpt.b();
+    }
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas)
+  {
+    a(paramCanvas);
+    if (this.jdField_a_of_type_Bhpt.a()) {
       super.draw(paramCanvas);
     }
   }
@@ -216,7 +231,7 @@ public class VasResDrawable
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Bggz == null) {
+    if (this.jdField_a_of_type_Bhpt == null) {
       return false;
     }
     switch (paramMessage.what)
@@ -225,8 +240,8 @@ public class VasResDrawable
     for (;;)
     {
       return true;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Bggz.a())) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(String.valueOf(this.i), this.jdField_a_of_type_Bggz.a());
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Bhpt.a())) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(String.valueOf(this.i), this.jdField_a_of_type_Bhpt.a());
       }
       paramMessage = paramMessage.getData();
       if (paramMessage.getInt("type") == 1)
@@ -239,18 +254,18 @@ public class VasResDrawable
         this.f = k;
       }
       invalidateSelf();
-      if (this.jdField_a_of_type_Bggy != null) {
-        this.jdField_a_of_type_Bggy.a();
+      if (this.jdField_a_of_type_Bhps != null) {
+        this.jdField_a_of_type_Bhps.a();
       }
       return true;
-      this.jdField_a_of_type_Bggz.a(paramMessage.arg1, (Bundle)paramMessage.obj);
-      if (this.jdField_a_of_type_Bggy != null) {
-        this.jdField_a_of_type_Bggy.b();
+      this.jdField_a_of_type_Bhpt.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+      if (this.jdField_a_of_type_Bhps != null) {
+        this.jdField_a_of_type_Bhps.b();
       }
       return true;
-      this.jdField_a_of_type_Bggz.b();
-      if (this.jdField_a_of_type_Bggy != null) {
-        this.jdField_a_of_type_Bggy.c();
+      this.jdField_a_of_type_Bhpt.b();
+      if (this.jdField_a_of_type_Bhps != null) {
+        this.jdField_a_of_type_Bhps.c();
       }
     }
   }

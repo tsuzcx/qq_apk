@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import akgc;
+import albv;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import bhim;
+import bite;
 
 public final class DrawRedpacketPannelPreviewFragment$SwapViews
   implements Runnable
@@ -26,13 +26,13 @@ public final class DrawRedpacketPannelPreviewFragment$SwapViews
   {
     float f1 = DrawRedpacketPannelPreviewFragment.a(this.this$0).getWidth() / 2.0F;
     float f2 = DrawRedpacketPannelPreviewFragment.a(this.this$0).getHeight() / 2.0F;
-    bhim localbhim;
+    bite localbite;
     if (this.jdField_a_of_type_Boolean)
     {
-      localbhim = new bhim(-90.0F, 0.0F, f1, f2, 610.0F, false);
+      localbite = new bite(-90.0F, 0.0F, f1, f2, 610.0F, false);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.b.setVisibility(0);
-      if (akgc.a(this.this$0.getActivity()))
+      if (albv.a(this.this$0.getActivity()))
       {
         DrawRedpacketPannelPreviewFragment.a(this.this$0).setVisibility(0);
         DrawRedpacketPannelPreviewFragment.f(this.this$0).setVisibility(4);
@@ -40,17 +40,17 @@ public final class DrawRedpacketPannelPreviewFragment$SwapViews
     }
     for (;;)
     {
-      localbhim.setDuration(250L);
-      localbhim.setFillAfter(true);
-      localbhim.setInterpolator(new DecelerateInterpolator());
-      DrawRedpacketPannelPreviewFragment.a(this.this$0).startAnimation(localbhim);
+      localbite.setDuration(250L);
+      localbite.setFillAfter(true);
+      localbite.setInterpolator(new DecelerateInterpolator());
+      DrawRedpacketPannelPreviewFragment.a(this.this$0).startAnimation(localbite);
       return;
       DrawRedpacketPannelPreviewFragment.f(this.this$0).setVisibility(0);
       DrawRedpacketPannelPreviewFragment.b(this.this$0).setVisibility(4);
       continue;
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       this.b.setVisibility(8);
-      localbhim = new bhim(90.0F, 0.0F, f1, f2, 610.0F, false);
+      localbite = new bite(90.0F, 0.0F, f1, f2, 610.0F, false);
     }
   }
 }

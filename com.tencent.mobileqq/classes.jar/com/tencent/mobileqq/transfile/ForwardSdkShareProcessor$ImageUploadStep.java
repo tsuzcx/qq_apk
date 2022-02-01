@@ -2,9 +2,9 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import atqa;
-import ayeu;
-import bhvw;
+import auuv;
+import azlg;
+import bjgx;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -39,8 +39,8 @@ class ForwardSdkShareProcessor$ImageUploadStep
     String str = this.this$0.app.getCurrentUin();
     paramString = new CompressInfo(paramString, 0);
     paramString.f = 0;
-    atqa.a("compress_local_image");
-    atqa.a("compress_local_image", str, ayeu.b(paramString));
+    auuv.a("compress_local_image");
+    auuv.a("compress_local_image", str, azlg.b(paramString));
     if (!TextUtils.isEmpty(paramString.e)) {
       this.this$0.mLocalImgUrl = paramString.e;
     }
@@ -52,18 +52,18 @@ class ForwardSdkShareProcessor$ImageUploadStep
       l = paramString.length();
       paramString = FileUtils.calcMd5(this.this$0.mLocalImgUrl);
       if ((l <= 0L) || (TextUtils.isEmpty(paramString))) {
-        break label537;
+        break label544;
       }
       paramString = String.format("https://cgi.connect.qq.com/qqconnectopen/query_share_image?key=%s&size=%d&short_url=0", new Object[] { paramString, Long.valueOf(l) });
-      atqa.a("query_image");
+      auuv.a("query_image");
       paramString = HttpUtil.queryImageByIP(NetworkUtil.toDirectIpUrl(paramString, 1007), str, ForwardSdkShareProcessor.access$200(this.this$0));
       localObject2 = new HashMap();
       if (paramString != null) {
-        break label434;
+        break label441;
       }
       ((HashMap)localObject2).put("param_ret_code", "-1");
       ((HashMap)localObject2).put("param_need_upload", "0");
-      atqa.a("query_image", str, (HashMap)localObject2, false);
+      auuv.a("query_image", str, (HashMap)localObject2, false);
     }
     for (;;)
     {
@@ -84,32 +84,32 @@ class ForwardSdkShareProcessor$ImageUploadStep
         {
           ((Bundle)localObject1).putString("intext_2", i);
           ((Bundle)localObject1).putString("intext_5", "" + paramLong);
-          bhvw.a().a((Bundle)localObject1, "", str, false);
+          bjgx.a().a((Bundle)localObject1, "", str, false, this.this$0.isSdkShare());
           return paramString;
           l = 0L;
           break;
-          label434:
+          label441:
           ((HashMap)localObject2).put("param_ret_code", String.valueOf(paramString.first));
           if (TextUtils.isEmpty((CharSequence)paramString.second))
           {
             localObject1 = "0";
-            label466:
+            label473:
             ((HashMap)localObject2).put("param_need_upload", localObject1);
             if (TextUtils.isEmpty((CharSequence)paramString.second)) {
-              break label513;
+              break label520;
             }
           }
-          label513:
+          label520:
           for (boolean bool = true;; bool = false)
           {
-            atqa.a("query_image", str, (HashMap)localObject2, bool);
+            auuv.a("query_image", str, (HashMap)localObject2, bool);
             break;
             localObject1 = "1";
-            break label466;
+            break label473;
           }
         }
       }
-      label537:
+      label544:
       paramString = null;
     }
   }
@@ -153,103 +153,101 @@ class ForwardSdkShareProcessor$ImageUploadStep
     ((Bundle)localObject1).putString("act_type", "51");
     ((Bundle)localObject1).putString("intext_3", "0");
     ((Bundle)localObject1).putString("stringext_1", this.this$0.mTargetUrl);
-    bhvw.a().a((Bundle)localObject1, "", str, false);
+    bjgx.a().a((Bundle)localObject1, "", str, false, this.this$0.isSdkShare());
     HashMap localHashMap1 = new HashMap();
     localHashMap1.put("param_is_ip_direct", "1");
-    atqa.a("upload_local_thumb_image");
+    auuv.a("upload_local_thumb_image");
     Object localObject2 = HttpUtil.uploadImageWithHttps(NetworkUtil.toDirectIpUrl("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", 1007), "cgi.connect.qq.com", str, ForwardSdkShareProcessor.access$200(this.this$0), null, localHashMap3, localHashMap2, false);
     localObject1 = localObject2;
     if (localObject2 == null)
     {
-      atqa.a("upload_local_thumb_image", str, localHashMap1, false);
-      atqa.a("upload_local_thumb_image");
+      auuv.a("upload_local_thumb_image", str, localHashMap1, false);
+      auuv.a("upload_local_thumb_image");
       localObject1 = HttpUtil.uploadImageWithHttps("https://cgi.connect.qq.com/qqconnectopen/upload_share_image", "cgi.connect.qq.com", str, ForwardSdkShareProcessor.access$200(this.this$0), null, localHashMap3, localHashMap2, true);
       localHashMap1.put("param_is_ip_direct", "0");
     }
+    int j = 0;
     int k = 0;
-    i = 0;
-    bool2 = false;
-    bool1 = bool2;
+    boolean bool2 = false;
+    int i;
     if (localObject1 != null) {
-      j = k;
-    }
-    try
-    {
-      localObject1 = new JSONObject((String)localObject1);
-      j = k;
-      k = ((JSONObject)localObject1).getInt("retcode");
-      bool1 = bool2;
       i = k;
-      if (k == 0)
-      {
-        bool1 = bool2;
-        i = k;
-        j = k;
-        if (((JSONObject)localObject1).has("result"))
-        {
-          j = k;
-          localObject1 = ((JSONObject)localObject1).getJSONObject("result");
-          j = k;
-          this.this$0.mRemoteImgUrl = ((JSONObject)localObject1).getString("url");
-          j = k;
-          ForwardSdkShareProcessor.access$900(this.this$0).set(true);
-          bool1 = true;
-          i = k;
-        }
-      }
     }
-    catch (JSONException localJSONException)
+    for (;;)
     {
-      for (;;)
+      try
       {
+        localObject1 = new JSONObject((String)localObject1);
+        i = k;
+        j = ((JSONObject)localObject1).getInt("retcode");
         bool1 = bool2;
+        if (j == 0)
+        {
+          bool1 = bool2;
+          i = j;
+          if (((JSONObject)localObject1).has("result"))
+          {
+            i = j;
+            localObject1 = ((JSONObject)localObject1).getJSONObject("result");
+            i = j;
+            this.this$0.mRemoteImgUrl = ((JSONObject)localObject1).getString("url");
+            i = j;
+            ForwardSdkShareProcessor.access$900(this.this$0).set(true);
+            bool1 = true;
+          }
+        }
         i = j;
+        localHashMap1.put("param_ret_code", Integer.toString(i));
+        auuv.a("upload_local_thumb_image", str, bool1);
+        paramLong = System.currentTimeMillis() - paramLong;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = "ImageUploadStep|uploadImage|suc=" + bool1 + ",cost=" + paramLong + ",localImgUrl=" + this.this$0.mLocalImgUrl + ",targetUrl=" + this.this$0.mTargetUrl;
+          if ((bool1) && (paramLong <= 5000L)) {
+            break label877;
+          }
+          QLog.e("Q.share.ForwardSdkShareProcessor", 2, (String)localObject1);
+        }
+        if (!bool1) {
+          QLog.e("Q.share.ForwardSdkShareProcessor", 1, "ImageUploadStep|uploadImage|ret=" + i + ",retry=" + this.retryCount);
+        }
+        localObject1 = new Bundle();
+        ((Bundle)localObject1).putString("report_type", "102");
+        ((Bundle)localObject1).putString("act_type", "11");
+        localObject2 = new StringBuilder().append("");
+        if (!bool1) {
+          break label888;
+        }
+        j = 0;
+        ((Bundle)localObject1).putString("intext_1", j);
+        ((Bundle)localObject1).putString("intext_2", "" + i);
+        ((Bundle)localObject1).putString("intext_3", "0");
+        ((Bundle)localObject1).putString("intext_5", "" + paramLong);
+        if (!bool1)
+        {
+          ((Bundle)localObject1).putString("stringext_2", this.this$0.mLocalImgUrl);
+          ((Bundle)localObject1).putString("stringext_1", this.this$0.mTargetUrl);
+        }
+        bjgx.a().a((Bundle)localObject1, "", str, false, this.this$0.isSdkShare());
+        return new Pair(Integer.valueOf(i), Boolean.valueOf(bool1));
+      }
+      catch (JSONException localJSONException)
+      {
+        j = i;
         if (QLog.isColorLevel())
         {
           QLog.d("Q.share.ForwardSdkShareProcessor", 2, localJSONException.getMessage());
-          bool1 = bool2;
-          i = j;
-          continue;
-          QLog.d("Q.share.ForwardSdkShareProcessor", 2, localJSONException);
-          continue;
-          j = 1;
+          j = i;
         }
       }
-    }
-    localHashMap1.put("param_ret_code", Integer.toString(i));
-    atqa.a("upload_local_thumb_image", str, bool1);
-    paramLong = System.currentTimeMillis() - paramLong;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = "ImageUploadStep|uploadImage|suc=" + bool1 + ",cost=" + paramLong + ",localImgUrl=" + this.this$0.mLocalImgUrl + ",targetUrl=" + this.this$0.mTargetUrl;
-      if ((!bool1) || (paramLong > 5000L)) {
-        QLog.e("Q.share.ForwardSdkShareProcessor", 2, (String)localObject1);
-      }
-    }
-    else
-    {
-      if (!bool1) {
-        QLog.e("Q.share.ForwardSdkShareProcessor", 1, "ImageUploadStep|uploadImage|ret=" + i + ",retry=" + this.retryCount);
-      }
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("report_type", "102");
-      ((Bundle)localObject1).putString("act_type", "11");
-      localObject2 = new StringBuilder().append("");
-      if (!bool1) {
-        break label891;
-      }
-      j = 0;
-      ((Bundle)localObject1).putString("intext_1", j);
-      ((Bundle)localObject1).putString("intext_2", "" + i);
-      ((Bundle)localObject1).putString("intext_3", "0");
-      ((Bundle)localObject1).putString("intext_5", "" + paramLong);
-      if (!bool1)
-      {
-        ((Bundle)localObject1).putString("stringext_2", this.this$0.mLocalImgUrl);
-        ((Bundle)localObject1).putString("stringext_1", this.this$0.mTargetUrl);
-      }
-      bhvw.a().a((Bundle)localObject1, "", str, false);
-      return new Pair(Integer.valueOf(i), Boolean.valueOf(bool1));
+      boolean bool1 = false;
+      i = j;
+      continue;
+      label877:
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, localJSONException);
+      continue;
+      label888:
+      j = 1;
     }
   }
 }

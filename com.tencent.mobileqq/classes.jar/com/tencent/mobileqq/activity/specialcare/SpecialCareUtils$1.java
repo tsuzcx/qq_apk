@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import atje;
-import atjn;
+import aunx;
+import auog;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,12 +12,12 @@ public final class SpecialCareUtils$1
   
   public void run()
   {
-    if (atje.a().a())
+    if (aunx.a().a())
     {
       if (QLog.isColorLevel()) {
         QLog.d("SpecialCareUtils", 2, "preLoadSpecialCareSettingPage");
       }
-      atjn.a(this.a, null);
+      auog.a(this.a, null);
     }
   }
 }

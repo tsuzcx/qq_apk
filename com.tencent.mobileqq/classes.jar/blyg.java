@@ -1,21 +1,20 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class blyg
-  implements Observer<blzs>
+  implements DialogInterface.OnClickListener
 {
   blyg(blyb paramblyb) {}
   
-  public void a(@Nullable blzs paramblzs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramblzs != null) {
-      blyb.a(this.a, paramblzs);
-    }
+    this.a.a("0X8004857", 1);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blyg
  * JD-Core Version:    0.7.0.1
  */

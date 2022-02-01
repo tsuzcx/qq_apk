@@ -1,65 +1,72 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class aqxu
-  extends aqxl
+  extends aqwt<aqxt>
 {
-  public aqxu(QQAppInterface paramQQAppInterface)
+  @NonNull
+  public aqxt a(int paramInt)
   {
-    super("qq.android.early.precover", paramQQAppInterface);
+    QLog.d("TroopNotificationConfigProcessor.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new aqxt();
   }
   
-  public int a()
+  @Nullable
+  public aqxt a(aqxa[] paramArrayOfaqxa)
   {
-    return 10045;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PrecoverData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyPrecover";
-  }
-  
-  public void a(XmlData paramXmlData)
-  {
-    super.a(paramXmlData);
-    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
-      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return aqxt.a(paramArrayOfaqxa[0].a);
     }
+    return null;
   }
   
-  public boolean a()
+  public void a(aqxt paramaqxt)
   {
-    return false;
+    QLog.d("TroopNotificationConfigProcessor.config", 1, "onUpdate, newConf = " + paramaqxt);
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
   }
   
-  public String b()
+  public Class<aqxt> clazz()
   {
-    return "prd";
+    return aqxt.class;
   }
   
-  public boolean i()
+  public boolean isNeedCompressed()
   {
-    File localFile = new File(c());
-    return (localFile != null) && (localFile.exists());
+    return true;
   }
   
-  public boolean j()
+  public boolean isNeedStoreLargeFile()
   {
-    File localFile = new File(d());
-    return (localFile != null) && (localFile.exists());
+    return true;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TroopNotificationConfigProcessor.config", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 634;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,23 @@
-import android.view.View;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.AVLoadingDialogActivity;
 
 public class mce
-  extends mcg
+  extends BroadcastReceiver
 {
-  public int a = 0;
-  public int b = -1;
+  public mce(AVLoadingDialogActivity paramAVLoadingDialogActivity) {}
   
-  public mce(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramView);
-    this.a = paramInt;
+    if (paramIntent.getAction().equals("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH")) {
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mce
  * JD-Core Version:    0.7.0.1
  */

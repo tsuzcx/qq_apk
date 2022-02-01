@@ -1,24 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
-class ucn
-  implements View.OnClickListener
+public class ucn
+  extends Handler
 {
-  ucn(ucj paramucj, uci paramuci) {}
-  
-  public void onClick(View paramView)
+  public ucn(ViolaBaseView paramViolaBaseView, Looper paramLooper)
   {
-    odq.a(this.jdField_a_of_type_Ucj.jdField_a_of_type_Uci.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B6F", "0X8005B6F", 0, 0, "", "", "", "", false);
-    bcef.b(this.jdField_a_of_type_Ucj.jdField_a_of_type_Uci.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642D", "0X800642D", 0, 0, "", "", "", "");
-    adxp.a(this.jdField_a_of_type_Ucj.jdField_a_of_type_Uci.jdField_a_of_type_AndroidAppActivity, uex.a(this.jdField_a_of_type_Ucj.jdField_a_of_type_Uci.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ucj.jdField_a_of_type_Uci.jdField_a_of_type_AndroidAppActivity), null, null);
-    ucp.b(this.jdField_a_of_type_Ucj.jdField_a_of_type_Uci.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      ViolaBaseView.d(this.a);
+      return;
+    case 3: 
+      ViolaBaseView.a(this.a);
+      return;
+    }
+    ViolaBaseView.a(this.a, true);
+    ViolaBaseView.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ucn
  * JD-Core Version:    0.7.0.1
  */

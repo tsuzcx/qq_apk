@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
@@ -44,7 +44,7 @@ class BigEmotionDownloadedAdapter$2
     }
     for (;;)
     {
-      bcef.b(this.this$0.app, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.this$0.emotionPkg.epId, i + "", "");
+      bdla.b(this.this$0.app, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.this$0.emotionPkg.epId, i + "", "");
       EventCollector.getInstance().onViewClicked(paramView);
       return;
       if ((this.this$0.emotionPkg.extraFlags & 0x1) != 0) {}
@@ -71,7 +71,7 @@ class BigEmotionDownloadedAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter.2
  * JD-Core Version:    0.7.0.1
  */

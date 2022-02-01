@@ -1,6 +1,9 @@
-public abstract interface alod
+import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
+
+public class alod
+  extends bczq
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public alod(CameraPreviewNew paramCameraPreviewNew) {}
 }
 
 

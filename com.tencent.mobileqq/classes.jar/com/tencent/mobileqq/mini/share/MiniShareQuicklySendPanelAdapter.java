@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.share;
 
-import aklg;
+import algy;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -15,7 +15,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import aqww;
+import asbg;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentCallItem;
@@ -43,7 +43,7 @@ public class MiniShareQuicklySendPanelAdapter
   private long decodeFaceStartTime;
   private Hashtable<String, Bitmap> faceCache = new Hashtable();
   private QQAppInterface mApp;
-  protected aklg mFaceDecoder;
+  protected algy mFaceDecoder;
   private XListView mListView;
   private Bundle mShareDataBundle;
   private ArrayList<MiniShareQuicklySendPanelAdapter.SendPanelData> sendPanelDataList;
@@ -55,16 +55,16 @@ public class MiniShareQuicklySendPanelAdapter
     this.mListView = paramXListView;
     this.mShareDataBundle = paramBundle;
     this.sendPanelDataList = new ArrayList();
-    this.mFaceDecoder = new aklg(paramQQAppInterface, this, false);
+    this.mFaceDecoder = new algy(paramQQAppInterface, this, false);
   }
   
   public static Drawable getIconDrawable(String paramString, int paramInt1, int paramInt2)
   {
-    aqww localaqww = new aqww(Color.rgb(214, 214, 214), paramInt1, paramInt2);
+    asbg localasbg = new asbg(Color.rgb(214, 214, 214), paramInt1, paramInt2);
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localaqww, localaqww);
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localasbg, localasbg);
         if (localURLDrawable.getStatus() != 1) {
           localURLDrawable.downloadImediatly();
         }
@@ -77,7 +77,7 @@ public class MiniShareQuicklySendPanelAdapter
         }
       }
     }
-    return localaqww;
+    return localasbg;
   }
   
   private void updateItem(MiniShareQuicklySendPanelAdapter.SendPanelViewHolder paramSendPanelViewHolder, MiniShareQuicklySendPanelAdapter.SendPanelData paramSendPanelData, Drawable paramDrawable)
@@ -159,7 +159,7 @@ public class MiniShareQuicklySendPanelAdapter
       if (QLog.isColorLevel()) {
         QLog.d("MiniShareQuicklySendPanelAdapter", 2, "bindview user:" + localSendPanelData.baseData.getRecentUserUin());
       }
-      int j = ((Integer)aklg.a(this.mApp, localSendPanelData.baseData.getRecentUserType(), localSendPanelData.baseData.getRecentUserUin()).first).intValue();
+      int j = ((Integer)algy.a(this.mApp, localSendPanelData.baseData.getRecentUserType(), localSendPanelData.baseData.getRecentUserUin()).first).intValue();
       int i = j;
       if (j == 103) {
         i = 1;
@@ -229,11 +229,11 @@ public class MiniShareQuicklySendPanelAdapter
     MiniShareQuicklySendPanelAdapter.SendPanelViewHolder localSendPanelViewHolder;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.activity).inflate(2131562799, null);
+      paramView = LayoutInflater.from(this.activity).inflate(2131562870, null);
       localSendPanelViewHolder = new MiniShareQuicklySendPanelAdapter.SendPanelViewHolder(this);
-      localSendPanelViewHolder.iconView = ((RecentDynamicAvatarView)paramView.findViewById(2131368236));
-      localSendPanelViewHolder.nameText = ((TextView)paramView.findViewById(2131371615));
-      localSendPanelViewHolder.operateView = ((QuickSendProgressView)paramView.findViewById(2131372090));
+      localSendPanelViewHolder.iconView = ((RecentDynamicAvatarView)paramView.findViewById(2131368381));
+      localSendPanelViewHolder.nameText = ((TextView)paramView.findViewById(2131371803));
+      localSendPanelViewHolder.operateView = ((QuickSendProgressView)paramView.findViewById(2131372283));
       localSendPanelViewHolder.itemInfo = localSendPanelData;
       bindData(localSendPanelViewHolder, null);
       paramView.setTag(localSendPanelViewHolder);
@@ -312,7 +312,7 @@ public class MiniShareQuicklySendPanelAdapter
       case 0: 
         if (!NetworkUtil.isNetworkAvailable(this.activity))
         {
-          QQToast.a(this.activity, this.activity.getString(2131718597), 0).a();
+          QQToast.a(this.activity, this.activity.getString(2131718986), 0).a();
         }
         else
         {
@@ -330,7 +330,7 @@ public class MiniShareQuicklySendPanelAdapter
         break;
       case 2: 
         if (!NetworkUtil.isNetworkAvailable(this.activity)) {
-          QQToast.a(this.activity, this.activity.getString(2131718597), 0).a();
+          QQToast.a(this.activity, this.activity.getString(2131718986), 0).a();
         }
         break;
       }
@@ -401,7 +401,7 @@ public class MiniShareQuicklySendPanelAdapter
       break label466;
     }
     int i = localSendPanelData.baseData.getRecentUserType();
-    i = ((Integer)aklg.a(this.mApp, i, localSendPanelData.baseData.getRecentUserUin()).first).intValue();
+    i = ((Integer)algy.a(this.mApp, i, localSendPanelData.baseData.getRecentUserUin()).first).intValue();
     if (i != -2147483648)
     {
       Object localObject = i + ":" + localSendPanelData.baseData.getRecentUserUin();

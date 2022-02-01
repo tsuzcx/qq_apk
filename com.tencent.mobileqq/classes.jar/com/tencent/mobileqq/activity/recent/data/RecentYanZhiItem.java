@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abwp;
+import acmw;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -38,11 +38,11 @@ public class RecentYanZhiItem
         return;
       }
       ((MessageForYanZhi)localObject1).parse();
-      this.mTitleName = paramContext.getString(2131693944);
+      this.mTitleName = paramContext.getString(2131694135);
       Object localObject2 = paramQQAppInterface.getConversationFacade();
       if (localObject2 != null)
       {
-        this.mUnreadNum = ((abwp)localObject2).a(((MessageForYanZhi)localObject1).frienduin, ((MessageForYanZhi)localObject1).istroop);
+        this.mUnreadNum = ((acmw)localObject2).a(((MessageForYanZhi)localObject1).frienduin, ((MessageForYanZhi)localObject1).istroop);
         if (this.mUnreadNum <= 1) {}
       }
       for (this.mUnreadNum = 1;; this.mUnreadNum = 0)
@@ -50,7 +50,7 @@ public class RecentYanZhiItem
         this.mUnreadFlag = 1;
         this.mDisplayTime = ((MessageForYanZhi)localObject1).time;
         localObject2 = getMsgSummaryTemp();
-        ((MsgSummary)localObject2).strContent = (((MessageForYanZhi)localObject1).likeCount + paramContext.getString(2131693945));
+        ((MsgSummary)localObject2).strContent = (((MessageForYanZhi)localObject1).likeCount + paramContext.getString(2131694136));
         extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
         if (!AppSetting.c) {
           break;

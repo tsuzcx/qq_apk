@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.forward;
 
-import atky;
+import aupt;
 
 public class ForwardArkBabyqReplyMsgOption
-  extends atky
+  extends aupt
 {}
 
 

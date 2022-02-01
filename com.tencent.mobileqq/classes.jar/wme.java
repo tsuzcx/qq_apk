@@ -1,17 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import android.os.Handler;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.1.1;
 
 public class wme
-  extends AnimatorListenerAdapter
+  implements wrc
 {
-  public wme(StoryPlayerActivity paramStoryPlayerActivity) {}
+  wme(wmd paramwmd) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(wrd paramwrd)
   {
-    super.onAnimationEnd(paramAnimator);
-    StoryPlayerActivity.a(this.a);
-    StoryPlayerActivity.a(this.a, 0, 0);
+    ykq.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "Update UserItems %s", paramwrd);
+    this.a.a.post(new MsgTabNodeListLoader.1.1(this, paramwrd));
   }
 }
 

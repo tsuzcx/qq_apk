@@ -1,25 +1,18 @@
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.widget.XEditTextEx;
 
 public class aeqa
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public aeqa(TroopRequestActivity paramTroopRequestActivity) {}
+  public aeqa(QQLSActivity paramQQLSActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Intent localIntent = new Intent(this.a, AccountDetailActivity.class);
-    localIntent.putExtra("uin", this.a.a.req_uin.get() + "");
-    localIntent.putExtra("source", 112);
-    this.a.startActivity(localIntent);
-    bcef.b(this.a.app, "P_CliOper", "Grp_public", "", "oper", "Clk_invite", 0, 0, "", "", "", this.a.a.req_uin.get() + "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    QQLSActivity.a(this.a).setCursorVisible(true);
+    return false;
   }
 }
 

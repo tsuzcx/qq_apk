@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.app;
 
-import anca;
-import bdyq;
-import bdzb;
+import aoep;
+import bfft;
+import bfge;
 import com.tencent.mobileqq.troop.org.pb.oidb_0x496.AioKeyword;
 
 public class TroopHandler$4
   implements Runnable
 {
-  public TroopHandler$4(anca paramanca, oidb_0x496.AioKeyword paramAioKeyword) {}
+  public TroopHandler$4(aoep paramaoep, oidb_0x496.AioKeyword paramAioKeyword) {}
   
   public void run()
   {
-    ((bdzb)this.this$0.app.getManager(225)).a(bdyq.a(this.a), bdyq.b(this.a));
-    bdyq.a(this.this$0.app, this.a);
+    ((bfge)this.this$0.app.getManager(QQManagerFactory.TROOP_AIO_KEYWORD_TIP_MANAGER)).a(bfft.a(this.a), bfft.b(this.a));
+    bfft.a(this.this$0.app, this.a);
   }
 }
 

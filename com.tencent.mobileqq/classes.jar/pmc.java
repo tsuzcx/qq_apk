@@ -1,118 +1,60 @@
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Map;
+import java.util.Set;
 
 public class pmc
+  implements AladdinConfigHandler
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<pmb> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean;
+  private static final Set<String> a = ;
   
-  private void i()
+  public static Set<String> a()
   {
-    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())
+    return a;
+  }
+  
+  private static Set<String> b()
+  {
+    HashSet localHashSet = new HashSet();
+    Object localObject = (String)bmhv.a("comment_feeds_aladdin_keys", "");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return localHashSet;
+    }
+    localObject = ((String)localObject).split("\\|");
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
     {
-      pmb localpmb = (pmb)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Boolean)
+      localHashSet.add(localObject[i]);
+      i += 1;
+    }
+    return localHashSet;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("PtsCommentFeedsAladdinKeyConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pku.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      if ("native_article_aladdin_keys".equalsIgnoreCase(str1))
       {
-        localpmb.h();
-        return;
+        String str2 = (String)paramString.get(str1);
+        QLog.d("PtsCommentFeedsAladdinKeyConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+        bmhv.a("comment_feeds_aladdin_keys", str2);
       }
-      localpmb.g();
-      return;
     }
-    QLog.d("RIJPopupAutomator", 2, "startNext currentIndex out of bound");
+    return true;
   }
   
-  public void a()
+  public void onWipeConfig(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pmb)localIterator.next()).a();
-    }
-  }
-  
-  void a(pmb parampmb, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJPopupAutomator", 2, "finishStep(" + parampmb.toString() + "): isShown = " + paramBoolean);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, paramBoolean);
-    if (!paramBoolean)
-    {
-      this.jdField_a_of_type_Int += 1;
-      i();
-    }
-  }
-  
-  public void a(pmb... paramVarArgs)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(Arrays.asList(paramVarArgs));
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pmb)localIterator.next()).b();
-    }
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pmb)localIterator.next()).c();
-    }
-  }
-  
-  public void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pmb)localIterator.next()).d();
-    }
-  }
-  
-  public void e()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pmb)localIterator.next()).e();
-    }
-  }
-  
-  public void f()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pmb)localIterator.next()).f();
-    }
-  }
-  
-  public void g()
-  {
-    QLog.d("RIJPopupAutomator", 1, "startStepFromOnResume");
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    i();
-  }
-  
-  public void h()
-  {
-    QLog.d("RIJPopupAutomator", 1, "startStepFromOnShowSelf");
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-    i();
+    QLog.d("PtsCommentFeedsAladdinKeyConfigHandler", 1, "[onWipeConfig]");
   }
 }
 

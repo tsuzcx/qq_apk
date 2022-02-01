@@ -1,40 +1,15 @@
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+
 public class wor
-  extends wod
+  extends ayqz
 {
-  public int a;
-  public vxd a;
-  public boolean a;
-  public String c = "";
-  public String d = "";
+  wor(woo paramwoo) {}
   
-  public wor(String paramString)
+  protected void a(Object paramObject)
   {
-    super(paramString);
-  }
-  
-  static wor a(vxd paramvxd)
-  {
-    wor localwor = new wor(paramvxd.jdField_a_of_type_JavaLangString);
-    localwor.jdField_a_of_type_Vxd = paramvxd;
-    if (paramvxd.jdField_a_of_type_Int == 12)
-    {
-      localwor.d = paramvxd.e;
-      localwor.c = paramvxd.i;
-    }
-    return localwor;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Vxd != null) {
-      return this.jdField_a_of_type_Vxd.jdField_a_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Vxd != null) && (this.jdField_a_of_type_Vxd.jdField_a_of_type_Int == 12);
+    ThreadManager.post(new MsgTabStoryNodeListManager.2.1(this, paramObject), 5, null, true);
+    ykq.b(woo.b(), "freshRedPoint, showStoryNode");
   }
 }
 

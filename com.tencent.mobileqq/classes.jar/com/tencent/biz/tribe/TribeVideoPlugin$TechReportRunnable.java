@@ -1,6 +1,6 @@
 package com.tencent.biz.tribe;
 
-import bcef;
+import bdla;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import java.lang.ref.WeakReference;
@@ -27,7 +27,7 @@ class TribeVideoPlugin$TechReportRunnable
     if (this.jdField_a_of_type_Boolean) {}
     for (int i = 1;; i = 0)
     {
-      bcef.b(null, "dc00899", "BizTechReport", str, "tribe_video", "play", 0, 0, Integer.toString(i), Integer.toString(NetworkUtil.getNetworkType(TribeVideoPlugin.a(localTribeVideoPlugin))), "", "");
+      bdla.b(null, "dc00899", "BizTechReport", str, "tribe_video", "play", 0, 0, Integer.toString(i), Integer.toString(NetworkUtil.getNetworkType(TribeVideoPlugin.a(localTribeVideoPlugin))), "", "");
       return;
     }
   }

@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
+import java.util.ArrayList;
 
-class asmr
-  implements asnb
+public class asmr
+  extends asnq
 {
-  asmr(asmq paramasmq) {}
+  public ArrayList<asms> a;
   
-  public void a()
+  public asmr()
   {
-    FileSelectorSearchFragment.a(this.a.a).a();
+    this.mType = 6;
   }
 }
 

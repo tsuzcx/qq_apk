@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.upgrade.activity;
 
-import ausw;
-import bfng;
+import avyv;
+import bgvx;
 import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 import com.tencent.qphone.base.util.QLog;
 import protocol.KQQConfig.UpgradeInfo;
 
 public class UpgradeDetailActivity$JsCover
-  extends ausw
+  extends avyv
 {
   protected UpgradeDetailActivity$JsCover(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
@@ -28,7 +28,7 @@ public class UpgradeDetailActivity$JsCover
   
   public int getDownloadState()
   {
-    return bfng.a().a();
+    return bgvx.a().a();
   }
   
   public long getUpgradeTime()
@@ -38,13 +38,13 @@ public class UpgradeDetailActivity$JsCover
   
   public int installApk()
   {
-    bfng.a().a(this.a);
+    bgvx.a().a(this.a);
     return 0;
   }
   
   public int pauseDownload()
   {
-    bfng.a().e();
+    bgvx.a().e();
     return 0;
   }
   
@@ -53,7 +53,7 @@ public class UpgradeDetailActivity$JsCover
     if (QLog.isColorLevel()) {
       QLog.d("preLoad_configServlet", 2, "resume download from web, mark it.");
     }
-    bfng.a().d();
+    bgvx.a().d();
     return 0;
   }
   
@@ -68,7 +68,7 @@ public class UpgradeDetailActivity$JsCover
   
   public int stopDownload()
   {
-    bfng.a().c();
+    bgvx.a().c();
     return 0;
   }
   
@@ -77,7 +77,7 @@ public class UpgradeDetailActivity$JsCover
     QLog.d("Hyim", 2, "loadTipsComplete");
     this.a.a = true;
     int i = getDownloadState();
-    this.a.a(i, bfng.a());
+    this.a.a(i, bgvx.a());
     return 0;
   }
 }

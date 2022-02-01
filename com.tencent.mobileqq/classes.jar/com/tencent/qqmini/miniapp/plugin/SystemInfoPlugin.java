@@ -194,7 +194,7 @@ public class SystemInfoPlugin
         ((JSONObject)localObject2).put("SDKVersion", this.mMiniAppContext.getBaseLibVersion());
         ((JSONObject)localObject2).put("AppPlatform", this.mMiniAppProxy.getAppName());
         ((JSONObject)localObject2).put("safeArea", localObject1);
-        ((JSONObject)localObject2).put("runtimeVersion", "1.8.0.0");
+        ((JSONObject)localObject2).put("runtimeVersion", "1.9.0.0");
         if (this.mApkgInfo.getAppConfigInfo().darkmode) {
           ((JSONObject)localObject2).put("theme", ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserTheme());
         }

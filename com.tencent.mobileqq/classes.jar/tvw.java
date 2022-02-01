@@ -1,42 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdExperimentInitUtil;", "", "()V", "initExperiment", "", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "initVideoGuide", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tvw
+public class tvw
+  implements qha
 {
-  public static final tvw a = new tvw();
+  public tvw(BridgeModule paramBridgeModule, String paramString) {}
   
-  private final void b(AdvertisementInfo paramAdvertisementInfo)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    trw localtrw = paramAdvertisementInfo.adExperimentData;
-    paramAdvertisementInfo = paramAdvertisementInfo.mAdExtInfo;
-    if (!TextUtils.isEmpty((CharSequence)paramAdvertisementInfo))
-    {
-      Object localObject = new JSONObject(paramAdvertisementInfo).opt("video_guide");
-      paramAdvertisementInfo = localObject;
-      if (!(localObject instanceof JSONObject)) {
-        paramAdvertisementInfo = null;
-      }
-      paramAdvertisementInfo = (JSONObject)paramAdvertisementInfo;
-      if (paramAdvertisementInfo != null) {
-        localtrw.a(new try(paramAdvertisementInfo.optInt("second_state_time", -1), paramAdvertisementInfo.optInt("third_state_time", -1)));
-      }
-    }
-  }
-  
-  public final void a(@Nullable AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (paramAdvertisementInfo != null) {
-      a.b(paramAdvertisementInfo);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tvw
  * JD-Core Version:    0.7.0.1
  */

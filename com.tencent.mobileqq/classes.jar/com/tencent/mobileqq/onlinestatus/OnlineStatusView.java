@@ -10,11 +10,11 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import apub;
-import apzh;
-import axuy;
-import axvj;
-import bjsc;
+import aqxe;
+import arck;
+import azbj;
+import azbu;
+import bldo;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
@@ -28,8 +28,8 @@ public class OnlineStatusView
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  apzh jdField_a_of_type_Apzh;
-  bjsc jdField_a_of_type_Bjsc;
+  arck jdField_a_of_type_Arck;
+  bldo jdField_a_of_type_Bldo;
   URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   int jdField_b_of_type_Int = 1;
   TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -79,12 +79,12 @@ public class OnlineStatusView
   {
     setOrientation(0);
     setGravity(16);
-    float f = getResources().getDimensionPixelSize(2131296773);
+    float f = getResources().getDimensionPixelSize(2131296774);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167096));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167110));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, f);
     this.jdField_a_of_type_AndroidWidgetTextView.setText("[");
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
@@ -103,14 +103,14 @@ public class OnlineStatusView
     this.jdField_b_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(false);
     this.jdField_b_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
     this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167096));
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167110));
     this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, f);
     this.jdField_b_of_type_AndroidWidgetTextView.setGravity(16);
     localLayoutParams = new LinearLayout.LayoutParams(-2, ViewUtils.dip2px(19.0F));
     localLayoutParams.gravity = 16;
     addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
-    this.jdField_a_of_type_Apzh = ((apzh)apub.a().a(578));
-    this.jdField_a_of_type_Bjsc = new bjsc();
+    this.jdField_a_of_type_Arck = ((arck)aqxe.a().a(578));
+    this.jdField_a_of_type_Bldo = new bldo();
   }
   
   public boolean a(QQAppInterface paramQQAppInterface, Friends paramFriends)
@@ -121,12 +121,12 @@ public class OnlineStatusView
       QLog.d("OnlineStatusView", 2, new Object[] { "setOnlineStatus extStatus:", Long.valueOf(this.jdField_a_of_type_Long), " battery:", Integer.valueOf(this.jdField_a_of_type_Int) });
     }
     boolean bool;
-    axvj localaxvj;
+    azbu localazbu;
     if (!paramQQAppInterface.getCurrentUin().equals(paramFriends.uin))
     {
       bool = true;
-      localaxvj = axuy.a().a(AppRuntime.Status.online, this.jdField_a_of_type_Long, bool);
-      if ((localaxvj.jdField_a_of_type_Int != 2) && ((this.jdField_a_of_type_Long != 1000L) || (this.jdField_a_of_type_Int > 0))) {
+      localazbu = azbj.a().a(AppRuntime.Status.online, this.jdField_a_of_type_Long, bool);
+      if ((localazbu.jdField_a_of_type_Int != 2) && ((this.jdField_a_of_type_Long != 1000L) || (this.jdField_a_of_type_Int > 0))) {
         break label137;
       }
       QLog.d("OnlineStatusView", 2, "setOnlineStatus item is null");
@@ -137,11 +137,11 @@ public class OnlineStatusView
       return false;
       bool = false;
       break;
-      paramQQAppInterface = axuy.a().b(paramQQAppInterface, localaxvj, localaxvj.jdField_a_of_type_MqqAppAppRuntime$Status, paramFriends, this.jdField_b_of_type_AndroidWidgetTextView, 2);
-    } while (((localaxvj.jdField_a_of_type_Long == 1030L) && (TextUtils.isEmpty(paramQQAppInterface))) || ((localaxvj.jdField_a_of_type_Long == 1040L) && (TextUtils.isEmpty(paramQQAppInterface))) || ((localaxvj.jdField_a_of_type_Long == 40001L) && (TextUtils.isEmpty(paramQQAppInterface))));
-    if (axvj.a(this.jdField_a_of_type_Long))
+      paramQQAppInterface = azbj.a().b(paramQQAppInterface, localazbu, localazbu.jdField_a_of_type_MqqAppAppRuntime$Status, paramFriends, this.jdField_b_of_type_AndroidWidgetTextView, 2);
+    } while (((localazbu.jdField_a_of_type_Long == 1030L) && (TextUtils.isEmpty(paramQQAppInterface))) || ((localazbu.jdField_a_of_type_Long == 1040L) && (TextUtils.isEmpty(paramQQAppInterface))) || ((localazbu.jdField_a_of_type_Long == 40001L) && (TextUtils.isEmpty(paramQQAppInterface))));
+    if (azbu.a(this.jdField_a_of_type_Long))
     {
-      paramFriends = this.jdField_a_of_type_Bjsc.a(this.jdField_a_of_type_Int, 1);
+      paramFriends = this.jdField_a_of_type_Bldo.a(this.jdField_a_of_type_Int, 1);
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramFriends);
       if (this.jdField_b_of_type_Int != 2) {
         break label312;
@@ -152,7 +152,7 @@ public class OnlineStatusView
     for (;;)
     {
       return true;
-      paramFriends = axuy.a().a(localaxvj, paramFriends);
+      paramFriends = azbj.a().a(localazbu, paramFriends);
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramFriends);
       break;
       label312:

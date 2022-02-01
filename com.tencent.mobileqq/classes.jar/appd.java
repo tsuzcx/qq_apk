@@ -1,10 +1,15 @@
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-public abstract interface appd
+public class appd
+  extends appe
 {
-  public abstract void a(apox paramapox, boolean paramBoolean1, boolean paramBoolean2, int paramInt, ArrayList<DanmuItemBean> paramArrayList, List<Long> paramList);
+  public String a = "10001";
+  
+  public void a(AppInterface paramAppInterface, Bundle paramBundle)
+  {
+    this.a = paramBundle.getString("PromotionDescription");
+  }
 }
 
 

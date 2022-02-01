@@ -1,10 +1,19 @@
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract interface xek
+class xek
+  implements Animation.AnimationListener
 {
-  public abstract void a(View paramView);
+  xek(xeg paramxeg) {}
   
-  public abstract void b(View paramView);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.dismiss();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

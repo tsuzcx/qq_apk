@@ -1,20 +1,14 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.8.1;
 
-class xne
-  extends JobSegment<xng, xgq>
+public class xne
+  implements xnm
 {
-  private int jdField_a_of_type_Int;
-  private List<CommentEntry> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private xgn jdField_a_of_type_Xgn;
+  public xne(BottomVideoInfoWidget.8.1 param1, Activity paramActivity) {}
   
-  protected void a(JobContext paramJobContext, xng paramxng)
+  public void a()
   {
-    this.jdField_a_of_type_Xgn = new xgn(paramxng, new xnf(this, paramJobContext, paramxng));
-    this.jdField_a_of_type_Xgn.c();
+    xmx.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_Xmx, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.b, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.c, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.d, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.e, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.f, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
   }
 }
 

@@ -1,3 +1,5 @@
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -5,11 +7,13 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class ayxf
   implements View.OnClickListener
 {
-  ayxf(ayxd paramayxd) {}
+  ayxf(ayxa paramayxa, ayxp paramayxp) {}
   
   public void onClick(View paramView)
   {
-    ayxd.a(this.a);
+    ayxa.a(this.jdField_a_of_type_Ayxa).removeMessages(101);
+    ayxa.a(this.jdField_a_of_type_Ayxa).obtainMessage(101).sendToTarget();
+    this.jdField_a_of_type_Ayxp.a.b();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

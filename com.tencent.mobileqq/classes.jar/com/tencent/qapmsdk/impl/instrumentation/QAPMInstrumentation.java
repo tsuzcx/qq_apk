@@ -10,6 +10,7 @@ public class QAPMInstrumentation
 {
   private static final String TAG = "QAPM_Impl_QAPMInstrumentation";
   
+  @QAPMWrapReturn
   public static URLConnection openConnection(URLConnection paramURLConnection)
   {
     if (paramURLConnection == null) {}
@@ -22,12 +23,12 @@ public class QAPMInstrumentation
         {
           Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMInstrumentation", "URLConnection openConnection gather  begin !!" });
           if ((paramURLConnection instanceof HttpsURLConnection)) {
-            return new d((HttpsURLConnection)paramURLConnection);
+            return new e((HttpsURLConnection)paramURLConnection);
           }
           if ((paramURLConnection instanceof HttpURLConnection))
           {
-            c localc = new c((HttpURLConnection)paramURLConnection);
-            return localc;
+            d locald = new d((HttpURLConnection)paramURLConnection);
+            return locald;
           }
         }
       }
@@ -39,6 +40,7 @@ public class QAPMInstrumentation
     return paramURLConnection;
   }
   
+  @QAPMWrapReturn
   public static URLConnection openConnectionWithProxy(URLConnection paramURLConnection)
   {
     if (paramURLConnection == null) {}
@@ -51,12 +53,12 @@ public class QAPMInstrumentation
         {
           Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMInstrumentation", "URLConnection openConnectionWithProxy gather  begin !!" });
           if ((paramURLConnection instanceof HttpsURLConnection)) {
-            return new d((HttpsURLConnection)paramURLConnection);
+            return new e((HttpsURLConnection)paramURLConnection);
           }
           if ((paramURLConnection instanceof HttpURLConnection))
           {
-            c localc = new c((HttpURLConnection)paramURLConnection);
-            return localc;
+            d locald = new d((HttpURLConnection)paramURLConnection);
+            return locald;
           }
         }
       }

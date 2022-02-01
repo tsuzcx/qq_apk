@@ -1,81 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class ofo
-  extends aptq<ofn>
+class ofo
+  extends Handler
 {
-  @NonNull
-  public ofn a(int paramInt)
+  ofo(ofn paramofn, Looper paramLooper)
   {
-    if (paramInt == 0)
-    {
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
-      {
-        localObject = (QQAppInterface)localObject;
-        uex.a((QQAppInterface)localObject, uex.a((QQAppInterface)localObject));
-        return ofn.a();
-      }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
     }
-    return new ofn();
-  }
-  
-  @Nullable
-  public ofn a(aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountCenterUrlConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return ofn.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(ofn paramofn)
-  {
-    paramofn.a();
-    paramofn.b();
-  }
-  
-  public Class<ofn> clazz()
-  {
-    return ofn.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return uex.b((QQAppInterface)localAppRuntime);
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 70;
+    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
   }
 }
 

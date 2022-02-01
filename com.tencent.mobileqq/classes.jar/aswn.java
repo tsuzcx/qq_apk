@@ -1,14 +1,25 @@
-class aswn
-  implements aszj
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+
+public class aswn
+  implements Animation.AnimationListener
 {
-  aswn(aswm paramaswm) {}
+  public aswn(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, View paramView) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    aswl.a(this.a.a);
+    paramAnimation = new AlphaAnimation(0.2F, 0.0F);
+    paramAnimation.setDuration(500L);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

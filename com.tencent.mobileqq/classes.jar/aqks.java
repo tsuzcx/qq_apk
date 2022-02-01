@@ -1,61 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardMobileInfo;
 
-public class aqks
-  extends aptq<aqkr>
+public final class aqks
+  implements Parcelable.Creator<CardMobileInfo>
 {
-  public static aqkr a()
+  public CardMobileInfo a(Parcel paramParcel)
   {
-    return (aqkr)apub.a().a(487);
+    return new CardMobileInfo(paramParcel);
   }
   
-  @NonNull
-  public aqkr a(int paramInt)
+  public CardMobileInfo[] a(int paramInt)
   {
-    return new aqkr();
-  }
-  
-  @Nullable
-  public aqkr a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqkr.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(aqkr paramaqkr) {}
-  
-  public Class<aqkr> clazz()
-  {
-    return aqkr.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 487;
+    return new CardMobileInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqks
  * JD-Core Version:    0.7.0.1
  */

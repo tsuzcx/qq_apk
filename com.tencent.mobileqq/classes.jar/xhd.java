@@ -1,24 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.Nullable;
+import java.io.File;
 
 public class xhd
-  extends JobSegment<String, xhh>
+  extends vzj
 {
-  private wdu jdField_a_of_type_Wdu = new wdu();
+  @Nullable
+  public final File a;
+  public final String a;
+  public final boolean a;
   
-  public xhd(xhc paramxhc, @NonNull String paramString)
+  public xhd(String paramString, boolean paramBoolean, File paramFile)
   {
-    this.jdField_a_of_type_Wdu.a = new ArrayList();
-    paramxhc = new xnh(paramString, 0, "", "");
-    this.jdField_a_of_type_Wdu.a.add(paramxhc);
-  }
-  
-  protected void a(JobContext paramJobContext, String paramString)
-  {
-    vqn.a().a(this.jdField_a_of_type_Wdu, new xhe(this, paramJobContext));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
 }
 

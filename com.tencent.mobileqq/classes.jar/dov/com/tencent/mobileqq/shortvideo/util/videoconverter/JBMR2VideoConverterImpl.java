@@ -1,24 +1,24 @@
 package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 
 import android.annotation.TargetApi;
-import boen;
-import boep;
+import bpuf;
+import bpuh;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.io.File;
 
 @TargetApi(18)
 public class JBMR2VideoConverterImpl
-  implements boep
+  implements bpuh
 {
   boolean a = false;
   boolean b = false;
   
-  public boolean a(File paramFile, boen paramboen, boolean paramBoolean)
+  public boolean a(File paramFile, bpuf parambpuf, boolean paramBoolean)
   {
     if (!this.a)
     {
       this.a = true;
-      paramFile = new JBMR2VideoConverterImpl.Converter(this, paramFile, paramboen);
+      paramFile = new JBMR2VideoConverterImpl.Converter(this, paramFile, parambpuf);
       if (!paramBoolean)
       {
         ThreadManagerV2.excute(paramFile, 16, null, false);

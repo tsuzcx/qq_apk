@@ -1,31 +1,18 @@
-import UserGrowth.stWeishiDengtaReportRsp;
-import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
-public class uvv
-  implements uqy
+final class uvv
+  implements Comparator<ArticleInfo>
 {
-  public uvv(WSStatisticsReporter paramWSStatisticsReporter) {}
-  
-  public void a(urj paramurj)
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    if (!paramurj.a())
-    {
-      uya.d("beaconData2Server", "BeaconSendRequest onTaskResponse failed code:" + paramurj.jdField_a_of_type_Int + ", msg:" + paramurj.jdField_a_of_type_JavaLangString);
-      WSStatisticsReporter.access$1400(this.a, String.valueOf(1), String.valueOf(paramurj.jdField_a_of_type_Int), paramurj.jdField_a_of_type_JavaLangString);
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
     }
-    do
-    {
-      return;
-      if (!(paramurj.jdField_a_of_type_JavaLangObject instanceof stWeishiDengtaReportRsp)) {
-        break;
-      }
-      paramurj = (stWeishiDengtaReportRsp)paramurj.jdField_a_of_type_JavaLangObject;
-      uya.b("beaconData2Server", "BeaconSendRequest onTaskResponse succeed: " + paramurj.code + " , " + paramurj.msg);
-    } while (paramurj.code == 0);
-    WSStatisticsReporter.access$1400(this.a, String.valueOf(2), String.valueOf(paramurj.code), paramurj.msg);
-    return;
-    uya.d("beaconData2Server", "BeaconSendRequest onTaskResponse failed");
-    WSStatisticsReporter.access$1400(this.a, String.valueOf(3), "-1", "数据无法解析");
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

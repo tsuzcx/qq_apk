@@ -1,15 +1,30 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import mqq.os.MqqHandler;
 
 public class ajeh
+  extends MqqHandler
 {
-  public int a;
-  public long a;
-  public Context a;
-  public QQAppInterface a;
-  public RedTouch a;
-  public String a;
+  public ajeh(NotificationView paramNotificationView) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Ajed == null);
+      this.a.i();
+      this.a.jdField_a_of_type_Ajed.a = bdzy.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Ajed.notifyDataSetChanged();
+      return;
+    }
+    this.a.j();
+  }
 }
 
 

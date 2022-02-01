@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adyx
-  implements Comparator<ChatMessage>
+  extends BroadcastReceiver
 {
-  public adyx(QQLSActivity paramQQLSActivity) {}
+  public adyx(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramChatMessage1.time == paramChatMessage2.time) {
-      return 0;
+    if (!this.a.isFinishing())
+    {
+      this.a.finish();
+      QLog.i("ForwardOption.ForwardEntranceActivity", 1, "ForwardRecentActivity has finished by broadcastReceiver.");
     }
-    if (paramChatMessage1.time > paramChatMessage2.time) {
-      return 1;
-    }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adyx
  * JD-Core Version:    0.7.0.1
  */

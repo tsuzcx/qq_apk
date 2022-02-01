@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
-class aetz
-  implements View.OnClickListener
+public class aetz
+  implements aeid
 {
-  aetz(aetx paramaetx) {}
+  public aetz(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a.b(paramView.getTag());
-    EventCollector.getInstance().onViewClicked(paramView);
+    RegisterPhoneNumActivity.a(this.a).b();
+  }
+  
+  public void b()
+  {
+    RegisterPhoneNumActivity.a(this.a).b();
   }
 }
 

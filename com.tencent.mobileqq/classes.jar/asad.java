@@ -1,36 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.os.MqqHandler;
 
 class asad
-  implements aszj
+  implements arzy
 {
-  asad(asab paramasab, FileManagerEntity paramFileManagerEntity) {}
+  asad(asaa paramasaa, MqqHandler paramMqqHandler) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      QfileBaseRecentFileTabView.z(this.jdField_a_of_type_Asab.a).getOnlineFileSessionCenter().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    switch (paramInt)
+    {
     }
-    amqd localamqd;
-    ArrayList localArrayList;
     do
     {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(80);
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
-      }
-      localamqd = (amqd)QfileBaseRecentFileTabView.A(this.jdField_a_of_type_Asab.a).getBusinessHandler(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localamqd.a(localArrayList));
-    aszk.a(2131692366);
-    return;
-    QfileBaseRecentFileTabView.B(this.jdField_a_of_type_Asab.a).getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(80, 5000L);
   }
 }
 

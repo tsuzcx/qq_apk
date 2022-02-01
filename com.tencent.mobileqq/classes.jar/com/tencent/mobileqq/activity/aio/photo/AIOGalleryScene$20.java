@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agyh;
+import ahri;
 import android.net.Uri;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class AIOGalleryScene$20
   implements Runnable
 {
-  public AIOGalleryScene$20(agyh paramagyh, File paramFile, ArrayList paramArrayList) {}
+  public AIOGalleryScene$20(ahri paramahri, File paramFile, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class AIOGalleryScene$20
       if (this.jdField_a_of_type_JavaIoFile != null)
       {
         Uri localUri = Uri.parse("file://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        agyh.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
+        ahri.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
       }
       return;
     }

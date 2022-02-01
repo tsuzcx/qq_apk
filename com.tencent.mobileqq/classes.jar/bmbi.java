@@ -1,6 +1,10 @@
-class bmbi
+import android.os.Bundle;
+import android.os.IInterface;
+
+public abstract interface bmbi
+  extends IInterface
 {
-  private static bmbg a = new bmbg(null);
+  public abstract void a(int paramInt, Bundle paramBundle);
 }
 
 

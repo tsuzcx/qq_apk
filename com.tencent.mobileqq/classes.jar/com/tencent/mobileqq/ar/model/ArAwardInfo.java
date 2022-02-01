@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aolg;
+import apoh;
 
 public class ArAwardInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArAwardInfo> CREATOR = new aolg();
+  public static final Parcelable.Creator<ArAwardInfo> CREATOR = new apoh();
   public int a;
   public String a;
   public int b;

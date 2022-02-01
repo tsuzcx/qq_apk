@@ -1,20 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-final class pbd
-  implements INetEventHandler
+public class pbd
+  implements pfw
 {
-  pbd(Context paramContext) {}
+  public pbd(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (paramBoolean)
+    if (paramInt != 2) {
+      this.a.d();
+    }
+    pqg localpqg1 = new pqg();
+    pqg localpqg2 = localpqg1.i().b("rowkey", ReadInJoyCommentListFragment.a(this.a).innerUniqueID).b("entry", "2");
+    if (paramInt == 2) {}
+    for (String str = "1";; str = "0")
     {
-      pay.b(this.a);
+      localpqg2.b("result", str);
+      pbq.a("0X800A00F", ReadInJoyCommentListFragment.a(this.a), localpqg1);
       return;
     }
-    pay.j("");
-    pay.k("");
   }
 }
 

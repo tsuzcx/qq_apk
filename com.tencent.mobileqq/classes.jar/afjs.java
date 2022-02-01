@@ -1,52 +1,49 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.ServerNotifyObserver;
 
 public class afjs
-  extends Handler
+  extends ServerNotifyObserver
 {
-  public afjs(TroopChatPie paramTroopChatPie, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public afjs(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
   {
-    switch (paramMessage.what)
+    QLog.d("VerifyCodeActivity", 1, "onReceiveVerifyCode");
+    this.a.b = false;
+    if (this.a.jdField_a_of_type_Boolean)
     {
-    case 3: 
-    default: 
-    case 1: 
-    case 2: 
-    case 4: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a(null, false);
-          return;
-          paramMessage = paramMessage.obj;
-        } while (!(paramMessage instanceof bfcf));
-        this.a.a((bfcf)paramMessage);
-        return;
-        paramMessage = (PlusPanel)this.a.panelManager.a(8);
-      } while (paramMessage == null);
-      paramMessage.c();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
+      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131719899), 0).a();
+    }
+    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
+    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString().length() > 4)) {
+      VerifyCodeActivity.a(this.a, true);
+    }
+    if (paramArrayOfByte != null)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bgyo.a(paramArrayOfByte, 0, paramArrayOfByte.length));
+      this.a.a(false);
       return;
     }
-    String str = (String)paramMessage.obj;
-    int i = paramMessage.arg1;
-    QQToast.a(this.a.mActivity, str, i).b(this.a.mActivity.getTitleBarHeight());
+    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131719896), 1).show();
+  }
+  
+  public void onVerifyClose()
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     afjs
  * JD-Core Version:    0.7.0.1
  */

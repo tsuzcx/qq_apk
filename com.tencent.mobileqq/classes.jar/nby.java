@@ -1,4 +1,7 @@
-// INTERNAL ERROR //
+public abstract interface nby
+  extends nbv
+{}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nby

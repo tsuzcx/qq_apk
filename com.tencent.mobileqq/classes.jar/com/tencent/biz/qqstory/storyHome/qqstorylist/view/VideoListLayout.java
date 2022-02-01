@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bjun;
+import blfz;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 import com.tencent.biz.qqstory.utils.UIUtils;
@@ -64,7 +64,7 @@ public class VideoListLayout
     this.jdField_b_of_type_Int = UIUtils.dip2px(getContext(), 15.0F);
     this.c = this.jdField_b_of_type_Int;
     this.j = UIUtils.dip2px(getContext(), 2.0F);
-    this.f = getContext().getResources().getDimensionPixelSize(2131298505);
+    this.f = getContext().getResources().getDimensionPixelSize(2131298509);
     this.g = UIUtils.dip2px(getContext(), 10.0F);
     this.d = UIUtils.dip2px(getContext(), 205.0F);
     this.e = UIUtils.dip2px(getContext(), 332.0F);
@@ -78,30 +78,30 @@ public class VideoListLayout
   
   private void b()
   {
-    bjun.a("VideoListLayout.init");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561605, this, false));
+    blfz.a("VideoListLayout.init");
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561673, this, false));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846656);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846752);
     addView(this.jdField_a_of_type_AndroidWidgetImageView);
     addView(this.jdField_b_of_type_AndroidWidgetTextView);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561613, this, false));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561681, this, false));
     addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryNickNameView = ((StoryNickNameView)LayoutInflater.from(getContext()).inflate(2131561613, this, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryNickNameView = ((StoryNickNameView)LayoutInflater.from(getContext()).inflate(2131561681, this, false));
     addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryNickNameView);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView = ((QQStoryAutoPlayView)LayoutInflater.from(getContext()).inflate(2131561608, this, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView = ((QQStoryAutoPlayView)LayoutInflater.from(getContext()).inflate(2131561676, this, false));
     addView(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView = ((StoryHomeHorizontalListView)LayoutInflater.from(getContext()).inflate(2131561615, this, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView = ((StoryHomeHorizontalListView)LayoutInflater.from(getContext()).inflate(2131561683, this, false));
     addView(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView);
-    bjun.a();
+    blfz.a();
   }
   
   public LinearLayout a()
   {
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131561600, this, false));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131561668, this, false));
       addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     }
     return this.jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -291,7 +291,7 @@ public class VideoListLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    bjun.a("VideoListLayout.onLayout");
+    blfz.a("VideoListLayout.onLayout");
     try
     {
       a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
@@ -303,13 +303,13 @@ public class VideoListLayout
     }
     finally
     {
-      bjun.a();
+      blfz.a();
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    bjun.a("VideoListLayout.onMeasure");
+    blfz.a("VideoListLayout.onMeasure");
     try
     {
       a(paramInt1, paramInt2);
@@ -321,7 +321,7 @@ public class VideoListLayout
     }
     finally
     {
-      bjun.a();
+      blfz.a();
     }
   }
   
@@ -336,7 +336,7 @@ public class VideoListLayout
     }
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131561600, this, false));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(getContext()).inflate(2131561668, this, false));
       addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     }
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);

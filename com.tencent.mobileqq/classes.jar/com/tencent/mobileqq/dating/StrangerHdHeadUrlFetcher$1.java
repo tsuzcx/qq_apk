@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.dating;
 
 import android.util.Pair;
-import aquj;
-import aqvf;
+import arxx;
+import aryu;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Set;
@@ -11,7 +12,7 @@ import mqq.os.MqqHandler;
 public class StrangerHdHeadUrlFetcher$1
   implements Runnable
 {
-  public StrangerHdHeadUrlFetcher$1(aqvf paramaqvf, String paramString1, int paramInt, boolean paramBoolean, String paramString2) {}
+  public StrangerHdHeadUrlFetcher$1(aryu paramaryu, String paramString1, int paramInt, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
@@ -21,16 +22,16 @@ public class StrangerHdHeadUrlFetcher$1
     {
       if ((bool) && (this.jdField_a_of_type_Boolean))
       {
-        localObject1 = (FriendListHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1);
+        localObject1 = (FriendListHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
         if (localObject1 != null)
         {
           this.this$0.jdField_a_of_type_Long = System.currentTimeMillis();
-          synchronized (aqvf.a(this.this$0))
+          synchronized (aryu.a(this.this$0))
           {
             if (!this.this$0.jdField_a_of_type_Boolean)
             {
               this.this$0.jdField_a_of_type_Boolean = true;
-              this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(aqvf.a(this.this$0), true);
+              this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(aryu.a(this.this$0), true);
             }
           }
         }
@@ -49,14 +50,14 @@ public class StrangerHdHeadUrlFetcher$1
           throw localObject2;
         }
       }
-      aquj.a("StrangerHdHeadUrlFetcher", new Object[] { "flh is null" });
+      arxx.a("StrangerHdHeadUrlFetcher", new Object[] { "flh is null" });
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.StrangerHdHeadUrlFetcher.1
  * JD-Core Version:    0.7.0.1
  */

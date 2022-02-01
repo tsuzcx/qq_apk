@@ -1,18 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.avgame.util.AVGameStep;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.avgame.gameroom.gamelist.GameListView;
 
-public final class njg
-  implements Parcelable.Creator<AVGameStep>
+public class njg
+  implements View.OnTouchListener
 {
-  public AVGameStep a(Parcel paramParcel)
-  {
-    return new AVGameStep(paramParcel);
-  }
+  public njg(GameListView paramGameListView) {}
   
-  public AVGameStep[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new AVGameStep[paramInt];
+    boolean bool = nfc.a().e();
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      if (bool) {}
+      for (paramView = "avgame_match_stop_press@2x.png";; paramView = "avgame_match_start_press@2x.png")
+      {
+        paramView = nqf.a(paramView);
+        if (paramView == null) {
+          break;
+        }
+        GameListView.a(this.a).setImageBitmap(paramView);
+        break;
+      }
+    }
+    if (bool) {}
+    for (paramView = "avgame_match_stop_normal@2x.png";; paramView = "avgame_match_start_normal@2x.png")
+    {
+      paramView = nqf.a(paramView);
+      if (paramView == null) {
+        break;
+      }
+      GameListView.a(this.a).setImageBitmap(paramView);
+      break;
+    }
   }
 }
 

@@ -1,872 +1,773 @@
-import android.os.Bundle;
-import android.os.Handler;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler.Callback;
 import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.device_lock_query_status.ReqBody;
-import com.tencent.ims.device_lock_query_status.RspBody;
-import com.tencent.ims.get_config.ReqBody;
-import com.tencent.ims.get_config.RspBody;
-import com.tencent.ims.wx_msg_opt.ReqBody;
-import com.tencent.ims.wx_msg_opt.RspBody;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler.1;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mqp.app.sec.d;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtAppReceiver;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.jsbridge.GdtCanvasFragment4CmGame;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.video.CmGameVideoViewController.5;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.util.List;
-import tencent.im.oidb.cmd0x614.Oidb_0x614.DeviceManageHead;
-import tencent.im.oidb.cmd0x614.Oidb_0x614.ReNameDeviceNameReqBody;
-import tencent.im.oidb.cmd0x614.Oidb_0x614.ReqBody;
-import tencent.im.oidb.cmd0xeb8.oidb_0xeb8.PhoneInfo;
-import tencent.im.oidb.cmd0xeb8.oidb_0xeb8.ReqBody;
-import tencent.im.oidb.cmd0xeb8.oidb_0xeb8.RspBody;
-import tencent.im.oidb.cmd0xebd.oidb_0xebd.ReqBody;
-import tencent.im.oidb.cmd0xebd.oidb_0xebd.RspBody;
-import tencent.im.oidb.cmd0xec0.oidb_0xec0.ReqBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import tencent.im.s2c.msgtype0x210.submsgtype0xc6.SubMsgType0xc6.AccountExceptionAlertBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0xc6.SubMsgType0xc6.MsgBody;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class anat
-  extends BusinessHandler
+  implements anay, Handler.Callback, View.OnClickListener
 {
-  private int a = 1;
+  private int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  private anan jdField_a_of_type_Anan;
+  private anaz jdField_a_of_type_Anaz;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bkys jdField_a_of_type_Bkys = new bkys(Looper.getMainLooper(), this);
+  private GdtAppReceiver jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
+  boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private ImageView jdField_c_of_type_AndroidWidgetImageView;
+  private boolean jdField_c_of_type_Boolean = true;
+  private int jdField_d_of_type_Int = 0;
+  private boolean jdField_d_of_type_Boolean;
+  private boolean e;
+  private boolean f;
+  private boolean g;
   
-  anat(QQAppInterface paramQQAppInterface)
+  public anat(RelativeLayout paramRelativeLayout, boolean paramBoolean, int paramInt)
   {
-    super(paramQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameVideoViewController", 2, new Object[] { "[CmGameVideoViewController], isPortrait:", Boolean.valueOf(paramBoolean), ",gameId:", Integer.valueOf(paramInt) });
+    }
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    a(paramBoolean);
+    o();
   }
   
-  private void a(int paramInt, SubMsgType0xc6.AccountExceptionAlertBody paramAccountExceptionAlertBody)
+  private Activity a()
   {
-    if (paramAccountExceptionAlertBody == null) {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      Context localContext = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext();
+      if ((localContext instanceof Activity)) {
+        return (Activity)localContext;
+      }
+    }
+    return null;
+  }
+  
+  private ImageView a(int paramInt)
+  {
+    ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
+    if (2 == paramInt) {
+      localImageView.setImageDrawable(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext().getResources().getDrawable(2130838553));
+    }
+    do
+    {
+      return localImageView;
+      if (1 == paramInt)
+      {
+        localImageView.setImageDrawable(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext().getResources().getDrawable(2130838547));
+        return localImageView;
+      }
+    } while (3 != paramInt);
+    localImageView.setImageDrawable(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext().getResources().getDrawable(2130838548));
+    return localImageView;
+  }
+  
+  private String a(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
+  {
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("bt", String.valueOf(paramLong1));
+      ((JSONObject)localObject).put("et", String.valueOf(paramLong2));
+      ((JSONObject)localObject).put("bf", String.valueOf(paramLong3));
+      ((JSONObject)localObject).put("ef", String.valueOf(paramLong4));
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameVideoViewController", 1, localThrowable, new Object[0]);
+    }
+    return "";
+  }
+  
+  private void a(double paramDouble, LinearLayout paramLinearLayout)
+  {
+    int m = 0;
+    if ((paramLinearLayout == null) || (paramDouble < 3.0D)) {
+      return;
+    }
+    paramLinearLayout.removeAllViews();
+    int n = (int)paramDouble;
+    if (((paramDouble > 3.0D) && (paramDouble < 4.0D)) || ((paramDouble > 4.0D) && (paramDouble < 5.0D))) {}
+    for (int i = 1;; i = 0)
+    {
+      int j = AIOUtils.dp2px(15.0F, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getResources());
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, j);
+      j = 0;
+      if (j < n)
+      {
+        if (j == 0) {}
+        for (localLayoutParams.leftMargin = 0;; localLayoutParams.leftMargin = AIOUtils.dp2px(3.0F, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getResources()))
+        {
+          paramLinearLayout.addView(a(1), localLayoutParams);
+          j += 1;
+          break;
+        }
+      }
+      j = 0;
+      int k;
+      for (;;)
+      {
+        k = m;
+        if (j >= i) {
+          break;
+        }
+        paramLinearLayout.addView(a(2), localLayoutParams);
+        j += 1;
+      }
+      while (k < 5 - n - i)
+      {
+        paramLinearLayout.addView(a(3), localLayoutParams);
+        k += 1;
+      }
+      break;
+    }
+  }
+  
+  private void a(int paramInt, long paramLong)
+  {
+    ThreadManagerV2.excute(new CmGameVideoViewController.5(this, paramInt, paramLong), 128, null, true);
+  }
+  
+  private boolean a()
+  {
+    if (this.jdField_a_of_type_Anan == null) {}
+    while ((this.jdField_a_of_type_Anan.jdField_a_of_type_Int != 585) && (this.jdField_a_of_type_Anan.jdField_a_of_type_Int != 565)) {
+      return false;
+    }
+    return true;
+  }
+  
+  private void i()
+  {
+    this.jdField_c_of_type_Boolean = true;
+    this.g = false;
+    this.f = false;
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_d_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      a(6, i, true);
+      n();
+      b(true);
+      return;
+    }
+  }
+  
+  private void j()
+  {
+    int n = 0;
+    if (this.jdField_a_of_type_Anan == null) {
+      return;
+    }
+    int i;
+    int m;
+    int i1;
+    Object localObject;
+    int j;
+    if ((this.jdField_b_of_type_Boolean) || (this.e))
+    {
+      i = 1;
+      m = this.jdField_a_of_type_Anaz.a();
+      i1 = this.jdField_a_of_type_Anaz.b();
+      localObject = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
+      if (i == 0) {
+        break label227;
+      }
+      j = Math.min(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels);
+      label78:
+      if (i == 0) {
+        break label244;
+      }
+    }
+    label227:
+    label244:
+    for (int k = Math.max(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels);; k = Math.min(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels))
+    {
+      i1 = (int)(1.0F * j * i1 / m);
+      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+      m = n;
+      if (i != 0)
+      {
+        m = n;
+        if (!a()) {
+          m = (int)(150.0F * k / 1334.0F);
+        }
+      }
+      ((RelativeLayout.LayoutParams)localObject).height = i1;
+      ((RelativeLayout.LayoutParams)localObject).width = j;
+      ((RelativeLayout.LayoutParams)localObject).topMargin = m;
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i1;
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = j;
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getDrawable(this.jdField_a_of_type_Anan.h, (URLDrawable.URLDrawableOptions)localObject));
+      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+      return;
+      i = 0;
+      break;
+      j = Math.max(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels);
+      break label78;
+    }
+  }
+  
+  private void k()
+  {
+    if (this.jdField_a_of_type_Anaz == null) {
+      return;
+    }
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext().getResources().getDrawable(2130838534));
+    }
+    View localView;
+    for (;;)
+    {
+      localView = this.jdField_a_of_type_Anaz.a();
+      if (localView != null) {
+        break;
+      }
+      QLog.w("cmgame_process.CmGameVideoViewController", 1, "[setViewStatus], videoView is null.");
+      return;
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext().getResources().getDrawable(2130838535));
+    }
+    try
+    {
+      Object localObject = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131380850);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      localLayoutParams.addRule(13);
+      ((RelativeLayout)localObject).addView(localView, localLayoutParams);
+      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).height = 1;
+      ((RelativeLayout.LayoutParams)localObject).width = 1;
+      l();
+      localView.setOnClickListener(new anax(this));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.w("cmgame_process.CmGameVideoViewController", 1, "fail to addview," + localThrowable);
+    }
+  }
+  
+  private void l()
+  {
+    if (this.jdField_a_of_type_Anan == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (!this.jdField_b_of_type_Boolean) {
+          break label646;
+        }
+        Object localObject1 = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363693);
+        localObject7 = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363694);
+        ((RelativeLayout)localObject7).setOnClickListener(this);
+        ((RelativeLayout)localObject1).setOnClickListener(this);
+        if (this.jdField_a_of_type_Anan.jdField_a_of_type_Int == 185)
+        {
+          ((RelativeLayout)localObject1).setVisibility(8);
+          ((RelativeLayout)localObject7).setVisibility(0);
+          localObject4 = (ImageView)((RelativeLayout)localObject7).findViewById(2131362099);
+          localObject6 = (TextView)((RelativeLayout)localObject7).findViewById(2131362120);
+          localObject3 = (TextView)((RelativeLayout)localObject7).findViewById(2131362039);
+          localObject5 = (Button)((RelativeLayout)localObject7).findViewById(2131362130);
+          localTextView = (TextView)((RelativeLayout)localObject7).findViewById(2131362111);
+          localObject1 = (LinearLayout)((RelativeLayout)localObject7).findViewById(2131362113);
+          if (localObject4 != null)
+          {
+            if (TextUtils.isEmpty(this.jdField_a_of_type_Anan.f)) {
+              break label852;
+            }
+            localObject7 = URLDrawable.URLDrawableOptions.obtain();
+            localObject8 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getResources();
+            ((URLDrawable.URLDrawableOptions)localObject7).mLoadingDrawable = ((Resources)localObject8).getDrawable(2130845460);
+            ((URLDrawable.URLDrawableOptions)localObject7).mFailedDrawable = ((Resources)localObject8).getDrawable(2130845460);
+            localObject7 = URLDrawable.getDrawable(this.jdField_a_of_type_Anan.f, (URLDrawable.URLDrawableOptions)localObject7);
+            ((URLDrawable)localObject7).setTag(bgxc.b(UIUtils.dip2px(BaseApplicationImpl.getContext(), 200.0F), UIUtils.dip2px(BaseApplicationImpl.getContext(), 200.0F), DisplayUtil.dip2px(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), 12.0F)));
+            ((URLDrawable)localObject7).setDecodeHandler(bgxc.c);
+            ((ImageView)localObject4).setImageDrawable((Drawable)localObject7);
+          }
+          if (localObject6 != null) {
+            ((TextView)localObject6).setText(this.jdField_a_of_type_Anan.d);
+          }
+          if (localObject3 != null)
+          {
+            localObject6 = this.jdField_a_of_type_Anan.e;
+            localObject4 = localObject6;
+            if (((String)localObject6).length() > 15)
+            {
+              localObject4 = ((String)localObject6).substring(0, 15);
+              localObject4 = (String)localObject4 + "...";
+            }
+            ((TextView)localObject3).setText(anvx.a(2131701646) + (String)localObject4);
+          }
+          if (localObject5 != null)
+          {
+            if ((this.jdField_a_of_type_Anan.jdField_b_of_type_Int != 12) && (this.jdField_a_of_type_Anan.jdField_b_of_type_Int != 19)) {
+              break label862;
+            }
+            ((Button)localObject5).setText(anvx.a(2131701644));
+            ((Button)localObject5).setOnClickListener(this);
+          }
+          if (localTextView == null) {
+            break;
+          }
+          this.jdField_a_of_type_Anan.jdField_a_of_type_Double /= 2.0D;
+          localObject3 = new StringBuilder(500);
+          if ((Double.compare(this.jdField_a_of_type_Anan.jdField_a_of_type_Double, 0.0D) != 0) && (this.jdField_a_of_type_Anan.jdField_a_of_type_Double >= 3.0D)) {
+            break label876;
+          }
+          ((StringBuilder)localObject3).append("精品推荐 ");
+          if (localObject1 != null) {
+            ((LinearLayout)localObject1).setVisibility(8);
+          }
+          if ((0L != this.jdField_a_of_type_Anan.jdField_a_of_type_Long) && (this.jdField_a_of_type_Anan.jdField_a_of_type_Long >= 100000L)) {
+            break label931;
+          }
+          ((StringBuilder)localObject3).append("热门推荐 ");
+          localTextView.setText(((StringBuilder)localObject3).toString());
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("cmgame_process.CmGameVideoViewController", 1, localThrowable, new Object[0]);
+        return;
+      }
+      localThrowable.setVisibility(0);
+      ((RelativeLayout)localObject7).setVisibility(8);
+      Object localObject4 = (ImageView)localThrowable.findViewById(2131362098);
+      Object localObject6 = (TextView)localThrowable.findViewById(2131362119);
+      Object localObject3 = (TextView)localThrowable.findViewById(2131362038);
+      TextView localTextView = (TextView)localThrowable.findViewById(2131362110);
+      Object localObject5 = (Button)localThrowable.findViewById(2131362128);
+      Object localObject2 = (LinearLayout)localThrowable.findViewById(2131362112);
+      continue;
+      label646:
+      Object localObject7 = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363693);
+      Object localObject8 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject7).getLayoutParams();
+      ((RelativeLayout)localObject7).setOnClickListener(this);
+      localObject2 = (Button)((RelativeLayout)localObject7).findViewById(2131362131);
+      localObject4 = (ImageView)((RelativeLayout)localObject7).findViewById(2131362098);
+      localObject6 = (TextView)((RelativeLayout)localObject7).findViewById(2131362119);
+      localObject3 = (TextView)((RelativeLayout)localObject7).findViewById(2131362038);
+      localTextView = (TextView)((RelativeLayout)localObject7).findViewById(2131362110);
+      localObject5 = (Button)((RelativeLayout)localObject7).findViewById(2131362128);
+      localObject7 = (LinearLayout)((RelativeLayout)localObject7).findViewById(2131362112);
+      if (a())
+      {
+        ((Button)localObject2).setVisibility(8);
+        ((Button)localObject5).setVisibility(0);
+        ((RelativeLayout.LayoutParams)localObject8).height = AIOUtils.dp2px(157.0F, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getResources());
+        localObject2 = localObject5;
+      }
+      for (;;)
+      {
+        ((Button)localObject2).setOnClickListener(this);
+        localObject5 = localObject2;
+        localObject2 = localObject7;
+        break;
+        ((Button)localObject2).setVisibility(0);
+        ((Button)localObject5).setVisibility(8);
+        ((RelativeLayout.LayoutParams)localObject8).height = AIOUtils.dp2px(104.0F, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getResources());
+      }
+      label852:
+      ((ImageView)localObject4).setImageResource(2130838559);
+      continue;
+      label862:
+      ((Button)localObject5).setText(anvx.a(2131701641));
+      continue;
+      label876:
+      if (localObject2 != null) {
+        ((LinearLayout)localObject2).setVisibility(0);
+      }
+      a(this.jdField_a_of_type_Anan.jdField_a_of_type_Double, (LinearLayout)localObject2);
+      ((StringBuilder)localObject3).append(new DecimalFormat("0.0").format(this.jdField_a_of_type_Anan.jdField_a_of_type_Double)).append("分 ");
+      continue;
+      label931:
+      if (this.jdField_a_of_type_Anan.jdField_a_of_type_Long < 1000000L) {
+        ((StringBuilder)localObject3).append(this.jdField_a_of_type_Anan.jdField_a_of_type_Long);
+      }
+      for (;;)
+      {
+        if ((this.jdField_a_of_type_Anan.jdField_b_of_type_Int != 12) && (this.jdField_a_of_type_Anan.jdField_b_of_type_Int != 19)) {
+          break label1082;
+        }
+        ((StringBuilder)localObject3).append("次下载");
+        break;
+        if (this.jdField_a_of_type_Anan.jdField_a_of_type_Long < 100000000L) {
+          ((StringBuilder)localObject3).append(new BigDecimal(this.jdField_a_of_type_Anan.jdField_a_of_type_Long / 10000.0D).setScale(0, 4)).append("万");
+        } else {
+          ((StringBuilder)localObject3).append(new BigDecimal(this.jdField_a_of_type_Anan.jdField_a_of_type_Long / 100000000.0D).setScale(0, 4)).append("亿");
+        }
+      }
+      label1082:
+      ((StringBuilder)localObject3).append("次浏览");
+    }
+  }
+  
+  private void m()
+  {
+    if (this.jdField_a_of_type_Boolean) {}
+    Activity localActivity;
+    do
+    {
+      do
+      {
+        return;
+      } while ((!a()) || (this.jdField_b_of_type_Boolean));
+      localActivity = a();
+    } while (localActivity == null);
+    this.e = true;
+    this.jdField_d_of_type_Int = localActivity.getRequestedOrientation();
+    localActivity.setRequestedOrientation(1);
+  }
+  
+  private void n()
+  {
+    if ((a()) && (!this.jdField_b_of_type_Boolean))
+    {
+      Activity localActivity = a();
+      if (localActivity != null)
+      {
+        this.e = false;
+        localActivity.setRequestedOrientation(this.jdField_d_of_type_Int);
+      }
+    }
+  }
+  
+  private void o()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver != null) {
+        return;
+      }
+      QLog.i("cmgame_process.CmGameVideoViewController", 1, "registerReceiverForApp");
+      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
+      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameVideoViewController", 1, localThrowable, new Object[0]);
+    }
+  }
+  
+  private void p()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver == null) {
+        return;
+      }
+      QLog.i("cmgame_process.CmGameVideoViewController", 1, "unregisterReceiverForApp");
+      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.unregister(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
+      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = null;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameVideoViewController", 1, localThrowable, new Object[0]);
+    }
+  }
+  
+  public GdtAppReceiver a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
+  }
+  
+  public GdtHandler.Params a(qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  {
+    GdtHandler.Params localParams = new GdtHandler.Params();
+    localParams.jdField_c_of_type_Int = 7;
+    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
+    if (paramAdInfo != null) {
+      localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramAdInfo);
+    }
+    localParams.jdField_a_of_type_Boolean = true;
+    localParams.jdField_b_of_type_Boolean = true;
+    localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(a());
+    localParams.jdField_a_of_type_JavaLangClass = null;
+    localParams.jdField_b_of_type_JavaLangClass = GdtCanvasFragment4CmGame.class;
+    return localParams;
+  }
+  
+  public void a()
+  {
+    QLog.i("cmgame_process.CmGameVideoViewController", 1, "[createVideoPlayer]");
+    this.jdField_a_of_type_Anaz = new anaq();
+    this.jdField_a_of_type_Anaz.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), amwn.a());
+    this.jdField_a_of_type_Anaz.a(this);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    QLog.w("cmgame_process.CmGameVideoViewController", 1, "[onVideoError], module:" + paramInt1 + ", errorType:" + paramInt2 + ", errorCode:" + paramInt3 + ",msg:" + paramString);
+    a(0, 0, false);
+  }
+  
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Anan == null) || (this.jdField_a_of_type_Anaz == null)) {}
+    while ((this.jdField_a_of_type_Boolean) && (!paramBoolean)) {
+      return;
+    }
+    VipUtils.a(null, "cmshow", "Apollo", "video_SPA", this.jdField_a_of_type_Anan.jdField_c_of_type_Int, paramInt1, new String[] { Integer.toString(this.jdField_c_of_type_Int), Long.toString(this.jdField_b_of_type_Int), Integer.toString(paramInt2), Integer.toString(this.jdField_a_of_type_Anan.jdField_a_of_type_Int) });
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Boolean) {}
+    label284:
+    for (;;)
+    {
+      return;
+      paramLong1 /= 1000L;
+      paramLong2 /= 1000L;
+      if (paramLong1 == paramLong2)
+      {
+        a(1, 0L);
+        a(1, 0, false);
+        if (paramLong1 == (1L + paramLong2) / 2L)
+        {
+          a(4, 1000L * paramLong1);
+          a(1, 50, false);
+        }
+        if (paramLong2 <= 15L) {
+          break label245;
+        }
+        long l = 15L - (paramLong2 - paramLong1);
+        if (l <= 0L) {
+          break label233;
+        }
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(anvx.a(2131701640) + l);
+        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      }
+      for (;;)
+      {
+        if (paramLong1 != paramLong2 - 15L) {
+          break label284;
+        }
+        this.jdField_d_of_type_Boolean = true;
+        amwn.a().callbackFromRequest(this.jdField_a_of_type_Anan.jdField_b_of_type_Long, 0, "sc.game_ad_video_end.local", "{}");
+        return;
+        if (paramLong1 == paramLong2 - 1L)
+        {
+          a(2, 0L);
+          a(1, 1, false);
+          break;
+        }
+        if (paramLong1 == paramLong2 - 2L)
+        {
+          a(1, 2, false);
+          break;
+        }
+        if (paramLong1 != paramLong2 - 15L) {
+          break;
+        }
+        a(1, 15, false);
+        break;
+        label233:
+        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        continue;
+        label245:
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(anvx.a(2131701647) + paramLong1);
+        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      }
+    }
+  }
+  
+  public void a(anan paramanan)
+  {
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1500L) {
       if (QLog.isColorLevel()) {
-        QLog.d("SecSvcHandler", 2, "account exception alert, null body");
+        QLog.d("cmgame_process.CmGameVideoViewController", 2, "click too quick, not play");
       }
     }
     do
     {
       return;
-      if (this.app.isLogin()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("SecSvcHandler", 2, "user not logined, no alert");
-    return;
-    String str1 = "";
-    String str2 = "";
-    String str3 = "";
-    String str4 = "";
-    String str5 = "";
-    if (paramAccountExceptionAlertBody.str_title.has()) {
-      str1 = paramAccountExceptionAlertBody.str_title.get();
-    }
-    if (paramAccountExceptionAlertBody.str_content.has()) {
-      str2 = paramAccountExceptionAlertBody.str_content.get();
-    }
-    if (paramAccountExceptionAlertBody.str_left_button_text.has()) {
-      str3 = paramAccountExceptionAlertBody.str_left_button_text.get();
-    }
-    if (paramAccountExceptionAlertBody.str_right_button_text.has()) {
-      str4 = paramAccountExceptionAlertBody.str_right_button_text.get();
-    }
-    if (paramAccountExceptionAlertBody.str_right_button_link.has()) {
-      str5 = paramAccountExceptionAlertBody.str_right_button_link.get();
-    }
-    if (paramAccountExceptionAlertBody.uint32_left_button_id.has()) {}
-    for (int i = paramAccountExceptionAlertBody.uint32_left_button_id.get();; i = 0)
-    {
-      if (paramAccountExceptionAlertBody.uint32_right_button_id.has()) {}
-      for (int j = paramAccountExceptionAlertBody.uint32_right_button_id.get();; j = 0)
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (paramanan == null)
       {
-        if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str4))))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("SecSvcHandler", 2, "empty title or content, or no buttons, so no alert");
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SecSvcHandler", 2, String.format("cmd=%d, args: title=%s, msg=%s, lbtn=%s, rbtn=%s, url=%s,lbip=%d, rbid=%d", new Object[] { Integer.valueOf(paramInt), str1, str2, str3, str4, str5, Integer.valueOf(i), Integer.valueOf(j) }));
-        }
-        new Handler(Looper.getMainLooper()).post(new SecSvcHandler.1(this, str1, str2, str3, str4, str5, i, j, paramInt));
+        QLog.w("cmgame_process.CmGameVideoViewController", 1, "[playVideo], fail to play ads video.");
         return;
       }
-    }
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Anan = paramanan;
+    } while (this.jdField_a_of_type_Bkys == null);
+    this.jdField_a_of_type_Bkys.obtainMessage(0).sendToTarget();
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    bool1 = false;
-    boolean bool3 = false;
-    boolean bool4 = false;
-    if ((paramObject == null) || (paramFromServiceMsg == null) || (paramToServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
-    {
-      notifyUI(8, false, Integer.valueOf(-1));
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-        localOIDBSSOPkg.mergeFrom(paramFromServiceMsg.getWupBuffer());
-        paramToServiceMsg = new Bundle();
-        bool2 = bool3;
-        paramObject = paramToServiceMsg;
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        try
-        {
-          if (localOIDBSSOPkg.uint32_result.has())
-          {
-            bool1 = bool4;
-            bool2 = bool3;
-            if (localOIDBSSOPkg.uint32_result.get() == 0) {
-              bool1 = true;
-            }
-            bool2 = bool1;
-            paramToServiceMsg.putInt("ret_code", localOIDBSSOPkg.uint32_result.get());
-          }
-          paramObject = paramToServiceMsg;
-          bool2 = bool1;
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          for (;;)
-          {
-            boolean bool2;
-            bool1 = bool2;
-          }
-        }
-        try
-        {
-          if (localOIDBSSOPkg.str_error_msg.has())
-          {
-            paramToServiceMsg.putString("err_msg", localOIDBSSOPkg.str_error_msg.get());
-            bool2 = bool1;
-            paramObject = paramToServiceMsg;
-          }
-          notifyUI(8, bool2, paramObject);
-          return;
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          break label175;
-        }
-        paramFromServiceMsg = paramFromServiceMsg;
-        paramToServiceMsg = null;
-        bool1 = false;
-      }
-      label175:
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SecSvcHandler", 2, "onUnbindPhoneNumLogin error:" + paramFromServiceMsg.getMessage());
-        paramObject = paramToServiceMsg;
-        bool2 = bool1;
-      }
-    }
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramObject == null) || (paramFromServiceMsg == null) || (paramToServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
-    {
-      if (paramToServiceMsg == null) {}
-      for (paramToServiceMsg = Boolean.valueOf(false);; paramToServiceMsg = paramToServiceMsg.getAttribute("open_close_contacts", Boolean.valueOf(false)))
-      {
-        notifyUI(10, false, paramToServiceMsg);
-        return;
-      }
-    }
-    if (parseOIDBPkg(paramFromServiceMsg, paramObject, new oidb_0xebd.RspBody()) == 0)
-    {
-      notifyUI(10, true, paramToServiceMsg.getAttribute("open_close_contacts", Boolean.valueOf(false)));
-      return;
-    }
-    notifyUI(10, false, paramToServiceMsg.getAttribute("open_close_contacts", Boolean.valueOf(false)));
-  }
-  
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    paramToServiceMsg = null;
-    oidb_0xeb8.PhoneInfo localPhoneInfo = null;
-    if (paramObject != null) {}
-    for (;;)
-    {
-      boolean bool1;
-      try
-      {
-        if (!paramFromServiceMsg.isSuccess()) {
-          break label599;
-        }
-        paramObject = new oidb_sso.OIDBSSOPkg();
-        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
-        if ((paramObject.uint32_result.get() != 0) || (!paramObject.bytes_bodybuffer.has())) {
-          break label599;
-        }
-        paramFromServiceMsg = new oidb_0xeb8.RspBody();
-        paramFromServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
-        i = paramFromServiceMsg.uint32_check_result.get();
-        if (i <= 0) {
-          break label599;
-        }
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        bool1 = false;
-        paramToServiceMsg = localPhoneInfo;
-        continue;
-      }
-      try
-      {
-        paramToServiceMsg = new Bundle();
-        try
-        {
-          paramToServiceMsg.putInt("check_result", i);
-          if (i != 2) {
-            break label616;
-          }
-          i = 0;
-          paramToServiceMsg.putInt("need_unify", i);
-          if (paramFromServiceMsg.str_mibao_change_url.has()) {
-            paramToServiceMsg.putString("mibao_change_url", paramFromServiceMsg.str_mibao_change_url.get());
-          }
-          if (paramFromServiceMsg.str_mibao_set_url.has()) {
-            paramToServiceMsg.putString("mibao_set_url", paramFromServiceMsg.str_mibao_set_url.get());
-          }
-          if (paramFromServiceMsg.str_mibao_verify_url.has()) {
-            paramToServiceMsg.putString("mibao_verify_url", paramFromServiceMsg.str_mibao_verify_url.get());
-          }
-          if (!paramFromServiceMsg.rpt_phone_info.has()) {
-            continue;
-          }
-          paramFromServiceMsg = paramFromServiceMsg.rpt_phone_info.get();
-          paramObject = new Bundle[paramFromServiceMsg.size()];
-          i = 0;
-          if (i >= paramFromServiceMsg.size()) {
-            continue;
-          }
-          localPhoneInfo = (oidb_0xeb8.PhoneInfo)paramFromServiceMsg.get(i);
-          if (localPhoneInfo == null) {
-            break label607;
-          }
-          Bundle localBundle = new Bundle();
-          int j = -1;
-          if (localPhoneInfo.uint32_phone_type.has())
-          {
-            localBundle.putInt("phone_type", localPhoneInfo.uint32_phone_type.get());
-            j = localPhoneInfo.uint32_phone_type.get();
-          }
-          if (localPhoneInfo.str_country_code.has())
-          {
-            localBundle.putString("country_code", localPhoneInfo.str_country_code.get());
-            if (j == 1) {
-              paramToServiceMsg.putString("country_code", localPhoneInfo.str_country_code.get());
-            }
-          }
-          if (localPhoneInfo.str_phone.has())
-          {
-            localBundle.putString("phone", localPhoneInfo.str_phone.get());
-            if (j == 1) {
-              paramToServiceMsg.putString("phone", localPhoneInfo.str_phone.get());
-            }
-          }
-          if (localPhoneInfo.uint32_phone_status.has())
-          {
-            localBundle.putInt("status", localPhoneInfo.uint32_phone_status.get());
-            if (j == 1) {
-              paramToServiceMsg.putInt("status", localPhoneInfo.uint32_phone_status.get());
-            }
-          }
-          if (localPhoneInfo.bytes_vas_phone.has()) {
-            localBundle.putByteArray("vaskey", localPhoneInfo.bytes_vas_phone.get().toByteArray());
-          }
-          paramObject[i] = localBundle;
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          bool1 = true;
-        }
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        bool1 = true;
-        paramToServiceMsg = localPhoneInfo;
-        continue;
-      }
-      paramObject = paramToServiceMsg;
-      boolean bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SecSvcHandler", 2, "onGetPhoneBindInfo error:" + paramFromServiceMsg.getMessage());
-        bool2 = bool1;
-        paramObject = paramToServiceMsg;
-      }
-      notifyUI(5, bool2, paramObject);
-      return;
-      paramToServiceMsg.putParcelableArray("phone_info", paramObject);
-      ((aihp)this.app.getManager(102)).a(paramToServiceMsg);
-      bool2 = true;
-      paramObject = paramToServiceMsg;
-      continue;
-      label599:
-      bool2 = false;
-      paramObject = paramToServiceMsg;
-      continue;
-      label607:
-      i += 1;
-      continue;
-      label616:
-      int i = 1;
-    }
-  }
-  
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int j = 0;
-    int i = 1;
-    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
-    {
-      notifyUI(1, false, null);
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramFromServiceMsg = new get_config.RspBody();
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        paramObject = new Bundle();
-        if (paramFromServiceMsg.u32_proto_version.has()) {
-          i = paramFromServiceMsg.u32_proto_version.get();
-        }
-        paramObject.putInt("proto_version", i);
-        paramToServiceMsg = "";
-        if (paramFromServiceMsg.str_config_name.has()) {
-          paramToServiceMsg = paramFromServiceMsg.str_config_name.get();
-        }
-        paramObject.putString("config_name", paramToServiceMsg);
-        if (!paramFromServiceMsg.u32_config_version.has()) {
-          break label273;
-        }
-        i = paramFromServiceMsg.u32_config_version.get();
-        paramObject.putInt("config_version", i);
-        i = j;
-        if (paramFromServiceMsg.u32_effect_time.has()) {
-          i = paramFromServiceMsg.u32_effect_time.get();
-        }
-        paramObject.putInt("effect_time", i);
-        paramToServiceMsg = "";
-        if (paramFromServiceMsg.str_md5.has()) {
-          paramToServiceMsg = paramFromServiceMsg.str_md5.get();
-        }
-        paramObject.putString("md5", paramToServiceMsg);
-        paramToServiceMsg = "";
-        if (paramFromServiceMsg.str_download_link.has()) {
-          paramToServiceMsg = paramFromServiceMsg.str_download_link.get();
-        }
-        paramObject.putString("download_url", paramToServiceMsg);
-        notifyUI(1, true, paramObject);
-        return;
-      }
-      catch (Exception paramToServiceMsg) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("SecSvcHandler", 2, "onGetAntiFraudConfig error:" + paramToServiceMsg.getMessage());
-      return;
-      label273:
-      i = 0;
-    }
-  }
-  
-  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int i = 1;
-    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
-    {
-      notifyUI(2, false, null);
-      return;
-    }
-    paramObject = new wx_msg_opt.RspBody();
-    for (;;)
-    {
-      try
-      {
-        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = new Bundle();
-        if (paramObject.uint32_cmd.has()) {
-          i = paramObject.uint32_cmd.get();
-        }
-        paramFromServiceMsg.putInt("cmd", i);
-        i = -1;
-        if (paramObject.uint32_ret.has()) {
-          i = paramObject.uint32_ret.get();
-        }
-        paramFromServiceMsg.putInt("ret", i);
-        if (!paramObject.uint32_opt.has()) {
-          break label208;
-        }
-        i = paramObject.uint32_opt.get();
-        paramFromServiceMsg.putInt("opt", i);
-        paramToServiceMsg = "";
-        if (paramObject.str_wording.has()) {
-          paramToServiceMsg = paramObject.str_wording.get();
-        }
-        paramFromServiceMsg.putString("wording", paramToServiceMsg);
-        notifyUI(2, true, paramFromServiceMsg);
-        return;
-      }
-      catch (Exception paramToServiceMsg) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("SecSvcHandler", 2, "onWXSyncQQMsgOption error:" + paramToServiceMsg.getMessage());
-      return;
-      label208:
-      i = 2;
-    }
-  }
-  
-  private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool2 = false;
-    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
-    {
-      notifyUI(3, false, null);
-      return;
-    }
-    paramObject = new device_lock_query_status.RspBody();
-    for (;;)
-    {
-      try
-      {
-        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = new Bundle();
-        if (!paramObject.u32_status.has()) {
-          break label181;
-        }
-        i = paramObject.u32_status.get();
-        paramFromServiceMsg.putInt("status", i);
-        paramToServiceMsg = "";
-        if (paramObject.str_wording.has()) {
-          paramToServiceMsg = paramObject.str_wording.get();
-        }
-        paramFromServiceMsg.putString("wording", paramToServiceMsg);
-        boolean bool1 = bool2;
-        if (paramObject.u32_ret.has())
-        {
-          bool1 = bool2;
-          if (paramObject.u32_ret.get() == 0) {
-            bool1 = true;
-          }
-        }
-        notifyUI(3, bool1, paramFromServiceMsg);
-        return;
-      }
-      catch (Exception paramToServiceMsg) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("SecSvcHandler", 2, "onQueryDevLockStatus error:" + paramToServiceMsg.getMessage());
-      return;
-      label181:
-      int i = 0;
-    }
-  }
-  
-  /* Error */
-  private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    // Byte code:
-    //   0: aload_3
-    //   1: ifnull +252 -> 253
-    //   4: aload_2
-    //   5: invokevirtual 133	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   8: ifeq +245 -> 253
-    //   11: new 139	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   14: dup
-    //   15: invokespecial 142	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   18: astore_3
-    //   19: aload_3
-    //   20: aload_2
-    //   21: invokevirtual 146	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   24: invokevirtual 150	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   27: pop
-    //   28: aload_3
-    //   29: getfield 212	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   32: invokevirtual 215	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   35: ifeq +218 -> 253
-    //   38: new 397	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody
-    //   41: dup
-    //   42: invokespecial 398	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody:<init>	()V
-    //   45: astore_2
-    //   46: aload_2
-    //   47: aload_3
-    //   48: getfield 212	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   51: invokevirtual 221	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   54: invokevirtual 226	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   57: invokevirtual 399	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   60: pop
-    //   61: aload_2
-    //   62: getfield 403	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody:msg_dm_head	Ltencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead;
-    //   65: invokevirtual 406	tencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead:has	()Z
-    //   68: ifeq +185 -> 253
-    //   71: aload_2
-    //   72: getfield 403	tencent/im/oidb/cmd0x614/Oidb_0x614$RspBody:msg_dm_head	Ltencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead;
-    //   75: astore_2
-    //   76: aload_2
-    //   77: getfield 407	tencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   80: invokevirtual 75	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   83: ifeq +170 -> 253
-    //   86: aload_2
-    //   87: getfield 407	tencent/im/oidb/cmd0x614/Oidb_0x614$DeviceManageHead:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   90: invokevirtual 78	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   93: istore 4
-    //   95: iload 4
-    //   97: ifne +156 -> 253
-    //   100: new 152	android/os/Bundle
-    //   103: dup
-    //   104: invokespecial 153	android/os/Bundle:<init>	()V
-    //   107: astore_3
-    //   108: aload_1
-    //   109: getfield 411	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   112: getstatic 417	com/tencent/mobileqq/activity/AuthDevRenameActivity:i	Ljava/lang/String;
-    //   115: invokevirtual 421	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   118: istore 4
-    //   120: aload_3
-    //   121: getstatic 417	com/tencent/mobileqq/activity/AuthDevRenameActivity:i	Ljava/lang/String;
-    //   124: iload 4
-    //   126: invokevirtual 162	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   129: aload_1
-    //   130: getfield 411	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   133: getstatic 423	com/tencent/mobileqq/activity/AuthDevRenameActivity:f	Ljava/lang/String;
-    //   136: invokevirtual 427	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   139: astore_2
-    //   140: aload_3
-    //   141: getstatic 423	com/tencent/mobileqq/activity/AuthDevRenameActivity:f	Ljava/lang/String;
-    //   144: aload_2
-    //   145: invokevirtual 171	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   148: aload_1
-    //   149: getfield 411	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   152: getstatic 430	com/tencent/mobileqq/activity/AuthDevRenameActivity:h	Ljava/lang/String;
-    //   155: invokevirtual 434	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
-    //   158: astore_1
-    //   159: aload_3
-    //   160: getstatic 430	com/tencent/mobileqq/activity/AuthDevRenameActivity:h	Ljava/lang/String;
-    //   163: aload_1
-    //   164: invokevirtual 298	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-    //   167: iconst_1
-    //   168: istore 6
-    //   170: aload_0
-    //   171: iconst_4
-    //   172: iload 6
-    //   174: aload_3
-    //   175: invokevirtual 137	anat:notifyUI	(IZLjava/lang/Object;)V
-    //   178: return
-    //   179: astore_2
-    //   180: iconst_0
-    //   181: istore 5
-    //   183: aconst_null
-    //   184: astore_1
-    //   185: aload_1
-    //   186: astore_3
-    //   187: iload 5
-    //   189: istore 6
-    //   191: invokestatic 20	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   194: ifeq -24 -> 170
-    //   197: ldc 22
-    //   199: iconst_2
-    //   200: new 173	java/lang/StringBuilder
-    //   203: dup
-    //   204: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   207: ldc_w 436
-    //   210: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   213: aload_2
-    //   214: invokevirtual 183	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   217: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   220: invokevirtual 186	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   223: invokestatic 28	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   226: aload_1
-    //   227: astore_3
-    //   228: iload 5
-    //   230: istore 6
-    //   232: goto -62 -> 170
-    //   235: astore_2
-    //   236: aconst_null
-    //   237: astore_1
-    //   238: iconst_1
-    //   239: istore 5
-    //   241: goto -56 -> 185
-    //   244: astore_2
-    //   245: iconst_1
-    //   246: istore 5
-    //   248: aload_3
-    //   249: astore_1
-    //   250: goto -65 -> 185
-    //   253: iconst_0
-    //   254: istore 6
-    //   256: aconst_null
-    //   257: astore_3
-    //   258: goto -88 -> 170
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	261	0	this	anat
-    //   0	261	1	paramToServiceMsg	ToServiceMsg
-    //   0	261	2	paramFromServiceMsg	FromServiceMsg
-    //   0	261	3	paramObject	Object
-    //   93	32	4	i	int
-    //   181	66	5	bool1	boolean
-    //   168	87	6	bool2	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   4	95	179	java/lang/Exception
-    //   100	108	235	java/lang/Exception
-    //   108	167	244	java/lang/Exception
-  }
-  
-  private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool1 = false;
-    boolean bool3 = false;
-    boolean bool4 = false;
-    if (paramObject != null) {}
-    for (;;)
-    {
-      try
-      {
-        if (!paramFromServiceMsg.isSuccess()) {
-          break label210;
-        }
-        paramObject = new oidb_sso.OIDBSSOPkg();
-        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = new Bundle();
-        bool2 = bool3;
-        paramToServiceMsg = paramFromServiceMsg;
-      }
-      catch (Exception paramObject)
-      {
-        try
-        {
-          if (paramObject.uint32_result.has())
-          {
-            bool1 = bool4;
-            bool2 = bool3;
-            if (paramObject.uint32_result.get() == 0) {
-              bool1 = true;
-            }
-            bool2 = bool1;
-            paramFromServiceMsg.putInt("ret_code", paramObject.uint32_result.get());
-          }
-          paramToServiceMsg = paramFromServiceMsg;
-          bool2 = bool1;
-        }
-        catch (Exception paramObject)
-        {
-          for (;;)
-          {
-            bool1 = bool2;
-          }
-        }
-        try
-        {
-          if (paramObject.str_error_msg.has())
-          {
-            paramFromServiceMsg.putString("err_msg", paramObject.str_error_msg.get());
-            bool2 = bool1;
-            paramToServiceMsg = paramFromServiceMsg;
-          }
-          notifyUI(7, bool2, paramToServiceMsg);
-          return;
-        }
-        catch (Exception paramObject)
-        {
-          break label148;
-        }
-        paramObject = paramObject;
-        paramFromServiceMsg = null;
-        bool1 = false;
-      }
-      label148:
-      boolean bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SecSvcHandler", 2, "onBindPhoneNumLogin error:" + paramObject.getMessage());
-        paramToServiceMsg = paramFromServiceMsg;
-        bool2 = bool1;
-        continue;
-        label210:
-        paramToServiceMsg = null;
-        bool2 = false;
-      }
-    }
-  }
-  
-  private void i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool1 = false;
-    boolean bool3 = false;
-    boolean bool4 = false;
-    if (paramObject != null) {}
-    for (;;)
-    {
-      try
-      {
-        if (!paramFromServiceMsg.isSuccess()) {
-          break label209;
-        }
-        paramObject = new oidb_sso.OIDBSSOPkg();
-        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = new Bundle();
-        bool2 = bool3;
-        paramToServiceMsg = paramFromServiceMsg;
-      }
-      catch (Exception paramObject)
-      {
-        try
-        {
-          if (paramObject.uint32_result.has())
-          {
-            bool1 = bool4;
-            bool2 = bool3;
-            if (paramObject.uint32_result.get() == 0) {
-              bool1 = true;
-            }
-            bool2 = bool1;
-            paramFromServiceMsg.putInt("ret_code", paramObject.uint32_result.get());
-          }
-          paramToServiceMsg = paramFromServiceMsg;
-          bool2 = bool1;
-        }
-        catch (Exception paramObject)
-        {
-          for (;;)
-          {
-            bool1 = bool2;
-          }
-        }
-        try
-        {
-          if (paramObject.str_error_msg.has())
-          {
-            paramFromServiceMsg.putString("err_msg", paramObject.str_error_msg.get());
-            bool2 = bool1;
-            paramToServiceMsg = paramFromServiceMsg;
-          }
-          notifyUI(8, bool2, paramToServiceMsg);
-          return;
-        }
-        catch (Exception paramObject)
-        {
-          break label148;
-        }
-        paramObject = paramObject;
-        paramFromServiceMsg = null;
-        bool1 = false;
-      }
-      label148:
-      boolean bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SecSvcHandler", 2, "onUnbindPhoneNumLogin error:" + paramObject.getMessage());
-        paramToServiceMsg = paramFromServiceMsg;
-        bool2 = bool1;
-        continue;
-        label209:
-        paramToServiceMsg = null;
-        bool2 = false;
-      }
-    }
-  }
-  
-  private void j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramObject != null) && (paramFromServiceMsg.isSuccess())) {}
-    try
-    {
-      d.e(3, d.x(), paramFromServiceMsg.getWupBuffer());
-      return;
-    }
-    catch (Throwable paramToServiceMsg)
-    {
-      paramToServiceMsg.printStackTrace();
-    }
-  }
-  
-  private void k(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
-    {
-      QLog.e("SecSvcHandler", 1, String.format("[SFU] onQQProtectUpdate failed, FromServiceMsg: %s", new Object[] { paramFromServiceMsg.getStringForLog() }));
-      return;
-    }
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SecSvcHandler", 2, "[SFU] Received reply from server.");
-      }
-      ((bjki)this.app.getManager(194)).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      QLog.e("SecSvcHandler", 2, "[SFU] onQQProtectUpdate error:" + paramToServiceMsg.getMessage());
-    }
-  }
-  
-  public void a()
-  {
-    wx_msg_opt.ReqBody localReqBody = new wx_msg_opt.ReqBody();
-    localReqBody.uint64_uin.set(this.app.getLongAccountUin());
-    localReqBody.uint32_cmd.set(1);
-    Object localObject = localReqBody.uint32_seq;
-    int i = this.a;
-    this.a = (i + 1);
-    ((PBUInt32Field)localObject).set(i);
-    localReqBody.uint32_opt.set(1);
-    localObject = createToServiceMsg("DevLockAuthSvc.WxMsgOpt");
-    ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void a(int paramInt)
-  {
-    Object localObject = new oidb_0xeb8.ReqBody();
-    ((oidb_0xeb8.ReqBody)localObject).uint32_src.set(paramInt);
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    localOIDBSSOPkg.uint32_command.set(3768);
-    localOIDBSSOPkg.uint32_service_type.set(1);
-    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xeb8.ReqBody)localObject).toByteArray()));
-    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "OidbSvc.0xeb8");
-    ((ToServiceMsg)localObject).putWupBuffer(localOIDBSSOPkg.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void a(long paramLong, byte[] paramArrayOfByte)
+  public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SecSvcHandler", 2, "SecSvcHandler onReceivePushMessage subMsgTye = " + Integer.toHexString((int)paramLong));
+      QLog.d("cmgame_process.CmGameVideoViewController", 2, "[adsJumping]");
     }
-    switch ((int)paramLong)
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    try
     {
+      GdtHandler.a(a((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(achn.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)))));
+      return;
     }
-    int i;
+    catch (Throwable paramString)
+    {
+      QLog.e("cmgame_process.CmGameVideoViewController", 1, paramString, new Object[0]);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) {
+          return;
+        }
+        this.jdField_b_of_type_Boolean = paramBoolean;
+        LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_b_of_type_AndroidWidgetRelativeLayout.getContext());
+        if (paramBoolean)
+        {
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localLayoutInflater.inflate(2131558681, null));
+          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364704));
+          this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362219));
+          this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363048));
+          this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372917));
+          this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362106));
+          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131380931));
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+          this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new anau(this));
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("cmgame_process.CmGameVideoViewController", 1, localThrowable, new Object[0]);
+        return;
+      }
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localThrowable.inflate(2131558680, null));
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Anaz != null)
+    {
+      if (this.jdField_a_of_type_Anaz.c() != 5) {
+        this.jdField_a_of_type_Anaz.b();
+      }
+      if (this.jdField_a_of_type_Bkys != null) {
+        this.jdField_a_of_type_Bkys.obtainMessage(3).sendToTarget();
+      }
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    QLog.i("cmgame_process.CmGameVideoViewController", 1, "[closeVideoView], isByUser:" + paramBoolean);
+    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_Anaz == null) || (this.jdField_a_of_type_Anan == null)) {}
+    RelativeLayout localRelativeLayout;
+    View localView;
+    do
+    {
+      return;
+      localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131380850);
+      localView = this.jdField_a_of_type_Anaz.a();
+    } while (localView == null);
+    if (paramBoolean) {}
+    try
+    {
+      amwn.a().callbackFromRequest(this.jdField_a_of_type_Anan.jdField_b_of_type_Long, 0, "sc.game_ad_video_view_close.local", "{}");
+      label100:
+      this.jdField_d_of_type_Boolean = false;
+      this.jdField_a_of_type_Int = 0;
+      localRelativeLayout.removeView(localView);
+      this.jdField_a_of_type_Anaz.b();
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      this.jdField_a_of_type_Anaz = null;
+      try
+      {
+        amwn.a().callbackFromRequest(this.jdField_a_of_type_Anan.jdField_b_of_type_Long, 0, "cs.xy_life_cycle_event_activity.local", "{}");
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("cmgame_process.CmGameVideoViewController", 1, localException, new Object[0]);
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      break label100;
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameVideoViewController", 2, "[onVideoPrepared]");
+    }
+    if (this.jdField_a_of_type_Anaz == null) {}
     do
     {
       do
@@ -874,309 +775,174 @@ public class anat
         return;
         try
         {
-          paramArrayOfByte = (SubMsgType0xc6.MsgBody)new SubMsgType0xc6.MsgBody().mergeFrom(paramArrayOfByte);
-          i = paramArrayOfByte.uint32_sec_cmd.get();
-          if (!QLog.isColorLevel()) {
-            break;
+          amwn.a().callbackFromRequest(this.jdField_a_of_type_Anan.jdField_b_of_type_Long, 0, "cs.xy_life_cycle_event_disactivity.local", "{}");
+          if (!this.g)
+          {
+            if (this.jdField_a_of_type_Bkys != null) {
+              this.jdField_a_of_type_Bkys.obtainMessage(1).sendToTarget();
+            }
+            this.jdField_a_of_type_Anaz.a();
+            this.g = true;
+            this.jdField_a_of_type_Anaz.a(this.jdField_c_of_type_Boolean);
+            this.jdField_b_of_type_Int = ((int)((float)this.jdField_a_of_type_Anaz.a() / 1000.0F));
+            return;
           }
-          QLog.d("SecSvcHandler", 2, "SecSvcHandler onReceivePushMessage SecCmd = " + i);
         }
-        catch (Exception paramArrayOfByte)
+        catch (Exception localException)
         {
-          return;
+          for (;;)
+          {
+            QLog.e("cmgame_process.CmGameVideoViewController", 1, localException, new Object[0]);
+          }
         }
-      } while (!paramArrayOfByte.msg_s2c_account_exception_notify.has());
-      a(i, (SubMsgType0xc6.AccountExceptionAlertBody)paramArrayOfByte.msg_s2c_account_exception_notify.get());
-      return;
-      try
-      {
-        ((bjki)this.app.getManager(194)).b(i);
-        return;
-      }
-      catch (Exception paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("SecSvcHandler", 2, "onQQProtectUpdate error:" + paramArrayOfByte.getMessage());
-    return;
-    switch (i)
-    {
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    Object localObject1 = paramBundle.getString(AuthDevRenameActivity.a);
-    Object localObject2 = paramBundle.getString(AuthDevRenameActivity.b);
-    long l3 = paramBundle.getLong(AuthDevRenameActivity.c);
-    long l4 = paramBundle.getLong(AuthDevRenameActivity.d);
-    byte[] arrayOfByte2 = paramBundle.getByteArray(AuthDevRenameActivity.e);
-    String str = paramBundle.getString(AuthDevRenameActivity.f);
-    byte[] arrayOfByte1 = paramBundle.getByteArray(AuthDevRenameActivity.h);
-    int i = paramBundle.getInt(AuthDevRenameActivity.i);
-    long l1 = 0L;
-    try
-    {
-      long l2 = Long.parseLong((String)localObject1);
-      l1 = l2;
-    }
-    catch (Throwable paramBundle)
-    {
-      for (;;)
-      {
-        Oidb_0x614.ReNameDeviceNameReqBody localReNameDeviceNameReqBody;
-        paramBundle.printStackTrace();
-      }
-    }
-    paramBundle = new Oidb_0x614.DeviceManageHead();
-    paramBundle.uint32_cmd.set(0);
-    paramBundle.uint32_result.set(0);
-    paramBundle.uint64_uin.set(l1);
-    paramBundle.bytes_guid.set(ByteStringMicro.copyFrom(arrayOfByte2));
-    paramBundle.uint32_appid.set((int)l3);
-    paramBundle.uint32_subappid.set((int)l4);
-    paramBundle.bytes_appname.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-    localReNameDeviceNameReqBody = new Oidb_0x614.ReNameDeviceNameReqBody();
-    localReNameDeviceNameReqBody.bytes_guid.set(ByteStringMicro.copyFrom(arrayOfByte2));
-    localReNameDeviceNameReqBody.uint32_appid.set((int)l3);
-    localReNameDeviceNameReqBody.uint32_subappid.set((int)l4);
-    localReNameDeviceNameReqBody.bytes_appname.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-    localReNameDeviceNameReqBody.bytes_device_des.set(ByteStringMicro.copyFrom(arrayOfByte1));
-    localReNameDeviceNameReqBody.bytes_rename_device_name.set(ByteStringMicro.copyFromUtf8(str));
-    localObject2 = new Oidb_0x614.ReqBody();
-    ((Oidb_0x614.ReqBody)localObject2).msg_dm_head.set(paramBundle);
-    ((Oidb_0x614.ReqBody)localObject2).msg_mdn_req_body.set(localReNameDeviceNameReqBody);
-    paramBundle = new oidb_sso.OIDBSSOPkg();
-    paramBundle.uint32_command.set(1556);
-    paramBundle.uint32_service_type.set(1);
-    paramBundle.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((Oidb_0x614.ReqBody)localObject2).toByteArray()));
-    localObject1 = new ToServiceMsg("mobileqq.service", (String)localObject1, "OidbSvc.0x614_1");
-    ((ToServiceMsg)localObject1).putWupBuffer(paramBundle.toByteArray());
-    ((ToServiceMsg)localObject1).extraData.putLong(AuthDevRenameActivity.a, l1);
-    ((ToServiceMsg)localObject1).extraData.putString(AuthDevRenameActivity.f, str);
-    ((ToServiceMsg)localObject1).extraData.putByteArray(AuthDevRenameActivity.h, arrayOfByte1);
-    ((ToServiceMsg)localObject1).extraData.putInt(AuthDevRenameActivity.i, i);
-    sendPbReq((ToServiceMsg)localObject1);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SecSvcHandler", 2, "getAntiFraudConfig");
-    }
-    get_config.ReqBody localReqBody = new get_config.ReqBody();
-    localReqBody.u64_uin.set(this.app.getLongAccountUin());
-    localReqBody.u32_appid.set(AppSetting.a());
-    localReqBody.u32_proto_version.set(1);
-    PBUInt32Field localPBUInt32Field = localReqBody.u32_seq;
-    int i = this.a;
-    this.a = (i + 1);
-    localPBUInt32Field.set(i);
-    localReqBody.str_config_name.set(paramString);
-    paramString = bftm.a().a(paramString, "Version");
-    int j = 0;
-    i = j;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      i = Integer.parseInt(paramString);
-      localReqBody.u32_config_version.set(i);
-      paramString = createToServiceMsg("SecuritySvc.GetConfig");
-      paramString.putWupBuffer(localReqBody.toByteArray());
-      sendPbReq(paramString);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        i = j;
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("SecSvcHandler", 2, "setWXSyncQQMsgOption");
-    }
-    wx_msg_opt.ReqBody localReqBody = new wx_msg_opt.ReqBody();
-    localReqBody.uint64_uin.set(this.app.getLongAccountUin());
-    localReqBody.uint32_cmd.set(2);
-    Object localObject = localReqBody.uint32_seq;
-    int j = this.a;
-    this.a = (j + 1);
-    ((PBUInt32Field)localObject).set(j);
-    localObject = localReqBody.uint32_opt;
-    if (paramBoolean) {
-      i = 1;
-    }
-    ((PBUInt32Field)localObject).set(i);
-    localObject = createToServiceMsg("DevLockAuthSvc.WxMsgOpt");
-    ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null)
-    {
-      notifyUI(7, false, null);
-      return;
-    }
-    Object localObject = ByteBuffer.allocate(paramArrayOfByte.length + 19);
-    ((ByteBuffer)localObject).putShort((short)3);
-    ((ByteBuffer)localObject).putInt((int)this.app.getLongAccountUin());
-    ((ByteBuffer)localObject).put((byte)paramArrayOfByte.length);
-    ((ByteBuffer)localObject).put(paramArrayOfByte);
-    ((ByteBuffer)localObject).putShort((short)2);
-    ((ByteBuffer)localObject).putShort((short)1);
-    ((ByteBuffer)localObject).putShort((short)1);
-    ((ByteBuffer)localObject).put((byte)0);
-    ((ByteBuffer)localObject).putShort((short)2);
-    ((ByteBuffer)localObject).putShort((short)1);
-    ((ByteBuffer)localObject).put((byte)1);
-    paramArrayOfByte = new oidb_sso.OIDBSSOPkg();
-    paramArrayOfByte.uint32_command.set(2579);
-    paramArrayOfByte.uint32_service_type.set(16);
-    paramArrayOfByte.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject).array()));
-    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "OidbSvc.0xa13");
-    ((ToServiceMsg)localObject).putWupBuffer(paramArrayOfByte.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void b()
-  {
-    device_lock_query_status.ReqBody localReqBody = new device_lock_query_status.ReqBody();
-    Object localObject = localReqBody.u32_seq;
-    int i = this.a;
-    this.a = (i + 1);
-    ((PBUInt32Field)localObject).set(i);
-    localReqBody.u32_sys_type.set(1);
-    localReqBody.u32_app_id.set(AppSetting.a());
-    localObject = createToServiceMsg("DevLockSecSvc.DevLockQuery");
-    ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    Object localObject = new oidb_0xebd.ReqBody();
-    PBUInt32Field localPBUInt32Field = ((oidb_0xebd.ReqBody)localObject).uint32_set_is_searched_by_mobile;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localPBUInt32Field.set(i);
-      localObject = makeOIDBPkg("OidbSvc.0xebd", 3773, 1, ((oidb_0xebd.ReqBody)localObject).toByteArray());
-      ((ToServiceMsg)localObject).addAttribute("open_close_contacts", Boolean.valueOf(paramBoolean));
-      sendPbReq((ToServiceMsg)localObject);
-      return;
-    }
-  }
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null)
-    {
-      notifyUI(8, false, Integer.valueOf(-1));
-      return;
-    }
-    Object localObject = ByteBuffer.allocate(paramArrayOfByte.length + 7);
-    ((ByteBuffer)localObject).putShort((short)3);
-    ((ByteBuffer)localObject).putInt((int)this.app.getLongAccountUin());
-    ((ByteBuffer)localObject).put((byte)paramArrayOfByte.length);
-    ((ByteBuffer)localObject).put(paramArrayOfByte);
-    paramArrayOfByte = new oidb_sso.OIDBSSOPkg();
-    paramArrayOfByte.uint32_command.set(1197);
-    paramArrayOfByte.uint32_service_type.set(11);
-    paramArrayOfByte.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject).array()));
-    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "OidbSvc.0x4ad");
-    ((ToServiceMsg)localObject).putWupBuffer(paramArrayOfByte.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void c()
-  {
-    sendPbReq(makeOIDBPkg("OidbSvc.0xec0", 3776, 0, new oidb_0xec0.ReqBody().toByteArray()));
+      } while (this.f);
+      this.jdField_a_of_type_Anaz.a();
+    } while (this.jdField_a_of_type_Bkys == null);
+    this.jdField_a_of_type_Bkys.obtainMessage(4).sendToTarget();
   }
   
   public void d()
   {
-    b(true);
+    if ((this.jdField_a_of_type_Anaz != null) && (!this.f) && (this.jdField_a_of_type_Bkys != null) && (this.jdField_a_of_type_Anaz.c() != 5)) {
+      this.jdField_a_of_type_Anaz.a();
+    }
   }
   
   public void e()
   {
-    b(false);
+    if (this.jdField_a_of_type_Bkys != null) {
+      this.jdField_a_of_type_Bkys.obtainMessage(2).sendToTarget();
+    }
+    if (this.jdField_a_of_type_Anaz == null) {
+      return;
+    }
+    this.jdField_a_of_type_Anaz.b(this);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      a(8, this.jdField_a_of_type_Anaz.a());
+      a(1, 100, false);
+    }
+    if (!this.jdField_d_of_type_Boolean) {
+      amwn.a().callbackFromRequest(this.jdField_a_of_type_Anan.jdField_b_of_type_Long, 0, "sc.game_ad_video_end.local", "{}");
+    }
+    this.g = false;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = true;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  public void f()
   {
-    return anau.class;
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameVideoViewController", 2, "[onVideoBufferStart]");
+    }
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void g()
   {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (str.equalsIgnoreCase("SecuritySvc.GetConfig"))
-    {
-      d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameVideoViewController", 2, "[onVideoBufferEnd]");
     }
-    if (str.equalsIgnoreCase("DevLockAuthSvc.WxMsgOpt"))
-    {
-      e(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
+    if (this.jdField_a_of_type_Bkys != null) {
+      this.jdField_a_of_type_Bkys.obtainMessage(4).sendToTarget();
     }
-    if (str.equalsIgnoreCase("DevLockSecSvc.DevLockQuery"))
-    {
-      f(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_Anaz != null) {
+      this.jdField_a_of_type_Anaz.b();
     }
-    if (str.equalsIgnoreCase("OidbSvc.0x614_1"))
+    p();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      g(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return false;
+        } while (this.jdField_a_of_type_Anan == null);
+        b(false);
+        m();
+        a();
+        k();
+        if (this.jdField_a_of_type_Anaz != null) {
+          this.jdField_a_of_type_Anaz.a(this.jdField_a_of_type_Anan.j, "sd", 0);
+        }
+        amwn.a().callbackFromRequest(this.jdField_a_of_type_Anan.jdField_b_of_type_Long, 0, "sc.game_ad_video_start.local", "{}");
+        return false;
+      } while ((this.jdField_a_of_type_Anaz == null) || (this.jdField_a_of_type_Anaz.a() == null));
+      j();
+      return false;
+    case 2: 
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+      return false;
+    case 3: 
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
+      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+      return false;
     }
-    if (str.equalsIgnoreCase("OidbSvc.0xa13"))
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    return false;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-      h(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
     }
-    if (str.equalsIgnoreCase("OidbSvc.0x4ad"))
+    for (;;)
     {
-      i(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (this.jdField_d_of_type_Boolean)
+      {
+        i();
+      }
+      else
+      {
+        for (;;)
+        {
+          try
+          {
+            if (this.jdField_a_of_type_Anaz != null)
+            {
+              this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+              this.f = true;
+              this.jdField_a_of_type_Anaz.b();
+            }
+            Context localContext = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext();
+            if (this.jdField_b_of_type_Int <= 15) {
+              break label211;
+            }
+            String str1 = "观看至少15秒视频才可获得有效奖励哦";
+            bhdj.a(localContext, 0, null, str1, anvx.a(2131701643), anvx.a(2131701642), new anav(this), new anaw(this)).show();
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("cmgame_process.CmGameVideoViewController", 1, "show dialog err, errInfo->" + localThrowable.getMessage());
+          }
+          break;
+          label211:
+          String str2 = anvx.a(2131701645);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameVideoViewController", 2, "[click ad btn]");
+        }
+        a(this.jdField_a_of_type_Anan.i);
+        a(3, 0, true);
+      }
     }
-    if (str.equalsIgnoreCase("MamonoSvc.Pa"))
-    {
-      j(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
-    }
-    if (str.equalsIgnoreCase("MobileQQprotect.QPUpdate"))
-    {
-      k(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
-    }
-    if (str.equalsIgnoreCase("OidbSvc.0xeb8"))
-    {
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
-    }
-    if (str.equalsIgnoreCase("OidbSvc.0xebd"))
-    {
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
-    }
-    if (str.equalsIgnoreCase("OidbSvc.0xec0"))
-    {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
-    }
-    bjkb.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

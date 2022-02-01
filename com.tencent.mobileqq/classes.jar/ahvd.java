@@ -1,57 +1,23 @@
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import org.jetbrains.annotations.NotNull;
 
 public class ahvd
-  implements bdzq
 {
-  public ahvd(BlessResultActivity paramBlessResultActivity) {}
+  public int a;
+  public Drawable a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void a()
+  @NotNull
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.g = this.a.b(this.a.d);
-    if (this.a.jdField_a_of_type_Bjmp.hasMessages(1003)) {
-      this.a.jdField_a_of_type_Bjmp.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_Bjmp.sendEmptyMessage(1001);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
-    }
-    if (this.a.jdField_a_of_type_Bjmp.hasMessages(1003)) {
-      this.a.jdField_a_of_type_Bjmp.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_Bjmp.sendEmptyMessage(1003);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    long l = FileUtils.getFileSizes(this.a.jdField_a_of_type_Ahve.a);
-    int i = (int)(100L * paramLong / l);
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
-    }
+    return "PluginData{drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", actionId=" + this.jdField_a_of_type_Int + ", text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", contentDescription='" + this.jdField_b_of_type_JavaLangString + '\'' + ", isShowNew=" + this.jdField_a_of_type_Boolean + ", appid=" + this.jdField_b_of_type_Int + ", redDotId='" + this.c + '\'' + ", action='" + this.d + '\'' + ", actionType='" + this.e + '\'' + '}';
   }
 }
 

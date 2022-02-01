@@ -230,16 +230,16 @@ public class SystemAndEmojiUniversalPanel
   
   protected int getLayoutId()
   {
-    return 2131559148;
+    return 2131559177;
   }
   
   public void init()
   {
-    setBackgroundColor(getResources().getColor(2131165631));
+    setBackgroundColor(getResources().getColor(2131165637));
     this.density = getResources().getDisplayMetrics().density;
     this.spacing = ViewUtils.dip2px(5.0F);
     this.mPanelInfo = new EmotionPanelInfo(7, 7, null);
-    this.mDeleteButton = ((ImageButton)findViewById(2131365402));
+    this.mDeleteButton = ((ImageButton)findViewById(2131365495));
     ImageButton localImageButton;
     if (this.mInputEdit != null)
     {
@@ -255,10 +255,10 @@ public class SystemAndEmojiUniversalPanel
     {
       localImageButton.setEnabled(bool);
       this.mDeleteButton.setOnClickListener(this);
-      this.mEmotionPanelListView = ((EmotionPanelListView)findViewById(2131366028));
+      this.mEmotionPanelListView = ((EmotionPanelListView)findViewById(2131366129));
       this.mEmotionPanelListView.setDivider(null);
       this.mEmotionPanelListView.setEdgeEffectEnabled(false);
-      this.mEmotionPanelListView.setSelector(2130850608);
+      this.mEmotionPanelListView.setSelector(2130850739);
       int i = getColumnNum();
       this.mSystemAndEmojiAdapter = new SystemAndEmojiAdapter(null, getContext(), i, 1, this.mPanelInfo.type, this.mCallback, null, 0);
       this.mSystemAndEmojiAdapter.setLastItemAddPaddingBottom(getLastItemAddPaddingBottom());
@@ -281,7 +281,7 @@ public class SystemAndEmojiUniversalPanel
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131365402) && (this.mCallback != null)) {
+    if ((paramView.getId() == 2131365495) && (this.mCallback != null)) {
       this.mCallback.delete();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -378,7 +378,7 @@ public class SystemAndEmojiUniversalPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel
  * JD-Core Version:    0.7.0.1
  */

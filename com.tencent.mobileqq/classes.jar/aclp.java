@@ -1,23 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import java.util.Iterator;
-
-final class aclp
-  extends BroadcastReceiver
+class aclp
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a;
+  public long a;
+  public aclx a;
+  public String a;
+  
+  public aclp(aclo paramaclo, int paramInt, long paramLong, String paramString, aclx paramaclx)
   {
-    Iterator localIterator = aclo.a().iterator();
-    while (localIterator.hasNext())
-    {
-      aclo localaclo = (aclo)((WeakReference)localIterator.next()).get();
-      if (localaclo != null) {
-        localaclo.a(paramContext, paramIntent);
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aclx = paramaclx;
   }
 }
 

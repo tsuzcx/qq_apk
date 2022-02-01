@@ -1,21 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class xvk
-  implements View.OnClickListener
+public abstract interface xvk
 {
-  xvk(xvj paramxvj) {}
-  
-  public void onClick(View paramView)
-  {
-    xvj.a(this.a, false);
-    this.a.notifyDataSetChanged();
-    if (xvj.a(this.a) != null) {
-      xvj.a(this.a).f();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(xvl paramxvl);
 }
 
 

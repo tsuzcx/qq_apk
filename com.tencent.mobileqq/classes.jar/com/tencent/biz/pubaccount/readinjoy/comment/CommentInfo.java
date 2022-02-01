@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import amtj;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import bblk;
+import anvx;
+import bcsc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.text.QQText;
@@ -13,13 +13,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import oql;
-import oqm;
-import oqn;
 import org.json.JSONArray;
+import oyl;
+import oym;
+import oyn;
 
 public class CommentInfo
-  extends oqn
+  extends oyn
   implements Serializable
 {
   public static final int HOT_AREA = 1;
@@ -66,9 +66,9 @@ public class CommentInfo
   public void createDecodedCommentContent()
   {
     if ((TextUtils.isEmpty(this.commentContent)) && (this.giftList == null)) {
-      this.commentContent = amtj.a(2131701331);
+      this.commentContent = anvx.a(2131701682);
     }
-    this.decodedCommentContent = new QQText(bblk.b(this.commentContent), 7, 16);
+    this.decodedCommentContent = new QQText(bcsc.b(this.commentContent), 7, 16);
   }
   
   public void createProcessedAuthorComment()
@@ -78,7 +78,7 @@ public class CommentInfo
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       localSpannableStringBuilder.append("作者回复：");
       localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 0, localSpannableStringBuilder.length(), 33);
-      localSpannableStringBuilder.append(new QQText(bblk.b(this.authorComment), 7, 16));
+      localSpannableStringBuilder.append(new QQText(bcsc.b(this.authorComment), 7, 16));
       this.authorRealCommentSpanSb = localSpannableStringBuilder;
     }
   }
@@ -117,18 +117,18 @@ public class CommentInfo
       if (!TextUtils.isEmpty(localCommentInfo.authorNickName))
       {
         localSpannableStringBuilder.append(localCommentInfo.authorNickName);
-        localSpannableStringBuilder.setSpan(new oql(this, localCommentInfo, paramBaseActivity), 0, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new oyl(this, localCommentInfo, paramBaseActivity), 0, localSpannableStringBuilder.length(), 33);
       }
       if ((localCommentInfo.hasTarget) && (!TextUtils.isEmpty(localCommentInfo.toNickName)))
       {
         localSpannableStringBuilder.append(" 回复 ");
         int k = localSpannableStringBuilder.length();
         localSpannableStringBuilder.append(localCommentInfo.toNickName);
-        localSpannableStringBuilder.setSpan(new oqm(this, localCommentInfo, paramBaseActivity), k, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new oym(this, localCommentInfo, paramBaseActivity), k, localSpannableStringBuilder.length(), 33);
       }
       localSpannableStringBuilder.append("：");
       if (!TextUtils.isEmpty(localCommentInfo.commentContent)) {
-        localSpannableStringBuilder.append(new QQText(bblk.b(localCommentInfo.commentContent), 7, 16));
+        localSpannableStringBuilder.append(new QQText(bcsc.b(localCommentInfo.commentContent), 7, 16));
       }
       this.secondLevelCommentSpanSbList.add(localSpannableStringBuilder);
     }

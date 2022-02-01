@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.search.fragment;
 
 import android.os.Handler;
-import bbak;
-import bbfe;
+import bcha;
+import bclw;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class GroupSearchFragment$2
   implements Runnable
@@ -14,14 +15,14 @@ class GroupSearchFragment$2
   {
     if (!this.this$0.d)
     {
-      this.this$0.jdField_a_of_type_Bbfe.a();
+      this.this$0.jdField_a_of_type_Bclw.a();
       this.this$0.d = true;
     }
     if (!GroupSearchFragment.a(this.this$0))
     {
-      bbak localbbak = (bbak)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(318);
-      if (localbbak != null) {
-        localbbak.a();
+      bcha localbcha = (bcha)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MOST_USE_SEARCH_MANAGER);
+      if (localbcha != null) {
+        localbcha.a();
       }
       GroupSearchFragment.a(this.this$0, true);
     }

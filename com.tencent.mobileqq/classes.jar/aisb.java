@@ -1,6 +1,22 @@
-public abstract interface aisb
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+
+public class aisb
+  implements aiwn
 {
-  public abstract void a(String paramString, int paramInt);
+  public aisb(AddContactsActivity paramAddContactsActivity) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    AddContactsActivity.a(this.a, paramBoolean);
+    ImageView localImageView = AddContactsActivity.a(this.a);
+    if (AddContactsActivity.a(this.a)) {}
+    for (int i = 0;; i = 8)
+    {
+      localImageView.setVisibility(i);
+      return;
+    }
+  }
 }
 
 

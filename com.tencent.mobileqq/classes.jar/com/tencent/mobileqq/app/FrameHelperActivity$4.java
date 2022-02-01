@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import bjuq;
+import blgc;
 
 class FrameHelperActivity$4
   implements Runnable
 {
-  FrameHelperActivity$4(FrameHelperActivity paramFrameHelperActivity, bjuq parambjuq) {}
+  FrameHelperActivity$4(FrameHelperActivity paramFrameHelperActivity, blgc paramblgc) {}
   
   public void run()
   {

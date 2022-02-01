@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import pwi;
+import qho;
 
 public class ReadInJoyUserInfoModule$1
   implements Runnable
@@ -36,7 +36,7 @@ public class ReadInJoyUserInfoModule$1
     if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {}
     for (;;)
     {
-      localObject1 = ((pwi)localObject1).a((String)localObject2, bool);
+      localObject1 = ((qho)localObject1).a((String)localObject2, bool);
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
         localObject2 = (ReadInJoyUserInfo)((List)localObject1).get(0);

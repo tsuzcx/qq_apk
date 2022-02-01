@@ -1,61 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqkl
-  extends aptq<aqkk>
+  implements View.OnClickListener
 {
-  public static aqkk a()
-  {
-    return (aqkk)apub.a().a(377);
-  }
+  public aqkl(CardPicGalleryActivity paramCardPicGalleryActivity, bkzi parambkzi) {}
   
-  @NonNull
-  public aqkk a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new aqkk();
-  }
-  
-  @Nullable
-  public aqkk a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqkk.a(paramArrayOfaptx);
+    QQAppInterface localQQAppInterface;
+    if (2 == this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.d)
+    {
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.app;
+      if (!this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b) {
+        break label70;
+      }
     }
-    return null;
-  }
-  
-  public void a(aqkk paramaqkk) {}
-  
-  public Class<aqkk> clazz()
-  {
-    return aqkk.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 377;
+    label70:
+    for (String str = "1";; str = "2")
+    {
+      bdla.b(localQQAppInterface, "dc00898", "", "", "0X800A88C", "0X800A88C", 4, 0, str, "", "", "");
+      this.jdField_a_of_type_Bkzi.dismiss();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkl
  * JD-Core Version:    0.7.0.1
  */

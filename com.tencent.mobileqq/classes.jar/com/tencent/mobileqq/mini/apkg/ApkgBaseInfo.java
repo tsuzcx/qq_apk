@@ -54,7 +54,7 @@ public abstract class ApkgBaseInfo
     {
       if (sDominWhiteList == null)
       {
-        String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "defaultAllowedHostList", ".qlogo.cn;.tcb.qcloud.la;open.mp.qq.com;api-report.q.qq.com;rpt.gdt.qq.com;.gtimg.cn");
+        String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "defaultAllowedHostList", ".qlogo.cn;.tcb.qcloud.la;open.mp.qq.com;api-report.q.qq.com;rpt.gdt.qq.com;.pic.ap-shanghai.myqcloud.com;.gtimg.cn;graph.qq.com;");
         if ((str1 != null) && (!str1.equals(mCurWhiteListConfig)))
         {
           QLog.i("[mini] http.", 1, "Default white domain:" + str1);

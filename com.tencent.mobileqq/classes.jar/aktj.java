@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.45;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aktj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aktj(NewFlowCameraActivity.45 param45) {}
+  public aktj(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = this.a.this$0.getIntent();
-    paramDialogInterface.putExtra("flow_back", 0);
-    this.a.this$0.setResult(1001, paramDialogInterface);
-    this.a.this$0.finish();
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      albw.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
+    }
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

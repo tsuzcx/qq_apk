@@ -1,37 +1,45 @@
-import com.tencent.av.widget.stageview.StageEffectView;
-import com.tencent.av.widget.stageview.StageMemberView;
-import java.util.Comparator;
+import java.util.HashMap;
 
 public class mvt
-  implements Comparator<StageMemberView>
 {
-  public mvt(StageEffectView paramStageEffectView) {}
+  public int a;
+  public String a;
+  public HashMap<String, String> a;
+  public mvu a;
+  public int b;
+  public int c = 60000;
   
-  public int a(StageMemberView paramStageMemberView1, StageMemberView paramStageMemberView2)
+  public mvt()
   {
-    if ((paramStageMemberView1 == null) && (paramStageMemberView2 == null)) {
-      return 0;
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_b_of_type_Int = 5000;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUrl = ").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mConnectionTimeout = ").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",mSocketTimeout = ").append(this.c);
+    if (this.jdField_a_of_type_Mvu != null)
+    {
+      localStringBuilder.append(",mResult.mIsSucc = ").append(this.jdField_a_of_type_Mvu.jdField_a_of_type_Boolean);
+      localStringBuilder.append(",mResult.mFileLength = ").append(this.jdField_a_of_type_Mvu.jdField_a_of_type_Long);
+      localStringBuilder.append(",mResult.mErrCode = ").append(this.jdField_a_of_type_Mvu.jdField_a_of_type_Int);
+      localStringBuilder.append(",mResult.mErrStr = ").append(this.jdField_a_of_type_Mvu.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(",mResult.mTryCount = ").append(this.jdField_a_of_type_Mvu.jdField_b_of_type_Int);
+      localStringBuilder.append(",mResult.mCostTime = ").append(this.jdField_a_of_type_Mvu.jdField_b_of_type_Long).append("ms");
     }
-    if (paramStageMemberView2 == null) {
-      return -1;
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      localStringBuilder.append(",mResult = null");
     }
-    if (paramStageMemberView1 == null) {
-      return 1;
-    }
-    paramStageMemberView1 = (mvz)paramStageMemberView1.getTag();
-    paramStageMemberView2 = (mvz)paramStageMemberView2.getTag();
-    if (paramStageMemberView1.a == paramStageMemberView2.a) {
-      return 0;
-    }
-    if (mvo.a(paramStageMemberView1.a - 10000, 20000) < mvo.a(paramStageMemberView2.a - 10000, 20000)) {
-      return -1;
-    }
-    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mvt
  * JD-Core Version:    0.7.0.1
  */

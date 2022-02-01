@@ -1,110 +1,115 @@
-import java.io.UnsupportedEncodingException;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.CustomOnlineStatusManager.1;
+import com.tencent.pb.onlinestatus.CustomOnlineStatusPb.CustomOnlineStatusMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class bhmx
 {
-  static
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "";
+  private final ArrayList<WeakReference<Runnable>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private int b = 30000;
+  private int c = -1;
+  
+  public static bhmx a()
   {
-    if (!bhmx.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    return bhmy.a();
+  }
+  
+  private final void a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("CustomOnlineStatusManager", 4, "resetOnEnableToggle");
+    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  private void b()
+  {
+    ThreadManager.getUIHandler().post(new CustomOnlineStatusManager.1(this));
+  }
+  
+  public final String a()
+  {
+    if (a())
     {
-      jdField_a_of_type_Boolean = bool;
+      long l = System.currentTimeMillis();
+      if (Math.abs(this.jdField_a_of_type_Long - l) > this.b)
+      {
+        this.jdField_a_of_type_Long = l;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("CustomOnlineStatusManager", 4, "sync owner status");
+        }
+        bhmz.a();
+      }
+      if (bhmz.a(this.jdField_a_of_type_Int)) {
+        return this.jdField_a_of_type_JavaLangString;
+      }
+    }
+    return "";
+  }
+  
+  public final void a(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
+  {
+    this.jdField_a_of_type_Int = bhmz.b(paramCustomOnlineStatusMsg);
+    this.jdField_a_of_type_JavaLangString = bhmz.a(paramCustomOnlineStatusMsg);
+    this.b = bhmz.a(paramCustomOnlineStatusMsg);
+    b();
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramRunnable));
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null) {
       return;
     }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
   }
   
-  public static String a(byte[] paramArrayOfByte, int paramInt)
+  public final boolean a()
   {
-    try
+    int j = this.c;
+    arjk localarjk = (arjk)aqxe.a().a(479);
+    if ((localarjk == null) || (localarjk.a)) {}
+    for (int i = 1;; i = 0)
     {
-      paramArrayOfByte = new String(b(paramArrayOfByte, paramInt), "US-ASCII");
-      return paramArrayOfByte;
-    }
-    catch (UnsupportedEncodingException paramArrayOfByte)
-    {
-      throw new AssertionError(paramArrayOfByte);
-    }
-  }
-  
-  public static byte[] a(String paramString, int paramInt)
-  {
-    return a(paramString.getBytes(), paramInt);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
-  {
-    return a(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    bhmz localbhmz = new bhmz(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localbhmz.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
-      throw new IllegalArgumentException("bad base-64");
-    }
-    if (localbhmz.jdField_a_of_type_Int == localbhmz.jdField_a_of_type_ArrayOfByte.length) {
-      return localbhmz.jdField_a_of_type_ArrayOfByte;
-    }
-    paramArrayOfByte = new byte[localbhmz.jdField_a_of_type_Int];
-    System.arraycopy(localbhmz.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localbhmz.jdField_a_of_type_Int);
-    return paramArrayOfByte;
-  }
-  
-  public static byte[] b(byte[] paramArrayOfByte, int paramInt)
-  {
-    return b(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
-  }
-  
-  public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    bhna localbhna = new bhna(paramInt3, null);
-    int i = paramInt2 / 3 * 4;
-    int j;
-    if (localbhna.jdField_a_of_type_Boolean)
-    {
-      paramInt3 = i;
-      if (paramInt2 % 3 > 0) {
-        paramInt3 = i + 4;
+      this.c = i;
+      if (j != this.c) {
+        a();
       }
-      i = paramInt3;
-      if (localbhna.b)
-      {
-        i = paramInt3;
-        if (paramInt2 > 0)
-        {
-          j = (paramInt2 - 1) / 57;
-          if (!localbhna.c) {
-            break label186;
-          }
-        }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("CustomOnlineStatusManager", 4, "featureEnable = " + this.c);
       }
-    }
-    label186:
-    for (i = 2;; i = 1)
-    {
-      i = paramInt3 + i * (j + 1);
-      localbhna.jdField_a_of_type_ArrayOfByte = new byte[i];
-      localbhna.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((jdField_a_of_type_Boolean) || (localbhna.jdField_a_of_type_Int == i)) {
-        break label192;
-      }
-      throw new AssertionError();
-      paramInt3 = i;
-      switch (paramInt2 % 3)
-      {
-      case 0: 
-      default: 
-        paramInt3 = i;
-        break;
-      case 1: 
-        paramInt3 = i + 2;
-        break;
-      case 2: 
-        paramInt3 = i + 3;
+      if (this.c != 1) {
         break;
       }
+      return true;
     }
-    label192:
-    return localbhna.jdField_a_of_type_ArrayOfByte;
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (paramString != null)
+    {
+      paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (paramString != null) {
+        return Math.abs(System.currentTimeMillis() - paramString.longValue()) > this.b;
+      }
+    }
+    return true;
   }
 }
 

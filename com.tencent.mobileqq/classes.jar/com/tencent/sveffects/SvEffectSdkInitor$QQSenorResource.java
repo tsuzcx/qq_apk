@@ -3,19 +3,19 @@ package com.tencent.sveffects;
 import android.hardware.SensorEventListener;
 import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler.CameraChangedCallBack;
 import com.tencent.mobileqq.shortvideo.resource.SensorResource;
-import lhk;
+import lhw;
 
 public class SvEffectSdkInitor$QQSenorResource
   implements SensorResource
 {
   public boolean checkSensorEnable()
   {
-    return lhk.a().a();
+    return lhw.a().a();
   }
   
   public boolean getCameraIsFront()
   {
-    return lhk.a().b();
+    return lhw.a().b();
   }
   
   public int getRotation()
@@ -25,17 +25,17 @@ public class SvEffectSdkInitor$QQSenorResource
   
   public void registerListener(SensorEventListener paramSensorEventListener)
   {
-    lhk.a().a(paramSensorEventListener);
+    lhw.a().a(paramSensorEventListener);
   }
   
   public void setCameraChangedListener(SensorEventHandler.CameraChangedCallBack paramCameraChangedCallBack)
   {
-    lhk.a().a(paramCameraChangedCallBack);
+    lhw.a().a(paramCameraChangedCallBack);
   }
   
   public void unregisterListener(SensorEventListener paramSensorEventListener)
   {
-    lhk.a().b(paramSensorEventListener);
+    lhw.a().b(paramSensorEventListener);
   }
 }
 

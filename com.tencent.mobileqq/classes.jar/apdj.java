@@ -1,60 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
-public class apdj
-  extends aptq<apdk>
+public abstract interface apdj
 {
-  @NonNull
-  public apdk a(int paramInt)
-  {
-    return new apdk();
-  }
+  public abstract void a(long paramLong);
   
-  @Nullable
-  public apdk a(aptx[] paramArrayOfaptx)
-  {
-    apdk localapdk = new apdk();
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null)) {
-      apdk.a(localapdk, paramArrayOfaptx[0].a);
-    }
-    return localapdk;
-  }
+  public abstract void a(apdy paramapdy);
   
-  public void a(apdk paramapdk) {}
+  public abstract boolean a();
   
-  public Class<apdk> clazz()
-  {
-    return apdk.class;
-  }
+  public abstract boolean a(boolean paramBoolean, String paramString);
   
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
+  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
   
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public void onReqNoReceive() {}
-  
-  public int type()
-  {
-    return 416;
-  }
+  public abstract boolean b();
 }
 
 

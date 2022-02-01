@@ -1,10 +1,39 @@
-import trpc.qq_vgame.common.AvGameCommon.GameStatusInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.List;
 
-public abstract interface mzp
+public class mzp
+  implements BusinessObserver
 {
-  public abstract void a(AvGameCommon.GameStatusInfo paramGameStatusInfo);
+  private void a(boolean paramBoolean, Object paramObject)
+  {
+    if (!paramBoolean)
+    {
+      if (paramObject != null)
+      {
+        paramObject = (Object[])paramObject;
+        a(((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+        return;
+      }
+      a(0, null);
+      return;
+    }
+    paramObject = (Object[])paramObject;
+    a((String)paramObject[0], (String)paramObject[1], ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (List)paramObject[4]);
+  }
   
-  public abstract boolean a();
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, List<bfmo> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, paramObject);
+  }
 }
 
 

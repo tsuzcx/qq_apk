@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.view;
 
 import android.widget.LinearLayout;
-import bmxw;
-import bnub;
+import bono;
+import bpjt;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
@@ -13,7 +13,7 @@ class QIMProviderContainerView$6
   {
     boolean bool2 = false;
     int j = this.this$0.a.getChildCount();
-    bnub.a();
+    bpjt.a();
     int i = 0;
     for (;;)
     {

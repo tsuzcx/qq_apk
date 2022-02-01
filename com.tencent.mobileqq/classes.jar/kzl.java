@@ -1,25 +1,111 @@
-import android.content.Context;
-import com.rookery.translate.AITranslator;
-import com.rookery.translate.AITranslator.TranslatorType;
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-import java.util.List;
+import android.os.Message;
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 public class kzl
-  implements lal
+  extends kzj
 {
-  public kzl(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, agqr paramagqr, String paramString2, Language paramLanguage, lak paramlak, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
-  
-  public void a(TranslateError paramTranslateError, Long paramLong)
+  protected Object a(String paramString)
   {
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agqr, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lak, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
+    Object localObject = null;
+    String str = paramString.trim();
+    if (!str.startsWith("{"))
+    {
+      paramString = localObject;
+      if (!str.startsWith("[")) {}
+    }
+    else
+    {
+      paramString = new JSONTokener(str).nextValue();
+    }
+    if (paramString == null) {
+      return str;
+    }
+    return paramString;
   }
   
-  public void a(List<Language> paramList, List<String> paramList1, Long paramLong)
+  protected void a(int paramInt, Header[] paramArrayOfHeader, Object paramObject)
   {
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agqr, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lak, 0, AITranslator.TranslatorType.MS, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
+    if ((paramObject instanceof JSONObject))
+    {
+      a(paramInt, paramArrayOfHeader, (JSONObject)paramObject);
+      return;
+    }
+    if ((paramObject instanceof JSONArray))
+    {
+      a(paramInt, paramArrayOfHeader, (JSONArray)paramObject);
+      return;
+    }
+    a(new JSONException("Unexpected type " + paramObject.getClass().getName()), (JSONObject)null);
+  }
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONArray paramJSONArray) {}
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject) {}
+  
+  protected void a(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      super.a(paramMessage);
+      return;
+    }
+    paramMessage = (Object[])paramMessage.obj;
+    a(((Integer)paramMessage[0]).intValue(), (Header[])paramMessage[1], paramMessage[2]);
+  }
+  
+  public void a(Throwable paramThrowable, JSONArray paramJSONArray) {}
+  
+  public void a(Throwable paramThrowable, JSONObject paramJSONObject) {}
+  
+  protected void b(int paramInt, Header[] paramArrayOfHeader, String paramString)
+  {
+    if (paramInt != 204) {
+      try
+      {
+        b(a(100, new Object[] { Integer.valueOf(paramInt), paramArrayOfHeader, a(paramString) }));
+        return;
+      }
+      catch (JSONException paramArrayOfHeader)
+      {
+        b(paramArrayOfHeader, paramString);
+        return;
+      }
+    }
+    b(a(100, new Object[] { Integer.valueOf(paramInt), new JSONObject() }));
+  }
+  
+  protected void c(Throwable paramThrowable, String paramString)
+  {
+    if (paramString != null)
+    {
+      try
+      {
+        Object localObject = a(paramString);
+        if ((localObject instanceof JSONObject))
+        {
+          a(paramThrowable, (JSONObject)localObject);
+          return;
+        }
+        if ((localObject instanceof JSONArray))
+        {
+          a(paramThrowable, (JSONArray)localObject);
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        a(paramThrowable, paramString);
+        return;
+      }
+      a(paramThrowable, paramString);
+      return;
+    }
+    a(paramThrowable, "");
   }
 }
 

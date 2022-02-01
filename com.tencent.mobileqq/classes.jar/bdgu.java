@@ -1,20 +1,24 @@
-class bdgu
-  extends bdjj
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.splashad.SplashADView;
+import com.tencent.mobileqq.splashad.SplashADView.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import mqq.os.MqqHandler;
+
+public class bdgu
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  private bdgu(bdgr parambdgr) {}
+  public bdgu(SplashADView paramSplashADView) {}
   
-  protected void a()
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (bdgr.a(this.a).a()) {
-      this.a.a();
-    }
+    ThreadManager.getUIHandler().postDelayed(new SplashADView.1.1(this), 200L);
+    this.a.a();
   }
-  
-  protected void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdgu
  * JD-Core Version:    0.7.0.1
  */

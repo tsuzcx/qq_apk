@@ -1,9 +1,16 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adwr
+class adwr
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public TextView a;
+  adwr(adwq paramadwq) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bhoy.a(this.a.a, "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

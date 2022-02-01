@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import anzc;
-import anzg;
+import apce;
+import apci;
 
 public class ARTransferDoorLogicManager$7
   implements Runnable
 {
-  public ARTransferDoorLogicManager$7(anzc paramanzc) {}
+  public ARTransferDoorLogicManager$7(apce paramapce) {}
   
   public void run()
   {
-    if ((anzc.a(this.this$0) != null) && (anzc.a(this.this$0) != null)) {
-      anzc.a(this.this$0).b(anzc.a(this.this$0));
+    if ((apce.a(this.this$0) != null) && (apce.a(this.this$0) != null)) {
+      apce.a(this.this$0).b(apce.a(this.this$0));
     }
   }
 }

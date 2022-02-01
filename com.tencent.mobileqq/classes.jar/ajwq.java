@@ -1,23 +1,12 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import java.util.List;
 
-public class ajwq
-  implements OnCompositionLoadedListener
+public abstract interface ajwq
 {
-  public ajwq(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment, ImageView paramImageView) {}
+  public abstract void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList);
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
-  {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localLottieDrawable);
-  }
+  public abstract void r();
 }
 
 

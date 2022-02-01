@@ -1,18 +1,20 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import NS_COMM.COMM.StCommonExt;
+import java.util.List;
+
 public class zwv
 {
-  private String a = "";
-  
-  public static zwv a(String paramString)
-  {
-    zwv localzwv = new zwv();
-    localzwv.a = paramString;
-    return localzwv;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
+  public CertifiedAccountMeta.StFeed a;
+  public CertifiedAccountMeta.StUser a;
+  public CertifiedAccountRead.StGetMainPageRsp a;
+  public COMM.StCommonExt a;
+  public String a;
+  public List<CertifiedAccountMeta.StFeed> a;
+  public boolean a;
+  public String b;
+  public boolean b;
 }
 
 

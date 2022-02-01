@@ -1,39 +1,44 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import java.util.ArrayList;
 
 public class aqvr
 {
-  public static int a(AppInterface paramAppInterface, Context paramContext)
-  {
-    int i = 0;
-    if ((paramAppInterface == null) || (paramContext == null)) {
-      QLog.e("TencentDocGuideHelper", 1, "getShownTimes sth is null");
-    }
-    int j;
-    do
-    {
-      return i;
-      j = paramContext.getSharedPreferences("tencent_doc", 4).getInt("shown_" + paramAppInterface.getCurrentAccountUin(), 0);
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.i("TencentDocGuideHelper", 2, "getShownTimes " + j);
-    return j;
-  }
+  public int a;
+  public Rect a;
+  public aqvy a;
+  public ArrayList<aqvs> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = 0;
+  public int d = 0;
+  public int e = 1;
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, int paramInt)
+  public aqvr(aqvy paramaqvy, int paramInt1, Rect paramRect, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TencentDocGuideHelper", 2, "setShownTimes " + paramInt);
-    }
-    if ((paramAppInterface == null) || (paramContext == null))
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = 24;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Aqvy = paramaqvy;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.e = paramInt3;
+    if (paramaqvy.jdField_a_of_type_Int > 0) {}
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      QLog.e("TencentDocGuideHelper", 1, "setShownTimes sth is null");
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      paramaqvy.jdField_a_of_type_Int += 1;
       return;
     }
-    paramContext.getSharedPreferences("tencent_doc", 4).edit().putInt("shown_" + paramAppInterface.getCurrentAccountUin(), paramInt).commit();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("text: ").append(this.jdField_a_of_type_Aqvy.jdField_a_of_type_JavaLangString).append("; size: ").append(this.jdField_b_of_type_Int).append("; line_count: ").append(this.e).append("; container: ").append(this.jdField_a_of_type_AndroidGraphicsRect).append("; algin: ").append(this.c).append("; v_algin: ").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

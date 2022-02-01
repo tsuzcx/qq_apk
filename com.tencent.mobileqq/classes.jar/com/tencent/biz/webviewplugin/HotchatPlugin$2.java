@@ -1,7 +1,7 @@
 package com.tencent.biz.webviewplugin;
 
-import aaaq;
-import amtp;
+import aaqc;
+import anwd;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -21,12 +21,12 @@ import tencent.im.oidb.hotchat.LBS.Wifi;
 public class HotchatPlugin$2
   implements Runnable
 {
-  public HotchatPlugin$2(aaaq paramaaaq, String[] paramArrayOfString) {}
+  public HotchatPlugin$2(aaqc paramaaqc, String[] paramArrayOfString) {}
   
   public void run()
   {
-    Object localObject2 = amtp.a();
-    Object localObject1 = amtp.a(false);
+    Object localObject2 = anwd.a();
+    Object localObject1 = anwd.a(false);
     JSONObject localJSONObject1 = new JSONObject();
     Object localObject3;
     Object localObject4;

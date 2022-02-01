@@ -1,47 +1,69 @@
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bgzw
-  extends bguj
+public class bgzw
 {
-  public abstract long getDetect302Time();
+  private static int a = -1;
   
-  public abstract boolean getIsReloadUrl();
+  public static void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      a = i;
+      if (QLog.isColorLevel()) {
+        QLog.d("NoDisturbUtil", 2, new Object[] { "setMuteStat:", Integer.valueOf(a) });
+      }
+      return;
+    }
+  }
   
-  public abstract long getOpenUrlAfterCheckOfflineTime();
+  public static boolean a(Context paramContext, AppInterface paramAppInterface)
+  {
+    return (!FriendsStatusUtil.a(paramContext)) || ((!paramAppInterface.isBackgroundPause) && (bhan.a(BaseApplicationImpl.sApplication)));
+  }
   
-  public abstract long getReadIndexFromOfflineTime();
-  
-  public abstract JSONObject getX5Performance();
-  
-  public abstract long getgetWebViewTime();
-  
-  public abstract long getinitBrowserTime();
-  
-  public abstract long getinitTBSTime();
-  
-  public abstract long getinitTime();
-  
-  public abstract boolean getisWebViewCache();
-  
-  public abstract long getmClickTime();
-  
-  public abstract long getmOnCreateMilliTimeStamp();
-  
-  public abstract boolean getmPerfFirstLoadTag();
-  
-  public abstract long getmStartLoadUrlMilliTimeStamp();
-  
-  public abstract long getmTimeBeforeLoadUrl();
-  
-  public abstract long getonCreateTime();
-  
-  public abstract long getpluginFinished();
-  
-  public abstract long getviewInflateTime();
-  
-  public abstract boolean isMainPageUseLocalFile();
-  
-  public abstract void setX5Performance(JSONObject paramJSONObject);
+  public static boolean b(Context paramContext, AppInterface paramAppInterface)
+  {
+    boolean bool2 = true;
+    boolean bool3 = false;
+    arai localarai = (arai)aqxe.a().a(528);
+    boolean bool1 = bool3;
+    if ((paramAppInterface instanceof QQAppInterface))
+    {
+      bool1 = bool3;
+      if (localarai != null)
+      {
+        bool1 = bool3;
+        if (localarai.a == 1)
+        {
+          if (a != -1) {
+            break label87;
+          }
+          bool1 = SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), null, "qqsetting_qrlogin_set_mute", false);
+          if (!bool1) {
+            break label82;
+          }
+        }
+      }
+    }
+    label82:
+    for (int i = 1;; i = 0)
+    {
+      a = i;
+      return bool1;
+    }
+    label87:
+    if (a == 1) {}
+    for (bool1 = bool2;; bool1 = false) {
+      return bool1;
+    }
+  }
 }
 
 

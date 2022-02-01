@@ -1,84 +1,20 @@
-import android.graphics.Bitmap;
 import android.os.Handler;
-import android.os.Looper;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.mobileqq.data.MessageForTroopEffectPic;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController.2;
-import com.tencent.mobileqq.trooppiceffects.view.NormalPicView;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
-import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
-import com.tencent.mobileqq.trooppiceffects.view.VideoPicView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.4.1;
 
 public class bfks
+  implements bdyy
 {
-  protected Handler a;
-  protected ViewGroup a;
-  protected bfle a;
-  
-  public bfks(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    bcef.b(null, "dc00899", "show_pic", "", paramString1, paramString2, 0, 0, "", "", "", "");
-  }
+  public bfks(TroopEnterEffectController.3 param3) {}
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bfle != null) && (this.jdField_a_of_type_AndroidViewViewGroup != null))
+    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null)
     {
-      this.jdField_a_of_type_Bfle.b();
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_Bfle.a());
-      this.jdField_a_of_type_Bfle = null;
+      this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.n();
+      this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.4.1(this));
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-  }
-  
-  public void a(int paramInt1, Bitmap paramBitmap, int paramInt2, bfku parambfku)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsController", 2, "showPicEffect");
-    }
-    if ((this.jdField_a_of_type_Bfle == null) && (this.jdField_a_of_type_AndroidViewViewGroup != null)) {
-      switch (paramInt1)
-      {
-      default: 
-        this.jdField_a_of_type_Bfle = new NormalPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_Bfle.a(), -1, paramInt2);
-      this.jdField_a_of_type_Bfle.setBitmap(paramBitmap);
-      this.jdField_a_of_type_Bfle.a();
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopPicEffectsController.2(this, parambfku), 6000L);
-      return;
-      this.jdField_a_of_type_Bfle = new PhantomPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
-      continue;
-      this.jdField_a_of_type_Bfle = new ShakePicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
-      continue;
-      this.jdField_a_of_type_Bfle = new VideoPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext(), paramInt1);
-    }
-  }
-  
-  public void a(TroopChatPie paramTroopChatPie, MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean)
-  {
-    ayds localayds = aydj.a(6, 1536, 1);
-    aydl localaydl = paramMessageForTroopEffectPic.getPicDownloadInfo();
-    localayds.a(paramMessageForTroopEffectPic, localaydl);
-    localayds.a(new bfkt(this, localaydl, paramTroopChatPie, paramMessageForTroopEffectPic, paramBoolean));
-    aydj.a(localayds, paramTroopChatPie.app);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
   }
 }
 

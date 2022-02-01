@@ -1,45 +1,85 @@
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ailz
-  extends aiin<MessageRecord>
+  implements ailp, View.OnClickListener
 {
-  public ailz(TroopSuspiciousFragment paramTroopSuspiciousFragment, Context paramContext, int paramInt)
+  public static String a;
+  private ailr jdField_a_of_type_Ailr;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String b;
+  
+  static
   {
-    super(paramContext, paramInt);
+    jdField_a_of_type_JavaLangString = "https://imgcache.qq.com/club/client/group/release/index.html?_bid=199&groupId=";
   }
   
-  protected aiix a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  public ailz(QQAppInterface paramQQAppInterface, Context paramContext, ailr paramailr)
   {
-    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
-    paramContext = new aikf(paramContext, paramViewGroup);
-    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373602));
-    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131373586));
-    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373594));
-    paramContext.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131373606));
-    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373592));
-    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373603));
-    paramContext.c = ((TextView)paramViewGroup.findViewById(2131373605));
-    paramContext.d = ((TextView)paramViewGroup.findViewById(2131373593));
-    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131373601));
-    paramContext.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramViewGroup.findViewById(2131379271));
-    paramViewGroup = (Button)paramViewGroup.findViewById(2131379270);
-    aimg.a(paramContext.a(), false);
-    return paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ailr = paramailr;
   }
   
-  protected void a(aiix paramaiix, MessageRecord paramMessageRecord, int paramInt)
+  public int a()
   {
-    TroopSuspiciousFragment.a(this.a, paramaiix, paramMessageRecord, paramInt);
+    return 25;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558670, null);
+    paramVarArgs.setOnClickListener(this);
+    return paramVarArgs;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 21;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("UpgradeBigTroopTipsBar", 2, "click tips, jump");
+      }
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", jdField_a_of_type_JavaLangString + this.b + "&from=aio");
+      localIntent.putExtra("hide_operation_bar", true);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.b, 3);
+      this.jdField_a_of_type_Ailr.a();
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_up", "", "Grp_AIO", "clk", 0, 0, this.b, "", "", "");
+    }
   }
 }
 

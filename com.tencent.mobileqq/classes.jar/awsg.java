@@ -1,37 +1,30 @@
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.data.Emoticon;
+import mqq.app.AppRuntime;
 
-public class awsg
-  implements AdapterView.OnItemLongClickListener
+class awsg
+  implements awsl
 {
-  public awsg(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  awsg(awsf paramawsf) {}
   
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    paramAdapterView = (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt);
-    if (paramAdapterView == null) {
-      return true;
-    }
-    paramLong = Long.parseLong(this.a.a.getCurrentAccountUin());
-    if (paramAdapterView.c == paramLong)
+    AppRuntime localAppRuntime;
+    if (this.a.jdField_a_of_type_Int == 1)
     {
-      this.a.c(paramAdapterView);
-      return true;
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+        bdla.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+      }
     }
-    if (ShortVideoCommentsView.a(this.a).c == paramLong) {
-      this.a.e(paramAdapterView);
-    }
-    for (;;)
+    do
     {
-      return false;
-      this.a.d(paramAdapterView);
-    }
+      return;
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)));
+    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+    bdla.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
   }
 }
 

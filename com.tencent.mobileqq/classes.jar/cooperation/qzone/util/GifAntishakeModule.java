@@ -10,7 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.ExifInterface;
 import android.text.TextUtils;
 import android.util.LruCache;
-import bfvo;
+import bheg;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
@@ -482,7 +482,7 @@ public class GifAntishakeModule
     File localFile = new File((String)localObject);
     try
     {
-      bfvo.a(localBitmap2, localFile);
+      bheg.a(localBitmap2, localFile);
       arrayOfString[0] = localObject;
       doneAntishakeFrameNum = 1;
       postProgress(doneAntishakeFrameNum);

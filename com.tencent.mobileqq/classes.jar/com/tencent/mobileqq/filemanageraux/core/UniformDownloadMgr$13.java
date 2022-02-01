@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanageraux.core;
 
 import android.os.Bundle;
-import atdm;
-import atdr;
-import bcev;
+import auht;
+import auhy;
+import bdlq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
@@ -11,7 +11,7 @@ import mqq.app.MobileQQ;
 public class UniformDownloadMgr$13
   implements Runnable
 {
-  public UniformDownloadMgr$13(atdm paramatdm, String paramString, Bundle paramBundle) {}
+  public UniformDownloadMgr$13(auht paramauht, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
@@ -22,23 +22,23 @@ public class UniformDownloadMgr$13
     }
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("_notify_param_Id");
     QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onDownloadNotificationBeClean. URL:" + this.jdField_a_of_type_JavaLangString + " nofiyid:" + i);
-    atdr localatdr = atdm.a(this.this$0, this.jdField_a_of_type_JavaLangString);
-    if ((localatdr != null) && (this.this$0.a != null))
+    auhy localauhy = auht.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    if ((localauhy != null) && (this.this$0.a != null))
     {
-      if (localatdr.a != 1) {
+      if (localauhy.a != 1) {
         break label175;
       }
-      bcev.a(this.this$0.a.getApplication().getApplicationContext(), this.this$0.a.getCurrentAccountUin(), "Stop_download_2-1_3-0");
+      bdlq.a(this.this$0.a.getApplication().getApplicationContext(), this.this$0.a.getCurrentAccountUin(), "Stop_download_2-1_3-0");
     }
     for (;;)
     {
-      atdm.c(this.this$0, this.jdField_a_of_type_JavaLangString);
-      atdm.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+      auht.c(this.this$0, this.jdField_a_of_type_JavaLangString);
+      auht.a(this.this$0, this.jdField_a_of_type_JavaLangString);
       this.this$0.b(this.jdField_a_of_type_JavaLangString);
-      atdm.b(this.this$0);
+      auht.b(this.this$0);
       return;
       label175:
-      bcev.a(this.this$0.a.getApplication().getApplicationContext(), this.this$0.a.getCurrentAccountUin(), "Stop_download_2-1_3-1");
+      bdlq.a(this.this$0.a.getApplication().getApplicationContext(), this.this$0.a.getCurrentAccountUin(), "Stop_download_2-1_3-1");
     }
   }
 }

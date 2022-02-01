@@ -1,14 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class awit
-  implements DialogInterface.OnClickListener
+public class awit
 {
-  awit(awis paramawis) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public awit(int paramInt, String paramString)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return (this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_JavaLangString.equals(paramString));
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (!(paramObject instanceof awit)) {}
+    do
+    {
+      return false;
+      paramObject = (awit)paramObject;
+    } while ((this.jdField_a_of_type_Int != paramObject.a()) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.a())));
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "RoomKey{mHashCode='" + hashCode() + ", mSessionType=" + this.jdField_a_of_type_Int + ", mSessionUin=" + this.jdField_a_of_type_JavaLangString + '}';
   }
 }
 

@@ -1,17 +1,8 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.RoundRectUrlImageView;
-import com.tencent.mobileqq.together.ui.RoundRectView;
+import com.tencent.mobileqq.soload.LoadExtResult;
 
-public class bdgc
+public abstract interface bdgc
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  bdfo jdField_a_of_type_Bdfo;
-  RoundRectUrlImageView jdField_a_of_type_ComTencentMobileqqActivityAioItemRoundRectUrlImageView = null;
-  RoundRectView jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView = null;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout = null;
-  TextView jdField_b_of_type_AndroidWidgetTextView = null;
+  public abstract void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult);
 }
 
 

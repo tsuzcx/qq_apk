@@ -1,686 +1,191 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils.2;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils.3;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneShareManager;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.CircleCountdownView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdGestureView;
+import com.tencent.image.URLImageView;
 
 public class swi
+  extends swu
 {
-  private static final String jdField_a_of_type_JavaLangString = swi.class.getSimpleName();
-  private bhht jdField_a_of_type_Bhht;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private WXShareHelper.WXShareListener jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener;
-  private String b;
+  public View a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public CircleCountdownView a;
+  public ReadInJoyHeadImageView a;
+  public RIJDownloadView a;
+  public ReadInJoyAdGestureView a;
+  public URLImageView a;
+  public boolean a;
+  public View b;
+  public ImageView b;
+  public LinearLayout b;
+  public RelativeLayout b;
+  public TextView b;
+  public RIJDownloadView b;
+  public URLImageView b;
+  public View c;
+  public ImageView c;
+  public LinearLayout c;
+  public RelativeLayout c;
+  public TextView c;
+  public View d;
+  public ImageView d;
+  public LinearLayout d;
+  public RelativeLayout d;
+  public TextView d;
+  public View e;
+  public ImageView e;
+  public TextView e;
+  public View f;
+  public ImageView f;
+  public TextView f;
+  public View g;
+  public TextView g;
+  public View h;
+  public TextView h;
+  public View i;
+  public TextView i;
+  public View j;
+  public TextView j;
+  public View k;
+  public TextView k;
+  public View l;
+  public TextView l;
+  public View m;
+  public TextView m;
+  public View n;
+  public TextView n;
   
-  private int a(int paramInt)
+  public swi(View paramView, int paramInt)
   {
-    int i = paramInt;
-    if (paramInt <= 0) {
-      i = 13;
-    }
-    return i;
-  }
-  
-  private String a(AccountDetail paramAccountDetail, String paramString1, JSONObject paramJSONObject, String paramString2)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if (TextUtils.isEmpty(paramString1))
+    super(paramView, paramInt);
+    if (paramInt == 4)
     {
-      paramString1 = localObject1;
-      if (paramAccountDetail != null) {
-        paramString1 = paramAccountDetail.name;
-      }
-      paramAccountDetail = paramString1;
-      if (TextUtils.isEmpty(paramString1))
-      {
-        paramAccountDetail = paramString1;
-        if (paramJSONObject.has("sourceName")) {
-          paramAccountDetail = paramJSONObject.optString("sourceName");
-        }
-      }
-      paramJSONObject = paramAccountDetail;
-      if (!TextUtils.isEmpty(paramAccountDetail)) {}
+      this.jdField_i_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131368150));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131368128));
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131368124));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131362077));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362078));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362076));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362062));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362069));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362028));
     }
-    else
+    while ((paramInt != 5) && (paramInt != 7))
     {
-      do
-      {
-        return paramString2;
-        paramString1 = localObject2;
-        if (paramJSONObject.has("sourceName")) {
-          paramString1 = paramJSONObject.optString("sourceName");
-        }
-        paramJSONObject = paramString1;
-        if (TextUtils.isEmpty(paramString1))
-        {
-          paramJSONObject = paramString1;
-          if (paramAccountDetail != null) {
-            paramJSONObject = paramAccountDetail.name;
-          }
-        }
-      } while (TextUtils.isEmpty(paramJSONObject));
-    }
-    return paramJSONObject;
-  }
-  
-  private String a(String paramString)
-  {
-    String str = paramString;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (paramString.length() > 45) {
-        str = paramString.substring(0, 45) + "…";
-      }
-    }
-    return str;
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    return new sxe(paramString1).a("title", paramString2).a("url", paramString3).a("pic", paramString4).a("_wv", "3").a();
-  }
-  
-  private void a(long paramLong, AppInterface paramAppInterface, Activity paramActivity, Intent paramIntent)
-  {
-    aadf.a(paramAppInterface, paramActivity, paramAppInterface.getAccount(), paramLong, 3000L, new swk(this, paramIntent, paramActivity));
-  }
-  
-  private void a(Activity paramActivity)
-  {
-    if (this.jdField_a_of_type_Bhht == null) {
-      this.jdField_a_of_type_Bhht = new bhht(paramActivity);
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt, ArticleInfo paramArticleInfo)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramArticleInfo == null)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdGestureView = ((ReadInJoyAdGestureView)paramView.findViewById(2131362017));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131362092));
+      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362093);
+      this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131362094);
+      this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131362095);
+      this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362088));
+      this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368907));
       return;
     }
-    paramContext = pay.a(paramContext, paramArticleInfo, (int)paramArticleInfo.mChannelID, "1");
-    try
+    this.jdField_i_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131368150));
+    this.jdField_j_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131362083));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131362086));
+    if (ukr.a()) {}
+    for (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131368124));; this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131362084)))
     {
-      paramContext.put("location", paramInt);
-      swy.a(paramArticleInfo, paramString, paramContext.toString());
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt1, ArticleInfo paramArticleInfo, int paramInt2)
-  {
-    if (paramInt2 == -1)
-    {
-      a(paramContext, paramString, paramInt1, paramArticleInfo);
-      return;
-    }
-    paramContext = pay.a(paramContext, paramArticleInfo, (int)paramArticleInfo.mChannelID, "1", paramInt2);
-    try
-    {
-      paramContext.put("location", paramInt1);
-      swy.a(paramArticleInfo, paramString, paramContext.toString());
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  private void a(Intent paramIntent, String paramString1, String paramString2)
-  {
-    if ((paramIntent == null) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    paramIntent.putExtra(paramString1, paramString2);
-  }
-  
-  private void a(Intent paramIntent, String paramString1, String paramString2, JSONObject paramJSONObject)
-  {
-    int i = 2;
-    if ("audio".equals(paramString1)) {
-      paramIntent.putExtra("audio_url", paramString2);
-    }
-    for (;;)
-    {
-      int j = i;
-      if (i == 1) {
-        j = 144;
-      }
-      paramIntent.putExtra("req_type", j);
-      if (paramJSONObject.has("report")) {
-        paramIntent.putExtra("report", paramJSONObject.getString("report"));
-      }
-      return;
-      i = paramJSONObject.optInt("req_type", 1);
-      if (i == 2) {
-        paramIntent.putExtra("audio_url", paramJSONObject.getString("audio_url"));
-      }
-    }
-  }
-  
-  private void a(Intent paramIntent, String paramString1, JSONObject paramJSONObject, String paramString2, boolean paramBoolean)
-  {
-    if ((paramIntent == null) || (paramJSONObject == null)) {}
-    while (!paramJSONObject.has(paramString2)) {
-      return;
-    }
-    if (paramBoolean) {}
-    try
-    {
-      paramIntent.putExtra(paramString1, Integer.parseInt(paramJSONObject.getString(paramString2)));
-      return;
-    }
-    catch (JSONException paramIntent)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[handleShareMsgToQQParams] paramsKey = " + paramString2 + ", e = " + paramIntent);
-      return;
-      paramIntent.putExtra(paramString1, paramJSONObject.getString(paramString2));
-      return;
-    }
-    catch (NumberFormatException paramIntent)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[handleShareMsgToQQParams] paramsKey = " + paramString2 + ", e = " + paramIntent);
-    }
-  }
-  
-  private void a(Intent paramIntent, JSONObject paramJSONObject)
-  {
-    paramIntent.putExtra("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
-    boolean bool = paramJSONObject.optBoolean("back", false);
-    if (paramJSONObject.has("k_back")) {
-      bool = paramJSONObject.getBoolean("k_back");
-    }
-    paramIntent.putExtra("k_back", bool);
-    if (paramJSONObject.has("serviceID")) {
-      paramIntent.putExtra("new_share_service_id", paramJSONObject.getString("serviceID"));
-    }
-  }
-  
-  private void a(Intent paramIntent, JSONObject paramJSONObject, Activity paramActivity)
-  {
-    long l = paramJSONObject.optLong("appid", 0L);
-    if (l > 0L)
-    {
-      paramJSONObject = (AppInterface)pay.a();
-      if (paramJSONObject != null)
-      {
-        a(paramActivity);
-        if (!this.jdField_a_of_type_Bhht.isShowing())
-        {
-          this.jdField_a_of_type_Bhht.c(2131693585);
-          this.jdField_a_of_type_Bhht.show();
-        }
-        paramIntent.putExtra("struct_share_key_source_name", Long.toString(l));
-        a(l, paramJSONObject, paramActivity, paramIntent);
-      }
-      return;
-    }
-    a(paramActivity);
-    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing()))
-    {
-      l = System.currentTimeMillis();
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "dialog dimiss time :" + l);
-      this.jdField_a_of_type_Bhht.dismiss();
-    }
-    Object localObject2 = paramJSONObject.optString("puin", null);
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = paramJSONObject.optString("oaUin");
-    }
-    Object localObject3;
-    String str;
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject2 = (AppInterface)pay.a();
-      localObject3 = ((AppInterface)localObject2).getEntityManagerFactory(((AppInterface)localObject2).getAccount()).createEntityManager();
-      localObject2 = (AccountDetail)((EntityManager)localObject3).find(AccountDetail.class, (String)localObject1);
-      ((EntityManager)localObject3).close();
-      localObject3 = paramJSONObject.optString("src_action", "");
-      str = a((AccountDetail)localObject2, (String)localObject3, paramJSONObject, (String)localObject1);
-      if (str.equalsIgnoreCase(paramActivity.getString(2131698803)))
-      {
-        boolean bool = str.equalsIgnoreCase(paramActivity.getString(2131698803));
-        if (bool)
-        {
-          paramJSONObject = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity";
-          if (!bool) {
-            break label404;
-          }
-          localObject2 = "mqqapi://readinjoy/open?src_type=internal&version=1";
-          label295:
-          if (!bool) {
-            break label412;
-          }
-          localObject3 = "https://sqimg.qq.com/qq_product_operations/ydqpush/message_icon/kandian.png";
-          label305:
-          paramIntent.putExtra("source_puin", (String)localObject1);
-          paramIntent.putExtra("struct_share_key_source_action", "plugin");
-          paramIntent.putExtra("struct_share_key_source_a_action_data", paramJSONObject);
-          paramIntent.putExtra("struct_share_key_source_i_action_data", (String)localObject2);
-          paramIntent.putExtra("struct_share_key_content_a_action_DATA", paramJSONObject);
-          paramIntent.putExtra("struct_share_key_source_icon", (String)localObject3);
-          paramIntent.putExtra("app_name", str);
-        }
-      }
-    }
-    for (;;)
-    {
-      paramJSONObject = bchh.a(paramIntent.getExtras());
-      if (paramJSONObject != null) {
-        break label519;
-      }
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "build struct msg fail");
-      return;
-      paramJSONObject = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity&from=recent";
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362089));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362062));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362069));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362090));
+      this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131367957);
+      this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131367941);
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367949));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367958));
+      this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131367960);
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367962));
+      this.jdField_g_of_type_AndroidViewView = paramView.findViewById(2131367946);
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367948));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCircleCountdownView = ((CircleCountdownView)paramView.findViewById(2131367959));
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363343));
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365867));
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365869));
+      this.jdField_l_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365870));
+      this.jdField_m_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365865));
+      this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365864));
+      this.jdField_h_of_type_AndroidViewView = paramView.findViewById(2131362074);
+      this.jdField_i_of_type_AndroidViewView = paramView.findViewById(2131362071);
+      this.jdField_j_of_type_AndroidViewView = paramView.findViewById(2131362072);
+      this.jdField_k_of_type_AndroidViewView = paramView.findViewById(2131362073);
+      this.jdField_l_of_type_AndroidViewView = paramView.findViewById(2131367933);
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367934));
+      this.jdField_m_of_type_AndroidViewView = paramView.findViewById(2131367932);
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367935));
+      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367936));
+      this.jdField_n_of_type_AndroidViewView = paramView.findViewById(2131367939);
+      this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372049));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365866));
+      this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131365871));
+      this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365868));
+      this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365873));
+      this.jdField_k_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365872));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131380901));
+      this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368126));
+      this.jdField_f_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_n_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362122));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView = ((RIJDownloadView)paramView.findViewById(2131362059));
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView = ((RIJDownloadView)paramView.findViewById(2131362060));
       break;
-      label404:
-      localObject2 = "mqqapi://readinjoy/open?src_type=internal&version=1&from=recent";
-      break label295;
-      label412:
-      localObject3 = "https://sqimg.qq.com/qq_product_operations/ydqpush/message_icon/dingyuehao.png";
-      break label305;
-      a(paramIntent, paramJSONObject, (String)localObject3, (String)localObject1, str);
-      continue;
-      if (paramJSONObject.has("sourceName"))
-      {
-        localObject1 = paramJSONObject.optString("sourceName");
-        paramIntent.putExtra("app_name", (String)localObject1);
-        if (("手Q阅读".equals(localObject1)) && (paramJSONObject.has("srcIconUrl"))) {
-          paramIntent.putExtra("struct_share_key_source_icon", paramJSONObject.optString("srcIconUrl"));
-        }
-      }
-      else
-      {
-        paramIntent.putExtra("app_name", paramActivity.getString(2131695896));
-      }
     }
-    label519:
-    paramIntent.putExtra("stuctmsg_bytes", paramJSONObject.getBytes());
-    paramActivity.startActivityForResult(paramIntent, 1);
   }
   
-  private void a(Intent paramIntent, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
+  public LinearLayout a()
   {
-    String str1 = paramJSONObject.optString("src_webActionUrl", "");
-    String str2 = paramJSONObject.optString("src_actionData", "");
-    String str3 = paramJSONObject.optString("src_a_actionData", "");
-    String str4 = paramJSONObject.optString("src_i_actionData", "");
-    if ((TextUtils.isEmpty(paramString1)) || (("web".equals(paramString1)) && ((TextUtils.isEmpty(str1)) || (str1.contains("webcard.mp.qq.com")))) || ((!"web".equals(paramString1)) && (TextUtils.isEmpty(str2)) && ((TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4)))))
-    {
-      paramString1 = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { paramString2 });
-      str1 = String.format("mqqapi://card/show_pslcard?src_type=internal&card_type=public_account&uin=%s&version=1", new Object[] { paramString2 });
-      paramIntent.putExtra("struct_share_key_source_action", "plugin");
-      paramIntent.putExtra("struct_share_key_source_a_action_data", paramString1);
-      paramIntent.putExtra("struct_share_key_source_i_action_data", str1);
-    }
-    for (;;)
-    {
-      paramIntent.putExtra("source_puin", paramString2);
-      paramIntent.putExtra("app_name", paramString3);
-      paramJSONObject = paramJSONObject.optString("src_iconUrl", "");
-      if (!TextUtils.isEmpty(paramJSONObject)) {
-        break;
-      }
-      paramIntent.putExtra("struct_share_key_source_icon", "https://url.cn/JS8oE7");
-      return;
-      paramIntent.putExtra("struct_share_key_source_action", paramString1);
-      if ("web".equals(paramString1))
-      {
-        paramString1 = uhv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, str1, uhv.f);
-        paramIntent.putExtra("struct_share_key_source_url", paramString1);
-        paramIntent.putExtra("source_url", paramString1);
-      }
-      else
-      {
-        a(paramIntent, "struct_share_key_source_action_data", str2);
-        a(paramIntent, "struct_share_key_source_a_action_data", str3);
-        a(paramIntent, "struct_share_key_source_i_action_data", str4);
-      }
-    }
-    paramIntent.putExtra("struct_share_key_source_icon", paramJSONObject);
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
   }
   
-  private void a(ArticleInfo paramArticleInfo, int paramInt)
+  public TextView a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new swj(this, paramArticleInfo, paramInt);
-    WXShareHelper.getInstance().addObserver(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
   
-  private void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, ArticleInfo paramArticleInfo, String paramString7, Activity paramActivity, boolean paramBoolean)
+  public ReadInJoyAdGestureView a()
   {
-    HashMap localHashMap = new HashMap(1);
-    AppInterface localAppInterface = (AppInterface)pay.a();
-    int j = -1;
-    int i;
-    if (paramInt == 9)
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdGestureView;
+  }
+  
+  public void a(shl paramshl, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean)
+  {
+    int i1 = 1;
+    super.a(paramshl, paramLinearLayoutManager, paramBoolean);
+    if (paramLinearLayoutManager.getOrientation() == 1)
     {
-      i = 3;
-      if (WXShareHelper.getInstance().isWXinstalled()) {
-        break label60;
+      if (i1 == 0) {
+        break label129;
       }
-      paramInt = 2131719722;
+      i1 = paramLinearLayoutManager.getDecoratedMeasuredHeight(this.itemView);
     }
-    for (;;)
+    for (float f1 = Math.abs(paramLinearLayoutManager.getDecoratedTop(this.itemView) - (paramLinearLayoutManager.getHeight() / 2 - i1 / 2)) / i1;; f1 = Math.abs(paramLinearLayoutManager.getDecoratedLeft(this.itemView) - (paramLinearLayoutManager.getWidth() / 2 - i1 / 2)) / i1)
     {
-      if (paramInt == -1) {
-        break label79;
+      float f2 = Math.round(f1 * 100.0F) / 100.0F;
+      f1 = f2;
+      if (f2 > 1.0F) {
+        f1 = 1.0F;
       }
-      yyi.a(0, paramInt);
+      if ((paramBoolean) && (f1 <= 0.5D)) {
+        paramshl.d();
+      }
+      ukg.a(paramshl.a, f1, this, paramBoolean);
       return;
-      i = 4;
+      i1 = 0;
       break;
-      label60:
-      paramInt = j;
-      if (!WXShareHelper.getInstance().isWXsupportApi()) {
-        paramInt = 2131719723;
-      }
-    }
-    label79:
-    a(paramArticleInfo, i);
-    paramString1 = new FastWebShareUtils.2(this, localHashMap, paramBoolean, paramString3, paramString4, paramString5, paramString1, paramString2, localAppInterface, paramString7, paramArticleInfo, i);
-    if (TextUtils.isEmpty(paramString6))
-    {
-      paramString1.run();
-      return;
-    }
-    a(paramActivity);
-    this.jdField_a_of_type_Bhht.c(2131693585);
-    this.jdField_a_of_type_Bhht.show();
-    ThreadManager.post(new FastWebShareUtils.3(this, paramString6, paramBoolean, localHashMap, localAppInterface, paramString1), 8, null, false);
-  }
-  
-  private void a(String paramString1, String paramString2, String paramString3, ArticleInfo paramArticleInfo, String paramString4, Activity paramActivity)
-  {
-    AppInterface localAppInterface = (AppInterface)pay.a();
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start!");
-    }
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina empty title or share_url");
-      }
-      QQToast.a(BaseApplication.getContext(), 0, 2131718380, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299076));
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina installSinaWeibo:false");
-      }
-      try
-      {
-        paramString1 = a("https://v.t.sina.com.cn/share/share.php?", paramString1, paramString2, paramString3);
-        paramString2 = new Intent(paramActivity, QQBrowserActivity.class);
-        paramString2.putExtra("url", paramString1);
-        paramActivity.startActivity(paramString2);
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start webview!");
-        }
-        a(localAppInterface.getApplication().getApplicationContext(), paramString4, 6, paramArticleInfo);
-        swy.a(localAppInterface.getApplication().getApplicationContext(), localAppInterface, paramArticleInfo, 5, -1, false);
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          QQToast.a(BaseApplication.getContext(), 0, 2131718380, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299076));
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina error! msg=" + paramString1);
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina end!");
-  }
-  
-  private void a(String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject, String paramString4, ArticleInfo paramArticleInfo, String paramString5, Activity paramActivity)
-  {
-    AppInterface localAppInterface = (AppInterface)pay.a();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("title", paramString1);
-    localBundle.putString("desc", paramString2);
-    localBundle.putString("detail_url", paramString3);
-    localBundle.putString("from", "qq");
-    if (paramJSONObject != null) {
-      localBundle.putString("default_text", paramJSONObject.optString("default_text"));
-    }
-    paramString1 = new ArrayList(1);
-    if ((TextUtils.isEmpty(paramString4)) && (paramArticleInfo != null) && (!TextUtils.isEmpty(paramArticleInfo.mFirstPagePicUrl))) {
-      paramString1.add(paramArticleInfo.mFirstPagePicUrl);
-    }
-    for (;;)
-    {
-      localBundle.putStringArrayList("image_url", paramString1);
-      localBundle.putLong("req_share_id", 0L);
-      localBundle.putInt("iUrlInfoFrm", 1);
-      localBundle.putLong("share_begin_time", bgww.b);
-      if (QZoneShareManager.jumpToQzoneShare(localAppInterface, paramActivity, localBundle, null, 1)) {
-        break;
-      }
-      yyi.a(1, 2131689486);
-      swy.b(localAppInterface.getApplication().getApplicationContext(), localAppInterface, paramArticleInfo, 2, -1, false, false);
-      return;
-      paramString1.add(paramString4);
-    }
-    a(localAppInterface.getApplication().getApplicationContext(), paramString5, 3, paramArticleInfo);
-    swy.a(localAppInterface.getApplication().getApplicationContext(), localAppInterface, paramArticleInfo, 2, -1, false);
-  }
-  
-  public static boolean a()
-  {
-    return TextUtils.equals("1", (CharSequence)bkwm.a("kandian_daily_fast_web_bottom_share", "0"));
-  }
-  
-  private boolean a(String paramString)
-  {
-    return (paramString != null) && (paramString.length() >= 5);
-  }
-  
-  private String b(String paramString)
-  {
-    String str = paramString;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (paramString.length() > 60) {
-        str = paramString.substring(0, 60) + "…";
-      }
-    }
-    return str;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null) {
-      WXShareHelper.getInstance().removeObserver(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-    }
-    this.jdField_a_of_type_Bhht = null;
-  }
-  
-  void a(Activity paramActivity, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
-  {
-    Intent localIntent = new Intent();
-    String str1 = paramJSONObject.optString("toUin");
-    int i = paramJSONObject.optInt("uinType", 0);
-    String str2 = paramJSONObject.optString("friendName");
-    if (a(str1))
-    {
-      localIntent.setClass(paramActivity.getApplicationContext(), DirectForwardActivity.class);
-      localIntent.putExtra("toUin", str1);
-      localIntent.putExtra("uinType", i);
-      localIntent.putExtra("uinname", str2);
-    }
-    for (;;)
-    {
-      localIntent.putExtra("key_flag_from_plugin", true);
-      paramString1 = a(paramString1);
-      paramString2 = b(paramString2);
-      paramInt = a(paramInt);
-      localIntent.putExtra("pluginName", "web_share");
-      localIntent.putExtra("title", paramString1);
-      localIntent.putExtra("desc", paramString2);
-      localIntent.putExtra("detail_url", paramString3);
-      localIntent.putExtra("shareQQType", paramInt);
-      localIntent.putExtra("forward_type", 1001);
-      localIntent.putExtra("req_share_id", paramJSONObject.optLong("appid", -1L));
-      localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
-      localIntent.putExtra("image_url_remote", paramString4);
-      localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131695880, new Object[] { paramString1 }));
-      localIntent.putExtra("flag", paramJSONObject.optInt("flag", 0));
-      a(localIntent, "struct_share_key_content_action", paramJSONObject, "contentAction", false);
-      a(localIntent, "struct_share_key_content_action_DATA", paramJSONObject, "actionData", false);
-      a(localIntent, "struct_share_key_source_action", paramJSONObject, "sourceAction", false);
-      a(localIntent, "is_share_flag", paramJSONObject, "isShareFlag", true);
-      a(localIntent, "struct_share_key_source_action_data", paramJSONObject, "srcActionData", false);
-      a(localIntent, "app_name", paramJSONObject, "appName", false);
-      a(localIntent, paramString5, paramString6, paramJSONObject);
-      a(localIntent, paramJSONObject);
-      a(localIntent, paramJSONObject, paramActivity);
-      return;
-      localIntent.putExtra("isWebCompShare", true);
-      localIntent.setClass(paramActivity.getApplicationContext(), ForwardRecentActivity.class);
-    }
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, int paramInt1, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, String paramString5)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    AppInterface localAppInterface = (AppInterface)pay.a();
-    String str1;
-    String str2;
-    String str3;
-    String str4;
-    String str5;
-    boolean bool1;
-    try
-    {
-      paramString3 = new JSONObject(paramString3);
-      str1 = paramString3.optString("share_type", "0");
-      str2 = paramString3.optString("title");
-      str3 = paramString3.optString("desc");
-      str4 = paramString3.optString("share_url");
-      str5 = paramString3.optString("image_url");
-      str6 = paramString3.optString("shareElement");
-      str7 = paramString3.optString("flash_url");
-      boolean bool2 = false;
-      bool1 = bool2;
-      if ((paramActivity instanceof FastWebActivity))
-      {
-        bool1 = bool2;
-        if ("2".equals(str1))
-        {
-          if (paramString3.optInt("mini_program_enabled", 1) != 1) {
-            break label416;
-          }
-          bool1 = true;
-          break label412;
-        }
-      }
-      if (paramArticleInfo == null) {
-        break label422;
-      }
-      paramString1 = paramArticleInfo.innerUniqueID;
-      label154:
-      i = paramString3.optInt("shareQQType", 13);
-      if (paramInt1 != 72) {
-        break label430;
-      }
-      paramString3.put("toUin", paramString4);
-      paramString3.put("uinType", paramInt2);
-      paramString3.put("friendName", paramString5);
-      a(paramActivity, paramString3, str2, str3, str4, str5, str6, str7, i);
-      a(localAppInterface.getApplication().getApplicationContext(), paramString2, 2, paramArticleInfo);
-      swy.a(localAppInterface.getApplication().getApplicationContext(), localAppInterface, paramArticleInfo, 1, 19, false);
-      return;
-    }
-    catch (Exception paramArticleInfo)
-    {
-      String str6;
-      String str7;
-      int i;
-      label260:
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "doShareAction error! msg=" + paramArticleInfo);
-      return;
-    }
-    a(paramActivity, paramString3, str2, str3, str4, str5, str6, str7, i);
-    a(localAppInterface.getApplication().getApplicationContext(), paramString2, 2, paramArticleInfo);
-    swy.a(localAppInterface.getApplication().getApplicationContext(), localAppInterface, paramArticleInfo, 1, -1, false);
-    return;
-    label343:
-    if (paramInt1 == 3)
-    {
-      a(str2, str3, str4, paramString3, str5, paramArticleInfo, paramString2, paramActivity);
-      return;
-    }
-    for (;;)
-    {
-      label367:
-      a(paramString1, str1, paramInt1, str2, str3, str4, str5, paramArticleInfo, paramString2, paramActivity, bool1);
-      return;
-      label412:
-      label416:
-      label422:
-      label430:
-      do
-      {
-        if (paramInt1 == 12)
-        {
-          a(str2, str4, str5, paramArticleInfo, paramString2, paramActivity);
-          return;
-        }
-        for (;;)
-        {
-          break;
-          return;
-          bool1 = false;
-        }
-        paramString1 = "";
-        break label154;
-        if (paramInt1 == 2) {
-          break label260;
-        }
-        if (paramInt1 != 73) {
-          break label343;
-        }
-        break label260;
-        if (paramInt1 == 9) {
-          break label367;
-        }
-      } while (paramInt1 != 10);
+      label129:
+      i1 = paramLinearLayoutManager.getDecoratedMeasuredWidth(this.itemView);
     }
   }
 }

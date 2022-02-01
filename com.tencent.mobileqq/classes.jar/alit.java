@@ -1,24 +1,40 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.menu.AbsMenuFlag;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.data.BaseRecentUser;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 
-class alit
-  implements Comparator<Entity>
+public class alit
+  extends AbsMenuFlag
 {
-  alit(alis paramalis, HashMap paramHashMap) {}
-  
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
+    if (!(paramRecentBaseData instanceof RecentUserBaseData)) {
+      return false;
     }
-    if (l1 > l2) {
-      return 1;
+    switch (((RecentUserBaseData)paramRecentBaseData).mUser.getType())
+    {
+    default: 
+      label116:
+      ((RecentUserBaseData)paramRecentBaseData).updateMsgUnreadStateMenu();
+      paramRecentBaseData.mMenuFlag &= 0xFFFFFF0F;
+      if (((RecentUserBaseData)paramRecentBaseData).mUser.showUpTime != 0L) {
+        break;
+      }
     }
-    return 0;
+    for (paramRecentBaseData.mMenuFlag |= 0x10;; paramRecentBaseData.mMenuFlag |= 0x20)
+    {
+      paramRecentBaseData.mMenuFlag &= 0xF0FFFFFF;
+      if (((RecentUserBaseData)paramRecentBaseData).mUser.isHiddenChat != 1) {
+        break;
+      }
+      paramRecentBaseData.mMenuFlag |= 0x1000000;
+      return false;
+      paramRecentBaseData.mMenuFlag |= 0x1000;
+      break label116;
+      paramRecentBaseData.mMenuFlag |= 0x2000;
+      break label116;
+    }
   }
 }
 

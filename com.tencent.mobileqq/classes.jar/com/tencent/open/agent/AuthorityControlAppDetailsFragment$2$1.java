@@ -1,13 +1,13 @@
 package com.tencent.open.agent;
 
-import bhqc;
+import bjaz;
 import com.tencent.open.model.AppInfo;
 import java.util.ArrayList;
 
 public class AuthorityControlAppDetailsFragment$2$1
   extends ArrayList<AppInfo>
 {
-  public AuthorityControlAppDetailsFragment$2$1(bhqc parambhqc)
+  public AuthorityControlAppDetailsFragment$2$1(bjaz parambjaz)
   {
     add(AuthorityControlAppDetailsFragment.a(this.this$1.a));
   }

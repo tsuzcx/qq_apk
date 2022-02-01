@@ -1,25 +1,36 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnItemTouchListener;
-import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
-class zen
-  implements RecyclerView.OnItemTouchListener
+public abstract interface zen
 {
-  zen(zei paramzei) {}
+  public abstract int a();
   
-  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
-  {
-    return zei.a(this.a, paramMotionEvent);
-  }
+  public abstract View a();
   
-  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
+  public abstract zes a(int paramInt);
   
-  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
-  {
-    if (zei.a(this.a) != null) {
-      zei.a(this.a).a(paramMotionEvent);
-    }
-  }
+  public abstract zet a();
+  
+  public abstract void a();
+  
+  public abstract void a(List<QQUserUIItem> paramList, int paramInt);
+  
+  public abstract void a(wlc paramwlc, float paramFloat1, float paramFloat2);
+  
+  public abstract void a(zep paramzep);
+  
+  public abstract void a(zer paramzer);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(int[] paramArrayOfInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(boolean paramBoolean);
 }
 
 

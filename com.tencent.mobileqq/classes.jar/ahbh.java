@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
-public class ahbh
-  implements bhnm
+class ahbh
+  implements DialogInterface.OnClickListener
 {
-  public ahbh(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
+  ahbh(ahaw paramahaw, ahbj paramahbj) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    admh.a(this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahaw.b, this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Ahbj.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon, this.jdField_a_of_type_Ahbj.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
   }
 }
 

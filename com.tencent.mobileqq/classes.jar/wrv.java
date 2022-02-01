@@ -1,10 +1,14 @@
 import java.util.ArrayList;
 
-public class wrv
-  extends vko
+public final class wrv
+  extends vzj
 {
-  public ArrayList<String> a;
-  public boolean a = true;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<Integer> a;
+  public int b;
+  public String b;
 }
 
 

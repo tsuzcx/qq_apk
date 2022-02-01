@@ -1,9 +1,19 @@
-import android.support.annotation.NonNull;
-import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public abstract interface sle
+public class sle
+  extends ses
 {
-  public abstract void a(@NonNull View paramView, int paramInt);
+  private VideoInfo a;
+  
+  public VideoInfo a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    return this.a.g;
+  }
 }
 
 

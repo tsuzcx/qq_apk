@@ -1,59 +1,96 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyForCanvasFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoCeilingFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtAppReceiver;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import java.lang.ref.WeakReference;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class tqe
+  implements AbsListView.OnScrollListener
 {
-  public static GdtHandler.Params a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, tqh paramtqh)
+  private int jdField_a_of_type_Int = -1;
+  private int b = -1;
+  private int c;
+  private int d;
+  private int e;
+  
+  public tqe(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  
+  private void c()
   {
-    if ((paramAdvertisementInfo == null) || (paramActivity == null)) {
-      return null;
-    }
-    GdtHandler.Params localParams = new GdtHandler.Params();
-    tqh localtqh = paramtqh;
-    if (paramtqh == null) {
-      localtqh = new tqh();
-    }
-    paramtqh = uhs.a(paramAdvertisementInfo);
-    localParams.c = 1;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramtqh);
-    localParams.jdField_a_of_type_Boolean = localtqh.jdField_a_of_type_Boolean;
-    localParams.jdField_b_of_type_Boolean = localtqh.jdField_b_of_type_Boolean;
-    if (paramAdvertisementInfo.clickPos > 0)
+    if ((this.d > 0) && (this.e == 0))
     {
-      localParams.jdField_b_of_type_Int = paramAdvertisementInfo.clickPos;
-      paramAdvertisementInfo.resetClickPos();
+      if ((!ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) || (!ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView))) {
+        break label42;
+      }
+      ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
     }
-    localParams.jdField_a_of_type_Long = localtqh.jdField_a_of_type_Long;
-    if (uhs.a == null)
+    label42:
+    while (!ReadInJoyNinePicDeliverDynamicGridView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) {
+      return;
+    }
+    ReadInJoyNinePicDeliverDynamicGridView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+  }
+  
+  public void a()
+  {
+    if ((this.c != this.jdField_a_of_type_Int) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != -1L))
     {
-      uhs.a = new GdtAppReceiver();
-      uhs.a.register(BaseApplicationImpl.getContext());
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView));
+      ReadInJoyNinePicDeliverDynamicGridView.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
     }
-    localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(uhs.a);
-    long l = paramAdvertisementInfo.mChannelID;
-    if ((l != 3L) && (l != 4L) && (paramAdvertisementInfo.mAdJumpMode != 6) && (!localtqh.d) && (l != 2000001L))
+  }
+  
+  public void b()
+  {
+    if ((this.c + this.d != this.jdField_a_of_type_Int + this.b) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView)) && (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != -1L))
     {
-      localParams.jdField_a_of_type_JavaLangClass = ReadInJoyVideoCeilingFragment.class;
-      uhs.a(localParams, localtqh.c, paramAdvertisementInfo, paramActivity);
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView));
+      ReadInJoyNinePicDeliverDynamicGridView.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView);
     }
-    localParams.jdField_b_of_type_JavaLangClass = ReadInJoyForCanvasFragment.class;
-    localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", "biz_src_feeds_kandian");
-    return localParams;
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    if (this.jdField_a_of_type_Int == -1)
+    {
+      i = this.c;
+      this.jdField_a_of_type_Int = i;
+      if (this.b != -1) {
+        break label111;
+      }
+    }
+    label111:
+    for (int i = this.d;; i = this.b)
+    {
+      this.b = i;
+      a();
+      b();
+      this.jdField_a_of_type_Int = this.c;
+      this.b = this.d;
+      if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != null) {
+        ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      }
+      return;
+      i = this.jdField_a_of_type_Int;
+      break;
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    this.e = paramInt;
+    ReadInJoyNinePicDeliverDynamicGridView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView, paramInt);
+    c();
+    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView).onScrollStateChanged(paramAbsListView, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tqe
  * JD-Core Version:    0.7.0.1
  */

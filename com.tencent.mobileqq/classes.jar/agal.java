@@ -1,35 +1,76 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class agal
-  implements agtr
+  implements View.OnTouchListener
 {
-  agal(agak paramagak, agaj paramagaj, MessageForPoke paramMessageForPoke) {}
+  long jdField_a_of_type_Long = 0L;
   
-  public void a()
+  agal(agab paramagab) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 3");
+    if ((this.jdField_a_of_type_Agab.isJubaoMode) || (!(paramView instanceof ImageView))) {
+      return false;
     }
-    agkc.a().a(20);
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_Agaj.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Agaj.b == afzw.b()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Agak.a.a instanceof ChatHistoryActivity)) && (!afzw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Agaj.c.setVisibility(0);
+    Object localObject = (ImageView)paramView;
+    int i = paramMotionEvent.getAction();
+    localObject = null;
+    paramMotionEvent = (MotionEvent)localObject;
+    if (paramView.getTag() != null)
+    {
+      paramMotionEvent = (MotionEvent)localObject;
+      if ((paramView.getTag() instanceof axms)) {
+        paramMotionEvent = (axms)paramView.getTag();
+      }
+    }
+    switch (i)
+    {
     }
     for (;;)
     {
-      this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Agaj.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      return;
-      this.jdField_a_of_type_Agaj.c.setVisibility(8);
+      return true;
+      if (paramMotionEvent != null)
+      {
+        paramView.setAlpha(paramMotionEvent.a() * 0.5F);
+      }
+      else
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        if (paramMotionEvent != null) {
+          paramView.setAlpha(paramMotionEvent.a());
+        }
+        while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
+        {
+          return true;
+          paramView.setAlpha(1.0F);
+        }
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        paramView = new Intent(this.jdField_a_of_type_Agab.mActivity, QQBrowserActivity.class);
+        localObject = arcc.a().a(this.jdField_a_of_type_Agab.sessionInfo.curFriendUin);
+        axlo.a(this.jdField_a_of_type_Agab.app, this.jdField_a_of_type_Agab.sessionInfo.curFriendUin, paramMotionEvent);
+        paramView.putExtra("url", (String)localObject);
+        paramView.putExtra("finish_animation_out_to_right", true);
+        paramView.putExtra("is_wrap_content", true);
+        paramView.putExtra("hide_left_button", false);
+        if (this.jdField_a_of_type_Agab.mActivity != null)
+        {
+          this.jdField_a_of_type_Agab.mActivity.startActivity(paramView);
+          continue;
+          if (paramMotionEvent != null) {
+            paramView.setAlpha(paramMotionEvent.a());
+          } else {
+            paramView.setAlpha(1.0F);
+          }
+        }
+      }
     }
   }
 }

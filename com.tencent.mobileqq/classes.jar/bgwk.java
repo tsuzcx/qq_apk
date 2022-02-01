@@ -1,15 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
-class bgwk
-  implements View.OnTouchListener
+public class bgwk
+  implements DialogInterface.OnClickListener
 {
-  bgwk(bgwj parambgwj) {}
+  public bgwk(UpgradeActivity paramUpgradeActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    this.a.finish();
   }
 }
 

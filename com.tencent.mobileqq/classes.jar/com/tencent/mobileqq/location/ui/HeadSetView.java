@@ -14,16 +14,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import avcq;
-import avcw;
-import avdg;
-import avdo;
-import avdp;
-import avfq;
-import avgm;
-import avhc;
-import avhg;
-import bjuk;
+import awit;
+import awiz;
+import awjj;
+import awjr;
+import awjs;
+import awlt;
+import awmp;
+import awnf;
+import awnj;
+import blfw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -34,7 +34,7 @@ import kotlin.TypeCastException;
 import kotlin.collections.CollectionsKt;
 import kotlin.jvm.JvmField;
 import kotlin.jvm.internal.Intrinsics;
-import mum;
+import mvk;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -47,8 +47,8 @@ public final class HeadSetView
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   @JvmField
   @Nullable
-  public avdp a;
-  private avhc jdField_a_of_type_Avhc;
+  public awjs a;
+  private awnf jdField_a_of_type_Awnf;
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   private ImageView b;
@@ -76,13 +76,13 @@ public final class HeadSetView
   
   private final void c()
   {
-    this.jdField_a_of_type_Avdp = new avdp(getContext());
+    this.jdField_a_of_type_Awjs = new awjs(getContext());
   }
   
   private final void d()
   {
-    View localView = a(2131376679);
-    boolean bool = bjuk.a();
+    View localView = a(2131376947);
+    boolean bool = blfw.a();
     if (bool == true) {
       localView.setBackgroundColor(Color.parseColor("#CC000000"));
     }
@@ -103,7 +103,7 @@ public final class HeadSetView
       LiuHaiUtils.a((Activity)localObject);
       if (LiuHaiUtils.jdField_a_of_type_Boolean)
       {
-        localObject = a(2131371881);
+        localObject = a(2131372072);
         ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
         localLayoutParams.height = LiuHaiUtils.jdField_a_of_type_Int;
         ((View)localObject).setLayoutParams(localLayoutParams);
@@ -114,63 +114,63 @@ public final class HeadSetView
   
   private final void f()
   {
-    this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131559301, (ViewGroup)this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)a(2131370050));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364190));
+    this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131559351, (ViewGroup)this);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)a(2131370222));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364267));
     ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
     Context localContext;
     Object localObject;
     if (localImageView != null)
     {
-      localImageView.setOnClickListener((View.OnClickListener)this.jdField_a_of_type_Avdp);
+      localImageView.setOnClickListener((View.OnClickListener)this.jdField_a_of_type_Awjs);
       localContext = localImageView.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
       localObject = localImageView.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
-      localObject = ((Context)localObject).getResources().getDrawable(2130845255);
+      localObject = ((Context)localObject).getResources().getDrawable(2130845340);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources.getDra…able.qq_loc_cancel_share)");
-      localImageView.setImageDrawable(avdo.a(localContext, (Drawable)localObject));
+      localImageView.setImageDrawable(awjr.a(localContext, (Drawable)localObject));
     }
-    avgm.a((View)this.jdField_a_of_type_AndroidWidgetImageView, "退出位置共享");
-    this.b = ((ImageView)a(2131370953));
+    awmp.a((View)this.jdField_a_of_type_AndroidWidgetImageView, "退出位置共享");
+    this.b = ((ImageView)a(2131371138));
     localImageView = this.b;
     if (localImageView != null)
     {
-      localImageView.setOnClickListener((View.OnClickListener)this.jdField_a_of_type_Avdp);
+      localImageView.setOnClickListener((View.OnClickListener)this.jdField_a_of_type_Awjs);
       localContext = localImageView.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
       localObject = localImageView.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
-      localObject = ((Context)localObject).getResources().getDrawable(2130845256);
+      localObject = ((Context)localObject).getResources().getDrawable(2130845341);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources.getDra…rawable.qq_loc_min_share)");
-      localImageView.setImageDrawable(avdo.a(localContext, (Drawable)localObject));
+      localImageView.setImageDrawable(awjr.a(localContext, (Drawable)localObject));
     }
-    avgm.a((View)this.b, "最小化位置共享");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131378502));
+    awmp.a((View)this.b, "最小化位置共享");
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131378793));
     g();
   }
   
   private final void g()
   {
-    this.jdField_a_of_type_Avhc = new avhc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getContext(), this.jdField_a_of_type_ComTencentWidgetHorizontalListView, this);
+    this.jdField_a_of_type_Awnf = new awnf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getContext(), this.jdField_a_of_type_ComTencentWidgetHorizontalListView, this);
     Object localObject = this.jdField_a_of_type_ComTencentWidgetHorizontalListView;
     if (localObject != null) {
-      ((HorizontalListView)localObject).setAdapter((ListAdapter)this.jdField_a_of_type_Avhc);
+      ((HorizontalListView)localObject).setAdapter((ListAdapter)this.jdField_a_of_type_Awnf);
     }
-    localObject = this.jdField_a_of_type_Avdp;
+    localObject = this.jdField_a_of_type_Awjs;
     if (localObject != null)
     {
-      ((avdp)localObject).a(this.jdField_a_of_type_Avhc);
-      ((avdp)localObject).a(this.jdField_a_of_type_AndroidWidgetTextView);
+      ((awjs)localObject).a(this.jdField_a_of_type_Awnf);
+      ((awjs)localObject).a(this.jdField_a_of_type_AndroidWidgetTextView);
     }
   }
   
   public final int a()
   {
-    View localView = a(2131370062);
-    float f1 = mum.a(getContext(), 40.0F);
+    View localView = a(2131370234);
+    float f1 = mvk.a(getContext(), 40.0F);
     f1 = localView.getWidth() - f1;
-    float f2 = mum.a(getContext(), 48.0F);
+    float f2 = mvk.a(getContext(), 48.0F);
     double d = Math.floor(f1 / f2);
     if (QLog.isColorLevel()) {
       QLog.d("HeadSetView", 2, new Object[] { "maxShownAvatarCount: invoked. ", " floor: " + d + " avatarWidth: " + f2 + " listViewContainerWidth: " + f1 });
@@ -191,42 +191,42 @@ public final class HeadSetView
   
   public final void b()
   {
-    avhc localavhc = this.jdField_a_of_type_Avhc;
-    if (localavhc != null) {
-      localavhc.notifyDataSetChanged();
+    awnf localawnf = this.jdField_a_of_type_Awnf;
+    if (localawnf != null) {
+      localawnf.notifyDataSetChanged();
     }
   }
   
-  public final void setLocationController(@Nullable avfq paramavfq, @NotNull avcq paramavcq, boolean paramBoolean)
+  public final void setLocationController(@Nullable awlt paramawlt, @NotNull awit paramawit, boolean paramBoolean)
   {
     int j = 1;
-    Intrinsics.checkParameterIsNotNull(paramavcq, "roomKey");
-    avhc localavhc = this.jdField_a_of_type_Avhc;
-    if (localavhc != null) {
-      localavhc.a(paramavfq);
+    Intrinsics.checkParameterIsNotNull(paramawit, "roomKey");
+    awnf localawnf = this.jdField_a_of_type_Awnf;
+    if (localawnf != null) {
+      localawnf.a(paramawlt);
     }
-    paramavfq = this.jdField_a_of_type_Avdp;
-    if (paramavfq != null) {
-      paramavfq.a(paramavcq);
+    paramawlt = this.jdField_a_of_type_Awjs;
+    if (paramawlt != null) {
+      paramawlt.a(paramawit);
     }
     int i;
-    if (!avcw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a.a(paramavcq))
+    if (!awiz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a.a(paramawit))
     {
       i = 1;
       if (i == 1)
       {
-        paramavfq = CollectionsKt.mutableListOf(new String[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() });
-        localavhc = this.jdField_a_of_type_Avhc;
-        if (localavhc != null) {
-          localavhc.a(paramavfq);
+        paramawlt = CollectionsKt.mutableListOf(new String[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() });
+        localawnf = this.jdField_a_of_type_Awnf;
+        if (localawnf != null) {
+          localawnf.a(paramawlt);
         }
-        if ((!paramBoolean) || (avhg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramavcq.a(), paramavcq.a()))) {
+        if ((!paramBoolean) || (awnj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramawit.a(), paramawit.a()))) {
           break label161;
         }
         i = j;
         label128:
-        paramavcq = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (paramavcq != null) {
+        paramawit = this.jdField_a_of_type_AndroidWidgetTextView;
+        if (paramawit != null) {
           if (i == 0) {
             break label167;
           }
@@ -235,9 +235,9 @@ public final class HeadSetView
     }
     label161:
     label167:
-    for (paramavfq = (CharSequence)"正在发起...";; paramavfq = (CharSequence)"正在加入...")
+    for (paramawlt = (CharSequence)"正在发起...";; paramawlt = (CharSequence)"正在加入...")
     {
-      paramavcq.setText(paramavfq);
+      paramawit.setText(paramawlt);
       return;
       i = 0;
       break;

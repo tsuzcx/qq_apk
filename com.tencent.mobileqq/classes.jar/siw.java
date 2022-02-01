@@ -1,15 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
 
-class siw
-  extends sif
+public class siw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  siw(sig paramsig) {}
+  private siw(VideoFeedsGuideView paramVideoFeedsGuideView) {}
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    shq.a(sig.a(this.a), paramBaseArticleInfo, sig.a(this.a).a(paramBaseArticleInfo.getInnerUniqueID()), 0, 1);
-    shq.a(paramBaseArticleInfo.getInnerUniqueID(), 0, 1);
+    if (VideoFeedsGuideView.a(this.a) == 1)
+    {
+      VideoFeedsGuideView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      VideoFeedsGuideView.b(this.a, VideoFeedsGuideView.b(this.a) + VideoFeedsGuideView.c(this.a));
+    }
+    for (;;)
+    {
+      this.a.invalidate();
+      return;
+      VideoFeedsGuideView.c(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      VideoFeedsGuideView.d(this.a, VideoFeedsGuideView.b(this.a) + VideoFeedsGuideView.d(this.a));
+    }
   }
 }
 

@@ -1,27 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aiyd
-  implements bjoe
+class aiyd
+  extends CardObserver
 {
-  public aiyd(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, bjnw parambjnw) {}
+  aiyd(aiya paramaiya) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
-    if ((paramView == null) || (paramView.isEmpty())) {}
-    do
+    if (paramBoolean)
     {
+      QQToast.a(aiya.a(this.a), 2131698669, 3000).a();
+      if (aiya.a(this.a) != 23) {
+        this.a.a(true);
+      }
       return;
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(paramView);
-      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new aiye(this));
-      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
-    } while (!this.jdField_a_of_type_Bjnw.isShowing());
-    this.jdField_a_of_type_Bjnw.dismiss();
+    }
+    QQToast.a(aiya.a(this.a), 2131698668, 0).a();
   }
 }
 

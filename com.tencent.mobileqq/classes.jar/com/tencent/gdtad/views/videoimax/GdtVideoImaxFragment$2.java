@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.videoimax;
 
-import abrl;
+import acho;
 import android.os.ResultReceiver;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
@@ -11,7 +11,7 @@ class GdtVideoImaxFragment$2
   
   public void run()
   {
-    abrl.a("GdtVideoImaxFragment", "run() mTimeoutRunnable");
+    acho.a("GdtVideoImaxFragment", "run() mTimeoutRunnable");
     if (GdtVideoImaxFragment.a(this.this$0))
     {
       GdtVideoImaxFragment.a(this.this$0).setBackgroundColor(-16777216);
@@ -25,7 +25,7 @@ class GdtVideoImaxFragment$2
       GdtVideoImaxFragment.a(this.this$0, false);
       return;
       label61:
-      abrl.a("GdtVideoImaxFragment", "run() mResultReceiver != null");
+      acho.a("GdtVideoImaxFragment", "run() mResultReceiver != null");
     }
   }
 }

@@ -1,30 +1,31 @@
-import java.util.HashMap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aovh
+class aovh
+  implements wyv
 {
-  private static HashMap<String, aovi> a = new HashMap();
+  aovh(aovg paramaovg) {}
   
-  public static Object a(int paramInt, String paramString, Object paramObject1, Object paramObject2)
+  public void a(wuh paramwuh, bisl parambisl)
   {
-    paramString = (aovi)a.get(paramString);
-    if (paramString != null) {
-      paramObject2 = paramString.a(paramInt, paramObject1);
+    if ((parambisl != null) && (parambisl.isShowing())) {
+      parambisl.dismiss();
     }
-    return paramObject2;
-  }
-  
-  public static void a(String paramString)
-  {
-    if (paramString != null) {
-      a.remove(paramString);
+    wyt.a(this.a.a);
+    if ((paramwuh != null) && (paramwuh.jdField_a_of_type_Int == 0))
+    {
+      wyt.a(paramwuh.jdField_a_of_type_JavaLangString, this.a.a);
+      aovg.a(this.a);
+      return;
     }
-  }
-  
-  public static void a(String paramString, aovi paramaovi)
-  {
-    if (paramString != null) {
-      a.put(paramString, paramaovi);
+    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694256, 1).a();
+      return;
     }
+    this.a.c = "open";
+    aovg.a(this.a);
   }
 }
 

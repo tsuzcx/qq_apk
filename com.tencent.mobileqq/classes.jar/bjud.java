@@ -1,8 +1,41 @@
-import com.tencent.widget.TCWDatePicker;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bjud
+public class bjud
 {
-  public abstract void a(TCWDatePicker paramTCWDatePicker, int paramInt1, int paramInt2, int paramInt3);
+  public void a(String paramString1, String paramString2)
+  {
+    QLog.e("AVLOG_" + paramString1, 1, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e("AVLOG_" + paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    QLog.w("AVLOG_" + paramString1, 1, paramString2);
+  }
+  
+  public void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w("AVLOG_" + paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    QLog.d("AVLOG_" + paramString1, 2, paramString2);
+  }
+  
+  public void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i("AVLOG_" + paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    QLog.i("AVLOG_" + paramString1, 1, paramString2);
+  }
 }
 
 

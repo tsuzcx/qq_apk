@@ -2,18 +2,18 @@ package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Handler;
 import android.os.Message;
-import asjc;
-import asjh;
+import atni;
+import atnn;
 import java.util.TimerTask;
 
 public class OnlineFileSessionCenter$UploadProgressMakeEvtPump$1
   extends TimerTask
 {
-  public OnlineFileSessionCenter$UploadProgressMakeEvtPump$1(asjh paramasjh) {}
+  public OnlineFileSessionCenter$UploadProgressMakeEvtPump$1(atnn paramatnn) {}
   
   public void run()
   {
-    if (asjh.a(this.a) == null) {
+    if (atnn.a(this.a) == null) {
       return;
     }
     Message localMessage = new Message();

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app;
 
+import aady;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +11,6 @@ import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.app.Foreground;
-import zon;
 
 public abstract class GuardProcessExitListener
   extends BroadcastReceiver
@@ -60,7 +60,7 @@ public abstract class GuardProcessExitListener
   
   protected String a()
   {
-    return zon.a();
+    return aady.a();
   }
   
   public void a(boolean paramBoolean)

@@ -1,11 +1,11 @@
 package com.tencent.hippy.qq.view.video.gamecenter;
 
-import atya;
+import avdp;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.qphone.base.util.QLog;
 
 class GameCenterVideoView$1
-  implements atya
+  implements avdp
 {
   GameCenterVideoView$1(GameCenterVideoView paramGameCenterVideoView) {}
   

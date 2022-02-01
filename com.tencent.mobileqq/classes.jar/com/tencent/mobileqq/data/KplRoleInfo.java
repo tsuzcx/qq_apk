@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import aezn;
-import ahkz;
-import amsw;
+import afqz;
+import aift;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import anvk;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -108,7 +109,7 @@ public class KplRoleInfo
   public static boolean isKplPie(BaseChatPie paramBaseChatPie)
   {
     boolean bool;
-    if (ahkz.a(paramBaseChatPie.mContext, paramBaseChatPie.sessionInfo.curType, false, false) != null) {
+    if (aift.a(paramBaseChatPie.mContext, paramBaseChatPie.sessionInfo.curType, false, false) != null) {
       bool = true;
     }
     for (;;)
@@ -120,8 +121,8 @@ public class KplRoleInfo
       if (paramBaseChatPie.sessionInfo.curType == 1022)
       {
         List localList = paramBaseChatPie.listAdapter.a();
-        amsw localamsw = (amsw)paramBaseChatPie.app.getManager(51);
-        if ((localList != null) && (localList.size() > 0) && (!localamsw.b(paramBaseChatPie.sessionInfo.curFriendUin)) && (!TextUtils.isEmpty(((ChatMessage)localList.get(localList.size() - 1)).getExtInfoFromExtStr("msg_ext_key"))))
+        anvk localanvk = (anvk)paramBaseChatPie.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if ((localList != null) && (localList.size() > 0) && (!localanvk.b(paramBaseChatPie.sessionInfo.curFriendUin)) && (!TextUtils.isEmpty(((ChatMessage)localList.get(localList.size() - 1)).getExtInfoFromExtStr("msg_ext_key"))))
         {
           bool = true;
           continue;
@@ -134,7 +135,7 @@ public class KplRoleInfo
   public static boolean isKplSession(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
   {
     boolean bool;
-    if (ahkz.a(paramContext, paramInt, false, false) != null) {
+    if (aift.a(paramContext, paramInt, false, false) != null) {
       bool = true;
     }
     for (;;)
@@ -144,7 +145,7 @@ public class KplRoleInfo
       }
       return bool;
       paramContext = paramQQAppInterface.getMessageFacade().getAIOList(paramString, paramInt);
-      paramQQAppInterface = (amsw)paramQQAppInterface.getManager(51);
+      paramQQAppInterface = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if ((paramContext != null) && (paramContext.size() > 0) && (!paramQQAppInterface.b(paramString)) && (!TextUtils.isEmpty(((ChatMessage)paramContext.get(paramContext.size() - 1)).getExtInfoFromExtStr("msg_ext_key")))) {
         bool = true;
       } else {
@@ -253,7 +254,7 @@ public class KplRoleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.KplRoleInfo
  * JD-Core Version:    0.7.0.1
  */

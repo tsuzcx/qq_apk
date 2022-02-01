@@ -1,128 +1,99 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.os.SystemClock;
-import android.support.v4.util.MQLruCache;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashSet;
+import java.util.Calendar;
 
-class bamg
-  extends AsyncTask<Void, Bitmap, Bitmap>
+public class bamg
 {
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private baly jdField_a_of_type_Baly;
+  private bame jdField_a_of_type_Bame;
   private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  private baly b;
+  private baly c;
   
-  public bamg(bamf parambamf, String paramString1, String paramString2, String paramString3)
+  bamg(bame parambame, Message paramMessage, String paramString, baly parambaly1, baly parambaly2, baly parambaly3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    a(parambame, paramMessage, paramString, parambaly1, parambaly2, parambaly3);
   }
   
-  private Bitmap a(File paramFile)
+  public void a(bame parambame, Message paramMessage, String paramString, baly parambaly1, baly parambaly2, baly parambaly3)
   {
-    Bitmap localBitmap1 = null;
-    Bitmap localBitmap2 = null;
-    if (paramFile.exists()) {
-      localBitmap2 = localBitmap1;
-    }
-    try
+    this.jdField_a_of_type_Bame = parambame;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (paramMessage != null) {}
+    for (int i = paramMessage.what;; i = 0)
     {
-      localBitmap1 = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath());
-      localBitmap2 = localBitmap1;
-      if (localBitmap1 == null)
-      {
-        localBitmap2 = localBitmap1;
-        paramFile.delete();
-        localBitmap2 = localBitmap1;
-      }
-      return localBitmap2;
+      this.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Baly = parambaly1;
+      this.b = parambaly2;
+      this.c = parambaly3;
+      return;
     }
-    catch (OutOfMemoryError paramFile) {}
-    return localBitmap2;
   }
   
-  protected Bitmap a(Void... paramVarArgs)
+  public String toString()
   {
-    Object localObject1 = null;
-    paramVarArgs = null;
-    boolean bool2 = true;
-    Object localObject2 = bamf.a();
-    if (localObject2 != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("time=");
+    Object localObject = Calendar.getInstance();
+    ((Calendar)localObject).setTimeInMillis(this.jdField_a_of_type_Long);
+    localStringBuilder.append(String.format("%tm-%td %tH:%tM:%tS.%tL", new Object[] { localObject, localObject, localObject, localObject, localObject, localObject }));
+    localStringBuilder.append(" processed=");
+    if (this.jdField_a_of_type_Baly == null)
     {
-      localObject1 = new File((File)localObject2, this.jdField_a_of_type_JavaLangString);
-      boolean bool1 = bool2;
-      if (!((File)localObject1).exists())
-      {
-        if (!TextUtils.isEmpty(this.b))
-        {
-          localObject2 = a(new File((File)localObject2, this.b));
-          if (localObject2 != null) {
-            publishProgress(new Bitmap[] { localObject2 });
-          }
-        }
-        bool1 = bool2;
-        if (this.c != null)
-        {
-          if ((bamf.a(this.jdField_a_of_type_Bamf) > 3L) && (Math.abs(SystemClock.uptimeMillis() - bamf.a(this.jdField_a_of_type_Bamf)) > 60000L)) {
-            bamf.a(this.jdField_a_of_type_Bamf, 0L);
-          }
-          bool1 = bool2;
-          if (bamf.a(this.jdField_a_of_type_Bamf) < 3L) {
-            bool1 = bamf.a(this.jdField_a_of_type_Bamf, this.c, (File)localObject1);
-          }
-        }
+      localObject = "<null>";
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" org=");
+      if (this.b != null) {
+        break label247;
       }
-      if (bool1) {
-        paramVarArgs = a((File)localObject1);
+      localObject = "<null>";
+      label106:
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" dest=");
+      if (this.c != null) {
+        break label260;
       }
-      if ((!bool1) || (paramVarArgs == null)) {
-        break label253;
+      localObject = "<null>";
+      label129:
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" what=");
+      if (this.jdField_a_of_type_Bame == null) {
+        break label273;
       }
-      bamf.a(this.jdField_a_of_type_Bamf, 0L);
-      localObject1 = paramVarArgs;
+      localObject = this.jdField_a_of_type_Bame.a(this.jdField_a_of_type_Int);
+      label161:
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        break label279;
+      }
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("(0x");
+      localStringBuilder.append(Integer.toHexString(this.jdField_a_of_type_Int));
+      localStringBuilder.append(")");
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.richstatus.img", 2, "decodeBitmap finish with " + localObject1 + ", " + bamf.a(this.jdField_a_of_type_Bamf));
-      }
-      return localObject1;
-      label253:
-      localObject1 = paramVarArgs;
-      if (!TextUtils.isEmpty(this.c))
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        localObject1 = paramVarArgs;
-        if (bamf.b(this.jdField_a_of_type_Bamf) == 3L)
-        {
-          bamf.a(this.jdField_a_of_type_Bamf, SystemClock.uptimeMillis());
-          localObject1 = paramVarArgs;
-        }
+        localStringBuilder.append(" ");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
       }
-    }
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    if (paramBitmap != null) {
-      BaseApplicationImpl.sImageCache.put(bamf.a(this.jdField_a_of_type_Bamf) + this.jdField_a_of_type_JavaLangString, paramBitmap, (byte)0);
-    }
-    bamf.a(this.jdField_a_of_type_Bamf).remove(this.jdField_a_of_type_JavaLangString);
-    if (bamf.a(this.jdField_a_of_type_Bamf) != null) {
-      bamf.a(this.jdField_a_of_type_Bamf).a(this.jdField_a_of_type_JavaLangString, this.c, paramBitmap, 1);
-    }
-  }
-  
-  protected void a(Bitmap... paramVarArgs)
-  {
-    paramVarArgs = paramVarArgs[0];
-    BaseApplicationImpl.sImageCache.put(bamf.a(this.jdField_a_of_type_Bamf) + this.b, paramVarArgs, (byte)0);
-    if (bamf.a(this.jdField_a_of_type_Bamf) != null) {
-      bamf.a(this.jdField_a_of_type_Bamf).a(this.jdField_a_of_type_JavaLangString, this.c, paramVarArgs, 0);
+      return localStringBuilder.toString();
+      localObject = this.jdField_a_of_type_Baly.a();
+      break;
+      label247:
+      localObject = this.b.a();
+      break label106;
+      label260:
+      localObject = this.c.a();
+      break label129;
+      label273:
+      localObject = "";
+      break label161;
+      label279:
+      localStringBuilder.append((String)localObject);
     }
   }
 }

@@ -1,30 +1,12 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
-
 public class aiih
-  extends aiid
 {
-  public aiih(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, aiig paramaiig)
+  public static boolean a(aihq paramaihq)
   {
-    super(paramQQAppInterface, paramContext, paramXListView, paramaiig);
-  }
-  
-  protected aihx a()
-  {
-    return new aiic(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-  }
-  
-  protected void d()
-  {
-    super.d();
-    bcef.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
-  }
-  
-  public void e()
-  {
-    super.e();
-    bcef.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
+    if ((paramaihq == null) || (!(paramaihq instanceof aiig))) {}
+    while (((aiig)paramaihq).e() != 3) {
+      return false;
+    }
+    return true;
   }
 }
 

@@ -3,22 +3,22 @@ package com.tencent.biz.pubaccount.readinjoy.imageopt;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.Arrays;
-import mtw;
-import pso;
-import syo;
+import muu;
+import qdl;
+import tlw;
 
 public final class RIJImageOptMonitor$2
   implements Runnable
 {
-  public RIJImageOptMonitor$2(syo paramsyo) {}
+  public RIJImageOptMonitor$2(tlw paramtlw) {}
   
   public void run()
   {
     if ((this.a != null) && (this.a.a != null))
     {
       String str = this.a.a.toString();
-      String[] arrayOfString = pso.a(this.a.a.getHost());
-      int i = mtw.a(str);
+      String[] arrayOfString = qdl.a(this.a.a.getHost());
+      int i = muu.a(str);
       QLog.d("RIJImageOptMonitor", 1, "ping url: " + str + " ip: " + Arrays.toString(arrayOfString) + " time: " + i);
     }
   }

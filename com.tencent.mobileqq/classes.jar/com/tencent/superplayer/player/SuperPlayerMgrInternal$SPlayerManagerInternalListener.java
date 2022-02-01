@@ -5,6 +5,7 @@ import android.view.Surface;
 import com.tencent.superplayer.api.SuperPlayerOption;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 import com.tencent.superplayer.view.ISPlayerVideoView;
+import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
 
 abstract interface SuperPlayerMgrInternal$SPlayerManagerInternalListener
@@ -26,6 +27,8 @@ abstract interface SuperPlayerMgrInternal$SPlayerManagerInternalListener
   public abstract long handleGetFileSizeBytes();
   
   public abstract MediaInfo handleGetMediaInfo();
+  
+  public abstract TPProgramInfo[] handleGetProgramInfo();
   
   public abstract String handleGetStreamDumpInfo();
   
@@ -54,6 +57,8 @@ abstract interface SuperPlayerMgrInternal$SPlayerManagerInternalListener
   public abstract void handleSeekTo(int paramInt);
   
   public abstract void handleSeekTo(int paramInt1, int paramInt2);
+  
+  public abstract void handleSelectProgram(int paramInt, long paramLong);
   
   public abstract void handleSelectTrack(int paramInt, long paramLong);
   

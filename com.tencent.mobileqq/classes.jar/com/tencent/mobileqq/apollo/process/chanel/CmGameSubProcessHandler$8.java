@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import alxh;
-import amjl;
+import amxx;
+import ankx;
 
 public class CmGameSubProcessHandler$8
   implements Runnable
 {
-  public CmGameSubProcessHandler$8(alxh paramalxh, String paramString) {}
+  public CmGameSubProcessHandler$8(amxx paramamxx, String paramString) {}
   
   public void run()
   {
-    if (alxh.a(this.this$0) != null) {
-      alxh.a(this.this$0).a(this.a);
+    if (amxx.a(this.this$0) != null) {
+      amxx.a(this.this$0).a(this.a);
     }
   }
 }

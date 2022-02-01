@@ -203,6 +203,98 @@ public class RequestJsPlugin
     }
   }
   
+  private String operateSocketClose(RequestEvent paramRequestEvent, JSONObject paramJSONObject, int paramInt)
+  {
+    synchronized (this.lock)
+    {
+      if ((this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
+      {
+        RequestJsPlugin.WebsocketRequestTask localWebsocketRequestTask = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(paramInt));
+        this.wsrequestMap.remove(Integer.valueOf(paramInt));
+        int i = paramJSONObject.optInt("code", 1000);
+        paramJSONObject = paramJSONObject.optString("reason", "Goodbye");
+        WebSocketProxy localWebSocketProxy = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
+        if ((localWebSocketProxy != null) && (localWebsocketRequestTask != null)) {
+          localWebSocketProxy.closeSocket(paramInt, i, paramJSONObject);
+        }
+        if (this.mIsMiniGame) {
+          callbackOK(paramRequestEvent, null, "closeSocket");
+        }
+        paramRequestEvent = ApiUtil.wrapCallbackOk(paramRequestEvent.event, null).toString();
+        return paramRequestEvent;
+      }
+      if (this.mIsMiniGame) {
+        callbackFail(paramRequestEvent, null, "do not have this socket ", "closeSocket");
+      }
+      paramRequestEvent = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not have this socket ").toString();
+      return paramRequestEvent;
+    }
+  }
+  
+  private String operateSocketSend(RequestEvent paramRequestEvent, JSONObject arg2, int paramInt)
+  {
+    Object localObject1 = ???.optString("data", null);
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      synchronized (this.lock)
+      {
+        if ((this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
+        {
+          localObject2 = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(paramInt));
+          WebSocketProxy localWebSocketProxy = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
+          if ((localObject2 != null) && (localWebSocketProxy != null))
+          {
+            localWebSocketProxy.send(paramInt, (String)localObject1);
+            if (this.mIsMiniGame) {
+              callbackOK(paramRequestEvent, null, "sendSocketMessage");
+            }
+            paramRequestEvent = ApiUtil.wrapCallbackOk(paramRequestEvent.event, null).toString();
+            return paramRequestEvent;
+          }
+          QMLog.e("[mini] http.RequestJsPlugin", paramRequestEvent.event + " error, send msg:" + (String)localObject1 + " on null socket instance");
+          if (this.mIsMiniGame) {
+            callbackFail(paramRequestEvent, null, "socket is null ", "sendSocketMessage");
+          }
+          paramRequestEvent = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "socket is null ").toString();
+          return paramRequestEvent;
+        }
+      }
+      if (this.mIsMiniGame) {
+        callbackFail(paramRequestEvent, null, "do not have this socket ", "closeSocket");
+      }
+      paramRequestEvent = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not have this socket ").toString();
+      return paramRequestEvent;
+    }
+    if (NativeBuffer.hasNativeBuffer(???))
+    {
+      ??? = NativeBuffer.unpackNativeBuffer(paramRequestEvent.jsService, ???, "data");
+      if ((??? != null) && (???.buf != null) && (this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
+      {
+        localObject1 = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(paramInt));
+        localObject2 = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
+        if ((localObject1 != null) && (localObject2 != null))
+        {
+          ((WebSocketProxy)localObject2).send(paramInt, ???.buf);
+          if (this.mIsMiniGame) {
+            callbackOK(paramRequestEvent, null);
+          }
+          return ApiUtil.wrapCallbackOk(paramRequestEvent.event, null).toString();
+        }
+        QMLog.e("[mini] http.RequestJsPlugin", paramRequestEvent.event + " error, send NativeBuffer on null socket instance");
+        if (this.mIsMiniGame) {
+          callbackFail(paramRequestEvent, null, "socket is null ", "sendSocketMessage");
+        }
+        return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "socket is null ").toString();
+      }
+      if (this.mIsMiniGame) {
+        callbackFail(paramRequestEvent, null, "do not have this socket ", "closeSocket");
+      }
+      return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not have this socket ").toString();
+    }
+    return null;
+  }
+  
   @JsEvent({"addGroupApp"})
   public String addGroupApp(RequestEvent paramRequestEvent)
   {
@@ -416,111 +508,32 @@ public class RequestJsPlugin
   @JsEvent({"operateSocketTask"})
   public String operateSocketTask(RequestEvent paramRequestEvent)
   {
-    int i;
-    WebSocketProxy localWebSocketProxy;
     try
     {
-      Object localObject3 = new JSONObject(paramRequestEvent.jsonParams);
-      ??? = ((JSONObject)localObject3).optString("operationType");
-      i = ((JSONObject)localObject3).optInt("socketTaskId");
-      if ("close".equals(???)) {
-        synchronized (this.lock)
-        {
-          if ((this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
-          {
-            localObject8 = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(i));
-            this.wsrequestMap.remove(Integer.valueOf(i));
-            int j = ((JSONObject)localObject3).optInt("code", 1000);
-            localObject3 = ((JSONObject)localObject3).optString("reason", "Goodbye");
-            localWebSocketProxy = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
-            if ((localWebSocketProxy != null) && (localObject8 != null)) {
-              localWebSocketProxy.closeSocket(i, j, (String)localObject3);
-            }
-            if (this.mIsMiniGame) {
-              callbackOK(paramRequestEvent, null, "closeSocket");
-            }
-            localObject3 = ApiUtil.wrapCallbackOk(paramRequestEvent.event, null).toString();
-            return localObject3;
-          }
-          if (this.mIsMiniGame) {
-            callbackFail(paramRequestEvent, null, "do not have this socket ", "closeSocket");
-          }
-          localObject3 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not have this socket ").toString();
-          return localObject3;
-        }
+      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
+      String str2 = ((JSONObject)localObject).optString("operationType");
+      int i = ((JSONObject)localObject).optInt("socketTaskId");
+      if ("close".equals(str2)) {
+        return operateSocketClose(paramRequestEvent, (JSONObject)localObject, i);
       }
-      if (!"send".equals(localThrowable)) {
-        break label770;
+      if ("send".equals(str2))
+      {
+        localObject = operateSocketSend(paramRequestEvent, (JSONObject)localObject, i);
+        paramRequestEvent = (RequestEvent)localObject;
+        localObject = paramRequestEvent;
+        if (paramRequestEvent != null) {}
+      }
+      else
+      {
+        return "";
       }
     }
     catch (Throwable localThrowable)
     {
       QMLog.e("[mini] http.RequestJsPlugin", paramRequestEvent.event + " exception:", localThrowable);
-      return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null).toString();
+      String str1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null).toString();
+      return str1;
     }
-    Object localObject8 = localObject4.optString("data", null);
-    Object localObject7;
-    if (localObject8 != null)
-    {
-      synchronized (this.lock)
-      {
-        if ((this.wsrequestMap == null) || (this.wsrequestMap.size() == 0)) {
-          break label503;
-        }
-        Object localObject5 = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(i));
-        localWebSocketProxy = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
-        if ((localObject5 != null) && (localWebSocketProxy != null))
-        {
-          localWebSocketProxy.send(i, (String)localObject8);
-          if (this.mIsMiniGame) {
-            callbackOK(paramRequestEvent, null, "sendSocketMessage");
-          }
-          localObject5 = ApiUtil.wrapCallbackOk(paramRequestEvent.event, null).toString();
-          return localObject5;
-        }
-      }
-      QMLog.e("[mini] http.RequestJsPlugin", paramRequestEvent.event + " error, send msg:" + (String)localObject8 + " on null socket instance");
-      if (this.mIsMiniGame) {
-        callbackFail(paramRequestEvent, null, "socket is null ", "sendSocketMessage");
-      }
-      localObject7 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "socket is null ").toString();
-      return localObject7;
-      label503:
-      if (this.mIsMiniGame) {
-        callbackFail(paramRequestEvent, null, "do not have this socket ", "closeSocket");
-      }
-      localObject7 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not have this socket ").toString();
-      return localObject7;
-    }
-    if (NativeBuffer.hasNativeBuffer((JSONObject)localObject7))
-    {
-      ??? = NativeBuffer.unpackNativeBuffer(paramRequestEvent.jsService, (JSONObject)localObject7, "data");
-      if ((??? != null) && (((NativeBuffer)???).buf != null) && (this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
-      {
-        localObject7 = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(i));
-        localObject8 = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
-        if ((localObject7 != null) && (localObject8 != null))
-        {
-          ((WebSocketProxy)localObject8).send(i, ((NativeBuffer)???).buf);
-          if (this.mIsMiniGame) {
-            callbackOK(paramRequestEvent, null);
-          }
-          return ApiUtil.wrapCallbackOk(paramRequestEvent.event, null).toString();
-        }
-        QMLog.e("[mini] http.RequestJsPlugin", paramRequestEvent.event + " error, send NativeBuffer on null socket instance");
-        if (this.mIsMiniGame) {
-          callbackFail(paramRequestEvent, null, "socket is null ", "sendSocketMessage");
-        }
-        return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "socket is null ").toString();
-      }
-      if (this.mIsMiniGame) {
-        callbackFail(paramRequestEvent, null, "do not have this socket ", "closeSocket");
-      }
-      ??? = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not have this socket ").toString();
-      return ???;
-    }
-    label770:
-    return "";
   }
   
   @JsEvent({"wnsCgiRequest"})

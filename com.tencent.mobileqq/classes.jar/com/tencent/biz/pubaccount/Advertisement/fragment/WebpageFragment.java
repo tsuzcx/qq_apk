@@ -7,20 +7,20 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.qphone.base.util.QLog;
-import npn;
-import nxq;
-import nxs;
+import nwo;
+import oeq;
+import oes;
 
 public class WebpageFragment
   extends WebViewFragment
 {
-  private nxq a;
+  private oeq a;
   
   public static WebpageFragment a(Intent paramIntent)
   {
@@ -31,15 +31,15 @@ public class WebpageFragment
     return localWebpageFragment;
   }
   
-  public void a(nxq paramnxq)
+  public void a(oeq paramoeq)
   {
-    this.a = paramnxq;
+    this.a = paramoeq;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    bcef.a(null, "dc00898", "", this.a.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.a.a.c, "", "", this.a.a.b);
+    bdla.a(null, "dc00898", "", this.a.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.a.a.c, "", "", this.a.a.b);
   }
   
   public void onResume()
@@ -55,7 +55,7 @@ public class WebpageFragment
   
   public boolean showPreview()
   {
-    npn.a("Web_qqbrowser_ShowPreview");
+    nwo.a("Web_qqbrowser_ShowPreview");
     long l = System.nanoTime();
     this.mUIStyleHandler.initUIStyle(this.intent);
     this.mUIStyle.mFloatBarRulesFromUrl = 0L;
@@ -71,7 +71,7 @@ public class WebpageFragment
     this.contentView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
     this.mUIStyleHandler.needTitlebarTransparent(this.mUrl);
     this.mUIStyleHandler.canWebViewOverScroll = false;
-    npn.b("Web_qqbrowser_ShowPreview");
+    nwo.b("Web_qqbrowser_ShowPreview");
     return true;
   }
 }

@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akul
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public akul(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  public akul(KuaKuaHbFragment paramKuaKuaHbFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    LpReportInfo_pf00064.allReport(680, 1, 2);
-    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
-    this.a.a();
+    if ((paramView instanceof TextView)) {
+      KuaKuaHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

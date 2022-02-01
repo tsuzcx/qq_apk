@@ -1,211 +1,53 @@
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x587.ReqBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.RspBody;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.UdcUinData;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.Serializable;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
 
-public class azge
-  extends ayzj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class azge
+  implements View.OnClickListener
 {
-  public azge(QQAppInterface paramQQAppInterface, ayzl paramayzl)
-  {
-    super(paramQQAppInterface, paramayzl);
-  }
+  azge(azga paramazga) {}
   
-  public static Boolean a(int paramInt)
+  public final void onClick(View paramView)
   {
-    if (paramInt == 2) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    try
+    if (!AppNetConnInfo.isNetSupport())
     {
-      paramQQAppInterface = (azge)ayzn.a(paramQQAppInterface, "AssistantSwitchImpl");
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.a();
-      }
+      QQToast.a((Context)this.a.a(), 1, 2131718971, 0).a();
+      this.a.a().a(1040);
+      this.a.dismiss();
+      azcl.a("0X800AF48", 0, null, null, 14, null);
+      azcl.a("0X8009DE0", 1030, null, null, 12, null);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (Exception paramQQAppInterface)
-    {
-      azeu.a("HelloQQWake", "AssistantSwitchImpl getSwitch fail." + paramQQAppInterface.getMessage());
+    Object localObject = this.a.a().getManager(QQManagerFactory.ONLINE_STATUS_MANAGER);
+    if (localObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.onlinestatus.OnlineStatusManager");
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    try
+    localObject = (azbv)localObject;
+    Intent localIntent = new Intent();
+    if (azga.a(this.a) != null) {
+      localIntent.putExtra("online_status_permission_item", (Serializable)azga.a(this.a));
+    }
+    if (!azga.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramQQAppInterface = (azge)ayzn.a(paramQQAppInterface, "AssistantSwitchImpl");
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.a(paramBoolean);
+      localIntent.putExtra("from_modify", bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("WeatherView", 2, new Object[] { "bindView: called. ", "needSwitchOnlineStatus: " + azga.a(this.a) });
       }
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      azeu.a("HelloQQWake", "AssistantSwitchImpl setSwitch fail." + paramQQAppInterface.getMessage());
-    }
-  }
-  
-  public String a()
-  {
-    return "AssistantSwitchImpl";
-  }
-  
-  public void a()
-  {
-    azeu.a("HelloQQWake", "getqqAssistantSwitch");
-    oidb_0x5eb.ReqBody localReqBody = new oidb_0x5eb.ReqBody();
-    localReqBody.rpt_uint64_uins.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()));
-    localReqBody.uint32_qq_assistant_switch.set(1);
-    a(this.jdField_a_of_type_Ayzl.makeOIDBPkg("OidbSvc.0x5eb_22_common", 1515, 22, localReqBody.toByteArray()));
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool1 = paramFromServiceMsg.isSuccess();
-    int j = paramFromServiceMsg.getResultCode();
-    paramToServiceMsg = null;
-    if (bool1)
-    {
-      i = j;
-      try
-      {
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
-        i = j;
-        j = paramFromServiceMsg.uint32_result.get();
-        if (j == 0)
-        {
-          bool1 = true;
-          if (!bool1) {
-            break label314;
-          }
-          i = j;
-          if (!paramFromServiceMsg.bytes_bodybuffer.has()) {
-            break label314;
-          }
-          i = j;
-          paramObject = new oidb_0x5eb.RspBody();
-          i = j;
-          paramObject.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-          i = j;
-          if (paramObject.rpt_msg_uin_data.size() <= 0) {
-            break label314;
-          }
-          i = j;
-          paramFromServiceMsg = (oidb_0x5eb.UdcUinData)paramObject.rpt_msg_uin_data.get(0);
-          paramToServiceMsg = paramFromServiceMsg;
-        }
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        for (;;)
-        {
-          azeu.a("HelloQQWake", "handleGetProfileInfo fail." + paramFromServiceMsg.getMessage());
-          bool1 = false;
-          continue;
-          i = 0;
-          continue;
-          label314:
-          paramToServiceMsg = null;
-        }
-      }
-    }
-    for (int i = j;; i = j)
-    {
-      azeu.a("HelloQQWake", String.format("handleGetProfileInfo success=%s result=%s", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i) }));
-      if (paramToServiceMsg != null)
-      {
-        boolean bool2 = paramToServiceMsg.uint32_qq_assistant_switch.has();
-        if (bool2)
-        {
-          i = paramToServiceMsg.uint32_qq_assistant_switch.get();
-          azhh.a().a(a(i).booleanValue());
-          azeu.a("HelloQQWake", String.format("handleGetProfileInfoForLogin hasWeiShiSwitch=%s weiShiSwitchValue=%s", new Object[] { Boolean.valueOf(bool2), Integer.valueOf(i) }));
-          this.jdField_a_of_type_Ayzl.notifyUI(2, bool1, a(i));
-        }
-      }
-      else
-      {
-        return;
-        bool1 = false;
-        break;
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    int i = 1;
-    azeu.a("HelloQQWake", String.format("setWeiShiSwitch value=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    oidb_0x587.ReqBody localReqBody = new oidb_0x587.ReqBody();
-    localReqBody.rpt_uint64_uins.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()));
-    PBUInt32Field localPBUInt32Field = localReqBody.uint32_qq_assistant_switch;
-    if (paramBoolean) {
-      i = 2;
-    }
-    localPBUInt32Field.set(i);
-    a(this.jdField_a_of_type_Ayzl.makeOIDBPkg("OidbSvc.0x587_74_common", 1415, 74, localReqBody.toByteArray()));
-  }
-  
-  public void a(boolean paramBoolean, oidb_0x5eb.UdcUinData paramUdcUinData)
-  {
-    paramBoolean = paramUdcUinData.uint32_qq_assistant_switch.has();
-    int i;
-    if (paramBoolean)
-    {
-      i = paramUdcUinData.uint32_qq_assistant_switch.get();
-      azhh.a().a(a(i).booleanValue());
-    }
-    for (;;)
-    {
-      azeu.a("HelloQQWake", String.format("handleGetProfileInfoForLogin hasSwitch=%s SwitchValue=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i) }));
-      return;
-      i = 0;
-    }
-  }
-  
-  public boolean a(oidb_0x5eb.ReqBody paramReqBody)
-  {
-    paramReqBody.uint32_qq_assistant_switch.set(1);
-    azeu.a("HelloQQWake", "processGetProfileInfoForLogin");
-    return true;
-  }
-  
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool = paramFromServiceMsg.isSuccess();
-    int j = paramFromServiceMsg.getResultCode();
-    if (bool) {}
-    for (;;)
-    {
-      try
-      {
-        i = ((oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject)).uint32_result.get();
-        azeu.a("HelloQQWake", String.format("handleSetProfileInfo success=%s result=%s setData=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(j), Integer.valueOf(i) }));
-        return;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        azeu.a("HelloQQWake", "handleSetProfileInfo fail." + paramToServiceMsg.getMessage());
-        i = -1;
-        bool = false;
-        continue;
-      }
-      int i = -1;
+      ((azbv)localObject).b(8, localIntent);
+      break;
     }
   }
 }

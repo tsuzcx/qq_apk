@@ -1,33 +1,23 @@
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.POI;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
+import UserGrowth.stFeed;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 import java.util.List;
 
-public class viq
-  extends vqm
+public abstract interface viq
+  extends vis<List<stFeed>>
 {
-  List<AddressItem> a = new ArrayList();
+  public abstract XRecyclerView a();
   
-  public viq(qqstory_service.RspBatchGetPOIList paramRspBatchGetPOIList)
-  {
-    super(paramRspBatchGetPOIList.result);
-    paramRspBatchGetPOIList = paramRspBatchGetPOIList.poi_list.get();
-    if (paramRspBatchGetPOIList != null)
-    {
-      paramRspBatchGetPOIList = paramRspBatchGetPOIList.iterator();
-      while (paramRspBatchGetPOIList.hasNext())
-      {
-        qqstory_service.POI localPOI = (qqstory_service.POI)paramRspBatchGetPOIList.next();
-        AddressItem localAddressItem = AddressItem.getAddressFromProtoObject(localPOI.address);
-        localAddressItem.poiType = localPOI.poi_type.get();
-        this.a.add(localAddressItem);
-      }
-    }
-  }
+  public abstract uxe a();
+  
+  public abstract void a(List<stFeed> paramList, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, List<stFeed> paramList, boolean paramBoolean3);
+  
+  public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

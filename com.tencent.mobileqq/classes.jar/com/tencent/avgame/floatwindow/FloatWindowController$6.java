@@ -1,22 +1,22 @@
 package com.tencent.avgame.floatwindow;
 
 import com.tencent.qphone.base.util.QLog;
-import myl;
+import ndx;
 
 public class FloatWindowController$6
   implements Runnable
 {
-  public FloatWindowController$6(myl parammyl) {}
+  public FloatWindowController$6(ndx paramndx) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("FloatWindowController", 2, "mIsForeGroundTrueRunnable run");
     }
-    myl.a(this.this$0).a = true;
-    if (myl.b(this.this$0))
+    ndx.a(this.this$0).a = true;
+    if (ndx.b(this.this$0))
     {
-      if (myl.a(this.this$0)) {
+      if (ndx.a(this.this$0)) {
         break label67;
       }
       this.this$0.c();
@@ -26,7 +26,7 @@ public class FloatWindowController$6
     }
     return;
     label67:
-    myl.a(this.this$0);
+    ndx.a(this.this$0);
   }
 }
 

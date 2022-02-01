@@ -1,52 +1,19 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.MD5;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
 
 public class auvz
-  implements bbgl
+  extends BroadcastReceiver
 {
-  public auvz(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public auvz(HotChatFragment paramHotChatFragment) {}
   
-  public void a(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramString == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
-      return;
+    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.mWebview != null)) {
+      this.a.a.refresh();
     }
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        byte[] arrayOfByte = FileUtils.readFile(paramString);
-        if (arrayOfByte == null) {
-          break;
-        }
-        localJSONObject.put("code", 0);
-        StringBuilder localStringBuilder = new StringBuilder("data:");
-        if (ayfc.a(paramString))
-        {
-          str = "image/gif;";
-          localStringBuilder.append(str);
-          localStringBuilder.append("base64,");
-          localStringBuilder.append(bfuc.encodeToString(arrayOfByte, 0));
-          localJSONObject.put("imgData", localStringBuilder);
-          localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
-          localJSONObject.put("imagePath", paramString);
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
-        return;
-      }
-      String str = "image/jpg;";
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
   }
 }
 

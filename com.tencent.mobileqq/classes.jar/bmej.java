@@ -1,295 +1,85 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Sentence;
-import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager;
-import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager.TimerTaskRunnable;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricView;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricViewController.2;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricViewController.3;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricViewController.4;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricViewController.5;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricViewController.6;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricViewScroll;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bmej
+  extends blqa
 {
-  protected static final String a;
-  public int a;
-  public long a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bmel(this, Looper.getMainLooper());
-  public bmec a;
-  protected bmed a;
-  public bmem a;
-  private bmer jdField_a_of_type_Bmer = new bmek(this);
-  public Lyric a;
-  protected TimerTaskManager.TimerTaskRunnable a;
-  protected TimerTaskManager a;
-  public LyricViewScroll a;
-  public volatile boolean a;
-  protected int b;
-  private boolean b;
-  protected int c;
-  private boolean c;
-  private volatile int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private int f;
+  public final blpz a;
+  private String d;
   
-  static
+  public bmej(bmeh parambmeh, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "task_name_lyric_draw_" + Math.random();
+    this.jdField_d_of_type_JavaLangString = "noreason";
+    this.jdField_a_of_type_JavaLangString = "com.tencent.mobileqq:tool";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangString = "qqreaderplugin.apk";
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_JavaLangString = "qqreaderplugin.apk";
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_Blpz = new blpz(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_Blpz.a = new avlg("qqreader_leba_preload", "com.tencent.mobileqq:tool", "qqreaderplugin.apk");
   }
   
-  public bmej(LyricView paramLyricView)
+  protected void a()
   {
-    this.jdField_c_of_type_Int = 100;
-    this.jdField_a_of_type_DovComQqImAeeditorLyricCommonTimerTaskManager = bmdy.a();
-    this.jdField_a_of_type_Bmed = new bmed();
-    this.jdField_a_of_type_DovComQqImAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable = new LyricViewController.2(this);
-    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll = paramLyricView.a();
-    this.jdField_a_of_type_Bmec = paramLyricView.a();
-    this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.setScrollListener(this.jdField_a_of_type_Bmer);
+    bmeh.a(this.jdField_a_of_type_Bmeh, this.jdField_a_of_type_Blpz, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int);
   }
   
-  private void b(int paramInt, boolean paramBoolean)
+  public void a(blqg paramblqg)
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      if (paramInt > 0) {
-        this.f = paramInt;
-      }
-      b(this.f);
-      return;
-      if (this.jdField_a_of_type_Bmem != null) {
-        paramInt = this.jdField_a_of_type_Bmem.a();
-      } else {
-        paramInt = (int)bmlk.a().a(false);
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public void a()
-  {
-    Log.d("ModuleController", "stop");
-    this.jdField_a_of_type_DovComQqImAeeditorLyricCommonTimerTaskManager.a(jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (Thread.currentThread().equals(Looper.getMainLooper().getThread()))
-    {
-      b(paramInt);
+    if (paramblqg == null) {
       return;
     }
-    bmdy.a().post(new LyricViewController.5(this, paramInt));
+    this.jdField_d_of_type_JavaLangString = paramblqg.jdField_a_of_type_JavaLangString;
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  protected boolean a(blqg paramblqg)
   {
-    bmdy.a().post(new LyricViewController.6(this, paramInt1, paramInt2));
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    bmdy.a().post(new LyricViewController.4(this, paramInt, paramBoolean));
-  }
-  
-  public void a(bmee parambmee)
-  {
-    this.jdField_a_of_type_Bmed.a(parambmee);
-  }
-  
-  public void a(bmem parambmem)
-  {
-    this.jdField_a_of_type_Bmem = parambmem;
-  }
-  
-  public void a(Lyric paramLyric1, Lyric paramLyric2, Lyric paramLyric3)
-  {
-    Log.v("ModuleController", "setLyric begin");
-    bmdy.a().post(new LyricViewController.3(this, paramLyric3, paramLyric1, paramLyric2));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Bmec != null) {
-      this.jdField_a_of_type_Bmec.setEffectEnable(paramBoolean);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric = this.jdField_a_of_type_Bmec.a();
-    Lyric localLyric = this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric;
-    if ((localLyric == null) || (localLyric.isEmpty())) {
-      return;
-    }
-    int i = paramInt;
-    if (this.jdField_a_of_type_Boolean)
+    boolean bool = bmeh.a(this.jdField_a_of_type_Bmeh);
+    if (paramblqg != null)
     {
-      i = paramInt;
-      if (this.jdField_a_of_type_Int > 0) {
-        i = paramInt + this.jdField_a_of_type_Int;
+      paramblqg.jdField_a_of_type_Int = 2;
+      if (!bool) {
+        break label66;
       }
     }
-    paramInt = i;
-    if (this.jdField_a_of_type_Boolean)
+    label66:
+    for (String str = "preload:ok:dpc";; str = "preload:fail:dpc")
     {
-      paramInt = i;
-      if (i >= this.jdField_b_of_type_Int) {
-        paramInt = this.jdField_b_of_type_Int;
+      paramblqg.jdField_a_of_type_JavaLangString = str;
+      bmeh.a(this.jdField_a_of_type_Bmeh);
+      if (this.jdField_a_of_type_Bmeh.jdField_a_of_type_Blqd.jdField_a_of_type_Int != -1) {
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_Bmeh.jdField_a_of_type_Blqd.jdField_b_of_type_Int;
       }
+      return bool;
     }
-    this.jdField_d_of_type_Int = paramInt;
-    a(localLyric.findLineNo(paramInt), paramInt);
   }
   
-  public void b(boolean paramBoolean)
+  protected boolean b(blqg paramblqg)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
-  }
-  
-  protected void c(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric != null) || (this.jdField_a_of_type_Bmec != null))
+    boolean bool1;
+    if (!this.jdField_a_of_type_Bmeh.c)
     {
-      paramInt = this.jdField_a_of_type_Bmec.a(paramInt);
-      if ((this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric != null) && (!this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.isEmpty())) {
-        break label51;
+      if (paramblqg != null) {
+        paramblqg.jdField_a_of_type_JavaLangString = "preload:fail:serverswitch";
       }
-      Log.w("ModuleController", "onScrollStop -> scroll without measured lyric");
+      if (QLog.isColorLevel()) {
+        QLog.d("QRProcessManager", 2, "pluginType:" + this.jdField_b_of_type_Int + "  preload:fail:serverswitch");
+      }
+      bool1 = false;
     }
-    label51:
-    int i;
+    boolean bool2;
     do
     {
-      return;
-      if (paramInt != this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.size() - 1) {
-        break;
-      }
-      i = this.jdField_a_of_type_Bmec.b();
-      if (this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll != null)
-      {
-        Log.d("ModuleController", "onScrollStop() endTop => " + i);
-        this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.smoothScrollTo(0, i);
-      }
-    } while (this.jdField_a_of_type_Bmed == null);
-    long l1 = ((Sentence)this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.get(paramInt)).mStartTime;
-    this.jdField_a_of_type_Bmed.a(l1, i);
-    return;
-    Log.d("ModuleController", "onScrollStop -> scroll to lineNo：" + paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.size()))
-    {
-      if (this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.get(paramInt) == null)
-      {
-        Log.w("ModuleController", "onScrollStop -> current sentence is null");
-        return;
-      }
-      long l2 = ((Sentence)this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.get(paramInt)).mStartTime;
-      Log.d("ModuleController", "onScrollStop -> start time of current sentence：" + l2);
-      l1 = l2;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if ((this.jdField_a_of_type_Int < 0) || (l2 >= this.jdField_a_of_type_Int)) {
-          break label416;
-        }
-        l1 = this.jdField_a_of_type_Int;
-      }
-      for (;;)
-      {
-        Log.d("ModuleController", "onScrollStop -> correct start time：" + l1);
-        l2 = l1;
-        if (l1 < 0L) {
-          l2 = 0L;
-        }
-        l1 = (l2 / 10L + 1L) * 10L;
-        Log.d("ModuleController", "onScrollStop -> output time：" + l1);
-        if (this.jdField_a_of_type_Bmed != null) {
-          this.jdField_a_of_type_Bmed.a(l1);
-        }
-        if ((this.jdField_b_of_type_Boolean) || (!this.jdField_d_of_type_Boolean)) {
-          break;
-        }
-        a((int)l1, false);
-        return;
-        label416:
-        l1 = l2;
-        if (this.jdField_b_of_type_Int >= 0)
-        {
-          l1 = l2;
-          if (l2 > this.jdField_b_of_type_Int) {
-            l1 = this.jdField_b_of_type_Int;
-          }
-        }
-      }
-    }
-    Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
-  }
-  
-  protected void d(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric != null) || (this.jdField_a_of_type_Bmec != null))
-    {
-      paramInt = this.jdField_a_of_type_Bmec.b(paramInt);
-      if ((this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric == null) || (this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.isEmpty())) {
-        Log.w("ModuleController", "onScrolling -> scroll without measured lyric");
-      }
-    }
-    else
-    {
-      return;
-    }
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.size()))
-    {
-      if (this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.get(paramInt) == null)
-      {
-        Log.w("ModuleController", "onScrollStop -> current sentence is null");
-        return;
-      }
-      long l2 = ((Sentence)this.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.mSentences.get(paramInt)).mStartTime;
-      long l1 = l2;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if ((this.jdField_a_of_type_Int < 0) || (l2 >= this.jdField_a_of_type_Int)) {
-          break label235;
-        }
-        l1 = this.jdField_a_of_type_Int;
-      }
-      for (;;)
-      {
-        l2 = l1;
-        if (l1 < 0L) {
-          l2 = 0L;
-        }
-        l1 = (l2 / 10L + 1L) * 10L;
-        int i = this.jdField_a_of_type_DovComQqImAeeditorLyricWidgetLyricViewScroll.getScrollY();
-        bmbx.a("ModuleController", "onScrolling() scrollY => " + i + ",position => " + l1 + ",lineNo:" + paramInt);
-        this.jdField_a_of_type_Bmed.a(l1, i);
-        return;
-        label235:
-        l1 = l2;
-        if (this.jdField_b_of_type_Int >= 0)
-        {
-          l1 = l2;
-          if (l2 > this.jdField_b_of_type_Int) {
-            l1 = this.jdField_b_of_type_Int;
-          }
-        }
-      }
-    }
-    Log.w("ModuleController", "onScrollStop -> scroll out of lyric scope");
+      return bool1;
+      String str = this.jdField_a_of_type_Bmeh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      bool2 = a(this.jdField_a_of_type_Bmeh.jdField_a_of_type_Blqc, String.valueOf(769), this.jdField_a_of_type_Bmeh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.read.android", this.jdField_a_of_type_Bmeh.a(str), this.jdField_a_of_type_Bmeh.a(str), this.jdField_a_of_type_Bmeh.a(str), paramblqg);
+      this.jdField_d_of_type_JavaLangString = paramblqg.jdField_a_of_type_JavaLangString;
+      bool1 = bool2;
+    } while (this.jdField_a_of_type_Bmeh.jdField_a_of_type_Blqc == null);
+    this.jdField_d_of_type_Int = this.jdField_a_of_type_Bmeh.jdField_a_of_type_Blqc.jdField_a_of_type_Int;
+    return bool2;
   }
 }
 

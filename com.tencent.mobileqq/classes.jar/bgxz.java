@@ -1,73 +1,52 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.webprocess.WebProcessReceiver;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-class bgxz
-  implements bgxq
+final class bgxz
+  implements DownloadParams.DecodeHandler
 {
-  bgxz(bgxy parambgxy) {}
-  
-  public int a(Bundle paramBundle)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "mScheduler.next:is in real world, stop the preload task.");
+    if (paramBitmap == null) {
+      localObject1 = null;
     }
+    Object localObject2;
     do
     {
       do
       {
-        return -1;
-        if ((this.a.b & 0x2) != 0)
-        {
-          if ((this.a.jdField_a_of_type_Int & 0x400) == 0) {
-            this.a.b(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x800) == 0) {
-            this.a.c(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x1000) == 0) {
-            this.a.d(paramBundle);
-          }
-          if ((this.a.jdField_a_of_type_Int & 0x1) == 0) {
-            return this.a.a(paramBundle);
-          }
-        }
-      } while ((this.a.b & 0x1) == 0);
-      if ((this.a.jdField_a_of_type_Int & 0x2) == 0) {
-        return this.a.b(paramBundle);
-      }
-      if (!bgxd.s)
-      {
-        bgxd.s = true;
-        if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
-        {
-          bgxd.U = WebProcessReceiver.b - WebProcessReceiver.a;
-          bgxd.V = System.currentTimeMillis() - WebProcessReceiver.b;
-          int i = (int)bgxd.U;
-          int j = (int)bgxd.V;
-          QLog.i("WebLog_SwiftWebAccelerator", 1, "cross process cost: " + i + "ms, preload cost: " + j + "ms.");
-          VasWebviewUtil.reportVasStatus("Preload_Web_Process", "", "", i, j);
-        }
-      }
-      if ((this.a.jdField_a_of_type_Int & 0x4) == 0) {
-        return this.a.c(paramBundle);
-      }
-      if ((this.a.jdField_a_of_type_Int & 0x8) == 0) {
-        return this.a.e(paramBundle);
-      }
-      if ((paramBundle.getBoolean("_should_set_cookie_", false)) && ((this.a.jdField_a_of_type_Int & 0x10) == 0)) {
-        return this.a.d(paramBundle);
-      }
-    } while (bgxd.t);
-    bgxd.t = true;
-    if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
+        return localObject1;
+        localObject2 = paramDownloadParams.tag;
+        localObject1 = paramBitmap;
+      } while (!(localObject2 instanceof int[]));
+      localObject1 = paramBitmap;
+    } while (((int[])localObject2).length != 3);
+    Object localObject1 = (int[])localObject2;
+    int j = localObject1[0];
+    int i = j;
+    if (j == 0)
     {
-      bgxd.W = System.currentTimeMillis() - WebProcessReceiver.b;
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "WebProcessReceiver.onReceive cost: " + bgxd.U + "ms, complete preload cost: " + bgxd.W + "ms.");
+      if (paramDownloadParams.reqWidth == 0) {
+        i = paramBitmap.getWidth();
+      }
     }
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "well done, all preload task execute success!");
-    return -1;
+    else
+    {
+      int k = localObject1[1];
+      j = k;
+      if (k == 0) {
+        if (paramDownloadParams.reqHeight != 0) {
+          break label128;
+        }
+      }
+    }
+    label128:
+    for (j = paramBitmap.getHeight();; j = paramDownloadParams.reqHeight)
+    {
+      return bheg.d(paramBitmap, localObject1[2], i, j);
+      i = paramDownloadParams.reqWidth;
+      break;
+    }
   }
 }
 

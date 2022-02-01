@@ -1,115 +1,96 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.open.appcommon.js.HttpInterface;
+import com.tencent.smtt.sdk.WebView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bjij
+  implements bjlh
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 3600L;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<bjiy> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<String> b = new ArrayList();
+  protected final WebView a;
+  protected final String a;
+  protected final boolean a;
+  protected final String b;
+  protected final String c;
   
-  public bjij(JSONObject paramJSONObject)
+  public bjij(HttpInterface paramHttpInterface, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    if (paramJSONObject != null) {}
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+    this.b = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.c = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(Exception paramException)
+  {
+    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
+      return;
+    }
+    bjko.c("HttpInterface", "onException >>> ");
+    paramException = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
+    bjio localbjio = new bjio();
+    localbjio.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    paramException.obj = localbjio;
+    paramException.arg1 = 0;
+    if (TextUtils.isEmpty(this.b)) {}
+    for (localbjio.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");; localbjio.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);"))
+    {
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(paramException);
+      return;
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
+      return;
+    }
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    Message localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
+    localbjio = new bjio();
+    localbjio.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    localMessage.obj = localbjio;
+    localMessage.arg1 = 0;
     for (;;)
     {
-      int i;
       try
       {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("type");
-        long l = paramJSONObject.getLong("interval");
-        if ((l > 0L) && (l < 604800L)) {
-          this.jdField_a_of_type_Long = l;
+        if (!this.jdField_a_of_type_Boolean) {
+          continue;
         }
-        Object localObject = paramJSONObject.getJSONArray("filter");
-        if (localObject != null)
-        {
-          i = 0;
-          if (i < ((JSONArray)localObject).length())
-          {
-            JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-            if (localJSONObject == null) {
-              break label248;
-            }
-            this.jdField_a_of_type_JavaUtilList.add(new bjiy(localJSONObject));
-            break label248;
-          }
+        localJSONObject.put("guid", this.c);
+        paramJSONObject = localJSONObject.toString();
+        bjko.a("HttpInterface", "onResult >>> " + paramJSONObject);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          continue;
         }
-        if (paramJSONObject.has("rpt"))
-        {
-          paramJSONObject = paramJSONObject.getJSONObject("rpt");
-          if (paramJSONObject != null)
-          {
-            i = paramJSONObject.getInt("id");
-            if (i > 100000)
-            {
-              this.jdField_a_of_type_Int = i;
-              paramJSONObject = paramJSONObject.getJSONArray("fields");
-              if (paramJSONObject != null)
-              {
-                i = j;
-                if (i < paramJSONObject.length())
-                {
-                  localObject = paramJSONObject.getString(i);
-                  if ((localObject != null) && (!((String)localObject).isEmpty())) {
-                    this.b.add(localObject);
-                  }
-                  i += 1;
-                  continue;
-                }
-              }
-            }
-          }
-        }
-        return;
+        localbjio.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject + ");}void(0);");
       }
       catch (JSONException paramJSONObject)
       {
-        paramJSONObject.printStackTrace();
-      }
-      label248:
-      i += 1;
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public List<String> a()
-  {
-    return this.b;
-  }
-  
-  public boolean a(Object paramObject)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        bjiy localbjiy = (bjiy)localIterator.next();
-        if (!localbjiy.a()) {
-          return false;
+        if (!TextUtils.isEmpty(this.b)) {
+          continue;
         }
-        if (!localbjiy.a(paramObject)) {
-          return false;
-        }
+        localbjio.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");
+        continue;
+        localbjio.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);");
+        continue;
       }
-      return true;
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(localMessage);
+      return;
+      paramJSONObject = new JSONObject();
+      paramJSONObject.put("guid", this.c);
+      paramJSONObject.put("content", localJSONObject.toString());
+      paramJSONObject = paramJSONObject.toString();
+      continue;
+      localbjio.jdField_a_of_type_JavaLangString = ("javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject + ");void(0);");
     }
-    return false;
   }
 }
 

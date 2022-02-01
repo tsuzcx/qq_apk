@@ -1,39 +1,7 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import kotlin.Metadata;
 
-public class ujr
-  implements vek
-{
-  public ujr(WSHomeFragment paramWSHomeFragment) {}
-  
-  public void a(int paramInt)
-  {
-    WSHomeFragment.c(this.a, false);
-    if ((WSHomeFragment.a(this.a) == null) || (WSHomeFragment.b(this.a) == null)) {
-      return;
-    }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      WSHomeFragment.a(this.a).setCurrentItem(paramInt);
-      return;
-      WSHomeFragment.a(this.a).a();
-      WSHomeFragment.b(this.a).b();
-      continue;
-      WSHomeFragment.a(this.a).b();
-      WSHomeFragment.b(this.a).a();
-      if ((uxr.a()) && (WSHomeFragment.a == 1))
-      {
-        int i = uxr.a + 1;
-        uxr.a = i;
-        uxr.a = i % 10;
-        bhzt.a().a("card type changed: " + uxr.a);
-      }
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$Companion;", "", "()V", "SCENE_RES_CHECK", "", "SCENE_SHOW_CHECK", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ujr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

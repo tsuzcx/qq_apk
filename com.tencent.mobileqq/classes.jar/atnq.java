@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class atnq
-  implements View.OnClickListener
+  extends atob
 {
-  atnq(atnp paramatnp) {}
-  
-  public void onClick(View paramView)
+  public atnq(atno paramatno)
   {
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramatno);
+  }
+  
+  protected String a()
+  {
+    return "StateAcceptByPC";
   }
 }
 

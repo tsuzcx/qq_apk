@@ -1,28 +1,61 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
-import com.tencent.richmediabrowser.listener.IGalleryImageListener;
-import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import android.support.annotation.NonNull;
+import java.util.Comparator;
 
-class bakp
-  implements IGalleryImageListener
+public class bakp
+  implements Comparator<bald>
 {
-  bakp(bakl parambakl, RichMediaBrowserInfo paramRichMediaBrowserInfo, String paramString, URLDrawable paramURLDrawable, AIOFilePictureData paramAIOFilePictureData) {}
+  private int a;
   
-  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
+  public bakp(int paramInt)
   {
-    this.jdField_a_of_type_Bakl.b.setVisibility(8);
-    if (paramBoolean)
+    this.a = paramInt;
+  }
+  
+  public int a(@NonNull bald parambald1, @NonNull bald parambald2)
+  {
+    if (this.a == 1) {
+      if (parambald1.e <= parambald2.e) {}
+    }
+    do
     {
-      bakl.a(this.jdField_a_of_type_Bakl, this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
-      return;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return -1;
+              if (parambald1.e < parambald2.e) {
+                return 1;
+              }
+            } while (parambald1.jdField_a_of_type_Float > parambald2.jdField_a_of_type_Float);
+            if (parambald1.jdField_a_of_type_Float < parambald2.jdField_a_of_type_Float) {
+              return 1;
+            }
+          } while (parambald1.jdField_a_of_type_Long > parambald2.jdField_a_of_type_Long);
+          if (parambald1.jdField_a_of_type_Long < parambald2.jdField_a_of_type_Long) {
+            return 1;
+          }
+        } while (parambald1.c > parambald2.c);
+        if (parambald1.c < parambald2.c) {
+          return 1;
+        }
+      } while (parambald1.d > parambald2.d);
+      if (parambald1.d < parambald2.d) {
+        return 1;
+      }
+      return 0;
+      if (this.a != 2) {
+        break;
+      }
+    } while (parambald1.jdField_a_of_type_Long > parambald2.jdField_a_of_type_Long);
+    if (parambald1.jdField_a_of_type_Long < parambald2.jdField_a_of_type_Long) {
+      return 1;
     }
-    if ((!bakl.a(this.jdField_a_of_type_Bakl, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData, this.jdField_a_of_type_Bakl.a)) && (!bakl.b(this.jdField_a_of_type_Bakl, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData, this.jdField_a_of_type_Bakl.a))) {
-      bakl.a(this.jdField_a_of_type_Bakl, this.jdField_a_of_type_Bakl.a);
-    }
-    bakl.a(this.jdField_a_of_type_Bakl, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Int, 18);
+    return 0;
+    return 0;
   }
 }
 

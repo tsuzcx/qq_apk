@@ -1,102 +1,75 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class asnt
 {
-  int a;
-  protected long a;
-  protected asno a;
-  protected final QQAppInterface a;
-  protected ExcitingTransferOneSlotComplete a;
-  int b;
-  int c = 0;
+  public int a;
+  public String a;
+  public int b;
   
-  public asnt(QQAppInterface paramQQAppInterface)
+  public asnt()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  protected String a()
+  public asnt(int paramInt1, String paramString, int paramInt2)
   {
-    return "actGroupPDSlot";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
   }
   
-  public void a()
+  public static String a(ArrayList<asnt> paramArrayList)
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_Asno == null) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete == null))
-    {
-      QLog.e("ExtfGroupDownloaderDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] GroupDownloaderDataReport err. param err");
-      return;
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return "";
     }
-    HashMap localHashMap = this.jdField_a_of_type_Asno.a();
-    localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete.getReportData());
-    localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_b_of_type_Int));
-    localHashMap.put("param_stackType", String.valueOf(ataw.b()));
-    localHashMap.put("param_loginType", String.valueOf(ataw.c()));
-    localHashMap.put("param_ishttps", String.valueOf(this.c));
-    QLog.i("ExtfGroupDownloaderDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> GroupDownloaderDataReport:act=" + a() + localHashMap.toString());
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    String str2 = a();
-    if (this.jdField_a_of_type_Asno.jdField_b_of_type_Long == 0L) {}
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
     for (;;)
     {
-      localStatisticCollector.collectPerformance(str1, str2, bool, 0L, 0L, localHashMap, "");
-      this.jdField_a_of_type_Asno = null;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete = null;
-      return;
-      bool = false;
+      if (i < paramArrayList.size())
+      {
+        asnt localasnt = (asnt)paramArrayList.get(i);
+        JSONObject localJSONObject;
+        if (localasnt != null) {
+          localJSONObject = new JSONObject();
+        }
+        try
+        {
+          localJSONObject.put("tagId", localasnt.jdField_a_of_type_Int);
+          localJSONObject.put("tagName", localasnt.jdField_a_of_type_JavaLangString);
+          localJSONObject.put("isHotTag", localasnt.b);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.e("TagInfo CLASS", 2, "convertToJson error" + localException.toString());
+          }
+        }
+      }
     }
+    return localJSONArray.toString();
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return this.b == 1;
   }
   
-  public void a(int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3)
+  public String toString()
   {
-    this.jdField_a_of_type_Asno = new asno();
-    this.jdField_a_of_type_Asno.jdField_a_of_type_Long = paramInt;
-    this.jdField_a_of_type_Asno.jdField_b_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Asno.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Asno.d = paramLong2;
-    this.jdField_a_of_type_Asno.c = paramLong3;
-    this.jdField_a_of_type_Asno.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Asno.jdField_b_of_type_Int = 1;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferOneSlotComplete = paramExcitingTransferOneSlotComplete;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.c = i;
-      return;
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{tagId: ").append(this.jdField_a_of_type_Int).append("}");
+    localStringBuilder.append("{tagName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{isHotTag: ").append(this.b).append("}");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,10 +1,29 @@
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bgxm
+final class bgxm
+  implements DownloadParams.DecodeHandler
 {
-  public final CopyOnWriteArrayList<bgxn> a;
-  public final AtomicInteger a;
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    return bheg.d(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+  }
 }
 
 

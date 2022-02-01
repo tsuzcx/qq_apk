@@ -75,7 +75,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O ext
   
   protected void initData(Intent paramIntent)
   {
-    com.tencent.mobileqq.activity.photo.FlowThumbDecoder.sFlowItemHeight = this.mActivity.getResources().getDimension(2131297098);
+    com.tencent.mobileqq.activity.photo.FlowThumbDecoder.sFlowItemHeight = this.mActivity.getResources().getDimension(2131297099);
     this.mPhotoPreviewData.from = paramIntent.getStringExtra("FROM_WHERE");
     paramIntent.removeExtra("FROM_WHERE");
     this.mPhotoPreviewData.isSingleMode = paramIntent.getBooleanExtra("PhotoConst.IS_SINGLE_MODE", false);
@@ -285,7 +285,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O ext
       this.mActivity.selectedBox.setChecked(false);
       break;
       label172:
-      this.mActivity.titleView.setText(this.mActivity.getResources().getString(2131694565));
+      this.mActivity.titleView.setText(this.mActivity.getResources().getString(2131694766));
     }
   }
   
@@ -362,7 +362,7 @@ public class PhotoPreviewLogicBase<K extends AbstractPhotoPreviewActivity, O ext
       }
       this.mActivity.selectedBox.setActivated(true);
       return;
-      localObject = ((Resources)localObject).getString(2131694416);
+      localObject = ((Resources)localObject).getString(2131694617);
       break;
       label153:
       i = 0;

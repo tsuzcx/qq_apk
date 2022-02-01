@@ -1,25 +1,30 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.9.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class ahja
-  implements Animation.AnimationListener
+public class ahja
+  extends fy
 {
-  ahja(ahiu paramahiu) {}
+  ahja(ahit paramahit) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(ChatMessage paramChatMessage, int paramInt) {}
+  
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt)
   {
-    this.a.e = false;
-    this.a.c = 0;
-    this.a.f = false;
-    this.a.o = false;
-    this.a.n = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a(this.a.a, ahiu.b(this.a));
+    if ((!paramBoolean) && (paramChatMessage != null))
+    {
+      paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
+      ThreadManager.excute(new TextItemBuilder.9.1(this, paramChatMessage), 128, null, true);
+    }
+    String str = this.a.a.getCurrentUin();
+    if (paramBoolean) {}
+    for (paramChatMessage = "1";; paramChatMessage = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, paramChatMessage, "" + paramInt);
+      return;
+    }
   }
 }
 

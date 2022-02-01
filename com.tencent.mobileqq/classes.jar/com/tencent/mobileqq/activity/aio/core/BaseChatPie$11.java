@@ -1,60 +1,48 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import anbm;
+import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import bcef;
-import bhht;
-import bjnw;
-import bjoe;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 class BaseChatPie$11
-  implements bjoe
+  implements Runnable
 {
-  BaseChatPie$11(BaseChatPie paramBaseChatPie, bjnw parambjnw) {}
+  BaseChatPie$11(BaseChatPie paramBaseChatPie, boolean paramBoolean, Intent paramIntent) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("forward", 1, "updateSession_forwardType, postDelayed Run! needToBottom=" + this.val$needToBottom);
     }
-    for (;;)
+    this.this$0.handleForwardData(this.val$intent);
+    if (this.val$needToBottom) {
+      this.this$0.jumpToBottom();
+    }
+    if (this.val$intent.getBooleanExtra("isFromShare", false))
     {
-      this.val$actionSheet.dismiss();
-      do
+      this.val$intent.removeExtra("forward_type");
+      this.val$intent.removeExtra("isFromShare");
+      String str2 = this.val$intent.getStringExtra("leftBackText");
+      String str1;
+      if (str2 != null)
       {
-        for (;;)
-        {
-          return;
-          bcef.b(this.this$0.app, "CliOper", "", this.this$0.sessionInfo.curFriendUin, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
-          bcef.b(null, "dc00898", "", "", "0X800ACA3", "0X800ACA3", 0, 0, "", "0", "0", "");
-          paramView = (anbm)this.this$0.app.getBusinessHandler(26);
-          ArrayList localArrayList = new ArrayList();
-          try
-          {
-            localArrayList.add(Long.valueOf(Long.parseLong(this.this$0.sessionInfo.curFriendUin)));
-            paramView.a(localArrayList);
-            if (this.this$0.mProgressDialog == null) {
-              this.this$0.mProgressDialog = new bhht(this.this$0.mContext, 0);
-            }
-            this.this$0.mProgressDialog.show();
-          }
-          catch (NumberFormatException paramView) {}
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(this.this$0.tag, 2, "delete Stranger parseLong() error", paramView);
-      return;
-      paramView = new Intent(this.this$0.mActivity, QQBrowserActivity.class);
-      paramView.putExtra("url", "https://ti.qq.com/friends/unidirection?_wv=2&_wwv=128&tuin=" + this.this$0.sessionInfo.curFriendUin);
-      this.this$0.mActivity.startActivity(paramView);
-      bcef.b(null, "dc00898", "", "", "0X800ACA4", "0X800ACA4", 0, 0, "", "0", "0", "");
+        str1 = str2;
+        if (!"".equals(str2)) {}
+      }
+      else
+      {
+        str1 = this.this$0.mContext.getString(2131690676);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i(this.this$0.tag, 2, "set left text from forward: " + str1);
+      }
+      this.this$0.mTitleBtnLeft.setText(str1);
+      this.this$0.adjustTitleDimension();
+      if (this.this$0.mCustomTitleView != null) {
+        this.this$0.mCustomTitleView.e();
+      }
     }
   }
 }

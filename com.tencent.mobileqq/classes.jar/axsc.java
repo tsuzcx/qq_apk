@@ -1,16 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
 public class axsc
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public axsc(ScanIconAnimateView paramScanIconAnimateView) {}
+  public axsc(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+    String str = this.jdField_a_of_type_JavaLangString;
+    paramDialogInterface.b = str;
+    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Axrb.d();
   }
 }
 

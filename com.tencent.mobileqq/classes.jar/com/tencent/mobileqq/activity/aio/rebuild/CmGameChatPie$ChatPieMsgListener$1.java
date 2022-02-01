@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahek;
-import ahew;
-import ahex;
+import ahzc;
+import ahzo;
+import ahzp;
 
 public class CmGameChatPie$ChatPieMsgListener$1
   implements Runnable
 {
-  public CmGameChatPie$ChatPieMsgListener$1(ahew paramahew, ahek paramahek, String paramString, ahex paramahex) {}
+  public CmGameChatPie$ChatPieMsgListener$1(ahzo paramahzo, ahzc paramahzc, String paramString, ahzp paramahzp) {}
   
   public void run()
   {
-    ahek.a(this.jdField_a_of_type_Ahek, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ahex, this.jdField_a_of_type_Ahex.c);
+    ahzc.a(this.jdField_a_of_type_Ahzc, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ahzp, this.jdField_a_of_type_Ahzp.c);
   }
 }
 

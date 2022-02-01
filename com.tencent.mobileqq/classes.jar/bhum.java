@@ -1,71 +1,105 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.QueryItemVersionCallback;
+import com.tencent.mobileqq.vas.updatesystem.VasUpdateEngineV2.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.util;
-import org.json.JSONObject;
+import com.tencent.vas.update.business.BaseUpdateBusiness;
+import com.tencent.vas.update.callback.ICmdManager;
+import com.tencent.vas.update.callback.listener.ICmdListener;
+import com.tencent.vas.update.entity.BusinessUpdateParams;
+import com.tencent.vas.update.wrapper.VasUpdateWrapper;
+import java.lang.ref.WeakReference;
 
 public class bhum
-  extends WtloginObserver
+  implements bhuj
 {
-  public bhum(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  private bhuk jdField_a_of_type_Bhuk;
+  private bhur jdField_a_of_type_Bhur;
   
-  public void onException(String paramString, int paramInt)
+  public bhum(QQAppInterface paramQQAppInterface)
   {
-    super.onException(paramString, paramInt);
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnException() e:" + paramString);
+    try
+    {
+      this.jdField_a_of_type_Bhuk = ((bhuk)paramQQAppInterface.getManager(QQManagerFactory.QQ_VAS_UPDATE_MANAGER));
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+      this.jdField_a_of_type_Bhuk = new bhuk(null);
+    }
   }
   
-  public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  public void cancelDwonloadItem(long paramLong, String paramString)
   {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): ret=" + paramInt);
-    if (paramInt == 0)
+    if ((this.jdField_a_of_type_Bhuk != null) && (this.jdField_a_of_type_Bhuk.getBusinessCallback(paramLong) != null)) {
+      this.jdField_a_of_type_Bhuk.getBusinessCallback(paramLong).cancelDownload(paramString);
+    }
+  }
+  
+  public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
+  {
+    if ((this.jdField_a_of_type_Bhuk != null) && (this.jdField_a_of_type_Bhuk.getBusinessCallback(paramLong) != null))
     {
-      if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
-        paramInt = 0;
-      }
-      while (paramInt < paramArrayList.size())
+      int j = paramArrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        try
-        {
-          paramString = HexUtil.hexStr2Bytes((String)paramArrayList.get(paramInt));
-          int i = util.buf_to_int16(paramString, 0);
-          int j = util.buf_to_int16(paramString, 2);
-          if (i == 54)
-          {
-            paramArrayOfByte1 = new byte[j];
-            System.arraycopy(paramString, 4, paramArrayOfByte1, 0, j);
-            paramString = new String(paramArrayOfByte1);
-            QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid sucess Json:" + paramString);
-            paramString = new JSONObject(paramString);
-            paramLong = paramString.optLong("open_appid");
-            paramString = paramString.optString("comefrom");
-            this.a.a(paramLong, paramString);
-            if (!TextUtils.isEmpty(paramString))
-            {
-              paramArrayOfByte1 = Message.obtain();
-              paramArrayOfByte1.what = 1004;
-              paramArrayOfByte1.obj = paramString;
-              this.a.b.sendMessage(paramArrayOfByte1);
-            }
-          }
-        }
-        catch (Throwable paramString)
-        {
-          for (;;)
-          {
-            QLog.e("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): Exeption:", paramString);
-          }
-        }
-        paramInt += 1;
-        continue;
-        QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "mGetAppIdWTLoginObserver.OnVerifyCode(): getAppid failed for data is null");
+        paramString1 = new BusinessUpdateParams(paramLong, paramArrayOfString[i], paramString2);
+        this.jdField_a_of_type_Bhuk.getBusinessCallback(paramLong).startDownload(paramString1);
+        i += 1;
       }
+    }
+  }
+  
+  public void downloadItem(long paramLong, String paramString1, String paramString2)
+  {
+    if ((this.jdField_a_of_type_Bhuk != null) && (this.jdField_a_of_type_Bhuk.getBusinessCallback(paramLong) != null))
+    {
+      paramString1 = new BusinessUpdateParams(paramLong, paramString1, paramString2);
+      this.jdField_a_of_type_Bhuk.getBusinessCallback(paramLong).startDownload(paramString1);
+    }
+  }
+  
+  public void onDestory()
+  {
+    this.jdField_a_of_type_Bhuk = null;
+  }
+  
+  public void onPbMsgRecv(int paramInt, String paramString1, String paramString2)
+  {
+    if ((this.jdField_a_of_type_Bhur != null) && (this.jdField_a_of_type_Bhur.a() != null)) {
+      this.jdField_a_of_type_Bhur.a().onPbResponse(paramInt, paramString1, paramString2);
+    }
+  }
+  
+  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback)
+  {
+    ThreadManagerV2.excute(new VasUpdateEngineV2.1(this, paramQueryItemVersionCallback, paramInt, paramString), 32, null, true);
+  }
+  
+  public void setWeakHandler(WeakReference<VasExtensionHandler> paramWeakReference)
+  {
+    if (this.jdField_a_of_type_Bhuk == null) {}
+    while (this.jdField_a_of_type_Bhuk.a() == null) {
+      return;
+    }
+    ICmdManager localICmdManager = VasUpdateWrapper.getCmdManager();
+    if ((localICmdManager == null) || (!(localICmdManager instanceof bhur)))
+    {
+      QLog.e("VasUpdate_VasUpdateEngineV2", 1, "setWeakHandler cmdManager == null or != VasCmdImpl");
+      return;
+    }
+    this.jdField_a_of_type_Bhur = ((bhur)localICmdManager);
+    this.jdField_a_of_type_Bhur.a(paramWeakReference);
+  }
+  
+  public void startUpdateAllItem()
+  {
+    if (this.jdField_a_of_type_Bhuk != null) {
+      this.jdField_a_of_type_Bhuk.updateAllItem();
     }
   }
 }

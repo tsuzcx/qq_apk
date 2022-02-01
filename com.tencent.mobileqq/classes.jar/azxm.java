@@ -1,14 +1,35 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class azxm
-  implements BusinessObserver
+class azxm
+  implements bkzq
 {
-  public void a(boolean paramBoolean, azxn paramazxn) {}
+  azxm(azxh paramazxh, bkzi parambkzi) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt == 1) {
-      a(paramBoolean, (azxn)paramObject);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bkzi.dismiss();
+        this.jdField_a_of_type_Bkzi.a(null);
+        return;
+      }
+      catch (Exception paramView)
+      {
+        QLog.e("ProfileTitleContainer", 1, "showMoreActionSheet actionSheet dismiss fail.", paramView);
+      }
+      azxh.b(this.jdField_a_of_type_Azxh);
+      bdla.b(azxh.a(this.jdField_a_of_type_Azxh), "dc00898", "", "", "0X800A97D", "0X800A97D", 1, 0, "0", "0", "", "");
+      continue;
+      bhaa.a(azxh.d(this.jdField_a_of_type_Azxh));
+      bdla.b(azxh.b(this.jdField_a_of_type_Azxh), "dc00898", "", "", "0X800A97D", "0X800A97D", 2, 0, "0", "0", "", "");
+      continue;
+      bdla.b(azxh.c(this.jdField_a_of_type_Azxh), "dc00898", "", "", "0X800A97D", "0X800A97D", 3, 0, "0", "0", "", "");
     }
   }
 }

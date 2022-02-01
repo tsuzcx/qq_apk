@@ -1,8 +1,8 @@
 package cooperation.qzone.share;
 
-import amtj;
 import android.content.res.Resources;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.widget.QQToast;
 
 class QZoneShareActivity$14$1
@@ -21,15 +21,15 @@ class QZoneShareActivity$14$1
         if (this.val$exceedCount <= 0) {
           break;
         }
-        String str = amtj.a(2131711443) + this.val$exceedCount + amtj.a(2131711455);
-        int i = this.this$1.this$0.getResources().getColor(2131166767);
+        String str = anvx.a(2131711790) + this.val$exceedCount + anvx.a(2131711802);
+        int i = this.this$1.this$0.getResources().getColor(2131166781);
         this.this$1.this$0.viewTextCount.setTextColor(i);
         this.this$1.this$0.viewTextCount.setText(str);
         if (this.this$1.this$0.viewTextCount.getVisibility() != 0) {
           this.this$1.this$0.viewTextCount.setVisibility(0);
         }
       } while (!this.this$1.this$0.showMaxLen);
-      QQToast.a(this.this$1.this$0, 2131717214, 0).a();
+      QQToast.a(this.this$1.this$0, 2131717577, 0).a();
       this.this$1.this$0.showMaxLen = false;
       return;
     } while (this.this$1.this$0.viewTextCount.getVisibility() == 8);

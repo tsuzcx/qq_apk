@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.location.net;
 
-import avcw;
+import awiz;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 
 public class LocationHandler$9
   implements Runnable
 {
-  public LocationHandler$9(avcw paramavcw) {}
+  public LocationHandler$9(awiz paramawiz) {}
   
   public void run()
   {

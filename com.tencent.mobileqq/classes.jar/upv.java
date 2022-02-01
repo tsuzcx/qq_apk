@@ -1,36 +1,22 @@
-class upv
-  implements uxm
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+
+public class upv
 {
-  upv(upu paramupu, ups paramups, uxm paramuxm) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  String jdField_a_of_type_JavaLangString;
+  Button jdField_b_of_type_AndroidWidgetButton;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
   
-  public void a()
-  {
-    upu.a(this.jdField_a_of_type_Upu, this.jdField_a_of_type_Ups);
-    if (this.jdField_a_of_type_Uxm != null) {
-      this.jdField_a_of_type_Uxm.a();
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Uxm != null) {
-      this.jdField_a_of_type_Uxm.b();
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Uxm != null) {
-      this.jdField_a_of_type_Uxm.c();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Uxm != null) {
-      this.jdField_a_of_type_Uxm.d();
-    }
-  }
+  public upv(upu paramupu) {}
 }
 
 

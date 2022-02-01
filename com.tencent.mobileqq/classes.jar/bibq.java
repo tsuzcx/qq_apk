@@ -1,10 +1,17 @@
-import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
 
-public abstract interface bibq
+public class bibq
+  implements View.OnTouchListener
 {
-  public abstract int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle);
+  public bibq(VipFunCallPreviewActivity paramVipFunCallPreviewActivity) {}
   
-  public abstract void a(String paramString, int paramInt, Bundle paramBundle);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

@@ -1,22 +1,39 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation.1.1;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class qwy
-  implements Animation.AnimationListener
+class qwy
+  implements ViewFactory.FoundClickableViewListener
 {
-  public qwy(ComponentSocialOperation paramComponentSocialOperation) {}
+  qwy(qwx paramqwx, int paramInt, TemplateBean paramTemplateBean) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onFound(ViewBase paramViewBase)
   {
-    this.a.a.post(new ComponentSocialOperation.1.1(this));
+    if (qwx.a(this.jdField_a_of_type_Qwx) != null) {
+      paramViewBase.setOnClickListener(new qwz(this));
+    }
+    do
+    {
+      return;
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+      {
+      default: 
+        return;
+      case 1038: 
+        paramViewBase.setOnClickListener(new qxb(this));
+        return;
+      case 1040: 
+        paramViewBase.setOnClickListener(new qxa(this));
+        return;
+      case 1130: 
+        paramViewBase.setOnClickListener(new qxc(this));
+        return;
+      }
+    } while ((this.jdField_a_of_type_Qwx.a == null) || (this.jdField_a_of_type_Qwx.a.a() == null));
+    paramViewBase.setOnClickListener(new qrh(this.jdField_a_of_type_Qwx.a, qwx.a(this.jdField_a_of_type_Qwx).getContext(), 1115, this.jdField_a_of_type_Qwx.a.e(), this.jdField_a_of_type_Int));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

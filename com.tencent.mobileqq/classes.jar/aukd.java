@@ -1,52 +1,32 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.RequiresApi;
-import com.tencent.youtufacetrack.YoutuFaceTracker;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aukd
+public abstract interface aukd
 {
-  static String[] a;
-  static String[] b = { "libopencv_world.so", "libYTCommon.so", "libYTFaceTrackPro.so" };
-  protected aujp a;
-  public aukp a;
-  public YoutuFaceTracker a;
+  public abstract int a();
   
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libYTAGReflectLiveCheck.so", "libYTPoseDetect.so" };
-  }
+  public abstract long a();
   
-  @RequiresApi(api=18)
-  public static aukd a(int paramInt, Intent paramIntent, aukp paramaukp)
-  {
-    return new aukk(paramIntent, paramaukp);
-  }
+  public abstract auke a();
   
-  public int a(Context paramContext, String paramString)
-  {
-    return -1;
-  }
+  public abstract BaseActivity a();
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aujp != null) {
-      this.jdField_a_of_type_Aujp.a();
-    }
-    if (this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker != null)
-    {
-      this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker.destroy();
-      this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker = null;
-      YoutuFaceTracker.GlobalRelease();
-    }
-  }
+  public abstract FileManagerEntity a();
   
-  public void a(boolean paramBoolean, Activity paramActivity) {}
+  public abstract String a();
   
-  public boolean a(String paramString, String[] paramArrayOfString)
-  {
-    return false;
-  }
+  public abstract void a();
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract boolean a(Bitmap paramBitmap, int paramInt, String paramString);
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract String c();
 }
 
 

@@ -1,20 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.mobileqq.ark.ArkHorizontalListView;
 
 public class agox
-  extends AnimatorListenerAdapter
+  extends ahjb
 {
-  public agox(SixCombolEffectView paramSixCombolEffectView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.a) {
-      return;
-    }
-    this.a.b();
-  }
+  public ArkHorizontalListView a;
+  public String b;
 }
 
 

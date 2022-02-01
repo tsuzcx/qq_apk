@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.pluspanel.appinfo;
 
-import amtj;
-import ayfu;
-import aygi;
-import bfur;
+import ahvi;
+import anvx;
+import azmo;
+import bhdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.core.BaseChatpieHelper;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -17,7 +18,7 @@ public class ShortVideoAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130839206;
+    return 2130839227;
   }
   
   public int getAppID()
@@ -30,16 +31,16 @@ public class ShortVideoAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719044);
+    return BaseApplicationImpl.getContext().getString(2131719449);
   }
   
-  public void onPlusPanelAppClick(ayfu paramayfu, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  public void onPlusPanelAppClick(ahvi paramahvi, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramayfu = paramBaseChatPie.app;
-    if (!VideoEnvironment.supportShortVideoRecord(paramayfu)) {
-      bfur.a(paramBaseChatPie.getActivity(), 230).setMessage(amtj.a(2131707413)).setPositiveButton(2131694201, new aygi(this)).show();
+    paramahvi = paramBaseChatPie.app;
+    if (!VideoEnvironment.supportShortVideoRecord(paramahvi)) {
+      bhdj.a(paramBaseChatPie.getActivity(), 230).setMessage(anvx.a(2131707760)).setPositiveButton(2131694399, new azmo(this)).show();
     }
-    while (!BaseChatpieHelper.a(paramayfu)) {
+    while (!BaseChatpieHelper.a(paramahvi)) {
       return;
     }
     paramBaseChatPie.showCameraPanel(2);

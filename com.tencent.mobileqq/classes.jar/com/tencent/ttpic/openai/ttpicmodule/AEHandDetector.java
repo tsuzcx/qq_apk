@@ -41,7 +41,7 @@ public class AEHandDetector
   
   public Object detect(AIInput paramAIInput, AIParam paramAIParam)
   {
-    if ((paramAIInput == null) || (paramAIInput.getInput("frame") == null)) {
+    if ((paramAIInput == null) || (paramAIInput.getInput("frame") == null) || (HAND_DETECTOR.getHandDetectImpl() == null)) {
       return null;
     }
     Object localObject = paramAIParam.getModuleParam(AEDetectorType.HAND.value);
@@ -52,7 +52,7 @@ public class AEHandDetector
       try
       {
         if ((!((Map)localObject).containsKey("needDetectHandBone")) || (((Map)localObject).get("needDetectHandBone") == null)) {
-          break label303;
+          break label312;
         }
         boolean bool2 = ((Boolean)((Map)localObject).get("needDetectHandBone")).booleanValue();
         bool1 = bool2;
@@ -94,7 +94,7 @@ public class AEHandDetector
         paramAIInput.setDetectHeight(paramAIParam.getHeight());
         return paramAIInput;
       }
-      label303:
+      label312:
       bool1 = false;
     }
   }

@@ -4,14 +4,15 @@ import PersonalState.BusiReqHead;
 import PersonalState.ReqGetHotState;
 import PersonalState.ReqGetSameStateList;
 import PersonalState.stRishState;
-import amsw;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import awhp;
+import anvk;
+import axnr;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -47,7 +48,7 @@ public class StatusServlet
   static PersonalState.LBSInfo a(QQAppInterface paramQQAppInterface)
   {
     SosoInterface.reqRawLbsData(60000L, StatusServlet.class.getSimpleName());
-    Object localObject1 = awhp.a();
+    Object localObject1 = axnr.a();
     paramQQAppInterface = null;
     if (localObject1 != null)
     {
@@ -245,2130 +246,2130 @@ public class StatusServlet
     //   23: astore 15
     //   25: aload_0
     //   26: invokevirtual 408	com/tencent/mobileqq/richstatus/StatusServlet:getAppRuntime	()Lmqq/app/AppRuntime;
-    //   29: bipush 15
-    //   31: invokevirtual 414	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
-    //   34: checkcast 416	baoy
-    //   37: astore 13
-    //   39: aload 13
-    //   41: ifnonnull +1874 -> 1915
-    //   44: iload 8
-    //   46: istore 9
-    //   48: iload 4
-    //   50: bipush 7
-    //   52: if_icmpne +152 -> 204
-    //   55: iload 8
-    //   57: ifeq +706 -> 763
-    //   60: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   63: dup
-    //   64: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   67: astore 13
-    //   69: aload 13
-    //   71: aload_2
-    //   72: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   75: invokestatic 424	bgau:b	([B)[B
-    //   78: invokevirtual 425	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   81: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   84: astore 13
-    //   86: iload 8
-    //   88: istore 9
-    //   90: aload 13
-    //   92: ifnull +90 -> 182
-    //   95: iload 8
-    //   97: istore 9
-    //   99: aload 13
-    //   101: getfield 428	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   104: invokevirtual 429	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   107: ifeq +75 -> 182
-    //   110: aload 13
-    //   112: getfield 428	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   115: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   118: istore_3
-    //   119: iload_3
-    //   120: ifne +560 -> 680
-    //   123: aload 13
-    //   125: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   128: invokevirtual 432	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   131: invokevirtual 433	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   134: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   137: astore 13
-    //   139: aload 13
-    //   141: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   144: istore_3
-    //   145: iload_3
-    //   146: ifne +487 -> 633
-    //   149: aload 15
-    //   151: ldc_w 441
-    //   154: aload 13
-    //   156: invokevirtual 365	java/nio/ByteBuffer:array	()[B
-    //   159: invokevirtual 445	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-    //   162: aload 15
-    //   164: ldc_w 447
-    //   167: aload_1
-    //   168: ldc_w 447
-    //   171: iconst_0
-    //   172: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   175: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   178: iload 8
-    //   180: istore 9
-    //   182: iload 9
-    //   184: istore 8
-    //   186: aload_0
-    //   187: aload_1
-    //   188: iload 4
-    //   190: iload 8
-    //   192: aload 15
-    //   194: ldc_w 449
-    //   197: invokevirtual 453	com/tencent/mobileqq/richstatus/StatusServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
-    //   200: iload 8
-    //   202: istore 9
-    //   204: iload 4
-    //   206: bipush 9
-    //   208: if_icmpne +4367 -> 4575
-    //   211: iload 9
-    //   213: ifeq +977 -> 1190
-    //   216: aload_2
-    //   217: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   220: arraylength
-    //   221: iconst_4
-    //   222: isub
-    //   223: istore_3
-    //   224: iload_3
-    //   225: newarray byte
-    //   227: astore 14
-    //   229: aload 14
-    //   231: iconst_0
-    //   232: aload_2
-    //   233: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   236: iconst_4
-    //   237: iload_3
-    //   238: invokestatic 459	com/tencent/mobileqq/utils/httputils/PkgTools:copyData	([BI[BII)V
-    //   241: new 127	com/tencent/pb/signature/SigActPb$RspBody
-    //   244: dup
-    //   245: invokespecial 460	com/tencent/pb/signature/SigActPb$RspBody:<init>	()V
-    //   248: astore 13
-    //   250: aload 13
-    //   252: aload 14
-    //   254: invokevirtual 461	com/tencent/pb/signature/SigActPb$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   257: pop
-    //   258: aload 13
-    //   260: getfield 462	com/tencent/pb/signature/SigActPb$RspBody:ret	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   263: invokevirtual 188	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   266: istore_3
-    //   267: iload_3
-    //   268: ifne +583 -> 851
-    //   271: aload 13
-    //   273: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
-    //   276: getfield 465	com/tencent/pb/signature/SigActPb$SigauthRsp:result	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   279: invokevirtual 432	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   282: invokevirtual 433	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   285: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   288: astore 13
-    //   290: aload 13
-    //   292: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   295: istore_3
-    //   296: iload_3
-    //   297: ifne +494 -> 791
-    //   300: aload 15
-    //   302: ldc_w 441
-    //   305: aload 13
-    //   307: invokevirtual 365	java/nio/ByteBuffer:array	()[B
-    //   310: invokevirtual 445	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-    //   313: aload 15
-    //   315: ldc_w 447
-    //   318: aload_1
-    //   319: ldc_w 447
-    //   322: iconst_0
-    //   323: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   326: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   329: iload 9
-    //   331: istore 8
-    //   333: iload 8
-    //   335: istore 9
-    //   337: aload_0
-    //   338: aload_1
-    //   339: iload 4
-    //   341: iload 9
-    //   343: aload 15
-    //   345: ldc_w 449
-    //   348: invokevirtual 453	com/tencent/mobileqq/richstatus/StatusServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
-    //   351: iload 9
-    //   353: istore 8
-    //   355: iload 4
-    //   357: iconst_4
-    //   358: if_icmpne +975 -> 1333
-    //   361: new 467	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory
-    //   364: dup
-    //   365: invokespecial 468	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:<init>	()V
-    //   368: astore 13
-    //   370: aload 13
-    //   372: aload_1
-    //   373: ldc_w 470
-    //   376: iconst_0
-    //   377: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   380: putfield 473	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:startTime	I
-    //   383: aload 13
-    //   385: aload_1
-    //   386: ldc_w 475
-    //   389: ldc_w 476
-    //   392: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   395: putfield 479	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:endTime	I
-    //   398: aload 13
-    //   400: iconst_0
-    //   401: putfield 483	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:isAddFromCard	Z
-    //   404: aload 15
-    //   406: ldc_w 485
-    //   409: aload 13
-    //   411: invokevirtual 489	android/os/Bundle:putSerializable	(Ljava/lang/String;Ljava/io/Serializable;)V
-    //   414: aload_2
-    //   415: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   418: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   421: astore 14
-    //   423: aload 14
-    //   425: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   428: iconst_4
-    //   429: isub
-    //   430: newarray byte
-    //   432: astore 16
-    //   434: aload 14
-    //   436: aload 16
-    //   438: invokevirtual 494	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   441: pop
-    //   442: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   445: dup
-    //   446: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   449: aload 16
-    //   451: invokevirtual 425	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   454: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   457: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   460: invokevirtual 432	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   463: invokevirtual 433	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   466: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   469: astore 16
-    //   471: aload 16
-    //   473: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   476: pop
-    //   477: aload 16
-    //   479: invokevirtual 498	java/nio/ByteBuffer:getLong	()J
-    //   482: lstore 11
-    //   484: aload 16
-    //   486: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   489: pop
-    //   490: aload 16
-    //   492: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   495: pop
-    //   496: aload 16
-    //   498: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   501: istore 5
-    //   503: aload 16
-    //   505: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   508: pop
-    //   509: aload 16
-    //   511: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   514: ifeq +702 -> 1216
-    //   517: iconst_1
-    //   518: istore 8
-    //   520: aload 16
-    //   522: invokevirtual 502	java/nio/ByteBuffer:getShort	()S
-    //   525: istore 6
-    //   527: aload 13
-    //   529: new 58	java/util/ArrayList
-    //   532: dup
-    //   533: iload 6
-    //   535: invokespecial 504	java/util/ArrayList:<init>	(I)V
-    //   538: putfield 507	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
-    //   541: aload_0
-    //   542: invokevirtual 408	com/tencent/mobileqq/richstatus/StatusServlet:getAppRuntime	()Lmqq/app/AppRuntime;
-    //   545: checkcast 286	com/tencent/mobileqq/app/QQAppInterface
-    //   548: astore 14
-    //   550: iconst_0
-    //   551: istore_3
-    //   552: iload_3
-    //   553: iload 6
-    //   555: if_icmpge +998 -> 1553
-    //   558: aload 16
-    //   560: invokevirtual 502	java/nio/ByteBuffer:getShort	()S
-    //   563: newarray byte
-    //   565: astore 17
-    //   567: aload 16
-    //   569: aload 17
-    //   571: invokevirtual 494	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   574: pop
-    //   575: aload 16
-    //   577: invokevirtual 502	java/nio/ByteBuffer:getShort	()S
-    //   580: newarray byte
-    //   582: astore 18
-    //   584: aload 16
-    //   586: aload 18
-    //   588: invokevirtual 494	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   591: pop
-    //   592: aload 16
-    //   594: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   597: pop
-    //   598: aload 16
-    //   600: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   603: istore 7
-    //   605: aload 16
-    //   607: aload 16
-    //   609: invokevirtual 510	java/nio/ByteBuffer:position	()I
-    //   612: bipush 8
-    //   614: iadd
-    //   615: invokevirtual 513	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
-    //   618: pop
-    //   619: iload 7
-    //   621: iload 5
-    //   623: if_icmple +599 -> 1222
-    //   626: iload_3
-    //   627: iconst_1
-    //   628: iadd
-    //   629: istore_3
-    //   630: goto -78 -> 552
-    //   633: aconst_null
-    //   634: ldc_w 515
-    //   637: ldc_w 517
-    //   640: new 172	java/lang/StringBuilder
-    //   643: dup
-    //   644: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   647: ldc_w 519
-    //   650: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   653: iload_3
-    //   654: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   657: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   660: aconst_null
-    //   661: fconst_0
-    //   662: invokestatic 524	bggk:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
-    //   665: ldc_w 515
-    //   668: ldc_w 517
-    //   671: invokestatic 528	bggj:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   674: iconst_0
-    //   675: istore 8
-    //   677: goto -499 -> 178
-    //   680: iconst_0
-    //   681: istore 9
-    //   683: aconst_null
-    //   684: ldc_w 515
-    //   687: ldc_w 530
-    //   690: new 172	java/lang/StringBuilder
-    //   693: dup
-    //   694: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   697: ldc_w 519
-    //   700: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   703: iload_3
-    //   704: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   707: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   710: aconst_null
-    //   711: fconst_0
-    //   712: invokestatic 524	bggk:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
-    //   715: goto -533 -> 182
-    //   718: astore 13
-    //   720: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   723: ifeq +34 -> 757
-    //   726: ldc_w 532
-    //   729: iconst_2
-    //   730: new 172	java/lang/StringBuilder
-    //   733: dup
-    //   734: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   737: ldc_w 534
-    //   740: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   743: aload 13
-    //   745: invokevirtual 537	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
-    //   748: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   751: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   754: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   757: iconst_0
-    //   758: istore 9
-    //   760: goto -578 -> 182
-    //   763: aconst_null
-    //   764: ldc_w 515
-    //   767: ldc_w 539
-    //   770: aload_2
-    //   771: invokevirtual 542	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailMsg	()Ljava/lang/String;
-    //   774: aconst_null
-    //   775: fconst_0
-    //   776: invokestatic 524	bggk:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
-    //   779: ldc_w 515
-    //   782: ldc_w 539
-    //   785: invokestatic 528	bggj:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   788: goto -602 -> 186
-    //   791: iconst_0
-    //   792: istore 8
-    //   794: aload 15
-    //   796: ldc_w 544
-    //   799: iload_3
-    //   800: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   803: goto -470 -> 333
-    //   806: astore 13
-    //   808: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   811: ifeq +34 -> 845
-    //   814: ldc_w 532
-    //   817: iconst_2
-    //   818: new 172	java/lang/StringBuilder
-    //   821: dup
-    //   822: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   825: ldc_w 534
-    //   828: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   831: aload 13
-    //   833: invokevirtual 545	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   836: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   839: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   842: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   845: iconst_0
-    //   846: istore 9
-    //   848: goto -511 -> 337
-    //   851: aconst_null
-    //   852: ldc_w 547
-    //   855: ldc_w 549
-    //   858: new 172	java/lang/StringBuilder
-    //   861: dup
-    //   862: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   865: ldc_w 519
-    //   868: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   871: iload_3
-    //   872: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   875: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   878: aconst_null
-    //   879: fconst_0
-    //   880: invokestatic 524	bggk:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
-    //   883: ldc_w 547
-    //   886: iload_3
-    //   887: invokestatic 551	bggj:a	(Ljava/lang/String;I)V
-    //   890: aload 15
-    //   892: ldc_w 553
-    //   895: iload_3
-    //   896: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   899: iload_3
-    //   900: ldc_w 554
-    //   903: if_icmpne +22 -> 925
-    //   906: aload 15
-    //   908: ldc_w 556
-    //   911: aload 13
-    //   913: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
-    //   916: getfield 557	com/tencent/pb/signature/SigActPb$SigauthRsp:url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   919: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   922: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   925: aload 13
-    //   927: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
-    //   930: getfield 560	com/tencent/pb/signature/SigActPb$SigauthRsp:authfailed_appid	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   933: invokevirtual 561	com/tencent/mobileqq/pb/PBInt32Field:has	()Z
-    //   936: ifeq +22 -> 958
-    //   939: aload 15
-    //   941: ldc_w 563
-    //   944: aload 13
-    //   946: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
-    //   949: getfield 560	com/tencent/pb/signature/SigActPb$SigauthRsp:authfailed_appid	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   952: invokevirtual 188	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   955: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   958: aload 13
-    //   960: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
-    //   963: getfield 137	com/tencent/pb/signature/SigActPb$SigauthRsp:tips_info	Lcom/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo;
-    //   966: invokevirtual 142	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:has	()Z
-    //   969: ifeq +215 -> 1184
-    //   972: new 139	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo
-    //   975: dup
-    //   976: invokespecial 143	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:<init>	()V
-    //   979: astore 14
-    //   981: aload 14
-    //   983: aload 13
-    //   985: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
-    //   988: getfield 137	com/tencent/pb/signature/SigActPb$SigauthRsp:tips_info	Lcom/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo;
-    //   991: invokevirtual 147	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   994: checkcast 139	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo
-    //   997: invokevirtual 151	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:toByteArray	()[B
-    //   1000: invokevirtual 155	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   1003: pop
-    //   1004: aload 14
-    //   1006: getfield 159	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:valid	Lcom/tencent/mobileqq/pb/PBBoolField;
-    //   1009: invokevirtual 163	com/tencent/mobileqq/pb/PBBoolField:get	()Z
-    //   1012: istore 8
-    //   1014: aload 15
-    //   1016: ldc 204
-    //   1018: iload 8
-    //   1020: invokevirtual 210	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   1023: iload 8
-    //   1025: ifeq +125 -> 1150
-    //   1028: aload 15
-    //   1030: ldc 217
-    //   1032: aload 14
-    //   1034: getfield 220	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1037: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1040: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   1043: aload 15
-    //   1045: ldc 225
-    //   1047: aload 14
-    //   1049: getfield 229	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:title_wording	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1052: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1055: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1058: aload 15
-    //   1060: ldc 239
-    //   1062: aload 14
-    //   1064: getfield 241	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:wording	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1067: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1070: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1073: aload 15
-    //   1075: ldc 243
-    //   1077: aload 14
-    //   1079: getfield 246	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:right_btn_wording	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1082: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1085: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1088: aload 15
-    //   1090: ldc 248
-    //   1092: aload 14
-    //   1094: getfield 251	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:left_btn_wording	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1097: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1100: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1103: aload 15
-    //   1105: ldc 253
-    //   1107: aload 14
-    //   1109: getfield 256	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:vip_type	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1112: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1115: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1118: aload 15
-    //   1120: ldc_w 258
-    //   1123: aload 14
-    //   1125: getfield 261	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:vip_month	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1128: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1131: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   1134: aload 15
-    //   1136: ldc_w 263
-    //   1139: aload 14
-    //   1141: getfield 265	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1144: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1147: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1150: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1153: ifeq +31 -> 1184
-    //   1156: ldc_w 267
-    //   1159: iconst_2
-    //   1160: new 172	java/lang/StringBuilder
-    //   1163: dup
-    //   1164: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   1167: ldc_w 565
-    //   1170: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1173: aload 15
-    //   1175: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1178: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1181: invokestatic 277	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1184: iconst_0
-    //   1185: istore 8
-    //   1187: goto -854 -> 333
-    //   1190: aconst_null
-    //   1191: ldc_w 547
-    //   1194: ldc_w 567
-    //   1197: aload_2
-    //   1198: invokevirtual 542	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailMsg	()Ljava/lang/String;
-    //   1201: aconst_null
-    //   1202: fconst_0
-    //   1203: invokestatic 524	bggk:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
-    //   1206: ldc_w 547
-    //   1209: iconst_m1
-    //   1210: invokestatic 551	bggj:a	(Ljava/lang/String;I)V
-    //   1213: goto -876 -> 337
-    //   1216: iconst_0
-    //   1217: istore 8
-    //   1219: goto -699 -> 520
-    //   1222: aload 18
-    //   1224: invokestatic 573	com/tencent/mobileqq/richstatus/RichStatus:parseStatus	([B)Lcom/tencent/mobileqq/richstatus/RichStatus;
-    //   1227: astore 18
-    //   1229: aload 18
-    //   1231: iload 7
-    //   1233: i2l
-    //   1234: putfield 576	com/tencent/mobileqq/richstatus/RichStatus:time	J
-    //   1237: aload 18
-    //   1239: aload 17
-    //   1241: putfield 579	com/tencent/mobileqq/richstatus/RichStatus:key	[B
-    //   1244: aload 18
-    //   1246: getfield 579	com/tencent/mobileqq/richstatus/RichStatus:key	[B
-    //   1249: ifnull +20 -> 1269
-    //   1252: aload 18
-    //   1254: new 581	java/lang/String
-    //   1257: dup
-    //   1258: aload 18
-    //   1260: getfield 579	com/tencent/mobileqq/richstatus/RichStatus:key	[B
-    //   1263: invokespecial 584	java/lang/String:<init>	([B)V
-    //   1266: putfield 588	com/tencent/mobileqq/richstatus/RichStatus:feedsId	Ljava/lang/String;
-    //   1269: aload 13
-    //   1271: getfield 507	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
-    //   1274: aload 18
-    //   1276: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   1279: pop
-    //   1280: goto -654 -> 626
-    //   1283: astore 13
-    //   1285: iconst_0
-    //   1286: istore 9
-    //   1288: aload 13
-    //   1290: invokevirtual 591	java/lang/Exception:printStackTrace	()V
-    //   1293: iload 9
-    //   1295: istore 8
-    //   1297: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1300: ifeq +19 -> 1319
-    //   1303: ldc_w 532
-    //   1306: iconst_2
-    //   1307: aload 13
-    //   1309: invokevirtual 545	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1312: invokestatic 594	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1315: iload 9
-    //   1317: istore 8
-    //   1319: aload_0
-    //   1320: aload_1
-    //   1321: iload 4
-    //   1323: iload 8
-    //   1325: aload 15
-    //   1327: ldc_w 449
-    //   1330: invokevirtual 453	com/tencent/mobileqq/richstatus/StatusServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
-    //   1333: iload 4
-    //   1335: bipush 8
-    //   1337: if_icmpne +3235 -> 4572
-    //   1340: iload 8
-    //   1342: ifeq +3227 -> 4569
-    //   1345: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   1348: dup
-    //   1349: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   1352: astore 13
-    //   1354: aload 13
-    //   1356: aload_2
-    //   1357: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   1360: invokestatic 424	bgau:b	([B)[B
-    //   1363: invokevirtual 425	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   1366: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   1369: astore 13
-    //   1371: aload 13
-    //   1373: ifnull +3193 -> 4566
-    //   1376: aload 13
-    //   1378: getfield 428	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1381: invokevirtual 429	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   1384: ifeq +3182 -> 4566
-    //   1387: aload 13
-    //   1389: getfield 428	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1392: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1395: ifne +396 -> 1791
-    //   1398: aload 13
-    //   1400: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   1403: invokevirtual 432	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   1406: invokevirtual 433	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   1409: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   1412: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   1415: istore_3
-    //   1416: iload_3
-    //   1417: ifne +368 -> 1785
-    //   1420: iconst_1
-    //   1421: istore 8
-    //   1423: aload_0
-    //   1424: aload_1
-    //   1425: iload 4
-    //   1427: iload 8
-    //   1429: aload 15
-    //   1431: ldc_w 449
-    //   1434: invokevirtual 453	com/tencent/mobileqq/richstatus/StatusServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
-    //   1437: iload 4
-    //   1439: iconst_1
-    //   1440: if_icmpeq +9 -> 1449
-    //   1443: iload 4
-    //   1445: iconst_2
-    //   1446: if_icmpne +106 -> 1552
-    //   1449: aload_2
-    //   1450: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   1453: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   1456: astore_2
-    //   1457: aload_2
-    //   1458: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   1461: iconst_4
-    //   1462: isub
-    //   1463: newarray byte
-    //   1465: astore 13
-    //   1467: aload_2
-    //   1468: aload 13
-    //   1470: invokevirtual 494	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   1473: pop
-    //   1474: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   1477: dup
-    //   1478: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   1481: aload 13
-    //   1483: invokevirtual 425	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   1486: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   1489: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   1492: invokevirtual 432	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   1495: invokevirtual 433	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   1498: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   1501: astore_2
-    //   1502: aload_2
-    //   1503: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   1506: istore_3
-    //   1507: aload_2
-    //   1508: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   1511: i2l
-    //   1512: lstore 11
-    //   1514: aload_2
-    //   1515: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   1518: iconst_1
-    //   1519: if_icmpne +323 -> 1842
-    //   1522: iconst_1
-    //   1523: istore 9
-    //   1525: goto +3053 -> 4578
-    //   1528: aload 15
-    //   1530: ldc_w 314
-    //   1533: iload 10
-    //   1535: invokevirtual 210	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   1538: aload_0
-    //   1539: aload_1
-    //   1540: iload 4
-    //   1542: iload 9
-    //   1544: aload 15
-    //   1546: ldc_w 449
-    //   1549: invokevirtual 453	com/tencent/mobileqq/richstatus/StatusServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
-    //   1552: return
-    //   1553: aload 13
-    //   1555: getfield 507	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
-    //   1558: invokevirtual 597	java/util/ArrayList:isEmpty	()Z
-    //   1561: ifeq +88 -> 1649
-    //   1564: aload 13
-    //   1566: getfield 473	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:startTime	I
-    //   1569: ifne +80 -> 1649
-    //   1572: aload 13
-    //   1574: getfield 479	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:endTime	I
-    //   1577: ldc_w 476
-    //   1580: if_icmpne +69 -> 1649
-    //   1583: aload_0
-    //   1584: invokevirtual 408	com/tencent/mobileqq/richstatus/StatusServlet:getAppRuntime	()Lmqq/app/AppRuntime;
-    //   1587: bipush 51
-    //   1589: invokevirtual 414	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
-    //   1592: checkcast 599	amsw
-    //   1595: lload 11
-    //   1597: invokestatic 603	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1600: invokevirtual 606	amsw:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
-    //   1603: astore 16
-    //   1605: aload 16
-    //   1607: ifnull +42 -> 1649
-    //   1610: aload 16
-    //   1612: invokevirtual 612	com/tencent/mobileqq/data/Card:getRichStatus	()Lcom/tencent/mobileqq/richstatus/RichStatus;
-    //   1615: ifnull +34 -> 1649
-    //   1618: aload 16
-    //   1620: invokevirtual 612	com/tencent/mobileqq/data/Card:getRichStatus	()Lcom/tencent/mobileqq/richstatus/RichStatus;
-    //   1623: invokevirtual 613	com/tencent/mobileqq/richstatus/RichStatus:isEmpty	()Z
-    //   1626: ifne +23 -> 1649
-    //   1629: aload 13
-    //   1631: getfield 507	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
-    //   1634: aload 16
-    //   1636: invokevirtual 612	com/tencent/mobileqq/data/Card:getRichStatus	()Lcom/tencent/mobileqq/richstatus/RichStatus;
-    //   1639: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   1642: pop
-    //   1643: aload 13
-    //   1645: iconst_1
-    //   1646: putfield 483	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:isAddFromCard	Z
-    //   1649: aload 14
-    //   1651: bipush 41
-    //   1653: invokevirtual 617	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   1656: checkcast 619	com/tencent/mobileqq/app/SignatureHandler
-    //   1659: astore 16
-    //   1661: aload 13
-    //   1663: getfield 507	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
-    //   1666: invokevirtual 67	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   1669: astore 17
-    //   1671: aload 17
-    //   1673: invokeinterface 73 1 0
-    //   1678: ifeq +42 -> 1720
-    //   1681: aload 17
-    //   1683: invokeinterface 77 1 0
-    //   1688: checkcast 569	com/tencent/mobileqq/richstatus/RichStatus
-    //   1691: astore 18
-    //   1693: aload 16
-    //   1695: ifnull -24 -> 1671
-    //   1698: aload 16
-    //   1700: lload 11
-    //   1702: invokestatic 603	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1705: aload 18
-    //   1707: getfield 588	com/tencent/mobileqq/richstatus/RichStatus:feedsId	Ljava/lang/String;
-    //   1710: sipush 255
-    //   1713: iconst_1
-    //   1714: invokevirtual 622	com/tencent/mobileqq/app/SignatureHandler:a	(Ljava/lang/String;Ljava/lang/String;IZ)V
-    //   1717: goto -46 -> 1671
-    //   1720: aload 13
-    //   1722: iload 8
-    //   1724: putfield 625	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:over	Z
-    //   1727: aload 14
-    //   1729: bipush 58
-    //   1731: invokevirtual 626	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1734: checkcast 628	com/tencent/mobileqq/app/SignatureManager
-    //   1737: astore 16
-    //   1739: iload 9
-    //   1741: istore 8
-    //   1743: aload 16
-    //   1745: ifnull -426 -> 1319
-    //   1748: iload 9
-    //   1750: istore 8
-    //   1752: aload 14
-    //   1754: invokevirtual 304	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   1757: lload 11
-    //   1759: invokestatic 632	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   1762: invokevirtual 635	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1765: ifeq -446 -> 1319
-    //   1768: aload 16
-    //   1770: aload 13
-    //   1772: getfield 507	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
-    //   1775: invokevirtual 638	com/tencent/mobileqq/app/SignatureManager:a	(Ljava/util/List;)V
-    //   1778: iload 9
-    //   1780: istore 8
-    //   1782: goto -463 -> 1319
-    //   1785: iconst_0
-    //   1786: istore 8
-    //   1788: goto -365 -> 1423
-    //   1791: iconst_0
-    //   1792: istore 8
-    //   1794: goto -371 -> 1423
-    //   1797: astore 13
-    //   1799: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1802: ifeq +34 -> 1836
-    //   1805: ldc_w 532
-    //   1808: iconst_2
-    //   1809: new 172	java/lang/StringBuilder
-    //   1812: dup
-    //   1813: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   1816: ldc_w 534
-    //   1819: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1822: aload 13
-    //   1824: invokevirtual 537	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
-    //   1827: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1830: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1833: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1836: iconst_0
-    //   1837: istore 8
-    //   1839: goto -416 -> 1423
-    //   1842: iconst_0
-    //   1843: istore 9
-    //   1845: goto +2733 -> 4578
-    //   1848: iload 9
-    //   1850: istore 10
-    //   1852: iload 8
-    //   1854: istore 9
-    //   1856: iload 4
-    //   1858: iconst_2
-    //   1859: if_icmpne -331 -> 1528
-    //   1862: aload_1
-    //   1863: ldc_w 314
-    //   1866: iconst_0
-    //   1867: invokevirtual 642	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   1870: istore 10
-    //   1872: iload 8
-    //   1874: istore 9
-    //   1876: goto -348 -> 1528
-    //   1879: astore_2
-    //   1880: iconst_0
-    //   1881: istore 8
-    //   1883: aload_2
-    //   1884: invokevirtual 591	java/lang/Exception:printStackTrace	()V
-    //   1887: iload 8
-    //   1889: istore 9
-    //   1891: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1894: ifeq -356 -> 1538
-    //   1897: ldc_w 532
-    //   1900: iconst_2
-    //   1901: aload_2
-    //   1902: invokevirtual 545	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1905: invokestatic 594	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1908: iload 8
-    //   1910: istore 9
-    //   1912: goto -374 -> 1538
-    //   1915: iload 4
-    //   1917: tableswitch	default:+51 -> 1968, 1:+66->1983, 2:+66->1983, 3:+791->2708, 4:+221->2138, 5:+904->2821, 6:+1320->3237, 7:+1797->3714, 8:+2497->4414, 9:+1974->3891
-    //   1969: aload_1
-    //   1970: iload 4
-    //   1972: iload 8
-    //   1974: aload 15
-    //   1976: ldc_w 449
-    //   1979: invokevirtual 453	com/tencent/mobileqq/richstatus/StatusServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
-    //   1982: return
-    //   1983: aload_2
-    //   1984: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   1987: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   1990: astore_2
-    //   1991: aload_2
-    //   1992: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   1995: iconst_4
-    //   1996: isub
-    //   1997: newarray byte
-    //   1999: astore 13
-    //   2001: aload_2
-    //   2002: aload 13
-    //   2004: invokevirtual 494	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   2007: pop
-    //   2008: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   2011: dup
-    //   2012: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   2015: aload 13
-    //   2017: invokevirtual 425	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   2020: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   2023: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   2026: invokevirtual 432	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   2029: invokevirtual 433	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   2032: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   2035: astore_2
-    //   2036: aload_2
-    //   2037: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   2040: istore_3
-    //   2041: aload_2
-    //   2042: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   2045: i2l
-    //   2046: lstore 11
-    //   2048: aload_2
-    //   2049: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   2052: iconst_1
-    //   2053: if_icmpne +2561 -> 4614
+    //   29: getstatic 413	com/tencent/mobileqq/app/QQManagerFactory:STATUS_MANAGER	I
+    //   32: invokevirtual 419	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
+    //   35: checkcast 421	bbvn
+    //   38: astore 13
+    //   40: aload 13
+    //   42: ifnonnull +1877 -> 1919
+    //   45: iload 8
+    //   47: istore 9
+    //   49: iload 4
+    //   51: bipush 7
+    //   53: if_icmpne +152 -> 205
+    //   56: iload 8
+    //   58: ifeq +706 -> 764
+    //   61: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   64: dup
+    //   65: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   68: astore 13
+    //   70: aload 13
+    //   72: aload_2
+    //   73: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   76: invokestatic 429	bhjl:b	([B)[B
+    //   79: invokevirtual 430	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   82: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   85: astore 13
+    //   87: iload 8
+    //   89: istore 9
+    //   91: aload 13
+    //   93: ifnull +90 -> 183
+    //   96: iload 8
+    //   98: istore 9
+    //   100: aload 13
+    //   102: getfield 433	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   105: invokevirtual 434	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   108: ifeq +75 -> 183
+    //   111: aload 13
+    //   113: getfield 433	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   116: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   119: istore_3
+    //   120: iload_3
+    //   121: ifne +560 -> 681
+    //   124: aload 13
+    //   126: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   129: invokevirtual 437	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   132: invokevirtual 438	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   135: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   138: astore 13
+    //   140: aload 13
+    //   142: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   145: istore_3
+    //   146: iload_3
+    //   147: ifne +487 -> 634
+    //   150: aload 15
+    //   152: ldc_w 446
+    //   155: aload 13
+    //   157: invokevirtual 365	java/nio/ByteBuffer:array	()[B
+    //   160: invokevirtual 450	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
+    //   163: aload 15
+    //   165: ldc_w 452
+    //   168: aload_1
+    //   169: ldc_w 452
+    //   172: iconst_0
+    //   173: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   176: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   179: iload 8
+    //   181: istore 9
+    //   183: iload 9
+    //   185: istore 8
+    //   187: aload_0
+    //   188: aload_1
+    //   189: iload 4
+    //   191: iload 8
+    //   193: aload 15
+    //   195: ldc_w 454
+    //   198: invokevirtual 458	com/tencent/mobileqq/richstatus/StatusServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
+    //   201: iload 8
+    //   203: istore 9
+    //   205: iload 4
+    //   207: bipush 9
+    //   209: if_icmpne +4373 -> 4582
+    //   212: iload 9
+    //   214: ifeq +977 -> 1191
+    //   217: aload_2
+    //   218: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   221: arraylength
+    //   222: iconst_4
+    //   223: isub
+    //   224: istore_3
+    //   225: iload_3
+    //   226: newarray byte
+    //   228: astore 14
+    //   230: aload 14
+    //   232: iconst_0
+    //   233: aload_2
+    //   234: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   237: iconst_4
+    //   238: iload_3
+    //   239: invokestatic 464	com/tencent/mobileqq/utils/httputils/PkgTools:copyData	([BI[BII)V
+    //   242: new 127	com/tencent/pb/signature/SigActPb$RspBody
+    //   245: dup
+    //   246: invokespecial 465	com/tencent/pb/signature/SigActPb$RspBody:<init>	()V
+    //   249: astore 13
+    //   251: aload 13
+    //   253: aload 14
+    //   255: invokevirtual 466	com/tencent/pb/signature/SigActPb$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   258: pop
+    //   259: aload 13
+    //   261: getfield 467	com/tencent/pb/signature/SigActPb$RspBody:ret	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   264: invokevirtual 188	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   267: istore_3
+    //   268: iload_3
+    //   269: ifne +583 -> 852
+    //   272: aload 13
+    //   274: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
+    //   277: getfield 470	com/tencent/pb/signature/SigActPb$SigauthRsp:result	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   280: invokevirtual 437	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   283: invokevirtual 438	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   286: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   289: astore 13
+    //   291: aload 13
+    //   293: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   296: istore_3
+    //   297: iload_3
+    //   298: ifne +494 -> 792
+    //   301: aload 15
+    //   303: ldc_w 446
+    //   306: aload 13
+    //   308: invokevirtual 365	java/nio/ByteBuffer:array	()[B
+    //   311: invokevirtual 450	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
+    //   314: aload 15
+    //   316: ldc_w 452
+    //   319: aload_1
+    //   320: ldc_w 452
+    //   323: iconst_0
+    //   324: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   327: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   330: iload 9
+    //   332: istore 8
+    //   334: iload 8
+    //   336: istore 9
+    //   338: aload_0
+    //   339: aload_1
+    //   340: iload 4
+    //   342: iload 9
+    //   344: aload 15
+    //   346: ldc_w 454
+    //   349: invokevirtual 458	com/tencent/mobileqq/richstatus/StatusServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
+    //   352: iload 9
+    //   354: istore 8
+    //   356: iload 4
+    //   358: iconst_4
+    //   359: if_icmpne +975 -> 1334
+    //   362: new 472	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory
+    //   365: dup
+    //   366: invokespecial 473	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:<init>	()V
+    //   369: astore 13
+    //   371: aload 13
+    //   373: aload_1
+    //   374: ldc_w 475
+    //   377: iconst_0
+    //   378: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   381: putfield 478	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:startTime	I
+    //   384: aload 13
+    //   386: aload_1
+    //   387: ldc_w 480
+    //   390: ldc_w 481
+    //   393: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   396: putfield 484	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:endTime	I
+    //   399: aload 13
+    //   401: iconst_0
+    //   402: putfield 488	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:isAddFromCard	Z
+    //   405: aload 15
+    //   407: ldc_w 490
+    //   410: aload 13
+    //   412: invokevirtual 494	android/os/Bundle:putSerializable	(Ljava/lang/String;Ljava/io/Serializable;)V
+    //   415: aload_2
+    //   416: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   419: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   422: astore 14
+    //   424: aload 14
+    //   426: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   429: iconst_4
+    //   430: isub
+    //   431: newarray byte
+    //   433: astore 16
+    //   435: aload 14
+    //   437: aload 16
+    //   439: invokevirtual 499	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   442: pop
+    //   443: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   446: dup
+    //   447: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   450: aload 16
+    //   452: invokevirtual 430	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   455: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   458: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   461: invokevirtual 437	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   464: invokevirtual 438	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   467: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   470: astore 16
+    //   472: aload 16
+    //   474: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   477: pop
+    //   478: aload 16
+    //   480: invokevirtual 503	java/nio/ByteBuffer:getLong	()J
+    //   483: lstore 11
+    //   485: aload 16
+    //   487: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   490: pop
+    //   491: aload 16
+    //   493: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   496: pop
+    //   497: aload 16
+    //   499: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   502: istore 5
+    //   504: aload 16
+    //   506: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   509: pop
+    //   510: aload 16
+    //   512: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   515: ifeq +702 -> 1217
+    //   518: iconst_1
+    //   519: istore 8
+    //   521: aload 16
+    //   523: invokevirtual 507	java/nio/ByteBuffer:getShort	()S
+    //   526: istore 6
+    //   528: aload 13
+    //   530: new 58	java/util/ArrayList
+    //   533: dup
+    //   534: iload 6
+    //   536: invokespecial 509	java/util/ArrayList:<init>	(I)V
+    //   539: putfield 512	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
+    //   542: aload_0
+    //   543: invokevirtual 408	com/tencent/mobileqq/richstatus/StatusServlet:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   546: checkcast 286	com/tencent/mobileqq/app/QQAppInterface
+    //   549: astore 14
+    //   551: iconst_0
+    //   552: istore_3
+    //   553: iload_3
+    //   554: iload 6
+    //   556: if_icmpge +998 -> 1554
+    //   559: aload 16
+    //   561: invokevirtual 507	java/nio/ByteBuffer:getShort	()S
+    //   564: newarray byte
+    //   566: astore 17
+    //   568: aload 16
+    //   570: aload 17
+    //   572: invokevirtual 499	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   575: pop
+    //   576: aload 16
+    //   578: invokevirtual 507	java/nio/ByteBuffer:getShort	()S
+    //   581: newarray byte
+    //   583: astore 18
+    //   585: aload 16
+    //   587: aload 18
+    //   589: invokevirtual 499	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   592: pop
+    //   593: aload 16
+    //   595: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   598: pop
+    //   599: aload 16
+    //   601: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   604: istore 7
+    //   606: aload 16
+    //   608: aload 16
+    //   610: invokevirtual 515	java/nio/ByteBuffer:position	()I
+    //   613: bipush 8
+    //   615: iadd
+    //   616: invokevirtual 518	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   619: pop
+    //   620: iload 7
+    //   622: iload 5
+    //   624: if_icmple +599 -> 1223
+    //   627: iload_3
+    //   628: iconst_1
+    //   629: iadd
+    //   630: istore_3
+    //   631: goto -78 -> 553
+    //   634: aconst_null
+    //   635: ldc_w 520
+    //   638: ldc_w 522
+    //   641: new 172	java/lang/StringBuilder
+    //   644: dup
+    //   645: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   648: ldc_w 524
+    //   651: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   654: iload_3
+    //   655: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   658: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   661: aconst_null
+    //   662: fconst_0
+    //   663: invokestatic 529	bhpe:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
+    //   666: ldc_w 520
+    //   669: ldc_w 522
+    //   672: invokestatic 533	bhpd:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   675: iconst_0
+    //   676: istore 8
+    //   678: goto -499 -> 179
+    //   681: iconst_0
+    //   682: istore 9
+    //   684: aconst_null
+    //   685: ldc_w 520
+    //   688: ldc_w 535
+    //   691: new 172	java/lang/StringBuilder
+    //   694: dup
+    //   695: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   698: ldc_w 524
+    //   701: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   704: iload_3
+    //   705: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   708: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   711: aconst_null
+    //   712: fconst_0
+    //   713: invokestatic 529	bhpe:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
+    //   716: goto -533 -> 183
+    //   719: astore 13
+    //   721: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   724: ifeq +34 -> 758
+    //   727: ldc_w 537
+    //   730: iconst_2
+    //   731: new 172	java/lang/StringBuilder
+    //   734: dup
+    //   735: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   738: ldc_w 539
+    //   741: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   744: aload 13
+    //   746: invokevirtual 542	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
+    //   749: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   752: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   755: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   758: iconst_0
+    //   759: istore 9
+    //   761: goto -578 -> 183
+    //   764: aconst_null
+    //   765: ldc_w 520
+    //   768: ldc_w 544
+    //   771: aload_2
+    //   772: invokevirtual 547	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailMsg	()Ljava/lang/String;
+    //   775: aconst_null
+    //   776: fconst_0
+    //   777: invokestatic 529	bhpe:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
+    //   780: ldc_w 520
+    //   783: ldc_w 544
+    //   786: invokestatic 533	bhpd:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   789: goto -602 -> 187
+    //   792: iconst_0
+    //   793: istore 8
+    //   795: aload 15
+    //   797: ldc_w 549
+    //   800: iload_3
+    //   801: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   804: goto -470 -> 334
+    //   807: astore 13
+    //   809: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   812: ifeq +34 -> 846
+    //   815: ldc_w 537
+    //   818: iconst_2
+    //   819: new 172	java/lang/StringBuilder
+    //   822: dup
+    //   823: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   826: ldc_w 539
+    //   829: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   832: aload 13
+    //   834: invokevirtual 550	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   837: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   840: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   843: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   846: iconst_0
+    //   847: istore 9
+    //   849: goto -511 -> 338
+    //   852: aconst_null
+    //   853: ldc_w 552
+    //   856: ldc_w 554
+    //   859: new 172	java/lang/StringBuilder
+    //   862: dup
+    //   863: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   866: ldc_w 524
+    //   869: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   872: iload_3
+    //   873: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   876: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   879: aconst_null
+    //   880: fconst_0
+    //   881: invokestatic 529	bhpe:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
+    //   884: ldc_w 552
+    //   887: iload_3
+    //   888: invokestatic 556	bhpd:a	(Ljava/lang/String;I)V
+    //   891: aload 15
+    //   893: ldc_w 558
+    //   896: iload_3
+    //   897: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   900: iload_3
+    //   901: ldc_w 559
+    //   904: if_icmpne +22 -> 926
+    //   907: aload 15
+    //   909: ldc_w 561
+    //   912: aload 13
+    //   914: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
+    //   917: getfield 562	com/tencent/pb/signature/SigActPb$SigauthRsp:url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   920: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   923: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   926: aload 13
+    //   928: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
+    //   931: getfield 565	com/tencent/pb/signature/SigActPb$SigauthRsp:authfailed_appid	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   934: invokevirtual 566	com/tencent/mobileqq/pb/PBInt32Field:has	()Z
+    //   937: ifeq +22 -> 959
+    //   940: aload 15
+    //   942: ldc_w 568
+    //   945: aload 13
+    //   947: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
+    //   950: getfield 565	com/tencent/pb/signature/SigActPb$SigauthRsp:authfailed_appid	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   953: invokevirtual 188	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   956: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   959: aload 13
+    //   961: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
+    //   964: getfield 137	com/tencent/pb/signature/SigActPb$SigauthRsp:tips_info	Lcom/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo;
+    //   967: invokevirtual 142	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:has	()Z
+    //   970: ifeq +215 -> 1185
+    //   973: new 139	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo
+    //   976: dup
+    //   977: invokespecial 143	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:<init>	()V
+    //   980: astore 14
+    //   982: aload 14
+    //   984: aload 13
+    //   986: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
+    //   989: getfield 137	com/tencent/pb/signature/SigActPb$SigauthRsp:tips_info	Lcom/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo;
+    //   992: invokevirtual 147	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   995: checkcast 139	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo
+    //   998: invokevirtual 151	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:toByteArray	()[B
+    //   1001: invokevirtual 155	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   1004: pop
+    //   1005: aload 14
+    //   1007: getfield 159	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:valid	Lcom/tencent/mobileqq/pb/PBBoolField;
+    //   1010: invokevirtual 163	com/tencent/mobileqq/pb/PBBoolField:get	()Z
+    //   1013: istore 8
+    //   1015: aload 15
+    //   1017: ldc 204
+    //   1019: iload 8
+    //   1021: invokevirtual 210	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   1024: iload 8
+    //   1026: ifeq +125 -> 1151
+    //   1029: aload 15
+    //   1031: ldc 217
+    //   1033: aload 14
+    //   1035: getfield 220	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1038: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1041: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1044: aload 15
+    //   1046: ldc 225
+    //   1048: aload 14
+    //   1050: getfield 229	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:title_wording	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1053: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   1056: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1059: aload 15
+    //   1061: ldc 239
+    //   1063: aload 14
+    //   1065: getfield 241	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:wording	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1068: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   1071: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1074: aload 15
+    //   1076: ldc 243
+    //   1078: aload 14
+    //   1080: getfield 246	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:right_btn_wording	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1083: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   1086: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1089: aload 15
+    //   1091: ldc 248
+    //   1093: aload 14
+    //   1095: getfield 251	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:left_btn_wording	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1098: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   1101: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1104: aload 15
+    //   1106: ldc 253
+    //   1108: aload 14
+    //   1110: getfield 256	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:vip_type	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1113: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   1116: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1119: aload 15
+    //   1121: ldc_w 258
+    //   1124: aload 14
+    //   1126: getfield 261	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:vip_month	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1129: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1132: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1135: aload 15
+    //   1137: ldc_w 263
+    //   1140: aload 14
+    //   1142: getfield 265	com/tencent/pb/signature/SigActPb$SigauthRsp$TipsInfo:url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1145: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   1148: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1151: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1154: ifeq +31 -> 1185
+    //   1157: ldc_w 267
+    //   1160: iconst_2
+    //   1161: new 172	java/lang/StringBuilder
+    //   1164: dup
+    //   1165: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   1168: ldc_w 570
+    //   1171: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1174: aload 15
+    //   1176: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1179: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1182: invokestatic 277	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1185: iconst_0
+    //   1186: istore 8
+    //   1188: goto -854 -> 334
+    //   1191: aconst_null
+    //   1192: ldc_w 552
+    //   1195: ldc_w 572
+    //   1198: aload_2
+    //   1199: invokevirtual 547	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailMsg	()Ljava/lang/String;
+    //   1202: aconst_null
+    //   1203: fconst_0
+    //   1204: invokestatic 529	bhpe:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
+    //   1207: ldc_w 552
+    //   1210: iconst_m1
+    //   1211: invokestatic 556	bhpd:a	(Ljava/lang/String;I)V
+    //   1214: goto -876 -> 338
+    //   1217: iconst_0
+    //   1218: istore 8
+    //   1220: goto -699 -> 521
+    //   1223: aload 18
+    //   1225: invokestatic 578	com/tencent/mobileqq/richstatus/RichStatus:parseStatus	([B)Lcom/tencent/mobileqq/richstatus/RichStatus;
+    //   1228: astore 18
+    //   1230: aload 18
+    //   1232: iload 7
+    //   1234: i2l
+    //   1235: putfield 581	com/tencent/mobileqq/richstatus/RichStatus:time	J
+    //   1238: aload 18
+    //   1240: aload 17
+    //   1242: putfield 584	com/tencent/mobileqq/richstatus/RichStatus:key	[B
+    //   1245: aload 18
+    //   1247: getfield 584	com/tencent/mobileqq/richstatus/RichStatus:key	[B
+    //   1250: ifnull +20 -> 1270
+    //   1253: aload 18
+    //   1255: new 586	java/lang/String
+    //   1258: dup
+    //   1259: aload 18
+    //   1261: getfield 584	com/tencent/mobileqq/richstatus/RichStatus:key	[B
+    //   1264: invokespecial 589	java/lang/String:<init>	([B)V
+    //   1267: putfield 593	com/tencent/mobileqq/richstatus/RichStatus:feedsId	Ljava/lang/String;
+    //   1270: aload 13
+    //   1272: getfield 512	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
+    //   1275: aload 18
+    //   1277: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1280: pop
+    //   1281: goto -654 -> 627
+    //   1284: astore 13
+    //   1286: iconst_0
+    //   1287: istore 9
+    //   1289: aload 13
+    //   1291: invokevirtual 596	java/lang/Exception:printStackTrace	()V
+    //   1294: iload 9
+    //   1296: istore 8
+    //   1298: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1301: ifeq +19 -> 1320
+    //   1304: ldc_w 537
+    //   1307: iconst_2
+    //   1308: aload 13
+    //   1310: invokevirtual 550	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1313: invokestatic 599	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1316: iload 9
+    //   1318: istore 8
+    //   1320: aload_0
+    //   1321: aload_1
+    //   1322: iload 4
+    //   1324: iload 8
+    //   1326: aload 15
+    //   1328: ldc_w 454
+    //   1331: invokevirtual 458	com/tencent/mobileqq/richstatus/StatusServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
+    //   1334: iload 4
+    //   1336: bipush 8
+    //   1338: if_icmpne +3241 -> 4579
+    //   1341: iload 8
+    //   1343: ifeq +3233 -> 4576
+    //   1346: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   1349: dup
+    //   1350: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   1353: astore 13
+    //   1355: aload 13
+    //   1357: aload_2
+    //   1358: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   1361: invokestatic 429	bhjl:b	([B)[B
+    //   1364: invokevirtual 430	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   1367: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   1370: astore 13
+    //   1372: aload 13
+    //   1374: ifnull +3199 -> 4573
+    //   1377: aload 13
+    //   1379: getfield 433	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1382: invokevirtual 434	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   1385: ifeq +3188 -> 4573
+    //   1388: aload 13
+    //   1390: getfield 433	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1393: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1396: ifne +399 -> 1795
+    //   1399: aload 13
+    //   1401: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1404: invokevirtual 437	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   1407: invokevirtual 438	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   1410: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   1413: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   1416: istore_3
+    //   1417: iload_3
+    //   1418: ifne +371 -> 1789
+    //   1421: iconst_1
+    //   1422: istore 8
+    //   1424: aload_0
+    //   1425: aload_1
+    //   1426: iload 4
+    //   1428: iload 8
+    //   1430: aload 15
+    //   1432: ldc_w 454
+    //   1435: invokevirtual 458	com/tencent/mobileqq/richstatus/StatusServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
+    //   1438: iload 4
+    //   1440: iconst_1
+    //   1441: if_icmpeq +9 -> 1450
+    //   1444: iload 4
+    //   1446: iconst_2
+    //   1447: if_icmpne +106 -> 1553
+    //   1450: aload_2
+    //   1451: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   1454: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   1457: astore_2
+    //   1458: aload_2
+    //   1459: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   1462: iconst_4
+    //   1463: isub
+    //   1464: newarray byte
+    //   1466: astore 13
+    //   1468: aload_2
+    //   1469: aload 13
+    //   1471: invokevirtual 499	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   1474: pop
+    //   1475: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   1478: dup
+    //   1479: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   1482: aload 13
+    //   1484: invokevirtual 430	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   1487: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   1490: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1493: invokevirtual 437	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   1496: invokevirtual 438	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   1499: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   1502: astore_2
+    //   1503: aload_2
+    //   1504: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   1507: istore_3
+    //   1508: aload_2
+    //   1509: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   1512: i2l
+    //   1513: lstore 11
+    //   1515: aload_2
+    //   1516: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   1519: iconst_1
+    //   1520: if_icmpne +326 -> 1846
+    //   1523: iconst_1
+    //   1524: istore 9
+    //   1526: goto +3059 -> 4585
+    //   1529: aload 15
+    //   1531: ldc_w 314
+    //   1534: iload 10
+    //   1536: invokevirtual 210	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   1539: aload_0
+    //   1540: aload_1
+    //   1541: iload 4
+    //   1543: iload 9
+    //   1545: aload 15
+    //   1547: ldc_w 454
+    //   1550: invokevirtual 458	com/tencent/mobileqq/richstatus/StatusServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
+    //   1553: return
+    //   1554: aload 13
+    //   1556: getfield 512	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
+    //   1559: invokevirtual 602	java/util/ArrayList:isEmpty	()Z
+    //   1562: ifeq +89 -> 1651
+    //   1565: aload 13
+    //   1567: getfield 478	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:startTime	I
+    //   1570: ifne +81 -> 1651
+    //   1573: aload 13
+    //   1575: getfield 484	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:endTime	I
+    //   1578: ldc_w 481
+    //   1581: if_icmpne +70 -> 1651
+    //   1584: aload_0
+    //   1585: invokevirtual 408	com/tencent/mobileqq/richstatus/StatusServlet:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   1588: getstatic 605	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
+    //   1591: invokevirtual 419	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
+    //   1594: checkcast 607	anvk
+    //   1597: lload 11
+    //   1599: invokestatic 611	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1602: invokevirtual 614	anvk:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   1605: astore 16
+    //   1607: aload 16
+    //   1609: ifnull +42 -> 1651
+    //   1612: aload 16
+    //   1614: invokevirtual 620	com/tencent/mobileqq/data/Card:getRichStatus	()Lcom/tencent/mobileqq/richstatus/RichStatus;
+    //   1617: ifnull +34 -> 1651
+    //   1620: aload 16
+    //   1622: invokevirtual 620	com/tencent/mobileqq/data/Card:getRichStatus	()Lcom/tencent/mobileqq/richstatus/RichStatus;
+    //   1625: invokevirtual 621	com/tencent/mobileqq/richstatus/RichStatus:isEmpty	()Z
+    //   1628: ifne +23 -> 1651
+    //   1631: aload 13
+    //   1633: getfield 512	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
+    //   1636: aload 16
+    //   1638: invokevirtual 620	com/tencent/mobileqq/data/Card:getRichStatus	()Lcom/tencent/mobileqq/richstatus/RichStatus;
+    //   1641: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1644: pop
+    //   1645: aload 13
+    //   1647: iconst_1
+    //   1648: putfield 488	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:isAddFromCard	Z
+    //   1651: aload 14
+    //   1653: getstatic 626	com/tencent/mobileqq/app/BusinessHandlerFactory:SIGNATURE_HANDLER	I
+    //   1656: invokevirtual 630	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   1659: checkcast 632	com/tencent/mobileqq/app/SignatureHandler
+    //   1662: astore 16
+    //   1664: aload 13
+    //   1666: getfield 512	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
+    //   1669: invokevirtual 67	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   1672: astore 17
+    //   1674: aload 17
+    //   1676: invokeinterface 73 1 0
+    //   1681: ifeq +42 -> 1723
+    //   1684: aload 17
+    //   1686: invokeinterface 77 1 0
+    //   1691: checkcast 574	com/tencent/mobileqq/richstatus/RichStatus
+    //   1694: astore 18
+    //   1696: aload 16
+    //   1698: ifnull -24 -> 1674
+    //   1701: aload 16
+    //   1703: lload 11
+    //   1705: invokestatic 611	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1708: aload 18
+    //   1710: getfield 593	com/tencent/mobileqq/richstatus/RichStatus:feedsId	Ljava/lang/String;
+    //   1713: sipush 255
+    //   1716: iconst_1
+    //   1717: invokevirtual 635	com/tencent/mobileqq/app/SignatureHandler:a	(Ljava/lang/String;Ljava/lang/String;IZ)V
+    //   1720: goto -46 -> 1674
+    //   1723: aload 13
+    //   1725: iload 8
+    //   1727: putfield 638	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:over	Z
+    //   1730: aload 14
+    //   1732: getstatic 641	com/tencent/mobileqq/app/QQManagerFactory:SIGNATURE_MANAGER	I
+    //   1735: invokevirtual 642	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   1738: checkcast 644	com/tencent/mobileqq/app/SignatureManager
+    //   1741: astore 16
+    //   1743: iload 9
+    //   1745: istore 8
+    //   1747: aload 16
+    //   1749: ifnull -429 -> 1320
+    //   1752: iload 9
+    //   1754: istore 8
+    //   1756: aload 14
+    //   1758: invokevirtual 304	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   1761: lload 11
+    //   1763: invokestatic 648	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   1766: invokevirtual 651	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1769: ifeq -449 -> 1320
+    //   1772: aload 16
+    //   1774: aload 13
+    //   1776: getfield 512	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
+    //   1779: invokevirtual 654	com/tencent/mobileqq/app/SignatureManager:a	(Ljava/util/List;)V
+    //   1782: iload 9
+    //   1784: istore 8
+    //   1786: goto -466 -> 1320
+    //   1789: iconst_0
+    //   1790: istore 8
+    //   1792: goto -368 -> 1424
+    //   1795: iconst_0
+    //   1796: istore 8
+    //   1798: goto -374 -> 1424
+    //   1801: astore 13
+    //   1803: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1806: ifeq +34 -> 1840
+    //   1809: ldc_w 537
+    //   1812: iconst_2
+    //   1813: new 172	java/lang/StringBuilder
+    //   1816: dup
+    //   1817: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   1820: ldc_w 539
+    //   1823: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1826: aload 13
+    //   1828: invokevirtual 542	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
+    //   1831: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1834: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1837: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1840: iconst_0
+    //   1841: istore 8
+    //   1843: goto -419 -> 1424
+    //   1846: iconst_0
+    //   1847: istore 9
+    //   1849: goto +2736 -> 4585
+    //   1852: iload 9
+    //   1854: istore 10
+    //   1856: iload 8
+    //   1858: istore 9
+    //   1860: iload 4
+    //   1862: iconst_2
+    //   1863: if_icmpne -334 -> 1529
+    //   1866: aload_1
+    //   1867: ldc_w 314
+    //   1870: iconst_0
+    //   1871: invokevirtual 658	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   1874: istore 10
+    //   1876: iload 8
+    //   1878: istore 9
+    //   1880: goto -351 -> 1529
+    //   1883: astore_2
+    //   1884: iconst_0
+    //   1885: istore 8
+    //   1887: aload_2
+    //   1888: invokevirtual 596	java/lang/Exception:printStackTrace	()V
+    //   1891: iload 8
+    //   1893: istore 9
+    //   1895: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1898: ifeq -359 -> 1539
+    //   1901: ldc_w 537
+    //   1904: iconst_2
+    //   1905: aload_2
+    //   1906: invokevirtual 550	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1909: invokestatic 599	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1912: iload 8
+    //   1914: istore 9
+    //   1916: goto -377 -> 1539
+    //   1919: iload 4
+    //   1921: tableswitch	default:+51 -> 1972, 1:+66->1987, 2:+66->1987, 3:+794->2715, 4:+221->2142, 5:+907->2828, 6:+1323->3244, 7:+1800->3721, 8:+2500->4421, 9:+1977->3898
+    //   1973: aload_1
+    //   1974: iload 4
+    //   1976: iload 8
+    //   1978: aload 15
+    //   1980: ldc_w 454
+    //   1983: invokevirtual 458	com/tencent/mobileqq/richstatus/StatusServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
+    //   1986: return
+    //   1987: aload_2
+    //   1988: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   1991: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   1994: astore_2
+    //   1995: aload_2
+    //   1996: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   1999: iconst_4
+    //   2000: isub
+    //   2001: newarray byte
+    //   2003: astore 13
+    //   2005: aload_2
+    //   2006: aload 13
+    //   2008: invokevirtual 499	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   2011: pop
+    //   2012: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   2015: dup
+    //   2016: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   2019: aload 13
+    //   2021: invokevirtual 430	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   2024: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   2027: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   2030: invokevirtual 437	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   2033: invokevirtual 438	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   2036: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   2039: astore_2
+    //   2040: aload_2
+    //   2041: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   2044: istore_3
+    //   2045: aload_2
+    //   2046: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   2049: i2l
+    //   2050: lstore 11
+    //   2052: aload_2
+    //   2053: invokevirtual 444	java/nio/ByteBuffer:get	()B
     //   2056: iconst_1
-    //   2057: istore 9
-    //   2059: goto +2537 -> 4596
-    //   2062: aload 15
-    //   2064: ldc_w 314
-    //   2067: iload 10
-    //   2069: invokevirtual 210	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   2072: iload 9
-    //   2074: istore 8
-    //   2076: goto -108 -> 1968
-    //   2079: iload 9
-    //   2081: istore 10
-    //   2083: iload 8
-    //   2085: istore 9
-    //   2087: iload 4
-    //   2089: iconst_2
-    //   2090: if_icmpne -28 -> 2062
-    //   2093: aload_1
-    //   2094: ldc_w 314
-    //   2097: iconst_0
-    //   2098: invokevirtual 642	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   2101: istore 10
-    //   2103: iload 8
-    //   2105: istore 9
-    //   2107: goto -45 -> 2062
-    //   2110: astore_2
-    //   2111: aload_2
-    //   2112: invokevirtual 591	java/lang/Exception:printStackTrace	()V
-    //   2115: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2118: ifeq +14 -> 2132
-    //   2121: ldc_w 532
-    //   2124: iconst_2
-    //   2125: aload_2
-    //   2126: invokevirtual 545	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   2129: invokestatic 594	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2132: iconst_0
-    //   2133: istore 8
-    //   2135: goto -167 -> 1968
-    //   2138: new 467	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory
-    //   2141: dup
-    //   2142: invokespecial 468	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:<init>	()V
-    //   2145: astore 13
-    //   2147: aload 13
-    //   2149: aload_1
-    //   2150: ldc_w 470
-    //   2153: iconst_0
-    //   2154: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   2157: putfield 473	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:startTime	I
-    //   2160: aload 13
-    //   2162: aload_1
-    //   2163: ldc_w 475
-    //   2166: ldc_w 476
-    //   2169: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   2172: putfield 479	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:endTime	I
-    //   2175: aload 13
-    //   2177: iconst_0
-    //   2178: putfield 483	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:isAddFromCard	Z
-    //   2181: aload 15
-    //   2183: ldc_w 485
-    //   2186: aload 13
-    //   2188: invokevirtual 489	android/os/Bundle:putSerializable	(Ljava/lang/String;Ljava/io/Serializable;)V
-    //   2191: aload_2
-    //   2192: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   2195: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   2198: astore_2
-    //   2199: aload_2
-    //   2200: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   2203: iconst_4
-    //   2204: isub
-    //   2205: newarray byte
-    //   2207: astore 14
-    //   2209: aload_2
-    //   2210: aload 14
-    //   2212: invokevirtual 494	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   2215: pop
-    //   2216: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   2219: dup
-    //   2220: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   2223: aload 14
-    //   2225: invokevirtual 425	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   2228: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   2231: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   2234: invokevirtual 432	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   2237: invokevirtual 433	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   2240: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   2243: astore 14
-    //   2245: aload 14
-    //   2247: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   2250: pop
-    //   2251: aload 14
-    //   2253: invokevirtual 498	java/nio/ByteBuffer:getLong	()J
-    //   2256: lstore 11
-    //   2258: aload 14
-    //   2260: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   2263: pop
-    //   2264: aload 14
-    //   2266: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   2269: pop
-    //   2270: aload 14
-    //   2272: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   2275: istore 5
-    //   2277: aload 14
-    //   2279: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   2282: pop
-    //   2283: aload 14
-    //   2285: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   2288: ifeq +2339 -> 4627
-    //   2291: iconst_1
-    //   2292: istore 9
-    //   2294: aload 14
-    //   2296: invokevirtual 502	java/nio/ByteBuffer:getShort	()S
-    //   2299: istore 6
-    //   2301: aload 13
-    //   2303: new 58	java/util/ArrayList
-    //   2306: dup
-    //   2307: iload 6
-    //   2309: invokespecial 504	java/util/ArrayList:<init>	(I)V
-    //   2312: putfield 507	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
-    //   2315: aload_0
-    //   2316: invokevirtual 408	com/tencent/mobileqq/richstatus/StatusServlet:getAppRuntime	()Lmqq/app/AppRuntime;
-    //   2319: checkcast 286	com/tencent/mobileqq/app/QQAppInterface
-    //   2322: astore_2
-    //   2323: iconst_0
-    //   2324: istore_3
-    //   2325: iload_3
-    //   2326: iload 6
-    //   2328: if_icmpge +163 -> 2491
-    //   2331: aload 14
-    //   2333: invokevirtual 502	java/nio/ByteBuffer:getShort	()S
-    //   2336: newarray byte
-    //   2338: astore 16
-    //   2340: aload 14
-    //   2342: aload 16
-    //   2344: invokevirtual 494	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   2347: pop
-    //   2348: aload 14
-    //   2350: invokevirtual 502	java/nio/ByteBuffer:getShort	()S
-    //   2353: newarray byte
-    //   2355: astore 17
-    //   2357: aload 14
-    //   2359: aload 17
-    //   2361: invokevirtual 494	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   2364: pop
-    //   2365: aload 14
-    //   2367: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   2370: pop
-    //   2371: aload 14
-    //   2373: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   2376: istore 7
-    //   2378: aload 14
-    //   2380: aload 14
-    //   2382: invokevirtual 510	java/nio/ByteBuffer:position	()I
-    //   2385: bipush 8
-    //   2387: iadd
-    //   2388: invokevirtual 513	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
-    //   2391: pop
-    //   2392: iload 7
-    //   2394: iload 5
-    //   2396: if_icmple +6 -> 2402
-    //   2399: goto +2221 -> 4620
-    //   2402: aload 17
-    //   2404: invokestatic 573	com/tencent/mobileqq/richstatus/RichStatus:parseStatus	([B)Lcom/tencent/mobileqq/richstatus/RichStatus;
-    //   2407: astore 17
-    //   2409: aload 17
-    //   2411: iload 7
-    //   2413: i2l
-    //   2414: putfield 576	com/tencent/mobileqq/richstatus/RichStatus:time	J
-    //   2417: aload 17
-    //   2419: aload 16
-    //   2421: putfield 579	com/tencent/mobileqq/richstatus/RichStatus:key	[B
-    //   2424: aload 17
-    //   2426: getfield 579	com/tencent/mobileqq/richstatus/RichStatus:key	[B
-    //   2429: ifnull +20 -> 2449
-    //   2432: aload 17
-    //   2434: new 581	java/lang/String
-    //   2437: dup
-    //   2438: aload 17
-    //   2440: getfield 579	com/tencent/mobileqq/richstatus/RichStatus:key	[B
-    //   2443: invokespecial 584	java/lang/String:<init>	([B)V
-    //   2446: putfield 588	com/tencent/mobileqq/richstatus/RichStatus:feedsId	Ljava/lang/String;
-    //   2449: aload 13
-    //   2451: getfield 507	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
-    //   2454: aload 17
-    //   2456: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   2459: pop
-    //   2460: goto +2160 -> 4620
-    //   2463: astore_2
-    //   2464: aload_2
-    //   2465: invokevirtual 591	java/lang/Exception:printStackTrace	()V
-    //   2468: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2471: ifeq +14 -> 2485
-    //   2474: ldc_w 532
-    //   2477: iconst_2
-    //   2478: aload_2
-    //   2479: invokevirtual 545	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   2482: invokestatic 594	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2485: iconst_0
-    //   2486: istore 8
-    //   2488: goto -520 -> 1968
-    //   2491: aload 13
-    //   2493: getfield 507	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
-    //   2496: invokevirtual 597	java/util/ArrayList:isEmpty	()Z
-    //   2499: ifeq +88 -> 2587
-    //   2502: aload 13
-    //   2504: getfield 473	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:startTime	I
-    //   2507: ifne +80 -> 2587
-    //   2510: aload 13
-    //   2512: getfield 479	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:endTime	I
-    //   2515: ldc_w 476
-    //   2518: if_icmpne +69 -> 2587
-    //   2521: aload_0
-    //   2522: invokevirtual 408	com/tencent/mobileqq/richstatus/StatusServlet:getAppRuntime	()Lmqq/app/AppRuntime;
-    //   2525: bipush 51
-    //   2527: invokevirtual 414	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
-    //   2530: checkcast 599	amsw
-    //   2533: lload 11
-    //   2535: invokestatic 603	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   2538: invokevirtual 606	amsw:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
-    //   2541: astore 14
-    //   2543: aload 14
-    //   2545: ifnull +42 -> 2587
+    //   2057: if_icmpne +2564 -> 4621
+    //   2060: iconst_1
+    //   2061: istore 9
+    //   2063: goto +2540 -> 4603
+    //   2066: aload 15
+    //   2068: ldc_w 314
+    //   2071: iload 10
+    //   2073: invokevirtual 210	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   2076: iload 9
+    //   2078: istore 8
+    //   2080: goto -108 -> 1972
+    //   2083: iload 9
+    //   2085: istore 10
+    //   2087: iload 8
+    //   2089: istore 9
+    //   2091: iload 4
+    //   2093: iconst_2
+    //   2094: if_icmpne -28 -> 2066
+    //   2097: aload_1
+    //   2098: ldc_w 314
+    //   2101: iconst_0
+    //   2102: invokevirtual 658	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   2105: istore 10
+    //   2107: iload 8
+    //   2109: istore 9
+    //   2111: goto -45 -> 2066
+    //   2114: astore_2
+    //   2115: aload_2
+    //   2116: invokevirtual 596	java/lang/Exception:printStackTrace	()V
+    //   2119: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2122: ifeq +14 -> 2136
+    //   2125: ldc_w 537
+    //   2128: iconst_2
+    //   2129: aload_2
+    //   2130: invokevirtual 550	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   2133: invokestatic 599	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2136: iconst_0
+    //   2137: istore 8
+    //   2139: goto -167 -> 1972
+    //   2142: new 472	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory
+    //   2145: dup
+    //   2146: invokespecial 473	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:<init>	()V
+    //   2149: astore 13
+    //   2151: aload 13
+    //   2153: aload_1
+    //   2154: ldc_w 475
+    //   2157: iconst_0
+    //   2158: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   2161: putfield 478	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:startTime	I
+    //   2164: aload 13
+    //   2166: aload_1
+    //   2167: ldc_w 480
+    //   2170: ldc_w 481
+    //   2173: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   2176: putfield 484	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:endTime	I
+    //   2179: aload 13
+    //   2181: iconst_0
+    //   2182: putfield 488	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:isAddFromCard	Z
+    //   2185: aload 15
+    //   2187: ldc_w 490
+    //   2190: aload 13
+    //   2192: invokevirtual 494	android/os/Bundle:putSerializable	(Ljava/lang/String;Ljava/io/Serializable;)V
+    //   2195: aload_2
+    //   2196: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   2199: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   2202: astore_2
+    //   2203: aload_2
+    //   2204: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   2207: iconst_4
+    //   2208: isub
+    //   2209: newarray byte
+    //   2211: astore 14
+    //   2213: aload_2
+    //   2214: aload 14
+    //   2216: invokevirtual 499	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   2219: pop
+    //   2220: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   2223: dup
+    //   2224: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   2227: aload 14
+    //   2229: invokevirtual 430	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   2232: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   2235: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   2238: invokevirtual 437	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   2241: invokevirtual 438	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   2244: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   2247: astore 14
+    //   2249: aload 14
+    //   2251: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   2254: pop
+    //   2255: aload 14
+    //   2257: invokevirtual 503	java/nio/ByteBuffer:getLong	()J
+    //   2260: lstore 11
+    //   2262: aload 14
+    //   2264: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   2267: pop
+    //   2268: aload 14
+    //   2270: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   2273: pop
+    //   2274: aload 14
+    //   2276: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   2279: istore 5
+    //   2281: aload 14
+    //   2283: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   2286: pop
+    //   2287: aload 14
+    //   2289: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   2292: ifeq +2342 -> 4634
+    //   2295: iconst_1
+    //   2296: istore 9
+    //   2298: aload 14
+    //   2300: invokevirtual 507	java/nio/ByteBuffer:getShort	()S
+    //   2303: istore 6
+    //   2305: aload 13
+    //   2307: new 58	java/util/ArrayList
+    //   2310: dup
+    //   2311: iload 6
+    //   2313: invokespecial 509	java/util/ArrayList:<init>	(I)V
+    //   2316: putfield 512	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
+    //   2319: aload_0
+    //   2320: invokevirtual 408	com/tencent/mobileqq/richstatus/StatusServlet:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   2323: checkcast 286	com/tencent/mobileqq/app/QQAppInterface
+    //   2326: astore_2
+    //   2327: iconst_0
+    //   2328: istore_3
+    //   2329: iload_3
+    //   2330: iload 6
+    //   2332: if_icmpge +163 -> 2495
+    //   2335: aload 14
+    //   2337: invokevirtual 507	java/nio/ByteBuffer:getShort	()S
+    //   2340: newarray byte
+    //   2342: astore 16
+    //   2344: aload 14
+    //   2346: aload 16
+    //   2348: invokevirtual 499	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   2351: pop
+    //   2352: aload 14
+    //   2354: invokevirtual 507	java/nio/ByteBuffer:getShort	()S
+    //   2357: newarray byte
+    //   2359: astore 17
+    //   2361: aload 14
+    //   2363: aload 17
+    //   2365: invokevirtual 499	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   2368: pop
+    //   2369: aload 14
+    //   2371: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   2374: pop
+    //   2375: aload 14
+    //   2377: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   2380: istore 7
+    //   2382: aload 14
+    //   2384: aload 14
+    //   2386: invokevirtual 515	java/nio/ByteBuffer:position	()I
+    //   2389: bipush 8
+    //   2391: iadd
+    //   2392: invokevirtual 518	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   2395: pop
+    //   2396: iload 7
+    //   2398: iload 5
+    //   2400: if_icmple +6 -> 2406
+    //   2403: goto +2224 -> 4627
+    //   2406: aload 17
+    //   2408: invokestatic 578	com/tencent/mobileqq/richstatus/RichStatus:parseStatus	([B)Lcom/tencent/mobileqq/richstatus/RichStatus;
+    //   2411: astore 17
+    //   2413: aload 17
+    //   2415: iload 7
+    //   2417: i2l
+    //   2418: putfield 581	com/tencent/mobileqq/richstatus/RichStatus:time	J
+    //   2421: aload 17
+    //   2423: aload 16
+    //   2425: putfield 584	com/tencent/mobileqq/richstatus/RichStatus:key	[B
+    //   2428: aload 17
+    //   2430: getfield 584	com/tencent/mobileqq/richstatus/RichStatus:key	[B
+    //   2433: ifnull +20 -> 2453
+    //   2436: aload 17
+    //   2438: new 586	java/lang/String
+    //   2441: dup
+    //   2442: aload 17
+    //   2444: getfield 584	com/tencent/mobileqq/richstatus/RichStatus:key	[B
+    //   2447: invokespecial 589	java/lang/String:<init>	([B)V
+    //   2450: putfield 593	com/tencent/mobileqq/richstatus/RichStatus:feedsId	Ljava/lang/String;
+    //   2453: aload 13
+    //   2455: getfield 512	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
+    //   2458: aload 17
+    //   2460: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   2463: pop
+    //   2464: goto +2163 -> 4627
+    //   2467: astore_2
+    //   2468: aload_2
+    //   2469: invokevirtual 596	java/lang/Exception:printStackTrace	()V
+    //   2472: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2475: ifeq +14 -> 2489
+    //   2478: ldc_w 537
+    //   2481: iconst_2
+    //   2482: aload_2
+    //   2483: invokevirtual 550	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   2486: invokestatic 599	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2489: iconst_0
+    //   2490: istore 8
+    //   2492: goto -520 -> 1972
+    //   2495: aload 13
+    //   2497: getfield 512	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
+    //   2500: invokevirtual 602	java/util/ArrayList:isEmpty	()Z
+    //   2503: ifeq +89 -> 2592
+    //   2506: aload 13
+    //   2508: getfield 478	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:startTime	I
+    //   2511: ifne +81 -> 2592
+    //   2514: aload 13
+    //   2516: getfield 484	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:endTime	I
+    //   2519: ldc_w 481
+    //   2522: if_icmpne +70 -> 2592
+    //   2525: aload_0
+    //   2526: invokevirtual 408	com/tencent/mobileqq/richstatus/StatusServlet:getAppRuntime	()Lmqq/app/AppRuntime;
+    //   2529: getstatic 605	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
+    //   2532: invokevirtual 419	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
+    //   2535: checkcast 607	anvk
+    //   2538: lload 11
+    //   2540: invokestatic 611	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   2543: invokevirtual 614	anvk:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   2546: astore 14
     //   2548: aload 14
-    //   2550: invokevirtual 612	com/tencent/mobileqq/data/Card:getRichStatus	()Lcom/tencent/mobileqq/richstatus/RichStatus;
-    //   2553: ifnull +34 -> 2587
-    //   2556: aload 14
-    //   2558: invokevirtual 612	com/tencent/mobileqq/data/Card:getRichStatus	()Lcom/tencent/mobileqq/richstatus/RichStatus;
-    //   2561: invokevirtual 613	com/tencent/mobileqq/richstatus/RichStatus:isEmpty	()Z
-    //   2564: ifne +23 -> 2587
-    //   2567: aload 13
-    //   2569: getfield 507	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
-    //   2572: aload 14
-    //   2574: invokevirtual 612	com/tencent/mobileqq/data/Card:getRichStatus	()Lcom/tencent/mobileqq/richstatus/RichStatus;
-    //   2577: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   2580: pop
-    //   2581: aload 13
-    //   2583: iconst_1
-    //   2584: putfield 483	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:isAddFromCard	Z
-    //   2587: aload_2
-    //   2588: bipush 41
-    //   2590: invokevirtual 617	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   2593: checkcast 619	com/tencent/mobileqq/app/SignatureHandler
-    //   2596: astore 14
-    //   2598: aload 13
-    //   2600: getfield 507	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
-    //   2603: invokevirtual 67	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   2606: astore 16
-    //   2608: aload 16
-    //   2610: invokeinterface 73 1 0
-    //   2615: ifeq +42 -> 2657
-    //   2618: aload 16
-    //   2620: invokeinterface 77 1 0
-    //   2625: checkcast 569	com/tencent/mobileqq/richstatus/RichStatus
-    //   2628: astore 17
-    //   2630: aload 14
-    //   2632: ifnull -24 -> 2608
-    //   2635: aload 14
-    //   2637: lload 11
-    //   2639: invokestatic 603	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   2642: aload 17
-    //   2644: getfield 588	com/tencent/mobileqq/richstatus/RichStatus:feedsId	Ljava/lang/String;
-    //   2647: sipush 255
-    //   2650: iconst_1
-    //   2651: invokevirtual 622	com/tencent/mobileqq/app/SignatureHandler:a	(Ljava/lang/String;Ljava/lang/String;IZ)V
-    //   2654: goto -46 -> 2608
-    //   2657: aload 13
-    //   2659: iload 9
-    //   2661: putfield 625	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:over	Z
-    //   2664: aload_2
-    //   2665: bipush 58
-    //   2667: invokevirtual 626	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   2670: checkcast 628	com/tencent/mobileqq/app/SignatureManager
-    //   2673: astore 14
-    //   2675: aload 14
-    //   2677: ifnull +28 -> 2705
-    //   2680: aload_2
-    //   2681: invokevirtual 304	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   2684: lload 11
-    //   2686: invokestatic 632	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   2689: invokevirtual 635	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2692: ifeq +13 -> 2705
-    //   2695: aload 14
-    //   2697: aload 13
-    //   2699: getfield 507	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
-    //   2702: invokevirtual 638	com/tencent/mobileqq/app/SignatureManager:a	(Ljava/util/List;)V
-    //   2705: goto -737 -> 1968
-    //   2708: aload 15
-    //   2710: ldc_w 644
-    //   2713: aload_1
-    //   2714: ldc_w 644
-    //   2717: iconst_1
-    //   2718: invokevirtual 642	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   2721: invokevirtual 210	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   2724: aload 15
-    //   2726: ldc_w 646
-    //   2729: aload_1
-    //   2730: ldc_w 646
-    //   2733: iconst_m1
-    //   2734: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   2737: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   2740: new 648	com/qq/jce/wup/UniPacket
-    //   2743: dup
-    //   2744: iconst_1
-    //   2745: invokespecial 651	com/qq/jce/wup/UniPacket:<init>	(Z)V
-    //   2748: astore 13
-    //   2750: aload 13
-    //   2752: ldc_w 653
-    //   2755: invokevirtual 657	com/qq/jce/wup/UniPacket:setEncodeName	(Ljava/lang/String;)V
-    //   2758: aload 13
-    //   2760: aload_2
-    //   2761: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   2764: invokevirtual 660	com/qq/jce/wup/UniPacket:decode	([B)V
-    //   2767: aload 13
-    //   2769: ldc_w 662
-    //   2772: new 664	PersonalState/RespGetSameStateList
-    //   2775: dup
-    //   2776: invokespecial 665	PersonalState/RespGetSameStateList:<init>	()V
-    //   2779: invokevirtual 669	com/qq/jce/wup/UniPacket:getByClass	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   2782: checkcast 664	PersonalState/RespGetSameStateList
-    //   2785: astore_2
-    //   2786: aload_2
-    //   2787: getfield 673	PersonalState/RespGetSameStateList:oHead	LPersonalState/BusiRespHead;
-    //   2790: getfield 678	PersonalState/BusiRespHead:iReplyCode	I
-    //   2793: ifne +15 -> 2808
-    //   2796: aload 15
-    //   2798: ldc_w 680
-    //   2801: aload_2
-    //   2802: invokevirtual 489	android/os/Bundle:putSerializable	(Ljava/lang/String;Ljava/io/Serializable;)V
-    //   2805: goto -837 -> 1968
-    //   2808: iconst_0
-    //   2809: istore 8
-    //   2811: goto -6 -> 2805
-    //   2814: astore_2
+    //   2550: ifnull +42 -> 2592
+    //   2553: aload 14
+    //   2555: invokevirtual 620	com/tencent/mobileqq/data/Card:getRichStatus	()Lcom/tencent/mobileqq/richstatus/RichStatus;
+    //   2558: ifnull +34 -> 2592
+    //   2561: aload 14
+    //   2563: invokevirtual 620	com/tencent/mobileqq/data/Card:getRichStatus	()Lcom/tencent/mobileqq/richstatus/RichStatus;
+    //   2566: invokevirtual 621	com/tencent/mobileqq/richstatus/RichStatus:isEmpty	()Z
+    //   2569: ifne +23 -> 2592
+    //   2572: aload 13
+    //   2574: getfield 512	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
+    //   2577: aload 14
+    //   2579: invokevirtual 620	com/tencent/mobileqq/data/Card:getRichStatus	()Lcom/tencent/mobileqq/richstatus/RichStatus;
+    //   2582: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   2585: pop
+    //   2586: aload 13
+    //   2588: iconst_1
+    //   2589: putfield 488	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:isAddFromCard	Z
+    //   2592: aload_2
+    //   2593: getstatic 626	com/tencent/mobileqq/app/BusinessHandlerFactory:SIGNATURE_HANDLER	I
+    //   2596: invokevirtual 630	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   2599: checkcast 632	com/tencent/mobileqq/app/SignatureHandler
+    //   2602: astore 14
+    //   2604: aload 13
+    //   2606: getfield 512	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
+    //   2609: invokevirtual 67	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   2612: astore 16
+    //   2614: aload 16
+    //   2616: invokeinterface 73 1 0
+    //   2621: ifeq +42 -> 2663
+    //   2624: aload 16
+    //   2626: invokeinterface 77 1 0
+    //   2631: checkcast 574	com/tencent/mobileqq/richstatus/RichStatus
+    //   2634: astore 17
+    //   2636: aload 14
+    //   2638: ifnull -24 -> 2614
+    //   2641: aload 14
+    //   2643: lload 11
+    //   2645: invokestatic 611	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   2648: aload 17
+    //   2650: getfield 593	com/tencent/mobileqq/richstatus/RichStatus:feedsId	Ljava/lang/String;
+    //   2653: sipush 255
+    //   2656: iconst_1
+    //   2657: invokevirtual 635	com/tencent/mobileqq/app/SignatureHandler:a	(Ljava/lang/String;Ljava/lang/String;IZ)V
+    //   2660: goto -46 -> 2614
+    //   2663: aload 13
+    //   2665: iload 9
+    //   2667: putfield 638	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:over	Z
+    //   2670: aload_2
+    //   2671: getstatic 641	com/tencent/mobileqq/app/QQManagerFactory:SIGNATURE_MANAGER	I
+    //   2674: invokevirtual 642	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   2677: checkcast 644	com/tencent/mobileqq/app/SignatureManager
+    //   2680: astore 14
+    //   2682: aload 14
+    //   2684: ifnull +28 -> 2712
+    //   2687: aload_2
+    //   2688: invokevirtual 304	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   2691: lload 11
+    //   2693: invokestatic 648	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   2696: invokevirtual 651	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2699: ifeq +13 -> 2712
+    //   2702: aload 14
+    //   2704: aload 13
+    //   2706: getfield 512	com/tencent/mobileqq/richstatus/StatusServlet$RspGetHistory:richStatus	Ljava/util/ArrayList;
+    //   2709: invokevirtual 654	com/tencent/mobileqq/app/SignatureManager:a	(Ljava/util/List;)V
+    //   2712: goto -740 -> 1972
+    //   2715: aload 15
+    //   2717: ldc_w 660
+    //   2720: aload_1
+    //   2721: ldc_w 660
+    //   2724: iconst_1
+    //   2725: invokevirtual 658	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   2728: invokevirtual 210	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   2731: aload 15
+    //   2733: ldc_w 662
+    //   2736: aload_1
+    //   2737: ldc_w 662
+    //   2740: iconst_m1
+    //   2741: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   2744: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   2747: new 664	com/qq/jce/wup/UniPacket
+    //   2750: dup
+    //   2751: iconst_1
+    //   2752: invokespecial 667	com/qq/jce/wup/UniPacket:<init>	(Z)V
+    //   2755: astore 13
+    //   2757: aload 13
+    //   2759: ldc_w 669
+    //   2762: invokevirtual 673	com/qq/jce/wup/UniPacket:setEncodeName	(Ljava/lang/String;)V
+    //   2765: aload 13
+    //   2767: aload_2
+    //   2768: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   2771: invokevirtual 676	com/qq/jce/wup/UniPacket:decode	([B)V
+    //   2774: aload 13
+    //   2776: ldc_w 678
+    //   2779: new 680	PersonalState/RespGetSameStateList
+    //   2782: dup
+    //   2783: invokespecial 681	PersonalState/RespGetSameStateList:<init>	()V
+    //   2786: invokevirtual 685	com/qq/jce/wup/UniPacket:getByClass	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   2789: checkcast 680	PersonalState/RespGetSameStateList
+    //   2792: astore_2
+    //   2793: aload_2
+    //   2794: getfield 689	PersonalState/RespGetSameStateList:oHead	LPersonalState/BusiRespHead;
+    //   2797: getfield 694	PersonalState/BusiRespHead:iReplyCode	I
+    //   2800: ifne +15 -> 2815
+    //   2803: aload 15
+    //   2805: ldc_w 696
+    //   2808: aload_2
+    //   2809: invokevirtual 494	android/os/Bundle:putSerializable	(Ljava/lang/String;Ljava/io/Serializable;)V
+    //   2812: goto -840 -> 1972
     //   2815: iconst_0
     //   2816: istore 8
-    //   2818: goto -850 -> 1968
-    //   2821: iload 8
-    //   2823: ifeq -855 -> 1968
-    //   2826: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   2829: dup
-    //   2830: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   2833: astore 13
-    //   2835: aload 13
-    //   2837: aload_2
-    //   2838: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   2841: invokestatic 424	bgau:b	([B)[B
-    //   2844: invokevirtual 425	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   2847: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   2850: astore_2
-    //   2851: aload_2
-    //   2852: ifnull +368 -> 3220
-    //   2855: aload_2
-    //   2856: getfield 428	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   2859: invokevirtual 429	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   2862: ifeq +358 -> 3220
-    //   2865: aload_2
-    //   2866: getfield 428	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   2869: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   2872: istore_3
-    //   2873: iload_3
-    //   2874: ifne +331 -> 3205
-    //   2877: aload_2
-    //   2878: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   2881: invokevirtual 432	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   2884: invokevirtual 433	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   2887: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   2890: astore_2
-    //   2891: aload_2
-    //   2892: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   2895: istore_3
-    //   2896: iload_3
-    //   2897: ifne +239 -> 3136
-    //   2900: aload_2
-    //   2901: invokevirtual 502	java/nio/ByteBuffer:getShort	()S
-    //   2904: istore 5
-    //   2906: new 58	java/util/ArrayList
-    //   2909: dup
-    //   2910: invokespecial 59	java/util/ArrayList:<init>	()V
-    //   2913: astore 13
-    //   2915: iconst_0
-    //   2916: istore_3
-    //   2917: iload_3
-    //   2918: iload 5
-    //   2920: if_icmpge +90 -> 3010
-    //   2923: aload_2
-    //   2924: invokevirtual 502	java/nio/ByteBuffer:getShort	()S
-    //   2927: newarray byte
-    //   2929: astore 14
-    //   2931: aload_2
-    //   2932: aload 14
-    //   2934: invokevirtual 494	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   2937: pop
-    //   2938: aload 13
-    //   2940: new 581	java/lang/String
-    //   2943: dup
-    //   2944: aload 14
-    //   2946: invokespecial 584	java/lang/String:<init>	([B)V
-    //   2949: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   2952: pop
-    //   2953: iload_3
-    //   2954: iconst_1
-    //   2955: iadd
-    //   2956: istore_3
-    //   2957: goto -40 -> 2917
-    //   2960: astore_2
-    //   2961: aload_2
-    //   2962: invokevirtual 681	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
-    //   2965: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2968: ifeq +33 -> 3001
-    //   2971: ldc_w 532
-    //   2974: iconst_2
-    //   2975: new 172	java/lang/StringBuilder
-    //   2978: dup
-    //   2979: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   2982: ldc_w 534
-    //   2985: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2988: aload_2
-    //   2989: invokevirtual 537	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
+    //   2818: goto -6 -> 2812
+    //   2821: astore_2
+    //   2822: iconst_0
+    //   2823: istore 8
+    //   2825: goto -853 -> 1972
+    //   2828: iload 8
+    //   2830: ifeq -858 -> 1972
+    //   2833: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   2836: dup
+    //   2837: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   2840: astore 13
+    //   2842: aload 13
+    //   2844: aload_2
+    //   2845: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   2848: invokestatic 429	bhjl:b	([B)[B
+    //   2851: invokevirtual 430	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   2854: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   2857: astore_2
+    //   2858: aload_2
+    //   2859: ifnull +368 -> 3227
+    //   2862: aload_2
+    //   2863: getfield 433	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   2866: invokevirtual 434	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   2869: ifeq +358 -> 3227
+    //   2872: aload_2
+    //   2873: getfield 433	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   2876: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   2879: istore_3
+    //   2880: iload_3
+    //   2881: ifne +331 -> 3212
+    //   2884: aload_2
+    //   2885: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   2888: invokevirtual 437	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   2891: invokevirtual 438	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   2894: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   2897: astore_2
+    //   2898: aload_2
+    //   2899: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   2902: istore_3
+    //   2903: iload_3
+    //   2904: ifne +239 -> 3143
+    //   2907: aload_2
+    //   2908: invokevirtual 507	java/nio/ByteBuffer:getShort	()S
+    //   2911: istore 5
+    //   2913: new 58	java/util/ArrayList
+    //   2916: dup
+    //   2917: invokespecial 59	java/util/ArrayList:<init>	()V
+    //   2920: astore 13
+    //   2922: iconst_0
+    //   2923: istore_3
+    //   2924: iload_3
+    //   2925: iload 5
+    //   2927: if_icmpge +90 -> 3017
+    //   2930: aload_2
+    //   2931: invokevirtual 507	java/nio/ByteBuffer:getShort	()S
+    //   2934: newarray byte
+    //   2936: astore 14
+    //   2938: aload_2
+    //   2939: aload 14
+    //   2941: invokevirtual 499	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   2944: pop
+    //   2945: aload 13
+    //   2947: new 586	java/lang/String
+    //   2950: dup
+    //   2951: aload 14
+    //   2953: invokespecial 589	java/lang/String:<init>	([B)V
+    //   2956: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   2959: pop
+    //   2960: iload_3
+    //   2961: iconst_1
+    //   2962: iadd
+    //   2963: istore_3
+    //   2964: goto -40 -> 2924
+    //   2967: astore_2
+    //   2968: aload_2
+    //   2969: invokevirtual 697	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
+    //   2972: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2975: ifeq +33 -> 3008
+    //   2978: ldc_w 537
+    //   2981: iconst_2
+    //   2982: new 172	java/lang/StringBuilder
+    //   2985: dup
+    //   2986: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   2989: ldc_w 539
     //   2992: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2995: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2998: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3001: iconst_0
-    //   3002: istore 8
-    //   3004: aload 13
-    //   3006: astore_2
-    //   3007: goto -156 -> 2851
-    //   3010: new 58	java/util/ArrayList
-    //   3013: dup
-    //   3014: invokespecial 59	java/util/ArrayList:<init>	()V
-    //   3017: astore 14
-    //   3019: new 58	java/util/ArrayList
-    //   3022: dup
-    //   3023: invokespecial 59	java/util/ArrayList:<init>	()V
-    //   3026: astore 16
-    //   3028: aload_2
-    //   3029: invokevirtual 502	java/nio/ByteBuffer:getShort	()S
-    //   3032: istore 6
-    //   3034: iconst_0
-    //   3035: istore_3
-    //   3036: iload_3
-    //   3037: iload 6
-    //   3039: if_icmpge +53 -> 3092
-    //   3042: aload_2
-    //   3043: invokevirtual 502	java/nio/ByteBuffer:getShort	()S
-    //   3046: newarray byte
-    //   3048: astore 17
-    //   3050: aload_2
-    //   3051: aload 17
-    //   3053: invokevirtual 494	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-    //   3056: pop
-    //   3057: aload 14
-    //   3059: new 581	java/lang/String
-    //   3062: dup
-    //   3063: aload 17
-    //   3065: invokespecial 584	java/lang/String:<init>	([B)V
-    //   3068: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   3071: pop
-    //   3072: aload 16
-    //   3074: aload_2
-    //   3075: invokevirtual 492	java/nio/ByteBuffer:getInt	()I
-    //   3078: invokestatic 686	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   3081: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   3084: pop
-    //   3085: iload_3
-    //   3086: iconst_1
-    //   3087: iadd
-    //   3088: istore_3
-    //   3089: goto -53 -> 3036
-    //   3092: iload 5
-    //   3094: ifle +16 -> 3110
-    //   3097: aload 15
-    //   3099: ldc_w 688
-    //   3102: aload 13
-    //   3104: invokevirtual 692	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   3107: goto +1526 -> 4633
-    //   3110: aload 15
-    //   3112: ldc_w 688
-    //   3115: aload 14
-    //   3117: invokevirtual 692	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   3120: aload 15
-    //   3122: ldc_w 694
-    //   3125: aload 16
-    //   3127: invokevirtual 697	android/os/Bundle:putIntegerArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   3130: iconst_0
-    //   3131: istore 8
-    //   3133: goto +1500 -> 4633
-    //   3136: iconst_0
-    //   3137: istore 8
-    //   3139: aload 15
-    //   3141: ldc_w 699
-    //   3144: iload_3
-    //   3145: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   3148: goto +1485 -> 4633
-    //   3151: astore_2
-    //   3152: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3155: ifeq +33 -> 3188
-    //   3158: ldc_w 532
-    //   3161: iconst_2
-    //   3162: new 172	java/lang/StringBuilder
-    //   3165: dup
-    //   3166: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   3169: ldc_w 701
-    //   3172: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3175: aload_2
-    //   3176: invokevirtual 545	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   2995: aload_2
+    //   2996: invokevirtual 542	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
+    //   2999: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3002: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3005: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3008: iconst_0
+    //   3009: istore 8
+    //   3011: aload 13
+    //   3013: astore_2
+    //   3014: goto -156 -> 2858
+    //   3017: new 58	java/util/ArrayList
+    //   3020: dup
+    //   3021: invokespecial 59	java/util/ArrayList:<init>	()V
+    //   3024: astore 14
+    //   3026: new 58	java/util/ArrayList
+    //   3029: dup
+    //   3030: invokespecial 59	java/util/ArrayList:<init>	()V
+    //   3033: astore 16
+    //   3035: aload_2
+    //   3036: invokevirtual 507	java/nio/ByteBuffer:getShort	()S
+    //   3039: istore 6
+    //   3041: iconst_0
+    //   3042: istore_3
+    //   3043: iload_3
+    //   3044: iload 6
+    //   3046: if_icmpge +53 -> 3099
+    //   3049: aload_2
+    //   3050: invokevirtual 507	java/nio/ByteBuffer:getShort	()S
+    //   3053: newarray byte
+    //   3055: astore 17
+    //   3057: aload_2
+    //   3058: aload 17
+    //   3060: invokevirtual 499	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   3063: pop
+    //   3064: aload 14
+    //   3066: new 586	java/lang/String
+    //   3069: dup
+    //   3070: aload 17
+    //   3072: invokespecial 589	java/lang/String:<init>	([B)V
+    //   3075: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   3078: pop
+    //   3079: aload 16
+    //   3081: aload_2
+    //   3082: invokevirtual 497	java/nio/ByteBuffer:getInt	()I
+    //   3085: invokestatic 702	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   3088: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   3091: pop
+    //   3092: iload_3
+    //   3093: iconst_1
+    //   3094: iadd
+    //   3095: istore_3
+    //   3096: goto -53 -> 3043
+    //   3099: iload 5
+    //   3101: ifle +16 -> 3117
+    //   3104: aload 15
+    //   3106: ldc_w 704
+    //   3109: aload 13
+    //   3111: invokevirtual 708	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   3114: goto +1526 -> 4640
+    //   3117: aload 15
+    //   3119: ldc_w 704
+    //   3122: aload 14
+    //   3124: invokevirtual 708	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   3127: aload 15
+    //   3129: ldc_w 710
+    //   3132: aload 16
+    //   3134: invokevirtual 713	android/os/Bundle:putIntegerArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   3137: iconst_0
+    //   3138: istore 8
+    //   3140: goto +1500 -> 4640
+    //   3143: iconst_0
+    //   3144: istore 8
+    //   3146: aload 15
+    //   3148: ldc_w 715
+    //   3151: iload_3
+    //   3152: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   3155: goto +1485 -> 4640
+    //   3158: astore_2
+    //   3159: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3162: ifeq +33 -> 3195
+    //   3165: ldc_w 537
+    //   3168: iconst_2
+    //   3169: new 172	java/lang/StringBuilder
+    //   3172: dup
+    //   3173: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   3176: ldc_w 717
     //   3179: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3182: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3185: invokestatic 594	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3188: iconst_0
-    //   3189: istore 8
-    //   3191: aload 15
-    //   3193: ldc_w 699
-    //   3196: sipush -1002
-    //   3199: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   3202: goto +1431 -> 4633
-    //   3205: iconst_0
-    //   3206: istore 8
-    //   3208: aload 15
-    //   3210: ldc_w 699
-    //   3213: iload_3
-    //   3214: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   3217: goto +1416 -> 4633
-    //   3220: iconst_0
-    //   3221: istore 8
-    //   3223: aload 15
-    //   3225: ldc_w 699
-    //   3228: sipush -1001
-    //   3231: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   3234: goto +1399 -> 4633
-    //   3237: new 648	com/qq/jce/wup/UniPacket
-    //   3240: dup
-    //   3241: iconst_1
-    //   3242: invokespecial 651	com/qq/jce/wup/UniPacket:<init>	(Z)V
-    //   3245: astore 14
-    //   3247: aload 14
-    //   3249: ldc_w 653
-    //   3252: invokevirtual 657	com/qq/jce/wup/UniPacket:setEncodeName	(Ljava/lang/String;)V
-    //   3255: aload 14
-    //   3257: aload_2
-    //   3258: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   3261: invokevirtual 660	com/qq/jce/wup/UniPacket:decode	([B)V
-    //   3264: aload 14
-    //   3266: ldc_w 703
-    //   3269: new 705	PersonalState/RespGetHotState
-    //   3272: dup
-    //   3273: invokespecial 706	PersonalState/RespGetHotState:<init>	()V
-    //   3276: invokevirtual 669	com/qq/jce/wup/UniPacket:getByClass	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   3279: checkcast 705	PersonalState/RespGetHotState
-    //   3282: astore 14
-    //   3284: aload 14
-    //   3286: getfield 707	PersonalState/RespGetHotState:oHead	LPersonalState/BusiRespHead;
-    //   3289: getfield 678	PersonalState/BusiRespHead:iReplyCode	I
-    //   3292: ifne +400 -> 3692
-    //   3295: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3298: ifeq +159 -> 3457
-    //   3301: new 172	java/lang/StringBuilder
-    //   3304: dup
-    //   3305: ldc_w 709
-    //   3308: invokespecial 711	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   3311: astore 16
-    //   3313: aload 16
-    //   3315: ldc_w 713
-    //   3318: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3321: astore 17
-    //   3323: aload 14
-    //   3325: getfield 716	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
-    //   3328: ifnonnull +102 -> 3430
-    //   3331: ldc_w 718
-    //   3334: astore_2
-    //   3335: aload 17
-    //   3337: aload_2
-    //   3338: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   3341: ldc_w 720
-    //   3344: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3347: pop
-    //   3348: aload 14
-    //   3350: getfield 716	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
-    //   3353: ifnull +92 -> 3445
-    //   3356: aload 14
-    //   3358: getfield 716	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
-    //   3361: invokevirtual 721	java/util/ArrayList:size	()I
-    //   3364: ifle +81 -> 3445
-    //   3367: aload 14
-    //   3369: getfield 716	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
-    //   3372: invokevirtual 67	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   3375: astore_2
-    //   3376: aload_2
-    //   3377: invokeinterface 73 1 0
-    //   3382: ifeq +63 -> 3445
-    //   3385: aload_2
-    //   3386: invokeinterface 77 1 0
-    //   3391: checkcast 723	PersonalState/HotRishState
-    //   3394: astore 17
-    //   3396: aload 16
-    //   3398: ldc_w 725
-    //   3401: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3404: aload 17
-    //   3406: getfield 728	PersonalState/HotRishState:iActId	I
-    //   3409: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3412: ldc_w 730
-    //   3415: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3418: aload 17
-    //   3420: getfield 733	PersonalState/HotRishState:iDataId	I
-    //   3423: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3426: pop
-    //   3427: goto -51 -> 3376
-    //   3430: aload 14
-    //   3432: getfield 716	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
-    //   3435: invokevirtual 721	java/util/ArrayList:size	()I
-    //   3438: invokestatic 686	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   3441: astore_2
-    //   3442: goto -107 -> 3335
-    //   3445: ldc_w 735
-    //   3448: iconst_2
-    //   3449: aload 16
-    //   3451: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3454: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3457: new 58	java/util/ArrayList
-    //   3460: dup
-    //   3461: bipush 6
-    //   3463: invokespecial 504	java/util/ArrayList:<init>	(I)V
-    //   3466: astore_2
-    //   3467: aload 14
-    //   3469: getfield 716	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
-    //   3472: ifnull +208 -> 3680
-    //   3475: aload 14
-    //   3477: getfield 716	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
-    //   3480: invokevirtual 721	java/util/ArrayList:size	()I
-    //   3483: ifle +197 -> 3680
-    //   3486: aload 13
-    //   3488: ifnull +82 -> 3570
-    //   3491: aload 13
-    //   3493: invokevirtual 737	baoy:a	()Lcom/tencent/mobileqq/richstatus/RichStatus;
-    //   3496: astore 16
-    //   3498: aload 14
-    //   3500: getfield 716	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
-    //   3503: invokevirtual 721	java/util/ArrayList:size	()I
-    //   3506: iconst_1
-    //   3507: isub
-    //   3508: istore_3
-    //   3509: iload_3
-    //   3510: iflt +60 -> 3570
-    //   3513: aload 14
-    //   3515: getfield 716	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
-    //   3518: iload_3
-    //   3519: invokevirtual 740	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   3522: checkcast 723	PersonalState/HotRishState
-    //   3525: astore 17
-    //   3527: aload 17
-    //   3529: getfield 728	PersonalState/HotRishState:iActId	I
-    //   3532: aload 16
-    //   3534: getfield 743	com/tencent/mobileqq/richstatus/RichStatus:actionId	I
-    //   3537: if_icmpne +26 -> 3563
-    //   3540: aload 17
-    //   3542: getfield 733	PersonalState/HotRishState:iDataId	I
-    //   3545: aload 16
-    //   3547: getfield 746	com/tencent/mobileqq/richstatus/RichStatus:dataId	I
-    //   3550: if_icmpne +13 -> 3563
-    //   3553: aload 14
-    //   3555: getfield 716	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
-    //   3558: iload_3
-    //   3559: invokevirtual 749	java/util/ArrayList:remove	(I)Ljava/lang/Object;
-    //   3562: pop
-    //   3563: iload_3
-    //   3564: iconst_1
-    //   3565: isub
-    //   3566: istore_3
-    //   3567: goto -58 -> 3509
-    //   3570: iconst_0
-    //   3571: istore_3
-    //   3572: iload_3
-    //   3573: bipush 6
-    //   3575: if_icmpge +24 -> 3599
-    //   3578: aload_2
-    //   3579: aload 14
-    //   3581: getfield 716	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
-    //   3584: iload_3
-    //   3585: invokevirtual 740	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   3588: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   3591: pop
-    //   3592: iload_3
-    //   3593: iconst_1
-    //   3594: iadd
-    //   3595: istore_3
-    //   3596: goto -24 -> 3572
-    //   3599: new 172	java/lang/StringBuilder
-    //   3602: dup
-    //   3603: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   3606: astore 14
-    //   3608: aload_2
-    //   3609: invokevirtual 67	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   3612: astore 16
-    //   3614: aload 16
-    //   3616: invokeinterface 73 1 0
-    //   3621: ifeq +49 -> 3670
-    //   3624: aload 16
-    //   3626: invokeinterface 77 1 0
-    //   3631: checkcast 723	PersonalState/HotRishState
-    //   3634: astore 17
-    //   3636: aload 14
-    //   3638: aload 17
-    //   3640: getfield 728	PersonalState/HotRishState:iActId	I
-    //   3643: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3646: ldc_w 730
-    //   3649: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3652: aload 17
-    //   3654: getfield 733	PersonalState/HotRishState:iDataId	I
-    //   3657: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   3660: ldc_w 751
-    //   3663: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3666: pop
-    //   3667: goto -53 -> 3614
-    //   3670: aload 13
-    //   3672: aload 14
-    //   3674: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3677: invokevirtual 753	baoy:a	(Ljava/lang/String;)V
-    //   3680: aload 15
-    //   3682: ldc_w 755
-    //   3685: aload_2
-    //   3686: invokevirtual 489	android/os/Bundle:putSerializable	(Ljava/lang/String;Ljava/io/Serializable;)V
-    //   3689: goto -1721 -> 1968
-    //   3692: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3695: ifeq +13 -> 3708
-    //   3698: ldc_w 735
-    //   3701: iconst_2
-    //   3702: ldc_w 757
-    //   3705: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3708: iconst_0
-    //   3709: istore 8
-    //   3711: goto -1743 -> 1968
-    //   3714: iload 8
-    //   3716: ifeq -1748 -> 1968
-    //   3719: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   3722: dup
-    //   3723: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   3726: astore 13
-    //   3728: aload 13
-    //   3730: aload_2
-    //   3731: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   3734: invokestatic 424	bgau:b	([B)[B
-    //   3737: invokevirtual 425	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   3740: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   3743: astore_2
-    //   3744: iload 8
-    //   3746: istore 9
-    //   3748: aload_2
-    //   3749: ifnull +80 -> 3829
-    //   3752: iload 8
-    //   3754: istore 9
-    //   3756: aload_2
-    //   3757: getfield 428	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   3760: invokevirtual 429	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   3763: ifeq +66 -> 3829
-    //   3766: aload_2
-    //   3767: getfield 428	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   3770: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   3773: ifne +69 -> 3842
-    //   3776: aload_2
-    //   3777: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   3780: invokevirtual 432	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   3783: invokevirtual 433	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   3786: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   3789: astore_2
-    //   3790: aload_2
-    //   3791: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   3794: ifne +42 -> 3836
-    //   3797: aload 15
-    //   3799: ldc_w 441
-    //   3802: aload_2
-    //   3803: invokevirtual 365	java/nio/ByteBuffer:array	()[B
-    //   3806: invokevirtual 445	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-    //   3809: aload 15
-    //   3811: ldc_w 447
-    //   3814: aload_1
-    //   3815: ldc_w 447
-    //   3818: iconst_0
-    //   3819: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   3822: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   3825: iload 8
-    //   3827: istore 9
-    //   3829: iload 9
-    //   3831: istore 8
-    //   3833: goto -1865 -> 1968
-    //   3836: iconst_0
-    //   3837: istore 9
-    //   3839: goto -10 -> 3829
-    //   3842: iconst_0
-    //   3843: istore 9
-    //   3845: goto -16 -> 3829
-    //   3848: astore_2
-    //   3849: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3852: ifeq +33 -> 3885
-    //   3855: ldc_w 532
-    //   3858: iconst_2
-    //   3859: new 172	java/lang/StringBuilder
-    //   3862: dup
-    //   3863: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   3866: ldc_w 534
-    //   3869: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3872: aload_2
-    //   3873: invokevirtual 537	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
+    //   3182: aload_2
+    //   3183: invokevirtual 550	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   3186: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3189: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3192: invokestatic 599	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3195: iconst_0
+    //   3196: istore 8
+    //   3198: aload 15
+    //   3200: ldc_w 715
+    //   3203: sipush -1002
+    //   3206: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   3209: goto +1431 -> 4640
+    //   3212: iconst_0
+    //   3213: istore 8
+    //   3215: aload 15
+    //   3217: ldc_w 715
+    //   3220: iload_3
+    //   3221: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   3224: goto +1416 -> 4640
+    //   3227: iconst_0
+    //   3228: istore 8
+    //   3230: aload 15
+    //   3232: ldc_w 715
+    //   3235: sipush -1001
+    //   3238: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   3241: goto +1399 -> 4640
+    //   3244: new 664	com/qq/jce/wup/UniPacket
+    //   3247: dup
+    //   3248: iconst_1
+    //   3249: invokespecial 667	com/qq/jce/wup/UniPacket:<init>	(Z)V
+    //   3252: astore 14
+    //   3254: aload 14
+    //   3256: ldc_w 669
+    //   3259: invokevirtual 673	com/qq/jce/wup/UniPacket:setEncodeName	(Ljava/lang/String;)V
+    //   3262: aload 14
+    //   3264: aload_2
+    //   3265: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   3268: invokevirtual 676	com/qq/jce/wup/UniPacket:decode	([B)V
+    //   3271: aload 14
+    //   3273: ldc_w 719
+    //   3276: new 721	PersonalState/RespGetHotState
+    //   3279: dup
+    //   3280: invokespecial 722	PersonalState/RespGetHotState:<init>	()V
+    //   3283: invokevirtual 685	com/qq/jce/wup/UniPacket:getByClass	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   3286: checkcast 721	PersonalState/RespGetHotState
+    //   3289: astore 14
+    //   3291: aload 14
+    //   3293: getfield 723	PersonalState/RespGetHotState:oHead	LPersonalState/BusiRespHead;
+    //   3296: getfield 694	PersonalState/BusiRespHead:iReplyCode	I
+    //   3299: ifne +400 -> 3699
+    //   3302: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3305: ifeq +159 -> 3464
+    //   3308: new 172	java/lang/StringBuilder
+    //   3311: dup
+    //   3312: ldc_w 725
+    //   3315: invokespecial 727	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   3318: astore 16
+    //   3320: aload 16
+    //   3322: ldc_w 729
+    //   3325: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3328: astore 17
+    //   3330: aload 14
+    //   3332: getfield 732	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
+    //   3335: ifnonnull +102 -> 3437
+    //   3338: ldc_w 734
+    //   3341: astore_2
+    //   3342: aload 17
+    //   3344: aload_2
+    //   3345: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   3348: ldc_w 736
+    //   3351: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3354: pop
+    //   3355: aload 14
+    //   3357: getfield 732	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
+    //   3360: ifnull +92 -> 3452
+    //   3363: aload 14
+    //   3365: getfield 732	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
+    //   3368: invokevirtual 737	java/util/ArrayList:size	()I
+    //   3371: ifle +81 -> 3452
+    //   3374: aload 14
+    //   3376: getfield 732	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
+    //   3379: invokevirtual 67	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   3382: astore_2
+    //   3383: aload_2
+    //   3384: invokeinterface 73 1 0
+    //   3389: ifeq +63 -> 3452
+    //   3392: aload_2
+    //   3393: invokeinterface 77 1 0
+    //   3398: checkcast 739	PersonalState/HotRishState
+    //   3401: astore 17
+    //   3403: aload 16
+    //   3405: ldc_w 741
+    //   3408: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3411: aload 17
+    //   3413: getfield 744	PersonalState/HotRishState:iActId	I
+    //   3416: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3419: ldc_w 746
+    //   3422: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3425: aload 17
+    //   3427: getfield 749	PersonalState/HotRishState:iDataId	I
+    //   3430: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3433: pop
+    //   3434: goto -51 -> 3383
+    //   3437: aload 14
+    //   3439: getfield 732	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
+    //   3442: invokevirtual 737	java/util/ArrayList:size	()I
+    //   3445: invokestatic 702	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   3448: astore_2
+    //   3449: goto -107 -> 3342
+    //   3452: ldc_w 751
+    //   3455: iconst_2
+    //   3456: aload 16
+    //   3458: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3461: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3464: new 58	java/util/ArrayList
+    //   3467: dup
+    //   3468: bipush 6
+    //   3470: invokespecial 509	java/util/ArrayList:<init>	(I)V
+    //   3473: astore_2
+    //   3474: aload 14
+    //   3476: getfield 732	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
+    //   3479: ifnull +208 -> 3687
+    //   3482: aload 14
+    //   3484: getfield 732	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
+    //   3487: invokevirtual 737	java/util/ArrayList:size	()I
+    //   3490: ifle +197 -> 3687
+    //   3493: aload 13
+    //   3495: ifnull +82 -> 3577
+    //   3498: aload 13
+    //   3500: invokevirtual 753	bbvn:a	()Lcom/tencent/mobileqq/richstatus/RichStatus;
+    //   3503: astore 16
+    //   3505: aload 14
+    //   3507: getfield 732	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
+    //   3510: invokevirtual 737	java/util/ArrayList:size	()I
+    //   3513: iconst_1
+    //   3514: isub
+    //   3515: istore_3
+    //   3516: iload_3
+    //   3517: iflt +60 -> 3577
+    //   3520: aload 14
+    //   3522: getfield 732	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
+    //   3525: iload_3
+    //   3526: invokevirtual 756	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   3529: checkcast 739	PersonalState/HotRishState
+    //   3532: astore 17
+    //   3534: aload 17
+    //   3536: getfield 744	PersonalState/HotRishState:iActId	I
+    //   3539: aload 16
+    //   3541: getfield 759	com/tencent/mobileqq/richstatus/RichStatus:actionId	I
+    //   3544: if_icmpne +26 -> 3570
+    //   3547: aload 17
+    //   3549: getfield 749	PersonalState/HotRishState:iDataId	I
+    //   3552: aload 16
+    //   3554: getfield 762	com/tencent/mobileqq/richstatus/RichStatus:dataId	I
+    //   3557: if_icmpne +13 -> 3570
+    //   3560: aload 14
+    //   3562: getfield 732	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
+    //   3565: iload_3
+    //   3566: invokevirtual 765	java/util/ArrayList:remove	(I)Ljava/lang/Object;
+    //   3569: pop
+    //   3570: iload_3
+    //   3571: iconst_1
+    //   3572: isub
+    //   3573: istore_3
+    //   3574: goto -58 -> 3516
+    //   3577: iconst_0
+    //   3578: istore_3
+    //   3579: iload_3
+    //   3580: bipush 6
+    //   3582: if_icmpge +24 -> 3606
+    //   3585: aload_2
+    //   3586: aload 14
+    //   3588: getfield 732	PersonalState/RespGetHotState:vHostRichSateList	Ljava/util/ArrayList;
+    //   3591: iload_3
+    //   3592: invokevirtual 756	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   3595: invokevirtual 96	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   3598: pop
+    //   3599: iload_3
+    //   3600: iconst_1
+    //   3601: iadd
+    //   3602: istore_3
+    //   3603: goto -24 -> 3579
+    //   3606: new 172	java/lang/StringBuilder
+    //   3609: dup
+    //   3610: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   3613: astore 14
+    //   3615: aload_2
+    //   3616: invokevirtual 67	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   3619: astore 16
+    //   3621: aload 16
+    //   3623: invokeinterface 73 1 0
+    //   3628: ifeq +49 -> 3677
+    //   3631: aload 16
+    //   3633: invokeinterface 77 1 0
+    //   3638: checkcast 739	PersonalState/HotRishState
+    //   3641: astore 17
+    //   3643: aload 14
+    //   3645: aload 17
+    //   3647: getfield 744	PersonalState/HotRishState:iActId	I
+    //   3650: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3653: ldc_w 746
+    //   3656: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3659: aload 17
+    //   3661: getfield 749	PersonalState/HotRishState:iDataId	I
+    //   3664: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3667: ldc_w 767
+    //   3670: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3673: pop
+    //   3674: goto -53 -> 3621
+    //   3677: aload 13
+    //   3679: aload 14
+    //   3681: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3684: invokevirtual 769	bbvn:a	(Ljava/lang/String;)V
+    //   3687: aload 15
+    //   3689: ldc_w 771
+    //   3692: aload_2
+    //   3693: invokevirtual 494	android/os/Bundle:putSerializable	(Ljava/lang/String;Ljava/io/Serializable;)V
+    //   3696: goto -1724 -> 1972
+    //   3699: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3702: ifeq +13 -> 3715
+    //   3705: ldc_w 751
+    //   3708: iconst_2
+    //   3709: ldc_w 773
+    //   3712: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3715: iconst_0
+    //   3716: istore 8
+    //   3718: goto -1746 -> 1972
+    //   3721: iload 8
+    //   3723: ifeq -1751 -> 1972
+    //   3726: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   3729: dup
+    //   3730: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   3733: astore 13
+    //   3735: aload 13
+    //   3737: aload_2
+    //   3738: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   3741: invokestatic 429	bhjl:b	([B)[B
+    //   3744: invokevirtual 430	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   3747: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   3750: astore_2
+    //   3751: iload 8
+    //   3753: istore 9
+    //   3755: aload_2
+    //   3756: ifnull +80 -> 3836
+    //   3759: iload 8
+    //   3761: istore 9
+    //   3763: aload_2
+    //   3764: getfield 433	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   3767: invokevirtual 434	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   3770: ifeq +66 -> 3836
+    //   3773: aload_2
+    //   3774: getfield 433	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   3777: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   3780: ifne +69 -> 3849
+    //   3783: aload_2
+    //   3784: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   3787: invokevirtual 437	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   3790: invokevirtual 438	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   3793: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   3796: astore_2
+    //   3797: aload_2
+    //   3798: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   3801: ifne +42 -> 3843
+    //   3804: aload 15
+    //   3806: ldc_w 446
+    //   3809: aload_2
+    //   3810: invokevirtual 365	java/nio/ByteBuffer:array	()[B
+    //   3813: invokevirtual 450	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
+    //   3816: aload 15
+    //   3818: ldc_w 452
+    //   3821: aload_1
+    //   3822: ldc_w 452
+    //   3825: iconst_0
+    //   3826: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   3829: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   3832: iload 8
+    //   3834: istore 9
+    //   3836: iload 9
+    //   3838: istore 8
+    //   3840: goto -1868 -> 1972
+    //   3843: iconst_0
+    //   3844: istore 9
+    //   3846: goto -10 -> 3836
+    //   3849: iconst_0
+    //   3850: istore 9
+    //   3852: goto -16 -> 3836
+    //   3855: astore_2
+    //   3856: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3859: ifeq +33 -> 3892
+    //   3862: ldc_w 537
+    //   3865: iconst_2
+    //   3866: new 172	java/lang/StringBuilder
+    //   3869: dup
+    //   3870: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   3873: ldc_w 539
     //   3876: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3879: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3882: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3885: iconst_0
-    //   3886: istore 9
-    //   3888: goto -59 -> 3829
-    //   3891: iload 8
-    //   3893: ifeq -1925 -> 1968
-    //   3896: aload_1
-    //   3897: ldc_w 447
-    //   3900: iconst_0
-    //   3901: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   3904: istore_3
-    //   3905: aload_2
-    //   3906: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   3909: arraylength
-    //   3910: iconst_4
-    //   3911: isub
-    //   3912: istore 5
-    //   3914: iload 5
-    //   3916: newarray byte
-    //   3918: astore 13
-    //   3920: aload 13
-    //   3922: iconst_0
-    //   3923: aload_2
-    //   3924: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   3927: iconst_4
-    //   3928: iload 5
-    //   3930: invokestatic 459	com/tencent/mobileqq/utils/httputils/PkgTools:copyData	([BI[BII)V
-    //   3933: new 127	com/tencent/pb/signature/SigActPb$RspBody
-    //   3936: dup
-    //   3937: invokespecial 460	com/tencent/pb/signature/SigActPb$RspBody:<init>	()V
-    //   3940: astore 16
-    //   3942: aload 16
-    //   3944: aload 13
-    //   3946: invokevirtual 461	com/tencent/pb/signature/SigActPb$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   3949: pop
-    //   3950: aload 16
-    //   3952: getfield 462	com/tencent/pb/signature/SigActPb$RspBody:ret	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   3955: invokevirtual 188	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   3958: istore 5
-    //   3960: aload 16
-    //   3962: getfield 760	com/tencent/pb/signature/SigActPb$RspBody:desc	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3965: invokevirtual 761	com/tencent/mobileqq/pb/PBStringField:has	()Z
-    //   3968: ifeq +177 -> 4145
-    //   3971: aload 16
-    //   3973: getfield 760	com/tencent/pb/signature/SigActPb$RspBody:desc	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3976: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   3979: astore_2
-    //   3980: iload 5
-    //   3982: ifne +241 -> 4223
-    //   3985: aload_2
-    //   3986: astore 13
-    //   3988: aload 16
-    //   3990: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
-    //   3993: getfield 465	com/tencent/pb/signature/SigActPb$SigauthRsp:result	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   3996: invokevirtual 432	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   3999: invokevirtual 433	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   4002: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   4005: astore 14
-    //   4007: aload_2
-    //   4008: astore 13
-    //   4010: aload 14
-    //   4012: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   4015: istore 5
-    //   4017: iload 5
-    //   4019: ifne +133 -> 4152
-    //   4022: aload_2
-    //   4023: astore 13
-    //   4025: aload 15
-    //   4027: ldc_w 441
-    //   4030: aload 14
-    //   4032: invokevirtual 365	java/nio/ByteBuffer:array	()[B
-    //   4035: invokevirtual 445	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-    //   4038: aload_2
-    //   4039: astore 13
-    //   4041: iload 8
-    //   4043: istore 9
-    //   4045: iload_3
-    //   4046: iconst_1
-    //   4047: if_icmpne +24 -> 4071
-    //   4050: aload_2
-    //   4051: astore 13
-    //   4053: aload_0
-    //   4054: aload 15
-    //   4056: aload 16
-    //   4058: ldc_w 763
-    //   4061: invokespecial 765	com/tencent/mobileqq/richstatus/StatusServlet:a	(Landroid/os/Bundle;Lcom/tencent/pb/signature/SigActPb$RspBody;Ljava/lang/String;)V
-    //   4064: iload 8
-    //   4066: istore 9
-    //   4068: aload_2
-    //   4069: astore 13
-    //   4071: iload 9
-    //   4073: istore 8
-    //   4075: aload 13
-    //   4077: ifnull +13 -> 4090
-    //   4080: aload 15
-    //   4082: ldc_w 767
-    //   4085: aload 13
-    //   4087: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   4090: aload 15
-    //   4092: ldc_w 447
-    //   4095: iload_3
-    //   4096: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   4099: invokestatic 770	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   4102: ifeq +534 -> 4636
-    //   4105: ldc_w 267
-    //   4108: iconst_1
-    //   4109: ldc_w 772
-    //   4112: iconst_3
-    //   4113: anewarray 774	java/lang/Object
-    //   4116: dup
-    //   4117: iconst_0
-    //   4118: iload 8
-    //   4120: invokestatic 779	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   4123: aastore
-    //   4124: dup
-    //   4125: iconst_1
-    //   4126: iload_3
-    //   4127: invokestatic 686	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   3879: aload_2
+    //   3880: invokevirtual 542	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
+    //   3883: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3886: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3889: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3892: iconst_0
+    //   3893: istore 9
+    //   3895: goto -59 -> 3836
+    //   3898: iload 8
+    //   3900: ifeq -1928 -> 1972
+    //   3903: aload_1
+    //   3904: ldc_w 452
+    //   3907: iconst_0
+    //   3908: invokevirtual 398	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   3911: istore_3
+    //   3912: aload_2
+    //   3913: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   3916: arraylength
+    //   3917: iconst_4
+    //   3918: isub
+    //   3919: istore 5
+    //   3921: iload 5
+    //   3923: newarray byte
+    //   3925: astore 13
+    //   3927: aload 13
+    //   3929: iconst_0
+    //   3930: aload_2
+    //   3931: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   3934: iconst_4
+    //   3935: iload 5
+    //   3937: invokestatic 464	com/tencent/mobileqq/utils/httputils/PkgTools:copyData	([BI[BII)V
+    //   3940: new 127	com/tencent/pb/signature/SigActPb$RspBody
+    //   3943: dup
+    //   3944: invokespecial 465	com/tencent/pb/signature/SigActPb$RspBody:<init>	()V
+    //   3947: astore 16
+    //   3949: aload 16
+    //   3951: aload 13
+    //   3953: invokevirtual 466	com/tencent/pb/signature/SigActPb$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   3956: pop
+    //   3957: aload 16
+    //   3959: getfield 467	com/tencent/pb/signature/SigActPb$RspBody:ret	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   3962: invokevirtual 188	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   3965: istore 5
+    //   3967: aload 16
+    //   3969: getfield 776	com/tencent/pb/signature/SigActPb$RspBody:desc	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3972: invokevirtual 777	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   3975: ifeq +177 -> 4152
+    //   3978: aload 16
+    //   3980: getfield 776	com/tencent/pb/signature/SigActPb$RspBody:desc	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3983: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   3986: astore_2
+    //   3987: iload 5
+    //   3989: ifne +241 -> 4230
+    //   3992: aload_2
+    //   3993: astore 13
+    //   3995: aload 16
+    //   3997: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
+    //   4000: getfield 470	com/tencent/pb/signature/SigActPb$SigauthRsp:result	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   4003: invokevirtual 437	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   4006: invokevirtual 438	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   4009: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   4012: astore 14
+    //   4014: aload_2
+    //   4015: astore 13
+    //   4017: aload 14
+    //   4019: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   4022: istore 5
+    //   4024: iload 5
+    //   4026: ifne +133 -> 4159
+    //   4029: aload_2
+    //   4030: astore 13
+    //   4032: aload 15
+    //   4034: ldc_w 446
+    //   4037: aload 14
+    //   4039: invokevirtual 365	java/nio/ByteBuffer:array	()[B
+    //   4042: invokevirtual 450	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
+    //   4045: aload_2
+    //   4046: astore 13
+    //   4048: iload 8
+    //   4050: istore 9
+    //   4052: iload_3
+    //   4053: iconst_1
+    //   4054: if_icmpne +24 -> 4078
+    //   4057: aload_2
+    //   4058: astore 13
+    //   4060: aload_0
+    //   4061: aload 15
+    //   4063: aload 16
+    //   4065: ldc_w 779
+    //   4068: invokespecial 781	com/tencent/mobileqq/richstatus/StatusServlet:a	(Landroid/os/Bundle;Lcom/tencent/pb/signature/SigActPb$RspBody;Ljava/lang/String;)V
+    //   4071: iload 8
+    //   4073: istore 9
+    //   4075: aload_2
+    //   4076: astore 13
+    //   4078: iload 9
+    //   4080: istore 8
+    //   4082: aload 13
+    //   4084: ifnull +13 -> 4097
+    //   4087: aload 15
+    //   4089: ldc_w 783
+    //   4092: aload 13
+    //   4094: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4097: aload 15
+    //   4099: ldc_w 452
+    //   4102: iload_3
+    //   4103: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   4106: invokestatic 786	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   4109: ifeq +534 -> 4643
+    //   4112: ldc_w 267
+    //   4115: iconst_1
+    //   4116: ldc_w 788
+    //   4119: iconst_3
+    //   4120: anewarray 790	java/lang/Object
+    //   4123: dup
+    //   4124: iconst_0
+    //   4125: iload 8
+    //   4127: invokestatic 795	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   4130: aastore
     //   4131: dup
-    //   4132: iconst_2
-    //   4133: aload 13
-    //   4135: aastore
-    //   4136: invokestatic 783	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   4139: invokestatic 277	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4142: goto +494 -> 4636
-    //   4145: ldc_w 519
-    //   4148: astore_2
-    //   4149: goto -169 -> 3980
-    //   4152: aload_2
-    //   4153: astore 13
-    //   4155: aload 15
-    //   4157: ldc_w 544
-    //   4160: iload 5
-    //   4162: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   4165: aload_2
-    //   4166: astore 13
-    //   4168: invokestatic 789	aqin:c	()Lcom/tencent/mobileqq/config/business/qvip/SSOErrorInfoMapConfig;
-    //   4171: astore 17
-    //   4173: aload_2
-    //   4174: astore 13
-    //   4176: aload_2
-    //   4177: astore 14
-    //   4179: aload_2
-    //   4180: invokestatic 794	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4183: ifeq +456 -> 4639
+    //   4132: iconst_1
+    //   4133: iload_3
+    //   4134: invokestatic 702	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   4137: aastore
+    //   4138: dup
+    //   4139: iconst_2
+    //   4140: aload 13
+    //   4142: aastore
+    //   4143: invokestatic 799	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   4146: invokestatic 277	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4149: goto +494 -> 4643
+    //   4152: ldc_w 524
+    //   4155: astore_2
+    //   4156: goto -169 -> 3987
+    //   4159: aload_2
+    //   4160: astore 13
+    //   4162: aload 15
+    //   4164: ldc_w 549
+    //   4167: iload 5
+    //   4169: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   4172: aload_2
+    //   4173: astore 13
+    //   4175: invokestatic 805	arly:c	()Lcom/tencent/mobileqq/config/business/qvip/SSOErrorInfoMapConfig;
+    //   4178: astore 17
+    //   4180: aload_2
+    //   4181: astore 13
+    //   4183: aload_2
+    //   4184: astore 14
     //   4186: aload_2
-    //   4187: astore 13
-    //   4189: aload 17
-    //   4191: ldc_w 796
-    //   4194: new 172	java/lang/StringBuilder
-    //   4197: dup
-    //   4198: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   4201: ldc_w 519
-    //   4204: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4207: iload 5
-    //   4209: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   4212: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4215: invokevirtual 802	com/tencent/mobileqq/config/business/qvip/SSOErrorInfoMapConfig:getErrorInfo	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   4218: astore 14
-    //   4220: goto +419 -> 4639
-    //   4223: iconst_0
-    //   4224: istore 9
-    //   4226: aload_2
-    //   4227: astore 13
-    //   4229: aload 15
-    //   4231: ldc_w 553
-    //   4234: iload 5
-    //   4236: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   4239: iload 5
-    //   4241: ldc_w 554
-    //   4244: if_icmpne +25 -> 4269
-    //   4247: aload_2
-    //   4248: astore 13
-    //   4250: aload 15
-    //   4252: ldc_w 556
-    //   4255: aload 16
-    //   4257: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
-    //   4260: getfield 557	com/tencent/pb/signature/SigActPb$SigauthRsp:url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   4263: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   4266: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   4269: aload_2
-    //   4270: astore 13
-    //   4272: aload 16
-    //   4274: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
-    //   4277: getfield 560	com/tencent/pb/signature/SigActPb$SigauthRsp:authfailed_appid	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   4280: invokevirtual 561	com/tencent/mobileqq/pb/PBInt32Field:has	()Z
-    //   4283: ifeq +25 -> 4308
-    //   4286: aload_2
-    //   4287: astore 13
-    //   4289: aload 15
-    //   4291: ldc_w 563
-    //   4294: aload 16
-    //   4296: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
-    //   4299: getfield 560	com/tencent/pb/signature/SigActPb$SigauthRsp:authfailed_appid	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   4302: invokevirtual 188	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   4305: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   4308: aload_2
-    //   4309: astore 13
-    //   4311: aload_0
-    //   4312: aload 15
-    //   4314: aload 16
-    //   4316: ldc_w 804
-    //   4319: invokespecial 765	com/tencent/mobileqq/richstatus/StatusServlet:a	(Landroid/os/Bundle;Lcom/tencent/pb/signature/SigActPb$RspBody;Ljava/lang/String;)V
-    //   4322: aload_2
-    //   4323: astore 13
-    //   4325: goto -254 -> 4071
-    //   4328: astore_2
-    //   4329: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   4332: ifeq +33 -> 4365
-    //   4335: ldc_w 532
-    //   4338: iconst_2
-    //   4339: new 172	java/lang/StringBuilder
-    //   4342: dup
-    //   4343: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   4346: ldc_w 534
-    //   4349: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4352: aload_2
-    //   4353: invokevirtual 545	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   4187: invokestatic 810	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4190: ifeq +456 -> 4646
+    //   4193: aload_2
+    //   4194: astore 13
+    //   4196: aload 17
+    //   4198: ldc_w 812
+    //   4201: new 172	java/lang/StringBuilder
+    //   4204: dup
+    //   4205: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   4208: ldc_w 524
+    //   4211: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4214: iload 5
+    //   4216: invokevirtual 191	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   4219: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4222: invokevirtual 818	com/tencent/mobileqq/config/business/qvip/SSOErrorInfoMapConfig:getErrorInfo	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   4225: astore 14
+    //   4227: goto +419 -> 4646
+    //   4230: iconst_0
+    //   4231: istore 9
+    //   4233: aload_2
+    //   4234: astore 13
+    //   4236: aload 15
+    //   4238: ldc_w 558
+    //   4241: iload 5
+    //   4243: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   4246: iload 5
+    //   4248: ldc_w 559
+    //   4251: if_icmpne +25 -> 4276
+    //   4254: aload_2
+    //   4255: astore 13
+    //   4257: aload 15
+    //   4259: ldc_w 561
+    //   4262: aload 16
+    //   4264: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
+    //   4267: getfield 562	com/tencent/pb/signature/SigActPb$SigauthRsp:url	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   4270: invokevirtual 233	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   4273: invokevirtual 237	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4276: aload_2
+    //   4277: astore 13
+    //   4279: aload 16
+    //   4281: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
+    //   4284: getfield 565	com/tencent/pb/signature/SigActPb$SigauthRsp:authfailed_appid	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   4287: invokevirtual 566	com/tencent/mobileqq/pb/PBInt32Field:has	()Z
+    //   4290: ifeq +25 -> 4315
+    //   4293: aload_2
+    //   4294: astore 13
+    //   4296: aload 15
+    //   4298: ldc_w 568
+    //   4301: aload 16
+    //   4303: getfield 131	com/tencent/pb/signature/SigActPb$RspBody:auth_rsp	Lcom/tencent/pb/signature/SigActPb$SigauthRsp;
+    //   4306: getfield 565	com/tencent/pb/signature/SigActPb$SigauthRsp:authfailed_appid	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   4309: invokevirtual 188	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   4312: invokevirtual 215	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   4315: aload_2
+    //   4316: astore 13
+    //   4318: aload_0
+    //   4319: aload 15
+    //   4321: aload 16
+    //   4323: ldc_w 820
+    //   4326: invokespecial 781	com/tencent/mobileqq/richstatus/StatusServlet:a	(Landroid/os/Bundle;Lcom/tencent/pb/signature/SigActPb$RspBody;Ljava/lang/String;)V
+    //   4329: aload_2
+    //   4330: astore 13
+    //   4332: goto -254 -> 4078
+    //   4335: astore_2
+    //   4336: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   4339: ifeq +33 -> 4372
+    //   4342: ldc_w 537
+    //   4345: iconst_2
+    //   4346: new 172	java/lang/StringBuilder
+    //   4349: dup
+    //   4350: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   4353: ldc_w 539
     //   4356: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4359: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4362: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4365: iconst_0
-    //   4366: istore 8
-    //   4368: goto -293 -> 4075
-    //   4371: astore_2
-    //   4372: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   4375: ifeq +33 -> 4408
-    //   4378: ldc_w 532
-    //   4381: iconst_2
-    //   4382: new 172	java/lang/StringBuilder
-    //   4385: dup
-    //   4386: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   4389: ldc_w 534
-    //   4392: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4395: aload_2
-    //   4396: invokevirtual 545	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   4359: aload_2
+    //   4360: invokevirtual 550	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   4363: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4366: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4369: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4372: iconst_0
+    //   4373: istore 8
+    //   4375: goto -293 -> 4082
+    //   4378: astore_2
+    //   4379: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   4382: ifeq +33 -> 4415
+    //   4385: ldc_w 537
+    //   4388: iconst_2
+    //   4389: new 172	java/lang/StringBuilder
+    //   4392: dup
+    //   4393: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   4396: ldc_w 539
     //   4399: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4402: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4405: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4408: iconst_0
-    //   4409: istore 8
-    //   4411: goto -2443 -> 1968
-    //   4414: iload 8
-    //   4416: ifeq -2448 -> 1968
-    //   4419: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   4422: dup
-    //   4423: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   4426: astore 13
-    //   4428: aload 13
-    //   4430: aload_2
-    //   4431: invokevirtual 419	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   4434: invokestatic 424	bgau:b	([B)[B
-    //   4437: invokevirtual 425	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   4440: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   4443: astore_2
-    //   4444: iload 8
-    //   4446: istore 9
-    //   4448: aload_2
-    //   4449: ifnull +55 -> 4504
-    //   4452: iload 8
-    //   4454: istore 9
-    //   4456: aload_2
-    //   4457: getfield 428	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4460: invokevirtual 429	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   4463: ifeq +41 -> 4504
-    //   4466: aload_2
-    //   4467: getfield 428	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   4470: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   4473: ifne +44 -> 4517
-    //   4476: aload_2
-    //   4477: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   4480: invokevirtual 432	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   4483: invokevirtual 433	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   4486: invokestatic 436	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   4489: invokevirtual 439	java/nio/ByteBuffer:get	()B
-    //   4492: istore_3
-    //   4493: iload_3
-    //   4494: ifne +17 -> 4511
-    //   4497: iconst_1
-    //   4498: istore 8
-    //   4500: iload 8
-    //   4502: istore 9
-    //   4504: iload 9
-    //   4506: istore 8
-    //   4508: goto -2540 -> 1968
-    //   4511: iconst_0
-    //   4512: istore 8
-    //   4514: goto -14 -> 4500
-    //   4517: iconst_0
-    //   4518: istore 9
-    //   4520: goto -16 -> 4504
-    //   4523: astore_2
-    //   4524: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   4527: ifeq +33 -> 4560
-    //   4530: ldc_w 532
-    //   4533: iconst_2
-    //   4534: new 172	java/lang/StringBuilder
-    //   4537: dup
-    //   4538: invokespecial 173	java/lang/StringBuilder:<init>	()V
-    //   4541: ldc_w 534
-    //   4544: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4547: aload_2
-    //   4548: invokevirtual 537	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
+    //   4402: aload_2
+    //   4403: invokevirtual 550	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   4406: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4409: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4412: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4415: iconst_0
+    //   4416: istore 8
+    //   4418: goto -2446 -> 1972
+    //   4421: iload 8
+    //   4423: ifeq -2451 -> 1972
+    //   4426: new 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   4429: dup
+    //   4430: invokespecial 321	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   4433: astore 13
+    //   4435: aload 13
+    //   4437: aload_2
+    //   4438: invokevirtual 424	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   4441: invokestatic 429	bhjl:b	([B)[B
+    //   4444: invokevirtual 430	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4447: checkcast 320	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   4450: astore_2
+    //   4451: iload 8
+    //   4453: istore 9
+    //   4455: aload_2
+    //   4456: ifnull +55 -> 4511
+    //   4459: iload 8
+    //   4461: istore 9
+    //   4463: aload_2
+    //   4464: getfield 433	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4467: invokevirtual 434	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   4470: ifeq +41 -> 4511
+    //   4473: aload_2
+    //   4474: getfield 433	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   4477: invokevirtual 223	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   4480: ifne +44 -> 4524
+    //   4483: aload_2
+    //   4484: getfield 362	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   4487: invokevirtual 437	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   4490: invokevirtual 438	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   4493: invokestatic 441	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   4496: invokevirtual 444	java/nio/ByteBuffer:get	()B
+    //   4499: istore_3
+    //   4500: iload_3
+    //   4501: ifne +17 -> 4518
+    //   4504: iconst_1
+    //   4505: istore 8
+    //   4507: iload 8
+    //   4509: istore 9
+    //   4511: iload 9
+    //   4513: istore 8
+    //   4515: goto -2543 -> 1972
+    //   4518: iconst_0
+    //   4519: istore 8
+    //   4521: goto -14 -> 4507
+    //   4524: iconst_0
+    //   4525: istore 9
+    //   4527: goto -16 -> 4511
+    //   4530: astore_2
+    //   4531: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   4534: ifeq +33 -> 4567
+    //   4537: ldc_w 537
+    //   4540: iconst_2
+    //   4541: new 172	java/lang/StringBuilder
+    //   4544: dup
+    //   4545: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   4548: ldc_w 539
     //   4551: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4554: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4557: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4560: iconst_0
-    //   4561: istore 9
-    //   4563: goto -59 -> 4504
-    //   4566: goto -3143 -> 1423
-    //   4569: goto -3146 -> 1423
-    //   4572: goto -3135 -> 1437
-    //   4575: goto -4224 -> 351
-    //   4578: iload_3
-    //   4579: ifeq -2731 -> 1848
-    //   4582: iconst_0
-    //   4583: istore 8
-    //   4585: iload 9
-    //   4587: istore 10
-    //   4589: iload 8
-    //   4591: istore 9
-    //   4593: goto -3065 -> 1528
-    //   4596: iload_3
-    //   4597: ifeq -2518 -> 2079
-    //   4600: iconst_0
-    //   4601: istore 8
-    //   4603: iload 9
-    //   4605: istore 10
-    //   4607: iload 8
-    //   4609: istore 9
-    //   4611: goto -2549 -> 2062
-    //   4614: iconst_0
-    //   4615: istore 9
-    //   4617: goto -21 -> 4596
-    //   4620: iload_3
-    //   4621: iconst_1
-    //   4622: iadd
-    //   4623: istore_3
-    //   4624: goto -2299 -> 2325
-    //   4627: iconst_0
-    //   4628: istore 9
-    //   4630: goto -2336 -> 2294
-    //   4633: goto -2665 -> 1968
-    //   4636: goto -2668 -> 1968
-    //   4639: iconst_0
-    //   4640: istore 8
-    //   4642: aload 14
-    //   4644: astore_2
-    //   4645: goto -607 -> 4038
+    //   4554: aload_2
+    //   4555: invokevirtual 542	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:getMessage	()Ljava/lang/String;
+    //   4558: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4561: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4564: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   4567: iconst_0
+    //   4568: istore 9
+    //   4570: goto -59 -> 4511
+    //   4573: goto -3149 -> 1424
+    //   4576: goto -3152 -> 1424
+    //   4579: goto -3141 -> 1438
+    //   4582: goto -4230 -> 352
+    //   4585: iload_3
+    //   4586: ifeq -2734 -> 1852
+    //   4589: iconst_0
+    //   4590: istore 8
+    //   4592: iload 9
+    //   4594: istore 10
+    //   4596: iload 8
+    //   4598: istore 9
+    //   4600: goto -3071 -> 1529
+    //   4603: iload_3
+    //   4604: ifeq -2521 -> 2083
+    //   4607: iconst_0
+    //   4608: istore 8
+    //   4610: iload 9
+    //   4612: istore 10
+    //   4614: iload 8
+    //   4616: istore 9
+    //   4618: goto -2552 -> 2066
+    //   4621: iconst_0
+    //   4622: istore 9
+    //   4624: goto -21 -> 4603
+    //   4627: iload_3
+    //   4628: iconst_1
+    //   4629: iadd
+    //   4630: istore_3
+    //   4631: goto -2302 -> 2329
+    //   4634: iconst_0
+    //   4635: istore 9
+    //   4637: goto -2339 -> 2298
+    //   4640: goto -2668 -> 1972
+    //   4643: goto -2671 -> 1972
+    //   4646: iconst_0
+    //   4647: istore 8
+    //   4649: aload 14
+    //   4651: astore_2
+    //   4652: goto -607 -> 4045
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	4648	0	this	StatusServlet
-    //   0	4648	1	paramIntent	Intent
-    //   0	4648	2	paramFromServiceMsg	com.tencent.qphone.base.remote.FromServiceMsg
-    //   118	4506	3	i	int
-    //   8	2083	4	j	int
-    //   501	3744	5	k	int
-    //   525	2515	6	m	int
-    //   603	1809	7	n	int
-    //   14	4627	8	bool1	boolean
-    //   46	4583	9	bool2	boolean
-    //   1533	3073	10	bool3	boolean
-    //   482	2203	11	l	long
-    //   37	491	13	localObject1	Object
-    //   718	26	13	localInvalidProtocolBufferMicroException1	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   806	464	13	localException1	Exception
-    //   1283	25	13	localException2	Exception
-    //   1352	419	13	localObject2	Object
-    //   1797	26	13	localInvalidProtocolBufferMicroException2	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   1999	2430	13	localObject3	Object
-    //   227	4416	14	localObject4	Object
-    //   23	4290	15	localBundle	Bundle
-    //   432	3883	16	localObject5	Object
-    //   565	3625	17	localObject6	Object
-    //   582	1124	18	localObject7	Object
+    //   0	4655	0	this	StatusServlet
+    //   0	4655	1	paramIntent	Intent
+    //   0	4655	2	paramFromServiceMsg	com.tencent.qphone.base.remote.FromServiceMsg
+    //   119	4512	3	i	int
+    //   8	2087	4	j	int
+    //   502	3750	5	k	int
+    //   526	2521	6	m	int
+    //   604	1812	7	n	int
+    //   14	4634	8	bool1	boolean
+    //   47	4589	9	bool2	boolean
+    //   1534	3079	10	bool3	boolean
+    //   483	2209	11	l	long
+    //   38	491	13	localObject1	Object
+    //   719	26	13	localInvalidProtocolBufferMicroException1	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   807	464	13	localException1	Exception
+    //   1284	25	13	localException2	Exception
+    //   1353	422	13	localObject2	Object
+    //   1801	26	13	localInvalidProtocolBufferMicroException2	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   2003	2433	13	localObject3	Object
+    //   228	4422	14	localObject4	Object
+    //   23	4297	15	localBundle	Bundle
+    //   433	3889	16	localObject5	Object
+    //   566	3631	17	localObject6	Object
+    //   583	1126	18	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   69	86	718	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   99	119	718	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   123	145	718	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   149	178	718	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   633	674	718	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   683	715	718	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   216	267	806	java/lang/Exception
-    //   271	296	806	java/lang/Exception
-    //   300	329	806	java/lang/Exception
-    //   794	803	806	java/lang/Exception
-    //   851	899	806	java/lang/Exception
-    //   906	925	806	java/lang/Exception
-    //   925	958	806	java/lang/Exception
-    //   958	1023	806	java/lang/Exception
-    //   1028	1150	806	java/lang/Exception
-    //   1150	1184	806	java/lang/Exception
-    //   361	517	1283	java/lang/Exception
-    //   520	550	1283	java/lang/Exception
-    //   558	619	1283	java/lang/Exception
-    //   1222	1269	1283	java/lang/Exception
-    //   1269	1280	1283	java/lang/Exception
-    //   1553	1605	1283	java/lang/Exception
-    //   1610	1649	1283	java/lang/Exception
-    //   1649	1671	1283	java/lang/Exception
-    //   1671	1693	1283	java/lang/Exception
-    //   1698	1717	1283	java/lang/Exception
-    //   1720	1739	1283	java/lang/Exception
-    //   1752	1778	1283	java/lang/Exception
-    //   1354	1371	1797	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   1376	1416	1797	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   1449	1522	1879	java/lang/Exception
-    //   1528	1538	1879	java/lang/Exception
-    //   1862	1872	1879	java/lang/Exception
-    //   1983	2056	2110	java/lang/Exception
-    //   2062	2072	2110	java/lang/Exception
-    //   2093	2103	2110	java/lang/Exception
-    //   2138	2291	2463	java/lang/Exception
-    //   2294	2323	2463	java/lang/Exception
-    //   2331	2392	2463	java/lang/Exception
-    //   2402	2449	2463	java/lang/Exception
-    //   2449	2460	2463	java/lang/Exception
-    //   2491	2543	2463	java/lang/Exception
-    //   2548	2587	2463	java/lang/Exception
-    //   2587	2608	2463	java/lang/Exception
-    //   2608	2630	2463	java/lang/Exception
-    //   2635	2654	2463	java/lang/Exception
-    //   2657	2675	2463	java/lang/Exception
-    //   2680	2705	2463	java/lang/Exception
-    //   2708	2805	2814	java/lang/Exception
-    //   2835	2851	2960	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   2877	2896	3151	java/lang/Exception
-    //   2900	2915	3151	java/lang/Exception
-    //   2923	2953	3151	java/lang/Exception
-    //   3010	3034	3151	java/lang/Exception
-    //   3042	3085	3151	java/lang/Exception
-    //   3097	3107	3151	java/lang/Exception
-    //   3110	3130	3151	java/lang/Exception
-    //   3139	3148	3151	java/lang/Exception
-    //   3728	3744	3848	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   3756	3825	3848	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   3988	4007	4328	java/lang/Exception
-    //   4010	4017	4328	java/lang/Exception
-    //   4025	4038	4328	java/lang/Exception
-    //   4053	4064	4328	java/lang/Exception
-    //   4155	4165	4328	java/lang/Exception
-    //   4168	4173	4328	java/lang/Exception
-    //   4179	4186	4328	java/lang/Exception
-    //   4189	4220	4328	java/lang/Exception
-    //   4229	4239	4328	java/lang/Exception
-    //   4250	4269	4328	java/lang/Exception
-    //   4272	4286	4328	java/lang/Exception
-    //   4289	4308	4328	java/lang/Exception
-    //   4311	4322	4328	java/lang/Exception
-    //   3896	3980	4371	java/lang/Exception
-    //   4080	4090	4371	java/lang/Exception
-    //   4090	4142	4371	java/lang/Exception
-    //   4329	4365	4371	java/lang/Exception
-    //   4428	4444	4523	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   4456	4493	4523	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   70	87	719	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   100	120	719	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   124	146	719	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   150	179	719	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   634	675	719	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   684	716	719	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   217	268	807	java/lang/Exception
+    //   272	297	807	java/lang/Exception
+    //   301	330	807	java/lang/Exception
+    //   795	804	807	java/lang/Exception
+    //   852	900	807	java/lang/Exception
+    //   907	926	807	java/lang/Exception
+    //   926	959	807	java/lang/Exception
+    //   959	1024	807	java/lang/Exception
+    //   1029	1151	807	java/lang/Exception
+    //   1151	1185	807	java/lang/Exception
+    //   362	518	1284	java/lang/Exception
+    //   521	551	1284	java/lang/Exception
+    //   559	620	1284	java/lang/Exception
+    //   1223	1270	1284	java/lang/Exception
+    //   1270	1281	1284	java/lang/Exception
+    //   1554	1607	1284	java/lang/Exception
+    //   1612	1651	1284	java/lang/Exception
+    //   1651	1674	1284	java/lang/Exception
+    //   1674	1696	1284	java/lang/Exception
+    //   1701	1720	1284	java/lang/Exception
+    //   1723	1743	1284	java/lang/Exception
+    //   1756	1782	1284	java/lang/Exception
+    //   1355	1372	1801	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   1377	1417	1801	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   1450	1523	1883	java/lang/Exception
+    //   1529	1539	1883	java/lang/Exception
+    //   1866	1876	1883	java/lang/Exception
+    //   1987	2060	2114	java/lang/Exception
+    //   2066	2076	2114	java/lang/Exception
+    //   2097	2107	2114	java/lang/Exception
+    //   2142	2295	2467	java/lang/Exception
+    //   2298	2327	2467	java/lang/Exception
+    //   2335	2396	2467	java/lang/Exception
+    //   2406	2453	2467	java/lang/Exception
+    //   2453	2464	2467	java/lang/Exception
+    //   2495	2548	2467	java/lang/Exception
+    //   2553	2592	2467	java/lang/Exception
+    //   2592	2614	2467	java/lang/Exception
+    //   2614	2636	2467	java/lang/Exception
+    //   2641	2660	2467	java/lang/Exception
+    //   2663	2682	2467	java/lang/Exception
+    //   2687	2712	2467	java/lang/Exception
+    //   2715	2812	2821	java/lang/Exception
+    //   2842	2858	2967	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   2884	2903	3158	java/lang/Exception
+    //   2907	2922	3158	java/lang/Exception
+    //   2930	2960	3158	java/lang/Exception
+    //   3017	3041	3158	java/lang/Exception
+    //   3049	3092	3158	java/lang/Exception
+    //   3104	3114	3158	java/lang/Exception
+    //   3117	3137	3158	java/lang/Exception
+    //   3146	3155	3158	java/lang/Exception
+    //   3735	3751	3855	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   3763	3832	3855	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   3995	4014	4335	java/lang/Exception
+    //   4017	4024	4335	java/lang/Exception
+    //   4032	4045	4335	java/lang/Exception
+    //   4060	4071	4335	java/lang/Exception
+    //   4162	4172	4335	java/lang/Exception
+    //   4175	4180	4335	java/lang/Exception
+    //   4186	4193	4335	java/lang/Exception
+    //   4196	4227	4335	java/lang/Exception
+    //   4236	4246	4335	java/lang/Exception
+    //   4257	4276	4335	java/lang/Exception
+    //   4279	4293	4335	java/lang/Exception
+    //   4296	4315	4335	java/lang/Exception
+    //   4318	4329	4335	java/lang/Exception
+    //   3903	3987	4378	java/lang/Exception
+    //   4087	4097	4378	java/lang/Exception
+    //   4097	4149	4378	java/lang/Exception
+    //   4336	4372	4378	java/lang/Exception
+    //   4435	4451	4530	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   4463	4500	4530	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -2420,7 +2421,7 @@ public class StatusServlet
       ((RichStatus)localObject3).dataText = "foo";
       ((RichStatus)localObject3).dataId = paramIntent.getIntExtra("k_data", 0);
       ((ReqGetSameStateList)localObject2).oSelfRishState = new stRishState(((RichStatus)localObject3).encode(), 0L);
-      localObject1 = ((amsw)((AppInterface)localObject1).getManager(51)).b(((AppInterface)localObject1).getCurrentAccountUin());
+      localObject1 = ((anvk)((AppInterface)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER)).b(((AppInterface)localObject1).getCurrentAccountUin());
       if (localObject1 != null) {
         if (((Card)localObject1).shGender != 0) {
           break;
@@ -2428,7 +2429,7 @@ public class StatusServlet
       }
       break;
     }
-    label1052:
+    label1053:
     for (i = 0;; i = 2)
     {
       for (;;)
@@ -2448,7 +2449,7 @@ public class StatusServlet
           paramIntent = "PersonalStateSvc.ReqGetSameStateList";
           break;
           if (((Card)localObject1).shGender != 1) {
-            break label1052;
+            break label1053;
           }
           i = 1;
         }
@@ -2513,7 +2514,7 @@ public class StatusServlet
       int m = paramIntent.getIntExtra("k_source", 0);
       paramIntent = new SigActPb.Platform();
       paramIntent.platform.set(109L);
-      paramIntent.mqqver.set("8.4.8");
+      paramIntent.mqqver.set("8.4.10");
       paramIntent.osver.set(DeviceInfoUtil.getDeviceOSVersion());
       localObject3 = new SigActPb.SigauthReq();
       ((SigActPb.SigauthReq)localObject3).uin_disable.set(Long.parseLong(((AppInterface)localObject1).getCurrentAccountUin()));

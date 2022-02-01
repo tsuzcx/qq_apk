@@ -1,29 +1,17 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aeso
-  extends aycd
+  extends anvi
 {
-  public aeso(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public aeso(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
-    }
-    this.a.a();
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        VerifyPhoneNumActivity.a(this.a, true);
-        VerifyPhoneNumActivity.c(this.a);
-        return;
-      }
-      VerifyPhoneNumActivity.c(this.a);
+    if ((!paramBoolean) || (paramString == null)) {
       return;
     }
-    VerifyPhoneNumActivity.c(this.a);
+    this.a.a(this.a.app.getCurrentAccountUin());
   }
 }
 

@@ -170,8 +170,8 @@ public class AppBrandRuntime
       QMLog.e("minisdk-start_AppBrandRuntime", "loadSubPkgAppService ApkgInfo is null.");
       return;
     }
-    String str = this.mApkgInfo.getRootPath(paramString);
-    if (TextUtils.isEmpty(str))
+    paramString = this.mApkgInfo.getRootPath(paramString);
+    if (TextUtils.isEmpty(paramString))
     {
       QMLog.e("minisdk-start_AppBrandRuntime", "loadSubPkgAppService subPkgRoot is null.");
       return;
@@ -181,7 +181,7 @@ public class AppBrandRuntime
       QMLog.e("minisdk-start_AppBrandRuntime", "loadSubPkgAppService has loaded.");
       return;
     }
-    str = this.mApkgInfo.getAppServiceJsContent(str);
+    String str = this.mApkgInfo.getAppServiceJsContent(paramString);
     if (TextUtils.isEmpty(str))
     {
       QMLog.e("minisdk-start_AppBrandRuntime", "loadSubPkgAppService appServiceJsStr is null.");

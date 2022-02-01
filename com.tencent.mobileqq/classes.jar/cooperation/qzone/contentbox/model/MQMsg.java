@@ -27,6 +27,7 @@ public class MQMsg
   public int msgType;
   public String promot = "";
   public long pushTime;
+  public String reportValue;
   public String title = "";
   public String uniKey;
   public String user_avatar = "";
@@ -78,6 +79,7 @@ public class MQMsg
       localMQMsg.uniKey = paramJSONObject.optString("uniKey");
       localMQMsg.eventTitle = paramJSONObject.optString("eventTitle");
       localMQMsg.capTime = paramJSONObject.optString("capTime");
+      localMQMsg.reportValue = paramJSONObject.optString("reportValue");
       return localMQMsg;
     }
     catch (Exception paramJSONObject)
@@ -103,6 +105,7 @@ public class MQMsg
     localMQMsg.expand = paramNewMQMsg.mpExtent;
     localMQMsg.mqUserPersonalData = MQUserPersonalData.readFrom(paramNewMQMsg.userPersonalData);
     localMQMsg.feeds = paramNewMQMsg.all_feeds_data;
+    localMQMsg.reportValue = paramNewMQMsg.reportValue;
     return localMQMsg;
   }
   
@@ -146,6 +149,7 @@ public class MQMsg
         localJSONObject.put("uniKey", this.uniKey);
         localJSONObject.put("eventTitle", this.eventTitle);
         localJSONObject.put("capTime", this.capTime);
+        localJSONObject.put("reportValue", this.reportValue);
         return localJSONObject;
       }
       return localJSONObject;

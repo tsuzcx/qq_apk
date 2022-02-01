@@ -3,8 +3,8 @@ package com.tencent.av;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
-import lez;
-import lld;
+import lfe;
+import llq;
 
 class VideoController$StartRingRunnable
   implements Runnable
@@ -21,9 +21,9 @@ class VideoController$StartRingRunnable
   {
     if (this.this$0.a().jdField_o_of_type_Int < 0)
     {
-      lld.a();
-      long l = lld.d();
-      int i = lld.f();
+      llq.a();
+      long l = llq.d();
+      int i = llq.f();
       int j = Build.VERSION.SDK_INT;
       if ((i < 4) || (l / 1000L < 800L) || (j < 9)) {
         this.this$0.a().jdField_o_of_type_Int = 0;

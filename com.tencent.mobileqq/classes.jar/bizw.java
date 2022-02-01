@@ -1,139 +1,377 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RecentTaskInfo;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.gdtad.util.GdtDeviceInfoHelper;
-import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
-import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.provider.Settings.Secure;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import cooperation.qzone.QZoneHelper;
-import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
-import java.util.Arrays;
+import com.tencent.smtt.sdk.WebView;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
-@JsPlugin(secondary=true)
 public class bizw
-  extends BaseJsPlugin
 {
-  private JSONObject a(RequestEvent paramRequestEvent)
+  protected static bizw a;
+  protected static String a;
+  protected int a;
+  protected long a;
+  protected Context a;
+  protected long b;
+  protected String b;
+  protected String c = "";
+  protected String d = "";
+  protected String e = "";
+  protected String f = "";
+  protected String g = "";
+  protected String h = "";
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = "androidqq";
+  }
+  
+  protected bizw()
+  {
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+  }
+  
+  public static bizw a()
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      return localJSONObject;
+      if (jdField_a_of_type_Bizw == null) {
+        jdField_a_of_type_Bizw = new bizw();
+      }
+      bizw localbizw = jdField_a_of_type_Bizw;
+      return localbizw;
+    }
+    finally {}
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Int != -1) {
+      return this.jdField_a_of_type_Int;
+    }
+    a();
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    try
+    {
+      this.jdField_a_of_type_Long = Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()).longValue();
+      bjko.b("CommonDataAdapter", "get uin from app runtim succ:" + this.jdField_a_of_type_Long);
+      label46:
+      return this.jdField_a_of_type_Long;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label46;
+    }
+  }
+  
+  public Context a()
+  {
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      return BaseApplication.getContext();
+    }
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String a(int paramInt, Context paramContext)
+  {
+    Object localObject1 = (ActivityManager)paramContext.getSystemService("activity");
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    int j = paramInt;
+    if (paramInt <= 0) {
+      j = 5;
+    }
+    localObject1 = ((ActivityManager)localObject1).getRecentTasks(64, 1);
+    ArrayList localArrayList = new ArrayList();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{");
+    int n;
+    int k;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      n = ((List)localObject1).size();
+      k = 0;
+      paramInt = 0;
+      if ((k < n) && (paramInt < j))
+      {
+        localObject2 = (ActivityManager.RecentTaskInfo)((List)localObject1).get(k);
+        paramContext = ((ActivityManager.RecentTaskInfo)localObject2).baseIntent;
+        localObject2 = ((ActivityManager.RecentTaskInfo)localObject2).origActivity;
+        if (localObject2 != null) {
+          paramContext = ((ComponentName)localObject2).getPackageName();
+        }
+      }
+    }
+    for (;;)
+    {
+      label133:
+      int i = paramInt;
+      if (paramContext != null)
+      {
+        if (localArrayList.contains(paramContext)) {}
+        for (;;)
+        {
+          k += 1;
+          break;
+          if (paramContext == null) {
+            break label388;
+          }
+          paramContext = paramContext.getComponent().getPackageName();
+          break label133;
+          localArrayList.add(paramContext);
+          i = -1;
+          try
+          {
+            localObject2 = localPackageManager.getPackageInfo(paramContext, 0);
+            if (localObject2 != null) {
+              break label206;
+            }
+          }
+          catch (PackageManager.NameNotFoundException paramContext)
+          {
+            paramContext.printStackTrace();
+          }
+        }
+        label206:
+        if (localObject2 != null)
+        {
+          i = ((PackageInfo)localObject2).versionCode;
+          String str = ((PackageInfo)localObject2).versionName;
+        }
+        if ((((PackageInfo)localObject2).applicationInfo.flags & 0x1) == 0) {
+          break label382;
+        }
+      }
+      label382:
+      for (int m = 1;; m = 0)
+      {
+        paramInt += 1;
+        localStringBuilder.append("\"");
+        localStringBuilder.append(paramContext);
+        localStringBuilder.append("\"");
+        localStringBuilder.append(":");
+        localStringBuilder.append("\"");
+        localStringBuilder.append(i);
+        localStringBuilder.append(",");
+        localStringBuilder.append(m);
+        localStringBuilder.append("\"");
+        i = paramInt;
+        if (k < n - 1)
+        {
+          localStringBuilder.append(",");
+          i = paramInt;
+        }
+        paramInt = i;
+        break;
+        paramInt = localStringBuilder.length();
+        if (localStringBuilder.charAt(paramInt - 1) == ',') {
+          localStringBuilder.deleteCharAt(paramInt - 1);
+        }
+        localStringBuilder.append("}");
+        return localStringBuilder.toString();
+      }
+      label388:
+      paramContext = null;
+    }
+  }
+  
+  protected void a()
+  {
+    Object localObject = a().a().getApplicationContext();
+    try
+    {
+      localObject = ((Context)localObject).getPackageManager().getPackageInfo(((Context)localObject).getPackageName(), 0);
+      this.d = ((PackageInfo)localObject).versionName;
+      this.e = (this.d + "." + ((PackageInfo)localObject).versionCode);
+      this.f = this.d.substring(this.d.lastIndexOf('.') + 1, this.d.length());
+      this.jdField_a_of_type_Int = ((PackageInfo)localObject).versionCode;
+      return;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      bjko.e("AppUpdate", "getPackageInfo NameNotFoundException : " + localNameNotFoundException.toString());
+      return;
+    }
+    catch (Exception localException)
+    {
+      bjko.e("AppUpdate", "getPackageInfo exception : " + localException.toString());
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, Context paramContext, WebView paramWebView)
+  {
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject(paramString);
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("imei", bjls.c());
+      localJSONObject2.put("imsi", bjls.d());
+      localJSONObject2.put("mac_addr", bjls.a());
+      localJSONObject2.put("model_info", Build.MODEL);
+      localJSONObject2.put("network_type", bjkj.a(a().a()));
+      localJSONObject2.put("network_operater", "");
+      localJSONObject2.put("location", bjls.f());
+      localJSONObject2.put("android_id", Settings.Secure.getString(a().a().getContentResolver(), "android_id"));
+      localJSONObject2.put("os_api_level", Build.VERSION.SDK_INT);
+      JSONObject localJSONObject3 = localJSONObject1.optJSONObject("params");
+      if ((localJSONObject3 != null) && (localJSONObject3.length() > 0))
+      {
+        Iterator localIterator = localJSONObject3.keys();
+        while (localIterator.hasNext())
+        {
+          String str2 = localIterator.next().toString();
+          Object localObject = localJSONObject3.get(str2);
+          if (!TextUtils.isEmpty(str2)) {
+            localJSONObject2.put(str2, localObject);
+          }
+        }
+      }
+      String str1;
+      return;
     }
     catch (JSONException localJSONException)
     {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
-    }
-    return null;
-  }
-  
-  @JsEvent({"qsubscribe_getdeviceinfo"})
-  public void qsubscribeGetdeviceinfo(RequestEvent paramRequestEvent)
-  {
-    try
-    {
-      a(paramRequestEvent);
-      Object localObject = new GdtDeviceInfoHelper.Params();
-      ((GdtDeviceInfoHelper.Params)localObject).businessIdForAidTicketAndTaidTicket = "1b0ad2";
-      localObject = GdtDeviceInfoHelper.create(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);
-      if ((localObject != null) && (((GdtDeviceInfoHelper.Result)localObject).deviceInfo != null))
+      bjko.e("AppUpdate", "getUpdateApp parse H5 params error : " + localJSONException.toString());
+      if (!paramContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false))
       {
-        vac_adv_get.VacFeedsAdvMetaReq localVacFeedsAdvMetaReq = new vac_adv_get.VacFeedsAdvMetaReq();
-        localVacFeedsAdvMetaReq.device_info.set(((GdtDeviceInfoHelper.Result)localObject).deviceInfo);
-        localObject = Arrays.toString(localVacFeedsAdvMetaReq.toByteArray());
-        new JSONObject().put("deviceinfo", localObject);
-        paramRequestEvent.ok();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
-    }
-  }
-  
-  @JsEvent({"qsubscribe_opendetail"})
-  public void qsubscribeOpendetail(RequestEvent paramRequestEvent)
-  {
-    try
-    {
-      Object localObject = a(paramRequestEvent).optJSONObject("data");
-      if (localObject != null)
-      {
-        String str1 = ((JSONObject)localObject).optString("uin");
-        int i = ((JSONObject)localObject).optInt("type");
-        String str2 = ((JSONObject)localObject).optString("feedid");
-        long l = ((JSONObject)localObject).optLong("createtime");
-        localObject = zbh.a(str2, str1, i, ((JSONObject)localObject).optInt("width"), ((JSONObject)localObject).optInt("height"), l);
-        zbh.a(this.mMiniAppContext.getAttachedActivity(), (CertifiedAccountMeta.StFeed)localObject, 9001);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
-    }
-  }
-  
-  @JsEvent({"qsubscribe_opendiscover"})
-  public void qsubscribeOpendiscover(RequestEvent paramRequestEvent)
-  {
-    boolean bool = false;
-    try
-    {
-      Object localObject = a(paramRequestEvent).optJSONObject("data");
-      if (localObject != null)
-      {
-        String str = ((JSONObject)localObject).optString("uin");
-        int i = ((JSONObject)localObject).optInt("shoptype");
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("postUin", str);
-        ((Intent)localObject).putExtra("sourceFrom", 1);
-        if (i > 1) {
-          bool = true;
+        bjko.c("AppUpdate", "getUpdateApp will do full report");
+        bjlv.a(paramContext, paramString, paramWebView, String.valueOf(a().a()), false);
+        return;
+        if (localJSONObject3 != null) {
+          localJSONObject2.put("latest_used", a(localJSONObject3.optInt("latest_num", 10), paramContext));
         }
-        ((Intent)localObject).putExtra("has_shop", bool);
-        ((Intent)localObject).addFlags(268435456);
-        QZoneHelper.forwardToQQPublicAccountPublishPage(this.mMiniAppContext.getAttachedActivity(), (Intent)localObject, 0);
-        paramRequestEvent.ok();
+        for (;;)
+        {
+          localJSONException.put("params", localJSONObject2);
+          str1 = localJSONException.toString();
+          paramString = str1;
+          break;
+          localJSONObject2.put("latest_used", a(10, paramContext));
+        }
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
+      if (new File(paramContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists())
+      {
+        bjko.c("AppUpdate", "getUpdateApp will do incremental report");
+        bjlv.a(paramContext, null, 0, paramString, paramWebView, String.valueOf(a().a()));
+        return;
+      }
+      bjko.c("AppUpdate", "getUpdateApp will get update app directly");
+      bjlw.a(paramContext, paramWebView, paramString, true, String.valueOf(a().a()));
     }
   }
   
-  @JsEvent({"qsubscribe_openhomepage"})
-  public void qsubscribeOpenhomepage(RequestEvent paramRequestEvent)
+  public long b()
   {
-    try
-    {
-      Object localObject = a(paramRequestEvent).optJSONObject("data");
-      if (localObject != null)
-      {
-        localObject = ((JSONObject)localObject).optString("uin");
-        zbh.a(this.mMiniAppContext.getAttachedActivity(), (String)localObject, 9001);
-      }
-      return;
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public String b()
+  {
+    return this.c;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public void b(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public String c()
+  {
+    if (!TextUtils.isEmpty(this.e)) {
+      return this.e;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
+    a();
+    return this.e;
+  }
+  
+  public void c(String paramString)
+  {
+    this.h = paramString;
+  }
+  
+  public String d()
+  {
+    if (!TextUtils.isEmpty(this.d)) {
+      return this.d;
     }
+    a();
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return "12";
+  }
+  
+  public String f()
+  {
+    if (!TextUtils.isEmpty(this.g)) {
+      return this.g;
+    }
+    this.g = ("V1_AND_SQ_" + c());
+    return this.g;
+  }
+  
+  public String g()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public String h()
+  {
+    return this.h;
   }
 }
 

@@ -1,9 +1,13 @@
-import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
+import android.widget.TextView;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
 
-public final class bcca
-  extends PluginRecoverReceiver
+public class bcca
 {
-  public void onRecver(String paramString) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  
+  public bcca(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bjdy;
+import bkpg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class MiniAppProxyImpl$14$1
   implements Runnable
 {
-  public MiniAppProxyImpl$14$1(bjdy parambjdy) {}
+  public MiniAppProxyImpl$14$1(bkpg parambkpg) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class MiniAppProxyImpl$14$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.14.1
  * JD-Core Version:    0.7.0.1
  */

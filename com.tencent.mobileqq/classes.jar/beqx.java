@@ -1,8 +1,19 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface beqx
+class beqx
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(ArrayList<beqw> paramArrayList);
+  beqx(bequ parambequ, int paramInt) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bdla.b(null, "dc00898", "", "", "0X800B359", "0X800B359", 1, 0, "", "", "", "");
+    bequ.a(this.jdField_a_of_type_Bequ).a(bequ.a(this.jdField_a_of_type_Bequ)[this.jdField_a_of_type_Int].b);
+    bequ.a(this.jdField_a_of_type_Bequ, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bequ.a(false);
+    this.jdField_a_of_type_Bequ.notifyDataSetChanged();
+  }
 }
 
 

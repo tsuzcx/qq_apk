@@ -1,46 +1,46 @@
 package com.tencent.mobileqq.app;
 
-import amwn;
-import amwo;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import bgoe;
-import bgog;
-import bgoj;
+import anzb;
+import anzc;
+import bhyo;
+import bhyq;
+import bhyt;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class MessageRoamManager$9
   implements Runnable
 {
-  public MessageRoamManager$9(amwo paramamwo) {}
+  public MessageRoamManager$9(anzc paramanzc) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg start...");
     }
-    bgoj localbgoj = ((bgog)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47)).a(1);
-    if ((localbgoj != null) && (localbgoj.a(amwn.a) == null))
+    bhyt localbhyt = ((bhyq)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+    if ((localbhyt != null) && (localbhyt.a(anzb.a) == null))
     {
-      Object localObject = new File(amwn.b);
-      bgoe localbgoe = new bgoe(amwn.a, (File)localObject);
+      Object localObject = new File(anzb.b);
+      bhyo localbhyo = new bhyo(anzb.a, (File)localObject);
       if (((File)localObject).exists())
       {
         localObject = Long.valueOf(((File)localObject).lastModified());
-        localbgoe.i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("cloudSearchCfgLastModify", 0L);
-        if (((Long)localObject).longValue() != localbgoe.i)
+        localbhyo.i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("cloudSearchCfgLastModify", 0L);
+        if (((Long)localObject).longValue() != localbhyo.i)
         {
-          localbgoe.m = true;
+          localbhyo.m = true;
           if (QLog.isColorLevel()) {
-            QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg file modified local time: " + localObject + ", sp time: " + localbgoe.i);
+            QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg file modified local time: " + localObject + ", sp time: " + localbhyo.i);
           }
         }
       }
-      localbgoe.j = true;
-      localbgoe.p = false;
+      localbhyo.j = true;
+      localbhyo.p = false;
       localObject = new Bundle();
-      localbgoj.a(localbgoe, this.this$0.jdField_a_of_type_Bgod, (Bundle)localObject);
+      localbhyt.a(localbhyo, this.this$0.jdField_a_of_type_Bhyn, (Bundle)localObject);
     }
   }
 }

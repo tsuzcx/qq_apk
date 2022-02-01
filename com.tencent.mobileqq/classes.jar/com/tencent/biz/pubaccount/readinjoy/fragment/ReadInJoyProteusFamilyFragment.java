@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bjsv;
-import bjsy;
+import bleh;
+import blek;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -21,32 +21,32 @@ import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ojq;
-import ojs;
-import pal;
-import pap;
-import pay;
-import poh;
-import poi;
-import poj;
-import pok;
-import pol;
+import orn;
+import orp;
+import pju;
+import pjy;
+import pqu;
+import pzf;
+import pzg;
+import pzh;
+import pzi;
+import pzj;
 
 public class ReadInJoyProteusFamilyFragment
   extends IphoneTitleBarFragment
-  implements ojs, pap
+  implements orp, pjy
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private pol jdField_a_of_type_Pol;
+  private pzj jdField_a_of_type_Pzj;
   
   private void a()
   {
     if (this.jdField_a_of_type_AndroidContentContext != null)
     {
-      this.jdField_a_of_type_Pol = new pol((Activity)this.jdField_a_of_type_AndroidContentContext);
-      ViewGroup localViewGroup = (ViewGroup)this.mContentView.findViewById(2131373053);
-      this.jdField_a_of_type_Pol.a(localViewGroup);
+      this.jdField_a_of_type_Pzj = new pzj((Activity)this.jdField_a_of_type_AndroidContentContext);
+      ViewGroup localViewGroup = (ViewGroup)this.mContentView.findViewById(2131373263);
+      this.jdField_a_of_type_Pzj.a(localViewGroup);
       b();
     }
   }
@@ -56,7 +56,7 @@ public class ReadInJoyProteusFamilyFragment
     if (this.leftView != null)
     {
       this.leftView.setTextColor(paramInt);
-      this.leftView.setBackgroundResource(2130849445);
+      this.leftView.setBackgroundResource(2130849537);
     }
     if (this.centerView != null) {
       this.centerView.setTextColor(paramInt);
@@ -65,20 +65,20 @@ public class ReadInJoyProteusFamilyFragment
   
   private void b()
   {
-    setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131717455));
-    pay.a(getTitleBarView());
+    setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131717821));
+    pqu.a(getTitleBarView());
     a(-16777216);
     Object localObject = this.rightViewImg;
     if (localObject != null)
     {
-      ((ImageView)localObject).setImageResource(2130842865);
+      ((ImageView)localObject).setImageResource(2130842897);
       ((ImageView)localObject).setVisibility(0);
       ((ImageView)localObject).setBackgroundResource(0);
-      ((ImageView)localObject).setOnClickListener(new poh(this, (ImageView)localObject));
+      ((ImageView)localObject).setOnClickListener(new pzf(this, (ImageView)localObject));
     }
     localObject = getTitleBarView();
     if (localObject != null) {
-      ((View)localObject).setOnClickListener(new poi(this));
+      ((View)localObject).setOnClickListener(new pzg(this));
     }
   }
   
@@ -93,21 +93,21 @@ public class ReadInJoyProteusFamilyFragment
     int[] tmp24_20 = tmp20_16;
     tmp24_20[2] = 2;
     tmp24_20;
-    String str1 = BaseApplicationImpl.getApplication().getString(2131717455);
-    String str2 = BaseApplicationImpl.getApplication().getString(2131717455);
-    String str3 = BaseApplicationImpl.getApplication().getString(2131717455);
+    String str1 = BaseApplicationImpl.getApplication().getString(2131717821);
+    String str2 = BaseApplicationImpl.getApplication().getString(2131717821);
+    String str3 = BaseApplicationImpl.getApplication().getString(2131717821);
     int i = 0;
     while (i < arrayOfInt.length)
     {
-      bjsy localbjsy = new bjsy();
-      localbjsy.jdField_a_of_type_Int = arrayOfInt[i];
-      localbjsy.jdField_a_of_type_JavaLangString = new String[] { str1, str2, str3 }[i];
-      localbjsy.b = new int[] { 2130842858, 2130842859, 2130842858 }[i];
-      localArrayList.add(localbjsy);
+      blek localblek = new blek();
+      localblek.jdField_a_of_type_Int = arrayOfInt[i];
+      localblek.jdField_a_of_type_JavaLangString = new String[] { str1, str2, str3 }[i];
+      localblek.b = new int[] { 2130842890, 2130842891, 2130842890 }[i];
+      localArrayList.add(localblek);
       i += 1;
     }
     i = ViewUtils.dip2px(125.0F);
-    bjsv.a(paramBaseActivity, localArrayList, new poj(this), new pok(this), i, false, -1, 2131755031).showAsDropDown(paramView, -(i - paramView.getWidth()), 0);
+    bleh.a(paramBaseActivity, localArrayList, new pzh(this), new pzi(this), i, false, -1, 2131755031).showAsDropDown(paramView, -(i - paramView.getWidth()), 0);
   }
   
   public void a(String paramString)
@@ -130,14 +130,14 @@ public class ReadInJoyProteusFamilyFragment
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     a();
-    this.jdField_a_of_type_Pol.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131366609));
-    ojq.a().a(8888, this);
+    this.jdField_a_of_type_Pzj.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131366720));
+    orn.a().a(8888, this);
   }
   
   public int getContentLayoutId()
   {
-    return 2131560254;
+    return 2131560300;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -147,8 +147,8 @@ public class ReadInJoyProteusFamilyFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Pol != null) {
-      this.jdField_a_of_type_Pol.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Pzj != null) {
+      this.jdField_a_of_type_Pzj.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -157,58 +157,58 @@ public class ReadInJoyProteusFamilyFragment
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_AndroidContentContext = getActivity();
-    pal.a().a(this);
-    pal.a().a();
+    pju.a().a(this);
+    pju.a().a();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    pal.a().b();
-    if (this.jdField_a_of_type_Pol != null) {
-      this.jdField_a_of_type_Pol.d();
+    pju.a().b();
+    if (this.jdField_a_of_type_Pzj != null) {
+      this.jdField_a_of_type_Pzj.d();
     }
-    ojq.a().b(8888, this);
+    orn.a().b(8888, this);
   }
   
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Pol != null) {
-      this.jdField_a_of_type_Pol.c();
+    if (this.jdField_a_of_type_Pzj != null) {
+      this.jdField_a_of_type_Pzj.c();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Pol != null) {
-      this.jdField_a_of_type_Pol.g();
+    if (this.jdField_a_of_type_Pzj != null) {
+      this.jdField_a_of_type_Pzj.g();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Pol != null) {
-      this.jdField_a_of_type_Pol.h();
+    if (this.jdField_a_of_type_Pzj != null) {
+      this.jdField_a_of_type_Pzj.h();
     }
-    pay.a(getActivity(), true, pay.a(getActivity()));
+    pqu.a(getActivity(), true, pqu.a(getActivity()));
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_Pol != null) {
-      this.jdField_a_of_type_Pol.e();
+    if (this.jdField_a_of_type_Pzj != null) {
+      this.jdField_a_of_type_Pzj.e();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Pol != null) {
-      this.jdField_a_of_type_Pol.f();
+    if (this.jdField_a_of_type_Pzj != null) {
+      this.jdField_a_of_type_Pzj.f();
     }
   }
 }

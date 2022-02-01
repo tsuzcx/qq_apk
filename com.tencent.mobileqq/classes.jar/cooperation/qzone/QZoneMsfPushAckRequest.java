@@ -1,7 +1,7 @@
 package cooperation.qzone;
 
 import PUSHAPI.PushRsp;
-import bkec;
+import blpn;
 import com.qq.taf.jce.JceStruct;
 
 public class QZoneMsfPushAckRequest
@@ -40,7 +40,7 @@ public class QZoneMsfPushAckRequest
     localPushRsp.sUID = "<JIEHEBAN>";
     localPushRsp.flag = this.flag;
     localPushRsp.Mark = this.mask;
-    return bkec.a(localPushRsp);
+    return blpn.a(localPushRsp);
   }
   
   public JceStruct getReq()

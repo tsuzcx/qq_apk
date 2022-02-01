@@ -1,48 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class swe
+class swe
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private List<BaseData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private swf jdField_a_of_type_Swf;
-  private List<BaseData> b = new ArrayList();
+  swe(swd paramswd) {}
   
-  public swe(String paramString, swf paramswf)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Swf = paramswf;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private void a()
-  {
-    try
-    {
-      if ((this.b != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Swf != null)) {
-        this.jdField_a_of_type_Swf.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b);
-      }
-      return;
+    if ((swd.a(this.a) != null) && (swd.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout != null)) {
+      this.a.a.a(swd.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    return true;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((swd.a(this.a) != null) && (swd.a(this.a).jdField_a_of_type_AndroidViewView != null)) {
+      this.a.a.onClick(swd.a(this.a).jdField_a_of_type_AndroidViewView);
     }
-  }
-  
-  public void a(List<BaseData> paramList)
-  {
-    this.b = paramList;
-    twp.a("REPORT_LINK", "requestAdData adDatas callback");
-    a();
-  }
-  
-  public void b(List<BaseData> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    twp.a("REPORT_LINK", "requestAdData recommendDatas callback");
-    a();
+    return true;
   }
 }
 

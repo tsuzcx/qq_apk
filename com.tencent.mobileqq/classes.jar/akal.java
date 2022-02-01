@@ -1,15 +1,10 @@
-import android.text.InputFilter;
-import java.util.List;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 
 public abstract interface akal
 {
-  public abstract String a(List<String> paramList, boolean paramBoolean);
+  public abstract void a();
   
-  public abstract void a(String paramString);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract InputFilter[] a(int paramInt);
+  public abstract void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo);
 }
 
 

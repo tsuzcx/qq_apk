@@ -1,18 +1,16 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import cooperation.readinjoy.ReadInJoyHelper.1;
 
 public class bmhw
-  implements bmfk
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public bmhw(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  public bmhw(ReadInJoyHelper.1 param1) {}
   
-  public void a(int paramInt, bmgl parambmgl)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if ((parambmgl instanceof bmgn)) {
-      AEEditorImageEditFragment.a(this.a, (bmgn)parambmgl);
-    }
+    if (paramInt == 0) {}
   }
-  
-  public void aD_() {}
 }
 
 

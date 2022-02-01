@@ -1,60 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import mqq.manager.Manager;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class aqug
-  implements Manager
+  implements AdapterView.OnItemSelectedListener
 {
-  public static long a;
-  public static long b;
-  public static long c;
-  private byte jdField_a_of_type_Byte;
-  private int jdField_a_of_type_Int;
-  protected NearbyAppInterface a;
-  protected EntityManager a;
-  private String jdField_a_of_type_JavaLangString;
+  public aqug(IphonePickerView paramIphonePickerView) {}
   
-  public aqug(NearbyAppInterface paramNearbyAppInterface)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramNearbyAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Byte = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = -2147483648;
+    IphonePickerView.a(this.a, paramView, 1);
+    IphonePickerView.a(this.a, paramView, true);
+    if ((paramView != null) && (paramView.getTag() != null))
+    {
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt)
+        {
+          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
+        }
+        paramInt += 1;
+      }
+    }
   }
   
-  public static void a(String paramString, long paramLong1, long paramLong2, long paramLong3)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    if (!awkj.c())
-    {
-      awka.a(paramString, "DatingManager.maplng", Long.valueOf(paramLong1));
-      awka.a(paramString, "DatingManager.maplat", Long.valueOf(paramLong2));
-      awka.a(paramString, "DatingManager.timestamp", Long.valueOf(paramLong3));
-      return;
-    }
-    jdField_a_of_type_Long = paramLong1;
-    b = paramLong2;
-    c = paramLong3;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

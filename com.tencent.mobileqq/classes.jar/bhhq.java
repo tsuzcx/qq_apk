@@ -1,28 +1,20 @@
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bhhq
-  implements TencentMap.OnCameraChangeListener
+class bhhq
+  implements View.OnClickListener
 {
-  public bhhq(QQMapView paramQQMapView) {}
+  bhhq(bhhp parambhhp) {}
   
-  public void onCameraChange(CameraPosition paramCameraPosition)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_Bhhs != null) && (!this.a.jdField_a_of_type_Boolean))
+    if (this.a.mDialog.isShowing())
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_Bhhs.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
+      this.a.mDialog.cancel();
+      this.a.mDialog.dismiss();
     }
-  }
-  
-  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      QQMapView.a(this.a, paramCameraPosition);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

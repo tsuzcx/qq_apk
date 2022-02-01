@@ -1,36 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import rx.functions.Func1;
 
 public class vsp
-  implements View.OnTouchListener
+  implements Func1<Bitmap, Bitmap>
 {
-  public vsp(StoryInputBarView paramStoryInputBarView) {}
+  public vsp(RoundImageView paramRoundImageView, Drawable paramDrawable) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public Bitmap a(Bitmap paramBitmap)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      StoryInputBarView.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Xgj.jdField_a_of_type_Boolean);
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label89;
-      }
-    }
-    label89:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.jdField_a_of_type_Boolean = bool;
-      return false;
-    }
-    label94:
-    this.a.a();
-    return false;
+    Canvas localCanvas = new Canvas(paramBitmap);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(localCanvas);
+    return paramBitmap;
   }
 }
 

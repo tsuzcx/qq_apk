@@ -1,16 +1,29 @@
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ahlg
-  implements View.OnClickListener
+public class ahlg
+  extends ahkx
 {
-  ahlg(ahlf paramahlf) {}
-  
-  public void onClick(View paramView)
+  public ahlg(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
   {
-    ahlf.a(this.a, paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
+  }
+  
+  public afqr a()
+  {
+    return new ahli(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public View a(BaseChatItemLayout paramBaseChatItemLayout)
+  {
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562984, paramBaseChatItemLayout, false);
   }
 }
 

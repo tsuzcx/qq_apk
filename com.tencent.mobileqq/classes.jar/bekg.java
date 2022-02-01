@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.aio.media.aio_media.RspLatestPlayingState;
 
-public class bekg
-  implements DialogInterface.OnClickListener
+public abstract interface bekg
 {
-  public bekg(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    SubmitHomeWorkFragment.a(this.a);
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, Object paramObject);
+  
+  public abstract void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean);
+  
+  public abstract void a(ToServiceMsg paramToServiceMsg, aio_media.RspLatestPlayingState paramRspLatestPlayingState);
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(String paramString, int paramInt);
 }
 
 

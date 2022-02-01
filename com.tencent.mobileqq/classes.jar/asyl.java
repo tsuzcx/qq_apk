@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.transfile.NetResp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface asyl
+public class asyl
+  implements View.OnClickListener
 {
-  public abstract long a(NetResp paramNetResp);
+  public asyl(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public abstract void a();
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract byte[] a(byte[] paramArrayOfByte, long paramLong);
-  
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    bdla.b(this.a.app, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
+    FilePreviewActivity.a(this.a, beaz.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131719264), false));
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

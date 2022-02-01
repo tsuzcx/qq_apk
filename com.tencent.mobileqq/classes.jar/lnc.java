@@ -1,26 +1,19 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.gaudio.GaInviteLockActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
-
 public class lnc
-  extends leo
 {
-  public lnc(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public String a;
+  public String b;
+  public String c;
   
-  protected void a(long paramLong1, long paramLong2, ArrayList<lnl> paramArrayList)
+  public lnc(String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onReceiveMemberList mMemberChangeEventReceiver size:" + paramArrayList.size());
-    }
-    ThreadManager.getUIHandler().post(new GaInviteLockActivity.1.1(this, paramArrayList));
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lnc
  * JD-Core Version:    0.7.0.1
  */

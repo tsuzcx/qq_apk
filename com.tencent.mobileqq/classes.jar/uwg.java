@@ -1,20 +1,45 @@
-import UserGrowth.stFollowFeedsReq;
-import UserGrowth.stFollowFeedsRsp;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 
 public class uwg
-  extends urg<stFollowFeedsRsp>
 {
-  public uwg(String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, int paramInt)
+  private ansy jdField_a_of_type_Ansy;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public uwg(AppInterface paramAppInterface)
   {
-    super("FollowFeeds", paramInt);
-    stFollowFeedsReq localstFollowFeedsReq = new stFollowFeedsReq();
-    localstFollowFeedsReq.attatch_info = paramString1;
-    localstFollowFeedsReq.is_refresh = paramBoolean2;
-    localstFollowFeedsReq.is_first = paramBoolean1;
-    localstFollowFeedsReq.push_info = paramString2;
-    localstFollowFeedsReq.scene = paramInt;
-    this.a = localstFollowFeedsReq;
-    uya.d("FollowRequest", localstFollowFeedsReq.toString());
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Ansy = new uwh(this);
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Ansy);
+    }
+  }
+  
+  public long a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0L;
+    }
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    {
+      ansr localansr = (ansr)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      if (localansr != null)
+      {
+        this.jdField_a_of_type_JavaLangString = paramString;
+        return localansr.a(paramString, 0).longValue();
+      }
+    }
+    return 0L;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Ansy);
+    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
   }
 }
 

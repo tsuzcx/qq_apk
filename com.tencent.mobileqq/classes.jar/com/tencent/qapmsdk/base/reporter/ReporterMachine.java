@@ -120,7 +120,7 @@ public final class ReporterMachine
           String str = (String)localIterator.next();
           paramResultObject.getParams().put(str, BaseInfo.pubJson.get(str));
         }
-        AbProviderSingleton.getInstance().addAbToParams(paramResultObject.getParams());
+        AbProviderSingleton.INSTANCE.addAbToParams(paramResultObject.getParams());
         uploadProxy.report((BaseJsonObject)paramResultObject, (IReporter.ReportResultCallback)new ReporterMachine.reportOnce.1(paramReportResultCallback));
         if (PluginCombination.Companion.isLoosePlugin(i))
         {

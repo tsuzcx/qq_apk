@@ -1,40 +1,25 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.RecentDynamicAvatarView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
 
-public class baqp
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+class baqp
+  extends BroadcastReceiver
 {
-  public final TextView a;
-  private baqn jdField_a_of_type_Baqn;
-  public RecentDynamicAvatarView a;
+  baqp(baqo parambaqo) {}
   
-  public baqp(baqm parambaqm, View paramView, baqn parambaqn)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131368236));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371791));
-    this.jdField_a_of_type_Baqn = parambaqn;
-    paramView.setOnClickListener(this);
-    paramView.setTag(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_Baqn != null) && (baqm.a(this.jdField_a_of_type_Baqm))) {
-      this.jdField_a_of_type_Baqn.a(paramView, getAdapterPosition() - 1);
-    }
-    for (;;)
+    if ((paramIntent != null) && ("com.qzonex.localalbum.new_photo_notification_feedback_action".equals(paramIntent.getAction())))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_Baqn != null) {
-        this.jdField_a_of_type_Baqn.a(paramView, getAdapterPosition());
+      if (QLog.isColorLevel()) {
+        QLog.i("QzonePhotoGuideNotifyServlet", 2, "QzonePhotoGuideNotifyServlet onReceive");
       }
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      }
+      this.a.b();
     }
   }
 }

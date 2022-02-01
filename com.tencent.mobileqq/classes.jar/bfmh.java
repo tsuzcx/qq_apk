@@ -1,15 +1,12 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
-class bfmh
-  implements FilenameFilter
+public abstract interface bfmh
 {
-  bfmh(bfmf parambfmf, String paramString) {}
+  public abstract void c(int paramInt);
   
-  public boolean accept(File paramFile, String paramString)
-  {
-    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract int d();
+  
+  public abstract void d(int paramInt);
+  
+  public abstract int e();
 }
 
 

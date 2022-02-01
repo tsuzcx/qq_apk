@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class adlm
-  implements View.OnClickListener
+public abstract interface adlm
 {
-  public adlm(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

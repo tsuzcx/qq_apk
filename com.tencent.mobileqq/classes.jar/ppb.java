@@ -1,15 +1,17 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import java.util.Map;
+import java.util.Set;
 
-public class ppb
-  implements pqe
+class ppb
+  extends qdb
 {
-  public ppb(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  ppb(pob parampob, String paramString, Set paramSet, Map paramMap)
   {
-    pay.a(this.a.a.getContext(), paa.s);
-    odq.a(null, "CliOper", "", "", "0X8009927", "0X8009927", 0, 0, "", "", "", pay.f(), false);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_JavaUtilSet, this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

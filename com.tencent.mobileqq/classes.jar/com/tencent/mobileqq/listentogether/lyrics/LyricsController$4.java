@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import avau;
+import awgx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class LyricsController$4
   implements Runnable
 {
-  public LyricsController$4(avau paramavau, boolean paramBoolean) {}
+  public LyricsController$4(awgx paramawgx, boolean paramBoolean) {}
   
   public void run()
   {

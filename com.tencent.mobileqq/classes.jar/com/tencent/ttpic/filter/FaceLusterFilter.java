@@ -56,14 +56,14 @@ public class FaceLusterFilter
     GLES20.glDeleteTextures(this.mTexture.length, this.mTexture, 0);
     GLES20.glDeleteFramebuffers(this.mFrameBuffer.length, this.mFrameBuffer, 0);
     GLES20.glDeleteRenderbuffers(this.mDepthBuffer.length, this.mDepthBuffer, 0);
-    this.mCopyFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
   }
   
   private void createPerspective(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float[] paramArrayOfFloat)
   {
-    float f = 1.0F / (paramFloat4 - paramFloat3);
     paramFloat1 = 1.0F / (float)Math.tan((float)(Math.toRadians(paramFloat1) * 0.5D));
     Arrays.fill(paramArrayOfFloat, 0.0F);
+    float f = 1.0F / (paramFloat4 - paramFloat3);
     paramArrayOfFloat[0] = (1.0F / paramFloat2 * paramFloat1);
     paramArrayOfFloat[5] = paramFloat1;
     paramArrayOfFloat[10] = (-(paramFloat4 + paramFloat3) * f);

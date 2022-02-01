@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.share;
 
-import apub;
-import atyq;
-import atyr;
+import aqxe;
+import avef;
+import aveg;
 
 public final class GameShareConfProcessor$1
   implements Runnable
 {
   public void run()
   {
-    atyr.a((atyq)apub.a().a(617));
+    aveg.a((avef)aqxe.a().a(617));
   }
 }
 

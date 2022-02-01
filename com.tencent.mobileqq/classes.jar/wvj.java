@@ -1,36 +1,39 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wvj
-  implements TVK_SDKMgr.OnLogListener
+  extends wfh
 {
-  public int d(String paramString1, String paramString2)
+  public final String a;
+  public final List<zbd> a;
+  public final int b;
+  
+  public wvj(qqstory_service.RspGetTagList paramRspGetTagList)
   {
-    xvv.b(paramString1, paramString2);
-    return 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    Object localObject = paramRspGetTagList.tag_list.get();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        qqstory_struct.TagItem localTagItem = (qqstory_struct.TagItem)((Iterator)localObject).next();
+        this.jdField_a_of_type_JavaUtilList.add(new zbd(localTagItem));
+      }
+    }
+    this.b = paramRspGetTagList.is_end.get();
+    this.jdField_a_of_type_JavaLangString = paramRspGetTagList.next_cookie.get();
   }
   
-  public int e(String paramString1, String paramString2)
+  public String toString()
   {
-    xvv.e(paramString1, paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    xvv.c(paramString1, paramString2);
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    xvv.b(paramString1, paramString2);
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    xvv.d(paramString1, paramString2);
-    return 0;
+    return "GetTagListResponse{mTagItems=" + this.jdField_a_of_type_JavaUtilList + ", mIsEnd=" + this.b + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

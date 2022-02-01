@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
-import alpu;
+import amov;
 
 public class CmShowRscCacheManager$1
   implements Runnable
 {
-  public CmShowRscCacheManager$1(alpu paramalpu) {}
+  public CmShowRscCacheManager$1(amov paramamov) {}
   
   public void run()
   {
-    alpu.a(this.this$0);
+    amov.a(this.this$0);
   }
 }
 

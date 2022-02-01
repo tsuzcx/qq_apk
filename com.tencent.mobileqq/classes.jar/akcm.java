@@ -1,122 +1,32 @@
-import Wallet.DownloadReportReq;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import android.content.Context;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 class akcm
-  extends bgod
+  implements AdapterView.OnItemLongClickListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  akcm(akce paramakce) {}
   
-  akcm(akck paramakck, int paramInt, WeakReference paramWeakReference, bgod parambgod, long paramLong) {}
-  
-  public void onDoneFile(bgoe parambgoe)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (PreloadManager.a((PreloadManager)localObject)) {
-      ((PreloadManager)localObject).c();
+    if (QLog.isColorLevel()) {
+      QLog.i("C2CMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
     }
-    if (this.jdField_a_of_type_Bgod != null) {
-      this.jdField_a_of_type_Bgod.onDoneFile(parambgoe);
-    }
-    localObject = new DownloadReportReq();
-    int i;
-    File localFile;
-    long l;
-    if (parambgoe.jdField_a_of_type_Int == 0)
-    {
-      ((DownloadReportReq)localObject).iType = 1;
-      int j = -1;
-      i = j;
-      if (parambgoe.jdField_a_of_type_JavaUtilMap != null)
-      {
-        i = j;
-        if (!TextUtils.isEmpty(parambgoe.jdField_a_of_type_JavaLangString))
-        {
-          localFile = (File)parambgoe.jdField_a_of_type_JavaUtilMap.get(parambgoe.jdField_a_of_type_JavaLangString);
-          if (localFile != null) {
-            break label242;
-          }
-          l = -2L;
-          label113:
-          i = (int)l;
-        }
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        ((DownloadReportReq)localObject).vecResInfo = this.jdField_a_of_type_Akck.a(i);
-        ((DownloadReportReq)localObject).iUin = this.jdField_a_of_type_Long;
-        ((DownloadReportReq)localObject).sPhoneType = DeviceInfoUtil.getModel();
-        ((DownloadReportReq)localObject).sOsVersion = DeviceInfoUtil.getDeviceOSVersion();
-        ((DownloadReportReq)localObject).sQQVersion = DeviceInfoUtil.getQQVersion();
-        ((DownloadReportReq)localObject).iScene = parambgoe.a().getInt("scene");
-        ajvh.a((JceStruct)localObject, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("RealTimeFlowControlObj", 2, akck.a(this.jdField_a_of_type_Akck) + " flow down result:" + parambgoe.jdField_a_of_type_Int + localObject);
-        }
-        return;
-        ((DownloadReportReq)localObject).iType = 2;
-        break;
-        try
-        {
-          label242:
-          if (localFile.exists())
-          {
-            l = localFile.length();
-            break label113;
-          }
-          l = -3L;
-        }
-        catch (Throwable localThrowable)
-        {
-          i = -4;
-          localThrowable.printStackTrace();
-        }
-      }
-    }
-  }
-  
-  public void onProgress(bgoe parambgoe)
-  {
-    double d;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      long l1 = System.currentTimeMillis();
-      long l2 = parambgoe.g;
-      d = parambgoe.f / (l1 - l2);
-      if (d >= 1.0D) {
-        break label43;
-      }
-    }
-    label43:
+    if ((this.a.jdField_a_of_type_Akcc.getCount() <= 0) || (paramInt <= 0)) {}
     do
     {
-      return;
-      parambgoe = new DownloadReportReq();
-      parambgoe.sSpeed = (d + "");
-      parambgoe.vecResInfo = this.jdField_a_of_type_Akck.a(0);
-      parambgoe.iType = 0;
-      parambgoe.iUin = this.jdField_a_of_type_Long;
-      ajvh.a(parambgoe, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("RealTimeFlowControlObj", 2, akck.a(this.jdField_a_of_type_Akck) + " flow down speed:" + d);
-  }
-  
-  public boolean onStart(bgoe parambgoe)
-  {
-    parambgoe.f = 1048576L;
-    parambgoe.b = Math.max(this.jdField_a_of_type_Int, 3);
-    return super.onStart(parambgoe);
+      return true;
+      paramAdapterView = (akcy)this.a.jdField_a_of_type_Akcc.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_Akcy = paramAdapterView;
+    paramView.setSelected(true);
+    paramAdapterView = new bhjq();
+    paramAdapterView.a(2131365307, anvx.a(2131700782), 2130838982);
+    paramAdapterView.a(2131367213, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692550), 2130838991);
+    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bhcw.a(paramView, paramAdapterView, akce.a(this.a), new akcn(this, paramView));
+    return true;
   }
 }
 

@@ -1,29 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asxv
-  extends asxz
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  public asxv(FMActivity paramFMActivity) {}
   
-  public asxv(FileManagerEntity paramFileManagerEntity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramFileManagerEntity.nSessionId;
-    this.jdField_a_of_type_Int = paramFileManagerEntity.peerType;
-    this.jdField_a_of_type_JavaLangString = paramFileManagerEntity.peerUin;
-  }
-  
-  public String a()
-  {
-    if ((this.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      QLog.e("OfflineFileControlReq<QFile>", 1, "key params is null");
-      return "";
-    }
-    return a(this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long + "");
+    FMActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

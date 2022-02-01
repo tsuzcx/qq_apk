@@ -1,62 +1,21 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqMessageQueue;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import com.tencent.mobileqq.apollo.player.CMSActionStatus;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-final class amvk
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/player/ICMSPlayerListener;", "", "onActionStatusChange", "", "action", "Lcom/tencent/mobileqq/apollo/player/action/CMSAction;", "status", "Lcom/tencent/mobileqq/apollo/player/CMSActionStatus;", "onFirstFrame", "onRecordDone", "success", "", "recordKey", "", "recordPath", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface amvk
 {
-  public void onThreadMonitorEnd(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      Looper.getMainLooper().setMessageLogging(null);
-      MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(null);
-    }
-    do
-    {
-      Object localObject;
-      do
-      {
-        return;
-        if (paramInt == 4)
-        {
-          ThreadManager.getSubThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 5)
-        {
-          ThreadManager.getFileThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 14)
-        {
-          Looper.getMainLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt != 18) {
-          break;
-        }
-        localObject = MsfCore.sCore;
-        if (localObject == null)
-        {
-          QLog.e("MagnifierSDK.QAPM", 1, "msf core hasnot init");
-          return;
-        }
-        localObject = ((MsfCore)localObject).getNetworkHandlerThread();
-      } while ((localObject == null) || (((HandlerThread)localObject).getLooper() == null));
-      ((HandlerThread)localObject).getLooper().setMessageLogging(null);
-      return;
-    } while (paramInt != 19);
-    Looper.getMainLooper().setMessageLogging(null);
-  }
+  public abstract void a(@NotNull CMSAction paramCMSAction);
+  
+  public abstract void a(@NotNull CMSAction paramCMSAction, @NotNull CMSActionStatus paramCMSActionStatus);
+  
+  public abstract void a(@NotNull CMSAction paramCMSAction, boolean paramBoolean, @NotNull String paramString1, @Nullable String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvk
  * JD-Core Version:    0.7.0.1
  */

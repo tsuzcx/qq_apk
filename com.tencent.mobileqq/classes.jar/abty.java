@@ -1,43 +1,11 @@
-import com.tencent.gdtad.views.image.GdtGifImageView;
-import com.tencent.image.URLDrawable;
-import java.lang.ref.WeakReference;
-import java.net.URL;
+import android.content.Context;
+import android.widget.TextView;
 
 public class abty
-  implements abtx
 {
-  public abty(GdtGifImageView paramGdtGifImageView) {}
-  
-  public void a(URLDrawable paramURLDrawable)
+  public static void a(Context paramContext, TextView paramTextView)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (String str = paramURLDrawable.getURL().toString();; str = null)
-    {
-      abrl.b("GdtImageView", String.format("onLoadSuccessful %s", new Object[] { str }));
-      if ((!GdtGifImageView.a(this.a)) || (!GdtGifImageView.b(this.a))) {
-        GdtGifImageView.a(this.a, paramURLDrawable, str);
-      }
-      if ((GdtGifImageView.a(this.a) != null) && (GdtGifImageView.a(this.a).get() != null) && (GdtGifImageView.c(this.a))) {
-        ((abtz)GdtGifImageView.a(this.a).get()).a(true);
-      }
-      return;
-    }
-  }
-  
-  public void b(URLDrawable paramURLDrawable)
-  {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (String str = paramURLDrawable.getURL().toString();; str = null)
-    {
-      abrl.b("GdtImageView", String.format("onLoadFailed %s", new Object[] { str }));
-      if ((!GdtGifImageView.a(this.a)) || (!GdtGifImageView.b(this.a))) {
-        GdtGifImageView.a(this.a, paramURLDrawable, str);
-      }
-      if ((GdtGifImageView.a(this.a) != null) && (GdtGifImageView.a(this.a).get() != null)) {
-        ((abtz)GdtGifImageView.a(this.a).get()).a(false);
-      }
-      return;
-    }
+    if ((paramContext != null) && (paramTextView == null)) {}
   }
 }
 

@@ -1,24 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-
-class yfb
-  implements Animation.AnimationListener
+public class yfb
+  extends vzj
 {
-  yfb(yfa paramyfa) {}
+  public int a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public yfb(int paramInt)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Yev != null) {
-      this.a.a.jdField_a_of_type_Yev.a(null);
-    }
+    this.a = paramInt;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,29 +1,65 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class axat
-  implements View.OnClickListener
+public class axat
+  extends awzi
 {
-  axat(awzr paramawzr, String paramString) {}
+  public axat(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Awzr.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    Object localObject = this.jdField_a_of_type_Awzr.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Awzr.a.j)) {}
-    for (localObject = "1";; localObject = "2")
-    {
-      localIntent.putExtra("url", (String)localObject);
-      bcef.b(this.jdField_a_of_type_Awzr.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Awzr.a.startActivity(localIntent);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmTokenResponse:  isSuccess: " + paramBoolean);
     }
+    super.a(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean, axam paramaxam)
+  {
+    if (paramBoolean) {
+      this.a.a(paramaxam);
+    }
+    super.a(paramBoolean, paramaxam);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    }
+    Object localObject;
+    if ((paramBoolean) && ((paramObject instanceof axag)))
+    {
+      localObject = (axag)paramObject;
+      this.a.a((axag)localObject);
+    }
+    for (;;)
+    {
+      super.a(paramBoolean, paramObject);
+      return;
+      if ((paramObject instanceof Integer))
+      {
+        localObject = (Integer)paramObject;
+        this.a.a((Integer)localObject);
+      }
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onRejectQRResponse:  isSuccess: " + paramBoolean);
+    }
+    super.b(paramBoolean);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.MsgBackupBaseFragment", 2, "onConfirmQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    }
+    this.a.a(paramBoolean, paramObject);
+    super.b(paramBoolean, paramObject);
   }
 }
 

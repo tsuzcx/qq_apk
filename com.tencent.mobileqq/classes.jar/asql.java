@@ -1,85 +1,40 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Rect;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-public abstract class asql
-  implements asqs
+public class asql
+  extends RecyclerView.ItemDecoration
 {
-  private int jdField_a_of_type_Int = 0;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  private int a;
+  private int b;
+  private int c;
+  private int d;
   
-  public static asqs a(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
+  public asql(Fragment paramFragment)
   {
-    return new asqd(paramQQAppInterface, paramFileManagerEntity);
+    this.a = AIOUtils.dp2px(11.0F, paramFragment.getResources());
+    this.b = AIOUtils.dp2px(11.0F, paramFragment.getResources());
+    this.c = AIOUtils.dp2px(8.0F, paramFragment.getResources());
+    this.d = AIOUtils.dp2px(8.0F, paramFragment.getResources());
   }
   
-  public static asqs a(QQAppInterface paramQQAppInterface, WeiYunFileInfo paramWeiYunFileInfo)
+  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
   {
-    return new asqg(paramQQAppInterface, paramWeiYunFileInfo);
-  }
-  
-  public static asqs a(FileInfo paramFileInfo)
-  {
-    return new asqe(paramFileInfo);
-  }
-  
-  public static asqs b(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
-  {
-    return new asqf(paramQQAppInterface, paramFileManagerEntity);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.c;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public String f()
-  {
-    return "";
-  }
-  
-  public String i()
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (c() > 0L)
+    int i = paramRecyclerView.getAdapter().getItemCount();
+    if (paramRecyclerView.getAdapter().getItemViewType(paramInt) == 6)
     {
-      str1 = str2;
-      if (c() != 3) {
-        if ((e() == null) || (e().length() <= 0)) {
-          break label92;
-        }
-      }
+      paramRect.set(0, this.a, 0, 0);
+      return;
     }
-    label92:
-    for (int i = 1;; i = 0)
+    if (paramInt == i - 1)
     {
-      str1 = str2;
-      if (i == 0) {
-        str1 = "" + BaseApplicationImpl.getContext().getString(2131692192) + aszt.a(c(), b());
-      }
-      return str1;
+      paramRect.set(this.c, this.a, this.d, this.b);
+      return;
     }
+    paramRect.set(this.c, this.a, this.d, 0);
   }
 }
 

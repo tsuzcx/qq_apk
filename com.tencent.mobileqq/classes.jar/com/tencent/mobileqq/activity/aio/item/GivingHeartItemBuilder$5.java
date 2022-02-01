@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afda;
-import afzw;
-import agkg;
+import afuf;
+import agsm;
+import ahcw;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -10,18 +10,18 @@ import java.util.Map;
 public class GivingHeartItemBuilder$5
   implements Runnable
 {
-  public GivingHeartItemBuilder$5(afzw paramafzw) {}
+  public GivingHeartItemBuilder$5(agsm paramagsm) {}
   
   public void run()
   {
-    Object localObject = agkg.a(this.this$0.b, afzw.a(this.this$0));
+    Object localObject = ahcw.a(this.this$0.b, agsm.a(this.this$0));
     if (((ArrayList)localObject).size() > 0)
     {
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        afda localafda = (afda)((Iterator)localObject).next();
-        afzw.a(this.this$0).put(Integer.valueOf(localafda.b), Integer.valueOf(localafda.c));
+        afuf localafuf = (afuf)((Iterator)localObject).next();
+        agsm.a(this.this$0).put(Integer.valueOf(localafuf.b), Integer.valueOf(localafuf.c));
       }
     }
   }

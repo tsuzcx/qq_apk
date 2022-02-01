@@ -1,74 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.fts.FTSTroopSync;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
 
-public class anvh
-  implements anvi
+public abstract interface anvh
 {
-  anvf jdField_a_of_type_Anvf;
-  anvg jdField_a_of_type_Anvg;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public abstract ViewGroup a();
   
-  anvh(QQAppInterface paramQQAppInterface, anvg paramanvg)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Anvg = paramanvg;
-    this.jdField_a_of_type_Anvf = this.jdField_a_of_type_Anvg.jdField_a_of_type_Anvf;
-  }
+  public abstract blgc a(String paramString);
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
-    localEditor.putBoolean("fts_troop_upgrade_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
-    localEditor.commit();
-  }
+  public abstract void a();
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("fts_troop_upgrade_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public void a() {}
+  public abstract void a(Configuration paramConfiguration);
   
-  public boolean a()
-  {
-    return !a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface);
   
-  public boolean b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().drop(FTSTroopSync.class.getSimpleName());
-    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b();
-    ArrayList localArrayList = new ArrayList(((ArrayList)localObject).size());
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      TroopInfo localTroopInfo = (TroopInfo)((Iterator)localObject).next();
-      try
-      {
-        localArrayList.add(new FTSTroopSync(5, Long.parseLong(localTroopInfo.troopuin)));
-      }
-      catch (Exception localException) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("FTSTroopUpgrader", 2, "startUpgrade exception : " + localException.toString());
-      }
-    }
-    if (this.jdField_a_of_type_Anvg.a(localArrayList))
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(String paramString, blgc paramblgc);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

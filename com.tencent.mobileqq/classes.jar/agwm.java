@@ -1,21 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import java.util.ArrayList;
 
-class agwm
-  implements Animation.AnimationListener
+final class agwm
+  implements ahab
 {
-  agwm(agwl paramagwl) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (agwl.a(this.a) != null) {
-      agwl.a(this.a).b();
+    paramQQAppInterface = (MessageForArkBabyqReply)paramChatMessage;
+    if ((paramQQAppInterface.mArkBabyqReplyCardList == null) || (paramQQAppInterface.mArkBabyqReplyCardList.size() <= 0)) {
+      return 83;
     }
+    return 82;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

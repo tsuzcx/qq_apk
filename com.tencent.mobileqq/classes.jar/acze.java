@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.qapmsdk.base.listener.IMemoryDumpListener;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-public class acze
-  implements DialogInterface.OnClickListener
+class acze
+  implements IMemoryDumpListener
 {
-  public acze(ChatHistoryFileActivity paramChatHistoryFileActivity, aczg paramaczg) {}
+  acze(aczd paramaczd, acyb paramacyb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2) {}
+  
+  public void onHprofDumped(@NotNull String paramString)
   {
-    this.jdField_a_of_type_Aczg.a(true);
+    this.jdField_a_of_type_Acyb.a();
+  }
+  
+  @NotNull
+  public List<String> onPrepareDump(@NotNull String paramString)
+  {
+    long l1 = Runtime.getRuntime().totalMemory();
+    long l2 = Runtime.getRuntime().freeMemory();
+    ArrayList localArrayList = new ArrayList(4);
+    localArrayList.addAll(acyt.b());
+    localArrayList.add(acyt.b());
+    localArrayList.add(acyt.a());
+    localArrayList.add(acyt.a(paramString, l1 - l2));
+    return localArrayList;
   }
 }
 

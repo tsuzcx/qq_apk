@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n5" android:layout_marginBottom="@dimen/mw"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/mo6" android:paddingBottom="3.0dip" android:visibility="invisible" android:layout_width="@dimen/bcq" android:layout_height="@dimen/b66" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/nix" android:layout_width="@dimen/bcr" android:layout_height="@dimen/bcr" android:layout_marginLeft="@dimen/bcs" android:scaleType="fitCenter" android:layout_toRightOf="@id/mo6" android:layout_alignTop="@id/mo6" />
-    <ImageView android:id="@id/mhl" android:background="@drawable/gra" android:visibility="invisible" android:layout_width="@dimen/bcz" android:layout_height="@dimen/bcx" android:layout_marginLeft="@dimen/bcy" android:layout_alignLeft="@id/nix" android:layout_alignTop="@id/mo6" />
-    <ImageView android:id="@id/nj0" android:layout_width="@dimen/bcw" android:layout_height="@dimen/bcw" android:layout_marginTop="@dimen/bct" android:layout_marginRight="@dimen/bcv" android:layout_alignRight="@id/mhl" />
-    <View android:id="@id/mo5" android:background="@drawable/gra" android:visibility="invisible" android:layout_width="@dimen/bcz" android:layout_height="@dimen/bcx" android:layout_marginTop="@dimen/bcu" android:layout_alignTop="@id/nj0" android:layout_alignRight="@id/mhl" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/ayn" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/o8h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxLength="12" />
+    <TextView android:textSize="@dimen/aym" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/o8i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/nd" android:maxWidth="350.0dip" android:maxLines="1" android:maxLength="20" />
+</LinearLayout>

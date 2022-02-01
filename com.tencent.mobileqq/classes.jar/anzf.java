@@ -1,18 +1,58 @@
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+
 public class anzf
+  extends BusinessHandler
 {
-  public long a;
-  public String a;
-  public long b;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private apnc jdField_a_of_type_Apnc;
   
-  public String toString()
+  public anzf(AppInterface paramAppInterface)
   {
-    StringBuffer localStringBuffer = new StringBuffer("PlayGuideShowInfo{");
-    localStringBuffer.append("nStartTime=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", nEndTime=").append(this.b);
-    localStringBuffer.append(", strShow=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    super(paramAppInterface);
   }
+  
+  public void a(Context paramContext)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Apnc == null)
+      {
+        this.jdField_a_of_type_Apnc = apnc.a();
+        this.jdField_a_of_type_Apnc.a(paramContext, hashCode(), "MiniCodePeakHandler");
+      }
+      return;
+    }
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return null;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniCodePeakHandler", 2, "onDestroy");
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Apnc != null)
+      {
+        this.jdField_a_of_type_Apnc.a(hashCode(), "MiniCodePeakHandler");
+        this.jdField_a_of_type_Apnc = null;
+      }
+      return;
+    }
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

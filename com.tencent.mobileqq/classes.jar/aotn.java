@@ -1,36 +1,16 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.HorizontalListView;
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aotn
-  implements AdapterView.OnItemClickListener
+public class aotn
+  extends aoui
 {
-  aotn(aotj paramaotj) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    Object localObject = aotj.a(this.a).getSelectedView();
-    if (localObject != null) {
-      ((View)localObject).setSelected(false);
-    }
-    aotj.a(this.a).setSelection(paramInt);
-    localObject = aotj.a(this.a).getSelectedView();
-    if (localObject != null) {
-      ((View)localObject).setSelected(true);
-    }
-    aotj.a(this.a, paramInt);
-    aotj.a(this.a, true);
-    if ((aotj.a(this.a) != null) && (aotj.a(this.a).size() > 0) && (aotj.a(this.a).size() > aotj.a(this.a)))
-    {
-      localObject = (aouk)aotj.a(this.a).get(aotj.a(this.a));
-      if (localObject != null) {
-        aovl.a(null, ((aouk)localObject).a, "AIOInputPannelTabClick", 0, 0, 0L, 0L, 0L, "", "");
-      }
-    }
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    paramQQAppInterface = new aotm(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "nearby_entry";
+    paramQQAppInterface.c = "nearby_feed";
+    return paramQQAppInterface;
   }
 }
 

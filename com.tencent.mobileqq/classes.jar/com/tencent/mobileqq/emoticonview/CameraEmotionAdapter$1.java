@@ -1,16 +1,18 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amos;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
-import arad;
+import anrf;
+import asen;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.CameraEmotionData;
 import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
@@ -37,7 +39,7 @@ class CameraEmotionAdapter$1
       }
       if (((CameraEmoticonInfo)localObject).roamingType.equals("failed"))
       {
-        paramView = ((arad)this.this$0.app.getManager(333)).a();
+        paramView = ((asen)this.this$0.app.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).a();
         if (paramView != null)
         {
           paramView = paramView.iterator();
@@ -49,7 +51,7 @@ class CameraEmotionAdapter$1
               QLog.d("CameraEmotionAdapter", 1, new Object[] { "resend, emoId:", Integer.valueOf(paramEmoticonInfo.emoId) });
               paramEmoticonInfo.RomaingType = "needUpload";
               ((CameraEmoticonInfo)localObject).roamingType = "needUpload";
-              ((amos)this.this$0.app.getBusinessHandler(160)).notifyUI(4, true, null);
+              ((anrf)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.CAMERA_EMOTICON_HANDLER)).notifyUI(4, true, null);
               com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend.a = false;
               ThreadManager.excute(new CameraEmoSingleSend(paramEmoticonInfo, true), 64, null, false);
             }
@@ -57,8 +59,8 @@ class CameraEmotionAdapter$1
         }
         return true;
       }
-      localObject = (URLImageView)paramView.findViewById(2131365977);
-      paramView = (ImageView)paramView.findViewById(2131365978);
+      localObject = (URLImageView)paramView.findViewById(2131366078);
+      paramView = (ImageView)paramView.findViewById(2131366079);
       if (!(((URLImageView)localObject).getBackground() instanceof URLDrawable)) {
         return false;
       }
@@ -72,7 +74,7 @@ class CameraEmotionAdapter$1
         paramView.setVisibility(0);
         localURLDrawable.restartDownload();
         if (!(paramView.getDrawable() instanceof Animatable)) {
-          paramView.setImageDrawable((Drawable)BaseApplication.getContext().getResources().getDrawable(2130839445));
+          paramView.setImageDrawable((Drawable)BaseApplication.getContext().getResources().getDrawable(2130839466));
         }
         ((Animatable)paramView.getDrawable()).start();
         return true;
@@ -90,7 +92,7 @@ class CameraEmotionAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CameraEmotionAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import agqd;
-import akyk;
-import akym;
+import ahit;
+import alwg;
+import alwi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -27,12 +27,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView.BufferType;
-import apee;
-import apfx;
-import bcef;
-import bhba;
-import bhbb;
-import bjng;
+import aqhi;
+import aqjb;
+import bdla;
+import bils;
+import bilt;
+import bkys;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.text.QQText.EmoticonSpan;
@@ -41,7 +41,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class AnimationTextView
   extends PatchedTextView
-  implements akyk, Handler.Callback
+  implements alwg, Handler.Callback
 {
   private static final int MSG_INVALIDATE = 1;
   private static final String TAG = "AnimationTextView";
@@ -52,7 +52,7 @@ public class AnimationTextView
   public boolean isSingleClick = true;
   private boolean mBlockRelayout;
   private MotionEvent mCurrentDownEvent;
-  private final Handler mHandler = new bjng(Looper.myLooper(), this);
+  private final Handler mHandler = new bkys(Looper.myLooper(), this);
   private boolean mHasSelected;
   private int mHighlightBackgroundColor = -5250572;
   private Paint mHighlightPaint;
@@ -60,14 +60,14 @@ public class AnimationTextView
   private boolean mIsHighlight;
   private boolean mIsSelectable = true;
   private MotionEvent mPreviousUpEvent;
-  protected akym mSelectDelegate;
+  protected alwi mSelectDelegate;
   private int mSelectEnd;
   private int mSelectStart;
   private int mStrokeColor;
   private final int[] mTempLocation = new int[2];
   Runnable mTimerForSecondClick = new AnimationTextView.1(this);
-  public bhba onDoubleClick;
-  public bhbb onSingleClick;
+  public bils onDoubleClick;
+  public bilt onSingleClick;
   public float touchL;
   public float touchT;
   
@@ -114,15 +114,15 @@ public class AnimationTextView
   {
     int i = 0;
     float f1 = this.touchL;
-    float f3 = agqd.e;
-    float f2 = this.touchT - agqd.c;
-    apee localapee = (apee)getTag(2131364021);
-    Object localObject = (ChatMessage)getTag(2131364486);
+    float f3 = ahit.e;
+    float f2 = this.touchT - ahit.c;
+    aqhi localaqhi = (aqhi)getTag(2131364096);
+    Object localObject = (ChatMessage)getTag(2131364568);
     if (localObject != null) {}
     for (boolean bool = ((ChatMessage)localObject).isSend();; bool = false)
     {
       if (bool) {}
-      for (f1 = this.touchL - agqd.f;; f1 -= f3)
+      for (f1 = this.touchL - ahit.f;; f1 -= f3)
       {
         localObject = getText();
         if ((localObject instanceof QQText))
@@ -167,21 +167,21 @@ public class AnimationTextView
           if (j != 0)
           {
             localObject = getBackground();
-            if ((localObject == null) || (!(localObject instanceof apfx))) {
+            if ((localObject == null) || (!(localObject instanceof aqjb))) {
               break label277;
             }
-            ((apfx)localObject).a = true;
+            ((aqjb)localObject).a = true;
           }
         }
         label277:
-        while ((localObject == null) || (localapee == null)) {
+        while ((localObject == null) || (localaqhi == null)) {
           return;
         }
         localObject = getResources();
         if (bool) {}
-        for (i = 2130849917;; i = 2130849741)
+        for (i = 2130850010;; i = 2130849834)
         {
-          localapee.a(this, ((Resources)localObject).getDrawable(i));
+          localaqhi.a(this, ((Resources)localObject).getDrawable(i));
           return;
         }
       }
@@ -332,9 +332,9 @@ public class AnimationTextView
     return (paramInt > 0) && (localLayout.getLineForOffset(paramInt) == localLayout.getLineForOffset(paramInt - 1) + 1);
   }
   
-  public void bind(@Nullable akym paramakym)
+  public void bind(@Nullable alwi paramalwi)
   {
-    this.mSelectDelegate = paramakym;
+    this.mSelectDelegate = paramalwi;
   }
   
   public void clearHighlightContent()
@@ -359,7 +359,7 @@ public class AnimationTextView
   }
   
   @Nullable
-  public akym delegate()
+  public alwi delegate()
   {
     return this.mSelectDelegate;
   }
@@ -370,7 +370,7 @@ public class AnimationTextView
       throw new IllegalStateException("Has no bound delegate!");
     }
     this.mSelectDelegate.a(paramChatMessage);
-    bcef.b(null, "dc00898", "", "", "0X800AE7A", "0X800AE7A", 1, 0, "", "", "", "");
+    bdla.b(null, "dc00898", "", "", "0X800AE7A", "0X800AE7A", 1, 0, "", "", "", "");
   }
   
   public int endIndex()

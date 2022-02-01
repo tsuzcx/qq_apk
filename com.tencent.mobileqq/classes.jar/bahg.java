@@ -1,51 +1,44 @@
-import android.graphics.Bitmap.CompressFormat;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.ThumbnailUtil.1;
-import java.nio.Buffer;
-import java.nio.IntBuffer;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class bahg
+public abstract class bahg
 {
-  public static String a(String paramString)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    return paramString + ".thumb.png";
+    BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("UserGuide", true).commit();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "markUserGuideFlag");
+    }
   }
   
-  public static void a(int paramInt1, int paramInt2, int paramInt3, bafx parambafx, bahi parambahi)
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    int[] arrayOfInt1 = new int[paramInt2 * paramInt3];
-    int[] arrayOfInt2 = new int[paramInt2 * paramInt3];
-    Object localObject1 = IntBuffer.wrap(arrayOfInt1);
-    ((IntBuffer)localObject1).position(0);
-    Object localObject2;
-    if (paramInt1 != 0)
-    {
-      localObject2 = new int[1];
-      GLES20.glGenFramebuffers(1, (int[])localObject2, 0);
-      GLES20.glBindFramebuffer(36160, localObject2[0]);
-      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
-      GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject1);
-      GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glDeleteFramebuffers(1, (int[])localObject2, 0);
-      localObject2[0] = 0;
-      localObject2 = parambafx.jdField_a_of_type_Bahh;
-      if (localObject2 == null) {
-        break label169;
-      }
-      parambafx = ((bahh)localObject2).jdField_a_of_type_JavaLangString;
-      localObject1 = ((bahh)localObject2).jdField_a_of_type_AndroidGraphicsBitmap$CompressFormat;
+    boolean bool = false;
+    if (!BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("UserGuide", false)) {
+      bool = true;
     }
-    for (paramInt1 = ((bahh)localObject2).jdField_a_of_type_Int;; paramInt1 = 100)
-    {
-      ThreadManager.executeOnFileThread(new ThumbnailUtil.1(paramInt3, paramInt2, arrayOfInt1, arrayOfInt2, parambafx, (Bitmap.CompressFormat)localObject1, paramInt1, parambahi));
-      return;
-      GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject1);
-      break;
-      label169:
-      parambafx = a(parambafx.jdField_a_of_type_JavaLangString);
-      localObject1 = Bitmap.CompressFormat.PNG;
+    return bool;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    long l = System.currentTimeMillis();
+    BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("UserTips", l);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "markUserTipsFlag:" + l);
     }
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = false;
+    if (Math.abs(System.currentTimeMillis() - BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).getLong("UserTips", 0L)) >= 3600000L) {
+      bool = true;
+    }
+    return bool;
   }
 }
 

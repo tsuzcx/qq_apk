@@ -1,47 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-
-class arcy
-  implements TVK_SDKMgr.InstallListener
+public class arcy
 {
-  arcy(arcu paramarcu, Bundle paramBundle, MessengerService paramMessengerService) {}
+  private arcz jdField_a_of_type_Arcz;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onInstallProgress(float paramFloat)
+  public arcy()
   {
-    int i = (int)Math.floor(100.0F * paramFloat);
-    if (i > bgnr.a)
-    {
-      bgnr.a = i;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("status", 1);
-      localBundle.putFloat("progress", i);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Arcz = new arcz();
   }
   
-  public void onInstalledFailed(int paramInt)
+  public arcy(String paramString, arcz paramarcz)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", 2);
-    localBundle.putInt("errCode", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Arcz = paramarcz;
   }
   
-  public void onInstalledSuccessed()
+  public arcz a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", 3);
-    localBundle.putBoolean("result", true);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    return this.jdField_a_of_type_Arcz;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arcy
  * JD-Core Version:    0.7.0.1
  */

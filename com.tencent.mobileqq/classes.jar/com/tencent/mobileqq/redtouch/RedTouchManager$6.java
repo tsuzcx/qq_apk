@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.redtouch;
 
-import azvi;
+import bbbq;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class RedTouchManager$6
   implements Runnable
 {
-  public RedTouchManager$6(azvi paramazvi, int paramInt1, int paramInt2) {}
+  public RedTouchManager$6(bbbq parambbbq, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ public class RedTouchManager$6
       localObject = new JSONObject();
       ((JSONObject)localObject).put("level", 0);
       this.this$0.a(localAppInfo, null, this.b, ((JSONObject)localObject).toString());
-      azvi.a("level zero report appSet:" + this.a + " reportType:" + this.b + "appId:" + localAppInfo.uiAppId.get());
+      bbbq.a("level zero report appSet:" + this.a + " reportType:" + this.b + "appId:" + localAppInfo.uiAppId.get());
       return;
     }
     catch (JSONException localJSONException)

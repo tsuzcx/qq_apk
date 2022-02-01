@@ -1,137 +1,166 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.ContentValues;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.UUID;
 
-class bflk
-  implements AdapterView.OnItemClickListener
+public class bflk
+  extends aoxs
 {
-  bflk(bflj parambflj) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public bflk(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    int j = 0;
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null))
+    super(paramQQAppInterface, paramProxyManager);
+  }
+  
+  private ContentValues a(Entity paramEntity)
+  {
+    ContentValues localContentValues = new ContentValues();
+    List localList = TableBuilder.getValidField(paramEntity.getClass());
+    int j = localList.size();
+    int i = 0;
+    for (;;)
     {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      if (i < j)
+      {
+        Object localObject1 = (Field)localList.get(i);
+        String str = ((Field)localObject1).getName();
+        if (!((Field)localObject1).isAccessible()) {
+          ((Field)localObject1).setAccessible(true);
+        }
+        try
+        {
+          localObject1 = ((Field)localObject1).get(paramEntity);
+          if ((localObject1 instanceof Integer))
+          {
+            localContentValues.put(str, (Integer)localObject1);
+            i += 1;
+          }
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          for (;;)
+          {
+            localIllegalArgumentException.printStackTrace();
+            Object localObject2 = null;
+          }
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          for (;;)
+          {
+            localIllegalAccessException.printStackTrace();
+            Object localObject3 = null;
+            continue;
+            if ((localObject3 instanceof Long)) {
+              localContentValues.put(str, (Long)localObject3);
+            } else if ((localObject3 instanceof String)) {
+              localContentValues.put(str, (String)localObject3);
+            } else if ((localObject3 instanceof byte[])) {
+              localContentValues.put(str, (byte[])localObject3);
+            } else if ((localObject3 instanceof Short)) {
+              localContentValues.put(str, (Short)localObject3);
+            } else if ((localObject3 instanceof Boolean)) {
+              localContentValues.put(str, (Boolean)localObject3);
+            } else if ((localObject3 instanceof Double)) {
+              localContentValues.put(str, (Double)localObject3);
+            } else if ((localObject3 instanceof Float)) {
+              localContentValues.put(str, (Float)localObject3);
+            } else if ((localObject3 instanceof Byte)) {
+              localContentValues.put(str, (Byte)localObject3);
+            }
+          }
+        }
+      }
+    }
+    return localContentValues;
+  }
+  
+  public List<TroopFileTansferItemEntity> a(long paramLong)
+  {
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    TroopFileTansferItemEntity localTroopFileTansferItemEntity = new TroopFileTansferItemEntity();
+    localTroopFileTansferItemEntity.troopuin = paramLong;
+    return localEntityManager.rawQuery(TroopFileTansferItemEntity.class, "select * from " + localTroopFileTansferItemEntity.getTableName() + " where troopuin = ?", new String[] { "" + paramLong });
+  }
+  
+  protected void a() {}
+  
+  public void a(long paramLong, UUID paramUUID)
+  {
+    if (paramUUID == null) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-    switch (((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).sheetItem.action)
+    bfmf.c("TroopFileDataBaseProxy", bfmf.a, "[" + paramUUID.toString() + "] deleteItem");
+    Object localObject = new TroopFileTansferItemEntity();
+    ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
+    localObject = ((TroopFileTansferItemEntity)localObject).getTableName();
+    String str = paramUUID.toString();
+    paramUUID = new bfln(this, paramUUID);
+    a((String)localObject, "_sId=?", new String[] { str }, paramUUID);
+  }
+  
+  public void a(TroopFileTansferItemEntity paramTroopFileTansferItemEntity)
+  {
+    if ((paramTroopFileTansferItemEntity == null) || (paramTroopFileTansferItemEntity.Id == null)) {
+      return;
+    }
+    bfmf.c("TroopFileDataBaseProxy", bfmf.a, "[" + paramTroopFileTansferItemEntity.Id.toString() + "] updateItem transStatus[" + paramTroopFileTansferItemEntity.Status + "] FilePath[" + paramTroopFileTansferItemEntity.FilePath + "]");
+    int i = paramTroopFileTansferItemEntity.Status;
+    switch (paramTroopFileTansferItemEntity.Status)
     {
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Int = ((int)paramLong);
-      if (paramLong != 7L) {
-        break label255;
-      }
-      localObject = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, Face2FaceAddFriendActivity.class);
-      ((Intent)localObject).putExtra("activity_from_type", 1);
-      ((Intent)localObject).putExtra("activity_troop_uin", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject);
-      break;
-      paramLong = 0L;
+      paramTroopFileTansferItemEntity.preupdate();
+      ContentValues localContentValues = a(paramTroopFileTansferItemEntity);
+      localContentValues.put("Status", Integer.valueOf(i));
+      localContentValues.put("_sStatus", bfig.a(i));
+      String str1 = paramTroopFileTansferItemEntity.getTableName();
+      String str2 = paramTroopFileTansferItemEntity.Id.toString();
+      paramTroopFileTansferItemEntity = new bflm(this, paramTroopFileTansferItemEntity);
+      a(str1, localContentValues, "_sId=?", new String[] { str2 }, paramTroopFileTansferItemEntity);
+      return;
+      i = 3;
       continue;
-      paramLong = 1L;
-      continue;
-      paramLong = 3L;
-      continue;
-      paramLong = 2L;
-      continue;
-      paramLong = 4L;
-      continue;
-      paramLong = 5L;
-      continue;
-      paramLong = 7L;
-    }
-    label255:
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.getInstance().isWXinstalled()) {
-        i = 2131719722;
-      }
-    }
-    for (;;)
-    {
-      if (i != -1)
-      {
-        this.a.b(false);
-        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(i), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-        this.a.jdField_a_of_type_Int = -1;
-        this.a.b = -1;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-        }
-        break;
-        if (WXShareHelper.getInstance().isWXsupportApi()) {
-          break label711;
-        }
-        i = 2131719723;
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopShareUtility", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
-      }
-      if ((this.a.jdField_a_of_type_Int == 5) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember))
-      {
-        this.a.f();
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-        }
-      }
-      for (;;)
-      {
-        break;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim()) && (!TroopInfo.isQidianPrivateTroop((QQAppInterface)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime(), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)))
-        {
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-            this.a.jdField_a_of_type_Boolean = true;
-          }
-          if ((TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 512))) {}
-          for (i = 1;; i = 0)
-          {
-            if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.cGroupOption == 1) {
-              j = 1;
-            }
-            if ((i | j) == 0) {
-              break label654;
-            }
-            this.a.b(true);
-            this.a.c();
-            break;
-          }
-          label654:
-          bflj.a(this.a);
-        }
-        else
-        {
-          this.a.b(true);
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-            this.a.jdField_a_of_type_Boolean = false;
-          }
-          this.a.b = 0;
-          bflj.b(this.a);
-        }
-      }
-      label711:
-      i = -1;
+      i = 10;
     }
   }
+  
+  public void a(TroopFileTansferItemEntity paramTroopFileTansferItemEntity, ProxyListener paramProxyListener)
+  {
+    bfmf.c("TroopFileDataBaseProxy", bfmf.a, "[" + paramTroopFileTansferItemEntity.Id.toString() + "] addItem status[" + paramTroopFileTansferItemEntity.getStatus() + "]");
+    paramProxyListener = new bfll(this, paramTroopFileTansferItemEntity);
+    if (paramTroopFileTansferItemEntity.getStatus() == 1000)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramTroopFileTansferItemEntity.getTableName(), paramTroopFileTansferItemEntity, 0, paramProxyListener);
+      return;
+    }
+    if (paramTroopFileTansferItemEntity.getStatus() == 1001)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramTroopFileTansferItemEntity.getTableName(), paramTroopFileTansferItemEntity, 1, paramProxyListener);
+      return;
+    }
+    bfmf.a("TroopFileDataBaseProxy", bfmf.a, "Item status[" + String.valueOf(paramTroopFileTansferItemEntity.getStatus()) + "] is wrong");
+  }
+  
+  protected void a(String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramString1, paramContentValues, paramString2, paramArrayOfString, 1, paramProxyListener);
+  }
+  
+  protected void a(String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueue(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramProxyListener);
+  }
+  
+  protected void b() {}
 }
 
 

@@ -1,6 +1,19 @@
-public abstract interface bcqz
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.lbs.BusinessBuff;
+
+public final class bcqz
+  implements Parcelable.Creator<BusinessBuff>
 {
-  public abstract String a();
+  public BusinessBuff a(Parcel paramParcel)
+  {
+    return new BusinessBuff(paramParcel);
+  }
+  
+  public BusinessBuff[] a(int paramInt)
+  {
+    return new BusinessBuff[paramInt];
+  }
 }
 
 

@@ -1,39 +1,23 @@
 import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import java.lang.ref.WeakReference;
 
-public class bgvq
-  extends bgvj
+class bgvq
+  implements DialogInterface.OnKeyListener
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  private atdi jdField_a_of_type_Atdi;
+  bgvq(bgvp parambgvp) {}
   
-  public bgvq(AppInterface paramAppInterface, Activity paramActivity, bguk parambguk, Intent paramIntent, TouchWebView paramTouchWebView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    super(paramAppInterface, parambguk, paramIntent, paramTouchWebView);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    b();
-  }
-  
-  public bgvq(AppInterface paramAppInterface, Activity paramActivity, bguk parambguk, Intent paramIntent, boolean paramBoolean)
-  {
-    super(paramAppInterface, parambguk, paramIntent, paramActivity, paramBoolean);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    b();
-  }
-  
-  protected boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_AndroidAppActivity.isFinishing());
-  }
-  
-  public void b()
-  {
-    boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("fromArkAppDownload", false);
-    this.jdField_a_of_type_Atdi = new atdi(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    this.jdField_a_of_type_Atdi.a(bool);
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.setDownloadListener(this.jdField_a_of_type_Atdi);
+    if (paramInt == 4)
+    {
+      this.a.dismiss();
+      ((Activity)this.a.a.get()).finish();
+      return true;
+    }
+    return false;
   }
 }
 

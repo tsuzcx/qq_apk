@@ -2,11 +2,11 @@ package com.tencent.mobileqq.forward;
 
 import android.content.Intent;
 import android.os.Bundle;
-import atku;
-import atkx;
-import ayuz;
-import ayva;
-import bcef;
+import aupp;
+import aups;
+import azzv;
+import azzw;
+import bdla;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
@@ -17,12 +17,12 @@ import org.jetbrains.annotations.Nullable;
 public final class ForwardAskAnonymouslyMsgOption
   extends ForwardArkMsgOption
 {
-  public static final atkx a;
+  public static final aups a;
   private boolean i = true;
   
   static
   {
-    jdField_a_of_type_Atkx = new atkx(null);
+    jdField_a_of_type_Aups = new aups(null);
   }
   
   public ForwardAskAnonymouslyMsgOption(@Nullable Intent paramIntent)
@@ -33,16 +33,16 @@ public final class ForwardAskAnonymouslyMsgOption
   public void a()
   {
     if (o()) {
-      this.jdField_a_of_type_JavaUtilSet.add(atku.d);
+      this.jdField_a_of_type_JavaUtilSet.add(aupp.d);
     }
     if (p()) {
-      this.jdField_a_of_type_JavaUtilSet.add(atku.c);
+      this.jdField_a_of_type_JavaUtilSet.add(aupp.c);
     }
     if (q()) {
-      this.jdField_a_of_type_JavaUtilSet.add(atku.b);
+      this.jdField_a_of_type_JavaUtilSet.add(aupp.b);
     }
     if (e()) {
-      this.jdField_a_of_type_JavaUtilSet.add(atku.e);
+      this.jdField_a_of_type_JavaUtilSet.add(aupp.e);
     }
   }
   
@@ -71,10 +71,10 @@ public final class ForwardAskAnonymouslyMsgOption
           }
         }
       } while (!str.equals("1"));
-      bcef.b(null, "dc00898", "", "", "0X800B46F", "0X800B46F", 0, 0, "", "", "", "");
+      bdla.b(null, "dc00898", "", "", "0X800B46F", "0X800B46F", 0, 0, "", "", "", "");
       return;
     } while (!str.equals("2"));
-    bcef.b(null, "dc00898", "", "", "0X800B470", "0X800B470", 0, 0, "", "", "", "");
+    bdla.b(null, "dc00898", "", "", "0X800B470", "0X800B470", 0, 0, "", "", "", "");
   }
   
   public boolean e()
@@ -84,7 +84,7 @@ public final class ForwardAskAnonymouslyMsgOption
   
   public boolean f()
   {
-    ayuz.a.a(this.jdField_a_of_type_AndroidAppActivity);
+    azzv.a.a(this.jdField_a_of_type_AndroidAppActivity);
     return true;
   }
 }

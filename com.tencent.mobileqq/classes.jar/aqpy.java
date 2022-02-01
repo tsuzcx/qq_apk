@@ -1,22 +1,12 @@
+import android.view.View;
+
 public class aqpy
+  extends aqpu
 {
-  private float a;
-  private float b;
-  
-  public aqpy(float paramFloat1, float paramFloat2)
+  public void a(aqpk paramaqpk, int paramInt, boolean paramBoolean)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-  }
-  
-  public float a()
-  {
-    return this.a;
-  }
-  
-  public float b()
-  {
-    return this.b;
+    super.a(paramaqpk, paramInt, paramBoolean);
+    paramaqpk.b.setBackgroundResource(2130839309);
   }
 }
 

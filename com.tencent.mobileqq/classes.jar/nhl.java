@@ -1,21 +1,33 @@
-import android.content.Context;
+import com.tencent.avgame.gameresult.GamePKResultFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class nhl
-  extends biiv
+class nhl
+  extends ndr
 {
-  public nhl(Context paramContext, nhk paramnhk)
+  nhl(nhk paramnhk) {}
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    super(paramContext, paramnhk);
+    if (QLog.isColorLevel()) {
+      QLog.i("GameResultPKPresenterImp", 2, String.format("onUserHeadUpdated", new Object[0]));
+    }
+    if ((this.a.a instanceof GamePKResultFragment)) {
+      ((GamePKResultFragment)this.a.a).b();
+    }
   }
   
-  public nhk a()
+  public void a(boolean paramBoolean, int paramInt, HashMap<String, String> paramHashMap)
   {
-    return (nhk)super.a();
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("GameResultPKPresenterImp", 2, String.format("onUserNickUpdated", new Object[0]));
+      }
+      if ((this.a.a instanceof GamePKResultFragment)) {
+        ((GamePKResultFragment)this.a.a).b();
+      }
+    }
   }
 }
 

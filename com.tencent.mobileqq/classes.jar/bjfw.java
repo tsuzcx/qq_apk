@@ -1,49 +1,37 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.ShareProxyImpl.6;
-import com.tencent.qqmini.proxyimpl.ShareProxyImpl.6.1;
-import java.io.File;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.open.agent.SocialFriendChooser;
 
 public class bjfw
-  implements URLDrawable.URLDrawableListener
+  extends Handler
 {
-  public bjfw(ShareProxyImpl.6.1 param1) {}
+  public bjfw(SocialFriendChooser paramSocialFriendChooser) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.e("ShareProxyImpl", 1, "onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("ShareProxyImpl", 1, "shareNetworkPicMessage failed, because of picture downloadFailed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = paramURLDrawable.getFileInLocal();
-    if ((paramURLDrawable != null) && (paramURLDrawable.exists())) {}
-    for (int i = 1;; i = 0)
+    switch (paramMessage.what)
     {
-      this.a.jdField_a_of_type_Bhht.dismiss();
-      if (i == 0) {
-        QQToast.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_AndroidAppActivity, 1, amtj.a(2131701877), 1).b(this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299076));
-      }
-      if (i == 0) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.isLocalPic = true;
-      this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.sharePicPath = paramURLDrawable.getPath();
-      bjfp.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.this$0, this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData);
+    default: 
+      return;
+    case 10001: 
+      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
+      paramMessage.putString("agentversion", bizw.a().e());
+      paramMessage.putString("facetype", "mqqface");
+      String str = bjpz.a().a("https://fusion.qq.com/cgi-bin/appstage/get_image_update");
+      bjet.a().a(str, paramMessage, new bjfx(this));
       return;
     }
-    QLog.e("ShareProxyImpl", 1, "shareNetworkPicMessage failed, because of picture downloadFailed");
+    if ((this.a.jdField_a_of_type_Bjlg != null) && (!this.a.jdField_a_of_type_Bjlg.isCancelled())) {
+      this.a.jdField_a_of_type_Bjlg.cancel(true);
+    }
+    this.a.l();
+    paramMessage = new Intent();
+    paramMessage.putExtra("key_error_code", -7);
+    paramMessage.putExtra("key_error_msg", bjlp.e);
+    this.a.setResult(-1, paramMessage);
+    this.a.finish();
   }
 }
 

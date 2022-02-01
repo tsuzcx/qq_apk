@@ -2,6 +2,7 @@
 <RelativeLayout android:orientation="vertical" android:id="@id/b8q" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.image.URLImageView android:id="@id/e16" android:layout_width="60.0dip" android:layout_height="60.0dip" android:minWidth="60.0dip" android:minHeight="60.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/npn" android:background="@drawable/f3b" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/f29" android:scaleType="centerCrop" />
     <RelativeLayout android:id="@id/eld" android:background="@drawable/hfo" android:visibility="invisible" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true">
         <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hke" android:layout_centerInParent="true" />
     </RelativeLayout>

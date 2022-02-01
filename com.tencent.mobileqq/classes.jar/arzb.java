@@ -1,39 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.debug.VasAdvDebugFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class arzb
-  extends ataq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/widget/CompoundButton;", "kotlin.jvm.PlatformType", "isChecked", "", "onCheckedChanged", "com/tencent/mobileqq/debug/VasAdvDebugFragment$initView$1$1"}, k=3, mv={1, 1, 16})
+public final class arzb
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public arzb(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public arzb(VasAdvDebugFragment paramVasAdvDebugFragment) {}
   
-  public void a()
+  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a.a().c();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().k();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().l();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().m();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().n();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().D();
+    VasAdvDebugFragment.a(this.a, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

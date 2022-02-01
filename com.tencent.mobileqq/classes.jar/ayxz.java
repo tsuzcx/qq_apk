@@ -1,42 +1,23 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "measuredWidth", "", "measuredHeight", "onMeasured", "com/tencent/mobileqq/profilecard/vas/component/background/VasProfileSimpleBackgroundComponent$updateDiyText$1$1"}, k=3, mv={1, 1, 16})
-final class ayxz
-  implements aeta
+class ayxz
+  implements OnCompositionLoadedListener
 {
-  ayxz(ayxy paramayxy) {}
+  ayxz(ayxy paramayxy, String paramString, int paramInt1, int paramInt2) {}
   
-  public final void a(int paramInt1, int paramInt2)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    Object localObject = ayxy.a(this.a);
-    if (localObject == null) {
-      Intrinsics.throwNpe();
-    }
-    ((SingleTouchLayout)localObject).setActualViewSize(paramInt1, paramInt2);
-    localObject = ayxy.a(this.a);
-    if (localObject == null) {
-      Intrinsics.throwNpe();
-    }
-    ((SingleTouchLayout)localObject).invalidate();
-    if (QLog.isColorLevel())
-    {
-      localObject = this.a.b();
-      StringBuilder localStringBuilder = new StringBuilder().append("updateDiyText: x=");
-      SingleTouchLayout localSingleTouchLayout = ayxy.a(this.a);
-      if (localSingleTouchLayout == null) {
-        Intrinsics.throwNpe();
-      }
-      localStringBuilder = localStringBuilder.append(localSingleTouchLayout.a().x).append(',').append("y=");
-      localSingleTouchLayout = ayxy.a(this.a);
-      if (localSingleTouchLayout == null) {
-        Intrinsics.throwNpe();
-      }
-      QLog.d((String)localObject, 2, localSingleTouchLayout.a().y + ',' + "width=" + paramInt1 + ',' + "height=" + paramInt2);
-    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setImageAssetDelegate(new ayya(this));
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    ayxy.a(this.jdField_a_of_type_Ayxy).setImageDrawable(localLottieDrawable);
+    ayxy.a(this.jdField_a_of_type_Ayxy, localLottieDrawable);
   }
 }
 

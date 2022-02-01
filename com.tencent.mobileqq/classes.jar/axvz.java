@@ -1,36 +1,63 @@
-import kotlin.Metadata;
-import kotlin.jvm.JvmOverloads;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.DelCommentResp;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"to898", "", "tValue", "", "from", "", "revFlag1", "revFlag4", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class axvz
+class axvz
+  extends nte
 {
-  @JvmOverloads
-  public static final void a(@NotNull String paramString)
-  {
-    a(paramString, 0, null, null, 14, null);
-  }
+  axvz(axvw paramaxvw, axvt paramaxvt, Comments.Comment paramComment) {}
   
-  @JvmOverloads
-  public static final void a(@NotNull String paramString, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    a(paramString, paramInt, null, null, 12, null);
-  }
-  
-  @JvmOverloads
-  public static final void a(@NotNull String paramString1, int paramInt, @NotNull String paramString2)
-  {
-    a(paramString1, paramInt, paramString2, null, 8, null);
-  }
-  
-  @JvmOverloads
-  public static final void a(@NotNull String paramString1, int paramInt, @NotNull String paramString2, @NotNull String paramString3)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "tValue");
-    Intrinsics.checkParameterIsNotNull(paramString2, "revFlag1");
-    Intrinsics.checkParameterIsNotNull(paramString3, "revFlag4");
-    bcef.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, paramString2, "", "", "");
+    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      paramBundle = new oidb_0xada.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new NowNearbyVideoCommentProto.DelCommentResp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (QLog.isColorLevel()) {
+            QLog.i("CommentsDataSource", 1, "ret:" + paramArrayOfByte.result.get());
+          }
+          this.jdField_a_of_type_Axvt.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)paramArrayOfByte.result.get());
+          paramArrayOfByte = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (paramArrayOfByte == null) {
+            return;
+          }
+          ((ayks)paramArrayOfByte.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).a(axvw.a(this.jdField_a_of_type_Axvw).a, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a);
+          return;
+        }
+        QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
+        this.jdField_a_of_type_Axvt.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("CommentsDataSource", 1, "merge delete resp data error");
+        this.jdField_a_of_type_Axvt.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+        return;
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Axvt.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+    }
   }
 }
 

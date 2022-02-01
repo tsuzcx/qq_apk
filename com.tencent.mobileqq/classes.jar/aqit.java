@@ -1,88 +1,93 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 
-public class aqit
-  extends aptq<aqis>
+final class aqit
+  extends agvm
 {
-  @NonNull
-  public aqis a(int paramInt)
+  private aqit(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new aqis();
+    super(null, paramQQAppInterface, null, null, null);
   }
   
-  @Nullable
-  public aqis a(aptx[] paramArrayOfaptx)
+  private boolean a(ChatMessage paramChatMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramChatMessage != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfaptx.length);
+      int i = a(this.a, paramChatMessage);
+      if ((i != 81) && (i != 66) && (i != 42) && (i != 47))
+      {
+        bool1 = bool2;
+        if (i != 89) {}
       }
-      return aqis.a(paramArrayOfaptx[0]);
-    }
-    return null;
-  }
-  
-  public void a(aqis paramaqis)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaqis == null) {
-        break label43;
+      else
+      {
+        bool1 = true;
       }
     }
-    label43:
-    for (paramaqis = paramaqis.toString();; paramaqis = " empty")
+    return bool1;
+  }
+  
+  private boolean b(ChatMessage paramChatMessage)
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    int i;
+    MessageForArkApp localMessageForArkApp;
+    if (paramChatMessage != null)
     {
-      QLog.d("SearchBusinessConfProcessor", 2, paramaqis);
-      return;
+      i = a(this.a, paramChatMessage);
+      if (i != 81) {
+        break label152;
+      }
+      if (!(paramChatMessage instanceof MessageForArkApp)) {
+        break label150;
+      }
+      localMessageForArkApp = (MessageForArkApp)paramChatMessage;
+      if ((localMessageForArkApp.isMultiMsg) || (localMessageForArkApp.istroop != 0)) {
+        break label150;
+      }
+      if ((paramChatMessage.senderuin.equals(this.a.getCurrentUin())) || (!paramChatMessage.isSupportReply())) {
+        break label95;
+      }
+      if (localMessageForArkApp.msg == null) {
+        break label90;
+      }
+      bool1 = true;
     }
-  }
-  
-  public Class<aqis> clazz()
-  {
-    return aqis.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
+    label90:
+    label95:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return bool1;
+          bool1 = false;
+        }
+        if ((!paramChatMessage.isSend()) || (!paramChatMessage.isSupportReply()) || (paramChatMessage.extraflag == 32772) || (paramChatMessage.extraflag == 32768) || (paramChatMessage.istroop == 3000)) {
+          break;
+        }
+        bool1 = bool2;
+      } while (localMessageForArkApp.msg != null);
+      return false;
+      return false;
+      if ((i == 66) || (i == 42) || (i == 47)) {
+        break;
+      }
+      bool1 = bool2;
+    } while (i != 89);
+    label150:
+    label152:
     return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 434;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqit
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,16 @@ package com.tencent.hippy.qq.module.tkd;
 
 public class TKDAccountModule$AccountInfo
 {
+  public String appid;
+  public String headUrl;
   public String nickName;
   public String qqNum;
+  public String skey;
+  
+  public String toString()
+  {
+    return "AccountInfo{qqNum='" + this.qqNum + '\'' + ", nickName='" + this.nickName + '\'' + ", headUrl='" + this.headUrl + '\'' + ", skey='" + this.skey + '\'' + ", appid='" + this.appid + '\'' + '}';
+  }
 }
 
 

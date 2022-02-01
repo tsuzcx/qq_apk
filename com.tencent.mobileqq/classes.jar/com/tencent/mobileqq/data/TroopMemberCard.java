@@ -14,6 +14,7 @@ public class TroopMemberCard
   public int age;
   public String card;
   public String colorCard;
+  public int colorCardId;
   public int credit;
   public List<TroopMemberCard.CustomEntry> customEntryList;
   public long distance = -1L;
@@ -60,7 +61,7 @@ public class TroopMemberCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopMemberCard
  * JD-Core Version:    0.7.0.1
  */

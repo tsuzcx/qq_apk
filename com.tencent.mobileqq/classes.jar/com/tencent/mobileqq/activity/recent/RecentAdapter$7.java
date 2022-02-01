@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.activity.recent;
 
-import akkk;
+import algc;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class RecentAdapter$7
   implements Runnable
 {
-  public RecentAdapter$7(akkk paramakkk, String paramString, int paramInt) {}
+  public RecentAdapter$7(algc paramalgc, String paramString, int paramInt) {}
   
   public void run()
   {
-    ((MessageHandler)this.this$0.a.getBusinessHandler(0)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
+    ((MessageHandler)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
   }
 }
 

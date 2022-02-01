@@ -3,9 +3,9 @@ package cooperation.qzone.webviewplugin;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import bgtp;
-import bgve;
-import bgvf;
+import bieh;
+import bifw;
+import bifx;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -20,19 +20,19 @@ import org.json.JSONObject;
 
 public class QZoneWebViewPlugin
   extends WebViewPlugin
-  implements bgtp
+  implements bieh
 {
   public static final int RESULT_OK = -1;
   private static final String TAG = "QZoneWebViewPlugin";
   private QzoneInternalWebViewPlugin[] insidePlugins;
   private boolean needClearHistory;
   
-  public static int generateRequestCode(WebViewPlugin paramWebViewPlugin, bgve parambgve, int paramInt)
+  public static int generateRequestCode(WebViewPlugin paramWebViewPlugin, bifw parambifw, int paramInt)
   {
-    parambgve = parambgve.a(parambgve.a());
+    parambifw = parambifw.a(parambifw.a());
     int i = paramInt;
-    if ((parambgve instanceof bgvf)) {
-      i = ((bgvf)parambgve).switchRequestCode(paramWebViewPlugin, (byte)paramInt);
+    if ((parambifw instanceof bifx)) {
+      i = ((bifx)parambifw).switchRequestCode(paramWebViewPlugin, (byte)paramInt);
     }
     return i;
   }

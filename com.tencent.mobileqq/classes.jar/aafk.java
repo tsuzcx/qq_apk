@@ -1,24 +1,19 @@
-import android.content.ComponentCallbacks2;
-import android.content.res.Configuration;
-import com.tencent.common.app.ToolRuntimeBase;
-
-public class aafk
-  implements ComponentCallbacks2
+class aafk
+  extends aafz
 {
-  public aafk(ToolRuntimeBase paramToolRuntimeBase) {}
-  
-  public void onConfigurationChanged(Configuration paramConfiguration) {}
-  
-  public void onLowMemory() {}
-  
-  public void onTrimMemory(int paramInt)
+  public aafk(aafb paramaafb, aaga paramaaga, String paramString)
   {
-    this.a.onTrimMemory(paramInt);
+    super(paramaafb, paramaaga, paramString);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Aaga.b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aafk
  * JD-Core Version:    0.7.0.1
  */

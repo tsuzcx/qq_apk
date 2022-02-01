@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.MsgUtils.Proxy;
 
-class bdiq
-  extends bdji<EditorState>
+public final class bdiq
+  implements RecentRoute.MsgUtils.Proxy
 {
-  public bdiq(EditorState paramEditorState, List<EditorState> paramList)
+  public void buildMsgSummaryForMsg(Context paramContext, IMCoreAppRuntime paramIMCoreAppRuntime, IMCoreMessageStub paramIMCoreMessageStub, int paramInt, MsgSummary paramMsgSummary, boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramList, localList);
-  }
-  
-  public void a(EditorState paramEditorState)
-  {
-    bdid.a(this.b).b(true);
-    if (QLog.isColorLevel()) {
-      QLog.d("EditorStateMachineContr", 2, "[onEnter] enter: " + this.a + ", lastState: " + paramEditorState);
-    }
+    bhfj.a(paramContext, paramIMCoreAppRuntime, paramIMCoreMessageStub, paramInt, paramMsgSummary, paramBoolean1, paramBoolean2);
   }
 }
 

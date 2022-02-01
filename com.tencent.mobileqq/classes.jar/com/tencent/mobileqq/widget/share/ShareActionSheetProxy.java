@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.RelativeLayout.LayoutParams;
-import bjnw;
+import bkzi;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class ShareActionSheetProxy
     return this.mImpl.findViewById(paramInt);
   }
   
-  public bjnw getActionSheet()
+  public bkzi getActionSheet()
   {
     return this.mImpl.getActionSheet();
   }

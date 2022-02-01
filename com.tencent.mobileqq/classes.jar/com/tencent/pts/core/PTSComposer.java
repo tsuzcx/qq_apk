@@ -202,10 +202,25 @@ public class PTSComposer
     }
   }
   
+  private void unregisterLifecycleCallbacks(Context paramContext)
+  {
+    if ((paramContext instanceof Activity))
+    {
+      paramContext = ((Activity)paramContext).getApplication();
+      if (paramContext != null)
+      {
+        paramContext.unregisterActivityLifecycleCallbacks(this.activityLifecycleCallback);
+        PTSLog.i("PTSComposer", "[unregisterLifecycleCallbacks] finished");
+      }
+    }
+  }
+  
   public void destroy()
   {
     if (!this.hasDestroyed)
     {
+      unregisterLifecycleCallbacks(this.ptsAppInstance.getContext());
+      this.updateDataListener = null;
       this.ptsAppInstance.onDestroy();
       this.hasDestroyed = true;
       PTSLog.i("PTSComposer", "[destroy] PTSComposer.");

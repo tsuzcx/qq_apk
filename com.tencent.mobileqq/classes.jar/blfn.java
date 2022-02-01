@@ -1,58 +1,83 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.widget.SimpleTextView;
 
-public class blfn
-  implements Cloneable
+public abstract class blfn
+  extends blfk
 {
-  public final int a;
-  public final long a;
-  public blfp a;
-  public final String a;
-  public final int b;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public String f;
-  public final String g;
+  protected final int a;
+  protected final int[] b;
+  protected final int[] c;
+  protected final int[] d;
+  protected final int[] e;
   
-  private blfn(int paramInt1, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt2, String paramString4, String paramString5, String paramString6)
+  public blfn(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.g = paramString6;
+    super(paramInt1, paramInt2);
+    this.e = paramArrayOfInt1;
+    this.jdField_a_of_type_Int = paramInt3;
+    this.b = paramArrayOfInt2;
+    this.c = paramArrayOfInt3;
+    this.d = paramArrayOfInt4;
   }
   
-  public static blfn a(int paramInt1, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt2, String paramString4, String paramString5, String paramString6)
+  public View a(int paramInt, Object paramObject, blfm paramblfm, View.OnClickListener paramOnClickListener)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString5)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)) || (paramLong < 0L)) {
-      throw new IllegalArgumentException("The params fileName, pDirKey, fileId, sha and fileSize should be valid.");
-    }
-    return new blfn(paramInt1, paramString1, paramString2, paramString3.toLowerCase(), paramLong, paramInt2, paramString4, paramString5, paramString6);
-  }
-  
-  public blfn a()
-  {
-    try
+    Object localObject2 = null;
+    paramObject = null;
+    Object localObject1 = paramObject;
+    if (paramblfm != null)
     {
-      blfn localblfn = (blfn)super.clone();
-      return localblfn;
+      localObject1 = paramObject;
+      if (paramblfm.jdField_a_of_type_Int >= 0)
+      {
+        if (paramblfm.b >= 0) {
+          break label35;
+        }
+        localObject1 = paramObject;
+      }
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    label35:
+    int i;
+    int j;
+    int k;
+    do
+    {
+      return localObject1;
+      paramObject = localObject2;
+      if ((paramblfm.jdField_a_of_type_AndroidViewView instanceof SimpleTextView)) {
+        paramObject = (SimpleTextView)paramblfm.jdField_a_of_type_AndroidViewView;
+      }
+      i = this.c[paramblfm.b];
+      j = this.d[paramblfm.b];
+      k = this.b[paramblfm.b];
+      localObject1 = paramObject;
+    } while (paramObject == null);
+    paramObject.setVisibility(0);
+    paramObject.setText(paramObject.getContext().getResources().getString(i));
+    paramObject.setBackgroundResource(j);
+    paramObject.setId(k);
+    paramObject.setTag("tag_swip_icon_menu_item");
+    paramObject.setTag(-2, Integer.valueOf(i));
+    paramObject.setTag(-1, Integer.valueOf(paramInt));
+    paramObject.setContentDescription(paramObject.getResources().getString(i));
+    paramObject.setOnClickListener(paramOnClickListener);
+    paramblfm.c = this.e[paramblfm.jdField_a_of_type_Int];
+    paramblfm.d = this.jdField_a_of_type_Int;
+    return paramObject;
   }
   
-  public void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  public View a(Context paramContext, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString3)) && (TextUtils.isEmpty(paramString4))) {
-      return;
-    }
-    this.jdField_a_of_type_Blfp = new blfp(this, paramString1, paramInt, paramString2, paramString3, paramString4, paramString5, null);
+    paramContext = new SimpleTextView(paramContext);
+    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.e[paramInt], this.jdField_a_of_type_Int));
+    paramContext.setGravity(17);
+    paramContext.setTextSize(16.0F);
+    paramContext.setTextColor(-1);
+    return paramContext;
   }
 }
 

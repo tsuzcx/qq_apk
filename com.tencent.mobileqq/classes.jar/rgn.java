@@ -1,88 +1,95 @@
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.net.Uri;
-import android.provider.MediaStore.Images.Media;
-import android.provider.MediaStore.Video.Media;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.jetbrains.annotations.NotNull;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotQuestion;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import org.json.JSONObject;
 
-public final class rgn
+public class rgn
+  implements View.OnClickListener
 {
-  @NotNull
-  public static final ArrayList<rgo> a(int paramInt1, int paramInt2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = BaseApplication.getContext().getContentResolver();
-    Object localObject2 = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
-    String str = "date_modified DESC limit " + paramInt2 + " offset " + paramInt1;
-    localObject1 = ((ContentResolver)localObject1).query((Uri)localObject2, new String[] { "_id", "_data", "_size", "date_modified", "duration", "resolution", "title", "mime_type" }, "duration>0", null, str);
-    if (localObject1 != null)
-    {
-      ((Cursor)localObject1).moveToFirst();
-      paramInt1 = 0;
-      while (!((Cursor)localObject1).isAfterLast())
-      {
-        localObject2 = new rgo();
-        ((rgo)localObject2).jdField_a_of_type_Boolean = true;
-        ((rgo)localObject2).jdField_a_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndexOrThrow("_id"));
-        ((rgo)localObject2).jdField_b_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("_data"));
-        ((rgo)localObject2).jdField_b_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndexOrThrow("_size"));
-        ((rgo)localObject2).jdField_d_of_type_Long = ((Cursor)localObject1).getInt(((Cursor)localObject1).getColumnIndexOrThrow("duration"));
-        ((rgo)localObject2).jdField_c_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("resolution"));
-        ((rgo)localObject2).jdField_c_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndex("date_modified"));
-        ((rgo)localObject2).jdField_d_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("title"));
-        ((rgo)localObject2).jdField_a_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("mime_type"));
-        ((rgo)localObject2).f = ((rgo)localObject2).jdField_b_of_type_JavaLangString;
-        localArrayList.add(localObject2);
-        ((Cursor)localObject1).moveToNext();
-        QLog.d("AlbumUtils", 2, "queryVideoList index:" + paramInt1);
-        paramInt1 += 1;
-      }
-    }
-    if (localObject1 != null) {
-      ((Cursor)localObject1).close();
-    }
-    return localArrayList;
-  }
+  public rgn(ComponentContentHotQuestion paramComponentContentHotQuestion) {}
   
-  @NotNull
-  public static final ArrayList<rgo> b(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = BaseApplication.getContext().getContentResolver();
-    Object localObject2 = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-    Object localObject3 = "date_modified DESC limit " + paramInt2 + " offset " + paramInt1;
-    localObject1 = ((ContentResolver)localObject1).query((Uri)localObject2, new String[] { "_id", "_data", "_size", "date_modified", "mime_type" }, null, null, (String)localObject3);
-    if (localObject1 != null)
+    qfw localqfw = this.a.jdField_a_of_type_Rfw.a();
+    ArticleInfo localArticleInfo = localqfw.a();
+    Object localObject2 = (rpt)localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
+    Object localObject3;
+    if ((localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 12) && (((rpt)localObject2).jdField_a_of_type_Rpv != null))
     {
-      ((Cursor)localObject1).moveToFirst();
-      while (!((Cursor)localObject1).isAfterLast())
+      localObject3 = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ReadInJoyDeliverUGCActivity.class);
+      ((Intent)localObject3).putExtra("arg_topic_id", String.valueOf(((rpt)localObject2).jdField_a_of_type_Rpv.jdField_b_of_type_Int));
+      ((Intent)localObject3).putExtra("support_topic", true);
+      ((Intent)localObject3).putExtra("support_linkify", true);
+    }
+    try
+    {
+      String str1 = new String(bhcu.decode(((rpt)localObject2).jdField_a_of_type_Rpv.jdField_b_of_type_JavaLangString, 0));
+      ((Intent)localObject3).putExtra("is_from_poly_topic", true);
+      if (localqfw.e() == 70)
       {
-        localObject2 = new rgo();
-        ((rgo)localObject2).jdField_a_of_type_Boolean = false;
-        ((rgo)localObject2).jdField_a_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndexOrThrow("_id"));
-        ((rgo)localObject2).jdField_b_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("_data"));
-        ((rgo)localObject2).jdField_b_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndexOrThrow("_size"));
-        ((rgo)localObject2).jdField_c_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndex("date_modified"));
-        ((rgo)localObject2).jdField_a_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("mime_type"));
-        ((rgo)localObject2).e = ((rgo)localObject2).jdField_b_of_type_JavaLangString;
-        ((rgo)localObject2).f = ((rgo)localObject2).e;
-        localObject3 = new LocalMediaInfo();
-        ((LocalMediaInfo)localObject3).mediaWidth = ((rgo)localObject2).a();
-        ((LocalMediaInfo)localObject3).mediaHeight = ((rgo)localObject2).b();
-        ((LocalMediaInfo)localObject3).path = ((rgo)localObject2).jdField_b_of_type_JavaLangString;
-        ((rgo)localObject2).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)localObject3);
-        localArrayList.add(localObject2);
-        ((Cursor)localObject1).moveToNext();
+        bool = true;
+        ((Intent)localObject3).putExtra("is_from_dian_dian", bool);
+        ((Intent)localObject3).putExtra("arg_topic_name", str1);
+        ((Intent)localObject3).putExtra("arg_ad_tag", ((rpt)localObject2).jdField_a_of_type_Rpv.c);
+        this.a.getContext().startActivity((Intent)localObject3);
+        localObject3 = new JSONObject();
+      }
+      try
+      {
+        ((JSONObject)localObject3).put("channel_id", localqfw.e());
+        if (((rpt)localObject2).jdField_a_of_type_Rpu == null) {
+          break label398;
+        }
+        str1 = ((rpt)localObject2).jdField_a_of_type_Rpu.a;
+        ((JSONObject)localObject3).put("rowkey", str1);
+        if (((rpt)localObject2).jdField_a_of_type_Rpv == null) {
+          break label407;
+        }
+        i = ((rpt)localObject2).jdField_a_of_type_Rpv.jdField_b_of_type_Int;
+        ((JSONObject)localObject3).put("topicid", i);
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          int i;
+          Object localObject1;
+          localException2.printStackTrace();
+          continue;
+          String str2 = "2";
+        }
+      }
+      localObject2 = localArticleInfo.mFeedId + "";
+      if (pqw.o(localArticleInfo))
+      {
+        str1 = "1";
+        olh.a(null, "CliOper", "", "", "0X800982C", "0X800982C", 0, 0, (String)localObject2, str1, localArticleInfo.mStrategyId + "", ((JSONObject)localObject3).toString(), false);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
       }
     }
-    if (localObject1 != null) {
-      ((Cursor)localObject1).close();
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        localException1.printStackTrace();
+        localObject1 = "";
+        continue;
+        boolean bool = false;
+        continue;
+        label398:
+        localObject1 = Integer.valueOf(0);
+        continue;
+        label407:
+        i = 0;
+      }
     }
-    return localArrayList;
   }
 }
 

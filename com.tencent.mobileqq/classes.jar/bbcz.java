@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.TMG.utils.QLog;
 
-class bbcz
-  implements View.OnClickListener
+public class bbcz
 {
-  bbcz(bbcy parambbcy, bayt parambayt) {}
-  
-  public void onClick(View paramView)
+  public static void a(int paramInt)
   {
-    this.jdField_a_of_type_Bayt.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendClueReporter", 0, String.format("reportFriendClueExpose source=%s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    bdla.b(null, "dc00898", "", "", "0X800B6B6", "0X800B6B6", paramInt, 0, "", "", "", "");
+  }
+  
+  public static void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendClueReporter", 0, String.format("reportFriendClueClick source=%s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    bdla.b(null, "dc00898", "", "", "0X800B6B7", "0X800B6B7", paramInt, 0, "", "", "", "");
   }
 }
 

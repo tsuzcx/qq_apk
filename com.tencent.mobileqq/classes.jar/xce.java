@@ -1,36 +1,59 @@
-import android.graphics.Bitmap;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class xce
-  extends SimpleObserver<Bitmap>
+public class xce
+  extends BaseAdapter
 {
-  xce(xcd paramxcd) {}
+  private xce(VideoCoverListBar paramVideoCoverListBar) {}
   
-  public void a(Bitmap paramBitmap)
+  public String a(int paramInt)
   {
-    super.onNext(paramBitmap);
-    xcb.b(xcd.a(this.a), "onNext, oldResult=%s, newResult=%s", xcd.a(this.a), paramBitmap);
-    xcd.a(this.a, paramBitmap);
-    xcd.a(this.a, true);
+    return (String)VideoCoverListBar.a(this.a).get(paramInt);
   }
   
-  public void onCancel()
+  public int getCount()
   {
-    super.onCancel();
-    xcb.a(xcd.a(this.a), "onCancel");
-    onError(new ErrorMessage(-1, "onCancel"));
+    return VideoCoverListBar.a(this.a).size();
   }
   
-  public void onError(@NonNull Error paramError)
+  public long getItemId(int paramInt)
   {
-    super.onError(paramError);
-    xcb.c(xcd.a(this.a), "onError, oldError=%s, newError=%s", xcd.a(this.a), paramError);
-    xcd.a(this.a, paramError);
-    xcd.a(this.a, SystemClock.uptimeMillis());
-    xcd.a(this.a, false);
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2131561759, null);
+      paramView = new xcf(this, localView);
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      paramView.a(paramInt);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      xcf localxcf = (xcf)paramView.getTag();
+      localView = paramView;
+      paramView = localxcf;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 1;
   }
 }
 

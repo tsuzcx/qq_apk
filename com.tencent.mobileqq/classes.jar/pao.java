@@ -1,62 +1,67 @@
+import android.text.TextPaint;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
-final class pao
-  implements WtTicketPromise
+public class pao
 {
-  pao(TicketManager paramTicketManager, QQAppInterface paramQQAppInterface) {}
+  public int a;
+  public long a;
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
   
-  public void Done(Ticket paramTicket)
+  public pao(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence)
   {
-    int j = 0;
-    int i;
-    if (paramTicket == null) {
-      i = 1;
+    this(paramReadInJoyCommentComponentFragment, paramString, paramLong, paramCharSequence, 0);
+  }
+  
+  public pao(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    paramReadInJoyCommentComponentFragment = paramCharSequence;
+    if (paramCharSequence == null) {
+      paramReadInJoyCommentComponentFragment = "";
+    }
+    this.b = paramReadInJoyCommentComponentFragment;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_JavaLangCharSequence = BiuNicknameSpan.a(ContactUtils.getBuddyName(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, true));
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
+        break label79;
+      }
+      this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
     }
     for (;;)
     {
-      QLog.i(pal.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
-      pal.a(this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "m.tencent.com"));
-      if ((!TextUtils.isEmpty(pal.b())) && (pal.b().length() > 0)) {
-        QLog.i(pal.a(), 1, "getPskeyFromServerAndRetry get pskey from server success!");
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "nick name is " + this.jdField_a_of_type_JavaLangCharSequence);
       }
       return;
-      if ((paramTicket != null) && (paramTicket._pskey_map == null))
-      {
-        i = 2;
-      }
-      else
-      {
-        i = j;
-        if (paramTicket != null)
-        {
-          i = j;
-          if (paramTicket._pskey_map != null)
-          {
-            i = j;
-            if (paramTicket._pskey_map.get("m.tencent.com") == null) {
-              i = 3;
-            }
-          }
-        }
+      label79:
+      if ((int)Math.ceil(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a.getPaint().measureText(this.jdField_a_of_type_JavaLangCharSequence.toString())) <= 0) {
+        this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
       }
     }
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public String toString()
   {
-    QLog.i(pal.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i(pal.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
+    int i = 0;
+    if (!TextUtils.isEmpty(this.b)) {
+      i = this.b.length();
+    }
+    return "UserBiuInfo {uin=" + this.jdField_a_of_type_JavaLangString + ", nickName=" + this.jdField_a_of_type_JavaLangCharSequence + ", comment=" + this.b + ", length=" + i + ", feedid=" + this.jdField_a_of_type_Long + "}";
   }
 }
 

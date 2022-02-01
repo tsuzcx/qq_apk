@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.qzonevip.gift;
 
-import apub;
-import aqdp;
-import aztc;
-import blad;
+import aqxe;
+import argw;
+import bazk;
+import bmmh;
 
 public class QzoneGiftManager$3
   implements Runnable
 {
-  public QzoneGiftManager$3(aztc paramaztc, String paramString1, String paramString2) {}
+  public QzoneGiftManager$3(bazk parambazk, String paramString1, String paramString2) {}
   
   public void run()
   {
-    aqdp localaqdp = (aqdp)apub.a().a(499);
-    aztc.a(this.this$0, localaqdp, this.a, this.b);
-    blad.a().b(localaqdp);
+    argw localargw = (argw)aqxe.a().a(499);
+    bazk.a(this.this$0, localargw, this.a, this.b);
+    bmmh.a().b(localargw);
   }
 }
 

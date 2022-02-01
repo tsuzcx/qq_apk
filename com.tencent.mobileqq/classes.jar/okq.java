@@ -1,32 +1,38 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
-import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.net.Uri;
+import android.preference.PreferenceManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class okq
-  extends SwiftBrowserUIStyleHandler
+class okq
+  implements bkzq
 {
-  okq(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
+  okq(okn paramokn, QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo, bkzi parambkzi) {}
   
-  public void initWebViewInContentView()
+  public void OnClick(View paramView, int paramInt)
   {
-    super.initWebViewInContentView();
-    if ((this.mComponentContext.a() != null) && (this.a.jdField_a_of_type_Boolean) && (this.a.webView != null) && (this.webviewWrapper != null))
+    switch (paramInt)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView = new ImageView(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.a(this.a));
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841683);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(13);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      this.webviewWrapper.addView(this.a.jdField_a_of_type_AndroidWidgetImageView);
-      if (IPluginAdapterProxy.getProxy().isNightMode())
-      {
-        this.webviewWrapper.setBackgroundColor(-6710887);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841684);
+    default: 
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+    case 0: 
+      aftr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      paramView = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
+      if (paramView != null) {
+        paramView.putString("LastScreenShotUri", null).apply();
       }
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
     }
+    aftr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, null);
+    this.jdField_a_of_type_Bkzi.dismiss();
   }
 }
 

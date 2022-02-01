@@ -1,15 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class ajfr
-  implements DialogInterface.OnClickListener
+public abstract interface ajfr
 {
-  ajfr(ajey paramajey) {}
+  public abstract void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2);
 }
 
 

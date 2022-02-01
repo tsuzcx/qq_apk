@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class nzb
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  nzb(nyz paramnyz, JsResult paramJsResult) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  nzb(nza paramnza, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a = true;
+    nza.a(this.a);
   }
 }
 

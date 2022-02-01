@@ -1,13 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class advq
-  implements View.OnClickListener
 {
-  public advq(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView) {}
+  private advq(DiscussionMemberActivity paramDiscussionMemberActivity) {}
 }
 
 

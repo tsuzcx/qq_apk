@@ -1,31 +1,26 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class akvj
-  extends akvn
+  implements View.OnFocusChangeListener
 {
-  public void a()
-  {
-    RMVideoStateMgr.a().a.m();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] initState end");
-    }
-  }
+  public akvj(WordChainHbFragment paramWordChainHbFragment) {}
   
-  public boolean a()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    RMVideoStateMgr.a().a("RMVideoIdleState");
-    return true;
-  }
-  
-  public void b()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_Ntg = new ntg(this.a.jdField_a_of_type_AndroidViewView, new akvk(this), ImmersiveUtils.getStatusBarHeight(this.a.getActivity()) + 160);
+      WordChainHbFragment.a(this.a, 8);
     }
-    localRMVideoStateMgr.a.a(100);
-    localRMVideoStateMgr.a(3);
+    do
+    {
+      return;
+      WordChainHbFragment.a(this.a, 0);
+    } while (this.a.jdField_a_of_type_Ntg == null);
+    this.a.jdField_a_of_type_Ntg.a();
   }
 }
 

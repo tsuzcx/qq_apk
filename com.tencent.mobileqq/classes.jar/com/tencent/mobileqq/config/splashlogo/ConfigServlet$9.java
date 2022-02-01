@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import amuh;
-import aqlw;
-import bfyz;
+import anwv;
+import arph;
+import bhhr;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public class ConfigServlet$9
   implements Runnable
 {
-  public ConfigServlet$9(aqlw paramaqlw, ConfigurationService.Config paramConfig) {}
+  public ConfigServlet$9(arph paramarph, ConfigurationService.Config paramConfig) {}
   
   public void run()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.this$0.getAppRuntime();
-    boolean bool = ((amuh)localQQAppInterface.getManager(123)).a(this.a);
-    bfyz.a(localQQAppInterface.getApp(), this.a.version.get(), bool);
+    boolean bool = ((anwv)localQQAppInterface.getManager(QQManagerFactory.HOTCHAT_SCENE_CONFIG_MANAGER)).a(this.a);
+    bhhr.a(localQQAppInterface.getApp(), this.a.version.get(), bool);
   }
 }
 

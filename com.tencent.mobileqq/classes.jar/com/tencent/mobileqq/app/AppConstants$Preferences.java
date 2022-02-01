@@ -345,6 +345,7 @@ public abstract interface AppConstants$Preferences
   public static final String KEY_DEEP_CLEAN_SHOW_TIME = "key_deep_clean_show_time";
   public static final String KEY_DEEP_CLEAN_USER_CLICK = "key_deep_clean_user_click";
   public static final String KEY_EXT_INFO_REQ_INTERVAL_S = "key_ext_info_request_interval_second";
+  public static final String KEY_FLOAT_VIDEO_HAS_SHOW_TIPS = "key_float_video_has_show_tips";
   public static final String KEY_GET_SPECIAL_SOUND_CONFIG_TIME = "key_get_special_sound_config_time";
   public static final String KEY_GET_SPECIAL_SOUND_QUOTA_TIME = "key_get_special_sound_quota_time";
   public static final String KEY_LAST_OPEN_WEATHER_PAGE = "key_last_open_weather_page";

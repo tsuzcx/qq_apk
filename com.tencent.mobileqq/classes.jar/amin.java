@@ -1,15 +1,18 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class amin
-  implements BusinessObserver
+class amin
+  implements View.OnClickListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  amin(amik paramamik, QQAppInterface paramQQAppInterface) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfigDataReport", 2, new Object[] { "interceptReport onReceive isSuccess:", Boolean.valueOf(paramBoolean), ",bundle", paramBundle.toString() });
-    }
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A327", "0X800A327", 0, 0, "", "", "", "");
+    amik.a(this.jdField_a_of_type_Amik);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import asdv;
+import atib;
 import java.io.Serializable;
 
 public class FMTransC2CMsgInfo
@@ -9,7 +9,7 @@ public class FMTransC2CMsgInfo
   public int busiType;
   public int cmd;
   public FileManagerEntity entity;
-  public asdv fileTransferObserver = null;
+  public atib fileTransferObserver = null;
   public long msgSeq = -1L;
   public long msgUid = -1L;
   public long observerSeq = -1L;
@@ -27,7 +27,7 @@ public class FMTransC2CMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo
  * JD-Core Version:    0.7.0.1
  */

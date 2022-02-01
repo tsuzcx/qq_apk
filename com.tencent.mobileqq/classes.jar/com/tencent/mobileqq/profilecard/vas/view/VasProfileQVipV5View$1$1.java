@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.profilecard.vas.view;
 
 import android.widget.ImageView;
-import aymg;
-import bcef;
-import bfua;
+import azrb;
+import bdla;
+import bhcs;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.vas.AvatarPendantManager;
 import com.tencent.mobileqq.vas.PendantInfo;
@@ -21,17 +22,17 @@ class VasProfileQVipV5View$1$1
     {
       VasProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0).setVisibility(0);
       VasProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId);
-      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)VasProfileQVipV5View.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0).getManager(46);
-      if (bfua.a(VasProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0))) {
-        localAvatarPendantManager.a(VasProfileQVipV5View.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0)).a(VasProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0), 2, PendantInfo.c, this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.jdField_a_of_type_Aymg.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
+      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)VasProfileQVipV5View.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0).getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
+      if (bhcs.a(VasProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0))) {
+        localAvatarPendantManager.a(VasProfileQVipV5View.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0)).a(VasProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0), 2, PendantInfo.c, this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.jdField_a_of_type_Azrb.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
       }
       for (;;)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.jdField_a_of_type_Boolean) {
-          bcef.b(VasProfileQVipV5View.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0), "CliOper", "", "", "AvatarClick", "ppshow", 0, 0, "", "", "", "");
+          bdla.b(VasProfileQVipV5View.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0), "CliOper", "", "", "AvatarClick", "ppshow", 0, 0, "", "", "", "");
         }
         return;
-        localAvatarPendantManager.a(VasProfileQVipV5View.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0)).a(VasProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0), 1, PendantInfo.c, this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.jdField_a_of_type_Aymg.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
+        localAvatarPendantManager.a(VasProfileQVipV5View.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0)).a(VasProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0), 1, PendantInfo.c, this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.jdField_a_of_type_Azrb.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
       }
     }
     VasProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileQVipV5View$1.this$0).setVisibility(8);

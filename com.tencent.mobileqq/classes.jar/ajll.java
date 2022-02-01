@@ -1,25 +1,74 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contacts.mayknow.RecommendFriendFragment;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-public abstract interface ajll
+public class ajll
+  extends anvi
 {
-  public abstract View a();
+  public ajll(RecommendFriendFragment paramRecommendFriendFragment) {}
   
-  public abstract ImageView a();
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onCancelMayKnowRecommend isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
   
-  public abstract TextView a();
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
   
-  public abstract QQAppInterface a();
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushAdd isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
   
-  public abstract View b();
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushDel isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
   
-  public abstract TextView b();
-  
-  public abstract TextView c();
-  
-  public abstract TextView d();
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayknowStateChanged isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if (this.a.jdField_a_of_type_Ajlm != null) {
+        this.a.jdField_a_of_type_Ajlm.notifyDataSetChanged();
+      }
+      if (this.a.jdField_a_of_type_ComTencentWidgetXListView != null)
+      {
+        this.a.jdField_a_of_type_ComTencentWidgetXListView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        this.a.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
+      }
+    }
+  }
 }
 
 

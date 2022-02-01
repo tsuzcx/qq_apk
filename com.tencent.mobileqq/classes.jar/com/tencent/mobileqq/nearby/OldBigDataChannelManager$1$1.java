@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby;
 
-import awkn;
-import awko;
+import axqp;
+import axqq;
 
 public class OldBigDataChannelManager$1$1
   implements Runnable
 {
-  public OldBigDataChannelManager$1$1(awko paramawko) {}
+  public OldBigDataChannelManager$1$1(axqq paramaxqq) {}
   
   public void run()
   {
-    awkn.a(this.a.a);
-    awkn.b(this.a.a);
+    axqp.a(this.a.a);
+    axqp.b(this.a.a);
   }
 }
 

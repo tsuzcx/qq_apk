@@ -1,96 +1,41 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.window.FloatMapWidget;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.Iterator;
+import java.util.List;
 
-public class awnv
-  implements TextWatcher
+class awnv
+  implements awmy
 {
-  public awnv(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  awnv(awns paramawns) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(LocationRoom.Venue paramVenue) {}
+  
+  public void a(LatLng paramLatLng) {}
+  
+  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
   {
-    ChooseInterestTagActivity.a(this.a).removeMessages(4097);
-    ChooseInterestTagActivity.b(this.a, 0);
-    String str;
-    if (ChooseInterestTagActivity.a(this.a).getText() == null)
+    if (paramList != null)
     {
-      paramEditable = "";
-      str = awkj.a(paramEditable);
-      if (ChooseInterestTagActivity.a(this.a).getText() != null) {
-        break label163;
-      }
-      paramEditable = "";
-      label59:
-      if (!TextUtils.isEmpty(paramEditable)) {
-        break label185;
-      }
-      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 8) {
-        ChooseInterestTagActivity.b(this.a).setVisibility(8);
-      }
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-      paramEditable = this.a;
-      if (ChooseInterestTagActivity.b(this.a) == -1) {
-        break label180;
+      paramLatLng = paramList.iterator();
+      while (paramLatLng.hasNext())
+      {
+        paramList = (String)paramLatLng.next();
+        Bitmap localBitmap = this.a.a(paramList);
+        if (localBitmap != null)
+        {
+          localBitmap = bheg.c(localBitmap, 16, 16);
+          awns.a(this.a).a(paramList, localBitmap);
+        }
       }
     }
-    label163:
-    label180:
-    for (boolean bool = true;; bool = false)
-    {
-      ChooseInterestTagActivity.a(paramEditable, false, bool);
-      ChooseInterestTagActivity.a(this.a, "");
-      return;
-      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break;
-      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break label59;
-    }
-    label185:
-    if (TextUtils.isEmpty(str))
-    {
-      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
-        ChooseInterestTagActivity.b(this.a).setVisibility(0);
-      }
-      ChooseInterestTagActivity.b(this.a).setText(amtj.a(2131700962));
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      ChooseInterestTagActivity.a(this.a, "");
-      return;
-    }
-    if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
-      ChooseInterestTagActivity.b(this.a).setVisibility(0);
-    }
-    if (NetworkUtil.isNetSupport(this.a))
-    {
-      ChooseInterestTagActivity.b(this.a).setText(amtj.a(2131700967));
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      ChooseInterestTagActivity.a(this.a, str);
-      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4097, 400L);
-      return;
-    }
-    if (!ChooseInterestTagActivity.c(this.a))
-    {
-      ChooseInterestTagActivity.a(this.a, amtj.a(2131700942));
-      ChooseInterestTagActivity.a(this.a, true);
-      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4100, 3000L);
-    }
-    ChooseInterestTagActivity.b(this.a).setText("");
-    ChooseInterestTagActivity.b(this.a).setOnClickListener(null);
-    ChooseInterestTagActivity.c(this.a).setVisibility(8);
-    ChooseInterestTagActivity.a(this.a, "");
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(boolean paramBoolean, Point paramPoint) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    ChooseInterestTagActivity.a(this.a, 0);
-  }
+  public void a(boolean paramBoolean, awmz paramawmz) {}
 }
 
 

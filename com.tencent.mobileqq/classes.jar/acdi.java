@@ -1,47 +1,75 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0xe9.SubMsgType0xe9.MsgBody;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class acdi
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/MotiveBrowsingData;", "", "event", "", "script", "", "leftSecond", "(ILjava/lang/String;I)V", "getEvent", "()I", "getLeftSecond", "getScript", "()Ljava/lang/String;", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acdi
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public static final acdj a;
+  private final int jdField_a_of_type_Int;
+  @NotNull
+  private final String jdField_a_of_type_JavaLangString;
+  private final int b;
+  
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor runhw", 2, "onLinePush Audio Trans 0x210_0xe9");
-    }
-    try
+    jdField_a_of_type_Acdj = new acdj(null);
+  }
+  
+  public acdi(int paramInt1, @NotNull String paramString, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NotNull
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public final int b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      SubMsgType0xe9.MsgBody localMsgBody = new SubMsgType0xe9.MsgBody();
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramQQAppInterface.getGAudioHandler().a(localMsgBody);
-      if (QLog.isColorLevel())
+      if ((paramObject instanceof acdi))
       {
-        paramQQAppInterface = localMsgBody.bytes_business.get().toByteArray();
-        QLog.d("Q.msg.BaseMessageProcessor runhw", 2, "onLinePush 0x210_0xe9 =" + paramQQAppInterface.length);
-        QLog.d("Q.msg.BaseMessageProcessor runhw", 2, "onLinePush 0x210_0xe9 businessBytes = " + paramQQAppInterface.length);
+        paramObject = (acdi)paramObject;
+        if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (this.b != paramObject.b)) {}
       }
-      return;
     }
-    catch (Exception paramQQAppInterface)
-    {
-      do
-      {
-        paramQQAppInterface.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("Q.msg.BaseMessageProcessor runhw", 2, "onLinePush 0x210_0xe9 push exception = " + paramQQAppInterface.getMessage());
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int j = this.jdField_a_of_type_Int;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {}
+    for (int i = str.hashCode();; i = 0) {
+      return (i + j * 31) * 31 + this.b;
     }
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  @NotNull
+  public String toString()
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    return "MotiveBrowsingData(event=" + this.jdField_a_of_type_Int + ", script=" + this.jdField_a_of_type_JavaLangString + ", leftSecond=" + this.b + ")";
   }
 }
 

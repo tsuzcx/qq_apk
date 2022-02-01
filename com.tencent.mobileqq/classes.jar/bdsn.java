@@ -1,15 +1,12 @@
-import android.net.Uri;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bdsn
-  implements bdsg
+class bdsn
+  implements DialogInterface.OnClickListener
 {
-  public bdsn(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  bdsn(bdsk parambdsk) {}
   
-  public void a(Uri paramUri)
-  {
-    this.a.a = paramUri;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

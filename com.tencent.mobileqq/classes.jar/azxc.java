@@ -1,10 +1,16 @@
-public abstract interface azxc
+import android.view.View;
+import java.util.ArrayList;
+
+class azxc
+  implements bkzq
 {
-  public abstract void a(String paramString, boolean paramBoolean);
+  azxc(azwx paramazwx, ArrayList paramArrayList, bkzi parambkzi) {}
   
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, Long paramLong);
-  
-  public abstract void b(String paramString, boolean paramBoolean);
+  public void OnClick(View paramView, int paramInt)
+  {
+    ((bhix)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
+    this.jdField_a_of_type_Bkzi.e();
+  }
 }
 
 

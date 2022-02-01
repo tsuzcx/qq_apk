@@ -1,28 +1,42 @@
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import com.tencent.mobileqq.text.TextUtils;
 
-public class xxe
-  implements ThreadExcutor.IThreadListener
+class xxe
+  implements EmoticonCallback
 {
-  xxe(xxd paramxxd) {}
+  xxe(xxc paramxxc) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void delete()
   {
-    int i = 1;
-    this.a.a.a().postDelayed(new EditPicSave.1.1(this), 500L);
-    if (bbuc.a().a == 1) {}
-    for (;;)
-    {
-      babc.f(i);
-      return;
-      i = 2;
+    if (xxc.a(this.a) != null) {
+      TextUtils.backspace(xxc.a(this.a));
     }
   }
   
-  public void onPreRun() {}
+  public void emoticonMall() {}
+  
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
+  
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
+  {
+    return false;
+  }
+  
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public void send() {}
+  
+  public void send(EmoticonInfo paramEmoticonInfo)
+  {
+    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (xxc.a(this.a) != null)) {
+      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).send(xxc.a(), xxc.a(this.a), xxc.a(this.a), null);
+    }
+  }
+  
+  public void setting() {}
 }
 
 

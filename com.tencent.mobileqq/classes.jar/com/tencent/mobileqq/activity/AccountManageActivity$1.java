@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import amsw;
+import anvk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class AccountManageActivity$1
@@ -15,9 +16,9 @@ class AccountManageActivity$1
     {
       if (this.this$0.app != null)
       {
-        amsw localamsw = (amsw)this.this$0.app.getManager(51);
-        if (localamsw != null) {
-          AccountManageActivity.a(this.this$0, localamsw.b(this.this$0.app.getCurrentAccountUin()));
+        anvk localanvk = (anvk)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if (localanvk != null) {
+          AccountManageActivity.a(this.this$0, localanvk.b(this.this$0.app.getCurrentAccountUin()));
         }
       }
       return;

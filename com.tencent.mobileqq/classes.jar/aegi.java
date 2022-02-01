@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SigCommentListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.5;
+import com.tencent.mobileqq.activity.Leba.5.1;
 
 public class aegi
-  implements View.OnClickListener
+  implements bide
 {
-  public aegi(SigCommentListActivity paramSigCommentListActivity) {}
+  public aegi(Leba.5.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onResult(boolean paramBoolean)
   {
-    this.a.a(true, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean) {
+      Leba.b(this.a.a.this$0).a();
+    }
   }
 }
 

@@ -1,27 +1,73 @@
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.msf.service.protocol.pb.SubMsgType0x51.MsgBody;
 import com.tencent.qphone.base.util.QLog;
 
 public class acrd
-  implements acva
+  implements acpi
 {
-  public acrd(AgeSelectionActivity paramAgeSelectionActivity) {}
-  
-  public void a()
+  private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    if ((AgeSelectionActivity.a(this.a) != null) && (AgeSelectionActivity.a(this.a).isShowing())) {
-      AgeSelectionActivity.a(this.a).dismiss();
+    byte[] arrayOfByte = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("DevLock", 2, "recv msg0x210.Submsgtype0x51");
+    }
+    new SubMsgType0x51.MsgBody();
+    try
+    {
+      SubMsgType0x51.MsgBody localMsgBody = new SubMsgType0x51.MsgBody();
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      if (localMsgBody.bytes_qrsig_url.has())
+      {
+        paramMsgType0x210 = new String(localMsgBody.bytes_qrsig_url.get().toByteArray(), "utf-8");
+        if (localMsgBody.bytes_hint1.has())
+        {
+          str1 = new String(localMsgBody.bytes_hint1.get().toByteArray(), "utf-8");
+          if (localMsgBody.bytes_hint2.has())
+          {
+            str2 = new String(localMsgBody.bytes_hint2.get().toByteArray(), "utf-8");
+            if (localMsgBody.bytes_login_conf.has()) {
+              arrayOfByte = localMsgBody.bytes_login_conf.get().toByteArray();
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("DevLock", 2, "recv devlock quicklogin push qrcode=" + paramMsgType0x210 + " maintip=" + str1 + " smalltip" + str2);
+            }
+            asll.a().a(paramQQAppInterface, paramMsgType0x210, str1, str2, arrayOfByte);
+            bcrx.a(paramMessageHandler, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
+            return;
+          }
+        }
+      }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      for (;;)
+      {
+        String str1;
+        String str2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("DevLock", 2, "failed to parse msg0x210.Submsgtype0x51");
+          continue;
+          str2 = null;
+          continue;
+          str1 = null;
+          continue;
+          paramMsgType0x210 = null;
+        }
+      }
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    this.a.b = paramInt1;
-    this.a.c = paramInt2;
-    this.a.d = paramInt3;
-    if (QLog.isColorLevel()) {
-      QLog.d("AgeSelectionActivity", 2, String.format("onBirthdayChange newBirthdayYear:%s,newBirthdayMonth:%s,newBirthdayDay:%s", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.c), Integer.valueOf(this.a.d) }));
-    }
-    AgeSelectionActivity.a(this.a, this.a.b, this.a.c, this.a.d);
+    a(paramacnk.a(), paramacnk.a().getMsgHandler(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

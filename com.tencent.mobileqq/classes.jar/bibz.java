@@ -1,18 +1,12 @@
-import com.tencent.open.base.img.ImageCache;
-import com.tencent.open.downloadnew.DownloadInfo;
-
-class bibz
-  implements biaj
+public abstract interface bibz
 {
-  bibz(biby parambiby, DownloadInfo paramDownloadInfo) {}
+  public abstract void onError();
   
-  public void a(String paramString1, String paramString2, String paramString3) {}
+  public abstract void onPlayEnd();
   
-  public void b(String paramString1, String paramString2, String paramString3)
-  {
-    bhzm.d("DownloadManager_", ">>download apk icon err,should load another size icon");
-    ImageCache.a("app", bhzk.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c, 75), null);
-  }
+  public abstract void onPlayStop();
+  
+  public abstract void onSlicePlayed(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

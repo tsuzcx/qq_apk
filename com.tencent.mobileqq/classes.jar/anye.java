@@ -1,15 +1,33 @@
-import com.tencent.mobileqq.ar.ARGlobalConfigService;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class anye
-  extends aofh
+class anye
+  implements awza
 {
-  public anye(ARGlobalConfigService paramARGlobalConfigService) {}
+  anye(anyb paramanyb) {}
   
-  public ARScanStarFaceConfigInfo a()
+  public void a(int paramInt)
   {
-    return this.a.a.a();
+    boolean bool1 = anyb.b(this.a);
+    anyb.a(this.a, false);
+    boolean bool2 = this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager", 2, "onBindStateChanged last:" + bool1 + "  now:" + bool2);
+    }
+    if (bool1 != bool2) {
+      ((FriendListHandler)anyb.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(92, true, null);
+    }
   }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 

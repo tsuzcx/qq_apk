@@ -1,61 +1,9 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.DocExportFilePresenter.3.1;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import kotlin.Metadata;
 
-public class asut
-  implements aspy
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$OnConfirmListener;", "", "onConfirm", "", "newBirthday", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface asut
 {
-  asut(asur paramasur) {}
-  
-  public View a()
-  {
-    return null;
-  }
-  
-  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_Asqq != null) {
-      this.a.jdField_a_of_type_Asqq.a(paramBoolean);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a()) && (paramBoolean)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c();
-    }
-    while ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b() == null) || (paramBoolean)) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Asst.a());
-  }
-  
-  public boolean a()
-  {
-    if (this.a.jdField_a_of_type_Asqp != null) {
-      return this.a.jdField_a_of_type_Asqp.b();
-    }
-    return false;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Asqq != null)) {
-      this.a.jdField_a_of_type_Asqq.a();
-    }
-    if (paramBoolean)
-    {
-      aspt.a().b(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Asst.d(), this);
-      this.a.jdField_a_of_type_Boolean = false;
-      QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, 2, 2131692130, 1).a();
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new DocExportFilePresenter.3.1(this), 800L);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

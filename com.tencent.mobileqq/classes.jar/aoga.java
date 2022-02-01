@@ -1,24 +1,26 @@
-import android.content.Context;
-import android.util.Size;
-import java.nio.FloatBuffer;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
-public abstract interface aoga
+class aoga
 {
-  public abstract Size a();
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<aofz> b;
   
-  public abstract FloatBuffer a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
+  public aoga(aofw paramaofw, View paramView, aofz paramaofz)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramaofz);
+  }
   
-  public abstract void a();
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Context paramContext);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public aofz a()
+  {
+    return (aofz)this.b.get();
+  }
 }
 
 

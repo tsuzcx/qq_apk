@@ -1,26 +1,28 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-class zxe
-  implements Animation.AnimationListener
+public class zxe
+  implements zvg
 {
-  zxe(zxb paramzxb) {}
+  public zxe(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    if (zxb.a(this.a) != null) {
-      zxb.a(this.a).setVisibility(4);
-    }
-    if (zxb.a(this.a) != null) {
-      zxb.a(this.a).setAlpha(1.0F);
-    }
+    SubscribeHybirdFragment.a(this.a).a(paramInt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
+  {
+    if ((paramStGetFeedDetailRsp == null) || (paramStGetFeedDetailRsp.feed.get() == null))
+    {
+      QQToast.a(this.a.getHostActivity(), anvx.a(2131714022), 0).a();
+      return;
+    }
+    SubscribeHybirdFragment.a(this.a, paramStGetFeedDetailRsp, paramLong, paramString);
+  }
 }
 
 

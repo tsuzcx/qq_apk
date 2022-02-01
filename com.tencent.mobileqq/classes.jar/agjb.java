@@ -1,14 +1,6 @@
-class agjb
-  implements ge
+public abstract interface agjb
 {
-  agjb(agiy paramagiy, gb paramgb, agjd paramagjd) {}
-  
-  public void a()
-  {
-    agiy.a(this.jdField_a_of_type_Agiy, this.jdField_a_of_type_Gb, agjd.a(this.jdField_a_of_type_Agjd));
-    this.jdField_a_of_type_Gb.b(agiy.a(this.jdField_a_of_type_Agiy));
-    agiy.a(this.jdField_a_of_type_Agiy, null);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,41 +1,115 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.Switch;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class omy
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public omy(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private static Bitmap a(Bitmap paramBitmap)
   {
-    ReadInJoySettingActivity localReadInJoySettingActivity = this.a;
-    boolean bool;
-    if (!paramBoolean)
-    {
-      bool = true;
-      ReadInJoySettingActivity.a(localReadInJoySettingActivity, bool);
-      if ((!ReadInJoySettingActivity.a(this.a).isPressed()) || (this.a.c)) {
-        break label87;
-      }
-      if (paramBoolean) {
-        break label74;
-      }
-      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
+    if (paramBitmap == null) {
+      return null;
     }
-    for (;;)
+    try
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
-      label74:
-      ReadInJoySettingActivity.a(this.a).show();
-      continue;
-      label87:
-      this.a.c = false;
+      int i = paramBitmap.getWidth();
+      int j = paramBitmap.getHeight();
+      localBitmap = paramBitmap;
+      if (i * j > 8000)
+      {
+        double d = Math.sqrt(8000.0D / (i * j));
+        localBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(i * d), (int)(j * d), true);
+      }
+    }
+    catch (OutOfMemoryError paramBitmap)
+    {
+      for (;;)
+      {
+        System.gc();
+        paramBitmap.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoShareUtils", 2, "scaleBitmapForWeChat ERROR OutOfMemoryError");
+        }
+        localBitmap = null;
+      }
+    }
+    catch (Exception paramBitmap)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoShareUtils", 2, "scaleBitmapForWeChat ERROR e=" + paramBitmap.getMessage());
+        }
+        Bitmap localBitmap = null;
+      }
+    }
+    return localBitmap;
+  }
+  
+  public static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, boolean paramBoolean1, String paramString4, boolean paramBoolean2, uvb paramuvb)
+  {
+    int k = 0;
+    int j = 0;
+    if (paramString1 == null) {}
+    for (paramBaseActivity = "";; paramBaseActivity = paramString1)
+    {
+      if (paramString2 == null) {}
+      for (paramString1 = "";; paramString1 = paramString2)
+      {
+        int i;
+        if (!WXShareHelper.a().a()) {
+          i = 2131720175;
+        }
+        for (;;)
+        {
+          if (i != -1) {
+            znl.a(0, i);
+          }
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("VideoShareUtils", 2, "title=" + paramBaseActivity + ", description=" + paramString1 + ", shareUrl=" + paramString3 + ", toWeChat=" + paramBoolean1);
+            }
+            return;
+            if (WXShareHelper.a().b()) {
+              break label279;
+            }
+            i = 2131720176;
+            break;
+            paramString2 = String.valueOf(System.currentTimeMillis());
+            paramuvb = new omz(paramString2, paramuvb);
+            WXShareHelper.a().a(paramuvb);
+            if ((!paramBoolean1) || (TextUtils.isEmpty(paramString4)) || (paramBoolean2)) {
+              break label183;
+            }
+            WxShareHelperFromReadInjoy.a().b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, paramString4);
+          }
+          label183:
+          if (bmhv.o(pkh.a()) == 1)
+          {
+            paramString4 = WXShareHelper.a();
+            paramBitmap = a(paramBitmap);
+            if (paramBoolean1) {}
+            for (i = j;; i = 1)
+            {
+              paramString4.c(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
+              break;
+            }
+          }
+          paramString4 = WxShareHelperFromReadInjoy.a();
+          paramBitmap = a(paramBitmap);
+          if (paramBoolean1) {}
+          for (i = k;; i = 1)
+          {
+            paramString4.b(paramString2, paramBaseActivity, paramBitmap, paramString1, paramString3, i);
+            break;
+          }
+          label279:
+          i = -1;
+        }
+      }
     }
   }
 }

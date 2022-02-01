@@ -1,37 +1,73 @@
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import com.tencent.qphone.base.util.QLog;
 
-@SuppressLint({"HandlerLeak"})
-class unu
-  extends Handler
+public class unu
+  extends NativeText
 {
-  WeakReference<unt> jdField_a_of_type_JavaLangRefWeakReference;
+  protected String a;
   
-  unu(unt paramunt1, unt paramunt2)
+  public unu(VafContext paramVafContext)
   {
-    uya.b("WSFallKeyPicMonitor", "init DownloadHandler");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramunt2);
+    super(paramVafContext);
+    QLog.d("ReadInJoyIconText", 2, "ReadInJoyIconText create");
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean setAttribute(int paramInt, String paramString)
   {
-    super.handleMessage(paramMessage);
-    uya.b("WSFallKeyPicMonitor", "handleMessage to download");
-    if (paramMessage.what == 1)
+    QLog.d("ReadInJoyIconText", 2, "key ->" + paramInt + " , value = " + paramString);
+    if (paramInt == 1085)
     {
-      if (unt.a(this.jdField_a_of_type_Unt) != 4) {
-        break label46;
+      if (paramString != null)
+      {
+        this.a = paramString;
+        setDrawableLeft(null);
       }
-      unt.a(this.jdField_a_of_type_Unt);
+      return true;
+    }
+    if (paramInt == 1086) {
+      if (paramString != null)
+      {
+        int i = Utils.dp2px(oix.a(paramString, 0));
+        this.mNative.setCompoundDrawablePadding(i);
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Unt.b();
-      return;
-      label46:
-      unt.b(this.jdField_a_of_type_Unt);
+      return super.setAttribute(paramInt, paramString);
+      if (paramInt == 48)
+      {
+        Float localFloat = Utils.toFloat(paramString);
+        if (localFloat != null)
+        {
+          this.mAlpha = localFloat.floatValue();
+          getNativeView().setAlpha(this.mAlpha);
+        }
+        else
+        {
+          QLog.d("ReadInJoyIconText", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+        }
+      }
+    }
+  }
+  
+  public void setDrawableLeft(String paramString)
+  {
+    QLog.d("ReadInJoyIconText", 2, "setDrawableLeft drawableLeftPath->" + this.drawableLeftPath + " , drawableRightPath = " + this.a);
+    if (this.drawableLeftPath != null) {}
+    for (paramString = DrawableUtil.getDrawable(this.mNative.getContext(), this.drawableLeftPath, null, null);; paramString = null)
+    {
+      if (this.a != null) {}
+      for (Drawable localDrawable = DrawableUtil.getDrawable(this.mNative.getContext(), this.a, null, null);; localDrawable = null)
+      {
+        this.mNative.setCompoundDrawablesWithIntrinsicBounds(paramString, null, localDrawable, null);
+        return;
+      }
     }
   }
 }

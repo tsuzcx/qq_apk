@@ -1,18 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-public class qwr
-  implements View.OnClickListener
+class qwr
+  implements qbx
 {
-  public qwr(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
+  qwr(qwq paramqwq) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    pyr.a(2, this.jdField_a_of_type_JavaLangString);
-    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d("RvPolymericContainer", 2, "stopScroll as videoplayer start");
+    qwn.b(this.a.a);
+  }
+  
+  public void b()
+  {
+    QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer stop");
+    if (qwn.a(this.a.a) != null) {
+      qwn.a(this.a.a, qwn.a(this.a.a).a());
+    }
+  }
+  
+  public void c()
+  {
+    QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer complete");
+    qwn.a(this.a.a, 1000L);
   }
 }
 

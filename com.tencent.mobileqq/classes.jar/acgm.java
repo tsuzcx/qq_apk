@@ -1,37 +1,26 @@
-import android.content.Context;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForWriteTogether;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.jsbridge.GdtDeviceInfoJsCallHandler.1;
+import java.lang.ref.WeakReference;
 
 public class acgm
-  implements abxv
+  implements acgx
 {
-  public boolean a(Context paramContext, QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage, int paramInt, MsgSummary paramMsgSummary, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
   {
-    if ((paramQQAppInterface == null) || (paramMessage == null) || (paramMsgSummary == null)) {
-      return false;
-    }
-    paramContext = paramQQAppInterface.getMessageFacade();
-    if (paramContext == null) {
-      return false;
-    }
-    paramContext = paramContext.queryMsgItemByUniseq(paramMessage.frienduin, paramMessage.istroop, paramMessage.uniseq);
-    if ((paramContext instanceof MessageForWriteTogether))
+    Object localObject = null;
+    WeakReference localWeakReference = new WeakReference(paramacfw);
+    AdThreadManager.INSTANCE.post(new GdtDeviceInfoJsCallHandler.1(this, localWeakReference, paramVarArgs, paramString), 4);
+    if (paramacfw != null) {}
+    for (paramString = paramacfw.a();; paramString = null)
     {
-      paramContext = (MessageForWriteTogether)paramContext;
-      paramContext.parse();
-      paramMsgSummary.strPrefix = paramString;
-      paramMsgSummary.strContent = ("[一起写] " + paramContext.msg);
-      return true;
+      paramVarArgs = localObject;
+      if (paramacfw != null) {
+        paramVarArgs = paramacfw.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "getDeviceInfo", paramVarArgs);
+      return false;
     }
-    return false;
-  }
-  
-  public boolean a(QQMessageFacade.Message paramMessage)
-  {
-    return false;
   }
 }
 

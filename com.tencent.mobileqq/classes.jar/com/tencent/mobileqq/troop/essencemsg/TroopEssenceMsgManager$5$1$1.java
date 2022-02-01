@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import aucg;
-import bedy;
-import bedz;
-import beec;
-import beeg;
+import avia;
+import bflb;
+import bflc;
+import bflf;
+import bflj;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,20 +15,20 @@ class TroopEssenceMsgManager$5$1$1
   
   public void run()
   {
-    if (bedz.a(this.a.a.jdField_a_of_type_Bedz, this.a.a.jdField_a_of_type_Bedy))
+    if (bflc.a(this.a.a.jdField_a_of_type_Bflc, this.a.a.jdField_a_of_type_Bflb))
     {
       if (QLog.isColorLevel()) {
         QLog.i("TroopEssenceMsgManager", 2, "AddEssenceMsgGrayTip");
       }
-      bedz.b(this.a.a.jdField_a_of_type_Bedz, this.a.a.jdField_a_of_type_Bedy);
-      MessageForUniteGrayTip localMessageForUniteGrayTip = beeg.a(bedz.a(this.a.a.jdField_a_of_type_Bedz), this.a.a.jdField_a_of_type_Bedy);
+      bflc.b(this.a.a.jdField_a_of_type_Bflc, this.a.a.jdField_a_of_type_Bflb);
+      MessageForUniteGrayTip localMessageForUniteGrayTip = bflj.a(bflc.a(this.a.a.jdField_a_of_type_Bflc), this.a.a.jdField_a_of_type_Bflb);
       if (localMessageForUniteGrayTip != null)
       {
-        aucg.a(bedz.a(this.a.a.jdField_a_of_type_Bedz), localMessageForUniteGrayTip);
-        this.a.a.jdField_a_of_type_Bedy.a.graytipuniseq = localMessageForUniteGrayTip.uniseq;
+        avia.a(bflc.a(this.a.a.jdField_a_of_type_Bflc), localMessageForUniteGrayTip);
+        this.a.a.jdField_a_of_type_Bflb.a.graytipuniseq = localMessageForUniteGrayTip.uniseq;
       }
     }
-    bedz.a(this.a.a.jdField_a_of_type_Bedz, this.a.a.jdField_a_of_type_Bedy.a);
+    bflc.a(this.a.a.jdField_a_of_type_Bflc, this.a.a.jdField_a_of_type_Bflb.a);
   }
 }
 

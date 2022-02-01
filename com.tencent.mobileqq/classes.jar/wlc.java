@@ -1,96 +1,101 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.VideoUrlEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoUrl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class wlc
-  extends nmd
+public class wlc
 {
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public final int a;
+  private final String a;
+  public final String[] a;
+  public final int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public final int i;
+  
+  private wlc(JSONObject paramJSONObject)
   {
-    long l = paramBundle.getLong("key_for_start_time");
-    l = System.currentTimeMillis() - l;
-    Object localObject1 = new qqstory_service.RspBatchGetVideoFullInfoList();
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    int k;
+    try
     {
-      a(paramInt, null, null);
-      xwa.b("story_net", wfe.a, 0, paramInt, new String[] { "", l + "", xwa.a(BaseApplication.getContext()) });
-      return null;
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("v");
+      this.b = paramJSONObject.getInt("id");
+      this.i = paramJSONObject.getJSONObject("a").getInt("r");
+      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      this.c = localJSONArray.getInt(0);
+      this.d = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
+      this.e = localJSONArray.getInt(0);
+      this.f = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
+      this.g = localJSONArray.getInt(0);
+      this.h = localJSONArray.getInt(1);
+      paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
+      k = paramJSONObject.length();
+      if (k < 1) {
+        throw new IllegalArgumentException("content length should more than 1");
+      }
     }
-    for (;;)
+    catch (JSONException paramJSONObject)
     {
-      try
-      {
-        ((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (qqstory_struct.ErrorInfo)((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).result.get();
-        Object localObject2 = (qqstory_struct.StoryVideoFullInfo)((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).video_list.get(0);
-        paramBundle = paramArrayOfByte.error_desc.get().toStringUtf8();
-        paramInt = paramArrayOfByte.error_code.get();
-        if (paramInt == 0)
-        {
-          paramBundle = new StoryVideoItem();
-          paramBundle.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject2);
-          paramBundle.mInteractStatus = ((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).interact_status.get();
-          if (paramBundle.mErrorCode == 0) {
-            ((vuu)vux.a(5)).a(paramBundle.mVid, paramBundle);
-          }
-          localObject2 = ((qqstory_struct.StoryVideoFullInfo)localObject2).compressed_video.get();
-          if (localObject2 != null)
-          {
-            localObject1 = new ArrayList(((List)localObject2).size());
-            localObject2 = ((List)localObject2).iterator();
-            if (((Iterator)localObject2).hasNext())
-            {
-              qqstory_struct.VideoUrl localVideoUrl = (qqstory_struct.VideoUrl)((Iterator)localObject2).next();
-              VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
-              localVideoUrlEntry.vid = paramBundle.mVid;
-              localVideoUrlEntry.videoUrlLevel = localVideoUrl.video_level.get();
-              localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
-              ((List)localObject1).add(localVideoUrlEntry);
-              continue;
-            }
-          }
-        }
-        a(paramInt, paramBundle, null);
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqstory.player.PlayModeUtils", 2, "getVideoInfo - onResult, InvalidProtocolBufferMicroException, e:" + paramArrayOfByte.getMessage());
-        }
-        a(-1, null, null);
-        return null;
-        ((vls)vux.a(28)).b((List)localObject1);
-        a(paramInt, null, paramBundle);
-        xwa.b("story_net", wfe.a, 0, paramInt, new String[] { "", l + "", xwa.a(BaseApplication.getContext()) });
-        return paramArrayOfByte;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqstory.player.PlayModeUtils", 2, "getVideoInfo - onResult, other exception, e:" + paramArrayOfByte.getMessage());
-        }
-        a(-1, null, null);
-        return null;
-      }
+      throw new IllegalArgumentException(paramJSONObject);
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
+    while (j < k)
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
+      j += 1;
     }
   }
   
-  public abstract void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem);
+  public static wlc a(@Nullable String paramString)
+  {
+    try
+    {
+      paramString = a(new JSONObject(paramString));
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      ykq.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+      return null;
+    }
+    catch (NullPointerException paramString)
+    {
+      ykq.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+    }
+    return null;
+  }
+  
+  public static wlc a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      paramJSONObject = new wlc(paramJSONObject);
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      ykq.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "PollLayout{version=" + this.jdField_a_of_type_Int + ", id=" + this.b + ", screenWidth=" + this.c + ", screenHeight=" + this.d + ", layoutWidth=" + this.e + ", layoutHeight=" + this.f + ", layoutCenterX=" + this.g + ", layoutCenterY=" + this.h + ", rotation=" + this.i + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
+  }
 }
 
 

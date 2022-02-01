@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import com.tencent.qapmsdk.common.thread.ThreadManager;
 import com.tencent.qapmsdk.resource.ResourceMonitor;
+import com.tencent.qapmsdk.resource.RunTimeEnv;
 import com.tencent.qapmsdk.resource.meta.PerfItem;
 import java.util.Vector;
 
@@ -13,13 +14,20 @@ public class MonitorRunnable
   private static final long MILLS_SECOND = 1000L;
   private static final long SPAN_DEBUG = 1000L;
   private static final long SPAN_PUBLIC = 5000L;
-  private static final String TAG = "QAPM_resource_collect";
   @Nullable
   private static volatile MonitorRunnable instance = null;
   private Handler handler = new Handler(ThreadManager.getMonitorThreadLooper());
-  boolean isRunning = false;
+  private boolean isRunning = false;
   
-  @Nullable
+  private long getDelayTime()
+  {
+    long l = 1000L;
+    if (RunTimeEnv.isPublishMode()) {
+      l = 5000L;
+    }
+    return l;
+  }
+  
   public static MonitorRunnable getInstance()
   {
     if (instance == null) {}
@@ -37,21 +45,15 @@ public class MonitorRunnable
   {
     Object localObject = ResourceMonitor.getInstance().samplePerfValue(new PerfItem());
     ((PerfItem)localObject).eventTime = (System.currentTimeMillis() / 1000L);
-    ResourceMonitor.immediatePerfItems.add(localObject);
-    if (ResourceMonitor.immediatePerfItems.size() > 900)
+    if (RunTimeEnv.isResourceMode())
     {
-      localObject = DumpSampleFileRunnable.getInstance();
-      this.handler.post((Runnable)localObject);
+      ResourceMonitor.immediatePerfItems.add(localObject);
+      if (ResourceMonitor.immediatePerfItems.size() > 900)
+      {
+        localObject = DumpSampleFileRunnable.getInstance();
+        this.handler.post((Runnable)localObject);
+      }
     }
-  }
-  
-  public long getDelayTime()
-  {
-    long l = 1000L;
-    if (ResourceMonitor.getInstance().isPublicMode()) {
-      l = 5000L;
-    }
-    return l;
   }
   
   public void run()
@@ -64,8 +66,11 @@ public class MonitorRunnable
   
   public void start()
   {
-    this.isRunning = true;
-    this.handler.post(this);
+    if (!this.isRunning)
+    {
+      this.isRunning = true;
+      this.handler.post(this);
+    }
   }
   
   public void stop()

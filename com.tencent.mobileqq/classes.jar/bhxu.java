@@ -1,19 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
+import android.view.SurfaceHolder;
 
-public class bhxu
-  implements DialogInterface.OnClickListener
+public abstract interface bhxu
 {
-  public bhxu(DownloadJSApi.2 param2) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bibw.r, false);
-    bhxt.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(SurfaceHolder paramSurfaceHolder);
+  
+  public abstract void a(bhxv parambhxv);
+  
+  public abstract void a(bhxw parambhxw);
+  
+  public abstract void a(bhxx parambhxx);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString, int paramInt);
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract int e();
 }
 
 

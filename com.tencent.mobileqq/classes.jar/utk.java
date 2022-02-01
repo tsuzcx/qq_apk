@@ -1,44 +1,18 @@
-import NS_KING_INTERFACE.stPostFeedDingRsp;
-import android.os.Handler;
-import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class utk
-  extends utw
-  implements uqy
+class utk
+  implements View.OnClickListener
 {
-  public static String a = "weishi";
+  utk(uta paramuta, String paramString) {}
   
-  public static void a(String paramString, boolean paramBoolean, int paramInt, Handler paramHandler)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (!paramBoolean)
-    {
-      i = 2;
-      Log.e(a, "此次是取消点赞：---------------");
-    }
-    paramString = new urj(new uwr(paramString, i), paramHandler, new utl(paramHandler, paramInt), 4300);
-    urc.a().a(paramString);
-  }
-  
-  public void a(urj paramurj)
-  {
-    if ((paramurj.a instanceof stPostFeedDingRsp))
-    {
-      paramurj = (stPostFeedDingRsp)paramurj.a;
-      if (paramurj == null)
-      {
-        Log.e(a, "服务器失败！！！");
-        return;
-      }
-      if (paramurj.is_ding == 0)
-      {
-        Log.e(a, "没有点赞~~~~~~~~~~~~~~~~");
-        return;
-      }
-      Log.e(a, "已经点赞~~~~~~~~~~~~~~~~");
-      return;
-    }
-    Log.e(a, "真无语！！！");
+    this.jdField_a_of_type_Uta.j();
+    this.jdField_a_of_type_Uta.o = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Uta.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

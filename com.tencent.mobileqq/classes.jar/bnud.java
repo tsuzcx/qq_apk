@@ -1,15 +1,21 @@
-import dov.com.qq.im.capture.data.FilterCategory;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class bnud
+class bnud
+  extends Handler
 {
-  public QIMFilterCategoryItem a;
-  public ArrayList<FilterCategory> a = new ArrayList();
-  public QIMFilterCategoryItem b;
-  public ArrayList<FilterCategory> b = new ArrayList();
-  public ArrayList<QIMFilterCategoryItem> c = new ArrayList();
-  public ArrayList<QIMFilterCategoryItem> d = new ArrayList();
+  bnud(bnub parambnub, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 993323) {
+      this.a.a();
+    }
+  }
 }
 
 

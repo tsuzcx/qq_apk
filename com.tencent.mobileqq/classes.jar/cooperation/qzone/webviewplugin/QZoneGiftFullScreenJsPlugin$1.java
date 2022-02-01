@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import avlx;
+import awsc;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import cooperation.qzone.remote.logic.RemoteRequestSender;
 import org.json.JSONException;
@@ -36,7 +36,7 @@ class QZoneGiftFullScreenJsPlugin$1
         localObject6 = localJSONObject.getJSONObject("giftZipUrl");
         localObject2 = localObject3;
         localObject1 = localObject5;
-        if (avlx.a().equals("sbig"))
+        if (awsc.a().equals("sbig"))
         {
           localObject2 = localObject3;
           localObject1 = localObject5;
@@ -76,7 +76,7 @@ class QZoneGiftFullScreenJsPlugin$1
       }
       localObject2 = localObject3;
       localObject1 = localObject5;
-      if (avlx.a().equals("xbig"))
+      if (awsc.a().equals("xbig"))
       {
         localObject2 = localObject3;
         localObject1 = localObject5;
@@ -91,7 +91,7 @@ class QZoneGiftFullScreenJsPlugin$1
       {
         localObject2 = localObject3;
         localObject1 = localObject5;
-        if (avlx.a().equals("small"))
+        if (awsc.a().equals("small"))
         {
           localObject2 = localObject3;
           localObject1 = localObject5;

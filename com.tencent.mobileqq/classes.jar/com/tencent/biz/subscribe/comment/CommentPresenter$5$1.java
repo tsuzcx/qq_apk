@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.comment;
 
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import zfs;
-import zfv;
+import zux;
+import zva;
 
 public class CommentPresenter$5$1
   implements Runnable
 {
-  public CommentPresenter$5$1(zfv paramzfv) {}
+  public CommentPresenter$5$1(zva paramzva) {}
   
   public void run()
   {
-    zfs.a(this.a.a, 0, zfs.a(this.a.a).getReplyId());
-    zfs.b(this.a.a, false);
+    zux.a(this.a.a, 0, zux.a(this.a.a).getReplyId());
+    zux.b(this.a.a, false);
   }
 }
 

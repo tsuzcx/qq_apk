@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 
-import amtj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import anvx;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -12,21 +12,21 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sss;
-import swb;
-import trf;
-import trg;
-import tro;
+import tgd;
+import tjm;
+import ufq;
+import ufr;
+import ufz;
 
 public class AdData
   extends ProteusItemData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AdData> CREATOR = new sss();
+  public static final Parcelable.Creator<AdData> CREATOR = new tgd();
   public String A;
   public String B;
   public String C;
-  public String D = amtj.a(2131698975);
+  public String D = anvx.a(2131699326);
   public String E;
   public String F;
   public String G;
@@ -37,15 +37,19 @@ public class AdData
   public String L;
   public String M;
   public String N;
+  public String O;
+  public String P;
+  public String Q;
+  public String R = "0";
   public int a;
   public long a;
   public AdvertisementInfo a;
   public String a;
   public ArrayList<String> a;
   public JSONObject a;
-  public trf a;
-  public trg a;
-  public tro a;
+  public ufq a;
+  public ufr a;
+  public ufz a;
   public boolean a;
   public int b;
   public long b;
@@ -170,6 +174,9 @@ public class AdData
       this.jdField_k_of_type_Int = paramParcel.readInt();
       this.M = paramParcel.readString();
       this.L = paramParcel.readString();
+      this.O = paramParcel.readString();
+      this.P = paramParcel.readString();
+      this.Q = paramParcel.readString();
       return;
       bool = false;
     }
@@ -178,23 +185,36 @@ public class AdData
   private void a(JSONObject paramJSONObject)
   {
     this.jdField_g_of_type_Int = paramJSONObject.optInt("appDownLoadStyle");
-    this.jdField_a_of_type_Trf = new trf();
+    this.jdField_a_of_type_Ufq = new ufq();
     if (paramJSONObject.has("appDownloadInfo"))
     {
       paramJSONObject = paramJSONObject.optJSONObject("appDownloadInfo");
-      this.jdField_a_of_type_Trf.a(paramJSONObject);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Trf.jdField_b_of_type_JavaLangString))
+      this.jdField_a_of_type_Ufq.a(paramJSONObject);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Ufq.jdField_b_of_type_JavaLangString))
       {
-        this.h = this.jdField_a_of_type_Trf.jdField_b_of_type_JavaLangString;
-        this.v = this.jdField_a_of_type_Trf.jdField_b_of_type_JavaLangString;
+        this.h = this.jdField_a_of_type_Ufq.jdField_b_of_type_JavaLangString;
+        this.v = this.jdField_a_of_type_Ufq.jdField_b_of_type_JavaLangString;
+        this.jdField_i_of_type_JavaLangString = this.jdField_a_of_type_Ufq.jdField_d_of_type_JavaLangString;
       }
-      this.jdField_a_of_type_Trf.jdField_f_of_type_JavaLangString = this.s;
-      return;
+      try
+      {
+        this.jdField_b_of_type_Long = Long.parseLong(this.jdField_a_of_type_Ufq.jdField_c_of_type_JavaLangString);
+        this.w = this.jdField_a_of_type_Ufq.jdField_e_of_type_JavaLangString;
+        this.jdField_a_of_type_Ufq.jdField_f_of_type_JavaLangString = this.s;
+        return;
+      }
+      catch (Exception paramJSONObject)
+      {
+        for (;;)
+        {
+          paramJSONObject.printStackTrace();
+        }
+      }
     }
-    this.jdField_a_of_type_Trf.jdField_b_of_type_JavaLangString = this.h;
-    this.jdField_a_of_type_Trf.jdField_f_of_type_JavaLangString = this.s;
-    this.jdField_a_of_type_Trf.jdField_e_of_type_JavaLangString = this.w;
-    this.jdField_a_of_type_Trf.jdField_c_of_type_JavaLangString = String.valueOf(this.jdField_b_of_type_Long);
+    this.jdField_a_of_type_Ufq.jdField_b_of_type_JavaLangString = this.h;
+    this.jdField_a_of_type_Ufq.jdField_f_of_type_JavaLangString = this.s;
+    this.jdField_a_of_type_Ufq.jdField_e_of_type_JavaLangString = this.w;
+    this.jdField_a_of_type_Ufq.jdField_c_of_type_JavaLangString = String.valueOf(this.jdField_b_of_type_Long);
   }
   
   public static boolean a(BaseData paramBaseData)
@@ -221,7 +241,7 @@ public class AdData
           return;
           if (this.jdField_a_of_type_Int == 1)
           {
-            this.jdField_d_of_type_JavaLangString = swb.a(localJSONArray.optString(0), true);
+            this.jdField_d_of_type_JavaLangString = tjm.a(localJSONArray.optString(0), true);
             return;
           }
         } while (this.jdField_a_of_type_Int != 3);
@@ -230,18 +250,18 @@ public class AdData
         int i1 = 0;
         while (i1 < i2)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(swb.a(localJSONArray.optString(i1), true));
+          this.jdField_a_of_type_JavaUtilArrayList.add(tjm.a(localJSONArray.optString(i1), true));
           i1 += 1;
         }
       } while (i2 >= 3);
       if (i2 == 2)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(swb.a(localJSONArray.optString(0), true));
+        this.jdField_a_of_type_JavaUtilArrayList.add(tjm.a(localJSONArray.optString(0), true));
         return;
       }
     } while (i2 != 1);
-    this.jdField_a_of_type_JavaUtilArrayList.add(swb.a(localJSONArray.optString(0), true));
-    this.jdField_a_of_type_JavaUtilArrayList.add(swb.a(localJSONArray.optString(0), true));
+    this.jdField_a_of_type_JavaUtilArrayList.add(tjm.a(localJSONArray.optString(0), true));
+    this.jdField_a_of_type_JavaUtilArrayList.add(tjm.a(localJSONArray.optString(0), true));
   }
   
   private void c(JSONObject paramJSONObject)
@@ -275,13 +295,14 @@ public class AdData
       if (paramJSONObject.has("wechat_ad_trace_data")) {
         ((JSONObject)localObject).put("wechat_ad_trace_data", paramJSONObject.optString("wechat_ad_trace_data"));
       }
-      this.M = ((JSONObject)localObject).toString();
-      this.jdField_a_of_type_Tro = new tro(this.M);
-      if (paramJSONObject.has("ad_source"))
-      {
+      if (paramJSONObject.has("ad_source")) {
         this.jdField_n_of_type_Int = paramJSONObject.optInt("ad_source");
-        this.jdField_a_of_type_Tro.jdField_j_of_type_Int = this.jdField_n_of_type_Int;
       }
+      ((JSONObject)localObject).put("AdSource", this.jdField_n_of_type_Int);
+      ((JSONObject)localObject).put("jump_type", this.R);
+      ((JSONObject)localObject).put("button_flag", paramJSONObject.optInt("button_flag", -1));
+      this.M = ((JSONObject)localObject).toString();
+      this.jdField_a_of_type_Ufz = new ufz(this.M);
       return;
     }
     catch (JSONException paramJSONObject)
@@ -416,6 +437,25 @@ public class AdData
     }
   }
   
+  public String a()
+  {
+    if (!TextUtils.isEmpty(this.v)) {
+      return this.v;
+    }
+    if (!TextUtils.isEmpty(this.h)) {
+      return this.h;
+    }
+    if (a()) {
+      try
+      {
+        String str = this.jdField_b_of_type_OrgJsonJSONObject.optJSONObject("extendInfo").optString("game_pkg_name");
+        return str;
+      }
+      catch (Throwable localThrowable) {}
+    }
+    return null;
+  }
+  
   public void a() {}
   
   public void a(String paramString, Object paramObject)
@@ -473,9 +513,9 @@ public class AdData
     this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("content");
     this.jdField_a_of_type_Int = paramJSONObject.optInt("img_type");
     b(paramJSONObject);
-    this.jdField_e_of_type_JavaLangString = swb.a(paramJSONObject.optString("click_url"), true);
-    this.jdField_f_of_type_JavaLangString = swb.a(paramJSONObject.optString("jump_url"), true);
-    this.jdField_g_of_type_JavaLangString = swb.a(paramJSONObject.optString("expose_url"), true);
+    this.jdField_e_of_type_JavaLangString = tjm.a(paramJSONObject.optString("click_url"), true);
+    this.jdField_f_of_type_JavaLangString = tjm.a(paramJSONObject.optString("jump_url"), true);
+    this.jdField_g_of_type_JavaLangString = tjm.a(paramJSONObject.optString("expose_url"), true);
     this.jdField_b_of_type_Int = paramJSONObject.optInt("producttype");
     this.h = paramJSONObject.optString("pkg_name");
     this.jdField_i_of_type_JavaLangString = paramJSONObject.optString("app_name");
@@ -497,9 +537,10 @@ public class AdData
       bool = true;
     }
     this.jdField_b_of_type_Boolean = bool;
+    this.R = paramJSONObject.optString("jump_type");
     a(paramJSONObject);
-    this.jdField_a_of_type_Trg = new trg();
-    this.jdField_a_of_type_Trg.a(paramJSONObject, this.jdField_a_of_type_Trg, this.jdField_a_of_type_Trf);
+    this.jdField_a_of_type_Ufr = new ufr();
+    this.jdField_a_of_type_Ufr.a(paramJSONObject, this.jdField_a_of_type_Ufr, this.jdField_a_of_type_Ufq);
     this.L = paramJSONObject.optString("ext", "");
     if (TextUtils.isEmpty(this.L)) {
       this.L = new JSONObject().toString();
@@ -513,6 +554,12 @@ public class AdData
       e(paramJSONObject);
       f(paramJSONObject);
       g(paramJSONObject);
+      this.O = paramJSONObject.optString("liujin_report_url");
+      this.P = paramJSONObject.optString("ticket");
+      if (TextUtils.isEmpty(this.P)) {
+        this.P = paramJSONObject.optString("ad_encrypted_ticket");
+      }
+      this.Q = paramJSONObject.optString("ams_nfb_url");
       return;
     }
     catch (JSONException paramString)
@@ -595,13 +642,16 @@ public class AdData
       paramParcel.writeInt(this.jdField_k_of_type_Int);
       paramParcel.writeString(this.M);
       paramParcel.writeString(this.L);
+      paramParcel.writeString(this.O);
+      paramParcel.writeString(this.P);
+      paramParcel.writeString(this.Q);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData
  * JD-Core Version:    0.7.0.1
  */

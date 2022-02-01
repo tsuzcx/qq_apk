@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahek;
-import ahew;
-import aluw;
+import ahzc;
+import ahzo;
+import amty;
 
 public class CmGameChatPie$ChatPieMsgListener$7
   implements Runnable
 {
-  public CmGameChatPie$ChatPieMsgListener$7(ahew paramahew, ahek paramahek) {}
+  public CmGameChatPie$ChatPieMsgListener$7(ahzo paramahzo, ahzc paramahzc) {}
   
   public void run()
   {
-    if (ahek.a(this.a) != null) {
-      ahek.a(this.a).a(0);
+    if (ahzc.a(this.a) != null) {
+      ahzc.a(this.a).a(0);
     }
   }
 }

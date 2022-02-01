@@ -1,19 +1,9 @@
-import com.tribe.async.reactive.StreamFunction;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-class vxn
-  extends StreamFunction<vxd, vxd>
+public abstract interface vxn
 {
-  int jdField_a_of_type_Int = 0;
-  
-  vxn(vxi paramvxi) {}
-  
-  protected void a(vxd paramvxd)
-  {
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    xvv.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] will fetch vidlist of uinion_id: %s", Integer.valueOf(i), paramvxd.a);
-    notifyResult(paramvxd);
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, List<String> paramList);
 }
 
 

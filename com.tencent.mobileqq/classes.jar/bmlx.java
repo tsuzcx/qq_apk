@@ -1,29 +1,28 @@
-class bmlx
-  implements bmnu
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qg.sdk.invoke.BaseJsModule;
+import com.tencent.qg.sdk.invoke.InvokeCallback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+public class bmlx
+  extends BaseJsModule
 {
-  bmlx(bmlw parambmlw) {}
+  public bmlx(bmlv parambmlv) {}
   
-  public void a(int paramInt)
+  public String getModuleName()
   {
-    if (paramInt == 0)
+    return "VipQGModel";
+  }
+  
+  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  {
+    if ("notifyJsInvokeFinish".equalsIgnoreCase(paramString))
     {
-      bmlw.a(this.a, true);
-      bmlw.a(this.a, 1, true, false);
-      bmbc.a().c((int)(bmlw.a(this.a) * 100.0F));
+      QLog.i("VipQGModel", 1, "handleJsRequest: notifyJsInvokeFinish");
+      this.a.a("getDeviceSize", new float[] { ViewUtils.getScreenWidth(), ViewUtils.getScreenHeight() });
+      return true;
     }
-    while (paramInt != 1) {
-      return;
-    }
-    bmlw.a(this.a, false);
-    if (bmlw.a(this.a)) {
-      bmlw.a(this.a, 2, bmlw.b(this.a), false);
-    }
-    for (;;)
-    {
-      bmbc.a().d((int)(bmlw.b(this.a) * 100.0F));
-      return;
-      bmlw.a(this.a, 2, bmlw.b(this.a), true);
-    }
+    return false;
   }
 }
 

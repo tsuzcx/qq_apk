@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
 
 public class bdot
-  implements DialogInterface.OnClickListener
+  extends URLDrawableDownListener.Adapter
 {
-  public bdot(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public bdot(StructMsgForHypertext paramStructMsgForHypertext) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView.setBackgroundDrawable(null);
+  }
 }
 
 

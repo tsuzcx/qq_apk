@@ -1,8 +1,24 @@
-import com.tencent.mobileqq.data.PhoneContact;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.SingleLineTextView;
 
-public abstract interface alip
+public class alip
+  extends alhf
 {
-  public abstract void a(PhoneContact paramPhoneContact, boolean paramBoolean);
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public DragTextView a;
+  public SingleLineTextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
 }
 
 

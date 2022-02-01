@@ -1,53 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aywt
-  extends amsu
+final class aywt
+  implements INetEngine.IBreakDownFix
 {
-  aywt(ayws paramayws) {}
-  
-  protected void onSetSelfSignatureResult(boolean paramBoolean)
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    if ((ayws.a(this.a) != null) && (((aymg)ayws.a(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(ayws.b(this.a).getCurrentAccountUin())))
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
     {
-      ExtensionInfo localExtensionInfo = ((amsw)ayws.c(this.a).getManager(51)).a(ayws.d(this.a).getCurrentAccountUin());
-      if (localExtensionInfo != null) {
-        ayws.a(this.a, localExtensionInfo.richBuffer, localExtensionInfo.richTime);
-      }
-    }
-  }
-  
-  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    amsw localamsw;
-    int j;
-    int i;
-    if ((paramBoolean) && (paramArrayOfString != null) && (paramArrayOfString.length > 0) && (ayws.e(this.a) != null))
-    {
-      localamsw = (amsw)ayws.f(this.a).getManager(51);
-      j = paramArrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < j)
+      do
       {
-        if (!TextUtils.equals(((aymg)ayws.b(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, paramArrayOfString[i])) {
-          break label143;
-        }
-        paramArrayOfString = localamsw.a(((aymg)ayws.c(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-        if (paramArrayOfString != null)
-        {
-          ((aymg)ayws.d(this.a)).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramArrayOfString.getRichStatus();
-          ayws.a(this.a, ((aymg)ayws.e(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard, false);
-        }
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+      paramNetResp.mWrittenBlockLen = 0L;
+      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+      paramNetReq.mReqProperties.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.mReqUrl;
+      if (paramNetResp.contains("range="))
+      {
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
       }
-      return;
-      label143:
-      i += 1;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("OlympicResources", 2, "IBreakDownFix, " + paramNetResp);
   }
 }
 

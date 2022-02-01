@@ -1,17 +1,11 @@
+import android.view.animation.Interpolator;
+
 public class bgqg
+  implements Interpolator
 {
-  public String a;
-  public String b;
-  
-  public bgqg(String paramString1, String paramString2)
+  public float getInterpolation(float paramFloat)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "LiangHaoUinData{" + "hide" + ", light='" + this.b + '\'' + '}';
+    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
   }
 }
 

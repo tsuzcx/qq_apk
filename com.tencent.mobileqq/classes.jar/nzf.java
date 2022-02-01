@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class nzf
-  implements DialogInterface.OnClickListener
+public class nzf
+  implements ahpi
 {
-  nzf(nyz paramnyz, JsResult paramJsResult) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    nzg.a.a(paramMessageRecord);
   }
 }
 

@@ -1,21 +1,34 @@
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aotl
-  implements afws
+public class aotl
+  extends aoui
 {
-  aotl(aotj paramaotj) {}
-  
-  public void a()
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    boolean bool = ((afvh)aotj.a(this.a).get(aotj.a(this.a))).checkShare();
-    if (bool != aotj.a(this.a))
-    {
-      aotj.a(this.a, bool);
-      aotj.a(this.a, aotj.a(this.a));
+    paramQQAppInterface = new aotk(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "ftssearch";
+    paramQQAppInterface.c = "tab";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
-  
-  public void b() {}
 }
 
 

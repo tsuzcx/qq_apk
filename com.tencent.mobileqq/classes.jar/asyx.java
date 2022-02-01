@@ -1,12 +1,17 @@
-public abstract interface asyx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+
+public class asyx
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  public asyx(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString1, String paramString2);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a.a(null);
+    LocalFileBrowserActivity.a(this.a);
+  }
 }
 
 

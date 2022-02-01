@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.content.res.Resources;
-import avdr;
-import aved;
-import bfur;
+import awju;
+import awkg;
+import bhdj;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
@@ -14,8 +14,8 @@ public final class LocationDialogUtil$5
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = bfur.a(this.a, 230, null, this.a.getResources().getString(2131718492), 2131690620, 2131694201, new aved(this), null);
-    avdr.a(this.a, localQQCustomDialog);
+    QQCustomDialog localQQCustomDialog = bhdj.a(this.a, 230, null, this.a.getResources().getString(2131718878), 2131690697, 2131694399, new awkg(this), null);
+    awju.a(this.a, localQQCustomDialog);
   }
 }
 

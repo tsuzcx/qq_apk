@@ -9,7 +9,7 @@ import android.os.Build.VERSION;
 import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Video.Thumbnails;
 import android.text.TextUtils;
-import aszt;
+import auea;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
@@ -98,7 +98,7 @@ public class DeviceMsgThumbDownloader
     QLog.d("DeviceMsgThumbDownloader", 2, "decodeFile file not exits. just return");
     return null;
     paramURLDrawableHandler = BaseApplicationImpl.getContext();
-    if (aszt.a(paramFile.path) == 2) {}
+    if (auea.a(paramFile.path) == 2) {}
     for (paramFile = new DeviceMsgThumbDownloader.DeviceVideoBitmapDecoder(this);; paramFile = new DeviceMsgThumbDownloader.DeviceImgBitmapDecoder(this)) {
       return AlbumThumbManager.getInstance(paramURLDrawableHandler).getThumb(paramDownloadParams.url, paramFile);
     }

@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.content.Context;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.Set;
 
-class aoup
-  implements BusinessObserver
+public class aoup
+  extends aoui
 {
-  aoup(aoul paramaoul) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    if (!paramBoolean)
+    paramQQAppInterface = new aoun(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "lightapp";
+    paramQQAppInterface.c = "open";
+    paramContext = Uri.parse(paramString);
+    paramString = paramContext.getQueryParameterNames().iterator();
+    while (paramString.hasNext())
     {
-      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkSafe,doReport, sso request failed");
-      return;
+      paramaoul = (String)paramString.next();
+      if (!TextUtils.isEmpty(paramaoul))
+      {
+        String str = paramContext.getQueryParameter(paramaoul);
+        if (!TextUtils.isEmpty(str)) {
+          paramQQAppInterface.a(paramaoul, str);
+        }
+      }
     }
-    ArkAppCenter.b("ArkApp.ArkAppCGI", "ArkSafe.doReport.server.back=" + paramObject);
+    return paramQQAppInterface;
   }
 }
 

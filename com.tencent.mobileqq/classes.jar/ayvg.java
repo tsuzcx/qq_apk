@@ -1,19 +1,27 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayvg
-  extends RecyclerView.ViewHolder
+  extends Handler
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public ayvg(ScanOcrView paramScanOcrView) {}
   
-  public ayvg(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374057));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374058));
+    if (QLog.isColorLevel()) {
+      QLog.i("ScanOcrView", 2, "handleMessage, MSG_SCANLINE");
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.a(paramMessage.arg1);
+    }
   }
 }
 

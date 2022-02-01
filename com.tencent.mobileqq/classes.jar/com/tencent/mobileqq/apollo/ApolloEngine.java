@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo;
 
-import alnr;
-import amge;
-import amip;
-import amkk;
+import amme;
 import android.graphics.RectF;
 import android.text.TextUtils;
+import anhm;
+import anka;
+import anmb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -31,7 +31,7 @@ public class ApolloEngine
   
   static
   {
-    amkk.a("classLoad");
+    anmb.a("classLoad");
   }
   
   public ApolloEngine()
@@ -54,9 +54,9 @@ public class ApolloEngine
   
   public static boolean a()
   {
-    if (!amkk.a())
+    if (!anmb.a())
     {
-      amkk.a("other");
+      anmb.a("other");
       ApolloGameStateMachine.a().a(5, "not load lib");
       return false;
     }
@@ -65,10 +65,10 @@ public class ApolloEngine
   
   private void b()
   {
-    new File(amip.a, "slave");
-    String str1 = amip.c + "/def/role/0/script/slave/";
-    String str2 = amip.c + "/";
-    nativeSetFileHomeDir(amip.av, amip.g, amip.a, amip.a, amip.a + "/extension/", str1, str2);
+    new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo", "slave");
+    String str1 = anka.a + "/def/role/0/script/slave/";
+    String str2 = anka.a + "/";
+    nativeSetFileHomeDir(anka.I, "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/role/", "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo", "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo", "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/extension/", str1, str2);
   }
   
   private void c()
@@ -165,9 +165,9 @@ public class ApolloEngine
     QLog.d("ApolloManager.Engine", 1, "[createDirector] tid: " + Thread.currentThread().getId() + ", mIsInit:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", isEngineReady:" + a() + ",glVersion:" + paramInt4);
     if (a())
     {
-      new File(amip.i).mkdirs();
+      new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/shader_code/").mkdirs();
       if (paramInt4 != 3) {
-        break label220;
+        break label219;
       }
       paramInt4 = 1;
       this.jdField_a_of_type_Long = nativeCreateDirector(paramLong, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4);
@@ -179,21 +179,21 @@ public class ApolloEngine
       if (BaseApplicationImpl.sProcessId == 1)
       {
         if (jdField_a_of_type_Boolean) {
-          break label226;
+          break label225;
         }
         jdField_a_of_type_Int = nativeSetPipeLog(1);
         c();
         b();
-        label163:
+        label162:
         QLog.i("ApolloManager.Engine", 1, "sPipeLogFd:" + jdField_a_of_type_Int + " sPipeLogDisable:" + jdField_a_of_type_Boolean);
       }
       if (!QLog.isColorLevel()) {
-        break label244;
+        break label243;
       }
     }
-    label220:
-    label226:
-    label244:
+    label219:
+    label225:
+    label243:
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       nativeSetQLogLevel(paramInt1);
@@ -204,7 +204,7 @@ public class ApolloEngine
         nativeSetPipeLog(0);
       }
       jdField_a_of_type_Int = 0;
-      break label163;
+      break label162;
     }
   }
   
@@ -236,9 +236,9 @@ public class ApolloEngine
   {
     if (a("[disposeDirector]"))
     {
-      QLog.d("ApolloManager.Engine", 1, "[disposeDirector] tid: " + Thread.currentThread().getId() + ", mDirector: " + this.jdField_a_of_type_Long + " ApolloManager.sApolloEngineLockEnable:" + alnr.r);
+      QLog.d("ApolloManager.Engine", 1, "[disposeDirector] tid: " + Thread.currentThread().getId() + ", mDirector: " + this.jdField_a_of_type_Long + " ApolloManager.sApolloEngineLockEnable:" + amme.r);
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if (!alnr.r) {
+      if (!amme.r) {
         break label105;
       }
     }
@@ -258,7 +258,7 @@ public class ApolloEngine
   
   public void a(double paramDouble)
   {
-    a(String.format(amge.b(), new Object[] { Double.valueOf(paramDouble) }));
+    a(String.format(anhm.b(), new Object[] { Double.valueOf(paramDouble) }));
   }
   
   public void a(double paramDouble, int paramInt)
@@ -391,7 +391,7 @@ public class ApolloEngine
       try
       {
         new StringBuilder(paramString.length() + 100).append("try{").append(paramString).append("}catch(err){BK.Script.log(0, 0, err.message);}");
-        if (!alnr.r) {
+        if (!amme.r) {
           continue;
         }
       }

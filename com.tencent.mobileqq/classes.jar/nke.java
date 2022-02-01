@@ -1,227 +1,227 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.graphics.RectF;
+import android.os.Handler;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.gamelogic.data.Player;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.gameroom.seat.SeatPresenterImp.1;
+import com.tencent.avgame.ipc.UserInfo;
+import com.tencent.avgame.session.AVGameUserInfo;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.BaseActivity;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class nke
+  implements nju
 {
-  public String a;
-  private List<ArrayList<njw>> a;
-  public nkb a;
-  public boolean a;
-  public String b;
-  private volatile boolean b;
-  private boolean c;
-  private boolean d;
+  private Runnable a;
+  protected nio a;
+  protected njv a;
   
-  public nke()
+  public nke(njv paramnjv)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangRunnable = new SeatPresenterImp.1(this);
+    this.jdField_a_of_type_Njv = paramnjv;
   }
   
-  private void a()
+  public int a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      QLog.d("GuessPictureGameResultMgr", 1, "generateVideoPhoto, gameImageDataCache is empty");
-    }
-    for (;;)
-    {
-      return;
-      ArrayList localArrayList1 = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ArrayList localArrayList2 = (ArrayList)localIterator.next();
-        if (!((njw)localArrayList2.get(0)).jdField_a_of_type_Boolean) {
-          localArrayList1.add(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.indexOf(localArrayList2)));
-        }
-      }
-      if (localArrayList1.isEmpty()) {}
-      for (int i = (int)(Math.random() * this.jdField_a_of_type_JavaUtilList.size()); !a((ArrayList)this.jdField_a_of_type_JavaUtilList.get(i)); i = ((Integer)localArrayList1.get((int)(Math.random() * localArrayList1.size()))).intValue())
-      {
-        this.jdField_b_of_type_JavaLangString = null;
-        return;
-      }
-    }
+    return nfc.a().a().a(paramString);
   }
   
-  private boolean a(ArrayList<njw> paramArrayList)
+  public RectF a()
   {
-    if ((paramArrayList.isEmpty()) || (((njw)paramArrayList.get(0)).jdField_a_of_type_AndroidGraphicsBitmap == null))
+    return this.jdField_a_of_type_Njv.a();
+  }
+  
+  public RectF a(long paramLong)
+  {
+    return this.jdField_a_of_type_Njv.a(paramLong);
+  }
+  
+  public AVGameUserInfo a(String paramString)
+  {
+    return this.jdField_a_of_type_Nio.a(paramString);
+  }
+  
+  public List<nkd> a()
+  {
+    int i4 = 0;
+    ArrayList localArrayList = new ArrayList();
+    List localList = this.jdField_a_of_type_Nio.c();
+    int i1 = 0;
+    int i2 = 0;
+    int i = 0;
+    int k = 0;
+    int j = i4;
+    int m;
+    if (i1 < localList.size())
     {
-      QLog.d("GuessPictureGameResultMgr", 1, "generateVideoPhoto, selectImageData is empty");
-      return false;
-    }
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Nkb.a, this.jdField_a_of_type_Nkb.b, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      this.jdField_a_of_type_Nkb.a(localCanvas, (njw)paramArrayList.get(0), false);
-      if ((paramArrayList.size() > 1) && (((njw)paramArrayList.get(1)).jdField_b_of_type_JavaLangString.equals("Tips"))) {
-        this.jdField_a_of_type_Nkb.b(localCanvas, (njw)paramArrayList.get(1), false);
-      }
-      bool = FileUtil.writeBitmapToFile(localBitmap, this.jdField_b_of_type_JavaLangString);
-      try
+      nkd localnkd = new nkd();
+      localnkd.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = ((Player)localList.get(i1));
+      localArrayList.add(localnkd);
+      m = a(localnkd.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin);
+      int i3;
+      int n;
+      if (m > k)
       {
-        localBitmap.recycle();
-        QLog.d("GuessPictureGameResultMgr", 1, new Object[] { "generateVideoPhoto, ret:", Boolean.valueOf(bool) });
-        return bool;
+        i3 = m;
+        n = k;
+        j = i;
       }
-      catch (Exception paramArrayList) {}
-    }
-    catch (Exception paramArrayList)
-    {
       for (;;)
       {
-        boolean bool = false;
-      }
-    }
-    QLog.e("GuessPictureGameResultMgr", 1, "generateVideoPhoto fail", paramArrayList);
-    return bool;
-  }
-  
-  private void b(ArrayList<njw> paramArrayList)
-  {
-    if (paramArrayList != null)
-    {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        njw localnjw = (njw)paramArrayList.next();
-        if ((!localnjw.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) && (!localnjw.jdField_b_of_type_JavaLangString.equals("Back Image"))) {
-          localnjw.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, nkb paramnkb)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Nkb = paramnkb;
-  }
-  
-  public void a(ArrayList<njw> paramArrayList)
-  {
-    if (paramArrayList != null) {}
-    for (;;)
-    {
-      try
-      {
-        if (!paramArrayList.isEmpty())
+        i1 += 1;
+        i2 = j;
+        i = n;
+        k = i3;
+        break;
+        if (m > i)
         {
-          localObject = ((njw)paramArrayList.get(0)).jdField_a_of_type_AndroidGraphicsBitmap;
-          if (localObject != null) {}
+          j = i;
+          n = m;
+          i3 = k;
         }
         else
         {
-          return;
-        }
-        Object localObject = ((njw)paramArrayList.get(0)).jdField_a_of_type_JavaLangString;
-        if ((((String)localObject).equals("Mosaic Image")) || (((String)localObject).equals("Tips")))
-        {
-          if ((((String)localObject).equals("Mosaic Image")) && (this.c))
+          j = i2;
+          n = i;
+          i3 = k;
+          if (m > i2)
           {
-            this.jdField_b_of_type_Boolean = false;
-            this.c = false;
+            j = m;
+            n = i;
+            i3 = k;
           }
-          if (this.jdField_b_of_type_Boolean) {
-            break label308;
-          }
-          this.jdField_b_of_type_Boolean = true;
-          this.jdField_a_of_type_JavaUtilList.add(paramArrayList);
-          i = 1;
-          j = i;
-          if (((String)localObject).equals("Tips"))
-          {
-            j = i;
-            if (this.jdField_b_of_type_Boolean)
-            {
-              j = i;
-              if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-              {
-                b((ArrayList)this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1));
-                this.jdField_a_of_type_JavaUtilList.add(paramArrayList);
-                j = 1;
-              }
-            }
-          }
-          if (!this.d)
-          {
-            this.d = true;
-            a(paramArrayList);
-          }
-          if (j != 0) {
-            continue;
-          }
-          b(paramArrayList);
-          continue;
-        }
-        if (!this.jdField_b_of_type_Boolean) {
-          break label303;
         }
       }
-      finally {}
-      if ((this.jdField_a_of_type_Nkb.b()) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
-      {
-        this.c = true;
-        ((njw)((ArrayList)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).get(0)).jdField_a_of_type_Boolean = this.jdField_a_of_type_Nkb.a();
-      }
-      label303:
-      int j = 0;
-      continue;
-      label308:
-      int i = 0;
     }
+    if (j < localArrayList.size())
+    {
+      m = a(((nkd)localArrayList.get(j)).jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin);
+      if (m <= 0) {}
+      for (;;)
+      {
+        j += 1;
+        break;
+        if (m == k) {
+          ((nkd)localArrayList.get(j)).jdField_a_of_type_Int = 1;
+        } else if (m == i) {
+          ((nkd)localArrayList.get(j)).jdField_a_of_type_Int = 2;
+        } else if (m == i2) {
+          ((nkd)localArrayList.get(j)).jdField_a_of_type_Int = 3;
+        }
+      }
+    }
+    return localArrayList;
   }
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    try
-    {
-      if ((this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
-      {
-        this.c = true;
-        ((njw)((ArrayList)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).get(0)).jdField_a_of_type_Boolean = paramBoolean;
-      }
+    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_Nio.a();
+    AVGameAppInterface localAVGameAppInterface = nfc.a().a();
+    String str1 = localAVGameAppInterface.getCurrentAccountUin();
+    nfv localnfv = nfc.a().a();
+    long l = localnfv.a();
+    String str2 = localnfv.a().getNick(str1);
+    aojq.a().a(localAVGameAppInterface, localBaseActivity, l, Long.valueOf(str1).longValue(), str2, localnfv.d());
+    this.jdField_a_of_type_Nio.a().b(this.jdField_a_of_type_Nio.a().getString(2131690346));
+  }
+  
+  public void a(long paramLong, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Njv.a(paramLong, paramBoolean);
+  }
+  
+  public void a(Player paramPlayer)
+  {
+    if ((nfc.a().a() == null) || (paramPlayer == null)) {
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    nfv localnfv = nfc.a().a();
+    String str = nfc.a().a().getCurrentAccountUin();
+    nfc.a().c(localnfv.a(), str, paramPlayer.uin);
+    bdla.b(null, "dc00898", "", "", "0X800B02D", "0X800B02D", 0, 0, paramPlayer.uin, "" + localnfv.a(), "", "");
   }
   
-  public void a(boolean paramBoolean, long paramLong)
+  public void a(nfv paramnfv)
   {
-    if (!paramBoolean) {
-      mzl.a().a().a(null, null, paramLong);
+    this.jdField_a_of_type_Njv.a(paramnfv);
+  }
+  
+  public void a(nio paramnio)
+  {
+    this.jdField_a_of_type_Nio = paramnio;
+    nom.a().b().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Njv.a(paramBoolean1, paramBoolean2);
+  }
+  
+  public boolean a()
+  {
+    nfv localnfv = nfc.a().a();
+    RoomInfo localRoomInfo = localnfv.a();
+    int i = localnfv.a();
+    return (localRoomInfo.getPlayers().size() < 8) && (i == 0);
+  }
+  
+  public List<niq> b()
+  {
+    return this.jdField_a_of_type_Njv.a();
+  }
+  
+  public void b()
+  {
+    nom.a().b().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void b(Player paramPlayer)
+  {
+    int i = 1;
+    if ((nfc.a().a() == null) || (paramPlayer == null)) {
+      return;
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GuessPictureGameResultMgr", 2, new Object[] { "saveResult, videoPath:", this.jdField_a_of_type_JavaLangString, " photoPath:", this.jdField_b_of_type_JavaLangString });
+      try
+      {
+        paramPlayer = paramPlayer.uin;
+        Object localObject = new ProfileActivity.AllInOne(paramPlayer, 118);
+        ((ProfileActivity.AllInOne)localObject).h = 999;
+        ((ProfileActivity.AllInOne)localObject).d = 1;
+        ProfileActivity.b(this.jdField_a_of_type_Nio.a(), (ProfileActivity.AllInOne)localObject);
+        localObject = ndl.b(paramPlayer);
+        if ((localObject != null) && (((UserInfo)localObject).a))
+        {
+          bdla.b(null, "dc00898", "", "", "0X800B02B", "0X800B02B", i, 0, paramPlayer, "" + nfc.a().a().a(), "", "");
+          return;
+        }
       }
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_JavaLangString = null;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        b((ArrayList)localIterator.next());
+      catch (Exception paramPlayer)
+      {
+        paramPlayer.printStackTrace();
+        return;
       }
-      a();
-      mzl.a().a().a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, paramLong);
+      i = 2;
     }
-    this.d = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = false;
-    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void c(Player paramPlayer)
+  {
+    if ((nfc.a().a() == null) || (paramPlayer == null)) {
+      return;
+    }
+    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_Nio.a();
+    String str1 = nfc.a().a().getCurrentAccountUin();
+    nfv localnfv = nfc.a().a();
+    String str2 = "roomid=" + localnfv.a();
+    aaqo.a(localBaseActivity, paramPlayer.uin, "", str2, str1, 25031, null);
+    bdla.b(null, "dc00898", "", "", "0X800B02C", "0X800B02C", 0, 0, paramPlayer.uin, "" + localnfv.a(), "", "");
   }
 }
 

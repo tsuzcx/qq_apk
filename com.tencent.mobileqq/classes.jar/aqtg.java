@@ -1,12 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
 
-class aqtg
-  implements DialogInterface.OnClickListener
+public class aqtg
+  implements TextWatcher
 {
-  aqtg(aqte paramaqte) {}
+  public aqtg(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void afterTextChanged(Editable paramEditable)
+  {
+    this.a.a = true;
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

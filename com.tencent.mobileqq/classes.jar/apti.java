@@ -1,12 +1,18 @@
-public class apti
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+
+class apti
+  implements agou
 {
-  public void a() {}
+  apti(aptb paramaptb, long paramLong) {}
   
-  public void a(boolean paramBoolean, short paramShort, int paramInt, String paramString) {}
+  public void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    this.jdField_a_of_type_Aptb.a(this.jdField_a_of_type_Long, paramBoolean, paramSosoLbsInfo);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apti
  * JD-Core Version:    0.7.0.1
  */

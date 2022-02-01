@@ -1,18 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
-public class adae
-  implements bamo
+public abstract class adae
 {
-  public adae(ChatSettingActivity paramChatSettingActivity) {}
+  protected adad a;
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  protected void a() {}
+  
+  public final void a(adad paramadad)
   {
-    if ((this.a.g != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
-      ChatSettingActivity.a(this.a, this.a.a, this.a.g);
-    }
+    this.a = paramadad;
+    a();
   }
+  
+  public abstract boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adaa paramadaa);
+  
+  public void b() {}
 }
 
 

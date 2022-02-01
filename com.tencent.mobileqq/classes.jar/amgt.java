@@ -1,17 +1,24 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
+import java.util.HashMap;
 
 class amgt
-  extends AVAudioCtrl.EnableSpeakerCompleteCallback
+  implements Comparator<Entity>
 {
-  amgt(amgo paramamgo) {}
+  amgt(amgs paramamgs, HashMap paramHashMap) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.b(paramBoolean, paramInt);
+    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
+    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
+    if (l1 < l2) {
+      return -1;
     }
+    if (l1 > l2) {
+      return 1;
+    }
+    return 0;
   }
 }
 

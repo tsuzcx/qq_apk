@@ -1,76 +1,17 @@
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
-public class xrh
-  extends QQUIEventReceiver<xru, vup>
-  implements xrq
+class xrh
+  implements xrc<Bitmap>
 {
-  protected xrs a;
+  xrh(xrf paramxrf, List paramList, String paramString) {}
   
-  public xrh(xru paramxru)
+  @NonNull
+  public Stream<Bitmap> a(xqy paramxqy)
   {
-    super(paramxru);
-  }
-  
-  public Object a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return "ReportWatchVideoListStep";
-  }
-  
-  public void a()
-  {
-    vli.a().registerSubscriber(this);
-    ((vun)vux.a(13)).c();
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void a(xrr paramxrr) {}
-  
-  public void a(xrs paramxrs)
-  {
-    this.a = paramxrs;
-  }
-  
-  public void a(xru paramxru, vup paramvup)
-  {
-    vli.a().unRegisterSubscriber(this);
-    if (this.a != null) {
-      this.a.a(a());
-    }
-    for (;;)
-    {
-      xvv.d("Q.qqstory.home,ReportWatchVideoListStep", "receive event. step is done");
-      return;
-      xvv.d("Q.qqstory.home,ReportWatchVideoListStep", "finish callBack is null");
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vup.class;
-  }
-  
-  public void b()
-  {
-    xvv.a("Q.qqstory.home.qqstory_step", "Q.qqstory.home,ReportWatchVideoListStep", "Q.qqstory.home,ReportWatchVideoListStep");
-  }
-  
-  public void c()
-  {
-    vun localvun = (vun)vux.a(13);
-    vli.a().unRegisterSubscriber(this);
-    localvun.d();
+    return xrf.a(this.jdField_a_of_type_Xrf, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
   }
 }
 

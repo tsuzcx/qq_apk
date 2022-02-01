@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-
 class bbqv
-  implements SDKInitListener
 {
-  bbqv(bbqu parambbqu) {}
-  
-  public void onSDKInited(boolean paramBoolean)
-  {
-    bbqu.a(this.a);
-    BaseShortVideoOprerator.a(this.a.a.a, bbqu.a(this.a));
-  }
+  private static final bbqt a = new bbqt(null);
 }
 
 

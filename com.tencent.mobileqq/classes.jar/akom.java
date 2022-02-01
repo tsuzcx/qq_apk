@@ -1,27 +1,23 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
 
-public class akom
-  extends aknz
+class akom
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public akom(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = amtj.a(2131697160);
-  }
+  akom(akol paramakol, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    if ((paramObject instanceof akom))
+    ((NewPhotoListActivity)this.jdField_a_of_type_Akol.mActivity).cancleProgressDailog();
+    if (bpij.a(this.jdField_a_of_type_Akol.mActivity, paramLocalMediaInfo))
     {
-      paramObject = (akom)paramObject;
-      paramObject.jdField_a_of_type_Bdyj.a(parambdyi.jdField_a_of_type_Bdyj);
-      return paramObject;
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.sendPhoto(this.jdField_a_of_type_Akol.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
     }
-    paramObject = new akom(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_Bdyj = new bdyj(parambdyi.jdField_a_of_type_Bdyj);
-    return paramObject;
   }
 }
 

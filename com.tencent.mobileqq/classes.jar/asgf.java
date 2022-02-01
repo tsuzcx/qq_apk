@@ -1,15 +1,6 @@
-class asgf
-  implements aszj
-{
-  asgf(asgc paramasgc) {}
-  
-  public void onNo() {}
-  
-  public void onYes()
-  {
-    aszt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, asgc.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
-  }
-}
+public abstract interface asgf
+  extends asgd, asgh, asgl
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

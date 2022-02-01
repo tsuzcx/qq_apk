@@ -1,36 +1,43 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.hce.HcePluginInstallActivity;
+import java.util.HashMap;
 
 public class aovv
+  extends aouc
 {
-  java.lang.ref.WeakReference<QQAppInterface> a;
-  
-  public aovv(QQAppInterface paramQQAppInterface)
+  public aovv(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.a = new mqq.util.WeakReference(paramQQAppInterface);
+    super(paramQQAppInterface, paramContext);
   }
   
-  public boolean a(String paramString, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver)
+  private boolean C()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null)
-    {
-      ArkAppCenter.c("ArkApp.SSO", "requestArkAppList, app is null, return false");
-      return false;
-    }
-    return ((aovo)localQQAppInterface.getBusinessHandler(95)).a(paramString, paramInt1, paramInt2, paramBusinessObserver);
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, HcePluginInstallActivity.class);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    return true;
   }
   
-  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver)
+  public boolean a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null)
+    try
     {
-      ArkAppCenter.c("ArkApp.SSO", "sendAppMsg, app is null, return false");
+      if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey("from_type")) && (!StringUtil.isEmpty((String)this.jdField_a_of_type_JavaUtilHashMap.get("from_type"))) && ("2".equals(this.jdField_a_of_type_JavaUtilHashMap.get("from_type"))))
+      {
+        boolean bool = C();
+        return bool;
+      }
       return false;
     }
-    return ((aovo)localQQAppInterface.getBusinessHandler(95)).a(paramString1, paramString2, paramInt1, paramInt2, paramBusinessObserver);
+    catch (Exception localException)
+    {
+      QLog.e("QwalletToBuscardAction", 1, "doAction error: " + localException.getMessage());
+      a("QwalletToBuscardAction");
+    }
+    return false;
   }
 }
 

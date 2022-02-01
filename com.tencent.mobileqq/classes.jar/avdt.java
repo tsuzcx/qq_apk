@@ -1,19 +1,66 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.10;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class avdt
-  implements DialogInterface.OnClickListener
+class avdt
+  extends aved
 {
-  public avdt(LocationDialogUtil.10 param10) {}
+  avdt(avds paramavds) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b(Object paramObject)
   {
-    if (avdr.a(this.a.a))
+    super.b(paramObject);
+    if ((paramObject instanceof ArrayList))
     {
-      this.a.a.finish();
-      avdr.a("");
+      paramObject = (ArrayList)paramObject;
+      int j = paramObject.size();
+      int i = 0;
+      if (i < j)
+      {
+        Object localObject;
+        GameCenterSessionInfo localGameCenterSessionInfo;
+        if ((paramObject.get(i) instanceof avdr))
+        {
+          localObject = (avdr)paramObject.get(i);
+          localGameCenterSessionInfo = this.a.b(((avdr)localObject).jdField_b_of_type_JavaLangString);
+          if (localGameCenterSessionInfo != null)
+          {
+            localGameCenterSessionInfo.f(((avdr)localObject).c);
+            localGameCenterSessionInfo.g(((avdr)localObject).i);
+            localGameCenterSessionInfo.i(((avdr)localObject).e);
+            localGameCenterSessionInfo.e(((avdr)localObject).jdField_b_of_type_Int);
+            localGameCenterSessionInfo.c(((avdr)localObject).k);
+            localGameCenterSessionInfo.h(((avdr)localObject).d);
+            localGameCenterSessionInfo.a(((avdr)localObject).j);
+            if (j <= 30) {
+              break label178;
+            }
+            if (i == j - 1) {
+              this.a.a("action_qgame_messgae_change", localGameCenterSessionInfo, 3, this.a.a());
+            }
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          label178:
+          if (localGameCenterSessionInfo.a() == 0)
+          {
+            localObject = this.a.c(localGameCenterSessionInfo.e());
+            if (QLog.isColorLevel()) {
+              QLog.d(avds.e(), 2, "[onGameUserInfoChangedNotify] folder session:" + localObject);
+            }
+            if ((localObject != null) && (((GameCenterSessionInfo)localObject).d().equals(localGameCenterSessionInfo.d()))) {
+              this.a.a("action_qgame_messgae_change", (GameCenterSessionInfo)localObject, 2, this.a.a());
+            }
+          }
+          else
+          {
+            this.a.a("action_qgame_messgae_change", localGameCenterSessionInfo, 2, this.a.a());
+          }
+        }
+      }
     }
   }
 }

@@ -59,40 +59,39 @@ public class MiniAppTextArea$KeyboardHiddenObserver
               MiniAppTextArea.access$302(this.this$0, MiniAppTextArea.access$300(this.this$0) + DisplayUtil.getNavigationBarHeight(MiniAppTextArea.access$100(this.this$0).getPageWebviewContainer().getAttachActivity()));
             }
           }
-          int j;
           if (this.this$0.isFocused())
           {
             localObject2 = new JSONObject();
             ((JSONObject)localObject2).put("inputId", MiniAppTextArea.access$900(this.this$0));
-            j = MiniAppTextArea.access$300(this.this$0);
+            int j = MiniAppTextArea.access$300(this.this$0);
             paramInt = i;
             if (MiniAppTextArea.access$1000(this.this$0)) {
               paramInt = MiniAppTextArea.access$1100(this.this$0);
             }
             ((JSONObject)localObject2).put("height", (int)((paramInt + j) / DisplayUtil.getDensity(this.this$0.getContext()) + 0.5F));
             localPageWebviewContainer.evaluateSubscribeJS("onKeyboardShow", ((JSONObject)localObject2).toString());
-          }
-          if (MiniAppTextArea.access$1000(this.this$0))
-          {
-            paramInt = MiniAppTextArea.access$1200(this.this$0);
-            i = MiniAppTextArea.access$300(this.this$0);
-            j = MiniAppTextArea.access$1100(this.this$0);
-            MiniAppTextArea.access$1300(this.this$0, paramInt - i - j);
-            return;
-            if (DisplayUtil.hasNavBar((Context)localObject2))
+            if (MiniAppTextArea.access$1000(this.this$0))
             {
+              paramInt = MiniAppTextArea.access$1200(this.this$0);
+              i = MiniAppTextArea.access$300(this.this$0);
+              j = MiniAppTextArea.access$1100(this.this$0);
+              MiniAppTextArea.access$1300(this.this$0, paramInt - i - j);
+              return;
+              if (DisplayUtil.hasNavBar((Context)localObject2))
+              {
+                bool1 = bool2;
+                if (DisplayUtil.isNavigationBarExist((Activity)localObject2)) {
+                  continue;
+                }
+              }
+              boolean bool3 = DisplayUtil.isFlymeOS7NavBarShow();
               bool1 = bool2;
-              if (DisplayUtil.isNavigationBarExist((Activity)localObject2)) {
+              if (bool3) {
                 continue;
               }
-            }
-            boolean bool3 = DisplayUtil.isFlymeOS7NavBarShow();
-            bool1 = bool2;
-            if (bool3) {
+              bool1 = false;
               continue;
             }
-            bool1 = false;
-            continue;
           }
           return;
         }

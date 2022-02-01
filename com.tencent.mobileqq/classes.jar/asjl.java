@@ -1,29 +1,26 @@
+import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
 
 class asjl
-  extends asjn
+  implements awzc<Emoticon>
 {
-  public asjl(asji paramasji)
-  {
-    super(paramasji);
-  }
+  asjl(asjj paramasjj, int paramInt, String paramString) {}
   
-  protected String a()
+  public void a(Emoticon paramEmoticon)
   {
-    return "StateAcceptByPCWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      this.jdField_a_of_type_Asjj.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
+      }
     }
-    asji.b(this.jdField_a_of_type_Asji, 11, 5);
-    asji.c(this.jdField_a_of_type_Asji, 11, 5);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateAcceptByPC)");
-    this.jdField_a_of_type_Asjn = new asjk(this.jdField_a_of_type_Asji);
+    do
+    {
+      return;
+      this.jdField_a_of_type_Asjj.a(paramEmoticon);
+    } while (!QLog.isColorLevel());
+    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
   }
 }
 

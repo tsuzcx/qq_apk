@@ -1,34 +1,16 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.mobileqq.activity.photo.album.PhotoListBaseData;
-import java.util.HashMap;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class ajqu
-  extends PhotoListBaseData
+  implements Cloneable
 {
-  public int a;
-  public long a = -1L;
-  public SessionInfo a;
-  public String a;
-  public HashMap<String, PhotoSendParams> a;
-  public ylk a;
-  public boolean a;
-  public String b;
-  public HashMap<String, byte[]> b;
-  public boolean b;
-  public String c;
-  public HashMap<LocalMediaInfo, LocalMediaInfo> c = new HashMap();
-  public boolean c;
-  public String d;
-  public boolean d = true;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
-  public boolean k;
+  public CheckBox a;
+  public TextView a;
+  public TencentDocItem a;
+  public AsyncImageView a;
+  public TextView b;
 }
 
 

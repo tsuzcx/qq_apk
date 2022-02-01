@@ -1,26 +1,61 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arke
-  implements arpx
+  extends arjj<arkd>
 {
-  public arke(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
-  
-  public void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
+  @NonNull
+  public arkd a()
   {
-    ExtendFriendCampusVerifyTipsView.a(ExtendFriendCampusFragment.a(this.a), ExtendFriendCampusFragment.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
+    }
+    return new arkd();
   }
   
-  public void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType)
+  @NonNull
+  public arkd a(@NonNull aqxa[] paramArrayOfaqxa)
   {
-    aroj.a(ExtendFriendCampusFragment.a(this.a), false);
-    ExtendFriendCampusFragment.a(this.a).setVisibility(8);
+    arkd localarkd = new arkd();
+    try
+    {
+      localarkd.a = new JSONObject(paramArrayOfaqxa[0].a).optBoolean("showVipIcon", false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localarkd.a);
+      }
+      return localarkd;
+    }
+    catch (JSONException paramArrayOfaqxa)
+    {
+      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfaqxa);
+    }
+    return localarkd;
+  }
+  
+  @NonNull
+  public arkd b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
+    }
+    return new arkd();
+  }
+  
+  public Class<arkd> clazz()
+  {
+    return arkd.class;
+  }
+  
+  public int type()
+  {
+    return 465;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arke
  * JD-Core Version:    0.7.0.1
  */

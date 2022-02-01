@@ -7,11 +7,11 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import org.json.JSONException;
 import org.json.JSONObject;
-import syz;
-import tqi;
-import tus;
-import twh;
-import uet;
+import tmh;
+import uea;
+import uix;
+import uki;
+import usq;
 
 public class ProteusBannerVideoItemData
   extends AdData
@@ -28,8 +28,8 @@ public class ProteusBannerVideoItemData
   private JSONObject a()
   {
     JSONObject localJSONObject1 = new JSONObject();
-    if (twh.a(this)) {
-      return tus.a(localJSONObject1, this);
+    if (uki.a(this)) {
+      return uix.a(localJSONObject1, this);
     }
     for (;;)
     {
@@ -51,7 +51,7 @@ public class ProteusBannerVideoItemData
           localJSONObject1.put("id_tv_title", localObject);
           if (!TextUtils.isEmpty(this.d))
           {
-            localObject = uet.a(this.d, 4);
+            localObject = usq.a(this.d, 4);
             localJSONObject2 = new JSONObject();
             localJSONObject2.put("image_url", ((URL)localObject).toString());
             localJSONObject1.put("id_ad_banner_bottom_imge", localJSONObject2);
@@ -85,7 +85,7 @@ public class ProteusBannerVideoItemData
               localObject = new JSONObject();
               ((JSONObject)localObject).put("article_model", this);
               localJSONObject1.put("id_ad_banner_bottom_video", localObject);
-              tqi.a(this, localJSONObject1);
+              uea.a(this, localJSONObject1);
               return localJSONObject1;
             }
             break;
@@ -126,10 +126,10 @@ public class ProteusBannerVideoItemData
     this.c = a();
     try
     {
-      syz localsyz = syz.a("native_article", true);
+      tmh localtmh = tmh.a("native_article", true);
       localObject1 = localObject3;
-      if (localsyz != null) {
-        localObject1 = localsyz.getTemplateBean(this.c);
+      if (localtmh != null) {
+        localObject1 = localtmh.getTemplateBean(this.c);
       }
     }
     catch (JSONException localJSONException)
@@ -148,7 +148,7 @@ public class ProteusBannerVideoItemData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerVideoItemData
  * JD-Core Version:    0.7.0.1
  */

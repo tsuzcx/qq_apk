@@ -1,26 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.Comparator;
 
-public class qem
-  implements ViewBase.OnClickListener
+class qem
+  implements Comparator<AdvertisementInfo>
 {
-  BaseArticleInfo a;
+  qem(qel paramqel) {}
   
-  public qem(BaseArticleInfo paramBaseArticleInfo)
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    this.a = paramBaseArticleInfo;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    paramViewBase = this.a.mSocialFeedInfo.a.a.d;
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    pgw.b((ArticleInfo)this.a, (int)this.a.mChannelID);
-    pay.a(localBaseActivity, paramViewBase);
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
 }
 

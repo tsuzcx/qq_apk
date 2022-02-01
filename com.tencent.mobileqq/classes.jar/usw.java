@@ -1,38 +1,41 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.superplayer.api.SuperPlayerFactory;
-import com.tencent.superplayer.api.SuperPlayerVideoInfo;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class usw
-  implements usl<Object, SuperPlayerVideoInfo>
+  implements aegn
 {
-  public usj<Object, SuperPlayerVideoInfo> a()
+  String jdField_a_of_type_JavaLangString = "";
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference = null;
+  usv jdField_a_of_type_Usv = null;
+  
+  public usw(usv paramusv, QQAppInterface paramQQAppInterface, String paramString)
   {
-    return new usy();
+    this.jdField_a_of_type_Usv = paramusv;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public usk a(Context paramContext, usr paramusr)
+  public void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs)
   {
-    paramusr = null;
-    if (azjl.a()) {
-      paramusr = SuperPlayerFactory.createMediaPlayer(paramContext, 112, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder IDownloadListener fail, status: " + paramInt + " | icon: " + paramDrawable + " | mFolder: " + this.jdField_a_of_type_Usv);
     }
-    return new usx(paramusr);
-  }
-  
-  public usn a(Context paramContext)
-  {
-    if (azjl.a()) {}
-    for (paramContext = SuperPlayerFactory.createPreDownloader(BaseApplicationImpl.getContext(), 112);; paramContext = null) {
-      return new usz(paramContext);
+    if ((paramInt == 2) && (paramDrawable != null) && (this.jdField_a_of_type_Usv != null)) {
+      this.jdField_a_of_type_Usv.a = paramDrawable;
     }
-  }
-  
-  public usr a(Context paramContext, boolean paramBoolean)
-  {
-    if (azjl.a()) {}
-    for (paramContext = SuperPlayerFactory.createPlayerVideoView(paramContext);; paramContext = null) {
-      return new utb(paramContext);
+    try
+    {
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(4, true, new Object[] { this.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder IDownloadListener fail", paramString);
     }
   }
 }

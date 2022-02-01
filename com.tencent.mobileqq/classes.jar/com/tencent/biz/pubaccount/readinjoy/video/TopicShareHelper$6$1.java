@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bhht;
-import rtl;
+import bisl;
+import sga;
 
 class TopicShareHelper$6$1
   implements Runnable
@@ -10,8 +10,8 @@ class TopicShareHelper$6$1
   
   public void run()
   {
-    if ((rtl.a(this.a.this$0) != null) && (rtl.a(this.a.this$0).isShowing())) {
-      rtl.a(this.a.this$0).dismiss();
+    if ((sga.a(this.a.this$0) != null) && (sga.a(this.a.this$0).isShowing())) {
+      sga.a(this.a.this$0).dismiss();
     }
   }
 }

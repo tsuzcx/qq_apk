@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import abwp;
-import akhg;
-import akms;
+import acmw;
+import alcz;
+import alik;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -25,16 +25,17 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import apyt;
-import bbyp;
-import bfzg;
-import bjpg;
+import arbw;
+import bdfk;
+import bhhy;
+import blas;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.activity.MiniAppEntrySettingFragment;
 import com.tencent.mobileqq.mini.entry.MiniAppDesktop;
@@ -46,6 +47,7 @@ import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDittoInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopItemInfo;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView;
+import com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView.DragDeleteListener;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -85,6 +87,7 @@ public class MiniAppDesktopLayout
   private TextView mDeleteText;
   private MiniAppDesktopLayout.DesktopChangeListener mDesktopChangeListener;
   private RelativeLayout mDesktopNavbarLayout;
+  private DragRecyclerView.DragDeleteListener mDragDeleteListener = new MiniAppDesktopLayout.1(this);
   private View mDragMirrorView;
   private MiniAppDesktopLayout.MiniAppGridLayoutManager mGridLayoutManager;
   private boolean mIsDragging;
@@ -110,50 +113,50 @@ public class MiniAppDesktopLayout
     paramARMapHongBaoListView = (BaseActivity)paramContext;
     this.mActivityRef = new WeakReference(paramARMapHongBaoListView);
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    inflate(paramContext.getApplicationContext(), 2131562335, this);
-    this.mRecyclerView = ((DragRecyclerView)findViewById(2131370746));
-    this.mDeleteLayout = ((ViewGroup)findViewById(2131365406));
-    this.mDeleteText = ((TextView)findViewById(2131365399));
+    inflate(paramContext.getApplicationContext(), 2131562403, this);
+    this.mRecyclerView = ((DragRecyclerView)findViewById(2131370931));
+    this.mDeleteLayout = ((ViewGroup)findViewById(2131365499));
+    this.mDeleteText = ((TextView)findViewById(2131365492));
     this.mAdapter = new MiniAppDesktopAdapter((Activity)paramContext, paramInt, this.mRecyclerView);
-    this.mDragMirrorView = findViewById(2131371004);
+    this.mDragMirrorView = findViewById(2131371197);
     this.mAdapter.setDragMirrorView(this.mDragMirrorView);
     this.mRecyclerView.setAdapter(this.mAdapter);
-    ((DesktopDataManager)paramARMapHongBaoListView.app.getManager(336)).setDataChangeListener(this.mAdapter);
+    ((DesktopDataManager)paramARMapHongBaoListView.app.getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).setDataChangeListener(this.mAdapter);
     this.mDesktopChangeListener = this.mAdapter;
     this.mRecyclerView.setDragChangeListener(this.mAdapter);
-    this.mRecyclerView.addOnScrollListener(new MiniAppDesktopLayout.1(this));
-    this.mRecyclerView.setDragDeleteListener(new MiniAppDesktopLayout.2(this));
-    this.mThemeBackgroudView = ((ImageView)findViewById(2131371008));
-    this.mNormalStateView = ((ViewGroup)findViewById(2131371050));
-    this.mCloseDesktopView = ((ImageView)findViewById(2131370994));
+    this.mRecyclerView.addOnScrollListener(new MiniAppDesktopLayout.2(this));
+    this.mRecyclerView.setDragDeleteListener(this.mDragDeleteListener);
+    this.mThemeBackgroudView = ((ImageView)findViewById(2131371201));
+    this.mNormalStateView = ((ViewGroup)findViewById(2131371242));
+    this.mCloseDesktopView = ((ImageView)findViewById(2131371179));
     this.mCloseDesktopView.setOnClickListener(this);
-    this.mCollapseDesktopView = findViewById(2131371047);
+    this.mCollapseDesktopView = findViewById(2131371239);
     this.mCollapseDesktopView.setOnClickListener(this);
-    this.mCollapseDesktopImage = ((ImageView)findViewById(2131371048));
-    this.mCollapseDesktopBlurView = ((QQBlurView)findViewById(2131371046));
+    this.mCollapseDesktopImage = ((ImageView)findViewById(2131371240));
+    this.mCollapseDesktopBlurView = ((QQBlurView)findViewById(2131371238));
     this.mGridLayoutManager = new MiniAppDesktopLayout.MiniAppGridLayoutManager(paramContext, 4);
     this.mGridLayoutManager.setAutoMeasureEnabled(false);
     this.mRecyclerView.setLayoutManager(this.mGridLayoutManager);
-    this.mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(4, getResources().getDimensionPixelSize(2131296921), true));
+    this.mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(4, getResources().getDimensionPixelSize(2131296922), true));
     this.mRecyclerView.setHasFixedSize(true);
     this.mGridLayoutManager.setSpanSizeLookup(this.mAdapter.getSpanSizeLookup());
-    this.mCapsuleLeftButtonContainer = findViewById(2131370998);
+    this.mCapsuleLeftButtonContainer = findViewById(2131371183);
     this.mCapsuleLeftButtonContainer.setOnClickListener(this);
-    this.mCapsuleLeftButton = ((ImageView)findViewById(2131370997));
-    this.mCapsuleLeftButtonRedDotView = ((TextView)findViewById(2131370999));
-    this.mDesktopNavbarLayout = ((RelativeLayout)findViewById(2131370745));
+    this.mCapsuleLeftButton = ((ImageView)findViewById(2131371182));
+    this.mCapsuleLeftButtonRedDotView = ((TextView)findViewById(2131371184));
+    this.mDesktopNavbarLayout = ((RelativeLayout)findViewById(2131370930));
     paramInt = Math.round(ImmersiveUtils.getStatusBarHeight(paramContext));
     paramContext = new LinearLayout.LayoutParams(-1, ViewUtils.dpToPx(46.0F));
     paramContext.setMargins(0, paramInt, 0, 0);
     this.mDesktopNavbarLayout.setLayoutParams(paramContext);
-    this.mShowCapsuleLeftButtonAsNotificationButton = apyt.f();
-    boolean bool = apyt.i();
+    this.mShowCapsuleLeftButtonAsNotificationButton = arbw.f();
+    boolean bool = arbw.i();
     if ((this.mShowCapsuleLeftButtonAsNotificationButton) || (bool)) {}
     for (paramInt = 1;; paramInt = 0)
     {
       if (paramInt == 0)
       {
-        paramContext = findViewById(2131370963);
+        paramContext = findViewById(2131371148);
         if (Build.VERSION.SDK_INT >= 16) {
           paramContext.setBackground(null);
         }
@@ -167,8 +170,8 @@ public class MiniAppDesktopLayout
         }
       }
       updateCapsuleLeftButtonDrawable();
-      paramContext = apyt.d();
-      this.mTitleView = ((TextView)findViewById(2131371002));
+      paramContext = arbw.d();
+      this.mTitleView = ((TextView)findViewById(2131371195));
       this.mTitleView.setText(paramContext);
       ThreadManager.getUIHandler().post(new MiniAppDesktopLayout.3(this, paramARMapHongBaoListView));
       initCollapseDesktopBlurView();
@@ -182,7 +185,7 @@ public class MiniAppDesktopLayout
     AppInterface localAppInterface = MiniAppUtils.getAppInterface();
     MiniAppExposureManager localMiniAppExposureManager = null;
     if (localAppInterface != null) {
-      localMiniAppExposureManager = (MiniAppExposureManager)localAppInterface.getManager(322);
+      localMiniAppExposureManager = (MiniAppExposureManager)localAppInterface.getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);
     }
     if (localMiniAppExposureManager != null)
     {
@@ -196,17 +199,17 @@ public class MiniAppDesktopLayout
   
   private void handleJumpToNotificationClick(BaseActivity paramBaseActivity)
   {
-    bfzg.a(null, "Recent_clk_enterchat");
+    bhhy.a(null, "Recent_clk_enterchat");
     Object localObject = new Intent();
     ((Intent)localObject).setClassName(paramBaseActivity, SplashActivity.class.getName());
     localObject = AIOUtils.setOpenAIOIntent((Intent)localObject, new int[] { 1 });
-    ((Intent)localObject).putExtra("uin", apyt.b());
+    ((Intent)localObject).putExtra("uin", arbw.b());
     ((Intent)localObject).putExtra("uintype", 1038);
-    ((Intent)localObject).putExtra("uinname", apyt.c());
+    ((Intent)localObject).putExtra("uinname", arbw.c());
     ((Intent)localObject).putExtra("entrance", 22);
-    akms.a((Intent)localObject);
+    alik.a((Intent)localObject);
     paramBaseActivity.startActivity((Intent)localObject);
-    bfzg.a("Recent_clk_enterchat", null);
+    bhhy.a("Recent_clk_enterchat", null);
     if (this.mCapsuleLeftButtonRedDotView.getVisibility() == 0)
     {
       paramBaseActivity = this.mCapsuleLeftButtonRedDotView.getText();
@@ -231,31 +234,41 @@ public class MiniAppDesktopLayout
   
   private void initCollapseDesktopBlurView()
   {
-    this.mCollapseDesktopBlurView.a(this);
-    this.mCollapseDesktopBlurView.b(this.mCollapseDesktopBlurView);
-    Drawable localDrawable = getResources().getDrawable(2130840968);
-    localDrawable.setAlpha(200);
-    this.mCollapseDesktopBlurView.a(localDrawable);
-    this.mCollapseDesktopBlurView.a(12);
-    this.mCollapseDesktopBlurView.a(5.0F);
-    this.mCollapseDesktopBlurView.b(0);
-    this.mCollapseDesktopBlurView.setDirtyListener(new MiniAppDesktopLayout.4(this));
-    this.mCollapseDesktopBlurView.d();
+    if (ThemeUtil.isDefaultTheme())
+    {
+      this.mCollapseDesktopView.setBackgroundDrawable(null);
+      this.mCollapseDesktopBlurView.a(this);
+      this.mCollapseDesktopBlurView.b(this.mCollapseDesktopBlurView);
+      Drawable localDrawable = getResources().getDrawable(2130850036);
+      localDrawable.setAlpha(200);
+      this.mCollapseDesktopBlurView.a(localDrawable);
+      this.mCollapseDesktopBlurView.a(12);
+      this.mCollapseDesktopBlurView.a(5.0F);
+      this.mCollapseDesktopBlurView.b(0);
+      this.mCollapseDesktopBlurView.setDirtyListener(new MiniAppDesktopLayout.4(this));
+      this.mCollapseDesktopBlurView.d();
+    }
   }
   
   private void setContentViewThemeBackground()
   {
     if (this.mThemeBackgroudView != null)
     {
-      if ((ThemeUtil.isDefaultTheme()) || (MiniAppUtils.isNightMode()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (bbyp.b(ThemeUtil.getCurrentThemeId()))) {
-        this.mThemeBackgroudView.setImageResource(2130850155);
+      if ((!ThemeUtil.isDefaultTheme()) && (!MiniAppUtils.isNightMode()) && (!ThemeUtil.isGoldenTheme()) && (!DisplayUtil.isWhiteModeTheme()) && (!bdfk.b(ThemeUtil.getCurrentThemeId()))) {
+        break label74;
       }
+      this.mThemeBackgroudView.setImageResource(2130850257);
     }
-    else {
+    for (;;)
+    {
+      if ((!ThemeUtil.isDefaultTheme()) && (this.mCollapseDesktopView != null)) {
+        this.mCollapseDesktopView.setBackgroundResource(2130838912);
+      }
       return;
+      label74:
+      this.mThemeBackgroudView.setVisibility(0);
+      this.mThemeBackgroudView.setImageResource(2130838912);
     }
-    this.mThemeBackgroudView.setVisibility(0);
-    this.mThemeBackgroudView.setImageResource(2130838892);
   }
   
   private void updateCapsuleLeftButtonDrawable()
@@ -265,7 +278,7 @@ public class MiniAppDesktopLayout
       if (!this.mShowCapsuleLeftButtonAsNotificationButton) {
         break label25;
       }
-      this.mCapsuleLeftButton.setImageResource(2130840976);
+      this.mCapsuleLeftButton.setImageResource(2130841013);
     }
     label25:
     do
@@ -273,11 +286,11 @@ public class MiniAppDesktopLayout
       return;
       if (MiniAppUtils.isNightMode())
       {
-        this.mCapsuleLeftButton.setImageResource(2130850171);
+        this.mCapsuleLeftButton.setImageResource(2130850273);
         return;
       }
     } while (!ThemeUtil.isDefaultTheme());
-    this.mCapsuleLeftButton.setImageResource(2130848326);
+    this.mCapsuleLeftButton.setImageResource(2130848417);
   }
   
   public void checkContentViewLayoutChanged(int paramInt)
@@ -459,7 +472,7 @@ public class MiniAppDesktopLayout
     {
       localObject = MiniAppUtils.getAppInterface();
       if (localObject != null) {
-        ((MiniAppExposureManager)((AppInterface)localObject).getManager(322)).putReportDataToMap("notification", new MiniAppExposureManager.CommonExposureData("desktop", "notification", "expo", str2, str1));
+        ((MiniAppExposureManager)((AppInterface)localObject).getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER)).putReportDataToMap("notification", new MiniAppExposureManager.CommonExposureData("desktop", "notification", "expo", str2, str1));
       }
       return;
     }
@@ -476,7 +489,7 @@ public class MiniAppDesktopLayout
     for (;;)
     {
       return;
-      Object localObject2 = (DesktopDataManager)((AppInterface)localObject1).getManager(336);
+      Object localObject2 = (DesktopDataManager)((AppInterface)localObject1).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
       localObject1 = ((DesktopDataManager)localObject2).getData();
       if ((localObject1 == null) || (((List)localObject1).size() == 0))
       {
@@ -526,7 +539,7 @@ public class MiniAppDesktopLayout
     if (paramQQAppInterface == null) {
       return;
     }
-    ((DesktopDataManager)paramQQAppInterface.getManager(336)).setDataChangeListener(this.mAdapter);
+    ((DesktopDataManager)paramQQAppInterface.getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).setDataChangeListener(this.mAdapter);
     updateHongBaoRes();
   }
   
@@ -555,7 +568,7 @@ public class MiniAppDesktopLayout
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramView.getId() == 2131370998)
+      if (paramView.getId() == 2131371183)
       {
         if (this.mShowCapsuleLeftButtonAsNotificationButton) {
           handleJumpToNotificationClick(localBaseActivity);
@@ -563,12 +576,12 @@ public class MiniAppDesktopLayout
           handleJumpToSettingClick(localBaseActivity);
         }
       }
-      else if (paramView.getId() == 2131370994)
+      else if (paramView.getId() == 2131371179)
       {
         MiniAppUtils.updateMiniAppList(100);
         closeDesktopReport("off_right");
       }
-      else if (paramView.getId() == 2131371047)
+      else if (paramView.getId() == 2131371239)
       {
         MiniAppUtils.updateMiniAppList(100);
         closeDesktopReport("off_bottom");
@@ -646,13 +659,13 @@ public class MiniAppDesktopLayout
     try
     {
       if (this.mTitleView != null) {
-        this.mTitleView.setTextColor(getContext().getResources().getColor(2131167019));
+        this.mTitleView.setTextColor(getContext().getResources().getColor(2131167033));
       }
       if (this.mCloseDesktopView != null) {
-        this.mCloseDesktopView.setImageResource(2130840966);
+        this.mCloseDesktopView.setImageResource(2130840999);
       }
       if (this.mCollapseDesktopImage != null) {
-        this.mCollapseDesktopImage.setImageResource(2130840967);
+        this.mCollapseDesktopImage.setImageResource(2130841000);
       }
       setThemeBackgroundDrawable();
       return;
@@ -668,8 +681,8 @@ public class MiniAppDesktopLayout
     Object localObject = MiniAppUtils.getAppInterface();
     if ((this.mCapsuleLeftButtonRedDotView != null) && (localObject != null))
     {
-      boolean bool1 = apyt.g();
-      boolean bool2 = ((akhg)((AppInterface)localObject).getManager(315)).a();
+      boolean bool1 = arbw.g();
+      boolean bool2 = ((alcz)((AppInterface)localObject).getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER)).a();
       localObject = (BaseActivity)this.mActivityRef.get();
       if ((!bool1) || (!bool2) || (localObject == null)) {
         break label129;
@@ -678,7 +691,7 @@ public class MiniAppDesktopLayout
       int i = ((BaseActivity)localObject).app.getConversationFacade().a(str, 1038);
       if (i > 0)
       {
-        bjpg.a(this.mCapsuleLeftButtonRedDotView, 7, i, 0);
+        blas.a(this.mCapsuleLeftButtonRedDotView, 7, i, 0);
         this.mCapsuleLeftButtonRedDotView.setVisibility(0);
       }
     }

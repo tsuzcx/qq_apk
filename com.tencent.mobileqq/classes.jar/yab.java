@@ -1,67 +1,35 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
-class yab
-  extends SimpleObserver<yjh>
+public class yab
+  extends QQUIEventReceiver<xzx, yaa>
 {
-  yab(yaa paramyaa, yjh paramyjh) {}
-  
-  public void a(yjh paramyjh)
+  public yab(xzx paramxzx)
   {
-    super.onNext(paramyjh);
-    this.jdField_a_of_type_Yaa.a(5);
-    paramyjh = this.jdField_a_of_type_Yjh.a;
-    xvv.b("EditVideoSave", "publishParam = " + paramyjh);
-    Intent localIntent;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_Yaa.jdField_a_of_type_Yan.getActivity() != null)
+    super(paramxzx);
+  }
+  
+  public void a(@NonNull xzx paramxzx, @NonNull yaa paramyaa)
+  {
+    if (paramyaa.jdField_a_of_type_Boolean)
     {
-      localIntent = this.jdField_a_of_type_Yaa.jdField_a_of_type_Yan.getActivity().getIntent();
-      if (localIntent == null) {
-        break label212;
+      if (paramyaa.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+      {
+        xzx.a(paramxzx, paramyaa.jdField_a_of_type_JavaUtilList, true);
+        xzx.a(paramxzx).a(true);
       }
-      j = localIntent.getIntExtra("sv_total_frame_count", 0);
-      i = localIntent.getIntExtra("sv_total_record_time", 0);
-    }
-    for (;;)
-    {
-      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_Yaa.jdField_a_of_type_Yan.a(), paramyjh.b, i, j, this.jdField_a_of_type_Yaa.jdField_a_of_type_Xzd.a.getBussinessId());
-      yaa.a(this.jdField_a_of_type_Yaa, paramyjh.b);
-      this.jdField_a_of_type_Yaa.jdField_a_of_type_Yan.getActivity().startActivityForResult(localIntent, 111);
-      this.jdField_a_of_type_Yaa.jdField_a_of_type_Int = 5;
-      this.jdField_a_of_type_Yaa.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Yaa.b = ((int)(7000.0D / paramyjh.a * 4.0D));
-      this.jdField_a_of_type_Yaa.g();
       return;
-      label212:
-      i = 0;
-      j = 0;
     }
+    xzx.a(paramxzx, paramyaa);
+    xzx.a(paramxzx).remove(xzx.b());
+    xzx.a(paramxzx);
   }
   
-  public void onCancel()
+  public Class acceptEventClass()
   {
-    super.onCancel();
-    xvv.d("EditVideoSave", "saveVideo cancel !");
-    this.jdField_a_of_type_Yaa.jdField_a_of_type_Xzd.a(0);
-    this.jdField_a_of_type_Yaa.h();
-    QQToast.a(this.jdField_a_of_type_Yaa.jdField_a_of_type_Yan.a(), amtj.a(2131702960), 0).a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    xvv.e("EditVideoSave", "saveVideo error ：" + paramError);
-    this.jdField_a_of_type_Yaa.jdField_a_of_type_Xzd.a(0);
-    QQToast.a(this.jdField_a_of_type_Yaa.jdField_a_of_type_Yan.a(), 1, amtj.a(2131702898) + paramError, 0).a();
-    this.jdField_a_of_type_Yaa.h();
+    return yaa.class;
   }
 }
 

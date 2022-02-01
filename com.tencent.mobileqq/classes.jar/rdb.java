@@ -1,43 +1,56 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.articlesummary.articlesummary.HotWordInfo;
-import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class rdb
+  extends rbp
 {
-  public List<rdc> a;
-  
-  public static rdb a(articlesummary.HotWordInfo paramHotWordInfo)
+  public rdb(Context paramContext, FaceDecoder paramFaceDecoder, szd paramszd)
   {
-    rdb localrdb = new rdb();
-    if ((paramHotWordInfo != null) && (paramHotWordInfo.rpt_hot_word_item.has()))
-    {
-      localrdb.a = new ArrayList(paramHotWordInfo.rpt_hot_word_item.size());
-      paramHotWordInfo = paramHotWordInfo.rpt_hot_word_item.get().iterator();
-      while (paramHotWordInfo.hasNext())
-      {
-        rdc localrdc = rdc.a((articlesummary.HotWordItem)paramHotWordInfo.next());
-        localrdb.a.add(localrdc);
-      }
-    }
-    return localrdb;
+    super(paramContext, paramFaceDecoder, paramszd);
   }
   
-  public byte[] a()
+  public rbp a()
   {
-    articlesummary.HotWordInfo localHotWordInfo = new articlesummary.HotWordInfo();
-    if ((this.a != null) && (this.a.size() > 0))
-    {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(((rdc)localIterator.next()).a());
-      }
-      localHotWordInfo.rpt_hot_word_item.set(localArrayList);
+    this.jdField_a_of_type_Boolean = true;
+    return g().l().n();
+  }
+  
+  public rbp d()
+  {
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if ((this.jdField_a_of_type_Rbo != null) && ((this.jdField_a_of_type_Rbo instanceof ComponentContentHotSearch))) {
+      localLinearLayout.addView((ComponentContentHotSearch)this.jdField_a_of_type_Rbo);
     }
-    return localHotWordInfo.toByteArray();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public rbp e()
+  {
+    return this;
+  }
+  
+  public rbp g()
+  {
+    this.jdField_a_of_type_Rbo = new ComponentContentHotSearch(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Szd);
+    return this;
+  }
+  
+  public rbp o()
+  {
+    super.o();
+    return this;
   }
 }
 

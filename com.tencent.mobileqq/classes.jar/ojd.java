@@ -1,43 +1,57 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-class ojd
-  implements View.OnClickListener
+public class ojd
+  implements INetInfoHandler
 {
-  ojd(ojc paramojc) {}
+  public ojd(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    if (pch.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Intent localIntent = new Intent();
-      localIntent.putExtra("currentIndex", ojc.a(this.a).getCurrentItem());
-      PublicTransFragmentActivity.b(ojc.a(this.a), localIntent, ReadInJoyChannelPanelFragment.class);
-      try
-      {
-        ReadInJoyChannelPanelFragment.a("0X8009497", new pbg().b().c(this.a.a()).a());
-        ojc.a(this.a, false);
-        ojc.a(this.a).setVisibility(8);
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("ReadInJoyChannelViewPagerController", 1, QLog.getStackTraceString(localJSONException));
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from mobile to none");
     }
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from none to mobile");
+    }
+    ReadInJoyNativeAdAppVideoView.a(this.a).removeCallbacks(this.a.b);
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from none to wifi");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from wifi to none");
+    }
+    ReadInJoyNativeAdAppVideoView.a(this.a).postDelayed(this.a.b, 1000L);
   }
 }
 

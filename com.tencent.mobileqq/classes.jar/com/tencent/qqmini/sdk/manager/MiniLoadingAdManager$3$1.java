@@ -33,8 +33,8 @@ class MiniLoadingAdManager$3$1
       long l1 = System.currentTimeMillis();
       long l2 = this.val$preloadStartTime;
       SDKMiniProgramLpReportDC04239.reportMiniAppEvent(this.this$0.val$miniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(this.this$0.val$miniAppInfo), null, "ad", "ad_loading", "preload_success", String.valueOf(l1 - l2));
-      MiniLoadingAdManager.access$300(this.this$0.val$miniAppInfo.appId, this.this$0.val$uin, 1);
-      MiniLoadingAdManager.access$400(this.this$0.val$miniAppInfo.appId, this.this$0.val$uin);
+      MiniLoadingAdManager.access$400(this.this$0.val$miniAppInfo.appId, this.this$0.val$uin, 1);
+      MiniLoadingAdManager.access$500(this.this$0.val$miniAppInfo.appId, this.this$0.val$uin);
       return;
     }
     SDKMiniProgramLpReportDC04239.reportMiniAppEvent(this.this$0.val$miniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(this.this$0.val$miniAppInfo), null, "ad", "ad_loading", "preload_fail", paramInt + "");
@@ -44,7 +44,7 @@ class MiniLoadingAdManager$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.MiniLoadingAdManager.3.1
  * JD-Core Version:    0.7.0.1
  */

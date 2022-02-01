@@ -1,17 +1,41 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.List;
+import android.os.Parcel;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class viu
-  extends vqm
 {
-  public List<qqstory_struct.GpsMsg> a;
+  public String mMsgData;
+  public String mPushId;
   
-  public viu(qqstory_service.RspCheckBlackList paramRspCheckBlackList)
+  protected viu(Parcel paramParcel)
   {
-    super(paramRspCheckBlackList.result);
-    this.a = paramRspCheckBlackList.black_gps_list.get();
+    this.mPushId = paramParcel.readString();
+    this.mMsgData = paramParcel.readString();
+  }
+  
+  protected viu(String paramString)
+  {
+    this.mMsgData = paramString;
+    try
+    {
+      parseJson(new JSONObject(paramString));
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      vmp.b("WSPushMsgActionData parse failed : " + paramString.getLocalizedMessage());
+    }
+  }
+  
+  protected void parseJson(JSONObject paramJSONObject)
+  {
+    this.mPushId = paramJSONObject.optString("pushid");
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeString(this.mPushId);
+    paramParcel.writeString(this.mMsgData);
   }
 }
 

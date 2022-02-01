@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import ahae;
-import ahap;
+import ahte;
+import ahtp;
 
 public class AIOPhotoListAdapter$2
   implements Runnable
 {
-  public AIOPhotoListAdapter$2(ahae paramahae, AIOShortVideoData paramAIOShortVideoData) {}
+  public AIOPhotoListAdapter$2(ahte paramahte, AIOShortVideoData paramAIOShortVideoData) {}
   
   public void run()
   {

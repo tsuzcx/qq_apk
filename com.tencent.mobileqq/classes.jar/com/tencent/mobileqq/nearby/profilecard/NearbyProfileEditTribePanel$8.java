@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
 import android.widget.TextView;
-import axcb;
+import ayih;
 import com.tencent.mobileqq.widget.BounceScrollView;
 
 public class NearbyProfileEditTribePanel$8
   implements Runnable
 {
-  public NearbyProfileEditTribePanel$8(axcb paramaxcb) {}
+  public NearbyProfileEditTribePanel$8(ayih paramayih) {}
   
   public void run()
   {

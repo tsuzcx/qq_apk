@@ -1,50 +1,27 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import java.util.HashMap;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.3.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayjd
+  implements View.OnClickListener
 {
-  static HashMap<Integer, Bitmap> a;
-  public double a;
-  public float a;
-  public int a;
-  public Bitmap a;
-  public float[] a;
-  float b;
-  public int b;
-  public float c;
-  public float d;
+  public ayjd(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static ayjd a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, Resources paramResources)
-  {
-    ayjd localayjd = new ayjd();
-    float f = paramBitmap.getHeight() / paramBitmap.getWidth();
-    localayjd.jdField_a_of_type_Int = ((int)(AIOUtils.dp2px(8.0F, paramResources) + (float)Math.random() * AIOUtils.dp2px(3.0F, paramResources)));
-    localayjd.jdField_b_of_type_Int = ((int)(f * localayjd.jdField_a_of_type_Int));
-    localayjd.jdField_a_of_type_ArrayOfFloat = new float[2];
-    localayjd.jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
-    localayjd.jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
-    localayjd.jdField_a_of_type_Float = ((float)Math.random() * AIOUtils.dp2px(90.0F, paramResources) - AIOUtils.dp2px(45.0F, paramResources));
-    localayjd.jdField_a_of_type_Double = (2.0D * Math.random() * 3.141592653589793D - 3.141592653589793D);
-    if (localayjd.jdField_a_of_type_Double >= 0.0D) {}
-    for (localayjd.jdField_b_of_type_Float = (AIOUtils.dp2px(10.0F, paramResources) + (float)Math.random() * AIOUtils.dp2px(200.0F, paramResources));; localayjd.jdField_b_of_type_Float = (-AIOUtils.dp2px(10.0F, paramResources) - (float)Math.random() * AIOUtils.dp2px(200.0F, paramResources)))
-    {
-      localayjd.c = ((float)(localayjd.jdField_b_of_type_Float * Math.cos(localayjd.jdField_a_of_type_Double)));
-      localayjd.d = ((float)(localayjd.jdField_b_of_type_Float * Math.sin(localayjd.jdField_a_of_type_Double)));
-      localayjd.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(localayjd.jdField_a_of_type_Int)));
-      if (localayjd.jdField_a_of_type_AndroidGraphicsBitmap == null)
-      {
-        localayjd.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramBitmap, localayjd.jdField_a_of_type_Int, localayjd.jdField_b_of_type_Int, true);
-        jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localayjd.jdField_a_of_type_Int), localayjd.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-      return localayjd;
-    }
+    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://nearby.qq.com/nearby-visitor/index.html?_proxy=1&_wwv=128");
+    this.a.a.startActivity(localIntent);
+    NearbyProfileFragment.a(this.a, null);
+    ThreadManager.post(new NearbyProfileFragment.3.1(this), 5, null, false);
+    bdla.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

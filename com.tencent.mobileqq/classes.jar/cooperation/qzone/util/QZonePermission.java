@@ -2,7 +2,7 @@ package cooperation.qzone.util;
 
 import android.app.Activity;
 import android.os.Build.VERSION;
-import bfur;
+import bhdj;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
 import cooperation.qzone.QzonePluginProxyActivity;
@@ -69,7 +69,7 @@ public class QZonePermission
     }
     if ((Build.VERSION.SDK_INT >= 23) && ((paramActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
     {
-      bfur.a(getRealActivity(paramActivity));
+      bhdj.a(getRealActivity(paramActivity));
       return false;
     }
     return true;

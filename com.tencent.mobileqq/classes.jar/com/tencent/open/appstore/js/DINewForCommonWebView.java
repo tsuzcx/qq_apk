@@ -1,25 +1,25 @@
 package com.tencent.open.appstore.js;
 
-import abep;
-import abet;
-import amtj;
+import abub;
+import abuf;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.Toast;
-import aqyt;
-import ardu;
-import bhxj;
-import bhyo;
-import bhys;
-import bhyx;
-import bhzm;
-import biao;
-import biap;
-import bibw;
-import bicl;
+import anvx;
+import asdd;
+import ashz;
+import bjil;
+import bjjq;
+import bjju;
+import bjjz;
+import bjko;
+import bjlq;
+import bjlr;
+import bjmy;
+import bjnn;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -40,17 +40,17 @@ import org.json.JSONObject;
 
 public class DINewForCommonWebView
   extends BaseInterface
-  implements biao
+  implements bjlq
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bhxj jdField_a_of_type_Bhxj;
+  private bjil jdField_a_of_type_Bjil;
   private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   private String jdField_a_of_type_JavaLangString = "";
   
   public DINewForCommonWebView(Activity paramActivity, WebView paramWebView)
   {
-    bhzm.b("DINewForCommonWebView", "<DINewForCommonWebView>");
+    bjko.b("DINewForCommonWebView", "<DINewForCommonWebView>");
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
@@ -59,8 +59,8 @@ public class DINewForCommonWebView
     }
     for (;;)
     {
-      bhyo.a().a(paramWebView);
-      biap.a().a(this);
+      bjjq.a().a(paramWebView);
+      bjlr.a().a(this);
       return;
       paramWebView = localObject;
       if ((paramActivity instanceof BaseActivity)) {
@@ -71,19 +71,19 @@ public class DINewForCommonWebView
   
   private void a(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!ardu.a().a())
+    if (!ashz.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(BaseApplicationImpl.getApplication(), amtj.a(2131702456), 0).show();
+        Toast.makeText(BaseApplicationImpl.getApplication(), anvx.a(2131702807), 0).show();
       }
       return;
     }
     if (paramBoolean1)
     {
-      ardu.a().b(paramBundle);
+      ashz.a().b(paramBundle);
       return;
     }
-    ardu.a().a(paramBundle);
+    ashz.a().a(paramBundle);
   }
   
   private void a(String paramString)
@@ -110,12 +110,12 @@ public class DINewForCommonWebView
         localArrayList.add(localDownloadInfo);
         i += 1;
       }
-      bhys.a().a(localArrayList, new bhyx(this, paramString));
+      bjju.a().a(localArrayList, new bjjz(this, paramString));
       return;
     }
     catch (JSONException paramJSONArray)
     {
-      bhzm.c("DINewForCommonWebView", "[innerQuery] e=", paramJSONArray);
+      bjko.c("DINewForCommonWebView", "[innerQuery] e=", paramJSONArray);
     }
   }
   
@@ -133,7 +133,7 @@ public class DINewForCommonWebView
   
   public int batchDownloadByYYB(String paramString)
   {
-    bhzm.b("DINewForCommonWebView", ">batchDownloadByYYB" + paramString);
+    bjko.b("DINewForCommonWebView", ">batchDownloadByYYB" + paramString);
     if (!hasRight()) {
       return -1;
     }
@@ -152,11 +152,11 @@ public class DINewForCommonWebView
         paramString = localJSONObject.optJSONArray("appInfo");
         localObject2 = paramString;
         localObject4 = localObject1;
-        localObject1 = localJSONObject.optString(bibw.i);
+        localObject1 = localJSONObject.optString(bjmy.i);
         localObject2 = paramString;
         localObject4 = localObject1;
-        i = localJSONObject.optInt(bibw.k);
-        bhzm.c("DINewForCommonWebView", ">batchDownloadByYYB JSONException", (Throwable)localObject2);
+        i = localJSONObject.optInt(bjmy.k);
+        bjko.c("DINewForCommonWebView", ">batchDownloadByYYB JSONException", (Throwable)localObject2);
       }
       catch (JSONException localJSONException3)
       {
@@ -181,7 +181,7 @@ public class DINewForCommonWebView
           }
           localObject2 = localObject4;
           localObject4 = paramString;
-          bhzm.b("DINewForCommonWebView", ">batchDownloadByYYB appInfo:" + localObject4 + "||via:" + (String)localObject1);
+          bjko.b("DINewForCommonWebView", ">batchDownloadByYYB appInfo:" + localObject4 + "||via:" + (String)localObject1);
           if ((localObject4 != null) && (((JSONArray)localObject4).length() != 0)) {
             break;
           }
@@ -205,20 +205,20 @@ public class DINewForCommonWebView
       label211:
       localObject2 = paramString;
     }
-    bicl.a().a(this.jdField_a_of_type_AndroidAppActivity, (JSONArray)localObject4, i, (String)localObject1, (String)localObject2);
+    bjnn.a().a(this.jdField_a_of_type_AndroidAppActivity, (JSONArray)localObject4, i, (String)localObject1, (String)localObject2);
     return 0;
   }
   
   public void destroy()
   {
-    bhzm.b("DINewForCommonWebView", "destroy");
-    biap.a().b(this);
+    bjko.b("DINewForCommonWebView", "destroy");
+    bjlr.a().b(this);
   }
   
   public int doDownloadAction(String paramString)
   {
     localObject2 = null;
-    bhzm.b("DINewForCommonWebView", "[doDownloadAction]" + paramString);
+    bjko.b("DINewForCommonWebView", "[doDownloadAction]" + paramString);
     if (!hasRight()) {
       return -1;
     }
@@ -241,32 +241,32 @@ public class DINewForCommonWebView
           }
           if (1 == i)
           {
-            abet.c(str1, "DELAY_LIST");
-            abet.a(str1, paramString, "DELAY_APPID_DETAIL_");
-            abep.a();
-            a(aqyt.a("gamecenter_delaydownload", "callback", 0, null), false, false);
+            abuf.c(str1, "DELAY_LIST");
+            abuf.a(str1, paramString, "DELAY_APPID_DETAIL_");
+            abub.a();
+            a(asdd.a("gamecenter_delaydownload", "callback", 0, null), false, false);
             return 0;
           }
           if (i == 0) {
-            abet.b(str1, "DELAY_LIST");
+            abuf.b(str1, "DELAY_LIST");
           }
         }
-        localBundle.putString(bibw.b, str1);
-        localBundle.putString(bibw.j, localJSONObject.optString("url"));
-        localBundle.putString(bibw.f, localJSONObject.optString("packageName"));
-        localBundle.putInt(bibw.k, localJSONObject.optInt("actionCode"));
-        localBundle.putString(bibw.i, localJSONObject.optString("via"));
-        localBundle.putString(bibw.l, localJSONObject.optString("appName"));
-        localBundle.putBoolean(bibw.r, a(localJSONObject.optInt("showNetworkDialog")));
-        localBundle.putString(bibw.D, localJSONObject.optString("iconUrl"));
-        localBundle.putInt(bibw.H, localJSONObject.optInt("showNotification"));
-        localBundle.putBoolean(bibw.J, a(localJSONObject.optInt("isAutoInstallBySdk")));
-        localBundle.putString(bibw.I, localJSONObject.optString("extraData"));
-        localBundle.putString(bibw.F, localJSONObject.optString("downloadStyle"));
-        localBundle.putLong(bibw.G, localJSONObject.optLong("downloadSize"));
-        localBundle.putString(bibw.p, localJSONObject.optString("wording"));
-        paramString = localJSONObject.optString(bibw.B);
-        bhzm.b("DINewForCommonWebView", "[doDownloadAction] feedChannel:" + paramString);
+        localBundle.putString(bjmy.b, str1);
+        localBundle.putString(bjmy.j, localJSONObject.optString("url"));
+        localBundle.putString(bjmy.f, localJSONObject.optString("packageName"));
+        localBundle.putInt(bjmy.k, localJSONObject.optInt("actionCode"));
+        localBundle.putString(bjmy.i, localJSONObject.optString("via"));
+        localBundle.putString(bjmy.l, localJSONObject.optString("appName"));
+        localBundle.putBoolean(bjmy.r, a(localJSONObject.optInt("showNetworkDialog")));
+        localBundle.putString(bjmy.E, localJSONObject.optString("iconUrl"));
+        localBundle.putInt(bjmy.I, localJSONObject.optInt("showNotification"));
+        localBundle.putBoolean(bjmy.K, a(localJSONObject.optInt("isAutoInstallBySdk")));
+        localBundle.putString(bjmy.J, localJSONObject.optString("extraData"));
+        localBundle.putString(bjmy.G, localJSONObject.optString("downloadStyle"));
+        localBundle.putLong(bjmy.H, localJSONObject.optLong("downloadSize"));
+        localBundle.putString(bjmy.p, localJSONObject.optString("wording"));
+        paramString = localJSONObject.optString(bjmy.C);
+        bjko.b("DINewForCommonWebView", "[doDownloadAction] feedChannel:" + paramString);
         if (TextUtils.isEmpty(paramString)) {
           break label1352;
         }
@@ -274,26 +274,26 @@ public class DINewForCommonWebView
         if (paramString.startsWith("0;"))
         {
           break label1352;
-          str2 = localJSONObject.optString(bibw.K);
-          bhzm.b("DINewForCommonWebView", "[doDownloadAction] finalFeedChannel:" + paramString);
+          str2 = localJSONObject.optString(bjmy.L);
+          bjko.b("DINewForCommonWebView", "[doDownloadAction] finalFeedChannel:" + paramString);
           if (!TextUtils.isEmpty(paramString)) {
             break label1241;
           }
-          localBundle.putString(bibw.B, str2);
+          localBundle.putString(bjmy.C, str2);
         }
         for (;;)
         {
           paramString = localJSONObject.optString("via");
           i = localJSONObject.optInt("actionCode");
-          if (this.jdField_a_of_type_Bhxj != null) {
+          if (this.jdField_a_of_type_Bjil != null) {
             break label1265;
           }
-          this.jdField_a_of_type_Bhxj = new bhxj(str1, paramString, i);
+          this.jdField_a_of_type_Bjil = new bjil(str1, paramString, i);
           if (localJSONObject.optInt("actionCode") != 12) {
             break label1344;
           }
           boolean bool = a(localJSONObject.optInt("updateType"));
-          localBundle.putBoolean(bibw.o, bool);
+          localBundle.putBoolean(bjmy.o, bool);
           bool = localJSONObject.has("updateData");
           if (!bool) {
             break label1344;
@@ -327,16 +327,16 @@ public class DINewForCommonWebView
               paramString.sigMd5 = ((JSONObject)localObject1).optString("sigMd5");
               paramString.url = ((JSONObject)localObject1).optString("url");
               i = localJSONObject.optInt("myAppConfig");
-              localBundle.putString(bibw.c, str1);
-              localBundle.putString(bibw.d, localJSONObject.optString("apkId"));
-              localBundle.putInt(bibw.e, localJSONObject.optInt("versionCode"));
-              localBundle.putInt(bibw.n, localJSONObject.optInt("toPageType"));
-              localBundle.putBoolean(bibw.g, a(localJSONObject.optInt("isAutoDownload")));
-              localBundle.putBoolean(bibw.h, a(localJSONObject.optInt("isAutoInstall")));
-              localBundle.putBoolean(bibw.x, localJSONObject.optBoolean("bolckNotify"));
+              localBundle.putString(bjmy.c, str1);
+              localBundle.putString(bjmy.d, localJSONObject.optString("apkId"));
+              localBundle.putInt(bjmy.e, localJSONObject.optInt("versionCode"));
+              localBundle.putInt(bjmy.n, localJSONObject.optInt("toPageType"));
+              localBundle.putBoolean(bjmy.g, a(localJSONObject.optInt("isAutoDownload")));
+              localBundle.putBoolean(bjmy.h, a(localJSONObject.optInt("isAutoInstall")));
+              localBundle.putBoolean(bjmy.x, localJSONObject.optBoolean("bolckNotify"));
               localBundle.putString("recommendId", localJSONObject.optString("recommendId"));
               localBundle.putString("sourceFromServer", "" + localJSONObject.optInt("sourceFromServer"));
-              localBundle.putString(bibw.K, str2);
+              localBundle.putString(bjmy.L, str2);
               localBundle.putString("pageId", "" + localJSONObject.optInt("pageId"));
               localBundle.putString("moduleId", "" + localJSONObject.optInt("moduleId"));
               localBundle.putString("positionId", "" + localJSONObject.optInt("positionId"));
@@ -346,8 +346,8 @@ public class DINewForCommonWebView
               str1 = DownloadInterface.parseSourceType(this.jdField_a_of_type_AndroidAppActivity, localJSONObject);
               localBundle.putString("big_brother_ref_source_key", DownloadInterface.parseCurrentPageId(this.jdField_a_of_type_AndroidAppActivity));
               localBundle.putInt("hideInstallSuccessPage", localJSONObject.optInt("hideInstallSuccessPage"));
-              bhzm.b("DINewForCommonWebView", "[doDownloadAction] object " + localJSONObject.toString());
-              bhys.a().a(this.jdField_a_of_type_AndroidAppActivity, localBundle, str1, paramString, i);
+              bjko.b("DINewForCommonWebView", "[doDownloadAction] object " + localJSONObject.toString());
+              bjju.a().a(this.jdField_a_of_type_AndroidAppActivity, localBundle, str1, paramString, i);
               return 0;
             }
             catch (Exception localException1) {}
@@ -372,7 +372,7 @@ public class DINewForCommonWebView
             break;
           }
           break label1358;
-          localBundle.putString(bibw.B, paramString);
+          localBundle.putString(bjmy.C, paramString);
         }
       }
     }
@@ -383,13 +383,13 @@ public class DINewForCommonWebView
         String str1;
         int i;
         Object localObject1;
-        bhzm.c("DINewForCommonWebView", "[doDownloadAction] JSONException", paramString);
+        bjko.c("DINewForCommonWebView", "[doDownloadAction] JSONException", paramString);
         return -1;
-        if (this.jdField_a_of_type_Bhxj.a(str1, paramString, i))
+        if (this.jdField_a_of_type_Bjil.a(str1, paramString, i))
         {
-          bhzm.b("DINewForCommonWebView", "[doDownloadAction] repeat action,return");
+          bjko.b("DINewForCommonWebView", "[doDownloadAction] repeat action,return");
           return 0;
-          bhzm.c("DINewForCommonWebView", "[doDownloadAction]  updateData e=" + ((Exception)localObject1).getMessage());
+          bjko.c("DINewForCommonWebView", "[doDownloadAction]  updateData e=" + ((Exception)localObject1).getMessage());
         }
       }
     }
@@ -398,7 +398,7 @@ public class DINewForCommonWebView
       for (;;)
       {
         label1265:
-        bhzm.c("DINewForCommonWebView", "[doDownloadAction] Exception", paramString);
+        bjko.c("DINewForCommonWebView", "[doDownloadAction] Exception", paramString);
         continue;
         paramString = null;
         continue;
@@ -427,7 +427,7 @@ public class DINewForCommonWebView
   
   public void getQueryDownloadAction(String paramString)
   {
-    bhzm.b("DINewForCommonWebView", "<getQueryDownloadAction> paramJson=" + paramString);
+    bjko.b("DINewForCommonWebView", "<getQueryDownloadAction> paramJson=" + paramString);
     try
     {
       paramString = new JSONObject(paramString);
@@ -436,7 +436,7 @@ public class DINewForCommonWebView
     }
     catch (JSONException paramString)
     {
-      bhzm.e("DINewForCommonWebView", "[queryDownloadAction] e=" + paramString.getMessage());
+      bjko.e("DINewForCommonWebView", "[queryDownloadAction] e=" + paramString.getMessage());
     }
   }
   
@@ -447,18 +447,18 @@ public class DINewForCommonWebView
   
   public void isYYBSupportBatchDownload(String paramString)
   {
-    bhzm.b("DINewForCommonWebView", ">isYYBSupportBatchDownload " + paramString);
+    bjko.b("DINewForCommonWebView", ">isYYBSupportBatchDownload " + paramString);
     try
     {
       paramString = new JSONObject(paramString).optString("callback");
-      int i = bicl.b();
-      bhzm.b("DINewForCommonWebView", ">isYYBSupportBatchDownload yybApiLevel=" + i);
+      int i = bjnn.b();
+      bjko.b("DINewForCommonWebView", ">isYYBSupportBatchDownload yybApiLevel=" + i);
       paramString = new StringBuilder().append("javascript:").append(paramString).append("(");
       if (i >= 9) {}
       for (boolean bool = true;; bool = false)
       {
         paramString = bool + ")";
-        bhzm.c("DINewForCommonWebView", ">isYYBSupportBatchDownload:" + paramString);
+        bjko.c("DINewForCommonWebView", ">isYYBSupportBatchDownload:" + paramString);
         a(paramString);
         return;
       }
@@ -480,28 +480,28 @@ public class DINewForCommonWebView
       paramString = new JSONObject(paramString);
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
-      bhys.a(this.jdField_a_of_type_AndroidAppActivity, localBundle);
+      bjju.a(this.jdField_a_of_type_AndroidAppActivity, localBundle);
       return 0;
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        bhzm.c("DINewForCommonWebView", "JSONException", paramString);
+        bjko.c("DINewForCommonWebView", "JSONException", paramString);
       }
     }
   }
   
   public void queryYYBApiLevel(String paramString)
   {
-    bhzm.b("DINewForCommonWebView", ">queryYYBApiLevel " + paramString);
+    bjko.b("DINewForCommonWebView", ">queryYYBApiLevel " + paramString);
     try
     {
       paramString = new JSONObject(paramString).optString("callback");
-      int i = bicl.b();
-      bhzm.b("DINewForCommonWebView", ">queryYYBApiLevel yybApiLevel=" + i);
+      int i = bjnn.b();
+      bjko.b("DINewForCommonWebView", ">queryYYBApiLevel yybApiLevel=" + i);
       paramString = "javascript:" + paramString + "(" + i + ")";
-      bhzm.c("DINewForCommonWebView", ">queryYYBApiLevel:" + paramString);
+      bjko.c("DINewForCommonWebView", ">queryYYBApiLevel:" + paramString);
       a(paramString);
       return;
     }
@@ -513,11 +513,11 @@ public class DINewForCommonWebView
   
   public void registerDownloadCallBackListener(String paramString)
   {
-    bhzm.b("DINewForCommonWebView", "<registerDownloadCallBackListener> paramJsonStr=" + paramString);
+    bjko.b("DINewForCommonWebView", "<registerDownloadCallBackListener> paramJsonStr=" + paramString);
     try
     {
       this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
-      bhzm.b("DINewForCommonWebView", "<registerDownloadCallBackListener>" + this.jdField_a_of_type_JavaLangString);
+      bjko.b("DINewForCommonWebView", "<registerDownloadCallBackListener>" + this.jdField_a_of_type_JavaLangString);
       return;
     }
     catch (JSONException paramString)
@@ -536,14 +536,14 @@ public class DINewForCommonWebView
       paramString = new JSONObject(paramString);
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
-      bhys.a(localBundle);
+      bjju.a(localBundle);
       return 0;
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        bhzm.c("DINewForCommonWebView", "JSONException", paramString);
+        bjko.c("DINewForCommonWebView", "JSONException", paramString);
       }
     }
   }
@@ -558,14 +558,14 @@ public class DINewForCommonWebView
       paramString = new JSONObject(paramString);
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
-      bhys.b(localBundle);
+      bjju.b(localBundle);
       return 0;
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        bhzm.c("DINewForCommonWebView", "JSONException", paramString);
+        bjko.c("DINewForCommonWebView", "JSONException", paramString);
       }
     }
   }

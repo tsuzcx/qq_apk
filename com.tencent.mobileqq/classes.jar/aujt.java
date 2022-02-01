@@ -1,32 +1,48 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
-class aujt
-  extends axkv
+public final class aujt
+  extends WebChromeClient
 {
-  aujt(aujs paramaujs, axkv paramaxkv) {}
+  private final IHostInterface.IWebClient a;
   
-  public void ipJudgeSuccess(boolean paramBoolean, String paramString)
+  private aujt(IHostInterface.IWebClient paramIWebClient)
   {
-    aujs localaujs = this.jdField_a_of_type_Aujs;
-    if (paramBoolean) {}
-    for (int i = 11;; i = 10)
-    {
-      aujs.a(localaujs, i);
-      QLog.d("FaceContext", 1, new Object[] { "ipJudgeSuccess ", Boolean.valueOf(paramBoolean), paramString });
-      if (this.jdField_a_of_type_Axkv != null) {
-        this.jdField_a_of_type_Axkv.ipJudgeSuccess(paramBoolean, paramString);
-      }
-      return;
-    }
+    this.a = paramIWebClient;
   }
   
-  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    QLog.d("FaceContext", 1, new Object[] { "refreshIpState onFailedResponse : ", paramString2 });
-    aujs.a(this.jdField_a_of_type_Aujs, 11);
-    if (this.jdField_a_of_type_Axkv != null) {
-      this.jdField_a_of_type_Axkv.onFailedResponse(paramString1, paramInt, paramString2);
+    if ((this.a == null) || (!this.a.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
+      return super.onConsoleMessage(paramConsoleMessage);
     }
+    return true;
+  }
+  
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  {
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {}
+    do
+    {
+      return true;
+      if ((this.a == null) || (!this.a.onJsPrompt(paramWebView, paramString1, paramString2, paramString3))) {
+        return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+      }
+    } while (paramJsPromptResult == null);
+    paramJsPromptResult.cancel();
+    return true;
+  }
+  
+  @Override
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    super.onProgressChanged(paramWebView, paramInt);
   }
 }
 

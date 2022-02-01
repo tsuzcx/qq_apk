@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import amtj;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.widget.TextView;
+import anvx;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
-import onc;
+import ouz;
 
 public class ReadInJoyUploadAvatarFragment$1
   implements Runnable
@@ -17,12 +17,12 @@ public class ReadInJoyUploadAvatarFragment$1
     if (this.a.isFinishing()) {
       return;
     }
-    this.this$0.a = new ReportProgressDialog(this.a, 2131755826);
+    this.this$0.a = new ReportProgressDialog(this.a, 2131755829);
     this.this$0.a.setCancelable(true);
     this.this$0.a.show();
-    this.this$0.a.setContentView(2131559574);
-    ((TextView)this.this$0.a.findViewById(2131372546)).setText(amtj.a(2131712070));
-    this.this$0.a.setOnCancelListener(new onc(this));
+    this.this$0.a.setContentView(2131559607);
+    ((TextView)this.this$0.a.findViewById(2131372740)).setText(anvx.a(2131712417));
+    this.this$0.a.setOnCancelListener(new ouz(this));
   }
 }
 

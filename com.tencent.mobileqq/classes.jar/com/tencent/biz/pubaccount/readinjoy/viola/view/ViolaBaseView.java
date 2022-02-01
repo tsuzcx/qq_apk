@@ -12,10 +12,10 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import aqye;
-import aqyf;
-import bfqf;
-import biae;
+import asco;
+import ascp;
+import bgyw;
+import bjlg;
 import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.NativeVueLoaderManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -39,40 +39,40 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
-import odq;
+import olh;
 import org.json.JSONObject;
-import pay;
-import pbg;
-import pkp;
-import pkx;
-import pld;
-import tga;
-import tgc;
-import thd;
-import thh;
-import thj;
-import tmd;
-import tok;
-import tom;
-import ton;
-import too;
-import top;
-import tor;
-import tos;
-import tot;
-import tou;
-import tov;
-import tow;
-import tox;
-import toy;
-import toz;
-import tpa;
-import tpb;
-import tph;
+import pkh;
+import pqg;
+import pvm;
+import pvu;
+import pwa;
+import ttm;
+import tto;
+import tup;
+import tut;
+import tuv;
+import tzr;
+import ubz;
+import ucb;
+import ucc;
+import ucd;
+import uce;
+import ucg;
+import uch;
+import uci;
+import ucj;
+import uck;
+import ucl;
+import ucm;
+import ucn;
+import uco;
+import ucp;
+import ucq;
+import ucw;
 
 public class ViolaBaseView
   extends RelativeLayout
-  implements IActivityState, tga
+  implements IActivityState, ttm
 {
   private static String jdField_b_of_type_JavaLangString = "ViolaBaseView";
   private static int jdField_d_of_type_Int;
@@ -81,17 +81,17 @@ public class ViolaBaseView
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
-  private bfqf jdField_a_of_type_Bfqf;
+  private bgyw jdField_a_of_type_Bgyw;
   private ViolaInstance jdField_a_of_type_ComTencentViolaCoreViolaInstance;
   public String a;
   private Set<String> jdField_a_of_type_JavaUtilSet;
-  private pbg jdField_a_of_type_Pbg;
-  private thh jdField_a_of_type_Thh;
-  private toy jdField_a_of_type_Toy;
-  private toz jdField_a_of_type_Toz;
-  private tpa jdField_a_of_type_Tpa;
-  private tpb jdField_a_of_type_Tpb;
-  private tph jdField_a_of_type_Tph = new tph();
+  private pqg jdField_a_of_type_Pqg;
+  private tut jdField_a_of_type_Tut;
+  private ucn jdField_a_of_type_Ucn;
+  private uco jdField_a_of_type_Uco;
+  private ucp jdField_a_of_type_Ucp;
+  private ucq jdField_a_of_type_Ucq;
+  private ucw jdField_a_of_type_Ucw = new ucw();
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
   private long jdField_b_of_type_Long;
@@ -140,11 +140,11 @@ public class ViolaBaseView
   {
     if (paramInt == jdField_d_of_type_Int)
     {
-      this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_START);
+      this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_START);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
     }
     NativeVueLoaderManager.a().a();
-    pkx.a(jdField_b_of_type_JavaLangString + "_" + paramInt, new tok(this, paramInt));
+    pvu.a(jdField_b_of_type_JavaLangString + "_" + paramInt, new ubz(this, paramInt));
   }
   
   private void a(int paramInt, boolean paramBoolean)
@@ -153,7 +153,7 @@ public class ViolaBaseView
       return;
     }
     this.i = true;
-    if (this.jdField_a_of_type_Tpb != null)
+    if (this.jdField_a_of_type_Ucq != null)
     {
       if (Looper.getMainLooper() != Looper.myLooper()) {
         new Handler(Looper.getMainLooper()).post(new ViolaBaseView.15(this, paramInt));
@@ -164,86 +164,86 @@ public class ViolaBaseView
       if (paramInt != 100) {
         break label162;
       }
-      this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_ERROR_NET);
-      this.jdField_a_of_type_Thh.reportData(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Thh.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_SO, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_ERROR_NET);
+      this.jdField_a_of_type_Tut.reportData(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Tut.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_SO, this.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
       QLog.e(jdField_b_of_type_JavaLangString, 2, "openViolaPage error,code=" + paramInt + ",biz url=" + this.jdField_a_of_type_JavaLangString);
       return;
-      this.jdField_a_of_type_Tpb.a(paramInt);
+      this.jdField_a_of_type_Ucq.a(paramInt);
       break;
       label162:
       if (paramInt == 1)
       {
-        this.jdField_a_of_type_Thh.a(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_START);
-        this.jdField_a_of_type_Thh.reportData(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Thh.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_SDK, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.a(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_START);
+        this.jdField_a_of_type_Tut.reportData(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_SDK, this.jdField_a_of_type_JavaLangString);
       }
       else if (paramInt == 5)
       {
-        this.jdField_a_of_type_Thh.a(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_START);
-        this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_ERROR_NET);
-        this.jdField_a_of_type_Thh.reportData(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Thh.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_MAIN_JS, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.a(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_START);
+        this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_ERROR_NET);
+        this.jdField_a_of_type_Tut.reportData(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_MAIN_JS, this.jdField_a_of_type_JavaLangString);
       }
       else if (paramInt == 7)
       {
-        this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_ERROR_UNZIP);
-        this.jdField_a_of_type_Thh.reportData(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Thh.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_SO, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_ERROR_UNZIP);
+        this.jdField_a_of_type_Tut.reportData(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_SO, this.jdField_a_of_type_JavaLangString);
       }
       else if (paramInt == 8)
       {
-        this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_ERROR_OFFLINE);
-        this.jdField_a_of_type_Thh.reportData(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Thh.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_SO, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_ERROR_OFFLINE);
+        this.jdField_a_of_type_Tut.reportData(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_SO, this.jdField_a_of_type_JavaLangString);
       }
       else if (paramInt == 6)
       {
-        this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_ERROR_OFFLINE);
-        this.jdField_a_of_type_Thh.reportData(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Thh.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_SO, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_SO, ViolaEnvironment.SO_ERROR_OFFLINE);
+        this.jdField_a_of_type_Tut.reportData(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_SO, this.jdField_a_of_type_JavaLangString);
       }
       else if (paramInt == 9)
       {
-        this.jdField_a_of_type_Thh.a(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_START);
-        this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_ERROR_CHANGE_CGI);
-        this.jdField_a_of_type_Thh.reportData(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Thh.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_CHANGE_CGI, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.a(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_START);
+        this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_ERROR_CHANGE_CGI);
+        this.jdField_a_of_type_Tut.reportData(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_CHANGE_CGI, this.jdField_a_of_type_JavaLangString);
       }
       else if (paramInt == 3)
       {
-        this.jdField_a_of_type_Thh.a(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_START);
-        this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_ERROR_NET);
-        this.jdField_a_of_type_Thh.reportData(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Thh.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_BIZ_JS, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.a(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_START);
+        this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_ERROR_NET);
+        this.jdField_a_of_type_Tut.reportData(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_BIZ_JS, this.jdField_a_of_type_JavaLangString);
       }
       else if (paramInt == 2)
       {
-        this.jdField_a_of_type_Thh.a(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_START);
-        this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_ERROR_NET);
-        this.jdField_a_of_type_Thh.reportData(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Thh.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_BIZ_JS, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.a(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_START);
+        this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_ERROR_NET);
+        this.jdField_a_of_type_Tut.reportData(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_BIZ_JS, this.jdField_a_of_type_JavaLangString);
       }
       else if (paramInt == 10)
       {
-        this.jdField_a_of_type_Thh.a(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_START);
-        this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_ERROR_NET);
-        this.jdField_a_of_type_Thh.reportData(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Thh.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_MAIN_JS, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.a(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_START);
+        this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_ERROR_NET);
+        this.jdField_a_of_type_Tut.reportData(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_MAIN_JS, this.jdField_a_of_type_JavaLangString);
       }
     }
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Toy = new toy(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Ucn = new ucn(this, Looper.getMainLooper());
     this.jdField_a_of_type_Int = Math.abs(new Random().nextInt());
   }
   
-  private void a(String paramString, tox paramtox)
+  private void a(String paramString, ucm paramucm)
   {
     if ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("http"))) {}
     String str;
@@ -252,7 +252,7 @@ public class ViolaBaseView
       return;
       str = Uri.parse(paramString).getQueryParameter("v_bid");
     } while (TextUtils.isEmpty(str));
-    tgc.a(str, new tou(this, str, paramString, paramtox));
+    tto.a(str, new ucj(this, str, paramString, paramucm));
   }
   
   private void a(String paramString, boolean paramBoolean)
@@ -262,8 +262,8 @@ public class ViolaBaseView
       this.jdField_c_of_type_JavaLangString = paramString;
       if (paramBoolean)
       {
-        this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_END_NET);
-        this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.TIME_BIZ_JS_NET, Long.toString(System.currentTimeMillis() - this.jdField_c_of_type_Long));
+        this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_END_NET);
+        this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.TIME_BIZ_JS_NET, Long.toString(System.currentTimeMillis() - this.jdField_c_of_type_Long));
         o();
       }
       if (!paramBoolean) {
@@ -276,7 +276,7 @@ public class ViolaBaseView
   
   private void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Tpb != null)
+    if (this.jdField_a_of_type_Ucq != null)
     {
       if (Looper.getMainLooper() == Looper.myLooper()) {
         break label67;
@@ -288,13 +288,13 @@ public class ViolaBaseView
       QLog.d(jdField_b_of_type_JavaLangString, 2, "openViolaPage process,code=" + paramInt);
       return;
       label67:
-      this.jdField_a_of_type_Tpb.b(paramInt);
+      this.jdField_a_of_type_Ucq.b(paramInt);
     }
   }
   
   private void b(String paramString)
   {
-    if (!pld.a(paramString))
+    if (!pwa.a(paramString))
     {
       c(7);
       if (QLog.isColorLevel()) {
@@ -304,7 +304,7 @@ public class ViolaBaseView
     do
     {
       return;
-      if ((aqyf.i()) && (aqye.i()))
+      if ((ascp.i()) && (asco.i()))
       {
         a(jdField_e_of_type_Int);
         return;
@@ -323,7 +323,7 @@ public class ViolaBaseView
     }
     this.jdField_c_of_type_Long = System.currentTimeMillis();
     if (paramBoolean) {
-      this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_ERROR_OFFLINE);
+      this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_ERROR_OFFLINE);
     }
     if ((this.jdField_a_of_type_JavaLangString.contains("v_tid")) && (this.jdField_a_of_type_JavaLangString.contains("v_bundleName")))
     {
@@ -345,7 +345,7 @@ public class ViolaBaseView
   
   private void c(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (pay.a() == null)) {
+    if ((TextUtils.isEmpty(paramString)) || (pkh.a() == null)) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -358,10 +358,10 @@ public class ViolaBaseView
   {
     long l = System.currentTimeMillis();
     if (paramBoolean) {
-      this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_ERROR_OFFLINE);
+      this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_ERROR_OFFLINE);
     }
-    tgc.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547" + tmd.b(), new tos(this, paramBoolean, l));
-    a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547", new tot(this, paramBoolean, System.currentTimeMillis()));
+    tto.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547" + tzr.b(), new uch(this, paramBoolean, l));
+    a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547", new uci(this, paramBoolean, System.currentTimeMillis()));
   }
   
   private void d(String paramString)
@@ -383,15 +383,15 @@ public class ViolaBaseView
   private void d(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_START);
+      this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_CHANGE, ViolaEnvironment.CHANGE_START);
     }
     Bundle localBundle = new Bundle();
-    new biae("https://viola.kandian.qq.com/cgi-bin/bundle/exchange?from=android&originUrl=" + URLEncoder.encode(new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&v_sdk=").append("8.4.8").append("&v_appid=1&v_uid=").append(pay.a()).append("&v_platform=1").toString()), "GET", new ton(this, paramBoolean)).a(localBundle);
+    new bjlg("https://viola.kandian.qq.com/cgi-bin/bundle/exchange?from=android&originUrl=" + URLEncoder.encode(new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&v_sdk=").append("8.4.10").append("&v_appid=1&v_uid=").append(pkh.a()).append("&v_platform=1").toString()), "GET", new ucc(this, paramBoolean)).a(localBundle);
   }
   
   private void e(boolean paramBoolean)
   {
-    tgc.a(this.jdField_d_of_type_JavaLangString, new too(this, paramBoolean));
+    tto.a(this.jdField_d_of_type_JavaLangString, new ucd(this, paramBoolean));
   }
   
   private void f()
@@ -400,8 +400,8 @@ public class ViolaBaseView
     {
       this.jdField_b_of_type_Boolean = true;
       b(1);
-      if (this.jdField_a_of_type_Toz != null) {
-        this.jdField_a_of_type_Toz.a();
+      if (this.jdField_a_of_type_Uco != null) {
+        this.jdField_a_of_type_Uco.a();
       }
       this.jdField_b_of_type_Boolean = true;
       o();
@@ -413,29 +413,29 @@ public class ViolaBaseView
       h();
       return;
     }
-    ThreadManager.post(new ViolaBaseView.2(this, (QQAppInterface)pay.a()), 8, null, true);
+    ThreadManager.post(new ViolaBaseView.2(this, (QQAppInterface)pkh.a()), 8, null, true);
   }
   
   private void f(boolean paramBoolean)
   {
     long l = System.currentTimeMillis();
-    a(this.jdField_a_of_type_JavaLangString, new top(this, paramBoolean, l));
+    a(this.jdField_a_of_type_JavaLangString, new uce(this, paramBoolean, l));
   }
   
   private void g()
   {
     this.h = true;
-    this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_START);
-    this.jdField_c_of_type_JavaLangString = tgc.a(this.jdField_a_of_type_JavaLangString);
-    if (tgc.b()) {
-      this.jdField_c_of_type_JavaLangString = tgc.c(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_START);
+    this.jdField_c_of_type_JavaLangString = tto.a(this.jdField_a_of_type_JavaLangString);
+    if (tto.b()) {
+      this.jdField_c_of_type_JavaLangString = tto.c(this.jdField_a_of_type_JavaLangString);
     }
     if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
     {
       if (QLog.isColorLevel()) {
         QLog.d(jdField_b_of_type_JavaLangString, 2, "loadJSSource process from v_bid url: " + this.jdField_a_of_type_JavaLangString);
       }
-      this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_END_EXIT_OFFLINE);
+      this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_END_EXIT_OFFLINE);
       o();
       return;
     }
@@ -448,7 +448,7 @@ public class ViolaBaseView
       b(true);
       return;
     }
-    Object localObject = FileUtils.readObject("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.jdField_a_of_type_JavaLangString) + "_" + pay.a());
+    Object localObject = FileUtils.readObject("viola_cache_file_viola_qq_page_data_" + ViolaUtils.getPageName(this.jdField_a_of_type_JavaLangString) + "_" + pkh.a());
     if ((localObject instanceof String))
     {
       this.jdField_c_of_type_JavaLangString = ((String)localObject);
@@ -457,7 +457,7 @@ public class ViolaBaseView
         if (QLog.isColorLevel()) {
           QLog.d(jdField_b_of_type_JavaLangString, 2, "loadJSSource process from cgi cache url: " + this.jdField_a_of_type_JavaLangString);
         }
-        this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_END_EXIT_CACHE);
+        this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_BIZ, ViolaEnvironment.BIZ_END_EXIT_CACHE);
         o();
         return;
       }
@@ -475,30 +475,30 @@ public class ViolaBaseView
   
   private void g(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Toz != null) {
-      this.jdField_a_of_type_Toz.c();
+    if (this.jdField_a_of_type_Uco != null) {
+      this.jdField_a_of_type_Uco.c();
     }
     a(9, paramBoolean);
   }
   
   private void h()
   {
-    this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_START);
-    this.jdField_e_of_type_JavaLangString = tgc.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547");
+    this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_START);
+    this.jdField_e_of_type_JavaLangString = tto.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547");
     if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_END_EXIT);
-      this.jdField_a_of_type_Toy.sendEmptyMessageDelayed(3, 0L);
+      this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_END_EXIT);
+      this.jdField_a_of_type_Ucn.sendEmptyMessageDelayed(3, 0L);
       return;
     }
-    Object localObject = FileUtils.readObject("viola_cache_file_viola_qq_page_data_new_main_js_" + pay.a());
+    Object localObject = FileUtils.readObject("viola_cache_file_viola_qq_page_data_new_main_js_" + pkh.a());
     if ((localObject instanceof String))
     {
       this.jdField_e_of_type_JavaLangString = ((String)localObject);
       if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
       {
-        this.jdField_a_of_type_Thh.addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_END_EXIT_CACHE);
-        this.jdField_a_of_type_Toy.sendEmptyMessageDelayed(3, 0L);
+        this.jdField_a_of_type_Tut.addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_END_EXIT_CACHE);
+        this.jdField_a_of_type_Ucn.sendEmptyMessageDelayed(3, 0L);
         return;
       }
       c(true);
@@ -518,7 +518,7 @@ public class ViolaBaseView
     if (TextUtils.isEmpty(str1)) {
       return;
     }
-    String str2 = tmd.b("https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559");
+    String str2 = tzr.b("https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559");
     if ((!TextUtils.isEmpty(str2)) && (new File(str2).exists()))
     {
       if (QLog.isColorLevel()) {
@@ -528,7 +528,7 @@ public class ViolaBaseView
     }
     for (;;)
     {
-      tgc.a(str1, new tov(this));
+      tto.a(str1, new uck(this));
       return;
       if (QLog.isColorLevel()) {
         QLog.e(jdField_b_of_type_JavaLangString, 2, "downLoadSOFromOffline so.zip not exists [url:https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559],try load from cdn");
@@ -543,9 +543,9 @@ public class ViolaBaseView
     if (this.jdField_c_of_type_Int >= 2) {
       return;
     }
-    if ((this.k) && (this.jdField_a_of_type_Toz != null))
+    if ((this.k) && (this.jdField_a_of_type_Uco != null))
     {
-      this.jdField_a_of_type_Toz.a(this.jdField_c_of_type_JavaLangString);
+      this.jdField_a_of_type_Uco.a(this.jdField_c_of_type_JavaLangString);
       return;
     }
     ViolaRenderContainer localViolaRenderContainer = new ViolaRenderContainer(getContext());
@@ -555,7 +555,7 @@ public class ViolaBaseView
     {
       try
       {
-        ViolaSDKManager.getInstance().setBridgeAdapter(new thd());
+        ViolaSDKManager.getInstance().setBridgeAdapter(new tup());
         if (this.jdField_a_of_type_ComTencentViolaCoreViolaInstance == null)
         {
           BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
@@ -569,7 +569,7 @@ public class ViolaBaseView
           this.jdField_a_of_type_ComTencentViolaCoreViolaInstance = new ViolaInstance(localBaseApplicationImpl, localWeakReference1, localWeakReference2, null, -1L, this.jdField_a_of_type_JavaLangString);
         }
         this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.setRenderContainer(localViolaRenderContainer);
-        this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.setViolaPageListener(new tow(this));
+        this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.setViolaPageListener(new ucl(this));
         l();
         return;
       }
@@ -586,11 +586,11 @@ public class ViolaBaseView
   
   private void l()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Tpa != null))
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Ucp != null))
     {
       this.jdField_c_of_type_Int = 2;
       r();
-      if (!this.jdField_a_of_type_Tph.a()) {
+      if (!this.jdField_a_of_type_Ucw.a()) {
         break label77;
       }
       u();
@@ -613,7 +613,7 @@ public class ViolaBaseView
   
   private void n()
   {
-    addOnLayoutChangeListener(new tom(this));
+    addOnLayoutChangeListener(new ucb(this));
   }
   
   private void o()
@@ -622,7 +622,7 @@ public class ViolaBaseView
       if (Looper.getMainLooper() != Looper.myLooper())
       {
         new Handler(Looper.getMainLooper()).post(new ViolaBaseView.12(this));
-        tgc.a(this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
+        tto.a(this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
       }
     }
     do
@@ -642,7 +642,7 @@ public class ViolaBaseView
   
   private void p()
   {
-    if (this.jdField_a_of_type_Tpb == null) {
+    if (this.jdField_a_of_type_Ucq == null) {
       return;
     }
     if (Looper.getMainLooper() != Looper.myLooper()) {
@@ -652,15 +652,15 @@ public class ViolaBaseView
     {
       QLog.d(jdField_b_of_type_JavaLangString, 2, "openViolaPage success!");
       return;
-      this.jdField_a_of_type_Tpb.a();
+      this.jdField_a_of_type_Ucq.a();
     }
   }
   
   private void q()
   {
-    tgc.jdField_a_of_type_Int += 1;
+    tto.jdField_a_of_type_Int += 1;
     this.i = false;
-    this.jdField_a_of_type_Thh.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Tut.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
   
   private void r()
@@ -676,7 +676,7 @@ public class ViolaBaseView
   
   private void t()
   {
-    this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.renderJSSource(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Tpa.a(), tmd.c(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.renderJSSource(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Ucp.a(), tzr.c(this.jdField_a_of_type_JavaLangString));
     p();
     if (!this.jdField_a_of_type_Boolean) {
       a(true);
@@ -701,7 +701,7 @@ public class ViolaBaseView
     if (QLog.isColorLevel()) {
       QLog.d(jdField_b_of_type_JavaLangString, 2, "start renderNativeVue, url: " + this.jdField_a_of_type_JavaLangString);
     }
-    NativeVueLoaderManager.a().a(this.jdField_a_of_type_Tpa.a(), this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, new tor(this));
+    NativeVueLoaderManager.a().a(this.jdField_a_of_type_Ucp.a(), this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, new ucg(this));
   }
   
   public int a()
@@ -710,6 +710,14 @@ public class ViolaBaseView
       return this.jdField_b_of_type_Int;
     }
     return 1;
+  }
+  
+  public <T> T a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentViolaCoreViolaInstance == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.getModule(paramString);
   }
   
   public void a()
@@ -733,20 +741,20 @@ public class ViolaBaseView
     this.jdField_a_of_type_JavaUtilSet.add(paramString);
   }
   
-  public void a(String paramString, Fragment paramFragment, tpa paramtpa)
+  public void a(String paramString, Fragment paramFragment, ucp paramucp)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramString.contains("VideoFeeds.js"))) {
-      odq.a(null, null, "0X800AF0D", "0X800AF0D", 0, 0, null, null, null, "" + System.currentTimeMillis(), false);
+      olh.a(null, null, "0X800AF0D", "0X800AF0D", 0, 0, null, null, null, "" + System.currentTimeMillis(), false);
     }
     this.jdField_a_of_type_AndroidSupportV4AppFragment = paramFragment;
-    if ((ViolaSDKManager.getInstance().getReportDelegate() instanceof thh)) {
-      this.jdField_a_of_type_Thh = ((thh)ViolaSDKManager.getInstance().getReportDelegate());
+    if ((ViolaSDKManager.getInstance().getReportDelegate() instanceof tut)) {
+      this.jdField_a_of_type_Tut = ((tut)ViolaSDKManager.getInstance().getReportDelegate());
     }
     for (;;)
     {
       this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_Tpa = paramtpa;
-      this.jdField_a_of_type_Pbg = new pbg().b("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Ucp = paramucp;
+      this.jdField_a_of_type_Pqg = new pqg().b("url", this.jdField_a_of_type_JavaLangString);
       this.jdField_e_of_type_Boolean = Build.CPU_ABI.contains("arm");
       q();
       if (!TextUtils.isEmpty(paramString)) {
@@ -754,21 +762,21 @@ public class ViolaBaseView
       }
       c(4);
       return;
-      this.jdField_a_of_type_Thh = new thh();
-      ViolaSDKManager.getInstance().setReportDelegate(this.jdField_a_of_type_Thh);
+      this.jdField_a_of_type_Tut = new tut();
+      ViolaSDKManager.getInstance().setReportDelegate(this.jdField_a_of_type_Tut);
     }
     if (!this.jdField_e_of_type_Boolean)
     {
       c(11);
       return;
     }
-    this.jdField_a_of_type_Tph.a(NativeVueLoaderManager.a(paramString));
+    this.jdField_a_of_type_Ucw.a(NativeVueLoaderManager.a(paramString));
     a(jdField_d_of_type_Int);
   }
   
-  public void a(tpb paramtpb)
+  public void a(ucq paramucq)
   {
-    this.jdField_a_of_type_Tpb = paramtpb;
+    this.jdField_a_of_type_Ucq = paramucq;
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     q();
     if (!this.jdField_e_of_type_Boolean)
@@ -788,7 +796,7 @@ public class ViolaBaseView
       }
       if (!this.jdField_d_of_type_Boolean)
       {
-        this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.updateInstance(tmd.a().toString());
+        this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.updateInstance(tzr.a().toString());
         this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.setPageVisibility(true);
         this.jdField_d_of_type_Boolean = true;
         c();
@@ -800,13 +808,13 @@ public class ViolaBaseView
       return;
       if (this.jdField_d_of_type_Boolean)
       {
-        this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.updateInstance(tmd.b().toString());
+        this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.updateInstance(tzr.b().toString());
         this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.setPageVisibility(false);
         this.jdField_d_of_type_Boolean = false;
         d();
       }
-    } while (!(ViolaSDKManager.getInstance().getComponentAdapter() instanceof thj));
-    ((thj)ViolaSDKManager.getInstance().getComponentAdapter()).a();
+    } while (!(ViolaSDKManager.getInstance().getComponentAdapter() instanceof tuv));
+    ((tuv)ViolaSDKManager.getInstance().getComponentAdapter()).a();
   }
   
   public boolean a()
@@ -818,18 +826,18 @@ public class ViolaBaseView
   {
     int n = 100;
     int m = n;
-    if (this.jdField_a_of_type_Tpa != null)
+    if (this.jdField_a_of_type_Ucp != null)
     {
       m = n;
-      if (tpa.a(this.jdField_a_of_type_Tpa) != null)
+      if (ucp.a(this.jdField_a_of_type_Ucp) != null)
       {
         m = n;
-        if (!tpa.a(this.jdField_a_of_type_Tpa).has("fromType")) {}
+        if (!ucp.a(this.jdField_a_of_type_Ucp).has("fromType")) {}
       }
     }
     try
     {
-      m = tpa.a(this.jdField_a_of_type_Tpa).getInt("fromType");
+      m = ucp.a(this.jdField_a_of_type_Ucp).getInt("fromType");
       return m;
     }
     catch (Exception localException)
@@ -844,7 +852,7 @@ public class ViolaBaseView
     if (!this.j)
     {
       this.j = true;
-      this.jdField_a_of_type_Thh.a();
+      this.jdField_a_of_type_Tut.a();
     }
   }
   
@@ -902,9 +910,9 @@ public class ViolaBaseView
       return;
       this.g = true;
       if ((!this.i) && (this.jdField_c_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentViolaCoreViolaInstance != null) && (!this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.isReceiveOrder()) && (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.mRenderJsStartTime >= 3000L)) {
-        this.jdField_a_of_type_Thh.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_NOT_RECEIVE_ORDER, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tut.reportPageProcess(ViolaEnvironment.KEY_PAGE_PROCESS, ViolaEnvironment.PAGE_ERROR_NOT_RECEIVE_ORDER, this.jdField_a_of_type_JavaLangString);
       }
-      this.jdField_a_of_type_Thh.a();
+      this.jdField_a_of_type_Tut.a();
       if (this.jdField_a_of_type_ComTencentViolaCoreViolaInstance != null) {
         this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.onActivityDestroy();
       }
@@ -914,7 +922,7 @@ public class ViolaBaseView
         e();
       }
     } while (c());
-    pkp.a().b(ViolaUtils.getPageName(this.jdField_a_of_type_JavaLangString), b());
+    pvm.a().b(ViolaUtils.getPageName(this.jdField_a_of_type_JavaLangString), b());
   }
   
   public void onActivityPause()
@@ -932,10 +940,10 @@ public class ViolaBaseView
       if ((paramInt2 == -1) && (localObject != null) && (!((Activity)localObject).isFinishing()))
       {
         localObject = AIOUtils.setOpenAIOIntent(new Intent((Context)localObject, SplashActivity.class), null);
-        if ((paramIntent != null) && ((pay.a() instanceof QQAppInterface)))
+        if ((paramIntent != null) && ((pkh.a() instanceof QQAppInterface)))
         {
           ((Intent)localObject).putExtras(new Bundle(paramIntent.getExtras()));
-          ForwardUtils.handleForwardData((QQAppInterface)pay.a(), this.jdField_a_of_type_AndroidSupportV4AppFragment.getActivity(), this.jdField_a_of_type_AndroidSupportV4AppFragment.getActivity(), (Intent)localObject, null);
+          ForwardUtils.handleForwardData((QQAppInterface)pkh.a(), this.jdField_a_of_type_AndroidSupportV4AppFragment.getActivity(), this.jdField_a_of_type_AndroidSupportV4AppFragment.getActivity(), (Intent)localObject, null);
         }
       }
     }
@@ -969,15 +977,15 @@ public class ViolaBaseView
     }
   }
   
-  public void setBaseViewListener(toz paramtoz)
+  public void setBaseViewListener(uco paramuco)
   {
-    this.jdField_a_of_type_Toz = paramtoz;
+    this.jdField_a_of_type_Uco = paramuco;
     this.k = true;
   }
   
-  public void setListener(tpb paramtpb)
+  public void setListener(ucq paramucq)
   {
-    this.jdField_a_of_type_Tpb = paramtpb;
+    this.jdField_a_of_type_Ucq = paramucq;
   }
   
   public void setPageStartTime(long paramLong)
@@ -987,7 +995,7 @@ public class ViolaBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView
  * JD-Core Version:    0.7.0.1
  */

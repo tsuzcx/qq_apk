@@ -1,20 +1,26 @@
-import android.app.PendingIntent;
-import android.app.PendingIntent.OnFinished;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.WXMiniProgramHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.home.Conversation.48.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class ajyc
-  implements PendingIntent.OnFinished
+  extends BroadcastReceiver
 {
-  public ajyc(WXMiniProgramHelper paramWXMiniProgramHelper) {}
+  public ajyc(Conversation paramConversation) {}
   
-  public void onSendFinished(PendingIntent paramPendingIntent, Intent paramIntent, int paramInt, String paramString, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WXMiniProgramHelper", 2, "onSendFinished resultCode: " + paramInt + ", resultData: " + paramString);
-    }
+    paramContext = paramIntent.getStringExtra("wording");
+    int i = paramIntent.getIntExtra("timetowait", 360000);
+    this.a.jdField_a_of_type_Aldh.jdField_a_of_type_Int = i;
+    this.a.jdField_a_of_type_Aldh.jdField_a_of_type_JavaLangString = paramContext;
+    this.a.jdField_a_of_type_Aldh.a(22, 2);
+    this.a.jdField_a_of_type_Aldh.a(-1, null);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).postDelayed(new Conversation.48.1(this), i);
+    bdla.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
   }
 }
 

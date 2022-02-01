@@ -1,25 +1,35 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
 
-class axbt
-  implements aprh
+public class axbt
+  implements bivu
 {
-  axbt(axax paramaxax, IphonePickerView paramIphonePickerView, bjnw parambjnw) {}
+  public axbt(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public void a()
+  public void onItemSelect(View paramView, int paramInt)
   {
-    if ((this.jdField_a_of_type_Bjnw != null) && (this.jdField_a_of_type_Bjnw.isShowing()))
+    int i = 2;
+    if (paramInt == 1)
     {
-      axax.a(this.jdField_a_of_type_Axax, this.jdField_a_of_type_Axax.h, false);
-      this.jdField_a_of_type_Bjnw.dismiss();
+      axcw.a("MsgBackup.MsgBackupSelectionFragment", "click cancel btn mfrom = %d,  pcHandler = %b", new Object[] { Integer.valueOf(MsgBackupSelectionFragment.a(this.a)), Boolean.valueOf(awzs.c) });
+      if (MsgBackupSelectionFragment.a(this.a) != 0) {
+        break label79;
+      }
+      paramInt = i;
+      if (MsgBackupSelectionFragment.a(this.a)) {
+        paramInt = 3;
+      }
+      axct.a("0X800A242", paramInt);
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_Axax.h.setTag(Byte.valueOf((byte)(paramInt1 + 1)));
-    this.jdField_a_of_type_Axax.h.setText(axax.b(this.jdField_a_of_type_Axax).a(0, paramInt1));
+    for (;;)
+    {
+      this.a.onBackEvent();
+      return;
+      label79:
+      if ((awzs.c) && (awzh.a().a() == 1)) {
+        axct.a("0X800A266", 5);
+      }
+    }
   }
 }
 

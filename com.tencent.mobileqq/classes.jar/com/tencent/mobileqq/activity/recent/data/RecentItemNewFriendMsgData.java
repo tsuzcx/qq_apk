@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import aiej;
-import aigo;
+import aizi;
+import ajbn;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
 
@@ -27,10 +28,10 @@ public class RecentItemNewFriendMsgData
       QLog.d("RecentItemNewFriendMsgData", 2, "RecentItemNewFriendMsgData update");
     }
     super.a(paramQQAppInterface, paramContext);
-    aiej localaiej = (aiej)paramQQAppInterface.getManager(34);
-    aigo localaigo = localaiej.a();
+    aizi localaizi = (aizi)paramQQAppInterface.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
+    ajbn localajbn = localaizi.a();
     this.mTitleName = paramContext.getString(this.mTilteId);
-    if (localaigo == null)
+    if (localajbn == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("RecentItemNewFriendMsgData", 2, "isFirstShow = " + this.isFirstShow);
@@ -45,7 +46,7 @@ public class RecentItemNewFriendMsgData
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName).append(",");
         if (this.mUnreadNum != 0) {
-          break label300;
+          break label301;
         }
       }
     }
@@ -58,18 +59,18 @@ public class RecentItemNewFriendMsgData
       this.mContentDesc = paramQQAppInterface.toString();
       return;
       this.mMsgExtroInfo = "";
-      if (localaigo.a(paramQQAppInterface) != null) {}
-      for (paramQQAppInterface = localaigo.a(paramQQAppInterface);; paramQQAppInterface = this.mLastMsg)
+      if (localajbn.a(paramQQAppInterface) != null) {}
+      for (paramQQAppInterface = localajbn.a(paramQQAppInterface);; paramQQAppInterface = this.mLastMsg)
       {
         this.mLastMsg = paramQQAppInterface;
-        this.mUnreadNum = localaiej.d();
-        if (this.mDisplayTime < localaigo.a) {
-          this.mDisplayTime = localaigo.a;
+        this.mUnreadNum = localaizi.d();
+        if (this.mDisplayTime < localajbn.a) {
+          this.mDisplayTime = localajbn.a;
         }
         this.mShowTime = TimeManager.getInstance().getMsgDisplayTime(getRecentUserUin(), this.mDisplayTime);
         break;
       }
-      label300:
+      label301:
       if (this.mUnreadNum == 1) {
         paramQQAppInterface.append("有一条未读");
       } else if (this.mUnreadNum == 2) {

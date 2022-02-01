@@ -1,46 +1,19 @@
-import android.view.View;
-import android.widget.TextView;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import org.jetbrains.annotations.NotNull;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileOtherWithSecondHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileExtendFriendSettingItem", "Lcom/tencent/mobileqq/widget/FormSwitchItem;", "getProfileExtendFriendSettingItem", "()Lcom/tencent/mobileqq/widget/FormSwitchItem;", "setProfileExtendFriendSettingItem", "(Lcom/tencent/mobileqq/widget/FormSwitchItem;)V", "profileExtendFriendTv", "Landroid/widget/TextView;", "getProfileExtendFriendTv", "()Landroid/widget/TextView;", "setProfileExtendFriendTv", "(Landroid/widget/TextView;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azak
-  extends RecyclerView.ViewHolder
+class azak
+  implements Animation.AnimationListener
 {
-  @NotNull
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  @NotNull
-  private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  azak(azac paramazac, int paramInt) {}
   
-  public azak(@NotNull View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramView);
-    View localView = paramView.findViewById(2131366215);
-    if (localView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)localView);
-    paramView = paramView.findViewById(2131366219);
-    if (paramView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
+    azac.a(this.jdField_a_of_type_Azac, this.jdField_a_of_type_Int);
   }
   
-  @NotNull
-  public final TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  @NotNull
-  public final FormSwitchItem a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

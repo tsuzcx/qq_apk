@@ -1,21 +1,21 @@
-import UserGrowth.stBlockRecommPersonRsp;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
 class unh
-  implements uqy
+  implements View.OnSystemUiVisibilityChangeListener
 {
   unh(ung paramung) {}
   
-  public void a(urj paramurj)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (!(paramurj.a instanceof stBlockRecommPersonRsp)) {
-      uya.b("WSUserBusiness", "[actionBlockRecommendPerson] data error: " + paramurj.a);
-    }
-    do
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 4866;; paramInt = 771)
     {
+      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
       return;
-      paramurj = (stBlockRecommPersonRsp)paramurj.a;
-    } while (paramurj == null);
-    uya.b("WSUserBusiness", "[actionBlockRecommendPerson] data success resultBean.ret:" + paramurj.ret);
+    }
   }
 }
 

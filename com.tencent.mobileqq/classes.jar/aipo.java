@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aipo
-  extends aycd
+  implements View.OnClickListener
 {
-  private aipo(FriendFragment paramFriendFragment) {}
+  public aipo(BlessActivity paramBlessActivity) {}
   
-  protected void b(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    FriendFragment.a(this.a);
+    bdla.b(this.a.app, "CliOper", "", "", "0X800632F", "0X800632F", 0, 0, "", "", "", "");
+    BlessActivity.a(this.a, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import aasf;
+import abhr;
 import android.content.Intent;
-import bahm;
-import bbpo;
-import bbqf;
-import bbqx;
-import bbrp;
+import bbob;
+import bcwi;
+import bcwz;
+import bcxr;
+import bcyj;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
@@ -31,14 +32,14 @@ class SendVideoActivity$SendTask$1
       if (j == 9501) {
         i = 4;
       }
-      localObject2 = bbqf.a(0, i);
-      localObject1 = bbqf.a(this.this$0.jdField_a_of_type_AndroidContentIntent, (bbqx)localObject2);
-      ((bbqx)localObject2).a((bbrp)localObject1);
+      localObject2 = bcwz.a(0, i);
+      localObject1 = bcwz.a(this.this$0.jdField_a_of_type_AndroidContentIntent, (bcxr)localObject2);
+      ((bcxr)localObject2).a((bcyj)localObject1);
       if (j != 9501) {
         break label214;
       }
-      localObject2 = new aasf(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-      ((aasf)localObject2).a(((aasf)localObject2).a((bbrp)localObject1));
+      localObject2 = new abhr(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+      ((abhr)localObject2).a(((abhr)localObject2).a((bcyj)localObject1));
     }
     for (;;)
     {
@@ -52,12 +53,12 @@ class SendVideoActivity$SendTask$1
       }
       return;
       label214:
-      localObject2 = new bbpo(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-      localObject1 = ((bbpo)localObject2).a((bbrp)localObject1);
+      localObject2 = new bcwi(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+      localObject1 = ((bcwi)localObject2).a((bcyj)localObject1);
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null) {
-        ((bahm)this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(326)).a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).uniseq);
+        ((bbob)this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(QQManagerFactory.MEDIA_MSG_ORDER_SEND_MANAGER)).a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).uniseq);
       }
-      ((bbpo)localObject2).a((MessageRecord)localObject1);
+      ((bcwi)localObject2).a((MessageRecord)localObject1);
     }
   }
 }

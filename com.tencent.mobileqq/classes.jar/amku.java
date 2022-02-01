@@ -1,77 +1,141 @@
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.addon.DiyPendantEntity;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.pendant.DiyAddonPbInfo.AddonGetDiyInfoReq;
+import com.tencent.pb.pendant.DiyAddonPbInfo.AddonGetDiyInfoRsp;
+import com.tencent.pb.pendant.DiyAddonPbInfo.AddonReqComm;
+import com.tencent.pb.pendant.DiyAddonPbInfo.ReadAddonReq;
+import com.tencent.pb.pendant.DiyAddonPbInfo.ReadAddonRsp;
+import com.tencent.pb.pendant.DiyAddonUser.UserDiyInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.security.KeyFactory;
-import java.security.Signature;
-import java.security.spec.X509EncodedKeySpec;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class amku
+  extends BusinessHandler
 {
-  private String a;
-  private String b;
-  
-  public amku(String paramString1, String paramString2)
+  public amku(QQAppInterface paramQQAppInterface)
   {
-    this.b = paramString1;
-    this.a = paramString2;
+    super(paramQQAppInterface);
   }
   
-  public static boolean a(byte[] paramArrayOfByte1, String paramString, byte[] paramArrayOfByte2)
+  public void a(List<Long> paramList, BusinessObserver paramBusinessObserver)
   {
-    if ((paramArrayOfByte1 == null) || (TextUtils.isEmpty(paramString)) || (paramArrayOfByte2 == null) || (paramArrayOfByte2.length == 0) || (paramArrayOfByte1.length == 0)) {}
-    do
-    {
-      return false;
-      try
-      {
-        paramString = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(bfuc.decode(paramString.getBytes("UTF-8"), 0)));
-        Signature localSignature = Signature.getInstance("SHA1WithRSA");
-        localSignature.initVerify(paramString);
-        localSignature.update(paramArrayOfByte1);
-        boolean bool = localSignature.verify(paramArrayOfByte2);
-        return bool;
-      }
-      catch (Throwable paramArrayOfByte1) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("RSAVerify", 2, "verify failed");
-    return false;
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("DiyPendantHandler", 2, "try fetchDiyPendants: " + TextUtils.join(",", paramList));
+    }
+    DiyAddonPbInfo.AddonReqComm localAddonReqComm = new DiyAddonPbInfo.AddonReqComm();
+    localAddonReqComm.platform.set(109L);
+    localAddonReqComm.osver.set(Build.VERSION.RELEASE);
+    localAddonReqComm.mqqver.set("8.4.10");
+    DiyAddonPbInfo.AddonGetDiyInfoReq localAddonGetDiyInfoReq = new DiyAddonPbInfo.AddonGetDiyInfoReq();
+    localAddonGetDiyInfoReq.uin.set(paramList);
+    paramList = new DiyAddonPbInfo.ReadAddonReq();
+    paramList.cmd.set(1);
+    paramList.comm.set(localAddonReqComm);
+    paramList.packetseq.set(System.currentTimeMillis());
+    paramList.reqcmd0x01.set(localAddonGetDiyInfoReq);
+    paramBusinessObserver = super.createToServiceMsg("ReadDiyAddonInfo.1", paramBusinessObserver);
+    paramBusinessObserver.putWupBuffer(paramList.toByteArray());
+    super.sendPbReq(paramBusinessObserver);
   }
   
-  public boolean a(int paramInt)
+  public Class<? extends BusinessObserver> observerClass()
   {
-    boolean bool = true;
-    try
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("ReadDiyAddonInfo.1"))
     {
-      if ((FileUtils.fileExists(this.a)) && (FileUtils.fileExists(this.b)))
-      {
-        byte[] arrayOfByte1 = FileUtils.readFile(this.a);
-        byte[] arrayOfByte2 = FileUtils.readFile(this.b);
-        if ((arrayOfByte1 == null) || (arrayOfByte1.length == 0) || (arrayOfByte2 == null) || (arrayOfByte2.length == 0)) {
-          break label104;
-        }
-        if (paramInt == 0) {
-          return a(arrayOfByte1, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq8i/7++SDj/syS1oKlYdNJXuRQo1IxcizuFBwq9Ohi9q9u0GInkVFi/3mRU6opILNqNVUoVncxnvfrBrrzxXgPkOow4TFTfo0f2wQRxsuVud/Fjtiz256JKFvIXHdTJ+ZAFIHLtcJMrDhvTUgIIfv5uDZIXARy2KFSzUhqoEwZt3I3Uv9beVecgYofjQ/N/YtG2uWb5dpHMXfsq6JpEpfKxbbFPYJLnrMol0ngsgDrF1h3C28R6l28jFL1nzkxBNt1dIrmitveA0dXbZhYWpRDjg7Ywwt96c1Qq85rs+TL6pNKAYt7aJy/6+PGfMcbkRrtsL72eokicKHnMKVC84fQIDAQAB", arrayOfByte2);
-        }
-        if (1 != paramInt) {
-          break label102;
-        }
-        bool = a(arrayOfByte1, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ZRiTq5kd+Bsb7Rsvrk/8kF3jRPEAln7kLVAKRi4+jb/gdKEAI9y5jhuyobFq9jLMqKCYKJKb8v/KaGjX0LFZg5+FnC/duF829s7lWPKXNggne+hQOwhWFiamCwf8r8Hzi3YmrKPR4iA/bJUwTbey9T0hKpYbB9QA7IpIQAmGd4cn1ylq/2vblqNwpVV53+SCSg5XRqIXwPYRL9siMZEJAtXbjbpHw8B18zYUGlh2XRJssZyNtgtHOQIvwmdUOGTVRTt7sBZy7adUnq3cpH6/qpdLlAVUAFq/WLwUHNviC+uW47884PSdwqHg8NdeIhitfbcdtOmCNt3OJUvf91L/QIDAQAB", arrayOfByte2);
-        return bool;
+      bool = paramFromServiceMsg.isSuccess();
+      localObject = String.valueOf(paramToServiceMsg.getAttribute("_tag_LOGSTR"));
+      if (QLog.isColorLevel()) {
+        QLog.d("DiyPendantHandler", 2, "key_seq=" + (String)localObject + " isSuccess=" + bool + " resultCode=" + paramFromServiceMsg.getResultCode());
+      }
+      if (bool) {
+        paramFromServiceMsg = new DiyAddonPbInfo.ReadAddonRsp();
       }
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    while (!QLog.isColorLevel())
     {
-      return false;
+      do
+      {
+        try
+        {
+          boolean bool;
+          paramFromServiceMsg = (DiyAddonPbInfo.ReadAddonRsp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
+          if (paramFromServiceMsg != null) {
+            if (paramFromServiceMsg.ret.get() != 0L)
+            {
+              QLog.d("DiyPendantHandler", 1, "fetch diy pendant info 回包 sso 成功 ，server 失败，ret = " + paramFromServiceMsg.ret.get());
+              super.notifyUI(paramToServiceMsg, 1, false, null);
+              return;
+            }
+          }
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          Object localObject;
+          for (;;)
+          {
+            QLog.e("DiyPendantHandler", 1, "fetch diy pendant info on response err", paramFromServiceMsg);
+            paramFromServiceMsg = null;
+          }
+          if ((paramFromServiceMsg.rspcmd0x01.has()) && (paramFromServiceMsg.rspcmd0x01.userdiyinfo.has()))
+          {
+            paramObject = paramFromServiceMsg.rspcmd0x01.userdiyinfo.get();
+            paramFromServiceMsg = new ArrayList();
+            if (paramObject != null)
+            {
+              paramObject = paramObject.iterator();
+              while (paramObject.hasNext())
+              {
+                localObject = (DiyAddonUser.UserDiyInfo)paramObject.next();
+                if ((((DiyAddonUser.UserDiyInfo)localObject).uin.has()) && (((DiyAddonUser.UserDiyInfo)localObject).curid.has()))
+                {
+                  DiyPendantEntity localDiyPendantEntity = new DiyPendantEntity();
+                  localDiyPendantEntity.uinAndDiyId = (((DiyAddonUser.UserDiyInfo)localObject).uin.get() + "_" + ((DiyAddonUser.UserDiyInfo)localObject).curid.get());
+                  localDiyPendantEntity.diyId = ((DiyAddonUser.UserDiyInfo)localObject).curid.get();
+                  localDiyPendantEntity.borderId = ((DiyAddonUser.UserDiyInfo)localObject).frameid.get();
+                  localDiyPendantEntity.updateTs = ((DiyAddonUser.UserDiyInfo)localObject).updatets.get();
+                  localDiyPendantEntity.setStickerInfoList(((DiyAddonUser.UserDiyInfo)localObject).stickerinfo.get());
+                  paramFromServiceMsg.add(localDiyPendantEntity);
+                }
+              }
+            }
+            amks.a().a(this.app, true, paramFromServiceMsg);
+            super.notifyUI(paramToServiceMsg, 1, true, paramFromServiceMsg);
+            return;
+          }
+          super.notifyUI(paramToServiceMsg, 1, false, null);
+          return;
+        }
+        super.notifyUI(paramToServiceMsg, 1, false, null);
+        return;
+        super.notifyUI(paramToServiceMsg, 1, false, null);
+      } while (!QLog.isColorLevel());
+      QLog.d("DiyPendantHandler", 2, "DiyText isSuccess is false sso通道  异常");
+      return;
     }
-    catch (Throwable localThrowable)
-    {
-      return false;
-    }
-    bool = false;
-    label102:
-    return bool;
-    label104:
-    return false;
+    QLog.d("DiyPendantHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
   }
 }
 

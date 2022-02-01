@@ -40,9 +40,9 @@ public class QzoneFeedItemTimeLocationView
   
   private void init()
   {
-    LayoutInflater.from(this.mContext).inflate(2131558865, this);
-    this.feedLocationTv = ((TextView)findViewById(2131366512));
-    this.feedCreateTimeTv = ((TextView)findViewById(2131366582));
+    LayoutInflater.from(this.mContext).inflate(2131558891, this);
+    this.feedLocationTv = ((TextView)findViewById(2131366621));
+    this.feedCreateTimeTv = ((TextView)findViewById(2131366691));
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)

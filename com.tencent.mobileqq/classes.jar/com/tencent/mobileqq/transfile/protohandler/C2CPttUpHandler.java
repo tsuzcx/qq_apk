@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import amwm;
+import anza;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -158,7 +158,7 @@ public class C2CPttUpHandler
     Object localObject1 = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
-    amwm localamwm = paramProtoResp.statisInfo;
+    anza localanza = paramProtoResp.statisInfo;
     int i;
     if (((FromServiceMsg)localObject2).getResultCode() != 1000)
     {
@@ -171,7 +171,7 @@ public class C2CPttUpHandler
         if (paramProtoReq == null) {
           paramProtoResp = "";
         }
-        setResult(-1, 9311, (String)localObject1, paramProtoResp, localamwm, localRichProtoResp.resps);
+        setResult(-1, 9311, (String)localObject1, paramProtoResp, localanza, localRichProtoResp.resps);
       }
     }
     cmd0x346.ApplyUploadRsp localApplyUploadRsp;
@@ -186,7 +186,7 @@ public class C2CPttUpHandler
       if (paramProtoReq == null) {
         paramProtoResp = "";
       }
-      setResult(-1, 9044, (String)localObject1, paramProtoResp, localamwm, localRichProtoResp.resps);
+      setResult(-1, 9044, (String)localObject1, paramProtoResp, localanza, localRichProtoResp.resps);
       continue;
       try
       {
@@ -215,7 +215,7 @@ public class C2CPttUpHandler
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr((byte[])localObject1), localamwm, localRichProtoResp.resps);
+        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr((byte[])localObject1), localanza, localRichProtoResp.resps);
       }
     }
     if (localApplyUploadRsp.uint32_pack_size.has()) {
@@ -247,9 +247,9 @@ public class C2CPttUpHandler
             localC2CPttUpResp.ipList.add(localObject2);
           }
         }
-        setResult(0, 0, "", "", localamwm, localC2CPttUpResp);
+        setResult(0, 0, "", "", localanza, localC2CPttUpResp);
         break;
-        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localamwm, localC2CPttUpResp);
+        setResult(-1, -9527, BaseTransProcessor.getUrlReason(i), "", localanza, localC2CPttUpResp);
         break;
         if (localObject2 == null) {
           break label482;

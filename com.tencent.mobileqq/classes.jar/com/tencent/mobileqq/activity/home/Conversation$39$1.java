@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.home;
 
-import ajce;
-import akkk;
+import ajxt;
+import algc;
 
 public class Conversation$39$1
   implements Runnable
 {
-  public Conversation$39$1(ajce paramajce, String paramString) {}
+  public Conversation$39$1(ajxt paramajxt, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ajce.a.a != null) {
-      this.jdField_a_of_type_Ajce.a.a.a(this.jdField_a_of_type_JavaLangString, 3000);
+    if (this.jdField_a_of_type_Ajxt.a.a != null) {
+      this.jdField_a_of_type_Ajxt.a.a.a(this.jdField_a_of_type_JavaLangString, 3000);
     }
   }
 }

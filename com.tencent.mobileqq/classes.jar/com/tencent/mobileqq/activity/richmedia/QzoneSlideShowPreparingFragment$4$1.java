@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import akuj;
+import alsf;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class QzoneSlideShowPreparingFragment$4$1
   implements Runnable
 {
-  public QzoneSlideShowPreparingFragment$4$1(akuj paramakuj) {}
+  public QzoneSlideShowPreparingFragment$4$1(alsf paramalsf) {}
   
   public void run()
   {

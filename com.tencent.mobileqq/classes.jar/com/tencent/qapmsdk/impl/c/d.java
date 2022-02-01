@@ -2,7 +2,7 @@ package com.tencent.qapmsdk.impl.c;
 
 import android.text.TextUtils;
 import com.tencent.qapmsdk.common.logger.Logger;
-import com.tencent.qapmsdk.impl.instrumentation.g;
+import com.tencent.qapmsdk.impl.instrumentation.h;
 import java.util.concurrent.atomic.AtomicInteger;
 import okhttp3.Interceptor;
 import okhttp3.Request;
@@ -94,22 +94,22 @@ public class d
     return paramRequest;
   }
   
-  private Request a(Request paramRequest, g paramg)
+  private Request a(Request paramRequest, h paramh)
   {
     try
     {
       Request.Builder localBuilder = paramRequest.newBuilder();
-      g localg = paramg;
-      if (paramg == null) {
-        localg = new g();
+      h localh = paramh;
+      if (paramh == null) {
+        localh = new h();
       }
-      localg.a(a(paramRequest, localg.c()));
-      paramg = localBuilder.build();
-      return paramg;
+      localh.a(a(paramRequest, localh.c()));
+      paramh = localBuilder.build();
+      return paramh;
     }
-    catch (Exception paramg)
+    catch (Exception paramh)
     {
-      Logger.INSTANCE.e(new String[] { "QAM_Impl_QAPMHTTPInterceptor", "QAPMOkHttp3Interceptor_  setCrossProcessHeader---> has an error : ", paramg.toString() });
+      Logger.INSTANCE.e(new String[] { "QAM_Impl_QAPMHTTPInterceptor", "QAPMOkHttp3Interceptor_  setCrossProcessHeader---> has an error : ", paramh.toString() });
     }
     return paramRequest;
   }
@@ -125,20 +125,20 @@ public class d
     //   10: ifnull +301 -> 311
     //   13: invokestatic 123	com/tencent/qapmsdk/impl/g/b:c	()Z
     //   16: ifeq +295 -> 311
-    //   19: new 95	com/tencent/qapmsdk/impl/instrumentation/g
+    //   19: new 95	com/tencent/qapmsdk/impl/instrumentation/h
     //   22: dup
-    //   23: invokespecial 96	com/tencent/qapmsdk/impl/instrumentation/g:<init>	()V
+    //   23: invokespecial 96	com/tencent/qapmsdk/impl/instrumentation/h:<init>	()V
     //   26: astore 6
     //   28: aload 5
     //   30: astore 4
     //   32: aload 6
     //   34: iconst_0
-    //   35: invokevirtual 125	com/tencent/qapmsdk/impl/instrumentation/g:b	(I)V
+    //   35: invokevirtual 125	com/tencent/qapmsdk/impl/instrumentation/h:b	(I)V
     //   38: aload 5
     //   40: astore 4
     //   42: aload 6
     //   44: getstatic 130	com/tencent/qapmsdk/impl/b/b:d	Lcom/tencent/qapmsdk/impl/b/b;
-    //   47: invokevirtual 133	com/tencent/qapmsdk/impl/instrumentation/g:a	(Lcom/tencent/qapmsdk/impl/b/b;)V
+    //   47: invokevirtual 133	com/tencent/qapmsdk/impl/instrumentation/h:a	(Lcom/tencent/qapmsdk/impl/b/b;)V
     //   50: aload 5
     //   52: astore 4
     //   54: aload_0
@@ -156,7 +156,7 @@ public class d
     //   79: aload_0
     //   80: aload 5
     //   82: aload 6
-    //   84: invokespecial 139	com/tencent/qapmsdk/impl/c/d:a	(Lokhttp3/Request;Lcom/tencent/qapmsdk/impl/instrumentation/g;)Lokhttp3/Request;
+    //   84: invokespecial 139	com/tencent/qapmsdk/impl/c/d:a	(Lokhttp3/Request;Lcom/tencent/qapmsdk/impl/instrumentation/h;)Lokhttp3/Request;
     //   87: astore 4
     //   89: aload_0
     //   90: aload 4
@@ -182,7 +182,7 @@ public class d
     //   129: ldc 150
     //   131: invokevirtual 153	okhttp3/Response:header	(Ljava/lang/String;)Ljava/lang/String;
     //   134: invokestatic 157	com/tencent/qapmsdk/impl/g/a:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   137: invokevirtual 161	com/tencent/qapmsdk/impl/instrumentation/g:g	(Ljava/lang/String;)V
+    //   137: invokevirtual 161	com/tencent/qapmsdk/impl/instrumentation/h:g	(Ljava/lang/String;)V
     //   140: aload_0
     //   141: getfield 19	com/tencent/qapmsdk/impl/c/d:a	Lcom/tencent/qapmsdk/impl/c/b;
     //   144: invokeinterface 137 1 0
@@ -303,7 +303,7 @@ public class d
     //   6	75	5	localRequest	Request
     //   170	158	5	localException5	Exception
     //   335	1	5	localException6	Exception
-    //   26	215	6	localg	g
+    //   26	215	6	localh	h
     // Exception table:
     //   from	to	target	type
     //   79	89	170	java/lang/Exception

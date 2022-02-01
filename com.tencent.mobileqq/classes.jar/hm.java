@@ -34,7 +34,7 @@ public class hm
     localIMMRReq.str_url.set(paramString);
     paramString = new oidb_0xa4d.ReqBody();
     paramString.msg_immr_req.set(localIMMRReq);
-    nmb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new hn(false, this.jdField_a_of_type_Hl), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
+    ntb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new hn(false, this.jdField_a_of_type_Hl), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
   }
   
   public Class<? extends BusinessObserver> observerClass()

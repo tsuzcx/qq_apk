@@ -1,17 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class qke
-  implements View.OnClickListener
+class qke
+  implements aaea
 {
-  public qke(NativeUsersCommentsView paramNativeUsersCommentsView) {}
+  qke(qka paramqka, String paramString) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    this.a.callOnClick();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReadInJoyWebviewPlugin", 4, "receive notifyLoadSkin callback resp:" + paramBundle.toString());
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId")).put("rate", paramBundle.getInt("rate"));
+      this.jdField_a_of_type_Qka.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      QLog.w("ReadInJoyWebviewPlugin", 1, "notifyLoadSkin error " + paramBundle.toString());
+      this.jdField_a_of_type_Qka.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+    }
   }
 }
 

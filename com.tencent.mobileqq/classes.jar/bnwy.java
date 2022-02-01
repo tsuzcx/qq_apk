@@ -1,10 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
 
-public final class bnwy
-  implements DialogInterface.OnClickListener
+public class bnwy
+  implements bnxe
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public bnwy(AEEditorVideoClipFragment paramAEEditorVideoClipFragment, bnxc parambnxc) {}
+  
+  public void a(float paramFloat)
+  {
+    AEEditorVideoClipFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleClipVideoAEEditorVideoClipFragment).setTimeLineViewSpeed(paramFloat, new bnwz(this, paramFloat));
+  }
 }
 
 

@@ -1,165 +1,55 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.X5ApiPlugin.1;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.WebView;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment.15.1;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment.15.2;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment.15.3;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.CookieManager;
+import com.tencent.smtt.sdk.CookieSyncManager;
+import java.util.Map;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class auws
-  extends WebViewPlugin
+  implements WtTicketPromise
 {
-  private ConcurrentHashMap<String, auwt> a;
-  private ConcurrentHashMap<String, auwt> b;
+  public auws(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public auws()
+  public void Done(Ticket paramTicket)
   {
-    this.mPluginNameSpace = "x5";
-  }
-  
-  private int a(Context paramContext, String paramString)
-  {
-    if (bgyb.b())
+    if (paramTicket != null)
     {
-      if ((!TextUtils.isEmpty(paramString)) && (bgyb.a(paramString)) && (!paramString.contains("asyncMode=3")) && (!paramString.contains("sonic=1")))
-      {
-        if ((paramContext != null) && (QbSdk.getTbsVersion(paramContext) >= 43810)) {
-          return 4;
-        }
-        return 3;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService : Done");
       }
-      return 2;
+      String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
+      this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie("now.qq.com", "p_skey=" + str);
+      CookieSyncManager.getInstance().sync();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putString("pskey", "" + str).commit();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
+      com.tencent.mobileqq.fragment.NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
     }
-    return 1;
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.1(this));
   }
   
-  private void a(Context paramContext, WebView paramWebView, auwt paramauwt)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    int i = a(paramContext, paramauwt.jdField_a_of_type_JavaLangString);
-    if (i == 4) {
-      a(paramWebView, paramauwt);
+    if (QLog.isColorLevel()) {
+      QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
     }
-    b(i, paramauwt.b);
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.2(this));
   }
   
-  private void a(auwt paramauwt)
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    this.b.put(paramauwt.jdField_a_of_type_JavaLangString, paramauwt);
-    b(5, paramauwt.b);
-  }
-  
-  private void a(WebView paramWebView, auwt paramauwt)
-  {
-    this.a.put(paramauwt.jdField_a_of_type_JavaLangString, paramauwt);
-    ThreadManager.post(new X5ApiPlugin.1(this, paramauwt, paramWebView), 5, null, true);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.b != null) && (this.a != null))
-    {
-      Object localObject = this.b.values().iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        localObject = (auwt)((Iterator)localObject).next();
-        this.b.remove(((auwt)localObject).jdField_a_of_type_JavaLangString);
-        this.a.put(((auwt)localObject).jdField_a_of_type_JavaLangString, localObject);
-        a(this.mRuntime.a(), (auwt)localObject);
-        b(4, ((auwt)localObject).b);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
     }
-  }
-  
-  private boolean a()
-  {
-    Object localObject = this.mRuntime.a();
-    if (localObject != null)
-    {
-      localObject = (bgxd)((WebViewFragment)localObject).getComponentProvider().a(-2);
-      return (localObject != null) && (!((bgxd)localObject).k);
-    }
-    return false;
-  }
-  
-  private void b()
-  {
-    if (this.a == null) {
-      this.a = new ConcurrentHashMap();
-    }
-    if (this.b == null) {
-      this.b = new ConcurrentHashMap();
-    }
-  }
-  
-  private void b(int paramInt, String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", paramInt);
-      callJs(paramString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void a()
-  {
-    a(true);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0)
-    {
-      if (this.a.containsKey(paramString)) {
-        b(0, ((auwt)this.a.remove(paramString)).b);
-      }
-      a(a());
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"x5".equals(paramString2)) {
-      return false;
-    }
-    if (("preload".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString1 = new auwt();
-        paramString1.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("url");
-        paramString1.b = paramJsBridgeListener.optString("callback");
-        paramString1.jdField_a_of_type_Boolean = paramJsBridgeListener.optBoolean("doWhenPageFinish", false);
-        b();
-        if (paramString1.jdField_a_of_type_Boolean) {
-          if (a()) {
-            a(this.mRuntime.a(), this.mRuntime.a(), paramString1);
-          } else {
-            a(paramString1);
-          }
-        }
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-      }
-      a(this.mRuntime.a(), this.mRuntime.a(), paramString1);
-    }
-    return true;
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.3(this));
   }
 }
 

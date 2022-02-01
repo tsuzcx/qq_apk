@@ -4,41 +4,47 @@ import com.tencent.aekit.openrender.internal.AEChainI;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.filter.BlurEffectFilter;
-import com.tencent.ttpic.openapi.filter.TTBeautyV5PrefixFilterGroup;
+import com.tencent.ttpic.openapi.filter.TTBeautyV6PrefixFilterGroup;
+import com.tencent.ttpic.util.AlgoUtils;
+import java.util.List;
 
 public class AESmooth
   extends AEChainI
 {
   private static final String TAG = "AESmoothV5";
+  private double autoBrightnessStrength = 1.0D;
+  private double autoContrastStrength = 1.0D;
   private BlurEffectFilter blurEffectFilter = new BlurEffectFilter();
   private int exposureLevel;
+  private double faceColorStrength = 1.0D;
   private boolean isOverall = false;
   private float lookUpIntensity;
   private String lookUpPath;
   private PTFaceAttr mFaceAttr;
   private boolean mIsTakePhoto = false;
   private boolean mIsVeryLowEndDevice;
-  private TTBeautyV5PrefixFilterGroup mSmoothFilter = new TTBeautyV5PrefixFilterGroup();
+  private TTBeautyV6PrefixFilterGroup mSmoothFilter = new TTBeautyV6PrefixFilterGroup();
   private int smoothLevel;
   
   private void configFilter()
   {
     int i;
-    if ((!this.mIsVeryLowEndDevice) && (this.mFaceAttr != null) && (this.mFaceAttr.getCurve() != null))
+    if ((!this.mIsVeryLowEndDevice) && (this.mFaceAttr != null) && (this.mFaceAttr.getAutoContrastCurve() != null) && (this.mFaceAttr.getAutoBrightnessCurve() != null))
     {
       i = 1;
       if (i == 0) {
-        break label65;
+        break label107;
       }
-      this.mSmoothFilter.updateToneCurveTexture(this.mFaceAttr.getCurve(), this.mIsTakePhoto);
+      this.mSmoothFilter.updateToneCurveTexture(AlgoUtils.mergeCurve(this.mFaceAttr.getAutoContrastCurve(), this.mFaceAttr.getAutoBrightnessCurve(), (float)this.autoContrastStrength, (float)this.autoBrightnessStrength), this.mIsTakePhoto);
     }
     for (;;)
     {
       this.mSmoothFilter.updateBlurAndSharpenStrength(this.mIsTakePhoto);
+      this.mSmoothFilter.setWhitenStrength((float)this.faceColorStrength);
       return;
       i = 0;
       break;
-      label65:
+      label107:
       this.mSmoothFilter.resetToneCurveTexture();
     }
   }
@@ -49,7 +55,7 @@ public class AESmooth
       return;
     }
     this.mSmoothFilter.apply();
-    this.blurEffectFilter.ApplyGLSLFilter();
+    this.blurEffectFilter.applyGLSLFilter();
     this.mSmoothFilter.setLookUpLeftIntensity(0.0F);
     this.mSmoothFilter.setLookUpRightIntensity(0.0F);
     this.mIsApplied = true;
@@ -61,7 +67,7 @@ public class AESmooth
       this.mSmoothFilter.clear();
     }
     if (this.blurEffectFilter != null) {
-      this.blurEffectFilter.ClearGLSL();
+      this.blurEffectFilter.clearGLSL();
     }
     this.mIsApplied = false;
   }
@@ -75,6 +81,9 @@ public class AESmooth
   {
     if (this.mFaceAttr == null) {
       return paramFrame;
+    }
+    if (((this.mFaceAttr.getAllFacePoints() == null) || (this.mFaceAttr.getAllFacePoints().size() == 0)) && (this.mFaceAttr.getReusedFaceAttr() != null)) {
+      this.mFaceAttr = this.mFaceAttr.getReusedFaceAttr();
     }
     configFilter();
     paramFrame = this.mSmoothFilter.render(paramFrame, this.mFaceAttr);
@@ -93,6 +102,16 @@ public class AESmooth
     }
   }
   
+  public void setAutoBrightnessStrength(double paramDouble)
+  {
+    this.autoBrightnessStrength = paramDouble;
+  }
+  
+  public void setAutoContrastStrength(double paramDouble)
+  {
+    this.autoContrastStrength = paramDouble;
+  }
+  
   public void setExposureLevel(int paramInt)
   {
     this.exposureLevel = paramInt;
@@ -107,6 +126,11 @@ public class AESmooth
   public void setFaceAttr(PTFaceAttr paramPTFaceAttr)
   {
     this.mFaceAttr = paramPTFaceAttr;
+  }
+  
+  public void setFaceColorStrength(double paramDouble)
+  {
+    this.faceColorStrength = paramDouble;
   }
   
   public void setFilterBlurStrength(double paramDouble)

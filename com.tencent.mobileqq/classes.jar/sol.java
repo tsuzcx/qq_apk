@@ -1,63 +1,25 @@
-import android.annotation.TargetApi;
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.BaseMovementMethod;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout.StressState;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-@TargetApi(11)
-public class sol
-  extends BaseMovementMethod
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowHelper$startShrinkAnim$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sol
+  implements Animator.AnimatorListener
 {
-  private static sol a;
+  public void onAnimationCancel(@Nullable Animator paramAnimator) {}
   
-  public static sol a()
+  public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    if (a == null) {
-      a = new sol();
-    }
-    return a;
+    soh.a(this.a, false);
+    this.a.a().setStressState(VideoFeedsStressFollowLayout.StressState.Shrink);
   }
   
-  public void initialize(TextView paramTextView, Spannable paramSpannable)
-  {
-    Selection.removeSelection(paramSpannable);
-  }
+  public void onAnimationRepeat(@Nullable Animator paramAnimator) {}
   
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getActionMasked();
-    if ((i == 1) || (i == 0))
-    {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      paramMotionEvent = paramTextView.getLayout();
-      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-      if (j >= paramTextView.getText().length()) {
-        return true;
-      }
-      paramMotionEvent = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (paramMotionEvent.length > 0)
-      {
-        if (i == 1) {
-          paramMotionEvent[0].onClick(paramTextView);
-        }
-        for (;;)
-        {
-          return true;
-          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(paramMotionEvent[0]), paramSpannable.getSpanEnd(paramMotionEvent[0]));
-        }
-      }
-      Selection.removeSelection(paramSpannable);
-    }
-    return false;
-  }
+  public void onAnimationStart(@Nullable Animator paramAnimator) {}
 }
 
 

@@ -1,49 +1,23 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public class ahyp
-  implements TextView.OnEditorActionListener
+class ahyp
+  extends antx
 {
-  public ahyp(SearchBaseActivity paramSearchBaseActivity) {}
+  ahyp(ahyl paramahyl) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramInt != 3)
+    if (paramBoolean)
     {
-      bool1 = bool2;
-      if (paramKeyEvent != null)
-      {
-        bool1 = bool2;
-        if (paramKeyEvent.getKeyCode() != 66) {}
+      this.a.a = aslc.a(this.a.app).a(this.a.app, this.a.getCurFriendUin());
+      this.a.a(this.a.a);
+      if ((this.a.a != null) && (!this.a.a.isEmpty())) {
+        this.a.a(false);
       }
     }
-    else
-    {
-      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if ((!TextUtils.isEmpty(paramTextView)) && (!TextUtils.isEmpty(paramTextView.trim()))) {
-        break label102;
-      }
-      this.a.a(true, this.a.jdField_a_of_type_AndroidWidgetEditText);
-      QQToast.a(this.a.getApplicationContext(), amtj.a(2131712720), 0).a();
-      bool1 = true;
-    }
-    return bool1;
-    label102:
-    if (!TextUtils.isEmpty(paramTextView))
-    {
-      bbgk.a("add_page", "search", "clk_search_all", this.a.h + 1, 0, new String[] { "", "", paramTextView, "" });
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
-    }
-    return true;
   }
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

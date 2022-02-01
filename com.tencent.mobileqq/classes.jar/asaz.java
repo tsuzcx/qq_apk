@@ -1,112 +1,99 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.download.unite.core.UniteDownloadDbOperator.1;
+import com.tencent.mobileqq.download.unite.core.UniteDownloadDbOperator.2;
+import com.tencent.mobileqq.download.unite.core.UniteDownloadEntity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import org.jetbrains.annotations.Nullable;
 
 public class asaz
-  extends asbe
 {
-  public asaz(QQAppInterface paramQQAppInterface, Context paramContext)
+  private EntityManager a;
+  
+  public static asaz a()
   {
-    super(paramQQAppInterface, paramContext);
+    return asba.a();
   }
   
-  protected ImageView a(aezf paramaezf)
+  private void a(UniteDownloadEntity paramUniteDownloadEntity)
   {
-    if (paramaezf == null) {}
-    while (!(paramaezf instanceof agld)) {
-      return null;
+    this.a.remove(paramUniteDownloadEntity);
+  }
+  
+  private void b(String paramString)
+  {
+    this.a = new QQEntityManagerFactory(paramString).createEntityManager();
+  }
+  
+  private void c(String paramString)
+  {
+    b(paramString);
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    paramString = this.a.query(UniteDownloadEntity.class, UniteDownloadEntity.tableName(), false, "downloadTimestamp < ?", new String[] { String.valueOf(l - 2592000000L) }, null, null, null, null);
+    if (paramString != null)
+    {
+      paramString = paramString.iterator();
+      while (paramString.hasNext()) {
+        a((UniteDownloadEntity)paramString.next());
+      }
     }
-    return ((agld)paramaezf).a;
   }
   
-  protected void a(aezf paramaezf, ImageView paramImageView)
+  @Nullable
+  public List<UniteDownloadEntity> a(String paramString1, String paramString2)
   {
-    if (paramaezf == null) {}
-    while (!(paramaezf instanceof agld)) {
+    b(paramString1);
+    return this.a.query(UniteDownloadEntity.class, UniteDownloadEntity.tableName(), false, "source = ?", new String[] { paramString2 }, null, null, null, null);
+  }
+  
+  public void a(String paramString)
+  {
+    ThreadManager.excute(new UniteDownloadDbOperator.2(this, paramString), 32, null, false);
+  }
+  
+  public void a(String paramString, DownloadInfo paramDownloadInfo)
+  {
+    ThreadManager.excute(new UniteDownloadDbOperator.1(this, paramDownloadInfo, paramString), 32, null, false);
+    paramString = auku.a(paramDownloadInfo.l);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramDownloadInfo.f) {
+        azcl.a("0X800B53A", 0, "", paramString);
+      }
+    }
+    else {
       return;
     }
-    ((agld)paramaezf).a = paramImageView;
+    if (asau.a(paramDownloadInfo.m))
+    {
+      asbb.b(paramString);
+      return;
+    }
+    asbb.a(paramString);
   }
   
-  protected void a(View paramView, aezf paramaezf, ChatMessage paramChatMessage, int paramInt)
+  public boolean a(String paramString, UniteDownloadEntity paramUniteDownloadEntity)
   {
-    if ((paramChatMessage == null) || (paramChatMessage.isMultiMsg)) {}
-    int i;
-    do
+    b(paramString);
+    QLog.d("[UniteDownload] UniteDownloadDbOperator", 1, new Object[] { "[db] insertOrReplaceEntity: invoked. ", " uniteDownloadEntity: ", paramUniteDownloadEntity });
+    if (this.a.isOpen())
     {
-      do
+      if (paramUniteDownloadEntity.getStatus() == 1000)
       {
-        do
-        {
-          return;
-          QLog.i("OfflineFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
-        } while ((paramInt == -1) || (!(paramChatMessage instanceof MessageForFile)));
-        paramView = (MessageForFile)paramChatMessage;
-        paramaezf = aszt.a(this.a, paramView);
-      } while (paramaezf == null);
-      if (paramView.istroop == 3000) {}
-      for (i = 3; paramInt == 0; i = 1)
-      {
-        bcef.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", i, 0, "", "", "", "");
-        this.a.getFileManagerEngine().a(paramaezf.nSessionId);
-        return;
+        this.a.persistOrReplace(paramUniteDownloadEntity);
+        return paramUniteDownloadEntity.getStatus() == 1001;
       }
-    } while (paramInt != 1);
-    bcef.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", i, 0, "", "", "", "");
-    a(new asba(this, i, paramaezf));
-  }
-  
-  protected boolean a(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
-        paramChatMessage = (MessageForFile)paramChatMessage;
-        paramChatMessage = aszt.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+      if ((paramUniteDownloadEntity.getStatus() == 1001) || (paramUniteDownloadEntity.getStatus() == 1002)) {
+        return this.a.update(paramUniteDownloadEntity);
       }
-      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 2)) {
-        return true;
-      }
-    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 2));
-    return true;
-  }
-  
-  protected boolean b(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
-        paramChatMessage = (MessageForFile)paramChatMessage;
-        paramChatMessage = aszt.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
-      }
-      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 3)) {
-        return true;
-      }
-    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 3));
-    return true;
+    }
+    return false;
   }
 }
 

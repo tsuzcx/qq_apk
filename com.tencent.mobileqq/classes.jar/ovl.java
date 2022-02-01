@@ -1,16 +1,18 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.SwipListView;
 
 class ovl
-  extends owd
+  implements View.OnClickListener
 {
-  ovl(ouu paramouu, boolean paramBoolean, List paramList)
-  {
-    super(paramouu, null);
-  }
+  ovl(ovk paramovk, View paramView) {}
   
-  void a(owg paramowg)
+  public void onClick(View paramView)
   {
-    paramowg.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, ouu.b(this.jdField_a_of_type_Ouu), 3, 3);
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Ovk.a).a(this.jdField_a_of_type_AndroidViewView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

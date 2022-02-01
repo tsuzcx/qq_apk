@@ -1,40 +1,8 @@
-import com.tencent.mobileqq.abtest.ABTestController;
-import com.tencent.mtt.abtestsdk.entity.RomaExpEntity;
-import com.tencent.mtt.abtestsdk.listener.GetExperimentListener;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.imcore.message.QQMessageFacade.RefreshMessageContext;
 
-class acna
-  implements GetExperimentListener
+public abstract interface acna
 {
-  acna(acmz paramacmz, long paramLong, String paramString) {}
-  
-  public void getExperimentFailed(int paramInt, String paramString)
-  {
-    ABTestController.a("ExperimentInfo", "abtest api load exp failed, i:" + paramInt + ", s:" + paramString);
-  }
-  
-  public void getExperimentSucceed(List<RomaExpEntity> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      ABTestController.a("ExperimentInfo", "abtest api load exp failed, list empty");
-    }
-    for (;;)
-    {
-      return;
-      long l1 = System.currentTimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      ABTestController.a("ExperimentInfo", "abtest api load exp success, size:" + paramList.size() + ", cost:" + (l1 - l2));
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        RomaExpEntity localRomaExpEntity = (RomaExpEntity)paramList.next();
-        if ((localRomaExpEntity != null) && (localRomaExpEntity.getLayerCode().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
-          acmz.a(this.jdField_a_of_type_Acmz, localRomaExpEntity);
-        }
-      }
-    }
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext);
 }
 
 

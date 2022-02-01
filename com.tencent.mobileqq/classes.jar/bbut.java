@@ -1,18 +1,41 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bbut
+  implements TextWatcher
 {
-  int jdField_a_of_type_Int;
-  public bbuf a;
-  public AtomicBoolean a;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  bbuf jdField_b_of_type_Bbuf;
-  int c;
+  private int jdField_a_of_type_Int;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private int b;
   
-  public bbut()
+  public bbut(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (TextUtils.getQQTextCharCount(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 50))
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 1, 2131690259, 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
+    }
+    if ((paramEditable == null) || (paramEditable.length() == 0))
+    {
+      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(false);
+      return;
+    }
+    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(true);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = (paramInt1 + paramInt3);
   }
 }
 

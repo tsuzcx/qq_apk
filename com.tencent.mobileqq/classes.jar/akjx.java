@@ -1,13 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class akjx
-  implements View.OnClickListener
+  extends Handler
 {
-  public akjx(DrawerFrame paramDrawerFrame) {}
+  public akjx(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public void onClick(View paramView) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      this.a.b();
+      this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
+      return;
+    } while (this.a.isFinishing());
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
+    }
+    PhotoCropActivity.a(this.a, 2131716677);
+    this.a.c();
+  }
 }
 
 

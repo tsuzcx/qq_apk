@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import boau;
-import bobi;
-import bobo;
+import bpqm;
+import bpra;
+import bprg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -16,10 +16,10 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
   implements Runnable
 {
   public int a;
-  public ArrayList<bobi> a;
-  public ArrayList<bobo> b;
+  public ArrayList<bpra> a;
+  public ArrayList<bprg> b;
   
-  public BaseShortVideoOprerator$MultiForwardShortVideoTask(ArrayList<bobi> paramArrayList)
+  public BaseShortVideoOprerator$MultiForwardShortVideoTask(ArrayList<bpra> paramArrayList)
   {
     this.jdField_a_of_type_Int = 0;
     Object localObject;
@@ -37,7 +37,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
         Iterator localIterator = this.b.iterator();
         if (localIterator.hasNext())
         {
-          if (((bobo)localIterator.next()).jdField_a_of_type_Int == -2) {
+          if (((bprg)localIterator.next()).jdField_a_of_type_Int == -2) {
             i += 1;
           }
         }
@@ -57,7 +57,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     int i;
     int j;
     label105:
-    bobi localbobi;
+    bpra localbpra;
     if (this.jdField_a_of_type_Int + BaseShortVideoOprerator.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
       i = this.jdField_a_of_type_Int + BaseShortVideoOprerator.jdField_a_of_type_Int;
@@ -68,13 +68,13 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
       if (j >= i) {
         break label515;
       }
-      localbobi = (bobi)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      if (localbobi.a == null) {
+      localbpra = (bpra)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+      if (localbpra.a == null) {
         break label178;
       }
     }
     label178:
-    for (Object localObject = (MessageForShortVideo)localbobi.a;; localObject = this.this$0.a(localbobi))
+    for (Object localObject = (MessageForShortVideo)localbpra.a;; localObject = this.this$0.a(localbpra))
     {
       if (localObject != null) {
         break label192;
@@ -99,13 +99,13 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     }
     for (;;)
     {
-      localTransferRequest.mExtraObj = localbobi;
+      localTransferRequest.mExtraObj = localbpra;
       localTransferRequest.mUniseq = ((MessageRecord)localObject).uniseq;
       localTransferRequest.mIsUp = true;
       localTransferRequest.mBusiType = 1010;
-      localTransferRequest.mMd5 = localbobi.e;
-      localTransferRequest.mLocalPath = (localbobi.h + "QQ_&_MoblieQQ_&_QQ" + localbobi.i + "QQ_&_MoblieQQ_&_QQ" + localbobi.j + "QQ_&_MoblieQQ_&_QQ" + localbobi.g);
-      localTransferRequest.mUpCallBack = new boau(this, j);
+      localTransferRequest.mMd5 = localbpra.e;
+      localTransferRequest.mLocalPath = (localbpra.h + "QQ_&_MoblieQQ_&_QQ" + localbpra.i + "QQ_&_MoblieQQ_&_QQ" + localbpra.j + "QQ_&_MoblieQQ_&_QQ" + localbpra.g);
+      localTransferRequest.mUpCallBack = new bpqm(this, j);
       localTransferRequest.mRec = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
       if (!QLog.isColorLevel()) {
@@ -138,10 +138,10 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (bobi)localIterator.next();
-      localObject = new bobo();
-      ((bobo)localObject).jdField_a_of_type_Int = -2;
-      ((bobo)localObject).jdField_a_of_type_Bobn = this.this$0.jdField_a_of_type_Bobn;
+      Object localObject = (bpra)localIterator.next();
+      localObject = new bprg();
+      ((bprg)localObject).jdField_a_of_type_Int = -2;
+      ((bprg)localObject).jdField_a_of_type_Bprf = this.this$0.jdField_a_of_type_Bprf;
       this.b.add(localObject);
     }
     a();

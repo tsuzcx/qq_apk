@@ -1,52 +1,30 @@
-import android.os.Handler;
-import com.tencent.qav.QavDef.MultiUserInfo;
-import com.tencent.qphone.base.util.QLog;
-
-class ncm
-  extends myh
+public class ncm
 {
-  ncm(ncl paramncl) {}
-  
-  public void a()
+  public static String a(long paramLong)
   {
-    int i = lep.b();
-    if (mzl.a().a()) {
-      this.a.a.sendEmptyMessageDelayed(8, 0L);
+    long l = paramLong & 0xFFFFFFFF;
+    if (paramLong == l) {
+      return String.valueOf(l);
     }
-    for (;;)
+    char[] arrayOfChar = "-9223372036854775808".toCharArray();
+    arrayOfChar[0] = '0';
+    int j = arrayOfChar.length - 1;
+    paramLong = l;
+    while ((j != 0) && (paramLong != 0L))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("GameRoomPresenterImp", 2, "onEnterRoomSucess, curNetType[" + i + "]");
+      int i = (char)(int)(arrayOfChar[j] + paramLong % 10L);
+      arrayOfChar[j] = i;
+      if (i > 57)
+      {
+        arrayOfChar[j] = ((char)(arrayOfChar[j] - '\n'));
+        int k = j - 1;
+        arrayOfChar[k] = ((char)(arrayOfChar[k] + '\001'));
       }
-      return;
-      this.a.a.sendEmptyMessageDelayed(8, 3000L);
-      this.a.a.sendEmptyMessageDelayed(9, 6000L);
+      paramLong /= 10L;
+      j -= 1;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    ncl.a(this.a);
-  }
-  
-  public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
-  {
-    ncl.a(this.a);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("GameRoomPresenterImp", 1, "onMemberVideoInOrOut userUin:" + paramLong + "  videoIn:" + paramBoolean + "  videoSrcType:" + paramInt);
-    }
-    this.a.a.sendEmptyMessage(2);
-    ncl.a(this.a);
-    this.a.a(250);
-  }
-  
-  public void b(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    this.a.a(250);
+    j = '1' - arrayOfChar[0];
+    return new String(arrayOfChar, j, arrayOfChar.length - j);
   }
 }
 

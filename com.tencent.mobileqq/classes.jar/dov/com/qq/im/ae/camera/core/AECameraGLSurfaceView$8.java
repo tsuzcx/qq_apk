@@ -7,7 +7,7 @@ class AECameraGLSurfaceView$8
   
   public void run()
   {
-    this.this$0.captureListener.onVideoCaptureStart();
+    AECameraGLSurfaceView.access$600(this.this$0);
   }
 }
 

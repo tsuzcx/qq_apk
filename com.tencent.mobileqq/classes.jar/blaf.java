@@ -1,35 +1,35 @@
-import android.app.Activity;
-import java.lang.reflect.Method;
+import com.tencent.widget.AuthorizationItem;
 
-public abstract class blaf
+public final class blaf
 {
-  public static blaf a;
+  public final int a;
+  public final String a;
+  public final String b;
   
-  public static void a()
+  public blaf(String paramString1, String paramString2, int paramInt)
   {
-    try
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static blaf a(int paramInt)
+  {
+    switch (paramInt)
     {
-      Method localMethod = Class.forName("cooperation.vip.common.VipClass").getMethod("getInstance", new Class[0]);
-      localMethod.setAccessible(true);
-      a = (blaf)localMethod.invoke(null, new Object[0]);
-      return;
+    default: 
+      return AuthorizationItem.d;
+    case 0: 
+      return AuthorizationItem.a;
+    case 1: 
+      return AuthorizationItem.b;
     }
-    catch (Throwable localThrowable) {}
+    return AuthorizationItem.c;
   }
-  
-  public static void b(Activity paramActivity, String paramString)
-  {
-    blaf localblaf = a;
-    if (localblaf != null) {
-      localblaf.a(paramActivity, paramString);
-    }
-  }
-  
-  public abstract void a(Activity paramActivity, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blaf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,72 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
 public class adez
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public adez(EditActivity paramEditActivity) {}
+  public adez(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
+      AddAccountActivity.a(this.a, null);
     }
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    String str;
+    SimpleAccount localSimpleAccount;
+    for (;;)
+    {
+      return;
+      if (paramCharSequence != null)
+      {
+        str = paramCharSequence.toString();
+        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
+          break;
+        }
+        paramInt1 = 0;
+        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
+        {
+          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
+          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
+            break label110;
+          }
+          paramInt1 += 1;
+        }
+      }
+    }
+    label110:
+    if (this.a.app == null)
+    {
+      paramCharSequence = localSimpleAccount.getUin();
+      label126:
+      if (!str.equals(paramCharSequence)) {
+        break label198;
+      }
+      if ((localSimpleAccount == null) || (!localSimpleAccount.isLogined())) {
+        break label200;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("!@#ewaGbhkc$!!=");
+      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setClearButtonVisible(false);
+      return;
+      paramCharSequence = this.a.app.getUinDisplayNameBeforeLogin(localSimpleAccount.getUin());
+      break label126;
+      label198:
+      break;
+      label200:
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("");
+    }
   }
 }
 

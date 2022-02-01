@@ -1,29 +1,17 @@
-public class bial
+class bial
+  implements biax
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
+  bial(biaj parambiaj) {}
   
-  public bial()
-  {
-    this.jdField_a_of_type_Long = 259200L;
-  }
+  public void a(int paramInt, String paramString) {}
   
-  public boolean equals(Object paramObject)
+  public void a(biao parambiao)
   {
-    paramObject = (bial)paramObject;
-    if (paramObject != null) {
-      return paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+    if (parambiao.a)
+    {
+      biaj.a(this.a, parambiao);
+      biaj.a(this.a);
     }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_JavaLangString.hashCode();
   }
 }
 

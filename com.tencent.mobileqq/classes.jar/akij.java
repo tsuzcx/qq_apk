@@ -1,24 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class akij
-  implements View.OnClickListener
+public class akij
+  implements DialogInterface.OnClickListener
 {
-  akij(akho paramakho) {}
+  public akij(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent(akho.a(this.a), TroopAssisSettingActivity.class);
-    akho.a(this.a).startActivityForResult(localIntent, 9001);
-    akho.a(this.a).sendEmptyMessageDelayed(1, 1000L);
-    bcef.b(akho.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
-    bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 17, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 2, "new user guild confirm unbind");
+      }
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA5", "0X8006AA5", 0, 0, "", "", "", "");
+    }
   }
 }
 

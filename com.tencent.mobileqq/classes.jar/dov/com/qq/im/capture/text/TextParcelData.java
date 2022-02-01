@@ -4,21 +4,21 @@ import android.graphics.PointF;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmvk;
-import bmwl;
-import bmxd;
-import bngn;
-import bngp;
-import bngq;
+import bolc;
+import bomd;
+import bomv;
+import bowf;
+import bowh;
+import bowi;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import com.tencent.qphone.base.util.QLog;
 
 public class TextParcelData
   implements Parcelable
 {
-  public static final Parcelable.Creator<TextParcelData> CREATOR = new bmxd();
+  public static final Parcelable.Creator<TextParcelData> CREATOR = new bomv();
   private float jdField_a_of_type_Float;
-  private bngp jdField_a_of_type_Bngp;
+  private bowh jdField_a_of_type_Bowh;
   public SegmentKeeper a;
   private DynamicTextItem jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
   private float b;
@@ -33,21 +33,21 @@ public class TextParcelData
   public TextParcelData(Parcel paramParcel)
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    Object localObject = new bmvk();
+    Object localObject = new bolc();
     int j = paramParcel.readInt();
     DynamicTextItem.TextMap localTextMap = (DynamicTextItem.TextMap)paramParcel.readParcelable(DynamicTextItem.TextMap.class.getClassLoader());
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = ((bmvk)localObject).a(j, localTextMap.a());
+    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = ((bolc)localObject).a(j, localTextMap.a());
     if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem == null)
     {
       QLog.e("TextParcelData", 1, "read mDynamicTextItem from Parcel return null, use normal text instead");
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = new bmwl(j, localTextMap.a());
+      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = new bomd(j, localTextMap.a());
     }
     localObject = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
     if (paramParcel.readInt() == 1) {}
     for (boolean bool = true;; bool = false)
     {
       ((DynamicTextItem)localObject).a(bool);
-      this.jdField_a_of_type_Bngp = new bngp(paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat());
+      this.jdField_a_of_type_Bowh = new bowh(paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat());
       this.jdField_a_of_type_Float = paramParcel.readFloat();
       this.b = paramParcel.readFloat();
       this.c = paramParcel.readFloat();
@@ -62,24 +62,24 @@ public class TextParcelData
     }
   }
   
-  public bngq a(bngn parambngn)
+  public bowi a(bowf parambowf)
   {
-    parambngn.getClass();
-    parambngn = new bngq(parambngn, this.jdField_a_of_type_Bngp);
-    parambngn.q = this.jdField_a_of_type_Bngp.jdField_a_of_type_Float;
-    parambngn.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
-    parambngn.u = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a();
-    parambngn.v = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
-    parambngn.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-    parambngn.b = this.b;
-    parambngn.c = this.c;
-    parambngn.d = this.d;
-    parambngn.e = this.e;
-    parambngn.f = this.f;
-    parambngn.g = this.g;
-    parambngn.h = this.h;
-    parambngn.i = this.i;
-    return parambngn;
+    parambowf.getClass();
+    parambowf = new bowi(parambowf, this.jdField_a_of_type_Bowh);
+    parambowf.q = this.jdField_a_of_type_Bowh.jdField_a_of_type_Float;
+    parambowf.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
+    parambowf.u = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a();
+    parambowf.v = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
+    parambowf.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+    parambowf.b = this.b;
+    parambowf.c = this.c;
+    parambowf.d = this.d;
+    parambowf.e = this.e;
+    parambowf.f = this.f;
+    parambowf.g = this.g;
+    parambowf.h = this.h;
+    parambowf.i = this.i;
+    return parambowf;
   }
   
   public int describeContents()
@@ -95,14 +95,14 @@ public class TextParcelData
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bngp.jdField_a_of_type_AndroidGraphicsPointF.x);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bngp.jdField_a_of_type_AndroidGraphicsPointF.y);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bngp.jdField_a_of_type_Float);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bngp.b);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bngp.c);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bngp.d);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bngp.e);
-      paramParcel.writeFloat(this.jdField_a_of_type_Bngp.f);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.jdField_a_of_type_AndroidGraphicsPointF.x);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.jdField_a_of_type_AndroidGraphicsPointF.y);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.jdField_a_of_type_Float);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.b);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.c);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.d);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.e);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bowh.f);
       paramParcel.writeFloat(this.jdField_a_of_type_Float);
       paramParcel.writeFloat(this.b);
       paramParcel.writeFloat(this.c);

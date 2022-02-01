@@ -1,26 +1,29 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
 public class tre
+  implements trq
 {
-  public static trd a(Context paramContext, AdData paramAdData)
+  private boolean jdField_a_of_type_Boolean;
+  
+  public tre(TabLayoutCompat paramTabLayoutCompat) {}
+  
+  public void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2)
   {
-    if ((paramContext == null) || (paramAdData == null)) {
-      return null;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a == paramViewPager) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(paramPagerAdapter2, this.jdField_a_of_type_Boolean);
     }
-    if (((paramAdData instanceof ProteusInnerData)) && (((ProteusInnerData)paramAdData).g())) {
-      return new tqv(paramContext, 2);
-    }
-    if (((paramAdData instanceof ProteusInnerData)) && (((ProteusInnerData)paramAdData).f())) {
-      return new tqz(paramContext, 1);
-    }
-    return null;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tre
  * JD-Core Version:    0.7.0.1
  */

@@ -1,87 +1,33 @@
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 public class bjix
-  implements bjiv
+  implements DialogInterface.OnClickListener
 {
-  private bjiw jdField_a_of_type_Bjiw;
-  private boolean jdField_a_of_type_Boolean;
+  public bjix(DownloadJSApi.2 param2) {}
   
-  public bjix(bjiw parambjiw)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bjiw = parambjiw;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_Bjiw == null);
-    this.jdField_a_of_type_Bjiw.a(a(), null);
-  }
-  
-  private void c()
-  {
-    Object localObject = BaseApplication.getContext().getPackageManager();
-    if (localObject != null) {
-      localObject = ((PackageManager)localObject).getInstalledPackages(8192).iterator();
-    }
-    for (;;)
-    {
-      PackageInfo localPackageInfo;
-      if (((Iterator)localObject).hasNext())
-      {
-        localPackageInfo = (PackageInfo)((Iterator)localObject).next();
-        if (this.jdField_a_of_type_Boolean) {}
-      }
-      else
-      {
-        return;
-      }
-      if (this.jdField_a_of_type_Bjiw != null) {
-        this.jdField_a_of_type_Bjiw.b(a(), localPackageInfo);
-      }
-    }
-  }
-  
-  private void d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = false;
-    } while (this.jdField_a_of_type_Bjiw == null);
-    this.jdField_a_of_type_Bjiw.c(a(), null);
-  }
-  
-  public String a()
-  {
-    return "App";
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
     try
     {
-      b();
-      c();
-      label16:
-      d();
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjmy.b);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjmy.j);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjmy.f);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjmy.i);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjmy.l);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bjmy.y, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
+      bjna.a().a(10, paramDialogInterface);
       return;
     }
-    catch (Exception localException)
+    catch (Exception paramDialogInterface)
     {
-      break label16;
+      break label6;
     }
   }
 }

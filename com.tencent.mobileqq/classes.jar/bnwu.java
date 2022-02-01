@@ -1,13 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.player.IPlayer.PlayerListener;
+import com.tencent.tav.player.IPlayer.PlayerStatus;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
 
 public class bnwu
-  implements DialogInterface.OnClickListener
+  implements IPlayer.PlayerListener
 {
-  public bnwu(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bnwu(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onPositionChanged(CMTime paramCMTime) {}
+  
+  public void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
+  {
+    bnrh.b(AEEditorVideoClipFragment.b(), "play status changed, current status = " + paramPlayerStatus);
+    if (AEEditorVideoClipFragment.a(this.a) != null) {
+      AEEditorVideoClipFragment.a(this.a).setPlayStatus(paramPlayerStatus);
+    }
+  }
 }
 
 

@@ -1,121 +1,179 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeVidInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 public class vyk
-  extends vqm
 {
-  public qqstory_service.RspMsgTabNodeVideoList a;
-  public List<vxv> a;
-  public vxd a;
-  public byte[] a;
+  private static String jdField_a_of_type_JavaLangString = "0123456789bcdefghjkmnpqrstuvwxyz";
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "b", "c", "d", "e", "f", "g", "h", "j", "k", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
   
-  public vyk(vxd paramvxd, qqstory_service.RspMsgTabNodeVideoList paramRspMsgTabNodeVideoList, byte[] paramArrayOfByte)
+  public static String a(double paramDouble1, double paramDouble2, int paramInt)
   {
-    super(paramRspMsgTabNodeVideoList.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Vxd = paramvxd;
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList = paramRspMsgTabNodeVideoList;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    if (paramRspMsgTabNodeVideoList.video_list != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    double d5 = 90.0D;
+    double d3 = -90.0D;
+    double d2 = 0.0D;
+    double d6 = 180.0D;
+    double d4 = -180.0D;
+    double d1 = 0.0D;
+    int i = 1;
+    int k = 0;
+    while (k < paramInt)
     {
-      Object localObject1;
-      Object localObject2;
-      Object localObject3;
-      int i;
-      label158:
-      Object localObject4;
-      if (paramvxd.jdField_a_of_type_Int == 12)
+      int m = 0;
+      int n = 0;
+      int j = i;
+      i = n;
+      if (m < 5)
       {
-        xvv.a("Q.qqstory:ReqMsgTabNodeVideoList", "new video list receive cookie:%s nodeInfo old size=%d, rsp.video_list size=%d", paramRspMsgTabNodeVideoList.cookie.get(), Integer.valueOf(paramvxd.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(paramRspMsgTabNodeVideoList.video_list.size()));
-        paramArrayOfByte = new HashSet();
-        paramRspMsgTabNodeVideoList = paramRspMsgTabNodeVideoList.video_list.get().iterator();
-        if (paramRspMsgTabNodeVideoList.hasNext())
+        double d8;
+        double d7;
+        if (j != 0)
         {
-          localObject1 = (qqstory_service.MsgTabNodeVidInfo)paramRspMsgTabNodeVideoList.next();
-          localObject2 = ((qqstory_service.MsgTabNodeVidInfo)localObject1).feed_id.get().toStringUtf8();
-          localObject3 = ((qqstory_service.MsgTabNodeVidInfo)localObject1).video_index_list.get().iterator();
-          i = 0;
-          vxv localvxv;
-          if (((Iterator)localObject3).hasNext())
+          i <<= 1;
+          if (paramDouble2 >= d1)
           {
-            localObject4 = (Long)((Iterator)localObject3).next();
-            localvxv = vxv.a(paramvxd.jdField_a_of_type_JavaUtilList, ((Long)localObject4).longValue());
-            if ((localvxv != null) && (!paramArrayOfByte.contains(localObject4))) {
-              break label339;
-            }
-            localvxv = new vxv();
-            localvxv.jdField_b_of_type_JavaLangString = ((String)localObject2);
-            localvxv.jdField_a_of_type_JavaLangString = ((ByteStringMicro)((qqstory_service.MsgTabNodeVidInfo)localObject1).vid_list.get(i)).toStringUtf8();
-            localvxv.jdField_a_of_type_Long = paramvxd.jdField_a_of_type_JavaUtilList.size();
-            localvxv.jdField_a_of_type_Boolean = false;
-            if (((qqstory_service.MsgTabNodeVidInfo)localObject1).recommand_id_list.has()) {
-              localvxv.jdField_b_of_type_Long = ((Integer)((qqstory_service.MsgTabNodeVidInfo)localObject1).recommand_id_list.get(i)).intValue();
-            }
-            paramvxd.jdField_a_of_type_JavaUtilList.add(localvxv);
-            this.jdField_a_of_type_JavaUtilList.add(localvxv);
-            paramArrayOfByte.add(localObject4);
-          }
-          for (;;)
-          {
+            d8 = (d6 + d1) / 2.0D;
             i += 1;
-            break label158;
-            break;
-            label339:
-            localvxv.jdField_b_of_type_JavaLangString = ((String)localObject2);
-            localvxv.jdField_a_of_type_JavaLangString = ((ByteStringMicro)((qqstory_service.MsgTabNodeVidInfo)localObject1).vid_list.get(i)).toStringUtf8();
-            if (((qqstory_service.MsgTabNodeVidInfo)localObject1).recommand_id_list.has()) {
-              localvxv.jdField_b_of_type_Long = ((Integer)((qqstory_service.MsgTabNodeVidInfo)localObject1).recommand_id_list.get(i)).intValue();
+            d4 = d6;
+            d7 = d2;
+            d2 = d3;
+            d6 = d5;
+            d5 = d7;
+            d3 = d1;
+            d1 = d8;
+            label131:
+            if (j != 0) {
+              break label309;
             }
           }
         }
-      }
-      else
-      {
-        paramRspMsgTabNodeVideoList = paramRspMsgTabNodeVideoList.video_list.get().iterator();
-        if (paramRspMsgTabNodeVideoList.hasNext())
+        label309:
+        for (j = 1;; j = 0)
         {
-          paramArrayOfByte = (qqstory_service.MsgTabNodeVidInfo)paramRspMsgTabNodeVideoList.next();
-          localObject1 = paramArrayOfByte.feed_id.get().toStringUtf8();
-          localObject2 = paramArrayOfByte.video_index_list.get().iterator();
-          i = 0;
-          label464:
-          if (((Iterator)localObject2).hasNext())
+          m += 1;
+          d7 = d6;
+          d8 = d2;
+          d2 = d5;
+          d6 = d4;
+          d4 = d3;
+          d3 = d8;
+          d5 = d7;
+          break;
+          d8 = (d1 + d4) / 2.0D;
+          d6 = d3;
+          d7 = d5;
+          d3 = d4;
+          d4 = d1;
+          d1 = d8;
+          d5 = d2;
+          d2 = d6;
+          d6 = d7;
+          break label131;
+          i <<= 1;
+          if (paramDouble1 >= d2)
           {
-            localObject3 = (Long)((Iterator)localObject2).next();
-            localObject4 = vxv.a(paramvxd.jdField_a_of_type_JavaUtilList, ((Long)localObject3).longValue());
-            if (localObject4 != null) {
-              break label537;
-            }
-            xvv.e("Q.qqstory:ReqMsgTabNodeVideoList", "find index %d return null!, videoList is = %s", new Object[] { localObject3, paramvxd.jdField_a_of_type_JavaUtilList });
-          }
-          for (;;)
-          {
+            d3 = (d5 + d2) / 2.0D;
             i += 1;
-            break label464;
-            break;
-            label537:
-            ((vxv)localObject4).jdField_b_of_type_JavaLangString = ((String)localObject1);
-            ((vxv)localObject4).jdField_a_of_type_JavaLangString = ((ByteStringMicro)paramArrayOfByte.vid_list.get(i)).toStringUtf8();
-            if (paramArrayOfByte.recommand_id_list.has()) {
-              ((vxv)localObject4).jdField_b_of_type_Long = ((Integer)paramArrayOfByte.recommand_id_list.get(i)).intValue();
-            }
+            d7 = d5;
+            d5 = d3;
+            d3 = d4;
+            d4 = d6;
+            d6 = d7;
+            break label131;
           }
+          d5 = (d2 + d3) / 2.0D;
+          d7 = d2;
+          d2 = d3;
+          d3 = d4;
+          d4 = d6;
+          d6 = d7;
+          break label131;
         }
-        this.jdField_a_of_type_JavaUtilList = paramvxd.jdField_a_of_type_JavaUtilList;
       }
-      if (!paramvxd.a()) {
-        xvv.d("Q.qqstory:ReqMsgTabNodeVideoList", "node info is not ok, %s", new Object[] { paramvxd.jdField_a_of_type_JavaUtilList });
-      }
+      localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[i]);
+      k += 1;
+      i = j;
     }
+    return localStringBuilder.toString();
+  }
+  
+  public static List<vyl> a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      throw new Error("Invalid geoHash");
+    }
+    paramString = paramString.toLowerCase();
+    int i = 1;
+    double d3 = -90.0D;
+    double d4 = 90.0D;
+    double d1 = -180.0D;
+    double d2 = 180.0D;
+    int j = 0;
+    while (j < paramString.length())
+    {
+      int k = paramString.charAt(j);
+      int m = jdField_a_of_type_JavaLangString.indexOf(k);
+      if (m == -1) {
+        throw new Error("Invalid geoHash");
+      }
+      k = 4;
+      if (k >= 0)
+      {
+        double d6 = m >> k & 0x1;
+        double d5;
+        if (i != 0)
+        {
+          d5 = (d1 + d2) / 2.0D;
+          if (d6 == 1.0D)
+          {
+            d1 = d5;
+            label135:
+            if (i != 0) {
+              break label190;
+            }
+          }
+        }
+        label190:
+        for (i = 1;; i = 0)
+        {
+          k -= 1;
+          break;
+          d2 = d5;
+          break label135;
+          d5 = (d3 + d4) / 2.0D;
+          if (d6 == 1.0D)
+          {
+            d3 = d5;
+            break label135;
+          }
+          d4 = d5;
+          break label135;
+        }
+      }
+      j += 1;
+    }
+    paramString = new vyl(d3, d1);
+    vyl localvyl = new vyl(d4, d2);
+    ArrayList localArrayList = new ArrayList(2);
+    localArrayList.add(paramString);
+    localArrayList.add(localvyl);
+    return localArrayList;
+  }
+  
+  public static vyl a(String paramString)
+  {
+    Object localObject = a(paramString);
+    vyl localvyl = (vyl)((List)localObject).get(0);
+    localObject = (vyl)((List)localObject).get(1);
+    double d3 = vyl.a(localvyl);
+    double d1 = vyl.b(localvyl);
+    double d4 = vyl.a((vyl)localObject);
+    double d2 = vyl.b((vyl)localObject);
+    d3 = (d3 + d4) / 2.0D;
+    d1 = (d2 + d1) / 2.0D;
+    localvyl = new vyl(d3, d1);
+    ykq.a("Q.qqstory.recommendAlbum.logic.decodeGeoHash", " geoHash=%s, lat=%s, lon=%s", paramString, Double.valueOf(d3), Double.valueOf(d1));
+    return localvyl;
   }
 }
 

@@ -1,22 +1,38 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class aslk
-  implements Cloneable
+class aslk
+  extends WtloginObserver
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  aslk(asli paramasli) {}
   
-  public aslk(aslj paramaslj) {}
+  public void onCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
+    }
+    if (paramInt == 0)
+    {
+      asli.c(this.a, true);
+      if (asli.a(this.a) != null)
+      {
+        paramWUserSigInfo = (QQAppInterface)asli.a(this.a).get();
+        if ((paramWUserSigInfo != null) && (asll.a().a(paramWUserSigInfo))) {}
+      }
+      else
+      {
+        asli.a(this.a, false);
+        asli.b(this.a, false);
+      }
+      return;
+    }
+    asli.a(this.a, false);
+    asli.c(this.a, false);
+  }
 }
 
 

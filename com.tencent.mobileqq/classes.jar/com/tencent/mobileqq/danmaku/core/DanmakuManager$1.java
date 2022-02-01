@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import aqno;
-import aqnw;
-import aqoa;
-import aqpn;
-import aqpx;
+import arqz;
+import arrh;
+import arrl;
+import arsy;
+import arti;
 
 public class DanmakuManager$1
   implements Runnable
 {
-  DanmakuManager$1(DanmakuManager paramDanmakuManager, aqoa paramaqoa, aqpx paramaqpx) {}
+  DanmakuManager$1(DanmakuManager paramDanmakuManager, arrl paramarrl, arti paramarti) {}
   
   public void run()
   {
     if (DanmakuManager.a(this.this$0) == null) {
       return;
     }
-    if (this.jdField_a_of_type_Aqoa == null)
+    if (this.jdField_a_of_type_Arrl == null)
     {
       DanmakuManager.a(this.this$0).a(false);
       return;
     }
-    this.jdField_a_of_type_Aqpx.a(this.jdField_a_of_type_Aqoa.h(), this.jdField_a_of_type_Aqoa.i());
-    aqpn localaqpn = this.jdField_a_of_type_Aqoa.a(this.jdField_a_of_type_Aqpx);
-    if (DanmakuManager.a(this.this$0, localaqpn))
+    this.jdField_a_of_type_Arti.a(this.jdField_a_of_type_Arrl.h(), this.jdField_a_of_type_Arrl.i());
+    arsy localarsy = this.jdField_a_of_type_Arrl.a(this.jdField_a_of_type_Arti);
+    if (DanmakuManager.a(this.this$0, localarsy))
     {
       DanmakuManager.a(this.this$0).a(true);
-      if (localaqpn.a) {
-        DanmakuManager.a(this.this$0).b(this.jdField_a_of_type_Aqoa);
+      if (localarsy.a) {
+        DanmakuManager.a(this.this$0).b(this.jdField_a_of_type_Arrl);
       }
-      DanmakuManager.a(this.this$0).a(this.jdField_a_of_type_Aqoa, this.jdField_a_of_type_Aqpx, localaqpn);
+      DanmakuManager.a(this.this$0).a(this.jdField_a_of_type_Arrl, this.jdField_a_of_type_Arti, localarsy);
       return;
     }
     DanmakuManager.a(this.this$0).a(false);
@@ -37,7 +37,7 @@ public class DanmakuManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.DanmakuManager.1
  * JD-Core Version:    0.7.0.1
  */

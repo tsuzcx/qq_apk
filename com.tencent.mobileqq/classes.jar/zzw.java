@@ -1,53 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.widget.TextView;
+import java.util.Map;
 
 class zzw
-  implements nnv
+  extends zqe
 {
-  zzw(zzu paramzzu, QQAppInterface paramQQAppInterface) {}
+  zzw(zzu paramzzu, agqf paramagqf) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
-    }
-    if (paramInt == 0)
+    Integer localInteger = (Integer)zzu.b(this.jdField_a_of_type_Zzu).get(Integer.valueOf(this.jdField_a_of_type_Agqf.b));
+    if ((localInteger != null) && (localInteger.intValue() > paramInt2) && (paramInt1 != localInteger.intValue()) && (Math.abs(paramInt1 - localInteger.intValue()) > 100))
     {
-      String str;
-      try
-      {
-        paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
-        str = paramString.optString("url");
-        paramInt = paramString.optInt("filesize");
-        if ((str != null) && (str.endsWith("patch")))
-        {
-          FileUtils.deleteDirectory(noe.a(this.jdField_a_of_type_Zzu.a) + this.jdField_a_of_type_Zzu.a);
-          this.jdField_a_of_type_Zzu.b();
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        this.jdField_a_of_type_Zzu.a();
-        return;
-      }
-      if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
-      {
-        this.jdField_a_of_type_Zzu.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-      }
-      this.jdField_a_of_type_Zzu.a();
+      this.jdField_a_of_type_Agqf.a.setText((CharSequence)zzu.c(this.jdField_a_of_type_Zzu).get(Integer.valueOf(this.jdField_a_of_type_Agqf.b)));
       return;
     }
-    this.jdField_a_of_type_Zzu.a();
+    zzu.b(this.jdField_a_of_type_Zzu).put(Integer.valueOf(this.jdField_a_of_type_Agqf.b), Integer.valueOf(paramInt2));
+    zzu.c(this.jdField_a_of_type_Zzu).put(Integer.valueOf(this.jdField_a_of_type_Agqf.b), paramString);
+    this.jdField_a_of_type_Agqf.a.setText(paramString);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

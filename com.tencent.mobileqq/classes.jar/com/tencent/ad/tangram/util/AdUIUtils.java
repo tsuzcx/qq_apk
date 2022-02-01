@@ -263,6 +263,21 @@ public final class AdUIUtils
     return 0;
   }
   
+  public static int px2dp(Context paramContext, int paramInt)
+  {
+    if (paramContext == null) {}
+    float f;
+    do
+    {
+      do
+      {
+        return -2147483648;
+      } while ((paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null));
+      f = paramContext.getResources().getDisplayMetrics().density;
+    } while (f <= 0.0F);
+    return Math.round(paramInt / f);
+  }
+  
   public static final int px2sp(int paramInt, Context paramContext)
   {
     float f = paramContext.getResources().getDisplayMetrics().scaledDensity;

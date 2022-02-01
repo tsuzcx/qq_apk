@@ -1,73 +1,20 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.apollo.player.CMSActionStatus;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
+import kotlin.Metadata;
 
-public class amvx
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/player/manager/CMSBornPlayer$Companion;", "", "()V", "TAG", "", "timeout", "", "getTimeout", "()J", "callBackError", "", "actionContext", "Lcom/tencent/mobileqq/apollo/player/manager/CMSBornPlayer$CMSActionContext;", "errorState", "Lcom/tencent/mobileqq/apollo/player/CMSActionStatus;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amvx
 {
-  private int jdField_a_of_type_Int;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private int b;
-  
-  public amvx(MessageHandler paramMessageHandler, StringBuilder paramStringBuilder, int paramInt)
+  private final void a(amvr paramamvr, CMSActionStatus paramCMSActionStatus)
   {
-    this.jdField_a_of_type_JavaLangStringBuilder = paramStringBuilder;
-    this.jdField_a_of_type_Int = paramInt;
+    CMSAction localCMSAction = paramamvr.a();
+    paramamvr.a().a(localCMSAction, paramCMSActionStatus);
+    paramamvr.a().a(localCMSAction, false, CMSAction.a(localCMSAction, null, null, 3, null), null);
   }
   
-  public int a()
+  public final long a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public amvx a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    this.b = MessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler).size();
-    Iterator localIterator = MessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler).keySet().iterator();
-    label232:
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      long l2 = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.i(str);
-      Object[] arrayOfObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(str);
-      if ((arrayOfObject != null) && (arrayOfObject.length > 0)) {}
-      for (long l1 = ((Long)arrayOfObject[1]).longValue();; l1 = 0L)
-      {
-        if (((!this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getMsgCache().a(false)) && (!((Boolean)MessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler).get(str)).booleanValue())) || (l2 >= l1)) {
-          break label232;
-        }
-        if (QLog.isColorLevel())
-        {
-          this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-          this.jdField_a_of_type_JavaLangStringBuilder.append("---------checkGroupMsgComplete needToPullDiscuss discussUin: ").append(str).append(",lastSeq:").append(l2).append(",svrSeq:").append(l1);
-          QLog.d("Q.msg.MessageHandler", 2, this.jdField_a_of_type_JavaLangStringBuilder.toString());
-        }
-        localArrayList.add(str);
-        break;
-      }
-    }
-    if ((localArrayList != null) && (localArrayList.size() > 0))
-    {
-      this.jdField_a_of_type_Int = localArrayList.size();
-      MessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, new String[this.jdField_a_of_type_Int]);
-      int i = 0;
-      while (i < this.jdField_a_of_type_Int)
-      {
-        MessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler)[i] = ((String)localArrayList.get(i));
-        i += 1;
-      }
-    }
-    MessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler).clear();
-    return this;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    return amvq.a();
   }
 }
 

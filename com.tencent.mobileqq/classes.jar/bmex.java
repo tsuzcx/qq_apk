@@ -1,6 +1,19 @@
-public abstract interface bmex
+import cooperation.qqreader.VipProxyRreLoadReaderProcess.1;
+
+public class bmex
+  implements nuw
 {
-  public abstract void a(String paramString);
+  public bmex(VipProxyRreLoadReaderProcess.1 param1) {}
+  
+  public void loaded(String paramString, int paramInt)
+  {
+    bmgm.d("VipProxyRreLoadReaderProcess", "Load offline package finish, code = " + paramInt);
+    if (paramInt != 0) {
+      bmgm.a("VipProxyRreLoadReaderProcess", "offline update failed.");
+    }
+  }
+  
+  public void progress(int paramInt) {}
 }
 
 

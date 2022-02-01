@@ -1,23 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 public class mjl
-  implements DialogInterface.OnClickListener
+  extends Animation
 {
-  public mjl(VideoControlUI paramVideoControlUI, long paramLong) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a != null) {
-      QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramFloat < 0.5F) {}
+    for (float f = (0.5F - paramFloat) / 0.5F;; f = (paramFloat - 0.5F) / 0.5F)
+    {
+      paramTransformation.setAlpha(f);
+      super.applyTransformation(paramFloat, paramTransformation);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mjl
  * JD-Core Version:    0.7.0.1
  */

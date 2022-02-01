@@ -1,14 +1,16 @@
-import android.widget.ImageView;
-
-public abstract interface atgj
+class atgj
+  implements athg
 {
-  public abstract void a(int paramInt);
+  atgj(atfq paramatfq) {}
   
-  public abstract void a(ImageView paramImageView);
+  public void a(Object[] paramArrayOfObject)
+  {
+    atfq.o(this.a, paramArrayOfObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atgj
  * JD-Core Version:    0.7.0.1
  */

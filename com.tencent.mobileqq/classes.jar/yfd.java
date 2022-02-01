@@ -1,25 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.Arrays;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-public class yfd
-  implements ycy
+final class yfd
+  implements ygn
 {
-  @NonNull
-  private final ycv[] a;
+  yfd(WeakReference paramWeakReference) {}
   
-  public yfd(ycv... paramVarArgs)
+  public void a(String paramString)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      throw new IllegalArgumentException("layers should not be null or empty");
+    paramString = (yff)this.a.get();
+    if (paramString != null) {
+      paramString.a(Integer.valueOf(((Integer)((wjl)wjs.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
     }
-    this.a = paramVarArgs;
-  }
-  
-  public void a(List<ycv> paramList, DoodleView paramDoodleView)
-  {
-    paramList.addAll(Arrays.asList(this.a));
   }
 }
 

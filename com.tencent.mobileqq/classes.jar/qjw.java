@@ -1,28 +1,153 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView.RadiusView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView.RadiusView.1.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import android.text.format.DateUtils;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class qjw
-  implements View.OnLayoutChangeListener
 {
-  public qjw(NativeMiddleBodyView.RadiusView paramRadiusView) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public static float a()
   {
-    paramView = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
-    paramInt1 = paramInt3 - paramInt1;
-    paramInt2 = paramInt4 - paramInt2;
-    if ((paramView.width != paramInt1) || (paramView.height != paramInt2))
-    {
-      paramView.width = paramInt1;
-      paramView.height = paramInt2;
-      this.a.post(new NativeMiddleBodyView.RadiusView.1.1(this, paramInt1, paramInt2, paramView));
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(217);
+    if (Build.MODEL.startsWith("NXT")) {
+      return localAladdinConfig.getFloatFromString("blow_level_android_huawei_mate_8", 0.95F);
     }
-    QLog.i(NativeMiddleBodyView.a(), 1, "width:" + paramInt1 + " height:" + paramInt2 + " old: " + paramView.width + ":" + paramView.height);
+    return localAladdinConfig.getFloatFromString("blow_level_android", 1.0F);
+  }
+  
+  public static int a()
+  {
+    int i = 0;
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(217);
+    if (localAladdinConfig != null) {
+      i = localAladdinConfig.getIntegerFromString("zhitiao_feedsrefresh_type", 0);
+    }
+    return i;
+  }
+  
+  public static int a(Context paramContext, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString("ReadInJoyNoteCardRspCount_" + paramString, "");
+    if (TextUtils.isEmpty(paramContext)) {}
+    for (;;)
+    {
+      return 0;
+      try
+      {
+        paramContext = new JSONObject(paramContext);
+        if (DateUtils.isToday(paramContext.optLong("timeStamp")))
+        {
+          int i = paramContext.optInt("count");
+          return i;
+        }
+      }
+      catch (JSONException paramContext) {}
+    }
+    return 0;
+  }
+  
+  public static String a()
+  {
+    return Aladdin.getConfig(217).getString("zhitiao_feeds_return_maintext", "");
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt)
+  {
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putInt("ReadInJoyNoteCardShowGuideCountByRowKey_" + paramString, paramInt).apply();
+  }
+  
+  public static void a(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("timeStamp", System.currentTimeMillis());
+      localJSONObject.put("count", paramLong);
+      paramContext.putString("ReadInJoyNoteCardRspCount_" + paramString, localJSONObject.toString());
+      paramContext.apply();
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public static int b()
+  {
+    return Aladdin.getConfig(217).getIntegerFromString("guide_card_max_sum", 5);
+  }
+  
+  public static int b(Context paramContext, String paramString)
+  {
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("ReadInJoyNoteCardShowGuideCountByRowKey_" + paramString, 0);
+  }
+  
+  public static String b()
+  {
+    return Aladdin.getConfig(217).getString("zhitiao_feeds_return_smalltext", "");
+  }
+  
+  public static void b(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("timeStamp", System.currentTimeMillis());
+      localJSONObject.put("count", paramLong);
+      paramContext.putString("ReadInJoyTodayShowGuideCount_" + paramString, localJSONObject.toString());
+      paramContext.apply();
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public static int c()
+  {
+    return Aladdin.getConfig(217).getIntegerFromString("guide_card_max_daily", 3);
+  }
+  
+  public static int c(Context paramContext, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString("ReadInJoyTodayShowGuideCount_" + paramString, "");
+    if (TextUtils.isEmpty(paramContext)) {}
+    for (;;)
+    {
+      return 0;
+      try
+      {
+        paramContext = new JSONObject(paramContext);
+        if (DateUtils.isToday(paramContext.optLong("timeStamp")))
+        {
+          int i = paramContext.optInt("count");
+          return i;
+        }
+      }
+      catch (JSONException paramContext) {}
+    }
+    return 0;
+  }
+  
+  public static String c()
+  {
+    return Aladdin.getConfig(217).getString("zhitiao_feeds_text", "");
   }
 }
 

@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akdd
+class akdd
+  implements View.OnClickListener
 {
-  public static final IRedPacket a = new akde();
+  akdd(akda paramakda) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

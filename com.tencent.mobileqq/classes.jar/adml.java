@@ -1,16 +1,11 @@
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-
 public class adml
-  extends anav
 {
-  public adml(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
-  
-  public void a()
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
-    }
-  }
+  public int a;
+  public long a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public long c;
 }
 
 

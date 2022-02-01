@@ -1,14 +1,11 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
 
 public class agva
-  implements agut
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramagap.a(paramMessageRecord, paramagcc, paramString);
-  }
+  public int a;
+  public String a;
+  
+  public agva(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
 }
 
 

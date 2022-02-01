@@ -1,27 +1,21 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import com.tencent.widget.SingleLineTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class akkw
-  extends akld
+class akkw
+  implements DialogInterface.OnKeyListener
 {
-  public View a(int paramInt, Object paramObject, aklg paramaklg, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aknm paramaknm)
+  akkw(akkr paramakkr) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramView != null) && ((paramView.getTag() instanceof akle))) {}
-    paramObject = super.a(paramInt, paramObject, paramaklg, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramaknm);
-    paramaklg = (akle)paramObject.getTag();
-    paramViewGroup = paramContext.getResources();
-    paramView = paramViewGroup.getColorStateList(2131167092);
-    paramViewGroup = paramViewGroup.getColorStateList(2131167012);
-    paramaklg.a.setTextColor(paramViewGroup);
-    paramaklg.b.setTextColor(paramView);
-    paramaklg.a.setExtendTextColor(paramView, 0);
-    paramObject.findViewById(2131376253).setBackgroundResource(2130839434);
-    return paramObject;
+    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
+    {
+      this.a.a.dismiss();
+      akkr.a(this.a, akkr.a(this.a), true, Long.valueOf(akkr.b(this.a)).longValue(), true);
+    }
+    return false;
   }
 }
 

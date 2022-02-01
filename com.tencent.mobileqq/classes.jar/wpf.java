@@ -1,30 +1,60 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
 public class wpf
-  extends wnr<SingleFeedPlayInfo>
+  extends wpg
 {
-  public wpf(SingleFeedPlayInfo paramSingleFeedPlayInfo)
+  public wpf(ViewGroup paramViewGroup)
   {
-    super(paramSingleFeedPlayInfo);
+    super(paramViewGroup, 2131561731);
   }
   
-  public xnh a(String paramString)
+  private void c(wly paramwly)
   {
-    paramString = new xnh(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    return paramString;
+    paramwly.d = false;
+    wmr.a(QQStoryContext.a()).a(paramwly);
+    wng localwng = new wng();
+    localwng.jdField_b_of_type_JavaLangString = paramwly.jdField_a_of_type_JavaLangString;
+    localwng.c = paramwly.jdField_a_of_type_Int;
+    localwng.d = 4;
+    localwng.jdField_b_of_type_Long = paramwly.e;
+    wfi.a().a(localwng, null);
   }
   
-  public void a(boolean paramBoolean, int paramInt, woj paramwoj)
+  public void a(wly paramwly)
   {
-    ArrayList localArrayList = new ArrayList();
-    wns localwns = new wns(((SingleFeedPlayInfo)this.a).mFeedFeedId, new xnh(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localwns.a.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    localArrayList.add(localwns);
-    paramwoj.a(new ErrorMessage(), localArrayList, true);
+    super.a(paramwly);
+    if (!TextUtils.isEmpty(paramwly.g)) {
+      c(paramwly.g);
+    }
+    if (!TextUtils.isEmpty(paramwly.j))
+    {
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramwly.c)) {}
+      for (str = anvx.a(2131706418);; str = paramwly.c)
+      {
+        localStoryMsgNodeFrameLayout.setNodeName(str, paramwly.j);
+        if (paramwly.d) {
+          c(paramwly);
+        }
+        return;
+      }
+    }
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout = this.a;
+    if (TextUtils.isEmpty(paramwly.c)) {}
+    for (String str = anvx.a(2131706417);; str = paramwly.c)
+    {
+      localStoryMsgNodeFrameLayout.setNodeName(str, 0);
+      break;
+    }
+  }
+  
+  protected void b(wly paramwly)
+  {
+    this.a.setDisplayState(6);
+    this.a.a(paramwly);
   }
 }
 

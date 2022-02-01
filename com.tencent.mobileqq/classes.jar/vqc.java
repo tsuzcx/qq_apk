@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class vqc
+  extends vpl
 {
-  public static void a(Object paramObject)
+  public vqc(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    if ((paramObject instanceof QQAppInterface)) {
-      vqd.a = new WeakReference((QQAppInterface)paramObject);
-    }
+    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+  }
+  
+  public uyx<vpj> a(int paramInt)
+  {
+    return new vqd(a(), this);
   }
 }
 

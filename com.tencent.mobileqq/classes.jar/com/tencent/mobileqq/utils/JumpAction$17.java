@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import bfuc;
-import bfvp;
+import bhcu;
+import bheh;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class JumpAction$17
   implements Runnable
 {
-  public JumpAction$17(bfvp parambfvp, String paramString) {}
+  public JumpAction$17(bheh parambheh, String paramString) {}
   
   public void run()
   {
@@ -37,9 +37,9 @@ public class JumpAction$17
     }
     try
     {
-      localObject = new String(bfuc.encode(((StringBuffer)localObject).toString().getBytes("UTF-8"), 0));
+      localObject = new String(bhcu.encode(((StringBuffer)localObject).toString().getBytes("UTF-8"), 0));
       this.this$0.jdField_a_of_type_JavaUtilHashMap.put("image_url", localObject);
-      bfvp.a(this.this$0, false);
+      bheh.a(this.this$0, false);
       return;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)

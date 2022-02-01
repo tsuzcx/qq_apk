@@ -1,29 +1,14 @@
-import android.graphics.RectF;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
-public class bmvj
-  extends bmuy
+class bmvj
+  implements alun
 {
-  private float a;
-  private float b;
+  bmvj(bmvf parambmvf) {}
   
-  public bmvj(float paramFloat1, float paramFloat2)
+  public void a(String paramString)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-  }
-  
-  void a(int paramInt, bmuz parambmuz)
-  {
-    float f3 = parambmuz.a.right;
-    float f4 = parambmuz.a.left;
-    float f1 = parambmuz.a.bottom;
-    float f2 = parambmuz.a.top;
-    f3 = Math.abs(f3 - f4 - this.a) / 2.0F;
-    f1 = Math.abs(f1 - f2 - this.b) / 2.0F;
-    RectF localRectF = parambmuz.a;
-    localRectF.left += f3;
-    parambmuz = parambmuz.a;
-    parambmuz.right = (f3 + parambmuz.right);
+    paramString = new bnay(1, 0, paramString, null, this.a.a.getEffectOrientation());
+    this.a.onPhotoCaptured(paramString);
   }
 }
 

@@ -1,33 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.contact.addfriendverifi.AddFriendBlockedInfo;
-import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
 
-public class aicq
-  extends aico
+class aicq
+  extends anvi
 {
-  public aicq(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
+  aicq(aici paramaici) {}
   
-  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString)
+  protected void onAddFriend(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("BlockedListFragment", 2, "onGetAddFriendBlockedList, success=" + paramBoolean);
+      QLog.d(this.a.tag, 2, "onAddFriend : " + paramString);
     }
-    if ((!paramBoolean) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a).isFinishing()) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a) == null)) {
-      return;
+    if ((this.a.isActivityResume()) && (paramString != null) && (paramString.equals(this.a.sessionInfo.curFriendUin))) {
+      aici.a(this.a);
     }
-    this.a.a.removeMessages(1);
-    this.a.a.sendEmptyMessage(1);
   }
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  protected void onUpdateApolloHead(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.a.a.removeMessages(1);
-      this.a.a.sendEmptyMessage(1);
+    if ((this.a.app != null) && (TextUtils.equals(paramString, this.a.app.getCurrentAccountUin()))) {
+      this.a.refresh(65536);
     }
   }
 }

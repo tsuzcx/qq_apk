@@ -1,26 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-
-public class akqu
-  implements DialogInterface.OnDismissListener
+public abstract interface akqu
 {
-  public akqu(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public abstract void a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
-    }
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(0);
-    }
-    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
-      EditLocalVideoActivity.a(this.a, false);
-    }
-  }
+  public abstract void a(Object paramObject);
 }
 
 

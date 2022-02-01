@@ -1,19 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.data;
 
 import android.text.TextUtils;
-import bfyz;
+import bhhr;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import pdy;
-import pea;
-import pgw;
-import rao;
-import rau;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import pmz;
+import pnb;
+import pqb;
+import rmu;
+import rna;
 
 public class RIJDataFetchManager$4
   implements Runnable
 {
-  public RIJDataFetchManager$4(pdy parampdy) {}
+  public RIJDataFetchManager$4(pmz parampmz) {}
   
   public void run()
   {
@@ -26,12 +27,12 @@ public class RIJDataFetchManager$4
     label133:
     int k;
     if (!this.this$0.d()) {
-      if ((pdy.a(this.this$0).a() instanceof BaseActivity))
+      if ((pmz.a(this.this$0).a() instanceof BaseActivity))
       {
-        bool = bfyz.t(pdy.a(this.this$0).a(), ((BaseActivity)pdy.a(this.this$0).a()).getCurrentAccountUin());
-        if ((pdy.a(this.this$0).a() instanceof BaseActivity))
+        bool = bhhr.t(pmz.a(this.this$0).a(), ((BaseActivity)pmz.a(this.this$0).a()).getCurrentAccountUin());
+        if ((pmz.a(this.this$0).a() instanceof BaseActivity))
         {
-          str = ((rau)((BaseActivity)pdy.a(this.this$0).a()).app.getManager(261)).a();
+          str = ((rna)((BaseActivity)pmz.a(this.this$0).a()).app.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER)).a();
           if ((TextUtils.isEmpty(str)) || (str.equals("0")))
           {
             i = 0;
@@ -40,20 +41,20 @@ public class RIJDataFetchManager$4
             k = i;
             localObject = str;
             m = j;
-            if ((pdy.a(this.this$0).a() instanceof BaseActivity))
+            if ((pmz.a(this.this$0).a() instanceof BaseActivity))
             {
-              rao localrao = (rao)((BaseActivity)pdy.a(this.this$0).a()).app.getManager(270);
+              rmu localrmu = (rmu)((BaseActivity)pmz.a(this.this$0).a()).app.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
               k = i;
               localObject = str;
               m = j;
-              if (localrao.a() == 1)
+              if (localrmu.a() == 1)
               {
                 k = i;
                 localObject = str;
                 m = j;
-                if (localrao.b())
+                if (localrmu.b())
                 {
-                  localObject = localrao.a();
+                  localObject = localrmu.a();
                   k = 2;
                 }
               }
@@ -64,7 +65,7 @@ public class RIJDataFetchManager$4
     }
     for (int m = 0;; m = 0)
     {
-      pgw.a(pdy.a(this.this$0).d(), m, (String)localObject, k);
+      pqb.a(pmz.a(this.this$0).d(), m, (String)localObject, k);
       return;
       if (bool)
       {

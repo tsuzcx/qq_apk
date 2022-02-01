@@ -15,7 +15,7 @@ import android.view.ViewStub;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
-import bjwv;
+import blig;
 import com.tencent.biz.pubaccount.weishi_new.event.FollowEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.LikeRspEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSAddCommentEvent;
@@ -33,49 +33,49 @@ import com.tencent.widget.pull2refresh.XRecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ujh;
-import ujj;
-import ujk;
-import ujl;
-import ujm;
-import ulf;
-import umj;
-import unc;
-import unw;
-import unz;
-import uou;
-import upc;
-import upf;
-import upg;
-import upp;
-import uql;
-import url;
-import urt;
-import urw;
-import urx;
-import utp;
-import uud;
-import uvi;
-import uvm;
-import uvr;
-import uvw;
-import uwz;
-import uxr;
-import uya;
-import uyo;
+import uxe;
+import uxg;
+import uxh;
+import uxi;
+import uxj;
+import uzf;
+import vaj;
+import vbc;
+import vbw;
+import vbz;
+import vcu;
+import vdd;
+import vdg;
+import vdh;
 import vdq;
+import vem;
+import vft;
+import vgb;
+import vgh;
+import vgi;
+import via;
+import viq;
+import vjx;
+import vka;
+import vkf;
+import vkk;
+import vlo;
+import vmg;
+import vmp;
+import vnd;
+import vsj;
 
 public class WSFollowFragment
-  extends WSBaseHomeFragment<uud, utp, List<stFeed>>
-  implements unz, uud, uwz
+  extends WSBaseHomeFragment<viq, via, List<stFeed>>
+  implements vbz, viq, vlo
 {
   public static boolean c;
   private long jdField_a_of_type_Long;
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
-  private ujh jdField_a_of_type_Ujh;
-  public umj a;
+  private uxe jdField_a_of_type_Uxe;
+  public vaj a;
   private boolean d = true;
   private boolean e;
   private boolean f;
@@ -87,10 +87,10 @@ public class WSFollowFragment
   private boolean l;
   private boolean m;
   
-  private upp a(int paramInt, boolean paramBoolean)
+  private vdq a(int paramInt, boolean paramBoolean)
   {
     int n;
-    if (this.jdField_a_of_type_Ujh != null)
+    if (this.jdField_a_of_type_Uxe != null)
     {
       n = paramInt;
       if (paramInt >= 0) {}
@@ -99,16 +99,16 @@ public class WSFollowFragment
     {
       return null;
     }
-    upp localupp;
+    vdq localvdq;
     do
     {
       n += 1;
-      if (n >= this.jdField_a_of_type_Ujh.a().size()) {
+      if (n >= this.jdField_a_of_type_Uxe.b().size()) {
         break;
       }
-      localupp = c(n, paramBoolean);
-    } while (localupp == null);
-    return localupp;
+      localvdq = c(n, paramBoolean);
+    } while (localvdq == null);
+    return localvdq;
     return null;
   }
   
@@ -116,88 +116,88 @@ public class WSFollowFragment
   {
     if ((paramWSPlayerManager != null) && (paramWSPlayerManager.c()))
     {
-      uvm.a(paramWSPlayerManager.a());
+      vka.a(paramWSPlayerManager.a());
       this.d = true;
       this.e = true;
     }
   }
   
-  private boolean a(upp paramupp)
+  private boolean a(vdq paramvdq)
   {
-    if (paramupp == null) {}
-    while (uxr.a(paramupp.a()) < 50) {
+    if (paramvdq == null) {}
+    while (vmg.a(paramvdq.a()) < 50) {
       return false;
     }
     return true;
   }
   
-  private upp b(int paramInt, boolean paramBoolean)
+  private vdq b(int paramInt, boolean paramBoolean)
   {
     int n = paramInt;
     if (paramInt < 0) {
       return null;
     }
-    upp localupp;
+    vdq localvdq;
     do
     {
       n -= 1;
       if (n < 0) {
         break;
       }
-      localupp = c(n, paramBoolean);
-    } while (localupp == null);
-    return localupp;
+      localvdq = c(n, paramBoolean);
+    } while (localvdq == null);
+    return localvdq;
   }
   
   private void b(int paramInt)
   {
     RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().findViewHolderForAdapterPosition(paramInt);
-    if ((localViewHolder instanceof uou)) {
-      ((uou)localViewHolder).h();
+    if ((localViewHolder instanceof vcu)) {
+      ((vcu)localViewHolder).i();
     }
     do
     {
       return;
-      if ((localViewHolder instanceof upf))
+      if ((localViewHolder instanceof vdg))
       {
-        ((upf)localViewHolder).a();
+        ((vdg)localViewHolder).a();
         return;
       }
-      if ((localViewHolder instanceof upg))
+      if ((localViewHolder instanceof vdh))
       {
-        ((upg)localViewHolder).a();
+        ((vdh)localViewHolder).a();
         return;
       }
-    } while (!(localViewHolder instanceof upc));
-    ((upc)localViewHolder).a();
+    } while (!(localViewHolder instanceof vdd));
+    ((vdd)localViewHolder).b();
   }
   
   private void b(WSPlayerManager paramWSPlayerManager)
   {
     if ((this.d) && (paramWSPlayerManager != null) && ((paramWSPlayerManager.c()) || (paramWSPlayerManager.b())))
     {
-      uvm.a(paramWSPlayerManager.a(), false);
+      vka.a(paramWSPlayerManager.a(), false);
       paramWSPlayerManager.g();
     }
     this.d = false;
   }
   
-  private void b(upp paramupp)
+  private void b(vdq paramvdq)
   {
-    this.jdField_a_of_type_Ujh.a(paramupp);
+    this.jdField_a_of_type_Uxe.a(paramvdq);
     this.f = false;
   }
   
-  private upp c(int paramInt, boolean paramBoolean)
+  private vdq c(int paramInt, boolean paramBoolean)
   {
-    Object localObject = (stFeed)this.jdField_a_of_type_Ujh.a().get(paramInt);
+    Object localObject = (stFeed)this.jdField_a_of_type_Uxe.b().get(paramInt);
     if ((((stFeed)localObject).feed_type == 2) && (((stFeed)localObject).feed != null))
     {
       localObject = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().findViewHolderForLayoutPosition(paramInt);
-      if ((localObject instanceof upp))
+      if ((localObject instanceof vdq))
       {
-        localObject = (upp)localObject;
-        if ((a((upp)localObject)) || (paramBoolean)) {
+        localObject = (vdq)localObject;
+        if ((a((vdq)localObject)) || (paramBoolean)) {
           return localObject;
         }
       }
@@ -207,50 +207,50 @@ public class WSFollowFragment
   
   private void e(boolean paramBoolean)
   {
-    uya.e("WS_VIDEO_PLAY_TIME", "[WSFollowFragment.java][reportVideoPlay] tabSelectedIndex:" + WSHomeFragment.a + ", isPlay:" + paramBoolean);
-    if ((WSHomeFragment.a != 0) || (this.jdField_a_of_type_Ujh == null)) {
+    vmp.e("WS_VIDEO_PLAY_TIME", "[WSFollowFragment.java][reportVideoPlay] tabSelectedIndex:" + WSHomeFragment.a + ", isPlay:" + paramBoolean);
+    if ((WSHomeFragment.a != 0) || (this.jdField_a_of_type_Uxe == null)) {
       return;
     }
     if (paramBoolean)
     {
-      a(this.jdField_a_of_type_Ujh.a());
+      a(this.jdField_a_of_type_Uxe.a());
       return;
     }
-    b(this.jdField_a_of_type_Ujh.a());
+    b(this.jdField_a_of_type_Uxe.a());
   }
   
   private void g()
   {
-    unw.a().a(this);
+    vbw.a().a(this);
   }
   
   private void h()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = new WSPlayerManager(uyo.a());
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = new WSPlayerManager(vnd.a());
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.e(true);
-    this.jdField_a_of_type_Ujh.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager);
+    this.jdField_a_of_type_Uxe.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager);
   }
   
   private void i()
   {
     if (!this.i)
     {
-      uvu.b = 2;
+      vki.b = 2;
       return;
     }
     if ((!this.j) && (!this.k))
     {
-      uvu.b = 3;
+      vki.b = 3;
       return;
     }
-    uvu.b = 1;
+    vki.b = 1;
   }
   
   private void j()
   {
     int n = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
     int i1 = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
-    if ((n < 0) || (i1 >= this.jdField_a_of_type_Ujh.a().size())) {}
+    if ((n < 0) || (i1 >= this.jdField_a_of_type_Uxe.b().size())) {}
     for (;;)
     {
       return;
@@ -275,31 +275,31 @@ public class WSFollowFragment
   
   private void l()
   {
-    uya.b("WSFollowFragment", "showErrorView");
+    vmp.b("WSFollowFragment", "showErrorView");
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    uvi.a(135, 1, null);
-    uvr.b(false);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new ujl(this));
+    vjx.a(135, 1, null);
+    vkf.b(false);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new uxi(this));
   }
   
   public stFollowFeedsGlobalConfig a()
   {
     if (b() != null) {
-      return ((utp)b()).a();
+      return ((via)b()).a();
     }
     return null;
   }
   
   protected RecyclerView.LayoutManager a()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new ujm(this.jdField_a_of_type_AndroidContentContext, 1, false);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new uxj(this.jdField_a_of_type_AndroidContentContext, 1, false);
     return this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   }
   
-  protected bjwv a()
+  protected blig a()
   {
-    this.jdField_a_of_type_Ujh = new ujh(this);
-    return this.jdField_a_of_type_Ujh;
+    this.jdField_a_of_type_Uxe = new uxe(this);
+    return this.jdField_a_of_type_Uxe;
   }
   
   public XRecyclerView a()
@@ -320,16 +320,16 @@ public class WSFollowFragment
     return localArrayList;
   }
   
-  public ujh a()
+  public uxe a()
   {
-    return this.jdField_a_of_type_Ujh;
+    return this.jdField_a_of_type_Uxe;
   }
   
-  public upp a(upp paramupp, boolean paramBoolean1, boolean paramBoolean2)
+  public vdq a(vdq paramvdq, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramupp != null)
+    if (paramvdq != null)
     {
-      int n = paramupp.getLayoutPosition();
+      int n = paramvdq.getLayoutPosition();
       if (paramBoolean1) {
         return a(n + 1, paramBoolean2);
       }
@@ -339,9 +339,9 @@ public class WSFollowFragment
   }
   
   @NonNull
-  public utp a()
+  public via a()
   {
-    return new utp();
+    return new via();
   }
   
   protected void a()
@@ -355,7 +355,7 @@ public class WSFollowFragment
     if (paramInt == 0) {}
     for (Object localObject1 = "follow";; localObject1 = "recommend")
     {
-      uya.b("WSFollowFragment", (String)localObject1);
+      vmp.b("WSFollowFragment", (String)localObject1);
       localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
       if (localObject1 != null) {
         break;
@@ -367,16 +367,16 @@ public class WSFollowFragment
       if (((WSPlayerManager)localObject1).c()) {
         ((WSPlayerManager)localObject1).d();
       }
-      url.a().a(false);
+      vft.a().a(false);
       return;
     }
     this.f = true;
     a(a(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition(), false));
-    localObject2 = url.a();
+    localObject2 = vft.a();
     if (!((WSPlayerManager)localObject1).i()) {}
     for (boolean bool = true;; bool = false)
     {
-      ((url)localObject2).a(bool);
+      ((vft)localObject2).a(bool);
       if (this.l) {
         break;
       }
@@ -390,8 +390,8 @@ public class WSFollowFragment
   public void a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
     RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().findViewHolderForAdapterPosition(paramInt);
-    if ((localViewHolder instanceof uou)) {
-      ((uou)localViewHolder).a(paramstSimpleMetaFeed);
+    if ((localViewHolder instanceof vcu)) {
+      ((vcu)localViewHolder).a(paramstSimpleMetaFeed);
     }
   }
   
@@ -402,31 +402,31 @@ public class WSFollowFragment
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       paramView.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
     }
-    ulf.a().b(new ujj(this));
+    uzf.a().b(new uxg(this));
     h();
     g();
-    paramView = (FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368903);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370247));
-    if (this.jdField_a_of_type_Umj == null)
+    paramView = (FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369065);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370426));
+    if (this.jdField_a_of_type_Vaj == null)
     {
-      this.jdField_a_of_type_Umj = new umj(this, 0);
+      this.jdField_a_of_type_Vaj = new vaj(this, 0);
       ViewStub localViewStub = new ViewStub(getActivity());
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
       localLayoutParams.gravity = 80;
       localViewStub.setLayoutParams(localLayoutParams);
       paramView.addView(localViewStub);
     }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().addOnScrollListener(new ujk(this));
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().addOnScrollListener(new uxh(this));
   }
   
   public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
-    ((utp)this.jdField_a_of_type_Ujc).a(paramWSSimpleBaseEvent);
+    ((via)this.jdField_a_of_type_Uwz).a(paramWSSimpleBaseEvent);
   }
   
   protected void a(XRecyclerView paramXRecyclerView, int paramInt)
   {
-    ((utp)b()).a(false, false);
+    ((via)b()).a(false, false);
   }
   
   protected void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
@@ -434,7 +434,7 @@ public class WSFollowFragment
     if (!this.j) {
       this.j = true;
     }
-    ((utp)b()).a(false, true);
+    ((via)b()).a(false, true);
   }
   
   public void a(List<stFeed> paramList)
@@ -443,10 +443,10 @@ public class WSFollowFragment
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout.isShown()) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
-    if (this.jdField_a_of_type_Ujh != null) {
-      this.jdField_a_of_type_Ujh.a(paramList);
+    if (this.jdField_a_of_type_Uxe != null) {
+      this.jdField_a_of_type_Uxe.a(paramList);
     }
-    unc.a().a(paramList);
+    vbc.a().a(paramList);
     if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView != null) {
       this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(true, true);
     }
@@ -457,7 +457,7 @@ public class WSFollowFragment
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout.isShown()) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
-    this.jdField_a_of_type_Ujh.b(paramList);
+    this.jdField_a_of_type_Uxe.b(paramList);
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
@@ -466,41 +466,41 @@ public class WSFollowFragment
     }
   }
   
-  public void a(upp paramupp)
+  public void a(vdq paramvdq)
   {
-    if ((this.f) && (a(paramupp)))
+    if ((this.f) && (a(paramvdq)))
     {
-      uya.c("WSFollowContinuePlayLog", "[WSFollowFragment.java][onPlayFirstVideo] playVideo title:" + paramupp.jdField_a_of_type_Urx.d + ", mPlayingHolder:" + paramupp);
-      b(paramupp);
-      paramupp = a(paramupp, true, true);
-      uya.a("WS_VIDEO_PRE_PLAY", "[WSFollowFragment.java][onPlayFirstVideo] setPrePlayingHolder prePlayHolder:" + paramupp);
-      this.jdField_a_of_type_Ujh.b(paramupp);
+      vmp.c("WSFollowContinuePlayLog", "[WSFollowFragment.java][onPlayFirstVideo] playVideo title:" + paramvdq.jdField_a_of_type_Vgi.d + ", mPlayingHolder:" + paramvdq);
+      b(paramvdq);
+      paramvdq = a(paramvdq, true, true);
+      vmp.a("WS_VIDEO_PRE_PLAY", "[WSFollowFragment.java][onPlayFirstVideo] setPrePlayingHolder prePlayHolder:" + paramvdq);
+      this.jdField_a_of_type_Uxe.b(paramvdq);
     }
   }
   
-  public void a(upp paramupp, String paramString1, String paramString2)
+  public void a(vdq paramvdq, String paramString1, String paramString2)
   {
-    urt localurt = unc.a().a();
-    if (localurt == null) {}
-    while ((paramupp == null) || (localurt.jdField_a_of_type_Urw == null) || (localurt.jdField_a_of_type_Usr == null) || (paramupp.jdField_a_of_type_Urt == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager == null)) {
+    vgb localvgb = vbc.a().a();
+    if (localvgb == null) {}
+    while ((paramvdq == null) || (localvgb.jdField_a_of_type_Vgh == null) || (localvgb.jdField_a_of_type_Vhc == null) || (paramvdq.jdField_a_of_type_Vgb == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager == null)) {
       return;
     }
-    paramupp.jdField_a_of_type_Urt.jdField_a_of_type_Urw = localurt.jdField_a_of_type_Urw;
-    paramupp.jdField_a_of_type_Urt.jdField_a_of_type_Usr = localurt.jdField_a_of_type_Usr;
-    paramupp.jdField_a_of_type_Urt.jdField_a_of_type_Usf = localurt.jdField_a_of_type_Usf;
-    paramupp.jdField_a_of_type_Urt.jdField_a_of_type_Urw.c(true);
-    this.jdField_a_of_type_Ujh.a = paramupp;
-    vdq.a(paramString1, paramString2, paramupp.jdField_a_of_type_Urt, false);
+    paramvdq.jdField_a_of_type_Vgb.jdField_a_of_type_Vgh = localvgb.jdField_a_of_type_Vgh;
+    paramvdq.jdField_a_of_type_Vgb.jdField_a_of_type_Vhc = localvgb.jdField_a_of_type_Vhc;
+    paramvdq.jdField_a_of_type_Vgb.jdField_a_of_type_Vgq = localvgb.jdField_a_of_type_Vgq;
+    paramvdq.jdField_a_of_type_Vgb.jdField_a_of_type_Vgh.c(true);
+    this.jdField_a_of_type_Uxe.a = paramvdq;
+    vsj.a(paramString1, paramString2, paramvdq.jdField_a_of_type_Vgb, false);
     if (!this.e) {
-      uvm.a(paramupp.jdField_a_of_type_Urt);
+      vka.a(paramvdq.jdField_a_of_type_Vgb);
     }
-    paramString1 = a(paramupp, true, true);
-    this.jdField_a_of_type_Ujh.b(paramString1);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(paramupp.jdField_a_of_type_Urt, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.c(this.jdField_a_of_type_Ujh.a());
+    paramString1 = a(paramvdq, true, true);
+    this.jdField_a_of_type_Uxe.b(paramString1);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(paramvdq.jdField_a_of_type_Vgb, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.c(this.jdField_a_of_type_Uxe.a());
     this.d = true;
     this.e = false;
-    uya.a("WSFollowContinuePlayLog", "WSFollowFragment handleOnActivityResultFromVertical()2, title: " + paramupp.jdField_a_of_type_Urt.jdField_a_of_type_Urx.d + ", playingHolder: " + paramupp);
+    vmp.a("WSFollowContinuePlayLog", "WSFollowFragment handleOnActivityResultFromVertical()2, title: " + paramvdq.jdField_a_of_type_Vgb.jdField_a_of_type_Vgi.d + ", playingHolder: " + paramvdq);
   }
   
   public void a(boolean paramBoolean)
@@ -510,7 +510,7 @@ public class WSFollowFragment
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramBoolean1) && (this.jdField_a_of_type_Ujh != null) && (this.jdField_a_of_type_Ujh.a().size() == 0)) {
+    if ((paramBoolean1) && (this.jdField_a_of_type_Uxe != null) && (this.jdField_a_of_type_Uxe.b().size() == 0)) {
       l();
     }
   }
@@ -526,7 +526,7 @@ public class WSFollowFragment
   {
     super.b();
     if (this.jdField_a_of_type_Boolean) {
-      uyo.d("focus");
+      vnd.d("focus");
     }
   }
   
@@ -536,7 +536,7 @@ public class WSFollowFragment
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout.isShown()) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
-    this.jdField_a_of_type_Ujh.a(paramList);
+    this.jdField_a_of_type_Uxe.a(paramList);
     b(true, true);
   }
   
@@ -548,7 +548,7 @@ public class WSFollowFragment
   public void b(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (!paramBoolean2) {
-      this.jdField_a_of_type_Ujh.a(View.inflate(getActivity(), 2131560396, null));
+      this.jdField_a_of_type_Uxe.a(View.inflate(getActivity(), 2131560446, null));
     }
     this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(paramBoolean1, paramBoolean2);
   }
@@ -573,7 +573,7 @@ public class WSFollowFragment
   
   public void d()
   {
-    ((utp)b()).a(true, false);
+    ((via)b()).a(true, false);
   }
   
   public void d(boolean paramBoolean)
@@ -594,7 +594,7 @@ public class WSFollowFragment
   public void f()
   {
     this.m = true;
-    uxr.a();
+    vmg.a();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -606,15 +606,15 @@ public class WSFollowFragment
       paramInt1 = paramIntent.getIntExtra("key_feed_position", 0);
       String str = paramIntent.getStringExtra("key_from");
       paramIntent = paramIntent.getStringExtra("key_play_scene");
-      uya.e("WSFollowContinuePlayLog", "[WSFollowFragment.java][onActivityResult] from vertical position:" + paramInt1);
+      vmp.e("WSFollowContinuePlayLog", "[WSFollowFragment.java][onActivityResult] from vertical position:" + paramInt1);
       ThreadManager.getUIHandler().postDelayed(new WSFollowFragment.3(this, str, paramIntent), 100L);
     }
   }
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Umj != null) {
-      return this.jdField_a_of_type_Umj.b();
+    if (this.jdField_a_of_type_Vaj != null) {
+      return this.jdField_a_of_type_Vaj.b();
     }
     return super.onBackEvent();
   }
@@ -623,17 +623,17 @@ public class WSFollowFragment
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.m = uxr.b();
-    uya.a("weishi-beacon", "进入瀑布流的时间：" + this.jdField_a_of_type_Long);
+    this.m = vmg.b();
+    vmp.a("weishi-beacon", "进入瀑布流的时间：" + this.jdField_a_of_type_Long);
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
     i();
-    ulf.a().a(this.jdField_a_of_type_Ujh.a());
-    unw.a().b(this);
-    uql.a().a();
+    uzf.a().a(this.jdField_a_of_type_Uxe.b());
+    vbw.a().b(this);
+    vem.a().a();
     if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager != null)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.d(true);
@@ -648,7 +648,7 @@ public class WSFollowFragment
     if (this.jdField_a_of_type_Boolean)
     {
       WSPublicAccReport.getInstance().reportPageVisitExit("focus");
-      url.a().a(false);
+      vft.a().a(false);
     }
     if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager != null) && (!c)) {
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.f();
@@ -659,11 +659,11 @@ public class WSFollowFragment
   public void onResume()
   {
     super.onResume();
-    url localurl;
+    vft localvft;
     if (this.jdField_a_of_type_Boolean)
     {
       WSPublicAccReport.getInstance().reportPageVisitEnter("focus");
-      localurl = url.a();
+      localvft = vft.a();
       if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.i()) {
         break label126;
       }
@@ -671,7 +671,7 @@ public class WSFollowFragment
     label126:
     for (boolean bool = true;; bool = false)
     {
-      localurl.a(bool);
+      localvft.a(bool);
       if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager != null)
       {
         this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.e();
@@ -681,8 +681,8 @@ public class WSFollowFragment
       {
         long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
         this.jdField_a_of_type_Long = 0L;
-        uya.a("weishi-beacon", "关注页初始化耗时：" + l1);
-        uvw.a().a(true, l1, "focus", "focus");
+        vmp.a("weishi-beacon", "关注页初始化耗时：" + l1);
+        vkk.a().a(true, l1, "focus", "focus");
       }
       return;
     }
@@ -691,12 +691,12 @@ public class WSFollowFragment
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
-    uya.b("WSFollowFragment", "setUserVisibleHint entered! visible: " + paramBoolean + ", isResumed: " + isResumed());
+    vmp.b("WSFollowFragment", "setUserVisibleHint entered! visible: " + paramBoolean + ", isResumed: " + isResumed());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSFollowFragment
  * JD-Core Version:    0.7.0.1
  */

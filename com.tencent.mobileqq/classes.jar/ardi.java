@@ -1,41 +1,95 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-class ardi
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class ardi
 {
-  ardi(arcu paramarcu, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c = "分享给你1张图片";
+  public String d = "";
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public ardi()
   {
-    Bundle localBundle;
-    if (paramBundle != null) {
-      localBundle = new Bundle();
-    }
-    try
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 10485760L;
+    this.jdField_a_of_type_JavaLangString = "gh_0fc5d8395610";
+    this.jdField_b_of_type_JavaLangString = "/pages/gallery/gallery?";
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public static ardi a(String paramString)
+  {
+    boolean bool2 = false;
+    if (paramString == null)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
-      if (!paramBoolean) {
-        localJSONObject.put("msg", paramBundle.getString("errMsg"));
+      paramString = null;
+      return paramString;
+    }
+    ardi localardi = new ardi();
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        if (localJSONObject.has("picShareToWeChatEnable"))
+        {
+          if (localJSONObject.getInt("picShareToWeChatEnable") == 1)
+          {
+            bool1 = true;
+            localardi.jdField_a_of_type_Boolean = bool1;
+          }
+        }
+        else
+        {
+          if (localJSONObject.has("picShareToWeChatSize")) {
+            localardi.jdField_a_of_type_Long = localJSONObject.getLong("picShareToWeChatSize");
+          }
+          if (localJSONObject.has("PicShareToWeChatUserName")) {
+            localardi.jdField_a_of_type_JavaLangString = localJSONObject.getString("PicShareToWeChatUserName");
+          }
+          if (localJSONObject.has("PicShareToWeChatPath")) {
+            localardi.jdField_b_of_type_JavaLangString = localJSONObject.getString("PicShareToWeChatPath");
+          }
+          if (localJSONObject.has("PicShareToWeChatShareTicket"))
+          {
+            bool1 = bool2;
+            if (localJSONObject.getInt("PicShareToWeChatShareTicket") == 1) {
+              bool1 = true;
+            }
+            localardi.jdField_b_of_type_Boolean = bool1;
+          }
+          if (localJSONObject.has("PicShareToWeChatMiniType")) {
+            localardi.jdField_a_of_type_Int = localJSONObject.getInt("PicShareToWeChatMiniType");
+          }
+          if (localJSONObject.has("PicShareToWeChatTitle")) {
+            localardi.c = localJSONObject.getString("PicShareToWeChatTitle");
+          }
+          paramString = localardi;
+          if (!localJSONObject.has("PicShareToWeChatDescription")) {
+            break;
+          }
+          localardi.d = localJSONObject.getString("PicShareToWeChatDescription");
+          return localardi;
+        }
       }
-      localBundle.putString("result", localJSONObject.toString());
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    catch (Throwable paramBundle)
-    {
-      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
+      catch (JSONException paramString)
+      {
+        QLog.e("PicShareToWXConfigProcessor", 1, "parse error.", paramString);
+        return localardi;
+      }
+      boolean bool1 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardi
  * JD-Core Version:    0.7.0.1
  */

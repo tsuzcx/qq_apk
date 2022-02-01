@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.confess.data.TroopConfessMsg;
-import com.tencent.mobileqq.data.MessageForTroopConfess;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3;
+import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3.1.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-class apsx
-  implements View.OnClickListener
+public class apsx
+  implements acag
 {
-  apsx(apsw paramapsw, MessageForTroopConfess paramMessageForTroopConfess) {}
+  public apsx(ArkAppNotifyCenter.GdtNotify.3 param3) {}
   
-  public void onClick(View paramView)
+  public void onResponse(acaf paramacaf)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items.isEmpty())) {
-      apsz.a(this.jdField_a_of_type_Apsw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Apsw.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_Apsw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessTopicId(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.confessorUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessToUin()));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    ArkAppCenter.a().postToArkThread(new ArkAppNotifyCenter.GdtNotify.3.1.1(this, paramacaf));
   }
 }
 

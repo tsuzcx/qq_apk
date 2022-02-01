@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import amip;
-import amjl;
-import amjn;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import bflj;
-import bfpx;
+import ankx;
+import ankz;
+import bgua;
+import bgyo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -15,18 +14,18 @@ import java.io.File;
 public class ApolloGameShare$2
   implements Runnable
 {
-  public ApolloGameShare$2(amjl paramamjl, int paramInt) {}
+  public ApolloGameShare$2(ankx paramankx, int paramInt) {}
   
   public void run()
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(amip.s).append(amjl.a(this.this$0)).append("/inviteIcon.png");
+    ((StringBuilder)localObject).append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/").append(ankx.a(this.this$0)).append("/inviteIcon.png");
     try
     {
       if (new File(((StringBuilder)localObject).toString()).exists()) {
         localObject = BitmapFactory.decodeFile(((StringBuilder)localObject).toString());
       } else {
-        localObject = bfpx.b(BaseApplicationImpl.getApplication().getResources(), 2130838644);
+        localObject = bgyo.b(BaseApplicationImpl.getApplication().getResources(), 2130838660);
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -42,10 +41,10 @@ public class ApolloGameShare$2
     Bitmap localBitmap;
     while (localBitmap != null)
     {
-      localBitmap = bflj.a(localThrowable);
-      amjl.a(this.this$0, String.valueOf(System.currentTimeMillis()));
-      WXShareHelper.getInstance().addObserver(new amjn(this));
-      WXShareHelper.getInstance().shareApolloGameToWXFriendOrCircle(amjl.a(this.this$0), amjl.b(this.this$0), localBitmap, amjl.c(this.this$0), amjl.d(this.this$0), this.a);
+      localBitmap = bgua.a(localThrowable);
+      ankx.a(this.this$0, String.valueOf(System.currentTimeMillis()));
+      WXShareHelper.a().a(new ankz(this));
+      WXShareHelper.a().a(ankx.a(this.this$0), ankx.b(this.this$0), localBitmap, ankx.c(this.this$0), ankx.d(this.this$0), this.a);
       return;
     }
   }

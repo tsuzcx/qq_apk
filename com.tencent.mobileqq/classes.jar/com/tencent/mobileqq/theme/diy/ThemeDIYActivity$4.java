@@ -3,7 +3,7 @@ package com.tencent.mobileqq.theme.diy;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bges;
+import bhnm;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
@@ -99,13 +99,13 @@ class ThemeDIYActivity$4
       else
       {
         JSONObject localJSONObject2 = ((JSONObject)localObject5).getJSONArray("operateAndroid").getJSONObject(0);
-        if ((!bges.a(localJSONObject2.optString("minVersion"), "8.4.8")) || (bges.a(localJSONObject2.optString("maxVersion"), "8.4.8")))
+        if ((!bhnm.a(localJSONObject2.optString("minVersion"), "8.4.10")) || (bhnm.a(localJSONObject2.optString("maxVersion"), "8.4.10")))
         {
           localObject3 = localObject1;
           k = i;
           if (QLog.isColorLevel())
           {
-            QLog.d("ThemeDIYActivity", 2, "loadResJson style subVersion: 8.4.8, minVersion:" + localJSONObject2.optString("minVersion") + ", maxVersion:" + localJSONObject2.optString("maxVersion") + ", id:" + str2 + ", timeStamp:" + l);
+            QLog.d("ThemeDIYActivity", 2, "loadResJson style subVersion: 8.4.10, minVersion:" + localJSONObject2.optString("minVersion") + ", maxVersion:" + localJSONObject2.optString("maxVersion") + ", id:" + str2 + ", timeStamp:" + l);
             localObject3 = localObject1;
             k = i;
           }

@@ -234,23 +234,23 @@ public class MiniGameAdBannerPopup
   
   private static void handleGetAdResult(Context paramContext, String paramString, int paramInt, boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    Object localObject7 = null;
-    TianShuAccess.GetAdsRsp localGetAdsRsp = null;
+    Object localObject8 = null;
     Object localObject3 = null;
     Object localObject2;
     Object localObject1;
+    Object localObject6;
     Object localObject5;
     if ((paramBoolean) && (paramGetAdsRsp != null))
     {
       if (paramGetAdsRsp.mapAds.isEmpty()) {
-        break label903;
+        break label884;
       }
       paramGetAdsRsp = (TianShuAccess.RspEntry)paramGetAdsRsp.mapAds.get(0);
       if ((paramGetAdsRsp != null) && (paramGetAdsRsp.value != null) && (!paramGetAdsRsp.value.lst.isEmpty()))
       {
         TianShuAccess.AdItem localAdItem2 = (TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0);
         TianShuAccess.AdItem localAdItem1;
-        Object localObject6;
+        Object localObject7;
         if ((localAdItem2 != null) && (localAdItem2.argList != null) && (!localAdItem2.argList.isEmpty()))
         {
           Iterator localIterator = localAdItem2.argList.get().iterator();
@@ -258,10 +258,10 @@ public class MiniGameAdBannerPopup
           localObject1 = null;
           paramGetAdsRsp = null;
           localAdItem1 = localAdItem2;
-          localObject7 = localObject3;
-          Object localObject4 = localObject2;
-          localObject6 = localObject1;
-          localGetAdsRsp = paramGetAdsRsp;
+          localObject8 = localObject3;
+          localObject7 = localObject2;
+          Object localObject4 = localObject1;
+          localObject6 = paramGetAdsRsp;
           if (localIterator.hasNext())
           {
             localObject4 = (TianShuAccess.MapEntry)localIterator.next();
@@ -386,46 +386,52 @@ public class MiniGameAdBannerPopup
         {
           QMLog.e("MiniGameAdBannerPopup", "onGetAdvs no ad item");
           localAdItem1 = null;
+          localObject7 = null;
           localObject5 = null;
           localObject6 = null;
-          localGetAdsRsp = null;
         }
         localObject2 = localAdItem1;
-        localObject1 = localObject6;
+        localObject1 = localObject8;
         paramGetAdsRsp = localObject7;
-        label776:
-        QMLog.d("MiniGameAdBannerPopup", "handleGetAdResult appid whitelist " + APPID_WHITE_LIST + "\n appid blacklist " + APPID_BLACK_LIST + "\n refer whitelist " + REFER_WHITE_LIST + "\n refer blacklist " + REFER_BLACK_LIST + "\n show time " + SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH);
-        if (allowShowForAppId(paramString)) {
-          break label918;
-        }
-        QMLog.e("MiniGameAdBannerPopup", "handleGetAdResult not allow for appid " + paramString);
       }
     }
-    label903:
-    label918:
-    do
+    for (;;)
     {
+      QMLog.d("MiniGameAdBannerPopup", "handleGetAdResult appid whitelist " + APPID_WHITE_LIST + "\n appid blacklist " + APPID_BLACK_LIST + "\n refer whitelist " + REFER_WHITE_LIST + "\n refer blacklist " + REFER_BLACK_LIST + "\n show time " + SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH);
+      showAdBanner(paramContext, paramString, paramInt, (String)localObject6, localObject5, paramGetAdsRsp, (String)localObject1, localObject2);
       return;
       QMLog.e("MiniGameAdBannerPopup", "onGetAdvs no ad data");
       break;
       QMLog.e("MiniGameAdBannerPopup", "onGetAdvs no ad result");
+      label884:
       localObject2 = null;
+      localObject1 = null;
       paramGetAdsRsp = null;
       localObject5 = null;
-      localObject1 = null;
-      break label776;
-      if (!allowShowForRefer(paramInt))
-      {
-        QMLog.e("MiniGameAdBannerPopup", "handleGetAdResult not allow for refer " + paramInt);
-        return;
-      }
-    } while ((localGetAdsRsp == null) || (localObject1 == null) || (localObject5 == null) || (paramGetAdsRsp == null) || (localObject2 == null));
-    ThreadManager.getUIHandler().postDelayed(new MiniGameAdBannerPopup.3(paramContext, localGetAdsRsp, localObject5, paramGetAdsRsp, (String)localObject1, localObject2), TimeUnit.SECONDS.toMillis(SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH));
+      localObject6 = null;
+    }
   }
   
   private static void performReport(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
   {
     ThreadManager.getSubThreadHandler().post(new MiniGameAdBannerPopup.7(paramAdItem, paramString, paramInt));
+  }
+  
+  private static void showAdBanner(Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, TianShuAccess.AdItem paramAdItem)
+  {
+    if (!allowShowForAppId(paramString1)) {
+      QMLog.e("MiniGameAdBannerPopup", "handleGetAdResult not allow for appid " + paramString1);
+    }
+    do
+    {
+      return;
+      if (!allowShowForRefer(paramInt))
+      {
+        QMLog.e("MiniGameAdBannerPopup", "handleGetAdResult not allow for refer " + paramInt);
+        return;
+      }
+    } while ((paramString2 == null) || (paramString3 == null) || (paramString4 == null) || (paramString5 == null) || (paramAdItem == null));
+    ThreadManager.getUIHandler().postDelayed(new MiniGameAdBannerPopup.3(paramContext, paramString2, paramString4, paramString5, paramString3, paramAdItem), TimeUnit.SECONDS.toMillis(SHOW_DELAY_SECONDS_AFTER_GAME_LAUNCH));
   }
   
   private static void showAdBannerPopupWindow(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, TianShuAccess.AdItem paramAdItem)
@@ -471,7 +477,7 @@ public class MiniGameAdBannerPopup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.MiniGameAdBannerPopup
  * JD-Core Version:    0.7.0.1
  */

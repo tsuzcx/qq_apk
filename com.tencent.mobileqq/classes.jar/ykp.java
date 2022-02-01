@@ -1,58 +1,135 @@
-import android.graphics.PointF;
-import android.view.animation.Interpolator;
+import com.tencent.qphone.base.util.QLog;
 
 public class ykp
-  implements Interpolator
+  implements yko
 {
-  private int jdField_a_of_type_Int;
-  private final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  private final PointF b = new PointF();
+  public static final ykp a;
+  public int a;
+  private int b = -1;
   
-  public ykp(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  static
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
-    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
-    this.b.x = paramFloat3;
-    this.b.y = paramFloat4;
+    jdField_a_of_type_Ykp = new ykp();
   }
   
-  public static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5)
+  private ykp()
   {
-    double d1 = 1.0D - paramDouble1;
-    double d2 = paramDouble1 * paramDouble1;
-    double d3 = d1 * d1;
-    return d1 * 3.0D * d2 * paramDouble4 + (d3 * 3.0D * paramDouble1 * paramDouble3 + d3 * d1 * paramDouble2) + d2 * paramDouble1 * paramDouble5;
+    this.jdField_a_of_type_Int = 3;
   }
   
-  public float getInterpolation(float paramFloat)
+  public static ykp a()
   {
-    double d1 = 1.0D;
-    int i = this.jdField_a_of_type_Int;
-    float f = paramFloat;
-    double d2;
-    if (i < 4096)
+    return jdField_a_of_type_Ykp;
+  }
+  
+  private void a(int paramInt, String paramString1, String paramString2)
+  {
+    switch (paramInt)
     {
-      f = 1.0F * i / 4096.0F;
-      if (a(f, 0.0D, this.jdField_a_of_type_AndroidGraphicsPointF.x, this.b.x, 1.0D) >= paramFloat) {
-        this.jdField_a_of_type_Int = i;
+    default: 
+      return;
+    case 2: 
+      QLog.d(paramString1, 2, paramString2);
+      return;
+    case 3: 
+      QLog.d(paramString1, 2, paramString2);
+      return;
+    case 4: 
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    case 5: 
+      QLog.e(paramString1, 1, paramString2);
+      return;
+    }
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  private void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 2: 
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
+      return;
+    case 3: 
+      QLog.d(paramString1, 2, paramString2, paramThrowable);
+      return;
+    case 4: 
+      QLog.i(paramString1, 2, paramString2, paramThrowable);
+      return;
+    case 5: 
+      QLog.e(paramString1, 1, paramString2, paramThrowable);
+      return;
+    }
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    a(2, paramString1, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(3, paramString1, paramString2, paramThrowable);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if ((this.b != -1) && (paramInt >= this.b)) {}
+    do
+    {
+      do
+      {
+        return true;
+      } while (5 <= paramInt);
+      if (!QLog.isColorLevel()) {
+        return false;
       }
-    }
-    else
-    {
-      d2 = a(f, 0.0D, this.jdField_a_of_type_AndroidGraphicsPointF.y, this.b.y, 1.0D);
-      if (d2 <= 0.999D) {
-        break label117;
-      }
-      this.jdField_a_of_type_Int = 0;
-    }
-    for (;;)
-    {
-      return (float)d1;
-      i += 1;
-      break;
-      label117:
-      d1 = d2;
-    }
+    } while (this.jdField_a_of_type_Int <= paramInt);
+    return false;
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    a(3, paramString1, paramString2);
+  }
+  
+  public void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(4, paramString1, paramString2, paramThrowable);
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    a(4, paramString1, paramString2);
+  }
+  
+  public void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(5, paramString1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    a(5, paramString1, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(6, paramString1, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    a(6, paramString1, paramString2);
   }
 }
 

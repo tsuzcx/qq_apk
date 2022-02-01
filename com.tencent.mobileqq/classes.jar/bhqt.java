@@ -1,73 +1,42 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import java.lang.ref.WeakReference;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import org.jetbrains.annotations.NotNull;
 
-public class bhqt
-  implements biaf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/DynamicDrawable$MyLoaderCallback;", "Lcom/tencent/mobileqq/vas/gldrawable/GLDrawableProxy$LoaderCallback;", "drawableRef", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mobileqq/vas/gldrawable/DynamicDrawable;", "(Ljava/lang/ref/WeakReference;)V", "getDrawableRef", "()Ljava/lang/ref/WeakReference;", "onLoadFailed", "", "onLoadSucceed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bhqt
+  implements bhrh
 {
-  public bhqt(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  @NotNull
+  private final WeakReference<bhqs> a;
   
-  public void a(Exception paramException)
+  public bhqt(@NotNull WeakReference<bhqs> paramWeakReference)
   {
-    if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing())) {
-      this.a.jdField_a_of_type_Bhht.dismiss();
-    }
-    this.a.b(paramException);
+    this.a = paramWeakReference;
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void a()
   {
-    if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing())) {
-      this.a.jdField_a_of_type_Bhht.dismiss();
-    }
-    try
+    bhqs localbhqs = (bhqs)this.a.get();
+    if (localbhqs != null)
     {
-      if (paramJSONObject.getInt("ret") == 0)
-      {
-        if (this.a.jdField_a_of_type_Aael == null)
-        {
-          this.a.jdField_a_of_type_Aael = new aael(this.a);
-          this.a.jdField_a_of_type_Aael.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690546));
-          this.a.jdField_a_of_type_Aael.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690545, new Object[] { this.a.e }), this.a);
-          this.a.jdField_a_of_type_Aael.a(this.a);
-        }
-        if (this.a.jdField_a_of_type_Aael.isShowing()) {
-          return;
-        }
-        this.a.jdField_a_of_type_Aael.show();
-        return;
+      Drawable localDrawable = (Drawable)bhqs.a(localbhqs).invoke();
+      if (localDrawable != null) {
+        bhqs.a(localbhqs, localDrawable);
       }
-      if ((paramJSONObject.getInt("ret") == 10071) || (paramJSONObject.getInt("ret") == 10000))
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this.a, 230, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690549), this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690550), 2131690768, 2131694201, this.a, null);
-        }
-        paramJSONObject = paramJSONObject.getString("msg");
-        if (!TextUtils.isEmpty(paramJSONObject)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramJSONObject);
-        }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-          return;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-        return;
+      if (localbhqs.a() == null) {
+        bhqs.a(localbhqs, (Drawable)bhqs.b(localbhqs).invoke());
       }
     }
-    catch (Exception paramJSONObject)
-    {
-      a(paramJSONObject);
-      return;
+  }
+  
+  public void b()
+  {
+    bhqs localbhqs = (bhqs)this.a.get();
+    if ((localbhqs != null) && (localbhqs.a() == null)) {
+      bhqs.a(localbhqs, (Drawable)bhqs.b(localbhqs).invoke());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
-    }
-    paramJSONObject = paramJSONObject.getString("msg");
-    QQToast.a(bhpc.a().a(), paramJSONObject, 0).a(this.a.getTitleBarHeight()).show();
   }
 }
 

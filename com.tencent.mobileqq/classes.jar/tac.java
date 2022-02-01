@@ -1,28 +1,17 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
 
 public class tac
-  implements Comparable<tac>
+  implements pfw
 {
-  public int a;
-  public Drawable a;
-  public String a;
+  public tac(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, pfw parampfw) {}
   
-  public tac(String paramString, int paramInt, Drawable paramDrawable)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-  }
-  
-  public int a(tac paramtac)
-  {
-    if (this.jdField_a_of_type_Int < paramtac.jdField_a_of_type_Int) {
-      return -1;
+    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew).setVisibility(8);
+    if (this.jdField_a_of_type_Pfw != null) {
+      this.jdField_a_of_type_Pfw.a(paramInt);
     }
-    if (this.jdField_a_of_type_Int > paramtac.jdField_a_of_type_Int) {
-      return 1;
-    }
-    return 0;
   }
 }
 

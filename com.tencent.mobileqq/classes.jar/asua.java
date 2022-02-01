@@ -1,86 +1,22 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public abstract class asua
-  extends asug
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class asua
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  asua(astu paramastu) {}
   
-  public asua(QQAppInterface paramQQAppInterface, Context paramContext)
+  public final void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  protected abstract int a();
-  
-  protected abstract long a();
-  
-  public SessionInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public ChatMessage a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  }
-  
-  protected abstract String a();
-  
-  public void a(SessionInfo paramSessionInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-  }
-  
-  public void a(ChatMessage paramChatMessage)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected abstract String b();
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    String str = a();
-    long l = a();
-    if (FileUtils.fileExistsAndNotEmpty(b())) {
-      return false;
+    if (this.a.isShowing())
+    {
+      this.a.dismiss();
+      bdla.b(null, "dc00898", "", "", "0X800B08A", "0X800B08A", 6, 0, "", "", "", "");
     }
-    int i = a();
-    if ((i == 2) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1) && (i == 8))) {
-      return false;
-    }
-    if (aszt.a(str) != 2) {
-      return false;
-    }
-    if (!aszt.a()) {
-      return false;
-    }
-    if ((!TextUtils.isEmpty(str)) && (l > 0L) && (l > ((aser)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317)).a(beyy.a(str)).b)) {
-      return true;
-    }
-    return l > 1048576L;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

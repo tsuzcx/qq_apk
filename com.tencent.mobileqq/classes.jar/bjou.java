@@ -1,60 +1,53 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.widget.AutoVerticalScrollTextView;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.export.js.VipDownloadInterface;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjou
-  extends Animation
+  implements bjnh
 {
-  private float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final boolean jdField_b_of_type_Boolean;
+  public bjou(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
   
-  public bjou(AutoVerticalScrollTextView paramAutoVerticalScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    bjko.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction ERROR");
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void a(List<DownloadInfo> paramList)
   {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.jdField_b_of_type_Float;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    int i;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      i = 1;
-      paramTransformation = paramTransformation.getMatrix();
-      localCamera.save();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label99;
-      }
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
-    }
+    bjko.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
     for (;;)
     {
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f1, -f2);
-      paramTransformation.postTranslate(f1, f2);
-      return;
-      i = -1;
-      break;
-      label99:
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
     }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getHeight();
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getWidth();
+    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
+    bjko.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "querySucess : " + paramList);
+    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramList);
   }
 }
 

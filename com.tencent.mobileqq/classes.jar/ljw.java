@@ -1,10 +1,12 @@
-import com.tencent.av.chatroom.ChatRoomInfo;
-
-public abstract interface ljw
+public class ljw
 {
-  public abstract void a(int paramInt, ChatRoomInfo paramChatRoomInfo);
+  public int a;
+  public byte[] a;
   
-  public abstract void a(ljv paramljv);
+  public ljw(ljv paramljv)
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
 }
 
 

@@ -1,83 +1,96 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.AVActivity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
 
-public class mbc
-  extends BroadcastReceiver
+class mbc
 {
-  public mbc(AVActivity paramAVActivity) {}
+  int jdField_a_of_type_Int = -1;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
+  SpannableString jdField_a_of_type_AndroidTextSpannableString = null;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = -1;
+  boolean jdField_b_of_type_Boolean = false;
+  int jdField_c_of_type_Int = -1;
+  boolean jdField_c_of_type_Boolean = false;
+  int d = -1;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static mbc a(Resources paramResources, mbh parammbh, maz parammaz)
   {
-    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (this.a.a != null) && (paramContext.equals("homekey")))
-      {
-        if (this.a.a.a().d == 4)
-        {
-          if (this.a.d != 3000) {
-            break label237;
-          }
-          if (!this.a.a.a().j) {
-            break label210;
-          }
-          bcef.b(null, "CliOper", "", "", "0X80041BB", "0X80041BB", 0, 0, "", "", "", "");
-        }
-        if (this.a.g)
-        {
-          if (!this.a.a.a().j) {
-            break label424;
-          }
-          bcef.b(null, "CliOper", "", "", "0X8005216", "0X8005216", 0, 0, "", "", "", "");
-        }
-      }
+    mbc localmbc = new mbc();
+    if (!TextUtils.isEmpty(parammbh.a())) {
+      localmbc.jdField_a_of_type_AndroidTextSpannableString = new SpannableString(parammbh.a());
     }
-    for (;;)
+    localmbc.jdField_a_of_type_Int = parammaz.d;
+    localmbc.jdField_b_of_type_Int = parammaz.jdField_a_of_type_Int;
+    localmbc.jdField_c_of_type_Int = parammaz.jdField_b_of_type_Int;
+    localmbc.d = parammaz.jdField_c_of_type_Int;
+    switch (parammbh.a())
     {
-      if (AVActivity.a(this.a) != null) {
-        AVActivity.a(this.a).a(this.a.isResume());
+    }
+    do
+    {
+      return localmbc;
+      parammbh = (mbj)parammbh;
+      if ((parammbh.a() instanceof BitmapDrawable)) {
+        localmbc.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)parammbh.a()).getBitmap();
       }
-      this.a.a.a("backgroundReason", "1");
-      lcd.a = "1";
-      return;
-      label210:
-      bcef.b(null, "CliOper", "", "", "0X80041BE", "0X80041BE", 0, 0, "", "", "", "");
-      break;
-      label237:
-      if (this.a.d != 1) {
-        break;
-      }
-      if (this.a.a.a().j)
+      for (;;)
       {
-        if (this.a.a.a().D == 10)
+        switch (parammbh.k())
         {
-          bcef.b(null, "CliOper", "", "", "0X800593E", "0X800593E", 0, 0, "", "", "", "");
+        default: 
+          return localmbc;
+        case 1: 
+          localmbc.jdField_a_of_type_Boolean = true;
+          return localmbc;
+          parammaz = parammbh.b();
+          if (!TextUtils.isEmpty(parammaz)) {
+            localmbc.jdField_a_of_type_AndroidGraphicsBitmap = mqx.a(paramResources, parammaz);
+          }
           break;
         }
-        bcef.b(null, "CliOper", "", "", "0X80046E8", "0X80046E8", 0, 0, "", "", "", "");
-        break;
       }
-      if (!this.a.a.a().k) {
-        break;
+      localmbc.jdField_b_of_type_Boolean = true;
+      return localmbc;
+      localmbc.jdField_c_of_type_Boolean = ((mbk)parammbh).b();
+      return localmbc;
+      paramResources = (mbi)parammbh;
+      if (paramResources.h() != -1) {
+        localmbc.jdField_a_of_type_Int = paramResources.h();
       }
-      if (this.a.a.a().D == 10)
-      {
-        bcef.b(null, "CliOper", "", "", "0X8005941", "0X8005941", 0, 0, "", "", "", "");
-        break;
+      if (paramResources.j() != -1) {
+        localmbc.jdField_c_of_type_Int = paramResources.j();
       }
-      bcef.b(null, "CliOper", "", "", "0X80046EB", "0X80046EB", 0, 0, "", "", "", "");
-      break;
-      label424:
-      bcef.b(null, "CliOper", "", "", "0X8005219", "0X8005219", 0, 0, "", "", "", "");
+      if (paramResources.i() != -1) {
+        localmbc.d = paramResources.i();
+      }
+    } while (localmbc.jdField_a_of_type_AndroidTextSpannableString == null);
+    int j = paramResources.f();
+    if (paramResources.g() == -1) {}
+    for (int i = parammbh.a().length() + j;; i = paramResources.g() + j)
+    {
+      localmbc.jdField_a_of_type_AndroidTextSpannableString.setSpan(new mbd(paramResources), j, i, 33);
+      paramResources = new ForegroundColorSpan(localmbc.jdField_c_of_type_Int);
+      localmbc.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramResources, j, i, 17);
+      return localmbc;
     }
+  }
+  
+  static void a(TextView paramTextView, int paramInt1, int paramInt2)
+  {
+    paramTextView.setTag(2131378474, Integer.valueOf(paramInt2));
+    paramTextView.setTag(2131378475, Integer.valueOf(paramInt1));
+    paramTextView.setMovementMethod((lue)lue.a());
+    paramTextView.setHighlightColor(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mbc
  * JD-Core Version:    0.7.0.1
  */

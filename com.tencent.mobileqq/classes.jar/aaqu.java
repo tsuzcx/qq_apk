@@ -1,27 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.datadef.ProductNetLinkInfo;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
 
-public final class aaqu
-  implements Parcelable.Creator<ProductNetLinkInfo>
+public class aaqu
+  implements aqul
 {
-  public ProductNetLinkInfo a(Parcel paramParcel)
+  public aaqu(NewerGuidePlugin paramNewerGuidePlugin, String[] paramArrayOfString) {}
+  
+  public int a()
   {
-    ProductNetLinkInfo localProductNetLinkInfo = new ProductNetLinkInfo();
-    localProductNetLinkInfo.productId = paramParcel.readInt();
-    localProductNetLinkInfo.linkResetVoiceDesc = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpTitleDesc = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpContentDesc = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpDescImg = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpVoiceDesc = paramParcel.readString();
-    localProductNetLinkInfo.stopSoundWaveDesc1 = paramParcel.readString();
-    localProductNetLinkInfo.stopSoundWaveDesc2 = paramParcel.readString();
-    return localProductNetLinkInfo;
+    return 1;
   }
   
-  public ProductNetLinkInfo[] a(int paramInt)
+  public int a(int paramInt)
   {
-    return new ProductNetLinkInfo[paramInt];
+    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt2];
   }
 }
 

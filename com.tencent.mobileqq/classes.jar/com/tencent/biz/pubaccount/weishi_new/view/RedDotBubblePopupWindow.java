@@ -17,7 +17,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.ArrayList<LUserGrowth.stNotificationRedDot;>;
 import java.util.Iterator;
-import vds;
+import vsl;
 
 public class RedDotBubblePopupWindow
   extends PopupWindow
@@ -30,16 +30,16 @@ public class RedDotBubblePopupWindow
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private RedDotBubblePopupWindow.DisPopupRunnable jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRedDotBubblePopupWindow$DisPopupRunnable;
   private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private vds jdField_a_of_type_Vds;
+  private vsl jdField_a_of_type_Vsl;
   private TextView b;
   private TextView c;
   
-  public RedDotBubblePopupWindow(Activity paramActivity, vds paramvds)
+  public RedDotBubblePopupWindow(Activity paramActivity, vsl paramvsl)
   {
     super(paramActivity);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Vds = paramvds;
+    this.jdField_a_of_type_Vsl = paramvsl;
   }
   
   private void b()
@@ -81,14 +81,14 @@ public class RedDotBubblePopupWindow
   
   private void b(View paramView, ArrayList<stNotificationRedDot> paramArrayList)
   {
-    paramView.findViewById(2131370197).setOnClickListener(this);
+    paramView.findViewById(2131370371).setOnClickListener(this);
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131369919));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131366322));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131372130));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369926));
-    this.b = ((TextView)paramView.findViewById(2131366325));
-    this.c = ((TextView)paramView.findViewById(2131372131));
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131370089));
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131366427));
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramView.findViewById(2131372323));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370096));
+    this.b = ((TextView)paramView.findViewById(2131366430));
+    this.c = ((TextView)paramView.findViewById(2131372324));
     String str = "";
     Object localObject1 = "";
     paramView = "";
@@ -192,7 +192,7 @@ public class RedDotBubblePopupWindow
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       setBackgroundDrawable(new BitmapDrawable());
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559995, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560039, null);
       b(this.jdField_a_of_type_AndroidViewView, paramArrayList);
       setContentView(this.jdField_a_of_type_AndroidViewView);
       setWidth(-2);
@@ -204,10 +204,10 @@ public class RedDotBubblePopupWindow
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131370197)
+    if (paramView.getId() == 2131370371)
     {
-      if (this.jdField_a_of_type_Vds != null) {
-        this.jdField_a_of_type_Vds.a();
+      if (this.jdField_a_of_type_Vsl != null) {
+        this.jdField_a_of_type_Vsl.a();
       }
       a();
     }
@@ -216,7 +216,7 @@ public class RedDotBubblePopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RedDotBubblePopupWindow
  * JD-Core Version:    0.7.0.1
  */

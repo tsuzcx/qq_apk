@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.text.Editable;
 import android.widget.EditText;
-import bftf;
+import bhbx;
 import com.tencent.qphone.base.util.QLog;
 
 class LoginVerifyCodeActivity$7
@@ -15,7 +15,7 @@ class LoginVerifyCodeActivity$7
     int m = 1;
     int k = 0;
     QLog.d("LoginVerifyCodeActivity", 1, "start input code auto");
-    String str = bftf.b(LoginVerifyCodeActivity.c(this.this$0), LoginVerifyCodeActivity.d(this.this$0));
+    String str = bhbx.b(LoginVerifyCodeActivity.c(this.this$0), LoginVerifyCodeActivity.d(this.this$0));
     if ((str != null) && (str.length() == 6) && (LoginVerifyCodeActivity.a(this.this$0) != null))
     {
       QLog.d("LoginVerifyCodeActivity", 1, new Object[] { "getCode, code : ", str });
@@ -53,7 +53,7 @@ class LoginVerifyCodeActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginVerifyCodeActivity.7
  * JD-Core Version:    0.7.0.1
  */

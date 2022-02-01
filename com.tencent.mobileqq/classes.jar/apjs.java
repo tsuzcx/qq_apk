@@ -1,269 +1,350 @@
 import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.hardware.Camera;
-import android.hardware.Camera.CameraInfo;
+import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.camera.adapter.CameraWrapper.1;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ARRelationShip;
+import com.tencent.mobileqq.ar.model.ArAwardInfo;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.mobileqq.ar.model.ArModelResource;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.mobileqq.ar.model.ArWebInfo;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@TargetApi(9)
 public class apjs
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static apjs jdField_a_of_type_Apjs;
-  private volatile boolean jdField_a_of_type_Boolean;
-  
-  private apjs()
+  @TargetApi(9)
+  public static ArCloudConfigInfo a(String paramString)
   {
-    a(false);
-  }
-  
-  public static apjs a()
-  {
-    if (jdField_a_of_type_Apjs == null) {}
-    try
-    {
-      if (jdField_a_of_type_Apjs == null) {
-        jdField_a_of_type_Apjs = new apjs();
-      }
-      return jdField_a_of_type_Apjs;
-    }
-    finally {}
-  }
-  
-  public int a()
-  {
-    return 21;
-  }
-  
-  public int a(int paramInt1, int paramInt2)
-  {
-    QLog.d("Q.camera.CameraWrapper", 2, "[getCameraOrientation] cameraId = " + paramInt1 + ", cameraOrientation = " + paramInt2);
-    Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
-    Camera.getCameraInfo(paramInt1, localCameraInfo);
-    paramInt1 = localCameraInfo.orientation;
-    apjr.a().d();
-    if (localCameraInfo.facing == 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.camera.CameraWrapper", 2, "is FRONT camera, orientation = " + paramInt1);
-      }
-      switch (paramInt2)
-      {
-      }
+    if ((paramString == null) || (paramString.isEmpty())) {
+      return null;
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.camera.CameraWrapper", 2, "return orientation = " + paramInt1);
-      }
-      return paramInt1;
-      if (apjr.a().jdField_b_of_type_Int != -1)
+      JSONObject localJSONObject1;
+      Object localObject2;
+      Object localObject1;
+      try
       {
-        paramInt1 = apjr.a().jdField_b_of_type_Int;
-        QLog.d("Q.camera.CameraWrapper", 2, "reset FRONT Cam frontCamRotate0 = " + paramInt1);
-        continue;
-        if (apjr.a().jdField_c_of_type_Int != -1)
+        localJSONObject1 = new JSONObject(paramString);
+        paramString = new ArCloudConfigInfo();
+        if (localJSONObject1.has("BusinessId")) {
+          paramString.jdField_a_of_type_Int = Integer.parseInt(localJSONObject1.getString("BusinessId"));
+        }
+        if (localJSONObject1.has("SDKVersion")) {
+          paramString.jdField_a_of_type_JavaLangString = localJSONObject1.getString("SDKVersion");
+        }
+        if (localJSONObject1.has("CloseCache")) {
+          paramString.jdField_b_of_type_Int = localJSONObject1.getInt("CloseCache");
+        }
+        if (localJSONObject1.has("Type")) {
+          paramString.jdField_d_of_type_Int = localJSONObject1.getInt("Type");
+        }
+        if (localJSONObject1.has("TrackMode"))
         {
-          paramInt1 = apjr.a().jdField_c_of_type_Int;
-          QLog.d("Q.camera.CameraWrapper", 2, "reset FRONT Cam frontCamRotate90 = " + paramInt1);
-          continue;
-          if (apjr.a().d != -1)
+          paramString.jdField_c_of_type_Int = localJSONObject1.getInt("TrackMode");
+          if (paramString.jdField_c_of_type_Int == 4) {
+            paramString.jdField_c_of_type_Int = 1;
+          }
+          if (paramString.jdField_c_of_type_Int == 1)
           {
-            paramInt1 = apjr.a().d;
-            QLog.d("Q.camera.CameraWrapper", 2, "reset FRONT Cam frontCamRotate180 = " + paramInt1);
-            continue;
-            if (apjr.a().e != -1)
-            {
-              paramInt1 = apjr.a().e;
-              QLog.d("Q.camera.CameraWrapper", 2, "reset FRONT Cam frontCamRotate270 = " + paramInt1);
+            localObject2 = (SensorManager)BaseApplication.getContext().getSystemService("sensor");
+            if (!apfg.a()) {
+              break label1947;
+            }
+            i = 15;
+            localObject1 = ((SensorManager)localObject2).getSensorList(i);
+            localObject2 = ((SensorManager)localObject2).getDefaultSensor(4);
+            if ((((List)localObject1).size() <= 0) || (localObject2 == null) || (Build.MODEL.equalsIgnoreCase("GT-I9500"))) {
               continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.camera.CameraWrapper", 2, "is BACK camera, orientation = " + paramInt1);
-              }
-              switch (paramInt2)
-              {
-              default: 
-                break;
-              case -1: 
-              case 0: 
-                if (apjr.a().f != -1)
-                {
-                  paramInt1 = apjr.a().f;
-                  QLog.d("Q.camera.CameraWrapper", 2, "reset BACK Cam backCamRotate0 = " + paramInt1);
-                }
-                break;
-              case 90: 
-                if (apjr.a().jdField_g_of_type_Int != -1)
-                {
-                  paramInt1 = apjr.a().jdField_g_of_type_Int;
-                  QLog.d("Q.camera.CameraWrapper", 2, "reset BACK Cam backCamRotate90 = " + paramInt1);
-                }
-                break;
-              case 180: 
-                if (apjr.a().h != -1)
-                {
-                  paramInt1 = apjr.a().h;
-                  QLog.d("Q.camera.CameraWrapper", 2, "reset BACK Cam backCamRotate180 = " + paramInt1);
-                }
-                break;
-              case 270: 
-                if (apjr.a().i != -1)
-                {
-                  paramInt1 = apjr.a().i;
-                  QLog.d("Q.camera.CameraWrapper", 2, "reset BACK Cam backCamRotate270 = " + paramInt1);
-                }
-                break;
-              }
             }
+            paramString.jdField_c_of_type_Int = 1;
+          }
+          if (paramString.jdField_d_of_type_Int == 8) {
+            paramString.jdField_c_of_type_Int = 2;
           }
         }
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    apjr.a().a(apju.a(BaseApplicationImpl.getContext()), paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.camera.CameraWrapper", 2, "[isSysVersionValid] ENTER sysCamerOn=" + apjr.a().jdField_b_of_type_Boolean + " sysMinVersion=" + apjr.a().a + " sysMaxVersion=" + apjr.a().jdField_b_of_type_JavaLangString + " currVersion=" + Build.VERSION.RELEASE);
-    }
-    apjr.a().a();
-    boolean bool1 = bool3;
-    if (apjr.a().jdField_b_of_type_Boolean) {}
-    try
-    {
-      String[] arrayOfString2 = apjr.a().a.split("\\.");
-      String[] arrayOfString3 = apjr.a().jdField_b_of_type_JavaLangString.split("\\.");
-      String[] arrayOfString1;
-      int j;
-      int i;
-      if (Build.VERSION.RELEASE != null)
-      {
-        arrayOfString1 = Build.VERSION.RELEASE.split("\\.");
-        bool1 = bool3;
-        if (arrayOfString1 != null)
+        if (localJSONObject1.has("PicId")) {
+          paramString.jdField_b_of_type_JavaLangString = localJSONObject1.getString("PicId");
+        }
+        if (localJSONObject1.has("LotterySet")) {
+          paramString.e = localJSONObject1.getInt("LotterySet");
+        }
+        if (localJSONObject1.has("Award"))
         {
-          bool1 = bool3;
-          if (arrayOfString2.length == 3)
+          localObject1 = localJSONObject1.getJSONObject("Award");
+          localObject2 = new ArAwardInfo();
+          if (((JSONObject)localObject1).has("AwardDistance")) {
+            ((ArAwardInfo)localObject2).jdField_a_of_type_Int = localJSONObject1.getInt("AwardDistance");
+          }
+          if (((JSONObject)localObject1).has("BusinessBanner")) {
+            ((ArAwardInfo)localObject2).jdField_a_of_type_JavaLangString = localJSONObject1.getString("BusinessBanner");
+          }
+          if (((JSONObject)localObject1).has("BusinessLogo")) {
+            ((ArAwardInfo)localObject2).jdField_b_of_type_JavaLangString = localJSONObject1.getString("BusinessLogo");
+          }
+          if (((JSONObject)localObject1).has("BusinessName")) {
+            ((ArAwardInfo)localObject2).f = localJSONObject1.getString("BusinessName");
+          }
+          if (((JSONObject)localObject1).has("BusinessWishing")) {
+            ((ArAwardInfo)localObject2).jdField_d_of_type_JavaLangString = localJSONObject1.getString("BusinessWishing");
+          }
+          if (((JSONObject)localObject1).has("NotPlayModel"))
           {
-            bool1 = bool3;
-            if (arrayOfString3.length == 3)
-            {
-              j = Integer.parseInt(arrayOfString2[0]);
-              int i3 = Integer.parseInt(arrayOfString2[1]);
-              int i4 = Integer.parseInt(arrayOfString2[2]);
-              int k = Integer.parseInt(arrayOfString1[0]);
-              int m = Integer.parseInt(arrayOfString1[1]);
-              if (arrayOfString1.length != 3) {
-                break label356;
-              }
-              i = Integer.parseInt(arrayOfString1[2]);
-              label231:
-              int n = Integer.parseInt(arrayOfString3[0]);
-              int i1 = Integer.parseInt(arrayOfString3[1]);
-              int i2 = Integer.parseInt(arrayOfString3[2]);
-              if ((k <= j) && ((k != j) || (m <= i3)) && ((j != k) || (i3 != m) || (i < i4))) {
-                break label361;
-              }
-              j = 1;
-              label295:
-              if ((k >= n) && ((k != n) || (m >= i1)) && ((n != k) || (i1 != m) || (i > i2))) {
-                break label366;
-              }
-              i = 1;
-              label335:
-              if ((j == 0) || (i == 0)) {
-                break label371;
-              }
+            if (localJSONObject1.getInt("NotPlayModel") == 1) {
+              ((ArAwardInfo)localObject2).jdField_b_of_type_Int = 0;
             }
           }
+          else {
+            paramString.jdField_a_of_type_ComTencentMobileqqArModelArAwardInfo = ((ArAwardInfo)localObject2);
+          }
         }
+        else
+        {
+          if (localJSONObject1.has("Feature"))
+          {
+            localObject1 = localJSONObject1.getJSONObject("Feature");
+            localObject2 = new ArFeatureInfo();
+            if (((JSONObject)localObject1).has("FeatureMD5")) {
+              ((ArFeatureInfo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("FeatureMD5");
+            }
+            if (((JSONObject)localObject1).has("FeatureSize")) {
+              ((ArFeatureInfo)localObject2).jdField_a_of_type_Long = ((JSONObject)localObject1).getLong("FeatureSize");
+            }
+            if (((JSONObject)localObject1).has("FeatureUrl")) {
+              ((ArFeatureInfo)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("FeatureUrl");
+            }
+            paramString.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo = ((ArFeatureInfo)localObject2);
+          }
+          if (localJSONObject1.has("ModelResource"))
+          {
+            localObject1 = localJSONObject1.getJSONObject("ModelResource");
+            localObject2 = new ArModelResource();
+            if (((JSONObject)localObject1).has("ModelResourceSize")) {
+              ((ArModelResource)localObject2).jdField_a_of_type_Long = ((JSONObject)localObject1).getLong("ModelResourceSize");
+            }
+            if (((JSONObject)localObject1).has("ModelResourceMD5")) {
+              ((ArModelResource)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("ModelResourceMD5");
+            }
+            if (((JSONObject)localObject1).has("ModelResourceUrl")) {
+              ((ArModelResource)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("ModelResourceUrl");
+            }
+            if (((JSONObject)localObject1).has("ModelResourceBgMusic")) {
+              ((ArModelResource)localObject2).jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).getString("ModelResourceBgMusic");
+            }
+            if (((JSONObject)localObject1).has("ModelConfigFile")) {
+              ((ArModelResource)localObject2).jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).getString("ModelConfigFile");
+            }
+            if (((JSONObject)localObject1).has("ModelRepeatTimes")) {
+              ((ArModelResource)localObject2).jdField_a_of_type_Int = ((JSONObject)localObject1).getInt("ModelRepeatTimes");
+            }
+            if (((JSONObject)localObject1).has("ModelLayout")) {
+              ((ArModelResource)localObject2).e = ((JSONObject)localObject1).getString("ModelLayout");
+            }
+            paramString.jdField_a_of_type_ComTencentMobileqqArModelArModelResource = ((ArModelResource)localObject2);
+          }
+          if (localJSONObject1.has("Web"))
+          {
+            localObject1 = localJSONObject1.getJSONObject("Web");
+            localObject2 = new ArWebInfo();
+            if (((JSONObject)localObject1).has("IsUrlAutoJump"))
+            {
+              if (((JSONObject)localObject1).getInt("IsUrlAutoJump") != 1) {
+                break label1953;
+              }
+              bool = true;
+              ((ArWebInfo)localObject2).jdField_a_of_type_Boolean = bool;
+            }
+            if (((JSONObject)localObject1).has("IsUrlTransparent"))
+            {
+              if (((JSONObject)localObject1).getInt("IsUrlTransparent") != 1) {
+                break label1958;
+              }
+              bool = true;
+              ((ArWebInfo)localObject2).jdField_b_of_type_Boolean = bool;
+            }
+            if (((JSONObject)localObject1).has("WebJumpUrl")) {
+              ((ArWebInfo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("WebJumpUrl");
+            }
+            if (((JSONObject)localObject1).has("HtmlOfflineBid")) {
+              ((ArWebInfo)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("HtmlOfflineBid");
+            }
+            if ((Build.VERSION.SDK_INT < 16) && (((ArWebInfo)localObject2).jdField_b_of_type_Boolean))
+            {
+              QLog.i("AREngine_MarkerJsonParser", 1, "isUrlTransparent isUrlTransparent forse to  false");
+              ((ArWebInfo)localObject2).jdField_b_of_type_Boolean = false;
+              ((ArWebInfo)localObject2).jdField_a_of_type_JavaLangString = "";
+              ((ArWebInfo)localObject2).jdField_a_of_type_Boolean = false;
+            }
+            paramString.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo = ((ArWebInfo)localObject2);
+          }
+          if (!localJSONObject1.has("VideoResource")) {
+            break label1310;
+          }
+          localObject1 = localJSONObject1.getJSONArray("VideoResource");
+          localObject2 = new ArrayList();
+          i = 0;
+          if (i >= ((JSONArray)localObject1).length()) {
+            break label1304;
+          }
+          JSONObject localJSONObject2 = ((JSONArray)localObject1).getJSONObject(i);
+          ArVideoResourceInfo localArVideoResourceInfo = new ArVideoResourceInfo();
+          if (localJSONObject2.has("VideoConnectType")) {
+            localArVideoResourceInfo.jdField_a_of_type_Int = localJSONObject2.getInt("VideoConnectType");
+          }
+          if (localJSONObject2.has("VideoKeyingConfig")) {
+            localArVideoResourceInfo.jdField_a_of_type_JavaLangString = localJSONObject2.getString("VideoKeyingConfig");
+          }
+          if (localJSONObject2.has("VideoSize")) {
+            localArVideoResourceInfo.jdField_a_of_type_Long = localJSONObject2.getLong("VideoSize");
+          }
+          if (localJSONObject2.has("VideoLayout")) {
+            localArVideoResourceInfo.jdField_b_of_type_JavaLangString = localJSONObject2.getString("VideoLayout");
+          }
+          if (localJSONObject2.has("VideoMD5")) {
+            localArVideoResourceInfo.jdField_c_of_type_JavaLangString = localJSONObject2.getString("VideoMD5");
+          }
+          if (localJSONObject2.has("VideoRepeatTimes")) {
+            localArVideoResourceInfo.jdField_b_of_type_Int = localJSONObject2.getInt("VideoRepeatTimes");
+          }
+          if (localJSONObject2.has("VideoTrackMode")) {
+            localArVideoResourceInfo.jdField_c_of_type_Int = localJSONObject2.getInt("VideoTrackMode");
+          }
+          if (localJSONObject2.has("VideoType")) {
+            localArVideoResourceInfo.jdField_d_of_type_Int = localJSONObject2.getInt("VideoType");
+          }
+          if (localJSONObject2.has("VideoUrl")) {
+            localArVideoResourceInfo.jdField_d_of_type_JavaLangString = localJSONObject2.getString("VideoUrl");
+          }
+          ((ArrayList)localObject2).add(localArVideoResourceInfo);
+          i += 1;
+          continue;
+          paramString.jdField_c_of_type_Int = 2;
+          QLog.i("AREngine_MarkerJsonParser", 1, "no support sensor or GT-I9500. make trackmode 1 to 2");
+          localObject1 = new HashMap();
+          ((HashMap)localObject1).put("ar_model", Build.MODEL);
+          ((HashMap)localObject1).put("ar_type", "1");
+          ((HashMap)localObject1).put("ar_reason", "1");
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AndroidARException", true, 0L, 0L, (HashMap)localObject1, "", true);
+          continue;
+        }
+        ((ArAwardInfo)localObject2).jdField_b_of_type_Int = 1;
       }
-      label356:
-      label361:
-      label366:
-      label371:
-      for (bool1 = bool2;; bool1 = false)
+      catch (JSONException paramString)
       {
-        return bool1;
-        arrayOfString1 = null;
-        break;
-        i = 0;
-        break label231;
-        j = 0;
-        break label295;
-        i = 0;
-        break label335;
+        QLog.i("AREngine_MarkerJsonParser", 1, "parseCloudInfo parse json failed. error msg = " + paramString.getMessage());
+        return null;
       }
-      return false;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public int b()
-  {
-    int j;
-    if (jdField_a_of_type_Int != -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.camera.CameraWrapper", 2, "[getNumberOfCameras] sNumberOfCameras = " + jdField_a_of_type_Int);
+      continue;
+      label1304:
+      paramString.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
+      label1310:
+      if (localJSONObject1.has("IsRelationShip")) {
+        paramString.g = localJSONObject1.getInt("IsRelationShip");
       }
-      j = jdField_a_of_type_Int;
-      return j;
-    }
-    SharedPreferences localSharedPreferences = apju.b(BaseApplicationImpl.getContext());
-    int i;
-    if (localSharedPreferences.contains("localsp_camera_num"))
-    {
-      j = localSharedPreferences.getInt("localsp_camera_num", 0);
-      i = j;
-      if (j < 1)
+      if (localJSONObject1.has("traversing360")) {
+        paramString.jdField_a_of_type_Apcc = apcc.a(localJSONObject1.getJSONObject("traversing360"));
+      }
+      if (localJSONObject1.has("ARRelationShip"))
       {
-        i = Camera.getNumberOfCameras();
-        StatisticCollector.report("event_camera_num_less_two");
+        localObject1 = localJSONObject1.getJSONObject("ARRelationShip");
+        localObject2 = new ARRelationShip();
+        if (((JSONObject)localObject1).has("TaskId"))
+        {
+          paramString.jdField_b_of_type_Int = 1;
+          paramString.jdField_d_of_type_Int = 7;
+          ((ARRelationShip)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("TaskId");
+        }
+        if (((JSONObject)localObject1).has("ARRelationShipResourceUrl")) {
+          ((ARRelationShip)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("ARRelationShipResourceUrl");
+        }
+        if (((JSONObject)localObject1).has("ARRelationShipResourceMd5")) {
+          ((ARRelationShip)localObject2).jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).getString("ARRelationShipResourceMd5");
+        }
+        if (((JSONObject)localObject1).has("AIOMsgImageUrl")) {
+          ((ARRelationShip)localObject2).k = ((JSONObject)localObject1).getString("AIOMsgImageUrl");
+        }
+        if (((JSONObject)localObject1).has("AIOMsgJumpUrl")) {
+          ((ARRelationShip)localObject2).j = ((JSONObject)localObject1).getString("AIOMsgJumpUrl");
+        }
+        if (((JSONObject)localObject1).has("AIOMsgSummary")) {
+          ((ARRelationShip)localObject2).i = ((JSONObject)localObject1).getString("AIOMsgSummary");
+        }
+        if (((JSONObject)localObject1).has("AIOMsgTitle")) {
+          ((ARRelationShip)localObject2).h = ((JSONObject)localObject1).getString("AIOMsgTitle");
+        }
+        if (((JSONObject)localObject1).has("ARRelationShipResourceSize")) {
+          ((ARRelationShip)localObject2).jdField_a_of_type_Long = ((JSONObject)localObject1).getLong("ARRelationShipResourceSize");
+        }
+        if (((JSONObject)localObject1).has("GuideWebPageUrl")) {
+          ((ARRelationShip)localObject2).g = ((JSONObject)localObject1).getString("GuideWebPageUrl");
+        }
+        if (((JSONObject)localObject1).has("SendMsgSuccessUrl")) {
+          ((ARRelationShip)localObject2).f = ((JSONObject)localObject1).getString("SendMsgSuccessUrl");
+        }
+        if (((JSONObject)localObject1).has("ShareTopicUrl")) {
+          ((ARRelationShip)localObject2).e = ((JSONObject)localObject1).getString("ShareTopicUrl");
+        }
+        if (((JSONObject)localObject1).has("CardDefaultText")) {
+          ((ARRelationShip)localObject2).l = ((JSONObject)localObject1).getString("CardDefaultText");
+        }
+        if (((JSONObject)localObject1).has("StarUin")) {
+          ((ARRelationShip)localObject2).m = ((JSONObject)localObject1).getString("StarUin");
+        }
+        if (((JSONObject)localObject1).has("StarNickName")) {
+          ((ARRelationShip)localObject2).n = ((JSONObject)localObject1).getString("StarNickName");
+        }
+        paramString.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip = ((ARRelationShip)localObject2);
       }
-    }
-    for (;;)
-    {
-      jdField_a_of_type_Int = i;
-      j = i;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("Q.camera.CameraWrapper", 2, new Object[] { "getNumberOfCameras, return ", Integer.valueOf(jdField_a_of_type_Int) });
-      return i;
-      if (!this.jdField_a_of_type_Boolean)
+      if (localJSONObject1.has("LbsActivity"))
       {
-        this.jdField_a_of_type_Boolean = true;
-        ThreadManager.excute(new CameraWrapper.1(this, localSharedPreferences), 64, null, false);
+        localJSONObject1 = localJSONObject1.getJSONObject("LbsActivity");
+        localObject1 = new ArLBSActivity();
+        if (localJSONObject1.has("ActivityName")) {
+          ((ArLBSActivity)localObject1).jdField_a_of_type_JavaLangString = localJSONObject1.getString("ActivityName");
+        }
+        if (localJSONObject1.has("Logo")) {
+          ((ArLBSActivity)localObject1).jdField_b_of_type_JavaLangString = localJSONObject1.getString("Logo");
+        }
+        if (localJSONObject1.has("MapBackground")) {
+          ((ArLBSActivity)localObject1).jdField_c_of_type_JavaLangString = localJSONObject1.getString("MapBackground");
+        }
+        if (localJSONObject1.has("PrizeImage")) {
+          ((ArLBSActivity)localObject1).jdField_d_of_type_JavaLangString = localJSONObject1.getString("PrizeImage");
+        }
+        if (localJSONObject1.has("PrizeName")) {
+          ((ArLBSActivity)localObject1).e = localJSONObject1.getString("PrizeName");
+        }
+        if (localJSONObject1.has("TipsForOutsideLBSLocation")) {
+          ((ArLBSActivity)localObject1).f = localJSONObject1.getString("TipsForOutsideLBSLocation");
+        }
+        if (localJSONObject1.has("TipsTitleForNoLBSLocation")) {
+          ((ArLBSActivity)localObject1).g = localJSONObject1.getString("TipsTitleForNoLBSLocation");
+        }
+        if (localJSONObject1.has("TipsContentForNoLBSLocation")) {
+          ((ArLBSActivity)localObject1).h = localJSONObject1.getString("TipsContentForNoLBSLocation");
+        }
+        paramString.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity = ((ArLBSActivity)localObject1);
       }
-      i = 2;
+      return paramString;
+      label1947:
+      int i = 11;
+      continue;
+      label1953:
+      boolean bool = false;
+      continue;
+      label1958:
+      bool = false;
     }
-  }
-  
-  public boolean b()
-  {
-    apjr.a().e();
-    return apjr.a().jdField_g_of_type_Boolean;
-  }
-  
-  public boolean c()
-  {
-    apjr.a().b();
-    return apjr.a().jdField_c_of_type_Boolean;
   }
 }
 

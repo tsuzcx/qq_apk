@@ -1,68 +1,54 @@
-import android.graphics.Rect;
-import com.tencent.av.redpacket.AVRedPacketManager;
-
 public class lup
-  extends lun
+  extends lum
 {
-  public luh a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  
-  public lup(luh paramluh)
-  {
-    this.jdField_a_of_type_Luh = paramluh;
-    this.jdField_b_of_type_Long = 750L;
-  }
-  
   public void a(long paramLong)
   {
-    super.a(paramLong);
-    long l = this.jdField_a_of_type_Long;
-    int i = 0;
-    if (paramLong - l <= this.jdField_b_of_type_Long) {
-      i = 255;
-    }
-    a(i);
-  }
-  
-  public void a(AVRedPacketManager paramAVRedPacketManager)
-  {
-    this.jdField_c_of_type_ArrayOfLuz = new luz[5];
-    int i = 0;
-    while (i < this.jdField_c_of_type_ArrayOfLuz.length)
+    paramLong -= this.a;
+    int j = 0;
+    float f2 = 1.0F;
+    int i;
+    float f1;
+    if ((paramLong > 2333L) && (paramLong < 2666L))
     {
-      this.jdField_c_of_type_ArrayOfLuz[i] = new luz(paramAVRedPacketManager.a("qav_redpacket_gold_" + i * 2 + ".png"));
-      i += 1;
+      i = (int)(255L * (paramLong - 2333L) / 333L);
+      f1 = (0.5F * (float)(paramLong + 2666L) - 2333.0F) / 333.0F;
     }
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_Luh = null;
+    for (;;)
+    {
+      a(i);
+      b(f1);
+      return;
+      if ((paramLong >= 2666L) && (paramLong <= 3099L))
+      {
+        i = 255;
+        f1 = f2;
+      }
+      else
+      {
+        f1 = f2;
+        i = j;
+        if (paramLong > 3099L)
+        {
+          f1 = f2;
+          i = j;
+          if (paramLong < 3266L)
+          {
+            i = (int)(255L * (3266L - paramLong) / 167L);
+            f1 = (167.0F - (float)(3099L - paramLong) * 0.5F) / 167.0F;
+          }
+        }
+      }
+    }
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_Int = (paramInt1 * 399 / 750);
-    this.jdField_c_of_type_Int = (paramInt1 * 279 / 750);
-    this.d = (paramInt1 * 155 / 750);
-    this.e = (paramInt1 * 252 / 750);
-  }
-  
-  public void c()
-  {
-    Rect localRect = this.jdField_a_of_type_Luh.a();
-    int i = localRect.left - this.d;
-    int j = localRect.top - this.e;
-    a(i, j, this.jdField_b_of_type_Int + i, this.jdField_c_of_type_Int + j);
+    a(paramInt1 * 548 / 1500, paramInt2 - paramInt1 * 1032 / 1500, paramInt1 * 952 / 1500, paramInt2 - paramInt1 * 472 / 1500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lup
  * JD-Core Version:    0.7.0.1
  */

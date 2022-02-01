@@ -1,27 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import mqq.app.AppRuntime;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class ahvb
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  ahvb(ahva paramahva) {}
+  ahvb(ahuz paramahuz, ahuu paramahuu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a.getActivity() != null)
-    {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
-      this.a.a.getActivity().startActivity(localIntent);
-    }
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Ahuz.b();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

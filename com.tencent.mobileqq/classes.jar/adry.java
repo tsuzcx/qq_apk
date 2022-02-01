@@ -1,37 +1,48 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adry
-  extends VerifyDevLockManager.VerifyDevLockObserver
+  implements bkzq
 {
-  private WeakReference<VerifyDevLockManager.VerifyDevLockObserver> a;
+  public adry(ChatSettingForTroop paramChatSettingForTroop, int paramInt, bkzi parambkzi) {}
   
-  public adry(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = new WeakReference(paramVerifyDevLockObserver);
-  }
-  
-  public void onReceive(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt, Object paramObject)
-  {
-    if (this.a.get() == null)
+    int i = 3;
+    switch (paramInt)
     {
-      QLog.e("NewAuthDevUgFragment", 1, "VerifyObserverWrapper onReceive mObserver.get() is null");
-      return;
+    default: 
+      i = 0;
+      paramInt = -1;
     }
-    ((VerifyDevLockManager.VerifyDevLockObserver)this.a.get()).onReceive(paramNotifyType, paramInt, paramObject);
-  }
-  
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (this.a.get() == null)
+    for (;;)
     {
-      QLog.e("NewAuthDevUgFragment", 1, "VerifyObserverWrapper onVerifyClose mObserver.get() is null");
-      return;
+      if (paramInt != this.jdField_a_of_type_Int) {
+        ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, paramInt);
+      }
+      try
+      {
+        this.jdField_a_of_type_Bkzi.dismiss();
+        bhbu.a("Grp_msg", "grpData_admin", "Close_setmsg", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, bhbu.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a), String.valueOf(i) });
+        return;
+        i = 3;
+        paramInt = 4;
+        continue;
+        i = 1;
+        paramInt = 2;
+        continue;
+        int j = 2;
+        paramInt = i;
+        i = j;
+      }
+      catch (Exception paramView)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("Q.chatopttroop", 2, paramView.toString());
+      }
     }
-    ((VerifyDevLockManager.VerifyDevLockObserver)this.a.get()).onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
   }
 }
 

@@ -1,20 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
 
 class mqe
-  implements View.OnTouchListener
+  implements mrf
 {
-  mqe(mqc parammqc) {}
+  mqe(mqb parammqb) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    return true;
+    QLog.w("AVRedBag", 1, "mResultUI 关闭了");
+    this.a.a = null;
+    ltm.a().b(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mqe
  * JD-Core Version:    0.7.0.1
  */

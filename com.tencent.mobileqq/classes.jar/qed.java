@@ -1,24 +1,74 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteRspBody;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteRspItem;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.RspBody;
 
 class qed
-  implements View.OnClickListener
+  extends ntc
 {
-  qed(qec paramqec, pvc parampvc, Context paramContext, int paramInt) {}
+  qed(qec paramqec, qef paramqef) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    qfp.a(this.jdField_a_of_type_Pvc.a(), this.jdField_a_of_type_AndroidContentContext);
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pvc.a();
-    String str1 = String.valueOf(pay.a(this.jdField_a_of_type_Pvc.a(), this.jdField_a_of_type_Int));
-    String str2 = pay.a(localArticleInfo.mAlgorithmID, pay.a(localArticleInfo), 70, 0, 0, NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidContentContext), str1, null, localArticleInfo.innerUniqueID, null, localArticleInfo);
-    odq.a(null, str1, "0X8009355", "0X8009355", 0, 0, localArticleInfo.mFeedId + "", String.valueOf(localArticleInfo.businessId), String.valueOf(localArticleInfo.mAlgorithmID), str2, false);
-    uhv.a(localArticleInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d(qec.a, 2, "getAtlasFavoriteStatus onResult, errorCode=" + paramInt);
+    }
+    if ((paramInt != -1) && (paramArrayOfByte != null)) {}
+    for (;;)
+    {
+      ArrayList localArrayList;
+      try
+      {
+        paramBundle = new oidb_0xb40.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = ((oidb_0xb40.CheckFavoriteRspBody)paramBundle.msg_check_favorite_rsp.get()).rpt_msg_rsp_items.get().iterator();
+        if (paramArrayOfByte.hasNext())
+        {
+          Object localObject = (oidb_0xb40.CheckFavoriteRspItem)paramArrayOfByte.next();
+          paramBundle = ((oidb_0xb40.CheckFavoriteRspItem)localObject).bytes_rowkey.get().toStringUtf8();
+          if (((oidb_0xb40.CheckFavoriteRspItem)localObject).uint32_result.get() == 1)
+          {
+            bool = true;
+            localArrayList = new ArrayList();
+            if (!bool) {
+              break label242;
+            }
+            localObject = ((oidb_0xb40.CheckFavoriteRspItem)localObject).bytes_cid_list.get().iterator();
+            if (!((Iterator)localObject).hasNext()) {
+              break label242;
+            }
+            localArrayList.add(((ByteStringMicro)((Iterator)localObject).next()).toStringUtf8());
+            continue;
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (this.jdField_a_of_type_Qef != null) {
+          this.jdField_a_of_type_Qef.a(false, null, false, null);
+        }
+        QLog.e(qec.a, 1, "getAtlasFavoriteStatus onResult(), exception=" + paramArrayOfByte.toString());
+      }
+      boolean bool = false;
+      continue;
+      label242:
+      if (this.jdField_a_of_type_Qef != null) {
+        this.jdField_a_of_type_Qef.a(true, paramBundle, bool, localArrayList);
+      }
+    }
   }
 }
 

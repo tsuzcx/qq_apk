@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import axut;
-import axuv;
+import azbe;
+import azbg;
 
 class OnLineStatusBlurBg$1$1
   implements Runnable
 {
-  OnLineStatusBlurBg$1$1(OnLineStatusBlurBg.1 param1, axuv paramaxuv) {}
+  OnLineStatusBlurBg$1$1(OnLineStatusBlurBg.1 param1, azbg paramazbg) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Axuv.a(true, axut.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.this$0), this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.b);
+    this.jdField_a_of_type_Azbg.a(true, azbe.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.this$0), this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg$1.b);
   }
 }
 

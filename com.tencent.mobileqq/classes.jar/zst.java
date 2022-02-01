@@ -1,18 +1,16 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.biz.troopgift.RadioButtonIndicator;
+import android.app.Activity;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.7.1;
 
 public class zst
-  extends RadioButton
+  implements zzt
 {
-  public zst(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
+  zst(zsl paramzsl) {}
   
-  public boolean performClick()
+  public void a(int paramInt)
   {
-    return true;
+    if (zsl.q(this.a) != null) {
+      zsl.r(this.a).runOnUiThread(new DetailBaseBlock.7.1(this));
+    }
   }
 }
 

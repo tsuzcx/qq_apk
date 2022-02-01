@@ -1,220 +1,138 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import mqq.app.MobileQQ;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class axno
 {
-  public static amqq a;
-  public static axno a;
-  private static final String b;
-  public int a;
-  public String a;
-  public int b;
-  public int c = 800;
-  public int d = 1080;
-  public int e = 1920;
-  public int f = 100;
-  public int g = 6;
-  public int h = 140;
-  public int i = 100;
+  public static HashSet a = new HashSet();
   
-  static
+  public static axnn a(AppInterface paramAppInterface)
   {
-    jdField_b_of_type_JavaLangString = DeviceProfileManager.DpcNames.ocrCfg.name();
-    jdField_a_of_type_Amqq = new axnp();
-  }
-  
-  public axno()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 70;
-    DeviceProfileManager.a(jdField_a_of_type_Amqq);
-  }
-  
-  public static axno a()
-  {
-    if (jdField_a_of_type_Axno != null) {
-      return jdField_a_of_type_Axno;
-    }
+    axnn localaxnn = new axnn();
+    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
+    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4);
+    localaxnn.jdField_a_of_type_Boolean = paramAppInterface.getBoolean("isShowCard", false);
+    localaxnn.jdField_b_of_type_Boolean = paramAppInterface.getBoolean("isShowList", false);
+    localaxnn.jdField_a_of_type_Long = paramAppInterface.getLong("expireTime", 0L);
+    localaxnn.jdField_a_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrl", "");
+    localaxnn.jdField_b_of_type_JavaLangString = paramAppInterface.getString("entranceJumpUrlForHost", "");
+    localaxnn.c = paramAppInterface.getString("entranceJumpUrlForGuest", "");
     if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.dpc", 2, "get ocrDpc is null");
+      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.getConfig config.expireTime=" + localaxnn.jdField_a_of_type_Boolean + "  config.isShowList=" + localaxnn.jdField_b_of_type_Boolean + "  config.expireTime=" + localaxnn.jdField_a_of_type_Long + "  config.entranceJumpUrl=" + localaxnn.jdField_a_of_type_JavaLangString + "  config.entranceJumpUrlForHost=" + localaxnn.jdField_b_of_type_JavaLangString + "  config.entranceJumpUrlForGuest=" + localaxnn.c);
     }
-    a();
-    return jdField_a_of_type_Axno;
+    return localaxnn;
   }
   
-  /* Error */
-  public static void a()
+  public static String a(int paramInt, String... paramVarArgs)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: invokestatic 86	com/tencent/mobileqq/app/DeviceProfileManager:b	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
-    //   6: getstatic 31	axno:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   9: invokevirtual 89	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   12: astore_1
-    //   13: new 2	axno
-    //   16: dup
-    //   17: invokespecial 90	axno:<init>	()V
-    //   20: putstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   23: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   26: aload_1
-    //   27: putfield 92	axno:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   30: aload_1
-    //   31: invokestatic 98	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   34: ifne +157 -> 191
-    //   37: aload_1
-    //   38: ldc 100
-    //   40: invokevirtual 106	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   43: astore_1
-    //   44: aload_1
-    //   45: arraylength
-    //   46: istore_0
-    //   47: iload_0
-    //   48: bipush 9
-    //   50: if_icmplt +141 -> 191
-    //   53: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   56: aload_1
-    //   57: iconst_0
-    //   58: aaload
-    //   59: invokestatic 112	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   62: invokevirtual 116	java/lang/Integer:intValue	()I
-    //   65: putfield 42	axno:jdField_a_of_type_Int	I
-    //   68: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   71: aload_1
-    //   72: iconst_1
-    //   73: aaload
-    //   74: invokestatic 112	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   77: invokevirtual 116	java/lang/Integer:intValue	()I
-    //   80: putfield 44	axno:jdField_b_of_type_Int	I
-    //   83: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   86: aload_1
-    //   87: iconst_2
-    //   88: aaload
-    //   89: invokestatic 112	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   92: invokevirtual 116	java/lang/Integer:intValue	()I
-    //   95: putfield 46	axno:c	I
-    //   98: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   101: aload_1
-    //   102: iconst_3
-    //   103: aaload
-    //   104: invokestatic 112	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   107: invokevirtual 116	java/lang/Integer:intValue	()I
-    //   110: putfield 48	axno:d	I
-    //   113: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   116: aload_1
-    //   117: iconst_4
-    //   118: aaload
-    //   119: invokestatic 112	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   122: invokevirtual 116	java/lang/Integer:intValue	()I
-    //   125: putfield 50	axno:e	I
-    //   128: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   131: aload_1
-    //   132: iconst_5
-    //   133: aaload
-    //   134: invokestatic 112	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   137: invokevirtual 116	java/lang/Integer:intValue	()I
-    //   140: putfield 52	axno:f	I
-    //   143: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   146: aload_1
-    //   147: bipush 6
-    //   149: aaload
-    //   150: invokestatic 112	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   153: invokevirtual 116	java/lang/Integer:intValue	()I
-    //   156: putfield 54	axno:g	I
-    //   159: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   162: aload_1
-    //   163: bipush 7
-    //   165: aaload
-    //   166: invokestatic 112	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   169: invokevirtual 116	java/lang/Integer:intValue	()I
-    //   172: putfield 56	axno:h	I
-    //   175: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   178: aload_1
-    //   179: bipush 8
-    //   181: aaload
-    //   182: invokestatic 112	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   185: invokevirtual 116	java/lang/Integer:intValue	()I
-    //   188: putfield 58	axno:i	I
-    //   191: invokestatic 72	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   194: ifeq +30 -> 224
-    //   197: ldc 74
-    //   199: iconst_2
-    //   200: new 118	java/lang/StringBuilder
-    //   203: dup
-    //   204: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   207: ldc 121
-    //   209: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   212: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   215: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   218: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   221: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   224: ldc 2
-    //   226: monitorexit
-    //   227: return
-    //   228: astore_1
-    //   229: ldc 74
-    //   231: iconst_1
-    //   232: new 118	java/lang/StringBuilder
-    //   235: dup
-    //   236: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   239: ldc 133
-    //   241: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   244: aload_1
-    //   245: invokevirtual 136	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   248: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   251: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   254: invokestatic 79	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   257: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   260: bipush 70
-    //   262: putfield 44	axno:jdField_b_of_type_Int	I
-    //   265: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   268: sipush 800
-    //   271: putfield 46	axno:c	I
-    //   274: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   277: sipush 1080
-    //   280: putfield 48	axno:d	I
-    //   283: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   286: sipush 1920
-    //   289: putfield 50	axno:e	I
-    //   292: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   295: bipush 100
-    //   297: putfield 52	axno:f	I
-    //   300: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   303: bipush 6
-    //   305: putfield 54	axno:g	I
-    //   308: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   311: sipush 140
-    //   314: putfield 56	axno:h	I
-    //   317: getstatic 66	axno:jdField_a_of_type_Axno	Laxno;
-    //   320: bipush 100
-    //   322: putfield 58	axno:i	I
-    //   325: goto -134 -> 191
-    //   328: astore_1
-    //   329: ldc 2
-    //   331: monitorexit
-    //   332: aload_1
-    //   333: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   46	5	0	j	int
-    //   12	167	1	localObject1	Object
-    //   228	17	1	localException	java.lang.Exception
-    //   328	5	1	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   53	191	228	java/lang/Exception
-    //   3	47	328	finally
-    //   53	191	328	finally
-    //   191	224	328	finally
-    //   229	325	328	finally
+    if ((paramVarArgs == null) || (paramVarArgs.length <= paramInt)) {
+      return "";
+    }
+    return paramVarArgs[paramInt];
   }
   
-  public String toString()
+  public static void a(AppInterface paramAppInterface, axnn paramaxnn)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ocrSwitch:").append(this.jdField_a_of_type_Int).append(",picQuality:").append(this.jdField_b_of_type_Int).append(",picShortestSide:").append(this.c).append(",maxPreviewWidth:").append(this.d).append(",maxPreviewHeight:").append(this.e).append(",").append(this.f).append(",").append(this.g).append(",").append(this.h).append(",").append(this.i);
-    return localStringBuilder.toString();
+    try
+    {
+      String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
+      paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4).edit().putBoolean("isShowCard", paramaxnn.jdField_a_of_type_Boolean).putBoolean("isShowList", paramaxnn.jdField_b_of_type_Boolean).putLong("expireTime", paramaxnn.jdField_a_of_type_Long).putString("entranceJumpUrl", paramaxnn.jdField_a_of_type_JavaLangString).putString("entranceJumpUrlForHost", paramaxnn.jdField_b_of_type_JavaLangString).putString("entranceJumpUrlForGuest", paramaxnn.c).commit();
+      if (QLog.isColorLevel()) {
+        QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.saveConfig config.expireTime=" + paramaxnn.jdField_a_of_type_Boolean + "  config.isShowList=" + paramaxnn.jdField_b_of_type_Boolean + "  config.expireTime=" + paramaxnn.jdField_a_of_type_Long + "  config.entranceJumpUrl=" + paramaxnn.jdField_a_of_type_JavaLangString + "  config.entranceJumpUrlForHost=" + paramaxnn.jdField_b_of_type_JavaLangString + "  config.entranceJumpUrlForGuest=" + paramaxnn.c);
+      }
+      return;
+    }
+    finally
+    {
+      paramAppInterface = finally;
+      throw paramAppInterface;
+    }
+  }
+  
+  public static void a(AppInterface paramAppInterface, String paramString)
+  {
+    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
+    paramAppInterface = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4);
+    str = "has_insert_face_score_msg_" + paramString;
+    paramAppInterface.edit().putBoolean(str, true).commit();
+    if (QLog.isColorLevel()) {
+      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.setHasInsertMsgFlag uin=" + paramString);
+    }
+  }
+  
+  public static void a(MessageRecord paramMessageRecord, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q..troop.faceScore", 2, "setFaceScoreFlag, msg = " + paramMessageRecord + "  key=" + paramString + " flag=" + paramBoolean);
+    }
+    if (paramMessageRecord == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (TextUtils.isEmpty(paramMessageRecord.extStr))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put(paramString, paramBoolean);
+          paramMessageRecord.extStr = localJSONObject.toString();
+          paramMessageRecord.extLong |= 0x1;
+          return;
+        }
+      }
+      catch (JSONException paramMessageRecord)
+      {
+        paramMessageRecord.printStackTrace();
+        return;
+      }
+      JSONObject localJSONObject = new JSONObject(paramMessageRecord.extStr);
+      localJSONObject.put(paramString, paramBoolean);
+      paramMessageRecord.extStr = localJSONObject.toString();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String... paramVarArgs)
+  {
+    bdla.b(null, "dc00899", "grp_lbs", paramString2, "face_score", paramString1, 0, 0, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
+  }
+  
+  public static boolean a(AppInterface paramAppInterface, String paramString)
+  {
+    String str = "nearby_face_score_config_" + paramAppInterface.getCurrentAccountUin();
+    boolean bool = paramAppInterface.getApplication().getApplicationContext().getSharedPreferences(str, 4).getBoolean("has_insert_face_score_msg_" + paramString, false);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q..troop.faceScore", 2, "FaceScoreUtils.getHasInsertMsgFlag uin=" + paramString + "  flag=" + bool);
+    }
+    return bool;
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord, String paramString)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q..troop.faceScore", 2, "getFaceScoreFlag, msg = " + paramMessageRecord + "  key=" + paramString);
+    }
+    if (paramMessageRecord == null) {
+      return false;
+    }
+    if ((paramMessageRecord.extStr != null) && ((paramMessageRecord.extLong & 0x1) == 1) && (paramMessageRecord.extStr.contains(paramString)) && (paramMessageRecord.getExtInfoFromExtStr(paramString).equals("true"))) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q..troop.faceScore.FaceScoreUtils", 2, "isFaceScoreGrayTips, ret=" + bool + ", mr=" + paramMessageRecord);
+      }
+      return bool;
+      bool = false;
+    }
   }
 }
 

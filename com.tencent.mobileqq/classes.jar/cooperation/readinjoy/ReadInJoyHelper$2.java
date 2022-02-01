@@ -1,7 +1,7 @@
 package cooperation.readinjoy;
 
 import android.content.SharedPreferences;
-import bkwm;
+import bmhv;
 import mqq.app.AppRuntime;
 
 public final class ReadInJoyHelper$2
@@ -12,14 +12,14 @@ public final class ReadInJoyHelper$2
   public void run()
   {
     int i = 1;
-    SharedPreferences localSharedPreferences = bkwm.a(this.a, true, true);
+    SharedPreferences localSharedPreferences = bmhv.a(this.a, true, true);
     if (localSharedPreferences == null) {
       return;
     }
     if (localSharedPreferences.getBoolean("free_time_refresh_push", true)) {}
     for (;;)
     {
-      bkwm.a(i);
+      bmhv.a(i);
       return;
       i = 0;
     }

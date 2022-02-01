@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import acwc;
+import admo;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,11 +8,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public final class ChatActivityFacade$15
   implements Runnable
 {
-  public ChatActivityFacade$15(acwc paramacwc, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  public ChatActivityFacade$15(admo paramadmo, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Acwc.a) {
+    if (this.jdField_a_of_type_Admo.a) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().clearDraftText(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
     }
   }

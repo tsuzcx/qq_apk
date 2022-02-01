@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.video;
 
-import absw;
+import aciv;
 import android.widget.TextView;
 
 class GdtVideoCommonView$4
@@ -10,7 +10,7 @@ class GdtVideoCommonView$4
   
   public void run()
   {
-    GdtVideoCommonView.a(this.this$0).setText(absw.a(GdtVideoCommonView.a(this.this$0)));
+    GdtVideoCommonView.a(this.this$0).setText(aciv.a(GdtVideoCommonView.a(this.this$0)));
   }
 }
 

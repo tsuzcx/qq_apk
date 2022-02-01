@@ -1,25 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
-import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.2;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import org.json.JSONObject;
-
 public class aoqw
-  implements aoqs
+  implements aoqr
 {
-  public void a(String paramString)
+  public void a(anyz paramanyz, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, anza paramanza)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 999: 
+      paramanyz.commenMsgContentChanged(paramBoolean, paramObject);
+      return;
+    case 1000: 
+      paramanyz.comenMsgReceived();
+      return;
+    case 1003: 
+      paramanyz.delRoamChatFriend(paramBoolean);
+      return;
+    case 1004: 
+      paramanyz.getRoamChat(paramBoolean, paramObject);
+      return;
+    case 1005: 
+      paramanyz.setRoamChat(paramBoolean);
+      return;
+    case 2000: 
+      paramanyz.friendsListRefresh();
+      return;
+    case 2001: 
+      paramanyz.troopListRefresh();
+      return;
+    case 2002: 
+      paramanyz.recentListRefresh();
+      return;
+    case 1002: 
+      paramanyz.msgDelFriend(paramArrayOfObject);
+      return;
+    case 3012: 
+      paramanyz.transserviceTempChatDownloadPic(paramBoolean, paramArrayOfObject);
       return;
     }
-    ArkAppCenter.a().postToMainThread(new ArkAppSchemeCenter.TelSchemeHandler.1(this, paramString));
-  }
-  
-  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
-  {
-    ArkAppCenter.a().send(paramString3, new ArkAppSchemeCenter.TelSchemeHandler.2(this, paramString3, paramString1, paramLong, paramString2));
-    return true;
+    paramanyz.transserviceC2CUploadStreamPtt(paramBoolean, paramArrayOfObject);
   }
 }
 

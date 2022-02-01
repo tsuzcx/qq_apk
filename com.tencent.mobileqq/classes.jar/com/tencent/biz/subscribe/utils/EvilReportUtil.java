@@ -3,7 +3,7 @@ package com.tencent.biz.subscribe.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Base64;
-import bjkz;
+import bkwk;
 import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
 import cooperation.qzone.util.QZLog;
 import java.net.URLEncoder;
@@ -58,7 +58,7 @@ public class EvilReportUtil
     localStringBuilder.append("_").append(paramEvilReportParams.version);
     localStringBuilder.append("_").append(paramEvilReportParams.scene);
     localStringBuilder.append("_").append(decryptKey(paramString));
-    paramString = bjkz.a(localStringBuilder.toString());
+    paramString = bkwk.a(localStringBuilder.toString());
     localStringBuilder = new StringBuilder().append(paramEvilReportParams.eviluin);
     localStringBuilder.append("_").append(paramEvilReportParams.srv_para);
     localStringBuilder.append("_").append(paramEvilReportParams.text_evidence);
@@ -68,7 +68,7 @@ public class EvilReportUtil
     localStringBuilder.append("_").append(paramEvilReportParams.file_evidence);
     localStringBuilder.append("_").append(paramEvilReportParams.audio_evidence);
     localStringBuilder.append("_").append(paramString);
-    return bjkz.a(localStringBuilder.toString());
+    return bkwk.a(localStringBuilder.toString());
   }
   
   private static void navigateToEvilReportPage(Context paramContext, EvilReportUtil.EvilReportParams paramEvilReportParams, String paramString)

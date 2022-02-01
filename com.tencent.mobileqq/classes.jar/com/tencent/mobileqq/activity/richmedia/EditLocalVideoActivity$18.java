@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import akqy;
-import akvw;
-import akwa;
+import alou;
+import alts;
+import altw;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -55,7 +55,7 @@ class EditLocalVideoActivity$18
       label121:
       if (!EditLocalVideoActivity.a())
       {
-        i = akwa.a(EditLocalVideoActivity.b(this.this$0), j, k, m, n, i, i);
+        i = altw.a(EditLocalVideoActivity.b(this.this$0), j, k, m, n, i, i);
         if (QLog.isColorLevel()) {
           QLog.d("EditLocalVideoActivity", 2, "init, status1=" + i + ", dstWidth=" + j + ", dstHeight=" + k);
         }
@@ -81,7 +81,7 @@ class EditLocalVideoActivity$18
       if (!EditLocalVideoActivity.a())
       {
         if (TextUtils.isEmpty(EditLocalVideoActivity.b(this.this$0))) {}
-        for (i = -999;; i = akwa.a(EditLocalVideoActivity.b(this.this$0), this.a, this.b))
+        for (i = -999;; i = altw.a(EditLocalVideoActivity.b(this.this$0), this.a, this.b))
         {
           if (QLog.isColorLevel()) {
             QLog.d("EditLocalVideoActivity", 2, "init, status0=" + i);
@@ -107,13 +107,13 @@ class EditLocalVideoActivity$18
         }
         while (localBitmap != null)
         {
-          localObject = akvw.a + File.separator + System.currentTimeMillis() + ".jpg";
+          localObject = alts.a + File.separator + System.currentTimeMillis() + ".jpg";
           if (!PhotoUtils.saveBitmapToFile(localBitmap, (String)localObject, Bitmap.CompressFormat.JPEG, 90, true)) {
             break;
           }
           EditLocalVideoActivity.a(this.this$0).obtainMessage(1102, localObject).sendToTarget();
           return;
-          localBitmap = akwa.a(0L, 1000L);
+          localBitmap = altw.a(0L, 1000L);
         }
         return;
       }

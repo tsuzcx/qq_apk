@@ -3,8 +3,8 @@ package com.tencent.mobileqq.microapp.widget.media;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.hardware.Camera;
-import bbub;
-import bfpx;
+import bdaw;
+import bgyo;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.appbrand.a;
@@ -53,10 +53,10 @@ final class e
       {
         return;
       }
-      localObject1 = bfpx.a(this.a, 0, this.a.length);
+      localObject1 = bgyo.a(this.a, 0, this.a.length);
       localObject2 = new Matrix();
       f = 90.0F;
-      if (bbub.d(bbub.g)) {
+      if (bdaw.d(bdaw.g)) {
         f = 90.0F + 180.0F;
       }
       ((Matrix)localObject2).postRotate(f);

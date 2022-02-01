@@ -1,66 +1,58 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.view.TextureView;
-import android.view.View;
-import android.view.ViewGroup;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class wmy
+  extends wfm
 {
-  public static TextureView a(View paramView)
+  public static String a = weg.a("StorySvc.check_activity");
+  public String b;
+  public final String c;
+  
+  public wmy(String paramString)
   {
-    if ((paramView instanceof ViewGroup))
-    {
-      paramView = (ViewGroup)paramView;
-      int i = 0;
-      while (i < paramView.getChildCount())
-      {
-        TextureView localTextureView = a(paramView.getChildAt(i));
-        if (localTextureView != null) {
-          return localTextureView;
-        }
-        i += 1;
-      }
-    }
-    if ((paramView instanceof TextureView)) {
-      return (TextureView)paramView;
-    }
-    return null;
+    this.c = paramString;
   }
   
-  public static boolean a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public String a()
   {
-    if (paramBitmap.getConfig() != Bitmap.Config.ARGB_8888)
+    return a;
+  }
+  
+  public wfh a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspCheckActivity localRspCheckActivity = new qqstory_service.RspCheckActivity();
+    try
     {
-      yos.a(false, "bitmap is not ARGB_8888");
-      return false;
+      localRspCheckActivity.mergeFrom(paramArrayOfByte);
+      return new wmz(localRspCheckActivity);
     }
-    int j = paramBitmap.getWidth();
-    int k = paramBitmap.getHeight();
-    int m = j / paramInt1;
-    int n = k / paramInt1;
-    paramInt1 = 0;
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      if (paramInt1 >= j) {
-        break label118;
-      }
-      int i = 0;
       for (;;)
       {
-        if (i >= k) {
-          break label110;
-        }
-        int i1 = paramBitmap.getPixel(paramInt1, i);
-        if (((i1 & 0xFF) > paramInt2) || ((i1 >> 8 & 0xFF) > paramInt2) || ((i1 >> 16 & 0xFF) > paramInt2)) {
-          break;
-        }
-        i += n;
+        paramArrayOfByte.printStackTrace();
       }
-      label110:
-      paramInt1 += m;
     }
-    label118:
-    return true;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
+    if (!TextUtils.isEmpty(this.c)) {
+      localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
+    }
+    ykq.a("MsgTabCheckActiveRequest", "client version=%s", "8.4.10");
+    localReqCheckActivity.version.set("8.4.10");
+    return localReqCheckActivity.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabCheckActiveRequest{value='" + this.b + '\'' + ", adCode='" + this.c + '\'' + '}';
   }
 }
 

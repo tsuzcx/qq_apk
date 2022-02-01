@@ -1,62 +1,20 @@
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class yob
+class yob
+  extends SimpleJob<Object>
 {
-  public View a;
-  public View b;
-  
-  public yob(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  yob(ynw paramynw, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131369938);
+    super(paramString1);
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_JavaUtilArrayList.iterator();
-    float f = 0.0F;
-    if (localIterator.hasNext())
-    {
-      switch (((TroopStoryItemInfo)localIterator.next()).itemType)
-      {
-      }
-      for (;;)
-      {
-        break;
-        if ((ypb.b(paramTroopStoryItemInfo.publishTime)) || (ypb.d(paramTroopStoryItemInfo.publishTime)))
-        {
-          f = UIUtils.dip2px(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 44.0F) + f;
-        }
-        else
-        {
-          f = UIUtils.dip2px(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 71.0F) + f;
-          continue;
-          f = UIUtils.dip2px(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
-          continue;
-          f = UIUtils.dip2px(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 70.0F) + f;
-          continue;
-          f = UIUtils.dip2px(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
-        }
-      }
-    }
-    int i = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_Float - f);
-    paramTroopStoryItemInfo = (LinearLayout.LayoutParams)this.b.getLayoutParams();
-    if (i <= 0)
-    {
-      paramTroopStoryItemInfo.height = 0;
-      this.b.setLayoutParams(paramTroopStoryItemInfo);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-    }
-    paramTroopStoryItemInfo.height = i;
-    this.b.setLayoutParams(paramTroopStoryItemInfo);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    ykv.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

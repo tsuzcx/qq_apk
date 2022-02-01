@@ -1,11 +1,18 @@
-public abstract interface bbdo
-  extends bbhb
+import androidx.annotation.NonNull;
+
+public class bbdo
 {
-  public abstract bbdm a();
+  public String a = "";
+  public String b = "";
   
-  public abstract void e();
-  
-  public abstract void f();
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("oriUrl").append("=").append(this.a).append("|");
+    localStringBuilder.append("mediumUrl").append("=").append(this.b).append("|");
+    return localStringBuilder.toString();
+  }
 }
 
 

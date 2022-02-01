@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.forward;
 
-import areb;
-import areq;
-import bgoe;
-import bgog;
+import asih;
+import asiw;
+import bhyo;
+import bhyq;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emoticonview.EmoticonUtils;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -23,9 +23,9 @@ class ForwardPluginShareStructMsgOption$2
     localObject1 = new File((String)localObject1);
     if (!bool)
     {
-      localObject2 = new bgoe((String)localObject2, (File)localObject1);
-      ((bgoe)localObject2).j = true;
-      if (bgog.a((bgoe)localObject2, this.this$0.a) != 0) {
+      localObject2 = new bhyo((String)localObject2, (File)localObject1);
+      ((bhyo)localObject2).j = true;
+      if (bhyq.a((bhyo)localObject2, this.this$0.a) != 0) {
         return;
       }
     }
@@ -34,7 +34,7 @@ class ForwardPluginShareStructMsgOption$2
     ((EmoticonPackage)localObject2).jobType = 4;
     localObject1 = FileUtils.fileToBytes((File)localObject1);
     ArrayList localArrayList = new ArrayList();
-    areq.a(this.this$0.a, (EmoticonPackage)localObject2, areb.c, (byte[])localObject1, localArrayList);
+    asiw.a(this.this$0.a, (EmoticonPackage)localObject2, asih.c, (byte[])localObject1, localArrayList);
   }
 }
 

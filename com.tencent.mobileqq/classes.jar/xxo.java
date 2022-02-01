@@ -1,12 +1,6 @@
-import android.view.View;
-import android.widget.ImageView;
-
-class xxo
+public abstract interface xxo
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  
-  xxo(xxn paramxxn) {}
+  public abstract void a(int paramInt);
 }
 
 

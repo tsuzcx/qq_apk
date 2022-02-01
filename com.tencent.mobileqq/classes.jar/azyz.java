@@ -1,49 +1,10 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class azyz
-  extends azza
 {
-  private Drawable a(View paramView, String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if ((paramView != null) && (!TextUtils.isEmpty(paramString))) {
-      try
-      {
-        paramString = paramView.getClass().getDeclaredField(paramString);
-        paramString.setAccessible(true);
-        paramView = paramString.get(paramView);
-        if ((paramView instanceof Drawable))
-        {
-          paramView = (Drawable)paramView;
-          return paramView;
-        }
-      }
-      catch (Exception paramView)
-      {
-        QLog.d("GrabMainTabResourceName", 1, paramView, new Object[0]);
-      }
-    }
-    return null;
-  }
-  
-  public List<azys> a(View paramView)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramView instanceof TabDragAnimationView))
-    {
-      a(a(paramView, "mBgDrawable"), localArrayList, 0);
-      a(a(paramView, "mBgPressedDrawable"), localArrayList, 0);
-      a(a(paramView, "mEmotionDrawable"), localArrayList, 0);
-      a(a(paramView, "mEmotionPressedDrawable"), localArrayList, 0);
-      a(a(paramView, "mClickAnimationDrawable"), localArrayList, 0);
-    }
-    return localArrayList;
+    bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800B1CA", "0X800B1CA", paramInt, 0, "", "", "", "");
   }
 }
 

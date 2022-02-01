@@ -1,27 +1,35 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import blpm;
-import blpr;
-import bluy;
-import blvb;
+import bnda;
+import bndg;
+import bnkb;
+import bnke;
+import bnki;
+import bnrh;
+import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class AEBottomListPart$16
   implements Runnable
 {
-  public AEBottomListPart$16(blpr paramblpr) {}
+  public AEBottomListPart$16(bnda parambnda, String paramString) {}
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_Bluy.b(this.this$0.a());
-    this.this$0.jdField_a_of_type_Blpm.a((List)localObject);
-    localObject = bluy.a();
-    if ((localObject == null) || (((blvb)localObject).equals(blvb.a)))
+    Object localObject = bnki.a().a();
+    localObject = bnda.a(this.this$0, this.a, (List)localObject);
+    if (localObject != null)
     {
-      this.this$0.b(0);
+      if (((bnke)localObject).e)
+      {
+        ThreadManager.getUIHandler().post(new AEBottomListPart.16.1(this, (bnke)localObject));
+        return;
+      }
+      this.this$0.a.a(this.this$0.a.getApp(), (bnke)localObject, new bndg(this, (bnke)localObject));
       return;
     }
-    blpr.a(this.this$0, (blvb)localObject);
+    bnrh.d("AEBottomListPart", "meta data is null =======");
   }
 }
 

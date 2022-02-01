@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.dislik
 
 import android.view.View;
 import android.view.animation.Animation;
-import pgo;
-import skb;
+import pps;
+import sxl;
 
 public class RIJDislikeManager$1$2
   implements Runnable
 {
-  public RIJDislikeManager$1$2(pgo parampgo, Animation paramAnimation) {}
+  public RIJDislikeManager$1$2(pps parampps, Animation paramAnimation) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Pgo.a.g.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.jdField_a_of_type_Pps.a.g.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 

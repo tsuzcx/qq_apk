@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
 import Override;
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,10 +14,11 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.widget.ImageView;
-import asmn;
-import asmo;
-import bayt;
-import bbda;
+import anvx;
+import atqt;
+import atqu;
+import bcfj;
+import bcjs;
 import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
 import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
@@ -33,18 +33,18 @@ import java.util.List;
 public class FileSearchActivity
   extends BaseSearchActivity
 {
-  static List<bayt> jdField_a_of_type_JavaUtilList;
+  static List<bcfj> jdField_a_of_type_JavaUtilList;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private SearchTypeFragment jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment;
   private BaseSearchFragment jdField_b_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment;
-  List<bayt> jdField_b_of_type_JavaUtilList;
+  List<bcfj> jdField_b_of_type_JavaUtilList;
   private boolean c = true;
   private int jdField_d_of_type_Int = -1;
   private String jdField_d_of_type_JavaLangString;
   private boolean jdField_d_of_type_Boolean;
   private String e;
   
-  public static void a(Activity paramActivity, String paramString1, List<bayt> paramList, boolean paramBoolean, int paramInt, String paramString2, Bundle paramBundle)
+  public static void a(Activity paramActivity, String paramString1, List<bcfj> paramList, boolean paramBoolean, int paramInt, String paramString2, Bundle paramBundle)
   {
     Intent localIntent = new Intent(paramActivity, FileSearchActivity.class);
     localIntent.putExtra("keyword", paramString1);
@@ -66,12 +66,12 @@ public class FileSearchActivity
     a(paramContext, null, null, false, paramInt, paramString, null);
   }
   
-  public static void a(Context paramContext, String paramString, List<bayt> paramList, boolean paramBoolean, int paramInt)
+  public static void a(Context paramContext, String paramString, List<bcfj> paramList, boolean paramBoolean, int paramInt)
   {
     a(paramContext, paramString, paramList, paramBoolean, paramInt, "", null);
   }
   
-  public static void a(Context paramContext, String paramString1, List<bayt> paramList, boolean paramBoolean, int paramInt, String paramString2, Bundle paramBundle)
+  public static void a(Context paramContext, String paramString1, List<bcfj> paramList, boolean paramBoolean, int paramInt, String paramString2, Bundle paramBundle)
   {
     Intent localIntent = new Intent(paramContext, FileSearchActivity.class);
     localIntent.putExtra("keyword", paramString1);
@@ -101,7 +101,7 @@ public class FileSearchActivity
     }
     for (;;)
     {
-      bbda.a(null, 0, this.jdField_d_of_type_Int, "0X8009D58", 0, 0, null, null);
+      bcjs.a(null, 0, this.jdField_d_of_type_Int, "0X8009D58", 0, 0, null, null);
       return localObject;
       if (this.jdField_d_of_type_Int == 2)
       {
@@ -146,14 +146,14 @@ public class FileSearchActivity
     if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
       new Handler().postDelayed(new FileSearchActivity.1(this), 200L);
     }
-    String str = amtj.a(2131703695);
+    String str = anvx.a(2131704046);
     if (this.jdField_d_of_type_Int == 16) {
-      str = getString(2131692178);
+      str = getString(2131692268);
     }
     while (this.jdField_d_of_type_Int != 17) {
       return str;
     }
-    return getString(2131692177);
+    return getString(2131692267);
   }
   
   public void a()
@@ -242,7 +242,7 @@ public class FileSearchActivity
       paramBundle = new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(3), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(11) }));
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.jdField_a_of_type_JavaUtilList = paramBundle;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.jdField_a_of_type_Int = 4;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.a(new asmn(this.app, this, this.e, paramBundle));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.a(new atqt(this.app, this, this.e, paramBundle));
     }
     for (;;)
     {
@@ -250,7 +250,7 @@ public class FileSearchActivity
       {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.jdField_a_of_type_JavaLangString = this.e;
         paramBundle = super.getSupportFragmentManager().beginTransaction();
-        paramBundle.add(2131376916, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment);
+        paramBundle.add(2131377188, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment);
         paramBundle.commit();
         this.jdField_d_of_type_Boolean = true;
       }
@@ -267,7 +267,7 @@ public class FileSearchActivity
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment = new SearchTypeFragment();
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.jdField_a_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(13), Integer.valueOf(3), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(11) });
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.jdField_a_of_type_Int = 4;
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.a(new asmo(this.app, this, this.e));
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSearchTypeFragment.a(new atqu(this.app, this, this.e));
       }
     }
   }
@@ -286,7 +286,7 @@ public class FileSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchActivity
  * JD-Core Version:    0.7.0.1
  */

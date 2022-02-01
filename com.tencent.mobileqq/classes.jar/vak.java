@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.biz.pubaccount.weishi_new.event.WSCommentShowEvent;
 
-public class vak
-  implements uqy
+class vak
+  implements PopupWindow.OnDismissListener
 {
-  public vak(WSVerticalDataManager paramWSVerticalDataManager, boolean paramBoolean1, boolean paramBoolean2, vaa paramvaa, Object paramObject, String paramString, long paramLong) {}
+  vak(vaj paramvaj) {}
   
-  public void a(urj paramurj)
+  public void onDismiss()
   {
-    WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager, paramurj, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Vaa, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+    vaj.a(this.a);
+    vbw.a().a(new WSCommentShowEvent(false));
   }
 }
 

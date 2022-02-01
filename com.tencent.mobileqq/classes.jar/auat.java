@@ -1,51 +1,27 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.SystemClock;
-import android.widget.LinearLayout;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
-import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class auat
-  extends aubc
+class auat
+  implements View.OnClickListener
 {
-  public auat(QQGameFeedWebFragment paramQQGameFeedWebFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
-  {
-    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView);
-  }
+  auat(auas paramauas) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onClick(View paramView)
   {
-    this.a.i = SystemClock.elapsedRealtime();
-    this.a.e = System.currentTimeMillis();
-    super.onPageFinished(paramWebView, paramString);
-    QQGameFeedWebFragment.a(this.a).setVisibility(0);
-    QQGameFeedWebFragment.a(this.a).setVisibility(8);
-    QLog.d("GameWebPage", 4, "-->web onPageFinished");
-    try
+    if (!auas.a(this.a)) {}
+    for (;;)
     {
-      QQGameFeedWebFragment.b(this.a);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      long l = atpm.b();
+      bdla.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", 4, 0, "" + l, "0", "", "");
+      if ((1 == auas.a(this.a)) && (!auas.b(this.a))) {
+        audn.a(auas.a(this.a), 2131698084, 2131698083, new auau(this));
+      } else {
+        auas.a(this.a);
+      }
     }
-    catch (Throwable paramWebView)
-    {
-      paramWebView.printStackTrace();
-    }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    this.a.g = SystemClock.elapsedRealtime();
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

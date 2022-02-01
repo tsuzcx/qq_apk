@@ -1,22 +1,8 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-
-class beoy
-  implements View.OnKeyListener
+public abstract interface beoy
 {
-  beoy(beow parambeow, bepc parambepc) {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3);
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_Bepc.a.getSelectionStart() == 0))
-    {
-      this.jdField_a_of_type_Beow.a.b(this.jdField_a_of_type_Bepc);
-      return true;
-    }
-    return false;
-  }
+  public abstract void b(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3);
 }
 
 

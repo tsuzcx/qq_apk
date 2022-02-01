@@ -1,20 +1,26 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import java.io.File;
 
-public class wci
-  extends vko
+class wci
+  implements Comparable<wci>
 {
-  public QQUserUIItem a;
-  public String a;
-  public List<QQUserUIItem> a;
-  public String b;
+  public final long a;
+  public final File a;
   
-  public String toString()
+  public wci(wch paramwch, File paramFile)
   {
-    if (this.a == null) {
-      return "UpdateUserInfoEvent " + super.toString();
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_Long = paramFile.lastModified();
+  }
+  
+  public int a(wci paramwci)
+  {
+    if (this.jdField_a_of_type_Long < paramwci.jdField_a_of_type_Long) {
+      return -1;
     }
-    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
+    if (this.jdField_a_of_type_Long == paramwci.jdField_a_of_type_Long) {
+      return 0;
+    }
+    return 1;
   }
 }
 

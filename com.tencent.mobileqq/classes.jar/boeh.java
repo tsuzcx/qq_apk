@@ -1,31 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Build.VERSION;
+import android.view.View;
 
-class boeh
-  extends BroadcastReceiver
+final class boeh
+  extends AnimatorListenerAdapter
 {
-  boeh(boeg paramboeg) {}
+  boeh(View paramView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramIntent.getAction() == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramContext = this.a.jdField_a_of_type_JavaLangString;
-        this.a.b();
-      } while ((this.a.jdField_a_of_type_Boei == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
-      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
-      {
-        this.a.a();
-        this.a.jdField_a_of_type_Boei.a(0, this.a.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
-    this.a.jdField_a_of_type_Boei.a(1, this.a.jdField_a_of_type_JavaLangString);
+    super.onAnimationEnd(paramAnimator);
+    if (Build.VERSION.SDK_INT >= 18) {
+      this.a.setClipBounds(null);
+    }
   }
 }
 

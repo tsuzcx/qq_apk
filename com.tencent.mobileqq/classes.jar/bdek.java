@@ -1,15 +1,26 @@
-import java.util.List;
-import java.util.regex.Matcher;
+import com.tencent.mobileqq.shortvideo.util.ShortVideoGuideUtil.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-final class bdek
-  implements bdfm
+public class bdek
+  implements TVK_SDKMgr.InstallListener
 {
-  bdek(List paramList, bdef parambdef) {}
+  public bdek(ShortVideoGuideUtil.1 param1) {}
   
-  public String a(Matcher paramMatcher)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Bdef.a(bdej.a(paramMatcher.group(1))));
-    return "";
+    if (QLog.isColorLevel()) {
+      QLog.d(bdej.a, 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(bdej.a, 2, "installSDK onInstalledSuccessed=");
+    }
   }
 }
 

@@ -1,53 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.1;
-import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.2;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitFrameworkEventListener;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
+import java.util.ArrayList;
 import java.util.HashMap;
-import org.json.JSONObject;
 
 public class aukm
-  implements YtSDKKitFramework.IYtSDKKitFrameworkEventListener
 {
-  aukm(aukk paramaukk) {}
+  private final byte jdField_a_of_type_Byte = 0;
+  private final int jdField_a_of_type_Int = 20;
+  private final String jdField_a_of_type_JavaLangString = "DESede/ECB/PKCS5Padding";
+  private final ArrayList<byte[]> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+  private HashMap<Long, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final byte[] jdField_a_of_type_ArrayOfByte = "gavinhuangdaydayup_happy".getBytes();
+  private final byte jdField_b_of_type_Byte = 0;
+  private final String jdField_b_of_type_JavaLangString = "random";
+  private final byte[] jdField_b_of_type_ArrayOfByte = "doscarlettmarryrenzzhang".getBytes();
+  private final byte jdField_c_of_type_Byte = 1;
+  private final byte[] jdField_c_of_type_ArrayOfByte = "wangpeilin_georgewangson".getBytes();
+  private final byte jdField_d_of_type_Byte = 0;
+  private final byte[] jdField_d_of_type_ArrayOfByte = "georgebirthdayis19790526".getBytes();
+  private final byte[] e = "qlinkwillthebestfunction".getBytes();
+  private final byte[] f = "qqwillbebetterthanwechat".getBytes();
+  private final byte[] g = "whowillbethenextbigtiger".getBytes();
+  private final byte[] h = "whenwillwefindmahang_370".getBytes();
+  private final byte[] i = "whenwillchinagetworldcap".getBytes();
+  private byte[] j;
   
-  public void onFrameworkEvent(HashMap<String, Object> paramHashMap)
+  public aukm()
   {
-    aukk.a(this.a, new IdentificationPoseReflect.5.1(this, paramHashMap));
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ArrayOfByte);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_ArrayOfByte);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_ArrayOfByte);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_d_of_type_ArrayOfByte);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.e);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.f);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.g);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.h);
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.i);
   }
   
-  public void onNetworkRequestEvent(String paramString1, String paramString2, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser)
+  public void a(String paramString)
   {
-    paramHashMap = aukt.a().a(5);
-    if (paramHashMap == null) {
-      QLog.e("qq_Identification.Model", 1, "post face data error : config is empty");
-    }
-    do
+    if (paramString != null) {}
+    for (paramString = paramString.getBytes();; paramString = null)
     {
+      this.j = paramString;
       return;
-      paramHashMap = paramHashMap.optString("result_api_url", "");
-      if (TextUtils.isEmpty(paramHashMap))
-      {
-        QLog.e("qq_Identification.Model", 1, "post face data error : config url is empty");
-        return;
-      }
-    } while (!paramHashMap.equals(paramString1));
-    QLog.d("qq_Identification.Model", 1, "start upload face data");
-    if (this.a.jdField_a_of_type_Aujp == null) {
-      this.a.jdField_a_of_type_Aujp = new aujn(aukk.a(this.a), paramString2, this.a.jdField_a_of_type_Aukp);
-    }
-    for (;;)
-    {
-      aukk.a(this.a, new IdentificationPoseReflect.5.2(this));
-      if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication())) {
-        break;
-      }
-      ((aujn)this.a.jdField_a_of_type_Aujp).b();
-      return;
-      ((aujn)this.a.jdField_a_of_type_Aujp).a(paramString2);
     }
   }
 }

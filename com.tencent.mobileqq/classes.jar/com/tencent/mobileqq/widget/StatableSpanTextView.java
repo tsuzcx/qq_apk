@@ -4,20 +4,21 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.Layout;
 import android.text.Spannable;
+import android.text.method.MovementMethod;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import baqc;
-import bhby;
+import bbwr;
+import bimq;
 import java.util.ArrayList;
 
 public class StatableSpanTextView
   extends TextView
 {
-  private long jdField_a_of_type_Long;
-  baqc jdField_a_of_type_Baqc;
+  bbwr jdField_a_of_type_Bbwr;
+  boolean jdField_a_of_type_Boolean;
   private ImageSpan[] jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan;
   private StatableSpanTextView.StatableForegroundColorSpan[] jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
   
@@ -75,59 +76,73 @@ public class StatableSpanTextView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    Object localObject2 = getMovementMethod();
-    if (((localObject2 != null) || (onCheckIsTextEditor())) && (isEnabled()) && ((getText() instanceof Spannable)) && (getLayout() != null))
+    MovementMethod localMovementMethod = getMovementMethod();
+    int i;
+    if (((localMovementMethod != null) || (onCheckIsTextEditor())) && (isEnabled()) && ((getText() instanceof Spannable)) && (getLayout() != null))
     {
-      Object localObject1 = (Spannable)getText();
-      if (localObject2 != null)
+      Spannable localSpannable = (Spannable)getText();
+      if (localMovementMethod != null)
       {
-        int i = paramMotionEvent.getAction();
-        if ((i == 1) || (i == 0))
+        i = paramMotionEvent.getAction();
+        if ((i == 1) || (i == 0) || (i == 3))
         {
-          if (i == 0) {
-            this.jdField_a_of_type_Long = System.currentTimeMillis();
-          }
           int j = (int)paramMotionEvent.getX();
           int k = (int)paramMotionEvent.getY();
           int m = getTotalPaddingLeft();
           int n = getTotalPaddingTop();
           int i1 = getScrollX();
           int i2 = getScrollY();
-          localObject2 = getLayout();
-          j = ((Layout)localObject2).getOffsetForHorizontal(((Layout)localObject2).getLineForVertical(k - n + i2), j - m + i1);
-          localObject1 = (baqc[])((Spannable)localObject1).getSpans(j, j, baqc.class);
-          if (localObject1.length != 0)
+          paramMotionEvent = getLayout();
+          j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+          paramMotionEvent = (bbwr[])localSpannable.getSpans(j, j, bbwr.class);
+          if (paramMotionEvent.length != 0)
           {
-            localObject1 = localObject1[0];
-            if (i == 1)
+            this.jdField_a_of_type_Boolean = false;
+            paramMotionEvent = paramMotionEvent[0];
+            if (i == 0)
             {
-              ((baqc)localObject1).a(this, false);
-              if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-                ((baqc)localObject1).onClick(this);
-              }
+              paramMotionEvent.a(this, true);
+              this.jdField_a_of_type_Bbwr = paramMotionEvent;
             }
             for (;;)
             {
               return true;
-              return super.onTouchEvent(paramMotionEvent);
-              if (i == 0)
+              if (this.jdField_a_of_type_Bbwr != null)
               {
-                ((baqc)localObject1).a(this, true);
-                this.jdField_a_of_type_Baqc = ((baqc)localObject1);
+                this.jdField_a_of_type_Bbwr.a(this, false);
+                this.jdField_a_of_type_Bbwr = null;
               }
-              else
-              {
-                ((baqc)localObject1).a(this, false);
+              if (i == 1) {
+                paramMotionEvent.onClick(this);
               }
             }
           }
-          if (this.jdField_a_of_type_Baqc != null) {
-            this.jdField_a_of_type_Baqc.a(this, false);
+          if (i != 1) {
+            break label275;
+          }
+          if (this.jdField_a_of_type_Boolean)
+          {
+            this.jdField_a_of_type_Boolean = false;
+            performClick();
           }
         }
       }
     }
-    return false;
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bbwr != null)
+      {
+        this.jdField_a_of_type_Bbwr.a(this, false);
+        this.jdField_a_of_type_Bbwr = null;
+      }
+      return false;
+      label275:
+      if (i == 0) {
+        this.jdField_a_of_type_Boolean = true;
+      } else if (i == 3) {
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
@@ -146,7 +161,7 @@ public class StatableSpanTextView
         while (i < j)
         {
           ImageSpan localImageSpan = arrayOfImageSpan[i];
-          if (!(localImageSpan instanceof bhby)) {
+          if (!(localImageSpan instanceof bimq)) {
             localArrayList.add(localImageSpan);
           }
           i += 1;

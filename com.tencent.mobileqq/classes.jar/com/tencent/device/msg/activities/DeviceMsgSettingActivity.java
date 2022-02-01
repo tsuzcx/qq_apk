@@ -1,12 +1,12 @@
 package com.tencent.device.msg.activities;
 
 import Override;
-import aaut;
-import aauu;
-import aauv;
-import aauw;
-import abdm;
-import abdn;
+import abkf;
+import abkg;
+import abkh;
+import abki;
+import absy;
+import absz;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
@@ -18,8 +18,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bhht;
-import bhzm;
+import bisl;
+import bjko;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.utils.PermissionUtils;
@@ -40,10 +40,10 @@ public class DeviceMsgSettingActivity
   public Handler a;
   public CompoundButton a;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public bhht a;
+  public bisl a;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   String jdField_a_of_type_JavaLangString;
-  public ArrayList<aauw> a;
+  public ArrayList<abki> a;
   public String b;
   public String c;
   
@@ -75,7 +75,7 @@ public class DeviceMsgSettingActivity
         paramString = "set_device_property";
       }
     }
-    abdn.a(paramString, localBundle, i, null, this.app, new aauv(this));
+    absz.a(paramString, localBundle, i, null, this.app, new abkh(this));
   }
   
   private void b()
@@ -85,14 +85,14 @@ public class DeviceMsgSettingActivity
     this.c = localIntent.getStringExtra("din");
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)super.getAppRuntime());
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_Bhht = new bhht(this, super.getTitleBarHeight());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131377220));
-    this.jdField_a_of_type_Bhht.c(2131692714);
-    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bhht.isShowing())) {
-      this.jdField_a_of_type_Bhht.show();
+    this.jdField_a_of_type_Bisl = new bisl(this, super.getTitleBarHeight());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131377493));
+    this.jdField_a_of_type_Bisl.c(2131692816);
+    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bisl.isShowing())) {
+      this.jdField_a_of_type_Bisl.show();
     }
     c();
-    abdm.a(this.app, Long.parseLong(this.c), "Usr_MsgMgr_Open", 0, 0, Integer.parseInt(this.b));
+    absy.a(this.app, Long.parseLong(this.c), "Usr_MsgMgr_Open", 0, 0, Integer.parseInt(this.b));
   }
   
   private void c()
@@ -116,12 +116,12 @@ public class DeviceMsgSettingActivity
         str1 = "get_device_property";
       }
     }
-    abdn.a(str1, localBundle, i, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new aauu(this));
+    absz.a(str1, localBundle, i, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new abkg(this));
   }
   
   private void d()
   {
-    Object localObject = (TextView)super.findViewById(2131377228);
+    Object localObject = (TextView)super.findViewById(2131377501);
     if (localObject != null)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
@@ -130,7 +130,7 @@ public class DeviceMsgSettingActivity
     }
     else
     {
-      localObject = super.findViewById(2131377222);
+      localObject = super.findViewById(2131377495);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
@@ -141,14 +141,14 @@ public class DeviceMsgSettingActivity
     }
     for (;;)
     {
-      localObject = super.findViewById(2131377223);
+      localObject = super.findViewById(2131377496);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
           break label107;
         }
         ((View)localObject).setVisibility(0);
-        bhzm.c("DeviceMsgSettingActivity", "show none background");
+        bjko.c("DeviceMsgSettingActivity", "show none background");
       }
       return;
       ((TextView)localObject).setVisibility(0);
@@ -157,7 +157,7 @@ public class DeviceMsgSettingActivity
       ((View)localObject).setVisibility(0);
     }
     label107:
-    bhzm.c("DeviceMsgSettingActivity", "hide none background");
+    bjko.c("DeviceMsgSettingActivity", "hide none background");
     ((View)localObject).setVisibility(8);
   }
   
@@ -168,10 +168,10 @@ public class DeviceMsgSettingActivity
     int i = 0;
     if (i < j)
     {
-      aauw localaauw = (aauw)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      abki localabki = (abki)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       FormSwitchItem localFormSwitchItem = new FormSwitchItem(this, null);
       localFormSwitchItem.setBgType(0);
-      localFormSwitchItem.setText(localaauw.jdField_a_of_type_JavaLangString);
+      localFormSwitchItem.setText(localabki.jdField_a_of_type_JavaLangString);
       localFormSwitchItem.setFocusable(true);
       label76:
       Switch localSwitch;
@@ -179,8 +179,8 @@ public class DeviceMsgSettingActivity
       {
         localFormSwitchItem.setBgType(0);
         localSwitch = localFormSwitchItem.a();
-        localSwitch.setTag(Integer.valueOf(localaauw.jdField_a_of_type_Int));
-        if (localaauw.b != 1) {
+        localSwitch.setTag(Integer.valueOf(localabki.jdField_a_of_type_Int));
+        if (localabki.b != 1) {
           break label173;
         }
       }
@@ -220,11 +220,11 @@ public class DeviceMsgSettingActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559081);
-    super.setTitle(2131691445);
+    super.setContentView(2131559109);
+    super.setTitle(2131691530);
     if (Build.VERSION.SDK_INT >= 23) {
       if (!PermissionUtils.isStorePermissionEnable(this)) {
-        PermissionUtils.requestStorePermission(this, 3, new aaut(this));
+        PermissionUtils.requestStorePermission(this, 3, new abkf(this));
       }
     }
     for (;;)
@@ -239,9 +239,9 @@ public class DeviceMsgSettingActivity
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int j = ((Integer)paramCompoundButton.getTag()).intValue();
-    this.jdField_a_of_type_Bhht.c(2131718179);
-    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bhht.isShowing())) {
-      this.jdField_a_of_type_Bhht.show();
+    this.jdField_a_of_type_Bisl.c(2131718565);
+    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bisl.isShowing())) {
+      this.jdField_a_of_type_Bisl.show();
     }
     Object localObject1 = new JSONArray();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -251,10 +251,10 @@ public class DeviceMsgSettingActivity
     {
       if (localIterator.hasNext())
       {
-        localObject2 = (aauw)localIterator.next();
-        if (((aauw)localObject2).jdField_a_of_type_Int == j)
+        localObject2 = (abki)localIterator.next();
+        if (((abki)localObject2).jdField_a_of_type_Int == j)
         {
-          int k = ((aauw)localObject2).b;
+          int k = ((abki)localObject2).b;
           if (paramBoolean)
           {
             i = 1;
@@ -269,7 +269,7 @@ public class DeviceMsgSettingActivity
             }
             i = 1;
             label136:
-            abdm.a((AppRuntime)localObject1, l, "Usr_MsgMgr_Setting", i, 1, Integer.parseInt(this.b));
+            absy.a((AppRuntime)localObject1, l, "Usr_MsgMgr_Setting", i, 1, Integer.parseInt(this.b));
           }
         }
       }
@@ -288,7 +288,7 @@ public class DeviceMsgSettingActivity
         try
         {
           label174:
-          localObject2 = new JSONObject().put("id", ((aauw)localObject2).jdField_a_of_type_Int);
+          localObject2 = new JSONObject().put("id", ((abki)localObject2).jdField_a_of_type_Int);
           if (!paramBoolean) {
             break label228;
           }

@@ -1,20 +1,6 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
-
-class yzk
-  extends GridLayoutManager.SpanSizeLookup
+public abstract interface yzk
 {
-  yzk(yzj paramyzj) {}
-  
-  public int getSpanSize(int paramInt)
-  {
-    paramInt = yzj.a(this.a, paramInt);
-    yzp localyzp = this.a.a(paramInt);
-    if (localyzp != null) {
-      return localyzp.c(localyzp.a(paramInt));
-    }
-    return ((GridLayoutManager)yzj.a(this.a)).getSpanCount();
-  }
+  public abstract void a(yzo paramyzo);
 }
 
 

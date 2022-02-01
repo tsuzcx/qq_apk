@@ -1,8 +1,12 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
 public abstract interface amij
+  extends amii
 {
-  public abstract int a(Bundle paramBundle);
+  public abstract void a(String paramString);
+  
+  public abstract void a(List<MayKnowRecommend> paramList);
 }
 
 

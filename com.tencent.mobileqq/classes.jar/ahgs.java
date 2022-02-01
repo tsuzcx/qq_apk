@@ -1,77 +1,70 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
-class ahgs
-  implements bhai<oidb_0x8e4.RspBody>
+public class ahgs
 {
-  ahgs(ahgc paramahgc) {}
+  public static int a;
+  public static boolean a;
+  public static int b;
+  public static boolean b;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  static
   {
-    if (paramRspBody == null) {
+    jdField_b_of_type_Boolean = true;
+    jdField_a_of_type_Int = 15;
+    jdField_b_of_type_Int = 20;
+  }
+  
+  public static void a()
+  {
+    Object localObject;
+    if (!jdField_a_of_type_Boolean)
+    {
+      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.PtvConfig.name(), null);
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.tag, 2, "startAnotherRound failed! errorCode = " + paramInt);
+        QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), ptvConfig=" + (String)localObject);
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label211;
+      }
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject != null) && (localObject.length >= 3) && (TextUtils.isEmpty(localObject[0]))) {}
+    }
+    try
+    {
+      jdField_b_of_type_Int = Integer.parseInt(localObject[0]);
+      label93:
+      if (!TextUtils.isEmpty(localObject[1])) {
+        jdField_b_of_type_Boolean = localObject[1].equals("1");
+      }
+      if (!TextUtils.isEmpty(localObject[2])) {}
+      for (;;)
+      {
+        try
+        {
+          jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
+          jdField_a_of_type_Boolean = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + jdField_b_of_type_Boolean + ", sRequestedFPS:" + jdField_a_of_type_Int + ",sPtvMaxTime:" + jdField_b_of_type_Int);
+          }
+          return;
+        }
+        catch (Exception localException1)
+        {
+          jdField_a_of_type_Int = 15;
+          continue;
+        }
+        label211:
+        jdField_b_of_type_Boolean = true;
+        jdField_a_of_type_Int = 15;
       }
     }
-    do
+    catch (Exception localException2)
     {
-      QQToast.a(this.a.getActivity(), 1, amtj.a(2131704219), 1).a();
-      return;
-      while ((!paramRspBody.getBooleanExtra("finishAIO", false)) || (!(this.a.mActivity instanceof ChatActivity)))
-      {
-        Common.WifiPOIInfo localWifiPOIInfo = paramRspBody.poi_info;
-        HotChatInfo localHotChatInfo = HotChatInfo.createHotChat(localWifiPOIInfo, false, 0);
-        localHotChatInfo.isGameRoom = true;
-        paramRspBody = this.a.app.getHotChatMng(true);
-        Object localObject = paramRspBody.a();
-        if ((localObject != null) && (!((List)localObject).contains(localHotChatInfo))) {
-          ((List)localObject).add(localHotChatInfo);
-        }
-        paramRspBody.a(localHotChatInfo, 4);
-        localObject = this.a.getActivity().getIntent();
-        paramRspBody = (oidb_0x8e4.RspBody)localObject;
-        if (localObject == null) {
-          paramRspBody = new Intent();
-        }
-        localObject = localWifiPOIInfo.bytes_uid.get().toStringUtf8();
-        paramRspBody.putExtra("uin", localHotChatInfo.troopUin + "");
-        paramRspBody.putExtra("uintype", 1);
-        paramRspBody.putExtra("troop_uin", localHotChatInfo.troopUin + "");
-        paramRspBody.putExtra("uinname", localHotChatInfo.name);
-        paramRspBody.putExtra("hotnamecode", (String)localObject);
-        paramRspBody.putExtra("isNeedShowLoading", false);
-        paramRspBody.putExtra("leftViewText", this.a.getActivity().getString(2131690424));
-        awka.a(this.a.app.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(bbko.a()));
-        paramInt = AIOUtils.openAioToAIOByMT(this.a.app, this.a.mActivity, paramRspBody);
-        if (paramInt != 0) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.tag, 2, "openAIO by start SplashAct");
-        }
-        localObject = this.a.a.a();
-        if (localObject != null) {
-          ((bhaq)localObject).a();
-        }
-        this.a.mActivity.startActivity(paramRspBody);
-      }
-      this.a.mActivity.finish();
-      return;
-    } while (paramInt != 2);
-    QLog.e(this.a.tag, 1, "openAIO rediectToAIOWithMt 2");
+      break label93;
+    }
   }
 }
 

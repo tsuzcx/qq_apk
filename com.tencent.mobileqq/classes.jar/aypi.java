@@ -1,42 +1,76 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.widget.ScrollView;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.now.nowqqlivefocus.NowQQLiveFocusProto.AnchorInfo;
+import com.tencent.mobileqq.now.nowqqlivefocus.NowQQLiveFocusProto.GetAnchorOnline1Rsp;
+import com.tencent.mobileqq.now.nowqqlivefocus.NowQQLiveFocusProto.RetInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class aypi
-  implements View.OnTouchListener
+class aypi
+  implements aypy
 {
-  public aypi(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  aypi(ayph paramayph, aypg paramaypg) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, String paramString)
   {
-    if (StickyNotePublishFragment.a(this.a))
-    {
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      bjmm.b(StickyNotePublishFragment.a(this.a));
-      return false;
+    ayph.a(this.jdField_a_of_type_Ayph, false);
+    ayph.b(this.jdField_a_of_type_Ayph, true);
+    this.jdField_a_of_type_Ayph.a(this.jdField_a_of_type_Aypg);
+    if (QLog.isColorLevel()) {
+      QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 errCode:" + paramInt + " msg:" + paramString);
     }
-    if (StickyNotePublishFragment.a(this.a) == 0)
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    try
     {
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      StickyNotePublishFragment.a(this.a).setVisibility(0);
-      StickyNotePublishFragment.a(this.a).requestFocus();
-      bjmm.a(StickyNotePublishFragment.a(this.a));
-      return false;
+      ayph.a(this.jdField_a_of_type_Ayph, false);
+      ayph.b(this.jdField_a_of_type_Ayph, false);
+      Object localObject1 = new NowQQLiveFocusProto.GetAnchorOnline1Rsp();
+      ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).mergeFrom(paramArrayOfByte);
+      Object localObject2 = ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).anchor_info.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 anchorInfoList:" + ((List)localObject2).size() + " rsp code:" + ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).ret_info.err_code + " msg:" + ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).ret_info.err_msg);
+      }
+      paramArrayOfByte = new ArrayList();
+      localObject1 = ((List)localObject2).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (NowQQLiveFocusProto.AnchorInfo)((Iterator)localObject1).next();
+        aypk localaypk = new aypk();
+        localaypk.a(((NowQQLiveFocusProto.AnchorInfo)localObject2).uin.get());
+        localaypk.d(((NowQQLiveFocusProto.AnchorInfo)localObject2).anchor_logo_url.get());
+        localaypk.e(((NowQQLiveFocusProto.AnchorInfo)localObject2).audience_sum.get());
+        localaypk.b(((NowQQLiveFocusProto.AnchorInfo)localObject2).jump_url.get());
+        localaypk.c(((NowQQLiveFocusProto.AnchorInfo)localObject2).nick_name.get());
+        localaypk.c(((NowQQLiveFocusProto.AnchorInfo)localObject2).room_id.get());
+        localaypk.e(((NowQQLiveFocusProto.AnchorInfo)localObject2).room_name.get());
+        localaypk.d(((NowQQLiveFocusProto.AnchorInfo)localObject2).start_time.get());
+        localaypk.b(((NowQQLiveFocusProto.AnchorInfo)localObject2).user_type.get());
+        localaypk.a(((NowQQLiveFocusProto.AnchorInfo)localObject2).type.get());
+        localaypk.a(((NowQQLiveFocusProto.AnchorInfo)localObject2).cover_url.get());
+        paramArrayOfByte.add(localaypk);
+        if (QLog.isColorLevel()) {
+          QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 nick_name:" + localaypk.b() + " jump_url:" + localaypk.a() + " anchor_logo_url: " + localaypk.c() + " anchorInfo.jump_url.get():" + ((NowQQLiveFocusProto.AnchorInfo)localObject2).jump_url.get());
+        }
+      }
+      this.jdField_a_of_type_Aypg.a(paramArrayOfByte);
     }
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a, 0);
-    this.a.a(false);
-    this.a.b(false);
-    this.a.c(true);
-    this.a.c(0, 0);
-    return false;
+    catch (Exception paramArrayOfByte)
+    {
+      ayph.a(this.jdField_a_of_type_Ayph, false);
+      ayph.b(this.jdField_a_of_type_Ayph, true);
+      this.jdField_a_of_type_Ayph.a(this.jdField_a_of_type_Aypg);
+      if (QLog.isColorLevel()) {
+        QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 Exception:" + paramArrayOfByte.getMessage());
+      }
+      return;
+    }
   }
 }
 

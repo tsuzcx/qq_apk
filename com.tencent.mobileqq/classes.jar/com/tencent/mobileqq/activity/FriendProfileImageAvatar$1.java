@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import adjt;
-import adjx;
+import aeaz;
+import aebd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Setting;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.persistence.EntityManager;
 public class FriendProfileImageAvatar$1
   implements Runnable
 {
-  public FriendProfileImageAvatar$1(adjt paramadjt, adjx paramadjx) {}
+  public FriendProfileImageAvatar$1(aeaz paramaeaz, aebd paramaebd) {}
   
   public void run()
   {
@@ -43,7 +43,7 @@ public class FriendProfileImageAvatar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageAvatar.1
  * JD-Core Version:    0.7.0.1
  */

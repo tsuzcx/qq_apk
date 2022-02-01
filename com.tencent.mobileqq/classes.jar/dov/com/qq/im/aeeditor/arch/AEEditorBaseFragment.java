@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
-import bmcu;
+import bnsm;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import dov.com.qq.im.aeeditor.AEEditorActivity;
 import dov.com.qq.im.aeeditor.view.ProgressView;
@@ -17,7 +17,7 @@ public abstract class AEEditorBaseFragment
 {
   protected Dialog a;
   protected Handler a;
-  private bmcu a;
+  private bnsm a;
   protected ProgressView a;
   public String a;
   
@@ -27,12 +27,12 @@ public abstract class AEEditorBaseFragment
   }
   
   @NonNull
-  public bmcu a()
+  public bnsm a()
   {
-    if (this.jdField_a_of_type_Bmcu == null) {
+    if (this.jdField_a_of_type_Bnsm == null) {
       throw new RuntimeException("moduleManager not set");
     }
-    return this.jdField_a_of_type_Bmcu;
+    return this.jdField_a_of_type_Bnsm;
   }
   
   public abstract String a();
@@ -41,9 +41,9 @@ public abstract class AEEditorBaseFragment
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(bmcu parambmcu)
+  public void a(bnsm parambnsm)
   {
-    this.jdField_a_of_type_Bmcu = parambmcu;
+    this.jdField_a_of_type_Bnsm = parambnsm;
   }
   
   public void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener)
@@ -70,8 +70,8 @@ public abstract class AEEditorBaseFragment
   public void onResume()
   {
     super.onResume();
-    if ((this.jdField_a_of_type_Bmcu == null) && (getActivity() != null) && ((getActivity() instanceof AEEditorActivity))) {
-      this.jdField_a_of_type_Bmcu = ((AEEditorActivity)getActivity()).a();
+    if ((this.jdField_a_of_type_Bnsm == null) && (getActivity() != null) && ((getActivity() instanceof AEEditorActivity))) {
+      this.jdField_a_of_type_Bnsm = ((AEEditorActivity)getActivity()).a();
     }
   }
 }

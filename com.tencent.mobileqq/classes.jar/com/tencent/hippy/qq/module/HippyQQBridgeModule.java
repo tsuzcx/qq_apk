@@ -243,6 +243,17 @@ public class HippyQQBridgeModule
     }
   }
   
+  @HippyMethod(name="openRewardAd")
+  public void openRewardAd(HippyMap paramHippyMap, Promise paramPromise)
+  {
+    if (paramHippyMap != null) {}
+    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
+    {
+      this.mBridgeModule.openRewardAd(paramHippyMap, paramPromise);
+      return;
+    }
+  }
+  
   @HippyMethod(name="openTopicVideoComment")
   public void openTopicVideoComment(HippyMap paramHippyMap, Promise paramPromise)
   {
@@ -332,6 +343,17 @@ public class HippyQQBridgeModule
     for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
     {
       this.mBridgeModule.shareVideoWithFriend(paramHippyMap, paramPromise);
+      return;
+    }
+  }
+  
+  @HippyMethod(name="showLevelDialog")
+  public void showLevelDialog(HippyMap paramHippyMap, Promise paramPromise)
+  {
+    if (paramHippyMap != null) {}
+    for (paramHippyMap = paramHippyMap.toJSONObject();; paramHippyMap = new JSONObject())
+    {
+      this.mBridgeModule.openUserLevelDialog(paramHippyMap, paramPromise);
       return;
     }
   }

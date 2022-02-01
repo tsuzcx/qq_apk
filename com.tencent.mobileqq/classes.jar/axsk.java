@@ -1,8 +1,18 @@
-public abstract interface axsk
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+
+public class axsk
 {
-  public abstract void a();
+  public int a;
+  public View a;
+  public ImageButton a;
+  public ImageView a;
+  public TextView a;
   
-  public abstract void b();
+  private axsk(GameRoomInviteActivity paramGameRoomInviteActivity) {}
 }
 
 

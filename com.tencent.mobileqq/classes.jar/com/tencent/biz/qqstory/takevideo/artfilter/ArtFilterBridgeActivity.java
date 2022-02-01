@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
 import Override;
-import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.MotionEvent;
+import anvx;
 import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
 import com.tencent.biz.qqstory.takevideo.EditPicActivity;
 import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
@@ -19,7 +19,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
-import ybn;
+import yqg;
 
 public class ArtFilterBridgeActivity
   extends BaseActivity
@@ -35,11 +35,11 @@ public class ArtFilterBridgeActivity
     Object localObject3;
     if (getIntent().getBooleanExtra("USE_FILTER", false))
     {
-      localObject1 = ybn.a();
+      localObject1 = yqg.a();
       i = k;
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject3 = ybn.b();
+        localObject3 = yqg.b();
         i = k;
         if (localObject3 != null)
         {
@@ -74,7 +74,7 @@ public class ArtFilterBridgeActivity
           }
           boolean bool2 = localIntent.getBooleanExtra("go_publish_activity", false);
           if (bool2) {
-            ((Bundle)localObject3).putString("extra_publish_text", amtj.a(2131699901));
+            ((Bundle)localObject3).putString("extra_publish_text", anvx.a(2131700252));
           }
           if (localIntent.hasExtra("troop_uin")) {
             ((Bundle)localObject3).putString("troop_uin", localIntent.getStringExtra("troop_uin"));

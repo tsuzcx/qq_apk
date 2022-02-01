@@ -1,29 +1,59 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 
 class asjt
-  extends asjn
+  extends bhyn
 {
-  public asjt(asji paramasji)
-  {
-    super(paramasji);
-  }
+  asjt(asjs paramasjs) {}
   
-  protected String a()
+  public void onDone(bhyo parambhyo)
   {
-    return "StateChangeToOffWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    super.onDone(parambhyo);
+    asih localasih = this.a.a();
+    Bundle localBundle = parambhyo.a();
+    if (parambhyo.a() != 3) {}
+    for (boolean bool = true;; bool = false)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      long l1 = System.currentTimeMillis();
+      long l2 = localBundle.getLong("vas_download_start");
+      localasih.a(localBundle, parambhyo, bool, parambhyo.a, parambhyo.d, l1 - l2, 0);
       return;
     }
-    asji.b(this.jdField_a_of_type_Asji, 9, 11);
-    asji.c(this.jdField_a_of_type_Asji, 9, 14);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateUploadingWhenRecv)");
-    this.jdField_a_of_type_Asjn = new askp(this.jdField_a_of_type_Asji);
+  }
+  
+  public void onDoneFile(bhyo parambhyo)
+  {
+    Object localObject = parambhyo.a();
+    int i = ((Bundle)localObject).getInt(parambhyo.c);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+    if (QLog.isColorLevel()) {
+      QLog.d("VasEmojiManager", 2, "emotionDownloadListener | onDoneFile epId=" + ((EmoticonPackage)localObject).epId + ",task:" + parambhyo);
+    }
+    if (parambhyo.a != 0)
+    {
+      QLog.e("VasEmojiManager", 1, "onDoneFile : ondone error , reportCode = " + parambhyo.a);
+      if (asih.a(i)) {
+        asih.a.a((EmoticonPackage)localObject, i, -1, parambhyo.a);
+      }
+      bhpl.a("emotionType", "emotionActionDownload", "10", ((EmoticonPackage)localObject).epId, "", "", parambhyo.a + "", "", "", "");
+    }
+    for (;;)
+    {
+      return;
+      asih localasih = this.a.a();
+      if (asih.a(i)) {
+        asih.a.a((EmoticonPackage)localObject, i, 0, 0);
+      }
+      while ((((EmoticonPackage)localObject).jobType == 3) || (((EmoticonPackage)localObject).jobType == 5))
+      {
+        localasih.b(parambhyo);
+        return;
+        if (i == 7) {
+          localasih.a(parambhyo);
+        }
+      }
+    }
   }
 }
 

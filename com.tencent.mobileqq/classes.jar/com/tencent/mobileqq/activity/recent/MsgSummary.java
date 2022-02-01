@@ -29,6 +29,7 @@ public class MsgSummary
   public CharSequence mDraft;
   public int mEmojiFlag;
   public int nState;
+  public CharSequence prefixOfContent;
   public CharSequence strContent;
   public CharSequence strPrefix;
   public CharSequence suffix;
@@ -153,7 +154,7 @@ public class MsgSummary
   {
     Object localObject2 = null;
     StringBuffer localStringBuffer = null;
-    int i = 0;
+    int k = 0;
     if ((this.bShowDraft) && (!TextUtils.isEmpty(this.mDraft))) {
       return this.mDraft;
     }
@@ -171,9 +172,13 @@ public class MsgSummary
       try
       {
         if (TextUtils.isEmpty(this.strPrefix)) {
-          break label508;
+          break label554;
         }
-        j = this.strPrefix.length() + ": ".length();
+        i = this.strPrefix.length() + ": ".length();
+        if (TextUtils.isEmpty(this.prefixOfContent)) {
+          break label549;
+        }
+        j = i + this.prefixOfContent.length();
         if (this.nState != 2) {
           continue;
         }
@@ -196,6 +201,7 @@ public class MsgSummary
       return this.strContent;
       localObject1 = paramContext.getResources();
       break;
+      int i = k;
       paramContext = localStringBuffer;
       if (this.nState == 1)
       {
@@ -207,74 +213,78 @@ public class MsgSummary
         if (!TextUtils.isEmpty(this.strPrefix)) {
           localStringBuffer.append(this.strPrefix).append(": ");
         }
-        for (j = localStringBuffer.length();; j = 0)
+        if (!TextUtils.isEmpty(this.prefixOfContent)) {
+          localStringBuffer.append(this.prefixOfContent);
+        }
+        j = localStringBuffer.length();
+        if (this.nState == 2)
         {
-          if (this.nState == 2)
-          {
-            localStringBuffer.append("F ");
-            i = localStringBuffer.length();
+          localStringBuffer.append("F ");
+          i = localStringBuffer.length();
+        }
+        for (;;)
+        {
+          if (!TextUtils.isEmpty(this.strContent)) {
+            localStringBuffer.append(this.strContent);
           }
-          for (;;)
+          if (this.suffix != null) {
+            localStringBuffer.append(this.suffix);
+          }
+          if (paramContext == null)
           {
-            if (!TextUtils.isEmpty(this.strContent)) {
-              localStringBuffer.append(this.strContent);
+            localObject1 = null;
+            label374:
+            paramContext = localObject2;
+            if (localObject1 == null) {}
+          }
+          try
+          {
+            if (this.nState == 2) {
+              paramContext = ((Resources)localObject1).getDrawable(IMCoreResourceRoute.Resource.drawable.recent_icon_failed);
             }
-            if (this.suffix != null) {
-              localStringBuffer.append(this.suffix);
-            }
-            if (paramContext == null)
+            for (;;)
             {
-              localObject1 = null;
-              label328:
+              localObject1 = new SpannableStringBuilder(localStringBuffer.toString());
+              if (paramContext != null)
+              {
+                paramContext.setBounds(0, 0, paramContext.getIntrinsicWidth() * 2 / 3, paramContext.getIntrinsicHeight() * 2 / 3);
+                ((SpannableStringBuilder)localObject1).setSpan(new ImageSpan(paramContext), j, i, 33);
+              }
+              return localObject1;
+              if (this.nState != 1) {
+                break label544;
+              }
+              localStringBuffer.append("S ");
+              i = localStringBuffer.length();
+              break;
+              localObject1 = paramContext.getResources();
+              break label374;
               paramContext = localObject2;
-              if (localObject1 == null) {}
+              if (this.nState == 1) {
+                paramContext = ((Resources)localObject1).getDrawable(IMCoreResourceRoute.Resource.drawable.recent_icon_sending);
+              }
             }
-            try
+          }
+          catch (Exception localException)
+          {
+            for (;;)
             {
-              if (this.nState == 2) {
-                paramContext = ((Resources)localObject1).getDrawable(IMCoreResourceRoute.Resource.drawable.recent_icon_failed);
-              }
-              for (;;)
+              paramContext = localObject2;
+              if (QLog.isColorLevel())
               {
-                localObject1 = new SpannableStringBuilder(localStringBuffer.toString());
-                if (paramContext != null)
-                {
-                  paramContext.setBounds(0, 0, paramContext.getIntrinsicWidth() * 2 / 3, paramContext.getIntrinsicHeight() * 2 / 3);
-                  ((SpannableStringBuilder)localObject1).setSpan(new ImageSpan(paramContext), j, i, 33);
-                }
-                return localObject1;
-                if (this.nState != 1) {
-                  break label498;
-                }
-                localStringBuffer.append("S ");
-                i = localStringBuffer.length();
-                break;
-                localObject1 = paramContext.getResources();
-                break label328;
+                QLog.i("Q.recent", 2, localException.toString());
                 paramContext = localObject2;
-                if (this.nState == 1) {
-                  paramContext = ((Resources)localObject1).getDrawable(IMCoreResourceRoute.Resource.drawable.recent_icon_sending);
-                }
               }
             }
-            catch (Exception localException)
-            {
-              for (;;)
-              {
-                paramContext = localObject2;
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("Q.recent", 2, localException.toString());
-                  paramContext = localObject2;
-                }
-              }
-              label498:
-              i = 0;
-            }
+            label544:
+            i = 0;
           }
         }
-        label508:
-        j = 0;
+        label549:
+        j = i;
+        continue;
+        label554:
+        i = 0;
       }
     }
   }
@@ -331,6 +341,7 @@ public class MsgSummary
   {
     this.strPrefix = null;
     this.nState = 0;
+    this.prefixOfContent = null;
     this.strContent = null;
     this.suffix = null;
     this.mEmojiFlag = 0;

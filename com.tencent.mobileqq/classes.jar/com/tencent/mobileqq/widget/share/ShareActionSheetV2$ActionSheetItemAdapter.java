@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aozt;
-import bbyp;
+import aqcx;
+import bdfk;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
 import com.tencent.qphone.base.util.QLog;
@@ -82,12 +82,12 @@ public class ShareActionSheetV2$ActionSheetItemAdapter
       if (ShareActionSheetV2.access$1400(paramShareActionSheetV2) == null) {
         ShareActionSheetV2.access$1402(paramShareActionSheetV2, new SparseArray());
       }
-      aozt localaozt = (aozt)ShareActionSheetV2.access$1400(paramShareActionSheetV2).get(paramInt);
-      paramActionSheetItemAdapter = localaozt;
-      if (localaozt == null)
+      aqcx localaqcx = (aqcx)ShareActionSheetV2.access$1400(paramShareActionSheetV2).get(paramInt);
+      paramActionSheetItemAdapter = localaqcx;
+      if (localaqcx == null)
       {
-        paramActionSheetItemAdapter = new aozt(paramShareActionSheetV2.mOutAct, paramInt);
-        if (!bbyp.a()) {
+        paramActionSheetItemAdapter = new aqcx(paramShareActionSheetV2.mOutAct, paramInt);
+        if (!bdfk.a()) {
           break label278;
         }
       }
@@ -188,7 +188,7 @@ public class ShareActionSheetV2$ActionSheetItemAdapter
       this.mRes = paramViewGroup.getContext().getResources();
     }
     if (this.mIconSize == 0) {
-      this.mIconSize = ((int)this.mRes.getDimension(2131296795));
+      this.mIconSize = ((int)this.mRes.getDimension(2131296796));
     }
     if (this.mIconFactory == null) {
       this.mIconFactory = new ShareActionSheetV2.ActionSheetItemAdapter.IconFactory(paramViewGroup.getContext());
@@ -196,10 +196,10 @@ public class ShareActionSheetV2$ActionSheetItemAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.inflater.inflate(2131558942, paramViewGroup, false);
+      localView = this.inflater.inflate(2131558969, paramViewGroup, false);
       paramView = new ShareActionSheetBuilder.ActionSheetItemViewHolder();
-      paramView.vIcon = ((ImageView)localView.findViewById(2131377257));
-      paramView.vLabel = ((TextView)localView.findViewById(2131377258));
+      paramView.vIcon = ((ImageView)localView.findViewById(2131377530));
+      paramView.vLabel = ((TextView)localView.findViewById(2131377531));
       localView.setTag(paramView);
     }
     for (;;)
@@ -216,8 +216,8 @@ public class ShareActionSheetV2$ActionSheetItemAdapter
       paramView = (View)localObject;
     }
     localView.setId(paramView.sheetItem.id);
-    float f = this.mRes.getDimension(2131296795);
-    paramView.vLabel.getPaint().setTextSize(this.mRes.getDimensionPixelSize(2131299005));
+    float f = this.mRes.getDimension(2131296796);
+    paramView.vLabel.getPaint().setTextSize(this.mRes.getDimensionPixelSize(2131299009));
     paramView.vLabel.setMaxWidth((int)f);
     paramView.vLabel.setText(paramView.sheetItem.label);
     int i = -8947849;
@@ -277,7 +277,7 @@ public class ShareActionSheetV2$ActionSheetItemAdapter
     }
     label539:
     if ((paramView.sheetItem.action == 72) || (paramView.sheetItem.action == 73)) {
-      if (bbyp.a()) {
+      if (bdfk.a()) {
         paramView.vIcon.setImageResource(2130837564);
       }
     }

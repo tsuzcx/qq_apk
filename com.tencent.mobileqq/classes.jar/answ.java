@@ -1,33 +1,30 @@
-import android.content.Context;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class answ
-  extends anri
+class answ
+  extends anyz
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  answ(ansr paramansr) {}
+  
+  protected void onSelfIpadOnlineStatusUpdateNotify(int paramInt1, int paramInt2)
   {
-    paramQQAppInterface = new ansv(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "buscard";
-    paramQQAppInterface.c = "open";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    if ((paramInt1 == 1) && (this.a.b()))
     {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
+      this.a.b(true);
+      ansr.b(this.a, bcrg.a());
+      this.a.app.getMessageFacade().getDatalineMessageManager(1).b();
     }
-    return paramQQAppInterface;
+  }
+  
+  protected void onSelfPcOnlineStatusUpdateNotify(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 1) && (this.a.a()))
+    {
+      this.a.a(true);
+      ansr.a(this.a, bcrg.a());
+      this.a.app.getMessageFacade().getDatalineMessageManager(0).b();
+    }
+    this.a.a.a(this.a);
   }
 }
 

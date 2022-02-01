@@ -1,52 +1,53 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class afip
-  extends amrc
+public class afip
+  implements DialogInterface.OnClickListener
 {
-  afip(afim paramafim) {}
+  public afip(TroopTransferActivity paramTroopTransferActivity, String paramString, QQCustomDialog paramQQCustomDialog) {}
   
-  protected void onChangeDiscussionName(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.sessionInfo.curFriendUin.equals(paramString)) && (this.a.sessionInfo.curType == 3000))
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      paramString = ((amrb)this.a.app.getManager(53)).a(paramString);
-      if ((paramString != null) && (paramString.discussionName != null))
-      {
-        this.a.sessionInfo.curFriendNick = paramString.discussionName;
-        this.a.a(this.a.sessionInfo.curFriendNick, paramString.uin, this.a.mTitleText);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Biso == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Biso = new biso(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
       }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Biso.b(2, 2131692125, 1000);
+      return;
     }
-  }
-  
-  protected void onQuitDiscussion(boolean paramBoolean, String paramString)
-  {
-    if (this.a.sessionInfo.curFriendUin.equals(paramString)) {
-      this.a.finish();
-    }
-  }
-  
-  protected void updateDiscussionInfo(boolean paramBoolean, Object paramObject)
-  {
-    paramObject = (ArrayList)paramObject;
-    int i = paramObject.indexOf(this.a.sessionInfo.curFriendUin);
-    if ((i != -1) && (paramBoolean))
+    paramDialogInterface = (aoep)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+    if (paramDialogInterface != null) {}
+    try
     {
-      if (((Boolean)paramObject.get(i + 1)).booleanValue()) {
-        this.a.instantUpdate(false, false);
+      long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_JavaLangString);
+      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getCurrentAccountUin());
+      long l3 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Boolean = true;
+      paramDialogInterface.a(l1, l2, l3);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Biso == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Biso = new biso(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
       }
-      if (this.a.sessionInfo.curType == 3000)
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Biso.b(0, 2131719457, 1000);
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
       {
-        paramObject = ((amrb)this.a.app.getManager(53)).a(this.a.sessionInfo.curFriendUin);
-        if ((paramObject != null) && (paramObject.discussionName != null))
-        {
-          this.a.sessionInfo.curFriendNick = paramObject.discussionName;
-          this.a.a(this.a.sessionInfo.curFriendNick, paramObject.uin, this.a.mTitleText);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopdisband.transfer", 2, paramDialogInterface.toString());
         }
       }
     }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, "CliOper", "", "", "Grp", "Transgrp_OK", 0, 0, "", "", "", "");
   }
 }
 

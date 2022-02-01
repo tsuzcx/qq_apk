@@ -1,55 +1,20 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.limitchat.LimitChatDamon.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auyn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private static volatile auyn jdField_a_of_type_Auyn;
-  private long jdField_a_of_type_Long = -1L;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private ConcurrentHashMap<String, Bundle> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public auyn(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  public static auyn a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (jdField_a_of_type_Auyn == null) {}
-    try
-    {
-      if (jdField_a_of_type_Auyn == null) {
-        jdField_a_of_type_Auyn = new auyn();
-      }
-      return jdField_a_of_type_Auyn;
-    }
-    finally {}
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LimitChatDamon", 2, "sendMessageReadConfirm invoke, uin:" + paramString);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_JavaLangRunnable != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LimitChatDamon", 2, "sendMessageReadConfirm last request do not finish");
-        }
-        return;
-      }
-    }
-    finally {}
-    this.jdField_a_of_type_JavaLangRunnable = new LimitChatDamon.1(this, paramString, paramQQAppInterface);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
-    }
+    ((awtq)this.a.a.getManager(QQManagerFactory.TEMP_MSG_SETTTING_MANAGER)).a((short)-23158, paramBoolean, true);
+    bdla.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 7, 7, "", "", "", "");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.Entity;
-import pay;
+import pqw;
 
 public class ArticleExposureInfo
   extends Entity
@@ -27,7 +27,7 @@ public class ArticleExposureInfo
     localArticleExposureInfo.algorithmID = paramBaseArticleInfo.mAlgorithmID;
     localArticleExposureInfo.articleID = paramBaseArticleInfo.mArticleID;
     localArticleExposureInfo.exposureTime = NetConnInfoCenter.getServerTimeMillis();
-    localArticleExposureInfo.feedsType = pay.a(paramBaseArticleInfo);
+    localArticleExposureInfo.feedsType = pqw.a(paramBaseArticleInfo);
     localArticleExposureInfo.channelID = paramBaseArticleInfo.mChannelID;
     localArticleExposureInfo.title = paramBaseArticleInfo.mTitle;
     return localArticleExposureInfo;

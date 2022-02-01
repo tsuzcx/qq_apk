@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class rcs
-  implements Parcelable.Creator<DislikeInfo>
+class rcs
+  implements View.OnClickListener
 {
-  public DislikeInfo a(Parcel paramParcel)
-  {
-    return new DislikeInfo(paramParcel);
-  }
+  rcs(rcr paramrcr) {}
   
-  public DislikeInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new DislikeInfo[paramInt];
+    if (this.a.jdField_a_of_type_Szd == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ArticleInfo localArticleInfo = ((qfw)this.a.jdField_a_of_type_JavaLangObject).a();
+      if (localArticleInfo != null)
+      {
+        int i = ComponentContentGalleryBiu.a(localArticleInfo, this.a.jdField_a_of_type_Szd);
+        pnt localpnt = this.a.jdField_a_of_type_Szd.a().a();
+        if (localpnt != null) {
+          localpnt.a(this.a.jdField_a_of_type_AndroidContentContext, localArticleInfo, 0, localArticleInfo.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
+        }
+      }
+    }
   }
 }
 

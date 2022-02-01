@@ -1,10 +1,25 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class adzi
+  extends anqj
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public adzi(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  
+  protected void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.c();
+  }
 }
 
 

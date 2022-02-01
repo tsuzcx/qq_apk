@@ -1,50 +1,28 @@
 package com.tencent.mobileqq.activity.faceunlock;
 
-import aiuw;
-import android.media.MediaRecorder;
-import com.tencent.TMG.utils.QLog;
+import ajql;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.MobileQQ;
 
 public class QFaceUnlockCameraCaptureUnit$4
   implements Runnable
 {
-  public QFaceUnlockCameraCaptureUnit$4(aiuw paramaiuw, boolean paramBoolean) {}
+  public QFaceUnlockCameraCaptureUnit$4(ajql paramajql) {}
   
   public void run()
   {
-    if (aiuw.a(this.this$0) != null) {}
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "stopRecord begin");
-      }
-      aiuw.a(this.this$0).stop();
-      aiuw.a(this.this$0).reset();
-      if (QLog.isColorLevel()) {
-        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "stopRecord end");
-      }
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.mobileqq.FaceUnblockCameraJsApiPlugin");
+    if (ajql.c(this.this$0) > 10) {
+      localIntent.putExtra("recording_time_out", true);
     }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      for (;;)
-      {
-        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "stopRecord failed, IllegalStateException: " + localIllegalStateException.getMessage());
-      }
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      for (;;)
-      {
-        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "stopRecord failed, RuntimeException: " + localRuntimeException.getMessage());
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "stopRecord failed, Exception: " + localException.getMessage());
-      }
-    }
-    aiuw.a(this.this$0, this.a);
+    localIntent.putExtra("target_media_url", ajql.a(this.this$0));
+    localIntent.setPackage(MobileQQ.getContext().getPackageName());
+    this.this$0.a().sendBroadcast(localIntent);
+    this.this$0.a().finish();
+    this.this$0.a().overridePendingTransition(2130772039, 2130772240);
   }
 }
 

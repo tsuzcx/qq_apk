@@ -1,7 +1,12 @@
-public class axpf
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class axpf
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
+  axpf(axpb paramaxpb) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

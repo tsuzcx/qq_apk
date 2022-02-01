@@ -1,31 +1,12 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import java.util.List;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.OGEntityDaoManager.Proxy;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
-class bdif
-  extends bdit
+public final class bdif
+  implements IMCoreProxyRoute.OGEntityDaoManager.Proxy
 {
-  bdif(bdid parambdid, EditorState paramEditorState, List paramList)
+  public OGAbstractDao getEntityDao(Class paramClass)
   {
-    super(parambdid, paramEditorState, paramList);
-  }
-  
-  public void a()
-  {
-    super.a();
-    bdid.a(this.a).a(1);
-  }
-  
-  public void a(EditorState paramEditorState)
-  {
-    super.a(paramEditorState);
-    bdid.a(this.a).c();
-    bdid.a(this.a).a(false, false);
-    if (bdid.a(this.a) == null)
-    {
-      bdid.a(this.a, new bdgv());
-      bdid.a(this.a).a(this.a);
-    }
-    bdid.a(this.a).a(1, 60000);
+    return azhu.a().a(paramClass);
   }
 }
 

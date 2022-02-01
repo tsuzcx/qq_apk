@@ -1,21 +1,12 @@
-public class myi
+import androidx.annotation.NonNull;
+
+public abstract interface myi
 {
-  int a;
+  public abstract boolean a();
   
-  public myi(int paramInt)
-  {
-    this.a = paramInt;
-  }
+  public abstract boolean a(@NonNull mzf parammzf, int paramInt1, int paramInt2);
   
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public boolean a()
-  {
-    return (this.a >= 0) && (this.a < 10);
-  }
+  public abstract boolean b();
 }
 
 

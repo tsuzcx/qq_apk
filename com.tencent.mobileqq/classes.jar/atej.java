@@ -1,32 +1,42 @@
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskDirFileBatchDeleteExMsgRsp;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 class atej
-  implements blfl<WeiyunPB.DiskDirFileBatchDeleteExMsgRsp>
+  implements audq
 {
-  atej(atdx paramatdx, WeiYunFileInfo paramWeiYunFileInfo) {}
+  atej(ateh paramateh, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onFailed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a + "]strFileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c + "]errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
-    }
-    atdx.a(this.jdField_a_of_type_Atdx).getFileManagerNotifyCenter().a(false, 20, new Object[] { Integer.valueOf(paramInt), paramString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c, Boolean.valueOf(false) });
-  }
+  public void onNo() {}
   
-  public void a(WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
+  public void onYes()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onSucceed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a + "]strFileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c + "]");
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      QfileBaseRecentFileTabView.z(this.jdField_a_of_type_Ateh.a).getOnlineFileSessionCenter().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    atdx.a(this.jdField_a_of_type_Atdx).getFileManagerNotifyCenter().a(true, 20, new Object[] { Integer.valueOf(0), null, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c, Boolean.valueOf(false) });
+    ansr localansr;
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localansr = (ansr)QfileBaseRecentFileTabView.A(this.jdField_a_of_type_Ateh.a).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localansr.a(localArrayList));
+    audr.a(2131692468);
+    return;
+    QfileBaseRecentFileTabView.B(this.jdField_a_of_type_Ateh.a).getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atej
  * JD-Core Version:    0.7.0.1
  */

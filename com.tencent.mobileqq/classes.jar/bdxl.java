@@ -1,21 +1,14 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 class bdxl
-  implements Comparator<Map.Entry<String, bdxm>>
+  implements DialogInterface.OnCancelListener
 {
-  bdxl(bdxj parambdxj) {}
+  bdxl(bdxj parambdxj, String paramString, int paramInt) {}
   
-  public int a(Map.Entry<String, bdxm> paramEntry1, Map.Entry<String, bdxm> paramEntry2)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    long l = ((bdxm)paramEntry2.getValue()).a - ((bdxm)paramEntry1.getValue()).a;
-    if (l > 0L) {
-      return 1;
-    }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
+    this.jdField_a_of_type_Bdxj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
   }
 }
 

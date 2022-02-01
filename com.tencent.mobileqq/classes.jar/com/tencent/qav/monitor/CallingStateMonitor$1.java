@@ -1,21 +1,21 @@
 package com.tencent.qav.monitor;
 
-import bijd;
+import bjuf;
 import com.tencent.qphone.base.util.QLog;
-import msi;
+import mtf;
 
 public class CallingStateMonitor$1
   implements Runnable
 {
-  public CallingStateMonitor$1(bijd parambijd) {}
+  public CallingStateMonitor$1(bjuf parambjuf) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("CallingStateMonitor", 2, "begin init PhoneStatusMonitor");
     }
-    if (bijd.a(this.this$0) == null) {
-      bijd.a(this.this$0, new msi(bijd.a(this.this$0), this.this$0));
+    if (bjuf.a(this.this$0) == null) {
+      bjuf.a(this.this$0, new mtf(bjuf.a(this.this$0), this.this$0));
     }
     if (QLog.isColorLevel()) {
       QLog.i("CallingStateMonitor", 2, "end init PhoneStatusMonitor");

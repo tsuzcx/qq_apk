@@ -1,17 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import java.util.Comparator;
 
-public class akzj
-  extends Handler
+class akzj
+  implements Comparator<akzk>
 {
-  public akzj(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  akzj(akzi paramakzi) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(akzk paramakzk1, akzk paramakzk2)
   {
-    switch (paramMessage.what)
-    {
+    if (paramakzk2.a - paramakzk1.a > 0.0F) {
+      return 1;
     }
+    return -1;
   }
 }
 

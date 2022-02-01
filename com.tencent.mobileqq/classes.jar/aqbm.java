@@ -1,84 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkEnvironmentManager.IDataReport;
+import com.tencent.ark.open.ArkAppReport;
 
-public class aqbm
-  extends aptq<aqbl>
+final class aqbm
+  implements ArkEnvironmentManager.IDataReport
 {
-  public static aqbl a()
+  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
   {
-    return (aqbl)apub.a().a(441);
-  }
-  
-  @NonNull
-  public aqbl a(int paramInt)
-  {
-    return new aqbl();
-  }
-  
-  @Nullable
-  public aqbl a(aptx[] paramArrayOfaptx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfProcessor", 2, "onParsed ");
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      new aqbl();
-      return aqbl.a(paramArrayOfaptx);
-    }
-    return null;
-  }
-  
-  public void a(aqbl paramaqbl)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfProcessor", 2, "onUpdate " + paramaqbl.toString());
-    }
-  }
-  
-  public Class<aqbl> clazz()
-  {
-    return aqbl.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void onReqNoReceive() {}
-  
-  public int type()
-  {
-    return 441;
+    ArkAppReport.platformEventReport(paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbm
  * JD-Core Version:    0.7.0.1
  */

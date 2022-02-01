@@ -1,39 +1,15 @@
-import android.hardware.Camera.PreviewCallback;
-import android.media.Image;
-import android.media.Image.Plane;
-import android.media.ImageReader;
-import android.media.ImageReader.OnImageAvailableListener;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
-import java.nio.ByteBuffer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
-public class bbsh
-  implements ImageReader.OnImageAvailableListener
+class bbsh
+  implements DialogInterface.OnClickListener
 {
-  public bbsh(Camera2Control paramCamera2Control) {}
+  bbsh(bbrz parambbrz) {}
   
-  public void onImageAvailable(ImageReader paramImageReader)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      paramImageReader = paramImageReader.acquireNextImage();
-      if (paramImageReader != null)
-      {
-        Camera.PreviewCallback localPreviewCallback = Camera2Control.a(this.a);
-        if (localPreviewCallback != null)
-        {
-          ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
-          byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
-          localByteBuffer.get(arrayOfByte);
-          localPreviewCallback.onPreviewFrame(arrayOfByte, null);
-        }
-        paramImageReader.close();
-      }
-      return;
-    }
-    catch (Exception paramImageReader)
-    {
-      bbsr.a(1, "[Camera2] onImageAvailable mPreviewReader exception:" + paramImageReader);
-    }
+    this.a.a.play();
   }
 }
 

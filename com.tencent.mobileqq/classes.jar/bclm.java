@@ -1,30 +1,17 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
-class bclm
-  extends URLDrawableDownListener.Adapter
+public class bclm
+  extends bclv
 {
-  bclm(bclk parambclk) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public bclm(GroupSearchEngine paramGroupSearchEngine, bclw parambclw, String paramString, int paramInt)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
+    super(paramGroupSearchEngine, parambclw, paramString, paramInt);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public bcfi a(List<bcfj> paramList, String paramString)
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView.setBackgroundDrawable(paramURLDrawable);
+    return new bcdb(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 

@@ -1,35 +1,19 @@
-import com.tencent.biz.pubaccount.weishi_new.event.WSUserAuthEvent;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager.ResponseThrowable;
-import rx.Subscriber;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.event.WSCommentShowEvent;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vam
-  extends Subscriber<vao>
+class vam
+  implements View.OnClickListener
 {
-  public vam(WSVerticalDataManager paramWSVerticalDataManager, vaa paramvaa) {}
+  vam(vaj paramvaj) {}
   
-  public void a(vao paramvao)
+  public void onClick(View paramView)
   {
-    if (paramvao == null) {}
-    do
-    {
-      return;
-      if ((paramvao.b) && (ukq.a())) {
-        unw.a().a(new WSUserAuthEvent());
-      }
-    } while (this.jdField_a_of_type_Vaa == null);
-    this.jdField_a_of_type_Vaa.a(paramvao.jdField_a_of_type_JavaUtilList, paramvao.jdField_a_of_type_Boolean, paramvao.b, paramvao.jdField_a_of_type_JavaLangObject);
-  }
-  
-  public void onCompleted() {}
-  
-  public void onError(Throwable paramThrowable)
-  {
-    if ((this.jdField_a_of_type_Vaa != null) && ((paramThrowable instanceof WSVerticalDataManager.ResponseThrowable)))
-    {
-      paramThrowable = (WSVerticalDataManager.ResponseThrowable)paramThrowable;
-      this.jdField_a_of_type_Vaa.a(paramThrowable.mErrorCode, paramThrowable.mErrorMsg);
-    }
+    vmp.a("comment", "onClick hide comment");
+    vaj.a(this.a);
+    vbw.a().a(new WSCommentShowEvent(false));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

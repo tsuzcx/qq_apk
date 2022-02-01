@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import pay;
-import ple;
+import prr;
+import pwb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import ugf;
+import uuc;
 
 public final class ReadinjoySPEventReport$17
   implements Runnable
@@ -26,7 +26,7 @@ public final class ReadinjoySPEventReport$17
       int i;
       try
       {
-        if (!ple.b(61)) {
+        if (!pwb.b(61)) {
           return;
         }
         j = -1;
@@ -60,7 +60,7 @@ public final class ReadinjoySPEventReport$17
         localObject1 = new ArrayList();
         ((List)localObject1).add(localObject2);
         ((List)localObject1).add(localAttributeList);
-        localObject2 = pay.d(1008);
+        localObject2 = prr.a(1008);
         if ((i == 1) && (!TextUtils.isEmpty((CharSequence)localObject2)))
         {
           localAttributeList = new oidb_cmd0x80a.AttributeList();
@@ -69,7 +69,7 @@ public final class ReadinjoySPEventReport$17
           localAttributeList.att_value.set((String)localObject2);
           ((List)localObject1).add(localAttributeList);
         }
-        ugf.a(61, (List)localObject1);
+        uuc.a(61, (List)localObject1);
         return;
       }
       catch (Throwable localThrowable)

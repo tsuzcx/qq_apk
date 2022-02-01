@@ -1,12 +1,24 @@
-import android.view.View;
+import android.os.Bundle;
+import android.util.SparseArray;
 
-public class bbbh
-  implements bbbn
+public abstract class bbbh
 {
-  public void a(bayr parambayr, bbhc parambbhc)
+  protected static SparseArray<Class<?>> a = new SparseArray();
+  protected static SparseArray<Class<?>> b = new SparseArray();
+  
+  static
   {
-    parambbhc.a().setVisibility(8);
+    a.put(1, bbbj.class);
   }
+  
+  public abstract int a();
+  
+  public void a(Bundle paramBundle)
+  {
+    paramBundle.putInt("redpoint.fromReceiverIPCCode", a());
+  }
+  
+  public void b(Bundle paramBundle) {}
 }
 
 

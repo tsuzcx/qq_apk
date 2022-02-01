@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.photo;
 
-import bfur;
+import bhdj;
 import mqq.app.QQPermissionCallback;
 
 class TroopPhotoController$5$1
@@ -10,7 +10,7 @@ class TroopPhotoController$5$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bfur.a(this.this$1.this$0.mActivity, paramArrayOfString, paramArrayOfInt);
+    bhdj.a(this.this$1.this$0.mActivity, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)

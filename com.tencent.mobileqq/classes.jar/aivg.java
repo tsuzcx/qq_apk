@@ -1,8 +1,36 @@
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import java.util.List;
 
 public abstract interface aivg
 {
-  public abstract boolean a(TencentDocItem paramTencentDocItem);
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, List<aivf> paramList);
+  
+  public abstract void a(List<String> paramList);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

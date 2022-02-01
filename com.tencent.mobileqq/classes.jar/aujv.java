@@ -1,97 +1,192 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.QQIdentiferLegacyActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface;
-import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
-import java.util.concurrent.atomic.AtomicBoolean;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x5e1.UdcUinData;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aujv
+  extends atwq
 {
-  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt, aujz paramaujz)
+  private long jdField_a_of_type_Long = -1L;
+  private abib jdField_a_of_type_Abib;
+  private long b = -1L;
+  
+  public aujv(QQAppInterface paramQQAppInterface, Activity paramActivity, List<atuz> paramList, int paramInt)
   {
-    AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
-    YTAGReflectLiveCheckInterface.getLiveCheckType(paramContext.getApplicationContext(), new aujx(paramInt, localAtomicBoolean, paramString1, paramString2, paramString3, paramLong, paramaujz));
+    super(paramQQAppInterface, paramActivity);
+    if (QLog.isColorLevel()) {
+      QLog.i("DeviceFileModel<FileAssistant>", 1, "FileBrowserModel init: type = device");
+    }
+    a(paramList, paramInt);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, oidb_0x5e1.RspBody paramRspBody, FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse, Runnable paramRunnable)
+  private boolean m()
   {
-    if (((oidb_0x5e1.UdcUinData)paramRspBody.rpt_msg_uin_data.get(0)).user_login_guard_face.get() == 0)
+    Object localObject = this.jdField_a_of_type_Atuz.a();
+    if (localObject == null)
     {
-      if (TextUtils.isEmpty(paramString))
-      {
-        QQToast.a(paramActivity, paramActivity.getString(2131698266), 0).a();
-        paramRunnable.run();
-        return;
-      }
-      if ((paramSecureCheckResponse == null) || (!paramSecureCheckResponse.bool_sec_pass.get()))
-      {
-        if (System.currentTimeMillis() - AuthDevVerifyCodeActivity.a >= 60000L)
-        {
-          bbon.a(paramQQAppInterface, new aujw(paramActivity, paramString, paramRunnable));
-          return;
-        }
-        paramRspBody = new Intent(paramActivity, AuthDevVerifyCodeActivity.class);
-        paramRspBody.putExtra("k_from", "f_SetFaceData");
-        paramQQAppInterface = paramString;
-        if (paramString == null) {
-          paramQQAppInterface = "";
-        }
-        paramRspBody.putExtra("phone_num", paramQQAppInterface);
-        paramActivity.startActivityForResult(paramRspBody, 11);
-        return;
-      }
-      paramQQAppInterface = new Intent(paramActivity, QQIdentiferLegacyActivity.class);
-      paramQQAppInterface.putExtra("platformAppId", 101810106);
-      paramQQAppInterface.putExtra("srcAppId", 101810106);
-      paramQQAppInterface.putExtra("srcOpenId", paramSecureCheckResponse.str_openid.get());
-      paramQQAppInterface.putExtra("key", paramSecureCheckResponse.str_tmpkey.get());
-      paramQQAppInterface.putExtra("method", "setFaceData");
-      paramQQAppInterface.putExtra("serviceType", 2);
-      paramActivity.startActivityForResult(paramQQAppInterface, 21);
-      return;
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      QQToast.a(paramActivity, paramActivity.getString(2131698261), 0).a();
-      paramRunnable.run();
-      return;
-    }
-    PublicFragmentActivity.a(paramActivity, DeleteFaceFragment.class, 12);
-  }
-  
-  private static void b(int paramInt, String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, aujz paramaujz)
-  {
-    QLog.d("FaceLoginHelper", 1, new Object[] { "start sendPacket appid : ", Integer.valueOf(paramInt) });
-    if (paramInt != 0)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("srcAppId", paramInt);
-      localBundle.putString("key", paramString1);
-      localBundle.putString("lightInfo", paramString4);
-      localBundle.putString("method", paramString2);
-      localBundle.putString("uin", paramString3);
-      localBundle.putLong("nonce", paramLong);
       if (QLog.isColorLevel()) {
-        QLog.d("FaceLoginHelper", 1, "sendPacket" + paramString4);
+        QLog.i("DeviceFileModel<FileAssistant>", 2, "fileEntity = null");
       }
-      QIPCClientHelper.getInstance().callServer("IdentificationIpcServer_Model", "action_app_conf", localBundle, new aujy(paramaujz));
+      return false;
     }
+    if (!TextUtils.isEmpty(((FileManagerEntity)localObject).getFilePath())) {
+      return false;
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getMsgItemByUniseq(((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, ((FileManagerEntity)localObject).msgSeq);
+    if (localObject == null) {
+      return false;
+    }
+    localObject = (MessageForDeviceSingleStruct)localObject;
+    abkq localabkq = ((abkw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a();
+    if ((((MessageForDeviceSingleStruct)localObject).nMediaSessionID > 0L) && (localabkq.a((MessageForDeviceSingleStruct)localObject)))
+    {
+      this.jdField_a_of_type_Long = ((MessageForDeviceSingleStruct)localObject).nMediaSessionID;
+      return true;
+    }
+    return false;
+  }
+  
+  private void o()
+  {
+    Object localObject = this.jdField_a_of_type_Atuz.a();
+    if (localObject == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("DeviceFileModel<FileAssistant>", 2, "fileEntity = null");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!TextUtils.isEmpty(((FileManagerEntity)localObject).getFilePath()));
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getMsgItemByUniseq(((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, ((FileManagerEntity)localObject).msgSeq);
+    } while (localObject == null);
+    localObject = (MessageForDeviceSingleStruct)localObject;
+    this.jdField_a_of_type_Long = ((abkw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a((MessageForDeviceSingleStruct)localObject);
+  }
+  
+  private void p()
+  {
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atuz.a();
+    if (localFileManagerEntity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("DeviceFileModel<FileAssistant>", 2, "fileEntity = null");
+      }
+    }
+    do
+    {
+      return;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getMsgItemByUniseq(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.msgSeq);
+    } while (localObject == null);
+    Object localObject = (MessageForDeviceSingleStruct)localObject;
+    ((abkw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().b((MessageForDeviceSingleStruct)localObject);
+    localFileManagerEntity.status = 3;
+    this.jdField_a_of_type_Long = -1L;
+  }
+  
+  public int a()
+  {
+    int i = e();
+    int j = super.a();
+    if (j != 0) {
+      return j;
+    }
+    switch (i)
+    {
+    case 1: 
+    default: 
+      return 1;
+    case 0: 
+      return 6;
+    }
+    return 2;
+  }
+  
+  public atvp a()
+  {
+    if (this.jdField_a_of_type_Atvp == null) {
+      this.jdField_a_of_type_Atvp = new aujx(this);
+    }
+    return this.jdField_a_of_type_Atvp;
+  }
+  
+  public atvr a()
+  {
+    return new aujz(this);
+  }
+  
+  public atvs a()
+  {
+    return null;
+  }
+  
+  public List<atxc> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(new atvv((atuz)localIterator.next()));
+      }
+    }
+    return localArrayList;
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Abib != null) {
+      return;
+    }
+    this.jdField_a_of_type_Abib = new aujw(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Abib);
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Abib != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Abib);
+      this.jdField_a_of_type_Abib = null;
+    }
+  }
+  
+  public int d()
+  {
+    if (auea.b(d())) {
+      return 3;
+    }
+    return super.d();
+  }
+  
+  public int h()
+  {
+    return 2;
+  }
+  
+  public int i()
+  {
+    if (auea.b(d())) {
+      return 2;
+    }
+    if (m()) {
+      return 4;
+    }
+    return 3;
+  }
+  
+  public boolean i()
+  {
+    return NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

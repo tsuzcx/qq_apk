@@ -7,15 +7,15 @@ import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.tencent.theme.ISkinIgnoreTypeface;
-import zfm;
-import zfn;
+import zur;
+import zus;
 
 public class CommentEditText
   extends EditText
   implements ISkinIgnoreTypeface
 {
   private int jdField_a_of_type_Int = 140;
-  private zfn jdField_a_of_type_Zfn;
+  private zus jdField_a_of_type_Zus;
   
   public CommentEditText(Context paramContext)
   {
@@ -25,7 +25,7 @@ public class CommentEditText
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    addTextChangedListener(new zfm(this));
+    addTextChangedListener(new zur(this));
   }
   
   public CommentEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -53,9 +53,9 @@ public class CommentEditText
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setOnInputBackListener(zfn paramzfn)
+  public void setOnInputBackListener(zus paramzus)
   {
-    this.jdField_a_of_type_Zfn = paramzfn;
+    this.jdField_a_of_type_Zus = paramzus;
   }
 }
 

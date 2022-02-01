@@ -1,34 +1,38 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 class awja
-  implements DialogInterface.OnClickListener
+  extends aofu
 {
-  awja(awiz paramawiz, boolean paramBoolean, String paramString1, awjh paramawjh, QQAppInterface paramQQAppInterface, String paramString2, Activity paramActivity) {}
+  awja(awiz paramawiz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onPassiveExit(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
+    super.onPassiveExit(paramString, paramInt);
+    if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Awiz.b();
-      if (!this.jdField_a_of_type_Awiz.a()) {
-        break label104;
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
       }
-      this.jdField_a_of_type_Awiz.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 0, 1);
-      this.jdField_a_of_type_Awjh.a(this.jdField_a_of_type_JavaLangString, false);
-      awiz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "pay_like", this.jdField_a_of_type_JavaLangString, this.b, "", "", "");
+      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+      if ((localBaseActivity != null) && (this.a.a.a())) {
+        QQToast.a(localBaseActivity, 2131693012, 1).a();
+      }
+      awlt.a(this.a.app, 1, paramString);
     }
-    for (;;)
+  }
+  
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  {
+    super.onTroopManagerSuccess(paramInt1, paramInt2, paramString);
+    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0))
     {
-      awiz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_no_warm", this.b);
-      return;
-      this.jdField_a_of_type_Awiz.c();
-      break;
-      label104:
-      this.jdField_a_of_type_Awiz.a(this.jdField_a_of_type_AndroidAppActivity, this.b);
-      awiz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "exp_pay", this.b);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, new Object[] { "onTroopManagerSuccess: invoked. 主动退群 or 解散群", " reqtype: ", Integer.valueOf(paramInt1), " troopUin: ", paramString });
+      }
+      awlt.a(this.a.app, 1, paramString);
     }
   }
 }

@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.avgame.gameroom.GameRoomFragment.9;
+import android.os.Bundle;
 
-public class nck
-  implements DialogInterface.OnClickListener
+public abstract interface nck
 {
-  public nck(GameRoomFragment.9 param9) {}
+  public abstract void d(Bundle paramBundle);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    if (this.a.a != null) {
-      this.a.a.onClick(paramDialogInterface, paramInt);
-    }
-  }
+  public abstract void e(Bundle paramBundle);
+  
+  public abstract void f(Bundle paramBundle);
+  
+  public abstract void g(Bundle paramBundle);
+  
+  public abstract void h(Bundle paramBundle);
+  
+  public abstract void receiveGatewayMsg(String paramString, int paramInt);
 }
 
 

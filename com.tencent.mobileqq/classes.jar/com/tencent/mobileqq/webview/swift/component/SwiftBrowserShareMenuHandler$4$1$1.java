@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import aadf;
-import bgww;
-import bgwz;
+import aasr;
+import biho;
+import bihr;
 
 class SwiftBrowserShareMenuHandler$4$1$1
   implements Runnable

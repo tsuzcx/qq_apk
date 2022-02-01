@@ -1,23 +1,48 @@
-import android.os.Handler;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
-class bmub
-  implements bnhs
+public class bmub
 {
-  bmub(bmua parambmua) {}
+  private static String a;
+  private static String b;
   
-  public void a(int paramInt, List<vwc> paramList)
+  public static String a()
   {
-    xvv.b("PasterDataManager", "onPOIPostersRequestResult callback");
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = Collections.EMPTY_LIST;
+    if (a != null) {
+      return a;
     }
-    vli.a().dispatch(new bnhq(paramInt, (List)localObject));
+    Object localObject1 = BaseApplicationImpl.sApplication.getExternalFilesDir(null);
+    if (localObject1 == null) {}
+    for (localObject1 = BaseApplicationImpl.sApplication.getFilesDir().getAbsolutePath();; localObject1 = ((File)localObject1).getAbsolutePath())
+    {
+      Object localObject2 = localObject1;
+      if (!((String)localObject1).endsWith("/")) {
+        localObject2 = (String)localObject1 + "/";
+      }
+      a = (String)localObject2;
+      return localObject2;
+    }
+  }
+  
+  public static String a(long paramLong)
+  {
+    return b(paramLong) + "disk_file_cache" + "/";
+  }
+  
+  public static String b()
+  {
+    if (b != null) {
+      return b;
+    }
+    String str = a();
+    str = str + "Tencent" + "/" + "weiyun" + "/";
+    b = str;
+    return str;
+  }
+  
+  private static String b(long paramLong)
+  {
+    return b() + paramLong + "/";
   }
 }
 

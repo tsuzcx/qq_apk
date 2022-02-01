@@ -9,8 +9,8 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
-import bmqh;
-import bnts;
+import bofz;
+import bpjk;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
 import com.tencent.common.app.AppInterface;
@@ -23,14 +23,14 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import vtn;
-import ylg;
+import wii;
+import yzz;
 
 public class SaveVideoActivity
   extends FlowActivity
 {
   private static FFmpeg jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg;
-  private bnts jdField_a_of_type_Bnts;
+  private bpjk jdField_a_of_type_Bpjk;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
   
@@ -54,7 +54,7 @@ public class SaveVideoActivity
       if (paramAppInterface == null) {
         throw new IllegalStateException("Can not create a entity factory, the account is null.");
       }
-      paramAppInterface = new vtn(paramAppInterface);
+      paramAppInterface = new wii(paramAppInterface);
       paramAppInterface.verifyAuthentication();
       paramAppInterface = ShortVideoRealItemBuilder.a(paramAppInterface.createEntityManager(), PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), "fakeVid=?", new String[] { paramString });
     } while ((paramAppInterface == null) || (paramAppInterface.size() <= 0));
@@ -70,7 +70,7 @@ public class SaveVideoActivity
     if (paramAppInterface == null) {
       throw new IllegalStateException("Can not create a entity factory, the account is null.");
     }
-    paramAppInterface = new vtn(paramAppInterface);
+    paramAppInterface = new wii(paramAppInterface);
     paramAppInterface.verifyAuthentication();
     paramAppInterface.createEntityManager().remove(paramPublishVideoEntry);
   }
@@ -114,11 +114,11 @@ public class SaveVideoActivity
     com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mRecordFrames = paramBundle.getIntExtra("sv_total_frame_count", 0);
     com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mRecordTime = paramBundle.getIntExtra("sv_total_record_time", 0);
     this.jdField_b_of_type_Int = paramBundle.getIntExtra("requestCode", -1);
-    this.jdField_a_of_type_Bnts = new bnts(this, bmqh.a());
-    bnts.a(this.jdField_a_of_type_Bnts, paramBundle.getBooleanExtra("mediacodec_encode_enable", false));
-    bnts.b(this.jdField_a_of_type_Bnts, paramBundle.getBooleanExtra("video_edit_flag", false));
-    bnts.a(this.jdField_a_of_type_Bnts, paramBundle.getIntExtra("save_video_businessid", -1));
-    Utils.executeAsyncTaskOnSerialExcuter(this.jdField_a_of_type_Bnts, new Void[] { (Void)null });
+    this.jdField_a_of_type_Bpjk = new bpjk(this, bofz.a());
+    bpjk.a(this.jdField_a_of_type_Bpjk, paramBundle.getBooleanExtra("mediacodec_encode_enable", false));
+    bpjk.b(this.jdField_a_of_type_Bpjk, paramBundle.getBooleanExtra("video_edit_flag", false));
+    bpjk.a(this.jdField_a_of_type_Bpjk, paramBundle.getIntExtra("save_video_businessid", -1));
+    Utils.executeAsyncTaskOnSerialExcuter(this.jdField_a_of_type_Bpjk, new Void[] { (Void)null });
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -126,12 +126,12 @@ public class SaveVideoActivity
     if (paramInt == 4)
     {
       this.jdField_b_of_type_Boolean = true;
-      if ((this.jdField_a_of_type_Bnts != null) && (!isFinishing()))
+      if ((this.jdField_a_of_type_Bpjk != null) && (!isFinishing()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("SaveVideoActivity", 2, "cancel save video");
         }
-        if (ylg.a().b() == 22)
+        if (yzz.a().b() == 22)
         {
           if (this.jdField_b_of_type_Int != 111) {
             break label123;
@@ -142,7 +142,7 @@ public class SaveVideoActivity
     }
     for (;;)
     {
-      bnts.a(this.jdField_a_of_type_Bnts).set(true);
+      bpjk.a(this.jdField_a_of_type_Bpjk).set(true);
       setResult(0, getIntent());
       if (getIntent() != null) {
         ThreadManager.postImmediately(new SaveVideoActivity.1(this, getIntent().getStringExtra("fakeId")), null, true);

@@ -1,45 +1,222 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.utils.StringUtil;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class bake
 {
-  private static int a;
-  public ConcurrentHashMap<Long, bakh> a;
+  private static HashMap<Integer, String> a;
   
   static
   {
-    jdField_a_of_type_Int = 900000;
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(100), "openreadinjoy");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(101), "scan");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(102), "qassistantnearby");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(103), "qsettings");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(104), "searchpage");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(105), "ecchat");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(106), "weishi");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(107), "qinterest");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(108), "confessmsg");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(109), "qqgame");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(110), "conversation");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(111), "contact");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(112), "leba");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(113), "qzone");
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(114), "wezone");
   }
   
-  private bake()
+  public static bakd a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public static final bake a()
-  {
-    return bakg.a();
-  }
-  
-  public bakh a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-      return (bakh)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    if (StringUtil.isEmpty(paramString)) {
+      return new bakd();
     }
-    return null;
+    Object localObject;
+    if ((paramString.equalsIgnoreCase("qinterest")) || (paramString.equalsIgnoreCase("qqgame"))) {
+      localObject = new bakh();
+    }
+    for (;;)
+    {
+      ((bakd)localObject).f = paramString;
+      return localObject;
+      if ((paramString.equalsIgnoreCase("conversation")) || (paramString.equalsIgnoreCase("contact")) || (paramString.equalsIgnoreCase("leba"))) {
+        localObject = new bakf();
+      } else {
+        localObject = new bakd();
+      }
+    }
   }
   
-  public void a()
+  public static final String a(int paramInt)
   {
-    BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "LongVideoUrlCacheManager,clearCache");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    return (String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
   }
   
-  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  public static List<bakd> a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new bakh(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(b("openreadinjoy"));
+    localArrayList.add(b("scan"));
+    localArrayList.add(b("qassistantnearby"));
+    localArrayList.add(b("qsettings"));
+    localArrayList.add(b("searchpage"));
+    localArrayList.add(b("ecchat"));
+    localArrayList.add(b("weishi"));
+    localArrayList.add(b("qinterest"));
+    localArrayList.add(b("confessmsg"));
+    localArrayList.add(b("qqgame"));
+    localArrayList.add(b("conversation"));
+    localArrayList.add(b("contact"));
+    localArrayList.add(b("leba"));
+    localArrayList.add(b("qzone"));
+    localArrayList.add(b("wezone"));
+    return localArrayList;
+  }
+  
+  public static bakd b(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("openreadinjoy"))
+    {
+      paramString = new bakh();
+      paramString.jdField_a_of_type_JavaLangString = "Open_看点页面跳转——Server版";
+      paramString.c = "readinjoy";
+      paramString.d = "open";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "openreadinjoy";
+      paramString.jdField_a_of_type_JavaUtilHashMap.put("target", "2001");
+      paramString.jdField_a_of_type_JavaUtilHashMap.put("from", "1");
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("scan"))
+    {
+      paramString = new bakd();
+      paramString.jdField_a_of_type_JavaLangString = "Open_扫一扫页面跳转——Server版";
+      paramString.c = "scanforqassistant";
+      paramString.d = "gotoScannerTorchActivity";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "scan";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("qassistantnearby"))
+    {
+      paramString = new bakd();
+      paramString.jdField_a_of_type_JavaLangString = "Open_附近的人页面跳转——Server版";
+      paramString.c = "nearbyforqassistant";
+      paramString.d = "open";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "qassistantnearby";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("qsettings"))
+    {
+      paramString = new bakd();
+      paramString.jdField_a_of_type_JavaLangString = "Open_设置页面跳转——Server版";
+      paramString.c = "settingsforqassistant";
+      paramString.d = "open";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "qsettings";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("searchpage"))
+    {
+      paramString = new bakd();
+      paramString.jdField_a_of_type_JavaLangString = "Open_搜索页面跳转——Server版";
+      paramString.c = "searchforqassistant";
+      paramString.d = "open";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "searchpage";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("ecchat"))
+    {
+      paramString = new bakd();
+      paramString.jdField_a_of_type_JavaLangString = "Open_扩列页面跳转——Server版";
+      paramString.c = "qechatforqassistant";
+      paramString.d = "open";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "ecchat";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("weishi"))
+    {
+      paramString = new bakd();
+      paramString.jdField_a_of_type_JavaLangString = "Open_扩列页面跳转——Server版";
+      paramString.c = "weishiforqassistant";
+      paramString.d = "open";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "weishi";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("qinterest"))
+    {
+      paramString = new bakh();
+      paramString.jdField_a_of_type_JavaLangString = "Open_兴趣部落页面跳转——Scheme版";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "qinterest";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("confessmsg"))
+    {
+      paramString = new bakd();
+      paramString.jdField_a_of_type_JavaLangString = "Open_坦白说页面跳转——Server版";
+      paramString.c = "confiessmsgforqassistant";
+      paramString.d = "open";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "confessmsg";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("qqgame"))
+    {
+      paramString = new bakh();
+      paramString.jdField_a_of_type_JavaLangString = "Open_游戏中心页面跳转——Scheme版";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "qqgame";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("conversation"))
+    {
+      paramString = new bakf();
+      paramString.jdField_a_of_type_JavaLangString = "Open_主界面tab_消息列表";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "conversation";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("contact"))
+    {
+      paramString = new bakf();
+      paramString.jdField_a_of_type_JavaLangString = "Open_主界面tab_联系人";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "contact";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("leba"))
+    {
+      paramString = new bakf();
+      paramString.jdField_a_of_type_JavaLangString = "Open_主界面tab_动态";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "leba";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("qzone"))
+    {
+      paramString = new bakd();
+      paramString.jdField_a_of_type_JavaLangString = "Open_好友动态跳转";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "qzone";
+      paramString.c = "qzoneforqassistant";
+      return paramString;
+    }
+    if (paramString.equalsIgnoreCase("wezone"))
+    {
+      paramString = new bakd();
+      paramString.jdField_a_of_type_JavaLangString = "Open_小世界跳转";
+      paramString.jdField_a_of_type_Boolean = true;
+      paramString.f = "wezone";
+      paramString.c = "weqzoneforqassistant";
+      return paramString;
+    }
+    return new bakh();
   }
 }
 

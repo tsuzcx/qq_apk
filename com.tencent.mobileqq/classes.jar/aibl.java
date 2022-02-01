@@ -1,37 +1,77 @@
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
-public class aibl
-  implements aiol
+class aibl
+  implements bila<oidb_0x8e4.RspBody>
 {
-  public aibl(TroopView paramTroopView) {}
+  aibl(aiav paramaiav) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onRepeatClick. position:" + paramInt);
-    }
-    if (paramInt != -1)
-    {
-      TroopView.a(this.a).setCurrentPosition(-1, false);
-      int i = TroopView.a(this.a).getCurrentItem();
+    if (paramRspBody == null) {
       if (QLog.isColorLevel()) {
-        QLog.i("addContacts.TroopView", 2, "onCurrentTabClick. position:" + paramInt + " currentClassifyPos:" + i);
-      }
-      Object localObject = TroopView.a(this.a).a(i, false);
-      if (localObject != null)
-      {
-        localObject = (AddContactViewPagerTroopFragment)localObject;
-        aiak localaiak = (aiak)this.a.a.get(i);
-        localaiak.b = -1;
-        ((AddContactViewPagerTroopFragment)localObject).a(localaiak.d, "");
+        QLog.d(this.a.tag, 2, "startAnotherRound failed! errorCode = " + paramInt);
       }
     }
+    do
+    {
+      QQToast.a(this.a.getActivity(), 1, anvx.a(2131704570), 1).a();
+      return;
+      while ((!paramRspBody.getBooleanExtra("finishAIO", false)) || (!(this.a.mActivity instanceof ChatActivity)))
+      {
+        Common.WifiPOIInfo localWifiPOIInfo = paramRspBody.poi_info;
+        HotChatInfo localHotChatInfo = HotChatInfo.createHotChat(localWifiPOIInfo, false, 0);
+        localHotChatInfo.isGameRoom = true;
+        paramRspBody = this.a.app.getHotChatMng(true);
+        Object localObject = paramRspBody.a();
+        if ((localObject != null) && (!((List)localObject).contains(localHotChatInfo))) {
+          ((List)localObject).add(localHotChatInfo);
+        }
+        paramRspBody.a(localHotChatInfo, 4);
+        localObject = this.a.getActivity().getIntent();
+        paramRspBody = (oidb_0x8e4.RspBody)localObject;
+        if (localObject == null) {
+          paramRspBody = new Intent();
+        }
+        localObject = localWifiPOIInfo.bytes_uid.get().toStringUtf8();
+        paramRspBody.putExtra("uin", localHotChatInfo.troopUin + "");
+        paramRspBody.putExtra("uintype", 1);
+        paramRspBody.putExtra("troop_uin", localHotChatInfo.troopUin + "");
+        paramRspBody.putExtra("uinname", localHotChatInfo.name);
+        paramRspBody.putExtra("hotnamecode", (String)localObject);
+        paramRspBody.putExtra("isNeedShowLoading", false);
+        paramRspBody.putExtra("leftViewText", this.a.getActivity().getString(2131690499));
+        axqc.a(this.a.app.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(bcrg.a()));
+        paramInt = AIOUtils.openAioToAIOByMT(this.a.app, this.a.mActivity, paramRspBody);
+        if (paramInt != 0) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.tag, 2, "openAIO by start SplashAct");
+        }
+        localObject = this.a.a.a();
+        if (localObject != null) {
+          ((bili)localObject).a();
+        }
+        this.a.mActivity.startActivity(paramRspBody);
+      }
+      this.a.mActivity.finish();
+      return;
+    } while (paramInt != 2);
+    QLog.e(this.a.tag, 1, "openAIO rediectToAIOWithMt 2");
   }
 }
 

@@ -1,18 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
 
-public class sxj
-  implements HorizontalListView.OnScrollStateChangedListener
+class sxj
+  implements qha
 {
-  public sxj(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  sxj(sxi paramsxi, View paramView) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo)
   {
-    if ((ReadInJoyDiandianHeaderController.b(this.a)) && (paramInt == 4097)) {
-      odq.a(null, "", "0X8009BA4", "0X8009BA4", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", "", "", false);
-    }
+    sxi.a(this.jdField_a_of_type_Sxi, this.jdField_a_of_type_AndroidViewView);
   }
 }
 

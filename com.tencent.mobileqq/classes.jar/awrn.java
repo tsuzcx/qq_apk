@@ -1,30 +1,61 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData.1;
+import java.util.Timer;
+import java.util.TimerTask;
 
-class awrn
-  implements WXShareHelper.WXShareListener
+public class awrn
 {
-  awrn(awrl paramawrl) {}
+  public float a;
+  public int a;
+  public awro a;
+  public awrr a;
+  public String a;
+  TimerTask a;
+  public boolean a;
+  public int b;
+  public String b = "non-ver";
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public boolean e = true;
+  public int f = 50;
+  public String f;
+  public boolean f;
+  public int g = 30;
+  public String g;
+  public boolean g;
+  public int h = 0;
+  public String h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public awrn()
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.getInstance().removeObserver(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
-      }
-      if (this.a.jdField_a_of_type_Awro != null) {
-        this.a.jdField_a_of_type_Awro.a(true);
-      }
-    }
-    label59:
-    while (this.a.jdField_a_of_type_Awro == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Awro.a(false);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "send";
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilTimerTask = new ActionGlobalData.1(this);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Float = this.jdField_c_of_type_Int;
+    ThreadManager.getTimer().schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 100L);
+  }
+  
+  public void a(awro paramawro)
+  {
+    this.jdField_a_of_type_Awro = paramawro;
   }
 }
 

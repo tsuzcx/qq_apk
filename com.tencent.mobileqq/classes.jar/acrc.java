@@ -1,21 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class acrc
-  implements View.OnClickListener
+  implements acpi
 {
-  public acrc(AgeSelectionActivity paramAgeSelectionActivity) {}
-  
-  public void onClick(View paramView)
+  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
-    AgeSelectionActivity.a(this.a);
-    this.a.finish();
-    if ("VAL_FROM_STATUS_MSG_TAB".equals(AgeSelectionActivity.a(this.a))) {
-      axvz.a("0X800AF47");
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopNotificationHelper", 2, "get notice from handleC2COnlinePushMsg0x210Resp");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    bctv.a(paramQQAppInterface, paramMsgType0x210.vProtobuf);
+    long l1 = paramMsgInfo.lFromUin;
+    int i = paramMsgInfo.shMsgSeq;
+    long l2 = paramMsgInfo.lMsgUid;
+    int j = paramMsgInfo.shMsgType;
+    bcrx.a(paramQQAppInterface.getMsgHandler(), l1, i, l2, j);
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgInfo, paramMsgType0x210);
+    return null;
   }
 }
 

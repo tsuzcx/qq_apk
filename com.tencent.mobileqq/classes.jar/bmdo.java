@@ -1,6 +1,8 @@
+import cooperation.qqpim.QQPimTipsInfo;
+
 public abstract interface bmdo
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(QQPimTipsInfo paramQQPimTipsInfo);
 }
 
 

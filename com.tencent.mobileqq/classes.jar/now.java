@@ -1,28 +1,16 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class now
-  extends AsyncTask<Void, Void, Void>
+class now
+  implements View.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString = "";
+  now(nov paramnov, ngc paramngc) {}
   
-  now(nox paramnox, String paramString) {}
-  
-  protected Void a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = nov.a(this.b);
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    super.onPostExecute(paramVoid);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_Nox.a();
-      return;
-    }
-    this.jdField_a_of_type_Nox.a(this.jdField_a_of_type_JavaLangString);
+    noq.a(this.jdField_a_of_type_Nov.a, this.jdField_a_of_type_Ngc.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

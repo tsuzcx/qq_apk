@@ -1,14 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
 
 class bdcy
-  implements DialogInterface.OnClickListener
+  implements agrc
 {
-  bdcy(bdct parambdct) {}
+  bdcy(bdcw parambdcw, CustomFrameAnimationDrawable paramCustomFrameAnimationDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Bdcw.c > 0) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.h();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.c();
+    bdcw localbdcw = this.jdField_a_of_type_Bdcw;
+    localbdcw.c += 1;
   }
 }
 

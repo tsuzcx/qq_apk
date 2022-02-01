@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
-import bgve;
+import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -67,8 +67,8 @@ public class QzoneMoodPlugin
     //   10: aload 8
     //   12: aload_0
     //   13: getfield 65	cooperation/qzone/webviewplugin/QzoneMoodPlugin:parentPlugin	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;
-    //   16: getfield 71	com/tencent/mobileqq/webview/swift/WebViewPlugin:mRuntime	Lbgve;
-    //   19: invokevirtual 129	bgve:a	()Lcom/tencent/common/app/AppInterface;
+    //   16: getfield 71	com/tencent/mobileqq/webview/swift/WebViewPlugin:mRuntime	Lbifw;
+    //   19: invokevirtual 129	bifw:a	()Lcom/tencent/common/app/AppInterface;
     //   22: invokevirtual 135	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   25: putfield 138	cooperation/qzone/webviewplugin/QzoneMoodPlugin$FriendNickNames:mainUin	Ljava/lang/String;
     //   28: invokestatic 144	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;

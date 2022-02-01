@@ -1,275 +1,53 @@
 import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.chatpic.PicUploadFileSizeLimit;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.mobileqq.utils.SendByFile.1;
-import com.tencent.util.Pair;
-import java.io.File;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.data.MessageRecord;
 import java.util.List;
-import java.util.Map;
 
 public class bfyu
+  extends bfyf
 {
-  private long jdField_a_of_type_Long = a();
-  private boolean jdField_a_of_type_Boolean = true;
-  private long b = 1048576000L;
-  private long c = 104345600L;
-  
-  public static void a(QQAppInterface paramQQAppInterface, List<String> paramList, String paramString, int paramInt)
+  public bfyu(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if ((paramQQAppInterface == null) || (paramList == null)) {}
-    for (;;)
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 26;
+  }
+  
+  @Nullable
+  public bfyg a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  {
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramLong1);
+    if ((paramList != null) && (a(paramList, paramLong2, paramLong3)))
     {
+      paramObject = this.jdField_a_of_type_AndroidContentContext.getString(2131697428);
+      bffr localbffr = bffr.a(paramInt1, paramLong1, paramInt2);
+      String str = paramList.senderuin;
+      if (nty.a(paramList)) {}
+      for (paramInt1 = 2;; paramInt1 = 1)
+      {
+        bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_flower", "", "grp_aio", "exp_topmsgcue", paramInt1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+        return new bfyg(true, paramObject, localbffr, str);
+      }
+    }
+    return null;
+  }
+  
+  public void a(int paramInt, Object paramObject, String paramString)
+  {
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_gift", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+  }
+  
+  public void b(int paramInt, Object paramObject, String paramString)
+  {
+    if (nty.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin)) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_flower", "", "grp_aio", "Clk_topmsgcue", paramInt, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_gift", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        String str = (String)paramList.next();
-        if (paramInt == 1) {
-          paramQQAppInterface.getFileManagerEngine().a(str, paramString);
-        } else {
-          paramQQAppInterface.getFileManagerEngine().a(str, paramString, paramString, paramInt, true);
-        }
-      }
     }
-  }
-  
-  protected int a()
-  {
-    return (int)PicUploadFileSizeLimit.getLimitC2C();
-  }
-  
-  public bfyu a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public bfyu a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public Pair<ArrayList<String>, ArrayList<String>> a(List<String> paramList, boolean paramBoolean, Map<String, LocalMediaInfo> paramMap1, Map<String, LocalMediaInfo> paramMap2)
-  {
-    Pair localPair = new Pair(new ArrayList(), new ArrayList());
-    if (paramList == null) {
-      return localPair;
-    }
-    ((ArrayList)localPair.first).clear();
-    ((ArrayList)localPair.second).clear();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (ImageManager.isNetworkUrl(str))
-      {
-        ((ArrayList)localPair.first).add(str);
-      }
-      else
-      {
-        paramList = null;
-        if (paramMap1 != null) {
-          paramList = (LocalMediaInfo)paramMap1.get(str);
-        }
-        Object localObject = paramList;
-        if (paramList == null)
-        {
-          localObject = paramList;
-          if (paramMap2 != null) {
-            localObject = (LocalMediaInfo)paramMap2.get(str);
-          }
-        }
-        if (localObject == null)
-        {
-          ((ArrayList)localPair.first).add(str);
-        }
-        else
-        {
-          int i = AlbumUtil.getMediaType((LocalMediaInfo)localObject);
-          long l2 = ((LocalMediaInfo)localObject).fileSize;
-          long l1 = l2;
-          if (l2 <= 0L)
-          {
-            paramList = new File(str);
-            l1 = l2;
-            if (paramList.exists()) {
-              l1 = paramList.length();
-            }
-          }
-          if (i == 1)
-          {
-            if ((l1 > this.b) || ((l1 > this.c) && (paramBoolean)))
-            {
-              if (this.jdField_a_of_type_Boolean)
-              {
-                ((ArrayList)localPair.second).add(str);
-                AlbumUtil.reportRawVideo();
-              }
-            }
-            else {
-              ((ArrayList)localPair.first).add(str);
-            }
-          }
-          else if ((l1 > this.jdField_a_of_type_Long) && (paramBoolean))
-          {
-            if (this.jdField_a_of_type_Boolean) {
-              ((ArrayList)localPair.second).add(str);
-            }
-          }
-          else {
-            ((ArrayList)localPair.first).add(str);
-          }
-        }
-      }
-    }
-    return localPair;
-  }
-  
-  public boolean a(Context paramContext, String paramString, boolean paramBoolean1, Map<String, LocalMediaInfo> paramMap1, Map<String, LocalMediaInfo> paramMap2, boolean paramBoolean2)
-  {
-    if (ImageManager.isNetworkUrl(paramString))
-    {
-      paramBoolean2 = false;
-      return paramBoolean2;
-    }
-    LocalMediaInfo localLocalMediaInfo = null;
-    if (paramMap1 != null) {
-      localLocalMediaInfo = (LocalMediaInfo)paramMap1.get(paramString);
-    }
-    paramMap1 = localLocalMediaInfo;
-    if (localLocalMediaInfo == null)
-    {
-      paramMap1 = localLocalMediaInfo;
-      if (paramMap2 != null) {
-        paramMap1 = (LocalMediaInfo)paramMap2.get(paramString);
-      }
-    }
-    if (paramMap1 == null) {
-      return false;
-    }
-    int i = AlbumUtil.getMediaType(paramMap1);
-    long l2 = paramMap1.fileSize;
-    long l1 = l2;
-    if (l2 <= 0L)
-    {
-      paramString = new File(paramString);
-      l1 = l2;
-      if (paramString.exists()) {
-        l1 = paramString.length();
-      }
-    }
-    paramString = "";
-    double d1;
-    if (i == 1)
-    {
-      if ((l1 <= this.b) && ((l1 <= this.c) || (!paramBoolean1))) {
-        break label574;
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (!paramBoolean2) {
-          break label582;
-        }
-        paramString = "M";
-        paramMap1 = new DecimalFormat("#.##");
-        if (l1 > this.b)
-        {
-          double d2 = (float)this.b * 1.0F / 1024.0F / 1024.0F + 1.0F;
-          d1 = d2;
-          if (d2 > 1000.0D)
-          {
-            paramString = "G";
-            d1 = d2 / 1024.0D;
-          }
-          label234:
-          paramString = String.format(paramContext.getResources().getString(2131689984), new Object[] { "" + paramMap1.format(d1), paramString });
-        }
-      }
-    }
-    for (;;)
-    {
-      label283:
-      paramBoolean1 = true;
-      for (;;)
-      {
-        paramMap1 = paramString;
-        if (paramBoolean1)
-        {
-          paramMap1 = paramString;
-          if (!paramBoolean2) {
-            if (!this.jdField_a_of_type_Boolean) {
-              break label560;
-            }
-          }
-        }
-        label560:
-        for (paramMap1 = paramContext.getResources().getString(2131689848);; paramMap1 = paramContext.getResources().getString(2131689849))
-        {
-          paramBoolean2 = paramBoolean1;
-          if (!paramBoolean1) {
-            break;
-          }
-          bjne.a(new SendByFile.1(this, paramContext, paramMap1));
-          return paramBoolean1;
-          d1 = this.c / 1024L / 1024L + 1L;
-          break label234;
-          if (!paramBoolean2) {
-            break label582;
-          }
-          paramString = String.format(paramContext.getResources().getString(2131689985), new Object[] { "" + (this.c / 1024L / 1024L + 1L) });
-          break label283;
-          if ((l1 <= this.jdField_a_of_type_Long) || (!paramBoolean1)) {
-            break label574;
-          }
-          if (this.jdField_a_of_type_Boolean) {
-            if (paramBoolean2) {
-              paramString = String.format(paramContext.getResources().getString(2131689932), new Object[] { "" + this.jdField_a_of_type_Long / 1024L / 1024L });
-            }
-          }
-          for (;;)
-          {
-            paramBoolean1 = true;
-            break;
-            if (paramBoolean2) {
-              paramString = String.format(paramContext.getResources().getString(2131689933), new Object[] { "" + this.jdField_a_of_type_Long / 1024L / 1024L });
-            }
-          }
-        }
-        label574:
-        paramString = "";
-        paramBoolean1 = false;
-      }
-      label582:
-      paramString = "";
-    }
-  }
-  
-  public boolean a(Context paramContext, List<String> paramList, boolean paramBoolean, Map<String, LocalMediaInfo> paramMap1, Map<String, LocalMediaInfo> paramMap2)
-  {
-    if (paramList == null) {}
-    do
-    {
-      while (!paramList.hasNext())
-      {
-        return false;
-        paramList = paramList.iterator();
-      }
-    } while (!a(paramContext, (String)paramList.next(), paramBoolean, paramMap1, paramMap2, false));
-    return true;
-  }
-  
-  public bfyu b(long paramLong)
-  {
-    this.b = paramLong;
-    return this;
   }
 }
 

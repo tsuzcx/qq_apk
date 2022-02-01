@@ -1,48 +1,62 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.UUID;
 
-public class atka
+class atka
+  implements bfol
 {
-  private static final String a = AppConstants.SDCARD_ROOT + File.separator + "qflutter";
-  private static final String b = BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath() + File.separator + "qflutter" + File.separator;
+  atka(atjz paramatjz) {}
   
-  public static void a()
+  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, bfok parambfok)
   {
-    if (FileUtil.isFileExists(a))
+    if (atjz.a(this.a))
     {
-      int i = FileUtils.copyDirectory(a, b, false, true, true);
-      if (i == 0)
-      {
-        QLog.d("QFlutter.launcher", 4, String.format("checkDebugInstall copy result: %s", new Object[] { Integer.valueOf(i) }));
-        File[] arrayOfFile = new File(b).listFiles();
-        int j = arrayOfFile.length;
-        i = 0;
-        while (i < j)
-        {
-          File localFile = arrayOfFile[i];
-          QLog.d("QFlutter.launcher", 4, String.format("path: %s, time: %s, size: %s byte", new Object[] { localFile.getAbsolutePath(), Long.valueOf(localFile.lastModified()), Long.valueOf(localFile.length()) }));
-          i += 1;
-        }
-        atke.a().a(true, b, true, true);
-        return;
-      }
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone but has been stopped WorkerId[" + atjz.a(this.a) + "] filename " + atjz.a(this.a));
+      return;
     }
-    atke.a().a(false, b, true, true);
-  }
-  
-  public static boolean a()
-  {
-    return false;
+    if (!paramBoolean)
+    {
+      paramBoolean = parambfok.d();
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone failed canResume[" + paramBoolean + "] errCode[" + paramInt + "] WorkerId[" + atjz.a(this.a) + "] filename " + atjz.a(this.a));
+      atjz.a(this.a).a(atiy.a(atjz.a(this.a), false), paramBoolean);
+      return;
+    }
+    paramUUID = parambfok.c();
+    String str1 = parambfok.d();
+    paramInt = parambfok.a();
+    String str2 = parambfok.a();
+    atjz.a(this.a, parambfok.b());
+    int i = parambfok.b();
+    int j = parambfok.c();
+    int k = parambfok.d();
+    atjz.a(this.a).putString("_m_ForwardMd5", paramUUID);
+    atjz.a(this.a).putString("_m_ForwardSha", str1);
+    atjz.a(this.a).putString("_m_ForwardBusType", String.valueOf(paramInt));
+    atjz.a(this.a).putString("_m_ForwardUuid", str2);
+    atjz.a(this.a).putString("_m_ForwardSize", String.valueOf(atjz.a(this.a)));
+    if (i != 0) {
+      atjz.a(this.a).putString("_m_ForwardImgWidth", String.valueOf(i));
+    }
+    if (j != 0) {
+      atjz.a(this.a).putString("_m_ForwardImgHeight", String.valueOf(j));
+    }
+    if (k != 0) {
+      atjz.a(this.a).putString("_m_ForwardDuration", String.valueOf(k));
+    }
+    atjz.a(this.a).putString("_m_ForwardFileType", String.valueOf(3));
+    if (atiy.a(this.a.a) == null)
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone mApp is null WorkerId[" + atjz.a(this.a) + "] filename " + atjz.a(this.a));
+      atjz.a(this.a).a(atiy.a(atjz.a(this.a), false), false);
+      return;
+    }
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone woll call sendFeeds WorkerId[" + atjz.a(this.a) + "] filename " + atjz.a(this.a));
+    atiy.a(atiy.a(this.a.a), atjz.b(this.a), paramInt, str2, atjz.a(this.a), 0, i, j, k, false, atjz.a(this.a), atjz.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atka
  * JD-Core Version:    0.7.0.1
  */

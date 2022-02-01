@@ -12,7 +12,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bhgv;
+import birn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -53,25 +53,25 @@ public class ProfileCardFavorItemDetailView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559516, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366345));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559549, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366454));
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
       this.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(1996488704);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365037));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365038));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365040));
-    this.d = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365041));
-    this.e = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365043));
-    this.f = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365044));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381155));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381156));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381157));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365121));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365122));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365124));
+    this.d = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365125));
+    this.e = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365127));
+    this.f = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365128));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381516));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381517));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381518));
   }
   
   public void a(Drawable paramDrawable, String paramString, int paramInt1, int paramInt2)
   {
-    paramDrawable = new bhgv(this, this.jdField_a_of_type_AndroidContentContext, paramDrawable, paramString, paramInt1);
+    paramDrawable = new birn(this, this.jdField_a_of_type_AndroidContentContext, paramDrawable, paramString, paramInt1);
     paramString = new LinearLayout.LayoutParams(-2, AIOUtils.dp2px(15.0F, getResources()));
     paramString.leftMargin = AIOUtils.dp2px(4.0F, getResources());
     paramDrawable.setLayoutParams(paramString);

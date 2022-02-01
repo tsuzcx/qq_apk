@@ -1,115 +1,131 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.NeonControl.1;
+import com.tencent.mobileqq.ar.NeonControl.2;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aphc
-  extends BaseAdapter
 {
-  public aphc(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  private static aphc jdField_a_of_type_Aphc;
+  public static boolean a;
+  aphd jdField_a_of_type_Aphd;
+  public final Object a;
+  private boolean b;
   
-  public String a(int paramInt)
+  static
   {
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
-      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    jdField_a_of_type_Boolean = true;
+  }
+  
+  private aphc()
+  {
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    Object localObject1 = BaseApplication.getContext().getSharedPreferences("sp_cpu_neon_support", 4);
+    if (!((SharedPreferences)localObject1).contains("sp_cpu_neon_support")) {
+      ThreadManager.post(new NeonControl.1(this, (SharedPreferences)localObject1, false), 5, null, true);
     }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    aphm localaphm;
-    Object localObject;
-    if (paramView == null)
+    boolean bool2 = ((SharedPreferences)localObject1).getBoolean("sp_cpu_neon_support", false);
+    boolean bool3 = aphn.a().e;
+    int i;
+    int j;
+    if (QLog.isColorLevel())
     {
-      paramView = this.a.getLayoutInflater().inflate(2131560982, null);
-      localaphm = new aphm();
-      localaphm.a = ((URLImageView)paramView.findViewById(2131364265));
-      paramView.setTag(localaphm);
-      localObject = a(paramInt);
-      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
+      if (bool3)
+      {
+        i = 1;
+        if (!bool2) {
+          break label174;
+        }
+        j = 1;
+        label97:
+        QLog.i("NeonControl", 2, String.format("dpcNeonCfgSwitch:%d isNeonSupport:%d forceOpenNeon:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0) }));
       }
-      if (localObject == null) {}
     }
     else
     {
-      try
-      {
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-          break label210;
-        }
-        localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        label139:
-        localaphm.a.setImageDrawable((Drawable)localObject);
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          URLDrawable.URLDrawableOptions localURLDrawableOptions;
-          localException1.printStackTrace();
-          continue;
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-      }
-      if ((this.a.d == 1) && (!this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      localObject1 = this.jdField_a_of_type_JavaLangObject;
+      if ((!bool3) || (!bool2)) {
+        break label179;
       }
     }
     for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localaphm = (aphm)paramView.getTag();
-      break;
-      label210:
-      localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
-      break label139;
       try
       {
-        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-        {
-          localObject = URLDrawable.getDrawable("https://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          localException1.a.setImageDrawable((Drawable)localObject);
-        }
-        for (;;)
-        {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          break;
-          localException1.a.setImageDrawable(null);
-        }
+        this.b = bool1;
+        return;
       }
-      catch (Exception localException2)
+      finally {}
+      i = 0;
+      break;
+      label174:
+      j = 0;
+      break label97;
+      label179:
+      bool1 = false;
+    }
+  }
+  
+  public static aphc a()
+  {
+    if (jdField_a_of_type_Aphc == null) {
+      jdField_a_of_type_Aphc = new aphc();
+    }
+    return jdField_a_of_type_Aphc;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Aphd == null) {}
+    aphd localaphd;
+    int i;
+    do
+    {
+      do
       {
-        for (;;)
-        {
-          localException2.printStackTrace();
-        }
+        return;
+        localaphd = new aphd(this);
+        localaphd.jdField_a_of_type_Long = this.jdField_a_of_type_Aphd.jdField_a_of_type_Long;
+        localaphd.jdField_a_of_type_Int = this.jdField_a_of_type_Aphd.jdField_a_of_type_Int;
+        localaphd.b = this.jdField_a_of_type_Aphd.b;
+        this.jdField_a_of_type_Aphd.b = -2147483648;
+        this.jdField_a_of_type_Aphd.jdField_a_of_type_Long = 0L;
+        this.jdField_a_of_type_Aphd.jdField_a_of_type_Int = 0;
+      } while ((localaphd.jdField_a_of_type_Long <= 0L) || (localaphd.jdField_a_of_type_Int <= 0) || (localaphd.b == -2147483648));
+      i = (int)(localaphd.jdField_a_of_type_Long / localaphd.jdField_a_of_type_Int);
+    } while ((i < 0) || (i >= 600000));
+    ThreadManager.post(new NeonControl.2(this, localaphd, i), 5, null, false);
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    if (this.jdField_a_of_type_Aphd == null)
+    {
+      this.jdField_a_of_type_Aphd = new aphd(this);
+      this.jdField_a_of_type_Aphd.b = paramInt;
+    }
+    if (this.jdField_a_of_type_Aphd.b != paramInt)
+    {
+      if ((this.jdField_a_of_type_Aphd.jdField_a_of_type_Long > 0L) || (this.jdField_a_of_type_Aphd.jdField_a_of_type_Int > 0)) {
+        a();
       }
+      this.jdField_a_of_type_Aphd.b = paramInt;
+      this.jdField_a_of_type_Aphd.jdField_a_of_type_Long = 0L;
+      this.jdField_a_of_type_Aphd.jdField_a_of_type_Int = 0;
+    }
+    aphd localaphd = this.jdField_a_of_type_Aphd;
+    localaphd.jdField_a_of_type_Long += paramLong;
+    localaphd = this.jdField_a_of_type_Aphd;
+    localaphd.jdField_a_of_type_Int += 1;
+  }
+  
+  public boolean a()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      boolean bool = this.b;
+      return bool;
     }
   }
 }

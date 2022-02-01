@@ -1,24 +1,21 @@
-import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.data.MessageForTofuNicePics;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 class agrk
-  extends aexg
+  extends afqr
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  MessageForTofuNicePics jdField_a_of_type_ComTencentMobileqqDataMessageForTofuNicePics;
-  public String a;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
   
-  agrk(agrj paramagrj) {}
+  agrk(agrh paramagrh) {}
 }
 
 

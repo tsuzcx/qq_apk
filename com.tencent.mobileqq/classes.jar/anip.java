@@ -1,137 +1,79 @@
-import com.tencent.ims.device_lock_recommend_auth.DeviceInfo;
-import com.tencent.ims.device_lock_recommend_auth.RspBody;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
 
-public class anip
-  extends anio
+class anip
+  implements INetEngine.INetEngineListener
 {
-  public anip(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
-  {
-    super(paramQQAppInterface, paramFriendListHandler);
-  }
+  anip(anio paramanio, String paramString, anim paramanim) {}
   
-  public void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void onResp(NetResp paramNetResp)
   {
-    if (paramFromServiceMsg.isSuccess()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "onReceive: onReceive handleRecommendDeviceList");
-      }
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
+    if (this.jdField_a_of_type_Anio.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
+      this.jdField_a_of_type_Anio.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
     }
-    for (paramFromServiceMsg = new device_lock_recommend_auth.RspBody();; paramFromServiceMsg = null)
+    if (QLog.isColorLevel()) {
+      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.mReqUrl, Integer.valueOf(paramNetResp.mResult), Integer.valueOf(paramNetResp.mHttpCode), this.jdField_a_of_type_JavaLangString }));
+    }
+    if (paramNetResp.mResult == 0)
     {
-      try
-      {
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        if (paramFromServiceMsg.uint64_uin.has()) {
-          paramFromServiceMsg.uint64_uin.get();
-        }
-        if (paramFromServiceMsg.uint32_seq.has()) {
-          paramFromServiceMsg.uint32_seq.get();
-        }
-        if (paramFromServiceMsg.uint32_ret.has()) {
-          paramFromServiceMsg.uint32_ret.get();
-        }
-        if (!paramFromServiceMsg.rpt_msg_devicelist.has()) {
-          continue;
-        }
-        paramFromServiceMsg = paramFromServiceMsg.rpt_msg_devicelist.get();
-        paramObject = new ArrayList();
-        if (paramFromServiceMsg == null) {}
-      }
-      catch (InvalidProtocolBufferMicroException paramObject)
+      paramNetResp = new File(localHttpNetReq.mOutPath);
+      if (!paramNetResp.exists()) {}
+    }
+    do
+    {
+      for (;;)
       {
         try
         {
-          int j = paramFromServiceMsg.size();
-          int i = 0;
-          label135:
-          if (i < j)
+          paramNetResp = paramNetResp.getParent();
+          FileUtils.uncompressZip(localHttpNetReq.mOutPath, paramNetResp, false);
+          anin.a(this.jdField_a_of_type_Anim.b);
+          i = 1;
+          if (i == 0) {
+            break;
+          }
+          if (this.jdField_a_of_type_Anio.jdField_a_of_type_Aniq != null)
           {
-            device_lock_recommend_auth.DeviceInfo localDeviceInfo = (device_lock_recommend_auth.DeviceInfo)paramFromServiceMsg.get(i);
-            if (localDeviceInfo == null) {}
-            for (;;)
-            {
-              i += 1;
-              break label135;
-              paramObject = paramObject;
-              if (QLog.isColorLevel()) {
-                QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "onReceive: onReceive sec_server package:sigResult parse fail");
-              }
-              paramObject.printStackTrace();
-              break;
-              alnb localalnb = new alnb();
-              if (localDeviceInfo.bytes_appname.has())
-              {
-                localalnb.jdField_c_of_type_JavaLangString = new String(localDeviceInfo.bytes_appname.get().toByteArray(), "UTF-8");
-                if (localDeviceInfo.bytes_guid.has())
-                {
-                  localalnb.jdField_a_of_type_ArrayOfByte = localDeviceInfo.bytes_guid.get().toByteArray();
-                  if (localDeviceInfo.bytes_device_typeinfo.has())
-                  {
-                    localalnb.jdField_b_of_type_JavaLangString = new String(localDeviceInfo.bytes_device_typeinfo.get().toByteArray(), "UTF-8");
-                    new StringBuffer();
-                    if (localDeviceInfo.bytes_device_name.has())
-                    {
-                      localalnb.jdField_a_of_type_JavaLangString = new String(localDeviceInfo.bytes_device_name.get().toByteArray(), "UTF-8");
-                      if (localDeviceInfo.uint32_auth_status.has())
-                      {
-                        localalnb.jdField_c_of_type_Int = localDeviceInfo.uint32_auth_status.get();
-                        if (localDeviceInfo.uint32_appid.has())
-                        {
-                          localalnb.jdField_a_of_type_Int = localDeviceInfo.uint32_appid.get();
-                          if (localDeviceInfo.uint32_subappid.has())
-                          {
-                            localalnb.jdField_b_of_type_Int = localDeviceInfo.uint32_subappid.get();
-                            paramObject.add(localalnb);
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            this.jdField_a_of_type_Anio.jdField_a_of_type_Aniq.a(100);
+            this.jdField_a_of_type_Anio.jdField_a_of_type_Aniq.a(0, "Download Complete!!!");
           }
-          if (paramObject.size() <= 0) {
-            break label441;
-          }
+          this.jdField_a_of_type_Anio.jdField_a_of_type_Boolean = false;
+          return;
         }
-        catch (Exception paramFromServiceMsg) {}
-        this.a.notifyUI(69, true, paramObject);
-        return;
+        catch (Exception paramNetResp)
+        {
+          paramNetResp.printStackTrace();
+        }
+        int i = 0;
       }
-      label441:
-      this.a.notifyUI(69, false, null);
-      return;
-    }
+    } while (this.jdField_a_of_type_Anio.jdField_a_of_type_Aniq == null);
+    this.jdField_a_of_type_Anio.jdField_a_of_type_Aniq.a(2, "");
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
-    if ("DevLockAuthSvc.RecommendAuth".equals(paramToServiceMsg)) {
-      a(paramFromServiceMsg, paramObject);
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
     }
-    while (!"DevLockAuthSvc.ConfirmAuth".equals(paramToServiceMsg)) {
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Anio.jdField_a_of_type_Aniq != null) {
+        this.jdField_a_of_type_Anio.jdField_a_of_type_Aniq.a(i);
+      }
       return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return ("DevLockAuthSvc.RecommendAuth".equals(paramString)) || ("DevLockAuthSvc.ConfirmAuth".equals(paramString));
   }
 }
 

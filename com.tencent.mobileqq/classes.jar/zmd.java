@@ -1,6 +1,16 @@
-public abstract interface zmd
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class zmd
+  implements zmr
 {
-  public abstract void a(int paramInt);
+  public zmd(ScannerActivity paramScannerActivity, long paramLong) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.b();
+    QLog.d("ScannerActivity", 2, "launchAr time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+  }
 }
 
 

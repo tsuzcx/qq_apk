@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.gamecenter.view.GameSessionView android:id="@id/n17" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</LinearLayout>
+<RelativeLayout android:id="@id/ml4" android:background="#b3ebedf5" android:paddingTop="68.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <LinearLayout android:orientation="vertical" android:id="@id/mlf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <View android:id="@id/ml5" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mle" android:layout_width="fill_parent" android:layout_height="@dimen/j2" formItem:bgType="abp" formItem:switchChecked="true" formItem:switchText="@string/wk9" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/mlc" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/mlf">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/mlb" android:clickable="true" android:layout_width="wrap_content" android:layout_height="36.0dip" android:src="@drawable/gyh" />
+        <android.support.v7.widget.RecyclerView android:id="@id/mld" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

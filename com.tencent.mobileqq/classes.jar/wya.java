@@ -1,30 +1,8 @@
-import android.content.Intent;
-
-public class wya
-  extends wrx
+public abstract interface wya
 {
-  private wxz a;
+  public abstract void a(boolean paramBoolean);
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (this.a != null) {
-      this.a.a(paramInt1, paramInt2, paramIntent);
-    }
-  }
-  
-  public void f()
-  {
-    if (this.a != null) {
-      this.a.b();
-    }
-  }
-  
-  public void g()
-  {
-    if (this.a != null) {
-      this.a.a();
-    }
-  }
+  public abstract void b(boolean paramBoolean);
 }
 
 

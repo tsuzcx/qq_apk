@@ -1,7 +1,20 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyParam$Companion;", "", "()V", "STATUS_CLOSED", "", "STATUS_OPENED", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qoq {}
+class qoq
+  implements qxg
+{
+  qoq(qoo paramqoo, ArticleInfo paramArticleInfo, qfw paramqfw) {}
+  
+  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
+  {
+    QLog.d("NewPolymericMultiVideoProteusItem", 1, "position : " + paramInt);
+    qoo.a(this.jdField_a_of_type_Qoo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt);
+    this.jdField_a_of_type_Qfw.a().a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.getNativeView(), paramInt, 0L);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

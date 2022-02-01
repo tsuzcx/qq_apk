@@ -1,17 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class avxe
   implements DialogInterface.OnClickListener
 {
-  avxe(avwv paramavwv) {}
+  avxe(avxc paramavxc, QQCustomDialog paramQQCustomDialog) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (bler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, avwv.a(this.a), avwv.a(this.a).getTitleBarHeight(), this.a.jdField_a_of_type_MqqOsMqqHandler)) {
-      avwv.a(this.a).setLeftCheckBoxVisible(false, null, false);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

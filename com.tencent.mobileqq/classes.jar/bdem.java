@@ -1,15 +1,44 @@
-import java.util.List;
-import java.util.regex.Matcher;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class bdem
-  implements bdfm
+class bdem
+  extends BroadcastReceiver
 {
-  bdem(List paramList, bdef parambdef) {}
+  bdem(bdel parambdel) {}
   
-  public String a(Matcher paramMatcher)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Bdef.a(bdej.a(paramMatcher.group(1))));
-    return "";
+    paramContext = paramIntent.getStringExtra("callback");
+    String str1 = paramIntent.getStringExtra("uuid");
+    String str2 = paramIntent.getStringExtra("md5");
+    String str3 = paramIntent.getStringExtra("imgurl");
+    String str4 = paramIntent.getStringExtra("mediaType");
+    boolean bool = bbhm.e();
+    paramIntent = new JSONObject();
+    try
+    {
+      paramIntent.put("uuid", str1);
+      paramIntent.put("md5", str2);
+      paramIntent.put("imgurl", str3);
+      paramIntent.put("mediaType", str4);
+      paramIntent.put("hasGesture", bool);
+      if (QLog.isColorLevel()) {
+        QLog.i("ShortVideoJsApiPlugin", 2, "call webView, uuid" + str1 + ", md5:" + str2 + ", imgurl:" + str3 + ", mediaType:" + str4 + ", hasGesture:" + bool);
+      }
+      this.a.callJs(paramContext, new String[] { paramIntent.toString() });
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

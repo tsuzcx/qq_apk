@@ -4,22 +4,23 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
-import bfrj;
-import bgve;
-import bjnw;
-import bjoe;
+import aoks;
+import bhaa;
+import bifw;
+import bkzi;
+import bkzq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import java.io.File;
-import ljo;
+import lka;
 
 class AvatarPendantJsPlugin$5
-  implements bjoe
+  implements bkzq
 {
-  AvatarPendantJsPlugin$5(AvatarPendantJsPlugin paramAvatarPendantJsPlugin, String paramString, bjnw parambjnw) {}
+  AvatarPendantJsPlugin$5(AvatarPendantJsPlugin paramAvatarPendantJsPlugin, String paramString, bkzi parambkzi) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -34,7 +35,7 @@ class AvatarPendantJsPlugin$5
         return;
       }
       catch (Exception paramView) {}
-      if (!ljo.b(BaseApplicationImpl.getContext()))
+      if (!lka.b(BaseApplicationImpl.getContext()))
       {
         paramView = new File(AppConstants.SDCARD_PATH + "photo/");
         if (!paramView.exists()) {
@@ -50,8 +51,8 @@ class AvatarPendantJsPlugin$5
         paramView = new Intent();
         paramView.putExtra("keyFromPendantPhoto", true);
         paramView.putExtra("Business_Origin", 100);
-        paramInt = Math.min(482, bfrj.a(this.this$0.mRuntime.a()));
-        PhotoUtils.startPhotoListEdit(paramView, this.this$0.mRuntime.a(), QQBrowserActivity.class.getName(), paramInt, paramInt, 1080, 1080, bfrj.a());
+        paramInt = Math.min(482, bhaa.a(this.this$0.mRuntime.a()));
+        PhotoUtils.startPhotoListEdit(paramView, this.this$0.mRuntime.a(), QQBrowserActivity.class.getName(), paramInt, paramInt, 1080, 1080, aoks.a());
         AvatarPendantUiPlugin.sJsHandler = this.this$0;
         AvatarPendantUiPlugin.sCallbackId = this.val$callbackId;
       }

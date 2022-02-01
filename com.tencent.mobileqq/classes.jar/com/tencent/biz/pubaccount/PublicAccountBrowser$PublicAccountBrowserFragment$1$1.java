@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount;
 
 import com.tencent.qphone.base.util.QLog;
-import ocd;
-import oce;
-import ucp;
+import oju;
+import ojv;
+import uqm;
 
 public class PublicAccountBrowser$PublicAccountBrowserFragment$1$1
   implements Runnable
 {
-  public PublicAccountBrowser$PublicAccountBrowserFragment$1$1(oce paramoce) {}
+  public PublicAccountBrowser$PublicAccountBrowserFragment$1$1(ojv paramojv) {}
   
   public void run()
   {
     try
     {
-      boolean bool = ucp.a(this.a.a.mApp, false, this.a.a.mUrl);
+      boolean bool = uqm.a(this.a.a.mApp, false, this.a.a.mUrl);
       if (QLog.isColorLevel()) {
         QLog.d("WebLog_WebViewFragment", 2, "set subscribe full recommend switch = false , result : " + bool);
       }

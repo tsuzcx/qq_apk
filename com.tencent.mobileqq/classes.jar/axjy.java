@@ -1,8 +1,12 @@
+import android.os.IInterface;
+import com.tencent.mobileqq.music.SongInfo;
+
 public abstract interface axjy
+  extends IInterface
 {
-  public abstract void a(int paramInt, String paramString);
+  public abstract void a(int paramInt);
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public abstract void a(SongInfo paramSongInfo);
 }
 
 

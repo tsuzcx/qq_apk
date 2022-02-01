@@ -1,17 +1,27 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
+import com.tencent.biz.qcircleshadow.local.fragment.QCirclePluginLoadingFragment;
+
 public class vvt
+  implements DialogInterface.OnKeyListener
 {
-  @ypm(a="align")
-  public int a;
-  @ypm(a="image")
-  public String a;
-  @ypm(a="picture_margin")
-  public int[] a;
-  @ypm(a="picture_width")
-  public int b;
-  @ypm(a="picture_height")
-  public int c;
-  @ypm(a="standard_width")
-  public int d;
+  public vvt(QCirclePluginLoadingFragment paramQCirclePluginLoadingFragment) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 0))
+    {
+      if ((QCirclePluginLoadingFragment.a(this.a) != null) && (QCirclePluginLoadingFragment.a(this.a).isShowing())) {
+        QCirclePluginLoadingFragment.a(this.a).dismiss();
+      }
+      if (this.a.getActivity() != null) {
+        this.a.getActivity().finish();
+      }
+    }
+    return true;
+  }
 }
 
 

@@ -1,43 +1,20 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.widget.ParticipleView;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-public final class aejg
-  extends FlingGestureHandler
+public class aejg
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<TextPreviewActivity> b;
+  public aejg(NotificationActivity paramNotificationActivity) {}
   
-  private aejg(TextPreviewActivity paramTextPreviewActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramTextPreviewActivity);
-    this.b = new WeakReference(paramTextPreviewActivity);
-  }
-  
-  public void flingLToR()
-  {
-    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
-    int i;
-    if (localTextPreviewActivity != null) {
-      if ((localTextPreviewActivity.a != null) && (localTextPreviewActivity.a.getVisibility() == 0)) {
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        super.flingLToR();
-      }
-      return;
-      i = 0;
-      continue;
-      i = 0;
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejg
  * JD-Core Version:    0.7.0.1
  */

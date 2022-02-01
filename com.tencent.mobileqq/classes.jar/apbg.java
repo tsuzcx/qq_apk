@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.RspBody;
+import com.tencent.mobileqq.ar.ARGlobalConfigService;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
 public class apbg
+  extends apij
 {
-  public ArrayList<apbh> a;
+  public apbg(ARGlobalConfigService paramARGlobalConfigService) {}
   
-  public static apbg a(oidb_0x74b.RspBody paramRspBody)
+  public ARScanStarFaceConfigInfo a()
   {
-    Object localObject;
-    if (paramRspBody == null) {
-      localObject = null;
-    }
-    apbg localapbg;
-    do
-    {
-      return localObject;
-      localapbg = new apbg();
-      localObject = localapbg;
-    } while (!paramRspBody.rpt_msg_uin_head_list.has());
-    localapbg.a = apbh.a(paramRspBody.rpt_msg_uin_head_list.get());
-    return localapbg;
+    return this.a.a.a();
   }
 }
 

@@ -1,42 +1,17 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class amae
-  implements View.OnClickListener
+final class amae
+  implements DialogInterface.OnClickListener
 {
-  amae(amad paramamad) {}
+  amae(boolean paramBoolean, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (amad.a(this.a) == null)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    boolean bool = amad.a(this.a).a();
-    label63:
-    amad localamad;
-    if (bool)
-    {
-      amad.a(this.a).setImageDrawable(amad.a(this.a).getContext().getResources().getDrawable(2130838513));
-      localamad = this.a;
-      if (bool) {
-        break label133;
-      }
-    }
-    label133:
-    for (bool = true;; bool = false)
-    {
-      amad.a(localamad, bool);
-      amad.a(this.a).a(amad.a(this.a));
-      break;
-      amad.a(this.a).setImageDrawable(amad.a(this.a).getContext().getResources().getDrawable(2130838512));
-      break label63;
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
     }
   }
 }

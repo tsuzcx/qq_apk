@@ -5,9 +5,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bmry;
-import bmso;
-import bnub;
+import bohq;
+import boig;
+import bpjt;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class QIMFilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QIMFilterCategoryItem> CREATOR = new bmso();
+  public static final Parcelable.Creator<QIMFilterCategoryItem> CREATOR = new boig();
   public int a;
   public String a;
   public ArrayList<String> a;
@@ -72,7 +72,7 @@ public class QIMFilterCategoryItem
     while (paramQIMFilterCategoryItem.hasNext())
     {
       Object localObject = (String)paramQIMFilterCategoryItem.next();
-      localObject = bnub.a().a((String)localObject);
+      localObject = bpjt.a().a((String)localObject);
       if ((localObject != null) && (((FilterDesc)localObject).id == 9)) {
         return true;
       }
@@ -88,7 +88,7 @@ public class QIMFilterCategoryItem
       while (paramQIMFilterCategoryItem.hasNext())
       {
         Object localObject = (String)paramQIMFilterCategoryItem.next();
-        localObject = bnub.a().a((String)localObject);
+        localObject = bpjt.a().a((String)localObject);
         if ((localObject != null) && (((FilterDesc)localObject).id == 1011)) {
           return true;
         }
@@ -158,7 +158,7 @@ public class QIMFilterCategoryItem
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      String[] arrayOfString = bmry.a;
+      String[] arrayOfString = bohq.a;
       int k = arrayOfString.length;
       int j = 0;
       while (j < k)
@@ -193,7 +193,7 @@ public class QIMFilterCategoryItem
     while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)) {
       return false;
     }
-    if (QQAVImageFilterConstants.getFilterType(bnub.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0)).id) == 0) {}
+    if (QQAVImageFilterConstants.getFilterType(bpjt.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0)).id) == 0) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }

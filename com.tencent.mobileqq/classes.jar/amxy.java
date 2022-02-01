@@ -1,34 +1,47 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import mqq.app.Foreground;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler.1;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amxy
+  implements anll
 {
-  public static String a()
+  public amxy(CmGameSubProcessHandler.1 param1) {}
+  
+  public void a(int paramInt)
   {
-    Activity localActivity = Foreground.getTopActivity();
-    String str;
-    if (localActivity != null)
+    int i = 0;
+    ApolloCmdChannel localApolloCmdChannel = amwn.a();
+    if (localApolloCmdChannel != null) {}
+    for (;;)
     {
-      str = localActivity.getClass().getName();
-      if ((localActivity instanceof SplashActivity))
+      try
       {
-        if (SplashActivity.a == 1) {
-          return str + "_" + ((SplashActivity)localActivity).a();
+        if (!QLog.isColorLevel()) {
+          break label106;
         }
-        return str + "_ChatFragment";
+        QLog.d("cmgame_process.CmGameSubProcessHandler", 2, new Object[] { "createGameShortCut errorCode:", Integer.valueOf(paramInt) });
+      }
+      catch (Exception localException)
+      {
+        JSONObject localJSONObject;
+        QLog.e("cmgame_process.CmGameSubProcessHandler", 1, "createGameShortCut Exception:" + localException);
+        return;
+      }
+      localJSONObject = new JSONObject();
+      localJSONObject.put("ret", i);
+      localApolloCmdChannel.callbackFromRequest(this.a.a, i, "cs.create_xy_shortcut.local", localJSONObject.toString());
+      return;
+      label106:
+      if (paramInt == 1) {
+        i = -1;
       }
     }
-    else
-    {
-      return "Null";
-    }
-    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxy
  * JD-Core Version:    0.7.0.1
  */

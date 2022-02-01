@@ -1,27 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import kotlin.Metadata;
 
-class uvd
-  implements Animator.AnimatorListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "lastPosition", "", "newPosition", "onChange"}, k=3, mv={1, 1, 16})
+final class uvd
+  implements bles
 {
-  uvd(uvb paramuvb) {}
+  uvd(uuw paramuuw) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public final void a(int paramInt1, int paramInt2)
   {
-    uvb.a(this.a).removeAnimatorListener(this);
+    uuw.a(this.a, paramInt2);
+    Object localObject = uuw.a(this.a);
+    if (localObject != null) {}
+    for (float f = ((syl)localObject).a(uuw.a(this.a));; f = 1.0F)
+    {
+      bmhv.a("readinjoy_font_size_index_sp" + pkh.a(), Integer.valueOf(uuw.a(this.a)));
+      localObject = uuw.a(this.a);
+      if (localObject != null) {
+        ((uuz)localObject).a(uuw.a(this.a), f);
+      }
+      return;
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    uvb.b(this.a);
-    uvb.a(this.a).setVisibility(8);
-    uvb.a(this.a).removeAnimatorListener(this);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

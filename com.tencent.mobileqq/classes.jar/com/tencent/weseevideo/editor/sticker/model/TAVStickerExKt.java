@@ -39,22 +39,22 @@ public class TAVStickerExKt
   
   public static float getSticerScaleMinY(TAVSticker paramTAVSticker)
   {
-    return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_min_y");
+    return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_min_y", 0.0F);
   }
   
   public static float getStickerScaleMaxX(TAVSticker paramTAVSticker)
   {
-    return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_max_x");
+    return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_max_x", 0.0F);
   }
   
   public static float getStickerScaleMaxY(TAVSticker paramTAVSticker)
   {
-    return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_max_y");
+    return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_max_y", 0.0F);
   }
   
   public static float getStickerScaleMinX(TAVSticker paramTAVSticker)
   {
-    return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_min_x");
+    return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_min_x", 0.0F);
   }
   
   public static float getStickerScaleX(TAVSticker paramTAVSticker)
@@ -62,7 +62,7 @@ public class TAVStickerExKt
     if (paramTAVSticker == null) {
       return 0.0F;
     }
-    return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_x");
+    return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_x", 1.0F);
   }
   
   public static float getStickerScaleY(TAVSticker paramTAVSticker)
@@ -70,7 +70,7 @@ public class TAVStickerExKt
     if (paramTAVSticker == null) {
       return 0.0F;
     }
-    return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_y");
+    return paramTAVSticker.getExtraBundle().getFloat("key_sticker_scale_y", 1.0F);
   }
   
   public static String getStickerTextPngPath(TAVSticker paramTAVSticker)
@@ -176,7 +176,7 @@ public class TAVStickerExKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.model.TAVStickerExKt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,117 @@
 import android.content.Context;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class qrh
-  extends qpk
+  implements ViewBase.OnClickListener
 {
-  public qrh(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private qfw jdField_a_of_type_Qfw;
+  private int b;
+  private int c;
+  
+  public qrh(qfw paramqfw, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramContext, paramFaceDecoder, paramslt);
+    this.jdField_a_of_type_Qfw = paramqfw;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  public qpk a()
+  private int a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return c(this.jdField_a_of_type_Slt, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder).q().l().n().h().g().j();
-  }
-  
-  public qpk d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish);
-    }
-    if ((this.jdField_a_of_type_Qpj != null) && ((this.jdField_a_of_type_Qpj instanceof ComponentContentBig)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
+    switch (paramInt)
     {
-      RelativeLayout localRelativeLayout1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout1.setPadding(AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
-      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localLinearLayout2.setOrientation(1);
-      localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-      localLinearLayout2.addView((ComponentContentBig)this.jdField_a_of_type_Qpj);
-      RelativeLayout localRelativeLayout2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      Object localObject = new LinearLayout.LayoutParams(-1, -2);
-      ((LinearLayout.LayoutParams)localObject).setMargins(0, AIOUtils.dp2px(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, AIOUtils.dp2px(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localRelativeLayout2.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localLinearLayout2.addView(localRelativeLayout2);
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(15);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localRelativeLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      localLinearLayout2.setBackgroundResource(2130842906);
-      localLinearLayout2.setOnClickListener(new qri(this));
-      localRelativeLayout1.addView(localLinearLayout2);
-      localLinearLayout1.addView(localRelativeLayout1);
+    case 1112: 
+    default: 
+      return 0;
+    case 1113: 
+      return 1;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
-    return this;
+    return 2;
   }
   
-  public qpk e()
+  public void a()
   {
-    return null;
+    int k = this.jdField_a_of_type_Int;
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Qfw.a();
+    int i;
+    if (localArticleInfo != null)
+    {
+      if (!localArticleInfo.hasChannelInfo()) {
+        break label148;
+      }
+      i = localArticleInfo.mChannelInfoId;
+      if (!TextUtils.isEmpty(localArticleInfo.mArticleFriendLikeText)) {
+        break label153;
+      }
+    }
+    label148:
+    label153:
+    for (int j = 0;; j = 1)
+    {
+      String str = pqw.b(localArticleInfo);
+      olh.a(null, "CliOper", "", localArticleInfo.mSubscribeID, "0X8007625", "0X8007625", 0, 0, Long.toString(localArticleInfo.mFeedId), Long.toString(localArticleInfo.mArticleID), Integer.toString(localArticleInfo.mStrategyId), pqf.a(localArticleInfo.mAlgorithmID, pqw.a(localArticleInfo), k, i, j, NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidContentContext), str, localArticleInfo.mStrCircleId, localArticleInfo.innerUniqueID, pqw.d(localArticleInfo), localArticleInfo), false);
+      uvw.a(localArticleInfo, k);
+      return;
+      i = 0;
+      break;
+    }
   }
   
-  public qpk g()
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Qpj = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public qpk o()
-  {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.a(this.jdField_a_of_type_JavaLangObject);
+    if ((this.jdField_a_of_type_Qfw == null) || (this.jdField_a_of_type_Qfw.a() == null) || (this.jdField_a_of_type_Qfw.a().mSmallMiniGameInfo == null)) {
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
+    String str = "";
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Qfw.a();
+    switch (this.c)
+    {
+    default: 
+      paramViewBase = "";
+    case 1115: 
+    case 1112: 
+    case 1113: 
+    case 1114: 
+      for (;;)
+      {
+        if ((!TextUtils.isEmpty(paramViewBase)) && (!TextUtils.isEmpty(str)) && (!MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramViewBase, 2103, null)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("OnSmallGameCardClickListener", 0, "mini game url error jump by appid url = " + paramViewBase);
+          }
+          MiniAppLauncher.launchMiniAppById(this.jdField_a_of_type_AndroidContentContext, str, null, null, null, null, 2103);
+        }
+        a();
+        return;
+        ois.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo, this.jdField_a_of_type_Qfw.g(), this.b, 1);
+        paramViewBase = localArticleInfo.mSmallMiniGameInfo.b(this.b);
+        str = localArticleInfo.mSmallMiniGameInfo.a(this.b);
+        continue;
+        int i = a(this.c);
+        ois.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo, this.jdField_a_of_type_Qfw.g(), i, 1);
+        paramViewBase = localArticleInfo.mSmallMiniGameInfo.b(i);
+        str = localArticleInfo.mSmallMiniGameInfo.a(i);
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    ogz localogz = new ogz().a(501L).b(50101L).c(5010105L).d(9L);
+    if (localArticleInfo.mSmallMiniGameInfo.a()) {}
+    for (paramViewBase = "3";; paramViewBase = "2")
+    {
+      paramViewBase = localogz.h(paramViewBase).i(String.valueOf(this.b)).a();
+      ois.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
+      pqx.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo.mSmallMiniGameInfo.a);
+      paramViewBase = "";
+      break;
     }
-    return this;
   }
 }
 

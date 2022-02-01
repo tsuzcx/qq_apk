@@ -1,18 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
-public final class oei
-  implements Parcelable.Creator<VideoAdInfo.NegFeedback>
+public class oei
+  implements ViewPager.OnPageChangeListener
 {
-  public VideoAdInfo.NegFeedback a(Parcel paramParcel)
+  public oei(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  
+  public void onPageScrollStateChanged(int paramInt)
   {
-    return new VideoAdInfo.NegFeedback(paramParcel);
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      return;
+    }
   }
   
-  public VideoAdInfo.NegFeedback[] a(int paramInt)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    return new VideoAdInfo.NegFeedback[paramInt];
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt2 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      return;
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    PublicAccountAdvertisementActivity.a(this.a, paramInt);
   }
 }
 

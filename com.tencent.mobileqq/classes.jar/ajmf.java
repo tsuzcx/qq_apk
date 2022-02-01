@@ -1,24 +1,33 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimTipsInfo;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class ajmf
-  implements bksf
 {
-  public ajmf(ContactListView paramContactListView) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public void a(QQPimTipsInfo paramQQPimTipsInfo)
+  public ajmf(PublicAccountInfo paramPublicAccountInfo)
   {
-    if (paramQQPimTipsInfo == null) {
-      return;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    QLog.i("ContactListView", 2, "getQQPimTips() callback ");
-    bksm.b(this.a.getContext(), paramQQPimTipsInfo);
-    Message localMessage = new Message();
-    localMessage.what = 6;
-    localMessage.obj = paramQQPimTipsInfo;
-    this.a.a.sendMessage(localMessage);
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

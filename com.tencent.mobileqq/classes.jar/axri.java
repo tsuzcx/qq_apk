@@ -1,28 +1,35 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody.WifiPOIInfo;
 
-public class axri
-  implements View.OnTouchListener
+class axri
+  extends bilh
 {
-  public axri(PromotionEntry paramPromotionEntry) {}
+  axri(axre paramaxre) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(submsgtype0xdd.MsgBody paramMsgBody)
   {
-    if (PromotionEntry.a(this.a) == null) {}
+    switch (paramMsgBody.uint32_msg_type.get())
+    {
+    }
     do
     {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        PromotionEntry.a(this.a).setAlpha(255);
-        return false;
-      }
-    } while (paramMotionEvent.getAction() != 0);
-    PromotionEntry.a(this.a).setAlpha(100);
-    return false;
+      return;
+      paramMsgBody = (submsgtype0xdd.MsgBody.WifiPOIInfo)paramMsgBody.msg_poi_info.get();
+      String str = paramMsgBody.bytes_uid.get().toStringUtf8();
+      this.a.a(HotChatInfo.createHotChat(paramMsgBody, false, 0), paramMsgBody.uint32_group_code.get(), str, paramMsgBody.bytes_name.get().toStringUtf8());
+      return;
+      QQToast.a(this.a.a, anvx.a(2131704541), 0).a();
+      paramMsgBody = BaseApplicationImpl.getApplication().getRuntime();
+    } while ((paramMsgBody == null) || (!(paramMsgBody instanceof QQAppInterface)));
+    paramMsgBody = (QQAppInterface)paramMsgBody;
+    bhhr.a(this.a.a, paramMsgBody.getCurrentAccountUin(), false, System.currentTimeMillis());
   }
 }
 

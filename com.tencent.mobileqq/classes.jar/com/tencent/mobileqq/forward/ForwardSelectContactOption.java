@@ -3,9 +3,9 @@ package com.tencent.mobileqq.forward;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import atku;
-import atky;
-import bftf;
+import aupp;
+import aupt;
+import bhbx;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import npt;
+import nwu;
 
 public class ForwardSelectContactOption
-  extends atky
+  extends aupt
 {
   public ForwardSelectContactOption(Intent paramIntent)
   {
@@ -33,7 +33,7 @@ public class ForwardSelectContactOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (((!bftf.a(localRecentUser.uin)) && (localRecentUser.getType() != 10004) && ((localRecentUser.getType() != 0) || (!npt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() == 0) && (a(jdField_b_of_type_JavaLangInteger))) || ((localRecentUser.getType() == 1) && (!a(localRecentUser.uin)) && (a(c))) || ((localRecentUser.getType() == 1006) && (a(atku.h))) || ((localRecentUser.getType() == 3000) && (a(d))))) || (((localRecentUser.getType() == 1004) || (localRecentUser.getType() == 1000)) && (this.jdField_b_of_type_Boolean)))) {
+      if ((localRecentUser != null) && (((!bhbx.a(localRecentUser.uin)) && (localRecentUser.getType() != 10004) && ((localRecentUser.getType() != 0) || (!nwu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() == 0) && (a(jdField_b_of_type_JavaLangInteger))) || ((localRecentUser.getType() == 1) && (!a(localRecentUser.uin)) && (a(c))) || ((localRecentUser.getType() == 1006) && (a(aupp.h))) || ((localRecentUser.getType() == 3000) && (a(d))))) || (((localRecentUser.getType() == 1004) || (localRecentUser.getType() == 1000)) && (this.jdField_b_of_type_Boolean)))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -61,7 +61,7 @@ public class ForwardSelectContactOption
     }
     if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("openAIOForPtt", 0) != 1)
     {
-      a(2131694279);
+      a(2131694477);
       long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("appid", -1L);
       localObject = this.jdField_a_of_type_AndroidAppActivity;
       QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;

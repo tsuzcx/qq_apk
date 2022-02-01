@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class abut
-  implements View.OnClickListener
 {
-  public abut(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    GdtVideoImaxFragment.a(this.a);
-    GdtVideoImaxFragment.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public String a;
+  public String b;
+  public String c;
 }
 
 

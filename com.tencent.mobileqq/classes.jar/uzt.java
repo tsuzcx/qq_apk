@@ -1,18 +1,26 @@
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class uzt
-  implements vdr
+class uzt
+  extends Handler
 {
-  public uzt(WSVerticalPageFragment paramWSVerticalPageFragment) {}
-  
-  public boolean a()
+  uzt(uzs paramuzs, Looper paramLooper)
   {
-    return this.a.a().a();
+    super(paramLooper);
   }
   
-  public boolean b()
+  public void handleMessage(Message paramMessage)
   {
-    return this.a.a().b();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      uzs.a(this.a).a(new Object[] { Integer.valueOf(1), Integer.valueOf(0), "" });
+    }
   }
 }
 

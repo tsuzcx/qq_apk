@@ -1,17 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-final class wks
-  implements DialogInterface.OnClickListener
+class wks
+  implements wfk<wkt, wku>
 {
-  wks(StoryVideoItem paramStoryVideoItem, String paramString) {}
+  private wks(wkq paramwkq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@NonNull wkt paramwkt, @Nullable wku paramwku, @NonNull ErrorMessage paramErrorMessage)
   {
-    xvv.d("Q.qqstory.player.PlayModeUtils", "onClick delete =%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem });
-    vns.a(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.dismiss();
+    if ((paramwku != null) && (paramwku.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
+    {
+      this.a.jdField_a_of_type_JavaUtilList.addAll(paramwku.jdField_a_of_type_JavaUtilList);
+      ykq.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramwku.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramwku.jdField_a_of_type_Boolean), paramwku.jdField_a_of_type_JavaLangString });
+      if ((paramwku.jdField_a_of_type_Boolean) || (paramwku.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        ykq.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramwku.b) });
+        this.a.a(true, paramwku.b);
+        return;
+      }
+      this.a.c = paramwku.jdField_a_of_type_JavaLangString;
+      this.a.c();
+      return;
+    }
+    ykq.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
+    this.a.a(false, 0);
   }
 }
 

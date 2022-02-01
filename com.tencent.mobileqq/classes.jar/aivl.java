@@ -1,69 +1,252 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactFindTroopRTLW.2;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
 
-public abstract class aivl
+public class aivl
+  extends ajdc
 {
-  protected aixs a;
-  protected FragmentActivity a;
-  protected View a;
-  protected String a;
+  static int c = 50;
+  public int a;
+  public aivn a;
+  String jdField_a_of_type_JavaLangString;
+  ArrayList<RecommendTroopItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public aivl(FragmentActivity paramFragmentActivity)
+  public aivl(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, ajdf paramajdf, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_Ajdf = paramajdf;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = false;
+    d();
   }
   
-  public abstract int a();
-  
-  public FragmentManager a()
+  protected ajcw a()
   {
-    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager();
+    return new ajda(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
   }
   
-  protected View a(int paramInt)
+  void a()
   {
-    return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+    if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() != 0) {
+      this.jdField_a_of_type_AndroidWidgetTextView.post(new AddContactFindTroopRTLW.2(this));
+    }
   }
   
-  public BaseActivity a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    b(false);
   }
   
-  public void a()
+  protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.findViewById(2131376679);
-    f();
+    super.a(paramBoolean);
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(aixs paramaixs)
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_Aixs = paramaixs;
+    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int j = paramArrayList.size();
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "onGetAddContactFindTroopNearbyTroopList isSuccess = " + paramBoolean1 + ",itemType = " + paramInt1 + ",this.itemType = " + this.jdField_a_of_type_Int + ",serverPageID = " + paramInt2 + ",dataListSize = " + i + ",newDataListSize = " + j);
+    }
+    if (paramInt1 == this.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean2;
+      if (paramBoolean1)
+      {
+        if (!paramBoolean3)
+        {
+          this.jdField_b_of_type_Boolean = true;
+          this.jdField_a_of_type_JavaUtilArrayList.clear();
+        }
+        i = this.jdField_a_of_type_JavaUtilArrayList.size();
+        if (i + j < c) {
+          break label358;
+        }
+        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList.subList(0, c - i));
+        this.jdField_a_of_type_Boolean = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "onGetAddContactFindTroopRecommendTroopList reach limit,this.dataList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size());
+        }
+      }
+    }
+    for (;;)
+    {
+      i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      b();
+      if (QLog.isColorLevel()) {
+        QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "onGetAddContactFindTroopNearbyTroopList do update Data,itemType = " + paramInt1 + ",this.itemType = " + this.jdField_a_of_type_Int + ",serverPageID = " + paramInt2 + ",dataListSize = " + i + ",newDataListSize = " + j);
+      }
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        if (this.jdField_a_of_type_Boolean) {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText("没有更多内容了");
+        }
+      }
+      this.jdField_b_of_type_Int = paramInt2;
+      if (this.jdField_a_of_type_Aivn != null) {
+        this.jdField_a_of_type_Aivn.a(paramBoolean1, i);
+      }
+      return;
+      label358:
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    }
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
+  protected void a(boolean paramBoolean1, int paramInt1, String paramString, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_Aixs = null;
+    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int j = paramArrayList.size();
+    this.jdField_a_of_type_Boolean = paramBoolean2;
+    if ((paramInt1 == this.jdField_a_of_type_Int) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
+      if (paramBoolean1)
+      {
+        if (!paramBoolean3)
+        {
+          this.jdField_b_of_type_Boolean = true;
+          this.jdField_a_of_type_JavaUtilArrayList.clear();
+        }
+        i = this.jdField_a_of_type_JavaUtilArrayList.size();
+        if (i + j < c) {
+          break label320;
+        }
+        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList.subList(0, c - i));
+        this.jdField_a_of_type_Boolean = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "onGetAddContactFindTroopRecommendTroopList reach limit,this.dataList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size());
+        }
+      }
+    }
+    for (;;)
+    {
+      i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      b();
+      if (QLog.isColorLevel()) {
+        QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "onGetAddContactFindTroopRecommendTroopList,do update Data ,itemType = " + paramInt1 + ",this.itemType = " + this.jdField_a_of_type_Int + ",keyWord = " + paramString + ",this.keyWord = " + this.jdField_a_of_type_JavaLangString + ",serverPageID = " + paramInt2 + ",dataListSize = " + i + ",newDataListSize = " + j + ",this = " + this);
+      }
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        if (this.jdField_a_of_type_Boolean) {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText("没有更多内容了");
+        }
+      }
+      this.jdField_b_of_type_Int = paramInt2;
+      if (this.jdField_a_of_type_Aivn != null) {
+        this.jdField_a_of_type_Aivn.a(paramBoolean1, i);
+      }
+      return;
+      label320:
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    }
   }
   
-  public void e() {}
-  
-  protected void f()
+  protected boolean a()
   {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("SissionUin");
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "refreshListView,this.dataList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size() + ",needResetListViewPostion = " + this.jdField_b_of_type_Boolean);
+    }
+    this.jdField_a_of_type_Ajcw.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Ajcw.notifyDataSetChanged();
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
+      this.jdField_b_of_type_Boolean = false;
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    boolean bool2 = false;
+    aoep localaoep = (aoep)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "getRecommendTroopList ,itemType = " + this.jdField_a_of_type_Int + ",keyWord = " + this.jdField_a_of_type_JavaLangString + ",loadMore = " + paramBoolean + ",this = " + this);
+    }
+    if (!paramBoolean)
+    {
+      this.jdField_b_of_type_Int = -1;
+      this.jdField_a_of_type_Boolean = false;
+    }
+    a();
+    boolean bool1;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      if (Build.VERSION.SDK_INT < 23) {
+        break label318;
+      }
+      bool1 = bool2;
+      if (this.jdField_a_of_type_AndroidContentContext.checkSelfPermission("android.permission.ACCESS_COARSE_LOCATION") != -1)
+      {
+        if (this.jdField_a_of_type_AndroidContentContext.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != -1) {
+          break label313;
+        }
+        bool1 = bool2;
+      }
+      bool2 = bool1;
+      if (QLog.isColorLevel()) {
+        QLog.w("ac_ft.AddContactFindTroopRTLW", 2, "getRecommendTroopList  >= M, canRequestLocation = " + bool1);
+      }
+    }
+    label313:
+    label318:
+    for (bool2 = bool1;; bool2 = true)
+    {
+      if (bool2)
+      {
+        SosoInterface.SosoLbsInfo localSosoLbsInfo = LbsManagerService.getCachedLbsInfo("recommend_troop");
+        if (QLog.isColorLevel()) {
+          QLog.i("ac_ft.AddContactFindTroopRTLW", 2, "getRecommendTroopList  >= M, info = " + localSosoLbsInfo);
+        }
+        if (localSosoLbsInfo == null) {
+          LbsManagerService.startLocation(new aivm(this, "recommend_troop", localaoep, paramBoolean));
+        }
+      }
+      else
+      {
+        return;
+      }
+      localaoep.a(1, this.jdField_b_of_type_Int, 25, paramBoolean, a());
+      return;
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        localaoep.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, 25, paramBoolean);
+        return;
+      }
+      localaoep.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, 25, paramBoolean);
+      return;
+      bool1 = true;
+      break;
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    }
   }
 }
 

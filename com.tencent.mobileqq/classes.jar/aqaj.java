@@ -1,72 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqaj
-  extends aptq<aqai>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  @NonNull
-  public aqai a(int paramInt)
-  {
-    return new aqai();
-  }
+  public aqaj(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  @Nullable
-  public aqai a(aptx[] paramArrayOfaptx)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    if (paramBoolean)
     {
-      aqai localaqai = aqai.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttAutoChangeProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
-      }
-      return localaqai;
+      this.a.b();
+      this.a.a("");
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
     }
-    return null;
-  }
-  
-  public void a(aqai paramaqai)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttAutoChangeProcessor", 2, "onUpdate " + paramaqai.toString());
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      this.a.c();
+      this.a.a("close");
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
     }
-  }
-  
-  public Class<aqai> clazz()
-  {
-    return aqai.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 442;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqaj
  * JD-Core Version:    0.7.0.1
  */

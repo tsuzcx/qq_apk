@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import java.util.Iterator;
 import java.util.List;
 
 class DesktopDataManager$25
   implements Runnable
 {
-  DesktopDataManager$25(DesktopDataManager paramDesktopDataManager, String paramString) {}
+  DesktopDataManager$25(DesktopDataManager paramDesktopDataManager, int paramInt) {}
   
   public void run()
   {
     Iterator localIterator = DesktopDataManager.access$1600(this.this$0).iterator();
-    while (localIterator.hasNext())
-    {
-      DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)localIterator.next();
-      if (((localDesktopItemInfo instanceof DesktopAppInfo)) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.appId.equals(this.val$appId))) {
+    while (localIterator.hasNext()) {
+      if (((DesktopItemInfo)localIterator.next()).getModuleType() == this.val$type) {
         localIterator.remove();
       }
     }

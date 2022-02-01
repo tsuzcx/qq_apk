@@ -1,31 +1,28 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 public class zcc
-  extends RecyclerView.ItemDecoration
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public zcc(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
+  
+  public void onScrollStateChanged(int paramInt)
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    if (i == 0)
+    ykq.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
+    switch (paramInt)
     {
-      paramRect.left = DisplayUtil.dip2px(paramView.getContext(), 3.0F);
-      paramRect.right = 0;
+    default: 
+    case 4098: 
+    case 4099: 
+      do
+      {
+        return;
+      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
+      ScrollFrameSelectBar.a(this.a).c();
       return;
     }
-    paramRecyclerView = paramRecyclerView.getAdapter();
-    if ((paramRecyclerView != null) && (i == paramRecyclerView.getItemCount() - 1)) {}
-    for (paramRect.right = DisplayUtil.dip2px(paramView.getContext(), 3.0F);; paramRect.right = 0)
-    {
-      paramRect.left = (-DisplayUtil.dip2px(paramView.getContext(), 6.0F));
-      return;
-    }
+    this.a.c();
   }
 }
 

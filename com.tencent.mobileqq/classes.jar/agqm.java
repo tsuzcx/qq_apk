@@ -1,54 +1,202 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForBirthdayNotice;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
+import cooperation.vip.manager.MonitorManager;
 
 public class agqm
-  implements bhba
+  extends afor
+  implements View.OnClickListener
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Activity> b;
+  private static final String jdField_a_of_type_JavaLangString = anvx.a(2131700649);
+  private long jdField_a_of_type_Long;
+  private ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(Color.parseColor("#883353"));
   
-  agqm(agqd paramagqd, QQAppInterface paramQQAppInterface, Activity paramActivity)
+  public agqm(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramActivity);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
   }
   
-  public void a(View paramView)
+  private View a(View paramView, agqn paramagqn)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Activity localActivity = (Activity)this.b.get();
-    if ((localActivity == null) || (localQQAppInterface == null)) {
-      QLog.e("ChatItemBuilder", 1, "TextItemBuilder  onDoubleClick  app null fa null");
-    }
-    do
+    View localView = paramView;
+    if (paramView == null)
     {
-      do
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558861, null);
+      paramagqn.jdField_b_of_type_AndroidViewView = paramView;
+      paramagqn.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131362351);
+      paramagqn.d = paramView.findViewById(2131362350);
+      paramagqn.a = ((URLImageView)paramView.findViewById(2131362353));
+      paramagqn.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362354));
+      paramagqn.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362352));
+      localView = paramView;
+      if (e)
       {
-        return;
-        AIOUtils.isUserOperatedInAIO = true;
-      } while (this.jdField_a_of_type_Agqd.a());
-      localObject = AIOUtils.getMessage(paramView);
-    } while ((apse.a((MessageRecord)localObject)) || (auyo.a(this.jdField_a_of_type_Agqd.a)) || (((ChatMessage)localObject).istroop == 10007) || (paramView.getId() == 2131378591) || (paramView.getId() == 2131371413) || (paramView.getId() == 2131364469));
-    Object localObject = (FragmentActivity)paramView.getContext();
-    if (localObject != null) {}
-    for (localObject = ((FragmentActivity)localObject).getChatFragment();; localObject = null)
-    {
-      if (localObject == null)
-      {
-        ChatActivityUtils.a(localQQAppInterface, paramView, localActivity);
-        return;
+        paramagqn.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
+        localView = paramView;
       }
-      ChatActivityUtils.a(localQQAppInterface, paramView, localActivity, this.jdField_a_of_type_Agqd.a.curType);
+    }
+    if (e)
+    {
+      localView.setContentDescription(null);
+      paramagqn.jdField_b_of_type_JavaLangStringBuilder.replace(0, paramagqn.jdField_b_of_type_JavaLangStringBuilder.length(), "");
+    }
+    return localView;
+  }
+  
+  private void a(MessageRecord paramMessageRecord)
+  {
+    long l1;
+    if ((paramMessageRecord != null) && (!bhbz.a().a(paramMessageRecord, "aio_msg|birthday_notice")))
+    {
+      bhbz.a().a(paramMessageRecord, "aio_msg|birthday_notice");
+      l1 = 0L;
+    }
+    try
+    {
+      long l2 = Long.parseLong(paramMessageRecord.frienduin);
+      l1 = l2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("BirthDayNoticeItemBuilder", 1, "error parse friend uin " + paramMessageRecord);
+        MonitorManager.a().a(19, 10, " error parse friend uin " + paramMessageRecord, false);
+      }
+    }
+    paramMessageRecord = new LpReportInfo_pf00064();
+    paramMessageRecord.actionType = 91;
+    paramMessageRecord.subactionType = 22;
+    paramMessageRecord.reserves = 1;
+    paramMessageRecord.toUin = l1;
+    LpReportManager.getInstance().reportToPF00064(paramMessageRecord, false, false);
+  }
+  
+  protected afos a()
+  {
+    return new agqn(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, afos paramafos, View paramView, LinearLayout paramLinearLayout, aftk paramaftk)
+  {
+    paramMessageRecord = (MessageForBirthdayNotice)paramMessageRecord;
+    paramafos = (agqn)paramafos;
+    paramView = a(paramView, paramafos);
+    try
+    {
+      paramafos.a.setBackgroundURL(paramMessageRecord.icon);
+      paramafos.d.setBackgroundColor(Color.parseColor(paramMessageRecord.background));
+      paramafos.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageRecord.birthday);
+      int i = paramMessageRecord.blessing.indexOf(jdField_a_of_type_JavaLangString);
+      if (i >= 0)
+      {
+        paramLinearLayout = new SpannableString(paramMessageRecord.blessing);
+        paramLinearLayout.setSpan(this.jdField_a_of_type_AndroidTextStyleForegroundColorSpan, i, jdField_a_of_type_JavaLangString.length() + i, 33);
+        paramafos.jdField_c_of_type_AndroidWidgetTextView.setText(paramLinearLayout);
+        paramafos.jdField_c_of_type_AndroidViewView.setTag(paramMessageRecord);
+        paramafos.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
+        a(paramMessageRecord);
+        if (e)
+        {
+          paramafos.jdField_b_of_type_JavaLangStringBuilder.append("生日");
+          paramafos.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.birthday);
+          paramafos.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.blessing);
+          paramafos.jdField_b_of_type_AndroidViewView.setContentDescription(paramafos.jdField_b_of_type_JavaLangStringBuilder.toString());
+        }
+        return paramView;
+      }
+    }
+    catch (Exception paramLinearLayout)
+    {
+      for (;;)
+      {
+        QLog.e("BirthDayNoticeItemBuilder", 1, "set resource error " + paramLinearLayout);
+        MonitorManager.a().a(19, 2, "set data error " + paramLinearLayout, false);
+        continue;
+        paramafos.jdField_c_of_type_AndroidWidgetTextView.setText(paramMessageRecord.blessing);
+      }
+    }
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public boolean a()
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > 500L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Long = l;
+      return bool;
+    }
+  }
+  
+  public bhjs[] a(View paramView)
+  {
+    return null;
+  }
+  
+  public void onClick(View paramView)
+  {
+    Object localObject;
+    if (a())
+    {
+      localObject = paramView.getTag();
+      if ((localObject instanceof MessageForBirthdayNotice))
+      {
+        localObject = (MessageForBirthdayNotice)localObject;
+        if (!TextUtils.isEmpty(((MessageForBirthdayNotice)localObject).doufu_link)) {
+          break label93;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("BirthDayNoticeItemBuilder", 2, "jumpToH5Page with url empty");
+        }
+        MonitorManager.a().a(19, 2, " parse data with empty url " + localObject, false);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label93:
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", ((MessageForBirthdayNotice)localObject).doufu_link);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      try
+      {
+        long l = Long.parseLong(((MessageForBirthdayNotice)localObject).frienduin);
+        localObject = new LpReportInfo_pf00064();
+        ((LpReportInfo_pf00064)localObject).actionType = 91;
+        ((LpReportInfo_pf00064)localObject).subactionType = 22;
+        ((LpReportInfo_pf00064)localObject).reserves = 2;
+        ((LpReportInfo_pf00064)localObject).toUin = l;
+        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
+      }
+      catch (Exception localException)
+      {
+        QLog.e("BirthDayNoticeItemBuilder", 1, "error parse friend uin " + localObject);
+        MonitorManager.a().a(19, 10, " error parse friend uin " + localObject, false);
+      }
     }
   }
 }

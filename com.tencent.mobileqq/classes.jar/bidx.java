@@ -1,16 +1,34 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
-import com.tencent.open.filedownload.ApkFileDownloadFragment.3.1;
-import mqq.os.MqqHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class bidx
-  extends bieg
+class bidx
+  implements nth
 {
-  public bidx(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  bidx(bidu parambidu) {}
   
-  public void a()
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.3.1(this));
+    Object localObject = this.a.mRuntime.a(this.a.mRuntime.a());
+    if (paramBoolean) {
+      if (this.a.a)
+      {
+        if ((localObject != null) && ((localObject instanceof bikl))) {
+          ((bikl)localObject).setWarnToastVisible(true, 1, 2131691427);
+        }
+      }
+      else {
+        bidu.a(this.a);
+      }
+    }
+    while ((localObject == null) || (!(localObject instanceof bikl))) {
+      for (;;)
+      {
+        return;
+        localObject = QQToast.a(BaseApplicationImpl.getContext(), 1, 2131691427, 1);
+        ((QQToast)localObject).b(((QQToast)localObject).c());
+      }
+    }
+    ((bikl)localObject).setWarnToastVisible(false, 0, 0);
   }
 }
 

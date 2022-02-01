@@ -1,32 +1,29 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.qphone.base.util.QLog;
 
-public class atoo
-  implements aaer
+class atoo
+  extends atnt
 {
-  public atoo(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
-  
-  public void a(boolean paramBoolean)
+  public atoo(atno paramatno)
   {
-    if (ForwardRecentActivity.class.isInstance(this.a.a)) {
-      if (!this.a.a.isFinishing())
-      {
-        if (!paramBoolean) {
-          break label75;
-        }
-        this.a.a(0, "", "");
-      }
-    }
-    for (;;)
+    super(paramatno);
+  }
+  
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPCWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      if (this.a.k) {
-        ForwardSdkBaseOption.a(this.a.a, true, "shareToQQ", this.a.b);
-      }
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
-      label75:
-      this.a.a(-1, bian.d, bian.d);
     }
+    atno.b(this.jdField_a_of_type_Atno, 11, 7);
+    atno.c(this.jdField_a_of_type_Atno, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Atnt = new aton(this.jdField_a_of_type_Atno);
   }
 }
 

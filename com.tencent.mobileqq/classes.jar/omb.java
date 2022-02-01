@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class omb
-  implements nnv
+public final class omb
+  implements Parcelable.Creator<VideoInfo>
 {
-  public omb(ReadInJoyNewFeedsActivity.2 param2) {}
-  
-  public void loaded(String paramString, int paramInt)
+  public VideoInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 3256 html web resource finish");
-    }
+    return new VideoInfo(paramParcel);
   }
   
-  public void progress(int paramInt) {}
+  public VideoInfo[] a(int paramInt)
+  {
+    return new VideoInfo[paramInt];
+  }
 }
 
 

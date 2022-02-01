@@ -1,31 +1,7 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
+import kotlin.Metadata;
 
-class amfd
-  implements ameb
-{
-  amfd(amez paramamez, String paramString1, File paramFile, JSONArray paramJSONArray, int[] paramArrayOfInt, String paramString2) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    QLog.d("ApolloPluginRscLoader", 1, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
-    Object localObject = this.jdField_a_of_type_Amez;
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_JavaIoFile.exists()) {}
-    for (paramInt = 0;; paramInt = 2)
-    {
-      localObject = amez.a((amez)localObject, 6, str, paramInt);
-      this.jdField_a_of_type_OrgJsonJSONArray.put(localObject);
-      if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0)) {
-        break;
-      }
-      this.jdField_a_of_type_Amez.a(this.b, amtj.a(2131699653), this.jdField_a_of_type_OrgJsonJSONArray);
-      return;
-    }
-    amez.a(this.jdField_a_of_type_Amez, this.jdField_a_of_type_ArrayOfInt, this.b, this.jdField_a_of_type_OrgJsonJSONArray);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebViewPlugin$Companion;", "", "()V", "BIZ_PARAM_ADCODE", "", "BIZ_PARAM_BUSINESS_ID", "METHOD_NOTIFY_ARK", "METHOD_OPEN_WEATHER_PAGE", "METHOD_RECEIVE_WEB", "NAME_SPACE", "PARAM_CALLBACK", "PARAM_MESSAGE", "PARAM_RESULT", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amfd {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

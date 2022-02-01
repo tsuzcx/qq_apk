@@ -1,90 +1,104 @@
-import android.app.Activity;
-import android.support.v4.util.ArrayMap;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.viola.core.ViolaInstance;
-import java.util.Map;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function2;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
+import com.tencent.mobileqq.widget.MeasureGridView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "", "bridgeModule", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "getBridgeModule", "()Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "funcMap", "Landroid/support/v4/util/ArrayMap;", "", "Lkotlin/Function2;", "Lorg/json/JSONObject;", "", "getActivity", "Landroid/app/Activity;", "getFragment", "Landroid/support/v4/app/Fragment;", "invokeCallJS", "callback", "data", "invokeErrorCallJS", "errorText", "invokeNsHandler", "", "method", "param", "mineSpace", "ns", "nameSpace", "register", "registerFunc", "func", "violaInstance", "Lcom/tencent/viola/core/ViolaInstance;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract class tks
+public class tks
+  extends pvq
 {
-  private final ArrayMap<String, Function2<JSONObject, String, Unit>> jdField_a_of_type_AndroidSupportV4UtilArrayMap;
-  @NotNull
-  private final BridgeModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
+  public tks(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  public tks(@NotNull BridgeModule paramBridgeModule)
+  public void d(boolean paramBoolean, List<DiandianTopConfig> paramList)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule = paramBridgeModule;
-    this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
-    a();
-  }
-  
-  @Nullable
-  public final Activity a()
-  {
-    ViolaInstance localViolaInstance = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance();
-    if (localViolaInstance != null) {
-      return localViolaInstance.getActivity();
+    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0) || (ReadInJoyDiandianHeaderController.a(this.a).a())) {
+      ReadInJoyDiandianHeaderController.a(this.a).setVisibility(8);
     }
-    return null;
-  }
-  
-  @NotNull
-  public final BridgeModule a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule;
-  }
-  
-  @NotNull
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public final void a(@Nullable String paramString, @Nullable Object paramObject)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(paramString, paramObject);
-  }
-  
-  public final void a(@Nullable String paramString1, @NotNull String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString2, "errorText");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(paramString1, paramString2);
-  }
-  
-  public final void a(@NotNull String paramString, @NotNull Function2<? super JSONObject, ? super String, Unit> paramFunction2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "method");
-    Intrinsics.checkParameterIsNotNull(paramFunction2, "func");
-    ((Map)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap).put(paramString, paramFunction2);
-  }
-  
-  public final boolean a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "ns");
-    return a().equals(paramString);
-  }
-  
-  public final boolean a(@NotNull String paramString1, @Nullable JSONObject paramJSONObject, @Nullable String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "method");
-    paramString1 = (Function2)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString1);
-    if (paramString1 != null)
+    int i;
+    label227:
+    do
     {
-      paramString1.invoke(paramJSONObject, paramString2);
-      return true;
-    }
-    return false;
+      return;
+      ReadInJoyDiandianHeaderController.a(this.a).setVisibility(0);
+      ReadInJoyDiandianHeaderController.a(this.a, false);
+      ReadInJoyDiandianHeaderController.a(this.a).clear();
+      ReadInJoyDiandianHeaderController.b(this.a).clear();
+      ReadInJoyDiandianHeaderController.b(this.a).addAll(paramList);
+      int j;
+      if (ReadInJoyDiandianHeaderController.b(this.a).size() % 2 == 0)
+      {
+        i = ReadInJoyDiandianHeaderController.b(this.a).size() / 2;
+        j = 0;
+      }
+      for (;;)
+      {
+        if (j >= i) {
+          break label476;
+        }
+        Object localObject = new MeasureGridView(this.a.jdField_a_of_type_AndroidContentContext);
+        paramList = new tku(this.a, ReadInJoyDiandianHeaderController.b(this.a), j);
+        ((MeasureGridView)localObject).setNumColumns(2);
+        ((MeasureGridView)localObject).setAdapter(paramList);
+        ((MeasureGridView)localObject).setSelector(new ColorDrawable(0));
+        ReadInJoyDiandianHeaderController.a(this.a).add(localObject);
+        if (j == 0)
+        {
+          int k = 0;
+          if (k < paramList.getCount())
+          {
+            localObject = (DiandianTopConfig)paramList.getItem(k);
+            if ((localObject != null) && (!((DiandianTopConfig)localObject).hasExposeReported)) {}
+            for (;;)
+            {
+              try
+              {
+                localJSONObject = new JSONObject();
+                localJSONObject.put("folder_status", prp.jdField_a_of_type_Int);
+                if (((DiandianTopConfig)localObject).type != 5) {
+                  continue;
+                }
+                localJSONObject.put("list_URL", ((DiandianTopConfig)localObject).jumpUrl);
+                localJSONObject.put("type", ((DiandianTopConfig)localObject).type);
+                olh.a(null, "", "0X80092FC", "0X80092FC", 0, 0, ReadInJoyDiandianHeaderController.b(this.a).size() + "", "1", ((DiandianTopConfig)localObject).topicId + "", localJSONObject.toString(), false);
+                ((DiandianTopConfig)localObject).hasExposeReported = true;
+                paramList.a(k, (DiandianTopConfig)localObject);
+              }
+              catch (JSONException localJSONException)
+              {
+                JSONObject localJSONObject;
+                if (!QLog.isColorLevel()) {
+                  continue;
+                }
+                QLog.e("ReadInJoyDiandianHeaderController", 2, localJSONException.toString());
+                continue;
+              }
+              k += 1;
+              break label227;
+              i = ReadInJoyDiandianHeaderController.b(this.a).size() / 2 + 1;
+              break;
+              localJSONObject.put("list_URL", "0");
+            }
+          }
+        }
+        j += 1;
+      }
+      ReadInJoyDiandianHeaderController.a(this.a).a(ReadInJoyDiandianHeaderController.a(this.a));
+    } while (i <= 1);
+    label476:
+    this.a.jdField_a_of_type_Int = 1;
+    ReadInJoyDiandianHeaderController.a(this.a).setCurrentItem(this.a.jdField_a_of_type_Int, false);
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tks
  * JD-Core Version:    0.7.0.1
  */

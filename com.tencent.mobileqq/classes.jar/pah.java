@@ -1,20 +1,43 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class pah
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public View a;
-  public TextView a;
-  public TextView b;
+  public pah(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public pah(pae parampae, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379552));
-    this.b = ((TextView)paramView.findViewById(2131379553));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369938);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.b)
+      {
+        ReadInJoyCommentComponentFragment.a(this.a, false);
+      }
+      else
+      {
+        ReadInJoyCommentComponentFragment.a(this.a, true);
+        continue;
+        ReadInJoyCommentComponentFragment.c(this.a);
+        continue;
+        ReadInJoyCommentComponentFragment.b(this.a);
+        if (ReadInJoyCommentComponentFragment.a(this.a) != null)
+        {
+          if (ReadInJoyCommentComponentFragment.c(this.a) >= ReadInJoyCommentComponentFragment.a(this.a).length) {
+            ReadInJoyCommentComponentFragment.a(this.a, 0);
+          }
+          this.a.c.setText(ReadInJoyCommentComponentFragment.a(this.a)[ReadInJoyCommentComponentFragment.c(this.a)]);
+        }
+      }
+    }
   }
 }
 

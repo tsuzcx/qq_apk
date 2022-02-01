@@ -1,9 +1,19 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class xta
-  implements bjog
+  implements View.OnClickListener
 {
-  xta(xss paramxss) {}
+  xta(xsz paramxsz, String paramString) {}
   
-  public void onDismiss() {}
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Xsz.jdField_a_of_type_Xst != null) {
+      this.jdField_a_of_type_Xsz.jdField_a_of_type_Xst.a(null, 0, this.jdField_a_of_type_Xsz.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,31 +1,46 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment.3.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
+import java.lang.ref.WeakReference;
 
 public class bgqj
-  implements bgpu
+  extends bgnb
 {
-  public bgqj(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
+  private WeakReference<QQAppInterface> a;
+  private String d;
   
-  public void a(Intent paramIntent, boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  public bgqj(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder().append("lockLH uin=").append(paramString1).append(",suc=").append(paramBoolean).append(",lhsig=");
-      if (paramArrayOfByte == null) {
-        break label89;
-      }
+    super(paramString2, paramString3, paramString4);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.d = paramString1;
+  }
+  
+  public UsingTimeReportManager a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
     }
-    label89:
-    for (String str = SecUtil.toHexString(paramArrayOfByte);; str = "null")
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return null;
+    }
+    return (UsingTimeReportManager)localQQAppInterface.getManager(QQManagerFactory.USING_TIME_REPORT_MANAGER);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    do
     {
-      QLog.i("LiangHaoBuyFragment", 4, str);
-      ThreadManagerV2.getUIHandlerV2().post(new LiangHaoBuyFragment.3.1(this, paramBoolean, paramIntent, paramString1, paramArrayOfByte, paramString2));
+      return;
+      localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localObject == null);
+    bdlf localbdlf = new bdlf((QQAppInterface)localObject).a("dc00899").b(this.jdField_a_of_type_JavaLangString).c(this.b).d(this.c);
+    if (this.d != null) {}
+    for (Object localObject = this.d;; localObject = "")
+    {
+      localbdlf.a(new String[] { localObject, String.valueOf(paramLong) }).a();
       return;
     }
   }

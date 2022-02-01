@@ -1,30 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 
 public class mdq
-  implements View.OnTouchListener
+  implements mik
 {
-  public mdq(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public mdq(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    this.a.j = true;
+    this.a.M();
+  }
+  
+  public void b()
+  {
+    this.a.j = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mdq
  * JD-Core Version:    0.7.0.1
  */

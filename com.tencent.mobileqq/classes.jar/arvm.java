@@ -1,23 +1,69 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Book;
+import com.tencent.mobileqq.data.IPSiteModel.Comic;
+import com.tencent.mobileqq.data.IPSiteModel.Game;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
+import com.tencent.mobileqq.data.IPSiteModel.Video;
+import com.tencent.mobileqq.data.VipIPSiteInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class arvm
-  implements URLDrawable.URLDrawableListener
+public final class arvm
+  implements Parcelable.Creator
 {
-  public arvm(UniformDownloadActivity paramUniformDownloadActivity, ImageView paramImageView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public VipIPSiteInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    VipIPSiteInfo localVipIPSiteInfo = new VipIPSiteInfo();
+    localVipIPSiteInfo.ipID = paramParcel.readInt();
+    localVipIPSiteInfo.ipName = paramParcel.readString();
+    localVipIPSiteInfo.ipDesc = paramParcel.readString();
+    localVipIPSiteInfo.ipUrl = paramParcel.readString();
+    localVipIPSiteInfo.itemSize = paramParcel.readInt();
+    localVipIPSiteInfo.strType = paramParcel.readString();
+    localVipIPSiteInfo.extId = paramParcel.readInt();
+    localVipIPSiteInfo.extStr = paramParcel.readString();
+    localVipIPSiteInfo.ipLogo = paramParcel.readString();
+    localVipIPSiteInfo.ipContent = paramParcel.readString();
+    if (localVipIPSiteInfo.ipList == null) {
+      localVipIPSiteInfo.ipList = new ArrayList();
+    }
+    localVipIPSiteInfo.ipList.clear();
+    if ("gxzb".equals(localVipIPSiteInfo.strType)) {
+      paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Gxzb.class.getClassLoader());
+    }
+    do
+    {
+      return localVipIPSiteInfo;
+      if ("game".equals(localVipIPSiteInfo.strType))
+      {
+        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Game.class.getClassLoader());
+        return localVipIPSiteInfo;
+      }
+      if ("goods".equals(localVipIPSiteInfo.strType))
+      {
+        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Goods.class.getClassLoader());
+        return localVipIPSiteInfo;
+      }
+      if ("video".equals(localVipIPSiteInfo.strType))
+      {
+        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Video.class.getClassLoader());
+        return localVipIPSiteInfo;
+      }
+      if ("book".equals(localVipIPSiteInfo.strType))
+      {
+        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Book.class.getClassLoader());
+        return localVipIPSiteInfo;
+      }
+    } while (!"comic".equals(localVipIPSiteInfo.strType));
+    paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Comic.class.getClassLoader());
+    return localVipIPSiteInfo;
+  }
+  
+  public VipIPSiteInfo[] a(int paramInt)
+  {
+    return new VipIPSiteInfo[paramInt];
   }
 }
 

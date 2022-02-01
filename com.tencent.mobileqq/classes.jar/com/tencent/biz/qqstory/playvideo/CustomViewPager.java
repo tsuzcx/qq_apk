@@ -15,8 +15,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import xvv;
-import you;
+import ykq;
+import zdn;
 
 public class CustomViewPager
   extends ViewPager
@@ -24,7 +24,7 @@ public class CustomViewPager
 {
   public float a;
   public GestureDetector.SimpleOnGestureListener a;
-  public you a;
+  public zdn a;
   public boolean a;
   public float b;
   public float c;
@@ -39,8 +39,8 @@ public class CustomViewPager
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_You = new you(paramContext, this);
-    this.jdField_a_of_type_You.a(this);
+    this.jdField_a_of_type_Zdn = new zdn(paramContext, this);
+    this.jdField_a_of_type_Zdn.a(this);
   }
   
   public int getChildDrawingOrder(int paramInt1, int paramInt2)
@@ -53,7 +53,7 @@ public class CustomViewPager
       localObject = (ArrayList)((Field)localObject).get(this);
       if ((localObject == null) || (((ArrayList)localObject).size() != getChildCount()))
       {
-        xvv.d("Q.qqstory.player.ViewPager", "getChildDrawingOrder invoke sortChildDrawingOrder() by ourselves !");
+        ykq.d("Q.qqstory.player.ViewPager", "getChildDrawingOrder invoke sortChildDrawingOrder() by ourselves !");
         localObject = ViewPager.class.getDeclaredMethod("sortChildDrawingOrder", new Class[0]);
         ((Method)localObject).setAccessible(true);
         ((Method)localObject).invoke(this, new Object[0]);
@@ -63,28 +63,28 @@ public class CustomViewPager
     {
       for (;;)
       {
-        xvv.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchMethodException);
+        ykq.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchMethodException);
       }
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
       for (;;)
       {
-        xvv.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localIllegalAccessException);
+        ykq.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localIllegalAccessException);
       }
     }
     catch (InvocationTargetException localInvocationTargetException)
     {
       for (;;)
       {
-        xvv.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localInvocationTargetException);
+        ykq.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localInvocationTargetException);
       }
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
       for (;;)
       {
-        xvv.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchFieldException);
+        ykq.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchFieldException);
       }
     }
     return super.getChildDrawingOrder(paramInt1, paramInt2);
@@ -140,7 +140,7 @@ public class CustomViewPager
   {
     long l = SystemClock.uptimeMillis();
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    xvv.a("Q.qqstory.player.ViewPager", "onLayout, cost=%d", Long.valueOf(SystemClock.uptimeMillis() - l));
+    ykq.a("Q.qqstory.player.ViewPager", "onLayout, cost=%d", Long.valueOf(SystemClock.uptimeMillis() - l));
   }
   
   public void onLongPress(MotionEvent paramMotionEvent)
@@ -183,7 +183,7 @@ public class CustomViewPager
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = this.jdField_a_of_type_You.a(paramMotionEvent);
+    boolean bool = this.jdField_a_of_type_Zdn.a(paramMotionEvent);
     if (!this.jdField_a_of_type_Boolean) {
       return bool;
     }
@@ -227,7 +227,7 @@ public class CustomViewPager
   {
     long l = SystemClock.uptimeMillis();
     super.setAdapter(paramPagerAdapter);
-    xvv.a("Q.qqstory.player.ViewPager", "setAdapter, cost=%d", Long.valueOf(SystemClock.uptimeMillis() - l));
+    ykq.a("Q.qqstory.player.ViewPager", "setAdapter, cost=%d", Long.valueOf(SystemClock.uptimeMillis() - l));
   }
   
   public void setGestureListener(GestureDetector.SimpleOnGestureListener paramSimpleOnGestureListener)
@@ -237,7 +237,7 @@ public class CustomViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.CustomViewPager
  * JD-Core Version:    0.7.0.1
  */

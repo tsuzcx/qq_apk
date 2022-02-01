@@ -1,28 +1,13 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.DialogInterface;
 
-public class zcg
-  implements zns
+class zcg
+  extends bhdx
 {
-  public zcg(RecommendBannerItemView paramRecommendBannerItemView) {}
+  zcg(zcf paramzcf) {}
   
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (RecommendBannerItemView.a(this.a))
-    {
-      if (RecommendBannerItemView.a(this.a) != null) {
-        zxp.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_follow_clk", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
-      }
-      return;
-    }
-    if (paramBoolean)
-    {
-      RecommendBannerItemView.a(this.a, "auth_page", "recom_follow", RecommendBannerItemView.a(this.a).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
-      return;
-    }
-    RecommendBannerItemView.a(this.a, "auth_page", "recom_unfollow", RecommendBannerItemView.a(this.a).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
+    paramDialogInterface.dismiss();
   }
 }
 

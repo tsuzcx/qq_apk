@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -11,13 +10,14 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
 import android.view.Window;
-import anws;
-import aqyp;
-import aqyt;
-import bcef;
-import bfvo;
-import bgev;
-import bgve;
+import anvx;
+import aozu;
+import ascz;
+import asdd;
+import bdla;
+import bheg;
+import bhnp;
+import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
@@ -650,7 +650,7 @@ public class ChatBackgroundJsPlugin
   
   private String getCustomImageFilePath()
   {
-    return ThemeDiyStyleLogic.getDataDIYDir() + anws.a(this.browserApp.getAccount()) + "/" + System.currentTimeMillis() + ".jpg";
+    return ThemeDiyStyleLogic.getDataDIYDir() + aozu.a(this.browserApp.getAccount()) + "/" + System.currentTimeMillis() + ".jpg";
   }
   
   private void handleCustomPic(Intent paramIntent)
@@ -677,8 +677,8 @@ public class ChatBackgroundJsPlugin
       localIntent.putExtra("effectId", paramInt2);
       localIntent.putExtra("uinType", paramInt1);
       this.browserApp.getApp().sendBroadcast(localIntent);
-      QQToast.a(this.mRuntime.a(), 2131694574, 0).a();
-      bcef.b(null, "CliOper", "", "", "chatbackground", "BjIDShezhi", 0, 0, "1", "", "", "");
+      QQToast.a(this.mRuntime.a(), 2131694775, 0).a();
+      bdla.b(null, "CliOper", "", "", "chatbackground", "BjIDShezhi", 0, 0, "1", "", "", "");
     }
   }
   
@@ -747,7 +747,7 @@ public class ChatBackgroundJsPlugin
     }
     for (;;)
     {
-      super.sendRemoteReq(aqyt.a(paramJsBridgeListener, paramVarArgs, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+      super.sendRemoteReq(asdd.a(paramJsBridgeListener, paramVarArgs, this.mOnRemoteResp.key, this.mReqBundle), false, true);
       return true;
       if ("startDownload".equals(paramString3)) {}
       try
@@ -891,11 +891,11 @@ public class ChatBackgroundJsPlugin
       {
         paramJsBridgeListener = new Intent();
         paramJsBridgeListener.putExtra("bg_replace_entrance", 8);
-        paramJsBridgeListener.putExtra("selfSet_leftViewText", this.mRuntime.a().getString(2131690599));
+        paramJsBridgeListener.putExtra("selfSet_leftViewText", this.mRuntime.a().getString(2131690676));
         paramJsBridgeListener.putExtra("hide_left_button", false);
         paramJsBridgeListener.putExtra("show_right_close_button", false);
         paramJsBridgeListener.putExtra("startOpenPageTime", System.currentTimeMillis());
-        VasWebviewUtil.openQQBrowserWithoutAD(this.mRuntime.a(), bgev.a(this.mRuntime.a(), "background", ""), 33554432L, paramJsBridgeListener, false, -1);
+        VasWebviewUtil.openQQBrowserWithoutAD(this.mRuntime.a(), bhnp.a(this.mRuntime.a(), "background", ""), 33554432L, paramJsBridgeListener, false, -1);
         paramJsBridgeListener = new JSONObject();
         paramJsBridgeListener.put("result", 0);
         super.callJs(paramVarArgs, new String[] { paramJsBridgeListener.toString() });
@@ -973,7 +973,7 @@ public class ChatBackgroundJsPlugin
       }
       str3 = new String(Base64.decode(str3, 2));
       str4 = getCustomImageFilePath();
-      i = bfvo.b(str3);
+      i = bheg.b(str3);
       bool = compressBitmapToFile(this.mRuntime.a(), Integer.parseInt(paramString2), BitmapFactory.decodeFile(str3), str4, Float.parseFloat(str1), Float.parseFloat((String)localObject2), Float.parseFloat((String)localObject1), i);
       if (bool) {
         handleCustomPic(paramJsBridgeListener, Integer.parseInt(str2), str4, Integer.parseInt(paramString3), true);
@@ -989,7 +989,7 @@ public class ChatBackgroundJsPlugin
       {
         paramString2.put("code", paramJsBridgeListener);
         if (!bool) {
-          paramString2.put("msg", amtj.a(2131700731));
+          paramString2.put("msg", anvx.a(2131701082));
         }
       }
       catch (JSONException paramJsBridgeListener)

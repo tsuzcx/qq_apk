@@ -1,45 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class xop
-  extends vll<xoi, xhv>
+class xop
+  implements bkzs
 {
-  public xop(xoi paramxoi)
-  {
-    super(paramxoi);
-  }
+  xop(xoj paramxoj, AtomicBoolean paramAtomicBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void a(@NonNull xoi paramxoi, @NonNull xhv paramxhv)
+  public void onDismiss()
   {
-    Object localObject = paramxoi.a(paramxhv.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
-    {
-      xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramxhv.jdField_a_of_type_JavaLangString });
-      return;
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    if (!(localObject instanceof xpg))
-    {
-      xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramxhv.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    localObject = (xpg)localObject;
-    if (paramxhv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      ((xpg)localObject).c(paramxhv.jdField_a_of_type_JavaUtilList, false);
-      ((VideoListFeedItem)((xpg)localObject).a).updateVideoInfo(paramxhv.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-      xvv.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video update after count:%d", paramxhv.jdField_a_of_type_JavaLangString, Integer.valueOf(((xpg)localObject).a().size()));
-    }
-    xoi.a(paramxoi).a((xpg)localObject);
   }
-  
-  public Class acceptEventClass()
-  {
-    return xhv.class;
-  }
-  
-  public void b(@NonNull xoi paramxoi, @NonNull xhv paramxhv) {}
 }
 
 

@@ -1,20 +1,50 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aoxa
-  implements View.OnClickListener
+public class aoxa
+  extends aouc
 {
-  aoxa(aowx paramaowx) {}
-  
-  public void onClick(View paramView)
+  public aoxa(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    acmy.a(aowx.a(this.a), -3, "user canceled");
-    aowx.a(this.a).a();
-    aowx.a(this.a).dismiss();
-    aowx.a(this.a, null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    try
+    {
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      if (TextUtils.isEmpty(arng.a().h())) {}
+      for (String str = "https://docs.qq.com/desktop/m/index.html?_from=1";; str = arng.a().h())
+      {
+        this.a.startActivity(localIntent.putExtra("url", str));
+        break;
+      }
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("TeamWorkListAction", 1, "doAction error: " + localException.getMessage());
+      a("TeamWorkListAction");
+    }
+    return false;
   }
 }
 

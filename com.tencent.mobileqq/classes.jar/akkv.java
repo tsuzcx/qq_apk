@@ -1,41 +1,29 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class akkv
-  extends akld
+class akkv
+  implements DialogInterface.OnClickListener
 {
-  public akkv()
-  {
-    this.jdField_a_of_type_Int = 2131562696;
-    this.jdField_a_of_type_Boolean = true;
-  }
+  akkv(akkr paramakkr, QQAppInterface paramQQAppInterface) {}
   
-  private void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    akle localakle = null;
-    if ((paramView.getTag() instanceof akle)) {
-      localakle = (akle)paramView.getTag();
+    switch (paramInt)
+    {
     }
-    if ((localakle == null) || (localakle.a == null) || (paramRecentBaseData == null)) {
+    for (;;)
+    {
+      this.jdField_a_of_type_Akkr.a.dismiss();
       return;
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6C", "0X8009B6C", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Akkr.b();
+      akkr.a(this.jdField_a_of_type_Akkr, akkr.a(this.jdField_a_of_type_Akkr), true, Long.valueOf(akkr.b(this.jdField_a_of_type_Akkr)).longValue(), false);
+      continue;
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
+      akkr.a(this.jdField_a_of_type_Akkr, akkr.a(this.jdField_a_of_type_Akkr), true, Long.valueOf(akkr.b(this.jdField_a_of_type_Akkr)).longValue(), true);
     }
-    baql.a(paramContext, localakle.a, paramRecentBaseData.getRecentUserUin());
-  }
-  
-  public View a(int paramInt, Object paramObject, aklg paramaklg, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aknm paramaknm)
-  {
-    return super.a(paramInt, paramObject, paramaklg, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramaknm);
-  }
-  
-  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
-  {
-    super.a(paramView, paramRecentBaseData, paramContext, paramDrawable);
-    a(paramView, paramRecentBaseData, paramContext);
   }
 }
 

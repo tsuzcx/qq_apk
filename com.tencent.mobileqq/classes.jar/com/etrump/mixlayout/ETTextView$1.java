@@ -1,7 +1,7 @@
 package com.etrump.mixlayout;
 
 import android.view.View;
-import bhbb;
+import bilt;
 import com.tencent.mobileqq.text.QQText.SmallEmojiSpan;
 import com.tencent.qphone.base.util.QLog;
 import fn;
@@ -13,8 +13,8 @@ public class ETTextView$1
   
   public void run()
   {
-    if (this.this$0.getTag(2131368336) != null) {}
-    for (boolean bool = ((Boolean)this.this$0.getTag(2131368336)).booleanValue();; bool = false)
+    if (this.this$0.getTag(2131368493) != null) {}
+    for (boolean bool = ((Boolean)this.this$0.getTag(2131368493)).booleanValue();; bool = false)
     {
       if ((this.this$0.isSingleClick) && (this.this$0.onSingleClick != null) && (!bool))
       {
@@ -33,7 +33,7 @@ public class ETTextView$1
         }
         this.this$0.onSingleClick.a(this.this$0);
       }
-      this.this$0.setTag(2131368336, Boolean.valueOf(false));
+      this.this$0.setTag(2131368493, Boolean.valueOf(false));
       return;
     }
   }

@@ -5,11 +5,9 @@ import java.util.HashMap;
 class ReflectLivenessState$1
   extends HashMap<String, Object>
 {
-  ReflectLivenessState$1(ReflectLivenessState paramReflectLivenessState, int paramInt)
+  ReflectLivenessState$1(ReflectLivenessState paramReflectLivenessState)
   {
-    put("process_action", "failed");
-    put("error_code", Integer.valueOf(5242883));
-    put("message", "Init YTReflect SDK failed with " + this.val$initR);
+    put("version_tips", "反光库版本异常！目标版本：" + ReflectLivenessState.access$000(this.this$0) + " 当前版本：" + "3.6.2");
   }
 }
 

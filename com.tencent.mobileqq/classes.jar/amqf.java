@@ -1,53 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class amqf
-  implements atek
+public class amqf
+  implements DialogInterface.OnClickListener
 {
-  amqf(amqd paramamqd, long paramLong) {}
+  public amqf(HotChatCenterFragment paramHotChatCenterFragment, HotChatInfo paramHotChatInfo, String paramString1, RecentBaseData paramRecentBaseData, String paramString2) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aszk.c(BaseApplicationImpl.getContext().getString(2131692389));
-    ((amqd)this.jdField_a_of_type_Amqd.app.getBusinessHandler(8)).OnSessionComplete(this.jdField_a_of_type_Long, 41, paramInt);
-  }
-  
-  public void a(Object paramObject)
-  {
-    Object localObject = (String)paramObject;
-    paramObject = (amqd)this.jdField_a_of_type_Amqd.app.getBusinessHandler(8);
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramObject.OnSessionComplete(this.jdField_a_of_type_Long, 0, -999);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isWifiHotChat)
+    {
+      paramInt = 1;
+      bdla.b(HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment), "CliOper", "", "", "0X8004D2C", "0X8004D2C", paramInt, 0, "", "", "", "");
+      if ((!this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.isAdded()) || (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getActivity().getApplicationContext()))) {
+        break label98;
+      }
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getActivity().getApplicationContext(), anvx.a(2131705025), 0).b(0);
     }
-    DataLineMsgRecord localDataLineMsgRecord;
+    label98:
     do
     {
-      do
+      return;
+      paramInt = 2;
+      break;
+      ((anwd)HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment).getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL);
+      if (HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment).get() != null)
       {
-        return;
-        int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_Long);
-        localDataLineMsgRecord = this.jdField_a_of_type_Amqd.app.getMessageFacade().getDatalineMessageManager(i).a(this.jdField_a_of_type_Long);
-      } while (localDataLineMsgRecord == null);
-      localDataLineMsgRecord.serverPath = ((String)localObject);
-      localDataLineMsgRecord.nOpType = 1;
-      localDataLineMsgRecord.bIsSended = true;
-      localDataLineMsgRecord.bIsTransfering = false;
-      if (localDataLineMsgRecord.entityID != 0L)
-      {
-        localObject = this.jdField_a_of_type_Amqd.app.getFileManagerDataCenter().a(localDataLineMsgRecord.entityID);
-        if (localObject != null)
-        {
-          ((FileManagerEntity)localObject).status = 1;
-          ((FileManagerEntity)localObject).Uuid = localDataLineMsgRecord.serverPath;
+        if (QLog.isColorLevel()) {
+          QLog.d("HotchatActivity", 2, "remove");
         }
+        ((anwa)HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment).get()).b(this.jdField_a_of_type_JavaLangString);
       }
-    } while (!paramObject.a(localDataLineMsgRecord));
-    paramObject.a(localDataLineMsgRecord);
+    } while (HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment) == null);
+    ((amqg)HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment)).b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.b);
   }
 }
 

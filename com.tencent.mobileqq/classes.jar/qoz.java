@@ -1,34 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class qoz
-  implements View.OnClickListener
+class qoz
+  implements qxg
 {
-  qoz(qor paramqor) {}
+  qoz(qox paramqox, List paramList, ArticleInfo paramArticleInfo, qfw paramqfw) {}
   
-  public final void onClick(View paramView)
+  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
   {
-    qor.a(this.a, qor.a(this.a) ^ true);
-    if (qor.a(this.a)) {
-      if (qor.a(this.a).a()) {
-        qor.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849347, 0, 0, 0);
-      }
-    }
-    for (;;)
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      QLog.i("PackProteusItem", 1, "[onItemClick] position overflow, position = " + paramInt + ", size = " + this.jdField_a_of_type_JavaUtilList.size());
       return;
-      qor.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849348, 0, 0, 0);
-      continue;
-      if (qor.a(this.a).a()) {
-        qor.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849353, 0, 0, 0);
-      } else {
-        qor.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849354, 0, 0, 0);
-      }
+    }
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
+      paramTemplateBean = (BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      this.jdField_a_of_type_Qfw.a().a().a().a(paramTemplateBean, paramViewBase.getNativeView(), paramInt, paramInt);
+      return;
+    }
+    catch (Exception paramViewBase)
+    {
+      QLog.e("PackProteusItem", 1, "[onItemClick], e = " + paramViewBase);
     }
   }
 }

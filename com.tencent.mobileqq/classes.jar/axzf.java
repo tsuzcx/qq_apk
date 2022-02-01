@@ -1,42 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.collections.CollectionsKt;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/view/ConstellationView$Companion;", "", "()V", "reqCardDisplaySettingIfNotPrepared", "", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class axzf
+public class axzf
+  implements View.OnLayoutChangeListener
 {
-  public final boolean a(@NotNull QQAppInterface paramQQAppInterface)
+  public axzf(StuffContainerView paramStuffContainerView) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
-    Object localObject = paramQQAppInterface.getManager(51);
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.FriendsManager");
-    }
-    localObject = ((amsw)localObject).c(paramQQAppInterface.getCurrentUin());
-    azbd localazbd = azbc.a;
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "selfProfileCard");
-    if (localazbd.a(41609, (Card)localObject, paramQQAppInterface) == -1) {}
-    for (boolean bool = true;; bool = false)
+    long l1 = System.currentTimeMillis();
+    long l2 = StuffContainerView.a(this.a);
+    if ((StuffContainerView.a(this.a) > 0L) && (l1 - l2 < 500L)) {}
+    do
     {
+      return;
+      StuffContainerView.a(this.a, l1);
       if (QLog.isColorLevel()) {
-        QLog.d("ConstellationView", 2, new Object[] { "onSelectStatusCallback: called. ", "displaySettingNotPrepared: " + bool });
+        QLog.d("StuffContainerView", 2, "VideoInfoListenerImpl onLayoutChange");
       }
-      if (!bool) {
-        return bool;
-      }
-      paramQQAppInterface = paramQQAppInterface.getBusinessHandler(182);
-      if (paramQQAppInterface != null) {
-        break;
-      }
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.profilesetting.CardSettingHandler");
-    }
-    ((ayzx)paramQQAppInterface).a(CollectionsKt.arrayListOf(new Integer[] { Integer.valueOf(41609) }));
-    return bool;
+    } while (this.a.a == null);
+    this.a.a.l();
   }
 }
 

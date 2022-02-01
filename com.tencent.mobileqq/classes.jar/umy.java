@@ -1,59 +1,59 @@
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import java.util.Queue;
 
-public class umy
+class umy
 {
-  public umx a;
-  public una a;
-  public unb a;
+  public int a;
+  public Context a;
+  public TextView a;
+  public Queue<String> a;
   
-  public umy()
+  public umy(TextView paramTextView, int paramInt, Context paramContext, Queue<String> paramQueue)
   {
-    this.jdField_a_of_type_Unb = new unb(null);
-    this.jdField_a_of_type_Una = new una(null);
-    this.jdField_a_of_type_Umx = new umx(null);
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilQueue = paramQueue;
   }
   
-  private static JSONObject a(String paramString)
+  public void a()
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        return paramString;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-      }
+    switch (this.jdField_a_of_type_Int)
+    {
     }
-    return null;
-  }
-  
-  public static umy a()
-  {
-    return (umy)apub.a().a(447);
-  }
-  
-  public void a(String paramString)
-  {
-    uya.b("WeSeeConfigBean", "WeSeeConfigBean content = " + paramString);
-    paramString = a(paramString);
-    if (paramString == null) {
+    for (;;)
+    {
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_Int == 3) {
+        this.jdField_a_of_type_Int = 0;
+      }
       return;
-    }
-    this.jdField_a_of_type_Unb = unb.a(paramString.optJSONObject("video_plugin_threshold"));
-    this.jdField_a_of_type_Una = una.a(paramString.optJSONObject("trends_tab_strategy"));
-    this.jdField_a_of_type_Umx = umx.a(paramString.optJSONObject("beacon_report_strategy"));
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("WeSeeConfigBean{mPluginConfigInfo=").append(this.jdField_a_of_type_Unb).append(", mStrategyConfig=");
-    if (this.jdField_a_of_type_Una != null) {}
-    for (String str = this.jdField_a_of_type_Una.a;; str = "null") {
-      return str + "mBeaconConfigInfo=" + this.jdField_a_of_type_Umx + '}';
+      Object localObject = new GradientDrawable();
+      ((GradientDrawable)localObject).setCornerRadius(AIOUtils.dp2px(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((GradientDrawable)localObject).setColor(Color.argb(102, 0, 0, 0));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.argb(255, 255, 255, 255));
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable((Drawable)localObject);
+      localObject = (String)this.jdField_a_of_type_JavaUtilQueue.poll();
+      this.jdField_a_of_type_JavaUtilQueue.offer(localObject);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetTextView, "translationY", new float[] { 0.0F, -AIOUtils.dp2px(29.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) }).setDuration(300L).start();
+      continue;
+      localObject = new GradientDrawable();
+      ((GradientDrawable)localObject).setCornerRadius(AIOUtils.dp2px(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -AIOUtils.dp2px(29.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -AIOUtils.dp2px(59.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) });
+      localValueAnimator.setDuration(300L);
+      localValueAnimator.addUpdateListener(new umz(this, (GradientDrawable)localObject));
+      localValueAnimator.start();
+      continue;
+      ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetTextView, "translationY", new float[] { -AIOUtils.dp2px(59.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -AIOUtils.dp2px(110.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) }).setDuration(300L).start();
     }
   }
 }

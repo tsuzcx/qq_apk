@@ -1,56 +1,31 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.2;
+import com.tencent.qphone.base.util.QLog;
 
-class bdzl
-  implements Comparator<MessageRecord>
+public class bdzl
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  bdzl(bdzk parambdzk) {}
+  public bdzl(VideoSprite.2 param2) {}
   
-  private long a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    return a(paramMessageRecord1, paramMessageRecord2, paramMessageRecord1.time - paramMessageRecord2.time);
-  }
-  
-  private long a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, long paramLong)
-  {
-    long l = paramLong;
-    boolean bool2;
-    if (paramLong == 0L)
+    try
     {
-      boolean bool1 = abwz.r(paramMessageRecord1.msgtype);
-      bool2 = abwz.r(paramMessageRecord2.msgtype);
-      if (!bool1) {
-        break label53;
+      this.a.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+      this.a.this$0.g = true;
+      if (this.a.this$0.jdField_a_of_type_Bdzp != null) {
+        this.a.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.this$0, 33L);
       }
-      if (!bool2) {
-        break label51;
-      }
-      l = paramMessageRecord1.time - paramMessageRecord2.time;
+      return;
     }
-    label51:
-    label53:
-    do
+    catch (Exception paramMediaPlayer)
     {
-      return l;
-      return 1L;
-      l = paramLong;
-    } while (!bool2);
-    return -1L;
-  }
-  
-  private long b(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq;
-  }
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    long l2 = b(paramMessageRecord1, paramMessageRecord2);
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = a(paramMessageRecord1, paramMessageRecord2);
+      while (!QLog.isColorLevel()) {}
+      QLog.e("VideoSprite", 2, "playVideo: " + QLog.getStackTraceString(paramMediaPlayer));
     }
-    return (int)l1;
   }
 }
 

@@ -1,15 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.graphics.Bitmap;
 
-final class rxe
-  extends AnimatorListenerAdapter
+class rxe
+  implements rxj
 {
-  rxe(View paramView) {}
+  int jdField_a_of_type_Int = -1;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public rxe(rxb paramrxb, int paramInt)
   {
-    this.a.setLayerType(0, null);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a() {}
+  
+  public void a(Bitmap paramBitmap, rxh paramrxh)
+  {
+    rxb.a(this.jdField_a_of_type_Rxb).a(this.jdField_a_of_type_Int);
   }
 }
 

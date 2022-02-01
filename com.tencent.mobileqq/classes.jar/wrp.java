@@ -1,15 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class wrp
-  implements View.OnTouchListener
+public class wrp
+  extends vzj
 {
-  private wrp(wrm paramwrm) {}
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public wrp(ErrorMessage paramErrorMessage, String paramString1, String paramString2, String paramString3)
   {
-    return wrm.a(this.a).a(paramMotionEvent);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString3;
+  }
+  
+  public String toString()
+  {
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.c + "} " + super.toString();
   }
 }
 

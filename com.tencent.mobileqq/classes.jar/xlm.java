@@ -1,34 +1,97 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.net.Uri;
+import java.nio.ByteBuffer;
+import java.util.Map;
 
-class xlm
-  extends QQUIEventReceiver<xlj, wci>
+public class xlm
 {
-  public xlm(@NonNull xlj paramxlj)
+  private MediaExtractor a;
+  
+  public xlm()
   {
-    super(paramxlj);
+    a();
   }
   
-  public void a(@NonNull xlj paramxlj, @NonNull wci paramwci)
+  public final int a()
   {
-    if ((paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwci.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramwci.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramxlj.jdField_a_of_type_JavaLangString)))
-    {
-      xvv.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramwci);
-      paramxlj.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramwci.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      xlj.a(paramxlj).e();
-      xlj.a(paramxlj).c();
-      xlj.a(paramxlj).d();
-      xlj.a(paramxlj).a();
+    return this.a.getTrackCount();
+  }
+  
+  public int a(ByteBuffer paramByteBuffer, int paramInt)
+  {
+    return this.a.readSampleData(paramByteBuffer, paramInt);
+  }
+  
+  public long a()
+  {
+    return this.a.getSampleTime();
+  }
+  
+  @TargetApi(16)
+  public MediaFormat a(int paramInt)
+  {
+    MediaFormat localMediaFormat = this.a.getTrackFormat(paramInt);
+    if (localMediaFormat.getString("mime").startsWith("video/")) {
+      localMediaFormat.setFloat("mpx-dar", localMediaFormat.getInteger("width") / localMediaFormat.getInteger("height"));
     }
+    return localMediaFormat;
   }
   
-  public Class acceptEventClass()
+  @TargetApi(16)
+  protected void a()
   {
-    return wci.class;
+    if (this.a != null) {
+      this.a.release();
+    }
+    this.a = new MediaExtractor();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.selectTrack(paramInt);
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    this.a.seekTo(paramLong, paramInt);
+  }
+  
+  public final void a(Context paramContext, Uri paramUri, Map<String, String> paramMap)
+  {
+    this.a.setDataSource(paramContext, paramUri, paramMap);
+  }
+  
+  public boolean a()
+  {
+    return this.a.advance();
+  }
+  
+  public int b()
+  {
+    return this.a.getSampleTrackIndex();
+  }
+  
+  public long b()
+  {
+    return this.a.getCachedDuration();
+  }
+  
+  public void b()
+  {
+    this.a.release();
+  }
+  
+  public boolean b()
+  {
+    return this.a.hasCacheReachedEndOfStream();
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

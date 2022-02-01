@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import bbwq;
+import bddl;
 import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
 import java.io.File;
 
 public class AudioEncoder
 {
-  public static int a(bbwq parambbwq)
+  public static int a(bddl parambddl)
   {
     try
     {
-      int i = encode(parambbwq.jdField_a_of_type_JavaLangString, parambbwq.jdField_b_of_type_JavaLangString, parambbwq.jdField_a_of_type_Int, parambbwq.jdField_b_of_type_Int, parambbwq.c, parambbwq.d, parambbwq.e);
+      int i = encode(parambddl.jdField_a_of_type_JavaLangString, parambddl.jdField_b_of_type_JavaLangString, parambddl.jdField_a_of_type_Int, parambddl.jdField_b_of_type_Int, parambddl.c, parambddl.d, parambddl.e);
       return i;
     }
-    catch (UnsatisfiedLinkError parambbwq) {}
+    catch (UnsatisfiedLinkError parambddl) {}
     return -200;
   }
   
@@ -32,29 +32,29 @@ public class AudioEncoder
     return 0;
   }
   
-  public static bbwq a(String paramString1, String paramString2, int paramInt)
+  public static bddl a(String paramString1, String paramString2, int paramInt)
   {
-    bbwq localbbwq = new bbwq();
-    localbbwq.jdField_a_of_type_JavaLangString = paramString1;
-    localbbwq.jdField_b_of_type_JavaLangString = paramString2;
-    localbbwq.jdField_a_of_type_Int = paramInt;
-    localbbwq.d = CodecParam.mAudioSampleRate;
-    localbbwq.c = CodecParam.mDstAudioEncBitrate;
+    bddl localbddl = new bddl();
+    localbddl.jdField_a_of_type_JavaLangString = paramString1;
+    localbddl.jdField_b_of_type_JavaLangString = paramString2;
+    localbddl.jdField_a_of_type_Int = paramInt;
+    localbddl.d = CodecParam.mAudioSampleRate;
+    localbddl.c = CodecParam.mDstAudioEncBitrate;
     if (CodecParam.mAudioFormat == 2) {}
-    for (localbbwq.jdField_b_of_type_Int = 16; CodecParam.mAudioChannel == 16; localbbwq.jdField_b_of_type_Int = 8)
+    for (localbddl.jdField_b_of_type_Int = 16; CodecParam.mAudioChannel == 16; localbddl.jdField_b_of_type_Int = 8)
     {
-      localbbwq.e = 1;
-      return localbbwq;
+      localbddl.e = 1;
+      return localbddl;
     }
-    localbbwq.e = 2;
-    return localbbwq;
+    localbddl.e = 2;
+    return localbddl;
   }
   
   private static native int encode(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.AudioEncoder
  * JD-Core Version:    0.7.0.1
  */

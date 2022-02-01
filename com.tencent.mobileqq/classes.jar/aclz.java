@@ -1,23 +1,30 @@
-import android.support.annotation.NonNull;
-import org.json.JSONObject;
+import java.util.Comparator;
 
-public class aclz
-  extends acjv
+final class aclz
+  implements Comparator<aclx>
 {
-  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull acjr paramacjr)
+  public int a(aclx paramaclx1, aclx paramaclx2)
   {
-    switch (paramInt)
+    if ((paramaclx1 == null) && (paramaclx2 == null)) {}
+    do
     {
-    default: 
-      return false;
-    }
-    acmy.a(paramacjr, acjt.a);
-    return true;
+      return 0;
+      if ((paramaclx1 == null) && (paramaclx2 != null)) {
+        return 1;
+      }
+      if ((paramaclx1 != null) && (paramaclx2 == null)) {
+        return -1;
+      }
+      if (paramaclx1.a() > paramaclx2.a()) {
+        return -1;
+      }
+    } while (paramaclx1.a() >= paramaclx2.a());
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aclz
  * JD-Core Version:    0.7.0.1
  */

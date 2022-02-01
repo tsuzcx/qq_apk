@@ -1,6 +1,7 @@
 package com.tencent.youtu.sdkkitframework.framework;
 
 import com.tencent.youtu.sdkkitframework.common.YtLogger;
+import com.tencent.youtu.sdkkitframework.common.YtSDKStats;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -10,9 +11,11 @@ public abstract class YtFSMBaseState
   protected boolean isFirstEnter = true;
   public HashMap<String, Object> stateData;
   protected String stateName;
+  protected String stateSimpleName;
   
   public void enter()
   {
+    YtSDKStats.getInstance().enterState(this.stateSimpleName);
     if (this.isFirstEnter)
     {
       this.isFirstEnter = false;
@@ -38,6 +41,11 @@ public abstract class YtFSMBaseState
     return this.stateName;
   }
   
+  public String getStateSimpleName()
+  {
+    return this.stateSimpleName;
+  }
+  
   public void handleEvent(YtSDKKitFramework.YtFrameworkFireEventType paramYtFrameworkFireEventType, Object paramObject) {}
   
   public void handleStateAction(String paramString, Object paramObject) {}
@@ -45,7 +53,23 @@ public abstract class YtFSMBaseState
   public void loadStateWith(String paramString, JSONObject paramJSONObject)
   {
     this.stateName = paramString;
-    this.stateData = new HashMap();
+    try
+    {
+      this.stateSimpleName = Class.forName(paramString).getSimpleName();
+      YtLogger.i(TAG, "load " + this.stateSimpleName);
+      this.stateData = new HashMap();
+      YtSDKStats.getInstance().registerStateName(this.stateSimpleName);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      for (;;)
+      {
+        paramString = paramString.split("\\.");
+        this.stateSimpleName = paramString[(paramString.length - 1)];
+        paramJSONObject.printStackTrace();
+      }
+    }
   }
   
   public void moveToNextState()
@@ -61,18 +85,22 @@ public abstract class YtFSMBaseState
   {
     this.isFirstEnter = true;
     this.stateData.clear();
-    YtLogger.d(TAG, this.stateName + " reset");
+    YtLogger.i(TAG, this.stateName + " reset");
   }
   
   public void unload()
   {
+    YtLogger.i(TAG, "unload " + this.stateSimpleName);
     this.stateData.clear();
   }
   
-  public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    YtLogger.d(TAG, this.stateName + " update image : " + paramInt1 + "x" + paramInt2);
+    YtSDKStats.getInstance().updateState(this.stateName);
+    YtLogger.d(TAG, this.stateName + " update image : " + paramInt1 + "x" + paramInt2 + " type " + paramInt3);
   }
+  
+  public void updateSDKSetting(JSONObject paramJSONObject) {}
 }
 
 

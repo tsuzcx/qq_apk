@@ -1,9 +1,38 @@
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.utils.VipUtils;
 
-public class amzl
-  implements BusinessObserver
+class amzl
+  implements amre
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  amzl(amzk paramamzk) {}
+  
+  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    amzk localamzk = this.a;
+    if (amzk.a(this.a).jdField_b_of_type_Boolean)
+    {
+      paramStartCheckParam = amzk.a(this.a).e;
+      amzk.a(localamzk, paramStartCheckParam);
+      if (!"message".equals(amzk.a(this.a).f)) {
+        break label101;
+      }
+    }
+    label101:
+    for (int i = 1;; i = 0)
+    {
+      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(amzk.a(this.a).jdField_b_of_type_Int) });
+      return;
+      paramStartCheckParam = amzk.a(this.a).d;
+      break;
+    }
+  }
+  
+  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (amzk.a(this.a) != null) {
+      amzk.a(this.a).c(-10001, amzk.a(this.a).jdField_b_of_type_JavaLangString);
+    }
+  }
 }
 
 

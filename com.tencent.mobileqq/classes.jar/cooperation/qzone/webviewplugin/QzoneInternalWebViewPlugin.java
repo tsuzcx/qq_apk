@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Looper;
 import android.text.TextUtils;
-import bgve;
+import bifw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;

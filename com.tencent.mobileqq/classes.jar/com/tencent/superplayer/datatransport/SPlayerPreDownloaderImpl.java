@@ -25,6 +25,7 @@ public class SPlayerPreDownloaderImpl
   public static final String TAG = SPlayerPreDownloaderImpl.class.getSimpleName();
   private ISPlayerPreDownloader.Listener mCallbackListener;
   private Context mContext;
+  private boolean mEnableP2P = false;
   private HandlerThread mHandlerThread;
   private Looper mLooper;
   private ITPPreloadProxy mTPPreloadProxy;
@@ -146,6 +147,12 @@ public class SPlayerPreDownloaderImpl
       this.mHandlerThread.quit();
       this.mHandlerThread = null;
     }
+    this.mCallbackListener = null;
+  }
+  
+  public void setEnableP2P(boolean paramBoolean)
+  {
+    this.mEnableP2P = paramBoolean;
   }
   
   public void setOnPreDownloadListener(ISPlayerPreDownloader.Listener paramListener)
@@ -155,27 +162,41 @@ public class SPlayerPreDownloaderImpl
   
   public int startPreDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong)
   {
-    int i = this.mTaskIdIncreaser.addAndGet(1);
-    LogUtil.d(TAG, "startPreDownload() videoInfo=" + paramSuperPlayerVideoInfo.toString() + ", preloadSize=" + paramLong + ", taskId=" + i);
+    int i = 1;
+    int j = this.mTaskIdIncreaser.addAndGet(1);
+    LogUtil.d(TAG, "startPreDownload() videoInfo=" + paramSuperPlayerVideoInfo.toString() + ", preloadSize=" + paramLong + ", taskId=" + j);
     TPDownloadParamData localTPDownloadParamData = new TPDownloadParamData();
     localTPDownloadParamData.setPreloadSize(paramLong);
     localTPDownloadParamData.setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
     localTPDownloadParamData.setUrlHostList(paramSuperPlayerVideoInfo.getUrlHostList());
-    createPreDownloadTask(paramSuperPlayerVideoInfo, localTPDownloadParamData, i);
-    return i;
+    if (this.mEnableP2P) {}
+    for (;;)
+    {
+      localTPDownloadParamData.setFp2p(i);
+      createPreDownloadTask(paramSuperPlayerVideoInfo, localTPDownloadParamData, j);
+      return j;
+      i = 0;
+    }
   }
   
   public int startPreDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong1, long paramLong2)
   {
-    int i = this.mTaskIdIncreaser.addAndGet(1);
-    LogUtil.d(TAG, "startPreDownload() videoInfo=" + paramSuperPlayerVideoInfo.toString() + ", videoDurationMs=" + paramLong1 + ", preloadDurationMs=" + paramLong2 + ", taskId=" + i);
+    int i = 1;
+    int j = this.mTaskIdIncreaser.addAndGet(1);
+    LogUtil.d(TAG, "startPreDownload() videoInfo=" + paramSuperPlayerVideoInfo.toString() + ", videoDurationMs=" + paramLong1 + ", preloadDurationMs=" + paramLong2 + ", taskId=" + j);
     TPDownloadParamData localTPDownloadParamData = new TPDownloadParamData();
     localTPDownloadParamData.setFileDuration(paramLong1);
     localTPDownloadParamData.setPreloadDuration(paramLong2);
     localTPDownloadParamData.setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
     localTPDownloadParamData.setUrlHostList(paramSuperPlayerVideoInfo.getUrlHostList());
-    createPreDownloadTask(paramSuperPlayerVideoInfo, localTPDownloadParamData, i);
-    return i;
+    if (this.mEnableP2P) {}
+    for (;;)
+    {
+      localTPDownloadParamData.setFp2p(i);
+      createPreDownloadTask(paramSuperPlayerVideoInfo, localTPDownloadParamData, j);
+      return j;
+      i = 0;
+    }
   }
   
   public void stopAllPreDownload()

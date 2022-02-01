@@ -1,22 +1,12 @@
 public abstract interface uru
 {
-  public abstract void a(urt paramurt);
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public abstract void a(urt paramurt, int paramInt);
+  public abstract void a(int paramInt1, int paramInt2, Object paramObject);
   
-  public abstract void a(urt paramurt, int paramInt1, int paramInt2, String paramString);
+  public abstract void b(int paramInt1, int paramInt2);
   
-  public abstract void a(urt paramurt, boolean paramBoolean);
-  
-  public abstract void b(urt paramurt);
-  
-  public abstract void c(urt paramurt);
-  
-  public abstract void d(urt paramurt);
-  
-  public abstract void e(urt paramurt);
-  
-  public abstract void f(urt paramurt);
+  public abstract void c(int paramInt1, int paramInt2);
 }
 
 

@@ -1,18 +1,8 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-
-class agda
-  extends aghj
+public abstract interface agda
 {
-  agda(agcw paramagcw)
-  {
-    super(paramagcw, null);
-  }
+  public abstract void a();
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new agqx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

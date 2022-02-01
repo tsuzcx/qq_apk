@@ -1,40 +1,69 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
-class blpz
-  implements Observer<Boolean>
+public class blpz
 {
-  blpz(blpr paramblpr) {}
+  private final int jdField_a_of_type_Int;
+  public avlg a;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int c = 0;
+  private int d;
   
-  public void a(@Nullable Boolean paramBoolean)
+  public blpz(int paramInt1, int paramInt2)
   {
-    if (paramBoolean == null) {}
-    do
-    {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    c();
+  }
+  
+  private void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      if (blpr.a(this.a).a())
-      {
-        this.a.a.setVisibility(8);
-        return;
-      }
-      if (blpr.a(this.a).b())
-      {
-        if (!blpr.a(this.a))
-        {
-          AEBottomListScrollView localAEBottomListScrollView = this.a.a;
-          if (paramBoolean.booleanValue()) {}
-          for (int i = 0;; i = 4)
-          {
-            localAEBottomListScrollView.setVisibility(i);
-            return;
-          }
-        }
-        this.a.a.setVisibility(8);
-        return;
-      }
-    } while (!blpr.a(this.a).c());
-    this.a.a.setVisibility(8);
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (this.jdField_b_of_type_Boolean) {}
+    for (int i = 0;; i = 1)
+    {
+      blpy.a(localAppRuntime, i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(this.d) });
+      c();
+      return;
+    }
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = 0;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.d = 0;
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_b_of_type_Boolean = true;
+    b();
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    blpz localblpz = (blpz)blpy.a().get(Integer.valueOf(this.jdField_a_of_type_Int));
+    if ((localblpz != null) && (localblpz.jdField_a_of_type_Boolean)) {
+      localblpz.b();
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.c = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramInt2;
+    blpy.a().put(Integer.valueOf(this.jdField_a_of_type_Int), this);
   }
 }
 

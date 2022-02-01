@@ -10,9 +10,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bljs;
-import blvb;
-import bmbx;
+import bmws;
+import bnke;
+import bnrh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener2;
@@ -31,14 +31,14 @@ public class AEPlayShowGridViewHolder
   private static final String APNG_BASE_PATH;
   private static final Map<String, WeakReference<URLDrawable>> APNG_CACHE;
   private static final String APNG_DIR_NAME = "play_show_apng";
-  private static final Drawable APNG_LOADING_DRAWABLE = getAppContext().getResources().getDrawable(2130837670);
+  private static final Drawable APNG_LOADING_DRAWABLE = getAppContext().getResources().getDrawable(2130837685);
   private final String TAG = "AEPlayShowGridViewHolder";
   private int layoutType;
   private URLDrawable mApngUrlDrawable;
   private String mId = "";
   private AEPlayShowGridViewHolder.ItemClickCallback mItemClickCallback;
   private String mPlayImageUrl = "";
-  blvb mPlayMaterial;
+  bnke mPlayMaterial;
   private View mPlayShowBottomShadow;
   private ImageView mPlayShowImage;
   private View mPlayShowInfoContainer;
@@ -50,7 +50,7 @@ public class AEPlayShowGridViewHolder
   static
   {
     APNG_CACHE = new HashMap();
-    File localFile = new File(bljs.a, "play_show_apng");
+    File localFile = new File(bmws.a, "play_show_apng");
     APNG_BASE_PATH = localFile.getPath();
     if (!localFile.exists()) {
       localFile.mkdirs();
@@ -65,11 +65,11 @@ public class AEPlayShowGridViewHolder
       paramView.post(new AEPlayShowGridViewHolder.1(this, paramView));
     }
     this.mItemClickCallback = paramItemClickCallback;
-    this.mPlayShowImage = ((ImageView)paramView.findViewById(2131362282));
-    this.mPlayShowInfoContainer = paramView.findViewById(2131362283);
-    this.mPlayShowText = ((TextView)paramView.findViewById(2131362286));
-    this.mPlayShowProgressBar = ((ProgressBar)paramView.findViewById(2131362285));
-    this.mPlayShowBottomShadow = paramView.findViewById(2131362284);
+    this.mPlayShowImage = ((ImageView)paramView.findViewById(2131362287));
+    this.mPlayShowInfoContainer = paramView.findViewById(2131362288);
+    this.mPlayShowText = ((TextView)paramView.findViewById(2131362291));
+    this.mPlayShowProgressBar = ((ProgressBar)paramView.findViewById(2131362290));
+    this.mPlayShowBottomShadow = paramView.findViewById(2131362289);
     paramItemClickCallback = paramView.getLayoutParams();
     paramItemClickCallback.width = paramSizeInfo.itemWidth;
     paramItemClickCallback.height = paramSizeInfo.itemHeight;
@@ -77,17 +77,17 @@ public class AEPlayShowGridViewHolder
     paramView.setOnClickListener(new AEPlayShowGridViewHolder.2(this));
   }
   
-  private void bindContent(@NonNull blvb paramblvb)
+  private void bindContent(@NonNull bnke parambnke)
   {
-    this.mId = paramblvb.a;
-    if (TextUtils.isEmpty(paramblvb.m)) {}
-    for (String str = "";; str = paramblvb.m)
+    this.mId = parambnke.a;
+    if (TextUtils.isEmpty(parambnke.m)) {}
+    for (String str = "";; str = parambnke.m)
     {
       this.mPlayText = str;
-      this.mPlayImageUrl = paramblvb.l;
-      paramblvb = APNG_BASE_PATH + File.separator + this.mPlayImageUrl.hashCode() + "_" + this.mId.hashCode() + ".png";
+      this.mPlayImageUrl = parambnke.l;
+      parambnke = APNG_BASE_PATH + File.separator + this.mPlayImageUrl.hashCode() + "_" + this.mId.hashCode() + ".png";
       showTemplateInfoViews();
-      this.mApngUrlDrawable = getApngDrawable(paramblvb, this.mPlayImageUrl);
+      this.mApngUrlDrawable = getApngDrawable(parambnke, this.mPlayImageUrl);
       if (this.mApngUrlDrawable != null)
       {
         this.mApngUrlDrawable.setURLDrawableListener(this);
@@ -121,14 +121,14 @@ public class AEPlayShowGridViewHolder
     this.mPlayShowText.setText(this.mPlayText);
   }
   
-  public void bind(@NonNull blvb paramblvb, int paramInt)
+  public void bind(@NonNull bnke parambnke, int paramInt)
   {
-    this.mPlayMaterial = paramblvb;
+    this.mPlayMaterial = parambnke;
     this.mPosition = paramInt;
     if (this.mApngUrlDrawable != null) {
       this.mApngUrlDrawable.setURLDrawableListener(null);
     }
-    bindContent(paramblvb);
+    bindContent(parambnke);
     this.mPlayShowProgressBar.setVisibility(8);
   }
   
@@ -137,8 +137,8 @@ public class AEPlayShowGridViewHolder
     if ((paramString == null) || (!paramString.equals(this.mPlayMaterial.a))) {
       return;
     }
-    bmbx.b("AEPlayShowGridViewHolder", "【Play Item】onDownloadFinish id:" + paramString);
-    bmbx.b("AEPlayShowGridViewHolder", "【Play Item】onDownloadFinish isSuccess:" + paramBoolean);
+    bnrh.b("AEPlayShowGridViewHolder", "【Play Item】onDownloadFinish id:" + paramString);
+    bnrh.b("AEPlayShowGridViewHolder", "【Play Item】onDownloadFinish isSuccess:" + paramBoolean);
     ThreadManager.getUIHandler().post(new AEPlayShowGridViewHolder.4(this, paramBoolean));
   }
   

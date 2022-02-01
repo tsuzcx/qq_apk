@@ -1,47 +1,10 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-
-class bmtz
-  implements boay
+public abstract interface bmtz
 {
-  bmtz(bmty parambmty) {}
+  public abstract void a(long paramLong, float paramFloat);
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
-  {
-    synchronized (bmty.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(bmty.a(this.a).id))
-      {
-        bmty.a(this.a).downloading = true;
-        bmty.a(this.a, 1.0F * paramInt / 100.0F);
-        bmty.a(this.a, 1);
-      }
-      return;
-    }
-  }
+  public abstract void a(String paramString);
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    synchronized (bmty.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(bmty.a(this.a).id))
-      {
-        bmty.a(this.a).downloading = false;
-        bmty.a(this.a).usable = paramBoolean;
-      }
-      if (paramBoolean)
-      {
-        if (bmty.a(this.a).id.equals(paramPtvTemplateInfo.id))
-        {
-          bmty.a(this.a, 3);
-          bmty.a(this.a, 1.0F);
-          this.a.b();
-        }
-        return;
-      }
-      this.a.a(4);
-      bmty.a(this.a, 2);
-    }
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

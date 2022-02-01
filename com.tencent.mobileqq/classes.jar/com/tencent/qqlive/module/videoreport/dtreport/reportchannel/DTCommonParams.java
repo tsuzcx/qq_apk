@@ -19,9 +19,10 @@ class DTCommonParams
     put(localHashMap, "dt_wxunionid", paramIDTParamProvider.getWxUnionID());
     put(localHashMap, "dt_wbopenid", paramIDTParamProvider.getWbOpenID());
     put(localHashMap, "dt_mainlogin", paramIDTParamProvider.getMainLogin());
-    put(localHashMap, "dt_starttype", String.valueOf(paramIDTParamProvider.getStartType()));
-    put(localHashMap, "dt_callfrom", paramIDTParamProvider.getCallFrom());
-    put(localHashMap, "dt_callschema", paramIDTParamProvider.getCallScheme());
+    DTAdditionalReportHandler localDTAdditionalReportHandler = DTAdditionalReportHandler.getInstance();
+    put(localHashMap, "dt_starttype", String.valueOf(localDTAdditionalReportHandler.getStartType()));
+    put(localHashMap, "dt_callfrom", localDTAdditionalReportHandler.getCallFrom());
+    put(localHashMap, "dt_callschema", localDTAdditionalReportHandler.getCallScheme());
     put(localHashMap, "dt_omgbzid", paramIDTParamProvider.getOmgbzid());
     put(localHashMap, "dt_fchlid", paramIDTParamProvider.getFactoryChannelId());
     put(localHashMap, "dt_mchlid", paramIDTParamProvider.getModifyChannelId());
@@ -30,7 +31,7 @@ class DTCommonParams
     put(localHashMap, "dt_tid", paramIDTParamProvider.getTid());
     put(localHashMap, "dt_oaid", paramIDTParamProvider.getOaid());
     put(localHashMap, "dt_guid", paramIDTParamProvider.getGuid());
-    put(localHashMap, "dt_sdkversion", String.valueOf(1746));
+    put(localHashMap, "dt_sdkversion", String.valueOf(1840));
     return localHashMap;
   }
   

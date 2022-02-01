@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afsw;
+import agkk;
 import android.os.Handler;
 import android.os.Message;
-import bddg;
+import beki;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -11,18 +11,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class TogetherControlHelper$3
   implements Runnable
 {
-  public TogetherControlHelper$3(afsw paramafsw, String paramString) {}
+  public TogetherControlHelper$3(agkk paramagkk, String paramString) {}
   
   public void run()
   {
-    if (afsw.a(this.this$0).compareAndSet(true, true)) {}
-    while (!bddg.a(bddg.a(afsw.a(this.this$0).app, afsw.a(this.this$0).sessionInfo.curFriendUin, afsw.a(this.this$0).sessionInfo.curType))) {
+    if (agkk.a(this.this$0).compareAndSet(true, true)) {}
+    while (!beki.a(beki.a(agkk.a(this.this$0).app, agkk.a(this.this$0).sessionInfo.curFriendUin, agkk.a(this.this$0).sessionInfo.curType))) {
       return;
     }
-    afsw.a(this.this$0).removeMessages(3);
-    Message localMessage = afsw.a(this.this$0).obtainMessage(3);
+    agkk.a(this.this$0).removeMessages(3);
+    Message localMessage = agkk.a(this.this$0).obtainMessage(3);
     localMessage.obj = this.a;
-    afsw.a(this.this$0).sendMessage(localMessage);
+    agkk.a(this.this$0).sendMessage(localMessage);
   }
 }
 

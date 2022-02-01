@@ -1,6 +1,14 @@
-public abstract interface bnvb
+import java.util.concurrent.ConcurrentHashMap;
+
+class bnvb
+  implements bnvd
 {
-  public abstract void a();
+  bnvb(bnva parambnva) {}
+  
+  public void a(int paramInt)
+  {
+    bnuz.a(this.a.jdField_a_of_type_Bnuz).put(Integer.valueOf(paramInt), this.a.jdField_a_of_type_Bnvy);
+  }
 }
 
 

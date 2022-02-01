@@ -1,27 +1,16 @@
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class bnlp
-  implements Comparable
+class bnlp
+  implements DialogInterface.OnCancelListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  bnlp(bnln parambnln) {}
   
-  public bnlp(String paramString1, String paramString2, int paramInt, String paramString3)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = paramString3;
-  }
-  
-  public int compareTo(@NonNull Object paramObject)
-  {
-    if ((paramObject instanceof bnlp)) {
-      return this.b.compareTo(((bnlp)paramObject).b);
-    }
-    return 0;
+    bnrh.a("AEGIFStickerListPart", "[mTakeSameLoadingDialog.onCancel]");
+    bnln.a(this.a, null);
+    bnjw.a().a();
   }
 }
 

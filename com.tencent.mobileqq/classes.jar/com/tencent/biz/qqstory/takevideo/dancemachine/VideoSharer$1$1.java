@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.takevideo.dancemachine;
 
-import amtj;
+import anvx;
 import com.tencent.mobileqq.widget.QQToast;
-import ybw;
+import yqp;
 
 class VideoSharer$1$1
   implements Runnable
@@ -13,14 +13,14 @@ class VideoSharer$1$1
   {
     String str = "";
     if (this.jdField_a_of_type_Int == -1) {
-      str = amtj.a(2131715402);
+      str = anvx.a(2131715750);
     }
     for (;;)
     {
       QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDancemachineVideoSharer$1.this$0.a, 1, str, 0).a();
       return;
       if (this.jdField_a_of_type_Int == -2) {
-        str = amtj.a(2131715384);
+        str = anvx.a(2131715732);
       }
     }
   }

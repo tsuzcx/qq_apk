@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-public class adan
-  extends amzn
+class adan
+  implements View.OnClickListener
 {
-  public adan(ChatSettingActivity paramChatSettingActivity) {}
+  adan(adak paramadak, adaj paramadaj, adab paramadab, JSONObject paramJSONObject, adaa paramadaa) {}
   
-  public void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramObject != null) {
-      ((Integer)paramObject).intValue();
-    }
+    this.jdField_a_of_type_Adak.d();
+    QLog.i("DoraemonOpenAPI.apiMgr", 1, "reject " + this.jdField_a_of_type_Adaj.a);
+    adak.a(this.jdField_a_of_type_Adak, this.jdField_a_of_type_Adaj, 1);
+    adak.b(this.jdField_a_of_type_Adak, 4, this.jdField_a_of_type_Adab, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Adaa);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

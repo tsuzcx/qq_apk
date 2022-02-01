@@ -1,8 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-
-public abstract interface puq
+public class puq
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo);
+  public int a;
+  public String a;
+  public String b;
+  
+  public String toString()
+  {
+    return "styleID = " + this.jdField_a_of_type_JavaLangString + ", proteusData = " + this.b + ", rankWeight = " + this.jdField_a_of_type_Int;
+  }
 }
 
 

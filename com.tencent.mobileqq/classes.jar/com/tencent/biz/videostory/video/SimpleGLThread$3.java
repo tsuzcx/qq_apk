@@ -1,21 +1,21 @@
 package com.tencent.biz.videostory.video;
 
+import aann;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.ttpic.baseutils.gles.EglCore;
 import com.tencent.ttpic.baseutils.gles.OffscreenSurface;
-import zyb;
 
 public class SimpleGLThread$3
   implements Runnable
 {
-  public SimpleGLThread$3(zyb paramzyb) {}
+  public SimpleGLThread$3(aann paramaann) {}
   
   public void run()
   {
-    zyb.a(this.this$0).release();
-    zyb.a(this.this$0).release();
-    zyb.a(this.this$0).getLooper().quit();
+    aann.a(this.this$0).release();
+    aann.a(this.this$0).release();
+    aann.a(this.this$0).getLooper().quit();
   }
 }
 

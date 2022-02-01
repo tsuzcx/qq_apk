@@ -1,61 +1,184 @@
-import android.support.annotation.NonNull;
-import java.util.Comparator;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.map.geolocation.TencentDirectionListener;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tencent.map.geolocation.TencentLocationListener;
+import com.tencent.map.geolocation.TencentLocationManager;
+import com.tencent.map.geolocation.TencentLocationRequest;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.onlinestatus.location.LocationHandler.1;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.lang.reflect.Field;
+import mqq.os.MqqHandler;
 
 public class azey
-  implements Comparator<azfm>
 {
-  private int a;
+  public static LatLng a;
+  private double jdField_a_of_type_Double = 0.0D;
+  private volatile azfb jdField_a_of_type_Azfb;
+  private TencentDirectionListener jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener;
+  private TencentLocation jdField_a_of_type_ComTencentMapGeolocationTencentLocation;
+  private TencentLocationListener jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener;
+  private TencentLocationManager jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager;
   
-  public azey(int paramInt)
+  private void a(boolean paramBoolean)
   {
-    this.a = paramInt;
+    try
+    {
+      if (this.jdField_a_of_type_Azfb != null)
+      {
+        LatLng localLatLng = new LatLng(this.jdField_a_of_type_ComTencentMapGeolocationTencentLocation.getLatitude(), this.jdField_a_of_type_ComTencentMapGeolocationTencentLocation.getLongitude());
+        Object localObject1 = localLatLng;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = localLatLng;
+          if (jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng != null) {
+            localObject1 = jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+          }
+        }
+        localObject1 = new azex((LatLng)localObject1, this.jdField_a_of_type_ComTencentMapGeolocationTencentLocation.getProvider(), this.jdField_a_of_type_ComTencentMapGeolocationTencentLocation.getAccuracy(), this.jdField_a_of_type_ComTencentMapGeolocationTencentLocation.getTime());
+        if (QLog.isColorLevel()) {
+          QLog.e("LocationHandler", 2, "[status][loc] notifyLocationUpdate location: " + localObject1);
+        }
+        this.jdField_a_of_type_Azfb.a((azex)localObject1, Double.valueOf(this.jdField_a_of_type_Double), paramBoolean);
+      }
+      return;
+    }
+    finally {}
   }
   
-  public int a(@NonNull azfm paramazfm1, @NonNull azfm paramazfm2)
+  private void b()
   {
-    if (this.a == 1) {
-      if (paramazfm1.e <= paramazfm2.e) {}
-    }
-    do
+    try
     {
-      do
+      if (this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager == null)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return -1;
-              if (paramazfm1.e < paramazfm2.e) {
-                return 1;
-              }
-            } while (paramazfm1.jdField_a_of_type_Float > paramazfm2.jdField_a_of_type_Float);
-            if (paramazfm1.jdField_a_of_type_Float < paramazfm2.jdField_a_of_type_Float) {
-              return 1;
-            }
-          } while (paramazfm1.jdField_a_of_type_Long > paramazfm2.jdField_a_of_type_Long);
-          if (paramazfm1.jdField_a_of_type_Long < paramazfm2.jdField_a_of_type_Long) {
-            return 1;
-          }
-        } while (paramazfm1.c > paramazfm2.c);
-        if (paramazfm1.c < paramazfm2.c) {
-          return 1;
-        }
-      } while (paramazfm1.d > paramazfm2.d);
-      if (paramazfm1.d < paramazfm2.d) {
-        return 1;
+        QLog.e("LocationHandler", 1, "mLocationManager is null");
+        return;
       }
-      return 0;
-      if (this.a != 2) {
-        break;
+      Field localField1 = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.getClass().getDeclaredField("c");
+      if (localField1 == null)
+      {
+        QLog.e("LocationHandler", 1, "field c is null");
+        return;
       }
-    } while (paramazfm1.jdField_a_of_type_Long > paramazfm2.jdField_a_of_type_Long);
-    if (paramazfm1.jdField_a_of_type_Long < paramazfm2.jdField_a_of_type_Long) {
-      return 1;
     }
-    return 0;
-    return 0;
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      localNoSuchFieldException.printStackTrace();
+      return;
+      localNoSuchFieldException.setAccessible(true);
+      Object localObject1 = localNoSuchFieldException.get(this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager);
+      if (localObject1 == null)
+      {
+        QLog.e("LocationHandler", 1, "cObject is null");
+        return;
+      }
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      localIllegalAccessException.printStackTrace();
+      return;
+    }
+    Field localField2 = localIllegalAccessException.getClass().getDeclaredField("b");
+    if (localField2 == null)
+    {
+      QLog.e("LocationHandler", 1, "field b is null");
+      return;
+    }
+    localField2.setAccessible(true);
+    Object localObject2 = localField2.get(localIllegalAccessException);
+    if (localObject2 == null)
+    {
+      QLog.e("LocationHandler", 1, "bObject is null");
+      return;
+    }
+    localField2 = localObject2.getClass().getDeclaredField("g");
+    if (localField2 == null)
+    {
+      QLog.e("LocationHandler", 1, "field g is null");
+      return;
+    }
+    localField2.setAccessible(true);
+    localField2.set(localObject2, null);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "stopLocationUpdate: invoked. ");
+    }
+    if (this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager != null)
+    {
+      this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener = null;
+      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.removeUpdates(this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener);
+      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.stopDirectionUpdate();
+      b();
+    }
+  }
+  
+  public void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    LocationHandler.1 local1 = new LocationHandler.1(this, paramBoolean1);
+    MqqHandler localMqqHandler = ThreadManager.getUIHandler();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "[LocationManager] startLocationUpdate: invoked.  add over time runnable");
+    }
+    if (paramBoolean1) {
+      localMqqHandler.postDelayed(local1, 15000L);
+    }
+    this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager = TencentLocationManager.getInstance(BaseApplicationImpl.context);
+    this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener = new azez(this, local1, localMqqHandler);
+    this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener = new azfa(this);
+    int i = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.requestLocationUpdates(TencentLocationRequest.create().setInterval(paramLong), this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener);
+    if (i != 0)
+    {
+      QLog.e("LocationHandler", 1, "[LocationManager] requestLocationUpdates: invoked. error: " + i);
+      QQToast.a(BaseApplicationImpl.context, "地图定位系统初始化失败，请稍后重试", 0).a();
+      if (this.jdField_a_of_type_Azfb != null) {
+        this.jdField_a_of_type_Azfb.a(i);
+      }
+    }
+    if (paramBoolean2)
+    {
+      i = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.startDirectionUpdates(this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener, Looper.myLooper());
+      if (i != 0)
+      {
+        QLog.e("LocationHandler", 1, "[LocationManager] startDirectionUpdates: invoked. error: " + i);
+        QQToast.a(BaseApplicationImpl.context, 1, "方向箭头暂不可用", 0).a();
+      }
+    }
+  }
+  
+  public void a(azfb paramazfb)
+  {
+    try
+    {
+      this.jdField_a_of_type_Azfb = paramazfb;
+      return;
+    }
+    finally
+    {
+      paramazfb = finally;
+      throw paramazfb;
+    }
+  }
+  
+  public void b(azfb paramazfb)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, "removeLocationListener: invoked. listener: " + paramazfb + " mLocationListener: " + this.jdField_a_of_type_Azfb);
+      }
+      if (paramazfb == this.jdField_a_of_type_Azfb) {
+        this.jdField_a_of_type_Azfb = null;
+      }
+      return;
+    }
+    finally {}
   }
 }
 

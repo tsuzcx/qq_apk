@@ -1,21 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahzg
-  implements aicb
+class ahzg
+  implements View.OnClickListener
 {
-  public ahzg(SearchContactsFragment paramSearchContactsFragment) {}
+  ahzg(ahzc paramahzc) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = 80000001;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_label", 0, 0, "", "", paramString, "");
-      this.a.d = false;
-      this.a.a(paramString, false);
-    }
+    this.a.d(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

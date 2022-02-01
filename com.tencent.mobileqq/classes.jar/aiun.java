@@ -1,31 +1,12 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class aiun
-  implements View.OnClickListener
+public class aiun
 {
-  aiun(aium paramaium, DialogInterface.OnClickListener paramOnClickListener) {}
+  public int a;
+  public int b;
   
-  public void onClick(View paramView)
+  public aiun(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Aium, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Aium.isShowing()) {
-        this.jdField_a_of_type_Aium.dismiss();
-      }
-      label38:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label38;
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

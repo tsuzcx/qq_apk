@@ -1,12 +1,18 @@
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ril
+  implements qie
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
-  ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
+  public ril(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if ((paramBoolean) && (paramInt == 2)) {
+      ThreadManager.post(new ComponentHeaderTopicRecommend.4.1(this), 5, null, true);
+    }
+  }
 }
 
 

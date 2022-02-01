@@ -1,26 +1,13 @@
-import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
-public final class augb
-  extends bgod
+public class augb
+  implements biyc
 {
-  public augb(String paramString) {}
+  public augb(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public void onDone(bgoe parambgoe)
+  public void a(int paramInt)
   {
-    PayLikeFloatViewBuilder.a(false);
-    if (parambgoe.a == 0)
-    {
-      parambgoe = new File(this.a + ".tmp");
-      if (parambgoe.exists()) {
-        parambgoe.renameTo(new File(this.a));
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
+    QfileEditBottomBar.a(this.a);
   }
 }
 

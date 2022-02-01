@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import amvo;
 import android.os.Bundle;
+import anyb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -20,7 +20,7 @@ class FriendListHandler$6
     if (QLog.isColorLevel()) {
       QLog.d("FriendListHandler", 2, "cancelMayKnowRecommend|uin = " + this.val$uin);
     }
-    ((amvo)this.this$0.mApp.getManager(159)).b(this.val$uin);
+    ((anyb)this.this$0.mApp.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER)).b(this.val$uin);
     this.this$0.notifyUI(93, true, this.val$uin);
     try
     {

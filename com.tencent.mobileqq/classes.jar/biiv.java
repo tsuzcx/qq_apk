@@ -1,91 +1,16 @@
-import android.content.Context;
-import com.tencent.av.video.call.ClientLogReport;
-import com.tencent.av.video.call.GAClientLogReport;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import java.util.ArrayList;
 
 public class biiv
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private biiy jdField_a_of_type_Biiy;
+  public static int a;
+  public static ArrayList<String> a;
+  public static boolean a;
+  public static boolean b;
   
-  public biiv(Context paramContext, biiy parambiiy)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    bijd.a().a(this.jdField_a_of_type_AndroidContentContext, a());
-    this.jdField_a_of_type_Biiy = parambiiy;
-    ClientLogReport.instance();
-    GAClientLogReport.instance();
-  }
-  
-  public static int a()
-  {
-    int i;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
-    }
-    for (;;)
-    {
-      bija.c("QavCtrl", String.format("getApn networkType=%s", new Object[] { Integer.valueOf(i) }));
-      return i;
-      if (AppNetConnInfo.isMobileConn()) {
-        switch (AppNetConnInfo.getMobileInfo())
-        {
-        default: 
-          i = 100;
-          break;
-        case 1: 
-          i = 3;
-          break;
-        case 2: 
-          i = 9;
-          break;
-        case 3: 
-          i = 11;
-          break;
-        case 4: 
-          i = 14;
-          break;
-        }
-      } else {
-        i = 0;
-      }
-    }
-  }
-  
-  public static void a(biir parambiir)
-  {
-    if (parambiir != null) {
-      parambiir.b();
-    }
-  }
-  
-  public static void a(biir parambiir, Context paramContext, long paramLong)
-  {
-    if (parambiir != null) {
-      parambiir.b(lkq.a(paramLong, String.valueOf(AppSetting.a()), paramContext));
-    }
-  }
-  
-  public biiw a()
-  {
-    return this.jdField_a_of_type_Biiy;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Biiy != null)
-    {
-      this.jdField_a_of_type_Biiy.g();
-      this.jdField_a_of_type_Biiy = null;
-    }
-    this.jdField_a_of_type_AndroidContentContext = null;
-    bijd.a().a();
-  }
-  
-  protected boolean a()
-  {
-    return true;
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Int = -1;
   }
 }
 

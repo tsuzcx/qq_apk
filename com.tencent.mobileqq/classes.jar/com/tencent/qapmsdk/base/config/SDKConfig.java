@@ -1,5 +1,6 @@
 package com.tencent.qapmsdk.base.config;
 
+import com.tencent.qapmsdk.base.BuildConfig;
 import kotlin.Metadata;
 import kotlin.jvm.JvmField;
 import org.jetbrains.annotations.NotNull;
@@ -8,14 +9,30 @@ import org.jetbrains.annotations.NotNull;
 public final class SDKConfig
 {
   public static final SDKConfig.Companion Companion = new SDKConfig.Companion(null);
-  private static int MAX_AUSTERITY_REPORT_NUM = 100;
-  private static int MAX_LOOSE_REPORT_NUM = 100;
+  private static int MAX_AUSTERITY_REPORT_NUM = 0;
+  private static int MAX_LOOSE_REPORT_NUM = 0;
   @JvmField
-  public static int RES_TYPE = 2;
+  public static final boolean PURE_QAPM;
+  @JvmField
+  public static int RES_TYPE = 0;
   @NotNull
-  public static final String SDK_VER = "3.10.7.84116";
-  private static float USER_SAMPLE_RATIO = 1.0F;
+  public static final String SDK_VER = "4.0.2.08-PCG";
+  private static float USER_SAMPLE_RATIO;
   private static int VER_TYPE;
+  
+  static
+  {
+    if (!BuildConfig.SPECIAL_MODE.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PURE_QAPM = bool;
+      USER_SAMPLE_RATIO = 1.0F;
+      MAX_AUSTERITY_REPORT_NUM = 100;
+      MAX_LOOSE_REPORT_NUM = 100;
+      RES_TYPE = 2;
+      return;
+    }
+  }
 }
 
 

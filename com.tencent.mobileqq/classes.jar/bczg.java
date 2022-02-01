@@ -1,27 +1,20 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.hardware.camera2.CameraCharacteristics;
+import android.text.TextUtils;
 
-class bczg
-  implements View.OnClickListener
+public class bczg
 {
-  bczg(bczc parambczc) {}
+  public CameraCharacteristics a;
+  public String a;
   
-  public void onClick(View paramView)
+  public bczg(String paramString, CameraCharacteristics paramCameraCharacteristics)
   {
-    PadInfo localPadInfo = (PadInfo)((bcxo)paramView.getTag()).a;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", nny.a(localPadInfo.pad_url, "_bid=2517"));
-    localBundle.putInt("key_team_work_edit_type", localPadInfo.type);
-    localBundle.putString("key_team_work_title", localPadInfo.title);
-    localBundle.putString("key_team_work_rul", localPadInfo.pad_url);
-    localBundle.putInt("key_team_work_pad_list_type", localPadInfo.type_list);
-    localBundle.putString("tdsourcetag", "s_qq_grpfile");
-    TeamWorkDocEditBrowserActivity.a(this.a.a, localBundle, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics = paramCameraCharacteristics;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics != null);
   }
 }
 

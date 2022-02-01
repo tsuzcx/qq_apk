@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afgg
-  implements bcrf
+public class afgg
+  implements View.OnClickListener
 {
-  afgg(afgf paramafgf) {}
+  public afgg(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    int i = this.a.a.jdField_a_of_type_Int / 2;
-    int j = (int)(this.a.a.b - DisplayUtil.dip2px(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Bcsi.b / 2.0F);
-    int k = (int)(this.a.a.b - DisplayUtil.dip2px(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Bcsi.b / 2.0F);
-    bcrn localbcrn = new bcrn(new bcre[] { new bcri(450, i, j, i, k), new bcri(450, i, k, i, j) });
-    localbcrn.a = true;
-    this.a.a.jdField_a_of_type_Bcsi.a(new bcre[] { localbcrn });
+    this.a.jdField_d_of_type_Boolean = true;
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.findViewById(2131369233));
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setText(anvx.a(2131715001));
+    this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new afgh(this));
+    TroopMemberListActivity.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

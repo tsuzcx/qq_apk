@@ -1,64 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.SVIPHandler.1;
-import com.tencent.mobileqq.bubble.BubbleDiyEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.webviewplugin.Hole;
+import com.tencent.mobileqq.apollo.process.ui.framework.QzoneGameFloatView;
 
 public class anak
-  implements BusinessObserver
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public anak(SVIPHandler.1 param1, apec paramapec) {}
+  public anak(QzoneGameFloatView paramQzoneGameFloatView, View paramView, DisplayMetrics paramDisplayMetrics) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onGlobalLayout()
   {
-    try
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    for (;;)
     {
-      String str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler$1.this$0.b());
-      if ((paramObject instanceof List))
-      {
-        paramObject = (List)paramObject;
-        if (paramObject.size() > 0)
-        {
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
-          {
-            Object localObject = (BubbleDiyEntity)paramObject.next();
-            String str2;
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topLeftId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TL_" + ((BubbleDiyEntity)localObject).topLeftId;
-              this.jdField_a_of_type_Apec.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topRightId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TR_" + ((BubbleDiyEntity)localObject).topRightId;
-              this.jdField_a_of_type_Apec.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomRightId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_BR_" + ((BubbleDiyEntity)localObject).bottomRightId;
-              this.jdField_a_of_type_Apec.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomLeftId))
-            {
-              localObject = "BubbleDiyFetcher_" + str1 + "_BL_" + ((BubbleDiyEntity)localObject).bottomLeftId;
-              this.jdField_a_of_type_Apec.b.add(localObject);
-            }
-          }
-        }
-      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentBizWebviewpluginHole.setHole((this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getLeft() + this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getRight()) / 2 - 1, (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getBottom()) / 2 - 1, (int)(30.0F * this.jdField_a_of_type_AndroidUtilDisplayMetrics.density));
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentBizWebviewpluginHole.invalidate();
       return;
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-    catch (Exception paramObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SVIPHandler", 2, paramObject.getMessage());
-      }
-    }
-    this.jdField_a_of_type_Apec.b();
   }
 }
 

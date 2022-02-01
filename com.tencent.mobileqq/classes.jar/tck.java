@@ -1,23 +1,20 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
 
-class tck
-  extends bjmc
+public class tck
+  extends RecyclerViewWithHeaderFooterFix
 {
-  tck(tci paramtci) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public tck(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Context paramContext)
   {
-    super.onAnimationEnd(paramAnimation);
-    if (tch.a(this.a.a) != null)
-    {
-      paramAnimation = new ArrayList();
-      paramAnimation.add(tch.a(this.a.a));
-      tch.a(this.a.a).a(paramAnimation, tch.a(this.a.a));
-      QQToast.a(this.a.a.a, 2, 2131717383, 0).a();
-    }
+    super(paramContext);
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.a(paramViewHolder, paramInt);
+    this.a.a(paramViewHolder, paramInt);
   }
 }
 

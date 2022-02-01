@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby;
 
-import ajpv;
-import awka;
-import awkj;
+import aklj;
+import axqc;
+import axql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
@@ -17,13 +17,13 @@ class NearbyTitleBarActivity$ReportRunnable$1
   {
     try
     {
-      awka.d(this.this$0.jdField_a_of_type_JavaLangString);
+      axqc.d(this.this$0.jdField_a_of_type_JavaLangString);
       long l1 = this.this$0.jdField_a_of_type_Long - this.this$0.c;
       long l2 = this.this$0.d - this.this$0.c;
       long l3 = this.this$0.jdField_b_of_type_Long;
       long l4 = this.this$0.c;
       HashMap localHashMap = new HashMap();
-      localHashMap.put("param_DeviceType", ajpv.a() + "");
+      localHashMap.put("param_DeviceType", aklj.a() + "");
       localHashMap.put("param_PreloadType", this.this$0.jdField_b_of_type_Int + "");
       if ((l1 > 0L) && (l1 < 60000L) && (l2 > 0L) && (l2 < 60000L))
       {
@@ -34,7 +34,7 @@ class NearbyTitleBarActivity$ReportRunnable$1
       }
       while (QLog.isColorLevel())
       {
-        awkj.a("NearbyProcessPerf", new Object[] { Integer.valueOf(this.this$0.jdField_a_of_type_Int), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3 - l4), Integer.valueOf(this.this$0.jdField_b_of_type_Int) });
+        axql.a("NearbyProcessPerf", new Object[] { Integer.valueOf(this.this$0.jdField_a_of_type_Int), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3 - l4), Integer.valueOf(this.this$0.jdField_b_of_type_Int) });
         return;
         label261:
         if (this.this$0.jdField_a_of_type_Int == 1) {

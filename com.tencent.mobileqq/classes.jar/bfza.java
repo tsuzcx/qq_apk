@@ -1,64 +1,38 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import java.util.HashSet;
-import java.util.Set;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
 public class bfza
+  extends bfyf
 {
-  public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Set<String> paramSet)
+  public bfza(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    return a(paramEditor, paramString, paramSet.toArray());
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = 3;
   }
   
-  public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Object[] paramArrayOfObject)
+  @Nullable
+  public bfyg a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    String str = "";
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
-    {
-      int j = paramArrayOfObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramArrayOfObject[i];
-        str = str + localObject.toString();
-        str = str + " ";
-        i += 1;
-      }
-      paramEditor.putString(paramString, str);
-      return paramEditor;
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramLong1);
+    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
+      return new bfyg(true, this.jdField_a_of_type_AndroidContentContext.getString(2131697357), bffr.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
     }
-    paramEditor.putString(paramString, "");
-    return paramEditor;
+    return null;
   }
   
-  public static Set<String> a(SharedPreferences paramSharedPreferences, String paramString, Set<String> paramSet)
+  public void a(int paramInt, Object paramObject, String paramString)
   {
-    paramString = paramSharedPreferences.getString(paramString, "");
-    paramSharedPreferences = paramSet;
-    if (paramString != null)
-    {
-      paramSharedPreferences = paramSet;
-      if (paramString.length() > 0)
-      {
-        paramSet = paramString.split(" ");
-        paramString = new HashSet();
-        int j = paramSet.length;
-        int i = 0;
-        for (;;)
-        {
-          paramSharedPreferences = paramString;
-          if (i >= j) {
-            break;
-          }
-          paramSharedPreferences = paramSet[i];
-          if ((paramSharedPreferences != null) && (paramSharedPreferences.length() > 0)) {
-            paramString.add(paramSharedPreferences);
-          }
-          i += 1;
-        }
-      }
-    }
-    return paramSharedPreferences;
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_album", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
+  }
+  
+  public void b(int paramInt, Object paramObject, String paramString)
+  {
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_album", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
   }
 }
 

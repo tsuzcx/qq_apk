@@ -1,37 +1,51 @@
-import android.graphics.Bitmap;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.AudioUploadTask;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.data.AudioInfo;
+import java.io.File;
 
-class bezo
+public class bezo
   extends Handler
 {
-  bezo(bezn parambezn, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bezo(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.a) {}
-    Object localObject;
-    String str;
-    do
+    switch (paramMessage.what)
     {
+    default: 
       return;
-      localObject = (Object[])paramMessage.obj;
-      paramMessage = (RollangleImageView)localObject[0];
-      str = (String)localObject[1];
-      localObject = (Bitmap)localObject[2];
-    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
-    paramMessage.setImageBitmap((Bitmap)localObject);
+    case 3: 
+      TroopBarReplyActivity.b(this.a, false);
+      return;
+    }
+    paramMessage = paramMessage.obj.toString();
+    File localFile = new File(paramMessage);
+    if (localFile.exists()) {}
+    for (long l = localFile.length();; l = 0L)
+    {
+      TroopBarReplyActivity.b(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
+      TroopBarReplyActivity.a(this.a, new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l));
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = TroopBarReplyActivity.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask = new TroopBarPublishUtils.AudioUploadTask(this.a, this.a.jdField_a_of_type_AndroidOsHandler, "https://upload.buluo.qq.com/cgi-bin/bar/upload/meida", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
+      ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask, 5, null, true);
+      this.a.a(2, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
+      TroopBarReplyActivity.a(this.a, 0);
+      if (!this.a.k) {
+        break;
+      }
+      bgip.a(this.a.m, this.a.n, "sure_record", this.a.o, "", "", "");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezo
  * JD-Core Version:    0.7.0.1
  */

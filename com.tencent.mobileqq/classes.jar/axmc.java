@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.10.1;
-
 public class axmc
-  extends atvu
 {
-  public axmc(OCRResultFragmentNew paramOCRResultFragmentNew) {}
-  
-  protected void a(boolean paramBoolean, atvx paramatvx)
-  {
-    if (!OCRResultFragmentNew.a(this.a)) {
-      return;
-    }
-    OCRResultFragmentNew.b(this.a, false);
-    OCRResultFragmentNew.a(this.a).runOnUiThread(new OCRResultFragmentNew.10.1(this, paramBoolean, paramatvx));
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

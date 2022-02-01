@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/by" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip">
+        <RelativeLayout android:paddingTop="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip">
+            <TextView android:textSize="@dimen/bf5" android:textColor="@color/aos" android:id="@id/nub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="48.0dip" android:layout_alignParentRight="true" />
+            <TextView android:textSize="@dimen/bf5" android:textColor="@color/aor" android:id="@id/nud" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:text="@string/xwj" android:layout_toLeftOf="@id/nub" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:id="@id/mlh" android:background="@drawable/eoe" android:focusable="true" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <ImageView android:id="@id/mlj" android:background="@drawable/i33" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <ProgressBar android:id="@id/nuc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_toLeftOf="@id/mlh" android:layout_centerVertical="true" style="?android:progressBarStyleHorizontal" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

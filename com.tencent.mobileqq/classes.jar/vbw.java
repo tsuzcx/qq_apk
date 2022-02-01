@@ -1,80 +1,86 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class vbw
-  extends ukz<vaq>
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private vct jdField_a_of_type_Vct;
-  private View b;
+  private final ConcurrentHashMap<String, ConcurrentHashMap<Integer, WeakReference<vbz>>> a = new ConcurrentHashMap();
   
-  public vbw(Context paramContext, vct paramvct)
+  public static vbw a()
   {
-    super(paramContext);
-    this.jdField_a_of_type_Vct = paramvct;
-    if (paramvct != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramvct.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-    }
+    return vby.a();
   }
   
-  private void a(int paramInt1, int paramInt2)
+  private void a(String paramString, vbz paramvbz)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a != null))
+    ConcurrentHashMap localConcurrentHashMap2 = (ConcurrentHashMap)this.a.get(paramString);
+    ConcurrentHashMap localConcurrentHashMap1 = localConcurrentHashMap2;
+    if (localConcurrentHashMap2 == null) {
+      localConcurrentHashMap1 = new ConcurrentHashMap();
+    }
+    localConcurrentHashMap1.put(Integer.valueOf(paramvbz.hashCode()), new WeakReference(paramvbz));
+    this.a.put(paramString, localConcurrentHashMap1);
+    vmp.b("WSSimpleEventBus", 2, "registerReceiver event Name:" + paramString + ",key：[" + paramvbz.getClass().getSimpleName() + ":" + paramvbz.hashCode() + "], subscribers size:" + localConcurrentHashMap1.size());
+  }
+  
+  private void b(String paramString, vbz paramvbz)
+  {
+    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.a.get(paramString);
+    if (localConcurrentHashMap == null) {
+      return;
+    }
+    localConcurrentHashMap.remove(Integer.valueOf(paramvbz.hashCode()));
+    if (localConcurrentHashMap.size() == 0) {
+      this.a.remove(paramString);
+    }
+    vmp.b("WSSimpleEventBus", 2, "unRegisterReceiver event Name:" + paramString + ",key：[" + paramvbz.getClass().getSimpleName() + ":" + paramvbz.hashCode() + "], subscribers size:" + localConcurrentHashMap.size());
+  }
+  
+  public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
+  {
+    Object localObject = (ConcurrentHashMap)this.a.get(paramWSSimpleBaseEvent.getClass().getName());
+    if (localObject == null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(vdq.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a()), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b());
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(a());
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(paramInt1, paramInt2, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b());
+      return;
+      localObject = ((ConcurrentHashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+          ((vbz)localWeakReference.get()).a(paramWSSimpleBaseEvent);
+        }
+      }
     }
   }
   
-  private void f()
+  public void a(vbz paramvbz)
   {
-    a(0, 4);
-  }
-  
-  private void g()
-  {
-    a(1, 7);
-  }
-  
-  protected void a()
-  {
-    if ((a() != null) && ((((vaq)a()).a() instanceof stSimpleMetaFeed))) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)((vaq)a()).a());
+    if (paramvbz == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = paramvbz.a().iterator();
+      while (localIterator.hasNext()) {
+        a(((Class)localIterator.next()).getName(), paramvbz);
+      }
     }
   }
   
-  protected int b()
+  public void b(vbz paramvbz)
   {
-    return 2131560029;
-  }
-  
-  protected void b()
-  {
-    String str = umu.a().f();
-    if (!TextUtils.isEmpty(str)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    if (paramvbz == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = paramvbz.a().iterator();
+      while (localIterator.hasNext()) {
+        b(((Class)localIterator.next()).getName(), paramvbz);
+      }
     }
-  }
-  
-  protected void c() {}
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379532));
-    this.b = a(2131372091);
-    this.b.setOnClickListener(new vbx(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131369176));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new vby(this));
   }
 }
 

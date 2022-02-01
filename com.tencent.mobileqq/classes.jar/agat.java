@@ -1,29 +1,14 @@
 import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class agat
-  implements atah
+  extends bcwb
 {
-  agat(agap paramagap, String paramString1, String paramString2, MessageRecord paramMessageRecord, String paramString3, bgny parambgny) {}
+  agat(agab paramagab) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramView = new Bundle();
-    paramView.putString(bgge.i, this.jdField_a_of_type_JavaLangString);
-    paramView.putString(bgge.c, this.b);
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
-      paramView.putString(bgge.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
-    }
-    bgge.a(this.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agap.jdField_a_of_type_AndroidContentContext, paramView);
-    String str = this.c;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {}
-    for (paramView = "0";; paramView = "1")
-    {
-      VasWebviewUtil.reportVipKeywords(str, paramView, "1", this.jdField_a_of_type_Bgny.a(this.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), this.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "", "", "");
-      return;
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.a();
     }
   }
 }

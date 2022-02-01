@@ -1,15 +1,35 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.view.SurfaceView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhbk
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public bhbk(BounceScrollView paramBounceScrollView) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public static void a(SurfaceView paramSurfaceView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return Math.abs(paramFloat2) >= Math.abs(paramFloat1);
+    if (paramSurfaceView == null)
+    {
+      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: surfaceView==null");
+      return;
+    }
+    if ((paramInt2 <= 0) || (paramInt1 <= 0) || (paramInt3 <= 0) || (paramInt4 <= 0))
+    {
+      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: width height <= 0");
+      return;
+    }
+    if (paramInt2 / paramInt1 > paramInt4 / paramInt3)
+    {
+      paramInt1 = (int)(paramInt1 * paramInt4 / paramInt3);
+      paramInt1 = (int)((paramInt2 - paramInt1) / 2.0F);
+      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+      localLayoutParams.setMargins(0, paramInt1, 0, paramInt1);
+      paramSurfaceView.setLayoutParams(localLayoutParams);
+      return;
+    }
+    paramInt2 = (int)(paramInt2 * paramInt3 / paramInt4);
+    paramInt1 = (int)((paramInt1 - paramInt2) / 2.0F);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    localLayoutParams.setMargins(paramInt1, 0, paramInt1, 0);
+    paramSurfaceView.setLayoutParams(localLayoutParams);
   }
 }
 

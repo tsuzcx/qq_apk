@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.troop.utils;
 
-import anca;
 import android.content.Context;
-import bcef;
+import aoep;
+import bdla;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
@@ -17,7 +19,7 @@ final class TroopUtils$5
   
   public void run()
   {
-    TroopMemberInfo localTroopMemberInfo = ((TroopManager)this.val$app.getManager(52)).b(this.val$troopUin, this.val$memberUin);
+    TroopMemberInfo localTroopMemberInfo = ((TroopManager)this.val$app.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.val$troopUin, this.val$memberUin);
     int j = 0;
     for (;;)
     {
@@ -42,8 +44,8 @@ final class TroopUtils$5
         try
         {
           l = Long.parseLong(arrayOfString[2]);
-          bcef.b(this.val$app, "dc00898", "", "", "0X800AD4F", "0X800AD4F", (int)l, 0, String.valueOf(i), "", "", "");
-          ((anca)this.val$app.getBusinessHandler(20)).c(this.val$troopUin, 2, j);
+          bdla.b(this.val$app, "dc00898", "", "", "0X800AD4F", "0X800AD4F", (int)l, 0, String.valueOf(i), "", "", "");
+          ((aoep)this.val$app.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).c(this.val$troopUin, 2, j);
           j = i;
           if (localTroopMemberInfo == null) {
             break;
@@ -59,12 +61,12 @@ final class TroopUtils$5
         catch (Exception localException2)
         {
           int i;
-          break label214;
+          break label216;
         }
         localException1 = localException1;
         i = 0;
       }
-      label214:
+      label216:
       if (QLog.isColorLevel())
       {
         QLog.i("TroopUtils", 2, "checkAndOpenMemberProfileForRecommendTipsClick " + localException1);

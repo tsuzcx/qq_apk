@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.util;
 
-import aezf;
+import afqr;
 import android.content.Context;
-import bfsu;
-import bfsz;
-import bjne;
+import bhbl;
+import bhbq;
+import bkyq;
 import java.lang.ref.WeakReference;
 
 public class SystemDragUtils$TouchHandler$1
   implements Runnable
 {
-  public SystemDragUtils$TouchHandler$1(bfsz parambfsz, aezf paramaezf) {}
+  public SystemDragUtils$TouchHandler$1(bhbq parambhbq, afqr paramafqr) {}
   
   public void run()
   {
-    bjne.a(new SystemDragUtils.TouchHandler.1.1(this, bfsu.a((Context)this.this$0.a.get(), this.a)));
+    bkyq.a(new SystemDragUtils.TouchHandler.1.1(this, bhbl.a((Context)this.this$0.a.get(), this.a)));
   }
 }
 

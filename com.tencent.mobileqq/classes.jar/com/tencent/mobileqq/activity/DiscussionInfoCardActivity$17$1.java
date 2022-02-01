@@ -22,7 +22,7 @@ class DiscussionInfoCardActivity$17$1
       return;
       if (TextUtils.isEmpty(this.a))
       {
-        QQToast.a(this.this$0.jdField_a_of_type_AndroidAppActivity, 1, 2131716198, 0).b(this.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299076));
+        QQToast.a(this.this$0.jdField_a_of_type_AndroidAppActivity, 1, 2131716557, 0).b(this.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299080));
         return;
       }
       ArrayList localArrayList = new ArrayList();
@@ -42,7 +42,7 @@ class DiscussionInfoCardActivity$17$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.17.1
  * JD-Core Version:    0.7.0.1
  */

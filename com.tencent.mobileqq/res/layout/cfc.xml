@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/aa_" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/n6v" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="fragment" android:layout_centerInParent="true" />
+    <dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView android:id="@id/mnc" android:paddingLeft="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/nnd" />
+    <RelativeLayout android:id="@id/nnd" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/b_a" android:layout_marginTop="8.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/n1a" android:layout_width="120.0dip" android:layout_height="16.0dip" android:layout_marginTop="6.0dip" android:layout_marginBottom="3.0dip" android:src="@drawable/f4i" android:layout_centerHorizontal="true" />
+        <android.support.v7.widget.RecyclerView android:id="@id/ns1" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bbj" android:layout_marginTop="0.0dip" android:layout_marginRight="@dimen/bbj" android:layout_below="@id/n1a" />
+    </RelativeLayout>
 </RelativeLayout>

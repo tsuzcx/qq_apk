@@ -1,18 +1,42 @@
 public class bfkz
 {
   public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
+  public long a;
+  public long b;
   
-  public bfkz(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
+  public bfkz(long paramLong1, long paramLong2, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = ("https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effects_item_" + paramInt1 + ".png");
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!(paramObject instanceof bfkz));
+      paramObject = (bfkz)paramObject;
+    } while ((paramObject.jdField_a_of_type_Long != this.jdField_a_of_type_Long) || (paramObject.b != this.b) || (paramObject.jdField_a_of_type_Int != this.jdField_a_of_type_Int));
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    return (int)this.jdField_a_of_type_Long + (int)this.b + this.jdField_a_of_type_Int;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("troopUin:").append(this.jdField_a_of_type_Long).append(" ");
+    localStringBuilder.append("msgSeq:").append(this.b).append(" ");
+    localStringBuilder.append("msgRandom:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

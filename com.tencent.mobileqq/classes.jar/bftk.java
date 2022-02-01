@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.photo.album.QAlbumCustomAlbumConstants;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
 
 public class bftk
-  implements QAlbumCustomAlbumConstants
+  implements bftp
 {
-  public static final String a = l + "SelectedPhotoList";
-  public static final String b = l + "ForwardWhere";
-  public static final String c = l + "FromWhere";
-  public static final String d = l + "AlbumName";
-  public static final String e = l + "AlbumId";
-  public static final String f = l + "InitActivityClass";
-  public static final String g = l + "DestActivityClass";
-  public static final String h = l + "RequestCode";
-  public static final String i = l + "TempSelectPhotoMap";
-  public static final String j = l + "PassToDestActivity";
-  public static final String k = l + "PassFromDestActivity";
-  private static final String l = bftk.class.getName() + ".";
+  public bftk(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  
+  public void a(View paramView, int paramInt)
+  {
+    paramView = this.a.jdField_a_of_type_Bfto.a(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramView.length());
+    bhbu.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramView });
+  }
 }
 
 

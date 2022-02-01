@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.jsp;
 
-import amtj;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import anvx;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
@@ -102,7 +102,7 @@ public class WebRecordApiPlugin$AudioUploadTask
         catch (JSONException localJSONException1) {}
         localObject4 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(16711690);
         localObject1 = localObject4;
-        ((JSONObject)localObject5).put("msg", amtj.a(2131715902));
+        ((JSONObject)localObject5).put("msg", anvx.a(2131716250));
         localObject2 = localObject4;
         localObject1 = localObject4;
         if (!QLog.isColorLevel()) {

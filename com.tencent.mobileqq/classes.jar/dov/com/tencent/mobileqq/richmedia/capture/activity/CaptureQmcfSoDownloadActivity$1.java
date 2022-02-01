@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.richmedia.capture.activity;
 
 import android.os.Bundle;
-import bmbx;
+import bnrh;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QIMCameraCaptureActivity;
@@ -21,21 +21,21 @@ class CaptureQmcfSoDownloadActivity$1
       if (CaptureQmcfSoDownloadActivity.a(this.this$0))
       {
         if ((CaptureQmcfSoDownloadActivity.a(this.this$0) instanceof CaptureQmcfSoDownloadFragment)) {
-          ((CaptureQmcfSoDownloadFragment)CaptureQmcfSoDownloadActivity.a(this.this$0)).a();
+          ((CaptureQmcfSoDownloadFragment)CaptureQmcfSoDownloadActivity.a(this.this$0)).b();
         }
         for (;;)
         {
           QIMCameraCaptureActivity.a(this.this$0, CaptureQmcfSoDownloadActivity.a(this.this$0), CaptureQmcfSoDownloadActivity.a(this.this$0));
           return;
-          bmbx.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]soDownloadFragment not instanceof CaptureQmcfSoDownloadFragment");
+          bnrh.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]soDownloadFragment not instanceof CaptureQmcfSoDownloadFragment");
         }
       }
-      bmbx.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]hasRequest false");
+      bnrh.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]hasRequest false");
       QIMCameraCaptureActivity.a(this.this$0, CaptureQmcfSoDownloadActivity.a(this.this$0));
       this.this$0.finish();
       return;
     }
-    bmbx.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]BaseActivity.sTopActivity not instanceof CaptureQmcfSoDownloadActivity");
+    bnrh.d(CaptureQmcfSoDownloadActivity.a, "[onFinish]BaseActivity.sTopActivity not instanceof CaptureQmcfSoDownloadActivity");
   }
 }
 

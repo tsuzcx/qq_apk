@@ -1,36 +1,38 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-class awzi
-  implements Animation.AnimationListener
+public class awzi
+  implements BusinessObserver
 {
-  awzi(awyf paramawyf) {}
+  public void a(boolean paramBoolean) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, axam paramaxam) {}
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramAnimation == awyf.b(this.a))
+    switch (paramInt)
     {
-      awyf.a(this.a).setVisibility(8);
-      awyf.a(this.a).clearAnimation();
-      awyf.a(this.a).setBackgroundResource(2130849066);
-      awyf.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166709));
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b(paramBoolean, paramObject);
+      return;
+    case 3: 
+      a(paramBoolean);
+      return;
+    case 4: 
+      a(paramBoolean, (axam)paramObject);
+      return;
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == awyf.a(this.a))
-    {
-      awyf.a(this.a).setVisibility(0);
-      awyf.a(this.a).setBackgroundResource(2130850593);
-      awyf.a(this.a).setTextColor(this.a.a.getResources().getColor(2131167006));
-    }
+    b(paramBoolean);
   }
 }
 

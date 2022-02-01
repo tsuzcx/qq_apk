@@ -1,33 +1,53 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class arfw
-  implements avtb<EmoticonPackage>
 {
-  public arfw(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
+  public boolean a = true;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public static arfw a()
   {
-    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.name != null) && ((paramEmoticonPackage.mobileFeetype != 0) || (paramEmoticonPackage.downloadCount != 0)))
-    {
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getInt("emosm_json_last_download_timestamp", 0);
-      int j = (int)(System.currentTimeMillis() / 1000L);
-      if ((j - i > 86400) || (j < i))
-      {
-        AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
-        return;
-      }
-      agif.a(6, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, null, true);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("ScannerQQCodeConfBean", 2, "defaultBean");
     }
-    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
+    return new arfw();
+  }
+  
+  public static arfw a(String paramString)
+  {
+    localarfw = new arfw();
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ScannerQQCodeConfBean", 2, "parse content: " + paramString);
+      }
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.has("useQBarAIModel")) {
+        if (paramString.optInt("useQBarAIModel") != 1) {
+          break label83;
+        }
+      }
+      label83:
+      for (boolean bool = true;; bool = false)
+      {
+        localarfw.a = bool;
+        return localarfw;
+      }
+      return localarfw;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("ScannerQQCodeConfBean", 1, "parse error->" + paramString.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfw
  * JD-Core Version:    0.7.0.1
  */

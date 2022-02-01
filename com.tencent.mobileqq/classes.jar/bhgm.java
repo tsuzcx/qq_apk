@@ -1,20 +1,20 @@
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.View.OnKeyListener;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bhgm
-  implements View.OnKeyListener
+  implements View.OnClickListener
 {
-  bhgm(bhgl parambhgl) {}
+  bhgm(bhgj parambhgj, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4)
-    {
-      bhgl.a(this.a);
-      return true;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhgj, 0);
     }
-    return false;
+    this.jdField_a_of_type_Bhgj.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

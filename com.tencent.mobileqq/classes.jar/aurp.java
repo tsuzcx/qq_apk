@@ -1,26 +1,35 @@
-import android.content.Intent;
-import android.view.View;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardMultServerShare.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import tencent.im.msg.im_msg_body.RichText;
 
-final class aurp
-  implements bjoe
+public class aurp
+  implements azla
 {
-  aurp(Intent paramIntent, bjnw parambjnw) {}
+  public aurp(ForwardMultServerShare.2 param2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    switch (paramInt)
+    return null;
+  }
+  
+  public void onSend(azlb paramazlb)
+  {
+    this.a.jdField_a_of_type_JavaUtilMap.put(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord, paramazlb);
+    QLog.d(aurn.a(), 1, new Object[] { "requestImageShare onSend result =", paramazlb, ", isTimeOut=", Boolean.valueOf(aurn.a(this.a.this$0)) });
+    if (this.a.jdField_a_of_type_JavaUtilMap.size() == aurn.a(this.a.this$0).size())
     {
-    default: 
-      return;
+      auuv.b("KEY_STAGE_2_UPLOAD_IMAGE_MULT");
+      aurn.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilMap);
     }
-    bcef.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_opener", 0, 0, this.jdField_a_of_type_AndroidContentIntent.getStringExtra("cur_uin"), paramInt + "", "", "");
-    paramView = aurt.a();
-    if (paramInt == 0) {}
-    for (paramInt = 2;; paramInt = 1)
-    {
-      paramView.a(paramInt);
-      this.jdField_a_of_type_Bjnw.dismiss();
-      return;
+  }
+  
+  public void updateMsg(azlb paramazlb)
+  {
+    if (paramazlb != null) {
+      QLog.d(aurn.a(), 1, "requestImageShare updateMsg info =" + paramazlb);
     }
   }
 }

@@ -1,60 +1,63 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeir
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends anzs
 {
-  public aeir(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public aeir(NearbyActivity paramNearbyActivity) {}
   
-  public void onGlobalLayout()
+  protected void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    Object localObject = new Rect();
-    this.a.mUIStyleHandler.mRootView.getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.a.mUIStyleHandler.mRootView.getRootView().getHeight();
-    int j = i - ((Rect)localObject).bottom;
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
-    {
-      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.a.e = j;
+    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth isSuccess=" + paramBoolean + ", checkRet=" + paramInt + ", checkMsg=" + paramString + ", isFinishing=" + this.a.isFinishing() + ", isStopHeartBeat=" + this.a.c);
+    if ((paramBoolean) && (paramInt != 0)) {
+      if (!this.a.isFinishing()) {}
     }
-    if (j > i / 3)
+    while ((this.a.isFinishing()) || (this.a.c))
     {
-      if (this.a.c) {
-        this.a.b(false);
-      }
-      for (;;)
+      do
       {
-        if (this.a.jdField_a_of_type_Int == 2) {
-          this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        }
-        i = (int)mum.b(BaseApplicationImpl.getApplication(), this.a.b + j);
         return;
-        this.a.b(true);
-      }
-    }
-    this.a.b(false);
-    if (this.a.jdField_a_of_type_Int == 2) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    }
-    if (this.a.jdField_a_of_type_Int == 2) {
-      i = (int)mum.b(BaseApplicationImpl.getApplication(), this.a.b);
-    }
-    for (;;)
-    {
-      this.a.d = false;
+        try
+        {
+          QQCustomDialog localQQCustomDialog = bhdj.a(this.a, 230);
+          localQQCustomDialog.setCancelable(false);
+          String str = paramString;
+          if (TextUtils.isEmpty(paramString)) {
+            str = anvx.a(2131706569);
+          }
+          localQQCustomDialog.setMessage(str);
+          localQQCustomDialog.setNegativeButton(anvx.a(2131706570), new aeis(this));
+          localQQCustomDialog.show();
+          new bdlf(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_exp").e(this.a.a.getCurrentAccountUin()).a();
+          return;
+        }
+        catch (Exception paramString) {}
+      } while (!QLog.isColorLevel());
+      QLog.d("nearby.NearbyActivity", 2, "onCheckNearbyUserAuth exp:" + paramString.toString());
       return;
-      if (this.a.jdField_a_of_type_Int != 1) {}
+    }
+    this.a.e();
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
+    }
+    if ("OidbSvc.0xafc_1".equals(paramString))
+    {
+      if (paramBoolean) {
+        this.a.n = paramLong;
+      }
+      if (!this.a.c)
+      {
+        this.a.b.removeMessages(1000);
+        this.a.b.sendEmptyMessageDelayed(1000, this.a.n);
+      }
     }
   }
 }

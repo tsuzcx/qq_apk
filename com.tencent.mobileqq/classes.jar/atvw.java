@@ -1,17 +1,21 @@
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+
 public class atvw
+  extends atvu
 {
-  public int a;
-  public int b;
-  
-  public atvw(int paramInt1, int paramInt2)
+  public atvw(atuz paramatuz)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    super(paramatuz);
   }
   
-  public String toString()
+  public boolean a(String paramString)
   {
-    return "Point{x=" + this.a + ", y=" + this.b + '}';
+    FileManagerEntity localFileManagerEntity = this.a.a();
+    if (localFileManagerEntity == null) {}
+    while ((localFileManagerEntity.strTroopFilePath == null) || (!localFileManagerEntity.strTroopFilePath.equalsIgnoreCase(paramString))) {
+      return false;
+    }
+    return true;
   }
 }
 

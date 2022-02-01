@@ -1,15 +1,38 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.UUID;
 
-final class bgib
-  implements EIPCResultCallback
+public class bgib
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  public static boolean a(QQAppInterface paramQQAppInterface, Map<UUID, ? extends Entity> paramMap, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GLDrawableDownloadHelper", 2, "requestDownloadDepends success");
+    if (paramMap == null) {
+      QLog.e("SerializableManager", 4, "bad Entity Param");
     }
+    Object localObject;
+    do
+    {
+      return false;
+      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+      localObject = new TroopFileTansferItemEntity();
+      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
+    } while (!paramQQAppInterface.drop(((TroopFileTansferItemEntity)localObject).getTableName()));
+    paramMap = paramMap.values().iterator();
+    while (paramMap.hasNext())
+    {
+      localObject = (Entity)paramMap.next();
+      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
+      ((Entity)localObject).setStatus(1000);
+      paramQQAppInterface.persist((Entity)localObject);
+    }
+    return true;
   }
 }
 

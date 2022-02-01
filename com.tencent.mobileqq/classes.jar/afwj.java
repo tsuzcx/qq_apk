@@ -1,115 +1,45 @@
 import android.content.Context;
-import android.content.res.Resources;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.view.QggMinusOneViewTitleLayout;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Map;
 
 public class afwj
-  extends afwa
+  implements View.OnClickListener
 {
-  private long c;
-  private long d;
+  public afwj(BusinessEggsAnimation paramBusinessEggsAnimation, afwm paramafwm, ChatMessage paramChatMessage) {}
   
-  public afwj(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-  }
-  
-  public aezf a()
-  {
-    return new afwk();
-  }
-  
-  public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, afce paramafce)
-  {
-    if (paramChatMessage.istroop == 1038)
+    afuw localafuw = (afuw)BusinessEggsAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation).get(Long.valueOf(this.jdField_a_of_type_Afwm.a));
+    if (localafuw != null)
     {
-      long l = System.currentTimeMillis();
-      if ((this.c != paramChatMessage.msgUid) || (l - this.d > 1000L))
+      if (!"HTML".equals(localafuw.b)) {
+        break label116;
+      }
+      if (!TextUtils.isEmpty(localafuw.a))
       {
-        this.c = paramChatMessage.msgUid;
-        this.d = l;
-        if ((paramChatMessage instanceof MessageForArkApp))
-        {
-          MessageForArkApp localMessageForArkApp = (MessageForArkApp)paramChatMessage;
-          if (localMessageForArkApp.ark_app_message != null)
-          {
-            this.d = System.currentTimeMillis();
-            MiniProgramLpReportDC04239.reportByQQ("message", "message_aio", "expo", "com.tencent.miniapp", localMessageForArkApp.ark_app_message.appView, "", "");
-            if (QLog.isColorLevel()) {
-              QLog.d("xiaoyong", 2, "ArkAppPublicAccountItemBuilder report");
-            }
-          }
-        }
+        Context localContext = paramView.getContext();
+        Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", localafuw.a);
+        localContext.startActivity(localIntent);
       }
     }
-    paramView = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramafce);
-    oge.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage, paramView);
-    return paramView;
-  }
-  
-  public View a(ChatMessage paramChatMessage, aezf paramaezf, View paramView, BaseChatItemLayout paramBaseChatItemLayout, afce paramafce)
-  {
     for (;;)
     {
-      try
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && ("3046055438".equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin)) && ((paramaezf instanceof afwk)))
-        {
-          localafwk = (afwk)paramaezf;
-          if ((paramChatMessage instanceof MessageForArkApp))
-          {
-            if (paramView == null) {
-              localafwk.a = new QggMinusOneViewTitleLayout(this.jdField_a_of_type_AndroidContentContext);
-            }
-            if ((localafwk.a != null) && (paramBaseChatItemLayout != null))
-            {
-              String str = paramChatMessage.getExtInfoFromExtStr("add_title");
-              if ((!str.equals("minus_view_title_first")) && (!str.equals("minus_view_title_second"))) {
-                continue;
-              }
-              if (paramBaseChatItemLayout.a != null) {
-                paramBaseChatItemLayout.a.setText("");
-              }
-              if (!str.equals("minus_view_title_first")) {
-                continue;
-              }
-              localafwk.a.setMinusViewTitle(ohk.a());
-              localafwk.a.setId(2131364472);
-              paramBaseChatItemLayout.removeView(localafwk.a);
-              paramBaseChatItemLayout.addView(localafwk.a);
-              if (!str.equals("minus_view_title_second")) {
-                continue;
-              }
-              localafwk.a.setPadding((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296430), UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 40.0F), (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296431), -UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 7.0F));
-            }
-          }
-        }
+      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) {
+        afvi.a(null, "0X800B072", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, localafuw);
       }
-      catch (Throwable localThrowable)
-      {
-        afwk localafwk;
-        QLog.e("ArkAppPublicAccountItemBuilder", 1, localThrowable, new Object[0]);
-        continue;
-        localThrowable.a.setPadding((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296430), UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 28.0F), (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296431), -UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 7.0F));
-        continue;
-        paramBaseChatItemLayout.removeView(localThrowable.a);
-        continue;
-      }
-      return super.a(paramChatMessage, paramaezf, paramView, paramBaseChatItemLayout, paramafce);
-      localafwk.a.setQggTitle(ohk.a());
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label116:
+      QLog.e("BusinessEggsAnimation", 1, "[initElementPathStrategy] jump type not define: " + localafuw.b);
     }
   }
 }

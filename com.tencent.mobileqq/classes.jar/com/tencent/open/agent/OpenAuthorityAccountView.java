@@ -16,19 +16,18 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bfur;
-import bhsm;
-import bhsn;
-import bhso;
-import bhsp;
-import bhsq;
-import bhtn;
-import bhwf;
-import bhzp;
-import bibo;
-import biek;
-import bjnw;
-import bjon;
+import bhdj;
+import bjdj;
+import bjdk;
+import bjdl;
+import bjdm;
+import bjdn;
+import bjek;
+import bjhh;
+import bjkr;
+import bjmq;
+import bkzi;
+import bkzz;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.util.DisplayUtil;
@@ -55,8 +54,8 @@ public class OpenAuthorityAccountView
   private View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private bhtn jdField_a_of_type_Bhtn;
-  private bjnw jdField_a_of_type_Bjnw;
+  private bjek jdField_a_of_type_Bjek;
+  private bkzi jdField_a_of_type_Bkzi;
   public QQCustomDialog a;
   private BounceScrollView jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView;
   private OpenSDKAppInterface jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface;
@@ -105,11 +104,15 @@ public class OpenAuthorityAccountView
     this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("accountList", 0);
     this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount())) {
-      bibo.a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount());
+      bjmq.a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount());
     }
-    DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
-    this.jdField_b_of_type_Float = localDisplayMetrics.widthPixels;
-    this.jdField_c_of_type_Float = localDisplayMetrics.heightPixels;
+    Object localObject = bjmq.a();
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      bjmq.a((String)localObject);
+    }
+    localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
+    this.jdField_b_of_type_Float = ((DisplayMetrics)localObject).widthPixels;
+    this.jdField_c_of_type_Float = ((DisplayMetrics)localObject).heightPixels;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
   }
   
@@ -117,27 +120,27 @@ public class OpenAuthorityAccountView
   {
     Object localObject = new LinearLayout.LayoutParams(-1, -2);
     setOrientation(1);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559672, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559707, null);
     addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559671, null);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131363053));
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559706, null);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131363070));
     if ((this.jdField_a_of_type_AndroidContentContext instanceof PublicFragmentActivityForOpenSDK)) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bhsm(this));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bjdj(this));
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)this.jdField_b_of_type_AndroidViewView.findViewById(2131361897));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)this.jdField_b_of_type_AndroidViewView.findViewById(2131361899));
       int i = a();
       this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setMaxHeight(i);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131361860));
-      this.jdField_a_of_type_Bjnw = ((bjnw)bjon.a(getContext(), null));
-      this.jdField_a_of_type_Bjnw.a(this.jdField_b_of_type_AndroidViewView, null);
-      localObject = this.jdField_a_of_type_Bjnw.a();
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131361862));
+      this.jdField_a_of_type_Bkzi = ((bkzi)bkzz.a(getContext(), null));
+      this.jdField_a_of_type_Bkzi.a(this.jdField_b_of_type_AndroidViewView, null);
+      localObject = this.jdField_a_of_type_Bkzi.a();
       if ((localObject instanceof DispatchActionMoveScrollView)) {
         ((DispatchActionMoveScrollView)localObject).dispatchActionMove = true;
       }
-      localObject = this.jdField_a_of_type_Bjnw.a();
-      ((RelativeLayout)localObject).addOnLayoutChangeListener(new bhsn(this, (RelativeLayout)localObject));
+      localObject = this.jdField_a_of_type_Bkzi.a();
+      ((RelativeLayout)localObject).addOnLayoutChangeListener(new bjdk(this, (RelativeLayout)localObject));
       this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
@@ -146,7 +149,7 @@ public class OpenAuthorityAccountView
       }
       c();
       d();
-      this.jdField_c_of_type_AndroidViewView = findViewById(2131377033);
+      this.jdField_c_of_type_AndroidViewView = findViewById(2131377306);
       return;
       if ((this.jdField_a_of_type_AndroidContentContext instanceof QuickLoginAuthorityActivity)) {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener((QuickLoginAuthorityActivity)this.jdField_a_of_type_AndroidContentContext);
@@ -168,8 +171,8 @@ public class OpenAuthorityAccountView
     {
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363050);
-        ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363051)).setText(bhzp.a((String)localObject, 12, true));
+        ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363067);
+        ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363068)).setText(bjkr.a((String)localObject, 12, true));
         a(paramString, localImageView);
       }
       if (QLog.isColorLevel()) {
@@ -181,34 +184,33 @@ public class OpenAuthorityAccountView
   
   protected void a(String paramString, ImageView paramImageView)
   {
-    QLog.d("OpenAuthorityAccountView", 1, "-->updateAccountFace uin = " + bhwf.a(paramString));
+    QLog.d("OpenAuthorityAccountView", 1, "-->updateAccountFace uin = " + bjhh.a(paramString));
     ThreadManager.executeOnSubThread(new OpenAuthorityAccountView.5(this, paramString, paramImageView));
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Bjnw != null) && (this.jdField_a_of_type_Bjnw.isShowing())) {
-      this.jdField_a_of_type_Bjnw.dismiss();
+    if ((this.jdField_a_of_type_Bkzi != null) && (this.jdField_a_of_type_Bkzi.isShowing())) {
+      this.jdField_a_of_type_Bkzi.dismiss();
     }
   }
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this.jdField_a_of_type_AndroidContentContext, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131558992);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(getResources().getString(2131698011));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this.jdField_a_of_type_AndroidContentContext, 230);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131559019);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(getResources().getString(2131698297));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageTextSize(18.0F);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString + "?");
-    paramString = new bhsq(this, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690752, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131690753, paramString);
+    paramString = new bjdn(this, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690829, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131690830, paramString);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
   public void c()
   {
-    biek.a().a();
-    this.jdField_a_of_type_JavaUtilArrayList = bibo.a();
+    this.jdField_a_of_type_JavaUtilArrayList = bjmq.a();
     if (QLog.isColorLevel())
     {
       if (this.jdField_a_of_type_JavaUtilArrayList != null)
@@ -231,7 +233,7 @@ public class OpenAuthorityAccountView
     if (QLog.isColorLevel()) {
       QLog.d("OpenAuthorityAccountView", 2, "-->deleteAccount--account to delete is " + paramString);
     }
-    bibo.b(paramString);
+    bjmq.c(paramString);
     if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
     do
     {
@@ -294,11 +296,11 @@ public class OpenAuthorityAccountView
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559669, null);
-        localRelativeLayout.setBackgroundResource(2130841916);
+        RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559704, null);
+        localRelativeLayout.setBackgroundResource(2130841929);
         String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        ((TextView)localRelativeLayout.findViewById(2131361926)).setText(str);
-        TextView localTextView = (TextView)localRelativeLayout.findViewById(2131361901);
+        ((TextView)localRelativeLayout.findViewById(2131361928)).setText(str);
+        TextView localTextView = (TextView)localRelativeLayout.findViewById(2131361903);
         localTextView.setMaxWidth((int)(3.0F * this.jdField_b_of_type_Float / 5.0F));
         Object localObject1 = new WloginSimpleInfo();
         this.jdField_a_of_type_MqqManagerWtloginManager.getBasicUserInfo(str, (WloginSimpleInfo)localObject1);
@@ -308,15 +310,15 @@ public class OpenAuthorityAccountView
           localObject1 = str;
         }
         localTextView.setText((CharSequence)localObject1);
-        localObject1 = (ImageView)localRelativeLayout.findViewById(2131361892);
-        ((ImageView)localRelativeLayout.findViewById(2131368971)).setVisibility(8);
-        localObject2 = (ImageView)localRelativeLayout.findViewById(2131368894);
+        localObject1 = (ImageView)localRelativeLayout.findViewById(2131361894);
+        ((ImageView)localRelativeLayout.findViewById(2131369132)).setVisibility(8);
+        localObject2 = (ImageView)localRelativeLayout.findViewById(2131369054);
         ((ImageView)localObject2).setVisibility(0);
-        ((ImageView)localObject2).setImageResource(2130845261);
+        ((ImageView)localObject2).setImageResource(2130845346);
         ((ImageView)localObject2).setTag(str);
-        ((ImageView)localObject2).setOnClickListener(new bhso(this));
+        ((ImageView)localObject2).setOnClickListener(new bjdl(this));
         a(str, (ImageView)localObject1);
-        localRelativeLayout.setOnClickListener(new bhsp(this, str));
+        localRelativeLayout.setOnClickListener(new bjdm(this, str));
         localObject1 = new LinearLayout.LayoutParams(-1, DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 72.0F));
         ((LinearLayout.LayoutParams)localObject1).width = -1;
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject1);
@@ -332,7 +334,7 @@ public class OpenAuthorityAccountView
       d();
       this.jdField_a_of_type_Boolean = true;
     }
-    this.jdField_a_of_type_Bjnw.show();
+    this.jdField_a_of_type_Bkzi.show();
   }
   
   public void onClick(View paramView)
@@ -348,9 +350,9 @@ public class OpenAuthorityAccountView
     }
   }
   
-  public void setAccountEventListener(bhtn parambhtn)
+  public void setAccountEventListener(bjek parambjek)
   {
-    this.jdField_a_of_type_Bhtn = parambhtn;
+    this.jdField_a_of_type_Bjek = parambjek;
   }
   
   public void setMainAccountSelect(boolean paramBoolean)

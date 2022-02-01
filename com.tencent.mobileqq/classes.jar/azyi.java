@@ -1,118 +1,220 @@
-import android.content.Intent;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.Spannable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.style.BackgroundColorSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.TextView;
+import android.widget.TextView.BufferType;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azyi
+  implements View.OnClickListener, View.OnLongClickListener, blak
 {
-  private static volatile azyi a;
+  private BackgroundColorSpan jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
+  private View jdField_a_of_type_AndroidViewView;
+  private azyj jdField_a_of_type_Azyj;
+  private azyk jdField_a_of_type_Azyk;
   
-  public static azyi a()
+  private azyi(View paramView, azyk paramazyk)
   {
-    if (a == null) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("LongClickCopyAction", 2, String.format("TextViewCopyAction target=%s copyData=%s", new Object[] { paramView, paramazyk }));
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Azyk = paramazyk;
+  }
+  
+  public static azyi a(View paramView, azyk paramazyk)
+  {
+    azyk localazyk = null;
+    if (paramView != null)
+    {
+      paramazyk = new azyi(paramView, paramazyk);
+      paramView.setOnLongClickListener(paramazyk);
+      localazyk = paramazyk;
+      if ((paramView instanceof TextView))
+      {
+        paramView = (TextView)paramView;
+        paramView.setText(paramView.getText(), TextView.BufferType.SPANNABLE);
+        localazyk = paramazyk;
+      }
+    }
+    return localazyk;
+  }
+  
+  public static azyi a(View paramView, String paramString1, String paramString2)
+  {
+    azyk localazyk = new azyk();
+    localazyk.a(paramString1, paramString2);
+    return a(paramView, localazyk);
+  }
+  
+  public static azyi a(TextView paramTextView)
+  {
+    String str1 = null;
+    String str2;
+    if (paramTextView != null)
+    {
+      str2 = paramTextView.getResources().getString(2131698740);
+      str1 = paramTextView.getText().toString();
+    }
+    for (;;)
+    {
+      azyk localazyk = new azyk();
+      localazyk.a(str2, str1);
+      return a(paramTextView, localazyk);
+      str2 = null;
+    }
+  }
+  
+  public static azyi a(TextView paramTextView, String paramString)
+  {
+    String str = null;
+    if (paramTextView != null) {
+      str = paramTextView.getText().toString();
+    }
+    azyk localazyk = new azyk();
+    localazyk.a(paramString, str);
+    return a(paramTextView, localazyk);
+  }
+  
+  private void a(String paramString)
+  {
+    if (paramString != null) {}
     try
     {
-      if (a == null) {
-        a = new azyi();
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      if (localBaseApplicationImpl != null) {
+        ((ClipboardManager)localBaseApplicationImpl.getSystemService("clipboard")).setText(paramString);
       }
-      return a;
-    }
-    finally {}
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Intent paramIntent)
-  {
-    long l = paramIntent.getLongExtra("FORWARD_MSG_UNISEQ", 0L);
-    if (l == 0L) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplyMsgSender", 2, "sendReplyMessage uniseq=0");
-      }
-    }
-    ChatMessage localChatMessage;
-    do
-    {
-      return;
-      localChatMessage = ((azye)paramQQAppInterface.getManager(340)).a(l);
-      if (localChatMessage != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ReplyMsgSender", 2, "sendReplyMessage chatMessage is null");
-    return;
-    a(paramQQAppInterface, localChatMessage, paramSessionInfo, 0, paramIntent.getIntExtra("KEY_MSG_FORWARD_ID", 0), true);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString1, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList1, acwc paramacwc, MessageRecord paramMessageRecord, String paramString2, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList2)
-  {
-    MessageForReplyText localMessageForReplyText = new MessageForReplyText();
-    localMessageForReplyText.msg = paramString1;
-    localMessageForReplyText.istroop = paramSessionInfo.curType;
-    localMessageForReplyText.msgtype = -1049;
-    localMessageForReplyText.atInfoList = paramArrayList1;
-    localMessageForReplyText.mSourceMsgInfo = paramacwc.a;
-    localMessageForReplyText.setSourceMessageRecord(paramMessageRecord);
-    localMessageForReplyText.isBarrageMsg = paramacwc.jdField_d_of_type_Boolean;
-    localMessageForReplyText.barrageTimeLocation = paramacwc.b;
-    localMessageForReplyText.barrageSourceMsgType = paramacwc.jdField_d_of_type_Int;
-    if ((!TextUtils.isEmpty(paramString2)) && (paramArrayList2 != null) && (!paramArrayList2.isEmpty()))
-    {
-      localMessageForReplyText.saveExtInfoToExtStr("sens_reply_special_msg", paramString2);
-      localMessageForReplyText.saveExtInfoToExtStr("sens_reply_special_at_list", bevq.a(paramArrayList2));
-    }
-    int i = 2;
-    if (!TextUtils.isEmpty(paramacwc.a.mSourceMsgTroopName)) {
-      i = 0;
-    }
-    a(paramQQAppInterface, localMessageForReplyText, paramSessionInfo, i, 0, false);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, SessionInfo paramSessionInfo, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    new ArrayList(1).add(paramChatMessage);
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(paramChatMessage);
-    paramChatMessage = new awcs();
-    paramChatMessage.jdField_a_of_type_Int = paramInt1;
-    paramChatMessage.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    paramChatMessage.jdField_a_of_type_JavaUtilList = localArrayList;
-    paramChatMessage.jdField_a_of_type_JavaUtilMap = null;
-    paramChatMessage.g = paramInt2;
-    paramChatMessage.b = 8;
-    paramChatMessage.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = new MessageForStructing();
-    paramChatMessage.jdField_a_of_type_Boolean = paramBoolean;
-    new azyh(paramQQAppInterface).e(paramChatMessage);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, SessionInfo paramSessionInfo, int paramInt)
-  {
-    if (paramMessageForMixedMsg == null) {
       return;
     }
-    if (paramMessageForMixedMsg.getReplyMessage(paramQQAppInterface) != null)
+    catch (Exception paramString)
     {
-      new ArrayList(1).add(paramMessageForMixedMsg);
-      ArrayList localArrayList = new ArrayList(1);
-      localArrayList.add(paramMessageForMixedMsg);
-      paramMessageForMixedMsg = new awcs();
-      paramMessageForMixedMsg.jdField_a_of_type_Int = 0;
-      paramMessageForMixedMsg.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-      paramMessageForMixedMsg.jdField_a_of_type_JavaUtilList = localArrayList;
-      paramMessageForMixedMsg.jdField_a_of_type_JavaUtilMap = null;
-      paramMessageForMixedMsg.b = 9;
-      paramMessageForMixedMsg.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = new MessageForStructing();
-      new azyf(paramQQAppInterface).e(paramMessageForMixedMsg);
+      QLog.e("LongClickCopyAction", 2, "copyContent fail.", paramString);
+    }
+  }
+  
+  private void b()
+  {
+    int k;
+    Spannable localSpannable;
+    int i;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof TextView)))
+    {
+      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView;
+      k = localTextView.getText().toString().length();
+      localSpannable = null;
+      if ((localTextView.getText() instanceof Spannable)) {
+        localSpannable = (Spannable)localTextView.getText();
+      }
+      if (localSpannable != null) {
+        if (this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan == null) {
+          i = 1714664933;
+        }
+      }
+    }
+    try
+    {
+      int j = Color.parseColor("#33000000");
+      i = j;
+    }
+    catch (Exception localException)
+    {
+      label87:
+      break label87;
+    }
+    this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan = new BackgroundColorSpan(i);
+    localSpannable.setSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan, 0, k, 17);
+  }
+  
+  private void c()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof TextView)))
+    {
+      localObject = (TextView)this.jdField_a_of_type_AndroidViewView;
+      if (!(((TextView)localObject).getText() instanceof Spannable)) {
+        break label58;
+      }
+    }
+    label58:
+    for (Object localObject = (Spannable)((TextView)localObject).getText();; localObject = null)
+    {
+      if (localObject != null) {
+        ((Spannable)localObject).removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
+      }
       return;
     }
-    ((avsf)paramQQAppInterface.getManager(174)).a(paramSessionInfo, paramMessageForMixedMsg, false, paramInt);
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+      c();
+    }
+    while (this.jdField_a_of_type_AndroidViewView == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+  }
+  
+  public void a(azyj paramazyj)
+  {
+    this.jdField_a_of_type_Azyj = paramazyj;
+  }
+  
+  public void onClick(View paramView)
+  {
+    String str = null;
+    if ((paramView instanceof TextView))
+    {
+      str = ((TextView)paramView).getText().toString();
+      str = this.jdField_a_of_type_Azyk.a(str);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LongClickCopyAction", 2, String.format("onClick view=%s copyResult=%s", new Object[] { paramView, str }));
+    }
+    if (!TextUtils.isEmpty(str))
+    {
+      a(str);
+      if (this.jdField_a_of_type_Azyj != null) {
+        this.jdField_a_of_type_Azyj.a(str);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    bhjq localbhjq;
+    if (this.jdField_a_of_type_Azyk != null)
+    {
+      localbhjq = new bhjq();
+      this.jdField_a_of_type_Azyk.a(localbhjq);
+      if (!(this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+        break label63;
+      }
+      b();
+    }
+    for (;;)
+    {
+      bhcw.a(paramView, localbhjq, this, this);
+      if (this.jdField_a_of_type_Azyj != null) {
+        this.jdField_a_of_type_Azyj.a();
+      }
+      return true;
+      label63:
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setSelected(true);
+      }
+    }
   }
 }
 

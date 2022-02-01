@@ -1,15 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class adbf
-  implements DialogInterface.OnClickListener
+abstract class adbf
+  extends SosoInterface.OnLocationListener
 {
-  public adbf(ChatSettingForTroop paramChatSettingForTroop) {}
+  long jdField_a_of_type_Long;
+  adaa jdField_a_of_type_Adaa;
+  boolean jdField_a_of_type_Boolean;
+  long b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adbf(adaa paramadaa, int paramInt, long paramLong)
   {
-    ChatSettingForTroop.i(this.a);
+    super(paramInt, true, true, paramLong, true, false, "Doraemon");
+    this.jdField_a_of_type_Adaa = paramadaa;
+    this.b = 10000L;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onConsecutiveFailure: errCode=" + paramInt1 + ", failCount=" + paramInt2);
+    }
+    if ((paramInt2 * 2000 < this.b) || (!this.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    addh.a(this.jdField_a_of_type_Adaa, paramInt1, "error " + paramInt1);
+    Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    SosoInterface.removeOnLocationListener(this);
   }
 }
 

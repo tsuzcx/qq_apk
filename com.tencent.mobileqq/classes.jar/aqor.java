@@ -1,6 +1,20 @@
-public abstract interface aqor
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+
+final class aqor
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(aqoa paramaqoa);
+  aqor(QQCustomDialog paramQQCustomDialog, Context paramContext) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+    aqrl.a(this.jdField_a_of_type_AndroidContentContext, true);
+  }
 }
 
 

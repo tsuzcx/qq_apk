@@ -1,11 +1,9 @@
-public abstract class bhkz
-  implements bhla
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+
+public abstract interface bhkz
 {
-  public void a() {}
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean) {}
+  public abstract boolean a(@ColorInt int paramInt, @NonNull float[] paramArrayOfFloat);
 }
 
 

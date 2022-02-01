@@ -1,56 +1,69 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x971.oidb_0x971.NoticeInfo;
+import tencent.im.oidb.cmd0x971.oidb_0x971.RspBody;
 
-public abstract interface aofa
-  extends IInterface
+public abstract class aofa
+  extends ntf
 {
-  public abstract ARCommonConfigInfo a();
+  public aofa()
+  {
+    super(false);
+  }
   
-  public abstract ArConfigInfo a();
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt == 0)
+    {
+      paramBundle = new oidb_0x971.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.notices.has())
+        {
+          paramArrayOfByte = new ArrayList();
+          paramBundle = paramBundle.notices.get().iterator();
+          while (paramBundle.hasNext())
+          {
+            oidb_0x971.NoticeInfo localNoticeInfo = (oidb_0x971.NoticeInfo)paramBundle.next();
+            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = new TroopAioKeywordTipInfo();
+            localTroopAioKeywordTipInfo.ruleId = localNoticeInfo.rule_id.get();
+            localTroopAioKeywordTipInfo.title = localNoticeInfo.title.get();
+            localTroopAioKeywordTipInfo.summary = localNoticeInfo.summary.get();
+            localTroopAioKeywordTipInfo.url = localNoticeInfo.url.get();
+            localTroopAioKeywordTipInfo.icon = localNoticeInfo.icon.get();
+            localTroopAioKeywordTipInfo.version = localNoticeInfo.version.get();
+            paramArrayOfByte.add(localTroopAioKeywordTipInfo);
+          }
+          a(true, paramArrayOfByte);
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("TroopHandler", 1, "KeywordTipInfoObserver, e=" + paramArrayOfByte.toString());
+        a(false, null);
+        return;
+      }
+    }
+    for (;;)
+    {
+      return;
+      QLog.i("TroopHandler", 1, "KeywordTipInfoObserver, errorCode=" + paramInt);
+      a(false, null);
+      return;
+      paramArrayOfByte = null;
+    }
+  }
   
-  public abstract ArEffectConfig a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(aofd paramaofd);
-  
-  public abstract void a(aofj paramaofj);
-  
-  public abstract void a(aofm paramaofm);
-  
-  public abstract void a(aofp paramaofp);
-  
-  public abstract void a(ArConfigInfo paramArConfigInfo);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(aofd paramaofd);
-  
-  public abstract void b(aofj paramaofj);
-  
-  public abstract void b(aofm paramaofm);
-  
-  public abstract void b(aofp paramaofp);
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract boolean c();
-  
-  public abstract void d();
-  
-  public abstract boolean d();
+  protected abstract void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList);
 }
 
 

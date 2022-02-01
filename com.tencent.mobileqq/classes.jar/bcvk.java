@@ -1,43 +1,25 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public class bcvk
-  extends ReportDialog
+final class bcvk
+  implements bcvm
 {
-  public bcvk(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  bcvk(BusinessObserver paramBusinessObserver) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    super(paramContext, 2131755826);
-    setContentView(2131562882);
-    paramContext = (TextView)findViewById(2131378707);
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      paramContext.setVisibility(0);
-      paramContext.setText(paramString1);
-      paramContext = (TextView)findViewById(2131365073);
-      if (TextUtils.isEmpty(paramString2)) {
-        break label142;
-      }
-      paramContext.setVisibility(0);
-      paramContext.setMovementMethod(LinkMovementMethod.getInstance());
-      paramContext.setText(new bctt(paramString2, 8));
-    }
-    for (;;)
-    {
-      ((Button)findViewById(2131364988)).setOnClickListener(new bcvl(this, paramOnClickListener1));
-      ((ImageView)findViewById(2131364624)).setOnClickListener(new bcvm(this, paramOnClickListener2));
-      setCanceledOnTouchOutside(false);
-      return;
-      paramContext.setVisibility(8);
-      break;
-      label142:
-      paramContext.setVisibility(8);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("dataErrorMsg", paramString);
+    localBundle.putInt("dataErrorCode", paramInt);
+    this.a.onReceive(0, false, localBundle);
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("data", paramString.getBytes());
+    localBundle.putString("cmd", "getAppConfig");
+    this.a.onReceive(0, true, localBundle);
   }
 }
 

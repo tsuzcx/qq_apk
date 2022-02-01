@@ -1,20 +1,20 @@
-import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnKeyListener;
 
-class uzm
-  implements View.OnClickListener
+final class uzm
+  implements View.OnKeyListener
 {
   uzm(uzl paramuzl) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (uzl.a(this.a).getActivity() != null) {
-      uzl.a(this.a).getActivity().doOnBackPressed();
+    if (paramInt == 4)
+    {
+      this.a.dismiss();
+      return true;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
   }
 }
 

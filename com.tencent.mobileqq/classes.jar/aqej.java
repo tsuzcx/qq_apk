@@ -1,24 +1,12 @@
-import com.google.gson.annotations.SerializedName;
-import org.jetbrains.annotations.NotNull;
-
-public class aqej
+public abstract interface aqej
 {
-  @SerializedName("id")
-  public int a;
-  @SerializedName("title")
-  public String a;
-  @SerializedName("templateContent")
-  public String b;
+  public abstract void a(String paramString, int paramInt);
   
-  @NotNull
-  public String toString()
-  {
-    return "Template{id=" + this.jdField_a_of_type_Int + ", title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", templateContent='" + this.b + '\'' + '}';
-  }
+  public abstract void a(String paramString, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqej
  * JD-Core Version:    0.7.0.1
  */

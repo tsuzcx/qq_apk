@@ -1,23 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
 
-public class omo
-  implements bjoe
+public final class omo
+  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
 {
-  public omo(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoySettingActivity.b(this.a).cancel();
-      return;
-      ReadInJoySettingActivity.e(this.a, false);
-      ReadInJoySettingActivity.e(this.a, ReadInJoySettingActivity.d(this.a));
-    }
+    return new VideoInfo.DownloadBarInfo(paramParcel);
+  }
+  
+  public VideoInfo.DownloadBarInfo[] a(int paramInt)
+  {
+    return new VideoInfo.DownloadBarInfo[paramInt];
   }
 }
 

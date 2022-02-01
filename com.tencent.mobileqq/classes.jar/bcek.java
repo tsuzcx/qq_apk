@@ -1,94 +1,51 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Collections;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 import java.util.List;
 
 public class bcek
+  implements bcfi
 {
-  protected int a;
-  protected QQAppInterface a;
-  protected String a;
-  protected List<String> a;
-  protected int b;
-  protected String b;
-  protected int c;
-  protected String c;
-  protected String d = "";
-  protected String e = "";
+  private aiuk jdField_a_of_type_Aiuk;
+  private String jdField_a_of_type_JavaLangString;
+  private List<bcfj> jdField_a_of_type_JavaUtilList;
   
-  public bcek(QQAppInterface paramQQAppInterface)
+  public bcek(aiuk paramaiuk, List<bcfj> paramList, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public bcek a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bcek a(String paramString)
-  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    this.jdField_a_of_type_Aiuk = paramaiuk;
   }
   
-  public bcek a(String... paramVarArgs)
+  public int a()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(4);
-    }
-    if (paramVarArgs != null) {
-      Collections.addAll(this.jdField_a_of_type_JavaUtilList, paramVarArgs);
-    }
-    return this;
+    return 1;
   }
   
-  public void a()
+  public String a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "", "", "", "");
-      return;
-    }
-    while (this.jdField_a_of_type_JavaUtilList.size() < 4) {
-      this.jdField_a_of_type_JavaUtilList.add("");
-    }
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e, this.jdField_c_of_type_JavaLangString, this.d, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, (String)this.jdField_a_of_type_JavaUtilList.get(0), (String)this.jdField_a_of_type_JavaUtilList.get(1), (String)this.jdField_a_of_type_JavaUtilList.get(2), (String)this.jdField_a_of_type_JavaUtilList.get(3));
+    return anvx.a(2131704825);
   }
   
-  public bcek b(int paramInt)
+  public List<bcfj> a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public bcek b(String paramString)
+  public void a(View paramView)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
+    bcnc.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("from_key", 0);
+    localIntent.setClass(paramView.getContext(), ClassificationSearchActivity.class);
+    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_Aiuk);
   }
   
-  public bcek c(String paramString)
+  public String b()
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bcek d(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public bcek e(String paramString)
-  {
-    this.e = paramString;
-    return this;
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

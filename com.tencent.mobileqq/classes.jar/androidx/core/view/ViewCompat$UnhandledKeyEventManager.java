@@ -22,12 +22,12 @@ class ViewCompat$UnhandledKeyEventManager
   
   static UnhandledKeyEventManager at(View paramView)
   {
-    UnhandledKeyEventManager localUnhandledKeyEventManager2 = (UnhandledKeyEventManager)paramView.getTag(2131378205);
+    UnhandledKeyEventManager localUnhandledKeyEventManager2 = (UnhandledKeyEventManager)paramView.getTag(2131378493);
     UnhandledKeyEventManager localUnhandledKeyEventManager1 = localUnhandledKeyEventManager2;
     if (localUnhandledKeyEventManager2 == null)
     {
       localUnhandledKeyEventManager1 = new UnhandledKeyEventManager();
-      paramView.setTag(2131378205, localUnhandledKeyEventManager1);
+      paramView.setTag(2131378493, localUnhandledKeyEventManager1);
     }
     return localUnhandledKeyEventManager1;
   }
@@ -70,7 +70,7 @@ class ViewCompat$UnhandledKeyEventManager
   
   private boolean onUnhandledKeyEvent(@NonNull View paramView, @NonNull KeyEvent paramKeyEvent)
   {
-    ArrayList localArrayList = (ArrayList)paramView.getTag(2131378206);
+    ArrayList localArrayList = (ArrayList)paramView.getTag(2131378494);
     if (localArrayList != null)
     {
       int i = localArrayList.size() - 1;

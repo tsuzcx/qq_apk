@@ -1,14 +1,12 @@
-import android.content.Context;
+import java.util.Comparator;
 
-public abstract interface usl<U, V>
+public class usl
+  implements Comparator<usk>
 {
-  public abstract usj<U, V> a();
-  
-  public abstract usk a(Context paramContext, usr paramusr);
-  
-  public abstract usn a(Context paramContext);
-  
-  public abstract usr a(Context paramContext, boolean paramBoolean);
+  public int a(usk paramusk1, usk paramusk2)
+  {
+    return paramusk2.a - paramusk1.a;
+  }
 }
 
 

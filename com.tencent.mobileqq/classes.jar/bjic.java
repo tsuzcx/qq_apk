@@ -1,35 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
 
-class bjic
-  extends Handler
+public class bjic
+  implements DialogInterface.OnClickListener
 {
-  public bjic(bjhu parambjhu, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bjic(BaseJsCallBack paramBaseJsCallBack) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      bjhu.a(this.a, bjhu.a(this.a, paramMessage.obj));
-      return;
-    case 2: 
-      bjhu.a(this.a, true);
-      bjhu.a(this.a);
-      bjhu.a(this.a, false);
-      return;
-    case 3: 
-      bjhu.a(this.a, paramMessage.obj);
-      return;
-    }
-    bjhu.b(this.a, paramMessage.obj);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

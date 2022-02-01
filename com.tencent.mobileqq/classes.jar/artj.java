@@ -1,19 +1,22 @@
 public class artj
-  extends arti
 {
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  private float a;
+  private float b;
   
-  public artj(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  public artj(float paramFloat1, float paramFloat2)
   {
-    super(2, paramString1);
-    this.a = paramString2;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString3;
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+  }
+  
+  public float a()
+  {
+    return this.a;
+  }
+  
+  public float b()
+  {
+    return this.b;
   }
 }
 

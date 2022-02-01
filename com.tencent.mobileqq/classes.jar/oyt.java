@@ -1,36 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oyt
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initCommentActivityClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oyt
+  implements oyp
 {
-  public oyt(ReadInJoyCommentLikeView paramReadInJoyCommentLikeView) {}
-  
-  public void onClick(View paramView)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pcf parampcf, @NotNull pdp parampdp, @NotNull ViewBase paramViewBase)
   {
-    if (pay.l()) {}
-    while (ReadInJoyCommentLikeView.a(this.a) == null)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    if (ReadInJoyCommentLikeView.a(this.a).isLiked()) {
-      if (ReadInJoyCommentLikeView.a(this.a) != null) {
-        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 0, 0);
-      }
-    }
-    for (;;)
-    {
-      ReadInJoyCommentLikeView.a(this.a, ReadInJoyCommentLikeView.a(this.a));
-      ReadInJoyCommentLikeView.a(this.a);
-      break;
-      if (ReadInJoyCommentLikeView.a(this.a) != null) {
-        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 1, 0);
-      }
-    }
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampcf, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampdp, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oyu(parampcf, parampdp));
   }
 }
 

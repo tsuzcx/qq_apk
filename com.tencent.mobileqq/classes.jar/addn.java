@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class addn
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public addn(DialogActivity paramDialogActivity) {}
+  public addn(AboutActivity paramAboutActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null))
+    {
+      bdla.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", bgvx.a(), "");
+      UpgradeDetailActivity.a(this.a, bgvx.a().a(), false, false, true);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

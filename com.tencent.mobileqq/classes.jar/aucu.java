@@ -1,17 +1,45 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aucu
 {
-  public List<auct> a;
-  public Set<String> a;
-  
-  public aucu()
+  public static int a(blkh paramblkh, long paramLong1, long paramLong2, long paramLong3)
   {
-    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramLong3 == 0L)
+    {
+      if (paramLong1 < paramblkh.a(BaseApplication.getContext(), paramLong1, paramLong3, 1024)) {}
+      for (;;)
+      {
+        i = (int)paramLong1;
+        int k = blkk.a(BaseApplication.getContext());
+        int j;
+        if (k != 1)
+        {
+          j = i;
+          if (k != 2) {}
+        }
+        else
+        {
+          j = i;
+          if (i > 16384) {
+            j = 16384;
+          }
+        }
+        i = Math.min(j, 1048576);
+        if (QLog.isColorLevel()) {
+          QLog.d("OfflineFileHttpUtils<FileAssistant>", 2, "sendFilePakage transferedSize[" + paramLong2 + "], size[" + i + "]");
+        }
+        return i;
+        paramLong1 = 1024L;
+      }
+    }
+    int i = paramblkh.a(BaseApplication.getContext(), paramLong1, paramLong2, 131072);
+    if (paramLong1 < i + paramLong2) {}
+    for (paramLong1 -= paramLong2;; paramLong1 = i)
+    {
+      i = (int)paramLong1;
+      break;
+    }
   }
 }
 

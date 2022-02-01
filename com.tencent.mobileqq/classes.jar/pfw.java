@@ -1,17 +1,6 @@
-import com.tencent.widget.AbsListView;
-
-class pfw
-  extends pse
+public abstract interface pfw
 {
-  pfw(pey parampey, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramString);
-  }
-  
-  public void a(prx paramprx)
-  {
-    paramprx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
-  }
+  public abstract void a(int paramInt);
 }
 
 

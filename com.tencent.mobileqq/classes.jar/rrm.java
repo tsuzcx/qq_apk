@@ -1,10 +1,19 @@
-public abstract interface rrm
+public class rrm
 {
-  public abstract void a();
+  public int a;
+  public long a;
+  public String a;
+  public rrn a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3);
+  public String toString()
+  {
+    return "PGCPicInfo{picWidth=" + this.jdField_a_of_type_Int + ", picHeight=" + this.jdField_b_of_type_Int + ", picMd5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", picUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", thumbnailUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", isAnimation=" + this.jdField_c_of_type_Int + ", picDesc='" + this.d + '\'' + ", galleryIndex=" + this.jdField_a_of_type_Long + ", pgcVideoInfo=" + this.jdField_a_of_type_Rrn + '}';
+  }
 }
 
 

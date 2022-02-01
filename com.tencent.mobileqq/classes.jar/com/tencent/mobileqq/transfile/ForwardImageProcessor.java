@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.Message;
-import bfvo;
+import bheg;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -68,10 +68,10 @@ public class ForwardImageProcessor
         int i = (int)l;
         if (new File(this.filepath).length() > i)
         {
-          bfvo.a(-1L, this.targetUinType, true, "group_compress", "ForwardImageProcessor.uploadImage");
-          this.filepath = bfvo.b(this.app.getApp().getBaseContext(), this.filepath, i);
+          bheg.a(-1L, this.targetUinType, true, "group_compress", "ForwardImageProcessor.uploadImage");
+          this.filepath = bheg.b(this.app.getApp().getBaseContext(), this.filepath, i);
         }
-        if (bfvo.a(null, this.filepath, 5, null, "ForwardImageProcessor.handleMessage.compress")) {
+        if (bheg.a(null, this.filepath, 5, null, "ForwardImageProcessor.handleMessage.compress")) {
           break;
         }
         return;

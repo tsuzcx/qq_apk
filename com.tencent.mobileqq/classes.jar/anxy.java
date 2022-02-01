@@ -1,64 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 public class anxy
+  implements BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface
 {
-  private static anxy a;
+  private List<String> a = new ArrayList();
   
-  public static anxy a()
+  public void a()
   {
-    if (a == null) {
-      a = new anxy();
-    }
-    return a;
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_选图_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    if (this.a.isEmpty()) {
+      this.a.add("100066");
     }
   }
   
-  public void a(long paramLong1, long paramLong2)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_选图_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
+    if (!this.a.isEmpty()) {
+      this.a.remove("100066");
     }
   }
   
-  public void b(long paramLong)
+  public List<String> getRedPointPaths(AppInterface paramAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_识别_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    if (((paramAppInterface instanceof QQAppInterface)) && (!this.a.isEmpty())) {
+      return this.a;
     }
-  }
-  
-  public void b(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("QR_识别_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("AR_追踪_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
-  }
-  
-  public void d(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("人脸_特征提取_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
-  }
-  
-  public void e(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARDebugReport", 2, String.format("人脸_追踪_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
-    }
+    return null;
   }
 }
 

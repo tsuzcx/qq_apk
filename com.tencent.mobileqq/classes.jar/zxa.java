@@ -1,65 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
 
 public class zxa
-  extends aptq<zwz>
+  implements aqoa
 {
-  @NonNull
-  public zwz a(int paramInt)
-  {
-    return new zwz();
-  }
+  public zxa(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  @Nullable
-  public zwz a(aptx[] paramArrayOfaptx)
+  public ColorNote getColorNote()
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return zwz.a(paramArrayOfaptx[0].a);
+    if ((SubscribeHybirdFragment.a(this.a) == null) || (SubscribeHybirdFragment.a(this.a) == null)) {
+      QLog.e("SubscribeHybirdFragment", 1, "initColorNote, shareInfoBean is null");
     }
-    return null;
-  }
-  
-  public void a(zwz paramzwz)
-  {
-    bltp.a().a(true);
-  }
-  
-  public Class<zwz> clazz()
-  {
-    return zwz.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public void onReqNoReceive()
-  {
-    super.onReqNoReceive();
-    bltp.a().a(false);
-  }
-  
-  public int type()
-  {
-    return 406;
+    byte[] arrayOfByte;
+    Object localObject;
+    String str1;
+    String str2;
+    String str3;
+    do
+    {
+      return null;
+      arrayOfByte = zzc.a(new SubscribeColorNoteReserveBean(SubscribeHybirdFragment.a(this.a).toByteArray(), SubscribeHybirdFragment.a(this.a).pageType));
+      localObject = new zsf();
+      ((zsf)localObject).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = SubscribeHybirdFragment.a(this.a);
+      ((zsf)localObject).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = SubscribeHybirdFragment.a(this.a);
+      str1 = SubscribeHybirdFragment.a(this.a).id.get();
+      str2 = ((zsf)localObject).c();
+      ((zsf)localObject).d();
+      str3 = ((zsf)localObject).e();
+      localObject = ((zsf)localObject).f();
+    } while (TextUtils.isEmpty(str1));
+    return new aqoi().a(16908291).a(str1).b(str2).c((String)localObject).d(str3).a(arrayOfByte).a();
   }
 }
 

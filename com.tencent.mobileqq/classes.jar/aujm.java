@@ -1,15 +1,4 @@
-public abstract interface aujm
-{
-  public abstract void a(int paramInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void h();
-  
-  public abstract void i();
-}
+public class aujm {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

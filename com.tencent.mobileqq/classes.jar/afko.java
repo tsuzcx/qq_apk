@@ -1,26 +1,43 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.widget.XListView;
 
 public class afko
-  extends BroadcastReceiver
+  implements bbtd
 {
-  public afko(TroopChatPie paramTroopChatPie) {}
+  public afko(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
+    int i = 0;
+    if ((paramBitmap != null) && (paramInt2 == 200))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.tag, 2, "Confess action! ");
+      paramBitmap = this.a.a;
+      if (paramBitmap == null) {
+        break label108;
       }
-      if (this.a.root != null)
+      paramInt2 = paramBitmap.getChildCount();
+    }
+    for (;;)
+    {
+      if (i < paramInt2)
       {
-        this.a.root.a(35);
-        apsz.a(this.a.app, true);
+        Object localObject = paramBitmap.getChildAt(i).getTag();
+        if ((localObject != null) && ((localObject instanceof aflf)))
+        {
+          localObject = (aflf)localObject;
+          if ((((aflf)localObject).b == paramInt1) && (((aflf)localObject).e != null)) {
+            VisitorsActivity.a(this.a, ((aflf)localObject).e, paramInt1);
+          }
+        }
+        i += 1;
+      }
+      else
+      {
+        return;
+        label108:
+        paramInt2 = 0;
       }
     }
   }

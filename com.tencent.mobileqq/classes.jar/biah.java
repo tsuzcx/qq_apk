@@ -1,8 +1,25 @@
-import android.graphics.Bitmap;
+import android.os.Looper;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
-public abstract interface biah
+public class biah
+  implements biam
 {
-  public abstract void a(String paramString, Bitmap paramBitmap);
+  public biah(RegisterLHAssistant.2 param2) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i(biaf.a, 4, String.format(Locale.getDefault(), "checkVipQQStatus, needShow: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    biaf.a(this.a.this$0, paramBoolean);
+    if ((biaf.a(this.a.this$0)) && (biaf.a(this.a.this$0).isEnabled()) && (Thread.currentThread() == Looper.getMainLooper().getThread()) && (biaf.a(this.a.this$0).getVisibility() == 8)) {
+      this.a.this$0.b(true);
+    }
+  }
 }
 
 

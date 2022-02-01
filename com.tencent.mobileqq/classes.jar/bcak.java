@@ -1,26 +1,22 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.BaseSearchActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bcak
-  implements QQPermissionCallback
+public class bcak
+  implements View.OnClickListener
 {
-  public bcak(bcan parambcan, Activity paramActivity) {}
+  public bcak(BaseSearchActivity paramBaseSearchActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bfur.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bcan);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Bcan != null) {
-      this.jdField_a_of_type_Bcan.a();
-    }
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcak
  * JD-Core Version:    0.7.0.1
  */

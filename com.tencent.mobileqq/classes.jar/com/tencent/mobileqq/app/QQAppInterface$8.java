@@ -4,9 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import aufl;
-import axia;
-import axwc;
+import avlf;
+import ayof;
+import azco;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class QQAppInterface$8
@@ -27,9 +27,9 @@ class QQAppInterface$8
           return;
           if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
           {
-            aufl.a();
-            axia.a();
-            axwc.c();
+            avlf.a();
+            ayof.a();
+            azco.c();
             return;
           }
         } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));

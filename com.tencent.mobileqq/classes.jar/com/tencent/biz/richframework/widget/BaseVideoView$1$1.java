@@ -1,11 +1,11 @@
 package com.tencent.biz.richframework.widget;
 
-import zax;
+import zqc;
 
 public class BaseVideoView$1$1
   implements Runnable
 {
-  public BaseVideoView$1$1(zax paramzax) {}
+  public BaseVideoView$1$1(zqc paramzqc) {}
   
   public void run()
   {

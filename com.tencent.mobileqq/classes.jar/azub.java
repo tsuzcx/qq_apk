@@ -1,37 +1,19 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import java.lang.ref.WeakReference;
+import android.os.Message;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
 
 public class azub
-  implements aycx
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<ReceiptMessageDetailFragment> a;
+  public azub(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public azub(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(aycy paramaycy)
-  {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
-    if (localReceiptMessageDetailFragment == null) {
-      return;
-    }
-    switch (paramaycy.a)
-    {
-    default: 
-      return;
-    case -1: 
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getMultiMessageProxy().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
-      return;
-    }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getMultiMessageProxy().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
+    paramDialogInterface.dismiss();
+    this.a.b.obtainMessage(3, "").sendToTarget();
+    bdla.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 2, 0, "0", "0", "", "");
   }
 }
 

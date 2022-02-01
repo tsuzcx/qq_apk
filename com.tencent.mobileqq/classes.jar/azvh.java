@@ -1,37 +1,16 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.ComponentName;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.redtouch.RedTouchLifeTimeManager;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class azvh
-  implements Application.ActivityLifecycleCallbacks
+  extends AnimatorListenerAdapter
 {
-  public azvh(RedTouchLifeTimeManager paramRedTouchLifeTimeManager) {}
+  public azvh(BreatheEffectView paramBreatheEffectView, azvj paramazvj) {}
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity) {}
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramActivity.getComponentName() != null)
-    {
-      RedTouchLifeTimeManager.a(this.a, paramActivity.getComponentName().getClassName());
-      if ((!TextUtils.isEmpty(RedTouchLifeTimeManager.a(this.a))) && (RedTouchLifeTimeManager.a(this.a).equals(RedTouchLifeTimeManager.b(this.a)))) {
-        RedTouchLifeTimeManager.a(this.a);
-      }
-    }
+    this.jdField_a_of_type_Azvj.a();
   }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

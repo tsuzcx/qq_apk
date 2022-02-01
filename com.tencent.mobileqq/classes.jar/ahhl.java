@@ -1,27 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class ahhl
-  implements bjsd
+public class ahhl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahhl(ahgz paramahgz) {}
+  public ahhl(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ahgz.a(this.a).setPullType(0);
-    ahgz.a(this.a).c(ahgz.c);
-    ahgz.a(this.a, 0, this.a.a.a());
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
-  
-  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView) {}
-  
-  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
-  {
-    return false;
-  }
-  
-  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

@@ -1,77 +1,73 @@
-import com.tencent.qbar.QbarNative;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneExternalRequest;
+import wns_proxy.HttpReq;
+import wns_proxy.HttpRsp;
 
 public class bijl
+  extends QzoneExternalRequest
 {
-  public static int a(int paramInt, byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  
+  public bijl() {}
+  
+  public bijl(String paramString1, long paramLong, HttpReq paramHttpReq, String paramString2)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfInt == null)) {
-      return -1;
-    }
-    return QbarNative.nativeArrayConvert(paramInt, paramArrayOfByte.length, paramArrayOfByte, paramArrayOfInt);
+    super.setRefer(paramString2);
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.jdField_a_of_type_ComQqTafJceJceStruct = paramHttpReq;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.needCompress = false;
+    this.b = a(paramString1);
   }
   
-  public static int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.w("WebSoRequest", 1, "cmd is EMPTY OR NULL !!!");
+    }
+    do
+    {
+      return null;
+      paramString = paramString.split("\\.");
+    } while ((paramString == null) || (paramString.length <= 0));
+    return paramString[(paramString.length - 1)];
+  }
+  
+  public static HttpRsp a(byte[] paramArrayOfByte, String paramString)
   {
     if (paramArrayOfByte == null) {
-      return -1;
+      return null;
     }
-    return QbarNative.nativeYUVrotateLess(paramArrayOfByte, paramInt1, paramInt2);
+    try
+    {
+      paramArrayOfByte = (HttpRsp)decode(paramArrayOfByte, paramString);
+      return paramArrayOfByte;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      QLog.e("WebSoRequest", 1, "onResponse error:", paramArrayOfByte);
+    }
+    return null;
   }
   
-  public static int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
+  public String getCmdString()
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return -1;
-    }
-    return QbarNative.nativeYUVrotate(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public static int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3)
+  public JceStruct getReq()
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return -1;
-    }
-    return QbarNative.nativeCropGray2(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, paramInt3);
+    return this.jdField_a_of_type_ComQqTafJceJceStruct;
   }
   
-  public static int a(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public String uniKey()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfInt == null)) {
-      return -1;
-    }
-    return QbarNative.nativeYuvToCropIntArray(paramArrayOfByte, paramArrayOfInt, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-  }
-  
-  public static int a(byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return -1;
-    }
-    return QbarNative.nativeGrayRotateCropSub(paramArrayOfByte2, paramInt1, paramInt2, 0, 0, paramInt1, paramInt2, paramArrayOfByte1, paramArrayOfInt, paramInt3, paramInt4);
-  }
-  
-  public static int a(byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return -1;
-    }
-    return QbarNative.nativeGrayRotateCropSub(paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramArrayOfByte1, paramArrayOfInt, paramInt7, paramInt8);
-  }
-  
-  public static int a(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if ((paramArrayOfInt == null) || (paramArrayOfByte == null)) {
-      return -1;
-    }
-    return QbarNative.nativeTransPixels(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2);
-  }
-  
-  public static int b(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if ((paramArrayOfInt == null) || (paramArrayOfByte == null)) {
-      return -1;
-    }
-    return QbarNative.nativeTransBytes(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2);
+    return this.b;
   }
 }
 

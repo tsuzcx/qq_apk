@@ -1,27 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.app.Activity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
-public class avfh
-  implements View.OnTouchListener
+public abstract interface avfh
 {
-  public avfh(LocationPickFragment paramLocationPickFragment) {}
+  public abstract String a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (1 == paramMotionEvent.getAction())
-    {
-      if (!LocationPickFragment.a(this.a).b())
-      {
-        LocationPickFragment.a(this.a).setDisplayFromType(3);
-        LocationPickFragment.a(this.a).a();
-      }
-      bcef.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
-    }
-    return false;
-  }
+  public abstract void a();
+  
+  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
+  
+  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt);
+  
+  public abstract void b();
 }
 
 

@@ -1,23 +1,29 @@
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class bcjz
+final class bcjz
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public View a;
-  public TextView a;
-  public TextView b;
+  protected WeakReference<bcjy> a;
   
-  public void a()
+  public bcjz(bcjy parambcjy)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.a = new WeakReference(parambcjy);
+  }
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    bcjy localbcjy = (bcjy)this.a.get();
+    if (localbcjy == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkNodeContainer", 1, "onGetAppPathByName.wrapper == null");
+      }
+      return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    if (this.b != null) {
-      this.b.setVisibility(8);
-    }
+    localbcjy.onGetAppPathByName(paramInt, paramString, paramAppPathInfo, paramObject);
   }
 }
 

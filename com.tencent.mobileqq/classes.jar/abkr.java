@@ -1,22 +1,25 @@
-import tencent.gdt.qq_ad_get.QQAdGet;
-import tencent.gdt.qq_ad_get.QQAdGetRsp;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
-public class abkr
+class abkr
 {
-  public int a;
-  public long a;
-  public qq_ad_get.QQAdGet a;
-  public qq_ad_get.QQAdGetRsp a;
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<arui> b;
   
-  public abkr()
+  public abkr(abkq paramabkq, View paramView, arui paramarui)
   {
-    this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_a_of_type_Long = -2147483648L;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramarui);
   }
   
-  public boolean a()
+  public View a()
   {
-    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet != null;
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public arui a()
+  {
+    return (arui)this.b.get();
   }
 }
 

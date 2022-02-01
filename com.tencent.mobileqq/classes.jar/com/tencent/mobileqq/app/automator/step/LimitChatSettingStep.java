@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import arnn;
+import asrt;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 
@@ -9,7 +9,7 @@ public class LimitChatSettingStep
 {
   public int a()
   {
-    arnn.a(this.a.app);
+    asrt.a(this.a.app);
     return super.a();
   }
 }

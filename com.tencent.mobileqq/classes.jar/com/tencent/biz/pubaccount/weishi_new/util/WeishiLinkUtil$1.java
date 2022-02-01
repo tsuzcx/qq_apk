@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.weishi_new.util;
 
 import cooperation.qzone.LocalMultiProcConfig;
-import uyb;
+import vmq;
 
 public final class WeishiLinkUtil$1
   implements Runnable
@@ -10,12 +10,12 @@ public final class WeishiLinkUtil$1
   
   public void run()
   {
-    LocalMultiProcConfig.putInt("weishi_usergrowth", uyb.a(), this.a);
+    LocalMultiProcConfig.putInt("weishi_usergrowth", vmq.a(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.1
  * JD-Core Version:    0.7.0.1
  */

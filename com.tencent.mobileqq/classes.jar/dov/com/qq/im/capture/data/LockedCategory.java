@@ -3,7 +3,7 @@ package dov.com.qq.im.capture.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmsm;
+import boie;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.text.ParseException;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class LockedCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator<LockedCategory> CREATOR = new bmsm();
+  public static final Parcelable.Creator<LockedCategory> CREATOR = new boie();
   public int a;
   public String a;
   public boolean a;

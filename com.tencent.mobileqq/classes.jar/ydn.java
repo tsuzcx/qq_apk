@@ -1,32 +1,39 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 class ydn
-  implements vqp<wen, wgh>
+  extends wag<ydd, xwg>
 {
-  ydn(ydh paramydh, WeakReference paramWeakReference) {}
-  
-  public void a(@NonNull wen paramwen, @Nullable wgh paramwgh, @NonNull ErrorMessage paramErrorMessage)
+  ydn(ydd paramydd)
   {
-    if (paramwgh == null)
-    {
-      paramwen = (ydu)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramwen != null) {
-        paramwen.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
-      }
-      return;
-    }
-    paramwen = (ydu)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramwen != null)
-    {
-      paramwen.a(0, paramwgh.a);
-      return;
-    }
-    xvv.c("DoodleEmojiManager", "requestPoiFaces callback is null");
+    super(paramydd);
   }
+  
+  public void a(@NonNull ydd paramydd, @NonNull xwg paramxwg)
+  {
+    Object localObject = paramydd.a(paramxwg.jdField_a_of_type_JavaLangString);
+    if ((localObject == null) || (paramxwg.jdField_a_of_type_Boolean))
+    {
+      ykq.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramxwg.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramxwg.jdField_a_of_type_Boolean) });
+      return;
+    }
+    if (!(localObject instanceof ybu))
+    {
+      ykq.e(this.TAG, "that is error type!");
+      return;
+    }
+    localObject = (ybu)localObject;
+    ((CommentLikeFeedItem)((ybu)localObject).a).mLikeCount = paramxwg.b;
+    ((ybu)localObject).b(paramxwg.jdField_a_of_type_JavaUtilList, true);
+    ydd.a(paramydd).b(paramxwg.jdField_a_of_type_JavaLangString);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xwg.class;
+  }
+  
+  public void b(@NonNull ydd paramydd, @NonNull xwg paramxwg) {}
 }
 
 

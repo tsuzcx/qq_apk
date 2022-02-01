@@ -1,25 +1,13 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.settings.QGSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class xbi
-  implements CompoundButton.OnCheckedChangeListener
+class xbi
+  implements xge
 {
-  public xbi(QGSettingFragment paramQGSettingFragment) {}
+  xbi(xbg paramxbg) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      QGSettingFragment.b(true);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      QGSettingFragment.b(false);
-    }
-  }
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

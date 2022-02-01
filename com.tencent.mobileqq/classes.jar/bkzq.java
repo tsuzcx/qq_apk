@@ -1,26 +1,8 @@
-import android.content.Context;
-import android.opengl.GLSurfaceView.Renderer;
-import android.view.ViewGroup;
+import android.view.View;
 
-public abstract class bkzq
-  implements GLSurfaceView.Renderer
+public abstract interface bkzq
 {
-  public Context a;
-  protected ViewGroup a;
-  
-  public bkzq(Context paramContext, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
+  public abstract void OnClick(View paramView, int paramInt);
 }
 
 

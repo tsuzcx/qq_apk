@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
 
-class afzf
-  implements DialogInterface.OnClickListener
+public class afzf
+  implements bigp
 {
-  afzf(afzd paramafzd) {}
+  public afzf(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public Object a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new afzg(this.a);
+  }
 }
 
 

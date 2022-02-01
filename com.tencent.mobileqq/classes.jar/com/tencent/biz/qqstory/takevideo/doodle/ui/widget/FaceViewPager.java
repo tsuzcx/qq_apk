@@ -5,13 +5,13 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
-import ygs;
-import ygt;
+import yvl;
+import yvm;
 
 public class FaceViewPager
   extends ViewPager
 {
-  private List<ygt> a;
+  private List<yvm> a;
   
   public FaceViewPager(Context paramContext)
   {
@@ -28,13 +28,13 @@ public class FaceViewPager
   private void a()
   {
     this.a = new ArrayList();
-    setOnPageChangeListener(new ygs(this));
+    setOnPageChangeListener(new yvl(this));
   }
   
-  public void a(ygt paramygt)
+  public void a(yvm paramyvm)
   {
-    if (!this.a.contains(paramygt)) {
-      this.a.add(paramygt);
+    if (!this.a.contains(paramyvm)) {
+      this.a.add(paramyvm);
     }
   }
 }

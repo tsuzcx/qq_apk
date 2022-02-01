@@ -1,13 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class oym
-  implements ViewBase.IBuilder
+  extends ClickableSpan
 {
-  public ViewBase build(VafContext paramVafContext)
+  public oym(CommentInfo paramCommentInfo1, CommentInfo paramCommentInfo2, BaseActivity paramBaseActivity) {}
+  
+  public void onClick(View paramView)
   {
-    return new oyl(paramVafContext);
+    pbq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.toUin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    paramView = new pbu(this.b.articleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo).a(pau.a).b(this.b.area).c(0).a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.toUin).a();
+    olh.a(null, pbq.a(this.b.articleInfo), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.b.articleInfo.mArticleID), String.valueOf(this.b.articleInfo.mAlgorithmID), this.b.articleInfo.innerUniqueID, paramView, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

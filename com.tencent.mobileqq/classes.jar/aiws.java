@@ -1,21 +1,4 @@
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-
-public class aiws
-{
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public Object a;
-  public String a;
-  public TextView b;
-  public TextView c;
-  
-  public aiws(aiwo paramaiwo) {}
-}
+class aiws {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

@@ -1,19 +1,44 @@
-import java.util.Comparator;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-class vjg
-  implements Comparator<vil>
+public class vjg
 {
-  vjg(vje paramvje) {}
-  
-  public int a(vil paramvil1, vil paramvil2)
+  public static vjd a(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    if (paramvil1.f() == paramvil2.f()) {
-      return 0;
-    }
-    if (paramvil1.f() > paramvil2.f()) {
-      return 1;
-    }
-    return -1;
+    if (paramWSRedDotPushMsg == null) {}
+    do
+    {
+      return null;
+      int i;
+      if (paramWSRedDotPushMsg.mStrategyInfo != null) {
+        i = paramWSRedDotPushMsg.mStrategyInfo.getType();
+      }
+      while (paramInt == 2) {
+        if (i == 1)
+        {
+          return new vjh(paramWSRedDotPushMsg);
+          i = 0;
+        }
+        else if (i == 5)
+        {
+          return new vje(paramWSRedDotPushMsg);
+        }
+      }
+      if (i == 2) {
+        return new vji(paramWSRedDotPushMsg, paramInt, paramIntent);
+      }
+      if (i == 3) {
+        return new vjj(paramWSRedDotPushMsg, paramInt, paramIntent);
+      }
+      if (i == 4) {
+        return new vjf(paramWSRedDotPushMsg, paramInt);
+      }
+      if (paramInt == 2) {
+        return new vjh(paramWSRedDotPushMsg);
+      }
+    } while (paramInt != 6);
+    return new vji(paramWSRedDotPushMsg, paramInt, paramIntent);
   }
 }
 

@@ -1,161 +1,230 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import java.io.Reader;
-import java.util.Map;
-import java.util.Stack;
-import org.xmlpull.v1.XmlPullParser;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGradientMaskView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout.StressState;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.DisplayUtil;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class sws
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/videofeeds/TiktokVideoItemDelegate;", "Lcom/tencent/biz/pubaccount/readinjoy/video/videofeeds/ShortVideoItemDelegate;", "Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowLayout$OnFollowActionListener;", "videoHolder", "Lcom/tencent/biz/pubaccount/readinjoy/video/videofeeds/TiktokVideoItemHolder;", "presenter", "Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsRecommendPresenter;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsAdapter;", "(Lcom/tencent/biz/pubaccount/readinjoy/video/videofeeds/TiktokVideoItemHolder;Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsRecommendPresenter;Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsAdapter;)V", "getDianZanDrawable", "", "isDianZan", "", "getRewardCoinIconRes", "info", "Lcom/tencent/biz/pubaccount/VideoInfo;", "onFollowClick", "", "videoInfo", "refreshContentUI", "isNeedReloadTitle", "refreshMenuUI", "setFooterVisibility", "visible", "setHeaderVisibility", "updateCommentUI", "updateFollowStateAndUI", "needAnim", "updateStressFollowLayoutUi", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sws
+  extends swq
+  implements sor
 {
-  XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
-  swr jdField_a_of_type_Swr;
+  private final swt a;
   
-  public sws(XmlPullParser paramXmlPullParser, swr paramswr)
+  public sws(@NotNull swt paramswt, @NotNull slr paramslr, @NotNull shl paramshl)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlPullParser;
-    this.jdField_a_of_type_Swr = paramswr;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getDepth();
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getText();
-  }
-  
-  public String a(int paramInt)
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeName(paramInt);
-  }
-  
-  public void a()
-  {
-    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
-    int m = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getDepth();
-    switch (i)
+    super((swr)paramswt, paramslr, paramshl);
+    this.jdField_a_of_type_Swt = paramswt;
+    paramswt = six.b(paramslr.a());
+    if (paramswt[1] / paramswt[0] >= 1.97D)
     {
-    default: 
-    case 2: 
-      String str;
-      do
+      paramswt = this.jdField_a_of_type_Swt;
+      paramslr = this.jdField_a_of_type_Swt.p;
+      if (paramslr == null) {
+        break label128;
+      }
+      paramslr = paramslr.getLayoutParams();
+      if (paramslr == null) {
+        break label128;
+      }
+    }
+    label128:
+    for (int i = paramslr.height;; i = 0)
+    {
+      paramswt.d = i;
+      paramswt = this.jdField_a_of_type_Swt.p;
+      if (paramswt != null) {
+        paramswt.setBackgroundDrawable(null);
+      }
+      this.jdField_a_of_type_Swt.a().a((sor)this);
+      return;
+    }
+  }
+  
+  private final void d(VideoInfo paramVideoInfo)
+  {
+    if (paramVideoInfo.q) {
+      paramVideoInfo.a = VideoFeedsStressFollowLayout.StressState.Shrink;
+    }
+    this.jdField_a_of_type_Swt.a().setVideoInfo(paramVideoInfo);
+    soh localsoh = this.jdField_a_of_type_Swt.jdField_a_of_type_Soh;
+    paramVideoInfo = paramVideoInfo.a;
+    Intrinsics.checkExpressionValueIsNotNull(paramVideoInfo, "videoInfo.stressState");
+    localsoh.a(paramVideoInfo);
+  }
+  
+  protected int a(@NotNull VideoInfo paramVideoInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramVideoInfo, "info");
+    if (paramVideoInfo.o) {
+      return 2130843197;
+    }
+    return 2130843199;
+  }
+  
+  public int a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return 2130843195;
+    }
+    return 2130843198;
+  }
+  
+  public void a(@Nullable VideoInfo paramVideoInfo)
+  {
+    long l2 = -1L;
+    Object localObject;
+    if (paramVideoInfo != null)
+    {
+      this.jdField_a_of_type_Shl.a(paramVideoInfo.j, paramVideoInfo.b, paramVideoInfo.p);
+      if (this.jdField_a_of_type_Swt.jdField_a_of_type_Skq == null) {
+        break label144;
+      }
+      localObject = this.jdField_a_of_type_Swt.jdField_a_of_type_Skq;
+      if (localObject == null) {
+        break label138;
+      }
+      localObject = ((skq)localObject).jdField_a_of_type_Spn;
+      paramVideoInfo = new suu(paramVideoInfo);
+      if (localObject == null) {
+        break label150;
+      }
+    }
+    label138:
+    label144:
+    label150:
+    for (long l1 = ((spn)localObject).a();; l1 = -1L)
+    {
+      paramVideoInfo = paramVideoInfo.a(l1);
+      l1 = l2;
+      if (localObject != null) {
+        l1 = ((spn)localObject).b();
+      }
+      olh.a(null, "", "0X80078FD", "0X80078FD", 0, 0, "3", "", "", paramVideoInfo.c(l1).ae(1).M(0).a().a(), false);
+      return;
+      localObject = null;
+      break;
+      localObject = null;
+      break;
+    }
+  }
+  
+  public void a(@NotNull VideoInfo paramVideoInfo, boolean paramBoolean)
+  {
+    Intrinsics.checkParameterIsNotNull(paramVideoInfo, "videoInfo");
+    super.a(paramVideoInfo, paramBoolean);
+    if (this.jdField_a_of_type_Slr.a() != null)
+    {
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_Slr.a();
+      if (localQQAppInterface != null)
       {
-        for (;;)
-        {
-          return;
-          str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
-          this.jdField_a_of_type_Swr.jdField_a_of_type_JavaUtilStack.push(str);
-          QLog.d("fast_web", 2, new Object[] { "【start】 depth : ", Integer.valueOf(m), ", name : ", str });
-          if (!swn.c().equals(str)) {
-            break;
-          }
-          i = 0;
-          while (i < this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeCount())
-          {
-            if (this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeName(i).trim().equals("style"))
-            {
-              this.jdField_a_of_type_Swr.b.put(m, swn.a(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(i).trim()));
-              return;
-            }
-            i += 1;
-          }
-        }
-        if (swn.d().equals(str))
-        {
-          this.jdField_a_of_type_Swr.b.put(m, swq.a(4, new Object[] { Integer.valueOf(1) }));
-          return;
-        }
-        if (swn.e().equals(str))
-        {
-          this.jdField_a_of_type_Swr.b.put(m, swq.a(3, new Object[0]));
-          return;
-        }
-        if (swn.f().equals(str))
-        {
-          this.jdField_a_of_type_Swr.b.put(m, swq.a(4, new Object[] { Integer.valueOf(2) }));
-          return;
-        }
-      } while ((!swn.g().equals(str)) && (!swn.h().equals(str)));
-      int j = 0;
-      int k = 0;
-      if (j < this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeCount())
+        long l = localQQAppInterface.getLongAccountUin();
+        this.jdField_a_of_type_Swt.a().setHeadImgByUin(l);
+      }
+    }
+    if (paramVideoInfo.b(this.jdField_a_of_type_Slr.a()))
+    {
+      this.jdField_a_of_type_Swt.b().setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_Swt.a().setVisibility(8);
+    this.jdField_a_of_type_Swt.b().setVisibility(8);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      localObject = this.jdField_a_of_type_Swt.jdField_a_of_type_Skq;
+      if (localObject != null)
       {
-        if (!this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeName(j).trim().equals("style")) {
-          i = k;
-        }
-        for (;;)
+        localObject = ((skq)localObject).jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
+        if ((localObject != null) && (((VideoInfo)localObject).q == true))
         {
-          j += 1;
-          k = i;
-          break;
-          str = (String)swn.a(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(j)).get("text-align");
-          i = k;
-          if (!TextUtils.isEmpty(str)) {
-            if ("right".equals(str))
-            {
-              i = 2;
-            }
-            else if ("left".equals(str))
-            {
-              i = 0;
-            }
-            else
-            {
-              i = k;
-              if ("center".equals(str)) {
-                i = 1;
-              }
-            }
+          localObject = this.jdField_a_of_type_Swt.g();
+          if (localObject != null) {
+            ((TextView)localObject).setVisibility(0);
           }
         }
       }
-      this.jdField_a_of_type_Swr.jdField_a_of_type_AndroidUtilSparseArray.put(m, Integer.valueOf(k));
+      this.jdField_a_of_type_Swt.e().setVisibility(0);
       return;
     }
-    QLog.d("fast_web", 2, new Object[] { "【remove】 depth : ", Integer.valueOf(m), ", name : ", this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName(), " size : ", Integer.valueOf(this.jdField_a_of_type_Swr.b.size()) });
-    if (!this.jdField_a_of_type_Swr.jdField_a_of_type_JavaUtilStack.isEmpty())
+    Object localObject = this.jdField_a_of_type_Swt.g();
+    if (localObject != null) {
+      ((TextView)localObject).setVisibility(8);
+    }
+    this.jdField_a_of_type_Swt.e().setVisibility(8);
+  }
+  
+  public void a_(@NotNull VideoInfo paramVideoInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramVideoInfo, "videoInfo");
+    super.a_(paramVideoInfo);
+    d(paramVideoInfo);
+  }
+  
+  protected void b(@NotNull VideoInfo paramVideoInfo, boolean paramBoolean)
+  {
+    Intrinsics.checkParameterIsNotNull(paramVideoInfo, "info");
+    d(paramVideoInfo);
+    if (paramVideoInfo.a == VideoFeedsStressFollowLayout.StressState.Stretched)
     {
-      this.jdField_a_of_type_Swr.jdField_a_of_type_JavaUtilStack.pop();
-      this.jdField_a_of_type_Swr.b.remove(m);
-      this.jdField_a_of_type_Swr.jdField_a_of_type_AndroidUtilSparseArray.remove(m);
+      if (this.jdField_a_of_type_Swt.jdField_a_of_type_Sfb == null) {}
+      do
+      {
+        do
+        {
+          return;
+          paramVideoInfo = this.jdField_a_of_type_Swt.jdField_a_of_type_Sfb;
+        } while (paramVideoInfo == null);
+        paramVideoInfo = paramVideoInfo.a();
+      } while (paramVideoInfo == null);
+      paramVideoInfo.setVisibility(8);
       return;
     }
-    throw new RuntimeException("tag is not close !");
+    super.b(paramVideoInfo, paramBoolean);
   }
   
-  public void a(Reader paramReader)
+  public void c(@NotNull VideoInfo paramVideoInfo)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.setInput(paramReader);
+    Intrinsics.checkParameterIsNotNull(paramVideoInfo, "info");
+    six.b(this.jdField_a_of_type_Swt.w, paramVideoInfo.e, "评论");
+    paramVideoInfo = this.jdField_a_of_type_Swt.k;
+    if (paramVideoInfo != null) {
+      paramVideoInfo.setImageResource(2130843194);
+    }
   }
   
-  public int b()
+  public void l(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeCount();
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
-  }
-  
-  public String b(int paramInt)
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(paramInt);
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
-  }
-  
-  public int d()
-  {
-    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
-    a();
-    return i;
+    super.l(paramBoolean);
+    Object localObject = this.jdField_a_of_type_Swt.c().getLayoutParams();
+    if (localObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+    }
+    localObject = (ViewGroup.MarginLayoutParams)localObject;
+    if (paramBoolean) {}
+    for (int i = DisplayUtil.dip2px((Context)this.jdField_a_of_type_Slr.a(), 86.0F);; i = DisplayUtil.dip2px((Context)this.jdField_a_of_type_Slr.a(), 5.0F))
+    {
+      ((ViewGroup.MarginLayoutParams)localObject).setMargins(((ViewGroup.MarginLayoutParams)localObject).leftMargin, ((ViewGroup.MarginLayoutParams)localObject).topMargin, i, ((ViewGroup.MarginLayoutParams)localObject).bottomMargin);
+      this.jdField_a_of_type_Swt.c().setLayoutParams((ViewGroup.LayoutParams)localObject);
+      return;
+    }
   }
 }
 

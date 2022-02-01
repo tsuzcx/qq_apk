@@ -1,53 +1,15 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.ChatFileSearchFragment;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public class asmb
-  extends baun<bayt, bbhb>
+class asmb
+  implements INetEngine.INetEngineListener
 {
-  public asmb(ListView paramListView, FaceDecoder paramFaceDecoder, List<bayt> paramList, String paramString, QQAppInterface paramQQAppInterface)
-  {
-    super(paramFaceDecoder, paramList);
-    if (paramString == null) {
-      return;
-    }
-    if (paramString.size() == 1)
-    {
-      paramListView = (aslz)paramString.get(0);
-      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
-      {
-        paramFaceDecoder = new ArrayList();
-        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramList.hasNext())
-        {
-          paramString = (FileManagerEntity)paramList.next();
-          paramQQAppInterface = new aslz();
-          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
-          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
-          paramFaceDecoder.add(paramQQAppInterface);
-        }
-        a(paramFaceDecoder);
-        return;
-      }
-    }
-    a(paramString);
-  }
+  asmb(asma paramasma) {}
   
-  protected bbbn<bayt, bbhb> a(int paramInt)
-  {
-    return new asmi(ChatFileSearchFragment.a(this.a));
-  }
+  public void onResp(NetResp paramNetResp) {}
   
-  protected bbhc a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new asmc(paramViewGroup);
-  }
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

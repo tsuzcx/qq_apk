@@ -1,19 +1,12 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import java.util.Map;
 
 public class uuu
-  extends uuq<uuh, WSPushStrategyInfo>
 {
-  public uuu(uuh paramuuh)
-  {
-    super(paramuuh);
-  }
+  protected Map<Integer, Integer> a;
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  protected Integer a(int paramInt)
   {
-    WSHomeFragment.a(paramContext);
-    return true;
+    return (Integer)this.a.get(Integer.valueOf(paramInt));
   }
 }
 

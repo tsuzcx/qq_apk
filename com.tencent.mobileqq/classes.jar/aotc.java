@@ -1,68 +1,16 @@
-import KQQ.BatchResponse;
-import KQQ.RespBatchProcess;
-import android.os.Bundle;
+import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-class aotc
-  extends andd
+public class aotc
+  extends aoui
 {
-  aotc(aota paramaota) {}
-  
-  protected void onBatchGetTroopInfoResp(boolean paramBoolean, long paramLong, RespBatchProcess paramRespBatchProcess, Bundle paramBundle)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    this.a.a().removeObserver(this);
-    paramBundle = new TroopInfoData();
-    paramBundle.isMember = true;
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("onBatchGetTroopInfoResp, isSucc=").append(paramBoolean).append(", resp IsNull=");
-      if (paramRespBatchProcess == null)
-      {
-        paramBoolean = true;
-        QLog.d("ark.Troop", 2, paramBoolean);
-      }
-    }
-    else
-    {
-      if ((paramRespBatchProcess != null) && (paramRespBatchProcess.batch_response_list != null) && (paramRespBatchProcess.batch_response_list.size() != 0)) {
-        break label121;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("ark.Troop", 2, "onBatchGetTroopInfoResp, return");
-      }
-    }
-    label121:
-    int j;
-    do
-    {
-      return;
-      paramBoolean = false;
-      break;
-      j = paramRespBatchProcess.batch_response_list.size();
-      int i = 0;
-      if (i < j)
-      {
-        localObject = (BatchResponse)paramRespBatchProcess.batch_response_list.get(i);
-        if ((localObject == null) || (((BatchResponse)localObject).result != 0)) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (((BatchResponse)localObject).type == 1)
-          {
-            TroopInfo localTroopInfo = ((TroopManager)this.a.a().getManager(52)).b(this.a.a);
-            this.a.a((BatchResponse)localObject, paramBundle, localTroopInfo);
-          }
-        }
-      }
-    } while (j <= 0);
-    aota.a(this.a, this.a.a, paramBundle);
+    paramQQAppInterface = new aotb(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "cmshow";
+    paramQQAppInterface.c = "game_invite";
+    return paramQQAppInterface;
   }
 }
 

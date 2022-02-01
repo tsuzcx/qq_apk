@@ -1,37 +1,45 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class adye
-  implements baby
+  implements bchy
 {
-  public adye(QQIdentiferActivity paramQQIdentiferActivity) {}
+  public adye(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(bacc parambacc) {}
-  
-  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public void onAction(View paramView)
   {
-    if (!paramBoolean)
+    int i = 1;
+    bcff localbcff = (bcff)paramView.getTag(2131381183);
+    if (localbcff == null) {}
+    for (;;)
     {
-      paramString = bfur.a(this.a, 230, this.a.getString(2131697886), amtj.a(2131709463), new adyf(this), null);
-      paramString.setOnDismissListener(new adyg(this));
-      paramString.show();
       return;
+      String str1 = localbcff.b();
+      String str2 = localbcff.a().toString();
+      paramView = "-1";
+      if ((localbcff instanceof bcdt))
+      {
+        paramView = ((bcdt)localbcff).e();
+        i = 3000;
+      }
+      while ((i != -1) && (ForwardFriendListActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
+      {
+        ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
+        return;
+        if ((localbcff instanceof bcdz)) {
+          paramView = ((bcdz)localbcff).a;
+        } else if ((localbcff instanceof bcee)) {
+          paramView = ((bcee)localbcff).a().troopuin;
+        } else if ((localbcff instanceof bcdu)) {
+          i = 0;
+        } else {
+          i = -1;
+        }
+      }
     }
-    QQIdentiferActivity.a(this.a).set(false);
-    QQIdentiferActivity.a(this.a).a();
   }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import ahmg;
-import ahmi;
+import aiha;
+import aihc;
 
 public class StickerBubbleAnimationViewHolder$2$1
   implements Runnable
 {
-  public StickerBubbleAnimationViewHolder$2$1(ahmi paramahmi) {}
+  public StickerBubbleAnimationViewHolder$2$1(aihc paramaihc) {}
   
   public void run()
   {
-    this.a.a.a(ahmg.a(this.a.a));
+    this.a.a.a(aiha.a(this.a.a));
   }
 }
 

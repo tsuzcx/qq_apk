@@ -1,14 +1,19 @@
-import java.util.ArrayList;
+import mqq.app.QQPermissionCallback;
 
-public abstract interface bbrr
+class bbrr
+  implements QQPermissionCallback
 {
-  public abstract void a(int paramInt);
+  bbrr(bbrl parambbrl) {}
   
-  public abstract void a(int paramInt, bbrl parambbrl);
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bhdj.a(this.a.mContext);
+  }
   
-  public abstract void a(int paramInt, ArrayList<bbrl> paramArrayList);
-  
-  public abstract void b(int paramInt, bbrl parambbrl);
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bbrl.a(this.a);
+  }
 }
 
 

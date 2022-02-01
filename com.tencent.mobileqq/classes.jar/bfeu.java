@@ -1,13 +1,8 @@
-import android.view.View;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import android.widget.TextView;
 
-public class bfeu
+class bfeu
 {
-  public View a;
-  public URLImageView a;
-  
-  public bfeu(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter) {}
+  TextView a;
 }
 
 

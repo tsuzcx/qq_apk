@@ -1,18 +1,66 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.setting.QIMSelectEffectParams;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
+import com.tencent.image.URLImageView;
 
-public final class bnbr
-  implements Parcelable.Creator<QIMSelectEffectParams>
+class bnbr
+  implements Observer<Boolean>
 {
-  public QIMSelectEffectParams a(Parcel paramParcel)
-  {
-    return new QIMSelectEffectParams(paramParcel);
-  }
+  bnbr(bnbp parambnbp) {}
   
-  public QIMSelectEffectParams[] a(int paramInt)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    return new QIMSelectEffectParams[paramInt];
+    if (paramBoolean == null) {
+      return;
+    }
+    if (paramBoolean.booleanValue()) {
+      if (bnbp.a(this.a).a())
+      {
+        bnbp.d(this.a).setVisibility(0);
+        bnbp.a(this.a).setVisibility(8);
+        this.a.a(false);
+        bnbp.a(this.a, false);
+      }
+    }
+    for (;;)
+    {
+      bnrh.a("VideoStoryPiecesPart", "[GifAuthor]---checkShowGifAuthor when other buttons visibility change");
+      bnbp.a(this.a);
+      bnbp.b(this.a);
+      return;
+      if (bnbp.a(this.a).b())
+      {
+        bnbp.d(this.a).setVisibility(0);
+        this.a.a(true);
+        bnbp.a(this.a, true);
+        if (bnbp.b(this.a)) {
+          bnbp.a(this.a).setVisibility(0);
+        }
+        if ((bnkb.a()) && (bnbp.a(this.a) != null)) {
+          bnbp.a(this.a).setVisibility(0);
+        }
+        bnbp.a(this.a).a(786435, new Object[0]);
+      }
+      else if (bnbp.a(this.a).c())
+      {
+        bnbp.d(this.a).setVisibility(0);
+        bnbp.a(this.a).setVisibility(8);
+        bnbp.a(this.a, false);
+        this.a.a(false);
+        continue;
+        bnbp.a(this.a).setVisibility(8);
+        bnbp.a(this.a, false);
+        if (bnbp.a(this.a) != null) {
+          bnbp.a(this.a).setVisibility(8);
+        }
+        bnbp.b(this.a).a(786434, new Object[0]);
+        if (bnbp.a(this.a) != null) {
+          bnbp.a(this.a).setVisibility(8);
+        }
+      }
+    }
   }
 }
 

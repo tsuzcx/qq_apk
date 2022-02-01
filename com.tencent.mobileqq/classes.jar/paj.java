@@ -1,12 +1,15 @@
-public class paj
+import android.text.Editable;
+import android.text.Editable.Factory;
+
+public final class paj
+  extends Editable.Factory
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public String toString()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    return "appCode = " + this.a + "\nappVersion = " + this.b + "\nappUsedDate = " + this.c + "\n";
+    if ((paramCharSequence instanceof owe)) {
+      return (Editable)paramCharSequence;
+    }
+    return new owe(paramCharSequence, 3, 20);
   }
 }
 

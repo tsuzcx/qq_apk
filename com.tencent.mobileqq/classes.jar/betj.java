@@ -1,70 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class betj
-  extends aptq<betk>
+class betj
+  implements View.OnClickListener
 {
-  public static betk a()
+  betj(beti parambeti, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    betk localbetk = (betk)apub.a().a(547);
-    if (QLog.isColorLevel()) {
-      QLog.d("TDCRecomTroopConfigProcessor", 2, "getConfigBean configBean = " + localbetk);
+    Object localObject = new Intent(this.jdField_a_of_type_Beti.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity(), QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", ((betv)this.jdField_a_of_type_Beti.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).b);
+    this.jdField_a_of_type_Beti.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity().startActivity((Intent)localObject);
+    if (this.jdField_a_of_type_Beti.jdField_a_of_type_Betx.c == 31) {}
+    for (localObject = "1";; localObject = "2")
+    {
+      bdla.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_tribe", 0, 0, this.jdField_a_of_type_Beti.jdField_a_of_type_Betx.d, ((betv)this.jdField_a_of_type_Beti.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a + "", "", (String)localObject);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    return localbetk;
-  }
-  
-  @NonNull
-  public betk a(int paramInt)
-  {
-    return new betk();
-  }
-  
-  @Nullable
-  public betk a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0)) {
-      return null;
-    }
-    paramArrayOfaptx = paramArrayOfaptx[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("TDCRecomTroopConfigProcessor", 2, " onParsed,configID:547, content:" + paramArrayOfaptx);
-    }
-    return betk.a(paramArrayOfaptx);
-  }
-  
-  public void a(betk parambetk) {}
-  
-  public Class<betk> clazz()
-  {
-    return betk.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 547;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     betj
  * JD-Core Version:    0.7.0.1
  */

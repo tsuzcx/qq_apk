@@ -1,55 +1,19 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.graphics.Rect;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bbid
-  extends bbdy
+  implements bdbk
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private bbie jdField_a_of_type_Bbie;
+  public bbid(CameraCaptureView paramCameraCaptureView, File paramFile, int paramInt, boolean paramBoolean) {}
   
-  public bbid(bbdm parambbdm, Context paramContext)
+  public void onAutoFocusCallback(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(parambbdm, paramContext);
-  }
-  
-  private void a()
-  {
-    String str = a();
-    if (!TextUtils.isEmpty(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("RichTemplateOneSearchResultView", 2, "data->" + str);
-      }
-      this.jdField_a_of_type_Bbie.a();
-      this.jdField_a_of_type_Bbie.a(str);
-      this.jdField_a_of_type_Bbie.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback requestFocus when capture : " + paramBoolean1 + ", [Camera2]camera2:" + paramBoolean2);
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("RichTemplateOneSearchResultView", 2, "empty data");
-  }
-  
-  private void b(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559820, null, false);
-    this.jdField_a_of_type_Bbie.a(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public View a(Context paramContext)
-  {
-    this.jdField_a_of_type_Bbie = new bbie(paramContext);
-    b(paramContext);
-    a();
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void e()
-  {
-    a();
+    CameraCaptureView.a.a(this.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.b, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.c), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.v);
   }
 }
 

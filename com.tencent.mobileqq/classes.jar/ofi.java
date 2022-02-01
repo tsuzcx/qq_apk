@@ -1,52 +1,36 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-public class ofi
+class ofi
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  private static ofi a;
+  private ofi(ofd paramofd) {}
   
-  private ofi()
+  public void onComplete(String paramString1, String paramString2)
   {
-    a = this;
-  }
-  
-  public static ofi a()
-  {
-    if (a == null) {
-      a = new ofi();
-    }
-    return a;
-  }
-  
-  public Drawable a(Resources paramResources, int paramInt)
-  {
-    Object localObject = BaseApplicationImpl.sImageCache.get(String.valueOf(paramInt));
-    if ((localObject != null) && ((localObject instanceof Drawable))) {
-      localObject = (Drawable)localObject;
-    }
     for (;;)
     {
-      return localObject;
-      localObject = null;
-      try
+      synchronized (ofd.a(this.a))
       {
-        paramResources = paramResources.getDrawable(paramInt);
-        localObject = paramResources;
-        if (paramResources == null) {
-          continue;
+        ofd.c("onPreloadComplete vid:" + paramString1 + ", detail:" + paramString2);
+        paramString2 = new File(ofd.b(paramString1));
+        if (paramString2.exists()) {
+          paramString2.renameTo(new File(ofd.a(paramString1)));
         }
-        BaseApplicationImpl.sImageCache.put(String.valueOf(paramInt), paramResources);
-        return paramResources;
-      }
-      catch (OutOfMemoryError paramResources)
-      {
-        for (;;)
+        bdla.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", ofd.a(this.a).mVideoVid, String.valueOf(ofd.a(this.a).mSource));
+        paramString2 = (QQAppInterface)ofd.a(this.a).get();
+        if (paramString2 != null)
         {
-          paramResources = (Resources)localObject;
+          paramString2 = paramString2.getCurrentAccountUin();
+          ofa.b(paramString2, paramString1);
+          ofd.a(this.a, ofd.a(this.a));
+          return;
         }
       }
+      paramString2 = "";
     }
   }
 }

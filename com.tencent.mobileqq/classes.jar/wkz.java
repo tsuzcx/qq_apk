@@ -1,56 +1,49 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tribe.async.dispatch.Dispatcher;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserId;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class wkz
-  implements FFmpegExecuteResponseCallback
+  implements vzk
 {
-  public long a;
-  public StoryVideoItem a;
   public String a;
   public String b;
   
-  public wkz(String paramString1, StoryVideoItem paramStoryVideoItem, String paramString2)
+  public wkz(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    this.a = paramString1;
     this.b = paramString2;
   }
   
-  public void onFailure(String paramString)
+  public qqstory_struct.UserId a()
   {
-    paramString = new wky(this.b, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    vli.a().dispatch(paramString);
-    xwa.a("play_video", "down_fail", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-    xwa.a("play_video", "down_watermark", 0, 1, new String[0]);
+    qqstory_struct.UserId localUserId = new qqstory_struct.UserId();
+    if (!TextUtils.isEmpty(this.a)) {
+      localUserId.uid.set(Long.valueOf(this.a).longValue());
+    }
+    localUserId.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localUserId;
   }
   
-  public void onFinish(boolean paramBoolean) {}
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
+  public boolean a()
   {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    wky localwky = new wky(this.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    vli.a().dispatch(localwky);
+    return (QQStoryContext.a().a(this.b)) || (QQStoryContext.a().b(this.a));
   }
   
-  public void onSuccess(String paramString)
+  public void copy(Object paramObject)
   {
-    paramString = new wky(this.b, 2, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    paramString.b = this.jdField_a_of_type_JavaLangString;
-    vli.a().dispatch(paramString);
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    long l3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoDuration;
-    xwa.a("play_video", "down_suc", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-    xwa.a("play_video", "down_watermark_time", 0, 0, new String[] { String.valueOf(l1 - l2), String.valueOf(l3) });
-    xwa.a("play_video", "down_watermark", 0, 0, new String[0]);
-    ypi.a(BaseApplication.getContext(), new File(this.jdField_a_of_type_JavaLangString));
+    if ((paramObject instanceof wkz))
+    {
+      this.a = ((wkz)paramObject).a;
+      this.b = ((wkz)paramObject).b;
+    }
+  }
+  
+  public String toString()
+  {
+    return "UserID{qq=" + this.a + ", unionId='" + this.b + '\'' + '}';
   }
 }
 

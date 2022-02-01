@@ -1,19 +1,16 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieListener;
 
-class ves
-  implements View.OnTouchListener
+final class ves
+  implements LottieListener<LottieComposition>
 {
-  ves(veq paramveq, int paramInt) {}
+  ves(DiniFlyAnimationView paramDiniFlyAnimationView, Bitmap paramBitmap1, Bitmap paramBitmap2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(LottieComposition paramLottieComposition)
   {
-    veq.a(this.jdField_a_of_type_Veq, paramView);
-    this.jdField_a_of_type_Veq.d = this.jdField_a_of_type_Int;
-    veq.a(this.jdField_a_of_type_Veq).onTouchEvent(paramMotionEvent);
-    return false;
+    veq.a(paramLottieComposition, this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, this.jdField_a_of_type_AndroidGraphicsBitmap, this.b);
   }
 }
 

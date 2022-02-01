@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
+import android.view.View;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 
-public class bbai
+class bbai
+  implements bkzq
 {
-  public int a;
-  public bayt a;
-  public MostUsedSearchItem a;
-  public boolean a;
+  bbai(bbah parambbah, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, bkzi parambkzi) {}
   
-  public bbai(bbaf parambbaf)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
+    ReceiptMessageDetailFragment.g(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
+    this.jdField_a_of_type_Bkzi.dismiss();
   }
 }
 

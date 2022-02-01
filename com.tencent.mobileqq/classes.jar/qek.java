@@ -1,12 +1,13 @@
+import java.util.Comparator;
+
 class qek
-  implements quh
+  implements Comparator<Integer>
 {
-  qek(qej paramqej, pvc parampvc, slt paramslt) {}
+  qek(qei paramqei) {}
   
-  public void a()
+  public int a(Integer paramInteger1, Integer paramInteger2)
   {
-    pay.a = this.jdField_a_of_type_Pvc.a();
-    pay.a(this.jdField_a_of_type_Slt.a(), this.jdField_a_of_type_Pvc.a(), 2);
+    return paramInteger1.intValue() - paramInteger2.intValue();
   }
 }
 

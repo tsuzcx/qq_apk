@@ -1,46 +1,17 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.ark.ArkAppManagerPanel;
-import com.tencent.widget.XPanelContainer;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agwu
-  implements agxf<ArkAppManagerPanel>
+class agwu
+  extends ahaa
 {
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private ArkAppManagerPanel jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
-  
-  public agwu(BaseChatPie paramBaseChatPie)
+  agwu(agvm paramagvm)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    super(paramagvm, null);
   }
   
-  public int a()
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    return 30;
-  }
-  
-  public ArkAppManagerPanel a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
-  }
-  
-  public ArkAppManagerPanel a(Context paramContext)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel = ((ArkAppManagerPanel)View.inflate(paramContext, 2131558696, null));
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo);
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(XPanelContainer paramXPanelContainer) {}
-  
-  public boolean a()
-  {
-    return false;
+    return atkm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 65, paramChatMessage);
   }
 }
 

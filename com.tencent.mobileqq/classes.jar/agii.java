@@ -1,40 +1,36 @@
-import android.app.Activity;
-import android.view.View;
+import android.content.Context;
+import android.graphics.Paint;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.widget.QQToast;
 
-class agii
-  implements bjoe
+public class agii
+  implements agim
 {
-  agii(agif paramagif, PicEmoticonInfo paramPicEmoticonInfo, bjnw parambjnw, MessageForMarketFace paramMessageForMarketFace) {}
+  private Paint a;
   
-  public void OnClick(View paramView, int paramInt)
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
   {
-    switch (paramInt)
+    bdla.b(paramQQAppInterface, "dc00898", "", "", "0X8008C70", "0X8008C70", aioi.a(paramInt), 0, "", "", "", "");
+    paramString = avkh.a(paramString);
+    if ((paramString != null) && (paramString.length() > 20))
     {
-    default: 
-      return;
-    case 0: 
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.jobType != 1) {
-        break;
-      }
+      QQToast.a(paramContext, anvx.a(2131704941), 0).a();
+      bdla.b(paramQQAppInterface, "dc00898", "", "", "0X800932C", "0X800932C", 0, 0, "", "", "", "");
+      return false;
     }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.jobType == 3) {}
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Agif.b, this.jdField_a_of_type_Agif.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.epId, bool1, bool2);
-        this.jdField_a_of_type_Bjnw.cancel();
-        return;
-      }
-      acvv.a(this.jdField_a_of_type_Agif.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agif.b, this.jdField_a_of_type_Agif.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.uniseq);
-      this.jdField_a_of_type_Bjnw.cancel();
-      return;
+    return true;
+  }
+  
+  public boolean a(Context paramContext, String paramString, EditText paramEditText)
+  {
+    if (this.a == null) {
+      this.a = new Paint();
     }
+    this.a.setTypeface(paramEditText.getTypeface());
+    this.a.setTextSize(paramEditText.getTextSize());
+    return (paramString.length() < 200) && (!paramString.contains("\n")) && ((int)this.a.measureText(paramString) + AIOUtils.dp2px(45.0F, paramContext.getResources()) + paramEditText.getPaddingLeft() < paramEditText.getMeasuredWidth());
   }
 }
 

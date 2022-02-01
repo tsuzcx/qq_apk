@@ -1,673 +1,756 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.util.Property;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.HashMap;
 
 public class bnqm
-  extends Drawable
-  implements Animatable
 {
-  private float jdField_a_of_type_Float = 16.0F;
-  private int jdField_a_of_type_Int;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Property<bnqm, Float> jdField_a_of_type_AndroidUtilProperty = new bnqn(this, Float.class, "backHeight");
-  private bnrk jdField_a_of_type_Bnrk = new bnrk();
-  private bnrq jdField_a_of_type_Bnrq = new bnrq();
-  private WeakReference<bnqx> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float = 5.0F;
-  private int jdField_b_of_type_Int = 255;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  Property<bnqm, Integer> jdField_b_of_type_AndroidUtilProperty = new bnqp(this, Integer.class, "backAlpha");
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float = 50.0F;
-  private int jdField_c_of_type_Int;
-  private RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-  Property<bnqm, Integer> jdField_c_of_type_AndroidUtilProperty = new bnqq(this, Integer.class, "speedAlpha");
-  private float jdField_d_of_type_Float = 50.0F;
-  private int jdField_d_of_type_Int = 179;
-  Property<bnqm, Integer> jdField_d_of_type_AndroidUtilProperty = new bnqr(this, Integer.class, "reverseAlpha");
-  private float jdField_e_of_type_Float = 30.0F;
-  private int jdField_e_of_type_Int;
-  Property<bnqm, Float> jdField_e_of_type_AndroidUtilProperty = new bnqs(this, Float.class, "foreSpeed");
-  private float jdField_f_of_type_Float = 22.0F;
-  private int jdField_f_of_type_Int = 179;
-  Property<bnqm, Float> jdField_f_of_type_AndroidUtilProperty = new bnqt(this, Float.class, "foreHeight");
-  private int jdField_g_of_type_Int = -1;
-  Property<bnqm, Float> jdField_g_of_type_AndroidUtilProperty = new bnqu(this, Float.class, "speedPos");
-  private int jdField_h_of_type_Int = 0;
-  Property<bnqm, Integer> jdField_h_of_type_AndroidUtilProperty = new bnqv(this, Integer.class, "markAlpha");
+  private final int a = 10;
   
-  private float a()
+  private bnqm()
   {
-    return this.jdField_b_of_type_AndroidGraphicsRectF.centerY();
+    UserAction.initUserAction(BaseApplicationImpl.getContext());
   }
   
-  private void a(float paramFloat)
+  public static bnqm a()
   {
-    if (this.jdField_h_of_type_Int == 4)
-    {
-      float f1 = this.jdField_b_of_type_AndroidGraphicsRectF.centerY();
-      this.jdField_b_of_type_AndroidGraphicsRectF.offset(0.0F, paramFloat - f1);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        bnqx localbnqx = (bnqx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localbnqx != null) {
-          localbnqx.a(this.jdField_h_of_type_Int, this.jdField_b_of_type_AndroidGraphicsRectF);
-        }
-      }
-    }
+    return bnqo.a();
   }
   
-  private void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  private void a(String paramString, HashMap<String, String> paramHashMap)
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    }
-    int i = getBounds().height();
-    PropertyValuesHolder localPropertyValuesHolder1;
-    PropertyValuesHolder localPropertyValuesHolder2;
-    PropertyValuesHolder localPropertyValuesHolder3;
-    if (paramInt1 == 1)
-    {
-      localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat(this.jdField_a_of_type_AndroidUtilProperty, new float[] { this.jdField_a_of_type_AndroidGraphicsRectF.height(), i });
-      localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat(this.jdField_f_of_type_AndroidUtilProperty, new float[] { this.jdField_c_of_type_AndroidGraphicsRectF.height(), i });
-      localPropertyValuesHolder3 = PropertyValuesHolder.ofInt(this.jdField_b_of_type_AndroidUtilProperty, new int[] { this.jdField_a_of_type_Int, 115 });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder2, PropertyValuesHolder.ofInt(this.jdField_c_of_type_AndroidUtilProperty, new int[] { this.jdField_b_of_type_Int, 0 }), PropertyValuesHolder.ofInt(this.jdField_d_of_type_AndroidUtilProperty, new int[] { this.jdField_e_of_type_Int, 255 }), localPropertyValuesHolder3, PropertyValuesHolder.ofInt(this.jdField_h_of_type_AndroidUtilProperty, new int[] { this.jdField_f_of_type_Int, 127 }) });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
-      {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bnqw(this));
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bnqo(this));
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-      }
-      return;
-      if (paramInt1 == 3)
-      {
-        localPropertyValuesHolder1 = PropertyValuesHolder.ofInt(this.jdField_b_of_type_AndroidUtilProperty, new int[] { this.jdField_a_of_type_Int, 0 });
-        localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat(this.jdField_a_of_type_AndroidUtilProperty, new float[] { this.jdField_a_of_type_AndroidGraphicsRectF.height(), 0.0F });
-        localPropertyValuesHolder3 = PropertyValuesHolder.ofFloat(this.jdField_f_of_type_AndroidUtilProperty, new float[] { this.jdField_c_of_type_AndroidGraphicsRectF.height(), (int)(i * 0.9F) });
-        PropertyValuesHolder localPropertyValuesHolder4 = PropertyValuesHolder.ofFloat(this.jdField_e_of_type_AndroidUtilProperty, new float[] { this.jdField_b_of_type_AndroidGraphicsRectF.height(), (int)this.jdField_c_of_type_Float });
-        PropertyValuesHolder localPropertyValuesHolder5 = PropertyValuesHolder.ofInt(this.jdField_c_of_type_AndroidUtilProperty, new int[] { this.jdField_b_of_type_Int, 255 });
-        this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder3, localPropertyValuesHolder4, PropertyValuesHolder.ofInt(this.jdField_d_of_type_AndroidUtilProperty, new int[] { this.jdField_e_of_type_Int, 0 }), localPropertyValuesHolder2, localPropertyValuesHolder5, PropertyValuesHolder.ofInt(this.jdField_h_of_type_AndroidUtilProperty, new int[] { this.jdField_f_of_type_Int, 179 }) });
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
-      }
-      else if (paramInt1 == 4)
-      {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(this.jdField_g_of_type_AndroidUtilProperty, new float[] { paramFloat1, paramFloat2 }) });
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
-      }
-    }
+    a(paramString, paramHashMap, false);
   }
   
-  private void a(Context paramContext)
+  private void a(String paramString, HashMap<String, String> paramHashMap, boolean paramBoolean)
   {
-    this.jdField_c_of_type_Float = PickerContainer.a(paramContext, this.jdField_c_of_type_Float);
-    this.jdField_d_of_type_Float = PickerContainer.a(paramContext, this.jdField_d_of_type_Float);
-    this.jdField_e_of_type_Float = PickerContainer.a(paramContext, this.jdField_e_of_type_Float);
-    this.jdField_f_of_type_Float = PickerContainer.a(paramContext, this.jdField_f_of_type_Float);
-    this.jdField_b_of_type_Float = PickerContainer.a(paramContext, this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_Float /= paramContext.getResources().getDisplayMetrics().density;
-  }
-  
-  private void a(Canvas paramCanvas)
-  {
-    RectF localRectF = this.jdField_a_of_type_Bnrq.a(this.jdField_g_of_type_Int);
-    if (localRectF != null)
+    if (paramHashMap == null)
     {
-      float f1 = localRectF.centerX();
-      float f2 = localRectF.centerY();
-      f1 -= this.jdField_b_of_type_AndroidGraphicsRectF.width() / 2.0F;
-      f2 -= this.jdField_b_of_type_AndroidGraphicsRectF.height() / 2.0F;
-      float f3 = this.jdField_b_of_type_AndroidGraphicsRectF.width();
-      float f4 = this.jdField_b_of_type_AndroidGraphicsRectF.height();
-      paramCanvas.save();
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)f1, (int)f2, (int)(f3 + f1), (int)(f4 + f2));
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      }
-      paramCanvas.restore();
-    }
-  }
-  
-  private void a(Canvas paramCanvas, boolean paramBoolean)
-  {
-    RectF localRectF = this.jdField_a_of_type_Bnrq.a(this.jdField_c_of_type_Int - 1);
-    if ((localRectF != null) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null))
-    {
-      float f1 = localRectF.centerX();
-      float f2 = localRectF.centerY();
-      f1 -= this.jdField_e_of_type_Float / 2.0F;
-      f2 -= this.jdField_f_of_type_Float / 2.0F;
-      float f3 = this.jdField_e_of_type_Float;
-      float f4 = this.jdField_f_of_type_Float;
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)f1, (int)f2, (int)(f3 + f1), (int)(f4 + f2));
-      if (paramBoolean) {
-        break label119;
-      }
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_e_of_type_Int);
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      return;
-      label119:
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setAlpha(255);
-    }
-  }
-  
-  private void a(Rect paramRect)
-  {
-    if (paramRect == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (!this.jdField_b_of_type_Boolean) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("GroundDrawable", 2, "isrunning, cannot resetdata:" + this.jdField_h_of_type_Int);
-          return;
-          if ((this.jdField_h_of_type_Int != 0) && (this.jdField_h_of_type_Int != 1)) {
-            break;
-          }
-          a(this.jdField_a_of_type_AndroidGraphicsRectF, paramRect.height() * 0.4F);
-          if (this.jdField_a_of_type_Bnrk != null) {
-            this.jdField_a_of_type_Bnrk.a(this.jdField_a_of_type_AndroidGraphicsRectF);
-          }
-          a(this.jdField_c_of_type_AndroidGraphicsRectF, paramRect.height() * 0.9F);
-        } while (this.jdField_a_of_type_Bnrq == null);
-        this.jdField_a_of_type_Bnrq.a(this.jdField_c_of_type_AndroidGraphicsRectF);
-        return;
-      } while ((this.jdField_h_of_type_Int != 3) && (this.jdField_h_of_type_Int != 2));
-      a(this.jdField_a_of_type_AndroidGraphicsRectF, paramRect.height());
-      a(this.jdField_c_of_type_AndroidGraphicsRectF, paramRect.height());
-      if (this.jdField_a_of_type_Bnrk != null) {
-        this.jdField_a_of_type_Bnrk.a(this.jdField_a_of_type_AndroidGraphicsRectF);
-      }
-    } while (this.jdField_a_of_type_Bnrq == null);
-    this.jdField_a_of_type_Bnrq.a(this.jdField_c_of_type_AndroidGraphicsRectF);
-  }
-  
-  private void a(RectF paramRectF, float paramFloat)
-  {
-    if (paramRectF == null) {
+      b(paramString, bnqq.a().a(), paramBoolean);
       return;
     }
-    Rect localRect = getBounds();
-    float f1 = paramFloat;
-    if (localRect.height() < paramFloat) {
-      f1 = localRect.height();
-    }
-    float f2 = localRect.width() * 1.0F / localRect.height() * f1;
-    paramFloat = f2;
-    if (localRect.width() < f2) {
-      paramFloat = localRect.width();
-    }
-    f2 = (localRect.width() - paramFloat) / 2.0F;
-    float f3 = (localRect.height() - f1) / 2.0F;
-    paramRectF.set(f2, f3, paramFloat + f2, f3 + f1);
+    b(paramString, bnqp.a(bnqq.a().a(), paramHashMap), paramBoolean);
   }
   
-  private void a(Float paramFloat)
+  private void b(String paramString, HashMap<String, String> paramHashMap, boolean paramBoolean)
   {
-    if (this.jdField_h_of_type_Int == 3)
-    {
-      this.jdField_b_of_type_AndroidGraphicsRectF.left = (this.jdField_b_of_type_AndroidGraphicsRectF.centerX() - paramFloat.floatValue() / 2.0F);
-      this.jdField_b_of_type_AndroidGraphicsRectF.right = (this.jdField_b_of_type_AndroidGraphicsRectF.centerX() + paramFloat.floatValue() / 2.0F);
-      this.jdField_b_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_AndroidGraphicsRectF.centerY() - paramFloat.floatValue() / 2.0F);
-      this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_AndroidGraphicsRectF.centerY() + paramFloat.floatValue() / 2.0F);
+    if ((bnqq.a().a()) || (paramBoolean)) {
+      UserAction.onUserAction(paramString, true, -1L, -1L, paramHashMap, true, false);
     }
   }
   
-  private float b()
+  public void A()
   {
-    return this.jdField_b_of_type_AndroidGraphicsRectF.height();
+    a("expose#shoot_edit#com_video_page", null);
   }
   
-  private int b()
+  public void B()
   {
-    return this.jdField_f_of_type_Int;
+    a("click#shoot_edit#add_video", null);
   }
   
-  private void b(float paramFloat)
+  public void C()
   {
-    if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 3))
-    {
-      a(this.jdField_a_of_type_AndroidGraphicsRectF, paramFloat);
-      if (this.jdField_a_of_type_Bnrk != null) {
-        this.jdField_a_of_type_Bnrk.a(this.jdField_a_of_type_AndroidGraphicsRectF);
-      }
-    }
+    a("click#shoot_edit#cancel_video", null);
   }
   
-  private void b(int paramInt)
+  public void D()
   {
-    if ((this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 1))
-    {
-      this.jdField_f_of_type_Int = paramInt;
-      return;
-    }
-    if (this.jdField_h_of_type_Int == 0)
-    {
-      this.jdField_f_of_type_Int = 179;
-      return;
-    }
-    this.jdField_f_of_type_Int = 127;
+    a("click#shoot_edit#video_drag", null);
   }
   
-  private void b(Canvas paramCanvas)
+  public void E()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)this.jdField_b_of_type_AndroidGraphicsRectF.left, (int)this.jdField_b_of_type_AndroidGraphicsRectF.top, (int)this.jdField_b_of_type_AndroidGraphicsRectF.right, (int)this.jdField_b_of_type_AndroidGraphicsRectF.bottom);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    }
+    a("click#shoot_edit#change_location", null);
   }
   
-  private float c()
+  public void F()
   {
-    return this.jdField_a_of_type_AndroidGraphicsRectF.height();
+    a("expose#shoot_view#view", null);
   }
   
-  private int c()
+  public void G()
   {
-    return this.jdField_a_of_type_Int;
+    a("click#shoot_view#cancel_btn", null);
   }
   
-  private void c(float paramFloat)
+  public void H()
   {
-    if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 3))
-    {
-      a(this.jdField_c_of_type_AndroidGraphicsRectF, paramFloat);
-      if (this.jdField_a_of_type_Bnrq != null)
-      {
-        this.jdField_a_of_type_Bnrq.a(this.jdField_c_of_type_AndroidGraphicsRectF);
-        if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-        {
-          bnqx localbnqx = (bnqx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (localbnqx != null) {
-            localbnqx.a(this.jdField_h_of_type_Int, a());
-          }
-        }
-      }
-    }
+    a("click#shoot_view#local_btn", null);
   }
   
-  private void c(int paramInt)
+  public void I()
   {
-    if ((this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 1))
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-    }
-    this.jdField_a_of_type_Int = 115;
+    a("click#shoot_view#flash_btn", null);
   }
   
-  private float d()
+  public void J()
   {
-    return this.jdField_c_of_type_AndroidGraphicsRectF.height();
+    a("click#shoot_view#switch_btn", null);
   }
   
-  private int d()
+  public void K()
   {
-    return this.jdField_e_of_type_Int;
+    a("click#shoot_view#face_btn", null);
   }
   
-  private void d(int paramInt)
+  public void L()
   {
-    if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 3))
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      return;
-    }
-    this.jdField_a_of_type_Int = 255;
+    a("click#shoot_view#photo_switch", null);
   }
   
-  private int e()
+  public void M()
   {
-    return this.jdField_b_of_type_Int;
+    a("click#shoot_view#emoticon_switch", null);
   }
   
-  private void e(int paramInt)
+  public void N()
   {
-    if (this.jdField_h_of_type_Int == 1)
-    {
-      this.jdField_e_of_type_Int = paramInt;
-      this.jdField_d_of_type_Int = (255 - this.jdField_e_of_type_Int);
-    }
-    while (this.jdField_h_of_type_Int != 3) {
-      return;
-    }
-    this.jdField_e_of_type_Int = paramInt;
-    this.jdField_d_of_type_Int = ((int)((255 - this.jdField_e_of_type_Int) * 179 * 1.0F / 255.0F));
+    a("click#shoot_view#module_btn", null);
   }
   
-  private void f(int paramInt)
+  public void O()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    bnqx localbnqx;
-    do
-    {
-      return;
-      localbnqx = (bnqx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbnqx == null);
-    localbnqx.b(paramInt);
+    a("click#shoot_view#make_btn", bnqq.a().b());
   }
   
-  private void g(int paramInt)
+  public void P()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    bnqx localbnqx;
-    do
-    {
-      return;
-      localbnqx = (bnqx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbnqx == null);
-    localbnqx.a(paramInt);
+    a("click#shoot_view#photo_make", bnqq.a().b());
   }
   
-  private void h(int paramInt)
+  public void Q()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    bnqx localbnqx;
-    do
-    {
-      return;
-      localbnqx = (bnqx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbnqx == null);
-    localbnqx.c(paramInt);
+    a("click#shoot_view#now_make", bnqq.a().b());
   }
   
-  public int a()
+  public void R()
   {
-    return this.jdField_h_of_type_Int;
+    a("click#shoot_view#banner_icon", bnqq.a().e());
   }
   
-  public int a(float paramFloat)
+  public void S()
   {
-    if (this.jdField_a_of_type_Bnrq != null) {
-      return this.jdField_a_of_type_Bnrq.a(paramFloat);
-    }
-    return 0;
+    a("expose#shoot_view#banner_icon", bnqq.a().e());
   }
   
-  public RectF a()
+  public void T()
   {
-    if (this.jdField_a_of_type_Bnrq != null) {
-      return this.jdField_a_of_type_Bnrq.a(this.jdField_g_of_type_Int);
-    }
-    return null;
+    a("click#shoot_view#face_item_list", bnqq.a().f());
   }
   
-  public RectF a(float paramFloat)
+  public void U()
   {
-    int i = a(paramFloat);
-    if (this.jdField_a_of_type_Bnrq != null) {
-      return this.jdField_a_of_type_Bnrq.a(i);
-    }
-    return null;
+    a("click#shoot_view#aggregate_icon", bnqq.a().g());
   }
   
-  public RectF a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public void V()
   {
-    int i = this.jdField_g_of_type_Int;
-    this.jdField_g_of_type_Int = paramInt;
-    if (paramBoolean1) {
-      this.jdField_a_of_type_Boolean = paramBoolean1;
-    }
-    RectF localRectF;
-    Object localObject;
-    if (this.jdField_a_of_type_Bnrq != null)
-    {
-      localRectF = this.jdField_a_of_type_Bnrq.a(paramInt);
-      if (localRectF != null)
-      {
-        if (paramBoolean2) {
-          break label160;
-        }
-        this.jdField_b_of_type_AndroidGraphicsRectF.set(localRectF.centerX() - this.jdField_c_of_type_Float / 2.0F, localRectF.centerY() - this.jdField_d_of_type_Float / 2.0F, localRectF.centerX() + this.jdField_d_of_type_Float / 2.0F, localRectF.centerY() + this.jdField_d_of_type_Float / 2.0F);
-        if ((paramBoolean1) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
-        {
-          localObject = (bnqx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (localObject != null)
-          {
-            ((bnqx)localObject).a(this.jdField_h_of_type_Int, this.jdField_g_of_type_Int, localRectF);
-            this.jdField_a_of_type_Boolean = false;
-          }
-        }
-        invalidateSelf();
-      }
-    }
-    for (;;)
-    {
-      return this.jdField_b_of_type_AndroidGraphicsRectF;
-      label160:
-      localObject = this.jdField_a_of_type_Bnrq.a(i);
-      if (localObject != null)
-      {
-        this.jdField_b_of_type_AndroidGraphicsRectF.set(((RectF)localObject).centerX() - this.jdField_c_of_type_Float / 2.0F, ((RectF)localObject).centerY() - this.jdField_d_of_type_Float / 2.0F, ((RectF)localObject).centerX() + this.jdField_d_of_type_Float / 2.0F, ((RectF)localObject).centerY() + this.jdField_d_of_type_Float / 2.0F);
-        float f1 = Math.abs(((RectF)localObject).centerY() - localRectF.centerY());
-        float f2 = this.jdField_a_of_type_Float;
-        if (isRunning()) {
-          stop();
-        }
-        this.jdField_h_of_type_Int = 4;
-        this.jdField_b_of_type_Boolean = true;
-        a(this.jdField_h_of_type_Int, (int)(f1 * f2), ((RectF)localObject).centerY(), localRectF.centerY());
-      }
-    }
+    a("click#shoot_view#play_switch", null);
+  }
+  
+  public void W()
+  {
+    a("click#shoot_view#next_btn", bnqq.a().c());
+  }
+  
+  public void X()
+  {
+    a("click#shoot_view#face_outbtn", null);
+  }
+  
+  public void Y()
+  {
+    a("click#shoot_view#done_btn", bnqq.a().d());
+  }
+  
+  public void Z()
+  {
+    a("click#shoot_view#rephoto_btn", bnqq.a().d());
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Bnrq.a();
-    this.jdField_a_of_type_Bnrk.a();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_AndroidUtilProperty = null;
-    this.jdField_b_of_type_AndroidUtilProperty = null;
-    this.jdField_c_of_type_AndroidUtilProperty = null;
-    this.jdField_d_of_type_AndroidUtilProperty = null;
-    this.jdField_e_of_type_AndroidUtilProperty = null;
-    this.jdField_f_of_type_AndroidUtilProperty = null;
-    this.jdField_g_of_type_AndroidUtilProperty = null;
-    this.jdField_h_of_type_AndroidUtilProperty = null;
+    a("expose#shoot_edit#view", null);
+  }
+  
+  public void a(float paramFloat, String paramString)
+  {
+    a("click#shoot_edit#change_speed", bnqq.a().a(paramFloat, paramString));
   }
   
   public void a(int paramInt)
   {
-    this.jdField_h_of_type_Int = paramInt;
-    switch (this.jdField_h_of_type_Int)
-    {
-    }
+    a("click#shoot_edit#pick_done", bnqq.a().b(paramInt));
   }
   
-  public boolean a(Context paramContext, int paramInt, float paramFloat1, float paramFloat2, bnqx parambnqx)
+  public void a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnqx);
-    if (paramInt > 0) {
-      this.jdField_a_of_type_Float /= paramInt;
-    }
-    a(paramContext);
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bnrq.a(-1, paramInt, this.jdField_b_of_type_Float, paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Bnrk.a(0, paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841575);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841574);
-    return true;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("ext_int1", String.valueOf(paramInt));
+    localHashMap.put("duration", String.valueOf(paramLong));
+    a("face_recognition_page#knead_face_failed#page_stop_time", localHashMap, true);
   }
   
-  public void draw(Canvas paramCanvas)
+  public void a(int paramInt, String paramString)
   {
-    if (this.jdField_h_of_type_Int == 0)
-    {
-      this.jdField_a_of_type_Bnrq.a(paramCanvas, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int, (int)(this.jdField_e_of_type_Int * 1.0F * 179.0F / 255.0F), this.jdField_f_of_type_Int);
-      if ((this.jdField_g_of_type_Int >= 0) && (this.jdField_g_of_type_Int < this.jdField_c_of_type_Int)) {
-        a(paramCanvas);
-      }
-    }
-    for (;;)
-    {
-      return;
-      if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 2))
-      {
-        this.jdField_a_of_type_Bnrk.a(paramCanvas, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Bnrq.a(paramCanvas, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int, (int)(this.jdField_e_of_type_Int * 1.0F * 127.0F / 255.0F), this.jdField_f_of_type_Int);
-        a(paramCanvas, false);
-        if ((this.jdField_h_of_type_Int == 3) || (this.jdField_h_of_type_Int == 1))
-        {
-          if (this.jdField_g_of_type_Int == this.jdField_c_of_type_Int - 1)
-          {
-            a(paramCanvas, true);
-            return;
-          }
-          a(paramCanvas);
-        }
-      }
-      else if (this.jdField_h_of_type_Int == 4)
-      {
-        RectF localRectF = a();
-        if (localRectF != null)
-        {
-          if (Math.abs(localRectF.centerY() - this.jdField_b_of_type_AndroidGraphicsRectF.centerY()) >= this.jdField_b_of_type_AndroidGraphicsRectF.height() / 2.0F) {
-            break label292;
-          }
-          this.jdField_a_of_type_Bnrq.a(paramCanvas, this.jdField_d_of_type_Int, this.jdField_g_of_type_Int, (int)(this.jdField_e_of_type_Int * 1.0F * 179.0F / 255.0F), this.jdField_f_of_type_Int);
-        }
-        while ((this.jdField_g_of_type_Int >= 0) && (this.jdField_g_of_type_Int < this.jdField_c_of_type_Int))
-        {
-          b(paramCanvas);
-          return;
-          label292:
-          this.jdField_a_of_type_Bnrq.a(paramCanvas, this.jdField_d_of_type_Int, -1, (int)(this.jdField_e_of_type_Int * 1.0F * 179.0F / 255.0F), this.jdField_f_of_type_Int);
-        }
-      }
-    }
+    a("click#emoticon_edit#recomm_save_btn", bnqq.a().a(paramInt, paramString));
   }
   
-  public int getOpacity()
+  public void a(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    return -3;
+    a("performance#camera_app#server", bnqq.a().a(paramInt1, paramString1, paramString2, paramInt2));
   }
   
-  public boolean isRunning()
+  public void a(long paramLong)
   {
-    return this.jdField_b_of_type_Boolean;
+    a("click#shoot_edit#cut_btn", bnqq.a().c(paramLong));
   }
   
-  protected void onBoundsChange(Rect paramRect)
+  public void a(long paramLong, int paramInt, String paramString)
   {
-    super.onBoundsChange(paramRect);
-    a(paramRect);
-    if (this.jdField_g_of_type_Int >= 0)
-    {
-      a(this.jdField_g_of_type_Int, false, false);
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
-      {
-        paramRect = (bnqx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramRect != null)
-        {
-          RectF localRectF = new RectF();
-          localRectF.set(this.jdField_b_of_type_AndroidGraphicsRectF);
-          paramRect.a(this.jdField_h_of_type_Int, this.jdField_g_of_type_Int, localRectF);
-          this.jdField_a_of_type_Boolean = false;
-        }
-      }
-      this.jdField_a_of_type_Boolean = false;
-    }
+    a("click#shoot_edit#com_video_next", bnqq.a().a(paramLong, paramInt, paramString));
   }
   
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
-  
-  public void start()
+  public void a(long paramLong1, long paramLong2)
   {
-    if (isRunning()) {
-      stop();
-    }
-    this.jdField_b_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("GroundDrawable", 2, "start :" + this.jdField_h_of_type_Int);
-    }
-    if ((this.jdField_h_of_type_Int == 1) || (this.jdField_h_of_type_Int == 0))
-    {
-      this.jdField_h_of_type_Int = 1;
-      a(this.jdField_h_of_type_Int, 300, -1.0F, -1.0F);
-    }
-    while ((this.jdField_h_of_type_Int != 3) && (this.jdField_h_of_type_Int != 2)) {
+    a("performance#camera_app#cost_time", bnqq.a().a(paramLong1, paramLong2));
+  }
+  
+  public void a(@NonNull LocalMediaInfo paramLocalMediaInfo)
+  {
+    a("export#basics_view#video", bnqq.a().a(paramLocalMediaInfo), true);
+  }
+  
+  public void a(Long paramLong)
+  {
+    a("click#transmit_view#receiver", bnqq.a().a(paramLong));
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_h_of_type_Int = 3;
-    a(this.jdField_h_of_type_Int, 200, -1.0F, -1.0F);
+    a("click#shoot_edit#post_btn", bnqq.a().e(paramString));
   }
   
-  public void stop()
+  public void a(String paramString, int paramInt)
   {
-    if (!this.jdField_b_of_type_Boolean) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      this.jdField_b_of_type_Boolean = false;
-      if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
-      {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-        this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-      }
-      if (this.jdField_h_of_type_Int == 1)
-      {
-        this.jdField_h_of_type_Int = 2;
-        a(getBounds());
-        this.jdField_a_of_type_Int = 115;
-        return;
-      }
-    } while (this.jdField_h_of_type_Int != 3);
-    this.jdField_h_of_type_Int = 0;
-    a(getBounds());
-    this.jdField_a_of_type_Int = 115;
+    }
+    a("click#shoot_edit#post_btn", bnqq.a().a(paramString, paramInt));
+  }
+  
+  public void a(String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
+  {
+    a("performance#camera_app#material_zip_download", bnqq.a().a(paramString1, paramInt, paramLong1, paramLong2, paramString2));
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    a("performance#camera_app#material2screen", bnqq.a().a(paramString, paramLong));
+  }
+  
+  public void a(String paramString1, boolean paramBoolean, float paramFloat, double paramDouble1, double paramDouble2, String paramString2)
+  {
+    a("performance#camera_app#video", bnqq.a().a(paramString1, paramBoolean, paramFloat, paramDouble1, paramDouble2, paramString2));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean) {}
+    for (String str = "1";; str = "2")
+    {
+      localHashMap.put("combine_type", str);
+      a("click#shoot_edit#combine_btn", localHashMap);
+      return;
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  {
+    a("performance#camera_app#res_download", bnqq.a().a(paramBoolean, paramInt, paramString1, paramString2, paramLong1, paramLong2), true);
+  }
+  
+  public void aA()
+  {
+    a("face_recognition_page#camera_page#expose", null, true);
+  }
+  
+  public void aB()
+  {
+    a("face_recognition_page#camera_page#click_photos_btn", null, true);
+  }
+  
+  public void aC()
+  {
+    a("face_recognition_page#camera_page#picture_guide_expose", null, true);
+  }
+  
+  public void aD()
+  {
+    a("face_recognition_page#camera_page#click_start_scanning", null, true);
+  }
+  
+  public void aE()
+  {
+    a("face_recognition_page#camera_page#click_close_btn", null, true);
+  }
+  
+  public void aF()
+  {
+    a("face_recognition_page#photos_page#expose", null, true);
+  }
+  
+  public void aG()
+  {
+    a("face_recognition_page#photos_page#click_check_btn", null, true);
+  }
+  
+  public void aH()
+  {
+    a("face_recognition_page#photos_page#click_close_btn", null, true);
+  }
+  
+  public void aI()
+  {
+    a("face_recognition_page#preview_page#click_sure", null, true);
+  }
+  
+  public void aJ()
+  {
+    a("face_recognition_page#preview_page#click_return", null, true);
+  }
+  
+  public void aK()
+  {
+    a("face_recognition_page#knead_face_success#expose", null, true);
+  }
+  
+  public void aL()
+  {
+    a("face_recognition_page#knead_face_success#click_done", null, true);
+  }
+  
+  public void aM()
+  {
+    a("face_recognition_page#knead_face_success#click_again_scanning", null, true);
+  }
+  
+  public void aN()
+  {
+    a("face_recognition_page#knead_face_failed#click_again_scanning", null, true);
+  }
+  
+  public void aa()
+  {
+    a("click#transmit_view#cancel_btn", bnqq.a().s());
+  }
+  
+  public void ab()
+  {
+    if (bnqq.a().c())
+    {
+      a("performance#camera_app#launch", bnqq.a().t());
+      bnqq.a().e();
+    }
+  }
+  
+  public void ac()
+  {
+    a("expose#camera_app#view", null);
+  }
+  
+  public void ad()
+  {
+    a("performance#camera_app#shader", bnqq.a().u());
+  }
+  
+  public void ae()
+  {
+    a("expose#basics_view#pic_view", null);
+  }
+  
+  public void af()
+  {
+    a("expose#basics_view#photo_view", null);
+  }
+  
+  public void ag()
+  {
+    a("expose#emoticon_view#view", null);
+  }
+  
+  public void ah()
+  {
+    a("click#emoticon_view#photo_btn", bnqq.a().w());
+  }
+  
+  public void ai()
+  {
+    a("click#emoticon_view#emoticon_item", bnqq.a().x());
+  }
+  
+  public void aj()
+  {
+    a("click#emoticon_view#emo_sort_tab", bnqq.a().y());
+  }
+  
+  public void ak()
+  {
+    a("click#emoticon_view#emo_background", null);
+  }
+  
+  public void al()
+  {
+    a("enter#emoticon_edit#view", bnqq.a().v());
+  }
+  
+  public void am()
+  {
+    a("click#emoticon_edit#save_btn", bnqq.a().z());
+  }
+  
+  public void an()
+  {
+    a("click#emoticon_edit#send_btn", bnqq.a().z());
+  }
+  
+  public void ao()
+  {
+    a("click#emoticon_edit#save_btn", bnqq.a().A());
+  }
+  
+  public void ap()
+  {
+    a("click#emoticon_edit#word_return", bnqq.a().B());
+  }
+  
+  public void aq()
+  {
+    a("click#emoticon_edit#word_done", bnqq.a().B());
+  }
+  
+  public void ar()
+  {
+    a("click#shoot_view#watermark_icon", null);
+  }
+  
+  public void as()
+  {
+    a("click#shoot_view#watermark", null);
+  }
+  
+  public void at()
+  {
+    a("expose#watermark_view#view", null);
+  }
+  
+  public void au()
+  {
+    a("expose#watermark_view#default_watermark", null);
+  }
+  
+  public void av()
+  {
+    a("click#watermark_view#cancel_btn", null);
+  }
+  
+  public void aw()
+  {
+    a("expose#current_position#view", null);
+  }
+  
+  public void ax()
+  {
+    a("click#current_position#cancel_btn", null);
+  }
+  
+  public void ay()
+  {
+    a("face_recognition_page#first_enter_guide#expose", null, true);
+  }
+  
+  public void az()
+  {
+    a("face_recognition_page#first_enter_guide#click_knead_face", null, true);
+  }
+  
+  public void b()
+  {
+    a("enter#shoot_edit#view", bnqq.a().h());
+  }
+  
+  public void b(int paramInt)
+  {
+    a("click#shoot_edit#edit_done", bnqq.a().a(paramInt));
+  }
+  
+  public void b(long paramLong)
+  {
+    a("click#shoot_edit#edit_choose", bnqq.a().d(paramLong));
+  }
+  
+  public void b(@NonNull LocalMediaInfo paramLocalMediaInfo)
+  {
+    a("export#basics_view#picture", bnqq.a().b(paramLocalMediaInfo));
+  }
+  
+  public void b(String paramString)
+  {
+    a("click#shoot_edit#filter_item", bnqq.a().f(paramString));
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (bnqp.a())
+    {
+      a("performance#camera_app#res_ready", bnqq.a().a(paramBoolean));
+      bnqp.a();
+    }
+  }
+  
+  public void c()
+  {
+    a("click#shoot_edit#post_btn", bnqq.a().i());
+  }
+  
+  public void c(int paramInt)
+  {
+    a("click#shoot_edit#ori_vocal_btn", bnqq.a().c(paramInt));
+  }
+  
+  public void c(long paramLong)
+  {
+    a("enter#shoot_view#view", bnqq.a().a(paramLong));
+  }
+  
+  public void c(String paramString)
+  {
+    a("click#shoot_edit#ai_color_frame_on", bnqq.a().g(paramString));
+  }
+  
+  public void d()
+  {
+    a("click#shoot_edit#rephoto_btn", null);
+  }
+  
+  public void d(int paramInt)
+  {
+    a("click#shoot_edit#music_vocal_btn", bnqq.a().d(paramInt));
+  }
+  
+  public void d(long paramLong)
+  {
+    a("click#shoot_view#photo_btn", bnqq.a().b(paramLong));
+  }
+  
+  public void d(String paramString)
+  {
+    a("click#shoot_view#face_item", bnqq.a().a(paramString));
+  }
+  
+  public void e()
+  {
+    a("click#shoot_edit#video_edit", bnqq.a().b());
+  }
+  
+  public void e(int paramInt)
+  {
+    a("click#shoot_edit#change_scale", bnqq.a().e(paramInt));
+  }
+  
+  public void e(long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", String.valueOf(paramLong));
+    a("face_recognition_page#camera_page#page_stop_time", localHashMap, true);
+  }
+  
+  public void e(String paramString)
+  {
+    a("click#shoot_view#filter_ai", bnqq.a().b(paramString));
+  }
+  
+  public void f()
+  {
+    a("click#shoot_edit#text_edit", bnqq.a().b());
+  }
+  
+  public void f(int paramInt)
+  {
+    a("performance#camera_app#api_level", bnqq.a().f(paramInt));
+  }
+  
+  public void f(long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", String.valueOf(paramLong));
+    a("face_recognition_page#photos_page#page_stop_time", localHashMap, true);
+  }
+  
+  public void f(String paramString)
+  {
+    a("click#shoot_view#filter_item", bnqq.a().c(paramString));
+  }
+  
+  public void g()
+  {
+    a("click#shoot_edit#preview_btn", bnqq.a().b());
+  }
+  
+  public void g(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("ext_int1", String.valueOf(paramInt));
+    a("face_recognition_page#knead_face_failed#expose", localHashMap, true);
+  }
+  
+  public void g(long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("duration", String.valueOf(paramLong));
+    a("face_recognition_page#knead_face_success#page_stop_time", localHashMap, true);
+  }
+  
+  public void g(String paramString)
+  {
+    a("expose#shoot_view#face_item", bnqq.a().d(paramString));
+  }
+  
+  public void h()
+  {
+    a("click#shoot_edit#pic_switch", bnqq.a().b());
+  }
+  
+  public void h(String paramString)
+  {
+    a("click#emoticon_view#filter_item", bnqq.a().h(paramString));
+  }
+  
+  public void i()
+  {
+    a("click#shoot_edit#edit_done", bnqq.a().j());
+  }
+  
+  public void i(String paramString)
+  {
+    a("click#emoticon_edit#text_ai", bnqq.a().i(paramString));
+  }
+  
+  public void j()
+  {
+    a("click#shoot_edit#text_btn", bnqq.a().k());
+  }
+  
+  public void j(String paramString)
+  {
+    a("expose#emoticon_edit#emoticon_item", bnqq.a().j(paramString));
+  }
+  
+  public void k()
+  {
+    a("click#shoot_edit#music_btn", bnqq.a().l());
+  }
+  
+  public void k(String paramString)
+  {
+    a("expose#emoticon_edit#edit_word", bnqq.a().k(paramString));
+  }
+  
+  public void l()
+  {
+    a("click#shoot_edit#apply_btn", bnqq.a().l());
+  }
+  
+  public void l(String paramString)
+  {
+    a("click#watermark_view#watermark", bnqq.a().l(paramString));
+  }
+  
+  public void m()
+  {
+    a("click#shoot_edit#music_item", bnqq.a().m());
+  }
+  
+  public void m(String paramString)
+  {
+    a("click#watermark_view#watermark_edit", bnqq.a().l(paramString));
+  }
+  
+  public void n()
+  {
+    a("click#shoot_edit#lyric_btn", bnqq.a().n());
+  }
+  
+  public void n(String paramString)
+  {
+    a("click#current_position#position", bnqq.a().m(paramString));
+  }
+  
+  public void o()
+  {
+    a("click#shoot_edit#more_music_btn", bnqq.a().l());
+  }
+  
+  public void p()
+  {
+    a("click#shoot_edit#giveup_btn", bnqq.a().l());
+  }
+  
+  public void q()
+  {
+    a("click#shoot_edit#exit_btn", bnqq.a().l());
+  }
+  
+  public void r()
+  {
+    a("expose#shoot_edit#edit_video", bnqq.a().o());
+  }
+  
+  public void s()
+  {
+    a("click#shoot_edit#color_match", bnqq.a().p());
+  }
+  
+  public void t()
+  {
+    a("expose#shoot_edit#text_item", bnqq.a().q());
+  }
+  
+  public void u()
+  {
+    a("click#shoot_edit#text_item", bnqq.a().q());
+  }
+  
+  public void v()
+  {
+    a("click#shoot_edit#ai_color_frame", null);
+  }
+  
+  public void w()
+  {
+    a("expose#shoot_edit#ai_filter_use", null);
+  }
+  
+  public void x()
+  {
+    a("expose#shoot_edit#edit_word", bnqq.a().r());
+  }
+  
+  public void y()
+  {
+    a("click#shoot_edit#word_return", bnqq.a().r());
+  }
+  
+  public void z()
+  {
+    a("click#shoot_edit#word_done", bnqq.a().r());
   }
 }
 

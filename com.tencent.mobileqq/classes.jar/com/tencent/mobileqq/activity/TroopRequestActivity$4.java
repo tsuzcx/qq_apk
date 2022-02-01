@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import bfkb;
-import bfkc;
+import bgss;
+import bgst;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -14,17 +14,17 @@ class TroopRequestActivity$4
   
   public void run()
   {
-    bfkb localbfkb = bfkc.a(BaseApplication.getContext()).a(this.this$0, Long.toString(this.a.dwGroupClassExt));
-    if (localbfkb != null)
+    bgss localbgss = bgst.a(BaseApplication.getContext()).a(this.this$0, Long.toString(this.a.dwGroupClassExt));
+    if (localbgss != null)
     {
-      this.this$0.j = localbfkb.a();
+      this.this$0.j = localbgss.a();
       ThreadManager.getUIHandler().post(new TroopRequestActivity.4.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRequestActivity.4
  * JD-Core Version:    0.7.0.1
  */

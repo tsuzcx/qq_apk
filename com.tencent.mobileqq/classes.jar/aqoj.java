@@ -1,216 +1,300 @@
-import android.graphics.drawable.Drawable;
-import android.util.SparseArray;
-import com.tencent.mobileqq.danmaku.util.DrawUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.nio.ByteBuffer;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.RspBody;
+import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.UdcUinData;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class aqoj
+  extends BusinessHandler
 {
-  private static aqog jdField_a_of_type_Aqog;
-  private static aqow jdField_a_of_type_Aqow;
-  private static aqoz jdField_a_of_type_Aqoz;
-  private static final String jdField_a_of_type_JavaLangString = aqoj.class.getSimpleName();
-  private int jdField_a_of_type_Int;
-  private final SparseArray<aqou> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private aqon jdField_a_of_type_Aqon;
-  private aqoo jdField_a_of_type_Aqoo;
-  private aqoq jdField_a_of_type_Aqoq;
-  private aqor jdField_a_of_type_Aqor;
-  private aqos jdField_a_of_type_Aqos;
-  private aqot jdField_a_of_type_Aqot;
-  private aqov jdField_a_of_type_Aqov;
-  private aqpd jdField_a_of_type_Aqpd = new aqpd();
-  private final aqpp<Drawable> jdField_a_of_type_Aqpp;
-  private List<aqpa> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private short a = -23193;
   
-  private aqoj(aqol paramaqol)
+  public aqoj(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = aqol.a(paramaqol);
-    this.jdField_a_of_type_Aqot = aqol.a(paramaqol);
-    this.jdField_a_of_type_Aqor = aqol.a(paramaqol);
-    this.jdField_a_of_type_Aqoq = aqol.a(paramaqol);
-    jdField_a_of_type_Aqow = aqol.a(paramaqol);
-    this.jdField_a_of_type_Aqov = aqol.a(paramaqol);
-    this.jdField_a_of_type_Aqos = paramaqol.jdField_a_of_type_Aqos;
-    this.jdField_a_of_type_Aqoo = paramaqol.jdField_a_of_type_Aqoo;
-    this.jdField_a_of_type_Aqon = aqol.a(paramaqol);
-    this.jdField_a_of_type_Int = aqol.a(paramaqol);
-    this.b = aqol.b(paramaqol);
-    this.jdField_a_of_type_Aqpp = new aqpp();
-    a(paramaqol);
-    c();
+    super(paramQQAppInterface);
   }
   
-  public static aqog a()
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (jdField_a_of_type_Aqog == null) {}
-    try
+    boolean bool2;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
-      if (jdField_a_of_type_Aqog == null) {
-        jdField_a_of_type_Aqog = new aqog();
+      bool2 = true;
+      if (!bool2) {
+        break label317;
       }
-      return jdField_a_of_type_Aqog;
+      paramFromServiceMsg = (byte[])paramObject;
+      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
     }
-    finally {}
-  }
-  
-  public static aqol a()
-  {
-    return new aqol(null);
-  }
-  
-  public static aqoz a()
-  {
-    if (jdField_a_of_type_Aqoz == null) {}
-    try
+    for (;;)
     {
-      if ((jdField_a_of_type_Aqoz == null) && (jdField_a_of_type_Aqow != null)) {
-        jdField_a_of_type_Aqoz = jdField_a_of_type_Aqow.a();
-      }
-      if (jdField_a_of_type_Aqoz == null) {
-        jdField_a_of_type_Aqoz = new aqoz();
-      }
-      return jdField_a_of_type_Aqoz;
-    }
-    finally {}
-  }
-  
-  private void a(aqol paramaqol)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.addAll(aqol.a(paramaqol));
-  }
-  
-  private void c()
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aqot == null)) {
-      throw new IllegalArgumentException("Danmaku module need an IDanmakuPlayTimeSupplier or is live setter for computing timeline");
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Aqos != null) {
-      return this.jdField_a_of_type_Aqos.a();
-    }
-    return (int)Math.ceil(DrawUtils.getDefaultLineHeight(a()));
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_Aqot == null) {
-      return -1L;
-    }
-    return this.jdField_a_of_type_Aqot.a();
-  }
-  
-  public aqoa a(int paramInt)
-  {
-    Object localObject;
-    if (paramInt == -2147483647) {
-      localObject = new aqoi(this);
-    }
-    aqoa localaqoa;
-    do
-    {
-      return localObject;
-      localaqoa = null;
-      if (this.jdField_a_of_type_Aqoo != null) {
-        localaqoa = this.jdField_a_of_type_Aqoo.a(this, paramInt);
-      }
-      localObject = localaqoa;
-    } while (localaqoa != null);
-    return new aqof(this);
-  }
-  
-  public aqou a(int paramInt)
-  {
-    Object localObject3 = (aqou)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    Object localObject1 = localObject3;
-    if (localObject3 == null) {}
-    try
-    {
-      localObject3 = (aqou)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-      localObject1 = localObject3;
-      if (localObject3 == null)
+      try
       {
-        localObject1 = localObject3;
-        if (this.jdField_a_of_type_Aqov != null)
-        {
-          localObject1 = this.jdField_a_of_type_Aqov.a(paramInt);
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom(paramFromServiceMsg);
+        paramToServiceMsg = paramFromServiceMsg;
+        if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0)) {
+          if ((paramToServiceMsg.bytes_bodybuffer.has()) && (paramToServiceMsg.bytes_bodybuffer.get() != null)) {
+            paramFromServiceMsg = new oidb_0x5eb.RspBody();
+          }
         }
       }
-      localObject3 = localObject1;
-      if (localObject1 == null) {
-        localObject3 = a();
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        try
+        {
+          paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+          if (paramFromServiceMsg.rpt_msg_uin_data.size() > 0) {
+            if (((oidb_0x5eb.UdcUinData)paramFromServiceMsg.rpt_msg_uin_data.get(0)).uint32_flag_color_note_recent_switch.get() == 1)
+            {
+              bool1 = true;
+              bool2 = true;
+              notifyUI(1, bool2, new Object[] { Boolean.valueOf(bool1) });
+              return;
+              bool2 = false;
+              break;
+              paramFromServiceMsg = paramFromServiceMsg;
+              QLog.e("ColorNoteHandler", 1, "pkg.mergeFrom error: ", paramFromServiceMsg);
+            }
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+        {
+          QLog.e("ColorNoteHandler", 1, "response.mergeFrom error: ", paramToServiceMsg);
+          continue;
+          bool1 = false;
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.d("ColorNoteHandler", 0, "handleReqGetColorNoteRecentSwitch: response.rpt_msg_uin_data.size() < 0");
+          }
+          bool1 = true;
+          bool2 = false;
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorNoteHandler", 0, "handleReqGetColorNoteRecentSwitch: pkg.bytes_bodybuffer is null");
+        }
+        bool1 = true;
+        bool2 = false;
+        continue;
+        if (QLog.isColorLevel())
+        {
+          if (!paramToServiceMsg.uint32_result.has()) {
+            break label306;
+          }
+          QLog.d("ColorNoteHandler", 0, "handleReqGetColorNoteRecentSwitch: pkg.uint32_result error code: " + paramToServiceMsg.uint32_result.get());
+        }
       }
-      return localObject3;
-    }
-    finally {}
-  }
-  
-  public aqpa a(aqoa paramaqoa)
-  {
-    Iterator localIterator = a().iterator();
-    Object localObject;
-    do
-    {
-      if (!localIterator.hasNext()) {
+      for (;;)
+      {
+        bool1 = true;
+        bool2 = false;
         break;
+        label306:
+        QLog.d("ColorNoteHandler", 0, "handleReqGetColorNoteRecentSwitch: pkg.uint32_result do not have");
       }
-      localObject = (aqpa)localIterator.next();
-    } while (!((aqpa)localObject).a(paramaqoa));
-    for (paramaqoa = (aqoa)localObject;; paramaqoa = null)
-    {
-      localObject = paramaqoa;
-      if (paramaqoa == null) {
-        localObject = this.jdField_a_of_type_Aqpd;
-      }
-      return localObject;
+      label317:
+      boolean bool1 = true;
     }
   }
   
-  public List<aqpa> a()
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    boolean bool1;
+    boolean bool3;
+    boolean bool2;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    {
+      bool1 = true;
+      bool3 = bool1;
+      if (!bool1) {
+        break label278;
+      }
+      bool2 = bool1;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramToServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
+        bool2 = bool1;
+        if (paramToServiceMsg.uint32_result.get() != 0) {
+          continue;
+        }
+        bool1 = true;
+        bool3 = bool1;
+        if (!bool1) {
+          break label278;
+        }
+        bool2 = bool1;
+        bool3 = bool1;
+        if (!paramToServiceMsg.bytes_bodybuffer.has()) {
+          break label278;
+        }
+        bool2 = bool1;
+        bool3 = bool1;
+        if (paramToServiceMsg.bytes_bodybuffer.get() == null) {
+          break label278;
+        }
+        bool2 = bool1;
+        i = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray()).getInt();
+        if (i >= 0) {
+          continue;
+        }
+        l = i + 4294967296L;
+        bool2 = bool1;
+        if (this.app == null) {
+          continue;
+        }
+        bool2 = bool1;
+        if (!this.app.getCurrentAccountUin().equals(String.valueOf(l))) {
+          continue;
+        }
+        bool2 = bool1;
+        bool3 = bool1;
+        if (!QLog.isColorLevel()) {
+          break label278;
+        }
+        bool2 = bool1;
+        QLog.d("ColorNoteHandler", 0, "handleReqSetColorNoteRecentSwitch: set switch success");
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        try
+        {
+          int i;
+          long l;
+          if (QLog.isColorLevel()) {
+            QLog.d("ColorNoteHandler", 0, "handleReqSetColorNoteRecentSwitch: set switch failed");
+          }
+          bool1 = false;
+        }
+        catch (Exception paramToServiceMsg)
+        {
+          for (;;)
+          {
+            bool1 = false;
+          }
+        }
+        paramToServiceMsg = paramToServiceMsg;
+        bool1 = bool2;
+      }
+      notifyUI(2, bool1, null);
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
+      continue;
+      l = i;
+      continue;
+      QLog.e("ColorNoteHandler", 1, "handleReqSetColorNoteRecentSwitch: oidb_sso errors", paramToServiceMsg);
+      continue;
+      label278:
+      bool1 = bool3;
+    }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Aqon != null) {
-      this.jdField_a_of_type_Aqon.a();
+    String str;
+    Object localObject;
+    if (this.app != null)
+    {
+      str = this.app.getCurrentAccountUin();
+      localObject = new oidb_0x5eb.ReqBody();
+    }
+    try
+    {
+      long l = Long.parseLong(str);
+      ((oidb_0x5eb.ReqBody)localObject).rpt_uint64_uins.add(Long.valueOf(l));
+      ((oidb_0x5eb.ReqBody)localObject).uint32_flag_color_note_recent_switch.set(1);
+      localObject = makeOIDBPkg("OidbSvc.0x5eb_cn_switch", 1515, 22, ((oidb_0x5eb.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).extraData.putString("uin", str);
+      ((ToServiceMsg)localObject).extraData.putBoolean("uint32_flag_color_note_recent_switch", true);
+      sendPbReq((ToServiceMsg)localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("ColorNoteHandler", 1, "reqGetColorNoteRecentSwitch: parseLongError: ", localException);
+      }
     }
   }
   
-  public void a(aqoa paramaqoa)
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Aqor != null) {
-      this.jdField_a_of_type_Aqor.a(paramaqoa);
+    short s = 0;
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      Object localObject1;
+      if (this.app != null) {
+        localObject1 = this.app.getCurrentAccountUin();
+      }
+      try
+      {
+        long l = Long.parseLong((String)localObject1);
+        localObject1 = new oidb_sso.OIDBSSOPkg();
+        ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1279);
+        ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(9);
+        Object localObject2 = ByteBuffer.allocate(13);
+        if (paramBoolean) {
+          s = 1;
+        }
+        ((ByteBuffer)localObject2).putInt(bhbx.a(l)).put((byte)0).putShort((short)1).putShort(this.a).putShort((short)2).putShort(s);
+        ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject2).array()));
+        localObject2 = createToServiceMsg("OidbSvc.0x4ff_cn_switch");
+        ((ToServiceMsg)localObject2).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
+        ((ToServiceMsg)localObject2).setTimeout(30000L);
+        sendPbReq((ToServiceMsg)localObject2);
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorNoteHandler", 0, "reqSetColorNoteRecentSwitch: request sent, switch: " + paramBoolean);
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ColorNoteHandler", 1, "reqSetColorNoteRecentSwitch error: ", localException);
+      }
     }
   }
   
-  public boolean a()
+  public Class<? extends BusinessObserver> observerClass()
   {
-    return (this.jdField_a_of_type_Boolean) || (a() < 0L);
+    return aqok.class;
   }
   
-  public int b()
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Aqpp.a(0);
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    if (TextUtils.equals("OidbSvc.0x5eb_cn_switch", paramFromServiceMsg.getServiceCmd()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteHandler", 0, "onReceive: receive CMD_REQ_GET_SWITCH message");
+      }
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    while (!TextUtils.equals("OidbSvc.0x4ff_cn_switch", paramFromServiceMsg.getServiceCmd())) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteHandler", 0, "onReceive: receive CMD_REQ_SET_SWITCH message");
+    }
+    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

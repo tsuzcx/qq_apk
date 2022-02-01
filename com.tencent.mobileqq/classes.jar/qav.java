@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qav
-  implements View.OnClickListener
+public class qav
+  extends pvq
 {
-  qav(qat paramqat, Container paramContainer, pvc parampvc, int paramInt) {}
+  public qav(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, qfe paramqfe)
   {
-    qat.a(this.jdField_a_of_type_Qat, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pvc, this.jdField_a_of_type_Int);
     if (QLog.isColorLevel()) {
-      QLog.d("BiuPgcProteusItem", 2, "click bottom bar for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pvc.a() + " position = " + this.jdField_a_of_type_Int);
+      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onGetSelfInfo retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden" + paramBoolean);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt1 == 0)
+    {
+      this.a.a(paramInt2, paramInt3, paramBoolean);
+      if (paramqfe != null) {
+        ReadInJoySelfFragment.a(this.a, paramqfe);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.e("Q.readinjoy.self.SelfFragment", 1, "onGetSelfInfo, columnInfoForSelfPage = null");
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import nnd;
+import nud;
 
 class TroopChatPie$29
   implements Runnable

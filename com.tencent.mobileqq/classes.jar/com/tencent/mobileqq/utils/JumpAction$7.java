@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import bfuc;
-import bfvp;
+import bhcu;
+import bheh;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class JumpAction$7
   implements Runnable
 {
-  public JumpAction$7(bfvp parambfvp, String paramString1, long paramLong, String paramString2, String paramString3, Runnable paramRunnable) {}
+  public JumpAction$7(bheh parambheh, String paramString1, long paramLong, String paramString2, String paramString3, Runnable paramRunnable) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class JumpAction$7
     if (!TextUtils.isEmpty(str)) {}
     try
     {
-      str = new String(bfuc.encode(str.getBytes("UTF-8"), 0));
+      str = new String(bhcu.encode(str.getBytes("UTF-8"), 0));
       this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, str);
       this.jdField_a_of_type_JavaLangRunnable.run();
       if ((!this.this$0.f) && ((this.this$0.jdField_a_of_type_AndroidContentContext instanceof JumpActivity))) {

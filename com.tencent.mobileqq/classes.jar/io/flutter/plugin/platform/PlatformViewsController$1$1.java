@@ -7,7 +7,7 @@ class PlatformViewsController$1$1
   
   public void run()
   {
-    PlatformViewsController.access$1100(this.this$1.this$0, this.val$vdController);
+    PlatformViewsController.access$1200(this.this$1.this$0, this.val$vdController);
     this.val$onComplete.run();
   }
 }

@@ -1,141 +1,40 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.text.Spannable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.app.face.FaceDrawable;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.widget.ColorNickTextView;
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 
-public class ahwu
-  extends BaseAdapter
+public abstract class ahwu
+  extends ahvv
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<ahwt> jdField_a_of_type_JavaUtilList = new LinkedList();
-  
-  public ahwu(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, Context paramContext)
+  public ahvd a(BaseChatPie paramBaseChatPie, PlusPanelAppInfo paramPlusPanelAppInfo, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  boolean a(long paramLong1, long paramLong2)
-  {
-    CalendarDay localCalendarDay1 = new CalendarDay(paramLong1 * 1000L);
-    CalendarDay localCalendarDay2 = new CalendarDay(paramLong2 * 1000L);
-    return (localCalendarDay1.year == localCalendarDay2.year) && (localCalendarDay1.month == localCalendarDay2.month) && (localCalendarDay1.day == localCalendarDay2.day);
-  }
-  
-  boolean a(List<ahwt> paramList)
-  {
-    int j = paramList.size();
-    int i = 0;
-    long l2;
-    for (long l1 = 0L; i < j; l1 = l2)
-    {
-      ahwt localahwt = (ahwt)paramList.get(i);
-      l2 = localahwt.jdField_a_of_type_Long;
-      if ((l1 == 0L) || (!a(l1, l2))) {
-        localahwt.jdField_a_of_type_Boolean = true;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(localahwt);
-      i += 1;
+    ahvd localahvd = new ahvd();
+    localahvd.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(paramBaseChatPie.app, paramPlusPanelAppInfo);
+    localahvd.jdField_a_of_type_Int = paramPlusPanelAppInfo.getAppID();
+    localahvd.jdField_b_of_type_Int = paramPlusPanelAppInfo.getAppID();
+    localahvd.c = String.valueOf(localahvd.jdField_b_of_type_Int);
+    localahvd.e = paramPlusPanelAppInfo.actionType;
+    localahvd.d = paramPlusPanelAppInfo.action;
+    localahvd.jdField_a_of_type_JavaLangString = a(paramPlusPanelAppInfo);
+    localahvd.jdField_b_of_type_JavaLangString = (localahvd.jdField_a_of_type_JavaLangString + anvx.a(2131707759));
+    localahvd.f = paramBaseChatPie.sessionInfo.troopUin;
+    int i = paramPlusPanelAppInfo.getAppID();
+    if ((i == 1104864062) || (i == 101761547) || (i == 101793773) || (i == 101817424)) {
+      localahvd.jdField_a_of_type_Boolean = paramPlusPanelAppInfo.redPoint;
     }
-    return true;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ahws localahws;
-    ahwt localahwt;
-    Object localObject;
-    RelativeLayout.LayoutParams localLayoutParams;
-    int i;
-    if (paramView == null)
-    {
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559346, null);
-      localahws = new ahws();
-      localahws.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131378368));
-      localahws.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378370));
-      localahws.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368236));
-      localahws.b = ((TextView)paramView.findViewById(2131369605));
-      localahws.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370021);
-      localahws.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131379227));
-      paramView.setTag(localahws);
-      localahwt = (ahwt)getItem(paramInt);
-      localahws.jdField_a_of_type_AndroidWidgetTextView.setText(localahwt.jdField_a_of_type_JavaLangCharSequence);
-      localahws.b.setText(localahwt.a());
-      localObject = new bczs(ContactUtils.getTroopMemberName(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.b, localahwt.jdField_a_of_type_JavaLangString), 16).a();
-      localahws.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject);
-      bgdk.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localahws.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView, (Spannable)localObject);
-      localObject = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, localahwt.jdField_a_of_type_JavaLangString);
-      localahws.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      localObject = (RelativeLayout.LayoutParams)localahws.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      localLayoutParams = (RelativeLayout.LayoutParams)localahws.b.getLayoutParams();
-      if (!localahwt.jdField_a_of_type_Boolean) {
-        break label456;
-      }
-      localahws.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localahws.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (paramInt != 0) {
-        break label436;
-      }
-      i = ViewUtils.dip2px(3.0F);
-      label301:
-      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
-      if (paramInt != 0) {
-        break label446;
-      }
-      i = ViewUtils.dip2px(3.0F);
+    if (i == 1104874204) {
+      this.jdField_a_of_type_Int = (paramInt / 8);
     }
-    label319:
-    for (localLayoutParams.topMargin = i;; localLayoutParams.topMargin = 0)
-    {
-      localahws.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localahws.b.setLayoutParams(localLayoutParams);
-      localahws.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt));
-      localahws.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramView.setContentDescription(localahwt.jdField_a_of_type_JavaLangCharSequence + " " + localahwt.a());
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localahws = (ahws)paramView.getTag();
-      break;
-      i = ViewUtils.dip2px(9.0F);
-      break label301;
-      i = ViewUtils.dip2px(9.0F);
-      break label319;
-      label456:
-      localahws.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      localahws.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      ((RelativeLayout.LayoutParams)localObject).topMargin = 0;
-    }
+    return localahvd;
   }
+  
+  public void a(BaseChatPie paramBaseChatPie)
+  {
+    super.a(paramBaseChatPie);
+    b(paramBaseChatPie);
+    a(paramBaseChatPie.app, paramBaseChatPie.sessionInfo.curType, paramBaseChatPie.sessionInfo.curFriendUin);
+  }
+  
+  protected abstract void b(BaseChatPie paramBaseChatPie);
 }
 
 

@@ -1,19 +1,18 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class znc
-  extends RecyclerView.OnScrollListener
+  implements View.OnClickListener
 {
-  znc(znb paramznb) {}
+  znc(zmz paramzmz, znf paramznf) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(View paramView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((znb.a(this.a)) && (!paramRecyclerView.isComputingLayout()) && (paramInt == 0))
-    {
-      znb.a(this.a, false);
-      this.a.notifyDataSetChanged();
+    if (zmz.a(this.jdField_a_of_type_Zmz) != null) {
+      zmz.a(this.jdField_a_of_type_Zmz).c(this.jdField_a_of_type_Znf);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

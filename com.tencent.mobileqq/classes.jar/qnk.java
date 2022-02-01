@@ -1,16 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSReportTo1160;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qnk
-  implements PTSNativeModuleRegistry.IPTSReportTo1160
+class qnk
+  implements ViewBase.OnClickListener
 {
-  public void reportTo1160(String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4)
+  qnk(qnj paramqnj, Context paramContext, rpr paramrpr, ArticleInfo paramArticleInfo) {}
+  
+  public void onClick(ViewBase paramViewBase)
   {
-    QLog.i("PTSReportTo1160Module", 1, "[reportTo1160], event = " + paramString1 + ", toUin = " + paramString2 + ", r2 = " + paramLong + ", r3 = " + paramInt + ", r4 = " + paramString3 + ", r5 = " + paramString4);
-    if (!TextUtils.isEmpty(paramString1)) {
-      qob.a(paramString1, "" + paramLong, "" + paramInt, paramString3, new qoc(paramString4).a());
-    }
+    six.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rpr.a);
+    qnj.a(this.jdField_a_of_type_Qnj, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

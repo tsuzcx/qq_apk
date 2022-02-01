@@ -1,6 +1,6 @@
 package com.tencent.ttpic.openapi.model;
 
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.util.List;
 
 public class FaceImageLayer
@@ -17,7 +17,7 @@ public class FaceImageLayer
   public String faceMaskImagePath;
   public List<Integer> faceTriangle;
   public int faceTriangleID;
-  public FaceOffUtil.FEATURE_TYPE featureType = FaceOffUtil.FEATURE_TYPE.CRAZY_FACE;
+  public FaceOffUtil.FeatureType featureType = FaceOffUtil.FeatureType.CRAZY_FACE;
   public double height;
   public List<Double> imageFaceColor;
   public List<Double> imageFaceColor2;

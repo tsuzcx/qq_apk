@@ -1,10 +1,27 @@
-import android.widget.ImageView;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-class zgu
+public class zgu
+  extends SimpleJob
 {
-  public ImageView a;
+  public zgu(SegmentList paramSegmentList, String paramString)
+  {
+    super(paramString);
+  }
   
-  private zgu(zgs paramzgs) {}
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.a.a.f();
+    if (SegmentList.a(this.a)) {
+      return null;
+    }
+    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
+    return null;
+  }
 }
 
 

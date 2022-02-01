@@ -1,33 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bdjs
-  implements View.OnClickListener
+public class bdjs
 {
-  bdjs(bdjr parambdjr, bdjv parambdjv) {}
-  
-  public void onClick(View paramView)
-  {
-    int i = this.jdField_a_of_type_Bdjv.getAdapterPosition();
-    if (i != bdjr.a(this.jdField_a_of_type_Bdjr))
-    {
-      if (!this.jdField_a_of_type_Bdjr.a()) {
-        break label89;
-      }
-      this.jdField_a_of_type_Bdjr.a(paramView, i);
-    }
-    for (;;)
-    {
-      bcef.b(null, "dc00898", "", "", "0X800B355", "0X800B355", bdjr.a(this.jdField_a_of_type_Bdjr)[i].a, 0, String.valueOf(bdjr.a(this.jdField_a_of_type_Bdjr)), "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label89:
-      bdjr.a(this.jdField_a_of_type_Bdjr).a(bdjr.a(this.jdField_a_of_type_Bdjr)[i].b);
-      bdjr.a(this.jdField_a_of_type_Bdjr, i);
-      this.jdField_a_of_type_Bdjr.notifyDataSetChanged();
-    }
-  }
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
+  public String t = "";
+  public String u = "";
+  public String v = "";
 }
 
 

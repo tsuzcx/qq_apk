@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.monitor.service;
 
-import bfqf;
+import bgyw;
 
 class TaskMonitorManager$FpsListener
-  implements bfqf
+  implements bgyw
 {
   private TaskMonitorManager$FpsListener(TaskMonitorManager paramTaskMonitorManager) {}
   

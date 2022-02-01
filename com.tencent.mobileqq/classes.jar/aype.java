@@ -1,40 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.publishInterface.QzonePublishMoodCallback;
+import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class aype
-  implements QzonePublishMoodCallback
+class aype
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aype(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  aype(aypd paramaypd, aypf paramaypf) {}
   
-  public void onResult(boolean paramBoolean, int paramInt, String paramString)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickyNotePublishFragment", 2, String.format("publishStickyNote onResult success=%s resultCode=%s resultMsg=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
+    if ((aypd.a(this.jdField_a_of_type_Aypd) != null) && (this.jdField_a_of_type_Aypf != null)) {
+      this.jdField_a_of_type_Aypf.b(aypd.a(this.jdField_a_of_type_Aypd), aypd.a(this.jdField_a_of_type_Aypd).getChildPosition(aypd.a(this.jdField_a_of_type_Aypd)));
     }
-    if ((StickyNotePublishFragment.a(this.a) != null) && (StickyNotePublishFragment.a(this.a).isShowing())) {
-      StickyNotePublishFragment.a(this.a).dismiss();
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if ((aypd.a(this.jdField_a_of_type_Aypd) != null) && (this.jdField_a_of_type_Aypf != null)) {
+      this.jdField_a_of_type_Aypf.a(aypd.a(this.jdField_a_of_type_Aypd), aypd.a(this.jdField_a_of_type_Aypd).getChildPosition(aypd.a(this.jdField_a_of_type_Aypd)));
     }
-    if (paramBoolean)
-    {
-      QQToast.a(BaseApplication.context, 2, 2131698458, 0).a();
-      if (this.a.getActivity() != null)
-      {
-        StickyNotePublishFragment.b(this.a, false);
-        this.a.a(this.a.getActivity().app);
-        this.a.getActivity().setResult(-1);
-        this.a.getActivity().finish();
-      }
-      return;
-    }
-    int i = 2131698456;
-    if (paramInt == ayow.b) {
-      i = 2131698457;
-    }
-    QQToast.a(BaseApplication.context, 1, i, 0).a();
+    return true;
   }
 }
 

@@ -7,7 +7,7 @@ class FriendListHandler$4
   
   public void run()
   {
-    FriendListHandler.access$200(this.this$0, this.val$headType, this.val$uinOrMobile, this.val$idType, this.val$level, this.val$faceFileType, this.val$sizeType, this.val$isGetStrangerHead);
+    FriendListHandler.access$100(this.this$0, this.val$headType, this.val$uinOrMobile, this.val$idType, this.val$level, this.val$faceFileType, this.val$sizeType, this.val$isGetStrangerHead);
   }
 }
 

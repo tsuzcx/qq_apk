@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import alnr;
-import amir;
-import amlu;
-import amlx;
+import amme;
 import android.content.Context;
 import android.os.Message;
 import android.text.TextUtils;
+import ankc;
+import annl;
+import annm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.mobileqq.data.ApolloFavActionData;
 import com.tencent.mobileqq.utils.VipUtils;
@@ -37,24 +38,24 @@ final class ApolloItemBuilder$2
         do
         {
           return;
-          localObject2 = (amir)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+          localObject2 = (ankc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APOOLO_DAO_MANAGER);
         } while (localObject2 == null);
-        localObject1 = ((amir)localObject2).d();
+        localObject1 = ((ankc)localObject2).d();
         if ((localObject1 == null) || (((List)localObject1).size() < 143)) {
           break;
         }
-        ApolloItemBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131690026), 1, this.jdField_a_of_type_AndroidContentContext);
+        ApolloItemBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131690055), 1, this.jdField_a_of_type_AndroidContentContext);
       } while (!QLog.isColorLevel());
       QLog.d("ApolloItemBuilder", 2, "fav number is 144");
       return;
-      if (((amir)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.acitonId) != null) {
+      if (((ankc)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.acitonId) != null) {
         break;
       }
-      ApolloItemBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131690029), 1, this.jdField_a_of_type_AndroidContentContext);
+      ApolloItemBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131690058), 1, this.jdField_a_of_type_AndroidContentContext);
     } while (!QLog.isColorLevel());
     QLog.d("ApolloItemBuilder", 2, "cant find the add aciton id=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.acitonId);
     return;
-    Object localObject1 = ((amir)localObject2).d();
+    Object localObject1 = ((ankc)localObject2).d();
     Object localObject3;
     if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
@@ -71,7 +72,7 @@ final class ApolloItemBuilder$2
     {
       if (i != 0)
       {
-        ApolloItemBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131690025), 1, this.jdField_a_of_type_AndroidContentContext);
+        ApolloItemBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131690054), 1, this.jdField_a_of_type_AndroidContentContext);
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -80,8 +81,8 @@ final class ApolloItemBuilder$2
       }
       long l = System.currentTimeMillis();
       this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.favId = l;
-      ((amir)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData);
-      ApolloItemBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131690030), 2, this.jdField_a_of_type_AndroidContentContext);
+      ((ankc)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData);
+      ApolloItemBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131690059), 2, this.jdField_a_of_type_AndroidContentContext);
       localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
       i = ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
       String str = "" + this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.acitonId;
@@ -96,29 +97,29 @@ final class ApolloItemBuilder$2
         if (localObject3 == null) {
           break;
         }
-        localObject1 = new amlx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-        ((amlu)localObject1).jdField_a_of_type_ComTencentMobileqqDataApolloActionData = ((amir)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.acitonId);
-        ((amlu)localObject1).b = this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.text;
-        ((amlu)localObject1).d = this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.textType;
-        ((amlu)localObject1).e = this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.audioId;
-        ((amlu)localObject1).f = this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.playOriginalAudio;
-        ((amlu)localObject1).jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.audioStartTime;
+        localObject1 = new annm(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+        ((annl)localObject1).jdField_a_of_type_ComTencentMobileqqDataApolloActionData = ((ankc)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.acitonId);
+        ((annl)localObject1).b = this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.text;
+        ((annl)localObject1).d = this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.textType;
+        ((annl)localObject1).e = this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.audioId;
+        ((annl)localObject1).f = this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.playOriginalAudio;
+        ((annl)localObject1).jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqDataApolloFavActionData.audioStartTime;
         localObject2 = ((MqqHandler)localObject3).obtainMessage(66);
         ((Message)localObject2).obj = localObject1;
         ((Message)localObject2).sendToTarget();
-        if (((amlu)localObject1).jdField_a_of_type_ComTencentMobileqqDataApolloActionData.status != 0) {
+        if (((annl)localObject1).jdField_a_of_type_ComTencentMobileqqDataApolloActionData.status != 0) {
           break;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("ApolloItemBuilder", 2, "add action download res " + ((amlu)localObject1).toString());
+          QLog.d("ApolloItemBuilder", 2, "add action download res " + ((annl)localObject1).toString());
         }
         if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
           break;
         }
-        localObject2 = (alnr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+        localObject2 = (amme)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APOLLO_MANAGER);
         localObject3 = new ArrayList();
-        ((List)localObject3).add(((amlu)localObject1).jdField_a_of_type_ComTencentMobileqqDataApolloActionData);
-        ((alnr)localObject2).a((List)localObject3, "apollo_key");
+        ((List)localObject3).add(((annl)localObject1).jdField_a_of_type_ComTencentMobileqqDataApolloActionData);
+        ((amme)localObject2).a((List)localObject3, "apollo_key");
         return;
       }
     }

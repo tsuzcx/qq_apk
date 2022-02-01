@@ -1,28 +1,9 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public final class wzg
-  extends QQUIEventReceiver<wyy, xnu>
+public abstract interface wzg
 {
-  public wzg(@NonNull wyy paramwyy)
-  {
-    super(paramwyy);
-  }
-  
-  public void a(@NonNull wyy paramwyy, @NonNull xnu paramxnu)
-  {
-    if ((paramxnu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxnu.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramwyy.a != null) && (TextUtils.equals(paramxnu.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramwyy.a.b))) {
-      paramwyy.i();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xnu.class;
-  }
+  public abstract boolean a(@NonNull StoryVideoItem paramStoryVideoItem);
 }
 
 

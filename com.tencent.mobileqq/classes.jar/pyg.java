@@ -1,11 +1,13 @@
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 
-class pyg
+public class pyg
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 2;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public pyg(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
   
-  private pyg(pyd parampyd) {}
+  public void onClick(View paramView) {}
 }
 
 

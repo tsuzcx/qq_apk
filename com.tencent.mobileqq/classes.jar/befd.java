@@ -1,28 +1,41 @@
-import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class befd
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public befd(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public befd(Context paramContext, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramString2.length();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      localStringBuilder.append(", hanzi = " + this.jdField_a_of_type_JavaLangString);
+    beer localbeer = (beer)paramView.getTag();
+    if (localbeer.jdField_a_of_type_Int == beep.b)
+    {
+      becr.a(this.a.app, "0X8009938");
+      becr.a(this.a.app, this.a, 2, "group_online_doc_more_temp", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      bdla.b(this.a.app, "dc00898", "", "", "0X8009C67", "0X8009C67", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "");
     }
-    if (this.b != null) {
-      localStringBuilder.append(", pinyin = " + this.b);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      String str = aufd.a(this.a.app, this.a.a, this.a.app.getLongAccountUin());
+      if (!TextUtils.isEmpty(str))
+      {
+        QQToast.a(this.a, str, 0).a();
+      }
+      else
+      {
+        becr.a(this.a.app, "0X8009937");
+        becr.a(this.a.app, this.a, "group_online_doc_temp", GroupTeamWorkListActivity.a(this.a), localbeer.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo);
+        bdla.b(this.a.app, "dc00898", "", "", "0X8009C66", "0X8009C66", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "");
+      }
     }
-    return localStringBuilder.toString();
   }
 }
 

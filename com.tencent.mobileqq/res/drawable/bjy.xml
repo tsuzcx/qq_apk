@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <rotate android:fromDegrees="45.0" android:pivotX="179.99878%" android:pivotY="0.0">
-            <shape android:shape="rectangle">
-                <size android:height="16.0dip" android:width="16.0dip" />
-                <solid android:color="#ffffffff" />
-            </shape>
-        </rotate>
-    </item>
-</layer-list>
+    <item android:state_selected="false" android:drawable="@drawable/fo_" />
+    <item android:drawable="@drawable/fol" />
+</selector>

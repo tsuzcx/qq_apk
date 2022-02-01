@@ -1,37 +1,21 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aeke
-  implements bjsz
+  implements DialogInterface.OnClickListener
 {
-  public aeke(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public aeke(NotificationActivity paramNotificationActivity) {}
   
-  public void a(bjsy parambjsy)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = false;
-    switch (parambjsy.a)
-    {
-    default: 
-      return;
-    case 0: 
-      parambjsy = this.a;
-      if (!this.a.d) {
-        bool = true;
-      }
-      parambjsy.d = bool;
-      avnu.a().b(this.a.app, this.a.d);
-      return;
-    }
-    parambjsy = new Intent(this.a, TroopAssisSettingActivity.class);
-    parambjsy.setFlags(67108864);
-    this.a.startActivity(parambjsy);
-    bcef.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
+    NotificationActivity.b(this.a, 0);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeke
  * JD-Core Version:    0.7.0.1
  */

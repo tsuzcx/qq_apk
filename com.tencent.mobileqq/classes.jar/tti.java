@@ -1,33 +1,33 @@
-import android.content.Context;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerTriplePicItemData;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
 public class tti
-  extends tsy
+  implements View.OnLayoutChangeListener
 {
-  public tti(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
-  {
-    super(paramBaseData, paramWeakReference, localWeakReference);
-  }
+  public tti(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
   
-  protected void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new ttj(this, paramBaseData, paramContext));
-  }
-  
-  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
-  {
-    return (paramBaseData1 == paramBaseData2) && ((paramBaseData2 instanceof ProteusBannerTriplePicItemData));
+    if ((CommonSuspensionGestureLayout.a(this.a) != null) && ((CommonSuspensionGestureLayout.a(this.a).getLayoutParams() instanceof FrameLayout.LayoutParams)))
+    {
+      paramView = (FrameLayout.LayoutParams)CommonSuspensionGestureLayout.a(this.a).getLayoutParams();
+      CommonSuspensionGestureLayout.a(this.a, CommonSuspensionGestureLayout.a(CommonSuspensionGestureLayout.a(this.a)));
+      if (paramView.bottomMargin != CommonSuspensionGestureLayout.a(this.a))
+      {
+        paramView.gravity = 80;
+        paramView.bottomMargin = CommonSuspensionGestureLayout.a(CommonSuspensionGestureLayout.a(this.a));
+        CommonSuspensionGestureLayout.a(this.a).setLayoutParams(paramView);
+      }
+      this.a.c();
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tti
  * JD-Core Version:    0.7.0.1
  */

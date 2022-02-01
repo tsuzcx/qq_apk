@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class afvv
-  implements DialogInterface.OnClickListener
+public abstract interface afvv
 {
-  afvv(afvr paramafvr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a();
 }
 
 

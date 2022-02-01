@@ -1,21 +1,23 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.util.SparseArray;
 
-final class xhp
-  extends ClickableSpan
+public final class xhp
+  extends SparseArray<int[]>
 {
-  xhp(xhq paramxhq, String paramString, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public xhp()
   {
-    this.jdField_a_of_type_Xhq.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.getColor());
-    paramTextPaint.setUnderlineText(false);
+    put(0, new int[] { 1, 7 });
+    put(1, new int[] { 0, 2 });
+    put(2, new int[] { 0, 3 });
+    put(3, new int[] { 0, 4 });
+    put(4, new int[] { 0, 5 });
+    put(5, new int[] { 0, 6 });
+    put(6, new int[] { 0, 7 });
+    put(7, new int[] { 0, 8 });
+    put(8, new int[] { 0, 9 });
+    put(9, new int[] { 0, 10, 12 });
+    put(10, new int[] { 0, 11, 12 });
+    put(11, new int[] { 0, 9, 12 });
+    put(12, new int[] { 0, 7 });
   }
 }
 

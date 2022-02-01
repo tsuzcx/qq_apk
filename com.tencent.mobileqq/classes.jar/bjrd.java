@@ -1,60 +1,90 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.NegativeChildrenLayout;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.util.QQDeviceInfo;
+import cooperation.wadl.ipc.WadlParams;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bjrd
-  implements View.OnClickListener
+public class bjrd
 {
-  bjrd(bjrb parambjrb) {}
+  public static String a;
+  private static int b;
+  private static String j;
+  private static String k;
+  public int a;
+  public long a;
+  public WadlParams a;
+  public long b;
+  public String b;
+  public String c = "";
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public void onClick(View paramView)
+  static
   {
-    switch (paramView.getId())
+    try
     {
-    default: 
-      this.a.dismiss();
+      j = DeviceInfoUtil.getAndroidID();
+      jdField_b_of_type_Int = DeviceInfoUtil.getCarrier();
+      jdField_a_of_type_JavaLangString = QQDeviceInfo.getIMEI("b84cf5");
+      k = DeviceInfoUtil.getIMSI();
+      return;
     }
+    catch (Exception localException) {}
+  }
+  
+  public static bjrd a()
+  {
+    bjrd localbjrd = new bjrd();
+    try
+    {
+      localbjrd.jdField_b_of_type_Long = (DeviceInfoUtil.getSystemAvaialbeMemory() / 1048576L);
+      localbjrd.i = String.valueOf(DeviceInfoUtil.getSDCardMemory()[1]);
+      localbjrd.jdField_b_of_type_JavaLangString = "";
+      localbjrd.jdField_a_of_type_Int = 0;
+      return localbjrd;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return localbjrd;
+  }
+  
+  public String a()
+  {
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_a_of_type_JavaUtilArrayList, amtj.a(2131705057), this.a.jdField_a_of_type_Bjrg);
-      this.a.a(true);
-      this.a.r = 1;
-      this.a.c = amtj.a(2131705062);
-      bjrb.a(this.a, paramView.getTag(), false);
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
-      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_b_of_type_JavaUtilArrayList, amtj.a(2131705056), this.a.jdField_a_of_type_Bjrg);
-      this.a.a(true);
-      this.a.r = 2;
-      this.a.c = amtj.a(2131705065);
-      bjrb.a(this.a, paramView.getTag(), false);
-      continue;
-      this.a.c(paramView);
-      this.a.c();
-      this.a.r = 3;
-      this.a.c = amtj.a(2131705061);
-      bjrb.a(this.a, paramView.getTag(), true);
-      continue;
-      this.a.c(paramView);
-      this.a.c();
-      this.a.r = 4;
-      this.a.c = this.a.jdField_b_of_type_JavaLangString;
-      bjrb.a(this.a, paramView.getTag(), false);
-      continue;
-      this.a.c(paramView);
-      this.a.c();
-      this.a.r = 5;
-      this.a.c = BaseApplicationImpl.getContext().getString(2131717406);
-      bjrb.a(this.a, paramView.getTag(), false);
-      continue;
-      this.a.a(false);
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        if (!TextUtils.isEmpty(j))
+        {
+          String str1 = j;
+          localJSONObject.put("androidId", str1);
+          if (!TextUtils.isEmpty(k))
+          {
+            str1 = k;
+            localJSONObject.put("imsi", str1);
+            localJSONObject.put("mobileCarriers", jdField_b_of_type_Int);
+            localJSONObject.put("leftMemorySize", this.jdField_b_of_type_Long);
+            localJSONObject.put("pageUrl", this.e);
+            return localJSONObject.toString();
+          }
+          str1 = "";
+          continue;
+        }
+        String str2 = "";
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        return "";
+      }
     }
   }
 }

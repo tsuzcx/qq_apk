@@ -1,282 +1,95 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.support.v4.util.LruCache;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class arbl<T>
-  extends BaseAdapter
+public class arbl
+  extends aqwt<arbm>
 {
-  public int a;
-  protected Context a;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  private LruCache<String, Drawable> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(30);
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private HashMap<EmoticonPackage, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  protected List<T> a;
-  JSONArray jdField_a_of_type_OrgJsonJSONArray;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public arbl(Context paramContext, List<T> paramList)
+  public static boolean a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839183);
-    bgcw.a((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getAppRuntime(), bgcw.d);
-    paramContext = bgcw.d.a(this.jdField_a_of_type_AndroidContentContext);
-    if (paramContext != null) {}
-    try
+    if ((Build.VERSION.SDK_INT >= 26) && (Build.MODEL.toLowerCase().contains("vivo")))
     {
-      this.jdField_a_of_type_OrgJsonJSONArray = paramContext.getJSONArray("wording");
-      this.jdField_a_of_type_AndroidOsHandler = new Handler();
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("LocaleConfProcessor", 2, "hide entrance for vivo");
       }
+      return false;
     }
+    arbm localarbm = (arbm)aqxe.a().a(552);
+    if ((localarbm != null) && (!TextUtils.isEmpty(localarbm.a))) {
+      anxv.a = "1".equals(localarbm.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("LocaleConfProcessor", 2, new Object[] { "isLocaleEntranceEnable: ", Boolean.valueOf(anxv.a) });
+    }
+    if (!anxv.a()) {
+      return true;
+    }
+    return anxv.a;
   }
   
-  private Drawable a(EmoticonPackage paramEmoticonPackage)
+  @NonNull
+  public arbm a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramEmoticonPackage.epId) != null) {
-      return (Drawable)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramEmoticonPackage.epId);
-    }
-    Drawable localDrawable = aqyy.a(2, paramEmoticonPackage.epId);
-    if (localDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramEmoticonPackage.epId, localDrawable);
-      return localDrawable;
-    }
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    return new arbm();
   }
   
-  public List<EmoticonPackage> a()
+  @Nullable
+  public arbm a(aqxa[] paramArrayOfaqxa)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((Boolean)localEntry.getValue()).booleanValue()) {
-        localArrayList.add(localEntry.getKey());
+      arbm localarbm = arbm.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocaleConfProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
       }
+      return localarbm;
     }
-    return localArrayList;
+    return new arbm();
   }
   
-  public void a()
+  public void a(arbm paramarbm)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(int paramInt)
-  {
-    boolean bool = a(paramInt);
-    EmoticonPackage localEmoticonPackage = (EmoticonPackage)getItem(paramInt);
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    if (!bool) {}
-    for (bool = true;; bool = false)
-    {
-      localHashMap.put(localEmoticonPackage, Boolean.valueOf(bool));
-      return;
+    if ((paramarbm != null) && (!TextUtils.isEmpty(paramarbm.a))) {
+      anxv.a = "1".equals(paramarbm.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("LocaleConfProcessor", 2, "onUpdate, isConfShowEntrance: " + anxv.a);
     }
   }
   
-  public void a(T paramT)
+  public Class<arbm> clazz()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((paramT instanceof EmoticonPackage))
-      {
-        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramT;
-        this.jdField_a_of_type_JavaUtilHashMap.remove(localEmoticonPackage);
-      }
-      this.jdField_a_of_type_JavaUtilList.remove(paramT);
-      if (this.b) {
-        notifyDataSetChanged();
-      }
-      return;
-    }
+    return arbm.class;
   }
   
-  public void a(T paramT, int paramInt)
+  public boolean isNeedCompressed()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramInt, paramT);
-      if (this.b) {
-        notifyDataSetChanged();
-      }
-      return;
-    }
+    return true;
   }
   
-  public void a(boolean paramBoolean)
+  public boolean isNeedStoreLargeFile()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    EmoticonPackage localEmoticonPackage = (EmoticonPackage)getItem(paramInt);
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localEmoticonPackage)) {
-      return ((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(localEmoticonPackage)).booleanValue();
-    }
     return false;
   }
   
-  public void b()
+  public int migrateOldVersion()
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+    return 0;
   }
   
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
+  public void onReqFailed(int paramInt) {}
   
-  public int getCount()
+  public int type()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public T getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = new arbm(this);
-      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559165, null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366004));
-      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366009));
-      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365795));
-      paramView.d = ((ImageView)localView.findViewById(2131365796));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366008));
-      paramView.e = ((ImageView)localView.findViewById(2131366005));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366010));
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131377244);
-      paramView.jdField_b_of_type_AndroidViewView = localView.findViewById(2131380173);
-      paramView.f = ((ImageView)localView.findViewById(2131366006));
-      paramView.jdField_c_of_type_AndroidViewView = localView.findViewById(2131366003);
-      localView.setTag(paramView);
-      paramViewGroup.setTag(paramView);
-      localView.setBackgroundResource(2130839674);
-      localObject = (EmoticonPackage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((EmoticonPackage)localObject).name);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a((EmoticonPackage)localObject));
-      paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      if (!((EmoticonPackage)localObject).hasSound) {
-        break label458;
-      }
-      paramView.e.setVisibility(0);
-      if (!((EmoticonPackage)localObject).isNewVoiceType()) {
-        break label445;
-      }
-      paramView.e.setImageResource(2130838322);
-      label280:
-      if (!this.jdField_a_of_type_Boolean) {
-        break label525;
-      }
-      if (a(paramInt)) {
-        break label470;
-      }
-      localView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131691987) + " " + ((EmoticonPackage)localObject).name);
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847028);
-      label347:
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramView.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      label372:
-      if (((EmoticonPackage)localObject).mobileFeetype != 4) {
-        break label564;
-      }
-      paramView.f.setVisibility(0);
-      paramView.f.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839682));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (arbm)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label445:
-      paramView.e.setImageResource(2130839683);
-      break label280;
-      label458:
-      paramView.e.setVisibility(8);
-      break label280;
-      label470:
-      localView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131691977) + " " + ((EmoticonPackage)localObject).name);
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847029);
-      break label347;
-      label525:
-      localView.setContentDescription(((EmoticonPackage)localObject).name);
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramView.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramView.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      break label372;
-      label564:
-      if (((EmoticonPackage)localObject).mobileFeetype == 5)
-      {
-        paramView.f.setVisibility(0);
-        paramView.f.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847350));
-      }
-      else
-      {
-        paramView.f.setVisibility(8);
-      }
-    }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    super.notifyDataSetChanged();
-    this.b = true;
+    return 552;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbl
  * JD-Core Version:    0.7.0.1
  */

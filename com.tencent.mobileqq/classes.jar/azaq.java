@@ -1,23 +1,46 @@
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.text.TextUtils;
 
-public class azaq
-  implements QQPermissionCallback
+public final class azaq
+  implements EmoticonCallback
 {
-  public azaq(ProfileCardMoreActivity paramProfileCardMoreActivity1, ProfileCardMoreActivity paramProfileCardMoreActivity2) {}
+  public azaq(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void delete()
   {
-    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions denied...");
-    bfur.a(this.a, paramArrayOfString, paramArrayOfInt);
+    TextUtils.backspace(this.jdField_a_of_type_AndroidWidgetEditText);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void emoticonMall() {}
+  
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
+  
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
   {
-    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions grant...");
-    this.b.g();
+    return false;
   }
+  
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public void send() {}
+  
+  public void send(EmoticonInfo paramEmoticonInfo)
+  {
+    if (paramEmoticonInfo != null) {}
+    try
+    {
+      paramEmoticonInfo.send(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      return;
+    }
+    catch (Throwable paramEmoticonInfo) {}
+  }
+  
+  public void setting() {}
 }
 
 

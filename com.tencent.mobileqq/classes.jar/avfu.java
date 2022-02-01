@@ -1,31 +1,37 @@
-import android.app.Activity;
-import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.gamecenter.view.QQGameStatusView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avfu
+public class avfu
   implements View.OnClickListener
 {
-  avfu(avfq paramavfq, Activity paramActivity) {}
+  public avfu(QQGameStatusView paramQQGameStatusView) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Avfq.a()) {}
+    if ((QQGameStatusView.a(this.a) == null) || (QQGameStatusView.a(this.a))) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
+      if (QQGameStatusView.a(this.a) == 1) {
+        QQGameStatusView.a(this.a).b(QQGameStatusView.a(this.a));
+      } else if (QQGameStatusView.a(this.a) == 2) {
+        QQGameStatusView.a(this.a).a(QQGameStatusView.a(this.a));
+      } else if (QQGameStatusView.a(this.a) == 3) {
+        QQGameStatusView.a(this.a).c(QQGameStatusView.a(this.a));
+      } else if (QQGameStatusView.a(this.a) == 5) {
+        QQGameStatusView.a(this.a).d(QQGameStatusView.a(this.a));
+      } else if (QQGameStatusView.a(this.a) == 6) {
+        if (!TextUtils.isEmpty(QQGameStatusView.b(this.a))) {
+          QQGameStatusView.a(this.a).a(QQGameStatusView.a(this.a), QQGameStatusView.b(this.a));
+        } else if (QLog.isColorLevel()) {
+          QLog.d("QQGameStatusView", 1, "downloadFilePath is null,install faile");
+        }
       }
-      avfq.a(this.jdField_a_of_type_Avfq).setClickable(false);
-      avfq.a(this.jdField_a_of_type_Avfq).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840585));
-      avfq.a(this.jdField_a_of_type_Avfq).a(true);
-      bcef.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
     }
   }
 }

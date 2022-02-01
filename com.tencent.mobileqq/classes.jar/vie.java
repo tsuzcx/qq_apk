@@ -1,10 +1,21 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public class vie
-  extends vko
+class vie
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public List<vil> a = new ArrayList();
+  vie(vic paramvic) {}
+  
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
+    {
+      vmp.d("WSHomeFragmentPresenter", str + ", bundle: " + paramBundle.toString());
+      return;
+    }
+  }
 }
 
 

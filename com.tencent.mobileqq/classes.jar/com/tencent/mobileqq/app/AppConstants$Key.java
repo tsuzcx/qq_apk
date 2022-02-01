@@ -222,6 +222,8 @@ public abstract interface AppConstants$Key
   public static final String KEY_GAME_MSG_ENTER_FROM = "game_msg_enter_from";
   public static final String KEY_GAME_MSG_FRIEND_ROLEID = "game_msg_friend_role_id";
   public static final String KEY_GAME_MSG_MY_ROLEID = "game_msg_my_role_id";
+  public static final String KEY_GAME_MSG_OPEN_AIO_FROM = "game_msg_open_aio_from";
+  public static final String KEY_GAME_MSG_TOP_GRAY_TEXT = "game_msg_top_gray_text";
   public static final String KEY_GENDER = "gender";
   public static final String KEY_HAS_EMOJI = "has_emoji";
   public static final String KEY_ICON_NEED_ROUND = "icon_need_round";
@@ -257,6 +259,7 @@ public abstract interface AppConstants$Key
   public static final String KEY_REGISTER_FAIL_PAID_LH = "key_register_fail_paid_lh";
   public static final String KEY_REGISTER_FROM = "key_register_from";
   public static final String KEY_REGISTER_FROM_FAIL_PAY_LH = "key_register_from_fail_pay_lh";
+  public static final String KEY_REGISTER_FROM_FRIEND_VERIFY = "key_register_from_friend_verify";
   public static final String KEY_REGISTER_FROM_QUICK_REGISTER = "key_register_from_quick_register";
   public static final String KEY_REGISTER_FROM_SEND_SMSCODE = "key_register_from_send_sms";
   public static final String KEY_REGISTER_HAS_PWD = "key_register_has_pwd";

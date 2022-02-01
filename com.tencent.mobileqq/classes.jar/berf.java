@@ -1,56 +1,33 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.togetherui.writetogether.SavingAnimView;
 
 public class berf
-  extends beqz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public berf(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 20;
-  }
+  public berf(SavingAnimView paramSavingAnimView) {}
   
-  @Nullable
-  public bera a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramLong1);
-    if (((paramList instanceof MessageForArkApp)) && (a(paramList, paramLong2, paramLong3))) {
-      return new bera(true, aowk.a((MessageForArkApp)paramList), bdyo.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt, Object paramObject, String paramString)
-  {
-    if (!(paramObject instanceof bdyo)) {}
-    do
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    float f2 = SavingAnimView.b(this.a) + f1;
+    float f3 = f1 + SavingAnimView.c(this.a);
+    f1 = f2;
+    if (f2 + 1.0E-005F >= 1.0F)
     {
-      do
-      {
-        return;
-        paramObject = (bdyo)paramObject;
-        paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramObject.b);
-      } while (!(paramObject instanceof MessageForArkApp));
-      paramObject = ((MessageForArkApp)paramObject).ark_app_message;
-    } while (paramObject == null);
-    aovl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject.appName, "AIOMsgRemindShow", 0, 0, 0L, 0L, 0L, "", "");
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public void b(int paramInt, Object paramObject, String paramString)
-  {
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AA11", "0X800AA11", 0, 0, "", "", "", "");
+      f1 = 0.0F;
+      SavingAnimView.a(this.a, 0.0F);
+      SavingAnimView.a(this.a, true);
+    }
+    f2 = f3;
+    if (f3 + 1.0E-005F >= 1.0F) {
+      f2 = 1.0F;
+    }
+    if (!SavingAnimView.a(this.a)) {
+      SavingAnimView.a(this.a, f1);
+    }
+    SavingAnimView.b(this.a, f2);
+    this.a.invalidate();
   }
 }
 

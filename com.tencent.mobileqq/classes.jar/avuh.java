@@ -1,30 +1,10 @@
-public class avuh
+public abstract interface avuh
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  public abstract void a();
   
-  private avuh(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupPushData--");
-    localStringBuilder.append(",sig:").append(this.jdField_a_of_type_JavaLangString).append(",bizType:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
-  }
+  public abstract void a(long paramLong1, long paramLong2, int paramInt);
 }
 
 

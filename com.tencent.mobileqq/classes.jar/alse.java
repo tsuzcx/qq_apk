@@ -1,31 +1,18 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface alse
+public class alse
+  implements View.OnClickListener
 {
-  public abstract void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, alsd paramalsd, long paramLong);
+  public alse(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public abstract void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam);
-  
-  public abstract void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt);
-  
-  public abstract void onDownloadGameResStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
-  
-  public abstract void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
-  
-  public abstract void onGameCheckRetry(int paramInt);
-  
-  public abstract void onGameCheckStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
-  
-  public abstract void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong);
-  
-  public abstract void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam);
-  
-  public abstract void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam);
-  
-  public abstract void onSsoCmdRuleRsp(CmGameStartChecker.StartCheckParam paramStartCheckParam, String paramString);
-  
-  public abstract void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
+  public void onClick(View paramView)
+  {
+    QzoneSlideShowPreparingFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.gdtad.aditem;
 
 import android.content.Context;
-import bhlx;
+import biwn;
 import java.lang.ref.WeakReference;
 
 final class GdtHandler$1
@@ -12,7 +12,7 @@ final class GdtHandler$1
   public void run()
   {
     if ((this.a != null) && (this.a.a != null) && (this.a.a.get() != null)) {
-      bhlx.a((Context)this.a.a.get());
+      biwn.a((Context)this.a.a.get());
     }
   }
 }

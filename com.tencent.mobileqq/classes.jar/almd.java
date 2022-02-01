@@ -1,11 +1,21 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.troop.TroopInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxFragment;
 
-public abstract interface almd
+public class almd
+  extends almi
 {
-  public abstract void a(DiscussionInfo paramDiscussionInfo);
+  public almd(TempMsgBoxFragment paramTempMsgBoxFragment) {}
   
-  public abstract void a(TroopInfo paramTroopInfo, int paramInt);
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    TempMsgBoxFragment.a(this.a);
+    TempMsgBoxFragment.b(this.a);
+  }
 }
 
 

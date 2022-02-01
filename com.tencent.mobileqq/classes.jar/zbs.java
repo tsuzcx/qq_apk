@@ -1,17 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-public class zbs
-  extends AnimatorListenerAdapter
+public abstract interface zbs
 {
-  public zbs(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    FollowedRecommendBannerView.a(this.a).notifyDataSetChanged();
-    this.a.clearAnimation();
-  }
+  public abstract void a(@NonNull ArrayList<zbt> paramArrayList, @NonNull Context paramContext);
 }
 
 

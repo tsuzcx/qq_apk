@@ -1,34 +1,31 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload.IHotReloadChangedObserver;
+import android.os.Bundle;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class pgf
-  implements ProteusParserWithHotReload.IHotReloadChangedObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/CreateSubCommentHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pgf
+  extends ntf
 {
-  private slt a;
-  
-  public pgf(slt paramslt)
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
-    this.a = paramslt;
-  }
-  
-  public void a()
-  {
-    if (ProteusParserWithHotReload.getInstance().isSupportHotReload()) {
-      ProteusParserWithHotReload.getInstance().addHotReloadChangedObserver(this);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      pge.a(this.a, paramArrayOfByte);
+      return;
     }
+    this.a.a(paramInt, "Empty error message.");
   }
   
-  public void b()
+  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
   {
-    if (ProteusParserWithHotReload.getInstance().isSupportHotReload()) {
-      ProteusParserWithHotReload.getInstance().removeHotReloadChangedObserver(this);
+    paramBundle = this.a;
+    if (paramString != null) {}
+    for (;;)
+    {
+      paramBundle.a(paramInt, paramString);
+      return true;
+      paramString = "Empty error message.";
     }
-  }
-  
-  public void onHotReloadChanged(Context paramContext, String paramString1, String paramString2)
-  {
-    this.a.notifyDataSetChanged();
   }
 }
 

@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-
-public class ayho
-  extends aygp
+class ayho
+  implements bkzs
 {
-  public void b(BaseChatPie paramBaseChatPie)
+  ayho(ayhd paramayhd) {}
+  
+  public void onDismiss()
   {
-    a(paramBaseChatPie.sessionInfo.curType, 205);
-    a(paramBaseChatPie.sessionInfo.curType, 206);
-    a(paramBaseChatPie.sessionInfo.curType, 208);
-    a(paramBaseChatPie.sessionInfo.curType, 213);
+    ayhd.a(this.a, this.a.b, false);
   }
 }
 

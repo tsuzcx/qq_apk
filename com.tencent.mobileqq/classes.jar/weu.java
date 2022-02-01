@@ -1,59 +1,174 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqShareVideoCollectionList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspShareVideoCollectionList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Proxy;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class weu
-  extends vqr<wgk>
 {
-  public String a = "";
-  public long b;
-  public String b;
-  public int c;
-  public int d;
+  public static Set<Class<?>> a = Collections.synchronizedSet(new HashSet());
   
-  public String a()
+  public static <T> Class<T> a(Class<?> paramClass)
   {
-    return vpl.a("StorySvc.get_share_group_collection_list");
+    return paramClass;
   }
   
-  public vqm a(byte[] paramArrayOfByte)
+  public static <I> I a(Class<I> paramClass)
   {
-    qqstory_service.RspShareVideoCollectionList localRspShareVideoCollectionList = new qqstory_service.RspShareVideoCollectionList();
-    try
+    if (paramClass.isInterface())
     {
-      localRspShareVideoCollectionList.mergeFrom(paramArrayOfByte);
-      return new wgk(this.jdField_b_of_type_JavaLangString, localRspShareVideoCollectionList);
+      ClassLoader localClassLoader = weu.class.getClassLoader();
+      wev localwev = new wev();
+      return Proxy.newProxyInstance(localClassLoader, new Class[] { paramClass }, localwev);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    throw new IllegalArgumentException(paramClass.getName() + " should be an interface!", new Throwable());
+  }
+  
+  public static <T> T a(Class<T> paramClass, Object[] paramArrayOfObject)
+  {
+    Class[] arrayOfClass1 = a(paramArrayOfObject);
+    if (arrayOfClass1 == null) {}
+    Constructor localConstructor;
+    for (int j = 0;; j = arrayOfClass1.length)
     {
-      xvv.d("Q.qqstory:GetShareGroupListRequest", "" + paramArrayOfByte);
+      Constructor[] arrayOfConstructor;
+      try
+      {
+        localConstructor = paramClass.getConstructor(arrayOfClass1);
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        arrayOfConstructor = paramClass.getConstructors();
+        if (arrayOfConstructor != null) {
+          break;
+        }
+      }
+      try
+      {
+        paramArrayOfObject = paramClass.cast(localConstructor.newInstance(paramArrayOfObject));
+        return paramArrayOfObject;
+      }
+      catch (InstantiationException paramArrayOfObject)
+      {
+        int k;
+        Class[] arrayOfClass2;
+        throw new IllegalStateException(paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + anvx.a(2131707131), paramArrayOfObject);
+      }
+      catch (IllegalAccessException paramArrayOfObject)
+      {
+        throw new IllegalStateException(paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + anvx.a(2131707132), paramArrayOfObject);
+      }
+      catch (InvocationTargetException paramArrayOfObject)
+      {
+        throw new IllegalArgumentException(paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + ") InvocationTargetException", paramArrayOfObject);
+      }
     }
-    return null;
+    for (k = 0;; k = arrayOfConstructor.length)
+    {
+      int m = 0;
+      for (;;)
+      {
+        if (m >= k) {
+          break label494;
+        }
+        localConstructor = arrayOfConstructor[m];
+        arrayOfClass2 = localConstructor.getParameterTypes();
+        if (j == arrayOfClass2.length) {
+          break;
+        }
+        label88:
+        m += 1;
+      }
+    }
+    int i = 0;
+    label107:
+    if (i < j) {
+      if (arrayOfClass1[i] == null)
+      {
+        if (!arrayOfClass2[i].isPrimitive()) {
+          break label293;
+        }
+        i = 0;
+        if (i == 0) {
+          break label492;
+        }
+      }
+    }
+    for (;;)
+    {
+      for (;;)
+      {
+        label131:
+        if (localConstructor != null) {
+          break label300;
+        }
+        throw new IllegalStateException(anvx.a(2131707130) + paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + anvx.a(2131707133), localNoSuchMethodException);
+        if (arrayOfClass2[i].isPrimitive()) {
+          if (arrayOfClass1[i] == null)
+          {
+            i = 0;
+            break;
+          }
+        }
+        try
+        {
+          Class localClass = (Class)arrayOfClass1[i].getField("TYPE").get(null);
+          boolean bool = arrayOfClass2[i].equals(localClass);
+          if (!bool) {
+            i = 0;
+          }
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          localIllegalAccessException.printStackTrace();
+          if (!arrayOfClass2[i].isAssignableFrom(arrayOfClass1[i])) {
+            i = 0;
+          }
+        }
+        catch (NoSuchFieldException localNoSuchFieldException)
+        {
+          for (;;)
+          {
+            localNoSuchFieldException.printStackTrace();
+          }
+        }
+      }
+      label293:
+      i += 1;
+      break label107;
+      label300:
+      ykq.e("NullableObjectFactoryImplement", "虽然不是直接匹配, 但是还是找到了" + paramClass.getName() + "(" + Arrays.toString(arrayOfClass1) + ")的构造函数");
+      break;
+      i = 1;
+      break label131;
+      label492:
+      break label88;
+      label494:
+      localConstructor = null;
+    }
   }
   
-  protected byte[] a()
+  public static Class<?>[] a(Object[] paramArrayOfObject)
   {
-    qqstory_service.ReqShareVideoCollectionList localReqShareVideoCollectionList = new qqstory_service.ReqShareVideoCollectionList();
-    if (!TextUtils.isEmpty(this.a)) {
-      localReqShareVideoCollectionList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    if (paramArrayOfObject == null) {
+      return null;
     }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localReqShareVideoCollectionList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    Class[] arrayOfClass = new Class[paramArrayOfObject.length];
+    int i = 0;
+    if (i < paramArrayOfObject.length)
+    {
+      if (paramArrayOfObject[i] == null) {}
+      for (Class localClass = null;; localClass = paramArrayOfObject[i].getClass())
+      {
+        arrayOfClass[i] = localClass;
+        i += 1;
+        break;
+      }
     }
-    localReqShareVideoCollectionList.collection_count.set(this.c);
-    localReqShareVideoCollectionList.collection_video_count.set(this.d);
-    localReqShareVideoCollectionList.seqno.set(this.jdField_b_of_type_Long);
-    return localReqShareVideoCollectionList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetShareGroupListRequest{startCookie='" + this.a + '\'' + ", collectionCount=" + this.c + ", collectionVideoCount=" + this.d + ", seqno=" + this.jdField_b_of_type_Long + ", unionId='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    return arrayOfClass;
   }
 }
 

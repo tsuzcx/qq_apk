@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.takevideo.localmedia.demos;
 
-import yhr;
-import yhu;
-import yhv;
-import yhw;
-import yhy;
+import ywk;
+import ywn;
+import ywo;
+import ywp;
+import ywr;
 
 public class MediaCodecThumbnailGenerator$CodecHandler$2
   implements Runnable
 {
-  public MediaCodecThumbnailGenerator$CodecHandler$2(yhu paramyhu, yhy paramyhy, yhw paramyhw) {}
+  public MediaCodecThumbnailGenerator$CodecHandler$2(ywn paramywn, ywr paramywr, ywp paramywp) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Yhy.a.a != null) {
-      this.jdField_a_of_type_Yhy.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_Yhw);
+    if (this.jdField_a_of_type_Ywr.a.a != null) {
+      this.jdField_a_of_type_Ywr.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_Ywp);
     }
   }
 }

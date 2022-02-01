@@ -1,13 +1,9 @@
-import org.json.JSONObject;
-
-public abstract class umt
+public class umt
 {
-  public umt(JSONObject paramJSONObject)
-  {
-    a(paramJSONObject);
-  }
-  
-  public abstract void a(JSONObject paramJSONObject);
+  public float a = 1.0F;
+  public int a;
+  public int b;
+  public int c;
 }
 
 

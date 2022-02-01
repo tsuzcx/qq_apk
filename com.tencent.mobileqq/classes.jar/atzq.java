@@ -1,20 +1,51 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import java.util.List;
 
-public class atzq
-  implements View.OnClickListener
+class atzq
+  implements AdapterView.OnItemSelectedListener
 {
-  public atzq(ImgHeaderView paramImgHeaderView, Activity paramActivity, MessageRecord paramMessageRecord) {}
+  atzq(atzm paramatzm) {}
   
-  public void onClick(View paramView)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    EventCollector.getInstance().onViewClicked(paramView);
+    atzm.a(this.a, paramInt);
+    paramAdapterView = this.a.jdField_a_of_type_Auay;
+    if (atzm.a(this.a) == atzm.b(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramAdapterView.d(bool);
+      this.a.a(paramInt);
+      if (this.a.jdField_a_of_type_Atux != null) {
+        this.a.jdField_a_of_type_Atux.a(paramInt);
+      }
+      paramAdapterView = (atxc)atzm.a(this.a).get(paramInt);
+      if (paramAdapterView != null) {
+        break;
+      }
+      audr.b(BaseApplicationImpl.getContext().getString(2131692289));
+      return;
+    }
+    this.a.jdField_a_of_type_Atxa.a().a(paramAdapterView);
+    this.a.jdField_a_of_type_Atxa.a(paramInt, paramAdapterView);
+    this.a.jdField_a_of_type_Auay.c(atzm.a(this.a, atzm.a(this.a)));
+    this.a.jdField_a_of_type_Auay.c();
+    if (this.a.jdField_a_of_type_Atuw != null) {
+      this.a.jdField_a_of_type_Atuw.c();
+    }
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_Atux.a(true);
+      this.a.jdField_a_of_type_Auay.a(false);
+      atzm.a(this.a, true);
+    }
+    this.a.jdField_a_of_type_Boolean = true;
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

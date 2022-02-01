@@ -1,8 +1,14 @@
+import com.tencent.tavcut.bean.Size;
+
 public abstract interface boby
 {
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
+  public abstract int a();
   
-  public abstract void b(int paramInt, String paramString, boolean paramBoolean);
+  public abstract Size a(Size paramSize);
+  
+  public abstract int b();
+  
+  public abstract int c();
 }
 
 

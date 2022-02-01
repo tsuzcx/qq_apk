@@ -1,19 +1,19 @@
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+
 public class vjh
+  extends vjd<viu, WSPushStrategyInfo>
 {
-  public static int a(int paramInt)
+  public vjh(viu paramviu)
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    case 5: 
-    case 6: 
-    default: 
-      return 6;
-    case 4: 
-      return 10;
-    }
-    return 10;
+    super(paramviu);
+  }
+  
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    WSHomeFragment.a(paramContext);
+    return true;
   }
 }
 

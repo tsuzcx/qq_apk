@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
-import area;
-import areo;
-import arer;
-import ares;
-import bgog;
-import bgoj;
+import asig;
+import asiu;
+import asix;
+import asiy;
+import bhyq;
+import bhyt;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.EmoticonPackage;
 
 public abstract class EmotionNeedDownloadAdapter
@@ -17,26 +18,26 @@ public abstract class EmotionNeedDownloadAdapter
   public static final int DOWN_BTN_DOWNING = 1;
   public static final int DOWN_BTN_IDLE = 2;
   protected int downBtnStatus = 2;
-  areo mEPDownloadListener = new EmotionNeedDownloadAdapter.2(this);
-  arer mPayBackListener = new EmotionNeedDownloadAdapter.1(this);
+  asiu mEPDownloadListener = new EmotionNeedDownloadAdapter.2(this);
+  asix mPayBackListener = new EmotionNeedDownloadAdapter.1(this);
   
   public EmotionNeedDownloadAdapter(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonCallback paramEmoticonCallback)
   {
     super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonCallback);
-    area.a().a(this.mEPDownloadListener);
-    ares.a().a(this.mPayBackListener);
+    asig.a().a(this.mEPDownloadListener);
+    asiy.a().a(this.mPayBackListener);
   }
   
   public void destory()
   {
     super.destory();
-    area.a().b(this.mEPDownloadListener);
-    ares.a().b(this.mPayBackListener);
+    asig.a().b(this.mEPDownloadListener);
+    asiy.a().b(this.mPayBackListener);
   }
   
-  public bgoj getDownloader()
+  public bhyt getDownloader()
   {
-    return ((bgog)((QQAppInterface)((BaseActivity)this.mContext).getAppRuntime()).getManager(47)).a(1);
+    return ((bhyq)((QQAppInterface)((BaseActivity)this.mContext).getAppRuntime()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
   }
   
   public void packageDownloadEnd(EmoticonPackage paramEmoticonPackage, int paramInt) {}
@@ -51,7 +52,7 @@ public abstract class EmotionNeedDownloadAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionNeedDownloadAdapter
  * JD-Core Version:    0.7.0.1
  */

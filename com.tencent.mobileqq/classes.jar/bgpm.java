@@ -1,51 +1,51 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Path.FillType;
-import android.graphics.Rect;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.utils.ViewUtils;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopGameInfo;
+import com.tencent.mobileqq.troop.widget.TroopGameCardView;
+import com.tencent.qphone.base.util.QLog;
 
 public class bgpm
-  implements DownloadParams.DecodeHandler
+  extends aofu
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean;
+  public bgpm(TroopGameCardView paramTroopGameCardView) {}
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  protected void onGetTroopGameGameCard(boolean paramBoolean, String paramString, TroopGameInfo paramTroopGameInfo)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
+    Object localObject;
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("onGetTroopGameGameCard. isSuccess = ").append(paramBoolean).append(", hasGameInfo = ");
+      if (paramTroopGameInfo != null)
+      {
+        bool = true;
+        QLog.d("TroopGameCardView", 2, bool);
+      }
     }
-    Bitmap localBitmap;
-    Path localPath;
-    Canvas localCanvas;
+    else
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface)) {
+        ((QQAppInterface)localObject).removeObserver(this.a.jdField_a_of_type_Aofu);
+      }
+      if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
+        break label103;
+      }
+    }
+    label103:
     do
     {
-      return paramDownloadParams;
-      paramBitmap.setDensity((int)ViewUtils.getDensityDpi());
-      localBitmap = bfsp.a(paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, Bitmap.Config.ARGB_8888);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int * 2);
-      localPath = new Path();
-      localCanvas = new Canvas(localBitmap);
-      localCanvas.save();
-      localPath.moveTo(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-      localPath.lineTo(localBitmap.getWidth() - this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-      localPath.lineTo(localBitmap.getWidth() - this.jdField_a_of_type_Int, localBitmap.getHeight() - this.jdField_a_of_type_Int);
-      localPath.lineTo(this.jdField_a_of_type_Int, localBitmap.getHeight() - this.jdField_a_of_type_Int);
-      localPath.close();
-      localPath.setFillType(Path.FillType.EVEN_ODD);
-      localCanvas.clipPath(localPath);
-      localCanvas.drawBitmap(paramBitmap, new Rect(0, (paramBitmap.getHeight() - paramBitmap.getWidth()) / 2, paramBitmap.getWidth(), (paramBitmap.getWidth() + paramBitmap.getHeight()) / 2), new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()), this.jdField_a_of_type_AndroidGraphicsPaint);
-      localCanvas.restore();
-      paramDownloadParams = localBitmap;
-    } while (this.jdField_a_of_type_Boolean);
-    localCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    return localBitmap;
+      return;
+      bool = false;
+      break;
+      if (this.a.jdField_a_of_type_JavaLangString.equals(paramString))
+      {
+        this.a.a(paramBoolean, paramTroopGameInfo);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopGameCardView", 2, "onGetTroopGameGameCard. troopUin doesn't match.");
   }
 }
 

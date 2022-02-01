@@ -1,47 +1,92 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class vxm
-  extends SimpleObserver<List<wkm>>
+public class vxm
+  implements wfk<vxo, vxp>
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private HashMap<String, vxf> jdField_a_of_type_JavaUtilHashMap;
+  private vxn jdField_a_of_type_Vxn;
   
-  vxm(vxi paramvxi) {}
-  
-  public void a(List<wkm> paramList)
+  public void a()
   {
-    xvv.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onNext()");
-    super.onNext(paramList);
-    int i = 0;
-    while (i < paramList.size())
-    {
-      wkm localwkm = (wkm)paramList.get(i);
-      if (!localwkm.a) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localwkm.b);
+    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)) {
+      if (this.jdField_a_of_type_Vxn != null) {
+        this.jdField_a_of_type_Vxn.a(new ErrorMessage(-1, "CheckBlackGeoHashHandler no photo"), null);
       }
-      i += 1;
     }
+    List localList;
+    do
+    {
+      return;
+      localList = vwv.a(this.jdField_a_of_type_JavaUtilHashMap);
+      if (localList.size() != 0) {
+        break;
+      }
+    } while (this.jdField_a_of_type_Vxn == null);
+    this.jdField_a_of_type_Vxn.a(new ErrorMessage(-1, "CheckBlackGeoHashHandler gps error " + this.jdField_a_of_type_JavaUtilHashMap.toString()), null);
+    return;
+    vxo localvxo = new vxo();
+    localvxo.a(localList);
+    wfi.a().a(localvxo, this);
   }
   
-  public void onCancel()
+  public void a(@NonNull HashMap<String, vxf> paramHashMap)
   {
-    super.onCancel();
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
   }
   
-  public void onComplete()
+  public void a(vxn paramvxn)
   {
-    xvv.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onComplete()");
-    super.onComplete();
-    this.jdField_a_of_type_Vxi.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Vxn = paramvxn;
   }
   
-  public void onError(@NonNull Error paramError)
+  public void a(@NonNull vxo paramvxo, @Nullable vxp paramvxp, @NonNull ErrorMessage paramErrorMessage)
   {
-    xvv.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onError()");
-    super.onError(paramError);
-    this.jdField_a_of_type_Vxi.a(this.jdField_a_of_type_JavaUtilArrayList);
+    if ((paramvxp == null) || (paramErrorMessage.isFail())) {
+      if (this.jdField_a_of_type_Vxn != null) {
+        this.jdField_a_of_type_Vxn.a(paramErrorMessage, null);
+      }
+    }
+    label202:
+    do
+    {
+      return;
+      paramvxo = new ArrayList();
+      if ((paramvxp.a != null) && (paramvxp.a.size() > 0))
+      {
+        paramvxp = paramvxp.a.iterator();
+        for (;;)
+        {
+          if (!paramvxp.hasNext()) {
+            break label202;
+          }
+          qqstory_struct.GpsMsg localGpsMsg1 = (qqstory_struct.GpsMsg)paramvxp.next();
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+          if (localIterator.hasNext())
+          {
+            vxf localvxf = (vxf)((Map.Entry)localIterator.next()).getValue();
+            if (localvxf.jdField_a_of_type_Vyl == null) {
+              break;
+            }
+            qqstory_struct.GpsMsg localGpsMsg2 = localvxf.jdField_a_of_type_Vyl.a();
+            if ((localGpsMsg2.lat.get() != localGpsMsg1.lat.get()) || (localGpsMsg2.lng.get() != localGpsMsg1.lng.get())) {
+              break;
+            }
+            paramvxo.add(localvxf.jdField_a_of_type_JavaLangString);
+          }
+        }
+      }
+    } while (this.jdField_a_of_type_Vxn == null);
+    this.jdField_a_of_type_Vxn.a(paramErrorMessage, paramvxo);
   }
 }
 

@@ -11,7 +11,7 @@ class MiniAppVideoController$19$1
   
   public void run()
   {
-    MiniAppVideoController.access$100(this.this$1.this$0).onCaptureImageSucceed(this.val$canvas);
+    MiniAppVideoController.access$300(this.this$1.this$0).onCaptureImageSucceed(this.val$canvas);
     this.this$1.val$onCaptureImageListener.onCaptureImageSucceed(this.val$mergedBitmap);
     MiniAppVideoController.19.access$3502(this.this$1, true);
   }

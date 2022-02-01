@@ -1,19 +1,19 @@
 package dov.com.qq.im.aeeditor.module.aifilter;
 
 import android.content.Context;
-import bmgg;
-import bmgj;
-import bmgq;
+import bnvy;
+import bnwb;
+import bnwi;
 
 public class SilentBatchImageAIFilterProxy$1
   implements Runnable
 {
-  public SilentBatchImageAIFilterProxy$1(bmgq parambmgq, Context paramContext, bmgj parambmgj) {}
+  public SilentBatchImageAIFilterProxy$1(bnwi parambnwi, Context paramContext, bnwb parambnwb) {}
   
   public void run()
   {
-    this.this$0.b = bmgg.a(bmgq.a(this.this$0), bmgq.b(this.this$0));
-    this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.b, this.jdField_a_of_type_Bmgj);
+    this.this$0.b = bnvy.a(bnwi.a(this.this$0), bnwi.b(this.this$0));
+    this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.b, this.jdField_a_of_type_Bnwb);
   }
 }
 

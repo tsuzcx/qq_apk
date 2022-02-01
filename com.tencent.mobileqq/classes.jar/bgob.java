@@ -1,13 +1,11 @@
+import android.view.View;
+import android.widget.TextView;
+
 public class bgob
+  extends ageo
 {
-  public int a;
-  public String a;
-  
-  public bgob()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public View a;
+  public TextView a;
 }
 
 

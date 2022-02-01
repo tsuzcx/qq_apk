@@ -1,39 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-public class lyz
-  extends lyu
+public abstract interface lyz
 {
-  protected static int a;
+  public abstract int a();
   
-  static
-  {
-    jdField_a_of_type_Int = 3;
-  }
+  public abstract long a();
   
-  public lyz(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = "SmallScreenShare";
-    this.i = 2131559776;
-    this.j = paramContext.getResources().getDimensionPixelSize(2131297903);
-    this.k = paramContext.getResources().getDimensionPixelSize(2131297902);
-  }
+  public abstract Bitmap a(long paramLong);
   
-  public void a()
-  {
-    jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
-    super.a();
-  }
+  public abstract TroopInfoData a();
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    super.a(paramBoolean, jdField_a_of_type_Int);
-  }
+  public abstract String a();
+  
+  public abstract String a(int paramInt);
+  
+  public abstract String a(long paramLong, int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lyz
  * JD-Core Version:    0.7.0.1
  */

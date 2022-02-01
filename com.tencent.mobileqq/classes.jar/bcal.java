@@ -1,27 +1,33 @@
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.av.wtogether.fragment.AVGroupFileSelectFragment;
 
-public final class bcal
-  implements QQPermissionCallback
+public class bcal
+  implements bchy
 {
-  public bcal(bcan parambcan, AppActivity paramAppActivity) {}
+  int jdField_a_of_type_Int;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bcal(Activity paramActivity, int paramInt1, int paramInt2, String paramString)
   {
-    CheckPermission.showSDCardExplainDialog(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_Bcan);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Bcan != null) {
-      this.jdField_a_of_type_Bcan.a();
-    }
+    AVGroupFileSelectFragment.a(this.jdField_a_of_type_AndroidAppActivity, mrr.a(paramString2), paramString1, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, 2020);
   }
+  
+  public void onAction(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcal
  * JD-Core Version:    0.7.0.1
  */

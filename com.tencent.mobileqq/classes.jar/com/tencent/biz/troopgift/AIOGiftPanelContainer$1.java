@@ -1,11 +1,11 @@
 package com.tencent.biz.troopgift;
 
-import zsj;
+import aahv;
 
 public class AIOGiftPanelContainer$1
   implements Runnable
 {
-  public AIOGiftPanelContainer$1(zsj paramzsj, int paramInt) {}
+  public AIOGiftPanelContainer$1(aahv paramaahv, int paramInt) {}
   
   public void run()
   {

@@ -1,21 +1,15 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 
 class ajtt
-  implements DialogInterface.OnClickListener
+  implements aubv
 {
   ajtt(ajts paramajts) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", ((NewPhotoPreviewActivity)this.a.a.mActivity).getCurrentSelectedPostion());
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, paramDialogInterface);
-    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
-    ajtr.a(this.a.a).dismiss();
+    if ((paramInt1 == 3) && (paramInt2 == 0)) {
+      bdla.b(this.a.a.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 3, 0, "", "", "", "");
+    }
   }
 }
 

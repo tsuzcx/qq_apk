@@ -1,91 +1,24 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.RemoteException;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 class ahax
-  implements ahav
+  implements awzc<EmoticonPackage>
 {
-  private IBinder a;
+  ahax(ahaw paramahaw, ahbj paramahbj, bisl parambisl) {}
   
-  ahax(IBinder paramIBinder)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a(CompressInfo paramCompressInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
+    bdla.b(this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ep_mall", "Clk_button_follow", 0, 0, "", "", this.jdField_a_of_type_Ahbj.a.emoticon.eId, "");
+    if (paramEmoticonPackage == null)
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      localParcel.writeParcelable(paramCompressInfo, 1);
-      this.a.transact(1, localParcel, null, 1);
+      this.jdField_a_of_type_Ahaw.jdField_a_of_type_Ahbi.a(107, this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahaw.b, this.jdField_a_of_type_Ahbj.a, this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ahaw.a(this.jdField_a_of_type_Ahaw));
+      asig.a().a(this.jdField_a_of_type_Ahaw.jdField_a_of_type_Ahbi);
+      this.jdField_a_of_type_Ahaw.jdField_a_of_type_Asih.a(this.jdField_a_of_type_Ahbj.a.emoticon.epId, asih.c);
       return;
     }
-    catch (RemoteException paramCompressInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(CompressInfo paramCompressInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      localParcel.writeParcelable(paramCompressInfo, 1);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    catch (RemoteException paramCompressInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void c(CompressInfo paramCompressInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      localParcel.writeParcelable(paramCompressInfo, 1);
-      this.a.transact(3, localParcel, null, 1);
-      return;
-    }
-    catch (RemoteException paramCompressInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
+    ahaw.a(107, this.jdField_a_of_type_Ahaw.b, this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Ahbj.a, this.jdField_a_of_type_Ahaw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bisl);
   }
 }
 

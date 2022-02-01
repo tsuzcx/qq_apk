@@ -1,69 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqjz
-  extends aptq<aqjw>
+  implements View.OnClickListener
 {
-  public static aqjw a()
-  {
-    return (aqjw)apub.a().a(383);
-  }
+  public aqjz(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  @NonNull
-  public aqjw a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new aqjw();
-  }
-  
-  @Nullable
-  public aqjw a(aptx[] paramArrayOfaptx)
-  {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return aqjw.a(paramArrayOfaptx);
+    Object localObject = (aqkd)paramView.getTag();
+    if (!((anvk)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(((aqkd)localObject).a)) {}
+    for (int i = 35;; i = 1)
+    {
+      localObject = new ProfileActivity.AllInOne(((aqkd)localObject).a, i);
+      ProfileActivity.a(this.a, (ProfileActivity.AllInOne)localObject, 1016);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    return null;
-  }
-  
-  public void a(aqjw paramaqjw)
-  {
-    if ((paramaqjw != null) && (!TextUtils.isEmpty(paramaqjw.b()))) {
-      ((bcxe)BaseApplicationImpl.getApplication().getRuntime().getManager(305)).a(paramaqjw);
-    }
-  }
-  
-  public Class<aqjw> clazz()
-  {
-    return aqjw.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 383;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqjz
  * JD-Core Version:    0.7.0.1
  */

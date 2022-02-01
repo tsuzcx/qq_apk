@@ -1,46 +1,40 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import mqq.app.MobileQQ;
-
 public class bjjf
-  implements bjih
 {
-  public bjjf(QSecFramework paramQSecFramework) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public boolean e;
+  public boolean f;
   
-  public void a()
+  public bjjf(String paramString1, String paramString2)
   {
-    if ((!QSecFramework.a()) || (QSecFramework.a(this.a))) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Object[] arrayOfObject = new Object[1];
-        if ((QSecFramework.a(1L, 33751040L, bjhj.a(), 0L, QSecFramework.a(this.a), MobileQQ.sMobileQQ, null, arrayOfObject) == 0) && (arrayOfObject[0] != null) && ((arrayOfObject[0] instanceof Integer)))
-        {
-          QSecFramework.a(this.a, ((Integer)arrayOfObject[0]).intValue());
-          bjhj.a = QSecFramework.a(this.a);
-          QSecFramework.a(this.a, true);
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QSecFramework", 2, String.format("Native ver: %d(%s)", new Object[] { Integer.valueOf(QSecFramework.a(this.a)), bjhj.a(QSecFramework.a(this.a)) }));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
-  public void b()
+  public bjjf(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QSecFramework", 2, "Something wrong when init native.");
-    }
-    bjhh.a(1, 2);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_d_of_type_JavaLangString = paramString4;
+    this.jdField_d_of_type_Boolean = paramBoolean;
   }
 }
 

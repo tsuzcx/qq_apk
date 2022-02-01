@@ -1,90 +1,24 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class axpl
-  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, axpq
+class axpl
+  extends aocm
 {
-  private GestureController a;
+  axpl(axpk paramaxpk) {}
   
-  public axpl(GestureController paramGestureController)
+  public void a(boolean paramBoolean)
   {
-    this.a = paramGestureController;
-  }
-  
-  public void a(axpp paramaxpp)
-  {
-    this.a.a(paramaxpp);
-  }
-  
-  public boolean a(axpp paramaxpp)
-  {
-    return this.a.b(paramaxpp);
-  }
-  
-  public boolean b(axpp paramaxpp)
-  {
-    return this.a.a(paramaxpp);
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return this.a.e(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return this.a.b(paramMotionEvent);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    this.a.b(paramMotionEvent);
-  }
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return this.a.b(paramScaleGestureDetector);
-  }
-  
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return this.a.a(paramScaleGestureDetector);
-  }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    this.a.a(paramScaleGestureDetector);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return this.a.d(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return this.a.c(paramMotionEvent);
+    QLog.d("NearbyNewRedDotManager", 1, "RedpointObserver.onDataChange: isSucc=" + paramBoolean);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface == null)
+    {
+      QLog.i("NearbyNewRedDotManager", 1, "RedpointObserver.onDataChange: is destroy");
+      return;
+    }
+    List localList = this.a.a(localQQAppInterface);
+    axpk.a(this.a, localQQAppInterface, localList);
   }
 }
 

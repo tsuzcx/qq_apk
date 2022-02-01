@@ -1,70 +1,99 @@
-import UserGrowth.stFeed;
-import UserGrowth.stSimpleMetaPerson;
 import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
-import java.util.List;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class uve
-  extends bjwv<stSimpleMetaPerson, bjwy<stSimpleMetaPerson>>
-  implements uvh
 {
-  private stFeed jdField_a_of_type_UserGrowthStFeed;
-  private ujh jdField_a_of_type_Ujh;
-  
-  public uve(Context paramContext, ujh paramujh)
+  public static int a()
   {
-    super(paramContext);
-    this.jdField_a_of_type_Ujh = paramujh;
+    return ((Integer)bmhv.a("readinjoy_user_data_switch", Integer.valueOf(0))).intValue();
   }
   
-  public int a(int paramInt)
+  public static void a(int paramInt)
   {
-    return 0;
+    bmhv.a("readinjoy_user_data_switch", Integer.valueOf(paramInt));
   }
   
-  public bjwy<stSimpleMetaPerson> a(ViewGroup paramViewGroup, int paramInt)
+  public static void a(Context paramContext, int paramInt, Runnable paramRunnable)
   {
-    return uvf.a(paramViewGroup, this);
-  }
-  
-  public void a(stFeed paramstFeed)
-  {
-    this.jdField_a_of_type_UserGrowthStFeed = paramstFeed;
-  }
-  
-  public void a(stSimpleMetaPerson paramstSimpleMetaPerson)
-  {
-    ung.a().a(paramstSimpleMetaPerson.id);
-    a(paramstSimpleMetaPerson);
-    paramstSimpleMetaPerson = a();
-    if ((paramstSimpleMetaPerson == null) || (paramstSimpleMetaPerson.size() == 0)) {
-      this.jdField_a_of_type_Ujh.a(this.jdField_a_of_type_UserGrowthStFeed);
+    int k = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_switch", 0);
+    String str = Aladdin.getConfig(232).getString("user_data_alert_content", paramContext.getString(2131717935));
+    int j = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_interval", 1);
+    int i = ((Integer)bmhv.a("readinjoy_user_data_state", Integer.valueOf(0))).intValue();
+    long l1 = ((Long)bmhv.a("readinjoy_user_data_time", Long.valueOf(0L))).longValue();
+    int m = ((Integer)bmhv.a("readinjoy_user_data_switch", Integer.valueOf(1))).intValue();
+    long l2;
+    if ((k == 1) && (m == 1))
+    {
+      l2 = System.currentTimeMillis();
+      if (l2 - l1 < j * 86400000L) {
+        break label329;
+      }
+      i = 0;
     }
-    bhzt.a().a(2131719676);
-  }
-  
-  public void a(bjwy<stSimpleMetaPerson> parambjwy)
-  {
-    super.onViewAttachedToWindow(parambjwy);
-    if (((parambjwy instanceof uvf)) && (this.jdField_a_of_type_Ujh != null) && (this.jdField_a_of_type_Ujh.a().getUserVisibleHint())) {
-      ((uvf)parambjwy).b();
-    }
-  }
-  
-  public void a(bjwy<stSimpleMetaPerson> parambjwy, int paramInt)
-  {
-    stSimpleMetaPerson localstSimpleMetaPerson = (stSimpleMetaPerson)a(paramInt);
-    if (localstSimpleMetaPerson == null) {}
-    while (!(parambjwy instanceof uvf)) {
+    label329:
+    for (;;)
+    {
+      if ((1 << paramInt & i) == 0)
+      {
+        bmhv.a("readinjoy_user_data_time", Long.valueOf(l2));
+        bmhv.a("readinjoy_user_data_state", Integer.valueOf(i | 1 << paramInt));
+        QQCustomDialog localQQCustomDialog = bhdj.a(paramContext, 230);
+        localQQCustomDialog.setTitle(null);
+        localQQCustomDialog.setMessage(str);
+        localQQCustomDialog.setPositiveButton(paramContext.getString(2131720093), new uvf(paramInt, j, paramRunnable));
+        localQQCustomDialog.setNegativeButton(paramContext.getString(2131720103), new uvg(paramInt, j, paramRunnable));
+        localQQCustomDialog.show();
+        paramContext = new JSONObject();
+        if (paramInt == 1) {
+          paramInt = 0;
+        }
+      }
+      do
+      {
+        do
+        {
+          try
+          {
+            for (;;)
+            {
+              paramContext.put("exp_src", paramInt);
+              paramContext.put("user_data_alert_interval", j);
+              olh.a(null, "", "0X800A808", "0X800A808", 0, 0, "", "", "", paramContext.toString(), false);
+              return;
+              paramInt = 1;
+            }
+          }
+          catch (JSONException paramRunnable)
+          {
+            for (;;)
+            {
+              paramRunnable.printStackTrace();
+            }
+          }
+        } while (paramRunnable == null);
+        paramRunnable.run();
+        return;
+      } while (paramRunnable == null);
+      paramRunnable.run();
       return;
     }
-    ((uvf)parambjwy).a(localstSimpleMetaPerson, paramInt);
   }
   
-  public void b(stSimpleMetaPerson paramstSimpleMetaPerson)
+  public static int b()
   {
-    uxr.a(this.jdField_a_of_type_Ujh.a(), paramstSimpleMetaPerson.avatarSchema, 702, paramstSimpleMetaPerson.id);
+    int i = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_switch", 0);
+    int j = Aladdin.getConfig(232).getIntegerFromString("user_data_switch_switch", 0);
+    if ((i == 0) && (j == 0)) {
+      return 0;
+    }
+    if (a() == 0) {
+      return 1;
+    }
+    return 2;
   }
 }
 

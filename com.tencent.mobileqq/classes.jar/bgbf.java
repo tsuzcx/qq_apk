@@ -1,36 +1,107 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bgbf
-  implements View.OnClickListener
 {
-  public bgbf(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout, boolean paramBoolean) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private ArrayList<bgbb> jdField_a_of_type_JavaUtilArrayList;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  private long d;
   
-  public void onClick(View paramView)
+  public bgbf()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenuNoIconLayout;
-    QQCustomMenuNoIconLayout localQQCustomMenuNoIconLayout = this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenuNoIconLayout;
-    int i;
-    if (this.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+  }
+  
+  public bgbf(long paramLong1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong2, ArrayList<bgbb> paramArrayList)
+  {
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = (System.currentTimeMillis() + paramInt1 * 1000);
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.jdField_c_of_type_Int = (paramInt4 * 1000);
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.d = paramLong2;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public bgbb a(long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      i = QQCustomMenuNoIconLayout.a(this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenuNoIconLayout);
-      QQCustomMenuNoIconLayout.a((QQCustomMenuNoIconLayout)localObject, localQQCustomMenuNoIconLayout.a(i), true);
-      localQQCustomMenuNoIconLayout = this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenuNoIconLayout;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label78;
+      bgbb localbgbb = (bgbb)localIterator.next();
+      if (localbgbb.b() == paramLong) {
+        return localbgbb;
       }
     }
-    label78:
-    for (localObject = "0X800B3C1";; localObject = "0X800B3C3")
-    {
-      QQCustomMenuNoIconLayout.a(localQQCustomMenuNoIconLayout, (String)localObject);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = QQCustomMenuNoIconLayout.b(this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenuNoIconLayout);
-      break;
-    }
+    return null;
+  }
+  
+  public ArrayList<bgbb> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_c_of_type_Long = paramLong;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public long b()
+  {
+    return this.jdField_c_of_type_Long;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public int c()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public long c()
+  {
+    return this.d;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_b_of_type_Long = paramInt;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
   }
 }
 

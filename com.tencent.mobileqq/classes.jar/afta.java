@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
 class afta
-  implements DialogInterface.OnClickListener
+  implements aglw
 {
-  afta(afsw paramafsw, bdct parambdct) {}
+  afta(afsv paramafsv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
   {
-    this.jdField_a_of_type_Bdct.a("video_tab", "clk_joinframe_cancel", 0, afsw.a(this.jdField_a_of_type_Afsw).getCurFriendUin());
-    paramDialogInterface.dismiss();
+    afsv.a(this.a);
   }
 }
 

@@ -2,10 +2,10 @@ package cooperation.wadl.ipc;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
-import bifn;
-import bkkq;
-import bkkz;
-import bldt;
+import bjqp;
+import blvy;
+import blwh;
+import bmqk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import mqq.app.AppRuntime;
@@ -17,27 +17,27 @@ public class WadlProxyService
   
   static
   {
-    jdField_a_of_type_JavaLangString = bldt.b + "WadlProxyService";
+    jdField_a_of_type_JavaLangString = bmqk.b + "WadlProxyService";
   }
   
   public static void a(ServiceConnection paramServiceConnection)
   {
-    bifn.c(jdField_a_of_type_JavaLangString, "bindWadlService proxy WadlRemoteService");
+    bjqp.c(jdField_a_of_type_JavaLangString, "bindWadlService proxy WadlRemoteService");
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     Object localObject = localBaseApplicationImpl.getRuntime();
     Intent localIntent = new Intent(localBaseApplicationImpl, WadlProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
-    bkkz localbkkz = new bkkz(0);
-    localbkkz.b = "qqwadl.apk";
-    localbkkz.d = "qqwadl";
+    blwh localblwh = new blwh(0);
+    localblwh.b = "qqwadl.apk";
+    localblwh.d = "qqwadl";
     if (localObject != null) {}
     for (localObject = ((AppRuntime)localObject).getAccount();; localObject = "")
     {
-      localbkkz.jdField_a_of_type_JavaLangString = ((String)localObject);
-      localbkkz.e = "com.tencent.gamecenter.wadl.ipc.WadlRemoteService";
-      localbkkz.jdField_a_of_type_AndroidContentIntent = localIntent;
-      localbkkz.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-      bkkq.c(localBaseApplicationImpl, localbkkz);
+      localblwh.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localblwh.e = "com.tencent.gamecenter.wadl.ipc.WadlRemoteService";
+      localblwh.jdField_a_of_type_AndroidContentIntent = localIntent;
+      localblwh.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+      blvy.c(localBaseApplicationImpl, localblwh);
       return;
     }
   }

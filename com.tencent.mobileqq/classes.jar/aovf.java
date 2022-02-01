@@ -1,18 +1,31 @@
-import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class aovf
-  implements ArkEnvironmentManager.LibraryLoader
+public class aovf
+  extends aoui
 {
-  public boolean Load()
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    ArkAppCenter.f();
-    return ArkAppCenter.b;
-  }
-  
-  public boolean isLibraryLoad()
-  {
-    return ArkAppCenter.b;
+    paramQQAppInterface = new aove(paramQQAppInterface, paramContext);
+    paramQQAppInterface.b = "qqreg";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import atqa;
-import bhvw;
-import bhzo;
+import auuv;
+import bjgx;
+import bjkq;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -42,9 +42,9 @@ class ForwardSdkShareProcessor$UrlExchangeStep$1
       ((Bundle)localObject).putString("intext_3", "0");
       ((Bundle)localObject).putString("stringext_1", this.this$1.this$0.mTargetUrl);
       ((Bundle)localObject).putString("intext_4", "" + i);
-      bhvw.a().a((Bundle)localObject, "", str, false);
+      bjgx.a().a((Bundle)localObject, "", str, false, this.this$1.this$0.isSdkShare());
       l = System.currentTimeMillis();
-      atqa.a("batch_url_exchange");
+      auuv.a("batch_url_exchange");
       localObject = new Bundle();
       HashMap localHashMap = HttpUtil.batchUrlExchange(this.this$1.this$0.mAppContext, str, ForwardSdkShareProcessor.access$200(this.this$1.this$0), 1, this.this$1.this$0.mUrlMap, (Bundle)localObject);
       l = System.currentTimeMillis() - l;
@@ -53,26 +53,26 @@ class ForwardSdkShareProcessor$UrlExchangeStep$1
       ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1).set(i);
       localObject = new HashMap();
       ((HashMap)localObject).put("param_ret_code", Integer.toString(i));
-      atqa.a("batch_url_exchange", str, (HashMap)localObject, bool);
+      auuv.a("batch_url_exchange", str, (HashMap)localObject, bool);
       this.this$1.qlog("UrlExchangeStep|run,suc=" + bool + ",ret=" + ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1) + ",cost=" + l);
       Bundle localBundle = new Bundle();
       localBundle.putString("report_type", "102");
       localBundle.putString("act_type", "12");
       localBundle.putString("intext_3", "0");
       if (!bool) {
-        break label1099;
+        break label1119;
       }
       localObject = "0";
-      label415:
+      label425:
       localBundle.putString("intext_1", (String)localObject);
       localBundle.putString("intext_2", "" + ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1));
       localBundle.putString("intext_5", "" + l);
       if (!bool) {
         localBundle.putString("stringext_1", this.this$1.this$0.mTargetUrl);
       }
-      bhvw.a().a(localBundle, "", str, false);
+      bjgx.a().a(localBundle, "", str, false, this.this$1.this$0.isSdkShare());
       if (!bool) {
-        break label1107;
+        break label1127;
       }
       this.this$1.this$0.mUrlMap.putAll(localHashMap);
       this.this$1.this$0.mIsAllUrlShort.set(true);
@@ -80,13 +80,13 @@ class ForwardSdkShareProcessor$UrlExchangeStep$1
       localObject = (String)this.this$1.this$0.mUrlMap.get("imageUrl");
       if (localObject != null)
       {
-        atqa.a("reuse_image_for_aio");
-        bhzo.a(false, this.this$1.this$0.mRemoteImgUrl, this.this$1.this$0.mRemoteImgUrl, (String)localObject);
-        atqa.a("reuse_image_for_aio", str, true);
+        auuv.a("reuse_image_for_aio");
+        bjkq.a(false, this.this$1.this$0.mRemoteImgUrl, this.this$1.this$0.mRemoteImgUrl, (String)localObject);
+        auuv.a("reuse_image_for_aio", str, true);
       }
     }
-    label1099:
-    label1107:
+    label1119:
+    label1127:
     do
     {
       if (!bool) {
@@ -128,7 +128,7 @@ class ForwardSdkShareProcessor$UrlExchangeStep$1
       i = this.this$1.this$0.mRemoteImgUrl.length();
       break;
       localObject = "1";
-      break label415;
+      break label425;
       if ((ForwardSdkShareProcessor.UrlExchangeStep.access$1500(this.this$1).get() == 100000) && (ForwardSdkShareProcessor.access$1200(this.this$1.this$0) < 2))
       {
         ForwardSdkShareProcessor.access$1208(this.this$1.this$0);

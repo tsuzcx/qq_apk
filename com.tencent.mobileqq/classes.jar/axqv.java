@@ -1,21 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class axqv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements axwv
 {
-  axqv(axqp paramaxqp) {}
+  axqv(axqt paramaxqt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (axqp.a(this.a) != null)
-    {
-      axqp.a(this.a).setAlpha(f);
-      axqp.a(this.a).setTranslationY((1.0F - f) * AIOUtils.dp2px(25.0F, axqp.a(this.a)));
-    }
+    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. errorCode=" + paramInt);
   }
 }
 

@@ -1,6 +1,15 @@
-public abstract interface afkr
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+
+public class afkr
+  extends ayqy
 {
-  public abstract void a(boolean paramBoolean);
+  public afkr(VisitorsActivity paramVisitorsActivity) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    this.a.e();
+  }
 }
 
 

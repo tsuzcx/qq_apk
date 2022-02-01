@@ -1,42 +1,40 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.data.CameraEmotionData;
 
-public abstract class anrh
-  extends bfvp
+public class anrh
+  implements BusinessObserver
 {
-  public anrh(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  protected void doOnAddEmoResult(int paramInt, CameraEmotionData paramCameraEmotionData) {}
   
-  public void a(String paramString)
-  {
-    HashMap localHashMap = new HashMap(1);
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    if (this.a == null) {
-      this.a = "";
-    }
-    if (this.b == null) {
-      this.b = "";
-    }
-    if (this.c == null) {
-      this.c = "";
-    }
-    paramString = new StringBuilder();
-    paramString.append(str).append("source:").append(this.a).append("server_name:").append(this.b).append("action_name:").append(this.c);
-    localHashMap.put("keyJumpParserUtilDoActionErrorInfo", paramString.toString());
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance("", "keyJumpParserUtil", true, 0L, 0L, localHashMap, "", false);
-  }
+  protected void doOnDeleteEmoResult(int paramInt) {}
   
-  public boolean a()
+  protected void doOnGetEmoListResult(int paramInt) {}
+  
+  protected void onCameraEmoInsert() {}
+  
+  protected void onCameraEmoSend(boolean paramBoolean, int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return false;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      paramObject = (Object[])paramObject;
+      doOnAddEmoResult(((Integer)paramObject[0]).intValue(), (CameraEmotionData)paramObject[1]);
+      return;
+    case 2: 
+      doOnGetEmoListResult(((Integer)paramObject).intValue());
+      return;
+    case 3: 
+      doOnDeleteEmoResult(((Integer)paramObject).intValue());
+      return;
+    case 4: 
+      onCameraEmoInsert();
+      return;
+    }
+    onCameraEmoSend(paramBoolean, ((Integer)paramObject).intValue());
   }
 }
 

@@ -1,54 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class arwo
-  implements View.OnClickListener
+class arwo
+  implements DialogInterface.OnClickListener
 {
-  public arwo(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  arwo(arwn paramarwn) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = paramView.getTag();
-    int i;
-    if ((localObject instanceof arxa))
+    EditText localEditText = (EditText)((QQCustomDialog)paramDialogInterface).findViewById(2131371810);
+    paramDialogInterface = (EditText)((QQCustomDialog)paramDialogInterface).findViewById(2131361954);
+    if ((TextUtils.isEmpty(localEditText.getText().toString())) || (TextUtils.isEmpty(paramDialogInterface.getText().toString())))
     {
-      localObject = (arxa)paramView.getTag();
-      i = ((arxa)localObject).c;
-      localObject = (WeiYunFileInfo)((arxa)localObject).a;
+      QQToast.a(this.a.a.getActivity(), 1, anvx.a(2131702261), 0).a();
+      return;
     }
-    for (;;)
-    {
-      QfileBaseCloudFileTabView localQfileBaseCloudFileTabView;
-      if (localObject != null)
-      {
-        if ((paramView.getId() == 2131366631) && (QfileBaseCloudFileTabView.c(this.a))) {
-          bcef.b(QfileBaseCloudFileTabView.c(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-        }
-        localQfileBaseCloudFileTabView = this.a;
-        if (paramView.getId() != 2131366631) {
-          break label155;
-        }
-      }
-      label155:
-      for (boolean bool = true;; bool = false)
-      {
-        localQfileBaseCloudFileTabView.a((WeiYunFileInfo)localObject, i, bool);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (!(localObject instanceof arvu)) {
-          break label160;
-        }
-        localObject = (WeiYunFileInfo)((arvu)paramView.getTag()).a;
-        i = -1;
-        break;
-      }
-      label160:
-      i = 0;
-      localObject = null;
-    }
+    arxl localarxl = new arxl();
+    localarxl.a = localEditText.getText().toString();
+    localarxl.jdField_b_of_type_JavaLangString = paramDialogInterface.getText().toString();
+    localarxl.jdField_b_of_type_Boolean = true;
+    arxi.a().a(localarxl);
+    this.a.a.a.notifyDataSetChanged();
   }
 }
 

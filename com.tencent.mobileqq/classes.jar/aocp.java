@@ -1,54 +1,44 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.5.1;
-import com.tencent.mobileqq.ar.ArConfigService.5.2;
-import com.tencent.mobileqq.ar.ArConfigService.5.3;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class aocp
-  implements aojg
+  implements BusinessObserver
 {
-  public aocp(ArConfigService paramArConfigService) {}
+  protected void a(int paramInt) {}
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "mARSDK2ResourceDownloadCallback");
-    }
-  }
+  protected void a(int paramInt1, int paramInt2) {}
   
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    ArConfigService.b(this.a, (int)(100L * paramLong1 / paramLong2));
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.5.1(this, i));
-    }
-  }
+  protected void b(int paramInt) {}
   
-  public void a(boolean paramBoolean, aojh paramaojh)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete mARSDK2ResourceDownloadCallback result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
+    switch (paramInt)
     {
-      ArConfigService.c(this.a, true);
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.5.2(this));
-      }
     }
-    while (ArConfigService.e(this.a)) {
-      return;
-    }
-    ArConfigService.a(this.a).post(new ArConfigService.5.3(this));
-    ArConfigService.a(this.a, true);
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+            } while (paramObject == null);
+            paramObject = (Object[])paramObject;
+            a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 1);
+        b(((Integer)paramObject[0]).intValue());
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length < 1);
+    a(((Integer)paramObject[0]).intValue());
   }
-  
-  public void b() {}
 }
 
 

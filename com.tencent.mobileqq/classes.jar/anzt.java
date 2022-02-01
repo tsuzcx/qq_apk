@@ -1,98 +1,111 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgReqBody;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgRspBody;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class anzt
-  implements apaf
+public class anzt
+  extends BusinessHandler
 {
-  int jdField_a_of_type_Int = 0;
-  final long jdField_a_of_type_Long = AudioHelper.b();
-  long jdField_b_of_type_Long = System.currentTimeMillis();
+  protected QQAppInterface a;
   
-  anzt(anzs paramanzs, AppInterface paramAppInterface, String paramString, int paramInt) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt)
+  protected anzt(QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = false;
-    if ((paramInt == 100) || (paramInt == 0) || (Math.abs(paramInt - this.jdField_a_of_type_Int) >= 10)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      long l = System.currentTimeMillis();
-      if (l - this.jdField_b_of_type_Long >= 1000L) {
-        bool2 = true;
-      }
-      if ((QLog.isDevelopLevel()) && ((bool2) || (bool1))) {
-        QLog.w(this.jdField_a_of_type_Anzs.jdField_a_of_type_JavaLangString, 1, "onDownloadUpdate, md5[" + paramString2 + "], activityid[" + this.jdField_a_of_type_JavaLangString + "], index[" + this.jdField_b_of_type_Int + "], curPercent[" + paramInt + "], lastPercent[" + this.jdField_a_of_type_Int + "], needNotify[" + bool1 + "], needNotify2[" + bool2 + "]");
-      }
-      if (bool1) {
-        this.jdField_a_of_type_Int = paramInt;
-      }
-      if (bool2) {
-        this.jdField_b_of_type_Long = l;
-      }
-      if ((bool1) || (bool2)) {
-        this.jdField_a_of_type_Anzs.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, paramInt);
-      }
-      return;
-    }
+    super(paramQQAppInterface);
+    this.a = paramQQAppInterface;
   }
   
-  public void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
+  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i;
-    if ((paramObject instanceof anzm))
-    {
-      paramString1 = (anzm)paramObject;
-      paramString1.c = System.currentTimeMillis();
-      paramObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
-      boolean bool = false;
-      if (paramInt == 0) {
-        bool = anzs.a(paramString1);
-      }
-      QLog.w(this.jdField_a_of_type_Anzs.jdField_a_of_type_JavaLangString, 1, "onDownloadFinish, md5[" + paramString2 + "], errCode[" + paramInt + "], check[" + bool + "], path[" + paramString3 + "], id[" + paramString1.e + "], request[" + paramString1.jdField_a_of_type_Long + "], Begin[" + paramString1.jdField_b_of_type_Long + "], End[" + paramString1.c + "], 调度耗时[" + (paramString1.jdField_b_of_type_Long - paramString1.jdField_a_of_type_Long) + "], 下载耗时[" + (paramString1.c - paramString1.jdField_b_of_type_Long) + "], fromPreCover[" + paramString1.d + "], seq[" + this.jdField_a_of_type_Long + "], Uin[" + paramObject + "], zipItem[" + paramString1 + "]");
-      if (paramString1.jdField_a_of_type_Apaf == this) {
-        paramString1.jdField_a_of_type_Apaf = null;
-      }
-      i = paramInt;
-      if (paramInt == 0)
-      {
-        i = paramInt;
-        if (!bool) {
-          i = -5;
-        }
-      }
-      if (i != 0) {
-        break label339;
-      }
-      paramString1.a(2);
-      bgax.a(paramObject, paramString1.e, paramString1.jdField_a_of_type_Int, paramString1.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_Anzs.a(paramString1.e, paramString1.jdField_a_of_type_Int, 100);
-      paramString1.d = -1;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
+      i = 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Anzs.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString1.jdField_a_of_type_Boolean, paramString1.e, paramString1.jdField_a_of_type_Int + 1);
-      return;
-      label339:
-      if (i == 100)
+      paramFromServiceMsg = (bbbl)this.a.getManager(QQManagerFactory.NUMREDMSG_MANAGER);
+      if (i != 0)
       {
-        paramString1.a(2);
-        this.jdField_a_of_type_Anzs.a(paramString1.e, paramString1.jdField_a_of_type_Int, 100);
+        NumRedMsg.NumMsgRspBody localNumMsgRspBody = new NumRedMsg.NumMsgRspBody();
+        try
+        {
+          localNumMsgRspBody.mergeFrom((byte[])paramObject);
+          if (localNumMsgRspBody.i_retcode.get() == 0)
+          {
+            paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, true);
+            return;
+            i = 0;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramObject)
+        {
+          for (;;)
+          {
+            paramObject.printStackTrace();
+            if (QLog.isColorLevel()) {
+              QLog.i("NumRedMsgHandler", 2, "mergeFrom failed");
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("NumRedMsgHandler", 2, "rsp code != 0 , error msg == " + localNumMsgRspBody.str_errmsg.get());
+          }
+          paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, false);
+          return;
+        }
       }
-      else
-      {
-        paramString1.a(-1);
-        this.jdField_a_of_type_Anzs.a(paramString1.e, paramString1.jdField_a_of_type_Int, -1);
-      }
+    }
+    paramFromServiceMsg.a(null, paramToServiceMsg, false);
+  }
+  
+  public void a(List<NumRedMsg.NumMsgBusi> paramList, int paramInt, String paramString, long[] paramArrayOfLong)
+  {
+    NumRedMsg.NumMsgReqBody localNumMsgReqBody = new NumRedMsg.NumMsgReqBody();
+    localNumMsgReqBody.i_proto_ver.set(1);
+    localNumMsgReqBody.ui_plat_id.set(109);
+    localNumMsgReqBody.str_client_ver.set("8.4.10.4875");
+    localNumMsgReqBody.ui64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(paramList);
+    localNumMsgReqBody.rpt_num_msg.set(localArrayList);
+    paramList = new ToServiceMsg("mobileqq.service", this.a.getCurrentAccountUin(), "red_touch_num_svr.get_num_msg");
+    paramList.putWupBuffer(localNumMsgReqBody.toByteArray());
+    paramList.extraData.putInt("NumMsgListenerKey", paramInt);
+    paramList.extraData.putLongArray("NumMsgIDList", paramArrayOfLong);
+    paramList.extraData.putString("NumMsgListenerCmd", paramString);
+    sendPbReq(paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i("NumRedMsgHandler", 2, "sendPbReq called.");
     }
   }
   
-  public void b() {}
-  
-  protected void finalize()
+  public Class<? extends BusinessObserver> observerClass()
   {
-    super.finalize();
-    QLog.w(this.jdField_a_of_type_Anzs.jdField_a_of_type_JavaLangString, 1, "ZipItem.finalize, activityid[" + this.jdField_a_of_type_JavaLangString + "], index[" + this.jdField_b_of_type_Int + "], seq[" + this.jdField_a_of_type_Long + "]");
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("red_touch_num_svr.get_num_msg".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NumRedMsgHandler", 2, "onReceive called.");
+      }
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

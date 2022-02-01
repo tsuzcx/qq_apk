@@ -1,139 +1,96 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.graphics.Paint;
 import android.text.TextUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class amqw
 {
-  public static void a(Context paramContext)
+  public static int a(Paint paramPaint)
   {
-    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("sp_d_stable", 0);
-    if (!localSharedPreferences.contains("key_mnt"))
-    {
-      localObject = localSharedPreferences.edit();
-      if (Math.random() >= 0.001F) {
-        break label101;
-      }
+    return (int)(1.0F + paramPaint.measureText(anvx.a(2131699803)));
+  }
+  
+  public static void a(int paramInt1, int paramInt2, amqy paramamqy, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    a(null, paramInt1, paramInt2, paramamqy, paramContext, paramString1, paramString2, paramBoolean);
+  }
+  
+  public static void a(amqy paramamqy, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (paramamqy != null) {
+      a(paramamqy.a(), paramamqy.b(), paramamqy, paramContext, paramString1, paramString2, paramBoolean);
     }
-    long l3;
-    long l2;
-    label101:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      ((SharedPreferences.Editor)localObject).putBoolean("key_mnt", bool1).commit();
-      if (localSharedPreferences.getBoolean("key_mnt", false))
-      {
-        l3 = localSharedPreferences.getLong("k_last_stable_ts_785", 0L);
-        l2 = System.currentTimeMillis();
-        if (l2 - l3 >= 86400000L) {
-          break;
-        }
-      }
+  }
+  
+  public static void a(String paramString1, int paramInt1, int paramInt2, amqy paramamqy, Context paramContext, String paramString2, String paramString3, boolean paramBoolean)
+  {
+    if ((paramamqy == null) || (paramContext == null) || (TextUtils.isEmpty(paramString3))) {
       return;
     }
-    Object localObject = paramContext.getSharedPreferences(paramContext.getPackageName() + "_preferences", 0);
-    long l4 = ((SharedPreferences)localObject).getLong("k_last_stable_ts_785", 0L);
-    File localFile = new File(paramContext.getFilesDir(), "file_stable");
-    if (localFile.exists()) {
-      localFile.delete();
+    if (paramString3.length() > 12) {
+      paramString3 = paramString3.substring(0, 11) + "...";
     }
-    localSharedPreferences.edit().remove("k_last_stable_ts");
-    ((SharedPreferences)localObject).edit().remove("k_last_stable_ts");
-    localFile = new File(paramContext.getFilesDir(), "file_stable_785");
-    String str = FileUtils.readFileContent(localFile);
-    long l1;
-    int i;
-    if (!TextUtils.isEmpty(str))
+    for (;;)
     {
-      l1 = Long.parseLong(str);
-      if ((l4 > 0L) || (l3 > 0L) || (l1 > 0L))
+      int i = paramInt1;
+      if (paramInt1 == 0) {
+        i = paramamqy.a();
+      }
+      paramInt1 = paramInt2;
+      if (paramInt2 == 0) {
+        paramInt1 = paramamqy.b();
+      }
+      long l = System.currentTimeMillis();
+      ArrayList localArrayList = new ArrayList();
+      amqx localamqx1 = new amqx(paramamqy.a(), DeviceInfoUtil.getDesity(), i, paramInt1, paramString2, paramString3);
+      float f1 = i;
+      localamqx1.a = f1;
+      localamqx1.e = f1;
+      localamqx1.jdField_b_of_type_Float = 0.0F;
+      localamqx1.f = 0.0F;
+      localamqx1.c = (-i / 4000.0F);
+      localamqx1.jdField_d_of_type_Float = 0.0F;
+      localamqx1.jdField_h_of_type_Float = 1.0F;
+      localamqx1.g = (17.0F * paramContext.getResources().getDisplayMetrics().scaledDensity);
+      localamqx1.jdField_b_of_type_Boolean = true;
+      localamqx1.jdField_b_of_type_JavaLangString = paramString1;
+      Random localRandom = new Random();
+      paramInt2 = 0;
+      while (paramInt2 < 5)
       {
-        if ((l3 < l1) || ((l3 - l1) % 86400000L != 0L)) {
-          break label832;
-        }
-        if ((l4 < l3) || ((l4 - l3) % 86400000L != 0L)) {
-          break label827;
-        }
-        i = 0;
-        label310:
-        QLog.d("DeviceStability", 1, new Object[] { "check sp file.", Long.valueOf(l4), ", ", Long.valueOf(l3), ", ", Long.valueOf(l1) });
-        HashMap localHashMap = new HashMap(4);
-        localHashMap.put("fileCode", String.valueOf(i));
-        if (i != 0)
-        {
-          localHashMap.put("big_sp_time", String.valueOf(l4));
-          localHashMap.put("sm_sp_time", String.valueOf(l3));
-          localHashMap.put("file_time", str);
-        }
-        StatisticCollector.getInstance(paramContext).collectPerformance("", "actSpFileStable", true, i, 0L, localHashMap, "");
-        if (i == 0)
-        {
-          boolean bool3 = ((SharedPreferences)localObject).getBoolean("k_last_stable_sw", false);
-          boolean bool2 = localSharedPreferences.getBoolean("k_last_stable_sw", false);
-          if (l4 / 24L / 60L / 60L / 1000L % 2L != 0L) {
-            break label837;
-          }
-          bool1 = true;
-          label498:
-          int j = i;
-          if (bool3 != bool1) {
-            j = i | 0x1;
-          }
-          if (l3 / 24L / 60L / 60L / 1000L % 2L != 0L) {
-            break label842;
-          }
-          bool1 = true;
-          label539:
-          i = j;
-          if (bool2 != bool1) {
-            i = j | 0x2;
-          }
-          localHashMap = new HashMap(4);
-          localHashMap.put("fileCode", String.valueOf(i));
-          if (i != 0)
-          {
-            localHashMap.put("big_sp_time", String.valueOf(l4));
-            localHashMap.put("sm_sp_time", String.valueOf(l3));
-            localHashMap.put("file_time", str);
-          }
-          StatisticCollector.getInstance(paramContext).collectPerformance("", "actSpContentStable", true, i, 0L, localHashMap, "");
-        }
+        amqx localamqx2 = new amqx(paramamqy.a(), DeviceInfoUtil.getDesity(), i, paramInt1, paramString2, paramString3);
+        localamqx2.c = (-i / (3000.0F - paramInt2 * 500));
+        localamqx2.jdField_d_of_type_Float = 0.0F;
+        int j = localRandom.nextInt(3);
+        localamqx2.jdField_d_of_type_Int = ((int)(new float[] { 0.6F, 0.8F, 1.0F }[j] * 255.0F));
+        localamqx2.g = (new int[] { 14, 14, 12, 12, 12 }[paramInt2] * paramContext.getResources().getDisplayMetrics().scaledDensity);
+        localamqx2.jdField_h_of_type_Float = amqt.a(localamqx1, localamqx2);
+        f1 = i * localRandom.nextFloat() + i / 2;
+        localamqx2.a = f1;
+        localamqx2.e = f1;
+        f1 = paramInt1;
+        float f2 = amqt.a(localamqx2.g);
+        float f3 = localamqx2.jdField_h_of_type_Int * 2;
+        f1 = (paramInt1 - (f1 * 0.28F + f2 + f3)) * localRandom.nextFloat();
+        localamqx2.jdField_b_of_type_Float = f1;
+        localamqx2.f = f1;
+        localamqx2.jdField_b_of_type_Boolean = true;
+        localamqx2.jdField_b_of_type_JavaLangString = paramString1;
+        localArrayList.add(localamqx2);
+        paramInt2 += 1;
       }
-      l1 = 86400000L * (l2 / 86400000L);
-      if (l2 / 86400000L % 2L != 0L) {
-        break label847;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloBarrageUtil", 2, "bulkApolloBarrages use:" + (System.currentTimeMillis() - l));
       }
-    }
-    label827:
-    label832:
-    label837:
-    label842:
-    label847:
-    for (bool1 = true;; bool1 = false)
-    {
-      QLog.d("DeviceStability", 1, "write now = " + l2);
-      ((SharedPreferences)localObject).edit().putLong("k_last_stable_ts_785", l1).putBoolean("k_last_stable_sw", bool1).commit();
-      QLog.d("DeviceStability", 1, "write switch = " + bool1);
-      localSharedPreferences.edit().putLong("k_last_stable_ts_785", l1).putBoolean("k_last_stable_sw", bool1).commit();
-      QLog.d("DeviceStability", 1, "write sp end");
-      bool1 = FileUtils.writeFile(localFile.getAbsolutePath(), String.valueOf(l1), false);
-      QLog.d("DeviceStability", 1, "write content end " + bool1);
+      localArrayList.add(localamqx1);
+      paramamqy.a(localArrayList, paramBoolean);
       return;
-      l1 = 0L;
-      break;
-      i = 1;
-      break label310;
-      i = 2;
-      break label310;
-      bool1 = false;
-      break label498;
-      bool1 = false;
-      break label539;
     }
   }
 }

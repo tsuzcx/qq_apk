@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class ajkx
-  implements QQPermissionCallback
+class ajkx
+  implements View.OnClickListener
 {
-  public ajkx(AvatarPendantActivity paramAvatarPendantActivity) {}
+  private WeakReference<ajkt> a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public ajkx(ajkt paramajkt)
   {
-    bfur.a(this.a, paramArrayOfString, paramArrayOfInt);
+    this.a = new WeakReference(paramajkt);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    AvatarPendantActivity.e(this.a);
+    ajkt localajkt = (ajkt)this.a.get();
+    if (localajkt != null) {
+      localajkt.onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

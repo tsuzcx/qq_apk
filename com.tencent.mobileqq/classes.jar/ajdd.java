@@ -1,17 +1,24 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public class ajdd
-  implements View.OnLayoutChangeListener
+class ajdd
+  implements AbsListView.OnScrollListener
 {
-  public ajdd(Conversation paramConversation) {}
+  ajdd(ajdc paramajdc) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  private boolean a(AbsListView paramAbsListView)
   {
-    Conversation.a(this.a).removeOnLayoutChangeListener(this);
-    Conversation.j(this.a);
+    return (paramAbsListView.getChildAt(paramAbsListView.getChildCount() - 1) == this.a.a) && (this.a.a.getBottom() == this.a.a.getBottom());
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (a(paramAbsListView))) {
+      this.a.f();
+    }
   }
 }
 

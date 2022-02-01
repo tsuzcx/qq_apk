@@ -1,25 +1,52 @@
-import android.content.Context;
 import android.view.View;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-final class zki
-  implements bjoe
+public class zki
+  implements bkzq
 {
-  zki(Context paramContext, String paramString, zkl paramzkl, bjnw parambjnw) {}
+  public zki(QRDisplayActivity paramQRDisplayActivity) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (zkf.a()) {
+    if (this.a.h) {
       return;
     }
-    zkf.a(true);
+    this.a.h = true;
     switch (paramInt)
     {
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bjnw.dismiss();
+      this.a.b.dismiss();
       return;
-      zkf.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Zkl);
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        this.a.g();
+        if ((this.a.g & 0x1) != 0)
+        {
+          bdla.b(this.a.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
+          continue;
+          if (!this.a.jdField_a_of_type_Boolean)
+          {
+            this.a.h();
+            if ((this.a.g & 0x1) != 0)
+            {
+              bdla.b(this.a.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
+              continue;
+              if (!this.a.jdField_a_of_type_Boolean)
+              {
+                this.a.e();
+                if ((this.a.g & 0x1) != 0) {
+                  bdla.b(this.a.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
+                }
+                if (this.a.jdField_c_of_type_Int == 2) {
+                  bdla.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_save", 0, 0, this.a.jdField_c_of_type_JavaLangString, "", "", String.valueOf(this.a.jdField_a_of_type_Int));
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

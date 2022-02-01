@@ -1,20 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayoutNew;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import dov.com.qq.im.aeeditor.view.reorder.ReorderContainerView;
+import dov.com.qq.im.aeeditor.view.timeline.ScaleScrollLayout;
 
-public class bnyv
-  extends Handler
+class bnyv
+  extends AnimatorListenerAdapter
 {
-  public bnyv(QIMCameraCaptureButtonLayoutNew paramQIMCameraCaptureButtonLayoutNew, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bnyv(bnyu parambnyu, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    if (AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bnyu.a).a()) {
+      return;
+    }
+    AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bnyu.a).setVisibility(0);
+    AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bnyu.a).a(this.jdField_a_of_type_Int);
+    AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bnyu.a).setVisibility(4);
+    AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bnyu.a).setHandleView(AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bnyu.a));
   }
 }
 

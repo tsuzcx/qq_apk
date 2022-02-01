@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.ark.API;
 
-import aota;
+import apwe;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class TroopArkHelper$3
   implements Runnable
 {
-  public TroopArkHelper$3(aota paramaota, TroopInfo paramTroopInfo) {}
+  public TroopArkHelper$3(apwe paramapwe, TroopInfo paramTroopInfo) {}
   
   public void run()
   {
-    ((TroopManager)this.this$0.a().getManager(52)).b(this.a);
+    ((TroopManager)this.this$0.a().getManager(QQManagerFactory.TROOP_MANAGER)).b(this.a);
   }
 }
 

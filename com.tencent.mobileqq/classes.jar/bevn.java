@@ -1,28 +1,40 @@
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 class bevn
-  extends andd
+  extends BroadcastReceiver
 {
   bevn(bevl parambevl) {}
   
-  protected void onTroopAppHasNew(boolean paramBoolean, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((!paramBoolean) || (!paramString.equals(bevl.a(this.a))) || (bevl.a(this.a) == null) || (bevl.a(this.a).hasDestory)) {
-      return;
-    }
-    if (this.a.a != null)
+    if ("com.tencent.mobileqq.JoinTroopUtil.RET_ACTION".equals(paramIntent.getAction())) {}
+    switch (paramIntent.getIntExtra("ret_action", 1000))
     {
-      this.a.a.a(4);
-      this.a.a.c(75);
-      this.a.a.a();
+    default: 
+      bevl.a(this.a, bevl.a(this.a).troopUin, 2);
+      return;
+    case 1000: 
+      bevl.a(this.a, bevl.a(this.a).troopUin, 2);
+      return;
+    case 1001: 
+      bevl.a(this.a, bevl.a(this.a).troopUin, 2);
+      return;
+    case 1002: 
+      bevl.a(this.a, bevl.a(this.a).troopUin, 2);
+      return;
+    case 1003: 
+      bevl.a(this.a, bevl.a(this.a).troopUin, 1);
       return;
     }
-    this.a.d();
+    bevl.a(this.a, bevl.a(this.a).troopUin, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bevn
  * JD-Core Version:    0.7.0.1
  */

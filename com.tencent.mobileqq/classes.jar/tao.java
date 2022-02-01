@@ -1,21 +1,18 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.style.ReplacementSpan;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
 public class tao
-  extends ReplacementSpan
+  extends anvi
 {
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
-  {
-    paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt4, paramPaint);
-  }
+  public tao(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    return (int)paramPaint.measureText(paramCharSequence, paramInt1, paramInt2);
+    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
+    {
+      QLog.d("ReadInJoyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
+      this.a.m();
+    }
   }
 }
 

@@ -2,21 +2,22 @@ package com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok;
 
 import android.app.Activity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import ped;
-import peg;
-import pem;
-import pgd;
-import ttq;
-import twf;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import pne;
+import pnh;
+import pnn;
+import ppg;
+import uhx;
+import ukg;
 
 public class RIJOnScrollListener$1
   implements Runnable
 {
-  public RIJOnScrollListener$1(pgd parampgd) {}
+  public RIJOnScrollListener$1(ppg paramppg) {}
   
   public void run()
   {
-    if ((((ttq)pem.a().getManager(307)).a(this.this$0.a.a().a(), (Activity)this.this$0.a.a().a())) && (this.this$0.a.a().a() != null)) {
+    if ((((uhx)pnn.b().getManager(QQManagerFactory.KANDIAN_AD_EXPOSURE_MANAGER)).a(this.this$0.a.a().a(), (Activity)this.this$0.a.a().a())) && (this.this$0.a.a().a() != null)) {
       this.this$0.a.a().a().a(this.this$0.a.a().a(), (Activity)this.this$0.a.a().a());
     }
   }

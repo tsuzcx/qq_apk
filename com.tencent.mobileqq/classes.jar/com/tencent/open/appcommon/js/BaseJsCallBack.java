@@ -1,6 +1,5 @@
 package com.tencent.open.appcommon.js;
 
-import amtj;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -16,23 +15,24 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import bhpc;
-import bhwo;
-import bhwp;
-import bhwr;
-import bhxa;
-import bhxj;
-import bhzd;
-import bhzm;
-import bhzt;
-import biam;
-import biaq;
-import bias;
-import biaz;
-import bibw;
-import biby;
-import bicl;
-import bkmn;
+import anvx;
+import bizw;
+import bjhq;
+import bjhr;
+import bjht;
+import bjic;
+import bjil;
+import bjkf;
+import bjko;
+import bjkv;
+import bjlo;
+import bjls;
+import bjlu;
+import bjmb;
+import bjmy;
+import bjna;
+import bjnn;
+import blxv;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.applist.QZoneAppListActivity;
 import com.tencent.open.downloadnew.DownloadInfo;
@@ -57,9 +57,9 @@ public class BaseJsCallBack
   public static final String PLUGIN_NAMESPACE = "qqZoneAppList";
   public static boolean isUpdateAssets;
   protected Activity activity;
-  bhxj lastActionRecord = null;
+  bjil lastActionRecord = null;
   protected Handler mHandler;
-  private bkmn mRemoteServiceProxy;
+  private blxv mRemoteServiceProxy;
   public String timePointParams = "";
   protected String urlParams = "";
   
@@ -69,14 +69,14 @@ public class BaseJsCallBack
     for (this.activity = ((PluginBaseActivity)paramActivity).getOutActivity();; this.activity = paramActivity)
     {
       this.mHandler = new Handler(Looper.getMainLooper());
-      this.mRemoteServiceProxy = bkmn.a(String.valueOf(bhpc.a().a()));
+      this.mRemoteServiceProxy = blxv.a(String.valueOf(bizw.a().a()));
       return;
     }
   }
   
   public boolean appIsExists(String paramString)
   {
-    return biam.a(paramString);
+    return bjlo.a(paramString);
   }
   
   public String appIsExistsBatch(String paramString1, String paramString2)
@@ -96,7 +96,7 @@ public class BaseJsCallBack
       String str = localObject[i];
       if ((str != null) && (str.length() > 0))
       {
-        if (!biam.a(str)) {
+        if (!bjlo.a(str)) {
           break label98;
         }
         paramString1.put(str, Integer.valueOf(1));
@@ -117,7 +117,7 @@ public class BaseJsCallBack
     if (((StringBuilder)localObject).length() == 0) {
       return "";
     }
-    bhzm.c("BaseJsCallBack", "appIsExistsBatch >>>" + ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1));
+    bjko.c("BaseJsCallBack", "appIsExistsBatch >>>" + ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1));
     return ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1);
   }
   
@@ -132,7 +132,7 @@ public class BaseJsCallBack
     {
       long l = Long.parseLong(paramString2);
       int i = Integer.parseInt(paramString3);
-      biaz.a().a(paramString1, SystemClock.elapsedRealtime() - l, 0L, 0L, i, bhpc.a().a(), "1000002", null);
+      bjmb.a().a(paramString1, SystemClock.elapsedRealtime() - l, 0L, 0L, i, bizw.a().a(), "1000002", null);
       return;
     }
     catch (Exception paramString1)
@@ -151,7 +151,7 @@ public class BaseJsCallBack
   
   public void clearJS()
   {
-    bhzm.e("BaseJsCallBack", "clearJS");
+    bjko.e("BaseJsCallBack", "clearJS");
     if (this.mRemoteServiceProxy != null)
     {
       SendMsg localSendMsg = new SendMsg("clearJS");
@@ -193,7 +193,7 @@ public class BaseJsCallBack
       catch (Exception localException)
       {
         int j;
-        bhzm.c("BaseJsCallBack", "getAPNType EX >>> ", localException);
+        bjko.c("BaseJsCallBack", "getAPNType EX >>> ", localException);
         continue;
         i = -1;
         continue;
@@ -210,7 +210,7 @@ public class BaseJsCallBack
   
   public String getAgentVersion()
   {
-    return bhpc.a().e();
+    return bizw.a().e();
   }
   
   public String getAppVersionCode(String paramString)
@@ -221,12 +221,12 @@ public class BaseJsCallBack
       paramString = ((JSONObject)localObject).optString("packageName");
       localObject = ((JSONObject)localObject).optString("appid");
       int i = 0;
-      if (biam.a(paramString)) {
-        i = biam.a(paramString);
+      if (bjlo.a(paramString)) {
+        i = bjlo.a(paramString);
       }
       paramString = new JSONObject();
       paramString.put("installedVersionCode", i);
-      paramString.put("downloadedVersionCode ", biam.b(biby.a().a((String)localObject)));
+      paramString.put("downloadedVersionCode ", bjlo.b(bjna.a().a((String)localObject)));
       paramString = paramString.toString();
       return paramString;
     }
@@ -255,19 +255,19 @@ public class BaseJsCallBack
           }
           Object localObject1 = ((JSONObject)localObject2).getString("packageName");
           localObject2 = ((JSONObject)localObject2).getString("appid");
-          if (!biam.a((String)localObject1)) {
+          if (!bjlo.a((String)localObject1)) {
             break label145;
           }
-          j = biam.a((String)localObject1);
+          j = bjlo.a((String)localObject1);
           localObject1 = new JSONObject();
           ((JSONObject)localObject1).put("installedVersionCode", j);
-          ((JSONObject)localObject1).put("downloadedVersionCode", biam.b(biby.a().a((String)localObject2)));
+          ((JSONObject)localObject1).put("downloadedVersionCode", bjlo.b(bjna.a().a((String)localObject2)));
           localJSONObject.put((String)localObject2, localObject1);
         }
       }
       catch (Exception paramString)
       {
-        bhzm.c("BaseJsCallBack", "getAppVersionCode ", paramString);
+        bjko.c("BaseJsCallBack", "getAppVersionCode ", paramString);
       }
       return localJSONObject.toString();
       label145:
@@ -280,7 +280,7 @@ public class BaseJsCallBack
   
   public String getCurrentVersion()
   {
-    return bhpc.a().c();
+    return bizw.a().c();
   }
   
   public String getDisplay()
@@ -294,7 +294,7 @@ public class BaseJsCallBack
   
   protected String[] getFileUrl(String paramString)
   {
-    return bhwr.a(paramString);
+    return bjht.a(paramString);
   }
   
   public String getInterfaceName()
@@ -304,7 +304,7 @@ public class BaseJsCallBack
   
   public String getMobileInfo()
   {
-    return biaq.i();
+    return bjls.h();
   }
   
   public String getPageTimePoint()
@@ -319,7 +319,7 @@ public class BaseJsCallBack
   
   public String getPlatform()
   {
-    return bhpc.a().g();
+    return bizw.a().g();
   }
   
   public String getSid()
@@ -327,7 +327,7 @@ public class BaseJsCallBack
     if (!hasRight()) {
       return "baby,you don't have permission";
     }
-    return bhpc.a().a();
+    return bizw.a().a();
   }
   
   public String getUin()
@@ -335,17 +335,17 @@ public class BaseJsCallBack
     if (!hasRight()) {
       return "baby,you don't have permission";
     }
-    return String.valueOf(bhpc.a().a());
+    return String.valueOf(bizw.a().a());
   }
   
   public void goOldDetail(String paramString)
   {
-    bhwo.a(this.activity, paramString);
+    bjhq.a(this.activity, paramString);
   }
   
   public void goToDetailPage(String paramString1, String paramString2)
   {
-    bhzm.c("TIME-STATISTIC", "JsCallBack--goToDetailPage");
+    bjko.c("TIME-STATISTIC", "JsCallBack--goToDetailPage");
     Object localObject;
     boolean bool1;
     boolean bool2;
@@ -353,28 +353,28 @@ public class BaseJsCallBack
     {
       paramString1 = new JSONObject(paramString1);
       paramString2 = new Bundle();
-      paramString2.putString(bibw.b, paramString1.optString("appid"));
-      paramString2.putString(bibw.f, paramString1.optString("packageName"));
-      paramString2.putString(bibw.i, paramString1.optString("via"));
-      paramString2.putString(bibw.c, paramString1.optString("myAppId"));
-      paramString2.putString(bibw.d, paramString1.optString("apkId"));
-      paramString2.putInt(bibw.e, paramString1.optInt("versionCode"));
+      paramString2.putString(bjmy.b, paramString1.optString("appid"));
+      paramString2.putString(bjmy.f, paramString1.optString("packageName"));
+      paramString2.putString(bjmy.i, paramString1.optString("via"));
+      paramString2.putString(bjmy.c, paramString1.optString("myAppId"));
+      paramString2.putString(bjmy.d, paramString1.optString("apkId"));
+      paramString2.putInt(bjmy.e, paramString1.optInt("versionCode"));
       localObject = paramString1.optString("via");
       String str = paramString1.optString("appid");
       int i = paramString1.optInt("actionCode");
       if (this.lastActionRecord == null) {
-        this.lastActionRecord = new bhxj(str, (String)localObject, i);
+        this.lastActionRecord = new bjil(str, (String)localObject, i);
       }
       while (!this.lastActionRecord.a(str, (String)localObject, i))
       {
         bool1 = DownloadInterface.changeIntToBoolean(paramString1.optInt("isAutoDownload"));
         bool2 = DownloadInterface.changeIntToBoolean(paramString1.optInt("isAutoInstall"));
-        localObject = biby.a().a(paramString1.optString("appid"));
+        localObject = bjna.a().a(paramString1.optString("appid"));
         paramString1.put("titleType", 0);
         if (localObject != null) {
           break label282;
         }
-        if (!bicl.a().c()) {
+        if (!bjnn.a().c()) {
           break;
         }
         ThreadManager.getSubThreadHandler().post(new BaseJsCallBack.2(this, paramString2, bool1, bool2));
@@ -386,11 +386,11 @@ public class BaseJsCallBack
     }
     catch (JSONException paramString1)
     {
-      bhzm.c("BaseJsCallBack", "goToDetailPage>>>", paramString1);
+      bjko.c("BaseJsCallBack", "goToDetailPage>>>", paramString1);
       return;
     }
     label282:
-    if ((((DownloadInfo)localObject).c == 1) && (bicl.a().b()))
+    if ((((DownloadInfo)localObject).c == 1) && (bjnn.a().b()))
     {
       ThreadManager.getSubThreadHandler().post(new BaseJsCallBack.3(this, paramString2, bool1, bool2));
       return;
@@ -400,18 +400,18 @@ public class BaseJsCallBack
   
   public void goToDownloadTaskList(String paramString)
   {
-    bhzm.c("TIME-STATISTIC", "JsCallBack--goToDetailPage");
+    bjko.c("TIME-STATISTIC", "JsCallBack--goToDetailPage");
     Bundle localBundle = new Bundle();
     try
     {
       paramString = new JSONObject(paramString);
-      localBundle.putString(bibw.i, paramString.optString("via"));
+      localBundle.putString(bjmy.i, paramString.optString("via"));
       ThreadManager.getSubThreadHandler().post(new BaseJsCallBack.4(this, localBundle));
       return;
     }
     catch (JSONException paramString)
     {
-      bhzm.c("BaseJsCallBack", "goToDetailPage>>>", paramString);
+      bjko.c("BaseJsCallBack", "goToDetailPage>>>", paramString);
     }
   }
   
@@ -420,7 +420,7 @@ public class BaseJsCallBack
     if (!hasRight()) {
       return;
     }
-    bhzm.c("BaseJsCallBack", paramString);
+    bjko.c("BaseJsCallBack", paramString);
     Object localObject3;
     JSONArray localJSONArray;
     int j;
@@ -432,7 +432,7 @@ public class BaseJsCallBack
       j = paramString.optInt("current");
       if (TextUtils.isEmpty((CharSequence)localObject3))
       {
-        bhzm.e("BaseJsCallBack", "gourl strUrl == null");
+        bjko.e("BaseJsCallBack", "gourl strUrl == null");
         return;
       }
     }
@@ -459,7 +459,7 @@ public class BaseJsCallBack
     {
       paramString = (String)localObject1;
       if (((String)localObject1).indexOf("{UIN}") > 0) {
-        paramString = ((String)localObject1).replaceAll("\\{UIN\\}", bhpc.a().a() + "");
+        paramString = ((String)localObject1).replaceAll("\\{UIN\\}", bizw.a().a() + "");
       }
       localObject1 = new Intent(this.activity, QZoneAppListActivity.class);
       localObject3 = new Bundle();
@@ -488,15 +488,15 @@ public class BaseJsCallBack
     for (boolean bool = true;; bool = false)
     {
       ((Bundle)localObject3).putBoolean("showTitle", bool);
-      bhzm.c("BaseJsCallBack", "array = " + paramString.toString() + " | " + paramString.size());
+      bjko.c("BaseJsCallBack", "array = " + paramString.toString() + " | " + paramString.size());
       label462:
       ((Bundle)localObject3).putInt("leftBtnType", k);
       ((Bundle)localObject3).putInt("rightBtnType", m);
       ((Bundle)localObject3).putInt("titleRefreshType", n);
       ((Bundle)localObject3).putInt("titleType", i1);
       ((Bundle)localObject3).putInt("current", j);
-      ((Bundle)localObject3).putString("uin", String.valueOf(bhpc.a().a()));
-      ((Bundle)localObject3).putString("sid", bhpc.a().a());
+      ((Bundle)localObject3).putString("uin", String.valueOf(bizw.a().a()));
+      ((Bundle)localObject3).putString("sid", bizw.a().a());
       ((Bundle)localObject3).putInt("goto_type", 2);
       ((Intent)localObject1).putExtras((Bundle)localObject3);
       this.activity.startActivityForResult((Intent)localObject1, 200);
@@ -513,7 +513,7 @@ public class BaseJsCallBack
     JSONArray localJSONArray = new JSONArray();
     try
     {
-      localJSONArray.put(this.activity.getString(2131691339));
+      localJSONArray.put(this.activity.getString(2131691424));
       localJSONObject.put("url", paramString);
       localJSONObject.put("titleName", localJSONArray);
       goUrl(localJSONObject.toString());
@@ -521,7 +521,7 @@ public class BaseJsCallBack
     }
     catch (Exception paramString)
     {
-      bhzm.c("BaseJsCallBack", "gourl(onlyurl) error ", paramString);
+      bjko.c("BaseJsCallBack", "gourl(onlyurl) error ", paramString);
     }
   }
   
@@ -668,7 +668,7 @@ public class BaseJsCallBack
     //   251: aload 22
     //   253: astore 29
     //   255: aload 32
-    //   257: ldc_w 620
+    //   257: ldc_w 621
     //   260: invokevirtual 287	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   263: astore 22
     //   265: aload 23
@@ -704,8 +704,8 @@ public class BaseJsCallBack
     //   321: aload 22
     //   323: astore 29
     //   325: aload 32
-    //   327: ldc_w 622
-    //   330: invokevirtual 436	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   327: ldc_w 623
+    //   330: invokevirtual 437	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   333: istore_2
     //   334: aload 23
     //   336: astore 24
@@ -740,8 +740,8 @@ public class BaseJsCallBack
     //   389: aload 22
     //   391: astore 29
     //   393: aload 32
-    //   395: ldc_w 624
-    //   398: invokevirtual 436	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   395: ldc_w 625
+    //   398: invokevirtual 437	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   401: istore_3
     //   402: aload 23
     //   404: astore 24
@@ -776,8 +776,8 @@ public class BaseJsCallBack
     //   456: aload 22
     //   458: astore 29
     //   460: aload 32
-    //   462: ldc_w 626
-    //   465: invokevirtual 436	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   462: ldc_w 627
+    //   465: invokevirtual 437	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   468: istore 4
     //   470: aload 23
     //   472: astore 24
@@ -812,8 +812,8 @@ public class BaseJsCallBack
     //   524: aload 22
     //   526: astore 29
     //   528: aload 32
-    //   530: ldc_w 628
-    //   533: invokevirtual 436	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   530: ldc_w 629
+    //   533: invokevirtual 437	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   536: istore 5
     //   538: aload 23
     //   540: astore 24
@@ -848,8 +848,8 @@ public class BaseJsCallBack
     //   592: aload 22
     //   594: astore 29
     //   596: aload 32
-    //   598: ldc_w 630
-    //   601: invokevirtual 436	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   598: ldc_w 631
+    //   601: invokevirtual 437	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   604: istore 6
     //   606: aload 23
     //   608: astore 24
@@ -884,7 +884,7 @@ public class BaseJsCallBack
     //   660: aload 22
     //   662: astore 29
     //   664: aload 32
-    //   666: ldc_w 632
+    //   666: ldc_w 633
     //   669: invokevirtual 287	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   672: astore 23
     //   674: aload 23
@@ -920,124 +920,124 @@ public class BaseJsCallBack
     //   728: aload 22
     //   730: astore 29
     //   732: aload 32
-    //   734: ldc_w 634
+    //   734: ldc_w 635
     //   737: invokevirtual 287	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   740: astore 30
     //   742: aload 30
     //   744: astore 24
     //   746: aload 32
-    //   748: ldc_w 636
+    //   748: ldc_w 637
     //   751: invokevirtual 287	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   754: astore 25
     //   756: ldc 8
     //   758: new 114	java/lang/StringBuilder
     //   761: dup
     //   762: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   765: ldc_w 638
+    //   765: ldc_w 639
     //   768: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   771: aload 22
     //   773: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   776: ldc_w 590
+    //   776: ldc_w 591
     //   779: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   782: iload_2
     //   783: invokevirtual 361	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   786: ldc_w 590
+    //   786: ldc_w 591
     //   789: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   792: iload 4
     //   794: invokevirtual 361	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   797: ldc_w 590
+    //   797: ldc_w 591
     //   800: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   803: iload_3
     //   804: invokevirtual 361	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   807: ldc_w 590
+    //   807: ldc_w 591
     //   810: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   813: iload 5
     //   815: invokevirtual 361	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   818: ldc_w 590
+    //   818: ldc_w 591
     //   821: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   824: aload 23
     //   826: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   829: ldc_w 590
+    //   829: ldc_w 591
     //   832: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   835: aload 24
     //   837: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   840: ldc_w 590
+    //   840: ldc_w 591
     //   843: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   846: iload 6
     //   848: invokevirtual 361	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   851: ldc_w 590
+    //   851: ldc_w 591
     //   854: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   857: aload_1
     //   858: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   861: ldc_w 590
+    //   861: ldc_w 591
     //   864: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   867: aload 25
     //   869: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   872: ldc_w 590
+    //   872: ldc_w 591
     //   875: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   878: iconst_0
     //   879: invokevirtual 361	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   882: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   885: invokestatic 164	bhzm:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   888: new 545	android/content/Intent
+    //   885: invokestatic 164	bjko:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   888: new 546	android/content/Intent
     //   891: dup
     //   892: aload_0
     //   893: getfield 44	com/tencent/open/appcommon/js/BaseJsCallBack:activity	Landroid/app/Activity;
-    //   896: ldc_w 547
-    //   899: invokespecial 550	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   896: ldc_w 548
+    //   899: invokespecial 551	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   902: astore 25
     //   904: new 405	android/os/Bundle
     //   907: dup
     //   908: invokespecial 406	android/os/Bundle:<init>	()V
     //   911: astore 26
     //   913: aload 26
-    //   915: ldc_w 488
+    //   915: ldc_w 489
     //   918: aload 22
     //   920: invokevirtual 413	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   923: aload 26
-    //   925: ldc_w 622
+    //   925: ldc_w 623
     //   928: iload_2
-    //   929: invokevirtual 440	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   929: invokevirtual 441	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   932: aload 26
-    //   934: ldc_w 626
+    //   934: ldc_w 627
     //   937: iload 4
-    //   939: invokevirtual 440	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   939: invokevirtual 441	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   942: aload 26
-    //   944: ldc_w 624
+    //   944: ldc_w 625
     //   947: iload_3
-    //   948: invokevirtual 440	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   948: invokevirtual 441	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   951: aload 26
-    //   953: ldc_w 628
+    //   953: ldc_w 629
     //   956: iload 5
-    //   958: invokevirtual 440	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   958: invokevirtual 441	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   961: aload 26
-    //   963: ldc_w 632
+    //   963: ldc_w 633
     //   966: aload 23
     //   968: invokevirtual 413	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   971: aload 26
-    //   973: ldc_w 634
+    //   973: ldc_w 635
     //   976: aload 24
     //   978: invokevirtual 413	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   981: aload 26
-    //   983: ldc_w 630
+    //   983: ldc_w 631
     //   986: iload 6
-    //   988: invokevirtual 440	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   988: invokevirtual 441	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   991: aload 26
-    //   993: ldc_w 640
+    //   993: ldc_w 641
     //   996: aload_1
     //   997: invokevirtual 413	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1000: aload 26
-    //   1002: ldc_w 596
+    //   1002: ldc_w 597
     //   1005: iconst_5
-    //   1006: invokevirtual 440	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1006: invokevirtual 441	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1009: aload 25
     //   1011: aload 26
-    //   1013: invokevirtual 600	android/content/Intent:putExtras	(Landroid/os/Bundle;)Landroid/content/Intent;
+    //   1013: invokevirtual 601	android/content/Intent:putExtras	(Landroid/os/Bundle;)Landroid/content/Intent;
     //   1016: pop
     //   1017: aload_0
     //   1018: getfield 44	com/tencent/open/appcommon/js/BaseJsCallBack:activity	Landroid/app/Activity;
     //   1021: aload 25
-    //   1023: invokevirtual 644	android/app/Activity:startActivity	(Landroid/content/Intent;)V
+    //   1023: invokevirtual 645	android/app/Activity:startActivity	(Landroid/content/Intent;)V
     //   1026: return
     //   1027: astore 25
     //   1029: ldc 30
@@ -1061,11 +1061,11 @@ public class BaseJsCallBack
     //   1062: aload 27
     //   1064: astore 24
     //   1066: aload 25
-    //   1068: invokevirtual 520	org/json/JSONException:printStackTrace	()V
+    //   1068: invokevirtual 521	org/json/JSONException:printStackTrace	()V
     //   1071: ldc 8
-    //   1073: ldc_w 646
+    //   1073: ldc_w 647
     //   1076: aload 25
-    //   1078: invokestatic 274	bhzm:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1078: invokestatic 274	bjko:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1081: aload 31
     //   1083: astore 25
     //   1085: goto -329 -> 756
@@ -1091,9 +1091,9 @@ public class BaseJsCallBack
     //   1123: aload 26
     //   1125: invokevirtual 202	java/lang/Exception:printStackTrace	()V
     //   1128: ldc 8
-    //   1130: ldc_w 648
+    //   1130: ldc_w 649
     //   1133: aload 26
-    //   1135: invokestatic 274	bhzm:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1135: invokestatic 274	bjko:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1138: aload 31
     //   1140: astore 25
     //   1142: goto -386 -> 756
@@ -1169,7 +1169,7 @@ public class BaseJsCallBack
   
   public void onJsAlert(String paramString)
   {
-    new AlertDialog.Builder(this.activity).setTitle("javaScript dialog").setMessage(paramString).setPositiveButton(17039370, new bhxa(this)).setCancelable(false).create().show();
+    new AlertDialog.Builder(this.activity).setTitle("javaScript dialog").setMessage(paramString).setPositiveButton(17039370, new bjic(this)).setCancelable(false).create().show();
   }
   
   public void report(String paramString)
@@ -1177,11 +1177,11 @@ public class BaseJsCallBack
     if (!hasRight()) {
       return;
     }
-    bhzm.b("BaseJsCallBack", "[report] json=" + paramString);
+    bjko.b("BaseJsCallBack", "[report] json=" + paramString);
     try
     {
       paramString = new JSONObject(paramString);
-      bhzd.a(paramString.optInt("type"), paramString.optString("data"));
+      bjkf.a(paramString.optInt("type"), paramString.optString("data"));
       return;
     }
     catch (JSONException paramString)
@@ -1195,7 +1195,7 @@ public class BaseJsCallBack
     if (!hasRight()) {
       return;
     }
-    bhzm.b("BaseJsCallBack", "[reportBatch] json=" + paramString);
+    bjko.b("BaseJsCallBack", "[reportBatch] json=" + paramString);
     for (;;)
     {
       int i;
@@ -1208,7 +1208,7 @@ public class BaseJsCallBack
         }
         JSONObject localJSONObject = paramString.optJSONObject(i);
         if (localJSONObject != null) {
-          bhzd.a(localJSONObject.optInt("type"), localJSONObject.optString("data"));
+          bjkf.a(localJSONObject.optInt("type"), localJSONObject.optString("data"));
         }
       }
       catch (JSONException paramString)
@@ -1235,8 +1235,8 @@ public class BaseJsCallBack
       localObject = ((JSONObject)localObject).optString("extraData");
       Bundle localBundle = new Bundle();
       localBundle.putString("jsversion", str3);
-      bias.a(paramString, str1, str2, (String)localObject, localBundle);
-      bhzm.c("BaseJsCallBack", "reportForvia " + paramString + " | " + str1 + " | " + str2);
+      bjlu.a(paramString, str1, str2, (String)localObject, localBundle);
+      bjko.c("BaseJsCallBack", "reportForvia " + paramString + " | " + str1 + " | " + str2);
       return;
     }
     catch (JSONException paramString)
@@ -1270,8 +1270,8 @@ public class BaseJsCallBack
           localObject = ((JSONObject)localObject).optString("extraData");
           Bundle localBundle = new Bundle();
           localBundle.putString("jsversion", str4);
-          bias.a(str1, str2, str3, (String)localObject, localBundle);
-          bhzm.c("BaseJsCallBack", "reportForvia " + str1 + " | " + str2 + " | " + str3);
+          bjlu.a(str1, str2, str3, (String)localObject, localBundle);
+          bjko.c("BaseJsCallBack", "reportForvia " + str1 + " | " + str2 + " | " + str3);
         }
       }
       catch (JSONException paramString)
@@ -1290,17 +1290,17 @@ public class BaseJsCallBack
       isUpdateAssets = false;
       return;
     }
-    if (biam.a(paramString1))
+    if (bjlo.a(paramString1))
     {
-      bias.a("100", "ANDROIDQQ.INSTALLED.APPDETAIL", paramString2);
+      bjlu.a("100", "ANDROIDQQ.INSTALLED.APPDETAIL", paramString2);
       return;
     }
-    if (biby.a().a(paramString2))
+    if (bjna.a().a(paramString2))
     {
-      bias.a("100", "ANDROIDQQ.UNINSTALL.APPDETAIL", paramString2);
+      bjlu.a("100", "ANDROIDQQ.UNINSTALL.APPDETAIL", paramString2);
       return;
     }
-    bias.a("100", "ANDROIDQQ.UNDOWNLOAD.APPDETAIL", paramString2);
+    bjlu.a("100", "ANDROIDQQ.UNDOWNLOAD.APPDETAIL", paramString2);
   }
   
   public void setActionButton(String paramString)
@@ -1318,10 +1318,10 @@ public class BaseJsCallBack
       }
       if (i == 0)
       {
-        bhwp.a().a(false);
+        bjhr.a().a(false);
         return;
       }
-      bhwp.a().a(true);
+      bjhr.a().a(true);
       return;
     }
     catch (NumberFormatException paramString) {}
@@ -1329,16 +1329,16 @@ public class BaseJsCallBack
   
   public boolean setCommonReportData(String paramString)
   {
-    bhzm.c("BaseJsCallBack", "JsCallBack--setCommonReportData");
+    bjko.c("BaseJsCallBack", "JsCallBack--setCommonReportData");
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        bhpc.a().c(paramString);
+        bizw.a().c(paramString);
         return true;
       }
       catch (Exception paramString)
       {
-        bhzm.c("BaseJsCallBack", "JsCallBack--setCommonReportData Exception", paramString);
+        bjko.c("BaseJsCallBack", "JsCallBack--setCommonReportData Exception", paramString);
       }
     }
     return false;
@@ -1355,7 +1355,7 @@ public class BaseJsCallBack
     while ((this.activity == null) || (this.activity.isFinishing())) {
       return;
     }
-    bhzt.a().a(paramString, 1);
+    bjkv.a().a(paramString, 1);
   }
   
   public void startApp(String paramString1, String paramString2)
@@ -1369,13 +1369,13 @@ public class BaseJsCallBack
         if (appIsExists(paramString1))
         {
           paramString2 = DownloadInterface.getSourceInfoFromActivity(this.activity);
-          biam.a(this.activity, paramString1, paramString2);
+          bjlo.a(this.activity, paramString1, paramString2);
           return;
         }
       }
       catch (Exception paramString2)
       {
-        bhzm.e("startApp", "apk not exist packName = " + paramString1);
+        bjko.e("startApp", "apk not exist packName = " + paramString1);
       }
     }
   }
@@ -1395,7 +1395,7 @@ public class BaseJsCallBack
         }
         paramString2.putExtra("platformId", "qzone_m");
         paramString2.putExtra("big_brother_source_key", DownloadInterface.getSourceInfoFromActivity(this.activity));
-        bhzm.c("add", ">>has add platformid=qzone_m");
+        bjko.c("add", ">>has add platformid=qzone_m");
       }
       try
       {
@@ -1404,14 +1404,14 @@ public class BaseJsCallBack
       }
       catch (Exception paramString2)
       {
-        bhzt.a().a(amtj.a(2131700154), 0);
+        bjkv.a().a(anvx.a(2131700505), 0);
         return;
       }
       return;
     }
     catch (Exception paramString2)
     {
-      bhzm.e("startApp", "apk not exist packName = " + paramString1);
+      bjko.e("startApp", "apk not exist packName = " + paramString1);
     }
   }
   
@@ -1426,13 +1426,13 @@ public class BaseJsCallBack
         if (appIsExists(paramString1))
         {
           paramString2 = DownloadInterface.getSourceInfoFromActivity(this.activity);
-          biam.a(this.activity, paramString1, paramString2);
+          bjlo.a(this.activity, paramString1, paramString2);
           return;
         }
       }
       catch (Exception paramString2)
       {
-        bhzm.e("startApp", "apk not exist packName = " + paramString1);
+        bjko.e("startApp", "apk not exist packName = " + paramString1);
       }
     }
   }
@@ -1448,7 +1448,7 @@ public class BaseJsCallBack
         if (appIsExists(paramString1))
         {
           paramString2 = DownloadInterface.getSourceInfoFromActivity(this.activity);
-          biam.a(this.activity, paramString1, paramString2);
+          bjlo.a(this.activity, paramString1, paramString2);
           return;
         }
       }
@@ -1464,49 +1464,49 @@ public class BaseJsCallBack
     //   2: new 114	java/lang/StringBuilder
     //   5: dup
     //   6: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   9: ldc_w 817
+    //   9: ldc_w 818
     //   12: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   15: aload_1
     //   16: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: ldc_w 819
+    //   19: ldc_w 820
     //   22: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: aload_3
     //   26: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: ldc_w 819
+    //   29: ldc_w 820
     //   32: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: aload 4
     //   37: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   43: invokestatic 692	bhzm:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   43: invokestatic 693	bjko:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   46: aload_0
     //   47: aload_1
-    //   48: invokevirtual 768	com/tencent/open/appcommon/js/BaseJsCallBack:appIsExists	(Ljava/lang/String;)Z
+    //   48: invokevirtual 769	com/tencent/open/appcommon/js/BaseJsCallBack:appIsExists	(Ljava/lang/String;)Z
     //   51: istore 6
     //   53: iload 6
     //   55: ifeq +22 -> 77
     //   58: aload 5
-    //   60: ldc_w 821
-    //   63: invokestatic 826	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   60: ldc_w 822
+    //   63: invokestatic 827	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   66: astore_2
     //   67: aload_0
     //   68: getfield 44	com/tencent/open/appcommon/js/BaseJsCallBack:activity	Landroid/app/Activity;
     //   71: aload_3
     //   72: aload_1
     //   73: aload_2
-    //   74: invokestatic 829	biam:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   74: invokestatic 830	bjlo:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   77: return
     //   78: astore_1
     //   79: ldc 8
     //   81: new 114	java/lang/StringBuilder
     //   84: dup
     //   85: invokespecial 115	java/lang/StringBuilder:<init>	()V
-    //   88: ldc_w 831
+    //   88: ldc_w 832
     //   91: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   94: aload_1
-    //   95: invokevirtual 834	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   95: invokevirtual 835	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   98: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   101: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   104: invokestatic 224	bhzm:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   104: invokestatic 224	bjko:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   107: return
     //   108: astore_2
     //   109: aload 5

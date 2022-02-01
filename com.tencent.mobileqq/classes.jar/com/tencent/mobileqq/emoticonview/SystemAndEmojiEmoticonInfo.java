@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.emoticonview;
 
-import alnr;
-import amtj;
+import amme;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.widget.EditText;
-import arev;
-import bcef;
+import anvx;
+import asjb;
+import bdla;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.emoticon.QQEmojiUtil;
 import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
@@ -32,8 +33,8 @@ public class SystemAndEmojiEmoticonInfo
   public static final int EMOTICON_EMOJI_PAGE_COUNT;
   public static final String TAG = "SystemAndEmojiEmoticonInfo";
   public static final String TITLE_EMOJI;
-  public static final String TITLE_OFTEN = amtj.a(2131713734);
-  public static final String TITLE_SYSTEM = amtj.a(2131713737);
+  public static final String TITLE_OFTEN = anvx.a(2131714081);
+  public static final String TITLE_SYSTEM = anvx.a(2131714084);
   public static final int TYPE_EMOJI = 2;
   public static final int TYPE_SYSTEM = 1;
   public static final int TYPE_TITLE = 3;
@@ -45,7 +46,7 @@ public class SystemAndEmojiEmoticonInfo
   
   static
   {
-    TITLE_EMOJI = amtj.a(2131713736);
+    TITLE_EMOJI = anvx.a(2131714083);
     int j = EmojiEmoticonInfo.EMOJI_COUNT / 20;
     if (EmojiEmoticonInfo.EMOJI_COUNT % 20 == 0) {}
     for (int i = 0;; i = 1)
@@ -81,7 +82,7 @@ public class SystemAndEmojiEmoticonInfo
       localArrayList.add(new SystemAndEmojiEmoticonInfo(7, 3, -1, TITLE_OFTEN, false));
       i += 1;
     }
-    paramQQAppInterface = ((CommonUsedSystemEmojiManager)paramQQAppInterface.getManager(172)).getCommonUsedSystemEmojiInfo();
+    paramQQAppInterface = ((CommonUsedSystemEmojiManager)paramQQAppInterface.getManager(QQManagerFactory.COMMONUSED_SYSTEM_EMOJI_MANAGERT)).getCommonUsedSystemEmojiInfo();
     int j;
     if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 1))
     {
@@ -178,7 +179,7 @@ public class SystemAndEmojiEmoticonInfo
         localArrayList.add(new SystemAndEmojiEmoticonInfo(7, 3, -1, TITLE_OFTEN, false));
         i += 1;
       }
-      paramQQAppInterface = ((CommonUsedSystemEmojiManager)paramQQAppInterface.getManager(172)).getCommonUsedSystemEmojiInfo();
+      paramQQAppInterface = ((CommonUsedSystemEmojiManager)paramQQAppInterface.getManager(QQManagerFactory.COMMONUSED_SYSTEM_EMOJI_MANAGERT)).getCommonUsedSystemEmojiInfo();
       if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 1))
       {
         if (QLog.isColorLevel()) {
@@ -316,7 +317,7 @@ public class SystemAndEmojiEmoticonInfo
     i = EmojiEmoticonInfo.EMOJI_COUNT - j - 1;
     if (i >= 0)
     {
-      if (arev.a().a(2).b(i)) {
+      if (asjb.a().a(2).b(i)) {
         if (QLog.isColorLevel()) {
           QLog.d("SystemAndEmojiEmoticonInfo", 2, new Object[] { "getOldEmoticonList hided:", Integer.valueOf(i), " ,type:", Integer.valueOf(2) });
         }
@@ -333,7 +334,7 @@ public class SystemAndEmojiEmoticonInfo
     if (i < j)
     {
       int k = paramArrayOfInt[i];
-      if (arev.a().a(1).b(k)) {
+      if (asjb.a().a(1).b(k)) {
         if (QLog.isColorLevel()) {
           QLog.d("SystemAndEmojiEmoticonInfo", 2, new Object[] { "getOldEmoticonList hided:", Integer.valueOf(k), " ,type:", Integer.valueOf(1) });
         }
@@ -522,7 +523,7 @@ public class SystemAndEmojiEmoticonInfo
       QLog.d("SystemAndEmojiEmoticonInfo", 1, "send saveemoji type = " + i + ";id = " + this.code + ";ts = " + l + ";troopUin = " + str1);
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = (CommonUsedSystemEmojiManager)paramQQAppInterface.getManager(172);
+        paramQQAppInterface = (CommonUsedSystemEmojiManager)paramQQAppInterface.getManager(QQManagerFactory.COMMONUSED_SYSTEM_EMOJI_MANAGERT);
         if (paramQQAppInterface != null) {
           paramQQAppInterface.saveSystemEmojiInfoToCahce(localSmallYellowItem);
         }
@@ -594,19 +595,19 @@ public class SystemAndEmojiEmoticonInfo
       paramEditText.requestFocus();
       addToCommonUsed(paramQQAppInterface, paramSessionInfo);
       if (this.isCommonUsed) {
-        bcef.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "0X800717F", 0, 0, this.emotionType + "", this.code + "", "", "");
+        bdla.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "0X800717F", 0, 0, this.emotionType + "", this.code + "", "", "");
       }
       if ((paramQQAppInterface != null) && (com.tencent.mobileqq.text.TextUtils.isApolloEmoticon(this.code)) && (paramSessionInfo != null)) {
-        VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "0X800812C", ApolloUtil.b(paramSessionInfo.curType), 0, new String[] { String.valueOf(this.code), String.valueOf(alnr.a(paramQQAppInterface)) });
+        VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "0X800812C", ApolloUtil.b(paramSessionInfo.curType), 0, new String[] { String.valueOf(this.code), String.valueOf(amme.a(paramQQAppInterface)) });
       }
-      arev.a().a(this.emotionType).a(this.code, 1);
+      asjb.a().a(this.emotionType).a(this.code, 1);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

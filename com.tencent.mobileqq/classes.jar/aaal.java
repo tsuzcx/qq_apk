@@ -1,46 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.webviewplugin.BusinessReportPlugin.1;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.superplayer.api.ISuperPlayer;
 
 public class aaal
-  extends WebViewPlugin
+  implements View.OnClickListener
 {
-  private Handler a;
-  public boolean a;
+  public aaal(VideoPlayerView paramVideoPlayerView) {}
   
-  public aaal()
+  public void onClick(View paramView)
   {
-    this.mPluginNameSpace = "JD_REPORT";
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    try
+    if (aala.a("mLLSkipBackWrapper", 500L))
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new BusinessReportPlugin.1(this, paramString));
-      return;
+      VideoPlayerView.e(this.a);
+      VideoPlayerView.a(this.a, VideoPlayerView.b(this.a), 0, 1, true);
+      if (this.a.a() != null) {
+        this.a.a(this.a.a().getCurrentPositionMs() - 10000L);
+      }
     }
-    catch (Exception paramString)
-    {
-      QLog.e("BusinessReporter", 1, "Report Error:" + paramString);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_Boolean = ofw.a(paramString);
-  }
-  
-  public Object handleEvent(String paramString, long paramLong)
-  {
-    if (paramLong == 8L) {
-      a(paramString);
-    }
-    return null;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

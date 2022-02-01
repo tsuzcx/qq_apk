@@ -8,14 +8,14 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import yto;
+import zih;
 
 public class BubbleTextView
   extends TextView
 {
   public float a;
   public int a;
-  private yto a;
+  private zih a;
   public boolean a;
   public float b;
   public int b;
@@ -29,7 +29,7 @@ public class BubbleTextView
     this.jdField_a_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 11.0F);
     this.jdField_b_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 3.0F);
     this.jdField_c_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131166480);
+    this.jdField_a_of_type_Int = getResources().getColor(2131166494);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
@@ -41,7 +41,7 @@ public class BubbleTextView
     this.jdField_a_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 11.0F);
     this.jdField_b_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 3.0F);
     this.jdField_c_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131166480);
+    this.jdField_a_of_type_Int = getResources().getColor(2131166494);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
@@ -54,7 +54,7 @@ public class BubbleTextView
     this.jdField_a_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 11.0F);
     this.jdField_b_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 3.0F);
     this.jdField_c_of_type_Float = UIUtils.dip2px(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131166480);
+    this.jdField_a_of_type_Int = getResources().getColor(2131166494);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
@@ -68,16 +68,16 @@ public class BubbleTextView
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Yto = new yto();
-    this.jdField_a_of_type_Yto.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramInt1, paramInt3, paramInt2, paramInt4);
-    this.jdField_a_of_type_Yto.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Yto.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_Yto.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
-    this.jdField_a_of_type_Yto.jdField_c_of_type_Float = this.jdField_c_of_type_Float;
-    this.jdField_a_of_type_Yto.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_Yto.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Yto.d = this.d;
-    this.jdField_a_of_type_Yto.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Zih = new zih();
+    this.jdField_a_of_type_Zih.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramInt1, paramInt3, paramInt2, paramInt4);
+    this.jdField_a_of_type_Zih.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Zih.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
+    this.jdField_a_of_type_Zih.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
+    this.jdField_a_of_type_Zih.jdField_c_of_type_Float = this.jdField_c_of_type_Float;
+    this.jdField_a_of_type_Zih.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_Zih.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Zih.d = this.d;
+    this.jdField_a_of_type_Zih.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
   }
   
   private void c()
@@ -124,8 +124,8 @@ public class BubbleTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Yto != null) {
-      this.jdField_a_of_type_Yto.draw(paramCanvas);
+    if (this.jdField_a_of_type_Zih != null) {
+      this.jdField_a_of_type_Zih.draw(paramCanvas);
     }
     super.onDraw(paramCanvas);
   }

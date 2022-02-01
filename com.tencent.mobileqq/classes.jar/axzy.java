@@ -1,18 +1,14 @@
-import android.os.Bundle;
+import java.io.File;
 
-class axzy
-  extends ayaa
+public abstract interface axzy
 {
-  axzy(axzu paramaxzu) {}
+  public abstract void a(String paramString1, String paramString2, int paramInt);
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    super.a(paramBoolean, paramBundle);
-    this.a.a();
-    if ((axzu.a(this.a)) && (axzu.a(this.a) != null)) {
-      axzu.b(this.a).a();
-    }
-  }
+  public abstract void a(String paramString1, String paramString2, long paramLong);
+  
+  public abstract void a(String paramString1, String paramString2, long paramLong1, long paramLong2);
+  
+  public abstract void a(String paramString1, String paramString2, File paramFile);
 }
 
 

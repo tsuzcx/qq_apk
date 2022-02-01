@@ -1,20 +1,37 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aksp
-  implements Comparator<akur>
+  extends BroadcastReceiver
 {
-  public aksp(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public aksp(SendHbActivity paramSendHbActivity) {}
   
-  public int a(akur paramakur1, akur paramakur2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramakur1.a < paramakur2.a) || ((paramakur1.a == paramakur2.a) && (paramakur1.b < paramakur2.b))) {
-      return -1;
+    if ("com.qwallet.report".equals(paramIntent.getAction()))
+    {
+      int i = paramIntent.getIntExtra("type", 0);
+      QLog.i("SendHbActivity", 2, "onReceive type = " + i);
+      if (999 == i) {
+        break label53;
+      }
     }
-    if ((paramakur1.a != paramakur2.a) || (paramakur1.b != paramakur2.b)) {
-      return 1;
-    }
-    return 0;
+    label53:
+    do
+    {
+      do
+      {
+        return;
+        paramContext = paramIntent.getBundleExtra("params");
+      } while (paramContext == null);
+      QLog.i("SendHbActivity", 2, "onReceive bundle = " + paramContext.toString());
+      paramContext = paramContext.getString("from");
+    } while ((this.a.isFinishing()) || (!"video".equals(paramContext)));
+    this.a.finish();
   }
 }
 

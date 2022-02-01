@@ -1,190 +1,273 @@
-import android.content.Intent;
+import android.content.Context;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tlv_type.tlv_t;
-import tencent.im.login.GatewayVerify.RspBody;
-import tencent.im.login.GatewayVerify.RspLftInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class anhi
+class anhi
+  implements BusinessObserver
 {
-  private static volatile anhi jdField_a_of_type_Anhi;
-  private anhh jdField_a_of_type_Anhh;
+  private long jdField_a_of_type_Long;
+  private anhj jdField_a_of_type_Anhj;
+  private final String jdField_a_of_type_JavaLangString;
+  private final List<anhh> jdField_a_of_type_JavaUtilList;
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private boolean jdField_a_of_type_Boolean;
+  private final String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
   
-  public static anhi a()
+  public anhi(anhj paramanhj, String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_Anhi == null) {}
-    try
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Anhj = paramanhj;
+  }
+  
+  public JSONObject a(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return null;
+    }
+    JSONObject localJSONObject;
+    for (;;)
     {
-      if (jdField_a_of_type_Anhi == null) {
-        jdField_a_of_type_Anhi = new anhi();
+      try
+      {
+        localJSONObject = new JSONObject();
+        if (!paramBoolean) {
+          break label323;
+        }
+        Object localObject = paramBundle.getByteArray("extra_data");
+        if (localObject == null) {
+          break;
+        }
+        paramBundle = new WebSSOAgent.UniSsoServerRsp();
+        paramBundle.mergeFrom((byte[])localObject);
+        localJSONObject.put("ssoRet", 0);
+        if (paramBundle.ret.has())
+        {
+          long l = paramBundle.ret.get();
+          localJSONObject.put("businessRet", l);
+          if (QLog.isColorLevel()) {
+            QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, ret, biz ret code=" + l);
+          }
+          if (paramBundle.errmsg.has())
+          {
+            localObject = paramBundle.errmsg.get();
+            localJSONObject.put("msg", localObject);
+            if (QLog.isColorLevel()) {
+              QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, ret, errmsg=" + (String)localObject);
+            }
+            if (!paramBundle.rspdata.has()) {
+              break label473;
+            }
+            paramBundle = paramBundle.rspdata.get();
+            localJSONObject.put("data", paramBundle);
+            if (!QLog.isColorLevel()) {
+              break label473;
+            }
+            QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, ret, rspData=" + paramBundle);
+            break label473;
+          }
+        }
+        else
+        {
+          localJSONObject.put("businessRet", 0);
+          continue;
+        }
+        localJSONObject.put("msg", "SSO发送成功");
       }
-      return jdField_a_of_type_Anhi;
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return null;
+      }
     }
-    finally {}
-  }
-  
-  private boolean a(Intent paramIntent, Bundle paramBundle)
-  {
-    if ((paramIntent == null) || (paramBundle == null))
+    this.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.w("apollo_client_ApolloWebDataHandler", 2, "uniAgent, onReceive, ret success but no data");
+    }
+    localJSONObject.put("ssoRet", 255);
+    localJSONObject.put("businessRet", 0);
+    localJSONObject.put("msg", "SSO返回数据包为空");
+    break label473;
+    label323:
+    int i = paramBundle.getInt("extra_result_code");
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, msfResultCode=" + i);
+    }
+    if (i == 1001)
     {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "handleAgentAppId params empty");
-      return true;
+      localJSONObject.put("ssoRet", 201);
+      localJSONObject.put("businessRet", 0);
+      localJSONObject.put("msg", anvx.a(2131700086));
     }
-    return false;
-  }
-  
-  private boolean a(WUserSigInfo paramWUserSigInfo)
-  {
-    if (paramWUserSigInfo == null) {
-      return true;
-    }
-    paramWUserSigInfo = paramWUserSigInfo.loginResultTLVMap;
-    if (paramWUserSigInfo == null) {
-      return true;
-    }
-    paramWUserSigInfo = (tlv_t)paramWUserSigInfo.get(Integer.valueOf(1347));
-    if (paramWUserSigInfo == null) {
-      return true;
-    }
-    if (paramWUserSigInfo.get_data() == null) {
-      return true;
-    }
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "SigData is valid");
-    return false;
-  }
-  
-  private boolean b(Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (paramBundle.getParcelable("userSigInfo") == null))
+    for (;;)
     {
-      QLog.d("ThirdPartyLoginUtilImpl", 1, "checkIMBlockByBundle not support im block check");
-      return true;
+      localJSONObject.put("ssoRet", 202);
+      localJSONObject.put("businessRet", 0);
+      localJSONObject.put("msg", anvx.a(2131700083));
+      label473:
+      do
+      {
+        localJSONObject.put("ssoRet", 255);
+        localJSONObject.put("businessRet", 0);
+        localJSONObject.put("msg", anvx.a(2131700087));
+        return localJSONObject;
+        if (i == 1002) {
+          break;
+        }
+      } while (i != 1013);
     }
-    return false;
-  }
-  
-  private boolean b(byte[] paramArrayOfByte, BaseActivity paramBaseActivity)
-  {
-    if ((paramBaseActivity == null) || (paramBaseActivity.getIntent() == null))
-    {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "activity related param null");
-      return true;
-    }
-    if (paramArrayOfByte == null)
-    {
-      QLog.d("ThirdPartyLoginUtilImpl", 1, "not im block");
-      return true;
-    }
-    return false;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Anhh = null;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((anhh)localIterator.next()).a(this, this.jdField_a_of_type_Anhj);
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_client_ApolloWebDataHandler", 2, "notifySSORsp, mReceivedSSO:" + this.jdField_b_of_type_Boolean);
+    }
   }
   
-  public void a(Intent paramIntent, Bundle paramBundle, String paramString)
+  public void a(Context paramContext, String paramString, JSONObject paramJSONObject, AppInterface paramAppInterface)
   {
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "handleAgentAppId");
-    if (a(paramIntent, paramBundle)) {
+    if ((paramJSONObject == null) || (paramContext == null) || (paramAppInterface == null)) {}
+    try
+    {
+      if (!QLog.isColorLevel()) {
+        return;
+      }
+      QLog.d("apollo_client_ApolloWebDataHandler", 2, "sendRequest, requestJsonObj:" + paramJSONObject + " context:" + paramContext + " app:" + paramAppInterface);
       return;
     }
-    long l2 = paramBundle.getLong("dstAppid");
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = 1600001540L;
+    catch (Exception paramContext)
+    {
+      Object localObject;
+      long l;
+      paramContext.printStackTrace();
     }
-    paramBundle = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      paramBundle = String.valueOf(l1);
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_client_ApolloWebDataHandler", 2, "sendRequest, currentUrl:" + paramString + " requestJsonObj:requestJsonObj");
     }
-    paramIntent.putExtra("im_block_sso_appid", paramBundle);
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "put IM_BLOCK_SSO_APPID: " + paramBundle);
+    if ((paramJSONObject.optInt("needCookie") == 1) && (!TextUtils.isEmpty(paramString)))
+    {
+      localObject = SwiftBrowserCookieMonster.c(paramString);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        if (((String)localObject).indexOf(',') != -1) {
+          ((String)localObject).replace(',', ';');
+        }
+        paramJSONObject.put("Cookie", localObject);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloWebDataHandler", 2, "Get cookie:" + nwo.c((String)localObject, new String[0]) + " from " + nwo.b(paramString, new String[0]));
+      }
+    }
+    localObject = new WebSSOAgent.UniSsoServerReqComm();
+    ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
+    ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
+    ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.10");
+    paramString = new WebSSOAgent.UniSsoServerReq();
+    paramString.comm.set((MessageMicro)localObject);
+    paramJSONObject.remove("callback");
+    paramJSONObject.remove("cmd");
+    paramJSONObject.remove("needCookie");
+    paramJSONObject.remove("timeout");
+    localObject = new JSONObject();
+    ((JSONObject)localObject).put("fingerprint", Build.FINGERPRINT);
+    ((JSONObject)localObject).put("model", Build.MODEL);
+    ((JSONObject)localObject).put("manufacturer", Build.MANUFACTURER);
+    ((JSONObject)localObject).put("brand", Build.BRAND);
+    ((JSONObject)localObject).put("device", Build.DEVICE);
+    ((JSONObject)localObject).put("product", Build.PRODUCT);
+    ((JSONObject)localObject).put("id", Build.ID);
+    ((JSONObject)localObject).put("level", Build.VERSION.SDK_INT);
+    ((JSONObject)localObject).put("cpu_abi", Build.CPU_ABI);
+    ((JSONObject)localObject).put("cpu_abi2", Build.CPU_ABI2);
+    paramJSONObject.put("option", localObject);
+    paramString.reqdata.set(paramJSONObject.toString());
+    paramContext = new NewIntent(paramContext, awcn.class);
+    paramContext.putExtra("extra_cmd", this.jdField_a_of_type_JavaLangString);
+    paramContext.putExtra("extra_data", paramString.toByteArray());
+    paramContext.putExtra("extra_timeout", -1L);
+    paramContext.setObserver(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_client_ApolloWebDataHandler", 2, "uniAgent, req, send request to msf");
+    }
+    paramAppInterface.startServlet(paramContext);
+    if (this.jdField_a_of_type_Anhj != null)
+    {
+      paramContext = this.jdField_a_of_type_Anhj;
+      l = System.currentTimeMillis();
+      this.jdField_a_of_type_Long = l;
+      paramContext.jdField_a_of_type_Long = l;
+      return;
+    }
   }
   
   public void a(anhh paramanhh)
   {
-    this.jdField_a_of_type_Anhh = paramanhh;
+    if (paramanhh != null) {
+      this.jdField_a_of_type_JavaUtilList.add(paramanhh);
+    }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public boolean a(String paramString)
   {
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "loginWithOpenSDKApi");
-    bize.a(paramString1, paramString2, paramString3, new anhj(this, paramString1));
+    return (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString)) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 10000L) && (this.jdField_a_of_type_Boolean) && (((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) || (!this.jdField_b_of_type_Boolean));
   }
   
-  public boolean a(Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "checkIMBlockByBundle");
-    if (b(paramBundle)) {
-      return false;
-    }
-    paramBundle = (WUserSigInfo)paramBundle.getParcelable("userSigInfo");
-    if (a(paramBundle)) {
-      return false;
-    }
     try
     {
-      paramBundle = ((tlv_t)paramBundle.loginResultTLVMap.get(Integer.valueOf(1347))).get_data();
-      GatewayVerify.RspBody localRspBody = new GatewayVerify.RspBody();
-      localRspBody.mergeFrom(paramBundle);
-      if (localRspBody.msg_rsp_lft_info.uint32_lft_forbid_area.get() == 1)
-      {
-        QLog.d("ThirdPartyLoginUtilImpl", 1, "checkIMBlockByBundle FORBID_AREA_IM");
-        return true;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_OrgJsonJSONObject = a(paramBoolean, paramBundle);
+      this.jdField_b_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebSSOTask, onReceive, isSuccess: " + paramBoolean + " mResultJson:" + this.jdField_a_of_type_OrgJsonJSONObject);
       }
-      QLog.d("ThirdPartyLoginUtilImpl", 1, "checkIMBlockByBundle FORBID_AREA_ALL");
-      return false;
+      a();
+      if (this.jdField_a_of_type_Anhj != null) {
+        this.jdField_a_of_type_Anhj.b = System.currentTimeMillis();
+      }
+      return;
     }
     catch (Exception paramBundle)
     {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "GatewayVerify.RspBody error: ", paramBundle);
+      while (!QLog.isColorLevel()) {}
+      QLog.e("apollo_client_ApolloWebDataHandler", 2, "uniAgent, onReceive, Exception: " + paramBundle.getMessage());
     }
-    return false;
   }
   
-  public boolean a(byte[] paramArrayOfByte, BaseActivity paramBaseActivity)
+  public String toString()
   {
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "shouldIMLoginBlock");
-    if (b(paramArrayOfByte, paramBaseActivity)) {
-      return false;
-    }
-    try
-    {
-      GatewayVerify.RspBody localRspBody = new GatewayVerify.RspBody();
-      localRspBody.mergeFrom(paramArrayOfByte);
-      if ((localRspBody.msg_rsp_lft_info.uint32_lft_forbid_area.get() == 1) && (paramBaseActivity.getIntent().getBooleanExtra("authority_start_qq_login", false)))
-      {
-        QLog.d("ThirdPartyLoginUtilImpl", 1, "shouldIMLoginBlock FORBID_AREA_IM");
-        return true;
-      }
-      bcef.a(null, "dc00898", "", "", "0X800B189", "0X800B189", 0, 0, "", "", "", "");
-      QLog.d("ThirdPartyLoginUtilImpl", 1, "shouldIMLoginBlock FORBID_AREA_ALL");
-      return false;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "GatewayVerify.RspBody error: ", paramArrayOfByte);
-    }
-    return false;
-  }
-  
-  public boolean a(byte[] paramArrayOfByte, BaseActivity paramBaseActivity, String paramString1, String paramString2, anhh paramanhh)
-  {
-    if (a(paramArrayOfByte, paramBaseActivity))
-    {
-      QLog.d("ThirdPartyLoginUtilImpl", 1, "handleByThirdPartyLoginUtil true");
-      a(paramanhh);
-      a(paramString1, paramString2, paramBaseActivity.getIntent().getStringExtra("im_block_sso_appid"));
-      return true;
-    }
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "handleByThirdPartyLoginUtil false");
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mSSOCmd:").append(this.jdField_a_of_type_JavaLangString).append(" mPreloadTS:").append(this.jdField_a_of_type_Long).append(" mIsSuccess:").append(this.jdField_a_of_type_Boolean).append(" mReceivedSSO:").append(this.jdField_b_of_type_Boolean).append(" mResultJson:").append(this.jdField_a_of_type_OrgJsonJSONObject);
+    return localStringBuilder.toString();
   }
 }
 

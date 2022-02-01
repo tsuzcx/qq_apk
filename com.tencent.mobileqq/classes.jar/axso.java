@@ -1,24 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
-public class axso
-  implements bjts
+class axso
+  implements DialogInterface.OnClickListener
 {
-  public axso(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  axso(axsn paramaxsn, oidb_0x8e4.RspBody paramRspBody) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(false);
-    }
-  }
-  
-  public void b(View paramView)
-  {
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(true);
-    }
+    paramDialogInterface = this.jdField_a_of_type_TencentImOidbCmd0x8e4Oidb_0x8e4$RspBody.poi_info;
+    String str = paramDialogInterface.bytes_uid.get().toStringUtf8();
+    axss.a(this.jdField_a_of_type_Axsn.a, HotChatInfo.createHotChat(paramDialogInterface, false, 0), paramDialogInterface.uint32_group_code.get(), str, paramDialogInterface.bytes_name.get().toStringUtf8());
   }
 }
 

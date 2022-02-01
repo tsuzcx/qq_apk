@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.jsp;
 
-import angs;
-import angw;
-import autc;
-import bgve;
+import aoji;
+import aojm;
+import avzb;
+import bifw;
 
 public class AVGameShareJsApiPlugin$1
   implements Runnable
 {
-  public AVGameShareJsApiPlugin$1(autc paramautc, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  public AVGameShareJsApiPlugin$1(avzb paramavzb, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
   public void run()
   {
-    new angw(this.this$0.mRuntime.a(), String.valueOf(this.a), this.b, 0L, 0, this.c, this.d, this.e, "", this.f).c();
+    new aojm(this.this$0.mRuntime.a(), String.valueOf(this.a), this.b, 0L, 0, this.c, this.d, this.e, "", this.f).c();
   }
 }
 

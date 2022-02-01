@@ -1,205 +1,59 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.olympic.submsgtype0xb4.BodyType;
+import tencent.im.oidb.olympic.submsgtype0xb4.MsgBody;
+import tencent.im.oidb.olympic.torch_transfer.TorchbearerInfo;
 
 public class acss
-  extends BaseAdapter
+  implements acpi
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  private final List<aire> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public acss(Context paramContext, CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = paramOnCheckedChangeListener;
-  }
-  
-  private void b(List<aire> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("olympic.OnLinePush", 2, "receive push 0xb4");
+    }
+    submsgtype0xb4.MsgBody localMsgBody = new submsgtype0xb4.MsgBody();
+    try
     {
-      return;
-      int i = paramList.size() - 1;
-      while (i >= 0)
-      {
-        aire localaire = (aire)paramList.get(i);
-        if (((localaire == null) || (localaire.jdField_a_of_type_Int == 1) || (localaire.jdField_a_of_type_Int == 2)) && (localaire != null)) {
-          paramList.remove(localaire);
-        }
-        i -= 1;
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      int i = localMsgBody.uint32_type.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("olympic.OnLinePush", 2, new Object[] { "receive push 0xb4, type = ", Integer.valueOf(i) });
       }
-    }
-  }
-  
-  public aire a(short paramShort)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      if (((aire)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Short == paramShort) {
-        return (aire)this.jdField_a_of_type_JavaUtilList.get(i);
-      }
-      i += 1;
-    }
-    return null;
-  }
-  
-  public void a(List<aire> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramList != null)
-    {
-      b(paramList);
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    notifyDataSetChanged();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(short[] paramArrayOfShort)
-  {
-    int i = 0;
-    boolean bool = false;
-    if ((!bool) && (paramArrayOfShort != null)) {}
-    label90:
-    for (;;)
-    {
-      try
+      if (i == 1)
       {
-        if (i < paramArrayOfShort.length)
+        paramMsgType0x210 = localMsgBody.msg_body_type;
+        if (paramMsgType0x210.msg_torchbearer.has())
         {
-          int j = 0;
-          if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
-            break label90;
+          paramQQAppInterface = (aywm)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.OLYMPIC_HANDLER);
+          if (paramQQAppInterface != null) {
+            paramQQAppInterface.a((torch_transfer.TorchbearerInfo)paramMsgType0x210.msg_torchbearer.get());
           }
-          int k = paramArrayOfShort[i];
-          int m = ((aire)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_a_of_type_Short;
-          if (k == m)
-          {
-            bool = true;
-            i += 1;
-            break;
-          }
-          j += 1;
-          continue;
         }
-        return bool;
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("olympic.OnLinePush", 2, "receive push 0xb4, bodyType.msg_torchbearer.has() == false");
+          return;
+        }
       }
-      catch (Throwable paramArrayOfShort)
-      {
-        paramArrayOfShort.printStackTrace();
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("olympic.OnLinePush", 2, "receive push 0xb4, parse msgBody err,", paramQQAppInterface);
       }
     }
   }
   
-  public int getCount()
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < getCount())) {
-      return (aire)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
+    a(paramacnk.a(), paramMsgType0x210);
     return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    aire localaire = (aire)getItem(paramInt);
-    if (localaire == null) {
-      return 0L;
-    }
-    return localaire.jdField_a_of_type_Int;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    Object localObject2;
-    boolean bool;
-    label58:
-    label99:
-    int i;
-    if (!(paramView instanceof FormSwitchItem))
-    {
-      localObject1 = new FormMultiLineSwitchItem(this.jdField_a_of_type_AndroidContentContext);
-      paramView = (View)localObject1;
-      localObject2 = (aire)getItem(paramInt);
-      if (localObject2 != null)
-      {
-        paramView.setText(((aire)localObject2).jdField_a_of_type_JavaLangString);
-        if (((aire)localObject2).e) {
-          break label174;
-        }
-        bool = true;
-        paramView.setChecked(bool);
-        if ((((aire)localObject2).jdField_a_of_type_Int != 3) || (!((aire)localObject2).e)) {
-          break label180;
-        }
-        paramView.setSecendLineText(this.jdField_a_of_type_AndroidContentContext.getString(2131698331));
-        paramView.setSecondLineTextViewVisibility(0);
-      }
-      i = getCount();
-      if ((paramInt != 0) || (i != 1)) {
-        break label203;
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label195;
-      }
-      paramView.setBgType(2);
-    }
-    for (;;)
-    {
-      paramView.setTag(localObject2);
-      paramView.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject2 = (FormMultiLineSwitchItem)paramView;
-      localObject1 = paramView;
-      paramView = (View)localObject2;
-      break;
-      label174:
-      bool = false;
-      break label58;
-      label180:
-      paramView.setSecendLineText("");
-      paramView.setSecondLineTextViewVisibility(8);
-      break label99;
-      label195:
-      paramView.setBgType(0);
-      continue;
-      label203:
-      if (paramInt == 0) {
-        paramView.setBgType(1);
-      } else if (paramInt == i - 1)
-      {
-        if (this.jdField_a_of_type_Boolean) {
-          paramView.setBgType(2);
-        } else {
-          paramView.setBgType(3);
-        }
-      }
-      else if ((paramInt > 0) && (paramInt < i - 1)) {
-        paramView.setBgType(2);
-      }
-    }
   }
 }
 

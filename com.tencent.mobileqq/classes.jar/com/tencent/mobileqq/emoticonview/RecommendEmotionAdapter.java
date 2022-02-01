@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -28,17 +27,19 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import areb;
-import arfl;
-import avsq;
-import bcef;
-import bgcz;
-import bjmp;
+import anvx;
+import asih;
+import asjr;
+import awyr;
+import bdla;
+import bhlq;
+import bkyc;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.model.QueryTask;
@@ -76,8 +77,8 @@ public class RecommendEmotionAdapter
   VasQuickUpdateManager.CallBacker callBacker = new RecommendEmotionAdapter.5(this);
   protected ProgressButton clickPayBtn;
   protected int contentWidth;
-  private avsq emp;
-  private List<bgcz> invisiableExposeList;
+  private awyr emp;
+  private List<bhlq> invisiableExposeList;
   boolean isRedWhenClickRecommend;
   boolean kandianBiu = false;
   public AtomicBoolean mDownloadEffect = new AtomicBoolean(false);
@@ -85,10 +86,10 @@ public class RecommendEmotionAdapter
   private Drawable mLoadingDrawable;
   private boolean mNeedShowRedEffect;
   public ArrayList<Integer> mShowedEffectList;
-  public MqqHandler mUiHandler = new bjmp(Looper.getMainLooper(), this, true);
+  public MqqHandler mUiHandler = new bkyc(Looper.getMainLooper(), this, true);
   public ArrayList<RecommendEmotionAdapter.RecommendEffectHolder> mWaitToShowList;
   protected List<ImageView> reds;
-  private List<bgcz> visiableExposeList;
+  private List<bhlq> visiableExposeList;
   
   public RecommendEmotionAdapter(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonCallback paramEmoticonCallback, int paramInt4, boolean paramBoolean)
   {
@@ -98,7 +99,7 @@ public class RecommendEmotionAdapter
     this.reds = new ArrayList();
     this.invisiableExposeList = new ArrayList();
     this.visiableExposeList = new ArrayList();
-    this.emp = ((avsq)paramQQAppInterface.getManager(14));
+    this.emp = ((awyr)paramQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER));
     paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0);
     this.mNeedShowRedEffect = paramQQAppInterface.getBoolean("recommemd_red_effect", false);
     this.isRedWhenClickRecommend = paramQQAppInterface.getBoolean("is_red_when_click_recommend", false);
@@ -114,28 +115,28 @@ public class RecommendEmotionAdapter
     localObject1 = new RelativeLayout(this.mContext);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams((int)(85.0F * this.density), (int)(85.0F * this.density));
     localLayoutParams.gravity = 1;
-    ((RelativeLayout)localObject1).setId(2131374632);
+    ((RelativeLayout)localObject1).setId(2131374873);
     Object localObject2 = new URLImageView(this.mContext);
     RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
-    ((URLImageView)localObject2).setId(2131366032);
+    ((URLImageView)localObject2).setId(2131366133);
     ((URLImageView)localObject2).setAdjustViewBounds(true);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams1);
     localObject2 = new URLImageView(this.mContext);
     localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
-    ((URLImageView)localObject2).setId(2131366031);
+    ((URLImageView)localObject2).setId(2131366132);
     ((URLImageView)localObject2).setAdjustViewBounds(true);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams1);
     ((URLImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_XY);
     localObject2 = new ImageView(this.mContext);
     localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-    ((ImageView)localObject2).setId(2131374633);
+    ((ImageView)localObject2).setId(2131374874);
     localLayoutParams1.addRule(10, -1);
     localLayoutParams1.addRule(11, -1);
-    ((ImageView)localObject2).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130850321));
+    ((ImageView)localObject2).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130850427));
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams1);
     localLinearLayout.addView((View)localObject1, localLayoutParams);
     localObject1 = new TextView(this.mContext);
-    ((TextView)localObject1).setId(2131366033);
+    ((TextView)localObject1).setId(2131366134);
     localLayoutParams = new LinearLayout.LayoutParams(-2, (int)(18.0F * this.density));
     localLayoutParams.gravity = 1;
     localLayoutParams.topMargin = ((int)(this.density * 10.0F));
@@ -146,11 +147,11 @@ public class RecommendEmotionAdapter
     ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
     localLinearLayout.addView((View)localObject1, localLayoutParams);
     localObject1 = new ProgressButton(this.mContext);
-    ((ProgressButton)localObject1).setId(2131366030);
+    ((ProgressButton)localObject1).setId(2131366131);
     localLayoutParams = new LinearLayout.LayoutParams(-2, (int)(25.0F * this.density));
     localLayoutParams.topMargin = ((int)(this.density * 10.0F));
     localLayoutParams.gravity = 1;
-    ((ProgressButton)localObject1).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130839360));
+    ((ProgressButton)localObject1).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130839381));
     ((ProgressButton)localObject1).setTextColor(-14894864);
     ((ProgressButton)localObject1).setPadding((int)(this.density * 15.0F), 0, (int)(this.density * 15.0F), 0);
     ((ProgressButton)localObject1).setEllipsize(TextUtils.TruncateAt.END);
@@ -171,15 +172,15 @@ public class RecommendEmotionAdapter
     while (localIterator.hasNext())
     {
       ProgressButton localProgressButton = (ProgressButton)localIterator.next();
-      bgcz localbgcz = getRecommendPkgByView(localProgressButton);
-      if ((localbgcz != null) && (paramEmoticonPackage.epId.equals(localbgcz.a))) {
+      bhlq localbhlq = getRecommendPkgByView(localProgressButton);
+      if ((localbhlq != null) && (paramEmoticonPackage.epId.equals(localbhlq.a))) {
         return localProgressButton;
       }
     }
     return null;
   }
   
-  private bgcz getRecommendPkgByView(View paramView)
+  private bhlq getRecommendPkgByView(View paramView)
   {
     if (paramView == null) {}
     do
@@ -187,15 +188,15 @@ public class RecommendEmotionAdapter
       return null;
       paramView = paramView.getTag();
     } while (paramView == null);
-    if ((paramView instanceof bgcz)) {}
-    for (paramView = (bgcz)paramView;; paramView = null) {
+    if ((paramView instanceof bhlq)) {}
+    for (paramView = (bhlq)paramView;; paramView = null) {
       return paramView;
     }
   }
   
-  private ImageView getRedPointViewByEp(bgcz parambgcz)
+  private ImageView getRedPointViewByEp(bhlq parambhlq)
   {
-    if ((this.reds == null) || (this.reds.size() < 1) || (parambgcz == null) || (TextUtils.isEmpty(parambgcz.a)))
+    if ((this.reds == null) || (this.reds.size() < 1) || (parambhlq == null) || (TextUtils.isEmpty(parambhlq.a)))
     {
       QLog.e("RecommendEmotionAdapter", 1, "getRedPointViewByEp view or ep error");
       return null;
@@ -207,8 +208,8 @@ public class RecommendEmotionAdapter
     while (localIterator.hasNext())
     {
       ImageView localImageView = (ImageView)localIterator.next();
-      bgcz localbgcz = getRecommendPkgByView(localImageView);
-      if ((localbgcz != null) && (parambgcz.a.equals(localbgcz.a))) {
+      bhlq localbhlq = getRecommendPkgByView(localImageView);
+      if ((localbhlq != null) && (parambhlq.a.equals(localbhlq.a))) {
         return localImageView;
       }
     }
@@ -224,16 +225,16 @@ public class RecommendEmotionAdapter
     return bool;
   }
   
-  private boolean isPkgDownloading(bgcz parambgcz)
+  private boolean isPkgDownloading(bhlq parambhlq)
   {
-    return ((areb)this.app.getManager(43)).a(parambgcz.a) >= 0.0F;
+    return ((asih)this.app.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER)).a(parambhlq.a) >= 0.0F;
   }
   
-  private void openEmoticonDetailPage(bgcz parambgcz, int paramInt)
+  private void openEmoticonDetailPage(bhlq parambhlq, int paramInt)
   {
     boolean bool = true;
     Intent localIntent1 = null;
-    if (parambgcz.n == 4)
+    if (parambhlq.n == 4)
     {
       localIntent1 = new Intent();
       localIntent1.putExtra("EXTRA_KEY_IS_SMALL_EMOTICON", true);
@@ -251,10 +252,10 @@ public class RecommendEmotionAdapter
     {
       if ((this.mContext instanceof Activity))
       {
-        if (parambgcz.n == 4) {}
+        if (parambhlq.n == 4) {}
         for (;;)
         {
-          EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.mContext, this.app.getAccount(), 8, parambgcz.a, false, localIntent2, bool);
+          EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.mContext, this.app.getAccount(), 8, parambhlq.a, false, localIntent2, bool);
           return;
           bool = false;
         }
@@ -280,9 +281,9 @@ public class RecommendEmotionAdapter
     }
   }
   
-  private void updateUI(View paramView, bgcz parambgcz)
+  private void updateUI(View paramView, bhlq parambhlq)
   {
-    if ((paramView == null) || (parambgcz == null)) {
+    if ((paramView == null) || (parambhlq == null)) {
       return;
     }
     int i;
@@ -292,73 +293,73 @@ public class RecommendEmotionAdapter
     if (this.emp != null)
     {
       if (!isCurrentPanel()) {
-        break label799;
+        break label800;
       }
-      if (!this.visiableExposeList.contains(parambgcz))
+      if (!this.visiableExposeList.contains(parambhlq))
       {
-        this.emp.a(parambgcz);
+        this.emp.a(parambhlq);
         i = this.app.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0).getInt("recommendRuleId", -1);
-        int j = this.data.indexOf(parambgcz);
+        int j = this.data.indexOf(parambhlq);
         localObject2 = this.app.getCurrentUin();
-        localObject3 = parambgcz.a;
+        localObject3 = parambhlq.a;
         String str = j + 1 + "";
         if (!this.isRedWhenClickRecommend) {
-          break label791;
+          break label792;
         }
         localObject1 = "1";
         label132:
         VasWebviewUtil.reportCommercialDrainage((String)localObject2, "ep_mall", "aioshow", "", 0, 0, 0, "", (String)localObject3, str, (String)localObject1, "", i + "", "", 0, 0, 0, 0);
-        this.visiableExposeList.add(parambgcz);
+        this.visiableExposeList.add(parambhlq);
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("RecommendEmotionAdapter", 2, "updateUI epid = " + parambgcz.a + "expose num = " + parambgcz.s);
+        QLog.d("RecommendEmotionAdapter", 2, "updateUI epid = " + parambhlq.a + "expose num = " + parambhlq.s);
       }
       paramView.setVisibility(0);
-      if (parambgcz == paramView.getTag(2131380831)) {
+      if (parambhlq == paramView.getTag(2131381183)) {
         break;
       }
-      paramView.setTag(2131380831, parambgcz);
+      paramView.setTag(2131381183, parambhlq);
       try
       {
-        localObject1 = (URLImageView)paramView.findViewById(2131366032);
-        localObject2 = this.mContext.getResources().getDrawable(2130847023);
-        localObject3 = this.mContext.getResources().getDrawable(2130847024);
-        ((URLImageView)localObject1).setImageDrawable(URLDrawable.getDrawable(parambgcz.b, (Drawable)localObject2, (Drawable)localObject3));
-        ((URLImageView)localObject1).setTag(parambgcz);
+        localObject1 = (URLImageView)paramView.findViewById(2131366133);
+        localObject2 = this.mContext.getResources().getDrawable(2130847121);
+        localObject3 = this.mContext.getResources().getDrawable(2130847122);
+        ((URLImageView)localObject1).setImageDrawable(URLDrawable.getDrawable(parambhlq.b, (Drawable)localObject2, (Drawable)localObject3));
+        ((URLImageView)localObject1).setTag(parambhlq);
         ((URLImageView)localObject1).setOnClickListener(this);
-        localObject2 = (TextView)paramView.findViewById(2131366033);
-        ((TextView)localObject2).setText(parambgcz.c);
-        ((TextView)localObject2).setTextColor(this.mContext.getResources().getColor(2131167096));
-        ((URLImageView)localObject1).setContentDescription(parambgcz.c);
-        localObject1 = (ProgressButton)paramView.findViewById(2131366030);
-        ((ProgressButton)localObject1).setText(parambgcz.d);
-        ((ProgressButton)localObject1).setTag(parambgcz);
-        ((ProgressButton)localObject1).setContentDescription(parambgcz.d);
+        localObject2 = (TextView)paramView.findViewById(2131366134);
+        ((TextView)localObject2).setText(parambhlq.c);
+        ((TextView)localObject2).setTextColor(this.mContext.getResources().getColor(2131167110));
+        ((URLImageView)localObject1).setContentDescription(parambhlq.c);
+        localObject1 = (ProgressButton)paramView.findViewById(2131366131);
+        ((ProgressButton)localObject1).setText(parambhlq.d);
+        ((ProgressButton)localObject1).setTag(parambhlq);
+        ((ProgressButton)localObject1).setContentDescription(parambhlq.d);
         ((ProgressButton)localObject1).setOnClickListener(this);
         ((ProgressButton)localObject1).setProgressDrawable(((ProgressButton)localObject1).a(-16745986));
         if ((this.btns != null) && (!this.btns.contains(localObject1))) {
           this.btns.add(localObject1);
         }
-        localObject2 = (URLImageView)paramView.findViewById(2131366031);
+        localObject2 = (URLImageView)paramView.findViewById(2131366132);
         ((URLImageView)localObject2).setImageDrawable(null);
         ((URLImageView)localObject2).setVisibility(8);
-        localObject2 = (ImageView)paramView.findViewById(2131374633);
+        localObject2 = (ImageView)paramView.findViewById(2131374874);
         ((ImageView)localObject2).setVisibility(8);
-        ((ImageView)localObject2).setTag(parambgcz);
-        if (parambgcz.r == 1)
+        ((ImageView)localObject2).setTag(parambhlq);
+        if (parambhlq.r == 1)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("RecommendEmotionAdapter", 2, "emoticon Effect mNeedShowRedEffect:" + this.mNeedShowRedEffect + ", id:" + parambgcz.a);
+            QLog.d("RecommendEmotionAdapter", 2, "emoticon Effect mNeedShowRedEffect:" + this.mNeedShowRedEffect + ", id:" + parambhlq.a);
           }
-          i = this.data.indexOf(parambgcz);
+          i = this.data.indexOf(parambhlq);
           if ((this.mNeedShowRedEffect) && (i < 2) && ((this.mShowedEffectList == null) || ((this.mShowedEffectList.size() < 2) && (this.mShowedEffectList.indexOf(Integer.valueOf(i)) < 0))))
           {
             localObject3 = new RecommendEmotionAdapter.RecommendEffectHolder(this);
             ((RecommendEmotionAdapter.RecommendEffectHolder)localObject3).contentView = paramView;
-            ((RecommendEmotionAdapter.RecommendEffectHolder)localObject3).recommendPkg = parambgcz;
+            ((RecommendEmotionAdapter.RecommendEffectHolder)localObject3).recommendPkg = parambhlq;
             ((RecommendEmotionAdapter.RecommendEffectHolder)localObject3).index = i;
             ThreadManager.post(new RecommendEmotionAdapter.1(this, (RecommendEmotionAdapter.RecommendEffectHolder)localObject3), 8, null, true);
           }
@@ -366,12 +367,12 @@ public class RecommendEmotionAdapter
         if ((this.reds != null) && (!this.reds.contains(localObject2))) {
           this.reds.add(localObject2);
         }
-        float f = ((areb)this.app.getManager(43)).a(parambgcz.a);
+        float f = ((asih)this.app.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER)).a(parambhlq.a);
         if (f < 0.0F) {
-          break label826;
+          break label827;
         }
         ((ProgressButton)localObject1).setProgress((int)f);
-        ((ProgressButton)localObject1).setText(amtj.a(2131712385));
+        ((ProgressButton)localObject1).setText(anvx.a(2131712732));
         return;
       }
       catch (OutOfMemoryError paramView)
@@ -379,16 +380,16 @@ public class RecommendEmotionAdapter
         QLog.e("RecommendEmotionAdapter", 1, "updateUI oom e = " + paramView);
         return;
       }
-      label791:
+      label792:
       localObject1 = "";
       break label132;
-      label799:
-      if (!this.invisiableExposeList.contains(parambgcz)) {
-        this.invisiableExposeList.add(parambgcz);
+      label800:
+      if (!this.invisiableExposeList.contains(parambhlq)) {
+        this.invisiableExposeList.add(parambhlq);
       }
     }
-    label826:
-    ((ProgressButton)localObject1).setText(parambgcz.d);
+    label827:
+    ((ProgressButton)localObject1).setText(parambhlq.d);
     ((ProgressButton)localObject1).setProgress(0);
   }
   
@@ -406,7 +407,7 @@ public class RecommendEmotionAdapter
       this.reds = null;
     }
     if (this.app != null) {
-      ((VasQuickUpdateManager)this.app.getManager(184)).removeCallBacker(this.callBacker);
+      ((VasQuickUpdateManager)this.app.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER)).removeCallBacker(this.callBacker);
     }
     if (this.mShowedEffectList != null)
     {
@@ -418,32 +419,32 @@ public class RecommendEmotionAdapter
     }
   }
   
-  public void downloadOrPay(ProgressButton paramProgressButton, bgcz parambgcz, boolean paramBoolean, int paramInt)
+  public void downloadOrPay(ProgressButton paramProgressButton, bhlq parambhlq, boolean paramBoolean, int paramInt)
   {
-    if ((paramProgressButton == null) || (parambgcz == null) || (this.app == null)) {
+    if ((paramProgressButton == null) || (parambhlq == null) || (this.app == null)) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("RecommendEmotionAdapter", 2, "downloadOrPay epid = " + parambgcz.a);
+      QLog.d("RecommendEmotionAdapter", 2, "downloadOrPay epid = " + parambhlq.a);
     }
-    if ((parambgcz.o == 2) || (parambgcz.o == 6))
+    if ((parambhlq.o == 2) || (parambhlq.o == 6))
     {
-      openEmoticonDetailPage(parambgcz, paramInt);
-      bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X800613D", 0, 0, parambgcz.a, "", "", parambgcz.r + "");
+      openEmoticonDetailPage(parambhlq, paramInt);
+      bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X800613D", 0, 0, parambhlq.a, "", "", parambhlq.r + "");
       paramInt = this.app.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0).getInt("recommendRuleId", -1);
-      int i = this.data.indexOf(parambgcz);
+      int i = this.data.indexOf(parambhlq);
       localObject = this.app.getCurrentUin();
-      parambgcz = parambgcz.a;
+      parambhlq = parambhlq.a;
       String str = i + 1 + "";
       if (this.isRedWhenClickRecommend) {}
       for (paramProgressButton = "1";; paramProgressButton = "")
       {
-        VasWebviewUtil.reportCommercialDrainage((String)localObject, "ep_mall", "0X800613D", "", 0, 0, 0, "", parambgcz, str, paramProgressButton, "", paramInt + "", "", 0, 0, 0, 0);
+        VasWebviewUtil.reportCommercialDrainage((String)localObject, "ep_mall", "0X800613D", "", 0, 0, 0, "", parambhlq, str, paramProgressButton, "", paramInt + "", "", 0, 0, 0, 0);
         return;
       }
     }
-    Object localObject = (areb)this.app.getManager(43);
-    ((avsq)this.app.getManager(14)).a(parambgcz.a, -1, new RecommendEmotionAdapter.2(this, parambgcz, paramBoolean, (areb)localObject, paramProgressButton, paramInt));
+    Object localObject = (asih)this.app.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
+    ((awyr)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(parambhlq.a, -1, new RecommendEmotionAdapter.2(this, parambhlq, paramBoolean, (asih)localObject, paramProgressButton, paramInt));
   }
   
   public View getEmotionView(BaseEmotionAdapter.ViewHolder paramViewHolder, int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -530,14 +531,14 @@ public class RecommendEmotionAdapter
       label440:
       Object localObject = paramViewGroup.contentViews[i];
       paramView = (EmotionPanelData)this.data.get(j);
-      if ((paramView instanceof bgcz)) {}
-      for (paramView = (bgcz)paramView;; paramView = null)
+      if ((paramView instanceof bhlq)) {}
+      for (paramView = (bhlq)paramView;; paramView = null)
       {
         updateUI((View)localObject, paramView);
         if (paramView == null) {
           break;
         }
-        bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X8005813", 0, 0, paramView.a, paramInt + "", "", paramView.r + "");
+        bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X8005813", 0, 0, paramView.a, paramInt + "", "", paramView.r + "");
         break;
       }
       i += 1;
@@ -560,16 +561,16 @@ public class RecommendEmotionAdapter
       if (localObject1 == null) {
         return true;
       }
-      Object localObject2 = areb.a(((BaseActivity)this.mContext).getAppRuntime(), paramMessage.epId);
+      Object localObject2 = asih.a(((BaseActivity)this.mContext).getAppRuntime(), paramMessage.epId);
       if (localObject2 == null) {
         return true;
       }
-      int i = (int)((arfl)localObject2).a();
+      int i = (int)((asjr)localObject2).a();
       if (QLog.isColorLevel()) {
         QLog.d("RecommendEmotionAdapter", 2, "handleMessage refreashProgress epid = " + paramMessage.epId + ";progress = " + i);
       }
       if (i == 100) {
-        bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X800581C", 0, 0, paramMessage.epId, "", "", "");
+        bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X800581C", 0, 0, paramMessage.epId, "", "", "");
       }
       ((ProgressButton)localObject1).setProgress(i);
       ((ProgressButton)localObject1).setProgressDrawable(((ProgressButton)localObject1).a(-16745986));
@@ -587,9 +588,9 @@ public class RecommendEmotionAdapter
         return true;
       }
       paramMessage.setProgress(0);
-      paramMessage.setText(((bgcz)localObject1).d);
+      paramMessage.setText(((bhlq)localObject1).d);
       refreshPanelData();
-      bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X8005816", 0, 1, ((bgcz)localObject1).a, "", "", "");
+      bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X8005816", 0, 1, ((bhlq)localObject1).a, "", "", "");
       continue;
       if ((paramMessage.obj instanceof RecommendEmotionAdapter.RecommendEffectHolder))
       {
@@ -601,7 +602,7 @@ public class RecommendEmotionAdapter
         if ((paramMessage.contentView == null) || (paramMessage.recommendPkg == null) || (paramMessage.effectFile == null) || (paramMessage.contentView.getVisibility() != 0)) {
           return true;
         }
-        if (((URLImageView)paramMessage.contentView.findViewById(2131366032)).getTag() != paramMessage.recommendPkg) {
+        if (((URLImageView)paramMessage.contentView.findViewById(2131366133)).getTag() != paramMessage.recommendPkg) {
           return true;
         }
         if ((this.mShowedEffectList != null) && ((this.mShowedEffectList.size() >= 2) || (this.mShowedEffectList.indexOf(Integer.valueOf(paramMessage.index)) >= 0))) {
@@ -616,7 +617,7 @@ public class RecommendEmotionAdapter
             localObject2 = Bitmap.createBitmap(10, 10, Bitmap.Config.ARGB_8888);
             this.mLoadingDrawable = new BitmapDrawable(this.mContext.getResources(), (Bitmap)localObject2);
           }
-          localObject2 = (URLImageView)paramMessage.contentView.findViewById(2131366031);
+          localObject2 = (URLImageView)paramMessage.contentView.findViewById(2131366132);
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
           localURLDrawableOptions.mUseApngImage = true;
           i = (int)(85.0F * this.density);
@@ -671,12 +672,12 @@ public class RecommendEmotionAdapter
       localObject = this.invisiableExposeList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        bgcz localbgcz = (bgcz)((Iterator)localObject).next();
-        if (!this.visiableExposeList.contains(localbgcz))
+        bhlq localbhlq = (bhlq)((Iterator)localObject).next();
+        if (!this.visiableExposeList.contains(localbhlq))
         {
-          this.visiableExposeList.add(localbgcz);
+          this.visiableExposeList.add(localbhlq);
           if (this.emp != null) {
-            this.emp.a(localbgcz);
+            this.emp.a(localbhlq);
           }
         }
       }
@@ -718,11 +719,11 @@ public class RecommendEmotionAdapter
               break label390;
             }
             localObject = (EmotionPanelData)this.data.get(i);
-            if ((localObject != null) && ((localObject instanceof bgcz)))
+            if ((localObject != null) && ((localObject instanceof bhlq)))
             {
-              localObject = (bgcz)localObject;
+              localObject = (bhlq)localObject;
               if (this.emp != null) {
-                this.emp.a((bgcz)localObject);
+                this.emp.a((bhlq)localObject);
               }
               if (!this.visiableExposeList.contains(localObject)) {
                 this.visiableExposeList.add(localObject);
@@ -740,44 +741,44 @@ public class RecommendEmotionAdapter
   
   public void onClick(View paramView)
   {
-    bgcz localbgcz = getRecommendPkgByView(paramView);
-    if (localbgcz == null) {}
+    bhlq localbhlq = getRecommendPkgByView(paramView);
+    if (localbhlq == null) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      ImageView localImageView = getRedPointViewByEp(localbgcz);
+      ImageView localImageView = getRedPointViewByEp(localbhlq);
       if ((paramView instanceof URLImageView))
       {
         int i = this.app.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0).getInt("recommendRuleId", -1);
-        int j = this.data.indexOf(localbgcz);
+        int j = this.data.indexOf(localbhlq);
         String str2 = this.app.getCurrentUin();
-        String str3 = localbgcz.a;
+        String str3 = localbhlq.a;
         String str4 = j + 1 + "";
         if (this.isRedWhenClickRecommend) {}
         for (String str1 = "1";; str1 = "")
         {
           VasWebviewUtil.reportCommercialDrainage(str2, "ep_mall", "0X80065DD", "", 0, 0, 0, "", str3, str4, str1, "", i + "", "", 0, 0, 0, 0);
-          bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X80065DD", 0, 0, localbgcz.a, "", "", localbgcz.r + "");
-          openEmoticonDetailPage(localbgcz, this.businessType);
+          bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X80065DD", 0, 0, localbhlq.a, "", "", localbhlq.r + "");
+          openEmoticonDetailPage(localbhlq, this.businessType);
           if ((localImageView == null) || (localImageView.getVisibility() != 0)) {
             break;
           }
           localImageView.setVisibility(8);
-          localbgcz.r = 0;
-          this.emp.i(localbgcz.a, this.businessType);
+          localbhlq.r = 0;
+          this.emp.i(localbhlq.a, this.businessType);
           break;
         }
       }
       if ((paramView instanceof ProgressButton))
       {
-        bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X8005814", 0, 0, localbgcz.a, "", "", localbgcz.r + "");
-        downloadOrPay((ProgressButton)paramView, localbgcz, false, this.businessType);
+        bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X8005814", 0, 0, localbhlq.a, "", "", localbhlq.r + "");
+        downloadOrPay((ProgressButton)paramView, localbhlq, false, this.businessType);
         if ((localImageView != null) && (localImageView.getVisibility() == 0))
         {
           localImageView.setVisibility(8);
-          localbgcz.r = 0;
-          this.emp.i(localbgcz.a, this.businessType);
+          localbhlq.r = 0;
+          this.emp.i(localbhlq.a, this.businessType);
         }
       }
     }
@@ -809,14 +810,14 @@ public class RecommendEmotionAdapter
     {
       return;
     }
-    bgcz localbgcz = getRecommendPkgByView(this.clickPayBtn);
-    if (localbgcz == null)
+    bhlq localbhlq = getRecommendPkgByView(this.clickPayBtn);
+    if (localbhlq == null)
     {
       QLog.e("RecommendEmotionAdapter", 1, "payBack pkg is null");
       return;
     }
-    bcef.b(this.app, "CliOper", "", "", "ep_mall", "0X800613B", 0, 0, localbgcz.a, "", "", "0");
-    downloadOrPay(this.clickPayBtn, localbgcz, true, this.businessType);
+    bdla.b(this.app, "CliOper", "", "", "ep_mall", "0X800613B", 0, 0, localbhlq.a, "", "", "0");
+    downloadOrPay(this.clickPayBtn, localbhlq, true, this.businessType);
   }
   
   public void refreashProgress(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
@@ -840,7 +841,7 @@ public class RecommendEmotionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.RecommendEmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

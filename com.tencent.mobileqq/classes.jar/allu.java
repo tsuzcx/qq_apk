@@ -1,11 +1,15 @@
-import android.widget.ImageView;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class allu
-  extends bjtz
+  implements BusinessObserver
 {
-  public String a;
-  public int b = 1;
-  public ImageView d;
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FilterMsgBoxObserver", 2, "onUpdate() called with: type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], data = [" + paramObject + "]");
+    }
+  }
 }
 
 

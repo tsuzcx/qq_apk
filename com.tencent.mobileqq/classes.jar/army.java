@@ -1,37 +1,61 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class army
-  extends amsu
+  extends aqwt<armx>
 {
-  public army(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
-  
-  public void onGetApolloHeadInfo(boolean paramBoolean, String paramString, byte paramByte)
+  public static armx a()
   {
-    super.onGetApolloHeadInfo(paramBoolean, paramString, paramByte);
-    if (!TextUtils.equals(ExtendFriendLimitChatMatchFragment.a(this.a).getCurrentAccountUin(), paramString)) {
-      return;
+    return (armx)aqxe.a().a(521);
+  }
+  
+  @NonNull
+  public armx a(int paramInt)
+  {
+    return new armx();
+  }
+  
+  @Nullable
+  public armx a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return armx.a(paramArrayOfaqxa);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ExtendFriendLimitChatMatchFragment", 2, String.format("onGetApolloHeadInfo success=%s，uin=%s，faceType=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Byte.valueOf(paramByte) }));
-    }
-    if (paramBoolean)
-    {
-      ExtendFriendLimitChatMatchFragment.b(this.a, true);
-      ExtendFriendLimitChatMatchFragment.a(this.a, paramByte);
-      ExtendFriendLimitChatMatchFragment.a(this.a, paramByte);
-      return;
-    }
-    ExtendFriendLimitChatMatchFragment.b(this.a, false);
-    ExtendFriendLimitChatMatchFragment.a(this.a, -1);
-    bcef.b(ExtendFriendLimitChatMatchFragment.a(this.a).app, "dc00898", "", "", "0X800B442", "0X800B442", 4, 0, "", "", "", "");
+    return null;
+  }
+  
+  public void a(armx paramarmx) {}
+  
+  public Class<armx> clazz()
+  {
+    return armx.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 521;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     army
  * JD-Core Version:    0.7.0.1
  */

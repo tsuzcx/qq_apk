@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity.aio.core;
 
+import bcwh;
+import com.tencent.qphone.base.util.QLog;
+
 class BaseChatPie$55
   implements Runnable
 {
@@ -7,7 +10,13 @@ class BaseChatPie$55
   
   public void run()
   {
-    this.this$0.showAudioPanel(true);
+    if (!BaseChatPie.preloaded)
+    {
+      bcwh.b = System.currentTimeMillis();
+      QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_CLICK_CAMERA ", Long.valueOf(bcwh.b) });
+      this.this$0.doShowPtv();
+      BaseChatPie.preloaded = true;
+    }
   }
 }
 

@@ -1,26 +1,72 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.3.1;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import com.tencent.mobileqq.fpsreport.FPSXListView;
+import com.tencent.mobileqq.widget.QQTabHost;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class ajzl
-  implements ajvb
+  implements bisg
 {
-  public ajzl(ThemeHbFragment paramThemeHbFragment) {}
+  private Map<View, ArrayList<View>> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void a()
+  public ajzl(MainFragment paramMainFragment) {}
+  
+  private void a(View paramView, ArrayList<View> paramArrayList)
   {
-    ThemeHbFragment.a(this.a, null);
+    if ((paramView == null) || (!(paramView instanceof ViewGroup))) {}
+    for (;;)
+    {
+      return;
+      paramView = (ViewGroup)paramView;
+      if ((((paramView instanceof FPSXListView)) || ((paramView instanceof FPSSwipListView))) && (!paramArrayList.contains(paramView))) {
+        paramArrayList.add(paramView);
+      }
+      int i = 0;
+      while (i < paramView.getChildCount())
+      {
+        a(paramView.getChildAt(i), paramArrayList);
+        i += 1;
+      }
+    }
   }
   
-  public void a(Object paramObject)
+  private void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
+    View localView = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment).getCurrentView();
+    Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(localView);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new ArrayList();
+      a(localView, (ArrayList)localObject1);
+      this.jdField_a_of_type_JavaUtilMap.put(localView, localObject1);
     }
-    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
-      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
+    localObject1 = ((ArrayList)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (View)((Iterator)localObject1).next();
+      if ((localObject2 instanceof FPSXListView)) {
+        ((FPSXListView)localObject2).b(paramBoolean);
+      } else if ((localObject2 instanceof FPSSwipListView)) {
+        ((FPSSwipListView)localObject2).a(paramBoolean);
+      }
     }
+  }
+  
+  public void afterDraw(Bundle paramBundle)
+  {
+    a(true);
+  }
+  
+  public void beforeDraw(Bundle paramBundle)
+  {
+    a(false);
   }
 }
 

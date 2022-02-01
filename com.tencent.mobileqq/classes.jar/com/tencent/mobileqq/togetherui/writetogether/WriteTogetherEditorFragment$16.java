@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.togetherui.writetogether;
 
 import android.text.TextUtils;
-import bdhz;
+import bepc;
 import com.tencent.mobileqq.together.writetogether.statemachine.CreatingState;
 
 class WriteTogetherEditorFragment$16

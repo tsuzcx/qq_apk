@@ -1,94 +1,81 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTodayStoryVidList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class xqs
-  implements vqp<wdw, wfu>
+public class xqs
 {
-  xqs(xqr paramxqr, qqstory_service.ReqTodayStoryVidList paramReqTodayStoryVidList, String paramString) {}
+  private final QQAppInterface a;
   
-  public void a(@NonNull wdw paramwdw, @Nullable wfu paramwfu, @NonNull ErrorMessage paramErrorMessage)
+  public xqs(QQAppInterface paramQQAppInterface)
   {
-    if (paramErrorMessage.isFail())
+    if (paramQQAppInterface == null) {
+      throw new NullPointerException("appInterface is null");
+    }
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a(Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3)
+  {
+    if (paramContext == null) {
+      throw new NullPointerException("context is null");
+    }
+    if (TextUtils.isEmpty(paramString1)) {
+      throw new IllegalArgumentException("please indicate the share group id");
+    }
+    if ((paramInt1 != 2) && (paramInt1 != 1)) {
+      throw new IllegalArgumentException("shareGroupType is error, type=" + paramInt1);
+    }
+    bkzi localbkzi = bkzi.a(paramContext);
+    localbkzi.a(anvx.a(2131699384), 5);
+    localbkzi.a(anvx.a(2131699382) + vzh.a + anvx.a(2131699383), 5);
+    localbkzi.c(2131690697);
+    localbkzi.a(new xqt(this, localbkzi, paramContext, paramInt1, paramString1, paramString2, paramLong, paramInt2, paramInt3));
+    if (!localbkzi.isShowing()) {
+      localbkzi.show();
+    }
+  }
+  
+  public void a(Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, boolean paramBoolean, int paramInt2, int paramInt3)
+  {
+    ykq.d("AddVideoController", "addVideoByRecord %s %s %s", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+    if (paramContext == null) {
+      throw new NullPointerException("context is null");
+    }
+    if (TextUtils.isEmpty(paramString1)) {
+      throw new IllegalArgumentException("please indicate the share group id");
+    }
+    zcf localzcf = zcf.a();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("entrance_type", 102);
+    localBundle.putInt("shareGroupType", paramInt1);
+    localBundle.putString("shareGroupId", paramString1);
+    localBundle.putString("shareGroupName", paramString2);
+    localBundle.putInt("add_video_source", paramInt3);
+    if (paramInt1 == 1) {
+      localBundle.putLong("groupUin", paramLong);
+    }
+    localBundle.putBoolean("ignorePersonalPublish", paramBoolean);
+    if ((paramContext instanceof Activity))
     {
-      if (this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrr != null) {
-        this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrr.a(paramErrorMessage);
-      }
+      paramContext = (Activity)paramContext;
+      localzcf.a(paramContext, localBundle, paramInt2);
+      paramContext.overridePendingTransition(2130772239, 2130772041);
       return;
     }
-    if (paramwfu == null)
-    {
-      this.jdField_a_of_type_Xqr.jdField_a_of_type_Xqt.jdField_a_of_type_Int = paramErrorMessage.errorCode;
-      if (this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrs != null)
-      {
-        this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrs.a(this.jdField_a_of_type_Xqr.a());
-        return;
-      }
-      xvv.d("GetMyStoryVideoListStep", "finish callBack is null");
-      return;
-    }
-    paramwdw = new qqstory_service.RspTodayStoryVidList();
-    for (;;)
-    {
-      try
-      {
-        paramwdw.mergeFrom(paramwfu.a);
-        paramwfu = paramwdw.vid_list.get().listIterator();
-        paramErrorMessage = paramwdw.feed_id.get().toStringUtf8();
-        if (!TextUtils.isEmpty(paramErrorMessage)) {
-          this.jdField_a_of_type_Xqr.jdField_a_of_type_Xqt.jdField_a_of_type_JavaLangString = paramErrorMessage;
-        }
-        paramErrorMessage = this.jdField_a_of_type_Xqr.jdField_a_of_type_Xqt;
-        if (paramwdw.share_to_discover.get() == 1)
-        {
-          bool = true;
-          paramErrorMessage.jdField_a_of_type_Boolean = bool;
-          ((vuq)vux.a(10)).b("qqstory_my_story_have_contributed", Integer.valueOf(paramwdw.share_to_discover.get()));
-          if (!paramwfu.hasNext()) {
-            break;
-          }
-          this.jdField_a_of_type_Xqr.jdField_a_of_type_Xqt.jdField_a_of_type_JavaUtilArrayList.add(((ByteStringMicro)paramwfu.next()).toStringUtf8());
-          continue;
-        }
-        boolean bool = false;
-      }
-      catch (InvalidProtocolBufferMicroException paramwdw)
-      {
-        xvv.c("GetMyStoryVideoListStep", "协议返回错误, RspGetBatchUserVidList", paramwdw);
-        if (this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrs != null)
-        {
-          this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrs.a(this.jdField_a_of_type_Xqr.a());
-          return;
-        }
-        xvv.d("GetMyStoryVideoListStep", "finish callBack is null");
-        return;
-      }
-    }
-    if ((!paramwdw.is_end.has()) || (paramwdw.is_end.get() == 1))
-    {
-      if (this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrs != null)
-      {
-        this.jdField_a_of_type_Xqr.jdField_a_of_type_Xrs.a(this.jdField_a_of_type_Xqr.a());
-        return;
-      }
-      xvv.d("GetMyStoryVideoListStep", "finish callBack is null");
-      return;
-    }
-    paramwfu = new qqstory_service.ReqTodayStoryVidList();
-    paramwfu.date.set(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$ReqTodayStoryVidList.date.get());
-    paramwfu.cookie.set(paramwdw.cookie.get());
-    vqn.a().a(new wdw(this.jdField_a_of_type_JavaLangString, paramwfu, null), this);
+    localzcf.a(paramContext, localBundle);
+  }
+  
+  public void b(Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3)
+  {
+    ykq.d("AddVideoController", "addVideoByExist %s %s", new Object[] { paramString1, paramString2 });
+    Bundle localBundle = new Bundle();
+    localBundle.putString("shareGroupId", paramString1);
+    localBundle.putString("shareGroupName", paramString2);
+    localBundle.putInt("add_video_source", paramInt3);
+    StoryTransitionActivity.a(paramContext, xqu.class.getName(), localBundle, paramInt2);
   }
 }
 

@@ -9,7 +9,7 @@ class uzn
   
   public void onClick(View paramView)
   {
-    uzl.a(this.a);
+    this.a.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

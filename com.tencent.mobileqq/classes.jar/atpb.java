@@ -1,30 +1,17 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption.2;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.1.1;
 
 public class atpb
-  implements ayeo
+  implements bmbg
 {
-  public atpb(ForwardSdkShareOption.2 param2) {}
+  atpb(atpa paramatpa) {}
   
-  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  public boolean a(int paramInt, Bundle paramBundle)
   {
-    return null;
-  }
-  
-  public void onSend(ayep paramayep)
-  {
-    atqa.b("KEY_STAGE_2_UPLOAD_IMAGE");
-    ForwardSdkShareOption.a(this.a.this$0, this.a.this$0.a, paramayep, this.a.b, this.a.c, this.a.d);
-  }
-  
-  public void updateMsg(ayep paramayep)
-  {
-    if ((paramayep != null) && (QLog.isColorLevel())) {
-      QLog.d("ForwardOption.ForwardSdkShareOption", 2, new Object[] { "upCallBack updateMsg info =", paramayep.toString() });
-    }
+    new Handler(Looper.getMainLooper()).post(new QfavFilePreviewController.1.1(this, paramBundle));
+    return true;
   }
 }
 

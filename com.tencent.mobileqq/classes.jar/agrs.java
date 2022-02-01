@@ -1,15 +1,17 @@
-public class agrs
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class agrs
+  extends afos
 {
-  public int a;
-  public String a;
-  public int b;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
+  TextView e;
   
-  public agrs(int paramInt1, String paramString, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-  }
+  agrs(agrp paramagrp) {}
 }
 
 

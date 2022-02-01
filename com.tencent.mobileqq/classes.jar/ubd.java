@@ -1,24 +1,30 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageInfo;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageItemView;
+import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class ubd
-  extends BroadcastReceiver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageFactory;", "", "()V", "createBarrageItemView", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageItemView;", "context", "Landroid/content/Context;", "barrageParam", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ubd
 {
-  private ubd(FolderFollowTabFragment paramFolderFollowTabFragment) {}
+  public static final ubd a = new ubd();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  @NotNull
+  public final BarrageItemView a(@NotNull Context paramContext, @NotNull BarrageInfo paramBarrageInfo)
   {
-    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_refresh_return_page")) && (FolderFollowTabFragment.a(this.a) != null)) {
-      FolderFollowTabFragment.b(this.a, FolderFollowTabFragment.a(this.a));
-    }
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Intrinsics.checkParameterIsNotNull(paramBarrageInfo, "barrageParam");
+    paramBarrageInfo = new BarrageItemView(paramContext, null, 0, 6, null);
+    paramBarrageInfo.setX(DisplayUtil.getWindowScreenWidth(paramContext));
+    paramBarrageInfo.setY(0.0F);
+    return paramBarrageInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ubd
  * JD-Core Version:    0.7.0.1
  */

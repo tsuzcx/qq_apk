@@ -1,17 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
 
 public class aizw
-  implements View.OnTouchListener
+  extends amgz
 {
-  public aizw(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public Button a;
+  public TextView a;
+  public SysSuspiciousMsg a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

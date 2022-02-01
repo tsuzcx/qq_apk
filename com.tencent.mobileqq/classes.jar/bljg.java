@@ -1,18 +1,8 @@
-import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
-import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
-import com.tencent.ttpic.util.Coffee;
-import com.tencent.ttpic.util.DecryptListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-final class bljg
-  implements DecryptListener
+public abstract interface bljg
 {
-  public byte[] decrypt(byte[] paramArrayOfByte)
-  {
-    if (!FeatureManager.Features.PTU_TOOLS.isFunctionReady()) {
-      return paramArrayOfByte;
-    }
-    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 

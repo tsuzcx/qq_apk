@@ -3,7 +3,7 @@ package com.tencent.ad.tangram.protocol;
 public final class qq_ad_get$QQAdGet$PositionInfo$PositionExt$ProductShareInfo
 {
   public long product_id = 0L;
-  public qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo share_info = new qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo();
+  public qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo share_info;
 }
 
 

@@ -4,7 +4,7 @@ import NS_COMM.COMM.Entry;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
-import bhpc;
+import bizw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
@@ -36,6 +36,8 @@ public class QCircleQualityReporter
   public static final String KEY_MOBILE_TYPE = "mobile_type";
   public static final String KEY_NETWORK_TYPE = "network_type";
   public static final String KEY_OBJ_ID = "obj_id";
+  public static final String KEY_OUTBOX_TASK_RESEND_EVENT = "outbox_task_resend_event";
+  public static final String KEY_OUTBOX_TASK_RETRY_FAILED_EVENT = "outbox_task_retry_failed_event";
   public static final String KEY_PLATFORM = "platform";
   public static final String KEY_QUA = "qua";
   public static final String KEY_REFER = "refer";
@@ -74,7 +76,7 @@ public class QCircleQualityReporter
   
   public static List<FeedCloudCommon.Entry> createBaseEntries(String paramString)
   {
-    return new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { QCircleReportHelper.newEntry("host_uin", String.valueOf(bhpc.a().a())), QCircleReportHelper.newEntry("qua", QUA.getQUA3()), QCircleReportHelper.newEntry("network_type", QCircleReportHelper.getNetworkType()), QCircleReportHelper.newEntry("client_time", String.valueOf(System.currentTimeMillis())), QCircleReportHelper.newEntry("event_id", paramString), QCircleReportHelper.newEntry("mobile_type", Build.MODEL + "_" + Build.VERSION.RELEASE), QCircleReportHelper.newEntry("version", "8.4.8.4810"), QCircleReportHelper.newEntry("platform", "AND"), QCircleReportHelper.newEntry("unique_id", String.valueOf(obtainUniqueId())) }));
+    return new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { QCircleReportHelper.newEntry("host_uin", String.valueOf(bizw.a().a())), QCircleReportHelper.newEntry("qua", QUA.getQUA3()), QCircleReportHelper.newEntry("network_type", QCircleReportHelper.getNetworkType()), QCircleReportHelper.newEntry("client_time", String.valueOf(System.currentTimeMillis())), QCircleReportHelper.newEntry("event_id", paramString), QCircleReportHelper.newEntry("mobile_type", Build.MODEL + "_" + Build.VERSION.RELEASE), QCircleReportHelper.newEntry("version", "8.4.10.4875"), QCircleReportHelper.newEntry("platform", "AND"), QCircleReportHelper.newEntry("unique_id", String.valueOf(obtainUniqueId())) }));
   }
   
   private static void generateUniqueId()
@@ -122,7 +124,7 @@ public class QCircleQualityReporter
     if (PERF_LEVEL == null) {
       PERF_LEVEL = String.valueOf(DeviceInfoUtil.getPerfLevel());
     }
-    paramString1 = MiniProgramReportHelper.newSingleReportData(16, new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("uid", String.valueOf(bhpc.a().a())), MiniProgramReportHelper.newEntry("event", MiniReportManager.getEventName(paramInt1)), MiniProgramReportHelper.newEntry("timestamp", String.valueOf(System.currentTimeMillis())), MiniProgramReportHelper.newEntry("appversion", "8.4.8.4810"), MiniProgramReportHelper.newEntry("qua", QUA.getQUA3()), MiniProgramReportHelper.newEntry("cmd", paramString1), MiniProgramReportHelper.newEntry("retcode", String.valueOf(paramInt2)), MiniProgramReportHelper.newEntry("time_cost", String.valueOf(paramLong)), MiniProgramReportHelper.newEntry("network_type", MiniProgramReportHelper.getNetworkType()), MiniProgramReportHelper.newEntry("busiType", PERF_LEVEL), MiniProgramReportHelper.newEntry("trace_id", paramString2) })), null);
+    paramString1 = MiniProgramReportHelper.newSingleReportData(16, new ArrayList(Arrays.asList(new COMM.Entry[] { MiniProgramReportHelper.newEntry("uid", String.valueOf(bizw.a().a())), MiniProgramReportHelper.newEntry("event", MiniReportManager.getEventName(paramInt1)), MiniProgramReportHelper.newEntry("timestamp", String.valueOf(System.currentTimeMillis())), MiniProgramReportHelper.newEntry("appversion", "8.4.10.4875"), MiniProgramReportHelper.newEntry("qua", QUA.getQUA3()), MiniProgramReportHelper.newEntry("cmd", paramString1), MiniProgramReportHelper.newEntry("retcode", String.valueOf(paramInt2)), MiniProgramReportHelper.newEntry("time_cost", String.valueOf(paramLong)), MiniProgramReportHelper.newEntry("network_type", MiniProgramReportHelper.getNetworkType()), MiniProgramReportHelper.newEntry("busiType", PERF_LEVEL), MiniProgramReportHelper.newEntry("trace_id", paramString2) })), null);
     QCircleReporter.getInstance().addCommandReportData(paramString1);
   }
   

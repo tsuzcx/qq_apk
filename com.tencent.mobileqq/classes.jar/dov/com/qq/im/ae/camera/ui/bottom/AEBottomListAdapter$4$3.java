@@ -1,28 +1,28 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import blpm;
-import blpo;
-import blpq;
-import blvb;
+import bncv;
+import bncx;
+import bncz;
+import bnke;
 import java.util.Map;
 
 public class AEBottomListAdapter$4$3
   implements Runnable
 {
-  public AEBottomListAdapter$4$3(blpo paramblpo, blvb paramblvb, int paramInt) {}
+  public AEBottomListAdapter$4$3(bncx parambncx, bnke parambnke, int paramInt) {}
   
   public void run()
   {
-    if (blpm.a(this.jdField_a_of_type_Blpo.a).get(this.jdField_a_of_type_Blvb.a) != null)
+    if (bncv.a(this.jdField_a_of_type_Bncx.a).get(this.jdField_a_of_type_Bnke.a) != null)
     {
-      if ((this.jdField_a_of_type_Int < 100) && (!this.jdField_a_of_type_Blvb.e) && (this.jdField_a_of_type_Blvb.f)) {
-        ((blpq)blpm.a(this.jdField_a_of_type_Blpo.a).get(this.jdField_a_of_type_Blvb.a)).a(1);
+      if ((this.jdField_a_of_type_Int < 100) && (!this.jdField_a_of_type_Bnke.e) && (this.jdField_a_of_type_Bnke.f)) {
+        ((bncz)bncv.a(this.jdField_a_of_type_Bncx.a).get(this.jdField_a_of_type_Bnke.a)).a(1);
       }
     }
     else {
       return;
     }
-    ((blpq)blpm.a(this.jdField_a_of_type_Blpo.a).get(this.jdField_a_of_type_Blvb.a)).a(2);
+    ((bncz)bncv.a(this.jdField_a_of_type_Bncx.a).get(this.jdField_a_of_type_Bnke.a)).a(2);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import akud;
-import akug;
+import alrz;
+import alsc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bfol;
+import bgxc;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -32,8 +32,8 @@ public class PtvTemplateItemView
   implements View.OnClickListener
 {
   int jdField_a_of_type_Int;
-  akud jdField_a_of_type_Akud;
-  akug jdField_a_of_type_Akug;
+  alrz jdField_a_of_type_Alrz;
+  alsc jdField_a_of_type_Alsc;
   Context jdField_a_of_type_AndroidContentContext;
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -68,8 +68,8 @@ public class PtvTemplateItemView
     int m = AIOUtils.dp2px(60.0F, getResources());
     int j = AIOUtils.dp2px(70.0F, getResources());
     int n = AIOUtils.dp2px(20.0F, getResources());
-    int i1 = getResources().getColor(2131167012);
-    int i2 = getResources().getColor(2131165375);
+    int i1 = getResources().getColor(2131167026);
+    int i2 = getResources().getColor(2131165381);
     int i3 = AIOUtils.dp2px(18.0F, getResources());
     int i = paramInt2;
     if (paramInt2 <= 0) {
@@ -93,7 +93,7 @@ public class PtvTemplateItemView
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     localObject = new RelativeLayout.LayoutParams(i3, i3);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845914);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846002);
     ((RelativeLayout.LayoutParams)localObject).addRule(12);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
@@ -127,7 +127,7 @@ public class PtvTemplateItemView
     }
   }
   
-  public void a(int paramInt, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, akud paramakud)
+  public void a(int paramInt, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, alrz paramalrz)
   {
     if (paramPtvTemplateInfo == null) {}
     do
@@ -135,7 +135,7 @@ public class PtvTemplateItemView
       return;
       setTag(paramPtvTemplateInfo);
       this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_Akud = paramakud;
+      this.jdField_a_of_type_Alrz = paramalrz;
       if (!TextUtils.isEmpty(paramPtvTemplateInfo.id)) {
         break;
       }
@@ -147,20 +147,20 @@ public class PtvTemplateItemView
     }
     if (!TextUtils.isEmpty(paramPtvTemplateInfo.iconurl))
     {
-      paramakud = URLDrawable.URLDrawableOptions.obtain();
+      paramalrz = URLDrawable.URLDrawableOptions.obtain();
       paramInt = AIOUtils.dp2px(60.0F, getResources());
       GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setColor(getResources().getColor(2131165872));
+      localGradientDrawable.setColor(getResources().getColor(2131165881));
       localGradientDrawable.setShape(1);
       localGradientDrawable.setSize(paramInt, paramInt);
-      paramakud.mRequestWidth = paramInt;
-      paramakud.mRequestHeight = paramInt;
-      paramakud.mFailedDrawable = localGradientDrawable;
-      paramakud.mLoadingDrawable = localGradientDrawable;
-      paramakud = URLDrawable.getDrawable(paramPtvTemplateInfo.iconurl, paramakud);
-      paramakud.setTag(bfol.a(paramInt, paramInt));
-      paramakud.setDecodeHandler(bfol.a);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramakud);
+      paramalrz.mRequestWidth = paramInt;
+      paramalrz.mRequestHeight = paramInt;
+      paramalrz.mFailedDrawable = localGradientDrawable;
+      paramalrz.mLoadingDrawable = localGradientDrawable;
+      paramalrz = URLDrawable.getDrawable(paramPtvTemplateInfo.iconurl, paramalrz);
+      paramalrz.setTag(bgxc.a(paramInt, paramInt));
+      paramalrz.setDecodeHandler(bgxc.a);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramalrz);
       if ((!paramPtvTemplateInfo.usable) && (!paramPtvTemplateInfo.id.equals("0"))) {
         break label256;
       }
@@ -174,7 +174,7 @@ public class PtvTemplateItemView
       if (!"0".equals(paramPtvTemplateInfo.id)) {
         break;
       }
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130850605);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130850736);
       break;
       label256:
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -208,11 +208,11 @@ public class PtvTemplateItemView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Akud != null) {
-      this.jdField_a_of_type_Akud.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Alrz != null) {
+      this.jdField_a_of_type_Alrz.a(this.jdField_a_of_type_Int);
     }
-    if (this.jdField_a_of_type_Akug != null) {
-      this.jdField_a_of_type_Akug.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Alsc != null) {
+      this.jdField_a_of_type_Alsc.a(this.jdField_a_of_type_Int);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

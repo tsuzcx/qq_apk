@@ -1,21 +1,13 @@
-import java.util.Arrays;
-
-public final class biim
+public abstract class biim
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public final int a;
   
-  public String toString()
+  public biim(int paramInt)
   {
-    return "MultiParams{mRelationType=" + this.jdField_a_of_type_Int + ", mMultiAVType=" + this.b + ", mMultiAVSubType=" + this.c + ", mRoomId=" + this.d + ", mUin=" + this.jdField_a_of_type_Long + ", mOpenId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mSourceId=" + this.e + ", mSig=" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte) + ", mSvrRecogFlag=" + this.f + '}';
+    this.a = paramInt;
   }
+  
+  public abstract int a();
 }
 
 

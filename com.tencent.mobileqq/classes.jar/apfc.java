@@ -1,71 +1,34 @@
 public class apfc
-  extends apfa
+  extends apeh
 {
-  public float a;
-  public float b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public float e;
-  public int e;
-  public float f;
-  public int f;
-  public float g;
-  public int g;
-  public float h;
-  public int h;
-  public int i;
-  public int j = 1;
+  public aphz a;
+  public apoa a;
+  public String b;
+  public int d;
+  public int e = 1;
   
-  public apfc()
+  public apfc(String paramString1, int paramInt1, int paramInt2, int paramInt3, apoa paramapoa, aphz paramaphz, String paramString2, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 100;
-    this.jdField_g_of_type_Int = 100;
+    super(paramString1, paramInt1, paramInt2, paramInt5, paramFloat1, paramFloat2, paramFloat3);
+    this.d = paramInt3;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.e = paramInt4;
+    this.jdField_a_of_type_Apoa = paramapoa;
+    this.jdField_a_of_type_Aphz = paramaphz;
   }
   
-  public apfc a()
+  public String toString()
   {
-    apfc localapfc = new apfc();
-    localapfc.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-    localapfc.jdField_b_of_type_Float = this.d;
-    localapfc.jdField_c_of_type_Float = this.jdField_a_of_type_Float;
-    localapfc.d = this.jdField_b_of_type_Float;
-    this.jdField_a_of_type_JavaLangString += "reverse";
-    boolean bool;
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      bool = true;
-      localapfc.jdField_b_of_type_Boolean = bool;
-      localapfc.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localapfc.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localapfc.jdField_f_of_type_Int = this.jdField_g_of_type_Int;
-      localapfc.jdField_g_of_type_Int = this.jdField_f_of_type_Int;
-      localapfc.jdField_h_of_type_Int = this.i;
-      localapfc.i = this.jdField_h_of_type_Int;
-      if (!this.jdField_c_of_type_Boolean) {
-        break label214;
-      }
-      localapfc.jdField_e_of_type_Float = this.jdField_e_of_type_Float;
-      localapfc.jdField_g_of_type_Float = this.jdField_g_of_type_Float;
-      localapfc.jdField_f_of_type_Float = this.jdField_f_of_type_Float;
-    }
-    for (localapfc.jdField_h_of_type_Float = this.jdField_h_of_type_Float;; localapfc.jdField_h_of_type_Float = this.jdField_f_of_type_Float)
-    {
-      localapfc.jdField_e_of_type_Int = this.jdField_e_of_type_Int;
-      localapfc.jdField_c_of_type_Boolean = this.jdField_c_of_type_Boolean;
-      localapfc.j = this.j;
-      localapfc.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      localapfc.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      return localapfc;
-      bool = false;
-      break;
-      label214:
-      localapfc.jdField_e_of_type_Float = this.jdField_g_of_type_Float;
-      localapfc.jdField_g_of_type_Float = this.jdField_e_of_type_Float;
-      localapfc.jdField_f_of_type_Float = this.jdField_h_of_type_Float;
-    }
+    StringBuilder localStringBuilder = new StringBuilder("NormalVideoARResourceInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mRealRenderType=").append(this.d);
+    localStringBuilder.append(", mKeyingParams='").append(this.jdField_a_of_type_Apoa).append('\'');
+    localStringBuilder.append(", mVideoPath='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aphz).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

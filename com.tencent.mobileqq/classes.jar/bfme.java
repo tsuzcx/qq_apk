@@ -1,10 +1,8 @@
-import java.util.List;
-
 public class bfme
 {
+  public int a;
   public String a;
-  public List<String> a;
-  public boolean a;
+  public int b;
 }
 
 

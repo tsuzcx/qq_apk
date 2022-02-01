@@ -1,55 +1,44 @@
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
 
 public class bbal
-  extends bbam
+  extends bbbe<ReceiptMessageDetailFragment>
 {
-  String a = null;
-  
-  bays a(ahzl paramahzl, List<bayt> paramList, String paramString1, boolean paramBoolean, String paramString2)
+  public bbal(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    baxt localbaxt;
-    if (paramList != null)
-    {
-      localbaxt = (baxt)paramList.get(0);
-      if ((localbaxt != null) && (localbaxt.a() != null))
-      {
-        String str = localbaxt.a().hotword.get();
-        odq.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F74", "0X8006F74", 0, 0, localbaxt.a(), str, String.valueOf(localbaxt.a().hotword_type.get()), "");
-      }
-      if ((localbaxt == null) || (localbaxt.a() == null)) {
-        break label166;
-      }
-    }
-    for (;;)
-    {
-      if ((localbaxt != null) && (localbaxt.a() != null)) {
-        odq.a(null, "CliOper", "", "", "0X8006535", "0X8006535", 0, 0, "", "", paramString1, String.valueOf(localbaxt.a().account_id.get()));
-      }
-      bbgj.a(110);
-      this.a = paramString2;
-      return new baxs(paramahzl, paramList, paramString1, paramString2);
-      label166:
-      if (paramList.size() > 1) {
-        localbaxt = (baxt)paramList.get(1);
-      } else {
-        localbaxt = null;
-      }
-    }
+    super(paramReceiptMessageDetailFragment);
   }
   
-  bayt a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return new baxt(paramhotwordrecord, paramString1, paramCharSequence1, paramString2, paramCharSequence2);
-  }
-  
-  bayt a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
-  {
-    return new baxt(paramrecord, paramString, paramCharSequence);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback onRes: " + paramInt);
+    }
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback succ");
+      }
+      paramBundle = new oidb_0x986.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = paramBundle.uint32_read_uin_num.get();
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, 2147483647, true);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.d("ReceiptMessageDetailFragment", 1, "fetch read member fail on invalid data");
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+    }
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+    return;
   }
 }
 

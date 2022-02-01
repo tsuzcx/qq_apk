@@ -1,21 +1,21 @@
-import android.database.DataSetObserver;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
 
 public class rjf
-  extends DataSetObserver
+  implements Animation.AnimationListener
 {
-  public rjf(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  public rjf(ComponentSocialOperation paramComponentSocialOperation) {}
   
-  public void onChanged()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
-    {
-      ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(0);
-      return;
-    }
-    ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(8);
+    this.a.a.startAnimation(this.a.c);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

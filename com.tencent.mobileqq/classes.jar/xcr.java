@@ -1,102 +1,53 @@
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.util.Pair;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
 
 public class xcr
-  extends JobSegment<List<String>, List<String>>
-  implements wch
+  extends xcm<HomeFeedPlayInfo>
 {
-  private String a = "story.icon.UidListToUrlListSegment";
+  private int a;
+  public ycg b = new ycg();
   
-  public xcr(String paramString) {}
-  
-  private Pair<List<String>, Boolean> a(List<String> paramList)
+  public xcr(HomeFeedPlayInfo paramHomeFeedPlayInfo)
   {
-    ArrayList localArrayList = new ArrayList();
-    vvj localvvj = (vvj)vux.a(2);
-    paramList = paramList.iterator();
-    boolean bool = true;
-    if (paramList.hasNext())
-    {
-      QQUserUIItem localQQUserUIItem = localvvj.b((String)paramList.next());
-      if ((localQQUserUIItem != null) && (localQQUserUIItem.headUrl != null)) {
-        localArrayList.add(localQQUserUIItem.headUrl);
-      }
-      for (;;)
-      {
-        break;
-        localArrayList.add("stub_url");
-        bool = false;
-      }
+    super(paramHomeFeedPlayInfo);
+    paramHomeFeedPlayInfo = (yck)wjs.a(11);
+    if (paramHomeFeedPlayInfo.b != null) {
+      this.b = paramHomeFeedPlayInfo.b;
     }
-    return new Pair(localArrayList, Boolean.valueOf(bool));
   }
   
-  private void b(List<String> paramList)
+  public ycc a(String paramString)
   {
-    xcb.a(this.a, "fireRefreshUserInfo : %s", new JSONArray(paramList));
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(new vwe(null, (String)paramList.next()));
+    Iterator localIterator = this.b.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      ycc localycc = (ycc)localIterator.next();
+      if (localycc.a.equals(paramString)) {
+        return localycc;
+      }
     }
-    new wcg(this).a(1, localArrayList);
+    return null;
   }
   
-  protected void a(JobContext paramJobContext, List<String> paramList)
+  public void a(boolean paramBoolean, int paramInt, xde paramxde)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      notifyError(new ErrorMessage(-1, ""));
-    }
-    do
+    Object localObject1 = this.b.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject1).size() > 0))
     {
+      localObject2 = b((List)localObject1);
+      paramxde.a(new ErrorMessage(), (List)localObject2, this.b.jdField_a_of_type_Boolean);
+      ykq.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject1).size()));
       return;
-      paramJobContext = Collections.unmodifiableList(paramList);
-      paramList = a(paramJobContext);
-      xcb.a(this.a, "getUnionIdListFromCache ok=%s", paramList.second);
-      a((List)paramList.first);
-    } while (((Boolean)paramList.second).booleanValue());
-    xcb.a(this.a, "fireRefreshUserInfo");
-    b(paramJobContext);
-  }
-  
-  protected void a(List<String> paramList)
-  {
-    xcb.a(this.a, "notifyResult url list : " + new JSONArray(paramList));
-    if (paramList.size() == 1)
-    {
-      xcb.b(this.a, "add one more default item because of product logic");
-      paramList.add("stub_url");
     }
-    super.notifyResult(paramList);
-  }
-  
-  public void a(wci paramwci)
-  {
-    if ((paramwci == null) || (paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwci.jdField_a_of_type_JavaUtilList == null))
-    {
-      xcb.b(this.a, "refresh user info fail %s", paramwci);
-      if (paramwci == null) {}
-      for (paramwci = new ErrorMessage(-1, "event is null");; paramwci = paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage)
-      {
-        notifyError(paramwci);
-        return;
-      }
-    }
-    xcb.a(this.a, "refresh user info success, let's return the new info");
-    ArrayList localArrayList = new ArrayList();
-    paramwci = paramwci.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramwci.hasNext()) {
-      localArrayList.add(((QQUserUIItem)paramwci.next()).headUrl);
-    }
-    a(localArrayList);
+    localObject1 = (yck)wjs.a(11);
+    Object localObject2 = new wts();
+    ((wts)localObject2).a = ((yck)localObject1).a;
+    ((wts)localObject2).b = this.b.a();
+    ykq.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((wts)localObject2).b);
+    this.a = 0;
+    wfi.a().a((wfm)localObject2, new xcs(this, paramxde));
   }
 }
 

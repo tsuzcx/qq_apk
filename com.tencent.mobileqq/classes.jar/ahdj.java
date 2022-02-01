@@ -1,30 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import cooperation.qqcircle.report.QCircleLpReportDc05504;
 
-public class ahdj
-  extends ahdi
+class ahdj
+  implements vwd
 {
-  public Bitmap a;
-  public AnimationView.AnimationInfo a;
+  ahdj(ahdh paramahdh) {}
   
-  public ahdj(String paramString)
+  public void a()
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
+    QCircleLpReportDc05504.report(this.a.a.curFriendUin, 45, 2, 3);
   }
 }
 

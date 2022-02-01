@@ -1,20 +1,9 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 
-public class zpb
-  extends amsu
+public abstract interface zpb
 {
-  public zpb(TroopMemberApiService paramTroopMemberApiService) {}
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 30);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramString });
-    localBundle.putSerializable("observer_type", Integer.valueOf(2));
-    this.a.a(3, localBundle);
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent, RecyclerView paramRecyclerView);
 }
 
 

@@ -1,16 +1,18 @@
-import com.tencent.qq.effect.engine.QEffectEngine.JsonConvert;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bcaw
-  implements QEffectEngine.JsonConvert
+  implements View.OnClickListener
 {
-  public <T> T parseArray(String paramString, Class paramClass)
-  {
-    return ausy.a(paramString, new bcax(this).getClass().getGenericSuperclass());
-  }
+  public bcaw(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public <T> T parseObject(String paramString, Class paramClass)
+  public void onClick(View paramView)
   {
-    return ausy.a(paramString, paramClass);
+    this.a.e();
+    UniteSearchActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
 
-public class acrg
-  implements View.OnClickListener
+final class acrg
+  implements lxy
 {
-  public acrg(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  acrg(MsgType0x210 paramMsgType0x210) {}
   
-  public void onClick(View paramView)
+  public void a(lxx paramlxx)
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      aovl.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).appName, null, aovl.c, 0, 0);
-    }
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramlxx.b(this.a.vProtobuf);
+    paramlxx.a();
   }
 }
 

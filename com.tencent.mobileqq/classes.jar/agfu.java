@@ -1,17 +1,31 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agfu
-  extends aghj
+  implements boqv
 {
-  agfu(agcw paramagcw)
+  agfu(agft paramagft) {}
+  
+  public Activity a()
   {
-    super(paramagcw, null);
+    return agft.a(this.a).mActivity;
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public SessionInfo a()
   {
-    return new agnv(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    return agft.a(this.a).sessionInfo;
+  }
+  
+  public QQAppInterface a()
+  {
+    return agft.a(this.a).app;
+  }
+  
+  public boolean a()
+  {
+    return agft.a(this.a).panelOpened();
   }
 }
 

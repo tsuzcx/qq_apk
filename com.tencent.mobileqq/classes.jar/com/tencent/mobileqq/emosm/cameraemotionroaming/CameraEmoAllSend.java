@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import amrm;
-import aney;
-import bmqh;
+import anua;
+import aoho;
+import bofz;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.LinearGroup;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class CameraEmoAllSend
   extends LinearGroup
-  implements aney
+  implements aoho
 {
   public static boolean a;
   public static boolean b;
@@ -73,7 +74,7 @@ public class CameraEmoAllSend
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    amrm localamrm = (amrm)((QQAppInterface)bmqh.a()).getBusinessHandler(72);
+    anua localanua = (anua)((QQAppInterface)bofz.a()).getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER);
     if ((paramInt3 < paramInt2) || ((paramInt4 > 0) && (paramInt5 > 0))) {
       if (paramInt3 == 0) {
         paramInt1 = 5;
@@ -81,7 +82,7 @@ public class CameraEmoAllSend
     }
     for (;;)
     {
-      localamrm.notifyUI(2, false, Integer.valueOf(paramInt1));
+      localanua.notifyUI(2, false, Integer.valueOf(paramInt1));
       return;
       paramInt1 = 6;
       continue;
@@ -144,7 +145,7 @@ public class CameraEmoAllSend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend
  * JD-Core Version:    0.7.0.1
  */

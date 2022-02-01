@@ -1,26 +1,21 @@
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 class aaql
-  extends MqqHandler
+  extends LbsManagerService.OnLocationChangeListener
 {
-  aaql(aaqk paramaaqk, Looper paramLooper)
+  aaql(aaqk paramaaqk, String paramString)
   {
-    super(paramLooper);
+    super(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (paramMessage.what == 100)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE2", 2, "QFindGattManager write data timeout bleSN " + (String)paramMessage.obj);
-      }
-      aaqk.a(this.a, paramMessage.arg1);
-      this.a.a((String)paramMessage.obj);
+    if (QLog.isColorLevel()) {
+      QLog.e("LocationPlugin", 2, "onLocationFinish errCode = " + paramInt);
     }
+    aaqj.a(this.a.jdField_a_of_type_Aaqj, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

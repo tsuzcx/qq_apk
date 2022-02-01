@@ -1,39 +1,25 @@
-import android.content.Context;
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3.1.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 
-public class ahfb
-  implements OnCompositionLoadedListener
+class ahfb
+  implements aftk
 {
-  public ahfb(ConfessChatPie.3 param3) {}
+  ahfb(ahfa paramahfa) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public boolean onLongClick(View paramView)
   {
-    int i = AIOUtils.dp2px(30.0F, this.a.this$0.mContext.getResources());
-    int j = AIOUtils.dp2px(30.0F, this.a.this$0.mContext.getResources());
-    if (paramLottieComposition == null)
-    {
-      QLog.e(this.a.this$0.tag, 1, "onCompositionLoaded lottieComposition is null");
-      return;
+    paramView = (ahfk)((View)paramView.getParent().getParent().getParent()).getTag();
+    if (paramView != null) {
+      paramView.a.performLongClick();
     }
-    Object localObject = paramLottieComposition.getBounds();
-    float f1 = i / ((Rect)localObject).width();
-    float f2 = j / ((Rect)localObject).height();
-    localObject = new LottieDrawable();
-    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
-    ((LottieDrawable)localObject).setScale(f1, f2);
-    ((LottieDrawable)localObject).loop(false);
-    ahey.a(this.a.this$0, (LottieDrawable)localObject);
-    ahey.a(this.a.this$0).addAnimatorListener(new ahfc(this));
-    ThreadManager.getUIHandler().post(new ConfessChatPie.3.1.2(this));
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

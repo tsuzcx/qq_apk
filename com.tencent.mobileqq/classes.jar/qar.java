@@ -1,17 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
-class qar
-  implements View.OnClickListener
+public class qar
+  implements Animation.AnimationListener
 {
-  qar(qaq paramqaq, pvc parampvc) {}
+  public qar(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    pgw.a(this.jdField_a_of_type_Pvc.a(), 0, 1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    ReadInJoySelfFragment.b(this.a).setAnimation(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import asdg;
-import aszk;
-import aszr;
-import bcvc;
+import athn;
+import audr;
+import audy;
+import becb;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.TencentDocData;
@@ -68,14 +69,14 @@ class ChatHistoryFileActivity$7
     for (;;)
     {
       return;
-      localObject2 = ((bcvc)this.this$0.app.getBusinessHandler(122)).a(localJSONException);
+      localObject2 = ((becb)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).a(localJSONException);
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryFIleActivity", 1, localJSONException.toString());
       }
       if (((JSONObject)localObject2).getInt("retcode") == 0) {
-        aszr.a("0X8009AA0");
+        audy.a("0X8009AA0");
       } else {
-        aszk.a(((JSONObject)localObject2).getString("msg"));
+        audr.a(((JSONObject)localObject2).getString("msg"));
       }
     }
   }

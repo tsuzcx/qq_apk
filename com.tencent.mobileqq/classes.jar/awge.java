@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class awge
-  implements INetEngine.INetEngineListener
+public class awge
+  implements DialogInterface.OnClickListener
 {
-  awge(awgd paramawgd) {}
+  public awge(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public void onResp(NetResp paramNetResp) {}
-  
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ListenTogetherOverlayFragment.a(this.a).finish();
+  }
 }
 
 

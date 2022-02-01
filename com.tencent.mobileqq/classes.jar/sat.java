@@ -1,23 +1,16 @@
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
+import java.util.List;
 
-class sat
-  extends sif
+public class sat
+  extends pvq
 {
-  sat(sab paramsab) {}
+  public sat(FollowingListFragment paramFollowingListFragment) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void b(boolean paramBoolean1, List<rpf> paramList, long paramLong, boolean paramBoolean2)
   {
-    if ((sab.a(this.a) != null) && (sab.a(this.a).c()))
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690790), 5000).a();
-      sab.a(this.a).f();
-      QLog.d("VideoFeedsShareController", 2, "mColorNoteController ： delete colorNote");
+    FollowingListFragment.a(this.a, paramList);
+    if (FollowingListFragment.a(this.a) != null) {
+      FollowingListFragment.a(this.a).notifyDataSetChanged();
     }
   }
 }

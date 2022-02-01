@@ -1,16 +1,35 @@
-import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 
-public class bnfh
-  implements wxc
+class bnfh
 {
-  public bnfh(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
-  
-  public boolean a(wwz paramwwz, int paramInt1, int paramInt2)
+  static CharSequence a(@NonNull bnes parambnes)
   {
-    LocalVideoSelectActivity.a(this.a).a();
-    LocalVideoSelectActivity.a(this.a).a(true);
-    return true;
+    if (parambnes.a) {
+      return parambnes.toString();
+    }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    parambnes = parambnes.toString();
+    SpannableString localSpannableString = new SpannableString(parambnes);
+    localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambnes.length(), 17);
+    localSpannableStringBuilder.append(localSpannableString);
+    return localSpannableStringBuilder;
+  }
+  
+  static CharSequence a(@NonNull bnet parambnet)
+  {
+    if ("failed".equals(parambnet.c))
+    {
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      parambnet = parambnet.toString();
+      SpannableString localSpannableString = new SpannableString(parambnet);
+      localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambnet.length(), 17);
+      localSpannableStringBuilder.append(localSpannableString);
+      return localSpannableStringBuilder;
+    }
+    return parambnet.toString();
   }
 }
 

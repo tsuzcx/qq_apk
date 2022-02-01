@@ -1,25 +1,37 @@
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-public class xoy
-  extends vll<xoi, vuc>
+public final class xoy
+  extends QQUIEventReceiver<xoj, wqh>
 {
-  public xoy(xoi paramxoi)
+  public xoy(@NonNull xoj paramxoj)
   {
-    super(paramxoi);
+    super(paramxoj);
   }
   
-  public void a(@NonNull xoi paramxoi, @NonNull vuc paramvuc)
+  public void a(@NonNull xoj paramxoj, @NonNull wqh paramwqh)
   {
-    xvv.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramvuc);
-    xoi.a(paramxoi, paramvuc.a);
+    if ((paramwqh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwqh.jdField_a_of_type_JavaUtilList != null) && (paramxoj.a != null))
+    {
+      paramwqh = paramwqh.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwqh.hasNext())
+      {
+        wkv localwkv = (wkv)paramwqh.next();
+        if (TextUtils.equals(paramxoj.a.b, localwkv.a)) {
+          paramxoj.i();
+        }
+      }
+    }
   }
   
   public Class acceptEventClass()
   {
-    return vuc.class;
+    return wqh.class;
   }
-  
-  public void b(@NonNull xoi paramxoi, @NonNull vuc paramvuc) {}
 }
 
 

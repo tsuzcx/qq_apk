@@ -1,17 +1,16 @@
-public class atgp
+class atgp
+  implements athg
 {
-  public long a;
-  public String a;
+  atgp(atfq paramatfq) {}
   
-  public atgp(String paramString, long paramLong)
+  public void a(Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    atfq.d(this.a, paramArrayOfObject[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atgp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,66 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.view.GameSessionView;
 
 public class avfc
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public avfc(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
+  private avfc(GameSessionView paramGameSessionView) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    bcef.b(null, "CliOper", "", "", "0X800A963", "0X800A963", 0, 0, "0", "0", "0", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    String str1 = paramIntent.getAction();
+    if (QLog.isColorLevel())
+    {
+      String str2 = GameSessionView.a;
+      if ("[onRecevier] action:" + str1 + ",data:" + paramIntent.getExtras() != null)
+      {
+        paramContext = paramIntent.getExtras().toString();
+        QLog.d(str2, 0, paramContext);
+      }
+    }
+    else
+    {
+      if (str1 != null) {
+        break label78;
+      }
+    }
+    label78:
+    int i;
+    label163:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramContext = null;
+            break;
+            if (!"action_qgame_messgae_change".equals(str1)) {
+              break label163;
+            }
+            paramContext = paramIntent.getExtras();
+          } while (paramContext == null);
+          paramIntent = (GameCenterSessionInfo)paramContext.getParcelable("key_game_msg");
+          i = paramContext.getInt("key_msg_change_type");
+          if (QLog.isColorLevel()) {
+            QLog.d(GameSessionView.a, 0, "[onReceive] type:" + i + ",info:" + paramIntent);
+          }
+          this.a.a();
+          return;
+        } while (!"action_qgame_unread_change".equals(str1));
+        paramContext = paramIntent.getExtras();
+      } while (paramContext == null);
+      i = paramContext.getInt("key_msg_unread_cnt");
+    } while (!QLog.isColorLevel());
+    QLog.d(GameSessionView.a, 0, "[onReceive] cnt:" + i);
   }
 }
 

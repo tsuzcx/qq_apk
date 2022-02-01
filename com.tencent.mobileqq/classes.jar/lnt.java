@@ -1,8 +1,26 @@
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+
 public class lnt
+  implements mjc
 {
-  public int a;
-  public int b;
-  public int c = 3;
+  public lnt(GaInviteLockActivity paramGaInviteLockActivity) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((!paramBoolean) || (GaInviteLockActivity.b(this.a))) {
+      return;
+    }
+    if ((this.a.a.e) || (this.a.a.l())) {
+      this.a.e();
+    }
+    for (;;)
+    {
+      bdla.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
+      return;
+      this.a.d();
+    }
+  }
 }
 
 

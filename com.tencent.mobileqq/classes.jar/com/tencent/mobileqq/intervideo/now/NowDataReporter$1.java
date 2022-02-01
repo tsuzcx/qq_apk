@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import auot;
+import avuo;
 
 public class NowDataReporter$1
   implements Runnable
 {
-  public NowDataReporter$1(auot paramauot, long paramLong) {}
+  public NowDataReporter$1(avuo paramavuo, long paramLong) {}
   
   public void run()
   {

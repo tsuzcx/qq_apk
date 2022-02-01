@@ -1,10 +1,10 @@
 package com.tencent.qapmsdk.impl.c;
 
-import com.tencent.qapmsdk.impl.instrumentation.e;
+import com.tencent.qapmsdk.impl.instrumentation.f;
 import okhttp3.Request;
 
 final class a$1
-  implements e
+  implements f
 {
   a$1(Request paramRequest) {}
 }

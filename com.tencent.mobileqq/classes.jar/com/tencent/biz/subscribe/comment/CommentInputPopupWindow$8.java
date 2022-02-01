@@ -1,12 +1,12 @@
 package com.tencent.biz.subscribe.comment;
 
 import com.tencent.qphone.base.util.QLog;
-import zfp;
+import zuu;
 
 public class CommentInputPopupWindow$8
   implements Runnable
 {
-  public CommentInputPopupWindow$8(zfp paramzfp, WorkSpaceView paramWorkSpaceView) {}
+  public CommentInputPopupWindow$8(zuu paramzuu, WorkSpaceView paramWorkSpaceView) {}
   
   public void run()
   {

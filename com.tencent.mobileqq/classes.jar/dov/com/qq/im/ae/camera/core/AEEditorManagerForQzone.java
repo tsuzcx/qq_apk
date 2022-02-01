@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bmbc;
-import bmbx;
-import bmns;
+import bnqm;
+import bnrh;
+import bodk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.PeakService;
@@ -36,7 +36,7 @@ public class AEEditorManagerForQzone
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      bmbx.d("AEEditorManagerForQzone", "[sendBroadCast] action or missionID is null");
+      bnrh.d("AEEditorManagerForQzone", "[sendBroadCast] action or missionID is null");
       return;
     }
     Intent localIntent = new Intent();
@@ -48,7 +48,7 @@ public class AEEditorManagerForQzone
   
   public void addListener(@Nullable AEEditorManagerForQzone.AEEditorGenerateResultListener paramAEEditorGenerateResultListener)
   {
-    bmbx.b("AEEditorManagerForQzone", "[addListener]");
+    bnrh.b("AEEditorManagerForQzone", "[addListener]");
     if ((paramAEEditorGenerateResultListener != null) && (!this.mListenerList.contains(paramAEEditorGenerateResultListener))) {
       this.mListenerList.add(paramAEEditorGenerateResultListener);
     }
@@ -56,7 +56,7 @@ public class AEEditorManagerForQzone
   
   public void addUICallbackListener(@Nullable AEEditorManagerForQzone.AEEditorUICallbackListener paramAEEditorUICallbackListener)
   {
-    bmbx.b("AEEditorManagerForQzone", "[addUICallbackListener]");
+    bnrh.b("AEEditorManagerForQzone", "[addUICallbackListener]");
     if ((paramAEEditorUICallbackListener != null) && (!this.mUICallBackListener.contains(paramAEEditorUICallbackListener))) {
       this.mUICallBackListener.add(paramAEEditorUICallbackListener);
     }
@@ -64,13 +64,13 @@ public class AEEditorManagerForQzone
   
   public void cancelMission(@NonNull String paramString)
   {
-    bmbx.b("AEEditorManagerForQzone", "[cancel]");
+    bnrh.b("AEEditorManagerForQzone", "[cancel]");
     sendBroadCast("AEEDITOR_ORDER_CANCEL", paramString);
   }
   
   public void clean()
   {
-    bmbx.b("AEEditorManagerForQzone", "[clean]");
+    bnrh.b("AEEditorManagerForQzone", "[clean]");
     this.mAEEditorGenerateBroadcastReceiver.unRegisterSelf(BaseApplicationImpl.getContext());
     this.mAEEditorUIBroadcastReceiver.unRegisterSelf(BaseApplicationImpl.getContext());
   }
@@ -94,7 +94,7 @@ public class AEEditorManagerForQzone
   
   public void init()
   {
-    bmbx.b("AEEditorManagerForQzone", "[init]");
+    bnrh.b("AEEditorManagerForQzone", "[init]");
     this.mAEEditorGenerateBroadcastReceiver.registerSelf(BaseApplicationImpl.getContext());
     this.mAEEditorUIBroadcastReceiver.registerSelf(BaseApplicationImpl.getContext());
   }
@@ -102,12 +102,12 @@ public class AEEditorManagerForQzone
   public void onAETavSessionExportCompleted(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6, String paramString7, String paramString8)
   {
     if (TextUtils.isEmpty(paramString6)) {
-      bmbx.d("AEEditorManagerForQzone", "[onAETavSessionExportCompleted] mission is null");
+      bnrh.d("AEEditorManagerForQzone", "[onAETavSessionExportCompleted] mission is null");
     }
     for (;;)
     {
       return;
-      paramString1 = bmns.a(paramString6, paramString1, paramString7, paramString8);
+      paramString1 = bodk.a(paramString6, paramString1, paramString7, paramString8);
       if (paramString1 == null)
       {
         onAETavSessionExportError(paramString6, -4);
@@ -119,7 +119,7 @@ public class AEEditorManagerForQzone
       paramString1.scheme = paramString5;
       paramString1.showCircleTakeSame = paramInt;
       paramString1.missionID = paramString6;
-      bmbc.a().a(paramString1);
+      bnqm.a().a(paramString1);
       this.mMissionStatus.put(paramString6, paramString1);
       paramString2 = this.mListenerList.iterator();
       while (paramString2.hasNext()) {
@@ -132,13 +132,13 @@ public class AEEditorManagerForQzone
   {
     if (TextUtils.isEmpty(paramString))
     {
-      bmbx.d("AEEditorManagerForQzone", "[onAETavSessionExportError] mission is null");
+      bnrh.d("AEEditorManagerForQzone", "[onAETavSessionExportError] mission is null");
       return;
     }
     Object localObject = (LocalMediaInfo)this.mMissionStatus.get(paramString);
     if (localObject == null)
     {
-      localObject = bmns.a("", 0, 0, null, null, paramString);
+      localObject = bodk.a("", 0, 0, null, null, paramString);
       this.mMissionStatus.put(paramString, localObject);
     }
     for (;;)
@@ -156,13 +156,13 @@ public class AEEditorManagerForQzone
   {
     if (TextUtils.isEmpty(paramString))
     {
-      bmbx.d("AEEditorManagerForQzone", "[onAETavSessionExporting] mission is null");
+      bnrh.d("AEEditorManagerForQzone", "[onAETavSessionExporting] mission is null");
       return;
     }
     Object localObject = (LocalMediaInfo)this.mMissionStatus.get(paramString);
     if (localObject == null)
     {
-      localObject = bmns.a("", 0, 0, null, null, paramString);
+      localObject = bodk.a("", 0, 0, null, null, paramString);
       this.mMissionStatus.put(paramString, localObject);
     }
     for (;;)
@@ -178,14 +178,14 @@ public class AEEditorManagerForQzone
   
   public void removeAllListener()
   {
-    bmbx.b("AEEditorManagerForQzone", "[removeAllListener]");
+    bnrh.b("AEEditorManagerForQzone", "[removeAllListener]");
     this.mListenerList.clear();
     this.mUICallBackListener.clear();
   }
   
   public void removeCallbackListener(@Nullable AEEditorManagerForQzone.AEEditorUICallbackListener paramAEEditorUICallbackListener)
   {
-    bmbx.b("AEEditorManagerForQzone", "[removeCallbackListener]");
+    bnrh.b("AEEditorManagerForQzone", "[removeCallbackListener]");
     if ((paramAEEditorUICallbackListener != null) && (this.mUICallBackListener.contains(paramAEEditorUICallbackListener))) {
       this.mUICallBackListener.remove(paramAEEditorUICallbackListener);
     }
@@ -193,7 +193,7 @@ public class AEEditorManagerForQzone
   
   public void removeListener(@Nullable AEEditorManagerForQzone.AEEditorGenerateResultListener paramAEEditorGenerateResultListener)
   {
-    bmbx.b("AEEditorManagerForQzone", "[removeListener]");
+    bnrh.b("AEEditorManagerForQzone", "[removeListener]");
     if ((paramAEEditorGenerateResultListener != null) && (this.mListenerList.contains(paramAEEditorGenerateResultListener))) {
       this.mListenerList.remove(paramAEEditorGenerateResultListener);
     }
@@ -201,7 +201,7 @@ public class AEEditorManagerForQzone
   
   public void retryMission(String paramString)
   {
-    bmbx.b("AEEditorManagerForQzone", "[retry]");
+    bnrh.b("AEEditorManagerForQzone", "[retry]");
     Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), PeakService.class);
     localIntent.putExtra("ServiceAction", 4);
     localIntent.putExtra("generate_mission", paramString);
@@ -210,7 +210,7 @@ public class AEEditorManagerForQzone
   
   public void saveMission(String paramString)
   {
-    bmbx.b("AEEditorManagerForQzone", "[save]");
+    bnrh.b("AEEditorManagerForQzone", "[save]");
     sendBroadCast("AEEDITOR_ORDER_SAVE", paramString);
   }
 }

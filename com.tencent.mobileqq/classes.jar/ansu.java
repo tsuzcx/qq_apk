@@ -1,33 +1,23 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class ansu
-  extends anri
+class ansu
+  extends BroadcastReceiver
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  ansu(ansr paramansr, QQAppInterface paramQQAppInterface) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramQQAppInterface = new ansq(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "wallet";
-    paramQQAppInterface.c = "modify_pass";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    if (paramIntent != null)
     {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")))) {
+        this.jdField_a_of_type_Ansr.a();
       }
     }
-    return paramQQAppInterface;
   }
 }
 

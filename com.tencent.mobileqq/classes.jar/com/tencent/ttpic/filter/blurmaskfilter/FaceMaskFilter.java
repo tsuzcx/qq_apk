@@ -15,13 +15,13 @@ import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.model.FaceMaskItem;
-import com.tencent.ttpic.model.FaceMaskItem.FACE_MASK_TYPE;
+import com.tencent.ttpic.model.FaceMaskItem.FaceMaskType;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTSegAttr;
 import com.tencent.ttpic.openapi.filter.FaceLineFilter;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import com.tencent.view.RendererUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -65,7 +65,7 @@ public class FaceMaskFilter
     super("attribute vec4 position;\n\nattribute vec4 inputGrayTextureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvoid main() {\n    gl_Position = position;\n    grayTextureCoordinate  = inputGrayTextureCoordinate.xy;\n}\n", "precision highp float;\n varying vec2 grayTextureCoordinate;\n uniform sampler2D inputImageTexture2;\n void main() {\n    vec4 graycolor= texture2D(inputImageTexture2, grayTextureCoordinate);\n    float grayColorR=1.0-graycolor.r;\n    if(graycolor.r<0.981){\n        gl_FragColor = vec4(grayColorR,grayColorR,grayColorR,1.0);\n    }\n }");
     if ((paramFaceMaskItem != null) && (paramFaceMaskItem.isValid))
     {
-      if ((paramFaceMaskItem.faceMaskType == FaceMaskItem.FACE_MASK_TYPE.SINGLE_MASK.value) && (paramFaceMaskItem.faceMaskImgPath != null)) {
+      if ((paramFaceMaskItem.faceMaskType == FaceMaskItem.FaceMaskType.SINGLE_MASK.value) && (paramFaceMaskItem.faceMaskImgPath != null)) {
         this.mMaskPath = (paramFaceMaskItem.faceMaskImgPath + "0.png");
       }
       this.mMaskBlurStrength = ((float)paramFaceMaskItem.featherStrength);
@@ -211,7 +211,7 @@ public class FaceMaskFilter
       this.mMaskFrame.clear();
     }
     if (this.mCopyFilter != null) {
-      this.mCopyFilter.ClearGLSL();
+      this.mCopyFilter.clearGLSL();
     }
     if ((this.mGrayBitmap != null) && (!this.mGrayBitmap.isRecycled())) {
       this.mGrayBitmap.recycle();
@@ -221,13 +221,13 @@ public class FaceMaskFilter
   public void initAttribParams()
   {
     setPositions(GlUtil.ORIGIN_POSITION_COORDS);
-    this.mVertexs = FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getFullCoords(FaceOffUtil.getGrayCoords(FaceOffUtil.FEATURE_TYPE.FACE_HEAD_CROP), 3.0F), this.grayImageWidth, this.grayImageHeight, this.grayVertices);
+    this.mVertexs = FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getFullCoords(FaceOffUtil.getGrayCoords(FaceOffUtil.FeatureType.FACE_HEAD_CROP), 3.0F), this.grayImageWidth, this.grayImageHeight, this.grayVertices);
     addAttribParam("inputGrayTextureCoordinate", this.mVertexs);
   }
   
   public void initParams()
   {
-    this.mGrayBitmap = FaceOffUtil.getGrayBitmap(FaceOffUtil.FEATURE_TYPE.FACE_HEAD_CROP);
+    this.mGrayBitmap = FaceOffUtil.getGrayBitmap(FaceOffUtil.FeatureType.FACE_HEAD_CROP);
     if (this.mGrayBitmap != null)
     {
       this.grayImageWidth = this.mGrayBitmap.getWidth();

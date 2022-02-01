@@ -1,31 +1,21 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import anxo;
-import apyt;
-import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import java.util.List;
 
 class DesktopDataManager$28
-  extends anxo
+  implements Runnable
 {
-  DesktopDataManager$28(DesktopDataManager paramDesktopDataManager) {}
+  DesktopDataManager$28(DesktopDataManager paramDesktopDataManager, int paramInt1, int paramInt2) {}
   
-  public void onGetAppletsPushUnreadInfo(Object paramObject)
+  public void run()
   {
-    if ((apyt.d()) && ((paramObject instanceof MiniAppRedDotEntity)))
-    {
-      paramObject = (MiniAppRedDotEntity)paramObject;
-      this.this$0.setMiniAppPushRedDotData(paramObject);
+    int i = DesktopDataManager.access$3200(this.this$0);
+    DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)DesktopDataManager.access$1600(this.this$0).remove(this.val$old_order + i);
+    DesktopDataManager.access$1600(this.this$0).add(i + this.val$new_order, localDesktopItemInfo);
+    DesktopDataManager.access$1900(DesktopDataManager.access$1600(this.this$0));
+    if (DesktopDataManager.access$1500(this.this$0) != null) {
+      DesktopDataManager.access$1500(this.this$0).onDataChanged();
     }
-  }
-  
-  public void onReceiveAppletsMessageUnreadInfo(Map<String, Integer> paramMap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 1, "onReceiveAppletsMessageUnreadInfo: " + paramMap);
-    }
-    this.this$0.setMiniAppNoticeRedDotData(paramMap);
   }
 }
 

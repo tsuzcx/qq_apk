@@ -1,32 +1,46 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.IdRes;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-class blij
-  extends BroadcastReceiver
+public class blij<M>
+  extends RecyclerView.ViewHolder
 {
-  blij(blii paramblii) {}
+  private SparseArray<View> a = new SparseArray();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public blij(View paramView)
   {
-    if ("tencent.video.q2v.startUploadPTV".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMWebEffectCameraCaptureUnit", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
-      }
-      switch (paramIntent.getIntExtra("broadcastType", 1))
-      {
-      }
-    }
-    do
-    {
-      return;
-      paramContext = blii.a(this.a).a();
-    } while ((paramContext == null) || (paramContext.isFinishing()));
-    paramContext.finish();
+    super(paramView);
   }
+  
+  public blij(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
+  }
+  
+  protected Context a()
+  {
+    return this.itemView.getContext();
+  }
+  
+  protected <T extends View> T a(@IdRes int paramInt)
+  {
+    View localView2 = (View)this.a.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = this.itemView.findViewById(paramInt);
+      this.a.put(paramInt, localView1);
+    }
+    return localView1;
+  }
+  
+  public void a(M paramM) {}
+  
+  public void h() {}
 }
 
 

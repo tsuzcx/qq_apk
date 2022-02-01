@@ -1,18 +1,17 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import java.util.List;
 
-class zqu
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class zqu
+  implements zra
 {
-  zqu(zqq paramzqq) {}
+  public zqu(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public void onGlobalLayout()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    int i = this.a.d.getMeasuredWidth();
-    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - bfvh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
-    this.a.c.setMaxWidth(i);
-    this.a.c.setText(new bczs(this.a.jdField_a_of_type_Beba.h, 16).a());
+    if ((paramBoolean) && ((FollowedRecommendBannerView.a(this.a) == null) || (FollowedRecommendBannerView.a(this.a).a() == null) || (paramInt >= FollowedRecommendBannerView.a(this.a).a().size()))) {
+      return;
+    }
+    aanb.a(FollowedRecommendBannerView.a(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
   }
 }
 

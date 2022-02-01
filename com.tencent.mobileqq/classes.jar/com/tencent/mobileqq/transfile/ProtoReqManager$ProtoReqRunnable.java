@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import amwm;
+import anza;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.NewIntent;
@@ -25,8 +25,8 @@ class ProtoReqManager$ProtoReqRunnable
     this.activated = true;
     this.startTime = System.currentTimeMillis();
     this.intent.putExtra("key_timeout", this.timeOut);
-    amwm localamwm = this.resp.statisInfo;
-    localamwm.c += 1;
+    anza localanza = this.resp.statisInfo;
+    localanza.c += 1;
     this.this$0.requests.put(this.intent, this.resp);
     this.this$0.sendToMsf(this.intent);
   }

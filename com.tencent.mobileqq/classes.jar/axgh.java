@@ -1,41 +1,28 @@
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 
 public class axgh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static final SparseIntArray a = new SparseIntArray(4);
-  public static final SparseIntArray b = new SparseIntArray(4);
+  public axgh(MultiCardFragment paramMultiCardFragment, axgt paramaxgt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
-  static
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    a.put(1, 0);
-    a.put(2, 5);
-    a.put(3, 3);
-    a.put(4, 4);
-    b.put(0, 1);
-    b.put(5, 2);
-    b.put(3, 3);
-    b.put(4, 4);
-  }
-  
-  public static int a(int paramInt)
-  {
-    if ((paramInt >= 1) && (paramInt <= 4)) {
-      return a.get(paramInt);
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    if (this.jdField_a_of_type_Axgt == null) {
+      return;
     }
-    return a.get(1);
-  }
-  
-  public static void a(RedTouchItem paramRedTouchItem1, RedTouchItem paramRedTouchItem2)
-  {
-    paramRedTouchItem1.count = paramRedTouchItem2.count;
-    paramRedTouchItem1.receiveTime = paramRedTouchItem2.receiveTime;
-    paramRedTouchItem1.redtouchType = paramRedTouchItem2.redtouchType;
-    paramRedTouchItem1.curSeq = paramRedTouchItem2.curSeq;
-    paramRedTouchItem1.icon = paramRedTouchItem2.icon;
-    paramRedTouchItem1.unReadFlag = paramRedTouchItem2.unReadFlag;
-    paramRedTouchItem1.validTimeRemained = paramRedTouchItem2.validTimeRemained;
-    paramRedTouchItem1.isClosed = paramRedTouchItem2.isClosed;
+    float f2 = 1.0F - (1.0F - this.jdField_a_of_type_Float) * f1;
+    this.jdField_a_of_type_Axgt.a.setScaleX(f2);
+    this.jdField_a_of_type_Axgt.a.setScaleY(f2);
+    this.jdField_a_of_type_Axgt.a.setTranslationX(0.0F);
+    this.jdField_a_of_type_Axgt.a.setTranslationY(this.b * f1);
+    paramValueAnimator = this.jdField_a_of_type_Axgt.a.getLayoutParams();
+    float f3 = this.c;
+    paramValueAnimator.height = ((int)((1.0F - f1 * (1.0F - this.d)) / f2 * f3));
+    this.jdField_a_of_type_Axgt.a.requestLayout();
   }
 }
 

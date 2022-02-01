@@ -1,22 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
-
 public class athx
-  extends athr
 {
-  public athx(FlashChatTextEffectView paramFlashChatTextEffectView) {}
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b = "";
+  public short b;
+  public boolean b;
+  public byte[] b;
+  public int c;
+  public long c;
+  public String c;
+  public byte[] c;
+  public int d;
+  public String d = "";
+  public byte[] d;
+  public String e = "";
+  public byte[] e;
+  public String f = "";
   
-  public void b(boolean paramBoolean, Bundle paramBundle)
+  public athx(atht paramatht)
   {
-    super.b(paramBoolean, paramBundle);
-    if (paramBoolean) {
-      this.a.b();
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_c_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     athx
  * JD-Core Version:    0.7.0.1
  */

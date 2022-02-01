@@ -1,20 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahzf
-  implements aibq
+class ahzf
+  extends anyz
 {
-  public ahzf(SearchContactsFragment paramSearchContactsFragment) {}
+  ahzf(ahzc paramahzc) {}
   
-  public void a(String paramString)
+  public void onMsgStartSendingUI(String paramString)
   {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = 80000001;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_history", 0, 0, "", "", paramString, "");
-      this.a.a(paramString, false);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
     }
+    this.a.refresh(131072);
+  }
+  
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
+  {
+    onSendResult(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong, anyt paramanyt)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.sessionInfo.curFriendUin)) {
+      return;
+    }
+    this.a.hasSentRecvMsg = true;
+    this.a.refresh(262144, paramanyt, paramLong);
+  }
+  
+  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
+  {
+    this.a.refresh(65536);
   }
 }
 

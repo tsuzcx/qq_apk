@@ -1,13 +1,10 @@
-import android.os.IInterface;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-
 public abstract interface awow
-  extends IInterface
 {
-  public abstract Message a(Message paramMessage);
+  public abstract void a(int paramInt, Exception paramException);
   
-  public abstract BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel);
+  public abstract void a(Exception paramException);
+  
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

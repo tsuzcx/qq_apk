@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahzh
-  implements ahzp
+class ahzh
+  implements View.OnClickListener
 {
-  public ahzh(SearchContactsFragment paramSearchContactsFragment) {}
+  ahzh(ahzc paramahzc) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = paramInt;
-    if (paramInt == 80000001) {
-      bbgk.a("add_page", "search", "clk_search_grp", this.a.d + 1, 0, new String[] { "", "", paramString, "" });
-    }
-    this.a.a(paramString, false);
+    this.a.c(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

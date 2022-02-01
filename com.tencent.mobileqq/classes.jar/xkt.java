@@ -1,46 +1,18 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import mqq.os.MqqHandler;
 
-class xkt
-  extends QQUIEventReceiver<xks, wbh>
+public class xkt
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public xkt(@NonNull xks paramxks)
-  {
-    super(paramxks);
-  }
+  xkt(xkq paramxkq) {}
   
-  public void a(@NonNull xks paramxks, @NonNull wbh paramwbh)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (!TextUtils.equals(String.valueOf(paramxks.hashCode()), paramwbh.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    xvv.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video collection list. %s.", paramwbh);
-    if (paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      if (paramwbh.jdField_a_of_type_Int != -1) {
-        paramxks.jdField_a_of_type_Int = paramwbh.jdField_a_of_type_Int;
-      }
-      paramxks.jdField_a_of_type_Boolean = true;
-      paramxks.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-      if (paramwbh.e)
-      {
-        paramxks.a(paramwbh.jdField_a_of_type_JavaUtilList, paramwbh.c, paramwbh.jdField_a_of_type_Boolean);
-        paramxks.b = paramwbh.jdField_a_of_type_Boolean;
-      }
-    }
-    for (;;)
-    {
-      xks.a(paramxks).a(paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-      return;
-      paramxks.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wbh.class;
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
+    return false;
   }
 }
 

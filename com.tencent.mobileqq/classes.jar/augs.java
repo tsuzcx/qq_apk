@@ -1,43 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class augs
-  extends Handler
+  implements View.OnClickListener
 {
-  public augs(HotPicPageView paramHotPicPageView) {}
+  public augs(SendBottomBar paramSendBottomBar) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if (SendBottomBar.a(this.a).isChecked())
     {
+      SendBottomBar.a(this.a).d();
+      SendBottomBar.a(this.a).setText(anvx.a(2131713257));
     }
-    int i;
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (HotPicPageView.b);
-          this.a.i();
-          return;
-        } while ((HotPicPageView.b) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.getVisibility() != 0) || (this.a.jdField_a_of_type_Augy == null) || (this.a.jdField_a_of_type_Augy.getItemCount() == 0));
-        i = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a();
-      } while (i < 0);
-      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.findViewHolderForPosition(i);
-    } while ((paramMessage == null) || (!(paramMessage instanceof auhb)));
-    paramMessage = (auhb)paramMessage;
-    if (paramMessage.jdField_a_of_type_Int == 0)
-    {
-      this.a.b(paramMessage, i);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      SendBottomBar.a(this.a).e();
+      SendBottomBar.a(this.a).setText(anvx.a(2131713269));
     }
-    paramMessage.jdField_a_of_type_Boolean = true;
   }
 }
 

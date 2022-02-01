@@ -1,24 +1,40 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.qphone.base.util.QLog;
+import java.security.KeyFactory;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
 
 public class aong
-  implements View.OnTouchListener
 {
-  public aong(QRScanEntryView paramQRScanEntryView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static String a(String paramString1, String paramString2)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    paramString2 = a(paramString2);
+    if (paramString2 == null) {
+      return null;
     }
-    for (;;)
+    return new aoni(new aonl(paramString2)).a(paramString1);
+  }
+  
+  private static PublicKey a(String paramString)
+  {
+    try
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      paramString = new X509EncodedKeySpec(aond.a(paramString.replaceAll("\\-*BEGIN.*KEY\\-*", "").replaceAll("\\-*END.*KEY\\-*", "")));
+      paramString = KeyFactory.getInstance("RSA").generatePublic(paramString);
+      return paramString;
+    }
+    catch (NoSuchAlgorithmException paramString)
+    {
+      QLog.e("JWTUtil", 1, new Object[] { "getPublicKey NoSuchAlgorithmException : ", paramString.getMessage() });
+      return null;
+    }
+    catch (InvalidKeySpecException paramString)
+    {
+      for (;;)
+      {
+        QLog.e("JWTUtil", 1, new Object[] { "getPublicKey InvalidKeySpecException : ", paramString.getMessage() });
+      }
     }
   }
 }

@@ -1,147 +1,174 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.os.AsyncTask;
-import android.os.Build.VERSION;
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.smtt.sdk.WebView;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.Executor;
-import org.json.JSONException;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.vip.lianghao.net.CheckRegisterLiangHao.1;
+import com.tencent.mobileqq.vip.lianghao.net.CheckRegisterLiangHao.2;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
+import okhttp3.Request;
+import okhttp3.Request.Builder;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import org.json.JSONObject;
 
 public class biau
 {
-  @TargetApi(11)
-  protected static Executor a()
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<biav> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
+  private final String b = "a4d7xwsbelhregistercard";
+  private final String c = "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi";
+  
+  public biau(String paramString, biav parambiav)
   {
-    if (Build.VERSION.SDK_INT >= 11) {
-      return AsyncTask.THREAD_POOL_EXECUTOR;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambiav);
+  }
+  
+  private biap a()
+  {
+    try
+    {
+      Object localObject = a();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return null;
+      }
+      localObject = new Request.Builder().url((String)localObject).build();
+      localObject = a().newCall((Request)localObject).execute();
+      int i = ((Response)localObject).code();
+      if (i == 200)
+      {
+        localObject = ((Response)localObject).body().string();
+        if (QLog.isColorLevel()) {
+          QLog.i("CheckRegisterLiangHao", 2, "json " + (String)localObject);
+        }
+        localObject = new JSONObject((String)localObject).optJSONObject("12196");
+        if (localObject != null)
+        {
+          localObject = ((JSONObject)localObject).optJSONObject("data");
+          if (localObject != null)
+          {
+            localObject = ((JSONObject)localObject).optJSONObject("mOut");
+            if (localObject != null) {
+              return new biap((JSONObject)localObject);
+            }
+          }
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("CheckRegisterLiangHao", 2, "sendRequest errorCode" + i);
+        }
+        localObject = new biap();
+        ((biap)localObject).a = i;
+        return localObject;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("CheckRegisterLiangHao", 2, localThrowable.toString());
+      }
     }
     return null;
   }
   
-  public static void a(Context paramContext, WebView paramWebView, String paramString1, boolean paramBoolean, String paramString2)
+  private String a()
   {
-    bhzm.c("AppUpdate", "httpRequest >>> " + paramString1.toString());
-    try
-    {
-      localObject1 = new JSONObject(paramString1);
-      str1 = ((JSONObject)localObject1).optString("guid");
-      str2 = ((JSONObject)localObject1).optString("url");
-      str3 = ((JSONObject)localObject1).optString("method");
-      str4 = ((JSONObject)localObject1).optString("oncomplate");
-      str5 = ((JSONObject)localObject1).optString("onerror");
-      if (((JSONObject)localObject1).optInt("supportetag", 1) != 1) {
-        break label307;
-      }
-      i = 1;
-    }
-    catch (JSONException paramContext)
-    {
-      Object localObject1;
-      String str1;
-      String str2;
-      String str3;
-      String str4;
-      String str5;
-      Bundle localBundle;
-      for (;;)
-      {
-        bhzm.c("AppUpdate", "httpRequest JSONException", paramContext);
-        return;
-        i = 0;
-        continue;
-        paramString1 = "0";
-      }
-      if (i == 0) {
-        break label340;
-      }
-      localBundle.putString("needhttpcache", "");
-      bhzm.c("AppUpdate", "use supportEtag");
-      if (paramBoolean) {
-        break label548;
-      }
-      paramString1 = biam.a(paramContext);
-      if ((paramString1 == null) || (paramString1.size() <= 0)) {
-        break label548;
-      }
-      paramString2 = new StringBuilder();
-      int i = 0;
-      while (i < paramString1.size())
-      {
-        localObject1 = (PackageInfo)paramString1.get(i);
-        paramString2.append("[\"");
-        paramString2.append(((PackageInfo)localObject1).packageName);
-        paramString2.append("\",");
-        paramString2.append(((PackageInfo)localObject1).versionCode);
-        paramString2.append(",\"");
-        paramString2.append(((PackageInfo)localObject1).versionName);
-        paramString2.append("\"]");
-        paramString2.append(",");
-        i += 1;
-      }
-      if (paramString2.length() <= 0) {
-        break label506;
-      }
-      paramString2.delete(paramString2.length() - 1, paramString2.length());
-      localBundle.putString("package", "[" + paramString2.toString() + "]");
-      localBundle.remove("update_data");
-      bhzm.c("AppUpdate", "execute asyncTask url >>> " + str2 + " methodName " + str3);
-      a(new biae(str2, str3, new biav(paramContext, paramWebView, str1, str4, str5, paramBoolean)), localBundle);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      bhzm.c("AppUpdate", "httpRequest Exception", paramContext);
-    }
-    localBundle = new Bundle();
-    localBundle.putString("platform", bhpc.a().g());
-    localBundle.putString("keystr", bhpc.a().a());
-    localBundle.putString("uin", paramString2);
-    localBundle.putString("resolution", biaq.e());
-    localBundle.putString("keytype", "256");
-    if (biam.a(paramContext))
-    {
-      paramString1 = "1";
-      localBundle.putString("allowScan", paramString1);
-      if (!str3.equals("POST")) {
-        break label319;
-      }
-      paramString1 = ((JSONObject)localObject1).optJSONObject("params");
-      if (paramString1 == null) {
-        break label340;
-      }
-      paramString2 = paramString1.keys();
-      while (paramString2.hasNext())
-      {
-        localObject1 = paramString2.next().toString();
-        Object localObject2 = paramString1.get((String)localObject1);
-        bhzm.c("AppUpdate", "key = " + (String)localObject1 + " value = " + localObject2.toString());
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localBundle.putString((String)localObject1, localObject2.toString());
-        }
-      }
-    }
-    label307:
-    label319:
-    label340:
-    label506:
-    return;
+    return "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi?ts=" + System.currentTimeMillis() + "&data=" + a();
   }
   
-  @TargetApi(11)
-  protected static void a(biae parambiae, Bundle paramBundle)
+  private OkHttpClient a()
   {
-    Executor localExecutor = a();
-    if (localExecutor != null)
+    return new OkHttpClient().newBuilder().connectTimeout(5L, TimeUnit.SECONDS).readTimeout(5L, TimeUnit.SECONDS).build();
+  }
+  
+  private JSONObject a()
+  {
+    try
     {
-      parambiae.executeOnExecutor(localExecutor, new Bundle[] { paramBundle });
-      return;
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      JSONObject localJSONObject3 = new JSONObject();
+      localJSONObject3.put("uin", this.jdField_a_of_type_JavaLangString);
+      localJSONObject3.put("sign", b());
+      localJSONObject2.put("mIn", localJSONObject3);
+      localJSONObject1.put("12196", localJSONObject2);
+      return localJSONObject1;
     }
-    parambiae.execute(new Bundle[] { paramBundle });
+    catch (Throwable localThrowable) {}
+    return null;
+  }
+  
+  private void a(biap parambiap)
+  {
+    Object localObject2;
+    Object localObject1;
+    long l1;
+    long l2;
+    int i;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder().append("onResponse ");
+      if (parambiap == null)
+      {
+        localObject1 = "";
+        QLog.i("CheckRegisterLiangHao", 2, (String)localObject1);
+      }
+    }
+    else
+    {
+      l1 = SystemClock.elapsedRealtime();
+      l2 = this.jdField_a_of_type_Long;
+      if (parambiap == null) {
+        break label146;
+      }
+      i = parambiap.a;
+      label63:
+      localObject1 = new HashMap();
+      ((HashMap)localObject1).put("param_FailCode", String.valueOf(i));
+      localObject2 = StatisticCollector.getInstance(BaseApplicationImpl.getApplication());
+      if (i != 0) {
+        break label153;
+      }
+    }
+    label146:
+    label153:
+    for (boolean bool = true;; bool = false)
+    {
+      ((StatisticCollector)localObject2).collectPerformance(null, "reg_lh_check_uin", bool, l1 - l2, 0L, (HashMap)localObject1, "", true);
+      localObject1 = (biav)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject1 != null) {
+        break label159;
+      }
+      return;
+      localObject1 = parambiap.toString();
+      break;
+      i = -30009;
+      break label63;
+    }
+    label159:
+    ThreadManagerV2.getUIHandlerV2().post(new CheckRegisterLiangHao.2(this, (biav)localObject1, parambiap));
+  }
+  
+  private String b()
+  {
+    return MD5.toMD5("uin=" + this.jdField_a_of_type_JavaLangString + "&key=" + "a4d7xwsbelhregistercard").toUpperCase();
+  }
+  
+  public void a()
+  {
+    ThreadManagerV2.excute(new CheckRegisterLiangHao.1(this), 16, null, true);
   }
 }
 

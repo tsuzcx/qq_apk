@@ -1,7 +1,7 @@
 package com.tencent.avgame.gameroom.video;
 
-import biin;
-import biiw;
+import bjtp;
+import bjty;
 
 class AVGameControlUIImpl$1
   implements Runnable
@@ -10,7 +10,7 @@ class AVGameControlUIImpl$1
   
   public void run()
   {
-    biin.a().a().c();
+    bjtp.a().a().c();
   }
 }
 

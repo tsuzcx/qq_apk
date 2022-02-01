@@ -1,7 +1,46 @@
-import kotlin.Metadata;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.JsonUtils;
+import com.tencent.pts.utils.PTSNodeVirtualUtil.INodeVirtualOnBindNodeInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.VideoReport;
+import java.util.Map;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordPresenter$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qzz {}
+final class qzz
+  implements PTSNodeVirtualUtil.INodeVirtualOnBindNodeInfo
+{
+  public void onBindNodeInfoFinished(String paramString1, View paramView, String paramString2, Map<String, Object> paramMap1, Map<String, Object> paramMap2)
+  {
+    if ((paramView == null) || (paramMap2 == null)) {
+      QLog.i("PTSHelper", 1, "[onBindNodeInfoFinished] view is null or attributes is empty.");
+    }
+    for (;;)
+    {
+      return;
+      paramString1 = paramMap2.get("dt:element-id");
+      paramString2 = paramMap2.get("dt:params");
+      if (QLog.isColorLevel()) {
+        QLog.i("PTSHelper", 1, "[onBindNodeInfoFinished] elementId = " + paramString1 + ", params = " + paramString2);
+      }
+      if (paramString1 != null) {}
+      try
+      {
+        VideoReport.setElementId(paramView, (String)paramString1);
+        if (paramString2 != null)
+        {
+          paramString1 = JsonUtils.covertJsonObjectToMap(new JSONObject((String)paramString2));
+          VideoReport.setElementParams(paramView, new pti().a(paramString1).a());
+          qzw.a(paramString1);
+          return;
+        }
+      }
+      catch (Exception paramString1)
+      {
+        QLog.e("PTSHelper", 1, "[onBindNodeInfoFinished] e = " + paramString1);
+      }
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

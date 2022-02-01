@@ -1,40 +1,21 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class bnnt
-  extends bnnr<bnns>
+class bnnt
+  implements EIPCResultCallback
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370327);
+  bnnt(bnnl parambnnl) {}
   
-  bnnt(bnns parambnns, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    super(paramContext, paramViewGroup);
-  }
-  
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131561697, paramViewGroup, false);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
-  
-  public void a(bnns parambnns, int paramInt)
-  {
-    super.a(parambnns, paramInt);
-    if (parambnns != null)
+    QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD onCallback");
+    if (paramEIPCResult.code == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(parambnns.a());
+      QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code == 0");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code != 0, eipcResult.code == ", Integer.valueOf(paramEIPCResult.code), ", msg = ", paramEIPCResult.e.getMessage() });
   }
 }
 

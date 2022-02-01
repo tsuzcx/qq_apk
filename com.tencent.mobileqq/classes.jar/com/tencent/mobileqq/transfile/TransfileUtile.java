@@ -43,6 +43,9 @@ public class TransfileUtile
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append('\026');
     paramString1 = analysisTransFileProtocolData(paramString1);
+    if (paramString1 == null) {
+      return "";
+    }
     int i = 0;
     while ((i < paramString1.length) && (i < 5))
     {

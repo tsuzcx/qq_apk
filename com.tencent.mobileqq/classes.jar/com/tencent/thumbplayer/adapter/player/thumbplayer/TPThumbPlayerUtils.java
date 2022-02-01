@@ -126,6 +126,7 @@ public class TPThumbPlayerUtils
     sNativePlayerMsgInfoMap.put(Integer.valueOf(504), Integer.valueOf(502));
     sNativePlayerMsgInfoMap.put(Integer.valueOf(3), Integer.valueOf(3));
     sNativePlayerMsgInfoMap.put(Integer.valueOf(4), Integer.valueOf(4));
+    sNativePlayerMsgInfoMap.put(Integer.valueOf(6), Integer.valueOf(6));
     sNativePlayerMsgInfoMap.put(Integer.valueOf(251), Integer.valueOf(251));
     sNativePlayerMsgInfoMap.put(Integer.valueOf(252), Integer.valueOf(252));
     sPropertyIdMap.put(Integer.valueOf(TPPropertyID.STRING_MEDIA_INFO), Integer.valueOf(TPNativePlayerPropertyID.STRING_MEDIA_INFO));

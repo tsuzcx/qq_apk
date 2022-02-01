@@ -1,23 +1,47 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.mobileqq.app.ThreadManager;
 
 class agca
-  implements atah
 {
-  agca(agap paramagap, String paramString) {}
+  private Handler jdField_a_of_type_AndroidOsHandler;
   
-  public void onClick(View paramView)
+  agca(agby paramagby) {}
+  
+  public void a()
   {
-    paramView = new Intent(this.jdField_a_of_type_Agap.jdField_a_of_type_AndroidContentContext, ChatHistoryFileActivity.class);
-    paramView.putExtra("uin", this.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
-    paramView.putExtra("uintype", this.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
-    paramView.putExtra("uinname", this.jdField_a_of_type_Agap.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendNick);
-    paramView.putExtra("com.tencent.mobileqq.ChatHistoryFileActivity.initial_tab", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Agap.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    aszr.a("0X800506C");
+    if (this.jdField_a_of_type_AndroidOsHandler == null)
+    {
+      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("DoodleDrawerThread", 0);
+      localHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    }
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if ((paramRunnable == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler.getLooper().quit();
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
   }
 }
 

@@ -1,27 +1,20 @@
-import android.graphics.Bitmap;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$captureAndUpload$1", "Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$CaptureViewCallback;", "onCaptureFailed", "", "onCaptureSuccess", "bitmap", "Landroid/graphics/Bitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class shx
-  implements shv
+public class shx
+  implements Animation.AnimationListener
 {
-  shx(rqx paramrqx) {}
+  public shx(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    rqx localrqx = this.jdField_a_of_type_Rqx;
-    if (localrqx != null) {
-      localrqx.a(1, "");
-    }
+    VideoFeedsAioGuideView.a(this.a).setStartOffset(360L);
   }
   
-  public void a(@NotNull Bitmap paramBitmap)
-  {
-    Intrinsics.checkParameterIsNotNull(paramBitmap, "bitmap");
-    shu.a(this.jdField_a_of_type_Shu, paramBitmap, this.jdField_a_of_type_Rqx);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

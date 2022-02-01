@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
-
-public class aind
-  extends amwl
+public abstract interface aind
 {
-  private aind(AlphabetFriendFragment paramAlphabetFriendFragment) {}
+  public abstract void a();
   
-  protected void onUpdateFriendsList()
-  {
-    if (AlphabetFriendFragment.b(this.a)) {
-      AlphabetFriendFragment.a(this.a, 1400L, true);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

@@ -1,32 +1,15 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
-
-public class vge
-  extends GestureDetector.SimpleOnGestureListener
+final class vge
+  implements vgf
 {
-  private final vgf jdField_a_of_type_Vgf;
+  vge(vgg paramvgg, vgf paramvgf) {}
   
-  public vge(PublicAccountImageView paramPublicAccountImageView, vgf paramvgf)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Vgf = paramvgf;
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
-    return false;
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    vgd.a(this.jdField_a_of_type_Vgg.a, paramInt1);
+    vgd.a(this.jdField_a_of_type_Vgg.b, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_Vgf != null) {
+      this.jdField_a_of_type_Vgf.a(paramInt1, paramInt2, paramInt3);
+    }
   }
 }
 

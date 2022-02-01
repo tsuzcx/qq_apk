@@ -1,22 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar;
 
-public class bnnw
+class bnnw
   implements View.OnClickListener
 {
-  public bnnw(RateWidgetRatingBar paramRateWidgetRatingBar) {}
+  bnnw(bnnu parambnnu) {}
   
   public void onClick(View paramView)
   {
-    if (RateWidgetRatingBar.a(this.a))
-    {
-      this.a.setStar(this.a.indexOfChild(paramView) + 1.0F);
-      if (RateWidgetRatingBar.a(this.a) != null) {
-        RateWidgetRatingBar.a(this.a).b(this.a.indexOfChild(paramView) + 1.0F);
-      }
-    }
+    bnqm.a().an();
+    bnnu.a(this.a, false);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

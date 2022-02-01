@@ -163,8 +163,8 @@ public class PictureView
     for (;;)
     {
       return this.mBrowserItemView;
-      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559582, paramViewGroup, false));
-      this.imageView = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131368367));
+      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559615, paramViewGroup, false));
+      this.imageView = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131368524));
       this.imageView.setOnClickListener(this);
     }
   }
@@ -176,7 +176,7 @@ public class PictureView
     default: 
       return false;
     }
-    paramMessage = this.mContext.getResources().getDrawable(2130850678);
+    paramMessage = this.mContext.getResources().getDrawable(2130850820);
     this.imageView.initDrawable(paramMessage, ScreenUtils.getScreenWidth(this.mContext), ScreenUtils.getScreenHeight(this.mContext), 0);
     this.imageView.setImageDrawable(paramMessage);
     return false;

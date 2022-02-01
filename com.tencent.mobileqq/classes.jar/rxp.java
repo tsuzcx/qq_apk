@@ -1,14 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
+import android.os.Handler;
+import android.os.Message;
 
 class rxp
-  implements tgk
+  extends Handler
 {
-  rxp(rxo paramrxo, Bundle paramBundle) {}
+  rxp(rxo paramrxo) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    pay.a(rxo.a(this.jdField_a_of_type_Rxo), rxo.a(this.jdField_a_of_type_Rxo).a, this.jdField_a_of_type_AndroidOsBundle);
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    rxo.a(this.a);
   }
 }
 

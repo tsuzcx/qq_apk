@@ -1,18 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 
 public class otm
-  implements ValueAnimator.AnimatorUpdateListener
+  implements blel
 {
-  public otm(ReadInJoyCommentTopGestureLayout paramReadInJoyCommentTopGestureLayout, ViewGroup.LayoutParams paramLayoutParams, View paramView) {}
+  public otm(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity, KandianMergeManager paramKandianMergeManager) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(blek paramblek)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+    ReadInJoyFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity, paramblek, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager);
   }
 }
 

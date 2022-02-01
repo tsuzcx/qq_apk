@@ -7,7 +7,7 @@ class QQAppInterface$3
   
   public void run()
   {
-    this.this$0.getManager(27);
+    this.this$0.getManager(QQManagerFactory.MGR_PLUGIN);
   }
 }
 

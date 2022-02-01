@@ -1,18 +1,16 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class afba
-  extends TransProcessorHandler
+public class afba
+  implements DialogInterface.OnClickListener
 {
-  afba(afaz paramafaz, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public afba(TranslucentTRansferFragment paramTranslucentTRansferFragment, QQCustomDialog paramQQCustomDialog) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramMessage);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

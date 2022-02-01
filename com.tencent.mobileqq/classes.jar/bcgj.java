@@ -1,20 +1,10 @@
-import java.util.Comparator;
-
-class bcgj
-  implements Comparator
+public class bcgj
 {
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    paramObject1 = (bcgf)paramObject1;
-    paramObject2 = (bcgf)paramObject2;
-    if (paramObject1.a > paramObject2.a) {
-      return -1;
-    }
-    if (paramObject1.a < paramObject2.a) {
-      return 1;
-    }
-    return 0;
-  }
+  public int a;
+  public CharSequence a;
+  public String a;
+  
+  public bcgj(bcgi parambcgi) {}
 }
 
 

@@ -3,7 +3,7 @@ package cooperation.qzone.webviewplugin;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
-import bgve;
+import bifw;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneShareManager;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 class QZoneSharePictureJsPlugin$7
   implements Runnable
 {
-  QZoneSharePictureJsPlugin$7(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, JSONObject paramJSONObject, String paramString, bgve parambgve) {}
+  QZoneSharePictureJsPlugin$7(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, JSONObject paramJSONObject, String paramString, bifw parambifw) {}
   
   public void run()
   {

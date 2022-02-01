@@ -1,22 +1,24 @@
 package com.tencent.mobileqq.transfile.quic.open;
 
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.transfile.quic.QuicNetResMgr;
 import com.tencent.mobileqq.transfile.quic.internal.QuicNative;
 import com.tencent.mobileqq.transfile.quic.report.QuicNetReport;
 import com.tencent.mobileqq.transfile.quic.report.QuicNetReport.Stats;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public abstract class QuicDownloader
   extends Downloader
 {
   private static volatile boolean cannotLoadLib = true;
   public static QuicNetReport.Stats sLastStats;
-  protected QuicDownloader.Builder mBuilder;
   
   static
   {
-    loadSoSupport();
+    tryLoadSoSupport();
   }
   
   public static boolean initError()
@@ -24,14 +26,51 @@ public abstract class QuicDownloader
     return cannotLoadLib;
   }
   
-  public static void loadSoSupport()
+  private static void loadSoSupport()
   {
-    if (!initError()) {}
-    while ((!FileUtils.fileExists(QuicNetResMgr.getAndromedaSoPath())) || (!FileUtils.fileExists(QuicNetResMgr.getQuicEngineSoPath()))) {
-      return;
+    for (;;)
+    {
+      try
+      {
+        if (!initError())
+        {
+          QLog.d("quic", 4, "already load, no loadSoSupport again.");
+          return;
+        }
+        if (Build.VERSION.SDK_INT < 21)
+        {
+          QLog.e("quic", 4, "target version not support.");
+          continue;
+        }
+        if (!FileUtils.fileExists(QuicNetResMgr.getAndromedaSoTempPath())) {
+          break label73;
+        }
+      }
+      finally {}
+      FileUtils.moveFile(QuicNetResMgr.getAndromedaSoTempPath(), QuicNetResMgr.getAndromedaSoPath());
+      QLog.d("quic", 4, "move andromeda temp file to load path.");
+      label73:
+      if (FileUtils.fileExists(QuicNetResMgr.getQuicEngineSoTempPath()))
+      {
+        FileUtils.moveFile(QuicNetResMgr.getQuicEngineSoTempPath(), QuicNetResMgr.getQuicEngineSoPath());
+        QLog.d("quic", 4, "move quic engine temp file to load path.");
+      }
+      if ((FileUtils.fileExists(QuicNetResMgr.getAndromedaSoPath())) && (FileUtils.fileExists(QuicNetResMgr.getQuicEngineSoPath())))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("quic", 4, " loadSoSupport ");
+        }
+        realLoadQuicSo();
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("quic", 4, " loadSoSupport ");
+  }
+  
+  private static void realLoadQuicSo()
+  {
+    if (!initError())
+    {
+      QLog.d("quic", 4, "already load, no realLoadQuicSo again.");
+      return;
     }
     try
     {
@@ -104,6 +143,16 @@ public abstract class QuicDownloader
       }
     }
     return null;
+  }
+  
+  public static void tryLoadSoSupport()
+  {
+    if (!initError())
+    {
+      QLog.d("quic", 4, "already load, no tryLoadSoSupport again.");
+      return;
+    }
+    ThreadManager.getFileThreadHandler().post(new QuicDownloader.1());
   }
   
   public QuicDownloader.Builder build(String paramString1, int paramInt, String paramString2, String paramString3)

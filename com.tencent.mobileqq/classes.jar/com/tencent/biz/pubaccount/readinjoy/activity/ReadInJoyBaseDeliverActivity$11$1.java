@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import okt;
+import osq;
 
 public class ReadInJoyBaseDeliverActivity$11$1
   implements Runnable
 {
-  public ReadInJoyBaseDeliverActivity$11$1(okt paramokt) {}
+  public ReadInJoyBaseDeliverActivity$11$1(osq paramosq) {}
   
   public void run()
   {

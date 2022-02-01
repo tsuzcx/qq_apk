@@ -234,131 +234,131 @@ public class DeviceInfoUtil
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: new 126	java/io/FileReader
-    //   6: dup
-    //   7: ldc 168
-    //   9: invokespecial 131	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   12: astore_0
-    //   13: new 133	java/io/BufferedReader
-    //   16: dup
-    //   17: aload_0
-    //   18: sipush 8192
-    //   21: invokespecial 136	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
-    //   24: astore_2
-    //   25: ldc 170
-    //   27: astore 5
-    //   29: ldc 170
-    //   31: astore_1
-    //   32: ldc 170
-    //   34: astore 4
-    //   36: ldc 170
-    //   38: astore 7
-    //   40: ldc 35
-    //   42: astore_3
-    //   43: aload_3
-    //   44: ifnull +14 -> 58
-    //   47: aload_2
-    //   48: invokevirtual 139	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   51: astore 10
-    //   53: aload 10
-    //   55: ifnonnull +84 -> 139
-    //   58: new 106	java/lang/StringBuilder
-    //   61: dup
-    //   62: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   65: aload 7
-    //   67: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   70: ldc 172
-    //   72: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: aload 4
-    //   77: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: ldc 172
-    //   82: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: aload_1
+    //   1: astore_2
+    //   2: new 126	java/io/FileReader
+    //   5: dup
+    //   6: ldc 168
+    //   8: invokespecial 131	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   11: astore_0
+    //   12: new 133	java/io/BufferedReader
+    //   15: dup
+    //   16: aload_0
+    //   17: sipush 8192
+    //   20: invokespecial 136	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   23: astore_2
+    //   24: ldc 170
+    //   26: astore_1
+    //   27: ldc 170
+    //   29: astore 7
+    //   31: ldc 170
+    //   33: astore 6
+    //   35: ldc 170
+    //   37: astore 4
+    //   39: ldc 35
+    //   41: astore_3
+    //   42: aload_3
+    //   43: ifnull +14 -> 57
+    //   46: aload_2
+    //   47: invokevirtual 139	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   50: astore 10
+    //   52: aload 10
+    //   54: ifnonnull +84 -> 138
+    //   57: new 106	java/lang/StringBuilder
+    //   60: dup
+    //   61: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   64: aload 4
+    //   66: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: ldc 172
+    //   71: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: aload 6
+    //   76: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: ldc 172
+    //   81: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: aload 7
     //   86: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   89: ldc 172
     //   91: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: aload 5
-    //   96: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   99: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   102: astore_1
-    //   103: aload_2
-    //   104: invokevirtual 150	java/io/BufferedReader:close	()V
-    //   107: aload_0
-    //   108: invokevirtual 151	java/io/FileReader:close	()V
-    //   111: iconst_0
-    //   112: ifeq +11 -> 123
-    //   115: new 174	java/lang/NullPointerException
-    //   118: dup
-    //   119: invokespecial 175	java/lang/NullPointerException:<init>	()V
-    //   122: athrow
-    //   123: aload_1
-    //   124: astore_0
-    //   125: iconst_0
-    //   126: ifeq +11 -> 137
-    //   129: new 174	java/lang/NullPointerException
-    //   132: dup
-    //   133: invokespecial 175	java/lang/NullPointerException:<init>	()V
-    //   136: athrow
-    //   137: aload_0
-    //   138: areturn
-    //   139: aload 10
-    //   141: ldc 177
-    //   143: invokevirtual 183	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   146: astore 11
-    //   148: aload 10
-    //   150: astore_3
-    //   151: aload 11
-    //   153: ifnull -110 -> 43
-    //   156: aload 10
-    //   158: astore_3
-    //   159: aload 11
-    //   161: arraylength
-    //   162: iconst_3
-    //   163: if_icmplt -120 -> 43
-    //   166: aload 11
-    //   168: iconst_0
-    //   169: aaload
-    //   170: invokevirtual 186	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   173: astore_3
-    //   174: aload 7
-    //   176: astore 6
-    //   178: aload_3
-    //   179: ldc 188
-    //   181: invokevirtual 191	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   184: ifeq +39 -> 223
-    //   187: new 106	java/lang/StringBuilder
-    //   190: dup
-    //   191: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   194: aload 7
-    //   196: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: aload 11
-    //   201: iconst_2
-    //   202: aload 11
-    //   204: arraylength
-    //   205: invokestatic 195	cooperation/qzone/sim/DeviceInfoUtil:subStrings2String	([Ljava/lang/String;II)Ljava/lang/String;
-    //   208: ldc 197
-    //   210: ldc 199
-    //   212: invokevirtual 202	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   215: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   221: astore 6
-    //   223: aload 4
-    //   225: astore 8
-    //   227: aload_3
-    //   228: ldc 204
-    //   230: invokevirtual 191	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   233: ifeq +21 -> 254
-    //   236: aload 11
-    //   238: iconst_2
-    //   239: aload 11
-    //   241: arraylength
-    //   242: invokestatic 195	cooperation/qzone/sim/DeviceInfoUtil:subStrings2String	([Ljava/lang/String;II)Ljava/lang/String;
-    //   245: ldc 197
-    //   247: ldc 199
-    //   249: invokevirtual 202	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   252: astore 8
-    //   254: aload_1
+    //   94: aload_1
+    //   95: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   101: astore_1
+    //   102: aload_2
+    //   103: invokevirtual 150	java/io/BufferedReader:close	()V
+    //   106: aload_0
+    //   107: invokevirtual 151	java/io/FileReader:close	()V
+    //   110: iconst_0
+    //   111: ifeq +11 -> 122
+    //   114: new 174	java/lang/NullPointerException
+    //   117: dup
+    //   118: invokespecial 175	java/lang/NullPointerException:<init>	()V
+    //   121: athrow
+    //   122: aload_1
+    //   123: astore_0
+    //   124: iconst_0
+    //   125: ifeq +11 -> 136
+    //   128: new 174	java/lang/NullPointerException
+    //   131: dup
+    //   132: invokespecial 175	java/lang/NullPointerException:<init>	()V
+    //   135: athrow
+    //   136: aload_0
+    //   137: areturn
+    //   138: aload 10
+    //   140: ldc 177
+    //   142: invokevirtual 183	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   145: astore 11
+    //   147: aload 10
+    //   149: astore_3
+    //   150: aload 11
+    //   152: ifnull -110 -> 42
+    //   155: aload 10
+    //   157: astore_3
+    //   158: aload 11
+    //   160: arraylength
+    //   161: iconst_3
+    //   162: if_icmplt -120 -> 42
+    //   165: aload 11
+    //   167: iconst_0
+    //   168: aaload
+    //   169: invokevirtual 186	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   172: astore_3
+    //   173: aload 4
+    //   175: astore 5
+    //   177: aload_3
+    //   178: ldc 188
+    //   180: invokevirtual 191	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   183: ifeq +39 -> 222
+    //   186: new 106	java/lang/StringBuilder
+    //   189: dup
+    //   190: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   193: aload 4
+    //   195: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: aload 11
+    //   200: iconst_2
+    //   201: aload 11
+    //   203: arraylength
+    //   204: invokestatic 195	cooperation/qzone/sim/DeviceInfoUtil:subStrings2String	([Ljava/lang/String;II)Ljava/lang/String;
+    //   207: ldc 197
+    //   209: ldc 199
+    //   211: invokevirtual 202	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   214: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   220: astore 5
+    //   222: aload 6
+    //   224: astore 8
+    //   226: aload_3
+    //   227: ldc 204
+    //   229: invokevirtual 191	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   232: ifeq +21 -> 253
+    //   235: aload 11
+    //   237: iconst_2
+    //   238: aload 11
+    //   240: arraylength
+    //   241: invokestatic 195	cooperation/qzone/sim/DeviceInfoUtil:subStrings2String	([Ljava/lang/String;II)Ljava/lang/String;
+    //   244: ldc 197
+    //   246: ldc 199
+    //   248: invokevirtual 202	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   251: astore 8
+    //   253: aload 7
     //   255: astore 9
     //   257: aload_3
     //   258: ldc 206
@@ -374,174 +374,176 @@ public class DeviceInfoUtil
     //   279: invokevirtual 202	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   282: astore 9
     //   284: aload 9
-    //   286: astore_1
-    //   287: aload 8
-    //   289: astore 4
-    //   291: aload 6
-    //   293: astore 7
-    //   295: aload 10
-    //   297: astore_3
-    //   298: aload 11
-    //   300: iconst_1
-    //   301: aaload
-    //   302: invokevirtual 186	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   305: ldc 208
-    //   307: invokevirtual 191	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   310: ifeq -267 -> 43
-    //   313: aload 11
-    //   315: aload 11
-    //   317: arraylength
-    //   318: iconst_1
-    //   319: isub
-    //   320: aaload
-    //   321: astore 5
+    //   286: astore 7
+    //   288: aload 8
+    //   290: astore 6
+    //   292: aload 5
+    //   294: astore 4
+    //   296: aload 10
+    //   298: astore_3
+    //   299: aload 11
+    //   301: iconst_1
+    //   302: aaload
+    //   303: invokevirtual 186	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   306: ldc 208
+    //   308: invokevirtual 191	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   311: ifeq -269 -> 42
+    //   314: aload 11
+    //   316: aload 11
+    //   318: arraylength
+    //   319: iconst_1
+    //   320: isub
+    //   321: aaload
+    //   322: astore_1
     //   323: aload 9
-    //   325: astore_1
-    //   326: aload 8
-    //   328: astore 4
-    //   330: aload 6
-    //   332: astore 7
-    //   334: aload 10
-    //   336: astore_3
-    //   337: goto -294 -> 43
-    //   340: astore_3
-    //   341: aconst_null
-    //   342: astore_2
-    //   343: ldc 35
-    //   345: astore_1
-    //   346: aload 4
-    //   348: astore_0
-    //   349: aload_3
-    //   350: invokevirtual 88	java/lang/Exception:printStackTrace	()V
-    //   353: aload_0
-    //   354: ifnull +7 -> 361
+    //   325: astore 7
+    //   327: aload 8
+    //   329: astore 6
+    //   331: aload 5
+    //   333: astore 4
+    //   335: aload 10
+    //   337: astore_3
+    //   338: goto -296 -> 42
+    //   341: astore_3
+    //   342: aconst_null
+    //   343: astore 4
+    //   345: ldc 35
+    //   347: astore_1
+    //   348: aload_2
+    //   349: astore_0
+    //   350: aload 4
+    //   352: astore_2
+    //   353: aload_3
+    //   354: invokevirtual 88	java/lang/Exception:printStackTrace	()V
     //   357: aload_0
-    //   358: invokevirtual 151	java/io/FileReader:close	()V
-    //   361: aload_1
-    //   362: astore_0
-    //   363: aload_2
-    //   364: ifnull -227 -> 137
+    //   358: ifnull +7 -> 365
+    //   361: aload_0
+    //   362: invokevirtual 151	java/io/FileReader:close	()V
+    //   365: aload_1
+    //   366: astore_0
     //   367: aload_2
-    //   368: invokevirtual 150	java/io/BufferedReader:close	()V
-    //   371: aload_1
-    //   372: areturn
-    //   373: astore_0
-    //   374: aload_1
-    //   375: areturn
-    //   376: astore_1
-    //   377: aconst_null
-    //   378: astore_2
-    //   379: aconst_null
-    //   380: astore_0
-    //   381: aload_0
-    //   382: ifnull +7 -> 389
+    //   368: ifnull -232 -> 136
+    //   371: aload_2
+    //   372: invokevirtual 150	java/io/BufferedReader:close	()V
+    //   375: aload_1
+    //   376: areturn
+    //   377: astore_0
+    //   378: aload_1
+    //   379: areturn
+    //   380: astore_1
+    //   381: aconst_null
+    //   382: astore_2
+    //   383: aconst_null
+    //   384: astore_0
     //   385: aload_0
-    //   386: invokevirtual 151	java/io/FileReader:close	()V
-    //   389: aload_2
-    //   390: ifnull +7 -> 397
+    //   386: ifnull +7 -> 393
+    //   389: aload_0
+    //   390: invokevirtual 151	java/io/FileReader:close	()V
     //   393: aload_2
-    //   394: invokevirtual 150	java/io/BufferedReader:close	()V
-    //   397: aload_1
-    //   398: athrow
-    //   399: astore_0
-    //   400: goto -277 -> 123
+    //   394: ifnull +7 -> 401
+    //   397: aload_2
+    //   398: invokevirtual 150	java/io/BufferedReader:close	()V
+    //   401: aload_1
+    //   402: athrow
     //   403: astore_0
-    //   404: aload_1
-    //   405: areturn
-    //   406: astore_0
-    //   407: goto -46 -> 361
+    //   404: goto -282 -> 122
+    //   407: astore_0
+    //   408: aload_1
+    //   409: areturn
     //   410: astore_0
-    //   411: goto -22 -> 389
+    //   411: goto -46 -> 365
     //   414: astore_0
-    //   415: goto -18 -> 397
-    //   418: astore_1
-    //   419: aconst_null
-    //   420: astore_2
-    //   421: goto -40 -> 381
-    //   424: astore_1
-    //   425: goto -44 -> 381
+    //   415: goto -22 -> 393
+    //   418: astore_0
+    //   419: goto -18 -> 401
+    //   422: astore_1
+    //   423: aconst_null
+    //   424: astore_2
+    //   425: goto -40 -> 385
     //   428: astore_1
-    //   429: goto -48 -> 381
-    //   432: astore_3
-    //   433: aconst_null
-    //   434: astore_2
-    //   435: ldc 35
-    //   437: astore_1
-    //   438: goto -89 -> 349
-    //   441: astore_3
-    //   442: ldc 35
-    //   444: astore_1
-    //   445: goto -96 -> 349
-    //   448: astore_3
-    //   449: goto -100 -> 349
+    //   429: goto -44 -> 385
+    //   432: astore_1
+    //   433: goto -48 -> 385
+    //   436: astore_3
+    //   437: aconst_null
+    //   438: astore_2
+    //   439: ldc 35
+    //   441: astore_1
+    //   442: goto -89 -> 353
+    //   445: astore_3
+    //   446: ldc 35
+    //   448: astore_1
+    //   449: goto -96 -> 353
     //   452: astore_3
-    //   453: aconst_null
-    //   454: astore_2
-    //   455: goto -106 -> 349
+    //   453: goto -100 -> 353
+    //   456: astore_3
+    //   457: aconst_null
+    //   458: astore_2
+    //   459: goto -106 -> 353
     // Local variable table:
     //   start	length	slot	name	signature
-    //   12	351	0	localObject1	Object
-    //   373	1	0	localException1	Exception
-    //   380	6	0	localObject2	Object
-    //   399	1	0	localException2	Exception
-    //   403	1	0	localException3	Exception
-    //   406	1	0	localException4	Exception
-    //   410	1	0	localException5	Exception
-    //   414	1	0	localException6	Exception
-    //   31	344	1	localObject3	Object
-    //   376	29	1	str1	String
-    //   418	1	1	localObject4	Object
-    //   424	1	1	localObject5	Object
-    //   428	1	1	localObject6	Object
-    //   437	8	1	str2	String
-    //   24	431	2	localBufferedReader	java.io.BufferedReader
-    //   42	295	3	localObject7	Object
-    //   340	10	3	localException7	Exception
-    //   432	1	3	localException8	Exception
-    //   441	1	3	localException9	Exception
-    //   448	1	3	localException10	Exception
-    //   452	1	3	localException11	Exception
-    //   1	346	4	localObject8	Object
-    //   27	295	5	str3	String
-    //   176	155	6	localObject9	Object
-    //   38	295	7	localObject10	Object
-    //   225	102	8	localObject11	Object
-    //   255	69	9	localObject12	Object
-    //   51	284	10	str4	String
-    //   146	170	11	arrayOfString	String[]
+    //   11	356	0	localObject1	Object
+    //   377	1	0	localException1	Exception
+    //   384	6	0	localObject2	Object
+    //   403	1	0	localException2	Exception
+    //   407	1	0	localException3	Exception
+    //   410	1	0	localException4	Exception
+    //   414	1	0	localException5	Exception
+    //   418	1	0	localException6	Exception
+    //   26	353	1	str1	String
+    //   380	29	1	str2	String
+    //   422	1	1	localObject3	Object
+    //   428	1	1	localObject4	Object
+    //   432	1	1	localObject5	Object
+    //   441	8	1	str3	String
+    //   1	458	2	localObject6	Object
+    //   41	297	3	localObject7	Object
+    //   341	13	3	localException7	Exception
+    //   436	1	3	localException8	Exception
+    //   445	1	3	localException9	Exception
+    //   452	1	3	localException10	Exception
+    //   456	1	3	localException11	Exception
+    //   37	314	4	localObject8	Object
+    //   175	157	5	localObject9	Object
+    //   33	297	6	localObject10	Object
+    //   29	297	7	localObject11	Object
+    //   224	104	8	localObject12	Object
+    //   255	69	9	localObject13	Object
+    //   50	286	10	str4	String
+    //   145	172	11	arrayOfString	String[]
     // Exception table:
     //   from	to	target	type
-    //   3	13	340	java/lang/Exception
-    //   367	371	373	java/lang/Exception
-    //   3	13	376	finally
-    //   115	123	399	java/lang/Exception
-    //   129	137	403	java/lang/Exception
-    //   357	361	406	java/lang/Exception
-    //   385	389	410	java/lang/Exception
-    //   393	397	414	java/lang/Exception
-    //   13	25	418	finally
-    //   107	111	418	finally
-    //   47	53	424	finally
-    //   58	103	424	finally
-    //   103	107	424	finally
-    //   139	148	424	finally
-    //   159	174	424	finally
-    //   178	223	424	finally
-    //   227	254	424	finally
-    //   257	284	424	finally
-    //   298	323	424	finally
-    //   349	353	428	finally
-    //   13	25	432	java/lang/Exception
-    //   47	53	441	java/lang/Exception
-    //   58	103	441	java/lang/Exception
-    //   139	148	441	java/lang/Exception
-    //   159	174	441	java/lang/Exception
-    //   178	223	441	java/lang/Exception
-    //   227	254	441	java/lang/Exception
-    //   257	284	441	java/lang/Exception
-    //   298	323	441	java/lang/Exception
-    //   103	107	448	java/lang/Exception
-    //   107	111	452	java/lang/Exception
+    //   2	12	341	java/lang/Exception
+    //   371	375	377	java/lang/Exception
+    //   2	12	380	finally
+    //   114	122	403	java/lang/Exception
+    //   128	136	407	java/lang/Exception
+    //   361	365	410	java/lang/Exception
+    //   389	393	414	java/lang/Exception
+    //   397	401	418	java/lang/Exception
+    //   12	24	422	finally
+    //   106	110	422	finally
+    //   46	52	428	finally
+    //   57	102	428	finally
+    //   102	106	428	finally
+    //   138	147	428	finally
+    //   158	173	428	finally
+    //   177	222	428	finally
+    //   226	253	428	finally
+    //   257	284	428	finally
+    //   299	323	428	finally
+    //   353	357	432	finally
+    //   12	24	436	java/lang/Exception
+    //   46	52	445	java/lang/Exception
+    //   57	102	445	java/lang/Exception
+    //   138	147	445	java/lang/Exception
+    //   158	173	445	java/lang/Exception
+    //   177	222	445	java/lang/Exception
+    //   226	253	445	java/lang/Exception
+    //   257	284	445	java/lang/Exception
+    //   299	323	445	java/lang/Exception
+    //   102	106	452	java/lang/Exception
+    //   106	110	456	java/lang/Exception
   }
   
   public static SimInfo getDataSimInfo(Context paramContext)

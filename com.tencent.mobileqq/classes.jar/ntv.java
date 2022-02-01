@@ -1,55 +1,87 @@
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagRequset;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
+import tencent.im.troop_search_popclassifc.popclassifc.RspBody;
+import tencent.im.troop_search_searchtab.searchtab.RspBody;
 
 public class ntv
+  implements BusinessObserver
 {
-  public static void a(QQAppInterface paramQQAppInterface, AccountDetail paramAccountDetail)
+  protected int a;
+  protected WeakReference<ntu> a;
+  protected WeakReference<QQAppInterface> b;
+  
+  public ntv(ntu paramntu, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailToDBAndCache");
-    }
-    EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if ((paramAccountDetail != null) && (paramAccountDetail.getId() != -1L)) {
-      if (!localEntityManager.update(paramAccountDetail)) {
-        localEntityManager.drop(AccountDetail.class);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramntu);
+    this.b = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    boolean bool2 = false;
+    ntu localntu = (ntu)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject1 = (QQAppInterface)this.b.get();
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder().append("InfoReqObserver: type=").append(paramInt).append(", reqType=").append(this.jdField_a_of_type_Int).append(", isSucc=").append(paramBoolean).append(", cbIsNull=");
+      if (localntu != null) {
+        break label271;
       }
     }
-    for (;;)
+    label270:
+    label271:
+    for (boolean bool1 = true;; bool1 = false)
     {
-      localEntityManager.close();
-      paramQQAppInterface = (amxz)paramQQAppInterface.getManager(56);
-      if ((paramQQAppInterface != null) && (paramAccountDetail != null))
-      {
-        paramQQAppInterface.a(paramAccountDetail);
-        if (paramAccountDetail.followType == 1) {
-          paramQQAppInterface.a(PublicAccountInfo.createPublicAccount(paramAccountDetail, 0L));
+      localObject2 = ((StringBuilder)localObject2).append(bool1).append(", appIsNull=");
+      bool1 = bool2;
+      if (localObject1 == null) {
+        bool1 = true;
+      }
+      QLog.d("AddContactTroopHandler", 2, bool1);
+      if ((localntu != null) && (localObject1 != null)) {
+        if ((paramBoolean) && (paramBundle != null)) {
+          try
+          {
+            paramBundle = paramBundle.getByteArray("data");
+            if (paramBundle != null)
+            {
+              localObject1 = (ntw)((QQAppInterface)localObject1).getManager(QQManagerFactory.ADDCONTACT_TROOP_SEARCH_POP_MANAGE);
+              if (this.jdField_a_of_type_Int == 1)
+              {
+                localObject2 = new popclassifc.RspBody();
+                ((popclassifc.RspBody)localObject2).mergeFrom(paramBundle);
+                ((ntw)localObject1).a((popclassifc.RspBody)localObject2);
+                localntu.a();
+                return;
+              }
+              if (this.jdField_a_of_type_Int != 2) {
+                break label270;
+              }
+              localObject2 = new searchtab.RspBody();
+              ((searchtab.RspBody)localObject2).mergeFrom(paramBundle);
+              ((ntw)localObject1).a((searchtab.RspBody)localObject2);
+              localntu.a();
+              return;
+            }
+          }
+          catch (Exception paramBundle)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("AddContactTroopHandler", 2, "InfoReqObserver exp:", paramBundle);
+            }
+          }
+        } else {
+          localntu.b();
         }
       }
       return;
-      localEntityManager.persist(paramAccountDetail);
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, obr paramobr, int paramInt)
-  {
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), odw.class);
-    localNewIntent.putExtra("cmd", "set_function_flag");
-    mobileqq_mp.SetFunctionFlagRequset localSetFunctionFlagRequset = new mobileqq_mp.SetFunctionFlagRequset();
-    localSetFunctionFlagRequset.version.set(1);
-    localSetFunctionFlagRequset.uin.set((int)Long.parseLong(paramString));
-    localSetFunctionFlagRequset.type.set(paramobr.e);
-    localSetFunctionFlagRequset.value.set(paramInt);
-    localSetFunctionFlagRequset.account_type.set(1);
-    localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
-    localNewIntent.setObserver(new ntw(paramQQAppInterface, paramobr, paramInt, paramString));
-    paramQQAppInterface.startServlet(localNewIntent);
   }
 }
 

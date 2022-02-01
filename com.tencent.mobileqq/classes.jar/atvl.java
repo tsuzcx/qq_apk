@@ -1,42 +1,62 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.data.MessageForFuDai;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class atvl
-  implements afrc, Handler.Callback
+  implements aqoa
 {
-  private BaseChatPie a;
+  private String a;
   
-  public atvl(BaseChatPie paramBaseChatPie)
+  public atvl(String paramString)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 14: 
-    case 15: 
-      atvm.e();
-      return;
+    this.a = paramString;
+    if (FileUtils.fileExistsAndNotEmpty(this.a)) {
+      this.a = new File(this.a).getAbsolutePath();
     }
-    atvm.f();
   }
   
-  void a(MessageForFuDai paramMessageForFuDai) {}
-  
-  public int[] a()
+  private String a()
   {
-    return new int[] { 3, 13, 14, 15, 16 };
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("file_color_note_local_path", this.a);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JSONException localJSONException) {}
+    return "";
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public ColorNote getColorNote()
   {
-    return false;
+    if (!FileUtils.fileExistsAndNotEmpty(this.a))
+    {
+      QLog.i("LocalFileColorNoteServiceInfo", 1, "getColorNote: loacl file path is null");
+      return null;
+    }
+    aqoi localaqoi = new aqoi();
+    localaqoi.a(17039360);
+    String str = aufd.b(5, this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("LocalFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    }
+    localaqoi.a(str);
+    str = auea.a(this.a);
+    localaqoi.b(str);
+    localaqoi.c(FileUtil.filesizeToString(auea.a(this.a)));
+    int i = auea.a(auea.a(str));
+    localaqoi.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localaqoi.a(str.getBytes());
+    }
+    return localaqoi.a();
   }
 }
 

@@ -1,15 +1,36 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class ums
+class ums
+  implements Animator.AnimatorListener
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c;
+  ums(ump paramump) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    ump.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ump.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    ump.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ump.a(this.a, true);
+    ump.a(this.a).setAlpha(0.0F);
+    ump.b(this.a).setAlpha(0.0F);
+    ump.c(this.a).setAlpha(0.0F);
+    ump.a(this.a).setVisibility(0);
+  }
 }
 
 

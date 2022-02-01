@@ -1,52 +1,106 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.SystemClock;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 public class bdmb
-  implements bdmx
 {
-  public bdmb(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, bdmu parambdmu) {}
+  public static LinkedList<bdmc> a = new LinkedList();
   
-  public void a(int paramInt, String paramString, ArrayList<bdmu> paramArrayList)
+  public static bdmc a(Class paramClass, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "getVideoListReq->onLoaded: retCode = " + paramInt);
+    if (paramClass == null) {
+      return null;
     }
-    if (paramInt == 0) {
-      if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
+    int i = a.size() - 1;
+    while (i >= 0)
+    {
+      bdmc localbdmc = (bdmc)a.get(i);
+      if ((paramClass == localbdmc.jdField_a_of_type_JavaLangClass) && (paramInt == localbdmc.jdField_a_of_type_Long))
       {
-        paramString = paramArrayList.iterator();
-        paramInt = 0;
-        if (paramString.hasNext())
+        a.remove(i);
+        return localbdmc;
+      }
+      i -= 1;
+    }
+    return null;
+  }
+  
+  public static void a(long paramLong)
+  {
+    Iterator localIterator = a.iterator();
+    while (localIterator.hasNext())
+    {
+      bdmc localbdmc = (bdmc)localIterator.next();
+      localbdmc.b += paramLong;
+    }
+  }
+  
+  public static void a(AppInterface paramAppInterface, Class paramClass, int paramInt1, String paramString, int paramInt2)
+  {
+    a(paramAppInterface, paramClass, paramInt1, paramString, paramInt2, "");
+  }
+  
+  public static void a(AppInterface paramAppInterface, Class paramClass, int paramInt1, String paramString1, int paramInt2, String paramString2)
+  {
+    if (paramClass == null) {
+      return;
+    }
+    int i = a.size();
+    if (i > 0)
+    {
+      i -= 1;
+      if (i >= 0)
+      {
+        bdmc localbdmc = (bdmc)a.get(i);
+        if (localbdmc.jdField_a_of_type_JavaLangClass == paramClass)
         {
-          paramArrayList = (bdmu)paramString.next();
-          if (this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.contains(paramArrayList)) {
-            break label358;
+          if (!(paramAppInterface instanceof QQAppInterface)) {
+            break label123;
           }
-          this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.add(paramArrayList);
-          paramInt = 1;
+          bdla.b((QQAppInterface)paramAppInterface, "CliOper", "", "", localbdmc.jdField_a_of_type_JavaLangString, localbdmc.jdField_a_of_type_JavaLangString, localbdmc.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localbdmc.b), "", "");
+        }
+        for (;;)
+        {
+          a.remove(i);
+          i -= 1;
+          break;
+          label123:
+          if (paramAppInterface != null) {
+            paramAppInterface.reportClickEvent("CliOper", "", "", localbdmc.jdField_a_of_type_JavaLangString, localbdmc.jdField_a_of_type_JavaLangString, localbdmc.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localbdmc.b), "", "");
+          } else {
+            bdla.b(null, "CliOper", "", "", localbdmc.jdField_a_of_type_JavaLangString, localbdmc.jdField_a_of_type_JavaLangString, localbdmc.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localbdmc.b), "", "");
+          }
         }
       }
     }
-    label358:
-    for (;;)
+    paramAppInterface = new bdmc();
+    paramAppInterface.jdField_a_of_type_JavaLangClass = paramClass;
+    paramAppInterface.jdField_a_of_type_Long = paramInt1;
+    paramAppInterface.b = SystemClock.elapsedRealtime();
+    paramAppInterface.jdField_a_of_type_JavaLangString = paramString1;
+    paramAppInterface.jdField_a_of_type_Int = paramInt2;
+    a.add(paramAppInterface);
+  }
+  
+  public static void a(Class<?> paramClass, int paramInt1, int paramInt2, String paramString)
+  {
+    if ((paramClass == null) || (paramString == null)) {
+      return;
+    }
+    if (paramString.contains("/qunactivity/")) {}
+    for (String str = "0X8004EC8";; str = null)
     {
-      break;
-      if (paramInt != 0)
+      if (paramString.contains("/hotchat/"))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Bdmh.notifyDataSetChanged();
-        this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(2);
-        return;
+        str = "0X8004410";
+        paramInt2 = 2;
       }
-      QLog.d("TribeVideoListPlayerFragment", 2, String.format("onLoadMore isEmpty, start:%d, bid:%d, pid%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Bdmh.getItemCount() + this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Bdmu.b), this.jdField_a_of_type_Bdmu.d }));
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(3);
-      bcef.b(null, "dc00899", "Grp_tribe", "", "video_player", "page_repeat", this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.e, 0, this.jdField_a_of_type_Bdmu.b + "", this.jdField_a_of_type_Bdmu.d, this.jdField_a_of_type_Bdmu.h + "", "");
-      return;
-      QLog.d("TribeVideoListPlayerFragment", 2, String.format("onLoadMore isEmpty, start:%d, bid:%d, pid%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Bdmh.getItemCount() + this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Bdmu.b), this.jdField_a_of_type_Bdmu.d }));
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(3);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(4);
+      if (str == null) {
+        break;
+      }
+      a(null, paramClass, paramInt1, str, paramInt2);
       return;
     }
   }

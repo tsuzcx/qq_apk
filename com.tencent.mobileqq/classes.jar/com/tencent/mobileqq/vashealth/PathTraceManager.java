@@ -16,19 +16,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bftt;
-import bglz;
-import bgmf;
-import bgmg;
-import bgmh;
-import bgmj;
-import bgml;
-import bgoe;
-import bgog;
-import bgoj;
-import bgve;
+import bhcl;
+import bhwj;
+import bhwp;
+import bhwq;
+import bhwr;
+import bhwt;
+import bhwv;
+import bhyo;
+import bhyq;
+import bhyt;
+import bifw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
@@ -68,9 +69,9 @@ public class PathTraceManager
   SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener;
   SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
   public Handler a;
-  private bgml jdField_a_of_type_Bgml;
-  bgog jdField_a_of_type_Bgog;
-  bgoj jdField_a_of_type_Bgoj;
+  private bhwv jdField_a_of_type_Bhwv;
+  bhyq jdField_a_of_type_Bhyq;
+  bhyt jdField_a_of_type_Bhyt;
   BrowserAppInterface jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface;
   EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
   private PluginInterface jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterface;
@@ -78,7 +79,7 @@ public class PathTraceManager
   private TracePathData jdField_a_of_type_ComTencentMobileqqVashealthTracePathData;
   private TracePointsData jdField_a_of_type_ComTencentMobileqqVashealthTracePointsData;
   private String jdField_a_of_type_JavaLangString;
-  public WeakReference<bglz> a;
+  public WeakReference<bhwj> a;
   public ArrayList<TracePointsData> a;
   private List<TracePointsData> jdField_a_of_type_JavaUtilList = new ArrayList(4);
   public boolean a;
@@ -104,11 +105,11 @@ public class PathTraceManager
   {
     this.jdField_e_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new bgmj(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new bhwt(this, Looper.getMainLooper());
     this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = paramBrowserAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterfaceHelper$OnPluginInterfaceLoadedListener = new bgmf(this);
+    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterfaceHelper$OnPluginInterfaceLoadedListener = new bhwp(this);
     PluginInterfaceHelper.getPluginInterface(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterfaceHelper$OnPluginInterfaceLoadedListener);
     this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData = b();
     paramBrowserAppInterface = new StringBuilder(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp().getFilesDir().getPath());
@@ -117,7 +118,7 @@ public class PathTraceManager
     a(null);
     this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp().getApplicationContext().getSystemService("sensor"));
     this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(19);
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new bgmg(this);
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new bhwq(this);
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -137,6 +138,9 @@ public class PathTraceManager
   private JSONObject a(TracePointsData paramTracePointsData)
   {
     JSONObject localJSONObject = new JSONObject();
+    if (paramTracePointsData == null) {
+      return localJSONObject;
+    }
     try
     {
       localJSONObject.put("retCode", 1);
@@ -144,14 +148,17 @@ public class PathTraceManager
       localJSONObject.put("isBeforeRunning", "true");
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        paramTracePointsData = (bglz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramTracePointsData = (bhwj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (paramTracePointsData != null) {
           paramTracePointsData.dispatchJsEvent("PathTraceSend", localJSONObject, new JSONObject());
         }
       }
-      return localJSONObject;
     }
-    catch (Exception paramTracePointsData) {}
+    catch (Exception paramTracePointsData)
+    {
+      label82:
+      break label82;
+    }
     return localJSONObject;
   }
   
@@ -276,10 +283,10 @@ public class PathTraceManager
     //   228: aload_3
     //   229: astore_2
     //   230: getstatic 269	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   233: new 323	bgmi
+    //   233: new 323	bhws
     //   236: dup
     //   237: aload_0
-    //   238: invokespecial 325	bgmi:<init>	(Ljava/util/ArrayList;)V
+    //   238: invokespecial 325	bhws:<init>	(Ljava/util/ArrayList;)V
     //   241: invokevirtual 329	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   244: aload_3
     //   245: astore 4
@@ -543,7 +550,7 @@ public class PathTraceManager
       localJSONObject1.put("data", localJSONObject2.toString());
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        paramList = (bglz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramList = (bhwj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (paramList != null) {
           paramList.dispatchJsEvent("PathTraceSend", localJSONObject1, new JSONObject());
         }
@@ -727,22 +734,22 @@ public class PathTraceManager
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bgml == null) {
-      this.jdField_a_of_type_Bgml = new bgml(this, this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface);
+    if (this.jdField_a_of_type_Bhwv == null) {
+      this.jdField_a_of_type_Bhwv = new bhwv(this, this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface);
     }
     this.jdField_c_of_type_Int = paramInt;
-    SosoInterface.startLocation(this.jdField_a_of_type_Bgml);
+    SosoInterface.startLocation(this.jdField_a_of_type_Bhwv);
     if ((this.jdField_c_of_type_Int == 1) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      localObject = (bglz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localObject != null) && (((bglz)localObject).mRuntime != null)) {
-        if (((bglz)localObject).mRuntime.a() == null) {
+      localObject = (bhwj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localObject != null) && (((bhwj)localObject).mRuntime != null)) {
+        if (((bhwj)localObject).mRuntime.a() == null) {
           break label149;
         }
       }
     }
     label149:
-    for (Object localObject = ((bglz)localObject).mRuntime.a().mUrl;; localObject = null)
+    for (Object localObject = ((bhwj)localObject).mRuntime.a().mUrl;; localObject = null)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         a(this.jdField_c_of_type_Int, (String)localObject);
@@ -817,9 +824,9 @@ public class PathTraceManager
     QLog.e("PathTraceManager", 1, "postInvokeRemoteCmd Err");
   }
   
-  public void a(bglz parambglz)
+  public void a(bhwj parambhwj)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambglz);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambhwj);
   }
   
   protected void a(TracePathData paramTracePathData, boolean paramBoolean, TracePointsData paramTracePointsData)
@@ -1085,10 +1092,10 @@ public class PathTraceManager
           paramTracePointsData.put("retCode", -6);
           if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
           {
-            localObject2 = (bglz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+            localObject2 = (bhwj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
             if (localObject2 != null)
             {
-              ((bglz)localObject2).dispatchJsEvent("PathTraceEnd", paramTracePointsData, new JSONObject());
+              ((bhwj)localObject2).dispatchJsEvent("PathTraceEnd", paramTracePointsData, new JSONObject());
               QLog.i("PathTraceManager", 1, "LONG END");
             }
           }
@@ -1282,21 +1289,21 @@ public class PathTraceManager
       do
       {
         return;
-        localObject = new bgoe("https://imgcache.qq.com/ac/vasapp/webviewlib/2513/run_sd/audio715.zip", (File)localObject);
-        ((bgoe)localObject).r = false;
-        ((bgoe)localObject).q = true;
-        if (this.jdField_a_of_type_Bgog == null)
+        localObject = new bhyo("https://imgcache.qq.com/ac/vasapp/webviewlib/2513/run_sd/audio715.zip", (File)localObject);
+        ((bhyo)localObject).r = false;
+        ((bhyo)localObject).q = true;
+        if (this.jdField_a_of_type_Bhyq == null)
         {
-          this.jdField_a_of_type_Bgog = ((bgog)this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getManager(47));
-          this.jdField_a_of_type_Bgoj = this.jdField_a_of_type_Bgog.a(1);
+          this.jdField_a_of_type_Bhyq = ((bhyq)this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY));
+          this.jdField_a_of_type_Bhyt = this.jdField_a_of_type_Bhyq.a(1);
         }
-        if (this.jdField_a_of_type_Bgoj != null) {
+        if (this.jdField_a_of_type_Bhyt != null) {
           break;
         }
       } while (!QLog.isColorLevel());
       QLog.d("PathTraceManager", 2, "loaderInterface Null");
       return;
-      this.jdField_a_of_type_Bgoj.a((bgoe)localObject, new bgmh(this, str, paramString), null);
+      this.jdField_a_of_type_Bhyt.a((bhyo)localObject, new bhwr(this, str, paramString), null);
       return;
       localObject = null;
     }
@@ -1398,16 +1405,16 @@ public class PathTraceManager
     //   25: aload_1
     //   26: iconst_0
     //   27: invokeinterface 435 2 0
-    //   32: checkcast 1079	com/tencent/mobileqq/persistence/Entity
-    //   35: invokevirtual 1082	com/tencent/mobileqq/vashealth/PathTraceManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   32: checkcast 1084	com/tencent/mobileqq/persistence/Entity
+    //   35: invokevirtual 1087	com/tencent/mobileqq/vashealth/PathTraceManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   38: pop
     //   39: return
     //   40: aload_0
     //   41: getfield 103	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   44: invokevirtual 1086	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   44: invokevirtual 1091	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   47: astore_2
     //   48: aload_2
-    //   49: invokevirtual 1091	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   49: invokevirtual 1096	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   52: aload_1
     //   53: invokeinterface 494 1 0
     //   58: astore_1
@@ -1417,8 +1424,8 @@ public class PathTraceManager
     //   68: aload_0
     //   69: aload_1
     //   70: invokeinterface 502 1 0
-    //   75: checkcast 1079	com/tencent/mobileqq/persistence/Entity
-    //   78: invokevirtual 1082	com/tencent/mobileqq/vashealth/PathTraceManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   75: checkcast 1084	com/tencent/mobileqq/persistence/Entity
+    //   78: invokevirtual 1087	com/tencent/mobileqq/vashealth/PathTraceManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   81: pop
     //   82: goto -23 -> 59
     //   85: astore_1
@@ -1429,24 +1436,24 @@ public class PathTraceManager
     //   95: new 129	java/lang/StringBuilder
     //   98: dup
     //   99: invokespecial 191	java/lang/StringBuilder:<init>	()V
-    //   102: ldc_w 1093
+    //   102: ldc_w 1098
     //   105: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   108: aload_1
-    //   109: invokevirtual 1096	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   109: invokevirtual 1101	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   112: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   118: invokestatic 444	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   121: aload_2
-    //   122: invokevirtual 1098	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   122: invokevirtual 1103	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   125: return
     //   126: aload_2
-    //   127: invokevirtual 1100	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   127: invokevirtual 1105	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   130: aload_2
-    //   131: invokevirtual 1098	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   131: invokevirtual 1103	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   134: return
     //   135: astore_1
     //   136: aload_2
-    //   137: invokevirtual 1098	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   137: invokevirtual 1103	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   140: aload_1
     //   141: athrow
     // Local variable table:
@@ -1527,15 +1534,15 @@ public class PathTraceManager
     JSONObject localJSONObject = new JSONObject();
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
     Object localObject;
-    for (bglz localbglz = (bglz)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localObject = null)
+    for (bhwj localbhwj = (bhwj)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localObject = null)
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData.totalTime < 60L) || (this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData.distance < 100.0D))
       {
         try
         {
           localJSONObject.put("retCode", -5);
-          if (localbglz != null) {
-            localbglz.dispatchJsEvent("PathTraceEnd", localJSONObject, new JSONObject());
+          if (localbhwj != null) {
+            localbhwj.dispatchJsEvent("PathTraceEnd", localJSONObject, new JSONObject());
           }
           a(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData.startTime));
         }
@@ -1614,7 +1621,7 @@ public class PathTraceManager
       {
         paramLong = null;
         if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-          paramLong = (bglz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          paramLong = (bhwj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         }
         if (paramLong == null) {
           break;
@@ -1671,22 +1678,22 @@ public class PathTraceManager
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Bgml != null)
+    if (this.jdField_a_of_type_Bhwv != null)
     {
-      SosoInterface.removeOnLocationListener(this.jdField_a_of_type_Bgml);
+      SosoInterface.removeOnLocationListener(this.jdField_a_of_type_Bhwv);
       this.jdField_c_of_type_Int = paramInt;
       if ((this.jdField_c_of_type_Int == 2) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
       {
-        localObject = (bglz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if ((localObject != null) && (((bglz)localObject).mRuntime != null)) {
-          if (((bglz)localObject).mRuntime.a() == null) {
+        localObject = (bhwj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if ((localObject != null) && (((bhwj)localObject).mRuntime != null)) {
+          if (((bhwj)localObject).mRuntime.a() == null) {
             break label133;
           }
         }
       }
     }
     label133:
-    for (Object localObject = ((bglz)localObject).mRuntime.a().mUrl;; localObject = null)
+    for (Object localObject = ((bhwj)localObject).mRuntime.a().mUrl;; localObject = null)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         a(this.jdField_c_of_type_Int, (String)localObject);
@@ -1724,7 +1731,7 @@ public class PathTraceManager
       if (n != 0)
       {
         if (paramArrayList.size() == 1) {
-          bftt.a(Uri.fromFile(new File(this.jdField_a_of_type_JavaLangString + (String)paramArrayList.get(0) + ".mp3")), false, true);
+          bhcl.a(Uri.fromFile(new File(this.jdField_a_of_type_JavaLangString + (String)paramArrayList.get(0) + ".mp3")), false, true);
         }
       }
       else {
@@ -1947,7 +1954,7 @@ public class PathTraceManager
     b(-1);
     PathTraceService.c();
     c(a());
-    bftt.a();
+    bhcl.a();
     QLog.i("PathTraceManager", 1, "onDestroy");
   }
 }

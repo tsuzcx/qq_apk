@@ -4,7 +4,7 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import szu;
+import tnc;
 
 public final class ProteusCDNUtils$1
   implements Runnable
@@ -23,15 +23,15 @@ public final class ProteusCDNUtils$1
     QLog.i("ProteusCDNUtils", 1, "[downloadByCDN], bid = " + this.b + ", isDownloadSucc = " + bool);
     if (bool)
     {
-      szu.a(this.b);
+      tnc.a(this.b);
       return;
     }
-    szu.b("0X800AC00", this.b);
+    tnc.b("0X800AC00", this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.utils.ProteusCDNUtils.1
  * JD-Core Version:    0.7.0.1
  */

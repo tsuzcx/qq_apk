@@ -1,9 +1,33 @@
-import kotlin.Metadata;
+import android.os.Handler;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$OnConfirmListener;", "", "onConfirm", "", "newBirthday", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface arqn
+class arqn
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  arqn(arqk paramarqk, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    arqk.a(this.jdField_a_of_type_Arqk).removeCallbacks(arqk.a(this.jdField_a_of_type_Arqk));
+    arqk.a(this.jdField_a_of_type_Arqk).run();
+    int i = arqk.a(this.jdField_a_of_type_Arqk).input.getSelectionStart();
+    Editable localEditable = arqk.a(this.jdField_a_of_type_Arqk).input.getEditableText();
+    if ((i < 0) || (i >= localEditable.length())) {
+      localEditable.append(this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      bdla.b(arqk.a(this.jdField_a_of_type_Arqk).getApp(), "dc00898", "", "", "0X800B22C", "0X800B22C", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localEditable.insert(i, this.jdField_a_of_type_JavaLangString);
+    }
+  }
 }
 
 

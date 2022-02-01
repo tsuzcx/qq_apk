@@ -1,30 +1,29 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import java.util.HashMap;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class acqa
-  implements avtb<bgfe>
+  implements acpi
 {
-  public acqa(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void a(bgfe parambgfe)
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
-    if (parambgfe.jdField_a_of_type_Int == AddFriendVerifyActivity.a(this.a).a())
-    {
-      Object localObject = (Bitmap)parambgfe.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2131380390));
-      AddFriendVerifyActivity.b(this.a).setVisibility(0);
-      AddFriendVerifyActivity.b(this.a).setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), (Bitmap)localObject));
-      localObject = (Bitmap)parambgfe.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2131380385));
-      localObject = bgiy.a(this.a.getResources(), (Bitmap)localObject);
-      AddFriendVerifyActivity.a(this.a).setBackgroundDrawable((Drawable)localObject);
-      AddFriendVerifyActivity.b(this.a).setTextColor(parambgfe.b);
-      AddFriendVerifyActivity.a(this.a).setTextColor(parambgfe.b);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x11e");
     }
+    paramQQAppInterface = (FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.decodePush0x210_0x11e(paramMsgType0x210.vProtobuf);
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

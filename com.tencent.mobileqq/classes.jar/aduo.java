@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.OverloadTipsActivity;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aduo
   implements DialogInterface.OnClickListener
 {
-  public aduo(OverloadTipsActivity paramOverloadTipsActivity) {}
+  public aduo(DialogActivity paramDialogActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    becr.a(this.a.app, this.a);
     this.a.finish();
+    bdla.b(this.a.app, "dc00898", "", "", "0X800906A", "0X800906A", 0, 0, "", "", "", "");
   }
 }
 

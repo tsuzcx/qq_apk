@@ -1,19 +1,19 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-final class apln
-  implements DialogInterface.OnClickListener
+public class apln
 {
-  apln(QQCustomDialog paramQQCustomDialog, Context paramContext) {}
+  public long a;
+  public aplc a;
+  public aplm a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public apln()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    }
-    apoh.a(this.jdField_a_of_type_AndroidContentContext, true);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Aplm = null;
+    this.jdField_a_of_type_Aplc = null;
+  }
+  
+  public String toString()
+  {
+    return "ARLocalRecogResult{frameIdx = " + this.jdField_a_of_type_Long + ", markerResult = " + this.jdField_a_of_type_Aplm + ", faceResult = " + this.jdField_a_of_type_Aplc + '}';
   }
 }
 

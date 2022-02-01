@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class axqo
-  implements Parcelable.Creator<ShuayishuaConfig>
+final class axqo
+  implements aynq
 {
-  public ShuayishuaConfig a(Parcel paramParcel)
-  {
-    return new ShuayishuaConfig(paramParcel);
-  }
+  axqo(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public ShuayishuaConfig[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ShuayishuaConfig[paramInt];
+    axqn.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
   }
 }
 

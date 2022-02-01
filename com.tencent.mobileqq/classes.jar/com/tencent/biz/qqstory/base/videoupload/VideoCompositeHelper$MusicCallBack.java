@@ -3,8 +3,8 @@ package com.tencent.biz.qqstory.base.videoupload;
 import android.annotation.TargetApi;
 import android.os.SystemClock;
 import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import xvv;
-import ypi;
+import ykq;
+import zeb;
 
 @TargetApi(14)
 public class VideoCompositeHelper$MusicCallBack
@@ -30,8 +30,8 @@ public class VideoCompositeHelper$MusicCallBack
     }
     for (;;)
     {
-      xvv.d(VideoCompositeHelper.TAG, "combine audio fail %s, %d", new Object[] { paramString, Integer.valueOf(this.mErrorCode) });
-      ypi.g(this.mInPath);
+      ykq.d(VideoCompositeHelper.TAG, "combine audio fail %s, %d", new Object[] { paramString, Integer.valueOf(this.mErrorCode) });
+      zeb.g(this.mInPath);
       return;
       if (paramString.equals(String.valueOf(941002))) {
         this.mVideoCompositeCallBack.onVideoCompositeFinish(941002, paramString, "");
@@ -43,9 +43,9 @@ public class VideoCompositeHelper$MusicCallBack
   
   public void onSuccess(String paramString)
   {
-    xvv.a(VideoCompositeHelper.TAG, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.mStartTime));
+    ykq.a(VideoCompositeHelper.TAG, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.mStartTime));
     this.mVideoCompositeCallBack.onVideoCompositeFinish(0, "", this.mOutPath);
-    ypi.g(this.mInPath);
+    zeb.g(this.mInPath);
   }
   
   public void setErrorCode(int paramInt)
@@ -55,7 +55,7 @@ public class VideoCompositeHelper$MusicCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.MusicCallBack
  * JD-Core Version:    0.7.0.1
  */

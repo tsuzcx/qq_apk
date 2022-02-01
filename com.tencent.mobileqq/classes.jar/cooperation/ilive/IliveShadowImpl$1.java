@@ -2,17 +2,17 @@ package cooperation.ilive;
 
 import android.content.Context;
 import android.os.Bundle;
-import bkjf;
+import blus;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 
 public class IliveShadowImpl$1
   implements Runnable
 {
-  public IliveShadowImpl$1(bkjf parambkjf, Context paramContext, String paramString1, String paramString2, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback) {}
+  public IliveShadowImpl$1(blus paramblus, Context paramContext, String paramString1, String paramString2, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback) {}
   
   public void run()
   {
-    bkjf.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback);
+    blus.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback);
   }
 }
 

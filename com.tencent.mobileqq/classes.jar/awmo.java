@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class awmo
+class awmo
   implements DialogInterface.OnDismissListener
 {
-  public awmo(GameRoomTransActivity paramGameRoomTransActivity) {}
+  awmo(awmn paramawmn) {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.finish();
+    this.a.a.finish();
   }
 }
 

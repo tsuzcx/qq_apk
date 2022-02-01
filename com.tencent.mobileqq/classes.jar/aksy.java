@@ -1,37 +1,20 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
 
 public class aksy
-  extends SosoInterface.OnLocationListener
+  implements DialogInterface.OnClickListener
 {
-  public aksy(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aksy(TopayManager.5.1 param1) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    switch (paramInt)
     {
-      this.a.a = paramSosoLbsInfo.mLocation.mLat02;
-      this.a.b = paramSosoLbsInfo.mLocation.mLon02;
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
-      }
-      if (NewFlowCameraActivity.a(this.a) != null) {
-        NewFlowCameraActivity.d(this.a);
-      }
-    }
-    do
-    {
+    default: 
       return;
-      this.a.a = 0.0D;
-      this.a.b = 0.0D;
-    } while (!QLog.isColorLevel());
-    QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() error");
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

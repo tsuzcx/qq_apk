@@ -1,70 +1,54 @@
 package com.tencent.qapmsdk.impl.appstate;
 
-import com.tencent.qapmsdk.impl.instrumentation.f;
-import com.tencent.qapmsdk.impl.instrumentation.k.b;
+import com.tencent.qapmsdk.impl.instrumentation.g;
+import com.tencent.qapmsdk.impl.instrumentation.l.b;
 
 public class e
+  implements com.tencent.qapmsdk.impl.instrumentation.b
 {
-  public QAPMMonitorThreadLocal a;
-  public h b;
-  public k.b c;
+  public f a;
   
-  protected e(f paramf, long paramLong, k.b paramb)
+  public f a(String paramString, long paramLong, l.b paramb)
   {
-    this.b = a(paramf, paramLong, paramb);
-    this.c = paramb;
-    this.a = QAPMMonitorThreadLocal.getInstance();
-  }
-  
-  public static e a(String paramString, long paramLong, k.b paramb)
-  {
-    return a(paramString, "", paramLong, paramb);
-  }
-  
-  public static e a(String paramString1, String paramString2, long paramLong, k.b paramb)
-  {
-    f localf = new f();
-    localf.g = paramString1;
-    localf.h = paramString2;
-    paramString1 = new e(localf, paramLong, paramb);
-    paramString1.a().a(localf, Boolean.valueOf(true));
-    return paramString1;
-  }
-  
-  public static h a(f paramf, long paramLong, k.b paramb)
-  {
-    return new h(paramf, paramLong, paramb);
-  }
-  
-  public QAPMMonitorThreadLocal a()
-  {
+    this.a = f.a(paramString, paramLong, paramb);
     return this.a;
   }
   
-  public void a(f paramf)
+  public j a()
   {
-    this.a.a(paramf, Boolean.valueOf(true));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    try
-    {
-      if (this.a.c() == null) {
-        return;
-      }
-      this.a.pop(paramBoolean);
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public h b()
-  {
-    if (this.b == null) {
+    if (this.a == null) {
       return null;
     }
-    return this.b.a();
+    return this.a.b();
+  }
+  
+  public void a(g paramg)
+  {
+    if ((com.tencent.qapmsdk.impl.g.b.g) && (this.a != null)) {
+      this.a.a(paramg);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if ((com.tencent.qapmsdk.impl.g.b.g) && (this.a != null)) {}
+  }
+  
+  public QAPMMonitorThreadLocal b()
+  {
+    return this.a.a();
+  }
+  
+  public void b(g paramg)
+  {
+    if (this.a != null) {}
+  }
+  
+  public void c()
+  {
+    if ((com.tencent.qapmsdk.impl.g.b.g) && (this.a != null)) {
+      this.a.a(true);
+    }
   }
 }
 

@@ -1,51 +1,55 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.qphone.base.util.QLog;
-
 public class lps
 {
-  public static void a(boolean paramBoolean)
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static lps b;
+  private static int c;
+  public int a;
+  private lps jdField_a_of_type_Lps;
+  public int b;
+  
+  private lps(int paramInt1, int paramInt2)
   {
-    VideoController.a().j(paramBoolean);
-    if (VideoController.a().k() == VideoController.l)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public static lps a(int paramInt1, int paramInt2)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      QLog.i("RenderUtils", 1, "setAEDetectInited, init FaceSDK falied.");
-      ltf.a();
+      if (jdField_b_of_type_Lps != null)
+      {
+        lps locallps = jdField_b_of_type_Lps;
+        jdField_b_of_type_Lps = locallps.jdField_a_of_type_Lps;
+        locallps.jdField_a_of_type_Lps = null;
+        locallps.jdField_a_of_type_Int = paramInt1;
+        locallps.jdField_b_of_type_Int = paramInt2;
+        c -= 1;
+        return locallps;
+      }
+      return new lps(paramInt1, paramInt2);
     }
   }
   
-  public static boolean a(PendantItem paramPendantItem1, PendantItem paramPendantItem2)
+  public void a()
   {
-    if ((paramPendantItem1 == null) && (paramPendantItem2 == null)) {}
-    do
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      return true;
-      if ((paramPendantItem1 == null) || (paramPendantItem2 == null)) {
-        break;
+      if (c < 4)
+      {
+        this.jdField_a_of_type_Lps = jdField_b_of_type_Lps;
+        jdField_b_of_type_Lps = this;
+        c += 1;
       }
-    } while ((paramPendantItem1.getId() == null) || (paramPendantItem2.getId() == null) || (paramPendantItem1.getId().equalsIgnoreCase(paramPendantItem2.getId())));
-    return false;
-    return false;
-  }
-  
-  public static boolean a(FilterDesc paramFilterDesc1, FilterDesc paramFilterDesc2)
-  {
-    if ((paramFilterDesc1 == null) && (paramFilterDesc2 == null)) {}
-    do
-    {
-      return true;
-      if ((paramFilterDesc1 == null) || (paramFilterDesc2 == null)) {
-        break;
-      }
-    } while ((paramFilterDesc1.name == null) || (paramFilterDesc2.name == null) || (paramFilterDesc1.name.equalsIgnoreCase(paramFilterDesc2.name)));
-    return false;
-    return false;
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lps
  * JD-Core Version:    0.7.0.1
  */

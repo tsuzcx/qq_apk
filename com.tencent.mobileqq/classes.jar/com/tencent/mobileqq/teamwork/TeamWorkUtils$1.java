@@ -2,11 +2,11 @@ package com.tencent.mobileqq.teamwork;
 
 import android.os.Bundle;
 import android.os.Process;
-import aucf;
-import aucg;
-import bbko;
-import bcef;
-import bcvs;
+import avhz;
+import avia;
+import bcrg;
+import bdla;
+import becr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 
@@ -18,21 +18,21 @@ public final class TeamWorkUtils$1
   public void run()
   {
     Process.setThreadPriority(10);
-    aucf localaucf = new aucf(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, 1, -5020, 3276804, bbko.a());
+    avhz localavhz = new avhz(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, 1, -5020, 3276804, bcrg.a());
     Object localObject = new Bundle();
     ((Bundle)localObject).putInt("key_action", 42);
-    ((Bundle)localObject).putString("key_action_DATA", bcvs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 1));
+    ((Bundle)localObject).putString("key_action_DATA", becr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 1));
     ((Bundle)localObject).putString("key_a_action_DATA", this.c);
-    localaucf.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.d.length(), (Bundle)localObject);
+    localavhz.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.d.length(), (Bundle)localObject);
     localObject = new MessageForUniteGrayTip();
-    ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaucf);
-    aucg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009FD0", "0X8009FD0", 0, 0, "", "", "", "");
+    ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localavhz);
+    avia.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
+    bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009FD0", "0X8009FD0", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,667 +1,273 @@
-import android.text.TextUtils;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoRoamingManager.2;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.cs.cmd0x345.cmd0x345.ReqBody;
-import tencent.im.cs.cmd0x345.cmd0x345.ReqBody.SubCmd0x5ReqBody;
-import tencent.im.cs.cmd0x345.cmd0x345.ReqBody.SubCmd0x6ReqBody;
-import tencent.im.cs.cmd0x345.cmd0x345.RspBody;
-import tencent.im.cs.cmd0x345.cmd0x345.RspBody.SubCmd0x5RspBody;
-import tencent.im.cs.cmd0x345.cmd0x345.RspBody.SubCmd0x6RspBody;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyCopyToReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyCopyToRsp;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyForwardFileReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyForwardFileRsp;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadReqV3;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadRspV3;
-import tencent.im.cs.cmd0x346.cmd0x346.ExtensionReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
-import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
-import tencent.im.cs.cmd0x346.cmd0x346.UploadSuccReq;
-import tencent.im.cs.cmd0x346.cmd0x346.UploadSuccRsp;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class aseg
-  implements ProtoReqManager.IProtoRespBack
+  extends asdc<CameraEmotionData>
 {
-  private static int jdField_a_of_type_Int;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private anrh jdField_a_of_type_Anrh = new aseh(this);
+  HashMap<CameraEmotionData, asej> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private volatile boolean jdField_a_of_type_Boolean;
+  volatile String b = null;
+  private volatile String c = "";
   
   public aseg(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anrh);
   }
   
-  private void a(ProtoReqManager.ProtoReq paramProtoReq, ProtoReqManager.ProtoResp paramProtoResp)
+  protected int a()
   {
-    long l2 = 0L;
-    int i = -100003;
-    Object localObject3 = null;
-    Object localObject2 = null;
-    boolean bool2 = true;
-    long l1;
-    Object localObject1;
-    boolean bool1;
-    if ((paramProtoResp.resp.getResultCode() == 1002) || (paramProtoResp.resp.getResultCode() == 1013))
-    {
-      i = -100001;
-      QLog.i("ProtocolManager", 1, "onForwardOfflineResponse: resp is timeout[" + paramProtoResp.resp.getResultCode() + "]");
-      l1 = 0L;
-      localObject1 = null;
-      paramProtoResp = null;
-      bool1 = false;
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        bool1 = false;
-      }
-      ((ased)((aseh)paramProtoReq.busiData).a()).a(bool1, i, paramProtoResp, (String)localObject1, (String)localObject2, l1, l2);
-      return;
-      if (paramProtoResp.resp.getResultCode() != 1000)
-      {
-        i = -100002;
-        QLog.i("ProtocolManager", 1, "onForwardOfflineResponse: resp is failed[" + paramProtoResp.resp.getResultCode() + "]");
-        l1 = 0L;
-        localObject1 = null;
-        paramProtoResp = null;
-        bool1 = false;
-      }
-      else
-      {
-        paramProtoResp = paramProtoResp.resp.getWupBuffer();
-        localObject1 = new cmd0x346.RspBody();
-        try
-        {
-          ((cmd0x346.RspBody)localObject1).mergeFrom(paramProtoResp);
-          if (((cmd0x346.RspBody)localObject1).msg_apply_forward_file_rsp.has()) {
-            break;
-          }
-          QLog.i("ProtocolManager", 1, "onForwardOfflineResponse rspBody has not hasMsgApplyForwardFileRsp");
-          l1 = 0L;
-          localObject1 = null;
-          paramProtoResp = null;
-          bool1 = false;
-        }
-        catch (InvalidProtocolBufferMicroException paramProtoResp)
-        {
-          paramProtoResp.printStackTrace();
-          l1 = 0L;
-          localObject1 = null;
-          paramProtoResp = null;
-          bool1 = false;
-        }
-      }
-    }
-    label295:
-    label321:
-    cmd0x346.ApplyForwardFileRsp localApplyForwardFileRsp;
-    if (((cmd0x346.RspBody)localObject1).uint32_flag_use_media_platform.has()) {
-      if (((cmd0x346.RspBody)localObject1).uint32_flag_use_media_platform.get() == 1)
-      {
-        bool1 = true;
-        QLog.i("ProtocolManager", 1, "onForwardOfflineResponse: bUseMediaPlatform " + bool1);
-        localApplyForwardFileRsp = (cmd0x346.ApplyForwardFileRsp)((cmd0x346.RspBody)localObject1).msg_apply_forward_file_rsp.get();
-        if (!localApplyForwardFileRsp.int32_ret_code.has()) {
-          break label525;
-        }
-      }
-    }
-    label525:
-    for (i = localApplyForwardFileRsp.int32_ret_code.get();; i = 0)
-    {
-      if (localApplyForwardFileRsp.str_ret_msg.has()) {}
-      for (paramProtoResp = localApplyForwardFileRsp.str_ret_msg.get();; paramProtoResp = null)
-      {
-        if (localApplyForwardFileRsp.bytes_uuid.has()) {}
-        for (localObject1 = new String(localApplyForwardFileRsp.bytes_uuid.get().toByteArray());; localObject1 = null)
-        {
-          localObject2 = localObject3;
-          if (bool1)
-          {
-            localObject2 = localObject3;
-            if (localApplyForwardFileRsp.str_fileidcrc.has()) {
-              localObject2 = localApplyForwardFileRsp.str_fileidcrc.get();
-            }
-          }
-          if (localApplyForwardFileRsp.uint64_total_space.has()) {}
-          for (l1 = localApplyForwardFileRsp.uint64_total_space.get();; l1 = 0L)
-          {
-            if (localApplyForwardFileRsp.uint64_used_space.has()) {
-              l2 = localApplyForwardFileRsp.uint64_used_space.get();
-            }
-            bool1 = bool2;
-            break;
-            bool1 = false;
-            break label295;
-            QLog.i("ProtocolManager", 1, "onForwardOfflineResponse: bUseMediaPlatform false uint32_flag_use_media_platform not set");
-            bool1 = false;
-            break label321;
-          }
-        }
-      }
-    }
+    return 70;
   }
   
-  private void a(String paramString, byte[] paramArrayOfByte, aseh paramaseh, int paramInt1, int paramInt2, int paramInt3)
+  public long a(String paramString)
   {
-    ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
-    localProtoReq.ssoCmd = paramString;
-    localProtoReq.reqBody = paramArrayOfByte;
-    localProtoReq.busiData = paramaseh;
-    localProtoReq.tryTime = paramInt1;
-    localProtoReq.tryCount = paramInt2;
-    localProtoReq.fixScheduleCount = paramInt3;
-    localProtoReq.callback = this;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().sendProtoReq(localProtoReq);
+    long l = 0L;
+    try
+    {
+      paramString = new File(paramString);
+      if (paramString.exists()) {
+        l = paramString.length();
+      }
+      return l;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return 0L;
   }
   
-  private void b(ProtoReqManager.ProtoReq paramProtoReq, ProtoReqManager.ProtoResp paramProtoResp)
+  public alsn a(String paramString)
   {
-    int i = -100003;
-    boolean bool;
-    if ((paramProtoResp.resp.getResultCode() == 1002) || (paramProtoResp.resp.getResultCode() == 1013))
-    {
-      i = -100001;
-      QLog.i("ProtocolManager", 1, "onForwardOfflineToOther: resp is timeout[" + paramProtoResp.resp.getResultCode() + "]");
-      localObject = null;
-      paramProtoResp = null;
-      bool = false;
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        bool = false;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ProtocolManager", 2, "onForwardOfflineToOther: return " + bool + ", retCode=" + i + ", retMsg=" + paramProtoResp);
-      }
-      ((ased)((aseh)paramProtoReq.busiData).a()).a(bool, i, paramProtoResp, (String)localObject, null, 0L, 0L);
-      return;
-      if (paramProtoResp.resp.getResultCode() != 1000)
-      {
-        i = -100002;
-        QLog.i("ProtocolManager", 1, "onForwardOfflineToOther: resp is failed[" + paramProtoResp.resp.getResultCode() + "]");
-        localObject = null;
-        paramProtoResp = null;
-        bool = false;
-      }
-      else
-      {
-        paramProtoResp = paramProtoResp.resp.getWupBuffer();
-        localObject = new cmd0x346.RspBody();
-        try
-        {
-          ((cmd0x346.RspBody)localObject).mergeFrom(paramProtoResp);
-          if (((cmd0x346.RspBody)localObject).msg_apply_copy_to_rsp.has()) {
-            break;
-          }
-          QLog.i("ProtocolManager", 1, "onForwardOfflineToOther rspBody has not hasMsgApplyDownloadAbsRsp");
-          localObject = null;
-          paramProtoResp = null;
-          bool = false;
-        }
-        catch (InvalidProtocolBufferMicroException paramProtoResp)
-        {
-          paramProtoResp.printStackTrace();
-          localObject = null;
-          paramProtoResp = null;
-          bool = false;
-        }
-      }
-    }
-    Object localObject = (cmd0x346.ApplyCopyToRsp)((cmd0x346.RspBody)localObject).msg_apply_copy_to_rsp.get();
-    if (((cmd0x346.ApplyCopyToRsp)localObject).int32_ret_code.has()) {}
-    for (i = ((cmd0x346.ApplyCopyToRsp)localObject).int32_ret_code.get();; i = 0)
-    {
-      if (((cmd0x346.ApplyCopyToRsp)localObject).str_ret_msg.has()) {}
-      for (paramProtoResp = ((cmd0x346.ApplyCopyToRsp)localObject).str_ret_msg.get();; paramProtoResp = null)
-      {
-        if (((cmd0x346.ApplyCopyToRsp)localObject).str_file_key.has()) {}
-        for (localObject = ((cmd0x346.ApplyCopyToRsp)localObject).str_file_key.get();; localObject = null)
-        {
-          bool = true;
-          break;
-        }
-      }
-    }
-  }
-  
-  private void c(ProtoReqManager.ProtoReq paramProtoReq, ProtoReqManager.ProtoResp paramProtoResp)
-  {
-    Object localObject1 = "";
-    boolean bool;
-    if ((paramProtoResp.resp.getResultCode() == 1002) || (paramProtoResp.resp.getResultCode() == 1013))
-    {
-      QLog.i("ProtocolManager", 1, "internalForwardDiscFile: resp is timeout[" + paramProtoResp.resp.getResultCode() + "]");
-      paramProtoResp = null;
-      bool = false;
-    }
-    for (int i = -100001;; i = -100002)
-    {
-      ((ased)((aseh)paramProtoReq.busiData).a()).a(bool, i, (String)localObject1, paramProtoResp, null, 0L, 0L);
-      return;
-      if (paramProtoResp.resp.getResultCode() == 1000) {
-        break;
-      }
-      QLog.i("ProtocolManager", 1, "internalForwardDiscFile: resp is failed[" + paramProtoResp.resp.getResultCode() + "]");
-      paramProtoResp = null;
-      bool = false;
-    }
-    Object localObject2 = paramProtoResp.resp.getWupBuffer();
-    paramProtoResp = new cmd0x345.RspBody();
+    int j = 0;
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inJustDecodeBounds = true;
+    label53:
     for (;;)
     {
       try
       {
-        paramProtoResp.mergeFrom((byte[])localObject2);
-        if (!paramProtoResp.uint32_return_code.has()) {
-          break label434;
-        }
-        i = paramProtoResp.uint32_return_code.get();
-        if ((paramProtoResp.msg_subcmd_0x6_rsp_body.has()) || (paramProtoResp.msg_subcmd_0x5_rsp_body.has())) {
-          break label258;
-        }
-        QLog.i("ProtocolManager", 1, "internalForwardDiscFile: rspBody has not hasMsgApplyDownloadRsp");
-        bool = false;
-        i = -100003;
-        paramProtoResp = null;
+        BitmapFactory.decodeFile(paramString, localOptions);
+        int i = localOptions.outHeight;
+        int k;
+        QLog.e("CameraEmoRoamingManager", 1, "getImageSize has exception", paramString);
       }
-      catch (InvalidProtocolBufferMicroException paramProtoResp)
+      catch (Exception paramString)
       {
-        paramProtoResp.printStackTrace();
-        bool = false;
-        i = -100003;
-        paramProtoResp = null;
-      }
-      break;
-      label258:
-      if (paramProtoResp.msg_subcmd_0x6_rsp_body.has())
-      {
-        localObject1 = (cmd0x345.RspBody.SubCmd0x6RspBody)paramProtoResp.msg_subcmd_0x6_rsp_body.get();
-        if (!((cmd0x345.RspBody.SubCmd0x6RspBody)localObject1).str_ret_msg.has()) {
-          break label428;
-        }
-      }
-      label428:
-      for (paramProtoResp = ((cmd0x345.RspBody.SubCmd0x6RspBody)localObject1).str_ret_msg.get();; paramProtoResp = "")
-      {
-        if (((cmd0x345.RspBody.SubCmd0x6RspBody)localObject1).str_file_id.has()) {
-          localObject1 = ((cmd0x345.RspBody.SubCmd0x6RspBody)localObject1).str_file_id.get();
-        }
-        for (;;)
-        {
-          localObject2 = localObject1;
-          bool = true;
-          localObject1 = paramProtoResp;
-          paramProtoResp = (ProtoReqManager.ProtoResp)localObject2;
-          break;
-          localObject2 = localObject1;
-          if (paramProtoResp.msg_subcmd_0x5_rsp_body.has())
-          {
-            cmd0x345.RspBody.SubCmd0x5RspBody localSubCmd0x5RspBody = (cmd0x345.RspBody.SubCmd0x5RspBody)paramProtoResp.msg_subcmd_0x5_rsp_body.get();
-            paramProtoResp = (ProtoReqManager.ProtoResp)localObject1;
-            if (localSubCmd0x5RspBody.str_ret_msg.has()) {
-              paramProtoResp = localSubCmd0x5RspBody.str_ret_msg.get();
-            }
-            localObject2 = paramProtoResp;
-            if (localSubCmd0x5RspBody.str_file_id.has())
-            {
-              localObject1 = localSubCmd0x5RspBody.str_file_id.get();
-              continue;
-            }
-          }
-          localObject1 = null;
-          paramProtoResp = (ProtoReqManager.ProtoResp)localObject2;
-          continue;
-          localObject1 = null;
-        }
-      }
-      label434:
-      i = 0;
-    }
-  }
-  
-  private void d(ProtoReqManager.ProtoReq paramProtoReq, ProtoReqManager.ProtoResp paramProtoResp)
-  {
-    boolean bool = false;
-    Object localObject = null;
-    int i = -1;
-    if ((paramProtoResp.resp.getResultCode() == 1002) || (paramProtoResp.resp.getResultCode() == 1013))
-    {
-      QLog.i("ProtocolManager", 1, "=_= ^! [CS Replay]handleUploadResponse: resp is timeout[" + paramProtoResp.resp.getResultCode() + "]");
-      i = -100001;
-      paramProtoResp = localObject;
-    }
-    for (;;)
-    {
-      ((asee)((aseh)paramProtoReq.busiData).a()).a(bool, i, paramProtoResp);
-      return;
-      if (paramProtoResp.resp.getResultCode() != 1000)
-      {
-        QLog.i("ProtocolManager", 1, "=_= ^! [CS Replay]handleUploadResponse: resp is failed[" + paramProtoResp.resp.getResultCode() + "]");
-        i = -100002;
-        paramProtoResp = localObject;
-      }
-      else
-      {
-        paramProtoResp = paramProtoResp.resp.getWupBuffer();
-        cmd0x346.RspBody localRspBody = new cmd0x346.RspBody();
         try
         {
-          localRspBody.mergeFrom(paramProtoResp);
-          if (localRspBody.msg_apply_upload_rsp_v3.has()) {
-            break label224;
-          }
-          QLog.i("ProtocolManager", 1, "=_= ^! [CS Replay]handleUploadResponse: rspBody has not hasMsgApplyUploadRsp");
-          i = -100003;
-          paramProtoResp = localObject;
+          k = localOptions.outWidth;
+          j = k;
+          return new alsn(j, i);
         }
-        catch (InvalidProtocolBufferMicroException paramProtoResp)
+        catch (Exception paramString)
         {
-          paramProtoResp.printStackTrace();
-          i = -100003;
-          paramProtoResp = localObject;
+          break label53;
         }
-        continue;
-        label224:
-        paramProtoResp = (cmd0x346.ApplyUploadRspV3)localRspBody.msg_apply_upload_rsp_v3.get();
-        bool = true;
+        paramString = paramString;
+        i = 0;
       }
     }
   }
   
-  private void e(ProtoReqManager.ProtoReq paramProtoReq, ProtoReqManager.ProtoResp paramProtoResp)
+  protected ansq<CameraEmotionData> a()
   {
-    boolean bool = false;
-    int i = -1;
-    String str = "";
-    if ((paramProtoResp.resp.getResultCode() == 1002) || (paramProtoResp.resp.getResultCode() == 1013))
+    return (anrf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CAMERA_EMOTICON_HANDLER);
+  }
+  
+  protected asda<CameraEmotionData> a()
+  {
+    return (asen)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER);
+  }
+  
+  public String a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
     {
-      i = -100001;
-      QLog.i("ProtocolManager", 1, "handleUploadSuccResponse: resp is timeout[" + paramProtoResp.resp.getResultCode() + "]");
-      paramProtoResp = str;
+      this.c = SharePreferenceUtils.get(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "camera_emo_list_version");
+      this.jdField_a_of_type_Boolean = true;
     }
-    cmd0x346.RspBody localRspBody;
-    for (;;)
+    return this.c;
+  }
+  
+  public void a(int paramInt, CameraEmotionData paramCameraEmotionData)
+  {
+    asej localasej = (asej)this.jdField_a_of_type_JavaUtilHashMap.get(paramCameraEmotionData);
+    if (localasej != null)
     {
-      if (paramProtoReq.busiData != null) {
-        ((asef)((aseh)paramProtoReq.busiData).a()).a(bool, i, paramProtoResp);
-      }
+      localasej.a(paramInt, paramCameraEmotionData);
+      this.jdField_a_of_type_JavaUtilHashMap.remove(paramCameraEmotionData);
+    }
+  }
+  
+  public void a(CameraEmotionData paramCameraEmotionData)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    {
+      QLog.d("CameraEmoRoamingManager", 1, "realUploadCustomEmoticon start, app is null");
+      a(100, paramCameraEmotionData);
       return;
-      if (paramProtoResp.resp.getResultCode() != 1000)
-      {
-        i = -100002;
-        QLog.i("ProtocolManager", 1, "handleUploadSuccResponse: resp is failed[" + paramProtoResp.resp.getResultCode() + "]");
-        paramProtoResp = str;
-      }
-      else
-      {
-        paramProtoResp = paramProtoResp.resp.getWupBuffer();
-        localRspBody = new cmd0x346.RspBody();
-        try
-        {
-          localRspBody.mergeFrom(paramProtoResp);
-          if (localRspBody.msg_upload_succ_rsp.has()) {
-            break;
-          }
-          QLog.i("ProtocolManager", 1, "handleUploadSuccResponse: rspBody has not hasMsgUploadSuccRsp");
-          i = -100003;
-          paramProtoResp = str;
-        }
-        catch (InvalidProtocolBufferMicroException paramProtoResp)
-        {
-          paramProtoResp.printStackTrace();
-          i = -100003;
-          paramProtoResp = str;
-        }
-      }
     }
-    paramProtoResp = (cmd0x346.UploadSuccRsp)localRspBody.msg_upload_succ_rsp.get();
-    if (paramProtoResp.int32_ret_code.has()) {
-      i = paramProtoResp.int32_ret_code.get();
-    }
-    if (paramProtoResp.str_ret_msg.has()) {}
-    for (paramProtoResp = paramProtoResp.str_ret_msg.get();; paramProtoResp = "")
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      bool = true;
-      break;
-    }
-  }
-  
-  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, asei paramasei, int paramInt3, int paramInt4, ased paramased)
-  {
-    cmd0x345.ReqBody.SubCmd0x6ReqBody localSubCmd0x6ReqBody = new cmd0x345.ReqBody.SubCmd0x6ReqBody();
-    localSubCmd0x6ReqBody.uint32_dst_bus_id.set(paramInt2);
-    localSubCmd0x6ReqBody.uint64_file_size.set(paramasei.jdField_a_of_type_Long);
-    localSubCmd0x6ReqBody.bytes_uuid.set(ByteStringMicro.copyFrom(paramasei.b.getBytes()));
-    if (!TextUtils.isEmpty(paramasei.c)) {
-      localSubCmd0x6ReqBody.bytes_file_md5.set(ByteStringMicro.copyFrom(paramasei.c.getBytes()));
-    }
-    localSubCmd0x6ReqBody.uint64_src_uin.set(Long.parseLong(paramString2));
-    paramString2 = paramString1.replace("+", "");
-    localSubCmd0x6ReqBody.uint64_dst_uin.set(Long.parseLong(paramString2));
-    localSubCmd0x6ReqBody.str_file_name.set(paramasei.jdField_a_of_type_JavaLangString);
-    localSubCmd0x6ReqBody.str_src_file_path.set(paramasei.b);
-    localSubCmd0x6ReqBody.str_src_parent_folder.set("/");
-    localSubCmd0x6ReqBody.uint32_client_type.set(104);
-    if ((paramInt1 != 1) && (paramInt1 != 0))
-    {
-      localSubCmd0x6ReqBody.uint64_app_id.set(3L);
-      localSubCmd0x6ReqBody.uint64_talk_type.set(paramInt1);
-      paramString1 = aszt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramInt1);
-      if (paramString1 != null) {
-        localSubCmd0x6ReqBody.bytes_sig.set(ByteStringMicro.copyFrom(paramString1));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ProtocolManager", 2, "forwardDiscToOther : add tempinfo SessionType[" + paramInt1 + "]");
-      }
-    }
-    paramString1 = new cmd0x345.ReqBody();
-    paramString1.msg_subcmd_0x6_req_body.set(localSubCmd0x6ReqBody);
-    paramString1.uint32_sub_cmd.set(7);
-    paramString2 = new aseh(this, paramased);
-    paramString2.a(7);
-    a("GTalkFileAppSvr.CMD_DISCUSS_FILE", paramString1.toByteArray(), paramString2, paramInt3, paramInt4, 1);
-  }
-  
-  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, ased paramased)
-  {
-    cmd0x346.ApplyForwardFileReq localApplyForwardFileReq = new cmd0x346.ApplyForwardFileReq();
-    localApplyForwardFileReq.uint64_sender_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-    Object localObject = paramString1.replace("+", "");
-    localApplyForwardFileReq.uint64_recver_uin.set(Long.parseLong((String)localObject));
-    localApplyForwardFileReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramString2.getBytes()));
-    paramString1 = new cmd0x346.ReqBody();
-    paramString1.msg_apply_forward_file_req.set(localApplyForwardFileReq);
-    paramString1.uint32_cmd.set(700);
-    paramString2 = paramString1.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    paramString2.set(i);
-    paramString1.uint32_business_id.set(3);
-    paramString1.uint32_client_type.set(104);
-    if (paramInt1 != 0)
-    {
-      paramString2 = new cmd0x346.ExtensionReq();
-      paramString2.uint64_id.set(3L);
-      paramString2.uint64_type.set(paramInt1);
-      localObject = aszt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, paramInt1);
-      if (localObject != null) {
-        paramString2.bytes_sig.set(ByteStringMicro.copyFrom((byte[])localObject));
-      }
-      paramString1.msg_extension_req.set(paramString2);
-      if (QLog.isColorLevel()) {
-        QLog.i("ProtocolManager", 2, "forwardOfflineFileToBuddy : add tempinfo SessionType[" + paramInt1 + "]");
-      }
-    }
-    if (((aser)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317)).h())
-    {
-      paramString1.uint32_flag_support_mediaplatform.set(1);
-      if ((paramString3 != null) && (paramString3.length() > 0))
-      {
-        localApplyForwardFileReq.str_fileidcrc.set(paramString3);
-        QLog.d("ProtocolManager", 1, "forwardOfflineFileToBuddy: UseMediaPlatform enabled");
-      }
-    }
-    for (;;)
-    {
-      paramString2 = new aseh(this, paramased);
-      a("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_FORWARD_FILE-700", paramString1.toByteArray(), paramString2, paramInt2, paramInt3, 1);
+      QLog.d("CameraEmoRoamingManager", 1, "realUploadCustomEmoticon start, net not support");
+      a(12, paramCameraEmotionData);
       return;
-      QLog.d("ProtocolManager", 1, "forwardOfflineFileToBuddy: UseMediaPlatform enabled but FileIdCrc is null");
-      continue;
-      QLog.d("ProtocolManager", 1, "forwardOfflineFileToBuddy: UseMediaPlatform not enabled");
     }
+    QLog.d("CameraEmoRoamingManager", 1, "realUploadCustomEmoticon start");
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.mFileType = 24;
+    localTransferRequest.mCommandId = 70;
+    localTransferRequest.mRichTag = "camera_emo_upload";
+    localTransferRequest.mSelfUin = this.jdField_a_of_type_JavaLangString;
+    localTransferRequest.mPeerUin = this.jdField_a_of_type_JavaLangString;
+    localTransferRequest.mIsUp = true;
+    localTransferRequest.mUniseq = paramCameraEmotionData.emoId;
+    localTransferRequest.mLocalPath = paramCameraEmotionData.emoPath;
+    Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
+    localCommFileExtReq.uint32_action_type.set(0);
+    localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramCameraEmotionData.resid.getBytes()));
+    localTransferRequest.mExtentionInfo = localCommFileExtReq.toByteArray();
+    paramCameraEmotionData = new asei(this, ThreadManagerV2.getSubThreadLooper(), paramCameraEmotionData);
+    paramCameraEmotionData.addFilter(new Class[] { BDHCommonUploadProcessor.class });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().addHandle(paramCameraEmotionData);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
   }
   
-  public void a(String paramString1, String paramString2, asei paramasei, int paramInt1, int paramInt2, int paramInt3, ased paramased)
+  public void a(CameraEmotionData paramCameraEmotionData, asej paramasej)
   {
-    cmd0x346.ApplyCopyToReq localApplyCopyToReq = new cmd0x346.ApplyCopyToReq();
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().replace("+", "");
-    localApplyCopyToReq.uint64_dst_id.set(Long.parseLong(str));
-    if ((paramInt1 == 106) || (paramInt1 == 102) || (paramInt1 == 104))
+    if (StringUtil.isEmpty(paramCameraEmotionData.emoPath))
     {
-      paramString2 = paramString2.replace("+", "");
-      localApplyCopyToReq.uint64_dst_id.set(Long.parseLong(paramString2));
-    }
-    localApplyCopyToReq.uint32_dst_svcid.set(paramInt1);
-    localApplyCopyToReq.uint64_src_uin.set(Long.parseLong(str));
-    localApplyCopyToReq.uint64_file_size.set(paramasei.jdField_a_of_type_Long);
-    localApplyCopyToReq.str_file_name.set(paramasei.jdField_a_of_type_JavaLangString);
-    localApplyCopyToReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramString1.getBytes()));
-    paramString1 = new cmd0x346.ReqBody();
-    paramString1.msg_apply_copy_to_req.set(localApplyCopyToReq);
-    paramString1.uint32_cmd.set(60100);
-    paramString2 = paramString1.uint32_seq;
-    paramInt1 = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = paramInt1 + 1;
-    paramString2.set(paramInt1);
-    paramString1.uint32_business_id.set(3);
-    paramString1.uint32_client_type.set(104);
-    paramString2 = new aseh(this, paramased);
-    a("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_COPY_TO-60100", paramString1.toByteArray(), paramString2, paramInt2, paramInt3, 1);
-  }
-  
-  public void a(String paramString1, String paramString2, asei paramasei, ased paramased)
-  {
-    cmd0x345.ReqBody.SubCmd0x5ReqBody localSubCmd0x5ReqBody = new cmd0x345.ReqBody.SubCmd0x5ReqBody();
-    localSubCmd0x5ReqBody.uint32_src_bus_id.set(106);
-    localSubCmd0x5ReqBody.bytes_src_parent_folder.set(ByteStringMicro.copyFrom("/".getBytes()));
-    localSubCmd0x5ReqBody.bytes_src_file_path.set(ByteStringMicro.copyFrom(paramasei.b.getBytes()));
-    localSubCmd0x5ReqBody.uint32_dst_uin.set(Integer.parseInt(paramString1));
-    localSubCmd0x5ReqBody.uint64_file_size.set(paramasei.jdField_a_of_type_Long);
-    localSubCmd0x5ReqBody.uint32_from_uin.set(Integer.parseInt(paramString2));
-    localSubCmd0x5ReqBody.str_file_name.set(paramasei.jdField_a_of_type_JavaLangString);
-    if ((paramasei.c != null) && (paramasei.c.length() > 0)) {
-      localSubCmd0x5ReqBody.bytes_md5.set(ByteStringMicro.copyFrom(paramasei.c.getBytes()));
-    }
-    paramString1 = new cmd0x345.ReqBody();
-    paramString1.msg_subcmd_0x5_req_body.set(localSubCmd0x5ReqBody);
-    paramString1.uint32_sub_cmd.set(6);
-    paramString2 = new aseh(this, paramased);
-    paramString2.a(6);
-    a("GTalkFileAppSvr.CMD_DISCUSS_FILE", paramString1.toByteArray(), paramString2, 30000, 3, 1);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, asee paramasee)
-  {
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
-    localReqBody.uint32_cmd.set(1700);
-    localReqBody.uint32_business_id.set(3);
-    localReqBody.uint32_client_type.set(104);
-    Object localObject = localReqBody.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    ((PBUInt32Field)localObject).set(i);
-    localObject = new cmd0x346.ApplyUploadReqV3();
-    ((cmd0x346.ApplyUploadReqV3)localObject).uint64_sender_uin.set(l);
-    ((cmd0x346.ApplyUploadReqV3)localObject).uint64_recver_uin.set(Long.parseLong(paramString1));
-    ((cmd0x346.ApplyUploadReqV3)localObject).uint64_file_size.set(paramLong);
-    ((cmd0x346.ApplyUploadReqV3)localObject).str_file_name.set(new String(paramString3));
-    ((cmd0x346.ApplyUploadReqV3)localObject).bytes_10m_md5.set(ByteStringMicro.copyFrom(paramArrayOfByte1));
-    ((cmd0x346.ApplyUploadReqV3)localObject).bytes_sha.set(ByteStringMicro.copyFrom(paramArrayOfByte2));
-    ((cmd0x346.ApplyUploadReqV3)localObject).str_local_filepath.set(paramString2);
-    ((cmd0x346.ApplyUploadReqV3)localObject).uint32_danger_level.set(0);
-    ((cmd0x346.ApplyUploadReqV3)localObject).uint64_total_space.set(0L);
-    localReqBody.msg_apply_upload_req_v3.set((MessageMicro)localObject);
-    localReqBody.setHasFlag(true);
-    paramString1 = new aseh(this, paramasee);
-    a("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700", localReqBody.toByteArray(), paramString1, paramInt1, paramInt2, 1);
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, asef paramasef)
-  {
-    cmd0x346.UploadSuccReq localUploadSuccReq = new cmd0x346.UploadSuccReq();
-    localUploadSuccReq.uint64_sender_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-    paramString = paramString.replace("+", "");
-    localUploadSuccReq.uint64_recver_uin.set(Long.parseLong(paramString));
-    localUploadSuccReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    paramArrayOfByte = new cmd0x346.ReqBody();
-    paramArrayOfByte.msg_upload_succ_req.set(localUploadSuccReq);
-    paramArrayOfByte.uint32_cmd.set(800);
-    paramString = paramArrayOfByte.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    paramString.set(i);
-    paramArrayOfByte.uint32_business_id.set(3);
-    paramArrayOfByte.uint32_client_type.set(104);
-    paramString = null;
-    if (paramasef != null) {
-      paramString = new aseh(this, paramasef);
-    }
-    a("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_UPLOAD_SUCC-800", paramArrayOfByte.toByteArray(), paramString, paramInt1, paramInt2, 1);
-  }
-  
-  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
-  {
-    if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_FORWARD_FILE-700".equals(paramProtoReq.ssoCmd)) {
-      a(paramProtoReq, paramProtoResp);
-    }
-    for (;;)
-    {
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_UPLOAD_SUCC-800".equals(paramProtoReq.ssoCmd)) {
-        e(paramProtoReq, paramProtoResp);
-      }
+      QLog.d("CameraEmoRoamingManager", 1, "uploadCameraEmo error, path is null");
+      paramasej.a(10, paramCameraEmotionData);
       return;
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_COPY_TO-60100".equals(paramProtoReq.ssoCmd))
-      {
-        b(paramProtoReq, paramProtoResp);
-      }
-      else if ("GTalkFileAppSvr.CMD_DISCUSS_FILE".equals(paramProtoReq.ssoCmd))
-      {
-        aseh localaseh = (aseh)paramProtoReq.busiData;
-        int i = localaseh.a();
-        if (i == 6) {
-          c(paramProtoReq, paramProtoResp);
-        } else if (i == 7) {
-          c(paramProtoReq, paramProtoResp);
-        } else {
-          QLog.w("ProtocolManager", 1, "unspourt:" + localaseh.a());
-        }
-      }
-      else if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700".equals(paramProtoReq.ssoCmd))
-      {
-        d(paramProtoReq, paramProtoResp);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    {
+      QLog.d("CameraEmoRoamingManager", 1, "uploadCameraEmo, app is null");
+      paramasej.a(100, paramCameraEmotionData);
+      return;
+    }
+    long l = a(paramCameraEmotionData.emoPath);
+    alsn localalsn = a(paramCameraEmotionData.emoPath);
+    if ((StringUtil.isEmpty(paramCameraEmotionData.md5)) || (l == 0L) || (localalsn.b() == 0) || (localalsn.a() == 0))
+    {
+      QLog.d("CameraEmoRoamingManager", 1, new Object[] { "uploadCameraEmo params error, md5:", paramCameraEmotionData.md5, " size:", Long.valueOf(l), " width:", Integer.valueOf(localalsn.a()), " height:", Integer.valueOf(localalsn.b()) });
+      paramasej.a(14, paramCameraEmotionData);
+      return;
+    }
+    QLog.d("CameraEmoRoamingManager", 1, "uploadCameraEmo start");
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramCameraEmotionData, paramasej);
+    ((anrf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CAMERA_EMOTICON_HANDLER)).a(paramCameraEmotionData, localalsn.a(), localalsn.b(), l);
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    SharePreferenceUtils.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "camera_emo_list_version", paramString);
+    this.c = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (String str = "";; str = "has_value")
+    {
+      this.b = str;
+      SharePreferenceUtils.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "camera_emo_guide_tag", this.b);
+      bhhr.a("camera_emo_guide_again_tag", Boolean.valueOf(paramBoolean));
+      return;
+    }
+  }
+  
+  public void b(CameraEmotionData paramCameraEmotionData)
+  {
+    paramCameraEmotionData.increaseClickNum();
+    a().b(paramCameraEmotionData);
+  }
+  
+  public boolean b()
+  {
+    if ((this.b == null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    {
+      this.b = SharePreferenceUtils.get(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "camera_emo_guide_tag");
+      if (this.b == null) {
+        this.b = "";
       }
     }
+    return ((StringUtil.isEmpty(this.b)) || (((Boolean)bhhr.a("camera_emo_guide_again_tag", Boolean.valueOf(true))).booleanValue())) && (c());
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    anrf localanrf;
+    do
+    {
+      return;
+      localanrf = (anrf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CAMERA_EMOTICON_HANDLER);
+    } while (localanrf == null);
+    ThreadManager.post(new CameraEmoRoamingManager.2(this, (asen)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER), localanrf), 5, null, true);
+  }
+  
+  public void c(CameraEmotionData paramCameraEmotionData)
+  {
+    paramCameraEmotionData.increaseExposeNum();
+    a().b(paramCameraEmotionData);
+  }
+  
+  public boolean c()
+  {
+    return Build.VERSION.SDK_INT >= 21;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if ((this.jdField_a_of_type_Anrh != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anrh);
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      a(15, (CameraEmotionData)((Map.Entry)localIterator.next()).getKey());
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aseg
  * JD-Core Version:    0.7.0.1
  */

@@ -32,8 +32,8 @@ import java.util.concurrent.Executor;
 
 public class AEModule
 {
-  private static final String[] AEKIT_FORMER_VERSION = { "1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.4.0", "1.5.0", "1.6.0", "1.7.0", "1.7.1", "1.7.2", "1.7.3", "1.7.4", "1.7.5", "1.7.6", "1.7.7", "1.7.8", "1.7.9", "1.8.0", "1.8.1" };
-  private static final String AEKIT_VERSION = "1.8.1";
+  private static final String[] AEKIT_FORMER_VERSION = { "1.0.0", "1.1.0", "1.2.0", "1.3.0", "1.4.0", "1.5.0", "1.6.0", "1.7.0", "1.7.1", "1.7.2", "1.7.3", "1.7.4", "1.7.5", "1.7.6", "1.7.7", "1.7.8", "1.7.9", "1.8.0", "1.8.1", "1.8.2", "1.8.4", "1.8.5", "1.8.6" };
+  private static final String AEKIT_VERSION = "1.8.6";
   private static final String AEKIT_VERSION_FILE = "aekit_meta.txt";
   public static final String DEFAULT_LICENSE_NAME = "com_tencent_2118.lic";
   private static final String DEFAULT_RESOURCE_DIR = "tencent" + File.separator + "aekit";
@@ -120,14 +120,14 @@ public class AEModule
       return aekitVersion;
     }
     if (sContext == null) {
-      aekitVersion = "1.8.1";
+      aekitVersion = "1.8.6";
     }
     for (;;)
     {
       return aekitVersion;
       String str = FileUtils.loadAssetsString(sContext, "aekit_meta.txt");
       if (TextUtils.isEmpty(str)) {
-        aekitVersion = "1.8.1";
+        aekitVersion = "1.8.6";
       } else {
         aekitVersion = str.split("\n")[0];
       }
@@ -144,7 +144,7 @@ public class AEModule
       }
     }
     label29:
-    for (aekitVersion = "1.8.1";; aekitVersion = paramContext.split("\n")[0]) {
+    for (aekitVersion = "1.8.6";; aekitVersion = paramContext.split("\n")[0]) {
       return aekitVersion;
     }
   }
@@ -165,6 +165,7 @@ public class AEModule
     boolean bool3 = paramAEModuleConfig.isEnableResourceCheck();
     boolean bool4 = paramAEModuleConfig.isEnableDataReport();
     boolean bool5 = paramAEModuleConfig.isEnableProfiler();
+    boolean bool6 = paramAEModuleConfig.isEnableSoLoadCheck();
     setContext(paramContext);
     AEBaseConfig.setContext(paramContext);
     debugMode = paramAEModuleConfig.isDebugMode();
@@ -190,6 +191,7 @@ public class AEModule
     FeatureManager.setSoDir(mSoPath);
     FeatureManager.enableResourceCheck(bool3);
     FeatureManager.createNoMedia();
+    FeatureManager.enableSoLoadCheck(bool6);
     FaceBeautyManager.registerFaceBeauty(AEFaceBeauty.class.getName(), AEFaceBeauty.class);
     VideoPrefsUtil.init(paramContext, localSharedPreferences);
     GLCapabilities.init(bool2);

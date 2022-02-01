@@ -1,10 +1,25 @@
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
+
+@TargetApi(16)
 public class binh
+  implements blak
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public int c;
+  binh(ContextMenuTextView paramContextMenuTextView) {}
+  
+  public void a()
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      ContextMenuTextView.a(this.a, null);
+    }
+    for (;;)
+    {
+      this.a.a = null;
+      return;
+      ContextMenuTextView.b(this.a, null);
+    }
+  }
 }
 
 

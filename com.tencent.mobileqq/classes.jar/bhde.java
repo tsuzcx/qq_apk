@@ -1,18 +1,37 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bhde
-  extends ListView
+  extends MqqHandler
 {
-  public bhde(DraggableGridView paramDraggableGridView, Context paramContext)
+  private final WeakReference<Handler.Callback> a;
+  
+  public bhde(Handler.Callback paramCallback)
   {
-    super(paramContext);
+    this.a = new WeakReference(paramCallback);
   }
   
-  public void setOverScrollMode(int paramInt)
+  public bhde(Looper paramLooper, Handler.Callback paramCallback)
   {
-    super.setOverScrollMode(2);
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
+    }
+  }
+  
+  public String toString()
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    return super.toString() + " " + localCallback;
   }
 }
 

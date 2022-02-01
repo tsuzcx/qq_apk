@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class aebj
-  extends amsu
+  extends aqjn
 {
-  public aebj(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public aebj(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((!paramBoolean) || (paramString == null)) {
-      return;
+    if (paramBoolean)
+    {
+      aqjm localaqjm = (aqjm)this.a.app.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER);
+      this.a.a = localaqjm.a(paramString);
     }
-    this.a.a(this.a.app.getCurrentAccountUin());
   }
 }
 

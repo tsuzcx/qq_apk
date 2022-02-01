@@ -1,27 +1,63 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ops
-  implements View.OnTouchListener
+public class ops
+  extends BroadcastReceiver
 {
-  ops(opq paramopq, Context paramContext) {}
+  public ops(EcshopNewPageFragment paramEcshopNewPageFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) || (((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent() == null)) {
-        break label67;
+    int i = 0;
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      if (!"com.tencent.biz.pubaccount.ecshop.tabpage.finish".equals(paramContext)) {
+        break label41;
+      }
+      if (this.a.getActivity() != null) {
+        this.a.getActivity().finish();
       }
     }
-    label67:
-    for (int i = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("channel_from", -1);; i = 0)
+    label41:
+    int j;
+    int k;
+    do
     {
-      opq.a("0X8007BE7", null, null, null, null, i);
-      return false;
+      do
+      {
+        return;
+      } while (!"action_notify_view_update".equals(paramContext));
+      j = paramIntent.getIntExtra("businessId", 0);
+      k = paramIntent.getIntExtra("viewId", 0);
+    } while ((25 != j) || (k != 1));
+    for (;;)
+    {
+      try
+      {
+        paramContext = new JSONObject(paramIntent.getStringExtra("extstr"));
+        if (EcshopNewPageFragment.a(this.a) == null) {
+          break;
+        }
+        paramIntent = EcshopNewPageFragment.a(this.a);
+        if (paramContext.optInt("isShow") == 1)
+        {
+          paramIntent.setVisibility(i);
+          return;
+        }
+      }
+      catch (JSONException paramContext)
+      {
+        paramContext.printStackTrace();
+        return;
+      }
+      i = 8;
     }
   }
 }

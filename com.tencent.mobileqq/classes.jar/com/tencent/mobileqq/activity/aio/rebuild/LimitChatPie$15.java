@@ -1,31 +1,32 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahhp;
-import arhi;
+import aici;
+import aslo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 public class LimitChatPie$15
   implements Runnable
 {
-  public LimitChatPie$15(ahhp paramahhp) {}
+  public LimitChatPie$15(aici paramaici) {}
   
   public void run()
   {
-    arhi localarhi;
+    aslo localaslo;
     if (this.this$0.app != null)
     {
-      localarhi = (arhi)this.this$0.app.getManager(264);
-      if (localarhi != null) {
+      localaslo = (aslo)this.this$0.app.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      if (localaslo != null) {
         break label45;
       }
       QLog.e(this.this$0.tag, 2, "saveExtendFriendInfoInSubThread  extendFriendManager Is null");
     }
     label45:
-    while (ahhp.a(this.this$0) == null) {
+    while (aici.a(this.this$0) == null) {
       return;
     }
-    localarhi.a(ahhp.a(this.this$0));
+    localaslo.a(aici.a(this.this$0));
   }
 }
 

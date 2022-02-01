@@ -1,128 +1,44 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.kwstudio.office.preview.TdsReaderView;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
 
 public class atex
+  extends auex
 {
-  private static atex jdField_a_of_type_Atex;
-  private int jdField_a_of_type_Int = -1;
-  private TdsReaderView jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
+  public atex(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public static atex a()
+  public void a()
   {
-    if (jdField_a_of_type_Atex == null) {
-      jdField_a_of_type_Atex = new atex();
-    }
-    return jdField_a_of_type_Atex;
+    this.a.a.a().b();
   }
   
-  private static boolean a(TdsReaderView paramTdsReaderView, String paramString)
+  public void b()
   {
-    String str = FileUtil.getExtension(paramString);
-    paramString = str;
-    if (str.startsWith(".")) {
-      paramString = str.replaceFirst(".", "");
-    }
-    return paramTdsReaderView.preOpen(paramString);
+    this.a.a.a().o();
   }
   
-  public TdsReaderView a(Activity paramActivity, String paramString, atez paramatez)
+  public void c()
   {
-    TdsReaderView localTdsReaderView = null;
-    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null) && (paramActivity.hashCode() == this.jdField_a_of_type_Int)) {
-      localTdsReaderView = this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
-    }
-    do
-    {
-      return localTdsReaderView;
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null)
-      {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = null;
-      }
-    } while (!FileUtil.fileExistsAndNotEmpty(paramString));
-    if (!TdsReaderGlobal.a())
-    {
-      QLog.w("TdsReaderView_LocalTdsViewManager", 4, "openFile: tds disable for filePath=" + paramString);
-      return null;
-    }
-    QLog.w("TdsReaderView_LocalTdsViewManager", 4, "initVarView: new TdsReaderView");
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = TdsReaderView.newInstance(new atfa(paramActivity, false, paramatez, null));
-    if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView != null)
-    {
-      QLog.w("TdsReaderView_LocalTdsViewManager", 4, "initVarView: TbsReaderView openFile");
-      if (a(this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView, paramString))
-      {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.openFile(paramString, ".pdf");
-        this.jdField_a_of_type_Int = paramActivity.hashCode();
-        return this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView;
-      }
-      this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
-      this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = null;
-      return null;
-    }
-    QLog.w("TdsReaderView_LocalTdsViewManager", 4, "openFile: tds instance failed for filePath=" + paramString);
-    return null;
+    this.a.a.a().p();
   }
   
-  public void a(Activity paramActivity)
+  public void d()
   {
-    int i = paramActivity.hashCode();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("TdsReaderView_LocalTdsViewManager", 4, "destroy hashCode[" + this.jdField_a_of_type_Int + "],activity[" + i + "]");
-    }
-    if (this.jdField_a_of_type_Int != i) {}
-    while (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView.onStop();
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewTdsReaderView = null;
+    this.a.a.a().q();
   }
   
-  public boolean a(Activity paramActivity, String paramString, atez paramatez, boolean paramBoolean)
+  public void e()
   {
-    boolean bool = false;
-    paramBoolean = bool;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (!TdsReaderGlobal.a())
-      {
-        QLog.w("TdsReaderView_LocalTdsViewManager", 4, "canOpenFile: tds disable for filePath=" + paramString);
-        paramBoolean = bool;
-      }
-    }
-    else if (QLog.isColorLevel()) {
-      if (!paramBoolean) {
-        break label150;
-      }
-    }
-    label150:
-    for (paramActivity = "pre open file true! wait callback!";; paramActivity = "pre open file false! strPath=" + paramString)
-    {
-      QLog.i("TdsReaderView_LocalTdsViewManager", 1, paramActivity);
-      if (paramatez != null) {
-        paramatez.a(paramBoolean);
-      }
-      return paramBoolean;
-      paramActivity = TdsReaderView.newInstance(new atfa(paramActivity, true, null, null));
-      if (paramActivity != null)
-      {
-        paramBoolean = a(paramActivity, paramString);
-        paramActivity.onStop();
-        break;
-      }
-      QLog.w("TdsReaderView_LocalTdsViewManager", 4, "canOpenFile: tds instance failed for filePath=" + paramString);
-      paramBoolean = bool;
-      break;
-    }
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atex
  * JD-Core Version:    0.7.0.1
  */

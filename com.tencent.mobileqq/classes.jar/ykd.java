@@ -1,16 +1,6 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
-
-public class ykd
-  extends Handler
+public abstract interface ykd
 {
-  public ykd(RMWService paramRMWService) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ykb.b("RMWService", "service.handle : " + ykc.a(paramMessage));
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,31 +1,19 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.view.TextHeaderView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bhsp
   implements View.OnClickListener
 {
-  public bhsp(OpenAuthorityAccountView paramOpenAuthorityAccountView, String paramString) {}
+  public bhsp(TextHeaderView paramTextHeaderView, Activity paramActivity, int paramInt, QQVipMsgInfo paramQQVipMsgInfo) {}
   
   public void onClick(View paramView)
   {
-    if (((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof PublicFragmentActivityForOpenSDK)) && (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null)) {
-      OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).a(this.jdField_a_of_type_JavaLangString, true);
-    }
-    for (;;)
-    {
-      if (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null) {
-        OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).dismiss();
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
-      }
-    }
+    TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewTextHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

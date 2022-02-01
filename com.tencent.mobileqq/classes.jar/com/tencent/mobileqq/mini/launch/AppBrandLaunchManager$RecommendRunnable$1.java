@@ -6,6 +6,7 @@ import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
@@ -33,11 +34,11 @@ class AppBrandLaunchManager$RecommendRunnable$1
     }
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      AppBrandLaunchManager.access$1100(this.this$1.this$0).remove(AppBrandLaunchManager.RecommendRunnable.access$1000(this.this$1));
+      AppBrandLaunchManager.access$800(this.this$1.this$0).remove(AppBrandLaunchManager.RecommendRunnable.access$700(this.this$1));
       QLog.e("DesktopDataManager-Recommend", 1, "getRecommendAppList suc : " + paramJSONObject.toString());
       localObject1 = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject1 instanceof QQAppInterface)) {
-        ((DesktopDataManager)((AppRuntime)localObject1).getManager(336)).clearRecommendExposureList();
+        ((DesktopDataManager)((AppRuntime)localObject1).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).clearRecommendExposureList();
       }
       paramJSONObject = (INTERFACE.StGetRecommendAppListRsp)paramJSONObject.opt("response");
       if (paramJSONObject != null)
@@ -51,7 +52,7 @@ class AppBrandLaunchManager$RecommendRunnable$1
           {
             INTERFACE.StModuleInfo localStModuleInfo = (INTERFACE.StModuleInfo)((Iterator)localObject2).next();
             if (localObject1 != null) {
-              ((DesktopDataManager)((AppInterface)localObject1).getManager(336)).updateModuleInfo(localStModuleInfo);
+              ((DesktopDataManager)((AppInterface)localObject1).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).updateModuleInfo(localStModuleInfo);
             }
           }
         }

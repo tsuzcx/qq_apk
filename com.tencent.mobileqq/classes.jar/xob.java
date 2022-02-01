@@ -1,51 +1,27 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xob
-  implements vqp<wdo, wdp>
+public final class xob
+  extends QQUIEventReceiver<xnt, ycp>
 {
-  xob(xnz paramxnz, JobContext paramJobContext, xnm paramxnm) {}
-  
-  public void a(@NonNull wdo paramwdo, @Nullable wdp arg2, @NonNull ErrorMessage paramErrorMessage)
+  public xob(@NonNull xnt paramxnt)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      xvv.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
-      return;
+    super(paramxnt);
+  }
+  
+  public void a(@NonNull xnt paramxnt, @NonNull ycp paramycp)
+  {
+    if ((paramycp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramxnt.a != null) && (TextUtils.equals(paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramxnt.a.b))) {
+      paramxnt.i();
     }
-    if (??? == null)
-    {
-      paramErrorMessage = new wdp(paramErrorMessage);
-      synchronized (this.jdField_a_of_type_Xnz)
-      {
-        xnz.a(this.jdField_a_of_type_Xnz, paramErrorMessage);
-        xnz.a(this.jdField_a_of_type_Xnz).remove(paramwdo);
-        xnz.a(this.jdField_a_of_type_Xnz, this.jdField_a_of_type_Xnm);
-        return;
-      }
-    }
-    if (paramErrorMessage.isFail()) {
-      xvv.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
-    }
-    vtu localvtu = (vtu)vux.a(17);
-    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
-    for (;;)
-    {
-      paramErrorMessage = ???;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      paramErrorMessage = (wdq)localIterator.next();
-      localvtu.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
-      if (paramErrorMessage.b == 1) {
-        paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localvtu.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
-      }
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return ycp.class;
   }
 }
 

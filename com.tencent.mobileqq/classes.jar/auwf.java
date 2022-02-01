@@ -1,52 +1,62 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class auwf
-  implements BusinessObserver
+  extends BaseAdapter
 {
-  public auwf(UiApiPlugin paramUiApiPlugin) {}
+  public auwf(LangSettingFragment paramLangSettingFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private View.OnClickListener a(int paramInt)
   {
-    byte[] arrayOfByte;
-    if (paramBoolean)
-    {
-      arrayOfByte = paramBundle.getByteArray("data");
-      paramBundle.getString("openId");
-      if (arrayOfByte != null) {
-        paramBundle = new oidb_sso.OIDBSSOPkg();
-      }
+    return new auwg(this, paramInt);
+  }
+  
+  private boolean a(int paramInt)
+  {
+    if ((paramInt >= LangSettingFragment.a().size()) || (paramInt < 0)) {
+      return false;
     }
-    try
-    {
-      paramBundle = (oidb_sso.OIDBSSOPkg)paramBundle.mergeFrom((byte[])arrayOfByte);
-      paramInt = paramBundle.uint32_result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "handleOidb0x716_48Rsp, resultCode:" + paramInt);
-      }
-      paramBundle = paramBundle.bytes_bodybuffer.get().toByteArray();
-      if (paramInt == 0)
-      {
-        arrayOfByte = new byte[4];
-        System.arraycopy(paramBundle, 0, arrayOfByte, 0, 4);
-        paramBundle = TroopInfoActivity.a(String.valueOf(ByteBuffer.wrap(arrayOfByte).getInt() + ""), 32);
-        TroopUtils.openTroopInfoActivity(this.a.a(), paramBundle, -1);
-      }
-      return;
+    return ((Integer)LangSettingFragment.a().get(paramInt)).intValue() == 1033;
+  }
+  
+  public int getCount()
+  {
+    return LangSettingFragment.a().size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    FormSimpleItem localFormSimpleItem = new FormSimpleItem(this.a.getActivity());
+    if (paramInt == LangSettingFragment.a(this.a)) {
+      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130844669));
     }
-    catch (Exception paramBundle)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "pkg.mergeFrom:" + paramBundle.toString());
+      if (paramInt < LangSettingFragment.a().size()) {
+        localFormSimpleItem.setLeftText(LangSettingFragment.a(this.a, paramInt, false));
+      }
+      localFormSimpleItem.setTag(Integer.valueOf(paramInt));
+      localFormSimpleItem.setOnClickListener(a(paramInt));
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localFormSimpleItem;
+      localFormSimpleItem.setRightIcon(null);
     }
   }
 }

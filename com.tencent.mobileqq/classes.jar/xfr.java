@@ -1,44 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.transfile.StoryUploadProcessor;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
-public class xfr
-  extends SimpleJob<Void>
+class xfr
+  extends AnimatorListenerAdapter
 {
-  public xfr(QQStoryMainController paramQQStoryMainController, String paramString)
-  {
-    super(paramString);
-  }
+  xfr(xfp paramxfp) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ypi.a(this.a.jdField_a_of_type_AndroidAppActivity);
-    ((vna)vux.a(6)).c();
-    wvt.a(this.a.jdField_a_of_type_AndroidAppActivity).a(this.a.jdField_a_of_type_AndroidAppActivity);
-    PngQuantUtils.a(QQStoryContext.a());
-    ((vlm)vux.a(4)).c();
-    StoryUploadProcessor.checkUploadSessionKey();
-    ((vuq)vux.a(10)).c();
-    xvv.d("QQStoryMainController", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(vns.a()) });
-    wkb.a().a(this.a.jdField_a_of_type_AndroidAppActivity, 3);
-    xvv.b("QQStoryMainController", "queueIdle loadShortVideoSo start");
-    ShortVideoUtils.loadShortVideoSo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    xvv.b("QQStoryMainController", "queueIdle loadShortVideoSo end");
-    xvv.b("QQStoryMainController", "queueIdle startDownloadFilterSo start");
-    this.a.b = bbxj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
-    xvv.b("QQStoryMainController", "queueIdle startDownloadFilterSo end");
-    xvv.b("QQStoryMainController", "queueIdle preloadFrameDrawable start");
-    QQStoryLoadingView.a(this.a.jdField_a_of_type_AndroidAppActivity);
-    xvv.b("QQStoryMainController", "queueIdle preloadFrameDrawable end");
-    return null;
+    super.onAnimationEnd(paramAnimator);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.a.setImageAlpha(255);
+    }
+    for (;;)
+    {
+      this.a.a.setVisibility(8);
+      return;
+      this.a.a.setImageResource(2130850736);
+    }
   }
 }
 

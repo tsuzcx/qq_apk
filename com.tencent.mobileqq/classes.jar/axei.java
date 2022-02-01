@@ -1,30 +1,16 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ChatActivity;
 
-public class axei
-  implements URLDrawable.URLDrawableListener
+final class axei
+  implements axep
 {
-  public axei(NearbyMomentFragment paramNearbyMomentFragment) {}
+  axei(Context paramContext) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(Intent paramIntent)
   {
-    if (NearbyMomentFragment.a(this.a) == 0) {
-      NearbyMomentFragment.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 0)
-    {
-      NearbyMomentFragment.a(this.a).setVisibility(0);
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
+    if ((this.a instanceof ChatActivity)) {
+      ((ChatActivity)this.a).a(paramIntent);
     }
   }
 }

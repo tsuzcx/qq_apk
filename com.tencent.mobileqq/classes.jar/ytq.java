@@ -1,48 +1,58 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import java.util.List;
+import android.util.SparseBooleanArray;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class ytq
-  extends RecyclerView.AdapterDataObserver
+public class ytq
+  implements ysv
 {
-  ytq(ytp paramytp) {}
+  private ytq(DoodleLayout paramDoodleLayout) {}
   
-  public void onChanged()
+  public void a()
   {
-    this.a.notifyDataSetChanged();
-    if (ytp.a(this.a) != null) {
-      ytp.a(this.a).a(ytp.a(this.a));
+    this.a.a().c();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a().a(paramInt);
+  }
+  
+  public void a(boolean paramBoolean, yrx paramyrx)
+  {
+    yri localyri = this.a.a();
+    if (paramBoolean)
+    {
+      localyri.a(true);
+      switch (this.a.b)
+      {
+      }
+      for (;;)
+      {
+        this.a.c(3);
+        return;
+        this.a.a().b(false);
+      }
+    }
+    if (paramyrx.jdField_a_of_type_Int != -1) {
+      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, true);
+    }
+    for (;;)
+    {
+      localyri.a(paramyrx);
+      localyri.a(false);
+      this.a.a(new View[] { this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
+      this.a.c(0);
+      this.a.d(0);
+      this.a.jdField_a_of_type_Ytp.i();
+      return;
+      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, false);
     }
   }
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  public void b(int paramInt)
   {
-    this.a.notifyItemRangeChanged(ytp.a(this.a).size() + paramInt1, paramInt2);
-    if (ytp.a(this.a) != null) {
-      ytp.a(this.a).a(ytp.a(this.a));
-    }
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeInserted(ytp.a(this.a).size() + paramInt1, paramInt2);
-    if (ytp.a(this.a) != null) {
-      ytp.a(this.a).a(ytp.a(this.a));
-    }
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.notifyItemMoved(ytp.a(this.a).size() + paramInt1, ytp.a(this.a).size() + paramInt2);
-    if (ytp.a(this.a) != null) {
-      ytp.a(this.a).a(ytp.a(this.a));
-    }
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(ytp.a(this.a).size() + paramInt1, paramInt2);
-    if (ytp.a(this.a) != null) {
-      ytp.a(this.a).a(ytp.a(this.a));
+    if (this.a.jdField_a_of_type_Ytp != null) {
+      this.a.jdField_a_of_type_Ytp.b(3, paramInt);
     }
   }
 }

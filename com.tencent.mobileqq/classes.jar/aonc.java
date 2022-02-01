@@ -1,58 +1,115 @@
-import android.animation.Animator.AnimatorListener;
-import android.util.SparseArray;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.ContextThemeWrapper;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aonc
 {
-  private int jdField_a_of_type_Int = 1;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new aond(this);
-  private SparseArray<aomz> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private aone jdField_a_of_type_Aone;
-  
-  private void a(int paramInt)
+  private static Context a(Dialog paramDialog)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      ((aomz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).stop();
+    if (paramDialog == null) {
+      paramDialog = null;
     }
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    aomz localaomz1 = (aomz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-    aomz localaomz2 = (aomz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    localaomz1.a(false, null);
-    localaomz2.a(true, this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
-  }
-  
-  public void a()
-  {
-    int i = 1;
-    while (i <= 3)
+    Context localContext;
+    do
     {
-      a(i);
-      i += 1;
+      do
+      {
+        return paramDialog;
+        localContext = paramDialog.getContext();
+        paramDialog = localContext;
+      } while ((localContext instanceof Activity));
+      paramDialog = localContext;
+    } while (!(localContext instanceof ContextThemeWrapper));
+    return ((ContextThemeWrapper)localContext).getBaseContext();
+  }
+  
+  public static QQCustomDialog a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
+  {
+    return bhdj.a(paramContext, paramString4, paramString3, paramString1, paramString2, paramBoolean, 5, paramOnClickListener1, paramOnClickListener2);
+  }
+  
+  private static <T> T a(String paramString1, String paramString2)
+  {
+    try
+    {
+      paramString1 = new JSONObject(paramString2).opt(paramString1);
+      if (paramString1 != null) {
+        return paramString1;
+      }
+    }
+    catch (JSONException paramString1)
+    {
+      QLog.e("IdentityUtils", 1, new Object[] { "getValueFromPayload JSONException : ", paramString1.getMessage() });
+      return null;
+    }
+    catch (ClassCastException paramString1)
+    {
+      for (;;)
+      {
+        QLog.e("IdentityUtils", 1, new Object[] { "getValueFromPayload ClassCastException : ", paramString1.getMessage() });
+      }
     }
   }
   
-  public void a(int paramInt, aomz paramaomz)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramaomz);
+    return aong.a(paramString, "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvpgaMJnHS3HZLto4PIoH\n8LLs/QBNSWe0jEMxWulLOPfpC3jh+jbuVAv/65lDoJEoisvBNB5eAkILd9iI8IIQ\nAaW8ehqYat32ggZTtuJ52NZWLAZtMIMk/eL2Un+o+/7ZA+P3u8aCzbruWZyR01lw\n31GchZfLcv5BeGEDHvGyrArsjAnWsoW8/jJhdqbiVBIsgMh+k+n2rEKX1iG81ATb\nktbp2mTBLxpJSExuM3FhEOPTiosz4TTbuC5oI4VMKpqsUWYkav66v3f3jKkof1ym\nUiC+tqkuDzHcRDRzy8BKCwIrv290FOY5TixXHbNcKupks4Z82H9kE/dUNb+gjssz\nIQIDAQAB\n-----END PUBLIC KEY-----");
   }
   
-  public void a(int paramInt, aone paramaone)
+  public static boolean a(Dialog paramDialog)
   {
-    if (this.jdField_a_of_type_Int == paramInt) {
-      return;
+    return (paramDialog != null) && (paramDialog.isShowing());
+  }
+  
+  public static boolean a(Dialog paramDialog, Activity paramActivity)
+  {
+    if ((paramDialog == null) || (paramActivity == null)) {}
+    while (a(paramDialog) != paramActivity) {
+      return false;
     }
-    this.jdField_a_of_type_Aone = paramaone;
-    a(this.jdField_a_of_type_Int, paramInt);
-    this.jdField_a_of_type_Int = paramInt;
+    return true;
   }
   
-  public void b()
+  public static boolean a(String paramString)
   {
-    a();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.jdField_a_of_type_Aone = null;
+    paramString = (Boolean)a("force", paramString);
+    if (paramString == null) {
+      return false;
+    }
+    return paramString.booleanValue();
+  }
+  
+  public static boolean a(String paramString, long paramLong)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return false;
+      paramString = a(paramString);
+      if (paramString != null) {
+        try
+        {
+          paramString = new JSONObject(paramString);
+          long l1 = paramString.optLong("iat");
+          long l2 = paramString.optLong("exp");
+          if ((paramLong > l1) && (paramLong < l2)) {
+            return true;
+          }
+        }
+        catch (JSONException paramString)
+        {
+          QLog.e("IdentityUtils", 1, new Object[] { "parse payload error : ", paramString.getMessage() });
+        }
+      }
+    }
+    return false;
   }
 }
 

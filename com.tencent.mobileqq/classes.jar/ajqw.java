@@ -1,9 +1,4 @@
-class ajqw
-  extends ajrc
-{
-  ajqw(ajqv paramajqv) {}
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqw

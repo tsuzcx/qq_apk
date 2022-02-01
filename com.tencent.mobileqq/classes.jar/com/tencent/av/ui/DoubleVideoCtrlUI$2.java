@@ -1,11 +1,9 @@
 package com.tencent.av.ui;
 
+import bdla;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import lez;
-import mak;
+import lfe;
+import mbf;
 
 class DoubleVideoCtrlUI$2
   implements Runnable
@@ -14,23 +12,11 @@ class DoubleVideoCtrlUI$2
   
   public void run()
   {
-    if (this.this$0.h()) {}
-    do
+    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (!this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().l()))
     {
-      return;
-      long l = AudioHelper.b();
-      if ((!this.this$0.jdField_a_of_type_ComTencentAvVideoController.f()) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().f == 1) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().j))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w(this.this$0.d, 1, "FixTerSwitchStatus ,switch to pc ,local close camera, seq[" + l + "]");
-        }
-        this.this$0.j(l);
-        this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(106), Long.valueOf(l) });
-        mak.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1021);
-      }
-      this.this$0.i(l, 65535);
-    } while (!this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().g);
-    this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(true, this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().d);
+      mbf.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1049);
+      bdla.b(null, "CliOper", "", "", "0X8009D02", "0X8009D02", 0, 0, "", "", "", "");
+    }
   }
 }
 

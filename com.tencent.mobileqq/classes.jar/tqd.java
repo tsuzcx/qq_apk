@@ -1,88 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
 public class tqd
+  extends AnimatorListenerAdapter
 {
-  public static int a(AdvertisementInfo paramAdvertisementInfo)
+  public tqd(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (b(paramAdvertisementInfo))
-    {
-      if (paramAdvertisementInfo.mAdvertisementSoftInfo.c == 0) {
-        return 3;
-      }
-      return 4;
-    }
-    if (c(paramAdvertisementInfo)) {
-      return 5;
-    }
-    if (a(paramAdvertisementInfo)) {
-      return 2;
-    }
-    if (d(paramAdvertisementInfo)) {
-      return 6;
-    }
-    if (e(paramAdvertisementInfo)) {
-      return 7;
-    }
-    if (f(paramAdvertisementInfo)) {
-      return 8;
-    }
-    if (g(paramAdvertisementInfo)) {
-      return 9;
-    }
-    return 1;
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, false);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
   }
   
-  private static boolean a(AdvertisementInfo paramAdvertisementInfo)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (paramAdvertisementInfo == null) {}
-    while ((paramAdvertisementInfo.mChannelID != 0L) || (!TextUtils.isEmpty(uhs.a(paramAdvertisementInfo, "AdsIconText")))) {
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean b(AdvertisementInfo paramAdvertisementInfo)
-  {
-    return (paramAdvertisementInfo != null) && (paramAdvertisementInfo.isSoftAd());
-  }
-  
-  private static boolean c(AdvertisementInfo paramAdvertisementInfo)
-  {
-    return twh.a(paramAdvertisementInfo);
-  }
-  
-  private static boolean d(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (paramAdvertisementInfo == null) {}
-    while ((paramAdvertisementInfo.mImaxShowAdType != 1001) && (paramAdvertisementInfo.mImaxShowAdType != 1002)) {
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean e(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if ((paramAdvertisementInfo == null) || (paramAdvertisementInfo.mAdvertisementExtInfo == null)) {}
-    while (5001 != paramAdvertisementInfo.mAdvertisementExtInfo.i) {
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean f(AdvertisementInfo paramAdvertisementInfo)
-  {
-    return e(paramAdvertisementInfo);
-  }
-  
-  private static boolean g(AdvertisementInfo paramAdvertisementInfo)
-  {
-    return twr.n(paramAdvertisementInfo);
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, true);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tqd
  * JD-Core Version:    0.7.0.1
  */

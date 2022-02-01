@@ -1,8 +1,15 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface aflb
+class aflb
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView, int paramInt);
+  aflb(afla paramafla) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

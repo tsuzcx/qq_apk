@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.out.webPlugins;
 
-import bgve;
+import bifw;
 import com.tencent.mobileqq.widget.QQToast;
 
 class MiniAppPlugin$2
@@ -10,7 +10,7 @@ class MiniAppPlugin$2
   
   public void run()
   {
-    QQToast.a(this.this$0.mRuntime.a(), 1, 2131694501, 0).a();
+    QQToast.a(this.this$0.mRuntime.a(), 1, 2131694702, 0).a();
   }
 }
 

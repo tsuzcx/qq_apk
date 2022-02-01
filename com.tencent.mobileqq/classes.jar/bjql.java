@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListView.SavedState;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-public final class bjql
-  implements Parcelable.Creator<ExpandableListView.SavedState>
+final class bjql
+  implements HostnameVerifier
 {
-  public ExpandableListView.SavedState a(Parcel paramParcel)
-  {
-    return new ExpandableListView.SavedState(paramParcel, null);
-  }
+  bjql(URL paramURL) {}
   
-  public ExpandableListView.SavedState[] a(int paramInt)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    return new ExpandableListView.SavedState[paramInt];
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a.getHost(), paramSSLSession);
+    if (!bool) {
+      QLog.d("OpenSdkVirtualUtil", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
+    }
+    return bool;
   }
 }
 

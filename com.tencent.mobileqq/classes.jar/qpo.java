@@ -1,21 +1,37 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class qpo
-  implements PopupWindow.OnDismissListener
+  implements ViewBase.OnClickListener
 {
-  qpo(qpk paramqpk, bjrh parambjrh) {}
+  qpo(qph paramqph, qfw paramqfw, ViewBase paramViewBase) {}
   
-  public void onDismiss()
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Bjrh.a(1.0F);
-    if (this.jdField_a_of_type_Qpk.a.c())
+    try
     {
-      sdc localsdc = this.jdField_a_of_type_Qpk.a.a();
-      if (localsdc != null)
+      if ((this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.jdField_a_of_type_Rrl.a) && (this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.jdField_a_of_type_Rre != null))
       {
-        localsdc.c();
-        this.jdField_a_of_type_Qpk.a.b(false);
+        String str = this.jdField_a_of_type_Qfw.a().mSocialFeedInfo.jdField_a_of_type_Rre.a.h;
+        paramViewBase = paramViewBase.getNativeView();
+        qph.a(this.jdField_a_of_type_Qph, paramViewBase, str);
+        paramViewBase = this.jdField_a_of_type_Qfw.a();
+        if ((paramViewBase != null) && (paramViewBase.isPGCShortContent()))
+        {
+          paramViewBase.clickArea = 11;
+          paramViewBase.clickJumpTarget = qsj.a(str, "-1");
+          pqb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().getContext(), paramViewBase, (int)paramViewBase.mChannelID);
+        }
       }
+      return;
+    }
+    catch (NullPointerException paramViewBase)
+    {
+      QLog.e("PgcShortContentProteusItem", 1, paramViewBase.getLocalizedMessage());
     }
   }
 }

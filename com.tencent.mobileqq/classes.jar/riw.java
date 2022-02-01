@@ -1,21 +1,18 @@
 import android.view.View;
-import android.widget.SimpleAdapter.ViewBinder;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class riw
-  implements SimpleAdapter.ViewBinder
+  implements View.OnClickListener
 {
-  public riw(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  public riw(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
   
-  public boolean setViewValue(View paramView, Object paramObject, String paramString)
+  public void onClick(View paramView)
   {
-    if (((paramView instanceof TextView)) && ((paramObject instanceof CharSequence)))
-    {
-      ((TextView)paramView).setText((CharSequence)paramObject);
-      return true;
-    }
-    return false;
+    qkw.a(2, this.jdField_a_of_type_JavaLangString);
+    pkh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

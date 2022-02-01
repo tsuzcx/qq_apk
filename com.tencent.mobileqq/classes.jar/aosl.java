@@ -1,24 +1,8 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import eipc.EIPCResult;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 
-class aosl
-  implements aosn
+public abstract interface aosl
 {
-  aosl(aosk paramaosk, aosi paramaosi) {}
-  
-  public void a(String paramString1, long paramLong, String paramString2, String paramString3)
-  {
-    Bundle localBundle = new Bundle();
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
-    {
-      localBundle.putString("userAccount", paramString1);
-      localBundle.putString("openID", paramString2);
-      localBundle.putString("openToken", paramString3);
-      localBundle.putLong("dstAppID", paramLong);
-    }
-    this.jdField_a_of_type_Aosi.a(EIPCResult.createResult(0, localBundle));
-  }
+  public abstract aosm a(QQMessageFacade.Message paramMessage);
 }
 
 

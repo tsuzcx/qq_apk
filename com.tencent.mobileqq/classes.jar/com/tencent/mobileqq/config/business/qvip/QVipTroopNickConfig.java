@@ -1,0 +1,22 @@
+package com.tencent.mobileqq.config.business.qvip;
+
+import androidx.annotation.Keep;
+import java.io.Serializable;
+
+@Keep
+public class QVipTroopNickConfig
+  implements Serializable
+{
+  private int enable = 1;
+  
+  public boolean isEnable()
+  {
+    return this.enable == 1;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+ * Qualified Name:     com.tencent.mobileqq.config.business.qvip.QVipTroopNickConfig
+ * JD-Core Version:    0.7.0.1
+ */

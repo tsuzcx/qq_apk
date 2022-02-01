@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adgt;
+import adxz;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -28,16 +28,16 @@ public class ForceLogoutActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559182);
+    super.setContentView(2131559212);
     paramBundle = getIntent().getStringExtra("title");
     String str = getIntent().getStringExtra("msg");
     if ((paramBundle != null) && (paramBundle.length() > 0)) {
-      ((TextView)findViewById(2131379410)).setText(paramBundle);
+      ((TextView)findViewById(2131379715)).setText(paramBundle);
     }
     if ((str != null) && (str.length() > 0)) {
-      ((TextView)findViewById(2131379411)).setText(str);
+      ((TextView)findViewById(2131379716)).setText(str);
     }
-    ((Button)findViewById(2131363722)).setOnClickListener(new adgt(this));
+    ((Button)findViewById(2131363793)).setOnClickListener(new adxz(this));
     return true;
   }
   
@@ -57,7 +57,7 @@ public class ForceLogoutActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForceLogoutActivity
  * JD-Core Version:    0.7.0.1
  */

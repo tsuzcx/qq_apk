@@ -1,24 +1,27 @@
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.avcore.jni.data.NetAddr;
+import java.util.List;
 
-class lgg
-  implements Observer
+public class lgg
 {
-  private WeakReference<lgf> a;
+  private static lgg a;
+  public int a;
+  public long a;
+  public List<NetAddr> a;
+  public int b;
   
-  lgg(lgf paramlgf)
+  static
   {
-    this.a = new WeakReference(paramlgf);
+    jdField_a_of_type_Lgg = new lgg();
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public static lgg a()
   {
-    lgf locallgf = (lgf)this.a.get();
-    if (locallgf == null) {
-      return;
-    }
-    lgf.a(locallgf, paramObservable, paramObject);
+    return jdField_a_of_type_Lgg;
+  }
+  
+  public String toString()
+  {
+    return "mChannelType[" + this.jdField_a_of_type_Int + "], mSessionId[" + this.jdField_a_of_type_Long + "], mTransType[" + this.b + "]";
   }
 }
 

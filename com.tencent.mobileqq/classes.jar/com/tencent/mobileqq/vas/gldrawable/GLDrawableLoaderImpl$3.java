@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.vas.gldrawable;
 
-import bgic;
+import bhqx;
 
 public class GLDrawableLoaderImpl$3
   implements Runnable
 {
-  public GLDrawableLoaderImpl$3(bgic parambgic) {}
+  public GLDrawableLoaderImpl$3(bhqx parambhqx) {}
   
   public void run()
   {
-    this.this$0.a(bgic.a(this.this$0));
+    this.this$0.a(bhqx.a(this.this$0));
   }
 }
 

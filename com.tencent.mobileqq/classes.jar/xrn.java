@@ -1,9 +1,6 @@
-public abstract class xrn
-  extends xrj
-  implements xrr, xrs
+public abstract interface xrn
 {
-  public xro a;
-  protected xrp a;
+  public abstract void a(String paramString, int paramInt1, int paramInt2, xro paramxro);
 }
 
 

@@ -5,17 +5,17 @@ import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bnom;
-import bnon;
+import bpee;
+import bpef;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class SegmentPicker
   extends RelativeLayout
-  implements bnon
+  implements bpef
 {
   private SegmentRangeView jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentRangeView;
-  private WeakReference<bnom> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bpee> jdField_a_of_type_JavaLangRefWeakReference;
   
   public SegmentPicker(Context paramContext)
   {
@@ -37,34 +37,34 @@ public class SegmentPicker
   
   public void a(long paramLong)
   {
-    bnom localbnom = null;
+    bpee localbpee = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbnom = (bnom)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbpee = (bpee)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbnom != null) {
-      localbnom.a(paramLong);
+    if (localbpee != null) {
+      localbpee.a(paramLong);
     }
   }
   
   public void a(List<Long> paramList)
   {
-    bnom localbnom = null;
+    bpee localbpee = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbnom = (bnom)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbpee = (bpee)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbnom != null) {
-      localbnom.a(paramList);
+    if (localbpee != null) {
+      localbpee.a(paramList);
     }
   }
   
   public void b(long paramLong)
   {
-    bnom localbnom = null;
+    bpee localbpee = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbnom = (bnom)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbpee = (bpee)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbnom != null) {
-      localbnom.b(paramLong);
+    if (localbpee != null) {
+      localbpee.b(paramLong);
     }
   }
   

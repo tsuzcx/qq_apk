@@ -23,20 +23,20 @@ public class QFileSendBottomView
   public QFileSendBottomView(Context paramContext)
   {
     super(paramContext, null);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560774, this);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560834, this);
     b();
   }
   
   public QFileSendBottomView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560774, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560834, this, true);
     b();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377066));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377340));
   }
   
   public View a(int paramInt)
@@ -53,10 +53,10 @@ public class QFileSendBottomView
     }
     if (!ThemeUtil.isDefaultOrDIYTheme(false))
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844145);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844212);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131380315));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131380650));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(this.jdField_a_of_type_ComTencentWidgetListView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView);
@@ -80,7 +80,7 @@ public class QFileSendBottomView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileSendBottomView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-class oka
-  implements sng
+public class oka
 {
-  private WeakReference<ojv> a;
+  public oka(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString, long paramLong) {}
   
-  oka(ojv paramojv)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    this.a = new WeakReference(paramojv);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
   }
   
-  public void a(ChannelCoverInfo paramChannelCoverInfo)
+  @QQPermissionGrant(1)
+  public void grant()
   {
-    ojv localojv = (ojv)this.a.get();
-    if ((localojv == null) || (ojv.a(localojv).a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
-      }
-      return;
-    }
-    localojv.a(paramChannelCoverInfo);
+    SosoInterface.startLocation(new okm(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
   }
 }
 

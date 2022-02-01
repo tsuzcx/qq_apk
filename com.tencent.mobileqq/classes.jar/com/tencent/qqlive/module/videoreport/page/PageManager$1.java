@@ -1,15 +1,16 @@
 package com.tencent.qqlive.module.videoreport.page;
 
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr.INotifyCallback;
+import java.util.Set;
 
 class PageManager$1
   implements ListenerMgr.INotifyCallback<PageManager.IPageListener>
 {
-  PageManager$1(PageManager paramPageManager, PageInfo paramPageInfo) {}
+  PageManager$1(PageManager paramPageManager, PageInfo paramPageInfo, Set paramSet) {}
   
   public void onNotify(PageManager.IPageListener paramIPageListener)
   {
-    paramIPageListener.onPageIn(this.val$pageInfo);
+    paramIPageListener.onPageIn(this.val$pageInfo, this.val$inPageSet);
   }
 }
 

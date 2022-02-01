@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
-public final class ahzm
-  implements Parcelable.Creator<SearchResultItem>
+class ahzm
+  implements DialogInterface.OnClickListener
 {
-  public SearchResultItem a(Parcel paramParcel)
-  {
-    return new SearchResultItem(paramParcel);
-  }
+  ahzm(ahzc paramahzc) {}
   
-  public SearchResultItem[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new SearchResultItem[paramInt];
+    ((amme)this.a.app.getManager(QQManagerFactory.APOLLO_MANAGER)).a().b(this.a.sessionInfo.curFriendUin, 319);
   }
 }
 

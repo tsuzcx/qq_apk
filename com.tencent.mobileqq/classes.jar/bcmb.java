@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
 
-class bcmb
-  implements bcmr
+public class bcmb
+  extends SosoInterface.OnLocationListener
 {
-  bcmb(bclz parambclz, CountdownTextView paramCountdownTextView) {}
-  
-  public void a()
+  public bcmb(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.jdField_a_of_type_Bclz.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_Bclz.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bclz.a(this.jdField_a_of_type_Bclz, 0L));
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void a(long paramLong)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    paramLong /= 1000L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(bclz.a(this.jdField_a_of_type_Bclz, paramLong));
-    this.jdField_a_of_type_Bclz.jdField_d_of_type_Long = paramLong;
+    if (paramInt == 0)
+    {
+      NetSearchEngine.a = paramSosoLbsInfo.mLocation.mLat02;
+      NetSearchEngine.b = paramSosoLbsInfo.mLocation.mLon02;
+    }
   }
 }
 

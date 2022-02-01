@@ -1,77 +1,102 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.sdk.utils.MonitorHttpInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bcfy
-  extends QIPCModule
+  extends bcfs
+  implements View.OnClickListener
 {
-  private static bcfy a;
+  public static final String a;
+  public int a;
+  public JSONObject a;
+  public String b;
+  public String j;
   
-  private bcfy(String paramString)
+  static
   {
-    super(paramString);
+    jdField_a_of_type_JavaLangString = bcfy.class.getSimpleName();
   }
   
-  public static bcfy a()
+  protected bcfy(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, UnifySearchCommon.ResultItem paramResultItem)
   {
-    if (a == null) {}
+    super(paramString, paramLong, paramList, paramResultItem, paramInt1);
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_Int = paramInt2;
+    b(paramJSONObject);
+  }
+  
+  protected bcfy(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, DynamicSearch.ResultItem paramResultItem)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt1);
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_Int = paramInt2;
+    b(paramJSONObject);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      i = 1;
+    }
+    return i;
+  }
+  
+  public void a(View paramView)
+  {
+    bbzr localbbzr;
+    JSONObject localJSONObject;
+    if (bbzq.b.containsKey(this))
+    {
+      localbbzr = (bbzr)bbzq.b.get(this);
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localJSONObject = new JSONObject();
+    }
     try
     {
-      if (a == null) {
-        a = new bcfy("NetworkMonitorIPCModule");
-      }
-      return a;
+      localJSONObject.put("project", bcjs.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", localbbzr.jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "web");
+      localJSONObject.put("extra_info", this.b);
+      localJSONObject.put("tepl", this.f);
+      bcjs.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(this.jdField_a_of_type_Long + "").obj2(this.j).ver1(this.g).ver2(bcjs.a(this.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + bbzq.jdField_a_of_type_Long));
+      return;
     }
-    finally {}
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+      }
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(bcof parambcof) {}
+  
+  public void b(JSONObject paramJSONObject) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "NetworkMonitorIPCModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
-    }
-    if ("ACTION_REPORT_DOWNLOAD_URL".equalsIgnoreCase(paramString))
-    {
-      paramString = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_URL", "");
-      bcfv.a().a(paramString);
-    }
-    for (;;)
-    {
-      return new EIPCResult();
-      if ("ACTION_REPORT_HTTPINFO".equalsIgnoreCase(paramString))
-      {
-        try
-        {
-          paramString = (MonitorHttpInfo)paramBundle.getSerializable("BUNDLE_KEY_REPORT_HTTP_INFO_INFO");
-          String str = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_PROCESS_NAME", "");
-          paramBundle = paramBundle.getString("BUNDLE_KEY_REPORT_DOWNLOAD_URL_TOP_ACTIVITY", "");
-          if (paramString != null)
-          {
-            try
-            {
-              bcfv.a().a(paramString, str, paramBundle);
-            }
-            catch (Throwable paramString) {}
-            continue;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("NetworkMonitorIPCModule", 2, "MonitorHttpInfo == null");
-        }
-        catch (Exception paramString) {}
-        if (QLog.isColorLevel()) {
-          QLog.d("NetworkMonitorIPCModule", 2, new Object[] { "ClassCastException", paramString.toString() });
-        }
-      }
-    }
+    a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcfy
  * JD-Core Version:    0.7.0.1
  */

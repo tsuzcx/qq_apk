@@ -1,6 +1,7 @@
-public abstract interface bhlp
+public class bhlp
 {
-  public abstract void b();
+  public String a;
+  public String b;
 }
 
 

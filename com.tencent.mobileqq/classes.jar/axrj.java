@@ -1,18 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.TextView;
 
-public class axrj
-  implements View.OnClickListener
+class axrj
+  extends BroadcastReceiver
 {
-  public axrj(PromotionEntry paramPromotionEntry, anzl paramanzl) {}
+  axrj(axre paramaxre) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bcef.b(null, "CliOper", "", "", "0X8009C6B", "0X8009C6B", 0, 0, this.jdField_a_of_type_Anzl.a, "0", "0", "");
-    PromotionEntry.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry).b(this.jdField_a_of_type_Anzl);
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = paramIntent.getIntExtra("SmallScreenState", 0);
+    if (i == 3) {
+      this.a.a.setVisibility(4);
+    }
+    while ((i != 2) && (i != 0)) {
+      return;
+    }
+    this.a.a.setVisibility(0);
   }
 }
 

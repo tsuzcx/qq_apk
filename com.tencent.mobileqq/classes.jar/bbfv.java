@@ -1,45 +1,55 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
+import java.lang.ref.WeakReference;
 
 class bbfv
-  implements Comparator<bayp>
+  extends Handler
 {
-  bbfv(bbfu parambbfu) {}
+  final WeakReference<bbfs> a;
   
-  public int a(bayp parambayp1, bayp parambayp2)
+  public bbfv(Looper paramLooper, bbfs parambbfs)
   {
-    int i = -1;
-    parambayp1 = (bbad)parambayp1;
-    parambayp2 = (bbad)parambayp2;
-    amsw localamsw = (amsw)this.a.a.getManager(51);
-    boolean bool1 = localamsw.b((String)parambayp1.a());
-    boolean bool2 = localamsw.b((String)parambayp2.a());
-    if ((!bool1) && (!bool2))
+    super(paramLooper);
+    this.a = new WeakReference(parambbfs);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    bbfr.a("PTV.RichmediaClient", "handleMessage, msg.what = " + paramMessage.what);
+    bbfs localbbfs = (bbfs)this.a.get();
+    if (localbbfs == null) {}
+    do
     {
-      bool1 = localamsw.d((String)parambayp1.a());
-      bool2 = localamsw.d((String)parambayp2.a());
-      if ((!bool1) && (!bool2)) {
-        return parambayp2.f() - parambayp1.f();
+      return;
+      if (paramMessage.getData() != null) {
+        paramMessage.getData().getInt("msg_sub_cmd");
       }
-      if (bool1 != bool2)
+      switch (paramMessage.what)
       {
-        if (bool2) {
-          return -1;
-        }
-        return 1;
+      case 1001: 
+      default: 
+        super.handleMessage(paramMessage);
+        return;
+      case 1000: 
+        bbfr.a("PTV.RichmediaClient", "handleMessage MSG_S2C_TEST");
+        return;
+      case 1002: 
+        bbfr.a("PTV.RichmediaClient", "handleMessage MSG_S2C_VIDEO_SLICE_UPLOAD_FINISH");
+        paramMessage = paramMessage.getData();
       }
-      return parambayp2.f() - parambayp1.f();
-    }
-    if (bool1 != bool2)
-    {
-      if (bool2) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-    }
-    return parambayp2.f() - parambayp1.f();
+    } while (paramMessage == null);
+    paramMessage = paramMessage.getString("vidoe_record_uniseq");
+    localbbfs.a().a(paramMessage);
+    return;
+    AIOLongCaptureCtrl.a(paramMessage.getData());
+    return;
+    AIOLongCaptureCtrl.b(paramMessage.getData());
+    return;
+    paramMessage = paramMessage.getData();
+    ahrf.a().a(paramMessage);
   }
 }
 

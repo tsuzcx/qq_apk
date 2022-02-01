@@ -1,16 +1,36 @@
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
+
 public class aiot
+  extends RecyclerView.OnScrollListener
 {
-  public int c;
-  public int d;
-  public String f;
+  public boolean a;
   
-  public aiot() {}
+  public aiot(ZhituPanelView paramZhituPanelView) {}
   
-  public aiot(int paramInt1, int paramInt2, String paramString)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.f = paramString;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
+      if ((localGridLayoutManager.findLastCompletelyVisibleItemPosition() + 1 == localGridLayoutManager.getItemCount()) && (this.jdField_a_of_type_Boolean)) {
+        ((aiou)paramRecyclerView.getAdapter()).a();
+      }
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
   }
 }
 

@@ -1,24 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import trpc.qq_vgame.common.AvGameCommon.GameQuestionInfo;
 
-class nfh
-  implements DialogInterface.OnClickListener
+public abstract interface nfh
+  extends Cloneable
 {
-  nfh(nff paramnff, long paramLong) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Nff.a()) {}
-    do
-    {
-      return;
-      paramDialogInterface = this.jdField_a_of_type_Nff.a();
-      QLog.w(this.jdField_a_of_type_Nff.a, 1, "showPermissionNormalDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "], activity[" + paramDialogInterface + "]");
-    } while (paramDialogInterface == null);
-    njh.a(paramDialogInterface);
-  }
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract List<? extends nfh> a();
+  
+  public abstract nfh a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a(nfh paramnfh);
+  
+  public abstract String[] a();
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract int c();
 }
 
 

@@ -1,24 +1,16 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class oby
+class oby
   implements View.OnClickListener
 {
-  public oby(PublicAccountBrowser paramPublicAccountBrowser) {}
+  oby(obm paramobm, String paramString, oji paramoji) {}
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-    localIntent.putExtra("uin", this.a.b);
-    localIntent.putExtra("uinname", this.a.b);
-    localIntent.putExtra("uintype", this.a.c);
-    localIntent.addFlags(67108864);
-    this.a.getActivity().startActivity(localIntent);
+    obm.c(this.jdField_a_of_type_Obm, this.jdField_a_of_type_JavaLangString);
+    obm.a(this.jdField_a_of_type_Obm, this.jdField_a_of_type_Oji.jdField_a_of_type_JavaLangString);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

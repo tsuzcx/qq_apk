@@ -1,52 +1,121 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.annotation.Nullable;
-import android.support.v4.util.LruCache;
-import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3;
-import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class pig
-  implements ImageAssetDelegate
 {
-  public pig(ReadInJoyLottieDrawable.3 param3) {}
+  private static final int a = Utils.rp2px(10.0D);
   
-  @Nullable
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  private static int a(TemplateBean paramTemplateBean)
   {
-    Object localObject = paramLottieImageAsset.getFileName();
-    paramLottieImageAsset = pid.a(this.a.this$0, this.a.a, "images");
-    if (paramLottieImageAsset != null) {}
+    if (paramTemplateBean == null)
+    {
+      QLog.i("DividerConfigUtils", 1, "templateBean TYPE_UNKNOWN == null");
+      return -1;
+    }
+    if (paramTemplateBean.findViewById("id_separator_normal_bottom") != null) {
+      return 1;
+    }
+    if (paramTemplateBean.findViewById("id_separator_special_bottom_space") != null) {
+      return 2;
+    }
+    QLog.i("DividerConfigUtils", 1, "getViewType TYPE_UNKNOWN" + paramTemplateBean);
+    return -1;
+  }
+  
+  private static int a(ViewBase paramViewBase, boolean paramBoolean)
+  {
+    if (paramViewBase == null) {
+      return 0;
+    }
+    Layout.Params localParams = paramViewBase.getComLayoutParams();
+    int i = localParams.mLayoutHeight;
+    if (paramBoolean) {}
+    for (localParams.mLayoutHeight = a;; localParams.mLayoutHeight = 0)
+    {
+      paramViewBase.setComLayoutParams(localParams);
+      return localParams.mLayoutHeight - i;
+    }
+  }
+  
+  public static boolean a(Container paramContainer, qfw paramqfw)
+  {
+    int i = 0;
+    if ((paramContainer == null) || (paramqfw == null)) {}
+    Object localObject;
+    int j;
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+          localObject = paramqfw.a();
+        } while (localObject == null);
+        j = paramqfw.g();
+        paramqfw = ((szd)localObject).b(j);
+        localObject = ((szd)localObject).b(j + 1);
+      } while ((paramqfw == null) || (localObject == null));
+      j = a(paramqfw.mProteusTemplateBean);
+    } while (j == -1);
+    int k = a(((BaseArticleInfo)localObject).mProteusTemplateBean);
+    QLog.i("DividerConfigUtils", 1, "topType:" + j + " nextType:" + k);
+    if (k < 0) {
+      QLog.i("DividerConfigUtils", 1, "nextArticleInfo:" + ((BaseArticleInfo)localObject).mProteusTemplateBean);
+    }
+    paramqfw = paramContainer.getVirtualView();
+    switch (j)
+    {
+    }
     for (;;)
     {
-      paramLottieImageAsset = paramLottieImageAsset.getAbsolutePath() + "/" + (String)localObject;
-      localObject = (Bitmap)pid.b().get(paramLottieImageAsset);
-      if (localObject == null) {
+      localObject = paramqfw.getComLayoutParams();
+      if (((Layout.Params)localObject).mLayoutHeight >= 0) {
+        ((Layout.Params)localObject).mLayoutHeight = (i + ((Layout.Params)localObject).mLayoutHeight);
+      }
+      paramqfw = paramqfw.getComLayoutParams();
+      paramContainer.setLayoutParams(new RelativeLayout.LayoutParams(paramqfw.mLayoutWidth, paramqfw.mLayoutHeight));
+      return true;
+      localObject = paramqfw.findViewBaseByName("id_separator_normal_bottom");
+      switch (k)
+      {
+      default: 
+        i = b((ViewBase)localObject, true);
+        break;
+      case 2: 
+        i = b((ViewBase)localObject, false);
+        continue;
+        localObject = paramqfw.findViewBaseByName("id_separator_special_bottom_space");
+        switch (k)
+        {
+        default: 
+          i = a((ViewBase)localObject, false);
+          break;
+        case 2: 
+          i = a((ViewBase)localObject, true);
+        }
         break;
       }
-      return localObject;
-      paramLottieImageAsset = this.a.a[0];
     }
-    ThreadManager.excute(new ReadInJoyLottieDrawable.3.1.1(this, paramLottieImageAsset), 64, null, true);
-    try
+  }
+  
+  private static int b(ViewBase paramViewBase, boolean paramBoolean)
+  {
+    if (paramViewBase == null) {
+      return 0;
+    }
+    if (paramBoolean) {}
+    for (int i = 0;; i = 4)
     {
-      localObject = BitmapFactory.decodeFile(paramLottieImageAsset);
-      return localObject;
+      paramViewBase.setVisibility(i);
+      return 0;
     }
-    catch (Exception localException)
-    {
-      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation path: " + paramLottieImageAsset);
-      return null;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation oom: " + paramLottieImageAsset);
-    }
-    return null;
   }
 }
 

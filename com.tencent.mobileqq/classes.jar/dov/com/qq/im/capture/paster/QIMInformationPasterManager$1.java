@@ -1,18 +1,18 @@
 package dov.com.qq.im.capture.paster;
 
-import bmug;
-import bmuj;
-import bmuk;
-import bnli;
+import bojy;
+import bokb;
+import bokc;
+import bpba;
 
 public class QIMInformationPasterManager$1
   implements Runnable
 {
-  public QIMInformationPasterManager$1(bmug parambmug, bnli parambnli, bmuj parambmuj) {}
+  public QIMInformationPasterManager$1(bojy parambojy, bpba parambpba, bokb parambokb) {}
   
   public void run()
   {
-    this.this$0.a.a(this.jdField_a_of_type_Bnli, this.jdField_a_of_type_Bmuj);
+    this.this$0.a.a(this.jdField_a_of_type_Bpba, this.jdField_a_of_type_Bokb);
   }
 }
 

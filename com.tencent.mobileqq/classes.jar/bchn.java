@@ -1,16 +1,42 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bchn
-  implements View.OnTouchListener
+class bchn
+  implements View.OnClickListener
 {
-  public bchn(StructMsgForGeneralShare paramStructMsgForGeneralShare, afce paramafce) {}
+  bchn(bchk parambchk, bceh parambceh) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_Afce.onTouch(paramView, paramMotionEvent);
+    if ("ActiveEntitySearchResultPresenter_add_troop".equals(paramView.getTag()))
+    {
+      bchk.a(this.jdField_a_of_type_Bchk, paramView);
+      bchk.a(this.jdField_a_of_type_Bchk, this.jdField_a_of_type_Bceh);
+      if (bchk.a(this.jdField_a_of_type_Bchk) == null) {
+        break label122;
+      }
+      bchk.a(this.jdField_a_of_type_Bchk).addObserver(bchk.a(this.jdField_a_of_type_Bchk));
+    }
+    for (;;)
+    {
+      try
+      {
+        ((aoep)bchk.a(this.jdField_a_of_type_Bchk).getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).b(Long.parseLong(this.jdField_a_of_type_Bceh.b), Long.valueOf(bchk.a(this.jdField_a_of_type_Bchk).getCurrentUin()).longValue(), null);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        continue;
+      }
+      label122:
+      bchk.a(this.jdField_a_of_type_Bchk, paramView.getContext(), this.jdField_a_of_type_Bceh);
+      bchk.a(this.jdField_a_of_type_Bchk);
+    }
   }
 }
 

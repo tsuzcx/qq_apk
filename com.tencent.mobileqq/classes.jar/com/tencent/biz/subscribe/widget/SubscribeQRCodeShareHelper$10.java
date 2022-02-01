@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.widget;
 
+import aaau;
 import com.tencent.mobileqq.utils.FileUtils;
-import zlp;
 
 public class SubscribeQRCodeShareHelper$10
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$10(zlp paramzlp) {}
+  public SubscribeQRCodeShareHelper$10(aaau paramaaau) {}
   
   public void run()
   {
-    FileUtils.delete(zlp.a, true);
+    FileUtils.delete(aaau.a, true);
   }
 }
 

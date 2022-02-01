@@ -1,24 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemBar;
 
-class beuz
-  implements View.OnClickListener
+public class beuz
+  implements Animation.AnimationListener
 {
-  beuz(beuy parambeuy) {}
+  public beuz(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (beuy.a(this.a).isShowing()) {
-      this.a.d();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beuz
  * JD-Core Version:    0.7.0.1
  */

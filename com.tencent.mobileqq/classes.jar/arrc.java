@@ -1,28 +1,21 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
-import com.tencent.qphone.base.util.QLog;
-
-public class arrc
-  implements apfu
+class arrc
+  implements arth<arrl>
 {
-  public arrc(SignalBombAnimationView paramSignalBombAnimationView) {}
+  arrc(arrb paramarrb) {}
   
-  public void a()
+  public int a(arrl paramarrl, long paramLong)
   {
-    SignalBombAnimationView.a(this.a).setVisibility(4);
-    if (SignalBombAnimationView.a(this.a) != null) {
-      SignalBombAnimationView.a(this.a).b();
-    }
-    QLog.d("SignalBombAnimationViewExtendFriendLimitChat", 2, "onAnimationEnd");
-    if (SignalBombAnimationView.a(this.a) != null) {
-      SignalBombAnimationView.a(this.a).sendEmptyMessage(1);
-    }
+    if (paramarrl == null) {}
+    do
+    {
+      return -1;
+      paramLong = paramarrl.d() - paramLong;
+      if (paramLong == 0L) {
+        return 0;
+      }
+    } while (paramLong <= 0L);
+    return 1;
   }
-  
-  public void a(int paramInt) {}
-  
-  public void b() {}
 }
 
 

@@ -1,31 +1,21 @@
-import android.text.Editable;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aecp
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  public aecp(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
+  public aecp(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
-    {
-      if (paramBoolean)
-      {
-        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
-        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
-        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
-        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
-      }
-    }
-    else {
-      return;
-    }
-    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
+    Intent localIntent = new Intent(this.a, FontSettingActivity.class);
+    this.a.startActivity(localIntent);
+    bdla.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

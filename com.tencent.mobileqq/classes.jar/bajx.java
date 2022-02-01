@@ -1,10 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bajx
-  implements DialogInterface.OnClickListener
+public class bajx
+  implements bajr
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  private bakr a;
+  
+  public bajx(bakr parambakr)
+  {
+    this.a = parambakr;
+  }
+  
+  public void a(balb parambalb)
+  {
+    if (this.a != null) {
+      this.a.h(parambalb);
+    }
+  }
 }
 
 

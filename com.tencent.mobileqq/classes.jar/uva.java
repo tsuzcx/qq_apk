@@ -1,44 +1,58 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
+import kotlin.Metadata;
 
-public class uva
-  extends bjwv<uof, bjwy<uof>>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ReadInJoyShareHelperV2$ShareReport;", "", "()V", "action", "", "from", "isSharing", "", "reportClick", "", "reportExp", "reportResult", "success", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class uva
 {
-  private ujh a;
+  private static int jdField_a_of_type_Int;
+  public static final uva a;
+  private static boolean jdField_a_of_type_Boolean;
+  private static int b;
   
-  public uva(Context paramContext, ujh paramujh)
+  static
   {
-    super(paramContext);
-    this.a = paramujh;
+    jdField_a_of_type_Uva = new uva();
   }
   
-  public int a(int paramInt)
+  public final void a(int paramInt)
   {
-    return 0;
+    jdField_a_of_type_Int = paramInt;
+    pqg localpqg = new pqg();
+    pkl.a(localpqg, "from", Integer.valueOf(paramInt));
+    olh.a("0X800AD75", localpqg.a());
   }
   
-  public bjwy<uof> a(ViewGroup paramViewGroup, int paramInt)
+  public final void a(boolean paramBoolean)
   {
-    return uvb.a(paramViewGroup);
-  }
-  
-  public void a(bjwy<uof> parambjwy)
-  {
-    super.onViewAttachedToWindow(parambjwy);
-    if (((parambjwy instanceof uvb)) && (this.a != null) && (this.a.a().getUserVisibleHint()) && (this.a.a().isResumed())) {
-      ((uvb)parambjwy).a();
+    int i = 0;
+    pqg localpqg;
+    if (jdField_a_of_type_Boolean)
+    {
+      jdField_a_of_type_Boolean = false;
+      localpqg = new pqg();
+      pkl.a(localpqg, "from", Integer.valueOf(jdField_a_of_type_Int));
+      pkl.a(localpqg, "share_unit", Integer.valueOf(uuw.a.a(b)));
+      if (!paramBoolean) {
+        break label74;
+      }
     }
-  }
-  
-  public void a(bjwy<uof> parambjwy, int paramInt)
-  {
-    uof localuof = (uof)a(paramInt);
-    if (localuof == null) {}
-    while (!(parambjwy instanceof uvb)) {
+    for (;;)
+    {
+      pkl.a(localpqg, "result", Integer.valueOf(i));
+      olh.a("0X800AD77", localpqg.a());
       return;
+      label74:
+      i = 1;
     }
-    ((uvb)parambjwy).a(localuof, paramInt);
+  }
+  
+  public final void b(int paramInt)
+  {
+    b = paramInt;
+    jdField_a_of_type_Boolean = true;
+    pqg localpqg = new pqg();
+    pkl.a(localpqg, "from", Integer.valueOf(jdField_a_of_type_Int));
+    pkl.a(localpqg, "share_unit", Integer.valueOf(uuw.a.a(paramInt)));
+    olh.a("0X800AD76", localpqg.a());
   }
 }
 

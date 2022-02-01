@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
-import vuv;
-import vux;
-import wrr;
+import wjq;
+import wjs;
+import xgm;
 
 public class PromoteWidgetController$3
   implements Runnable
 {
-  public PromoteWidgetController$3(wrr paramwrr, long paramLong) {}
+  public PromoteWidgetController$3(xgm paramxgm, long paramLong) {}
   
   public void run()
   {
-    ((vuv)vux.a(29)).a(this.a);
+    ((wjq)wjs.a(29)).a(this.a);
   }
 }
 

@@ -1,7 +1,9 @@
 public class akvo
 {
-  public boolean a;
-  public boolean b;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
 }
 
 

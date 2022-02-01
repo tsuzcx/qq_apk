@@ -1,25 +1,60 @@
-import android.app.Dialog;
-import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vip.lianghao.view.LiangHaoDialogView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.VerticalGallery.LayoutParams;
 
 public class bgqo
-  implements bfvg
+  extends BaseAdapter
 {
-  private Dialog a;
+  private final int jdField_a_of_type_Int;
+  private final int b;
   
-  public Dialog a(Context paramContext, bgqg parambgqg, View.OnClickListener paramOnClickListener)
+  public bgqo(WheelPickerLayout paramWheelPickerLayout, int paramInt1, int paramInt2)
   {
-    this.a = bfur.a(paramContext, 2131693317, this, parambgqg, 2131690620, 2131693315, new bgqp(this), paramOnClickListener, false, false);
-    return this.a;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramWheelPickerLayout.getResources().getDisplayMetrics()));
   }
   
-  public View a(Context paramContext, Object paramObject)
+  public int getCount()
   {
-    paramContext = new LiangHaoDialogView(paramContext);
-    paramContext.a((bgqg)paramObject);
-    return paramContext;
+    return WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b);
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.getContext());
+      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
+    }
+    for (;;)
+    {
+      String str = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b, paramInt);
+      WheelTextView localWheelTextView = (WheelTextView)paramView;
+      localWheelTextView.setTextSize(1, WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).b);
+      localWheelTextView.setTextColor(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).c);
+      localWheelTextView.setGravity(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).d);
+      localWheelTextView.setText(str);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

@@ -1,82 +1,396 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloPanelListView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.ApolloQueueDownloader.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
 public class amnh
-  extends amnk
-  implements View.OnClickListener
+  implements bhyt, INetInfoHandler
 {
-  public amnh(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramContext);
-    this.c = 4;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.f = 2;
-  }
+  private bhys jdField_a_of_type_Bhys;
+  private LinkedList<bhyo> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  public AtomicInteger a;
   
-  public amlu a(String paramString)
+  public amnh(AppRuntime paramAppRuntime, bhys parambhys)
   {
-    return new amlx(paramString);
-  }
-  
-  public View a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView = new ApolloPanelListView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setDivider(null);
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setVerticalScrollBarEnabled(true);
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setEdgeEffectEnabled(false);
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setSelector(2130850608);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+    bhys localbhys = parambhys;
+    if (parambhys == null) {
+      localbhys = new bhys();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView;
+    this.jdField_a_of_type_Bhys = localbhys;
+    if (this.jdField_a_of_type_Bhys.a) {
+      AppNetConnInfo.registerConnectionChangeReceiver(paramAppRuntime.getApplication(), this);
+    }
   }
   
-  public ArrayList<amlu> a(int paramInt)
+  private bhyo a()
   {
-    if ((this.b != 9) || (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {}
-    do
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
     {
+      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          bhyo localbhyo = (bhyo)localIterator.next();
+          if (!localbhyo.a())
+          {
+            localbhyo.a();
+            return localbhyo;
+          }
+        }
+      }
       return null;
-      i = a();
-    } while ((paramInt < 0) || (paramInt >= i) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView == null));
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.getFirstVisiblePosition() * this.f;
-    int i = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.getLastVisiblePosition();
-    int j = this.f;
-    ArrayList localArrayList = new ArrayList();
-    while ((paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt <= (i + 1) * j - 1))
-    {
-      localArrayList.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      paramInt += 1;
     }
-    return localArrayList;
+  }
+  
+  public int a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloQueue_Downloader", 2, "cancelTask stopAll=" + paramBoolean + ",key=" + paramString);
+    }
+    Object localObject;
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
+        break label115;
+      }
+      if (!paramBoolean) {
+        break label119;
+      }
+      paramString = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+      if (paramString.hasNext())
+      {
+        localObject = (bhyo)paramString.next();
+        ((bhyo)localObject).a(true);
+        ((bhyo)localObject).i();
+      }
+    }
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    for (;;)
+    {
+      label115:
+      return 0;
+      label119:
+      if ((paramString == null) || (TextUtils.isEmpty(paramString))) {
+        break;
+      }
+      localObject = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+      ArrayList localArrayList = new ArrayList();
+      while (((Iterator)localObject).hasNext())
+      {
+        bhyo localbhyo = (bhyo)((Iterator)localObject).next();
+        if (paramString.equals(localbhyo.jdField_a_of_type_JavaLangString))
+        {
+          if (!localbhyo.a())
+          {
+            ((Iterator)localObject).remove();
+            localArrayList.add(localbhyo);
+          }
+          else
+          {
+            localbhyo.a(true);
+            localbhyo.i();
+          }
+        }
+        else if ((localbhyo.b()) && (!localbhyo.a()))
+        {
+          ((Iterator)localObject).remove();
+          localArrayList.add(localbhyo);
+        }
+      }
+      if (localArrayList.size() > 0) {
+        this.jdField_a_of_type_JavaUtilLinkedList.removeAll(localArrayList);
+      }
+    }
+    return -1;
+  }
+  
+  public bhyo a(String paramString)
+  {
+    LinkedList localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
+    if (paramString != null) {}
+    try
+    {
+      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          bhyo localbhyo = (bhyo)localIterator.next();
+          if (paramString.equals(localbhyo.jdField_a_of_type_JavaLangString))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloQueue_Downloader", 2, "getTask | " + paramString + " task find =" + localbhyo);
+            }
+            return localbhyo;
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloQueue_Downloader", 2, "getTask | " + paramString + " task not find");
+      }
+      return null;
+    }
+    finally {}
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = null;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    c(paramView);
-  }
-  
-  public void a(BaseChatPie paramBaseChatPie)
-  {
-    super.a(paramBaseChatPie);
-    if (this.jdField_a_of_type_Amnd != null) {
-      this.jdField_a_of_type_Amnd.a(paramBaseChatPie);
+    for (;;)
+    {
+      try
+      {
+        synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+        {
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+          if (!localIterator.hasNext()) {
+            break label185;
+          }
+          bhyo localbhyo2 = (bhyo)localIterator.next();
+          if (localbhyo2.d <= 0L) {
+            break label316;
+          }
+          long l = System.currentTimeMillis() / 1000L;
+          if ((!localbhyo2.a()) && (l > localbhyo2.c + localbhyo2.d))
+          {
+            bool = true;
+            if ((!localbhyo2.b()) && (!bool)) {
+              continue;
+            }
+            localIterator.remove();
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("ApolloQueue_Downloader", 2, "remove task[" + localbhyo2.jdField_a_of_type_JavaLangString + "], isCancal=" + localbhyo2.b() + ", timeOut=" + bool);
+          }
+        }
+        bool = false;
+      }
+      finally {}
+      continue;
+      label185:
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloQueue_Downloader", 2, "doTask | downloadLimitCount=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ",maxDownloadCount=" + 3 + ",downloadQueue size=" + this.jdField_a_of_type_JavaUtilLinkedList.size());
+      }
+      for (;;)
+      {
+        bhyo localbhyo1;
+        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 3)
+        {
+          localbhyo1 = a();
+          if (localbhyo1 != null) {
+            break label288;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloQueue_Downloader", 2, "doTask | run() null");
+          }
+        }
+        return;
+        label288:
+        ThreadManager.postDownLoadTask(new ApolloQueueDownloader.1(this, localbhyo1), 2, null, false);
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+      }
+      label316:
+      boolean bool = false;
     }
   }
   
-  public void onClick(View paramView) {}
+  public void a(bhyo parambhyo)
+  {
+    LinkedList localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
+    if (parambhyo != null) {}
+    try
+    {
+      if ((!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) && (this.jdField_a_of_type_JavaUtilLinkedList.contains(parambhyo)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloQueue_Downloader", 2, "removeTask | task=" + parambhyo);
+        }
+        parambhyo.i();
+        this.jdField_a_of_type_JavaUtilLinkedList.remove(parambhyo);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(bhyo parambhyo, bhyn arg2, Bundle paramBundle)
+  {
+    if ((!bhyq.a(parambhyo)) || (a(parambhyo.jdField_a_of_type_JavaLangString) == parambhyo)) {}
+    bhyo localbhyo;
+    do
+    {
+      return;
+      localbhyo = a(parambhyo.jdField_a_of_type_JavaLangString);
+      if (localbhyo == null) {
+        break;
+      }
+    } while ((localbhyo == null) || (!localbhyo.s));
+    parambhyo.a(???);
+    parambhyo.a(paramBundle);
+    ??? = BaseApplicationImpl.getApplication().getRuntime();
+    if ((??? != null) && (parambhyo.jdField_a_of_type_Bhyp.a < 0L)) {
+      parambhyo.jdField_a_of_type_Bhyp.a = ???.getLongAccountUin();
+    }
+    localbhyo.a(parambhyo);
+    return;
+    parambhyo.a(???);
+    parambhyo.a(paramBundle);
+    parambhyo.g = 3;
+    ??? = BaseApplicationImpl.getApplication().getRuntime();
+    if ((??? != null) && (parambhyo.jdField_a_of_type_Bhyp.a < 0L)) {
+      parambhyo.jdField_a_of_type_Bhyp.a = ???.getLongAccountUin();
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        paramBundle = a(parambhyo.jdField_a_of_type_JavaLangString);
+        if (paramBundle == null)
+        {
+          parambhyo.c = ((int)(System.currentTimeMillis() / 1000L));
+          if (parambhyo.b)
+          {
+            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(parambhyo);
+            if ((parambhyo.jdField_a_of_type_JavaUtilList != null) && (parambhyo.jdField_a_of_type_JavaUtilList.size() != 0)) {
+              break label328;
+            }
+            ??? = null;
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloQueue_Downloader", 2, new Object[] { "startDownload | task=" + parambhyo.jdField_a_of_type_JavaLangString, ", url:", ??? });
+            }
+            a();
+            return;
+          }
+          this.jdField_a_of_type_JavaUtilLinkedList.addLast(parambhyo);
+        }
+      }
+      if ((parambhyo.b) && (!paramBundle.a()) && (this.jdField_a_of_type_JavaUtilLinkedList.remove(paramBundle)))
+      {
+        this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramBundle);
+        continue;
+        label328:
+        ??? = (String)parambhyo.jdField_a_of_type_JavaUtilList.get(0);
+      }
+    }
+  }
+  
+  public void b()
+  {
+    a(true, null);
+  }
+  
+  public void onNetMobile2None()
+  {
+    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetMobile2None");
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          bhyo localbhyo = (bhyo)localIterator.next();
+          if (localbhyo.a() == 2) {
+            localbhyo.h();
+          }
+        }
+      }
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetMobile2Wifi");
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetNone2Mobile");
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetNone2Wifi");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String arg1)
+  {
+    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)) {
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          bhyo localbhyo = (bhyo)localIterator.next();
+          if (localbhyo.a() == 2) {
+            localbhyo.f();
+          }
+        }
+      }
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloQueue_Downloader", 2, "queueDownload network-onNetWifi2None");
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        while (localIterator.hasNext())
+        {
+          bhyo localbhyo = (bhyo)localIterator.next();
+          if (localbhyo.a() == 2) {
+            localbhyo.g();
+          }
+        }
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((this.jdField_a_of_type_JavaUtilLinkedList != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)) {
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        if (localIterator.hasNext())
+        {
+          bhyo localbhyo = (bhyo)localIterator.next();
+          localStringBuilder.append("key=").append(localbhyo.jdField_a_of_type_JavaLangString);
+          if ((localbhyo.jdField_a_of_type_JavaUtilList != null) && (localbhyo.jdField_a_of_type_JavaUtilList.size() > 0)) {
+            localStringBuilder.append(",size=").append(localbhyo.jdField_a_of_type_JavaUtilList.size()).append(",url=").append((String)localbhyo.jdField_a_of_type_JavaUtilList.get(0));
+          }
+          localStringBuilder.append(";");
+        }
+      }
+    }
+    return "QueueDownloader task url:" + localObject.toString();
+  }
 }
 
 

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.search.fragment;
 
 import android.text.TextUtils;
+import android.view.View;
 
 class BaseSearchFragment$2$1
   implements Runnable
@@ -9,13 +10,16 @@ class BaseSearchFragment$2$1
   
   public void run()
   {
-    if (this.a.this$0.isDetached()) {}
-    do
-    {
+    if (this.a.this$0.isDetached()) {
       return;
-      this.a.this$0.c();
-    } while ((TextUtils.isEmpty(this.a.this$0.c)) && (!this.a.a));
-    this.a.this$0.a(this.a.this$0.c);
+    }
+    this.a.this$0.c();
+    if ((!TextUtils.isEmpty(this.a.this$0.c)) || (this.a.a))
+    {
+      this.a.this$0.a(this.a.this$0.c);
+      return;
+    }
+    this.a.this$0.b.setVisibility(8);
   }
 }
 

@@ -1,59 +1,103 @@
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
+
 public class bcgm
+  extends bcfs
 {
-  private int jdField_a_of_type_Int;
-  private short jdField_a_of_type_Short;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private boolean b;
+  public double a;
+  public int a;
+  public CharSequence a;
+  public String a;
+  public List<bcfl> a;
+  public double b;
+  public int b;
+  public CharSequence b;
+  public boolean b;
+  public CharSequence c;
+  public boolean c;
   
-  bcgm(int paramInt)
+  public bcgm(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public int a()
+  public bcgm(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public short a()
+  public int a(int paramInt)
   {
-    return this.jdField_a_of_type_Short;
+    int i = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      i = 1;
+    }
+    return i;
   }
   
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(short paramShort)
-  {
-    this.jdField_a_of_type_Short = paramShort;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
+    boolean bool2 = true;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.i = paramString.optString("leftImageURL");
+      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
+      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_JavaLangCharSequence = bcnc.a(paramString.optString("headText"));
+      this.jdField_a_of_type_JavaLangString = paramString.optString("headLineIconURL");
+      this.jdField_b_of_type_JavaLangCharSequence = bcnc.a(paramString.optString("descLineText"));
+      this.jdField_c_of_type_JavaLangCharSequence = bcnc.a(paramString.optString("firstLineText"));
+      JSONArray localJSONArray = paramString.optJSONArray("imageList");
+      if (localJSONArray != null)
+      {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(localJSONArray.length());
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          Object localObject = localJSONArray.optJSONObject(i);
+          localObject = new bcfl(((JSONObject)localObject).optString("url"), ((JSONObject)localObject).optInt("type"));
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
+          i += 1;
+        }
+      }
+      this.jdField_a_of_type_Double = paramString.optDouble("imageAspectRatio", 1.0D);
+      this.jdField_b_of_type_Double = paramString.optDouble("singleImageScale", 1.0D);
+      this.jdField_b_of_type_Int = paramString.optInt("imageTotalCount");
+      if (paramString.optInt("topNeedHigherMargin", 0) == 1)
+      {
+        bool1 = true;
+        this.jdField_b_of_type_Boolean = bool1;
+        if (paramString.optInt("needCornerRadius", 0) != 1) {
+          break label259;
+        }
+      }
+      label259:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        this.jdField_c_of_type_Boolean = bool1;
+        return;
+        bool1 = false;
+        break;
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
   public boolean b()
   {
-    return this.b;
+    return true;
   }
 }
 

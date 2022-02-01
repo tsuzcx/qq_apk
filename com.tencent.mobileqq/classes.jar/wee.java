@@ -1,56 +1,116 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class wee
-  extends vqr
+  implements wfk<wuc, wvn>
 {
-  public static final String a;
-  public xng a;
+  public wee(StoryVideoUploadTask paramStoryVideoUploadTask) {}
   
-  static
+  public void a(@NonNull wuc paramwuc, @Nullable wvn paramwvn, @NonNull ErrorMessage paramErrorMessage)
   {
-    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.feed_comment_list_775");
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspFeedCommentList localRspFeedCommentList = new qqstory_service.RspFeedCommentList();
-    try
+    if ((paramErrorMessage.isFail()) || (paramwvn == null))
     {
-      localRspFeedCommentList.mergeFrom(paramArrayOfByte);
-      return new wef(localRspFeedCommentList);
+      paramErrorMessage.extraMsg = "submit";
+      this.a.a(6, paramErrorMessage);
+      ykq.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish post fail:%s task:%s", new Object[] { paramErrorMessage, this.a.jdField_a_of_type_Wdw });
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    label541:
+    do
     {
+      return;
+      ((wdy)this.a.jdField_a_of_type_Wdw).d = (paramwvn.jdField_a_of_type_Long * 1000L);
+      paramErrorMessage = ((wdy)this.a.jdField_a_of_type_Wdw).a();
+      ykq.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "local feedId %s, remote id: %s", new Object[] { paramErrorMessage.feedId, paramwvn.jdField_a_of_type_JavaLangString });
+      ykq.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "local date %s, date id: %s", new Object[] { paramErrorMessage.date, paramwvn.c });
+      if (paramErrorMessage.isFakeFeedItem())
+      {
+        ((wdy)this.a.jdField_a_of_type_Wdw).a(paramwvn.jdField_a_of_type_JavaLangString);
+        paramErrorMessage.setDate(paramwvn.c);
+      }
       for (;;)
       {
-        paramArrayOfByte.printStackTrace();
+        if (!TextUtils.isEmpty(paramwvn.d))
+        {
+          ((wdy)this.a.jdField_a_of_type_Wdw).g = paramwvn.d;
+          ykq.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish success and storyId:%s", new Object[] { paramwvn.d });
+        }
+        if (!TextUtils.isEmpty(paramwvn.e))
+        {
+          ((wdy)this.a.jdField_a_of_type_Wdw).g = paramwvn.e;
+          ykq.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish success and vid:%s", new Object[] { paramwvn.e });
+        }
+        ((wdy)this.a.jdField_a_of_type_Wdw).b = paramwvn.jdField_a_of_type_JavaUtilList;
+        ykq.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "add to shareGroup rsp:" + ((wdy)this.a.jdField_a_of_type_Wdw).b);
+        ((wdy)this.a.jdField_a_of_type_Wdw).e = paramwvn.b;
+        if (!this.a.a()) {
+          break label541;
+        }
+        this.a.a(this.a.jdField_a_of_type_Int, new ErrorMessage());
+        ykq.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish post success after stop:%s", new Object[] { this.a.jdField_a_of_type_Wdw });
+        if (this.a.jdField_a_of_type_Int != 7) {
+          break;
+        }
+        new wqd().a(((wdy)this.a.jdField_a_of_type_Wdw).g);
+        if (paramwvn.jdField_a_of_type_JavaUtilList == null) {
+          break;
+        }
+        paramwuc = paramwvn.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramwuc.hasNext())
+        {
+          paramwvn = ((wuo)paramwuc.next()).a.values().iterator();
+          while (paramwvn.hasNext())
+          {
+            paramErrorMessage = (String)paramwvn.next();
+            new wqd().a(paramErrorMessage);
+          }
+        }
+        break;
+        if (!paramErrorMessage.feedId.equals(paramwvn.jdField_a_of_type_JavaLangString)) {
+          ykq.e("Q.qqstory.publish.upload:StoryVideoUploadTask", "local feedId %s, remote id: %s", new Object[] { paramErrorMessage.feedId, paramwvn.jdField_a_of_type_JavaLangString });
+        }
       }
+      this.a.a(5, new ErrorMessage());
+      ykq.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish post success:%s", new Object[] { this.a.jdField_a_of_type_Wdw });
+    } while ((paramwuc.a == null) || (paramwuc.a.jdField_a_of_type_Int != 1));
+    int i;
+    int j;
+    switch (((wdy)this.a.jdField_a_of_type_Wdw).f)
+    {
+    default: 
+      i = 0;
+      if (TextUtils.isEmpty(paramwuc.a.e))
+      {
+        j = 2;
+        label655:
+        paramwvn = paramwuc.a.a();
+        if (paramwuc.e != 1) {
+          break label727;
+        }
+      }
+      break;
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqFeedCommentList localReqFeedCommentList = new qqstory_service.ReqFeedCommentList();
-    localReqFeedCommentList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Xng.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Xng.jdField_b_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_Xng.jdField_b_of_type_JavaLangString = "";
+    label727:
+    for (paramwuc = "2";; paramwuc = "1")
+    {
+      ykv.a("video_edit", "pub_url", j, i, new String[] { paramwvn, "", paramwuc });
+      return;
+      i = 2;
+      break;
+      i = 3;
+      break;
+      i = 4;
+      break;
+      j = 1;
+      break label655;
     }
-    localReqFeedCommentList.cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Xng.jdField_b_of_type_JavaLangString));
-    localReqFeedCommentList.source.set(this.jdField_a_of_type_Xng.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Xng.jdField_b_of_type_Int != -1) {
-      localReqFeedCommentList.type.set(this.jdField_a_of_type_Xng.jdField_b_of_type_Int);
-    }
-    return localReqFeedCommentList.toByteArray();
   }
 }
 

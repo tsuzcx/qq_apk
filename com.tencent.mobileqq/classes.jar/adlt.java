@@ -1,21 +1,31 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class adlt
-  extends amsu
+final class adlt
+  implements DialogInterface.OnCancelListener
 {
-  public adlt(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  adlt(adnn paramadnn, int paramInt, adnm paramadnm) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
-    while (this.a.a == null) {
-      return;
+    if (this.jdField_a_of_type_Adnn.a)
+    {
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
+      }
+      bdla.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
     }
-    paramString = this.a.app.getFaceBitmap(this.a.app.getCurrentAccountUin(), (byte)3, false);
-    this.a.a.setImageBitmap(paramString);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Adnm != null) {
+        this.jdField_a_of_type_Adnm.onCancel();
+      }
+      return;
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        bdla.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
+      }
+    }
   }
 }
 

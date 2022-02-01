@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.TextureView;
 import android.view.ViewGroup;
@@ -40,6 +41,8 @@ import com.tencent.tavkit.composition.model.TAVAudioConfiguration;
 import com.tencent.tavkit.composition.model.TAVTransitionableAudio;
 import com.tencent.tavkit.composition.model.TAVVideoConfiguration;
 import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
+import com.tencent.tavsticker.core.TAVStickerContext;
+import com.tencent.tavsticker.core.TAVStickerEditView;
 import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.tavsticker.utils.CollectionUtil;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
@@ -299,10 +302,15 @@ public class TAVCutVideoSession
     if (this.stickerControllers.size() > 0)
     {
       localStickerController = (StickerController)this.stickerControllers.get(0);
+      if ((localStickerController.getStickerContext() != null) && (localStickerController.getStickerContext().getCurrentStickerEditView() != null))
+      {
+        Log.d("sticker_size", "updateTemplateRenderChain: h=" + localStickerController.getStickerContext().getCurrentStickerEditView().getMeasuredHeight());
+        Log.d("sticker_size", "updateTemplateRenderChain: w=" + localStickerController.getStickerContext().getCurrentStickerEditView().getMeasuredWidth());
+      }
       localVideoRenderChainConfigure = new VideoRenderChainConfigure(true);
       setVideoChangeConfigureRenderSize(localVideoRenderChainConfigure);
       if (!paramBoolean1) {
-        break label83;
+        break label176;
       }
       localVideoRenderChainConfigure.setSceneType(paramInt);
     }
@@ -310,7 +318,7 @@ public class TAVCutVideoSession
     {
       mediaBuild(localStickerController, localVideoRenderChainConfigure, paramBoolean2);
       return;
-      label83:
+      label176:
       localVideoRenderChainConfigure.setSceneType(0);
     }
   }
@@ -923,9 +931,27 @@ public class TAVCutVideoSession
   public void setMainVolume(float paramFloat)
   {
     getMediaModel().getMediaEffectModel().getMusicModel().setVolume(paramFloat);
-    List localList = getTAVComposition().getAudioChannels();
-    if ((!localList.isEmpty()) && (!((List)localList.get(0)).isEmpty())) {
-      ((TAVTransitionableAudio)((List)localList.get(0)).get(0)).getAudioConfiguration().setVolume(paramFloat);
+    Object localObject = getTAVComposition();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return;
+      localObject = ((TAVComposition)localObject).getAudioChannels();
+      if ((!((List)localObject).isEmpty()) && (!((List)((List)localObject).get(0)).isEmpty()))
+      {
+        localObject = (List)((List)localObject).get(0);
+        if (localObject != null)
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            TAVTransitionableAudio localTAVTransitionableAudio = (TAVTransitionableAudio)((Iterator)localObject).next();
+            if ((localTAVTransitionableAudio instanceof TAVClip)) {
+              localTAVTransitionableAudio.getAudioConfiguration().setVolume(paramFloat);
+            }
+          }
+        }
+      }
     }
   }
   

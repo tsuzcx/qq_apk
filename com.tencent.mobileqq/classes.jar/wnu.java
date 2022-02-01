@@ -1,13 +1,16 @@
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
 
-class wnu
-  implements xhu
+public class wnu
+  extends wfh
 {
-  wnu(wnt paramwnt, List paramList) {}
-  
-  public void a(xhv paramxhv)
+  public wnu(qqstory_service.RspQQStoryGuide paramRspQQStoryGuide)
   {
-    wnt.a(this.jdField_a_of_type_Wnt, this.jdField_a_of_type_JavaUtilList, paramxhv);
+    super(paramRspQQStoryGuide.result);
+  }
+  
+  public String toString()
+  {
+    return "QQStoryGuideResponse{}";
   }
 }
 

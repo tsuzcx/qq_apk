@@ -1,40 +1,20 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avfj
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public avfj(LocationPickFragment paramLocationPickFragment, View paramView1, View paramView2, View paramView3) {}
+  public avfj(ImgHeaderView paramImgHeaderView, Activity paramActivity, MessageRecord paramMessageRecord) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    if (paramEditable.length() > 0)
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.b.setVisibility(0);
-      this.c.setVisibility(0);
-    }
-    for (;;)
-    {
-      paramEditable = paramEditable.toString().trim();
-      if (TextUtils.isEmpty(paramEditable)) {
-        break;
-      }
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(paramEditable);
-      return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.b.setVisibility(8);
-      this.c.setVisibility(8);
-    }
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a("");
+    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

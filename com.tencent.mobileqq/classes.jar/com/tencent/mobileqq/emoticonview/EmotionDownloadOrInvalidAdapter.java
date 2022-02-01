@@ -26,7 +26,7 @@ public class EmotionDownloadOrInvalidAdapter
   {
     super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramEmoticonCallback, paramInt4);
     this.isUpdatePanel = false;
-    this.contentHight = (XPanelContainer.a - (int)paramContext.getResources().getDimension(2131296962));
+    this.contentHight = (XPanelContainer.a - (int)paramContext.getResources().getDimension(2131296963));
   }
   
   public int getCount()
@@ -54,11 +54,11 @@ public class EmotionDownloadOrInvalidAdapter
         if (QLog.isColorLevel()) {
           QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt + ";view form inflater");
         }
-        paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131561857, null);
+        paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131561925, null);
         paramViewHolder.setLayoutParams(paramView);
-        this.holder.cover = ((URLImageView)paramViewHolder.findViewById(2131365187));
-        this.holder.name = ((TextView)paramViewHolder.findViewById(2131365277));
-        this.holder.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131365275));
+        this.holder.cover = ((URLImageView)paramViewHolder.findViewById(2131365278));
+        this.holder.name = ((TextView)paramViewHolder.findViewById(2131365371));
+        this.holder.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131365369));
         recycleView(this.panelType, paramViewHolder);
         paramViewHolder.setTag(this.holder);
       }
@@ -66,7 +66,7 @@ public class EmotionDownloadOrInvalidAdapter
     for (;;)
     {
       updateDownloadUI(this.holder);
-      paramInt = XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131296962);
+      paramInt = XPanelContainer.a - (int)this.mContext.getResources().getDimension(2131296963);
       if (paramInt != this.contentHight)
       {
         this.contentHight = paramInt;
@@ -88,7 +88,7 @@ public class EmotionDownloadOrInvalidAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionDownloadOrInvalidAdapter
  * JD-Core Version:    0.7.0.1
  */

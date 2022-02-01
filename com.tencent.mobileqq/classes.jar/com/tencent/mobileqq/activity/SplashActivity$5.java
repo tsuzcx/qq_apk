@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import bbwb;
-import com.tencent.common.app.BaseApplicationImpl;
+import bdla;
+import bhhk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
 class SplashActivity$5
   implements Runnable
@@ -13,13 +12,20 @@ class SplashActivity$5
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SplashActivity", 2, "VideoRedbag, SplashActivity doOnResume, sendRealNameCheckReq");
+    long l = SpaceLowNoticeActiviy.a(this.this$0.app, "conf_space_low_shreshold", 104857600L);
+    if (SpaceLowNoticeActiviy.a(SpaceLowNoticeActiviy.a(this.this$0.app, "conf_space_check_interval", 259200000L)))
+    {
+      if (bhhk.b(this.this$0) + bhhk.b() < l)
+      {
+        QLog.i("SplashActivity", 1, "qqclean conf did notice");
+        SpaceLowNoticeActiviy.a(this.this$0);
+        bdla.b(this.this$0.app, "dc00898", "", "", "0X8007545", "0X8007545", 0, 0, this.this$0.app.getCurrentAccountUin(), "", "", "");
+      }
     }
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      bbwb.a((QQAppInterface)localAppRuntime);
+    else {
+      return;
     }
+    QLog.i("SplashActivity", 1, "qqclean conf not need notice");
   }
 }
 

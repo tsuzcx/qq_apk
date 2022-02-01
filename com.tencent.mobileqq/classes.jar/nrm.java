@@ -1,24 +1,49 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.List;
+import com.tencent.av.opengl.ui.GLRootView;
 
-public final class nrm
-  extends Handler
+class nrm
+  implements nnt
 {
-  public nrm(Looper paramLooper, nro paramnro)
+  nrm(nrk paramnrk) {}
+  
+  public void a()
   {
-    super(paramLooper);
+    bjuc.c(this.a.a, "notifyCameraNoData ");
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(long paramLong)
   {
-    if (paramMessage.arg1 == 0)
-    {
-      this.a.a(paramMessage.arg1, (List)paramMessage.obj);
-      return;
+    bjuc.c(this.a.a, "onBeforeCloseCamera ");
+    if (this.a.d()) {
+      this.a.a(true);
     }
-    this.a.a(paramMessage.arg1, null);
+  }
+  
+  public void a(long paramLong, boolean paramBoolean)
+  {
+    bjuc.c(this.a.a, "onBeforeOpenCamera ");
+  }
+  
+  public void b(long paramLong) {}
+  
+  public void b(long paramLong, boolean paramBoolean)
+  {
+    bjuc.c(this.a.a, "onAfterOpenCamera ");
+    nrk.a(this.a, true);
+    if (this.a.d()) {
+      nrk.a(this.a).sendEmptyMessageDelayed(6, 200L);
+    }
+  }
+  
+  public void c(long paramLong, boolean paramBoolean)
+  {
+    bjuc.c(this.a.a, "onAfterCloseCamera ");
+    nrk.a(this.a, false);
+    if ((this.a.d()) && (nrk.a(this.a) != null) && (nrk.a(this.a).a() != null))
+    {
+      nrk.a(this.a).a().requestRender();
+      nrk.a(this.a).sendEmptyMessageDelayed(3, 50L);
+    }
   }
 }
 

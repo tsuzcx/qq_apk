@@ -1,17 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.8;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axum
+class axum
   implements View.OnClickListener
 {
-  public axum(AutoReplyEditActivity.8 param8) {}
+  axum(axul paramaxul) {}
   
   public void onClick(View paramView)
   {
-    AutoReplyEditActivity.a(this.a.this$0, true);
+    if (axul.a(this.a) != null) {
+      axul.a(this.a).a(axul.a(this.a));
+    }
+    this.a.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

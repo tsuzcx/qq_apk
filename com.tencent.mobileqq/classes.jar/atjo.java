@@ -1,44 +1,75 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+
 class atjo
+  implements athm
 {
-  public int a;
-  private long a;
-  public boolean a;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long c;
-  private long d;
+  atjo(atjn paramatjn, String paramString, atju paramatju) {}
   
-  private atjo()
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = 1;
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2TroopTaskExcuter onFaild：");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atjn.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Atju.a(atiy.a(this.jdField_a_of_type_Atjn.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
+    }
   }
   
-  public void a()
+  public void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = System.currentTimeMillis();
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.d = (System.currentTimeMillis() - this.c);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 2;
+    paramString2 = new Bundle();
+    paramString2.putString("_m_ForwardFileType", "3");
+    paramString2.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    paramString2.putString("_m_ForwardFileName", this.jdField_a_of_type_Atjn.jdField_a_of_type_JavaLangString);
+    paramString2.putString("_m_ForwardSize", this.jdField_a_of_type_Atjn.jdField_a_of_type_Long + "");
+    paramString2.putString("_m_ForwardMd5", this.jdField_a_of_type_Atjn.c);
+    paramString2.putString("_m_ForwardDeadTime", "0");
+    paramString2.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Atjn.e);
+    paramString2.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Atjn.f);
+    paramString2.putString("_m_ForwardUuid", paramString1);
+    int i;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Atjn.e))
+    {
+      i = 0;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Atjn.f)) {
+        break label248;
+      }
+    }
+    label248:
+    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Atjn.f))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atjn.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send success send feeds");
+      }
+      atiy.a(atiy.a(this.jdField_a_of_type_Atjn.jdField_a_of_type_Atiy), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString1, this.jdField_a_of_type_Atjn.jdField_a_of_type_Long, 0, i, j, 0, false, paramString2, this.jdField_a_of_type_Atju);
+      return;
+      i = Integer.parseInt(this.jdField_a_of_type_Atjn.e);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atjo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
 
-class axkg
-  implements axjt
+public final class axkg
+  implements awvo
 {
-  axkg(axkf paramaxkf, int paramInt, axkh paramaxkh) {}
-  
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    axkf.a(this.jdField_a_of_type_Axkf, false);
-    if (axkf.a(this.jdField_a_of_type_Axkf).size() == 0) {
-      this.jdField_a_of_type_Axkf.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Axkh, true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(axkf.a(this.jdField_a_of_type_Axkf), 2, "Focus cmd:1718 sub cmd:100 errCode:" + paramInt + " msg:" + paramString);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    axkf.a(this.jdField_a_of_type_Axkf, false);
-    try
+    switch (paramInt)
     {
-      axkf.a(this.jdField_a_of_type_Axkf, 0);
-      if ((this.jdField_a_of_type_Axkf.a(this.jdField_a_of_type_Int, paramArrayOfByte) == -1) && (axkf.a(this.jdField_a_of_type_Axkf).size() == 0)) {
-        this.jdField_a_of_type_Axkf.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Axkh, true);
-      }
-      this.jdField_a_of_type_Axkh.a(axkf.a(this.jdField_a_of_type_Axkf));
-      axkf.a(this.jdField_a_of_type_Axkf, System.currentTimeMillis());
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QQPlayerService.a(BaseApplicationImpl.getContext(), QQPlayerService.b());
       return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(axkf.a(this.jdField_a_of_type_Axkf), 2, "Focus cmd:1718 sub cmd:100 Exception:" + paramArrayOfByte.getMessage());
-    }
+    QQPlayerService.c(BaseApplicationImpl.getContext());
   }
 }
 

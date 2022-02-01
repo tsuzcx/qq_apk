@@ -1,8 +1,17 @@
-import android.hardware.Camera;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bacb
+class bacb
+  implements View.OnClickListener
 {
-  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
+  bacb(baca parambaca) {}
+  
+  public void onClick(View paramView)
+  {
+    baca.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

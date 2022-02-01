@@ -1,14 +1,17 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.AdapterView;
 
-public class poq
-  implements pqe
+class poq
+  extends qdb
 {
-  public poq(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  poq(pob parampob, String paramString, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    pay.a(this.a.a.getContext(), paa.m);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
   }
 }
 

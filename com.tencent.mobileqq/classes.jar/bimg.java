@@ -1,32 +1,9 @@
-import android.view.View;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.graphics.Canvas;
+import com.tencent.mobileqq.widget.BubbleVideoView;
 
-public class bimg
-  implements bjoe
+public abstract interface bimg
 {
-  public bimg(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
-      if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
-    {
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-        continue;
-        if (paramInt == 0) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
-  }
+  public abstract void a(BubbleVideoView paramBubbleVideoView, Canvas paramCanvas);
 }
 
 

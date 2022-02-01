@@ -2,7 +2,6 @@ package com.tencent.biz.subscribe.comment;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import amtj;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -12,11 +11,12 @@ import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import zgz;
+import zwe;
 
 public class ReplyContainer
   extends LinearLayout
@@ -25,7 +25,7 @@ public class ReplyContainer
   private int jdField_a_of_type_Int;
   private CertifiedAccountMeta.StComment jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
   private ReplyActionView jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView;
-  private zgz jdField_a_of_type_Zgz;
+  private zwe jdField_a_of_type_Zwe;
   private int b;
   private int c;
   
@@ -98,7 +98,7 @@ public class ReplyContainer
         CertifiedAccountMeta.StReply localStReply = (CertifiedAccountMeta.StReply)localList.get(i);
         ReplyView localReplyView = new ReplyView(getContext());
         localReplyView.setPosition(i);
-        localReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Zgz);
+        localReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Zwe);
         localReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
         localReplyView.setClickable(true);
         localReplyView.setFocusable(true);
@@ -129,7 +129,7 @@ public class ReplyContainer
         addView(this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView);
         setVisibility(0);
         return;
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(amtj.a(2131712510));
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(anvx.a(2131712857));
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
         continue;
@@ -139,7 +139,7 @@ public class ReplyContainer
           paramInt = j - paramInt;
           if (paramInt > 0)
           {
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(amtj.a(2131712508) + paramInt + amtj.a(2131712509));
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(anvx.a(2131712855) + paramInt + anvx.a(2131712856));
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
           }
@@ -164,15 +164,15 @@ public class ReplyContainer
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.jdField_a_of_type_Zgz != null)
+      if (this.jdField_a_of_type_Zwe != null)
       {
-        this.jdField_a_of_type_Zgz.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment);
+        this.jdField_a_of_type_Zwe.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment);
         continue;
-        if (this.jdField_a_of_type_Zgz != null)
+        if (this.jdField_a_of_type_Zwe != null)
         {
           CertifiedAccountMeta.StComment localStComment = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
           int i = getHeight() / this.c;
-          this.jdField_a_of_type_Zgz.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
+          this.jdField_a_of_type_Zwe.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
         }
       }
     }
@@ -188,9 +188,9 @@ public class ReplyContainer
     this.b = paramInt;
   }
   
-  public void setOnCommentElementClickListener(zgz paramzgz)
+  public void setOnCommentElementClickListener(zwe paramzwe)
   {
-    this.jdField_a_of_type_Zgz = paramzgz;
+    this.jdField_a_of_type_Zwe = paramzwe;
   }
   
   public void setPosition(int paramInt)

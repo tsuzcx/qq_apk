@@ -1,47 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class rmb
-  implements rlp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJWriteWatchWordShareContract$IView;", "", "showFailedToast", "", "wording", "", "showSuccessToast", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface rmb
 {
-  private rlq jdField_a_of_type_Rlq;
-  private rma jdField_a_of_type_Rma;
-  private rnh jdField_a_of_type_Rnh;
+  public abstract void showFailedToast(@NotNull String paramString);
   
-  public rmb(rma paramrma)
-  {
-    this.jdField_a_of_type_Rma = paramrma;
-    this.jdField_a_of_type_Rnh = new rnh(this.jdField_a_of_type_Rma);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Rnh.a();
-    this.jdField_a_of_type_Rlq = null;
-  }
-  
-  public void a(UgcVideo paramUgcVideo)
-  {
-    if (this.jdField_a_of_type_Rlq != null) {
-      this.jdField_a_of_type_Rlq.a();
-    }
-    this.jdField_a_of_type_Rma.a(paramUgcVideo, null);
-  }
-  
-  public void a(rlq paramrlq)
-  {
-    this.jdField_a_of_type_Rnh.a(paramrlq);
-    this.jdField_a_of_type_Rlq = paramrlq;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Rnh.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Rnh.c();
-  }
+  public abstract void showSuccessToast(@NotNull String paramString);
 }
 
 

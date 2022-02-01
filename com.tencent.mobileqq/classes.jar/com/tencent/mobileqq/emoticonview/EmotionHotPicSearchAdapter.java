@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
-import bcef;
-import bfyz;
+import bdla;
+import bhhr;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
@@ -54,7 +54,7 @@ public class EmotionHotPicSearchAdapter
       localURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
       localURLImageView.setAdjustViewBounds(false);
       localURLImageView.setLayoutParams(localLayoutParams);
-      localURLImageView.setContentDescription(this.mContext.getString(2131691134));
+      localURLImageView.setContentDescription(this.mContext.getString(2131691219));
       return localURLImageView;
       if (paramInt == this.columnNum - 1)
       {
@@ -90,16 +90,16 @@ public class EmotionHotPicSearchAdapter
         if ((i != 0) && (TextUtils.isEmpty(((HotPicSearchEmoticonInfo)paramEmotionPanelData).mSearchWord)))
         {
           this.mReportedMD5List.add(str);
-          bcef.b(this.mBaseChatPie.app, "dc00898", "", "", "0X800AE1D", "0X800AE1D", i, 0, "2", "", ((HotPicSearchEmoticonInfo)paramEmotionPanelData).mSearchItem.getEmoMd5(), String.valueOf(paramInt + 1));
+          bdla.b(this.mBaseChatPie.app, "dc00898", "", "", "0X800AE1D", "0X800AE1D", i, 0, "2", "", ((HotPicSearchEmoticonInfo)paramEmotionPanelData).mSearchItem.getEmoMd5(), String.valueOf(paramInt + 1));
           return;
         }
       } while (TextUtils.isEmpty(((HotPicSearchEmoticonInfo)paramEmotionPanelData).mSearchWord));
       this.mReportedMD5List.add(str);
-      bcef.b(this.mBaseChatPie.app, "dc00898", "", "", "0X800AE2D", "0X800AE2D", 0, 0, "2", "", ((HotPicSearchEmoticonInfo)paramEmotionPanelData).mSearchItem.getEmoMd5(), String.valueOf(paramInt + 1));
+      bdla.b(this.mBaseChatPie.app, "dc00898", "", "", "0X800AE2D", "0X800AE2D", 0, 0, "2", "", ((HotPicSearchEmoticonInfo)paramEmotionPanelData).mSearchItem.getEmoMd5(), String.valueOf(paramInt + 1));
       return;
     } while ((((HotPicSearchEmoticonInfo)paramEmotionPanelData).mPageType != 2) || (!this.mIsRichPanelSearch));
     this.mReportedMD5List.add(str);
-    bcef.b(this.mBaseChatPie.app, "dc00898", "", "", "0X800AE35", "0X800AE35", RichTextPanel.a, 0, "2", "", ((HotPicSearchEmoticonInfo)paramEmotionPanelData).mSearchItem.getEmoMd5(), String.valueOf(paramInt + 1));
+    bdla.b(this.mBaseChatPie.app, "dc00898", "", "", "0X800AE35", "0X800AE35", RichTextPanel.a, 0, "2", "", ((HotPicSearchEmoticonInfo)paramEmotionPanelData).mSearchItem.getEmoMd5(), String.valueOf(paramInt + 1));
   }
   
   private void updateUI(View paramView, EmotionPanelData paramEmotionPanelData, int paramInt)
@@ -119,9 +119,9 @@ public class EmotionHotPicSearchAdapter
       if ((QLog.isColorLevel()) && (!StringUtil.isEmpty(localEmoticonInfo.action))) {
         QLog.d("EmotionHotPicSearchAdapter", 2, "updateUI info = " + localEmoticonInfo.action);
       }
-    } while (localURLImageView.getTag(2131380831) == paramEmotionPanelData);
+    } while (localURLImageView.getTag(2131381183) == paramEmotionPanelData);
     reportExposeEvent(paramEmotionPanelData, paramInt);
-    localURLImageView.setTag(2131380831, paramEmotionPanelData);
+    localURLImageView.setTag(2131381183, paramEmotionPanelData);
     localURLImageView.setVisibility(0);
     localURLImageView.setURLDrawableDownListener(null);
     paramView = localEmoticonInfo.getBigDrawable(this.mContext, this.density);
@@ -290,7 +290,7 @@ public class EmotionHotPicSearchAdapter
         if (((HotPicSearchEmoticonInfo)paramList).mPageType != 2) {
           break;
         }
-      } while (bfyz.aK(this.mBaseChatPie.app.getApp(), this.mBaseChatPie.app.getCurrentAccountUin()) != 5);
+      } while (bhhr.aK(this.mBaseChatPie.app.getApp(), this.mBaseChatPie.app.getCurrentAccountUin()) != 5);
       this.mIsRichPanelSearch = true;
       return;
     } while ((((HotPicSearchEmoticonInfo)paramList).mPageType != 1) || (this.mBaseChatPie.getEmoPanel().getEmoController().findIndexByPanelType(12) != EmoticonPanelController.sLastSelectedSecondTabIndex));
@@ -299,7 +299,7 @@ public class EmotionHotPicSearchAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionHotPicSearchAdapter
  * JD-Core Version:    0.7.0.1
  */

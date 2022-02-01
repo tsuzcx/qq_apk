@@ -1,26 +1,20 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.1;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4.2;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class affc
-  extends View
+  implements View.OnTouchListener
 {
-  affc(affb paramaffb, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public affc(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.1(this));
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.2(this));
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.j();
+      paramView = this.a.n;
+      this.a.a("Clk_find", paramView, "");
     }
     return true;
   }

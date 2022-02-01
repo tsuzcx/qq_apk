@@ -1,28 +1,82 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class awaf
-  implements ValueAnimator.AnimatorUpdateListener
+  extends WebViewPlugin
 {
-  public awaf(MultiCardFragment paramMultiCardFragment, awar paramawar, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  aady jdField_a_of_type_Aady;
+  String jdField_a_of_type_JavaLangString;
+  nuj jdField_a_of_type_Nuj = new awag(this);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public awaf()
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    if (this.jdField_a_of_type_Awar == null) {
-      return;
+    this.mPluginNameSpace = "push";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!"push".equals(paramString2)) || (("addListener".equals(paramString3)) && (paramVarArgs.length > 0))) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        i = paramJsBridgeListener.optInt("appid");
+        this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
+        this.jdField_a_of_type_Aady.a().a(i, this.jdField_a_of_type_Nuj);
+        if (QLog.isColorLevel()) {
+          QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
+        }
+        return true;
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
+        }
+        return false;
+      }
+      if (("removeListener".equals(paramString3)) && (paramVarArgs.length > 0)) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          i = paramJsBridgeListener.optInt("appid");
+          this.jdField_a_of_type_Aady.a().a(i);
+          if (QLog.isColorLevel()) {
+            QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
+          }
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
+          }
+        }
+      }
     }
-    float f2 = 1.0F - (1.0F - this.jdField_a_of_type_Float) * f1;
-    this.jdField_a_of_type_Awar.a.setScaleX(f2);
-    this.jdField_a_of_type_Awar.a.setScaleY(f2);
-    this.jdField_a_of_type_Awar.a.setTranslationX(0.0F);
-    this.jdField_a_of_type_Awar.a.setTranslationY(this.b * f1);
-    paramValueAnimator = this.jdField_a_of_type_Awar.a.getLayoutParams();
-    float f3 = this.c;
-    paramValueAnimator.height = ((int)((1.0F - f1 * (1.0F - this.d)) / f2 * f3));
-    this.jdField_a_of_type_Awar.a.requestLayout();
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    if (this.jdField_a_of_type_Aady == null)
+    {
+      this.jdField_a_of_type_Aady = aady.a();
+      this.jdField_a_of_type_Aady.a();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Aady != null) {
+      this.jdField_a_of_type_Aady.b();
+    }
   }
 }
 

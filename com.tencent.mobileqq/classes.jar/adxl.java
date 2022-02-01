@@ -1,100 +1,28 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.List;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.ArrayList;
 
 public class adxl
-  extends aliy
+  implements asit
 {
-  private List<adxi> jdField_a_of_type_JavaUtilList;
+  public adxl(EmosmActivity paramEmosmActivity) {}
   
-  public adxl(List<adxi> paramList)
+  public void onPackageAdded(EmoticonPackage paramEmoticonPackage)
   {
-    super(paramList, paramList.app, paramList.jdField_a_of_type_ComTencentWidgetXListView, 1, true);
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559631, paramViewGroup, false);
-      paramView = new adxo();
-      paramView.c = ((ImageView)localView.findViewById(2131368236));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371615));
-      localView.setTag(paramView);
-      localObject = getItem(paramInt);
-      if (localObject != null)
-      {
-        localObject = (adxi)localObject;
-        if (localObject != null)
-        {
-          paramView.jdField_a_of_type_JavaLangString = ((adxi)localObject).a.getUin();
-          paramView.jdField_a_of_type_Adxi = ((adxi)localObject);
-          paramView.c.setImageBitmap(super.a(paramView.jdField_a_of_type_JavaLangString, 1, (byte)0));
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((adxi)localObject).a.name);
-          if (((adxi)localObject).a.certifiedGrade <= 0L) {
-            break label284;
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getResources().getDrawable(2130841793);
-            this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
-            ThemeUtil.setThemeFilter(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ThemeUtil.curThemeId);
-          }
-          paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
-        }
+      if (((EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).epId.equals(paramEmoticonPackage.epId)) {
+        return;
       }
+      i += 1;
     }
-    for (;;)
-    {
-      if (AppSetting.c) {
-        localView.setContentDescription(paramView.jdField_a_of_type_AndroidWidgetTextView.getText());
-      }
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (adxo)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label284:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    }
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
+  
+  public void onPackageDeleted(EmoticonPackage paramEmoticonPackage) {}
+  
+  public void onPackageMoved(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

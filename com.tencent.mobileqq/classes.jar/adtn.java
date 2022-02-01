@@ -1,74 +1,124 @@
+import android.content.Context;
 import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.MultiImageTextView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
 
 public class adtn
-  implements CompoundButton.OnCheckedChangeListener
+  extends BaseAdapter
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public adtn(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public adtn(ContactBindedActivity paramContactBindedActivity, Context paramContext)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    int j = HttpUtil.getNetWorkType();
-    int i = j;
-    if (j == -1) {
-      i = 2;
-    }
-    Object localObject;
-    if (i == 0)
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844916);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public PhoneContact a(int paramInt)
+  {
+    return (PhoneContact)ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).get(paramInt);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      QQToast.a(this.a.getActivity(), 1, 2131695597, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299076));
-      localObject = this.a;
-      if (!paramBoolean) {
-        NotifyPushSettingActivity.a((NotifyPushSettingActivity)localObject, bool1);
+      if ((ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity) != null) && (ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size() > 0))
+      {
+        PhoneContact localPhoneContact = (PhoneContact)ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).get(ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size() - 1);
+        ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity, localPhoneContact, false);
       }
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Bitmap localBitmap = null;
+    PhoneContact localPhoneContact = a(paramInt);
+    if (paramView == null) {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity.getLayoutInflater().inflate(2131559337, null);
     }
     for (;;)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool1 = false;
-      break;
-      if (NotifyPushSettingActivity.a(this.a).compareAndSet(true, true))
+      paramView.setTag(localPhoneContact);
+      ImageView localImageView = (ImageView)paramView.findViewById(2131366345);
+      Object localObject = localBitmap;
+      if (paramInt == getCount() - 1)
       {
-        QQToast.a(this.a.getActivity(), 1, 2131697752, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299076));
-        localObject = this.a;
-        if (!paramBoolean) {}
-        for (bool1 = bool2;; bool1 = false)
-        {
-          NotifyPushSettingActivity.a((NotifyPushSettingActivity)localObject, bool1);
-          break;
+        localObject = localBitmap;
+        if (this.jdField_a_of_type_Boolean) {
+          localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         }
       }
-      NotifyPushSettingActivity.a(this.a, paramBoolean);
-      if (paramBoolean)
+      localImageView.setImageDrawable((Drawable)localObject);
+      localBitmap = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).getBitmapFromCache(11, localPhoneContact.unifiedCode);
+      localObject = localBitmap;
+      if (localBitmap == null)
       {
-        localObject = amtj.a(2131706751) + adul.a(3600000L);
-        NotifyPushSettingActivity.a(this.a).setRightText((CharSequence)localObject);
-        NotifyPushSettingActivity.a(this.a).set(true);
-        long l = NetConnInfoCenter.getServerTime();
-        ((amov)this.a.app.getBusinessHandler(2)).a((int)(3600L + l), "", "not_disturb_from_notify_push_setting_activity");
-        bcef.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 1, 60L + "", "0", "", "");
+        ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).requestDecodeFace(localPhoneContact.unifiedCode, 11, true, (byte)0);
+        localObject = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity);
       }
-      else
+      localImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject));
+      if (AppSetting.c) {
+        localImageView.setContentDescription(localPhoneContact.name);
+      }
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    super.notifyDataSetChanged();
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if (ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity) == null) {}
+    for (;;)
+    {
+      return;
+      paramInt1 = 0;
+      while (paramInt1 < ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).getChildCount())
       {
-        localObject = NotifyPushSettingActivity.a(this.a).a().getText().toString();
-        NotifyPushSettingActivity.a(this.a).a().setText("");
-        NotifyPushSettingActivity.a(this.a).set(true);
-        ((amov)this.a.app.getBusinessHandler(2)).a(0, (String)localObject, "not_disturb_from_notify_push_setting_activity");
-        bcef.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 2, "0", "0", "", "");
+        View localView = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).getChildAt(paramInt1);
+        Object localObject = localView.getTag();
+        if ((localObject != null) && ((localObject instanceof PhoneContact)) && (paramString.equals(((PhoneContact)localObject).unifiedCode))) {
+          ((ImageView)localView.findViewById(2131366345)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+        }
+        paramInt1 += 1;
       }
     }
   }

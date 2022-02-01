@@ -3,15 +3,15 @@ package com.tencent.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import bjuk;
-import bjul;
+import blfw;
+import blfx;
 import com.tencent.image.URLImageView;
 
 public class URLThemeImageView
   extends URLImageView
-  implements bjul
+  implements blfx
 {
-  public bjuk a;
+  public blfw a;
   
   public URLThemeImageView(Context paramContext)
   {
@@ -54,7 +54,7 @@ public class URLThemeImageView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bjuk();
+        this.a = new blfw();
       }
       this.a.a(true);
     }

@@ -1,31 +1,31 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import java.util.List;
-import xvv;
-import xzn;
-import yax;
+import ykq;
+import yog;
+import ypq;
 
 public class EditVideoPlayer$7
   implements Runnable
 {
-  public EditVideoPlayer$7(xzn paramxzn) {}
+  public EditVideoPlayer$7(yog paramyog) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_JavaUtilList = ((MultiBlockVideoPlayer)this.this$0.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).a(true, 10000L, 6, this.this$0.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditRecordVideoSource.getWidth(), this.this$0.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditRecordVideoSource.getHeight(), this.this$0.jdField_a_of_type_Float);
-    xvv.a("Q.qqstory.record.EditVideoPlayer", "onLoadSuccess getMultiVideoInfo find %d blocks", Integer.valueOf(this.this$0.jdField_a_of_type_JavaUtilList.size()));
+    ykq.a("Q.qqstory.record.EditVideoPlayer", "onLoadSuccess getMultiVideoInfo find %d blocks", Integer.valueOf(this.this$0.jdField_a_of_type_JavaUtilList.size()));
     if (this.this$0.jdField_a_of_type_JavaUtilList.size() > 0) {}
     try
     {
-      ((MultiBlockVideoPlayer)this.this$0.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).setCurrentVideoFragment((yax)this.this$0.jdField_a_of_type_JavaUtilList.get(0));
-      xzn.a(this.this$0);
+      ((MultiBlockVideoPlayer)this.this$0.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).setCurrentVideoFragment((ypq)this.this$0.jdField_a_of_type_JavaUtilList.get(0));
+      yog.a(this.this$0);
       return;
     }
     catch (MultiBlockVideoPlayer.MultiOperateException localMultiOperateException)
     {
       for (;;)
       {
-        xvv.c("Q.qqstory.record.EditVideoPlayer", "onLoadSuccess setCurrentVideoFragment failed", localMultiOperateException);
+        ykq.c("Q.qqstory.record.EditVideoPlayer", "onLoadSuccess setCurrentVideoFragment failed", localMultiOperateException);
       }
     }
   }

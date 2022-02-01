@@ -1,175 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
+import android.content.res.ColorStateList;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-class aacr
-  extends InputStream
+public class aacr
+  extends ClickableSpan
 {
-  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
-  ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
-  HttpURLConnection jdField_a_of_type_JavaNetHttpURLConnection;
-  BufferedInputStream b;
+  private int jdField_a_of_type_Int;
+  private aacs jdField_a_of_type_Aacs;
+  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private String jdField_a_of_type_JavaLangString;
   
-  public aacr(aacq paramaacq, BufferedInputStream paramBufferedInputStream1, BufferedInputStream paramBufferedInputStream2, ByteArrayOutputStream paramByteArrayOutputStream, HttpURLConnection paramHttpURLConnection)
+  public aacr(String paramString, int paramInt, aacs paramaacs)
   {
-    this.jdField_a_of_type_JavaIoBufferedInputStream = paramBufferedInputStream1;
-    this.b = paramBufferedInputStream2;
-    if (paramByteArrayOutputStream != null) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaIoByteArrayOutputStream = paramByteArrayOutputStream;
-      this.jdField_a_of_type_JavaNetHttpURLConnection = paramHttpURLConnection;
-      return;
-      paramByteArrayOutputStream = new ByteArrayOutputStream();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Aacs = paramaacs;
+  }
+  
+  public aacr(String paramString, ColorStateList paramColorStateList, aacs paramaacs)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.jdField_a_of_type_Aacs = paramaacs;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Aacs != null)) {
+      this.jdField_a_of_type_Aacs.a(this.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void close()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PubAccountWebViewHttpBridge", 2, "now close memory stream and socket stream!");
+    if (this.jdField_a_of_type_Int > 0) {
+      paramTextPaint.setColor(this.jdField_a_of_type_Int);
     }
-    try
-    {
-      if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
-      {
-        this.jdField_a_of_type_JavaIoBufferedInputStream.close();
-        this.jdField_a_of_type_JavaIoBufferedInputStream = null;
-      }
-      if (this.b != null)
-      {
-        this.b.close();
-        this.b = null;
-      }
-      if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
-        this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
-      }
-      this.jdField_a_of_type_Aacq.a = null;
-      return;
+    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
+      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public int read()
-  {
-    int j;
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null))
-    {
-      j = -1;
-      return j;
-    }
-    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null) {}
-    for (int i = this.jdField_a_of_type_JavaIoBufferedInputStream.read();; i = -1)
-    {
-      j = i;
-      if (i != -1) {
-        break;
-      }
-      j = i;
-      if (this.b == null) {
-        break;
-      }
-      return this.b.read();
-    }
-  }
-  
-  public int read(byte[] paramArrayOfByte)
-  {
-    int i;
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null))
-    {
-      i = -1;
-      return i;
-    }
-    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
-    {
-      i = this.jdField_a_of_type_JavaIoBufferedInputStream.read(paramArrayOfByte);
-      j = i;
-      if (QLog.isColorLevel()) {
-        QLog.i("PubAccountWebViewHttpBridge", 2, "now read data from memory buffer second: " + i);
-      }
-    }
-    for (int j = i;; j = -1)
-    {
-      i = j;
-      if (j != -1) {
-        break;
-      }
-      i = j;
-      if (this.b == null) {
-        break;
-      }
-      j = this.b.read(paramArrayOfByte);
-      i = j;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("PubAccountWebViewHttpBridge", 2, "now read data from socket stream second: " + j);
-      return j;
-    }
-  }
-  
-  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null)) {
-      return -1;
-    }
-    int i = paramArrayOfByte.length;
-    if (((paramInt1 | paramInt2) < 0) || (paramInt1 > i) || (i - paramInt1 < paramInt2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountWebViewHttpBridge", 2, "buffer three, error");
-      }
-      throw new ArrayIndexOutOfBoundsException();
-    }
-    int j = 0;
-    label65:
-    if (j < paramInt2) {}
-    for (;;)
-    {
-      int k;
-      try
-      {
-        if (this.jdField_a_of_type_JavaIoBufferedInputStream == null) {
-          break label162;
-        }
-        i = this.jdField_a_of_type_JavaIoBufferedInputStream.read();
-        k = i;
-        if (i == -1)
-        {
-          k = i;
-          if (this.b != null) {
-            k = this.b.read();
-          }
-        }
-        if (k == -1)
-        {
-          if (j == 0) {
-            break;
-          }
-          return j;
-        }
-      }
-      catch (IOException paramArrayOfByte)
-      {
-        if (j != 0) {
-          return j;
-        }
-        throw paramArrayOfByte;
-      }
-      paramArrayOfByte[(paramInt1 + j)] = ((byte)k);
-      j += 1;
-      break label65;
-      return paramInt2;
-      label162:
-      i = -1;
-    }
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

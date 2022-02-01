@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import acjp;
+import aczy;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Process;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bahf;
-import bmxe;
-import bmxf;
+import bbnu;
+import bomw;
+import bomx;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
@@ -29,7 +29,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
-import xwa;
+import ykv;
 
 public class EncodeVideoTask
   extends AsyncTask<Void, Void, Integer>
@@ -217,7 +217,9 @@ public class EncodeVideoTask
   {
     if (!this.isEncodeFinish)
     {
-      this.mPublishEntry.isCancel = true;
+      if (this.mPublishEntry != null) {
+        this.mPublishEntry.isCancel = true;
+      }
       this.isCanceled = true;
       boolean bool = HwVideoMerge.destroyRunningProcess();
       FFmpegUtils.killRunningProcesses();
@@ -245,13 +247,13 @@ public class EncodeVideoTask
       return Integer.valueOf(-61);
     }
     long l = SystemClock.uptimeMillis();
-    int i = acjp.a().a(0, 1, 1, Process.myTid(), 8000, 603, 1L, Process.myTid(), "video", true);
+    int i = aczy.a().a(0, 1, 1, Process.myTid(), 8000, 603, 1L, Process.myTid(), "video", true);
     int j = realDoForHC_StoryEncodeType().intValue();
     if (j != 0) {
       this.processListerner.onStoryMergeCompleted(j, null, null, null, 0L);
     }
     if (i != 0) {
-      acjp.a().a(i);
+      aczy.a().a(i);
     }
     if (QLog.isColorLevel()) {
       QLog.d("EncodeVideoTask", 2, new Object[] { "encode cost=" + (SystemClock.uptimeMillis() - l), " ret:", Integer.valueOf(j) });
@@ -377,11 +379,11 @@ public class EncodeVideoTask
       label99:
       for (String str = "1";; str = "0")
       {
-        xwa.a("AIOMergeVideoSuc", bool, 0L, new String[] { str });
+        ykv.a("AIOMergeVideoSuc", bool, 0L, new String[] { str });
         if (paramInt == 0) {
           break label107;
         }
-        xwa.a("AIOMergeVideoError", true, 0L, new String[] { String.valueOf(paramInt) });
+        ykv.a("AIOMergeVideoError", true, 0L, new String[] { String.valueOf(paramInt) });
         return;
         bool = false;
         break;
@@ -396,18 +398,18 @@ public class EncodeVideoTask
       }
       for (paramInt = 1;; paramInt = 0)
       {
-        if ((!bmxe.c) || (paramInt != 0) || (!bmxe.g.a())) {
+        if ((!bomw.c) || (paramInt != 0) || (!bomw.g.a())) {
           break label339;
         }
-        long l1 = bmxe.g.a[0];
-        long l2 = bmxe.g.a[1];
-        long l3 = bmxe.g.a[2];
-        long l4 = bmxe.g.a[3];
-        long l5 = bmxe.g.a[4];
-        if ((xwa.a(paramLong, 0L, 120000L)) && (xwa.a(l1, 0L, 120000L)) && (xwa.a(l2, 0L, 120000L)) && (xwa.a(l3, 0L, 10000L)) && (xwa.a(l4, 0L, 120000L)) && (xwa.a(l5, 0L, 120000L))) {
-          xwa.a("AIOMergeVideoCost", true, paramLong, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(l3), String.valueOf(l4), String.valueOf(l5) });
+        long l1 = bomw.g.a[0];
+        long l2 = bomw.g.a[1];
+        long l3 = bomw.g.a[2];
+        long l4 = bomw.g.a[3];
+        long l5 = bomw.g.a[4];
+        if ((ykv.a(paramLong, 0L, 120000L)) && (ykv.a(l1, 0L, 120000L)) && (ykv.a(l2, 0L, 120000L)) && (ykv.a(l3, 0L, 10000L)) && (ykv.a(l4, 0L, 120000L)) && (ykv.a(l5, 0L, 120000L))) {
+          ykv.a("AIOMergeVideoCost", true, paramLong, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(l3), String.valueOf(l4), String.valueOf(l5) });
         }
-        bmxe.g.c();
+        bomw.g.c();
         return;
         paramLong = System.currentTimeMillis() - paramLong;
         break;
@@ -439,8 +441,8 @@ public class EncodeVideoTask
   protected Integer realDoForHC_StoryEncodeType()
   {
     long l = System.currentTimeMillis();
-    if (bmxe.c) {
-      bmxe.g.b();
+    if (bomw.c) {
+      bomw.g.b();
     }
     PublishVideoEntry localPublishVideoEntry = VideoCompositeHelper.getPublishVideoEntry(this.fakeVid);
     if (localPublishVideoEntry == null)
@@ -456,7 +458,7 @@ public class EncodeVideoTask
       if (QLog.isColorLevel()) {
         QLog.i("EncodeVideoTask", 2, "[StoryEncodeType]configure param error, fakeId:" + this.fakeVid + ", EntryId:" + localPublishVideoEntry.fakeVid);
       }
-      bahf.a(new RuntimeException("onMediaCodecEncode failed"));
+      bbnu.a(new RuntimeException("onMediaCodecEncode failed"));
       return Integer.valueOf(-62);
     }
     String str = ShortVideoUtils.getMergeVideoPath(new File(localPublishVideoEntry.mLocalRawVideoDir).getParentFile());

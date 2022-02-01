@@ -1,24 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils.TDFileQIPCModule.1;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import cooperation.qzone.LbsDataV2;
+import cooperation.qzone.report.QzoneLbsReporter;
+import cooperation.qzone.util.QZLog;
 
-public class bcvu
-  extends QIPCModule
+final class bcvu
+  extends LbsManagerService.OnLocationChangeListener
 {
-  public bcvu()
+  bcvu(String paramString, boolean paramBoolean)
   {
-    super("Module_TDFileChangeNameQIPCModule");
+    super(paramString, paramBoolean);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    bhzm.c(bcvs.a(), "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    if (paramString.equals("Action_url_2_fmdb")) {
-      ThreadManager.postImmediately(new TeamWorkUtils.TDFileQIPCModule.1(this, paramBundle.getString("url")), null, true);
+    QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet.NewLbsInterface", 1, "[QZ_LBS_MODULE]----locate");
+    long l1 = System.currentTimeMillis();
+    long l2 = bcvt.a();
+    QzoneLbsReporter.reportLocationResult(paramInt, this.businessId, l1 - l2);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null))
+    {
+      bcvt.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.mLocation));
+      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "[QZ_LBS_MODULE]onLocationFinish succeed! gps=" + bcvt.a());
     }
-    return null;
+    for (;;)
+    {
+      bcvt.a(paramInt);
+      return;
+      QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "[QZ_LBS_MODULE]onLocationFinish failed: error in force gps info update..");
+    }
   }
 }
 

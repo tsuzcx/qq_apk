@@ -4,7 +4,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.text.TextUtils;
-import bkwm;
+import bmhv;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
@@ -30,14 +30,14 @@ import java.util.Map.Entry;
 import java.util.Set;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import noe;
-import npi;
-import odq;
+import nvf;
+import nwj;
+import olh;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pay;
+import pkh;
 
 public class TaskManager
 {
@@ -69,7 +69,7 @@ public class TaskManager
     try
     {
       isConfigureOn = getConfigOn();
-      SCRIPT_ROOT_PATH = noe.a("3412") + "3412";
+      SCRIPT_ROOT_PATH = nvf.a("3412") + "3412";
       JSSCRIPT_EXTRACTION_DIR = SCRIPT_ROOT_PATH + "/extraction";
       JSSCRIPT_PROCESS_DIR = SCRIPT_ROOT_PATH + "/process";
       JSSCRIPT_DISTRIBUTION_DIR = SCRIPT_ROOT_PATH + "/distribution";
@@ -327,7 +327,7 @@ public class TaskManager
   
   public static boolean getConfigOn()
   {
-    return ((Integer)bkwm.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1;
+    return ((Integer)bmhv.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1;
   }
   
   public static TaskManager getInstance()
@@ -337,7 +337,7 @@ public class TaskManager
   
   private String getMmapUtilsName(String paramString)
   {
-    String str = pay.a().getAccount();
+    String str = pkh.a().getAccount();
     return str + "_" + paramString;
   }
   
@@ -566,7 +566,7 @@ public class TaskManager
   
   private boolean isTaskAvailable(Task paramTask)
   {
-    int i = ((Integer)bkwm.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(0))).intValue();
+    int i = ((Integer)bmhv.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(0))).intValue();
     return (i != Task.STATUS_FAIL) && (i != Task.STATUS_QUIT);
   }
   
@@ -796,7 +796,7 @@ public class TaskManager
     paramString1.put("sys_version", DeviceInfoUtil.getDeviceOSVersion());
     paramString1.put("qq_version", DeviceInfoUtil.getQQVersion());
     paramString1.put("appid", AppSetting.a() + "");
-    odq.a(null, "", "0X800982F", "0X800982F", 0, 0, "", "", "", paramString1.toString(), false);
+    olh.a(null, "", "0X800982F", "0X800982F", 0, 0, "", "", "", paramString1.toString(), false);
   }
   
   @NotNull
@@ -858,7 +858,7 @@ public class TaskManager
         return;
         try
         {
-          if (npi.a(SCRIPT_ROOT_PATH, "3412")) {
+          if (nwj.a(SCRIPT_ROOT_PATH, "3412")) {
             continue;
           }
           KandianReportSoLoader.logAndReport("startTasksIfExist: verification failed");
@@ -996,7 +996,7 @@ public class TaskManager
   {
     QLog.d("kandianreport.taskmanager", 2, "mark task fail " + paramTask.id);
     paramTask.status = Task.STATUS_FAIL;
-    bkwm.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(Task.STATUS_FAIL));
+    bmhv.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(Task.STATUS_FAIL));
   }
   
   public void qlog(int paramInt, String paramString)
@@ -1017,7 +1017,7 @@ public class TaskManager
           initTask(localTask);
           startTask(localTask);
           localTask.status = Task.STATUS_ACCEPT;
-          bkwm.a("kandianreport.taskmanager" + paramString, Integer.valueOf(Task.STATUS_ACCEPT));
+          bmhv.a("kandianreport.taskmanager" + paramString, Integer.valueOf(Task.STATUS_ACCEPT));
         }
         catch (Exception localException)
         {
@@ -1050,7 +1050,7 @@ public class TaskManager
   public void restore()
   {
     QLog.d("kandianreport.taskmanager", 1, "restore");
-    bkwm.a("kandianreport_ON", Integer.valueOf(1));
+    bmhv.a("kandianreport_ON", Integer.valueOf(1));
   }
   
   public void startAllTasks()

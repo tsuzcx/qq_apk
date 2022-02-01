@@ -1,47 +1,70 @@
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
-public class zsy
+class zsy
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetFeedListRsp>
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
+  zsy(zsx paramzsx, zoz paramzoz) {}
   
-  public zsy(JSONObject paramJSONObject, int paramInt)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("goodsWord");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("gifUrl");
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("pngUrl");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("packageID");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("quantity");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("playRule");
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("selectedWording");
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("giftValue");
-    this.jdField_e_of_type_Int = paramJSONObject.optInt("giftID");
-    this.f = paramJSONObject.optInt("giftPrice");
-    this.jdField_c_of_type_Boolean = paramJSONObject.optBoolean("isFreeGift");
-    this.h = paramJSONObject.optInt("addTime");
-    this.i = paramJSONObject.optInt("freegiftlimit");
-    this.g = paramInt;
-    this.j = paramJSONObject.optInt("svip");
-    this.k = paramJSONObject.optInt("year_svip");
-    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("svip_logo");
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if ((paramBoolean) && (paramLong == 0L))
+    {
+      this.jdField_a_of_type_Zsx.a().b(paramStGetFeedListRsp.livePageInfo.get());
+      if ((this.jdField_a_of_type_Zoz.c()) || (this.jdField_a_of_type_Zoz.d())) {
+        if ((paramStGetFeedListRsp.hotLive.get() == null) || (paramStGetFeedListRsp.hotLive.get().size() == 0)) {
+          if (zsx.a(this.jdField_a_of_type_Zsx) != null)
+          {
+            this.jdField_a_of_type_Zsx.e();
+            zsx.a(this.jdField_a_of_type_Zsx).b(true);
+          }
+        }
+      }
+    }
+    label187:
+    do
+    {
+      do
+      {
+        break label187;
+        break label187;
+        paramVSBaseRequest = this.jdField_a_of_type_Zsx;
+        paramString = paramStGetFeedListRsp.hotLive.get();
+        localStCommonExt = paramStGetFeedListRsp.extInfo;
+        if (paramStGetFeedListRsp.isFinish.get() == 1) {}
+        for (paramBoolean = bool1;; paramBoolean = false)
+        {
+          paramVSBaseRequest.a(paramString, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
+          this.jdField_a_of_type_Zsx.b("share_key_continue_feeds", new zos(paramStGetFeedListRsp.hotLive.get()));
+          return;
+          if (zsx.a(this.jdField_a_of_type_Zsx) == null) {
+            break;
+          }
+          zsx.a(this.jdField_a_of_type_Zsx).b(false);
+          break;
+        }
+      } while (!this.jdField_a_of_type_Zoz.e());
+      paramVSBaseRequest = this.jdField_a_of_type_Zsx;
+      paramString = paramStGetFeedListRsp.hotLive.get();
+      COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
+      if (paramStGetFeedListRsp.isFinish.get() == 1) {}
+      for (paramBoolean = bool2;; paramBoolean = false)
+      {
+        paramVSBaseRequest.b(paramString, localStCommonExt, paramBoolean, paramStGetFeedListRsp.adAttchInfo.get());
+        return;
+      }
+      this.jdField_a_of_type_Zsx.a(false);
+    } while (((!this.jdField_a_of_type_Zoz.c()) && (!this.jdField_a_of_type_Zoz.d())) || (zsx.a(this.jdField_a_of_type_Zsx) == null));
+    zsx.a(this.jdField_a_of_type_Zsx).b(true);
   }
 }
 

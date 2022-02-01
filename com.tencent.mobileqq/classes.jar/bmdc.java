@@ -1,13 +1,29 @@
-import com.tencent.tavcut.TAVCut.Callback;
+import android.os.Bundle;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
 
 class bmdc
-  implements TAVCut.Callback
+  extends aods
 {
-  bmdc(bmdb parambmdb) {}
+  bmdc(bmcz parambmcz) {}
   
-  public void onDone(int paramInt)
+  protected void c(boolean paramBoolean, Object paramObject)
   {
-    bmbx.b("AEEditorProcessManager", "TAVCut init ret code = " + paramInt);
+    if (paramBoolean)
+    {
+      paramObject = (Bundle)paramObject;
+      paramObject.putInt("which_method", 0);
+      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
+    }
+  }
+  
+  protected void d(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      paramObject = (Bundle)paramObject;
+      paramObject.putInt("which_method", 1);
+      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
+    }
   }
 }
 

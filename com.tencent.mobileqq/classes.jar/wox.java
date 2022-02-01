@@ -1,40 +1,81 @@
-import com.tencent.biz.qqstory.database.VideoCollectionEntry;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tribe.async.reactive.SimpleObserver;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 class wox
-  implements wok
+  extends SimpleObserver<List<wzh>>
 {
-  private int jdField_a_of_type_Int;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  wod jdField_a_of_type_Wod;
+  wox(woo paramwoo, wly paramwly, View paramView, Activity paramActivity) {}
   
-  public wox(wow paramwow, wod paramwod)
+  private void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_Wod = paramwod;
-  }
-  
-  protected void a(String paramString, wol paramwol)
-  {
-    wea localwea = new wea();
-    localwea.jdField_c_of_type_JavaLangString = wow.a(this.jdField_a_of_type_Wow).uid;
-    if (wow.a(this.jdField_a_of_type_Wow).collectionKey != null) {
-      localwea.jdField_d_of_type_Int = VideoCollectionEntry.getCollectionId(wow.a(this.jdField_a_of_type_Wow).collectionKey);
+    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString1))) {
+      paramString1 = "NO_SUCH_FEED_ID";
     }
-    localwea.jdField_d_of_type_JavaLangString = paramString;
-    localwea.jdField_c_of_type_Int = 20;
-    localwea.jdField_e_of_type_Int = wow.a(this.jdField_a_of_type_Wow).shareTimeZone;
-    localwea.jdField_e_of_type_JavaLangString = wow.a(this.jdField_a_of_type_Wow).feedId;
-    localwea.f = wow.a(this.jdField_a_of_type_Wow).identify;
-    localwea.g = wow.a(this.jdField_a_of_type_Wow).videoListOrder;
-    vqn.a().a(localwea, new woy(this, paramwol));
+    for (;;)
+    {
+      paramString1 = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_Wly.a, 0, null, paramString1, paramString2, paramArrayList, paramHashMap), 106);
+      paramString1.a(this.jdField_a_of_type_Woo.a());
+      paramString1 = paramString1.a();
+      paramString1.mUIStyle.bottomWidgetShowFlag = 3;
+      if ((this.jdField_a_of_type_AndroidViewView instanceof StoryMsgNodeFrameLayout))
+      {
+        xbp.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, ((StoryMsgNodeFrameLayout)this.jdField_a_of_type_AndroidViewView).a);
+        return;
+      }
+      xbp.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, this.jdField_a_of_type_AndroidViewView);
+      return;
+    }
   }
   
-  public void a(wol paramwol)
+  public void a(List<wzh> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    a(wow.a(this.jdField_a_of_type_Wow), paramwol);
+    Object localObject = xdl.a(paramList);
+    String str1;
+    if (localObject != null)
+    {
+      str1 = ((wzh)localObject).a;
+      localObject = ((wzh)localObject).b;
+    }
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList();
+      HashMap localHashMap = new HashMap();
+      int i = 0;
+      for (;;)
+      {
+        String str2;
+        if (i < paramList.size())
+        {
+          str2 = ((wzh)paramList.get(i)).b;
+          if (!TextUtils.isEmpty(str2)) {}
+        }
+        else
+        {
+          a(str1, (String)localObject, localArrayList, localHashMap);
+          return;
+        }
+        localArrayList.add(str2);
+        localHashMap.put(str2, ((wzh)paramList.get(i)).a);
+        i += 1;
+      }
+      localObject = null;
+      str1 = null;
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    a("", "", null, null);
   }
 }
 

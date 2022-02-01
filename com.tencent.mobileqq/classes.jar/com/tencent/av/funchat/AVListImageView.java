@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import mtz;
+import mux;
 
 public class AVListImageView
   extends ImageView
@@ -53,7 +53,7 @@ public class AVListImageView
     {
       if (this.jdField_b_of_type_Boolean)
       {
-        if (!(localDrawable instanceof mtz)) {
+        if (!(localDrawable instanceof mux)) {
           localDrawable.setColorFilter(-10591367, PorterDuff.Mode.MULTIPLY);
         }
         localDrawable.setBounds(m, m, getWidth() - m, getHeight() - m);
@@ -83,7 +83,7 @@ public class AVListImageView
         localDrawable.setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
         break;
       }
-      if ((localDrawable instanceof mtz)) {
+      if ((localDrawable instanceof mux)) {
         break;
       }
       localDrawable.clearColorFilter();

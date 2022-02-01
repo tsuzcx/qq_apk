@@ -1,6 +1,26 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
 class umw
+  extends Handler
 {
-  private static final umu a = new umu(null);
+  umw(umv paramumv, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    umv.a(this.a);
+    umv.a(this.a).sendEmptyMessageDelayed(2, 1100L);
+  }
 }
 
 

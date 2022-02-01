@@ -1,53 +1,74 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import java.util.List;
 
 public class airp
+  implements Handler.Callback
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public airp(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  public JSONObject a()
+  public boolean handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      localJSONObject = new JSONObject();
-      localJSONException1.printStackTrace();
+    default: 
+      return true;
     }
-    catch (JSONException localJSONException1)
+    switch (paramMessage.arg2)
     {
-      try
-      {
-        localJSONObject.put("entryID", this.jdField_a_of_type_Int);
-        localJSONObject.put("redDotVersion", this.jdField_b_of_type_Int);
-        localJSONObject.put("showRedDot", this.jdField_a_of_type_Boolean);
-        localJSONObject.put("userCanceled", this.jdField_b_of_type_Boolean);
-        localJSONObject.put("lastCancelTime", this.jdField_a_of_type_Long);
-        return localJSONObject;
-      }
-      catch (JSONException localJSONException2)
-      {
-        JSONObject localJSONObject;
-        break label68;
-      }
-      localJSONException1 = localJSONException1;
-      localJSONObject = null;
     }
-    label68:
-    return localJSONObject;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
+    for (;;)
     {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryID");
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("redDotVersion");
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("showRedDot");
-      this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("userCanceled");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("lastCancelTime");
+      this.a.jdField_a_of_type_Boolean = false;
+      break;
+      switch (paramMessage.arg1)
+      {
+      default: 
+        break;
+      case 20: 
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131715002));
+        paramMessage = TroopMemberHistoryFragment.a(this.a).getContext().getResources();
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.dp2px(320.0F, paramMessage);
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AIOUtils.dp2px(177.5F, paramMessage);
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+        paramMessage = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20171229/e4f73825907a4cdeb29db9c6688cd82c.png", (URLDrawable.URLDrawableOptions)localObject);
+        localObject = (ImageView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131378884);
+        ((ImageView)localObject).setImageDrawable(paramMessage);
+        ((ImageView)localObject).setVisibility(0);
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        continue;
+        if ((paramMessage.obj instanceof List))
+        {
+          this.a.jdField_a_of_type_Airt.a((List)paramMessage.obj);
+          this.a.jdField_a_of_type_Airt.notifyDataSetChanged();
+        }
+        switch (paramMessage.arg1)
+        {
+        default: 
+          break;
+        case 20: 
+          this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+          continue;
+          if (paramMessage.arg1 == 20)
+          {
+            this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131697333);
+            this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          }
+          break;
+        }
+        break;
+      }
     }
   }
 }

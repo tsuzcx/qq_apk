@@ -1,60 +1,11 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import java.util.List;
 
-class qkn
-  implements Application.ActivityLifecycleCallbacks
+public abstract interface qkn
 {
-  qkn(qki paramqki, Activity paramActivity) {}
+  public abstract void a(List<qkk> paramList);
   
-  private void a(Activity paramActivity, boolean paramBoolean)
-  {
-    if (paramActivity != this.jdField_a_of_type_AndroidAppActivity) {}
-    do
-    {
-      return;
-      QLog.d("RvPolymericContainer", 1, "visibility changed, visible :  " + paramBoolean);
-      if (paramBoolean)
-      {
-        qki.c(this.jdField_a_of_type_Qki);
-        return;
-      }
-    } while (qki.a(this.jdField_a_of_type_Qki) == null);
-    qki.a(this.jdField_a_of_type_Qki).b();
-  }
-  
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    if ((paramActivity == this.jdField_a_of_type_AndroidAppActivity) && (BaseApplication.getContext() != null)) {
-      BaseApplication.getContext().unregisterActivityLifecycleCallbacks(this);
-    }
-  }
-  
-  public void onActivityPaused(Activity paramActivity)
-  {
-    a(paramActivity, false);
-  }
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    a(paramActivity, true);
-  }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
-  {
-    a(paramActivity, true);
-  }
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
-    a(paramActivity, false);
-  }
+  public abstract void b(SelectPositionModule.PositionData paramPositionData);
 }
 
 

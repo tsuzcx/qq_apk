@@ -1,14 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
-import java.util.Comparator;
+import com.tencent.av.VideoController.1;
 
 public class lcj
-  implements Comparator<lcp>
+  implements DialogInterface.OnClickListener
 {
-  public lcj(VideoController paramVideoController) {}
+  public lcj(VideoController.1 param1) {}
   
-  public int a(lcp paramlcp1, lcp paramlcp2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (int)(paramlcp1.d - paramlcp2.d);
+    this.a.this$0.g(true);
   }
 }
 

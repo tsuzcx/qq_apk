@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import amtj;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -12,15 +11,16 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.TextView;
-import baah;
-import baaj;
-import babc;
-import bacd;
-import bace;
-import bacg;
-import bach;
-import baci;
-import bbuc;
+import anvx;
+import bbgq;
+import bbgs;
+import bbhl;
+import bbim;
+import bbin;
+import bbip;
+import bbiq;
+import bbir;
+import bdax;
 import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
@@ -31,13 +31,13 @@ import mqq.os.MqqHandler;
 
 public class CaptureVideoFilterViewPager
   extends UnHandleTouchEventViewPager
-  implements baaj
+  implements bbgs
 {
   private int jdField_a_of_type_Int = -1;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private View jdField_a_of_type_AndroidViewView;
-  private bacg jdField_a_of_type_Bacg;
-  private baci jdField_a_of_type_Baci;
+  private bbip jdField_a_of_type_Bbip;
+  private bbir jdField_a_of_type_Bbir;
   public List<FilterCategoryItem> a;
   
   public CaptureVideoFilterViewPager(Context paramContext)
@@ -67,23 +67,23 @@ public class CaptureVideoFilterViewPager
       this.jdField_a_of_type_AndroidViewView = paramView;
       this.jdField_a_of_type_Int = paramInt;
       paramView.setVisibility(0);
-      localFilterCategoryItem = this.jdField_a_of_type_Baci.a(paramInt);
+      localFilterCategoryItem = this.jdField_a_of_type_Bbir.a(paramInt);
       if (localFilterCategoryItem != null) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.e("VideoFilterViewPager", 2, "onPageSelect cannot find item");
     return;
-    baah.a().a(localFilterCategoryItem);
-    if (this.jdField_a_of_type_Bacg != null) {
-      this.jdField_a_of_type_Bacg.a(localFilterCategoryItem);
+    bbgq.a().a(localFilterCategoryItem);
+    if (this.jdField_a_of_type_Bbip != null) {
+      this.jdField_a_of_type_Bbip.a(localFilterCategoryItem);
     }
-    Object localObject2 = (TextView)paramView.findViewById(2131380580);
-    TextView localTextView = (TextView)paramView.findViewById(2131380579);
-    Object localObject1 = (TextView)paramView.findViewById(2131380581);
+    Object localObject2 = (TextView)paramView.findViewById(2131380925);
+    TextView localTextView = (TextView)paramView.findViewById(2131380924);
+    Object localObject1 = (TextView)paramView.findViewById(2131380926);
     if (localFilterCategoryItem.a())
     {
-      ((TextView)localObject2).setText(amtj.a(2131700591));
+      ((TextView)localObject2).setText(anvx.a(2131700942));
       paramView.setContentDescription("无滤镜No Filter");
       localTextView.setText(" - No Filter - ");
       ((TextView)localObject1).setText("");
@@ -93,27 +93,27 @@ public class CaptureVideoFilterViewPager
       ((AlphaAnimation)localObject1).setStartOffset(500L);
       ((AlphaAnimation)localObject1).setFillAfter(true);
       paramView.startAnimation((Animation)localObject1);
-      ((AlphaAnimation)localObject1).setAnimationListener(new bacd(this, paramView, paramInt));
+      ((AlphaAnimation)localObject1).setAnimationListener(new bbim(this, paramView, paramInt));
       paramView.setVisibility(0);
       a(true);
       paramView.clearAnimation();
       paramView.startAnimation((Animation)localObject1);
-      babc.d = localFilterCategoryItem.jdField_b_of_type_Int + "";
-      babc.e = localFilterCategoryItem.a;
-      if (bbuc.a().jdField_a_of_type_Int != 1) {
+      bbhl.d = localFilterCategoryItem.jdField_b_of_type_Int + "";
+      bbhl.e = localFilterCategoryItem.a;
+      if (bdax.a().jdField_a_of_type_Int != 1) {
         break label473;
       }
     }
     label473:
     for (paramInt = 1;; paramInt = 2)
     {
-      babc.c(paramInt);
+      bbhl.c(paramInt);
       return;
       ((TextView)localObject2).setText(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
       localTextView.setText(" - " + localFilterCategoryItem.e + " - ");
       ((TextView)localObject1).setText(localFilterCategoryItem.f);
-      paramView.setContentDescription(localFilterCategoryItem.jdField_b_of_type_JavaLangString + "," + localFilterCategoryItem.f + amtj.a(2131700590));
-      localObject2 = getResources().getDrawable(2130845853);
+      paramView.setContentDescription(localFilterCategoryItem.jdField_b_of_type_JavaLangString + "," + localFilterCategoryItem.f + anvx.a(2131700941));
+      localObject2 = getResources().getDrawable(2130845941);
       ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getIntrinsicWidth() / 3 * 2, ((Drawable)localObject2).getIntrinsicHeight() / 3 * 2);
       ((TextView)localObject1).setCompoundDrawables((Drawable)localObject2, null, null, null);
       break;
@@ -122,8 +122,8 @@ public class CaptureVideoFilterViewPager
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bacg != null) {
-      this.jdField_a_of_type_Bacg.a(paramBoolean);
+    if (this.jdField_a_of_type_Bbip != null) {
+      this.jdField_a_of_type_Bbip.a(paramBoolean);
     }
     if (QLog.isColorLevel()) {
       QLog.d("VideoFilterViewPager", 2, "notifyVisiableChange " + paramBoolean);
@@ -132,15 +132,15 @@ public class CaptureVideoFilterViewPager
   
   private void c()
   {
-    this.jdField_a_of_type_Baci = new baci(this);
-    setAdapter(this.jdField_a_of_type_Baci);
-    setOnPageChangeListener(new bach(this));
+    this.jdField_a_of_type_Bbir = new bbir(this);
+    setAdapter(this.jdField_a_of_type_Bbir);
+    setOnPageChangeListener(new bbiq(this));
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_Baci != null) {
-      return this.jdField_a_of_type_Baci.a();
+    if (this.jdField_a_of_type_Bbir != null) {
+      return this.jdField_a_of_type_Bbir.a();
     }
     return 0;
   }
@@ -152,7 +152,7 @@ public class CaptureVideoFilterViewPager
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Baci != null) && (baah.a(getContext()))) {
+    if ((this.jdField_a_of_type_Bbir != null) && (bbgq.a(getContext()))) {
       ThreadManager.getUIHandler().post(new CaptureVideoFilterViewPager.1(this));
     }
   }
@@ -165,15 +165,15 @@ public class CaptureVideoFilterViewPager
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    baah.a().a(this);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bace(this, null);
+    bbgq.a().a(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bbin(this, null);
     getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("action_brocassreceiver_for_filter"));
   }
   
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    baah.a().a();
+    bbgq.a().a();
     try
     {
       if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {

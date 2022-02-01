@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import android.os.Bundle;
+import com.tencent.TMG.utils.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function1;
+import org.jetbrains.annotations.Nullable;
 
-public class rat
-  implements BusinessObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule$requestUpdatePushStatus$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onResult", "", "errorCode", "", "data", "", "bundle", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rat
+  extends ntf
 {
-  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt) {}
+  rat(Function1 paramFunction1) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    paramObject = (Object[])paramObject;
-    a(paramBoolean, (oidb_0x5bd.SkinInfo)paramObject[0], (oidb_0x5bd.GuideInfo)paramObject[1], (oidb_0x5bd.GuideInfo)paramObject[2], (oidb_0x5bd.RefreshInfo)paramObject[3], ((Integer)paramObject[4]).intValue());
+    QLog.i("RIJPushNotifyModule", 1, "requestUpdatePushStatus response errorCode: " + paramInt);
+    this.a.invoke(Integer.valueOf(paramInt));
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import amrn;
+import anub;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 class EmoticonPanelFavHelper$5
-  extends amrn
+  extends anub
 {
   EmoticonPanelFavHelper$5(EmoticonPanelFavHelper paramEmoticonPanelFavHelper) {}
   
@@ -21,7 +21,7 @@ class EmoticonPanelFavHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.image.JpegExifReader.JpegExifReaderInterface;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bcav
-  implements JpegExifReader.JpegExifReaderInterface
+  implements View.OnClickListener
 {
-  public void doReport(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3) {}
+  public bcav(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public boolean readEnableFromDPC()
+  public void onClick(View paramView)
   {
-    try
-    {
-      Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_gifplay.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("JpegExifReader", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length >= 9)
-        {
-          int i = Integer.parseInt(localObject[8]);
-          if (i != 1) {
-            break label81;
-          }
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      label81:
-      while (!QLog.isColorLevel()) {}
-      QLog.e("JpegExifReader", 2, "read dpc", localException);
-    }
-    return true;
-    return false;
-    return true;
+    UniteSearchActivity.e = 1;
+    this.a.a.setText("");
+    this.a.a();
+    bcjs.a(this.a.app, 0, this.a.c, "0X8009D2B", 0, 0, null, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

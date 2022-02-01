@@ -1,34 +1,21 @@
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeca
-  implements alki
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aeca(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public aeca(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    RecommendFriendActivity.a(this.a).setVisibility(0);
-  }
-  
-  public void a(String paramString)
-  {
-    RecommendFriendActivity.a(this.a, paramString);
-  }
-  
-  public void a(List<MayKnowRecommend> paramList)
-  {
-    Intent localIntent = this.a.getIntent();
-    int i = localIntent.getIntExtra("EntranceId", 0);
-    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
-  }
-  
-  public void b()
-  {
-    RecommendFriendActivity.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("GeneralSettingActivity", 2, new Object[] { "mKidModeChatPINYINSwitch click, isChecked=", Boolean.valueOf(paramBoolean) });
+    }
+    GeneralSettingActivity.a(this.a).a(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

@@ -1,25 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.3;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qmw
-  extends qna
+class qmw
+  implements ViewBase.OnClickListener
 {
-  public qmw(PTSEngineLoader.3 param3) {}
+  qmw(qmu paramqmu, qfw paramqfw, Container paramContainer) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    super.loaded(paramString, paramInt);
-    QLog.i("PTSEngineLoader", 1, "[updatePTSEngine], asyncBack code = " + paramInt + ", param = " + paramString);
-    if ((paramInt == 0) && (paramString == null))
-    {
-      QLog.i("PTSEngineLoader", 1, "[updatePTSEngine], handleDownloadPTSEngine, download succeed.");
-      qmv.c(this.a.this$0);
-    }
-  }
-  
-  public void progress(int paramInt)
-  {
-    super.progress(paramInt);
+    paramViewBase = this.jdField_a_of_type_Qfw.a();
+    String str = paramViewBase.mSocialFeedInfo.a.f;
+    pqx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
+    pqb.b(paramViewBase, (int)paramViewBase.mChannelID);
+    uvs.a(paramViewBase);
   }
 }
 

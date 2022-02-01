@@ -1,24 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class niq
-  implements View.OnTouchListener
+public class niq
 {
-  niq(nio paramnio) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public int e = 1;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public String toString()
   {
-    switch (paramMotionEvent.getActionMasked())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    return "MemberVideoDisplayInfo{uin=" + this.jdField_a_of_type_Long + ", x=" + this.jdField_a_of_type_Int + ", y=" + this.jdField_b_of_type_Int + ", width=" + this.jdField_c_of_type_Int + ", height=" + this.d + ", showCameraVideo=" + this.jdField_a_of_type_Boolean + ", isCameraBigger=" + this.jdField_b_of_type_Boolean + ", [showStarVideo=" + this.jdField_c_of_type_Boolean + ", starX=" + this.f + ", starY=" + this.g + ", starWidth=" + this.h + ", starHeight=" + this.i + "]}";
   }
 }
 

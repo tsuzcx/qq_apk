@@ -1,22 +1,99 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-class nuf
-  extends BroadcastReceiver
+public class nuf
 {
-  nuf(nua paramnua) {}
+  aady a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public nuf(aady paramaady)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "onReceive ===>" + paramContext);
+    this.a = paramaady;
+  }
+  
+  public void a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nug.a, 2);
+    this.a.a(8, localBundle);
+  }
+  
+  public void a(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nug.a, 5);
+    localBundle.putInt("mode", paramInt);
+    this.a.a(8, localBundle);
+  }
+  
+  public void a(aaea paramaaea)
+  {
+    if (paramaaea == null) {
+      return;
     }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext))) {
-      this.a.a();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nug.a, 4);
+    localBundle.putInt("seq", this.a.a(paramaaea));
+    this.a.a(8, localBundle);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    aaea localaaea;
+    do
+    {
+      int i;
+      do
+      {
+        return;
+        i = paramBundle.getInt("seq", -1);
+      } while (i == -1);
+      localaaea = this.a.a(i);
+    } while (localaaea == null);
+    localaaea.callback(paramBundle);
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nug.a, 1);
+    localBundle.putString("music", paramString);
+    this.a.a(8, localBundle);
+  }
+  
+  public void b()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nug.a, 3);
+    this.a.a(8, localBundle);
+  }
+  
+  public void b(aaea paramaaea)
+  {
+    if (paramaaea == null) {
+      return;
     }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nug.a, 6);
+    localBundle.putInt("seq", this.a.a(paramaaea));
+    this.a.a(8, localBundle);
+  }
+  
+  public void c()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nug.a, 8);
+    this.a.a(8, localBundle);
+  }
+  
+  public void c(aaea paramaaea)
+  {
+    if (paramaaea == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nug.a, 7);
+    localBundle.putInt("seq", this.a.a(paramaaea));
+    this.a.a(8, localBundle);
   }
 }
 

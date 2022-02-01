@@ -1,73 +1,54 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.mobileqq.app.utils.PermissionUtils;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.QZoneHelper;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 public class uak
-  implements View.OnClickListener
+  extends Handler
 {
-  public uak(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
+  private WeakReference<VideoPlayManager> a;
   
-  public void onClick(View paramView)
+  public uak(VideoPlayManager paramVideoPlayManager)
   {
-    if (zvo.a("service_account_folder_publish_feed_button", 2000L))
+    this.a = new WeakReference(paramVideoPlayManager);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    VideoPlayManager localVideoPlayManager;
+    if (this.a != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 23) {}
-    for (boolean bool = PermissionUtils.isStorePermissionEnable(this.a);; bool = true)
-    {
-      if (!bool)
-      {
-        bfur.a(this.a);
-        break;
-      }
-      Object localObject = new Intent();
-      ((Intent)localObject).putExtra("postUin", ServiceAccountFolderActivityNew.a(this.a));
-      ((Intent)localObject).putExtra("sourceFrom", 2);
-      label141:
-      String str;
-      if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).user.youZhan.size() > 0))
-      {
-        if (((CertifiedAccountMeta.StYouZanShop)ServiceAccountFolderActivityNew.a(this.a).user.youZhan.get(0)).type.get() > 1)
+      localVideoPlayManager = (VideoPlayManager)this.a.get();
+      if (localVideoPlayManager != null) {
+        switch (paramMessage.what)
         {
-          bool = true;
-          ((Intent)localObject).putExtra("has_shop", bool);
         }
-      }
-      else
-      {
-        QZoneHelper.forwardToQQPublicAccountPublishPage(this.a.getActivity(), (Intent)localObject, 0);
-        str = ((CertifiedAccountMeta.StUser)ServiceAccountFolderActivityNew.a(this.a).user.get()).id.get();
-        if (ServiceAccountFolderActivityNew.a(this.a) != 0) {
-          break label230;
-        }
-      }
-      label230:
-      for (localObject = "auth_follow";; localObject = "auth_discover")
-      {
-        zxp.a(str, (String)localObject, "post_clk", 0, 0, new String[] { "", "" });
-        break;
-        bool = false;
-        break label141;
       }
     }
+    do
+    {
+      return;
+      localVideoPlayManager = null;
+      break;
+    } while ((VideoPlayManager.a(localVideoPlayManager) == null) || (ual.a(VideoPlayManager.a(localVideoPlayManager)) == null));
+    Object localObject = ual.a(VideoPlayManager.a(localVideoPlayManager));
+    paramMessage = VideoPlayManager.a(localVideoPlayManager);
+    if ((localObject != null) && (((spn)localObject).f()))
+    {
+      long l = ((spn)localObject).a();
+      localObject = VideoPlayManager.a(localVideoPlayManager).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((uam)((Iterator)localObject).next()).a(paramMessage, uan.a(l) * 1000);
+      }
+    }
+    VideoPlayManager.a(localVideoPlayManager).sendEmptyMessageDelayed(0, VideoPlayManager.a(localVideoPlayManager));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uak
  * JD-Core Version:    0.7.0.1
  */

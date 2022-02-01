@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aobb;
-import aobx;
+import aped;
+import apez;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class MultiFragmentAnimRenderable$3
   implements Runnable
 {
-  public MultiFragmentAnimRenderable$3(aobx paramaobx) {}
+  public MultiFragmentAnimRenderable$3(apez paramapez) {}
   
   public void run()
   {
-    aobx.a(this.this$0).lock();
-    if (aobx.a(this.this$0) != null)
+    apez.a(this.this$0).lock();
+    if (apez.a(this.this$0) != null)
     {
-      aobx.a(this.this$0).f();
-      aobx.a(this.this$0, null);
+      apez.a(this.this$0).f();
+      apez.a(this.this$0, null);
     }
-    aobx.a(this.this$0).unlock();
+    apez.a(this.this$0).unlock();
   }
 }
 

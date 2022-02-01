@@ -1,37 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mqp.app.sec.d;
 
 public class acse
-  implements CompoundButton.OnCheckedChangeListener
+  implements acpi
 {
-  public acse(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private static void a(MsgType0x210 paramMsgType0x210)
   {
-    boolean bool = false;
-    if (!NetworkUtil.isNetSupport(this.a))
+    try
     {
-      AssistantSettingActivity.a(this.a, 2131694105, 1);
-      localObject = this.a;
-      if (!paramBoolean) {
-        bool = true;
-      }
-      AssistantSettingActivity.b((AssistantSettingActivity)localObject, bool);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      d.e1(2, d.x(), paramMsgType0x210.vProtobuf);
       return;
     }
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (Object localObject = "1";; localObject = "2")
+    catch (Throwable paramMsgType0x210)
     {
-      bcef.b(localQQAppInterface, "dc00898", "", "", "0X800A5D5", "0X800A5D5", 0, 0, (String)localObject, "", "", "");
-      this.a.a.b(paramBoolean);
-      break;
+      paramMsgType0x210.printStackTrace();
     }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramMsgType0x210);
+    return null;
   }
 }
 

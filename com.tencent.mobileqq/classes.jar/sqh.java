@@ -1,6 +1,32 @@
-public abstract interface sqh
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView;
+
+class sqh
+  implements ukx
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  sqh(sqd paramsqd) {}
+  
+  public void a(spk paramspk, AdvertisementInfo paramAdvertisementInfo)
+  {
+    sqd.a(this.a).b(2);
+    sqd.a(this.a).a = paramAdvertisementInfo;
+    ukv.a(this.a);
+    sqd.a(this.a).setVisibility(0);
+    sqd.a(this.a).setVisibility(0);
+    sqd.a(this.a).setVisibility(0);
+    sqd.a(this.a).a(paramspk, paramAdvertisementInfo, 1);
+  }
+  
+  public void b(spk paramspk, AdvertisementInfo paramAdvertisementInfo)
+  {
+    sqd.a(this.a).a = paramAdvertisementInfo;
+    ukv.a(this.a);
+    sqd.a(this.a).setVisibility(0);
+    sqd.a(this.a).setVisibility(0);
+    sqd.a(this.a).a(paramspk, paramAdvertisementInfo, 2);
+  }
 }
 
 

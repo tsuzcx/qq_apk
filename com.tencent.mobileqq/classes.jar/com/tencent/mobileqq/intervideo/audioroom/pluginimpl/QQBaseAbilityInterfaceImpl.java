@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.intervideo.audioroom.pluginimpl;
 
+import aady;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
@@ -7,17 +8,16 @@ import com.tencent.qqinterface.CommonCallback;
 import com.tencent.qqinterface.DownloadCallback;
 import com.tencent.qqinterface.QQBaseAbilityInterface;
 import java.util.concurrent.Future;
-import zon;
 
 public class QQBaseAbilityInterfaceImpl
   implements QQBaseAbilityInterface
 {
-  private final zon a;
+  private final aady a;
   
   public QQBaseAbilityInterfaceImpl()
   {
     QLog.d("QQBaseAbilityInterface", 4, "init");
-    this.a = zon.a();
+    this.a = aady.a();
     this.a.a();
   }
   
@@ -71,7 +71,7 @@ public class QQBaseAbilityInterfaceImpl
   
   public void reportData(Bundle paramBundle)
   {
-    this.a.b(paramBundle);
+    this.a.c(paramBundle);
   }
   
   public String reqDns(String paramString)

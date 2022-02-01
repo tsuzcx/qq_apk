@@ -1,763 +1,152 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Intent;
+import com.tencent.common.config.AppSetting;
+import com.tencent.ims.AccountSecurityInfo.SecCheckBanner;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.model.ArFeatureInfo;
-import com.tencent.mobileqq.ar.model.ArModelResource;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
+import com.tencent.msfmqpsdkbridge.MSFNetTransportProvider;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.qqprotect.sfcfg.QPTxVerifyApkTimerTask;
+import tencent.im.s2c.msgtype0x210.submsgtype0x4a.MsgBody;
 
 public class aodc
-  implements INetEngine.INetEngineListener
+  extends BusinessHandler
 {
-  protected static INetEngine.IBreakDownFix a;
-  private long jdField_a_of_type_Long;
-  public aodg a;
-  public AppInterface a;
-  private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
-  ArrayList<aode> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  private boolean jdField_a_of_type_Boolean;
-  private final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
+  public static int a;
   
-  static
+  aodc(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aodd();
+    super(paramQQAppInterface);
   }
   
-  public aodc(AppInterface paramAppInterface, aodg paramaodg)
+  public static void a()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Aodg = paramaodg;
-  }
-  
-  private void a(aode paramaode)
-  {
-    if ((TextUtils.isEmpty(paramaode.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramaode.jdField_b_of_type_JavaLangString))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArConfig_ArResourceDownload", 2, "downLoad:url=" + paramaode.jdField_a_of_type_JavaLangString + ",md5= " + paramaode.jdField_b_of_type_JavaLangString);
-    }
-    paramaode.jdField_b_of_type_Int += 1;
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0);
-    }
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mCallback = this;
-    localHttpNetReq.mReqUrl = paramaode.jdField_a_of_type_JavaLangString;
-    localHttpNetReq.mHttpMethod = 0;
-    localHttpNetReq.mOutPath = paramaode.c;
-    localHttpNetReq.mPrioty = 1;
-    localHttpNetReq.setUserData(paramaode);
-    localHttpNetReq.mBreakDownFix = jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.sendReq(localHttpNetReq);
-    paramaode.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
-  }
-  
-  private void a(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    Object localObject1;
-    File localFile;
-    if (paramArCloudConfigInfo.jdField_d_of_type_Int == 100)
-    {
-      localObject1 = "";
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
-        break label449;
-      }
-      localFile = new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
-      localObject1 = aocu.a() + "ar_model/" + paramArCloudConfigInfo.jdField_d_of_type_Int + File.separator + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString + "_model.zip";
-    }
-    for (;;)
-    {
-      if (localFile == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArResourceDownload", 2, "copyAndCheckBinHai3dRes return for null zipfile");
-        }
-        return;
-      }
-      Object localObject2 = new File((String)localObject1);
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_ArResourceDownload", 2, "downloadArResource:binhai:oldFilePath=" + (String)localObject1 + ", exist=" + ((File)localObject2).exists());
-      }
-      if ((((File)localObject2).exists()) && (!localFile.exists()))
-      {
-        bool1 = localFile.mkdirs();
-        boolean bool2 = FileUtils.copyFile((File)localObject2, localFile);
-        QLog.d("ArConfig_ArResourceDownload", 1, "downloadArResource:binhai:copy old to new dir, ret=" + bool2 + ", mkRet=" + bool1);
-      }
-      localObject2 = "";
-      localObject1 = localObject2;
-      if (localFile.exists()) {}
-      try
-      {
-        String str = ayja.a(localFile.getAbsolutePath());
-        localObject2 = str;
-        if (QLog.isColorLevel())
-        {
-          localObject2 = str;
-          QLog.d("ArConfig_ArResourceDownload", 2, "download binhai calc md5=" + str + ", modelMd5=" + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
-        }
-        localObject1 = str;
-        localObject2 = str;
-        if (!paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str))
-        {
-          localObject2 = str;
-          localFile.delete();
-          localObject1 = str;
-        }
-      }
-      catch (Throwable paramArCloudConfigInfo)
-      {
-        for (;;)
-        {
-          QLog.e("ArConfig_ArResourceDownload", 1, "download binhai check md5 error", paramArCloudConfigInfo);
-          localObject1 = localObject2;
-          continue;
-          paramArCloudConfigInfo = "0";
-        }
-      }
-      boolean bool1 = localFile.exists();
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put("md5", localObject1);
-      ((HashMap)localObject2).put("uin", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-      if (bool1)
-      {
-        paramArCloudConfigInfo = "1";
-        ((HashMap)localObject2).put("exist", paramArCloudConfigInfo);
-        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "binhai_predownload", bool1, 0L, 0L, (HashMap)localObject2, "", true);
-        return;
-      }
-      label449:
-      localFile = null;
-    }
-  }
-  
-  private boolean a(ArConfigInfo paramArConfigInfo)
-  {
-    if (paramArConfigInfo == null) {
-      return true;
-    }
     try
     {
-      if (!paramArConfigInfo.mArCloudConfigInfos.isEmpty())
-      {
-        paramArConfigInfo = paramArConfigInfo.mArCloudConfigInfos.iterator();
-        while (paramArConfigInfo.hasNext())
-        {
-          ArCloudConfigInfo localArCloudConfigInfo = (ArCloudConfigInfo)paramArConfigInfo.next();
-          if (!FileUtils.fileExists(localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.c)) {
-            return false;
-          }
-          if (((localArCloudConfigInfo.jdField_d_of_type_Int == 0) || (localArCloudConfigInfo.jdField_d_of_type_Int == 100)) && (localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null))
-          {
-            boolean bool = new File(localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f).exists();
-            if (!bool) {
-              return false;
-            }
-          }
-        }
-      }
+      a += 1;
+      return;
     }
-    catch (Exception paramArConfigInfo)
+    finally
     {
-      QLog.i("ArConfig_ArResourceDownload", 1, "isResourceReady e=" + paramArConfigInfo.getMessage());
-      return true;
-    }
-    return true;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          aode localaode = (aode)localIterator.next();
-          if (localaode.jdField_b_of_type_Long < localaode.jdField_a_of_type_Long) {
-            this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.cancelReq(localaode.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-          }
-        }
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilSet.clear();
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void a(ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2)
+  public static void b()
   {
-    for (;;)
+    try
     {
-      for (;;)
+      a -= 1;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    Object localObject = new MsgBody();
+    do
+    {
+      try
       {
-        label98:
-        Object localObject4;
-        int j;
-        int k;
-        try
+        ((MsgBody)localObject).mergeFrom(paramArrayOfByte);
+        if ((!((MsgBody)localObject).has()) || (!((MsgBody)localObject).uint32_sec_cmd.has())) {
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        do
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("ArConfig_ArResourceDownload", 2, "downloadArResource|isDownloading=" + this.jdField_a_of_type_Boolean);
-          }
-          paramBoolean2 = this.jdField_a_of_type_Boolean;
-          if (paramBoolean2) {
-            return;
-          }
-          synchronized (this.jdField_a_of_type_ArrayOfByte)
+          do
           {
-            this.jdField_a_of_type_JavaUtilArrayList.clear();
-            if (paramArConfigInfo != null)
+            do
             {
-              try
+              do
               {
-                if ((paramArConfigInfo.mArCloudConfigInfos != null) && (paramArConfigInfo.mArCloudConfigInfos.size() > 0))
+                for (;;)
                 {
-                  i = 0;
-                  Iterator localIterator = paramArConfigInfo.mArCloudConfigInfos.iterator();
-                  if (!localIterator.hasNext()) {
-                    break label1262;
+                  if (QLog.isColorLevel()) {
+                    QLog.d("SafeCenterPushHandler", 2, "onReceive: onReceive push package: msgbody parse fail");
                   }
-                  localObject4 = (ArCloudConfigInfo)localIterator.next();
-                  if ((localObject4 != null) && (((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo != null) && (!TextUtils.isEmpty(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_b_of_type_JavaLangString))) {
-                    break label370;
-                  }
-                  QLog.i("ArConfig_ArResourceDownload", 1, "resource null continue ");
-                  continue;
+                  paramArrayOfByte.printStackTrace();
                 }
-                if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-                  break label1539;
-                }
-              }
-              catch (Exception paramArConfigInfo)
-              {
-                QLog.d("ArConfig_ArResourceDownload", 2, "e" + paramArConfigInfo.getMessage());
-              }
-            }
-            else
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ArConfig_ArResourceDownload", 2, "downloadArResource|download num= " + this.jdField_a_of_type_JavaUtilArrayList.size());
-              }
-              this.jdField_a_of_type_Long = 0L;
-              this.jdField_b_of_type_Long = 0L;
-              this.jdField_a_of_type_Boolean = true;
-              this.jdField_b_of_type_Boolean = false;
-              j = 0;
-            }
-          }
-        }
-        finally {}
-        label370:
-        Object localObject1;
-        label562:
-        ArVideoResourceInfo localArVideoResourceInfo;
-        Object localObject3;
-        label730:
-        Object localObject2;
-        label1092:
-        label1262:
-        label1279:
-        aodf localaodf;
-        label1346:
-        try
-        {
-          i = this.jdField_a_of_type_JavaUtilArrayList.size();
-          k = i - 1;
-          i = 0;
-          if (k < 0) {}
-        }
-        catch (Exception paramArConfigInfo) {}
-        try
-        {
-          paramArConfigInfo = (aode)this.jdField_a_of_type_JavaUtilArrayList.get(k);
-          if (!paramBoolean1) {
-            break label1279;
-          }
-          paramArConfigInfo.jdField_b_of_type_Boolean = true;
-          if (this.jdField_a_of_type_Aodg.a(paramArConfigInfo.jdField_b_of_type_JavaLangString)) {
-            break label1279;
-          }
-          this.jdField_a_of_type_JavaUtilArrayList.remove(k);
-          this.jdField_a_of_type_JavaUtilSet.remove(paramArConfigInfo.jdField_b_of_type_JavaLangString);
-          if (i == 0) {
-            this.jdField_a_of_type_Boolean = false;
-          }
-        }
-        catch (Exception paramArConfigInfo)
-        {
-          label1539:
-          for (;;)
-          {
-            label1416:
-            j = i;
-          }
-          break label1416;
-          localaodf = null;
-          break label562;
-          i = j;
-          break label730;
-          break label730;
-          localaodf = null;
-          break label1092;
-          switch (j)
-          {
-          }
-          j = 4;
-          break label1346;
-        }
-      }
-      paramArConfigInfo = finally;
-      throw paramArConfigInfo;
-      if ((!TextUtils.isEmpty(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.c)) && (!FileUtils.fileExists(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.c)))
-      {
-        localObject1 = new aode();
-        ((aode)localObject1).jdField_a_of_type_Int = 2;
-        ((aode)localObject1).jdField_a_of_type_JavaLangString = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_b_of_type_JavaLangString;
-        ((aode)localObject1).jdField_b_of_type_JavaLangString = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString;
-        ((aode)localObject1).c = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.c;
-        ((aode)localObject1).jdField_a_of_type_Long = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_Long;
-        ((aode)localObject1).jdField_a_of_type_Boolean = true;
-        if (!this.jdField_a_of_type_JavaUtilSet.contains(((aode)localObject1).jdField_b_of_type_JavaLangString))
-        {
-          this.jdField_a_of_type_JavaUtilSet.add(((aode)localObject1).jdField_b_of_type_JavaLangString);
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
-        }
-      }
-      a((ArCloudConfigInfo)localObject4);
-      if ((((ArCloudConfigInfo)localObject4).jdField_d_of_type_Int == 0) || (((ArCloudConfigInfo)localObject4).jdField_d_of_type_Int == 100))
-      {
-        if (((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
-          break label1560;
-        }
-        localObject1 = new File(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
-        localArVideoResourceInfo = null;
-        localObject3 = localArVideoResourceInfo;
-        if (localObject1 != null)
-        {
-          localObject3 = localArVideoResourceInfo;
-          if (((File)localObject1).exists()) {
-            localObject3 = ayja.a(((File)localObject1).getAbsolutePath());
-          }
-        }
-        if ((localObject1 != null) && (((File)localObject1).exists()) && (!TextUtils.isEmpty((CharSequence)localObject3)))
-        {
-          paramBoolean2 = ((String)localObject3).equals(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
-          if (paramBoolean2)
-          {
-            j = i;
-            try
-            {
-              localObject1 = new File(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
-              j = i;
-              aoju.a(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f, ((File)localObject1).getParentFile().getAbsolutePath() + File.separator + ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString + File.separator);
-              j = 1;
-              QLog.i("ArConfig_ArResourceDownload", 1, "onARMarkerModelDownloadComplete  ");
-              i = 1;
-            }
-            catch (Exception localException)
-            {
-              new File(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f).delete();
-              localObject2 = new aode();
-              ((aode)localObject2).jdField_a_of_type_Int = 3;
-              ((aode)localObject2).jdField_a_of_type_JavaLangString = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
-              ((aode)localObject2).jdField_b_of_type_JavaLangString = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
-              ((aode)localObject2).c = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
-              ((aode)localObject2).jdField_a_of_type_Long = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long;
-              ((aode)localObject2).jdField_a_of_type_Boolean = true;
-              if (this.jdField_a_of_type_JavaUtilSet.contains(((aode)localObject2).jdField_b_of_type_JavaLangString)) {
-                break label1566;
-              }
-            }
-            this.jdField_a_of_type_JavaUtilSet.add(((aode)localObject2).jdField_b_of_type_JavaLangString);
-            this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-            break label1566;
-          }
-        }
-        localObject2 = new aode();
-        ((aode)localObject2).jdField_a_of_type_Int = 3;
-        if (((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null)
-        {
-          ((aode)localObject2).jdField_a_of_type_JavaLangString = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
-          ((aode)localObject2).jdField_b_of_type_JavaLangString = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
-          ((aode)localObject2).c = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
-          ((aode)localObject2).jdField_a_of_type_Long = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long;
-        }
-        ((aode)localObject2).jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_JavaUtilSet.contains(((aode)localObject2).jdField_b_of_type_JavaLangString)) {
-          break label1573;
-        }
-        this.jdField_a_of_type_JavaUtilSet.add(((aode)localObject2).jdField_b_of_type_JavaLangString);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-        break label1573;
-      }
-      else if ((((ArCloudConfigInfo)localObject4).jdField_a_of_type_JavaUtilArrayList != null) && (((ArCloudConfigInfo)localObject4).jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        localObject3 = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_JavaUtilArrayList.iterator();
-        for (;;)
-        {
-          if (!((Iterator)localObject3).hasNext()) {
-            break label98;
-          }
-          localArVideoResourceInfo = (ArVideoResourceInfo)((Iterator)localObject3).next();
-          if (localArVideoResourceInfo.jdField_d_of_type_Int == 4) {
-            break;
-          }
-          localObject4 = new File(localArVideoResourceInfo.e);
-          paramBoolean2 = ((File)localObject4).exists();
-          if (!paramBoolean2) {
-            break label1576;
-          }
-          try
-          {
-            localObject2 = ayja.a(((File)localObject4).getAbsolutePath());
-            if (((!((File)localObject4).exists()) || (TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(localArVideoResourceInfo.c))) && (!this.jdField_a_of_type_JavaUtilSet.contains(localArVideoResourceInfo.jdField_d_of_type_JavaLangString)))
-            {
-              localObject2 = new aode();
-              ((aode)localObject2).jdField_a_of_type_Int = 3;
-              ((aode)localObject2).jdField_a_of_type_JavaLangString = localArVideoResourceInfo.jdField_d_of_type_JavaLangString;
-              ((aode)localObject2).jdField_b_of_type_JavaLangString = localArVideoResourceInfo.c;
-              ((aode)localObject2).jdField_a_of_type_Long = localArVideoResourceInfo.jdField_a_of_type_Long;
-              ((aode)localObject2).c = localArVideoResourceInfo.e;
-              ((aode)localObject2).jdField_a_of_type_Boolean = true;
-              this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-              this.jdField_a_of_type_JavaUtilSet.add(localArVideoResourceInfo.c);
-            }
-          }
-          catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-          {
-            QLog.e("ArConfig_ArResourceDownload", 1, "e" + localUnsatisfiedLinkError.getMessage());
-            break label1576;
-          }
-        }
-        if (i != 0)
-        {
-          this.jdField_a_of_type_Aodg.a(paramArConfigInfo);
-          continue;
-          this.jdField_a_of_type_Long += paramArConfigInfo.jdField_a_of_type_Long;
-          j = ((aodg)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(168)).d();
-          if (!QLog.isColorLevel()) {
-            break label1582;
-          }
-          QLog.d("ArConfig_ArResourceDownload", 2, "dpcNet=" + j);
-          break label1582;
-          for (;;)
-          {
-            localaodf = new aodf((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramArConfigInfo, this);
-            paramBoolean2 = ((PreDownloadController)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(193)).requestPreDownload(10067, "prd", paramArConfigInfo.jdField_b_of_type_JavaLangString, 0, paramArConfigInfo.jdField_a_of_type_JavaLangString, paramArConfigInfo.c, j, 0, true, localaodf);
-            if (!paramBoolean2) {
-              break label1557;
-            }
-            i += 1;
-            j = i;
-            if (QLog.isColorLevel())
-            {
-              j = i;
-              QLog.d("ArConfig_ArResourceDownload", 2, " downloadArResource.ret=" + paramBoolean2);
-            }
-            k -= 1;
-            break;
-            j = 2;
-            continue;
-            j = 3;
-            continue;
-            j = 1;
-          }
-          this.jdField_a_of_type_JavaUtilSet.clear();
-          i = j;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ArConfig_ArResourceDownload", 2, "e= " + paramArConfigInfo.getMessage());
-            i = j;
-            continue;
-            this.jdField_a_of_type_Aodg.d();
-          }
-        }
-      }
-    }
-  }
-  
-  public void onResp(NetResp paramNetResp)
-  {
-    if (paramNetResp.mResult == 3)
-    {
-      QLog.d("ArConfig_ArResourceDownload", 1, "doOnResp is downloading...");
-      return;
-    }
-    boolean bool1;
-    label28:
-    int i;
-    HttpNetReq localHttpNetReq;
-    boolean bool2;
-    Object localObject3;
-    aode localaode;
-    if (paramNetResp.mResult == 0)
-    {
-      bool1 = true;
-      i = paramNetResp.mErrCode;
-      localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
-      ??? = localHttpNetReq.getUserData();
-      bool2 = bool1;
-      if (??? != null)
-      {
-        bool2 = bool1;
-        if ((??? instanceof aode))
-        {
-          localObject3 = this.jdField_a_of_type_Aodg.a();
-          localaode = (aode)???;
-          if (!TextUtils.isEmpty(localHttpNetReq.mOutPath)) {
-            break label1267;
-          }
-          QLog.d("ArConfig_ArResourceDownload", 1, "req.mOutPath is null, md5=" + localaode.jdField_b_of_type_JavaLangString);
-          if (!bool1) {
-            break label766;
-          }
-          i = 98765;
-          label136:
-          bool1 = false;
-        }
-      }
-    }
-    label264:
-    label291:
-    label1104:
-    label1115:
-    label1253:
-    label1259:
-    label1267:
-    for (;;)
-    {
-      int j;
-      if (bool1)
-      {
-        ??? = new File(localHttpNetReq.mOutPath);
-        ??? = ayja.a(((File)???).getAbsolutePath());
-        if ((!TextUtils.isEmpty((CharSequence)???)) && (!((String)???).equalsIgnoreCase(localaode.jdField_b_of_type_JavaLangString)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ArConfig_ArResourceDownload", 2, "Md5 error|fileMD5=" + (String)??? + ", type=" + localaode.jdField_a_of_type_Int);
-          }
-          j = i;
-          bool2 = bool1;
-          if (localaode.jdField_a_of_type_Int != 1)
-          {
-            ((File)???).delete();
-            bool2 = false;
-            j = -100001;
-          }
-          if (localaode.jdField_b_of_type_Boolean) {
-            this.jdField_a_of_type_Aodg.a(localaode.jdField_b_of_type_JavaLangString, true);
-          }
-          bool1 = bool2;
-          i = j;
-          if (this.jdField_a_of_type_JavaUtilSet.contains(localaode.jdField_b_of_type_JavaLangString)) {
-            this.jdField_a_of_type_JavaUtilSet.remove(localaode.jdField_b_of_type_JavaLangString);
-          }
-          if (this.jdField_a_of_type_JavaUtilSet.isEmpty()) {
-            this.jdField_a_of_type_Boolean = false;
-          }
-          if ((localaode.jdField_a_of_type_Int != 1) && (localaode.jdField_a_of_type_Int != 2) && (localaode.jdField_a_of_type_Int != 3) && (localaode.jdField_a_of_type_Int != 4)) {
-            break label1104;
-          }
-          j = 1;
-          ??? = "0";
-          if (!TextUtils.isEmpty(paramNetResp.mErrDesc))
-          {
-            ??? = paramNetResp.mErrDesc;
-            ??? = ???;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("ArConfig_ArResourceDownload", 2, "errDesc: " + (String)???);
-              ??? = ???;
-            }
-          }
-          ??? = new HashMap();
-          ((HashMap)???).put("url", axsb.a(localHttpNetReq.mReqUrl));
-          ((HashMap)???).put("resultCode", String.valueOf(paramNetResp.mResult));
-          ((HashMap)???).put("fileSize", String.valueOf(localaode.jdField_a_of_type_Long));
-          ((HashMap)???).put("param_errorDesc", ???);
-          if (!bool1) {
-            break label1115;
-          }
-          ((HashMap)???).put("param_FailCode", "0");
-          if ((j == 0) || (this.jdField_a_of_type_Boolean) || (!a((ArConfigInfo)localObject3))) {}
-        }
-      }
-      for (;;)
-      {
-        synchronized (this.jdField_a_of_type_ArrayOfByte)
-        {
-          for (;;)
-          {
-            if (!this.jdField_b_of_type_Boolean)
-            {
-              this.jdField_a_of_type_Aodg.d();
-              this.jdField_b_of_type_Boolean = true;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("ArConfig_ArResourceDownload", 2, "onResp:downloadSuccess!");
-            }
-            ??? = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-            StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance((String)???, "olympic_ar_download", bool1, 0L, 0L, (HashMap)???, null);
-            bool2 = bool1;
-            ??? = new File(localHttpNetReq.mOutPath);
-            if ((!bool2) || (!((File)???).exists())) {
-              break label1253;
-            }
-            l = ((File)???).length();
-            ??? = (PreDownloadController)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(193);
-            ??? = localHttpNetReq.mReqUrl;
-            if (!bool2) {
-              break label1259;
-            }
-            ((PreDownloadController)???).preDownloadSuccess((String)???, l);
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.i("ArConfig_ArResourceDownload", 2, "onResp:" + localHttpNetReq.mReqUrl + ", " + paramNetResp.mResult + ", " + paramNetResp.mErrCode);
-            return;
-            bool1 = false;
-            break label28;
-            label766:
-            break label136;
-            j = i;
-            bool2 = bool1;
-            if (localaode.jdField_a_of_type_Int != 3) {
-              break label264;
-            }
-            try
-            {
-              synchronized (this.jdField_a_of_type_ArrayOfByte)
-              {
-                Object localObject4 = ((ArConfigInfo)localObject3).getModelResByMd5(localaode.jdField_b_of_type_JavaLangString);
-                if ((!TextUtils.isEmpty(localaode.c)) && (localObject4 != null) && ((((ArCloudConfigInfo)localObject4).jdField_d_of_type_Int == 0) || (((ArCloudConfigInfo)localObject4).jdField_d_of_type_Int == 100)))
+                switch (((MsgBody)localObject).uint32_sec_cmd.get())
                 {
-                  localObject4 = new File(localaode.c);
-                  aoju.a(localaode.c, ((File)localObject4).getParentFile().getAbsolutePath() + File.separator + localaode.jdField_b_of_type_JavaLangString + File.separator);
-                  this.jdField_a_of_type_Aodg.a((ArConfigInfo)localObject3);
+                case 5: 
+                default: 
+                  return;
+                case 1: 
+                  new aawk(this.app).a();
+                  return;
+                case 2: 
+                  paramArrayOfByte = (MSFNetTransportProvider)this.app.getBusinessHandler(BusinessHandlerFactory.MSF_NET_TRANSPORT_PROVIDER_HANDLER);
+                  paramArrayOfByte = new bizh(this.app.getApp().getApplicationContext(), paramArrayOfByte);
                 }
-                j = i;
-                bool2 = bool1;
-              }
-              if (!QLog.isColorLevel()) {
-                break label264;
-              }
-            }
-            catch (Exception localException)
-            {
-              ((File)???).delete();
-              if (localaode.jdField_a_of_type_Boolean)
-              {
-                bool1 = false;
-                i = -100002;
-              }
-              j = i;
-              bool2 = bool1;
-            }
-          }
-          QLog.d("ArConfig_ArResourceDownload", 2, "e= " + localException.getMessage());
-          j = i;
-          bool2 = bool1;
-          break label264;
-          if ((localaode.jdField_b_of_type_Int <= 3) && (!localaode.jdField_b_of_type_Boolean))
-          {
-            a(localaode);
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.i("ArConfig_ArResourceDownload", 2, "retry downLoad:retryUrl=" + localaode.jdField_a_of_type_JavaLangString + ",retryMd5= " + localaode.jdField_b_of_type_JavaLangString);
+              } while (paramArrayOfByte == null);
+              paramArrayOfByte = (bizk)paramArrayOfByte.a("intchk");
+            } while (paramArrayOfByte == null);
+            paramArrayOfByte.a(1, new MSFIntChkStrike(this.app, 1));
+            paramArrayOfByte.a(2, new MSFIntChkStrike(this.app, 2));
+            paramArrayOfByte.a(3, new MSFIntChkStrike(this.app, 3));
+            paramArrayOfByte.b("8.4.10." + AppSetting.g());
             return;
-          }
-          if (localaode.jdField_b_of_type_Boolean) {
-            this.jdField_a_of_type_Aodg.a(localaode.jdField_b_of_type_JavaLangString, false);
-          }
-          break label291;
-          j = 0;
-        }
-        localException.put("param_FailCode", String.valueOf(i));
-        this.jdField_a_of_type_JavaUtilSet.clear();
-        synchronized (this.jdField_a_of_type_ArrayOfByte)
+            paramArrayOfByte = (MSFNetTransportProvider)this.app.getBusinessHandler(BusinessHandlerFactory.MSF_NET_TRANSPORT_PROVIDER_HANDLER);
+            paramArrayOfByte = new bizh(this.app.getApp().getApplicationContext(), paramArrayOfByte);
+          } while (paramArrayOfByte == null);
+          paramArrayOfByte = (bizj)paramArrayOfByte.a("app_scan");
+        } while (paramArrayOfByte == null);
+        paramArrayOfByte.a(((MsgBody)localObject).bytes_data.get().toByteArray());
+        return;
+        localObject = ((MsgBody)localObject).bytes_data.get().toByteArray();
+        paramArrayOfByte = new AccountSecurityInfo.SecCheckBanner();
+        try
         {
-          this.jdField_a_of_type_Boolean = false;
-          localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-          while (((Iterator)localObject3).hasNext())
+          paramArrayOfByte.mergeFrom((byte[])localObject);
+          localObject = paramArrayOfByte.str_wording.get();
+          int i = paramArrayOfByte.u32_timeToShow.get();
+          paramArrayOfByte = new Intent();
+          paramArrayOfByte.putExtra("wording", (String)localObject);
+          paramArrayOfByte.putExtra("timetowait", i);
+          this.app.setSecDetBannerIntent(paramArrayOfByte);
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          for (;;)
           {
-            localaode = (aode)((Iterator)localObject3).next();
-            if (localaode.jdField_b_of_type_Long < localaode.jdField_a_of_type_Long) {
-              this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.cancelReq(localaode.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-            }
+            localInvalidProtocolBufferMicroException.printStackTrace();
           }
         }
-        if ((j != 0) && (!this.jdField_b_of_type_Boolean))
-        {
-          this.jdField_a_of_type_Aodg.a(i, paramNetResp.mResult);
-          this.jdField_b_of_type_Boolean = true;
-        }
-        continue;
-        long l = 0L;
-        continue;
-        l = -1L;
+        new QPTxVerifyApkTimerTask(this.app, true).a();
+        return;
       }
-    }
+    } while (localInvalidProtocolBufferMicroException.bytes_data.get() == null);
+    QSecFramework.a().a(localInvalidProtocolBufferMicroException.bytes_data.get().toByteArray());
   }
   
-  public void onUpdateProgeress(NetReq arg1, long paramLong1, long paramLong2)
+  public Class<? extends BusinessObserver> observerClass()
   {
-    ??? = ???.getUserData();
-    if ((??? != null) && ((??? instanceof aode)))
-    {
-      ??? = (aode)???;
-      if (???.jdField_a_of_type_Int != 1) {}
-    }
-    else
-    {
-      return;
-    }
-    String str = ???.jdField_b_of_type_JavaLangString;
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        aode localaode = (aode)localIterator.next();
-        if (str.equals(localaode.jdField_b_of_type_JavaLangString))
-        {
-          paramLong2 = localaode.jdField_b_of_type_Long;
-          localaode.jdField_b_of_type_Long = paramLong1;
-          this.jdField_b_of_type_Long += paramLong1 - paramLong2;
-        }
-      }
-      if (!this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_Aodg.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_Long);
-      }
-      return;
-    }
+    return null;
   }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

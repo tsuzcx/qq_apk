@@ -6,10 +6,10 @@ import android.util.AttributeSet;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
-import bmby;
-import bmni;
-import bmnj;
-import bmnk;
+import bnri;
+import boda;
+import bodb;
+import bodc;
 
 public class VideoEditToolBar
   extends AEEditorToolBar
@@ -34,26 +34,26 @@ public class VideoEditToolBar
   
   protected void a()
   {
-    this.b = bmby.a();
-    a(0, "clip", 2130837712, 2130837648);
-    a(1, "text", 2130837717, 2130837648);
-    a(2, "music", 2130837907, 2130837648);
+    this.b = bnri.a();
+    a(0, "clip", 2130837726, 2130837652);
+    a(1, "text", 2130837731, 2130837652);
+    a(2, "music", 2130837921, 2130837652);
   }
   
   void a(String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Bmng != null)
+    if (this.jdField_a_of_type_Bocy != null)
     {
       localObject1 = localObject2;
-      if ((this.jdField_a_of_type_Bmng instanceof bmnk)) {
-        localObject1 = (bmnk)this.jdField_a_of_type_Bmng;
+      if ((this.jdField_a_of_type_Bocy instanceof bodc)) {
+        localObject1 = (bodc)this.jdField_a_of_type_Bocy;
       }
     }
     if (paramString.equals("clip")) {
       if (localObject1 != null) {
-        ((bmnk)localObject1).x();
+        ((bodc)localObject1).x();
       }
     }
     do
@@ -65,22 +65,22 @@ public class VideoEditToolBar
           break;
         }
       } while (localObject1 == null);
-      ((bmnk)localObject1).y();
+      ((bodc)localObject1).y();
       return;
     } while ((!paramString.equals("music")) || (localObject1 == null));
-    ((bmnk)localObject1).z();
+    ((bodc)localObject1).z();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.b = bmby.a();
+    this.b = bnri.a();
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean)
     {
-      a("music", 2130837908);
+      a("music", 2130837922);
       return;
     }
-    a("music", 2130837907);
+    a("music", 2130837921);
   }
   
   public void d()
@@ -90,7 +90,7 @@ public class VideoEditToolBar
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.setInterpolator(new DecelerateInterpolator());
     localAnimationSet.setDuration(200L);
-    localAnimationSet.setAnimationListener(new bmni(this));
+    localAnimationSet.setAnimationListener(new boda(this));
     startAnimation(localAnimationSet);
   }
   
@@ -101,7 +101,7 @@ public class VideoEditToolBar
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.setInterpolator(new DecelerateInterpolator());
     localAnimationSet.setDuration(200L);
-    localAnimationSet.setAnimationListener(new bmnj(this));
+    localAnimationSet.setAnimationListener(new bodb(this));
     startAnimation(localAnimationSet);
   }
 }

@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
-import java.util.Comparator;
+import android.view.View;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class bafj
-  implements Comparator<baep>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener;", "", "onPrivacySelectActionSheetClick", "", "view", "Landroid/view/View;", "item", "Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$ActionSheetPrivacySelectBean;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface bafj
 {
-  public bafj(Mp4FlowReEncoder paramMp4FlowReEncoder) {}
-  
-  public int a(baep parambaep1, baep parambaep2)
-  {
-    if (parambaep2.a() > parambaep1.a()) {
-      return -1;
-    }
-    if (parambaep2.a() == parambaep1.a()) {
-      return 0;
-    }
-    return 1;
-  }
+  public abstract void a(@NotNull View paramView, @Nullable bafh parambafh);
 }
 
 

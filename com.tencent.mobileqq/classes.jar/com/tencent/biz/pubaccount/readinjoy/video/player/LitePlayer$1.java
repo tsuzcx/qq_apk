@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
-import sgn;
+import sss;
 
 public class LitePlayer$1
   implements Runnable
 {
-  public LitePlayer$1(sgn paramsgn, String paramString, int paramInt, long paramLong) {}
+  public LitePlayer$1(sss paramsss, String paramString, int paramInt, long paramLong) {}
   
   public void run()
   {
-    sgn.a(this.this$0, false, this.jdField_a_of_type_JavaLangString, null, null, true, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, 0);
+    sss.a(this.this$0, false, this.jdField_a_of_type_JavaLangString, null, null, true, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, 0);
   }
 }
 

@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.apollo.process.download;
 
-import alyu;
-import alyx;
-import amip;
+import amzk;
+import amzn;
 import com.tencent.mobileqq.utils.FileUtils;
 
 public class CmGameRscDownloader$2
   implements Runnable
 {
-  public CmGameRscDownloader$2(alyu paramalyu) {}
+  public CmGameRscDownloader$2(amzk paramamzk) {}
   
   public void run()
   {
-    String str = amip.s + alyu.a(this.this$0).jdField_a_of_type_JavaLangString + ".patch";
-    FileUtils.writeFile(alyu.a(this.this$0).jdField_a_of_type_ArrayOfByte, str);
-    alyu.a(this.this$0);
+    String str = "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/" + amzk.a(this.this$0).jdField_a_of_type_JavaLangString + ".patch";
+    FileUtils.writeFile(amzk.a(this.this$0).jdField_a_of_type_ArrayOfByte, str);
+    amzk.a(this.this$0);
   }
 }
 

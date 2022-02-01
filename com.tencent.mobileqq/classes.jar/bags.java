@@ -1,25 +1,7 @@
-import android.media.MediaCodec.BufferInfo;
+import kotlin.Metadata;
 
-class bags
-{
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final int b;
-  private final int c;
-  
-  private bags(int paramInt1, int paramInt2, MediaCodec.BufferInfo paramBufferInfo)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Long = paramBufferInfo.presentationTimeUs;
-    this.c = paramBufferInfo.flags;
-  }
-  
-  private void a(MediaCodec.BufferInfo paramBufferInfo, int paramInt)
-  {
-    paramBufferInfo.set(paramInt, this.b, this.jdField_a_of_type_Long, this.c);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bags {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

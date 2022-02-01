@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-
 public class aziy
-  implements bjog
 {
-  public aziy(QCallDetailActivity paramQCallDetailActivity) {}
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onDismiss()
+  public String toString()
   {
-    bcef.b(this.a.app, "CliOper", "", "", "0X8005AFA", "0X8005AFA", 0, 0, "", "", "", "");
+    return "QuickSendObject{mOriginMD5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mOriginSize=" + this.jdField_a_of_type_Long + ", mThumbMD5='" + this.b + '\'' + ", mQuickSendFailed=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

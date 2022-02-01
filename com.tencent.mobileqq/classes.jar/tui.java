@@ -1,32 +1,52 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.7.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class tui
-  implements qdy
+  implements ucq
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  public tui(ViolaFragment paramViolaFragment) {}
+  
+  public void a()
   {
-    return null;
+    this.a.mViolaUiDelegate.b();
+    this.a.mViolaUiDelegate.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage success!");
+    }
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void a(int paramInt)
   {
-    return pzj.a(paramBaseArticleInfo);
+    if (this.a.getActivity() != null) {}
+    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
+    {
+      new Handler(localLooper).postDelayed(new ViolaFragment.7.1(this), 1000L);
+      if (QLog.isColorLevel()) {
+        QLog.e("ViolaFragment", 2, "reloadPage error,error code=" + paramInt);
+      }
+      return;
+    }
   }
   
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2) {}
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
   
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  public void a(String paramString, int paramInt) {}
+  
+  public void b(int paramInt)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage process,process code=" + paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tui
  * JD-Core Version:    0.7.0.1
  */

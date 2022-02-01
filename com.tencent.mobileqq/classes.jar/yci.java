@@ -1,29 +1,6 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-
-class yci
-  extends AnimatorListenerAdapter
+public abstract interface yci<T>
 {
-  yci(ycg paramycg) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    xvv.b("FaceLayer", "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    xvv.b("FaceLayer", "scaleAnimator end!");
-    this.a.p = 1.0F;
-    this.a.c = false;
-    this.a.b.g();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    xvv.b("FaceLayer", "scaleAnimator start!");
-    this.a.c = true;
-  }
+  public abstract void a(T paramT);
 }
 
 

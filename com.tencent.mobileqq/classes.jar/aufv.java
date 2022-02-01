@@ -1,71 +1,63 @@
-import android.annotation.TargetApi;
-import android.graphics.Matrix;
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.os.Build.VERSION;
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Interpolator;
-import android.view.animation.Transformation;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 class aufv
-  extends Animation
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public PathMeasure a;
-  public View a;
-  public Interpolator a;
-  public aufu a;
-  public aufw a;
-  public float b;
+  aufv(aufu paramaufu) {}
   
-  @TargetApi(11)
-  public aufv(Path paramPath, float paramFloat, View paramView1, View paramView2, aufu paramaufu)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(paramPath, false);
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
-    this.jdField_a_of_type_AndroidViewView = paramView2;
-    this.jdField_b_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Aufu = paramaufu;
-    paramView1.setLayerType(2, null);
-  }
-  
-  private static float a(int paramInt, float paramFloat)
-  {
-    switch (paramInt)
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-    default: 
-      return (float)Math.pow(paramFloat, 2.0D);
-    case 1: 
-      if (paramFloat < 0.8D) {
-        return 0.0F;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    int i = 4;
+    if (aufu.a(this.a) == 1)
+    {
+      i = 2;
+      label33:
+      if ((aufu.a(this.a) == null) || (!aufu.a(this.a).equals(AppConstants.DATALINE_PC_UIN))) {
+        break label240;
       }
-      return 5.0F * paramFloat - 4.0F;
+      i = 3;
     }
-    return 0.5F * paramFloat + 0.5F;
-  }
-  
-  @TargetApi(11)
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    Object localObject = paramTransformation.getMatrix();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getMatrix(this.jdField_a_of_type_Float * paramFloat, (Matrix)localObject, 1);
-    float f;
-    if (Build.VERSION.SDK_INT >= 11)
+    label240:
+    for (;;)
     {
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      f = this.jdField_b_of_type_Float;
-      aufu localaufu = this.jdField_a_of_type_Aufu;
-      ((View)localObject).setRotation(f * paramFloat * aufu.jdField_b_of_type_Float);
+      long l = atpm.b();
+      bdla.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", i, 0, "" + l, "0", "", "");
+      if (aufu.a(this.a) == 1101)
+      {
+        Object localObject = new ArrayList();
+        ((ArrayList)localObject).addAll(atpm.a());
+        Intent localIntent = new Intent();
+        localIntent.putExtra("file_choose_search_result_code", "file_choose_search_result_code");
+        localIntent.putParcelableArrayListExtra("reslut_select_file_info_list", (ArrayList)localObject);
+        localObject = (Activity)this.a.jdField_a_of_type_AndroidContentContext;
+        ((Activity)localObject).setResult(-1, localIntent);
+        ((Activity)localObject).finish();
+        break;
+        if (aufu.a(this.a) != 0) {
+          break label33;
+        }
+        i = 1;
+        break label33;
+      }
+      if (aufu.a(this.a) == 1)
+      {
+        aufu.a(this.a);
+        break;
+      }
+      aufu.b(this.a);
+      break;
     }
-    if (this.jdField_a_of_type_Aufu.jdField_b_of_type_Boolean)
-    {
-      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
-      this.jdField_a_of_type_AndroidViewView.setScaleX(this.jdField_a_of_type_Aufu.c * f);
-      this.jdField_a_of_type_AndroidViewView.setScaleY(f * this.jdField_a_of_type_Aufu.c);
-    }
-    paramTransformation.setAlpha(1.0F - a(this.jdField_a_of_type_Int, paramFloat));
   }
 }
 

@@ -1,37 +1,56 @@
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.XRecyclerView;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class pjk
-  implements bjxz
+  extends RecyclerView.Adapter
 {
-  public pjk(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private toy jdField_a_of_type_Toy;
+  private List<String> b = new ArrayList();
   
-  public void a()
+  public pjk(Context paramContext, List<String> paramList1, List<String> paramList2, toy paramtoy)
   {
-    QLog.d("ReadInJoyDynamicChannelFragment", 2, "endRefresh.");
+    this.b = paramList1;
+    this.jdField_a_of_type_JavaUtilList = paramList2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Toy = paramtoy;
   }
   
-  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  public int getItemCount()
   {
-    QLog.d("ReadInJoyDynamicChannelFragment", 2, "startLoadMore.");
-    if (ReadInJoyDynamicChannelFragment.h(this.a) == 40830) {}
-    for (paramInt = ReadInJoyDynamicChannelFragment.i(this.a);; paramInt = 1)
-    {
-      pkm.a().a(ReadInJoyDynamicChannelFragment.j(this.a), ReadInJoyDynamicChannelFragment.k(this.a), 2, 0, paramInt);
-      return;
+    if (this.b != null) {
+      return this.b.size();
     }
+    return 0;
   }
   
-  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    QLog.d("ReadInJoyDynamicChannelFragment", 2, "startTopRefresh.");
-    if (paramBoolean) {}
-    for (int i = 1;; i = 3)
+    if ((paramViewHolder instanceof pjm))
     {
-      this.a.b(i);
-      return;
+      pjm localpjm = (pjm)paramViewHolder;
+      if ((paramInt >= 0) && (paramInt < this.b.size()))
+      {
+        String str1 = (String)this.b.get(paramInt);
+        String str2 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localpjm.a.setText(str1);
+        localpjm.a.setOnClickListener(new pjl(this, str2, str1));
+      }
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new pjm(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560197, null));
   }
 }
 

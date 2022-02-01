@@ -1,23 +1,8 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
-import java.io.File;
-import java.util.Comparator;
-
-public class bcbx
-  implements Comparator<File>
+public abstract interface bcbx
 {
-  public bcbx(MigrateSubscribeDB paramMigrateSubscribeDB) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public int a(File paramFile1, File paramFile2)
-  {
-    long l = paramFile2.lastModified() - paramFile1.lastModified();
-    if (l > 0L) {
-      return 1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
-  }
+  public abstract void c(String paramString);
 }
 
 

@@ -1,28 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.s2c.msgtype0x210.submsgtype0x98.submsgtype0x98.ModBlock;
+import tencent.im.s2c.msgtype0x210.submsgtype0x98.submsgtype0x98.MsgBody;
 
 public class acsg
-  implements DialogInterface.OnClickListener
+  implements acpi
 {
-  public acsg(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private static void a(MsgType0x210 paramMsgType0x210)
   {
-    QLog.e("vip_ptt.AssistantSettingActivity", 1, "click pay for auto ptt");
-    paramDialogInterface = aqgp.c();
-    if (TextUtils.isEmpty(paramDialogInterface.a)) {
-      bfyi.a(this.a, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&type=!svip&aid=mvip.n.a.zdzwz");
-    }
-    for (;;)
+    submsgtype0x98.MsgBody localMsgBody = new submsgtype0x98.MsgBody();
+    try
     {
-      this.a.b();
+      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
+      label17:
+      localMsgBody.uint64_uin.get();
+      localMsgBody.uint32_sub_cmd.get();
+      ((submsgtype0x98.ModBlock)localMsgBody.msg_mod_block.get()).uint32_op.get();
       return;
-      paramDialogInterface = paramDialogInterface.a.replace("{aid}", "mvip.n.a.zdzwz");
-      bfyi.a(this.a, paramDialogInterface);
     }
+    catch (Throwable paramMsgType0x210)
+    {
+      break label17;
+    }
+  }
+  
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramMsgType0x210);
+    return null;
   }
 }
 

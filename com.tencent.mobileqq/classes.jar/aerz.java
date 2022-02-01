@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingMe.32;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aerz
-  extends aycd
+  implements View.OnClickListener
 {
-  public aerz(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public aerz(QQSettingMe.32 param32) {}
   
-  protected void b(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
+    bhnz.a();
+    bhnz.a("0X800B232", bhnz.a(), bhnz.b());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

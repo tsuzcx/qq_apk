@@ -4,7 +4,7 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lnl;
+import lny;
 import mqq.os.MqqHandler;
 
 class MultiIncomingCallsActivity$2
@@ -28,11 +28,11 @@ class MultiIncomingCallsActivity$2
         Iterator localIterator = MultiIncomingCallsActivity.a(this.this$0).iterator();
         while (localIterator.hasNext())
         {
-          lnl locallnl = (lnl)localIterator.next();
-          if (locallnl.b + 60L > l) {
-            localArrayList.add(locallnl);
+          lny locallny = (lny)localIterator.next();
+          if (locallny.b + 60L > l) {
+            localArrayList.add(locallny);
           } else if (QLog.isColorLevel()) {
-            QLog.d(this.this$0.b, 2, "mTaskCheckRunnable " + locallnl.b + ";otherTimestamp=" + l);
+            QLog.d(this.this$0.b, 2, "mTaskCheckRunnable " + locallny.b + ";otherTimestamp=" + l);
           }
         }
         MultiIncomingCallsActivity.a(this.this$0, localArrayList);

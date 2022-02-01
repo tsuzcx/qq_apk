@@ -1,10 +1,41 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class adzh
+  extends anrc
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  public adzh(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  {
+    if (paramInt2 == 0)
+    {
+      this.a.a();
+      if (this.a.isResumed()) {
+        if (paramInt1 != 0) {
+          break label47;
+        }
+      }
+    }
+    label47:
+    while (!this.a.isResumed())
+    {
+      QQToast.a(this.a.getActivity(), 2, anvx.a(2131704317), 0).a();
+      do
+      {
+        return;
+      } while (paramInt1 != 1);
+      QQToast.a(this.a.getActivity(), 2, anvx.a(2131704316), 0).a();
+      return;
+    }
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131694475);
+    }
+    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
+  }
 }
 
 

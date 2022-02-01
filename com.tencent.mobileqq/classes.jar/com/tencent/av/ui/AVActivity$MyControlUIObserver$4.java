@@ -1,12 +1,12 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
-import mbd;
+import mby;
 
 public class AVActivity$MyControlUIObserver$4
   implements Runnable
 {
-  public AVActivity$MyControlUIObserver$4(mbd parammbd) {}
+  public AVActivity$MyControlUIObserver$4(mby parammby) {}
   
   public void run()
   {

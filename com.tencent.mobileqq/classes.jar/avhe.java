@@ -1,15 +1,6 @@
-import android.view.View;
-import android.widget.ImageView;
-
-class avhe
+public abstract interface avhe
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  String jdField_a_of_type_JavaLangString;
-  
-  public avhe(View paramView)
-  {
-    this.a = ((ImageView)avhc.a(paramView, 2131370325));
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

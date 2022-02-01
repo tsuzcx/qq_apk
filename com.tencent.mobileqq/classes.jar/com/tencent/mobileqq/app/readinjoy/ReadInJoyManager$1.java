@@ -4,7 +4,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.net.Uri;
 import android.net.Uri.Builder;
-import bkwy;
+import bmih;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -28,7 +28,7 @@ class ReadInJoyManager$1
     label495:
     while (localIterator.hasNext())
     {
-      bkwy localbkwy = (bkwy)localIterator.next();
+      bmih localbmih = (bmih)localIterator.next();
       Object localObject2 = new HashSet(ReadInJoyManager.a(this.this$0).keySet()).iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -38,37 +38,37 @@ class ReadInJoyManager$1
           ReadInJoyManager.a(this.this$0).remove(Integer.valueOf(i));
         }
       }
-      if (!ReadInJoyManager.a(this.this$0).containsValue(Integer.valueOf(localbkwy.jdField_b_of_type_Int)))
+      if (!ReadInJoyManager.a(this.this$0).containsValue(Integer.valueOf(localbmih.jdField_b_of_type_Int)))
       {
-        ReadInJoyManager.a(this.this$0).put(Integer.valueOf(localbkwy.a), Integer.valueOf(localbkwy.jdField_b_of_type_Int));
+        ReadInJoyManager.a(this.this$0).put(Integer.valueOf(localbmih.a), Integer.valueOf(localbmih.jdField_b_of_type_Int));
         long l = ReadInJoyManager.a(this.this$0);
-        if ((localbkwy.c == 10) || (localbkwy.c == 11) || (localbkwy.c == 12) || (localbkwy.c == 999999)) {
-          if (ReadInJoyManager.a(this.this$0, (Uri)localObject1, localbkwy, l)) {
+        if ((localbmih.c == 10) || (localbmih.c == 11) || (localbmih.c == 12) || (localbmih.c == 999999)) {
+          if (ReadInJoyManager.a(this.this$0, (Uri)localObject1, localbmih, l)) {
             ReadInJoyManager.a(this.this$0);
           }
         }
         for (;;)
         {
-          if (localbkwy.c == 999999) {
+          if (localbmih.c == 999999) {
             break label495;
           }
           break;
           ContentValues localContentValues;
-          if (localbkwy.c == 14)
+          if (localbmih.c == 14)
           {
-            localObject2 = String.format("%s = '%s' and %s = %d", new Object[] { "commentID", localbkwy.jdField_b_of_type_JavaLangString, "notifyType", Integer.valueOf(11) });
+            localObject2 = String.format("%s = '%s' and %s = %d", new Object[] { "commentID", localbmih.jdField_b_of_type_JavaLangString, "notifyType", Integer.valueOf(11) });
             localContentValues = new ContentValues();
             localContentValues.put("isDelete", Integer.valueOf(1));
             ReadInJoyManager.a(this.this$0).getApp().getContentResolver().update((Uri)localObject1, localContentValues, (String)localObject2, null);
-            ReadInJoyManager.a(this.this$0, (Uri)localObject1, localbkwy, l);
+            ReadInJoyManager.a(this.this$0, (Uri)localObject1, localbmih, l);
           }
-          else if (localbkwy.c == 13)
+          else if (localbmih.c == 13)
           {
-            localObject2 = String.format("%s = %s and %s = %d", new Object[] { "feedsID", Long.toString(localbkwy.jdField_b_of_type_Long), "notifyType", Integer.valueOf(10) });
+            localObject2 = String.format("%s = %s and %s = %d", new Object[] { "feedsID", Long.toString(localbmih.jdField_b_of_type_Long), "notifyType", Integer.valueOf(10) });
             localContentValues = new ContentValues();
             localContentValues.put("isDelete", Integer.valueOf(1));
             ReadInJoyManager.a(this.this$0).getApp().getContentResolver().update((Uri)localObject1, localContentValues, (String)localObject2, null);
-            ReadInJoyManager.a(this.this$0, (Uri)localObject1, localbkwy, l);
+            ReadInJoyManager.a(this.this$0, (Uri)localObject1, localbmih, l);
           }
         }
       }

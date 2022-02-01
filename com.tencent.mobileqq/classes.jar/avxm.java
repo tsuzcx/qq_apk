@@ -1,23 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class avxm
-  extends AnimatorListenerAdapter
+final class avxm
+  implements EIPCResultCallback
 {
-  public avxm(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    super.onAnimationCancel(paramAnimator);
-    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "ACTION_QUIT_WATCH_FLOATING_WINDOWS result=", Integer.valueOf(paramEIPCResult.code) });
+    }
+    if (paramEIPCResult.code != 0) {}
   }
 }
 

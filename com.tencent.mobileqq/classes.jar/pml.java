@@ -1,41 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class pml
-  implements View.OnClickListener
+public class pml
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  pml(pmj parampmj, QQAppInterface paramQQAppInterface, FrameLayout paramFrameLayout, GuideData paramGuideData) {}
-  
-  public void onClick(View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject = (rao)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(270);
-    if (((rao)localObject).a() == 1)
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoSdkConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = pku.a(paramString);
+    Object localObject = paramString.keySet();
+    try
     {
-      ((rao)localObject).a(false);
-      localObject = ((rao)localObject).a(pmj.a(this.jdField_a_of_type_Pmj), 0);
-      if (localObject != null)
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        ((RefreshData)localObject).isShown = false;
-        bfyz.f(pmj.a(this.jdField_a_of_type_Pmj), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((RefreshData)localObject).toJson().toString(), 0);
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)paramString.get(str1);
+        if (TextUtils.equals(str1, "readinjoy_video_preplay_download_time_limit")) {
+          bmhv.j(Integer.parseInt(str2));
+        }
       }
+      return true;
     }
-    pmj.a(this.jdField_a_of_type_Pmj).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(pmj.a(this.jdField_a_of_type_Pmj));
-    pmj.a(this.jdField_a_of_type_Pmj, null);
-    bfyz.s(pmj.a(this.jdField_a_of_type_Pmj), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.toJson().toString());
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJSkinOperationPopupStep", 2, "set skin: id = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.id);
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bmhv.j(6);
   }
 }
 

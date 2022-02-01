@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import befw;
+import bfmz;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class TroopFileDownloadMgr$2
   implements Runnable
 {
-  public TroopFileDownloadMgr$2(befw parambefw) {}
+  public TroopFileDownloadMgr$2(bfmz parambfmz) {}
   
   public void run()
   {

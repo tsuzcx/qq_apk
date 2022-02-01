@@ -1,17 +1,7 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.mobileqq.widget.MyGridView;
-import com.tencent.widget.SingleLineTextView;
-
-public class akmv
-  extends akln
+class akmv
+  extends akmq
 {
-  public ImageView a;
-  public TextView a;
-  public DragTextView a;
-  public MyGridView a;
-  public SingleLineTextView a;
+  akmv(akmu paramakmu) {}
 }
 
 

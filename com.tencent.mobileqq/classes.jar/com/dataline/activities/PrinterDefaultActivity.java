@@ -1,12 +1,12 @@
 package com.dataline.activities;
 
 import Override;
-import amtj;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cv;
@@ -16,10 +16,10 @@ public class PrinterDefaultActivity
 {
   private void a()
   {
-    ((TextView)findViewById(2131369068)).setVisibility(8);
-    TextView localTextView = (TextView)findViewById(2131369099);
+    ((TextView)findViewById(2131369231)).setVisibility(8);
+    TextView localTextView = (TextView)findViewById(2131369262);
     localTextView.setVisibility(0);
-    localTextView.setText(amtj.a(2131707534));
+    localTextView.setText(anvx.a(2131707881));
     localTextView.setOnClickListener(new cv(this));
   }
   
@@ -35,9 +35,9 @@ public class PrinterDefaultActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.getWindow().setBackgroundDrawableResource(2131165437);
-    setContentView(2131559056);
-    setTitle(2131691234);
+    super.getWindow().setBackgroundDrawableResource(2131165443);
+    setContentView(2131559084);
+    setTitle(2131691319);
     super.getWindow().setBackgroundDrawable(null);
     a();
     return true;

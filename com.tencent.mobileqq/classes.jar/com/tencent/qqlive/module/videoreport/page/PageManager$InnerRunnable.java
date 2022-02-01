@@ -38,12 +38,12 @@ class PageManager$InnerRunnable
       return;
     }
     if ((!PageManager.access$400(this.this$0)) && (PageManager.access$500(this.this$0) != null) && (PageManager.access$500(this.this$0).getPage() != this.pageInfo.getPage())) {
-      PageManager.access$600(this.this$0, PageManager.access$500(this.this$0), false);
+      PageManager.access$600(this.this$0, this.pageInfo, PageManager.access$500(this.this$0), false);
     }
     PageInfo localPageInfo = PageManager.access$500(this.this$0);
     PageManager.access$502(this.this$0, this.pageInfo);
     if (PageManager.access$700(this.this$0, this.pageInfo, localPageInfo, PageManager.access$400(this.this$0))) {
-      PageManager.access$800(this.this$0, this.pageInfo);
+      PageManager.access$800(this.this$0, this.pageInfo, localPageInfo);
     }
     for (;;)
     {

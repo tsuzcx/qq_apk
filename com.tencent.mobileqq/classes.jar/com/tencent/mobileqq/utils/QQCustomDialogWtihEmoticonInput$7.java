@@ -3,7 +3,7 @@ package com.tencent.mobileqq.utils;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.widget.EditText;
-import arev;
+import asjb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
@@ -91,7 +91,7 @@ class QQCustomDialogWtihEmoticonInput$7
       if (this.this$0.useAIOStyle) {
         localSystemAndEmojiEmoticonInfo.addToCommonUsed((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
       }
-      arev.a().a(k).a(m, 5);
+      asjb.a().a(k).a(m, 5);
       return;
     }
   }

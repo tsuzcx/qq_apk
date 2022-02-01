@@ -1,20 +1,49 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-final class apdu
-  implements View.OnKeyListener
+public class apdu
+  extends Handler
 {
-  apdu(apdt paramapdt) {}
+  private WeakReference<VideoEncoderCore> a;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public apdu(Looper paramLooper, VideoEncoderCore paramVideoEncoderCore)
   {
-    if (paramInt == 4)
+    super(paramLooper);
+    this.a = new WeakReference(paramVideoEncoderCore);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a != null) {}
+    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
     {
-      this.a.dismiss();
-      return true;
+      switch (paramMessage.what)
+      {
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (localVideoEncoderCore == null);
+        paramMessage = (Object[])paramMessage.obj;
+        try
+        {
+          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
+        }
+      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
+      VideoEncoderCore.a(localVideoEncoderCore).a(3);
+      return;
     }
-    return false;
   }
 }
 

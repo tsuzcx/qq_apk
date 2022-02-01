@@ -1,55 +1,73 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
 
 public class zeh
-  extends zaj
 {
-  private RelativePersonalBottomView jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
-  private yzn jdField_a_of_type_Yzn;
-  
-  public zeh(Bundle paramBundle)
+  public static Long a()
   {
-    super(paramBundle);
-  }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, yzp paramyzp)
-  {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView = new RelativePersonalBottomView(paramViewGroup.getContext(), paramyzp);
-    return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
-  }
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void a(yzu paramyzu) {}
-  
-  public void b(String paramString, yzn paramyzn)
-  {
-    super.b(paramString, paramyzn);
-    this.jdField_a_of_type_Yzn = paramyzn;
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.a(paramyzn);
+    String str = LbsManagerService.getCityCode();
+    if (TextUtils.isEmpty(str))
+    {
+      ykq.b("LocationUtils", "getCityCode() lbsInfo.location.cityCode is empty");
+      return null;
     }
+    try
+    {
+      long l = Long.parseLong(str);
+      ykq.a("LocationUtils", "getCityCode() lbsInfo.location.cityCode is %d", Long.valueOf(l));
+      return Long.valueOf(l);
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      ykq.e("LocationUtils", "getCityCode() cityCode is not number!");
+      bdjw.a(zfc.a("LocationUtils getCityCode() error", localNumberFormatException), "LocationUtils getCityCode() error");
+    }
+    return null;
   }
   
-  public int c()
+  public static wlk a(EditVideoParams paramEditVideoParams)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
-      return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.b();
+    wlk localwlk2 = wll.a();
+    wlk localwlk1;
+    int j;
+    int i;
+    if (paramEditVideoParams.isEditLocal())
+    {
+      localwlk1 = null;
+      paramEditVideoParams = paramEditVideoParams.mEditSource;
+      if ((paramEditVideoParams instanceof EditLocalVideoSource))
+      {
+        paramEditVideoParams = ((EditLocalVideoSource)paramEditVideoParams).a;
+        j = paramEditVideoParams.latitude;
+        i = paramEditVideoParams.longitude;
+      }
     }
-    return 0;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.a(this.jdField_a_of_type_Yzn);
+    for (;;)
+    {
+      if ((j != 0) || (i != 0))
+      {
+        localwlk1 = new wlk(j, i, 0);
+        ykq.a("LocationUtils", "Use LocalMediaInfo Lat/Lng to Request POIList %s", paramEditVideoParams);
+        return localwlk1;
+        if ((paramEditVideoParams instanceof EditLocalPhotoSource))
+        {
+          paramEditVideoParams = ((EditLocalPhotoSource)paramEditVideoParams).a;
+          j = paramEditVideoParams.latitude;
+          i = paramEditVideoParams.longitude;
+        }
+      }
+      else
+      {
+        return localwlk2;
+      }
+      i = 0;
+      j = 0;
+      paramEditVideoParams = localwlk1;
     }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
 }
 

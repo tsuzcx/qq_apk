@@ -2,9 +2,8 @@ package com.tencent.qqlive.module.videoreport;
 
 import android.support.annotation.NonNull;
 import com.tencent.qqlive.module.videoreport.constants.ReportPolicy;
+import com.tencent.qqlive.module.videoreport.dtreport.formatter.DTParamsNewsFlattenFormatter;
 import com.tencent.qqlive.module.videoreport.inner.DefaultLogger;
-import com.tencent.qqlive.module.videoreport.reportdata.DefaultFormatter;
-import com.tencent.qqlive.module.videoreport.utils.BaseUtils;
 import com.tencent.qqlive.module.videoreport.utils.IFormatter;
 
 public class Configuration
@@ -24,6 +23,7 @@ public class Configuration
   private final double mElementExposureMinRate;
   private final long mElementExposureMinTime;
   private final ReportPolicy mElementReportPolicy;
+  private boolean mEnablePageLink;
   private final IFormatter mFormatter;
   private boolean mIndependentPageOut;
   private final ILogger mLogger;
@@ -49,12 +49,18 @@ public class Configuration
     this.mClickReportInterval = Configuration.Builder.access$700(paramBuilder);
     this.mElementReportPolicy = Configuration.Builder.access$800(paramBuilder);
     this.mLogger = Configuration.Builder.access$900(paramBuilder);
-    this.mFormatter = ((IFormatter)BaseUtils.nullAs(Configuration.Builder.access$1000(paramBuilder), new DefaultFormatter()));
-    this.mIndependentPageOut = Configuration.Builder.access$1100(paramBuilder);
-    this.mAppTimeReportHeartBeatInterval = Configuration.Builder.access$1200(paramBuilder);
-    this.mAppTimeReportTimePinInterval = Configuration.Builder.access$1300(paramBuilder);
-    this.mAudioReportHeartBeatInterval = Configuration.Builder.access$1400(paramBuilder);
-    this.mAudioTimePinInterval = Configuration.Builder.access$1500(paramBuilder);
+    if (Configuration.Builder.access$1000(paramBuilder) != null) {}
+    for (Object localObject = Configuration.Builder.access$1000(paramBuilder);; localObject = new DTParamsNewsFlattenFormatter())
+    {
+      this.mFormatter = ((IFormatter)localObject);
+      this.mIndependentPageOut = Configuration.Builder.access$1100(paramBuilder);
+      this.mAppTimeReportHeartBeatInterval = Configuration.Builder.access$1200(paramBuilder);
+      this.mAppTimeReportTimePinInterval = Configuration.Builder.access$1300(paramBuilder);
+      this.mAudioReportHeartBeatInterval = Configuration.Builder.access$1400(paramBuilder);
+      this.mAudioTimePinInterval = Configuration.Builder.access$1500(paramBuilder);
+      this.mEnablePageLink = Configuration.Builder.access$1600(paramBuilder);
+      return;
+    }
   }
   
   public static Configuration.Builder builder()
@@ -133,7 +139,7 @@ public class Configuration
   
   public int getLazyInitType()
   {
-    return Configuration.Builder.access$1600(this.mConfigBuilder);
+    return Configuration.Builder.access$1700(this.mConfigBuilder);
   }
   
   public ILogger getLogger()
@@ -162,6 +168,11 @@ public class Configuration
   public boolean isDefaultDataCollectEnable()
   {
     return this.mDefaultDataCollectEnable;
+  }
+  
+  public boolean isEnablePageLink()
+  {
+    return this.mEnablePageLink;
   }
   
   public boolean isIndependentPageOut()

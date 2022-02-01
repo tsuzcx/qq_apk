@@ -1,55 +1,41 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Build.VERSION;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.utils.PermissionUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aaby
-  extends WebViewPlugin
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public aaby()
-  {
-    this.mPluginNameSpace = "openToAppDetail";
-  }
+  public aaby(RelativePersonalBottomView paramRelativePersonalBottomView) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    a(paramString1, paramString2, null);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("uin", this.mRuntime.a().getCurrentAccountUin());
-    localBundle.putString("sid", this.mRuntime.a().getIntent().getStringExtra("vkey"));
-    localBundle.putString("via", "ANDROIDQQ.STORE.APPDETAIL.SHARE2QQ");
-    if ((paramString2 != null) && (paramString2.equals("true"))) {
-      localBundle.putBoolean("autoDownload", true);
+    if (RelativePersonalBottomView.a(this.a).getId() == paramInt) {
+      RelativePersonalBottomView.a(this.a).setCurrentItem(0);
     }
-    if (paramString3 != null) {
-      localBundle.putString("packageName", paramString3);
-    }
-    bhwo.a(this.mRuntime.a(), paramString1, 2470, localBundle);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"openToAppDetail".equals(paramString2)) {}
-    do
+    while (RelativePersonalBottomView.b(this.a).getId() != paramInt)
     {
-      do
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 23) {}
+    for (boolean bool = PermissionUtils.isStorePermissionEnable(this.a.getContext());; bool = true)
+    {
+      if (!bool)
       {
-        return false;
-      } while (!"openAppDetailPage".equals(paramString3));
-      if (paramVarArgs.length == 2)
-      {
-        a(paramVarArgs[0], paramVarArgs[1]);
-        return true;
+        bhdj.a((PublicFragmentActivity)this.a.getContext());
+        RelativePersonalBottomView.a(this.a).getChildAt(0).performClick();
+        break;
       }
-    } while (paramVarArgs.length != 3);
-    a(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
-    return true;
+      RelativePersonalBottomView.a(this.a).setCurrentItem(1);
+      break;
+    }
   }
 }
 

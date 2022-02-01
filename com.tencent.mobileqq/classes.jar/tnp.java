@@ -1,30 +1,41 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageInfo;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageItemView;
-import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.support.annotation.ColorInt;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import androidx.annotation.NonNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageFactory;", "", "()V", "createBarrageItemView", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageItemView;", "context", "Landroid/content/Context;", "barrageParam", "Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tnp
+public class tnp
+  extends ClickableSpan
 {
-  public static final tnp a = new tnp();
+  private final int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   
-  @NotNull
-  public final BarrageItemView a(@NotNull Context paramContext, @NotNull BarrageInfo paramBarrageInfo)
+  public tnp(@ColorInt int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    Intrinsics.checkParameterIsNotNull(paramBarrageInfo, "barrageParam");
-    paramBarrageInfo = new BarrageItemView(paramContext, null, 0, 6, null);
-    paramBarrageInfo.setX(DisplayUtil.getWindowScreenWidth(paramContext));
-    paramBarrageInfo.setY(0.0F);
-    return paramBarrageInfo;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+  }
+  
+  public void onClick(@NonNull View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tnp
  * JD-Core Version:    0.7.0.1
  */

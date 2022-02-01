@@ -1,6 +1,8 @@
 package com.tencent.youtu.sdkkitframework.framework;
 
+import com.tencent.youtu.sdkkitframework.common.CommonUtils;
 import com.tencent.youtu.sdkkitframework.common.YtLogger;
+import com.tencent.youtu.sdkkitframework.common.YtSDKStats;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.json.JSONException;
@@ -21,10 +23,11 @@ public class YtSDKKitConfigHelper
       if ((paramJSONObject == null) || ((paramBoolean) && (paramJSONObject.equals(""))))
       {
         YtLogger.e(TAG, "Parse json object failed " + paramString + "参数解析失败, 不存在或者不能为空");
+        YtSDKStats.getInstance().reportError(3145729, "msg_param_error");
         localHashMap = new HashMap();
         localHashMap.put("process_action", "failed");
         localHashMap.put("error_code", Integer.valueOf(3145729));
-        localHashMap.put("message", paramString + "参数解析失败, 不存在或者不能为空");
+        localHashMap.put("message", CommonUtils.makeMessageJson(3145729, "msg_param_error", paramString + "参数解析失败, 不存在或者不能为空"));
         YtFSM.getInstance().sendFSMEvent(localHashMap);
       }
       return paramJSONObject;
@@ -41,20 +44,23 @@ public class YtSDKKitConfigHelper
   
   public static ArrayList<String> getPipleStateNames(YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode)
   {
-    switch (YtSDKKitConfigHelper.8.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[paramYtSDKKitFrameworkWorkMode.ordinal()])
+    switch (YtSDKKitConfigHelper.9.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[paramYtSDKKitFrameworkWorkMode.ordinal()])
     {
     default: 
       return null;
     case 1: 
       return new YtSDKKitConfigHelper.3();
     case 2: 
-      return new YtSDKKitConfigHelper.4();
     case 3: 
-      return new YtSDKKitConfigHelper.5();
+      return new YtSDKKitConfigHelper.4();
     case 4: 
+      return new YtSDKKitConfigHelper.5();
+    case 5: 
       return new YtSDKKitConfigHelper.6();
+    case 6: 
+      return new YtSDKKitConfigHelper.7();
     }
-    return new YtSDKKitConfigHelper.7();
+    return new YtSDKKitConfigHelper.8();
   }
   
   public static JSONObject getSDKConfig(YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode, JSONObject paramJSONObject)

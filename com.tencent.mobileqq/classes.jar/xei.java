@@ -1,99 +1,43 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class xei
-  extends xdv
+  implements View.OnClickListener
 {
-  public Context a;
-  public View a;
-  public TextView a;
-  protected final xeb a;
-  public TextView b;
-  public TextView c;
+  xei(xeg paramxeg) {}
   
-  public xei(View paramView, xeb paramxeb)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Xeb = paramxeb;
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381276));
-    this.b = ((TextView)paramView.findViewById(2131380519));
-    this.c = ((TextView)paramView.findViewById(2131380682));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369946);
-    QQStoryContext.a();
-    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
+    String str1;
+    if ((xeg.a(this.a) != null) && (xeg.a(this.a).a()))
     {
-      if (this.b != null) {
-        this.b.setTextColor(Color.parseColor("#44608a"));
+      xeg.a(this.a).c();
+      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.2.1(this), 200L);
+      if (!this.a.a()) {
+        break label116;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
-      this.c.setTextColor(Color.parseColor("#6991b8"));
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#0c284e"));
+      str1 = "2";
+      label64:
+      if (!this.a.b()) {
+        break label122;
       }
     }
-    this.c.setOnClickListener(new xej(this));
-  }
-  
-  public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_Xeb.a)
+    label116:
+    label122:
+    for (String str2 = "2";; str2 = "1")
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131713044));
-      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 3.0F), 0, 0, 0);
-      this.b.setText("");
-      if (paramInt != 1) {
-        break label174;
-      }
-      this.c.setVisibility(0);
-      a(this.jdField_a_of_type_Xeb.a);
-    }
-    for (;;)
-    {
-      paramVideoCollectionItem = this.jdField_a_of_type_AndroidViewView;
-      if (paramInt == 1) {
-        i = 4;
-      }
-      paramVideoCollectionItem.setVisibility(i);
+      ykv.a("play_video", "close_reply", 0, 1, new String[] { str1, str2 });
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ypb.c(paramVideoCollectionItem.collectionTime));
-      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, 0);
-      if (paramVideoCollectionItem.collectionCount <= 0)
-      {
-        this.b.setText("");
-        break;
-      }
-      this.b.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131698632, new Object[] { Integer.valueOf(paramVideoCollectionItem.collectionCount) }));
+      this.a.a();
       break;
-      label174:
-      this.c.setVisibility(8);
+      str1 = "1";
+      break label64;
     }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    int i = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 17.0F);
-    if (paramBoolean)
-    {
-      this.c.setText(amtj.a(2131713023));
-      localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846809);
-      localDrawable.setBounds(0, 0, i, i);
-      this.c.setCompoundDrawables(localDrawable, null, null, null);
-      return;
-    }
-    this.c.setText(amtj.a(2131713034));
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846808);
-    localDrawable.setBounds(0, 0, i, i);
-    this.c.setCompoundDrawables(localDrawable, null, null, null);
   }
 }
 

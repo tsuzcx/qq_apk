@@ -1,98 +1,14 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.File;
-import mqq.app.MobileQQ;
+import android.text.Editable;
+import java.util.Comparator;
 
-public class bgab
+final class bgab
+  implements Comparator
 {
-  public static Handler.Callback a;
-  public static Handler a;
-  public static final String a;
+  bgab(Editable paramEditable) {}
   
-  static
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    jdField_a_of_type_JavaLangString = AppConstants.SDCARD_PATH + ".VasResourceCheck/temp.json";
-    jdField_a_of_type_AndroidOsHandler$Callback = new bgad();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = (BubbleManager)paramQQAppInterface.getManager(44);
-    if (localObject != null)
-    {
-      FileUtils.delete(((BubbleManager)localObject).a().getAbsolutePath(), false);
-      ((BubbleManager)localObject).a();
-    }
-    localObject = (gb)paramQQAppInterface.getManager(42);
-    if (localObject != null)
-    {
-      FileUtils.delete(((gb)localObject).a().getAbsolutePath(), false);
-      ((gb)localObject).a();
-    }
-    localObject = (AvatarPendantManager)paramQQAppInterface.getManager(46);
-    if (localObject != null)
-    {
-      FileUtils.delete(((AvatarPendantManager)localObject).a().getAbsolutePath(), false);
-      ((AvatarPendantManager)localObject).a();
-      FileUtils.delete(((AvatarPendantManager)localObject).b().getAbsolutePath(), false);
-      ((AvatarPendantManager)localObject).b();
-    }
-    localObject = new File(VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".emotionsm"));
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    FileUtils.delete(((File)localObject).getAbsolutePath(), false);
-    ((File)localObject).mkdirs();
-    paramQQAppInterface = new File(paramQQAppInterface.getApplication().getApplicationContext().getFilesDir().getParentFile(), "app_mobileqq_theme");
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    FileUtils.delete(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(AppConstants.SDCARD_SIGNATURE_TEMPLATE_ROOT);
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    FileUtils.delete(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(AppConstants.PATH_SYSTEM_BACKGROUND + "resource");
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    FileUtils.delete(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(bgds.jdField_a_of_type_JavaLangString);
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    FileUtils.delete(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
-  {
-    QQToast.a(paramActivity, amtj.a(2131715064), 0).a();
-    paramActivity.finish();
-    if (jdField_a_of_type_AndroidOsHandler == null) {
-      jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandler$Callback);
-    }
-    paramActivity = new bgoe(paramString, new File(jdField_a_of_type_JavaLangString));
-    ((bgog)paramQQAppInterface.getManager(47)).a(1).a(paramActivity, new bgac(paramQQAppInterface), null);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("https://gxh.vip.qq.com")) && (paramString.endsWith("secret.json"));
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
   }
 }
 

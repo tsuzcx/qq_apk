@@ -1,28 +1,81 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.res.Resources;
+import android.support.v4.util.MQLruCache;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import mqq.util.WeakReference;
+import org.jetbrains.annotations.NotNull;
 
-class zqf
-  implements zpy
+public class zqf
 {
-  zqf(zqc paramzqc, long paramLong) {}
-  
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  @NotNull
+  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
   {
-    if (QLog.isColorLevel())
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846622);
+    if (paramURLImageView.getLayoutParams() != null)
     {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
     }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
+    return localURLDrawableOptions;
+  }
+  
+  public static void a()
+  {
+    if (BaseApplicationImpl.sProcessId == 1)
     {
-      this.jdField_a_of_type_Zqc.jdField_a_of_type_Zqa.e = paramString1;
-      this.jdField_a_of_type_Zqc.jdField_a_of_type_Zqb.a.b(this.jdField_a_of_type_Zqc.jdField_a_of_type_Zqb);
-      this.jdField_a_of_type_Zqc.jdField_a_of_type_Zqb.b();
+      BaseApplicationImpl.sImageCache.evict(0);
       return;
     }
-    this.jdField_a_of_type_Zqc.jdField_a_of_type_Zqb.d = paramString2;
-    this.jdField_a_of_type_Zqc.jdField_a_of_type_Zqb.a.a(this.jdField_a_of_type_Zqc.jdField_a_of_type_Zqb);
+    BaseApplicationImpl.sImageCache.evictAll();
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView)
+  {
+    a(paramString, paramURLImageView, null, false);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
+  {
+    WeakReference localWeakReference = new WeakReference(paramURLImageView);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = paramURLDrawableOptions;
+    if (paramURLDrawableOptions == null) {}
+    try
+    {
+      localURLDrawableOptions = a(paramURLImageView);
+      if (paramBoolean) {}
+      for (paramString = URLDrawable.getFileDrawable(paramString, localURLDrawableOptions); (paramString != null) && (localWeakReference.get() != null); paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions))
+      {
+        ((ImageView)localWeakReference.get()).setImageDrawable(paramString);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      return;
+    }
+    catch (Error paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841669);
+    if ((paramURLImageView != null) && (paramURLImageView.getLayoutParams() != null))
+    {
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+    }
+    return localURLDrawableOptions;
   }
 }
 

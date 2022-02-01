@@ -1,31 +1,14 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.persistence.Entity;
-
 public class albk
 {
-  public int a;
-  public DiscussionInfo a;
-  public TroopInfo a;
-  public int b;
+  public String a;
+  public String b;
+  public String c;
   
-  public albk(albg paramalbg, int paramInt, DiscussionInfo paramDiscussionInfo)
+  public albk(albi paramalbi, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-  }
-  
-  public albk(albg paramalbg, int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
-    this.b = paramInt2;
-  }
-  
-  public albk(albg paramalbg, int paramInt, Entity paramEntity)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = ((TroopInfo)paramEntity);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

@@ -1,55 +1,66 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter;
-import com.tencent.mobileqq.app.CardObserver;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class aeuk
-  extends CardObserver
+  extends AccountObserver
 {
-  public aeuk(ActivateFriendActivity paramActivateFriendActivity) {}
+  public aeuk(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
-    {
-      anen.a(this.a.app, false, true, false, true);
-      this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
     }
-    ActivateFriendActivity.a(this.a, paramBoolean2);
-  }
-  
-  public void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    RegisterSendUpSms.a(this.a);
+    if (paramInt1 == 4)
     {
-      anen.a(this.a.app, false, true, false, true);
-      this.a.a();
-    }
-    if (!this.a.isFinishing())
-    {
-      if (!paramBoolean1) {
-        break label161;
+      QLog.d("RegisterSendUpSms", 1, "not receive sms");
+      RegisterSendUpSms.a(this.a, 4);
+      paramArrayOfByte = paramString4;
+      if (TextUtils.isEmpty(paramString4)) {
+        paramArrayOfByte = this.a.getString(2131716471);
       }
-      ActivateFriendActivity.a(this.a, paramBoolean2);
-      if (!ActivateFriendActivity.a(this.a)) {
-        break label148;
-      }
-    }
-    label148:
-    for (String str = this.a.getString(2131689527);; str = this.a.getString(2131689528))
-    {
-      str = this.a.getString(2131689530, new Object[] { str });
-      QQToast.a(this.a, 2, str, 0).b(this.a.getTitleBarHeight());
-      if (ActivateFriendActivity.a(this.a) != null)
-      {
-        ActivateFriendActivity.a(this.a).c();
-        ActivateFriendActivity.b(this.a);
-      }
+      QQToast.a(this.a, paramArrayOfByte, 0).b(this.a.getTitleBarHeight());
       return;
     }
-    label161:
-    QQToast.a(this.a, 1, this.a.getResources().getString(2131718207), 0).b(this.a.getTitleBarHeight());
+    if (paramInt1 == 0)
+    {
+      RegisterSendUpSms.a(this.a, paramString1);
+      RegisterSendUpSms.b(this.a, paramString5);
+      RegisterSendUpSms.a(this.a, 3);
+      QQToast.a(this.a, this.a.getString(2131712824), 0).b(this.a.getTitleBarHeight());
+      RegisterSendUpSms.b(this.a);
+      bdla.a(this.a.app, "dc00898", "", "", "0X800B4BB", "0X800B4BB", 0, 0, "", "", "", "");
+      return;
+    }
+    RegisterSendUpSms.a(this.a, 4);
+    paramString1 = paramString4;
+    if (paramInt1 == -1)
+    {
+      paramString1 = paramString4;
+      if (paramArrayOfByte == null) {}
+    }
+    try
+    {
+      paramString1 = new String(paramArrayOfByte, "utf-8");
+      paramArrayOfByte = paramString1;
+      if (TextUtils.isEmpty(paramString1)) {
+        paramArrayOfByte = this.a.getString(2131716471);
+      }
+      QQToast.a(this.a, paramArrayOfByte.trim(), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      for (;;)
+      {
+        QLog.e("RegisterSendUpSms", 1, new Object[] { "strPromptInfo to string error : ", paramArrayOfByte.getMessage() });
+        paramString1 = paramString4;
+      }
+    }
   }
 }
 

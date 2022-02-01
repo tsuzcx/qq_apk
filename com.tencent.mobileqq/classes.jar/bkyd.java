@@ -1,25 +1,52 @@
-import android.app.Activity;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
-
 public class bkyd
-  implements QQPermissionCallback
 {
-  public bkyd(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static long a(String paramString)
   {
-    bfur.a(this.jdField_a_of_type_AndroidAppActivity);
+    return a(paramString, 0L);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static long a(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.b(this.jdField_a_of_type_Int);
+    try
+    {
+      long l = Long.valueOf(paramString).longValue();
+      return l;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return paramLong;
+  }
+  
+  public static String a(int[][] paramArrayOfInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("[");
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0) && (paramArrayOfInt[0].length > 0))
+    {
+      int k = paramArrayOfInt.length;
+      int i = 0;
+      while (i < k)
+      {
+        int[] arrayOfInt = paramArrayOfInt[i];
+        localStringBuilder.append("[");
+        int j = 0;
+        while (j < arrayOfInt.length - 1)
+        {
+          localStringBuilder.append(arrayOfInt[j]).append(", ");
+          j += 1;
+        }
+        localStringBuilder.append(arrayOfInt[j]).append("] ");
+        i += 1;
+      }
+    }
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkyd
  * JD-Core Version:    0.7.0.1
  */

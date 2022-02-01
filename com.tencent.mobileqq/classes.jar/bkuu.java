@@ -1,55 +1,6 @@
-import cooperation.qqreader.net.BaseCgiTask;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class bkuu
-  extends bkuk
+public abstract interface bkuu
 {
-  public bkuu(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
-  
-  public void a(bkuj parambkuj)
-  {
-    boolean bool = false;
-    JSONObject localJSONObject = parambkuj.a();
-    if (localJSONObject == null) {}
-    try
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore response json is null");
-      return;
-    }
-    catch (JSONException parambkuj)
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore parse failed: " + parambkuj.getMessage());
-      return;
-    }
-    int i = localJSONObject.getInt("ret");
-    parambkuj = localJSONObject.getString("msg");
-    localJSONObject = localJSONObject.getJSONObject("data");
-    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
-    {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore ret=" + i + "|msg=" + parambkuj);
-      return;
-    }
-    i = localJSONObject.optInt("err_code", 0);
-    parambkuj = localJSONObject.optString("err_msg");
-    if (i == 0) {
-      bool = true;
-    }
-    bkvb.b(ForceUserUpdateActivity.a(this.a), bool);
-    if (bool)
-    {
-      bkvd.d("ForceUserUpdateActivity", "onReceiveData: UpdateToQQBookstore succeed");
-      ForceUserUpdateActivity.c(this.a);
-      return;
-    }
-    ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore errMsg=" + parambkuj);
-  }
-  
-  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
-  {
-    ForceUserUpdateActivity.a(this.a, "onConnectionError: UpdateToQQBookstore error: " + paramString);
-  }
+  public abstract int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2);
 }
 
 

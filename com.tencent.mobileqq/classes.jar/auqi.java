@@ -1,21 +1,27 @@
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CountDownLatch;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.forward.ForwardChooseFriendOption;
 
-class auqi
-  implements Callable<Bundle>
+public class auqi
+  implements DialogInterface.OnClickListener
 {
-  auqi(auqe paramauqe, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  public auqi(ForwardChooseFriendOption paramForwardChooseFriendOption, int paramInt, Bundle paramBundle) {}
   
-  public Bundle a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aumd localaumd = new aumd();
-    CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    Bundle[] arrayOfBundle = new Bundle[1];
-    localaumd.a(this.jdField_a_of_type_Auqe.a.getCurrentUin(), this.jdField_a_of_type_JavaLangString, this.b, this.c, new auqj(this, localaumd, arrayOfBundle, localCountDownLatch), true, this.d);
-    localCountDownLatch.await();
-    return arrayOfBundle[0];
+    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramDialogInterface);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidAppActivity != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidAppActivity.setResult(1);
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidAppActivity.finish();
+    }
   }
 }
 

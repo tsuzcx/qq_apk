@@ -1,26 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.widget.QQToast;
 
-final class auto
-  extends BroadcastReceiver
+public class auto
+  extends Handler
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public auto(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if ((autn.a != null) && (autn.a.size() > 0))
-    {
-      Iterator localIterator = autn.a.iterator();
-      while (localIterator.hasNext())
-      {
-        autn localautn = (autn)((WeakReference)localIterator.next()).get();
-        if (localautn != null) {
-          localautn.a(paramContext, paramIntent);
-        }
-      }
+    if (paramMessage.what == 0) {
+      QQToast.a(this.a.a, anvx.a(2131704283), 0).a();
     }
+    while (1 != paramMessage.what) {
+      return;
+    }
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

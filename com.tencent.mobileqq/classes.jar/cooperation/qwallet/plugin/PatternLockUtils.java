@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import aubt;
+import avhn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -266,7 +266,7 @@ public class PatternLockUtils
     return (paramContext != null) && (paramContext.length() > 0);
   }
   
-  public static String patternToString(List<aubt> paramList)
+  public static String patternToString(List<avhn> paramList)
   {
     if (paramList == null) {
       return "";
@@ -276,9 +276,9 @@ public class PatternLockUtils
     int i = 0;
     while (i < j)
     {
-      aubt localaubt = (aubt)paramList.get(i);
-      int k = localaubt.a();
-      localStringBuilder.append((char)(localaubt.b() + k * 3 + 49));
+      avhn localavhn = (avhn)paramList.get(i);
+      int k = localavhn.a();
+      localStringBuilder.append((char)(localavhn.b() + k * 3 + 49));
       i += 1;
     }
     return localStringBuilder.toString();
@@ -393,7 +393,7 @@ public class PatternLockUtils
     paramContext.apply();
   }
   
-  public static List<aubt> stringToPattern(String paramString)
+  public static List<avhn> stringToPattern(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {
@@ -403,7 +403,7 @@ public class PatternLockUtils
     while (i < paramString.length())
     {
       int j = paramString.indexOf(i) - 49;
-      localArrayList.add(aubt.a(j / 3, j % 3));
+      localArrayList.add(avhn.a(j / 3, j % 3));
       i += 1;
     }
     return localArrayList;

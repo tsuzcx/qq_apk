@@ -1,60 +1,56 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogViewForAd;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.util.VersionUtils;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagRequset;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
 
 public class oaw
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private bjnw jdField_a_of_type_Bjnw;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  
-  public oaw(Activity paramActivity, AppInterface paramAppInterface)
+  public static void a(QQAppInterface paramQQAppInterface, AccountDetail paramAccountDetail)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  public void a(AdvertisementInfo paramAdvertisementInfo, ArrayList<DislikeInfo> paramArrayList)
-  {
-    if ((paramAdvertisementInfo == null) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_Bjnw = ((bjnw)bjon.a(this.jdField_a_of_type_AndroidAppActivity, null));
-      Object localObject = new oax(this);
-      this.jdField_a_of_type_Bjnw.a((bjoi)localObject);
-      localObject = new ReadInJoyDisLikeDialogViewForAd(this.jdField_a_of_type_AndroidAppActivity);
-      ((ReadInJoyDisLikeDialogView)localObject).setOnUninterestConfirmListener(new oay(this, paramAdvertisementInfo));
-      ((ReadInJoyDisLikeDialogView)localObject).setOnComplainListener(new oaz(this, paramAdvertisementInfo));
-      ((ReadInJoyDisLikeDialogView)localObject).setUninterestData(paramArrayList);
-      this.jdField_a_of_type_Bjnw.a((View)localObject, null);
-      try
-      {
-        if (!this.jdField_a_of_type_Bjnw.isShowing())
-        {
-          if ((VersionUtils.isJellyBean()) && (!ShortVideoUtils.isInFullScreenBlackList()) && ((this.jdField_a_of_type_AndroidAppActivity instanceof Activity)))
-          {
-            this.jdField_a_of_type_Bjnw.getWindow().setFlags(8, 8);
-            this.jdField_a_of_type_Bjnw.getWindow().getDecorView().setSystemUiVisibility(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getSystemUiVisibility());
-            this.jdField_a_of_type_Bjnw.setOnShowListener(new oba(this));
-          }
-          this.jdField_a_of_type_Bjnw.show();
-          return;
-        }
-      }
-      catch (Exception paramAdvertisementInfo)
-      {
-        paramAdvertisementInfo.printStackTrace();
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailToDBAndCache");
+    }
+    EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if ((paramAccountDetail != null) && (paramAccountDetail.getId() != -1L)) {
+      if (!localEntityManager.update(paramAccountDetail)) {
+        localEntityManager.drop(AccountDetail.class);
       }
     }
+    for (;;)
+    {
+      localEntityManager.close();
+      paramQQAppInterface = (aoan)paramQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+      if ((paramQQAppInterface != null) && (paramAccountDetail != null))
+      {
+        paramQQAppInterface.a(paramAccountDetail);
+        if (paramAccountDetail.followType == 1) {
+          paramQQAppInterface.a(PublicAccountInfo.createPublicAccount(paramAccountDetail, 0L));
+        }
+      }
+      return;
+      localEntityManager.persist(paramAccountDetail);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, oji paramoji, int paramInt)
+  {
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), oln.class);
+    localNewIntent.putExtra("cmd", "set_function_flag");
+    mobileqq_mp.SetFunctionFlagRequset localSetFunctionFlagRequset = new mobileqq_mp.SetFunctionFlagRequset();
+    localSetFunctionFlagRequset.version.set(1);
+    localSetFunctionFlagRequset.uin.set((int)Long.parseLong(paramString));
+    localSetFunctionFlagRequset.type.set(paramoji.e);
+    localSetFunctionFlagRequset.value.set(paramInt);
+    localSetFunctionFlagRequset.account_type.set(1);
+    localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
+    localNewIntent.setObserver(new oax(paramQQAppInterface, paramoji, paramInt, paramString));
+    paramQQAppInterface.startServlet(localNewIntent);
   }
 }
 

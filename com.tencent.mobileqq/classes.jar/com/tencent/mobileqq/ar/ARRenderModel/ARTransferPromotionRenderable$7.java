@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import anyw;
-import anzc;
-import aobd;
-import aobk;
-import aobm;
-import aoga;
-import apag;
+import apby;
+import apce;
+import apef;
+import apem;
+import apeo;
+import apjc;
+import aqdk;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.superplayer.api.ISPlayerPreDownloader;
 import java.util.ArrayList;
@@ -15,49 +15,49 @@ import mqq.os.MqqHandler;
 public class ARTransferPromotionRenderable$7
   implements Runnable
 {
-  public ARTransferPromotionRenderable$7(aobk paramaobk) {}
+  public ARTransferPromotionRenderable$7(apem paramapem) {}
   
   public void run()
   {
-    if (aobk.a(this.this$0) == 6)
+    if (apem.a(this.this$0) == 6)
     {
-      if ((aobk.a(this.this$0) != null) && (aobk.a(this.this$0)))
+      if ((apem.a(this.this$0) != null) && (apem.a(this.this$0)))
       {
-        aobk.a(this.this$0).b(1, 0);
-        aobk.a(this.this$0, false);
+        apem.a(this.this$0).b(1, 0);
+        apem.a(this.this$0, false);
       }
-      if ((aobk.a(this.this$0) != null) && (aobk.b(this.this$0))) {
-        aobk.a(this.this$0).a();
+      if ((apem.a(this.this$0) != null) && (apem.b(this.this$0))) {
+        apem.a(this.this$0).a();
       }
-      if ((aobk.b(this.this$0) != -1) && (aobk.a(this.this$0) != null))
+      if ((apem.b(this.this$0) != -1) && (apem.a(this.this$0) != null))
       {
-        aobk.a(this.this$0).stopPreDownload(aobk.b(this.this$0));
-        aobk.a(this.this$0, -1);
+        apem.a(this.this$0).stopPreDownload(apem.b(this.this$0));
+        apem.a(this.this$0, -1);
       }
-      if (aobk.a(this.this$0) != null) {
-        aobk.a(this.this$0).destory();
+      if (apem.a(this.this$0) != null) {
+        apem.a(this.this$0).destory();
       }
-      if (aobk.a(this.this$0) != null) {
-        aobk.a(this.this$0).a(aobk.a(this.this$0).a);
+      if (apem.a(this.this$0) != null) {
+        apem.a(this.this$0).a(apem.a(this.this$0).a);
       }
-      if (aobk.a(this.this$0) == 6) {
-        aobk.a(this.this$0, 7);
+      if (apem.a(this.this$0) == 6) {
+        apem.a(this.this$0, 7);
       }
-      aobk.a(this.this$0).a();
-      if (aobk.a(this.this$0) != null) {
+      apem.a(this.this$0).a();
+      if (apem.a(this.this$0) != null) {
         ThreadManager.getUIHandler().post(new ARTransferPromotionRenderable.7.1(this));
       }
     }
-    synchronized (aobk.a(this.this$0))
+    synchronized (apem.a(this.this$0))
     {
-      aobk.a(this.this$0).clear();
-      aobk.a(this.this$0).c();
-      aobk.a(this.this$0);
-      if (aobk.a(this.this$0) != null)
+      apem.a(this.this$0).clear();
+      apem.a(this.this$0).c();
+      apem.a(this.this$0);
+      if (apem.a(this.this$0) != null)
       {
-        aobk.a(this.this$0).b();
-        aobk.a(this.this$0).a();
-        aobk.a(this.this$0, null);
+        apem.a(this.this$0).b();
+        apem.a(this.this$0).a();
+        apem.a(this.this$0, null);
       }
       return;
     }

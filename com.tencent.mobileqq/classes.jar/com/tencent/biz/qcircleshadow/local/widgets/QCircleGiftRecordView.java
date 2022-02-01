@@ -15,7 +15,7 @@ import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.utils.QCircleImageLoader;
 import cooperation.qqcircle.utils.ViewUtils;
-import zau;
+import zpz;
 
 public class QCircleGiftRecordView
   extends LinearLayout
@@ -45,14 +45,14 @@ public class QCircleGiftRecordView
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131560695, this));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366751));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131560749, this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366867));
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(-986894);
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setCornerRadius(ViewUtils.dip2px(9.0F));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369248));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379644));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369412));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379957));
   }
   
   public void setGiftCount(int paramInt, boolean paramBoolean)
@@ -60,7 +60,7 @@ public class QCircleGiftRecordView
     this.jdField_a_of_type_JavaLangString = ("x" + paramInt);
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      zau.a(this.jdField_a_of_type_AndroidWidgetTextView, paramBoolean);
+      zpz.a(this.jdField_a_of_type_AndroidWidgetTextView, paramBoolean);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -68,7 +68,7 @@ public class QCircleGiftRecordView
   public void setIconUrl(String paramString)
   {
     if (this.jdField_a_of_type_ComTencentImageURLImageView != null) {
-      QCircleImageLoader.loadImage(paramString, this.jdField_a_of_type_ComTencentImageURLImageView, getResources().getDrawable(2130850605));
+      QCircleImageLoader.loadImage(paramString, this.jdField_a_of_type_ComTencentImageURLImageView, getResources().getDrawable(2130850736));
     }
   }
   
@@ -92,7 +92,7 @@ public class QCircleGiftRecordView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.widgets.QCircleGiftRecordView
  * JD-Core Version:    0.7.0.1
  */

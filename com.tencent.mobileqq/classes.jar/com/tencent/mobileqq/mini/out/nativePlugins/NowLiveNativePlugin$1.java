@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
+import aaea;
 import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import zop;
 
 class NowLiveNativePlugin$1
-  implements zop
+  implements aaea
 {
   NowLiveNativePlugin$1(NowLiveNativePlugin paramNowLiveNativePlugin) {}
   

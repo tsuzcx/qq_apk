@@ -1,43 +1,47 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.File;
-import java.util.Locale;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
 
-class aotx
-  implements aouh
+public class aotx
+  extends aoui
 {
-  aotx(aotv paramaotv, aouj paramaouj, aouf paramaouf, String paramString1, aouh paramaouh, String paramString2) {}
-  
-  public void a(boolean paramBoolean)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Aouj.jdField_a_of_type_Boolean = false;
+    paramQQAppInterface = new aotw(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "huayang";
+    paramQQAppInterface.c = "open";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    synchronized (this.jdField_a_of_type_Aouj)
+    paramContext = paramContext[1].split("&");
+    int i = 0;
+    for (;;)
     {
-      aouj localaouj2 = this.jdField_a_of_type_Aouj;
-      int i = localaouj2.jdField_a_of_type_Int - 1;
-      localaouj2.jdField_a_of_type_Int = i;
-      if (i > 0)
+      if (i < paramContext.length)
       {
-        ArkAppCenter.c("ArkApp.Dict.Update", String.format(Locale.CHINA, "updateWordDict, one task complete, name=%s, success=%s, left=%d", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, Boolean.toString(paramBoolean), Integer.valueOf(i) }));
-        return;
-      }
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, all complete, success=%s", new Object[] { Boolean.toString(this.jdField_a_of_type_Aouj.jdField_a_of_type_Boolean) }));
-      if (!this.jdField_a_of_type_Aouj.jdField_a_of_type_Boolean)
-      {
-        FileUtils.deleteDirectory(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Aouh.a(false);
-        return;
+        paramString = paramContext[i].split("=");
+        if (paramString.length == 2) {}
+        try
+        {
+          paramString[1] = URLDecoder.decode(paramString[1], "UTF-8");
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+          i += 1;
+        }
+        catch (Exception paramaoul)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("HuaYangParser", 2, "failed to decode param value,tmps[1] is:" + paramString[0] + ",tmps[1] is:" + paramString[1], paramaoul);
+            }
+          }
+        }
       }
     }
-    if (!aotv.a(aots.a(this.b), new File(this.jdField_a_of_type_JavaLangString).getParent()))
-    {
-      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, renameDictDirAfterUpdateSuccess fail");
-      this.jdField_a_of_type_Aouh.a(false);
-      return;
-    }
-    this.jdField_a_of_type_Aouh.a(true);
+    return paramQQAppInterface;
   }
 }
 

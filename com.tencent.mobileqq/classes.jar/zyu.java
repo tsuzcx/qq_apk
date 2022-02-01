@@ -1,58 +1,36 @@
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoTipOffRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.qphone.base.util.QLog;
 
-public class zyu
+class zyu
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountWrite.StDoTipOffRsp>
 {
-  private static final zyw jdField_a_of_type_Zyw = new zyw(null);
-  private CopyOnWriteArrayList<zym> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  zyu(zyt paramzyt) {}
   
-  public static zyu a()
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoTipOffRsp paramStDoTipOffRsp)
   {
-    return (zyu)jdField_a_of_type_Zyw.getInstance();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    paramBoolean = true;
+    if (paramLong == 0L)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((zym)localIterator.next()).b();
+      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest success");
+      if (this.a.a != null)
+      {
+        paramVSBaseRequest = this.a.a;
+        if (paramLong != 0L) {
+          break label76;
+        }
       }
     }
-  }
-  
-  public void a(long paramLong)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_Boolean))
+    for (;;)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((zym)localIterator.next()).a(paramLong);
-      }
+      paramVSBaseRequest.a(paramBoolean);
+      return;
+      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest failed retCode:" + paramLong);
+      break;
+      label76:
+      paramBoolean = false;
     }
-  }
-  
-  public void a(zym paramzym)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramzym);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((zym)localIterator.next()).a();
-      }
-    }
-  }
-  
-  public void b(zym paramzym)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramzym);
   }
 }
 

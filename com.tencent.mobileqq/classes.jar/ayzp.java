@@ -1,34 +1,84 @@
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.onlinestatus.AccountPanel.18.1;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.os.MqqHandler;
 
 public class ayzp
-  extends ayzk
+  extends azby
 {
-  public ayzp(QQAppInterface paramQQAppInterface)
+  ayzp(ayzg paramayzg) {}
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramQQAppInterface);
+    int i = 0;
+    if (paramBundle != null) {
+      i = (int)paramBundle.getLong("onlineStatus", 0L);
+    }
+    paramBundle = AppRuntime.Status.build(i);
+    if ((paramBoolean) && (ayzg.a(this.a) != null)) {
+      ayzg.a(this.a).a(paramBundle);
+    }
+    ThreadManager.getUIHandler().post(new AccountPanel.18.1(this, paramBoolean, paramBundle));
   }
   
-  public void a() {}
-  
-  public void a(int paramInt, ByteStringMicro paramByteStringMicro)
+  public void b(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramInt == 27392)
-    {
+    super.b(paramBoolean, paramBundle);
+    if (!ayzg.a(this.a)) {
       if (QLog.isColorLevel()) {
-        QLog.d("ApolloHeadReceiver", 2, "get apollo head update push.");
+        QLog.d("AccountPanel", 2, "onSetExtInfo: no needShowOnlineStatusToast ");
       }
-      ((FriendListHandler)this.a.getBusinessHandler(1)).getApolloHead(this.a.getCurrentAccountUin());
+    }
+    boolean bool2;
+    do
+    {
+      boolean bool1;
+      do
+      {
+        return;
+        bool1 = paramBundle.getBoolean("from_register", false);
+        bool2 = paramBundle.getBoolean("from_modify", false);
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountPanel", 2, new Object[] { "onSetExtInfo: invoked. ", " isFromRegister: ", Boolean.valueOf(bool1), " isFromModify=", Boolean.valueOf(bool2) });
+        }
+        if (!paramBoolean) {
+          break;
+        }
+        i = paramBundle.getInt("StatusId");
+        ayzg.a(this.a, AppRuntime.Status.online, i, false);
+        if (bool2)
+        {
+          QQToast.a(ayzg.a(this.a).getApp(), 2, 2131691302, 1).a();
+          this.a.c();
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("AccountPanel", 2, new Object[] { "onSetExtInfo: invoked. ", " statusId: ", Integer.valueOf(i) });
+      return;
+      if (!bool1) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, "onSetExtInfo: invoked. isFromRegister ");
+    return;
+    if (bool2) {}
+    for (int i = 2131691303;; i = 2131698154)
+    {
+      QQToast.a(ayzg.a(this.a).getApp(), 1, i, 1).a();
+      this.a.c();
+      return;
     }
   }
   
-  public void a(long paramLong) {}
-  
-  public boolean a(int paramInt)
+  public void c(boolean paramBoolean, Bundle paramBundle)
   {
-    return paramInt == 27392;
+    super.c(paramBoolean, paramBundle);
+    if (paramBoolean) {
+      ayzg.a(this.a, ayzg.a(this.a), ayzg.b(this.a), false);
+    }
   }
 }
 

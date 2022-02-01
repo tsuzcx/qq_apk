@@ -1,28 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.7.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class aomy
-  implements axsk
+class aomy
+  implements DialogInterface.OnCancelListener
 {
-  public aomy(ARScanEntryView paramARScanEntryView) {}
+  aomy(aoms paramaoms) {}
   
-  public void a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onStart ");
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onEnd  needReportRedDot = " + ARScanEntryView.b(this.a));
-    }
-    if (ARScanEntryView.a(this.a) != null) {
-      ARScanEntryView.a(this.a).post(new ARScanEntryView.7.1(this));
-    }
+    aoms.a(this.a, null);
+    QLog.d("AccountPhoneUnityManager", 1, "dialog cancel");
   }
 }
 

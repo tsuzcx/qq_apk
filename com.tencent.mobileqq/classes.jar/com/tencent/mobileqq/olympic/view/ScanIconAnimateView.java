@@ -15,15 +15,15 @@ import android.graphics.PaintFlagsDrawFilter;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import axsc;
-import axsd;
-import axse;
-import axsf;
-import axsg;
-import axsh;
-import axsi;
-import axsj;
-import axsk;
+import ayyn;
+import ayyo;
+import ayyp;
+import ayyq;
+import ayyr;
+import ayys;
+import ayyt;
+import ayyu;
+import ayyv;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 
@@ -36,7 +36,7 @@ public class ScanIconAnimateView
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   DrawFilter jdField_a_of_type_AndroidGraphicsDrawFilter;
   Paint jdField_a_of_type_AndroidGraphicsPaint;
-  public axsk a;
+  public ayyv a;
   private boolean jdField_a_of_type_Boolean;
   public float b;
   ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
@@ -78,8 +78,8 @@ public class ScanIconAnimateView
   {
     try
     {
-      paramContext = BitmapFactory.decodeResource(getResources(), 2130843310);
-      Bitmap localBitmap = BitmapFactory.decodeResource(getResources(), 2130843312);
+      paramContext = BitmapFactory.decodeResource(getResources(), 2130843347);
+      Bitmap localBitmap = BitmapFactory.decodeResource(getResources(), 2130843349);
       int i = AIOUtils.dp2px(32.0F, getResources());
       this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramContext, i * 2, i * 2, true);
       this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(localBitmap, i, i, true);
@@ -91,31 +91,31 @@ public class ScanIconAnimateView
       this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.1333333F, 8.0F), Keyframe.ofFloat(0.2F, -6.0F), Keyframe.ofFloat(0.2666667F, 3.0F), Keyframe.ofFloat(0.3333333F, 0.0F), Keyframe.ofFloat(0.6666667F, 0.0F), Keyframe.ofFloat(1.0F, 0.0F) }) });
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(1500L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new axsc(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ayyn(this));
       this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("", new Keyframe[] { Keyframe.ofFloat(0.0F, -90.0F), Keyframe.ofFloat(0.2F, 40.0F), Keyframe.ofFloat(0.4F, -20.0F), Keyframe.ofFloat(0.6F, 5.0F), Keyframe.ofFloat(0.8F, -5.0F), Keyframe.ofFloat(0.9F, 3.0F), Keyframe.ofFloat(1.0F, 0.0F) }) });
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(1000L);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new axsd(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ayyo(this));
       this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.5F, 1.0F, 1.0F, 1.0F, 0.5F, 0.5F });
       this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(1000L);
       this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new axse(this));
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ayyp(this));
       this.jdField_d_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F });
       this.jdField_d_of_type_AndroidAnimationValueAnimator.setDuration(1000L);
-      this.jdField_d_of_type_AndroidAnimationValueAnimator.addUpdateListener(new axsf(this));
+      this.jdField_d_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ayyq(this));
       this.jdField_e_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F });
       this.jdField_e_of_type_AndroidAnimationValueAnimator.setDuration(1000L);
-      this.jdField_e_of_type_AndroidAnimationValueAnimator.addUpdateListener(new axsg(this));
+      this.jdField_e_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ayyr(this));
       this.jdField_f_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.6F, 1.0F), Keyframe.ofFloat(0.8F, 1.08F), Keyframe.ofFloat(0.9F, 1.0F), Keyframe.ofFloat(1.0F, 1.0F) }) });
       this.jdField_f_of_type_AndroidAnimationValueAnimator.setDuration(1000L);
-      this.jdField_f_of_type_AndroidAnimationValueAnimator.addUpdateListener(new axsh(this));
+      this.jdField_f_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ayys(this));
       this.g = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.6F, 0.0F), Keyframe.ofFloat(0.9F, 1.0F), Keyframe.ofFloat(1.0F, 1.0F) }) });
       this.g.setDuration(1000L);
-      this.g.addUpdateListener(new axsi(this));
+      this.g.addUpdateListener(new ayyt(this));
       this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(1000L);
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { this.jdField_b_of_type_AndroidAnimationValueAnimator, this.jdField_c_of_type_AndroidAnimationValueAnimator, this.jdField_e_of_type_AndroidAnimationValueAnimator, this.jdField_d_of_type_AndroidAnimationValueAnimator, this.jdField_f_of_type_AndroidAnimationValueAnimator, this.g });
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new axsj(this));
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new ayyu(this));
       return;
     }
     catch (OutOfMemoryError paramContext)
@@ -191,9 +191,9 @@ public class ScanIconAnimateView
     paramCanvas.restore();
   }
   
-  public void setPopUpListener(axsk paramaxsk)
+  public void setPopUpListener(ayyv paramayyv)
   {
-    this.jdField_a_of_type_Axsk = paramaxsk;
+    this.jdField_a_of_type_Ayyv = paramayyv;
   }
 }
 

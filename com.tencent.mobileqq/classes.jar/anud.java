@@ -1,30 +1,65 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class anud
-  extends anri
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  public static void a(MessageRecord paramMessageRecord)
   {
-    paramQQAppInterface = new anuc(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "manage_troop";
-    paramQQAppInterface.c = "main_page";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
+    if (paramMessageRecord != null) {
+      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", "true");
     }
-    paramContext = paramContext[1].split("&");
-    int i = 0;
-    while (i < paramContext.length)
-    {
-      paramString = paramContext[i].split("=");
-      if (paramString.length == 2) {
-        paramQQAppInterface.a(paramString[0], paramString[1]);
+  }
+  
+  public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    if (paramMessageRecord.msgtype == -2000) {
+      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", paramBoolean + "");
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("FlashPicHelper", 4, "setFlashPicFlag,troopUin:" + paramMessageRecord.frienduin + ",isReaded:" + paramBoolean + ",msgType:" + paramMessageRecord.msgtype);
+    }
+  }
+  
+  public static boolean a(int paramInt, HotChatManager paramHotChatManager, String paramString)
+  {
+    return ((paramInt == 0) || (paramInt == 1) || (paramInt == 3000)) && (!paramHotChatManager.b(paramString));
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramMessageRecord != null) {
+      if (paramMessageRecord.msgtype != -2000)
+      {
+        bool1 = bool2;
+        if (paramMessageRecord.msgtype != -2006) {}
       }
-      i += 1;
+      else
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic"))) {
+          bool1 = true;
+        }
+      }
     }
-    return paramQQAppInterface;
+    return bool1;
+  }
+  
+  public static boolean b(MessageRecord paramMessageRecord)
+  {
+    try
+    {
+      boolean bool = Boolean.valueOf(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic")).booleanValue();
+      return bool;
+    }
+    catch (Exception paramMessageRecord)
+    {
+      paramMessageRecord.printStackTrace();
+    }
+    return false;
   }
 }
 

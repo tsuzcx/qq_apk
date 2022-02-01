@@ -1,15 +1,17 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
+import kotlin.Metadata;
 
-public class accz
-  implements abzb
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+public final class accz
+  implements DialogInterface.OnClickListener
 {
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public accz(GdtMotiveBrowsingFragment paramGdtMotiveBrowsingFragment) {}
+  
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((vkz)paramabxc.a().getBusinessHandler(98)).c(paramMsgType0x210.vProtobuf);
-    return null;
+    GdtMotiveBrowsingFragment.b(this.a);
   }
 }
 

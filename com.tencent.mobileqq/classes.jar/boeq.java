@@ -1,6 +1,16 @@
-public abstract interface boeq
+public class boeq
 {
-  public abstract void a(int paramInt);
+  private float a;
+  
+  public float a()
+  {
+    return this.a;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.a = paramFloat;
+  }
 }
 
 

@@ -1,25 +1,37 @@
-import android.content.Context;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class anul
-  extends anri
+  extends anvw
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  private String a;
+  
+  protected void a(String paramString)
   {
-    if (paramString.startsWith("mqqapi://gamecenter/install"))
-    {
-      paramQQAppInterface = new anuk(paramQQAppInterface, paramContext);
-      paramQQAppInterface.a = paramString;
-      paramQQAppInterface.b = "gamecenter";
-      paramQQAppInterface.c = "install";
-      return paramQQAppInterface;
-    }
-    return null;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    QQAppInterface.getBatteryStats().c();
+    anue.a().a(paramString);
+    aqrl.a(true);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    CoreService.startCoreService(anvu.a().a);
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.c();
+  }
+  
+  protected void d(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, this.jdField_a_of_type_JavaLangString);
+    aqrl.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anul
  * JD-Core Version:    0.7.0.1
  */

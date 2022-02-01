@@ -1,17 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class omw
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public omw(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    pay.a(paramView.getContext(), "https://kandian.qq.com/mqq/vue/configPush?_wv=3&x5PreFetch=1&_bid=2378", null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramObject != null)
+    {
+      paramObject = (Bundle)paramObject;
+      if (paramObject.getInt("VALUE_OBSERVER_TAG") == hashCode()) {}
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      try
+      {
+        a(paramBoolean, paramObject);
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        paramObject.printStackTrace();
+        return;
+      }
+    }
+    QLog.e("VideoPlayRecommendObserver", 2, "onUpdate: error, data null");
   }
 }
 

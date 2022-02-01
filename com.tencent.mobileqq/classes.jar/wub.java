@@ -1,20 +1,53 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetWeather;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class wub
-  implements ValueAnimator.AnimatorUpdateListener
+  extends wfm<wvm>
 {
-  public wub(XViewPager paramXViewPager) {}
+  private static final String a = weg.a("StorySvc.get_weather");
+  public final int c;
+  public final int d;
+  public final int e;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public wub(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.scrollTo(i, 0);
-    XViewPager.a(this.a, i);
-    if (XViewPager.a(this.a) != null) {
-      XViewPager.a(this.a).b(2);
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+  }
+  
+  public String a()
+  {
+    return a;
+  }
+  
+  public wfh a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetWeather localRspGetWeather = new qqstory_service.RspGetWeather();
+    try
+    {
+      localRspGetWeather.mergeFrom(paramArrayOfByte);
+      return new wvm(localRspGetWeather);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetWeather localReqGetWeather = new qqstory_service.ReqGetWeather();
+    localReqGetWeather.coordinate.set(this.c);
+    localReqGetWeather.longitude.set(this.d);
+    localReqGetWeather.latitude.set(this.e);
+    return localReqGetWeather.toByteArray();
   }
 }
 

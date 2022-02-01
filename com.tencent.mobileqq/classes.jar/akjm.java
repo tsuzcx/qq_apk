@@ -1,12 +1,16 @@
-public abstract interface akjm
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+
+public class akjm
+  implements DialogInterface.OnDismissListener
 {
-  public abstract boolean isNeedAutoCloseWhenAccountChange();
+  public akjm(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public abstract void onClose();
-  
-  public abstract void onEnter();
-  
-  public abstract void onOverride();
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a = null;
+  }
 }
 
 

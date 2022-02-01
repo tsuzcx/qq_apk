@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import NS_COMM.COMM.StCommonExt;
-import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import anvx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -58,7 +58,7 @@ public class MiniGamePayFragment
       try
       {
         paramString1.put("resultCode", -4);
-        paramString1.put("resultMsg", amtj.a(2131705960));
+        paramString1.put("resultMsg", anvx.a(2131706311));
         if (paramString1 != null) {
           paramString1 = paramString1.toString();
         }
@@ -88,7 +88,7 @@ public class MiniGamePayFragment
       try
       {
         paramString1.put("resultCode", 1000);
-        paramString1.put("errMsg", amtj.a(2131705965));
+        paramString1.put("errMsg", anvx.a(2131706316));
         paramString1 = paramString1.toString();
         if (paramString1 != null) {
           handleNativeResponse(paramString3, paramString1, paramInt2);

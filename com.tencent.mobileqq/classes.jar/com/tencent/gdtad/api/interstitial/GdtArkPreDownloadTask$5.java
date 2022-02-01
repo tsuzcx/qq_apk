@@ -1,19 +1,19 @@
 package com.tencent.gdtad.api.interstitial;
 
-import abme;
-import abmf;
-import abrl;
+import acbu;
+import acbv;
+import acho;
 import com.tencent.ark.open.ArkAppMgr;
 
 public class GdtArkPreDownloadTask$5
   implements Runnable
 {
-  public GdtArkPreDownloadTask$5(abmf paramabmf) {}
+  public GdtArkPreDownloadTask$5(acbv paramacbv) {}
   
   public void run()
   {
-    abrl.b("GdtArkPreDownloadTask", String.format("preDownload appName:%s view:%s minVersion:%s", new Object[] { abmf.a(this.this$0).a, abmf.a(this.this$0).b, abmf.a(this.this$0).c }));
-    ArkAppMgr.getInstance().getAppPathByName(abmf.a(this.this$0).a, "", abmf.a(this.this$0).c, null, abmf.a(this.this$0));
+    acho.b("GdtArkPreDownloadTask", String.format("preDownload appName:%s view:%s minVersion:%s", new Object[] { acbv.a(this.this$0).a, acbv.a(this.this$0).b, acbv.a(this.this$0).c }));
+    ArkAppMgr.getInstance().getAppPathByName(acbv.a(this.this$0).a, "", acbv.a(this.this$0).c, null, acbv.a(this.this$0));
   }
 }
 

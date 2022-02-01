@@ -1,67 +1,56 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.app.face.FaceDecoder;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.6.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.mobilereport.MobileReportManager;
 
-public class arlr
-  extends RecyclerView.OnScrollListener
+class arlr
+  implements DialogInterface.OnClickListener
 {
-  public arlr(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  arlr(arln paramarln, Runnable paramRunnable, boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
   
-  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSearchFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null)
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaLangRunnable.run();
+    Object localObject;
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (paramInt != 0) {
-        break label87;
+      paramDialogInterface = "0X800AE6B";
+      localObject = this.jdField_a_of_type_JavaLangString;
+      if (!this.b) {
+        break label99;
       }
-      this.a.c = false;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.resume();
-      this.a.ak_();
+      str = "size";
+      label41:
+      arln.a(paramDialogInterface, (String)localObject, str);
+      localObject = MobileReportManager.getInstance();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label105;
+      }
+      paramDialogInterface = "2";
+      label63:
+      if (!this.jdField_a_of_type_Boolean) {
+        break label111;
+      }
     }
-    for (;;)
+    label99:
+    label105:
+    label111:
+    for (String str = "2";; str = "1")
     {
-      if (paramInt == 0)
-      {
-        this.a.g();
-        this.a.b(false);
-      }
+      ((MobileReportManager)localObject).reportAction("Later", "4", "platform898", paramDialogInterface, str, 102, 1, System.currentTimeMillis());
       return;
-      label87:
-      this.a.c = true;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.pause();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
-      synchronized (ExtendFriendBaseFragment.a)
-      {
-        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.clear();
-        }
-      }
+      paramDialogInterface = "0X800AE65";
+      break;
+      str = "full";
+      break label41;
+      paramDialogInterface = "3";
+      break label63;
     }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if ((!ExtendFriendSearchFragment.a(this.a)) && (!ExtendFriendSearchFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Arme != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Arme.getItemCount() - 2) != null))
-    {
-      this.a.a(true);
-      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.6.1(this));
-      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
-    }
-    this.a.a(false, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arlr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import aoem;
+import apho;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
@@ -8,13 +8,13 @@ import java.util.HashMap;
 public class ScanEntranceReport$1
   implements Runnable
 {
-  public ScanEntranceReport$1(aoem paramaoem, long paramLong1, long paramLong2, String paramString, long paramLong3) {}
+  public ScanEntranceReport$1(apho paramapho, long paramLong1, long paramLong2, String paramString, long paramLong3) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("proc_exist", String.valueOf(aoem.a(this.this$0)));
-    localHashMap.put("proc_restart", String.valueOf(aoem.b(this.this$0)));
+    localHashMap.put("proc_exist", String.valueOf(apho.a(this.this$0)));
+    localHashMap.put("proc_restart", String.valueOf(apho.b(this.this$0)));
     localHashMap.put("proc_load_time", String.valueOf(this.jdField_a_of_type_Long));
     localHashMap.put("activity_launch_time", String.valueOf(this.b));
     localHashMap.put("entry_source", this.jdField_a_of_type_JavaLangString);

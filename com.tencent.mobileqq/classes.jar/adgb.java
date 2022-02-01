@@ -1,43 +1,41 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class adgb
-  implements arcb
+  extends bjyh
 {
-  public adgb(EmosmActivity paramEmosmActivity) {}
+  public adgb(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void a(int paramInt)
+  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    paramInt -= this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount();
-    if (paramInt < 0) {
-      return;
-    }
-    Object localObject = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (!NetworkUtil.isNetSupport(this.a))
+    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
-      localObject = new QQToast(this.a);
-      ((QQToast)localObject).a(2130839590);
-      ((QQToast)localObject).d(1500);
-      ((QQToast)localObject).a(amtj.a(2131703161));
-      ((QQToast)localObject).b(0);
-      return;
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin)) {
+        if (AddFriendVerifyActivity.a(this.a) != null)
+        {
+          str = AddFriendVerifyActivity.a(this.a).getText().toString();
+          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
+            AddFriendVerifyActivity.a(this.a).setText(paramHashMap.nickname);
+          }
+        }
+      }
     }
-    this.a.jdField_a_of_type_Bhht.a(this.a.getString(2131691794));
-    this.a.jdField_a_of_type_Bhht.show();
-    ((amrg)this.a.app.getBusinessHandler(12)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
-    URLDrawable.clearMemoryCache();
-    if (this.a.b == 1)
+    while (!QLog.isColorLevel())
     {
-      bcef.b(this.a.app, "dc00898", "", "", "0X800AB12", "0X800AB12", 1, 0, "", "", "", "");
+      String str;
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
       return;
     }
-    bcef.b(this.a.app, "dc00898", "", "", "0X800AB15", "0X800AB15", 0, 0, "", "", "", "");
+    QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
   }
 }
 

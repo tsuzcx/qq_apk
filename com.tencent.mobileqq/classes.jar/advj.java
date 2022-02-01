@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class advj
-  implements DialogInterface.OnClickListener
+  extends anvi
 {
-  public advj(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public advj(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

@@ -1,28 +1,11 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class sor
-  implements Animator.AnimatorListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowLayout$OnFollowActionListener;", "", "onFollowClick", "", "videoInfo", "Lcom/tencent/biz/pubaccount/VideoInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface sor
 {
-  public sor(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setScaleX(1.0F);
-    this.a.setScaleY(1.0F);
-    this.a.setRotation(0.0F);
-    this.a.setAlpha(1.0F);
-    if (ReadInjoyTabDragAnimationView.a(this.a) != 0) {
-      this.a.a(0);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a(@Nullable VideoInfo paramVideoInfo);
 }
 
 

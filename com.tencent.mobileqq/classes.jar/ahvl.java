@@ -1,23 +1,50 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class ahvl
-  implements View.OnClickListener
+  implements ahvk
 {
-  public ahvl(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
-  
-  public void onClick(View paramView)
+  private int a(List<PlusPanelAppInfo> paramList)
   {
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    if (paramList.size() > 0)
+    {
+      int i = 0;
+      int j = paramList.size();
+      while (i < j)
+      {
+        if (209 == ((PlusPanelAppInfo)paramList.get(i)).getAppID()) {
+          return i;
+        }
+        i += 1;
+      }
     }
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
+    return -1;
+  }
+  
+  public void a(ahvv paramahvv, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    if (((paramahvv instanceof ahwd)) && (!((ahwd)paramahvv).a()))
+    {
+      paramahvv.b(1000000006);
+      if (!bdfk.a()) {
+        paramahvv.b(219);
+      }
+      paramQQAppInterface = paramahvv.a();
+      paramInt = a(paramQQAppInterface);
+      if (paramInt >= 0)
+      {
+        paramString = (PlusPanelAppInfo)paramQQAppInterface.get(paramInt);
+        paramahvv.b(209);
+        if (paramQQAppInterface.size() >= 10) {
+          break label91;
+        }
+        paramQQAppInterface.add(paramString);
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return;
+    label91:
+    paramQQAppInterface.add(10, paramString);
   }
 }
 

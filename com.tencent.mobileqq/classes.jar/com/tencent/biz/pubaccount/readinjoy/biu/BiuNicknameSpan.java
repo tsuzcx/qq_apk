@@ -5,12 +5,13 @@ import android.graphics.Paint;
 import android.text.style.ForegroundColorSpan;
 import android.util.SparseIntArray;
 import com.tencent.mobileqq.text.EmotcationConstants;
-import tai;
-import tak;
+import org.jetbrains.annotations.NotNull;
+import tnq;
+import tns;
 
 public class BiuNicknameSpan
   extends ForegroundColorSpan
-  implements tai, tak
+  implements tnq, tns
 {
   private int a;
   public long a;
@@ -20,6 +21,20 @@ public class BiuNicknameSpan
   public BiuNicknameSpan(String paramString, long paramLong, CharSequence paramCharSequence)
   {
     super(-15504151);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    if (paramCharSequence != null) {}
+    for (paramString = paramCharSequence.toString();; paramString = "")
+    {
+      this.b = paramString;
+      return;
+    }
+  }
+  
+  public BiuNicknameSpan(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
+  {
+    super(paramInt);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Long = paramLong;
@@ -75,6 +90,12 @@ public class BiuNicknameSpan
       }
     }
     return paramCharSequence.toString();
+  }
+  
+  @NotNull
+  public String a()
+  {
+    return this.b;
   }
   
   public void a() {}

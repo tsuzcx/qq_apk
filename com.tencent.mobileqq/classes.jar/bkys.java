@@ -1,83 +1,51 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class bkys
+  extends Handler
 {
-  public static ArrayList<Object> a(JSONArray paramJSONArray)
+  private WeakReference<Handler.Callback> a;
+  
+  public bkys(Handler.Callback paramCallback)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramJSONArray.length())
-    {
-      Object localObject = paramJSONArray.opt(i);
-      if (localObject == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (localObject.getClass() == JSONObject.class) {
-          localArrayList.add(a((JSONObject)localObject));
-        } else if (localObject.getClass() == JSONArray.class) {
-          localArrayList.add(a((JSONArray)localObject));
-        }
-      }
-    }
-    return localArrayList;
+    this.a = new WeakReference(paramCallback);
   }
   
-  public static Map<String, Object> a(String paramString)
+  public bkys(Looper paramLooper, Handler.Callback paramCallback)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    try
-    {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localLinkedHashMap;
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
   }
   
-  public static Map<String, Object> a(JSONObject paramJSONObject)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramJSONObject == null) {
-      return null;
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
     }
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
-    {
-      String str = localIterator.next() + "";
-      Object localObject = paramJSONObject.get(str);
-      if (localObject != null) {
-        if (localObject.getClass() == JSONObject.class) {
-          localLinkedHashMap.put(str, a((JSONObject)localObject));
-        } else if (localObject.getClass() == JSONArray.class) {
-          localLinkedHashMap.put(str, a((JSONArray)localObject));
-        } else {
-          localLinkedHashMap.put(str, localObject);
-        }
-      }
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    return localLinkedHashMap;
+    QLog.d("WeakReferenceHandler", 2, "handleMessage cb is null! handler = " + this);
+  }
+  
+  public String toString()
+  {
+    Object localObject = (Handler.Callback)this.a.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("WH");
+    if (localObject != null) {}
+    for (localObject = localObject.toString();; localObject = "None callback") {
+      return (String)localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkys
  * JD-Core Version:    0.7.0.1
  */

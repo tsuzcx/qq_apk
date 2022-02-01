@@ -1,18 +1,54 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRecognition;
+import com.dataline.activities.LiteActivity;
+import com.dataline.activities.PrinterActivity;
+import com.tencent.litetransfersdk.Session;
 
-public final class anzz
-  implements Parcelable.Creator<ARRecognition>
+class anzz
+  extends ansy
 {
-  public ARRecognition a(Parcel paramParcel)
+  anzz(anzy paramanzy) {}
+  
+  protected void a(Session paramSession)
   {
-    return new ARRecognition(paramParcel);
+    this.a.a(3, paramSession, 0.0D, false);
+    if (this.a.a != null)
+    {
+      this.a.a.c();
+      this.a.a.notifyDataSetChanged();
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+    }
   }
   
-  public ARRecognition[] a(int paramInt)
+  protected void a(Session paramSession, float paramFloat)
   {
-    return new ARRecognition[paramInt];
+    this.a.a(1, paramSession, paramFloat, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(Session paramSession, boolean paramBoolean)
+  {
+    this.a.a(2, paramSession, 0.0D, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    this.a.a(paramLong, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(Session paramSession)
+  {
+    this.a.a(0, paramSession, 0.0D, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

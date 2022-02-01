@@ -1,50 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.util.HashMap;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class aesw
-  implements DialogInterface.OnClickListener
+  extends ReportDialog
 {
-  public aesw(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aesw(Context paramContext)
   {
-    this.a.l();
-    if (VipUtils.b(this.a.app))
+    super(paramContext, 2131755682);
+    setContentView(2131562264);
+    getWindow().setFlags(1024, 2048);
+  }
+  
+  public void a(String paramString)
+  {
+    ((TextView)findViewById(2131379001)).setText(paramString);
+  }
+  
+  public void dismiss()
+  {
+    try
     {
-      if (this.a.jdField_a_of_type_Long != 0L) {
-        break label144;
-      }
-      paramDialogInterface = (String)this.a.jdField_a_of_type_JavaUtilHashMap.get(this.a.d);
-      if (!TextUtils.isEmpty(paramDialogInterface)) {
-        this.a.a(this.a.d, paramDialogInterface, false);
-      }
-    }
-    else
-    {
-      if ((this.a.jdField_a_of_type_Long != 0L) && (this.a.jdField_a_of_type_Long != 160L)) {
-        break label222;
-      }
-    }
-    label144:
-    label222:
-    for (paramDialogInterface = "3";; paramDialogInterface = "4")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), paramDialogInterface, "0");
+      super.dismiss();
       return;
-      this.a.a(this.a.d, false);
-      break;
-      if (((this.a.jdField_a_of_type_Long != 160L) && (this.a.jdField_a_of_type_Long != 1600L)) || (TextUtils.isEmpty(this.a.b))) {
-        break;
-      }
-      paramDialogInterface = aymh.a(this.a, aymn.n, this.a.jdField_a_of_type_Long);
-      this.a.a(paramDialogInterface, this.a.b, false);
-      break;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
+    }
+  }
+  
+  public void setTitle(int paramInt)
+  {
+    if (paramInt == 0) {}
+    for (String str = null;; str = getContext().getResources().getString(paramInt))
+    {
+      a(str);
+      return;
+    }
+  }
+  
+  public void show()
+  {
+    try
+    {
+      super.show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WebLog_QQBrowserActivity", 2, localException, new Object[0]);
     }
   }
 }

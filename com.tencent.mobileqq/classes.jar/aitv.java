@@ -1,20 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.widget.XListView;
 
-class aitv
-  implements DialogInterface.OnKeyListener
+public class aitv
+  implements bbtd
 {
-  aitv(aitt paramaitt) {}
+  public aitv(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (paramInt == 4)
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    for (;;)
     {
-      aitt.a(this.a, aitt.a(this.a), Long.valueOf(aitt.a(this.a)).longValue());
-      aitt.a(this.a);
+      return;
+      if ((this.a.e == 0) && (this.a.a != null))
+      {
+        int i = this.a.a.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof aity)))
+          {
+            paramBitmap = (aity)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
+          }
+          paramInt2 += 1;
+        }
+      }
     }
-    return true;
   }
 }
 

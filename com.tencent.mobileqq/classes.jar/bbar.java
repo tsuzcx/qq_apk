@@ -1,24 +1,26 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class bbar
-  extends bbam
+  implements ViewPager.OnPageChangeListener
 {
-  bays a(ahzl paramahzl, List<bayt> paramList, String paramString1, boolean paramBoolean, String paramString2)
-  {
-    bbgj.a(90);
-    return new baxw(paramahzl, paramList, paramString1);
-  }
+  public bbar(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  bayt a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
-  {
-    return null;
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  bayt a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    return new baxx(paramrecord, paramString, paramCharSequence);
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
+    if (paramInt == 0)
+    {
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).requestParentDisallowInterecptTouchEvent(false);
+      return;
+    }
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).requestParentDisallowInterecptTouchEvent(true);
   }
 }
 

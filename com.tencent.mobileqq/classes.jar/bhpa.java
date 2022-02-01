@@ -1,6 +1,6 @@
-class bhpa
+public abstract interface bhpa<E>
 {
-  public static bhox a = new bhox("ae_camera_get_info_client");
+  public abstract void a(E paramE, Object paramObject);
 }
 
 

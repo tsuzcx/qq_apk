@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import bdxn;
-import bdxp;
+import bfeq;
+import bfes;
 import java.util.ArrayList;
 
 public class RelationFriendsTroopViewHelper$2
   implements Runnable
 {
-  public RelationFriendsTroopViewHelper$2(bdxn parambdxn) {}
+  public RelationFriendsTroopViewHelper$2(bfeq parambfeq) {}
   
   public void run()
   {
-    bdxn.a(this.this$0).clear();
-    bdxn.b(this.this$0).clear();
-    bdxn.a(this.this$0).a();
+    bfeq.a(this.this$0).clear();
+    bfeq.b(this.this$0).clear();
+    bfeq.a(this.this$0).a();
   }
 }
 

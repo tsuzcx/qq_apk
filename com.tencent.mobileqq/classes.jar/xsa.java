@@ -1,19 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class xsa
-  implements View.OnClickListener
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wqt>
 {
-  public xsa(StoryListPresenter.4.1 param1) {}
-  
-  public void onClick(View paramView)
+  public xsa(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    xwa.a("home_page", "clk_up_close", 0, 0, new String[0]);
-    this.a.a.this$0.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wqt paramwqt)
+  {
+    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.b)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.c)) && (paramwqt.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!paramwqt.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      paramwqt = paramwqt.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwqt.hasNext())
+      {
+        xth localxth = (xth)paramwqt.next();
+        if (paramQQStoryShareGroupProfileActivity.c.equals(localxth.a))
+        {
+          paramQQStoryShareGroupProfileActivity.b = localxth.b;
+          if (QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity)) {
+            break label111;
+          }
+        }
+      }
+    }
+    label111:
+    for (boolean bool = true;; bool = false)
+    {
+      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, bool);
+      return;
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wqt.class;
   }
 }
 

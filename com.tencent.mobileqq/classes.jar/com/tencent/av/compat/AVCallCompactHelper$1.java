@@ -2,46 +2,46 @@ package com.tencent.av.compat;
 
 import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import lbu;
-import lez;
-import lka;
+import lbz;
+import lfe;
+import lkm;
 import mqq.app.BaseActivity;
 
 public class AVCallCompactHelper$1
   implements Runnable
 {
-  public AVCallCompactHelper$1(lka paramlka, BaseActivity paramBaseActivity) {}
+  public AVCallCompactHelper$1(lkm paramlkm, BaseActivity paramBaseActivity) {}
   
   public void run()
   {
     Object localObject = null;
-    Intent localIntent = lka.a(this.this$0, lka.a());
+    Intent localIntent = lkm.a(this.this$0, lkm.a());
     String str1;
     int i;
     if ((this.a.isResume()) && (localIntent != null))
     {
-      int j = lbu.a().a();
-      String str2 = lka.a(lka.a(), localIntent);
-      lez locallez = lbu.a().c(str2);
-      localObject = locallez;
+      int j = lbz.a().a();
+      String str2 = lkm.a(lkm.a(), localIntent);
+      lfe locallfe = lbz.a().c(str2);
+      localObject = locallfe;
       str1 = str2;
       i = j;
       if (j >= 2)
       {
-        localObject = locallez;
+        localObject = locallfe;
         str1 = str2;
         i = j;
-        if (locallez != null)
+        if (locallfe != null)
         {
-          localObject = locallez;
+          localObject = locallfe;
           str1 = str2;
           i = j;
-          if (locallez.j())
+          if (locallfe.j())
           {
             this.a.startActivity(localIntent);
             i = j;
             str1 = str2;
-            localObject = locallez;
+            localObject = locallfe;
           }
         }
       }

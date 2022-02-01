@@ -1,10 +1,27 @@
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.redtouch.RedTouch;
+
 public class anoa
-  implements anny
 {
-  public void a(amwl paramamwl, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, amwm paramamwm)
-  {
-    paramamwl.sendMsgError(paramArrayOfObject);
-  }
+  public View a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public annl a;
+  public URLImageView a;
+  public RedTouch a;
+  public ImageView b;
+  public RelativeLayout b;
+  public TextView b;
+  public ImageView c;
+  public RelativeLayout c;
+  public TextView c;
+  public ImageView d;
+  public ImageView e;
 }
 
 

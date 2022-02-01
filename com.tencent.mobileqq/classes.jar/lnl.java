@@ -1,12 +1,15 @@
-public class lnl
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.gaudio.GaInviteActivity;
+
+class lnl
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public long b;
+  lnl(lnk paramlnk) {}
   
-  public lnl(long paramLong1, long paramLong2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
+    this.a.a.a(-1040L, 11);
   }
 }
 

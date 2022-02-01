@@ -1,81 +1,23 @@
-import android.graphics.Color;
-import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
+import android.view.View;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.TextView;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public class aius
-  extends RecyclerView.Adapter
+class aius
+  extends RecyclerView.ViewHolder
 {
-  public List<String> a = new ArrayList();
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  String jdField_a_of_type_JavaLangString;
   
-  public aius(List<String> paramList)
+  public aius(aiup paramaiup, View paramView)
   {
-    if (paramList != null)
-    {
-      this.a.clear();
-      this.a.addAll(paramList);
-    }
-  }
-  
-  public int getItemCount()
-  {
-    if (this.a != null) {
-      return this.a.size();
-    }
-    return 0;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    ImageView localImageView = ((aiut)paramViewHolder).a;
-    if (!TextUtils.isEmpty((String)this.a.get(paramInt)))
-    {
-      if (paramInt != 0) {
-        break label108;
-      }
-      String str = (String)this.a.get(paramInt);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-      localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-      localURLDrawableOptions.mPlayGifImage = ayfc.a(str);
-      localURLDrawableOptions.mUseAutoScaleParams = true;
-      localImageView.setImageDrawable(URLDrawable.getFileDrawable(str, localURLDrawableOptions));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      label108:
-      if (paramInt == 1)
-      {
-        localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        localImageView.setPadding(0, 0, 0, 0);
-        localImageView.setImageDrawable(null);
-        localImageView.setBackgroundColor(Color.parseColor("#9A989EB4"));
-      }
-      else if (paramInt == 2)
-      {
-        localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        localImageView.setPadding(0, 0, 0, 0);
-        localImageView.setImageDrawable(null);
-        localImageView.setBackgroundColor(Color.parseColor("#48989EB4"));
-      }
-    }
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new aiut(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559133, paramViewGroup, false));
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376985));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368381));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371803));
   }
 }
 

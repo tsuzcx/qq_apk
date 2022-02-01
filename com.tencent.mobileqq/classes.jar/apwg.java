@@ -1,19 +1,74 @@
-public class apwg
+import KQQ.BatchResponse;
+import KQQ.RespBatchProcess;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+
+class apwg
+  extends aofu
 {
-  public String a;
-  public String b;
-  public String c;
+  apwg(apwe paramapwe) {}
   
-  public apwg(String paramString1, String paramString2, String paramString3)
+  protected void onBatchGetTroopInfoResp(boolean paramBoolean, long paramLong, RespBatchProcess paramRespBatchProcess, Bundle paramBundle)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    this.a.a().removeObserver(this);
+    paramBundle = new TroopInfoData();
+    paramBundle.isMember = true;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("onBatchGetTroopInfoResp, isSucc=").append(paramBoolean).append(", resp IsNull=");
+      if (paramRespBatchProcess == null)
+      {
+        paramBoolean = true;
+        QLog.d("ark.Troop", 2, paramBoolean);
+      }
+    }
+    else
+    {
+      if ((paramRespBatchProcess != null) && (paramRespBatchProcess.batch_response_list != null) && (paramRespBatchProcess.batch_response_list.size() != 0)) {
+        break label121;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("ark.Troop", 2, "onBatchGetTroopInfoResp, return");
+      }
+    }
+    label121:
+    int j;
+    do
+    {
+      return;
+      paramBoolean = false;
+      break;
+      j = paramRespBatchProcess.batch_response_list.size();
+      int i = 0;
+      if (i < j)
+      {
+        localObject = (BatchResponse)paramRespBatchProcess.batch_response_list.get(i);
+        if ((localObject == null) || (((BatchResponse)localObject).result != 0)) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (((BatchResponse)localObject).type == 1)
+          {
+            TroopInfo localTroopInfo = ((TroopManager)this.a.a().getManager(QQManagerFactory.TROOP_MANAGER)).b(this.a.a);
+            this.a.a((BatchResponse)localObject, paramBundle, localTroopInfo);
+          }
+        }
+      }
+    } while (j <= 0);
+    apwe.a(this.a, this.a.a, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apwg
  * JD-Core Version:    0.7.0.1
  */

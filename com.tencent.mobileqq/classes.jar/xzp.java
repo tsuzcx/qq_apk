@@ -1,30 +1,27 @@
-import android.graphics.Bitmap;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface xzp
-  extends xzc
+class xzp
+  extends QQUIEventReceiver<xzn, wse>
 {
-  public abstract long a(int paramInt);
+  public xzp(@NonNull xzn paramxzn)
+  {
+    super(paramxzn);
+  }
   
-  public abstract Bitmap a(int paramInt);
+  public void a(@NonNull xzn paramxzn, @NonNull wse paramwse)
+  {
+    ykq.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video info list. %s.", paramwse.toString());
+    if (paramwse.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      xzn.a(paramxzn).a(paramwse.jdField_a_of_type_JavaLangString, paramwse.jdField_a_of_type_JavaUtilList);
+    }
+  }
   
-  public abstract List<? extends ybh> a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, float paramFloat);
-  
-  public abstract void a(int paramInt, byte[] paramArrayOfByte);
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public Class acceptEventClass()
+  {
+    return wse.class;
+  }
 }
 
 

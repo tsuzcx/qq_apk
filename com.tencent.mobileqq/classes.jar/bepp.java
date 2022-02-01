@@ -1,35 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
 class bepp
-  implements bjoe
+  extends bepv
 {
-  bepp(bepo parambepo, bjnw parambjnw, boolean paramBoolean, benq parambenq) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  bepp(bepg parambepg, EditorState paramEditorState, List paramList)
   {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
-    }
-    switch (i)
-    {
-    default: 
-      paramView = "";
-    }
-    for (;;)
-    {
-      bftc.a("Grp_edu", "Grp_recite", "Blueword_Clk", 0, 0, new String[] { this.jdField_a_of_type_Benq.f, paramView });
-      return;
-      SelectReciteParagraphFragment.a(paramView.getContext(), this.jdField_a_of_type_Benq.f, this.jdField_a_of_type_Benq.jdField_a_of_type_JavaLangString, new ArrayList(this.jdField_a_of_type_Benq.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_Benq.c);
-      paramView = "2";
-      continue;
-      SearchReciteArticleFragment.a(paramView.getContext(), this.jdField_a_of_type_Benq.f, "", this.jdField_a_of_type_Benq.c);
-      paramView = "0";
-    }
+    super(parambepg, paramEditorState, paramList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    super.a(paramEditorState);
+    bepg.a(this.a).a(false, false);
   }
 }
 

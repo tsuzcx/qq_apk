@@ -1,6 +1,3 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -8,18 +5,11 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class anoj
   implements View.OnClickListener
 {
-  anoj(anoh paramanoh) {}
+  anoj(anob paramanob) {}
   
   public void onClick(View paramView)
   {
-    bcef.b(null, "CliOper", "", "", "0X8006B16", "0X8006B16", 0, 0, "", "", "", "");
-    bcef.b(null, "dc00898", "", "", "0X8009AC9", "0X8009AC9", 0, 0, "", "", "", "");
-    Object localObject = PreferenceManager.getDefaultSharedPreferences(anoh.a(this.a));
-    int i = ((SharedPreferences)localObject).getInt("push_msg_notify_cancle", 0);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_cancle", i + 1);
-    ((SharedPreferences.Editor)localObject).commit();
-    this.a.dismiss();
+    this.a.a();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

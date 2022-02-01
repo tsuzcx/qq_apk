@@ -1,34 +1,13 @@
-import android.content.Intent;
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
-class ajrw
-  implements MediaScanner.OnMediaInfoScannerListener
+public class ajrw
+  implements blbw
 {
-  ajrw(ajru paramajru, Intent paramIntent, ArrayList paramArrayList) {}
+  public ajrw(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (bnsr.a(this.jdField_a_of_type_Ajru.mActivity, paramLocalMediaInfo))
-    {
-      if ((ajru.a(this.jdField_a_of_type_Ajru) != null) && (paramLocalMediaInfo.mDuration > ajru.a(this.jdField_a_of_type_Ajru).videoDurationLimit))
-      {
-        ((NewPhotoListActivity)this.jdField_a_of_type_Ajru.mActivity).cancleProgressDailog();
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-        PhotoUtils.sendPhoto(this.jdField_a_of_type_Ajru.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
-        return;
-      }
-      FrameVideoHelper localFrameVideoHelper = new FrameVideoHelper(paramLocalMediaInfo.path, paramLocalMediaInfo.mediaWidth, paramLocalMediaInfo.mediaHeight, paramLocalMediaInfo.mDuration);
-      localFrameVideoHelper.a(new ajrx(this, paramLocalMediaInfo, localFrameVideoHelper));
-      zxp.a("mystatus_localupload", "video_select", 0, 0, new String[0]);
-      return;
-    }
-    ((NewPhotoListActivity)this.jdField_a_of_type_Ajru.mActivity).cancleProgressDailog();
+    bdla.b(this.a.a, "dc00898", "", "", "0X800AC87", "0X800AC87", 3, 0, "1", "2", "", "");
   }
 }
 

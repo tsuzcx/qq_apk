@@ -1,28 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class axda
-  implements View.OnClickListener
+class axda
+  implements axjd
 {
-  public axda(NearbyProfileFragment paramNearbyProfileFragment, zsp paramzsp) {}
+  axda(axcz paramaxcz) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_Zsp != null) {}
-    for (String str = this.jdField_a_of_type_Zsp.b;; str = "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501")
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      localIntent.putExtra("url", str);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(localIntent);
-      bcef.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if ((axcx.a(this.a.jdField_a_of_type_Axcx) != null) && (axcx.a(this.a.jdField_a_of_type_Axcx).sessionInfo != null)) {
+      this.a.jdField_a_of_type_Axjk.a(this.a.jdField_a_of_type_JavaUtilList, 2, axcx.a(this.a.jdField_a_of_type_Axcx).sessionInfo.curType);
+    }
+    this.a.jdField_a_of_type_Axjk.a();
+    if (axcx.a(this.a.jdField_a_of_type_Axcx) != null) {
+      axcx.a(this.a.jdField_a_of_type_Axcx).setLeftCheckBoxVisible(false, null, false);
     }
   }
 }

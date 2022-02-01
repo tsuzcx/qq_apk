@@ -2,14 +2,14 @@ package com.tencent.biz.qqstory.shareGroup.infocard.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import xeb;
-import xel;
+import xsw;
+import xtg;
 
 public class ShareGroupsListView
   extends MyMemoriesListView
 {
-  public xeb a;
-  xel a;
+  public xsw a;
+  xtg a;
   
   public ShareGroupsListView(Context paramContext)
   {
@@ -28,17 +28,17 @@ public class ShareGroupsListView
   
   protected void a() {}
   
-  public void setListAdapter(xeb paramxeb)
+  public void setListAdapter(xsw paramxsw)
   {
-    super.setListAdapter(paramxeb);
-    this.jdField_a_of_type_Xeb = paramxeb;
+    super.setListAdapter(paramxsw);
+    this.jdField_a_of_type_Xsw = paramxsw;
   }
   
-  public void setUIEventListener(xel paramxel)
+  public void setUIEventListener(xtg paramxtg)
   {
-    this.jdField_a_of_type_Xel = paramxel;
-    this.jdField_a_of_type_Xeb.a(paramxel);
-    super.setListener(paramxel, paramxel);
+    this.jdField_a_of_type_Xtg = paramxtg;
+    this.jdField_a_of_type_Xsw.a(paramxtg);
+    super.setListener(paramxtg, paramxtg);
   }
 }
 

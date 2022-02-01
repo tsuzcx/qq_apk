@@ -1,11 +1,20 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
+
 class rbu
+  implements blcr
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  rbu(rbp paramrbp) {}
   
-  public rbu(rbt paramrbt, String paramString)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.a.jdField_a_of_type_Qhk != null)
+    {
+      rbp.a(this.a, this.a.jdField_a_of_type_Qhk, paramInt, paramArrayList, paramObject);
+      return;
+    }
+    rbp.a(this.a, (qfw)this.a.jdField_a_of_type_JavaLangObject, paramInt, paramArrayList, paramObject);
   }
 }
 

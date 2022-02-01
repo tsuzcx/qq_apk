@@ -8,12 +8,12 @@ import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import cooperation.qzone.util.gifCoderWnsConfig;
 import java.io.File;
 import java.util.ArrayList;
-import xwq;
+import ylj;
 
 public class EditLocalGifSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalGifSource> CREATOR = new xwq();
+  public static final Parcelable.Creator<EditLocalGifSource> CREATOR = new ylj();
   @NonNull
   public int a;
   @NonNull

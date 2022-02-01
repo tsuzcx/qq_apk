@@ -1,85 +1,153 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.ark.ArkAiDictMgr.1;
+import com.tencent.mobileqq.ark.ArkAiDictMgr.3;
+import com.tencent.mobileqq.ark.ArkAiDictMgr.4;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.ark.ArkRecommendLogic.ArkWordSegmentThread;
+import com.tencent.mobileqq.startup.step.UpdateArkSo;
+import com.tencent.wordsegment.WordSegment;
+import java.io.File;
 
 public class apww
-  extends aptq<apwx>
 {
-  @NonNull
-  public apwx a(int paramInt)
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private java.lang.ref.WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public apww(AppInterface paramAppInterface)
   {
-    return new apwx();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new mqq.util.WeakReference(paramAppInterface);
   }
   
-  @Nullable
-  public apwx a(aptx[] paramArrayOfaptx)
+  public static apwy a(AppInterface paramAppInterface, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BroadcastConfProcessor", 2, "onParsed");
+    apwy localapwy = new apwy();
+    localapwy.jdField_a_of_type_JavaLangString = paramString;
+    ArkRecommendLogic.a().a(new ArkAiDictMgr.3(paramAppInterface, localapwy, paramString));
+    return localapwy;
+  }
+  
+  static String a()
+  {
+    return ArkAppCenter.b() + "/WordData/";
+  }
+  
+  public static String a(String paramString)
+  {
+    return a() + paramString;
+  }
+  
+  public static void a()
+  {
+    Object localObject = new File(a());
+    if (((File)localObject).isFile()) {
+      ((File)localObject).delete();
     }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    for (;;)
     {
-      paramArrayOfaptx = paramArrayOfaptx[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("BroadcastConfProcessor", 2, "onParsed, content:" + paramArrayOfaptx);
-      }
-      apwx localapwx = apwx.a(paramArrayOfaptx);
-      if (!TextUtils.isEmpty(paramArrayOfaptx))
+      return;
+      localObject = ((File)localObject).listFiles();
+      if (localObject != null)
       {
-        BaseApplicationImpl.getApplication().getSharedPreferences("broadcast_white_pref", 4).edit().putString("white_list", paramArrayOfaptx).apply();
-        MobileQQ.addBroadcastWhitList(localapwx.a);
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
+        {
+          localObject[i].delete();
+          i += 1;
+        }
       }
     }
-    return new apwx();
   }
   
-  public void a(apwx paramapwx)
+  public static void a(AppInterface paramAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BroadcastConfProcessor", 2, "onUpdate");
+    if (a())
+    {
+      ArkAppCenter.c("ArkApp.Dict", "initWordData, already inited.");
+      return;
     }
+    new File(a()).mkdirs();
+    if (!jdField_a_of_type_Boolean) {
+      ArkRecommendLogic.a().a(new ArkAiDictMgr.1());
+    }
+    b(paramAppInterface);
   }
   
-  public Class<apwx> clazz()
+  public static boolean a()
   {
-    return apwx.class;
+    return (jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString));
   }
   
-  public boolean isAccountRelated()
+  public static void b(AppInterface paramAppInterface)
   {
+    if (!jdField_a_of_type_Boolean)
+    {
+      ArkAppCenter.c("ArkApp.Dict", "reloadWordData, sIsSoLoaded is false");
+      return;
+    }
+    ArkRecommendLogic.a().post(new ArkAiDictMgr.4(paramAppInterface));
+  }
+  
+  private static boolean b(AppInterface paramAppInterface)
+  {
+    if (paramAppInterface == null) {}
+    do
+    {
+      return true;
+      paramAppInterface = aqyt.b(170).a();
+      if ((paramAppInterface == null) || (paramAppInterface.a() == null))
+      {
+        ArkAppCenter.c("ArkApp.Dict", "getWordInitState, confBean is empty");
+        return true;
+      }
+      paramAppInterface = paramAppInterface.a().d;
+      if (paramAppInterface == null) {
+        break;
+      }
+      ArkAppCenter.c("ArkApp.Dict", String.format("getWordInitState, wordInitState=%s", new Object[] { paramAppInterface }));
+    } while (!paramAppInterface.equals("false"));
     return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
+    ArkAppCenter.c("ArkApp.Dict", "getWordInitState, ark_dict_init is empty");
     return true;
   }
   
-  public boolean isNeedStoreLargeFile()
+  private static void d()
   {
-    return false;
+    try
+    {
+      if ((apwl.b) && (!jdField_a_of_type_Boolean))
+      {
+        jdField_a_of_type_Boolean = UpdateArkSo.b(BaseApplicationImpl.getContext(), "WordSegment");
+        ArkAppCenter.c("ArkApp.Dict", String.format("loadWordSegmentSo, result=%s", new Object[] { Boolean.toString(jdField_a_of_type_Boolean) }));
+        if (jdField_a_of_type_Boolean) {
+          WordSegment.setLogCallback(new apwx());
+        }
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public int migrateOldVersion()
+  public void b()
   {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 567;
+    ArkAppCenter.c("ArkApp.Dict", "clearDict");
+    AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    bhhr.i(localAppInterface.getApp(), localAppInterface.getCurrentAccountUin());
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apww
  * JD-Core Version:    0.7.0.1
  */

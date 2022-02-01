@@ -1,33 +1,13 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahnz
-  extends MSFServlet
+  implements ahnr
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
-      ahns.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent == null)
-    {
-      QLog.e("StickerRecServlet", 1, "onSend : req is null");
-      return;
-    }
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
-    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
-    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
+    paramagtf.a(paramMessageRecord, paramLinearLayout, paramagus);
   }
 }
 

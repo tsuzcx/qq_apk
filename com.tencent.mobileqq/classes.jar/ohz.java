@@ -1,92 +1,37 @@
-import android.content.Context;
-import android.content.MutableContextWrapper;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.List;
+import java.util.Vector;
 
 public class ohz
 {
-  private static volatile ohz jdField_a_of_type_Ohz;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private HashMap<String, EcshopWebview> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  static List<String> a = new Vector();
   
-  public static ohz a()
+  public static void a(AdvertisementInfo paramAdvertisementInfo)
   {
-    if (jdField_a_of_type_Ohz == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ohz == null) {
-        jdField_a_of_type_Ohz = new ohz();
-      }
-      return jdField_a_of_type_Ohz;
+    if (paramAdvertisementInfo == null) {}
+    while (TextUtils.isEmpty(paramAdvertisementInfo.getTicket())) {
+      return;
     }
-    finally {}
+    a.add(paramAdvertisementInfo.getTicket());
   }
   
-  public EcshopWebview a(Context paramContext, String paramString)
+  public static boolean a(AdvertisementInfo paramAdvertisementInfo)
   {
-    for (;;)
-    {
-      try
-      {
-        synchronized (this.jdField_a_of_type_ArrayOfByte)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("Ecshop_EcshopWebviewPool", 2, "【getWebView】= " + this.jdField_a_of_type_JavaUtilHashMap.size() + " preLoadUrl: " + paramString);
-          }
-          if (this.jdField_a_of_type_JavaUtilHashMap.size() > 0)
-          {
-            localObject = (EcshopWebview)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-            if (localObject != null)
-            {
-              paramString = (ViewGroup)((EcshopWebview)localObject).getParent();
-              if (paramString != null) {
-                paramString.removeView((View)localObject);
-              }
-              ((MutableContextWrapper)((EcshopWebview)localObject).getContext()).setBaseContext(paramContext);
-              return localObject;
-            }
-          }
-          else
-          {
-            EcshopWebview localEcshopWebview = EcshopWebview.a(paramContext);
-            localObject = localEcshopWebview;
-            if (StringUtil.isEmpty(paramString)) {
-              continue;
-            }
-            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localEcshopWebview);
-            localObject = localEcshopWebview;
-          }
-        }
-        Object localObject = EcshopWebview.a(paramContext);
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("Ecshop_EcshopWebviewPool", 1, QLog.getStackTraceString(paramString));
-        return EcshopWebview.a(paramContext);
-      }
+    if (paramAdvertisementInfo == null) {}
+    while (TextUtils.isEmpty(paramAdvertisementInfo.getTicket())) {
+      return false;
     }
+    return a.contains(paramAdvertisementInfo.getTicket());
   }
   
-  public void a(TouchWebView paramTouchWebView, String paramString)
+  public static void b(AdvertisementInfo paramAdvertisementInfo)
   {
-    QLog.i("Ecshop_EcshopWebviewPool", 2, "ecshop recycleWebView  ");
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if (paramAdvertisementInfo == null) {}
+    while (TextUtils.isEmpty(paramAdvertisementInfo.getTicket())) {
+      return;
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (!StringUtil.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString));
+    a.remove(paramAdvertisementInfo.getTicket());
   }
 }
 

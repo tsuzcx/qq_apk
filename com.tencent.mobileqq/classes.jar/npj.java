@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.ui.AVGameRoomListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class npj
-  extends amwl
+  implements View.OnClickListener
 {
-  protected void a(boolean paramBoolean, OpenID paramOpenID) {}
+  public npj(AVGameRoomListFragment paramAVGameRoomListFragment) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    QLog.d("openid", 2, "isSuccess=" + paramBoolean + ",data=" + paramObject);
-    a(paramBoolean, (OpenID)paramObject);
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

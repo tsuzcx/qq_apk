@@ -1,157 +1,120 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype2;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acux
-  extends amsu
+  extends acve
 {
-  private acux(AutoRemarkActivity paramAutoRemarkActivity) {}
-  
-  protected void onGetAutoInfo(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder)
   {
-    if (!TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramString1)) {
-      return;
+    if (QLog.isColorLevel()) {
+      paramStringBuilder.append("elemType:PokeMsg;\n");
     }
-    if (paramBoolean)
-    {
-      if ((!AutoRemarkActivity.a(this.a.b)) && (!this.a.jdField_a_of_type_Boolean))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AutoRemarkActivity", 2, "onGetAutoInfo remark = " + paramString2);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString2);
-      }
-      try
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-        if (AppSetting.c) {
-          AutoRemarkActivity.a(this.a).setContentDescription(this.a.getResources().getString(2131693102) + this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
-        }
-        this.a.c = paramInt;
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(AutoRemarkActivity.a(this.a.app, this.a.c));
-        return;
-      }
-      catch (IndexOutOfBoundsException paramString1)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AutoRemarkActivity", 2, "onGetAutoInfo | IndexOutOfBoundsException");
-          }
-        }
-      }
-    }
-    this.a.c = 0;
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(AutoRemarkActivity.a(this.a.app, this.a.c));
-  }
-  
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
-    if ((this.a.jdField_a_of_type_Int == 1) && (TextUtils.equals(paramString1, this.a.jdField_a_of_type_JavaLangString)))
-    {
-      this.a.getIntent().getLongExtra("k_msg_key", 0L);
-      if ((paramBoolean) && (NetworkUtil.isNetSupport(this.a)))
-      {
-        this.a.d = 0;
-        this.a.jdField_a_of_type_JavaLangString = paramString1;
-        this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.moveFriendToGroup(this.a.jdField_a_of_type_JavaLangString, (byte)this.a.c, (byte)0);
-      }
-    }
-    else
-    {
-      return;
-    }
-    if ((this.a.d == 2) || (!NetworkUtil.isNetSupport(this.a)))
-    {
-      AutoRemarkActivity.f(this.a);
-      AutoRemarkActivity.a(this.a, this.a.getString(2131717688));
-      return;
-    }
-    paramString2 = this.a;
-    paramString2.d += 1;
-    this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.setFriendComment(paramString1, this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), false);
-  }
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    if (!TextUtils.equals(paramString, this.a.jdField_a_of_type_JavaLangString)) {}
+    paramList = paramList.iterator();
     do
     {
-      return;
-      if (paramBoolean1)
+      if (!paramList.hasNext()) {
+        break;
+      }
+      paramStringBuilder = (im_msg_body.Elem)paramList.next();
+    } while (!paramStringBuilder.common_elem.has());
+    for (paramList = (im_msg_body.CommonElem)paramStringBuilder.common_elem.get();; paramList = null)
+    {
+      if (paramList == null)
       {
-        if (paramBundle.getInt("resultCode") == 0)
-        {
-          int i = paramBundle.getInt("friend_setting");
-          if (paramBundle.getString("nick_name") == null) {}
-          switch (i)
-          {
-          default: 
-            AutoRemarkActivity.c(this.a);
-            QQToast.a(this.a, 2, 2131718132, 0).b(this.a.getTitleBarHeight());
-            this.a.a();
-          }
-          for (;;)
-          {
-            ((amoa)this.a.app.getBusinessHandler(53)).a(this.a.getIntent());
-            return;
-            AutoRemarkActivity.a(this.a);
-            QQToast.a(this.a, 2, 2131689560, 0).b(this.a.getTitleBarHeight());
-            this.a.a();
-            continue;
-            AutoRemarkActivity.b(this.a);
-            QQToast.a(this.a, 2, 2131718132, 0).b(this.a.getTitleBarHeight());
-            this.a.a();
-          }
-        }
-        AutoRemarkActivity.d(this.a);
-        paramBundle = paramBundle.getString("ErrorString");
         if (QLog.isColorLevel()) {
-          QLog.d("AutoRemarkActivity", 2, "add friend response error and ErroString = " + paramBundle);
+          QLog.d("PokeMsg", 2, "decodePBMsgElems_PokeMsg null commomElem!");
         }
-        paramString = paramBundle;
-        if (TextUtils.isEmpty(paramBundle)) {
-          paramString = this.a.getString(2131717688);
-        }
-        AutoRemarkActivity.a(this.a, paramString);
         return;
       }
-      AutoRemarkActivity.e(this.a);
-      AutoRemarkActivity.a(this.a, this.a.getString(2131717688));
-    } while (!QLog.isColorLevel());
-    QLog.d("AutoRemarkActivity", 2, "add friend response error and isSuccuss = NO");
+      paramStringBuilder = new MessageForPoke();
+      paramStringBuilder.msgtype = -5012;
+      if (paramList.uint32_business_type.has()) {
+        paramStringBuilder.interactType = paramList.uint32_business_type.get();
+      }
+      hummer_commelem.MsgElemInfo_servtype2 localMsgElemInfo_servtype2;
+      if (paramList.bytes_pb_elem.has()) {
+        localMsgElemInfo_servtype2 = new hummer_commelem.MsgElemInfo_servtype2();
+      }
+      for (;;)
+      {
+        try
+        {
+          localMsgElemInfo_servtype2.mergeFrom(paramList.bytes_pb_elem.get().toByteArray());
+          paramStringBuilder.msg = localMsgElemInfo_servtype2.bytes_poke_summary.get().toStringUtf8();
+          paramStringBuilder.doubleHitState = localMsgElemInfo_servtype2.uint32_double_hit.get();
+          if (!localMsgElemInfo_servtype2.uint32_vaspoke_id.has()) {
+            continue;
+          }
+          i = localMsgElemInfo_servtype2.uint32_vaspoke_id.get();
+          paramStringBuilder.subId = i;
+          if (!localMsgElemInfo_servtype2.bytes_vaspoke_name.has()) {
+            continue;
+          }
+          paramList = localMsgElemInfo_servtype2.bytes_vaspoke_name.get().toStringUtf8();
+          paramStringBuilder.name = paramList;
+          if (!localMsgElemInfo_servtype2.bytes_vaspoke_minver.has()) {
+            continue;
+          }
+          paramList = localMsgElemInfo_servtype2.bytes_vaspoke_minver.get().toStringUtf8();
+          paramStringBuilder.minVersion = paramList;
+          paramStringBuilder.strength = localMsgElemInfo_servtype2.uint32_poke_strength.get();
+          if (!localMsgElemInfo_servtype2.uint32_poke_flag.has()) {
+            continue;
+          }
+          i = localMsgElemInfo_servtype2.uint32_poke_flag.get();
+          paramStringBuilder.flag = i;
+          if (paramStringBuilder.interactType == 126) {
+            VasWebviewUtil.reportCommercialDrainage("", "poke", "receive", "", 0, 0, 0, "", String.valueOf(paramStringBuilder.subId), "none", "", "", "", "", 0, 0, 0, 0);
+          }
+        }
+        catch (Exception paramList)
+        {
+          int i;
+          QLog.d("PokeMsg", 1, "decodePBMsgElems_PokeMsg exception!", paramList);
+          continue;
+        }
+        paramList1.add(paramStringBuilder);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("PokeMsg", 2, "decodePbElems, common_elem type 2, interactType:" + paramStringBuilder.interactType + " ,doubleHitState:" + paramStringBuilder.doubleHitState);
+        return;
+        i = -1;
+        continue;
+        paramList = anvx.a(2131706127);
+        continue;
+        paramList = "";
+        continue;
+        i = 0;
+      }
+    }
   }
   
-  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  public int a()
   {
-    if (this.a.jdField_a_of_type_Int == 1)
-    {
-      if (paramString != null) {
-        break label40;
-      }
-      AutoRemarkActivity.g(this.a);
-      AutoRemarkActivity.a(this.a, this.a.getString(2131717688));
-    }
-    label40:
-    while (!paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    aift.b(this.a, paramString);
-    this.a.setResult(-1);
-    this.a.finish();
-    this.a.overridePendingTransition(2130771990, 2130772302);
+    return 1000;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
+  {
+    a(paramList, paramList1, paramStringBuilder);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (2 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

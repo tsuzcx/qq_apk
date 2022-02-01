@@ -1,29 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agzs
-  implements DialogInterface.OnClickListener
+  extends ahaa
 {
-  agzs(agzo paramagzo, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  agzs(agvm paramagvm)
   {
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_Int != 0) {
-        break label47;
-      }
-      this.jdField_a_of_type_Agzo.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
-    }
-    for (;;)
-    {
-      agzo.b(this.jdField_a_of_type_Agzo, null);
-      return;
-      label47:
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_Agzo.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
-      }
-    }
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahll(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

@@ -1,11 +1,20 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class wgv
-  extends vqm
+class wgv
+  extends wwa
 {
-  public wgv(qqstory_service.RspReportEvil paramRspReportEvil)
+  wgv(wgt paramwgt) {}
+  
+  public void a()
   {
-    super(paramRspReportEvil.result);
+    super.a();
+    wgs.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    ykv.a("home_page", "suc_share", 1, paramInt, new String[] { ykv.b(this.a.a.a) + "", ykv.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 

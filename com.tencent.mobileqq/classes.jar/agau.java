@@ -1,22 +1,47 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class agau
-  implements atah
+public class agau
+  extends anvi
 {
-  agau(agap paramagap) {}
+  public agau(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    paramView = new Bundle();
-    paramView.putString(bgge.e, "QQ会员");
-    paramView.putString(bgge.f, "LTMCLUB");
-    paramView.putString(bgge.d, "1450000515");
-    paramView.putInt(bgge.b, 3);
-    paramView.putString(bgge.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
-    paramView.putString(bgge.i, bgnx.a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-    bgge.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView);
+    int i;
+    if (QLog.isColorLevel())
+    {
+      String str = this.a.tag;
+      StringBuilder localStringBuilder = new StringBuilder().append("onSetGenralSettingsTroopFilter: isSuc = ").append(paramBoolean).append(", size = ");
+      if (paramMap == null)
+      {
+        i = 0;
+        QLog.d(str, 2, i);
+      }
+    }
+    else
+    {
+      if ((paramMap != null) && (paramMap.size() != 0)) {
+        break label83;
+      }
+    }
+    label83:
+    while (!this.a.mActivity.isResume())
+    {
+      return;
+      i = paramMap.size();
+      break;
+    }
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.app.getApp(), 2, this.a.mActivity.getString(2131719665), 0).b(this.a.mActivity.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.a.app.getApp(), 1, this.a.mActivity.getString(2131719664), 0).b(this.a.mActivity.getTitleBarHeight());
   }
 }
 

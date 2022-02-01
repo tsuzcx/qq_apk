@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.customviews;
 
-import afuj;
+import agmy;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import aqni;
+import arqt;
 import com.tencent.mobileqq.transfile.BaseTransProcessor;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageProgressTextView
   extends TextView
 {
-  private aqni jdField_a_of_type_Aqni;
+  private arqt jdField_a_of_type_Arqt;
   MessageProgressTextView.RefreshProgressRunnable jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$RefreshProgressRunnable;
   private BaseTransProcessor jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
   private boolean jdField_a_of_type_Boolean = true;
@@ -121,8 +121,8 @@ public class MessageProgressTextView
   public void setProgress(int paramInt)
   {
     this.e = paramInt;
-    if (this.jdField_a_of_type_Aqni != null) {
-      this.jdField_a_of_type_Aqni.a(paramInt);
+    if (this.jdField_a_of_type_Arqt != null) {
+      this.jdField_a_of_type_Arqt.a(paramInt);
     }
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Boolean)) {
       setText(paramInt + "%");
@@ -133,8 +133,8 @@ public class MessageProgressTextView
       if (localDrawable != null)
       {
         localDrawable.setLevel((100 - paramInt) * 100);
-        if (((localDrawable instanceof afuj)) && (!this.jdField_c_of_type_Boolean)) {
-          ((afuj)localDrawable).a(this.jdField_c_of_type_Int, this.d);
+        if (((localDrawable instanceof agmy)) && (!this.jdField_c_of_type_Boolean)) {
+          ((agmy)localDrawable).a(this.jdField_c_of_type_Int, this.d);
         }
       }
       return;
@@ -142,15 +142,15 @@ public class MessageProgressTextView
     }
   }
   
-  public void setProgressListener(aqni paramaqni, boolean paramBoolean)
+  public void setProgressListener(arqt paramarqt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Aqni = paramaqni;
+    this.jdField_a_of_type_Arqt = paramarqt;
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.MessageProgressTextView
  * JD-Core Version:    0.7.0.1
  */

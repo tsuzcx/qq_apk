@@ -1,333 +1,58 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.flashchat.FlashChatItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class aumi
+public class aumi
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public static final auly a(String paramString, Object paramObject)
+  public int a;
+  public aumb a;
+  aumj a;
+  public ArkAppLoadLayout a;
+  public ArkAppView a;
+  public MessageForArkFlashChat a;
+  public FlashChatItem a;
+  public int b;
+  int c;
+  
+  public aumi(View paramView, aumj paramaumj, int paramInt)
   {
-    return a(paramString, new Object[] { paramObject });
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat = null;
+    if (paramaumj != null) {
+      this.jdField_a_of_type_Aumj = paramaumj;
+    }
+    this.c = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramView.findViewById(2131362957));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)paramView.findViewById(2131370436));
+    this.itemView.setOnClickListener(this);
+    this.itemView.setOnTouchListener(paramaumj);
   }
   
-  public static final auly a(String paramString, Object paramObject1, Object paramObject2)
+  public void onClick(View paramView)
   {
-    return a(paramString, new Object[] { paramObject1, paramObject2 });
+    if (this.jdField_a_of_type_Aumj != null) {
+      this.jdField_a_of_type_Aumj.a(paramView, getPosition(), this.c);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public static final auly a(String paramString, Object[] paramArrayOfObject)
+  public boolean onLongClick(View paramView)
   {
-    Throwable localThrowable = a(paramArrayOfObject);
-    Object[] arrayOfObject = paramArrayOfObject;
-    if (localThrowable != null) {
-      arrayOfObject = a(paramArrayOfObject);
-    }
-    return a(paramString, arrayOfObject, localThrowable);
-  }
-  
-  public static final auly a(String paramString, Object[] paramArrayOfObject, Throwable paramThrowable)
-  {
-    int j = 0;
-    if (paramString == null) {
-      return new auly(null, paramArrayOfObject, paramThrowable);
-    }
-    if (paramArrayOfObject == null) {
-      return new auly(paramString);
-    }
-    StringBuilder localStringBuilder = new StringBuilder(paramString.length() + 50);
-    int i = 0;
-    if (j < paramArrayOfObject.length)
+    boolean bool = false;
+    if (this.jdField_a_of_type_Aumj != null)
     {
-      int k = paramString.indexOf("{}", i);
-      if (k == -1)
-      {
-        if (i == 0) {
-          return new auly(paramString, paramArrayOfObject, paramThrowable);
-        }
-        localStringBuilder.append(paramString, i, paramString.length());
-        return new auly(localStringBuilder.toString(), paramArrayOfObject, paramThrowable);
-      }
-      if (a(paramString, k)) {
-        if (!b(paramString, k))
-        {
-          j -= 1;
-          localStringBuilder.append(paramString, i, k - 1);
-          localStringBuilder.append('{');
-          i = k + 1;
-        }
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        localStringBuilder.append(paramString, i, k - 1);
-        a(localStringBuilder, paramArrayOfObject[j], new HashMap());
-        i = k + 2;
-        continue;
-        localStringBuilder.append(paramString, i, k);
-        a(localStringBuilder, paramArrayOfObject[j], new HashMap());
-        i = k + 2;
-      }
+      this.jdField_a_of_type_Aumj.b(paramView, getPosition(), this.c);
+      bool = true;
     }
-    localStringBuilder.append(paramString, i, paramString.length());
-    return new auly(localStringBuilder.toString(), paramArrayOfObject, paramThrowable);
-  }
-  
-  static final Throwable a(Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
-      return null;
-    }
-    paramArrayOfObject = paramArrayOfObject[(paramArrayOfObject.length - 1)];
-    if ((paramArrayOfObject instanceof Throwable)) {
-      return (Throwable)paramArrayOfObject;
-    }
-    return null;
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, Object paramObject)
-  {
-    try
-    {
-      paramStringBuilder.append(paramObject.toString());
-      return;
-    }
-    catch (Throwable paramObject)
-    {
-      paramStringBuilder.append("[FAILED toString()]");
-    }
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, Object paramObject, Map<Object[], Object> paramMap)
-  {
-    if (paramObject == null)
-    {
-      paramStringBuilder.append("null");
-      return;
-    }
-    if (!paramObject.getClass().isArray())
-    {
-      a(paramStringBuilder, paramObject);
-      return;
-    }
-    if ((paramObject instanceof boolean[]))
-    {
-      a(paramStringBuilder, (boolean[])paramObject);
-      return;
-    }
-    if ((paramObject instanceof byte[]))
-    {
-      a(paramStringBuilder, (byte[])paramObject);
-      return;
-    }
-    if ((paramObject instanceof char[]))
-    {
-      a(paramStringBuilder, (char[])paramObject);
-      return;
-    }
-    if ((paramObject instanceof short[]))
-    {
-      a(paramStringBuilder, (short[])paramObject);
-      return;
-    }
-    if ((paramObject instanceof int[]))
-    {
-      a(paramStringBuilder, (int[])paramObject);
-      return;
-    }
-    if ((paramObject instanceof long[]))
-    {
-      a(paramStringBuilder, (long[])paramObject);
-      return;
-    }
-    if ((paramObject instanceof float[]))
-    {
-      a(paramStringBuilder, (float[])paramObject);
-      return;
-    }
-    if ((paramObject instanceof double[]))
-    {
-      a(paramStringBuilder, (double[])paramObject);
-      return;
-    }
-    a(paramStringBuilder, (Object[])paramObject, paramMap);
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, byte[] paramArrayOfByte)
-  {
-    paramStringBuilder.append('[');
-    int j = paramArrayOfByte.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramStringBuilder.append(paramArrayOfByte[i]);
-      if (i != j - 1) {
-        paramStringBuilder.append(", ");
-      }
-      i += 1;
-    }
-    paramStringBuilder.append(']');
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, char[] paramArrayOfChar)
-  {
-    paramStringBuilder.append('[');
-    int j = paramArrayOfChar.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramStringBuilder.append(paramArrayOfChar[i]);
-      if (i != j - 1) {
-        paramStringBuilder.append(", ");
-      }
-      i += 1;
-    }
-    paramStringBuilder.append(']');
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, double[] paramArrayOfDouble)
-  {
-    paramStringBuilder.append('[');
-    int j = paramArrayOfDouble.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramStringBuilder.append(paramArrayOfDouble[i]);
-      if (i != j - 1) {
-        paramStringBuilder.append(", ");
-      }
-      i += 1;
-    }
-    paramStringBuilder.append(']');
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, float[] paramArrayOfFloat)
-  {
-    paramStringBuilder.append('[');
-    int j = paramArrayOfFloat.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramStringBuilder.append(paramArrayOfFloat[i]);
-      if (i != j - 1) {
-        paramStringBuilder.append(", ");
-      }
-      i += 1;
-    }
-    paramStringBuilder.append(']');
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, int[] paramArrayOfInt)
-  {
-    paramStringBuilder.append('[');
-    int j = paramArrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramStringBuilder.append(paramArrayOfInt[i]);
-      if (i != j - 1) {
-        paramStringBuilder.append(", ");
-      }
-      i += 1;
-    }
-    paramStringBuilder.append(']');
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, long[] paramArrayOfLong)
-  {
-    paramStringBuilder.append('[');
-    int j = paramArrayOfLong.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramStringBuilder.append(paramArrayOfLong[i]);
-      if (i != j - 1) {
-        paramStringBuilder.append(", ");
-      }
-      i += 1;
-    }
-    paramStringBuilder.append(']');
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, Object[] paramArrayOfObject, Map<Object[], Object> paramMap)
-  {
-    paramStringBuilder.append('[');
-    if (!paramMap.containsKey(paramArrayOfObject))
-    {
-      paramMap.put(paramArrayOfObject, null);
-      int j = paramArrayOfObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        a(paramStringBuilder, paramArrayOfObject[i], paramMap);
-        if (i != j - 1) {
-          paramStringBuilder.append(", ");
-        }
-        i += 1;
-      }
-      paramMap.remove(paramArrayOfObject);
-    }
-    for (;;)
-    {
-      paramStringBuilder.append(']');
-      return;
-      paramStringBuilder.append("...");
-    }
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, short[] paramArrayOfShort)
-  {
-    paramStringBuilder.append('[');
-    int j = paramArrayOfShort.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramStringBuilder.append(paramArrayOfShort[i]);
-      if (i != j - 1) {
-        paramStringBuilder.append(", ");
-      }
-      i += 1;
-    }
-    paramStringBuilder.append(']');
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, boolean[] paramArrayOfBoolean)
-  {
-    paramStringBuilder.append('[');
-    int j = paramArrayOfBoolean.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramStringBuilder.append(paramArrayOfBoolean[i]);
-      if (i != j - 1) {
-        paramStringBuilder.append(", ");
-      }
-      i += 1;
-    }
-    paramStringBuilder.append(']');
-  }
-  
-  static final boolean a(String paramString, int paramInt)
-  {
-    if (paramInt == 0) {}
-    while (paramString.charAt(paramInt - 1) != '\\') {
-      return false;
-    }
-    return true;
-  }
-  
-  private static Object[] a(Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
-      throw new IllegalStateException("non-sensical empty or null argument array");
-    }
-    int i = paramArrayOfObject.length - 1;
-    Object[] arrayOfObject = new Object[i];
-    System.arraycopy(paramArrayOfObject, 0, arrayOfObject, 0, i);
-    return arrayOfObject;
-  }
-  
-  static final boolean b(String paramString, int paramInt)
-  {
-    return (paramInt >= 2) && (paramString.charAt(paramInt - 2) == '\\');
+    return bool;
   }
 }
 

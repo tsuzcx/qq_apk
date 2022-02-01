@@ -1,39 +1,34 @@
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 public class ajcd
-  extends anbn
+  implements Comparator<PhoneContact>
 {
-  public ajcd(Conversation paramConversation) {}
+  public ajcd(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void a(List<String> paramList)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    anuz localanuz;
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      localanuz = this.a.a.getRecentUserProxy();
-      if (localanuz != null) {
-        break label37;
-      }
-      QLog.d("Q.recent", 1, "onBatchDelete, proxy == null");
+    Object localObject2 = paramPhoneContact1.pinyinFirst;
+    String str = paramPhoneContact2.pinyinFirst;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).endsWith("#")) {
+      localObject1 = "Za";
     }
-    for (;;)
-    {
-      return;
-      label37:
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        RecentUser localRecentUser = (RecentUser)localanuz.findRecentUserByUin((String)paramList.next(), 0);
-        if (localRecentUser != null) {
-          localanuz.delRecentUser(localRecentUser);
-        }
-      }
+    localObject2 = str;
+    if (str.endsWith("#")) {
+      localObject2 = "Za";
     }
+    int j = ((String)localObject1).compareTo((String)localObject2);
+    int i = j;
+    if (j == 0) {
+      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+    }
+    j = i;
+    if (i == 0) {
+      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    }
+    return j;
   }
 }
 

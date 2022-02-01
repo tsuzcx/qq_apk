@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aoji;
+import apmk;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class ARReport$16
   implements Runnable
 {
-  public ARReport$16(aoji paramaoji, long paramLong, int paramInt) {}
+  public ARReport$16(apmk paramapmk, long paramLong, int paramInt) {}
   
   public void run()
   {

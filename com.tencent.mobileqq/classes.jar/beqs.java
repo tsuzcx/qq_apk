@@ -1,12 +1,6 @@
-class beqs
-  implements beza
+public abstract interface beqs
 {
-  beqs(beqp parambeqp) {}
-  
-  public void a(int paramInt)
-  {
-    this.a.a(beyy.b(paramInt));
-  }
+  public abstract void b();
 }
 
 

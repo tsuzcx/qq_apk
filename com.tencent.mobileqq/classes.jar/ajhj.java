@@ -1,19 +1,28 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import java.util.Map;
 
-class ajhj
-  implements AdapterView.OnItemLongClickListener
+public class ajhj
+  extends anvi
 {
-  ajhj(ajhb paramajhb) {}
+  public ajhj(TroopView paramTroopView) {}
   
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
+    if (paramBoolean1) {
+      this.a.j();
     }
-    return true;
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.j();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
   }
 }
 

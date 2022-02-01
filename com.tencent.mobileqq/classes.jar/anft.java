@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 
-public class anft
-  extends amnw
+public abstract interface anft
 {
-  private anft(GetCheckUpdate paramGetCheckUpdate) {}
+  public abstract void a(int paramInt);
   
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    this.a.a(7);
-  }
+  public abstract void a(ApolloTextureView paramApolloTextureView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anft
  * JD-Core Version:    0.7.0.1
  */

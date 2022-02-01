@@ -1,31 +1,8 @@
-import com.tencent.mobileqq.soload.config.SoConfig;
-import java.util.Comparator;
+import java.util.List;
 
-public class bbzp
-  implements Comparator<aptx>
+public abstract interface bbzp
 {
-  public bbzp(SoConfig paramSoConfig) {}
-  
-  public int a(aptx paramaptx1, aptx paramaptx2)
-  {
-    int j = 0;
-    int i;
-    if (paramaptx1 == null)
-    {
-      i = 0;
-      if (paramaptx2 != null) {
-        break label26;
-      }
-    }
-    for (;;)
-    {
-      return j - i;
-      i = paramaptx1.a;
-      break;
-      label26:
-      j = paramaptx2.a;
-    }
-  }
+  public abstract void a(int paramInt, List<? extends bbzd> paramList);
 }
 
 

@@ -1,14 +1,11 @@
-import android.widget.PopupWindow.OnDismissListener;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-class bjrc
-  implements PopupWindow.OnDismissListener
+public abstract interface bjrc
 {
-  bjrc(bjrb parambjrb) {}
+  public abstract void a(int paramInt, WadlResult paramWadlResult);
   
-  public void onDismiss()
-  {
-    this.a.a(1.0F);
-  }
+  public abstract void a(ArrayList<WadlResult> paramArrayList);
 }
 
 

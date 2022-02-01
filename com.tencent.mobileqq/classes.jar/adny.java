@@ -1,22 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class adny
-  extends adnm
+  implements DialogInterface.OnClickListener
 {
-  public adny(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
+  public adny(ChatHistory paramChatHistory) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    this.b.d(paramInt1, paramInt2, paramIntent);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adny
  * JD-Core Version:    0.7.0.1
  */

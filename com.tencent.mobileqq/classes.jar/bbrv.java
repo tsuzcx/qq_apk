@@ -1,10 +1,18 @@
-public class bbrv
+import android.app.Activity;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+class bbrv
+  implements EIPCResultCallback
 {
-  public float a;
-  public int a;
-  public long a;
-  public int b;
-  public long b;
+  bbrv(bbrl parambbrl) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if (-102 == paramEIPCResult.code) {
+      this.a.mContext.finish();
+    }
+  }
 }
 
 

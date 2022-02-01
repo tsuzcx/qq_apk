@@ -1,244 +1,250 @@
-import android.text.TextUtils;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.RcmdAnchor;
-import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.RecommendItem;
-import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.RecommendPageReq;
-import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.RecommendPageRsp;
-import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.RoomRichTitle;
-import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.UserExtraInfo;
-import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.UserMsgInfo;
-import com.tencent.mobileqq.now.livehomepage.NowQQLiveHomepageProto.UserTag;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.RemoteCallbackList;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.manager.LoginManager;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class axkf
+  extends axkc
 {
-  private static int f;
-  public final int a;
-  private long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString = axkf.class.getSimpleName();
-  private final List<axki> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private volatile boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private final String jdField_b_of_type_JavaLangString = "78711";
-  private int c;
-  private final int d;
-  private int e;
+  public axkf(QQPlayerService paramQQPlayerService) {}
   
-  public axkf()
+  public int a()
   {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_d_of_type_Int = 60000;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayState");
+    }
+    return QQPlayerService.a();
   }
   
-  private axki a(NowQQLiveHomepageProto.RcmdAnchor paramRcmdAnchor)
+  public Intent a()
   {
-    boolean bool2 = true;
-    axki localaxki = new axki();
-    localaxki.j = paramRcmdAnchor.string_head_img_url.get();
-    localaxki.jdField_b_of_type_JavaLangString = paramRcmdAnchor.string_room_img_url.get();
-    localaxki.jdField_b_of_type_Int = paramRcmdAnchor.hall_room_id.get();
-    localaxki.jdField_c_of_type_JavaLangString = paramRcmdAnchor.string_name.get();
-    localaxki.jdField_c_of_type_Int = paramRcmdAnchor.uint32_watch_count.get();
-    localaxki.jdField_d_of_type_JavaLangString = paramRcmdAnchor.string_location.get();
-    localaxki.jdField_f_of_type_JavaLangString = paramRcmdAnchor.string_id.get();
-    localaxki.jdField_a_of_type_Long = paramRcmdAnchor.imsdk_tiny_id.get();
-    localaxki.m = paramRcmdAnchor.rtmp_url.get();
-    boolean bool1;
-    if (paramRcmdAnchor.allow_play.get() == 1) {
-      bool1 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayBarIntent ");
     }
-    for (;;)
-    {
-      localaxki.jdField_b_of_type_Boolean = bool1;
-      if (paramRcmdAnchor.video_preview.get() == 1)
-      {
-        bool1 = bool2;
-        localaxki.jdField_c_of_type_Boolean = bool1;
-        localaxki.jdField_d_of_type_Int = paramRcmdAnchor.microphone_flag.get();
-        localaxki.jdField_g_of_type_JavaLangString = paramRcmdAnchor.icon_url.get();
-        localaxki.jdField_a_of_type_JavaUtilList = paramRcmdAnchor.rich_title.elements.get();
-        localaxki.i = paramRcmdAnchor.string_description.get();
-        localaxki.h = paramRcmdAnchor.award_pendant_url.get();
-        if (paramRcmdAnchor.extra_info.has())
-        {
-          NowQQLiveHomepageProto.UserExtraInfo localUserExtraInfo = (NowQQLiveHomepageProto.UserExtraInfo)paramRcmdAnchor.extra_info.get();
-          if ((localUserExtraInfo.medal_info_list.has()) && (localUserExtraInfo.medal_info_list.get() != null) && (localUserExtraInfo.medal_info_list.size() > 0)) {
-            localaxki.a(localUserExtraInfo.medal_info_list.get());
-          }
-        }
-        localaxki.jdField_e_of_type_Int = paramRcmdAnchor.user_tag.color.get();
-      }
-      try
-      {
-        if (!TextUtils.isEmpty(paramRcmdAnchor.user_tag.change_color.get())) {
-          localaxki.jdField_f_of_type_Int = Integer.parseInt(paramRcmdAnchor.user_tag.change_color.get(), 16);
-        }
-        localaxki.k = paramRcmdAnchor.user_tag.pic_url.get();
-        localaxki.l = paramRcmdAnchor.user_tag.wording.get();
-        localaxki.jdField_e_of_type_JavaLangString = paramRcmdAnchor.string_jump_url.get();
-        localaxki.jdField_g_of_type_Int = paramRcmdAnchor.user_tag.type.get();
-        localaxki.n = paramRcmdAnchor.advertising_sign.get();
-        return localaxki;
-        bool1 = false;
-        continue;
-        bool1 = false;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
-        {
-          QLog.e(this.jdField_a_of_type_JavaLangString, 2, localNumberFormatException, new Object[0]);
-        }
-      }
-    }
+    return QQPlayerService.a();
   }
   
-  public int a(int paramInt, byte[] paramArrayOfByte)
+  public Bundle a()
   {
-    if (paramArrayOfByte == null) {
-      return -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getExtras ");
     }
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "parse data");
-    if (paramInt <= 0)
-    {
-      this.jdField_a_of_type_JavaUtilSet.clear();
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_Int = 0;
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "clear state");
-    }
-    for (;;)
-    {
-      NowQQLiveHomepageProto.RecommendPageRsp localRecommendPageRsp;
-      NowQQLiveHomepageProto.RecommendItem localRecommendItem;
-      try
-      {
-        localRecommendPageRsp = new NowQQLiveHomepageProto.RecommendPageRsp();
-        localRecommendPageRsp.mergeFrom(paramArrayOfByte);
-        this.jdField_c_of_type_Int = localRecommendPageRsp.uint32_new_timestamp.get();
-        jdField_f_of_type_Int = localRecommendPageRsp.rcmd_col_mode.get();
-        paramArrayOfByte = localRecommendPageRsp.rpt_msg_rcmd.get().iterator();
-        if (paramArrayOfByte.hasNext())
-        {
-          localRecommendItem = (NowQQLiveHomepageProto.RecommendItem)paramArrayOfByte.next();
-          if (this.jdField_a_of_type_JavaUtilSet.contains(localRecommendItem.string_key.get()))
-          {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "去重： " + localRecommendItem.string_key.get());
-            continue;
-          }
-          this.jdField_a_of_type_JavaUtilSet.add(localRecommendItem.string_key.get());
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        return -1;
-      }
-      NowQQLiveHomepageProto.RcmdAnchor localRcmdAnchor;
-      Object localObject;
-      int i;
-      switch (localRecommendItem.uint32_type.get())
-      {
-      case 0: 
-        localRcmdAnchor = (NowQQLiveHomepageProto.RcmdAnchor)localRecommendItem.msg_anchor.get();
-        localObject = localRcmdAnchor.string_id.get();
-        if ((localObject != null) && (((String)localObject).equals(LoginManager.getInstance().getAccount())))
-        {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "主页过滤自己");
-        }
-        else
-        {
-          localObject = a(localRcmdAnchor);
-          ((axki)localObject).jdField_a_of_type_JavaLangString = localRecommendItem.string_key.get();
-          i = this.jdField_b_of_type_Int;
-          this.jdField_b_of_type_Int = (i + 1);
-          ((axki)localObject).jdField_a_of_type_Int = i;
-          ((axki)localObject).o = localRcmdAnchor.union_channel_sign.get();
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
-        }
-        break;
-      case 5: 
-        localRcmdAnchor = (NowQQLiveHomepageProto.RcmdAnchor)localRecommendItem.msg_anchor.get();
-        localObject = localRcmdAnchor.string_id.get();
-        if ((localObject != null) && (((String)localObject).equals(LoginManager.getInstance().getAccount())))
-        {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "主页过滤自己");
-        }
-        else
-        {
-          localObject = a(localRcmdAnchor);
-          ((axki)localObject).jdField_a_of_type_JavaLangString = localRecommendItem.string_key.get();
-          i = this.jdField_b_of_type_Int;
-          this.jdField_b_of_type_Int = (i + 1);
-          ((axki)localObject).jdField_a_of_type_Int = i;
-          ((axki)localObject).o = localRcmdAnchor.union_channel_sign.get();
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "NewRcmdDataMgr, parseData()  Double----anchor_union_channel_sign = " + ((axki)localObject).o);
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
-          continue;
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "第" + paramInt + "开始拉取:" + localRecommendPageRsp.rpt_msg_rcmd.get().size() + "个数据;" + this.jdField_a_of_type_JavaUtilList.size() + "行");
-          return -1;
-        }
-        break;
-      }
-    }
+    return QQPlayerService.a();
   }
   
-  public List<axki> a()
+  public SongInfo a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSong");
+    }
+    return QQPlayerService.b();
   }
   
-  public void a(int paramInt, axkh paramaxkh, boolean paramBoolean)
+  public String a()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    NowQQLiveHomepageProto.RecommendPageReq localRecommendPageReq;
-    do
-    {
+    return QQPlayerService.a();
+  }
+  
+  public String a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : generateToken : callerType=" + paramInt + ",id=" + paramString);
+    }
+    return QQPlayerService.a(paramInt, paramString);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : pause");
+    }
+    QQPlayerService.a(this.a);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : setPlayMode");
+    }
+    QQPlayerService.a(paramInt);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : setPlayBarIntent: " + paramIntent.toString());
+    }
+    QQPlayerService.a(paramIntent);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : setExtras ");
+    }
+    QQPlayerService.a(paramBundle);
+  }
+  
+  public void a(axjy paramaxjy)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : registerCallback");
+    }
+    if (paramaxjy == null) {
       return;
-      if (paramBoolean)
-      {
-        this.jdField_e_of_type_Int += 1;
-        if (this.jdField_e_of_type_Int >= 3)
-        {
-          paramaxkh.b();
-          return;
-        }
+    }
+    if (QQPlayerService.a(this.a) == null) {}
+    try
+    {
+      if (QQPlayerService.a(this.a) == null) {
+        QQPlayerService.a(this.a, new RemoteCallbackList());
       }
-      this.jdField_a_of_type_Boolean = true;
-      localRecommendPageReq = new NowQQLiveHomepageProto.RecommendPageReq();
-    } while (TextUtils.isEmpty(LoginManager.getInstance().getAccount()));
-    localRecommendPageReq.uint32_last_update.set(this.jdField_c_of_type_Int);
-    localRecommendPageReq.uint32_index.set(paramInt);
-    NowQQLiveHomepageProto.UserMsgInfo localUserMsgInfo = new NowQQLiveHomepageProto.UserMsgInfo();
-    localUserMsgInfo.type.set(1);
-    localUserMsgInfo.desc.set(String.valueOf(2));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localUserMsgInfo);
-    localRecommendPageReq.user_msg_info.set(localArrayList);
-    localRecommendPageReq.channel.set("78711");
-    localRecommendPageReq.rcmd_col_mode.set(jdField_f_of_type_Int);
-    localRecommendPageReq.device_id.set(biaq.c());
-    localRecommendPageReq.qimei.set(UserAction.getQIMEI());
-    axjq.a().a(1718, 100, localRecommendPageReq.toByteArray(), new axkg(this, paramInt, paramaxkh));
+      QQPlayerService.a(this.a).register(paramaxjy);
+      return;
+    }
+    finally {}
   }
   
-  public void a(axkh paramaxkh)
+  public void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt)
   {
-    if (System.currentTimeMillis() > this.jdField_a_of_type_Long + 60000L) {
-      a(0, paramaxkh, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : startPlay sCallback = " + QQPlayerService.a() + ",startIndex" + paramInt);
     }
+    if (QQPlayerService.a() != null)
+    {
+      QQPlayerService.a(QQPlayerService.a());
+      QQPlayerService.b(null);
+    }
+    QQPlayerService.a(this.a, paramString, paramArrayOfSongInfo, paramInt);
+  }
+  
+  public boolean a()
+  {
+    return QQPlayerService.a();
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : isPlayingMySong : token=" + paramString);
+    }
+    return QQPlayerService.a(paramString);
+  }
+  
+  public SongInfo[] a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayList");
+    }
+    return QQPlayerService.a();
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayMode");
+    }
+    return QQPlayerService.b();
+  }
+  
+  public SongInfo b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getNextSong");
+    }
+    return QQPlayerService.c();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : resume");
+    }
+    QQPlayerService.b(this.a);
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : seekTo " + paramInt);
+    }
+    QQPlayerService.b(paramInt);
+  }
+  
+  public void b(axjy paramaxjy)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : unRegisterCallback");
+    }
+    if ((paramaxjy != null) && (QQPlayerService.a(this.a) != null)) {
+      QQPlayerService.a(this.a).unregister(paramaxjy);
+    }
+  }
+  
+  public int c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getDuration");
+    }
+    return QQPlayerService.d();
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : stop");
+    }
+    QQPlayerService.c(this.a);
+  }
+  
+  public int d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongPosition");
+    }
+    return QQPlayerService.e();
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : playNext");
+    }
+    QQPlayerService.b(this.a);
+  }
+  
+  public int e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentSongIndex");
+    }
+    return QQPlayerService.g();
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : playPrev");
+    }
+    QQPlayerService.a(this.a);
+  }
+  
+  public int f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getPlayListCount");
+    }
+    return QQPlayerService.c();
+  }
+  
+  public int g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQPlayerService", 2, "AIDL : getCurrentPlayPosition");
+    }
+    return QQPlayerService.f();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import afdk;
-import afdv;
-import afdw;
-import afdx;
-import afei;
-import afej;
+import afup;
+import afva;
+import afvb;
+import afvc;
+import afvn;
+import afvo;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
@@ -14,7 +14,7 @@ import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Transformation;
-import apeg;
+import aqhk;
 import com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
@@ -22,8 +22,8 @@ import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import xvv;
-import yos;
+import ykq;
+import zdl;
 
 public class AIOAnimationConatiner
   extends ViewGroup
@@ -32,10 +32,10 @@ public class AIOAnimationConatiner
   public static final ViewGroup.LayoutParams a;
   public static ClassLoader a;
   private int jdField_a_of_type_Int;
-  private afdk jdField_a_of_type_Afdk;
-  public afei a;
+  private afup jdField_a_of_type_Afup;
+  public afvn a;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private List<afdk> jdField_a_of_type_JavaUtilList;
+  private List<afup> jdField_a_of_type_JavaUtilList;
   
   static
   {
@@ -53,7 +53,7 @@ public class AIOAnimationConatiner
     super(paramContext, paramAttributeSet);
   }
   
-  private afdk a(int paramInt)
+  private afup a(int paramInt)
   {
     switch (paramInt)
     {
@@ -64,15 +64,15 @@ public class AIOAnimationConatiner
     case 2: 
       return new FloorJumperSet(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 1: 
-      return new afdx(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+      return new afvc(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 0: 
-      return new afdw(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+      return new afvb(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 4: 
       return new PathAnimation(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 5: 
-      return new apeg(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+      return new aqhk(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 7: 
-      return new afej(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+      return new afvo(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     }
     return new BusinessEggsAnimation(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
   }
@@ -83,7 +83,7 @@ public class AIOAnimationConatiner
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        a(((afdk)localIterator.next()).jdField_a_of_type_Int);
+        a(((afup)localIterator.next()).jdField_a_of_type_Int);
       }
       this.jdField_a_of_type_JavaUtilList.clear();
     }
@@ -94,7 +94,7 @@ public class AIOAnimationConatiner
     if (QLog.isColorLevel()) {
       QLog.d("AIOAnimationContainer", 2, "animation end");
     }
-    this.jdField_a_of_type_Afdk = null;
+    this.jdField_a_of_type_Afup = null;
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
       removeAllViewsInLayout();
@@ -112,8 +112,8 @@ public class AIOAnimationConatiner
   
   public void a()
   {
-    if (this.jdField_a_of_type_Afdk != null) {
-      this.jdField_a_of_type_Afdk.c();
+    if (this.jdField_a_of_type_Afup != null) {
+      this.jdField_a_of_type_Afup.c();
     }
     g();
   }
@@ -121,20 +121,20 @@ public class AIOAnimationConatiner
   public void a(int paramInt)
   {
     int i = 0;
-    afdk localafdk;
+    afup localafup;
     if ((this.jdField_a_of_type_JavaUtilList != null) && (i < this.jdField_a_of_type_JavaUtilList.size()))
     {
-      localafdk = (afdk)this.jdField_a_of_type_JavaUtilList.get(i);
-      if ((localafdk == null) || (paramInt != localafdk.jdField_a_of_type_Int)) {}
+      localafup = (afup)this.jdField_a_of_type_JavaUtilList.get(i);
+      if ((localafup == null) || (paramInt != localafup.jdField_a_of_type_Int)) {}
     }
     for (;;)
     {
       if (i != -1)
       {
-        localafdk.c();
+        localafup.c();
         this.jdField_a_of_type_JavaUtilList.remove(i);
       }
-      if (((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_Afdk == null))
+      if (((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_Afup == null))
       {
         removeAllViewsInLayout();
         if (QLog.isColorLevel()) {
@@ -145,22 +145,22 @@ public class AIOAnimationConatiner
       return;
       i += 1;
       break;
-      localafdk = null;
+      localafup = null;
       i = -1;
     }
   }
   
   public void a(ListView paramListView)
   {
-    yos.a(paramListView);
+    zdl.a(paramListView);
     if (this.jdField_a_of_type_ComTencentWidgetListView == paramListView)
     {
-      xvv.e("AIOAnimationConatiner", "attach the same listView!");
+      ykq.e("AIOAnimationConatiner", "attach the same listView!");
       return;
     }
     if (this.jdField_a_of_type_ComTencentWidgetListView != null)
     {
-      xvv.e("AIOAnimationConatiner", "attach and override listView!");
+      ykq.e("AIOAnimationConatiner", "attach and override listView!");
       e();
     }
     this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
@@ -169,33 +169,33 @@ public class AIOAnimationConatiner
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Afdk != null;
+    return this.jdField_a_of_type_Afup != null;
   }
   
   public boolean a(int paramInt1, int paramInt2, Object... paramVarArgs)
   {
     boolean bool1 = false;
-    if ((this.jdField_a_of_type_Afdk != null) && (paramInt2 < this.jdField_a_of_type_Afdk.jdField_a_of_type_Int)) {}
+    if ((this.jdField_a_of_type_Afup != null) && (paramInt2 < this.jdField_a_of_type_Afup.jdField_a_of_type_Int)) {}
     boolean bool2;
     do
     {
       do
       {
         return bool1;
-        if ((this.jdField_a_of_type_Afdk != null) && (paramInt2 == this.jdField_a_of_type_Afdk.jdField_a_of_type_Int) && (this.jdField_a_of_type_Afdk.a(paramInt1))) {
-          return this.jdField_a_of_type_Afdk.a(paramVarArgs);
+        if ((this.jdField_a_of_type_Afup != null) && (paramInt2 == this.jdField_a_of_type_Afup.jdField_a_of_type_Int) && (this.jdField_a_of_type_Afup.a(paramInt1))) {
+          return this.jdField_a_of_type_Afup.a(paramVarArgs);
         }
-        if (this.jdField_a_of_type_Afdk != null) {
+        if (this.jdField_a_of_type_Afup != null) {
           a();
         }
         this.jdField_a_of_type_Int = paramInt1;
-        this.jdField_a_of_type_Afdk = a(paramInt1);
-      } while (this.jdField_a_of_type_Afdk == null);
-      this.jdField_a_of_type_Afdk.jdField_a_of_type_Int = paramInt2;
-      bool2 = this.jdField_a_of_type_Afdk.a(paramVarArgs);
+        this.jdField_a_of_type_Afup = a(paramInt1);
+      } while (this.jdField_a_of_type_Afup == null);
+      this.jdField_a_of_type_Afup.jdField_a_of_type_Int = paramInt2;
+      bool2 = this.jdField_a_of_type_Afup.a(paramVarArgs);
       bool1 = bool2;
     } while (bool2);
-    this.jdField_a_of_type_Afdk = null;
+    this.jdField_a_of_type_Afup = null;
     return bool2;
   }
   
@@ -212,7 +212,7 @@ public class AIOAnimationConatiner
   
   public void b(int paramInt)
   {
-    if ((this.jdField_a_of_type_Afdk != null) && (paramInt == this.jdField_a_of_type_Int)) {
+    if ((this.jdField_a_of_type_Afup != null) && (paramInt == this.jdField_a_of_type_Int)) {
       a();
     }
   }
@@ -227,10 +227,10 @@ public class AIOAnimationConatiner
     {
       if (((Iterator)localObject).hasNext())
       {
-        afdk localafdk = (afdk)((Iterator)localObject).next();
-        if ((paramInt1 == localafdk.jdField_a_of_type_Int) && (localafdk.a(paramInt1)))
+        afup localafup = (afup)((Iterator)localObject).next();
+        if ((paramInt1 == localafup.jdField_a_of_type_Int) && (localafup.a(paramInt1)))
         {
-          localafdk.a(paramVarArgs);
+          localafup.a(paramVarArgs);
           if (QLog.isColorLevel())
           {
             QLog.d("AIOAnimationConatiner", 2, "[concurrentStartAnimation] reuse animator, type: " + paramInt1);
@@ -248,7 +248,7 @@ public class AIOAnimationConatiner
           return false;
         }
         this.jdField_a_of_type_JavaUtilList.add(localObject);
-        ((afdk)localObject).a(paramVarArgs);
+        ((afup)localObject).a(paramVarArgs);
         if (QLog.isColorLevel()) {
           QLog.d("AIOAnimationConatiner", 2, "[concurrentStartAnimation] create new animator, type: " + paramInt1);
         }
@@ -262,35 +262,35 @@ public class AIOAnimationConatiner
   
   public void c()
   {
-    if (this.jdField_a_of_type_Afdk != null) {
-      this.jdField_a_of_type_Afdk.a();
+    if (this.jdField_a_of_type_Afup != null) {
+      this.jdField_a_of_type_Afup.a();
     }
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((afdk)localIterator.next()).a();
+        ((afup)localIterator.next()).a();
       }
     }
   }
   
   public void c(int paramInt)
   {
-    if (this.jdField_a_of_type_Afdk != null) {
-      this.jdField_a_of_type_Afdk.a(paramInt);
+    if (this.jdField_a_of_type_Afup != null) {
+      this.jdField_a_of_type_Afup.a(paramInt);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Afdk != null) {
-      this.jdField_a_of_type_Afdk.b();
+    if (this.jdField_a_of_type_Afup != null) {
+      this.jdField_a_of_type_Afup.b();
     }
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((afdk)localIterator.next()).b();
+        ((afup)localIterator.next()).b();
       }
     }
   }
@@ -307,16 +307,16 @@ public class AIOAnimationConatiner
   protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
   {
     Object localObject = paramView.getTag();
-    if ((VersionUtils.isHoneycomb()) && ((localObject instanceof afdv)) && (((afdv)localObject).b))
+    if ((VersionUtils.isHoneycomb()) && ((localObject instanceof afva)) && (((afva)localObject).b))
     {
-      localObject = (afdv)localObject;
+      localObject = (afva)localObject;
       Matrix localMatrix = paramTransformation.getMatrix();
       localMatrix.reset();
       int i = paramView.getWidth() / 2;
       int j = paramView.getHeight() / 2;
-      localMatrix.preRotate(((afdv)localObject).a, i, j);
-      localMatrix.preScale(((afdv)localObject).d, ((afdv)localObject).e, j, j);
-      paramTransformation.setAlpha(((afdv)localObject).f);
+      localMatrix.preRotate(((afva)localObject).a, i, j);
+      localMatrix.preScale(((afva)localObject).d, ((afva)localObject).e, j, j);
+      paramTransformation.setAlpha(((afva)localObject).f);
       return true;
     }
     return false;
@@ -337,14 +337,14 @@ public class AIOAnimationConatiner
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_Afdk != null) {
-      this.jdField_a_of_type_Afdk.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_Afup != null) {
+      this.jdField_a_of_type_Afup.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (this.jdField_a_of_type_Afdk != null) {
+    if (this.jdField_a_of_type_Afup != null) {
       if ((paramInt1 == paramInt5) && (paramInt2 == paramInt6) && (paramInt3 == paramInt7) && (paramInt4 == paramInt8)) {
         break label53;
       }
@@ -352,14 +352,14 @@ public class AIOAnimationConatiner
     label53:
     for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Afdk.a(bool, paramInt1, paramInt2, paramInt3, paramInt4);
+      this.jdField_a_of_type_Afup.a(bool, paramInt1, paramInt2, paramInt3, paramInt4);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner
  * JD-Core Version:    0.7.0.1
  */

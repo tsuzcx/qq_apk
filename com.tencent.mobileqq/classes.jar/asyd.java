@@ -1,10 +1,26 @@
-public abstract interface asyd
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+
+public class asyd
+  extends beby
 {
-  public abstract void a(int paramInt);
+  public asyd(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    super.a(paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
+  }
   
-  public abstract void b(boolean paramBoolean);
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    super.a(paramString, paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
+  }
 }
 
 

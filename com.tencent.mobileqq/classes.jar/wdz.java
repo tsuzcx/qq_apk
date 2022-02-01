@@ -1,40 +1,15 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBlackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
 public class wdz
-  extends vqr<wfx>
+  implements wds
 {
-  public static final String a = vpl.a("StorySvc.get_user_black_status");
-  public String b;
+  public wdz(StoryVideoUploadTask paramStoryVideoUploadTask, wdy paramwdy) {}
   
-  public String a()
+  public void a(wdr paramwdr)
   {
-    return a;
-  }
-  
-  public vqm a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetBlackList localRspGetBlackList = new qqstory_service.RspGetBlackList();
-    try
-    {
-      localRspGetBlackList.mergeFrom(paramArrayOfByte);
-      return new wfx(localRspGetBlackList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
-    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localReqGetBlackList.toByteArray();
+    this.jdField_a_of_type_Wdy.k = ((wdm)paramwdr).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
   }
 }
 

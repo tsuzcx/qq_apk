@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-public abstract class akbg
+class akbg
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(PreloadManager paramPreloadManager);
+  akbg(akam paramakam) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
+  }
 }
 
 

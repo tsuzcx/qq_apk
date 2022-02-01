@@ -1,33 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
-public class adlw
-  implements bjoe
+final class adlw
+  implements DialogInterface.OnClickListener
 {
-  public adlw(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
+  adlw(adnn paramadnn, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, adnm paramadnm) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
-    if (paramInt == 0)
+    int i = mvk.b(this.jdField_a_of_type_Adnn.jdField_a_of_type_Int);
+    String str;
+    if ((this.jdField_a_of_type_Adnn.jdField_a_of_type_JavaUtilMap != null) && (i == 1))
     {
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(this.jdField_a_of_type_Byte));
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupManagerActivity", 2, "DeleteFriendGroup :" + this.jdField_a_of_type_Byte + ", " + GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
-      }
-      if (!GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)) {
-        break label110;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131692885);
+      str = (String)this.jdField_a_of_type_Adnn.jdField_a_of_type_JavaUtilMap.get("MultiAVType");
+      if (str == null) {}
     }
-    label110:
-    while (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) == null) {
+    for (paramInt = Integer.valueOf(str).intValue();; paramInt = 0)
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, i, paramInt);
+      this.jdField_a_of_type_Adnn.d = false;
+      this.jdField_a_of_type_Adnn.e = false;
+      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adnm, this.jdField_a_of_type_Adnn);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.dismiss();
+      }
       return;
     }
-    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
   }
 }
 

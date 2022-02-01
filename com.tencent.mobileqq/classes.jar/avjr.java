@@ -1,36 +1,32 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager.InternalTaskEntry.1;
-import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
-import java.util.concurrent.ScheduledFuture;
+import QC.SetFontBubbleRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import java.lang.ref.WeakReference;
 
 public class avjr
+  extends aodb
 {
-  private long jdField_a_of_type_Long = -9223372036854775808L;
-  private TimerTaskManager.TimerTaskRunnable jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new TimerTaskManager.InternalTaskEntry.1(this);
-  private String jdField_a_of_type_JavaLangString;
-  private ScheduledFuture<?> jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
+  private WeakReference<BaseChatPie> a;
   
-  public static avjr a(TimerTaskManager.TimerTaskRunnable paramTimerTaskRunnable)
+  public avjr(BaseChatPie paramBaseChatPie)
   {
-    avjr localavjr = new avjr();
-    TimerTaskManager.TimerTaskRunnable.a(paramTimerTaskRunnable, true);
-    localavjr.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = paramTimerTaskRunnable;
-    return localavjr;
+    this.a = new WeakReference(paramBaseChatPie);
   }
   
-  public String toString()
+  public void a(Bundle paramBundle)
   {
-    boolean bool2 = false;
-    long l = this.jdField_a_of_type_Long;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable != null)
-    {
-      bool1 = bool2;
-      if (TimerTaskManager.TimerTaskRunnable.a(this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable)) {
-        bool1 = true;
-      }
+    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
+    if (localBaseChatPie != null) {
+      avjn.a(localBaseChatPie.app).a(localBaseChatPie, paramBundle);
     }
-    return String.format("Period = %d; IsValid = %b;", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1) });
+  }
+  
+  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt)
+  {
+    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
+    if (localBaseChatPie != null) {
+      avjn.a(localBaseChatPie.app).a(localBaseChatPie, paramBoolean, paramSetFontBubbleRsp, paramInt);
+    }
   }
 }
 

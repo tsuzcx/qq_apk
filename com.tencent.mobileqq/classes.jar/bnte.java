@@ -1,18 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
+import android.view.View;
+import dov.com.qq.im.aeeditor.lyric.interaction.AESlidingUpPanelLayout.PanelState;
 
-class bnte
-  implements DialogInterface.OnClickListener
+public abstract interface bnte
 {
-  bnte(bntb parambntb) {}
+  public abstract void a(View paramView, float paramFloat);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    ((bnsx)this.a.a).e(false);
-    bntb.a(this.a).setSelected(false);
-  }
+  public abstract void a(View paramView, AESlidingUpPanelLayout.PanelState paramPanelState1, AESlidingUpPanelLayout.PanelState paramPanelState2);
 }
 
 

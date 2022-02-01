@@ -1,57 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import java.io.File;
-import java.net.URL;
+import UserGrowth.stSchema;
+import UserGrowth.stUserAuth;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class uyp
-  implements vgd
+class uyp
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = System.currentTimeMillis();
+  uyp(uyn paramuyn, Context paramContext, String paramString) {}
   
-  uyp(String paramString, KandianUrlImageView paramKandianUrlImageView) {}
-  
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    uya.d("WeishiUtils", "url = " + paramURL + ", onLoadFailed!!!");
-    if (this.jdField_a_of_type_Int < 2)
+    vmp.a("WSUserAuthDialog", "jump to miniApp to set auth switch");
+    String str2 = "";
+    stUserAuth localstUserAuth = vau.a().a();
+    String str1 = str2;
+    if (localstUserAuth != null)
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      uya.d("WeishiUtils", "");
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImage(paramURL);
-      return;
-    }
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a(URL paramURL, syk paramsyk)
-  {
-    uya.b("WeishiUtils", "onLoadSuccess!!!");
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_Long > 0L)
-    {
-      if (paramURL != null)
-      {
-        unt.b(1, paramURL.toString());
-        long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-        paramsyk = AbsDownloader.getFile(paramURL.toString());
-        if (paramsyk != null)
-        {
-          String str = paramsyk.getAbsolutePath();
-          long l2 = paramsyk.length();
-          uya.c("actWsFeedPicReqDuration", "--successTime:" + System.currentTimeMillis() + ", downloadCost:" + l1 + ", length:" + l2 + ", url = " + paramURL.toString() + "\n--absolutePath = " + str);
-          if ("feeds".equals(this.jdField_a_of_type_JavaLangString)) {
-            uvw.a().a(true, l1, l2);
-          }
-          uvw.a().a(true, l1, l2, paramURL.toString(), this.jdField_a_of_type_JavaLangString);
-        }
+      str1 = str2;
+      if (localstUserAuth.schema != null) {
+        str1 = localstUserAuth.schema.miniAppSchema;
       }
-      this.jdField_a_of_type_Long = 0L;
     }
+    vmp.a("WSUserAuthDialog", "miniAppSchema = " + str1);
+    uyt.a(this.jdField_a_of_type_AndroidContentContext, str1, new uyq(this));
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", this.jdField_a_of_type_JavaLangString, "authorized_window", 1000007);
+    uyn.a(this.jdField_a_of_type_Uyn);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

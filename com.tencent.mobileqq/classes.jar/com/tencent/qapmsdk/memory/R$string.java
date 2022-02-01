@@ -2,7 +2,7 @@ package com.tencent.qapmsdk.memory;
 
 public final class R$string
 {
-  public static final int status_bar_notification_info_overflow = 2131718579;
+  public static final int status_bar_notification_info_overflow = 2131718968;
 }
 
 

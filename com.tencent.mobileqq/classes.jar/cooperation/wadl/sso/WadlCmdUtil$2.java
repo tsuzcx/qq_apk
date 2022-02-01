@@ -1,8 +1,8 @@
 package cooperation.wadl.sso;
 
-import abet;
+import abuf;
 import android.content.Intent;
-import blec;
+import bmqt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
@@ -10,18 +10,18 @@ import java.io.File;
 public class WadlCmdUtil$2
   implements Runnable
 {
-  public WadlCmdUtil$2(blec paramblec, String paramString, long paramLong) {}
+  public WadlCmdUtil$2(bmqt parambmqt, String paramString, long paramLong) {}
   
   public void run()
   {
-    Object localObject = blec.a();
+    Object localObject = bmqt.a();
     if (((File)localObject).exists()) {
       ((File)localObject).delete();
     }
     if (FileUtils.writeFile(((File)localObject).getAbsolutePath(), this.jdField_a_of_type_JavaLangString, false))
     {
-      abet.a("LAST_GET_CONF_VERSION", this.jdField_a_of_type_Long);
-      abet.a("LAST_GET_CONF_TIME", blec.a(this.this$0));
+      abuf.a("LAST_GET_CONF_VERSION", this.jdField_a_of_type_Long);
+      abuf.a("LAST_GET_CONF_TIME", bmqt.a(this.this$0));
       localObject = new Intent("com.tencent.gamecenter.action");
       ((Intent)localObject).setPackage(BaseApplicationImpl.getApplication().getPackageName());
       ((Intent)localObject).putExtra("key_event_id", 1);

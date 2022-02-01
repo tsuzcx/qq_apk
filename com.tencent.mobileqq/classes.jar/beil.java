@@ -1,37 +1,51 @@
-import android.support.annotation.NonNull;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class beil
-  extends SimpleObserver<beie>
 {
-  public beil(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  public static final String a = String.valueOf(153);
+  public static final String b = String.valueOf(153);
   
-  public void a(beie parambeie)
+  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    super.onNext(parambeie);
-    xvv.d("QQ.Troop.homework.CheckArithHWResultFragment", "requestSendHomeworkResult completed");
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    yos.a(parambeie.a);
-    yos.a(parambeie.b);
-    CheckArithHWResultFragment.a(this.a, parambeie.a, parambeie.b);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    xvv.e("QQ.Troop.homework.CheckArithHWResultFragment", "send homework error:" + paramError);
-    QQToast.a(this.a.getActivity(), 1, amtj.a(2131700911), 0).a();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    CheckArithHWResultFragment.a(this.a, null, null);
+    if (paramInt2 < 0) {
+      paramInt2 = NetworkUtil.getSystemNetwork(null);
+    }
+    for (;;)
+    {
+      int i = paramInt2;
+      if (paramInt2 <= 0) {
+        i = 10;
+      }
+      paramAppRuntime = paramString4;
+      try
+      {
+        if (TextUtils.isEmpty(paramString4)) {
+          paramAppRuntime = "1";
+        }
+        VasWebviewUtil.reportVasStatus(paramString1, paramString2, paramString3, i, paramInt1, paramInt3, Integer.parseInt(paramAppRuntime), paramString5, "");
+        if ((QLog.isColorLevel()) && (paramInt3 < 0))
+        {
+          paramString4 = new StringBuilder();
+          paramString4.append(paramString1).append("|step:");
+          paramString4.append(paramInt1).append("|from:");
+          paramString4.append(paramString2).append("|resultCode:");
+          paramString4.append(paramInt3).append("|id:");
+          paramString4.append(paramString3).append("|version:");
+          paramString4.append(paramAppRuntime);
+          QLog.i("ThemeReporter", 2, "ThemeReporterreportTheme Error data::" + paramString4.toString());
+        }
+        return;
+      }
+      catch (Exception paramAppRuntime)
+      {
+        QLog.e("ThemeReporter", 1, "ThemeReporter reportTheme Exception:" + paramAppRuntime.getMessage());
+        return;
+      }
+    }
   }
 }
 

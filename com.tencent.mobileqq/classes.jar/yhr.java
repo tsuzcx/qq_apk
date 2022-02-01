@@ -1,6 +1,15 @@
-public abstract interface yhr<ERROR_TYPE, DATA_TYPE>
+import java.util.List;
+
+class yhr
+  implements bkzs
 {
-  public abstract Void a(ERROR_TYPE paramERROR_TYPE, DATA_TYPE paramDATA_TYPE);
+  yhr(yhn paramyhn, int paramInt) {}
+  
+  public void onDismiss()
+  {
+    ydz localydz = (ydz)this.jdField_a_of_type_Yhn.a.a().get(this.jdField_a_of_type_Int);
+    yhn.a(this.jdField_a_of_type_Yhn, localydz, "clk_hide");
+  }
 }
 
 

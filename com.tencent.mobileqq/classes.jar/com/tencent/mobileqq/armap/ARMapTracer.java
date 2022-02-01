@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
 import android.os.SystemClock;
-import aozg;
+import aqck;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ public class ARMapTracer
 {
   private static int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
-  private aozg jdField_a_of_type_Aozg;
+  private aqck jdField_a_of_type_Aqck;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private final int[] jdField_a_of_type_ArrayOfInt;
@@ -153,7 +153,7 @@ public class ARMapTracer
       arrayOfInt1[i] += 1;
       arrayOfInt1 = this.jdField_b_of_type_ArrayOfInt;
       arrayOfInt1[i] += 1;
-    } while ((this.f < 30) || (this.jdField_a_of_type_Aozg == null));
+    } while ((this.f < 30) || (this.jdField_a_of_type_Aqck == null));
     if (this.jdField_b_of_type_Int > 0) {
       this.jdField_b_of_type_Int -= 1;
     }
@@ -164,7 +164,7 @@ public class ARMapTracer
     }
     for (;;)
     {
-      if ((i != this.c) && (this.d > 2) && (this.jdField_a_of_type_Aozg.a(i)))
+      if ((i != this.c) && (this.d > 2) && (this.jdField_a_of_type_Aqck.a(i)))
       {
         this.c = i;
         this.jdField_b_of_type_Int = 3;

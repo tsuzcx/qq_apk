@@ -1,32 +1,21 @@
-import QC.SetFontBubbleRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
 public class audx
-  extends anam
+  implements Comparator<FileInfo>
 {
-  private WeakReference<BaseChatPie> a;
-  
-  public audx(BaseChatPie paramBaseChatPie)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    this.a = new WeakReference(paramBaseChatPie);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
-    if (localBaseChatPie != null) {
-      audt.a(localBaseChatPie.app).a(localBaseChatPie, paramBundle);
+    if (paramFileInfo1.c())
+    {
+      if (!paramFileInfo2.c()) {
+        return -1000;
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt)
-  {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
-    if (localBaseChatPie != null) {
-      audt.a(localBaseChatPie.app).a(localBaseChatPie, paramBoolean, paramSetFontBubbleRsp, paramInt);
+    else if (paramFileInfo2.c()) {
+      return 1000;
     }
+    return paramFileInfo1.d().compareToIgnoreCase(paramFileInfo2.d());
   }
 }
 

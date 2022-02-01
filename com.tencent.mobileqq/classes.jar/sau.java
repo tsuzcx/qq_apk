@@ -1,57 +1,66 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.SimpleAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import java.util.Map;
 
-class sau
-  extends sif
+public class sau
+  extends SimpleAdapter
 {
-  sau(sab paramsab) {}
-  
-  public int a()
+  public sau(Context paramContext, List<? extends Map<String, ?>> paramList, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return 5;
+    super(paramList, paramInt, paramArrayOfString, paramArrayOfInt, arrayOfInt);
   }
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  protected void a(View paramView, ResultRecord paramResultRecord) {}
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject = null;
-    paramActionSheetItem = localObject;
-    if (!TextUtils.isEmpty(paramString)) {}
+    Object localObject = (Map)getItem(paramInt);
+    ResultRecord localResultRecord = ResultRecord.a((String)((Map)localObject).get("key_uin"), (String)((Map)localObject).get("key_name"));
+    if (FollowingListFragment.a(this.a).contains(localResultRecord)) {
+      ((Map)localObject).put("key_checked", Boolean.valueOf(true));
+    }
+    for (;;)
+    {
+      localObject = super.getView(paramInt, paramView, paramViewGroup);
+      a((View)localObject, localResultRecord);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      ((Map)localObject).put("key_checked", Boolean.valueOf(false));
+    }
+  }
+  
+  public void setViewImage(ImageView paramImageView, String paramString)
+  {
+    super.setViewImage(paramImageView, paramString);
+    if (paramImageView.getId() == 2131368381) {}
     try
     {
-      paramActionSheetItem = URLEncoder.encode(paramString, "UTF-8");
-      if (!TextUtils.isEmpty(paramVideoInfo.j))
-      {
-        paramString = paramVideoInfo.j;
-        paramInt = 0;
-        if (paramVideoInfo.a == 6) {
-          paramInt = 1;
-        }
-        paramVideoInfo = "https://post.mp.qq.com/jubao/index?_wv=3&puin=" + paramString + "&uin_type=" + paramInt + "&url=" + paramActionSheetItem + "&type=4&key=" + paramVideoInfo.g;
-        sab.a(this.a, "click jubao btn, reportUrl:" + paramVideoInfo);
-        sab.a(this.a).b(sab.b(this.a));
-        paramString = new Intent(sab.a(this.a), QQBrowserActivity.class);
-        paramString.putExtra("url", paramVideoInfo);
-        paramString.putExtra("hide_more_button", true);
-        sab.a(this.a).startActivity(paramString);
-        return;
-      }
+      Object localObject = this.a.getResources().getDrawable(2130840348);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      ((URLDrawable)localObject).setTag(bgxc.a(140, 140));
+      ((URLDrawable)localObject).setDecodeHandler(bgxc.p);
+      paramImageView.setImageDrawable((Drawable)localObject);
+      return;
     }
-    catch (UnsupportedEncodingException paramString)
+    catch (Exception paramImageView)
     {
-      for (;;)
-      {
-        sab.a(this.a, "encode url failed, because UTF-8 is unknown");
-        paramActionSheetItem = localObject;
-        continue;
-        paramString = "0";
-      }
+      QLog.e("FollowingListFragment", 2, "setViewImage: " + paramString, paramImageView);
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import amud;
+import anwr;
 
 class HotChatShare$3$1
   implements Runnable
@@ -10,7 +10,7 @@ class HotChatShare$3$1
   public void run()
   {
     this.a.this$0.c();
-    amud.a(this.a.this$0);
+    anwr.a(this.a.this$0);
   }
 }
 

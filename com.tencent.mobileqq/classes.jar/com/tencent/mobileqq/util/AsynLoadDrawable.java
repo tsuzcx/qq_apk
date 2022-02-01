@@ -6,7 +6,7 @@ import android.graphics.ColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import bfsm;
+import bhbd;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public abstract class AsynLoadDrawable
@@ -120,7 +120,7 @@ public abstract class AsynLoadDrawable
   {
     if (this.mCurState == 1)
     {
-      this.mLoadedDrawable = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), bfsm.a(this.mLoadedDrawable));
+      this.mLoadedDrawable = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), bhbd.a(this.mLoadedDrawable));
       this.mLoadedDrawable.setBounds(paramRect);
       if (this.mAlpha != -1) {
         this.mLoadedDrawable.setAlpha(this.mAlpha);

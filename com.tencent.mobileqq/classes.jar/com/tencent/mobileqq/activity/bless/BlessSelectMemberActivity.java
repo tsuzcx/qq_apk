@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.activity.bless;
 
 import Override;
-import acvv;
-import ahux;
-import ahuz;
-import ahvf;
-import ahvg;
-import ahvh;
-import ahvi;
-import ahvj;
-import ahvk;
-import ahvl;
-import ahvm;
-import ahvn;
-import ahvo;
-import ahvp;
-import ahvq;
-import akrx;
-import amsw;
-import amwl;
+import admh;
+import aipw;
+import aipy;
+import aiqe;
+import aiqf;
+import aiqg;
+import aiqh;
+import aiqi;
+import aiqj;
+import aiqk;
+import aiql;
+import aiqm;
+import aiqn;
+import aiqo;
+import aiqp;
+import alpt;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -41,15 +39,17 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import ayck;
-import aydj;
-import ayds;
-import ayec;
-import bbkv;
-import bcef;
-import bfuc;
-import bfur;
-import bjmp;
+import anvk;
+import anyz;
+import aziw;
+import azjv;
+import azke;
+import azko;
+import bcrn;
+import bdla;
+import bhcu;
+import bhdj;
+import bkyc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -63,6 +63,7 @@ import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
 import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
 import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ThumbInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.MessageForBlessPTV;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -91,7 +92,7 @@ public class BlessSelectMemberActivity
 {
   private static int jdField_a_of_type_Int = 1;
   private static long jdField_a_of_type_Long = 60000L;
-  private static bjmp jdField_a_of_type_Bjmp;
+  private static bkyc jdField_a_of_type_Bkyc;
   public static String a;
   private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private static long jdField_b_of_type_Long = 60000L;
@@ -101,11 +102,11 @@ public class BlessSelectMemberActivity
   private static long jdField_c_of_type_Long;
   private static long jdField_d_of_type_Long;
   private static long jdField_e_of_type_Long;
-  private ahvq jdField_a_of_type_Ahvq;
-  private amwl jdField_a_of_type_Amwl = new ahvf(this);
+  private aiqp jdField_a_of_type_Aiqp;
   public Dialog a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ahvg(this);
-  private EncodeVideoTask.ResultListener jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$ResultListener = new ahvh(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aiqf(this);
+  private anyz jdField_a_of_type_Anyz = new aiqe(this);
+  private EncodeVideoTask.ResultListener jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$ResultListener = new aiqg(this);
   private MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
   protected ArrayList<String> a;
   public boolean a;
@@ -141,12 +142,12 @@ public class BlessSelectMemberActivity
   
   public static void a(Context paramContext, int paramInt)
   {
-    bfur.a(paramContext, 232, null, paramContext.getString(paramInt), 2131690620, 2131693240, new ahvn(paramContext), new ahvo()).show();
+    bhdj.a(paramContext, 232, null, paramContext.getString(paramInt), 2131690697, 2131693420, new aiqm(paramContext), new aiqn()).show();
   }
   
   public static void a(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    bfur.a(paramContext, 232, null, paramContext.getString(paramInt), new ahvm(paramBoolean, paramContext), null).show();
+    bhdj.a(paramContext, 232, null, paramContext.getString(paramInt), new aiql(paramBoolean, paramContext), null).show();
   }
   
   private void c(String paramString)
@@ -159,7 +160,7 @@ public class BlessSelectMemberActivity
     if (!paramString.equals(""))
     {
       this.jdField_a_of_type_Boolean = true;
-      acvv.a(this.app, paramString, this.jdField_a_of_type_JavaUtilArrayList, null);
+      admh.a(this.app, paramString, this.jdField_a_of_type_JavaUtilArrayList, null);
       return;
     }
     QLog.e("BlessSelectMemberActivity", 1, "Blesswords is null!");
@@ -258,7 +259,7 @@ public class BlessSelectMemberActivity
   
   protected void a()
   {
-    Object localObject = ((ahux)getAppInterface().getManager(138)).a();
+    Object localObject = ((aipw)getAppInterface().getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).a();
     boolean bool;
     if (localObject != null)
     {
@@ -283,12 +284,12 @@ public class BlessSelectMemberActivity
         }
       }
     }
-    if ((this.jdField_a_of_type_Ahvq != null) && (this.jdField_a_of_type_Ahvq.getStatus() != AsyncTask.Status.FINISHED))
+    if ((this.jdField_a_of_type_Aiqp != null) && (this.jdField_a_of_type_Aiqp.getStatus() != AsyncTask.Status.FINISHED))
     {
       if (QLog.isColorLevel()) {
         QLog.d("BlessSelectMemberActivity", 2, "cancel the uploadTask!");
       }
-      this.jdField_a_of_type_Ahvq.cancel(true);
+      this.jdField_a_of_type_Aiqp.cancel(true);
     }
   }
   
@@ -316,10 +317,10 @@ public class BlessSelectMemberActivity
   {
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this, 2131755826);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558750);
-      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new ahvk(this));
-      this.jdField_a_of_type_AndroidAppDialog.findViewById(2131378403).setOnClickListener(new ahvl(this));
+      this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this, 2131755829);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558775);
+      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new aiqj(this));
+      this.jdField_a_of_type_AndroidAppDialog.findViewById(2131378694).setOnClickListener(new aiqk(this));
       this.jdField_a_of_type_AndroidAppDialog.show();
       localObject = getWindowManager().getDefaultDisplay();
       WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppDialog.getWindow().getAttributes();
@@ -333,9 +334,9 @@ public class BlessSelectMemberActivity
         ((Window)localObject).addFlags(2);
       }
     }
-    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372546);
+    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372740);
     if (TextUtils.isEmpty(paramString)) {
-      ((TextView)localObject).setText(2131718141);
+      ((TextView)localObject).setText(2131718526);
     }
     for (;;)
     {
@@ -366,7 +367,7 @@ public class BlessSelectMemberActivity
       localIntent.putExtra("bless_type", this.jdField_b_of_type_Int);
       localIntent.putExtra("bless_num", this.jdField_a_of_type_JavaUtilArrayList.size());
       if ((this.jdField_b_of_type_Int == 1) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
-        bcef.b(this.app, "CliOper", "", "", "0X8006196", "0X8006196", 0, 0, String.valueOf(this.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), "", "");
+        bdla.b(this.app, "CliOper", "", "", "0X8006196", "0X8006196", 0, 0, String.valueOf(this.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), "", "");
       }
       for (;;)
       {
@@ -385,7 +386,7 @@ public class BlessSelectMemberActivity
             localIntent.putExtra("bless_ptv_url", (String)localObject);
             localIntent.putExtra("bless_ptv_uuid", this.mBlessManager.a().uuid);
             localIntent.putExtra("bless_ptv_md5", this.mBlessManager.a().md5);
-            localIntent.putExtra("bless_ptv_nick", bfuc.encodeToString(this.app.getCurrentNickname().getBytes(), 2));
+            localIntent.putExtra("bless_ptv_nick", bhcu.encodeToString(this.app.getCurrentNickname().getBytes(), 2));
             localIntent.putExtra("ptv_file_path", this.mBlessManager.a().videoFileName);
             localIntent.putExtra("ptv_thumb_path", this.mBlessManager.a().mThumbFilePath);
             if (QLog.isColorLevel()) {
@@ -412,7 +413,7 @@ public class BlessSelectMemberActivity
         this.mBlessManager.a(this.jdField_c_of_type_JavaLangString);
         this.mBlessManager.c();
         b(paramBoolean2);
-        bcef.b(this.app, "CliOper", "", "", "0X8006196", "0X8006196", 0, 0, String.valueOf(this.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), "", "");
+        bdla.b(this.app, "CliOper", "", "", "0X8006196", "0X8006196", 0, 0, String.valueOf(this.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), "", "");
       }
       for (;;)
       {
@@ -423,7 +424,7 @@ public class BlessSelectMemberActivity
         if (jdField_e_of_type_Long > 0L) {
           localProperties.setProperty("bless_param_wait_time", "" + jdField_e_of_type_Long);
         }
-        ahuz.a("bless_event_send_result", localProperties, i);
+        aipy.a("bless_event_send_result", localProperties, i);
         return;
         if ((this.jdField_b_of_type_Int == 2) || (this.jdField_b_of_type_Int == 3)) {
           b(paramBoolean2);
@@ -451,48 +452,48 @@ public class BlessSelectMemberActivity
     {
       return true;
     }
-    a(this, 2131690569, true);
+    a(this, 2131690644, true);
     return false;
   }
   
   protected void b()
   {
-    bcef.b(this.app, "CliOper", "", "", "0X8006190", "0X8006190", 0, 0, String.valueOf(this.jdField_b_of_type_Int), "", "", "");
+    bdla.b(this.app, "CliOper", "", "", "0X8006190", "0X8006190", 0, 0, String.valueOf(this.jdField_b_of_type_Int), "", "", "");
     if ((this.h == null) || (this.jdField_b_of_type_AndroidAppDialog == null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       if (this.mEntrance == 15) {
-        localStringBuilder.append(getString(2131690565));
+        localStringBuilder.append(getString(2131690640));
       }
       for (;;)
       {
-        localObject = (amsw)this.app.getManager(51);
+        localObject = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
         int i = 0;
         while ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i < 50))
         {
-          Friends localFriends = ((amsw)localObject).e((String)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+          Friends localFriends = ((anvk)localObject).e((String)this.jdField_a_of_type_JavaUtilArrayList.get(i));
           if (localFriends != null) {
             localStringBuilder.append(localFriends.getFriendNick()).append("、 ");
           }
           i += 1;
         }
         if (this.mEntrance == 32) {
-          localStringBuilder.append(getString(2131719616));
+          localStringBuilder.append(getString(2131720069));
         }
       }
       localStringBuilder.setLength(localStringBuilder.length() - 2);
       if (this.jdField_a_of_type_JavaUtilArrayList.size() != 1) {
-        localStringBuilder.append(String.format(getString(2131690566), new Object[] { "", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
+        localStringBuilder.append(String.format(getString(2131690641), new Object[] { "", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
       }
       this.h = localStringBuilder.toString();
-      this.jdField_b_of_type_AndroidAppDialog = bfur.a(this, -1, null, this.h, 2131690620, 2131690564, new ahvi(this), new ahvj(this));
+      this.jdField_b_of_type_AndroidAppDialog = bhdj.a(this, -1, null, this.h, 2131690697, 2131690639, new aiqh(this), new aiqi(this));
       if (this.jdField_b_of_type_Int == 2)
       {
         localObject = this.jdField_b_of_type_AndroidAppDialog.getWindow();
         ((Window)localObject).getAttributes().dimAmount = 0.7F;
         ((Window)localObject).addFlags(2);
       }
-      Object localObject = (TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131365552);
+      Object localObject = (TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131365644);
       ((TextView)localObject).setMaxLines(4);
       ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.MIDDLE);
       ((TextView)localObject).setGravity(3);
@@ -505,24 +506,24 @@ public class BlessSelectMemberActivity
   
   public void b(String paramString)
   {
-    Object localObject = new ayec();
-    ((ayec)localObject).a(paramString);
-    ((ayec)localObject).d(1006);
-    ((ayec)localObject).c(TranDbRecord.PicDbRecord.EXTRA_FLAG_SEND_PHOTO);
-    ((ayec)localObject).d("0");
-    ((ayec)localObject).c(this.app.getCurrentAccountUin());
-    ((ayec)localObject).e(0);
-    paramString = ((ayec)localObject).a();
+    Object localObject = new azko();
+    ((azko)localObject).a(paramString);
+    ((azko)localObject).d(1006);
+    ((azko)localObject).c(TranDbRecord.PicDbRecord.EXTRA_FLAG_SEND_PHOTO);
+    ((azko)localObject).d("0");
+    ((azko)localObject).c(this.app.getCurrentAccountUin());
+    ((azko)localObject).e(0);
+    paramString = ((azko)localObject).a();
     paramString.g = true;
     paramString.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = ((MessageForPic)new ayck(this.app).a(paramString));
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = ((MessageForPic)new aziw(this.app).a(paramString));
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.isBlessPic = true;
     }
     paramString.jdField_b_of_type_JavaLangObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-    localObject = aydj.a(2, 1006);
-    ((ayds)localObject).a(paramString);
-    aydj.a((ayds)localObject, this.app);
+    localObject = azjv.a(2, 1006);
+    ((azke)localObject).a(paramString);
+    azjv.a((azke)localObject, this.app);
   }
   
   public void b(boolean paramBoolean)
@@ -537,11 +538,11 @@ public class BlessSelectMemberActivity
       localIntent = new Intent(this, SplashActivity.class);
       localIntent.putExtra("tab_index", MainFragment.jdField_b_of_type_Int);
       localIntent.putExtra("fragment_id", 1);
-      localIntent.putExtra(bbkv.h, paramBoolean);
+      localIntent.putExtra(bcrn.h, paramBoolean);
       localIntent.setFlags(67108864);
       startActivity(localIntent);
       finish();
-      QQToast.a(this, 2, 2131719617, 1).a();
+      QQToast.a(this, 2, 2131720070, 1).a();
     }
   }
   
@@ -556,8 +557,8 @@ public class BlessSelectMemberActivity
         }
         this.jdField_a_of_type_AndroidAppDialog.dismiss();
       }
-      if (jdField_a_of_type_Bjmp != null) {
-        jdField_a_of_type_Bjmp.removeMessages(2);
+      if (jdField_a_of_type_Bkyc != null) {
+        jdField_a_of_type_Bkyc.removeMessages(2);
       }
       return;
     }
@@ -574,7 +575,7 @@ public class BlessSelectMemberActivity
     jdField_b_of_type_Boolean = false;
     this.mBlessManager.a(this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_f_of_type_Long = System.currentTimeMillis();
-    jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(2, jdField_b_of_type_Long);
+    jdField_a_of_type_Bkyc.sendEmptyMessageDelayed(2, jdField_b_of_type_Long);
     if (this.jdField_b_of_type_Int == 1) {
       c(this.jdField_c_of_type_JavaLangString);
     }
@@ -591,23 +592,23 @@ public class BlessSelectMemberActivity
           c();
           return;
         }
-        new ahvp(this.app, this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-        if ((this.jdField_a_of_type_Ahvq != null) && (this.jdField_a_of_type_Ahvq.getStatus() != AsyncTask.Status.FINISHED))
+        new aiqo(this.app, this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+        if ((this.jdField_a_of_type_Aiqp != null) && (this.jdField_a_of_type_Aiqp.getStatus() != AsyncTask.Status.FINISHED))
         {
           if (QLog.isColorLevel()) {
             QLog.d("BlessSelectMemberActivity", 2, "There is still a running uploadTask!");
           }
-          this.jdField_a_of_type_Ahvq.cancel(true);
+          this.jdField_a_of_type_Aiqp.cancel(true);
         }
-        this.jdField_a_of_type_Ahvq = new ahvq(this.app, this, this.jdField_a_of_type_JavaUtilArrayList, this.mEntrance);
-        this.jdField_a_of_type_Ahvq.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+        this.jdField_a_of_type_Aiqp = new aiqp(this.app, this, this.jdField_a_of_type_JavaUtilArrayList, this.mEntrance);
+        this.jdField_a_of_type_Aiqp.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
       } while (getIntent().getIntExtra("param_key_redbag_type", 0) != LocalMediaInfo.REDBAG_TYPE_GET);
-      akrx.a("", "0X80088E4", this.jdField_a_of_type_JavaUtilArrayList.size(), "3");
+      alpt.a("", "0X80088E4", this.jdField_a_of_type_JavaUtilArrayList.size(), "3");
       return;
     } while (this.jdField_b_of_type_Int != 3);
     if (TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
     {
-      QQToast.a(this, 1, 2131698294, 1).a();
+      QQToast.a(this, 1, 2131698586, 1).a();
       c();
       finish();
       return;
@@ -634,7 +635,7 @@ public class BlessSelectMemberActivity
     this.jdField_f_of_type_JavaLangString = this.mIntent.getStringExtra("thumbfile_send_path");
     this.g = this.mIntent.getStringExtra("thumbfile_md5");
     this.jdField_d_of_type_JavaLangString = this.mIntent.getStringExtra("param_web_callback");
-    addObserver(this.jdField_a_of_type_Amwl);
+    addObserver(this.jdField_a_of_type_Anyz);
     h();
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
@@ -642,7 +643,7 @@ public class BlessSelectMemberActivity
     jdField_a_of_type_JavaLangString = "";
     jdField_b_of_type_Boolean = false;
     this.mIsNeedSendIsResumeBroadcast = false;
-    jdField_a_of_type_Bjmp = new bjmp(this);
+    jdField_a_of_type_Bkyc = new bkyc(this);
     paramBundle = new Intent("tencent.video.q2v.startUploadPTV");
     paramBundle.putExtra("broadcastType", 2);
     this.app.getApp().sendBroadcast(paramBundle);
@@ -652,16 +653,16 @@ public class BlessSelectMemberActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Amwl);
-    if (jdField_a_of_type_Bjmp != null) {
-      jdField_a_of_type_Bjmp.removeMessages(2);
+    removeObserver(this.jdField_a_of_type_Anyz);
+    if (jdField_a_of_type_Bkyc != null) {
+      jdField_a_of_type_Bkyc.removeMessages(2);
     }
-    if ((this.jdField_a_of_type_Ahvq != null) && (this.jdField_a_of_type_Ahvq.getStatus() != AsyncTask.Status.FINISHED))
+    if ((this.jdField_a_of_type_Aiqp != null) && (this.jdField_a_of_type_Aiqp.getStatus() != AsyncTask.Status.FINISHED))
     {
       if (QLog.isColorLevel()) {
         QLog.d("BlessSelectMemberActivity", 2, "destroy the uploadTask!");
       }
-      this.jdField_a_of_type_Ahvq.cancel(true);
+      this.jdField_a_of_type_Aiqp.cancel(true);
     }
     try
     {
@@ -697,7 +698,7 @@ public class BlessSelectMemberActivity
     super.doOnResume();
     if (this.mSystemBarComp != null)
     {
-      int i = getResources().getColor(2131165383);
+      int i = getResources().getColor(2131165389);
       this.mSystemBarComp.setStatusColor(i);
       this.mSystemBarComp.setStatusBarColor(i);
     }
@@ -732,7 +733,7 @@ public class BlessSelectMemberActivity
       a();
       jdField_b_of_type_Boolean = true;
       c();
-      a(this, 2131718484);
+      a(this, 2131718870);
       continue;
       if (QLog.isColorLevel()) {
         QLog.i("BlessSelectMemberActivity", 2, "handleMessage realStartEncode!");
@@ -744,10 +745,10 @@ public class BlessSelectMemberActivity
   public void initTitleBar()
   {
     super.initTitleBar();
-    this.mTitleBar.setBackgroundColor(getResources().getColor(2131165383));
+    this.mTitleBar.setBackgroundColor(getResources().getColor(2131165389));
     this.mTitle.setTextColor(-1);
-    this.mLeftBackBtn.setTextColor(getResources().getColorStateList(2131165378));
-    this.mRightBtn.setTextColor(getResources().getColorStateList(2131165378));
+    this.mLeftBackBtn.setTextColor(getResources().getColorStateList(2131165384));
+    this.mRightBtn.setTextColor(getResources().getColorStateList(2131165384));
   }
   
   public boolean isWrapContent()
@@ -771,13 +772,13 @@ public class BlessSelectMemberActivity
       Object localObject = this.mBlessManager.a();
       if ((localObject != null) && (((ArrayList)localObject).size() >= 0))
       {
-        amsw localamsw = (amsw)this.app.getManager(51);
+        anvk localanvk = (anvk)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
         ArrayList localArrayList = new ArrayList();
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
-          Friends localFriends = localamsw.e(str);
+          Friends localFriends = localanvk.e(str);
           if (localFriends != null) {
             localArrayList.add(constructAResultRecord(str, localFriends.getFriendNick(), 0, "-1"));
           }

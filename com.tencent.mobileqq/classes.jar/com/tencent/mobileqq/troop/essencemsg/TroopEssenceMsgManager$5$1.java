@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import bedy;
-import bedz;
-import beec;
-import beeg;
+import bflb;
+import bflc;
+import bflf;
+import bflj;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class TroopEssenceMsgManager$5$1
   implements Runnable
 {
-  public TroopEssenceMsgManager$5$1(beec parambeec) {}
+  public TroopEssenceMsgManager$5$1(bflf parambflf) {}
   
   public void run()
   {
-    long l = this.a.jdField_a_of_type_Bedy.a.troopUin;
-    this.a.jdField_a_of_type_Bedy.b = beeg.a(bedz.a(this.a.jdField_a_of_type_Bedz), String.valueOf(l), String.valueOf(this.a.jdField_a_of_type_Bedy.a.msgSenderUin), this.a.jdField_a_of_type_Bedy.b);
+    long l = this.a.jdField_a_of_type_Bflb.a.troopUin;
+    this.a.jdField_a_of_type_Bflb.b = bflj.a(bflc.a(this.a.jdField_a_of_type_Bflc), String.valueOf(l), String.valueOf(this.a.jdField_a_of_type_Bflb.a.msgSenderUin), this.a.jdField_a_of_type_Bflb.b);
     ThreadManager.getUIHandler().post(new TroopEssenceMsgManager.5.1.1(this));
   }
 }

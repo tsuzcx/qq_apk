@@ -1,46 +1,16 @@
-import android.graphics.drawable.Drawable;
 import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.9.1;
 
-public final class axuf
-  implements EmoticonCallback
+public class axuf
+  implements bipz
 {
-  public axuf(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  public axuf(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void delete()
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    TextUtils.backspace(this.jdField_a_of_type_AndroidWidgetEditText);
+    ChooseInterestTagActivity.a(this.a).post(new ChooseInterestTagActivity.9.1(this, paramInt1));
   }
-  
-  public void emoticonMall() {}
-  
-  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
-  
-  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
-  {
-    return false;
-  }
-  
-  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public void send() {}
-  
-  public void send(EmoticonInfo paramEmoticonInfo)
-  {
-    if (paramEmoticonInfo != null) {}
-    try
-    {
-      paramEmoticonInfo.send(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
-      return;
-    }
-    catch (Throwable paramEmoticonInfo) {}
-  }
-  
-  public void setting() {}
 }
 
 

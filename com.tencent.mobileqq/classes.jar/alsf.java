@@ -1,32 +1,38 @@
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import mqq.os.MqqHandler;
+
 public class alsf
+  implements zab
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public alsf(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public boolean equals(Object paramObject)
+  public void a()
   {
-    if ((paramObject == null) || (!(paramObject instanceof alsf))) {}
-    do
+    QLog.d(QzoneSlideShowPreparingFragment.a(), 2, "createSlideShowNew AblumListener - endMerge.");
+    QzoneSlideShowPreparingFragment.a(this.a).removeCallbacks(QzoneSlideShowPreparingFragment.a(this.a));
+    ThreadManager.getUIHandler().post(new QzoneSlideShowPreparingFragment.4.1(this));
+    if (QzoneSlideShowPreparingFragment.a(this.a) == 18) {
+      LpReportInfo_pf00064.allReport(585, 15, 8);
+    }
+    if (QzoneSlideShowPreparingFragment.a(this.a) != null)
     {
-      return false;
-      paramObject = (alsf)paramObject;
-    } while ((this.a != paramObject.a) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e));
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("positionX:").append(this.a);
-    localStringBuilder.append(", positionY:").append(this.b);
-    localStringBuilder.append(", width:").append(this.c);
-    localStringBuilder.append(", height:").append(this.d);
-    localStringBuilder.append(", align:").append(this.e);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+      Object localObject = (BitmapDrawable)QzoneSlideShowPreparingFragment.a(this.a).getDrawable();
+      if (localObject != null)
+      {
+        localObject = ((BitmapDrawable)localObject).getBitmap();
+        if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
+          ((Bitmap)localObject).recycle();
+        }
+      }
+    }
   }
 }
 

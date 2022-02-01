@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import anze;
-import aobk;
-import aobm;
+import apcg;
+import apem;
+import apeo;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARTransferPromotionRenderable$3
   implements Runnable
 {
-  public ARTransferPromotionRenderable$3(aobk paramaobk) {}
+  public ARTransferPromotionRenderable$3(apem paramapem) {}
   
   public void run()
   {
-    aobk.a(this.this$0, anze.a(aobk.a(this.this$0).c));
-    if (aobk.a(this.this$0) != null)
+    apem.a(this.this$0, apcg.a(apem.a(this.this$0).c));
+    if (apem.a(this.this$0) != null)
     {
-      QLog.d("ARTransferPromotionRenderable", 2, "ARTransferPromotionRenderable finish parse ARTransferDoorVideoInfo " + aobk.a(this.this$0));
+      QLog.d("ARTransferPromotionRenderable", 2, "ARTransferPromotionRenderable finish parse ARTransferDoorVideoInfo " + apem.a(this.this$0));
       return;
     }
     QLog.d("ARTransferPromotionRenderable", 1, "ARTransferPromotionRenderable finish parse ARTransferDoorVideoInfo value null");

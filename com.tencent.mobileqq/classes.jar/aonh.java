@@ -1,49 +1,95 @@
-import android.animation.ObjectAnimator;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.ar.view.QRScanEntryView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.text.TextUtils;
+import android.util.Base64;
 import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.Key;
+import java.security.interfaces.RSAKey;
 
-public class aonh
-  implements OnCompositionLoadedListener
+class aonh
 {
-  public aonh(QRScanEntryView paramQRScanEntryView) {}
+  private String jdField_a_of_type_JavaLangString;
+  private Key jdField_a_of_type_JavaSecurityKey;
+  private String b;
+  private String c;
+  private String d;
+  private String e;
+  private String f;
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public static aonh a(String paramString)
   {
-    long l = 0L;
-    if (paramLottieComposition != null)
+    if (TextUtils.isEmpty(paramString))
     {
-      l = paramLottieComposition.getDuration() + 100L;
-      Object localObject = paramLottieComposition.getBounds();
-      int i = AIOUtils.dp2px(30.0F, this.a.getResources());
-      float f1 = i / ((Rect)localObject).width();
-      float f2 = i / ((Rect)localObject).height();
-      localObject = new LottieDrawable();
-      ((LottieDrawable)localObject).setComposition(paramLottieComposition);
-      ((LottieDrawable)localObject).setScale(f1, f2);
-      ((LottieDrawable)localObject).playAnimation();
-      QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, (Drawable)localObject, null, null);
+      QLog.e("JsonWebSignature", 1, "token is null");
+      return null;
     }
-    for (;;)
+    String[] arrayOfString = paramString.split("\\.");
+    if (arrayOfString.length != 3)
     {
-      paramLottieComposition = ObjectAnimator.ofFloat(QRScanEntryView.a(this.a), "alpha", new float[] { 1.0F, 0.0F, 1.0F });
-      paramLottieComposition.setDuration(300L);
-      paramLottieComposition.setRepeatCount(2);
-      paramLottieComposition.setStartDelay(l);
-      paramLottieComposition.start();
-      QRScanEntryView.a(this.a, QRScanEntryView.a(this.a), true, false);
-      QRScanEntryView.a(this.a, QRScanEntryView.b(this.a), false, true);
-      return;
-      QLog.e("AREngine_QRScanEntryView", 1, "loadFlashLightSVGDrawable fail, use static resource.");
-      QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(0, 2130844755, 0, 0);
+      QLog.e("JsonWebSignature", 1, new Object[] { "jwt token illegal, length is ", Integer.valueOf(arrayOfString.length) });
+      return null;
     }
+    aonh localaonh = new aonh();
+    localaonh.jdField_a_of_type_JavaLangString = paramString;
+    localaonh.b = arrayOfString[0];
+    localaonh.c = new String(Base64.decode(arrayOfString[0], 11));
+    localaonh.d = arrayOfString[1];
+    localaonh.e = new String(Base64.decode(arrayOfString[1], 11));
+    localaonh.f = arrayOfString[2];
+    return localaonh;
+  }
+  
+  public static String a(String... paramVarArgs)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    if (i < paramVarArgs.length)
+    {
+      if (paramVarArgs[i] == null) {}
+      for (String str = "";; str = paramVarArgs[i])
+      {
+        localStringBuilder.append(str);
+        if (i != paramVarArgs.length - 1) {
+          localStringBuilder.append(".");
+        }
+        i += 1;
+        break;
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private byte[] a()
+  {
+    Object localObject = a(new String[] { this.b, this.d });
+    try
+    {
+      localObject = ((String)localObject).getBytes("US-ASCII");
+      return localObject;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.e;
+  }
+  
+  public void a(Key paramKey)
+  {
+    this.jdField_a_of_type_JavaSecurityKey = paramKey;
+  }
+  
+  public boolean a()
+  {
+    aonk localaonk = new aonk();
+    if (((this.jdField_a_of_type_JavaSecurityKey instanceof RSAKey)) && (((RSAKey)this.jdField_a_of_type_JavaSecurityKey).getModulus().bitLength() < 2048)) {
+      return false;
+    }
+    byte[] arrayOfByte1 = Base64.decode(this.f, 11);
+    byte[] arrayOfByte2 = a();
+    return localaonk.a(arrayOfByte1, this.jdField_a_of_type_JavaSecurityKey, arrayOfByte2);
   }
 }
 

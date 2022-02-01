@@ -1,17 +1,6 @@
-class bmrq
-  implements bnua
+public abstract interface bmrq
 {
-  bmrq(bmro parambmro) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.b();
-      return;
-    }
-    this.a.a(4);
-  }
+  public abstract void a(int paramInt);
 }
 
 

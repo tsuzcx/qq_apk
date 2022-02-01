@@ -1,86 +1,90 @@
-import android.content.Intent;
-import android.os.AsyncTask;
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.net.URL;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bdqt
-  extends AsyncTask<Void, Void, Bundle>
+  extends bdnv
 {
-  protected URLDrawable a;
-  protected String a;
-  protected WeakReference<TroopAvatarWallPreviewActivity> a;
-  protected boolean a;
-  protected String b;
-  
-  public bdqt(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, String paramString1, boolean paramBoolean, URLDrawable paramURLDrawable, String paramString2)
+  private LinearLayout a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTroopAvatarWallPreviewActivity);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
-    this.b = paramString2;
+    paramContext = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    localLayoutParams.gravity = 17;
+    paramContext.setLayoutParams(localLayoutParams);
+    return paramContext;
   }
   
-  protected Bundle a(Void... paramVarArgs)
+  protected int b()
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_ComTencentImageURLDrawable == null)) {
-      return null;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", 1);
-    paramVarArgs = new File(AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE);
-    if (!paramVarArgs.exists()) {
-      paramVarArgs.mkdirs();
-    }
-    String str = AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE + this.jdField_a_of_type_JavaLangString + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    paramVarArgs = str;
-    if (!new File(str).exists()) {}
-    try
+    return 23;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Object localObject2;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)) && ((paramView.getTag() instanceof bdqu)))
     {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
-      localBundle.putBoolean("forward_urldrawable", true);
-      localBundle.putString("forward_urldrawable_thumb_url", this.b);
-      localBundle.putString("forward_filepath", paramVarArgs);
-      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-      localBundle.putString("forward_extra", paramVarArgs);
-      if (this.jdField_a_of_type_Boolean)
+      localbdqu = (bdqu)paramView.getTag();
+      localIterator = this.a.iterator();
+      for (;;)
       {
-        localBundle.putString("forward_thumb", paramVarArgs);
-        localBundle.putBoolean("key_flag_from_plugin", true);
+        localObject1 = paramView;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (bdnu)localIterator.next();
+        if ("button".equals(((bdnu)localObject1).a))
+        {
+          localObject2 = (TextView)((bdnu)localObject1).a(paramContext, localbdqu.a, paramBundle);
+          if (TextUtils.isEmpty(((bdpr)localObject1).c())) {
+            ((TextView)localObject2).setTextSize(16.0F);
+          }
+          if (TextUtils.isEmpty(((bdpr)localObject1).d())) {
+            ((TextView)localObject2).setTextColor(Color.parseColor("#12b7f5"));
+          }
+        }
       }
-      return localBundle;
     }
-    catch (IOException paramVarArgs)
+    Object localObject1 = a(paramContext);
+    bdqu localbdqu = new bdqu();
+    Iterator localIterator = this.a.iterator();
+    paramView = null;
+    while (localIterator.hasNext())
     {
-      QLog.e("foward", 2, "IOException", paramVarArgs);
+      localObject2 = (bdnu)localIterator.next();
+      if ("button".equals(((bdnu)localObject2).a))
+      {
+        paramView = (TextView)((bdnu)localObject2).a(paramContext, null, paramBundle);
+        if (TextUtils.isEmpty(((bdpr)localObject2).c())) {
+          paramView.setTextSize(16.0F);
+        }
+        if (TextUtils.isEmpty(((bdpr)localObject2).d())) {
+          paramView.setTextColor(Color.parseColor("#12b7f5"));
+        }
+        localObject2 = new LinearLayout.LayoutParams(-1, AIOUtils.dp2px(41.0F, paramContext.getResources()));
+        ((LinearLayout.LayoutParams)localObject2).gravity = 17;
+        ((LinearLayout)localObject1).addView(paramView, (ViewGroup.LayoutParams)localObject2);
+      }
     }
-    return null;
+    if (paramView != null) {
+      localbdqu.a = paramView;
+    }
+    ((LinearLayout)localObject1).setTag(localbdqu);
+    return localObject1;
   }
   
-  protected void a(Bundle paramBundle)
+  public String b()
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-      return;
-    }
-    TroopAvatarWallPreviewActivity localTroopAvatarWallPreviewActivity = (TroopAvatarWallPreviewActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramBundle == null)
-    {
-      QQToast.a(localTroopAvatarWallPreviewActivity, amtj.a(2131714228), 0).b(localTroopAvatarWallPreviewActivity.getTitleBarHeight());
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramBundle);
-    atky.a(localTroopAvatarWallPreviewActivity, localIntent, 21);
-    TroopAvatarWallPreviewActivity.a(localTroopAvatarWallPreviewActivity, "0X8006A81", "0X8006A95");
+    return "layout23";
   }
 }
 

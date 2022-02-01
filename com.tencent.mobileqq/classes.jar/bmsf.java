@@ -1,10 +1,4 @@
-import com.tencent.mobileqq.app.CardObserver;
-
-class bmsf
-  extends CardObserver
-{
-  bmsf(bmsd parambmsd) {}
-}
+class bmsf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

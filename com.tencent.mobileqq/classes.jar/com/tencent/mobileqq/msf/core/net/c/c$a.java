@@ -1,15 +1,63 @@
 package com.tencent.mobileqq.msf.core.net.c;
 
-public enum c$a
+import com.tencent.qphone.base.util.QLog;
+import java.io.FileInputStream;
+import java.security.KeyStore;
+import java.security.cert.X509Certificate;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
+
+class c$a
+  implements X509TrustManager
 {
-  public static a a(String paramString)
+  private X509TrustManager a;
+  
+  c$a()
   {
-    return (a)Enum.valueOf(a.class, paramString);
+    Object localObject = KeyStore.getInstance("JKS");
+    ((KeyStore)localObject).load(new FileInputStream("trustedCerts"), "passphrase".toCharArray());
+    TrustManagerFactory localTrustManagerFactory = TrustManagerFactory.getInstance("SunX509", "SunJSSE");
+    localTrustManagerFactory.init((KeyStore)localObject);
+    localObject = localTrustManagerFactory.getTrustManagers();
+    int i = 0;
+    while (i < localObject.length)
+    {
+      if ((localObject[i] instanceof X509TrustManager))
+      {
+        this.a = ((X509TrustManager)localObject[i]);
+        return;
+      }
+      i += 1;
+    }
+    throw new Exception("Couldn't initialize");
   }
   
-  public static a[] a()
+  public void checkClientTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)
   {
-    return (a[])f.clone();
+    if (this.a != null) {
+      this.a.checkClientTrusted(paramArrayOfX509Certificate, paramString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.QualityTestManager", 2, "checkClientTrusted");
+    }
+  }
+  
+  public void checkServerTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)
+  {
+    if (this.a != null) {
+      this.a.checkServerTrusted(paramArrayOfX509Certificate, paramString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.QualityTestManager", 2, "checkServerTrusted");
+    }
+  }
+  
+  public X509Certificate[] getAcceptedIssuers()
+  {
+    if (this.a != null) {
+      return this.a.getAcceptedIssuers();
+    }
+    return new X509Certificate[0];
   }
 }
 

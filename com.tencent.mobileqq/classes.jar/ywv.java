@@ -1,18 +1,35 @@
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
 
-public class ywv
-  implements bcan
+class ywv
+  extends wls
 {
-  public ywv(QRLoginMgrActivity paramQRLoginMgrActivity, yyc paramyyc) {}
-  
-  public void a()
+  ywv(ywu paramywu, way paramway, long paramLong)
   {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_Yyc);
+    super(paramway);
   }
   
-  public void b()
+  protected void a(wlv paramwlv)
   {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_Yyc);
+    if (paramwlv.jdField_a_of_type_Int == 0)
+    {
+      long l1 = SystemClock.uptimeMillis();
+      long l2 = this.jdField_a_of_type_Long;
+      if (QLog.isColorLevel()) {
+        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
+      }
+      ywu.a().sendMessage(Message.obtain(ywu.a(), 1, null));
+    }
+    for (;;)
+    {
+      ywu.a(this.jdField_a_of_type_Ywu);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramwlv.jdField_a_of_type_Int + ", errMsg:" + paramwlv.jdField_a_of_type_JavaLangString);
+      }
+    }
   }
 }
 

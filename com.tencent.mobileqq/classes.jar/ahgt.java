@@ -1,39 +1,26 @@
-import android.view.MotionEvent;
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ahgt
-  implements View.OnTouchListener
+public class ahgt
+  implements View.OnClickListener
 {
-  ahgt(ahgc paramahgc) {}
+  public ahgt(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, QQAppInterface paramQQAppInterface) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_Bhar.a();
-    if (i == 0)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c != 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c <= 500L)) {}
+    for (;;)
     {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(amtj.a(2131704262));
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.a.jdField_b_of_type_Int);
-      this.a.jdField_a_of_type_Awkz.b();
-      if (paramView != null) {
-        paramView.a(true);
-      }
-      bcef.b(this.a.app, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
-      bool = true;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c = System.currentTimeMillis();
+      bdcw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a);
+      alpt.b("", "0X8008CEB");
     }
-    while ((i != 3) && (i != 1)) {
-      return bool;
-    }
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(amtj.a(2131704201));
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.a.jdField_a_of_type_Int);
-    this.a.jdField_a_of_type_Awkz.c();
-    if (paramView != null) {
-      paramView.a(false);
-    }
-    return true;
   }
 }
 

@@ -1,133 +1,336 @@
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.1;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.2;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.3;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.4;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.5;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.6;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.7;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.8;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.widget.WebViewProgressBar;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 
 public class bied
-  implements DownloadListener
+  extends bidf
+  implements biec
 {
-  public bied(ApkFileDownloadButton paramApkFileDownloadButton) {}
+  public static final String TAG = "WebViewBaseBuilder";
+  protected boolean bFitSystemWindow = true;
+  protected boolean bNeedStatusTrans = true;
+  public FrameLayout bottomContainer;
+  public LinearLayout contentContainer;
+  public String leftName;
+  protected AppInterface mAppInterface;
+  protected Context mContext;
+  public Activity mInActivity;
+  protected Intent mIntent;
+  protected SystemBarCompact mSystemBarComp;
+  public biix mTitleBar;
+  public View mViewRoot;
+  public View maskView;
+  public FrameLayout titleContainer;
+  public String titleText;
+  public RelativeLayout webviewContainer;
   
-  public void installSucceed(String paramString1, String paramString2)
+  public bied(Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    bhzm.b("ApkFileDownloadButton_", "[installSucceed] packageName=" + paramString2 + ",mApkInfo=" + this.a.a);
-    if ((this.a.a != null) && (TextUtils.equals(paramString2, this.a.a.f))) {
-      ThreadManager.excute(new ApkFileDownloadButton.1.8(this, paramString2), 16, null, true);
+    super(paramContext, paramActivity, paramAppInterface);
+    this.mContext = paramContext;
+    this.mInActivity = paramActivity;
+    this.mIntent = paramIntent;
+    this.mAppInterface = paramAppInterface;
+  }
+  
+  @TargetApi(14)
+  private void initLayout()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewBaseBuilder", 2, "initLayout");
+    }
+    View localView = LayoutInflater.from(this.mContext).inflate(2131563068, null);
+    this.mInActivity.setContentView(localView);
+    this.mViewRoot = localView.findViewById(2131381386);
+    if ((this.bNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1) && (Build.VERSION.SDK_INT >= 14)) {
+      this.mViewRoot.setFitsSystemWindows(this.bFitSystemWindow);
+    }
+    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131379040));
+    this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131363710));
+    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131381405));
+    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131376461));
+    this.maskView = this.mViewRoot.findViewById(2131381408);
+    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131365167));
+    if ((this.mIntent != null) && (!this.mIntent.getBooleanExtra("webview_hide_progress", false)))
+    {
+      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131373229));
+      this.mProgressBarController = new biur();
+      this.mLoadingProgressBar.setController(this.mProgressBarController);
+      if ((this.mIsFirstOnPageStart) && (this.mProgressBarController != null) && (this.mProgressBarController.b() != 0)) {
+        this.mProgressBarController.a((byte)0);
+      }
     }
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public void addBottomView(View paramView)
   {
-    if (this.a.a(paramDownloadInfo, this.a.a))
+    try
     {
-      bhzm.b("ApkFileDownloadButton_", "onDownloadCancel info.progress=" + paramDownloadInfo.f);
-      this.a.a.b = 1;
-      this.a.a.jdField_a_of_type_Int = paramDownloadInfo.f;
-      if (this.a.a.jdField_a_of_type_Long == 0L) {
-        this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
+      this.bottomContainer.removeAllViews();
+      if (paramView.getLayoutParams() == null) {
+        paramView.setLayoutParams(new FrameLayout.LayoutParams(-1, -2));
       }
-      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.5(this));
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if (this.a.a(paramDownloadInfo, this.a.a))
-    {
-      bhzm.b("ApkFileDownloadButton_", "onDownloadError errorCode=" + paramInt1);
-      if ((paramInt1 == 6) && (ApkFileDownloadButton.a(this.a) > 0))
-      {
-        ApkFileDownloadButton.a(this.a, paramDownloadInfo);
-        ApkFileDownloadButton.a(this.a, ApkFileDownloadButton.a(this.a) - 1);
-      }
-    }
-    else
-    {
+      this.bottomContainer.addView(paramView);
       return;
     }
-    this.a.a.b = 30;
-    ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.7(this));
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (this.a.a(paramDownloadInfo, this.a.a))
+    catch (Exception paramView)
     {
-      bhzm.b("ApkFileDownloadButton_", "onDownloadFinish info.progress=" + paramDownloadInfo.f);
-      this.a.a.b = 4;
-      this.a.a.jdField_a_of_type_Int = paramDownloadInfo.f;
-      if (this.a.a.jdField_a_of_type_Long == 0L) {
-        this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
-      }
-      ThreadManager.excute(new ApkFileDownloadButton.1.3(this), 16, null, true);
-      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.4(this));
+      paramView.printStackTrace();
     }
   }
   
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  public void addContentView(View paramView)
   {
-    if (this.a.a(paramDownloadInfo, this.a.a))
+    try
     {
-      bhzm.b("ApkFileDownloadButton_", "onDownloadPause info.progress=" + paramDownloadInfo.f);
-      this.a.a.b = 3;
-      this.a.a.jdField_a_of_type_Int = paramDownloadInfo.f;
-      if (this.a.a.jdField_a_of_type_Long == 0L) {
-        this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
-      }
-      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.1(this));
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if (paramList == null) {}
-    DownloadInfo localDownloadInfo;
-    do
-    {
+      this.contentContainer.addView(paramView);
+      this.contentContainer.setVisibility(0);
       return;
-      while (!paramList.hasNext()) {
-        paramList = paramList.iterator();
-      }
-      localDownloadInfo = (DownloadInfo)paramList.next();
-    } while (!this.a.a(localDownloadInfo, this.a.a));
-    ApkFileDownloadButton.a(this.a, 1);
-    bhzm.b("ApkFileDownloadButton_", "onDownloadUpdate info.progress=" + localDownloadInfo.f);
-    this.a.a.b = 2;
-    this.a.a.jdField_a_of_type_Int = localDownloadInfo.f;
-    if (this.a.a.jdField_a_of_type_Long == 0L) {
-      this.a.a.jdField_a_of_type_Long = localDownloadInfo.c;
     }
-    ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.6(this));
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if (this.a.a(paramDownloadInfo, this.a.a))
+    catch (Exception paramView)
     {
-      bhzm.b("ApkFileDownloadButton_", "onDownloadWait info.progress=" + paramDownloadInfo.f);
-      this.a.a.b = 20;
-      if (this.a.a.jdField_a_of_type_Long == 0L) {
-        this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
-      }
-      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.2(this));
+      paramView.printStackTrace();
     }
   }
   
-  public void packageReplaced(String paramString1, String paramString2) {}
+  public void addTitleView(View paramView)
+  {
+    try
+    {
+      this.titleContainer.removeAllViews();
+      if (paramView.getLayoutParams() == null) {
+        paramView.setLayoutParams(new FrameLayout.LayoutParams(-1, -2));
+      }
+      this.titleContainer.addView(paramView);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
+    }
+  }
   
-  public void uninstallSucceed(String paramString1, String paramString2) {}
+  protected void adjustLayout(boolean paramBoolean, bief parambief)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewBaseBuilder", 2, "adjustLayout");
+    }
+    int i = ImmersiveUtils.getStatusBarHeight(this.mContext);
+    if (paramBoolean)
+    {
+      localLayoutParams = (RelativeLayout.LayoutParams)parambief.b.getLayoutParams();
+      localLayoutParams.topMargin = i;
+      parambief.b.setLayoutParams(localLayoutParams);
+      localLayoutParams = (RelativeLayout.LayoutParams)parambief.a.getLayoutParams();
+      localLayoutParams.topMargin = 0;
+      localLayoutParams.addRule(3, 0);
+      parambief.a.setLayoutParams(localLayoutParams);
+      return;
+    }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)parambief.b.getLayoutParams();
+    localLayoutParams.topMargin = i;
+    parambief.b.setLayoutParams(localLayoutParams);
+    localLayoutParams = (RelativeLayout.LayoutParams)parambief.a.getLayoutParams();
+    localLayoutParams.topMargin = (i + DisplayUtil.dip2px(this.mContext, 50.0F));
+    parambief.a.setLayoutParams(localLayoutParams);
+  }
+  
+  public void buildBottomBar() {}
+  
+  public void buildContentView(Bundle paramBundle) {}
+  
+  public void buildData() {}
+  
+  public void buildLayout()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewBaseBuilder", 2, "buildLayout");
+    }
+    initLayout();
+    this.mWebview = new TouchWebView(this.mContext);
+    this.mWebview.setId(2131381402);
+    this.webviewContainer.addView(this.mWebview);
+  }
+  
+  @TargetApi(14)
+  public void buildLayout(Context paramContext)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewBaseBuilder", 2, "buildLayout...context");
+    }
+    initLayout();
+    this.mWebview = new TouchWebView(paramContext);
+    this.mWebview.setId(2131381402);
+    this.webviewContainer.addView(this.mWebview, 0, new RelativeLayout.LayoutParams(-1, -1));
+  }
+  
+  public void buildTitleBar()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewBaseBuilder", 2, "buildTitleBar");
+    }
+    this.mTitleBar = new biix(this.mInActivity, this.mWebview, this.titleContainer);
+    this.titleContainer.setBackgroundResource(2130850109);
+    if (this.mIntent != null)
+    {
+      this.titleText = this.mIntent.getStringExtra("webview_title");
+      this.leftName = this.mIntent.getStringExtra("webview_left_name");
+      if (!TextUtils.isEmpty(this.titleText)) {
+        this.mTitleBar.b(this.titleText);
+      }
+      if (!TextUtils.isEmpty(this.leftName)) {
+        this.mTitleBar.a(this.leftName);
+      }
+    }
+    this.mTitleBar.a(new biee(this));
+  }
+  
+  public final void buildWebView(AppInterface paramAppInterface)
+  {
+    super.buildBaseWebView(paramAppInterface);
+    onWebViewReady();
+  }
+  
+  public void finish() {}
+  
+  public boolean handleMessageImp(Message paramMessage)
+  {
+    return false;
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void onBackPressed()
+  {
+    super.doOnBackPressed(this.mAppInterface);
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewBaseBuilder", 2, "onCreate");
+    }
+    if ((this.mIntent != null) && (this.mIntent.getBooleanExtra("window_no_title", true))) {
+      this.mInActivity.requestWindowFeature(1);
+    }
+    if ((this.bNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
+    {
+      this.mInActivity.getWindow().addFlags(67108864);
+      int i = this.mInActivity.getResources().getColor(2131167084);
+      this.mSystemBarComp = new SystemBarCompact(this.mInActivity, true, i);
+      this.mSystemBarComp.init();
+    }
+    super.doOnCreate(this.mIntent);
+  }
+  
+  public void onDestroy()
+  {
+    super.doOnDestroy();
+  }
+  
+  protected void onImmersive(boolean paramBoolean, bief parambief)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewBaseBuilder", 2, "onImmersive");
+    }
+    if (paramBoolean)
+    {
+      if (this.mSystemBarComp != null) {
+        this.mSystemBarComp.setgetStatusBarVisible(false, 0);
+      }
+      parambief.b.getBackground().setAlpha(0);
+      return;
+    }
+    if (this.mSystemBarComp != null) {
+      this.mSystemBarComp.setgetStatusBarVisible(true, 0);
+    }
+    parambief.b.setBackgroundResource(2130850109);
+    this.mTitleBar.a(255, 0);
+  }
+  
+  public void onNewIntent(Intent paramIntent) {}
+  
+  public void onPause()
+  {
+    super.doOnPause();
+  }
+  
+  @TargetApi(14)
+  public void onResume()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewBaseBuilder", 2, "onResume");
+    }
+    super.doOnResume();
+  }
+  
+  public void onSaveInstanceState(Bundle paramBundle) {}
+  
+  public void onStop() {}
+  
+  public void onWebViewReady()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewBaseBuilder", 2, "onWebViewReady");
+    }
+    if (this.mIntent != null)
+    {
+      String str = this.mIntent.getStringExtra("url");
+      if (!TextUtils.isEmpty(str)) {
+        this.mWebview.loadUrl(str);
+      }
+    }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean) {}
+  
+  public final void preInitWebviewPlugin()
+  {
+    super.preInitPluginEngine();
+  }
+  
+  public void setContentViewShow(boolean paramBoolean)
+  {
+    LinearLayout localLinearLayout = this.contentContainer;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localLinearLayout.setVisibility(i);
+      return;
+    }
+  }
+  
+  protected final void setTittlebarImmersive(boolean paramBoolean, bief parambief)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewBaseBuilder", 2, "setTittlebarImmersive");
+    }
+    adjustLayout(paramBoolean, parambief);
+    onImmersive(paramBoolean, parambief);
+  }
 }
 
 

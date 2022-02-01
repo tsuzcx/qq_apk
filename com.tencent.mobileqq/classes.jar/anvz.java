@@ -1,10 +1,14 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
-
-public abstract interface anvz
+class anvz
+  implements ante
 {
-  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, oidb_cmd0xe27.RspBody paramRspBody);
+  anvz(anvy paramanvy) {}
+  
+  public void onDpcPullFinished(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
 }
 
 

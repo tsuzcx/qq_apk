@@ -1,27 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class augk
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public augk(HotPicMainPanel paramHotPicMainPanel) {}
+  public augk(SendBottomBar paramSendBottomBar) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
+    if (SendBottomBar.a(this.a) != null) {
+      SendBottomBar.a(this.a).a();
     }
-    this.a.b.setVisibility(8);
+    if (SendBottomBar.a(this.a)) {
+      auea.b(SendBottomBar.a(this.a));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      auea.a(SendBottomBar.a(this.a));
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

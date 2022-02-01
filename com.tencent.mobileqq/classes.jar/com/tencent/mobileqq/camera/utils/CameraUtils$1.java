@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.camera.utils;
 
-import apjd;
+import aqmh;
 
 public final class CameraUtils$1
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Apjd.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Aqmh.a(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,25 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
-final class ahma
-  implements Animation.AnimationListener
+public class ahma
+  extends ahlr
 {
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleHelper", 2, "onAllAnimationEnd " + paramAnimation);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleHelper", 2, "onAnimationStart " + paramAnimation);
-    }
-  }
+  public TroopSignVideoView a;
+  public View e;
+  public View f;
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
-import acmg;
-import acmk;
+import adcp;
+import adct;
 import java.util.HashMap;
 
 public class DoraemonAPIReporterProxy$1$2
   implements Runnable
 {
-  public DoraemonAPIReporterProxy$1$2(acmk paramacmk, acmg paramacmg, String paramString, HashMap paramHashMap) {}
+  public DoraemonAPIReporterProxy$1$2(adct paramadct, adcp paramadcp, String paramString, HashMap paramHashMap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Acmg.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap);
+    this.jdField_a_of_type_Adcp.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 

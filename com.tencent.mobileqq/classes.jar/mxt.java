@@ -1,41 +1,33 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.av.wtogether.adapter.QGroupExpandableListAdapter;
 
-class mxt
-  implements DialogInterface.OnClickListener
+public class mxt
+  implements View.OnTouchListener
 {
-  mxt(mxn parammxn, WeakReference paramWeakReference, int paramInt1, String paramString1, int paramInt2, String paramString2, int paramInt3, Activity paramActivity) {}
+  public mxt(QGroupExpandableListAdapter paramQGroupExpandableListAdapter, TextView paramTextView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
+    switch (paramMotionEvent.getAction())
     {
-      if (mxn.a(this.jdField_a_of_type_Mxn) != null) {
-        mxn.a(this.jdField_a_of_type_Mxn).removeObserver(mxn.a(this.jdField_a_of_type_Mxn));
-      }
-      mxn.a(this.jdField_a_of_type_Mxn, new mxu(this));
-      mxn.a(this.jdField_a_of_type_Mxn).addObserver(mxn.a(this.jdField_a_of_type_Mxn));
-      bcef.b(null, "dc00898", "", "", "0X800B078", "0X800B078", this.jdField_a_of_type_Int, 0, "", "", "", "");
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      paramDialogInterface.putExtra("url", "https://ti.qq.com/realname/index.html?source=avgame");
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
-      if (QLog.isColorLevel()) {
-        QLog.i("AvGameManager", 2, "showRealNameDialog click confirm. roomId: " + this.jdField_a_of_type_JavaLangString);
-      }
-      return;
     }
-    catch (Exception paramDialogInterface) {}
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mxt
  * JD-Core Version:    0.7.0.1
  */

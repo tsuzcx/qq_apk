@@ -1,142 +1,110 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class rsk
+  extends rox
 {
-  private static final String jdField_a_of_type_JavaLangString = "Q.readinjoy.video." + rsk.class.getSimpleName();
-  private static final rsk jdField_a_of_type_Rsk = new rsk();
-  private int jdField_a_of_type_Int;
-  private int b;
+  private String a;
   
-  private rsk()
+  public rsk(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (a()) {
-      this.jdField_a_of_type_Int = a("entrance_button_day_display_count");
+    super(paramBaseArticleInfo);
+  }
+  
+  public int getCommentCount()
+  {
+    if (((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof ArticleInfo)) && (!ppe.q((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.d;
     }
-    for (this.b = a("entrance_jump_app_display_count");; this.b = 0)
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCommentCount;
+  }
+  
+  public String getInnerUniqueID()
+  {
+    return ((rrs)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.b.get(0)).g;
+  }
+  
+  public String getShareUrl()
+  {
+    if (((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof ArticleInfo)) && (!ppe.q((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))) {
+      return ((rrs)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.b.get(0)).h;
+    }
+    return super.getShareUrl();
+  }
+  
+  public String getSubscribeName()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      a("EntranceButtonExposureHelper() mDayDisplayCount:" + this.jdField_a_of_type_Int + ",mEntranceDownloadInfoDisplayCount:" + this.b);
-      return;
-      this.jdField_a_of_type_Int = 0;
-    }
-  }
-  
-  private int a(String paramString)
-  {
-    return bkwm.a(pay.a(), true, true).getInt(paramString, 0);
-  }
-  
-  public static rsk a()
-  {
-    return jdField_a_of_type_Rsk;
-  }
-  
-  private static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, paramString);
-    }
-  }
-  
-  private void a(String paramString, int paramInt)
-  {
-    if (bkwm.a(pay.a(), true, true) == null)
-    {
-      a("writeToSP() failed");
-      return;
-    }
-    bkwm.a(paramString, Integer.valueOf(paramInt));
-  }
-  
-  private static boolean a()
-  {
-    Object localObject1 = Calendar.getInstance();
-    int i = ((Calendar)localObject1).get(1);
-    int j = ((Calendar)localObject1).get(2);
-    int k = ((Calendar)localObject1).get(5);
-    localObject1 = i + j + k;
-    Object localObject2 = bkwm.a(pay.a(), true, true);
-    if (localObject2 == null)
-    {
-      a("checkIsToday() failed");
-      return false;
-    }
-    String str = ((SharedPreferences)localObject2).getString("entrance_button_daily", null);
-    a("checkIsToday localDate = " + str);
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals(str))) {
-      return true;
-    }
-    localObject2 = ((SharedPreferences)localObject2).edit();
-    ((SharedPreferences.Editor)localObject2).putString("entrance_button_daily", (String)localObject1);
-    bkwm.a((SharedPreferences.Editor)localObject2, true);
-    return false;
-  }
-  
-  public int a()
-  {
-    try
-    {
-      a("getDayDisplayCount() mDayDisplayCount:" + this.jdField_a_of_type_Int);
-      int i = this.jdField_a_of_type_Int;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(tfb paramtfb)
-  {
-    for (;;)
-    {
-      try
-      {
-        boolean bool = a();
-        if (bool)
-        {
-          this.jdField_a_of_type_Int += 1;
-          a("entrance_button_day_display_count", this.jdField_a_of_type_Int);
-          if ((paramtfb instanceof VideoInfo.EntranceDownloadInfo))
-          {
-            if (bool)
-            {
-              this.b += 1;
-              a("entrance_jump_app_display_count", this.b);
-            }
-          }
-          else {
-            a("addToCount() mDayDisplayCount:" + this.jdField_a_of_type_Int + "，mEntranceDownloadInfoDisplayCount：" + this.b);
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_Int = 0;
-          continue;
-        }
-        this.b = 0;
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject instanceof QQAppInterface)) {
+        break label59;
       }
-      finally {}
+    }
+    label59:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject != null) {}
+      for (localObject = ContactUtils.getBuddyName((QQAppInterface)localObject, getSubscribeUin(), true);; localObject = "")
+      {
+        this.jdField_a_of_type_JavaLangString = ((String)localObject);
+        return this.jdField_a_of_type_JavaLangString;
+      }
     }
   }
   
-  public int b()
+  public String getSubscribeUin()
   {
-    try
-    {
-      int i = this.b;
-      return i;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rqy != null) {
+      return String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rqy.jdField_a_of_type_Long);
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    return "";
+  }
+  
+  public URL getVideoCoverURL()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.b.size() > 0)) {
+      return pqa.a(((rrs)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.b.get(0)).d, true, true);
     }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
+  }
+  
+  public URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.b.size() > 0)) {
+      return pqa.a(pre.a(((rrs)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.b.get(0)).d, paramInt1, paramInt2));
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
+  }
+  
+  public int getVideoDuration()
+  {
+    if (((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof ArticleInfo)) && (!ppe.q((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))) {
+      return (int)(((rrs)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.b.get(0)).jdField_a_of_type_Long / 1000L);
+    }
+    return super.getVideoDuration();
+  }
+  
+  public int getVideoHeight()
+  {
+    return ((rrs)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.b.get(0)).b;
+  }
+  
+  public String getVideoVid()
+  {
+    return ((rrs)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.b.get(0)).i;
+  }
+  
+  public int getVideoWidth()
+  {
+    return ((rrs)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rrq.b.get(0)).jdField_a_of_type_Int;
   }
 }
 

@@ -1,23 +1,23 @@
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.view.View;
+
 class bnhl
-  implements vwt
+  implements Observer<Boolean>
 {
-  bnhl(bnhh parambnhh) {}
+  bnhl(bnhf parambnhf) {}
   
-  public void a(boolean paramBoolean, vwp paramvwp)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    xvv.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramvwp != null) && (this.a.a != null)) {
-      this.a.a(paramvwp.b, paramvwp.a, this.a.a);
-    }
-    for (;;)
-    {
-      paramvwp = (vwq)vux.a(9);
-      if (paramvwp != null) {
-        paramvwp.b(this);
-      }
-      this.a.a = null;
+    if (paramBoolean == null) {
       return;
-      xvv.e("DoodleEmojiManager", "onLbsUpdate failed.");
+    }
+    View localView = bnhf.a(this.a);
+    if (paramBoolean.booleanValue()) {}
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      return;
     }
   }
 }

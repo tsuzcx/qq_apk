@@ -2,234 +2,101 @@ import android.text.TextUtils;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.zimu.ZimuItem;
-import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
 
 public class lgf
+  extends lge
 {
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private lgg jdField_a_of_type_Lgg;
+  static long b;
   
-  public lgf(VideoAppInterface paramVideoAppInterface)
+  public lgf(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Lgg = new lgg(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lgg);
+    super(paramAppInterface);
   }
   
-  private void a(String paramString, boolean paramBoolean)
+  public static void a(VideoAppInterface paramVideoAppInterface, String paramString1, long paramLong, String paramString2, boolean paramBoolean)
   {
-    int i = 0;
-    while (i < 15)
+    int i;
+    long l1;
+    if (((lin)paramVideoAppInterface.a(5)).a(0, "750") == 1)
     {
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i)) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i).a(paramString, paramBoolean);
+      i = 1;
+      l1 = AudioHelper.a();
+      if (i == 0) {
+        break label214;
       }
-      i += 1;
+      i = 12;
+      localObject = (lge)paramVideoAppInterface.a(1);
+    }
+    for (Object localObject = paramString2 + "|" + ((lge)localObject).a() + "|" + paramLong + "|" + l1;; localObject = paramString2)
+    {
+      long l2 = b;
+      b = l1;
+      QLog.w("AudioTransClientInfoHandler", 1, "sendZimuCmd, id[" + paramString2 + "], cmdInfo[" + (String)localObject + "], autoDetect[" + true + "], from[" + paramString1 + "], seq[" + paramLong + "], sendTime[" + l1 + "], sendInterval[" + (l1 - l2) + "]");
+      paramVideoAppInterface.a().a(i, (String)localObject);
+      return;
+      i = 0;
+      break;
+      label214:
+      i = 7;
     }
   }
   
-  private void a(Observable paramObservable, Object paramObject)
+  int a()
   {
-    paramObservable = (Object[])paramObject;
-    switch (((Integer)paramObservable[0]).intValue())
+    int i = 100;
+    if (AppNetConnInfo.isWifiConn()) {
+      i = 2;
+    }
+    while (!AppNetConnInfo.isMobileConn()) {
+      return i;
+    }
+    switch (AppNetConnInfo.getMobileInfo())
     {
     default: 
-    case 101: 
-    case 6009: 
-    case 6103: 
-    case 13: 
-    case 203: 
-      long l1;
-      do
-      {
-        return;
-        a(mtt.a(paramObservable, 1), 2, null);
-        return;
-        b(((Integer)paramObservable[1]).intValue(), (String)paramObservable[2]);
-        return;
-        a(((Integer)paramObservable[1]).intValue(), (String)paramObservable[2]);
-        return;
-        l1 = mtt.a(paramObservable, 1);
-        if (QLog.isColorLevel()) {
-          QLog.w("BusinessMessageCenter", 1, "onSessionStatusChanged[Connected],");
-        }
-        a(l1, 1, null);
-        return;
-        paramObject = (String)paramObservable[1];
-        bool = ((Boolean)paramObservable[2]).booleanValue();
-        l1 = mtt.a(paramObservable, 3);
-        paramObservable = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d;
-        long l2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().g;
-        QLog.w("BusinessMessageCenter", 1, "onSessionStatusChanged[END], eventPeerUin[" + paramObject + "], isQuit[" + bool + "], curPeerUin[" + paramObservable + "], relationId[" + l2 + "]");
-      } while ((paramObservable != null) && (!paramObservable.equalsIgnoreCase(paramObject)));
-      a(l1, 3, null);
-      return;
+      return 100;
+    case 1: 
+      return 4;
+    case 2: 
+      return 3;
     }
-    paramObject = (String)paramObservable[1];
-    boolean bool = ((Boolean)paramObservable[2]).booleanValue();
-    paramObservable = paramObject;
-    if (TextUtils.isEmpty(paramObject)) {
-      paramObservable = "";
-    }
-    a(paramObservable, bool);
+    return 5;
   }
   
-  public int a(int paramInt, String paramString)
+  void a(long paramLong1, long paramLong2)
   {
-    if (((paramInt == 3) || (paramInt == 1)) && (!((lib)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5)).a(3, paramInt, paramString))) {
-      ((lgr)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)).a(paramInt, paramString);
-    }
-    return 0;
-  }
-  
-  public int a(String paramString)
-  {
-    Object localObject;
-    String str1;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localObject = paramString.split("\\|");
-      str1 = null;
-      if (localObject.length <= 0) {
-        break label677;
-      }
-    }
-    label650:
-    label655:
-    label660:
-    label677:
-    for (lir locallir = localObject[0];; locallir = null)
-    {
-      if (locallir == null) {
-        return 0;
-      }
-      if (localObject.length > 1) {
-        str1 = localObject[1];
-      }
-      if (localObject.length > 2) {}
-      for (String str2 = localObject[2];; str2 = null)
-      {
-        if (localObject.length > 3) {}
-        for (long l1 = AudioHelper.a(localObject[3]);; l1 = 0L)
-        {
-          long l2 = AudioHelper.a();
-          long l3 = AudioHelper.b();
-          int i;
-          if (locallir.startsWith("EMPTY_ITEM"))
-          {
-            if (!ZimuToolbar.isSupport()) {
-              break;
-            }
-            locallir = (lir)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
-            localObject = (ZimuItem)locallir.a();
-            if ((localObject == null) || (TextUtils.isEmpty(((ZimuItem)localObject).getId()))) {
-              break label660;
-            }
-            QLog.w("BusinessMessageCenter", 1, "onReceivedChangingZimuOfPeer, 对方取消字幕, info[" + paramString + "], sessionid[" + str1 + "], cmdSeq[" + str2 + "], seq[" + l3 + "], sendTime[" + l1 + "], offset[" + (l2 - l1) + "], isTranslation[" + locallir.c() + "], cur[" + ((ZimuItem)localObject).getId() + "]");
-            paramString = (lir)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
-            paramString.a("onReceivedChangingZimuOfPeer", l3);
-            new mci(l3, "onReceivedChangingZimuOfPeer", 3, "0").a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-            paramString.a(l3, null);
-            i = 1;
-            a(Integer.valueOf(6010), Integer.valueOf(1));
-          }
-          for (;;)
-          {
-            this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c(0);
-            return i;
-            if (!ZimuToolbar.isSupport()) {
-              break;
-            }
-            localObject = (lir)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
-            ZimuItem localZimuItem1 = (ZimuItem)((lir)localObject).a(locallir);
-            ZimuItem localZimuItem2 = (ZimuItem)((lir)localObject).a();
-            QLog.w("BusinessMessageCenter", 1, "onReceivedChangingZimuOfPeer, 对方选择字幕, info[" + paramString + "], zimuId[" + locallir + "], sessionid[" + str1 + "], cmdSeq[" + str2 + "], seq[" + l3 + "], sendTime[" + l1 + "], offset[" + (l2 - l1) + "], isTranslation[" + ((lir)localObject).c() + "], ZimuItem[" + localZimuItem1 + "], CurItem[" + localZimuItem2 + "]");
-            boolean bool;
-            if (localZimuItem1 != null) {
-              if (localZimuItem2 == null)
-              {
-                bool = false;
-                if (bool) {
-                  break label655;
-                }
-                ((lir)localObject).a("onReceivedChangingZimuOfPeer", false, l3, str1);
-                ((lir)localObject).a(l3, locallir);
-                if (!localZimuItem1.isUsable()) {
-                  ((lir)localObject).a(l3, localZimuItem1);
-                }
-                new mci(l3, "onReceivedChangingZimuOfPeer", 1, locallir).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-                if (localZimuItem2 != null) {
-                  break label650;
-                }
-                i = 3;
-                label580:
-                a(Integer.valueOf(6010), Integer.valueOf(i));
-                j = i;
-                if (!ZimuToolbar.isShow(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {
-                  a(Integer.valueOf(6012), Integer.valueOf(i));
-                }
-              }
-            }
-            for (int j = i;; j = 0)
-            {
-              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c(0);
-              return j;
-              bool = localZimuItem2.getId().equalsIgnoreCase(localZimuItem1.getId());
-              break;
-              i = 2;
-              break label580;
-            }
-            i = 0;
-          }
-        }
-      }
+    VideoAppInterface localVideoAppInterface = (VideoAppInterface)this.mApp;
+    ZimuItem localZimuItem = (ZimuItem)((ljd)localVideoAppInterface.a(0)).a();
+    if ((localZimuItem != null) && (!TextUtils.isEmpty(localZimuItem.getId()))) {
+      a(localVideoAppInterface, "sendToPeer", paramLong1, localZimuItem.getId(), true);
     }
   }
   
-  public void a(long paramLong, int paramInt, String paramString)
+  int b()
   {
-    String str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().f() + "";
-    int i = 0;
-    while (i < 15)
-    {
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i)) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i).a(paramLong, paramInt, str, paramString);
-      }
-      i += 1;
-    }
+    return mvk.a();
   }
   
-  protected void a(Integer paramInteger, Object paramObject)
+  String b()
   {
-    lba.f("BusinessMessageCenter", "notifyEvent :" + paramInteger + "|" + paramObject);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { paramInteger, paramObject });
+    VideoController localVideoController = ((VideoAppInterface)this.mApp).a();
+    if ((localVideoController != null) && (localVideoController.a() != null)) {
+      return localVideoController.a().d;
+    }
+    return "";
   }
   
-  public int b(int paramInt, String paramString)
+  boolean b()
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return 0;
-      } while (((lib)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5)).a(0, paramInt, paramString));
-      a(paramString);
-      return 0;
-    } while (((lib)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5)).a(0, paramInt, paramString));
-    String str = paramString;
-    if (paramString.equals("。")) {
-      str = "。 ";
-    }
-    paramString = new lgc(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, str, str, 2);
-    paramString.a = true;
-    a(Integer.valueOf(6008), paramString);
-    return 0;
+    return ((ljd)((VideoAppInterface)this.mApp).a(0)).b();
+  }
+  
+  boolean c()
+  {
+    return ((lgh)this.mApp.getBusinessHandler(0)).a();
   }
 }
 

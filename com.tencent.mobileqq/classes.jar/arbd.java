@@ -1,35 +1,41 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.2.1;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class arbd
-  extends amrn
 {
-  arbd(arbb paramarbb) {}
+  private boolean a;
   
-  public void onDelEmoResponse(boolean paramBoolean)
+  public static arbd a(String paramString)
   {
-    if (arbb.e(this.a) == null) {}
-    while (!paramBoolean) {
-      return;
-    }
-    this.a.b();
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        arbd localarbd = new arbd();
+        localarbd.a = new JSONObject(paramString).optBoolean("needSeparatePersonWithGroup", false);
+        return localarbd;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public void onUploadReq(List<CustomEmotionData> paramList)
+  public boolean a()
   {
-    if (arbb.f(this.a) == null) {
-      return;
-    }
-    arbb.g(this.a).removeObserver(arbb.a(this.a));
-    ThreadManager.excute(new FavroamingManager.2.1(this, paramList), 128, null, true);
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return "needSeparate:" + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,84 @@
 import android.os.Bundle;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.9.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.os.Handler;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.oidb_0xc2f.GetFollowUserRecommendListRsp;
-import tencent.im.oidb.oidb_0xc2f.RspBody;
+import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xb83.oidb_cmd0xb83.RspBody;
 
-public class qil
-  extends nmc
+public abstract class qil
+  extends qii
 {
-  qil(qid paramqid) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public qil(qep paramqep, Handler paramHandler, AppInterface paramAppInterface, EntityManager paramEntityManager, qxn paramqxn, ExecutorService paramExecutorService)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, errorCode = " + paramInt);
+    super(paramqep, paramHandler, paramAppInterface, paramEntityManager, paramqxn, paramExecutorService);
+  }
+  
+  protected int a(FromServiceMsg paramFromServiceMsg, Object paramObject, MessageMicro paramMessageMicro)
+  {
+    int j = qxp.a(paramFromServiceMsg, paramObject, paramMessageMicro);
+    QLog.d("RIJCommentInLikeFeedHandler", 1, "parse0x83eRspResultCode result code :" + j);
+    int i = j;
+    if (j == 84) {
+      i = 0;
     }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
-      {
-        paramBundle = new oidb_0xc2f.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        qid.a(this.a).mRecommendFollowInfos = rdw.a((oidb_0xc2f.GetFollowUserRecommendListRsp)paramBundle.msg_get_follow_user_recommend_list_rsp.get());
-        if ((qid.a(this.a).mRecommendFollowInfos.a != null) && (qid.a(this.a).mRecommendFollowInfos.a.size() >= 3))
-        {
-          qid.a(this.a).a(qid.a(this.a).mRecommendFollowInfos.a);
-          qid.a(this.a).isShowRecommendList = true;
-          qid.a(this.a);
-          qid.a(this.a).post(new ReadInJoySocializeRecommendFollowView.9.1(this));
-          return;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, size < 3");
-          return;
-        }
+    return i;
+  }
+  
+  protected void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int j = 5;
+    boolean bool = true;
+    int k = qxp.a(paramFromServiceMsg, paramObject, new oidb_cmd0xb83.RspBody());
+    int i;
+    if (paramToServiceMsg.getAttribute("biu_deliver", Integer.valueOf(0)).equals(Integer.valueOf(1))) {
+      i = 4;
+    }
+    for (;;)
+    {
+      if (i == 4) {
+        uvs.a(k, paramToServiceMsg, 1, null);
       }
-      catch (Exception paramArrayOfByte)
-      {
-        QLog.e("ReadInJoySocializeRecommendFollowView", 1, "requestRecommendList onResult(), exception = " + paramArrayOfByte.toString());
+      if (i == 0) {
+        uvs.a(k, paramToServiceMsg, 3, null);
       }
+      paramFromServiceMsg = pkh.a();
+      if (k == 0) {}
+      for (;;)
+      {
+        pqe.a(paramFromServiceMsg, bool, System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey"), k, i);
+        return;
+        if (paramToServiceMsg.getAttribute("biu_deliver", Integer.valueOf(0)).equals(Integer.valueOf(2)))
+        {
+          i = 4;
+          break;
+        }
+        i = j;
+        if (paramToServiceMsg.getAttribute("ugc_deliver", Integer.valueOf(0)).equals(Integer.valueOf(1))) {
+          break;
+        }
+        i = j;
+        if (paramToServiceMsg.getAttribute("up_master_deliver", Integer.valueOf(0)).equals(Integer.valueOf(1))) {
+          break;
+        }
+        if (paramToServiceMsg.getAttribute("submit_comment", Integer.valueOf(0)).equals(Integer.valueOf(1)))
+        {
+          i = 0;
+          break;
+        }
+        if (paramToServiceMsg.getAttributes().get("0x83e_upvote_operation_type") == null) {
+          break label241;
+        }
+        i = ((Integer)paramToServiceMsg.getAttributes().get("0x83e_upvote_operation_type")).intValue();
+        break;
+        bool = false;
+      }
+      label241:
+      i = -1;
     }
   }
 }

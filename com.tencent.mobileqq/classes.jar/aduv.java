@@ -1,33 +1,25 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class aduv
-  extends aulo
+class aduv
+  implements DialogInterface.OnClickListener
 {
-  public aduv(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  aduv(adut paramadut, String paramString) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 1;
-    if (!paramBoolean1)
-    {
-      this.a.a(2131718207, 1);
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean2) {
-      i = 2;
-    }
-    bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    }
+    DiscussionInfoCardActivity.a(this.jdField_a_of_type_Adut.a).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Adut.a.app.getProxyManager().a();
+    paramDialogInterface.delRecentUser((RecentUser)paramDialogInterface.findRecentUserByUin(this.jdField_a_of_type_JavaLangString, 3000));
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("isNeedFinish", true);
+    this.jdField_a_of_type_Adut.a.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_Adut.a.finish();
   }
 }
 

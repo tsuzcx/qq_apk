@@ -1,21 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
-final class bifj
-  implements HostnameVerifier
+public class bifj
+  implements DialogInterface.OnClickListener
 {
-  bifj(URL paramURL) {}
+  public bifj(WebViewFragment paramWebViewFragment) {}
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a.getHost(), paramSSLSession);
-    if (!bool) {
-      QLog.d("OpenSdkVirtualUtil", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
-    }
-    return bool;
+    paramDialogInterface.dismiss();
   }
 }
 

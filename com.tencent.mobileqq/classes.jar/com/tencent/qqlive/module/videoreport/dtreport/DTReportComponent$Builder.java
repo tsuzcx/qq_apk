@@ -1,6 +1,7 @@
 package com.tencent.qqlive.module.videoreport.dtreport;
 
 import com.tencent.qqlive.module.videoreport.Configuration.Builder;
+import com.tencent.qqlive.module.videoreport.ILogger;
 import com.tencent.qqlive.module.videoreport.dtreport.api.IDTParamProvider;
 import com.tencent.qqlive.module.videoreport.dtreport.api.IDTReport;
 import com.tencent.qqlive.module.videoreport.dtreport.constants.DTConfigConstants.ElementFormatMode;
@@ -9,8 +10,9 @@ public class DTReportComponent$Builder
 {
   private Configuration.Builder mConfigurationBuilder;
   private IDTReport mDTReport;
-  private int mElementFormatMode = 0;
+  private int mElementFormatMode = 1;
   private boolean mEnableDebug;
+  private boolean mEnablePageLink = false;
   private IDTParamProvider mParamProvider;
   
   DTReportComponent$Builder(IDTParamProvider paramIDTParamProvider)
@@ -69,6 +71,12 @@ public class DTReportComponent$Builder
     return this;
   }
   
+  public Builder enablePageLink(boolean paramBoolean)
+  {
+    this.mEnablePageLink = paramBoolean;
+    return this;
+  }
+  
   public Builder independentPageOut(boolean paramBoolean)
   {
     this.mConfigurationBuilder.independentPageOut(paramBoolean);
@@ -78,6 +86,12 @@ public class DTReportComponent$Builder
   public Builder lazyInitType(int paramInt)
   {
     this.mConfigurationBuilder.lazyInitType(paramInt);
+    return this;
+  }
+  
+  public Builder setLogger(ILogger paramILogger)
+  {
+    this.mConfigurationBuilder.logger(paramILogger);
     return this;
   }
 }

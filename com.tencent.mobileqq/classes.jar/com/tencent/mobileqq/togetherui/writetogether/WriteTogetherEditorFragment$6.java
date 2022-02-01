@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.togetherui.writetogether;
 
-import bdgn;
+import benq;
 
 class WriteTogetherEditorFragment$6
   implements Runnable
@@ -9,7 +9,7 @@ class WriteTogetherEditorFragment$6
   
   public void run()
   {
-    if (bdgn.a())
+    if (benq.a())
     {
       WriteTogetherEditorFragment.c(this.this$0);
       return;

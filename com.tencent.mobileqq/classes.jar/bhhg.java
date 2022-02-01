@@ -1,30 +1,12 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
-
-public class bhhg
-  implements URLDrawable.URLDrawableListener
+class bhhg
 {
-  final WeakReference<View> a;
+  public int a;
+  public String a;
   
-  public bhhg(View paramView)
+  public bhhg()
   {
-    this.a = new WeakReference(paramView);
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = (View)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.postInvalidate();
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

@@ -25,5 +25,5 @@
     </LinearLayout>
     <Button android:id="@id/ija" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/i6" android:text="@string/d74" android:layout_alignParentBottom="true" style="@style/b9" />
     <View android:id="@id/gmv" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include layout="@layout/crq" />
+    <include layout="@layout/cue" />
 </RelativeLayout>

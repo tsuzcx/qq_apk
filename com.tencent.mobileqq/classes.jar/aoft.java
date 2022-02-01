@@ -1,14 +1,16 @@
-class aoft
-  extends anyi
+import java.util.ArrayList;
+
+public abstract interface aoft
 {
-  aoft(aofs paramaofs) {}
+  public abstract void a(String paramString);
   
-  public void a(aogo paramaogo)
-  {
-    if (aofs.a(this.a) != null) {
-      aofs.a(this.a).a(paramaogo);
-    }
-  }
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(ArrayList<String> paramArrayList);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(String paramString1, String paramString2);
 }
 
 

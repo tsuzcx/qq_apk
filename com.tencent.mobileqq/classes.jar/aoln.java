@@ -1,421 +1,565 @@
-import android.graphics.SurfaceTexture;
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
-import android.os.Build;
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.model.CameraProxy.1;
-import com.tencent.mobileqq.ar.model.CameraProxy.2;
-import com.tencent.mobileqq.ar.model.CameraProxy.3;
+import KQQ.ChangeFriendNameRes;
+import KQQ.CheckUpdateResp;
+import KQQ.SetRichSigRes;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import friendlist.GetAutoInfoResp;
+import friendlist.GetOnlineInfoResp;
+import friendlist.GetUserAddFriendSettingResp;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import tencent.im.oidb.cmd0x5e1.oidb_0x5e1.RspBody;
+import tencent.im.oidb.cmd0x5e1.oidb_0x5e1.UdcUinData;
+import tencent.im.oidb.cmd0xcf0.cmd0xcf0.BindContactsFriendInfo;
+import tencent.im.oidb.cmd0xcf0.cmd0xcf0.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class aoln
-  implements Camera.PreviewCallback, aogf
+  extends aolh
 {
-  public static HandlerThread a;
-  private volatile int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private aogc jdField_a_of_type_Aogc;
-  private WeakReference<aolq> jdField_a_of_type_JavaLangRefWeakReference;
-  private ArrayList<WeakReference<aogf>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private volatile byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int = 1;
-  private ArrayList<WeakReference<aolo>> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_c_of_type_Int;
-  private ArrayList<WeakReference<aolq>> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  private int d;
-  private int e = 17;
-  private int f = 10;
-  private int g;
+  private short a;
   
-  private aoln()
+  public aoln(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    if (jdField_a_of_type_AndroidOsHandlerThread == null)
-    {
-      jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("Camera2 Handler Thread", 0);
-      jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    super(paramQQAppInterface, paramFriendListHandler);
+    this.jdField_a_of_type_Short = 20002;
+  }
+  
+  private void a(FromServiceMsg paramFromServiceMsg, CheckUpdateResp paramCheckUpdateResp)
+  {
+    if (paramFromServiceMsg.getResultCode() == 1000) {
+      QLog.i("ProfileService.CheckUpdateReq", 1, "getCheckUpdate ok resultcode = " + paramFromServiceMsg.getResultCode());
     }
-    this.jdField_a_of_type_Aogc = new aogc();
-    if (Build.MODEL.equalsIgnoreCase("Redmi Note 3")) {}
-    for (this.jdField_a_of_type_Long = 500L;; this.jdField_a_of_type_Long = 300L)
+    if ((paramFromServiceMsg.getResultCode() == 1002) || (paramFromServiceMsg.getResultCode() == 1013)) {
+      QLog.i("ProfileService.CheckUpdateReq", 1, "getCheckUpdate timeout resultcode = " + paramFromServiceMsg.getResultCode());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.handleCheckUpdate(paramCheckUpdateResp);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager();
+    if ((aoxx.a) && (bhkf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
+      if (!bcmz.b()) {
+        break label161;
+      }
+    }
+    label161:
+    for (int i = 1;; i = 0)
     {
-      this.f = 0;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a(i);
+      if (i != 1) {
+        break;
+      }
+      bhkf.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a();
       return;
     }
+    bhkf.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
   }
   
-  public static aoln a()
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
-    return aolp.a();
-  }
-  
-  private void a(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    for (;;)
+    bool2 = false;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      int i;
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+      localStringBuilder = new StringBuilder().append("handleInfoOpenId ").append(paramFromServiceMsg.isSuccess()).append(", ");
+      if (paramArrayOfByte == null) {
+        break label221;
+      }
+    }
+    label221:
+    for (int i = paramArrayOfByte.length;; i = -1)
+    {
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, i);
+      paramToServiceMsg = paramToServiceMsg.extraData;
+      bool1 = bool2;
+      if (paramFromServiceMsg.isSuccess()) {}
+      try
       {
-        i = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
-        if (i >= 0)
+        paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
+        paramFromServiceMsg.mergeFrom(paramArrayOfByte);
+        if ((!paramFromServiceMsg.uint32_result.has()) || (paramFromServiceMsg.uint32_result.get() != 0)) {
+          break;
+        }
+        paramArrayOfByte = new oidb_0x5e1.RspBody();
+        paramArrayOfByte.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
+        if (paramArrayOfByte.rpt_msg_uin_data.size() <= 0) {
+          break;
+        }
+        paramFromServiceMsg = new String(((oidb_0x5e1.UdcUinData)paramArrayOfByte.rpt_msg_uin_data.get(0)).bytes_nick.get().toByteArray());
+        paramToServiceMsg.putString("nick_name", paramFromServiceMsg);
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleInfoOpenId " + paramFromServiceMsg);
+        }
+        bool1 = true;
+      }
+      catch (Throwable paramFromServiceMsg)
+      {
+        for (;;)
         {
-          WeakReference localWeakReference = (WeakReference)this.jdField_b_of_type_JavaUtilArrayList.get(i);
-          if ((localWeakReference == null) || (localWeakReference.get() == null)) {
-            break label102;
-          }
-          if (paramBoolean) {
-            ((aolo)localWeakReference.get()).b();
-          } else {
-            ((aolo)localWeakReference.get()).b(paramInt1, paramInt2);
+          bool1 = bool2;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "", paramFromServiceMsg);
+            bool1 = bool2;
+            continue;
+            bool1 = false;
           }
         }
       }
+      a(74, bool1, paramToServiceMsg);
       return;
-      label102:
-      i -= 1;
     }
   }
   
-  public int a()
+  private void a(ToServiceMsg paramToServiceMsg, GetUserAddFriendSettingResp paramGetUserAddFriendSettingResp)
   {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String a()
-  {
-    String str = null;
-    int i = this.g;
-    if (Build.MODEL.equalsIgnoreCase("M1 E")) {
-      i = 90;
-    }
-    if (this.jdField_a_of_type_ArrayOfByte != null) {
-      str = axmx.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_c_of_type_Int, this.d, this.e, i);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraProxy", 2, String.format("getLastPreviewFrame, path: %s, rotation: %s", new Object[] { str, Integer.valueOf(i) }));
-    }
-    return str;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aogc != null) {
-      this.jdField_a_of_type_Aogc.c();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Int == 2)
+    paramToServiceMsg = paramToServiceMsg.extraData;
+    if ((paramGetUserAddFriendSettingResp != null) && (paramGetUserAddFriendSettingResp.result == 0))
     {
-      QLog.i("CameraProxy", 2, "openCamera mCurCameraState = " + this.jdField_a_of_type_Int);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleAddFriendSetting " + paramGetUserAddFriendSettingResp.queryuinsetting + ", " + paramGetUserAddFriendSettingResp.contact_bothway_friend + ", " + paramGetUserAddFriendSettingResp.vecStrUserQuestion);
+      }
+      paramToServiceMsg.putInt("friend_setting", paramGetUserAddFriendSettingResp.queryuinsetting);
+      paramToServiceMsg.putLong("query_friend_uin", paramGetUserAddFriendSettingResp.queryuin);
+      paramToServiceMsg.putStringArrayList("user_question", paramGetUserAddFriendSettingResp.vecStrUserQuestion);
+      paramToServiceMsg.putBoolean("contact_bothway", paramGetUserAddFriendSettingResp.contact_bothway_friend);
+      a(12, true, paramToServiceMsg);
       return;
     }
-    this.jdField_a_of_type_Int = 1;
-    this.f = 0;
-    a(new CameraProxy.1(this, paramInt));
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Aogc != null) {
-      this.jdField_a_of_type_Aogc.a(paramInt1, paramInt2);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (this.jdField_a_of_type_Aogc != null) {
-      this.jdField_a_of_type_Aogc.a(paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-  }
-  
-  public void a(SurfaceTexture paramSurfaceTexture)
-  {
-    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Boolean))
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      QLog.i("CameraProxy", 2, "startCameraPreview return now");
+      localStringBuilder = new StringBuilder().append("handleAddFriendSetting ");
+      if (paramGetUserAddFriendSettingResp == null) {
+        break label176;
+      }
+    }
+    label176:
+    for (int i = paramGetUserAddFriendSettingResp.result;; i = -10000)
+    {
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, i);
+      a(12, false, paramToServiceMsg);
       return;
     }
-    a(new CameraProxy.2(this, paramSurfaceTexture));
   }
   
-  public void a(aogf paramaogf)
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (((WeakReference)localIterator.next()).get() == paramaogf) {
+    paramToServiceMsg = paramToServiceMsg.extraData;
+    paramObject = (GetAutoInfoResp)paramObject;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null) && (paramObject.errorCode == 0))
+    {
+      paramToServiceMsg.putInt("group_id", paramObject.cGroupID);
+      paramToServiceMsg.putString("nick_name", paramObject.strRemark);
+      a(33, true, paramToServiceMsg);
+      return;
+    }
+    a(33, false, paramToServiceMsg);
+  }
+  
+  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool1 = true;
+    String str1 = paramToServiceMsg.extraData.getString("uin");
+    String str2 = paramToServiceMsg.extraData.getString("com_value");
+    boolean bool2 = paramToServiceMsg.extraData.getBoolean("notify_plugin");
+    paramToServiceMsg = new Object[3];
+    paramToServiceMsg[0] = str1;
+    paramToServiceMsg[1] = str2;
+    if (1000 == paramFromServiceMsg.getResultCode())
+    {
+      paramFromServiceMsg = (ChangeFriendNameRes)paramObject;
+      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.cResult == 0))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.setFriendComment(str1, str2, true);
+        paramToServiceMsg[2] = Byte.valueOf(paramFromServiceMsg.cResult);
+        a(27, true, paramToServiceMsg);
+        if (bool2)
+        {
+          paramToServiceMsg = new Intent("action_set_remark_plugin");
+          paramToServiceMsg.putExtra("uin", str1);
+          paramToServiceMsg.putExtra("remark", str2);
+          paramToServiceMsg.putExtra("is_suc", bool1);
+          BaseApplicationImpl.getContext().sendBroadcast(paramToServiceMsg);
+        }
         return;
       }
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramaogf));
-  }
-  
-  public void a(aolo paramaolo)
-  {
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        if (((WeakReference)localIterator.next()).get() == paramaolo) {
-          return;
-        }
+      if (paramFromServiceMsg != null)
+      {
+        paramToServiceMsg[2] = Byte.valueOf(paramFromServiceMsg.cResult);
+        label178:
+        a(27, false, paramToServiceMsg);
       }
-      this.jdField_b_of_type_JavaUtilArrayList.add(new WeakReference(paramaolo));
-      return;
-    }
-  }
-  
-  public void a(aolq paramaolq)
-  {
-    if (paramaolq == null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaolq);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    synchronized (jdField_a_of_type_AndroidOsHandlerThread)
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-      }
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if (localWeakReference.get() != null) {
-        ((aogf)localWeakReference.get()).a(paramBoolean);
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 2;
-  }
-  
-  public boolean a(float paramFloat, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Aogc != null) {
-      return this.jdField_a_of_type_Aogc.a(paramFloat, paramBoolean);
-    }
-    return false;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return this.jdField_a_of_type_Aogc.a(paramBoolean);
-  }
-  
-  public int b()
-  {
-    return this.d;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aogc != null) {
-      this.jdField_a_of_type_Aogc.d();
-    }
-  }
-  
-  public void b(aogf paramaogf)
-  {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    if (i < j) {
-      if (((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get() != paramaogf) {}
     }
     for (;;)
     {
-      if (i != -1) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      }
-      return;
-      i += 1;
+      bool1 = false;
       break;
-      i = -1;
+      paramToServiceMsg[2] = Byte.valueOf(-1);
+      break label178;
+      paramToServiceMsg[2] = Byte.valueOf(-1);
+      a(27, false, paramToServiceMsg);
     }
   }
   
-  public void b(aolo paramaolo)
+  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    {
+      paramObject = (SetRichSigRes)paramObject;
+      if (paramObject.cResult == 0)
+      {
+        anvk localanvk = (anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if (localanvk != null)
+        {
+          byte[] arrayOfByte = paramToServiceMsg.extraData.getByteArray("sig_value");
+          if (paramObject.dwTime == 0L) {
+            paramObject.dwTime = 1L;
+          }
+          paramFromServiceMsg = localanvk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          paramToServiceMsg = paramFromServiceMsg;
+          if (paramFromServiceMsg == null)
+          {
+            paramToServiceMsg = new ExtensionInfo();
+            paramToServiceMsg.uin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+          }
+          if (paramToServiceMsg.timestamp != paramObject.dwTime)
+          {
+            paramToServiceMsg.setRichBuffer(arrayOfByte, paramObject.dwTime);
+            localanvk.a(paramToServiceMsg);
+          }
+        }
+        a(28, true, null);
+        return;
+      }
+      a(28, false, Integer.valueOf(paramObject.cResult));
+      return;
+    }
+    a(28, false, null);
+  }
+  
+  private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    paramToServiceMsg = new cmd0xcf0.RspBody();
+    FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+    int j = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    int i;
+    if (j == 0)
+    {
+      i = paramToServiceMsg.uint32_total_bind_contacts_frd_num.get();
+      paramToServiceMsg = paramToServiceMsg.rpt_msg_bind_contacts_frds.get();
+      if ((paramToServiceMsg != null) && (paramToServiceMsg.size() > 0))
+      {
+        paramFromServiceMsg = new ArrayList(paramToServiceMsg.size());
+        paramObject = paramToServiceMsg.iterator();
+        for (;;)
+        {
+          paramToServiceMsg = paramFromServiceMsg;
+          if (!paramObject.hasNext()) {
+            break;
+          }
+          paramToServiceMsg = (cmd0xcf0.BindContactsFriendInfo)paramObject.next();
+          if ((paramToServiceMsg != null) && (paramToServiceMsg.uint64_uin.get() != 0L)) {
+            paramFromServiceMsg.add(String.valueOf(paramToServiceMsg.uint64_uin.get()));
+          }
+        }
+      }
+      paramToServiceMsg = null;
+      paramFromServiceMsg = (awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
+      if (paramFromServiceMsg != null) {
+        paramFromServiceMsg.a(i, paramToServiceMsg);
+      }
+    }
     for (;;)
     {
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+      if (QLog.isColorLevel())
       {
-        int j = this.jdField_b_of_type_JavaUtilArrayList.size();
-        i = 0;
-        if (i < j)
+        if (paramToServiceMsg == null)
         {
-          if (((WeakReference)this.jdField_b_of_type_JavaUtilArrayList.get(i)).get() != paramaolo) {
-            break label71;
-          }
-          if (i != -1) {
-            this.jdField_b_of_type_JavaUtilArrayList.remove(i);
-          }
-          return;
+          paramFromServiceMsg = "null";
+          QLog.i("FriendListHandler.BaseHandlerReceiver", 2, String.format("handleGetFriendsHasBindPhone [%s, %s, %s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), paramFromServiceMsg }));
         }
       }
-      int i = -1;
-      continue;
-      label71:
-      i += 1;
-    }
-  }
-  
-  public void b(aolq paramaolq)
-  {
-    synchronized (this.jdField_c_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        if (((WeakReference)localIterator.next()).get() == paramaolq) {
-          return;
+      else {
+        if (j != 0) {
+          break label260;
         }
       }
-      this.jdField_c_of_type_JavaUtilArrayList.add(new WeakReference(paramaolq));
-      return;
-    }
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Boolean);
-  }
-  
-  public int c()
-  {
-    return this.e;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Aogc != null) {
-      this.jdField_a_of_type_Aogc.b();
-    }
-  }
-  
-  public void c(aolq paramaolq)
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_c_of_type_JavaUtilArrayList)
+      label260:
+      for (boolean bool = true;; bool = false)
       {
-        int j = this.jdField_c_of_type_JavaUtilArrayList.size();
-        i = 0;
-        if (i < j)
-        {
-          if (((WeakReference)this.jdField_c_of_type_JavaUtilArrayList.get(i)).get() != paramaolq) {
-            break label71;
-          }
-          if (i != -1) {
-            this.jdField_c_of_type_JavaUtilArrayList.remove(i);
-          }
-          return;
-        }
+        a(121, bool, new Object[] { Integer.valueOf(i), paramToServiceMsg });
+        return;
+        paramFromServiceMsg = Integer.valueOf(paramToServiceMsg.size());
+        break;
       }
-      int i = -1;
-      continue;
-      label71:
-      i += 1;
+      i = 0;
+      paramToServiceMsg = null;
     }
   }
   
-  public void d()
+  private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (this.jdField_a_of_type_Aogc != null) {
-      this.jdField_a_of_type_Aogc.e();
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Int == 0)
+    boolean bool;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
-      QLog.i("CameraProxy", 2, "closeCamera mCurCameraState = " + this.jdField_a_of_type_Int);
-      return;
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleGetFriendNickBatch success=" + bool);
+      }
+      if (!bool) {}
     }
-    this.jdField_a_of_type_Int = 3;
-    a(new CameraProxy.3(this));
-  }
-  
-  public void f()
-  {
-    synchronized (this.jdField_c_of_type_JavaUtilArrayList)
-    {
-      this.jdField_c_of_type_JavaUtilArrayList.clear();
-    }
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
-    {
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
-  }
-  
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    ArrayList localArrayList = this.jdField_c_of_type_JavaUtilArrayList;
-    boolean bool1 = false;
+    label783:
+    label789:
+    label795:
     for (;;)
     {
       try
       {
-        int i = this.jdField_c_of_type_JavaUtilArrayList.size() - 1;
-        if (i < 0) {
-          break label172;
+        paramToServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
+        if ((!paramToServiceMsg.uint32_result.has()) || (paramToServiceMsg.uint32_result.get() != 0)) {
+          break label783;
         }
-        WeakReference localWeakReference = (WeakReference)this.jdField_c_of_type_JavaUtilArrayList.get(i);
-        if (localWeakReference.get() != null)
+        bool = true;
+        if (!paramToServiceMsg.uint32_result.has()) {
+          break label789;
+        }
+        i = paramToServiceMsg.uint32_result.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleGetFriendNickBatch result=" + bool);
+        }
+        if ((bool) && (paramToServiceMsg.bytes_bodybuffer != null) && (paramToServiceMsg.bytes_bodybuffer.has()) && (paramToServiceMsg.bytes_bodybuffer.get() != null))
         {
-          bool2 = ((aolq)localWeakReference.get()).a(paramArrayOfByte);
-          bool1 = bool2;
-          if (bool2)
+          paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+          i = paramToServiceMsg.get();
+          int k = paramToServiceMsg.getInt();
+          j = paramToServiceMsg.getShort();
+          paramFromServiceMsg = new HashMap(j);
+          if (QLog.isColorLevel()) {
+            QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleGetFriendNickBatch cNickCut=" + i + " dwNextUin=" + k + " wSimpleInfoNum=" + j);
+          }
+          if (k == -1)
           {
-            if ((!bool2) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-              ((aolq)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramArrayOfByte);
+            paramObject = new StringBuffer();
+            i = 0;
+            if (i < j)
+            {
+              String str = String.valueOf(bhbx.a(paramToServiceMsg.getInt()));
+              k = paramToServiceMsg.getShort();
+              if (QLog.isColorLevel())
+              {
+                paramObject.append(" wFieldNum=");
+                paramObject.append(k);
+              }
+              if (k != 1) {
+                break label767;
+              }
+              k = paramToServiceMsg.getShort();
+              if (QLog.isColorLevel())
+              {
+                paramObject.append(" wFieldID=");
+                paramObject.append(k);
+              }
+              if (k != this.jdField_a_of_type_Short) {
+                break label767;
+              }
+              Object localObject = new byte[paramToServiceMsg.getShort()];
+              paramToServiceMsg.get((byte[])localObject);
+              localObject = new String((byte[])localObject);
+              if (QLog.isColorLevel())
+              {
+                paramObject.append(" uin=");
+                paramObject.append(str.substring(0, 4));
+                paramObject.append(" nick=");
+                paramObject.append(bhbx.a((String)localObject));
+              }
+              paramFromServiceMsg.put(str, localObject);
+              break label767;
             }
-            if (this.jdField_a_of_type_Int != 2) {
-              break label164;
+            if (!QLog.isColorLevel()) {
+              break label795;
             }
-            this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-            if (this.jdField_a_of_type_Aogc != null) {
-              this.g = this.jdField_a_of_type_Aogc.d();
-            }
-            paramCamera.addCallbackBuffer(paramArrayOfByte);
+            QLog.d("FriendListHandler.BaseHandlerReceiver", 2, paramObject.toString());
+            break label795;
+            a(75, bool, paramFromServiceMsg);
             return;
           }
+          bool = false;
+          continue;
         }
-        i -= 1;
-        continue;
-        this.jdField_a_of_type_ArrayOfByte = null;
+        j = i;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleGetFriendNickBatch over time=" + System.currentTimeMillis());
+          i = j;
+        }
       }
-      finally {}
-      label164:
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      {
+        j = 1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("FriendListHandler.BaseHandlerReceiver", 2, "handleGetFriendNickBatch e", paramToServiceMsg);
+        i = j;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleGetFriendNickBatch over time=" + System.currentTimeMillis());
+        i = j;
+        continue;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        j = 1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("FriendListHandler.BaseHandlerReceiver", 2, "handleGetFriendNickBatch ex", paramToServiceMsg);
+        i = j;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleGetFriendNickBatch over time=" + System.currentTimeMillis());
+        i = j;
+        continue;
+      }
+      finally
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleGetFriendNickBatch over time=" + System.currentTimeMillis());
+      }
+      a(75, false, Integer.valueOf(i));
+      return;
+      int j = 0;
       continue;
-      label172:
-      boolean bool2 = bool1;
+      label767:
+      int i = (short)(i + 1);
+      continue;
+      bool = false;
+      break;
+      bool = false;
+      continue;
+      i = -1;
     }
+  }
+  
+  private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    long l = paramToServiceMsg.extraData.getLong("dwReqType", 1L);
+    if (l == 0L)
+    {
+      paramToServiceMsg = String.valueOf(paramToServiceMsg.extraData.getLong("dwUin"));
+      if (paramObject != null) {
+        break label76;
+      }
+      a(68, false, new Object[] { Long.valueOf(l), paramToServiceMsg });
+    }
+    label76:
+    while (!(paramObject instanceof GetOnlineInfoResp))
+    {
+      return;
+      paramToServiceMsg = paramToServiceMsg.extraData.getString("strMobile");
+      break;
+    }
+    paramFromServiceMsg = (GetOnlineInfoResp)paramObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleOnlineInfo, uin = " + StringUtil.getSimpleUinForPrint(paramToServiceMsg) + ", result = " + paramFromServiceMsg.result + ", itermType = " + paramFromServiceMsg.iTermType + ", netType = " + paramFromServiceMsg.eNetworkType + ", abi = " + paramFromServiceMsg.uAbiFlag + ", status = " + paramFromServiceMsg.dwStatus + ", strTermDesc = " + paramFromServiceMsg.strTermDesc);
+    }
+    if ((l == 0L) && (paramFromServiceMsg.result == 0)) {
+      ((anvk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramToServiceMsg, paramFromServiceMsg);
+    }
+    for (;;)
+    {
+      paramFromServiceMsg.dwInterval *= 1000L;
+      if (paramFromServiceMsg.dwInterval < 15000L) {
+        paramFromServiceMsg.dwInterval = 15000L;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.intervalGetOnlineInfo = paramFromServiceMsg.dwInterval;
+      a(68, true, new Object[] { Long.valueOf(l), paramToServiceMsg, paramFromServiceMsg });
+      return;
+      if ((l == 1L) && (paramFromServiceMsg.result == 0)) {
+        ((awyz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).a(paramToServiceMsg, paramFromServiceMsg);
+      }
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if ("friendlist.GetAutoInfoReq".equals(str)) {
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    do
+    {
+      do
+      {
+        return;
+        if ("ProfileService.ChangeFriendName".equals(str))
+        {
+          d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          return;
+        }
+        if ("ProfileService.SetRichSig".equals(str))
+        {
+          e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          return;
+        }
+      } while ("OidbSvc.0x77c".equals(str));
+      if ("friendlist.getUserAddFriendSetting".equals(str))
+      {
+        a(paramToServiceMsg, (GetUserAddFriendSettingResp)paramObject);
+        return;
+      }
+      if ("ProfileService.CheckUpdateReq".equals(str))
+      {
+        a(paramFromServiceMsg, (CheckUpdateResp)paramObject);
+        return;
+      }
+      if ("OidbSvc.0xcf0_0".equals(str))
+      {
+        f(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if ("OidbSvc.0x5e1_8".equals(str))
+      {
+        a(paramToServiceMsg, paramFromServiceMsg, (byte[])paramObject);
+        return;
+      }
+      if ("OidbSvc.0x49d_107".equals(str))
+      {
+        g(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+    } while (!"friendlist.GetOnlineInfoReq".equals(str));
+    h(paramToServiceMsg, paramFromServiceMsg, paramObject);
+  }
+  
+  public boolean a(String paramString)
+  {
+    return ("friendlist.GetAutoInfoReq".equals(paramString)) || ("ProfileService.ChangeFriendName".equals(paramString)) || ("ProfileService.SetRichSig".equals(paramString)) || ("OidbSvc.0x77c".equals(paramString)) || ("friendlist.getUserAddFriendSetting".equals(paramString)) || ("ProfileService.CheckUpdateReq".equals(paramString)) || ("OidbSvc.0xcf0_0".equals(paramString)) || ("OidbSvc.0x5e1_8".equals(paramString)) || ("OidbSvc.0x49d_107".equals(paramString)) || ("friendlist.GetOnlineInfoReq".equals(paramString));
   }
 }
 

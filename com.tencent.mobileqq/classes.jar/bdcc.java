@@ -1,61 +1,62 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.tofumsg.AIOTofuMsgHelper.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class bdcc
-  implements afrc
 {
-  private int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  bdck jdField_a_of_type_Bdck;
-  public BaseChatPie a;
-  public QQAppInterface a;
-  private String jdField_a_of_type_JavaLangString;
+  double a;
   
-  public bdcc(BaseChatPie paramBaseChatPie)
+  bdcc(double paramDouble)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.mContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.app;
+    this.a = paramDouble;
   }
   
-  public void a(int paramInt)
+  public boolean a(int[][] paramArrayOfInt)
   {
-    switch (paramInt)
+    double d2 = 0.0D;
+    int k = paramArrayOfInt.length;
+    int m = paramArrayOfInt[0].length;
+    double[] arrayOfDouble1 = new double[k];
+    double[] arrayOfDouble2 = new double[m];
+    double d1 = 0.0D;
+    int i = 0;
+    int j;
+    while (i < k)
     {
-    }
-    do
-    {
-      return;
-      ThreadManager.executeOnSubThread(new AIOTofuMsgHelper.1(this));
-      return;
-      QLog.i("Tofu_AIOTofuMsgHelper", 1, "onMoveToState show_first.");
-      if (this.jdField_a_of_type_Bdck == null) {
-        this.jdField_a_of_type_Bdck = ((bdck)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(368));
+      j = 0;
+      while (j < m)
+      {
+        arrayOfDouble1[i] += paramArrayOfInt[i][j];
+        d1 += paramArrayOfInt[i][j];
+        j += 1;
       }
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType;
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin;
-      localObject = (amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!((amsw)localObject).b(this.jdField_a_of_type_JavaLangString)));
-    boolean bool = ((aiej)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(this.jdField_a_of_type_JavaLangString);
-    Object localObject = this.jdField_a_of_type_Bdck;
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (bool) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      ((bdck)localObject).a(str, paramInt);
-      return;
+      i += 1;
     }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 13, 7 };
+    i = 0;
+    while (i < m)
+    {
+      j = 0;
+      while (j < k)
+      {
+        arrayOfDouble2[i] += paramArrayOfInt[j][i];
+        j += 1;
+      }
+      i += 1;
+    }
+    i = 0;
+    while (i < k)
+    {
+      j = 0;
+      while (j < m)
+      {
+        double d4 = 1.0D * arrayOfDouble1[i] * arrayOfDouble2[j] / d1;
+        double d5 = paramArrayOfInt[i][j];
+        double d3 = d2;
+        if (d4 > 0.0D) {
+          d3 = d2 + (d4 - d5) * (d4 - d5) / d4;
+        }
+        j += 1;
+        d2 = d3;
+      }
+      i += 1;
+    }
+    return d2 > this.a + 1.0E-008D;
   }
 }
 

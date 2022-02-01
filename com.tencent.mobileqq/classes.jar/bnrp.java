@@ -1,10 +1,25 @@
-public abstract interface bnrp
+import android.graphics.RectF;
+
+public class bnrp
 {
-  public abstract void a(int paramInt, String paramString);
+  public float a;
+  int a;
+  public RectF a;
   
-  public abstract void b(int paramInt, String paramString);
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
   
-  public abstract void c(int paramInt, String paramString);
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(RectF paramRectF)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
+  }
 }
 
 

@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class soi
-  extends ThreadLocal<Integer>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowHelper$1", "Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowLayout$OnFollowActionListener;", "onFollowClick", "", "videoInfo", "Lcom/tencent/biz/pubaccount/VideoInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class soi
+  implements sor
 {
-  public soi(ReadInJoyXListView paramReadInJoyXListView) {}
-  
-  protected Integer a()
+  public void a(@Nullable VideoInfo paramVideoInfo)
   {
-    return Integer.valueOf(0);
+    soh.a(this.a);
   }
 }
 

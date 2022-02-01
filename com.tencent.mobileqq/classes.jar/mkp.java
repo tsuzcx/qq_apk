@@ -1,108 +1,121 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.SystemClock;
-import android.view.KeyEvent;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.os.Handler;
 import android.view.View;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoControlUI;
 import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class mkp
+public class mkp
+  implements Animation.AnimationListener
 {
-  protected int a;
-  protected long a;
-  public final VideoInviteActivity a;
-  protected int b;
-  protected long b;
-  protected int c;
-  protected long c;
+  int jdField_a_of_type_Int = 0;
   
-  public mkp(VideoInviteActivity paramVideoInviteActivity)
+  public mkp(VideoControlUI paramVideoControlUI, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity = paramVideoInviteActivity;
-    this.jdField_a_of_type_Long = AudioHelper.b();
-    this.jdField_b_of_type_Int = mum.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
-    this.jdField_b_of_type_Int = mum.b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void BtnOnClick(View paramView) {}
-  
-  public int a()
+  @TargetApi(11)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Resources a()
-  {
-    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getResources();
-  }
-  
-  public <T extends View> T a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.findViewById(paramInt);
-  }
-  
-  public String a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getString(paramInt);
-  }
-  
-  public void a() {}
-  
-  public void a(Context paramContext, String paramString, Intent paramIntent) {}
-  
-  protected void a(String paramString)
-  {
-    bcef.b(null, "CliOper", "", "", paramString, paramString, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i), "");
-  }
-  
-  public void a(mkp parammkp)
-  {
-    if (parammkp != null)
-    {
-      this.jdField_b_of_type_Long = parammkp.jdField_b_of_type_Long;
-      this.c = parammkp.c;
+    long l = AudioHelper.b();
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiVideoControlUI$ToolbarAnimationRunnable);
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (paramAnimation != null) && (2 == this.jdField_a_of_type_Int)) {
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(118), Boolean.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h), Boolean.valueOf(false), Long.valueOf(paramAnimation.getDuration()) });
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_JavaLangString, 1, "onAnimationEnd, mToolBarType[" + this.jdField_a_of_type_Int + "], animation[" + paramAnimation + "], mToolbarDisplay[" + this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h + "], seq[" + l + "]");
+    if (!this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h)
     {
-      this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_AndroidWidgetRelativeLayout != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.e != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.e.setVisibility(0);
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiQavPanel != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiQavPanel.setVisibility(4);
+      }
+      if (Build.VERSION.SDK_INT >= 19) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(0);
+      }
+      mbf.b(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface, true);
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.y = 0;
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController != null)
+      {
+        paramAnimation = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a();
+        if (((paramAnimation.F == 2) || (paramAnimation.F == 1)) && (!this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().s())) {
+          this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a(l, 360 - this.jdField_a_of_type_ComTencentAvUiVideoControlUI.t);
+        }
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.l = false;
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(102) });
       return;
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_AndroidWidgetRelativeLayout != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.e != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.e.setVisibility(8);
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiQavPanel != null)
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiQavPanel.setVisibility(0);
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiQavPanel.setAlpha(1.0F);
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_AndroidViewView != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_JavaLangString, 2, "onAnimationEnd, change member list ui to visible");
+        }
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+      VideoControlUI.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI, true);
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.y = 5;
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController != null)
+      {
+        paramAnimation = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a();
+        if ((paramAnimation.F == 2) || (paramAnimation.F == 1)) {
+          this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a(l, 0.0F);
+        }
+      }
     }
-    this.c = SystemClock.elapsedRealtime();
   }
   
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return false;
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.l = true;
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (paramAnimation != null) && (2 == this.jdField_a_of_type_Int)) {
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(118), Boolean.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h), Boolean.valueOf(true), Long.valueOf(paramAnimation.getDuration()) });
+    }
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_d_of_type_JavaLangString, 1, "[" + this.jdField_a_of_type_Int + "]onAnimationStart[" + paramAnimation + "]");
+    VideoControlUI.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI, (int)(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_AndroidViewAnimationAnimation.getDuration() / 5L));
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h) {
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.y = 0;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvUiVideoControlUI$ToolbarAnimationRunnable);
+      return;
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.y = 5;
+      VideoControlUI.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI, false);
+    }
   }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
-  
-  public void j() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mkp
  * JD-Core Version:    0.7.0.1
  */

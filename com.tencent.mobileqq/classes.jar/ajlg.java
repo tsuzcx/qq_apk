@@ -1,12 +1,17 @@
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
+
 public class ajlg
+  implements bbtd
 {
-  public int a;
-  public String a;
-  public boolean a = true;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  private ajlg(FriendFragment paramFriendFragment) {}
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
+      FriendFragment.a(this.a, 1400L, false);
+    }
+  }
 }
 
 

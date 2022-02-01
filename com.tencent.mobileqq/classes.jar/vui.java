@@ -1,9 +1,23 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public abstract interface vui
+public class vui
+  implements Animation.AnimationListener
 {
-  public abstract void a(List<StoryVideoItem> paramList, boolean paramBoolean);
+  public vui(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    paramAnimation = (ImageView)this.a.findViewById(2131380602);
+    ImageView localImageView = (ImageView)this.a.findViewById(2131380603);
+    PublicAccountImageCollectionMainActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class NewIdentifierCameraCaptureView
-  extends IdentifierCameraCaptureView
+  extends QIdentifierCaptureView
 {
   private float a = 0.75F;
   private float b = 0.55F;

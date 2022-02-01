@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import ugf;
+import uuc;
 
 public class ReadinjoySPEventReport$10
   implements Runnable
@@ -22,7 +22,7 @@ public class ReadinjoySPEventReport$10
     localAttributeList2.att_value.set(String.valueOf(this.jdField_a_of_type_Long / 1000L));
     localArrayList.add(localAttributeList1);
     localArrayList.add(localAttributeList2);
-    ugf.a(20, localArrayList);
+    uuc.a(20, localArrayList);
   }
 }
 

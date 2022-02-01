@@ -1,14 +1,17 @@
-public abstract interface bnrl
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.ae.view.AECMShowFaceScanView;
+
+public class bnrl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(int paramInt);
+  public bnrl(AECMShowFaceScanView paramAECMShowFaceScanView) {}
   
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    AECMShowFaceScanView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.postInvalidate();
+  }
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import amyd;
+import aoar;
 
 public class PublicAccountHandler$5$1
   implements Runnable
 {
-  public PublicAccountHandler$5$1(amyd paramamyd) {}
+  public PublicAccountHandler$5$1(aoar paramaoar) {}
   
   public void run()
   {

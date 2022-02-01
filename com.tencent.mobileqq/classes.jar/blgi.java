@@ -1,8 +1,36 @@
-import cooperation.weiyun.sdk.download.DownloadType;
+import android.database.DataSetObserver;
+import android.widget.BaseAdapter;
 
-public abstract interface blgi
+public abstract class blgi
+  extends BaseAdapter
+  implements blgq
 {
-  public abstract void a(blfn paramblfn, DownloadType paramDownloadType, blgf paramblgf);
+  private final blgk a = new blgk(this);
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    this.a.a(paramInt1, paramInt2);
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    this.a.notifyChanged();
+  }
+  
+  public void notifyDataSetInvalidated()
+  {
+    this.a.notifyInvalidated();
+  }
+  
+  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.a.registerObserver(paramDataSetObserver);
+  }
+  
+  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.a.unregisterObserver(paramDataSetObserver);
+  }
 }
 
 

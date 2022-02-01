@@ -1,19 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.tianshu.TianShuGetAdvCallback;
+import org.json.JSONObject;
 
-public class bknv
-  extends BroadcastReceiver
+class bknv
+  implements TianShuGetAdvCallback
 {
-  public bknv(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  bknv(bknl parambknl, AsyncResult paramAsyncResult) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    if ("com.tencent.qlink.finishdlg".equalsIgnoreCase(paramIntent.getAction()))
+    JSONObject localJSONObject;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null) {
+      localJSONObject = new JSONObject();
+    }
+    try
     {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      localJSONObject.put("response", paramGetAdsRsp);
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(paramBoolean, localJSONObject);
+      return;
+    }
+    catch (Throwable paramGetAdsRsp)
+    {
+      for (;;)
+      {
+        QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramGetAdsRsp);
+      }
     }
   }
 }

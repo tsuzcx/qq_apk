@@ -1,21 +1,8 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-
-class bgla
-  implements Drawable.Callback
+public class bgla
 {
-  bgla(bgkz parambgkz, bgkx parambgkx) {}
-  
-  public void invalidateDrawable(Drawable paramDrawable)
-  {
-    if (this.jdField_a_of_type_Bgkx != null) {
-      this.jdField_a_of_type_Bgkx.a(paramDrawable);
-    }
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong) {}
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable) {}
+  public int a;
+  public String a;
+  public String b;
 }
 
 

@@ -5,7 +5,7 @@
         <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:foreground="@drawable/a1q">
             <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center" android:id="@id/d46" android:focusable="true" android:layout_width="36.0dip" android:layout_height="36.0dip" />
         </FrameLayout>
-        <ImageView android:layout_gravity="center" android:id="@id/mt1" android:background="@drawable/gg_" android:paddingLeft="2.0dip" android:paddingTop="1.0dip" android:paddingRight="2.0dip" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="42.0dip" android:src="@drawable/gg9" />
+        <ImageView android:layout_gravity="center" android:id="@id/mx4" android:background="@drawable/gqp" android:paddingLeft="2.0dip" android:paddingTop="1.0dip" android:paddingRight="2.0dip" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="42.0dip" android:src="@drawable/gq9" />
         <ImageView android:layout_gravity="bottom|center|right" android:id="@id/d49" android:layout_width="12.0dip" android:layout_height="12.0dip" android:scaleType="centerInside" />
     </FrameLayout>
     <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="38.0dip" android:layout_marginLeft="6.0dip">

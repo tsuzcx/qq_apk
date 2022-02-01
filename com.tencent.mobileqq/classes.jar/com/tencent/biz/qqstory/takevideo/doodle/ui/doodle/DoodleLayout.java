@@ -23,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbxj;
+import bdee;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
 import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
@@ -43,45 +43,45 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import xvv;
-import xwa;
-import xwb;
-import xzd;
-import ycb;
-import ycc;
-import ycd;
-import yck;
-import ycl;
-import ycp;
-import ycv;
-import yda;
-import ydc;
-import yde;
-import ydv;
-import yep;
-import yeq;
-import yer;
-import yes;
-import yet;
-import yeu;
-import yev;
-import yew;
-import yex;
-import yey;
-import yez;
-import yfa;
-import yfd;
-import yfe;
-import yff;
-import yfg;
-import yfh;
-import yfk;
-import yfo;
-import yft;
-import yfw;
-import ygc;
-import ygu;
-import ymx;
+import ykq;
+import ykv;
+import ykw;
+import ynw;
+import yqu;
+import yqv;
+import yqw;
+import yrd;
+import yre;
+import yri;
+import yro;
+import yrt;
+import yrv;
+import yrx;
+import yso;
+import yti;
+import ytj;
+import ytk;
+import ytl;
+import ytm;
+import ytn;
+import yto;
+import ytp;
+import ytq;
+import ytr;
+import yts;
+import ytt;
+import ytw;
+import ytx;
+import yty;
+import ytz;
+import yua;
+import yud;
+import yuh;
+import yum;
+import yup;
+import yuv;
+import yvn;
+import zbq;
 
 @TargetApi(14)
 public class DoodleLayout
@@ -93,7 +93,7 @@ public class DoodleLayout
   private long jdField_a_of_type_Long;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public Rect a;
-  public SparseArray<yda> a;
+  public SparseArray<yrt> a;
   public SparseBooleanArray a;
   public View a;
   public FrameLayout a;
@@ -110,17 +110,17 @@ public class DoodleLayout
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
   private final Condition jdField_a_of_type_JavaUtilConcurrentLocksCondition = this.jdField_a_of_type_JavaUtilConcurrentLocksLock.newCondition();
   private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-  public ycd a;
-  private ycv jdField_a_of_type_Ycv;
-  public ydv a;
-  public yev a;
-  public yew a;
-  public yex a;
-  private yfe jdField_a_of_type_Yfe;
-  public yfg a;
+  public yqw a;
+  private yro jdField_a_of_type_Yro;
+  public yso a;
+  public yto a;
+  public ytp a;
+  public ytq a;
+  private ytx jdField_a_of_type_Ytx;
+  public ytz a;
   public int b;
   public Rect b;
-  public SparseArray<yez> b;
+  public SparseArray<yts> b;
   public SparseBooleanArray b;
   public RelativeLayout b;
   public boolean b;
@@ -142,7 +142,7 @@ public class DoodleLayout
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Yfg = new yfg(this, null);
+    this.jdField_a_of_type_Ytz = new ytz(this, null);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
     k();
@@ -161,13 +161,13 @@ public class DoodleLayout
   
   public static void a(String paramString, int paramInt1, int paramInt2, String... paramVarArgs)
   {
-    xwa.a("video_edit", paramString, paramInt1, paramInt2, paramVarArgs);
+    ykv.a("video_edit", paramString, paramInt1, paramInt2, paramVarArgs);
   }
   
   private boolean a(boolean paramBoolean)
   {
     a();
-    xvv.b("DoodleLayout", "onBackPressed, buttonState:" + this.jdField_b_of_type_Int + ",activeLayer:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a());
+    ykq.b("DoodleLayout", "onBackPressed, buttonState:" + this.jdField_b_of_type_Int + ",activeLayer:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a());
     if ((this.jdField_b_of_type_Int == 0) || ((this.jdField_b_of_type_Int == 2) && (!paramBoolean))) {
       return false;
     }
@@ -175,7 +175,7 @@ public class DoodleLayout
     d(0);
     if (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a())
     {
-      xvv.b("DoodleLayout", "onBackPressed, resetDoodleView.");
+      ykq.b("DoodleLayout", "onBackPressed, resetDoodleView.");
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.d();
     }
     return true;
@@ -188,64 +188,64 @@ public class DoodleLayout
       this.jdField_d_of_type_Boolean = paramBoolean;
       if (paramBoolean)
       {
-        xvv.b("DoodleLayout", "rubbish active.");
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131166358));
+        ykq.b("DoodleLayout", "rubbish active.");
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131166367));
       }
     }
     else
     {
       return;
     }
-    xvv.b("DoodleLayout", "rubbish unActive.");
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131166359));
+    ykq.b("DoodleLayout", "rubbish unActive.");
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131166368));
   }
   
   private void e(int paramInt)
   {
-    Object localObject1 = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
-    Object localObject2 = (yda)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject1 = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject2 = (yrt)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
     int j;
     if ((localObject1 == null) || (localObject2 == null))
     {
-      xvv.b("DoodleLayout", "initDoodleView for the %d video", Integer.valueOf(paramInt));
-      localObject1 = new ycc(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView);
-      ycl localycl = new ycl(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView);
-      ycp localycp = new ycp(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView);
-      localObject2 = (yfo)localycl.a(103);
+      ykq.b("DoodleLayout", "initDoodleView for the %d video", Integer.valueOf(paramInt));
+      localObject1 = new yqv(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView);
+      yre localyre = new yre(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView);
+      yri localyri = new yri(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView);
+      localObject2 = (yuh)localyre.a(103);
       if ((localObject2 != null) && (this.jdField_c_of_type_Int != -1)) {
-        ((yfo)localObject2).b(this.jdField_c_of_type_Int);
+        ((yuh)localObject2).b(this.jdField_c_of_type_Int);
       }
       if ((localObject2 != null) && (this.jdField_d_of_type_Int != -1) && (this.e != -1)) {
-        ((yfo)localObject2).b(this.jdField_d_of_type_Int, this.e);
+        ((yuh)localObject2).b(this.jdField_d_of_type_Int, this.e);
       }
-      localObject2 = new ydc().a(new yfd(new ycv[] { localObject1, localycl, localycp }));
+      localObject2 = new yrv().a(new ytw(new yro[] { localObject1, localyre, localyri }));
       if (this.f != -1)
       {
         j = this.f;
-        localObject2 = ((ydc)localObject2).a(j);
+        localObject2 = ((yrv)localObject2).a(j);
         if (this.g == -1) {
           break label465;
         }
         j = this.g;
         label222:
-        yda localyda = ((ydc)localObject2).b(j).a();
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.setDoodleConfig(localyda);
+        yrt localyrt = ((yrv)localObject2).b(j).a();
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.setDoodleConfig(localyrt);
         this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.setDoodleLayout(this);
         if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) {
           this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams);
         }
-        localObject2 = new yez(localycp, localycl, (ycc)localObject1, (ycb)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a("EmptyLayer"));
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localyda);
+        localObject2 = new yts(localyri, localyre, (yqv)localObject1, (yqu)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a("EmptyLayer"));
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localyrt);
         this.jdField_b_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-        localycl.a(new yfa(this, null));
-        localycl.a(new yer(this));
-        ((ycc)localObject1).a(this.jdField_a_of_type_Yfg);
-        ((ycc)localObject1).a(new yes(this));
+        localyre.a(new ytt(this, null));
+        localyre.a(new ytk(this));
+        ((yqv)localObject1).a(this.jdField_a_of_type_Ytz);
+        ((yqv)localObject1).a(new ytl(this));
         localObject1 = localObject2;
         if (!this.jdField_c_of_type_Boolean)
         {
-          localycp.a(this.jdField_a_of_type_Yfg);
-          localycp.a(new yfh(this, null));
+          localyri.a(this.jdField_a_of_type_Ytz);
+          localyri.a(new yua(this, null));
           localObject1 = localObject2;
         }
       }
@@ -253,50 +253,50 @@ public class DoodleLayout
     for (;;)
     {
       localObject2 = a();
-      ((ycl)localObject2).a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleTextureView, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView);
-      ((ycl)localObject2).a.a(new yet(this));
-      ((yft)((ycl)localObject2).a.a(102)).a(false);
-      ((yez)localObject1).jdField_a_of_type_Ycl.b();
+      ((yre)localObject2).a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleTextureView, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView);
+      ((yre)localObject2).a.a(new ytm(this));
+      ((yum)((yre)localObject2).a.a(102)).a(false);
+      ((yts)localObject1).jdField_a_of_type_Yre.b();
       return;
       j = 480;
       break;
       label465:
       j = 640;
       break label222;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.setDoodleConfig((yda)localObject2);
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.setDoodleConfig((yrt)localObject2);
     }
   }
   
   private void k()
   {
-    LayoutInflater.from(super.getContext()).inflate(2131561587, this);
+    LayoutInflater.from(super.getContext()).inflate(2131561655, this);
     l();
     e(this.jdField_a_of_type_Int);
   }
   
   private void l()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365127));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379486));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131376741));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131369365));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370601);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel = ((FacePanel)super.findViewById(2131366265));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel.setOnFaceSelectedListener(new yey(this, null));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout = ((HorizontalSelectColorLayout)super.findViewById(2131371733));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setOnUndoViewClickListener(new yep(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setOnStrokeSelectedListener(new yeq(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365212));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379795));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131377009));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131369532));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370784);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel = ((FacePanel)super.findViewById(2131366369));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel.setOnFaceSelectedListener(new ytr(this, null));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout = ((HorizontalSelectColorLayout)super.findViewById(2131371921));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setOnUndoViewClickListener(new yti(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setOnStrokeSelectedListener(new ytj(this));
     n();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView = ((DoodleView)super.findViewById(2131365706));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131365708));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView = ((DoodleView)super.findViewById(2131365800));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131365802));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleTextureView = new DoodleTextureView(super.getContext());
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleTextureView, localLayoutParams);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView = ((DoodleEditView)super.findViewById(2131365707));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView = ((DoodleEditView)super.findViewById(2131365801));
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setDoodleLayout(this);
     setOnTextDialogShowListener(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView);
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setOnLayerTouchListener();
-    this.jdField_b_of_type_Boolean = bbxj.b();
+    this.jdField_b_of_type_Boolean = bdee.b();
     if (!this.jdField_b_of_type_Boolean)
     {
       a(new View[] { this.jdField_a_of_type_AndroidWidgetFrameLayout });
@@ -308,14 +308,14 @@ public class DoodleLayout
   
   private void m()
   {
-    xvv.b("DoodleLayout", "onClickInside: showEditTextDialog.");
-    this.jdField_a_of_type_Yex = new yex(this, null);
-    this.jdField_a_of_type_Ydv = new ydv(super.getContext());
-    this.jdField_a_of_type_Ydv.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams);
-    this.jdField_a_of_type_Ydv.a(a());
-    this.jdField_a_of_type_Ydv.setContentView(2131561592);
-    this.jdField_a_of_type_Ydv.a(this.jdField_a_of_type_Yex);
-    this.jdField_a_of_type_Ydv.show();
+    ykq.b("DoodleLayout", "onClickInside: showEditTextDialog.");
+    this.jdField_a_of_type_Ytq = new ytq(this, null);
+    this.jdField_a_of_type_Yso = new yso(super.getContext());
+    this.jdField_a_of_type_Yso.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams);
+    this.jdField_a_of_type_Yso.a(a());
+    this.jdField_a_of_type_Yso.setContentView(2131561660);
+    this.jdField_a_of_type_Yso.a(this.jdField_a_of_type_Ytq);
+    this.jdField_a_of_type_Yso.show();
   }
   
   private void n()
@@ -328,15 +328,15 @@ public class DoodleLayout
     if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || ((!(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditLocalVideoSource)) && (!(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditLocalGifSource)) && (!(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditLocalPhotoSource))))
     {
       bool1 = true;
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || (xzd.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEnableMasks, 32768))) {
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || (ynw.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEnableMasks, 32768))) {
         break label133;
       }
     }
     label133:
     for (boolean bool2 = true;; bool2 = false)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setStrokeStrategy(new ymx(localAppInterface, bool1, bool2), true, 1);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setSelectedStrokeWithColor(yna.a[0]);
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setStrokeStrategy(new zbq(localAppInterface, bool1, bool2), true, 1);
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setSelectedStrokeWithColor(zbt.a[0]);
       return;
       bool1 = false;
       break;
@@ -353,13 +353,13 @@ public class DoodleLayout
   
   public int a(int paramInt)
   {
-    yez localyez = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localyez != null)
+    yts localyts = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localyts != null)
     {
-      paramInt = localyez.jdField_a_of_type_Ycp.a();
-      int j = localyez.jdField_a_of_type_Ycl.a();
-      int k = localyez.jdField_a_of_type_Ycc.a();
-      xvv.b("DoodleLayout", "DoodleCount: text->" + paramInt + ",line->" + j + ",face->" + k);
+      paramInt = localyts.jdField_a_of_type_Yri.a();
+      int j = localyts.jdField_a_of_type_Yre.a();
+      int k = localyts.jdField_a_of_type_Yqv.a();
+      ykq.b("DoodleLayout", "DoodleCount: text->" + paramInt + ",line->" + j + ",face->" + k);
       return k + (paramInt + j);
     }
     return 0;
@@ -372,9 +372,9 @@ public class DoodleLayout
   
   public Bitmap a(int paramInt)
   {
-    yez localyez = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localyez != null) {
-      return localyez.jdField_a_of_type_Ycl.a();
+    yts localyts = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localyts != null) {
+      return localyts.jdField_a_of_type_Yre.a();
     }
     return null;
   }
@@ -386,14 +386,14 @@ public class DoodleLayout
   
   public String a(int paramInt)
   {
-    Object localObject = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
     if (localObject != null)
     {
-      localObject = ((yez)localObject).jdField_a_of_type_Ycp.a();
+      localObject = ((yts)localObject).jdField_a_of_type_Yri.a();
       if (localObject != null)
       {
-        xvv.b("DoodleLayout", "doodle text :" + ((yde)localObject).a);
-        return ((yde)localObject).a;
+        ykq.b("DoodleLayout", "doodle text :" + ((yrx)localObject).a);
+        return ((yrx)localObject).a;
       }
     }
     return null;
@@ -401,15 +401,15 @@ public class DoodleLayout
   
   public List<String> a(int paramInt)
   {
-    Object localObject = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
     if (localObject != null)
     {
-      localObject = ((yez)localObject).jdField_a_of_type_Ycl.a.a();
+      localObject = ((yts)localObject).jdField_a_of_type_Yre.a.a();
       StringBuilder localStringBuilder = new StringBuilder().append("image doodle type count:");
       if ((localObject == null) || (((List)localObject).isEmpty())) {}
       for (paramInt = 0;; paramInt = ((List)localObject).size())
       {
-        xvv.b("DoodleLayout", paramInt);
+        ykq.b("DoodleLayout", paramInt);
         return localObject;
       }
     }
@@ -418,58 +418,58 @@ public class DoodleLayout
   
   public Map<String, List<String>> a(int paramInt)
   {
-    Object localObject = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
     if (localObject != null)
     {
-      localObject = ((yez)localObject).jdField_a_of_type_Ycc.a;
-      xvv.b("DoodleLayout", "Using face map:" + localObject.toString());
+      localObject = ((yts)localObject).jdField_a_of_type_Yqv.a;
+      ykq.b("DoodleLayout", "Using face map:" + localObject.toString());
       return Collections.unmodifiableMap((Map)localObject);
     }
     return Collections.emptyMap();
   }
   
-  public ycb a()
+  public yqu a()
   {
-    yez localyez = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
-    if (localyez == null)
+    yts localyts = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
+    if (localyts == null)
     {
-      xvv.d("DoodleLayout", "can not find LayerCollection by video index %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+      ykq.d("DoodleLayout", "can not find LayerCollection by video index %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
       return null;
     }
-    return localyez.jdField_a_of_type_Ycb;
+    return localyts.jdField_a_of_type_Yqu;
   }
   
-  public ycc a()
+  public yqv a()
   {
-    yez localyez = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
-    if (localyez == null)
+    yts localyts = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
+    if (localyts == null)
     {
-      xvv.d("DoodleLayout", "can not find LayerCollection by video index %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+      ykq.d("DoodleLayout", "can not find LayerCollection by video index %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
       return null;
     }
-    return localyez.jdField_a_of_type_Ycc;
+    return localyts.jdField_a_of_type_Yqv;
   }
   
-  public ycl a()
+  public yre a()
   {
-    yez localyez = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
-    if (localyez == null)
+    yts localyts = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
+    if (localyts == null)
     {
-      xvv.d("DoodleLayout", "can not find LayerCollection by video index %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+      ykq.d("DoodleLayout", "can not find LayerCollection by video index %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
       return null;
     }
-    return localyez.jdField_a_of_type_Ycl;
+    return localyts.jdField_a_of_type_Yre;
   }
   
-  public ycp a()
+  public yri a()
   {
-    yez localyez = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
-    if (localyez == null)
+    yts localyts = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
+    if (localyts == null)
     {
-      xvv.d("DoodleLayout", "can not find LayerCollection by video index %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+      ykq.d("DoodleLayout", "can not find LayerCollection by video index %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
       return null;
     }
-    return localyez.jdField_a_of_type_Ycp;
+    return localyts.jdField_a_of_type_Yri;
   }
   
   protected void a()
@@ -481,14 +481,14 @@ public class DoodleLayout
   
   public void a(int paramInt)
   {
-    xvv.b("DoodleLayout", "changeVideoIndex from %d to %d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(paramInt));
+    ykq.b("DoodleLayout", "changeVideoIndex from %d to %d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(paramInt));
     this.jdField_a_of_type_Int = paramInt;
     e(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    xvv.b("DoodleLayout", String.format("changeDoodleViewSize, width: %d, height: %d ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    ykq.b("DoodleLayout", String.format("changeDoodleViewSize, width: %d, height: %d ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     setDoodleBitmapMaxSize(paramInt1, paramInt2);
     int j = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getWidth();
     int k = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getHeight();
@@ -502,9 +502,9 @@ public class DoodleLayout
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null) {
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a(paramInt1, paramInt2);
     }
-    localObject = (yfo)a().a(104);
+    localObject = (yuh)a().a(104);
     if (localObject != null) {
-      ((yfo)localObject).e();
+      ((yuh)localObject).e();
     }
     localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).width = paramInt1;
@@ -514,8 +514,8 @@ public class DoodleLayout
   
   public void a(int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_Yew != null) {
-      this.jdField_a_of_type_Yew.b(paramInt, paramObject);
+    if (this.jdField_a_of_type_Ytp != null) {
+      this.jdField_a_of_type_Ytp.b(paramInt, paramObject);
     }
   }
   
@@ -543,9 +543,9 @@ public class DoodleLayout
   
   public void a(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Ycv != null)
+    if (this.jdField_a_of_type_Yro != null)
     {
-      this.jdField_a_of_type_Ycv.d(paramMotionEvent);
+      this.jdField_a_of_type_Yro.d(paramMotionEvent);
       switch (paramMotionEvent.getAction())
       {
       }
@@ -554,34 +554,40 @@ public class DoodleLayout
     {
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
       return;
-      this.jdField_a_of_type_Ycv = a();
+      this.jdField_a_of_type_Yro = a();
     }
   }
   
-  public void a(ygc paramygc)
+  public void a(yuv paramyuv)
   {
     a();
-    if (paramygc == null) {
-      xvv.e("DoodleLayout", "the item is null.");
+    if (paramyuv == null) {
+      ykq.e("DoodleLayout", "the item is null.");
     }
-    boolean bool;
+    boolean bool1;
     do
     {
       return;
-      xvv.b("DoodleLayout", "addLocationFaceItem:" + paramygc.toString());
-      yck localyck = ygu.a(paramygc, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getWidth(), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getHeight());
-      if (localyck == null) {
+      ykq.b("DoodleLayout", "addLocationFaceItem:" + paramyuv.toString());
+      yrd localyrd = yvn.a(paramyuv, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getWidth(), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getHeight());
+      if (localyrd == null) {
         break;
       }
-      bool = false;
-      if (paramygc.a != null) {
-        bool = a().a(null, paramygc.c, paramygc.a, localyck);
+      boolean bool2 = false;
+      bool1 = bool2;
+      if (paramyuv.a != null)
+      {
+        yqv localyqv = a();
+        bool1 = bool2;
+        if (localyqv != null) {
+          bool1 = localyqv.a(null, paramyuv.c, paramyuv.a, localyrd);
+        }
       }
-    } while (!bool);
-    this.jdField_a_of_type_Yew.a(paramygc);
-    xwb.a("0X80076CE");
+    } while (!bool1);
+    this.jdField_a_of_type_Ytp.a(paramyuv);
+    ykw.a("0X80076CE");
     return;
-    xvv.e("DoodleLayout", "create FaceLayer.ItemParams failed.");
+    ykq.e("DoodleLayout", "create FaceLayer.ItemParams failed.");
   }
   
   public void a(boolean paramBoolean)
@@ -590,7 +596,7 @@ public class DoodleLayout
     View localView;
     if (paramBoolean)
     {
-      j = getResources().getColor(2131165699);
+      j = getResources().getColor(2131165708);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(j);
       super.setBackgroundColor(j);
       localView = this.jdField_a_of_type_AndroidViewView;
@@ -650,31 +656,31 @@ public class DoodleLayout
     paramMotionEvent = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.b(paramMotionEvent);
     if (paramMotionEvent != a())
     {
-      xvv.b("DoodleLayout", "layer accept the outside MotionEvent. Layer->" + paramMotionEvent.toString());
-      this.jdField_a_of_type_Ycv = paramMotionEvent;
+      ykq.b("DoodleLayout", "layer accept the outside MotionEvent. Layer->" + paramMotionEvent.toString());
+      this.jdField_a_of_type_Yro = paramMotionEvent;
       return true;
     }
-    xvv.b("DoodleLayout", "no layer accept the outside MotionEvent.");
-    this.jdField_a_of_type_Ycv = a();
+    ykq.b("DoodleLayout", "no layer accept the outside MotionEvent.");
+    this.jdField_a_of_type_Yro = a();
     return false;
   }
   
   public byte[] a(int paramInt)
   {
-    yez localyez = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localyez == null) {
+    yts localyts = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localyts == null) {
       return null;
     }
-    return localyez.jdField_a_of_type_Ycl.a();
+    return localyts.jdField_a_of_type_Yre.a();
   }
   
   public int[] a(int paramInt)
   {
-    Object localObject = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
     if (localObject != null)
     {
-      localObject = ((yez)localObject).jdField_a_of_type_Ycl.a.a();
-      xvv.b("DoodleLayout", "normal path count:" + localObject[0] + ",mosaic path count:" + localObject[1]);
+      localObject = ((yts)localObject).jdField_a_of_type_Yre.a.a();
+      ykq.b("DoodleLayout", "normal path count:" + localObject[0] + ",mosaic path count:" + localObject[1]);
       return localObject;
     }
     return new int[] { 0, 0 };
@@ -686,8 +692,8 @@ public class DoodleLayout
     int k = 0;
     while (j < this.jdField_b_of_type_AndroidUtilSparseArray.size())
     {
-      yez localyez = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.valueAt(j);
-      k = k + localyez.jdField_a_of_type_Ycp.a() + localyez.jdField_a_of_type_Ycl.a() + localyez.jdField_a_of_type_Ycc.a();
+      yts localyts = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.valueAt(j);
+      k = k + localyts.jdField_a_of_type_Yri.a() + localyts.jdField_a_of_type_Yre.a() + localyts.jdField_a_of_type_Yqv.a();
       j += 1;
     }
     return k;
@@ -695,10 +701,10 @@ public class DoodleLayout
   
   public Bitmap b()
   {
-    if (this.jdField_a_of_type_Yev == null) {
+    if (this.jdField_a_of_type_Yto == null) {
       return null;
     }
-    return this.jdField_a_of_type_Yev.b();
+    return this.jdField_a_of_type_Yto.b();
   }
   
   /* Error */
@@ -731,7 +737,7 @@ public class DoodleLayout
     //   42: iload_3
     //   43: invokestatic 260	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   46: aastore
-    //   47: invokestatic 872	xvv:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   47: invokestatic 872	ykq:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   50: aconst_null
     //   51: areturn
     //   52: aload_0
@@ -755,7 +761,7 @@ public class DoodleLayout
     //   92: ifnonnull +118 -> 210
     //   95: ldc 179
     //   97: ldc_w 887
-    //   100: invokestatic 889	xvv:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   100: invokestatic 889	ykq:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   103: aload_0
     //   104: getfield 100	com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout:jdField_a_of_type_JavaUtilConcurrentLocksCondition	Ljava/util/concurrent/locks/Condition;
     //   107: ldc2_w 890
@@ -772,7 +778,7 @@ public class DoodleLayout
     //   135: invokevirtual 913	java/lang/Thread:getId	()J
     //   138: invokestatic 918	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   141: aastore
-    //   142: invokestatic 672	xvv:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   142: invokestatic 672	ykq:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   145: aload_0
     //   146: getfield 759	com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout:jdField_a_of_type_JavaLangRuntimeException	Ljava/lang/RuntimeException;
     //   149: ifnull -65 -> 84
@@ -780,13 +786,13 @@ public class DoodleLayout
     //   154: ldc_w 920
     //   157: aload_0
     //   158: getfield 759	com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout:jdField_a_of_type_JavaLangRuntimeException	Ljava/lang/RuntimeException;
-    //   161: invokestatic 923	xvv:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   161: invokestatic 923	ykq:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   164: goto -80 -> 84
     //   167: astore 6
     //   169: ldc 179
     //   171: ldc_w 925
     //   174: aload 6
-    //   176: invokestatic 923	xvv:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   176: invokestatic 923	ykq:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   179: goto -95 -> 84
     //   182: astore 6
     //   184: aload_0
@@ -798,7 +804,7 @@ public class DoodleLayout
     //   198: ldc 179
     //   200: ldc_w 927
     //   203: aload 6
-    //   205: invokestatic 929	xvv:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   205: invokestatic 929	ykq:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   208: aconst_null
     //   209: areturn
     //   210: aload_0
@@ -830,7 +836,7 @@ public class DoodleLayout
     //   265: getfield 70	com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout:jdField_b_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
     //   268: iload_1
     //   269: invokevirtual 248	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   272: checkcast 250	yez
+    //   272: checkcast 250	yts
     //   275: astore 8
     //   277: aload 8
     //   279: ifnonnull +34 -> 313
@@ -843,7 +849,7 @@ public class DoodleLayout
     //   293: iload_1
     //   294: invokestatic 260	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   297: aastore
-    //   298: invokestatic 872	xvv:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   298: invokestatic 872	ykq:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   301: aload_0
     //   302: getfield 92	com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
     //   305: invokeinterface 767 1 0
@@ -852,23 +858,23 @@ public class DoodleLayout
     //   313: invokestatic 962	android/os/SystemClock:uptimeMillis	()J
     //   316: lstore 4
     //   318: aload 8
-    //   320: getfield 387	yez:jdField_a_of_type_Ycl	Lycl;
+    //   320: getfield 387	yts:jdField_a_of_type_Yre	Lyre;
     //   323: astore 9
     //   325: aload 9
-    //   327: getfield 371	ycl:a	Lyfk;
-    //   330: invokevirtual 963	yfk:a	()Z
+    //   327: getfield 371	yre:a	Lyud;
+    //   330: invokevirtual 963	yud:a	()Z
     //   333: ifeq +126 -> 459
     //   336: ldc 179
     //   338: ldc_w 965
-    //   341: invokestatic 889	xvv:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   341: invokestatic 889	ykq:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   344: aload_0
     //   345: getfield 314	com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout:jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams	Lcom/tencent/biz/qqstory/takevideo/EditVideoParams;
     //   348: getfield 968	com/tencent/biz/qqstory/takevideo/EditVideoParams:mBusinessId	I
     //   351: iconst_1
     //   352: if_icmpne +98 -> 450
     //   355: aload 9
-    //   357: getfield 371	ycl:a	Lyfk;
-    //   360: invokevirtual 969	yfk:b	()Z
+    //   357: getfield 371	yre:a	Lyud;
+    //   360: invokevirtual 969	yud:b	()Z
     //   363: ifeq +87 -> 450
     //   366: iconst_1
     //   367: newarray int
@@ -880,15 +886,15 @@ public class DoodleLayout
     //   376: iconst_5
     //   377: istore_1
     //   378: aload 9
-    //   380: getfield 371	ycl:a	Lyfk;
+    //   380: getfield 371	yre:a	Lyud;
     //   383: new 971	com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout$8
     //   386: dup
     //   387: aload_0
     //   388: aload 9
     //   390: iload_2
     //   391: aload 10
-    //   393: invokespecial 974	com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout$8:<init>	(Lcom/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout;Lycl;I[I)V
-    //   396: invokevirtual 977	yfk:a	(Ljava/lang/Runnable;)V
+    //   393: invokespecial 974	com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout$8:<init>	(Lcom/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout;Lyre;I[I)V
+    //   396: invokevirtual 977	yud:a	(Ljava/lang/Runnable;)V
     //   399: aload 10
     //   401: iconst_0
     //   402: iaload
@@ -908,7 +914,7 @@ public class DoodleLayout
     //   425: ldc_w 983
     //   428: iload_2
     //   429: invokestatic 260	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   432: invokestatic 263	xvv:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   432: invokestatic 263	ykq:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
     //   435: iload_2
     //   436: istore_1
     //   437: goto -38 -> 399
@@ -917,9 +923,9 @@ public class DoodleLayout
     //   444: invokevirtual 986	java/lang/InterruptedException:printStackTrace	()V
     //   447: goto -24 -> 423
     //   450: aload 9
-    //   452: getfield 371	ycl:a	Lyfk;
+    //   452: getfield 371	yre:a	Lyud;
     //   455: iload_2
-    //   456: invokevirtual 987	yfk:b	(I)V
+    //   456: invokevirtual 987	yud:b	(I)V
     //   459: aload_0
     //   460: getfield 314	com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout:jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams	Lcom/tencent/biz/qqstory/takevideo/EditVideoParams;
     //   463: ifnull +20 -> 483
@@ -929,9 +935,9 @@ public class DoodleLayout
     //   473: ifeq +10 -> 483
     //   476: aload 9
     //   478: aload 7
-    //   480: invokevirtual 993	ycl:c	(Landroid/graphics/Canvas;)V
+    //   480: invokevirtual 993	yre:c	(Landroid/graphics/Canvas;)V
     //   483: aload 8
-    //   485: getfield 996	yez:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   485: getfield 996	yts:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   488: invokevirtual 1002	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   491: astore 8
     //   493: aload 8
@@ -939,9 +945,9 @@ public class DoodleLayout
     //   500: ifeq +21 -> 521
     //   503: aload 8
     //   505: invokeinterface 1011 1 0
-    //   510: checkcast 291	ycv
+    //   510: checkcast 291	yro
     //   513: aload 7
-    //   515: invokevirtual 1013	ycv:b	(Landroid/graphics/Canvas;)V
+    //   515: invokevirtual 1013	yro:b	(Landroid/graphics/Canvas;)V
     //   518: goto -25 -> 493
     //   521: ldc 179
     //   523: new 181	java/lang/StringBuilder
@@ -954,7 +960,7 @@ public class DoodleLayout
     //   541: lsub
     //   542: invokevirtual 1018	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   545: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   548: invokestatic 212	xvv:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   548: invokestatic 212	ykq:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   551: aload_0
     //   552: getfield 92	com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleLayout:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
     //   555: invokeinterface 767 1 0
@@ -974,7 +980,7 @@ public class DoodleLayout
     //   214	347	6	localBitmap2	Bitmap
     //   230	284	7	localCanvas	android.graphics.Canvas
     //   239	265	8	localObject2	Object
-    //   323	154	9	localycl	ycl
+    //   323	154	9	localyre	yre
     //   369	31	10	arrayOfInt	int[]
     //   440	3	11	localInterruptedException2	java.lang.InterruptedException
     // Exception table:
@@ -999,13 +1005,13 @@ public class DoodleLayout
     //   417	423	440	java/lang/InterruptedException
   }
   
-  public List<ycd> b(int paramInt)
+  public List<yqw> b(int paramInt)
   {
-    Object localObject = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
     if (localObject != null)
     {
-      localObject = ((yez)localObject).jdField_a_of_type_Ycc.b;
-      xvv.b("DoodleLayout", "Using poi list:" + localObject.toString());
+      localObject = ((yts)localObject).jdField_a_of_type_Yqv.b;
+      ykq.b("DoodleLayout", "Using poi list:" + localObject.toString());
       return Collections.unmodifiableList((List)localObject);
     }
     return Collections.emptyList();
@@ -1021,7 +1027,7 @@ public class DoodleLayout
   public void b(int paramInt)
   {
     a();
-    xvv.b("DoodleLayout", "onTextPressed, buttonState:" + this.jdField_b_of_type_Int + ",activeLayer:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a());
+    ykq.b("DoodleLayout", "onTextPressed, buttonState:" + this.jdField_b_of_type_Int + ",activeLayer:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a());
     String str;
     if (paramInt == 2)
     {
@@ -1030,13 +1036,13 @@ public class DoodleLayout
       if (paramInt != 2) {
         break label104;
       }
-      xwb.a("0X80076B9", xwb.jdField_b_of_type_Int);
+      ykw.a("0X80076B9", ykw.jdField_b_of_type_Int);
       label74:
       if (this.jdField_b_of_type_Int != 3) {
         break label113;
       }
-      if (this.jdField_a_of_type_Ydv != null) {
-        this.jdField_a_of_type_Ydv.dismiss();
+      if (this.jdField_a_of_type_Yso != null) {
+        this.jdField_a_of_type_Yso.dismiss();
       }
     }
     label104:
@@ -1048,7 +1054,7 @@ public class DoodleLayout
         return;
         str = "edit_text";
         break;
-        xwb.a("0X80076C3");
+        ykw.a("0X80076C3");
         break label74;
         m();
         a(new View[] { this.jdField_a_of_type_AndroidWidgetRelativeLayout });
@@ -1086,11 +1092,11 @@ public class DoodleLayout
   
   public int[] b(int paramInt)
   {
-    Object localObject = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
     if (localObject != null)
     {
-      localObject = ((yez)localObject).jdField_a_of_type_Ycc.a();
-      xvv.b("DoodleLayout", "normal face count:" + localObject[0] + ",location face count:" + localObject[1]);
+      localObject = ((yts)localObject).jdField_a_of_type_Yqv.a();
+      ykq.b("DoodleLayout", "normal face count:" + localObject[0] + ",location face count:" + localObject[1]);
       return localObject;
     }
     return new int[] { 0, 0 };
@@ -1104,12 +1110,12 @@ public class DoodleLayout
   public void c()
   {
     a();
-    ycl localycl = a();
-    xvv.b("DoodleLayout", "undo, activeLayer:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a() + ",pathCount:" + localycl.a.a());
-    if (localycl.d())
+    yre localyre = a();
+    ykq.b("DoodleLayout", "undo, activeLayer:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a() + ",pathCount:" + localyre.a.a());
+    if (localyre.d())
     {
-      localycl.c();
-      if (localycl.a.a() == 0) {
+      localyre.c();
+      if (localyre.a.a() == 0) {
         this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setUndoViewEnable(false);
       }
     }
@@ -1122,9 +1128,9 @@ public class DoodleLayout
   
   public void c(int paramInt)
   {
-    if (!yff.a(paramInt))
+    if (!yty.a(paramInt))
     {
-      xvv.e("DoodleLayout", "illegal state.");
+      ykq.e("DoodleLayout", "illegal state.");
       return;
     }
     this.jdField_b_of_type_Int = paramInt;
@@ -1132,12 +1138,12 @@ public class DoodleLayout
   
   public boolean c(int paramInt)
   {
-    Object localObject = (yez)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = (yts)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
     if (localObject != null)
     {
-      localObject = ((yez)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = ((yts)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject).hasNext()) {
-        if (!((ycv)((Iterator)localObject).next()).a()) {
+        if (!((yro)((Iterator)localObject).next()).a()) {
           return false;
         }
       }
@@ -1156,10 +1162,10 @@ public class DoodleLayout
   public void d()
   {
     a();
-    xvv.b("DoodleLayout", "onFacePressed, buttonState:" + this.jdField_b_of_type_Int + ",activeLayer:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a());
-    xwb.a("0X80076BA", xwb.jdField_b_of_type_Int);
+    ykq.b("DoodleLayout", "onFacePressed, buttonState:" + this.jdField_b_of_type_Int + ",activeLayer:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a());
+    ykw.a("0X80076BA", ykw.jdField_b_of_type_Int);
     a(true);
-    super.setBackgroundColor(getResources().getColor(2131165699));
+    super.setBackgroundColor(getResources().getColor(2131165708));
     a(new View[] { this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView });
     setDoodleGLViewVisibility(4);
     b(new View[] { this.jdField_a_of_type_AndroidWidgetRelativeLayout });
@@ -1173,7 +1179,7 @@ public class DoodleLayout
       if (this.jdField_b_of_type_Int == 3)
       {
         c(1);
-        this.jdField_a_of_type_Ydv.dismiss();
+        this.jdField_a_of_type_Yso.dismiss();
         super.postDelayed(new DoodleLayout.7(this), 100L);
         return;
       }
@@ -1194,20 +1200,20 @@ public class DoodleLayout
   public void e()
   {
     a();
-    xvv.b("DoodleLayout", "onLinePressed, buttonState:" + this.jdField_b_of_type_Int + ",activeLayer:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a());
-    xwb.a("0X80076B8", xwb.jdField_b_of_type_Int);
-    ycl localycl = a();
+    ykq.b("DoodleLayout", "onLinePressed, buttonState:" + this.jdField_b_of_type_Int + ",activeLayer:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a());
+    ykw.a("0X80076B8", ykw.jdField_b_of_type_Int);
+    yre localyre = a();
     a(new View[] { this.jdField_a_of_type_AndroidWidgetRelativeLayout });
     b(new View[] { this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout });
-    localycl.b(true);
-    if (localycl.b())
+    localyre.b(true);
+    if (localyre.b())
     {
-      yfw localyfw = (yfw)localycl.a(101);
-      if (localyfw != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setSelectedStrokeWithColor(localyfw.jdField_b_of_type_Int);
+      yup localyup = (yup)localyre.a(101);
+      if (localyup != null) {
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setSelectedStrokeWithColor(localyup.jdField_b_of_type_Int);
       }
     }
-    if (localycl.a.a() > 0)
+    if (localyre.a.a() > 0)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setUndoViewEnable(true);
       if (this.jdField_b_of_type_Int != 0) {
@@ -1224,7 +1230,7 @@ public class DoodleLayout
       if (this.jdField_b_of_type_Int == 3)
       {
         c(2);
-        this.jdField_a_of_type_Ydv.dismiss();
+        this.jdField_a_of_type_Yso.dismiss();
         a(new View[] { this.jdField_a_of_type_AndroidWidgetRelativeLayout });
         return;
       }
@@ -1246,9 +1252,9 @@ public class DoodleLayout
     a(new View[] { this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout, this.jdField_b_of_type_AndroidWidgetRelativeLayout });
     a(false);
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setUndoViewEnable(false);
-    if ((this.jdField_a_of_type_Ydv != null) && (this.jdField_a_of_type_Ydv.isShowing()))
+    if ((this.jdField_a_of_type_Yso != null) && (this.jdField_a_of_type_Yso.isShowing()))
     {
-      this.jdField_a_of_type_Ydv.dismiss();
+      this.jdField_a_of_type_Yso.dismiss();
       return;
     }
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.d();
@@ -1280,9 +1286,9 @@ public class DoodleLayout
     int j = 0;
     while (j < this.jdField_b_of_type_AndroidUtilSparseArray.size())
     {
-      ycp localycp = ((yez)this.jdField_b_of_type_AndroidUtilSparseArray.valueAt(j)).jdField_a_of_type_Ycp;
-      localycp.a(null);
-      localycp.a(null);
+      yri localyri = ((yts)this.jdField_b_of_type_AndroidUtilSparseArray.valueAt(j)).jdField_a_of_type_Yri;
+      localyri.a(null);
+      localyri.a(null);
       j += 1;
     }
   }
@@ -1304,10 +1310,10 @@ public class DoodleLayout
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
       localAlphaAnimation.setDuration(500L);
       localAlphaAnimation.setFillAfter(true);
-      localAlphaAnimation.setAnimationListener(new yeu(this));
+      localAlphaAnimation.setAnimationListener(new ytn(this));
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.startAnimation(localAlphaAnimation);
-      if (this.jdField_a_of_type_Yev != null) {
-        this.jdField_a_of_type_Yev.b(localAlphaAnimation);
+      if (this.jdField_a_of_type_Yto != null) {
+        this.jdField_a_of_type_Yto.b(localAlphaAnimation);
       }
       if (QLog.isColorLevel()) {
         QLog.d("Personality", 2, "exitFullScreen");
@@ -1325,8 +1331,8 @@ public class DoodleLayout
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((paramView == this.jdField_a_of_type_AndroidWidgetTextView) && (!a(false)) && (this.jdField_a_of_type_Yew != null)) {
-        this.jdField_a_of_type_Yew.h();
+      if ((paramView == this.jdField_a_of_type_AndroidWidgetTextView) && (!a(false)) && (this.jdField_a_of_type_Ytp != null)) {
+        this.jdField_a_of_type_Ytp.h();
       }
     }
   }
@@ -1341,32 +1347,32 @@ public class DoodleLayout
   public void setDoodleBitmapMaxSize(int paramInt1, int paramInt2)
   {
     if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      xvv.e("DoodleLayout", "width or height is illegal, width=" + paramInt1 + ",height=" + paramInt2);
+      ykq.e("DoodleLayout", "width or height is illegal, width=" + paramInt1 + ",height=" + paramInt2);
     }
     for (;;)
     {
       return;
-      xvv.b("DoodleLayout", "setDoodleBitmapMaxSize, maxWidth" + paramInt1 + ",maxHeight:" + paramInt2);
+      ykq.b("DoodleLayout", "setDoodleBitmapMaxSize, maxWidth" + paramInt1 + ",maxHeight:" + paramInt2);
       this.f = paramInt1;
       this.g = paramInt2;
       int j = 0;
       while (j < this.jdField_a_of_type_AndroidUtilSparseArray.size())
       {
-        ((yda)this.jdField_a_of_type_AndroidUtilSparseArray.get(j)).jdField_a_of_type_Int = paramInt1;
-        ((yda)this.jdField_a_of_type_AndroidUtilSparseArray.get(j)).jdField_b_of_type_Int = paramInt2;
+        ((yrt)this.jdField_a_of_type_AndroidUtilSparseArray.get(j)).jdField_a_of_type_Int = paramInt1;
+        ((yrt)this.jdField_a_of_type_AndroidUtilSparseArray.get(j)).jdField_b_of_type_Int = paramInt2;
         j += 1;
       }
     }
   }
   
-  public void setDoodleBtnOperationHelper(yev paramyev)
+  public void setDoodleBtnOperationHelper(yto paramyto)
   {
-    this.jdField_a_of_type_Yev = paramyev;
+    this.jdField_a_of_type_Yto = paramyto;
   }
   
-  public void setDoodleEventListener(yew paramyew)
+  public void setDoodleEventListener(ytp paramytp)
   {
-    this.jdField_a_of_type_Yew = paramyew;
+    this.jdField_a_of_type_Ytp = paramytp;
   }
   
   @TargetApi(14)
@@ -1374,7 +1380,7 @@ public class DoodleLayout
   {
     if (!this.jdField_b_of_type_Boolean)
     {
-      xvv.b("DoodleLayout", "setDoodleGLViewVisibility, soload failed, glview default invisible");
+      ykq.b("DoodleLayout", "setDoodleGLViewVisibility, soload failed, glview default invisible");
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleTextureView.setVisibility(4);
       return;
     }
@@ -1392,16 +1398,16 @@ public class DoodleLayout
   
   public void setLocation(String paramString)
   {
-    if (this.jdField_a_of_type_Ycd == null)
+    if (this.jdField_a_of_type_Yqw == null)
     {
-      xvv.e("DoodleLayout", "ClickFaceItem not found.");
+      ykq.e("DoodleLayout", "ClickFaceItem not found.");
       return;
     }
-    xvv.b("DoodleLayout", "setLocation: clickItem-->" + this.jdField_a_of_type_Ycd);
+    ykq.b("DoodleLayout", "setLocation: clickItem-->" + this.jdField_a_of_type_Yqw);
     if (a() != null) {
-      a().a(this.jdField_a_of_type_Ycd, paramString);
+      a().a(this.jdField_a_of_type_Yqw, paramString);
     }
-    this.jdField_a_of_type_Ycd = null;
+    this.jdField_a_of_type_Yqw = null;
   }
   
   public void setMosaicSize(int paramInt)
@@ -1409,16 +1415,16 @@ public class DoodleLayout
     int j = paramInt;
     if (paramInt < 1)
     {
-      xvv.e("DoodleLayout", "MosaicSize little than 1.");
+      ykq.e("DoodleLayout", "MosaicSize little than 1.");
       j = 1;
     }
     this.jdField_c_of_type_Int = j;
     paramInt = 0;
     while (paramInt < this.jdField_b_of_type_AndroidUtilSparseArray.size())
     {
-      yfo localyfo = (yfo)((yez)this.jdField_b_of_type_AndroidUtilSparseArray.valueAt(paramInt)).jdField_a_of_type_Ycl.a(103);
-      if (localyfo != null) {
-        localyfo.b(j);
+      yuh localyuh = (yuh)((yts)this.jdField_b_of_type_AndroidUtilSparseArray.valueAt(paramInt)).jdField_a_of_type_Yre.a(103);
+      if (localyuh != null) {
+        localyuh.b(j);
       }
       paramInt += 1;
     }
@@ -1427,7 +1433,7 @@ public class DoodleLayout
   public void setMosaicStandardSize(int paramInt1, int paramInt2)
   {
     if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      xvv.e("DoodleLayout", "StandardMosaicSize, width or height <= 0. width:" + paramInt1 + ",height:" + paramInt2);
+      ykq.e("DoodleLayout", "StandardMosaicSize, width or height <= 0. width:" + paramInt1 + ",height:" + paramInt2);
     }
     for (;;)
     {
@@ -1437,18 +1443,18 @@ public class DoodleLayout
       int j = 0;
       while (j < this.jdField_b_of_type_AndroidUtilSparseArray.size())
       {
-        yfo localyfo = (yfo)((yez)this.jdField_b_of_type_AndroidUtilSparseArray.valueAt(j)).jdField_a_of_type_Ycl.a(103);
-        if (localyfo != null) {
-          localyfo.b(paramInt1, paramInt2);
+        yuh localyuh = (yuh)((yts)this.jdField_b_of_type_AndroidUtilSparseArray.valueAt(j)).jdField_a_of_type_Yre.a(103);
+        if (localyuh != null) {
+          localyuh.b(paramInt1, paramInt2);
         }
         j += 1;
       }
     }
   }
   
-  public void setOnTextDialogShowListener(yfe paramyfe)
+  public void setOnTextDialogShowListener(ytx paramytx)
   {
-    this.jdField_a_of_type_Yfe = paramyfe;
+    this.jdField_a_of_type_Ytx = paramytx;
   }
 }
 

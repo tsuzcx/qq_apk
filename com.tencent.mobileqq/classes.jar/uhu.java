@@ -1,9 +1,17 @@
-import android.graphics.Rect;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class uhu
+class uhu
+  implements ViewFactory.FoundClickableViewListener
 {
-  public Rect a;
-  public String a;
+  uhu(uht paramuht, BaseData paramBaseData, Context paramContext) {}
+  
+  public void onFound(ViewBase paramViewBase)
+  {
+    paramViewBase.setOnClickListener(new uhv(this));
+  }
 }
 
 

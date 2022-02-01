@@ -1,24 +1,23 @@
-import android.content.Intent;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bekw
+public class bekw
 {
-  public abstract void a();
+  private bekp a;
   
-  public abstract void a(int paramInt);
+  public bekw(bekp parambekp)
+  {
+    this.a = parambekp;
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(JSONArray paramJSONArray);
-  
-  public abstract void a(JSONObject paramJSONObject);
-  
-  public abstract boolean a();
-  
-  public abstract void b(boolean paramBoolean);
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ClockView", 2, "notifyChanged : nEventId = " + paramInt);
+    }
+    if (this.a != null) {
+      this.a.a(paramInt);
+    }
+  }
 }
 
 

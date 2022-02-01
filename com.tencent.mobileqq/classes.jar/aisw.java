@@ -1,28 +1,18 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class aisw
+  implements MessageQueue.IdleHandler
 {
-  private BaseActivity a;
+  public aisw(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public aisw(BaseActivity paramBaseActivity)
+  public boolean queueIdle()
   {
-    this.a = paramBaseActivity;
-  }
-  
-  public bjnw a(AdapterView.OnItemClickListener paramOnItemClickListener)
-  {
-    bjnw localbjnw = (bjnw)bjon.a(this.a, null);
-    GridView localGridView = (GridView)View.inflate(this.a, 2131562948, null);
-    localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837574));
-    localGridView.setAdapter(new aisy(this, null));
-    localGridView.setOnItemClickListener(paramOnItemClickListener);
-    localbjnw.a(localGridView);
-    localbjnw.c(2131690620);
-    return localbjnw;
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 

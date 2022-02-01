@@ -1,17 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class adde
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  adde(addc paramaddc) {}
+  adde(addc paramaddc, View.OnClickListener paramOnClickListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.a();
-    DevlockQuickLoginActivity.c(this.a.a);
-    DevlockQuickLoginActivity.c(this.a.a, 0, 2130772001);
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
+      QLog.e("SdkAuthDialog", 1, "negativeListener is null");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+      bdla.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "2", "", "", "");
+    }
   }
 }
 

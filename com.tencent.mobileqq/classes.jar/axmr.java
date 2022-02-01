@@ -1,26 +1,82 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class axmr
-  implements Camera.PreviewCallback
+public class axmr
 {
-  axmr(axmo paramaxmo) {}
+  public long a;
+  public axmp a;
+  public String a;
+  public ArrayList<axmq> a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  public static axmr a(JSONObject paramJSONObject)
   {
-    if (paramArrayOfByte == null) {
-      return;
+    int i = 0;
+    if (paramJSONObject == null) {
+      return null;
     }
-    if (((this.a.jdField_a_of_type_Boolean) || (this.a.e == 1)) && (!axmo.a(this.a)))
+    localaxmr = new axmr();
+    try
     {
-      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      if ((this.a.e != 1) && (System.currentTimeMillis() - axmo.a(this.a) > this.a.c))
+      localaxmr.jdField_a_of_type_JavaLangString = paramJSONObject.optString("id");
+      localaxmr.jdField_a_of_type_Long = axma.b(localaxmr.jdField_a_of_type_JavaLangString);
+      localaxmr.jdField_b_of_type_Long = axma.a(localaxmr.jdField_a_of_type_JavaLangString);
+      localaxmr.jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
+      if (paramJSONObject.optInt("enable") == 1)
       {
-        axmo.a(this.a, System.currentTimeMillis());
-        axmo.a(this.a, paramArrayOfByte);
+        bool = true;
+        localaxmr.jdField_a_of_type_Boolean = bool;
+        localaxmr.c = paramJSONObject.optString("ruleWording");
+        if (paramJSONObject.optInt("maybe_spread_user") != 1) {
+          break label174;
+        }
       }
+      label174:
+      for (boolean bool = true;; bool = false)
+      {
+        localaxmr.jdField_b_of_type_Boolean = bool;
+        if (!paramJSONObject.has("subLevelInfo")) {
+          return localaxmr;
+        }
+        paramJSONObject = paramJSONObject.optJSONArray("subLevelInfo");
+        localaxmr.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        while (i < paramJSONObject.length())
+        {
+          axmq localaxmq = axmq.a(paramJSONObject.getJSONObject(i));
+          if (localaxmq != null) {
+            localaxmr.jdField_a_of_type_JavaUtilArrayList.add(localaxmq);
+          }
+          i += 1;
+        }
+        bool = false;
+        break;
+      }
+      return localaxmr;
     }
-    axmo.a(this.a).addCallbackBuffer(paramArrayOfByte);
+    catch (Exception paramJSONObject)
+    {
+      QLog.e("MutualMarkConfigIRType", 1, "parse error->" + paramJSONObject.toString());
+      return null;
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append("type=").append(this.jdField_a_of_type_Long).append("|");
+    localStringBuilder.append("level=").append(this.jdField_b_of_type_Long).append("|");
+    localStringBuilder.append("name=").append(this.jdField_b_of_type_JavaLangString).append("|");
+    localStringBuilder.append("enable=").append(this.jdField_a_of_type_Boolean).append("|");
+    localStringBuilder.append("maybeSpreadUser=").append(this.jdField_b_of_type_Boolean).append("|");
+    localStringBuilder.append("subLevelInfoArrayList=").append(this.jdField_a_of_type_JavaUtilArrayList).append("|");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.mobileqq.forward.ForwardVoiceCallOption;
 
 public class auvi
-  implements tiu
+  implements adnm
 {
-  public auvi(UiApiPlugin paramUiApiPlugin) {}
+  public auvi(ForwardVoiceCallOption paramForwardVoiceCallOption) {}
   
-  public void a(String paramString, JSONObject paramJSONObject)
+  public void onAfterStartActivity()
   {
-    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
+    this.a.a.setResult(-1);
+    this.a.a.finish();
+  }
+  
+  public void onBeforeStartActivity() {}
+  
+  public void onCancel()
+  {
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

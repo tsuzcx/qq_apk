@@ -1,25 +1,30 @@
-import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr.ProtoRequestRunnable;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
 
-public class beeq
+class beeq
+  implements URLDrawable.DownloadListener
 {
-  public int a;
-  public long a;
-  public amwm a;
-  public beep a;
-  public FromServiceMsg a;
-  public boolean a;
-  public TroopFileProtoReqMgr.ProtoRequestRunnable[] a;
+  beeq(beep parambeep, String paramString) {}
   
-  public beeq()
+  public void onFileDownloadFailed(int paramInt)
   {
-    this.jdField_a_of_type_Amwm = new amwm();
-    this.jdField_a_of_type_Boolean = false;
+    if (!beep.a(this.jdField_a_of_type_Beep).contains(this.jdField_a_of_type_JavaLangString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupPadTemplateAdapter", 2, "onFileDownloadFailed url: " + this.jdField_a_of_type_JavaLangString);
+      }
+      beep.a(this.jdField_a_of_type_Beep).add(this.jdField_a_of_type_JavaLangString);
+    }
   }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beeq
  * JD-Core Version:    0.7.0.1
  */

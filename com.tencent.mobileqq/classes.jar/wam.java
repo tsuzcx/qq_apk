@@ -1,24 +1,10 @@
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeViewHolder.1.1;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class wam
-  implements URLDrawable.URLDrawableListener
+public abstract interface wam
 {
-  wam(wal paramwal) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public abstract void a(String paramString, long paramLong1, long paramLong2);
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    ThreadManager.getUIHandler().postDelayed(new MsgNodeViewHolder.1.1(this), 1000L);
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

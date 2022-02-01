@@ -1,15 +1,28 @@
-public class njj
+import java.util.List;
+
+public abstract interface njj
 {
-  public int a;
-  public int b;
-  public int c;
+  public abstract int a();
   
-  public njj(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
+  public abstract List<nga> a();
+  
+  public abstract void a();
+  
+  public abstract void a(nfv paramnfv);
+  
+  public abstract void a(nga paramnga, int paramInt);
+  
+  public abstract void a(nio paramnio);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void b(nga paramnga, int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

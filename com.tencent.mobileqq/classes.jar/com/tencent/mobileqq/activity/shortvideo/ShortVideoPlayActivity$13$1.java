@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import alcn;
+import amaj;
 
 public class ShortVideoPlayActivity$13$1
   implements Runnable
 {
-  public ShortVideoPlayActivity$13$1(alcn paramalcn) {}
+  public ShortVideoPlayActivity$13$1(amaj paramamaj) {}
   
   public void run()
   {

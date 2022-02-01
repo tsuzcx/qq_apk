@@ -1,25 +1,34 @@
-import com.tencent.mobileqq.app.MessageHandler;
-
 public class bbkr
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  
-  public bbkr(bbko parambbko, String paramString, int paramInt, long paramLong1, long paramLong2)
+  public static int a(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Int = MessageHandler.e;
+    if ((paramLong1 <= 0L) || (paramLong2 <= 0L)) {
+      return -1;
+    }
+    long l = Math.max(paramLong1, paramLong2);
+    if ((l > 500L) && (l <= 960L)) {
+      return 3;
+    }
+    if ((l > 200L) && (l <= 500L)) {
+      return 2;
+    }
+    if (l <= 200L) {
+      return 1;
+    }
+    if (a(paramLong1, paramLong2)) {
+      return 0;
+    }
+    return 4;
+  }
+  
+  public static boolean a(long paramLong1, long paramLong2)
+  {
+    return (paramLong1 >= 3L * paramLong2) || (paramLong2 >= 3L * paramLong1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbkr
  * JD-Core Version:    0.7.0.1
  */

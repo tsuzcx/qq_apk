@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tribe.async.async.JobSegment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ackj
-  extends avrr<JobSegment>
+public class ackj
+  implements View.OnClickListener
 {
-  ackj(acki paramacki, JobSegment paramJobSegment)
-  {
-    super(paramJobSegment);
-  }
+  public ackj(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
   
-  public void a(JobSegment paramJobSegment, boolean paramBoolean, avro paramavro)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      acki.a(this.a, paramavro);
-      return;
+    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
+      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
     }
-    acki.a(this.a, new AppInfoError(5, "appInfo error"));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

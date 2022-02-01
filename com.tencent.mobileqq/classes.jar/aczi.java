@@ -1,47 +1,36 @@
-import com.tencent.mobileqq.data.TencentDocData;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
+import com.tencent.qapmsdk.base.listener.IMemoryDumpListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 class aczi
-  implements Comparator<Object>
+  implements IMemoryDumpListener
 {
-  aczi(aczh paramaczh) {}
+  aczi(aczh paramaczh, acyb paramacyb) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2)
   {
-    if ((paramObject1 instanceof FileManagerEntity)) {
-      if ((paramObject2 instanceof FileManagerEntity)) {
-        if (((FileManagerEntity)paramObject1).srvTime <= ((FileManagerEntity)paramObject2).srvTime) {}
-      }
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "onFinishDump " + paramBoolean + " " + paramString1 + " " + paramString2);
+  }
+  
+  public void onHprofDumped(@NotNull String paramString)
+  {
+    if (this.jdField_a_of_type_Acyb != null) {
+      this.jdField_a_of_type_Acyb.a();
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return -1;
-          return 1;
-          if (!(paramObject2 instanceof TencentDocData)) {
-            break;
-          }
-        } while (((FileManagerEntity)paramObject1).srvTime > ((TencentDocData)paramObject2).aioTime);
-        return 1;
-        if (!(paramObject1 instanceof TencentDocData)) {
-          break label124;
-        }
-        if (!(paramObject2 instanceof FileManagerEntity)) {
-          break;
-        }
-      } while (((TencentDocData)paramObject1).aioTime > ((FileManagerEntity)paramObject2).srvTime);
-      return 1;
-      if (!(paramObject2 instanceof TencentDocData)) {
-        break;
-      }
-    } while (((TencentDocData)paramObject1).aioTime > ((TencentDocData)paramObject2).aioTime);
-    return 1;
-    label124:
-    return 0;
+  }
+  
+  @NotNull
+  public List<String> onPrepareDump(@NotNull String paramString)
+  {
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "onPrepareDump " + paramString);
+    paramString = new ArrayList(4);
+    paramString.addAll(acyt.a());
+    paramString.addAll(acyt.b());
+    paramString.add(acyt.b());
+    paramString.add(acyt.a());
+    return paramString;
   }
 }
 

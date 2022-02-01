@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.flutter.launch;
 
-import atke;
+import auoy;
 
 public class QFlutterLauncher$2
   implements Runnable
 {
-  public QFlutterLauncher$2(atke paramatke, String paramString) {}
+  public QFlutterLauncher$2(auoy paramauoy, String paramString) {}
   
   public void run()
   {

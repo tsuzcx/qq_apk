@@ -9,8 +9,9 @@ public final class BuildConfig
   public static final boolean DEBUG = false;
   public static final String FLAVOR = "";
   public static final int SDK_TYPE = 0;
+  public static final Boolean SPECIAL_MODE = Boolean.valueOf(true);
   public static final int VERSION_CODE = 1;
-  public static final String VERSION_NAME = "3.10.7.84116";
+  public static final String VERSION_NAME = "4.0.2.08-PCG";
 }
 
 

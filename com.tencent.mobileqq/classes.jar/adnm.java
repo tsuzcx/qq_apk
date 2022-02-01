@@ -1,11 +1,10 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
-
-public abstract class adnm
+public abstract interface adnm
 {
-  public adnm(JumpActivity paramJumpActivity) {}
+  public abstract void onAfterStartActivity();
   
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract void onBeforeStartActivity();
+  
+  public abstract void onCancel();
 }
 
 

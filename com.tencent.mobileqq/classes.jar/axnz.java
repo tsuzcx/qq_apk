@@ -1,44 +1,31 @@
 import android.app.Activity;
-import android.text.Editable;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class axnz
-  implements axnu
+final class axnz
+  implements DialogInterface.OnClickListener
 {
-  public axnz(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  axnz(String paramString, int paramInt, Activity paramActivity) {}
   
-  public Activity a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a;
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView == null) {
-      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
+    paramDialogInterface = this.jdField_a_of_type_JavaLangString + "&from=" + this.jdField_a_of_type_Int;
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramDialogInterface);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.nearby.tribeAppDownload", 2, "open download page, url=" + paramDialogInterface);
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+    if (this.jdField_a_of_type_Int == 1) {
+      bdla.b(null, "dc00899", "grp_lbs", "", "app_down", "msg_down", 0, 0, "", "", "", "");
+    }
+    while (this.jdField_a_of_type_Int != 2) {
       return;
-      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.a(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.jdField_a_of_type_Axoa.a(paramBoolean);
+    bdla.b(null, "dc00899", "grp_lbs", "", "app_down", "pic_down", 0, 0, "", "", "", "");
   }
 }
 

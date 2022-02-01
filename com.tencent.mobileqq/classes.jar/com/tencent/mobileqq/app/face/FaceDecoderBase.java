@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.face;
 
 import AvatarInfo.QQHeadInfo;
 import android.graphics.Bitmap;
-import awkj;
+import axql;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.util.HeadRequest;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ public abstract class FaceDecoderBase
   public void cancelPendingRequests()
   {
     if (QLog.isColorLevel()) {
-      awkj.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
+      axql.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
     }
     this.mInProgress.clear();
     this.mReadyRequests.clear();
@@ -37,7 +37,7 @@ public abstract class FaceDecoderBase
   public void destory()
   {
     if (QLog.isColorLevel()) {
-      awkj.a(2, "FaceDecoderBase", "destory", new Object[0]);
+      axql.a(2, "FaceDecoderBase", "destory", new Object[0]);
     }
     cancelPendingRequests();
     this.iRunningRequests = 0;
@@ -98,7 +98,7 @@ public abstract class FaceDecoderBase
   public void pause()
   {
     if (QLog.isColorLevel()) {
-      awkj.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
+      axql.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
     }
     this.mPause = true;
   }

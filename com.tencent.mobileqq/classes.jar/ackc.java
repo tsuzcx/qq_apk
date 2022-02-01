@@ -1,12 +1,35 @@
-class ackc
-  implements ackq
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.qphone.base.util.QLog;
+
+public class ackc
+  extends BroadcastReceiver
 {
-  ackc(ackb paramackb) {}
+  private ackc(GdtVideoCommonView paramGdtVideoCommonView) {}
   
-  public void a(avro paramavro, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a = paramavro;
-    ackb.a(this.a, paramInt);
+    int i;
+    if (("android.intent.action.HEADSET_PLUG".equals(paramIntent.getAction())) && (paramIntent.hasExtra("state")))
+    {
+      i = paramIntent.getIntExtra("state", 0);
+      if (i != 1) {
+        break label43;
+      }
+      QLog.i("GdtVideoCommonView", 1, "ACTION_HEADSET_PLUG HEADSET on");
+    }
+    label43:
+    do
+    {
+      do
+      {
+        return;
+      } while (i != 0);
+      QLog.i("GdtVideoCommonView", 1, "ACTION_HEADSET_PLUG HEADSET off " + this.a.a);
+    } while (!this.a.a);
+    GdtVideoCommonView.d(this.a);
   }
 }
 

@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
-
-public class bbeu
-  extends bbfd
+final class bbeu
 {
-  public bbeu(GroupSearchEngine paramGroupSearchEngine, bbfe parambbfe, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambbfe, paramString, paramInt);
-  }
-  
-  public bays a(List<bayt> paramList, String paramString)
-  {
-    return new bawl(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
+  private static bbes a = new bbes(null);
 }
 
 

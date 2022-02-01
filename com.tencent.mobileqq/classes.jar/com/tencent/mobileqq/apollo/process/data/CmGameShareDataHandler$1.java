@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import alyr;
+import amzh;
 
 public class CmGameShareDataHandler$1
   implements Runnable
 {
-  public CmGameShareDataHandler$1(alyr paramalyr) {}
+  public CmGameShareDataHandler$1(amzh paramamzh) {}
   
   public void run()
   {
-    alyr.a(this.this$0);
+    amzh.a(this.this$0);
   }
 }
 

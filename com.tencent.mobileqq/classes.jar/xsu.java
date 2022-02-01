@@ -1,38 +1,24 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
 
-class xsu
-  implements INetInfoHandler
+public class xsu
+  implements zho
 {
-  xsu(xss paramxss) {}
+  public xsu(ShareGroupInnerListView paramShareGroupInnerListView) {}
   
-  public void onNetMobile2None()
+  public void a()
   {
-    xss.b(this.a, xss.a(3));
+    if ((this.a.jdField_a_of_type_Xsv != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
+      this.a.jdField_a_of_type_Xsv.a(this.a.jdField_a_of_type_JavaLangString);
+    }
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public boolean a(boolean paramBoolean)
   {
-    xss.b(this.a, xss.a(1));
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    xss.b(this.a, xss.a(2));
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    xss.b(this.a, xss.a(1));
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    xss.b(this.a, xss.a(2));
-  }
-  
-  public void onNetWifi2None()
-  {
-    xss.b(this.a, xss.a(3));
+    if (this.a.jdField_a_of_type_Xsv != null) {
+      return this.a.jdField_a_of_type_Xsv.a(this.a.jdField_a_of_type_JavaLangString);
+    }
+    return false;
   }
 }
 

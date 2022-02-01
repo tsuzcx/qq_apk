@@ -1,6 +1,17 @@
-public abstract interface bgwl
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+
+public class bgwl
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString);
+  public bgwl(UpgradeActivity paramUpgradeActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    UpgradeActivity.b(this.a);
+    this.a.finish();
+  }
 }
 
 

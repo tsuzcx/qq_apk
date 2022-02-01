@@ -2,7 +2,7 @@ package com.tencent.mobileqq.ark;
 
 import android.content.Context;
 import android.view.MotionEvent;
-import aowq;
+import apzu;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout.StickerDismissGestureDetector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
@@ -19,7 +19,7 @@ public class ArkTopGestureLayout
   
   public void init(Context paramContext)
   {
-    this.gestureListener = new aowq(this, paramContext);
+    this.gestureListener = new apzu(this, paramContext);
     this.mTopGestureDetector = new TopGestureLayout.StickerDismissGestureDetector(this, paramContext, this.gestureListener);
     this.defaultGestureDetector = this.mTopGestureDetector;
   }

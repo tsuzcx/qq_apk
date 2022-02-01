@@ -1,69 +1,27 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.cropvideo.CropVideoActivity.CropUtils.1;
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Matrix;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
 public class bnai
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static void a(@NonNull String paramString1, @NonNull String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2, @NonNull VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
-  {
-    yos.a(paramString1);
-    yos.a(paramString2);
-    yos.a(paramVideoCompositeCallBack);
-    ThreadManager.newFreeThread(new CropVideoActivity.CropUtils.1(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramLong1, paramLong2, paramVideoCompositeCallBack), "VideoCrop", 5).start();
-  }
+  public bnai(AECropperImageView paramAECropperImageView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6) {}
   
-  private static int b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    xvv.b("CropVideoActivity", "startCropVideo cropX: " + paramInt1 + ", cropY: " + paramInt2 + ", cropWidth: " + paramInt3 + ", cropHeight: " + paramInt4 + ", targetWidth: " + paramInt5 + ", targetHeight: " + paramInt6 + ", startTime: " + paramLong1 + ", endTime: " + paramLong2);
-    int i = paramInt5;
-    if (paramInt5 == -1) {
-      i = paramInt3;
-    }
-    paramInt5 = paramInt6;
-    if (paramInt6 == -1) {
-      paramInt5 = paramInt4;
-    }
-    if (paramLong1 < 0L)
-    {
-      xvv.e("CropVideoActivity", "startCropVideo illegal start time!");
-      return -1;
-    }
-    if ((paramLong1 >= paramLong2) && (paramLong2 >= 0L))
-    {
-      xvv.e("CropVideoActivity", "startCropVideo illegal time!");
-      return -2;
-    }
-    paramInt6 = paramInt1;
-    if (paramInt1 % 2 != 0) {
-      paramInt6 = (paramInt1 + 1) / 2 * 2;
-    }
-    paramInt1 = paramInt2;
-    if (paramInt2 % 2 != 0) {
-      paramInt1 = (paramInt2 + 1) / 2 * 2;
-    }
-    paramInt2 = paramInt3;
-    if (paramInt3 % 16 != 0) {
-      paramInt2 = paramInt3 / 16 * 16;
-    }
-    paramInt3 = paramInt4;
-    if (paramInt4 % 16 != 0) {
-      paramInt3 = paramInt4 / 16 * 16;
-    }
-    if (i % 16 != 0) {
-      paramInt4 = i / 16;
-    }
-    if (paramInt5 % 16 != 0) {
-      paramInt4 = paramInt5 / 16;
-    }
-    paramString1 = new File(paramString1);
-    paramString2 = new bnaj(paramString2, 2048000, paramLong1, paramLong2, false, true);
-    paramString2.a(paramInt6, paramInt1, paramInt2, paramInt3);
-    if ((new boem().a(paramString1, paramString2, true)) && (paramString2.a == null)) {
-      return 0;
-    }
-    return -3;
+    Matrix localMatrix = this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.getImageMatrix();
+    localMatrix.reset();
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    float f1 = (this.jdField_a_of_type_Float - this.b) * paramValueAnimator.intValue() / 20.0F + this.b;
+    localMatrix.postScale(f1, f1);
+    f1 = (this.c - this.d) * paramValueAnimator.intValue() / 20.0F;
+    float f2 = this.d;
+    float f3 = this.e;
+    float f4 = this.f;
+    localMatrix.postTranslate(f1 + f2, paramValueAnimator.intValue() * (f3 - f4) / 20.0F + this.f);
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.setImageMatrix(localMatrix);
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.invalidate();
   }
 }
 

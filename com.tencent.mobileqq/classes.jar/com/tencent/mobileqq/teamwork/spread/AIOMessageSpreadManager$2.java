@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import aqld;
-import asgz;
-import bcws;
+import aroo;
+import atlf;
+import bedr;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -13,11 +13,11 @@ import java.util.HashMap;
 public class AIOMessageSpreadManager$2
   implements Runnable
 {
-  public AIOMessageSpreadManager$2(bcws parambcws, ChatMessage paramChatMessage, String paramString1, aqld paramaqld, String paramString2, String paramString3) {}
+  public AIOMessageSpreadManager$2(bedr parambedr, ChatMessage paramChatMessage, String paramString1, aroo paramaroo, String paramString2, String paramString3) {}
   
   public void run()
   {
-    Object localObject1 = bcws.a(this.this$0).getMessageFacade().getMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    Object localObject1 = bedr.a(this.this$0).getMessageFacade().getMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
     Object localObject2 = localObject1;
     if (localObject1 == null)
     {
@@ -28,16 +28,16 @@ public class AIOMessageSpreadManager$2
     }
     HashMap localHashMap = new HashMap();
     localObject1 = this.jdField_a_of_type_JavaLangString;
-    if ((this.jdField_a_of_type_JavaLangString.contains("%s")) && (this.jdField_a_of_type_Aqld != null)) {}
+    if ((this.jdField_a_of_type_JavaLangString.contains("%s")) && (this.jdField_a_of_type_Aroo != null)) {}
     for (;;)
     {
       try
       {
-        String str = String.format(this.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_Aqld.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aqld.jdField_a_of_type_JavaLangString });
+        String str = String.format(this.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_Aroo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aroo.jdField_a_of_type_JavaLangString });
         localObject1 = str;
         localHashMap.put("tim_aio_file_tips", str);
         localObject1 = str;
-        localHashMap.put("tim_aio_file_link", String.format(this.b, new Object[] { this.jdField_a_of_type_Aqld.jdField_a_of_type_JavaLangString }));
+        localHashMap.put("tim_aio_file_link", String.format(this.b, new Object[] { this.jdField_a_of_type_Aroo.jdField_a_of_type_JavaLangString }));
         localObject1 = str;
       }
       catch (Exception localException)
@@ -48,20 +48,20 @@ public class AIOMessageSpreadManager$2
       }
       localHashMap.put("tim_aio_file_msg_uiniseq", String.valueOf(((MessageRecord)localObject2).uniseq));
       localHashMap.put("tim_aio_tips_type", this.c);
-      if (this.jdField_a_of_type_Aqld != null)
+      if (this.jdField_a_of_type_Aroo != null)
       {
-        localHashMap.put("tim_aio_tips_template_id", String.valueOf(this.jdField_a_of_type_Aqld.jdField_a_of_type_Int));
-        localHashMap.put("tim_aio_tips_template_type", String.valueOf(this.jdField_a_of_type_Aqld.b));
-        localHashMap.put("tim_aio_tips_keyword", String.valueOf(this.jdField_a_of_type_Aqld.jdField_a_of_type_JavaLangString));
-        localHashMap.put("tim_aio_tips_type", String.valueOf(this.jdField_a_of_type_Aqld.b));
+        localHashMap.put("tim_aio_tips_template_id", String.valueOf(this.jdField_a_of_type_Aroo.jdField_a_of_type_Int));
+        localHashMap.put("tim_aio_tips_template_type", String.valueOf(this.jdField_a_of_type_Aroo.b));
+        localHashMap.put("tim_aio_tips_keyword", String.valueOf(this.jdField_a_of_type_Aroo.jdField_a_of_type_JavaLangString));
+        localHashMap.put("tim_aio_tips_type", String.valueOf(this.jdField_a_of_type_Aroo.b));
       }
-      l = bcws.a(this.this$0).getFileManagerDataCenter().a(((MessageRecord)localObject2).frienduin, bcws.a(this.this$0).getCurrentAccountUin(), ((MessageRecord)localObject2).istroop, -3016, localHashMap, (String)localObject1, ((MessageRecord)localObject2).msgUid, ((MessageRecord)localObject2).shmsgseq, ((MessageRecord)localObject2).time);
+      l = bedr.a(this.this$0).getFileManagerDataCenter().a(((MessageRecord)localObject2).frienduin, bedr.a(this.this$0).getCurrentAccountUin(), ((MessageRecord)localObject2).istroop, -3016, localHashMap, (String)localObject1, ((MessageRecord)localObject2).msgUid, ((MessageRecord)localObject2).shmsgseq, ((MessageRecord)localObject2).time);
       if (QLog.isDebugVersion()) {
         QLog.i("AIOMessageSpreadManager", 1, "insertGaryTips:" + l + "findMsg:" + localObject2.hashCode());
       }
       ((MessageRecord)localObject2).saveExtInfoToExtStr("tim_aio_gary_uniseq", String.valueOf(l));
-      bcws.a(this.this$0).getMessageFacade().updateMsgFieldByUniseq(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, "extStr", ((MessageRecord)localObject2).getExtInfoString());
-      bcws.a(this.this$0).getMessageFacade().updateMsgFieldByUniseq(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject2).extLong));
+      bedr.a(this.this$0).getMessageFacade().updateMsgFieldByUniseq(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, "extStr", ((MessageRecord)localObject2).getExtInfoString());
+      bedr.a(this.this$0).getMessageFacade().updateMsgFieldByUniseq(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject2).extLong));
       return;
       localHashMap.put("tim_aio_file_tips", this.jdField_a_of_type_JavaLangString);
       localHashMap.put("tim_aio_file_link", this.b);
@@ -70,7 +70,7 @@ public class AIOMessageSpreadManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.2
  * JD-Core Version:    0.7.0.1
  */

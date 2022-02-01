@@ -1,14 +1,38 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
+import android.util.SparseArray;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileFilter;
+import org.json.JSONObject;
 
 class aozn
-  extends bjmc
+  implements FileFilter
 {
-  aozn(aozm paramaozm) {}
+  aozn(aozm paramaozm, SparseArray paramSparseArray) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean accept(File paramFile)
   {
-    this.a.a.setVisibility(0);
+    Object localObject = new File(paramFile, "config.json");
+    if ((((File)localObject).exists()) && (((File)localObject).isFile())) {
+      localObject = FileUtils.readFileContent((File)localObject);
+    }
+    try
+    {
+      int i = Integer.parseInt(paramFile.getName());
+      long l = new JSONObject((String)localObject).optLong("version");
+      this.jdField_a_of_type_AndroidUtilSparseArray.append(i, Long.valueOf(l));
+      QLog.i("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo roleId: " + i + ", ver: " + l / 1000L);
+      return false;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo failed role: " + paramFile.getAbsolutePath());
+        }
+      }
+    }
   }
 }
 

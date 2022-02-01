@@ -1,23 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-
 public class awph
-  extends Handler
 {
-  public awph(StoryPlayController paramStoryPlayController) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public void handleMessage(Message paramMessage)
+  public awph()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      StoryPlayController.a(this.a, this.a.a);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ContactsGuideInfo|showWelcomepage=").append(this.jdField_a_of_type_Boolean).append(",showConvGuideEntrance=").append(this.jdField_b_of_type_Boolean).append(",friends_recomm_flag=").append(this.jdField_a_of_type_Int).append(",groups_recomm_flag=").append(this.jdField_b_of_type_Int).append(",url=").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 

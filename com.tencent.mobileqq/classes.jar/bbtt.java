@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class bbtt
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b = 0;
+  public bbtt(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public bbtt(SVHwEncoder.HwEncode paramHwEncode)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
+    paramDialogInterface.dismiss();
   }
 }
 

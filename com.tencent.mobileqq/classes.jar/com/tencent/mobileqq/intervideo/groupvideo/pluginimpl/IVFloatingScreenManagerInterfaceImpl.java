@@ -2,8 +2,8 @@ package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.content.Context;
 import android.view.View;
-import avpf;
-import avpj;
+import awvk;
+import awvo;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenManager;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
@@ -21,14 +21,14 @@ public class IVFloatingScreenManagerInterfaceImpl
     return sInstance;
   }
   
-  int abandonMediaFocus(avpj paramavpj)
+  int abandonMediaFocus(awvo paramawvo)
   {
-    return avpf.a().a(paramavpj);
+    return awvk.a().a(paramawvo);
   }
   
   int enterFloatingScreen(Context paramContext, View paramView)
   {
-    FloatingScreenParams localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setIsHorizontal(false).setCanMove(true).build();
+    FloatingScreenParams localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setIsHorizontal(false).setCanMove(true).setCanZoom(false).build();
     return FloatingScreenManager.getInstance().enterFloatingScreen(paramContext, paramView, localFloatingScreenParams, 2);
   }
   
@@ -37,9 +37,9 @@ public class IVFloatingScreenManagerInterfaceImpl
     FloatingScreenManager.getInstance().quitFloatingScreen();
   }
   
-  int requestMediaFocus(int paramInt, avpj paramavpj)
+  int requestMediaFocus(int paramInt, awvo paramawvo)
   {
-    return avpf.a().a(paramInt, paramavpj);
+    return awvk.a().a(paramInt, paramawvo);
   }
   
   IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener)

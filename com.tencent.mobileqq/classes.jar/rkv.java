@@ -1,27 +1,38 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IBinder;
+import android.os.Parcel;
 
 class rkv
-  implements rkw
+  implements rkt
 {
-  rkv(rku paramrku, Bitmap[] paramArrayOfBitmap) {}
+  private IBinder a;
   
-  public void a()
+  rkv(IBinder paramIBinder)
   {
-    rku.a(this.jdField_a_of_type_Rku);
-    if (rku.a(this.jdField_a_of_type_Rku) <= 3)
+    this.a = paramIBinder;
+  }
+  
+  public rkw a()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CaptureTask", 2, "onCaptureFailed try angin tryCount:" + rku.a(this.jdField_a_of_type_Rku) + "  CaptureTask:" + this.jdField_a_of_type_Rku);
-      }
-      this.jdField_a_of_type_Rku.a(null);
+      localParcel1.writeInterfaceToken("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IRIJAidlInterface");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      rkw localrkw = rkx.a(localParcel2.readStrongBinder());
+      return localrkw;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
-  public void a(Bitmap paramBitmap, rku paramrku)
+  public IBinder asBinder()
   {
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[0] = paramBitmap;
-    rku.a(this.jdField_a_of_type_Rku);
+    return this.a;
   }
 }
 

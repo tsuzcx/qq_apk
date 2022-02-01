@@ -1,21 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-
-public class bdmo
-  implements View.OnTouchListener
+public abstract class bdmo
 {
-  public bdmo(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
+  public int a = 0;
+  public int b;
+  public long b;
+  public int c = 1;
+  public String i = "";
+  public String j = "";
+  public String k = "";
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  bdmo()
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.getActivity().finish();
-    }
-    return true;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
   }
+  
+  public abstract String a(int paramInt);
+  
+  public abstract String toString();
 }
 
 

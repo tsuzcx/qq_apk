@@ -83,7 +83,7 @@ public class PanoramaLoadingLayout
     if (this.tvToast == null)
     {
       this.tvToast = new TextView(this.context);
-      this.tvToast.setText(this.context.getResources().getString(2131716901));
+      this.tvToast.setText(this.context.getResources().getString(2131717264));
       this.tvToast.setTextColor(-1);
       this.tvToast.setTextSize(14.0F);
       this.tvToast.setShadowLayer(2.0F, 2.0F, 2.0F, -16777216);

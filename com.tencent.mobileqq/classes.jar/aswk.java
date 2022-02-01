@@ -1,21 +1,23 @@
-import android.content.Intent;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class aswk
-  implements aszj
+public class aswk
+  implements Animation.AnimationListener
 {
-  aswk(aswj paramaswj) {}
+  public aswk(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(aslg.a());
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-    aswi.a(this.a.a, localIntent);
+    this.a.l = false;
+    this.a.a.setVisibility(8);
+    this.a.e();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

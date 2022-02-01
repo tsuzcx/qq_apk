@@ -1,23 +1,23 @@
 package cooperation.ilive;
 
-import amxv;
-import amxx;
-import bgha;
+import aoaj;
+import aoal;
+import bhpu;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-class IliveLaunchFragment$8
+final class IliveLaunchFragment$8
   implements Runnable
 {
-  IliveLaunchFragment$8(IliveLaunchFragment paramIliveLaunchFragment, long paramLong) {}
+  IliveLaunchFragment$8(long paramLong) {}
   
   public void run()
   {
-    amxv.b(false);
-    QLog.i("IliveLaunchActivity", 1, "cpu use = " + amxv.a.a + " cost = " + this.a);
+    aoaj.b(false);
+    QLog.i("IliveLaunchActivity", 1, "cpu use = " + aoaj.a.a + " cost = " + this.a);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("cpu", amxv.a.a + "");
-    bgha.a("ilive_preload_monitor", localHashMap, this.a);
+    localHashMap.put("cpu", aoaj.a.a + "");
+    bhpu.a("ilive_preload_monitor", localHashMap, this.a);
   }
 }
 

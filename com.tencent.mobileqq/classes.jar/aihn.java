@@ -1,42 +1,57 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URL;
 
-public class aihn
-  extends ContentObserver
+public abstract class aihn
+  extends aihl
+  implements aihq
 {
-  WeakReference<PhoneContactManagerImp> a;
+  private boolean a;
   
-  public aihn(Handler paramHandler)
+  public URLDrawable.URLDrawableOptions a()
   {
-    super(paramHandler);
+    return URLDrawable.URLDrawableOptions.obtain();
   }
   
-  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    if (this.a != null) {
-      this.a.clear();
+    if (paramURL == null) {
+      return null;
     }
-    if (paramPhoneContactManagerImp != null) {
-      this.a = new WeakReference(paramPhoneContactManagerImp);
-    }
+    return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
   }
   
-  public void onChange(boolean paramBoolean)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
-    }
-    if (this.a == null) {}
-    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
-    {
-      if (localPhoneContactManagerImp != null) {
-        localPhoneContactManagerImp.g = true;
-      }
-      return;
-    }
+    return null;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  {
+    this.a = true;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean b()
+  {
+    return this.a;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

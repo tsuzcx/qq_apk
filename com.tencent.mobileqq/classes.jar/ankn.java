@@ -1,40 +1,42 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.X509EncodedKeySpec;
+import org.json.JSONObject;
 
-public class ankn
+final class ankn
+  implements ankr
 {
-  public static String a(String paramString1, String paramString2)
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    paramString2 = a(paramString2);
-    if (paramString2 == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt1 + ",from:" + paramInt2 + ",cmd:" + paramString3);
     }
-    return new ankp(new anks(paramString2)).a(paramString1);
-  }
-  
-  private static PublicKey a(String paramString)
-  {
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return;
+    }
     try
     {
-      paramString = new X509EncodedKeySpec(ankk.a(paramString.replaceAll("\\-*BEGIN.*KEY\\-*", "").replaceAll("\\-*END.*KEY\\-*", "")));
-      paramString = KeyFactory.getInstance("RSA").generatePublic(paramString);
-      return paramString;
-    }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      QLog.e("JWTUtil", 1, new Object[] { "getPublicKey NoSuchAlgorithmException : ", paramString.getMessage() });
-      return null;
-    }
-    catch (InvalidKeySpecException paramString)
-    {
-      for (;;)
+      paramArrayOfInt = ankm.a(paramInt1, paramArrayOfInt);
+      if (paramArrayOfInt == null)
       {
-        QLog.e("JWTUtil", 1, new Object[] { "getPublicKey InvalidKeySpecException : ", paramString.getMessage() });
+        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
+        return;
       }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
+      return;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramArrayOfInt.put("openId", paramString2);
+    }
+    for (;;)
+    {
+      ApolloCmdChannel.getChannel(paramQQAppInterface).callbackFromRequest(paramLong, 0, paramString3, paramArrayOfInt.toString());
+      return;
+      paramArrayOfInt.put("uin", paramString1);
     }
   }
 }

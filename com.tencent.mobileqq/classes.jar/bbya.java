@@ -1,6 +1,19 @@
-public abstract interface bbya
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import java.util.Comparator;
+
+public class bbya
+  implements Comparator<ScribbleResMgr.ResInfo>
 {
-  public abstract void a(int paramInt, String paramString);
+  public bbya(ScribbleResMgr paramScribbleResMgr) {}
+  
+  public int a(ScribbleResMgr.ResInfo paramResInfo1, ScribbleResMgr.ResInfo paramResInfo2)
+  {
+    if ((paramResInfo1 != null) && (paramResInfo2 != null)) {
+      return paramResInfo1.orderIndex - paramResInfo2.orderIndex;
+    }
+    return -1;
+  }
 }
 
 

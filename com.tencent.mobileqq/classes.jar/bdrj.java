@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
 
-public class bdrj
-  implements View.OnClickListener
+class bdrj
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bdrj(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  bdrj(bdri parambdri, LinearLayout paramLinearLayout) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    QQToast.a(this.a.a, amtj.a(2131714240), 0).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    bdri.a(this.jdField_a_of_type_Bdri, this.jdField_a_of_type_AndroidWidgetLinearLayout);
   }
 }
 

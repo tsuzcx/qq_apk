@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.emoticonview.EmoticonListProvider;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import mqq.app.Constants.PropertiesKey;
 
-public final class aypl
-  implements EmoticonListProvider
+public class aypl
 {
-  public List<EmotionPanelInfo> getEmotionPanelInfo(boolean paramBoolean1, boolean paramBoolean2)
+  public static FaceDrawable a(FragmentActivity paramFragmentActivity)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new EmotionPanelInfo(7, 7, null));
-    return localArrayList;
+    String str = ayqe.a();
+    Drawable localDrawable = FaceDrawable.getDefaultDrawable(1, 3);
+    return FaceDrawable.getFaceDrawable(paramFragmentActivity.app, 1, str, 3, localDrawable, localDrawable, null);
+  }
+  
+  public static String a()
+  {
+    return BaseApplicationImpl.getApplication().getProperty(Constants.PropertiesKey.nickName.toString() + ayqe.a());
   }
 }
 

@@ -27,7 +27,7 @@ class AppBrandLaunchManager$StartMiniAppReceiver$2
         COMM.StCommonExt localStCommonExt = (COMM.StCommonExt)paramJSONObject.extInfo.get();
         paramJSONObject = paramJSONObject.appInfos.get().iterator();
         while (paramJSONObject.hasNext()) {
-          AppBrandLaunchManager.access$800(MiniAppInfo.from((INTERFACE.StApiAppInfo)paramJSONObject.next()), this.val$scene, "");
+          AppBrandLaunchManager.access$500(MiniAppInfo.from((INTERFACE.StApiAppInfo)paramJSONObject.next()), this.val$scene, "");
         }
       }
     }

@@ -1,8 +1,9 @@
 package com.tencent.qqprotect.singleupdate;
 
-import bjki;
+import bkvt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 
@@ -18,7 +19,7 @@ class QPSingleUpdTimerTask$1
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sMobileQQ.waitAppRuntime(null);
       if (localQQAppInterface != null)
       {
-        ((bjki)localQQAppInterface.getManager(194)).a();
+        ((bkvt)localQQAppInterface.getManager(QQManagerFactory.QQPROTECT_UPDATE_MANAGER)).a();
         return;
       }
       QLog.w("QPUpdate", 1, "qqprotect failed to start update because QQAppInterface is null");

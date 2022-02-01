@@ -1,83 +1,113 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.Charsets;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspBody;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspChannelArticle;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspGetFollowTabData;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspTrace;
 
-public class qer
-  extends qfo
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/model/ArticleInfoModuleUtils;", "", "()V", "getDeviceID", "", "getNetType", "", "getSubscriptionArticleIdStr", "", "articleIdList", "", "", "handleRealStyle", "", "serviceKey", "stylePbData", "Lcom/tencent/mobileqq/pb/PBBytesField;", "isChannelDataExcludeFollowChannel", "", "clientSwitch", "resp", "Ltencent/im/oidb/cmd0x68b/oidb_cmd0x68b$RspBody;", "isFollowChannelClientSwitch", "isVideoRealtimeReplaceReq", "report68BTrace", "rspTrace", "Ltencent/im/oidb/cmd0x68b/oidb_cmd0x68b$RspTrace;", "CommonChannelDataHandle", "FollowChannelDataHandler", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qer
 {
-  private VafContext a;
+  public static final qer a = new qer();
   
-  public qer(ArticleInfo paramArticleInfo, VafContext paramVafContext)
+  @JvmStatic
+  public static final int a()
   {
-    super(paramArticleInfo, paramVafContext.getContext());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
+    switch (NetworkUtil.getSystemNetwork((Context)BaseApplication.getContext()))
+    {
+    default: 
+      return 0;
+    case 0: 
+      return 0;
+    case 2: 
+      return 1;
+    case 3: 
+      return 2;
+    case 4: 
+      return 3;
+    }
+    return 4;
   }
   
-  private void b(ArticleInfo paramArticleInfo)
+  @JvmStatic
+  @NotNull
+  public static final String a(@Nullable List<Long> paramList)
   {
-    if ((pgb.a(paramArticleInfo)) || (pgb.b(paramArticleInfo)))
-    {
-      if (!TextUtils.isEmpty(paramArticleInfo.commentJumpUrl)) {
-        pay.d(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo.commentJumpUrl);
-      }
-      while ((paramArticleInfo.isCardJumpUrlAvailable != 1) || (TextUtils.isEmpty(paramArticleInfo.getCardJumpUrl()))) {
-        return;
-      }
-      pay.d(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo.getCardJumpUrl());
-      return;
+    Object localObject = (Collection)paramList;
+    if ((localObject == null) || (((Collection)localObject).isEmpty())) {}
+    for (int i = 1; i != 0; i = 0) {
+      return "";
     }
-    pay.a(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo, true);
+    localObject = new StringBuilder();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      long l = ((Number)paramList.next()).longValue();
+      ((StringBuilder)localObject).append(l + ' ');
+    }
+    paramList = ((StringBuilder)localObject).toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramList, "sb.toString()");
+    return paramList;
   }
   
-  protected int a()
+  @JvmStatic
+  @Nullable
+  public static final byte[] a()
   {
-    return 3;
+    String str = pkh.b();
+    Object localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    localObject = ((String)localObject).getBytes(Charsets.UTF_8);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "(this as java.lang.String).getBytes(charset)");
+    return localObject;
   }
   
-  protected void a(ArticleInfo paramArticleInfo)
+  public final void a(@Nullable Object paramObject, @NotNull PBBytesField paramPBBytesField)
   {
-    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
-    if (uhv.a(paramArticleInfo.mChannelID)) {}
-    String str2;
-    for (String str1 = "0X8009360";; str1 = "0X8007B67")
-    {
-      str2 = pay.a(paramArticleInfo);
-      if ((!pgb.i(paramArticleInfo)) && (!pgb.g(paramArticleInfo)) && (!pgb.j(paramArticleInfo)) && (!pgb.k(paramArticleInfo))) {
-        break;
-      }
-      if (!pgb.o(paramArticleInfo)) {
-        odq.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Rfj.jdField_a_of_type_Long), str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
-      }
-      if ((!pay.l(paramArticleInfo)) && (!pay.m(paramArticleInfo))) {
-        pgw.b(paramArticleInfo, (int)paramArticleInfo.mChannelID);
-      }
-      return;
+    Intrinsics.checkParameterIsNotNull(paramPBBytesField, "stylePbData");
+    paramPBBytesField = qxl.a(paramPBBytesField);
+    if ((paramPBBytesField != null) && ((paramObject instanceof String))) {
+      tmt.a((String)paramObject, paramPBBytesField);
     }
-    odq.a(null, paramArticleInfo.mSubscribeID, str1, str1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
   }
   
-  protected void a(ViewBase paramViewBase)
+  public final void a(@NotNull oidb_cmd0x68b.RspTrace paramRspTrace)
   {
-    QLog.d("OnCommentClickListener", 1, "click comment");
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType == 36)
-    {
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-        pay.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 8);
-      }
-      return;
+    Intrinsics.checkParameterIsNotNull(paramRspTrace, "rspTrace");
+    if (paramRspTrace.has()) {
+      pqe.a(pkh.a(), paramRspTrace.rpt_trace_record_list.get());
     }
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.d > 0) && (!uhs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
-    {
-      QLog.d("OnCommentClickListener", 1, "jumpUrl");
-      b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      return;
-    }
-    QLog.d("OnCommentClickListener", 1, "openCommentComponent");
-    oto.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, null, 9, amtj.a(2131706945), null, false, null, false, null, 1);
+  }
+  
+  public final boolean a(long paramLong)
+  {
+    return (paramLong >> 13 & 1L) == 1L;
+  }
+  
+  public final boolean a(long paramLong, @NotNull oidb_cmd0x68b.RspBody paramRspBody)
+  {
+    Intrinsics.checkParameterIsNotNull(paramRspBody, "resp");
+    return ((paramLong >> 9 & 1L) == 1L) && (paramRspBody.msg_rsp_get_follow_tab_data.has());
+  }
+  
+  public final boolean b(long paramLong, @NotNull oidb_cmd0x68b.RspBody paramRspBody)
+  {
+    Intrinsics.checkParameterIsNotNull(paramRspBody, "resp");
+    return (!a(paramLong, paramRspBody)) && (paramRspBody.rspChannelArticle.has()) && (paramRspBody.rspChannelArticle.get() != null);
   }
 }
 

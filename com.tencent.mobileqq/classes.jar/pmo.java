@@ -1,130 +1,65 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class pmo
-  extends pmb
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "https://pub.idqqimg.com/pc/misc/files/20200416/3c376048a60b488d998e1ef31153db5e.png", "https://pub.idqqimg.com/pc/misc/files/20200416/54aaad879a4042899540fafd969395f6.png", "https://pub.idqqimg.com/pc/misc/files/20200416/8b787675714740eeb21c7fc5b15712c0.png", "https://pub.idqqimg.com/pc/misc/files/20200416/1263e35cec174f0db53e0fc3bb8e7df2.png", "https://pub.idqqimg.com/pc/misc/files/20200430/21b88f2ba3bd43919173a767982d649d.png", "https://pub.idqqimg.com/pc/misc/files/20200430/eb40275894c9455f9ab438dd91081678.png" };
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean;
+  public static String a = "ViolaPicSerPreloadHandler";
+  public static String b = "viola_service_instance";
   
-  public pmo(@NonNull pmc parampmc, Activity paramActivity)
+  public static boolean a()
   {
-    super(parampmc, "RIJUGCAccountPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    j();
+    return ((Boolean)bmhv.a(b, Boolean.valueOf(false))).booleanValue();
   }
   
-  private boolean b()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    boolean bool2 = bcoo.a();
-    boolean bool3 = rha.a();
-    boolean bool4 = qny.a().a();
-    if ((!bool2) && (bool3) && (bool4)) {}
-    for (boolean bool1 = true;; bool1 = false)
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = pku.a(paramString);
+    Object localObject = localMap.keySet();
+    for (;;)
     {
-      QLog.i("RIJUGCAccountPopupStep", 2, "[handleUGCAccountCreate], isStudyMode = " + bool2 + "isPopupEnable = " + bool3 + ", isPtsLiteEnable = " + bool4);
-      if (bool1)
-      {
-        Intent localIntent = new Intent();
-        localIntent.putExtra("public_fragment_window_feature", 1);
-        adxr.a(this.jdField_a_of_type_AndroidAppActivity, localIntent, PublicTransFragmentActivity.class, RIJUGCAddAccountFragment.class, 10000);
-      }
-      return bool1;
-    }
-  }
-  
-  public static void i()
-  {
-    if (!rha.a()) {
-      return;
-    }
-    ReadInJoyUserInfoModule.a(pay.a(), null);
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject1 = arrayOfString[i];
       try
       {
-        localObject1 = new URL((String)localObject1);
-        if (localObject1 != null)
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
         {
-          syo localsyo = new syo();
-          localsyo.a = ((URL)localObject1);
-          localsyo.b = true;
-          syn.a().a(localsyo, null);
-          if ((QLog.isDebugVersion()) || (QLog.isColorLevel())) {
-            QLog.i("RIJUGCAccountPopupStep", 2, "[preload] url = " + localObject1);
+          String str2 = (String)((Iterator)localObject).next();
+          String str1 = (String)localMap.get(str2);
+          if (!TextUtils.equals(str2, "viola_service_instance_open")) {
+            continue;
+          }
+          str2 = b;
+          if (Integer.parseInt(str1) == 1)
+          {
+            bool = true;
+            bmhv.a(str2, Boolean.valueOf(bool));
           }
         }
-        i += 1;
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        for (;;)
+        else
         {
-          QLog.e("RIJUGCAccountPopupStep", 1, "[preload] error, e = " + localMalformedURLException);
-          Object localObject2 = null;
+          return true;
         }
       }
+      catch (Throwable localThrowable)
+      {
+        QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
+      }
+      boolean bool = false;
     }
   }
   
-  private void j()
+  public void onWipeConfig(int paramInt)
   {
-    if (!rha.a()) {
-      return;
-    }
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject1 = arrayOfString[i];
-      try
-      {
-        localObject1 = new URL((String)localObject1);
-        if ((QLog.isDebugVersion()) || (QLog.isColorLevel())) {
-          QLog.i("RIJUGCAccountPopupStep", 2, "[preloadResources] url = " + localObject1);
-        }
-        if (localObject1 != null)
-        {
-          syo localsyo = new syo();
-          localsyo.a = ((URL)localObject1);
-          syn.a().a(localsyo, null);
-        }
-        i += 1;
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        for (;;)
-        {
-          QLog.i("RIJUGCAccountPopupStep", 1, "[preloadResources] error, e = " + localMalformedURLException);
-          Object localObject2 = null;
-        }
-      }
-    }
-  }
-  
-  protected void g()
-  {
-    a(this.jdField_a_of_type_Boolean);
-  }
-  
-  protected void h()
-  {
-    this.jdField_a_of_type_Boolean = b();
-    a(this.jdField_a_of_type_Boolean);
-    QLog.i("RIJUGCAccountPopupStep", 1, "[doStepFromOnShowSelf], needShow = " + this.jdField_a_of_type_Boolean);
+    super.onWipeConfig(paramInt);
+    bmhv.a(b, Boolean.valueOf(false));
   }
 }
 

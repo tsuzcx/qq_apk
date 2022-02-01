@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import android.webkit.URLUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
@@ -59,7 +60,7 @@ public class TroopLinkElement
         localObject = localTroopLinkElement.getQQAppInterface();
         if (localObject != null)
         {
-          localTroopLinkElement.nickname = ((TroopManager)((QQAppInterface)localObject).getManager(52)).c(paramString, localTroopLinkElement.uin);
+          localTroopLinkElement.nickname = ((TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString, localTroopLinkElement.uin);
           localTroopLinkElement.iconUrl = paramJSONObject.optString("thumbnail", "");
           if (TextUtils.isEmpty(localTroopLinkElement.title)) {
             localTroopLinkElement.title = localTroopLinkElement.url;

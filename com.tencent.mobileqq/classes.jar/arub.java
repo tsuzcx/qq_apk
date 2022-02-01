@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
 
-class arub
-  implements DialogInterface.OnClickListener
+public final class arub
+  implements Parcelable.Creator<IntimateInfo.CommonTroopInfo>
 {
-  arub(artz paramartz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public IntimateInfo.CommonTroopInfo a(Parcel paramParcel)
   {
-    aszr.a("0X80052CF");
+    return new IntimateInfo.CommonTroopInfo(paramParcel);
+  }
+  
+  public IntimateInfo.CommonTroopInfo[] a(int paramInt)
+  {
+    return new IntimateInfo.CommonTroopInfo[paramInt];
   }
 }
 

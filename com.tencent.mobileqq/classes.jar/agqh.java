@@ -1,33 +1,65 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.data.MessageForText;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.qphone.base.util.QLog;
 
 class agqh
-  extends ClickableSpan
+  implements axjj
 {
-  agqh(agqd paramagqd, MessageForText paramMessageForText, ETTextView paramETTextView, CharSequence paramCharSequence) {}
+  agqh(agqg paramagqg, agql paramagql, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (agix.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForText))
+    if (this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null)
     {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.cancelLongPress();
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextMsg(this.jdField_a_of_type_JavaLangCharSequence);
-      agix.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForText);
-      agqd.a(this.jdField_a_of_type_Agqd, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop);
+      this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setVisibility(8);
+      this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgressKey(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.b(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProcessor(null);
+      ((RelativeLayout)this.jdField_a_of_type_Agql.jdField_a_of_type_AndroidViewView).removeView(this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
+      this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(axjg paramaxjg)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.jdField_a_of_type_Agqd.a.getResources().getColor(2131165775));
-    paramTextPaint.clearShadowLayer();
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "dealFileSaveUI onSaveComplete");
+    }
+    if (paramaxjg != null)
+    {
+      if (paramaxjg.jdField_a_of_type_Int != 0) {
+        break label133;
+      }
+      axjh.a(this.jdField_a_of_type_Agqg.a);
+    }
+    for (;;)
+    {
+      paramaxjg.jdField_a_of_type_Axjf.b(this);
+      if (this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null)
+      {
+        this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setVisibility(8);
+        this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgressKey(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.b(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProcessor(null);
+        ((RelativeLayout)this.jdField_a_of_type_Agql.jdField_a_of_type_AndroidViewView).removeView(this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
+        this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
+      }
+      return;
+      label133:
+      axjh.b(this.jdField_a_of_type_Agqg.a);
+    }
   }
+  
+  public void a(axjg paramaxjg, int paramInt)
+  {
+    if (this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null)
+    {
+      this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgress(paramInt);
+      this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.invalidate();
+    }
+  }
+  
+  public void b(axjg paramaxjg) {}
 }
 
 

@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import org.json.JSONObject;
 
-public class arwk
-  implements bjqk
+public abstract class arwk
 {
-  public arwk(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public String a;
+  public boolean a = true;
   
-  public void a(int paramInt)
-  {
-    if ((paramInt == this.a.jdField_a_of_type_Arvv.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
-    {
-      if (!this.a.a()) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
-  }
+  public abstract JSONObject a();
+  
+  public abstract boolean a();
 }
 
 

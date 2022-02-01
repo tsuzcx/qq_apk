@@ -1,73 +1,26 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class bgmt
-  extends RemoteCommand
+class bgmt
+  extends RecyclerView.ViewHolder
 {
-  public bgmt()
-  {
-    super("running_plugin_cmd");
-  }
+  protected ImageView a;
+  protected TextView a;
+  protected String a;
+  protected ImageView b;
+  protected TextView b;
+  protected ImageView c;
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public bgmt(bgms parambgms, View paramView)
   {
-    paramOnInvokeFinishLinstener = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramOnInvokeFinishLinstener != null) && ((paramOnInvokeFinishLinstener instanceof QQAppInterface))) {}
-    for (paramOnInvokeFinishLinstener = (QQAppInterface)paramOnInvokeFinishLinstener;; paramOnInvokeFinishLinstener = null)
-    {
-      switch (paramBundle.getInt("CommondType"))
-      {
-      }
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return null;
-              if (paramOnInvokeFinishLinstener == null) {
-                break;
-              }
-              paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
-            } while (paramOnInvokeFinishLinstener == null);
-            try
-            {
-              Message localMessage = paramOnInvokeFinishLinstener.obtainMessage(1134043);
-              long l = paramBundle.getLong("runningState");
-              paramBundle = paramBundle.getString("cookieUrl");
-              JSONObject localJSONObject = new JSONObject();
-              localJSONObject.put("runningState", l);
-              localJSONObject.put("cookieUrl", paramBundle);
-              localMessage.obj = localJSONObject;
-              paramOnInvokeFinishLinstener.sendMessage(localMessage);
-              return null;
-            }
-            catch (JSONException paramBundle)
-            {
-              return null;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.e("SportRemoteCommond", 2, "showRunningBar null");
-          return null;
-        } while (paramOnInvokeFinishLinstener == null);
-        paramBundle = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
-      } while (paramBundle == null);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134044), 1000L);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134040), 1000L);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134050), 1000L);
-      return null;
-    }
+    super(paramView);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365431));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368063));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371803));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368080));
+    this.c = ((ImageView)paramView.findViewById(2131376435));
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo.store;
 
-import amec;
+import anfk;
 
 public class ApolloViewController$2
   implements Runnable
 {
-  public ApolloViewController$2(amec paramamec, int paramInt, boolean paramBoolean, ApolloWebAvatarParam paramApolloWebAvatarParam) {}
+  public ApolloViewController$2(anfk paramanfk, int paramInt, boolean paramBoolean, ApolloWebAvatarParam paramApolloWebAvatarParam) {}
   
   public void run()
   {
-    amec.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloWebAvatarParam);
+    anfk.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloWebAvatarParam);
   }
 }
 

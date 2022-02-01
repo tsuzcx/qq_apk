@@ -1,17 +1,16 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class banb
-  implements View.OnTouchListener
+class banb
+  implements View.OnClickListener
 {
-  public banb(SignTextEditFragment paramSignTextEditFragment) {}
+  banb(bana parambana) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    bjmm.b(paramView);
-    return false;
+    bajl.a().d();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

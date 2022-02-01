@@ -1,29 +1,29 @@
 import android.app.Activity;
-import android.view.View;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.FadeIconImageView;
-import cooperation.qqfav.widget.LocationDetailActivity;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 
-public class bkqr
-  extends bkql
+class bkqr
+  extends aqnu
 {
-  public bkqr(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, bkqn parambkqn, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
+  bkqr(bkqp parambkqp, Activity paramActivity) {}
+  
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    super(paramActivity, parambkqn, paramInt1, paramInt2, paramAppRuntime);
+    super.onAddColorNote(paramBundle, paramBoolean);
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
+    }
   }
   
-  public void onClick(View paramView)
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
   {
-    if (LocationDetailActivity.a(this.a))
+    super.onDeleteColorNote(paramInt, paramString, paramBoolean);
+    if ((0x80000000 & paramInt) != 0)
     {
-      bkpj.a(true);
-      if (LocationDetailActivity.a(this.a) != null) {
-        LocationDetailActivity.a(this.a).setVisibility(8);
-      }
+      MiniProgramLpReportDC04239.reportAsync("addRecentColorSign", "recentColorSign_enter", "remove_ColorSign", null);
+      return;
     }
-    super.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    MiniProgramLpReportDC04239.reportAsync("addColorSign", "colorSign_enter", "remove_ColorSign", null);
   }
 }
 

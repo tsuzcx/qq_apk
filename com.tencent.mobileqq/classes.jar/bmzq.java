@@ -1,8 +1,18 @@
-public class bmzq
+import com.tencent.qphone.base.util.QLog;
+
+class bmzq
+  implements bisc
 {
-  public String a;
-  public boolean a;
-  public String b;
+  bmzq(bmzm parambmzm) {}
+  
+  public void onProgressChanged(bisa parambisa, int paramInt1, int paramInt2) {}
+  
+  public void onProgressCompleted(bisa parambisa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListLogicAECircle", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambisa);
+    }
+  }
 }
 
 

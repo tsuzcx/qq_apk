@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.text;
 
-import bczq;
+import begp;
 import java.io.File;
 
 final class EmotcationConstants$1
@@ -16,7 +16,7 @@ final class EmotcationConstants$1
     if (this.val$emojiFile.exists()) {
       this.val$emojiFile.delete();
     }
-    bczq.a(this.val$zipfile);
+    begp.a(this.val$zipfile);
   }
 }
 

@@ -7,9 +7,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.entry.search.comm.SearchInfo;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
@@ -19,27 +21,39 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class SearchResultAdapter$SearchResultViewHolder$1
   implements View.OnClickListener
 {
-  SearchResultAdapter$SearchResultViewHolder$1(SearchResultAdapter.SearchResultViewHolder paramSearchResultViewHolder, Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString) {}
+  SearchResultAdapter$SearchResultViewHolder$1(SearchResultAdapter.SearchResultViewHolder paramSearchResultViewHolder, Activity paramActivity, MiniAppInfo paramMiniAppInfo, SearchInfo paramSearchInfo, String paramString1, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    try
+    for (;;)
     {
-      ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-      MiniAppController.launchMiniAppByAppInfo(this.val$activity, this.val$miniAppInfo, 3026);
-      ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(360)).updateHistorySearchList(this.val$keyword);
-      MiniAppConfig localMiniAppConfig = new MiniAppConfig(this.val$miniAppInfo);
-      localMiniAppConfig.launchParam.scene = 3026;
-      MiniProgramLpReportDC04239.reportAsync(localMiniAppConfig, "desktop", "search", "result_click", this.val$keyword);
+      try
+      {
+        ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+        Object localObject = this.val$activity;
+        MiniAppInfo localMiniAppInfo = this.val$miniAppInfo;
+        if (this.val$searchInfo.getType() != 5) {
+          continue;
+        }
+        i = 3028;
+        MiniAppController.launchMiniAppByAppInfo((Activity)localObject, localMiniAppInfo, i);
+        ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER)).updateHistorySearchList(this.val$keyword);
+        localObject = new MiniAppConfig(this.val$miniAppInfo);
+        ((MiniAppConfig)localObject).launchParam.scene = 3026;
+        if (this.val$searchInfo.getType() == 5) {
+          ((MiniAppConfig)localObject).launchParam.scene = 3028;
+        }
+        MiniProgramLpReportDC04239.reportAsync((MiniAppConfig)localObject, "desktop", "search", this.val$reserves_click, this.val$keyword);
+      }
+      catch (Exception localException)
+      {
+        int i;
+        QLog.e("SearchResultAdapter", 1, "SearchResultAdapter, start miniApp exception: " + Log.getStackTraceString(localException));
+        continue;
+      }
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("SearchResultAdapter", 1, "SearchResultAdapter, start miniApp exception: " + Log.getStackTraceString(localException));
-      }
+      i = 3026;
     }
   }
 }

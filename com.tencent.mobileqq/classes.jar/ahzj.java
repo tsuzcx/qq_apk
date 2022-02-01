@@ -1,19 +1,15 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahzj
+class ahzj
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public AccountSearchPb.ResultItem a;
-  public AccountSearchPb.hotwordrecord a;
-  public AccountSearchPb.record a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  ahzj(ahzc paramahzc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    mvk.a(this.a.getActivity());
+  }
 }
 
 

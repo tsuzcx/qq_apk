@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedRecord;
+import com.tencent.qqinterface.CommonCallback;
 
-public class avvb
-  implements View.OnClickListener
+class avvb
+  implements CustomizedRecord
 {
-  public avvb(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  avvb(avux paramavux) {}
   
-  public void onClick(View paramView)
+  public void getRecordInfo(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
   {
-    if ((MsgBackupDateFragment.a(this.a) != null) && (MsgBackupDateFragment.a(this.a).isShowing())) {
-      MsgBackupDateFragment.a(this.a).dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    avvz.a().b(paramBundle, paramCommonCallback);
   }
 }
 

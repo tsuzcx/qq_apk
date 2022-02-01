@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class rgf
-  implements Parcelable.Creator<UrlJumpInfo>
+public class rgf
+  implements View.OnClickListener
 {
-  public UrlJumpInfo a(Parcel paramParcel)
-  {
-    return new UrlJumpInfo(paramParcel);
-  }
+  public rgf(ComponentContentGalleryBiu paramComponentContentGalleryBiu, ArticleInfo paramArticleInfo) {}
   
-  public UrlJumpInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new UrlJumpInfo[paramInt];
+    ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

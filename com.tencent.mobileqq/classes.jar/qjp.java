@@ -1,28 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.Nullable;
+import java.util.ArrayList;
 
-public class qjp
-  implements View.OnClickListener
+class qjp
+  implements qjs<BEAN, COOKIE>
 {
-  public qjp(NativeAwesomeCommentView paramNativeAwesomeCommentView, rck paramrck) {}
+  qjp(qjn paramqjn, boolean paramBoolean, qji paramqji) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, ArrayList<BEAN> paramArrayList, @Nullable COOKIE paramCOOKIE, int paramInt2, String paramString)
   {
-    if (NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView)) {
-      NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView, false);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_Rck != null)
-      {
-        pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getContext(), this.jdField_a_of_type_Rck.a, this.jdField_a_of_type_Rck.c);
-        rck.a(NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).a, "0X8009B77");
-      }
-    }
+    qjn.a(this.jdField_a_of_type_Qjn, this.jdField_a_of_type_Boolean, paramBoolean1, paramBoolean2, paramInt1, paramArrayList, paramCOOKIE, paramInt2, paramString, this.jdField_a_of_type_Qji);
   }
 }
 

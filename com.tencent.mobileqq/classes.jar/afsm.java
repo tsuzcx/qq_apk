@@ -1,23 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
 class afsm
-  implements View.OnClickListener
+  extends TransProcessorHandler
 {
-  afsm(afsl paramafsl) {}
-  
-  public void onClick(View paramView)
+  afsm(afsl paramafsl, Looper paramLooper)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      afsl.a(this.a, paramView);
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
   }
 }
 

@@ -1,17 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
 
-class zkb
-  implements View.OnClickListener
+public class zkb
+  implements DialogInterface.OnClickListener
 {
-  zkb(zka paramzka, zkl paramzkl, String paramString, bjnw parambjnw) {}
+  public zkb(QRCardActivity paramQRCardActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Zkl.a(false, this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_Bjnw.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
+    if (paramDialogInterface.startsWith("www.")) {
+      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity, QQBrowserDelegationActivity.class);
+      localIntent.putExtra("url", paramDialogInterface);
+      localIntent.putExtra("key_isReadModeEnabled", true);
+      localIntent.putExtra("injectrecommend", false);
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity(localIntent);
+      return;
+      if (paramDialogInterface.startsWith("https:")) {
+        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
+      } else if (paramDialogInterface.startsWith("http:")) {
+        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
+      } else {
+        paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
+      }
+    }
   }
 }
 

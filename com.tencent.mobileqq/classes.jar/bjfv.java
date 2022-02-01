@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.ShareProxyImpl.5.2;
+import android.text.Editable;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
 
-public class bjfv
-  implements DialogInterface.OnClickListener
+class bjfv
+  implements Comparator<Friend>
 {
-  public bjfv(ShareProxyImpl.5.2 param2) {}
+  bjfv(bjfu parambjfu, Editable paramEditable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    QLog.e("ShareProxyImpl", 1, "dialog click ");
+    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
   }
 }
 

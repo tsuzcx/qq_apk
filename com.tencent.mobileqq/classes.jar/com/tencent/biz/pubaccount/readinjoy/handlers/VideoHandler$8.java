@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
-import blig;
+import bmux;
 import com.tencent.common.app.BaseApplicationImpl;
-import psf;
+import qdc;
 
 public class VideoHandler$8
   implements Runnable
 {
-  public VideoHandler$8(psf parampsf) {}
+  public VideoHandler$8(qdc paramqdc) {}
   
   public void run()
   {
     if (BaseApplicationImpl.sProcessId != 9) {
-      blig.a(BaseApplicationImpl.getContext());
+      bmux.a(BaseApplicationImpl.getContext());
     }
   }
 }

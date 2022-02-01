@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import abrk;
-import abrl;
+import achn;
+import acho;
 import android.content.Context;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
@@ -53,7 +53,7 @@ public final class BridgeModuleHelper$14
           localObject = null;
           break;
         }
-        localObject = abrk.a((PBField)localObject);
+        localObject = achn.a((PBField)localObject);
         if (localObject == null)
         {
           localObject = null;
@@ -68,11 +68,11 @@ public final class BridgeModuleHelper$14
       }
       catch (JSONException localJSONException)
       {
-        abrl.d("BridgeModuleHelper", "handleJsCallRequest", localJSONException);
+        acho.d("BridgeModuleHelper", "handleJsCallRequest", localJSONException);
         continue;
       }
       label164:
-      abrl.d("BridgeModuleHelper", "handleJsCallRequest error");
+      acho.d("BridgeModuleHelper", "handleJsCallRequest error");
     }
     label174:
     ViolaBridgeManager.getInstance().callbackJavascript(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getInstanceId(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getModuleName(), "callback", this.jdField_a_of_type_JavaLangString, localJSONObject, true);
@@ -80,7 +80,7 @@ public final class BridgeModuleHelper$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModuleHelper.14
  * JD-Core Version:    0.7.0.1
  */

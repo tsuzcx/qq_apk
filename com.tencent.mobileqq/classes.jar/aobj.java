@@ -1,23 +1,17 @@
-import java.util.HashMap;
-
-public class aobj
+class aobj
+  implements lxy
 {
-  private HashMap<String, Object> a = new HashMap();
-  public float[] a;
+  aobj(aobh paramaobh) {}
   
-  public Object a(String paramString)
+  public void a(lxx paramlxx)
   {
-    return this.a.get(paramString);
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    this.a.put(paramString, paramObject);
+    paramlxx.a(this.a.a.a);
+    paramlxx.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aobj
  * JD-Core Version:    0.7.0.1
  */

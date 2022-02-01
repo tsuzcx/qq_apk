@@ -1,23 +1,8 @@
-public class bltn
+public abstract class bltn
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  public abstract void a(int paramInt);
   
-  public bltn(boolean paramBoolean, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

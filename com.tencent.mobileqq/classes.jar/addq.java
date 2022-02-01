@@ -1,43 +1,55 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class addq
-  extends amsu
+  implements View.OnClickListener
 {
-  public addq(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public addq(AccountManageActivity paramAccountManageActivity) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    switch (paramView.getId())
     {
-      this.a.a();
-      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
-      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
     }
-    while ((this.a.jdField_a_of_type_Bhht == null) || (!this.a.jdField_a_of_type_Bhht.isShowing()) || (this.a.isFinishing())) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    this.a.jdField_a_of_type_Bhht.dismiss();
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin != null))
+      Object localObject = null;
+      if ((paramView.getTag() instanceof String)) {
+        localObject = String.valueOf(paramView.getTag());
+      }
+      if ("0X8004001".equals(localObject))
       {
-        paramString = ((amsw)this.a.app.getManager(51)).e(this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin + "");
-        if (paramString != null) {
-          this.a.d = paramString.name;
-        }
+        bdla.b(this.a.app, "CliOper", "", "", "0X8004002", "0X8004002", 0, 0, "", "", "", "");
+        localObject = new Intent(this.a, SubAccountUgActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+        this.a.startActivity((Intent)localObject);
+      }
+      else if ("0X8004456".equals(localObject))
+      {
+        bdla.b(this.a.app, "CliOper", "", "", "0X8004457", "0X8004457", 0, 0, "", "", "", "");
+        localObject = new Intent(this.a, SubAccountBindActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+        this.a.startActivity((Intent)localObject);
+        bhdf.a().a(this.a.app.getCurrentAccountUin(), true);
+        continue;
+        localObject = new Intent();
+        ((Intent)localObject).setClass(paramView.getContext(), AssociatedAccountActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+        paramView.getContext().startActivity((Intent)localObject);
+        bdla.b(this.a.app, "CliOper", "", "", "0X8004039", "0X8004039", 0, 0, "", "", "", "");
+        bdla.b(this.a.app, "dc00898", "", "", "0X800AC39", "0X800AC39", 0, 0, "", "", "", "");
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("DiscussionInfoCardActivity", 2, "onUpdateFriendInfo get owner name failed");
   }
 }
 

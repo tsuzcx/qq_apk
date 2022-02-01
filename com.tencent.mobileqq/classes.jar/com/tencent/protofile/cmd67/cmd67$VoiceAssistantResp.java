@@ -9,7 +9,8 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 public final class cmd67$VoiceAssistantResp
   extends MessageMicro<VoiceAssistantResp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "int32_ret_code", "msg_asr_resp", "msg_nlp_resp", "msg_user_info" }, new Object[] { Integer.valueOf(0), null, null, null }, VoiceAssistantResp.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40 }, new String[] { "int32_ret_code", "msg_asr_resp", "msg_nlp_resp", "msg_user_info", "int32_contact_count" }, new Object[] { Integer.valueOf(0), null, null, null, Integer.valueOf(0) }, VoiceAssistantResp.class);
+  public final PBInt32Field int32_contact_count = PBField.initInt32(0);
   public final PBInt32Field int32_ret_code = PBField.initInt32(0);
   public cmd67.VoiceAssistantASRResp msg_asr_resp = new cmd67.VoiceAssistantASRResp();
   public cmd67.VoiceAssistantNLPResp msg_nlp_resp = new cmd67.VoiceAssistantNLPResp();

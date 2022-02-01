@@ -1,52 +1,74 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.wadl.WadlJsBridgeDownloadInfo;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import java.lang.ref.WeakReference;
 
-public final class bifw
-  implements Parcelable.Creator<WadlJsBridgeDownloadInfo>
+public class bifw
 {
-  public WadlJsBridgeDownloadInfo a(Parcel paramParcel)
+  public WeakReference<CustomWebView> a;
+  WeakReference<AppInterface> b;
+  WeakReference<Activity> c;
+  WeakReference<bifb> d = null;
+  WeakReference<WebViewFragment> e = null;
+  
+  public bifw(Activity paramActivity, AppInterface paramAppInterface)
   {
-    boolean bool2 = true;
-    WadlJsBridgeDownloadInfo localWadlJsBridgeDownloadInfo = new WadlJsBridgeDownloadInfo();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.d = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Long = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.f = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.j = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.i = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localWadlJsBridgeDownloadInfo.jdField_b_of_type_Boolean = bool1;
-      localWadlJsBridgeDownloadInfo.l = paramParcel.readString();
-      localWadlJsBridgeDownloadInfo.jdField_g_of_type_Int = paramParcel.readInt();
-      localWadlJsBridgeDownloadInfo.h = paramParcel.readInt();
-      localWadlJsBridgeDownloadInfo.m = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label203;
-      }
-    }
-    label203:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localWadlJsBridgeDownloadInfo.jdField_c_of_type_Boolean = bool1;
-      return localWadlJsBridgeDownloadInfo;
-      bool1 = false;
-      break;
+    this.c = new WeakReference(paramActivity);
+    this.b = new WeakReference(paramAppInterface);
+    if ((paramActivity instanceof bifb)) {
+      this.d = new WeakReference((bifb)paramActivity);
     }
   }
   
-  public WadlJsBridgeDownloadInfo[] a(int paramInt)
+  public Activity a()
   {
-    return new WadlJsBridgeDownloadInfo[paramInt];
+    return (Activity)this.c.get();
+  }
+  
+  public bifb a(Activity paramActivity)
+  {
+    if (this.d != null) {
+      return (bifb)this.d.get();
+    }
+    return null;
+  }
+  
+  public CustomWebView a()
+  {
+    if (this.a != null) {
+      return (CustomWebView)this.a.get();
+    }
+    return null;
+  }
+  
+  public AppInterface a()
+  {
+    return (AppInterface)this.b.get();
+  }
+  
+  public WebViewFragment a()
+  {
+    if (this.e != null) {
+      return (WebViewFragment)this.e.get();
+    }
+    return null;
+  }
+  
+  public void a(bifb parambifb)
+  {
+    if (parambifb != null) {
+      this.d = new WeakReference(parambifb);
+    }
+  }
+  
+  public void a(WebViewFragment paramWebViewFragment)
+  {
+    if (paramWebViewFragment != null)
+    {
+      this.e = new WeakReference(paramWebViewFragment);
+      this.d = new WeakReference(paramWebViewFragment);
+    }
   }
 }
 

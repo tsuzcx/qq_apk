@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
 import MQQ.LhLogoResources;
-import aeau;
+import aerz;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import bgff;
+import bhnz;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.vas.VasApngUtil;
@@ -17,14 +17,14 @@ public class QQSettingMe$32
   public void run()
   {
     this.this$0.a.setVisibility(8);
-    if ((bgff.a() != 1) || (!bgff.a())) {}
+    if ((bhnz.a() != 1) || (!bhnz.a())) {}
     do
     {
       return;
-      localObject = bgff.a(bgff.b());
+      localObject = bhnz.a(bhnz.b());
     } while (localObject == null);
     this.this$0.a.setVisibility(0);
-    bgff.a("0X800B231", bgff.a(), bgff.b());
+    bhnz.a("0X800B231", bhnz.a(), bhnz.b());
     Object localObject = ((LhLogoResources)localObject).logoUrl;
     Drawable localDrawable = URLDrawableHelper.TRANSPARENT;
     localObject = VasApngUtil.getApngURLDrawable((String)localObject, new int[] { 1 }, localDrawable, null, null);
@@ -34,7 +34,8 @@ public class QQSettingMe$32
     }
     for (;;)
     {
-      this.this$0.a.setOnClickListener(new aeau(this));
+      this.this$0.a.setOnClickListener(new aerz(this));
+      QQSettingMe.g(this.this$0);
       return;
       this.this$0.a.setColorFilter(0);
     }
@@ -42,7 +43,7 @@ public class QQSettingMe$32
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.32
  * JD-Core Version:    0.7.0.1
  */

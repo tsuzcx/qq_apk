@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.widget.FixSizeImageView;
 
-public class ajlu
-  implements DialogInterface.OnClickListener
+class ajlu
+  extends RecyclerView.ViewHolder
 {
-  public ajlu(BindNumberActivity paramBindNumberActivity) {}
+  public FixSizeImageView a;
+  public FixSizeImageView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajlu(ajls paramajls, View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.setText("");
-    }
+    super(paramView);
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131368063));
+    this.b = ((FixSizeImageView)paramView.findViewById(2131370784));
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import avau;
+import awgx;
 
 public class LyricsController$1
   implements Runnable
 {
-  public LyricsController$1(avau paramavau) {}
+  public LyricsController$1(awgx paramawgx) {}
   
   public void run()
   {
-    this.this$0.i();
+    this.this$0.j();
   }
 }
 

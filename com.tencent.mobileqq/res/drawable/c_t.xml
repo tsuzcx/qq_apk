@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true" android:state_checked="false" android:state_pressed="true" android:drawable="@drawable/fry" />
-    <item android:state_enabled="false" android:drawable="@drawable/frp" />
-    <item android:state_enabled="true" android:state_checked="true" android:state_pressed="true" android:drawable="@drawable/fr0" />
-    <item android:state_checked="true" android:drawable="@drawable/fqj" />
-    <item android:drawable="@drawable/frp" />
-</selector>
+    <solid android:color="#fffe9a33" />
+    <padding android:left="5.0dip" android:top="1.0dip" android:right="5.0dip" android:bottom="1.0dip" />
+    <corners android:radius="3.0dip" />
+</shape>

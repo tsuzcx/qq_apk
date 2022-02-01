@@ -1,11 +1,58 @@
-public abstract interface aojv
-  extends aoka
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
+class aojv
+  extends ndm
 {
-  public abstract void a(int paramInt);
+  aojv(aojq paramaojq, long paramLong1, Map paramMap, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
   
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean);
+  private void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      SessionInfo localSessionInfo = new SessionInfo();
+      localSessionInfo.curType = this.jdField_a_of_type_Int;
+      localSessionInfo.curFriendUin = this.jdField_b_of_type_JavaLangString;
+      if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {}
+      for (String str = "邀请你加入派对";; str = this.jdField_c_of_type_JavaLangString + "邀请你加入派对")
+      {
+        paramString = new ArkAppMessage(str, "com.tencent.avgame", null, "invite", "1.0.0.1", aojk.a(String.valueOf(this.jdField_b_of_type_Long), Long.valueOf(this.jdField_c_of_type_Long).longValue(), paramString), null, null);
+        admh.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString);
+        return;
+      }
+    }
+    QLog.e("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg error");
+  }
   
-  public abstract void a(boolean paramBoolean, float paramFloat);
+  public void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if (paramLong != this.jdField_a_of_type_Long)
+    {
+      QLog.e("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg fail: observer not match");
+      return;
+    }
+    QLog.d("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg isSuccess: " + paramBoolean + " shareUrl: " + paramString + " mark: " + paramLong);
+    ndm localndm = (ndm)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(this.jdField_a_of_type_Long));
+    if (localndm == null)
+    {
+      QLog.e("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg fail: observer not exist");
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localndm);
+    try
+    {
+      a(paramBoolean, paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("AvGameRoomListObserver", 1, "handleSendMsg exception: " + paramString.getMessage());
+    }
+  }
 }
 
 

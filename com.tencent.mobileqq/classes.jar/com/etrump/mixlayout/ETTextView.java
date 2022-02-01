@@ -1,7 +1,7 @@
 package com.etrump.mixlayout;
 
-import agmy;
-import agql;
+import ahfo;
+import ahjb;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -27,11 +27,11 @@ import android.view.View.MeasureSpec;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import apee;
-import apfx;
-import bggj;
-import bggk;
-import bhba;
+import aqhi;
+import aqjb;
+import bhpd;
+import bhpe;
+import bils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -43,6 +43,7 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.widget.AnimationTextView;
@@ -190,33 +191,33 @@ public class ETTextView
   
   private void dealSmallEmojiClick(int paramInt1, int paramInt2)
   {
-    apee localapee;
+    aqhi localaqhi;
     Object localObject;
     Resources localResources;
     boolean bool;
     if (this.mLayout.a(paramInt1, paramInt2) != null)
     {
-      localapee = (apee)getTag(2131364021);
-      localObject = (ChatMessage)getTag(2131364486);
+      localaqhi = (aqhi)getTag(2131364096);
+      localObject = (ChatMessage)getTag(2131364568);
       localResources = getResources();
       bool = false;
       if (localObject != null) {
         bool = ((ChatMessage)localObject).isSend();
       }
       localObject = getBackground();
-      if ((localObject == null) || (!(localObject instanceof apfx))) {
+      if ((localObject == null) || (!(localObject instanceof aqjb))) {
         break label82;
       }
-      ((apfx)localObject).jdField_a_of_type_Boolean = true;
+      ((aqjb)localObject).jdField_a_of_type_Boolean = true;
     }
     label82:
-    while ((localObject == null) || (localapee == null)) {
+    while ((localObject == null) || (localaqhi == null)) {
       return;
     }
     if (bool) {}
-    for (paramInt1 = 2130849917;; paramInt1 = 2130849741)
+    for (paramInt1 = 2130850010;; paramInt1 = 2130849834)
     {
-      localapee.a(this, localResources.getDrawable(paramInt1));
+      localaqhi.a(this, localResources.getDrawable(paramInt1));
       return;
     }
   }
@@ -237,14 +238,14 @@ public class ETTextView
     {
       mUIHandler = new fz(null);
       if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-        break label86;
+        break label87;
       }
-      localObject = (gb)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(42);
+      localObject = (gb)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.CHAT_FONT_MANAGER);
       if ((localObject != null) && (((gb)localObject).a != null) && (((gb)localObject).a.getLooper() != null)) {
         mCreateDecorationHandler = new fv(((gb)localObject).a.getLooper());
       }
     }
-    label86:
+    label87:
     do
     {
       do
@@ -473,21 +474,21 @@ public class ETTextView
         localObject1 = ((ChatFragment)localObject1).a().listView;
         localObject1 = AIOUtils.getViewByPostion((ListView)localObject1, AIOUtils.findMessagePosition(this.mMsgId, ((XListView)localObject1).getAdapter()));
         Object localObject2;
-        if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof agql)))
+        if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof ahjb)))
         {
-          localObject2 = (agql)((View)localObject1).getTag();
-          if ((((agql)localObject2).d == null) || (((agql)localObject2).d.getTop() + ((View)localObject1).getBottom() < getContext().getResources().getDimensionPixelSize(2131299076))) {}
+          localObject2 = (ahjb)((View)localObject1).getTag();
+          if ((((ahjb)localObject2).d == null) || (((ahjb)localObject2).d.getTop() + ((View)localObject1).getBottom() < getContext().getResources().getDimensionPixelSize(2131299080))) {}
         }
         else
         {
           do
           {
             return true;
-            if ((localObject1 == null) || (!(AIOUtils.getHolder((View)localObject1) instanceof agmy))) {
+            if ((localObject1 == null) || (!(AIOUtils.getHolder((View)localObject1) instanceof ahfo))) {
               break;
             }
-            localObject2 = (agmy)AIOUtils.getHolder((View)localObject1);
-          } while (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131299076));
+            localObject2 = (ahfo)AIOUtils.getHolder((View)localObject1);
+          } while (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131299080));
         }
       }
     }
@@ -709,8 +710,8 @@ public class ETTextView
         this.mLayout.jdField_a_of_type_Long = -1L;
         if ((!mReportError) && (localThrowable.getMessage().contains("textlayout")))
         {
-          bggk.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
-          bggj.a("individual_v2_font_measure_error", "font_measure_error");
+          bhpe.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
+          bhpd.a("individual_v2_font_measure_error", "font_measure_error");
           mReportError = true;
         }
         super.onMeasure(paramInt1, paramInt2);
@@ -1288,7 +1289,7 @@ public class ETTextView
                   if (localObject == null) {
                     break;
                   }
-                  localObject = (gb)((QQAppInterface)localObject).getManager(42);
+                  localObject = (gb)((QQAppInterface)localObject).getManager(QQManagerFactory.CHAT_FONT_MANAGER);
                 } while ((localObject != null) && (!((gb)localObject).b()));
                 if ((!enableAnimation) || (this.mPauseAnimation)) {
                   break;

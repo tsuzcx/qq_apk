@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import pvc;
-import qxf;
+import qfw;
+import rjl;
 
 public class ComponentContentSmallVideo
   extends ComponentContentSmall
@@ -31,28 +31,28 @@ public class ComponentContentSmallVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560122, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560169, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.a = ((TextView)paramView.findViewById(2131365817));
+    this.a = ((TextView)paramView.findViewById(2131365915));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof pvc))
+    if ((paramObject instanceof qfw))
     {
-      paramObject = ((pvc)paramObject).a();
+      paramObject = ((qfw)paramObject).a();
       if (paramObject != null) {}
     }
     else
     {
       return;
     }
-    this.a.setText(qxf.a(paramObject.mVideoDuration));
+    this.a.setText(rjl.a(paramObject.mVideoDuration));
   }
   
   public void b()

@@ -1,65 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.util.Log;
 
-public class lgm<T extends lgl>
-  extends Handler
+class lgm
 {
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<EffectConfigBase<T>> jdField_a_of_type_JavaLangRefWeakReference;
+  Class<?> jdField_a_of_type_JavaLangClass;
+  String jdField_a_of_type_JavaLangString;
+  Class<?> b;
   
-  public lgm(String paramString, EffectConfigBase<T> paramEffectConfigBase)
+  void a(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramEffectConfigBase);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-    {
-      EffectConfigBase localEffectConfigBase = (EffectConfigBase)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      lgl locallgl;
-      switch (paramMessage.what)
-      {
-      default: 
-        localEffectConfigBase.a(paramMessage);
-      case 0: 
-        do
-        {
-          return;
-          locallgl = (lgl)paramMessage.obj;
-          l = paramMessage.arg1;
-          bool = EffectConfigBase.a(localEffectConfigBase, locallgl, localEffectConfigBase.jdField_a_of_type_Lgl);
-          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "MSG_ON_ITEM_SELECT_CHANGED, seq[" + l + "], isEqual[" + bool + "], count_MSG[" + localEffectConfigBase.jdField_a_of_type_Int + "], \nitem[" + locallgl + "], \ncur[" + localEffectConfigBase.jdField_a_of_type_Lgl + "]");
-          if (localEffectConfigBase.jdField_a_of_type_Int >= 0) {
-            localEffectConfigBase.jdField_a_of_type_Int -= 1;
-          }
-        } while (!bool);
-        EffectConfigBase.a(localEffectConfigBase, l, locallgl);
-        return;
-      case 1: 
-        locallgl = (lgl)paramMessage.obj;
-        l = paramMessage.arg2;
-        if (paramMessage.arg1 == 1) {}
-        for (;;)
-        {
-          EffectConfigBase.a(localEffectConfigBase, l, locallgl, bool);
-          return;
-          bool = false;
-        }
-      }
-      EffectConfigBase.a(localEffectConfigBase, (lgl)paramMessage.obj, paramMessage.arg1);
-      return;
+    if ((this.b == null) || (this.jdField_a_of_type_JavaLangClass == null)) {
+      Log.d(paramString, "check ClassInfo, seq[" + paramLong + "], " + this.jdField_a_of_type_JavaLangString);
     }
-    long l = 0L;
-    if (paramMessage.what == 0) {
-      l = paramMessage.arg1;
-    }
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "handleMessage, had destroy, msg[" + paramMessage.what + "], seq[" + l + "]");
   }
 }
 

@@ -1,12 +1,23 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-final class bnhn
-  implements FilenameFilter
+class bnhn
+  implements Observer<Boolean>
 {
-  public boolean accept(File paramFile, String paramString)
+  bnhn(bnhf parambnhf) {}
+  
+  public void a(@Nullable Boolean paramBoolean)
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
+    if (paramBoolean == null) {
+      return;
+    }
+    bnhf localbnhf = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bnhf.a(localbnhf, bool);
+      return;
+    }
   }
 }
 

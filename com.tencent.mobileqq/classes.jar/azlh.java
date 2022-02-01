@@ -1,0 +1,13 @@
+public abstract class azlh
+{
+  public static boolean a(int paramInt)
+  {
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     azlh
+ * JD-Core Version:    0.7.0.1
+ */

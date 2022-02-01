@@ -4,14 +4,14 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
-import auas;
+import avgm;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import cooperation.qwallet.plugin.QWalletPicHelper;
 
 public class QQGameFeedWebFragment$6$1
   implements Runnable
 {
-  public QQGameFeedWebFragment$6$1(auas paramauas, int paramInt, PreloadManager.PathResult paramPathResult) {}
+  public QQGameFeedWebFragment$6$1(avgm paramavgm, int paramInt, PreloadManager.PathResult paramPathResult) {}
   
   public void run()
   {
@@ -22,10 +22,10 @@ public class QQGameFeedWebFragment$6$1
         Drawable localDrawable = QWalletPicHelper.getDrawableForWallet(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$PathResult.filePath, null);
         if (localDrawable != null)
         {
-          ((ImageView)this.jdField_a_of_type_Auas.jdField_a_of_type_AndroidViewView.findViewById(2131368534)).setImageDrawable(localDrawable);
+          ((ImageView)this.jdField_a_of_type_Avgm.jdField_a_of_type_AndroidViewView.findViewById(2131368692)).setImageDrawable(localDrawable);
           return;
         }
-        QQGameFeedWebFragment.a(this.jdField_a_of_type_Auas.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameFeedWebFragment);
+        QQGameFeedWebFragment.a(this.jdField_a_of_type_Avgm.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameFeedWebFragment);
         return;
       }
     }
@@ -34,7 +34,7 @@ public class QQGameFeedWebFragment$6$1
       localThrowable.printStackTrace();
       return;
     }
-    QQGameFeedWebFragment.a(this.jdField_a_of_type_Auas.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameFeedWebFragment);
+    QQGameFeedWebFragment.a(this.jdField_a_of_type_Avgm.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameFeedWebFragment);
   }
 }
 

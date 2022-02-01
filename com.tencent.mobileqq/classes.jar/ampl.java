@@ -1,122 +1,38 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.transfile.TransFileController.AvatarUploadResult;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
+import android.util.Log;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
 public class ampl
-  extends QIPCModule
+  implements ampp
 {
-  public static ampl a;
+  private int a;
+  private int b;
   
-  private ampl()
+  public ampl(int paramInt1, int paramInt2)
   {
-    super("CommonModule");
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public static ampl a()
+  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
   {
-    if (a == null) {}
     try
     {
-      if (a == null) {
-        a = new ampl();
-      }
-      return a;
+      paramEGL10 = paramEGL10.eglCreatePbufferSurface(paramEGLDisplay, paramEGLConfig, new int[] { 12375, this.a, 12374, this.b, 12344 });
+      return paramEGL10;
     }
-    finally {}
+    catch (Throwable paramEGL10)
+    {
+      Log.e("GLTextureView", "eglCreatePbufferSurface", paramEGL10);
+    }
+    return null;
   }
   
-  public void a(Intent paramIntent)
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonModule", 2, "onSetAvatarBackResult， intent=" + paramIntent);
-    }
-    if (paramIntent != null)
-    {
-      int i = paramIntent.getIntExtra("param_callback_id", -1);
-      int j = paramIntent.getIntExtra("param_result_code", -99999);
-      paramIntent = paramIntent.getStringExtra("param_result_desc");
-      if (i > 0)
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("param_result_code", j);
-        localBundle.putString("param_result_desc", paramIntent);
-        localBundle.putString("param_action", "set_avatar");
-        callbackResult(i, EIPCResult.createSuccessResult(localBundle));
-      }
-    }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonModule", 2, "action = " + paramString + ", params = " + paramBundle);
-    }
-    Bundle localBundle = new Bundle();
-    if ("getPhoneBindState".equals(paramString))
-    {
-      paramString = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramString instanceof QQAppInterface))
-      {
-        localBundle.putInt("selfBindState", ((avsy)((QQAppInterface)paramString).getManager(11)).d());
-        return EIPCResult.createSuccessResult(localBundle);
-      }
-    }
-    else
-    {
-      if (!"set_avatar".equals(paramString)) {
-        break label233;
-      }
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface))
-      {
-        paramString = "";
-        if (paramBundle != null) {
-          paramString = paramBundle.getString("param_avatar_path");
-        }
-        paramBundle = new Intent();
-        paramBundle.putExtra("PhotoConst.SOURCE_FROM", "FROM_MINI_APP");
-        paramBundle.putExtra("param_callback_id", paramInt);
-        paramString = bfrj.a((QQAppInterface)localAppRuntime, paramString, paramBundle);
-        if (paramString.errCode == 0) {
-          break label231;
-        }
-        localBundle.putInt("param_result_code", paramString.errCode);
-        localBundle.putString("param_result_desc", paramString.errDesc);
-        localBundle.putString("param_action", "set_avatar");
-        callbackResult(paramInt, EIPCResult.createSuccessResult(localBundle));
-      }
-    }
-    for (;;)
-    {
-      return EIPCResult.createSuccessResult(localBundle);
-      label231:
-      return null;
-      label233:
-      if ("jumpToCommonGroup".equals(paramString))
-      {
-        paramString = BaseApplicationImpl.getApplication().getRuntime();
-        if (((paramString instanceof QQAppInterface)) && (paramBundle != null))
-        {
-          paramBundle = paramBundle.getString("cur_friend_uin");
-          ((azwp)paramString.getManager(382)).b(paramBundle);
-        }
-      }
-      else if ("jumpToRemarkEdit".equals(paramString))
-      {
-        paramString = BaseApplicationImpl.getApplication().getRuntime();
-        if (((paramString instanceof QQAppInterface)) && (paramBundle != null))
-        {
-          paramBundle = paramBundle.getString("cur_friend_uin");
-          ((azwp)paramString.getManager(382)).a(paramBundle);
-        }
-      }
-    }
+    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
   }
 }
 

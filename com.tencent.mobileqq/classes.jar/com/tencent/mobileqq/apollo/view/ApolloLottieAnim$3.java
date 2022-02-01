@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.view;
 
-import bgoe;
-import bgog;
+import bhyo;
+import bhyq;
 
 class ApolloLottieAnim$3
   implements Runnable
 {
-  ApolloLottieAnim$3(ApolloLottieAnim paramApolloLottieAnim, bgoe parambgoe) {}
+  ApolloLottieAnim$3(ApolloLottieAnim paramApolloLottieAnim, bhyo parambhyo) {}
   
   public void run()
   {
-    bgog.a(this.val$task, null);
+    bhyq.a(this.val$task, null);
   }
 }
 

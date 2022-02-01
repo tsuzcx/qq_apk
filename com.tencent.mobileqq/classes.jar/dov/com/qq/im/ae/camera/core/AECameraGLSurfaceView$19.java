@@ -1,16 +1,18 @@
 package dov.com.qq.im.ae.camera.core;
 
-import android.graphics.PointF;
-import blnq;
+import bnbe;
 
 class AECameraGLSurfaceView$19
   implements Runnable
 {
-  AECameraGLSurfaceView$19(AECameraGLSurfaceView paramAECameraGLSurfaceView, blnq paramblnq, float paramFloat1, float paramFloat2, int paramInt) {}
+  AECameraGLSurfaceView$19(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
   public void run()
   {
-    this.val$aeFilterProcessTex.a(new PointF(this.val$x, this.val$y), this.val$screenWidth);
+    if (AECameraGLSurfaceView.access$000(this.this$0) != null) {
+      AECameraGLSurfaceView.access$000(this.this$0).a(true, AECameraGLSurfaceView.access$800(this.this$0), this.this$0);
+    }
+    this.this$0.requestRender();
   }
 }
 

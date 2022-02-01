@@ -1,25 +1,18 @@
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import java.net.URL;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class oaf
-  implements vgd
+class oaf
 {
-  public oaf(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  boolean jdField_a_of_type_Boolean;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable)
-  {
-    ReadInJoyNativeAdFragment.b(this.a, 3);
-  }
-  
-  public void a(URL paramURL, syk paramsyk)
-  {
-    ReadInJoyNativeAdFragment.b(this.a, 2);
-    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
-    ReadInJoyNativeAdFragment.a(this.a, null);
-  }
+  oaf(nzu paramnzu) {}
 }
 
 

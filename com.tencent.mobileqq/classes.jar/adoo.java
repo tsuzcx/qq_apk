@@ -1,21 +1,33 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import android.view.animation.TranslateAnimation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class adoo
-  implements ViewSwitcher.ViewFactory
+  implements DialogInterface.OnDismissListener
 {
-  public adoo(Leba paramLeba) {}
+  public adoo(ChatHistory paramChatHistory, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
   
-  public View makeView()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    paramDialogInterface = (akda)paramDialogInterface;
+    int i = paramDialogInterface.a();
+    boolean bool = paramDialogInterface.a();
+    ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory, i);
+    if (bool)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690676));
+      return;
+    }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getIntent().getExtras().getString("leftViewText");
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(paramDialogInterface);
   }
 }
 

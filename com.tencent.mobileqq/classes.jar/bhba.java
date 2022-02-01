@@ -1,8 +1,12 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface bhba
+class bhba
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView);
+  bhba(bhav parambhav) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

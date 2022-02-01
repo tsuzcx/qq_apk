@@ -1,15 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
-class suj
-  implements ViewFactory.FoundClickableViewListener
+public abstract class suj
 {
-  suj(sui paramsui) {}
+  public int a;
+  public BaseArticleInfo a;
+  public HashMap<String, String> a;
+  public int b;
   
-  public void onFound(ViewBase paramViewBase)
+  public suj(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map<String, String> paramMap)
   {
-    paramViewBase.setOnClickListener(new suk(this));
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaUtilHashMap.putAll(paramMap);
   }
+  
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

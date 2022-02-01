@@ -1,88 +1,15 @@
-import android.content.Intent;
-import android.os.Bundle;
-import java.util.Iterator;
-import java.util.Set;
-
-public class wxw
-  extends wrx
+class wxw
+  extends wwi
 {
-  public wxw(wxu paramwxu) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  wxw(wxa paramwxa, String paramString1, String paramString2, boolean paramBoolean, wyh paramwyh)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((wqo)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
-      }
-    }
+    super(paramString1, paramString2, paramBoolean);
   }
   
-  public void a(Bundle paramBundle1, Bundle paramBundle2)
+  public boolean b()
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((wqo)localIterator.next()).a(paramBundle1, paramBundle2);
-      }
-    }
-  }
-  
-  public void c()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((wqo)localIterator.next()).c();
-      }
-    }
-  }
-  
-  public void d()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((wqo)localIterator.next()).d();
-      }
-    }
-  }
-  
-  public void e()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((wqo)localIterator.next()).e();
-      }
-    }
-  }
-  
-  public void f()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((wqo)localIterator.next()).f();
-      }
-    }
-  }
-  
-  public void g()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((wqo)localIterator.next()).g();
-      }
-    }
+    this.jdField_a_of_type_Wyh.e = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 

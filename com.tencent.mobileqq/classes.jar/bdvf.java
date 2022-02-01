@@ -1,25 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.associations.AssociatedTroopItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class bdvf
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeSwitchManager$OnModeChangeResultCallback;", "", "onIReqGetSimpleUISwitch", "", "isSuccess", "", "bSwitch", "sStudySwitch", "bPref", "", "uin", "", "onISwitchSimpleUICallback", "isSuc", "bChangeTheme", "bSwitchElsePref", "statusCode", "onModeChangeComplete", "targetType", "oldType", "message", "onModeChangeStart", "onModeSwitching", "onSelectModeRecover", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface bdvf
 {
-  bdvf(bdvd parambdvd) {}
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, @NotNull String paramString);
   
-  public void onClick(View paramView)
-  {
-    Object localObject = (AssociatedTroopItem)paramView.getTag();
-    bdvm.b(bdvd.a(this.a), (AssociatedTroopItem)localObject);
-    if (localObject == null) {}
-    for (localObject = "";; localObject = ((AssociatedTroopItem)localObject).uin)
-    {
-      bcef.b(null, "dc00898", "", (String)localObject, "0X800B4B1", "0X800B4B1", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void c(int paramInt1, int paramInt2);
+  
+  public abstract void d(int paramInt1, int paramInt2);
 }
 
 

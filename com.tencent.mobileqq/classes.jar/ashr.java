@@ -1,38 +1,32 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
 
 class ashr
-  implements asht
+  extends BroadcastReceiver
 {
-  private bjyw jdField_a_of_type_Bjyw = new bjyw();
+  ashr(ashe paramashe, MessengerService paramMessengerService, Bundle paramBundle) {}
   
-  public ashr(ashq paramashq)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Bjyw.a();
-  }
-  
-  public int a(long paramLong1, long paramLong2)
-  {
-    int j = this.jdField_a_of_type_Bjyw.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
-    int k = bjyz.a(BaseApplication.getContext());
-    int i;
-    if (k != 1)
-    {
-      i = j;
-      if (k != 2) {}
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {
+      return;
     }
-    else
-    {
-      i = j;
-      if (j > 16384) {
-        i = 16384;
-      }
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext();
+    if (paramContext != null) {
+      paramContext.unregisterReceiver(this);
     }
-    return i;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bjyw.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.emoji.web.MessengerService", 2, "openDevLock unregisterReceiver context: " + paramContext);
+    }
+    paramContext = new Bundle(paramIntent.getExtras());
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

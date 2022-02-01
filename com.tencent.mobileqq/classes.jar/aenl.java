@@ -1,29 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
 public class aenl
-  implements View.OnClickListener
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public aenl(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.a.c = false;
-    this.a.t = "";
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.d != 22) {
-      this.a.b.setVisibility(0);
-    }
-    if (this.a.jdField_a_of_type_Aeoz != null) {
-      this.a.jdField_a_of_type_Aeoz.a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
   }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return true;
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

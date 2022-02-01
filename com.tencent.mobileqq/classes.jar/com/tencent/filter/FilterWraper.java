@@ -28,16 +28,6 @@ public class FilterWraper
   
   private static native void nativeRenderContext(long paramLong, int paramInt1, int paramInt2, int paramInt3);
   
-  public void ClearGLSL()
-  {
-    if (this.available)
-    {
-      nativeDispose(this.nativeObj);
-      this.available = false;
-    }
-    super.ClearGLSL();
-  }
-  
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     if (this.available) {
@@ -54,6 +44,16 @@ public class FilterWraper
       nativeRenderContext(this.nativeObj, paramInt1, paramInt2, paramInt3);
     }
     super.beforeRender(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void clearGLSL()
+  {
+    if (this.available)
+    {
+      nativeDispose(this.nativeObj);
+      this.available = false;
+    }
+    super.clearGLSL();
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)

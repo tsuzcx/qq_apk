@@ -1,169 +1,57 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeof
-  extends Handler
+  implements View.OnClickListener
 {
-  public aeof(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeof(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (this.a.isFinishing()) {}
-    boolean bool;
-    do
+    switch (paramView.getId())
     {
-      do
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.finish();
+      continue;
+      aeou.a(this.a);
+      olh.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573A", "0X800573A", 0, 0, "", "", "", "", false);
+      Object localObject1 = (bbbq)this.a.app.getManager(QQManagerFactory.MGR_RED_TOUCH);
+      Object localObject2 = ((bbbq)localObject1).a("101000.101001");
+      if ((localObject2 != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get() == 1)) {
+        bdla.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X80060E3", "0X80060E3", 0, 0, "", "", "", "");
+      }
+      ((bbbq)localObject1).b("101000.101001");
+      continue;
+      localObject1 = (String)paramView.getTag(-1);
+      localObject2 = (String)paramView.getTag(-2);
+      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)))
       {
-        do
-        {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopMemberListActivityget_troop_member", 2, "handleMessage,msg.what:" + paramMessage.what);
-          }
-          switch (paramMessage.what)
-          {
-          case 3: 
-          case 4: 
-          case 10: 
-          default: 
-            return;
-          case 1: 
-          case 2: 
-            for (;;)
-            {
-              TroopMemberListActivity.a(this.a, paramMessage);
-              return;
-              this.a.k();
-            }
-          case 13: 
-            paramMessage = this.a;
-            paramMessage.jdField_a_of_type_Double += TroopMemberListActivity.jdField_b_of_type_Double;
-          }
-        } while ((this.a.jdField_a_of_type_Double <= this.a.jdField_a_of_type_AndroidWidgetProgressBar.getProgress()) || (this.a.jdField_a_of_type_Double >= 90.0D) || (TroopMemberListActivity.a(this.a) <= 0));
-        int i = (int)this.a.jdField_a_of_type_Double;
-        int j = (int)(TroopMemberListActivity.a(this.a) * this.a.jdField_a_of_type_Double / 100.0D);
-        TroopMemberListActivity.a(this.a, j, TroopMemberListActivity.a(this.a), i);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(13), 800L);
-        return;
-        List localList;
-        synchronized (this.a)
-        {
-          TroopMemberListActivity.b(this.a);
-          localList = (List)paramMessage.obj;
-          if ((localList == null) && (this.a.jdField_d_of_type_Int != 14)) {
-            return;
-          }
-        }
-        if (this.a.jdField_d_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
-        {
-          this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
-          double d = Math.min(0.9D + paramMessage.arg1 * 1.0D / TroopMemberListActivity.a(this.a), 1.0D);
-          i = (int)(100.0D * d);
-          if (i > this.a.jdField_a_of_type_AndroidWidgetProgressBar.getProgress())
-          {
-            j = (int)(d * TroopMemberListActivity.a(this.a));
-            TroopMemberListActivity.a(this.a, j, TroopMemberListActivity.a(this.a), i);
-          }
-        }
-        if (localList != null) {
-          this.a.jdField_a_of_type_JavaUtilList.addAll(localList);
-        }
         if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberListActivityget_troop_member", 2, "handleMessage, mJobCount left:" + TroopMemberListActivity.c(this.a) + "mATroopMemberList.size():" + this.a.jdField_a_of_type_JavaUtilList.size());
+          QLog.w("PublicAccountListActivity", 2, "onClick - uin = " + (String)localObject1 + ", name = " + (String)localObject2);
         }
-        if (TroopMemberListActivity.c(this.a) <= 0) {
-          TroopMemberListActivity.b(this.a, true);
-        }
-        if ((TroopMemberListActivity.b(this.a)) && (TroopMemberListActivity.d(this.a)))
-        {
-          if (this.a.jdField_a_of_type_JavaUtilList.isEmpty()) {
-            return;
-          }
-          this.a.k();
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopMemberListActivityget_troop_member", 2, "handleMessage real totalTime:" + (System.currentTimeMillis() - TroopMemberListActivity.a(this.a)) + "start refreshUI");
-          }
-          if (this.a.app.getProxyManager() != null) {
-            this.a.app.getProxyManager().notifyRefreshTroopMember();
-          }
-          paramMessage.obj = this.a.jdField_a_of_type_Aeoz.a();
-          TroopMemberListActivity.a(this.a, paramMessage);
-        }
-        return;
-        this.a.k();
-        return;
-        if (this.a.jdField_a_of_type_Aeoz != null)
-        {
-          if (this.a.jdField_a_of_type_Aeoz.b != null) {
-            this.a.jdField_a_of_type_Aeoz.b.clear();
-          }
-          this.a.jdField_a_of_type_Aeoz.a();
-        }
-        if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-        }
-        QQToast.a(this.a, this.a.getString(2131691358), 0).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-        TroopMemberListActivity.a(this.a);
-        return;
-        if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-        }
-        QQToast.a(this.a, this.a.getString(2131691357), 0).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-        return;
-      } while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (!this.a.jdField_a_of_type_AndroidAppDialog.isShowing()));
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      return;
-      paramMessage = (Object[])paramMessage.obj;
-      bool = ((Boolean)paramMessage[0]).booleanValue();
-      paramMessage = (ArrayList)paramMessage[1];
-      ChatSettingForTroop.a(this.a, this.a.jdField_b_of_type_JavaLangString, bool, paramMessage);
-      return;
-    } while (this.a.jdField_a_of_type_Aeoz == null);
-    this.a.jdField_a_of_type_Aeoz.a();
-    return;
-    paramMessage = (TroopInfo)paramMessage.obj;
-    if (paramMessage.troopowneruin != null) {
-      this.a.e = paramMessage.troopowneruin;
-    }
-    if (paramMessage.Administrator != null) {
-      this.a.f = paramMessage.Administrator;
-    }
-    ??? = this.a;
-    if ((this.a.app.getCurrentAccountUin().equals(paramMessage.troopowneruin)) || ((this.a.f != null) && (this.a.f.contains(this.a.app.getCurrentAccountUin()))))
-    {
-      bool = true;
-      label1083:
-      ???.jdField_a_of_type_Boolean = bool;
-      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
-        break label1160;
+      }
+      else
+      {
+        nwu.a(this.a.app, this.a, (String)localObject2, (String)localObject1, "IvrEnterpriseDetailEngineFalse");
+        continue;
+        aeou.a(this.a, (String)this.a.d.getTag());
+        olh.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573D", "0X800573D", 0, 0, "", "", "", "", false);
+        continue;
+        aeou.a(this.a, (String)this.a.d.getTag());
       }
     }
-    for (this.a.n = "0"; this.a.jdField_a_of_type_Aeoz != null; this.a.n = "1")
-    {
-      label1133:
-      this.a.jdField_a_of_type_Aeoz.a();
-      return;
-      bool = false;
-      break label1083;
-      label1160:
-      if ((this.a.f == null) || (!this.a.f.contains(this.a.app.getCurrentAccountUin()))) {
-        break label1133;
-      }
-    }
-    this.a.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
   }
 }
 

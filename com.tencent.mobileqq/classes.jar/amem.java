@@ -1,102 +1,18 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class amem
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/config/WeatherConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "TAG", "", "getConfig", "Lcom/tencent/mobileqq/activity/weather/config/WeatherConfigBean;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amem
 {
-  public int a;
-  public long a;
-  public String a;
-  public final HashMap<Integer, ameo> a;
-  public final List<ameo> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public List<amen> b;
-  public long c;
-  public String c;
-  public List<amen> c;
-  public String d;
-  public String e;
-  
-  public amem()
+  @JvmStatic
+  @NotNull
+  public final amej a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static String a(int paramInt)
-  {
-    if (paramInt > 999999) {
-      return String.valueOf(999999) + "+";
-    }
-    return String.valueOf(paramInt);
-  }
-  
-  public static String b(int paramInt)
-  {
-    if (paramInt > 99999) {
-      return String.valueOf(99999) + "+";
-    }
-    return String.valueOf(paramInt);
-  }
-  
-  public static String c(int paramInt)
-  {
-    if (paramInt > 9999) {
-      return String.valueOf(9999) + "+";
-    }
-    return String.valueOf(paramInt);
-  }
-  
-  public void a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.isEmpty())) {
-      return;
-    }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    label40:
-    amen localamen;
-    ameo localameo;
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        localamen = (amen)localIterator.next();
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(localamen.jdField_a_of_type_Long))))
-        {
-          if (localamen.jdField_a_of_type_Short > 4) {
-            break label165;
-          }
-          localameo = (ameo)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
-          if (localameo != null)
-          {
-            localameo.c += 1;
-            this.jdField_b_of_type_Int += 1;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.c == null) {
-        this.c = new ArrayList();
-      }
-      this.c.add(localamen);
-      break label40;
-      break;
-      label165:
-      localameo = (ameo)this.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(localamen.jdField_a_of_type_Short));
-      if (localameo != null)
-      {
-        localameo.c += localamen.f;
-        this.jdField_b_of_type_Int += localamen.f;
-      }
-    }
+    Object localObject = aqxe.a().a(702);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
+    return (amej)localObject;
   }
 }
 

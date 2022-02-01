@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agyr
-  implements DialogInterface.OnDismissListener
+  extends ahaa
 {
-  agyr(agyh paramagyh) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  agyr(agvm paramagvm)
   {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (agyh.a(this.a) != null)) {
-      this.a.r();
-    }
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahlg(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, agvm.a(this.a));
   }
 }
 

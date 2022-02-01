@@ -15,9 +15,9 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONObject;
-import tmr;
-import tms;
-import tob;
+import uaf;
+import uag;
+import ubp;
 
 public class VTopicVideo
   extends VVideo
@@ -27,7 +27,7 @@ public class VTopicVideo
   private static final int TOPIC_VIDEO_CONTROL_PLAY = 2;
   private static final int TOPIC_VIDEO_CONTROL_REPLAY = 5;
   private static final int TOPIC_VIDEO_CONTROL_STOP = 4;
-  private IObserver mVideoAppearEventObserver = new tob(this);
+  private IObserver mVideoAppearEventObserver = new ubp(this);
   
   public VTopicVideo(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -42,7 +42,7 @@ public class VTopicVideo
     }
   }
   
-  public tms getVideoLifeCycleChangeListener()
+  public uag getVideoLifeCycleChangeListener()
   {
     if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
       return ((VVideoView)getHostView()).a();
@@ -147,7 +147,7 @@ public class VTopicVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo
  * JD-Core Version:    0.7.0.1
  */

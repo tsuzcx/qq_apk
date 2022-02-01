@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import bhjh;
+import bitx;
 
 class SlideTabWidget$2
   implements Runnable

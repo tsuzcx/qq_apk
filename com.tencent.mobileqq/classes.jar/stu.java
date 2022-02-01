@@ -1,25 +1,14 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class stu
-  implements sth
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKMgr;", "", "initSDK", "", "installPlugin", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKEventListener;", "isInstalled", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface stu
 {
-  public int a(BaseData paramBaseData)
-  {
-    return 11;
-  }
+  public abstract void a();
   
-  public stg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    return new stv(LayoutInflater.from(paramContext).inflate(2131560179, paramViewGroup, false), paramBaseData);
-  }
+  public abstract void a(@NotNull stt paramstt);
   
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.r == 11;
-  }
+  public abstract boolean a();
 }
 
 

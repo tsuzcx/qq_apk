@@ -1,25 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.view.RainView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-
-public class slp
-  implements bcrf
+public abstract interface slp
 {
-  public slp(RainView paramRainView, bcsi parambcsi) {}
+  public abstract void b();
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.b(this.jdField_a_of_type_Bcsi);
-    if ((RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).incrementAndGet() == RainView.a() * RainView.b() * RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).get()) && (RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView) != null))
-    {
-      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
-      RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
-      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("SpriteGLView", 2, "rain animation end");
-      }
-    }
-  }
+  public abstract void c();
 }
 
 

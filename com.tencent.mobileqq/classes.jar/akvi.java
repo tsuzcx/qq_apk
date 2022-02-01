@@ -1,15 +1,21 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class akvi
+  implements View.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public akvi(WordChainHbFragment.1 param1, TextView paramTextView, akvo paramakvo) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
+    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0);
+    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_Akvo);
+    WordChainHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentWordChainHbFragment$1.this$0, this.jdField_a_of_type_AndroidWidgetTextView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

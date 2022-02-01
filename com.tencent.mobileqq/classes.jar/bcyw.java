@@ -1,4 +1,13 @@
-class bcyw {}
+import com.tencent.mobileqq.data.MessageForShortVideo;
+
+public abstract interface bcyw
+{
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, int paramInt);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

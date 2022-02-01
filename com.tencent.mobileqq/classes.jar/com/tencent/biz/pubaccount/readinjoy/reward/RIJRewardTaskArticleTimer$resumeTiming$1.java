@@ -2,29 +2,29 @@ package com.tencent.biz.pubaccount.readinjoy.reward;
 
 import android.os.Handler;
 import kotlin.Metadata;
-import qxp;
-import qxs;
-import qzk;
+import rjv;
+import rjy;
+import rlq;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class RIJRewardTaskArticleTimer$resumeTiming$1
   implements Runnable
 {
-  public RIJRewardTaskArticleTimer$resumeTiming$1(qxp paramqxp, String paramString, int paramInt) {}
+  public RIJRewardTaskArticleTimer$resumeTiming$1(rjv paramrjv, String paramString, int paramInt) {}
   
   public final void run()
   {
-    if (qxp.a(this.this$0) <= qxs.d())
+    if (rjv.a(this.this$0) <= rjy.d())
     {
-      qxp localqxp = this.this$0;
-      qxp.a(localqxp, qxp.a(localqxp) + 33);
-      qxp.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
+      rjv localrjv = this.this$0;
+      rjv.a(localrjv, rjv.a(localrjv) + 33);
+      rjv.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
     }
     for (;;)
     {
-      qxp.a(this.this$0).postDelayed(qxp.a(this.this$0), 33);
+      rjv.a(this.this$0).postDelayed(rjv.a(this.this$0), 33);
       return;
-      qxp.a(this.this$0).a();
+      rjv.a(this.this$0).a();
     }
   }
 }

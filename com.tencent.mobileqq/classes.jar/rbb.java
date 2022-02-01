@@ -1,15 +1,20 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function3;
 
-class rbb
-  extends raj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class rbb
+  implements View.OnClickListener
 {
-  rbb(rau paramrau, AppInterface paramAppInterface) {}
+  rbb(raw paramraw) {}
   
-  public Drawable a()
+  public final void onClick(View paramView)
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_kandian_selected");
+    raw.a(this.a).a().invoke(Boolean.valueOf(true), Boolean.valueOf(raw.a(this.a)), Integer.valueOf(2));
+    this.a.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import java.util.ArrayList;
-import java.util.List;
-
-class aqzn
-  implements aqyr
+public class aqzn
 {
-  aqzn(aqzl paramaqzl) {}
-  
-  public void a(List<EmoticonInfo> paramList)
-  {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    if (this.a.a != null) {
-      this.a.a.a((List)localObject);
-    }
-  }
+  public Boolean a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqzn
  * JD-Core Version:    0.7.0.1
  */

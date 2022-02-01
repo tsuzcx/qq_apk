@@ -1,40 +1,48 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
 
-class ayrn
-  implements Animation.AnimationListener
+public class ayrn
+  implements bkzq
 {
-  ayrn(ayrm paramayrm) {}
+  public ayrn(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (!ayrm.a(this.a)) {
-      for (;;)
+    if (paramInt == 0)
+    {
+      ayrt.a(OCRPerformFragment.a(this.a), String.valueOf(OCRPerformFragment.a(this.a)));
+      if (ayrt.a)
       {
-        int j = (int)(ayrm.a(this.a) * (Math.random() * 2.0D - 1.0D));
-        int i = (int)Math.sqrt(ayrm.a(this.a) * ayrm.a(this.a) - j * j);
-        if (Math.random() > 0.5D) {}
-        while ((ayrm.b(this.a) + j) * (ayrm.b(this.a) + j) + (ayrm.c(this.a) + i) * (ayrm.c(this.a) + i) <= ayrm.d(this.a) * ayrm.d(this.a))
-        {
-          ayrm.a(this.a, new TranslateAnimation(ayrm.b(this.a), ayrm.b(this.a) + j, ayrm.c(this.a), ayrm.c(this.a) + i));
-          ayrm.a(this.a, j + ayrm.b(this.a));
-          ayrm.b(this.a, i + ayrm.c(this.a));
-          ayrm.a(this.a).setAnimationListener(ayrm.a(this.a));
-          ayrm.a(this.a).setDuration(ayrm.a(this.a) * (int)(50.0D + Math.random() * 30.0D));
-          ayrm.a(this.a).startAnimation(ayrm.a(this.a));
-          return;
-          i = -i;
-        }
+        paramView = "0X800B55F";
+        ayrt.a(paramView, 0);
       }
     }
-    ayrm.a(this.a, false);
+    else if (paramInt == 1)
+    {
+      if (!ayrt.a) {
+        break label120;
+      }
+      ayrt.a(OCRPerformFragment.a(this.a), OCRPerformFragment.a(this.a));
+      label66:
+      if (!ayrt.a) {
+        break label140;
+      }
+    }
+    label140:
+    for (paramView = "0X800B560";; paramView = "0X800AAEA")
+    {
+      ayrt.a(paramView, 0);
+      if ((OCRPerformFragment.a(this.a) != null) && (OCRPerformFragment.a(this.a).isShowing())) {
+        OCRPerformFragment.a(this.a).dismiss();
+      }
+      return;
+      paramView = "0X800AAE9";
+      break;
+      label120:
+      bbxq.a(OCRPerformFragment.a(this.a), OCRPerformFragment.a(this.a));
+      break label66;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

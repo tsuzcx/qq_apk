@@ -1,389 +1,465 @@
-import android.util.Log;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
 
 public class avkc
 {
-  private static final avke jdField_a_of_type_Avke = new avke(null);
-  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(?<=\\[).*?(?=\\])");
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private ArrayList<avjv> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  public avkc(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private int a(String paramString)
-  {
-    int j = 0;
-    paramString = paramString.split("\\:");
-    int i = j;
-    try
-    {
-      if (paramString.length == 2)
-      {
-        i = j;
-        if ("offset".equalsIgnoreCase(paramString[0])) {
-          i = Integer.parseInt(paramString[1].trim());
-        }
-      }
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      Log.e("ParsingLrc", paramString.toString());
-    }
-    return 0;
-  }
-  
-  private long a(String paramString)
-  {
-    paramString = paramString.split("\\:|\\.");
-    if (paramString.length < 2) {}
-    do
-    {
-      return -1L;
-      if (paramString.length == 2) {}
-      int i;
-      int j;
-      int k;
-      try
-      {
-        if ((this.jdField_a_of_type_Int == 0) && (paramString[0].equalsIgnoreCase("offset")))
-        {
-          this.jdField_a_of_type_Int = Integer.parseInt(paramString[1]);
-          return -1L;
-        }
-        i = Integer.parseInt(paramString[0]);
-        j = Integer.parseInt(paramString[1]);
-        if ((i < 0) || (j < 0) || (j >= 60)) {
-          throw new RuntimeException(amtj.a(2131706994));
-        }
-        return (i * 60 + j) * 1000L;
-      }
-      catch (Exception paramString) {}
-    } while (paramString.length != 3);
-    try
-    {
-      i = Integer.parseInt(paramString[0]);
-      j = Integer.parseInt(paramString[1]);
-      k = Integer.parseInt(paramString[2]);
-      if ((i < 0) || (j < 0) || (j >= 60) || (k < 0) || (k > 99)) {
-        throw new RuntimeException(amtj.a(2131706995));
-      }
-    }
-    catch (Exception paramString)
-    {
-      return -1L;
-    }
-    return (i * 60 + j) * 1000L + k * 10;
-    return -1L;
-  }
-  
-  private void a(String paramString)
-  {
-    if ((paramString == null) || (paramString.equals(""))) {
-      return;
-    }
-    Object localObject2 = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
-    ArrayList localArrayList = new ArrayList();
-    int i = -1;
-    int j = -1;
-    label36:
-    Object localObject1;
-    if (((Matcher)localObject2).find())
-    {
-      localObject1 = ((Matcher)localObject2).group();
-      if (localObject1 != null) {
-        break label455;
-      }
-      localObject1 = "";
-    }
-    label455:
-    for (;;)
-    {
-      for (;;)
-      {
-        int k = paramString.indexOf("[" + (String)localObject1 + "]");
-        long l;
-        if ((j != -1) && (k - j > i + 2))
-        {
-          String str = paramString.substring(i + j + 2, k);
-          Iterator localIterator = localArrayList.iterator();
-          while (localIterator.hasNext())
-          {
-            l = a((String)localIterator.next());
-            if (l != -1L)
-            {
-              avjv localavjv = new avjv();
-              localavjv.jdField_a_of_type_JavaLangString = str;
-              localavjv.jdField_a_of_type_Long = l;
-              this.jdField_a_of_type_JavaUtilArrayList.add(localavjv);
-            }
-          }
-          localArrayList.clear();
-        }
-        localArrayList.add(localObject1);
-        i = ((String)localObject1).length();
-        j = k;
-        break label36;
-        if (localArrayList.isEmpty()) {
-          break;
-        }
-        j = i + 2 + j;
-        i = j;
-        try
-        {
-          if (j > paramString.length()) {
-            i = paramString.length();
-          }
-          paramString = paramString.substring(i).trim();
-          if ((paramString.length() == 0) && (this.jdField_a_of_type_Int == 0))
-          {
-            paramString = localArrayList.iterator();
-            while (paramString.hasNext())
-            {
-              i = a((String)paramString.next());
-              if (i != 2147483647) {
-                this.jdField_a_of_type_Int = i;
-              }
-            }
-            return;
-          }
-          localObject1 = localArrayList.iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            l = a((String)((Iterator)localObject1).next());
-            if ((l != -1L) && (paramString.length() > 0))
-            {
-              localObject2 = new avjv();
-              ((avjv)localObject2).jdField_a_of_type_JavaLangString = paramString;
-              ((avjv)localObject2).jdField_a_of_type_Long = l;
-              this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-            }
-          }
-        }
-        catch (Exception paramString)
-        {
-          Log.e("ParsingLrc", paramString.toString());
-          return;
-          return;
-        }
-        finally
-        {
-          if (localArrayList != null) {
-            localArrayList.clear();
-          }
-        }
-      }
-    }
-  }
+  public String a;
+  public List<avkd> a;
+  public String b;
+  public String c;
   
   /* Error */
-  public avjt a()
+  public static avkc a(String paramString)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 42	avkc:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   4: ifnonnull +7 -> 11
-    //   7: aconst_null
-    //   8: astore_2
-    //   9: aload_2
-    //   10: areturn
-    //   11: aload_0
-    //   12: getfield 42	avkc:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   15: astore_2
-    //   16: aload_2
-    //   17: ifnull +64 -> 81
-    //   20: new 182	java/io/BufferedReader
-    //   23: dup
-    //   24: new 184	java/io/StringReader
-    //   27: dup
-    //   28: aload_2
-    //   29: invokespecial 185	java/io/StringReader:<init>	(Ljava/lang/String;)V
-    //   32: invokespecial 188	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   35: astore_3
-    //   36: aload_3
-    //   37: invokevirtual 191	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   40: astore_2
-    //   41: aload_2
-    //   42: ifnull +41 -> 83
-    //   45: aload_0
-    //   46: aload_2
-    //   47: invokevirtual 63	java/lang/String:trim	()Ljava/lang/String;
-    //   50: invokespecial 193	avkc:a	(Ljava/lang/String;)V
-    //   53: goto -17 -> 36
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: new 2	avkc
+    //   6: dup
+    //   7: invokespecial 19	avkc:<init>	()V
+    //   10: astore_3
+    //   11: new 21	org/json/JSONObject
+    //   14: dup
+    //   15: aload_0
+    //   16: invokespecial 24	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   19: astore_0
+    //   20: aload_3
+    //   21: aload_0
+    //   22: ldc 26
+    //   24: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   27: putfield 32	avkc:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   30: aload_3
+    //   31: aload_0
+    //   32: ldc 34
+    //   34: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   37: putfield 36	avkc:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   40: aload_3
+    //   41: aload_0
+    //   42: ldc 38
+    //   44: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   47: putfield 40	avkc:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   50: aload_0
+    //   51: ldc 42
+    //   53: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   56: astore 4
     //   58: aload_3
-    //   59: astore_2
-    //   60: aload 4
-    //   62: astore_3
-    //   63: ldc 70
-    //   65: aload_3
-    //   66: invokevirtual 73	java/lang/Exception:toString	()Ljava/lang/String;
-    //   69: invokestatic 79	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   72: pop
-    //   73: aload_2
-    //   74: ifnull +7 -> 81
-    //   77: aload_2
-    //   78: invokevirtual 196	java/io/BufferedReader:close	()V
-    //   81: aconst_null
-    //   82: areturn
-    //   83: aload_0
-    //   84: getfield 40	avkc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   87: getstatic 31	avkc:jdField_a_of_type_Avke	Lavke;
-    //   90: invokestatic 202	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   93: iconst_0
-    //   94: istore_1
-    //   95: iload_1
-    //   96: aload_0
-    //   97: getfield 40	avkc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   100: invokevirtual 205	java/util/ArrayList:size	()I
-    //   103: if_icmpge +95 -> 198
-    //   106: iload_1
-    //   107: aload_0
-    //   108: getfield 40	avkc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   111: invokevirtual 205	java/util/ArrayList:size	()I
-    //   114: iconst_1
-    //   115: isub
-    //   116: if_icmpge +51 -> 167
-    //   119: aload_0
-    //   120: getfield 40	avkc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   123: iload_1
-    //   124: invokevirtual 209	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   127: checkcast 154	avjv
-    //   130: aload_0
-    //   131: getfield 40	avkc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   134: iload_1
-    //   135: iconst_1
-    //   136: iadd
-    //   137: invokevirtual 209	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   140: checkcast 154	avjv
-    //   143: getfield 159	avjv:jdField_a_of_type_Long	J
-    //   146: aload_0
-    //   147: getfield 40	avkc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   150: iload_1
-    //   151: invokevirtual 209	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   154: checkcast 154	avjv
-    //   157: getfield 159	avjv:jdField_a_of_type_Long	J
-    //   160: lsub
-    //   161: putfield 212	avjv:b	J
-    //   164: goto +130 -> 294
-    //   167: aload_0
-    //   168: getfield 40	avkc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   171: iload_1
-    //   172: invokevirtual 209	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   175: checkcast 154	avjv
-    //   178: ldc2_w 213
-    //   181: putfield 212	avjv:b	J
-    //   184: goto +110 -> 294
-    //   187: astore_2
-    //   188: aload_3
-    //   189: ifnull +7 -> 196
-    //   192: aload_3
-    //   193: invokevirtual 196	java/io/BufferedReader:close	()V
-    //   196: aload_2
-    //   197: athrow
-    //   198: new 216	avjt
-    //   201: dup
-    //   202: iconst_1
-    //   203: aload_0
-    //   204: getfield 86	avkc:jdField_a_of_type_Int	I
-    //   207: aload_0
-    //   208: getfield 40	avkc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   211: invokespecial 219	avjt:<init>	(IILjava/util/ArrayList;)V
-    //   214: astore 4
-    //   216: aload 4
-    //   218: astore_2
-    //   219: aload_3
-    //   220: ifnull -211 -> 9
-    //   223: aload_3
-    //   224: invokevirtual 196	java/io/BufferedReader:close	()V
-    //   227: aload 4
-    //   229: areturn
-    //   230: astore_2
-    //   231: ldc 70
-    //   233: aload_2
-    //   234: invokevirtual 220	java/io/IOException:toString	()Ljava/lang/String;
-    //   237: invokestatic 79	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   240: pop
-    //   241: aload 4
-    //   243: areturn
-    //   244: astore_2
-    //   245: ldc 70
-    //   247: aload_2
-    //   248: invokevirtual 220	java/io/IOException:toString	()Ljava/lang/String;
-    //   251: invokestatic 79	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   254: pop
-    //   255: goto -174 -> 81
-    //   258: astore_3
-    //   259: ldc 70
-    //   261: aload_3
-    //   262: invokevirtual 220	java/io/IOException:toString	()Ljava/lang/String;
-    //   265: invokestatic 79	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   268: pop
-    //   269: goto -73 -> 196
-    //   272: astore_2
-    //   273: aconst_null
-    //   274: astore_3
-    //   275: goto -87 -> 188
-    //   278: astore 4
-    //   280: aload_2
-    //   281: astore_3
-    //   282: aload 4
-    //   284: astore_2
-    //   285: goto -97 -> 188
-    //   288: astore_3
-    //   289: aconst_null
-    //   290: astore_2
-    //   291: goto -228 -> 63
-    //   294: iload_1
-    //   295: iconst_1
-    //   296: iadd
-    //   297: istore_1
-    //   298: goto -203 -> 95
+    //   59: new 48	java/util/LinkedList
+    //   62: dup
+    //   63: invokespecial 49	java/util/LinkedList:<init>	()V
+    //   66: putfield 51	avkc:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   69: aload_3
+    //   70: astore_0
+    //   71: aload 4
+    //   73: ifnull +725 -> 798
+    //   76: iconst_0
+    //   77: istore_1
+    //   78: aload_3
+    //   79: astore_0
+    //   80: iload_1
+    //   81: aload 4
+    //   83: invokevirtual 57	org/json/JSONArray:length	()I
+    //   86: if_icmpge +712 -> 798
+    //   89: aload 4
+    //   91: iload_1
+    //   92: invokevirtual 61	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   95: astore 5
+    //   97: new 63	avkd
+    //   100: dup
+    //   101: invokespecial 64	avkd:<init>	()V
+    //   104: astore_0
+    //   105: aload_0
+    //   106: aload 5
+    //   108: ldc 66
+    //   110: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   113: putfield 73	avkd:jdField_a_of_type_Int	I
+    //   116: aload_0
+    //   117: aload 5
+    //   119: ldc 75
+    //   121: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   124: putfield 76	avkd:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   127: aload_0
+    //   128: aload 5
+    //   130: ldc 78
+    //   132: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   135: putfield 79	avkd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   138: aload_0
+    //   139: aload 5
+    //   141: ldc 81
+    //   143: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   146: putfield 82	avkd:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   149: aload_0
+    //   150: aload 5
+    //   152: ldc 84
+    //   154: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   157: putfield 87	avkd:d	Ljava/lang/String;
+    //   160: aload 5
+    //   162: ldc 89
+    //   164: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   167: astore 6
+    //   169: aload_0
+    //   170: iconst_2
+    //   171: newarray int
+    //   173: putfield 92	avkd:jdField_a_of_type_ArrayOfInt	[I
+    //   176: aload 6
+    //   178: ifnull +36 -> 214
+    //   181: aload 6
+    //   183: invokevirtual 57	org/json/JSONArray:length	()I
+    //   186: iconst_2
+    //   187: if_icmpne +27 -> 214
+    //   190: aload_0
+    //   191: getfield 92	avkd:jdField_a_of_type_ArrayOfInt	[I
+    //   194: iconst_0
+    //   195: aload 6
+    //   197: iconst_0
+    //   198: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   201: iastore
+    //   202: aload_0
+    //   203: getfield 92	avkd:jdField_a_of_type_ArrayOfInt	[I
+    //   206: iconst_1
+    //   207: aload 6
+    //   209: iconst_1
+    //   210: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   213: iastore
+    //   214: aload_0
+    //   215: new 48	java/util/LinkedList
+    //   218: dup
+    //   219: invokespecial 49	java/util/LinkedList:<init>	()V
+    //   222: putfield 97	avkd:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   225: aload 5
+    //   227: ldc 99
+    //   229: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   232: astore 6
+    //   234: aload 6
+    //   236: ifnull +188 -> 424
+    //   239: iconst_0
+    //   240: istore_2
+    //   241: iload_2
+    //   242: aload 6
+    //   244: invokevirtual 57	org/json/JSONArray:length	()I
+    //   247: if_icmpge +177 -> 424
+    //   250: aload 6
+    //   252: iload_2
+    //   253: invokevirtual 61	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   256: astore 8
+    //   258: new 101	avke
+    //   261: dup
+    //   262: invokespecial 102	avke:<init>	()V
+    //   265: astore 7
+    //   267: aload 7
+    //   269: aload 8
+    //   271: ldc 104
+    //   273: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   276: putfield 105	avke:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   279: aload 7
+    //   281: aload 8
+    //   283: ldc 107
+    //   285: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   288: putfield 108	avke:jdField_a_of_type_Int	I
+    //   291: aload 7
+    //   293: iconst_2
+    //   294: newarray int
+    //   296: putfield 110	avke:jdField_b_of_type_ArrayOfInt	[I
+    //   299: aload 8
+    //   301: ldc 112
+    //   303: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   306: astore 9
+    //   308: aload 9
+    //   310: ifnull +38 -> 348
+    //   313: aload 9
+    //   315: invokevirtual 57	org/json/JSONArray:length	()I
+    //   318: iconst_2
+    //   319: if_icmpne +29 -> 348
+    //   322: aload 7
+    //   324: getfield 110	avke:jdField_b_of_type_ArrayOfInt	[I
+    //   327: iconst_0
+    //   328: aload 9
+    //   330: iconst_0
+    //   331: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   334: iastore
+    //   335: aload 7
+    //   337: getfield 110	avke:jdField_b_of_type_ArrayOfInt	[I
+    //   340: iconst_1
+    //   341: aload 9
+    //   343: iconst_1
+    //   344: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   347: iastore
+    //   348: aload 7
+    //   350: iconst_2
+    //   351: newarray int
+    //   353: putfield 113	avke:jdField_a_of_type_ArrayOfInt	[I
+    //   356: aload 8
+    //   358: ldc 115
+    //   360: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   363: astore 8
+    //   365: aload 8
+    //   367: ifnull +38 -> 405
+    //   370: aload 8
+    //   372: invokevirtual 57	org/json/JSONArray:length	()I
+    //   375: iconst_2
+    //   376: if_icmpne +29 -> 405
+    //   379: aload 7
+    //   381: getfield 113	avke:jdField_a_of_type_ArrayOfInt	[I
+    //   384: iconst_0
+    //   385: aload 8
+    //   387: iconst_0
+    //   388: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   391: iastore
+    //   392: aload 7
+    //   394: getfield 113	avke:jdField_a_of_type_ArrayOfInt	[I
+    //   397: iconst_1
+    //   398: aload 8
+    //   400: iconst_1
+    //   401: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   404: iastore
+    //   405: aload_0
+    //   406: getfield 97	avkd:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   409: aload 7
+    //   411: invokeinterface 121 2 0
+    //   416: pop
+    //   417: iload_2
+    //   418: iconst_1
+    //   419: iadd
+    //   420: istore_2
+    //   421: goto -180 -> 241
+    //   424: aload_0
+    //   425: new 48	java/util/LinkedList
+    //   428: dup
+    //   429: invokespecial 49	java/util/LinkedList:<init>	()V
+    //   432: putfield 123	avkd:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   435: aload 5
+    //   437: ldc 125
+    //   439: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   442: astore 5
+    //   444: aload 5
+    //   446: ifnull +331 -> 777
+    //   449: iconst_0
+    //   450: istore_2
+    //   451: iload_2
+    //   452: aload 5
+    //   454: invokevirtual 57	org/json/JSONArray:length	()I
+    //   457: if_icmpge +320 -> 777
+    //   460: aload 5
+    //   462: iload_2
+    //   463: invokevirtual 61	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   466: astore 7
+    //   468: new 127	avkf
+    //   471: dup
+    //   472: invokespecial 128	avkf:<init>	()V
+    //   475: astore 6
+    //   477: aload 6
+    //   479: aload 7
+    //   481: ldc 130
+    //   483: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   486: putfield 131	avkf:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   489: aload 6
+    //   491: aload 7
+    //   493: ldc 133
+    //   495: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   498: putfield 134	avkf:jdField_a_of_type_Int	I
+    //   501: aload 6
+    //   503: aload 7
+    //   505: ldc 136
+    //   507: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   510: putfield 138	avkf:jdField_b_of_type_Int	I
+    //   513: aload 6
+    //   515: aload 7
+    //   517: ldc 140
+    //   519: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   522: putfield 141	avkf:d	Ljava/lang/String;
+    //   525: aload 6
+    //   527: aload 7
+    //   529: ldc 143
+    //   531: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   534: putfield 145	avkf:jdField_c_of_type_Int	I
+    //   537: aload 6
+    //   539: aload 7
+    //   541: ldc 147
+    //   543: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   546: putfield 148	avkf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   549: aload 6
+    //   551: aload 7
+    //   553: ldc 150
+    //   555: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   558: putfield 151	avkf:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   561: aload 6
+    //   563: iconst_2
+    //   564: newarray int
+    //   566: putfield 153	avkf:jdField_c_of_type_ArrayOfInt	[I
+    //   569: aload 7
+    //   571: ldc 155
+    //   573: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   576: astore 8
+    //   578: aload 8
+    //   580: ifnull +38 -> 618
+    //   583: aload 8
+    //   585: invokevirtual 57	org/json/JSONArray:length	()I
+    //   588: iconst_2
+    //   589: if_icmpne +29 -> 618
+    //   592: aload 6
+    //   594: getfield 153	avkf:jdField_c_of_type_ArrayOfInt	[I
+    //   597: iconst_0
+    //   598: aload 8
+    //   600: iconst_0
+    //   601: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   604: iastore
+    //   605: aload 6
+    //   607: getfield 153	avkf:jdField_c_of_type_ArrayOfInt	[I
+    //   610: iconst_1
+    //   611: aload 8
+    //   613: iconst_1
+    //   614: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   617: iastore
+    //   618: aload 6
+    //   620: iconst_2
+    //   621: newarray int
+    //   623: putfield 156	avkf:jdField_a_of_type_ArrayOfInt	[I
+    //   626: aload 7
+    //   628: ldc 158
+    //   630: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   633: astore 8
+    //   635: aload 8
+    //   637: ifnull +38 -> 675
+    //   640: aload 8
+    //   642: invokevirtual 57	org/json/JSONArray:length	()I
+    //   645: iconst_2
+    //   646: if_icmpne +29 -> 675
+    //   649: aload 6
+    //   651: getfield 156	avkf:jdField_a_of_type_ArrayOfInt	[I
+    //   654: iconst_0
+    //   655: aload 8
+    //   657: iconst_0
+    //   658: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   661: iastore
+    //   662: aload 6
+    //   664: getfield 156	avkf:jdField_a_of_type_ArrayOfInt	[I
+    //   667: iconst_1
+    //   668: aload 8
+    //   670: iconst_1
+    //   671: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   674: iastore
+    //   675: aload 7
+    //   677: ldc 160
+    //   679: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   682: astore 7
+    //   684: aload 7
+    //   686: ifnull +72 -> 758
+    //   689: aload 7
+    //   691: invokevirtual 57	org/json/JSONArray:length	()I
+    //   694: iconst_4
+    //   695: if_icmpne +63 -> 758
+    //   698: aload 6
+    //   700: iconst_4
+    //   701: newarray int
+    //   703: putfield 161	avkf:jdField_b_of_type_ArrayOfInt	[I
+    //   706: aload 6
+    //   708: getfield 161	avkf:jdField_b_of_type_ArrayOfInt	[I
+    //   711: iconst_0
+    //   712: aload 7
+    //   714: iconst_0
+    //   715: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   718: iastore
+    //   719: aload 6
+    //   721: getfield 161	avkf:jdField_b_of_type_ArrayOfInt	[I
+    //   724: iconst_1
+    //   725: aload 7
+    //   727: iconst_1
+    //   728: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   731: iastore
+    //   732: aload 6
+    //   734: getfield 161	avkf:jdField_b_of_type_ArrayOfInt	[I
+    //   737: iconst_2
+    //   738: aload 7
+    //   740: iconst_2
+    //   741: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   744: iastore
+    //   745: aload 6
+    //   747: getfield 161	avkf:jdField_b_of_type_ArrayOfInt	[I
+    //   750: iconst_3
+    //   751: aload 7
+    //   753: iconst_3
+    //   754: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   757: iastore
+    //   758: aload_0
+    //   759: getfield 123	avkd:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   762: aload 6
+    //   764: invokeinterface 121 2 0
+    //   769: pop
+    //   770: iload_2
+    //   771: iconst_1
+    //   772: iadd
+    //   773: istore_2
+    //   774: goto -323 -> 451
+    //   777: aload_3
+    //   778: getfield 51	avkc:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   781: aload_0
+    //   782: invokeinterface 121 2 0
+    //   787: pop
+    //   788: iload_1
+    //   789: iconst_1
+    //   790: iadd
+    //   791: istore_1
+    //   792: goto -714 -> 78
+    //   795: astore_0
+    //   796: aconst_null
+    //   797: astore_0
+    //   798: ldc 2
+    //   800: monitorexit
+    //   801: aload_0
+    //   802: areturn
+    //   803: astore_0
+    //   804: ldc 2
+    //   806: monitorexit
+    //   807: aload_0
+    //   808: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	301	0	this	avkc
-    //   94	204	1	i	int
-    //   8	70	2	localObject1	Object
-    //   187	10	2	localObject2	Object
-    //   218	1	2	localObject3	Object
-    //   230	4	2	localIOException1	java.io.IOException
-    //   244	4	2	localIOException2	java.io.IOException
-    //   272	9	2	localObject4	Object
-    //   284	7	2	localObject5	Object
-    //   35	189	3	localObject6	Object
-    //   258	4	3	localIOException3	java.io.IOException
-    //   274	8	3	localObject7	Object
-    //   288	1	3	localException1	Exception
-    //   56	5	4	localException2	Exception
-    //   214	28	4	localavjt	avjt
-    //   278	5	4	localObject8	Object
+    //   0	809	0	paramString	String
+    //   77	715	1	i	int
+    //   240	534	2	j	int
+    //   10	768	3	localavkc	avkc
+    //   56	34	4	localJSONArray1	org.json.JSONArray
+    //   95	366	5	localObject1	Object
+    //   167	596	6	localObject2	Object
+    //   265	487	7	localObject3	Object
+    //   256	413	8	localObject4	Object
+    //   306	36	9	localJSONArray2	org.json.JSONArray
     // Exception table:
     //   from	to	target	type
-    //   36	41	56	java/lang/Exception
-    //   45	53	56	java/lang/Exception
-    //   83	93	56	java/lang/Exception
-    //   95	164	56	java/lang/Exception
-    //   167	184	56	java/lang/Exception
-    //   198	216	56	java/lang/Exception
-    //   36	41	187	finally
-    //   45	53	187	finally
-    //   83	93	187	finally
-    //   95	164	187	finally
-    //   167	184	187	finally
-    //   198	216	187	finally
-    //   223	227	230	java/io/IOException
-    //   77	81	244	java/io/IOException
-    //   192	196	258	java/io/IOException
-    //   20	36	272	finally
-    //   63	73	278	finally
-    //   20	36	288	java/lang/Exception
+    //   3	69	795	java/lang/Exception
+    //   80	176	795	java/lang/Exception
+    //   181	214	795	java/lang/Exception
+    //   214	234	795	java/lang/Exception
+    //   241	308	795	java/lang/Exception
+    //   313	348	795	java/lang/Exception
+    //   348	365	795	java/lang/Exception
+    //   370	405	795	java/lang/Exception
+    //   405	417	795	java/lang/Exception
+    //   424	444	795	java/lang/Exception
+    //   451	578	795	java/lang/Exception
+    //   583	618	795	java/lang/Exception
+    //   618	635	795	java/lang/Exception
+    //   640	675	795	java/lang/Exception
+    //   675	684	795	java/lang/Exception
+    //   689	758	795	java/lang/Exception
+    //   758	770	795	java/lang/Exception
+    //   777	788	795	java/lang/Exception
+    //   3	69	803	finally
+    //   80	176	803	finally
+    //   181	214	803	finally
+    //   214	234	803	finally
+    //   241	308	803	finally
+    //   313	348	803	finally
+    //   348	365	803	finally
+    //   370	405	803	finally
+    //   405	417	803	finally
+    //   424	444	803	finally
+    //   451	578	803	finally
+    //   583	618	803	finally
+    //   618	635	803	finally
+    //   640	675	803	finally
+    //   675	684	803	finally
+    //   689	758	803	finally
+    //   758	770	803	finally
+    //   777	788	803	finally
   }
 }
 

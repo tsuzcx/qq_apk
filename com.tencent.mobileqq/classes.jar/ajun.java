@@ -1,13 +1,22 @@
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class ajun
-  implements Comparator<ajuk>
+public class ajun
+  implements View.OnTouchListener
 {
-  ajun(ajul paramajul) {}
+  public ajun(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public int a(ajuk paramajuk1, ajuk paramajuk2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return (int)(paramajuk2.a - paramajuk1.a);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.y();
+      paramView = this.a.o;
+      this.a.a("Clk_find", paramView, "");
+    }
+    return true;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import abmp;
+import accf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ final class GdtInitializeOnToolProcessStep
       a("GdtInitializeOnToolProcessStep", "doStep", null);
       long l = System.currentTimeMillis();
       ThreadManager.excute(new GdtInitializeOnToolProcessStep.1(this), 16, null, true);
-      abmp.a().a(BaseApplicationImpl.getContext());
+      accf.a().a(BaseApplicationImpl.getContext());
       a("GdtInitializeOnToolProcessStep", "doStep durationMillis:" + (System.currentTimeMillis() - l), null);
       return true;
     }
@@ -35,7 +35,7 @@ final class GdtInitializeOnToolProcessStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.GdtInitializeOnToolProcessStep
  * JD-Core Version:    0.7.0.1
  */

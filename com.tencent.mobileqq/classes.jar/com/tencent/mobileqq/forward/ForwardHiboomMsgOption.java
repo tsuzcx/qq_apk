@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import atky;
-import auen;
+import aupt;
+import avkh;
 import com.tencent.mobileqq.hiboom.HiBoomTextView;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import java.util.Set;
 
 public class ForwardHiboomMsgOption
-  extends atky
+  extends aupt
 {
   public ForwardHiboomMsgOption(Intent paramIntent)
   {
@@ -22,9 +22,9 @@ public class ForwardHiboomMsgOption
   {
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_hiboom_id");
     HiBoomTextView localHiBoomTextView = new HiBoomTextView(this.jdField_a_of_type_AndroidAppActivity);
-    localHiBoomTextView.setHiBoom(i, 0, auen.jdField_a_of_type_Aueg);
+    localHiBoomTextView.setHiBoom(i, 0, avkh.jdField_a_of_type_Avka);
     localHiBoomTextView.setText(this.jdField_a_of_type_JavaLangString);
-    localHiBoomTextView.setMaxSize(auen.jdField_a_of_type_Int);
+    localHiBoomTextView.setMaxSize(avkh.jdField_a_of_type_Int);
     localHiBoomTextView.setLayoutParams(new RelativeLayout.LayoutParams(500, 500));
     return localHiBoomTextView;
   }

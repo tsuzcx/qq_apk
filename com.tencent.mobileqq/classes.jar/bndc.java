@@ -1,24 +1,24 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.qphone.base.util.QLog;
 
 class bndc
-  extends bmte
+  implements Animator.AnimatorListener
 {
-  bndc(bncy parambncy) {}
+  bndc(bnda parambnda) {}
   
-  public void onCancel(String paramString) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void onFinish(String paramString, boolean paramBoolean, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("EditProviderPart", 2, "EditProviderPart onFinish key=" + paramString + " result=" + paramBoolean);
+      QLog.d("AEBottomListPart", 2, "Watermark Panel Opened!");
     }
   }
   
-  public void onNetChange(int paramInt) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onProgress(String paramString, int paramInt) {}
-  
-  public void onStart(String paramString, boolean paramBoolean) {}
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

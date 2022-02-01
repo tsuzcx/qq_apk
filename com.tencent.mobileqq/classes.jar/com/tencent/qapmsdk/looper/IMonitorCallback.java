@@ -2,6 +2,8 @@ package com.tencent.qapmsdk.looper;
 
 public abstract interface IMonitorCallback
 {
+  public abstract boolean onAfterStack(long paramLong);
+  
   public abstract void onMonitorEnd();
 }
 

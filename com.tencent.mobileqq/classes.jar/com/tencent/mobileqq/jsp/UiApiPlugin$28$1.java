@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.jsp;
 
 import android.app.ProgressDialog;
-import auvw;
+import awbv;
 import java.io.File;
 
 public class UiApiPlugin$28$1
   implements Runnable
 {
-  public UiApiPlugin$28$1(auvw paramauvw, File paramFile) {}
+  public UiApiPlugin$28$1(awbv paramawbv, File paramFile) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Auvw.a.b.dismiss();
-    this.jdField_a_of_type_Auvw.a.a(this.jdField_a_of_type_JavaIoFile);
+    this.jdField_a_of_type_Awbv.a.b.dismiss();
+    this.jdField_a_of_type_Awbv.a.a(this.jdField_a_of_type_JavaIoFile);
   }
 }
 

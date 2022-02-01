@@ -1,22 +1,13 @@
-import android.content.Intent;
-import android.os.Bundle;
-
-public class wrx
-  implements wqo
+public final class wrx
+  extends vzj
 {
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
 }
 
 

@@ -1,68 +1,13 @@
-import android.app.Activity;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.KCWraperV2InOtherProcess.1;
-import com.tencent.mobileqq.vip.KingCardActivationFragment;
-import com.tencent.util.Pair;
-import mqq.os.MqqHandler;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
 public class bgor
-  extends bgom
 {
-  String a()
-  {
-    return "KC.KCWraper.Other";
-  }
+  akjf jdField_a_of_type_Akjf;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
   
-  void a(ViewGroup paramViewGroup)
-  {
-    a("can not call bindActivationView");
-  }
-  
-  void a(bgoy parambgoy, boolean paramBoolean)
-  {
-    a("queryKingCard : from cache");
-    Pair localPair = a();
-    if (parambgoy != null)
-    {
-      if (paramBoolean) {
-        ThreadManager.getUIHandler().post(new KCWraperV2InOtherProcess.1(this, parambgoy, localPair));
-      }
-    }
-    else {
-      return;
-    }
-    parambgoy.a(true, ((Boolean)localPair.first).booleanValue(), ((Integer)localPair.second).intValue());
-  }
-  
-  void a(Runnable paramRunnable)
-  {
-    a("tryLoad : do nothing");
-  }
-  
-  boolean a()
-  {
-    a("isReady : do nothing");
-    return true;
-  }
-  
-  boolean a(Activity paramActivity)
-  {
-    if (c())
-    {
-      PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
-      return true;
-    }
-    return false;
-  }
-  
-  boolean b()
-  {
-    boolean bool = c();
-    a("supportActivationView = " + bool);
-    return bool;
-  }
+  protected bgor(bgop parambgop) {}
 }
 
 

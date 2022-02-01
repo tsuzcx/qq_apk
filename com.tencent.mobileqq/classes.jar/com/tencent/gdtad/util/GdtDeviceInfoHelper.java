@@ -1,10 +1,10 @@
 package com.tencent.gdtad.util;
 
-import abrl;
-import abro;
-import abrp;
-import absn;
-import abso;
+import acho;
+import achr;
+import achs;
+import acim;
+import acin;
 import android.content.Context;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -14,9 +14,6 @@ import com.tencent.ad.tangram.device.AdDeviceInfo.Params;
 import com.tencent.ad.tangram.device.AdDeviceInfo.Result;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.soso.LbsManagerService;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -26,7 +23,6 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location;
 
 public class GdtDeviceInfoHelper
 {
@@ -43,17 +39,16 @@ public class GdtDeviceInfoHelper
       if (paramParams != null) {}
       for (paramContext = paramParams.businessIdForAidTicketAndTaidTicket;; paramContext = null)
       {
-        abrl.d((String)localObject, String.format("create businessId:%s error", new Object[] { paramContext }));
+        acho.d((String)localObject, String.format("create businessId:%s error", new Object[] { paramContext }));
         return null;
       }
     }
-    abrl.b(TAG, String.format("create businessId:%s", new Object[] { paramParams.businessIdForAidTicketAndTaidTicket }));
+    acho.b(TAG, String.format("create businessId:%s", new Object[] { paramParams.businessIdForAidTicketAndTaidTicket }));
     long l = System.currentTimeMillis();
-    absn.a().a(paramContext, new abso());
+    acim.a().a(paramContext, new acin());
     Object localObject = new GdtDeviceInfoHelper.Result();
     ((GdtDeviceInfoHelper.Result)localObject).deviceInfo = new tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo();
     fillDeviceInfo(paramContext, paramParams, (GdtDeviceInfoHelper.Result)localObject);
-    fillDeviceInfoWithLocation(paramContext, paramParams, (GdtDeviceInfoHelper.Result)localObject);
     fillDeviceInfoWithOthers(paramContext, paramParams, (GdtDeviceInfoHelper.Result)localObject);
     ((GdtDeviceInfoHelper.Result)localObject).eventsForAnalysis.add(AdReporterForAnalysis.createEventForDeviceInfoEnd(paramContext, String.valueOf(paramParams.businessIdForAidTicketAndTaidTicket), System.currentTimeMillis() - l));
     reportForAnalysis(paramContext, paramParams, (GdtDeviceInfoHelper.Result)localObject);
@@ -65,15 +60,15 @@ public class GdtDeviceInfoHelper
   {
     if (paramContext == null)
     {
-      abrl.d(TAG, "create error");
+      acho.d(TAG, "create error");
       return null;
     }
-    absn.a().a(paramContext, new abso());
+    acim.a().a(paramContext, new acin());
     Object localObject = AdDeviceInfo.INSTANCE.create(paramContext, null);
     if (localObject != null) {}
     for (localObject = ((AdDeviceInfo.Result)localObject).deviceInfo; localObject == null; localObject = null)
     {
-      abrl.d(TAG, "create error");
+      acho.d(TAG, "create error");
       return null;
     }
     tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo localDeviceInfo = new tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo();
@@ -93,9 +88,6 @@ public class GdtDeviceInfoHelper
     if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject).device_brand_and_model)) {
       localDeviceInfo.device_brand_and_model.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject).device_brand_and_model);
     }
-    if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject).qadid)) {
-      localDeviceInfo.qadid.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject).qadid);
-    }
     if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject).md5_mac)) {
       localDeviceInfo.md5_mac.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject).md5_mac);
     }
@@ -105,17 +97,17 @@ public class GdtDeviceInfoHelper
     if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject).client_ipv4)) {
       localDeviceInfo.client_ipv4.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject).client_ipv4);
     }
-    if (!TextUtils.isEmpty(abrp.a())) {
-      localDeviceInfo.qq_ver.set(abrp.a());
+    if (!TextUtils.isEmpty(achs.a())) {
+      localDeviceInfo.qq_ver.set(achs.a());
     }
     localDeviceInfo.app_version_id.set(AppSetting.a());
-    paramContext = abro.a(paramContext);
+    paramContext = achr.a(paramContext);
     if ((paramContext != null) && (paramContext.length == 2))
     {
-      localObject = new qq_ad_get.QQAdGet.DeviceInfo.Location();
-      ((qq_ad_get.QQAdGet.DeviceInfo.Location)localObject).coordinates_type.set(0);
-      ((qq_ad_get.QQAdGet.DeviceInfo.Location)localObject).latitude.set(paramContext[0]);
-      ((qq_ad_get.QQAdGet.DeviceInfo.Location)localObject).longitude.set(paramContext[1]);
+      localObject = new tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location();
+      ((tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location)localObject).coordinates_type.set(0);
+      ((tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location)localObject).latitude.set(paramContext[0]);
+      ((tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location)localObject).longitude.set(paramContext[1]);
       localDeviceInfo.location.set((MessageMicro)localObject);
     }
     localDeviceInfo.is_googleplay_version.set(false);
@@ -157,14 +149,17 @@ public class GdtDeviceInfoHelper
         paramResult.deviceInfo.os_ver.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_ver);
       }
       paramResult.deviceInfo.os_type.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_type);
+      if (((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).location != null)
+      {
+        paramResult.deviceInfo.location.coordinates_type.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.coordinates_type);
+        paramResult.deviceInfo.location.latitude.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.latitude);
+        paramResult.deviceInfo.location.longitude.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.longitude);
+      }
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).manufacturer)) {
         paramResult.deviceInfo.manufacturer.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).manufacturer);
       }
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_brand_and_model)) {
         paramResult.deviceInfo.device_brand_and_model.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_brand_and_model);
-      }
-      if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).qadid)) {
-        paramResult.deviceInfo.qadid.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).qadid);
       }
       if (!TextUtils.isEmpty(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_mac)) {
         paramResult.deviceInfo.md5_mac.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_mac);
@@ -189,45 +184,13 @@ public class GdtDeviceInfoHelper
     paramResult.deviceInfo.device_ext.set(((com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_ext);
   }
   
-  private static void fillDeviceInfoWithLocation(Context paramContext, GdtDeviceInfoHelper.Params paramParams, GdtDeviceInfoHelper.Result paramResult)
-  {
-    boolean bool2 = false;
-    if ((paramContext == null) || (paramParams == null) || (paramResult == null) || (paramResult.deviceInfo == null)) {
-      return;
-    }
-    paramParams = LbsManagerService.getCachedLbsInfo("gdt_tangram");
-    if ((paramParams != null) && (paramParams.mLocation != null))
-    {
-      qq_ad_get.QQAdGet.DeviceInfo.Location localLocation = new qq_ad_get.QQAdGet.DeviceInfo.Location();
-      localLocation.coordinates_type.set(0);
-      localLocation.latitude.set(Double.valueOf(paramParams.mLocation.mLat02 * 1000000.0D).intValue());
-      localLocation.longitude.set(Double.valueOf(paramParams.mLocation.mLon02 * 1000000.0D).intValue());
-      paramResult.deviceInfo.location.set(localLocation);
-    }
-    boolean bool1 = bool2;
-    if (paramParams != null)
-    {
-      bool1 = bool2;
-      if (paramParams.mLocation != null) {
-        bool1 = true;
-      }
-    }
-    paramResult = paramResult.eventsForAnalysis;
-    if (bool1) {}
-    for (long l = System.currentTimeMillis() - paramParams.mLocation.locationTime;; l = -2147483648L)
-    {
-      paramResult.add(AdReporterForAnalysis.createEventForLocation(paramContext, bool1, l));
-      return;
-    }
-  }
-  
   private static void fillDeviceInfoWithOthers(Context paramContext, GdtDeviceInfoHelper.Params paramParams, GdtDeviceInfoHelper.Result paramResult)
   {
     if ((paramContext == null) || (paramParams == null) || (paramResult == null) || (paramResult.deviceInfo == null)) {
       return;
     }
-    if (!TextUtils.isEmpty(abrp.a())) {
-      paramResult.deviceInfo.qq_ver.set(abrp.a());
+    if (!TextUtils.isEmpty(achs.a())) {
+      paramResult.deviceInfo.qq_ver.set(achs.a());
     }
     paramResult.deviceInfo.app_version_id.set(AppSetting.a());
     paramResult.deviceInfo.is_googleplay_version.set(false);
@@ -235,7 +198,7 @@ public class GdtDeviceInfoHelper
   
   public static void init(Context paramContext)
   {
-    abrl.b(TAG, String.format("init %b", new Object[] { Boolean.valueOf(initialized) }));
+    acho.b(TAG, String.format("init %b", new Object[] { Boolean.valueOf(initialized) }));
     if (initialized) {
       return;
     }
@@ -266,7 +229,7 @@ public class GdtDeviceInfoHelper
     }
     finally {}
     mapTimeMillis.put(str, Long.valueOf(l));
-    abrl.b(TAG, String.format("reportForAnalysis businessId:%s", new Object[] { str }));
+    acho.b(TAG, String.format("reportForAnalysis businessId:%s", new Object[] { str }));
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), paramResult.eventsForAnalysis);
   }
 }

@@ -1,10 +1,6 @@
-import java.util.List;
-
 public abstract interface bnoo
 {
-  public abstract void a(long paramLong);
-  
-  public abstract void a(List<Long> paramList);
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

@@ -10,7 +10,7 @@ class WXShareFromQZHelper$2
   
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), 2131716929, 0).a();
+    QQToast.a(BaseApplication.getContext(), 2131717292, 0).a();
   }
 }
 

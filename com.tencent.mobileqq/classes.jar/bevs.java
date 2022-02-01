@@ -1,52 +1,32 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.Spannable;
-import android.text.method.ArrowKeyMovementMethod;
-import android.text.method.MovementMethod;
-import android.text.method.Touch;
-import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class bevs
-  extends ArrowKeyMovementMethod
+  implements AdapterView.OnItemSelectedListener
 {
-  private static bevs a;
+  public bevs(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  public static MovementMethod a()
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (a == null) {
-      a = new bevs();
+    if (paramView == null) {
+      return;
     }
-    return a;
+    if (this.a.jdField_a_of_type_Bgno != null) {
+      this.a.jdField_a_of_type_Bgno.a(false, paramInt);
+    }
+    this.a.jdField_a_of_type_Int = paramInt;
+    paramAdapterView = this.a.jdField_a_of_type_Int + 1 + "/" + this.a.b;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
   }
   
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      int i = (int)paramMotionEvent.getX();
-      int j = (int)paramMotionEvent.getY();
-      if (paramTextView.getTag(2131373788) != null)
-      {
-        bevt localbevt = (bevt)paramTextView.getTag(2131373788);
-        Drawable localDrawable = localbevt.getDrawable();
-        if ((localDrawable != null) && (new Rect(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight()).contains(i, j)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("zivonchen", 2, "我擦呢,命中------------------");
-          }
-          localbevt.a(paramTextView);
-          return true;
-        }
-      }
-    }
-    return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-  }
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bevs
  * JD-Core Version:    0.7.0.1
  */

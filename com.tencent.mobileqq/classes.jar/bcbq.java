@@ -1,12 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.SQLiteFTSUtils.Proxy;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bcbq
-  implements IMCoreProxyRoute.SQLiteFTSUtils.Proxy
+class bcbq
+  implements View.OnClickListener
 {
-  public int getFTSNotifyFlag()
+  bcbq(bcbo parambcbo) {}
+  
+  public void onClick(View paramView)
   {
-    return bgbo.a(BaseApplicationImpl.getApplication());
+    this.a.a.b(this.a.a.b);
+    this.a.a.e.setVisibility(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

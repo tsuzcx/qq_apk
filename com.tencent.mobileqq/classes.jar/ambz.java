@@ -1,17 +1,54 @@
-class ambz
-  extends amby
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+
+public class ambz
+  implements DialogInterface.OnDismissListener
 {
-  private int b;
+  public ambz(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity, boolean paramBoolean, aorg paramaorg) {}
   
-  public ambz(int paramInt1, int paramInt2, amca paramamca, ambw paramambw)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramInt1, paramamca, paramambw);
-    this.b = paramInt2;
-  }
-  
-  public alrq a(long paramLong, String paramString1, String paramString2)
-  {
-    return null;
+    Object localObject;
+    boolean bool;
+    if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity))
+    {
+      paramDialogInterface = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
+      localObject = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
+      bool = this.jdField_a_of_type_Boolean;
+      paramDialogInterface.setSpecialCareSwitch(1, new String[] { localObject }, new boolean[] { bool });
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8193);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.app.getCurrentAccountUin();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label208;
+      }
+    }
+    label208:
+    for (paramDialogInterface = "SwitchOn";; paramDialogInterface = "SwitchOff")
+    {
+      VasWebviewUtil.reportCommercialDrainage((String)localObject, "Care", paramDialogInterface, Integer.toString(QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity)), 1, 0, 0, null, null, null);
+      this.jdField_a_of_type_Aorg.a();
+      return;
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8195);
+      paramDialogInterface.arg1 = 0;
+      paramDialogInterface.arg2 = 2131692125;
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity;
+      localObject = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
+      if (!QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity).a()) {}
+      for (bool = true;; bool = false)
+      {
+        paramDialogInterface.a((FormSwitchItem)localObject, bool);
+        break;
+      }
+    }
   }
 }
 

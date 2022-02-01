@@ -1,8 +1,18 @@
-public abstract interface bbtq
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+
+public class bbtq
+  implements View.OnTouchListener
 {
-  public abstract bbtv a();
+  public bbtq(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public abstract bbtv a(int paramInt);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    bkxz.b(paramView);
+    return false;
+  }
 }
 
 

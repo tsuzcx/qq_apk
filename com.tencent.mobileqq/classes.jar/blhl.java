@@ -1,66 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.weiyun.utils.ILog;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
 public final class blhl
-  implements ILog
 {
-  private static blhl a;
+  private final blhm a;
   
-  public static blhl a()
+  public blhl(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
-    if (a == null) {
-      a = new blhl();
+    this(paramContext, paramOnGestureListener, null);
+  }
+  
+  public blhl(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  {
+    if (Build.VERSION.SDK_INT > 17)
+    {
+      this.a = new blhp(paramContext, paramOnGestureListener, paramHandler);
+      return;
     }
-    return a;
+    this.a = new blhn(paramContext, paramOnGestureListener, paramHandler);
   }
   
-  public void d(String paramString1, String paramString2)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    QLog.d(paramString1, 2, paramString2);
-  }
-  
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    d(paramString1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    e(paramString1, paramString2);
-  }
-  
-  public int getLogLevel()
-  {
-    return 1;
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    i(paramString1, paramString2);
-  }
-  
-  public void v(String paramString1, String paramString2) {}
-  
-  public void v(String paramString1, String paramString2, Throwable paramThrowable) {}
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    w(paramString1, paramString2);
+    return this.a.a(paramMotionEvent);
   }
 }
 

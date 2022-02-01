@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
 
-final class bkoy
-  implements DialogInterface.OnClickListener
+class bkoy
+  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnInfoListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bkoy(bkor parambkor, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnInfoListener paramOnInfoListener) {}
+  
+  public boolean onInfo(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    paramDialogInterface.dismiss();
+    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnInfoListener.onInfo(this.jdField_a_of_type_Bkor, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkoy
  * JD-Core Version:    0.7.0.1
  */

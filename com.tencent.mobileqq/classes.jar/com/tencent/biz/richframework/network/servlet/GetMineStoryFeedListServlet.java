@@ -4,7 +4,7 @@ import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bgau;
+import bhjl;
 import com.tencent.biz.richframework.network.request.GetMineStoryFeedListRequest;
 import com.tencent.mobileqq.mini.servlet.MiniAppAbstractServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppObserver;
@@ -31,7 +31,7 @@ public class GetMineStoryFeedListServlet
       try
       {
         PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bgau.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bhjl.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         if (paramFromServiceMsg.isSuccess())
         {
@@ -73,7 +73,7 @@ public class GetMineStoryFeedListServlet
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.qq_story_client.GetStoryFeedList");
-    paramPacket.putSendData(bgau.a((byte[])localObject1));
+    paramPacket.putSendData(bhjl.a((byte[])localObject1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

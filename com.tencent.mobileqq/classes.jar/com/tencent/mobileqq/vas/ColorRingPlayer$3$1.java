@@ -2,7 +2,7 @@ package com.tencent.mobileqq.vas;
 
 import android.media.MediaPlayer;
 import android.widget.ProgressBar;
-import bgdv;
+import bhmn;
 
 class ColorRingPlayer$3$1
   implements Runnable

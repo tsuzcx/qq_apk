@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vas;
 
-import bgfs;
+import bhon;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class URLInterceptManager$2
   implements Runnable
 {
-  public URLInterceptManager$2(bgfs parambgfs, QQAppInterface paramQQAppInterface) {}
+  public URLInterceptManager$2(bhon parambhon, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

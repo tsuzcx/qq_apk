@@ -1,150 +1,200 @@
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Apollo3DMessage;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloMessage;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.MQLruCache;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.GifDrawable;
+import com.tencent.mobileqq.emoticon.QQEmojiUtil;
+import com.tencent.mobileqq.text.EmotcationConstants;
+import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import java.io.File;
 
 public class afuy
-  implements View.OnClickListener
 {
-  public afuy(ApolloItemBuilder paramApolloItemBuilder) {}
+  public static final int a;
+  static final int b = DisplayUtil.dip2px(BaseApplicationImpl.getContext(), 44.0F);
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int c;
   
-  public void onClick(View paramView)
+  static
   {
-    BaseChatPie localBaseChatPie;
+    jdField_a_of_type_Int = (int)(32.0F * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
+  }
+  
+  public static int a(String paramString)
+  {
+    if (paramString.equalsIgnoreCase("Emoji")) {
+      return 0;
+    }
+    if (paramString.equalsIgnoreCase("Face")) {
+      return 1;
+    }
+    if (paramString.equalsIgnoreCase("Image")) {
+      return 2;
+    }
+    if (paramString.equalsIgnoreCase("Lottie")) {
+      return 3;
+    }
+    if (paramString.equalsIgnoreCase("Gif")) {
+      return 4;
+    }
+    if (paramString.equalsIgnoreCase("Pic")) {
+      return 5;
+    }
+    return -1;
+  }
+  
+  public static Drawable a(Context paramContext, afuy paramafuy)
+  {
     int i;
-    int j;
-    label70:
-    Object localObject;
-    int k;
-    label95:
-    ApolloMessage localApolloMessage;
-    Apollo3DMessage localApollo3DMessage;
-    if (ApolloItemBuilder.a(this.a) != null)
+    if (paramafuy.jdField_a_of_type_Boolean) {
+      i = b;
+    }
+    switch (paramafuy.c)
     {
-      localBaseChatPie = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
-      if (localBaseChatPie != null)
+    case 3: 
+    default: 
+      paramContext = null;
+    case 0: 
+    case 1: 
+      do
       {
-        if (localBaseChatPie.getCurrentPanel() != 21) {
-          break label186;
+        do
+        {
+          return paramContext;
+          i = jdField_a_of_type_Int;
+          break;
+          int j = Integer.valueOf(paramafuy.jdField_a_of_type_JavaLangString).intValue();
+          if (j < 0) {
+            break label106;
+          }
+          paramafuy = QQEmojiUtil.getEmojiDrawable(j);
+          paramContext = paramafuy;
+        } while (paramafuy == null);
+        paramafuy.setBounds(new Rect(0, 0, i, i));
+        return paramafuy;
+        return null;
+        paramafuy = a(paramafuy.jdField_a_of_type_JavaLangString);
+        paramContext = paramafuy;
+      } while (paramafuy == null);
+      paramafuy.setBounds(new Rect(0, 0, i, i));
+      return paramafuy;
+    case 2: 
+      String str2 = afut.jdField_a_of_type_JavaLangString + paramafuy.jdField_a_of_type_JavaLangString;
+      String str1 = "JumpImage:" + str2;
+      Bitmap localBitmap2 = (Bitmap)BaseApplicationImpl.sImageCache.get(str1);
+      Bitmap localBitmap1 = localBitmap2;
+      if (localBitmap2 == null)
+      {
+        localBitmap2 = bgyo.a(str2);
+        if (localBitmap2 == null) {
+          break label266;
         }
-        i = 1;
-        if (amge.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) {
-          break label191;
-        }
-        j = 0;
-        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if (!ApolloItemBuilder.a(this.a).isDoubleAction()) {
-          break label196;
-        }
-        k = 1;
-        VipUtils.a((AppInterface)localObject, "cmshow", "Apollo", "groupplusclick", i, k, new String[] { Integer.toString(ApolloItemBuilder.a(this.a).mApolloMessage.id), String.valueOf(j) });
+        BaseApplicationImpl.sImageCache.put(str1, localBitmap2);
+        localBitmap1 = localBitmap2;
       }
-      localApolloMessage = ApolloItemBuilder.a(this.a).mApolloMessage;
-      localApollo3DMessage = ApolloItemBuilder.a(this.a).mApollo3DMessage;
-      if ((localApolloMessage != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-        break label202;
+      for (;;)
+      {
+        paramContext = new BitmapDrawable(paramContext.getResources(), localBitmap1);
+        paramContext.setBounds(new Rect(0, 0, i, i));
+        return paramContext;
+        label266:
+        localBitmap1 = localBitmap2;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("AioAnimationRule", 2, "decodeFile error, fileName: " + paramafuy.jdField_a_of_type_JavaLangString);
+          localBitmap1 = localBitmap2;
+        }
+      }
+    case 4: 
+      label106:
+      return d(paramContext, paramafuy);
+    }
+    return c(paramContext, paramafuy);
+  }
+  
+  public static Drawable a(String paramString)
+  {
+    int j = EmotcationConstants.SYS_EMOTICON_SYMBOL.length;
+    int i = 0;
+    if (i < j) {
+      if (paramString.equals(EmotcationConstants.SYS_EMOTICON_SYMBOL[i]))
+      {
+        j = i;
+        if (QLog.isColorLevel()) {
+          QLog.d("AioAnimationRule", 2, "find str = " + paramString + ", index = " + i);
+        }
       }
     }
-    label186:
-    label191:
-    label196:
-    label202:
-    amlx localamlx;
-    do
+    for (j = i;; j = -1)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = 0;
-      break;
-      j = 1;
-      break label70;
-      k = 0;
-      break label95;
-      localamlx = new amlx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-      localObject = new ApolloActionData();
-      amir localamir = (amir)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
-      if (localamir == null) {
-        break label645;
-      }
-      j = localApolloMessage.id;
-      i = j;
-      if (localApollo3DMessage != null)
+      if (j < 0)
       {
-        i = j;
-        if (ApolloActionData.isAction3DModel(localApollo3DMessage.actionID_3D)) {
-          i = localApollo3DMessage.actionID_3D;
-        }
+        return null;
+        i += 1;
+        break;
       }
-      localObject = localamir.a(i);
-    } while (localObject == null);
-    label388:
-    label645:
+      return TextUtils.getSysEmotcationDrawable(j, false);
+    }
+  }
+  
+  private static Drawable b(Context paramContext, afuy paramafuy)
+  {
+    String str2 = afut.jdField_a_of_type_JavaLangString + paramafuy.jdField_a_of_type_JavaLangString;
+    String str1 = "JumpImage:" + str2;
+    Bitmap localBitmap2 = (Bitmap)BaseApplicationImpl.sImageCache.get(str1);
+    Bitmap localBitmap1 = localBitmap2;
+    if (localBitmap2 == null)
+    {
+      localBitmap2 = bgyo.a(str2);
+      if (localBitmap2 == null) {
+        break label100;
+      }
+      BaseApplicationImpl.sImageCache.put(str1, localBitmap2);
+      localBitmap1 = localBitmap2;
+    }
     for (;;)
     {
-      ((ApolloActionData)localObject).peerUin = (localApolloMessage.peer_uin + "");
-      if (localApolloMessage.text != null) {
-        ((ApolloActionData)localObject).atNickName = new String(localApolloMessage.text);
-      }
-      ((ApolloActionData)localObject).inputText = ApolloItemBuilder.a(this.a).inputText;
-      localamlx.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = ((ApolloActionData)localObject);
-      if (ApolloItemBuilder.a(this.a).isBarrageMode())
+      return new BitmapDrawable(paramContext.getResources(), localBitmap1);
+      label100:
+      localBitmap1 = localBitmap2;
+      if (QLog.isColorLevel())
       {
-        i = 1;
-        localamlx.d = i;
-        localamlx.b = ApolloItemBuilder.a(this.a).inputText;
-        localamlx.e = ApolloItemBuilder.a(this.a).audioId;
-        localamlx.jdField_a_of_type_Float = ApolloItemBuilder.a(this.a).audioStartTime;
-        localamlx.h = 2;
-        acvv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localamlx);
-        if (amge.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) {
-          break;
-        }
-        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-        if (localObject != null)
-        {
-          ((MqqHandler)localObject).obtainMessage(49).sendToTarget();
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloItemBuilder", 2, "onPlusIconClickListener INIT_STATUS user open panel");
-          }
-        }
-        if ((this.a.jdField_a_of_type_AndroidContentContext == null) || (((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment() == null)) {
-          break;
-        }
-        if ((ApolloItemBuilder.a(this.a).mApollo3DMessage == null) || (ApolloItemBuilder.a(this.a).mApollo3DMessage.actionID_3D <= 0)) {
-          break label633;
-        }
+        QLog.e("AioAnimationRule", 2, "decodeFile error, fileName: " + paramafuy.jdField_a_of_type_JavaLangString);
+        localBitmap1 = localBitmap2;
       }
-      label633:
-      for (i = 1;; i = 0)
-      {
-        if ((localBaseChatPie == null) || (localBaseChatPie.mApolloPanel == null)) {
-          break label638;
-        }
-        localBaseChatPie.mApolloPanel.c = 1;
-        localBaseChatPie.mApolloPanel.e(i);
-        break;
-        i = 0;
-        break label388;
-      }
-      label638:
-      ApolloPanel.b = i;
-      break;
     }
+  }
+  
+  private static Drawable c(Context paramContext, afuy paramafuy)
+  {
+    paramafuy = b(paramContext, paramafuy);
+    float f = paramContext.getResources().getDisplayMetrics().density;
+    paramafuy.setBounds(new Rect(0, 0, (int)(paramafuy.getIntrinsicWidth() * f), (int)(f * paramafuy.getIntrinsicHeight())));
+    return paramafuy;
+  }
+  
+  private static Drawable d(Context paramContext, afuy paramafuy)
+  {
+    paramafuy = new File(afut.jdField_a_of_type_JavaLangString + paramafuy.jdField_a_of_type_JavaLangString);
+    try
+    {
+      paramContext = new GifDrawable(paramafuy, paramContext.getResources());
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("AioAnimationRule", 1, "[getGifDrawable] get gif drawable error", paramContext);
+    }
+    return null;
   }
 }
 

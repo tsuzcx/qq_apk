@@ -1,14 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-public final class ambq
-  implements EIPCResultCallback
+public class ambq
+  implements DialogInterface.OnClickListener
 {
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    QLog.i("CmShow_CmShowRenderView", 1, "openCmShowStore CmShow code:" + paramEIPCResult.code);
-  }
+  public ambq(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

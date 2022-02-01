@@ -1,6 +1,6 @@
 package cooperation.qzone.contentbox;
 
-import akms;
+import alik;
 import com.tencent.mobileqq.data.RecentUser;
 
 class QZoneMsgFragment$3
@@ -11,7 +11,7 @@ class QZoneMsgFragment$3
   public void run()
   {
     RecentUser localRecentUser = new RecentUser("2290230341", 1008);
-    akms.a(this.this$0.app, localRecentUser, true, true);
+    alik.a(this.this$0.app, localRecentUser, true, true);
   }
 }
 

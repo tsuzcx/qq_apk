@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.SendMsg;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnInfoListener;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
 
-public final class bkmp
-  implements Parcelable.Creator<SendMsg>
+class bkmp
+  implements ISuperPlayer.OnInfoListener
 {
-  public SendMsg a(Parcel paramParcel)
-  {
-    return new SendMsg(paramParcel);
-  }
+  bkmp(bkmk parambkmk, AbsVideoPlayer.OnInfoListener paramOnInfoListener) {}
   
-  public SendMsg[] a(int paramInt)
+  public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    return new SendMsg[paramInt];
+    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnInfoListener.onInfo(this.jdField_a_of_type_Bkmk, paramInt, 0);
   }
 }
 

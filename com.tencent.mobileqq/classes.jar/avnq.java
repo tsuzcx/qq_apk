@@ -1,23 +1,25 @@
-import android.content.ComponentName;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avnq
-  implements DialogInterface.OnClickListener
+public class avnq
+  implements View.OnClickListener
 {
-  avnq(avnp paramavnp) {}
+  public avnq(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    Intent localIntent = new Intent();
-    localIntent.setComponent(new ComponentName("com.tencent.tim", "com.tencent.mobileqq.activity.SplashActivity"));
-    localIntent.setFlags(268435456);
-    avnp.a(this.a).getApp().startActivity(localIntent);
-    paramDialogInterface.dismiss();
-    bcef.b(avnp.a(this.a), "dc00898", "", "", "0X80085DA", "0X80085DA", 0, 0, "", "", "", "");
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if (this.a.a == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a.a(3, paramView);
+      QLog.d("HotVideoRelativeLayout", 2, "click mute view");
+    }
   }
 }
 

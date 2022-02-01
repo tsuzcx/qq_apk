@@ -1,12 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class ayge
-  implements DialogInterface.OnClickListener
+class ayge
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ayge(ayfx paramayfx) {}
+  
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://buluo.qq.com/mobile/xxq_setting.html?_wv=1027&uin=" + this.a.a.app.getCurrentUin());
+    localIntent.putExtra("reqType", 1);
+    this.a.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

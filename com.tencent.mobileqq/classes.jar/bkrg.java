@@ -1,44 +1,49 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.app.Activity;
+import android.content.res.Resources;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import com.tencent.qqmini.proxyimpl.ShareProxyImpl.6;
+import com.tencent.qqmini.proxyimpl.ShareProxyImpl.6.1;
+import java.io.File;
 
 public class bkrg
-  extends OnPluginInstallListener.Stub
+  implements URLDrawable.URLDrawableListener
 {
-  public bkrg(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
+  public bkrg(ShareProxyImpl.6.1 param1) {}
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    String str = String.valueOf(paramInt);
-    paramString = amtj.a(2131709499);
-    if (this.a.b == QQIndividualityBridgeActivity.c) {
-      paramString = amtj.a(2131709492);
-    }
-    for (;;)
-    {
-      bkkq.a(str, paramString);
-      int i = NetworkUtil.getSystemNetwork(this.a);
-      QLog.e("QQIndividuality", 2, "install plugin fail: " + paramInt + " and netType = " + i);
-      this.a.setResult(1001);
-      QQIndividualityBridgeActivity.c(this.a);
-      bcef.b(null, "CliOper", "", "", "ep_mall", "0X8006A98", 0, 0, str, String.valueOf(i), "", "");
-      return;
-      if (this.a.b == QQIndividualityBridgeActivity.d) {
-        paramString = amtj.a(2131709493);
-      } else if (this.a.b == QQIndividualityBridgeActivity.e) {
-        paramString = amtj.a(2131709496);
-      }
-    }
+    QLog.e("ShareProxyImpl", 1, "onLoadCanceled");
   }
   
-  public void onInstallFinish(String paramString)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.a.b();
+    QLog.e("ShareProxyImpl", 1, "shareNetworkPicMessage failed, because of picture downloadFailed");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = paramURLDrawable.getFileInLocal();
+    if ((paramURLDrawable != null) && (paramURLDrawable.exists())) {}
+    for (int i = 1;; i = 0)
+    {
+      this.a.jdField_a_of_type_Bisl.dismiss();
+      if (i == 0) {
+        QQToast.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_AndroidAppActivity, 1, anvx.a(2131702228), 1).b(this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299080));
+      }
+      if (i == 0) {
+        break;
+      }
+      this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.isLocalPic = true;
+      this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.sharePicPath = paramURLDrawable.getPath();
+      bkqz.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.this$0, this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData);
+      return;
+    }
+    QLog.e("ShareProxyImpl", 1, "shareNetworkPicMessage failed, because of picture downloadFailed");
   }
 }
 

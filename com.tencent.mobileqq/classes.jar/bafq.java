@@ -1,160 +1,52 @@
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.support.annotation.Nullable;
-import android.util.AndroidRuntimeException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class bafq
-  implements baen, baet
+  implements bafu
 {
-  private baem jdField_a_of_type_Baem = new bafr(this);
-  private baft jdField_a_of_type_Baft;
-  private bafu jdField_a_of_type_Bafu = new bafu();
-  private Comparator<baep> jdField_a_of_type_JavaUtilComparator = new bafs(this);
-  private final List<baep> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public bafq(InterestSwitchEditActivity paramInterestSwitchEditActivity) {}
   
-  private void f()
+  public void a(@NotNull View paramView, bagn parambagn)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    if (bnrf.a(paramView)) {
+      return;
+    }
+    InterestSwitchEditActivity.a(this.a, parambagn);
+    InterestSwitchEditActivity.b(this.a, parambagn);
+  }
+  
+  public void b(@NotNull View paramView, @Nullable bagn parambagn)
+  {
+    int j = 0;
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+      QQToast.a(BaseApplicationImpl.sApplication, 2131694253, 0).b(this.a.getTitleBarHeight());
+    }
+    while (parambagn == null) {
+      return;
+    }
+    if (parambagn.b()) {}
+    for (int i = 1;; i = 0)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((baep)localIterator.next()).b();
+      if (bagq.a.a(parambagn.b())) {
+        if (i != 0) {}
       }
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public int a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      return i;
-    }
-  }
-  
-  public int a(List<baep> paramList)
-  {
-    if (paramList.size() > 0) {
-      xvv.c("FlowEdit_VideoFlowDecodeWrapper", "onFrameReached : size " + paramList.size() + ", range [" + ((baep)paramList.get(0)).a() + " - " + ((baep)paramList.get(paramList.size() - 1)).a() + "], cycle " + ((baep)paramList.get(0)).b() + ", current size " + this.jdField_a_of_type_JavaUtilList.size());
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      for (;;)
+      for (j = 1;; j = i)
       {
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-        Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilComparator);
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        if (j <= 5) {
-          break;
+        if ((parambagn.b() == 42340) && (j == 1) && (QQPlayerService.a())) {
+          QQPlayerService.c(BaseApplicationImpl.getContext());
         }
-        i = 1;
-        if ((i != 0) && (this.jdField_a_of_type_Baft != null)) {
-          this.jdField_a_of_type_Baft.a();
-        }
-        return j;
-        xvv.d("FlowEdit_VideoFlowDecodeWrapper", "onFrameReached : size 0");
+        InterestSwitchEditActivity.a(this.a, parambagn, j);
+        InterestSwitchEditActivity.c(this.a, parambagn);
+        return;
       }
-      int i = 0;
     }
-  }
-  
-  @Nullable
-  public baep a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        baep localbaep = (baep)this.jdField_a_of_type_JavaUtilList.remove(0);
-        return localbaep;
-      }
-      return null;
-    }
-  }
-  
-  public void a()
-  {
-    xvv.a("FlowEdit_VideoFlowDecodeWrapper", new Throwable(), "stopDecode", new Object[0]);
-    this.jdField_a_of_type_Bafu.a();
-    xvv.c("FlowEdit_VideoFlowDecodeWrapper", "clear frame list because of stopDecode");
-    f();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Bafu.a(paramInt);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_Bafu.a(paramLong1, paramLong2);
-  }
-  
-  public void a(baej parambaej, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, baem parambaem)
-  {
-    throw new AndroidRuntimeException("please use startDecode(FlowDecodeConfig, FlowListener) instead");
-  }
-  
-  public void a(baes parambaes, baft parambaft)
-  {
-    this.jdField_a_of_type_Baft = parambaft;
-    xvv.a("FlowEdit_VideoFlowDecodeWrapper", new Throwable(), "startDecode : decodeConfig = %s", new Object[] { parambaes });
-    this.jdField_a_of_type_Bafu.a(parambaes, this.jdField_a_of_type_Baem, this);
-  }
-  
-  @Nullable
-  public baep b()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        baep localbaep = (baep)this.jdField_a_of_type_JavaUtilList.get(0);
-        return localbaep;
-      }
-      return null;
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bafu.b();
-  }
-  
-  @Nullable
-  public baep c()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.size() >= 2)
-      {
-        baep localbaep = (baep)this.jdField_a_of_type_JavaUtilList.get(1);
-        return localbaep;
-      }
-      return null;
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Bafu.c();
-  }
-  
-  public void d()
-  {
-    xvv.c("FlowEdit_VideoFlowDecodeWrapper", "clear frame list because of play range change");
-    f();
-  }
-  
-  public void e()
-  {
-    xvv.c("FlowEdit_VideoFlowDecodeWrapper", "clear frame list because of direction change");
-    f();
   }
 }
 

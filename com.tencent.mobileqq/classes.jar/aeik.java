@@ -1,30 +1,17 @@
 import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeik
-  implements bhfc
+  implements View.OnClickListener
 {
-  public aeik(SubLoginActivity paramSubLoginActivity) {}
+  public aeik(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      int[] arrayOfInt = new int[2];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = arrayOfInt[1];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = paramInt1 - arrayOfInt[1] + SubLoginActivity.a(this.a).getHeight() - paramInt2;
-      if (paramInt1 > 0) {
-        SubLoginActivity.a(this.a).setPadding(SubLoginActivity.a(this.a).getPaddingLeft(), SubLoginActivity.a(this.a).getPaddingTop() - paramInt1, SubLoginActivity.a(this.a).getPaddingRight(), SubLoginActivity.a(this.a).getPaddingBottom());
-      }
-      SubLoginActivity.b(this.a).setVisibility(8);
-      return;
-    }
-    SubLoginActivity.b(this.a).setVisibility(0);
-    SubLoginActivity.a(this.a).setPadding(0, 0, 0, 0);
+    MoveToGroupActivity.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

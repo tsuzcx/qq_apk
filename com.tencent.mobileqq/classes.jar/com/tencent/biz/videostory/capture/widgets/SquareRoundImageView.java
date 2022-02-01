@@ -1,5 +1,6 @@
 package com.tencent.biz.videostory.capture.widgets;
 
+import aalz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -27,18 +28,17 @@ import android.widget.ImageView.ScaleType;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.qphone.base.util.QLog;
-import zwn;
 
 public class SquareRoundImageView
   extends ImageView
 {
   private static int jdField_a_of_type_Int = ScreenUtil.dip2px(2.0F);
+  private aalz jdField_a_of_type_Aalz;
   private BitmapShader jdField_a_of_type_AndroidGraphicsBitmapShader;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private PaintFlagsDrawFilter jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter;
   protected Path a;
-  private zwn jdField_a_of_type_Zwn;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = jdField_a_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -121,11 +121,11 @@ public class SquareRoundImageView
   
   private void b()
   {
-    if (this.jdField_a_of_type_Zwn == null) {
+    if (this.jdField_a_of_type_Aalz == null) {
       try
       {
-        if (this.jdField_a_of_type_Zwn == null) {
-          this.jdField_a_of_type_Zwn = new zwn(Looper.getMainLooper(), this, null);
+        if (this.jdField_a_of_type_Aalz == null) {
+          this.jdField_a_of_type_Aalz = new aalz(Looper.getMainLooper(), this, null);
         }
         return;
       }
@@ -210,8 +210,8 @@ public class SquareRoundImageView
   public void a()
   {
     b();
-    if (!this.jdField_a_of_type_Zwn.hasMessages(1)) {
-      this.jdField_a_of_type_Zwn.sendEmptyMessage(1);
+    if (!this.jdField_a_of_type_Aalz.hasMessages(1)) {
+      this.jdField_a_of_type_Aalz.sendEmptyMessage(1);
     }
   }
   
@@ -299,8 +299,8 @@ public class SquareRoundImageView
     if (paramDrawable == null)
     {
       b();
-      if (this.jdField_a_of_type_Zwn.hasMessages(1)) {
-        this.jdField_a_of_type_Zwn.removeMessages(1);
+      if (this.jdField_a_of_type_Aalz.hasMessages(1)) {
+        this.jdField_a_of_type_Aalz.removeMessages(1);
       }
       this.jdField_a_of_type_AndroidGraphicsBitmapShader = null;
       this.d = 0;

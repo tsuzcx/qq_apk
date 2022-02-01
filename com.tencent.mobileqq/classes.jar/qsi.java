@@ -1,19 +1,52 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.ProteusLog;
+import com.tencent.qphone.base.util.QLog;
 
-class qsi
-  implements View.OnTouchListener
+public class qsi
+  implements LogUtil.ProteusLog
 {
-  qsi(qse paramqse, LinearLayout paramLinearLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void d(String paramString1, int paramInt, String paramString2)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
+    QLog.d(paramString1, paramInt, paramString2);
+  }
+  
+  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.e(paramString1, paramInt, paramString2);
+  }
+  
+  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.i(paramString1, paramInt, paramString2);
+  }
+  
+  public void i(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.w(paramString1, paramInt, paramString2);
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, paramInt, paramString2, paramThrowable);
   }
 }
 

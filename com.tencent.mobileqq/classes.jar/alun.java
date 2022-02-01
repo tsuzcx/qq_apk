@@ -1,10 +1,6 @@
 public abstract interface alun
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public abstract void a(String paramString);
 }
 
 

@@ -1,112 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class baiz
-  extends aptq<baiy>
+class baiz
+  implements balq
 {
-  public baiy a;
+  baiz(baiy parambaiy) {}
   
-  public static baiz a()
+  public int a()
   {
-    return bajb.a();
+    return 1920000;
   }
   
-  public baiy a()
+  public void a(long paramLong)
   {
-    this.a = ((baiy)apub.a().a(654));
-    return this.a;
-  }
-  
-  @NonNull
-  public baiy a(int paramInt)
-  {
-    return new baiy();
-  }
-  
-  @Nullable
-  public baiy a(aptx[] paramArrayOfaptx)
-  {
-    BrowserLogHelper.getInstance().getGalleryLog().d("LiuHaiWhiteListConfProcessor", 4, "onParsed confFiles = " + paramArrayOfaptx);
-    if (this.a == null) {
-      this.a = new baiy();
-    }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      paramArrayOfaptx = paramArrayOfaptx[0].a;
-      BrowserLogHelper.getInstance().getGalleryLog().d("LiuHaiWhiteListConfProcessor", 4, "onParsed config = " + paramArrayOfaptx);
-      this.a.a = baix.a(paramArrayOfaptx);
-    }
-    return this.a;
-  }
-  
-  public void a(baiy parambaiy)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LiuHaiWhiteListConfProcessor", 2, "onUpdate newConf = " + parambaiy);
-    }
-    if ((parambaiy != null) && (parambaiy.a != null)) {
-      this.a = parambaiy;
+    bakl.a("AudioNewController", "onRecordFinish, Duration:" + paramLong + ", CacheSize:" + this.a.jdField_a_of_type_Bajh.a());
+    if (paramLong > 0L) {
+      this.a.b.set(paramLong);
     }
   }
   
-  public boolean a(String paramString1, String paramString2, String paramString3)
+  public void a(String paramString)
   {
-    if (this.a == null) {
-      this.a = a();
+    bakl.a("AudioNewController", paramString);
+  }
+  
+  public void a(byte[] paramArrayOfByte, long paramLong)
+  {
+    if (paramLong > 0L) {
+      this.a.b.set(paramLong);
     }
-    if ((this.a == null) || (this.a.a == null) || (this.a.a.isEmpty())) {
-      return false;
-    }
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext())
-      {
-        bajc localbajc = (bajc)localIterator.next();
-        if ((!TextUtils.isEmpty(localbajc.a)) && (!TextUtils.isEmpty(localbajc.b)) && (!TextUtils.isEmpty(localbajc.c)) && (paramString1.equals(localbajc.a)) && (paramString2.equals(localbajc.b)) && (paramString3.equals(localbajc.c))) {
-          return true;
-        }
-      }
-    }
-    return false;
+    int i = this.a.a(paramArrayOfByte);
+    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam, i);
   }
   
-  public Class<baiy> clazz()
+  public int b()
   {
-    return baiy.class;
+    return 60000;
   }
   
-  public boolean isNeedCompressed()
+  public void b(long paramLong)
   {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LiuHaiWhiteListConfProcessor", 2, "onReqFailed failCode = " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 654;
+    bakl.a("AudioNewController", "IRecordEventListener, onRecordStart:" + paramLong);
+    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam, b());
   }
 }
 

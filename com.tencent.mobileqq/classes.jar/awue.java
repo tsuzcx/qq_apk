@@ -1,17 +1,29 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.4.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class awue
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  extends aslz
 {
-  awue(awua paramawua) {}
+  public awue(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.4.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("MatchChatMsgListFragment", 2, "onUpdateSignalBombPush " + paramBoolean + " " + paramString);
+    }
+    if ((this.a.a != null) && (this.a.a.isResume()) && (!MatchChatMsgListFragment.a(this.a))) {
+      MatchChatMsgListFragment.a(this.a, asru.a(this.a.a, this.a.a.app, MatchChatMsgListFragment.a(this.a)));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MatchChatMsgListFragment", 2, String.format("onGetExtendFriendOnlineState success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    MatchChatMsgListFragment.a(this.a, paramArrayList);
   }
 }
 

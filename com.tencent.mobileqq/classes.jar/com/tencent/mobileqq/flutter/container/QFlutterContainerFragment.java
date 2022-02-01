@@ -6,16 +6,16 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import atjg;
-import atjh;
+import aunz;
+import auoa;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class QFlutterContainerFragment
   extends PublicBaseFragment
-  implements atjg
+  implements aunz
 {
-  private atjh a;
+  private auoa a;
   
   public Activity a()
   {
@@ -35,7 +35,7 @@ public class QFlutterContainerFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.a = new atjh(this);
+    this.a = new auoa(this);
     this.a.a(paramBundle);
   }
   

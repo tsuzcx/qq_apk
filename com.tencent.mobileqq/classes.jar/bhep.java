@@ -1,19 +1,20 @@
-import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class bhep
-  extends FrameLayout.LayoutParams
+class bhep
+  extends axnm
 {
-  public int a;
-  public int b;
+  bhep(bheh parambheh, long paramLong) {}
   
-  public bhep(int paramInt1, int paramInt2, int paramInt3)
+  public void a(long paramLong1, long paramLong2)
   {
-    super(paramInt1, paramInt2, paramInt3);
+    if ((this.jdField_a_of_type_Long == paramLong1) && (paramLong2 > 0L)) {
+      bhaa.a((BaseActivity)this.jdField_a_of_type_Bheh.a, paramLong2, this.jdField_a_of_type_Long + "", null, 20003);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhep
  * JD-Core Version:    0.7.0.1
  */

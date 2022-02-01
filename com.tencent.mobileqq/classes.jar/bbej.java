@@ -1,15 +1,14 @@
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
 
-class bbej
+public class bbej
+  implements blgg
 {
-  String jdField_a_of_type_JavaLangString;
-  List<bayp> jdField_a_of_type_JavaUtilList;
+  public bbej(IosTimepicker paramIosTimepicker) {}
   
-  public bbej(String paramString, List<bayp> paramList)
+  public void a(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    IosTimepicker.a(this.a, paramView, 1);
   }
 }
 

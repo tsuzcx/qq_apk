@@ -1,21 +1,45 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 
-class muc
-  implements bjog
+public final class muc
 {
-  muc(mua parammua) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ClipDrawable jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
   
-  public void onDismiss()
+  public muc(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D22 at: " + System.currentTimeMillis());
-    }
-    bcef.b(null, "CliOper", "", "", "0X8008D22", "0X8008D22", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842070);
+    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable = ((ClipDrawable)this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842069));
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable });
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(0, 0, 0, 0, 0);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(1, 0, 0, 0, 0);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+  }
+  
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     muc
  * JD-Core Version:    0.7.0.1
  */

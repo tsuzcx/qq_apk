@@ -1,48 +1,22 @@
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 public class bjnv
+  implements DialogInterface.OnCancelListener
 {
-  public int a;
-  public String a;
-  public HashMap<String, Object> a;
-  public int b;
-  public int c;
-  public int d;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public bjnv(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  public bjnv(bjnn parambjnn, String paramString1, String paramString2)
   {
-    this(paramInt1, paramString, paramInt2, paramInt3, 1);
+    this.jdField_a_of_type_JavaLangString = bjlu.a(paramString1, "NEWYYB");
+    this.b = paramString2;
   }
   
-  public bjnv(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.b = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt2;
-    this.d = paramInt3;
-    this.jdField_a_of_type_Int = paramInt4;
-  }
-  
-  public bjnv(String paramString, int paramInt1, int paramInt2)
-  {
-    this(0, paramString, paramInt1, paramInt2);
-  }
-  
-  public Object a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramObject);
+    this.jdField_a_of_type_Bjnn.a(this.b);
+    bjlu.a("720", this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vas.ipc;
 
-import amyh;
 import android.os.Bundle;
+import aoav;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 
 class VasLiveIPCModule$1
-  extends amyh
+  extends aoav
 {
   VasLiveIPCModule$1(VasLiveIPCModule paramVasLiveIPCModule, int paramInt) {}
   

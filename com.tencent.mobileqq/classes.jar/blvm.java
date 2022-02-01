@@ -1,187 +1,240 @@
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningServiceInfo;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment64BitUtils;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.mobileqq.utils.FileUtils;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResUtil;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.IliveLaunchFragment;
+import cooperation.ilive.manager.IliveDbManager;
+import cooperation.ilive.util.IliveEntranceUtil.1;
+import java.util.List;
 
-final class blvm
-  implements INetEngine.INetEngineListener
+public class blvm
 {
-  blvm(bbrg parambbrg, AEResInfo paramAEResInfo) {}
+  private static long a;
+  public static boolean a;
+  private static long b;
+  public static boolean b;
   
-  public void onResp(NetResp paramNetResp)
+  public static void a(Context paramContext, String paramString)
   {
-    bmbx.b("AEResDownload", "[onResp] start");
-    NetReq localNetReq = paramNetResp.mReq;
-    String str3 = (String)localNetReq.getUserData();
-    bmbx.b("AEResDownload", "[onResp] key:" + str3);
-    if (str3 == null)
-    {
-      bmbx.d("AEResDownload", "[onResp] key=null ");
-      this.jdField_a_of_type_Bbrg.onDownloadFinish("", -1, "");
+    QLog.e("IliveEntranceUtil", 1, "liveAnchorEntranceJump source = " + paramString);
+    Intent localIntent = new Intent();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("page_type", 1);
+    localBundle.putString("source", paramString);
+    localBundle.putBoolean("isDebugVersion", false);
+    localBundle.putString("qqVersion", AppSetting.jdField_a_of_type_JavaLangString);
+    localBundle.putLong("start_time", System.currentTimeMillis());
+    localIntent.putExtra("KEY_EXTRAS", localBundle);
+    localIntent.putExtra("KEY_IS_START_LIVE", true);
+    IliveLaunchFragment.startSelf(paramContext, localIntent);
+    bhpu.a("anchor_enter_count", null, 0L);
+  }
+  
+  public static void a(bluy parambluy)
+  {
+    if (parambluy == null) {
       return;
     }
+    if (!TextUtils.isEmpty(parambluy.c)) {}
     try
     {
-      if (paramNetResp.mResult != 0) {
-        break label774;
-      }
-      bmbx.b("AEResDownload", "[onResp] NetResp.ResultOk");
-      localObject2 = (ShortVideoResourceManager.SVConfigItem)blvl.a().get(str3);
-      str4 = localNetReq.mOutPath;
-      bmbx.b("AEResDownload", "[onResp]filePath=" + str4 + ",resp.mResult=" + paramNetResp.mResult + ",mHttpCode=" + paramNetResp.mHttpCode + ",mErrCode=" + paramNetResp.mErrCode + ",mErrDesc=" + paramNetResp.mErrDesc);
-      if ((!VideoEnvironment64BitUtils.checkIs64bit()) || (!((ShortVideoResourceManager.SVConfigItem)localObject2).check64BitReady())) {
-        break label497;
-      }
-      String str2 = ((ShortVideoResourceManager.SVConfigItem)localObject2).arm64v8a_md5;
-      i = AEResUtil.verifyResource(str3, str2, str4);
-      if (i != 0) {
-        break label733;
-      }
-      bmbx.b("AEResDownload", "[onResp] verifyResource:success=");
-      str1 = AEResUtil.getZipFilePath((String)localNetReq.getUserData());
+      parambluy.c = Uri.decode(parambluy.c);
+      if (TextUtils.isEmpty(parambluy.e)) {}
+    }
+    catch (Exception localException1)
+    {
       try
       {
-        if (!FileUtils.rename(str4, str1)) {
-          break label704;
+        parambluy.e = Uri.decode(parambluy.e);
+        QLog.e("IliveEntranceUtil", 1, "liveWatchEntranceJump source = " + parambluy.jdField_a_of_type_JavaLangString + " roomID = " + parambluy.b + " retain = " + parambluy.jdField_a_of_type_Boolean + " sIsAnchorIsLive = " + jdField_a_of_type_Boolean + " sIsAudienceIsLive = " + jdField_b_of_type_Boolean);
+        if (QLog.isColorLevel()) {
+          QLog.i("IliveEntranceUtil", 2, " rtmp = " + parambluy.c + " closeJump = " + parambluy.e + " traceInfo = " + parambluy.f);
         }
-        localObject2 = ((ShortVideoResourceManager.SVConfigItem)localObject2).name.substring(this.jdField_a_of_type_DovComQqImAeDownloadAEResInfo.resPrefix.length());
-        str2 = str2 + '_' + (String)localObject2;
-        str4 = AEResUtil.getUnzipFilePathBase();
-        str4 = str4 + str2 + File.separator;
-        File localFile = new File(str4);
-        bool = localFile.mkdirs();
-        bmbx.b("AEResDownload", "[onResp] unzipFile:[exists]mkOK=" + bool);
-        if (localFile.exists()) {
-          break label507;
+        if (TextUtils.isEmpty(parambluy.b)) {
+          parambluy.b = "-1";
         }
-        bmbx.d("AEResDownload", "[onResp] unzipFile.exists=false[error]");
-        this.jdField_a_of_type_Bbrg.onDownloadFinish(str3, -118, str1);
-        return;
-      }
-      catch (SecurityException localSecurityException1) {}
-    }
-    catch (SecurityException localSecurityException2)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        String str4;
-        int i;
-        boolean bool;
-        String str1 = "";
-      }
-    }
-    bmbx.a("AEResDownload", "[SecurityException]", localSecurityException1);
-    i = -1;
-    for (;;)
-    {
-      label774:
-      try
-      {
-        if (this.jdField_a_of_type_DovComQqImAeDownloadAEResInfo.isPredownload)
+        if ((jdField_a_of_type_Boolean) && (b(parambluy.jdField_a_of_type_AndroidContentContext)))
         {
-          localObject1 = (PreDownloadController)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getManager(193);
-          if ((localObject1 != null) && (((PreDownloadController)localObject1).isEnable()))
-          {
-            if (i != 0) {
-              continue;
-            }
-            ((PreDownloadController)localObject1).preDownloadSuccess((String)paramNetResp.mRespProperties.get("param_url"), paramNetResp.mTotalFileLen);
-          }
+          QLog.e("IliveEntranceUtil", 1, "sIsAnchorIsLive current anchor is live stop jump");
+          return;
+          localException1 = localException1;
+          localException1.printStackTrace();
         }
       }
-      catch (Throwable paramNetResp)
+      catch (Exception localException2)
       {
-        Object localObject1;
-        label497:
-        label507:
-        bmbx.a("AEResDownload", "[onResp] isPredownload callback ERROR", paramNetResp);
-        label704:
-        label733:
-        continue;
-      }
-      this.jdField_a_of_type_Bbrg.onDownloadFinish(str3, i, str1);
-      return;
-      localObject1 = ((ShortVideoResourceManager.SVConfigItem)localObject2).armv7a_md5;
-      break;
-      try
-      {
-        FileUtils.uncompressZip(str1, str4, false);
-        bool = AEResUtil.copyAEResFileToFinalDir((String)localObject2, str4);
-        bmbx.b("AEResDownload", "[onResp]  copyResFileToFinalDir copyOK=" + bool);
-        if (!bool) {
-          continue;
+        for (;;)
+        {
+          localException2.printStackTrace();
         }
-        if (AEResUtil.saveAEResUnzipFinalPath((String)localObject2)) {
-          if (AEResUtil.saveAEResUnzipPath((String)localObject1, this.jdField_a_of_type_DovComQqImAeDownloadAEResInfo))
-          {
-            bmbx.d("AEResDownload", "[onResp] copyResFileToFinalDir.SUCCESS");
-            i = 0;
-          }
-          else
-          {
-            bmbx.d("AEResDownload", "[onResp] storeNewPendantUnzipPath.error");
-            i = -118;
-            FileUtils.deleteFile(localNetReq.mOutPath);
-            FileUtils.deleteFile(str1);
-          }
-        }
+        jdField_a_of_type_Boolean = false;
+        bhpu.a("watch_enter_count", null, 0L);
+        Intent localIntent = new Intent();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("page_type", 3);
+        localBundle.putString("source", parambluy.jdField_a_of_type_JavaLangString);
+        localBundle.putString("room_id", parambluy.b);
+        localBundle.putString("rtmp_Url", parambluy.c);
+        localBundle.putString("cover_url", parambluy.d);
+        localBundle.putString("trace_info", parambluy.f);
+        localBundle.putLong("start_time", System.currentTimeMillis());
+        localBundle.putStringArrayList("playlist", parambluy.jdField_a_of_type_JavaUtilArrayList);
+        localBundle.putInt("from", parambluy.jdField_a_of_type_Int);
+        localBundle.putBoolean("retaion", parambluy.jdField_a_of_type_Boolean);
+        localBundle.putString("close_jump", parambluy.e);
+        localBundle.putBoolean("isDebugVersion", false);
+        localBundle.putString("qqVersion", AppSetting.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("KEY_EXTRAS", localBundle);
+        localIntent.putExtra("KEY_IS_START_LIVE", false);
+        IliveLaunchFragment.startSelf(parambluy.jdField_a_of_type_AndroidContentContext, localIntent);
       }
-      catch (IOException localIOException)
-      {
-        bmbx.a("AEResDownload", "[onResp] unzip.error:", localIOException);
-        i = -118;
-        FileUtils.deleteFile(localNetReq.mOutPath);
-        FileUtils.deleteFile(str1);
-      }
-      bmbx.d("AEResDownload", "[onResp] saveAEResUnzipFinalPath.error");
-      i = -118;
-      FileUtils.deleteFile(localNetReq.mOutPath);
-      FileUtils.deleteFile(str1);
-      break label866;
-      bmbx.d("AEResDownload", "[onResp] storeUnzipFinalPath.error");
-      i = -118;
-      FileUtils.deleteFile(localNetReq.mOutPath);
-      FileUtils.deleteFile(str1);
-      break label866;
-      i = -3;
-      bmbx.d("AEResDownload", "[onResp] ShortVideoResourceStatus.RES_RENAME_VERIFY_ERROR");
-      FileUtils.deleteFile(localNetReq.mOutPath);
-      FileUtils.deleteFile(str1);
-      break label866;
-      bmbx.d("AEResDownload", "[onResp] verifyResource.error:" + i);
-      FileUtils.deleteFile(localNetReq.mOutPath);
-      str1 = "";
-      break label866;
-      bmbx.d("AEResDownload", "[onResp] download.error:" + paramNetResp.mResult);
-      FileUtils.deleteFile(localNetReq.mOutPath);
-      i = -117;
-      str1 = "";
-      break label866;
-      localIOException.preDownloadSuccess((String)paramNetResp.mRespProperties.get("param_url"), -1L);
     }
   }
   
-  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public static boolean a()
   {
-    paramNetReq = (String)paramNetReq.getUserData();
-    if (paramNetReq == null)
+    return (b(BaseApplicationImpl.getContext())) && ((jdField_a_of_type_Boolean) || (jdField_b_of_type_Boolean));
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    boolean bool = true;
+    jdField_b_of_type_Long = System.currentTimeMillis();
+    QLog.i("IliveEntranceUtil", 1, " offest = " + (jdField_b_of_type_Long - jdField_a_of_type_Long));
+    if (jdField_b_of_type_Long - jdField_a_of_type_Long > paramInt) {}
+    for (;;)
     {
-      bmbx.d("AEResDownload", "[onUpdateProgeress] key = null");
-      return;
+      jdField_a_of_type_Long = jdField_b_of_type_Long;
+      return bool;
+      bool = false;
     }
-    this.jdField_a_of_type_Bbrg.onUpdateProgress(paramNetReq, paramLong1, paramLong2);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (c())
+    {
+      a(paramContext, "qzone");
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        blvl.a("IliveEntranceUtilisServiceExisted");
+        paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningServices(2147483647);
+        if (paramContext == null) {
+          break label98;
+        }
+        if (paramContext.size() != 0) {
+          break label100;
+        }
+      }
+      catch (Throwable paramContext)
+      {
+        Object localObject;
+        paramContext.printStackTrace();
+        continue;
+      }
+      if (i < paramContext.size())
+      {
+        localObject = (ActivityManager.RunningServiceInfo)paramContext.get(i);
+        if (localObject != null)
+        {
+          localObject = ((ActivityManager.RunningServiceInfo)localObject).service;
+          if ((localObject != null) && (((ComponentName)localObject).getClassName().equals(paramString))) {
+            return true;
+          }
+        }
+      }
+      else
+      {
+        blvl.b("IliveEntranceUtilisServiceExisted");
+        return false;
+        label98:
+        return false;
+        label100:
+        i = 0;
+        continue;
+      }
+      i += 1;
+    }
+  }
+  
+  public static boolean a(boolean paramBoolean)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
+      localObject = (ncz)localQQAppInterface.getManager(QQManagerFactory.AV_GAME_MANAGER);
+      if ((localObject != null) && (((ncz)localObject).a()))
+      {
+        b(localQQAppInterface.getApp().getBaseContext(), "进入直播间失败");
+        return false;
+      }
+      if (paramBoolean) {}
+      for (localObject = "通话中，不可发起直播"; localQQAppInterface.getAVNotifyCenter().a(); localObject = "通话中，不可进入直播间")
+      {
+        b(localQQAppInterface.getApp().getBaseContext(), (String)localObject);
+        QLog.e("IliveEntranceUtil", 2, "isBusinessEnableEnterLive isPhoneCalling");
+        return false;
+      }
+      if (localQQAppInterface.getAVNotifyCenter().b())
+      {
+        b(localQQAppInterface.getApp().getBaseContext(), (String)localObject);
+        QLog.e("IliveEntranceUtil", 2, "isBusinessEnableEnterLive isAvChating");
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  private static void b(Context paramContext, String paramString)
+  {
+    ThreadManagerV2.getUIHandlerV2().post(new IliveEntranceUtil.1(paramContext, paramString));
+  }
+  
+  public static boolean b()
+  {
+    return Build.VERSION.SDK_INT >= arli.c().a();
+  }
+  
+  private static boolean b(Context paramContext)
+  {
+    boolean bool = a(paramContext, "com.tencent.proxyinner.plugin.loader.PluginToolProcessService");
+    QLog.e("IliveEntranceUtil", 1, "isIlivePluginsServiceExisted : " + bool);
+    return bool;
+  }
+  
+  public static boolean c()
+  {
+    return IliveDbManager.getIliveSwitch(1) == 1;
+  }
+  
+  public static boolean d()
+  {
+    return IliveDbManager.getIliveSwitch(2) == 1;
   }
 }
 

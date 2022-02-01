@@ -1,6 +1,6 @@
-public abstract interface aqpw<T>
+public abstract interface aqpw
 {
-  public abstract int a(T paramT, long paramLong);
+  public abstract void a(aqpk paramaqpk, int paramInt, boolean paramBoolean);
 }
 
 

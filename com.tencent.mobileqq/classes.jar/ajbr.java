@@ -1,19 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class ajbr
-  implements View.OnClickListener
+  extends ajbn
 {
-  public ajbr(Conversation paramConversation) {}
-  
-  public void onClick(View paramView)
+  public boolean a()
   {
-    this.a.a.b.performClick();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return true;
   }
 }
 

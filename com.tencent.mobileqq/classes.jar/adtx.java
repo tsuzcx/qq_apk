@@ -1,36 +1,37 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class adtx
-  implements CompoundButton.OnCheckedChangeListener
+class adtx
+  implements DialogInterface.OnClickListener
 {
-  public adtx(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  adtx(adtv paramadtv, HotChatInfo paramHotChatInfo, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131717612), "qqsetting_lock_screen_whenexit_key", paramBoolean);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (Object localObject = "1";; localObject = "0")
+    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isWifiHotChat) {}
+    for (paramInt = 1;; paramInt = 2)
     {
-      bcef.b(localQQAppInterface, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, 0, (String)localObject, "", "", "");
-      if (QLog.isDevelopLevel()) {
-        QLog.i("qqls", 4, "collectPerformance qqls setting isChecked=" + paramBoolean);
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004D2C", "0X8004D2C", paramInt, 0, "", "", "", "");
+      if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
+        break;
       }
-      localObject = new HashMap();
-      ((HashMap)localObject).put("param_ls_setting", paramBoolean + "");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, (HashMap)localObject, "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), anvx.a(2131702092), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
       return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.addObserver(adtv.a(this.jdField_a_of_type_Adtv));
+    ((anwd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_LEFT_NORMAL_ACTION_DELETE_SHELL);
+    this.jdField_a_of_type_Adtv.a = new bisl(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    this.jdField_a_of_type_Adtv.a.setContentView(2131562799);
+    this.jdField_a_of_type_Adtv.a.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131692036));
+    this.jdField_a_of_type_Adtv.a.setCancelable(true);
+    this.jdField_a_of_type_Adtv.a.show();
   }
 }
 

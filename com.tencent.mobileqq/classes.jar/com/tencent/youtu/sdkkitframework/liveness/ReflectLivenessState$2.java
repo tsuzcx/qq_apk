@@ -1,15 +1,13 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
-import com.tencent.youtu.ytagreflectlivecheck.notice.YTReflectNotice;
+import java.util.HashMap;
 
 class ReflectLivenessState$2
-  implements YTReflectNotice
+  extends HashMap<String, Object>
 {
-  ReflectLivenessState$2(ReflectLivenessState paramReflectLivenessState) {}
-  
-  public void onDelayCalc()
+  ReflectLivenessState$2(ReflectLivenessState paramReflectLivenessState)
   {
-    ReflectLivenessState.access$002(this.this$0, false);
+    put("version_tips", "反光库版本异常！目标版本：" + ReflectLivenessState.access$000(this.this$0) + " 当前版本：" + "3.6.2");
   }
 }
 

@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.AdReport;
+import android.support.annotation.NonNull;
+import java.util.HashSet;
+import java.util.Set;
 
 public class rbl
 {
-  public String a;
+  public int a;
+  public long a;
+  public Set<String> a;
+  public Set<String> b = new HashSet();
   
-  public static rbl a(oidb_0x5bd.AdReport paramAdReport)
+  public rbl()
   {
-    rbl localrbl = new rbl();
-    localrbl.a = paramAdReport.bytes_report_url.get().toStringUtf8();
-    return localrbl;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "time:" + this.jdField_a_of_type_Long + "effectTime:" + this.jdField_a_of_type_Int + "  " + this.jdField_a_of_type_JavaUtilSet + "  " + this.b;
   }
 }
 

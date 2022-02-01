@@ -1,6 +1,15 @@
-public abstract interface peu
+class peu
+  extends pfe
 {
-  public abstract void a();
+  peu(pdv parampdv, int paramInt)
+  {
+    super(parampdv, null);
+  }
+  
+  void a(pfh parampfh)
+  {
+    parampfh.onCommentCreate(false, null, null, this.jdField_a_of_type_Int);
+  }
 }
 
 

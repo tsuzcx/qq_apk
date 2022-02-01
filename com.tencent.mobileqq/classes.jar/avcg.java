@@ -1,14 +1,8 @@
-class avcg
-  extends amsu
+public class avcg
 {
-  avcg(avca paramavca) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null) && (paramString.equalsIgnoreCase(this.a.a.c))) {
-      avca.a(this.a, this.a.a);
-    }
-  }
+  public long a;
+  public String a;
+  public long b;
 }
 
 

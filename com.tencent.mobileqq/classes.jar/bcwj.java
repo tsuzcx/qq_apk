@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
 
 public class bcwj
-  extends amsu
+  extends Handler
 {
-  public bcwj(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public bcwj(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
   {
-    this.a.a.a(paramString);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
   }
 }
 

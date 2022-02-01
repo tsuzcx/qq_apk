@@ -6,7 +6,7 @@ import com.tencent.biz.qqstory.view.widget.LoadMoreLayout;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import yst;
+import zhm;
 
 public class LoadMoreXListView
   extends XListView
@@ -14,7 +14,7 @@ public class LoadMoreXListView
 {
   private int jdField_a_of_type_Int = -1;
   private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
-  public yst a;
+  public zhm a;
   
   public LoadMoreXListView(Context paramContext)
   {
@@ -43,7 +43,7 @@ public class LoadMoreXListView
   protected void b()
   {
     LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
-    this.jdField_a_of_type_Yst = new yst(localLoadMoreLayout, getContext().getApplicationContext());
+    this.jdField_a_of_type_Zhm = new zhm(localLoadMoreLayout, getContext().getApplicationContext());
     super.addFooterView(localLoadMoreLayout);
   }
   
@@ -57,8 +57,8 @@ public class LoadMoreXListView
     {
       return;
       this.jdField_a_of_type_Int = paramInt1;
-    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_a_of_type_Yst.a());
-    this.jdField_a_of_type_Yst.b(true);
+    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_a_of_type_Zhm.a());
+    this.jdField_a_of_type_Zhm.b(true);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)

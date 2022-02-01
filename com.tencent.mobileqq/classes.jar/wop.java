@@ -1,11 +1,11 @@
-import com.tencent.biz.qqstory.playvideo.entrance.MemorySelectVideoPlayInfo;
-
-public class wop
-  extends wom
+class wop
+  implements bkzs
 {
-  public wop(MemorySelectVideoPlayInfo paramMemorySelectVideoPlayInfo)
+  wop(woo paramwoo, wly paramwly) {}
+  
+  public void onDismiss()
   {
-    super(paramMemorySelectVideoPlayInfo.childPlayInfo);
+    ykv.a("msg_tab", "clk_press", 0, 0, new String[] { this.jdField_a_of_type_Wly.jdField_a_of_type_Int + "", "8", "", this.jdField_a_of_type_Wly.jdField_a_of_type_JavaLangString });
   }
 }
 

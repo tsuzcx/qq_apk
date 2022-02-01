@@ -1,15 +1,22 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.Switch;
+import com.tencent.qphone.base.util.QLog;
 
 public class aljw
+  implements aljm
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public aqmf a;
-  public Switch a;
+  public aljl a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BannerConflictExperiment", 2, "[getShouldShowBanner] get strategy 8");
+    }
+    aljl localaljl = new aljl();
+    localaljl.a = true;
+    localaljl.b = true;
+    localaljl.d = true;
+    localaljl.e = true;
+    localaljl.f = true;
+    localaljl.g = true;
+    return localaljl;
+  }
 }
 
 

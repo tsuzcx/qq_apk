@@ -1,21 +1,31 @@
-final class aqpv<T>
+import android.graphics.PorterDuff.Mode;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1;
+import com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1.1.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+
+public class aqpv
+  implements OnCompositionLoadedListener
 {
-  public aqpv<T> a;
-  public final T a;
-  public aqpv<T> b;
+  public aqpv(DefaultItemBuilder.1 param1) {}
   
-  public aqpv()
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_Aqpv = this;
-    this.b = this;
-  }
-  
-  public aqpv(T paramT, aqpv<T> paramaqpv1, aqpv<T> paramaqpv2)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.jdField_a_of_type_Aqpv = paramaqpv1;
-    this.b = paramaqpv2;
+    if (paramLottieComposition == null)
+    {
+      QLog.e("DefaultItemBuilder", 1, "getLottieDrawable onCompositionLoaded failed");
+      return;
+    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.setImagesAssetsFolder(this.a.b);
+    localLottieDrawable.setColorFilter(-16777216, PorterDuff.Mode.MULTIPLY);
+    this.a.a.a = localLottieDrawable;
+    ThreadManagerV2.getUIHandlerV2().post(new DefaultItemBuilder.1.1.1(this));
   }
 }
 

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import anvx;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -49,7 +49,7 @@ class MiniAppDesktopAdapter$SearchViewHolder$1
     }
     for (;;)
     {
-      localObject = amtj.a(2131705916);
+      localObject = anvx.a(2131706267);
       if (MiniAppDesktopAdapter.SearchViewHolder.access$3000(this.this$0).getText() != null) {
         localObject = MiniAppDesktopAdapter.SearchViewHolder.access$3000(this.this$0).getText().toString();
       }

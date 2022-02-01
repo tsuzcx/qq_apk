@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import akbl;
-import akdw;
-import akdx;
+import akxe;
+import akzp;
+import akzq;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
 import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
@@ -36,7 +36,7 @@ public final class DrawClassifier$1
         if (!TextUtils.isEmpty(str2))
         {
           localObject2 = ((JSONObject)localObject3).optString("aModelPrefix", "https://i.gtimg.cn/drawrp/aModel_");
-          localObject3 = akdw.a((JSONObject)localObject3, str2);
+          localObject3 = akzp.a((JSONObject)localObject3, str2);
           if (localObject3 == null) {
             break label211;
           }
@@ -57,7 +57,7 @@ public final class DrawClassifier$1
             ((DownloadParam)localObject2).url = str1;
             ((DownloadParam)localObject2).md5 = ((String)localObject3);
             ((DownloadParam)localObject2).useQWalletConfig = true;
-            PreloadManager.a().a((DownloadParam)localObject2, new akdx(this));
+            PreloadManager.a().a((DownloadParam)localObject2, new akzq(this));
           }
         }
         else

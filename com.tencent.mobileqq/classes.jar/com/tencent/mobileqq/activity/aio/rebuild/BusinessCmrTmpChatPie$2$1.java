@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahdt;
-import ahec;
+import ahyl;
+import ahyu;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.data.EqqDetail;
-import npt;
+import nwu;
 
 public class BusinessCmrTmpChatPie$2$1
   implements Runnable
 {
-  public BusinessCmrTmpChatPie$2$1(ahec paramahec, EqqDetail paramEqqDetail) {}
+  public BusinessCmrTmpChatPie$2$1(ahyu paramahyu, EqqDetail paramEqqDetail) {}
   
   public void run()
   {
-    npt.b(this.jdField_a_of_type_Ahec.a.app, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-    this.jdField_a_of_type_Ahec.a.mActivity.runOnUiThread(new BusinessCmrTmpChatPie.2.1.1(this));
+    nwu.b(this.jdField_a_of_type_Ahyu.a.app, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+    this.jdField_a_of_type_Ahyu.a.mActivity.runOnUiThread(new BusinessCmrTmpChatPie.2.1.1(this));
   }
 }
 

@@ -1,17 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-
-final class axey
-  implements awqt
+public class axey
 {
-  axey(axfc paramaxfc, String paramString) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte)
-  {
-    QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
-    if (this.jdField_a_of_type_Axfc != null) {
-      this.jdField_a_of_type_Axfc.a(false, this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public float a;
+  public int a;
+  public Object a;
+  public boolean a;
+  public float b;
 }
 
 

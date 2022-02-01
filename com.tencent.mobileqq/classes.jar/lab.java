@@ -1,95 +1,76 @@
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.StringReader;
+import android.content.Context;
+import android.util.Xml;
+import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import javax.xml.parsers.DocumentBuilder;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import org.apache.http.Header;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.message.BasicNameValuePair;
+import org.xmlpull.v1.XmlSerializer;
 
-class lab
-  extends kzg
+abstract class lab
+  extends kzu
 {
-  lab(kzz paramkzz, List paramList, lal paramlal, Long paramLong) {}
-  
-  public void a(int paramInt, Header[] paramArrayOfHeader, String paramString)
+  private static String a(List<String> paramList, String paramString)
   {
-    paramArrayOfHeader = null;
+    XmlSerializer localXmlSerializer;
+    StringWriter localStringWriter;
     try
     {
-      localObject = this.jdField_a_of_type_Kzz.a.parse(new InputSource(new StringReader(paramString)));
-      paramArrayOfHeader = (Header[])localObject;
-    }
-    catch (SAXException localSAXException)
-    {
-      for (;;)
+      localXmlSerializer = Xml.newSerializer();
+      localStringWriter = new StringWriter();
+      localXmlSerializer.setOutput(localStringWriter);
+      localXmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
+      localXmlSerializer.startTag("", "TranslateArrayRequest");
+      localXmlSerializer.startTag("", "AppId");
+      localXmlSerializer.endTag("", "AppId");
+      localXmlSerializer.startTag("", "Texts");
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        Object localObject;
-        NodeList localNodeList;
-        a(new TranslateError(localSAXException), paramString);
+        String str = (String)paramList.next();
+        localXmlSerializer.startTag("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "string");
+        localXmlSerializer.text(str);
+        localXmlSerializer.endTag("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "string");
       }
+      localXmlSerializer.endTag("", "Texts");
     }
-    catch (IOException localIOException)
+    catch (Exception paramList)
     {
-      for (;;)
-      {
-        a(new TranslateError(localIOException), paramString);
-        continue;
-        if (this.jdField_a_of_type_JavaUtilList.get(paramInt) != null)
-        {
-          paramString.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
-        }
-        else
-        {
-          paramString.add("");
-          continue;
-          localIOException.add(Language.AUTO_DETECT);
-        }
-      }
-      this.jdField_a_of_type_Lal.a(localIOException, paramString, this.jdField_a_of_type_JavaLangLong);
+      paramList.printStackTrace();
+      return null;
     }
-    paramString = new ArrayList();
-    localObject = new ArrayList();
-    if (paramArrayOfHeader != null)
-    {
-      localNodeList = paramArrayOfHeader.getElementsByTagName("TranslatedText");
-      paramArrayOfHeader = paramArrayOfHeader.getElementsByTagName("From");
-      paramInt = 0;
-      for (;;)
-      {
-        if (paramInt >= localNodeList.getLength()) {
-          break label270;
-        }
-        Node localNode = localNodeList.item(paramInt);
-        if (localNode.getFirstChild() == null) {
-          break;
-        }
-        paramString.add(localNode.getFirstChild().getNodeValue());
-        localNode = paramArrayOfHeader.item(paramInt);
-        if (localNode.getFirstChild() == null) {
-          break label256;
-        }
-        ((List)localObject).add(Language.fromString(localNode.getFirstChild().getNodeValue()));
-        paramInt += 1;
-      }
-    }
-    label256:
-    label270:
-    return;
+    localXmlSerializer.startTag("", "To");
+    localXmlSerializer.text(paramString);
+    localXmlSerializer.endTag("", "To");
+    localXmlSerializer.endTag("", "TranslateArrayRequest");
+    localXmlSerializer.endDocument();
+    paramList = localStringWriter.toString();
+    return paramList;
   }
   
-  public void a(Throwable paramThrowable, String paramString)
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, List<String> paramList, String paramString, kzj paramkzj)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Translator", 2, "[Microsoft] onFailure:" + paramThrowable);
+    paramList = new StringEntity(a(paramList, paramString), "UTF-8");
+    a().a(paramContext, "https://api.microsofttranslator.com/V2/Http.svc/TranslateArray", paramArrayOfHeader, paramList, "application/xml", paramkzj);
+  }
+  
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, Map<String, String> paramMap, kzl paramkzl)
+  {
+    ArrayList localArrayList = new ArrayList(4);
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      localArrayList.add(new BasicNameValuePair((String)localEntry.getKey(), (String)localEntry.getValue()));
     }
-    this.jdField_a_of_type_Lal.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
+    paramMap = new UrlEncodedFormEntity(localArrayList);
+    a().a(paramContext, "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13", paramArrayOfHeader, paramMap, "application/x-www-form-urlencoded", paramkzl);
   }
 }
 

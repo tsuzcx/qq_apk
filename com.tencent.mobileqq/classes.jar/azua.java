@@ -1,15 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
 
-class azua
-  implements bjoe
+public class azua
+  implements DialogInterface.OnClickListener
 {
-  azua(aztz paramaztz, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, bjnw parambjnw) {}
+  public azua(StickyNotePublishFragment paramStickyNotePublishFragment, aztx paramaztx) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReceiptMessageDetailFragment.g(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
-    this.jdField_a_of_type_Bjnw.dismiss();
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.b.obtainMessage(3, this.jdField_a_of_type_Aztx).sendToTarget();
+    bdla.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 1, 0, "0", "0", "", "");
   }
 }
 

@@ -1,50 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity.1;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class akiw
-  implements View.OnClickListener
+public class akiw
+  extends azip
 {
-  akiw(akho paramakho) {}
+  public akiw(PhoneLaunchActivity.1 param1) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if (akho.a(this.a) != null) {}
-    for (QQAppInterface localQQAppInterface = akho.a(this.a).app; localQQAppInterface == null; localQQAppInterface = null)
+    PhoneLaunchActivity.a(this.a.this$0).setEnabled(true);
+    if (this.a.this$0.a != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("MultiVideoBar", 2, "app is null");
+      this.a.this$0.app.unRegistObserver(this.a.this$0.a);
+      this.a.this$0.a = null;
+    }
+    this.a.this$0.b();
+    if (paramBoolean)
+    {
+      Object localObject = this.a.this$0;
+      if ((PhoneLaunchActivity.a(this.a.this$0)) || (PhoneLaunchActivity.b(this.a.this$0)))
+      {
+        this.a.this$0.setResult(-1);
+        this.a.this$0.finish();
+        return;
       }
-      EventCollector.getInstance().onViewClicked(paramView);
+      localObject = new Intent((Context)localObject, SettingActivity2.class);
+      if (PhoneLaunchActivity.c(this.a.this$0)) {
+        ((Intent)localObject).putExtra("kSrouce", 7);
+      }
+      this.a.this$0.startActivityForResult((Intent)localObject, 2);
+      this.a.this$0.setResult(-1);
+      this.a.this$0.finish();
       return;
     }
-    int j = localQQAppInterface.getAVNotifyCenter().e();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "initMultiVideoBar-->SessionType");
-    }
-    int i;
-    if ((j == 1) || (j == 2))
-    {
-      i = 1;
-      label90:
-      if (i == 0) {
-        break label148;
-      }
-      acvd.a(localQQAppInterface, j, akho.a(this.a));
-    }
-    for (;;)
-    {
-      bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 1, 0, "", "", "", "");
-      break;
-      i = 0;
-      break label90;
-      label148:
-      acvd.b(localQQAppInterface, j, akho.a(this.a));
-    }
+    this.a.this$0.a(anvx.a(2131707469));
   }
 }
 

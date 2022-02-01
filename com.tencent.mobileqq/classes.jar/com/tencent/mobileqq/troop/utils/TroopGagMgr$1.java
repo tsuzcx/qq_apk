@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.os.Handler;
-import bfbz;
+import bgkf;
 import java.util.ArrayList;
 
 public class TroopGagMgr$1

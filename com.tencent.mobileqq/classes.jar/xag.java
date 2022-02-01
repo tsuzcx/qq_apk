@@ -1,55 +1,18 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class xag
-  extends wrx
+  implements AbsListView.OnScrollListener
 {
-  public xag(wzo paramwzo) {}
+  public xag(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = this.a.a();
-    if ((localObject == null) || (!this.a.jdField_a_of_type_Wod.equals(localObject))) {}
-    do
-    {
-      return;
-      if (paramInt1 == this.a.hashCode())
-      {
-        xvv.b(this.a.b, "onActivityResult, onChooseFriendResult");
-        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
-        if (localObject != null) {
-          ((VideoViewVideoHolder)localObject).c(false);
-        }
-        if (paramInt2 == -1) {
-          wld.a().a(paramIntent.getExtras());
-        }
-      }
-      if ((paramInt1 == 10002) && (paramInt2 == -1))
-      {
-        vns.b(this.a.b + " onActivityResult");
-        QQToast.a(this.a.b(), this.a.b().getString(2131718406), 1).a();
-      }
-      if ((paramInt1 == 467) && (paramInt2 == -1) && (wzo.a(this.a) != null)) {
-        wzo.a(this.a).a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, new Object[] { "MoreVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
-      }
-    } while (this.a.jdField_a_of_type_Wgz == null);
-    this.a.jdField_a_of_type_Wgz.a(paramInt1, paramInt2, paramIntent);
+    this.a.b = paramInt1;
   }
   
-  public void g()
-  {
-    super.g();
-    if (wzo.a(this.a) != null) {
-      wzo.a(this.a).a();
-    }
-  }
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

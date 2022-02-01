@@ -1,26 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class bcwf
-  extends bcwh
+public class bcwf
+  extends MSFServlet
 {
-  bcwf(bcwc parambcwc)
-  {
-    super(parambcwc);
-  }
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
   
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
+  public void onSend(Intent paramIntent, Packet paramPacket) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  public void service(Intent paramIntent)
   {
-    return a(paramWebView, paramString);
+    String str = paramIntent.getAction();
+    if ((str != null) && ("gif_ui_show".equals(str)))
+    {
+      int i = paramIntent.getIntExtra("gif_ui_show_bid", 0);
+      long l = paramIntent.getLongExtra("gif_ui_show_seq", 0L);
+      paramIntent = new Bundle();
+      paramIntent.putInt("gif_ui_show_bid", i);
+      paramIntent.putLong("gif_ui_show_seq", l);
+      notifyObserver(null, 0, true, paramIntent, ayrc.class);
+      return;
+    }
+    super.service(paramIntent);
   }
 }
 

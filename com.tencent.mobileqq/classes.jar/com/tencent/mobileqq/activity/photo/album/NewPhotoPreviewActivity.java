@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.photo.album;
 
 import Override;
-import ajqs;
-import ajta;
+import akmg;
+import akoq;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Rect;
@@ -12,10 +12,10 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import apoh;
-import bcef;
-import bhlx;
-import bjpi;
+import aqrl;
+import bdla;
+import biwn;
+import blau;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
@@ -25,15 +25,16 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.BubblePopupWindow;
 import com.tencent.widget.DragView;
 import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.util.ArrayList;
-import lzb;
+import lzr;
 
 public class NewPhotoPreviewActivity
   extends AbstractPhotoPreviewActivity
-  implements bjpi
+  implements blau
 {
-  public ajqs a;
+  public akmg a;
   public View a;
   public BubblePopupWindow a;
   public DragView a;
@@ -56,7 +57,7 @@ public class NewPhotoPreviewActivity
     for (;;)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        bcef.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 4, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 4, 0, "", "", "", "");
       }
       this.mPhotoPreviewLogic.onBackPressed(true);
       return;
@@ -91,7 +92,7 @@ public class NewPhotoPreviewActivity
   protected void a()
   {
     int i = 0;
-    this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)findViewById(2131365800));
+    this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)findViewById(2131365898));
     this.jdField_a_of_type_ComTencentWidgetDragView.setGestureChangeListener(this);
     this.jdField_a_of_type_ComTencentWidgetDragView.setRatioModify(true);
     Rect localRect = (Rect)getIntent().getParcelableExtra("KEY_THUMBNAL_BOUND");
@@ -175,7 +176,7 @@ public class NewPhotoPreviewActivity
   public PhotoPreviewLogic generateLogic()
   {
     int i = getIntent().getIntExtra("enter_from", 0);
-    PhotoPreviewLogic localPhotoPreviewLogic = ajta.a(i, this);
+    PhotoPreviewLogic localPhotoPreviewLogic = akoq.a(i, this);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoPreviewActivity", 2, "generateLogic:" + localPhotoPreviewLogic.getClass().getName() + " enterFrom:" + i);
     }
@@ -193,6 +194,11 @@ public class NewPhotoPreviewActivity
     if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
       this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
     }
+  }
+  
+  public void initNavigationBarColor()
+  {
+    ImmersiveUtils.a(getWindow(), -16777216);
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -235,9 +241,9 @@ public class NewPhotoPreviewActivity
   public void onPause()
   {
     super.onPause();
-    lzb.a(BaseApplicationImpl.getContext(), false);
-    bhlx.a(BaseApplicationImpl.getContext(), true);
-    apoh.a(BaseApplicationImpl.getContext(), 2, true);
+    lzr.a(BaseApplicationImpl.getContext(), false);
+    biwn.a(BaseApplicationImpl.getContext(), true);
+    aqrl.a(BaseApplicationImpl.getContext(), 2, true);
   }
 }
 

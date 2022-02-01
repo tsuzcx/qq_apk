@@ -1,44 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-public class auae
-  extends Handler
+class auae
+  implements ShareActionSheet.OnItemClickListener
 {
-  private WeakReference<ScrollTextView> a;
+  auae(auaa paramauaa) {}
   
-  public auae(ScrollTextView paramScrollTextView)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(paramScrollTextView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ScrollTextView localScrollTextView = (ScrollTextView)this.a.get();
-    if (localScrollTextView == null)
+    if (paramActionSheetItem == null) {}
+    do
     {
-      removeCallbacksAndMessages(null);
       return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (ScrollTextView.a(localScrollTextView) != null)
-    {
-      localScrollTextView.b();
-      ScrollTextView.a(localScrollTextView);
-      if (ScrollTextView.b(localScrollTextView) >= ScrollTextView.a(localScrollTextView).length) {
-        ScrollTextView.a(localScrollTextView, 0);
+      auaa.a(this.a).dismiss();
+      if (paramActionSheetItem.listener != null)
+      {
+        paramActionSheetItem.listener.onClick(null);
+        return;
       }
-      localScrollTextView.setText(ScrollTextView.a(localScrollTextView)[ScrollTextView.b(localScrollTextView)]);
-    }
-    removeMessages(9001);
-    sendEmptyMessageDelayed(9001, ScrollTextView.a(localScrollTextView));
+    } while (this.a.a == null);
+    this.a.a.a(paramActionSheetItem);
   }
 }
 

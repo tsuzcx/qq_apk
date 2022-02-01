@@ -1,45 +1,37 @@
-import android.opengl.GLSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class aobh
+class aobh
+  implements msp
 {
-  public static aobb a(aobd paramaobd, aobf paramaobf, GLSurfaceView paramGLSurfaceView)
+  aobh(aobd paramaobd, long paramLong1, int paramInt, long paramLong2) {}
+  
+  public void a(int paramInt1, msr parammsr, int paramInt2)
   {
-    if (paramaobf == null) {
-      return null;
-    }
-    switch (paramaobf.a)
+    if (paramInt1 == 0)
     {
-    default: 
-      return null;
-    case 0: 
-      paramaobd = new aobq(paramaobd, (aobr)paramaobf);
-      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_3D here " + paramaobf.toString());
-      return paramaobd;
-    case 2: 
-    case 3: 
-      paramaobd = new aoby(paramaobd, (aoca)paramaobf);
-      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_NORAML_2D_VIDEO here" + paramaobf.toString());
-      return paramaobd;
-    case 4: 
-      paramaobd = new aocb(paramaobd, (aocd)paramaobf);
-      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_ONLINE_VIDEO here" + paramaobf.toString());
-      return paramaobd;
-    case 5: 
-      paramaobd = new aobx(paramaobd, (aobw)paramaobf);
-      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_MULTI_ANIM here" + paramaobf.toString());
-      return paramaobd;
-    case 100: 
-      paramaobd = new aobu(paramaobd, (aobv)paramaobf, paramGLSurfaceView);
-      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_BINHAI_3D here" + paramaobf.toString());
-      return paramaobd;
+      if (this.jdField_a_of_type_Aobd.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter != null)
+      {
+        this.jdField_a_of_type_Aobd.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(3, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, 0, 0, 20, 1);
+        this.jdField_a_of_type_Aobd.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.b(this.jdField_a_of_type_Long, true);
+        this.jdField_a_of_type_Aobd.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 1, Long.valueOf(this.jdField_a_of_type_Long).longValue(), 0L);
+      }
+      VideoMsgTools.a(this.jdField_a_of_type_Aobd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 13, false, Long.toString(this.jdField_a_of_type_Long), Long.toString(this.b), false, null, false, this.jdField_a_of_type_Int, new Object[0]);
+      if (this.jdField_a_of_type_Int == 2) {
+        new bltw(this.jdField_a_of_type_Aobd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(new aobi(this));
+      }
     }
-    return new aobk(paramaobd, (aobm)paramaobf);
+    else
+    {
+      return;
+    }
+    new lxx(BaseApplication.getContext()).a(new aobj(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aobh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
 
 public class xaz
-  extends vll<xax, wbw>
+  extends AnimatorListenerAdapter
 {
-  public xaz(xax paramxax)
-  {
-    super(paramxax);
-  }
+  public xaz(StoryPlayerActivity paramStoryPlayerActivity) {}
   
-  public void a(@NonNull xax paramxax, @NonNull wbw paramwbw)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((xax.a(paramxax) != null) && (paramwbw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwbw.jdField_a_of_type_JavaUtilList.contains(xax.a(paramxax).a)))
-    {
-      xvv.a("WeiShiFlowBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramwbw.b.toString());
-      paramxax.a.i();
-    }
+    super.onAnimationEnd(paramAnimator);
+    StoryPlayerActivity.a(this.a);
+    StoryPlayerActivity.a(this.a, 0, 0);
   }
-  
-  public Class acceptEventClass()
-  {
-    return wbw.class;
-  }
-  
-  public void b(@NonNull xax paramxax, @NonNull wbw paramwbw) {}
 }
 
 

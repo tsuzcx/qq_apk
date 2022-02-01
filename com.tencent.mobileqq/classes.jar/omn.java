@@ -1,24 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.RichTitleInfo;
 
-public class omn
-  implements bjog
+public final class omn
+  implements Parcelable.Creator<VideoInfo.RichTitleInfo>
 {
-  public omn(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void onDismiss()
+  public VideoInfo.RichTitleInfo a(Parcel paramParcel)
   {
-    boolean bool = true;
-    ReadInJoySettingActivity.a(this.a, true);
-    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
-    if (!ReadInJoySettingActivity.a(this.a)) {}
-    for (;;)
-    {
-      localSwitch.setChecked(bool);
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return;
-      bool = false;
-    }
+    return new VideoInfo.RichTitleInfo(paramParcel);
+  }
+  
+  public VideoInfo.RichTitleInfo[] a(int paramInt)
+  {
+    return new VideoInfo.RichTitleInfo[paramInt];
   }
 }
 

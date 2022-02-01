@@ -1,27 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment.2.1;
+import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqcircle.chat.QCircleObserver;
+import java.lang.ref.WeakReference;
 
 public class ajyv
-  implements View.OnClickListener
+  extends QCircleObserver
 {
-  public ajyv(LingHbFragment paramLingHbFragment) {}
+  private WeakReference<Conversation> a;
   
-  public void onClick(View paramView)
+  public ajyv(Conversation paramConversation)
   {
-    if ((paramView instanceof TextView))
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  public void onUpdateRedPoint(int paramInt)
+  {
+    Conversation localConversation = (Conversation)this.a.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("QCircleObserver onUpdateRedPoint: ");
+    if (localConversation != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      String str = ((TextView)paramView).getText().toString();
-      QLog.i("LingHbFragment", 2, "choice: " + str);
-      this.a.c.setText(str);
-      this.a.a.post(new LingHbFragment.2.1(this));
+      QLog.d("Q.recent", 2, bool);
+      if (localConversation != null) {
+        localConversation.q();
+      }
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

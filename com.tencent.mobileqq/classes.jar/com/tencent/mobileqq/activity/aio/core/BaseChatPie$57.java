@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import acvv;
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import admh;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$57
@@ -13,24 +14,13 @@ class BaseChatPie$57
   
   public void run()
   {
-    acvv.c(this.this$0.app, this.this$0.sessionInfo, false);
-    try
+    MessageRecord localMessageRecord = admh.b(this.this$0.app, this.this$0.sessionInfo);
+    if ((localMessageRecord != null) && (!TextUtils.isEmpty(localMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"))))
     {
-      this.this$0.mContext.getResources().getDrawable(2130847023);
-      this.this$0.mContext.getResources().getDrawable(2130847024);
-      this.this$0.mContext.getResources().getDrawable(2130838043);
-      SystemAndEmojiEmoticonInfo.preload(this.this$0.app);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(this.this$0.tag, 2, "emo qvip_emoji_aio_face_new_default_fail, e=" + localException.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e(this.this$0.tag, 1, "emo qvip_emoji_aio_face oom, e= " + localOutOfMemoryError);
+      this.this$0.app.getMessageFacade().sendSpecialMessage(localMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"));
+      if (QLog.isColorLevel()) {
+        QLog.i("BabyQReportCookie", 2, "now enter the aio!!!");
+      }
     }
   }
 }

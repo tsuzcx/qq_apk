@@ -1,91 +1,144 @@
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.annotation.NonNull;
+import android.text.method.ScrollingMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class addc
-  extends WtloginObserver
+  extends ReportDialog
 {
-  public addc(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  public static boolean a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  private TextView f;
   
-  public void onCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  public addc(@NonNull Context paramContext)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt + " time=" + paramLong);
-      if (paramArrayOfByte2 == null) {}
+    super(paramContext, 2131755254);
+    a(paramContext);
+  }
+  
+  private void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559579, null);
+    setContentView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131362846));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131362858));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131363084));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131380609));
+    this.c = ((TextView)a(paramContext, 2131380637));
+    this.d = ((TextView)a(paramContext, 2131363074));
+    this.d.setMovementMethod(ScrollingMovementMethod.getInstance());
+    this.e = ((TextView)a(paramContext, 2131370003));
+    this.f = ((TextView)a(paramContext, 2131376688));
+    setCanceledOnTouchOutside(false);
+    paramContext = getWindow();
+    if (paramContext != null) {
+      paramContext.setGravity(80);
     }
+  }
+  
+  public <T extends View> T a(View paramView, int paramInt)
+  {
+    return paramView.findViewById(paramInt);
+  }
+  
+  public void a()
+  {
     try
     {
-      paramString = new String(paramArrayOfByte2, "utf-8");
-      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode errMsg=" + paramString);
-      this.a.c();
-      if (DevlockQuickLoginActivity.a(this.a)) {
-        return;
-      }
+      super.dismiss();
+      return;
     }
-    catch (Exception paramString)
+    catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-      if (paramInt == 0)
-      {
-        QQToast.a(this.a.getApplicationContext(), 2, 2131691901, 0).b(DevlockQuickLoginActivity.a(this.a));
-        DevlockQuickLoginActivity.a(this.a);
-        DevlockQuickLoginActivity.a(this.a, 0, 2130772001);
-        return;
-      }
-      if (paramInt == 21)
-      {
-        paramString = this.a.getString(2131691898);
-        paramArrayOfByte1 = this.a.getString(2131718670);
-        this.a.a(null, paramString, paramArrayOfByte1, new addd(this));
-        return;
-      }
-      paramString = DevlockQuickLoginActivity.a(this.a, 2131691899);
-      QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(DevlockQuickLoginActivity.b(this.a));
+      localThrowable.printStackTrace();
     }
   }
   
-  public void onException(String paramString, int paramInt)
+  public void a(DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnException e=" + paramString);
-    }
-    this.a.c();
-    QQToast.a(DevlockQuickLoginActivity.b(this.a), 1, this.a.getString(2131691900), 0).b(DevlockQuickLoginActivity.d(this.a));
+    setOnCancelListener(new addf(this, paramOnCancelListener));
+    setOnKeyListener(new addg(this, paramOnCancelListener));
   }
   
-  public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
-    }
-    if (DevlockQuickLoginActivity.b(this.a))
+    this.f.setOnClickListener(new addd(this, paramOnClickListener));
+  }
+  
+  public void a(String paramString)
+  {
+    if (HttpUtil.isValidUrl(paramString))
     {
-      this.a.c();
+      paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
+      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      paramString.setTag(bgxc.b(localLayoutParams.width, localLayoutParams.height, UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 5.0F)));
+      paramString.setDecodeHandler(bgxc.j);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    }
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    this.e.setOnClickListener(new adde(this, paramOnClickListener));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    this.d.setText(paramString);
+  }
+  
+  public void e(String paramString)
+  {
+    this.f.setText(paramString);
+  }
+  
+  public void f(String paramString)
+  {
+    this.e.setText(paramString);
+  }
+  
+  public void show()
+  {
+    try
+    {
+      super.show();
       return;
     }
-    if (paramInt == 0)
+    catch (Throwable localThrowable)
     {
-      this.a.b();
-      return;
+      localThrowable.printStackTrace();
     }
-    this.a.c();
-    if (paramInt == 21)
-    {
-      paramString = this.a.getString(2131691898);
-      paramArrayOfByte1 = this.a.getString(2131718670);
-      this.a.a(null, paramString, paramArrayOfByte1, new adde(this));
-      return;
-    }
-    paramString = this.a.getString(2131691899);
-    QQToast.a(DevlockQuickLoginActivity.a(this.a), 1, paramString, 0).b(DevlockQuickLoginActivity.c(this.a));
   }
 }
 

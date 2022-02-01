@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import amtj;
 import android.app.PendingIntent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
+import anvx;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
@@ -21,13 +21,13 @@ import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import rso;
-import rsp;
-import rwv;
-import sfb;
+import sfd;
+import sfe;
+import six;
+import srg;
 
 public class VideoFeedsLoadDelegate
-  implements rso
+  implements sfd
 {
   protected static ArrayList<VideoInfo> a;
   protected int a;
@@ -39,7 +39,7 @@ public class VideoFeedsLoadDelegate
   protected ViolaFragment a;
   protected QQAppInterface a;
   protected String a;
-  protected rsp a;
+  protected sfe a;
   protected String[] a;
   protected int b;
   protected String b;
@@ -47,11 +47,11 @@ public class VideoFeedsLoadDelegate
   protected String c;
   protected boolean c;
   
-  public VideoFeedsLoadDelegate(rsp paramrsp, Bundle paramBundle, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
+  public VideoFeedsLoadDelegate(sfe paramsfe, Bundle paramBundle, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Int = 2131365035;
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { amtj.a(2131715153), amtj.a(2131715188) };
-    this.jdField_a_of_type_Rsp = paramrsp;
+    this.jdField_a_of_type_Int = 2131365119;
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { anvx.a(2131715501), anvx.a(2131715536) };
+    this.jdField_a_of_type_Sfe = paramsfe;
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
@@ -60,7 +60,7 @@ public class VideoFeedsLoadDelegate
     this.jdField_b_of_type_JavaLangString = paramString3;
     this.jdField_b_of_type_Boolean = paramBoolean;
     this.jdField_b_of_type_Int = paramInt;
-    this.jdField_c_of_type_Boolean = rwv.h();
+    this.jdField_c_of_type_Boolean = six.h();
   }
   
   private VideoInfo a()
@@ -69,7 +69,7 @@ public class VideoFeedsLoadDelegate
     if (this.jdField_a_of_type_AndroidOsBundle.getParcelable("VIDEO_OBJ") != null)
     {
       localObject1 = (VideoInfo)this.jdField_a_of_type_AndroidOsBundle.getParcelable("VIDEO_OBJ");
-      rwv.a((VideoInfo)localObject1);
+      six.a((VideoInfo)localObject1);
       if (QLog.isColorLevel()) {
         QLog.d("VideoFeedsLoadDelegate", 2, "generateRequestVideoInfo: 外部传进来的VideoInfo=" + ((VideoInfo)localObject1).b());
       }
@@ -86,8 +86,8 @@ public class VideoFeedsLoadDelegate
         ((VideoInfo)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = ((MessageForShortVideo)localObject2);
         return localObject1;
       }
-      localObject2 = rwv.a(this.jdField_a_of_type_AndroidOsBundle);
-      rwv.a((VideoInfo)localObject2);
+      localObject2 = six.a(this.jdField_a_of_type_AndroidOsBundle);
+      six.a((VideoInfo)localObject2);
       localObject1 = localObject2;
     } while (!QLog.isColorLevel());
     QLog.d("VideoFeedsLoadDelegate", 2, "generateRequestVideoInfo: 外部传进来的VideoInfo=" + ((VideoInfo)localObject2).b());
@@ -109,7 +109,7 @@ public class VideoFeedsLoadDelegate
       this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(0, 0);
       return;
     }
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(2130772223, 0);
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(2130772222, 0);
   }
   
   public final View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
@@ -173,8 +173,8 @@ public class VideoFeedsLoadDelegate
       }
       for (localObject = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_AndroidOsBundle, localVideoInfo, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, true, i);; localObject = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_AndroidOsBundle, a(), this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString))
       {
-        if (this.jdField_a_of_type_Rsp != null) {
-          this.jdField_a_of_type_Rsp.a((VideoFeedsRecommendFragment)localObject);
+        if (this.jdField_a_of_type_Sfe != null) {
+          this.jdField_a_of_type_Sfe.a((VideoFeedsRecommendFragment)localObject);
         }
         return localObject;
       }
@@ -186,8 +186,8 @@ public class VideoFeedsLoadDelegate
   {
     ViolaFragment localViolaFragment = new ViolaFragment();
     localViolaFragment.setArguments(new Bundle());
-    if (this.jdField_a_of_type_Rsp != null) {
-      this.jdField_a_of_type_Rsp.a(localViolaFragment);
+    if (this.jdField_a_of_type_Sfe != null) {
+      this.jdField_a_of_type_Sfe.a(localViolaFragment);
     }
     return localViolaFragment;
   }
@@ -198,7 +198,7 @@ public class VideoFeedsLoadDelegate
     while (this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_OLD_LOAD_DELEGATE_TYPE", -1) != 2) {
       return;
     }
-    new sfb(null, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int).b(paramVideoInfo);
+    new srg(null, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int).b(paramVideoInfo);
   }
   
   public void a(DragFrameLayout paramDragFrameLayout)
@@ -207,13 +207,13 @@ public class VideoFeedsLoadDelegate
     int m = this.jdField_a_of_type_AndroidOsBundle.getInt("item_y", 0);
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("item_width", 0);
     int n = this.jdField_a_of_type_AndroidOsBundle.getInt("item_height", 0);
-    int j = rwv.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)[0];
+    int j = six.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)[0];
     if (((k == 0) && (m == 0) && (i == 0)) || (i >= n))
     {
       a(this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
-    int[] arrayOfInt = rwv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, k, m);
+    int[] arrayOfInt = six.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, k, m);
     k = arrayOfInt[0];
     m = arrayOfInt[1];
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(0, 0);

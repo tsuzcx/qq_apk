@@ -1,26 +1,14 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
-
 public class artc
-  implements Animation.AnimationListener
 {
-  public artc(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public String toString()
   {
-    if ((Face2FaceFriendBubbleView.a(this.a) == 2) || (Face2FaceFriendBubbleView.a(this.a) == 3) || (Face2FaceFriendBubbleView.a(this.a) == 4))
-    {
-      Face2FaceFriendBubbleView.a(this.a).startAnimation(Face2FaceFriendBubbleView.a(this.a));
-      return;
-    }
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+    return "DrawableParams{mUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mDefaultUrl='" + this.b + '\'' + ", mShape=" + this.jdField_a_of_type_Int + ", mCornerRadius=" + this.jdField_a_of_type_Float + '}';
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

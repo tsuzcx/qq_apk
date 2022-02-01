@@ -1,44 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.CardObserver;
 
 public class adgy
-  implements bbbg
+  extends CardObserver
 {
-  public adgy(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public adgy(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onAction(View paramView)
+  public void onImpeach(boolean paramBoolean, String paramString)
   {
-    int i = 1;
-    bayp localbayp = (bayp)paramView.getTag(2131380831);
-    if (localbayp == null) {}
-    for (;;)
-    {
+    if (!this.a.a.equals(paramString)) {
       return;
-      String str1 = localbayp.b();
-      String str2 = localbayp.a().toString();
-      paramView = "-1";
-      if ((localbayp instanceof baxd))
-      {
-        paramView = ((baxd)localbayp).e();
-        i = 3000;
-      }
-      while ((i != -1) && (ForwardFriendListActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
-      {
-        ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
-        return;
-        if ((localbayp instanceof baxj)) {
-          paramView = ((baxj)localbayp).a;
-        } else if ((localbayp instanceof baxo)) {
-          paramView = ((baxo)localbayp).a().troopuin;
-        } else if ((localbayp instanceof baxe)) {
-          i = 0;
-        } else {
-          i = -1;
-        }
-      }
     }
+    if (paramBoolean)
+    {
+      this.a.a(2130839651, this.a.getString(2131690720));
+      return;
+    }
+    this.a.a(2130839636, this.a.getString(2131690718));
   }
 }
 

@@ -1,19 +1,43 @@
-public class bbgi
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+
+class bbgi
+  implements INetEngine.INetEngineListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  bbgi(bbgg parambbgg, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
   
-  public String toString()
+  public void onResp(NetResp paramNetResp)
   {
-    return "source = " + this.jdField_c_of_type_JavaLangString + " editDistance = " + this.d + " matchDegree = " + this.jdField_c_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.mHttpCode);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Bbgg.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
+    try
+    {
+      nwp.a(new File(bbgg.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), bbgg.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
+      if (this.jdField_a_of_type_Bbgg.a != null) {
+        this.jdField_a_of_type_Bbgg.a.a();
+      }
+      return;
+    }
+    catch (IOException paramNetResp)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          paramNetResp.printStackTrace();
+        }
+      }
+    }
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

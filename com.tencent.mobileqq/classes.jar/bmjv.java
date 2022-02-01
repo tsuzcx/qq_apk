@@ -1,43 +1,40 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
-import java.util.List;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.QQRecorder;
+import java.lang.ref.WeakReference;
 
-public class bmjv
-  implements View.OnClickListener
+class bmjv
+  extends Handler
 {
-  public bmjv(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
+  bmjv(bmju parambmju) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    int i = 0;
-    if (bmbv.a(paramView)) {}
-    for (;;)
+    switch (paramMessage.what)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bmbc.a().B();
-      if (AEEditorMultiCutEditFragment.a(this.a).size() >= 30)
-      {
-        QQToast.a(this.a.getActivity(), this.a.getResources().getString(2131689696, new Object[] { Integer.valueOf(30) }), 0).a();
-      }
-      else
-      {
-        if (AEEditorMultiCutEditFragment.a(this.a).a()) {
-          AEEditorMultiCutEditFragment.a(this.a).b();
-        }
-        Object localObject = new blvw().a(blvr.E).b(false).a(true);
-        if (AEEditorMultiCutEditFragment.a(this.a) != null) {
-          i = AEEditorMultiCutEditFragment.a(this.a).size();
-        }
-        localObject = ((blvw)localObject).a(i).a();
-        blvv.a(this.a.getActivity(), (Bundle)localObject, 1024);
-      }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (bmju.a(this.a) != null) {
+            bmju.a(this.a).a(1, bmju.a(this.a));
+          }
+        } while (!(paramMessage.obj instanceof String));
+        paramMessage = (String)paramMessage.obj;
+        this.a.c(paramMessage);
+        this.a.b(paramMessage);
+        return;
+        bmju.a(this.a).c();
+        bhcl.b(2131230744, false);
+      } while (this.a.a == null);
+      paramMessage = (Context)this.a.a.get();
+    } while (paramMessage == null);
+    bhcl.a(paramMessage, false);
   }
 }
 

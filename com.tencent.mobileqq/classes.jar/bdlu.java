@@ -1,62 +1,72 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.SeekBar;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.superplayer.api.ISuperPlayer;
-import java.util.ArrayList;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
-public class bdlu
-  extends Handler
+class bdlu
 {
-  public bdlu(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, Looper paramLooper)
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k = "8.4.10.4875";
+  public String l = "AND";
+  
+  public bdlu()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_b_of_type_Long = AppSetting.a();
+    this.jdField_a_of_type_JavaLangString = DeviceInfoUtil.getIMEI();
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public void handleMessage(Message paramMessage)
+  public String a()
   {
-    super.handleMessage(paramMessage);
-    paramMessage = (bdmd)paramMessage.obj;
-    long l1;
-    long l2;
-    bdmu localbdmu;
-    if (this.a.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying())
-    {
-      l1 = this.a.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs();
-      l2 = this.a.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs();
-      paramMessage.jdField_a_of_type_AndroidWidgetSeekBar.setMax((int)l1);
-      paramMessage.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)l2);
-      this.a.b(paramMessage);
-      paramMessage = (bdmr)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramMessage.jdField_a_of_type_Int);
-      if ((paramMessage instanceof bdmu))
-      {
-        localbdmu = (bdmu)paramMessage;
-        if ((!this.a.d) && (l2 >= l1 * 0.8D))
-        {
-          this.a.d = true;
-          if (localbdmu.h == 0) {
-            break label271;
-          }
-          paramMessage = "" + localbdmu.h;
-          if (localbdmu.c != 31) {
-            break label277;
-          }
-        }
-      }
-    }
-    label271:
-    label277:
-    for (String str = "1";; str = "2")
-    {
-      bcef.b(null, "dc00899", "Grp_tribe", "", "video_player", "vv_active", this.a.c, 0, localbdmu.d, "" + localbdmu.b, paramMessage, str);
-      if (this.a.h < l1 - 100L) {
-        this.a.h = ((int)l2);
-      }
-      return;
-      paramMessage = "";
-      break;
-    }
+    StringBuilder localStringBuilder = new StringBuilder(256);
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.h);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.i);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.j);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.k);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.l);
+    localStringBuilder.append('|');
+    return localStringBuilder.toString();
   }
 }
 

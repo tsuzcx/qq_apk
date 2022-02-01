@@ -1,12 +1,8 @@
-import com.tencent.wifisdk.TMSDKCustomConfig.ICustomReporter;
-
-final class bhni
-  implements TMSDKCustomConfig.ICustomReporter
+public class bhni
 {
-  public void reportAction(String paramString, int paramInt)
-  {
-    bhnb.a(paramString);
-  }
+  public long a;
+  public String a;
+  public String b;
 }
 
 

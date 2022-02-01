@@ -1,20 +1,27 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Context;
+import android.graphics.Canvas;
+import com.tencent.image.URLImageView;
 
-public class acbt
-  implements abzb
+public final class acbt
+  extends URLImageView
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  private acjt a = new acjt();
+  
+  public acbt(Context paramContext)
   {
-    ((aara)paramQQAppInterface.getBusinessHandler(51)).a(paramMsgType0x210.vProtobuf);
+    super(paramContext);
   }
   
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void a(float paramFloat)
   {
-    a(paramabxc.a(), paramMsgType0x210);
-    return null;
+    this.a.a(Double.valueOf(paramFloat * 2.0F).intValue(), Double.valueOf(paramFloat * 2.0F).intValue());
+    this.a.a(paramFloat, paramFloat);
+    this.a.a(paramFloat);
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    this.a.a(paramCanvas, getDrawable());
   }
 }
 

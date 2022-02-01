@@ -1,23 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
 final class bdvt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  bdvt(bdvu parambdvu, boolean paramBoolean) {}
+  bdvt(bdvs parambdvs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Bdvu != null) {
-      this.jdField_a_of_type_Bdvu.a();
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      bcef.b(null, "dc00898", "", "", "0X800B224", "0X800B224", 0, 0, "", "", "", "");
-      return;
-    }
-    bcef.b(null, "dc00898", "", "", "0X800B226", "0X800B226", 0, 0, "", "", "", "");
+    this.a.dismiss();
+    bdla.b(bdvs.a(this.a).app, "dc00898", "", "", "0X800ADD6", "0X800ADD6", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

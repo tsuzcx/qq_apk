@@ -38,7 +38,7 @@ class AppStateManager$1
         for (;;)
         {
           MiniReportManager.reportEventType(this.val$miniAppInfo, 150, MiniReportManager.getAppType(this.val$miniAppInfo), "dom_ready", String.valueOf(str.length()), "", "");
-          if (WnsConfig.getConfig("qqminiapp", "mini_app_enable_show_clean_detect_whitescreen", 1) > 0) {
+          if (WnsConfig.getConfig("qqminiapp", "mini_app_enable_show_clean_detect_whitescreen", 0) > 0) {
             AppStateManager.access$100(this.this$0, 2);
           }
           if (localObject == null) {

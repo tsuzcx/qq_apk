@@ -1,86 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class adac
-  extends anax
 {
-  public adac(ChatSettingActivity paramChatSettingActivity) {}
+  public static final JSONObject a = new JSONObject();
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public static JSONObject a(Bundle paramBundle)
   {
-    if (!ChatSettingActivity.c(this.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mShieldByThis=" + ChatSettingActivity.c(this.a));
-      }
-      return;
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBundle == null) {
+      return a;
     }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.g(this.a);
-    paramList = this.a;
-    ChatSettingActivity localChatSettingActivity = this.a;
-    if (paramBoolean) {}
-    for (int i = 2131718430;; i = 2131718419)
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      QQToast.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, isSuccess=" + paramBoolean + ", mShieldByThis=" + ChatSettingActivity.c(this.a) + ", mShieldUin=" + ChatSettingActivity.d(this.a) + ", mIsShield=" + ChatSettingActivity.a(this.a));
+      String str = (String)localIterator.next();
+      Object localObject2 = paramBundle.get(str);
+      Object localObject1 = localObject2;
+      if ((localObject2 instanceof Bundle)) {
+        localObject1 = a((Bundle)localObject2);
       }
-      if (!paramBoolean) {
-        break;
-      }
-      paramList = (avnk)this.a.app.getManager(16);
-      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.d(this.a)));
-      }
-      ChatSettingActivity.b(this.a);
-      if (ChatSettingActivity.a(this.a))
+      try
       {
-        this.a.jdField_a_of_type_Boolean = false;
-        ChatSettingActivity.a(this.a);
+        localJSONObject.put(str, localObject1);
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddShieldList, mIsShield=" + ChatSettingActivity.a(this.a) + ", mIsFollowed=" + this.a.jdField_a_of_type_Boolean);
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.g(this.a);
-    paramList = this.a;
-    ChatSettingActivity localChatSettingActivity = this.a;
-    if (paramBoolean) {}
-    for (int i = 2131718418;; i = 2131718417)
-    {
-      QQToast.a(paramList, 2, localChatSettingActivity.getString(i), 0).b(this.a.getTitleBarHeight());
+      catch (JSONException localJSONException) {}
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, isSuccess=" + paramBoolean);
+        QLog.e("APIParam", 2, localJSONException.getMessage(), localJSONException);
       }
-      if (!paramBoolean) {
-        break;
-      }
-      paramList = (avnk)this.a.app.getManager(16);
-      if ((paramList != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, paramList.a(ChatSettingActivity.d(this.a)));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDeleteShieldList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
-      return;
     }
-    ChatSettingActivity.a(this.a, 2131718417, 1);
+    return localJSONObject;
   }
 }
 

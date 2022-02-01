@@ -1,8 +1,8 @@
-import android.content.Intent;
-
-public abstract interface afrp
+public class afrp
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public int a;
+  public String a;
+  public int b;
 }
 
 

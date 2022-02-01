@@ -1,13 +1,44 @@
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class xuj
-  implements vog
+public class xuj
 {
-  xuj(xuh paramxuh, TextView paramTextView) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(String paramString, int paramInt)
+  public xuj(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131706642) + paramInt + "%");
+    this.jdField_a_of_type_Int = 3;
+    paramString = (String)((wjl)wjs.a(10)).b(paramString, "");
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("show", 3);
+      if (this.jdField_a_of_type_Int >= 0)
+      {
+        this.c = paramString.optString("url");
+        this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
+        this.b = paramString.optString("text");
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      do
+      {
+        this.jdField_a_of_type_Int = 3;
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "ButtonConfig exc: " + QLog.getStackTraceString(paramString));
+    }
+  }
+  
+  public String toString()
+  {
+    return "ButtonConfig: show = " + this.jdField_a_of_type_Int + ", iconText = " + this.b + ", iconUrl = " + this.jdField_a_of_type_JavaLangString + ", jumpUrl = " + this.c;
   }
 }
 

@@ -1,18 +1,12 @@
-class tqy
-  implements tqt
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+
+public abstract interface tqy
 {
-  tqy(tqv paramtqv) {}
-  
-  public void a(txh paramtxh, int paramInt1, int paramInt2)
-  {
-    if (this.a.a.a(paramtxh)) {
-      this.a.a.a(tqv.a(this.a), tqv.a(this.a), paramInt1, paramInt2);
-    }
-  }
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tqy
  * JD-Core Version:    0.7.0.1
  */

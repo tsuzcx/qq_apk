@@ -1,69 +1,72 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import mqq.app.NewIntent;
 
-public class ameh
+final class ameh
+  extends LbsManagerService.OnLocationChangeListener
 {
-  private double jdField_a_of_type_Double = 2147483647.0D;
-  private int jdField_a_of_type_Int;
-  private WeakReference<ApolloTextureView> jdField_a_of_type_JavaLangRefWeakReference;
-  private int b;
-  private int c;
-  private int d = -1;
-  
-  private void b(double paramDouble)
+  ameh(String paramString, boolean paramBoolean, NewIntent paramNewIntent, QQAppInterface paramQQAppInterface)
   {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView == null) {
-      return;
-    }
-    localApolloTextureView.getRender().mIsFrameMode = true;
-    localApolloTextureView.getRender().mDuration = paramDouble;
-    localApolloTextureView.getRenderImpl().a(0L);
-    String[] arrayOfString2 = amge.a(13, this.jdField_a_of_type_Int, this.b, true);
-    String[] arrayOfString1 = null;
-    if (this.c == 1) {
-      arrayOfString1 = amge.a(13, this.jdField_a_of_type_Int, this.b, false);
-    }
-    localApolloTextureView.getRenderImpl().a(this.jdField_a_of_type_Int, 0, arrayOfString2, arrayOfString1);
+    super(paramString, paramBoolean);
   }
   
-  public void a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    this.jdField_a_of_type_Double = 2147483647.0D;
-  }
-  
-  public void a(double paramDouble)
-  {
+    int j = 0;
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloVoiceDIYHelper", 2, "[renderFrame], curSec:" + paramDouble + ",lastDur:" + this.jdField_a_of_type_Double);
+      QLog.d("weatherManager", 2, "startLocation onLocationFinish");
     }
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView == null) {
-      return;
-    }
-    if (paramDouble <= this.jdField_a_of_type_Double) {
-      b(paramDouble);
+    StringBuilder localStringBuilder;
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("errCode ：").append(paramInt).append(" info is null ---> ");
+      if (paramSosoLbsInfo != null) {
+        break label158;
+      }
+      bool = true;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Double = paramDouble;
-      return;
-      localApolloTextureView.queueEvent(new ApolloVoiceDIYHelper.1(this, localApolloTextureView, paramDouble - this.jdField_a_of_type_Double));
+      QLog.d("weatherManager", 2, bool);
+      int i = j;
+      if (paramInt == 0)
+      {
+        i = j;
+        if (paramSosoLbsInfo != null)
+        {
+          i = j;
+          if (paramSosoLbsInfo.mLocation == null) {}
+        }
+      }
+      try
+      {
+        i = Integer.parseInt(paramSosoLbsInfo.mLocation.cityCode);
+        if (QLog.isColorLevel()) {
+          QLog.d("weatherManager", 2, "LocalInfo" + i);
+        }
+        this.jdField_a_of_type_MqqAppNewIntent.putExtra("adcode", i);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
+        return;
+        label158:
+        bool = false;
+      }
+      catch (Throwable paramSosoLbsInfo)
+      {
+        for (;;)
+        {
+          i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("weatherManager", 2, paramSosoLbsInfo, new Object[0]);
+            i = j;
+          }
+        }
+      }
     }
-  }
-  
-  public void a(ApolloTextureView paramApolloTextureView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloTextureView);
-    if (paramInt1 != this.d) {
-      a();
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = this.jdField_a_of_type_Int;
-    this.b = paramInt2;
-    this.c = paramInt3;
   }
 }
 

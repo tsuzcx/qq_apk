@@ -1,62 +1,53 @@
-import android.content.Context;
-import com.tencent.open.component.cache.database.DbCacheData;
-import java.lang.Class<+Lcom.tencent.open.component.cache.database.DbCacheData;>;
-import java.util.HashMap;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import android.text.TextUtils;
+import android.widget.RelativeLayout;
+import android.widget.VideoView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class bibl
+final class bibl
+  implements MediaPlayer.OnErrorListener
 {
-  protected static bibl a;
-  protected Context a;
-  protected bibk a;
-  protected final HashMap<String, bibi> a;
+  bibl(int paramInt, bibn parambibn, VideoView paramVideoView, boolean paramBoolean) {}
   
-  protected bibl(Context paramContext)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Bibk = new bibm(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-  }
-  
-  public static bibl a(Context paramContext)
-  {
-    if (jdField_a_of_type_Bibl != null) {
-      return jdField_a_of_type_Bibl;
+    if (QLog.isColorLevel()) {
+      QLog.d("VipFunCallManager", 2, "playing onError what=" + paramInt1 + ", extra=" + paramInt2 + ", funcallid=" + this.jdField_a_of_type_Int);
     }
-    try
+    if (this.jdField_a_of_type_Bibn != null) {
+      this.jdField_a_of_type_Bibn.a(paramInt1, paramInt2, this.jdField_a_of_type_Int);
+    }
+    paramMediaPlayer = bibh.a(null, this.jdField_a_of_type_Int, 7, null);
+    if (TextUtils.isEmpty(paramMediaPlayer)) {}
+    label159:
+    RelativeLayout localRelativeLayout;
+    do
     {
-      if (jdField_a_of_type_Bibl == null) {
-        jdField_a_of_type_Bibl = new bibl(paramContext);
+      for (;;)
+      {
+        return true;
+        if (new File(paramMediaPlayer).exists())
+        {
+          paramMediaPlayer = bgyo.a(paramMediaPlayer);
+          if (paramMediaPlayer != null) {}
+          for (paramMediaPlayer = new BitmapDrawable(paramMediaPlayer); (paramMediaPlayer != null) && (this.jdField_a_of_type_AndroidWidgetVideoView != null); paramMediaPlayer = null)
+          {
+            if (this.jdField_a_of_type_Boolean != true) {
+              break label159;
+            }
+            this.jdField_a_of_type_AndroidWidgetVideoView.setBackgroundDrawable(paramMediaPlayer);
+            return true;
+          }
+        }
       }
-      paramContext = jdField_a_of_type_Bibl;
-      return paramContext;
-    }
-    finally {}
-  }
-  
-  public bibi a(Class<? extends DbCacheData> paramClass, long paramLong, String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
-        throw new RuntimeException("call initiate(Context context) before this");
-      }
-    }
-    if (paramString == null) {
-      throw new RuntimeException("invalid table name");
-    }
-    Object localObject = bibi.a(paramLong, paramString);
-    localObject = (bibi)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-    if (localObject == null)
-    {
-      paramClass = new bibi(this.jdField_a_of_type_AndroidContentContext, paramClass, paramLong, paramString);
-      paramClass.a(this.jdField_a_of_type_Bibk);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.a(), paramClass);
-    }
-    for (;;)
-    {
-      return paramClass;
-      paramClass = (Class<? extends DbCacheData>)localObject;
-    }
+      this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(8);
+      localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetVideoView.getParent();
+    } while (localRelativeLayout == null);
+    localRelativeLayout.setBackgroundDrawable(paramMediaPlayer);
+    return true;
   }
 }
 

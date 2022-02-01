@@ -1,22 +1,9 @@
-import android.view.View;
-import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.QCallRecent;
+import java.util.List;
 
-public class bapr
-  extends bapi
+public abstract interface bapr
 {
-  public bapr(LikesView paramLikesView, int paramInt, String paramString)
-  {
-    super(paramInt);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView) != null) {
-      LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView).a(this.jdField_a_of_type_JavaLangString);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(List<QCallRecent> paramList);
 }
 
 

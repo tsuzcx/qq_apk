@@ -1,10 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
+
 public abstract interface tcx
 {
-  public abstract int a();
+  public abstract View a();
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a();
   
-  public abstract boolean a(int paramInt);
+  public abstract void a(View.OnClickListener paramOnClickListener);
+  
+  public abstract void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo);
+  
+  public abstract void b();
 }
 
 

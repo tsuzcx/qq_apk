@@ -1,26 +1,10 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.WindowManager;
+import android.widget.TextView;
 
 class bhgp
-  implements Animator.AnimatorListener
 {
-  bhgp(bhgl parambhgl) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (bhgl.a(this.a) != null)
-    {
-      bhgl.a(this.a).removeViewImmediate(bhgl.a(this.a));
-      bhgl.a(this.a, null);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  private bhgp(bhgj parambhgj) {}
 }
 
 

@@ -1,45 +1,54 @@
-import QQWalletPay.RespCheckChangePwdAuth;
-import android.os.Handler;
-import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class anst
-  extends Handler
+  implements auir
 {
-  private anst(ansq paramansq) {}
+  anst(ansr paramansr, long paramLong) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, String paramString)
   {
-    if (paramMessage.what != 1) {
-      return;
+    audr.c(BaseApplicationImpl.getContext().getString(2131692491));
+    ((ansr)this.jdField_a_of_type_Ansr.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).OnSessionComplete(this.jdField_a_of_type_Long, 41, paramInt);
+  }
+  
+  public void a(Object paramObject)
+  {
+    Object localObject = (String)paramObject;
+    paramObject = (ansr)this.jdField_a_of_type_Ansr.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      paramObject.OnSessionComplete(this.jdField_a_of_type_Long, 0, -999);
     }
-    if (ansq.a(this.a) != null)
+    DataLineMsgRecord localDataLineMsgRecord;
+    do
     {
-      ansq.a(this.a).a();
-      this.a.a.removeObserver(ansq.a(this.a));
-    }
-    if (paramMessage.arg1 != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QwalletModifyPassAction", 2, "msf return error ");
-      }
-      ansq.a(this.a, 1);
-      return;
-    }
-    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
-    {
-      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
-      if (paramMessage.retCode == 0)
+      do
       {
-        ansq.b(this.a);
         return;
+        int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_Long);
+        localDataLineMsgRecord = this.jdField_a_of_type_Ansr.app.getMessageFacade().getDatalineMessageManager(i).a(this.jdField_a_of_type_Long);
+      } while (localDataLineMsgRecord == null);
+      localDataLineMsgRecord.serverPath = ((String)localObject);
+      localDataLineMsgRecord.nOpType = 1;
+      localDataLineMsgRecord.bIsSended = true;
+      localDataLineMsgRecord.bIsTransfering = false;
+      if (localDataLineMsgRecord.entityID != 0L)
+      {
+        localObject = this.jdField_a_of_type_Ansr.app.getFileManagerDataCenter().a(localDataLineMsgRecord.entityID);
+        if (localObject != null)
+        {
+          ((FileManagerEntity)localObject).status = 1;
+          ((FileManagerEntity)localObject).Uuid = localDataLineMsgRecord.serverPath;
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("QwalletModifyPassAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
-      }
-    }
-    ansq.a(this.a, 1);
+    } while (!paramObject.a(localDataLineMsgRecord));
+    paramObject.a(localDataLineMsgRecord);
   }
 }
 

@@ -7,8 +7,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Process;
 import android.view.MotionEvent;
-import bkvd;
-import bkvg;
+import bmgm;
+import bmgp;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ReaderDefaultProxyActivity
@@ -38,8 +38,8 @@ public class ReaderDefaultProxyActivity
     if (Build.VERSION.SDK_INT < 26) {
       setRequestedOrientation(1);
     }
-    bkvd.c(this.a, "[ReaderPlugin] 异常分支：自动重启Reader插件Activity的场景，finish不做任何处理 ");
-    bkvg.a(this, -1, "Recover failed activity=" + this.a);
+    bmgm.c(this.a, "[ReaderPlugin] 异常分支：自动重启Reader插件Activity的场景，finish不做任何处理 ");
+    bmgp.a(this, -1, "Recover failed activity=" + this.a);
     finish();
     Process.killProcess(Process.myPid());
   }

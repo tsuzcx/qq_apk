@@ -1,42 +1,32 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aten
+class aten
+  implements bkzq
 {
-  private static aten jdField_a_of_type_Aten;
-  public static String a;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new ateo(this, "Module_WeiyunDownloadService");
-  private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  aten(atem paramatem, FileManagerEntity paramFileManagerEntity, bkzi parambkzi) {}
   
-  public static aten a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (jdField_a_of_type_Aten == null) {}
-    try
-    {
-      jdField_a_of_type_Aten = new aten();
-      return jdField_a_of_type_Aten;
+    if (QfileBaseRecentFileTabView.o(this.jdField_a_of_type_Atem.a.a).getFileManagerEngine().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId)) {}
+    this.jdField_a_of_type_Atem.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid)) && (3000 != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType)) {
+      QfileBaseRecentFileTabView.p(this.jdField_a_of_type_Atem.a.a).getFileManagerEngine().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend);
     }
-    finally {}
-  }
-  
-  private QQAppInterface a()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM = true;
+    QfileBaseRecentFileTabView.q(this.jdField_a_of_type_Atem.a.a).getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_Atem.a.a.g();
+    if (this.jdField_a_of_type_Bkzi.isShowing()) {
+      this.jdField_a_of_type_Bkzi.dismiss();
     }
-    return null;
-  }
-  
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aten
  * JD-Core Version:    0.7.0.1
  */

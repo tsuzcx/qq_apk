@@ -1,16 +1,16 @@
 package com.tencent.device.msg.activities;
 
-import aaur;
-import aszk;
+import abkd;
+import audr;
 
 public class DevShortVideoItemBuilder$1
   implements Runnable
 {
-  public DevShortVideoItemBuilder$1(aaur paramaaur) {}
+  public DevShortVideoItemBuilder$1(abkd paramabkd) {}
   
   public void run()
   {
-    aszk.a(2131693466);
+    audr.a(2131693647);
   }
 }
 

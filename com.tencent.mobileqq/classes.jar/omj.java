@@ -1,18 +1,18 @@
-public class omj
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
+
+public final class omj
+  implements Parcelable.Creator<VideoInfo.InterruptedWeishiAd>
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
-  
-  public omj(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public VideoInfo.InterruptedWeishiAd a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    return new VideoInfo.InterruptedWeishiAd(paramParcel);
+  }
+  
+  public VideoInfo.InterruptedWeishiAd[] a(int paramInt)
+  {
+    return new VideoInfo.InterruptedWeishiAd[paramInt];
   }
 }
 

@@ -1,27 +1,58 @@
-import android.content.Context;
-import java.io.File;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-final class blhg
-  implements blgg
+public class blhg
 {
-  blhg(String paramString1, String paramString2, blhi paramblhi, Context paramContext, File paramFile1, File paramFile2) {}
+  private int jdField_a_of_type_Int;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private FrameLayout.LayoutParams jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams;
   
-  public void a(String paramString, long paramLong, float paramFloat)
+  private blhg(Activity paramActivity)
   {
-    if (this.jdField_a_of_type_Blhi != null) {
-      this.jdField_a_of_type_Blhi.a(paramLong, paramFloat);
+    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new blhh(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams = ((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams());
+  }
+  
+  private int a()
+  {
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  private void a()
+  {
+    int i = a();
+    int j;
+    int k;
+    if (i != this.jdField_a_of_type_Int)
+    {
+      j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      k = j - i;
+      if (k <= j / 4) {
+        break label66;
+      }
+    }
+    label66:
+    for (this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = (j - k + ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity));; this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = j)
+    {
+      this.jdField_a_of_type_AndroidViewView.requestLayout();
+      this.jdField_a_of_type_Int = i;
+      return;
     }
   }
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  public static void a(Activity paramActivity)
   {
-    if (paramBoolean) {
-      blfu.a().a(blhf.a(), this.jdField_a_of_type_JavaLangString, "SoHelper", new blhh(this));
-    }
-    while (this.jdField_a_of_type_Blhi == null) {
-      return;
-    }
-    this.jdField_a_of_type_Blhi.a(paramString3);
+    new blhg(paramActivity);
   }
 }
 

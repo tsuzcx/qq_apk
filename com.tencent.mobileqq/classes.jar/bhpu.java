@@ -1,78 +1,120 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.beacon.upload.TunnelInfo;
+import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.BusinessObserver;
+import cooperation.ilive.manager.IliveAuthManager;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.Pair;
+import kotlin.collections.MapsKt;
+import kotlin.jvm.JvmOverloads;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.math.MathKt;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class bhpu
-  implements BusinessObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/VasStatisticCollector;", "", "()V", "APP_KEY", "", "TAG", "hit", "", "calculateHit", "i", "", "calculateHit$AQQLiteApp_release", "isHit", "report", "", "eventCode", "elapse", "", "params", "", "Lkotlin/Pair;", "(Ljava/lang/String;J[Lkotlin/Pair;)V", "", "reportReal", "isReal", "isImmediately", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bhpu
 {
-  public bhpu(AuthorityActivity paramAuthorityActivity, boolean paramBoolean) {}
+  public static final bhpu a;
+  private static final boolean a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    QLog.i("AuthorityActivity", 1, "getAppInfo observer onReceive isSuccess = " + paramBoolean);
-    atqa.a("KEY_GET_APP_INFO_REQUEST", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej, paramBoolean);
-    AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long = (System.currentTimeMillis() - AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long);
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString.equals(localObject)) {
-      QLog.e("AuthorityActivity", 1, "mAccount.uin != ssoAccount");
-    }
-    do
+    bhpu localbhpu = new bhpu();
+    jdField_a_of_type_Bhpu = localbhpu;
+    UserAction.registerTunnel(new TunnelInfo("00000TEDPU36RWUZ", AppSetting.f(), "1000"));
+    if (localbhpu.a(100)) {}
+    for (boolean bool = true;; bool = false)
     {
+      jdField_a_of_type_Boolean = bool;
       return;
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangRunnable);
-    } while (!paramBoolean);
-    GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-    for (;;)
-    {
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        localObject = arrayOfByte;
-        if (this.jdField_a_of_type_Boolean) {
-          localObject = bifi.b(arrayOfByte, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej);
-        }
-        if (localObject == null) {
-          break;
-        }
-        localGetAppinfoResponse.mergeFrom((byte[])localObject);
-        if (!localGetAppinfoResponse.has()) {
-          break;
-        }
-        paramInt = localGetAppinfoResponse.ret.get();
-        if (paramInt == 0)
-        {
-          localObject = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-          ((Message)localObject).what = 3;
-          ((Message)localObject).obj = localGetAppinfoResponse;
-          this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject);
-        }
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("report_type", "103");
-        ((Bundle)localObject).putString("act_type", "12");
-        if (paramBundle.getBoolean("isShort", false))
-        {
-          paramBundle = "2";
-          ((Bundle)localObject).putString("intext_3", paramBundle);
-          ((Bundle)localObject).putString("stringext_1", AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_JavaLangString);
-          ((Bundle)localObject).putString("intext_2", "" + paramInt);
-          ((Bundle)localObject).putString("intext_5", "" + AuthorityActivity.c(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long);
-          bhvw.a().a((Bundle)localObject, AuthorityActivity.e, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangString, false);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e("AuthorityActivity", 1, "getAppInfoResponse deal exception : " + paramBundle.getMessage());
-        paramBundle.printStackTrace();
-        return;
-      }
-      paramBundle = "1";
     }
+  }
+  
+  @JvmStatic
+  @JvmOverloads
+  public static final void a(@NotNull String paramString, long paramLong, @Nullable Map<String, String> paramMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "eventCode");
+    if (!jdField_a_of_type_Boolean) {
+      return;
+    }
+    a(paramString, paramMap, paramLong, false, false, 24, null);
+  }
+  
+  @JvmStatic
+  @JvmOverloads
+  public static final void a(@NotNull String paramString, long paramLong, @NotNull Pair<String, String>... paramVarArgs)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "eventCode");
+    Intrinsics.checkParameterIsNotNull(paramVarArgs, "params");
+    if (!jdField_a_of_type_Boolean) {
+      return;
+    }
+    a(paramString, paramLong, MapsKt.toMutableMap(MapsKt.toMap(paramVarArgs)));
+  }
+  
+  @JvmStatic
+  @JvmOverloads
+  public static final void a(@NotNull String paramString, @Nullable Map<String, String> paramMap, long paramLong)
+  {
+    a(paramString, paramMap, paramLong, false, false, 24, null);
+  }
+  
+  @JvmStatic
+  @JvmOverloads
+  public static final void a(@NotNull String paramString, @Nullable Map<String, String> paramMap, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "eventCode");
+    if (QLog.isColorLevel()) {
+      QLog.e("VasStatisticCollector", 1, "eventCode=" + paramString + ", elapse=" + paramLong + ", params=" + String.valueOf(paramMap));
+    }
+    if (paramMap == null)
+    {
+      paramMap = new HashMap();
+      paramMap.put("qquin", String.valueOf(IliveAuthManager.getLongUin()));
+      UserAction.onUserActionToTunnel("00000TEDPU36RWUZ", paramString, true, paramLong, -1L, (Map)paramMap, paramBoolean1, paramBoolean2);
+      return;
+    }
+    paramMap.put("qquin", String.valueOf(IliveAuthManager.getLongUin()));
+    UserAction.onUserActionToTunnel("00000TEDPU36RWUZ", paramString, true, paramLong, -1L, paramMap, paramBoolean1, paramBoolean2);
+  }
+  
+  @JvmStatic
+  @JvmOverloads
+  public static final void a(@NotNull String paramString, @NotNull Pair<String, String>... paramVarArgs)
+  {
+    a(paramString, 0L, paramVarArgs, 2, null);
+  }
+  
+  @JvmStatic
+  public static final boolean a()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  @JvmStatic
+  @JvmOverloads
+  public static final void b(@NotNull String paramString, long paramLong, @NotNull Pair<String, String>... paramVarArgs)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "eventCode");
+    Intrinsics.checkParameterIsNotNull(paramVarArgs, "params");
+    a(paramString, MapsKt.toMutableMap(MapsKt.toMap(paramVarArgs)), paramLong, false, false, 24, null);
+  }
+  
+  @JvmStatic
+  @JvmOverloads
+  public static final void b(@NotNull String paramString, @NotNull Pair<String, String>... paramVarArgs)
+  {
+    b(paramString, 0L, paramVarArgs, 2, null);
+  }
+  
+  public final boolean a(int paramInt)
+  {
+    return MathKt.roundToInt(Math.floor(paramInt * Math.random())) == paramInt / 2;
   }
 }
 

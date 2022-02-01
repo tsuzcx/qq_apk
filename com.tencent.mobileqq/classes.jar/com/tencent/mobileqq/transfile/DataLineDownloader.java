@@ -9,9 +9,9 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import aszt;
-import atal;
-import bfvo;
+import auea;
+import aues;
+import bheg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
@@ -74,7 +74,7 @@ public class DataLineDownloader
         BitmapFactory.decodeFile(paramDatalineDownLoadInfo.photoInfo.path, localOptions);
         localOptions.inJustDecodeBounds = false;
         localOptions.inSampleSize = calculateInSampleSize(localOptions, i, k);
-        Object localObject1 = atal.a(paramDatalineDownLoadInfo.photoInfo.path, localOptions);
+        Object localObject1 = aues.a(paramDatalineDownLoadInfo.photoInfo.path, localOptions);
         k = AIOUtils.dp2px(135.0F, BaseApplicationImpl.getContext().getResources());
         if (localOptions.outHeight > localOptions.outWidth * 2.0F)
         {
@@ -91,7 +91,7 @@ public class DataLineDownloader
           }
           else
           {
-            localObject1 = bfvo.a((Bitmap)localObject2, k);
+            localObject1 = bheg.a((Bitmap)localObject2, k);
           }
           localObject2 = localObject1;
           if (localObject1 == null) {
@@ -182,8 +182,8 @@ public class DataLineDownloader
     if (localObject == null)
     {
       paramURLDrawableHandler = BaseApplicationImpl.getContext();
-      int i = aszt.a(paramFile.getPath());
-      paramURLDrawableHandler = drawableToBitmap(paramURLDrawableHandler.getResources().getDrawable(aszt.a(i)));
+      int i = auea.a(paramFile.getPath());
+      paramURLDrawableHandler = drawableToBitmap(paramURLDrawableHandler.getResources().getDrawable(auea.a(i)));
     }
     paramDownloadParams = parseUrl(paramDownloadParams.url);
     paramFile = paramURLDrawableHandler;
@@ -192,7 +192,7 @@ public class DataLineDownloader
       paramFile = paramURLDrawableHandler;
       if (paramDownloadParams.isDrawRound)
       {
-        paramFile = bfvo.a(paramURLDrawableHandler, AIOUtils.dp2px(12.0F, BaseApplicationImpl.getContext().getResources()));
+        paramFile = bheg.a(paramURLDrawableHandler, AIOUtils.dp2px(12.0F, BaseApplicationImpl.getContext().getResources()));
         paramURLDrawableHandler.recycle();
       }
     }

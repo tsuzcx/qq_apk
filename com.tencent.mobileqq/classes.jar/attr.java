@@ -1,32 +1,16 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.freshnews.BlockableEditTextView;
+import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
 
-public class attr
-  implements ActionMode.Callback
+class attr
+  implements audq
 {
-  public attr(BlockableEditTextView paramBlockableEditTextView) {}
+  attr(attq paramattq) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    if (BlockableEditTextView.a(this.a) == 0) {
-      return true;
-    }
-    return BlockableEditTextView.a(this.a);
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    bdla.b(null, "dc00898", "", "", "0X800AEE3", "0X800AEE3", 0, 0, "", "", "", "");
+    LinkByWeiyunFragment.a(this.a.jdField_a_of_type_AndroidAppActivity, null, this.a.jdField_a_of_type_JavaLangString, false);
   }
 }
 

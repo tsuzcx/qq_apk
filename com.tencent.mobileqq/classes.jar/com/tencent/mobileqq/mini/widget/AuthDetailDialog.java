@@ -66,20 +66,20 @@ public class AuthDetailDialog
   
   private void initBottomDialog(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559379, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559428, null);
     setContentView(paramContext);
-    this.ivBack = ((ImageView)paramContext.findViewById(2131369154));
-    this.tvTitle = ((TextView)paramContext.findViewById(2131379469));
-    this.lvDetail = ((ListView)paramContext.findViewById(2131370400));
+    this.ivBack = ((ImageView)paramContext.findViewById(2131369316));
+    this.tvTitle = ((TextView)paramContext.findViewById(2131379778));
+    this.lvDetail = ((ListView)paramContext.findViewById(2131370583));
   }
   
   private void initCenterDialog(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559380, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559429, null);
     setContentView(paramContext);
-    this.tvTitle = ((TextView)paramContext.findViewById(2131379469));
-    this.tvCenterConfirm = ((TextView)paramContext.findViewById(2131379542));
-    this.lvDetail = ((ListView)paramContext.findViewById(2131370400));
+    this.tvTitle = ((TextView)paramContext.findViewById(2131379778));
+    this.tvCenterConfirm = ((TextView)paramContext.findViewById(2131379853));
+    this.lvDetail = ((ListView)paramContext.findViewById(2131370583));
   }
   
   private void initDetailList()

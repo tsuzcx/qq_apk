@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.fragment.searchresult;
 
-import bawa;
+import bccq;
 import com.tencent.qphone.base.util.QLog;
 
 public class KDSearchResultFragment$3$1
   implements Runnable
 {
-  public KDSearchResultFragment$3$1(bawa parambawa) {}
+  public KDSearchResultFragment$3$1(bccq parambccq) {}
   
   public void run()
   {

@@ -16,14 +16,14 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
-import bmbx;
-import bmke;
-import bmof;
-import bmoz;
-import bmpf;
-import bmqd;
-import bmqe;
-import bmqf;
+import bnrh;
+import bnzw;
+import bodx;
+import boer;
+import boex;
+import bofv;
+import bofw;
+import bofx;
 import com.tencent.tavcut.util.SpeedUtil;
 import com.tencent.tavcut.util.TimeFormatUtil;
 import com.tencent.tavsticker.utils.ViewUtils;
@@ -36,7 +36,7 @@ import com.tencent.weseevideo.model.resource.VideoResourceModelExtensionKt;
 import dov.com.qq.im.aeeditor.view.playtrack.view.PlayTrackExpandWidthView;
 import dov.com.qq.im.aeeditor.view.timeline.EffectTimelineView;
 import dov.com.qq.im.aeeditor.view.timeline.SliderView;
-import zau;
+import zpz;
 
 public class VideoTrackTimeLineView
   extends EffectTimelineView
@@ -46,8 +46,8 @@ public class VideoTrackTimeLineView
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bmqf jdField_a_of_type_Bmqf;
-  private IPlayTrackViewBitmapProvider jdField_a_of_type_ComTencentWeishiModuleEditWidgetPlaytrackProviderIPlayTrackViewBitmapProvider = new bmqd(this);
+  private bofx jdField_a_of_type_Bofx;
+  private IPlayTrackViewBitmapProvider jdField_a_of_type_ComTencentWeishiModuleEditWidgetPlaytrackProviderIPlayTrackViewBitmapProvider = new bofv(this);
   private CutModelKt jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt;
   private VideoResourceModel jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel;
   private PlayTrackExpandWidthView jdField_a_of_type_DovComQqImAeeditorViewPlaytrackViewPlayTrackExpandWidthView;
@@ -91,15 +91,15 @@ public class VideoTrackTimeLineView
   
   private long a(long paramLong)
   {
-    long l1 = ((float)(b() - this.jdField_a_of_type_Bmoz.c()) - (float)paramLong / this.jdField_a_of_type_Float);
-    if ((this.jdField_b_of_type_Boolean) && (Math.abs(l1) < this.jdField_a_of_type_Bmoz.a(l())) && (this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getScaleDuration() > c()))
+    long l1 = ((float)(b() - this.jdField_a_of_type_Boer.c()) - (float)paramLong / this.jdField_a_of_type_Float);
+    if ((this.jdField_b_of_type_Boolean) && (Math.abs(l1) < this.jdField_a_of_type_Boer.a(l())) && (this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getScaleDuration() > c()))
     {
-      bmbx.b("miles", "第一次满足左侧吸附条件");
+      bnrh.b("miles", "第一次满足左侧吸附条件");
       performHapticFeedback(0, 2);
       this.jdField_b_of_type_Boolean = false;
-      return ((float)Math.max(b() - this.jdField_a_of_type_Bmoz.c(), c()) * this.jdField_a_of_type_Float);
+      return ((float)Math.max(b() - this.jdField_a_of_type_Boer.c(), c()) * this.jdField_a_of_type_Float);
     }
-    if (Math.abs(l1) >= this.jdField_a_of_type_Bmoz.a(l()))
+    if (Math.abs(l1) >= this.jdField_a_of_type_Boer.a(l()))
     {
       this.jdField_b_of_type_Boolean = true;
       return paramLong;
@@ -118,15 +118,15 @@ public class VideoTrackTimeLineView
   
   private long b(long paramLong)
   {
-    long l1 = ((float)(this.jdField_a_of_type_Bmoz.c() - a()) - (float)paramLong / this.jdField_a_of_type_Float);
-    if ((this.jdField_c_of_type_Boolean) && (Math.abs(l1) < this.jdField_a_of_type_Bmoz.a(l())) && (this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getScaleDuration() > c()))
+    long l1 = ((float)(this.jdField_a_of_type_Boer.c() - a()) - (float)paramLong / this.jdField_a_of_type_Float);
+    if ((this.jdField_c_of_type_Boolean) && (Math.abs(l1) < this.jdField_a_of_type_Boer.a(l())) && (this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getScaleDuration() > c()))
     {
       Log.i("miles", "第一次满足左侧吸附条件");
       performHapticFeedback(0, 2);
       this.jdField_c_of_type_Boolean = false;
-      return ((float)Math.max(this.jdField_a_of_type_Bmoz.c() - a(), c()) * this.jdField_a_of_type_Float);
+      return ((float)Math.max(this.jdField_a_of_type_Boer.c() - a(), c()) * this.jdField_a_of_type_Float);
     }
-    if (Math.abs(l1) >= this.jdField_a_of_type_Bmoz.a(l()))
+    if (Math.abs(l1) >= this.jdField_a_of_type_Boer.a(l()))
     {
       this.jdField_c_of_type_Boolean = true;
       return paramLong;
@@ -173,7 +173,7 @@ public class VideoTrackTimeLineView
   {
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131167350);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131167376);
     this.jdField_a_of_type_AndroidViewView.setVisibility(4);
     this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackRoundFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
   }
@@ -187,12 +187,12 @@ public class VideoTrackTimeLineView
     localLayoutParams.gravity = 83;
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, getResources().getDimension(2131296309));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(4.0F, 1.0F, 3.0F, 2131165362);
+    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(4.0F, 1.0F, 3.0F, 2131165368);
     this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(80);
     this.jdField_a_of_type_AndroidWidgetTextView.setPadding((int)getResources().getDimension(2131296290), 0, (int)getResources().getDimension(2131296290), 0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(zau.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(zpz.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
     this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackRoundFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
   }
   
@@ -209,8 +209,8 @@ public class VideoTrackTimeLineView
     this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
     this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
     this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_b_of_type_AndroidWidgetTextView.setBackground(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837943));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(zau.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.jdField_b_of_type_AndroidWidgetTextView.setBackground(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837957));
+    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(zpz.a(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
     this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackRoundFrameLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
   }
   
@@ -223,7 +223,7 @@ public class VideoTrackTimeLineView
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       float f = VideoResourceModelExtensionKt.getSpeed(this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel);
-      if (bmke.a(f, 0.75F))
+      if (bnzw.a(f, 0.75F))
       {
         this.jdField_b_of_type_AndroidWidgetTextView.setText(SpeedUtil.getPreciseValue(f, 2) + "x");
         return;
@@ -236,15 +236,15 @@ public class VideoTrackTimeLineView
   
   private int l()
   {
-    if (this.jdField_a_of_type_Bmoz != null) {
-      return (int)(this.jdField_a_of_type_Bmoz.a() / 4.0F);
+    if (this.jdField_a_of_type_Boer != null) {
+      return (int)(this.jdField_a_of_type_Boer.a() / 4.0F);
     }
     return (int)getResources().getDimension(2131296302);
   }
   
   private void l()
   {
-    float f = this.jdField_a_of_type_Bmoz.a(((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float));
+    float f = this.jdField_a_of_type_Boer.a(((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float));
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams();
     localMarginLayoutParams.width = ((int)(f + h() * 2));
     setLayoutParams(localMarginLayoutParams);
@@ -259,9 +259,9 @@ public class VideoTrackTimeLineView
   
   public ViewGroup a()
   {
-    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(getContext()).inflate(2131558572, null);
-    this.jdField_b_of_type_AndroidViewView = localViewGroup.findViewById(2131363417);
-    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackRoundFrameLayout = ((RoundFrameLayout)localViewGroup.findViewById(2131365073));
+    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(getContext()).inflate(2131558583, null);
+    this.jdField_b_of_type_AndroidViewView = localViewGroup.findViewById(2131363486);
+    this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackRoundFrameLayout = ((RoundFrameLayout)localViewGroup.findViewById(2131365157));
     return localViewGroup;
   }
   
@@ -289,21 +289,21 @@ public class VideoTrackTimeLineView
   
   public void a(float paramFloat)
   {
-    bmbx.a("VideoTrackTimeLineView", "[handleLeftSliderMove]");
-    if (this.jdField_a_of_type_Bmqf != null) {
-      this.jdField_a_of_type_Bmqf.a(true);
+    bnrh.a("VideoTrackTimeLineView", "[handleLeftSliderMove]");
+    if (this.jdField_a_of_type_Bofx != null) {
+      this.jdField_a_of_type_Bofx.a(true);
     }
     long l2;
     long l1;
-    if ((paramFloat < this.jdField_b_of_type_Float) && (this.jdField_a_of_type_Bmof.a()))
+    if ((paramFloat < this.jdField_b_of_type_Float) && (this.jdField_a_of_type_Bodx.a()))
     {
-      this.jdField_a_of_type_Bmof.a();
+      this.jdField_a_of_type_Bodx.a();
       this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
       m();
       paramFloat -= this.jdField_c_of_type_Float;
       if (((paramFloat < 0.0F) && (this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeStart() > 0L)) || ((paramFloat > 0.0F) && ((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float > (float)c())) || ((paramFloat > 0.0F) && (paramFloat < this.jdField_b_of_type_Float)))
       {
-        l2 = ((float)this.jdField_a_of_type_Bmoz.a(paramFloat) * this.jdField_a_of_type_Float);
+        l2 = ((float)this.jdField_a_of_type_Boer.a(paramFloat) * this.jdField_a_of_type_Float);
         if (l2 > -this.h) {
           break label396;
         }
@@ -318,26 +318,26 @@ public class VideoTrackTimeLineView
       this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setSelectTimeDuration(this.i - l1);
       this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setScaleDuration(((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float));
       l();
-      if (this.jdField_a_of_type_Bmpf != null) {
-        this.jdField_a_of_type_Bmpf.a(this, this.jdField_b_of_type_Long, ((float)l1 / this.jdField_a_of_type_Float));
+      if (this.jdField_a_of_type_Boex != null) {
+        this.jdField_a_of_type_Boex.a(this, this.jdField_b_of_type_Long, ((float)l1 / this.jdField_a_of_type_Float));
       }
       a(((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float));
       this.jdField_b_of_type_Float = (this.jdField_c_of_type_Float + paramFloat);
-      if (this.jdField_a_of_type_Bmqf != null) {
-        this.jdField_a_of_type_Bmqf.e();
+      if (this.jdField_a_of_type_Bofx != null) {
+        this.jdField_a_of_type_Bofx.e();
       }
       return;
-      if ((paramFloat > this.jdField_b_of_type_Float) && (this.jdField_a_of_type_Bmof.b()))
+      if ((paramFloat > this.jdField_b_of_type_Float) && (this.jdField_a_of_type_Bodx.b()))
       {
-        this.jdField_a_of_type_Bmof.a();
+        this.jdField_a_of_type_Bodx.a();
         this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
         m();
         break;
       }
-      if ((!this.jdField_a_of_type_Bmof.a()) && (!this.jdField_a_of_type_Bmof.b())) {
+      if ((!this.jdField_a_of_type_Bodx.a()) && (!this.jdField_a_of_type_Bodx.b())) {
         break;
       }
-      bmbx.b("miles", "滚动中，直接return");
+      bnrh.b("miles", "滚动中，直接return");
       this.jdField_b_of_type_Float = paramFloat;
       return;
       label396:
@@ -364,9 +364,9 @@ public class VideoTrackTimeLineView
   
   public void a(boolean paramBoolean)
   {
-    bmbx.a("VideoTrackTimeLineView", "[onSliderMoveEnd]");
-    if (this.jdField_a_of_type_Bmqf != null) {
-      this.jdField_a_of_type_Bmqf.a(false);
+    bnrh.a("VideoTrackTimeLineView", "[onSliderMoveEnd]");
+    if (this.jdField_a_of_type_Bofx != null) {
+      this.jdField_a_of_type_Bofx.a(false);
     }
     super.a(paramBoolean);
     this.jdField_b_of_type_Float = 0.0F;
@@ -384,21 +384,21 @@ public class VideoTrackTimeLineView
   
   public void b(float paramFloat)
   {
-    bmbx.a("VideoTrackTimeLineView", "[handleRightSliderMove]");
-    if (this.jdField_a_of_type_Bmqf != null) {
-      this.jdField_a_of_type_Bmqf.a(true);
+    bnrh.a("VideoTrackTimeLineView", "[handleRightSliderMove]");
+    if (this.jdField_a_of_type_Bofx != null) {
+      this.jdField_a_of_type_Bofx.a(true);
     }
     long l2;
     long l1;
-    if ((paramFloat < this.jdField_b_of_type_Float) && (this.jdField_a_of_type_Bmof.a()))
+    if ((paramFloat < this.jdField_b_of_type_Float) && (this.jdField_a_of_type_Bodx.a()))
     {
-      this.jdField_a_of_type_Bmof.a();
+      this.jdField_a_of_type_Bodx.a();
       this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
       m();
       paramFloat -= this.jdField_c_of_type_Float;
       if (((paramFloat < 0.0F) && ((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float > (float)c())) || ((paramFloat > 0.0F) && (this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeStart() + this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() < this.j)))
       {
-        l2 = ((float)this.jdField_a_of_type_Bmoz.a(paramFloat) * this.jdField_a_of_type_Float);
+        l2 = ((float)this.jdField_a_of_type_Boer.a(paramFloat) * this.jdField_a_of_type_Float);
         if (l2 < this.j - this.h - this.i) {
           break label388;
         }
@@ -412,26 +412,26 @@ public class VideoTrackTimeLineView
       this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setSelectTimeDuration(l1);
       this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setScaleDuration(((float)l1 / this.jdField_a_of_type_Float));
       l();
-      if (this.jdField_a_of_type_Bmpf != null) {
-        this.jdField_a_of_type_Bmpf.b(this, this.jdField_c_of_type_Long, ((float)(l1 - l2) / this.jdField_a_of_type_Float));
+      if (this.jdField_a_of_type_Boex != null) {
+        this.jdField_a_of_type_Boex.b(this, this.jdField_c_of_type_Long, ((float)(l1 - l2) / this.jdField_a_of_type_Float));
       }
       a(((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float));
       this.jdField_b_of_type_Float = (this.jdField_c_of_type_Float + paramFloat);
-      if (this.jdField_a_of_type_Bmqf != null) {
-        this.jdField_a_of_type_Bmqf.e();
+      if (this.jdField_a_of_type_Bofx != null) {
+        this.jdField_a_of_type_Bofx.e();
       }
       return;
-      if ((paramFloat > this.jdField_b_of_type_Float) && (this.jdField_a_of_type_Bmof.b()))
+      if ((paramFloat > this.jdField_b_of_type_Float) && (this.jdField_a_of_type_Bodx.b()))
       {
-        this.jdField_a_of_type_Bmof.a();
+        this.jdField_a_of_type_Bodx.a();
         this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
         m();
         break;
       }
-      if ((!this.jdField_a_of_type_Bmof.a()) && (!this.jdField_a_of_type_Bmof.b())) {
+      if ((!this.jdField_a_of_type_Bodx.a()) && (!this.jdField_a_of_type_Bodx.b())) {
         break;
       }
-      bmbx.b("miles", "滚动中，直接return");
+      bnrh.b("miles", "滚动中，直接return");
       this.jdField_b_of_type_Float = paramFloat;
       return;
       label388:
@@ -520,12 +520,12 @@ public class VideoTrackTimeLineView
     if (Build.VERSION.SDK_INT >= 17) {
       localView.setId(View.generateViewId());
     }
-    localView.setBackgroundColor(getContext().getResources().getColor(2131165217));
+    localView.setBackgroundColor(getContext().getResources().getColor(2131165218));
     this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(localView, "alpha", new float[] { 0.0F, 0.3F }).setDuration(200L);
     this.jdField_a_of_type_AndroidAnimationObjectAnimator.setStartDelay(500L);
     this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatCount(4);
     this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatMode(2);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new bmqe(this, localView));
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new bofw(this, localView));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackRoundFrameLayout.addView(localView, localLayoutParams);
     this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
@@ -581,9 +581,9 @@ public class VideoTrackTimeLineView
     this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt.getResource().getScaleSpeed();
   }
   
-  public void setOnSlideChangedListener(bmqf parambmqf)
+  public void setOnSlideChangedListener(bofx parambofx)
   {
-    this.jdField_a_of_type_Bmqf = parambmqf;
+    this.jdField_a_of_type_Bofx = parambofx;
   }
   
   public void setRedMaskViewShowTimeRange(long paramLong1, long paramLong2)
@@ -594,16 +594,16 @@ public class VideoTrackTimeLineView
     this.k = paramLong1;
     this.l = paramLong2;
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-    localLayoutParams.leftMargin = this.jdField_a_of_type_Bmoz.a(paramLong1);
-    localLayoutParams.width = this.jdField_a_of_type_Bmoz.a(paramLong2);
+    localLayoutParams.leftMargin = this.jdField_a_of_type_Boer.a(paramLong1);
+    localLayoutParams.width = this.jdField_a_of_type_Boer.a(paramLong2);
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
   
-  public void setScaleModel(bmoz parambmoz)
+  public void setScaleModel(boer paramboer)
   {
-    super.setScaleModel(parambmoz);
-    this.jdField_a_of_type_DovComQqImAeeditorViewPlaytrackViewPlayTrackExpandWidthView.setScaleAdapter(this.jdField_a_of_type_Bmoz);
+    super.setScaleModel(paramboer);
+    this.jdField_a_of_type_DovComQqImAeeditorViewPlaytrackViewPlayTrackExpandWidthView.setScaleAdapter(this.jdField_a_of_type_Boer);
   }
   
   public void setSelected(boolean paramBoolean)

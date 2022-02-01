@@ -1,9 +1,15 @@
-public class qna
-  implements nnv
+class qna
+  implements rgm
 {
-  public void loaded(String paramString, int paramInt) {}
+  qna(qmx paramqmx, qfw paramqfw) {}
   
-  public void progress(int paramInt) {}
+  public void a()
+  {
+    pnw localpnw = this.jdField_a_of_type_Qfw.a().a().a();
+    if (localpnw != null) {
+      localpnw.a(null, this.jdField_a_of_type_Qfw.a(), 1);
+    }
+  }
 }
 
 

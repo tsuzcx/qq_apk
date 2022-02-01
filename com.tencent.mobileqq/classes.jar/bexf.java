@@ -1,184 +1,30 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewCompat;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.widget.ImageAnimationView;
+import com.tencent.widget.Gallery;
 
 public class bexf
-  extends BaseAdapter
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public ArrayList<String> a;
-  public boolean a;
+  public bexf(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public bexf(BulkSendMessageFragment paramBulkSendMessageFragment)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setVisibility(4);
+    this.a.finish();
   }
   
-  public int getCount()
-  {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0) {
-      return i + j;
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public Object getItem(int paramInt)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size());
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    bexg localbexg;
-    TextView localTextView;
-    ImageView localImageView;
-    Object localObject3;
-    String str;
-    Object localObject2;
-    Object localObject1;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getActivity()).inflate(2131558875, null);
-      localbexg = new bexg(localView);
-      localbexg.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368236));
-      localbexg.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371615));
-      localView.setTag(localbexg);
-      localView.setVisibility(0);
-      localView.setFocusable(false);
-      localTextView = localbexg.jdField_a_of_type_AndroidWidgetTextView;
-      localImageView = localbexg.jdField_a_of_type_AndroidWidgetImageView;
-      localObject3 = (amsw)this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-      if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label430;
-      }
-      localImageView.setImageResource(2130844845);
-      localTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getResources().getColor(2131167106));
-      str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) + "";
-      localbexg.jdField_a_of_type_JavaLangString = str;
-      localObject2 = ContactUtils.getTroopMemberName(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaLangString, str);
-      if (!TextUtils.isEmpty(str)) {
-        break label310;
-      }
-      if (localObject2 != null) {
-        break label303;
-      }
-      localObject1 = "";
-      label224:
-      localTextView.setText((CharSequence)localObject1);
-      localImageView.setImageDrawable(bfvo.b());
-      label239:
-      localbexg.jdField_a_of_type_AndroidViewView.setTag(2131378165, null);
-      localbexg.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
-    }
-    for (;;)
-    {
-      if (AppSetting.c) {
-        ViewCompat.setImportantForAccessibility(localImageView, 2);
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localbexg = (bexg)paramView.getTag();
-      localView = paramView;
-      break;
-      label303:
-      localObject1 = localObject2;
-      break label224;
-      label310:
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        localObject1 = localObject2;
-        if (localObject3 != null)
-        {
-          localObject3 = ((amsw)localObject3).e(str);
-          localObject1 = localObject2;
-          if (localObject3 != null)
-          {
-            localObject1 = localObject2;
-            if (((Friends)localObject3).isFriend()) {
-              localObject1 = ContactUtils.getFriendNick(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
-            }
-          }
-        }
-      }
-      localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = amtj.a(2131700380);
-      }
-      localTextView.setText((CharSequence)localObject2);
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.a(localbexg, null, true);
-      localImageView.setTag(2131378191, str);
-      localImageView.setTag(null);
-      break label239;
-      label430:
-      localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getString(2131689550));
-      localTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getResources().getColorStateList(2131166473));
-      localImageView.setBackgroundDrawable(null);
-      localImageView.setImageResource(2130839221);
-      localImageView.setEnabled(true);
-      localImageView.setTag(Integer.valueOf(0));
-      localbexg.jdField_a_of_type_AndroidViewView.setTag(2131378165, Integer.valueOf(0));
-      localbexg.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    super.notifyDataSetChanged();
-  }
-  
-  public void onClick(View paramView)
-  {
-    Object localObject = (Integer)paramView.getTag(2131378165);
-    if (localObject == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (((Integer)localObject).intValue() == 0)
-      {
-        localObject = TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaLangString, 20);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        ((Intent)localObject).putStringArrayListExtra("param_pick_selected_list", this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_Bexf.jdField_a_of_type_JavaUtilArrayList);
-        ((Intent)localObject).putStringArrayListExtra("param_hide_filter_member_list", localArrayList);
-        ((Intent)localObject).putExtra("param_pick_max_num", this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_Int);
-        ((Intent)localObject).putExtra("param_pick_max_num_exceeds_wording", 2131697051);
-        ((Intent)localObject).putExtra("param_pick_title_string", amtj.a(2131700373));
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.startActivityForResult((Intent)localObject, 1);
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getActivity().overridePendingTransition(2130772300, 2130771990);
-      }
-    }
+    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import atyd;
-import atyn;
+import avds;
+import avec;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -9,28 +10,28 @@ import java.util.ArrayList;
 public class GameMsgManager$4
   implements Runnable
 {
-  public GameMsgManager$4(atyd paramatyd, boolean paramBoolean, ArrayList paramArrayList) {}
+  public GameMsgManager$4(avds paramavds, boolean paramBoolean, ArrayList paramArrayList) {}
   
   public void run()
   {
     int i = 1;
-    if (atyd.a(this.this$0) == null) {
-      QLog.w(atyd.e(), 1, "app is null");
+    if (avds.a(this.this$0) == null) {
+      QLog.w(avds.e(), 1, "app is null");
     }
     for (;;)
     {
       return;
-      atyn localatyn = (atyn)atyd.a(this.this$0).getBusinessHandler(175);
+      avec localavec = (avec)avds.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.GAME_CENTER_UNISSO_HANDLER);
       if (this.jdField_a_of_type_Boolean)
       {
-        localatyn.a(this.jdField_a_of_type_JavaUtilArrayList);
+        localavec.a(this.jdField_a_of_type_JavaUtilArrayList);
         return;
       }
-      ArrayList localArrayList = atyd.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList);
+      ArrayList localArrayList = avds.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList);
       if ((localArrayList != null) && (localArrayList.size() > 0)) {}
       while (i != 0)
       {
-        localatyn.a(localArrayList);
+        localavec.a(localArrayList);
         return;
         i = 0;
       }

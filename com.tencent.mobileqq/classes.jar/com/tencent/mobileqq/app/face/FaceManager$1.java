@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.app.face;
 
-import anho;
+import aoke;
 
 public class FaceManager$1
   implements Runnable
 {
-  public FaceManager$1(anho paramanho, Object paramObject, int paramInt, boolean paramBoolean, Object[] paramArrayOfObject) {}
+  public FaceManager$1(aoke paramaoke, Object paramObject, int paramInt, boolean paramBoolean, Object[] paramArrayOfObject) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_JavaLangObject instanceof FaceDrawableImpl.FaceObserver)) {
-      anho.a(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.FaceObserver)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
+      aoke.a(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.FaceObserver)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
     }
     do
     {
       return;
       if ((this.jdField_a_of_type_JavaLangObject instanceof FaceDrawableImpl.DisFaceObserver))
       {
-        anho.a(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.DisFaceObserver)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
+        aoke.a(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.DisFaceObserver)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
         return;
       }
     } while (!(this.jdField_a_of_type_JavaLangObject instanceof FaceDrawableImpl.NewTroopFaceObserver));
-    anho.a(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.NewTroopFaceObserver)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    aoke.a(this.this$0, this.jdField_a_of_type_Int, (FaceDrawableImpl.NewTroopFaceObserver)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

@@ -245,7 +245,7 @@ class b
             paramc.a = false;
             paramc.c = false;
             if ((!"LongConn.OffPicUp".equalsIgnoreCase(str)) && (!"ImgStore.GroupPicUp".equalsIgnoreCase(str))) {
-              break label1467;
+              break label1500;
             }
             localObject2 = new StringBuilder().append("dispatchMsg:").append(str).append(" resp:").append(localMsfMessagePair2.fromServiceMsg.getStringForLog()).append(" req:");
             if (localMsfMessagePair2.toServiceMsg == null) {
@@ -257,7 +257,9 @@ class b
           }
         }
       }
-      label1467:
+      label340:
+      label472:
+      label1500:
       for (boolean bool1 = true;; bool1 = true)
       {
         if (QLog.isColorLevel()) {
@@ -266,7 +268,6 @@ class b
         boolean bool4 = true;
         bool2 = bool1;
         bool1 = bool4;
-        label340:
         if (("LongConn.OffPicUp".equalsIgnoreCase(localMsfMessagePair2.fromServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(localMsfMessagePair2.fromServiceMsg.getServiceCmd()))) {
           QLog.d("MSF.S.AppProcessManager", 1, "dispatchMsg:" + localMsfMessagePair2.fromServiceMsg.getStringForLog() + " processDied:" + bool2 + " isSendToSink:" + bool1);
         }
@@ -284,10 +285,8 @@ class b
             break;
             bool1 = false;
             break label68;
-            label466:
             bool3 = false;
             break label94;
-            label472:
             localObject1 = "null";
             break label251;
             label480:
@@ -368,6 +367,8 @@ class b
                   localHashMap.put("uin", localMsfMessagePair1.fromServiceMsg.getUin());
                   localHashMap.put("appid", String.valueOf(localMsfMessagePair1.fromServiceMsg.getAppId()));
                   localHashMap.put("MsgLeft", String.valueOf(paramc.i.size()));
+                  localHashMap.put("sleep_by_ipc_block_time", String.valueOf(this.k));
+                  localHashMap.put("account_uin", MsfService.getCore().getAccountCenter().i());
                   QLog.d("MSF.S.AppProcessManager", 1, "dispatchMsg boot too many times:" + a.aD() + " MsgType:" + localMsfMessagePair1.fromServiceMsg.toString() + " ProcName:" + paramString + " MsgLeft:" + String.valueOf(paramc.i.size()));
                   if (e.e.getStatReporter() != null)
                   {
@@ -395,6 +396,7 @@ class b
         }
         return false;
       }
+      label466:
       n = m;
     }
   }

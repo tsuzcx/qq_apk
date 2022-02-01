@@ -1,176 +1,197 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.home.MainFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class azem
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/config/AutoOnlineStatusParser;", "", "()V", "parse", "Lcom/tencent/mobileqq/onlinestatus/config/AutoStatusElement;", "content", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azem
 {
-  public String a;
-  public HashMap<String, String> a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public static final azem a = new azem();
   
-  public azem()
+  @JvmStatic
+  @NotNull
+  public static final azen a(@NotNull String paramString)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static boolean a()
-  {
-    return false;
-  }
-  
-  protected void a(bfvp parambfvp, QQAppInterface paramQQAppInterface, Context paramContext) {}
-  
-  protected void a(QQAppInterface paramQQAppInterface, Context paramContext) {}
-  
-  public boolean a(BaseActivity paramBaseActivity)
-  {
-    return a(paramBaseActivity, a());
-  }
-  
-  public boolean a(BaseActivity paramBaseActivity, boolean paramBoolean)
-  {
-    if (paramBaseActivity == null)
+    Intrinsics.checkParameterIsNotNull(paramString, "content");
+    localazen = new azen((List)new ArrayList(), new azbu(), (List)new ArrayList(), "", new azbu());
+    try
     {
-      azep.a(this.g, this.f, 100);
-      return false;
-    }
-    Intent localIntent;
-    if (paramBoolean) {
-      localIntent = new Intent(paramBaseActivity, SplashActivity.class);
-    }
-    for (;;)
-    {
-      localIntent.setFlags(67108864);
-      azep.a(this, paramBoolean, localIntent);
-      QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant QAssistantConfigItem.Jump item_server = " + this.c + "|" + paramBaseActivity.getClass().toString());
-      paramBaseActivity.startActivity(localIntent);
-      return true;
-      localIntent = new Intent(paramBaseActivity, SplashActivity.class);
-      localIntent.putExtra("tab_index", MainFragment.b);
-      localIntent.putExtra("fragment_id", 1);
-    }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    if ((paramQQAppInterface == null) || (paramContext == null))
-    {
-      azep.a(this.g, this.f, 100);
-      return false;
-    }
-    QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant RealJump start");
-    a(paramQQAppInterface, paramContext);
-    if (!b(paramQQAppInterface, paramContext))
-    {
-      azep.a(this.g, this.f, 3);
-      QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant checkIsSupportJump is false");
-      return false;
-    }
-    if ((StringUtil.isEmpty(this.b)) && (StringUtil.isEmpty(this.c)))
-    {
-      azep.a(this.g, this.f, 100);
-      return false;
-    }
-    bfvp localbfvp2;
-    bfvp localbfvp1;
-    if (!StringUtil.isEmpty(this.b))
-    {
-      localbfvp2 = bfwg.a(paramQQAppInterface, paramContext, this.b);
-      localbfvp1 = localbfvp2;
-      if (localbfvp2 != null)
+      JSONObject localJSONObject = new JSONObject(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("AutoOnlineStatusParser", 2, "[status][parser] parse json: " + localJSONObject);
+      }
+      Object localObject2 = new HashMap();
+      paramString = localJSONObject.optJSONArray("sensors");
+      int j;
+      int i;
+      int k;
+      Object localObject4;
+      if (paramString != null)
       {
-        localbfvp1 = localbfvp2;
-        if (!StringUtil.isEmpty(this.e))
+        j = paramString.length();
+        i = 0;
+        while (i < j)
         {
-          localbfvp1 = localbfvp2;
-          if (!StringUtil.isEmpty(this.e))
+          localObject1 = paramString.getJSONObject(i);
+          k = ((JSONObject)localObject1).optInt("id", -1);
+          if (k > 0)
           {
-            localbfvp2.c(this.e);
-            localbfvp1 = localbfvp2;
+            localObject3 = ((JSONObject)localObject1).optString("type");
+            localObject4 = new azeq(k, (String)localObject3, ((JSONObject)localObject1).optInt("min"), ((JSONObject)localObject1).optInt("max"), ((JSONObject)localObject1).optInt("sample_count"));
+            if (StringsKt.equals((String)localObject3, "step", true))
+            {
+              ((azeq)localObject4).e = ((JSONObject)localObject1).optInt("main_sensor", 1);
+              ((azeq)localObject4).f = ((JSONObject)localObject1).optInt("secondary_sensor", 3);
+            }
+            if (StringsKt.equals((String)localObject3, "gps", true))
+            {
+              ((azeq)localObject4).g = ((JSONObject)localObject1).optInt("internal_update_status", azcv.c / 1000);
+              ((azeq)localObject4).h = ((JSONObject)localObject1).optInt("slow_mode_count", azcv.o);
+              ((azeq)localObject4).i = ((JSONObject)localObject1).optInt("fast_mode_count", azcv.p);
+              ((azeq)localObject4).j = ((JSONObject)localObject1).optInt("internal_slow_mode", azcv.m / 1000);
+              ((azeq)localObject4).k = ((JSONObject)localObject1).optInt("internal_fast_mode", azcv.n / 1000);
+              ((azeq)localObject4).l = ((JSONObject)localObject1).optInt("internal_exit_step", azcv.q / 1000);
+              ((azeq)localObject4).m = ((JSONObject)localObject1).optInt("internal_exit_still", azcv.r / 1000);
+              ((azeq)localObject4).n = ((JSONObject)localObject1).optInt("session_enter_accuracy", azcv.s);
+            }
+            if (StringsKt.equals((String)localObject3, "dist", true))
+            {
+              ((azeq)localObject4).o = ((JSONObject)localObject1).optInt("dist_accuracy", azcv.F);
+              ((azeq)localObject4).p = ((JSONObject)localObject1).optInt("dist_thread_hold", azcv.G);
+              ((azeq)localObject4).q = ((JSONObject)localObject1).optInt("dist_step_thread_hold", azcv.M);
+              ((azeq)localObject4).r = ((JSONObject)localObject1).optInt("dist_enable", 1);
+              ((azeq)localObject4).s = ((JSONObject)localObject1).optInt("dist_req_time", azcv.H);
+              ((azeq)localObject4).t = ((JSONObject)localObject1).optInt("dist_acceler_enable", 1);
+              ((azeq)localObject4).v = ((JSONObject)localObject1).optInt("dist_speed_req_time", azcv.I);
+              ((azeq)localObject4).u = ((JSONObject)localObject1).optInt("dist_speed_thread_hold", azcv.J);
+              ((azeq)localObject4).w = ((JSONObject)localObject1).optInt("dist_moving_max", azcv.K);
+              ((azeq)localObject4).x = ((JSONObject)localObject1).optInt("dist_not_moving_min", azcv.L);
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("AutoOnlineStatusParser", 2, "[status][parser] parse sensor: " + localObject4);
+            }
+            ((Map)localObject2).put(Integer.valueOf(k), localObject4);
+          }
+          localObject1 = Unit.INSTANCE;
+          i += 1;
+        }
+        paramString = Unit.INSTANCE;
+      }
+      Object localObject3 = localJSONObject.optJSONArray("auto_status");
+      long l;
+      if (localObject3 != null)
+      {
+        j = ((JSONArray)localObject3).length();
+        i = 0;
+        if (i < j)
+        {
+          localObject1 = ((JSONArray)localObject3).getJSONObject(i);
+          l = ((JSONObject)localObject1).optLong("id");
+          localObject4 = ((JSONObject)localObject1).optString("title");
+          String str1 = ((JSONObject)localObject1).optString("type");
+          Object localObject5 = ((JSONObject)localObject1).optJSONObject("category");
+          paramString = (azep)null;
+          label808:
+          String str2;
+          boolean bool;
+          if (localObject5 != null)
+          {
+            paramString = new azep(((JSONObject)localObject5).optInt("level", 1), ((JSONObject)localObject5).optString("name"), ((JSONObject)localObject5).optInt("internal", azcv.h / 1000), ((JSONObject)localObject5).optInt("poi_count", azcv.d), ((JSONObject)localObject5).optInt("poi_distance", azcv.g), ((JSONObject)localObject5).optInt("loc_distance", azcv.f), ((JSONObject)localObject5).optInt("loc_accuracy", azcv.e), ((JSONObject)localObject5).optDouble("valid_rate", azcv.a), ((JSONObject)localObject5).optInt("cache_size", azcv.j), ((JSONObject)localObject5).optInt("cache_distance", azcv.l));
+            localObject5 = Unit.INSTANCE;
+            localObject5 = ((JSONObject)localObject1).optString("icon");
+            k = ((JSONObject)localObject1).optInt("sensor", -1);
+            str2 = ((JSONObject)localObject1).optString("sub_title");
+            bool = ((JSONObject)localObject1).optBoolean("hide");
+            if (k >= 0) {
+              break label958;
+            }
+          }
+          label958:
+          for (localObject1 = null;; localObject1 = (azeq)((HashMap)localObject2).get(Integer.valueOf(k)))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("AutoOnlineStatusParser", 2, "[status][parser] parse: " + (String)localObject4 + " sensorId: " + k + " sensor: " + localObject1);
+            }
+            paramString = new azeo(l, (String)localObject4, str1, paramString, (String)localObject5, (azeq)localObject1, str2, bool);
+            localazen.jdField_a_of_type_JavaUtilList.add(paramString);
+            paramString = Unit.INSTANCE;
+            i += 1;
+            break;
+            break label808;
           }
         }
+        paramString = Unit.INSTANCE;
       }
-    }
-    while (localbfvp1 == null)
-    {
-      azep.a(this.g, this.f, 102);
-      return false;
-      localbfvp2 = new bfvp(paramQQAppInterface, paramContext);
-      localbfvp2.b = this.c;
-      if ((!StringUtil.isEmpty(this.d)) && (!StringUtil.isEmpty(this.d))) {
-        localbfvp2.c = this.d;
-      }
-      localbfvp1 = localbfvp2;
-      if (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+      localObject2 = localJSONObject.optJSONObject("smart_status_item");
+      if (localObject2 != null)
       {
-        localbfvp2.a(this.jdField_a_of_type_JavaUtilHashMap);
-        localbfvp1 = localbfvp2;
+        l = ((JSONObject)localObject2).optLong("id");
+        paramString = ((JSONObject)localObject2).optString("title");
+        localObject1 = ((JSONObject)localObject2).optString("icon");
+        localObject2 = ((JSONObject)localObject2).optString("sub_title");
+        paramString = new azbu(l, paramString, (String)localObject1);
+        paramString.d = ((String)localObject2);
+        localazen.jdField_a_of_type_Azbu = paramString;
+        paramString = Unit.INSTANCE;
       }
-    }
-    QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant RealJump ready Jump server = " + this.c);
-    a(localbfvp1, paramQQAppInterface, paramContext);
-    if (localbfvp1.a())
-    {
-      azep.a(this.g, this.f, 0);
-      azep.a(this.f);
-    }
-    for (;;)
-    {
-      return true;
-      azep.a(this.g, this.f, 103);
-    }
-  }
-  
-  protected boolean b(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (this.f != null)
-    {
-      if (!this.f.equalsIgnoreCase("ecchat")) {
-        break label79;
-      }
-      int i = bfyz.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").getInt("sp_extend_friend_entry_add_friend", 0);
-      paramQQAppInterface = (arhi)paramQQAppInterface.getManager(264);
-      if ((i != 1) || (!paramQQAppInterface.d())) {
-        break label73;
-      }
-      bool1 = true;
-    }
-    label73:
-    label79:
-    do
-    {
-      do
+      localObject2 = localJSONObject.optJSONObject("smart_status_on_earth");
+      if (localObject2 != null)
       {
-        for (;;)
-        {
-          return bool1;
-          bool1 = false;
+        l = ((JSONObject)localObject2).optLong("id");
+        paramString = ((JSONObject)localObject2).optString("title");
+        localObject1 = ((JSONObject)localObject2).optString("icon");
+        localObject2 = ((JSONObject)localObject2).optString("sub_title");
+        paramString = new azbu(l, paramString, (String)localObject1);
+        paramString.d = ((String)localObject2);
+        localazen.jdField_b_of_type_Azbu = paramString;
+        paramString = Unit.INSTANCE;
+      }
+      paramString = localJSONObject.optString("weather_jump_schema", "");
+      if (paramString != null)
+      {
+        localazen.jdField_a_of_type_JavaLangString = paramString;
+        paramString = Unit.INSTANCE;
+      }
+      Object localObject1 = localJSONObject.optJSONArray("weather_url");
+      if (localObject1 != null)
+      {
+        i = ((JSONArray)localObject1).length();
+        j = 0;
+        label1191:
+        if (j >= i) {
+          break label1290;
         }
-        bool1 = bool2;
-      } while (!this.f.equalsIgnoreCase("confessmsg"));
-      bool1 = bool2;
-    } while (((apsa)paramQQAppInterface.getManager(269)).a() != null);
-    return false;
-  }
-  
-  public String toString()
-  {
-    return "{\"strName\":\"" + this.jdField_a_of_type_JavaLangString + "\", \"strScheme\":\"" + this.b + "\", \"strServer\":\"" + this.c + "\", \"strAction\":\"" + this.d + "\", \"strPackage\":\"" + this.e + "\", \"isOpenEnable\":" + this.jdField_a_of_type_Boolean + ", \"openAction\":\"" + this.f + "\", \"host\":\"" + this.g + "\", \"attributes\":" + this.jdField_a_of_type_JavaUtilHashMap + "}";
+        if (localObject1 == null) {
+          break label1284;
+        }
+      }
+      label1284:
+      for (paramString = ((JSONArray)localObject1).getJSONObject(j);; paramString = null)
+      {
+        if (paramString != null)
+        {
+          paramString = new azer(paramString.optString("weather_id", ""), paramString.optString("weather_small_url", ""), paramString.optString("weather_big_url", ""), paramString.optString("weather_aio_url", ""));
+          localazen.jdField_b_of_type_JavaUtilList.add(paramString);
+          paramString = Unit.INSTANCE;
+        }
+        j += 1;
+        break label1191;
+        i = 0;
+        break;
+      }
+      return localazen;
+    }
+    catch (JSONException paramString) {}
   }
 }
 

@@ -1,33 +1,23 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.AdReport;
 
-class rrz
-  implements MediaPlayer.OnPreparedListener
+public class rrz
 {
-  rrz(rry paramrry) {}
+  public String a;
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public static rrz a(oidb_cmd0xbc9.AdReport paramAdReport)
   {
-    try
-    {
-      paramMediaPlayer.start();
-      rry.a(this.a).a = true;
-      paramMediaPlayer = (rsb)rry.a(this.a).get();
-      if (paramMediaPlayer != null)
-      {
-        paramMediaPlayer.a(rry.a(this.a));
-        this.a.a(true, "ugc voice play");
-      }
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      for (;;)
-      {
-        paramMediaPlayer.printStackTrace();
-      }
-    }
+    rrz localrrz = new rrz();
+    localrrz.a = paramAdReport.bytes_report_url.get().toStringUtf8();
+    return localrrz;
+  }
+  
+  public oidb_cmd0xbc9.AdReport a()
+  {
+    oidb_cmd0xbc9.AdReport localAdReport = new oidb_cmd0xbc9.AdReport();
+    localAdReport.bytes_report_url.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localAdReport;
   }
 }
 

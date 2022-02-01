@@ -10,7 +10,7 @@ class QZoneShareActivity$5$1
   public void run()
   {
     this.this$1.this$0.hideProgressDialog();
-    QQToast.a(this.this$1.this$0, 1, 2131693817, 1).a();
+    QQToast.a(this.this$1.this$0, 1, 2131694008, 1).a();
     this.this$1.this$0.finish();
   }
 }

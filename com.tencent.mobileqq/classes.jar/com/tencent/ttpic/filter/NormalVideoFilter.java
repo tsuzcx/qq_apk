@@ -58,7 +58,7 @@ public abstract class NormalVideoFilter
   protected boolean isInState = false;
   protected boolean isRenderForBitmap;
   protected StickerItem item;
-  private int lastImageIndex = -1;
+  protected int lastImageIndex = -1;
   private boolean mAudioPause;
   private boolean mHasBodyDetected = false;
   private boolean mHasSeenValid = false;
@@ -74,7 +74,7 @@ public abstract class NormalVideoFilter
   private int spritePictureHeight;
   private int spritePictureRow;
   private int spritePictureWidth;
-  private int[] tex = new int[2];
+  protected int[] tex = new int[2];
   protected boolean triggered = false;
   
   public NormalVideoFilter(StickerItem paramStickerItem, String paramString)
@@ -119,111 +119,6 @@ public abstract class NormalVideoFilter
     this.mPreviousBodyPoints = paramPTDetectInfo.bodyPoints;
   }
   
-  private int getNextFrame(int paramInt)
-  {
-    if (VideoMaterialUtil.isEmptyItem(this.item)) {
-      return this.tex[0];
-    }
-    Object localObject = VideoMemoryManager.getInstance().getVideoPath();
-    if ((this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG)) {
-      if ((localObject != null) && (((String)localObject).endsWith(".png")))
-      {
-        localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
-        if (BitmapUtils.isLegal((Bitmap)localObject)) {
-          BenchUtil.benchStart("1normal loadTexture");
-        }
-      }
-    }
-    label580:
-    for (;;)
-    {
-      try
-      {
-        GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
-        this.isImageReady = true;
-        if (localObject != null) {
-          ((Bitmap)localObject).recycle();
-        }
-        if (this.mVideoDecoder != null) {
-          this.mVideoDecoder.release();
-        }
-        VideoMemoryManager.getInstance().setVideoPath(null);
-        return this.tex[0];
-      }
-      catch (Exception localException1)
-      {
-        LogUtils.e(TAG, "1getNextFrame:loadTexture Exception:" + localException1.getMessage());
-        continue;
-      }
-      if (this.mVideoDecoder != null)
-      {
-        this.mVideoDecoder.decodeFrame(paramInt);
-        if (this.mVideoDecoder.updateFrame()) {
-          this.isImageReady = true;
-        }
-        this.lastImageIndex = paramInt;
-        if ((localObject != null) && (((String)localObject).endsWith(".mp4")))
-        {
-          this.mVideoDecoder.release();
-          this.mVideoDecoder = null;
-          this.mVideoDecoder = new ActVideoDecoder((String)localObject, this.tex[0]);
-          VideoMemoryManager.getInstance().setVideoPath(null);
-          continue;
-          if (this.tex[0] != 0) {
-            if ((this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
-            {
-              if (VideoMemoryManager.getInstance().loadExtraStickerTxt(this.item.id, paramInt, this.tex[0]) >= 0)
-              {
-                this.isImageReady = true;
-                this.lastImageIndex = paramInt;
-              }
-            }
-            else
-            {
-              localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
-              if ((localObject == null) && ((VideoMemoryManager.getInstance().isForceLoadFromSdCard()) || (!this.isImageReady) || (this.isRenderForBitmap)))
-              {
-                localObject = FileUtils.genSeperateFileDir(this.dataPath) + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
-                localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
-              }
-              for (int i = 1;; i = 0) {
-                for (;;)
-                {
-                  if (!BitmapUtils.isLegal((Bitmap)localObject)) {
-                    break label580;
-                  }
-                  BenchUtil.benchStart("normal loadTexture");
-                  try
-                  {
-                    GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
-                    BenchUtil.benchEnd("normal loadTexture");
-                    this.spritePictureWidth = ((Bitmap)localObject).getWidth();
-                    this.spritePictureHeight = ((Bitmap)localObject).getHeight();
-                    if (i != 0)
-                    {
-                      ((Bitmap)localObject).recycle();
-                      this.isImageReady = true;
-                      this.lastImageIndex = paramInt;
-                    }
-                  }
-                  catch (Exception localException2)
-                  {
-                    for (;;)
-                    {
-                      PTFaceLogUtil.e(TAG, "getNextFrame:loadTexture Exception:" + localException2.getMessage());
-                      continue;
-                      VideoMemoryManager.getInstance().recycleBitmap(this.item.id, (Bitmap)localObject);
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
   private void initAudio()
   {
     if (this.mPlayer != null) {}
@@ -254,7 +149,7 @@ public abstract class NormalVideoFilter
     for (;;)
     {
       if (i >= j) {
-        break label52;
+        break label51;
       }
       float f = paramAttributeParam[i];
       if ((Float.compare(-1.0F, f) != 0) && (Float.compare(1.0F, f) != 0)) {
@@ -262,7 +157,7 @@ public abstract class NormalVideoFilter
       }
       i += 1;
     }
-    label52:
+    label51:
     return true;
   }
   
@@ -274,10 +169,20 @@ public abstract class NormalVideoFilter
     if (TouchTriggerManager.getInstance().getMusicStartTime() <= 0L) {
       TouchTriggerManager.getInstance().setMusicStartTime(System.currentTimeMillis());
     }
-    if ((!this.mIsLastPause) && (paramBoolean)) {
+    if ((!this.mIsLastPause) && (paramBoolean)) {}
+    try
+    {
       TouchTriggerManager.getInstance().setMusicCurrentPosition(this.mPlayer.getCurrentPosition());
+      this.mIsLastPause = paramBoolean;
+      return;
     }
-    this.mIsLastPause = paramBoolean;
+    catch (IllegalStateException localIllegalStateException)
+    {
+      for (;;)
+      {
+        LogUtils.e(TAG, "IllegalStateException:mPlayer.getCurrentPosition()->" + localIllegalStateException.getMessage());
+      }
+    }
   }
   
   public void ApplyGLSLFilter()
@@ -364,6 +269,111 @@ public abstract class NormalVideoFilter
   public int getLastFrameIndex()
   {
     return this.lastImageIndex;
+  }
+  
+  protected int getNextFrame(int paramInt)
+  {
+    if (VideoMaterialUtil.isEmptyItem(this.item)) {
+      return this.tex[0];
+    }
+    Object localObject = VideoMemoryManager.getInstance().getVideoPath();
+    if ((this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG)) {
+      if ((localObject != null) && (((String)localObject).endsWith(".png")))
+      {
+        localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+        if (BitmapUtils.isLegal((Bitmap)localObject)) {
+          BenchUtil.benchStart("1normal loadTexture");
+        }
+      }
+    }
+    label584:
+    for (;;)
+    {
+      try
+      {
+        GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
+        this.isImageReady = true;
+        if (localObject != null) {
+          ((Bitmap)localObject).recycle();
+        }
+        if (this.mVideoDecoder != null) {
+          this.mVideoDecoder.release();
+        }
+        VideoMemoryManager.getInstance().setVideoPath(null);
+        return this.tex[0];
+      }
+      catch (Exception localException1)
+      {
+        LogUtils.e(TAG, "1getNextFrame:loadTexture Exception:" + localException1.getMessage());
+        continue;
+      }
+      if (this.mVideoDecoder != null)
+      {
+        this.mVideoDecoder.decodeFrame(paramInt);
+        if (this.mVideoDecoder.updateFrame()) {
+          this.isImageReady = true;
+        }
+        this.lastImageIndex = paramInt;
+        if ((localObject != null) && (((String)localObject).endsWith(".mp4")))
+        {
+          this.mVideoDecoder.release();
+          this.mVideoDecoder = null;
+          this.mVideoDecoder = new ActVideoDecoder((String)localObject, this.tex[0]);
+          VideoMemoryManager.getInstance().setVideoPath(null);
+          continue;
+          if (this.tex[0] != 0) {
+            if ((this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
+            {
+              if (VideoMemoryManager.getInstance().loadExtraStickerTxt(this.item.id, paramInt, this.tex[0]) >= 0)
+              {
+                this.isImageReady = true;
+                this.lastImageIndex = paramInt;
+              }
+            }
+            else
+            {
+              localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
+              if ((localObject == null) && ((VideoMemoryManager.getInstance().isForceLoadFromSdCard()) || (!this.isImageReady) || (this.isRenderForBitmap)))
+              {
+                localObject = FileUtils.genSeperateFileDir(this.dataPath) + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
+                localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+              }
+              for (int i = 1;; i = 0) {
+                for (;;)
+                {
+                  if (!BitmapUtils.isLegal((Bitmap)localObject)) {
+                    break label584;
+                  }
+                  BenchUtil.benchStart("normal loadTexture");
+                  try
+                  {
+                    GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
+                    BenchUtil.benchEnd("normal loadTexture");
+                    this.spritePictureWidth = ((Bitmap)localObject).getWidth();
+                    this.spritePictureHeight = ((Bitmap)localObject).getHeight();
+                    if (i != 0)
+                    {
+                      ((Bitmap)localObject).recycle();
+                      this.isImageReady = true;
+                      this.lastImageIndex = paramInt;
+                    }
+                  }
+                  catch (Exception localException2)
+                  {
+                    for (;;)
+                    {
+                      PTFaceLogUtil.e(TAG, "getNextFrame:loadTexture Exception:" + localException2.getMessage());
+                      continue;
+                      VideoMemoryManager.getInstance().recycleBitmap(this.item.id, (Bitmap)localObject);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
   
   public StickerItem getStickerItem()

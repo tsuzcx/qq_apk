@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class arzs
-  implements View.OnClickListener
+class arzs
+  extends Handler
 {
-  public arzs(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
-  
-  public void onClick(View paramView)
+  arzs(arzq paramarzq, Looper paramLooper)
   {
-    QfileLocalFilePicTabView.a(this.a, paramView, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (arzq.c(this.a));
+    QLog.e("VoiceInputHelper", 1, "checkPermission uncertain");
+    this.a.onGetError(1830002);
   }
 }
 

@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class adyp
-  extends amwl
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public adyp(QQLSActivity paramQQLSActivity) {}
+  public adyp(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  protected void onPushReadedNotify(boolean paramBoolean, Object paramObject)
+  public void onGlobalLayout()
   {
-    super.onPushReadedNotify(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
-    }
-    QQLSActivity.a(this.a);
+    this.a.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    ForwardRecentActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adyp
  * JD-Core Version:    0.7.0.1
  */

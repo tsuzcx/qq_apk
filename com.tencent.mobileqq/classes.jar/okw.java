@@ -1,35 +1,41 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.biz.pubaccount.PublicAccountManager.4;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class okw
-  implements bjoe
+  extends SosoInterface.OnLocationListener
 {
-  public okw(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity, boolean paramBoolean1, long paramLong, boolean paramBoolean2, int paramInt) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public okw(PublicAccountManager.4 param4, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, boolean paramBoolean5)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Boolean = true;
-    switch (paramInt)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
+    try
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Bjnw.dismiss();
-      return;
-      if (this.jdField_a_of_type_Boolean)
+      if (paramSosoLbsInfo.mLocation != null)
       {
-        ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.moveTaskToBack(true);
+        double d1 = paramSosoLbsInfo.mLocation.mLat02;
+        double d2 = paramSosoLbsInfo.mLocation.mLon02;
+        String str1 = "";
+        if (paramSosoLbsInfo.mLocation.address != null) {
+          str1 = "" + paramSosoLbsInfo.mLocation.address;
+        }
+        String str2 = str1;
+        if (paramSosoLbsInfo.mLocation.name != null) {
+          str2 = str1 + paramSosoLbsInfo.mLocation.name;
+        }
+        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$4.this$0.a(true, d1, d2, str2, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.finish();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.e();
-      if (this.b) {
-        odq.a(null, "", "0X8008661", "0X8008661", 0, 0, this.jdField_a_of_type_Int + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-      }
+      return;
+    }
+    catch (Exception paramSosoLbsInfo)
+    {
+      paramSosoLbsInfo.printStackTrace();
+      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$4.this$0.a(false, 0.0D, 0.0D, null, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     }
   }
 }

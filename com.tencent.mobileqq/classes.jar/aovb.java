@@ -1,39 +1,18 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.Context;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aovb
-  implements INetInfoHandler
+  extends aoui
 {
-  public aovb(ArkAppCenter paramArkAppCenter) {}
-  
-  public void onNetMobile2None()
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    ArkAppCenter.a(this.a, 1, 0);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    ArkAppCenter.a(this.a, 1, 2);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    ArkAppCenter.a(this.a, 0, 1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ArkAppCenter.a(this.a, 0, 2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    ArkAppCenter.a(this.a, 2, 1);
-  }
-  
-  public void onNetWifi2None()
-  {
-    ArkAppCenter.a(this.a, 2, 0);
+    paramaoul = Uri.parse(paramString).getLastPathSegment();
+    paramQQAppInterface = new aova(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "com.qqfav";
+    paramQQAppInterface.c = paramaoul;
+    return paramQQAppInterface;
   }
 }
 

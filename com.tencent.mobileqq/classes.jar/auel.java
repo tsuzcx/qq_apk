@@ -1,15 +1,28 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadPoolParams;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
+
 public class auel
 {
-  public int a;
-  public String a;
-  public int[] a;
-  public int b;
-  public String b;
-  public int[] b;
-  public int c;
-  public String c;
-  public int[] c;
-  public String d;
+  static Executor a;
+  
+  static
+  {
+    ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
+    localThreadPoolParams.poolThreadName = "fileassistant_pool";
+    localThreadPoolParams.corePoolsize = 2;
+    localThreadPoolParams.maxPooolSize = 2;
+    localThreadPoolParams.priority = 8;
+    localThreadPoolParams.queue = new LinkedBlockingQueue();
+    localThreadPoolParams.keepAliveTime = 10;
+    a = ThreadManager.newFreeThreadPool(localThreadPoolParams);
+  }
+  
+  public static Executor a()
+  {
+    return a;
+  }
 }
 
 

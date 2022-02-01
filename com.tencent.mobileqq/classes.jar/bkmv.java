@@ -1,25 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout.OnDismissListener;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener;
 
-class bkmv
-  extends BroadcastReceiver
+public class bkmv
+  implements MiniLoadingAdLayout.OnDismissListener
 {
-  bkmv(bkmt parambkmt) {}
+  public bkmv(AdProxyImpl paramAdProxyImpl, AdProxy.ILoadingAdListener paramILoadingAdListener) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDismiss(boolean paramBoolean)
   {
-    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (bkmt.a(this.a) != null))
-    {
-      bkmt.a(this.a).dismiss();
-      bkmt.a(this.a, null);
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onAdDismiss(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkmv
  * JD-Core Version:    0.7.0.1
  */

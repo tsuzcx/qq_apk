@@ -1,26 +1,28 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import java.lang.ref.WeakReference;
 
-class bbbe
-  implements View.OnClickListener
+abstract class bbbe<T>
+  extends ntf
 {
-  bbbe(bbbc parambbbc, bayt parambayt) {}
+  protected T a;
+  private WeakReference<T> a;
   
-  public void onClick(View paramView)
+  bbbe(T paramT)
   {
-    Object localObject = paramView.getContext();
-    String str = this.jdField_a_of_type_Bayt.b();
-    if ((localObject instanceof BaseActivity))
-    {
-      bbgk.a("all_result", "clk_result_join", new String[0]);
-      localObject = (BaseActivity)localObject;
-      bbbc.a(this.jdField_a_of_type_Bbbc, (Activity)localObject, str);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramT);
   }
+  
+  public final void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      return;
+    }
+    b(paramInt, paramArrayOfByte, paramBundle);
+    this.jdField_a_of_type_JavaLangObject = null;
+  }
+  
+  abstract void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 

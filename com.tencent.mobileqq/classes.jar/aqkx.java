@@ -1,51 +1,32 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 
-public class aqkx
+final class aqkx
+  implements URLDrawableDownListener
 {
-  private boolean a;
+  aqkx(URLImageView paramURLImageView) {}
   
-  public static aqkx a(aptx[] paramArrayOfaptx)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    boolean bool = true;
-    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0))
-    {
-      paramArrayOfaptx = null;
-      return paramArrayOfaptx;
-    }
-    aqkx localaqkx = new aqkx();
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaptx[0].a);
-        paramArrayOfaptx = localaqkx;
-        if (!localJSONObject.has("SendAsTxDoc")) {
-          break;
-        }
-        if (localJSONObject.getJSONObject("SendAsTxDoc").getInt("enableSendAsTxDoc") == 1)
-        {
-          localaqkx.a = bool;
-          return localaqkx;
-        }
-      }
-      catch (JSONException paramArrayOfaptx)
-      {
-        paramArrayOfaptx.printStackTrace();
-        return localaqkx;
-      }
-      bool = false;
-    }
+    this.a.setVisibility(8);
   }
   
-  public boolean a()
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return this.a;
+    this.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkx
  * JD-Core Version:    0.7.0.1
  */

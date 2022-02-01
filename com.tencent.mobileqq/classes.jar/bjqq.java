@@ -1,8 +1,12 @@
-import android.view.MotionEvent;
-
-public abstract interface bjqq
+public class bjqq
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public String a;
+  public String b;
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
 }
 
 

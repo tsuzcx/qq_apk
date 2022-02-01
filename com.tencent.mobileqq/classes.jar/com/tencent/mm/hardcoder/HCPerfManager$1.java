@@ -1,15 +1,15 @@
 package com.tencent.mm.hardcoder;
 
-import acjl;
+import aczu;
 
 public class HCPerfManager$1
   implements Runnable
 {
-  public HCPerfManager$1(acjl paramacjl) {}
+  public HCPerfManager$1(aczu paramaczu) {}
   
   public void run()
   {
-    acjl.a(this.this$0);
+    aczu.a(this.this$0);
   }
 }
 

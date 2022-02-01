@@ -1,102 +1,109 @@
-import android.view.ViewGroup;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView.Adapter;
-import java.util.HashMap;
+import android.graphics.SurfaceTexture;
+import android.opengl.GLES20;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
 public class mzf
-  extends RecyclerView.Adapter<mzg<? extends myy>>
 {
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private myz jdField_a_of_type_Myz;
-  private mzh jdField_a_of_type_Mzh;
-  private mzj jdField_a_of_type_Mzj;
-  private HashMap<Integer, mzi> b;
-  private HashMap<Integer, Class<? extends mzg<? extends myy>>> c;
+  private volatile int jdField_a_of_type_Int;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private volatile Thread jdField_a_of_type_JavaLangThread;
+  private mzg jdField_a_of_type_Mzg;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public mzf(SurfaceTexture paramSurfaceTexture, int paramInt)
   {
-    if (!mzf.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangThread = Thread.currentThread();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Int != paramInt) {}
+    for (int i = 1;; i = 0)
     {
-      jdField_a_of_type_Boolean = bool;
+      if ((this.jdField_a_of_type_JavaLangThread == null) || ((this.jdField_a_of_type_JavaLangThread == Thread.currentThread()) && (i != 0)))
+      {
+        if ((i != 0) && (Build.VERSION.SDK_INT >= 16))
+        {
+          if ((this.jdField_a_of_type_Int != 0) && (!this.jdField_a_of_type_Boolean))
+          {
+            this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
+            QLog.d("WatchTogetherSurfaceTextureHolder", 1, "attachToGLContext detach");
+          }
+          this.jdField_a_of_type_Int = paramInt;
+        }
+        if ((Build.VERSION.SDK_INT >= 16) && (!this.jdField_a_of_type_Boolean))
+        {
+          this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.attachToGLContext(paramInt);
+          this.jdField_a_of_type_JavaLangThread = Thread.currentThread();
+          QLog.d("WatchTogetherSurfaceTextureHolder", 1, "attachToGLContext real attch");
+        }
+        QLog.d("WatchTogetherSurfaceTextureHolder", 1, "attachToGLContext textureId " + paramInt + ",Thread.currentThread()):=" + Thread.currentThread());
+      }
       return;
     }
   }
   
-  public mzf()
+  public void a(mzg parammzg)
   {
-    this(null);
+    this.jdField_a_of_type_Mzg = parammzg;
   }
   
-  public mzf(mzj parammzj)
+  public void a(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_Mzj = parammzj;
-    this.jdField_a_of_type_Mzh = new mzh();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.b = new HashMap();
-    this.c = new HashMap();
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(paramArrayOfFloat);
   }
   
-  @NonNull
-  public mzg<? extends myy> a(@NonNull ViewGroup paramViewGroup, int paramInt)
+  public boolean a()
   {
-    Class localClass = (Class)this.c.get(Integer.valueOf(paramInt));
-    if ((!jdField_a_of_type_Boolean) && (localClass == null)) {
-      throw new AssertionError("ViewHolder未被注册");
+    return ((this.jdField_a_of_type_JavaLangThread == null) && (this.jdField_a_of_type_Int == 0)) || (this.jdField_a_of_type_JavaLangThread == Thread.currentThread());
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void c()
+  {
+    QLog.d("WatchTogetherSurfaceTextureHolder", 1, "detachFromGLContext Thread.currentThread()):=" + Thread.currentThread());
+    if (this.jdField_a_of_type_JavaLangThread != Thread.currentThread()) {
+      QLog.d("WatchTogetherSurfaceTextureHolder", 1, "detachFromGLContext error", new Throwable("detachFromGLContext"));
     }
-    paramViewGroup = this.jdField_a_of_type_Mzh.a(paramInt, paramViewGroup, localClass);
-    paramViewGroup.a((mzi)this.b.get(Integer.valueOf(paramInt)));
-    return paramViewGroup;
-  }
-  
-  public void a(int paramInt, mzi parammzi)
-  {
-    this.b.put(Integer.valueOf(paramInt), parammzi);
-  }
-  
-  public void a(@NonNull String paramString, int paramInt, @NonNull Class<? extends mzg<? extends myy>> paramClass)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(paramInt));
-    this.c.put(Integer.valueOf(paramInt), paramClass);
-  }
-  
-  public void a(myz parammyz)
-  {
-    this.jdField_a_of_type_Myz = parammyz;
-  }
-  
-  public void a(@NonNull mzg<? extends myy> parammzg, int paramInt)
-  {
-    if (this.jdField_a_of_type_Myz != null) {
-      parammzg.b(this.jdField_a_of_type_Mzj, this.jdField_a_of_type_Myz.b(paramInt), paramInt);
-    }
-  }
-  
-  public void a(mzh parammzh)
-  {
-    if (parammzh != null) {
-      this.jdField_a_of_type_Mzh = parammzh;
-    }
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_Myz != null) {
-      return this.jdField_a_of_type_Myz.a();
-    }
-    return 0;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (this.jdField_a_of_type_Myz != null)
+    if ((Build.VERSION.SDK_INT >= 16) && (!this.jdField_a_of_type_Boolean))
     {
-      Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_Myz.a(paramInt));
-      if (localInteger != null) {
-        return localInteger.intValue();
-      }
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
+      int[] arrayOfInt = new int[1];
+      arrayOfInt[0] = this.jdField_a_of_type_Int;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     }
-    return 0;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangThread = null;
+  }
+  
+  public void d()
+  {
+    QLog.d("WatchTogetherSurfaceTextureHolder", 1, "lostEglContext");
+    if (this.jdField_a_of_type_Mzg != null) {
+      this.jdField_a_of_type_Mzg.a(this.jdField_a_of_type_JavaLangThread);
+    }
+    this.jdField_a_of_type_JavaLangThread = null;
+  }
+  
+  public void e()
+  {
+    QLog.d("WatchTogetherSurfaceTextureHolder", 1, "onResponsePauseMessage");
+    if (this.jdField_a_of_type_Mzg != null) {
+      this.jdField_a_of_type_Mzg.a();
+    }
+    this.jdField_a_of_type_JavaLangThread = null;
   }
 }
 

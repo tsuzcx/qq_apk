@@ -8,8 +8,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import axic;
-import bkwm;
+import ayoh;
+import bmhv;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
@@ -19,6 +19,7 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -27,13 +28,15 @@ import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
-import okj;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pay;
-import pbi;
-import pim;
-import tgc;
+import osg;
+import pkh;
+import pkj;
+import pnn;
+import prq;
+import ptj;
+import tto;
 
 public class ReadInJoyLockScreenJumpDelegate
   extends IphoneTitleBarFragment
@@ -47,13 +50,13 @@ public class ReadInJoyLockScreenJumpDelegate
   public static Intent a(@NonNull Context paramContext, int paramInt1, int paramInt2)
   {
     int i = 0;
-    Object localObject = pay.a();
+    Object localObject = pnn.a();
     if (localObject == null)
     {
       QLog.i("ReadInJoyLockScreenJump", 1, "generateIntent: app is null");
       return b(paramContext, paramInt1, paramInt2);
     }
-    KandianMergeManager localKandianMergeManager = (KandianMergeManager)((QQAppInterface)localObject).getManager(162);
+    KandianMergeManager localKandianMergeManager = (KandianMergeManager)((QQAppInterface)localObject).getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
     String str = a(localKandianMergeManager.b());
     Log.i("ReadInJoyLockScreenJump", "generateIntent: extraInfo=" + str);
     if (TextUtils.isEmpty(str))
@@ -70,7 +73,7 @@ public class ReadInJoyLockScreenJumpDelegate
       if (i != 0)
       {
         QLog.i("ReadInJoyLockScreenJump", 1, "getLockScreenJumpIntent: routed to daily fragment");
-        return a(paramContext, paramInt1, ((KandianDailyManager)((QQAppInterface)localObject).getManager(296)).b());
+        return a(paramContext, paramInt1, ((KandianDailyManager)((QQAppInterface)localObject).getManager(QQManagerFactory.KANDIAN_DAILY_MANAGER)).b());
       }
       i = c(localJSONObject);
       int j = b(localJSONObject);
@@ -138,7 +141,7 @@ public class ReadInJoyLockScreenJumpDelegate
   
   private static Intent a(@NonNull Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    if (bkwm.k())
+    if (bmhv.n())
     {
       paramContext = new Intent(paramContext, SplashActivity.class);
       paramContext.putExtra("fragment_id", 1);
@@ -150,8 +153,7 @@ public class ReadInJoyLockScreenJumpDelegate
       paramContext.putExtra("kan_dian_lock_screen_flag", true);
       paramContext.putExtra("kan_dian_lock_screen_param", true);
       paramContext.putExtra("return_scene", 2);
-      pay.a(true);
-      pbi.a(paramContext);
+      pkj.a(paramContext);
       try
       {
         a(new JSONObject(paramString), paramContext);
@@ -173,8 +175,7 @@ public class ReadInJoyLockScreenJumpDelegate
     paramContext.putExtra("launch_from", 9);
     paramContext.putExtra("kan_dian_lock_screen_flag", true);
     paramContext.putExtra("kan_dian_lock_screen_param", true);
-    pay.a(true);
-    pbi.a(paramContext);
+    pkj.a(paramContext);
     try
     {
       a(new JSONObject(paramString), paramContext);
@@ -205,9 +206,9 @@ public class ReadInJoyLockScreenJumpDelegate
   
   public static void a(@NonNull Activity paramActivity, @NonNull Intent paramIntent)
   {
-    pay.a((KandianRedDotInfo)paramIntent.getSerializableExtra("daily_lock_screen_report_red_info"));
+    prq.a((KandianRedDotInfo)paramIntent.getSerializableExtra("daily_lock_screen_report_red_info"));
     if (paramIntent.getBooleanExtra("is_from_push_component", false)) {
-      axic.a(paramIntent.getIntExtra("push_main_business_id", 0), paramIntent.getIntExtra("push_sub_business_id", 0), paramIntent.getIntExtra("push_id", 0));
+      ayoh.a(paramIntent.getIntExtra("push_main_business_id", 0), paramIntent.getIntExtra("push_sub_business_id", 0), paramIntent.getIntExtra("push_id", 0));
     }
     int i = paramIntent.getIntExtra("jumpType", 0);
     if (a(paramActivity, paramIntent, i)) {
@@ -250,7 +251,7 @@ public class ReadInJoyLockScreenJumpDelegate
   {
     QLog.d("ReadInJoyLockScreenJump", 1, "handleLockScreenJumpViola: " + paramInt);
     if (paramIntent != null) {}
-    for (paramIntent = paramIntent.getStringExtra("push_json"); tgc.a(paramInt, paramActivity, paramIntent, false); paramIntent = null)
+    for (paramIntent = paramIntent.getStringExtra("push_json"); tto.a(paramInt, paramActivity, paramIntent, false); paramIntent = null)
     {
       QLog.d("ReadInJoyLockScreenJump", 1, "jump viola url success");
       return true;
@@ -262,7 +263,7 @@ public class ReadInJoyLockScreenJumpDelegate
   public static boolean a(MessageRecord paramMessageRecord)
   {
     boolean bool1 = true;
-    if (pay.a(paramMessageRecord))
+    if (pkh.a(paramMessageRecord))
     {
       paramMessageRecord = a(paramMessageRecord);
       if (!TextUtils.isEmpty(paramMessageRecord)) {
@@ -335,8 +336,7 @@ public class ReadInJoyLockScreenJumpDelegate
     paramContext.putExtra("open_kandian_tab_fragment", true);
     paramContext.putExtra("arg_channel_cover_id", paramInt2);
     paramContext.setFlags(335544320);
-    pay.a(true);
-    pbi.a(paramContext);
+    pkj.a(paramContext);
     return paramContext;
   }
   
@@ -351,13 +351,13 @@ public class ReadInJoyLockScreenJumpDelegate
     if (i == 1)
     {
       QLog.i("ReadInJoyLockScreenJump", 1, "doJumpAction: openVideoFeeds, rowKey=" + paramIntent.getStringExtra("pushRowKey"));
-      okj.b(paramActivity, paramIntent);
+      osg.b(paramActivity, paramIntent);
       return;
     }
     if (i == 2)
     {
       QLog.i("ReadInJoyLockScreenJump", 1, "doJumpAction: openVideoFeeds, rowKey=" + paramIntent.getStringExtra("pushRowKey"));
-      okj.a(paramActivity, paramIntent);
+      osg.a(paramActivity, paramIntent);
       return;
     }
     QLog.d("ReadInJoyLockScreenJump", 1, "doJumpAction: contentType: " + i);
@@ -398,7 +398,7 @@ public class ReadInJoyLockScreenJumpDelegate
     }
     for (;;)
     {
-      okj.a(paramActivity, paramIntent, i);
+      osg.a(paramActivity, paramIntent, i);
       QLog.d("ReadInJoyLockScreenJump", 1, "handle lock screen floating window   businessType=" + i);
       return;
       if (j != 2) {
@@ -426,13 +426,13 @@ public class ReadInJoyLockScreenJumpDelegate
   
   public int getContentLayoutId()
   {
-    return 2131560222;
+    return 2131560268;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    pim.a.a(getActivity());
+    ptj.a.a(getActivity());
   }
 }
 

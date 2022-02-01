@@ -1,78 +1,110 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.SparseIntArray;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.1;
-import com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.2;
-import com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.3;
-import com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.4;
-import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
+import com.tencent.av.business.manager.magicface.MagicfaceDataAudioJason;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class lhq
-  implements lhp
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  boolean jdField_a_of_type_Boolean;
+  private awso jdField_a_of_type_Awso;
+  String jdField_a_of_type_JavaLangString;
+  private lhl jdField_a_of_type_Lhl;
+  lhm jdField_a_of_type_Lhm;
+  lhn jdField_a_of_type_Lhn;
+  lho jdField_a_of_type_Lho;
+  String jdField_b_of_type_JavaLangString;
+  lhm jdField_b_of_type_Lhm;
+  lhm c = new lhr(this);
   
-  public lhq(Context paramContext)
+  public lhq()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Boolean = paramContext.getSharedPreferences("effects_face_file", 4).getBoolean("key_frist_use_Face" + VideoController.a().a().getCurrentAccountUin(), false);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.MOUTH_OPEN.value, 2131694998);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.EYEBROWS_RAISE.value, 2131694996);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.BLINK.value, 2131694995);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.HEAD_SHAKE.value, 2131694999);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.KISS.value, 2131694997);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(100, 2131694986);
+    a();
   }
   
-  public String a(Context paramContext, int paramInt)
+  public void a()
   {
-    Integer localInteger = Integer.valueOf(this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt));
-    if (localInteger.intValue() > 0) {
-      return paramContext.getResources().getString(localInteger.intValue());
+    if (this.jdField_a_of_type_Lhl == null)
+    {
+      if (DeviceInfoUtil.isSupportOpenGlES20())
+      {
+        this.jdField_a_of_type_Lhl = new lhp();
+        lbd.h("AVMagicfacePlayer", "initDecoder| use [MagicfaceNormalDecoder]");
+      }
     }
-    return null;
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Lhl = new lhp();
+    lbd.h("AVMagicfacePlayer", "initDecoder|use [MagicfaceNormalDecoder]");
   }
   
-  public void a(int paramInt)
+  public void a(long paramLong, String paramString, lho paramlho, lhn paramlhn, lhm paramlhm)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.3(this, paramInt));
-  }
-  
-  public void a(Drawable paramDrawable, String paramString)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.2(this, paramString, paramDrawable));
-  }
-  
-  public void a(VideoAppInterface paramVideoAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    if (this.jdField_a_of_type_Lhl.a) {
+      try
+      {
+        this.jdField_b_of_type_JavaLangString = paramString;
+        this.jdField_a_of_type_Lho = paramlho;
+        this.jdField_a_of_type_Lhn = paramlhn;
+        this.jdField_a_of_type_Lhm = paramlhm;
+        this.jdField_a_of_type_Lhl.b();
+        return;
+      }
+      finally {}
+    }
+    QLog.w("AVMagicfacePlayer", 1, "playMagicface, srcPath[" + paramString + "], seq[" + paramLong + "]");
+    try
+    {
+      this.jdField_a_of_type_JavaLangString = (paramString + "audio" + File.separator + paramlho.a.src);
+      this.jdField_b_of_type_Lhm = paramlhm;
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Lho = null;
+      this.jdField_a_of_type_Lhn = null;
+      this.jdField_a_of_type_Lhm = null;
+      if ((paramlho.a.src != null) && (!paramlho.a.src.equals("")) && (this.jdField_a_of_type_Awso == null)) {
+        this.jdField_a_of_type_Awso = new awso();
+      }
+      this.jdField_a_of_type_Lhl.a(paramString);
+      this.jdField_a_of_type_Lhl.a(paramlho);
+      this.jdField_a_of_type_Lhl.a(paramlhn);
+      this.jdField_a_of_type_Lhl.a(this.c);
+      this.jdField_a_of_type_Lhl.a();
+      return;
+    }
+    finally {}
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.1(this, paramString));
+    if (this.jdField_a_of_type_Awso != null) {
+      this.jdField_a_of_type_Awso.a(paramString);
+    }
   }
   
-  public void b(int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new EffectPendantTipsImpl.4(this), paramInt);
+    lbd.f("AVMagicfacePlayer", "playSound soundSrc = " + paramString + ", loop = " + paramInt);
+    if (this.jdField_a_of_type_Awso != null) {
+      this.jdField_a_of_type_Awso.a(paramString, paramInt, 0);
+    }
   }
   
-  public void c(int paramInt)
+  public boolean a()
   {
-    a(paramInt);
+    return this.jdField_a_of_type_Lhl.a;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_b_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Lho = null;
+      this.jdField_a_of_type_Lhn = null;
+      this.jdField_a_of_type_Lhm = null;
+      this.jdField_a_of_type_Lhl.b();
+      return;
+    }
+    finally {}
   }
 }
 

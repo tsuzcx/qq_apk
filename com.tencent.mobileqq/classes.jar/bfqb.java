@@ -1,76 +1,42 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.res.Resources;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class bfqb
+  implements View.OnClickListener
 {
-  public static Dialog a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
-  {
-    Object localObject2 = paramContext.getResources().getString(paramInt1);
-    Object localObject1 = paramContext.getResources().getString(paramInt2);
-    String str2 = paramContext.getResources().getString(paramInt3);
-    String str1 = paramContext.getResources().getString(paramInt4);
-    paramContext = new ReportDialog(paramContext, 2131755826);
-    paramContext.setContentView(2131558992);
-    TextView localTextView = (TextView)paramContext.findViewById(2131365556);
-    if (localTextView != null)
-    {
-      localTextView.setText((CharSequence)localObject2);
-      localTextView.setContentDescription((CharSequence)localObject2);
-    }
-    localObject2 = (TextView)paramContext.findViewById(2131365552);
-    if (localObject2 != null)
-    {
-      ((TextView)localObject2).setText((CharSequence)localObject1);
-      ((TextView)localObject2).setContentDescription((CharSequence)localObject1);
-    }
-    localObject1 = (TextView)paramContext.findViewById(2131365541);
-    if (localObject1 != null)
-    {
-      ((TextView)localObject1).setText(str2);
-      ((TextView)localObject1).setContentDescription(str2);
-      if (paramOnClickListener1 != null) {
-        ((TextView)localObject1).setOnClickListener(paramOnClickListener1);
-      }
-    }
-    paramOnClickListener1 = (TextView)paramContext.findViewById(2131365547);
-    if (paramOnClickListener1 != null)
-    {
-      paramOnClickListener1.setText(str1);
-      paramOnClickListener1.setContentDescription(str1);
-      if (paramOnClickListener2 != null) {
-        paramOnClickListener1.setOnClickListener(paramOnClickListener2);
-      }
-    }
-    return paramContext;
-  }
+  public bfqb(HomeWorkTroopSelectorFragment paramHomeWorkTroopSelectorFragment) {}
   
-  public static Dialog a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnDismissListener paramOnDismissListener)
+  public void onClick(View paramView)
   {
-    paramContext = new ReportDialog(paramContext, 2131755826);
-    paramContext.setContentView(2131558992);
-    TextView localTextView = (TextView)paramContext.findViewById(2131365556);
-    if (localTextView != null) {
-      localTextView.setText(paramString1);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    if (HomeWorkTroopSelectorFragment.a(this.a) != null)
+    {
+      int j = HomeWorkTroopSelectorFragment.a(this.a).getCount();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (bfqg)HomeWorkTroopSelectorFragment.a(this.a).getItem(i);
+        if ((((Boolean)((bfqg)localObject).b).booleanValue()) && (!HomeWorkTroopSelectorFragment.a(this.a).equals(((TroopInfo)((bfqg)localObject).a).troopuin)))
+        {
+          localArrayList1.add(((TroopInfo)((bfqg)localObject).a).troopname);
+          localArrayList2.add(((TroopInfo)((bfqg)localObject).a).troopuin);
+        }
+        i += 1;
+      }
     }
-    paramString1 = (TextView)paramContext.findViewById(2131365552);
-    if (paramString1 != null) {
-      paramString1.setText(paramString2);
-    }
-    paramString1 = (TextView)paramContext.findViewById(2131365541);
-    if (paramString1 != null) {
-      paramString1.setText(2131690555);
-    }
-    paramString1 = (TextView)paramContext.findViewById(2131365547);
-    if (paramString1 != null) {
-      paramString1.setText(2131690599);
-    }
-    paramContext.setOnDismissListener(paramOnDismissListener);
-    return paramContext;
+    Object localObject = new Intent();
+    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_uin_list_key", localArrayList2);
+    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_name_list_key", localArrayList1);
+    this.a.getActivity().setResult(262, (Intent)localObject);
+    this.a.getActivity().doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

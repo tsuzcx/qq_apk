@@ -1,27 +1,13 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
-class zlz
-  implements WXShareHelper.WXShareListener
+public class zlz
+  implements DialogInterface.OnClickListener
 {
-  zlz(zlv paramzlv) {}
+  public zlz(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
-  {
-    if ((zlv.a(this.a) == null) || (!zlv.a(this.a).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      QQToast.a(this.a.a, 1, amtj.a(2131713681), 0).a();
-      return;
-    }
-    QQToast.a(this.a.a, 2, amtj.a(2131713683), 0).a();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

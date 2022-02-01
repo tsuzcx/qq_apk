@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.filemanageraux.fileviewer.FileView;
 
-import amtj;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
@@ -13,9 +12,10 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import atfc;
-import atfd;
-import atfe;
+import anvx;
+import aujj;
+import aujk;
+import aujl;
 import com.tencent.kwstudio.office.debug.Debugger;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.Switch;
@@ -25,35 +25,35 @@ public final class TdsDebugView
   extends FrameLayout
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
-  private static final String jdField_a_of_type_JavaLangString = amtj.a(2131713773);
-  private static final String jdField_b_of_type_JavaLangString = amtj.a(2131713770);
-  private static final String jdField_c_of_type_JavaLangString = amtj.a(2131713767);
-  private static final String d = amtj.a(2131713768);
-  private static final String e = amtj.a(2131713766);
-  private static final String f = amtj.a(2131713769);
-  private static final String g = amtj.a(2131713772);
-  private static final String h = amtj.a(2131713771);
-  private static final String i = amtj.a(2131713774);
+  private static final String jdField_a_of_type_JavaLangString = anvx.a(2131714120);
+  private static final String jdField_b_of_type_JavaLangString = anvx.a(2131714117);
+  private static final String jdField_c_of_type_JavaLangString = anvx.a(2131714114);
+  private static final String d = anvx.a(2131714115);
+  private static final String e = anvx.a(2131714113);
+  private static final String f = anvx.a(2131714116);
+  private static final String g = anvx.a(2131714119);
+  private static final String h = anvx.a(2131714118);
+  private static final String i = anvx.a(2131714121);
   private final Handler jdField_a_of_type_AndroidOsHandler;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final atfe jdField_a_of_type_Atfe;
+  private final aujl jdField_a_of_type_Aujl;
   private boolean jdField_a_of_type_Boolean;
   private boolean jdField_b_of_type_Boolean;
   private boolean jdField_c_of_type_Boolean;
   
-  public TdsDebugView(Context paramContext, atfe paramatfe)
+  public TdsDebugView(Context paramContext, aujl paramaujl)
   {
     super(paramContext.getApplicationContext());
-    this.jdField_a_of_type_Atfe = paramatfe;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new atfd(this, null));
-    paramContext = LayoutInflater.from(paramContext).inflate(2131562872, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378669));
-    paramContext.findViewById(2131364578).setOnClickListener(this);
-    paramContext.findViewById(2131367567).setOnClickListener(this);
-    paramContext.findViewById(2131380184).setOnClickListener(this);
-    paramContext.findViewById(2131364577).setOnClickListener(this);
-    paramContext.findViewById(2131364615).setOnClickListener(this);
-    paramContext = (Switch)paramContext.findViewById(2131378066);
+    this.jdField_a_of_type_Aujl = paramaujl;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new aujk(this, null));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131562943, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378963));
+    paramContext.findViewById(2131364660).setOnClickListener(this);
+    paramContext.findViewById(2131367699).setOnClickListener(this);
+    paramContext.findViewById(2131380519).setOnClickListener(this);
+    paramContext.findViewById(2131364659).setOnClickListener(this);
+    paramContext.findViewById(2131364699).setOnClickListener(this);
+    paramContext = (Switch)paramContext.findViewById(2131378354);
     paramContext.setOnCheckedChangeListener(this);
     paramContext.setChecked(Debugger.isUserEnable("11"));
   }
@@ -125,44 +125,44 @@ public final class TdsDebugView
   public void onClick(View paramView)
   {
     int j = paramView.getId();
-    if (j == 2131364578)
+    if (j == 2131364660)
     {
       a(jdField_a_of_type_JavaLangString);
       if (!this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = true;
-        Debugger.cleanPlugin("11", new atfc(this, null));
+        Debugger.cleanPlugin("11", new aujj(this, null));
       }
     }
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (j == 2131367567)
+      if (j == 2131367699)
       {
         a(Debugger.getVersionInfo("11"));
       }
-      else if (j == 2131380184)
+      else if (j == 2131380519)
       {
         a(d);
         if (!this.jdField_b_of_type_Boolean)
         {
           this.jdField_b_of_type_Boolean = true;
-          Debugger.upgradePlugin("11", new atfc(this, null));
+          Debugger.upgradePlugin("11", new aujj(this, null));
         }
       }
-      else if (j == 2131364577)
+      else if (j == 2131364659)
       {
         a(g);
         if (!this.jdField_c_of_type_Boolean)
         {
           this.jdField_c_of_type_Boolean = true;
-          Debugger.cleanCache("11", new atfc(this, null));
+          Debugger.cleanCache("11", new aujj(this, null));
         }
       }
-      else if ((j == 2131364615) && (this.jdField_a_of_type_Atfe != null))
+      else if ((j == 2131364699) && (this.jdField_a_of_type_Aujl != null))
       {
-        this.jdField_a_of_type_Atfe.a();
+        this.jdField_a_of_type_Aujl.a();
       }
     }
   }

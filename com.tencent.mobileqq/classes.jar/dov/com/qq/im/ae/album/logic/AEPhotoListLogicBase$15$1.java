@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.album.logic;
 
-import blmi;
-import bmce;
+import bmzr;
+import bnrv;
 
 class AEPhotoListLogicBase$15$1
   implements Runnable
@@ -10,8 +10,8 @@ class AEPhotoListLogicBase$15$1
   
   public void run()
   {
-    blmi.b(this.a.this$0, this.a.b);
-    blmi.a(this.a.this$0).dismiss();
+    bmzr.b(this.a.this$0, this.a.b);
+    bmzr.a(this.a.this$0).dismiss();
   }
 }
 

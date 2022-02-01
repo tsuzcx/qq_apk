@@ -1,24 +1,24 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem;
-import com.tencent.common.app.AppInterface;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
+import cooperation.qqreader.proxy.ReaderJsCallback;
 
 class bmfi
-  implements bmgj
+  implements ReaderJsCallback
 {
-  bmfi(bmfh parambmfh, AppInterface paramAppInterface, bmgg parambmgg, bmfk parambmfk) {}
+  bmfi(bmfh parambmfh) {}
   
-  public void a(int paramInt)
+  public void onCallback(String paramString1, String paramString2)
   {
-    bmbx.b(bmfh.a(), "proxy onProcessFailed: errCode=" + paramInt);
-    if (this.jdField_a_of_type_Bmfk != null) {
-      this.jdField_a_of_type_Bmfk.a(paramInt, this.jdField_a_of_type_Bmgg.a());
+    if (!TextUtils.isEmpty(paramString1)) {
+      bmfh.a(this.a, paramString1, new String[] { paramString2 });
     }
   }
   
-  public void a(ArrayList<SmartFilterReqItem> paramArrayList)
+  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
   {
-    bmbx.b(bmfh.a(), "proxy onDataReadyForRequest");
-    bmfh.a(this.jdField_a_of_type_Bmfh, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramArrayList, new bmfj(this));
+    if (paramReaderBaseWebViewPlugin != null) {
+      paramReaderBaseWebViewPlugin.init(this.a.mRuntime, bmfh.a(this.a));
+    }
   }
 }
 

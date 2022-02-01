@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ark.API;
 
-import abrk;
+import achn;
 import android.content.Context;
 import android.text.TextUtils;
-import aopv;
+import apsw;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class ArkAppNotifyCenter$GdtNotify$4
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$4(aopv paramaopv, WeakReference paramWeakReference, String paramString1, String paramString2) {}
+  public ArkAppNotifyCenter$GdtNotify$4(apsw paramapsw, WeakReference paramWeakReference, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -45,7 +45,7 @@ public class ArkAppNotifyCenter$GdtNotify$4
           QLog.e("ark.ArkAppNotifyCenter", 1, "ark get_device_info error", localJSONException);
           localObject2 = null;
         }
-        localObject2 = abrk.a(localObject2.deviceInfo);
+        localObject2 = achn.a(localObject2.deviceInfo);
       }
       localParams = new GdtDeviceInfoHelper.Params();
       localParams.businessIdForAidTicketAndTaidTicket = ((String)localObject1);

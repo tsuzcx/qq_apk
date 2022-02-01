@@ -1,24 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adjs
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public adjs(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  public adjs(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    View localView = (View)paramView.getParent();
+    if ((localView == null) || (localView.getTag() == null)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bdla.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
+      if ((localView.getTag() instanceof SubAccountInfo)) {
+        this.a.a((SubAccountInfo)localView.getTag());
+      }
     }
   }
 }

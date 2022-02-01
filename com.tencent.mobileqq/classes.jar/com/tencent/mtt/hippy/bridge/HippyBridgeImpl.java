@@ -30,6 +30,7 @@ public class HippyBridgeImpl
   private boolean mBridgeParamJson;
   private String mDebugGobalConfig;
   private NativeCallback mDebugInitJSFrameworkCallback;
+  private String mDebugServerHost;
   private b mDebugWebSocketClient;
   private HippyBuffer mHippyBuffer;
   private boolean mInit = false;
@@ -42,12 +43,13 @@ public class HippyBridgeImpl
     a.a("hippybridge");
   }
   
-  public HippyBridgeImpl(Context paramContext, HippyBridge.a arg2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public HippyBridgeImpl(Context paramContext, HippyBridge.a arg2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
     this.mBridgeCallback = ???;
     this.mSingleThreadMode = paramBoolean1;
     this.mBridgeParamJson = paramBoolean2;
     this.mIsDevModule = paramBoolean3;
+    this.mDebugServerHost = paramString;
     synchronized (sBridgeSyncLock)
     {
       sBridgeNum += 1;
@@ -214,7 +216,10 @@ public class HippyBridgeImpl
     {
       this.mDebugWebSocketClient = new b();
       this.mDebugWebSocketClient.a(this);
-      this.mDebugWebSocketClient.a(String.format(Locale.US, "ws://%s/debugger-proxy?role=android_client", new Object[] { "localhost:38989" }), new HippyBridgeImpl.1(this, paramInt));
+      if (TextUtils.isEmpty(this.mDebugServerHost)) {
+        this.mDebugServerHost = "localhost:38989";
+      }
+      this.mDebugWebSocketClient.a(String.format(Locale.US, "ws://%s/debugger-proxy?role=android_client", new Object[] { this.mDebugServerHost }), new HippyBridgeImpl.1(this, paramInt));
       return;
     }
     initJSEngine(paramInt);

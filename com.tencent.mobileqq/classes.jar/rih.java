@@ -1,11 +1,18 @@
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSubscribe;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class rih
+public class rih
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
+  public rih(ComponentHeaderSubscribe paramComponentHeaderSubscribe) {}
   
-  private rih(rif paramrif) {}
+  public void onClick(View paramView)
+  {
+    ComponentHeaderSubscribe.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

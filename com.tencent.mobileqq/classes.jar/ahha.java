@@ -1,19 +1,38 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-class ahha
-  extends andd
+public class ahha
+  extends afqr
 {
-  ahha(ahgz paramahgz) {}
+  public ImageView a;
+  public TextView a;
+  public CropBubbleVideoView a;
+  public MessageProgressView a;
+  public ImageView b;
+  public int e;
+  public int f;
   
-  protected void onBuluoHotChatRedPointComing(boolean paramBoolean, String paramString)
+  public ahha(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
+  
+  public void a()
   {
-    if ((this.a.g != 2) && (paramBoolean) && (this.a.b != null) && (this.a.a != null) && (this.a.a.troopUin.equals(paramString)) && (this.a.a.hasPostRedPoint())) {
-      this.a.b.a(true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.tag + "Q.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
+    {
+      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
+      if (l > 0L)
+      {
+        MessageForShortVideo localMessageForShortVideo = bhbz.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
+        if (localMessageForShortVideo != null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(localMessageForShortVideo, l);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
+      ShortVideoRealItemBuilder.a.remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
     }
   }
 }

@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class rxn
+final class rxn
+  implements SDKInitListener
 {
-  private static rxn a;
-  
-  public static rxn a()
+  public void onSDKInited(boolean paramBoolean)
   {
-    if (a == null) {}
-    try
-    {
-      a = new rxn();
-      return a;
+    if (QLog.isColorLevel()) {
+      QLog.d("PlayerCaptureProxy", 2, "onSDKInited result:" + paramBoolean);
     }
-    finally {}
-  }
-  
-  public QIPCModule a()
-  {
-    return null;
   }
 }
 

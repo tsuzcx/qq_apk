@@ -1,13 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-public abstract interface pke
+public class pke
 {
-  public abstract void a(MessageRecord paramMessageRecord);
+  public int a;
+  public String a;
+  public List<Integer> a;
+  public String b;
+  public List<Integer> b;
+  public String c;
   
-  public abstract void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle);
-  
-  public abstract void b(MessageRecord paramMessageRecord);
+  public pke(pkd parampkd) {}
 }
 
 

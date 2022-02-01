@@ -1,44 +1,31 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tencent.mobileqq.utils.StackBlur;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ybr
-  extends JobSegment<Bitmap, Bitmap>
+  extends QQUIEventReceiver<StoryMessageListActivity, wrd>
 {
-  public int a;
-  
-  public ybr()
+  public ybr(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    this.a = 10;
+    super(paramStoryMessageListActivity);
   }
   
-  public ybr(int paramInt)
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull wrd paramwrd)
   {
-    this.a = paramInt;
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    StackBlur.fastblur(paramBitmap, paramInt);
-    return paramBitmap;
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    long l = System.currentTimeMillis();
-    paramJobContext = a(paramBitmap, this.a, false);
-    xvv.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
-    if (paramJobContext == null)
+    if (paramwrd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      super.notifyError(new BitmapError("BlurJobSegment", 7));
-      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramwrd.jdField_a_of_type_JavaUtilList);
+      }
+      paramStoryMessageListActivity.g();
     }
-    super.notifyResult(paramJobContext);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wrd.class;
   }
 }
 

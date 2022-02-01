@@ -1,32 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayno
-  extends ayqg
+class ayno
+  implements View.OnClickListener
 {
-  public ayno(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3)
-  {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
-  }
+  ayno(aynn paramaynn) {}
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 1001: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(24, a());
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage(paramVarArgs);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

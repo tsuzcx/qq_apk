@@ -1,21 +1,33 @@
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.14;
+import com.tencent.qphone.base.util.QLog;
 
-class beyg
+public class beyg
+  implements VideoCompositeHelper.VideoCompositeCallBack
 {
-  public long a;
-  public ArrayList<beyd> a;
-  public ArrayList<beyd> b;
+  public beyg(TroopBarPublishActivity.14 param14) {}
   
-  public beyg(long paramLong, ArrayList<beyd> paramArrayList1, ArrayList<beyd> paramArrayList2)
+  public void onVideoCompositeFinish(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
-    this.b = paramArrayList2;
+    if (paramInt != 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("tribe_publish_TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
+      }
+      this.a.this$0.a(null, this.a.a);
+      return;
+    }
+    this.a.this$0.jdField_a_of_type_Besj.b = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
+    this.a.this$0.jdField_a_of_type_Besj.c = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
+    this.a.this$0.jdField_a_of_type_Besj.a = ((int)this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
+    this.a.this$0.a(paramString2, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyg
  * JD-Core Version:    0.7.0.1
  */

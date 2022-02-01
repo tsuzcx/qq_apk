@@ -1,23 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
 
-final class bfpc
-  implements DownloadParams.DecodeHandler
+public final class bfpc
+  implements Parcelable.Creator<HWGuideItem>
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public HWGuideItem a(Parcel paramParcel)
   {
-    if (paramBitmap == null) {
-      return null;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    int i;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1)) {
-      i = ((int[])(int[])paramDownloadParams)[0];
-    }
-    for (paramDownloadParams = bfvo.a(paramBitmap, i, i, i);; paramDownloadParams = null) {
-      return paramDownloadParams;
-    }
+    return new HWGuideItem(paramParcel);
+  }
+  
+  public HWGuideItem[] a(int paramInt)
+  {
+    return new HWGuideItem[paramInt];
   }
 }
 

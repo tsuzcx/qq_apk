@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import mqu;
+import mrr;
 
 class GaInviteLockActivity$11
   implements Runnable
@@ -15,7 +15,7 @@ class GaInviteLockActivity$11
   {
     int i = this.this$0.jdField_a_of_type_Int;
     long l = this.this$0.jdField_a_of_type_Long;
-    int j = mqu.c(this.this$0.jdField_b_of_type_Int);
+    int j = mrr.c(this.this$0.jdField_b_of_type_Int);
     String str1 = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(i, String.valueOf(l), null);
     String str2 = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(j, String.valueOf(this.this$0.jdField_b_of_type_Long), String.valueOf(this.this$0.jdField_a_of_type_Long));
     Bitmap localBitmap = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(j, String.valueOf(this.this$0.jdField_b_of_type_Long), null, true, true);

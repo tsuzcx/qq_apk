@@ -1,21 +1,34 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-final class ajpp
-  implements DialogInterface.OnClickListener
+class ajpp
+  implements View.OnClickListener
 {
-  ajpp(Activity paramActivity, String paramString1, String paramString2) {}
+  ajpp(ajpi paramajpi, int paramInt, ArrayList paramArrayList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (!ajpi.a(this.jdField_a_of_type_Ajpi))
     {
-    default: 
-      return;
+      if (this.jdField_a_of_type_Int != 1) {
+        break label48;
+      }
+      SDKSetEmotionPreviewFragment.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), ajpi.a(this.jdField_a_of_type_Ajpi), null);
     }
-    ajpl.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label48:
+      Intent localIntent = new Intent();
+      localIntent.putStringArrayListExtra("path_list", this.jdField_a_of_type_JavaUtilArrayList);
+      PublicFragmentActivity.a(ajpi.a(this.jdField_a_of_type_Ajpi), localIntent, SDKSetEmotionPreviewFragment.class);
+    }
   }
 }
 

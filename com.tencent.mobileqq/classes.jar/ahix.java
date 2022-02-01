@@ -1,22 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.data.MessageForText;
 
 class ahix
-  implements ValueAnimator.AnimatorUpdateListener
+  extends ClickableSpan
 {
-  ahix(ahiu paramahiu, View paramView, int paramInt1, int paramInt2) {}
+  ahix(ahit paramahit, MessageForText paramMessageForText, ETTextView paramETTextView, CharSequence paramCharSequence) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    if ((paramValueAnimator == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return;
+    if (ahbo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForText))
+    {
+      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.cancelLongPress();
+      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextMsg(this.jdField_a_of_type_JavaLangCharSequence);
+      ahbo.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForText);
+      ahit.a(this.jdField_a_of_type_Ahit, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop);
     }
-    float f1 = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    float f2 = this.jdField_a_of_type_Int;
-    paramValueAnimator.height = ((int)(f1 * (this.b - this.jdField_a_of_type_Int) + f2));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_Ahit.a.getResources().getColor(2131165784));
+    paramTextPaint.clearShadowLayer();
   }
 }
 

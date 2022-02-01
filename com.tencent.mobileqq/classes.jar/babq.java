@@ -1,6 +1,24 @@
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Comparator;
+import tencent.im.oidb.oidb_0xd9f.oidb_0xd9f.TopicItem;
+
 class babq
+  implements Comparator<oidb_0xd9f.TopicItem>
 {
-  private static babm a = new babm(null);
+  babq(babn parambabn) {}
+  
+  public int a(oidb_0xd9f.TopicItem paramTopicItem1, oidb_0xd9f.TopicItem paramTopicItem2)
+  {
+    if (paramTopicItem1 == null) {}
+    do
+    {
+      return 1;
+      if (paramTopicItem2 == null) {
+        return -1;
+      }
+    } while (paramTopicItem1.uint32_frd_num.get() <= paramTopicItem2.uint32_frd_num.get());
+    return -1;
+  }
 }
 
 

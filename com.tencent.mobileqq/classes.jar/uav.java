@@ -1,26 +1,18 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.SingleLineTextView;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-class uav
-  extends bjtz
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageController$Companion;", "", "()V", "BLOCK_DISTANCE_ARRAY", "", "", "getBLOCK_DISTANCE_ARRAY", "()[Ljava/lang/Integer;", "[Ljava/lang/Integer;", "MSG_FETCH_NEXT_BARRAGE", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class uav
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  String jdField_a_of_type_JavaLangString;
-  Button jdField_b_of_type_AndroidWidgetButton;
-  SingleLineTextView jdField_b_of_type_ComTencentWidgetSingleLineTextView;
-  
-  uav(uar paramuar) {}
+  @NotNull
+  public final Integer[] a()
+  {
+    return uas.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uav
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.hotpic;
 
-import augj;
+import avmd;
 
 public class HotPicMainPanel$2$1
   implements Runnable
 {
-  public HotPicMainPanel$2$1(augj paramaugj) {}
+  public HotPicMainPanel$2$1(avmd paramavmd) {}
   
   public void run()
   {

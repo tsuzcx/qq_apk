@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.home;
 
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
-import pay;
+import bdkx;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class Conversation$25
   implements Runnable
@@ -10,7 +11,25 @@ class Conversation$25
   
   public void run()
   {
-    pay.a(Conversation.a(this.this$0).getMeasuredHeight(), Conversation.a(this.this$0).getResources());
+    int i = bdkx.a();
+    try
+    {
+      MqqHandler localMqqHandler = this.this$0.a;
+      if ((i >= 0) && (localMqqHandler != null))
+      {
+        localMqqHandler.removeMessages(1134061);
+        localMqqHandler.sendEmptyMessageDelayed(1134061, i * 1000L);
+      }
+      return;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      for (;;)
+      {
+        QLog.e("Q.recent", 1, localNullPointerException, new Object[0]);
+        Object localObject = null;
+      }
+    }
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afiw;
-import awgz;
+import agab;
+import axnb;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class FriendChatPie$20
   implements Runnable
 {
-  public FriendChatPie$20(afiw paramafiw) {}
+  public FriendChatPie$20(agab paramagab) {}
   
   public void run()
   {

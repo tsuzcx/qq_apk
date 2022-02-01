@@ -13,33 +13,33 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import benq;
-import bepd;
-import bepi;
-import bepj;
-import bepk;
-import bepl;
-import bepo;
-import bgas;
-import bgat;
-import bjng;
-import bkxx;
-import bkyl;
+import bfut;
+import bfwg;
+import bfwl;
+import bfwm;
+import bfwn;
+import bfwo;
+import bfwr;
+import bhjj;
+import bhjk;
+import bkys;
+import bmjg;
+import bmju;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import java.io.File;
-import wkp;
+import wzk;
 
 public class HWReciteItem
-  extends bepd<bepl, benq>
-  implements Handler.Callback, bgat
+  extends bfwg<bfwo, bfut>
+  implements Handler.Callback, bhjk
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bepj(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bfwm(this);
   private final Context jdField_a_of_type_AndroidContentContext;
-  private benq jdField_a_of_type_Benq;
-  public bepl a;
-  private bgas jdField_a_of_type_Bgas;
-  private final bjng jdField_a_of_type_Bjng;
+  private bfut jdField_a_of_type_Bfut;
+  public bfwo a;
+  private bhjj jdField_a_of_type_Bhjj;
+  private final bkys jdField_a_of_type_Bkys;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   
@@ -47,70 +47,70 @@ public class HWReciteItem
   {
     super(paramXMediaEditor);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bjng = new bjng(this);
+    this.jdField_a_of_type_Bkys = new bkys(this);
     this.jdField_a_of_type_JavaLangString = paramXMediaEditor.a("troopuin");
   }
   
   private String a(String paramString)
   {
-    return bkyl.a(this.jdField_a_of_type_AndroidContentContext).getString(paramString, null);
+    return bmju.a(this.jdField_a_of_type_AndroidContentContext).getString(paramString, null);
   }
   
   private void a(String paramString)
   {
-    bkyl.a(this.jdField_a_of_type_AndroidContentContext).edit().remove(paramString).commit();
+    bmju.a(this.jdField_a_of_type_AndroidContentContext).edit().remove(paramString).commit();
   }
   
   private void a(String paramString1, String paramString2)
   {
-    bkyl.a(this.jdField_a_of_type_AndroidContentContext).edit().putString(paramString1, paramString2).commit();
+    bmju.a(this.jdField_a_of_type_AndroidContentContext).edit().putString(paramString1, paramString2).commit();
   }
   
-  private void f(benq parambenq)
+  private void f(bfut parambfut)
   {
-    if ((!TextUtils.isEmpty(parambenq.e)) || (parambenq.g != 0)) {
+    if ((!TextUtils.isEmpty(parambfut.e)) || (parambfut.g != 0)) {
       return;
     }
-    h(parambenq);
-    ThreadManager.post(new HWReciteItem.1(this, parambenq), 8, null, true);
+    h(parambfut);
+    ThreadManager.post(new HWReciteItem.1(this, parambfut), 8, null, true);
   }
   
-  private void g(benq parambenq)
+  private void g(bfut parambfut)
   {
-    if ((!TextUtils.isEmpty(parambenq.e)) || (parambenq.g != 2)) {
+    if ((!TextUtils.isEmpty(parambfut.e)) || (parambfut.g != 2)) {
       return;
     }
-    h(parambenq);
-    ThreadManager.post(new HWReciteItem.2(this, parambenq), 8, null, true);
+    h(parambfut);
+    ThreadManager.post(new HWReciteItem.2(this, parambfut), 8, null, true);
   }
   
-  private void h(benq parambenq)
+  private void h(bfut parambfut)
   {
-    if (parambenq.jdField_a_of_type_Bkxx == null)
+    if (parambfut.jdField_a_of_type_Bmjg == null)
     {
-      parambenq.jdField_a_of_type_Bkxx = new bkxx(wkp.a(), parambenq.d, parambenq.f);
-      parambenq.jdField_a_of_type_Bkxx.a(new bepk(this, parambenq));
+      parambfut.jdField_a_of_type_Bmjg = new bmjg(wzk.a(), parambfut.d, parambfut.f);
+      parambfut.jdField_a_of_type_Bmjg.a(new bfwn(this, parambfut));
     }
-    parambenq.g = 1;
+    parambfut.g = 1;
   }
   
-  private void i(benq parambenq)
+  private void i(bfut parambfut)
   {
-    if ((parambenq != null) && (parambenq.jdField_a_of_type_Boolean)) {
+    if ((parambfut != null) && (parambfut.jdField_a_of_type_Boolean)) {
       b();
     }
   }
   
-  public bepl a(ViewGroup paramViewGroup)
+  public bfwo a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560650, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560703, paramViewGroup, false);
     try
     {
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("com.tnecnet.mobileqq.homework.recite.stopAudio");
       this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
       label42:
-      return new bepl(paramViewGroup);
+      return new bfwo(paramViewGroup);
     }
     catch (Exception localException)
     {
@@ -132,39 +132,39 @@ public class HWReciteItem
   
   public void a(int paramInt1, String paramString, int paramInt2)
   {
-    paramInt1 = this.jdField_a_of_type_Benq.c;
+    paramInt1 = this.jdField_a_of_type_Bfut.c;
     b();
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().notifyItemChanged(paramInt1);
   }
   
-  public void a(View paramView, bepl parambepl)
+  public void a(View paramView, bfwo parambfwo)
   {
-    if (parambepl != null) {
-      parambepl.a(paramView, this);
+    if (parambfwo != null) {
+      parambfwo.a(paramView, this);
     }
   }
   
-  public void a(benq parambenq)
+  public void a(bfut parambfut)
   {
-    if (parambenq.jdField_a_of_type_Int == 1) {
-      f(parambenq);
+    if (parambfut.jdField_a_of_type_Int == 1) {
+      f(parambfut);
     }
   }
   
-  public void a(bepl parambepl, benq parambenq, int paramInt)
+  public void a(bfwo parambfwo, bfut parambfut, int paramInt)
   {
-    if (TextUtils.isEmpty(parambenq.f)) {
-      parambenq.f = this.jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(parambfut.f)) {
+      parambfut.f = this.jdField_a_of_type_JavaLangString;
     }
-    parambepl.a(this, parambenq, paramInt);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) && ((parambepl.jdField_a_of_type_Bepo.a.getVisibility() == 0) || (parambepl.jdField_a_of_type_Bepi.a.getVisibility() == 0))) {
-      parambepl.itemView.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
+    parambfwo.a(this, parambfut, paramInt);
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) && ((parambfwo.jdField_a_of_type_Bfwr.a.getVisibility() == 0) || (parambfwo.jdField_a_of_type_Bfwl.a.getVisibility() == 0))) {
+      parambfwo.itemView.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bepl = parambepl;
+      this.jdField_a_of_type_Bfwo = parambfwo;
       return;
-      parambepl.itemView.setPadding(0, 0, 0, 0);
+      parambfwo.itemView.setPadding(0, 0, 0, 0);
     }
   }
   
@@ -172,72 +172,72 @@ public class HWReciteItem
   
   public void b()
   {
-    if (this.jdField_a_of_type_Bgas != null)
+    if (this.jdField_a_of_type_Bhjj != null)
     {
-      this.jdField_a_of_type_Bgas.e();
-      this.jdField_a_of_type_Bgas = null;
+      this.jdField_a_of_type_Bhjj.e();
+      this.jdField_a_of_type_Bhjj = null;
     }
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Benq != null)
+    if (this.jdField_a_of_type_Bfut != null)
     {
-      this.jdField_a_of_type_Benq.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Benq = null;
+      this.jdField_a_of_type_Bfut.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Bfut = null;
     }
   }
   
-  public void b(benq parambenq)
+  public void b(bfut parambfut)
   {
-    g(parambenq);
+    g(parambfut);
   }
   
   public void b(String paramString, int paramInt1, int paramInt2) {}
   
-  public void c(benq parambenq)
+  public void c(bfut parambfut)
   {
-    super.d(parambenq);
-    i(parambenq);
+    super.d(parambfut);
+    i(parambfut);
   }
   
-  public void d(benq parambenq)
+  public void d(bfut parambfut)
   {
-    parambenq.b = 1;
-    if (!TextUtils.isEmpty(parambenq.e))
+    parambfut.b = 1;
+    if (!TextUtils.isEmpty(parambfut.e))
     {
-      String str2 = a(parambenq.e);
+      String str2 = a(parambfut.e);
       String str1 = str2;
       if (!TextUtils.isEmpty(str2))
       {
         str1 = str2;
         if (!new File(str2).exists())
         {
-          a(parambenq.e);
+          a(parambfut.e);
           str1 = null;
         }
       }
       if (!TextUtils.isEmpty(str1))
       {
-        parambenq.d = str1;
-        parambenq.b = 2;
+        parambfut.d = str1;
+        parambfut.b = 2;
         return;
       }
-      ThreadManager.postImmediately(new HWReciteItem.DownloadAudioTask(this, parambenq), null, false);
+      ThreadManager.postImmediately(new HWReciteItem.DownloadAudioTask(this, parambfut), null, false);
       return;
     }
-    parambenq.b = 3;
+    parambfut.b = 3;
   }
   
-  public void e(benq parambenq)
+  public void e(bfut parambfut)
   {
     if (this.jdField_a_of_type_Boolean) {
       b();
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Benq = parambenq;
-    parambenq.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bgas = new bgas(parambenq.d, new Handler(), 1);
-    this.jdField_a_of_type_Bgas.a(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Bgas.a(this);
-    this.jdField_a_of_type_Bgas.b();
+    this.jdField_a_of_type_Bfut = parambfut;
+    parambfut.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bhjj = new bhjj(parambfut.d, new Handler(), 1);
+    this.jdField_a_of_type_Bhjj.a(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Bhjj.a(this);
+    this.jdField_a_of_type_Bhjj.b();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -248,8 +248,8 @@ public class HWReciteItem
     do
     {
       return false;
-    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof benq)));
-    paramMessage = (benq)paramMessage.obj;
+    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof bfut)));
+    paramMessage = (bfut)paramMessage.obj;
     if (!TextUtils.isEmpty(paramMessage.d))
     {
       paramMessage.b = 2;

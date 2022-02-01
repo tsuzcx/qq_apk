@@ -1,22 +1,11 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-public class aeer
-  implements TextWatcher
+public abstract class aeer
 {
-  public aeer(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public aeer(JumpActivity paramJumpActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
-  {
-    if (SelectedAndSearchBar.a(this.a) != null) {
-      SelectedAndSearchBar.a(this.a).afterTextChanged(paramEditable);
-    }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
 }
 
 

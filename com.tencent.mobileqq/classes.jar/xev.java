@@ -1,50 +1,52 @@
-import android.support.annotation.NonNull;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 
 public class xev
-  extends QQUIEventReceiver<StoryPickerFragment, wrv>
+  extends JobSegment<String, xwc>
 {
-  public xev(@NonNull StoryPickerFragment paramStoryPickerFragment)
-  {
-    super(paramStoryPickerFragment);
-  }
+  public xev(xep paramxep) {}
   
-  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull wrv paramwrv)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.clear();
-    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.addAll(paramwrv.jdField_a_of_type_JavaUtilArrayList);
-    List localList = paramStoryPickerFragment.jdField_a_of_type_Xff.a();
-    int i = 0;
-    while (i < localList.size())
+    if ((xep.a(this.a).a != null) && (TextUtils.equals(xep.a(this.a).a.feedId, paramString)))
     {
-      Iterator localIterator = ((VideoCollectionItem)localList.get(i)).collectionVideoUIItemList.iterator();
-      while (localIterator.hasNext())
+      ykq.d("Q.qqstory.player.CommentFloatDialogController", "feed item already exist , no need to pull again");
+      notifyError(new ErrorMessage(2223, "feed item already exist"));
+      return;
+    }
+    paramString = new xwc();
+    Object localObject1 = (CommentLikeFeedItem)((yck)wjs.a(11)).a(xep.a(this.a));
+    if (localObject1 != null)
+    {
+      if ((localObject1 instanceof VideoListFeedItem))
       {
-        xlu localxlu = (xlu)localIterator.next();
-        if (paramwrv.jdField_a_of_type_JavaUtilArrayList.contains(localxlu.jdField_a_of_type_JavaLangString)) {
-          localxlu.jdField_a_of_type_Boolean = true;
-        } else {
-          localxlu.jdField_a_of_type_Boolean = false;
+        paramJobContext = (VideoListFeedItem)localObject1;
+        localObject2 = ((ycq)wjs.a(12)).a(xep.a(this.a), paramJobContext.mVideoPullType);
+        if (localObject2 != null)
+        {
+          paramJobContext.mVideoNextCookie = ((FeedVideoInfo)localObject2).mVideoNextCookie;
+          paramJobContext.mIsVideoEnd = ((FeedVideoInfo)localObject2).mIsVideoEnd;
+          paramJobContext.mVideoPullType = ((FeedVideoInfo)localObject2).mVideoPullType;
+          paramJobContext.mVideoSeq = ((FeedVideoInfo)localObject2).mVideoSeq;
+          paramString.a(((FeedVideoInfo)localObject2).mVideoItemList, true);
         }
       }
-      i += 1;
+      paramString.a = ((CommentLikeFeedItem)localObject1);
+      notifyResult(paramString);
+      return;
     }
-    paramStoryPickerFragment.c();
-    if (paramwrv.jdField_a_of_type_Boolean) {
-      paramStoryPickerFragment.rightViewText.performClick();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wrv.class;
+    localObject1 = new wsp();
+    ((wsp)localObject1).a = new ArrayList();
+    Object localObject2 = new ycc(xep.a(this.a), 0, "", "");
+    ((wsp)localObject1).a.add(localObject2);
+    wfi.a().a((wfm)localObject1, new xew(this, paramJobContext, paramString));
   }
 }
 

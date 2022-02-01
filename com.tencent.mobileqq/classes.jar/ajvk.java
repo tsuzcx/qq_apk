@@ -1,63 +1,27 @@
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.gdt.qq_ad_get.QQAdGetRsp;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajvk
-  implements abkq
+public class ajvk
+  implements View.OnClickListener
 {
-  ajvk(ajvj paramajvj, long paramLong, BaseChatPie paramBaseChatPie) {}
+  public ajvk(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onResponse(abkp paramabkp)
+  public void onClick(View paramView)
   {
-    try
-    {
-      ajvj.a(this.jdField_a_of_type_Ajvj, null);
-      if (QLog.isColorLevel()) {
-        QLog.i("QWalletGdtAdManager", 2, "reqAds onResponse :" + paramabkp + ",cost:" + (NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long));
-      }
-      if ((paramabkp == null) || (paramabkp.a() == null) || (paramabkp.a().a == null) || (!paramabkp.a().a.ret.has()) || (paramabkp.a().a.ret.get() != 0))
-      {
-        ajvj.a(this.jdField_a_of_type_Ajvj, paramabkp);
-        ajvj.a(this.jdField_a_of_type_Ajvj);
-        return;
-      }
-      paramabkp = paramabkp.a().a;
-      if ((!paramabkp.pos_ads_info.has()) || (paramabkp.pos_ads_info.size() <= 0) || (!((qq_ad_get.QQAdGetRsp.PosAdInfo)paramabkp.pos_ads_info.get(0)).ret.has()) || (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramabkp.pos_ads_info.get(0)).ret.get() != 0) || (!((qq_ad_get.QQAdGetRsp.PosAdInfo)paramabkp.pos_ads_info.get(0)).ads_info.has()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QWalletGdtAdManager", 2, "reqAds onResponse : getAdInfo is null");
-        }
-        ajvj.a(this.jdField_a_of_type_Ajvj);
-        return;
-      }
-    }
-    catch (Throwable paramabkp)
-    {
-      QLog.e("QWalletGdtAdManager", 1, paramabkp, new Object[0]);
-      return;
-    }
-    if ((!ajvj.a(this.jdField_a_of_type_Ajvj)) && (ajvj.a(this.jdField_a_of_type_Ajvj) == 1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QWalletGdtAdManager", 2, "reqAds onResponse but mPvFlag is 1,will not display ad");
-      }
-      ajvj.a(this.jdField_a_of_type_Ajvj);
-      return;
-    }
-    ajvj.a(this.jdField_a_of_type_Ajvj, new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramabkp.pos_ads_info.get(0)).ads_info.get(0)));
-    ajvj.a(this.jdField_a_of_type_Ajvj, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-    if (ajvj.b(this.jdField_a_of_type_Ajvj)) {
-      abkw.a().a(ajvj.a(this.jdField_a_of_type_Ajvj));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletGdtAdManager", 2, "reqAds onResponse : notifyDataSetChanged,mHasTailMsg:" + ajvj.b(this.jdField_a_of_type_Ajvj));
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString(bhoy.e, anvx.a(2131701097));
+    localBundle.putString(bhoy.f, "CJCLUBT");
+    localBundle.putString(bhoy.d, "1450000516");
+    localBundle.putInt(bhoy.b, 3);
+    localBundle.putString(bhoy.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
+    localBundle.putString(bhoy.g, "svip");
+    localBundle.putString(bhoy.a, this.a.b.getCurrentAccountUin());
+    bhoy.a(this.a.b, this.a.getActivity(), localBundle);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

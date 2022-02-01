@@ -1,31 +1,7 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class acdb
-  implements abzb
-{
-  private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "OnLinePushMessageProcessor receive 0xdc push message");
-    }
-    paramQQAppInterface = (alnr)paramQQAppInterface.getManager(153);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(paramMsgType0x210.vProtobuf);
-    }
-    bblf.a(paramMessageHandler, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
-  }
-  
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramabxc.a(), paramabxc.a().getMsgHandler(), paramMsgInfo, paramMsgType0x210);
-    return null;
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingTitle$Companion;", "", "()V", "CLOSE_IMAGE_HEIGHT", "", "COUNT_DOWN_CORNER", "COUNT_DOWN_DIVIDER_HORIZONTAL_MARGIN", "COUNT_DOWN_HEIGHT", "COUNT_DOWN_HORIZONTAL_PADDING", "COUNT_DOWN_STROKE", "COUNT_DOWN_STROKE_COLOR_NORMAL", "", "COUNT_DOWN_TEXT_SIZE", "TITLE_HEIGHT", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acdb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

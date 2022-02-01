@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-class agbt
-  implements DialogInterface.OnClickListener
+public abstract interface agbt
 {
-  agbt(agbs paramagbs, QQCustomDialog paramQQCustomDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

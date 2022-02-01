@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import amov;
+import anri;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -17,7 +17,7 @@ class HotChatManager$2
   
   public void run()
   {
-    amov localamov = (amov)this.this$0.a.getBusinessHandler(2);
+    anri localanri = (anri)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
     oidb_0x5eb.ReqBody localReqBody = new oidb_0x5eb.ReqBody();
     Oidb_0x66b.ReqBody localReqBody1 = new Oidb_0x66b.ReqBody();
     ArrayList localArrayList = new ArrayList();
@@ -25,7 +25,7 @@ class HotChatManager$2
     localReqBody.rpt_uint64_uins.set(localArrayList);
     localReqBody1.bytes_reqbody_5eb.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
     localReqBody1.uint32_req_pansocialinfo.set(1);
-    localamov.a(localReqBody1);
+    localanri.a(localReqBody1);
   }
 }
 

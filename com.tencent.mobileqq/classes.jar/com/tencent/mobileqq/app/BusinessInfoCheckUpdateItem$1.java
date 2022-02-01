@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import amuw;
-import amva;
-import amvl;
-import amwu;
-import anbs;
-import ayfs;
+import anxk;
+import anxn;
+import anxy;
+import anzi;
+import aoeh;
+import azmb;
 import java.util.ArrayList;
 
 final class BusinessInfoCheckUpdateItem$1
@@ -13,12 +13,12 @@ final class BusinessInfoCheckUpdateItem$1
 {
   BusinessInfoCheckUpdateItem$1()
   {
-    add(new anbs());
-    add(new amuw());
-    add(new amvl());
-    add(new amwu());
-    add(new ayfs());
-    add(new amva());
+    add(new aoeh());
+    add(new anxk());
+    add(new anxy());
+    add(new anzi());
+    add(new azmb());
+    add(new anxn());
   }
 }
 

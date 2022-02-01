@@ -1,16 +1,19 @@
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bldj
+public class bldj
+  extends blfd
 {
-  public abstract void a();
+  public Drawable a;
   
-  public abstract void a(float paramFloat, boolean paramBoolean);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
+  public void a(SpannableString paramSpannableString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("spanStyle", 2, "[ImageStyle] start:" + this.b + " end:" + this.c);
+    }
+    paramSpannableString.setSpan(new bldi(this.a, 1), this.b, this.c, 17);
+  }
 }
 
 

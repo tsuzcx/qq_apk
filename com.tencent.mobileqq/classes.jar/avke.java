@@ -1,15 +1,9 @@
-import java.util.Comparator;
-
-class avke
-  implements Comparator<avjv>
+public class avke
 {
-  public int a(avjv paramavjv1, avjv paramavjv2)
-  {
-    if (paramavjv1.a >= paramavjv2.a) {
-      return 1;
-    }
-    return -1;
-  }
+  public int a;
+  public String a;
+  public int[] a;
+  public int[] b;
 }
 
 

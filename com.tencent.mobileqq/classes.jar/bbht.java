@@ -1,128 +1,157 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.widget.ThemeURLImageView;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Properties;
 
 public class bbht
-  extends bbhi
 {
-  public View a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public URLImageView a;
-  public ArrayList<bbhu> a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public static int a;
+  public static long a;
+  public static String a;
+  public static boolean a;
+  public static int b;
   
-  public bbht(ViewGroup paramViewGroup, int paramInt)
+  private static String a()
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (jdField_a_of_type_Int % 180 == 0) {
+      return "0";
+    }
+    return "1";
   }
   
-  protected void a()
+  public static void a()
   {
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366122));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368344));
-    if ((this.jdField_a_of_type_ComTencentImageURLImageView instanceof ThemeURLImageView)) {
-      ((ThemeURLImageView)this.jdField_a_of_type_ComTencentImageURLImageView).setSupportMaskView(false);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378707));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377933));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377933));
-    this.d = ((TextView)localView.findViewById(2131365445));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376441));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368739);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131377925));
+    jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_JavaLangString = null;
+    jdField_a_of_type_Int = 90;
+    b = 2;
+    jdField_a_of_type_Long = 0L;
   }
   
-  public void a(bazn parambazn)
+  public static void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#004080"));
-    }
-    if ((parambazn.a == null) || (parambazn.a.size() == 0))
+    try
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      long l = bbnt.a(paramString);
+      if (l == 0L) {}
+      for (float f = -1.0F;; f = paramInt * 1000.0F / (float)l)
+      {
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "capture_video_fps", false, f, 0L, null, "");
+        return;
+      }
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    Context localContext = this.jdField_b_of_type_AndroidWidgetLinearLayout.getContext();
-    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-    int i = 0;
-    label116:
-    bazy localbazy;
-    bbhu localbbhu;
-    if ((i < parambazn.a.size()) && (i < 6))
+    catch (Exception paramString)
     {
-      localbazy = (bazy)parambazn.a.get(i);
-      localbbhu = new bbhu(this, localContext);
-      if (TextUtils.isEmpty(parambazn.m)) {
-        break label410;
-      }
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = DisplayUtil.dip2px(localContext, 16.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = DisplayUtil.dip2px(localContext, 16.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "subItemLeftIconUrl";
-      localObject = URLDrawable.getDrawable(parambazn.m, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setDecodeHandler(bfol.a);
-      localbbhu.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-      if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
-        ((URLDrawable)localObject).restartDownload();
-      }
-      localbbhu.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-      label279:
-      localbbhu.jdField_a_of_type_AndroidViewView.setTag(2131380831, parambazn);
-      if (TextUtils.isEmpty(localbazy.a)) {
-        break label423;
-      }
-      localbbhu.jdField_a_of_type_AndroidWidgetTextView.setText(localbazy.a);
-      localbbhu.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localbbhu.jdField_a_of_type_AndroidViewView.setTag(2131378208, localbazy.a);
+      paramString.printStackTrace();
     }
-    for (;;)
+  }
+  
+  public static void a(Activity paramActivity, int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      if (!TextUtils.isEmpty(localbazy.b))
+    }
+    do
+    {
+      do
       {
-        localbbhu.jdField_a_of_type_AndroidViewView.setTag(2131378207, localbazy.b);
-        localbbhu.jdField_a_of_type_AndroidViewView.setTag(2131378177, Integer.valueOf(parambazn.jdField_c_of_type_Int));
+        return;
+        if (paramInt2 == -1)
+        {
+          if (jdField_a_of_type_Boolean)
+          {
+            alpt.a("", "0X80072C5", b(), jdField_a_of_type_JavaLangString, "", "");
+            return;
+          }
+          alpt.a("", "0X80072C4", b());
+          return;
+        }
+      } while (paramInt2 != 0);
+      if (jdField_a_of_type_Boolean)
+      {
+        alpt.b("", "0X80072C6");
+        return;
       }
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localbbhu.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localbbhu);
-      i += 1;
-      break label116;
-      break;
-      label410:
-      localbbhu.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-      break label279;
-      label423:
-      localbbhu.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      alpt.b("", "0X80072C7");
+      return;
+      if (paramInt2 == -1)
+      {
+        paramActivity = new Properties();
+        paramActivity.setProperty("shortvideo_duration", String.valueOf(jdField_a_of_type_Long));
+        paramActivity.setProperty("shortvideo_rotation", a());
+        paramActivity.setProperty("shortvideo_camera", b());
+        if (!jdField_a_of_type_Boolean)
+        {
+          alpt.a("", "0X8006A16", String.valueOf(jdField_a_of_type_Long), a(), b(), "");
+          alsm.a("shortvideo_send_noeffects", paramActivity);
+          return;
+        }
+        alpt.a("", "0X8006A19", String.valueOf(jdField_a_of_type_Long), a(), b(), jdField_a_of_type_JavaLangString);
+        alsm.a("shortvideo_send_effects", paramActivity);
+        return;
+      }
+    } while (paramInt2 != 0);
+    if (jdField_a_of_type_Boolean)
+    {
+      alpt.b("", "0X8006A1B");
+      return;
     }
+    alpt.b("", "0X8006A17");
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (String str = "1";; str = "0")
+    {
+      alpt.a("", "0X8007BB7", str);
+      return;
+    }
+  }
+  
+  private static String b()
+  {
+    if (b == 1) {
+      return "1";
+    }
+    return "0";
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      alpt.a("", "0X80072C3", b(), jdField_a_of_type_JavaLangString, "", "");
+      return;
+    }
+    alpt.a("", "0X80072C2", b());
+  }
+  
+  public static void c()
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      alpt.a("", "0X8006A18", String.valueOf(jdField_a_of_type_Long), a(), b(), jdField_a_of_type_JavaLangString);
+      return;
+    }
+    alpt.a("", "0X8006A13", String.valueOf(jdField_a_of_type_Long), a(), b(), "");
+  }
+  
+  public static void d()
+  {
+    alpt.b("", "0X80072C1");
+  }
+  
+  public static void e()
+  {
+    alpt.b("", "0X8006A12");
+  }
+  
+  public static void f()
+  {
+    alpt.b("", "0X8006A15");
+    alsm.a("shortvideo_rotate_camera", null);
   }
 }
 

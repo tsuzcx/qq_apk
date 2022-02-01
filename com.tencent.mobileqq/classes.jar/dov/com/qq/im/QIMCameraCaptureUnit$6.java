@@ -1,13 +1,13 @@
 package dov.com.qq.im;
 
-import blhu;
+import bmul;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class QIMCameraCaptureUnit$6
   implements Runnable
 {
-  public QIMCameraCaptureUnit$6(blhu paramblhu) {}
+  public QIMCameraCaptureUnit$6(bmul parambmul) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class QIMCameraCaptureUnit$6
     if (this.this$0.g) {
       this.this$0.B();
     }
-    this.this$0.g();
+    this.this$0.t();
     this.this$0.D();
   }
 }

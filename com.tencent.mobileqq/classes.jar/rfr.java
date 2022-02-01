@@ -1,18 +1,71 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import android.content.Context;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-public final class rfr
-  implements Parcelable.Creator<TagInfo>
+public class rfr
+  extends rfl
 {
-  public TagInfo a(Parcel paramParcel)
+  public rfr(Context paramContext, FaceDecoder paramFaceDecoder, szd paramszd)
   {
-    return new TagInfo(paramParcel);
+    super(paramContext, paramFaceDecoder, paramszd);
   }
   
-  public TagInfo[] a(int paramInt)
+  public rbp a()
   {
-    return new TagInfo[paramInt];
+    this.jdField_a_of_type_Boolean = true;
+    return d(this.jdField_a_of_type_Szd, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder).q().g().l().j().n();
+  }
+  
+  public rbp d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout1.setOrientation(1);
+    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc);
+    }
+    if ((this.jdField_a_of_type_Rbo != null) && ((this.jdField_a_of_type_Rbo instanceof ComponentContentBigImageVideo)))
+    {
+      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLinearLayout2.setOrientation(1);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+      localLayoutParams.setMargins(AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLinearLayout2.setLayoutParams(localLayoutParams);
+      localLinearLayout2.addView((ComponentContentBigImageVideo)this.jdField_a_of_type_Rbo);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+        localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      }
+      ((ComponentContentBigImageVideo)this.jdField_a_of_type_Rbo).setOnClickListener(new rfs(this));
+      localLinearLayout1.addView(localLinearLayout2);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout1);
+    return this;
+  }
+  
+  public rbp g()
+  {
+    this.jdField_a_of_type_Rbo = new ComponentContentUgcVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

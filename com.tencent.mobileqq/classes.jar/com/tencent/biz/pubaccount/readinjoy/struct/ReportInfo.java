@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import com.tencent.mobileqq.persistence.Entity;
 import java.util.Arrays;
-import rdy;
-import rdz;
+import rqf;
+import rqg;
 import tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.SRTClickInfo;
 
 public class ReportInfo
@@ -16,7 +16,7 @@ public class ReportInfo
   public int mChannelId;
   public String mCollectUrl;
   public int mColumnID = -1;
-  public rdy mFeedsReportData;
+  public rqf mFeedsReportData;
   public int mFolderStatus;
   public String mGWCommonData;
   public byte[] mGalleryReportInfo;
@@ -35,7 +35,7 @@ public class ReportInfo
   public long mSourceArticleId;
   public int mStrategyId;
   public long mUin;
-  public rdz mVideoExtraRepoerData;
+  public rqg mVideoExtraRepoerData;
   public int noDifferenceJump;
   public String replyID;
   public long replyUin = -1L;

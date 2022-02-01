@@ -1,21 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
-class adfl
+public class adfl
   implements DialogInterface.OnClickListener
 {
-  adfl(adfj paramadfj) {}
+  public adfl(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNick", 2, "onSetColorNick failed. save colorNick");
+    if (AddFriendLogicActivity.d(this.a) == 1)
+    {
+      this.a.finish();
+      return;
     }
-    this.a.a.a.sendEmptyMessage(259);
-    paramDialogInterface.dismiss();
+    AddFriendLogicActivity.a(this.a);
   }
 }
 

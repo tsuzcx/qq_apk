@@ -1,13 +1,21 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class aguo
-  implements agut
+class aguo
+  extends ClickableSpan
 {
-  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  aguo(agtf paramagtf, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    paramagap.d(paramagcc.b);
+    Integer.parseInt(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

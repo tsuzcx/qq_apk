@@ -1,6 +1,6 @@
-class bjen
+public abstract interface bjen
 {
-  private static bjei a = new bjei("mini_sdk_client_module", null);
+  public abstract void a();
 }
 
 

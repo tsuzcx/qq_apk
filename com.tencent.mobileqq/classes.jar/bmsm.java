@@ -1,18 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.LockedCategory;
+import com.tencent.weiyun.utils.Singleton;
 
-public final class bmsm
-  implements Parcelable.Creator<LockedCategory>
+final class bmsm
+  extends Singleton<bmsl, Void>
 {
-  public LockedCategory a(Parcel paramParcel)
+  protected bmsl a(Void paramVoid)
   {
-    return new LockedCategory(paramParcel);
-  }
-  
-  public LockedCategory[] a(int paramInt)
-  {
-    return new LockedCategory[paramInt];
+    return new bmsl(null);
   }
 }
 

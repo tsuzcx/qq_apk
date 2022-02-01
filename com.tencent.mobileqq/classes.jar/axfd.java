@@ -1,9 +1,8 @@
-import com.tencent.pb.now.ilive_feeds_read.FeedsInfo;
-import java.util.List;
+import android.view.View;
 
 public abstract interface axfd
 {
-  public abstract void a(boolean paramBoolean1, List<ilive_feeds_read.FeedsInfo> paramList, boolean paramBoolean2, int paramInt);
+  public abstract void a(View paramView, float paramFloat);
 }
 
 

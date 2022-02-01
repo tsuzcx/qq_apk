@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
-class alpi
-  implements Comparator<ApolloActionData>
+public class alpi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  alpi(alpg paramalpg) {}
+  public alpi(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return this.a.a(paramApolloActionData2) - this.a.a(paramApolloActionData1);
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
   }
 }
 

@@ -1,22 +1,22 @@
 package com.tencent.avgame.videorecord;
 
 import android.opengl.GLES20;
-import njy;
-import nkj;
+import nqy;
+import nrj;
 
 public class GameVideoImageFilter$1
   implements Runnable
 {
-  public GameVideoImageFilter$1(njy paramnjy) {}
+  public GameVideoImageFilter$1(nqy paramnqy) {}
   
   public void run()
   {
-    if ((njy.a(this.this$0) == -1) && (njy.a(this.this$0) != null))
+    if ((nqy.a(this.this$0) == -1) && (nqy.a(this.this$0) != null))
     {
       GLES20.glActiveTexture(33987);
-      njy.a(this.this$0, nkj.a(njy.a(this.this$0), -1));
+      nqy.a(this.this$0, nrj.a(nqy.a(this.this$0), -1));
     }
-    njy.b(this.this$0, njy.c(this.this$0, njy.b(this.this$0)));
+    nqy.b(this.this$0, nqy.c(this.this$0, nqy.b(this.this$0)));
   }
 }
 

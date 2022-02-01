@@ -1,33 +1,18 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipDiyView;
-
-public class ayyh
-  extends ayyb
+public abstract interface ayyh
 {
-  public ayyh(aysx paramaysx, aymg paramaymg)
-  {
-    super(paramaysx, paramaymg);
-  }
+  public abstract void a(apcn paramapcn);
   
-  public String a()
-  {
-    return "VasProfileHeaderDiyComponent";
-  }
+  public abstract void a(apcn paramapcn, boolean paramBoolean);
   
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
-    {
-      VasProfileQVipDiyView localVasProfileQVipDiyView = new VasProfileQVipDiyView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (aymg)this.b);
-      localVasProfileQVipDiyView.setProfileArgs(this.jdField_a_of_type_AndroidViewViewGroup);
-      localVasProfileQVipDiyView.setClickListener(this);
-      localVasProfileQVipDiyView.a();
-      localVasProfileQVipDiyView.e();
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileQVipDiyView;
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
-      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
-    }
-  }
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 

@@ -1,47 +1,52 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.AbstractPluginCommunicationChannel;
+import mqq.app.AppRuntime;
 
-class blxj
-  implements Observer<blwu>
+public class blxj
+  extends AbstractPluginCommunicationChannel
 {
-  blxj(blxg paramblxg) {}
-  
-  public void a(@Nullable blwu paramblwu)
+  private QQAppInterface a()
   {
-    blxg.a(this.a).a().removeObservers(blxg.a(this.a));
-    blwu localblwu;
-    if (paramblwu != null)
-    {
-      localblwu = paramblwu;
-      if (paramblwu.jdField_a_of_type_JavaLangString != null) {}
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
     }
-    else
-    {
-      localblwu = new blwu();
-      localblwu.jdField_a_of_type_JavaLangString = "default";
+    return null;
+  }
+  
+  public String getNickName()
+  {
+    String str = null;
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface != null) {
+      str = localQQAppInterface.getCurrentNickname();
     }
-    paramblwu = (String)blxg.a(this.a).get(localblwu.jdField_a_of_type_JavaLangString);
-    if (!localblwu.jdField_a_of_type_JavaLangString.equals("default")) {
-      paramblwu = amtj.a(2131699148) + paramblwu + amtj.a(2131699141);
+    return str;
+  }
+  
+  public String getSKey()
+  {
+    String str = null;
+    if (a() != null) {
+      str = "getSKey";
     }
-    for (;;)
-    {
-      blxg.a(this.a).setText(paramblwu);
-      if ((blxg.a(this.a).size() == 0) && (!blxg.a(this.a)))
-      {
-        blxg.a(this.a).addAll(localblwu.jdField_a_of_type_JavaUtilList);
-        this.a.b();
-        blxg.a(this.a, true);
-      }
-      return;
-      paramblwu = amtj.a(2131699137);
-      localblwu.jdField_a_of_type_JavaUtilList.addAll(blxg.jdField_a_of_type_JavaUtilList);
+    return str;
+  }
+  
+  public String getSid()
+  {
+    throw new RuntimeException("NotSupported!");
+  }
+  
+  public long getUin()
+  {
+    long l = 0L;
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface != null) {
+      l = localQQAppInterface.getLongAccountUin();
     }
+    return l;
   }
 }
 

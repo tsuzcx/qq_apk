@@ -123,7 +123,7 @@ public class AppBoxPlugin
         return "";
         if ("show".equals(str))
         {
-          if (((AppBoxPlugin.MiniAppBox)localObject).show(j, paramRequestEvent.callbackId)) {
+          if ((this.mMiniAppContext != null) && (this.mMiniAppContext.getAttachedActivity() != null) && (((AppBoxPlugin.MiniAppBox)localObject).show(j, paramRequestEvent.callbackId))) {
             continue;
           }
           localJSONObject1 = ApiUtil.wrapCallbackFail(paramRequestEvent.event, localJSONObject1);
@@ -149,7 +149,7 @@ public class AppBoxPlugin
         }
         catch (Throwable paramRequestEvent)
         {
-          break label292;
+          break label311;
         }
       }
     }
@@ -162,7 +162,7 @@ public class AppBoxPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.AppBoxPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,33 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.22.1;
+import com.tencent.qphone.base.util.QLog;
 
-class tdb
-  implements ViewTreeObserver.OnPreDrawListener
+public class tdb
+  extends pvq
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  public tdb(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  tdb(tda paramtda, int paramInt1, int paramInt2)
+  public void a(int paramInt, SelectPositionModule.PositionData paramPositionData)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyTabFrame", 2, "onLocationChanged changeType = " + paramInt);
+    }
+    ReadinjoyTabFrame.a(this.a, paramInt, paramPositionData);
   }
   
-  public boolean onPreDraw()
+  public void l()
   {
-    this.jdField_a_of_type_Tda.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a) + tda.a(this.jdField_a_of_type_Tda));
-    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Tda.a, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Tda.a) + tda.b(this.jdField_a_of_type_Tda));
-    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a) != null) {
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a).setVisibility(0);
+    super.l();
+    if (ReadinjoyTabFrame.a(this.a) != null) {
+      ReadinjoyTabFrame.a(this.a).post(new ReadinjoyTabFrame.22.1(this));
     }
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a, this.jdField_a_of_type_Tda.a.a(ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a)));
-    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a) != null) {
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a).setVisibility(4);
-    }
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a, this.jdField_a_of_type_Int, this.b);
-    return true;
+  }
+  
+  public void m()
+  {
+    QLog.d("ReadInJoyTabFrame", 2, "onHideChannel");
   }
 }
 

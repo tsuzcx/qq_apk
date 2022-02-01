@@ -1,30 +1,26 @@
 package com.tencent.mobileqq.activity.photo.album;
 
 import Override;
-import ajqp;
-import ajqq;
-import ajqr;
-import ajta;
+import akmd;
+import akme;
+import akmf;
+import akoq;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import apoh;
-import bodq;
-import bodr;
+import aqrl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.startup.step.CheckPermission;
-import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
@@ -37,12 +33,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import ljo;
+import lka;
 
 public class NewPhotoListActivity
   extends AbstractPhotoListActivity
 {
-  public ajqr a;
+  public akmf a;
   public Handler a;
   View a;
   public Button a;
@@ -54,50 +50,8 @@ public class NewPhotoListActivity
   
   public NewPhotoListActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new ajqq(this);
-    this.jdField_a_of_type_Ajqr = new ajqr(this);
-  }
-  
-  public int a(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (a(paramString) == null)) {
-      return -1;
-    }
-    return AlbumUtil.getMediaType(a(paramString));
-  }
-  
-  public LocalMediaInfo a(String paramString)
-  {
-    PhotoCommonBaseData localPhotoCommonBaseData = this.mPhotoListLogic.mPhotoCommonData;
-    LocalMediaInfo localLocalMediaInfo = null;
-    if (localPhotoCommonBaseData.selectedMediaInfoHashMap != null) {
-      localLocalMediaInfo = (LocalMediaInfo)localPhotoCommonBaseData.selectedMediaInfoHashMap.get(paramString);
-    }
-    if ((localLocalMediaInfo == null) && (localPhotoCommonBaseData.allMediaInfoHashMap != null)) {
-      localLocalMediaInfo = (LocalMediaInfo)localPhotoCommonBaseData.allMediaInfoHashMap.get(paramString);
-    }
-    for (;;)
-    {
-      if ((localLocalMediaInfo != null) && ((localLocalMediaInfo.mediaWidth == 0) || (localLocalMediaInfo.mediaHeight == 0)))
-      {
-        bodr localbodr = new bodr();
-        bodq.a(paramString, localbodr);
-        localLocalMediaInfo.mediaWidth = localbodr.a[0];
-        localLocalMediaInfo.mediaHeight = localbodr.a[1];
-        localLocalMediaInfo.rotation = localbodr.a[2];
-        if (localPhotoCommonBaseData.allMediaInfoHashMap != null)
-        {
-          paramString = (LocalMediaInfo)localPhotoCommonBaseData.allMediaInfoHashMap.get(paramString);
-          if ((paramString != null) && ((paramString.mediaWidth == 0) || (paramString.mediaHeight == 0)))
-          {
-            paramString.mediaWidth = localLocalMediaInfo.mediaWidth;
-            paramString.mediaHeight = localLocalMediaInfo.mediaHeight;
-            paramString.rotation = localLocalMediaInfo.rotation;
-          }
-        }
-      }
-      return localLocalMediaInfo;
-    }
+    this.jdField_a_of_type_AndroidOsHandler = new akme(this);
+    this.jdField_a_of_type_Akmf = new akmf(this);
   }
   
   String a(String paramString)
@@ -140,7 +94,7 @@ public class NewPhotoListActivity
   
   public void a()
   {
-    if (ljo.b(BaseApplicationImpl.getContext())) {}
+    if (lka.b(BaseApplicationImpl.getContext())) {}
     label27:
     do
     {
@@ -243,13 +197,13 @@ public class NewPhotoListActivity
   public void doOnPause()
   {
     super.doOnPause();
-    apoh.a(BaseApplicationImpl.getContext(), 2, true);
+    aqrl.a(BaseApplicationImpl.getContext(), 2, true);
   }
   
   protected PhotoListLogic generateLogic()
   {
     int i = getIntent().getIntExtra("enter_from", 0);
-    PhotoListLogic localPhotoListLogic = ajta.a(i, this);
+    PhotoListLogic localPhotoListLogic = akoq.a(i, this);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoListActivity", 2, "generateLogic:" + localPhotoListLogic.getClass().getName() + " enterFrom:" + i);
     }
@@ -263,8 +217,8 @@ public class NewPhotoListActivity
   
   protected Dialog getDialog()
   {
-    ReportDialog localReportDialog = new ReportDialog(this, 2131755826);
-    localReportDialog.setContentView(2131559574);
+    ReportDialog localReportDialog = new ReportDialog(this, 2131755829);
+    localReportDialog.setContentView(2131559607);
     return localReportDialog;
   }
   
@@ -275,21 +229,21 @@ public class NewPhotoListActivity
   
   protected void initUI()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131376679);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131376947);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       localRelativeLayout.setFitsSystemWindows(true);
       localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367727);
-    this.d = ((TextView)findViewById(2131380219));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370505));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131374592));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374598));
-    this.b = ((TextView)findViewById(2131374593));
-    this.c = ((TextView)findViewById(2131368511));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367863);
+    this.d = ((TextView)findViewById(2131380554));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370688));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131374832));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374838));
+    this.b = ((TextView)findViewById(2131374833));
+    this.c = ((TextView)findViewById(2131368669));
     super.initUI();
-    this.mGridView.addOnScrollListener(new ajqp(this));
+    this.mGridView.addOnScrollListener(new akmd(this));
   }
   
   public void onClick(View paramView)

@@ -1,12 +1,24 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class adef
+  extends aoef
 {
-  public int a = 1;
-  public ImageView a;
-  TextView a;
-  public String a;
+  public adef(AccountManageActivity paramAccountManageActivity) {}
+  
+  protected void a(boolean paramBoolean, bdxt parambdxt)
+  {
+    AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+  }
+  
+  protected void b(boolean paramBoolean, bdxt parambdxt)
+  {
+    AccountManageActivity.a(this.a, false);
+  }
+  
+  protected void c(boolean paramBoolean, bdxt parambdxt)
+  {
+    AccountManageActivity.a(this.a, false);
+  }
 }
 
 

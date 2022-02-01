@@ -1,17 +1,38 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import android.widget.Button;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aevn
+class aevn
+  extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  public aevn(ReminderListFragment paramReminderListFragment) {}
+  aevk jdField_a_of_type_Aevk;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  
+  public aevn(aevm paramaevm, View paramView, aevk paramaevk)
+  {
+    super(paramView);
+    this.jdField_a_of_type_Aevk = paramaevk;
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374844));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+  }
   
   public void onClick(View paramView)
   {
-    ReminderListFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.jdField_a_of_type_Aevk != null) {
+      this.jdField_a_of_type_Aevk.a(paramView, getPosition());
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
+      }
+    }
   }
 }
 

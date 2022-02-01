@@ -1,28 +1,8 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-class ausb
-  extends bddc
+public abstract interface ausb
 {
-  ausb(ausa paramausa) {}
-  
-  protected void a(boolean paramBoolean, bddf parambddf, int paramInt, String paramString)
-  {
-    if ((!paramBoolean) || (parambddf == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        QLog.i("WatchTogetherManager", 1, "onGetPlayState  groupuin = " + parambddf.e);
-      } while (!(parambddf instanceof WatchTogetherSession));
-      paramString = ausa.a(this.a, (WatchTogetherSession)parambddf);
-    } while (paramString == null);
-    this.a.b(parambddf.e, paramString);
-    paramInt = paramString.a;
-    this.a.a("100", paramInt, null);
-  }
+  public abstract boolean a(View paramView);
 }
 
 

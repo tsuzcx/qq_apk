@@ -6,21 +6,21 @@ import android.content.DialogInterface.OnKeyListener;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.KeyEvent;
-import bhht;
-import bhhw;
+import bisl;
+import biso;
 import com.tencent.qphone.base.util.QLog;
-import yku;
-import ykx;
-import ylg;
+import yzn;
+import yzq;
+import yzz;
 
 public class SlideProgressNotifier
-  extends bhhw
-  implements DialogInterface.OnKeyListener, yku
+  extends biso
+  implements DialogInterface.OnKeyListener, yzn
 {
   Activity jdField_a_of_type_AndroidAppActivity;
   Handler jdField_a_of_type_AndroidOsHandler;
   SlideProgressNotifier.RefreshProgressThread jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread;
-  private ykx jdField_a_of_type_Ykx;
+  private yzq jdField_a_of_type_Yzq;
   
   public SlideProgressNotifier(Activity paramActivity, int paramInt)
   {
@@ -60,9 +60,9 @@ public class SlideProgressNotifier
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.a(paramInt1, this.jdField_a_of_type_AndroidAppActivity.getString(2131698628) + "0%", 0);
-    if (this.jdField_a_of_type_Bhht != null) {
-      this.jdField_a_of_type_Bhht.setOnKeyListener(this);
+    super.a(paramInt1, this.jdField_a_of_type_AndroidAppActivity.getString(2131698925) + "0%", 0);
+    if (this.jdField_a_of_type_Bisl != null) {
+      this.jdField_a_of_type_Bisl.setOnKeyListener(this);
     }
     if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread.a()))
     {
@@ -80,9 +80,9 @@ public class SlideProgressNotifier
   {
     if (paramInt == 4)
     {
-      ylg.a().f();
-      if (this.jdField_a_of_type_Ykx != null) {
-        this.jdField_a_of_type_Ykx.a();
+      yzz.a().f();
+      if (this.jdField_a_of_type_Yzq != null) {
+        this.jdField_a_of_type_Yzq.a();
       }
     }
     return false;

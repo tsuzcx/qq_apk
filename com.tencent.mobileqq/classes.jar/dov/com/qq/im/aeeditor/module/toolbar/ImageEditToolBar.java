@@ -3,8 +3,8 @@ package dov.com.qq.im.aeeditor.module.toolbar;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import bmby;
-import bmnh;
+import bnri;
+import bocz;
 
 public class ImageEditToolBar
   extends AEEditorToolBar
@@ -28,14 +28,14 @@ public class ImageEditToolBar
   
   protected void a()
   {
-    this.jdField_a_of_type_Boolean = bmby.a();
-    a(0, "text", 2130837717, 2130837648);
+    this.jdField_a_of_type_Boolean = bnri.a();
+    a(0, "text", 2130837731, 2130837652);
   }
   
   void a(String paramString)
   {
-    if ((paramString.equals("text")) && (this.jdField_a_of_type_Bmng != null) && ((this.jdField_a_of_type_Bmng instanceof bmnh))) {
-      ((bmnh)this.jdField_a_of_type_Bmng).x();
+    if ((paramString.equals("text")) && (this.jdField_a_of_type_Bocy != null) && ((this.jdField_a_of_type_Bocy instanceof bocz))) {
+      ((bocz)this.jdField_a_of_type_Bocy).x();
     }
   }
   

@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.activity.home;
 
-import amsw;
+import anvk;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
@@ -29,7 +31,7 @@ class MainFragment$6
       QLog.d("SpecialCare", 2, "hasSpecialCareFriend=" + MainFragment.a(this.this$0));
       return;
     } while (MainFragment.a(this.this$0) == null);
-    List localList = ((amsw)MainFragment.a(this.this$0).getManager(51)).b();
+    List localList = ((anvk)MainFragment.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).b();
     if ((localList != null) && (localList.size() > 0))
     {
       MainFragment.b(this.this$0, true);
@@ -38,7 +40,7 @@ class MainFragment$6
     if (QLog.isColorLevel()) {
       QLog.d("SpecialCare", 2, "hasSpecialCareFriend=" + MainFragment.a(this.this$0));
     }
-    ((FriendListHandler)MainFragment.a(this.this$0).getBusinessHandler(1)).getSpecialCareRecommend(0, 10, null, true, true);
+    ((FriendListHandler)MainFragment.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getSpecialCareRecommend(0, 10, null, true, true);
   }
 }
 

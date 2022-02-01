@@ -1,12 +1,12 @@
 package com.tencent.open.downloadnew;
 
 import android.app.Activity;
-import bicl;
+import bjnn;
 
 public class MyAppApi$3
   implements Runnable
 {
-  public MyAppApi$3(bicl parambicl, Activity paramActivity) {}
+  public MyAppApi$3(bjnn parambjnn, Activity paramActivity) {}
   
   public void run()
   {

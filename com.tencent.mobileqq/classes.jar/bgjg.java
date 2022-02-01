@@ -1,40 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class bgjg
+  extends anrc
 {
-  public static String a(MessageRecord paramMessageRecord)
+  int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private bgjf jdField_a_of_type_Bgjf;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public bgjg(Context paramContext, long paramLong, QQAppInterface paramQQAppInterface)
   {
-    String str2 = "";
-    String str1 = str2;
-    try
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public bgjg(Context paramContext, bgjf parambgjf, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Bgjf = parambgjf;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  protected void b(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof bgje))) {}
+    Context localContext;
+    long l1;
+    do
     {
-      Object localObject = paramMessageRecord.extStr;
-      paramMessageRecord = str2;
-      str1 = str2;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      return;
+      paramObject = (bgje)paramObject;
+      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      long l2 = this.jdField_a_of_type_Long;
+      l1 = l2;
+      if (l2 == 0L)
       {
-        str1 = str2;
-        localObject = new JSONObject((String)localObject);
-        str1 = str2;
-        str2 = ((JSONObject)localObject).optString("public_account_msg_id", "");
-        paramMessageRecord = str2;
-        str1 = str2;
-        if (TextUtils.isEmpty(str2))
-        {
-          str1 = str2;
-          paramMessageRecord = ((JSONObject)localObject).optString("pa_msgId", "");
+        l1 = l2;
+        if (this.jdField_a_of_type_Bgjf != null) {
+          l1 = this.jdField_a_of_type_Bgjf.a();
         }
       }
-      return paramMessageRecord;
-    }
-    catch (Throwable paramMessageRecord)
-    {
-      QLog.e("QQVipConstant", 1, "getPAMsgId error =" + paramMessageRecord.toString());
-    }
-    return str1;
+    } while (localContext == null);
+    bgjc.a(paramObject, l1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localContext);
   }
 }
 

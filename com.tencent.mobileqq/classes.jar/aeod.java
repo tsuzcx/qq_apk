@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchDialogDismissRunnable;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class aeod
-  implements DialogInterface.OnDismissListener
+  extends ayqy
 {
-  public aeod(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aeod(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.postDelayed(new TroopMemberListActivity.SearchDialogDismissRunnable(this.a), 150L);
+    if (PublicAccountListActivity.a(this.a)) {
+      PublicAccountListActivity.a(this.a);
+    }
   }
 }
 

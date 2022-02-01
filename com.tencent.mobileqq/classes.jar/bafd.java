@@ -1,15 +1,49 @@
-import android.support.annotation.NonNull;
-import android.view.Surface;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface bafd
+public class bafd
+  extends baev
 {
-  public abstract Surface a();
+  public bafd(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
   
-  public abstract void a();
+  public void a() {}
   
-  public abstract void a(@NonNull baep parambaep, boolean paramBoolean);
+  public void a(int paramInt, ByteStringMicro paramByteStringMicro)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("KidModeReceiver", 2, "handler push fot theme switch");
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("KidModeReceiver", 2, "handler push fot setting change");
+      }
+      paramByteStringMicro = (anri)this.a.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+    } while (paramByteStringMicro == null);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Short.valueOf((short)paramInt));
+    paramByteStringMicro.a(localArrayList, null);
+  }
   
-  public abstract void b();
+  public void a(long paramLong) {}
+  
+  public boolean a(int paramInt)
+  {
+    return (paramInt == 42362) || (paramInt == 42432) || (paramInt == 42285) || (paramInt == 42490) || (paramInt == 42430) || (paramInt == 42429) || (paramInt == 42428) || (paramInt == 42482);
+  }
 }
 
 

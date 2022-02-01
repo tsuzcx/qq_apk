@@ -1,32 +1,28 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.7.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class appz
-  extends MSFServlet
+  implements ayyv
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public appz(ARScanEntryView paramARScanEntryView) {}
+  
+  public void a()
   {
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (byte[] arrayOfByte = bgau.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
-    {
-      new Bundle().putByteArray("data", arrayOfByte);
-      anca localanca = (anca)((QQAppInterface)getAppRuntime()).getBusinessHandler(20);
-      if (localanca != null) {
-        localanca.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onStart ");
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void b()
   {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bgau.a(arrayOfByte));
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onEnd  needReportRedDot = " + ARScanEntryView.b(this.a));
+    }
+    if (ARScanEntryView.a(this.a) != null) {
+      ARScanEntryView.a(this.a).post(new ARScanEntryView.7.1(this));
+    }
   }
 }
 

@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import atky;
+import aupt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -14,12 +14,11 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.share.MiniProgramShareUtils;
-import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
 import com.tencent.qqmini.sdk.launcher.shell.ICommonManager;
 import cooperation.qzone.QZoneHelper;
@@ -30,6 +29,10 @@ import mqq.app.AppRuntime;
 
 public class ShareUtils
 {
+  public static final String KEY_MINI_REPORT_EVENT_ACTION_TYPE = "key_mini_report_event_action_type";
+  public static final String KEY_MINI_REPORT_EVENT_RESERVES = "key_mini_report_event_reserves";
+  public static final String KEY_MINI_REPORT_EVENT_RESERVES2 = "key_mini_report_event_reserves2";
+  public static final String KEY_MINI_REPORT_EVENT_SUB_ACTION_TYPE = "key_mini_report_event_sub_action_type";
   private static final int REQ_CODE_SHARE_PIC_TO_QQ = 1010;
   public static final String TAG = "ShareUtils";
   
@@ -58,43 +61,43 @@ public class ShareUtils
   public static String getFileUri(android.content.Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: new 104	java/io/File
+    //   0: new 108	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 107	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 111	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_2
     //   9: aload_2
-    //   10: invokevirtual 110	java/io/File:exists	()Z
+    //   10: invokevirtual 114	java/io/File:exists	()Z
     //   13: ifne +7 -> 20
     //   16: aconst_null
     //   17: astore_1
     //   18: aload_1
     //   19: areturn
     //   20: aload_0
-    //   21: ldc 112
+    //   21: ldc 116
     //   23: aload_2
-    //   24: invokestatic 118	android/support/v4/content/FileProvider:getUriForFile	(Landroid/content/Context;Ljava/lang/String;Ljava/io/File;)Landroid/net/Uri;
+    //   24: invokestatic 122	android/support/v4/content/FileProvider:getUriForFile	(Landroid/content/Context;Ljava/lang/String;Ljava/io/File;)Landroid/net/Uri;
     //   27: astore_2
     //   28: aload_0
-    //   29: ldc 120
+    //   29: ldc 124
     //   31: aload_2
     //   32: iconst_1
-    //   33: invokevirtual 126	android/content/Context:grantUriPermission	(Ljava/lang/String;Landroid/net/Uri;I)V
+    //   33: invokevirtual 130	android/content/Context:grantUriPermission	(Ljava/lang/String;Landroid/net/Uri;I)V
     //   36: aload_2
     //   37: ifnull -19 -> 18
     //   40: aload_2
-    //   41: invokevirtual 132	android/net/Uri:toString	()Ljava/lang/String;
+    //   41: invokevirtual 136	android/net/Uri:toString	()Ljava/lang/String;
     //   44: areturn
     //   45: astore_0
     //   46: aconst_null
     //   47: astore_2
-    //   48: ldc 11
+    //   48: ldc 23
     //   50: iconst_1
-    //   51: ldc 134
+    //   51: ldc 138
     //   53: aload_0
-    //   54: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   54: invokestatic 144	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   57: aload_0
-    //   58: invokevirtual 143	java/lang/Exception:printStackTrace	()V
+    //   58: invokevirtual 147	java/lang/Exception:printStackTrace	()V
     //   61: goto -25 -> 36
     //   64: astore_0
     //   65: goto -17 -> 48
@@ -117,7 +120,7 @@ public class ShareUtils
   public static void startSharePicToQQ(Activity paramActivity, String paramString, ShareChatModel paramShareChatModel)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 2, "startSharePicToQQ. localPicPath=" + paramString);
+      QLog.d("ShareUtils", 2, "startSharePicToQQ. localPicPath=" + paramString);
     }
     if ((paramActivity == null) || (paramActivity.isFinishing())) {
       return;
@@ -127,16 +130,13 @@ public class ShareUtils
     localBundle.putString("forward_urldrawable_thumb_url", paramString);
     localBundle.putString("forward_filepath", paramString);
     localBundle.putString("forward_extra", paramString);
-    if ((com.tencent.mobileqq.mini.app.AppLoaderFactory.isSDKMode()) || ((paramActivity instanceof GameActivity1))) {
-      com.tencent.qqmini.sdk.launcher.AppLoaderFactory.g().getCommonManager().addActivityResultListener(new ShareUtils.1(paramActivity));
-    }
-    while (paramShareChatModel == null)
+    AppLoaderFactory.g().getCommonManager().addActivityResultListener(new ShareUtils.1(paramActivity));
+    if (paramShareChatModel == null)
     {
       paramString = new Intent();
       paramString.putExtras(localBundle);
-      atky.a(paramActivity, paramString, 1010);
+      aupt.a(paramActivity, paramString, 1010);
       return;
-      MiniAppController.getInstance().setActivityResultListener(new ShareUtils.2(paramActivity));
     }
     MiniProgramShareUtils.shareToChatDirectly(paramActivity, localBundle, paramShareChatModel.type, String.valueOf(paramShareChatModel.uin), paramShareChatModel.name, 1010, true);
   }
@@ -144,7 +144,7 @@ public class ShareUtils
   public static void startSharePicToQzone(Activity paramActivity, String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 2, "startSharePicToQzone. localPicPath=" + paramString1);
+      QLog.d("ShareUtils", 2, "startSharePicToQzone. localPicPath=" + paramString1);
     }
     QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
     localUserInfo.qzone_uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
@@ -159,15 +159,15 @@ public class ShareUtils
   
   public static void startSharePicToWeChat(Activity paramActivity, String paramString, boolean paramBoolean)
   {
-    if (!WXShareHelper.getInstance().isWXinstalled()) {
-      ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.3(paramActivity));
+    if (!WXShareHelper.a().a()) {
+      ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.2(paramActivity));
     }
     do
     {
       return;
-      if (!WXShareHelper.getInstance().isWXsupportApi())
+      if (!WXShareHelper.a().b())
       {
-        ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.4(paramActivity));
+        ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.3(paramActivity));
         return;
       }
     } while (TextUtils.isEmpty(paramString));
@@ -176,7 +176,7 @@ public class ShareUtils
       paramActivity = BitmapFactory.decodeFile(paramString);
       if (paramBoolean)
       {
-        WXShareHelper.getInstance().shareImageToWX(paramString, paramActivity, 0);
+        WXShareHelper.a().a(paramString, paramActivity, 0);
         return;
       }
     }
@@ -185,13 +185,13 @@ public class ShareUtils
       paramActivity.printStackTrace();
       return;
     }
-    WXShareHelper.getInstance().shareImageToWX(paramString, paramActivity, 1);
+    WXShareHelper.a().a(paramString, paramActivity, 1);
   }
   
   public static void startShareToQzone(Activity paramActivity, String paramString1, String paramString2, String paramString3, ApkgInfo paramApkgInfo, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 2, "startShareToQzone. content=" + paramString1 + ",sharePicPath=" + paramString2 + ",entryPath=" + paramString3);
+      QLog.d("ShareUtils", 2, "startShareToQzone. content=" + paramString1 + ",sharePicPath=" + paramString2 + ",entryPath=" + paramString3);
     }
     String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
@@ -217,22 +217,22 @@ public class ShareUtils
   
   public static void startShareToWeChat(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt, ApkgInfo paramApkgInfo)
   {
-    if (!WXShareHelper.getInstance().isWXinstalled())
+    if (!WXShareHelper.a().a())
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.4(paramActivity));
+      return;
+    }
+    if (!WXShareHelper.a().b())
     {
       ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.5(paramActivity));
       return;
     }
-    if (!WXShareHelper.getInstance().isWXsupportApi())
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.6(paramActivity));
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("AppBrandRuntime", 2, "startShareToWeChat. content=" + paramString1 + ",sharePicPath=" + paramString2 + ",entryPath=" + paramString3);
+      QLog.d("ShareUtils", 2, "startShareToWeChat. content=" + paramString1 + ",sharePicPath=" + paramString2 + ",entryPath=" + paramString3);
     }
     if (paramApkgInfo == null)
     {
-      QLog.e("AppBrandRuntime", 1, "startShareToWeChat. apkgInfo is null!");
+      QLog.e("ShareUtils", 1, "startShareToWeChat. apkgInfo is null!");
       return;
     }
     if (TextUtils.isEmpty(paramString1)) {
@@ -240,7 +240,7 @@ public class ShareUtils
     }
     for (;;)
     {
-      MiniProgramShareUtils.shareAsWeChatMsg(paramApkgInfo.appConfig.config.appId, paramApkgInfo.apkgName, paramString1, 1, 1, paramApkgInfo.appConfig.config.getReportType(), paramString2, null, paramString3, paramApkgInfo.iconUrl, paramApkgInfo.appConfig.config.verType, paramApkgInfo.appConfig.config.versionId, null, paramInt, new ShareUtils.7(paramActivity, paramString2, paramInt, paramString1, paramApkgInfo));
+      MiniProgramShareUtils.shareAsWeChatMsg(paramApkgInfo.appConfig.config.appId, paramApkgInfo.apkgName, paramString1, 1, 1, paramApkgInfo.appConfig.config.getReportType(), paramString2, null, paramString3, paramApkgInfo.iconUrl, paramApkgInfo.appConfig.config.verType, paramApkgInfo.appConfig.config.versionId, null, paramInt, new ShareUtils.6(paramActivity, paramString2, paramInt, paramString1, paramApkgInfo));
       return;
     }
   }

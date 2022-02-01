@@ -23,9 +23,9 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rwv;
-import tmo;
-import tmr;
+import six;
+import uac;
+import uaf;
 
 public class VVideo
   extends VComponentContainer<VVideoView>
@@ -34,7 +34,7 @@ public class VVideo
   private String mCurrentVid;
   private String mCurrentVideoUrl;
   private Boolean mIsForNV = Boolean.valueOf(false);
-  private VComponentAdapter.OnVideoViewMethodListener mVideoViewMethodListener = new tmo(this);
+  private VComponentAdapter.OnVideoViewMethodListener mVideoViewMethodListener = new uac(this);
   
   public VVideo(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -203,7 +203,7 @@ public class VVideo
     }
   }
   
-  public tmr getVideoViewControlListener()
+  public uaf getVideoViewControlListener()
   {
     if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
       return ((VVideoView)getHostView()).a();
@@ -482,7 +482,7 @@ public class VVideo
     View localView;
     if ((getHostView() != null) && (getInstance() != null) && (getInstance().getActivity() != null))
     {
-      rwv.a(getInstance().getActivity(), paramInt1, paramInt2);
+      six.a(getInstance().getActivity(), paramInt1, paramInt2);
       localView = getHostView();
       if ((localView != null) && (localView.getScaleY() == 1.0F) && (localView.getScaleX() == 1.0F))
       {
@@ -518,12 +518,12 @@ public class VVideo
           ((FrameLayout.LayoutParams)localView.getLayoutParams()).gravity = 17;
         }
         localView.setLayoutParams(localView.getLayoutParams());
-        paramInt1 = rwv.a(getInstance().getActivity(), paramInt1, paramInt2);
+        paramInt1 = six.a(getInstance().getActivity(), paramInt1, paramInt2);
         if (paramInt1 != 2) {
           break label289;
         }
         getVideoViewControlListener().a((VVideoView)getHostView(), "cover");
-        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), localView.getPaddingRight(), rwv.a(getInstance().getActivity()));
+        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), localView.getPaddingRight(), six.a(getInstance().getActivity()));
       }
       while (paramInt1 != 0) {
         return;
@@ -698,7 +698,7 @@ public class VVideo
   public void setstartPosition(int paramInt)
   {
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().f_(paramInt);
+      getVideoViewControlListener().g_(paramInt);
     }
   }
   
@@ -737,7 +737,7 @@ public class VVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo
  * JD-Core Version:    0.7.0.1
  */

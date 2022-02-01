@@ -1,54 +1,76 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.RelationalChainInfo;
 
 public class afsi
-  implements afrc
 {
-  private BaseChatPie a;
+  public int a;
+  public afsj a;
+  public afsk a;
+  public byte[] a;
   
-  public afsi(BaseChatPie paramBaseChatPie)
+  public static afsi a(submsgtype0xc7.RelationalChainInfo paramRelationalChainInfo)
   {
-    this.a = paramBaseChatPie;
+    if (paramRelationalChainInfo != null)
+    {
+      afsi localafsi = new afsi();
+      localafsi.jdField_a_of_type_Int = paramRelationalChainInfo.uint64_type.get();
+      if (paramRelationalChainInfo.bytes_attr.has()) {
+        localafsi.jdField_a_of_type_Afsk = afsk.a(localafsi.jdField_a_of_type_Int, paramRelationalChainInfo.bytes_attr.get().toByteArray());
+      }
+      if (paramRelationalChainInfo.bytes_intimate_info.has()) {
+        localafsi.jdField_a_of_type_Afsj = afsj.a(paramRelationalChainInfo.bytes_intimate_info.get().toByteArray());
+      }
+      if (paramRelationalChainInfo.bytes_mutualmark_alienation.has()) {
+        localafsi.jdField_a_of_type_ArrayOfByte = paramRelationalChainInfo.bytes_mutualmark_alienation.get().toByteArray();
+      }
+      return localafsi;
+    }
+    return null;
   }
   
-  public void a(int paramInt)
+  public int a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (this.jdField_a_of_type_Afsk != null) {
+      return (int)this.jdField_a_of_type_Afsk.b;
     }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.a != null)
+    if ((this.jdField_a_of_type_Afsj != null) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 26) || (this.jdField_a_of_type_Int == 3))) {
+      return this.jdField_a_of_type_Afsj.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_Afsk != null) {
+      return (int)this.jdField_a_of_type_Afsk.h;
+    }
+    return 0;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExtSnsRelationalChainPushInfo{");
+    localStringBuilder.append("relation_type:").append(this.jdField_a_of_type_Int).append(", ");
+    localStringBuilder.append("mutualMarkInfo:").append(this.jdField_a_of_type_Afsk).append(", ");
+    localStringBuilder.append("intimateInfo:").append(this.jdField_a_of_type_Afsj).append(", ");
+    localStringBuilder.append("relationIconFlag:");
+    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length > 0))
     {
-      BaseActivity localBaseActivity = this.a.getActivity();
-      localObject1 = localObject2;
-      if (localBaseActivity != null) {
-        localObject1 = localBaseActivity.getIntent();
+      int i = 0;
+      while ((i < this.jdField_a_of_type_ArrayOfByte.length) && (i < 10))
+      {
+        localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte[0]).append(" ");
+        i += 1;
       }
     }
-    a((Intent)localObject1);
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    if ((paramIntent == null) || (this.a == null)) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = this.a.app;
-    } while ((localQQAppInterface == null) || (!paramIntent.getBooleanExtra("key_reactive_push_tip", false)));
-    bcef.b(localQQAppInterface, "dc00898", "", "", "0X800A1BF", "0X800A1BF", 0, 0, "", "", "", "");
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 3, 13 };
+    localStringBuilder.append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

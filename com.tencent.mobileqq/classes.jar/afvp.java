@@ -1,17 +1,34 @@
-import android.os.Handler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Queue;
 
 class afvp
-  implements acho
+  implements Animator.AnimatorListener
 {
-  afvp(afvn paramafvn) {}
+  afvp(afvo paramafvo) {}
   
-  public void a(int paramInt, aafm paramaafm) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a(long paramLong)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    afvn.a("onLowMemory");
-    afvn.a().sendMessage(afvn.a().obtainMessage(5));
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimation", 2, "onAnimationEnd");
+    }
+    afvo.a(this.a).remove();
+    if (afvo.a(this.a).isEmpty()) {
+      this.a.c();
+    }
+    while (afvo.a(this.a)) {
+      return;
+    }
+    afvo.a(this.a).clear();
+    this.a.c();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

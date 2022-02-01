@@ -1,104 +1,48 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-import cooperation.qqcircle.QCircleConstants;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGroupDateVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupNodeInfo;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wvd
+  extends wfh
 {
-  @NonNull
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-  private IVideoViewBase jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
-  private wve jdField_a_of_type_Wve = new wve();
-  private wvf jdField_a_of_type_Wvf = new wvf(this.jdField_a_of_type_Wve);
-  private wvj jdField_a_of_type_Wvj = new wvj();
+  public long a;
+  public String a;
+  public ArrayList<VideoCollectionItem> a;
+  public boolean a;
   
-  public wvd(@NonNull Context paramContext)
+  public wvd(String paramString, qqstory_service.RspGroupDateVideoList paramRspGroupDateVideoList)
   {
-    if (paramContext != null) {}
-    for (boolean bool = true;; bool = false)
+    super(paramRspGroupDateVideoList.result);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (paramRspGroupDateVideoList.is_end.get() == 1) {}
+    for (;;)
     {
-      yos.a(bool);
-      this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-      b();
-      return;
-    }
-  }
-  
-  public static TVK_PlayerVideoInfo a(String paramString1, String paramString2)
-  {
-    return a(paramString1, paramString2, "bus_type_qqstory");
-  }
-  
-  public static TVK_PlayerVideoInfo a(String paramString1, String paramString2, String paramString3)
-  {
-    xvv.d("StoryPlayerTVKWrapper", "createPlayerVideoInfo, %s", new Object[] { paramString2 });
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-    localTVK_PlayerVideoInfo.setPreLoad(false);
-    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", String.valueOf(20161223));
-    localTVK_PlayerVideoInfo.setConfigMap("downloadflag", "0");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("shouq_bus_type", paramString3);
-    localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
-    localTVK_PlayerVideoInfo.setPlayMode("cache_extend_video");
-    localTVK_PlayerVideoInfo.addExtraParamsMap("shouq_bus_type", "bus_type_subscribe");
-    localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains(QCircleConstants.QCIRCLE_DOWNLOAD_VIDEO_CACHE_PATH)))
-    {
-      localTVK_PlayerVideoInfo.setConfigMap("file_dir", paramString2);
-      paramString2 = paramString2.substring(0, paramString2.lastIndexOf(File.separator));
-      if (!TextUtils.isEmpty(paramString2))
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_JavaLangString = paramRspGroupDateVideoList.next_cookie.get().toStringUtf8();
+      this.jdField_a_of_type_Long = paramRspGroupDateVideoList.seqno.get();
+      paramRspGroupDateVideoList = paramRspGroupDateVideoList.group_node_info.get().iterator();
+      while (paramRspGroupDateVideoList.hasNext())
       {
-        paramString2 = new File(paramString2);
-        if (!paramString2.exists()) {
-          paramString2.mkdirs();
-        }
+        qqstory_struct.GroupNodeInfo localGroupNodeInfo = (qqstory_struct.GroupNodeInfo)paramRspGroupDateVideoList.next();
+        VideoCollectionItem localVideoCollectionItem = new VideoCollectionItem();
+        localVideoCollectionItem.convertFrom("Q.qqstory.shareGroup:GetDateCollectionListResponse", paramString, localGroupNodeInfo);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localVideoCollectionItem);
       }
+      bool = false;
     }
-    localTVK_PlayerVideoInfo.setConfigMap("RawVideoPlay", "true");
-    localTVK_PlayerVideoInfo.setVid(paramString1);
-    return localTVK_PlayerVideoInfo;
   }
   
-  private void b()
+  public String toString()
   {
-    TVK_SDKMgr.setOnLogListener(this.jdField_a_of_type_Wvj);
-    TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-    xvv.d("StoryPlayerTVKWrapper", "TVK version: %s", new Object[] { TVK_SDKMgr.getSdkVersion() });
-  }
-  
-  public void a()
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
-      ThreadManager.executeOnSubThread(new StoryPlayerTVKWrapper.1(this, (TVK_IMediaPlayer)localObject));
-    }
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase != null)
-    {
-      localObject = (View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase = null;
-      if (((View)localObject).getParent() != null)
-      {
-        ViewParent localViewParent = ((View)localObject).getParent();
-        if ((localViewParent instanceof ViewGroup)) {
-          ((ViewGroup)localViewParent).removeView((View)localObject);
-        }
-      }
-    }
+    return "GetShareGroupDateListResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", isEnd=" + this.jdField_a_of_type_Boolean + ", nextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", seq=" + this.jdField_a_of_type_Long + ", mCollectionItemList=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
   }
 }
 

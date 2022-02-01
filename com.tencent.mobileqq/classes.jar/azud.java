@@ -1,44 +1,42 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.widget.ScrollView;
+import com.tencent.widget.XEditTextEx;
 
 public class azud
-  extends azuw<ReceiptMessageDetailFragment>
+  implements View.OnTouchListener
 {
-  public azud(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
-  {
-    super(paramReceiptMessageDetailFragment);
-  }
+  public azud(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback onRes: " + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    if (StickyNotePublishFragment.a(this.a))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback succ");
-      }
-      paramBundle = new oidb_0x986.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = paramBundle.uint32_read_uin_num.get();
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, 2147483647, true);
-      return;
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      bkxz.b(StickyNotePublishFragment.a(this.a));
+      return false;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    if (StickyNotePublishFragment.a(this.a) == 0)
     {
-      QLog.d("ReceiptMessageDetailFragment", 1, "fetch read member fail on invalid data");
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(0);
+      StickyNotePublishFragment.a(this.a).requestFocus();
+      bkxz.a(StickyNotePublishFragment.a(this.a));
+      return false;
     }
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
-    return;
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a, 0);
+    this.a.a(false);
+    this.a.b(false);
+    this.a.c(true);
+    this.a.c(0, 0);
+    return false;
   }
 }
 

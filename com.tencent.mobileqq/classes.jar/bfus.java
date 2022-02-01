@@ -1,61 +1,73 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.DialogUtil.1.1;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.text.TextUtils;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bfus
-  extends QQCustomDialog
+public class bfus
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private int b = this.jdField_a_of_type_Int;
+  static HashMap<String, Integer> a = new HashMap();
   
-  bfus(Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
+  static
   {
-    super(paramContext, paramInt1);
+    a.put("str", Integer.valueOf(0));
+    a.put("img", Integer.valueOf(1));
+    a.put("video", Integer.valueOf(2));
+    a.put("voice", Integer.valueOf(3));
+    a.put("recite", Integer.valueOf(4));
+    a.put("calculation", Integer.valueOf(7));
   }
   
-  private Runnable a()
+  public static bfur a(String paramString)
   {
-    return new DialogUtil.1.1(this);
-  }
-  
-  private void a(Runnable paramRunnable)
-  {
-    if (this.b > 0)
-    {
-      this.lBtn.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b) }));
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, 1000L);
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    this.lBtn.setText(this.jdField_a_of_type_JavaLangString);
-    this.b = this.jdField_a_of_type_Int;
-    this.lBtn.setEnabled(true);
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-  }
-  
-  public void onBackPressed() {}
-  
-  public void show()
-  {
-    super.show();
-    if ((this.jdField_a_of_type_Boolean) && (this.b > 0))
+    try
     {
-      this.lBtn.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b) }));
-      this.lBtn.setEnabled(false);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(a(), 1000L);
+      paramString = a(new JSONObject(paramString));
+      return paramString;
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static bfur a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      Object localObject = paramJSONObject.getString("type");
+      localObject = (Integer)a.get(localObject);
+      if (localObject == null) {
+        return null;
+      }
+      switch (((Integer)localObject).intValue())
+      {
+      case 0: 
+        paramJSONObject = new bfva(paramJSONObject);
+        return paramJSONObject;
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      break label142;
+      return new bfuw(paramJSONObject);
+      return new bfvc(paramJSONObject);
+      return new bfuq(paramJSONObject);
+      return new bfut(paramJSONObject);
+      paramJSONObject = new bfuo(paramJSONObject);
+      return paramJSONObject;
+    }
+    label142:
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfus
  * JD-Core Version:    0.7.0.1
  */

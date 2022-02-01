@@ -1,19 +1,53 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class nnk
+  extends aauq
 {
-  TroopMemberApiService a;
+  static final String[] a = { "ProfileService", "OnlinePush" };
+  private final HashMap<String, nnl> b = new HashMap();
   
-  public nnk(TroopMemberApiService paramTroopMemberApiService)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.a = paramTroopMemberApiService;
+    String str = paramFromServiceMsg.getServiceCmd();
+    if (!TextUtils.isEmpty(str)) {}
+    for (nnl localnnl = (nnl)this.b.get(str);; localnnl = null)
+    {
+      if (localnnl != null) {}
+      for (paramToServiceMsg = localnnl.a(paramToServiceMsg, paramFromServiceMsg);; paramToServiceMsg = null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("AVGameProtocolCoder", 4, "decode, cmd[" + str + "], coder[" + localnnl + "], result[" + paramToServiceMsg + "]");
+        }
+        return paramToServiceMsg;
+      }
+    }
   }
   
-  public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    if (paramBundle == null) {}
+    String str = paramToServiceMsg.getServiceCmd();
+    if (!TextUtils.isEmpty(str)) {}
+    for (nnl localnnl = (nnl)this.b.get(str);; localnnl = null)
+    {
+      if (localnnl != null) {}
+      for (boolean bool = localnnl.a(paramToServiceMsg, paramUniPacket);; bool = false)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("AVGameProtocolCoder", 4, "encodeReqMsg, cmd[" + str + "], coder[" + localnnl + "], ret[" + bool + "]");
+        }
+        return bool;
+      }
+    }
+  }
+  
+  public String[] a()
+  {
+    return a;
   }
 }
 

@@ -1,59 +1,74 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public class auli
-  extends aptq<aulj>
+class auli
 {
-  @NonNull
-  public aulj a(int paramInt)
+  int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  aulf jdField_a_of_type_Aulf;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  final String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  final long jdField_b_of_type_Long;
+  Object jdField_b_of_type_JavaLangObject = new Object();
+  long jdField_c_of_type_Long;
+  Object jdField_c_of_type_JavaLangObject = new Object();
+  long d;
+  
+  auli(aulg paramaulg, long paramLong1, String paramString, long paramLong2)
   {
-    return new aulj();
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_c_of_type_Long = 0L;
+    this.d = 0L;
+    this.jdField_b_of_type_Int = -1;
   }
   
-  @Nullable
-  public aulj a(aptx[] paramArrayOfaptx)
+  long a()
   {
-    aulj localaulj = new aulj();
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null)) {
-      aulj.a(localaulj, paramArrayOfaptx[0].a);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      long l = this.jdField_c_of_type_Long;
+      return l;
     }
-    return localaulj;
   }
   
-  public void a(aulj paramaulj) {}
-  
-  public Class<aulj> clazz()
+  void a(int paramInt)
   {
-    return aulj.class;
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      QLog.i(aulg.jdField_a_of_type_JavaLangString, 1, "[UniformDL] setStatus:" + this.jdField_a_of_type_Int + " -> " + paramInt + "url:" + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+    }
   }
   
-  public boolean isAccountRelated()
+  void a(long paramLong)
   {
-    return false;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_c_of_type_Long = paramLong;
+      return;
+    }
   }
   
-  public boolean isNeedCompressed()
+  long b()
   {
-    return true;
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      long l = this.d;
+      return l;
+    }
   }
   
-  public boolean isNeedStoreLargeFile()
+  void b(long paramLong)
   {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public void onReqNoReceive() {}
-  
-  public int type()
-  {
-    return 445;
+    synchronized (this.jdField_c_of_type_JavaLangObject)
+    {
+      this.d = paramLong;
+      return;
+    }
   }
 }
 

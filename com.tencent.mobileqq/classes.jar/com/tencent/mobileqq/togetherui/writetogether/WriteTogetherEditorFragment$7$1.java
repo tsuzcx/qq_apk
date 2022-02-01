@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.togetherui.writetogether;
 
-import bdhh;
-import bdid;
-import bdks;
+import beok;
+import bepg;
+import berv;
 import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
 
 public class WriteTogetherEditorFragment$7$1
   implements Runnable
 {
-  public WriteTogetherEditorFragment$7$1(bdks parambdks) {}
+  public WriteTogetherEditorFragment$7$1(berv paramberv) {}
   
   public void run()
   {

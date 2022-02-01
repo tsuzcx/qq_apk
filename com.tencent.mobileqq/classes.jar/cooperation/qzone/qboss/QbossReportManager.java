@@ -2,9 +2,9 @@ package cooperation.qzone.qboss;
 
 import NS_MOBILE_QBOSS_PROTO.MobileQbossReportRsp;
 import android.os.Bundle;
-import axkw;
-import bbpd;
-import bbpe;
+import ayrb;
+import bcvx;
+import bcvy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QUA;
@@ -12,7 +12,7 @@ import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 
 public class QbossReportManager
-  extends axkw
+  extends ayrb
 {
   private static final String TAG = "QbossReportManager";
   private static QbossReportManager instance;
@@ -108,7 +108,7 @@ public class QbossReportManager
       QLog.d("QbossReportManager", 1, "Type:sendErrorReport, code:" + paramInt3 + " errorMessage = " + paramString);
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bbpd.class);
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bcvx.class);
     try
     {
       localNewIntent.putExtra("uin", Long.parseLong(localAppRuntime.getAccount()));
@@ -131,7 +131,7 @@ public class QbossReportManager
   public void sendReport(String paramString1, String paramString2, int paramInt)
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bbpe.class);
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), bcvy.class);
     try
     {
       localNewIntent.putExtra("uin", Long.parseLong(localAppRuntime.getAccount()));

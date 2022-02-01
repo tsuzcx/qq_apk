@@ -1,35 +1,92 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class bgde
-  extends RecyclerView.OnScrollListener
+public class bgde
+  extends BroadcastReceiver
 {
-  private boolean a;
+  public bgde(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public abstract void a();
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
-    if (paramInt == 0)
+    int j = 0;
+    paramContext = paramIntent.getAction();
+    int i = j;
+    if (this.a.a != null)
     {
-      paramInt = localGridLayoutManager.findLastCompletelyVisibleItemPosition();
-      if ((((bgdb)paramRecyclerView.getAdapter()).a(paramInt).a == 4) && (this.a)) {
-        a();
+      i = j;
+      if (this.a.a.isHomeworkTroop()) {
+        i = 1;
       }
     }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext))
     {
-      this.a = bool;
+      paramContext = paramIntent.getStringExtra("data");
+      if ("onHomeworkTroopIdentityChanged".equals(paramIntent.getStringExtra("event")))
+      {
+        paramIntent = new Intent("com.tencent.mobileqq.action.closewebview");
+        paramIntent.putExtra("event", "closeWebView");
+        BaseApplicationImpl.getContext().sendBroadcast(paramIntent, "com.tencent.msg.permission.pushnotify");
+        if (i != 0) {
+          break label102;
+        }
+      }
+    }
+    label351:
+    for (;;)
+    {
       return;
+      label102:
+      if (!TextUtils.isEmpty(paramContext)) {
+        try
+        {
+          paramContext = new JSONObject(paramContext);
+          paramIntent = paramContext.optString("groupCode");
+          if (TextUtils.equals(this.a.a.troopUin, paramIntent))
+          {
+            String str1 = paramContext.optString("content");
+            String str2 = paramContext.optString("source");
+            i = paramContext.optInt("rankId", 333);
+            String str3 = paramContext.optString("nickName");
+            paramContext.optString("uin");
+            paramContext.optString("course");
+            paramContext.optString("name");
+            if ("join".equals(str2))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("wyx", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver source=join. cGroupOption=", Short.valueOf(this.a.a.cGroupOption), ", joinType=", Integer.valueOf(VisitorTroopCardFragment.a(this.a)) });
+              }
+              if (VisitorTroopCardFragment.a(this.a) != 1) {
+                break label351;
+              }
+              this.a.e();
+            }
+            while (QLog.isColorLevel())
+            {
+              QLog.d("zivonchen", 2, "mHomeworkTroopIdentityChangedReceiver troopUin = " + paramIntent + ", content = " + str1 + ", source = " + str2 + ", rankId = " + i + ", nickName = " + str3);
+              return;
+              if (VisitorTroopCardFragment.a(this.a) == 2) {
+                VisitorTroopCardFragment.a(this.a, str1);
+              }
+            }
+            if ("start_recomend_page".equals(paramContext))
+            {
+              this.a.getActivity().finish();
+              return;
+            }
+          }
+        }
+        catch (JSONException paramContext) {}
+      }
     }
   }
 }

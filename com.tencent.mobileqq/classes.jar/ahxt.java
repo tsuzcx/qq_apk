@@ -1,26 +1,122 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import android.text.TextUtils.TruncateAt;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.utils.StringUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ahxt
-  extends Handler
+  extends ahwx
 {
-  public ahxt(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  akqe a;
   
-  public void handleMessage(Message paramMessage)
+  public ahxt(QQAppInterface paramQQAppInterface, ahxr paramahxr, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, afrr paramafrr)
   {
-    switch (paramMessage.what)
+    super(paramQQAppInterface, paramahxr, paramQQWalletBaseMsgElem, paramInt, paramafrr);
+    this.jdField_a_of_type_Akqe = ((akqe)paramQQAppInterface.getManager(QQManagerFactory.PASSWD_RED_BAG_MANAGER));
+    if (a(this.jdField_a_of_type_Akqe.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
+    for (this.i = 0;; this.i = paramQQWalletBaseMsgElem.effectsId)
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (List)paramMessage.obj;
-      this.a.a(paramMessage, true);
+      this.j = 2130847246;
       return;
     }
-    paramMessage = (List)paramMessage.obj;
-    this.a.a(paramMessage, false);
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.jdField_a_of_type_Ahxr.b.setVisibility(0);
+    this.jdField_a_of_type_Ahxr.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Ahxr.b.setText(ahxc.k);
+    this.jdField_a_of_type_Ahxr.b.setSingleLine(true);
+    this.jdField_a_of_type_Ahxr.b.setEllipsize(TextUtils.TruncateAt.END);
+    this.jdField_a_of_type_Ahxr.b.setSelected(true);
+    return false;
+  }
+  
+  public void i()
+  {
+    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+    Object localObject2 = this.jdField_a_of_type_Akqe.a(localQQWalletRedPacketMsg.redPacketId);
+    if (localObject2 == null) {
+      localObject2 = new JSONObject();
+    }
+    for (;;)
+    {
+      try
+      {
+        ((JSONObject)localObject2).put("key_sub_channel", localQQWalletRedPacketMsg.body.subChannel);
+        akqd.a((JSONObject)localObject2, localQQWalletRedPacketMsg.body.poemRule);
+        if (localQQWalletRedPacketMsg.body.subChannel == 2)
+        {
+          String str1 = localQQWalletRedPacketMsg.elem.lastPinyin;
+          localObject2 = new akqd(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, false, false, false, 4, str1, ((JSONObject)localObject2).toString());
+          this.jdField_a_of_type_Akqe.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_Akqe.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 4);
+          if ((StringUtil.isEmpty(((akqd)localObject2).e)) || (StringUtil.isEmpty(((akqd)localObject2).e.trim()))) {
+            this.jdField_a_of_type_Akqe.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.elem.title, localQQWalletRedPacketMsg.elem.lastPinyin, 0, localQQWalletRedPacketMsg.body.poemRule);
+          }
+          if (a((akqd)localObject2)) {
+            continue;
+          }
+          this.jdField_a_of_type_Ahxr.d.setVisibility(8);
+          if (StringUtil.isEmpty(((akqd)localObject2).e)) {
+            continue;
+          }
+          if (!((akqd)localObject2).b) {
+            continue;
+          }
+          this.jdField_a_of_type_Ahxr.b.setText(ahxc.k);
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        continue;
+        Object localObject1 = "";
+        continue;
+        this.jdField_a_of_type_Ahxr.d.setVisibility(0);
+        continue;
+        localObject1 = ((akqd)localObject2).e;
+        String str2 = akqe.a((String)localObject1);
+        String str3 = akqe.b((String)localObject1);
+        if (!StringUtil.isEmpty(str2))
+        {
+          switch (localQQWalletRedPacketMsg.body.subChannel)
+          {
+          default: 
+            localObject1 = anvx.a(2131713667) + str2.trim() + " ";
+            this.jdField_a_of_type_Ahxr.b.setText((CharSequence)localObject1);
+            if (((akqd)localObject2).a() != 3) {
+              continue;
+            }
+            localObject1 = str3;
+            this.jdField_a_of_type_Akqe.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, ((akqd)localObject2).a);
+            return;
+          case 2: 
+            localObject1 = anvx.a(2131713666) + str2.trim() + " ";
+            break;
+          }
+          localObject1 = "接龙红包：" + str3;
+          continue;
+          localObject1 = str2;
+          continue;
+          if (((akqd)localObject2).b)
+          {
+            this.jdField_a_of_type_Ahxr.b.setText(ahxc.k);
+            return;
+          }
+        }
+      }
+    }
   }
 }
 

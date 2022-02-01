@@ -1,17 +1,24 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager;
 
 public class bmiw
-  extends GestureDetector.SimpleOnGestureListener
+  extends Handler
 {
-  public bmiw(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
+  public bmiw(TroopPluginManager paramTroopPluginManager, Looper paramLooper)
   {
-    super.onShowPress(paramMotionEvent);
-    this.a.a.toggleAEKit(false);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ((bmiz)paramMessage.obj).a(paramMessage.arg1);
   }
 }
 

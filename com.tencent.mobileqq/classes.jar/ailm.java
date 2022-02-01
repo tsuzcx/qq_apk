@@ -1,11 +1,39 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import android.os.Looper;
+import android.text.TextUtils;
+import androidx.annotation.UiThread;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.tips.StudyRoomTipBarHelper.2.1;
+import mqq.os.MqqHandler;
 
 public class ailm
-  implements aiiw
+  implements bdwd
 {
-  public ailm(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  ailm(ailk paramailk) {}
   
-  public void a() {}
+  @UiThread
+  private void a(int paramInt)
+  {
+    if (paramInt <= 0)
+    {
+      this.a.c();
+      return;
+    }
+    this.a.b();
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (!TextUtils.equals(paramString, ailk.a(this.a).sessionInfo.curFriendUin)) {
+      return;
+    }
+    if (Thread.currentThread() != Looper.getMainLooper().getThread())
+    {
+      ailk.a(this.a).post(new StudyRoomTipBarHelper.2.1(this, paramInt));
+      return;
+    }
+    a(paramInt);
+  }
 }
 
 

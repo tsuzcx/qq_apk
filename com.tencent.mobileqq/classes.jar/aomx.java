@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aomx
-  implements axqz
+class aomx
+  implements DialogInterface.OnDismissListener
 {
-  public aomx(ARScanEntryView paramARScanEntryView) {}
+  aomx(aoms paramaoms) {}
   
-  public void a(boolean paramBoolean) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    aoms.a(this.a, null);
+    QLog.d("AccountPhoneUnityManager", 1, "dialog dismiss");
+  }
 }
 
 

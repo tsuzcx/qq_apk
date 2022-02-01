@@ -1,123 +1,98 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PttSilkAndChangeVoiceSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.transfile.PttInfoCollector;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqxv
-  extends aqxl
 {
-  public aqxv(QQAppInterface paramQQAppInterface)
+  public int a;
+  public int b;
+  
+  public aqxv()
   {
-    super("qq.android.ptt.so.658", paramQQAppInterface);
+    a();
   }
   
-  public int a()
+  public static aqxv a(String paramString)
   {
-    return 10007;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PttSilkAndChangeVoiceSoData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyPttSilkAndChangeVoiceSo";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "download success: " + paramString);
+    int j = 0;
+    QLog.d("TroopNotificationEntryConfig", 1, "parse, newConf = " + paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
+    label86:
     for (;;)
     {
       try
       {
-        str = azcc.a();
-        if ((str != null) && (!str.equals("")))
-        {
-          FileUtils.deleteDirectory(str);
-          if (new File(str).mkdir())
-          {
-            FileUtils.uncompressZip(paramString, str, false);
-            if (QLog.isColorLevel()) {
-              QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip success: " + paramString);
-            }
-          }
-        }
+        paramString = new JSONObject(paramString);
+        int i = paramString.optInt("showNewEntryFlag", 0);
+        int k;
+        paramString.printStackTrace();
       }
-      catch (Exception localException)
+      catch (JSONException paramString)
       {
-        String str;
-        localException.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip failed: " + localException.getMessage());
-        continue;
-      }
-      try
-      {
-        if (!azcc.a)
+        try
         {
-          FileUtils.deleteDirectory(azcc.b());
-          FileUtils.rename(str, azcc.b());
+          k = paramString.optInt("oddEvenFlag", 0);
+          j = k;
+          paramString = new aqxv();
+          paramString.a = i;
+          paramString.b = j;
+          return paramString;
         }
-        super.a(paramString);
-        return;
+        catch (JSONException paramString)
+        {
+          break label86;
+        }
+        paramString = paramString;
+        i = 0;
       }
-      finally {}
     }
   }
   
-  public boolean a()
+  private void a()
   {
+    this.a = 2;
+    this.b = 0;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (this.a == 0) {
+      if ((paramString != null) && (!paramString.isEmpty())) {}
+    }
+    while (this.a != 1)
+    {
+      int i;
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            i = paramString.charAt(paramString.length() - 1);
+          } while (this.b == 0);
+          if (this.b != 1) {
+            break;
+          }
+        } while (i % 2 == 0);
+        return true;
+      } while ((this.b != 2) || (i % 2 != 0));
+      return true;
+    }
     return true;
   }
   
-  public String b()
+  public String toString()
   {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    Object localObject = (PttSilkAndChangeVoiceSoData)a();
-    if (localObject == null) {
-      return false;
-    }
-    int i = lld.f();
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload cpuArch = " + i + " isUserNeedDownload try match version=" + "8.4.8" + " data.version=" + ((PttSilkAndChangeVoiceSoData)localObject).version);
-    }
-    localObject = this.a.getPreferences();
-    if (!((SharedPreferences)localObject).getBoolean("hasReportedCpuArch", false))
-    {
-      PttInfoCollector.reportMyCpuArch();
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putBoolean("hasReportedCpuArch", true);
-      ((SharedPreferences.Editor)localObject).commit();
-    }
-    if (i > 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload return " + bool);
-      }
-      return bool;
-    }
+    return "TroopNotificationEntryConfig{showNewEntryFlag=" + this.a + ", oddEvenFlag=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxv
  * JD-Core Version:    0.7.0.1
  */

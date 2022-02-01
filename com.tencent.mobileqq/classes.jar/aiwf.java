@@ -1,23 +1,32 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contacts.base.HeaderScrollView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiwf
-  extends asbj
+  implements ajju
 {
-  public aiwf(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  public aiwf(TroopView paramTroopView) {}
   
-  protected void onFileTransferEnd(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
+    }
+    paramObject = TroopView.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      paramObject = paramObject.obtainMessage(14, paramInt, i);
+      TroopView.a(this.a).sendMessage(paramObject);
+      return;
+    }
   }
   
-  protected void onFileTransferProgress(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void ag_()
   {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
-  }
-  
-  protected void onFileTransferStart(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+    if ((TroopView.a(this.a) != null) && (!TroopView.a(this.a).a())) {
+      TroopView.a(this.a).scrollTo(0, TroopView.a(this.a).a());
+    }
   }
 }
 

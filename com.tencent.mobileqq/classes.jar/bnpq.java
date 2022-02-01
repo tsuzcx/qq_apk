@@ -1,16 +1,12 @@
-import java.util.List;
-
-public abstract interface bnpq
+public class bnpq
 {
-  public abstract void a(int paramInt, bnpz parambnpz);
+  public float a;
+  public int a;
+  public float b;
+  public float c;
+  public float d;
   
-  public abstract void a(List<bnpz> paramList);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public bnpq(bnpn parambnpn) {}
 }
 
 

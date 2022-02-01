@@ -14,9 +14,9 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import zcw;
-import zcx;
-import zcy;
+import zsb;
+import zsc;
+import zsd;
 
 public abstract class BaseWidgetView<T>
   extends FrameLayout
@@ -27,8 +27,8 @@ public abstract class BaseWidgetView<T>
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   private T jdField_a_of_type_JavaLangObject;
   private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private HashMap<Integer, zcy> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private zcx jdField_a_of_type_Zcx;
+  private HashMap<Integer, zsd> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private zsc jdField_a_of_type_Zsc;
   protected int b;
   
   public BaseWidgetView(@NonNull Context paramContext)
@@ -54,10 +54,10 @@ public abstract class BaseWidgetView<T>
     c(paramContext, c());
   }
   
-  private void a(View paramView, zcy paramzcy)
+  private void a(View paramView, zsd paramzsd)
   {
     if (paramView != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramView.getId()), paramzcy);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramView.getId()), paramzsd);
     }
   }
   
@@ -70,7 +70,7 @@ public abstract class BaseWidgetView<T>
     }
     a(paramContext, this);
     if (a() != null) {
-      a().setOnClickListener(new zcw(this));
+      a().setOnClickListener(new zsb(this));
     }
     a(paramContext, paramInt);
   }
@@ -122,7 +122,7 @@ public abstract class BaseWidgetView<T>
   public void a(View paramView)
   {
     if ((paramView != null) && (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId())) != null)) {
-      ((zcy)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId()))).a();
+      ((zsd)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId()))).a();
     }
   }
   
@@ -186,19 +186,19 @@ public abstract class BaseWidgetView<T>
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
   }
   
-  public void setInteractor(zcx paramzcx)
+  public void setInteractor(zsc paramzsc)
   {
-    this.jdField_a_of_type_Zcx = paramzcx;
+    this.jdField_a_of_type_Zsc = paramzsc;
   }
   
-  public void setPreClickListener(View paramView, zcy paramzcy)
+  public void setPreClickListener(View paramView, zsd paramzsd)
   {
-    a(paramView, paramzcy);
+    a(paramView, paramzsd);
   }
   
-  public void setPreClickListener(zcy paramzcy)
+  public void setPreClickListener(zsd paramzsd)
   {
-    a(a(), paramzcy);
+    a(a(), paramzsd);
   }
   
   public void setViewType(int paramInt)

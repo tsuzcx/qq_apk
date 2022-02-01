@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.contacts.friend;
 
-import azsx;
+import bazf;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class FriendFragment$1
   implements Runnable
@@ -10,7 +11,7 @@ public class FriendFragment$1
   
   public void run()
   {
-    ((azsx)FriendFragment.a(this.this$0).getManager(91)).a();
+    ((bazf)FriendFragment.a(this.this$0).getManager(QQManagerFactory.QZONE_CONTACTS_FEED_MANAGER)).a();
   }
 }
 

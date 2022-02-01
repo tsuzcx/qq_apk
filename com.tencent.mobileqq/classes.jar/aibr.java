@@ -1,37 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aibr
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public PressEffectImageView a;
-  public View b;
+  aibr(aiav paramaiav, bili parambili) {}
   
-  aibr(aibp paramaibp) {}
-  
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = this.jdField_a_of_type_Aibp.a(this.jdField_a_of_type_Int);
-    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
-    {
-      aibs.a().b(aibp.a(this.jdField_a_of_type_Aibp), str);
-      this.jdField_a_of_type_Aibp.a();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((paramView == this.jdField_a_of_type_AndroidViewView) && (aibp.a(this.jdField_a_of_type_Aibp) != null)) {
-        aibp.a(this.jdField_a_of_type_Aibp).a(str);
-      }
+    this.jdField_a_of_type_Aiav.j = true;
+    this.jdField_a_of_type_Aiav.i = true;
+    aiav.b(this.jdField_a_of_type_Aiav, false);
+    if ((this.jdField_a_of_type_Bili.a()) && (!this.jdField_a_of_type_Bili.b())) {
+      bdla.b(this.jdField_a_of_type_Aiav.app, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
     }
   }
 }

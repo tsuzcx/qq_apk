@@ -1,64 +1,77 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import OnlinePushPack.MsgInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.pb.PBStringField;
+import localpb.richMsg.SafeMsg.SafeMoreInfo;
 
-public class acnn
-  implements View.OnClickListener
+class acnn
 {
-  public acnn(AccountManageActivity paramAccountManageActivity) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
   
-  public void onClick(View paramView)
+  public acnn(acnk paramacnk, MsgInfo paramMsgInfo, long paramLong1, long paramLong2)
   {
-    bcef.b(this.a.app, "CliOper", "", "", "0X8004038", "0X8004038", 0, 0, String.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), "", "", "");
-    if (!aych.a().a(this.a.app, this.a)) {}
+    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public acnn a()
+  {
+    this.jdField_a_of_type_JavaLangString = new String(bcsc.a(this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg), "utf-8");
+    Object localObject = ((anvk)this.jdField_a_of_type_Acnk.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.jdField_b_of_type_Long + "");
+    if ((localObject != null) && (((Friends)localObject).isFriend())) {
+      this.jdField_a_of_type_Int = 0;
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      AccountManageActivity.a(this.a, bcqk.a(this.a.app));
-      if (this.a.c)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("AccountManage", 2, "onClick v.hashCode()" + paramView.hashCode());
-        }
-      }
-      else
-      {
-        Object localObject = paramView.getTag();
-        if (localObject == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Switch_Account", 2, "switch a non-existing account");
-          }
-        }
-        else
-        {
-          int i = ((Integer)localObject).intValue();
-          localObject = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(i);
-          if (QLog.isColorLevel()) {
-            QLog.d("Switch_Account", 2, "switch uin:" + ((SimpleAccount)localObject).getUin());
-          }
-          if ((localObject != null) && (!((SimpleAccount)localObject).getUin().equals(this.a.app.getCurrentAccountUin())))
-          {
-            bcef.b(this.a.app, "CliOper", "", "", "0X8009C05", "0X8009C05", 0, 0, "", "", "", "");
-            this.a.f();
-            this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = ((SimpleAccount)localObject);
-            AccountManageActivity.b(this.a, true);
-            AccountManageActivity.c(this.a, true);
-            bcef.b(this.a.app, "dc00898", "", "", "0X800AC38", "0X800AC38", 0, 0, "", "", "", "");
-            this.a.app.switchAccount((SimpleAccount)localObject, null);
-            bcqj.a(this.a.app, this.a);
-          }
-          AlbumUtil.clearLastAlbumInfo();
-        }
+      localObject = new SafeMsg.SafeMoreInfo();
+      ((SafeMsg.SafeMoreInfo)localObject).strFromMobile.set(this.jdField_a_of_type_OnlinePushPackMsgInfo.strFromMobile);
+      ((SafeMsg.SafeMoreInfo)localObject).strFromName.set(this.jdField_a_of_type_OnlinePushPackMsgInfo.strFromName);
+      ((SafeMsg.SafeMoreInfo)localObject).strMsgTxt.set(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ArrayOfByte = ((SafeMsg.SafeMoreInfo)localObject).toByteArray();
+      this.jdField_b_of_type_Int = -1002;
+      this.jdField_a_of_type_Boolean = true;
+      return this;
+      localObject = ((awyz)this.jdField_a_of_type_Acnk.a.getManager(QQManagerFactory.CONTACT_MANAGER)).b(String.valueOf(this.jdField_a_of_type_Long));
+      if ((localObject != null) && (((String)localObject).length() != 0)) {
+        this.jdField_a_of_type_Int = 1006;
+      } else {
+        this.jdField_a_of_type_Int = 1000;
       }
     }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
   }
 }
 

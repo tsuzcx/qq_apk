@@ -1,24 +1,35 @@
-import UserGrowth.stSimpleMetaFeed;
 import android.view.View;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 import java.util.List;
 
 class upd
-  implements bjww
+  implements View.OnClickListener
 {
-  upd(upc paramupc) {}
+  upd(upc paramupc, int paramInt) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((upc.a(this.a) == null) || (upc.a(this.a).a() == null) || (paramInt >= upc.a(this.a).a().size())) {}
-    do
+    try
     {
-      return;
-      paramView = (uof)upc.a(this.a).a().get(paramInt);
-    } while (paramView == null);
-    WSVerticalPageFragment.a(upc.a(this.a), "friend_feed", "friend", null, paramView.b() + 1);
-    uvm.a(paramInt + 1, 1000001, (stSimpleMetaFeed)((ArrayList)paramView.a()).get(0), paramView.a(), paramView.a());
+      bekc localbekc = (bekc)upc.a(this.jdField_a_of_type_Upc).get(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Upc.a((bekc)upc.a(this.jdField_a_of_type_Upc).get(this.jdField_a_of_type_Int), paramView.getContext());
+      if (localbekc != null) {
+        FolderRecommendTabFragment.a("227", "227", localbekc.a.iAdId + "", 102, 1);
+      }
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    {
+      for (;;)
+      {
+        localIndexOutOfBoundsException.printStackTrace();
+        QLog.e("FolderRecommendTabFragment", 1, "on click IndexOutOfBoundsException", localIndexOutOfBoundsException);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

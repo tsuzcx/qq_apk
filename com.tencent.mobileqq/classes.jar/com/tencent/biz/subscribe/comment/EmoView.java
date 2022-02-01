@@ -15,30 +15,30 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import zgn;
-import zgo;
-import zgp;
-import zgq;
-import zgs;
-import zgw;
-import zhp;
+import zvs;
+import zvt;
+import zvu;
+import zvv;
+import zvx;
+import zwb;
+import zwu;
 
 public class EmoView
   extends LinearLayout
-  implements zgw, zhp
+  implements zwb, zwu
 {
-  private int jdField_a_of_type_Int = 2130839118;
+  private int jdField_a_of_type_Int = 2130839138;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private WorkSpaceView jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView;
-  private zgq jdField_a_of_type_Zgq;
-  private zhp jdField_a_of_type_Zhp;
+  private zvv jdField_a_of_type_Zvv;
+  private zwu jdField_a_of_type_Zwu;
   private boolean jdField_a_of_type_Boolean = true;
   private boolean[] jdField_a_of_type_ArrayOfBoolean = { 1, 0, 0, 0 };
   private int jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-  private zgq jdField_b_of_type_Zgq = new zgp(this);
+  private zvv jdField_b_of_type_Zvv = new zvu(this);
   private final int c = 28;
   private int d = 1;
   private int e = -1;
@@ -62,7 +62,7 @@ public class EmoView
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     localLayoutParams.gravity = 81;
     this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidOsHandler = new zgn(this);
+    this.jdField_a_of_type_AndroidOsHandler = new zvs(this);
     this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView.setHandler(this.jdField_a_of_type_AndroidOsHandler);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
@@ -108,18 +108,18 @@ public class EmoView
   {
     int i = 27;
     int j = (int)Math.ceil(107.0D / (27 * 1.0D));
-    GridView localGridView = (GridView)LayoutInflater.from(getContext()).inflate(2131558813, null);
+    GridView localGridView = (GridView)LayoutInflater.from(getContext()).inflate(2131558838, null);
     localGridView.setNumColumns(7);
     if (paramInt == j) {
       i = 26;
     }
-    zgs localzgs = new zgs(getContext(), paramInt, i, 28, paramInt, this);
-    localGridView.setAdapter(localzgs);
+    zvx localzvx = new zvx(getContext(), paramInt, i, 28, paramInt, this);
+    localGridView.setAdapter(localzvx);
     localGridView.setColumnWidth(this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay().getWidth() / 7);
     localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, ScreenUtil.dip2px(196.0F)));
     this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView.addView(localGridView);
-    postDelayed(new EmoView.2(this, paramInt, localGridView, localzgs), 1000L);
-    localGridView.setOnItemClickListener(new zgo(this, paramInt));
+    postDelayed(new EmoView.2(this, paramInt, localGridView, localzvx), 1000L);
+    localGridView.setOnItemClickListener(new zvt(this, paramInt));
   }
   
   private void c(int paramInt)
@@ -141,23 +141,23 @@ public class EmoView
   {
     this.d = (paramInt + 1);
     c(paramInt);
-    if (this.jdField_a_of_type_Zhp != null) {
-      this.jdField_a_of_type_Zhp.a(paramInt);
+    if (this.jdField_a_of_type_Zwu != null) {
+      this.jdField_a_of_type_Zwu.a(paramInt);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 27) {
-      this.jdField_b_of_type_Zgq.a();
+      this.jdField_b_of_type_Zvv.a();
     }
     do
     {
       return;
       paramInt1 = (paramInt2 - 1) * 27 + paramInt1;
     } while (paramInt1 >= 107);
-    String str = zhb.b[zgs.b[paramInt1]];
-    this.jdField_b_of_type_Zgq.a(str);
+    String str = zwg.b[zvx.b[paramInt1]];
+    this.jdField_b_of_type_Zvv.a(str);
   }
   
   public void setNavgationVisible(boolean paramBoolean)
@@ -178,9 +178,9 @@ public class EmoView
     }
   }
   
-  public void setOnScreenChangeListener(zhp paramzhp)
+  public void setOnScreenChangeListener(zwu paramzwu)
   {
-    this.jdField_a_of_type_Zhp = paramzhp;
+    this.jdField_a_of_type_Zwu = paramzwu;
   }
 }
 

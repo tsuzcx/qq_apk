@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.secspy;
 
 import android.os.Handler;
-import bbit;
-import bbiu;
-import bfmf;
+import bcpl;
+import bcpm;
+import bguw;
 
 public class SecSpyFileManager$3
   implements Runnable
 {
-  public SecSpyFileManager$3(bbit parambbit, bbiu parambbiu, long paramLong) {}
+  public SecSpyFileManager$3(bcpl parambcpl, bcpm parambcpm, long paramLong) {}
   
   public void run()
   {
-    if (bbiu.a(this.jdField_a_of_type_Bbiu)) {
+    if (bcpm.a(this.jdField_a_of_type_Bcpm)) {
       return;
     }
-    float f = bbiu.a(this.jdField_a_of_type_Bbiu) / bbiu.b(this.jdField_a_of_type_Bbiu);
+    float f = bcpm.a(this.jdField_a_of_type_Bcpm) / bcpm.b(this.jdField_a_of_type_Bcpm);
     this.this$0.a(this.jdField_a_of_type_Long, 3, new Object[] { Integer.valueOf((int)(f * 100.0F)) });
     this.this$0.a.a().postDelayed(this, 20000L);
   }

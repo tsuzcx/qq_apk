@@ -1,65 +1,25 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.Comparator;
 
 public class xwd
-  extends TransProcessorHandler
+  implements Comparator<CommentEntry>
 {
-  public xwd(CommonPicUploadFragment paramCommonPicUploadFragment) {}
+  public xwd(xwc paramxwc) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.fileType != 24) || (localFileMsg.commandId != CommonPicUploadFragment.a(this.a, CommonPicUploadFragment.a(this.a)))) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (localFileMsg.fileMd5.equals(CommonPicUploadFragment.b(this.a)));
-      switch (paramMessage.what)
-      {
-      case 1004: 
-      default: 
-        return;
-      case 1003: 
-        if (QLog.isColorLevel()) {
-          QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send finished!" + CommonPicUploadFragment.a(this.a));
-        }
-        break;
-      }
-    } while (CommonPicUploadFragment.a(this.a));
-    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
-    try
-    {
-      paramMessage.mergeFrom(localFileMsg.bdhExtendInfo, 0, localFileMsg.bdhExtendInfo.length);
-      CommonPicUploadFragment.a(this.a, true);
-      CommonPicUploadFragment.b(this.a, localFileMsg.fileMd5);
-      CommonPicUploadFragment.c(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
-      CommonPicUploadFragment.d(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler mUuid=" + CommonPicUploadFragment.c(this.a) + ", mPicMd5=" + CommonPicUploadFragment.b(this.a) + ", mPicUrl=" + CommonPicUploadFragment.d(this.a));
-      }
-      CommonPicUploadFragment.a(this.a).sendEmptyMessage(1005);
-      return;
+    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
+      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
     {
-      for (;;)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
+      return -1;
+      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
+        return 1;
       }
+      return 0;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send error:" + localFileMsg.errorCode);
-    }
-    CommonPicUploadFragment.a(this.a).sendEmptyMessage(1003);
+    return 1;
   }
 }
 

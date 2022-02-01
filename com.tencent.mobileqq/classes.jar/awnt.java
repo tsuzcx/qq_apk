@@ -1,73 +1,79 @@
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.window.FloatMapWidget;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class awnt
-  implements View.OnClickListener
+class awnt
+  implements awiy
 {
-  public awnt(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  awnt(awns paramawns) {}
   
-  public void onClick(View paramView)
+  public void a(awit paramawit, int paramInt)
   {
-    Object localObject1;
-    if ((ChooseInterestTagActivity.a(this.a) == 3) || (ChooseInterestTagActivity.a(this.a) == 2) || (ChooseInterestTagActivity.a(this.a) == 1) || (ChooseInterestTagActivity.a(this.a) == 4))
-    {
-      localObject1 = (InterestTagInfo)paramView.getTag();
-      if (localObject1 != null)
-      {
-        ChooseInterestTagActivity.a(this.a).remove(localObject1);
-        ChooseInterestTagActivity.a(this.a, (InterestTagInfo)localObject1);
-        ChooseInterestTagActivity.b(this.a, (InterestTagInfo)localObject1);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "onKickOff: invoked. roomKey: " + paramawit + " mRoomKey: " + awns.a(this.a));
     }
-    for (;;)
+    QQToast.a(BaseApplicationImpl.context, "已在其他设备进行共享", 0).a();
+  }
+  
+  public void a(awit paramawit, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramawit, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
+    }
+    if (!paramawit.equals(awns.a(this.a))) {}
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      do
+      {
+        return;
+        paramawit = BaseActivity.sTopActivity;
+        if (paramInt1 != 10100) {
+          break;
+        }
+      } while ((paramawit == null) || (paramawit.isFinishing()));
+      awju.a(paramawit);
       return;
-      try
-      {
-        int[] arrayOfInt = new int[2];
-        paramView.getLocationInWindow(arrayOfInt);
-        if (arrayOfInt[0] <= 0) {
-          continue;
-        }
-        InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramView.getTag();
-        if (localInterestTagInfo == null) {
-          continue;
-        }
-        Paint localPaint = new Paint();
-        localPaint.setTextSize((float)(ChooseInterestTagActivity.a(this.a) * 14.0F + 0.5D));
-        localPaint.setColor(this.a.getResources().getColor(2131167072));
-        localPaint.setFakeBoldText(false);
-        localPaint.setAntiAlias(true);
-        Object localObject2 = localInterestTagInfo.tagName;
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = " ";
-        }
-        localObject2 = localObject1;
-        if (((String)localObject1).length() > 8) {
-          localObject2 = ((String)localObject1).substring(0, 8) + "...";
-        }
-        float f = localPaint.measureText((String)localObject2);
-        int i = (int)(ChooseInterestTagActivity.a(this.a) * 64.0F + 0.5D + f);
-        localObject1 = new awoj(this.a, arrayOfInt[0], i);
-        ((awoj)localObject1).a(ChooseInterestTagActivity.a(this.a));
-        ((awoj)localObject1).a(localInterestTagInfo);
-        ((awoj)localObject1).showAsDropDown(paramView, -(int)((i - 40.0F * ChooseInterestTagActivity.a(this.a)) / 2.0F), 10);
+    } while ((paramInt1 != 10101) || (paramawit == null) || (paramawit.isFinishing()));
+    awju.b(paramawit);
+  }
+  
+  public void a(awit paramawit, LocationRoom.Venue paramVenue, List<awir> paramList)
+  {
+    if (!paramawit.equals(awns.a(this.a)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareController", 2, new Object[] { "onUpdateUserLocations: invoked. ", " roomKey: ", paramawit, " mRoomKey: ", awns.a(this.a) });
       }
-      catch (Exception localException) {}
-      if (QLog.isDevelopLevel()) {
-        QLog.i("choose_interest_tag", 4, localException.getMessage());
+      return;
+    }
+    paramVenue = paramList.iterator();
+    while (paramVenue.hasNext())
+    {
+      paramList = (awir)paramVenue.next();
+      Bitmap localBitmap = this.a.a(paramList.a());
+      if (localBitmap != null)
+      {
+        localBitmap = bheg.c(localBitmap, 16, 16);
+        awns.a(this.a).a(paramList.a(), localBitmap);
       }
     }
+    awns.a(this.a).a(paramawit);
+  }
+  
+  public void b(awit paramawit, int paramInt)
+  {
+    if (!paramawit.equals(awns.a(this.a))) {}
+    while ((paramInt == 2) || (paramInt == 1) || (BaseActivity.sTopActivity == null)) {
+      return;
+    }
+    awju.a(BaseActivity.sTopActivity);
   }
 }
 

@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.mobileqq.soload.LoadParam;
+import java.util.Comparator;
 
-class bbzo
-  implements bbzh
+final class bbzo
+  implements Comparator<bbzd>
 {
-  public long a;
-  public bbzh a;
-  public LoadParam a;
-  
-  bbzo(bbzh parambbzh, long paramLong, LoadParam paramLoadParam)
+  public int a(bbzd parambbzd1, bbzd parambbzd2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Bbzh = parambbzh;
-    this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam = paramLoadParam;
-  }
-  
-  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
-  {
-    bbzm.a(paramInt, paramLoadExtResult, this.jdField_a_of_type_Long, this.jdField_a_of_type_Bbzh, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam);
+    long l1 = parambbzd1.c();
+    long l2 = parambbzd2.c();
+    if (l1 < l2) {}
+    do
+    {
+      return 1;
+      if (l1 > l2) {
+        return -1;
+      }
+      l1 = parambbzd1.b();
+      l2 = parambbzd2.b();
+    } while (l1 < l2);
+    if (l1 > l2) {
+      return -1;
+    }
+    return 0;
   }
 }
 

@@ -1,35 +1,39 @@
-public abstract class arti
+import android.graphics.Point;
+
+public final class arti
 {
-  public int a = 1;
-  public String e;
+  public float a;
+  public final int a;
+  public final long a;
+  public final Point a;
+  public float b;
   
-  public arti(int paramInt, String paramString)
+  public arti(long paramLong, Point paramPoint, int paramInt)
   {
-    this.a = paramInt;
-    this.e = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public boolean equals(Object paramObject)
+  public float a()
   {
-    if ((paramObject instanceof arti))
-    {
-      paramObject = (arti)paramObject;
-      if (this.e == null) {
-        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
-      }
-      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
-      {
-        return true;
-        return false;
-      }
-      return false;
-    }
-    return false;
+    return this.jdField_a_of_type_AndroidGraphicsPoint.x - this.jdField_a_of_type_Float;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+  }
+  
+  public float b()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsPoint.y - this.b;
   }
   
   public String toString()
   {
-    return this.e;
+    return "TouchPoint{mTime=" + this.jdField_a_of_type_Long + ", mPoint=" + this.jdField_a_of_type_AndroidGraphicsPoint + ", mDistanceOfError=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

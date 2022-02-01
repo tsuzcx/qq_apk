@@ -2,6 +2,8 @@ package cooperation.qqcircle.hippy;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -26,7 +28,10 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import cooperation.qqcircle.beans.QCircleHippyBean;
+import cooperation.qqcircle.events.QCircleOpenRewardAdEvent;
 import cooperation.qqcircle.events.QCircleRefreshHippyPageEvent;
+import cooperation.qqcircle.events.QCircleRewardAdResultEvent;
+import cooperation.qqcircle.proxy.QCircleInvokeProxy;
 import cooperation.qqcircle.report.QCircleQualityReporter;
 import cooperation.qqcircle.report.QCircleReportHelper;
 import cooperation.qqcircle.report.datong.QCircleDTParamBuilder;
@@ -37,9 +42,9 @@ import java.util.HashMap;
 import mqq.manager.TicketManager;
 import org.json.JSONException;
 import org.json.JSONObject;
-import thu;
-import vgn;
-import zbi;
+import tvg;
+import vvh;
+import zqn;
 
 public class QCircleHippyFragment
   extends ViolaFragment
@@ -91,11 +96,11 @@ public class QCircleHippyFragment
   private HashMap<String, Object> getUIConfig()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put(thu.b, Integer.valueOf(1));
-    localHashMap.put(thu.h, Boolean.valueOf(true));
-    localHashMap.put(thu.i, Boolean.valueOf(false));
-    localHashMap.put(thu.v, Boolean.valueOf(false));
-    localHashMap.put(thu.j, Boolean.valueOf(true));
+    localHashMap.put(tvg.b, Integer.valueOf(1));
+    localHashMap.put(tvg.h, Boolean.valueOf(true));
+    localHashMap.put(tvg.i, Boolean.valueOf(false));
+    localHashMap.put(tvg.v, Boolean.valueOf(false));
+    localHashMap.put(tvg.j, Boolean.valueOf(true));
     return localHashMap;
   }
   
@@ -125,7 +130,7 @@ public class QCircleHippyFragment
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("url", this.mDefaultH5Url);
-    vgn.a(BaseApplicationImpl.getContext(), "openwebview", localHashMap);
+    vvh.a(BaseApplicationImpl.getContext(), "openwebview", localHashMap);
     if (getActivity() != null) {
       getActivity().finish();
     }
@@ -143,6 +148,8 @@ public class QCircleHippyFragment
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(QCircleRefreshHippyPageEvent.class);
+    localArrayList.add(QCircleOpenRewardAdEvent.class);
+    localArrayList.add(QCircleRewardAdResultEvent.class);
     return localArrayList;
   }
   
@@ -180,7 +187,7 @@ public class QCircleHippyFragment
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    if (zbi.a()) {
+    if (zqn.a()) {
       addMaskLayer();
     }
     SimpleEventBus.getInstance().registerReceiver(this);
@@ -207,18 +214,28 @@ public class QCircleHippyFragment
       paramSimpleBaseEvent = (QCircleRefreshHippyPageEvent)paramSimpleBaseEvent;
       if ((!this.mModuleName.equals(paramSimpleBaseEvent.mModule)) || (this.mHippyQQEngine == null) || (this.mHippyQQEngine.getHippyEngine() == null)) {}
     }
-    try
+    do
     {
-      paramSimpleBaseEvent = new HippyMap();
-      paramSimpleBaseEvent.pushString("result", "call refresh hippy from native");
-      ((EventDispatcher)this.mHippyQQEngine.getHippyEngine().getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("refreshData", paramSimpleBaseEvent);
-      QLog.d("QCircleHippyFragment", 1, "notify hippy refresh page data success,module:" + this.mModuleName);
-      return;
-    }
-    catch (Exception paramSimpleBaseEvent)
-    {
-      QLog.e("QCircleHippyFragment", 1, "refresh hippy page fail!exception: " + paramSimpleBaseEvent.getMessage() + ",module:" + this.mModuleName);
-    }
+      try
+      {
+        paramSimpleBaseEvent = new HippyMap();
+        paramSimpleBaseEvent.pushString("result", "call refresh hippy from native");
+        ((EventDispatcher)this.mHippyQQEngine.getHippyEngine().getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("refreshData", paramSimpleBaseEvent);
+        QLog.d("QCircleHippyFragment", 1, "notify hippy refresh page data success,module:" + this.mModuleName);
+        return;
+      }
+      catch (Exception paramSimpleBaseEvent)
+      {
+        QLog.e("QCircleHippyFragment", 1, "refresh hippy page fail!exception: " + paramSimpleBaseEvent.getMessage() + ",module:" + this.mModuleName);
+        return;
+      }
+      if ((paramSimpleBaseEvent instanceof QCircleOpenRewardAdEvent))
+      {
+        QCircleInvokeProxy.invoke(2, 4, new Object[] { getActivity(), ((QCircleOpenRewardAdEvent)paramSimpleBaseEvent).mParams });
+        return;
+      }
+    } while ((!(paramSimpleBaseEvent instanceof QCircleRewardAdResultEvent)) || (TextUtils.isEmpty(((QCircleRewardAdResultEvent)paramSimpleBaseEvent).mToast)));
+    new Handler(Looper.getMainLooper()).post(new QCircleHippyFragment.3(this, paramSimpleBaseEvent));
   }
 }
 

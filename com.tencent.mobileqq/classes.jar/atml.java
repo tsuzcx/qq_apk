@@ -1,27 +1,20 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-
-public class atml
-  implements View.OnTouchListener
+public abstract interface atml
 {
-  public atml(ForwardFileOption paramForwardFileOption, View paramView) {}
+  public abstract String a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0) {
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(25, 0, 0, 0));
-      }
-    }
-    while ((paramMotionEvent.getAction() != 1) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return false;
-    }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(0, 0, 0, 0));
-    return false;
-  }
+  public abstract void a(atmj paramatmj);
+  
+  public abstract void a(atmk paramatmk);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
 }
 
 

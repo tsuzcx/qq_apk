@@ -1,100 +1,176 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ReqGetConfig;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.RespGetConfig;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class anae
-  implements bbnm
+  implements ailp
 {
-  private AppInterface a;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
+  public RelativeLayout a;
+  public TextView a;
+  public WeakReference<Context> a;
+  private Animation b;
+  public RelativeLayout b;
+  public TextView b;
+  public RelativeLayout c;
   
-  public anae(AppInterface paramAppInterface)
+  public anae(Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    this.a = paramAppInterface;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-1);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = new RelativeLayout((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    paramContext = new RelativeLayout.LayoutParams(-1, AIOUtils.dp2px(44.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetRelativeLayout, paramContext);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(16.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(anvx.a(2131701625));
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(AIOUtils.dp2px(8.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    paramOnClickListener = a(2130838568);
+    paramOnClickListener.setBounds(0, 0, paramOnClickListener.getIntrinsicWidth(), paramOnClickListener.getIntrinsicHeight());
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramOnClickListener, null, null, null);
+    paramContext = new RelativeLayout.LayoutParams(-2, AIOUtils.dp2px(44.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    paramContext.addRule(15);
+    paramContext.leftMargin = AIOUtils.dp2px(12.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    paramContext.addRule(9);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
+    Object localObject = new ImageView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(15);
+    localLayoutParams.addRule(11);
+    localLayoutParams.rightMargin = AIOUtils.dp2px(12.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    paramContext = new StateListDrawable();
+    Drawable localDrawable1 = a(2130838669);
+    Drawable localDrawable2 = a(2130838670);
+    paramContext.addState(new int[] { 16842919, 16842910 }, localDrawable2);
+    paramContext.addState(new int[0], localDrawable1);
+    ((ImageView)localObject).setImageDrawable(paramContext);
+    ((ImageView)localObject).setDuplicateParentStateEnabled(true);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView((View)localObject, localLayoutParams);
+    this.c = new RelativeLayout((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    localObject = new RelativeLayout.LayoutParams(-1, AIOUtils.dp2px(44.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.c, (ViewGroup.LayoutParams)localObject);
+    this.jdField_b_of_type_AndroidWidgetTextView = new TextView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(16.0F);
+    this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(anvx.a(2131701626));
+    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(AIOUtils.dp2px(8.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(paramOnClickListener, null, null, null);
+    paramOnClickListener = new RelativeLayout.LayoutParams(-2, AIOUtils.dp2px(44.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
+    paramOnClickListener.addRule(15);
+    paramOnClickListener.leftMargin = AIOUtils.dp2px(12.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    paramOnClickListener.addRule(9);
+    this.c.addView(this.jdField_b_of_type_AndroidWidgetTextView, paramOnClickListener);
+    paramOnClickListener = new ImageView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    localObject = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject).addRule(15);
+    ((RelativeLayout.LayoutParams)localObject).addRule(11);
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.dp2px(12.0F, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+    paramOnClickListener.setImageDrawable(paramContext);
+    paramOnClickListener.setDuplicateParentStateEnabled(true);
+    this.c.addView(paramOnClickListener, (ViewGroup.LayoutParams)localObject);
+    this.c.setVisibility(4);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -1.0F, 1, 0.0F);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(500L);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(500L);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(false);
+    paramContext = new AlphaAnimation(0.0F, 1.0F);
+    paramContext.setDuration(500L);
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(paramContext);
+    paramContext = new ScaleAnimation(0.8F, 1.0F, 0.8F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramContext.setDuration(500L);
+    paramContext.setInterpolator(new OvershootInterpolator(1.3F));
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(paramContext);
   }
   
   public int a()
   {
-    return 1;
+    return 40;
   }
   
-  public ReqItem a(int paramInt)
+  public Drawable a(int paramInt)
   {
-    QLog.i("ReqDpcInfoNewItem", 1, "getCheckUpdateItemData");
-    ReqItem localReqItem = new ReqItem();
-    localReqItem.eServiceID = 117;
-    localReqItem.cOperType = 1;
-    byte[] arrayOfByte1 = DeviceProfileManager.a(this.a).toByteArray();
-    byte[] arrayOfByte2 = new byte[arrayOfByte1.length + 4];
-    PkgTools.DWord2Byte(arrayOfByte2, 0, arrayOfByte1.length + 4);
-    PkgTools.copyData(arrayOfByte2, 4, arrayOfByte1, arrayOfByte1.length);
-    localReqItem.vecParam = arrayOfByte2;
-    return localReqItem;
+    try
+    {
+      Drawable localDrawable = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDrawable(paramInt);
+      return localDrawable;
+    }
+    catch (Throwable localThrowable)
+    {
+      ColorDrawable localColorDrawable = new ColorDrawable(-1);
+      localThrowable.printStackTrace();
+      QLog.e("CmGameTipsBar", 2, localThrowable.getMessage());
+      return localColorDrawable;
+    }
   }
   
-  public void a(RespItem paramRespItem)
+  public View a(Object... paramVarArgs)
   {
-    QLog.i("ReqDpcInfoNewItem", 1, "handleCheckUpdateItemData" + paramRespItem.cResult);
-    byte[] arrayOfByte;
-    int i;
-    if (paramRespItem.eServiceID == 117)
-    {
-      if (paramRespItem.cResult != 2) {
-        break label224;
-      }
-      arrayOfByte = bgau.b(paramRespItem.vecUpdate);
-      if (arrayOfByte != null) {
-        paramRespItem = new ConfigurationService.RespGetConfig();
-      }
-    }
-    else
-    {
-      try
-      {
-        paramRespItem.mergeFrom(arrayOfByte);
-        if ((paramRespItem != null) && (paramRespItem.result.get() == 0)) {
-          if ((paramRespItem.config_list != null) && (paramRespItem.config_list.size() > 0))
-          {
-            DeviceProfileManager.a().a(paramRespItem, this.a.getCurrentAccountUin());
-            i = 1;
-            if (i == 0) {
-              DeviceProfileManager.a().a(4);
-            }
-            return;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramRespItem)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ReqDpcInfoNewItem", 2, "error: " + paramRespItem.getMessage());
-          }
-          paramRespItem.printStackTrace();
-          paramRespItem = null;
-        }
-        QLog.i("ReqDpcInfoNewItem", 1, "respGetConfig has no contentlist");
-        if ((this.a instanceof QQAppInterface)) {
-          ((vkz)((QQAppInterface)this.a).getBusinessHandler(98)).notifyUI(1023, true, Boolean.valueOf(false));
-        }
-      }
-    }
-    for (;;)
-    {
-      i = 0;
-      break;
-      label224:
-      QLog.i("ReqDpcInfoNewItem", 1, "error happend item.cResult = " + paramRespItem.cResult);
-    }
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.reset();
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.c.setVisibility(0);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation.reset();
+    this.c.clearAnimation();
+    this.c.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 15;
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation.reset();
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+    this.c.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.reset();
+    this.c.clearAnimation();
+    this.c.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 

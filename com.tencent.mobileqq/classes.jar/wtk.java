@@ -1,34 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class wtk<T>
-  extends SimpleObserver<T>
+public class wtk
+  extends wfg
 {
-  private wtk(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public List<ycc> a = new ArrayList();
   
-  public void onCancel()
+  public wtk(qqstory_service.RspProfileStoryFeedIdList paramRspProfileStoryFeedIdList)
   {
-    super.onCancel();
-    xvv.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  CANCEL", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    xvv.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  ERROR", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
-  }
-  
-  public void onNext(T paramT)
-  {
-    super.onNext(paramT);
-    xvv.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s] DONE", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    super(paramRspProfileStoryFeedIdList.result, paramRspProfileStoryFeedIdList.is_end, paramRspProfileStoryFeedIdList.next_cookie);
+    paramRspProfileStoryFeedIdList = paramRspProfileStoryFeedIdList.feed_seq_info_list.get().iterator();
+    while (paramRspProfileStoryFeedIdList.hasNext())
+    {
+      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspProfileStoryFeedIdList.next();
+      this.a.add(new ycc(localFeedSeqInfo));
+    }
   }
 }
 

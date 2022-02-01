@@ -1,43 +1,225 @@
-import android.util.Log;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.VideoViewGroup;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class sxd
+  extends sxl
+  implements View.OnClickListener, qdh
 {
-  private static String jdField_a_of_type_JavaLangString = "TimeUtil";
-  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
+  View a;
+  public ImageView a;
+  public TextView a;
+  public KandianUrlImageView a;
+  public VideoViewGroup a;
+  public spk a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public KandianUrlImageView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
   
-  public static long a(String paramString)
+  public sxd(Context paramContext, qdc paramqdc)
   {
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+    super(paramContext, paramqdc);
+  }
+  
+  private void a(View paramView)
+  {
+    if ((paramView == null) || (this.jdField_a_of_type_Qdc == null)) {}
+    BaseArticleInfo localBaseArticleInfo;
+    do
     {
-      long l1 = System.currentTimeMillis();
-      long l2 = l1 - ((Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).longValue();
-      Log.d(jdField_a_of_type_JavaLangString, paramString + " end spent time : " + l2 + "      end time " + l1);
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      return l2;
+      return;
+      localBaseArticleInfo = a(paramView);
+    } while (localBaseArticleInfo == null);
+    if ((six.i() == 1) && (this.jdField_a_of_type_Qdc.a().a() != null))
+    {
+      spg localspg = this.jdField_a_of_type_Qdc.a().a();
+      if ((localspg != null) && (localspg.a() != null))
+      {
+        localspg.a().c(paramView);
+        return;
+      }
     }
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-    Log.d(jdField_a_of_type_JavaLangString, paramString + " start time : " + System.currentTimeMillis());
-    return -1L;
+    if ((localBaseArticleInfo != null) && (localBaseArticleInfo.mSimpleVideoColumnInfo != null) && (localBaseArticleInfo.mSimpleVideoColumnInfo.b != null) && (localBaseArticleInfo.mSimpleVideoColumnInfo.b.jdField_a_of_type_Int != 3))
+    {
+      six.a(this.jdField_a_of_type_Qdc.a(), localBaseArticleInfo.mSimpleVideoColumnInfo.b);
+      if (localBaseArticleInfo.mSimpleVideoColumnInfo.b != null) {
+        break label184;
+      }
+    }
+    label184:
+    for (paramView = null;; paramView = localBaseArticleInfo.mSimpleVideoColumnInfo.b.e)
+    {
+      a(this.jdField_a_of_type_Qdc, localBaseArticleInfo, localBaseArticleInfo.mSimpleVideoColumnInfo, 1, paramView);
+      return;
+      paramView = a(paramView);
+      if (paramView == null) {
+        break;
+      }
+      this.jdField_a_of_type_Qdc.a().a(paramView.a(), localBaseArticleInfo, false, false);
+      break;
+    }
   }
   
-  public static long b(String paramString)
+  private void b(View paramView)
   {
-    paramString = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-    if (paramString == null) {
-      return -1L;
+    BaseArticleInfo localBaseArticleInfo = a(paramView);
+    if ((localBaseArticleInfo != null) && (this.jdField_a_of_type_Qdc != null) && (localBaseArticleInfo.mSimpleVideoColumnInfo != null))
+    {
+      if ((localBaseArticleInfo.mSimpleVideoColumnInfo.a == null) || (localBaseArticleInfo.mSimpleVideoColumnInfo.a.jdField_a_of_type_Int == 3)) {
+        break label92;
+      }
+      six.a(this.jdField_a_of_type_Qdc.a(), localBaseArticleInfo.mSimpleVideoColumnInfo.a);
+      if (localBaseArticleInfo.mSimpleVideoColumnInfo.a != null) {
+        break label124;
+      }
     }
-    return paramString.longValue();
+    label92:
+    label124:
+    for (paramView = null;; paramView = localBaseArticleInfo.mSimpleVideoColumnInfo.a.e)
+    {
+      a(this.jdField_a_of_type_Qdc, localBaseArticleInfo, localBaseArticleInfo.mSimpleVideoColumnInfo, 2, paramView);
+      return;
+      paramView = a(paramView);
+      if (paramView == null) {
+        break;
+      }
+      this.jdField_a_of_type_Qdc.a().a(paramView.a(), localBaseArticleInfo, false, false);
+      break;
+    }
   }
   
-  public static long c(String paramString)
+  private void c(View paramView)
   {
-    long l = -1L;
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      l = ((Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString)).longValue();
+    BaseArticleInfo localBaseArticleInfo = a(paramView);
+    if ((localBaseArticleInfo != null) && (this.jdField_a_of_type_Qdc != null) && (localBaseArticleInfo.mSimpleVideoColumnInfo != null) && (localBaseArticleInfo.mSimpleVideoColumnInfo.d != null))
+    {
+      six.a(this.jdField_a_of_type_Qdc.a(), localBaseArticleInfo.mSimpleVideoColumnInfo.d);
+      if (localBaseArticleInfo.mSimpleVideoColumnInfo.d != null) {
+        break label78;
+      }
     }
-    return l;
+    label78:
+    for (paramView = null;; paramView = localBaseArticleInfo.mSimpleVideoColumnInfo.d.e)
+    {
+      a(this.jdField_a_of_type_Qdc, localBaseArticleInfo, localBaseArticleInfo.mSimpleVideoColumnInfo, 3, paramView);
+      return;
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560420, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131376947);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379001));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372923));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365915));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131368501));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup = ((VideoViewGroup)paramViewGroup.findViewById(2131380944));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131372277));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372278));
+    this.e = ((TextView)paramViewGroup.findViewById(2131369734));
+    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131379056);
+    this.jdField_c_of_type_AndroidViewView = paramViewGroup.findViewById(2131379083);
+    this.jdField_d_of_type_AndroidViewView = paramViewGroup.findViewById(2131363691);
+    this.f = ((TextView)paramViewGroup.findViewById(2131366716));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131366717));
+    this.g = ((TextView)paramViewGroup.findViewById(2131366718));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131380472));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setTag(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.setTag(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.setOnClickListener(this);
+    this.jdField_d_of_type_AndroidViewView.setTag(this);
+    this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setTag(this);
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setOnClickListener(this);
+    this.g.setTag(this);
+    this.g.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView.setTag(this);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    paramViewGroup.setTag(this);
+    return paramViewGroup;
+  }
+  
+  public spk a()
+  {
+    return this.jdField_a_of_type_Spk;
+  }
+  
+  public boolean a(View paramView)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (!six.a(a(paramView))) {}
+    int i;
+    float f1;
+    do
+    {
+      do
+      {
+        return false;
+        i = six.h();
+      } while (i == 0);
+      f1 = pjr.a(paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video", 2, "BigImgVideoItemViewHolder() canAutoPlay percent:" + f1);
+      }
+      if (i == 1)
+      {
+        if ((sge.a().e()) && (f1 >= 70.0F)) {}
+        for (;;)
+        {
+          return bool1;
+          bool1 = false;
+        }
+      }
+    } while (i != 2);
+    if (f1 >= 70.0F) {}
+    for (bool1 = bool2;; bool1 = false) {
+      return bool1;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    qdc.a(paramView);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      a(paramView);
+      continue;
+      b(paramView);
+      continue;
+      c(paramView);
+    }
   }
 }
 

@@ -1,15 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
+import java.util.HashMap;
 
-public class akxr
-  implements ValueAnimator.AnimatorUpdateListener
+class akxr
+  implements akxd
 {
-  public akxr(RotationSeekBar paramRotationSeekBar) {}
+  akxr(akxq paramakxq, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
   {
-    RotationSeekBar.b(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramHashMap);
+    this.jdField_a_of_type_Akxq.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import ampm;
-import ampq;
+import anrz;
+import ansd;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -13,7 +13,7 @@ class ConditionSearchManager$2$1
   
   public void run()
   {
-    ampm.a(this.a.this$0, false);
+    anrz.a(this.a.this$0, false);
     if (this.a.this$0.c) {
       for (;;)
       {
@@ -28,17 +28,17 @@ class ConditionSearchManager$2$1
           if (!((Iterator)localObject).hasNext()) {
             continue;
           }
-          localampq = (ampq)((Iterator)localObject).next();
-          if (ampm.a(this.a.this$0) == null) {
+          localansd = (ansd)((Iterator)localObject).next();
+          if (anrz.a(this.a.this$0) == null) {
             continue;
           }
           bool = true;
         }
         catch (Exception localException)
         {
-          ampq localampq;
+          ansd localansd;
           QLog.e("ConditionSearch.Manager", 1, "updateLocal callback fail.", localException);
-          if ((!this.a.this$0.d) || (ampm.a(this.a.this$0) == null)) {
+          if ((!this.a.this$0.d) || (anrz.a(this.a.this$0) == null)) {
             continue;
           }
           this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard);
@@ -50,13 +50,13 @@ class ConditionSearchManager$2$1
           this.a.this$0.b(this.a.this$0.jdField_a_of_type_JavaLangObject);
           return;
         }
-        localampq.a(2, bool);
+        localansd.a(2, bool);
       }
     }
     if (QLog.isColorLevel()) {
       QLog.d("ConditionSearch.Manager", 2, "updateLocal | SearchActivity is not running");
     }
-    ampm.a(this.a.this$0, null);
+    anrz.a(this.a.this$0, null);
   }
 }
 

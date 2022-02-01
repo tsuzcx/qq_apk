@@ -1,99 +1,161 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.os.Handler;
+import android.text.SpannableString;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.oidb_0xbfe.RspBody;
 
 public class qft
-  implements ViewBase.OnClickListener
+  extends qhj
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bjnw jdField_a_of_type_Bjnw;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private rgc jdField_a_of_type_Rgc;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private qfv jdField_a_of_type_Qfv;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public qft(ArticleInfo paramArticleInfo, Context paramContext)
+  public qft(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qxn paramqxn, Handler paramHandler)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a(paramArticleInfo);
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqxn, paramHandler);
   }
   
-  private void a(ArticleInfo paramArticleInfo)
+  public static void a(String paramString)
   {
-    if ((paramArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.size() > 0)) {
-      this.jdField_a_of_type_Rgc = ((rgc)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.get(0));
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    Object localObject = pay.a();
-    if (this.jdField_a_of_type_Rgc != null)
+    int i;
+    switch (NetworkUtil.getSystemNetwork(BaseApplicationImpl.getApplication().getApplicationContext()))
     {
-      localObject = ((AppRuntime)localObject).getAccount();
-      if (QLog.isColorLevel()) {
-        QLog.d("OnTopicRecommendHeaderFollowClickListener", 2, "before request0x978 articleInfo articleID = ，isfollow = " + paramBoolean + " businessId = " + this.jdField_a_of_type_Rgc.a);
-      }
-      if (paramBoolean) {
-        pkm.a().a().a((String)localObject, Long.toString(this.jdField_a_of_type_Rgc.a), true, "", new qfw(this, paramBoolean), 3);
-      }
+    default: 
+      i = 2;
     }
-    else
+    for (;;)
     {
+      olh.a(null, "", paramString, paramString, 0, 0, "" + i, pkh.a(), "0", null, false);
       return;
+      i = 1;
+      continue;
+      i = 0;
     }
-    pkm.a().a().a((String)localObject, Long.toString(this.jdField_a_of_type_Rgc.a), false, "", new qfx(this, paramBoolean), 3);
   }
   
-  private void b()
+  public static CharSequence b()
   {
-    if (this.jdField_a_of_type_Rgc == null) {}
+    Object localObject = anvx.a(2131704339);
+    int i = ((String)localObject).indexOf("领取1G流量");
+    localObject = new SpannableString((CharSequence)localObject);
+    ((SpannableString)localObject).setSpan(new qfu(), i, i + 6, 33);
+    return localObject;
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool = true;
+    paramToServiceMsg = new oidb_0xbfe.RspBody();
+    int i = qxp.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    QLog.d("FreeNetFlowInfoModule", 2, new Object[] { "handle0xBe6FreeNetFlowInfo result = ", Integer.valueOf(i) });
+    if (i == 0) {
+      if (paramToServiceMsg.has())
+      {
+        if (this.jdField_a_of_type_Qfv == null) {
+          this.jdField_a_of_type_Qfv = new qfv();
+        }
+        if (paramToServiceMsg.uint32_receive_status.has()) {
+          this.jdField_a_of_type_Qfv.jdField_a_of_type_Int = paramToServiceMsg.uint32_receive_status.get();
+        }
+        if (paramToServiceMsg.bytes_jump_url.has()) {
+          this.jdField_a_of_type_Qfv.jdField_a_of_type_JavaLangString = paramToServiceMsg.bytes_jump_url.get().toStringUtf8();
+        }
+        if (paramToServiceMsg.uint32_flag.has())
+        {
+          paramFromServiceMsg = this.jdField_a_of_type_Qfv;
+          if (paramToServiceMsg.uint32_flag.get() != 1) {
+            break label223;
+          }
+          paramFromServiceMsg.jdField_a_of_type_Boolean = bool;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("FreeNetFlowInfoModule", 2, "free netflow, status: " + this.jdField_a_of_type_Qfv.jdField_a_of_type_Int + ", jumpUrl: " + this.jdField_a_of_type_Qfv.jdField_a_of_type_JavaLangString + ", isActive: " + this.jdField_a_of_type_Qfv.jdField_a_of_type_Boolean);
+        }
+      }
+    }
+    label223:
     do
     {
       return;
-      if (this.jdField_a_of_type_Rgc.c != 1) {
-        break;
-      }
-    } while (pay.v(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
-    a();
-    return;
-    a(true);
-    if (!pay.v(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
+      bool = false;
+      break;
+      this.jdField_a_of_type_Boolean = true;
+    } while (!QLog.isColorLevel());
+    QLog.d("FreeNetFlowInfoModule", 2, "get free netflow error, result code: " + paramFromServiceMsg.getResultCode());
+  }
+  
+  public CharSequence a()
+  {
+    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
+      this.jdField_a_of_type_JavaLangCharSequence = b();
+    }
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  public String a()
+  {
+    Object localObject = null;
+    if (this.jdField_a_of_type_Qfv != null)
     {
-      str1 = pay.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      String str2 = pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID, pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID, NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidContentContext), str1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessId + "");
-      odq.a(null, str1, "0X8008A61", "0X8008A61", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID), str2, false);
-      pgw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      String str = this.jdField_a_of_type_Qfv.jdField_a_of_type_JavaLangString;
+      localObject = str;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("FreeNetFlowInfoModule", 2, "get url from freeNetFlow: " + str);
+        localObject = str;
+      }
+    }
+    return localObject;
+  }
+  
+  public void a()
+  {
+    a(false);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xbfe")) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+    if (!paramBoolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      if (QLog.isColorLevel()) {
+        QLog.d("FreeNetFlowInfoModule", 2, "setShowingFreeNetFlow: " + paramBoolean);
+      }
+      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Qfv != null)) {
+        this.jdField_a_of_type_Qfv.a();
+      }
       return;
     }
-    if (uhv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID)) {}
-    for (String str1 = "0X800941D";; str1 = "0X80080EC")
-    {
-      pgw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, str1, str1, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-      pkm.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      break;
-    }
   }
   
-  protected void a()
+  public boolean a()
   {
-    this.jdField_a_of_type_Bjnw = ((bjnw)bjon.a(this.jdField_a_of_type_AndroidContentContext, null));
-    this.jdField_a_of_type_Bjnw.a(2131694818, 3);
-    this.jdField_a_of_type_Bjnw.c(2131690620);
-    this.jdField_a_of_type_Bjnw.setOnDismissListener(new qfu(this));
-    this.jdField_a_of_type_Bjnw.a(new qfv(this));
-    if (!this.jdField_a_of_type_Bjnw.isShowing()) {
-      this.jdField_a_of_type_Bjnw.show();
-    }
+    return (!this.b) && (this.jdField_a_of_type_Qfv != null) && (this.jdField_a_of_type_Qfv.a());
   }
   
-  public void onClick(ViewBase paramViewBase)
+  public boolean b()
   {
-    b();
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

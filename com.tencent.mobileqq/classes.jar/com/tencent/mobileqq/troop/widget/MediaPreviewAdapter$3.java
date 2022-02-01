@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.troop.widget;
 
-import bffh;
-import bffj;
+import bgno;
+import bgnq;
 import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
 import java.io.File;
 
 public class MediaPreviewAdapter$3
   implements Runnable
 {
-  public MediaPreviewAdapter$3(bffh parambffh, bffj parambffj, int paramInt, File paramFile, MediaPreviewInfo paramMediaPreviewInfo) {}
+  public MediaPreviewAdapter$3(bgno parambgno, bgnq parambgnq, int paramInt, File paramFile, MediaPreviewInfo paramMediaPreviewInfo) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Bffj.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bffj.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo.a);
+    this.this$0.a(this.jdField_a_of_type_Bgnq.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bgnq.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo.a);
   }
 }
 

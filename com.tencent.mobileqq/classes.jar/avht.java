@@ -1,10 +1,14 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.qphone.base.util.QLog;
 
-class avht
+public class avht
 {
-  long jdField_a_of_type_Long;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  long b;
+  public void a(MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(avia.a, 2, "onPreAddedMsg");
+    }
+  }
 }
 
 

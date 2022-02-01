@@ -1,41 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
-class auxk
-  extends auxp
+public class auxk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (String.valueOf(1130).equals(paramString))) {
-      return null;
-    }
-    paramQQAppInterface = ((azvi)paramQQAppInterface.getManager(36)).a(0, paramString);
-    if ((RedTouch.a(paramQQAppInterface)) && (paramQQAppInterface.type.get() != 5) && (paramQQAppInterface.red_display_info.has()) && (paramQQAppInterface.red_display_info.get() != null) && (paramQQAppInterface.red_display_info.red_type_info.has()) && (paramQQAppInterface.red_display_info.red_type_info.get() != null))
-    {
-      paramString = paramQQAppInterface.red_display_info.red_type_info.get().iterator();
-      while (paramString.hasNext())
-      {
-        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramString.next();
-        int i = localRedTypeInfo.red_type.get();
-        if ((i == 11) || (i == 17) || (i == 16)) {
-          localRedTypeInfo.red_type.set(0);
-        }
-      }
-    }
-    return paramQQAppInterface;
-  }
+  public auxk(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramRedTouch.a(paramAppInfo);
+    int i = 1;
+    bkxr.a(true, paramBoolean);
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if (paramBoolean) {}
+    for (;;)
+    {
+      bdla.b(null, "CliOper", "", str, "0X800A6E3", "0X800A6E3", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 0;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import alfm;
-import alfn;
+import amdi;
+import amdj;
 import android.os.HandlerThread;
 import android.os.Looper;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -9,17 +9,17 @@ import com.tencent.mobileqq.app.ThreadManager;
 public class VipSpecialCareHandler$1
   implements Runnable
 {
-  public VipSpecialCareHandler$1(alfm paramalfm) {}
+  public VipSpecialCareHandler$1(amdi paramamdi) {}
   
   public void run()
   {
-    alfm.a(this.this$0, ThreadManager.newFreeHandlerThread("special-timer", 0));
-    alfm.a(this.this$0).start();
-    Looper localLooper = alfm.a(this.this$0).getLooper();
+    amdi.a(this.this$0, ThreadManager.newFreeHandlerThread("special-timer", 0));
+    amdi.a(this.this$0).start();
+    Looper localLooper = amdi.a(this.this$0).getLooper();
     if (localLooper == null) {
       return;
     }
-    alfm.a(this.this$0, new alfn(this, localLooper));
+    amdi.a(this.this$0, new amdj(this, localLooper));
   }
 }
 

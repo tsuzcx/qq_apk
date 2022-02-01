@@ -1,13 +1,13 @@
 package com.tencent.gdtad.api;
 
-import abkp;
-import abkq;
-import abkr;
-import abky;
-import abkz;
-import abla;
-import ablb;
-import abrl;
+import acaf;
+import acag;
+import acah;
+import acao;
+import acap;
+import acaq;
+import acar;
+import acho;
 import android.content.Context;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -21,22 +21,22 @@ public abstract class GdtAd
 {
   private static int jdField_a_of_type_Int;
   private static long jdField_a_of_type_Long = -2147483648L;
-  private WeakReference<abla> listener;
-  private abkq loadListener = new abky(this);
+  private WeakReference<acaq> listener;
+  private acag loadListener = new acao(this);
   private long loadedTimeMillis = -2147483648L;
-  private abkp loader;
+  private acaf loader;
   private int status = 0;
   
-  public GdtAd(ablb paramablb)
+  public GdtAd(acar paramacar)
   {
-    if (paramablb == null)
+    if (paramacar == null)
     {
-      abrl.d("GdtAd", "constructor");
+      acho.d("GdtAd", "constructor");
       return;
     }
-    abkr localabkr = new abkr();
-    localabkr.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramablb.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
-    this.loader = new abkp(localabkr, new WeakReference(this.loadListener));
+    acah localacah = new acah();
+    localacah.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramacar.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
+    this.loader = new acaf(localacah, new WeakReference(this.loadListener));
   }
   
   private void a()
@@ -45,10 +45,10 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.2(this, localWeakReference));
   }
   
-  private void a(abkz paramabkz)
+  private void a(acap paramacap)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    new Handler().post(new GdtAd.1(this, localWeakReference, paramabkz));
+    new Handler().post(new GdtAd.1(this, localWeakReference, paramacap));
   }
   
   public com.tencent.gdtad.aditem.GdtAd getAd()
@@ -96,12 +96,12 @@ public abstract class GdtAd
     return 0;
   }
   
-  public abkp getGdtAdLoader()
+  public acaf getGdtAdLoader()
   {
     return this.loader;
   }
   
-  public abstract ablb getParams();
+  public abstract acar getParams();
   
   protected void init()
   {
@@ -133,7 +133,7 @@ public abstract class GdtAd
     if (paramContext == null) {}
     for (;;)
     {
-      abrl.d("GdtAd", String.format("load error, status:%d", new Object[] { Integer.valueOf(this.status) }));
+      acho.d("GdtAd", String.format("load error, status:%d", new Object[] { Integer.valueOf(this.status) }));
       return false;
       if ((isValid()) && (getParams().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet != null) && ((this.status == 0) || (this.status == 3)))
       {
@@ -144,7 +144,7 @@ public abstract class GdtAd
           break label124;
         }
         this.status = 3;
-        a(new abkz(2));
+        a(new acap(2));
       }
     }
     jdField_a_of_type_Int = 0;
@@ -174,7 +174,7 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.3(this, localWeakReference));
   }
   
-  public void setListener(WeakReference<abla> paramWeakReference)
+  public void setListener(WeakReference<acaq> paramWeakReference)
   {
     this.listener = paramWeakReference;
   }

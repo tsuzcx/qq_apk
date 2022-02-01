@@ -39,9 +39,9 @@ class QQCustomDialogThreeBtns$1
     QQCustomDialogThreeBtns.Holder localHolder;
     if (paramView == null)
     {
-      paramView = this.this$0.inflater.inflate(2131559004, null);
+      paramView = this.this$0.inflater.inflate(2131559031, null);
       localHolder = new QQCustomDialogThreeBtns.Holder(this.this$0, null);
-      localHolder.text = ((TextView)paramView.findViewById(2131369017));
+      localHolder.text = ((TextView)paramView.findViewById(2131369180));
       paramView.setTag(localHolder);
     }
     for (;;)
@@ -62,7 +62,7 @@ class QQCustomDialogThreeBtns$1
         if (this.this$0.items.length != 1) {
           break label232;
         }
-        localHolder.text.setBackgroundResource(2130839583);
+        localHolder.text.setBackgroundResource(2130839604);
       }
       for (;;)
       {
@@ -71,9 +71,9 @@ class QQCustomDialogThreeBtns$1
         return paramView;
         label232:
         if (paramInt == 0) {
-          localHolder.text.setBackgroundResource(2130839584);
+          localHolder.text.setBackgroundResource(2130839605);
         } else if (paramInt == this.this$0.items.length - 1) {
-          localHolder.text.setBackgroundResource(2130839582);
+          localHolder.text.setBackgroundResource(2130839603);
         }
       }
     }

@@ -1,53 +1,83 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.PastablePwdEditText;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.io.File;
 
 public class akpo
-  implements TextWatcher
+  extends akmu
 {
-  public akpo(LoginView paramLoginView) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
   
-  public void afterTextChanged(Editable paramEditable)
+  akpo(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    LoginView.a(this.a, null);
-    LoginView.c(this.a);
+    super(paramNewPhotoPreviewActivity);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  protected void d()
   {
-    LoginView.a(this.a, paramCharSequence.toString());
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramCharSequence = paramCharSequence.toString();
-      if ((paramCharSequence != null) && (LoginView.a(this.a) != null) && (LoginView.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
-        BaseApplicationImpl.sApplication.refreAccountList();
+      zac.a(this.mActivity, this.mPhotoCommonData.selectedPhotoList);
+      ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setClickable(true);
+      return;
+    }
+    super.d();
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("from_tribe_slideshow", false);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("from_tribe_class_name");
+    ((akmq)this.mOtherCommonData).a(this.jdField_a_of_type_Boolean, this.mPhotoCommonData);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 == 10012)
+    {
+      if ((paramInt2 == -1) && (this.jdField_a_of_type_Boolean))
+      {
+        ((NewPhotoPreviewActivity)this.mActivity).setResult(paramInt2, paramIntent);
+        ((NewPhotoPreviewActivity)this.mActivity).finish();
       }
-      LoginView.a(this.a, null);
-      if ((LoginView.a(this.a) == null) || (LoginView.a(this.a).length() == 0)) {}
       do
       {
-        return;
-        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != LoginView.a(this.a).length() + 1))
+        do
         {
-          BaseApplicationImpl.sApplication.refreAccountList();
           return;
-        }
-        if ((!paramCharSequence.substring(0, LoginView.a(this.a).length()).equals(LoginView.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText == null)) {
-          break;
-        }
-        paramCharSequence = paramCharSequence.substring(LoginView.a(this.a).length());
-      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText(paramCharSequence);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(1);
-      LoginView.c(this.a);
+        } while (!this.jdField_a_of_type_Boolean);
+        paramIntent = paramIntent.getStringExtra("PhotoConst.FROM_QQSTORY_SLIDESHOW_DATA");
+      } while (TextUtils.isEmpty(paramIntent));
+      FileUtils.deleteDirectory(new File(paramIntent).getParent());
+      return;
     }
-    LoginView.a(this.a, null);
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void onMagicStickClick(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
+  {
+    super.onMagicStickClick(paramView, paramInt1, paramBundle, paramInt2, paramIntent);
+    if ((this.jdField_a_of_type_Akmr.jdField_a_of_type_JavaLangString != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      if (!TroopBarPublishActivity.class.getSimpleName().equals(this.jdField_a_of_type_JavaLangString)) {
+        break label60;
+      }
+      bgic.a("pub_page_new", "clk_photo_edit", 0, 0, new String[0]);
+    }
+    label60:
+    while (!TroopBarReplyActivity.class.getSimpleName().equals(this.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    bgic.a("reply", "clk_photo_edit", 0, 0, new String[0]);
   }
 }
 

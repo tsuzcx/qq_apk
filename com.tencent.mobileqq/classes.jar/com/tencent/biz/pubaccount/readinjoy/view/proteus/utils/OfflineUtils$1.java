@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.utils;
 
-import syz;
-import szc;
+import tmh;
+import tmk;
 
 public final class OfflineUtils$1
   implements Runnable
@@ -13,14 +13,14 @@ public final class OfflineUtils$1
     if (this.a) {
       return;
     }
-    syz.a();
-    syz.a("default_feeds", true);
-    new szc().a();
+    tmh.a();
+    tmh.a("default_feeds", true);
+    new tmk().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.utils.OfflineUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import afkx;
-import afky;
-import afkz;
-import afls;
+import agcb;
+import agcc;
+import agcd;
+import agcw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -18,9 +18,9 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import barp;
-import bfpx;
-import bhgf;
+import bbye;
+import bgyo;
+import biqx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
@@ -30,10 +30,10 @@ import com.tencent.qphone.base.util.QLog;
 
 public class DoodleLayout
   extends RelativeLayout
-  implements barp
+  implements bbye
 {
   private int jdField_a_of_type_Int;
-  private afkz jdField_a_of_type_Afkz;
+  private agcd jdField_a_of_type_Agcd;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private DoodleView jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView;
   private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
@@ -53,9 +53,9 @@ public class DoodleLayout
   
   private Drawable a(int paramInt1, int paramInt2)
   {
-    bhgf localbhgf = new bhgf(b(), 0, false);
-    localbhgf.setBounds(new Rect(0, 0, paramInt1, paramInt2));
-    return localbhgf;
+    biqx localbiqx = new biqx(b(), 0, false);
+    localbiqx.setBounds(new Rect(0, 0, paramInt1, paramInt2));
+    return localbiqx;
   }
   
   private boolean a(boolean paramBoolean)
@@ -99,9 +99,9 @@ public class DoodleLayout
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = new DoodleView(getContext(), null);
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.setBackgroundColor(getResources().getColor(2131167276));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.setBackgroundColor(getResources().getColor(2131167296));
       addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.a(new afky(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.a(new agcc(this));
     }
     setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     setBackgroundColor(-1);
@@ -144,7 +144,7 @@ public class DoodleLayout
     }
   }
   
-  public afkx a()
+  public agcb a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView == null) {
       return null;
@@ -173,7 +173,7 @@ public class DoodleLayout
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.a();
     }
-    this.jdField_a_of_type_Afkz = null;
+    this.jdField_a_of_type_Agcd = null;
     this.jdField_a_of_type_AndroidWidgetImageView = null;
     this.jdField_a_of_type_Int = 0;
   }
@@ -197,7 +197,7 @@ public class DoodleLayout
         }
         a(false);
         if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast == null) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), getResources().getString(2131689854), 0);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), getResources().getString(2131689883), 0);
         }
       } while (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c());
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
@@ -226,7 +226,7 @@ public class DoodleLayout
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = bfpx.a(BaseApplicationImpl.getContext().getResources(), 2130839450);
+      localBitmap1 = bgyo.a(BaseApplicationImpl.getContext().getResources(), 2130839471);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -270,9 +270,9 @@ public class DoodleLayout
     }
   }
   
-  public void setDoodleLayoutListener(afkz paramafkz)
+  public void setDoodleLayoutListener(agcd paramagcd)
   {
-    this.jdField_a_of_type_Afkz = paramafkz;
+    this.jdField_a_of_type_Agcd = paramagcd;
   }
   
   public void setTemplateID(int paramInt)
@@ -291,7 +291,7 @@ public class DoodleLayout
         if (this.jdField_a_of_type_Int <= 0) {
           break;
         }
-        localObject = afls.a().a(3, this.jdField_a_of_type_Int);
+        localObject = agcw.a().a(3, this.jdField_a_of_type_Int);
         if ((localObject != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
         {
           this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
@@ -302,20 +302,20 @@ public class DoodleLayout
         if (QLog.isColorLevel()) {
           QLog.d("DoodleLayout", 2, "load bitmap failed:" + this.jdField_a_of_type_Int);
         }
-        if (!afls.a().b(3, this.jdField_a_of_type_Int))
+        if (!agcw.a().b(3, this.jdField_a_of_type_Int))
         {
           if (QLog.isColorLevel()) {
             QLog.d("DoodleLayout", 2, "file not exist, start download:" + this.jdField_a_of_type_Int);
           }
           a(true);
           setTemplateVisible(Boolean.valueOf(false));
-          afls.a().b(1, paramInt, this, this);
+          agcw.a().b(1, paramInt, this, this);
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.d("DoodleLayout", 2, "try use drawable:" + this.jdField_a_of_type_Int);
         }
-        localObject = afls.a().a(3, this.jdField_a_of_type_Int, false);
+        localObject = agcw.a().a(3, this.jdField_a_of_type_Int, false);
       } while ((localObject == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null));
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       setTemplateVisible(Boolean.valueOf(true));

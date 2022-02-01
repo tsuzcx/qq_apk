@@ -1,183 +1,119 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoRecommendManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.Processor;
+import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.VideoConvertConfig;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import java.io.File;
 
-public class sdv
+class sdv
+  implements VideoConverter.Processor
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<Long, BaseArticleInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private sdw jdField_a_of_type_Sdw;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private HashMap<Long, BaseArticleInfo> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private int c;
+  final int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  final String jdField_a_of_type_JavaLangString;
+  Throwable jdField_a_of_type_JavaLangThrowable;
+  final int jdField_b_of_type_Int;
+  final long jdField_b_of_type_Long;
   
-  public sdv(Activity paramActivity)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    ThreadManager.post(new VideoRecommendManager.1(this), 10, null, true);
-  }
-  
-  private void a(int paramInt, long paramLong)
-  {
-    switch (paramInt)
-    {
-    default: 
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("dynamic_recommend_strategyid", this.jdField_a_of_type_Int);
-        localJSONObject.put("condition", paramInt);
-        localJSONObject.put("strategy_duration_limit", this.jdField_b_of_type_Int);
-        localJSONObject.put("strategy_duration_percent", this.jdField_a_of_type_Float);
-        localJSONObject.put("operator", this.c);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          localJSONObject.put("video_session_id", this.jdField_a_of_type_JavaLangString);
-        }
-        if ((this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_AndroidAppActivity.getIntent() != null))
-        {
-          paramInt = this.jdField_a_of_type_AndroidAppActivity.getIntent().getIntExtra("channel_from", -1);
-          odq.b(null, null, "0X80087C7", "0X80087C7", 0, 0, String.valueOf(0), "", "", new sie(ofe.a(localJSONObject)).N(paramInt).a().a(), false);
-          return;
-          paramInt = 1;
-          continue;
-          paramInt = 2;
-          continue;
-          if (paramLong >= this.jdField_b_of_type_Int)
-          {
-            paramInt = 3;
-            continue;
-          }
-          paramInt = 4;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          continue;
-          paramInt = 0;
-        }
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, long paramLong1, long paramLong2)
-  {
-    int j = 1;
-    if (paramBaseArticleInfo != null) {}
-    int i;
-    try
-    {
-      boolean bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramBaseArticleInfo.mArticleID));
-      if (bool) {}
-      for (;;)
-      {
-        return;
-        if ((paramInt != 1) && (paramInt != 2)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.pubaccount.video.feeds.VideoReommendManager", 2, "updateLatestUserAction() action=" + paramInt);
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-        i = j;
-        if ((i != 0) && (this.jdField_a_of_type_Sdw != null))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.pubaccount.video.feeds.VideoReommendManager", 2, "updateLatestUserAction() 触发拉取 articleInfo.mArticleID = " + paramBaseArticleInfo.mArticleID + ", articleInfo.mTitle = " + paramBaseArticleInfo.mTitle);
-          }
-          a(paramInt, paramLong1);
-          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-          this.jdField_a_of_type_Sdw.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-        }
-      }
-      if (paramInt != 0) {
-        break label347;
-      }
-    }
-    finally {}
-    if (this.c == 0)
-    {
-      if ((paramLong1 < this.jdField_b_of_type_Int) || ((float)paramLong1 <= (float)paramLong2 * this.jdField_a_of_type_Float)) {
-        break label353;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.pubaccount.video.feeds.VideoReommendManager", 2, "updateLatestUserAction() action=" + paramInt + ", playDuration=" + paramLong1 + ", totalDuration=" + paramLong2);
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-        i = j;
-        break;
-        if (paramLong1 < this.jdField_b_of_type_Int)
-        {
-          float f1 = (float)paramLong1;
-          float f2 = (float)paramLong2;
-          float f3 = this.jdField_a_of_type_Float;
-          if (f1 <= f2 * f3) {}
-        }
-        else
-        {
-          i = 1;
-          continue;
-        }
-        i = 0;
-        continue;
-      }
-      label347:
-      i = 0;
-      break;
-      label353:
-      i = 0;
-    }
-  }
-  
-  public void a(String paramString)
+  sdv(sdu paramsdu, String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(List<ArticleInfo> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    if (paramInt2 > 0) {}
+    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
     {
-      ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
-      this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localArticleInfo.mArticleID), localArticleInfo);
+      this.jdField_a_of_type_JavaLangThrowable = null;
+      if (paramString == null) {}
+      return;
     }
   }
   
-  public boolean a(long paramLong)
+  public boolean a()
   {
-    return this.jdField_b_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong));
+    boolean bool = false;
+    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
+      bool = true;
+    }
+    while (Build.VERSION.SDK_INT <= 19) {
+      return bool;
+    }
+    return false;
   }
+  
+  public VideoConverter.VideoConvertConfig getEncodeConfig(int paramInt1, int paramInt2)
+  {
+    int j = 1280;
+    VideoConverter.VideoConvertConfig localVideoConvertConfig = new VideoConverter.VideoConvertConfig();
+    Object localObject;
+    int i;
+    if (paramInt1 <= paramInt2)
+    {
+      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      if (((File)localObject).exists()) {
+        ((File)localObject).delete();
+      }
+      localVideoConvertConfig.output = ((File)localObject);
+      i = pjj.jdField_a_of_type_Int;
+      paramInt1 = bmhv.r(BaseApplicationImpl.getApplication().getRuntime());
+      if (paramInt1 > 0) {
+        i = paramInt1;
+      }
+      if (paramInt2 < 1280) {
+        break label307;
+      }
+      localObject = "720p";
+      paramInt1 = j;
+      label87:
+      localVideoConvertConfig.videoBitRate = ((int)(i * 1.0F / 640.0F * paramInt1));
+      localVideoConvertConfig.scaleRate = (paramInt1 / paramInt2);
+      if (this.jdField_b_of_type_Int > 30) {
+        break label336;
+      }
+    }
+    label307:
+    label336:
+    for (j = this.jdField_b_of_type_Int;; j = 30)
+    {
+      localVideoConvertConfig.videoFrameRate = j;
+      localVideoConvertConfig.setRotation = a();
+      localVideoConvertConfig.beginTime = this.jdField_a_of_type_Long;
+      localVideoConvertConfig.endTime = this.jdField_b_of_type_Long;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyUploadVideoCompressTask", 2, "CompressTask, step: getEncodeConfig()\n quality:" + (String)localObject + ", sourceLongEdge:" + paramInt2 + ", targetLongEdge:" + paramInt1 + ", scaleRate:" + localVideoConvertConfig.scaleRate + "\n defaultBitRate:" + i + ", videoBitRate:" + localVideoConvertConfig.videoBitRate + ", videoFrameRate:" + localVideoConvertConfig.videoFrameRate + "\n setRotation:" + localVideoConvertConfig.setRotation + ", beginTime:" + localVideoConvertConfig.beginTime + ", endTime:" + localVideoConvertConfig.endTime);
+      }
+      return localVideoConvertConfig;
+      paramInt2 = paramInt1;
+      break;
+      if (paramInt2 >= 960)
+      {
+        localObject = "640p";
+        paramInt1 = 960;
+        break label87;
+      }
+      paramInt1 = 640;
+      localObject = "480p";
+      break label87;
+    }
+  }
+  
+  public void onCanceled() {}
+  
+  public void onFailed(Throwable paramThrowable)
+  {
+    QLog.e("ReadInJoyUploadVideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onFailed:" + paramThrowable.getMessage());
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+  }
+  
+  public void onProgress(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Sdu.a != null) && (!this.jdField_a_of_type_Sdu.isCancelled())) {
+      this.jdField_a_of_type_Sdu.a.a(paramInt / 100.0F);
+    }
+  }
+  
+  public void onSuccessed() {}
 }
 
 

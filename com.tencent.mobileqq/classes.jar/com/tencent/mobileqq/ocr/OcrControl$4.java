@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ocr;
 
-import aohk;
-import axmu;
+import apkm;
+import aytd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.io.File;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class OcrControl$4
   implements Runnable
 {
-  public OcrControl$4(axmu paramaxmu, aohk paramaohk) {}
+  public OcrControl$4(aytd paramaytd, apkm paramapkm) {}
   
   public void run()
   {

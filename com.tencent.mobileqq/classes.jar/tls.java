@@ -1,87 +1,114 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.SchemaBridgeInvokeHandler.register.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import mqq.app.AppRuntime;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/SchemaBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "jumpAction", "", "params", "Lorg/json/JSONObject;", "callBackId", "", "nameSpace", "register", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tls
-  extends tks
+public class tls
 {
-  public static final tlt a = new tlt(null);
+  tlz<Bitmap> a;
   
-  public tls(@NotNull BridgeModule paramBridgeModule)
+  public tls(Bitmap paramBitmap, tma<Bitmap> paramtma)
   {
-    super(paramBridgeModule);
+    this.a = new tlz(paramBitmap, paramtma);
+    if (QLog.isColorLevel()) {
+      tmd.a(toString(), "onCreate", true);
+    }
   }
   
-  private final void a(JSONObject paramJSONObject, String paramString)
+  public tls(tlz<Bitmap> paramtlz)
   {
-    Object localObject = null;
-    if (paramJSONObject == null)
-    {
-      a(paramString, "params is null");
-      return;
+    paramtlz.a();
+    this.a = paramtlz;
+    if (QLog.isColorLevel()) {
+      tmd.a(toString(), "createFromClone", true);
     }
-    if (!paramJSONObject.has("schema"))
-    {
-      a(paramString, "schema is null");
-      return;
+  }
+  
+  public Bitmap a()
+  {
+    if (this.a != null) {
+      return (Bitmap)this.a.a();
     }
-    Activity localActivity = a();
-    AppRuntime localAppRuntime = pay.a();
-    if (!(localAppRuntime instanceof QQAppInterface)) {}
-    for (;;)
+    bdla.b(null, "dc01160", "", "", "0X80098F1", "0X80098F1", 0, 1, null, null, "", "");
+    return null;
+  }
+  
+  public tls a()
+  {
+    try
     {
-      for (;;)
-      {
-        localObject = (QQAppInterface)localObject;
-        if ((localActivity != null) && (localObject != null)) {
-          try
-          {
-            paramJSONObject = paramJSONObject.getString("schema");
-            paramJSONObject = bfwg.a((QQAppInterface)localObject, (Context)localActivity, paramJSONObject);
-            if (paramJSONObject == null) {
-              break;
-            }
-            paramJSONObject.b("viola");
-            paramJSONObject.a();
-            a(paramString, null);
-            return;
-          }
-          catch (JSONException paramJSONObject)
-          {
-            paramJSONObject.printStackTrace();
-            return;
-          }
-        }
+      if (QLog.isColorLevel()) {
+        tmd.a(toString(), "clone", true);
       }
-      a(paramString, "activity or app is null");
-      return;
-      localObject = localAppRuntime;
+      tls localtls = new tls(this.a);
+      return localtls;
     }
+    finally {}
   }
   
-  @NotNull
-  public String a()
-  {
-    return "schema";
-  }
-  
+  /* Error */
   public void a()
   {
-    a("jumpAction", (Function2)new SchemaBridgeInvokeHandler.register.1((tls)this));
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 19	tls:a	Ltlz;
+    //   6: ifnull +34 -> 40
+    //   9: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   12: ifeq +13 -> 25
+    //   15: aload_0
+    //   16: invokevirtual 29	tls:toString	()Ljava/lang/String;
+    //   19: ldc 70
+    //   21: iconst_1
+    //   22: invokestatic 36	tmd:a	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   25: aload_0
+    //   26: getfield 19	tls:a	Ltlz;
+    //   29: invokevirtual 72	tlz:b	()V
+    //   32: aload_0
+    //   33: aconst_null
+    //   34: putfield 19	tls:a	Ltlz;
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: return
+    //   40: aload_0
+    //   41: invokevirtual 29	tls:toString	()Ljava/lang/String;
+    //   44: ldc 74
+    //   46: invokestatic 77	tmd:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: goto -12 -> 37
+    //   52: astore_1
+    //   53: aload_0
+    //   54: monitorexit
+    //   55: aload_1
+    //   56: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	57	0	this	tls
+    //   52	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	25	52	finally
+    //   25	37	52	finally
+    //   37	39	52	finally
+    //   40	49	52	finally
+    //   53	55	52	finally
+  }
+  
+  public boolean a()
+  {
+    return this.a != null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("zimage.closeable@").append(hashCode()).append("_bitmap@");
+    if ((this.a != null) && (this.a.a() != null)) {}
+    for (Integer localInteger = Integer.valueOf(((Bitmap)this.a.a()).hashCode());; localInteger = null) {
+      return localInteger;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tls
  * JD-Core Version:    0.7.0.1
  */

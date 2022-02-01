@@ -1,16 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-final class ajxh
-  implements DialogInterface.OnClickListener
+public class ajxh
+  implements View.OnLongClickListener
 {
-  ajxh(Activity paramActivity, List paramList1, List paramList2) {}
+  public ajxh(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    ajxc.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.b);
+    return this.a.a.b.performClick();
   }
 }
 

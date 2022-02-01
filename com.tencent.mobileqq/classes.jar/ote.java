@@ -1,6 +1,18 @@
-public abstract interface ote
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class ote
+  implements View.OnClickListener
 {
-  public abstract void onViewCreated(boolean paramBoolean);
+  public ote(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    ReadInJoyChannelActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

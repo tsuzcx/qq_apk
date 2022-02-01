@@ -4,23 +4,23 @@ import android.view.View;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
 import com.tribe.async.dispatch.Dispatcher;
-import vli;
-import wmf;
-import xmf;
-import xvv;
+import wad;
+import xba;
+import yba;
+import ykq;
 
 public class MemoriesVideoListSegment$5
   implements Runnable
 {
-  public MemoriesVideoListSegment$5(xmf paramxmf, MemoriesInnerListView paramMemoriesInnerListView, int paramInt, String paramString) {}
+  public MemoriesVideoListSegment$5(yba paramyba, MemoriesInnerListView paramMemoriesInnerListView, int paramInt, String paramString) {}
   
   public void run()
   {
     View localView = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewMemoriesInnerListView.getChildAt(this.jdField_a_of_type_Int);
     if (localView != null)
     {
-      xvv.a("Q.qqstory.memories.MemoriesVideoListSegment", "doScrollHorizal broadcast close animation2 %s", this.jdField_a_of_type_JavaLangString);
-      vli.a().dispatch(new wmf(new AnimationParam(localView), this.jdField_a_of_type_JavaLangString));
+      ykq.a("Q.qqstory.memories.MemoriesVideoListSegment", "doScrollHorizal broadcast close animation2 %s", this.jdField_a_of_type_JavaLangString);
+      wad.a().dispatch(new xba(new AnimationParam(localView), this.jdField_a_of_type_JavaLangString));
     }
   }
 }

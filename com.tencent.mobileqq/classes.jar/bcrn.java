@@ -1,102 +1,36 @@
 public class bcrn
-  extends bcre
 {
-  private bcre jdField_a_of_type_Bcre;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private bcre[] jdField_a_of_type_ArrayOfBcre;
-  private int f;
-  
-  public bcrn(bcre... paramVarArgs)
-  {
-    super(0, 0, 0);
-    this.jdField_a_of_type_ArrayOfBcre = paramVarArgs;
-    this.jdField_a_of_type_ArrayOfInt = new int[paramVarArgs.length];
-    int i = 0;
-    int j = 0;
-    if (i < paramVarArgs.length)
-    {
-      if (i == 0) {
-        this.jdField_a_of_type_ArrayOfInt[i] = 0;
-      }
-      for (;;)
-      {
-        j += paramVarArgs[i].jdField_c_of_type_Int;
-        i += 1;
-        break;
-        this.jdField_a_of_type_ArrayOfInt[i] = j;
-      }
-    }
-    this.jdField_c_of_type_Int = j;
-    if (paramVarArgs.length > 0) {
-      this.jdField_a_of_type_Bcre = paramVarArgs[this.f];
-    }
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.f = 0;
-    if (this.jdField_a_of_type_ArrayOfBcre.length > 0) {
-      this.jdField_a_of_type_Bcre = this.jdField_a_of_type_ArrayOfBcre[this.f];
-    }
-  }
-  
-  protected void a(int paramInt, float paramFloat)
-  {
-    if ((this.f + 1 < this.jdField_a_of_type_ArrayOfBcre.length) && (paramInt > this.jdField_a_of_type_ArrayOfInt[(this.f + 1)]))
-    {
-      this.jdField_a_of_type_Bcre.b();
-      bcre[] arrayOfbcre = this.jdField_a_of_type_ArrayOfBcre;
-      i = this.f + 1;
-      this.f = i;
-      this.jdField_a_of_type_Bcre = arrayOfbcre[i];
-    }
-    this.d = this.jdField_a_of_type_Bcre.d;
-    int i = paramInt - this.jdField_a_of_type_ArrayOfInt[this.f];
-    float f1 = i / this.jdField_a_of_type_Bcre.jdField_c_of_type_Int;
-    if (this.jdField_a_of_type_Bcre.e == 1) {
-      f1 = i * i / (this.jdField_a_of_type_Bcre.jdField_c_of_type_Int * this.jdField_a_of_type_Bcre.jdField_c_of_type_Int);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bcre.a(i, f1);
-      if ((this.jdField_a_of_type_Bcre.d & 0x1) != 0)
-      {
-        this.jdField_a_of_type_Float = this.jdField_a_of_type_Bcre.jdField_a_of_type_Float;
-        this.jdField_b_of_type_Float = this.jdField_a_of_type_Bcre.jdField_b_of_type_Float;
-      }
-      if ((this.jdField_a_of_type_Bcre.d & 0x10) != 0) {
-        this.jdField_b_of_type_Float = this.jdField_a_of_type_Bcre.jdField_b_of_type_Float;
-      }
-      if ((this.jdField_a_of_type_Bcre.d & 0x2) != 0) {
-        this.jdField_c_of_type_Float = this.jdField_a_of_type_Bcre.jdField_c_of_type_Float;
-      }
-      if ((this.jdField_a_of_type_Bcre.d & 0x4) != 0) {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_Bcre.jdField_a_of_type_Int;
-      }
-      if ((this.jdField_a_of_type_Bcre.d & 0x8) != 0) {
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_Bcre.jdField_b_of_type_Int;
-      }
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.jdField_a_of_type_Bcre.e == 2)
-      {
-        f1 = i / this.jdField_a_of_type_Bcre.jdField_c_of_type_Int;
-        f1 *= (2.0F - f1);
-      }
-    }
-  }
-  
-  public void d()
-  {
-    super.d();
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfBcre.length)
-    {
-      this.jdField_a_of_type_ArrayOfInt[i] = ((int)(System.currentTimeMillis() - this.jdField_b_of_type_Long));
-      i += 1;
-    }
-  }
+  public static String A = "service_msg_remind_type";
+  public static String B = "service_msg_name";
+  public static String C = "key_send_raw_video";
+  public static String D = "key_troop_important_msg_type";
+  public static String E = "key_troop_important_msg_enum";
+  public static String a = "key_recv_queue_wait_length";
+  public static String b = "key_add_queue_time";
+  public static String c = "holiday_active_flag";
+  public static String d = "ark_at_babyq_flag";
+  public static String e = "ark_show_as_sdk_flag";
+  public static String f = "ark_babyq_gray_tip_flag";
+  public static String g = "ark_babyq_report_recv_flag";
+  public static String h = "is_redbag_video";
+  public static String i = "troop_at_info_list";
+  public static String j = "disc_at_info_list";
+  public static String k = "at_info";
+  public static String l = "is_troop";
+  public static String m = "pic_sync_story";
+  public static String n = "video_sync_story";
+  public static String o = "is_sync_qzone";
+  public static String p = "batch_id_qzone";
+  public static String q = "album_id_qzone";
+  public static String r = "aio_send_qzone_pic_flag";
+  public static String s = "aio_send_qzone_pic_url";
+  public static String t = "aio_send_qzone_pic_size";
+  public static String u = "aio_light_video_read_flag";
+  public static String v = "ark_msg_process_state";
+  public static String w = "ark_msg_open_sdk_share_error_code";
+  public static String x = "ark_msg_open_sdk_share_wording";
+  public static String y = "ark_msg_open_sdk_share_info";
+  public static String z = "service_msg_type";
 }
 
 

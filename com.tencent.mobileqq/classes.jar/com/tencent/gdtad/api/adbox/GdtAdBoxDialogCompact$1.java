@@ -1,11 +1,11 @@
 package com.tencent.gdtad.api.adbox;
 
-import ablm;
+import acbc;
 
 public class GdtAdBoxDialogCompact$1
   implements Runnable
 {
-  public GdtAdBoxDialogCompact$1(ablm paramablm) {}
+  public GdtAdBoxDialogCompact$1(acbc paramacbc) {}
   
   public void run()
   {

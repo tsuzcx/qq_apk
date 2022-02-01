@@ -1,73 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.widget.RotateSwitchImageView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SystemMsg;
 
-public class acnp
-  implements View.OnClickListener
+class acnp
 {
-  public acnp(AccountManageActivity paramAccountManageActivity) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private int c;
   
-  public void onClick(View paramView)
+  public acnp(acnk paramacnk, MsgInfo paramMsgInfo, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2)
   {
-    if (!(paramView instanceof RotateSwitchImageView)) {}
-    for (;;)
+    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+  }
+  
+  public int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public acnp a()
+  {
+    this.jdField_a_of_type_Acnk.a.getMsgHandler().a().a(3);
+    if (this.jdField_a_of_type_Int != 45)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      View localView1 = AccountManageActivity.a(this.a, paramView);
-      View localView2 = AccountManageActivity.b(this.a, paramView);
-      ViewGroup.LayoutParams localLayoutParams;
-      if (AccountManageActivity.a(this.a) == null)
-      {
-        AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
-        ((RotateSwitchImageView)paramView).b();
-        localLayoutParams = localView2.getLayoutParams();
-        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.g(this.a) * 75.0F));
-        localView2.setLayoutParams(localLayoutParams);
-        if ((localView1 instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)localView1).showIgnoreVisible();
-        }
-        if (AppSetting.c) {
-          paramView.setContentDescription(this.a.getString(2131691003));
-        }
-      }
-      else if (AccountManageActivity.a(this.a) == paramView)
-      {
-        AccountManageActivity.a(this.a).a();
-        localLayoutParams = localView2.getLayoutParams();
-        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.h(this.a) * 40.0F));
-        localView2.setLayoutParams(localLayoutParams);
-        if ((localView1 instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)localView1).hideIgnoreVisible();
-        }
-        AccountManageActivity.a(this.a, null);
-        if (AppSetting.c) {
-          paramView.setContentDescription(this.a.getString(2131691015));
-        }
-      }
-      else
-      {
-        AccountManageActivity.a(this.a).a();
-        ((RotateSwitchImageView)paramView).b();
-        AccountManageActivity.b(this.a, AccountManageActivity.a(this.a)).getLayoutParams().width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.i(this.a) * 40.0F));
-        localLayoutParams = localView2.getLayoutParams();
-        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.j(this.a) * 75.0F));
-        localView2.setLayoutParams(localLayoutParams);
-        if ((localView1 instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)localView1).showIgnoreVisible();
-        }
-        localView1 = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
-        if ((localView1 instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)localView1).hideIgnoreVisible();
-        }
-        AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
-      }
+      this.jdField_a_of_type_Acnk.a.getMsgHandler().a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg, this.jdField_a_of_type_OnlinePushPackMsgInfo.lFromUin, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, null);
+      this.jdField_b_of_type_Long = 9998L;
+      this.c = 32769;
+      this.jdField_b_of_type_Int = SystemMsg.getTroopSystemMsgType(this.jdField_a_of_type_Int);
     }
+    bdzy.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, this.jdField_a_of_type_Acnk.a);
+    return this;
+  }
+  
+  public int b()
+  {
+    return this.c;
   }
 }
 

@@ -1,14 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
 class avbd
-  implements DialogInterface.OnCancelListener
+  extends RecyclerView.ViewHolder
 {
-  avbd(avau paramavau) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  avbd(avbb paramavbb, View paramView)
   {
-    this.a.b(false);
+    super(paramView);
+  }
+  
+  public String toString()
+  {
+    return super.toString();
   }
 }
 

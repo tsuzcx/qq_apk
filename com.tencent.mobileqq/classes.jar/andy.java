@@ -1,6 +1,14 @@
-public abstract interface andy
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+
+class andy
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void b(int paramInt);
+  andy(andx paramandx) {}
+  
+  public void onGlobalLayout()
+  {
+    andx.a(this.a);
+  }
 }
 
 

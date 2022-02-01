@@ -1,175 +1,154 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.RectF;
+import android.media.SoundPool;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 public class luf
-  extends ltz
 {
-  public Path a;
-  public RectF a;
-  public String a;
-  lug a;
-  public boolean a;
-  public int b;
-  public long b;
-  public volatile boolean b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
-  public int o;
+  int jdField_a_of_type_Int;
+  SoundPool jdField_a_of_type_AndroidMediaSoundPool;
+  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  HashSet<Integer> jdField_a_of_type_JavaUtilHashSet;
+  List<String> jdField_a_of_type_JavaUtilList;
+  int jdField_b_of_type_Int;
+  HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap;
+  int c;
   
-  public luf()
+  public luf(List<String> paramList, int paramInt)
   {
-    this.jdField_b_of_type_Long = 3000L;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    a(255);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.jdField_b_of_type_Int = paramList.size();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public long a()
+  public void a()
   {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public void a(long paramLong)
-  {
-    long l1 = this.jdField_a_of_type_Long;
-    if (this.jdField_b_of_type_Long == 0L) {}
-    int i1;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("SoundPoolHelper", 2, "releaseMusic");
+    }
+    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
     {
-      return;
-      i1 = (int)((paramLong - l1) * this.g / this.jdField_b_of_type_Long - this.c);
-      a(this.f, i1, this.f + this.jdField_b_of_type_Int, this.c + i1);
-      if ((this.jdField_a_of_type_Lug != null) && (this.jdField_b_of_type_Boolean) && (i1 > this.c))
-      {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Lug.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("RedPacketGameParticleEmoji", 2, "call onShow  top = " + i1 + ",mHeight = " + this.c);
-        }
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (i1 + this.n);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (this.jdField_a_of_type_AndroidGraphicsRectF.top + this.i);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.f + this.jdField_b_of_type_Int / 2 - this.l / 2, this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.f + this.jdField_b_of_type_Int / 2 + this.l / 2, this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.f + this.jdField_b_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsRectF.bottom + this.m);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    super.a(paramCanvas, paramPaint);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramPaint.setColor(-706970);
-      paramPaint.setStyle(Paint.Style.FILL);
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.j, this.j, paramPaint);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, paramPaint);
-      paramPaint.setColor(-3398);
-      paramPaint.setTextSize(this.k);
-      paramPaint.setTextAlign(Paint.Align.CENTER);
-      Paint.FontMetrics localFontMetrics = paramPaint.getFontMetrics();
-      float f1 = this.jdField_a_of_type_AndroidGraphicsRectF.centerY();
-      float f2 = localFontMetrics.ascent;
-      f2 = (localFontMetrics.descent + f2) / 2.0F;
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), f1 - f2, paramPaint);
+      this.jdField_a_of_type_AndroidMediaSoundPool.release();
+      this.jdField_a_of_type_AndroidMediaSoundPool = null;
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaUtilHashSet.clear();
+      this.jdField_b_of_type_JavaUtilHashMap.clear();
+      this.c = 0;
     }
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidGraphicsRectF = null;
-    this.jdField_a_of_type_AndroidGraphicsPath = null;
-    this.jdField_a_of_type_Lug = null;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.d != paramInt)
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (localInteger == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SoundPoolHelper", 2, "stopMusic fail soundID is null, path = " + paramString);
+      }
+    }
+    do
     {
-      this.d = paramInt;
-      c();
+      do
+      {
+        do
+        {
+          return;
+          if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("SoundPoolHelper", 2, "stopMusic fail soundID is not ready, path = " + paramString);
+        return;
+        localInteger = (Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
+        if (localInteger != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("SoundPoolHelper", 2, "stopMusic fail steamID is null, path = " + paramString);
+      return;
+    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
+    this.jdField_a_of_type_AndroidMediaSoundPool.stop(localInteger.intValue());
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SoundPoolHelper", 2, "playMusic, path = " + paramString + ",loop = " + paramBoolean);
     }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_b_of_type_Int = (paramInt1 * 176 / 750);
-    this.c = (paramInt1 * 176 / 750);
-    this.e = paramInt1;
-    this.g = (this.c + paramInt2);
-    c();
-    this.h = (paramInt1 * 360 / 750);
-    this.i = (paramInt1 * 70 / 750);
-    this.j = (paramInt1 * 5 / 750);
-    this.k = (paramInt1 * 32 / 750);
-    this.l = (paramInt1 * 28 / 750);
-    this.m = (paramInt1 * 16 / 750);
-    this.n = (paramInt1 * -143 / 750);
-    this.o = (paramInt1 * 10 / 750);
-  }
-  
-  public void b(long paramLong)
-  {
-    if (this.jdField_b_of_type_Long != paramLong) {
-      this.jdField_b_of_type_Long = paramLong;
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SoundPoolHelper", 2, "playMusic fail path is empty ");
+      }
     }
-    QLog.d("RedPacketGameParticleEmoji", 2, "WL_DEBUG setDuration duration = " + paramLong);
-  }
-  
-  public void c()
-  {
-    this.f = ((this.e - this.jdField_b_of_type_Int * 3) * (this.d + 1) / 4 + this.jdField_b_of_type_Int * this.d);
-    int i3 = this.f + this.jdField_b_of_type_Int / 2 - this.h / 2;
-    int i1 = this.h + i3;
-    int i2 = i3;
-    if (i3 < this.o)
+    Integer localInteger;
+    do
     {
-      i2 = this.o;
-      i1 = this.h + i2;
-    }
-    i3 = i1;
-    if (i1 > this.e - this.o)
+      do
+      {
+        do
+        {
+          return;
+          localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+          if (localInteger != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("SoundPoolHelper", 2, "playMusic fail soundID is null, path = " + paramString + ",loop = " + paramBoolean);
+        return;
+        if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("SoundPoolHelper", 2, "playMusic fail soundID is not ready, path = " + paramString + ",loop = " + paramBoolean);
+      return;
+    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
+    SoundPool localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
+    int j = localInteger.intValue();
+    if (paramBoolean) {}
+    for (int i = -1;; i = 0)
     {
-      i3 = this.e - this.o;
-      i2 = i3 - this.h;
+      i = localSoundPool.play(j, 1.0F, 1.0F, 1, i, 1.0F);
+      this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
+      return;
     }
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = i2;
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = i3;
+  }
+  
+  public void a(luh paramluh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SoundPoolHelper", 2, "loadMusic ,soundPool = " + this.jdField_a_of_type_AndroidMediaSoundPool);
+    }
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SoundPoolHelper", 2, "loadMusic fail filPathList is empty");
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidMediaSoundPool == null)
+      {
+        this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_Int, 0);
+        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new lug(this, paramluh));
+      }
+      paramluh = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramluh.hasNext())
+      {
+        String str = (String)paramluh.next();
+        int i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 1);
+        this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(i));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     luf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,16 @@
-public abstract interface bekn
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bekn
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  bekn(bekj parambekj, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bekj.a(this.jdField_a_of_type_Bekj, this.jdField_a_of_type_JavaLangString, "clk_unableframe_cancel");
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -1,29 +1,14 @@
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.widget.XListView.DrawFinishedListener;
+
 public class tan
+  implements XListView.DrawFinishedListener
 {
-  private final int jdField_a_of_type_Int;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final int b;
+  public tan(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public tan(int paramInt1, int paramInt2, Object paramObject)
+  public void drawFinished()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    this.a.a.f();
   }
 }
 

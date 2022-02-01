@@ -1,18 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
-class ajhe
-  implements View.OnClickListener
+public class ajhe
+  implements ajdv
 {
-  ajhe(ajhb paramajhb) {}
+  public ajhe(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.a = null;
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void a() {}
 }
 
 

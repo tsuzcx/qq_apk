@@ -1,14 +1,36 @@
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import java.io.File;
+import java.io.OutputStream;
 
-class rnt
-  implements ooc
+public class rnt
+  extends AbsDownloader
 {
-  rnt(rno paramrno) {}
-  
-  public void a(@NotNull Runnable paramRunnable)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    ThreadManagerV2.excute(paramRunnable, 16, null, false);
+    return new rnu(this, paramFile, false, false, 0, 0, 0.0F);
+  }
+  
+  public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramDownloadParams = paramDownloadParams.urlStr;
+    if (paramDownloadParams.startsWith("readinjoy_skin_gif://")) {
+      paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif://", "");
+    }
+    for (;;)
+    {
+      paramOutputStream = new File(paramOutputStream);
+      if (!paramOutputStream.exists()) {
+        break;
+      }
+      return paramOutputStream;
+      paramOutputStream = paramDownloadParams;
+      if (paramDownloadParams.startsWith("readinjoy_skin_gif:")) {
+        paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif:", "");
+      }
+    }
+    return null;
   }
 }
 

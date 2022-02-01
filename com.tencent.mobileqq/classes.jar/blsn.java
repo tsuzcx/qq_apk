@@ -1,20 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
+import java.util.Observable;
 
 public class blsn
-  extends bmtc
+  extends Observable
 {
-  public blsn(AEMaterialProviderView paramAEMaterialProviderView) {}
-  
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEMaterialProviderView", 2, "material list updated!");
-    }
-    if (AEMaterialProviderView.a(this.a)) {
-      return;
-    }
-    this.a.a(true);
+    setChanged();
+    notifyObservers();
   }
 }
 

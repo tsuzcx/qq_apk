@@ -1,47 +1,84 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class anqu
-  extends anri
+  extends anvw
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  protected void a()
   {
-    paramQQAppInterface = new anqt(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "groupvideo";
-    if (paramString.contains("openroom")) {
-      paramQQAppInterface.c = "openroom";
-    }
-    for (;;)
+    super.a();
+    float f2 = MemoryManager.getInstance().getHeapLevel();
+    float f1;
+    if (MagnifierSDK.a().a().d > 0.0F)
     {
-      paramContext = paramString.split("\\?");
-      if (paramContext.length == 2) {
-        break;
-      }
-      return paramQQAppInterface;
-      if (paramString.contains("preload")) {
-        paramQQAppInterface.c = "preload";
-      }
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
-    {
-      int i = 0;
-      while (i < paramContext.length)
+      f1 = MagnifierSDK.a().a().d;
+      if ((f2 >= f1) && (MagnifierSDK.a().a().b) && (this.a.a == null))
       {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
+        MemoryManager.getInstance().reportMemoryLevel(2L);
+        System.exit(-1);
+      }
+      if (this.d != GuardManager.c * 50 - 1) {
+        break label236;
+      }
+      l = MemoryManager.getMemory(Process.myPid());
+      localHashMap = new HashMap();
+      localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
+      localHashMap.put("ramSize", String.valueOf(DeviceInfoUtil.getSystemTotalMemory() / 1024L));
+      localHashMap.put("heapSize", String.valueOf(Runtime.getRuntime().totalMemory() / 1024L));
+      localHashMap.put("maxHeapSize", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
+      this.a.a("GM_reborn", localHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuardManager", 2, "suicide to free memory! suicide_factor=" + GuardManager.c);
       }
     }
-    return paramQQAppInterface;
+    label236:
+    while (((this.d != GuardManager.c * 50) && (this.d != GuardManager.c * 50 + 1)) || (this.a.a != null))
+    {
+      long l;
+      HashMap localHashMap;
+      return;
+      f1 = 0.95F;
+      break;
+    }
+    System.exit(-1);
+  }
+  
+  protected void a(String paramString)
+  {
+    this.a.a(3, paramString);
+  }
+  
+  protected void b()
+  {
+    this.a.a(4, "fake_p_msg");
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.b(false);
+    if (!"trick_p_msg".equals(paramString)) {
+      this.a.a(false, new String[] { paramString });
+    }
+    long l = MemoryManager.getMemory(Process.myPid());
+    if (anvu.a().a(l) != 2) {
+      this.a.c();
+    }
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(2, anvu.a().a, 0L);
+    CoreService.stopCoreService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anqu
  * JD-Core Version:    0.7.0.1
  */

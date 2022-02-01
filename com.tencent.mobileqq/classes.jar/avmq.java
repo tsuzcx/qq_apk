@@ -1,6 +1,18 @@
-public abstract interface avmq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.qphone.base.util.QLog;
+
+public class avmq
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public avmq(HotPicPageView paramHotPicPageView, avmv paramavmv) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Avmv.a(-11);
+    QLog.d("HotPicManagerHotPicPageView", 2, "User disallowed downd");
+  }
 }
 
 

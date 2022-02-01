@@ -1,112 +1,138 @@
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.splashad.SplashADUtil.1;
+import android.view.Window;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.util.Set;
+import mqq.util.WeakReference;
 
 public class bbzy
 {
-  public static long a;
-  private static boolean a;
-  private static long b;
+  private int jdField_a_of_type_Int;
+  private aogg jdField_a_of_type_Aogg;
+  private aogh jdField_a_of_type_Aogh = new bbzz(this);
+  private bisl jdField_a_of_type_Bisl;
+  private ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
+  private long[] jdField_a_of_type_ArrayOfLong = { 1001L, 1002L, 8001L };
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private WeakReference<Context> jdField_b_of_type_MqqUtilWeakReference;
+  private String c;
+  private String d;
   
-  public static int a(Context paramContext)
+  public bbzy(String paramString)
   {
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
-    return paramContext.getDefaultDisplay().getWidth();
+    this.d = paramString;
   }
   
-  public static long a(Context paramContext)
+  public static int a(int paramInt)
   {
-    if (b == 0L) {
-      b = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("splash_ad_uin_long", 0L);
-    }
-    return b;
-  }
-  
-  private static void a() {}
-  
-  public static void a(int paramInt, String paramString)
-  {
-    ThreadManager.excute(new SplashADUtil.1(paramInt, paramString), 128, null, false);
-  }
-  
-  public static void a(Context paramContext)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().remove("splash_ad_uin_long").apply();
-    b = 0L;
-  }
-  
-  public static void a(Context paramContext, long paramLong)
-  {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong("splash_ad_uin_long", paramLong).apply();
-    b = paramLong;
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    boolean bool2 = false;
-    Object localObject = paramActivity.getIntent();
-    paramActivity = ((Intent)localObject).getCategories();
-    localObject = ((Intent)localObject).getAction();
-    QLog.i("SplashAD", 1, "categories " + paramActivity + " action " + (String)localObject);
-    boolean bool1 = bool2;
-    if (paramActivity != null)
+    switch (paramInt)
     {
-      bool1 = bool2;
-      if (paramActivity.contains("android.intent.category.LAUNCHER"))
+    default: 
+      return 0;
+    case 0: 
+      return 1;
+    case 1: 
+      return 2;
+    case 3000: 
+      return 3;
+    }
+    return 4;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    if (ChatActivityUtils.a(paramQQAppInterface, paramInt, paramString)) {
+      return 5;
+    }
+    if (ChatActivityUtils.a(paramInt)) {
+      return 3;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return -1;
+    case 3000: 
+      return 4;
+    case 1: 
+      return 2;
+    }
+    return 1;
+  }
+  
+  private void a()
+  {
+    this.jdField_b_of_type_JavaLangString = "0";
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localQQAppInterface != null) {
+      localQQAppInterface.removeObserver(this.jdField_a_of_type_Aogh);
+    }
+    if (this.jdField_a_of_type_Bisl != null) {
+      this.jdField_a_of_type_Bisl = null;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, ChatMessage paramChatMessage)
+  {
+    if (this.jdField_a_of_type_Bisl != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("UinSearcher", 2, "searching, skip");
+      }
+      return;
+    }
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramContext);
+    if (this.jdField_a_of_type_Aogg == null) {
+      this.jdField_a_of_type_Aogg = ((aogg)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.UNIFY_SEARCH_UNITE_HANDLER));
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    paramString = paramChatMessage.selfuin;
+    if ((!paramChatMessage.isSend()) && (!paramChatMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin()))) {}
+    for (this.c = paramChatMessage.senderuin;; this.c = paramChatMessage.frienduin)
+    {
+      this.jdField_a_of_type_Int = paramChatMessage.istroop;
+      this.jdField_b_of_type_JavaLangString = (System.currentTimeMillis() + "");
+      paramQQAppInterface.addObserver(this.jdField_a_of_type_Aogh);
+      paramQQAppInterface = (anri)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a(paramString, this.c, 1, 0L, (byte)1, 0L, 0L, null, "", 8192L, 10004, null, (byte)0);
+      }
+      try
       {
-        bool1 = bool2;
-        if (localObject != null)
+        this.jdField_a_of_type_Bisl = new bisl(paramContext);
+        this.jdField_a_of_type_Bisl.e(17);
+        this.jdField_a_of_type_Bisl.a(null);
+        this.jdField_a_of_type_Bisl.f(2130839470);
+        if (this.jdField_a_of_type_Bisl.getWindow() != null) {
+          this.jdField_a_of_type_Bisl.getWindow().setDimAmount(0.0F);
+        }
+        this.jdField_a_of_type_Bisl.setOnDismissListener(new bcac(this));
+        if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
+          this.jdField_a_of_type_Bisl.show();
+        }
+      }
+      catch (RuntimeException paramQQAppInterface)
+      {
+        for (;;)
         {
-          bool1 = bool2;
-          if (((String)localObject).equals("android.intent.action.MAIN")) {
-            bool1 = true;
-          }
+          QLog.e("UinSearcher", 1, paramQQAppInterface, new Object[0]);
         }
       }
-    }
-    bool2 = bool1;
-    if (!bool1)
-    {
-      bool2 = bool1;
-      if (paramActivity == null)
-      {
-        bool2 = bool1;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          bool2 = true;
-        }
-      }
-    }
-    QLog.e("SplashAD", 1, "fromLaucher " + bool2);
-    return bool2;
-  }
-  
-  public static void b(Context paramContext)
-  {
-    if (!a)
-    {
-      TVK_SDKMgr.initSdk(paramContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-      a();
-      a = true;
+      this.jdField_a_of_type_Aogg.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 20, bbzq.a(this.jdField_a_of_type_ArrayOfLong), null, null, 0, 0.0D, 0.0D, null, "{ \"search_by_id_only\": 1 }");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbzy
  * JD-Core Version:    0.7.0.1
  */

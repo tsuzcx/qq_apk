@@ -1,59 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public class beqf
-  extends aptq<beqe>
+class beqf
+  extends beql<UserState>
 {
-  @NonNull
-  public beqe a(int paramInt)
+  beqf(bepx parambepx, UserState paramUserState, List paramList)
   {
-    QLog.d("JoinTroopSecurityTipsConfigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
-    return new beqe();
+    super(paramUserState, paramList);
   }
   
-  @Nullable
-  public beqe a(aptx[] paramArrayOfaptx)
+  public void a(UserState paramUserState)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JoinTroopSecurityTipsConfigProcessor", 2, "onParsed");
+    bepx.a(this.a).a();
+    if (!bepx.a(this.a).a()) {
+      bepx.a(this.a).c();
     }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return beqe.a(paramArrayOfaptx[0].a);
-    }
-    return null;
-  }
-  
-  public void a(beqe parambeqe) {}
-  
-  public Class<beqe> clazz()
-  {
-    return beqe.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("JoinTroopSecurityTipsConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 669;
   }
 }
 

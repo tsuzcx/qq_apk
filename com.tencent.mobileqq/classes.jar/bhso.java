@@ -1,19 +1,18 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import com.tencent.mobileqq.vas.qvip.view.TextHeaderView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bhso
   implements View.OnClickListener
 {
-  public bhso(OpenAuthorityAccountView paramOpenAuthorityAccountView) {}
+  public bhso(TextHeaderView paramTextHeaderView, Activity paramActivity, int paramInt, QQVipMsgInfo paramQQVipMsgInfo) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject != null) && ((localObject instanceof String))) {
-      this.a.b((String)localObject);
-    }
+    TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewTextHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

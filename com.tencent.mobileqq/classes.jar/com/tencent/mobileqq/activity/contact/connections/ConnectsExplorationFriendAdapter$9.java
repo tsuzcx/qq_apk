@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import aidb;
+import aiya;
 
 public class ConnectsExplorationFriendAdapter$9
   implements Runnable
 {
-  public ConnectsExplorationFriendAdapter$9(aidb paramaidb) {}
+  public ConnectsExplorationFriendAdapter$9(aiya paramaiya) {}
   
   public void run()
   {

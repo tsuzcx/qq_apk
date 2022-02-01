@@ -1,25 +1,35 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import android.view.View;
+import android.content.ContentValues;
 
-class bmal
-  implements Observer<Boolean>
+public final class bmal
 {
-  bmal(bmai parambmai) {}
+  public long a;
+  public Object a;
+  public String a;
+  public long b = -1L;
   
-  public void a(@Nullable Boolean paramBoolean)
+  public bmal(long paramLong1, long paramLong2, ContentValues paramContentValues)
   {
-    if (paramBoolean == null) {}
-    while (!bmai.b(this.a)) {
-      return;
-    }
-    View localView = bmai.a(this.a);
-    if (paramBoolean.booleanValue()) {}
-    for (int i = 0;; i = 4)
+    this.jdField_a_of_type_Long = 1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangObject = paramContentValues;
+    try
     {
-      localView.setVisibility(i);
+      this.jdField_a_of_type_JavaLangString = paramContentValues.getAsString("entityNickName");
       return;
     }
+    catch (Exception paramContentValues) {}
+  }
+  
+  public bmal(long paramLong1, long paramLong2, Object paramObject, String paramString)
+  {
+    this.jdField_a_of_type_Long = 1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

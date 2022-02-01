@@ -1,17 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class okr
-  implements View.OnClickListener
+class okr
+  extends BroadcastReceiver
 {
-  public okr(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
+  okr(okn paramokn) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.a == 2)
+    {
+      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
+      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
+      this.a.a(null, 0, 14, i, paramIntent);
+    }
+    try
+    {
+      paramContext.unregisterReceiver(this.a.b);
+      label50:
+      this.a.b = null;
+      this.a.a = 0;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label50;
+    }
   }
 }
 

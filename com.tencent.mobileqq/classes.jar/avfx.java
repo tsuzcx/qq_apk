@@ -1,44 +1,60 @@
-import android.util.Pair;
-import android.view.View;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
 
-class avfx
-  implements avdd
+public class avfx
+  extends Animation
 {
-  avfx(avfq paramavfq, LocationRoom.Venue paramVenue) {}
+  private float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private final boolean jdField_b_of_type_Boolean;
   
-  public Pair<avcq, LocationRoom.Venue> a()
+  public avfx(ScrollTextView paramScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new Pair(avfq.a(this.jdField_a_of_type_Avfq), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
   }
   
-  public void a(avcq paramavcq, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, new Object[] { "[venue] removeVenue: onResult. roomKey: " + paramavcq + " optType: " + paramInt1, " isSuccess: " + paramBoolean + " errorCode: " + paramInt2 });
-    }
-    if ((!paramavcq.equals(avfq.a(this.jdField_a_of_type_Avfq))) || (avfq.a(this.jdField_a_of_type_Avfq).a() == null) || (paramVenue == null) || (!avfq.a(this.jdField_a_of_type_Avfq).a().equals(paramVenue))) {
-      return;
-    }
-    avfq.a(this.jdField_a_of_type_Avfq).setVenueOprating(false);
-    avfq.a(this.jdField_a_of_type_Avfq).setVisibility(8);
-    if (paramBoolean)
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.jdField_b_of_type_Float;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    int i;
+    if (this.jdField_b_of_type_Boolean)
     {
-      avfq.a(this.jdField_a_of_type_Avfq).setVenue(null);
-      avfq.b(this.jdField_a_of_type_Avfq);
-      bcef.b(null, "CliOper", "", "", "0X800A969", "0X800A969", 0, 0, "0", "0", "0", "");
-      return;
+      i = 1;
+      paramTransformation = paramTransformation.getMatrix();
+      localCamera.save();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label99;
+      }
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
     }
-    QQToast.a(avfq.a(this.jdField_a_of_type_Avfq), 1, "移除失败，请稍后重试", 0).a();
-    if ((paramInt2 == 10001) || (paramInt2 == 10003) || (paramInt2 == 10004) || (paramInt2 == 10100))
+    for (;;)
     {
-      bcef.b(null, "CliOper", "", "", "0X800A96A", "0X800A96A", 2, 0, "0", "0", "0", "");
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f1, -f2);
+      paramTransformation.postTranslate(f1, f2);
       return;
+      i = -1;
+      break;
+      label99:
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
     }
-    bcef.b(null, "CliOper", "", "", "0X800A96A", "0X800A96A", 1, 0, "0", "0", "0", "");
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getHeight();
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getWidth();
   }
 }
 

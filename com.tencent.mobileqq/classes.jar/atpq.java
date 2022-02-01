@@ -1,21 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-final class atpq
-  implements DialogInterface.OnClickListener
+public class atpq
+  implements Cloneable
 {
-  atpq(long paramLong, int paramInt, Activity paramActivity, BaseChatPie paramBaseChatPie) {}
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SDK_SHARE.ForwardShareByServerHelper", 2, "qbShowShareResultDialog back");
-    }
-    atpn.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-  }
+  public atpq(atpp paramatpp) {}
 }
 
 

@@ -1,27 +1,15 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
-import com.tencent.mobileqq.vas.avatar.VasAvatar;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
 
 public class afhq
-  extends GestureDetector
+  implements ansd
 {
-  private VasAvatar a;
+  public afhq(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public afhq(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    super(paramContext, paramOnGestureListener, paramHandler);
-  }
-  
-  public VasAvatar a()
-  {
-    return this.a;
-  }
-  
-  public void a(VasAvatar paramVasAvatar)
-  {
-    this.a = paramVasAvatar;
+    TroopRobotPickerActivity.a(this.a);
+    this.a.a.dismiss();
   }
 }
 

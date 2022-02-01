@@ -1,6 +1,11 @@
-public abstract interface bfhl
+public class bfhl
 {
-  public abstract void a(long paramLong);
+  public static String a(int paramInt)
+  {
+    long l1 = 0x7FFFFFFF & paramInt;
+    long l2 = paramInt >> 31 & 0x1;
+    return (l2 << 31 | l1) + "";
+  }
 }
 
 

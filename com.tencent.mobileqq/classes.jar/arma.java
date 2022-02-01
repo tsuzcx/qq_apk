@@ -1,24 +1,47 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class arma
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends arjj<arlz>
 {
-  public arma(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView) {}
-  
-  public void onGlobalLayout()
+  @NonNull
+  public arlz a()
   {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationInWindow(arrayOfInt);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.e = arrayOfInt[1];
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    gb.a();
+    bhhr.a(localQQAppInterface.getApp(), localQQAppInterface.getCurrentUin(), "vas_font_switch_config", "reset");
+    return new arlz();
+  }
+  
+  @NonNull
+  public arlz a(aqxa[] paramArrayOfaqxa)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    gb.a(paramArrayOfaqxa[0].a);
+    bhhr.a(localQQAppInterface.getApp(), localQQAppInterface.getCurrentUin(), "vas_font_switch_config", paramArrayOfaqxa[0].a);
+    return new arlz();
+  }
+  
+  @NonNull
+  public arlz b()
+  {
+    return new arlz();
+  }
+  
+  public Class<arlz> clazz()
+  {
+    return arlz.class;
+  }
+  
+  public int type()
+  {
+    return 359;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arma
  * JD-Core Version:    0.7.0.1
  */

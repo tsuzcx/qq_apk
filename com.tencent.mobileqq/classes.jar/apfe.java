@@ -1,58 +1,19 @@
-import android.content.res.Resources;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.qphone.base.util.QLog;
+import android.opengl.GLES20;
 
-public class apfe
+class apfe
+  implements apny
 {
-  public static apee a = new apee(0);
-  public static apee b = new apee(100000, 2130846937, 2130846938);
-  public static apee c = new apee(100001, 2130846937, 2130846937);
+  apfe(apfd paramapfd) {}
   
-  public static apee a(int paramInt, QQAppInterface paramQQAppInterface, Resources paramResources, BaseAdapter paramBaseAdapter)
+  public void a()
   {
-    return a(paramInt, paramQQAppInterface, paramResources, paramBaseAdapter, true);
+    GLES20.glUniform1i(apfd.a(this.a), apfd.b(this.a));
   }
   
-  @NonNull
-  public static apee a(int paramInt, QQAppInterface paramQQAppInterface, Resources paramResources, BaseAdapter paramBaseAdapter, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BubbleUtils", 2, "getBubbleInfo, bubbleId=" + paramInt + ", shouldDownload=" + paramBoolean);
-    }
-    long l = SystemClock.elapsedRealtime();
-    if (paramInt == 100000) {
-      paramQQAppInterface = c;
-    }
-    do
-    {
-      return paramQQAppInterface;
-      if (paramInt == 100001) {
-        return b;
-      }
-      if (paramInt < 1) {
-        return a;
-      }
-      paramResources = ((BubbleManager)paramQQAppInterface.getManager(44)).a(paramInt, paramBoolean);
-      if (paramResources == null) {
-        break;
-      }
-      paramQQAppInterface = paramResources;
-    } while (!QLog.isColorLevel());
-    QLog.d("bubble_performance", 2, "getBubbleInfo time " + (SystemClock.elapsedRealtime() - l));
-    return paramResources;
-    if (QLog.isColorLevel()) {
-      QLog.d("bubble_performance", 2, "getBubbleInfo time default" + (SystemClock.elapsedRealtime() - l));
-    }
-    return a;
-  }
-  
-  public static apee a(int paramInt, QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    return a(paramInt, paramQQAppInterface, null, null, paramBoolean);
+    apfd.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
+    apfl.a("glGetUniformLocation uDisplayType");
   }
 }
 

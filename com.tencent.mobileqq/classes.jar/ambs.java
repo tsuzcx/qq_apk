@@ -1,18 +1,20 @@
-import android.os.Bundle;
+import android.media.AudioManager;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 
-public abstract interface ambs
+public class ambs
+  implements bhxv
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public ambs(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle);
-  
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public void a(bhxu parambhxu)
+  {
+    QLog.i("ShortVideoPreviewActivity", 1, "[onCompletion] ");
+    if (VersionUtils.isrFroyo()) {
+      ((AudioManager)this.a.getSystemService("audio")).abandonAudioFocus(null);
+    }
+  }
 }
 
 

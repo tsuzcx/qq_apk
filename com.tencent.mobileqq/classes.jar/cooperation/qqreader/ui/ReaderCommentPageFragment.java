@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import bgtw;
-import bkvf;
+import bieo;
+import bmgo;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -44,7 +44,7 @@ public class ReaderCommentPageFragment
     if (!TextUtils.isEmpty(paramString)) {
       str2 = str1 + "&commentId=" + paramString;
     }
-    return bkvf.a("qqreaderComment") + "&id=" + paramLong + str2;
+    return bmgo.a("qqreaderComment") + "&id=" + paramLong + str2;
   }
   
   private static String a(Intent paramIntent)
@@ -67,7 +67,7 @@ public class ReaderCommentPageFragment
     }
     for (;;)
     {
-      str = bkvf.a("qqreaderReadover") + "&recommend_bid=" + l1;
+      str = bmgo.a("qqreaderReadover") + "&recommend_bid=" + l1;
       paramIntent = a(i, paramIntent, l2);
       if (bool2)
       {
@@ -135,9 +135,9 @@ public class ReaderCommentPageFragment
     {
       getActivity().finish();
       return;
-      getActivity().overridePendingTransition(0, 2130772255);
+      getActivity().overridePendingTransition(0, 2130772254);
       continue;
-      getActivity().overridePendingTransition(0, 2130772253);
+      getActivity().overridePendingTransition(0, 2130772252);
     }
   }
   

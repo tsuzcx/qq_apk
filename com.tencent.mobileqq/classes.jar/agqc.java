@@ -1,15 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 
-class agqc
-  implements DialogInterface.OnClickListener
+public class agqc
+  extends ahjb
 {
-  agqc(agqa paramagqa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public View c;
 }
 
 

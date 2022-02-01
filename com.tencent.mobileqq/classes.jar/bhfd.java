@@ -1,37 +1,71 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.IphoneTreeView;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
 public class bhfd
-  implements View.OnTouchListener
 {
-  public bhfd(IphoneTreeView paramIphoneTreeView) {}
+  private static ThreadLocal<LinkedList<Long>> a = new ThreadLocal();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a()
   {
-    boolean bool = true;
-    switch (paramMotionEvent.getAction())
+    if (QLog.isColorLevel())
     {
-    case 2: 
-    default: 
-      bool = false;
+      LinkedList localLinkedList2 = (LinkedList)a.get();
+      LinkedList localLinkedList1 = localLinkedList2;
+      if (localLinkedList2 == null)
+      {
+        localLinkedList1 = new LinkedList();
+        a.set(localLinkedList1);
+      }
+      localLinkedList1.addFirst(Long.valueOf(SystemClock.uptimeMillis()));
     }
-    do
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      return bool;
-      paramView.setPressed(true);
-      this.a.invalidate();
-      return true;
-      paramView.setPressed(false);
-      this.a.invalidate();
-      break;
-    } while (!paramView.isPressed());
-    paramView.setPressed(false);
-    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
-    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
-    this.a.jdField_a_of_type_AndroidViewView = null;
-    return true;
+      localObject2 = (LinkedList)a.get();
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = new LinkedList();
+        a.set(localObject1);
+        ((LinkedList)localObject1).addFirst(Long.valueOf(SystemClock.uptimeMillis()));
+      }
+      localObject2 = new StringBuilder();
+      int i = 1;
+      while (i < ((LinkedList)localObject1).size())
+      {
+        ((StringBuilder)localObject2).append("    ");
+        i += 1;
+      }
+      if (((LinkedList)a.get()).size() != 0) {}
+    }
+    else
+    {
+      return;
+    }
+    ((StringBuilder)localObject2).append(paramString2);
+    ((StringBuilder)localObject2).append(":cost ");
+    ((StringBuilder)localObject2).append(SystemClock.uptimeMillis() - ((Long)((LinkedList)a.get()).removeFirst()).longValue());
+    ((StringBuilder)localObject2).append("ms");
+    QLog.i(paramString1, 2, ((StringBuilder)localObject2).toString());
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder("PreUploadVideo");
+      localStringBuilder.append("[").append(paramString1).append("] ");
+      if (paramString2 != null) {
+        localStringBuilder.append("status:").append(paramString2).append(" ");
+      }
+      localStringBuilder.append("content:").append(paramString3);
+      QLog.i("PreUploadVideo", 2, localStringBuilder.toString());
+    }
   }
 }
 

@@ -1,6 +1,15 @@
-public abstract interface akug
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment;
+
+public class akug
+  extends akuy
 {
-  public abstract void a(int paramInt);
+  public akug(ExclusiveHbFragment paramExclusiveHbFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    ExclusiveHbFragment.a(this.a);
+  }
 }
 
 

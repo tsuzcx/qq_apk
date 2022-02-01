@@ -1,19 +1,33 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aiek
-  implements Comparator<aigo>
+  implements View.OnClickListener
 {
-  aiek(aiej paramaiej) {}
+  aiek(aido paramaido) {}
   
-  public int a(aigo paramaigo1, aigo paramaigo2)
+  public void onClick(View paramView)
   {
-    if ((!paramaigo1.a()) && (paramaigo2.a())) {
-      return -1;
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    if (this.a.mInputBar != null) {
+      this.a.mInputBar.setVisibility(0);
     }
-    if ((paramaigo1.a()) && (!paramaigo2.a())) {
-      return 1;
+    if (this.a.mFakeInput != null) {
+      this.a.mFakeInput.setVisibility(0);
     }
-    return (int)(paramaigo2.a - paramaigo1.a);
+    if (this.a.mFakeUpInput != null) {
+      this.a.mFakeUpInput.setVisibility(0);
+    }
+    this.a.handleNightMask();
+    if (this.a.jdField_a_of_type_Okn.b(this.a.getCurFriendUin()) != 0) {
+      bdla.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.sessionInfo.curFriendUin, "", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

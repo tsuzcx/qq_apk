@@ -1,8 +1,23 @@
-public abstract interface vdr
+import java.lang.ref.WeakReference;
+
+public abstract class vdr
 {
-  public abstract boolean a();
+  private WeakReference<vdt> a;
   
-  public abstract boolean b();
+  public vdr(vdt paramvdt)
+  {
+    this.a = new WeakReference(paramvdt);
+  }
+  
+  public boolean a()
+  {
+    if ((this.a == null) || (this.a.get() == null)) {
+      return false;
+    }
+    return a((vdt)this.a.get());
+  }
+  
+  public abstract boolean a(vdt paramvdt);
 }
 
 

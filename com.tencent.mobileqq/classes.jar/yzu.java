@@ -1,95 +1,30 @@
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.util.SharePreferenceUtils;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 
 public class yzu
+  extends RecyclerView.ViewHolder
 {
-  private volatile int jdField_a_of_type_Int = 4;
-  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  private String b;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public RoundCornerImageView a;
+  public boolean a;
+  public RelativeLayout b;
+  public TextView b;
   
-  public COMM.StCommonExt a()
+  public yzu(View paramView)
   {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  }
-  
-  public String a()
-  {
-    if (this.b == null) {
-      this.b = SharePreferenceUtils.get(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache");
-    }
-    return this.b;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(COMM.StCommonExt paramStCommonExt)
-  {
-    this.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString != null) {
-      SharePreferenceUtils.set(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
-    }
-    this.b = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public COMM.StCommonExt b()
-  {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  }
-  
-  public String b()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = SharePreferenceUtils.get(BaseApplicationImpl.getContext(), "subscribe_ad_livePageInfo_cache");
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void b(String paramString)
-  {
-    if (paramString != null) {
-      SharePreferenceUtils.set(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int != 4;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Int == 2;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_a_of_type_Int == 3;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377842));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131377838));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363429));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377839));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377841));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377840));
   }
 }
 

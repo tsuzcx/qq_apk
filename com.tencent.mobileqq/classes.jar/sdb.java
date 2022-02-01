@@ -1,24 +1,30 @@
-import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Queue;
+import java.io.File;
 
 class sdb
-  extends ofd
+  implements scs<rsv>
 {
-  private sdb(scw paramscw) {}
+  sdb(scy paramscy) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public boolean a(rsv paramrsv)
   {
-    super.a(paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoFullPlayController", 2, "onGetRecommend:" + paramBoolean);
-    }
-    if (paramBoolean)
+    try
     {
-      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-      scw.a(this.a).addAll(scw.a(this.a).a(paramBundle));
-      this.a.f();
+      paramrsv = new File(paramrsv.b);
+      if (paramrsv.isFile())
+      {
+        boolean bool = paramrsv.exists();
+        if (bool) {
+          return true;
+        }
+      }
+      return false;
     }
+    catch (Throwable paramrsv)
+    {
+      QLog.e("RIJUGC.SelectVideoPresenter", 1, "SelectVideoPresenter check error, file not found", paramrsv);
+    }
+    return false;
   }
 }
 

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/e3" />
-</shape>
+    <item android:id="@android:id/background" android:drawable="@drawable/eyp" />
+    <item android:id="@android:id/progress">
+        <clip android:drawable="@drawable/f23" />
+    </item>
+</layer-list>

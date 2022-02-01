@@ -1,6 +1,12 @@
-public abstract interface ymn
+class ymn
+  implements ytf
 {
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  ymn(yml paramyml) {}
+  
+  public void a(yvp paramyvp)
+  {
+    this.a.a.a(6);
+  }
 }
 
 

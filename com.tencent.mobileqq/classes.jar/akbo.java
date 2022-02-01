@@ -1,30 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class akbo
-  implements EIPCResultCallback
+  implements aizo
 {
-  akbo(akbm paramakbm, akbj paramakbj, DownloadParam paramDownloadParam) {}
+  akbo(akam paramakam) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void af_() {}
+  
+  public void b()
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
-    {
-      i = paramEIPCResult.data.getInt("result_code");
-      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
-      if (this.jdField_a_of_type_Akbj != null) {
-        this.jdField_a_of_type_Akbj.onResult(i, paramEIPCResult);
-      }
-    }
-    while (this.jdField_a_of_type_Akbj == null)
-    {
-      int i;
+    if ((this.a.a == null) || (this.a.a.app == null)) {
       return;
     }
-    this.jdField_a_of_type_Akbj.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url));
+    ((aizi)this.a.a.app.getManager(QQManagerFactory.NEW_FRIEND_MANAGER)).d();
+  }
+  
+  public void k_(int paramInt)
+  {
+    this.a.f();
   }
 }
 

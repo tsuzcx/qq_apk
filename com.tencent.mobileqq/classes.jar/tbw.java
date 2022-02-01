@@ -1,12 +1,63 @@
-public abstract interface tbw
+import android.annotation.TargetApi;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.BaseMovementMethod;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.widget.TextView;
+
+@TargetApi(11)
+public class tbw
+  extends BaseMovementMethod
 {
-  public abstract int a();
+  private static tbw a;
   
-  public abstract boolean a(int paramInt);
+  public static tbw a()
+  {
+    if (a == null) {
+      a = new tbw();
+    }
+    return a;
+  }
   
-  public abstract void b(int paramInt);
+  public void initialize(TextView paramTextView, Spannable paramSpannable)
+  {
+    Selection.removeSelection(paramSpannable);
+  }
   
-  public abstract void b(int paramInt1, int paramInt2);
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getActionMasked();
+    if ((i == 1) || (i == 0))
+    {
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      paramMotionEvent = paramTextView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      if (j >= paramTextView.getText().length()) {
+        return true;
+      }
+      paramMotionEvent = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length > 0)
+      {
+        if (i == 1) {
+          paramMotionEvent[0].onClick(paramTextView);
+        }
+        for (;;)
+        {
+          return true;
+          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(paramMotionEvent[0]), paramSpannable.getSpanEnd(paramMotionEvent[0]));
+        }
+      }
+      Selection.removeSelection(paramSpannable);
+    }
+    return false;
+  }
 }
 
 

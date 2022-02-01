@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import pnf;
+import pyd;
 
 public class ReadInJoyChannelPanelFragment$StaticGridViewAdapter$1
   implements Runnable
 {
-  public ReadInJoyChannelPanelFragment$StaticGridViewAdapter$1(pnf parampnf, TabChannelCoverInfo paramTabChannelCoverInfo) {}
+  public ReadInJoyChannelPanelFragment$StaticGridViewAdapter$1(pyd parampyd, TabChannelCoverInfo paramTabChannelCoverInfo) {}
   
   public void run()
   {
-    ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_Pnf.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo);
+    ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_Pyd.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTabChannelCoverInfo);
   }
 }
 

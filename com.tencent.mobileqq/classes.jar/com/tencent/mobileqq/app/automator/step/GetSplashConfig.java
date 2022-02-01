@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aehs;
-import aqlw;
-import aqmb;
-import blbm;
+import aeza;
+import arph;
+import arpm;
+import bmnx;
 import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.olympic.OlympicManager;
@@ -14,7 +15,7 @@ import com.tencent.mobileqq.olympic.OlympicServlet;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
-import ltv;
+import lui;
 
 public class GetSplashConfig
   extends AsyncStep
@@ -25,17 +26,17 @@ public class GetSplashConfig
     if (QLog.isColorLevel()) {
       QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "GetSplashConfig config: %s", new Object[] { localObject }));
     }
-    aqlw.a(this.a.app, this.a.app.getCurrentAccountUin());
-    aqmb.a(this.a.app, this.a.app.getCurrentUin());
-    ((ltv)this.a.app.getManager(254)).a = true;
+    arph.a(this.a.app, this.a.app.getCurrentAccountUin());
+    arpm.a(this.a.app, this.a.app.getCurrentUin());
+    ((lui)this.a.app.getManager(QQManagerFactory.AV_REDPACKET_CONFIG_MGR)).a = true;
     ShortVideoResourceManager.a(this.a.app, 1);
-    aqlw.e(this.a.app, this.a.app.getCurrentAccountUin());
-    aqlw.f(this.a.app, this.a.app.getCurrentAccountUin());
-    localObject = (OlympicManager)this.a.app.getManager(167);
+    arph.e(this.a.app, this.a.app.getCurrentAccountUin());
+    arph.f(this.a.app, this.a.app.getCurrentAccountUin());
+    localObject = (OlympicManager)this.a.app.getManager(QQManagerFactory.OLYMPIC_MANAGER);
     OlympicServlet.a(this.a.app, ((OlympicManager)localObject).b());
     AladdinConfigServlet.a(this.a.app, this.a.app.getCurrentUin());
-    blbm.a().a(this.a.app);
-    this.a.app.getMessageFacade().addObserver(new aehs());
+    bmnx.a().a(this.a.app);
+    this.a.app.getMessageFacade().addObserver(new aeza());
     this.a.app.getSignInInfo(1);
     return 7;
   }

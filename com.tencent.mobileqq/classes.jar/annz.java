@@ -1,51 +1,93 @@
+import android.content.Context;
+import android.os.Message;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloLinearLayout;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.os.MqqHandler;
+
 public class annz
-  implements anny
+  extends bhow
 {
-  public void a(amwl paramamwl, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, amwm paramamwm)
+  public annz(ApolloLinearLayout paramApolloLinearLayout) {}
+  
+  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
+    label597:
+    for (;;)
     {
-    case 8021: 
-    case 8025: 
-    case 8026: 
-    case 8027: 
-    case 8028: 
-    case 8029: 
-    default: 
       return;
-    case 8017: 
-      paramamwl.reqInsertBlacklistPB(paramBoolean, paramObject);
-      return;
-    case 8024: 
-      if (paramObject != null) {}
-      for (paramArrayOfObject = ((bcqv)paramObject).a;; paramArrayOfObject = null)
+      Object localObject = new ApolloActionData();
+      paramObject = (HashMap)paramObject;
+      String str = (String)paramObject.get("optFrom");
+      if ((!TextUtils.isEmpty(str)) && ("actionPanel".equals(str)))
       {
-        paramamwl.onSubAccountThirdQQUnreadMsgNum(paramBoolean, paramArrayOfObject, (bcqv)paramObject);
-        return;
+        int i = Integer.parseInt((String)paramObject.get("id"));
+        ((ApolloActionData)localObject).actionId = i;
+        localObject = this.a.a((ApolloActionData)localObject);
+        if (localObject != null)
+        {
+          ((ImageView)((View)localObject).findViewById(2131378997)).setVisibility(8);
+          ((View)localObject).setClickable(true);
+          if (this.a.b.incrementAndGet() == this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
+          {
+            this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+            this.a.b.set(0);
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.removeObserver(this.a.jdField_a_of_type_Bhow);
+          }
+          if (paramBoolean)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloLinearLayout", 2, "action auth success actionid=" + i);
+            }
+            paramObject.put("APOLLO_POP_TYPE", "toast");
+            paramObject.put("tips", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext.getString(2131690066));
+            ((VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getBusinessHandler(BusinessHandlerFactory.VAS_EXTENSION_HANDLER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getCurrentUin(), 128, "obtained action");
+          }
+          for (;;)
+          {
+            if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app == null)) {
+              break label597;
+            }
+            localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getHandler(ChatActivity.class);
+            if (localObject == null) {
+              break;
+            }
+            VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "activity_alert_show", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, new String[] { "" + i, "0" });
+            localObject = ((MqqHandler)localObject).obtainMessage(45);
+            ((Message)localObject).obj = paramObject;
+            ((Message)localObject).sendToTarget();
+            return;
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloLinearLayout", 2, "action auth fail actionid=" + i);
+            }
+            paramObject.put("APOLLO_POP_TYPE", "dialog");
+            paramObject.put("feeType", String.valueOf(6));
+            paramObject.put("title", anvx.a(2131699961));
+            if (TextUtils.isEmpty((String)paramObject.get("content"))) {
+              paramObject.put("content", anvx.a(2131699960));
+            }
+            paramObject.put("rightString", anvx.a(2131699962));
+            paramObject.put("isActionBack", "true");
+            paramObject.put("actionId", "" + i);
+          }
+        }
       }
-    case 8016: 
-      paramamwl.msgRevokeRsp(paramBoolean, paramArrayOfObject);
-      return;
-    case 8018: 
-      paramamwl.reqBlessDirtyTextCheck(paramBoolean, paramArrayOfObject);
-      return;
-    case 8019: 
-      paramamwl.reqBlessMsg(paramBoolean, paramArrayOfObject);
-      return;
-    case 8020: 
-      paramamwl.newMessageAdded(paramObject);
-      return;
-    case 8022: 
-      paramamwl.msgStartSendingUI(paramArrayOfObject);
-      return;
-    case 8023: 
-      paramamwl.onBoxMsgUnreadNumRefresh();
-      return;
-    case 8030: 
-      paramamwl.addFriendByContact(paramBoolean, paramArrayOfObject);
-      return;
     }
-    paramamwl.onMsgForwardWXResult(((Integer)paramObject).intValue());
   }
 }
 

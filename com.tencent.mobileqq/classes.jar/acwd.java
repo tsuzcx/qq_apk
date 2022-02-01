@@ -1,23 +1,47 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.GrpTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-public final class acwd
-  implements DialogInterface.OnClickListener
+public class acwd
+  implements acos
 {
-  public acwd(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, acxa paramacxa, acxb paramacxb, BaseActivity paramBaseActivity, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    if (paramInt == 1)
+    return 1000;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((!TextUtils.isEmpty(paramMessageRecord.senderuin)) && (Long.valueOf(paramMessageRecord.senderuin).longValue() != 0L) && (!TextUtils.equals(paramMessageRecord.senderuin, paramMessageRecord.selfuin)) && (TextUtils.equals(paramMessageRecord.senderuin, paramMessageRecord.frienduin))) {}
+    paramQQAppInterface = new msg_svc.GrpTmp();
+    if (TextUtils.isEmpty(paramMessageRecord.senderuin))
     {
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acxa, this.jdField_a_of_type_Acxb);
-      return;
+      paramQQAppInterface.group_uin.set(Long.valueOf(paramMessageRecord.selfuin).longValue());
+      if (QLog.isColorLevel()) {
+        QLog.d("GrpTmpRoutingType", 2, "createSendRichTextMsgReq, senderuin error, senderuin: " + paramMessageRecord.senderuin + " frienduin: " + paramMessageRecord.frienduin + " msgtype: " + paramMessageRecord.msgtype);
+      }
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Boolean, null);
+    for (;;)
+    {
+      paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+      paramRoutingHead.grp_tmp.set(paramQQAppInterface);
+      return true;
+      paramQQAppInterface.group_uin.set(Long.valueOf(paramMessageRecord.senderuin).longValue());
+    }
+  }
+  
+  public int b()
+  {
+    return 6000;
   }
 }
 

@@ -1,40 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-class php
-  extends sdx
+public class php
+  implements View.OnTouchListener
 {
-  php(pho parampho, BaseArticleInfo paramBaseArticleInfo) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public php(Context paramContext, View paramView)
   {
-    if (paramBoolean3)
-    {
-      if (paramBoolean4) {
-        phl.a(this.jdField_a_of_type_Pho.a).a().a().c();
-      }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
+      return false;
     }
-    else
+    switch (paramMotionEvent.getAction())
     {
-      if (paramBoolean1) {
-        break label123;
-      }
-      phl.a(this.jdField_a_of_type_Pho.a).a().f(false);
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849372));
+      return false;
     }
-    for (;;)
-    {
-      if ((paramBoolean2) && (phl.a(this.jdField_a_of_type_Pho.a).a().a() != null)) {
-        phl.a(this.jdField_a_of_type_Pho.a).a().a().a(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, 0L, 0L);
-      }
-      return;
-      phl.a(this.jdField_a_of_type_Pho.a).a().a().b(2);
-      break;
-      label123:
-      if (phl.a(this.jdField_a_of_type_Pho.a).a().b())
-      {
-        phl.a(this.jdField_a_of_type_Pho.a).a().a().c();
-        phl.a(this.jdField_a_of_type_Pho.a).a().f(false);
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849399));
+    return false;
   }
 }
 

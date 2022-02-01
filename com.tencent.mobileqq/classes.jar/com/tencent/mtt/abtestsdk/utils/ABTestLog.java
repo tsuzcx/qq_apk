@@ -5,10 +5,11 @@ import java.util.Locale;
 
 public class ABTestLog
 {
-  public static final String LOG_API_TAG = "abtest_api";
-  public static final String LOG_BUF_TAG = "abtest_buffer";
-  public static final String LOG_TAG = "abtest";
-  public static final String LOG_UP_TAG = "abtest_upload";
+  public static final String LOG_API_TAG = "tab_test_api";
+  public static final String LOG_BUF_TAG = "tab_test_buffer";
+  public static final String LOG_REP_TAG = "tab_test_report";
+  public static final String LOG_TAG = "tab_test";
+  public static final String LOG_UP_TAG = "tab_test_upload";
   private static final int MIN_STACK_OFFSET = 5;
   private static boolean logAble = false;
   public static boolean useFuncTag = false;
@@ -21,14 +22,14 @@ public class ABTestLog
   public static void debug(String paramString, Object... paramVarArgs)
   {
     if (check()) {
-      Log.d("abtest", format(paramString, paramVarArgs));
+      Log.d("tab_test", format(paramString, paramVarArgs));
     }
   }
   
   public static void error(String paramString, Object... paramVarArgs)
   {
     if (check()) {
-      Log.e("abtest", format(paramString, paramVarArgs));
+      Log.e("tab_test", format(paramString, paramVarArgs));
     }
   }
   
@@ -36,7 +37,7 @@ public class ABTestLog
   {
     String str = getFuncTag();
     if (paramString == null) {
-      return str + "msg is null";
+      return str + " msg is null";
     }
     if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
       return str + paramString;
@@ -98,7 +99,7 @@ public class ABTestLog
   public static void info(String paramString, Object... paramVarArgs)
   {
     if (check()) {
-      Log.i("abtest", format(paramString, paramVarArgs));
+      Log.i("tab_test", format(paramString, paramVarArgs));
     }
   }
   
@@ -139,28 +140,35 @@ public class ABTestLog
   public static void stepAPI(String paramString, Object... paramVarArgs)
   {
     if (check()) {
-      Log.d("abtest_api", format(paramString, paramVarArgs));
+      Log.d("tab_test_api", format(paramString, paramVarArgs));
     }
   }
   
   public static void stepBuffer(String paramString, Object... paramVarArgs)
   {
     if (check()) {
-      Log.d("abtest_buffer", format(paramString, paramVarArgs));
+      Log.d("tab_test_buffer", format(paramString, paramVarArgs));
+    }
+  }
+  
+  public static void stepReport(String paramString, Object... paramVarArgs)
+  {
+    if (check()) {
+      Log.d("tab_test_report", format(paramString, paramVarArgs));
     }
   }
   
   public static void stepUpload(String paramString, Object... paramVarArgs)
   {
     if (check()) {
-      Log.d("abtest_upload", format(paramString, paramVarArgs));
+      Log.d("tab_test_upload", format(paramString, paramVarArgs));
     }
   }
   
   public static void warn(String paramString, Object... paramVarArgs)
   {
     if (check()) {
-      Log.w("abtest", format(paramString, paramVarArgs));
+      Log.w("tab_test", format(paramString, paramVarArgs));
     }
   }
 }

@@ -1,47 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewImplement.ArkViewInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ark.open.ArkView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class aoyr
-  implements View.OnClickListener
+public class aoyr
 {
-  aoyr(aoyq paramaoyq, int paramInt, ArkViewImplement.ArkViewInterface paramArkViewInterface) {}
+  private List<ArkView> a = new ArrayList();
   
-  public void onClick(View paramView)
+  public void a()
   {
-    int i = paramView.getId();
-    if (this.jdField_a_of_type_Int == 2) {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onDestroy();
       }
     }
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onDestroy");
+    }
+    this.a.clear();
+  }
+  
+  public void a(ArkView paramArkView)
+  {
+    this.a.add(paramArkView);
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (i == 1)
-      {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onPause();
       }
-      else if (i == 2)
-      {
-        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-        continue;
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          if (i == 0) {
-            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
-          } else if (i == 1) {
-            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
-          } else if (i == 2) {
-            this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-          }
-        }
-        else {
-          this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
-        }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onPause");
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkView localArkView = (ArkView)localIterator.next();
+      if (localArkView != null) {
+        localArkView.onResume();
       }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkCollector", 2, this.a.size() + " ArkViews onResume");
     }
   }
 }

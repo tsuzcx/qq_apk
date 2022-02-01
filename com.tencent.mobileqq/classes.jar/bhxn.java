@@ -1,29 +1,11 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
 
 public class bhxn
-  extends Handler
+  extends QWalletPayJsPlugin
 {
-  public void handleMessage(Message paramMessage)
+  public bhxn()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (bhxm)paramMessage.obj;
-    } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView == null) || (paramMessage.jdField_a_of_type_JavaLangString == null));
-    try
-    {
-      paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramMessage.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-    }
+    this.mPluginNameSpace = "qw_pay";
   }
 }
 

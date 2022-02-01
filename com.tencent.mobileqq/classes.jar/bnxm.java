@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
-public final class bnxm
-  implements Parcelable.Creator<FilterCategory>
+public class bnxm
+  implements bodt
 {
-  public FilterCategory a(Parcel paramParcel)
+  public bnxm(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
+  
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    return new FilterCategory(paramParcel);
+    if (AEEditorImageEditFragment.a(this.a).getVisibility() == 0)
+    {
+      Rect localRect = new Rect();
+      AEEditorImageEditFragment.a(this.a).getGlobalVisibleRect(localRect);
+      if (!localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
+        AEEditorImageEditFragment.a(this.a);
+      }
+    }
+    return false;
   }
   
-  public FilterCategory[] a(int paramInt)
+  public boolean b(MotionEvent paramMotionEvent)
   {
-    return new FilterCategory[paramInt];
+    return false;
   }
 }
 

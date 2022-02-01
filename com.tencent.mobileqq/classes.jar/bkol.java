@@ -1,33 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.LogProxy;
 
-class bkol
-  extends RemoteCommand
+@ProxyService(proxy=LogProxy.class)
+public class bkol
+  extends LogProxy
 {
-  bkol(bkok parambkok, String paramString)
+  public void log(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
   {
-    super(paramString);
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    if (paramBundle == null) {
-      paramBundle = null;
-    }
-    Bundle localBundle;
-    do
+    switch (paramInt)
     {
-      return paramBundle;
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      localBundle = bkok.a(this.a, paramBundle);
-      if (localBundle != null) {
-        localBundle.setClassLoader(getClass().getClassLoader());
+    case 3: 
+    default: 
+      if (paramThrowable == null)
+      {
+        QLog.i(paramString1, 1, paramString2);
+        return;
       }
-      paramBundle = localBundle;
-    } while (paramOnInvokeFinishLinstener == null);
-    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
-    return localBundle;
+      break;
+    case 2: 
+      if (paramThrowable == null)
+      {
+        QLog.d(paramString1, 1, paramString2);
+        return;
+      }
+      QLog.d(paramString1, 1, paramString2, paramThrowable);
+      return;
+    case 4: 
+      if (paramThrowable == null)
+      {
+        QLog.w(paramString1, 1, paramString2);
+        return;
+      }
+      QLog.w(paramString1, 1, paramString2, paramThrowable);
+      return;
+    case 5: 
+      if (paramThrowable == null)
+      {
+        QLog.e(paramString1, 1, paramString2);
+        return;
+      }
+      QLog.e(paramString1, 1, paramString2, paramThrowable);
+      return;
+    }
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
   }
 }
 

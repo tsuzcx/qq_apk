@@ -1,22 +1,20 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class aypn
-  implements View.OnClickListener
+  extends aypr
 {
-  public aypn(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public aypn(MessageReceivingAdapter paramMessageReceivingAdapter, int paramInt, MessageForStructing paramMessageForStructing, StructMsgForGeneralShare paramStructMsgForGeneralShare) {}
   
-  public void onClick(View paramView)
+  public boolean onClick(View paramView)
   {
-    this.a.a(1);
-    StickyNotePublishFragment.a(this.a).setImageResource(2130837535);
-    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getActivity().getString(2131690223));
-    bcef.b(null, "dc00898", "", "", "0X800AB2D", "0X800AB2D", 0, 0, "0", "0", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    ayqp.b(this.jdField_a_of_type_Int + 1, aypm.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "2");
+    if (MessageReceivingAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter, paramView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare)) {
+      return true;
+    }
+    return super.onClick(paramView);
   }
 }
 

@@ -1,443 +1,80 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
+import android.os.Handler;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.apollo.data.ApolloGameRedDot;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.1;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.data.ApolloGameRankData;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.apollo.ApolloBrickPlayer.BrickCMSPlayerListener.1;
+import com.tencent.mobileqq.apollo.player.CMSActionStatus;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class amln
-  extends BaseAdapter
-  implements View.OnClickListener
+  implements amvk
 {
   private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bjvq jdField_a_of_type_Bjvq;
-  private WeakReference<amli> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<ApolloGameData> jdField_a_of_type_JavaUtilList;
-  private int b;
+  private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ImageView> b;
+  private WeakReference<RelativeLayout> c;
+  private WeakReference<Handler> d;
+  private WeakReference<Map<String, URLDrawable.URLDrawableOptions>> e;
   
-  public amln(Context paramContext, amli paramamli)
+  public amln(int paramInt, ImageView paramImageView1, ImageView paramImageView2, RelativeLayout paramRelativeLayout, Handler paramHandler, Map<String, URLDrawable.URLDrawableOptions> paramMap)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramamli);
-    long l = Math.min(DeviceInfoUtil.getPortraitWidth(), DeviceInfoUtil.getPortraitHeight());
-    this.jdField_a_of_type_Int = ((int)((float)l - 30.0F * DeviceInfoUtil.getDesity()) / 3);
-    this.b = ((int)(9.0D * (this.jdField_a_of_type_Int / 16.0D)));
-    QLog.i("GameListAdapter", 1, "screenWidth:" + l + ",itemWidth:" + this.jdField_a_of_type_Int + ",itemHeight:" + this.b);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView1);
+    this.b = new WeakReference(paramImageView2);
+    this.c = new WeakReference(paramRelativeLayout);
+    this.d = new WeakReference(paramHandler);
+    this.e = new WeakReference(paramMap);
   }
   
-  public void a()
-  {
-    b();
-  }
+  public void a(@NotNull CMSAction paramCMSAction) {}
   
-  public void a(ViewGroup paramViewGroup, amlq paramamlq)
+  public void a(@NotNull CMSAction paramCMSAction, @NotNull CMSActionStatus paramCMSActionStatus) {}
+  
+  public void a(@NotNull CMSAction paramCMSAction, boolean paramBoolean, @NotNull String paramString1, @Nullable String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GameListAdapter", 2, "[showHighLightGame] ");
+      QLog.w("ApolloBrickPlayer", 2, "onRecordDone " + paramBoolean + " mActionId " + this.jdField_a_of_type_Int + " " + paramString2);
     }
-    if (paramamlq.jdField_a_of_type_AndroidViewView != null)
-    {
-      paramViewGroup.removeView(paramamlq.jdField_a_of_type_AndroidViewView);
-      paramamlq.jdField_a_of_type_AndroidViewView = null;
-    }
-    paramViewGroup.setClipChildren(true);
-    paramViewGroup.setClipToPadding(true);
-    Object localObject = new RelativeLayout.LayoutParams(-1, -1);
-    ((RelativeLayout.LayoutParams)localObject).addRule(5, 2131368858);
-    ((RelativeLayout.LayoutParams)localObject).addRule(7, 2131368858);
-    ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131368858);
-    ((RelativeLayout.LayoutParams)localObject).addRule(8, 2131368858);
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    localRelativeLayout.setId(2131362747);
-    localRelativeLayout.setBackgroundDrawable(null);
-    paramViewGroup.addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject);
-    paramamlq.jdField_a_of_type_AndroidViewView = localRelativeLayout;
-    localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject).setImageResource(2130838623);
-    ((ImageView)localObject).setVisibility(8);
-    ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
-    localRelativeLayout.addView((View)localObject, new RelativeLayout.LayoutParams(this.jdField_a_of_type_Int, this.b));
-    ((ImageView)localObject).setVisibility(8);
-    ((ImageView)localObject).postDelayed(new ApolloGameViewBinder.GameListAdapter.2(this, (ImageView)localObject, localRelativeLayout, paramViewGroup, paramamlq), 400L);
-  }
-  
-  public void a(List<ApolloGameData> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bjvq != null) {
-      this.jdField_a_of_type_Bjvq.dismiss();
-    }
-  }
-  
-  public int getCount()
-  {
-    int i;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      i = 0;
-    }
-    int k;
-    int j;
-    do
-    {
-      return i;
-      k = this.jdField_a_of_type_JavaUtilList.size();
-      j = k / 3;
-      i = j;
-    } while (k % 3 == 0);
-    return j + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    Object localObject;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      localObject = null;
-      return localObject;
-    }
-    ArrayList localArrayList = new ArrayList(3);
-    int i = paramInt * 3;
-    paramInt = i;
+    int i = paramCMSAction.c();
+    if (paramBoolean) {}
     for (;;)
     {
-      localObject = localArrayList;
-      if (paramInt >= i + 3) {
-        break;
-      }
-      localObject = localArrayList;
-      if (paramInt < 0) {
-        break;
-      }
-      localObject = localArrayList;
-      if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break;
-      }
-      localArrayList.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      paramInt += 1;
-    }
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    amlq localamlq;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558671, paramViewGroup, false);
-      localamlq = new amlq(null);
-      localamlq.jdField_a_of_type_ArrayOfAndroidViewViewGroup[0] = ((ViewGroup)paramView.findViewById(2131368851));
-      localamlq.jdField_a_of_type_ArrayOfComTencentImageURLImageView[0] = ((URLImageView)paramView.findViewById(2131368852));
-      localamlq.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)paramView.findViewById(2131368853));
-      localamlq.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)paramView.findViewById(2131368854));
-      localamlq.jdField_a_of_type_ArrayOfComTencentImageURLImageView[0].setLayoutParams(new RelativeLayout.LayoutParams(this.jdField_a_of_type_Int, this.b));
-      localamlq.b[0] = ((ImageView)paramView.findViewById(2131368855));
-      localamlq.jdField_a_of_type_ArrayOfAndroidViewViewGroup[1] = ((ViewGroup)paramView.findViewById(2131368857));
-      localamlq.jdField_a_of_type_ArrayOfComTencentImageURLImageView[1] = ((URLImageView)paramView.findViewById(2131368858));
-      localamlq.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)paramView.findViewById(2131368859));
-      localamlq.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)paramView.findViewById(2131368860));
-      localamlq.jdField_a_of_type_ArrayOfComTencentImageURLImageView[1].setLayoutParams(new RelativeLayout.LayoutParams(this.jdField_a_of_type_Int, this.b));
-      localamlq.b[1] = ((ImageView)paramView.findViewById(2131368861));
-      localamlq.jdField_a_of_type_ArrayOfAndroidViewViewGroup[2] = ((ViewGroup)paramView.findViewById(2131368863));
-      localamlq.jdField_a_of_type_ArrayOfComTencentImageURLImageView[2] = ((URLImageView)paramView.findViewById(2131368864));
-      localamlq.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)paramView.findViewById(2131368865));
-      localamlq.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)paramView.findViewById(2131368866));
-      localamlq.jdField_a_of_type_ArrayOfComTencentImageURLImageView[2].setLayoutParams(new RelativeLayout.LayoutParams(this.jdField_a_of_type_Int, this.b));
-      localamlq.b[2] = ((ImageView)paramView.findViewById(2131368867));
-      paramView.setTag(localamlq);
-      localObject1 = (amli)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject1 == null) {
-        break label1635;
-      }
-      amli.a((amli)localObject1);
-    }
-    label417:
-    label721:
-    label1626:
-    label1629:
-    label1635:
-    for (Object localObject1 = amli.a((amli)localObject1);; localObject1 = null)
-    {
-      ArrayList localArrayList = (ArrayList)getItem(paramInt);
-      int i;
-      ApolloGameData localApolloGameData;
-      Object localObject3;
-      if ((localArrayList != null) && (localArrayList.size() > 0))
+      try
       {
-        i = 0;
-        if (i >= 3) {
-          break label1610;
+        amlm.a().put(paramCMSAction.a(null, null), paramString2);
+        if ((this.e == null) || (this.e.get() == null)) {
+          continue;
         }
-        if (i < localArrayList.size())
-        {
-          localApolloGameData = (ApolloGameData)localArrayList.get(i);
-          localamlq.jdField_a_of_type_ArrayOfAndroidViewViewGroup[i].setVisibility(0);
-          localamlq.jdField_a_of_type_ArrayOfAndroidViewViewGroup[i].setTag(localApolloGameData);
-          localamlq.jdField_a_of_type_ArrayOfAndroidViewViewGroup[i].setOnClickListener(this);
-          localamlq.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText(localApolloGameData.name);
-          if (localObject1 == null) {
-            break label1629;
-          }
-          localObject2 = (SparseArray)((SparseArray)localObject1).get(localApolloGameData.gameId);
-          if ((localObject2 == null) || (((SparseArray)localObject2).size() <= 0)) {
-            break label1629;
-          }
-          localObject3 = (ApolloGameRedDot)((SparseArray)localObject2).get(1002);
-          localObject3 = (ApolloGameRedDot)((SparseArray)localObject2).get(1001);
-          localObject3 = (ApolloGameRedDot)((SparseArray)localObject2).get(1005);
-        }
+        paramCMSAction = (Map)this.e.get();
+        paramCMSAction = amlm.a(paramString2, paramCMSAction);
       }
-      for (Object localObject2 = (ApolloGameRedDot)((SparseArray)localObject2).get(1000);; localObject2 = null)
+      catch (Exception paramCMSAction)
       {
-        label617:
-        int j;
-        if (localApolloGameData.isGameApp)
-        {
-          localamlq.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setImageResource(2130838521);
-          localamlq.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setVisibility(0);
-          int k = 0;
-          j = k;
-          if (localObject2 != null)
-          {
-            j = k;
-            if (!((ApolloGameRedDot)localObject2).mIsShow) {
-              j = 1;
-            }
-          }
-          if (j == 0) {
-            break label1455;
-          }
-          localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850321);
-          ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
-          localamlq.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setCompoundDrawablePadding(AIOUtils.dp2px(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-          localamlq.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setCompoundDrawables((Drawable)localObject2, null, null, null);
-          if (TextUtils.isEmpty(localApolloGameData.listCoverUrl)) {
-            break label1485;
-          }
-          localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources();
-          localObject3 = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Resources)localObject2).getDrawable(2130838597);
-          ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Resources)localObject2).getDrawable(2130838597);
-          ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = this.jdField_a_of_type_Int;
-          ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = this.b;
-          localObject2 = URLDrawable.getDrawable(localApolloGameData.listCoverUrl, (URLDrawable.URLDrawableOptions)localObject3);
-          localamlq.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setImageDrawable((Drawable)localObject2);
-          j = paramInt * 3 + i;
-          if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (altm.a("aio.city.game", ((amli)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != altn.d)) {
-            break label1626;
-          }
-          j -= 1;
-        }
-        for (;;)
-        {
-          if ((j < ApolloGameUtil.a()) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (((amli)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localApolloGameData.gameId)) && (localamlq.b[i].getVisibility() != 0))
-          {
-            localObject2 = localamlq.b[i];
-            ((ImageView)localObject2).setVisibility(0);
-            localObject3 = new RedTouch(this.jdField_a_of_type_AndroidContentContext, (View)localObject2).a(19).a();
-            BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-            localRedTypeInfo.red_type.set(4);
-            localRedTypeInfo.red_content.set(amtj.a(2131699496));
-            localRedTypeInfo.red_desc.set("{'cn':'#FF0000', 'av':1}");
-            ((RedTouch)localObject3).a(localRedTypeInfo);
-            ((ImageView)localObject2).setTag(localObject3);
-            if (amli.jdField_a_of_type_Long == 0L) {
-              amli.jdField_a_of_type_Long = System.currentTimeMillis();
-            }
-            if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-              VipUtils.a(((amli)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "beyond_notice", 0, 0, new String[] { String.valueOf(localApolloGameData.gameId) });
-            }
-            if (amli.jdField_a_of_type_Boolean)
-            {
-              amli.jdField_a_of_type_Boolean = false;
-              localObject3 = ApolloGameUtil.a();
-              if (localObject3 != null) {
-                ((SharedPreferences)localObject3).edit().putBoolean("sp.aio.show", false).apply();
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("GameListAdapter", 2, "show guide window");
-              }
-              ((ImageView)localObject2).postDelayed(new ApolloGameViewBinder.GameListAdapter.1(this, (ImageView)localObject2), 200L);
-            }
-            if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (amli.a((amli)this.jdField_a_of_type_JavaLangRefWeakReference.get()) != null) && (localApolloGameData.gameId == amli.a((amli)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_Int))
-            {
-              a(localamlq.jdField_a_of_type_ArrayOfAndroidViewViewGroup[i], localamlq);
-              localObject2 = (alnn)((amli)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(211);
-              ((alnn)localObject2).a(-1, -1);
-              ((amli)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(((alnn)localObject2).a());
-            }
-          }
-          for (;;)
-          {
-            i += 1;
-            break label417;
-            localamlq = (amlq)paramView.getTag();
-            break;
-            if (!TextUtils.isEmpty(localApolloGameData.tagUrl))
-            {
-              localamlq.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setImageDrawable(amdn.a(String.valueOf(localApolloGameData.tagUrl.hashCode()), null, localApolloGameData.tagUrl, true));
-              localamlq.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setVisibility(0);
-              VipUtils.a(((amli)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "showtag", 0, 0, new String[] { String.valueOf(localApolloGameData.gameId), String.valueOf(paramInt * 3 + i), String.valueOf(localApolloGameData.tagType) });
-              break label617;
-            }
-            localamlq.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setVisibility(8);
-            break label617;
-            localamlq.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setCompoundDrawablePadding(0);
-            localamlq.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setCompoundDrawables(null, null, null, null);
-            break label721;
-            localamlq.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setImageResource(2130838597);
-            break label815;
-            if ((localamlq.b[i].getTag() != null) && ((localamlq.b[i].getTag() instanceof RedTouch))) {
-              ((RedTouch)localamlq.b[i].getTag()).d();
-            }
-            localamlq.b[i].setVisibility(4);
-            break label1175;
-            localamlq.jdField_a_of_type_ArrayOfAndroidViewViewGroup[i].setVisibility(4);
-          }
-          i = 0;
-          while (i < 3)
-          {
-            localamlq.jdField_a_of_type_ArrayOfAndroidViewViewGroup[i].setVisibility(4);
-            i += 1;
-          }
-          EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-          return paramView;
-        }
+        paramCMSAction.printStackTrace();
+        paramCMSAction = null;
+        continue;
+        paramString1 = null;
+        continue;
+        paramString1.post(new ApolloBrickPlayer.BrickCMSPlayerListener.1(this, i, paramCMSAction));
       }
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    ApolloGameData localApolloGameData;
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if ((this.d == null) || (this.d.get() == null)) {
+        continue;
+      }
+      paramString1 = (Handler)this.d.get();
+      if (paramString1 != null) {
+        continue;
+      }
       return;
-      localApolloGameData = (ApolloGameData)paramView.getTag();
-      if (localApolloGameData != null) {
-        break;
-      }
-      QLog.e("GameListAdapter", 1, "[onClick] no game data");
-    }
-    amli localamli = (amli)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject1;
-    if (localamli != null) {
-      if (amli.a(localamli) != null) {
-        if (paramView.getId() == 2131368851) {
-          localObject1 = paramView.findViewById(2131368855);
-        }
-      }
-    }
-    for (;;)
-    {
-      label116:
-      if ((localObject1 != null) && (((View)localObject1).getVisibility() == 0))
-      {
-        ((View)localObject1).setVisibility(8);
-        if ((((View)localObject1).getTag() != null) && ((((View)localObject1).getTag() instanceof RedTouch))) {
-          ((RedTouch)((View)localObject1).getTag()).d();
-        }
-        VipUtils.a(((amli)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "beyond_notice_disappear", 1, 0, new String[] { String.valueOf(localApolloGameData.gameId) });
-      }
-      localObject1 = amli.a(localamli);
-      label231:
-      Object localObject2;
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
-      {
-        Iterator localIterator = ((List)localObject1).iterator();
-        localObject1 = null;
-        if (localIterator.hasNext())
-        {
-          localObject2 = (ApolloGameRankData)localIterator.next();
-          if ((localObject2 == null) || (((ApolloGameRankData)localObject2).mGameId != localApolloGameData.gameId)) {
-            break label421;
-          }
-          localObject1 = localObject2;
-        }
-      }
-      label421:
-      for (;;)
-      {
-        for (;;)
-        {
-          break label231;
-          if (paramView.getId() == 2131368857)
-          {
-            localObject1 = paramView.findViewById(2131368861);
-            break label116;
-          }
-          if (paramView.getId() != 2131368863) {
-            break label424;
-          }
-          localObject1 = paramView.findViewById(2131368867);
-          break label116;
-          localObject2 = amli.a(localamli);
-          if (localObject1 != null) {}
-          try
-          {
-            ((ApolloGameRankData)localObject1).mValidTime = (System.currentTimeMillis() - 1000L);
-            ApolloGameUtil.a(localamli.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ApolloGameRankData)localObject1);
-            amli.a(localamli).remove(localObject1);
-            if (QLog.isColorLevel()) {
-              QLog.d("GameListAdapter", 2, new Object[] { "[onClick] remove red corner for ", Integer.valueOf(localApolloGameData.gameId) });
-            }
-            amli.c(localamli, localApolloGameData);
-            break;
-          }
-          finally {}
-        }
-        QLog.e("GameListAdapter", 1, "[onClick] binder null");
-        break;
-      }
-      label424:
-      localObject1 = null;
+      paramCMSAction = null;
+      continue;
+      paramCMSAction = URLDrawableHelper.getFailedDrawable();
     }
   }
 }

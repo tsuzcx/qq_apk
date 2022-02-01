@@ -1,26 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.vas.VasApngUtil;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 public class bgcq
-  implements bgcp
+  extends ajdw
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public bgba a;
+  public URLImageView a;
   
-  public bgcq(String paramString, int paramInt)
+  public bgcq(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public URLDrawable a(Drawable paramDrawable)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_loop", this.jdField_a_of_type_Int);
-    localBundle.putBoolean("key_use_cache", false);
-    return VasApngUtil.getApngDrawable(this.jdField_a_of_type_JavaLangString, "dontCacheMe", paramDrawable, null, this.jdField_a_of_type_JavaLangString, localBundle);
+    super(paramContext, paramView);
   }
 }
 

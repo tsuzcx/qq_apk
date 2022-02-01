@@ -1,70 +1,22 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.app.QQPermissionCallback;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerReport$R5Builder;", "", "()V", "r5Json", "Lorg/json/JSONObject;", "getR5Json", "()Lorg/json/JSONObject;", "addCardReportJson", "cardReportJson", "", "addString", "key", "value", "build", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oqh
+class oqh
+  implements QQPermissionCallback
 {
-  @NotNull
-  private final JSONObject a = new JSONObject();
+  oqh(oqg paramoqg, BaseActivity paramBaseActivity) {}
   
-  @NotNull
-  public final String a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    String str = this.a.toString();
-    Intrinsics.checkExpressionValueIsNotNull(str, "r5Json.toString()");
-    return str;
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    bhdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  @NotNull
-  public final oqh a(@NotNull String paramString)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "cardReportJson");
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      Iterator localIterator = localJSONObject.keys();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        Intrinsics.checkExpressionValueIsNotNull(str1, "key");
-        String str2 = localJSONObject.optString(str1);
-        Intrinsics.checkExpressionValueIsNotNull(str2, "json.optString(key)");
-        a(str1, str2);
-      }
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("RIJChannelBannerReport", 1, "[addCardReportJson] failed, e = " + localJSONException + ", cardReportJson = " + paramString);
-    }
-  }
-  
-  @NotNull
-  public final oqh a(@NotNull String paramString1, @NotNull String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "key");
-    Intrinsics.checkParameterIsNotNull(paramString2, "value");
-    try
-    {
-      if (!TextUtils.isEmpty((CharSequence)paramString1))
-      {
-        this.a.put(paramString1, paramString2);
-        return this;
-      }
-      QLog.i("RIJChannelBannerReport", 2, "[addString] failed, key is empty, value = " + paramString2);
-      return this;
-    }
-    catch (JSONException paramString1)
-    {
-      QLog.e("RIJChannelBannerReport", 1, "[addString] e = " + paramString1);
-    }
-    return this;
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    oqb.a(this.jdField_a_of_type_Oqg.a, 5);
   }
 }
 

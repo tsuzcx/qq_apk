@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acsl
-  implements DialogInterface.OnClickListener
+  implements acpi
 {
-  public acsl(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public MessageRecord a(acnk paramacnk, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    this.a.a();
+    acqq.a(paramacnk.a(), paramMsgType0x210);
+    return null;
   }
 }
 

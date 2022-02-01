@@ -1,78 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.Manager;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
 
 public class akhn
-  implements Manager
+  implements akig
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<akhm> jdField_a_of_type_JavaUtilList;
+  public akhn(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public akhn(QQAppInterface paramQQAppInterface)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static akhn a(QQAppInterface paramQQAppInterface)
-  {
-    return (akhn)paramQQAppInterface.getManager(281);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramQQAppInterface != null) {
-      a(paramQQAppInterface).a(paramInt);
-    }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramQQAppInterface != null) {
-      a(paramQQAppInterface).b(paramInt);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((akhm)localIterator.next()).a(paramInt);
-    }
-  }
-  
-  public void a(akhm paramakhm)
-  {
-    if (paramakhm == null) {}
-    while (this.jdField_a_of_type_JavaUtilList.contains(paramakhm)) {
+    if (paramBoolean) {}
+    for (paramContext = "permission_denied_by_user";; paramContext = "permission_denied")
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("bind_mobile", this.a.a());
+      localIntent.putExtra("check_permission_result", paramContext);
+      localIntent.putExtra("kSrouce", BindVerifyActivity.a(this.a));
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramakhm);
-  }
-  
-  public void b(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((akhm)localIterator.next()).b(paramInt);
-    }
-  }
-  
-  public void b(akhm paramakhm)
-  {
-    this.jdField_a_of_type_JavaUtilList.remove(paramakhm);
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import anmr;
-import bbko;
+import aopk;
+import bcrg;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -24,7 +24,7 @@ class BaseMessageManager$3
     {
       this.this$0.a.getMsgCache().f(null);
       return;
-      this.this$0.a.getMsgHandler().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, anmr.b, anmr.j);
+      this.this$0.a.getMsgHandler().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, aopk.b, aopk.j);
     }
   }
 }

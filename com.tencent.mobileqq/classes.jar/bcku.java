@@ -1,22 +1,15 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class bcku
-  implements View.OnClickListener
 {
-  bcku(bckt parambckt) {}
+  String jdField_a_of_type_JavaLangString;
+  List<bcff> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  public bcku(String paramString, List<bcff> paramList)
   {
-    ofx localofx = (ofx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(88);
-    if (localofx != null) {
-      localofx.a(this.a, (Activity)paramView.getContext());
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramList;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
 }
 

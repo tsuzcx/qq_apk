@@ -1,14 +1,24 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.style.ReplacementSpan;
 
-public abstract interface bldk
-  extends IInterface
+public class bldk
+  extends ReplacementSpan
 {
-  public abstract void a(bldn parambldn);
+  private int a;
   
-  public abstract void a(String paramString, Bundle paramBundle);
+  public bldk(int paramInt)
+  {
+    this.a = paramInt;
+  }
   
-  public abstract void b(bldn parambldn);
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    return this.a;
+  }
 }
 
 

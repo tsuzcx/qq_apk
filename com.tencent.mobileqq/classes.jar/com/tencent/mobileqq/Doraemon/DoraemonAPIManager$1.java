@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.Doraemon;
 
-import acju;
+import adad;
 
 public class DoraemonAPIManager$1
   implements Runnable
 {
-  public DoraemonAPIManager$1(acju paramacju) {}
+  public DoraemonAPIManager$1(adad paramadad) {}
   
   public void run()
   {
-    acju.a(this.this$0);
+    adad.a(this.this$0);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import abph;
+import acex;
 
 public class GdtMvViewAnimationAbs$1
   implements Runnable
 {
-  public GdtMvViewAnimationAbs$1(abph paramabph) {}
+  public GdtMvViewAnimationAbs$1(acex paramacex) {}
   
   public void run()
   {
-    abph.a(this.this$0, this.this$0.a);
+    acex.a(this.this$0, this.this$0.a);
   }
 }
 

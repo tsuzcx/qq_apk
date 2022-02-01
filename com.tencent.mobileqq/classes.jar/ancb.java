@@ -1,34 +1,134 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RspBody;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc.1;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc.2;
+import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
+import org.json.JSONObject;
 
-class ancb
-  extends nmf
+public class ancb
 {
-  ancb(anca paramanca) {}
+  private static final Set<String> a = new SpriteCommFunc.1();
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (paramInt == 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopTaskByMsg], msgId", Long.valueOf(paramLong), ",from:", paramString });
+    }
+    if (!anck.d(paramQQAppInterface)) {}
+    do
     {
-      paramBundle = new oidb_0x496.RspBody();
-      try
+      do
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        anca.a(this.a, paramBundle);
-        anca.b(this.a, paramBundle);
-        anca.c(this.a, paramBundle);
         return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        paramQQAppInterface = anck.a(paramQQAppInterface);
+      } while (paramQQAppInterface == null);
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    paramString = paramQQAppInterface.a(paramLong);
+    if (paramString == null)
+    {
+      QLog.w("cmshow_scripted_SpriteCommFunc", 2, "task NOT exist, msgId:" + paramLong);
+      return;
+    }
+    ThreadManager.post(new SpriteCommFunc.2(paramQQAppInterface, paramString), 5, null, true);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopAllTask]", ",from:", paramString });
+    }
+    if (!anck.d(paramQQAppInterface)) {
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("type", 0);
+      paramQQAppInterface = anck.a(paramQQAppInterface);
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.a() == null))
       {
-        while (!QLog.isColorLevel()) {}
-        QLog.i("TroopHandler", 2, "getTroopConfig, e=" + paramArrayOfByte.toString());
+        QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask], spriteContext or getSurfaceView is null.");
         return;
       }
     }
-    QLog.i("TroopHandler", 1, "getTroopConfig, errorCode=" + paramInt);
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask],", paramQQAppInterface);
+      return;
+    }
+    ApolloCmdChannel.getChannel(paramQQAppInterface.a()).callbackFromRequest(paramQQAppInterface.a().getLuaState(), 0, "sc.stop_all_task.local", paramString.toString());
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[showOrHideSprite]", ",from:", paramString });
+    }
+    if (!anck.d(paramQQAppInterface)) {}
+    do
+    {
+      anch localanch;
+      do
+      {
+        do
+        {
+          return;
+        } while (!a.contains(paramString));
+        localanch = anck.a(paramQQAppInterface);
+      } while (localanch == null);
+      ancc localancc = anck.a(paramQQAppInterface);
+      if (localancc != null) {
+        localancc.a(paramString, paramBoolean);
+      }
+      if (anck.a(paramQQAppInterface))
+      {
+        QLog.i("cmshow_scripted_SpriteCommFunc", 1, "showOrHideSprite double should hide");
+        return;
+      }
+      paramQQAppInterface = localanch.a();
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.a(paramBoolean, false, paramString);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool1 = anck.b(paramQQAppInterface);
+    boolean bool2 = anck.a(paramQQAppInterface);
+    return (bool1) || (bool2);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[isSpriteActive]", ",from:", paramString });
+    }
+    if (!anck.d(paramQQAppInterface)) {}
+    do
+    {
+      do
+      {
+        return false;
+        paramQQAppInterface = anck.a(paramQQAppInterface);
+      } while (paramQQAppInterface == null);
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    return paramQQAppInterface.a();
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {}
+    do
+    {
+      return false;
+      paramQQAppInterface = anck.a(paramQQAppInterface);
+    } while ((paramQQAppInterface == null) || (!paramQQAppInterface.a(paramString)));
+    return true;
   }
 }
 

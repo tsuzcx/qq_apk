@@ -1,15 +1,36 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.AnimationEndClearListener.1;
 
-class afgj
-  implements bcrf
+public class afgj
+  implements Animation.AnimationListener
 {
-  afgj(afgi paramafgi) {}
+  public int a;
+  public View a;
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    bcrl localbcrl = new bcrl(3000, 360, 0);
-    localbcrl.a = true;
-    this.a.a.d.a(new bcre[] { localbcrl });
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.postDelayed(new TroopMemberListActivity.AnimationEndClearListener.1(this), 0L);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
+    }
+    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
+    }
   }
 }
 

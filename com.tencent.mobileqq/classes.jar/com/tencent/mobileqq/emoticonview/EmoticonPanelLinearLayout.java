@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.emoticonview;
 
-import afii;
-import afim;
-import afiw;
-import alnr;
+import afzn;
+import afzr;
+import agab;
+import ahsl;
+import amme;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +12,7 @@ import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -31,13 +34,17 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import avsq;
-import bcef;
-import blvr;
-import blvv;
+import avlz;
+import awyr;
+import bcsa;
+import bdla;
+import bnlb;
+import bnlf;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.animation.PropertyValuesHolder;
 import com.tencent.common.app.AppInterface;
@@ -47,6 +54,7 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
@@ -56,22 +64,30 @@ import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.emosm.emosearch.EmotionSearchItem;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerFrameLayout;
-import com.tencent.mobileqq.text.TextUtils;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import dov.com.qq.im.ae.SessionWrap;
+import java.io.File;
 import mqq.app.AppRuntime;
 
 public class EmoticonPanelLinearLayout
   extends LinearLayout
+  implements View.OnClickListener, PopupWindow.OnDismissListener
 {
   public static int PANEL_TYPE_BIG_EMOTION = 1;
   public static int PANEL_TYPE_CAMERA_EMOTION = 5;
@@ -90,6 +106,7 @@ public class EmoticonPanelLinearLayout
   private int emoType;
   private boolean haveRemovedWindowContent = true;
   boolean isDiyEmotion = false;
+  private boolean isPreviewShowPoping;
   boolean isSelfieFaceEmotion = false;
   boolean isSoundEmotion = false;
   volatile long lastJumpCameraTime = 0L;
@@ -109,6 +126,7 @@ public class EmoticonPanelLinearLayout
   private RelativeLayout mShowEmoRlyt;
   private ImageView mStickerCancel;
   private ImageView mStickerConfirm;
+  private PopupWindow mTipsPopupWindow;
   private FrameLayout mWindowContent;
   private int panelType = -1;
   private AudioPlayer player;
@@ -144,7 +162,7 @@ public class EmoticonPanelLinearLayout
     this.businessType = paramInt;
     if (this.mBaseChatPie != null)
     {
-      if (!(paramBaseChatPie instanceof afiw)) {
+      if (!(paramBaseChatPie instanceof agab)) {
         break label96;
       }
       this.currentChatPieType = 1;
@@ -154,9 +172,9 @@ public class EmoticonPanelLinearLayout
       this.mRootView = this.mBaseChatPie.mAIORootView;
       return;
       label96:
-      if ((paramBaseChatPie instanceof afii)) {
+      if ((paramBaseChatPie instanceof afzn)) {
         this.currentChatPieType = 2;
-      } else if ((paramBaseChatPie instanceof afim)) {
+      } else if ((paramBaseChatPie instanceof afzr)) {
         this.currentChatPieType = 3;
       }
     }
@@ -173,7 +191,7 @@ public class EmoticonPanelLinearLayout
     ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
     localLinearLayout.addView(this.mShowEmoRlyt, (ViewGroup.LayoutParams)localObject);
     localObject = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131378748);
+    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131379041);
     this.mShowEmoRlyt.addView(this.mPopupEmoImage, (ViewGroup.LayoutParams)localObject);
     fillPopEmoLayout(this.mShowEmoRlyt);
     this.mEmoTitleTv = getEmoTitleTv(paramEmoticonInfo);
@@ -185,31 +203,82 @@ public class EmoticonPanelLinearLayout
     paramEmoticonInfo.rightMargin = ((int)(12.0F * paramFloat));
     this.mShowEmoRlyt.addView(this.mEmoTitleTv, paramEmoticonInfo);
     this.mArrowImageView = new ImageView(getContext());
-    this.mArrowImageView.setImageDrawable(getResources().getDrawable(2130838032));
+    this.mArrowImageView.setImageDrawable(getResources().getDrawable(2130838046));
     paramEmoticonInfo = new LinearLayout.LayoutParams(ViewUtils.dip2px(18.0F), ViewUtils.dip2px(12.0F));
     paramEmoticonInfo.topMargin = (-ViewUtils.dip2px(9.0F));
     paramEmoticonInfo.gravity = 1;
     localLinearLayout.addView(this.mArrowImageView, paramEmoticonInfo);
   }
   
+  private void addToCustomEmotionForPic(String paramString)
+  {
+    Object localObject = avlz.a(paramString);
+    if ((localObject == null) || (!((File)localObject).exists()))
+    {
+      QLog.e("EmotionPanelLinearLayout", 4, " add custom fail file no exist");
+      return;
+    }
+    MessageForPic localMessageForPic = (MessageForPic)bcsa.a(-2000);
+    localMessageForPic.path = ((File)localObject).getAbsolutePath();
+    localMessageForPic.md5 = HexUtil.bytes2HexStr(MD5.getFileMd5(localMessageForPic.path));
+    localMessageForPic.thumbMsgUrl = paramString;
+    localMessageForPic.bigMsgUrl = paramString;
+    localMessageForPic.imageType = 2000;
+    paramString = URLDrawableHelper.getDrawable(paramString);
+    paramString.setTag(localMessageForPic);
+    localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface))
+    {
+      QLog.e("EmotionPanelLinearLayout", 2, "addToCustomEmotionForPic cannot get QQAppInterface");
+      return;
+    }
+    ahsl.a(getContext(), (QQAppInterface)localObject, paramString, "", getContext().getResources().getDimensionPixelSize(2131299080), null, localMessageForPic.picExtraData);
+  }
+  
   private void fillPopEmoLayout(RelativeLayout paramRelativeLayout)
   {
     this.mStickerCancel = new ImageView(getContext());
-    this.mStickerCancel.setId(2131362361);
+    this.mStickerCancel.setId(2131362366);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 20.0F), (int)(this.density * 20.0F));
     localLayoutParams.addRule(11);
     localLayoutParams.addRule(10);
     paramRelativeLayout.addView(this.mStickerCancel, localLayoutParams);
-    this.mStickerCancel.setImageDrawable(getResources().getDrawable(2130847079));
+    this.mStickerCancel.setImageDrawable(getResources().getDrawable(2130847177));
     this.mStickerCancel.setVisibility(4);
     this.mStickerConfirm = new ImageView(getContext());
-    this.mStickerConfirm.setId(2131362362);
+    this.mStickerConfirm.setId(2131362367);
     localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 20.0F), (int)(this.density * 20.0F));
     localLayoutParams.addRule(11);
     localLayoutParams.addRule(12);
     paramRelativeLayout.addView(this.mStickerConfirm, localLayoutParams);
     this.mStickerConfirm.setVisibility(4);
-    this.mStickerConfirm.setImageDrawable(getResources().getDrawable(2130848481));
+    this.mStickerConfirm.setImageDrawable(getResources().getDrawable(2130848573));
+  }
+  
+  private int getChildViewIndex(View paramView)
+  {
+    int j = getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      if (getChildAt(i) == paramView) {
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
+  }
+  
+  private void handleLongClick(View paramView, EmoticonInfo paramEmoticonInfo)
+  {
+    if ((paramView == null) || (paramEmoticonInfo == null)) {
+      QLog.e("EmotionPanelLinearLayout", 4, "handleLongClick pointView or info is null.");
+    }
+    while ((this.panelType != PANEL_TYPE_HOTPIC_EMOTION) || (!(paramEmoticonInfo instanceof HotPicSearchEmoticonInfo))) {
+      return;
+    }
+    reportHotPicSearchAddFav((HotPicSearchEmoticonInfo)paramEmoticonInfo, false);
+    showAddCustomFacePop(paramView, paramEmoticonInfo);
   }
   
   private boolean isInvokeSticker(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -231,6 +300,47 @@ public class EmoticonPanelLinearLayout
     return true;
   }
   
+  private void reportHotPicSearchAddFav(HotPicSearchEmoticonInfo paramHotPicSearchEmoticonInfo, boolean paramBoolean)
+  {
+    int i = 1;
+    int j = paramHotPicSearchEmoticonInfo.mPageType;
+    String str;
+    if (j == 1) {
+      if (paramBoolean)
+      {
+        str = "0X800B535";
+        if (!android.text.TextUtils.isEmpty(paramHotPicSearchEmoticonInfo.mSearchWord)) {
+          break label81;
+        }
+        paramHotPicSearchEmoticonInfo = str;
+      }
+    }
+    for (;;)
+    {
+      if (!android.text.TextUtils.isEmpty(paramHotPicSearchEmoticonInfo)) {
+        bdla.b(null, "dc00898", "", "", paramHotPicSearchEmoticonInfo, paramHotPicSearchEmoticonInfo, i, 0, "", "", "", "");
+      }
+      return;
+      str = "0X800B534";
+      break;
+      label81:
+      i = 2;
+      paramHotPicSearchEmoticonInfo = str;
+      continue;
+      if (j == 2)
+      {
+        if (paramBoolean) {}
+        for (paramHotPicSearchEmoticonInfo = "0X800B537";; paramHotPicSearchEmoticonInfo = "0X800B536")
+        {
+          i = 0;
+          break;
+        }
+      }
+      i = 0;
+      paramHotPicSearchEmoticonInfo = "";
+    }
+  }
+  
   private void updateArrowLayout(View paramView, float paramFloat, int paramInt1, int paramInt2, ViewGroup.MarginLayoutParams paramMarginLayoutParams)
   {
     if (this.mArrowImageView != null)
@@ -243,6 +353,13 @@ public class EmoticonPanelLinearLayout
         paramView.leftMargin = paramInt1;
         this.mArrowImageView.setLayoutParams(paramView);
       }
+    }
+  }
+  
+  private void updatePointViewAlpha(float paramFloat)
+  {
+    if ((this.panelType == PANEL_TYPE_HOTPIC_EMOTION) && (this.mPointView != null)) {
+      this.mPointView.setAlpha(paramFloat);
     }
   }
   
@@ -289,7 +406,7 @@ public class EmoticonPanelLinearLayout
   {
     TextView localTextView = new TextView(getContext());
     localTextView.setText(EmoticonUtils.getSystemAndEmojiEmoticonName(paramEmoticonInfo));
-    localTextView.setId(2131378748);
+    localTextView.setId(2131379041);
     if (ThemeUtil.isNowThemeIsNight(this.mBaseChatPie.app, false, null)) {}
     for (paramEmoticonInfo = "#8D8D93";; paramEmoticonInfo = "#878B99")
     {
@@ -305,12 +422,14 @@ public class EmoticonPanelLinearLayout
   
   public void hidePopupWindow()
   {
-    if ((this.mRootView != null) && (!this.isDiyEmotion) && (this.stickerMode) && (EmojiStickerManager.e))
+    if ((this.mRootView != null) && (!this.isDiyEmotion) && (this.stickerMode) && (EmojiStickerManager.e)) {
+      if (!this.isPreviewShowPoping) {}
+    }
+    while ((this.mPopupEmo == null) || (!this.showing) || (this.mWindowContent == null) || (this.haveRemovedWindowContent))
     {
+      return;
       this.mRootView.post(new EmoticonPanelLinearLayout.1(this));
       EmojiStickerManager.b = false;
-    }
-    while ((this.mPopupEmo == null) || (!this.showing) || (this.mWindowContent == null) || (this.haveRemovedWindowContent)) {
       return;
     }
     this.haveRemovedWindowContent = true;
@@ -336,6 +455,37 @@ public class EmoticonPanelLinearLayout
     super.setLongClickable(true);
   }
   
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131362198)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmotionPanelLinearLayout", 4, " add_to_custom_face ");
+      }
+      if ((this.mTipsPopupWindow != null) && (this.mTipsPopupWindow.isShowing())) {
+        break label50;
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label50:
+      EmoticonInfo localEmoticonInfo = (EmoticonInfo)paramView.getTag();
+      if (((localEmoticonInfo instanceof HotPicSearchEmoticonInfo)) && (((HotPicSearchEmoticonInfo)localEmoticonInfo).mSearchItem != null))
+      {
+        addToCustomEmotionForPic(((HotPicSearchEmoticonInfo)localEmoticonInfo).mSearchItem.originalUrl);
+        reportHotPicSearchAddFav((HotPicSearchEmoticonInfo)localEmoticonInfo, true);
+      }
+      this.mTipsPopupWindow.dismiss();
+    }
+  }
+  
+  public void onDismiss()
+  {
+    this.mTipsPopupWindow = null;
+  }
+  
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     return true;
@@ -355,6 +505,7 @@ public class EmoticonPanelLinearLayout
         if ((!this.mHasPerformedLongPress) && (this.mPendingCheckForLongPress != null)) {
           removeCallbacks(this.mPendingCheckForLongPress);
         }
+        updatePointViewAlpha(1.0F);
         if ((this.mPointView != null) && (!this.mHasPerformedLongPress)) {
           performClick(this.mPointView);
         }
@@ -362,7 +513,7 @@ public class EmoticonPanelLinearLayout
           hidePopupWindow();
         }
         this.mPointView = null;
-        if ((this.mRootView != null) && (!this.isDiyEmotion) && (EmojiStickerManager.e))
+        if ((this.mRootView != null) && (!this.isDiyEmotion) && (EmojiStickerManager.e) && (!this.isPreviewShowPoping))
         {
           this.mRootView.onTouchEvent(paramMotionEvent);
           continue;
@@ -372,6 +523,7 @@ public class EmoticonPanelLinearLayout
           this.mPointView = findPointChild(paramMotionEvent.getX(), paramMotionEvent.getY());
           if (this.mPointView != null)
           {
+            updatePointViewAlpha(0.2F);
             if (this.mPendingCheckForLongPress == null) {
               this.mPendingCheckForLongPress = new EmoticonPanelLinearLayout.CheckForLongPress(this, paramMotionEvent);
             }
@@ -385,6 +537,7 @@ public class EmoticonPanelLinearLayout
             if (!this.showSticker) {
               hidePopupWindow();
             }
+            updatePointViewAlpha(1.0F);
             this.mPointView = null;
           }
         }
@@ -398,7 +551,7 @@ public class EmoticonPanelLinearLayout
       if ((EmojiStickerManager.e) && (isInvokeSticker(this.lastTouchX, this.lastTouchY, f1, f2)) && (this.mPopupEmo != null))
       {
         if ((this.showSticker) || (!this.stickerMode)) {
-          break label1021;
+          break label1045;
         }
         localObject1 = (RelativeLayout.LayoutParams)this.mPopupEmo.getLayoutParams();
         if ((this.emoType == 1) || (this.emoType == 2) || (this.emoType == 7) || (this.emoType == 10))
@@ -414,13 +567,13 @@ public class EmoticonPanelLinearLayout
         if ((this.mRootView != null) && (((RelativeLayout.LayoutParams)localObject1).topMargin + ((RelativeLayout.LayoutParams)localObject1).height > this.mRootView.getMeasuredHeight()))
         {
           if (ImmersiveUtils.isSupporImmersive() != 1) {
-            break label991;
+            break label1015;
           }
           ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)this.screenHeight - ((RelativeLayout.LayoutParams)localObject1).height - ImmersiveUtils.getStatusBarHeight(getContext()));
         }
-        label526:
+        label550:
         if ((this.mEmoTitleTv == null) || (this.mArrowImageView == null) || (this.mShowEmoRlyt == null)) {
-          break label1010;
+          break label1034;
         }
         this.mEmoTitleTv.setVisibility(4);
         this.mArrowImageView.setVisibility(4);
@@ -428,7 +581,7 @@ public class EmoticonPanelLinearLayout
         if (QLog.isColorLevel()) {
           QLog.d("EmotionPanelLinearLayout", 4, "emo title is invisible");
         }
-        label586:
+        label610:
         this.mPopupEmo.requestLayout();
         if ((this.mRootView instanceof TopGestureLayout))
         {
@@ -467,10 +620,8 @@ public class EmoticonPanelLinearLayout
         this.showSticker = true;
       }
     }
-    label817:
-    label991:
-    label1010:
-    label1021:
+    label841:
+    label1015:
     do
     {
       do
@@ -482,11 +633,11 @@ public class EmoticonPanelLinearLayout
           break;
         }
         if ((!this.mHasPerformedLongPress) || ((getChildRect(this.mPointView, tmp)) && (tmp.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())))) {
-          break label1218;
+          break label1242;
         }
         this.mPointView = findPointChild(paramMotionEvent.getX(), paramMotionEvent.getY());
         if ((this.mPointView == null) || (this.mPointView.getTag() == null)) {
-          break label1211;
+          break label1235;
         }
         if (!needShowPopUpEmo((EmoticonInfo)this.mPointView.getTag())) {
           break;
@@ -494,12 +645,14 @@ public class EmoticonPanelLinearLayout
         showPopupEmo(this.mPointView, (EmoticonInfo)this.mPointView.getTag());
         break;
         ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)this.screenHeight - ((RelativeLayout.LayoutParams)localObject1).height);
-        break label526;
+        break label550;
         this.mPopupEmo.setBackgroundResource(0);
-        break label586;
+        break label610;
       } while (this.stickerMode);
       localObject1 = (EmoticonInfo)this.mPopupEmo.getTag();
     } while (localObject1 == null);
+    label1034:
+    label1045:
     int i;
     switch (((EmoticonInfo)localObject1).type)
     {
@@ -511,7 +664,7 @@ public class EmoticonPanelLinearLayout
     for (;;)
     {
       VasWebviewUtil.reportCommercialDrainage("", "Stick", "DragToAIOX", String.valueOf(this.currentChatPieType), 0, 0, 0, "", "", String.valueOf(i), "", "", "", "", 0, 0, 0, 0);
-      break label817;
+      break label841;
       i = 1;
       continue;
       i = 2;
@@ -530,10 +683,10 @@ public class EmoticonPanelLinearLayout
           continue;
           i = 5;
           continue;
-          label1211:
+          label1235:
           hidePopupWindow();
           break;
-          label1218:
+          label1242:
           if ((this.mHasPerformedLongPress) || (this.mPointView == null) || ((getChildRect(this.mPointView, tmp)) && (tmp.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())))) {
             break;
           }
@@ -604,7 +757,7 @@ public class EmoticonPanelLinearLayout
           if ("add".equals(((EmoticonInfo)localObject1).action))
           {
             this.callback.emoticonMall();
-            bcef.b(((BaseActivity)this.context).app, "CliOper", "", "", "ep_mall", "0X800579C", 0, 0, "", "", "", "");
+            bdla.b(((BaseActivity)this.context).app, "CliOper", "", "", "ep_mall", "0X800579C", 0, 0, "", "", "", "");
           }
           else if ("cameraJump".equals(((EmoticonInfo)localObject1).action))
           {
@@ -614,11 +767,11 @@ public class EmoticonPanelLinearLayout
               this.lastJumpCameraTime = l;
               localObject2 = new Bundle();
               ((Bundle)localObject2).putInt("AECAMERA_MODE", 202);
-              ((Bundle)localObject2).putInt("VIDEO_STORY_FROM_TYPE", blvr.i.a());
+              ((Bundle)localObject2).putInt("VIDEO_STORY_FROM_TYPE", bnlb.i.a());
               ((Bundle)localObject2).putParcelable("ARG_SESSION_INFO", new SessionWrap(this.mBaseChatPie.sessionInfo.curFriendUin, this.mBaseChatPie.sessionInfo.curFriendNick, this.mBaseChatPie.sessionInfo.curType, this.mBaseChatPie.sessionInfo.troopUin));
-              blvv.a((BaseActivity)this.context, 120, (Bundle)localObject2);
-              bcef.b(((BaseActivity)this.context).app, "dc00898", "", "", "0X800A36E", "0X800A36E", 0, 0, "", "", "", "");
-              bcef.b(((BaseActivity)this.context).app, "dc00898", "", "", "0x800a570", "0x800a570", 0, 0, "", "", "", "");
+              bnlf.a((BaseActivity)this.context, 120, (Bundle)localObject2);
+              bdla.b(((BaseActivity)this.context).app, "dc00898", "", "", "0X800A36E", "0X800A36E", 0, 0, "", "", "", "");
+              bdla.b(((BaseActivity)this.context).app, "dc00898", "", "", "0x800a570", "0x800a570", 0, 0, "", "", "", "");
             }
           }
           else if ("cameraEdit".equals(((EmoticonInfo)localObject1).action))
@@ -626,36 +779,36 @@ public class EmoticonPanelLinearLayout
             localObject2 = new Intent(this.context, FavEmosmManageActivity.class);
             ((Intent)localObject2).putExtra("camera_emo_mode", 1);
             this.context.startActivity((Intent)localObject2);
-            bcef.b(((BaseActivity)this.context).app, "dc00898", "", "", "0X800A36F", "0X800A36F", 0, 0, "", "", "", "");
+            bdla.b(((BaseActivity)this.context).app, "dc00898", "", "", "0X800A36F", "0X800A36F", 0, 0, "", "", "", "");
           }
           else if ("favEdit".equals(((EmoticonInfo)localObject1).action))
           {
             localObject2 = new Intent(this.context, FavEmosmManageActivity.class);
             this.context.startActivity((Intent)localObject2);
-            bcef.b(((BaseActivity)this.context).app, "CliOper", "", "", "ep_mall", "0X800579E", 0, 0, "", "", "", "");
+            bdla.b(((BaseActivity)this.context).app, "CliOper", "", "", "ep_mall", "0X800579E", 0, 0, "", "", "", "");
           }
           else if ("funny_pic".equals(((EmoticonInfo)localObject1).action))
           {
-            if (!"8.4.8".equals("7.3.5")) {
-              break label1336;
+            if (!"8.4.10".equals("7.3.5")) {
+              break label1337;
             }
             localObject2 = this.context.getSharedPreferences("funny_pic_info", 0).edit();
             ((SharedPreferences.Editor)localObject2).putBoolean("group_emo_red_show_sp_key_" + ((BaseActivity)this.context).app.getCurrentAccountUin(), false);
             ((SharedPreferences.Editor)localObject2).apply();
-            localObject2 = paramView.findViewById(2131366340);
+            localObject2 = paramView.findViewById(2131366449);
             if ((localObject2 == null) || (((View)localObject2).getVisibility() != 0)) {
-              break label1336;
+              break label1337;
             }
             ((View)localObject2).setVisibility(8);
           }
         }
       }
     }
-    label1336:
+    label1337:
     for (int i = 1;; i = 0)
     {
       PublicFragmentActivity.a(this.context, EmoticonGroupStoreFragment.class);
-      bcef.b(((BaseActivity)this.context).app, "dc00898", "", "", "0x800a56f", "0x800a56f", 0, 0, "", "", "", "");
+      bdla.b(((BaseActivity)this.context).app, "dc00898", "", "", "0x800a56f", "0x800a56f", 0, 0, "", "", "", "");
       VasWebviewUtil.reportCommercialDrainage("", "QLbq", "ClickQLin", "0", 1, 0, i, "", "", "", "", "", "", "", 0, 0, 0, 0);
       break label128;
       if ("push".equals(((EmoticonInfo)localObject1).action))
@@ -663,19 +816,19 @@ public class EmoticonPanelLinearLayout
         if ((this.callback instanceof BaseChatPie)) {
           ((BaseChatPie)this.callback).gotoEmoMallPage(9);
         }
-        bcef.b(((BaseActivity)this.context).app, "dc00898", "", "", "0x800a571", "0x800a571", 0, 0, "", "", "", "");
-        bcef.b(((BaseActivity)this.context).app, "CliOper", "", "", "ep_mall", "0X800579B", 0, 0, "", "", "", "");
+        bdla.b(((BaseActivity)this.context).app, "dc00898", "", "", "0x800a571", "0x800a571", 0, 0, "", "", "", "");
+        bdla.b(((BaseActivity)this.context).app, "CliOper", "", "", "ep_mall", "0X800579B", 0, 0, "", "", "", "");
         localObject2 = this.context.getSharedPreferences("mobileQQ", 0);
         localObject3 = ((BaseActivity)this.context).app.getCurrentAccountUin();
         if (!((SharedPreferences)localObject2).getBoolean("magic_promotion_is_new_content_" + (String)localObject3, false)) {
           break;
         }
-        ImageView localImageView = (ImageView)paramView.findViewById(2131365977);
+        ImageView localImageView = (ImageView)paramView.findViewById(2131366078);
         if (QLog.isColorLevel()) {
           QLog.d("EmotionPanelLinearLayout", 2, "emoticonImg:" + localImageView);
         }
         Object localObject4 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = this.context.getResources().getDrawable(2130847023);
+        ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = this.context.getResources().getDrawable(2130847121);
         localObject4 = URLDrawable.getDrawable(((SharedPreferences)localObject2).getString("magic_promotion_imgUrl", ""), (URLDrawable.URLDrawableOptions)localObject4);
         if ((localImageView != null) && (localObject4 != null)) {
           localImageView.setImageDrawable((Drawable)localObject4);
@@ -688,7 +841,7 @@ public class EmoticonPanelLinearLayout
         localObject2 = (PicEmoticonInfo)localObject1;
         ((PicEmoticonInfo)localObject2).stickerInfo = null;
         localObject3 = ((PicEmoticonInfo)localObject2).emoticon;
-        ((avsq)((BaseActivity)this.context).app.getManager(14)).a(((Emoticon)localObject3).epId, this.businessType, new EmoticonPanelLinearLayout.2(this, (Emoticon)localObject3, (EmoticonInfo)localObject1, (PicEmoticonInfo)localObject2));
+        ((awyr)((BaseActivity)this.context).app.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(((Emoticon)localObject3).epId, this.businessType, new EmoticonPanelLinearLayout.2(this, (Emoticon)localObject3, (EmoticonInfo)localObject1, (PicEmoticonInfo)localObject2));
         break label128;
       }
       this.callback.send((EmoticonInfo)localObject1);
@@ -709,6 +862,37 @@ public class EmoticonPanelLinearLayout
   public void setPanelType(int paramInt)
   {
     this.panelType = paramInt;
+  }
+  
+  public void showAddCustomFacePop(View paramView, EmoticonInfo paramEmoticonInfo)
+  {
+    LinearLayout localLinearLayout = new LinearLayout(getContext());
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setGravity(1);
+    Object localObject = new TextView(getContext());
+    ((TextView)localObject).setId(2131362198);
+    ((TextView)localObject).setTag(paramEmoticonInfo);
+    ((TextView)localObject).setOnClickListener(this);
+    ((TextView)localObject).setTextColor(getContext().getResources().getColor(2131167363));
+    ((TextView)localObject).setTextSize(14.0F);
+    ((TextView)localObject).setGravity(17);
+    ((TextView)localObject).setText(getContext().getResources().getString(2131693145));
+    ((TextView)localObject).setBackgroundResource(2130838976);
+    localLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(ViewUtils.dip2px(65.0F), ViewUtils.dip2px(46.0F)));
+    paramEmoticonInfo = new ImageView(getContext());
+    paramEmoticonInfo.setImageDrawable(getContext().getResources().getDrawable(2130838968));
+    localLinearLayout.addView(paramEmoticonInfo, new LinearLayout.LayoutParams(ViewUtils.dip2px(20.0F), ViewUtils.dip2px(10.0F)));
+    localObject = (LinearLayout.LayoutParams)paramEmoticonInfo.getLayoutParams();
+    ((LinearLayout.LayoutParams)localObject).topMargin = (-AIOUtils.dp2px(7.0F, getContext().getResources()));
+    ((LinearLayout.LayoutParams)localObject).bottomMargin = AIOUtils.dp2px(3.0F, getContext().getResources());
+    paramEmoticonInfo.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.mTipsPopupWindow = new PopupWindow(localLinearLayout, -2, -2);
+    this.mTipsPopupWindow.setBackgroundDrawable(new ColorDrawable(0));
+    this.mTipsPopupWindow.setOutsideTouchable(true);
+    this.mTipsPopupWindow.setFocusable(true);
+    this.mTipsPopupWindow.setOnDismissListener(this);
+    localLinearLayout.measure(0, 0);
+    paramView.post(new EmoticonPanelLinearLayout.3(this, paramView, localLinearLayout));
   }
   
   void showPopupEmo(View paramView, EmoticonInfo paramEmoticonInfo)
@@ -732,14 +916,14 @@ public class EmoticonPanelLinearLayout
       localObject2 = BaseApplicationImpl.getApplication().getRuntime();
       if (((localObject2 instanceof QQAppInterface)) && (((PicEmoticonInfo)localObject1).emoticon != null))
       {
-        localObject2 = (avsq)((AppRuntime)localObject2).getManager(14);
+        localObject2 = (awyr)((AppRuntime)localObject2).getManager(QQManagerFactory.EMOTICON_MANAGER);
         if (localObject2 != null)
         {
-          localObject2 = ((avsq)localObject2).a(((PicEmoticonInfo)localObject1).emoticon.epId);
+          localObject2 = ((awyr)localObject2).a(((PicEmoticonInfo)localObject1).emoticon.epId);
           if (localObject2 != null)
           {
             if (((EmoticonPackage)localObject2).subType != 4) {
-              break label248;
+              break label249;
             }
             this.isDiyEmotion = true;
           }
@@ -756,11 +940,11 @@ public class EmoticonPanelLinearLayout
         this.isSelfieFaceEmotion = true;
       }
       if (localObject1 != null) {
-        break label326;
+        break label327;
       }
       QLog.e("EmotionPanelLinearLayout", 1, "showpoupemo drawable = null");
       return;
-      label248:
+      label249:
       if (((EmoticonPackage)localObject2).subType != 1) {
         break;
       }
@@ -778,22 +962,28 @@ public class EmoticonPanelLinearLayout
         localObject1 = paramEmoticonInfo.getBigDrawable(this.context, this.density);
       }
     }
-    label326:
+    label327:
     paramView.getGlobalVisibleRect(tmp);
     int i = paramEmoticonInfo.type;
-    label486:
+    label511:
     int k;
-    label577:
+    label602:
     int m;
     int j;
     if ((this.mRootView != null) && (!this.isDiyEmotion) && (!this.isSelfieFaceEmotion) && (EmojiStickerManager.e))
     {
+      if (this.mRootView.findViewById(2131374197) != null)
+      {
+        this.isPreviewShowPoping = true;
+        return;
+      }
+      this.isPreviewShowPoping = false;
       this.mPopupEmo = new EmojiStickerManager.StickerFrameLayout(getContext());
-      this.mPopupEmo.setId(2131373968);
+      this.mPopupEmo.setId(2131374197);
       this.mPopupEmo.setTag(paramEmoticonInfo);
-      this.mPopupEmo.setTag(2131374004, Integer.valueOf(this.panelType));
+      this.mPopupEmo.setTag(2131374233, Integer.valueOf(this.panelType));
       this.mPopupEmoImage = new URLImageView(getContext());
-      this.mPopupEmoImage.setId(2131362363);
+      this.mPopupEmoImage.setId(2131362368);
       this.mPopupEmoImage.setAdjustViewBounds(false);
       this.mPopupEmoImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
       ((Drawable)localObject1).setCallback(this.mPopupEmoImage);
@@ -818,16 +1008,16 @@ public class EmoticonPanelLinearLayout
         this.showing = false;
         EmojiStickerManager.b = true;
         if (this.mPopupEmo == null) {
-          break label1504;
+          break label1529;
         }
         this.mPopupEmoImage.setImageDrawable((Drawable)localObject1);
         k = (int)(5.0F * f);
         localObject2 = (RelativeLayout.LayoutParams)this.mPopupEmoImage.getLayoutParams();
         if ((i != 1) && (i != 2) && (i != 7) && (i != 10)) {
-          break label1596;
+          break label1621;
         }
         if (!EmoticonUtils.isShowEmoTitleInPreview(this.mBaseChatPie, paramEmoticonInfo)) {
-          break label1530;
+          break label1555;
         }
         k = (int)(94.0F * f);
         m = (int)(97.0F * f);
@@ -847,7 +1037,7 @@ public class EmoticonPanelLinearLayout
             {
               this.mEmoTitleTv.setVisibility(0);
               this.mArrowImageView.setVisibility(0);
-              this.mShowEmoRlyt.setBackgroundResource(2130838031);
+              this.mShowEmoRlyt.setBackgroundResource(2130838045);
               i = m;
               j = k;
               if (QLog.isColorLevel())
@@ -859,38 +1049,38 @@ public class EmoticonPanelLinearLayout
             }
           }
         }
-        label790:
+        label815:
         ((RelativeLayout.LayoutParams)localObject2).bottomMargin = ((int)(6.0F * f));
         ((RelativeLayout.LayoutParams)localObject2).addRule(14);
         ((RelativeLayout.LayoutParams)localObject2).addRule(15);
         k = j;
         j = i;
         i = k;
-        label827:
+        label852:
         if ((this.mRootView == null) || (this.isDiyEmotion) || (!this.stickerMode) || (!EmojiStickerManager.e)) {
-          break label1763;
+          break label1788;
         }
         localObject2 = (RelativeLayout.LayoutParams)this.mPopupEmo.getLayoutParams();
         k = tmp.right - i;
         if (!EmoticonUtils.isShowEmoTitleInPreview(this.mBaseChatPie, paramEmoticonInfo)) {
-          break label1701;
+          break label1726;
         }
         updatePopupEmoLayout(i, (ViewGroup.MarginLayoutParams)localObject2);
-        label896:
+        label921:
         ((RelativeLayout.LayoutParams)localObject2).topMargin = (tmp.top - j - (int)(15.0F * f));
         ((RelativeLayout.LayoutParams)localObject2).width = i;
         ((RelativeLayout.LayoutParams)localObject2).height = j;
         updateArrowLayout(paramView, f, i, j, (ViewGroup.MarginLayoutParams)localObject2);
         if (!this.showing) {
-          break label1976;
+          break label2001;
         }
         this.mPopupEmo.requestLayout();
       }
     }
-    label1183:
-    label1504:
-    label1506:
-    label1530:
+    label1208:
+    label1529:
+    label1531:
+    label1788:
     while (this.mWindowContent == null)
     {
       localObject2 = this.mPointInfo;
@@ -912,15 +1102,15 @@ public class EmoticonPanelLinearLayout
           PicEmoticonInfo.startSoundDrawablePlay((URLDrawable)localObject1);
         }
         if (2 == paramView.emoticon.jobType) {
-          bcef.b(null, "CliOper", "", "", "MbYulan", "MbChangan", 0, 0, paramView.emoticon.epId, "", "", "");
+          bdla.b(null, "CliOper", "", "", "MbYulan", "MbChangan", 0, 0, paramView.emoticon.epId, "", "", "");
         }
         if (paramView.isNewSoundType())
         {
           if (paramView.emoticon == null) {
-            break label2070;
+            break label2095;
           }
           paramView = paramView.emoticon.epId;
-          avsq.a(null, "0X800A938", -1, paramView);
+          awyr.a(null, "0X800A938", -1, paramView);
         }
       }
       if ((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo))
@@ -933,13 +1123,13 @@ public class EmoticonPanelLinearLayout
           if ((localObject3 != null) && ((localObject3 instanceof QQAppInterface)))
           {
             localObject3 = (QQAppInterface)localObject3;
-            if (TextUtils.isApolloEmoticon(paramView.code))
+            if (com.tencent.mobileqq.text.TextUtils.isApolloEmoticon(paramView.code))
             {
               if ((this.mBaseChatPie == null) || (this.mBaseChatPie.sessionInfo == null)) {
-                break label2077;
+                break label2102;
               }
               i = ApolloUtil.b(this.mBaseChatPie.sessionInfo.curType);
-              VipUtils.a((AppInterface)localObject3, "cmshow", "Apollo", "0X800812D", i, 0, new String[] { String.valueOf(paramView.code), String.valueOf(alnr.a((QQAppInterface)localObject3)) });
+              VipUtils.a((AppInterface)localObject3, "cmshow", "Apollo", "0X800812D", i, 0, new String[] { String.valueOf(paramView.code), String.valueOf(amme.a((QQAppInterface)localObject3)) });
             }
           }
         }
@@ -953,7 +1143,7 @@ public class EmoticonPanelLinearLayout
       fillPopEmoLayout(this.mPopupEmo);
       this.mEmoTitleTv = null;
       this.mArrowImageView = null;
-      break label486;
+      break label511;
       if (this.mWindowContent == null)
       {
         this.mWindowContent = new FrameLayout(getContext());
@@ -963,7 +1153,7 @@ public class EmoticonPanelLinearLayout
         this.mPopupEmoImage.setAdjustViewBounds(false);
         this.mPopupEmoImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
         if (!EmoticonUtils.isShowEmoTitleInPreview(this.mBaseChatPie, paramEmoticonInfo)) {
-          break label1506;
+          break label1531;
         }
         addEmoTitleLayout(paramEmoticonInfo, f);
       }
@@ -971,10 +1161,10 @@ public class EmoticonPanelLinearLayout
       {
         this.mWindowContent.addView(this.mPopupEmo);
         if (this.mEmoTitleTv == null) {
-          break label577;
+          break label602;
         }
         this.mEmoTitleTv.setText(EmoticonUtils.getSystemAndEmojiEmoticonName(paramEmoticonInfo));
-        break label577;
+        break label602;
         break;
         this.mPopupEmo.addView(this.mPopupEmoImage);
         this.mEmoTitleTv = null;
@@ -985,24 +1175,24 @@ public class EmoticonPanelLinearLayout
       ((RelativeLayout.LayoutParams)localObject2).width = ((int)(28.0F * f));
       ((RelativeLayout.LayoutParams)localObject2).height = ((int)(28.0F * f));
       this.mPopupEmo.setPadding(k, k, k, k);
-      this.mPopupEmo.setBackgroundResource(2130838041);
-      break label790;
+      this.mPopupEmo.setBackgroundResource(2130838055);
+      break label815;
       i = (int)(110.0F * f);
       j = (int)(110.0F * f);
-      this.mPopupEmo.setBackgroundResource(2130838040);
+      this.mPopupEmo.setBackgroundResource(2130838054);
       this.mPopupEmo.setPadding(k, k, k, k);
       ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
       ((RelativeLayout.LayoutParams)localObject2).width = ((int)(100.0F * f));
       ((RelativeLayout.LayoutParams)localObject2).height = ((int)(100.0F * f));
-      bcef.b(null, "CliOper", "", "", "ep_mall", "ep_preview", 0, 0, "", "", "", "");
-      break label827;
+      bdla.b(null, "CliOper", "", "", "ep_mall", "ep_preview", 0, 0, "", "", "", "");
+      break label852;
       if (k < 0)
       {
         ((RelativeLayout.LayoutParams)localObject2).leftMargin = (tmp.left - (i - tmp.width()) / 2 - k / 2);
-        break label896;
+        break label921;
       }
       ((RelativeLayout.LayoutParams)localObject2).leftMargin = (tmp.left - (i - tmp.width()) / 2);
-      break label896;
+      break label921;
       localObject2 = (FrameLayout.LayoutParams)this.mPopupEmo.getLayoutParams();
       ((FrameLayout.LayoutParams)localObject2).gravity = 51;
       k = tmp.left + i - getWidth();
@@ -1026,12 +1216,12 @@ public class EmoticonPanelLinearLayout
         }
       }
     }
-    label1283:
-    label1596:
-    label1763:
+    label1308:
+    label1621:
     paramView = (WindowManager)getContext().getSystemService("window");
-    label1701:
-    label1976:
+    label1555:
+    label1726:
+    label2001:
     i = 40;
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       i = 67108904;
@@ -1046,18 +1236,18 @@ public class EmoticonPanelLinearLayout
       this.haveRemovedWindowContent = false;
       this.showing = true;
       break;
-      label2070:
+      label2095:
       paramView = "";
-      break label1183;
-      label2077:
+      break label1208;
+      label2102:
       i = -1;
-      break label1283;
+      break label1308;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout
  * JD-Core Version:    0.7.0.1
  */

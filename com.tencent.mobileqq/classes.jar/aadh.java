@@ -1,57 +1,22 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
 
-class aadh
-  implements WXShareHelper.WXShareListener
+public class aadh
+  implements ISuperPlayer.OnCompletionListener
 {
-  aadh(aadf paramaadf, String paramString) {}
+  public aadh(TribeVideoPlugin paramTribeVideoPlugin, aado paramaado) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void onCompletion(ISuperPlayer paramISuperPlayer)
   {
-    if ((this.jdField_a_of_type_Aadf.o == null) || (!this.jdField_a_of_type_Aadf.o.equals(paramBaseResp.transaction))) {}
-    int i;
-    String str1;
-    String str2;
-    String str3;
-    for (;;)
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
     {
-      return;
-      BaseApplicationImpl.getContext();
-      switch (paramBaseResp.errCode)
-      {
-      case -2: 
-      case -1: 
-      default: 
-        yyi.a(1, 2131718380);
-        return;
-      }
-      yyi.a(2, 2131718398);
-      if ((this.jdField_a_of_type_Aadf.a instanceof bguf))
-      {
-        paramBaseResp = ((bguf)this.jdField_a_of_type_Aadf.a).a();
-        if (this.jdField_a_of_type_Aadf.e == 1) {}
-        for (i = 1009; paramBaseResp != null; i = 1004)
-        {
-          str1 = paramBaseResp.msgid;
-          str2 = paramBaseResp.publicUin;
-          str3 = AccountDetailActivity.a(paramBaseResp.mUrl);
-          String str4 = paramBaseResp.sourcePuin;
-          if ((str4 == null) || ("".equals(str4))) {
-            break label200;
-          }
-          odq.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, str1, paramBaseResp.mUrl, str3, false);
-          return;
-        }
-      }
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, aado.a(this.jdField_a_of_type_Aado));
+      paramISuperPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramISuperPlayer.obj = aado.a(this.jdField_a_of_type_Aado);
+      paramISuperPlayer.what = 6;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramISuperPlayer);
     }
-    label200:
-    if (this.jdField_a_of_type_Aadf.e == 1) {
-      i = 1003;
-    }
-    odq.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str2, str1, this.jdField_a_of_type_JavaLangString, str3, false);
   }
 }
 

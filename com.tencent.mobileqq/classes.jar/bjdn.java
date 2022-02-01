@@ -1,13 +1,25 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.open.agent.OpenAuthorityAccountView.DelAccountRunnable;
 
-class bjdn
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnSeekCompleteListener
+public class bjdn
+  implements DialogInterface.OnClickListener
 {
-  bjdn(bjdj parambjdj, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
+  public bjdn(OpenAuthorityAccountView paramOpenAuthorityAccountView, String paramString) {}
   
-  public void onSeekComplete(IMediaPlayer paramIMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnSeekCompleteListener.onSeekComplete(this.jdField_a_of_type_Bjdj);
+    if (paramInt == 1) {
+      ThreadManager.executeOnSubThread(new OpenAuthorityAccountView.DelAccountRunnable(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView, this.jdField_a_of_type_JavaLangString));
+    }
+    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a == null)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a.dismiss();
+    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a = null;
   }
 }
 

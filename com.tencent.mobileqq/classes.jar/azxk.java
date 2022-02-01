@@ -1,22 +1,17 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.widget.QQToast;
 
 class azxk
-  extends azxm
+  extends azip
 {
-  azxk(azxj paramazxj) {}
+  azxk(azxh paramazxh) {}
   
-  public void a(boolean paramBoolean, azxn paramazxn)
+  protected void b(boolean paramBoolean)
   {
-    if (TextUtils.equals(azxj.a(this.a), String.valueOf(paramazxn.jdField_a_of_type_Long))) {
-      if ((!paramBoolean) || (!paramazxn.jdField_a_of_type_Boolean)) {
-        break label49;
-      }
-    }
-    label49:
-    for (paramBoolean = true;; paramBoolean = false)
+    azxh.a(this.a);
+    if (!paramBoolean)
     {
-      azxj.a(this.a, azxj.a(this.a), paramBoolean);
-      return;
+      String str = anvx.a(2131704397);
+      QQToast.a(azxh.b(this.a), 1, str, 1000).a();
     }
   }
 }

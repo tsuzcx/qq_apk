@@ -1,6 +1,18 @@
-public abstract interface rgr<T>
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class rgr
+  implements View.OnClickListener
 {
-  public abstract boolean a(T paramT);
+  public rgr(ComponentContentNoteCard paramComponentContentNoteCard) {}
+  
+  public void onClick(View paramView)
+  {
+    ComponentContentNoteCard.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,39 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.msg.data.MessageForDevShortVideo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aavq
-  implements Parcelable.Creator<MessageForShortVideo>
+class aavq
+  implements View.OnClickListener
 {
-  public MessageForDevShortVideo a(Parcel paramParcel)
-  {
-    MessageForDevShortVideo localMessageForDevShortVideo = new MessageForDevShortVideo();
-    localMessageForDevShortVideo.uuid = paramParcel.readString();
-    localMessageForDevShortVideo.md5 = paramParcel.readString();
-    localMessageForDevShortVideo.videoFileName = paramParcel.readString();
-    localMessageForDevShortVideo.videoFileSize = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileFormat = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileTime = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbWidth = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbHeight = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileStatus = paramParcel.readInt();
-    localMessageForDevShortVideo.videoFileProgress = paramParcel.readInt();
-    localMessageForDevShortVideo.fileType = paramParcel.readInt();
-    localMessageForDevShortVideo.thumbMD5 = paramParcel.readString();
-    localMessageForDevShortVideo.fileSource = paramParcel.readString();
-    localMessageForDevShortVideo.lastModified = paramParcel.readLong();
-    return localMessageForDevShortVideo;
-  }
+  aavq(aavp paramaavp) {}
   
-  public MessageForDevShortVideo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new MessageForDevShortVideo[paramInt];
+    this.a.e();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aavq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,50 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.data.EmoticonResp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 class asil
-  implements asir
+  extends asio
 {
-  asil(asii paramasii, TroopFileTransferManager.Item paramItem, long paramLong) {}
-  
-  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
+  asil(asih paramasih, antu paramantu, asjh paramasjh, Object paramObject)
   {
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] onCheckResult. Item.Id=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getId() + " errCode:" + paramInt1);
-    if ((paramInt1 == 0) && (paramInt2 != 0) && (paramInt2 != 4))
+    super(paramasih, paramantu);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
+    }
+    ??? = (antu)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    int i = paramEmoticonResp.epId;
+    int j = paramEmoticonResp.timestamp;
+    Object localObject1 = (ArrayList)paramEmoticonResp.data;
+    if ((this.jdField_a_of_type_Asjh.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Asjh.jdField_a_of_type_JavaLangString.equals(paramEmoticonResp.keySeq)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.apkSafeLevel = paramInt2;
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.apkSafeMsg = paramString1;
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.apkSafeDetailUrl = paramString2;
-      beel.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-      if ((this.jdField_a_of_type_Asii.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null))
+      ((antu)???).b(this);
+      this.jdField_a_of_type_Asjh.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_Asjh.jdField_a_of_type_Int = paramEmoticonResp.resultcode;
+      this.jdField_a_of_type_Asjh.b = paramEmoticonResp.timeoutReason;
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Asii.a.getFileManagerDataCenter().a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.troopuin, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString());
-        if (localFileManagerEntity != null)
+        this.jdField_a_of_type_JavaLangObject.notify();
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        ??? = asih.a();
+        StringBuilder localStringBuilder = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
+        if (localObject1 == null)
         {
-          QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] onCheckResult. Item.Id=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getId() + " update about entity:" + localFileManagerEntity.nSessionId);
-          localFileManagerEntity.apkSafeLevel = paramInt2;
-          localFileManagerEntity.apkSafeMsg = paramString1;
-          localFileManagerEntity.apkSafeDetailUrl = paramString2;
-          this.jdField_a_of_type_Asii.a.getFileManagerDataCenter().c(localFileManagerEntity);
+          localObject1 = "null";
+          QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmoticonResp.resultcode);
+          return;
         }
       }
-    }
-    if (this.jdField_a_of_type_Asii.a != null) {
-      ((amoo)this.jdField_a_of_type_Asii.a.getBusinessHandler(22)).e(new Object[] { this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_a_of_type_Long), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramBundle });
+      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
     }
   }
 }

@@ -1,6 +1,17 @@
-public abstract interface ysz
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+
+final class ysz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  ysz(ytb paramytb) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (this.a != null) {
+      this.a.a(paramValueAnimator);
+    }
+  }
 }
 
 

@@ -1,13 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class pth
-  implements DialogInterface.OnClickListener
+public class pth
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public static String a = "00000R3FEU3ZKLWJ";
 }
 
 

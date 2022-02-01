@@ -3,29 +3,29 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
-import sdg;
-import sdy;
-import shp;
-import shq;
+import spk;
+import sqd;
+import suf;
+import sug;
 
 public class VideoUIManager$5
   implements Runnable
 {
-  public VideoUIManager$5(sdy paramsdy, int paramInt, String paramString1, String paramString2) {}
+  public VideoUIManager$5(sqd paramsqd, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    sdy.a(this.this$0).setVisibility(8);
-    sdy.f(this.this$0);
-    sdy.a(this.this$0).setVisibility(8);
-    sdy.a(this.this$0).setVisibility(8);
-    sdy.b(this.this$0).setVisibility(8);
+    sqd.a(this.this$0).setVisibility(8);
+    sqd.f(this.this$0);
+    sqd.a(this.this$0).setVisibility(8);
+    sqd.a(this.this$0).setVisibility(8);
+    sqd.b(this.this$0).setVisibility(8);
     if (this.jdField_a_of_type_Int == 1) {
-      sdy.g(this.this$0);
+      sqd.g(this.this$0);
     }
-    sdy.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    sqd.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
     if (this.jdField_a_of_type_Int == 1) {
-      shq.a(sdy.a(this.this$0).a(), 0);
+      sug.a(sqd.a(this.this$0).a(), 0);
     }
   }
 }

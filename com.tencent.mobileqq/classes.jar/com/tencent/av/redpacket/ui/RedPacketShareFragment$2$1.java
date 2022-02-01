@@ -6,7 +6,7 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
-import yyi;
+import znl;
 
 class RedPacketShareFragment$2$1
   implements Runnable
@@ -21,18 +21,18 @@ class RedPacketShareFragment$2$1
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       RedPacketShareFragment.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0);
-      yyi.a(1, 2131695956);
+      znl.a(1, 2131696208);
       return;
     }
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a(false);
-    String str = String.format(BaseApplication.getContext().getString(2131695332), new Object[] { RedPacketShareFragment.b(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0), RedPacketShareFragment.c(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0) });
+    String str = String.format(BaseApplication.getContext().getString(2131695549), new Object[] { RedPacketShareFragment.b(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0), RedPacketShareFragment.c(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0) });
     QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
     if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a != null)
     {
       localUserInfo.qzone_uin = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a.getAccount();
       localUserInfo.nickname = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a.getDisplayName(0, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.a.getCurrentAccountUin(), null);
     }
-    QZoneHelper.forwardToPublishMood(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.getActivity(), localUserInfo, this.jdField_a_of_type_JavaLangString, BaseApplication.getContext().getString(2131691958), str, 1);
+    QZoneHelper.forwardToPublishMood(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment$2.this$0.getActivity(), localUserInfo, this.jdField_a_of_type_JavaLangString, BaseApplication.getContext().getString(2131692048), str, 1);
   }
 }
 

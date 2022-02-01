@@ -1,18 +1,46 @@
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.app.AppRuntime;
+import org.jetbrains.annotations.NotNull;
 
-public class bmmk
-  extends LinearLayoutManager
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcooperation/vip/impl/VasAdvAppImpl;", "Lcooperation/vip/VasAdvAppInterface;", "()V", "account", "", "context", "Landroid/content/Context;", "execute", "", "runnable", "Ljava/lang/Runnable;", "sendCmd", "cmd", "", "cmdKey", "reqBytes", "", "callback", "Lcooperation/vip/VasAdvCallback;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bmmk
+  implements bmkc
 {
-  public bmmk(AEEditorColorSelectorView paramAEEditorColorSelectorView, Context paramContext, int paramInt, boolean paramBoolean)
+  public long a()
   {
-    super(paramContext, paramInt, paramBoolean);
+    Object localObject = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
+    localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication().runtime");
+    return ((AppRuntime)localObject).getLongAccountUin();
   }
   
-  public boolean canScrollHorizontally()
+  @NotNull
+  public Context a()
   {
-    return false;
+    BaseApplication localBaseApplication = BaseApplicationImpl.context;
+    Intrinsics.checkExpressionValueIsNotNull(localBaseApplication, "BaseApplicationImpl.context");
+    return (Context)localBaseApplication;
+  }
+  
+  public void a(@NotNull Runnable paramRunnable)
+  {
+    Intrinsics.checkParameterIsNotNull(paramRunnable, "runnable");
+    ThreadManager.executeOnSubThread(paramRunnable);
+  }
+  
+  public void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull byte[] paramArrayOfByte, @NotNull bmkd parambmkd)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "cmd");
+    Intrinsics.checkParameterIsNotNull(paramString2, "cmdKey");
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "reqBytes");
+    Intrinsics.checkParameterIsNotNull(parambmkd, "callback");
+    bmmp.a.a(paramString1, paramString2, paramArrayOfByte, parambmkd);
   }
 }
 

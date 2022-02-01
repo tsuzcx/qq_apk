@@ -1,19 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-public class acos
-  extends BroadcastReceiver
+public abstract interface acos
 {
-  public acos(AddAccountActivity paramAddAccountActivity) {}
+  public abstract int a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    QLog.d("AddAccountActivity", 1, "AutoLoginReceiver onReceive");
-    AddAccountActivity.a(this.a, true);
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
+  
+  public abstract int b();
 }
 
 

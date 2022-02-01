@@ -1,38 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
-class aqfz
-  implements aqey
+public class aqfz
+  implements DialogInterface.OnClickListener
 {
-  aqfz(aqfw paramaqfw) {}
+  public aqfz(JumpConfirmFragment paramJumpConfirmFragment) {}
   
-  public void a(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent();
-    localIntent.addFlags(268435456);
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      localIntent.setAction(aqfw.a(this.a));
-      localIntent.setData(Uri.fromParts("package", paramContext.getPackageName(), null));
-    }
-    for (;;)
-    {
-      paramContext.startActivity(localIntent);
-      return;
-      if (Build.VERSION.SDK_INT <= 8)
-      {
-        localIntent.setAction("android.intent.action.VIEW");
-        localIntent.setClassName("com.android.settings", aqfw.a(this.a));
-        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
-      }
-    }
+    JefsClass.getInstance().a(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfz
  * JD-Core Version:    0.7.0.1
  */

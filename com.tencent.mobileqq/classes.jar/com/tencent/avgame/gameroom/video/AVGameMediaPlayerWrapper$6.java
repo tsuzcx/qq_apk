@@ -2,23 +2,23 @@ package com.tencent.avgame.gameroom.video;
 
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.superplayer.api.ISuperPlayer;
-import nfq;
+import nmi;
 
 public class AVGameMediaPlayerWrapper$6
   implements Runnable
 {
-  public AVGameMediaPlayerWrapper$6(nfq paramnfq) {}
+  public AVGameMediaPlayerWrapper$6(nmi paramnmi) {}
   
   public void run()
   {
     QLog.d("AVGameMediaPlayerWrapper", 1, "call releaseMediaPlayer");
-    if (nfq.a(this.this$0) != null)
+    if (nmi.a(this.this$0) != null)
     {
-      nfq.a(this.this$0).stop();
-      nfq.a(this.this$0).release();
-      nfq.a(this.this$0, null);
-      nfq.b(this.this$0);
-      nfq.b(this.this$0, false);
+      nmi.a(this.this$0).stop();
+      nmi.a(this.this$0).release();
+      nmi.a(this.this$0, null);
+      nmi.b(this.this$0);
+      nmi.b(this.this$0, false);
     }
   }
 }

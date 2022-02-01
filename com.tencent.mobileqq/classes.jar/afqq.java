@@ -1,16 +1,11 @@
-import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnDragListener;
 
-class afqq
-  implements View.OnDragListener
+public abstract interface afqq
 {
-  afqq(afqj paramafqj) {}
+  public abstract void a(View paramView, MotionEvent paramMotionEvent);
   
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
-  {
-    return true;
-  }
+  public abstract void a(View paramView, boolean paramBoolean);
 }
 
 

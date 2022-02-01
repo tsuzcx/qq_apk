@@ -1,25 +1,23 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bdrs
-  implements TextWatcher
+class bdrs
+  implements View.OnClickListener
 {
-  public bdrs(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  bdrs(bdrr parambdrr) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(this.a.x)) && (paramInt1 > 0) && (paramInt1 < this.a.x.length() + 1) && (paramInt2 > paramInt3))
-    {
-      this.a.d(false);
-      return;
+    onq localonq = (onq)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
+    if (localonq != null) {
+      localonq.a(this.a, (Activity)paramView.getContext());
     }
-    TroopBarPublishActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

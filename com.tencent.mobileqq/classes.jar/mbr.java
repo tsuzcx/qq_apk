@@ -1,67 +1,34 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mbr
+  implements View.OnClickListener
 {
-  private static String a = "QAVPreSetting";
-  private static String b = "BeautyFeature";
-  private static String c = "BeautyValue";
-  private static String d = "BeautyConfig";
-  private static String e = "BeautyResetGuide";
+  public mbr(AVActivity paramAVActivity, String paramString, long paramLong) {}
   
-  public static int a(String paramString)
+  public void onClick(View paramView)
   {
-    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getInt(c + paramString, -1);
-  }
-  
-  public static String a(String paramString)
-  {
-    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getString(d + paramString, "");
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
-    paramString = e + paramString;
-    localSharedPreferences.edit().putInt(paramString, paramInt).apply();
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
-    paramString1 = d + paramString1;
-    localSharedPreferences.edit().putString(paramString1, paramString2).apply();
-  }
-  
-  public static boolean a(String paramString)
-  {
-    paramString = BaseApplicationImpl.getApplication().getSharedPreferences(a, 0);
-    String str = b;
-    int j = paramString.getInt(str, -1);
-    int i = j;
-    if (j == -1) {
-      if (!lld.d()) {
-        break label67;
-      }
+    mbf.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1044);
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(2, false);
+    lhg.e(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvVideoController.a().d) + "");
+    if (AudioHelper.f()) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "qav_double_screen_notify, click[" + this.jdField_a_of_type_JavaLangString + "], seq[" + this.jdField_a_of_type_Long + "]");
     }
-    label67:
-    for (i = 1;; i = 0)
-    {
-      paramString.edit().putInt(str, i).commit();
-      return i >= 1;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      new mdc(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, false, 4).a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     }
-  }
-  
-  public static int b(String paramString)
-  {
-    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getInt(e + paramString, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mbr
  * JD-Core Version:    0.7.0.1
  */

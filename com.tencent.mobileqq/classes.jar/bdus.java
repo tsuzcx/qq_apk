@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bdus
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public bdus(TroopNickRuleFragment paramTroopNickRuleFragment) {}
+  public bdus(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopNickRuleFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqStudymodeKidModeAdvanceSettingFragment.getActivity()))
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeKidModeAdvanceSettingFragment.getActivity(), 1, 2131694305, 1).a();
+      KidModeAdvanceSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeKidModeAdvanceSettingFragment).setEnabled(true);
+      KidModeAdvanceSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeKidModeAdvanceSettingFragment, KidModeAdvanceSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeKidModeAdvanceSettingFragment), false, KidModeAdvanceSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeKidModeAdvanceSettingFragment));
+      return;
+    }
+    KidModeAdvanceSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqStudymodeKidModeAdvanceSettingFragment, this.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
   }
 }
 

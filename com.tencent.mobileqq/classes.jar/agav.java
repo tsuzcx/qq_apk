@@ -1,24 +1,28 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import GROUP.MessageRemindRsp;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.qphone.base.util.QLog;
 
-class agav
-  implements View.OnClickListener
+public class agav
+  extends aodb
 {
-  agav(agap paramagap, long paramLong) {}
+  public agav(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("uinType", this.jdField_a_of_type_Agap.a.curType);
-    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
-    localIntent.putExtra("public_fragment_window_feature", 1);
-    adxr.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("vip_pretty." + this.a.tag, 2, "SVIPObserver.onGetBigTroopExpiredInfo, troopUin: " + this.a.sessionInfo.curFriendUin + " iFreezedType=" + paramMessageRemindRsp.iFreezedType + " iLhGroupExpiredTime=" + paramMessageRemindRsp.iLhGroupExpiredTime + " iGroupType=" + paramMessageRemindRsp.iGroupType);
+      }
+      ((TroopManager)this.a.app.getManager(QQManagerFactory.TROOP_MANAGER)).a(this.a.sessionInfo.curFriendUin, paramMessageRemindRsp);
+      TroopManager.a(paramMessageRemindRsp, this.a.app, this.a.sessionInfo.curFriendUin, this.a.mContext, this.a, this.a.mTipsMgr);
+      return;
+    }
+    QLog.e("vip_pretty." + this.a.tag, 2, String.format("SVIPObserver.onGetBigTroopExpiredInfo, troopUin: %s, isSuccess: false", new Object[] { this.a.sessionInfo.curFriendUin }));
   }
 }
 

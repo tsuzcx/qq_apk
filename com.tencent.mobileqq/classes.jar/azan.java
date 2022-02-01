@@ -1,24 +1,27 @@
+import android.annotation.SuppressLint;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$onBindViewHolder$2$1"}, k=3, mv={1, 1, 16})
-final class azan
-  implements View.OnClickListener
+public class azan
+  implements View.OnTouchListener
 {
-  azan(azag paramazag, azaf paramazaf, azaj paramazaj, int paramInt) {}
+  public azan(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public final void onClick(View paramView)
+  @SuppressLint({"ClickableViewAccessibility"})
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    azag localazag = this.jdField_a_of_type_Azag;
-    Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
-    Object localObject = azaf.a(this.jdField_a_of_type_Azaf).get(this.jdField_a_of_type_Int);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "mData[position]");
-    localazag.b(paramView, (azaz)localObject);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

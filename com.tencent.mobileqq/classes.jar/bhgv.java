@@ -1,41 +1,18 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.text.SpannableString;
-import android.text.style.ImageSpan;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.widget.ProfileCardFavorItemDetailView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 
-public class bhgv
-  extends TextView
+public final class bhgv
+  implements Parcelable.Creator<QQRecorder.RecorderParam>
 {
-  public bhgv(ProfileCardFavorItemDetailView paramProfileCardFavorItemDetailView, Context paramContext, Drawable paramDrawable, String paramString, int paramInt)
+  public QQRecorder.RecorderParam a(Parcel paramParcel)
   {
-    super(paramContext);
-    setTextSize(1, 11.0F);
-    setTextColor(-1);
-    if (paramDrawable != null)
-    {
-      paramProfileCardFavorItemDetailView = "[icon] " + paramString;
-      int i = (int)(AIOUtils.dp2px(11.0F, getResources()) * 0.8D + 0.5D);
-      paramDrawable.setBounds(0, 0, i, i);
-      paramProfileCardFavorItemDetailView = new SpannableString(paramProfileCardFavorItemDetailView);
-      paramProfileCardFavorItemDetailView.setSpan(new ImageSpan(paramDrawable, 1), 0, 6, 17);
-    }
-    for (;;)
-    {
-      setText(paramProfileCardFavorItemDetailView);
-      paramProfileCardFavorItemDetailView = new GradientDrawable();
-      paramProfileCardFavorItemDetailView.setColor(paramInt);
-      paramProfileCardFavorItemDetailView.setCornerRadius(8.0F);
-      setBackgroundDrawable(paramProfileCardFavorItemDetailView);
-      setPadding(AIOUtils.dp2px(4.0F, getResources()), 0, AIOUtils.dp2px(4.0F, getResources()), 0);
-      setLayoutParams(new ViewGroup.LayoutParams(-2, AIOUtils.dp2px(15.0F, getResources())));
-      return;
-      paramProfileCardFavorItemDetailView = new SpannableString(paramString);
-    }
+    return new QQRecorder.RecorderParam(paramParcel);
+  }
+  
+  public QQRecorder.RecorderParam[] a(int paramInt)
+  {
+    return new QQRecorder.RecorderParam[paramInt];
   }
 }
 

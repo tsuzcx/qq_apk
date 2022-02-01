@@ -1,120 +1,153 @@
-import com.qq.jce.wup.UniPacket;
+import NS_KING_PUBLIC.stAuth;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.config.AppSetting;
+import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.shadow.core.common.LoggerFactory;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.shadow.dynamic.host.PluginManager;
+import cooperation.ilive.IliveShadowImpl.1;
+import cooperation.ilive.manager.IliveAuthManager;
+import java.util.concurrent.ExecutorService;
 
 public class blus
-  extends UniPacket
+  implements IShadow
 {
-  private final String a = "compressed";
+  private static blus jdField_a_of_type_Blus;
+  private bluu jdField_a_of_type_Bluu;
+  private PluginManager jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   
-  public blus(boolean paramBoolean)
+  private blus()
   {
-    super(paramBoolean);
+    setILoggerFactory();
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = ThreadManagerExecutor.getSingleThreadExecutorService(192);
   }
   
-  private void a(boolean paramBoolean) {}
-  
-  /* Error */
-  private byte[] a(byte[] paramArrayOfByte)
+  public static blus a()
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +5 -> 6
-    //   4: aconst_null
-    //   5: areturn
-    //   6: new 20	java/util/zip/Inflater
-    //   9: dup
-    //   10: invokespecial 23	java/util/zip/Inflater:<init>	()V
-    //   13: astore_2
-    //   14: aload_2
-    //   15: aload_1
-    //   16: iconst_0
-    //   17: aload_1
-    //   18: arraylength
-    //   19: invokevirtual 27	java/util/zip/Inflater:setInput	([BII)V
-    //   22: sipush 4096
-    //   25: newarray byte
-    //   27: astore_3
-    //   28: new 29	java/io/ByteArrayOutputStream
-    //   31: dup
-    //   32: invokespecial 30	java/io/ByteArrayOutputStream:<init>	()V
-    //   35: astore 4
-    //   37: aload_2
-    //   38: invokevirtual 34	java/util/zip/Inflater:finished	()Z
-    //   41: ifne +29 -> 70
-    //   44: aload 4
-    //   46: aload_3
-    //   47: iconst_0
-    //   48: aload_2
-    //   49: aload_3
-    //   50: invokevirtual 38	java/util/zip/Inflater:inflate	([B)I
-    //   53: invokevirtual 41	java/io/ByteArrayOutputStream:write	([BII)V
-    //   56: goto -19 -> 37
-    //   59: astore_3
-    //   60: aload_3
-    //   61: invokevirtual 44	java/util/zip/DataFormatException:printStackTrace	()V
-    //   64: aload_2
-    //   65: invokevirtual 47	java/util/zip/Inflater:end	()V
-    //   68: aload_1
-    //   69: areturn
-    //   70: aload 4
-    //   72: invokevirtual 51	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   75: astore_3
-    //   76: aload_2
-    //   77: invokevirtual 47	java/util/zip/Inflater:end	()V
-    //   80: aload_3
-    //   81: areturn
-    //   82: astore_1
-    //   83: aload_2
-    //   84: invokevirtual 47	java/util/zip/Inflater:end	()V
-    //   87: aload_1
-    //   88: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	89	0	this	blus
-    //   0	89	1	paramArrayOfByte	byte[]
-    //   13	71	2	localInflater	java.util.zip.Inflater
-    //   27	23	3	arrayOfByte1	byte[]
-    //   59	2	3	localDataFormatException	java.util.zip.DataFormatException
-    //   75	6	3	arrayOfByte2	byte[]
-    //   35	36	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    // Exception table:
-    //   from	to	target	type
-    //   37	56	59	java/util/zip/DataFormatException
-    //   70	76	59	java/util/zip/DataFormatException
-    //   37	56	82	finally
-    //   60	64	82	finally
-    //   70	76	82	finally
-  }
-  
-  public <T> T getByClass(String paramString, T paramT)
-  {
-    Object localObject;
-    if ((this._data != null) && (this._data.containsKey("compressed")) && (this._data.get("compressed") != null))
+    if (jdField_a_of_type_Blus == null) {}
+    try
     {
-      localObject = (byte[])((HashMap)this._data.get("compressed")).get("string");
-      if ("true".equalsIgnoreCase(new String((byte[])localObject)))
+      if (jdField_a_of_type_Blus == null) {
+        jdField_a_of_type_Blus = new blus();
+      }
+      return jdField_a_of_type_Blus;
+    }
+    finally {}
+  }
+  
+  private PluginManager a(Context paramContext, String paramString)
+  {
+    if (blul.a().a()) {
+      return new DynamicPluginManager(blul.a().a());
+    }
+    return new DynamicPluginManager(new blue());
+  }
+  
+  private void a(Context paramContext, long paramLong, PluginManager paramPluginManager, Bundle paramBundle, stAuth paramstAuth, EnterCallback paramEnterCallback)
+  {
+    blvl.a("IliveLaunch enterWithAuth");
+    Bundle localBundle2 = paramBundle.getBundle("KEY_EXTRAS");
+    Bundle localBundle1 = localBundle2;
+    if (localBundle2 == null) {
+      localBundle1 = new Bundle();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("IliveAuthShadowImpl", 2, "start enterWithAuth  , uid = " + paramstAuth.sUid);
+    }
+    localBundle1.putString("openID", paramstAuth.sUid);
+    localBundle1.putString("token", paramstAuth.sSessionKey);
+    localBundle1.putInt("auth_type", 0);
+    paramBundle.putBundle("KEY_EXTRAS", localBundle1);
+    try
+    {
+      paramPluginManager.enter(paramContext, paramLong, paramBundle, new blut(this, paramEnterCallback, paramLong));
+      blvl.b("IliveLaunch enterWithAuth");
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
       {
-        localObject = (HashMap)this._data.get(paramString);
-        if (localObject != null)
-        {
-          localObject = ((HashMap)localObject).entrySet().iterator();
-          if (((Iterator)localObject).hasNext())
-          {
-            localObject = (Map.Entry)((Iterator)localObject).next();
-            ((Map.Entry)localObject).setValue(a((byte[])((Map.Entry)localObject).getValue()));
-          }
-        }
+        paramContext.printStackTrace();
+        QLog.e("IliveAuthShadowImpl", 1, "enterWithAuth exception , e = " + paramContext.getMessage());
       }
     }
-    for (boolean bool = true;; bool = false)
+  }
+  
+  private void a(Context paramContext, String paramString1, String paramString2, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    try
     {
-      a(bool);
-      return super.getByClass(paramString, paramT);
-      QLog.e("CompressUniPacket", 1, "not compressed " + new String((byte[])localObject));
+      paramString2 = getPluginManager(paramContext, paramString1, paramString2);
+      bmgm.c("IliveAuthShadowImpl", "enter: " + paramLong + ", frameVersion = " + "1");
+      blvl.a("stAuth");
+      if (paramString2 != null)
+      {
+        long l = System.currentTimeMillis();
+        paramBundle.putString("hostuid", paramString1);
+        paramBundle.putString("hostVersion", "8.4.10");
+        paramBundle.putInt("key_frame_version", Integer.valueOf("1").intValue());
+        paramBundle.putLong("entryTime", l);
+        if (!blul.a().a())
+        {
+          paramBundle.putString("pluginZipPath", blul.a().c());
+          paramBundle.putString("pluginZipMD5", blul.a().d());
+        }
+        paramBundle.putBoolean("isDebugVersion", false);
+        paramBundle.putString("qqVersion", AppSetting.a);
+        paramString1 = IliveAuthManager.getInstance().getLocalIliveAuth();
+        if (paramString1 != null)
+        {
+          QLog.e("IliveAuthShadowImpl", 1, "[enterWithAuth] use local auth !");
+          a(paramContext, paramLong, paramString2, paramBundle, paramString1, paramEnterCallback);
+          return;
+        }
+        QLog.e("IliveAuthShadowImpl", 1, "[enterWithAuth] start request getStAuth");
+        this.jdField_a_of_type_Bluu = new bluu(this, paramString2, paramLong, paramContext, paramBundle, paramEnterCallback);
+        IliveAuthManager.getInstance().getStAuth(this.jdField_a_of_type_Bluu);
+        return;
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      paramContext.printStackTrace();
+      QLog.e("IliveAuthShadowImpl", 1, "enter exception ", paramContext);
+      return;
+    }
+    QLog.e("IliveAuthShadowImpl", 1, "[enter] pluginManager is null !");
+  }
+  
+  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new IliveShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
+  }
+  
+  public PluginManager getPluginManager(Context paramContext, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager = a(paramContext, paramString1);
+    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
+  }
+  
+  public boolean hasPluginManager()
+  {
+    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager != null;
+  }
+  
+  public void setILoggerFactory()
+  {
+    try
+    {
+      LoggerFactory.setILoggerFactory(avru.a());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
   }
 }

@@ -1,18 +1,33 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.Grp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-public final class acwe
-  implements DialogInterface.OnClickListener
+public class acwe
+  implements acos
 {
-  public acwe(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, acxa paramacxa, Bundle paramBundle) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Acxa, this.jdField_a_of_type_AndroidOsBundle);
+    return 1026;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new msg_svc.Grp();
+    paramQQAppInterface.group_code.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramRoutingHead.grp.set(paramQQAppInterface);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 3013;
   }
 }
 

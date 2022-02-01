@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
 import android.text.TextUtils;
-import bgoe;
-import bgog;
+import bhyo;
+import bhyq;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -87,7 +87,7 @@ public class QZoneCoverDownloader
       QLog.i("Q.qzonecover.", 2, "downloadImage|file not exist or empty!!");
     }
     paramURLDrawableHandler = new File(paramDownloadParams);
-    if ((paramURLDrawableHandler.exists()) || (((paramOutputStream.startsWith("http://")) || (paramOutputStream.startsWith("https://"))) && (bgog.a(new bgoe(paramOutputStream, paramURLDrawableHandler), null) == 0) && (paramURLDrawableHandler.exists()))) {
+    if ((paramURLDrawableHandler.exists()) || (((paramOutputStream.startsWith("http://")) || (paramOutputStream.startsWith("https://"))) && (bhyq.a(new bhyo(paramOutputStream, paramURLDrawableHandler), null) == 0) && (paramURLDrawableHandler.exists()))) {
       return paramURLDrawableHandler;
     }
     throw new RuntimeException("downloadImage|file not exist, path = " + paramDownloadParams);

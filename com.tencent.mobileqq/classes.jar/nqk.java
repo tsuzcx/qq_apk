@@ -1,18 +1,12 @@
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class nqk
-  implements zop
+final class nqk
+  implements DialogInterface.OnClickListener
 {
-  public nqk(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
-  
-  public void callback(Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBundle != null)
-    {
-      int i = paramBundle.getInt("mode");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
-    }
+    paramDialogInterface.cancel();
   }
 }
 

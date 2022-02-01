@@ -1,14 +1,10 @@
-import java.util.Comparator;
+import java.util.HashMap;
 
-class ptn
-  implements Comparator<Integer>
+public class ptn
 {
-  ptn(ptl paramptl) {}
-  
-  public int a(Integer paramInteger1, Integer paramInteger2)
-  {
-    return paramInteger1.intValue() - paramInteger2.intValue();
-  }
+  public String a;
+  public HashMap<String, String> a;
+  public String b;
 }
 
 

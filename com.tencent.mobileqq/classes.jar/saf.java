@@ -1,16 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 class saf
-  implements DialogInterface.OnShowListener
+  implements rtp
 {
-  saf(sab paramsab, bjnw parambjnw) {}
+  saf(sad paramsad, List paramList) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean)
   {
-    sab.a(this.jdField_a_of_type_Sab, "mShareActionSheet onShow()");
-    this.jdField_a_of_type_Bjnw.getWindow().clearFlags(8);
+    if (paramBoolean)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        UgcVideo localUgcVideo = (UgcVideo)localIterator.next();
+        this.jdField_a_of_type_Sad.a(localUgcVideo, true);
+      }
+    }
+    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "showMobileNetworkDialog, isContinue=" + paramBoolean);
   }
 }
 

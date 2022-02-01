@@ -1,14 +1,34 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
 
-public class acci
-  implements abzb
+final class acci
+  implements AdIPCManager.Handler
 {
-  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public AdIPCManager.Result handle(AdIPCManager.Params paramParams)
   {
-    bbnd.a(paramabxc.a(), paramMsgType0x210.vProtobuf, true);
-    return null;
+    String str2 = null;
+    AdIPCManager.Result localResult = new AdIPCManager.Result();
+    if (paramParams == null) {
+      if (paramParams == null) {
+        break label91;
+      }
+    }
+    label91:
+    for (String str1 = paramParams.getAction();; str1 = null)
+    {
+      if (paramParams != null) {
+        str2 = paramParams.getToProcessName();
+      }
+      acho.b("GdtInterstitialPreDownloader", String.format("IPCHandlerForPreDownload.handle action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(localResult.success) }));
+      return localResult;
+      if (!paramParams.isValid()) {
+        break;
+      }
+      accf.a().a();
+      localResult.success = true;
+      break;
+    }
   }
 }
 

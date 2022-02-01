@@ -1,46 +1,96 @@
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.text.TextUtils;
-
-public final class aypk
-  implements EmoticonCallback
+public class aypk
 {
-  public aypk(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString;
+  private int jdField_e_of_type_Int;
+  private String jdField_e_of_type_JavaLangString;
   
-  public void delete()
+  public int a()
   {
-    TextUtils.backspace(this.jdField_a_of_type_AndroidWidgetEditText);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void emoticonMall() {}
-  
-  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
-  
-  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
+  public long a()
   {
-    return false;
+    return this.jdField_a_of_type_Long;
   }
   
-  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public void send() {}
-  
-  public void send(EmoticonInfo paramEmoticonInfo)
+  public String a()
   {
-    if (paramEmoticonInfo != null) {}
-    try
-    {
-      paramEmoticonInfo.send(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
-      return;
-    }
-    catch (Throwable paramEmoticonInfo) {}
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void setting() {}
+  public void a(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_e_of_type_JavaLangString = paramString;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_e_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String c()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void e(String paramString)
+  {
+    this.jdField_d_of_type_JavaLangString = paramString;
+  }
 }
 
 

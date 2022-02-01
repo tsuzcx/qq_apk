@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.ResultReceiver;
 import com.tencent.qqmini.sdk.R.drawable;
 import com.tencent.qqmini.sdk.annotation.ProxyService;
@@ -106,6 +109,34 @@ public class MiniAppProxyDefault
   public String getImei()
   {
     return "123";
+  }
+  
+  public String getLocation(Context paramContext)
+  {
+    try
+    {
+      paramContext = (LocationManager)paramContext.getSystemService("location");
+      Object localObject = new Criteria();
+      ((Criteria)localObject).setCostAllowed(false);
+      ((Criteria)localObject).setAccuracy(2);
+      localObject = paramContext.getBestProvider((Criteria)localObject, true);
+      if (localObject != null)
+      {
+        paramContext = paramContext.getLastKnownLocation((String)localObject);
+        if (paramContext == null) {
+          return "";
+        }
+        double d1 = paramContext.getLatitude();
+        double d2 = paramContext.getLongitude();
+        paramContext = d1 + "*" + d2;
+        return paramContext;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      QMLog.e("getLocation", "getLocation>>>", paramContext);
+    }
+    return "";
   }
   
   public boolean getLocation(Context paramContext, String paramString, boolean paramBoolean, AsyncResult paramAsyncResult)
@@ -273,7 +304,7 @@ public class MiniAppProxyDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.MiniAppProxyDefault
  * JD-Core Version:    0.7.0.1
  */

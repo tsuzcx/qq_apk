@@ -1,25 +1,28 @@
-import android.util.Log;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bgin
+final class bgin
+  implements View.OnTouchListener
 {
-  public final void a(Exception paramException)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    a("e:", paramException);
-  }
-  
-  public void a(String paramString)
-  {
-    Log.i("GLDrawable", paramString);
-  }
-  
-  public void a(String paramString, Exception paramException)
-  {
-    Log.i("GLDrawable", paramString, paramException);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
-  {
-    Log.i("GLDrawable", "event=" + paramString1 + " statusCode=" + paramString2 + " statusMsg=" + paramString3);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramView.setAlpha(1.0F);
+        }
+      }
+    }
   }
 }
 

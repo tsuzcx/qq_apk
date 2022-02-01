@@ -1,12 +1,29 @@
-import android.os.Bundle;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface beha
+class beha
+  extends behc
 {
-  public abstract void a(long paramLong1, long paramLong2);
+  private QQText.EmoticonSpan a;
   
-  public abstract void a(long paramLong1, String paramString, long paramLong2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, Bundle paramBundle, int paramInt);
+  beha(@NonNull String paramString, int paramInt1, int paramInt2)
+  {
+    super(2, paramString);
+    this.a = new QQText.EmoticonSpan(paramInt1, paramInt2, 1);
+  }
   
-  public abstract void b(long paramLong1, long paramLong2, long paramLong3);
+  float a(@NonNull Paint paramPaint)
+  {
+    float f = this.a.getDrawable().getBounds().width();
+    if (QLog.isColorLevel()) {
+      QLog.d("NickWrapper", 2, "getWidth normal span width " + f);
+    }
+    return f;
+  }
 }
 
 

@@ -1,17 +1,56 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.widget.XEditTextEx;
 
-class aghi
-  extends aghj
+public class aghi
+  implements agin
 {
-  aghi(agcw paramagcw)
+  protected aghk a;
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  protected boolean a;
+  
+  public aghi(BaseChatPie paramBaseChatPie)
   {
-    super(paramagcw, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.getActivity();
   }
   
-  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  private void a(XEditTextEx paramXEditTextEx)
   {
-    return new agrr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.jdField_a_of_type_Boolean = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131694743), "qqsetting_enter_sendmsg_key", false);
+    if (this.jdField_a_of_type_Boolean) {
+      paramXEditTextEx.setImeOptions(4);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aghk == null) {
+        this.jdField_a_of_type_Aghk = new aghk(this, null);
+      }
+      paramXEditTextEx.setOnEditorActionListener(this.jdField_a_of_type_Aghk);
+      paramXEditTextEx.setOnKeyListener(this.jdField_a_of_type_Aghk);
+      return;
+      paramXEditTextEx.setImeOptions(0);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 21: 
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 21, 9 };
   }
 }
 

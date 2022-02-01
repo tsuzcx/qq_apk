@@ -1,27 +1,20 @@
-import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
 
-public class atcq
-  implements View.OnClickListener
+public abstract interface atcq
 {
-  public atcq(SendBottomBar paramSendBottomBar) {}
+  public abstract View.OnClickListener a(TextView paramTextView);
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a.isShowing()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a.show();
-    }
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(FavFileInfo paramFavFileInfo);
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcq
  * JD-Core Version:    0.7.0.1
  */

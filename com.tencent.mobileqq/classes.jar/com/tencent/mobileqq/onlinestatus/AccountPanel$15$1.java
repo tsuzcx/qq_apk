@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import axsv;
-import axtc;
+import ayzg;
+import ayzn;
 
 public class AccountPanel$15$1
   implements Runnable
 {
-  public AccountPanel$15$1(axtc paramaxtc) {}
+  public AccountPanel$15$1(ayzn paramayzn) {}
   
   public void run()
   {
-    axsv.a(this.a.a);
+    ayzg.a(this.a.a);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import avif;
+import awoi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -13,9 +13,9 @@ public class SetLogOn
   {
     String str = this.a.app.getServerConfigValue(ServerConfigManager.ConfigType.common, "QQIniUrl");
     if ((str != null) && (str.length() > 0)) {
-      avif.b = str.trim();
+      awoi.b = str.trim();
     }
-    avif.a(this.a.app.getApp(), true);
+    awoi.a(this.a.app.getApp(), true);
     return 7;
   }
 }

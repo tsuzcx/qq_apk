@@ -7,6 +7,7 @@ import com.tencent.qphone.base.util.QLog;
 public abstract class AbTransportRunnable
   implements ITaskHandler, QuicNative.QuicCallback
 {
+  static final int CLIENT_CANCELED = 10;
   static final int CLIENT_FAILED = 5;
   static final String CODE = "CODE";
   static final int COMPLETED_MANUAL = 3;
@@ -28,13 +29,25 @@ public abstract class AbTransportRunnable
   
   public abstract void handleMessage(Message paramMessage);
   
+  protected Bundle obtainBundle()
+  {
+    if (this.bundle == null) {
+      this.bundle = new Bundle();
+    }
+    for (;;)
+    {
+      return this.bundle;
+      this.bundle.clear();
+    }
+  }
+  
   public void onClose(int paramInt1, int paramInt2, String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.d("quic", 4, new Object[] { Integer.valueOf(paramInt1), " onClose code -> ", Integer.valueOf(paramInt2), " desc -> ", paramString });
     }
     this.message.what = 4;
-    Bundle localBundle = new Bundle();
+    Bundle localBundle = obtainBundle();
     localBundle.putInt("ID", paramInt1);
     localBundle.putInt("CODE", paramInt2);
     localBundle.putString("DESC", paramString);
@@ -55,7 +68,7 @@ public abstract class AbTransportRunnable
       QLog.d("quic", 4, "[" + paramInt1 + "] onConnect");
     }
     this.message.what = 1;
-    Bundle localBundle = new Bundle();
+    Bundle localBundle = obtainBundle();
     localBundle.putInt("ID", paramInt1);
     this.message.obj = localBundle;
     handleMessage(this.message);
@@ -64,7 +77,7 @@ public abstract class AbTransportRunnable
   public void onDataReceive(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
     this.message.what = 2;
-    Bundle localBundle = new Bundle();
+    Bundle localBundle = obtainBundle();
     localBundle.putByteArray("DATA", paramArrayOfByte);
     localBundle.putInt("LEN", paramInt2);
     localBundle.putInt("ID", paramInt1);

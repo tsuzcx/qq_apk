@@ -1,51 +1,47 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.viola.core.ViolaInstance;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/SuperMaskStepUtil;", "", "()V", "dealStepResult", "", "result", "step", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "doSuperMaskStep", "tag", "", "steps", "", "(Ljava/lang/String;[Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;)Z", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tvs
+public class tvs
+  implements ubx
 {
-  public static final tvs a = new tvs();
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public final boolean a(@NotNull String paramString, @NotNull tvc... paramVarArgs)
+  public tvs(BridgeModule paramBridgeModule) {}
+  
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "tag");
-    Intrinsics.checkParameterIsNotNull(paramVarArgs, "steps");
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
+    ViolaFragment localViolaFragment;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment)))
     {
-      tvc localtvc = paramVarArgs[i];
-      localtvc.a(paramString);
-      if (!localtvc.a()) {
-        return false;
+      localViolaFragment = (ViolaFragment)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment();
+      if (!paramBoolean) {
+        break label85;
       }
-      i += 1;
+      this.jdField_a_of_type_JavaLangString = localViolaFragment.getStatusBarColor();
+      this.jdField_a_of_type_Boolean = localViolaFragment.getStatusBarFontColorWhite().booleanValue();
+      localViolaFragment.setStatusBarColor("#FF000000");
+      localViolaFragment.initStatusBarColor("#FF000000");
+      localViolaFragment.setStatusBarFontColor(Boolean.valueOf(true), true);
     }
-    return true;
-  }
-  
-  public final boolean a(boolean paramBoolean, @NotNull tvc paramtvc)
-  {
-    Intrinsics.checkParameterIsNotNull(paramtvc, "step");
-    StringBuilder localStringBuilder = new StringBuilder().append(paramtvc.a() + " : ").append(paramtvc.getClass().getSimpleName() + " : ");
-    if (paramtvc.b() != null) {
-      localStringBuilder.append(paramtvc.b() + " : ");
-    }
-    if (!paramBoolean) {
-      localStringBuilder.append("check fail");
-    }
-    for (;;)
+    label85:
+    do
     {
-      twp.a("ReadInJoySuperMaskAd", localStringBuilder.toString());
-      return paramBoolean;
-      localStringBuilder.append("check success");
-    }
+      return;
+      localViolaFragment.setStatusBarColor(this.jdField_a_of_type_JavaLangString);
+      localViolaFragment.initStatusBarColor(this.jdField_a_of_type_JavaLangString);
+      localViolaFragment.setStatusBarFontColor(Boolean.valueOf(this.jdField_a_of_type_Boolean), true);
+    } while ((!localViolaFragment.isSuspension()) || (localViolaFragment.getCommonSuspensionGestureLayout() == null));
+    localViolaFragment.getCommonSuspensionGestureLayout().g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tvs
  * JD-Core Version:    0.7.0.1
  */

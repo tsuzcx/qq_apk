@@ -1,26 +1,39 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import org.json.JSONObject;
 
-public class arls
-  extends RecyclerView.AdapterDataObserver
+class arls
 {
-  public arls(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  String a = "";
+  String b = "";
+  String c = "";
   
-  public void onChanged()
+  static arls a(JSONObject paramJSONObject)
   {
-    if (this.a.jdField_a_of_type_Arme.a() == 0)
-    {
-      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Armf);
-      return;
+    arls localarls = new arls();
+    localarls.a = paramJSONObject.optString("nonVIP", localarls.a);
+    localarls.b = paramJSONObject.optString("VIP", localarls.b);
+    localarls.c = paramJSONObject.optString("SVIP", localarls.c);
+    return localarls;
+  }
+  
+  String a(String paramString)
+  {
+    if ("normal".equals(paramString)) {
+      return this.a;
     }
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Armf);
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_Armf);
+    if ("vip".equals(paramString)) {
+      return this.b;
+    }
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    return "Info{nonVIP='" + this.a + '\'' + ", VIP='" + this.b + '\'' + ", SVIP='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arls
  * JD-Core Version:    0.7.0.1
  */

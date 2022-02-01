@@ -1,42 +1,46 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.tavcut.bean.TextEditorData;
-
-class bmmv
-  implements TextWatcher
+public class bmmv
 {
-  bmmv(bmms parambmms) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
   
-  public void afterTextChanged(Editable paramEditable)
+  public bmmu a()
   {
-    if (paramEditable == null) {
-      return;
-    }
-    String str = paramEditable.toString();
-    if (paramEditable.length() > 20)
-    {
-      QQToast.a(this.a.getContext(), bmms.a(this.a), 0).a();
-      str = paramEditable.subSequence(0, 20).toString();
-      bmms.a(this.a).setText(str);
-      bmms.a(this.a).setSelection(str.length());
-    }
-    if (TextUtils.isEmpty(str.trim())) {
-      bmms.a(this.a).setContent("");
-    }
-    for (;;)
-    {
-      bmms.b(this.a);
-      return;
-      bmms.a(this.a).setContent(str);
-    }
+    return new bmmu(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_Int);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public bmmv a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public bmmv a(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public bmmv a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public bmmv b(int paramInt)
+  {
+    this.c = paramInt;
+    return this;
+  }
+  
+  public bmmv c(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
 }
 
 

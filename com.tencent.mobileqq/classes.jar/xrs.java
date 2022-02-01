@@ -1,6 +1,10 @@
-public abstract interface xrs
+import android.content.Context;
+import android.view.View;
+
+public class xrs
+  implements wef
 {
-  public abstract void a(String paramString);
+  public void a(Context paramContext, View paramView) {}
 }
 
 

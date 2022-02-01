@@ -1,35 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
 
-public class tig
-  implements rny
+class tig
+  implements View.OnLongClickListener
 {
-  public tig(BridgeModule paramBridgeModule) {}
+  tig(tia paramtia, View paramView, ProteusItemData paramProteusItemData) {}
   
-  public void a(UgcVideo paramUgcVideo)
+  public boolean onLongClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = pay.a();
-    QLog.i(BridgeModule.TAG, 1, "onPublish, title =" + paramUgcVideo.title);
-    if (localQQAppInterface == null) {}
-    String str;
-    do
-    {
-      return;
-      str = (String)BridgeModule.access$1500(this.a).get(Long.valueOf(0L));
-      if ((str != null) && (!str.isEmpty())) {
-        rno.a(localQQAppInterface).a(0L, new tih(this, str));
-      }
-      str = (String)BridgeModule.access$1500(this.a).get(Long.valueOf(paramUgcVideo.columnId));
-    } while ((str == null) || (str.isEmpty()));
-    rno.a(localQQAppInterface).a(paramUgcVideo.columnId, new tii(this, paramUgcVideo, str));
+    paramView = new bhjq();
+    paramView.a(0, anvx.a(2131716243));
+    bhcw.a(this.jdField_a_of_type_AndroidViewView, paramView, new tih(this), new tii(this));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tig
  * JD-Core Version:    0.7.0.1
  */

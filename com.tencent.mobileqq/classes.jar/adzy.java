@@ -1,35 +1,50 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
-class adzy
-  implements bjoe
+public class adzy
+  implements DialogInterface.OnClickListener
 {
-  adzy(adzx paramadzx) {}
+  public adzy(FriendProfileCardActivity paramFriendProfileCardActivity, Context paramContext) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     switch (paramInt)
     {
     }
     for (;;)
     {
-      this.a.a.jdField_a_of_type_Bjnw.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.dismiss();
+      com.tencent.mobileqq.activity.AddFriendLogicActivity.b = false;
       return;
-      bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_QQshare", 0, 0, "", "", "", "");
-      aaec.a("share_success");
-      this.a.a.u();
-      continue;
-      if (bkov.a((float)this.a.a.jdField_a_of_type_Double, (float)this.a.a.b, this.a.a.l, this.a.a.i, null).c(this.a.a.getIntent().getStringExtra("uin")).b(this.a.a, this.a.a.getIntent().getStringExtra("uin"), 1, null))
-      {
-        paramInt = QQMapActivity.a(this.a.a).getDimensionPixelSize(2131299076);
-        QQToast.a(this.a.a, 2, this.a.a.getString(2131692037), 1).b(paramInt);
-        aaec.a("favorite_success");
+      if (QLog.isColorLevel()) {
+        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog back");
       }
-      bkpf.a(null, 65, 7);
-      bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_collect", 0, 0, "", "", "", "");
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getIntExtra("source_id", 3999) == 3090) {}
+      try
+      {
+        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getStringExtra("extra");
+        ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, true, "action_game_make_friend", Long.valueOf(paramDialogInterface).longValue(), -1, anvx.a(2131704389));
+        if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))) {
+          continue;
+        }
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).moveTaskToBack(true);
+      }
+      catch (Exception paramDialogInterface)
+      {
+        for (;;)
+        {
+          QLog.e("FriendProfileCardActivity", 1, "feedBackToGameSDK error = " + paramDialogInterface);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog stay");
+      }
     }
   }
 }

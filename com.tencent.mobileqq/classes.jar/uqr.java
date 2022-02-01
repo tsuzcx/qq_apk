@@ -1,38 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.6.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class uqr
-  implements IMiniMsgUnreadCallback
+  implements View.OnClickListener
 {
-  public void destroy()
-  {
-    uya.a("AIOLog", 1, "MiniMsgUser destroy");
-  }
+  uqr(uqm paramuqm) {}
   
-  public void hide()
+  public void onClick(View paramView)
   {
-    uya.a("AIOLog", 1, "MiniMsgUser hide");
-  }
-  
-  public void hideUnread()
-  {
-    uya.a("AIOLog", 1, "MiniMsgUser hideUnread");
-  }
-  
-  public boolean show(int paramInt)
-  {
-    uya.a("AIOLog", 1, "MiniMsgUser show = " + paramInt);
-    return false;
-  }
-  
-  public void updateOnBackFromMiniAIO(Bundle paramBundle)
-  {
-    uya.a("AIOLog", 1, "MiniMsgUser updateOnBackFromMiniAIO");
-  }
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    uya.a("AIOLog", 1, "MiniMsgUser updateUnreadCount i = " + paramInt + ", b = " + paramBoolean);
+    bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
+    bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
+    ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.6.1(this));
+    if (this.a.jdField_a_of_type_Int == 1) {
+      uqm.a(this.a);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.jdField_a_of_type_Int == 3)
+      {
+        MqqHandler localMqqHandler = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
+        if ((localMqqHandler != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity))) {
+          localMqqHandler.sendEmptyMessage(1006);
+        }
+      }
+    }
   }
 }
 

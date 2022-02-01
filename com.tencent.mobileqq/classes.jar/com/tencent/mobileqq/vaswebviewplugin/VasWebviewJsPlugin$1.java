@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import aqyp;
+import ascz;
 
 class VasWebviewJsPlugin$1
-  extends aqyp
+  extends ascz
 {
   VasWebviewJsPlugin$1(VasWebviewJsPlugin paramVasWebviewJsPlugin) {}
   

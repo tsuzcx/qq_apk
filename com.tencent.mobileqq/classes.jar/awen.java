@@ -1,53 +1,54 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.limitchat.LimitChatDamon.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class awen
-  implements DownloadParams.DecodeHandler
 {
-  private static final HashMap<String, ArrayList<Integer>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  Object jdField_a_of_type_JavaLangObject;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<aweo> jdField_a_of_type_JavaLangRefWeakReference;
+  private static volatile awen jdField_a_of_type_Awen;
+  private long jdField_a_of_type_Long = -1L;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private ConcurrentHashMap<String, Bundle> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public awen(String paramString, aweo paramaweo, Object paramObject)
+  public static awen a()
   {
-    if (paramaweo != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaweo);
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public static List<Integer> a(String paramString)
-  {
-    return (List)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (paramDownloadParams = null;; paramDownloadParams = (aweo)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    if (jdField_a_of_type_Awen == null) {}
+    try
     {
-      if (paramDownloadParams != null)
-      {
-        int[] arrayOfInt = aweq.a(Bitmap.createBitmap(paramBitmap, 0, paramBitmap.getHeight() / 2, paramBitmap.getWidth(), paramBitmap.getHeight() / 2));
-        if ((arrayOfInt != null) && (arrayOfInt.length >= 2))
-        {
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.add(Integer.valueOf(arrayOfInt[0]));
-          localArrayList.add(Integer.valueOf(arrayOfInt[1]));
-          if (!jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
-            jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, localArrayList);
-          }
-        }
-        paramDownloadParams.a(this.jdField_a_of_type_JavaLangString, arrayOfInt[0], arrayOfInt[1], this.jdField_a_of_type_JavaLangObject);
+      if (jdField_a_of_type_Awen == null) {
+        jdField_a_of_type_Awen = new awen();
       }
-      return paramBitmap;
+      return jdField_a_of_type_Awen;
+    }
+    finally {}
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatDamon", 2, "sendMessageReadConfirm invoke, uin:" + paramString);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_JavaLangRunnable != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LimitChatDamon", 2, "sendMessageReadConfirm last request do not finish");
+        }
+        return;
+      }
+    }
+    finally {}
+    this.jdField_a_of_type_JavaLangRunnable = new LimitChatDamon.1(this, paramString, paramQQAppInterface);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
     }
   }
 }

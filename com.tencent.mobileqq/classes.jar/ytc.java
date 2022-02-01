@@ -1,6 +1,15 @@
-public abstract interface ytc
+import android.animation.ValueAnimator;
+
+public class ytc
+  implements ytb
 {
-  public abstract void a(yta paramyta, float paramFloat);
+  public void a(ValueAnimator paramValueAnimator) {}
+  
+  public void b(ValueAnimator paramValueAnimator) {}
+  
+  public void c(ValueAnimator paramValueAnimator) {}
+  
+  public void d(ValueAnimator paramValueAnimator) {}
 }
 
 

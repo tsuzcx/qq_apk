@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.biz.qcircleshadow.local.widgets.QCircleFollowView;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class ahdi
+class ahdi
+  implements vwb
 {
-  public String a;
+  ahdi(ahdh paramahdh, ahdk paramahdk) {}
   
-  public ahdi(String paramString)
+  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
   {
-    this.a = paramString;
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
-  
-  public boolean a()
-  {
-    return false;
+    paramStUser = this.jdField_a_of_type_Ahdk.a;
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramStUser.setClickable(paramBoolean);
+      return;
+    }
   }
 }
 

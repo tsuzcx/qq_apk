@@ -1,99 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.onlinestatus.AccountPanel.17.1;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
 public class ayzo
+  extends AccountObserver
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<ayzk> jdField_a_of_type_JavaUtilList;
+  ayzo(ayzg paramayzg) {}
   
-  public ayzo(QQAppInterface paramQQAppInterface)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    a();
+    if ((paramBoolean1) && (ayzg.a(this.a) != null)) {
+      ayzg.a(this.a).a(paramStatus);
+    }
+    if (!paramBoolean2) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new AccountPanel.17.1(this, paramBoolean1, paramStatus));
   }
   
-  protected void a()
+  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(new ayzp(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-    this.jdField_a_of_type_JavaUtilList.add(new ayzq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-    this.jdField_a_of_type_JavaUtilList.add(new ayzr(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-  }
-  
-  public void a(int paramInt, ByteStringMicro paramByteStringMicro)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileModPushDispatcher", 2, String.format("process intValue=%s bytesValue=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramByteStringMicro.toByteArray()) }));
-    }
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ayzk localayzk = (ayzk)localIterator.next();
-        try
-        {
-          if (localayzk.a(paramInt)) {
-            localayzk.a(paramInt, paramByteStringMicro);
-          }
-        }
-        catch (Exception localException)
-        {
-          QLog.e("ProfileModPushDispatcher", 1, "process fail.", localException);
-        }
-      }
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileModPushDispatcher", 2, String.format("processBegin uin=%s", new Object[] { Long.valueOf(paramLong) }));
-    }
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ayzk localayzk = (ayzk)localIterator.next();
-        try
-        {
-          localayzk.a(paramLong);
-        }
-        catch (Exception localException)
-        {
-          QLog.e("ProfileModPushDispatcher", 1, "processBegin fail.", localException);
-        }
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileModPushDispatcher", 2, "processEnd");
-    }
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ayzk localayzk = (ayzk)localIterator.next();
-        try
-        {
-          localayzk.a();
-        }
-        catch (Exception localException)
-        {
-          QLog.e("ProfileModPushDispatcher", 1, "processEnd fail.", localException);
-        }
-      }
-    }
+    this.a.c();
   }
 }
 

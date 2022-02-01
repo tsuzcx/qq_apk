@@ -1,39 +1,47 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import java.util.List;
 
-class axar
-  implements axdg
+public class axar
 {
-  axar(awzr paramawzr, String paramString) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private List<Integer> jdField_a_of_type_JavaUtilList;
+  private String b;
+  private String c;
   
-  public void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo)
+  public axar a(int paramInt)
   {
-    if (paramInterestTagInfo.tagJumpUrl.equals("icon_more_url"))
-    {
-      paramView = new Intent(this.jdField_a_of_type_Awzr.a, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Awzr.a.startActivity(paramView);
-      paramInterestTagInfo = this.jdField_a_of_type_Awzr.a.app;
-      if (this.jdField_a_of_type_Awzr.a.e == 2) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        bcef.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_more_tribe", 0, 0, paramView, "", "", "");
-        return;
-      }
-    }
-    paramView = new Intent(this.jdField_a_of_type_Awzr.a, QQBrowserActivity.class);
-    paramView.putExtra("url", paramInterestTagInfo.tagJumpUrl);
-    this.jdField_a_of_type_Awzr.a.startActivity(paramView);
-    paramInterestTagInfo = this.jdField_a_of_type_Awzr.a.app;
-    if (this.jdField_a_of_type_Awzr.a.e == 2) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      bcef.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_tribe", 0, 0, paramView, "", "", "");
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public axar a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public axar a(List<Integer> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public MsgBackupUserData a()
+  {
+    return new MsgBackupUserData(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b, this.c, this.jdField_a_of_type_Int, null);
+  }
+  
+  public axar b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public axar c(String paramString)
+  {
+    this.c = paramString;
+    return this;
   }
 }
 

@@ -1,21 +1,16 @@
 class atfr
-  implements aszj
+  implements athg
 {
   atfr(atfq paramatfq) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void a(Object[] paramArrayOfObject)
   {
-    atfo.a(this.a.a);
-    if (atfo.k(this.a.a) != null) {
-      atfo.l(this.a.a).d();
-    }
+    atfq.d(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atfr
  * JD-Core Version:    0.7.0.1
  */

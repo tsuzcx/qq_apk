@@ -1,20 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-
-class ajtj
-  implements View.OnClickListener
+public class ajtj
 {
-  ajtj(ajti paramajti) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  public ajtj(int paramInt, String paramString)
   {
-    AIOLongShotHelper.a(this.a.mActivity, (String)ajti.a(this.a).selectedPhotoList.get(0), new ajtk(this));
-    AIOLongShotHelper.a("0X8009DEE");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

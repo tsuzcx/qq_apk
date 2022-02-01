@@ -18,23 +18,23 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import avcq;
-import avcw;
-import avdg;
-import aveq;
-import avey;
-import avfa;
-import avfb;
-import avfc;
-import avfd;
-import avfe;
-import avff;
-import avfg;
-import avfh;
-import avfi;
-import avfj;
-import avgm;
-import bjuk;
+import awit;
+import awiz;
+import awjj;
+import awkt;
+import awlb;
+import awld;
+import awle;
+import awlf;
+import awlg;
+import awlh;
+import awli;
+import awlj;
+import awlk;
+import awll;
+import awlm;
+import awmp;
+import blfw;
 import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
@@ -58,33 +58,33 @@ public class LocationPickFragment
 {
   private static long jdField_a_of_type_Long;
   private View jdField_a_of_type_AndroidViewView;
-  private avcq jdField_a_of_type_Avcq;
-  private aveq jdField_a_of_type_Aveq;
+  private awit jdField_a_of_type_Awit;
+  private awkt jdField_a_of_type_Awkt;
   private MapWidget jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget;
   private PoiSlideBottomPanel jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel;
   
   private void a()
   {
-    if (bjuk.a()) {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131372808).setBackgroundResource(2130838891);
+    if (blfw.a()) {
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131373001).setBackgroundResource(2130838911);
     }
   }
   
   public static void a(Activity paramActivity, int paramInt, String paramString, CameraPosition paramCameraPosition)
   {
     if (!NetworkUtil.isNetworkAvailable()) {
-      QQToast.a(paramActivity, 2131693524, 0).a();
+      QQToast.a(paramActivity, 2131693705, 0).a();
     }
     while (System.currentTimeMillis() - jdField_a_of_type_Long < 1000L) {
       return;
     }
     jdField_a_of_type_Long = System.currentTimeMillis();
-    if (avgm.a(paramActivity) <= 0)
+    if (awmp.a(paramActivity) <= 0)
     {
-      QQToast.a(paramActivity, 1, paramActivity.getString(2131694095), 1).a();
+      QQToast.a(paramActivity, 1, paramActivity.getString(2131694292), 1).a();
       return;
     }
-    if (!avcw.a(((BaseActivity)paramActivity).app).a.a(paramString, paramInt)) {}
+    if (!awiz.a(((BaseActivity)paramActivity).app).a.a(paramString, paramInt)) {}
     for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
@@ -109,34 +109,34 @@ public class LocationPickFragment
   
   private void c()
   {
-    this.jdField_a_of_type_Aveq = new aveq(getActivity().app);
+    this.jdField_a_of_type_Awkt = new awkt(getActivity().app);
     Intent localIntent = getActivity().getIntent();
     String str = localIntent.getStringExtra("uin");
-    this.jdField_a_of_type_Avcq = new avcq(localIntent.getIntExtra("uintype", -1), str);
+    this.jdField_a_of_type_Awit = new awit(localIntent.getIntExtra("uintype", -1), str);
   }
   
   private void d()
   {
     e();
     Object localObject1 = getActivity();
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131372819).setOnClickListener(new avfc(this, (Activity)localObject1));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131372820).setOnClickListener(new avfd(this, (Activity)localObject1));
-    if (bjuk.a()) {
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131372820).setBackgroundResource(2130845259);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131373012).setOnClickListener(new awlf(this, (Activity)localObject1));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131373013).setOnClickListener(new awlg(this, (Activity)localObject1));
+    if (blfw.a()) {
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131373013).setBackgroundResource(2130845344);
     }
     f();
     h();
-    Object localObject2 = (XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372806);
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget = ((MapWidget)this.jdField_a_of_type_AndroidViewView.findViewById(2131370330));
-    avgm.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, "地图 你正在共享位置");
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370337);
-    avgm.a(localImageView, "在地图区回到我的位置");
+    Object localObject2 = (XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372999);
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget = ((MapWidget)this.jdField_a_of_type_AndroidViewView.findViewById(2131370512));
+    awmp.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, "地图 你正在共享位置");
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370519);
+    awmp.a(localImageView, "在地图区回到我的位置");
     Object localObject3 = ((Activity)localObject1).getIntent();
     localObject3 = CameraPosition.fromLatLngZoom((LatLng)((Intent)localObject3).getParcelableExtra("key_last_position"), ((Intent)localObject3).getFloatExtra("key_last_zoom", 0.0F));
-    this.jdField_a_of_type_Aveq.a((Activity)localObject1, this.jdField_a_of_type_Avcq, (CameraPosition)localObject3, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, localImageView, this.jdField_a_of_type_AndroidViewView.findViewById(2131372820), this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel, (XListView)localObject2, this.jdField_a_of_type_AndroidViewView.findViewById(2131372810), this.jdField_a_of_type_AndroidViewView.findViewById(2131372793));
-    localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131365290);
-    localObject2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131372801);
-    if (bjuk.a())
+    this.jdField_a_of_type_Awkt.a((Activity)localObject1, this.jdField_a_of_type_Awit, (CameraPosition)localObject3, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, localImageView, this.jdField_a_of_type_AndroidViewView.findViewById(2131373013), this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel, (XListView)localObject2, this.jdField_a_of_type_AndroidViewView.findViewById(2131373003), this.jdField_a_of_type_AndroidViewView.findViewById(2131372986));
+    localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131365385);
+    localObject2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131372994);
+    if (blfw.a())
     {
       ((View)localObject1).setVisibility(0);
       ((View)localObject2).setBackgroundColor(Color.parseColor("#CC000000"));
@@ -150,7 +150,7 @@ public class LocationPickFragment
   {
     LiuHaiUtils.a(getActivity());
     int i = ImmersiveUtils.getStatusBarHeight(getActivity());
-    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372801);
+    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372994);
     ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
     int j;
     if (LiuHaiUtils.jdField_a_of_type_Boolean)
@@ -170,33 +170,33 @@ public class LocationPickFragment
   private void f()
   {
     getActivity().getWindow().setSoftInputMode(48);
-    View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131372814);
-    View localView2 = localView1.findViewById(2131363774);
+    View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131373007);
+    View localView2 = localView1.findViewById(2131363845);
     localView2.setVisibility(8);
-    ((TextView)localView1.findViewById(2131379819)).setText("查找集合地点");
-    EditText localEditText = (EditText)localView1.findViewById(2131366179);
-    localEditText.setOnKeyListener(new avfe(this, localEditText));
-    localView2.setOnClickListener(new avff(this, localEditText));
+    ((TextView)localView1.findViewById(2131380145)).setText("查找集合地点");
+    EditText localEditText = (EditText)localView1.findViewById(2131366280);
+    localEditText.setOnKeyListener(new awlh(this, localEditText));
+    localView2.setOnClickListener(new awli(this, localEditText));
     localEditText.setImeOptions(3);
-    localEditText.setOnHoverListener(new avfg(this));
-    localEditText.setOnTouchListener(new avfh(this));
-    localView1.findViewById(2131368234).setOnClickListener(new avfi(this, localEditText));
-    View localView3 = localView1.findViewById(2131379819);
-    localEditText.addTextChangedListener(new avfj(this, localView3, localView1.findViewById(2131368234), localView2));
-    if (bjuk.a())
+    localEditText.setOnHoverListener(new awlj(this));
+    localEditText.setOnTouchListener(new awlk(this));
+    localView1.findViewById(2131368378).setOnClickListener(new awll(this, localEditText));
+    View localView3 = localView1.findViewById(2131380145);
+    localEditText.addTextChangedListener(new awlm(this, localView3, localView1.findViewById(2131368378), localView2));
+    if (blfw.a())
     {
-      localEditText.setBackgroundDrawable(getActivity().getResources().getDrawable(2130849760));
+      localEditText.setBackgroundDrawable(getActivity().getResources().getDrawable(2130849853));
       ((TextView)localView3).setTextColor(Color.parseColor("#8E8E93"));
       return;
     }
-    localEditText.setBackgroundDrawable(getActivity().getResources().getDrawable(2130849553));
+    localEditText.setBackgroundDrawable(getActivity().getResources().getDrawable(2130849646));
   }
   
   private void g()
   {
     InputMethodManager localInputMethodManager = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
     if ((localInputMethodManager != null) && (localInputMethodManager.isActive())) {
-      localInputMethodManager.hideSoftInputFromWindow(((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131366179)).getWindowToken(), 0);
+      localInputMethodManager.hideSoftInputFromWindow(((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131366280)).getWindowToken(), 0);
     }
   }
   
@@ -204,17 +204,17 @@ public class LocationPickFragment
   {
     LiuHaiUtils.a(getActivity());
     int i = DisplayUtil.dip2px(getActivity(), 275.0F) - LiuHaiUtils.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel = ((PoiSlideBottomPanel)this.jdField_a_of_type_AndroidViewView.findViewById(2131377560));
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel = ((PoiSlideBottomPanel)this.jdField_a_of_type_AndroidViewView.findViewById(2131377834));
     this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.setBottomHeight(i);
     this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.setTitleHeightNoDisplay(i);
-    View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131372798);
-    localView1.setOnClickListener(new avfa(this));
+    View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131372991);
+    localView1.setOnClickListener(new awld(this));
     this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.setDragView(localView1);
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.findViewById(2131372797);
-    View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131372801);
-    View localView3 = this.jdField_a_of_type_AndroidViewView.findViewById(2131370566);
-    View localView4 = this.jdField_a_of_type_AndroidViewView.findViewById(2131372814);
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.setSlidePanelListener(new avfb(this, localView3, localView2, localView1, localImageView, localView4));
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.findViewById(2131372990);
+    View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131372994);
+    View localView3 = this.jdField_a_of_type_AndroidViewView.findViewById(2131370749);
+    View localView4 = this.jdField_a_of_type_AndroidViewView.findViewById(2131373007);
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.setSlidePanelListener(new awle(this, localView3, localView2, localView1, localImageView, localView4));
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -250,7 +250,7 @@ public class LocationPickFragment
     if (QLog.isColorLevel()) {
       QLog.d("LocationPickFragment", 2, "[location_fragment]onCreateView: invoked. this: " + this + " activity: " + getActivity());
     }
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559189, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559220, null);
     getActivity().overridePendingTransition(2130772039, 2130772041);
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -333,7 +333,7 @@ public class LocationPickFragment
     if (Build.VERSION.SDK_INT >= 23)
     {
       paramView = getActivity();
-      paramView.requestPermissions(new avey(this, paramView), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      paramView.requestPermissions(new awlb(this, paramView), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
     }
     for (;;)
     {

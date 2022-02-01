@@ -14,18 +14,14 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bhpc;
-import bhyj;
-import bhyk;
-import bjei;
+import bizw;
+import bjjl;
+import bjjm;
+import bkpq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.app.IAppUIProxy;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI3;
-import com.tencent.mobileqq.mini.launch.AppBrandProxy;
-import com.tencent.mobileqq.mini.launch.MiniSdkLauncher;
 import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.MiniSDK;
@@ -200,7 +196,7 @@ public class FakeSdkBrandUI
     //   100	73	3	i	int
     //   23	135	4	localMiniAppInfo1	MiniAppInfo
     //   14	68	5	localMiniAppInfo2	MiniAppInfo
-    //   34	16	6	localMiniAppConfig	MiniAppConfig
+    //   34	16	6	localMiniAppConfig	com.tencent.mobileqq.mini.apkg.MiniAppConfig
     // Exception table:
     //   from	to	target	type
     //   5	16	155	java/lang/Throwable
@@ -215,18 +211,18 @@ public class FakeSdkBrandUI
     long l1 = System.currentTimeMillis();
     try
     {
-      bhyk localbhyk = new bhyk(bhpc.a().a());
-      bhyj localbhyj = new bhyj();
-      localbhyj.a(true);
-      long l2 = bhpc.a().a();
+      bjjm localbjjm = new bjjm(bizw.a().a());
+      bjjl localbjjl = new bjjl();
+      localbjjl.a(true);
+      long l2 = bizw.a().a();
       Object localObject = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
       String str = ((TicketManager)localObject).getSkey(String.valueOf(l2));
       localObject = ((TicketManager)localObject).getPskey(String.valueOf(l2), "qzone.qq.com");
-      localbhyj.a("qzone.qq.com/", "uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbhyj.a("qzone.qq.com/", "p_uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbhyj.a("qzone.qq.com/", "skey=" + str + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbhyj.a("qzone.qq.com/", "p_skey=" + (String)localObject + "; path=/; domain=." + "qzone.qq.com" + ";");
-      localbhyk.a();
+      localbjjl.a("qzone.qq.com/", "uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbjjl.a("qzone.qq.com/", "p_uin=" + l2 + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbjjl.a("qzone.qq.com/", "skey=" + str + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbjjl.a("qzone.qq.com/", "p_skey=" + (String)localObject + "; path=/; domain=." + "qzone.qq.com" + ";");
+      localbjjm.a();
       l2 = System.currentTimeMillis();
       QLog.e(AppBrandUI3.class.getSimpleName(), 1, "setCookie cost:" + (l2 - l1));
       return;
@@ -251,43 +247,27 @@ public class FakeSdkBrandUI
     FrameLayout localFrameLayout = new FrameLayout(paramBaseActivity);
     ((RelativeLayout)localObject1).addView(localFrameLayout, new RelativeLayout.LayoutParams(-1, -1));
     Intent localIntent = paramBaseActivity.getIntent();
-    for (;;)
+    try
     {
-      try
+      recoveryIntent(paramBaseActivity, localIntent);
+      localObject1 = (MiniAppInfo)paramBaseActivity.getIntent().getParcelableExtra("KEY_APPINFO");
+      this.mIntent = localIntent;
+      this.mUIProxy = AppLoaderFactory.g().getMiniAppEnv().getUIProxy((MiniAppInfo)localObject1);
+      if (this.mUIProxy != null)
       {
-        recoveryIntent(paramBaseActivity, localIntent);
-        localObject1 = (MiniAppInfo)paramBaseActivity.getIntent().getParcelableExtra("KEY_APPINFO");
-        Object localObject2 = localObject1;
-        if (localObject1 != null) {}
-        QLog.e("minisdk-start_FakeSdkBrandUI", 1, "", localThrowable1);
+        QLog.i("minisdk-start_FakeSdkBrandUI", 1, "UIProxy completed");
+        this.mUIProxy.onAttachActivity(paramBaseActivity, paramBundle, localFrameLayout);
       }
-      catch (Throwable localThrowable1)
+      bkpq.a();
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
-        try
-        {
-          localObject2 = new MiniAppConfig(MiniSdkLauncher.convert((MiniAppInfo)localObject1));
-          AppBrandProxy.g().setMiniAppConfig((MiniAppConfig)localObject2);
-          localObject2 = localObject1;
-          this.mIntent = localIntent;
-          this.mUIProxy = AppLoaderFactory.g().getMiniAppEnv().getUIProxy((MiniAppInfo)localObject2);
-          if (this.mUIProxy != null)
-          {
-            QLog.i("minisdk-start_FakeSdkBrandUI", 1, "UIProxy completed");
-            this.mUIProxy.onAttachActivity(paramBaseActivity, paramBundle, localFrameLayout);
-          }
-          bjei.a();
-          return true;
-        }
-        catch (Throwable localThrowable2)
-        {
-          Object localObject3;
-          break label188;
-        }
-        localThrowable1 = localThrowable1;
-        localObject1 = null;
+        QLog.e("minisdk-start_FakeSdkBrandUI", 1, "", localThrowable);
+        Object localObject2 = null;
       }
-      label188:
-      localObject3 = localObject1;
     }
   }
   
@@ -333,7 +313,7 @@ public class FakeSdkBrandUI
     if (this.mUIProxy != null) {
       this.mUIProxy.onDetachActivity(paramBaseActivity);
     }
-    bjei.b();
+    bkpq.b();
   }
   
   public void doOnNewIntent(BaseActivity paramBaseActivity, Intent paramIntent)
@@ -345,8 +325,6 @@ public class FakeSdkBrandUI
       recoveryIntent(paramBaseActivity, paramIntent);
       paramBaseActivity = (MiniAppInfo)paramBaseActivity.getIntent().getParcelableExtra("KEY_APPINFO");
       this.mUIProxy = AppLoaderFactory.g().getMiniAppEnv().getUIProxy(paramBaseActivity);
-      paramBaseActivity = new MiniAppConfig(MiniSdkLauncher.convert(paramBaseActivity));
-      AppBrandProxy.g().setMiniAppConfig(paramBaseActivity);
       return;
     }
     catch (Throwable paramBaseActivity)
@@ -406,11 +384,6 @@ public class FakeSdkBrandUI
   }
   
   public void finish(BaseActivity paramBaseActivity) {}
-  
-  public IAppUIProxy getAppUIProxy()
-  {
-    return null;
-  }
   
   public boolean isWrapContent(BaseActivity paramBaseActivity)
   {

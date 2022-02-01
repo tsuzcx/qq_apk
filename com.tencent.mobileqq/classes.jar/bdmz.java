@@ -1,19 +1,11 @@
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
-
-final class bdmz
-  implements QQPermissionCallback
+public abstract class bdmz
 {
-  bdmz(AppActivity paramAppActivity) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (!this.a.isFinishing()) {
-      bfur.a(this.a);
-    }
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  public abstract String a(int paramInt);
 }
 
 

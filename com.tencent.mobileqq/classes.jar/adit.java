@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.20.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AssistantSettingActivity.4.1.1;
 
 public class adit
-  implements bhhb
+  extends banv
 {
-  public adit(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  adit(adis paramadis) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, String.format("onConfigUpdate configId=%s tag=%s", new Object[] { Integer.valueOf(paramInt), paramString }));
-    }
-    this.a.runOnUiThread(new FriendProfileCardActivity.20.1(this, paramString));
+    this.a.a.runOnUiThread(new AssistantSettingActivity.4.1.1(this, paramBoolean));
   }
 }
 

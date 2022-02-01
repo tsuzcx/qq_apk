@@ -2,8 +2,8 @@ package com.tencent.mobileqq.soload;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bbys;
-import bbzc;
+import bdfn;
+import bdfx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
@@ -22,10 +22,10 @@ public class LoadExtResult
 {
   private int downloadSoNum;
   private int failIndex;
-  public bbys failInfo;
+  public bdfn failInfo;
   private boolean isFirstlyLoad = true;
   private boolean isNeedRetry;
-  private Map<String, bbzc> mPathsMap = new HashMap();
+  private Map<String, bdfx> mPathsMap = new HashMap();
   private String reportStr = "";
   int resCode;
   private int soNum;
@@ -120,7 +120,7 @@ public class LoadExtResult
             localObject1 = paramSoLoadInfo.soPathToLoad;
           }
         }
-        paramSoLoadInfo = new bbzc((String)localObject1, paramSoLoadInfo.rFileFolder, paramSoLoadInfo.getVer());
+        paramSoLoadInfo = new bdfx((String)localObject1, paramSoLoadInfo.rFileFolder, paramSoLoadInfo.getVer());
         localLoadExtResult.mPathsMap.put(paramString, paramSoLoadInfo);
       }
       return localLoadExtResult;
@@ -172,14 +172,14 @@ public class LoadExtResult
   {
     Iterator localIterator = this.mPathsMap.values().iterator();
     if (localIterator.hasNext()) {
-      return ((bbzc)localIterator.next()).b;
+      return ((bdfx)localIterator.next()).b;
     }
     return "";
   }
   
   public String getRelatedFilesFolder(String paramString)
   {
-    paramString = (bbzc)this.mPathsMap.get(paramString);
+    paramString = (bdfx)this.mPathsMap.get(paramString);
     if (paramString == null) {
       return "";
     }
@@ -212,14 +212,14 @@ public class LoadExtResult
   {
     Iterator localIterator = this.mPathsMap.values().iterator();
     if (localIterator.hasNext()) {
-      return ((bbzc)localIterator.next()).a;
+      return ((bdfx)localIterator.next()).a;
     }
     return "";
   }
   
   public String getSoLoadPath(String paramString)
   {
-    paramString = (bbzc)this.mPathsMap.get(paramString);
+    paramString = (bdfx)this.mPathsMap.get(paramString);
     if (paramString == null) {
       return "";
     }
@@ -230,14 +230,14 @@ public class LoadExtResult
   {
     Iterator localIterator = this.mPathsMap.values().iterator();
     if (localIterator.hasNext()) {
-      return ((bbzc)localIterator.next()).c;
+      return ((bdfx)localIterator.next()).c;
     }
     return "";
   }
   
   public String getVer(String paramString)
   {
-    paramString = (bbzc)this.mPathsMap.get(paramString);
+    paramString = (bdfx)this.mPathsMap.get(paramString);
     if (paramString == null) {
       return "";
     }
@@ -270,7 +270,7 @@ public class LoadExtResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.soload.LoadExtResult
  * JD-Core Version:    0.7.0.1
  */

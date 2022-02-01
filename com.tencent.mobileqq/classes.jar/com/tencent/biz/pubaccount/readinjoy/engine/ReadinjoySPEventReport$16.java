@@ -4,11 +4,11 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import ple;
-import plr;
-import pls;
+import pwb;
+import pwo;
+import pwp;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import ugf;
+import uuc;
 
 public final class ReadinjoySPEventReport$16
   implements Runnable
@@ -17,7 +17,7 @@ public final class ReadinjoySPEventReport$16
   
   public void run()
   {
-    if (ple.b(19))
+    if (pwb.b(19))
     {
       ArrayList localArrayList = new ArrayList();
       Object localObject1 = new StringBuilder();
@@ -27,18 +27,18 @@ public final class ReadinjoySPEventReport$16
       int i = 0;
       if (j < this.a.size())
       {
-        localObject2 = (pls)this.a.get(j);
-        ((StringBuilder)localObject1).append(((pls)localObject2).jdField_a_of_type_Int + "-" + ((pls)localObject2).jdField_a_of_type_Long + "-" + ((pls)localObject2).b + "-" + ((pls)localObject2).c);
+        localObject2 = (pwp)this.a.get(j);
+        ((StringBuilder)localObject1).append(((pwp)localObject2).jdField_a_of_type_Int + "-" + ((pwp)localObject2).jdField_a_of_type_Long + "-" + ((pwp)localObject2).b + "-" + ((pwp)localObject2).c);
         if (j != this.a.size() - 1) {
           ((StringBuilder)localObject1).append(":");
         }
         for (;;)
         {
-          i += ((pls)localObject2).b;
-          l += ((pls)localObject2).jdField_a_of_type_Long;
+          i += ((pwp)localObject2).b;
+          l += ((pwp)localObject2).jdField_a_of_type_Long;
           j += 1;
           break;
-          k = ((pls)localObject2).d;
+          k = ((pwp)localObject2).d;
         }
       }
       Object localObject2 = new oidb_cmd0x80a.AttributeList();
@@ -61,9 +61,9 @@ public final class ReadinjoySPEventReport$16
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("items");
       ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set("" + k);
       localArrayList.add(localObject1);
-      ugf.a(19, localArrayList);
+      uuc.a(19, localArrayList);
     }
-    plr.a();
+    pwo.a();
   }
 }
 

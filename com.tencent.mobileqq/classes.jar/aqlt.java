@@ -1,14 +1,10 @@
-import java.util.ArrayList;
-
-public class aqlt
+public abstract interface aqlt
 {
-  public int a;
-  public ArrayList<String> a = new ArrayList();
-  public int b;
+  public abstract void a(int paramInt, aqla paramaqla);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqlt
  * JD-Core Version:    0.7.0.1
  */

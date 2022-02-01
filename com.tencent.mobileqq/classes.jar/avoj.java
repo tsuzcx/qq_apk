@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class avoj
-  implements DialogInterface.OnDismissListener
+class avoj
+  implements DialogInterface.OnClickListener
 {
-  public avoj(MedalGuideView paramMedalGuideView) {}
+  avoj(avod paramavod) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MedalGuideView.a(this.a);
+    paramDialogInterface.dismiss();
+    avod.a(this.a);
+    QLog.d("PresenceInterfaceImpl", 2, "User allowed downd");
   }
 }
 

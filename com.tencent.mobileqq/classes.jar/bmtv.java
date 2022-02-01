@@ -1,33 +1,93 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-final class bmtv
-  implements URLDrawable.URLDrawableListener
+public class bmtv
 {
-  bmtv(String paramString1, String paramString2, bnln parambnln, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper, bmsl parambmsl, int paramInt3) {}
+  @SuppressLint({"InlinedApi"})
+  public static final int a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  static
   {
-    bmtu.a.remove(this.jdField_b_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboNPaster", 2, "applyNormalPaster onLoadFialed");
+    if (Build.VERSION.SDK_INT >= 11) {}
+    for (int i = 4;; i = 0)
+    {
+      a = i;
+      return;
     }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public static String a(Context paramContext, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboNPaster", 2, "urlDrawableListener onLoadSuccessed");
+    return paramContext.getSharedPreferences("weiyun.pref.plugin.albumbackup.options", a).getString(a(paramString1, paramString2), null);
+  }
+  
+  private static String a(String paramString1, String paramString2)
+  {
+    return paramString1 + paramString2;
+  }
+  
+  public static String a(Iterator<String> paramIterator)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    while (paramIterator.hasNext())
+    {
+      String str = (String)paramIterator.next();
+      if (!TextUtils.isEmpty(str))
+      {
+        if (i == 0) {
+          localStringBuffer.append(str);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          localStringBuffer.append(":").append(str);
+        }
+      }
     }
-    bmtu.a(paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bnln, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper, this.jdField_a_of_type_Bmsl, this.jdField_c_of_type_Int);
-    bmtu.a.remove(this.jdField_b_of_type_JavaLangString);
+    return localStringBuffer.toString();
+  }
+  
+  public static List<String> a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    paramString = paramString.split(":");
+    if ((paramString == null) || (paramString.length <= 0)) {
+      return new ArrayList();
+    }
+    ArrayList localArrayList = new ArrayList(paramString.length);
+    Collections.addAll(localArrayList, paramString);
+    return localArrayList;
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    paramContext.getSharedPreferences("weiyun.pref.plugin.albumbackup.options", a).edit().remove(a(paramString1, paramString2)).commit();
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    paramContext.getSharedPreferences("weiyun.pref.plugin.albumbackup.options", a).edit().putString(a(paramString1, paramString2), paramString3).commit();
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    paramContext = paramContext.getSharedPreferences("weiyun.pref.plugin.albumbackup.options", a).getString(a(paramString1, paramString2), null);
+    if (paramContext == null) {
+      return paramBoolean;
+    }
+    return Boolean.valueOf(paramContext).booleanValue();
   }
 }
 

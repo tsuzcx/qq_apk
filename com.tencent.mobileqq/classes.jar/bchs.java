@@ -1,36 +1,50 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
 public class bchs
-  implements View.OnClickListener
+  extends bchu
 {
-  public bchs(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, PopupWindow paramPopupWindow) {}
-  
-  public void onClick(View paramView)
+  public bchs(FaceDecoder paramFaceDecoder, bchy parambchy)
   {
-    QLog.d(StructMsgForGeneralShare.access$000(), 1, "filter_ad");
-    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().startDelAnimAndDelMsg((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    ((oge)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(139)).a(7, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692096), 1).a();
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramFaceDecoder, parambchy);
   }
+  
+  public void b(bcfj parambcfj, bcnt parambcnt)
+  {
+    super.b(parambcfj, parambcnt);
+    if (TextUtils.isEmpty(parambcfj.c()))
+    {
+      parambcnt.c().setVisibility(8);
+      ((bcnm)parambcnt).a().setVisibility(0);
+    }
+    for (;;)
+    {
+      if (parambcnt.d() != null)
+      {
+        parambcfj = parambcfj.d();
+        if (!TextUtils.isEmpty(parambcfj)) {
+          break;
+        }
+        parambcnt.d().setVisibility(8);
+      }
+      return;
+      parambcnt.c().setVisibility(0);
+      parambcnt.c().setText(parambcfj.c());
+      ((bcnm)parambcnt).a().setVisibility(8);
+    }
+    parambcnt.d().setVisibility(0);
+    parambcnt.d().setText(parambcfj);
+  }
+  
+  protected void c(bcfj parambcfj, bcnt parambcnt)
+  {
+    super.c(parambcfj, parambcnt);
+    ((bcnm)parambcnt).a().setOnClickListener(new bcht(this, parambcfj));
+  }
+  
+  public void d(bcfj parambcfj, bcnt parambcnt) {}
 }
 
 

@@ -1,76 +1,23 @@
-import android.app.Activity;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
 
 public class xav
-  extends wxx
+  extends yev
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private vwm jdField_a_of_type_Vwm;
-  private wsk jdField_a_of_type_Wsk;
-  private boolean c;
+  public xav(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
   
-  private void a(QQUserUIItem paramQQUserUIItem, wxy paramwxy)
+  public void a(int paramInt, View paramView, Object paramObject, yhc paramyhc)
   {
-    paramwxy.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramwxy.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    String str = paramQQUserUIItem.headUrl;
-    paramQQUserUIItem = paramQQUserUIItem.nickName;
-    paramwxy.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    paramwxy.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Wxu.b().getString(2131698616, new Object[] { paramQQUserUIItem }));
-    paramwxy.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(null);
-    paramwxy.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    wxu.a(str, paramwxy.jdField_a_of_type_AndroidWidgetImageView, paramwxy.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramwxy.jdField_a_of_type_Int, paramwxy.jdField_a_of_type_Int);
-    xvv.a("VipForwardVideoInfoController", "updateUI, nickName:%s,  avatarURL:%s", paramQQUserUIItem, str);
-  }
-  
-  public boolean a(View paramView)
-  {
-    if ((this.jdField_a_of_type_Vwm == null) || (this.jdField_a_of_type_Vwm.jdField_a_of_type_Int != 5) || (this.jdField_a_of_type_Vwm.jdField_a_of_type_Vwn == null)) {
-      this.jdField_a_of_type_Wxu.k();
-    }
-    while (!super.a(paramView)) {
-      return false;
-    }
-    wmu.a(this.jdField_a_of_type_Wxu.b(), this.jdField_a_of_type_Vwm.jdField_a_of_type_Vwn.c, this.jdField_a_of_type_Vwm.jdField_a_of_type_Vwn.b, 1010);
-    xwa.a("play_video", "clk_transmit", 0, 0, new String[0]);
-    return true;
-  }
-  
-  public void b(wxy paramwxy, wsk paramwsk)
-  {
-    xvv.a("VipForwardVideoInfoController", "doOnBind, forward video:%s", paramwsk.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Wsk = paramwsk;
-    Object localObject = paramwsk.a().getVideoLinkInfo();
-    if ((localObject == null) || (((vwm)localObject).jdField_a_of_type_Int != 5) || (((vwm)localObject).jdField_a_of_type_Vwn == null))
+    if ((paramObject instanceof QQUserUIItem))
     {
-      xvv.b("VipForwardVideoInfoController", "something error, hide()");
-      this.jdField_a_of_type_Wxu.k();
-      return;
-    }
-    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramwsk.jdField_a_of_type_JavaLangString)) {
-      this.c = false;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Vwm = ((vwm)localObject);
-      paramwsk = (vvj)vux.a(2);
-      localObject = paramwsk.b(this.jdField_a_of_type_Vwm.jdField_a_of_type_Vwn.jdField_a_of_type_JavaLangString);
-      if ((localObject == null) || (TextUtils.isEmpty(((QQUserUIItem)localObject).nickName))) {
-        break;
+      paramView = (QQUserUIItem)paramObject;
+      weg.a(this.a, 10, paramView.uid);
+      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
+        ykv.a("home_page", "clk_head_list", ykv.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", ykv.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
       }
-      this.jdField_a_of_type_Wxu.j();
-      a((QQUserUIItem)localObject, paramwxy);
-      return;
-      this.c = true;
-      this.jdField_a_of_type_JavaLangString = paramwsk.jdField_a_of_type_JavaLangString;
     }
-    this.jdField_a_of_type_Wxu.k();
-    paramwsk.a(this.jdField_a_of_type_Vwm.jdField_a_of_type_Vwn.jdField_a_of_type_JavaLangString, new xaw(this, paramwxy));
   }
 }
 

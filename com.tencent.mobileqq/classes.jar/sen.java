@@ -1,99 +1,169 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl.VolumeReceiver.1;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.voice.ReadInJoyVoicePlayController.3;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
 
 public class sen
-  extends BroadcastReceiver
 {
-  private sen(sek paramsek) {}
+  public static final String a;
+  private static sen jdField_a_of_type_Sen;
+  private AudioManager jdField_a_of_type_AndroidMediaAudioManager = (AudioManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("audio");
+  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private SocializeFeedsInfo.UGCVoiceInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ReadInJoyVoicePlayController.3(this);
+  private WeakReference<seq> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime().isBackgroundStop) || (BaseApplicationImpl.getApplication().getRuntime().isBackgroundPause)) {}
-    label24:
-    do
+    jdField_a_of_type_JavaLangString = sen.class.getSimpleName();
+  }
+  
+  public static sen a()
+  {
+    if (jdField_a_of_type_Sen == null) {}
+    try
     {
-      do
+      if (jdField_a_of_type_Sen == null) {
+        jdField_a_of_type_Sen = new sen();
+      }
+      return jdField_a_of_type_Sen;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo != null)
       {
-        do
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo.isPlaying = false;
+        if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
         {
-          do
+          seq localseq = (seq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (localseq != null)
           {
-            break label24;
-            break label24;
-            do
-            {
-              return;
-            } while (sek.b(this.a));
-            if (sek.c(this.a))
-            {
-              sek.b(this.a, false);
-              return;
-            }
-            if (sek.a(this.a) != null) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "VolumeReceiver onReceive null");
-          return;
-        } while (!sek.d(this.a));
-        if (!sek.e(this.a)) {
-          break;
+            localseq.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo);
+            a(false, "ugc voice play");
+          }
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "dynamicPauseReceive true");
+      }
       return;
-      int i;
-      try
-      {
-        if (!paramIntent.getAction().equals("android.media.VOLUME_CHANGED_ACTION")) {
-          continue;
-        }
-        i = sek.a(this.a).getStreamVolume(3);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "volume change:" + i);
-        }
-        if (sek.f(this.a))
-        {
-          QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "volume change shield ");
-          return;
-        }
-      }
-      catch (Exception paramContext)
-      {
-        QLog.d("Q.readinjoy.video.VideoVolumeControl", 1, "VolumeReceiver", paramContext);
-        return;
-      }
-      if (i == 0)
-      {
-        this.a.a(true, "system volume 0", sek.a(this.a));
-        return;
-      }
-      this.a.a(false, "system volume change", sek.a(this.a));
-      return;
-    } while (!paramIntent.getAction().equals("android.intent.action.HEADSET_PLUG"));
-    boolean bool = sek.a(this.a).isWiredHeadsetOn();
-    if (sek.g(this.a))
+    }
+    catch (Exception localException)
     {
-      sek.c(this.a, false);
-      return;
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
-    sek.d(this.a, true);
-    if (bool) {
-      this.a.a(false, "headset on", sek.a(this.a));
+  }
+  
+  public void a(seq paramseq, SocializeFeedsInfo.UGCVoiceInfo paramUGCVoiceInfo)
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
+      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
     }
-    for (;;)
+    a();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramseq);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo = paramUGCVoiceInfo;
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new seo(this));
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new sep(this));
+    try
     {
-      sek.a(this.a).postDelayed(new VideoVolumeControl.VolumeReceiver.1(this), 200L);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramUGCVoiceInfo.voiceUrl);
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
       return;
-      this.a.a(true, "headset off", sek.a(this.a));
     }
+    catch (IOException paramseq)
+    {
+      paramseq.printStackTrace();
+    }
+  }
+  
+  /* Error */
+  public void a(boolean paramBoolean, String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: iload_1
+    //   4: putfield 85	sen:jdField_a_of_type_Boolean	Z
+    //   7: aload_0
+    //   8: getfield 42	sen:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   11: ifnull +81 -> 92
+    //   14: aload_0
+    //   15: getfield 49	sen:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   18: ifnull +74 -> 92
+    //   21: invokestatic 162	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   24: ifeq +38 -> 62
+    //   27: getstatic 25	sen:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   30: iconst_2
+    //   31: new 164	java/lang/StringBuilder
+    //   34: dup
+    //   35: invokespecial 165	java/lang/StringBuilder:<init>	()V
+    //   38: ldc 167
+    //   40: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: iload_1
+    //   44: invokevirtual 174	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   47: ldc 176
+    //   49: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: aload_2
+    //   53: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokestatic 183	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   62: aload_0
+    //   63: getfield 42	sen:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   66: aload_0
+    //   67: getfield 49	sen:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   70: invokevirtual 187	android/os/Handler:removeCallbacks	(Ljava/lang/Runnable;)V
+    //   73: aload_0
+    //   74: getfield 85	sen:jdField_a_of_type_Boolean	Z
+    //   77: ifeq +18 -> 95
+    //   80: aload_0
+    //   81: getfield 42	sen:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   84: aload_0
+    //   85: getfield 49	sen:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   88: invokevirtual 191	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   91: pop
+    //   92: aload_0
+    //   93: monitorexit
+    //   94: return
+    //   95: aload_0
+    //   96: getfield 42	sen:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   99: aload_0
+    //   100: getfield 49	sen:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   103: ldc2_w 192
+    //   106: invokevirtual 197	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   109: pop
+    //   110: goto -18 -> 92
+    //   113: astore_2
+    //   114: aload_0
+    //   115: monitorexit
+    //   116: aload_2
+    //   117: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	118	0	this	sen
+    //   0	118	1	paramBoolean	boolean
+    //   0	118	2	paramString	String
+    // Exception table:
+    //   from	to	target	type
+    //   2	62	113	finally
+    //   62	92	113	finally
+    //   95	110	113	finally
   }
 }
 

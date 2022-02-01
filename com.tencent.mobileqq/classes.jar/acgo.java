@@ -1,26 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.intervideo.nowproxy.proxyinner.channel.ToService;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-public final class acgo
-  implements Parcelable.Creator<ToService>
+class acgo
+  implements aaea
 {
-  public ToService a(Parcel paramParcel)
-  {
-    ToService localToService = new ToService();
-    localToService.jdField_a_of_type_Int = paramParcel.readInt();
-    localToService.b = paramParcel.readInt();
-    localToService.c = paramParcel.readInt();
-    localToService.d = paramParcel.readInt();
-    localToService.jdField_a_of_type_Long = paramParcel.readLong();
-    localToService.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localToService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
-    return localToService;
-  }
+  acgo(acgn paramacgn, acfw paramacfw, String paramString, String[] paramArrayOfString, aady paramaady) {}
   
-  public ToService[] a(int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    return new ToService[paramInt];
+    String str1 = paramBundle.getString("phone");
+    String str2 = paramBundle.getString("name");
+    String str3 = paramBundle.getString("city");
+    String str4 = paramBundle.getString("area");
+    paramBundle = new JSONObject();
+    try
+    {
+      paramBundle.put("phone", str1);
+      paramBundle.put("name", str2);
+      paramBundle.put("city", str3);
+      paramBundle.put("area", str4);
+      paramBundle = paramBundle.toString();
+      acho.a("GdtGetUserInfoHandler", "handleJsCallRequest() called with: webPlugin = [" + this.jdField_a_of_type_Acfw + "], callback = [" + this.jdField_a_of_type_JavaLangString + "], args = [" + this.jdField_a_of_type_ArrayOfJavaLangString + "], result = [" + paramBundle + "]");
+      this.jdField_a_of_type_Acfw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      this.jdField_a_of_type_Aady.b();
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        acho.d("GdtGetUserInfoHandler", localException.toString());
+      }
+    }
   }
 }
 

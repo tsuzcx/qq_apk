@@ -1,25 +1,32 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class psj
-  extends AnimatorListenerAdapter
+  implements pnq
 {
   psj(psf parampsf) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    psf.a(this.a).setLayerType(0, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+    sxh localsxh = (sxh)paramView.getTag();
+    BaseArticleInfo localBaseArticleInfo = psf.a(this.a).a(localsxh.jdField_a_of_type_Int);
+    if (localBaseArticleInfo == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJVideoHandleClick", 2, "articleInfo == null, ERROR");
+      }
+      return;
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
+    if ((psf.a(this.a).a().a() != null) && (psf.a(this.a).a().a().b()))
+    {
+      psf.a(this.a).a().a().a();
+      psf.a(this.a).a().f(true);
+    }
+    psf.a(this.a).a().a().a(localsxh.g, localsxh.jdField_a_of_type_Int);
+    psf.a(this.a).a().a().a(psf.a(this.a).a().a());
+    psf.a(this.a).a().a().a(localBaseArticleInfo, prz.a(localsxh.jdField_a_of_type_Spk, localBaseArticleInfo, psf.a(this.a).a().a(), psf.a(this.a)), psf.a(this.a).a().a(), new psk(this, localBaseArticleInfo), psf.a(this.a).a().b());
+    qdc.a(paramView);
   }
 }
 

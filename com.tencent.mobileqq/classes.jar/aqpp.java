@@ -1,43 +1,18 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.util.LruCache;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
-public class aqpp<T>
+class aqpp
+  implements aqpj
 {
-  private LruCache<String, T> a = new aqpq(this, (int)Runtime.getRuntime().maxMemory() / 32);
+  aqpp(aqpl paramaqpl) {}
   
-  private static int a(Bitmap paramBitmap)
+  public void a(View paramView)
   {
-    if (paramBitmap == null) {
-      return 0;
-    }
-    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
-  }
-  
-  private int b(T paramT)
-  {
-    if ((paramT instanceof Bitmap)) {
-      return a((Bitmap)paramT);
-    }
-    if ((paramT instanceof BitmapDrawable)) {
-      return a(((BitmapDrawable)paramT).getBitmap());
-    }
-    return 0;
-  }
-  
-  protected int a(T paramT)
-  {
-    return 0;
-  }
-  
-  public void a(int paramInt)
-  {
-    try
-    {
-      this.a.trimToSize(paramInt);
-      return;
-    }
-    finally {}
+    aqpl.a(this.a, aqpl.a(this.a).inflate());
+    aqpl.a(this.a).setOnClickListener(new aqpq(this));
+    ((TextView)aqpl.a(this.a).findViewById(2131365665)).setOnClickListener(new aqpr(this));
+    bdla.b(null, "dc00898", "", "", "0X800A8AD", "0X800A8AD", 0, 0, "", "", "", "");
   }
 }
 

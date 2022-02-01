@@ -1,9 +1,10 @@
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
-
-final class lbd
-  implements IHttpCommunicatorFlowCount
+public class lbd
+  extends ncl
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  static
+  {
+    a(new lbe());
+  }
 }
 
 

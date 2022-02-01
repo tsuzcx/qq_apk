@@ -1,13 +1,11 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
 
-final class pva
-  extends CharacterStyle
+public class pva
+  extends bmig
 {
-  public void updateDrawState(TextPaint paramTextPaint)
+  protected void a(String paramString)
   {
-    paramTextPaint.setColor(Color.parseColor("#FF3DB8FF"));
+    TaskManager.getInstance().accept(paramString);
   }
 }
 

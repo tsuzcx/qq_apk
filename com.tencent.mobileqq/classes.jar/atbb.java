@@ -1,21 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
-final class atbb
-  implements aszj
+public class atbb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  atbb(Context paramContext, String paramString) {}
+  public atbb(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void onNo() {}
-  
-  public void onYes()
+  public void onGlobalLayout()
   {
-    LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidContentContext, null, this.jdField_a_of_type_JavaLangString, false);
+    this.a.ao_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbb
  * JD-Core Version:    0.7.0.1
  */

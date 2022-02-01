@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.inputstatus;
 
-import aull;
+import avrg;
 
 public class InputStatusHelper$2
   implements Runnable
 {
-  public InputStatusHelper$2(aull paramaull) {}
+  public InputStatusHelper$2(avrg paramavrg) {}
   
   public void run()
   {
-    aull.a(this.this$0, 3);
+    avrg.a(this.this$0, 3);
   }
 }
 

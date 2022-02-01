@@ -1,6 +1,10 @@
+import android.graphics.Bitmap;
+
 public abstract interface xro
 {
-  public abstract void a();
+  public abstract void a(String paramString, Bitmap paramBitmap);
+  
+  public abstract void a(String paramString, Throwable paramThrowable);
 }
 
 

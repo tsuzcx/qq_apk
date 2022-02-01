@@ -1,20 +1,6 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-
 public class rzb
-  extends rsd
-{
-  private VideoInfo a;
-  
-  public VideoInfo a()
-  {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    return this.a.g;
-  }
-}
+  extends pvq
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

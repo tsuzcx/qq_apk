@@ -1,19 +1,56 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-class ahtw
-  extends GridLayoutManager.SpanSizeLookup
+public abstract class ahtw
+  extends Binder
+  implements ahtv
 {
-  ahtw(ahtv paramahtv) {}
-  
-  public int getSpanSize(int paramInt)
+  public ahtw()
   {
-    switch (this.a.getItemViewType(paramInt))
-    {
-    case 1: 
-    default: 
-      return 1;
+    attachInterface(this, "com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+  }
+  
+  public static ahtv a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    return 3;
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+    if ((localIInterface != null) && ((localIInterface instanceof ahtv))) {
+      return (ahtv)localIInterface;
+    }
+    return new ahtx(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      a((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      b((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+    c((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+    return true;
   }
 }
 

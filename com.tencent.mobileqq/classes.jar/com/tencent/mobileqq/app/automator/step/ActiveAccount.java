@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aiku;
+import ajfq;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.SystemClock;
-import atdm;
-import bbko;
-import bcad;
-import bcqk;
-import bhab;
+import auht;
+import bcrg;
+import bdgy;
+import bdxj;
+import bikt;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -21,7 +22,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
-import nmy;
+import nty;
 
 public class ActiveAccount
   extends AsyncStep
@@ -32,7 +33,7 @@ public class ActiveAccount
       QLog.d("QQInitHandler", 2, "onInitState: " + this.a.app.getAccount());
     }
     this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("startService", Long.valueOf(SystemClock.uptimeMillis() - bcad.i));
+    this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("startService", Long.valueOf(SystemClock.uptimeMillis() - bdgy.i));
     this.a.jdField_a_of_type_AndroidContentSharedPreferences = this.a.app.getApp().getSharedPreferences("acc_info" + this.a.app.getAccount(), 0);
     localObject = this.a.app;
     ThemeUtil.initTheme((QQAppInterface)localObject);
@@ -58,26 +59,26 @@ public class ActiveAccount
         }
       }
     }
-    bcqk.a((QQAppInterface)localObject);
+    bdxj.a((QQAppInterface)localObject);
     ((QQAppInterface)localObject).initFaceSettingCache();
-    atdm.a().b();
+    auht.a().b();
     UnifiedMonitor.a().a();
     OpenApiManager.getInstance().onRuntimeActive((QQAppInterface)localObject);
-    if (aiku.a(((QQAppInterface)localObject).getCurrentAccountUin()))
+    if (ajfq.a(((QQAppInterface)localObject).getCurrentAccountUin()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "addSystemMsgSeq:0");
       }
       ((QQAppInterface)localObject).getMsgCache().e("last_group_seq", 0L);
       ((QQAppInterface)localObject).getMsgCache().e("last_group_suspicious_seq", 0L);
-      aiku.a(((QQAppInterface)localObject).getCurrentAccountUin(), false);
+      ajfq.a(((QQAppInterface)localObject).getCurrentAccountUin(), false);
       ((QQAppInterface)localObject).getMsgCache().e("last_friend_seq_47", 0L);
     }
-    if (nmy.a != null) {
-      nmy.a().a();
+    if (nty.a != null) {
+      nty.a().a();
     }
-    if ((((QQAppInterface)localObject).getBusinessHandler(107) instanceof bhab)) {
-      ((bhab)((QQAppInterface)localObject).getBusinessHandler(107)).a();
+    if ((((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER) instanceof bikt)) {
+      ((bikt)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a();
     }
     localObject = new File(AppConstants.SDCARD_PATH);
     if (!FileUtils.fileExists(AppConstants.SDCARD_PATH)) {

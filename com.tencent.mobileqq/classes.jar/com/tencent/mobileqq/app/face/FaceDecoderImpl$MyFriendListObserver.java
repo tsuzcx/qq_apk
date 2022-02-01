@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.face;
 
-import amsu;
+import anvi;
 
 class FaceDecoderImpl$MyFriendListObserver
-  extends amsu
+  extends anvi
 {
   private FaceDecoderImpl$MyFriendListObserver(FaceDecoderImpl paramFaceDecoderImpl) {}
   

@@ -1,67 +1,55 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class mri
 {
-  public static Drawable a(Resources paramResources, int paramInt)
+  public long a;
+  public VideoAppInterface a;
+  public WeakReference<mqb> b;
+  public final String i = "AVRedBag_" + getClass().getSimpleName() + "_" + this.jdField_a_of_type_Long;
+  
+  mri(mqb parammqb)
   {
-    return a(paramResources, paramInt, 2131166018, true, 2130842008, 2131166021, null);
+    this.jdField_a_of_type_Long = AudioHelper.b();
+    this.b = new WeakReference(parammqb);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = parammqb.a();
   }
   
-  private static Drawable a(Resources paramResources, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4, Drawable paramDrawable)
+  public AVActivity a()
   {
-    Drawable localDrawable = paramResources.getDrawable(paramInt1);
-    Object localObject;
-    if (paramBoolean)
-    {
-      localObject = mtz.a(paramResources, paramInt1, paramInt2);
-      ((Drawable)localObject).setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      localDrawable = paramResources.getDrawable(paramInt3);
-      paramResources = mtz.a(paramResources, paramInt3, paramInt4);
-      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      if (paramDrawable != null) {
-        break label138;
-      }
-      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject });
-      paramResources.setLayerInset(0, 0, 0, 0, 0);
-      paramResources.setLayerInset(1, 0, 0, 0, 0);
+    mqb localmqb = (mqb)this.b.get();
+    if (localmqb != null) {
+      return localmqb.a();
     }
-    for (;;)
-    {
-      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      return paramResources;
-      localObject = localDrawable;
-      break;
-      label138:
-      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject, paramDrawable });
-      paramResources.setLayerInset(0, 0, 0, 0, 0);
-      paramResources.setLayerInset(1, 0, 0, 0, 0);
-      paramResources.setLayerInset(2, 0, 0, 0, 0);
+    return null;
+  }
+  
+  public mqb a()
+  {
+    mqb localmqb = (mqb)this.b.get();
+    if (localmqb == null) {
+      QLog.d(this.i, 1, "getRedBagMgr[" + getClass().getName() + "] is null");
     }
+    return localmqb;
   }
   
-  public static Drawable a(Resources paramResources, int paramInt, Drawable paramDrawable, boolean paramBoolean)
+  protected void finalize()
   {
-    return a(paramResources, paramInt, 2131166018, paramBoolean, 2130842008, 2131166021, paramDrawable);
+    QLog.d(this.i, 1, "finalize, " + toString());
+    super.finalize();
   }
   
-  public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
+  public String toString()
   {
-    return a(paramResources, paramInt, 2131166018, paramBoolean, 2130842008, 2131166021, null);
-  }
-  
-  public static Drawable b(Resources paramResources, int paramInt)
-  {
-    Drawable localDrawable = paramResources.getDrawable(paramInt);
-    paramResources = mtz.a(paramResources, paramInt, 2131166018);
-    paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    return paramResources;
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mri
  * JD-Core Version:    0.7.0.1
  */

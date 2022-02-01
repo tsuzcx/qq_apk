@@ -1,45 +1,32 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.SystemClock;
-import com.tencent.smtt.sdk.WebView;
-import java.io.File;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class biat
+  implements biae
 {
-  protected static Lock a = new ReentrantLock();
+  public biat(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
   
-  public static void a(Context paramContext)
+  public void a(Intent paramIntent, boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    SharedPreferences.Editor localEditor = paramContext.getSharedPreferences("appcenter_app_report", 0).edit();
-    localEditor.putLong("app_last_fullReport_success_time", SystemClock.currentThreadTimeMillis());
-    localEditor.putBoolean("is_app_last_fullReport_success", true);
-    localEditor.putBoolean("is_incremental_report_overflow", false);
-    localEditor.commit();
-    if (new File(paramContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists())
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel())
     {
-      a.lock();
-      paramContext.deleteFile("appcenter_app_report_storage_file.txt");
-      a.unlock();
+      localStringBuilder = new StringBuilder().append("lockLH uin=").append(paramString1).append(",suc=").append(paramBoolean).append(",lhsig=");
+      if (paramArrayOfByte == null) {
+        break label89;
+      }
     }
-  }
-  
-  public static void a(Context paramContext, String paramString1, int paramInt, String paramString2, WebView paramWebView, String paramString3) {}
-  
-  public static void a(Context paramContext, String paramString1, WebView paramWebView, String paramString2, boolean paramBoolean) {}
-  
-  public static void b(Context paramContext)
-  {
-    SharedPreferences.Editor localEditor = paramContext.getSharedPreferences("appcenter_app_report", 0).edit();
-    localEditor.putBoolean("is_app_last_fullReport_success", false);
-    localEditor.commit();
-    if (new File(paramContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists())
+    label89:
+    for (String str = SecUtil.toHexString(paramArrayOfByte);; str = "null")
     {
-      a.lock();
-      paramContext.deleteFile("appcenter_app_report_storage_file.txt");
-      a.unlock();
+      QLog.i("LiangHaoBuyFragment", 4, str);
+      ThreadManagerV2.getUIHandlerV2().post(new LiangHaoBuyFragment.3.1(this, paramBoolean, paramIntent, paramString1, paramArrayOfByte, paramString2));
+      return;
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import amfw;
+import anhe;
 
 class ApolloJsPlugin$1
   implements Runnable
@@ -9,7 +9,7 @@ class ApolloJsPlugin$1
   
   public void run()
   {
-    this.this$0.mInterceptor = amfw.a(false, this.val$innerUrl);
+    this.this$0.mInterceptor = anhe.a(false, this.val$innerUrl);
     ApolloJsPlugin.access$002(this.this$0, false);
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bgwn;
-import bgwq;
+import bihf;
+import bihi;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SwiftBrowserOfflineHandler$3
   implements Runnable
 {
-  public SwiftBrowserOfflineHandler$3(bgwn parambgwn) {}
+  public SwiftBrowserOfflineHandler$3(bihf parambihf) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class SwiftBrowserOfflineHandler$3
     }
     Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((bgwq)localIterator.next()).onCheckOfflineFinish(this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      ((bihi)localIterator.next()).onCheckOfflineFinish(this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
   }

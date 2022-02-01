@@ -1,109 +1,35 @@
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.view.Surface;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-@TargetApi(14)
-public class boek
-  implements SurfaceTexture.OnFrameAvailableListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Ldov/com/qq/im/aeeditor/view/reorder/ReorderViewIdManager;", "", "()V", "INVALID_ID", "", "ids", "", "", "clear", "", "get", "key", "put", "id", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class boek
 {
-  SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  public Surface a;
-  boel jdField_a_of_type_Boel;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-  boolean jdField_a_of_type_Boolean;
+  public static final boek a;
+  private static final Map<String, Integer> a;
   
-  public boek()
+  static
   {
-    a();
+    jdField_a_of_type_Boek = new boek();
+    jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
   }
   
-  void a()
+  public final int a(@NotNull String paramString)
   {
-    this.jdField_a_of_type_Boel = new boel();
-    this.jdField_a_of_type_Boel.a();
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Boel.a());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    this.jdField_a_of_type_Boel.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null)
-    {
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext().equals(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-      }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+    Intrinsics.checkParameterIsNotNull(paramString, "key");
+    paramString = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {
+      return paramString.intValue();
     }
-    this.jdField_a_of_type_AndroidViewSurface.release();
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = null;
-    this.jdField_a_of_type_Boel = null;
-    this.jdField_a_of_type_AndroidViewSurface = null;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+    return -1;
   }
   
-  @SuppressLint({"NewApi"})
-  public void c()
+  public final void a(@NotNull String paramString, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      for (;;)
-      {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {
-          try
-          {
-            this.jdField_a_of_type_JavaLangObject.wait(5000L);
-            if (!this.jdField_a_of_type_Boolean) {
-              throw new RuntimeException("Surface frame wait timed out");
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            Thread.currentThread().interrupt();
-          }
-        }
-      }
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Boel.a("before updateTexImage");
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Boel.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-  }
-  
-  public void onFrameAvailable(SurfaceTexture arg1)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
+    Intrinsics.checkParameterIsNotNull(paramString, "key");
+    jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(paramInt));
   }
 }
 

@@ -1,8 +1,23 @@
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
-
-public abstract interface aozs
+public class aozs
 {
-  public abstract void a(SdCardImageAnimView paramSdCardImageAnimView);
+  public long a;
+  public String a;
+  public long b = -1L;
+  public long c = -1L;
+  
+  public aozs(long paramLong)
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = Long.toString(paramLong);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Long = -1L;
+    this.c = -1L;
+    this.b = -1L;
+  }
 }
 
 

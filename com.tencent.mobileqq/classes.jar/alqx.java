@@ -1,10 +1,18 @@
-public abstract interface alqx
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class alqx
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void onNotifyLongTouch(String paramString);
+  public alqx(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public abstract void onNotifyStatusChanged(int paramInt, String paramString);
-  
-  public abstract void onSurfaceReady(int paramInt1, int paramInt2);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    NewFlowCameraActivity.a(this.a, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

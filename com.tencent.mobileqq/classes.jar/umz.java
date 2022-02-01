@@ -1,69 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-public class umz
-  extends aptq<umy>
+class umz
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  @NonNull
-  public umy a(int paramInt)
-  {
-    return new umy();
-  }
+  umz(umy paramumy, GradientDrawable paramGradientDrawable) {}
   
-  @Nullable
-  public umy a(aptx[] paramArrayOfaptx)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
-    {
-      uya.d("WeSeeConfigProcessor", "onParsed:" + paramArrayOfaptx[0].a);
-      umy localumy = new umy();
-      localumy.a(paramArrayOfaptx[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WeSeeConfigProcessor", 0, "onParsed " + paramArrayOfaptx[0].a);
-      }
-      return localumy;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    int j = (int)AIOUtils.px2dp(i, this.jdField_a_of_type_Umy.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_a_of_type_Umy.jdField_a_of_type_AndroidWidgetTextView.setTranslationY(i);
+    float f = (-j - 29) * 64 / 30.0F;
+    j = (int)(255.0F - (-j - 29) * 127 / 30.0F);
+    i = j;
+    if (j > 255) {
+      i = 255;
     }
-    return null;
-  }
-  
-  public void a(umy paramumy)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeSeeConfigProcessor", 0, "onUpdate " + paramumy);
-    }
-  }
-  
-  public Class<umy> clazz()
-  {
-    return umy.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 447;
+    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.argb((int)(102.0F - f), 0, 0, 0));
+    this.jdField_a_of_type_Umy.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable);
+    this.jdField_a_of_type_Umy.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.argb(i, 255, 255, 255));
   }
 }
 

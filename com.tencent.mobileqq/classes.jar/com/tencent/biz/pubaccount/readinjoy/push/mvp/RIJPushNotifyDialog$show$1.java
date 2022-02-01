@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.push.mvp;
 
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function3;
-import qop;
-import qor;
+import rau;
+import raw;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class RIJPushNotifyDialog$show$1
   implements Runnable
 {
-  public RIJPushNotifyDialog$show$1(qor paramqor) {}
+  public RIJPushNotifyDialog$show$1(raw paramraw) {}
   
   public final void run()
   {
-    qor.a(this.this$0).a().invoke(Boolean.valueOf(false), Boolean.valueOf(qor.a(this.this$0)), Integer.valueOf(0));
+    raw.a(this.this$0).a().invoke(Boolean.valueOf(false), Boolean.valueOf(raw.a(this.this$0)), Integer.valueOf(0));
     this.this$0.b(true);
   }
 }

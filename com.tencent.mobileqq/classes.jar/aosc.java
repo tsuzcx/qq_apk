@@ -1,33 +1,51 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.manager.TicketManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.theme.SkinnableBitmapDrawable;
 
 public class aosc
-  implements aosj
+  extends aosi
 {
-  public EIPCResult a(Bundle paramBundle)
+  protected aosc(QQAppInterface paramQQAppInterface, aosm paramaosm)
   {
-    Object localObject = aori.a();
-    if (localObject == null)
-    {
-      QLog.e("ArkApp.GetPSKeyHandler", 1, "GetPSKeyHandler.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
+    super(paramQQAppInterface, paramaosm);
+  }
+  
+  public int a(QQMessageFacade.Message paramMessage)
+  {
+    return -113;
+  }
+  
+  public aosm a(QQMessageFacade.Message paramMessage)
+  {
+    Object localObject = a() + ": ";
+    this.jdField_a_of_type_Aosm.b((String)localObject);
+    this.jdField_a_of_type_Aosm.d(c());
+    a();
+    a(paramMessage, this.jdField_a_of_type_Aosm);
+    if (!pkh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage)) {
+      return null;
     }
-    paramBundle = paramBundle.getString("Domain", "");
-    localObject = ((TicketManager)((QQAppInterface)localObject).getManager(2)).getPskey(((QQAppInterface)localObject).getCurrentAccountUin(), paramBundle);
-    Bundle localBundle = new Bundle();
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      QLog.e("ArkApp.GetPSKeyHandler", 1, "GetPSKeyHandler.onCall, pskey is empty, domain=" + paramBundle);
-      localBundle.putString("PSKey", "");
+    localObject = this.jdField_a_of_type_Aosm.a();
+    pkh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade(), paramMessage, (Intent)localObject);
+    paramMessage = bheg.e();
+    Drawable localDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130842738);
+    if ((localDrawable instanceof BitmapDrawable)) {
+      paramMessage = ((BitmapDrawable)localDrawable).getBitmap();
     }
     for (;;)
     {
-      return EIPCResult.createResult(0, localBundle);
-      localBundle.putString("PSKey", (String)localObject);
+      this.jdField_a_of_type_Aosm.a((Intent)localObject);
+      this.jdField_a_of_type_Aosm.a(paramMessage);
+      return this.jdField_a_of_type_Aosm;
+      if ((localDrawable instanceof SkinnableBitmapDrawable)) {
+        paramMessage = ((SkinnableBitmapDrawable)localDrawable).getBitmap();
+      }
     }
   }
 }

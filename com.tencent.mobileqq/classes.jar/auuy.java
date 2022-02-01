@@ -1,17 +1,25 @@
-import android.support.v4.util.ArraySet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardStructingMsgOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class auuy
-  implements apcu
+public class auuy
+  implements View.OnClickListener
 {
-  auuy(auux paramauux, String paramString) {}
+  public auuy(ForwardStructingMsgOption paramForwardStructingMsgOption, boolean paramBoolean, String paramString, long paramLong) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (auux.a(this.jdField_a_of_type_Auux) != null) {
-      auux.a(this.jdField_a_of_type_Auux).remove(Integer.valueOf(paramInt1));
+    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption.a == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption.a.hideSoftInputFromWindow();
+      ForwardStructingMsgOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption.F();
     }
-    apdi.a().a(paramInt1);
-    this.jdField_a_of_type_Auux.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"openresult\":" + paramInt2 + "}" });
   }
 }
 

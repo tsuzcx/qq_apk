@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class axqs
-  implements View.OnClickListener
+public class axqs
 {
-  axqs(axqp paramaxqp, axre paramaxre) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Axre.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public static boolean a;
 }
 
 

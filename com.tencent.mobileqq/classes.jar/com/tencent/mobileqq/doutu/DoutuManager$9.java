@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu;
 
-import aqwg;
+import asaa;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -9,7 +9,7 @@ import java.util.List;
 public class DoutuManager$9
   implements Runnable
 {
-  public DoutuManager$9(aqwg paramaqwg, List paramList) {}
+  public DoutuManager$9(asaa paramasaa, List paramList) {}
   
   public void run()
   {
@@ -17,14 +17,14 @@ public class DoutuManager$9
     {
       synchronized (this.this$0)
       {
-        if (aqwg.a(this.this$0) != null)
+        if (asaa.a(this.this$0) != null)
         {
-          aqwg.a(this.this$0).drop(DoutuData.class);
+          asaa.a(this.this$0).drop(DoutuData.class);
           Iterator localIterator = this.a.iterator();
           if (localIterator.hasNext())
           {
             DoutuData localDoutuData = (DoutuData)localIterator.next();
-            aqwg.a(this.this$0).persistOrReplace(localDoutuData);
+            asaa.a(this.this$0).persistOrReplace(localDoutuData);
           }
         }
       }
@@ -38,7 +38,7 @@ public class DoutuManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuManager.9
  * JD-Core Version:    0.7.0.1
  */

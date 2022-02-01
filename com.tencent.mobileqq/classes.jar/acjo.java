@@ -1,6 +1,31 @@
-public abstract interface acjo
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.ad.tangram.canvas.views.form.AdFormError;
+import com.tencent.ad.tangram.canvas.views.xijing.AdTextData;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
+
+public class acjo
+  implements View.OnFocusChangeListener
 {
-  public abstract void a(String paramString);
+  public acjo(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
+  {
+    if ((this.a.a() == null) || (!this.a.a().isValid()))
+    {
+      acho.b("GdtFormItemTextBoxView", "onFocusChange error");
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramView = new AdFormError(2, -1, this.a.a().title.text);
+      paramView.index = GdtFormItemTextBoxView.a(this.a);
+      GdtFormItemTextBoxView.a(this.a, paramView);
+      return;
+    }
+    GdtFormItemTextBoxView.a(this.a);
+  }
 }
 
 

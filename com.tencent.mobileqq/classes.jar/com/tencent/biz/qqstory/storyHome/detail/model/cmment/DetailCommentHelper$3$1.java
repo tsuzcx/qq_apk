@@ -1,23 +1,23 @@
 package com.tencent.biz.qqstory.storyHome.detail.model.cmment;
 
 import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import xgj;
-import xhw;
-import xhz;
+import xve;
+import xwr;
+import xwu;
 
 public class DetailCommentHelper$3$1
   implements Runnable
 {
-  public DetailCommentHelper$3$1(xhz paramxhz) {}
+  public DetailCommentHelper$3$1(xwu paramxwu) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(xhw.a(this.a.a), xhw.a(this.a.a), this.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, xhw.a(this.a.a).a);
-    xhw localxhw = this.a.a;
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(xwr.a(this.a.a), xwr.a(this.a.a), this.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, xwr.a(this.a.a).a);
+    xwr localxwr = this.a.a;
     if (this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
     for (boolean bool = true;; bool = false)
     {
-      xhw.a(localxhw, bool);
+      xwr.a(localxwr, bool);
       return;
     }
   }

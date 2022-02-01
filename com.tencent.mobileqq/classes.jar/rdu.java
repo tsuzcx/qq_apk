@@ -1,52 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class rdu
-  implements Parcelable.Creator<RecommendFollowInfo>
+class rdu
+  implements View.OnClickListener
 {
-  public RecommendFollowInfo a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    RecommendFollowInfo localRecommendFollowInfo = new RecommendFollowInfo();
-    localRecommendFollowInfo.uin = paramParcel.readLong();
-    localRecommendFollowInfo.type = paramParcel.readInt();
-    localRecommendFollowInfo.recommendReason = paramParcel.readString();
-    localRecommendFollowInfo.nickName = paramParcel.readString();
-    localRecommendFollowInfo.headUrl = paramParcel.readString();
-    if (paramParcel.readInt() == 1)
-    {
-      bool1 = true;
-      localRecommendFollowInfo.isVip = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label139;
-      }
-      bool1 = true;
-      label82:
-      localRecommendFollowInfo.isStar = bool1;
-      localRecommendFollowInfo.algorithmId = paramParcel.readLong();
-      localRecommendFollowInfo.strategyId = paramParcel.readInt();
-      if (paramParcel.readInt() != 1) {
-        break label144;
-      }
-    }
-    label139:
-    label144:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localRecommendFollowInfo.isFollowed = bool1;
-      localRecommendFollowInfo.className = paramParcel.readString();
-      return localRecommendFollowInfo;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label82;
-    }
-  }
+  rdu(rdt paramrdt) {}
   
-  public RecommendFollowInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new RecommendFollowInfo[paramInt];
+    pnw localpnw = this.a.jdField_a_of_type_Szd.a().a();
+    if (localpnw != null) {
+      localpnw.a(null, ((qfw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

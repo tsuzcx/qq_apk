@@ -1,22 +1,39 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class ajxs
-  implements OnCompositionLoadedListener
+  extends aoec
 {
-  public ajxs(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public ajxs(Conversation paramConversation) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void a(List<String> paramList)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    TroopUnAccalimedRedPacketList.a(this.a).setImageDrawable(localLottieDrawable);
+    aoxz localaoxz;
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      localaoxz = this.a.a.getRecentUserProxy();
+      if (localaoxz != null) {
+        break label37;
+      }
+      QLog.d("Q.recent", 1, "onBatchDelete, proxy == null");
+    }
+    for (;;)
+    {
+      return;
+      label37:
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        RecentUser localRecentUser = (RecentUser)localaoxz.findRecentUserByUin((String)paramList.next(), 0);
+        if (localRecentUser != null) {
+          localaoxz.delRecentUser(localRecentUser);
+        }
+      }
+    }
   }
 }
 

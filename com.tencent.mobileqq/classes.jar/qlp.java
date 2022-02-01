@@ -1,24 +1,41 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class qlp
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<Long> a;
-  public qlq a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
-  
-  public String toString()
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    return "channelID:" + this.jdField_a_of_type_Int + " channelType:" + this.jdField_b_of_type_Int + " upDateTimes：" + this.jdField_c_of_type_Int + " beginRecommendSeq：" + this.jdField_a_of_type_Long + " endRecommendSeq：" + this.jdField_b_of_type_Long + " beginCollectionID:" + this.jdField_c_of_type_Long + " endCollectionID:" + this.d + "   subscriptionArticleList:" + this.jdField_a_of_type_JavaUtilList + " innerMsg:" + this.jdField_a_of_type_Qlq;
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    String str;
+    if (paramBaseArticleInfo.mSinglePicture != null)
+    {
+      str = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_small_imge_url", str);
+      localJSONObject1.put("id_article_small_imge", localJSONObject2);
+      qmm.a(paramBaseArticleInfo, localJSONObject1, true);
+      uks.e(paramBaseArticleInfo, localJSONObject1);
+      qmm.d(paramBaseArticleInfo, localJSONObject1);
+      qmm.g(paramBaseArticleInfo, localJSONObject1);
+      qmm.n(paramBaseArticleInfo, localJSONObject1);
+      qmm.i(paramBaseArticleInfo, localJSONObject1);
+      qmm.ab(paramBaseArticleInfo, localJSONObject1);
+      if (!ois.a(paramBaseArticleInfo)) {
+        break label125;
+      }
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_location_cell");
+    }
+    for (;;)
+    {
+      localJSONObject1.put("id_small_cell_container", new JSONObject());
+      qmm.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
+      str = null;
+      break;
+      label125:
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_cell");
+    }
   }
 }
 

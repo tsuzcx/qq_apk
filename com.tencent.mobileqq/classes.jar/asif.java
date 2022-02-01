@@ -1,20 +1,25 @@
-public abstract interface asif
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import mqq.util.WeakReference;
+
+class asif
+  extends VasQuickUpdateManager.CallBacker
 {
-  public abstract String a();
+  asif(asie paramasie) {}
   
-  public abstract void a(asid paramasid);
-  
-  public abstract void a(asie paramasie);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  {
+    paramString2 = (QQAppInterface)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (paramString2 == null) {}
+    while (!"emoji_app_vip_emoji_aio_android_config.json".equals(paramString1)) {
+      return;
+    }
+    ((VasQuickUpdateManager)paramString2.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER)).removeCallBacker(this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+    paramString1 = VasQuickUpdateManager.getJSONFromLocal(paramString2, "emoji_app_vip_emoji_aio_android_config.json", false, null);
+    this.a.a(paramString1);
+  }
 }
 
 

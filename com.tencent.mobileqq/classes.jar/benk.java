@@ -1,312 +1,288 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import android.view.ViewGroup;
+import android.view.ActionMode.Callback;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.widget.XEditTextEx;
 
 public class benk
-  extends RecyclerView.Adapter
+  implements agin, agja
 {
-  int jdField_a_of_type_Int = 0;
-  public beom a;
-  private ArrayList<beno> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ActionMode.Callback jdField_a_of_type_AndroidViewActionMode$Callback;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public benk(SparseArray<beok> paramSparseArray)
+  public benk(agih paramagih, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_Beom = new beom();
-    this.jdField_a_of_type_Beom.a(paramSparseArray);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.app;
+    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.mContext;
+    paramagih.a(this);
   }
   
-  public int a()
+  private String a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public beno a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-        return (beno)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      }
-      QLog.e("XMediaEditor", 2, "getEditItemInfo index out of bound, index:" + paramInt + ", mItemList.size():" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    String str2 = "";
+    String str1;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {
+      str1 = str2;
     }
-    return null;
-  }
-  
-  public String a()
-  {
-    JSONArray localJSONArray = new JSONArray();
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    for (;;)
     {
-      beno localbeno = (beno)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localbeno.b() == -1) {}
-      for (;;)
+      if (TextUtils.isEmpty(str1)) {}
+      return str1;
+      str1 = str2;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo != null)
       {
-        i += 1;
-        break;
-        localJSONArray.put(localbeno.a());
+        str1 = str2;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin != null) {
+          str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin;
+        }
       }
     }
-    return localJSONArray.toString();
   }
   
-  public ArrayList<beny> a()
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, BaseChatPie paramBaseChatPie, String paramString1, String paramString2, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      beno localbeno = (beno)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (((localbeno instanceof beny)) && (((beny)localbeno).g != 3)) {
-        localArrayList.add((beny)localbeno);
-      }
-      i += 1;
+    if (!a(paramContext)) {}
+    while (TextUtils.isEmpty(paramString1)) {
+      return;
     }
-    return localArrayList;
+    if (QLog.isColorLevel()) {
+      QLog.d("WriteTogetherHelper", 2, "[Launch Editor] - Click WT message. docId: " + paramString1);
+    }
+    paramQQAppInterface = new Bundle();
+    paramQQAppInterface.putString("KEY_CANCEL_OR_BACK", "VALUE_BACK");
+    OpenDocParam localOpenDocParam = new OpenDocParam();
+    localOpenDocParam.jdField_f_of_type_Int = paramInt;
+    localOpenDocParam.k = paramString2;
+    localOpenDocParam.jdField_f_of_type_JavaLangString = paramString1;
+    localOpenDocParam.g = 0;
+    paramQQAppInterface.putParcelable("KEY_LAUNCH_EDITOR_PARAM", localOpenDocParam);
+    if ((paramContext instanceof Activity))
+    {
+      WriteTogetherEditorFragment.a((Activity)paramContext, WriteTogetherEditorFragment.class, paramQQAppInterface, 18005);
+      return;
+    }
+    if ((paramBaseChatPie != null) && ((paramBaseChatPie.mActivity instanceof Activity)))
+    {
+      WriteTogetherEditorFragment.a(paramBaseChatPie.mActivity, WriteTogetherEditorFragment.class, paramQQAppInterface, 18005);
+      return;
+    }
+    WriteTogetherEditorFragment.a(paramContext, WriteTogetherEditorFragment.class, paramQQAppInterface);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, int paramInt)
+  {
+    a(paramQQAppInterface, paramContext, null, paramString1, paramString2, paramInt);
+  }
+  
+  private static boolean a(Context paramContext)
+  {
+    boolean bool = NetworkUtil.isNetworkAvailable(paramContext);
+    if (!bool) {
+      QQToast.a(paramContext, 2131720169, 0).a();
+    }
+    return bool;
+  }
+  
+  private static boolean a(Context paramContext, String paramString)
+  {
+    boolean bool = nty.a().a(paramString);
+    if (bool) {
+      QQToast.a(paramContext, 2131720150, 0).a();
+    }
+    return bool;
+  }
+  
+  private static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  {
+    boolean bool = a(paramQQAppInterface, paramString);
+    if (bool) {
+      QQToast.a(paramContext, 2131720160, 0).a();
+    }
+    return bool;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return ((bgkf)paramQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramString, true).a;
+  }
+  
+  private boolean b()
+  {
+    Object localObject = a();
+    localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a((String)localObject, true);
+    return (localObject != null) && (((TroopInfo)localObject).exitTroopReason == 0);
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_AndroidViewActionMode$Callback != null) {}
+    while (Build.VERSION.SDK_INT < 23) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewActionMode$Callback = new benl(this);
+  }
+  
+  private void d()
+  {
+    ChatXListView localChatXListView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.listView;
+    localChatXListView.setSelectionFromBottom(localChatXListView.getCount() - 1, 0);
+  }
+  
+  public ActionMode.Callback a()
+  {
+    c();
+    return this.jdField_a_of_type_AndroidViewActionMode$Callback;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Beom.a();
+    c();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, beno parambeno)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      this.jdField_a_of_type_Beom.a(parambeno);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, parambeno);
+    if (paramInt == 0) {
+      a();
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    beno localbeno = a(paramInt);
-    if (localbeno != null)
-    {
-      localbeno.a(paramString);
-      notifyItemChanged(paramInt);
-      this.jdField_a_of_type_Beom.b(localbeno);
-    }
-  }
-  
-  public void a(beno parambeno)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      this.jdField_a_of_type_Beom.a(parambeno);
-      this.jdField_a_of_type_JavaUtilArrayList.add(parambeno);
-    }
-  }
-  
-  public void a(ArrayList<beny> paramArrayList)
-  {
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      beny localbeny = (beny)paramArrayList.get(i);
-      this.jdField_a_of_type_Beom.a(localbeny);
-      i += 1;
-    }
-  }
-  
-  public void a(JSONArray paramJSONArray)
-  {
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      try
-      {
-        if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-        {
-          this.jdField_a_of_type_Beom.c((beno)this.jdField_a_of_type_JavaUtilArrayList.get(i));
-          i += 1;
-          continue;
-        }
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        i = 0;
-        if (i < paramJSONArray.length())
-        {
-          localObject = benp.a(paramJSONArray.getJSONObject(i));
-          if (localObject == null) {
-            break label252;
-          }
-          a((beno)localObject);
-          break label252;
-        }
-        j = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-        i = 0;
-        paramJSONArray = null;
-        if (j < 0) {
-          break label244;
-        }
-        Object localObject = (beno)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-        if (!(localObject instanceof benx)) {
-          break label271;
-        }
-        if (paramJSONArray != null) {
-          break label249;
-        }
-        paramJSONArray = (benx)localObject;
-        if (i == 0) {
-          break label266;
-        }
-        benx localbenx = (benx)this.jdField_a_of_type_JavaUtilArrayList.get(j + 1);
-        localObject = (benx)localObject;
-        if (TextUtils.isEmpty(localbenx.a))
-        {
-          b(j + 1);
-          break;
-        }
-        if (TextUtils.isEmpty(((benx)localObject).a))
-        {
-          ((benx)localObject).a = localbenx.a;
-          continue;
-        }
-        ((benx)localObject).a = (((benx)localObject).a + "\n" + localbenx.a);
-      }
-      catch (JSONException paramJSONArray)
-      {
-        paramJSONArray.printStackTrace();
-        return;
-      }
-      continue;
-      label244:
-      notifyDataSetChanged();
+    while (paramInt != 14) {
       return;
-      label249:
-      continue;
-      label252:
-      i += 1;
     }
-    for (;;)
+    b();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 != 18005) {}
+    do
     {
-      j -= 1;
-      break;
-      label266:
-      i = 1;
-      continue;
-      label271:
-      i = 0;
-    }
+      return;
+      if ((paramInt2 & 0x1) == 0) {
+        break;
+      }
+      if ((paramInt2 & 0x2) != 0) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input.setText("");
+      }
+      if ((paramInt2 & 0x4) != 0)
+      {
+        paramIntent = (aght)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(24);
+        if (paramIntent != null) {
+          paramIntent.a(true);
+        }
+      }
+    } while ((paramInt2 & 0x8) == 0);
+    d();
+    return;
+    QLog.e("WriteTogetherHelper", 1, "[onActivityResult] failed code: " + paramInt2);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, paramString, a(), paramInt);
   }
   
   public boolean a()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    boolean bool = true;
+    if (!arhn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      return false;
+    }
+    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo;
+    if ((localSessionInfo != null) && (localSessionInfo.curType == 1) && (b())) {}
+    for (;;)
     {
-      if (!((beno)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a()) {
-        return false;
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 0, 14 };
+  }
+  
+  public void b() {}
+  
+  public void b(String paramString, int paramInt)
+  {
+    int i = 1;
+    if (!a(this.jdField_a_of_type_AndroidContentContext)) {}
+    Object localObject;
+    do
+    {
+      return;
+      localObject = a();
+    } while ((a(this.jdField_a_of_type_AndroidContentContext, (String)localObject)) || (a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, (String)localObject)));
+    if (!benq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject))
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131720152, 0).a();
+      return;
+    }
+    String str1 = paramString;
+    if (paramString == null) {
+      str1 = "";
+    }
+    int j;
+    if (QLog.isColorLevel())
+    {
+      if (paramInt == 1)
+      {
+        paramString = "input box";
+        QLog.d("WriteTogetherHelper", 2, "[Launch Editor] - " + paramString);
       }
-      i += 1;
     }
-    return true;
-  }
-  
-  public int b()
-  {
-    int i = 0;
-    int j = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    else
     {
-      j += ((beno)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
-      i += 1;
-    }
-    return j;
-  }
-  
-  public ArrayList<bens> b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      beno localbeno = (beno)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if ((localbeno instanceof bens)) {
-        localArrayList.add((bens)localbeno);
+      paramString = new Bundle();
+      String str2 = benq.a(str1);
+      paramString.putString("leftViewText", anvx.a(2131720121));
+      paramString.putString("KEY_CANCEL_OR_BACK", "VALUE_CANCEL");
+      OpenDocParam localOpenDocParam = new OpenDocParam();
+      localOpenDocParam.a = str2;
+      localOpenDocParam.jdField_f_of_type_Int = paramInt;
+      localOpenDocParam.k = ((String)localObject);
+      if ((paramInt == 5) || (paramInt == 6)) {
+        localOpenDocParam.g = 0;
       }
-      i += 1;
+      paramString.putParcelable("KEY_LAUNCH_EDITOR_PARAM", localOpenDocParam);
+      WriteTogetherEditorFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mActivity, WriteTogetherEditorFragment.class, paramString, 18005);
+      j = benq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
+      paramString = "" + benq.a(paramInt);
+      localObject = new StringBuilder().append("");
+      if (!TextUtils.isEmpty(str1)) {
+        break label346;
+      }
     }
-    return localArrayList;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    label346:
+    for (paramInt = i;; paramInt = 2)
     {
-      this.jdField_a_of_type_Beom.c((beno)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramInt);
+      bdla.b(null, "dc00898", "", "", "0X800AF2F", "0X800AF2F", j, 0, paramString, paramInt, "", "");
+      return;
+      if (paramInt == 2)
+      {
+        paramString = "full screen";
+        break;
+      }
+      paramString = "unknown";
+      break;
     }
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (((beno)this.jdField_a_of_type_JavaUtilArrayList.get(0)).b() == -1);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return ((beno)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).hashCode();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return ((beno)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).b();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    QLog.i("xmediaEditor", 2, "Adapter onBindViewHolder, holder type:" + paramViewHolder.getItemViewType() + ", position:" + paramInt);
-    beno localbeno = (beno)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    localbeno.c = paramInt;
-    this.jdField_a_of_type_Beom.a(paramViewHolder, localbeno, this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    QLog.i("xmediaEditor", 2, "Adapter onCreateViewHolder, type:" + paramInt);
-    return this.jdField_a_of_type_Beom.a(paramViewGroup, paramInt);
-  }
-  
-  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
-  {
-    QLog.i("xmediaEditor", 2, "Adapter onViewAttachedToWindow, holder type:" + paramViewHolder.getItemViewType());
-    super.onViewAttachedToWindow(paramViewHolder);
-    this.jdField_a_of_type_Beom.c(paramViewHolder);
-  }
-  
-  public void onViewDetachedFromWindow(RecyclerView.ViewHolder paramViewHolder)
-  {
-    QLog.i("xmediaEditor", 2, "Adapter onViewDetachedFromWindow, holder type:" + paramViewHolder.getItemViewType());
-    super.onViewDetachedFromWindow(paramViewHolder);
-    this.jdField_a_of_type_Beom.b(paramViewHolder);
-  }
-  
-  public void onViewRecycled(RecyclerView.ViewHolder paramViewHolder)
-  {
-    QLog.i("xmediaEditor", 2, "Adapter onViewRecycled, holder type:" + paramViewHolder.getItemViewType());
-    super.onViewRecycled(paramViewHolder);
-    this.jdField_a_of_type_Beom.a(paramViewHolder);
   }
 }
 

@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import amtj;
+import anvx;
 import com.tencent.mobileqq.widget.QQToast;
-import xxd;
-import xxe;
-import xzd;
-import yan;
+import ylw;
+import ylx;
+import ynw;
+import ypg;
 
 public class EditPicSave$1$1
   implements Runnable
 {
-  public EditPicSave$1$1(xxe paramxxe) {}
+  public EditPicSave$1$1(ylx paramylx) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_Xzd.a(0);
+    this.a.a.jdField_a_of_type_Ynw.a(0);
     this.a.a.jdField_a_of_type_Boolean = true;
     this.a.a.a(100);
     this.a.a.h();
-    QQToast.a(this.a.a.jdField_a_of_type_Yan.a(), 2, amtj.a(2131702821), 0).a();
+    QQToast.a(this.a.a.jdField_a_of_type_Ypg.a(), 2, anvx.a(2131703172), 0).a();
   }
 }
 

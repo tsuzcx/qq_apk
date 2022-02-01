@@ -1,23 +1,24 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.widget.QQToast;
 
 class agkn
-  implements bkrd
+  implements DialogInterface.OnClickListener
 {
-  agkn(agkm paramagkm, MessageForPtt paramMessageForPtt) {}
+  agkn(agkk paramagkk, bejv parambejv, String paramString) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bkpf.a(this.jdField_a_of_type_Agkm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 0, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop);
-    bkov.a(paramString1, paramInt, paramString2).b(this.jdField_a_of_type_Agkm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt).a((Activity)this.jdField_a_of_type_Agkm.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agkm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.length() > 0)) {}
-    for (paramInt = 1;; paramInt = 0)
+    this.jdField_a_of_type_Bejv.a("video_tab", "clk_joinframe_join", 0, agkk.a(this.jdField_a_of_type_Agkk).getCurFriendUin());
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_Bejv.a(2, 1, agkk.a(this.jdField_a_of_type_Agkk).getCurFriendUin());
+    if ((paramDialogInterface == null) || (paramDialogInterface.h == 3))
     {
-      bkpf.a(this.jdField_a_of_type_Agkm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_AddFav", 4, 0, 6, paramInt, "", "");
+      QQToast.a(agkk.a(this.jdField_a_of_type_Agkk), 0, this.jdField_a_of_type_JavaLangString, 0).a();
       return;
     }
+    agkk.b(this.jdField_a_of_type_Agkk);
   }
 }
 

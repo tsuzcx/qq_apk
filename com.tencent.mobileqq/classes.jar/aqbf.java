@@ -1,240 +1,127 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ark.image.PhotoListLogicArk.1;
+import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class aqbf
-  extends aptq<aqbg>
+  extends akmj
 {
-  private boolean a(JSONObject paramJSONObject, String paramString)
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
+  
+  public aqbf(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        String str;
-        if (paramJSONObject.has("manufacturer"))
-        {
-          str = paramJSONObject.getString("manufacturer");
-          if ((str != null) && (!"".equals(str)) && (!Build.MANUFACTURER.equals(str))) {}
-        }
-        else if (paramJSONObject.has("brand"))
-        {
-          str = paramJSONObject.getString("brand");
-          if ((str != null) && (!"".equals(str)) && (!Build.BRAND.equals(str))) {}
-        }
-        else if (paramJSONObject.has("model"))
-        {
-          str = paramJSONObject.getString("model");
-          if ((str != null) && (!"".equals(str)) && (!Build.MODEL.equals(str))) {}
-        }
-        else if (paramJSONObject.has("fingerprint"))
-        {
-          str = paramJSONObject.getString("fingerprint");
-          if ((str != null) && (!"".equals(str)) && (!Build.FINGERPRINT.equals(str))) {}
-        }
-        else
-        {
-          if (paramJSONObject.has("androidId"))
-          {
-            paramJSONObject = paramJSONObject.getString("androidId");
-            if ((paramJSONObject != null) && (!"".equals(paramJSONObject)) && (!"".equals(paramString)))
-            {
-              boolean bool = paramString.equals(paramJSONObject);
-              if (!bool) {
-                continue;
-              }
-            }
-          }
-          return true;
-        }
-      }
-      catch (Exception paramJSONObject) {}
-    }
-    return false;
+    super(paramNewPhotoListActivity);
   }
   
-  @NonNull
-  public aqbg a(int paramInt)
+  public Intent caseNoSingModeImage(View paramView, int paramInt)
   {
-    return new aqbg();
+    Intent localIntent = ((NewPhotoListActivity)this.mActivity).getIntent();
+    localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
+    localIntent.putExtra("key_ark_app_res_path", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
+    localIntent.putExtra("key_ark_app_engine_res_dir", this.b);
+    localIntent.putExtra("enter_from", 3);
+    return super.caseNoSingModeImage(paramView, paramInt);
   }
   
-  @Nullable
-  public aqbg a(aptx[] paramArrayOfaptx)
+  public void enterAlbumListFragment(Intent paramIntent)
   {
-    aqbg localaqbg = new aqbg();
-    if (QLog.isColorLevel()) {
-      QLog.d("QQAssistantConfigProcessor", 2, "onParsed confFiles.length = " + paramArrayOfaptx.length);
-    }
-    if (paramArrayOfaptx.length > 0)
-    {
-      paramArrayOfaptx = paramArrayOfaptx[0];
-      localaqbg.jdField_a_of_type_Int = paramArrayOfaptx.jdField_a_of_type_Int;
-      localaqbg.jdField_a_of_type_JavaLangString = paramArrayOfaptx.jdField_a_of_type_JavaLangString;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQAssistantConfigProcessor", 2, "onParsed taskId = " + localaqbg.jdField_a_of_type_Int + " | content = " + localaqbg.jdField_a_of_type_JavaLangString);
-    }
-    return localaqbg;
+    paramIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
+    paramIntent.putExtra("enter_from", 3);
+    super.enterAlbumListFragment(paramIntent);
   }
   
-  public void a(aqbg paramaqbg)
+  public void initData(Intent paramIntent)
   {
-    if ((paramaqbg != null) && (paramaqbg.jdField_a_of_type_JavaLangString != null)) {}
-    for (;;)
+    super.initData(paramIntent);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_ark_app_res_path");
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
+    this.b = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
+  }
+  
+  public void onBackPressed()
+  {
+    aqba.a().a("callbackArk", null, null);
+    ((NewPhotoListActivity)this.mActivity).finish();
+    AlbumUtil.anim(this.mActivity, false, false);
+  }
+  
+  public void onSendBtnClick(View paramView)
+  {
+    ((NewPhotoListActivity)this.mActivity).sendBtn.setClickable(false);
+    if (!this.mPhotoCommonData.selectedPhotoList.isEmpty()) {
+      ((NewPhotoListActivity)this.mActivity).recordLastPos((String)this.mPhotoCommonData.selectedPhotoList.get(this.mPhotoCommonData.selectedPhotoList.size() - 1));
+    }
+    AlbumUtil.clearCache();
+    if (this.mPhotoCommonData.selectedPhotoList.size() == 0)
     {
-      int i;
-      try
-      {
-        Object localObject1 = paramaqbg.jdField_a_of_type_JavaLangString;
-        localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (QLog.isColorLevel()) {
-          QLog.d("QQAssistantConfigProcessor", 2, "onUpdate content = " + paramaqbg.jdField_a_of_type_JavaLangString);
-        }
-        try
-        {
-          localObject1 = new JSONObject(paramaqbg.jdField_a_of_type_JavaLangString);
-          paramaqbg = BaseApplicationImpl.getApplication().getSharedPreferences("qq_assistant_sp_key", 4).edit();
-          Object localObject2 = DeviceInfoUtil.getAndroidID();
-          azeu.a("HelloQQWake", "parseJson MANUFACTURER:" + Build.MANUFACTURER + ",BRAND:" + Build.BRAND + ",MODEL:" + Build.MODEL + ",FINGERPRINT:" + Build.FINGERPRINT + ",ANDROID_ID:" + (String)localObject2);
-          JSONArray localJSONArray;
-          if (((JSONObject)localObject1).has("ban"))
-          {
-            localJSONArray = ((JSONObject)localObject1).getJSONArray("ban");
-            i = 0;
-          }
-          try
-          {
-            if (i >= localJSONArray.length()) {
-              continue;
-            }
-            bool = a(localJSONArray.getJSONObject(i), (String)localObject2);
-            if (!bool) {
-              break label692;
-            }
-            bool = true;
-          }
-          catch (Exception localException)
-          {
-            azeu.a("HelloQQWake", "parseJson needBan error " + localException.getMessage());
-            boolean bool = false;
-            continue;
-          }
-          azeu.a("HelloQQWake", "parseJson needBan  " + bool);
-          paramaqbg.putBoolean("ban", bool);
-          azhh.a().e = bool;
-          if (((JSONObject)localObject1).has("enable"))
-          {
-            bool = ((JSONObject)localObject1).getBoolean("enable");
-            azeu.a("HelloQQWake", "parseJson enable  " + bool);
-            paramaqbg.putBoolean(azhh.a(), bool);
-            azhh.a().d = bool;
-            if (azhh.a().b())
-            {
-              localObject2 = azeu.a();
-              if (localObject2 != null) {
-                ((azfg)localObject2).a();
-              }
-              azhh.a().a("manager enable");
-            }
-          }
-          if (((JSONObject)localObject1).has("resModel"))
-          {
-            localObject2 = ((JSONObject)localObject1).getString("resModel");
-            azeu.a("HelloQQWake", "parseJson resModel  " + (String)localObject2);
-            paramaqbg.putString("resModel", (String)localObject2);
-          }
-          if (((JSONObject)localObject1).has("resVoice"))
-          {
-            localObject2 = ((JSONObject)localObject1).getString("resVoice");
-            azeu.a("HelloQQWake", "parseJson resVoice  " + (String)localObject2);
-            paramaqbg.putString("resVoice", (String)localObject2);
-          }
-          if (((JSONObject)localObject1).has("resAnimation"))
-          {
-            localObject2 = ((JSONObject)localObject1).getString("resAnimation");
-            azeu.a("HelloQQWake", "parseJson resAnimation  " + (String)localObject2);
-            paramaqbg.putString("resAnimation", (String)localObject2);
-          }
-          if (((JSONObject)localObject1).has("FriendSort"))
-          {
-            localObject1 = ((JSONObject)localObject1).getString("FriendSort");
-            azeu.a("HelloQQWake", "parseJson FriendSort  " + (String)localObject1);
-            azez.a((String)localObject1);
-            paramaqbg.putString("FriendSort", (String)localObject1);
-          }
-          paramaqbg.apply();
-          return;
-        }
-        catch (JSONException paramaqbg)
-        {
-          paramaqbg.printStackTrace();
-          QLog.e("QQAssistantConfigProcessor", 2, "parseJson has exception  " + paramaqbg.getMessage());
-          return;
-        }
-        QLog.e("QQAssistantConfigProcessor", 2, "onUpdate has empty content newConf is null = " + null);
-      }
-      catch (Exception paramaqbg)
-      {
-        paramaqbg.printStackTrace();
-        QLog.e("QQAssistantConfigProcessor", 2, "onUpdate has exception", paramaqbg);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.e("PhotoList", 2, "size == 0");
       }
       return;
-      label692:
-      i += 1;
+    }
+    ((NewPhotoListActivity)this.mActivity).getIntent();
+    if (this.mPhotoCommonData.selectedPhotoList.size() > 0)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder(this.mPhotoCommonData.selectedPhotoList.size() * 128);
+        int i = 0;
+        while (i < this.mPhotoCommonData.selectedPhotoList.size())
+        {
+          paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), this.mPhotoCommonData.selectedPhotoList.get(i) }));
+          i += 1;
+        }
+        QLog.d("PhotoListLogicArk", 2, paramView.toString());
+      }
+      ((NewPhotoListActivity)this.mActivity).showProgressDialog();
+      ThreadManagerV2.executeOnSubThread(new PhotoListLogicArk.1(this));
+    }
+    for (;;)
+    {
+      ((NewPhotoListActivity)this.mActivity).finish();
+      return;
+      aqba.a().a("callbackArk", null, null);
     }
   }
   
-  public Class<aqbg> clazz()
+  public void onTitleBtnCancelClick(View paramView)
   {
-    return aqbg.class;
+    aqba.a().a("callbackArk", null, null);
+    ((NewPhotoListActivity)this.mActivity).finish();
+    super.onTitleBtnCancelClick(paramView);
   }
   
-  public boolean isNeedCompressed()
+  public void postInitUI()
   {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQAssistantConfigProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQAssistantConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+    super.postInitUI();
+    NewPhotoListActivity localNewPhotoListActivity = (NewPhotoListActivity)this.mActivity;
+    if (localNewPhotoListActivity != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoListLogicArk", 2, "ArkApp ark app res:" + this.jdField_a_of_type_JavaLangString);
+      }
+      localNewPhotoListActivity.findViewById(2131373132).setVisibility(4);
     }
   }
   
-  public int type()
+  public void startPhotoPreviewActivity(Intent paramIntent)
   {
-    return 679;
+    super.startPhotoPreviewActivity(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbf
  * JD-Core Version:    0.7.0.1
  */

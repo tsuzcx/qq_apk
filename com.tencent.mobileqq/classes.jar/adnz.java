@@ -1,22 +1,6 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
-
-public class adnz
-  extends adnm
-{
-  public adnz(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    this.b.l();
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnz
  * JD-Core Version:    0.7.0.1
  */

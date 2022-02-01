@@ -6,9 +6,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ZoomButtonsController;
-import aszt;
-import atbi;
-import atbj;
+import auea;
+import aufp;
+import aufq;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -31,7 +31,7 @@ public class FileWebView
 {
   float jdField_a_of_type_Float = 1.0F;
   long jdField_a_of_type_Long = 0L;
-  atbj jdField_a_of_type_Atbj;
+  aufq jdField_a_of_type_Aufq;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private Timer jdField_a_of_type_JavaUtilTimer;
   boolean jdField_a_of_type_Boolean = false;
@@ -104,7 +104,7 @@ public class FileWebView
     return (Class)paramType;
   }
   
-  public boolean a(WebView paramWebView, String paramString, atbi paramatbi)
+  public boolean a(WebView paramWebView, String paramString, aufp paramaufp)
   {
     if (paramString == null) {
       return false;
@@ -131,7 +131,7 @@ public class FileWebView
       localObject1 = null;
       try
       {
-        paramWebView = aszt.a(paramString);
+        paramWebView = auea.a(paramString);
         localObject1 = paramWebView;
       }
       catch (Exception paramWebView)
@@ -149,7 +149,7 @@ public class FileWebView
           paramWebView = localWebView;
         }
       }
-      arrayOfMethod = paramatbi.getClass().getMethods();
+      arrayOfMethod = paramaufp.getClass().getMethods();
       j = arrayOfMethod.length;
       i = 0;
       paramWebView = null;
@@ -169,7 +169,7 @@ public class FileWebView
             if (paramWebView != null) {
               break label278;
             }
-            paramatbi.webLog(paramString);
+            paramaufp.webLog(paramString);
             return true;
           }
         }
@@ -182,7 +182,7 @@ public class FileWebView
         label278:
         if (((LinkedHashMap)localObject1).size() == 0)
         {
-          paramWebView.invoke(paramatbi, new Object[0]);
+          paramWebView.invoke(paramaufp, new Object[0]);
           return true;
         }
         paramString = ((LinkedHashMap)localObject1).values().toArray();
@@ -219,7 +219,7 @@ public class FileWebView
       {
         QLog.e("FileWebView", 1, "invoke method exception!!! InvocationTargetException");
         return false;
-        paramWebView.invoke(paramatbi, (Object[])localObject1);
+        paramWebView.invoke(paramaufp, (Object[])localObject1);
         return true;
       }
       catch (Exception paramWebView)
@@ -255,7 +255,7 @@ public class FileWebView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Atbj == null) {
+    if (this.jdField_a_of_type_Aufq == null) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     switch (paramMotionEvent.getAction())
@@ -269,7 +269,7 @@ public class FileWebView
       continue;
       if (Calendar.getInstance().getTimeInMillis() - this.jdField_a_of_type_Long < 80L)
       {
-        this.jdField_a_of_type_Atbj.e();
+        this.jdField_a_of_type_Aufq.e();
         return super.dispatchTouchEvent(paramMotionEvent);
       }
       this.c = paramMotionEvent.getY();
@@ -281,22 +281,22 @@ public class FileWebView
         getScale();
         if ((getContentHeight() * getScale() - (getView().getHeight() + getWebScrollY()) < 1.0D) || (i == 0))
         {
-          this.jdField_a_of_type_Atbj.b();
-          this.jdField_a_of_type_Atbj.c();
+          this.jdField_a_of_type_Aufq.b();
+          this.jdField_a_of_type_Aufq.c();
           return super.dispatchTouchEvent(paramMotionEvent);
         }
-        this.jdField_a_of_type_Atbj.a();
+        this.jdField_a_of_type_Aufq.a();
       }
       do
       {
-        this.jdField_a_of_type_Atbj.c();
+        this.jdField_a_of_type_Aufq.c();
         break;
-        this.jdField_a_of_type_Atbj.f();
+        this.jdField_a_of_type_Aufq.f();
       } while (getScrollY() >= 1.0F);
-      this.jdField_a_of_type_Atbj.a(false);
-      this.jdField_a_of_type_Atbj.c();
+      this.jdField_a_of_type_Aufq.a(false);
+      this.jdField_a_of_type_Aufq.c();
       return super.dispatchTouchEvent(paramMotionEvent);
-      this.jdField_a_of_type_Atbj.d();
+      this.jdField_a_of_type_Aufq.d();
     }
   }
   
@@ -311,7 +311,7 @@ public class FileWebView
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Atbj == null) {}
+    if (this.jdField_a_of_type_Aufq == null) {}
     do
     {
       return;
@@ -323,14 +323,14 @@ public class FileWebView
         QLog.d("FileWebView", 4, "contentHeight[" + paramInt1 + "],height[" + paramInt3 + "],scroolY[" + i + "],scale[" + f + "]");
       }
       f = getContentHeight() * getScale() - (getView().getHeight() + getWebScrollY());
-      if ((f < paramInt3 * 2) && (!aszt.a())) {
-        this.jdField_a_of_type_Atbj.g();
+      if ((f < paramInt3 * 2) && (!auea.a())) {
+        this.jdField_a_of_type_Aufq.g();
       }
       if (f < 2.5D) {
-        this.jdField_a_of_type_Atbj.b();
+        this.jdField_a_of_type_Aufq.b();
       }
     } while ((paramInt2 != 0) || (paramInt4 == 0));
-    this.jdField_a_of_type_Atbj.a(false);
+    this.jdField_a_of_type_Aufq.a(false);
   }
   
   public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -340,9 +340,9 @@ public class FileWebView
     }
   }
   
-  public void setOnCustomScroolChangeListener(atbj paramatbj)
+  public void setOnCustomScroolChangeListener(aufq paramaufq)
   {
-    this.jdField_a_of_type_Atbj = paramatbj;
+    this.jdField_a_of_type_Aufq = paramaufq;
   }
   
   public void setOverrideOnCheckIsTextEditor(boolean paramBoolean)
@@ -389,7 +389,7 @@ public class FileWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.FileWebView
  * JD-Core Version:    0.7.0.1
  */

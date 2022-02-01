@@ -1,77 +1,23 @@
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class avbr
-  implements INetInfoHandler
+class avbr
+  implements ViewSwitcher.ViewFactory
 {
-  long jdField_a_of_type_Long = 0L;
-  private final WeakReference<QQMusicPlayService> jdField_a_of_type_JavaLangRefWeakReference;
+  avbr(avbp paramavbp) {}
   
-  public avbr(QQMusicPlayService paramQQMusicPlayService)
+  public View makeView()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQMusicPlayService);
-  }
-  
-  private void a(int paramInt)
-  {
-    boolean bool2 = true;
-    QQMusicPlayService localQQMusicPlayService = (QQMusicPlayService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQMusicPlayService == null) {}
-    while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    boolean bool1 = bool2;
-    if (paramInt != 1)
-    {
-      bool1 = bool2;
-      if (paramInt != 2)
-      {
-        bool1 = bool2;
-        if (paramInt != 3) {
-          if (paramInt != 6) {
-            break label78;
-          }
-        }
-      }
-    }
-    label78:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      QQMusicPlayService.a(localQQMusicPlayService, bool1);
-      return;
-    }
-  }
-  
-  public void onNetMobile2None()
-  {
-    a(4);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    a(3);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    a(1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    a(2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    a(6);
-  }
-  
-  public void onNetWifi2None()
-  {
-    a(5);
+    CornerImageView localCornerImageView = new CornerImageView(avbp.a(this.a));
+    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    localCornerImageView.setRadius(AIOUtils.dp2px(30.0F, avbp.a(this.a).getResources()) / 2);
+    return localCornerImageView;
   }
 }
 

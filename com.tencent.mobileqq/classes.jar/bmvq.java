@@ -1,9 +1,18 @@
-import android.support.annotation.NonNull;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.Button;
+import dov.com.qq.im.ae.AECMShowCameraUnit.7;
 
-public abstract interface bmvq
+public class bmvq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  @NonNull
-  public abstract String a(int paramInt, @NonNull String paramString);
+  public bmvq(AECMShowCameraUnit.7 param7) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    bmvk.a(this.a.this$0).setAlpha(paramValueAnimator.floatValue());
+  }
 }
 
 

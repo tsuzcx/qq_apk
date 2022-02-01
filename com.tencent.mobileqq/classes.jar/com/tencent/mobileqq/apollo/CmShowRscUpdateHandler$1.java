@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo;
 
-import alpz;
+import ampa;
 import com.tencent.common.app.AppInterface;
 
 public class CmShowRscUpdateHandler$1
   implements Runnable
 {
-  public CmShowRscUpdateHandler$1(alpz paramalpz, AppInterface paramAppInterface) {}
+  public CmShowRscUpdateHandler$1(ampa paramampa, AppInterface paramAppInterface) {}
   
   public void run()
   {

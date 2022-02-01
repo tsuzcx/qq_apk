@@ -1,12 +1,19 @@
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import android.content.Context;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public abstract interface arje
+class arje
+  implements arif
 {
-  public abstract void a(boolean paramBoolean, MiniAppRecommInfo paramMiniAppRecommInfo);
+  arje(arjd paramarjd) {}
+  
+  public void a(Context paramContext)
+  {
+    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, arjd.a(this.a), -1L, null, false, 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arje
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,12 @@
-public abstract interface amjy
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class amjy
 {
-  public abstract void a(boolean paramBoolean);
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

@@ -1,35 +1,26 @@
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.widget.ScrollView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zvl
+class zvl
+  implements View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = zvl.class.getSimpleName();
-  private float jdField_a_of_type_Float;
-  public int a;
-  public bjse a;
-  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
-  public boolean a;
+  zvl(zvh paramzvh, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public zvl(ScrollView paramScrollView, TouchWebView paramTouchWebView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
-    this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_ComTencentWidgetScrollView == null) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
-    while ((this.jdField_a_of_type_Float <= 0.0F) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView.canScrollVertically(-1)) || (paramInt != 0) || (!this.jdField_a_of_type_ComTencentWidgetScrollView.canScrollVertically(-1))) {
-      return;
+    ClipboardManager localClipboardManager = (ClipboardManager)zux.i(this.jdField_a_of_type_Zvh.a).getSystemService("clipboard");
+    if (localClipboardManager != null)
+    {
+      localClipboardManager.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.content.get()));
+      zux.a(this.jdField_a_of_type_Zvh.a).dismiss();
     }
-    this.jdField_a_of_type_ComTencentWidgetScrollView.fling((int)-this.jdField_a_of_type_Float);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

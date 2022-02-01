@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.play;
 
-import bmbx;
+import bnrh;
 import com.tencent.tavcut.TAVCut.Callback;
 
 class AbsAEPublishVideoProcessFragment$1
@@ -15,13 +15,13 @@ class AbsAEPublishVideoProcessFragment$1
     default: 
       return;
     case -1: 
-      bmbx.d("AbsAEPublishVideoProces", "初始化TAVCut失败：tavkit so库加载异常");
+      bnrh.d("AbsAEPublishVideoProces", "初始化TAVCut失败：tavkit so库加载异常");
       return;
     case -2: 
-      bmbx.d("AbsAEPublishVideoProces", "初始化TAVCut失败：pag so库加载异常");
+      bnrh.d("AbsAEPublishVideoProces", "初始化TAVCut失败：pag so库加载异常");
       return;
     }
-    bmbx.a("AbsAEPublishVideoProces", "初始化TAVCut成功");
+    bnrh.a("AbsAEPublishVideoProces", "初始化TAVCut成功");
   }
 }
 

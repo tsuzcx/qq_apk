@@ -1,14 +1,14 @@
 package cooperation.troop;
 
 import Override;
-import amtj;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import bkkq;
-import bkkz;
+import anvx;
+import blvy;
+import blwh;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -33,20 +33,20 @@ public class TroopFileProxyActivity
   
   public static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, String paramString2, int paramInt)
   {
-    bkkz localbkkz = new bkkz(0);
-    localbkkz.jdField_b_of_type_JavaLangString = "troop_plugin.apk";
-    localbkkz.d = amtj.a(2131714347);
-    localbkkz.jdField_a_of_type_JavaLangString = paramString2;
-    localbkkz.e = paramString1;
-    localbkkz.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
-    localbkkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbkkz.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    blwh localblwh = new blwh(0);
+    localblwh.jdField_b_of_type_JavaLangString = "troop_plugin.apk";
+    localblwh.d = anvx.a(2131714694);
+    localblwh.jdField_a_of_type_JavaLangString = paramString2;
+    localblwh.e = paramString1;
+    localblwh.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
+    localblwh.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localblwh.jdField_a_of_type_AndroidAppDialog = paramDialog;
     paramIntent.putExtra("userQqResources", 1);
     paramIntent.putExtra("param_plugin_gesturelock", true);
-    localbkkz.jdField_b_of_type_Int = paramInt;
-    localbkkz.c = 10000;
-    localbkkz.f = null;
-    bkkq.a(paramActivity, localbkkz);
+    localblwh.jdField_b_of_type_Int = paramInt;
+    localblwh.c = 10000;
+    localblwh.f = null;
+    blvy.a(paramActivity, localblwh);
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, String paramString)

@@ -1,18 +1,24 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bchw
+class bchw
   implements View.OnClickListener
 {
-  public bchw(StructMsgForHypertext paramStructMsgForHypertext) {}
+  bchw(bchu parambchu, bcfj parambcfj) {}
   
   public void onClick(View paramView)
   {
-    new bchd(null, paramView, this.a.message).a("web", this.a.mSourceUrl, null, null);
-    bcef.b(null, "CliOper", "", "", "0X800567C", "0X800567C", 0, 0, this.a.mMsgServiceID + "", "", "", "");
-    bcef.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+    Object localObject = paramView.getContext();
+    String str = this.jdField_a_of_type_Bcfj.b();
+    if ((localObject instanceof BaseActivity))
+    {
+      bcnc.a("all_result", "clk_result_join", new String[0]);
+      localObject = (BaseActivity)localObject;
+      bchu.a(this.jdField_a_of_type_Bchu, (Activity)localObject, str);
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

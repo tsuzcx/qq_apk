@@ -1,16 +1,16 @@
 package com.tencent.avgame.qav;
 
-import ngu;
-import ngw;
+import nnm;
+import nno;
 
 public class AVGameBusinessCtrl$2$1
   implements Runnable
 {
-  public AVGameBusinessCtrl$2$1(ngw paramngw) {}
+  public AVGameBusinessCtrl$2$1(nno paramnno) {}
   
   public void run()
   {
-    ngu.a(this.a.a);
+    nnm.a(this.a.a);
   }
 }
 

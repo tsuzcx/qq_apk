@@ -1,34 +1,123 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.SuperPlayerFactory;
+import com.tencent.superplayer.api.SuperPlayerVideoInfo;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
+import org.jetbrains.annotations.NotNull;
 
-public class stz
-  implements sth
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"TVIDEO_TYPE_ONLINE_LIVE", "", "TVIDEO_TYPE_ONLINE_VOD", "VIDEO_LIVE_FORMAT_HLS", "VIDEO_LIVE_FORMAT_UNKNOWN", "VIDEO_TYPE_LOCAL_FILE_HLS", "VIDEO_TYPE_LOCAL_FILE_MP4", "VIDEO_TYPE_LOCAL_FILE_UNKNOW", "VIDEO_VOD_FORMAT_HLS", "VIDEO_VOD_FORMAT_MP4", "VIDEO_VOD_FORMAT_UNKNOWN", "generateSPVideoInfo", "Lcom/tencent/superplayer/api/SuperPlayerVideoInfo;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/PlayerVideoInfo;", "generateTVKUserInfo", "Lcom/tencent/qqlive/mediaplayer/api/TVK_UserInfo;", "generateTVKVideoInfo", "Lcom/tencent/qqlive/mediaplayer/api/TVK_PlayerVideoInfo;", "transformFormatForSP", "transformPlayTypeForTVK", "transformSourceForSP", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class stz
 {
-  public static final String a;
-  private static String b = "WebFastLikeDislikeCreator";
-  private sua a;
-  
-  static
+  private static final int a(@NotNull sty paramsty)
   {
-    jdField_a_of_type_JavaLangString = amtj.a(2131715896);
+    switch (paramsty.a())
+    {
+    default: 
+      return 3;
+    }
+    return 1;
   }
   
-  public int a(BaseData paramBaseData)
+  @NotNull
+  public static final SuperPlayerVideoInfo a(@NotNull sty paramsty)
   {
-    return 19;
+    int i = 1;
+    int j = 0;
+    Intrinsics.checkParameterIsNotNull(paramsty, "$this$generateSPVideoInfo");
+    Object localObject1;
+    if (a(paramsty) == 1)
+    {
+      localObject1 = paramsty.b();
+      if (localObject1 != null)
+      {
+        i = j;
+        if (((CharSequence)localObject1).length() > 0) {
+          i = 1;
+        }
+        if (i != 1) {}
+      }
+      for (paramsty = SuperPlayerFactory.createVideoInfoForTVideo(4080303, paramsty.a(), paramsty.b());; paramsty = SuperPlayerFactory.createVideoInfoForTVideo(4080303, paramsty.a()))
+      {
+        Intrinsics.checkExpressionValueIsNotNull(paramsty, "if (pid?.isNotEmpty() ==…D_KANDIAN, vid)\n        }");
+        return paramsty;
+      }
+    }
+    j = b(paramsty);
+    String str = (String)null;
+    if (Aladdin.getConfig(392).getIntegerFromString("enable_p2p", 0) == 1)
+    {
+      localObject1 = str;
+      if (i != 0)
+      {
+        localObject1 = paramsty.a();
+        if (localObject1 == null) {
+          break label316;
+        }
+        i = localObject1.length;
+        label129:
+        localObject1 = str;
+        if (i > 0)
+        {
+          localObject1 = paramsty.a();
+          if (localObject1 == null) {
+            break label321;
+          }
+        }
+      }
+    }
+    label316:
+    label321:
+    for (Object localObject2 = localObject1[0];; localObject2 = null)
+    {
+      localObject1 = str;
+      if (localObject2 != null)
+      {
+        localObject1 = str;
+        if (StringsKt.contains$default((CharSequence)localObject2, (CharSequence)"com/", false, 2, null))
+        {
+          localObject1 = str;
+          if (StringsKt.contains$default((CharSequence)localObject2, (CharSequence)"?", false, 2, null))
+          {
+            localObject1 = localObject2.substring(StringsKt.indexOf$default((CharSequence)localObject2, "com/", 0, false, 6, null) + 4, StringsKt.indexOf$default((CharSequence)localObject2, "?", 0, false, 6, null));
+            Intrinsics.checkExpressionValueIsNotNull(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PlayerVideoInfo", 2, "generateSPVideoInfo: vid=" + paramsty.a() + ", fileId=" + (String)localObject1);
+      }
+      paramsty = SuperPlayerFactory.createVideoInfoForUrl(paramsty.a(), j, paramsty.a(), (String)localObject1);
+      Intrinsics.checkExpressionValueIsNotNull(paramsty, "SuperPlayerFactory.creat…format, duration, fileId)");
+      return paramsty;
+      i = 0;
+      break;
+      i = 0;
+      break label129;
+    }
   }
   
-  public stg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  private static final int b(@NotNull sty paramsty)
   {
-    this.jdField_a_of_type_Sua = new sua(this, paramContext, LayoutInflater.from(paramContext).inflate(2131560180, null), paramBaseData);
-    return this.jdField_a_of_type_Sua;
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.r == 21;
+    switch (paramsty.a())
+    {
+    default: 
+      return 103;
+    case 3: 
+    case 101: 
+      return 101;
+    case 4: 
+    case 102: 
+      return 102;
+    case 5: 
+    case 103: 
+      return 104;
+    case 104: 
+      return 201;
+    }
+    return 203;
   }
 }
 

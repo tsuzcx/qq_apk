@@ -1,48 +1,39 @@
-import android.content.Context;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-import com.tencent.mobileqq.apollo.process.ui.framework.CmGameFloatView;
-import com.tencent.mobileqq.apollo.process.ui.framework.CmGameGuideView;
-import com.tencent.mobileqq.apollo.process.ui.framework.FrameworkView;
-import com.tencent.mobileqq.apollo.process.ui.framework.QzoneGameFloatView;
+import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import cooperation.qzone.mobilereport.MobileReportManager;
 
 public class alzt
+  implements alzz
 {
-  public static FrameworkView a(Context paramContext, alxy paramalxy, bjng parambjng, aluh paramaluh, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public alzt(ShoppingFragment paramShoppingFragment) {}
+  
+  public void a()
   {
-    switch (paramStartCheckParam.src)
-    {
-    default: 
-      if (paramStartCheckParam.mGameType == 5) {
-        paramContext = new QzoneGameFloatView(paramContext, paramStartCheckParam);
-      }
-      break;
-    }
-    for (;;)
-    {
-      paramContext.a(paramalxy, parambjng, paramaluh, paramStartCheckParam);
-      return paramContext;
-      paramContext = new QzoneGameFloatView(paramContext, paramStartCheckParam);
-      continue;
-      paramContext = new CmGameFloatView(paramContext, paramStartCheckParam);
-    }
+    ShoppingFragment.a(this.a, 1, 0);
+    MobileReportManager.getInstance().reportActionLive("paying", "4", "qq_live", "shopcart_page", "order_paying_btn", 102, 1, System.currentTimeMillis(), "");
   }
   
-  public static FrameworkView a(Context paramContext, alxy paramalxy, bjng parambjng, CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt)
+  public void b()
   {
-    switch (paramInt)
-    {
-    default: 
-      paramContext = new CmGameGuideView(paramContext, paramStartCheckParam);
-    }
-    for (;;)
-    {
-      paramContext.a(paramalxy, parambjng, null, paramStartCheckParam);
-      return paramContext;
-      paramContext = new CmGameGuideView(paramContext, paramStartCheckParam);
-      continue;
-      paramContext = new CmGameDebugView(paramContext, paramStartCheckParam);
-    }
+    ShoppingFragment.a(this.a, 1, 1);
+    MobileReportManager.getInstance().reportActionLive("inqueue", "4", "qq_live", "shopcart_page", "order_inqueue_btn", 102, 1, System.currentTimeMillis(), "");
+  }
+  
+  public void c()
+  {
+    ShoppingFragment.a(this.a, 1, 2);
+    MobileReportManager.getInstance().reportActionLive("ship", "4", "qq_live", "shopcart_page", "order_ship_btn", 102, 1, System.currentTimeMillis(), "");
+  }
+  
+  public void d()
+  {
+    ShoppingFragment.a(this.a, 1, 4);
+    MobileReportManager.getInstance().reportActionLive("service", "4", "qq_live", "shopcart_page", "order_service_btn", 102, 1, System.currentTimeMillis(), "");
+  }
+  
+  public void e()
+  {
+    ShoppingFragment.a(this.a, 0, 0);
+    MobileReportManager.getInstance().reportActionLive("all", "4", "qq_live", "shopcart_page", "order_all_btn", 102, 1, System.currentTimeMillis(), "");
   }
 }
 

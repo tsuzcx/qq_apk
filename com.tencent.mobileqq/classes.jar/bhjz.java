@@ -1,24 +1,63 @@
-import android.content.Intent;
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.VoteView;
-import com.tencent.mobileqq.widget.VoteView.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class bhjz
-  implements View.OnClickListener
+  extends ReportDialog
 {
-  public bhjz(VoteView.1 param1) {}
+  protected Context a;
+  private String a;
+  private String b;
+  private String c;
   
-  public void onClick(View paramView)
+  public bhjz(@NonNull Context paramContext)
   {
-    Intent localIntent = new Intent(this.a.this$0.getContext(), QQBrowserActivity.class);
-    String str = bgev.a(this.a.this$0.getContext(), "praise", "");
-    VasWebviewUtil.openQQBrowserWithoutAD(this.a.this$0.getContext(), str, 536870912L, localIntent, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(null, "thumbup", "others_click", null, 1, 0, 0, null, "1", null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext, 2131755206);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    setCanceledOnTouchOutside(true);
+  }
+  
+  public bhjz a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bhjz b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public bhjz c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562955, null);
+    setContentView(paramBundle);
+    TextView localTextView = (TextView)paramBundle.findViewById(2131367695);
+    localTextView.setOnClickListener(new bhka(this));
+    if (this.c != null) {
+      localTextView.setText(this.c);
+    }
+    localTextView = (TextView)paramBundle.findViewById(2131379001);
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      localTextView.setText(this.jdField_a_of_type_JavaLangString);
+    }
+    paramBundle = (TextView)paramBundle.findViewById(2131365544);
+    if (this.b != null) {
+      paramBundle.setText(this.b);
+    }
   }
 }
 

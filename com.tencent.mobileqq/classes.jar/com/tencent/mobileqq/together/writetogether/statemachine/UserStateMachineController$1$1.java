@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.together.writetogether.statemachine;
 
-import bdgn;
-import bdiu;
-import bdiv;
-import bdjh;
+import benq;
+import bepx;
+import bepy;
+import beqk;
 
 public class UserStateMachineController$1$1
   implements Runnable
 {
-  public UserStateMachineController$1$1(bdiv parambdiv) {}
+  public UserStateMachineController$1$1(bepy parambepy) {}
   
   public void run()
   {
-    if (!bdgn.a(bdiu.a(this.a.a))) {}
-    for (int i = 1; bdiu.a(this.a.a).a() == UserState.COMMIT_WHILE_ALERT; i = 0)
+    if (!benq.a(bepx.a(this.a.a))) {}
+    for (int i = 1; bepx.a(this.a.a).a() == UserState.COMMIT_WHILE_ALERT; i = 0)
     {
-      bdiu.a(this.a.a).a(UserState.SAVING);
+      bepx.a(this.a.a).a(UserState.SAVING);
       return;
     }
-    if (bdiu.a(this.a.a).a() == UserState.ACCEPT_WHILE_ALERT)
+    if (bepx.a(this.a.a).a() == UserState.ACCEPT_WHILE_ALERT)
     {
-      bdiu.a(this.a.a).a(UserState.LAST_SAVE);
+      bepx.a(this.a.a).a(UserState.LAST_SAVE);
       return;
     }
-    bdjh localbdjh = bdiu.a(this.a.a);
+    beqk localbeqk = bepx.a(this.a.a);
     if (i != 0) {}
     for (UserState localUserState = UserState.LAST_EDIT;; localUserState = UserState.NEW_DOC)
     {
-      localbdjh.a(localUserState);
+      localbeqk.a(localUserState);
       return;
     }
   }

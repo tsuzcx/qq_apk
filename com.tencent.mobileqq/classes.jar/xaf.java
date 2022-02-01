@@ -1,27 +1,38 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.List;
 
-public class xaf
-  extends QQUIEventReceiver<wzo, wci>
+class xaf
+  extends PagerAdapter
 {
-  public xaf(@NonNull wzo paramwzo)
+  private List<View> jdField_a_of_type_JavaUtilList;
+  
+  public xaf(List<View> paramList)
   {
-    super(paramwzo);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public void a(@NonNull wzo paramwzo, @NonNull wci paramwci)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (paramwci.a.isSuccess())
-    {
-      xvv.a(paramwzo.b, "receive user info event. %s.", paramwci.toString());
-      paramwzo.i();
-    }
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
   }
   
-  public Class acceptEventClass()
+  public int getCount()
   {
-    return wci.class;
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

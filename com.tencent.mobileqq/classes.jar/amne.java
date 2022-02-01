@@ -1,23 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloPanelListAdapter.1;
-import com.tencent.mobileqq.apollo.view.ApolloPanelListAdapter.1.1.1;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ApolloActionPush;
+import com.tencent.qphone.base.util.QLog;
 
-public class amne
-  implements Animation.AnimationListener
+class amne
+  implements amnf
 {
-  public amne(ApolloPanelListAdapter.1 param1) {}
+  amne(amnd paramamnd) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new ApolloPanelListAdapter.1.1.1(this), 300L);
+    if ((amnd.a(this.a) != null) && (paramApolloActionPush != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
+      }
+      if ((amnd.a(this.a).curType == paramInt) && (paramInt == amnd.a(this.a).curType) && (!TextUtils.isEmpty(amnd.a(this.a).curFriendUin)) && (amnd.a(this.a).curFriendUin.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
+        this.a.a(paramApolloActionPush);
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -2,20 +2,20 @@ package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.view.View;
 import android.view.ViewTreeObserver;
-import bncy;
-import bnda;
-import bnee;
+import bosq;
+import boss;
+import botw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class EditProviderPart$2
   implements Runnable
 {
-  public EditProviderPart$2(bncy parambncy, List paramList) {}
+  public EditProviderPart$2(bosq parambosq, List paramList) {}
   
   public void run()
   {
-    if (bncy.a(this.this$0) != 0) {
+    if (bosq.a(this.this$0) != 0) {
       if (QLog.isColorLevel()) {
         QLog.e("EditProviderPart", 2, "EditVideoState is not idle");
       }
@@ -23,15 +23,15 @@ public class EditProviderPart$2
     do
     {
       return;
-      if ((this.this$0.jdField_a_of_type_Bnew != null) && (bncy.a(this.this$0) != null)) {
+      if ((this.this$0.jdField_a_of_type_Bouo != null) && (bosq.a(this.this$0) != null)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.d("EditProviderPart", 2, "initTransitionRecommendView postDelayed null");
     return;
-    this.this$0.jdField_a_of_type_Bnee.a(18);
-    bncy.a(this.this$0).setVisibility(0);
-    bncy.a(this.this$0).getViewTreeObserver().addOnGlobalLayoutListener(new bnda(this));
+    this.this$0.jdField_a_of_type_Botw.a(18);
+    bosq.a(this.this$0).setVisibility(0);
+    bosq.a(this.this$0).getViewTreeObserver().addOnGlobalLayoutListener(new boss(this));
   }
 }
 

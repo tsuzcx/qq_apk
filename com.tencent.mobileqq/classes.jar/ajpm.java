@@ -1,16 +1,24 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-final class ajpm
+class ajpm
   implements DialogInterface.OnClickListener
 {
-  ajpm(Activity paramActivity) {}
+  ajpm(ajpi paramajpi) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {
-      this.a.finish();
+    try
+    {
+      paramDialogInterface.dismiss();
+      ajpi.a(this.a, ajpi.a(this.a), Long.valueOf(ajpi.a(this.a)).longValue());
+      ajpi.a(this.a);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.e("SDKEmotionSettingManager", 1, "setNegativeButton cancel error");
     }
   }
 }

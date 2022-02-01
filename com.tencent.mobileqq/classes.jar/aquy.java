@@ -1,73 +1,65 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
-import tencent.nearby.now.nearby_now_anchor.RspBatchGetAnchorStatus;
+import com.tencent.mobileqq.confess.ConfessInfo;
+import com.tencent.util.Pair;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class aquy
-  extends nmf
+public class aquy
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static final Object a;
+  Pair<String, Boolean> jdField_a_of_type_ComTencentUtilPair = new Pair("", Boolean.valueOf(false));
+  ConcurrentHashMap<String, ConfessInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  static
   {
-    boolean bool4 = false;
-    boolean bool3 = false;
-    Object localObject = null;
-    nearby_now_anchor.RspBatchGetAnchorStatus localRspBatchGetAnchorStatus;
-    boolean bool1;
-    if (paramInt == 0)
+    jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public ConfessInfo a(String arg1, int paramInt1, int paramInt2)
+  {
+    Object localObject1 = aqvh.a(???, paramInt1, paramInt2);
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      localRspBatchGetAnchorStatus = new nearby_now_anchor.RspBatchGetAnchorStatus();
-      bool1 = bool4;
-    }
-    for (;;)
-    {
-      try
-      {
-        localRspBatchGetAnchorStatus.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = localObject;
-        bool2 = bool3;
-        bool1 = bool4;
-        if (localRspBatchGetAnchorStatus.uint32_result.has())
-        {
-          paramArrayOfByte = localObject;
-          bool2 = bool3;
-          bool1 = bool4;
-          if (localRspBatchGetAnchorStatus.uint32_result.get() == 0)
-          {
-            bool1 = true;
-            bool2 = true;
-            paramArrayOfByte = localRspBatchGetAnchorStatus.msg_anchor_stats.get();
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        paramArrayOfByte = localObject;
-        bool2 = bool1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("Q.msg_box.protocol", 2, localException.toString());
-        paramArrayOfByte = localObject;
-        bool2 = bool1;
-        continue;
-      }
-      a(bool2, paramArrayOfByte, paramBundle);
-      return;
-      paramArrayOfByte = localObject;
-      boolean bool2 = bool3;
-      if (QLog.isColorLevel())
-      {
-        QLog.w("Q.msg_box.protocol", 2, "getNowState failed, errorCode=" + paramInt);
-        paramArrayOfByte = localObject;
-        bool2 = bool3;
-      }
+      localObject1 = (ConfessInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject1);
+      return localObject1;
     }
   }
   
-  public abstract void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle);
+  public ConfessInfo a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, String paramString4, long paramLong)
+  {
+    ConfessInfo localConfessInfo = new ConfessInfo();
+    localConfessInfo.reset();
+    localConfessInfo.topicId = paramInt2;
+    localConfessInfo.confessorSex = paramInt3;
+    localConfessInfo.confessorNick = paramString3;
+    try
+    {
+      localConfessInfo.confessorUin = Long.parseLong(paramString2);
+      label44:
+      localConfessInfo.confessorUinStr = paramString2;
+      localConfessInfo.confessTime = paramLong;
+      if (paramString4 != null) {
+        localConfessInfo.topic = paramString4;
+      }
+      a(paramString1, paramInt1, localConfessInfo);
+      return localConfessInfo;
+    }
+    catch (Exception paramString3)
+    {
+      break label44;
+    }
+  }
+  
+  public void a(String arg1, int paramInt, ConfessInfo paramConfessInfo)
+  {
+    String str = aqvh.a(???, paramInt, paramConfessInfo.topicId);
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      ConfessInfo localConfessInfo = (ConfessInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      if ((localConfessInfo == null) || (!localConfessInfo.equals(paramConfessInfo))) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramConfessInfo);
+      }
+      return;
+    }
+  }
 }
 
 

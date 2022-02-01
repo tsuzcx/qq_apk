@@ -1,17 +1,7 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
-class qie
-  implements ViewBase.OnClickListener
+public abstract interface qie
+  extends qic
 {
-  qie(qid paramqid) {}
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    qid.a(this.a, false);
-    qid.a(this.a);
-    odq.a(null, pay.a() + "", "0X800984B", "0X800984B", 0, 0, "1", "", "", "", false);
-  }
+  public abstract void a(boolean paramBoolean, String paramString, int paramInt);
 }
 
 

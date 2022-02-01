@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.skin;
 
-import rao;
+import rmu;
 
 public class ReadInJoyRefreshManager$1
   implements Runnable
 {
-  public ReadInJoyRefreshManager$1(rao paramrao, int paramInt1, String paramString, long paramLong, int paramInt2) {}
+  public ReadInJoyRefreshManager$1(rmu paramrmu, int paramInt1, String paramString, long paramLong, int paramInt2) {}
   
   public void run()
   {
-    rao.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
+    rmu.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
   }
 }
 

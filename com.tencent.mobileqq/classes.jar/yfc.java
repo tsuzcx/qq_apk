@@ -1,24 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-class yfc
-  implements Animation.AnimationListener
+public class yfc
 {
-  yfc(yfa paramyfa) {}
+  private static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/testEnv/";
+  private static final boolean jdField_a_of_type_Boolean = new File(jdField_a_of_type_JavaLangString + "testserver").exists();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static void a(yff<Integer> paramyff)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Yev != null) {
-      this.a.a.jdField_a_of_type_Yev.a(null);
-    }
+    paramyff = new WeakReference(paramyff);
+    yfx localyfx = new yfx(null);
+    localyfx.a(new yfd(paramyff));
+    localyfx.a(new yfe(paramyff));
+    localyfx.a();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public static boolean a()
+  {
+    if (jdField_a_of_type_Boolean) {}
+    return false;
+  }
 }
 
 

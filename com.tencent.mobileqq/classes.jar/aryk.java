@@ -1,16 +1,13 @@
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aryk
+final class aryk
+  extends nte
 {
-  public abstract View.OnClickListener a(TextView paramTextView);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(FavFileInfo paramFavFileInfo);
-  
-  public abstract boolean b();
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    QLog.i("reportMsgBoxMomentRead", 1, " reportMsgBoxMomentRead code:" + paramInt);
+  }
 }
 
 

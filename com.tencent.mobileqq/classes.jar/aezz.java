@@ -1,37 +1,62 @@
-import android.content.Context;
+import android.graphics.Rect;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
-public abstract class aezz
+public class aezz
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public Context a;
-  private View.OnClickListener a;
-  public SessionInfo a;
-  public QQAppInterface a;
+  public aezz(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public aezz(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, View.OnClickListener paramOnClickListener)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public abstract void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aezf paramaezf);
-  
-  protected final void a(View paramView)
-  {
-    if (paramView != null) {
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    Object localObject = new Rect();
+    this.a.mUIStyleHandler.mRootView.getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.mUIStyleHandler.mRootView.getRootView().getHeight();
+    int j = i - ((Rect)localObject).bottom;
+    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
+    {
+      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.a.e = j;
+    }
+    if (j > i / 3)
+    {
+      if (this.a.c) {
+        this.a.b(false);
+      }
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_Int == 2) {
+          this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+        }
+        i = (int)mvk.b(BaseApplicationImpl.getApplication(), this.a.b + j);
+        return;
+        this.a.b(true);
+      }
+    }
+    this.a.b(false);
+    if (this.a.jdField_a_of_type_Int == 2) {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    }
+    if (this.a.jdField_a_of_type_Int == 2) {
+      i = (int)mvk.b(BaseApplicationImpl.getApplication(), this.a.b);
+    }
+    for (;;)
+    {
+      this.a.d = false;
+      return;
+      if (this.a.jdField_a_of_type_Int != 1) {}
     }
   }
-  
-  public void b(View paramView) {}
 }
 
 

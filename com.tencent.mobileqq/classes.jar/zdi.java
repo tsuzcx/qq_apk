@@ -1,59 +1,30 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
-import com.tencent.biz.subscribe.comment.CommentBottomBar;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
 
 class zdi
-  implements zgb
+  implements wfk<wtx, wty>
 {
-  zdi(zdg paramzdg) {}
+  zdi(zdh paramzdh, JobContext paramJobContext, Integer paramInteger) {}
   
-  public void a(int paramInt)
+  public void a(@NonNull wtx paramwtx, @Nullable wty paramwty, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) {
-      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a(paramInt);
-    }
-  }
-  
-  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
-  {
-    if (paramStGetFeedDetailRsp == null)
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      QLog.e(zdg.jdField_a_of_type_JavaLangString, 1, "onFeedResponse rsp is null");
+      ykq.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
       return;
     }
-    CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)paramStGetFeedDetailRsp.feed.get();
-    QLog.d(zdg.jdField_a_of_type_JavaLangString, 1, "onFeedResponse hideLoadingView!");
-    this.a.f();
-    boolean bool = zdg.a(this.a, paramLong, localStFeed);
-    String str = zdg.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder().append("isInterceptRspByFeedStatus ").append(bool).append(",status ");
-    if (localStFeed == null) {}
-    for (Object localObject = "none";; localObject = Integer.valueOf(localStFeed.status.get()))
+    if ((paramErrorMessage.isFail()) || (paramwty == null))
     {
-      QLog.i(str, 2, localObject);
-      if (!bool) {
-        break;
-      }
-      this.a.a(paramLong, paramString);
+      ykq.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+      zdh.a(this.jdField_a_of_type_Zdh, paramErrorMessage);
       return;
     }
-    this.a.b(localStFeed);
-    zdg.a(this.a, paramStGetFeedDetailRsp.share);
-    zdg.a(this.a, paramStGetFeedDetailRsp.detailUrl.get());
-    zdg.b(this.a, paramStGetFeedDetailRsp.share);
-    this.a.a(localStFeed);
-    QLog.i(zdg.jdField_a_of_type_JavaLangString, 1, "isFinish:" + paramStGetFeedDetailRsp.isFinish.get() + " | recommend feeds size:" + paramStGetFeedDetailRsp.vecRcmdFeed.get().size());
-    this.a.a(paramStGetFeedDetailRsp, paramBoolean);
-    if (!paramBoolean) {
-      zxp.a(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + zlv.a(this.a.a()), "exp", 0, 0, new String[] { "", "", localStFeed.id.get(), localStFeed.title.get() });
-    }
-    this.a.a(true);
+    zdh.a(this.jdField_a_of_type_Zdh).a(paramwty.jdField_a_of_type_JavaUtilList, paramwty.jdField_a_of_type_JavaLangString, paramwty.jdField_a_of_type_Boolean);
+    ((yck)wjs.a(11)).a(paramwty.jdField_a_of_type_JavaUtilList);
+    paramwtx = zdh.a(this.jdField_a_of_type_Zdh).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    zdh.a(this.jdField_a_of_type_Zdh, paramwtx);
   }
 }
 

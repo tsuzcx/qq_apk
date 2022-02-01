@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import bbpn;
+import bcwh;
 import com.tencent.qphone.base.util.QLog;
 
 class QQStoryMainActivity$2
@@ -10,8 +10,8 @@ class QQStoryMainActivity$2
   
   public void run()
   {
-    bbpn.b = System.currentTimeMillis();
-    QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_CLICK_CAMERA ", Long.valueOf(bbpn.b) });
+    bcwh.b = System.currentTimeMillis();
+    QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_CLICK_CAMERA ", Long.valueOf(bcwh.b) });
     this.this$0.a.a(false, true, 1, null);
   }
 }

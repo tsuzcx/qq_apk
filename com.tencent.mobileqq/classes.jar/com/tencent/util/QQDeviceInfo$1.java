@@ -1,7 +1,7 @@
 package com.tencent.util;
 
 import android.content.Intent;
-import bjmt;
+import bkyf;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class QQDeviceInfo$1
@@ -9,10 +9,10 @@ public final class QQDeviceInfo$1
 {
   public void run()
   {
-    bjmt localbjmt = new bjmt(this);
+    bkyf localbkyf = new bkyf(this);
     Intent localIntent = new Intent("com.uodis.opendevice.OPENIDS_SERVICE");
     localIntent.setPackage("com.huawei.hwid");
-    BaseApplicationImpl.getApplication().bindService(localIntent, localbjmt, 1);
+    BaseApplicationImpl.getApplication().bindService(localIntent, localbkyf, 1);
   }
 }
 

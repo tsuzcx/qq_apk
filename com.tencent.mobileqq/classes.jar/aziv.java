@@ -1,53 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.face.GroupIconHelper;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aziv
-  extends amrc
+class aziv
+  implements DialogInterface.OnClickListener
 {
-  public aziv(QCallDetailActivity paramQCallDetailActivity) {}
+  aziv(azit paramazit) {}
   
-  protected void onChangeDiscussionName(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a).equals(paramString)) && (QCallDetailActivity.a(this.a) == 3000)) {
-      this.a.a(paramString);
-    }
-  }
-  
-  protected void onQuitDiscussion(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(QCallDetailActivity.a(this.a))) && (QCallDetailActivity.a(this.a).equals(paramString)) && (!this.a.isFinishing())) {
-      this.a.finish();
-    }
-  }
-  
-  protected void onUpdateDiscussionFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCallDetailActivity", 2, " === onUpdateDiscussionFaceIcon isSuccess | " + paramBoolean1 + ", disUin | " + paramString + ",isComplete | " + paramBoolean2);
-    }
-    if ((paramBoolean1) && (paramBoolean2) && (QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a) == 3000))
+    try
     {
-      String str = paramString;
-      if (GroupIconHelper.a(paramString)) {
-        str = GroupIconHelper.b(paramString);
-      }
-      if (QCallDetailActivity.a(this.a).equals(str))
-      {
-        this.a.a(QCallDetailActivity.a(this.a));
-        if (QLog.isColorLevel()) {
-          QLog.i("QCallDetailActivity", 2, "==== onUpdateDiscussionFaceIcon updateUin ===");
-        }
-      }
+      paramDialogInterface.dismiss();
+      return;
     }
-  }
-  
-  protected void updateDiscussionInfo(boolean paramBoolean, Object paramObject)
-  {
-    if ((((ArrayList)paramObject).indexOf(QCallDetailActivity.a(this.a)) != -1) && (paramBoolean) && (QCallDetailActivity.a(this.a) == 3000)) {
-      this.a.a(QCallDetailActivity.a(this.a));
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
     }
   }
 }

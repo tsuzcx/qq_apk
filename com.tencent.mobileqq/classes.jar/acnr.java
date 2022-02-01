@@ -1,20 +1,14 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acnr
-  extends MqqHandler
 {
-  public acnr(AccountManageActivity paramAccountManageActivity) {}
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  boolean jdField_a_of_type_Boolean;
   
-  public void handleMessage(Message paramMessage)
+  public acnr(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.e();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

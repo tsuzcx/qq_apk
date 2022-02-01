@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
-import aqzw;
+import aseg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.utils.NetworkUtil;
 
 class EmoticonPanelCameraHelper$6
@@ -15,12 +16,12 @@ class EmoticonPanelCameraHelper$6
     if ((!NetworkUtil.isNetSupport(this.val$context)) || (this.val$app == null)) {
       return;
     }
-    ((aqzw)this.val$app.getManager(334)).b();
+    ((aseg)this.val$app.getManager(QQManagerFactory.CAMERA_EMOTION_MANAGER)).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelCameraHelper.6
  * JD-Core Version:    0.7.0.1
  */

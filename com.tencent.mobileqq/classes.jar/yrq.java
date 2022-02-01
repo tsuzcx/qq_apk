@@ -1,28 +1,18 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
-class yrq
-  implements Animation.AnimationListener
+public class yrq
+  implements yrr
 {
-  yrq(yro paramyro, Context paramContext) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(List<yro> paramList, DoodleView paramDoodleView)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()) {
-        this.jdField_a_of_type_Yro.dismiss();
-      }
-      return;
-    }
-    this.jdField_a_of_type_Yro.dismiss();
+    yqv localyqv = new yqv(paramDoodleView);
+    yre localyre = new yre(paramDoodleView);
+    paramDoodleView = new yri(paramDoodleView);
+    paramList.add(localyqv);
+    paramList.add(localyre);
+    paramList.add(paramDoodleView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

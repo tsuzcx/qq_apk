@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-
-public class alcu
-  implements DialogInterface.OnClickListener
+public abstract interface alcu
 {
-  public alcu(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.s();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract boolean c();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 

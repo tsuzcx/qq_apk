@@ -1,26 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CommonElem;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class acui
-  extends Handler
+  extends acve
 {
-  public acui(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131719378);
-    }
-    this.a.a(paramMessage, 1);
+    return super.a() + 2;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bffl parambffl, bcse parambcse, bcre parambcre)
+  {
+    new bcrt().a(paramList, paramList1, paramStringBuilder, paramMsg, parambffl);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.common_elem.has()) && (14 == paramElem.common_elem.uint32_service_type.get());
   }
 }
 

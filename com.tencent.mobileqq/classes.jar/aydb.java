@@ -1,87 +1,33 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
-public abstract class aydb
-  extends Binder
-  implements ayda
+class aydb
+  implements URLDrawableDownListener
 {
-  public aydb()
+  aydb(ayda paramayda, aydc paramaydc, int paramInt) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    attachInterface(this, "com.tencent.mobileqq.pic.IPresendPicMgr");
+    this.jdField_a_of_type_Aydc.a(this.jdField_a_of_type_Int, false);
+    this.jdField_a_of_type_Aydc.a(this.jdField_a_of_type_Int);
   }
   
-  public static ayda a(IBinder paramIBinder)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    if (paramIBinder == null) {
-      return null;
+    if ((paramInt > 0) && (paramInt < 10000)) {
+      this.jdField_a_of_type_Aydc.b(this.jdField_a_of_type_Int, paramInt / 100);
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-    if ((localIInterface != null) && ((localIInterface instanceof ayda))) {
-      return (ayda)localIInterface;
-    }
-    return new aydc(paramIBinder);
   }
   
-  public IBinder asBinder()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.pic.IPresendPicMgr");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-      String str1 = paramParcel1.readString();
-      String str2 = paramParcel1.readString();
-      if (paramParcel1.readInt() != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        a(str1, str2, bool, paramParcel1.readInt(), paramParcel1.readInt());
-        paramParcel2.writeNoException();
-        return true;
-      }
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-      a(paramParcel1.readString(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 5: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-      paramInt1 = a();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 6: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      paramParcel2.writeBooleanArray(paramParcel1);
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-    paramParcel1 = a();
-    paramParcel2.writeNoException();
-    paramParcel2.writeIntArray(paramParcel1);
-    return true;
+    this.jdField_a_of_type_Aydc.a(this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_Aydc.a(this.jdField_a_of_type_Int);
   }
 }
 

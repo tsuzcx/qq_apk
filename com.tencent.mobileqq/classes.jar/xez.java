@@ -1,58 +1,50 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.StoryCoverView;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class xez
+  extends zgz
 {
-  public ImageView a;
-  public StoryCoverView a;
+  public static final String KEY = "EmptyPlaceHolderSegment";
+  private final int jdField_a_of_type_Int;
+  private yhc jdField_a_of_type_Yhc;
   
-  public xez(xey paramxey, View paramView)
+  public xez(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364317));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131380703));
+    super(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  void a(xlu paramxlu, int paramInt)
+  public int a()
   {
-    if (paramxlu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setImageDrawable(this.jdField_a_of_type_Xey.a.getResources().getDrawable(2130846526));
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setPollLayout(null, -1, null);
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setRateLayout(null, -1, -1L, -1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(paramInt));
-      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (!paramxlu.jdField_a_of_type_Boolean) {
-        break label186;
-      }
-      paramInt = 2130840530;
-      label78:
-      localImageView.setImageResource(paramInt);
-      if (!paramxlu.b) {
-        break label192;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setAlpha(1.0F);
+    return 1;
+  }
+  
+  public View a(int paramInt, yhc paramyhc, ViewGroup paramViewGroup)
+  {
+    return paramyhc.a();
+  }
+  
+  public String a()
+  {
+    return "EmptyPlaceHolderSegment";
+  }
+  
+  public yhc a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.jdField_a_of_type_Int));
+    if (QQStoryContext.a()) {
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166509));
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new xfa(this));
-      return;
-      if (TextUtils.isEmpty(paramxlu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl)) {
-        break;
-      }
-      xey.a(this.jdField_a_of_type_Xey, this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.jdField_a_of_type_AndroidWidgetImageView, paramxlu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setPollLayout(paramxlu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout(), -1, null);
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setRateLayout(paramxlu.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), -1, -1L, -1);
-      break;
-      label186:
-      paramInt = 2130840526;
-      break label78;
-      label192:
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setAlpha(0.6F);
+      this.jdField_a_of_type_Yhc = new yhc(paramViewGroup);
+      return this.jdField_a_of_type_Yhc;
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165559));
     }
   }
 }

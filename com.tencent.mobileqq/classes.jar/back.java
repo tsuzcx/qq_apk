@@ -1,10 +1,10 @@
-import android.graphics.Paint;
+import android.widget.TextView;
 
 public abstract interface back
 {
-  public abstract String a(float paramFloat1, float paramFloat2, float paramFloat3);
+  public abstract void a();
   
-  public abstract void a(Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3);
+  public abstract void a(TextView paramTextView);
 }
 
 

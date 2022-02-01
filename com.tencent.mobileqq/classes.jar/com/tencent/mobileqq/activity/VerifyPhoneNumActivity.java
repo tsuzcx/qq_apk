@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aesm;
-import aesn;
-import aeso;
-import amtj;
+import afjx;
+import afjy;
+import afjz;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -16,10 +15,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import aycd;
-import aycf;
-import aych;
-import bhht;
+import anvx;
+import azip;
+import azir;
+import azit;
+import bisl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -35,14 +35,14 @@ public class VerifyPhoneNumActivity
   implements View.OnClickListener
 {
   protected Dialog a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aesm(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new afjx(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aycd jdField_a_of_type_Aycd = new aeso(this);
-  private bhht jdField_a_of_type_Bhht;
+  private azip jdField_a_of_type_Azip = new afjz(this);
+  private bisl jdField_a_of_type_Bisl;
   private String jdField_a_of_type_JavaLangString;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aesn(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new afjy(this);
   private boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private Handler jdField_b_of_type_AndroidOsHandler = new Handler();
@@ -55,17 +55,17 @@ public class VerifyPhoneNumActivity
   private void b()
   {
     this.leftView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363778));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363850));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363897));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363969));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379966));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380305));
     try
     {
       if ((this.c != null) && (this.c.length() > 4))
       {
         String str = "***" + this.c.substring(this.c.length() - 4, this.c.length());
-        str = getString(2131694377, new Object[] { this.jdField_a_of_type_JavaLangString, str, this.d });
+        str = getString(2131694578, new Object[] { this.jdField_a_of_type_JavaLangString, str, this.d });
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       }
       return;
@@ -89,7 +89,7 @@ public class VerifyPhoneNumActivity
   
   private void d()
   {
-    aycf.b(this.app, this.jdField_a_of_type_ArrayOfByte, this.d);
+    azir.b(this.app, this.jdField_a_of_type_ArrayOfByte, this.d);
   }
   
   private void e()
@@ -97,8 +97,8 @@ public class VerifyPhoneNumActivity
     if (QLog.isColorLevel()) {
       QLog.d("VerifyPhoneNumActivity", 4, "startLogin");
     }
-    aych.a().a(true);
-    int i = aych.a().b(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    azit.a().a(true);
+    int i = azit.a().b(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
     if (i != 0)
     {
       if (QLog.isColorLevel()) {
@@ -157,17 +157,17 @@ public class VerifyPhoneNumActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2131562963));
-    setTitle(2131694411);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2131563039));
+    setTitle(2131694612);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("phonenum");
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("key");
     this.c = getIntent().getStringExtra("key_register_binduin");
     this.d = getIntent().getStringExtra("uin");
     this.jdField_a_of_type_ArrayOfByte = getIntent().getByteArrayExtra("key_register_sign");
     this.e = getIntent().getStringExtra("key_register_password");
-    this.app.registObserver(this.jdField_a_of_type_Aycd);
+    this.app.registObserver(this.jdField_a_of_type_Azip);
     b();
-    setRightButton(2131690620, this);
+    setRightButton(2131690697, this);
     return true;
   }
   
@@ -183,18 +183,18 @@ public class VerifyPhoneNumActivity
     if (isFinishing()) {
       return;
     }
-    if (!aych.a().a())
+    if (!azit.a().a())
     {
       QLog.d("VerifyPhoneNumActivity", 4, "onAccountChanged not phonenum login");
       return;
     }
-    this.app.unRegistObserver(this.jdField_a_of_type_Aycd);
+    this.app.unRegistObserver(this.jdField_a_of_type_Azip);
     this.app = ((QQAppInterface)getAppRuntime());
-    this.app.registObserver(this.jdField_a_of_type_Aycd);
+    this.app.registObserver(this.jdField_a_of_type_Azip);
     if (this.jdField_a_of_type_Boolean)
     {
       this.app.execute(new VerifyPhoneNumActivity.4(this));
-      QQToast.a(BaseApplicationImpl.sApplication, amtj.a(2131715068), 0).a();
+      QQToast.a(BaseApplicationImpl.sApplication, anvx.a(2131715416), 0).a();
     }
     LoginActivity.a(this.app, this.app.getAccount());
     f();
@@ -232,12 +232,12 @@ public class VerifyPhoneNumActivity
   {
     super.onDestroy();
     a();
-    this.app.unRegistObserver(this.jdField_a_of_type_Aycd);
+    this.app.unRegistObserver(this.jdField_a_of_type_Azip);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyPhoneNumActivity
  * JD-Core Version:    0.7.0.1
  */

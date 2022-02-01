@@ -1,287 +1,246 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.app.ActivityManager.RunningServiceInfo;
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
-import android.os.Build.VERSION;
-import android.os.Bundle;
 import android.text.TextUtils;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.security.MessageDigest;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
+import com.tribe.async.reactive.Stream;
 import java.util.Iterator;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class bfwh
+  extends bfvt
 {
-  public static void a(Context paramContext, String paramString, int paramInt)
+  protected String b;
+  protected Map<bfvc, Stream<bfvc>> b;
+  
+  public bfwh(XMediaEditor paramXMediaEditor)
   {
-    Intent localIntent;
-    if (paramContext != null)
-    {
-      localIntent = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpimsecure");
-      if (localIntent != null)
-      {
-        Bundle localBundle = new Bundle();
-        if ((paramString != null) && (paramString.length() > 0)) {
-          localBundle.putString("platform_Id", paramString);
-        }
-        if (paramInt > 0) {
-          localBundle.putInt("dest_view", paramInt);
-        }
-        localIntent.putExtras(localBundle);
-        if (paramInt != 9502721) {
-          break label93;
-        }
-        localIntent.putExtra("big_brother_source_key", "biz_src_tmm");
-      }
+    super(paramXMediaEditor);
+  }
+  
+  public bfwk a(ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560686, paramViewGroup, false);
+    bfwk localbfwk = new bfwk(paramViewGroup);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoItem", 2, new Object[] { "Video onCreateViewHolder. vh hash=", Integer.valueOf(localbfwk.hashCode()) });
     }
-    for (;;)
+    b(localbfwk.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, localbfwk);
+    b(localbfwk.jdField_a_of_type_AndroidWidgetImageView, localbfwk);
+    b(localbfwk.b, localbfwk);
+    b(localbfwk.c, localbfwk);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) {
+      paramViewGroup.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
+    }
+    return localbfwk;
+  }
+  
+  protected SimpleObserver<bfuw> a(bfuw parambfuw)
+  {
+    return new bfwi(this, parambfuw);
+  }
+  
+  protected SimpleObserver<bfvc> a(bfvc parambfvc)
+  {
+    return new bfwj(this, parambfvc);
+  }
+  
+  public void a()
+  {
+    super.a();
+    if ((this.jdField_b_of_type_JavaUtilMap != null) && (!this.jdField_b_of_type_JavaUtilMap.isEmpty()))
     {
-      localIntent.setFlags(402653184);
-      paramContext.startActivity(localIntent);
-      return;
-      label93:
-      localIntent.putExtra("big_brother_source_key", "biz_src_safe");
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (bfvc)localIterator.next();
+        localObject = (Stream)this.jdField_b_of_type_JavaUtilMap.get(localObject);
+        if (localObject != null) {
+          ((Stream)localObject).cancel();
+        }
+      }
+      this.jdField_b_of_type_JavaUtilMap.clear();
     }
   }
   
-  public static boolean a(Context paramContext)
+  protected void a(int paramInt, boolean paramBoolean)
   {
-    boolean bool1 = false;
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 64).signatures;
-      Object localObject = MessageDigest.getInstance("MD5");
-      if ((paramContext != null) && (paramContext.length > 0)) {
-        ((MessageDigest)localObject).update(paramContext[0].toByteArray());
-      }
-      paramContext = ((MessageDigest)localObject).digest();
-      localObject = new char[16];
-      Object tmp58_56 = localObject;
-      tmp58_56[0] = 48;
-      Object tmp63_58 = tmp58_56;
-      tmp63_58[1] = 49;
-      Object tmp68_63 = tmp63_58;
-      tmp68_63[2] = 50;
-      Object tmp73_68 = tmp68_63;
-      tmp73_68[3] = 51;
-      Object tmp78_73 = tmp73_68;
-      tmp78_73[4] = 52;
-      Object tmp83_78 = tmp78_73;
-      tmp83_78[5] = 53;
-      Object tmp88_83 = tmp83_78;
-      tmp88_83[6] = 54;
-      Object tmp94_88 = tmp88_83;
-      tmp94_88[7] = 55;
-      Object tmp100_94 = tmp94_88;
-      tmp100_94[8] = 56;
-      Object tmp106_100 = tmp100_94;
-      tmp106_100[9] = 57;
-      Object tmp112_106 = tmp106_100;
-      tmp112_106[10] = 65;
-      Object tmp118_112 = tmp112_106;
-      tmp118_112[11] = 66;
-      Object tmp124_118 = tmp118_112;
-      tmp124_118[12] = 67;
-      Object tmp130_124 = tmp124_118;
-      tmp130_124[13] = 68;
-      Object tmp136_130 = tmp130_124;
-      tmp136_130[14] = 69;
-      Object tmp142_136 = tmp136_130;
-      tmp142_136[15] = 70;
-      tmp142_136;
-      StringBuilder localStringBuilder = new StringBuilder(paramContext.length * 2);
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        localStringBuilder.append(localObject[((paramContext[i] & 0xF0) >>> 4)]);
-        localStringBuilder.append(localObject[(paramContext[i] & 0xF)]);
-        i += 1;
-      }
-      if (!"00B1208638DE0FCD3E920886D658DAF6".equalsIgnoreCase(localStringBuilder.toString()))
-      {
-        boolean bool2 = "7CC749CFC0FB5677E6ABA342EDBDBA5A".equalsIgnoreCase(localStringBuilder.toString());
-        if (!bool2) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
+    if (paramInt == 0) {
+      super.a(paramInt, paramBoolean);
     }
-    catch (Exception paramContext)
+    do
     {
-      paramContext.printStackTrace();
-    }
-    return false;
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    Object localObject1;
-    if (paramContext != null)
-    {
-      localObject1 = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-      if (localObject1 != null)
+      Object localObject;
+      Stream localStream;
+      do
       {
-        localObject1 = ((List)localObject1).iterator();
         do
         {
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-        } while (!"com.tencent.qqpimsecure".equalsIgnoreCase(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next()).processName));
-      }
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if ((!bool1) && (Build.VERSION.SDK_INT >= 21)) {}
-      boolean bool2;
-      for (;;)
-      {
-        try
-        {
-          localObject1 = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec(new String[] { "ps" }).getInputStream()));
-          Object localObject2 = ((BufferedReader)localObject1).readLine();
-          bool2 = bool1;
-          if (localObject2 != null)
-          {
-            if (((String)localObject2).indexOf("com.tencent.qqpimsecure") == -1) {
-              continue;
-            }
-            localObject2 = new StringTokenizer((String)localObject2, " ");
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            ((StringTokenizer)localObject2).nextToken();
-            bool2 = TextUtils.equals(((StringTokenizer)localObject2).nextToken().trim(), "com.tencent.qqpimsecure");
-            if (!bool2) {
-              continue;
-            }
-            bool2 = true;
-          }
-          if ((bool2) || (Build.VERSION.SDK_INT <= 23) || (paramContext == null)) {
-            break;
-          }
-          paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningServices(2147483647);
-          if (paramContext == null) {
-            break;
-          }
-          paramContext = paramContext.iterator();
-          if (!paramContext.hasNext()) {
-            break;
-          }
-          localObject1 = (ActivityManager.RunningServiceInfo)paramContext.next();
-          if ((localObject1 == null) || (((ActivityManager.RunningServiceInfo)localObject1).service == null) || (((ActivityManager.RunningServiceInfo)localObject1).process == null) || (!((ActivityManager.RunningServiceInfo)localObject1).process.contains("com.tencent.qqpimsecure"))) {
-            continue;
-          }
-          return true;
+          return;
+        } while (paramInt != 1);
+        localObject = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. hasNext=", Boolean.valueOf(((Iterator)localObject).hasNext()) });
         }
-        catch (Throwable localThrowable)
-        {
-          localThrowable.printStackTrace();
+        if (!((Iterator)localObject).hasNext()) {
+          break;
         }
-        bool2 = bool1;
+        localObject = (bfvc)((Iterator)localObject).next();
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. next info position=", Integer.valueOf(((bfvc)localObject).c), ", type=", Integer.valueOf(((bfvc)localObject).b()), ", hash=", Integer.valueOf(localObject.hashCode()) });
+        }
+        localStream = (Stream)this.jdField_b_of_type_JavaUtilMap.get(localObject);
+      } while (localStream == null);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. fire stream. info hash=", Integer.valueOf(localObject.hashCode()) });
       }
-      return bool2;
-    }
+      this.jdField_b_of_type_JavaLangString = ((bfvc)localObject).d;
+      ((bfvc)localObject).a = System.currentTimeMillis();
+      localStream.subscribe(a((bfvc)localObject));
+      return;
+      this.jdField_b_of_type_JavaLangString = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoItem", 2, new Object[] { "scheduleStream for poster. no poster stream. mHasStartUploading=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    a(0, true);
   }
   
-  public static boolean c(Context paramContext)
+  public void a(View paramView, bfvx parambfvx)
   {
-    boolean bool2 = false;
-    try
+    bfvc localbfvc = (bfvc)parambfvx.jdField_a_of_type_Bfur;
+    switch (paramView.getId())
     {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
-      boolean bool1 = bool2;
-      if (paramContext != null)
+    case 2131368268: 
+    default: 
+    case 2131368265: 
+    case 2131368269: 
+      do
       {
-        paramContext = paramContext.versionName;
-        bool1 = bool2;
-        if (paramContext != null)
-        {
-          boolean bool3 = paramContext.contains("mini");
-          bool1 = bool2;
-          if (bool3) {
-            bool1 = true;
-          }
-        }
-      }
-      return bool1;
+        return;
+        this.jdField_a_of_type_Bfvo.a(parambfvx);
+        return;
+      } while (localbfvc.g != 2);
+      parambfvx.b.setVisibility(4);
+      a(localbfvc);
+      return;
     }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      paramContext.printStackTrace();
+    bkxz.a((Activity)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext());
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoItem", 2, new Object[] { "onItemViewClick preview. info position=", Integer.valueOf(localbfvc.c), ", path=", localbfvc.f });
     }
-    return false;
+    a(localbfvc);
   }
   
-  public static boolean d(Context paramContext)
+  protected void a(bfuw parambfuw)
   {
-    boolean bool2 = false;
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
-      boolean bool1 = bool2;
-      if (paramContext != null)
+    parambfuw = (bfvc)parambfuw;
+    if (this.jdField_a_of_type_JavaUtilMap == null) {
+      this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
+    }
+    if (this.jdField_b_of_type_JavaUtilMap == null) {
+      this.jdField_b_of_type_JavaUtilMap = new LinkedHashMap();
+    }
+    Stream localStream1 = parambfuw.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor);
+    if ((localStream1 != null) && (!this.jdField_b_of_type_JavaUtilMap.containsKey(parambfuw))) {
+      this.jdField_b_of_type_JavaUtilMap.put(parambfuw, localStream1);
+    }
+    Stream localStream2 = parambfuw.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor);
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(parambfuw)) {
+      this.jdField_a_of_type_JavaUtilMap.put(parambfuw, localStream2);
+    }
+    if (localStream1 != null) {
+      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
       {
-        paramContext = paramContext.versionName;
-        bool1 = bool2;
-        if (paramContext != null)
-        {
-          boolean bool3 = paramContext.contains("minipay");
-          bool1 = bool2;
-          if (bool3) {
-            bool1 = true;
-          }
-        }
+        this.jdField_b_of_type_JavaLangString = parambfuw.d;
+        parambfuw.a = System.currentTimeMillis();
+        localStream1.subscribe(a(parambfuw));
       }
-      return bool1;
     }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      paramContext.printStackTrace();
+    while (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return;
     }
-    return false;
+    this.jdField_a_of_type_JavaLangString = parambfuw.d;
+    this.jdField_a_of_type_Boolean = true;
+    parambfuw.a = System.currentTimeMillis();
+    localStream2.subscribe(a(parambfuw));
   }
   
-  public static boolean e(Context paramContext)
+  public void a(bfvc parambfvc)
   {
-    boolean bool2 = false;
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
-      boolean bool1 = bool2;
-      if (paramContext != null)
-      {
-        int i = paramContext.versionCode;
-        bool1 = bool2;
-        if (i >= 198) {
-          bool1 = true;
-        }
-      }
-      return bool1;
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.d() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.requestFocus();
     }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return false;
+    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext();
+    Intent localIntent = new Intent(localBaseActivity, ShortVideoPlayActivity.class);
+    localIntent.putExtra("file_send_path", parambfvc.c());
+    localIntent.putExtra("video_play_caller", 4);
+    localIntent.putExtra("message_click_start", System.currentTimeMillis());
+    localBaseActivity.startActivity(localIntent);
+    parambfvc = new Intent();
+    parambfvc.setAction("com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video");
+    parambfvc.setPackage(localBaseActivity.getPackageName());
+    localBaseActivity.sendBroadcast(parambfvc);
   }
   
-  public static boolean f(Context paramContext)
+  protected void a(bfvx parambfvx, bfuw parambfuw, int paramInt)
   {
-    return ((a(paramContext)) && (e(paramContext)) && (!c(paramContext))) || (d(paramContext));
+    switch (paramInt)
+    {
+    default: 
+      parambfvx.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      parambfvx.c.setVisibility(0);
+      parambfvx.b.setVisibility(4);
+      parambfvx.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
+    }
+    do
+    {
+      return;
+      parambfvx.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      switch (parambfuw.g)
+      {
+      default: 
+        return;
+      case -2147483648: 
+      case -2147483647: 
+      case -2147483646: 
+      case -2147483645: 
+        parambfvx.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
+        parambfvx.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+        parambfvx.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(parambfuw.e, parambfuw.d);
+        parambfvx.b.setVisibility(4);
+        parambfvx.c.setVisibility(4);
+        return;
+      }
+    } while (parambfuw.e != 100);
+    parambfvx.a();
+    return;
+    parambfvx.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
+    parambfvx.b.setVisibility(0);
+    parambfvx.c.setVisibility(4);
+  }
+  
+  public void d(bfur parambfur)
+  {
+    super.d(parambfur);
+    parambfur = (bfvc)parambfur;
+    if ((this.jdField_b_of_type_JavaUtilMap != null) && (!this.jdField_b_of_type_JavaUtilMap.isEmpty()))
+    {
+      parambfur = (Stream)this.jdField_b_of_type_JavaUtilMap.get(parambfur);
+      if (parambfur != null) {
+        parambfur.cancel();
+      }
+    }
   }
 }
 

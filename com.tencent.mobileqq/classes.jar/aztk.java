@@ -1,34 +1,8 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.os.Bundle;
 
-final class aztk
-  implements Downloader.DownloadListener
+public abstract interface aztk
 {
-  aztk(QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack) {}
-  
-  public void onDownloadCanceled(String paramString)
-  {
-    if (this.a != null) {
-      this.a.onResult(false);
-    }
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    if (this.a != null) {
-      this.a.onResult(false);
-    }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    if (this.a != null) {
-      this.a.onResult(true);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle);
 }
 
 

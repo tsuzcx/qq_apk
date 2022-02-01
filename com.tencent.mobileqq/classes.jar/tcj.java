@@ -1,23 +1,13 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-class tcj
-  extends bjmc
+public class tcj
+  extends ThreadLocal<Boolean>
 {
-  tcj(tci paramtci) {}
+  public tcj(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected Boolean a()
   {
-    super.onAnimationEnd(paramAnimation);
-    if (tch.a(this.a.a) != null)
-    {
-      paramAnimation = new ArrayList();
-      paramAnimation.add(tch.a(this.a.a));
-      tch.a(this.a.a).a(paramAnimation, tch.a(this.a.a));
-      QQToast.a(this.a.a.a, 2, 2131717377, 0).a();
-    }
+    return Boolean.valueOf(false);
   }
 }
 

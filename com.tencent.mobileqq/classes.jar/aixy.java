@@ -1,53 +1,72 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopDateFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aixy
-  implements bhkt
 {
-  CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-  CalendarDay b;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
   
-  public aixy(ChatHistoryTroopDateFragment paramChatHistoryTroopDateFragment, CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
+  public static aixy a(aixy paramaixy)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay1;
-    this.b = paramCalendarDay2;
-  }
-  
-  public CalendarDay a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay == null) {
-      return new CalendarDay(System.currentTimeMillis());
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-  }
-  
-  public void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord)
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_JavaLangString;
-    ChatHistoryBubbleListForTroopFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.getActivity(), str, paramMessageRecord, -1, 3);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_date", "date_clk", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_JavaLangString, "", "", "");
-    QLog.i(ChatHistoryTroopDateFragment.b(), 1, "clickDay: CalendarDay" + paramCalendarDay + " | MessageRecord:" + paramMessageRecord);
-  }
-  
-  public void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2)
-  {
-    if (!ChatHistoryTroopDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment, paramInt1, paramInt2)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.a(paramInt1, paramInt2);
-    }
-  }
-  
-  public CalendarDay b()
-  {
-    if (this.b == null)
+    aixy localaixy = new aixy();
+    if (paramaixy != null)
     {
-      CalendarDay localCalendarDay = new CalendarDay(System.currentTimeMillis());
-      return new CalendarDay(localCalendarDay.year + 1, localCalendarDay.month, localCalendarDay.month);
+      localaixy.jdField_a_of_type_Int = paramaixy.jdField_a_of_type_Int;
+      localaixy.jdField_a_of_type_JavaLangString = paramaixy.jdField_a_of_type_JavaLangString;
+      localaixy.jdField_b_of_type_Int = paramaixy.jdField_b_of_type_Int;
+      localaixy.jdField_b_of_type_JavaLangString = paramaixy.jdField_b_of_type_JavaLangString;
+      localaixy.c = paramaixy.c;
     }
-    return this.b;
+    return localaixy;
+  }
+  
+  public static aixy a(JSONObject paramJSONObject)
+  {
+    aixy localaixy = new aixy();
+    if (paramJSONObject != null)
+    {
+      localaixy.jdField_a_of_type_Int = paramJSONObject.optInt("tab_id", -1);
+      localaixy.jdField_b_of_type_Int = paramJSONObject.optInt("recommend_count", 0);
+      localaixy.jdField_a_of_type_JavaLangString = paramJSONObject.optString("tab_name");
+      localaixy.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon_url_select");
+      localaixy.c = paramJSONObject.optString("icon_url_unselect");
+    }
+    return localaixy;
+  }
+  
+  public static JSONObject a(aixy paramaixy)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (paramaixy != null) {}
+    try
+    {
+      localJSONObject.put("tab_id", paramaixy.jdField_a_of_type_Int);
+      localJSONObject.put("recommend_count", paramaixy.jdField_b_of_type_Int);
+      localJSONObject.put("tab_name", paramaixy.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("icon_url_select", paramaixy.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("icon_url_unselect", paramaixy.c);
+      return localJSONObject;
+    }
+    catch (JSONException paramaixy) {}
+    return localJSONObject;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof aixy)) {
+      return this.jdField_a_of_type_Int == ((aixy)paramObject).jdField_a_of_type_Int;
+    }
+    return super.equals(paramObject);
+  }
+  
+  public String toString()
+  {
+    return "tab_id=" + this.jdField_a_of_type_Int + " recommend_count=" + this.jdField_b_of_type_Int + " tab_name=" + this.jdField_a_of_type_JavaLangString + " icon_url_select=" + this.jdField_b_of_type_JavaLangString + " icon_url_unselect=" + this.c;
   }
 }
 

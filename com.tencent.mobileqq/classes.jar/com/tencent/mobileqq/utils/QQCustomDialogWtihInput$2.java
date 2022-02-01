@@ -40,7 +40,7 @@ class QQCustomDialogWtihInput$2
           {
             localObject = new QQToast((Context)localObject);
             ((QQToast)localObject).d(2000);
-            ((QQToast)localObject).c(2131719009);
+            ((QQToast)localObject).c(2131719414);
             ((QQToast)localObject).a();
           }
         }
@@ -51,7 +51,7 @@ class QQCustomDialogWtihInput$2
           {
             localObject = new QQToast((Context)localObject);
             ((QQToast)localObject).d(2000);
-            ((QQToast)localObject).c(2131719010);
+            ((QQToast)localObject).c(2131719415);
             ((QQToast)localObject).a();
           }
         }

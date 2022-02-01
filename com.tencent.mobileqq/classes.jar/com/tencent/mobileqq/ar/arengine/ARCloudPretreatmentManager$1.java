@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aodm;
-import aogz;
-import aoht;
+import apgo;
+import apkb;
+import apkv;
 import com.tencent.YTFace.cluster.FaceCluster;
 import com.tencent.YTFace.model.FaceStatus;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class ARCloudPretreatmentManager$1
   implements Runnable
 {
-  public ARCloudPretreatmentManager$1(aogz paramaogz, FaceStatus[] paramArrayOfFaceStatus, FaceCluster paramFaceCluster, byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
+  public ARCloudPretreatmentManager$1(apkb paramapkb, FaceStatus[] paramArrayOfFaceStatus, FaceCluster paramFaceCluster, byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ public class ARCloudPretreatmentManager$1
         if (i < j)
         {
           long l2 = System.currentTimeMillis();
-          if (aodm.b) {
+          if (apgo.b) {
             this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].feature = this.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster.calcuFaceFeature(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].xys, 0);
           }
           for (;;)
@@ -53,8 +53,8 @@ public class ARCloudPretreatmentManager$1
       }
     }
     l1 = System.currentTimeMillis() - l1;
-    aoht.a().e = l1;
-    aoht.a().jdField_a_of_type_Int = i;
+    apkv.a().e = l1;
+    apkv.a().jdField_a_of_type_Int = i;
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_ARCloudPretreatmentManagert", 2, "[DEBUG_SCAN_yt_face] pretreat, extractFaceFeature TimeCost = " + l1);
     }

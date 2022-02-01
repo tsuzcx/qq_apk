@@ -1,26 +1,45 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.widget.ARMapHongBaoListView;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class wab
-  implements View.OnLayoutChangeListener
+  implements Executor
 {
-  wab(vzt paramvzt, vuq paramvuq) {}
+  private int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  private int b;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  private wab(@NonNull String paramString, int paramInt1, @IntRange(from=0L) int paramInt2)
   {
-    xvv.b(vzt.b(), "onLayoutChange");
-    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && ((this.jdField_a_of_type_Vzt.d) || (this.jdField_a_of_type_Vzt.e)) && (!this.jdField_a_of_type_Vzt.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.mForStory))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  }
+  
+  public void execute(@NonNull Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_JavaUtilQueue.offer(paramRunnable);
+    int i = this.jdField_a_of_type_JavaUtilQueue.size();
+    if (i > Runtime.getRuntime().availableProcessors()) {
+      ykq.b(this.jdField_a_of_type_JavaLangString, "too many runnable remained in the queue, size " + i);
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= this.jdField_a_of_type_Int)
     {
-      xvv.b(vzt.b(), "first show node, showStoryNode");
-      if (this.jdField_a_of_type_Vzt.d)
+      ykq.b(this.jdField_a_of_type_JavaLangString, "current number of task threshold is " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      while (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
       {
-        this.jdField_a_of_type_Vzt.d = false;
-        this.jdField_a_of_type_Vuq.b("first_show_node", Boolean.valueOf(false));
-      }
-      this.jdField_a_of_type_Vzt.e = false;
-      if (this.jdField_a_of_type_Vzt.a()) {
-        this.jdField_a_of_type_Vzt.jdField_a_of_type_Vzf.a("exp_story", 4);
+        paramRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
+        if (paramRunnable != null) {
+          ThreadManager.excute(paramRunnable, this.b, new wac(this, paramRunnable), false);
+        }
       }
     }
   }

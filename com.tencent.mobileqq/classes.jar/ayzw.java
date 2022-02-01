@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.AppRuntime.Status;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$onBindViewHolder$1$1"}, k=3, mv={1, 1, 16})
-final class ayzw
-  implements View.OnClickListener
+class ayzw
+  implements DialogInterface.OnClickListener
 {
-  ayzw(ayzv paramayzv, ayzs paramayzs, ayzu paramayzu, int paramInt) {}
+  ayzw(ayzg paramayzg, AppRuntime.Status paramStatus, long paramLong) {}
   
-  public final void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ayzv localayzv = this.jdField_a_of_type_Ayzv;
-    Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
-    localayzv.a(paramView, (ayzt)ayzs.a(this.jdField_a_of_type_Ayzs).get(this.jdField_a_of_type_Int));
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!NetworkUtil.isNetworkAvailable(ayzg.a(this.jdField_a_of_type_Ayzg)))
+    {
+      this.jdField_a_of_type_Ayzg.c();
+      QQToast.a(ayzg.a(this.jdField_a_of_type_Ayzg), 1, 2131718971, 1).a();
+      return;
+    }
+    ayzg.a(this.jdField_a_of_type_Ayzg, this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long, true);
+    bdla.b(ayzg.a(this.jdField_a_of_type_Ayzg), "dc00898", "", "", "0X8009DE1", "0X8009DE1", 0, 0, "", "", "", "");
   }
 }
 

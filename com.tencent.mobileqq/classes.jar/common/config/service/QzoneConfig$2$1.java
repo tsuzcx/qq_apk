@@ -1,6 +1,6 @@
 package common.config.service;
 
-import aafs;
+import aave;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +11,7 @@ class QzoneConfig$2$1
   
   public void run()
   {
-    String str = aafs.b();
+    String str = aave.b();
     if (QLog.isColorLevel()) {
       QLog.d("QzoneConfig", 2, "QZoneConfigService onChange from:" + str + " ,processName:" + BaseApplicationImpl.processName + " ,selfChange:" + this.val$selfChange);
     }

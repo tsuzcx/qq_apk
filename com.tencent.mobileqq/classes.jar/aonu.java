@@ -1,12 +1,26 @@
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class aonu
+  extends aont
 {
-  public int a;
-  public String a;
-  
-  public aonu(int paramInt, String paramString)
+  public aonu(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramQQAppInterface, paramQQMessageFacade);
+    this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
+    this.jdField_a_of_type_Int = 6000;
+  }
+  
+  protected aoxv a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(0);
+  }
+  
+  protected void a()
+  {
+    ((ansr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(false);
   }
 }
 

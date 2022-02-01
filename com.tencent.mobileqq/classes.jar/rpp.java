@@ -1,7 +1,35 @@
-import kotlin.Metadata;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.articlesummary.articlesummary.LocalInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rpp {}
+public class rpp
+{
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  
+  public rpp() {}
+  
+  public rpp(articlesummary.LocalInfo paramLocalInfo)
+  {
+    if (paramLocalInfo == null) {
+      return;
+    }
+    this.a = paramLocalInfo.bytes_store_url.get().toStringUtf8();
+    this.b = paramLocalInfo.bytes_store_url.get().toStringUtf8();
+    this.c = paramLocalInfo.bytes_store_address.get().toStringUtf8();
+    this.d = paramLocalInfo.bytes_store_longitude.get().toStringUtf8();
+    this.e = paramLocalInfo.bytes_store_latitude.get().toStringUtf8();
+    this.f = paramLocalInfo.bytes_distance_description.get().toStringUtf8();
+    this.g = paramLocalInfo.bytes_corporate_image_name.get().toStringUtf8();
+    this.h = paramLocalInfo.bytes_distance_limit.get().toStringUtf8();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

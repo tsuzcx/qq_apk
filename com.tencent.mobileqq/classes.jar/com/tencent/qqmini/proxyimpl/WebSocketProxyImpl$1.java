@@ -1,24 +1,24 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bjgw;
-import bjgx;
+import bksh;
+import bksi;
 import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
 
 public class WebSocketProxyImpl$1
   implements Runnable
 {
-  public WebSocketProxyImpl$1(bjgw parambjgw, bjgx parambjgx, int paramInt1, int paramInt2, String paramString) {}
+  public WebSocketProxyImpl$1(bksh parambksh, bksi parambksi, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Bjgx.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bjgx.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onClose(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    if (!this.jdField_a_of_type_Bksi.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bksi.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyWebSocketProxy$WebSocketListener.onClose(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.WebSocketProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

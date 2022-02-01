@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import afiw;
+import agab;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
@@ -9,16 +9,16 @@ import com.tencent.mobileqq.widget.QQToast;
 public class FriendChatPie$12
   implements Runnable
 {
-  public FriendChatPie$12(afiw paramafiw, MessageRecord paramMessageRecord) {}
+  public FriendChatPie$12(agab paramagab, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
     if (this.a.sendFailCode == 41)
     {
-      QQToast.a(this.this$0.app.getApp(), 2131691791, 0).a();
+      QQToast.a(this.this$0.app.getApp(), 2131691879, 0).a();
       return;
     }
-    QQToast.a(this.this$0.app.getApp(), 2131718593, 0).a();
+    QQToast.a(this.this$0.app.getApp(), 2131718982, 0).a();
     VasWebviewUtil.reportCommercialDrainage(this.this$0.app.getCurrentUin(), "Stick", "Send", "1", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }

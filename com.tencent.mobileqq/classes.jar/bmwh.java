@@ -1,18 +1,13 @@
-import android.support.annotation.NonNull;
+import java.io.File;
 
-class bmwh
-  implements bmvq
+public class bmwh
 {
-  bmwh(bmwg parambmwg) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    if (paramInt == 0) {
-      return bfby.b(paramString);
-    }
-    return "";
-  }
+  public static final String a = bmwx.a + File.separator + "aiscene";
+  public static final String b = a + File.separator + "res";
+  public static final String c = a + File.separator + "res_zip_download";
+  public static final String d = b + File.separator + "AISceneGuide";
+  public static final String e = b + File.separator + "AISceneLoading";
+  public static final String f = b + File.separator + "AutoAISceneAni";
 }
 
 

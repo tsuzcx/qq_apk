@@ -27,7 +27,7 @@ public class WebViewTopTabRadioButton
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130850321);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130850427);
       return this.jdField_a_of_type_AndroidGraphicsBitmap;
     }
     catch (OutOfMemoryError paramContext)

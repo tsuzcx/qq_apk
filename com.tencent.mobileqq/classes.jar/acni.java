@@ -1,55 +1,15 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class acni
-  implements View.OnClickListener
+final class acni
+  implements Comparator<MessageRecord>
 {
-  public acni(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    switch (paramView.getId())
-    {
+    if (paramMessageRecord1.longMsgIndex > paramMessageRecord2.longMsgIndex) {
+      return 1;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject = null;
-      if ((paramView.getTag() instanceof String)) {
-        localObject = String.valueOf(paramView.getTag());
-      }
-      if ("0X8004001".equals(localObject))
-      {
-        bcef.b(this.a.app, "CliOper", "", "", "0X8004002", "0X8004002", 0, 0, "", "", "", "");
-        localObject = new Intent(this.a, SubAccountUgActivity.class);
-        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-        this.a.startActivity((Intent)localObject);
-      }
-      else if ("0X8004456".equals(localObject))
-      {
-        bcef.b(this.a.app, "CliOper", "", "", "0X8004457", "0X8004457", 0, 0, "", "", "", "");
-        localObject = new Intent(this.a, SubAccountBindActivity.class);
-        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-        this.a.startActivity((Intent)localObject);
-        bfun.a().a(this.a.app.getCurrentAccountUin(), true);
-        continue;
-        localObject = new Intent();
-        ((Intent)localObject).setClass(paramView.getContext(), AssociatedAccountActivity.class);
-        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-        paramView.getContext().startActivity((Intent)localObject);
-        bcef.b(this.a.app, "CliOper", "", "", "0X8004039", "0X8004039", 0, 0, "", "", "", "");
-        bcef.b(this.a.app, "dc00898", "", "", "0X800AC39", "0X800AC39", 0, 0, "", "", "", "");
-      }
-    }
+    return -1;
   }
 }
 

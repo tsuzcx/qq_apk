@@ -1,28 +1,30 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class ofv
-  extends amyh
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public ofv(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  public ofv(VideoCoverView paramVideoCoverView) {}
   
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "is prepare");
+    }
+    if (VideoCoverView.a(this.a) == 1) {
+      com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.jdField_a_of_type_Long = System.currentTimeMillis();
+    }
+    bdla.a(null, "dc00898", "", VideoCoverView.a(this.a).a.jdField_a_of_type_JavaLangString, "0X8008F64", "0X8008F64", 0, 0, VideoCoverView.a(this.a).a.c, "", this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a).a.b);
+    ofa.a().b(this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a));
+    this.a.jdField_a_of_type_Long = VideoCoverView.a(this.a).getDuration();
+    if ((this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4))
     {
-      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131700417));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-      }
+      VideoCoverView.a(this.a).start();
+      this.a.jdField_a_of_type_Int = 4;
+      this.a.g();
     }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131700396));
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130847005);
   }
 }
 

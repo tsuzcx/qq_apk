@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.dinifly.IDiniFlyQLog;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
-public final class bcat
-  implements IDiniFlyQLog
+public class bcat
+  extends ClickableSpan
 {
-  public void trace(int paramInt1, String paramString1, int paramInt2, String paramString2, Throwable paramThrowable)
+  public bcat(UniteSearchActivity paramUniteSearchActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if ((1 == paramInt2) || (QLog.isColorLevel())) {}
-    switch (paramInt1)
-    {
-    case 4: 
-    default: 
-      QLog.i(paramString1, paramInt2, paramString2, null);
-      return;
-    case 5: 
-      QLog.w(paramString1, paramInt2, paramString2, null);
-      return;
-    case 6: 
-      QLog.e(paramString1, paramInt2, paramString2, null);
-      return;
-    }
-    QLog.d(paramString1, paramInt2, paramString2, null);
+    this.a.openContextMenu(this.a.a);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

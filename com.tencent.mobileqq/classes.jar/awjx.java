@@ -1,67 +1,22 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.dating.FansEntity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
 
 public class awjx
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public void a(String paramString1, String paramString2, Object paramObject) {}
+  public awjx(LocationDialogUtil.11 param11) {}
   
-  protected void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, String paramString1, List<awoe> paramList, String paramString2, int paramInt1, int paramInt2) {}
-  
-  public void a(boolean paramBoolean, List<FansEntity> paramList) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void c(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    case 9: 
-    case 10: 
-    case 11: 
-    case 13: 
-    default: 
-      return;
-    case 4: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], (List)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
-      return;
-    case 12: 
-      a(paramBoolean);
-      return;
-    case 5: 
-      paramObject = (Object[])paramObject;
-      if ((paramBoolean) && (paramObject != null) && (paramObject.length == 1))
-      {
-        a(paramBoolean, (List)paramObject[0]);
-        return;
-      }
-      a(false, null);
-      return;
-    case 6: 
-      c(paramBoolean, ((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
-      return;
-    case 7: 
-      b(paramBoolean);
-      return;
-    case 8: 
-      paramObject = (Object[])paramObject;
-      a((String)paramObject[0], (String)paramObject[1], paramObject[2]);
-      return;
-    case 14: 
-      b(paramBoolean, ((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
-      return;
-    }
-    a(paramBoolean, ((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
+    paramDialogInterface = awiz.a((QQAppInterface)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppInterface());
+    paramDialogInterface.c(new awit(this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString));
+    paramDialogInterface.a(true);
+    paramDialogInterface.a(this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString);
+    LocationShareFragment.b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_b_of_type_Int);
   }
 }
 

@@ -1,22 +1,34 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import android.view.View;
 
-public class aiec
-  extends bjtz
+class aiec
+  implements bkzq
 {
-  public Button a;
-  public TroopLabelLayout a;
-  public ImageView f;
-  public String f;
-  public TextView h;
-  public TextView i;
-  public TextView j;
-  public TextView k;
-  public TextView l;
-  public TextView m;
-  public TextView n;
+  aiec(aido paramaido) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (this.a.p) {
+      return;
+    }
+    this.a.p = true;
+    if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
+    {
+      this.a.a(2131695032);
+      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
+      if (paramInt == 0) {
+        this.a.a(true, 0);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      this.a.a(false, paramInt);
+      continue;
+      this.a.a(2131695032);
+      this.a.a(true, 0);
+    }
+  }
 }
 
 

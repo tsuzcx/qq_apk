@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class aibf
-  implements aiom
+class aibf
+  implements DialogInterface.OnDismissListener
 {
-  public aibf(TroopView paramTroopView) {}
+  aibf(aiav paramaiav) {}
   
-  public void a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt == SimpleCheckableSlidingIndicator.a) {
-      TroopView.a(this.a);
-    }
+    this.a.finish(1);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark.API;
 
-import aonx;
-import aooa;
-import aoog;
+import apqy;
+import aprb;
+import aprh;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class ArkAppDeviceModule$ObserverMethod$5$2
   implements Runnable
 {
-  public ArkAppDeviceModule$ObserverMethod$5$2(aoog paramaoog) {}
+  public ArkAppDeviceModule$ObserverMethod$5$2(aprh paramaprh) {}
   
   public void run()
   {

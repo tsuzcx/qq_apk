@@ -1,248 +1,135 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.commonsdk.cache.Sizeable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class syf
-  extends Drawable
-  implements Sizeable, URLDrawable.URLDrawableListener, pwf
 {
-  private static String jdField_a_of_type_JavaLangString = "AggregateAvatarUrlDrawable";
-  private final float jdField_a_of_type_Float = 0.48F;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private int jdField_b_of_type_Int = 1;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF;
-  private Bitmap c;
-  private volatile Bitmap d;
+  private static syf jdField_a_of_type_Syf;
+  private int jdField_a_of_type_Int = 0;
+  private int b = 0;
   
-  public syf(Bitmap paramBitmap, int paramInt1, Resources paramResources, String paramString, int paramInt2)
+  private syf()
   {
-    a(paramBitmap, paramInt1, paramResources, paramInt2);
-    if (TextUtils.isEmpty(paramString)) {}
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(218);
+    if (localAladdinConfig != null)
+    {
+      this.jdField_a_of_type_Int = localAladdinConfig.getIntegerFromString("daily_diandian_icon_mode_pure", 0);
+      this.b = localAladdinConfig.getIntegerFromString("daily_diandian_icon_mode_mix", 0);
+      QLog.d("DailyFeedsDiandianEntranceManager", 1, "Daily entry pure : " + this.jdField_a_of_type_Int + ", mix : " + this.b);
+    }
+  }
+  
+  private String a()
+  {
+    int i = -1;
+    int j = a();
+    if (j == 2) {
+      i = 5;
+    }
     for (;;)
     {
-      return;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_AndroidContentResResources = paramResources;
       try
       {
-        this.jdField_a_of_type_Long = Long.parseLong(paramString);
-        if (this.jdField_a_of_type_Long <= 0L) {
-          continue;
-        }
-        paramBitmap = ReadInJoyUserInfoModule.a(this.jdField_a_of_type_Long, this);
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "[AggregateAvatarUrlDrawable] load aggregate avatar from 0xb81 userinfo success, uin:" + this.jdField_a_of_type_Long);
-        if (paramBitmap == null) {
-          continue;
-        }
-        a(ReadInJoyUserInfoModule.a(paramBitmap));
-        return;
+        Object localObject = new JSONObject();
+        ((JSONObject)localObject).put("diandianfeeds_type", i);
+        ((JSONObject)localObject).put("trigger_src", 1);
+        ((JSONObject)localObject).put("channel_id", pin.b());
+        localObject = ((JSONObject)localObject).toString();
+        return localObject;
       }
-      catch (NumberFormatException paramBitmap)
+      catch (JSONException localJSONException)
       {
-        for (;;)
-        {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, paramBitmap.getMessage());
-        }
+        localJSONException.printStackTrace();
+      }
+      if (j == 3) {
+        i = 6;
+      } else if (j == 1) {
+        i = RecommendFeedsDiandianEntranceManager.a().b();
       }
     }
+    return "";
   }
   
-  public syf(Bitmap paramBitmap, String paramString, int paramInt1, Resources paramResources, int paramInt2)
+  public static syf a()
   {
-    a(paramBitmap, paramInt1, paramResources, paramInt2);
-    a(paramString);
-  }
-  
-  private void a()
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "initAggregateIcon mode : " + this.jdField_b_of_type_Int);
-    if ((this.d == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "has error !");
-      return;
-    }
-    Bitmap localBitmap3;
+    if (jdField_a_of_type_Syf == null) {}
     try
     {
-      localBitmap3 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, 2130844841);
-      if (localBitmap3 == null)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "initAggregateIcon: mask is null");
-        return;
+      if (jdField_a_of_type_Syf == null) {
+        jdField_a_of_type_Syf = new syf();
       }
+      return jdField_a_of_type_Syf;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    finally {}
+  }
+  
+  public static tso a(Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getParcelable("daily_bottom_entry_data");
+    if ((paramBundle instanceof tso)) {
+      return (tso)paramBundle;
+    }
+    return null;
+  }
+  
+  public static boolean a(Bundle paramBundle)
+  {
+    return paramBundle.containsKey("daily_bottom_entry_data");
+  }
+  
+  public int a()
+  {
+    if (!bmhv.l())
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "initAggregateIcon: ", localOutOfMemoryError);
-      return;
+      QLog.d("DailyFeedsDiandianEntranceManager", 1, "getEntryMode | hide mode");
+      return 0;
     }
-    Bitmap localBitmap2;
-    if (this.jdField_b_of_type_Int == 1) {
-      localBitmap2 = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    }
-    for (Bitmap localBitmap1 = this.d;; localBitmap1 = this.jdField_a_of_type_AndroidGraphicsBitmap)
+    if (plm.a(plm.b()))
     {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = bfrl.a(localBitmap2, localBitmap3, 0.0F, 1.0F);
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, this.jdField_a_of_type_Int * 0.75F, this.jdField_a_of_type_Int * 0.75F);
-      this.c = localBitmap1;
-      this.jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, this.c.getWidth(), this.c.getHeight());
-      this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Int * 0.52F, this.jdField_a_of_type_Int * 0.52F, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-      return;
-      localBitmap2 = this.d;
+      QLog.d("DailyFeedsDiandianEntranceManager", 1, "getEntryMode |  entryModeInNormalDaily : " + this.jdField_a_of_type_Int);
+      return this.jdField_a_of_type_Int;
     }
+    QLog.d("DailyFeedsDiandianEntranceManager", 1, "getEntryMode |  entryModeInMixDaily : " + this.b);
+    return this.b;
   }
   
-  private void a(String paramString)
+  public View.OnClickListener a(Activity paramActivity, View paramView, orj paramorj)
   {
-    try
+    switch (a())
     {
-      int i = this.jdField_a_of_type_Int;
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      float f2 = i;
-      if (this.jdField_b_of_type_Int == 1) {}
-      for (float f1 = 0.52F;; f1 = 0.48F)
-      {
-        f1 *= f2;
-        localURLDrawableOptions.mRequestWidth = Math.round(f1);
-        localURLDrawableOptions.mRequestHeight = Math.round(f1);
-        this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setDecodeHandler(bfol.a);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
-        if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() != null))
-        {
-          this.d = bfvo.a(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
-          a();
-        }
-        return;
-      }
-      return;
+    case 1: 
+    default: 
+      return new syi(this, paramActivity);
+    case 3: 
+      return new syg(this, paramorj);
+    case 0: 
+      return null;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-      this.d = null;
+    return new syh(this, paramActivity);
+  }
+  
+  public void a()
+  {
+    if (a() != 0) {
+      olh.a(null, "CliOper", "", "", "0X80094FE", "0X80094FE", 0, 0, "", "", "", a(), false);
     }
   }
   
-  public void a(Bitmap paramBitmap, int paramInt1, Resources paramResources, int paramInt2)
+  public boolean a()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
+    return a() != 0;
   }
   
-  public void draw(@NonNull Canvas paramCanvas)
+  public void b()
   {
-    if (this.d != null)
-    {
-      if ((this.c == null) || (this.jdField_b_of_type_AndroidGraphicsBitmap == null)) {
-        a();
-      }
-      if ((this.c != null) && (this.jdField_b_of_type_AndroidGraphicsBitmap != null))
-      {
-        paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawBitmap(this.c, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-      }
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  public int getByteSize()
-  {
-    return Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888).getByteCount();
-  }
-  
-  public int getOpacity()
-  {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-      return this.jdField_a_of_type_ComTencentImageURLDrawable.getOpacity();
-    }
-    return 0;
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadFailed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadSuccessed");
-    this.d = bfvo.a(paramURLDrawable.getCurrDrawable());
-    a();
-    invalidateSelf();
-  }
-  
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadUserInfoFailed");
-  }
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    if ((!TextUtils.equals(paramString, String.valueOf(this.jdField_a_of_type_Long))) || (paramReadInJoyUserInfo == null)) {
-      return;
-    }
-    a(ReadInJoyUserInfoModule.a(paramReadInJoyUserInfo));
-  }
-  
-  public void setAlpha(@IntRange(from=0L, to=255L) int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setAlpha(paramInt);
-    }
-  }
-  
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
-  {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setColorFilter(paramColorFilter);
-    }
+    olh.a(null, "CliOper", "", "", "0X80094FF", "0X80094FF", 0, 0, "", "", "", a(), false);
   }
 }
 

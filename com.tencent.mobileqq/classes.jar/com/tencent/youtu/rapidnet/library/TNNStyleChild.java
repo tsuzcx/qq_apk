@@ -14,7 +14,7 @@ public class TNNStyleChild
   
   public native float[] averageFaceColorUsingFacePoints(Bitmap paramBitmap, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
   
-  public native float[] computeFaceCropTransform(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, float paramFloat, float[] paramArrayOfFloat3, int paramInt2, int paramInt3);
+  public native float[] computeFaceCropTransform(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, float paramFloat, float[] paramArrayOfFloat3, int paramInt2, int paramInt3, float[] paramArrayOfFloat4);
   
   public native int convertBitmapToFloat(Bitmap paramBitmap, float[] paramArrayOfFloat);
   

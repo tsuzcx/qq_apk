@@ -1,68 +1,66 @@
-import android.text.TextUtils;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.together.writetogether.data.GetChangesetsResp;
+import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
+import com.tencent.qphone.base.util.QLog;
 
 public class benp
+  implements BusinessObserver
 {
-  static HashMap<String, Integer> a = new HashMap();
-  
-  static
+  public void a(int paramInt, boolean paramBoolean, beoo parambeoo)
   {
-    a.put("str", Integer.valueOf(0));
-    a.put("img", Integer.valueOf(1));
-    a.put("video", Integer.valueOf(2));
-    a.put("voice", Integer.valueOf(3));
-    a.put("recite", Integer.valueOf(4));
-    a.put("calculation", Integer.valueOf(7));
+    QLog.d("WriteTogetherOidbObserver", 4, "type:" + paramInt + ", isSuccess: " + paramBoolean + ", data: " + parambeoo.a);
+    benj.a = parambeoo.a;
   }
   
-  public static beno a(String paramString)
+  public void a(int paramInt, boolean paramBoolean, OpenDocParam paramOpenDocParam)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    if (!paramBoolean) {
+      QLog.d("WriteTogetherOidbObserver", 4, "isSuccess: false");
     }
-    try
+    if (paramOpenDocParam != null)
     {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
+      QLog.d("WriteTogetherOidbObserver", 4, paramOpenDocParam.toString());
+      return;
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    QLog.d("WriteTogetherOidbObserver", 4, "param is null");
   }
   
-  public static beno a(JSONObject paramJSONObject)
+  public void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void a(boolean paramBoolean, GetChangesetsResp paramGetChangesetsResp) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    try
+    QLog.d("WriteTogetherOidbObserver", 4, "type: " + paramInt + ", isSuccess: " + paramBoolean + ", data: " + paramObject);
+    switch (paramInt)
     {
-      Object localObject = paramJSONObject.getString("type");
-      localObject = (Integer)a.get(localObject);
-      if (localObject == null) {
-        return null;
-      }
-      switch (((Integer)localObject).intValue())
+    default: 
+      return;
+    case 1: 
+      if ((paramObject instanceof beoo))
       {
-      case 0: 
-        paramJSONObject = new benx(paramJSONObject);
-        return paramJSONObject;
+        QLog.d("WriteTogetherOidbObserver", 4, "receive pad id: " + ((beoo)paramObject).a);
+        a(paramInt, paramBoolean, (beoo)paramObject);
+        return;
       }
+      QLog.d("WriteTogetherOidbObserver", 4, "data is not String: " + paramObject);
+      return;
+    case 2: 
+      if ((paramObject instanceof OpenDocParam))
+      {
+        a(paramInt, paramBoolean, (OpenDocParam)paramObject);
+        return;
+      }
+      QLog.d("WriteTogetherOidbObserver", 4, "data is not OpenDocParam: " + paramObject);
+      return;
+    case 3: 
+      a(paramBoolean, (GetChangesetsResp)paramObject);
+      return;
+    case 4: 
+      a(paramInt, paramBoolean, (Object[])paramObject);
+      return;
     }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-      break label142;
-      return new bent(paramJSONObject);
-      return new benz(paramJSONObject);
-      return new benn(paramJSONObject);
-      return new benq(paramJSONObject);
-      paramJSONObject = new benl(paramJSONObject);
-      return paramJSONObject;
-    }
-    label142:
-    return null;
+    QLog.d("WriteTogetherOidbObserver", 4, "error. isSuccess: " + paramBoolean + ", data: " + paramObject);
   }
 }
 

@@ -1,61 +1,19 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class oti
-  implements AbsListView.OnScrollListener
+  implements nuw
 {
-  private List<AbsListView.OnScrollListener> a = new ArrayList();
+  public oti(ReadInJoyFeedsActivity.1 param1) {}
   
-  public void a(AbsListView.OnScrollListener paramOnScrollListener)
+  public void loaded(String paramString, int paramInt)
   {
-    if ((this.a != null) && (!this.a.contains(paramOnScrollListener))) {
-      this.a.add(paramOnScrollListener);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2378 html web resource finish");
     }
   }
   
-  public void b(AbsListView.OnScrollListener paramOnScrollListener)
-  {
-    if (this.a != null) {
-      this.a.remove(paramOnScrollListener);
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.a == null) || (this.a.size() <= 0)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        AbsListView.OnScrollListener localOnScrollListener = (AbsListView.OnScrollListener)localIterator.next();
-        if (localOnScrollListener != null) {
-          localOnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-        }
-      }
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((this.a == null) || (this.a.size() <= 0)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        AbsListView.OnScrollListener localOnScrollListener = (AbsListView.OnScrollListener)localIterator.next();
-        if (localOnScrollListener != null) {
-          localOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
-        }
-      }
-    }
-  }
+  public void progress(int paramInt) {}
 }
 
 

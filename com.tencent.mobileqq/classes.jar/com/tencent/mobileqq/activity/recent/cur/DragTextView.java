@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
-import aknn;
-import akno;
-import aknp;
+import aljf;
+import aljg;
+import aljh;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -18,12 +18,12 @@ import com.tencent.qphone.base.util.QLog;
 @TargetApi(19)
 public class DragTextView
   extends TextView
-  implements akno
+  implements aljg
 {
   private static int jdField_a_of_type_Int;
   private static int b;
   private static int c;
-  private aknp jdField_a_of_type_Aknp;
+  private aljh jdField_a_of_type_Aljh;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private View jdField_a_of_type_AndroidViewView;
   private boolean jdField_a_of_type_Boolean;
@@ -94,10 +94,10 @@ public class DragTextView
   {
     if ((this.d != -1) && (!this.jdField_a_of_type_Boolean) && (paramMotionEvent.getAction() == 0))
     {
-      if (this.jdField_a_of_type_Aknp != null)
+      if (this.jdField_a_of_type_Aljh != null)
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Aknp.a(this, this.d);
+        this.jdField_a_of_type_Aljh.a(this, this.d);
         return true;
       }
       return super.onTouchEvent(paramMotionEvent);
@@ -117,23 +117,23 @@ public class DragTextView
     if (this.jdField_a_of_type_AndroidViewView == null) {
       this.jdField_a_of_type_AndroidViewView = ((ViewGroup)getParent());
     }
-    if ((this.jdField_a_of_type_Aknp != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
+    if ((this.jdField_a_of_type_Aljh != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
     {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new aknn(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
+      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new aljf(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
     }
   }
   
-  public void setOnModeChangeListener(aknp paramaknp)
+  public void setOnModeChangeListener(aljh paramaljh)
   {
-    this.jdField_a_of_type_Aknp = paramaknp;
+    this.jdField_a_of_type_Aljh = paramaljh;
     if (QLog.isColorLevel()) {
-      QLog.d("Drag", 2, "setOnModeChangeListener:" + paramaknp);
+      QLog.d("Drag", 2, "setOnModeChangeListener:" + paramaljh);
     }
-    if ((this.jdField_a_of_type_Aknp != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
+    if ((this.jdField_a_of_type_Aljh != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
     {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new aknn(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
+      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new aljf(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
     }
   }
   

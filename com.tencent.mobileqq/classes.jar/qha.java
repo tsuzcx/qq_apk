@@ -1,14 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelRequestModule.UserLevelInfo;
 
-public class qha
-  implements ViewBase.IBuilder
+public abstract interface qha
 {
-  public ViewBase build(VafContext paramVafContext)
-  {
-    return new qgz(paramVafContext);
-  }
+  public abstract void a(RIJUserLevelRequestModule.UserLevelInfo paramUserLevelInfo);
 }
 
 

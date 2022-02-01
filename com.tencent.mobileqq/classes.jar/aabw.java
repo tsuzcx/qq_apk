@@ -1,56 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.smtt.sdk.WebView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aabw
-  implements nph
+public class aabw
+  implements View.OnClickListener
 {
-  aabw(aabq paramaabq) {}
+  public aabw(RelativeFeedItemView paramRelativeFeedItemView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    Object localObject = this.a.mRuntime.a();
-    if (localObject == null) {}
+    CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)this.a.a();
+    if (localStFeed == null) {}
     for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bguj localbguj = this.a.mRuntime.a(this.a.mRuntime.a());
-      if ((localbguj != null) && ((localbguj instanceof bgzi)) && (((bgzi)localbguj).getTopActivity() != localObject))
-      {
-        localObject = this.a.mRuntime.a();
-        if (localObject != null) {
-          try
-          {
-            localbguj = this.a.mRuntime.a(this.a.mRuntime.a());
-            if ((localbguj instanceof bgzu))
-            {
-              ((WebView)localObject).loadUrl(((bgzu)localbguj).getCurrentUrl());
-              return;
-            }
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
+      zqm.a(this.a.getContext(), localStFeed, 0, zyh.a(this.a.a, localStFeed.cover.width.get(), localStFeed.cover.height.get()));
+      ExtraTypeInfo localExtraTypeInfo = this.a.a();
+      if ((localExtraTypeInfo != null) && (localStFeed != null)) {
+        if (localExtraTypeInfo.pageType == 7003) {
+          aanb.a(localStFeed.poster.id.get(), "auth_follow", "new_c_clk", 0, 0, new String[] { "", "", localStFeed.id.get(), localStFeed.title.get() });
+        } else if (localExtraTypeInfo.pageType == 7004) {
+          aanb.a(localStFeed.poster.id.get(), "auth_discover", "clk_content", 0, 0, new String[] { "", "", localStFeed.id.get(), localStFeed.title.get() });
         }
       }
     }
-  }
-  
-  public void loaded(String paramString, int paramInt)
-  {
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 5;
-    paramString.arg2 = paramInt;
-    this.a.a.sendMessage(paramString);
-  }
-  
-  public void progress(int paramInt)
-  {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.arg1 = 4;
-    localMessage.arg2 = paramInt;
-    this.a.a.sendMessage(localMessage);
   }
 }
 

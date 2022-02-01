@@ -1,37 +1,76 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
 
-class axbp
-  implements View.OnLongClickListener
+public class axbp
+  implements DialogInterface.OnClickListener
 {
-  axbp(axax paramaxax) {}
+  public axbp(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
   
-  @TargetApi(11)
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.getChildCount() <= 1) {
-      return true;
+    axcw.a("MsgBackup_MsgBackupPcBaseFragment", "showStopMigrateDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.e) });
+    awzs.a().a().c();
+    awzs.a().a().a(null);
+    if (this.a.jdField_a_of_type_Boolean) {
+      if ((!this.a.e) && (this.a.b == 1))
+      {
+        this.a.a(this.a.getActivity());
+        if (!this.a.f)
+        {
+          if (this.a.b != 1) {
+            break label189;
+          }
+          if (this.a.e) {
+            axct.a("0X800A267", 2);
+          }
+        }
+        label141:
+        if (this.a.f)
+        {
+          if (this.a.b != 1) {
+            break label309;
+          }
+          if (this.a.e) {
+            axct.a("0X800A267", 3);
+          }
+        }
+      }
     }
-    Object localObject = new ClipData.Item("");
-    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new axca(this.a, paramView), paramView, 0);
-    localObject = axax.a(this.a, (PicInfo)paramView.getTag(), null);
-    ((RelativeLayout)localObject).setVisibility(4);
-    axax.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
-    if (i != -1)
+    label189:
+    while (this.a.b != 2)
     {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(axax.a(this.a), i);
-      return true;
+      return;
+      this.a.m();
+      break;
+      if (this.a.b != 2) {
+        break label141;
+      }
+      axct.a("0X800A289", 1);
+      break label141;
+      if (this.a.e) {
+        if (this.a.getActivity() != null)
+        {
+          this.a.getActivity().setResult(1001);
+          this.a.getActivity().finish();
+        }
+      }
+      for (;;)
+      {
+        if ((this.a.f) || (this.a.b != 1) || (!this.a.e)) {
+          break label307;
+        }
+        axct.a("0X800A267", 1);
+        break;
+        this.a.a(this.a.getActivity());
+      }
+      break label141;
     }
-    paramView.setVisibility(4);
-    return true;
+    label307:
+    label309:
+    axct.a("0X800A289", 2);
   }
 }
 

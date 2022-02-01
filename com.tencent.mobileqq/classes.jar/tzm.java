@@ -1,49 +1,20 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerVideoItemData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView.1.1;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView.1.2;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView.1.3;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView.1.4;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import org.jetbrains.annotations.Nullable;
+import kotlin.Metadata;
+import org.json.JSONObject;
 
-public class tzm
-  implements txt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "callBackId", "", "kotlin.jvm.PlatformType", "json", "Lorg/json/JSONObject;", "callJsMethod", "com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/UIBridgeInvokeHandler$arouseReadInJoyNativeCommentView$1$1"}, k=3, mv={1, 1, 16})
+final class tzm
+  implements twh
 {
-  public tzm(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
+  tzm(tzk paramtzk, String paramString) {}
   
-  public void a(@Nullable String paramString)
+  public final void a(String paramString, JSONObject paramJSONObject)
   {
-    if ((paramString != null) && (ReadInJoyArticleBottomVideoView.a(this.a) != null) && (paramString.equals(ReadInJoyArticleBottomVideoView.a(this.a).o))) {
-      ThreadManagerV2.getUIHandlerV2().post(new ReadInJoyArticleBottomVideoView.1.1(this));
-    }
-  }
-  
-  public void b(@Nullable String paramString)
-  {
-    if ((paramString != null) && (ReadInJoyArticleBottomVideoView.a(this.a) != null) && (paramString.equals(ReadInJoyArticleBottomVideoView.a(this.a).o))) {
-      ThreadManagerV2.getUIHandlerV2().post(new ReadInJoyArticleBottomVideoView.1.2(this));
-    }
-  }
-  
-  public void c(@Nullable String paramString)
-  {
-    if ((paramString != null) && (ReadInJoyArticleBottomVideoView.a(this.a) != null) && (paramString.equals(ReadInJoyArticleBottomVideoView.a(this.a).o))) {
-      ThreadManagerV2.getUIHandlerV2().post(new ReadInJoyArticleBottomVideoView.1.3(this));
-    }
-  }
-  
-  public void d(@Nullable String paramString)
-  {
-    if ((paramString != null) && (ReadInJoyArticleBottomVideoView.a(this.a) != null) && (paramString.equals(ReadInJoyArticleBottomVideoView.a(this.a).o))) {
-      ThreadManagerV2.getUIHandlerV2().post(new ReadInJoyArticleBottomVideoView.1.4(this));
-    }
+    this.jdField_a_of_type_Tzk.a(paramString, paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzm
  * JD-Core Version:    0.7.0.1
  */

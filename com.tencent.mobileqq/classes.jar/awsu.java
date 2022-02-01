@@ -1,17 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-
-public class awsu
-  implements View.OnTouchListener
+public abstract interface awsu
 {
-  public awsu(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return paramMotionEvent.getAction() == 2;
-  }
+  public abstract boolean a(int paramInt);
 }
 
 

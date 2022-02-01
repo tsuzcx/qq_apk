@@ -1,17 +1,21 @@
-import android.hardware.Camera.ShutterCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.ShutterCallbackForward.1;
-
 public class apjq
-  implements Camera.ShutterCallback
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final apjg jdField_a_of_type_Apjg;
-  private final apjh jdField_a_of_type_Apjh;
+  public int a;
+  public apjr a;
+  public String a;
   
-  public void onShutter()
+  public apjq()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.ShutterCallbackForward.1(this));
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Apjr = null;
+  }
+  
+  public String toString()
+  {
+    return "ARCloudLBSLocationCheckResult{retCode = " + this.jdField_a_of_type_Int + ", imageId = " + this.jdField_a_of_type_JavaLangString + ", nearestPOIInfo = " + this.jdField_a_of_type_Apjr + '}';
   }
 }
 

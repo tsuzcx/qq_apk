@@ -1,17 +1,55 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class aion
-  extends View.AccessibilityDelegate
+class aion
+  extends Handler
 {
-  public aion(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  aion(aioi paramaioi, Looper paramLooper)
   {
-    if (paramInt != 4096) {
-      super.sendAccessibilityEvent(paramView, paramInt);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
+    int i;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramMessage = (aioz)paramMessage.obj;
+          if (QLog.isColorLevel()) {
+            QLog.d("ZhituManager", 2, aioi.a(paramMessage.d, "main handler", paramMessage.a, "all img process is finished, now is in main thread"));
+          }
+          this.a.e(paramMessage);
+          return;
+          paramMessage = (String)paramMessage.obj;
+          if (QLog.isColorLevel()) {
+            QLog.d("ZhituManager", 2, "response is empty, errorMsg is " + paramMessage);
+          }
+        } while (this.a.jdField_a_of_type_Aiou == null);
+        this.a.jdField_a_of_type_Aiou.a(paramMessage);
+        return;
+        i = paramMessage.arg1;
+        paramMessage = (String)paramMessage.obj;
+        if (paramMessage.equals(this.a.a())) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ZhituManager", 2, aioi.a(paramMessage, "main handler", "reqKey is outdated, skip"));
+      return;
+      if (this.a.jdField_a_of_type_Aiox != null) {
+        this.a.jdField_a_of_type_Aiox.a(i, paramMessage);
+      }
+    } while (this.a.jdField_a_of_type_Aiou == null);
+    this.a.jdField_a_of_type_Aiou.a(i, paramMessage);
   }
 }
 

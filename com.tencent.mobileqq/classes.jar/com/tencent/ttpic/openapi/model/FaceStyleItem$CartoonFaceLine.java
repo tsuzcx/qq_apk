@@ -4,9 +4,9 @@ public class FaceStyleItem$CartoonFaceLine
 {
   public int eye;
   public int eyeBorder;
+  public float eyeCenterShiftL;
+  public float eyeCenterShiftR;
   public int eyeCloseLine;
-  public float eye_center_shift_l;
-  public float eye_center_shift_r;
   public int eyebrow;
   public int eyelash;
   public int face;

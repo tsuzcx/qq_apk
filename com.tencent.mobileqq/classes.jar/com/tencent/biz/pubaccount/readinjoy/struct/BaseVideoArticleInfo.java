@@ -20,15 +20,15 @@ import java.util.Iterator;
 import java.util.List;
 import localpb.readinjoy.Readinjoy.ArticleSummary;
 import localpb.readinjoy.Readinjoy.VideoData;
-import rco;
-import rgi;
-import sdu;
+import rou;
+import rsp;
+import spy;
 
 public class BaseVideoArticleInfo
   extends Entity
   implements Parcelable, Cloneable, Comparable<BaseVideoArticleInfo>
 {
-  public static final Parcelable.Creator<BaseVideoArticleInfo> CREATOR = new rco();
+  public static final Parcelable.Creator<BaseVideoArticleInfo> CREATOR = new rou();
   public static final String TAG = "VideoArticleInfo";
   public int adsJumpType;
   public String adsJumpUrl;
@@ -65,7 +65,7 @@ public class BaseVideoArticleInfo
   public int uptime;
   public int videoCount;
   @notColumn
-  public rgi videoData;
+  public rsp videoData;
   public byte[] videoDataBytes;
   @notColumn
   public Readinjoy.VideoData videoDataObj;
@@ -137,7 +137,7 @@ public class BaseVideoArticleInfo
         try
         {
           localVideoData.mergeFrom(this.videoDataBytes);
-          this.videoData = sdu.a(localVideoData);
+          this.videoData = spy.a(localVideoData);
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
@@ -193,7 +193,7 @@ public class BaseVideoArticleInfo
     {
       this.videoDataObj.mergeFrom(this.videoDataBytes);
       if (this.videoDataObj != null) {
-        this.videoData = sdu.a(this.videoDataObj);
+        this.videoData = spy.a(this.videoDataObj);
       }
       if ((this.articleListBytes != null) && (this.articleListBytes.length > 0))
       {
@@ -219,7 +219,7 @@ public class BaseVideoArticleInfo
         int i = 0;
         while (i < this.articleListObj.size())
         {
-          this.articleList.add(sdu.a((Readinjoy.ArticleSummary)this.articleListObj.get(i)));
+          this.articleList.add(spy.a((Readinjoy.ArticleSummary)this.articleListObj.get(i)));
           i += 1;
         }
       }
@@ -238,7 +238,7 @@ public class BaseVideoArticleInfo
   {
     if (this.videoData != null)
     {
-      this.videoDataObj = sdu.a(this.videoData);
+      this.videoDataObj = spy.a(this.videoData);
       if (this.videoDataObj != null) {
         this.videoDataBytes = this.videoDataObj.toByteArray();
       }
@@ -253,7 +253,7 @@ public class BaseVideoArticleInfo
       {
         localObject2 = (BaseVideoArticleInfo)((Iterator)localObject1).next();
         if (localObject2 != null) {
-          this.articleListObj.add(sdu.a((BaseVideoArticleInfo)localObject2));
+          this.articleListObj.add(spy.a((BaseVideoArticleInfo)localObject2));
         }
       }
       if (!this.articleListObj.isEmpty())

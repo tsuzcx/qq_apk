@@ -1,5 +1,6 @@
 package friendlist;
 
+import android.text.TextUtils;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
@@ -48,6 +49,7 @@ public final class stTroopMemberInfo
   public String sSpecialTitle = "";
   public String strAutoRemark = "";
   public byte[] vecGroupHonor;
+  public byte[] vecName;
   
   static
   {
@@ -108,38 +110,59 @@ public final class stTroopMemberInfo
     this.Nick = paramJceInputStream.readString(4, true);
     this.Status = paramJceInputStream.read(this.Status, 5, true);
     this.sShowName = paramJceInputStream.readString(6, false);
-    this.sName = paramJceInputStream.readString(8, false);
-    this.cGender = paramJceInputStream.read(this.cGender, 9, false);
-    this.sPhone = paramJceInputStream.readString(10, false);
-    this.sEmail = paramJceInputStream.readString(11, false);
-    this.sMemo = paramJceInputStream.readString(12, false);
-    this.strAutoRemark = paramJceInputStream.readString(13, false);
-    this.dwMemberLevel = paramJceInputStream.read(this.dwMemberLevel, 14, false);
-    this.dwJoinTime = paramJceInputStream.read(this.dwJoinTime, 15, false);
-    this.dwLastSpeakTime = paramJceInputStream.read(this.dwLastSpeakTime, 16, false);
-    this.dwCreditLevel = paramJceInputStream.read(this.dwCreditLevel, 17, false);
-    this.dwFlag = paramJceInputStream.read(this.dwFlag, 18, false);
-    this.dwFlagExt = paramJceInputStream.read(this.dwFlagExt, 19, false);
-    this.dwPoint = paramJceInputStream.read(this.dwPoint, 20, false);
-    this.cConcerned = paramJceInputStream.read(this.cConcerned, 21, false);
-    this.cShielded = paramJceInputStream.read(this.cShielded, 22, false);
-    this.sSpecialTitle = paramJceInputStream.readString(23, false);
-    this.dwSpecialTitleExpireTime = paramJceInputStream.read(this.dwSpecialTitleExpireTime, 24, false);
-    this.bytes_job = paramJceInputStream.readString(25, false);
-    this.cApolloFlag = paramJceInputStream.read(this.cApolloFlag, 26, false);
-    this.dwApolloTimestamp = paramJceInputStream.read(this.dwApolloTimestamp, 27, false);
-    this.dwGlobalGroupLevel = paramJceInputStream.read(this.dwGlobalGroupLevel, 28, false);
-    this.dwTitleId = paramJceInputStream.read(this.dwTitleId, 29, false);
-    this.dwShutupTimestap = paramJceInputStream.read(this.dwShutupTimestap, 30, false);
-    this.dwGlobalGroupPoint = paramJceInputStream.read(this.dwGlobalGroupPoint, 31, false);
-    this.qzusrinfo = ((QzoneUserInfo)paramJceInputStream.read(cache_qzusrinfo, 32, false));
-    this.cRichCardNameVer = paramJceInputStream.read(this.cRichCardNameVer, 33, false);
-    this.dwVipType = paramJceInputStream.read(this.dwVipType, 34, false);
-    this.dwVipLevel = paramJceInputStream.read(this.dwVipLevel, 35, false);
-    this.dwBigClubLevel = paramJceInputStream.read(this.dwBigClubLevel, 36, false);
-    this.dwBigClubFlag = paramJceInputStream.read(this.dwBigClubFlag, 37, false);
-    this.dwNameplate = paramJceInputStream.read(this.dwNameplate, 38, false);
-    this.vecGroupHonor = ((byte[])paramJceInputStream.read(cache_vecGroupHonor, 39, false));
+    for (;;)
+    {
+      try
+      {
+        paramJceInputStream.setServerEncoding("ISO_8859_1");
+        str = paramJceInputStream.readString(8, false);
+        if (TextUtils.isEmpty(str)) {
+          continue;
+        }
+        this.vecName = str.getBytes("ISO_8859_1");
+        this.sName = new String(this.vecName, "utf-8");
+        paramJceInputStream.setServerEncoding("utf-8");
+      }
+      catch (Exception localException)
+      {
+        String str;
+        localException.printStackTrace();
+        continue;
+      }
+      this.cGender = paramJceInputStream.read(this.cGender, 9, false);
+      this.sPhone = paramJceInputStream.readString(10, false);
+      this.sEmail = paramJceInputStream.readString(11, false);
+      this.sMemo = paramJceInputStream.readString(12, false);
+      this.strAutoRemark = paramJceInputStream.readString(13, false);
+      this.dwMemberLevel = paramJceInputStream.read(this.dwMemberLevel, 14, false);
+      this.dwJoinTime = paramJceInputStream.read(this.dwJoinTime, 15, false);
+      this.dwLastSpeakTime = paramJceInputStream.read(this.dwLastSpeakTime, 16, false);
+      this.dwCreditLevel = paramJceInputStream.read(this.dwCreditLevel, 17, false);
+      this.dwFlag = paramJceInputStream.read(this.dwFlag, 18, false);
+      this.dwFlagExt = paramJceInputStream.read(this.dwFlagExt, 19, false);
+      this.dwPoint = paramJceInputStream.read(this.dwPoint, 20, false);
+      this.cConcerned = paramJceInputStream.read(this.cConcerned, 21, false);
+      this.cShielded = paramJceInputStream.read(this.cShielded, 22, false);
+      this.sSpecialTitle = paramJceInputStream.readString(23, false);
+      this.dwSpecialTitleExpireTime = paramJceInputStream.read(this.dwSpecialTitleExpireTime, 24, false);
+      this.bytes_job = paramJceInputStream.readString(25, false);
+      this.cApolloFlag = paramJceInputStream.read(this.cApolloFlag, 26, false);
+      this.dwApolloTimestamp = paramJceInputStream.read(this.dwApolloTimestamp, 27, false);
+      this.dwGlobalGroupLevel = paramJceInputStream.read(this.dwGlobalGroupLevel, 28, false);
+      this.dwTitleId = paramJceInputStream.read(this.dwTitleId, 29, false);
+      this.dwShutupTimestap = paramJceInputStream.read(this.dwShutupTimestap, 30, false);
+      this.dwGlobalGroupPoint = paramJceInputStream.read(this.dwGlobalGroupPoint, 31, false);
+      this.qzusrinfo = ((QzoneUserInfo)paramJceInputStream.read(cache_qzusrinfo, 32, false));
+      this.cRichCardNameVer = paramJceInputStream.read(this.cRichCardNameVer, 33, false);
+      this.dwVipType = paramJceInputStream.read(this.dwVipType, 34, false);
+      this.dwVipLevel = paramJceInputStream.read(this.dwVipLevel, 35, false);
+      this.dwBigClubLevel = paramJceInputStream.read(this.dwBigClubLevel, 36, false);
+      this.dwBigClubFlag = paramJceInputStream.read(this.dwBigClubFlag, 37, false);
+      this.dwNameplate = paramJceInputStream.read(this.dwNameplate, 38, false);
+      this.vecGroupHonor = ((byte[])paramJceInputStream.read(cache_vecGroupHonor, 39, false));
+      return;
+      this.sName = str;
+    }
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)

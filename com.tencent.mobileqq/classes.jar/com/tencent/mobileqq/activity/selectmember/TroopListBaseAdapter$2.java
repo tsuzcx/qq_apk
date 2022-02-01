@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import albm;
+import alzi;
 
 public class TroopListBaseAdapter$2
   implements Runnable
 {
-  public TroopListBaseAdapter$2(albm paramalbm) {}
+  public TroopListBaseAdapter$2(alzi paramalzi) {}
   
   public void run()
   {
-    albm.a(this.this$0);
+    alzi.a(this.this$0);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.widget;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
 import android.view.View;
-import bhhm;
+import bise;
 import com.enrique.stackblur.StackBlurManager;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,31 +12,31 @@ public class QQBlur$1
 {
   private int jdField_a_of_type_Int = -1;
   
-  public QQBlur$1(bhhm parambhhm, StackBlurManager paramStackBlurManager) {}
+  public QQBlur$1(bise parambise, StackBlurManager paramStackBlurManager) {}
   
   private void a()
   {
-    if (bhhm.a(this.this$0)) {}
+    if (bise.a(this.this$0)) {}
     for (;;)
     {
       return;
       long l1 = SystemClock.elapsedRealtime();
-      if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Int != bhhm.jdField_a_of_type_Int)) {
-        bhhm.a(this.this$0, this.jdField_a_of_type_Int, bhhm.jdField_a_of_type_Int);
+      if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Int != bise.jdField_a_of_type_Int)) {
+        bise.a(this.this$0, this.jdField_a_of_type_Int, bise.jdField_a_of_type_Int);
       }
-      this.jdField_a_of_type_Int = bhhm.jdField_a_of_type_Int;
-      int i = bhhm.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = bise.jdField_a_of_type_Int;
+      int i = bise.jdField_a_of_type_Int;
       try
       {
-        Object localObject1 = this.jdField_a_of_type_ComEnriqueStackblurStackBlurManager.process(bhhm.a(this.this$0));
+        Object localObject1 = this.jdField_a_of_type_ComEnriqueStackblurStackBlurManager.process(bise.a(this.this$0));
         if (localObject1 != null)
         {
-          bhhm.a(this.this$0, (Bitmap)localObject1);
+          bise.a(this.this$0, (Bitmap)localObject1);
           long l2 = SystemClock.elapsedRealtime();
-          bhhm.a(this.this$0);
-          bhhm.a(this.this$0, l2 - l1 + bhhm.b(this.this$0));
-          localObject1 = bhhm.a(this.this$0);
-          if ((localObject1 == null) || (!bhhm.b(this.this$0))) {
+          bise.a(this.this$0);
+          bise.a(this.this$0, l2 - l1 + bise.b(this.this$0));
+          localObject1 = bise.a(this.this$0);
+          if ((localObject1 == null) || (!bise.b(this.this$0))) {
             continue;
           }
           ((View)localObject1).postInvalidate();

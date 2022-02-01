@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class sgc
-  implements Parcelable.Creator<DiscoveryInfo>
+class sgc
+  implements View.OnClickListener
 {
-  public DiscoveryInfo a(Parcel paramParcel)
-  {
-    return new DiscoveryInfo(paramParcel);
-  }
+  sgc(sga paramsga) {}
   
-  public DiscoveryInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new DiscoveryInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "mShareActionSheet cancle button OnClick");
+    }
+    if (sga.a(this.a).isShowing()) {
+      sga.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bfwl;
-import bllv;
-import bllw;
+import bhfd;
+import bmze;
+import bmzf;
 
 public class AEAlbumListLogicBase$1
   implements Runnable
 {
-  public AEAlbumListLogicBase$1(bllw parambllw) {}
+  public AEAlbumListLogicBase$1(bmzf parambmzf) {}
   
   public void run()
   {
-    bfwl.a();
+    bhfd.a();
     this.this$0.a.a(100);
-    bfwl.a("PEAK", "queryAlbumList");
+    bhfd.a("PEAK", "queryAlbumList");
   }
 }
 

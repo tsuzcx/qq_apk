@@ -1,17 +1,32 @@
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.POI;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vxl
-  implements vqp<vyh, vyi>
+  extends wfh
 {
-  vxl(vxi paramvxi) {}
+  List<AddressItem> a = new ArrayList();
   
-  public void a(@NonNull vyh paramvyh, @Nullable vyi paramvyi, @NonNull ErrorMessage paramErrorMessage)
+  public vxl(qqstory_service.RspBatchGetPOIList paramRspBatchGetPOIList)
   {
-    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramvyh, paramvyi, paramErrorMessage));
+    super(paramRspBatchGetPOIList.result);
+    paramRspBatchGetPOIList = paramRspBatchGetPOIList.poi_list.get();
+    if (paramRspBatchGetPOIList != null)
+    {
+      paramRspBatchGetPOIList = paramRspBatchGetPOIList.iterator();
+      while (paramRspBatchGetPOIList.hasNext())
+      {
+        qqstory_service.POI localPOI = (qqstory_service.POI)paramRspBatchGetPOIList.next();
+        AddressItem localAddressItem = AddressItem.getAddressFromProtoObject(localPOI.address);
+        localAddressItem.poiType = localPOI.poi_type.get();
+        this.a.add(localAddressItem);
+      }
+    }
   }
 }
 

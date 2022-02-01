@@ -1,38 +1,67 @@
-import com.tencent.mobileqq.emosm.emosearch.EmotionSearchItem;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class araf
+  extends aqwt<arae>
 {
-  int jdField_a_of_type_Int;
-  arag jdField_a_of_type_Arag;
-  List<EmotionSearchItem> jdField_a_of_type_JavaUtilList;
-  
-  public araf(int paramInt)
+  @NonNull
+  public arae a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return new arae().b("0");
   }
   
-  public int a()
+  @Nullable
+  public arae a(aqxa[] paramArrayOfaqxa)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<EmotionSearchItem> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Arag == null) {
-      return false;
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
+    {
+      arae localarae = arae.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CLovePushGrayProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
+      }
+      return localarae;
     }
-    return this.jdField_a_of_type_Arag.a;
+    return null;
+  }
+  
+  public void a(arae paramarae) {}
+  
+  public Class<arae> clazz()
+  {
+    return arae.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CLovePushGrayProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 452;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     araf
  * JD-Core Version:    0.7.0.1
  */

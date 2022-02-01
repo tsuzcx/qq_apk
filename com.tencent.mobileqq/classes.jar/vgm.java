@@ -1,15 +1,62 @@
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import android.os.Handler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class vgm
-  implements SDKInitListener
+public class vgm
+  implements vhb
 {
-  vgm(vgl paramvgl) {}
+  private Handler a;
   
-  public void onSDKInited(boolean paramBoolean)
+  public vgm(Handler paramHandler)
   {
-    if (paramBoolean) {
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq", "Q_CIRCLE_CLIENT_MODULE_NAME", "CLIENT_ACTION_INIT_SUCCESS", null, null);
+    this.a = paramHandler;
+  }
+  
+  public void a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.4.10");
+      if (this.a != null) {
+        this.a.sendEmptyMessage(0);
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        vmp.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledSuccess] JSONException: " + localJSONException.getLocalizedMessage());
+      }
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.4.10");
+      localJSONObject.put("error_code", paramInt);
+      if (this.a != null) {
+        this.a.sendEmptyMessage(1);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        vmp.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledFailed] JSONException: " + localException.getLocalizedMessage());
+      }
     }
   }
 }

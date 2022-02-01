@@ -1,113 +1,392 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.GetNumApproveStateReqBody;
-import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.GetNumApproveStateRspBody;
-import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.NumApproveStateItem;
-import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.ReqBody;
-import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.RspBody;
+import com.tencent.util.LRULinkedHashMap;
+import com.tencent.viola.core.ViolaInstance;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class pvu
-  extends pwd
 {
-  private pvv a;
+  private static final LRULinkedHashMap<String, pvx> jdField_a_of_type_ComTencentUtilLRULinkedHashMap;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static volatile pvu jdField_a_of_type_Pvu;
+  private static volatile boolean jdField_a_of_type_Boolean;
+  public static int b;
+  private static final LRULinkedHashMap<String, pvx> jdField_b_of_type_ComTencentUtilLRULinkedHashMap;
+  public static int c;
+  public static int d;
+  public static int e;
+  public static int f;
+  public static int g = 5;
+  protected int a;
+  private long jdField_a_of_type_Long;
+  private ViolaInstance jdField_a_of_type_ComTencentViolaCoreViolaInstance;
+  private String jdField_a_of_type_JavaLangString;
+  protected final pvy a;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = true;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private String jdField_d_of_type_JavaLangString;
+  private boolean jdField_d_of_type_Boolean;
+  private String e;
+  private String f;
   
-  public pvu(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qli paramqli, Handler paramHandler)
+  static
   {
-    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqli, paramHandler);
+    jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(4);
+    jdField_b_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(4);
+    jdField_c_of_type_Int = 1;
+    jdField_d_of_type_Int = 2;
+    jdField_e_of_type_Int = 3;
+    jdField_f_of_type_Int = 4;
   }
   
-  private ToServiceMsg a(long paramLong)
+  public pvu()
   {
-    oidb_cmd0xb57.ReqBody localReqBody = new oidb_cmd0xb57.ReqBody();
-    localReqBody.uint32_oper.set(2);
-    List localList = Arrays.asList(new Long[] { Long.valueOf(paramLong) });
-    oidb_cmd0xb57.GetNumApproveStateReqBody localGetNumApproveStateReqBody = new oidb_cmd0xb57.GetNumApproveStateReqBody();
-    localGetNumApproveStateReqBody.rpt_uint64_query_num.set(localList);
-    localReqBody.msg_get_num_approve_state_req.set(localGetNumApproveStateReqBody);
-    return qlk.a("OidbSvc.0xb57", 2903, 16, localReqBody.toByteArray());
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Pvy = new pvy(new pvv(this));
   }
   
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static pvu a()
   {
-    Object localObject = new oidb_cmd0xb57.RspBody();
-    int i = qlk.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
-    QLog.d("RIJUserApproveModule", 1, new Object[] { "handle0xb57UserInfo result = ", Integer.valueOf(i) });
-    if ((i == 0) && (((oidb_cmd0xb57.RspBody)localObject).msg_get_num_approve_state_rsp.has()))
+    if (jdField_a_of_type_Pvu == null) {
+      jdField_a_of_type_Pvu = new pvu();
+    }
+    return jdField_a_of_type_Pvu;
+  }
+  
+  public static pvx a(String paramString)
+  {
+    if ((AppSetting.f) || (TextUtils.isEmpty(paramString))) {
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("viola.ReadInJoyWebRenderEngine", 2, "native_render  getRenderHtmlData url : " + paramString);
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      paramFromServiceMsg = ((oidb_cmd0xb57.RspBody)localObject).msg_get_num_approve_state_rsp.rpt_msg_num_approve_state_items.get();
-      if (paramFromServiceMsg != null)
+      localpvx = (pvx)jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString);
+      if (localpvx != null)
       {
-        paramFromServiceMsg = paramFromServiceMsg.iterator();
-        while (paramFromServiceMsg.hasNext())
-        {
-          paramObject = (oidb_cmd0xb57.NumApproveStateItem)paramFromServiceMsg.next();
-          if ((paramObject != null) && (paramObject.uint64_query_num.has()))
-          {
-            localObject = (Long)paramToServiceMsg.getAttribute("KEY_USER_APPROVE_UIN");
-            long l = paramObject.uint64_query_num.get();
-            if ((l == ((Long)localObject).longValue()) && (paramObject.uint32_is_approve.has()))
-            {
-              QLog.d("RIJUserApproveModule", 1, "handle0xb57UserInfo state = " + paramObject.uint32_is_approve.get());
-              localObject = ReadInJoyUserInfoModule.a(l, null);
-              if (localObject != null) {
-                ((ReadInJoyUserInfo)localObject).isApproved = paramObject.uint32_is_approve.get();
-              }
-              if (this.a != null) {
-                this.a.a(paramObject.uint32_is_approve.get());
-              }
-            }
-          }
+        paramString = localpvx;
+        if (localpvx.a()) {
+          paramString = null;
         }
+        return paramString;
       }
     }
+    pvx localpvx = (pvx)jdField_b_of_type_ComTencentUtilLRULinkedHashMap.get(paramString);
+    if (localpvx != null)
+    {
+      paramString = localpvx;
+      if (localpvx.a()) {}
+    }
+    for (;;)
+    {
+      return paramString;
+      paramString = null;
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "[notifyLibLoad], ret:", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    try
+    {
+      a(paramString, null);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  /* Error */
+  public static void a(String paramString, pvw parampvw)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 132	pvu:jdField_a_of_type_Boolean	Z
+    //   6: ifeq +20 -> 26
+    //   9: aload_1
+    //   10: ifnull +12 -> 22
+    //   13: aload_1
+    //   14: getstatic 47	pvu:g	I
+    //   17: invokeinterface 137 2 0
+    //   22: ldc 2
+    //   24: monitorexit
+    //   25: return
+    //   26: invokestatic 143	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
+    //   29: new 145	com/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyWebRenderEngine$3
+    //   32: dup
+    //   33: aload_1
+    //   34: aload_0
+    //   35: invokespecial 148	com/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyWebRenderEngine$3:<init>	(Lpvw;Ljava/lang/String;)V
+    //   38: invokevirtual 154	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   41: pop
+    //   42: goto -20 -> 22
+    //   45: astore_0
+    //   46: ldc 2
+    //   48: monitorexit
+    //   49: aload_0
+    //   50: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	51	0	paramString	String
+    //   0	51	1	parampvw	pvw
+    // Exception table:
+    //   from	to	target	type
+    //   3	9	45	finally
+    //   13	22	45	finally
+    //   26	42	45	finally
+  }
+  
+  public static void b()
+  {
+    if (!bmhv.q(pkh.a())) {
+      if (QLog.isColorLevel()) {
+        QLog.e("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "preWebRenderLoadSo [getWebRenderConfig], is:", Boolean.valueOf(false) });
+      }
+    }
+    for (;;)
+    {
+      if (tto.a()) {
+        tto.a();
+      }
+      return;
+      if (!jdField_a_of_type_Boolean) {
+        a("preload");
+      } else if (QLog.isColorLevel()) {
+        QLog.e("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "preWebRenderLoadSo [sLoadEngineLibDone], is:", Boolean.valueOf(true) });
+      }
+    }
+  }
+  
+  public static boolean b()
+  {
+    boolean bool = true;
+    File localFile = new File(pwa.a(), "libviola.so");
+    if ((!jdField_a_of_type_Boolean) || (!localFile.exists()))
+    {
+      pqe.a(pkh.a(), true, 2);
+      a("other ");
+      if (QLog.isColorLevel()) {
+        QLog.e("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "native_render [isEngineReady], ret:", Boolean.valueOf(false) });
+      }
+      bool = false;
+    }
+    while (!QLog.isColorLevel()) {
+      return bool;
+    }
+    QLog.d("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "native_render [isEngineReady], ret:", Boolean.valueOf(true) });
+    return true;
+  }
+  
+  public static void c() {}
+  
+  private void d()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+  }
+  
+  public int a(Bundle paramBundle)
+  {
+    pqe.a(pkh.a(), true, 9);
+    this.jdField_a_of_type_Int = 11;
+    return -1;
   }
   
   public void a()
   {
-    this.a = null;
+    if (this.jdField_a_of_type_ComTencentViolaCoreViolaInstance != null)
+    {
+      this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.destroy();
+      this.jdField_a_of_type_ComTencentViolaCoreViolaInstance = null;
+    }
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public void a(long paramLong, pvv parampvv)
+  public boolean a()
   {
-    QLog.d("RIJUserApproveModule", 1, "requestUserApproveInfo uin: " + paramLong);
-    if (parampvv != null) {
-      this.a = parampvv;
-    }
-    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, null);
-    if ((localReadInJoyUserInfo != null) && (localReadInJoyUserInfo.isApproved != -1)) {
-      if (parampvv != null) {
-        parampvv.a(localReadInJoyUserInfo.isApproved);
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public int b(Bundle paramBundle)
+  {
+    Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("_prenr");
+    if ((!this.jdField_d_of_type_Boolean) && (a(this.jdField_a_of_type_JavaLangString) != null))
+    {
+      this.jdField_a_of_type_Int = 10;
+      if (QLog.isColorLevel()) {
+        QLog.e("viola.ReadInJoyWebRenderEngine", 1, "native_render doCreateLoopStep_Check has url cache");
       }
     }
-    do
+    for (;;)
     {
-      return;
-      parampvv = a(paramLong);
-    } while (parampvv == null);
-    parampvv.addAttribute("KEY_USER_APPROVE_UIN", Long.valueOf(paramLong));
-    a(parampvv);
+      return 0;
+      this.jdField_a_of_type_Int = 4;
+    }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  @Deprecated
+  public int c(Bundle paramBundle)
   {
-    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xb57")) {
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    return 0;
+  }
+  
+  @Deprecated
+  public int d(Bundle paramBundle)
+  {
+    return 0;
+  }
+  
+  @Deprecated
+  public int e(Bundle paramBundle)
+  {
+    return 0;
+  }
+  
+  @Deprecated
+  public int f(Bundle paramBundle)
+  {
+    return 0;
+  }
+  
+  public int g(Bundle paramBundle)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangString.replace("_pbid", "_bid");
+    if (biio.a((String)localObject))
+    {
+      localObject = biio.a((String)localObject);
+      if ((localObject != null) && (!TextUtils.isEmpty(((biip)localObject).jdField_b_of_type_JavaLangString))) {
+        this.jdField_e_of_type_JavaLangString = ((biip)localObject).jdField_b_of_type_JavaLangString;
+      }
     }
+    while (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("viola.ReadInJoyWebRenderEngine", 2, "native_render doCreateLoopStep_GetHtml mHtmlOffline is empty");
+      }
+      pqe.a(pkh.a(), true, 7);
+      return a(paramBundle);
+      localObject = nuz.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+      if (localObject != null) {
+        try
+        {
+          int i = ((nvd)localObject).a.available();
+          if (i != 0)
+          {
+            byte[] arrayOfByte = new byte[i];
+            if (i == ((nvd)localObject).a.read(arrayOfByte)) {
+              this.jdField_e_of_type_JavaLangString = new String(arrayOfByte, "utf-8");
+            }
+          }
+        }
+        catch (IOException localIOException)
+        {
+          return a(paramBundle);
+        }
+      }
+    }
+    this.jdField_a_of_type_Int = 8;
+    return 0;
+  }
+  
+  public int h(Bundle paramBundle)
+  {
+    String str1 = "<!--native-render-->";
+    String str3 = "<!--native-data-render-->";
+    String str2 = "renderData";
+    this.jdField_f_of_type_JavaLangString = "true;";
+    String str4 = str1;
+    String str5 = str2;
+    String str6 = str3;
+    if (paramBundle != null)
+    {
+      if (!TextUtils.isEmpty(paramBundle.getString(tuu.jdField_a_of_type_JavaLangString))) {
+        str1 = paramBundle.getString(tuu.jdField_a_of_type_JavaLangString);
+      }
+      if (!TextUtils.isEmpty(paramBundle.getString(tuu.jdField_e_of_type_JavaLangString))) {
+        str2 = paramBundle.getString(tuu.jdField_e_of_type_JavaLangString);
+      }
+      if (!TextUtils.isEmpty(paramBundle.getString(tuu.jdField_c_of_type_JavaLangString))) {
+        str3 = paramBundle.getString(tuu.jdField_c_of_type_JavaLangString);
+      }
+      str4 = str1;
+      str5 = str2;
+      str6 = str3;
+      if (!TextUtils.isEmpty(paramBundle.getString(tuu.jdField_d_of_type_JavaLangString)))
+      {
+        this.jdField_f_of_type_JavaLangString = paramBundle.getString(tuu.jdField_d_of_type_JavaLangString);
+        str6 = str3;
+        str5 = str2;
+        str4 = str1;
+      }
+    }
+    this.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString.replaceFirst(str4, this.jdField_d_of_type_JavaLangString);
+    this.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString.replaceFirst(str6, "var " + str5 + " = " + this.jdField_f_of_type_JavaLangString + ";");
+    this.jdField_a_of_type_Int = 9;
+    return 0;
+  }
+  
+  public int i(Bundle paramBundle)
+  {
+    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
+    {
+      if (!this.jdField_c_of_type_Boolean) {
+        break label131;
+      }
+      jdField_b_of_type_ComTencentUtilLRULinkedHashMap.put(this.jdField_a_of_type_JavaLangString, new pvx(this.jdField_e_of_type_JavaLangString, "utf-8", 1800000L));
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render one result total cost[" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + " ms]");
+      }
+      pqe.a(pkh.a(), true, 8);
+      pqe.a(pkh.a(), true, 12, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      d();
+      a();
+      this.jdField_a_of_type_Int = 1;
+      return -1;
+      label131:
+      jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(this.jdField_a_of_type_JavaLangString, new pvx(this.jdField_e_of_type_JavaLangString, "utf-8"));
+    }
+  }
+  
+  public int j(Bundle paramBundle)
+  {
+    pqe.a(pkh.a(), true, 3);
+    d();
+    a();
+    this.jdField_a_of_type_Int = 1;
+    return -1;
+  }
+  
+  public int k(Bundle paramBundle)
+  {
+    d();
+    a();
+    this.jdField_a_of_type_Int = 1;
+    return -1;
   }
 }
 

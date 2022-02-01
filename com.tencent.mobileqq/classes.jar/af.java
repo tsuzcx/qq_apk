@@ -3,6 +3,7 @@ import android.view.View.OnClickListener;
 import com.dataline.activities.DLFilesViewerActivity;
 import com.dataline.util.file.DLFileInfo;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
@@ -31,7 +32,7 @@ public class af
     } while ((((DLFileInfo)localObject3).a != 0) && (((DLFileInfo)localObject3).a != 3));
     for (int i = 1;; i = 0)
     {
-      amqd localamqd = (amqd)this.a.app.getBusinessHandler(8);
+      ansr localansr = (ansr)this.a.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       if (i != 0)
       {
         if ((!DLFilesViewerActivity.a(this.a).isReportPause) && (DLFilesViewerActivity.a(this.a).getGroupType() == -2335))
@@ -42,7 +43,7 @@ public class af
         DLFilesViewerActivity.a(this.a).setPaused(true);
         if ((!DLFilesViewerActivity.a(this.a).isSingle()) && (DLFilesViewerActivity.a(this.a).getGroupType() != -2335))
         {
-          localamqd.a(DLFilesViewerActivity.a(this.a).getGroupId(), 0L, false);
+          localansr.a(DLFilesViewerActivity.a(this.a).getGroupId(), 0L, false);
           DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
         }
       }
@@ -57,22 +58,22 @@ public class af
           localObject2 = (DataLineMsgRecord)((Iterator)localObject1).next();
           localObject3 = dr.a((DataLineMsgRecord)localObject2);
           if ((((DLFileInfo)localObject3).a == 0) || (((DLFileInfo)localObject3).a == 3)) {
-            localamqd.a(((DataLineMsgRecord)localObject2).groupId, ((DataLineMsgRecord)localObject2).sessionid, false);
+            localansr.a(((DataLineMsgRecord)localObject2).groupId, ((DataLineMsgRecord)localObject2).sessionid, false);
           }
         }
         break;
         if (NetworkUtil.isNetSupport(this.a))
         {
-          if ((aszt.a()) && (DLFilesViewerActivity.a(this.a).getFileTotalSize() > 3145728L))
+          if ((auea.a()) && (DLFilesViewerActivity.a(this.a).getFileTotalSize() > 3145728L))
           {
             localObject1 = DLFilesViewerActivity.a(this.a).getFirstItem();
-            aszt.a(((DataLineMsgRecord)localObject1).isSendFromLocal(), this.a, new ag(this, (DataLineMsgRecord)localObject1, localamqd));
+            auea.a(((DataLineMsgRecord)localObject1).isSendFromLocal(), this.a, new ag(this, (DataLineMsgRecord)localObject1, localansr));
           }
           else
           {
             localObject1 = DLFilesViewerActivity.a(this.a).getFirstItem();
             if ((localObject1 != null) && (!((DataLineMsgRecord)localObject1).isSendFromLocal()) && (((DataLineMsgRecord)localObject1).strMoloKey != null)) {
-              localamqd.b(112);
+              localansr.b(112);
             }
             DLFilesViewerActivity.a(this.a).setPaused(false);
             Iterator localIterator = DLFilesViewerActivity.a(this.a).values().iterator();
@@ -116,16 +117,16 @@ public class af
               }
             }
             if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0)) {
-              localamqd.a((ArrayList)localObject2, true);
+              localansr.a((ArrayList)localObject2, true);
             }
             if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-              localamqd.a((List)localObject1);
+              localansr.a((List)localObject1);
             }
             DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
           }
         }
         else {
-          aszk.a(2131694108);
+          audr.a(2131694305);
         }
       }
     }

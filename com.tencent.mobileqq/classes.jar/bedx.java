@@ -1,29 +1,30 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.teamwork.spread.BuddyFileAIOMsgTips.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+
 public class bedx
+  extends bedt
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  
-  public bedx(int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public bedx(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bedz parambedz)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    super(paramQQAppInterface, paramChatMessage, parambedz);
   }
   
-  public String toString()
+  protected String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("opType:").append(this.jdField_a_of_type_Int).append(" ");
-    localStringBuilder.append("msgSenderUin:").append(this.jdField_a_of_type_JavaLangString).append(" ");
-    localStringBuilder.append("opUin:").append(this.jdField_b_of_type_JavaLangString).append(" ");
-    localStringBuilder.append("opTime:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("graytipuniseq:").append(this.jdField_b_of_type_Long);
-    return localStringBuilder.toString();
+    return ((MessageForFile)this.a).fileName;
+  }
+  
+  protected void a(bedu parambedu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BuddyFileAIOMsgTips", 1, "getWordsList by buddyFile[" + System.currentTimeMillis() + "]");
+    }
+    ThreadManager.getUIHandler().post(new BuddyFileAIOMsgTips.1(this, parambedu));
   }
 }
 

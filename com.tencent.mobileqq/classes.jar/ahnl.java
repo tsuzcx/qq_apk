@@ -1,9 +1,14 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahnl
+  implements ahnr
 {
-  public static final String a = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".sticker_recommended_pics/");
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramagtf.b(paramagus.b, paramMessageRecord.extStr);
+  }
 }
 
 

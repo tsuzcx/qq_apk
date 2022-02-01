@@ -1,75 +1,79 @@
 import android.content.Context;
-import android.content.res.Resources;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
 
-class muf
-  extends RelativeLayout
+public class muf
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView b;
+  Context jdField_a_of_type_AndroidContentContext;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+  Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public boolean a;
+  Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener;
+  Animation jdField_b_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  Animation jdField_c_of_type_AndroidViewAnimationAnimation;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
   
-  public muf(Context paramContext, int paramInt, CharSequence paramCharSequence)
+  public void a()
   {
-    super(paramContext);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(paramContext.getResources().getDimensionPixelSize(2131297914), 0, 0, 0);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(9, -1);
-    this.b = new ImageView(paramContext);
-    this.b.setImageResource(paramInt);
-    this.b.setLayoutParams(localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, 0, paramContext.getResources().getDimensionPixelSize(2131297914), 0);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(11, -1);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842290);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(14, -1);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, paramContext.getResources().getDimension(2131299028));
-    addView(this.b);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    setBackgroundResource(2130837568);
-    setId(2131369630);
-    setMinimumHeight(paramContext.getResources().getDimensionPixelSize(2131296724));
+    c();
+    e();
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.jdField_b_of_type_AndroidWidgetImageView = null;
+    this.jdField_c_of_type_AndroidWidgetImageView = null;
+    this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
+    this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
+    this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
+    this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
   }
   
-  public void a(int paramInt)
+  public void b()
   {
-    this.b.setImageResource(paramInt);
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    }
   }
   
-  public void a(CharSequence paramCharSequence)
+  public void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      localImageView.setVisibility(i);
-      return;
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    }
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null)) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+    }
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
+    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null))
+    {
+      this.jdField_b_of_type_AndroidWidgetImageView.clearAnimation();
+      this.jdField_c_of_type_AndroidWidgetImageView.clearAnimation();
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     muf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
 import android.os.Bundle;
-import bkmn;
+import blxv;
 import cooperation.qappcenter.remote.SendMsg;
 import org.json.JSONException;
 import org.json.JSONObject;

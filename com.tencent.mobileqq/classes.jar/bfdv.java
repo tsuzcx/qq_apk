@@ -1,6 +1,13 @@
-public abstract interface bfdv
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+public class bfdv
+  extends amgz
 {
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean);
+  public CheckBox a;
+  public Object a;
+  public TextView d;
+  public TextView e;
 }
 
 

@@ -1,60 +1,13 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-
-public abstract class lgd
+public class lgd
 {
-  protected static final String[] a;
-  public VideoAppInterface a;
-  public final String a;
+  public byte[] a;
+  public byte[] b;
   
-  static
+  public lgd(int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MANAGER_ZIMU", "MANAGER_FILTER", "MANAGER_PENDANT", "MANAGER_FACE", "MANAGER_NODE_REPORTER", "MANAGER_SUPPORT", "MANAGER_REDPACKET", "MANAGER_REDPACKET_Entry", "MANAGER_EFFECT_OPERATE", "MANAGER_ZIMU_LIVE", "MANAGER_Voice_Recog", "MANAGER_Tips", "MANAGER_mutex", "MANAGER_MAKEUP", "MANAGER_VIRTUAL_BG" };
+    this.a = new byte[paramInt1];
+    this.b = new byte[paramInt2];
   }
-  
-  protected lgd(VideoAppInterface paramVideoAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.b());
-  }
-  
-  public static void a(String paramString, Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    if ((paramInt >= 0) && (paramInt < 15) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
-    {
-      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      paramContext = bfyz.b(paramContext).edit();
-      paramContext.putBoolean(str, paramBoolean);
-      paramContext.commit();
-      lba.h(paramString, "setPreload zzzzz  bid=" + paramInt);
-      return;
-    }
-    lba.h(paramString, "setPreload ERROR : bid=" + paramInt);
-  }
-  
-  static boolean a(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < 15) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
-    {
-      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      boolean bool = bfyz.b(paramVideoAppInterface.getApplication()).getBoolean(str, false);
-      lba.f(paramString, "isPreloaded:" + str + "|" + bool);
-      return bool;
-    }
-    lba.h(paramString, "isPreloaded ERROR : bid=" + paramInt);
-    return false;
-  }
-  
-  protected abstract void a();
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2) {}
-  
-  protected void a(String paramString, boolean paramBoolean) {}
-  
-  protected abstract boolean a(String paramString);
 }
 
 

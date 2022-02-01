@@ -1,51 +1,24 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.av.app.VideoAppInterface;
-import mqq.app.MobileQQ;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class lei
+class lei
+  extends BroadcastReceiver
 {
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private lej jdField_a_of_type_Lej;
+  lei(leh paramleh) {}
   
-  public lei(VideoAppInterface paramVideoAppInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-  }
-  
-  public void a()
-  {
-    try
+    if ((this.a.a() != null) && (paramIntent != null))
     {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.jdField_a_of_type_Lej = new lej();
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().registerReceiver(this.jdField_a_of_type_Lej, localIntentFilter);
+      long l = mur.a(paramIntent);
+      paramContext = paramIntent.getStringExtra("camera_id");
+      int i = paramIntent.getIntExtra("availability", 1);
+      this.a.a(paramContext, i);
+      if (QLog.isColorLevel()) {
+        QLog.w("GCameraAvailabilityMonitor", 1, "CameraAvailabilityReceiver, id[" + paramContext + "], available[" + i + "], seq[" + l + "]");
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_Lej != null)) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().unregisterReceiver(this.jdField_a_of_type_Lej);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
     }
   }
 }

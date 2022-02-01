@@ -7,7 +7,7 @@ class BaseChatPie$21
   
   public void run()
   {
-    this.this$0.updateUnreadNumOnTitleBar();
+    this.this$0.doOnUnRegReceivers();
   }
 }
 

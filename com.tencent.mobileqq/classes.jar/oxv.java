@@ -1,73 +1,82 @@
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oxv
-  extends TextBase
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelCover/RIJMainChannelUtil;", "", "()V", "TAG", "", "hasInit", "", "lock", "mainFeedsChannelId", "", "mainFeedsChannelName", "mainFeedsViolaUrl", "getMainFeedsChannelId", "getMainFeedsChannelName", "getMainFeedsViolaUrl", "init", "", "reset", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxv
 {
-  private static final int jdField_a_of_type_Int = Color.parseColor("#262626");
-  private static final int b = Utils.dp2px(16.0D);
-  private NativeCommentTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView;
+  private static int jdField_a_of_type_Int;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static String jdField_a_of_type_JavaLangString;
+  public static final oxv a;
+  private static boolean jdField_a_of_type_Boolean;
+  private static String b;
   
-  public oxv(VafContext paramVafContext)
+  static
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView = new NativeCommentTextView(paramVafContext.getContext());
+    jdField_a_of_type_Oxv = new oxv();
+    jdField_a_of_type_Int = -1;
+    jdField_a_of_type_JavaLangString = "";
+    b = "";
   }
   
-  public void a(ouc paramouc, View paramView, int paramInt)
+  public final int a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setModel(paramouc, paramView, paramInt);
+    a();
+    return jdField_a_of_type_Int;
   }
   
-  public int getComMeasuredHeight()
+  @NotNull
+  public final String a()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.getComMeasuredHeight();
+    a();
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public int getComMeasuredWidth()
+  public final void a()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setTextSize(0, b * orx.a());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setIncludeFontPadding(false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setTextColor(jdField_a_of_type_Int);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
+    if (jdField_a_of_type_Boolean) {
+      return;
     }
-    do
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      return super.setAttribute(paramInt, paramObject);
-    } while (!(paramObject instanceof ouo));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setCommentModel((ouo)paramObject);
-    return true;
+      boolean bool = jdField_a_of_type_Boolean;
+      if (bool) {
+        return;
+      }
+      bmhv.f();
+      Object localObject2 = Aladdin.getConfig(220);
+      jdField_a_of_type_Int = ((AladdinConfig)localObject2).getIntegerFromString("main_feeds_channel_id", -1);
+      String str = ((AladdinConfig)localObject2).getString("main_feeds_channel_name", "");
+      Intrinsics.checkExpressionValueIsNotNull(str, "config.getString(\"main_feeds_channel_name\", \"\")");
+      jdField_a_of_type_JavaLangString = str;
+      localObject2 = ((AladdinConfig)localObject2).getString("main_feeds_viola_url", "");
+      Intrinsics.checkExpressionValueIsNotNull(localObject2, "config.getString(\"main_feeds_viola_url\", \"\")");
+      b = (String)localObject2;
+      jdField_a_of_type_Boolean = true;
+      QLog.i("RIJMainChannelUtil", 1, "[init] mainFeedsChannelId = " + jdField_a_of_type_Int + ", mainFeedsChannelName = " + jdField_a_of_type_JavaLangString + ", mainFeedsViolaUrl = " + b);
+      localObject2 = Unit.INSTANCE;
+      return;
+    }
+  }
+  
+  @NotNull
+  public final String b()
+  {
+    a();
+    return b;
+  }
+  
+  public final void b()
+  {
+    jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_Int = -1;
+    jdField_a_of_type_JavaLangString = "";
+    b = "";
   }
 }
 

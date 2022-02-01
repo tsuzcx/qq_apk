@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.troop.logic;
 
-import beqp;
+import bfxr;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -10,14 +11,14 @@ import com.tencent.qphone.base.util.QLog;
 public class HomeworkTroopController$1
   implements Runnable
 {
-  public HomeworkTroopController$1(beqp parambeqp) {}
+  public HomeworkTroopController$1(bfxr parambfxr) {}
   
   public void run()
   {
-    Object localObject = (TroopManager)beqp.a(this.this$0).getManager(52);
-    if ((localObject != null) && (beqp.a(this.this$0) != null))
+    Object localObject = (TroopManager)bfxr.a(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER);
+    if ((localObject != null) && (bfxr.a(this.this$0) != null))
     {
-      localObject = ((TroopManager)localObject).c(beqp.b(this.this$0).curFriendUin);
+      localObject = ((TroopManager)localObject).c(bfxr.b(this.this$0).curFriendUin);
       if (localObject != null)
       {
         if (QLog.isColorLevel()) {

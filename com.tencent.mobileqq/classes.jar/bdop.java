@@ -1,28 +1,37 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bdop
-  implements AdapterView.OnItemSelectedListener
+  implements View.OnClickListener
 {
-  public bdop(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public bdop(StructMsgForGeneralShare paramStructMsgForGeneralShare, PopupWindow paramPopupWindow, Context paramContext) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (paramView == null) {
-      return;
+    QLog.d(StructMsgForGeneralShare.access$000(), 1, "delete_ad");
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
-    if (this.a.jdField_a_of_type_Bffh != null) {
-      this.a.jdField_a_of_type_Bffh.a(false, paramInt);
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
-    paramAdapterView = this.a.jdField_a_of_type_Int + 1 + "/" + this.a.b;
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
+    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().startDelAnimAndDelMsg((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+    ((onx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.ESHOP_AD_HANDLER)).a(8, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692186), 1).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

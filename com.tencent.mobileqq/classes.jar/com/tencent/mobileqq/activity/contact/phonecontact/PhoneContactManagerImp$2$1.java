@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.contact.phonecontact;
 
-import aihi;
+import ajch;
 import com.tencent.qphone.base.util.QLog;
 
 public class PhoneContactManagerImp$2$1
   implements Runnable
 {
-  public PhoneContactManagerImp$2$1(aihi paramaihi) {}
+  public PhoneContactManagerImp$2$1(ajch paramajch) {}
   
   public void run()
   {

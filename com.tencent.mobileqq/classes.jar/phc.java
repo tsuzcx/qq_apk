@@ -1,43 +1,66 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public final class phc
+public class phc
+  extends ViewBase
 {
-  int jdField_a_of_type_Int;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  ReadInJoyXListView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView;
+  private ReadInJoyCommentLikeView a;
   
-  public int a()
+  public phc(VafContext paramVafContext)
   {
-    return this.jdField_a_of_type_Int;
+    super(paramVafContext);
+    this.a = new ReadInJoyCommentLikeView(paramVafContext.getContext());
   }
   
-  public Activity a()
+  public void a(pia parampia)
   {
-    return this.jdField_a_of_type_AndroidAppActivity;
+    this.a.setOnLikeListener(parampia);
   }
   
-  public ReadInJoyXListView a()
+  public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView;
+    return this.a.getComMeasuredHeight();
   }
   
-  public phc a(int paramInt)
+  public int getComMeasuredWidth()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    return this.a.getComMeasuredWidth();
   }
   
-  public phc a(Activity paramActivity)
+  public View getNativeView()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    return this;
+    return this.a;
   }
   
-  public phc a(ReadInJoyXListView paramReadInJoyXListView)
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView = paramReadInJoyXListView;
-    return this;
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setVisibility(0);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.setAttribute(paramInt, paramObject);
+    }
+    if (((paramObject instanceof pdp)) && (((pdp)paramObject).a != null)) {
+      this.a.a(((pdp)paramObject).a);
+    }
+    return true;
   }
 }
 

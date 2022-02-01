@@ -1,24 +1,7 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import kotlin.Metadata;
 
-public class sos
-  implements Animator.AnimatorListener
-{
-  public sos(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setRotation(0.0F);
-    this.a.setAlpha(1.0F);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsTitleTextView$Companion;", "", "()V", "END_DOT", "", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sos {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

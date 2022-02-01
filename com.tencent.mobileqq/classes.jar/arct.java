@@ -1,35 +1,82 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class arct
-  extends amsu
+  extends aqwt<arcs>
 {
-  public arct(MessengerService paramMessengerService) {}
-  
-  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
+  public static boolean a()
   {
-    if (this.a.b != null)
+    arcs localarcs = (arcs)aqxe.a().a(675);
+    if (localarcs != null) {}
+    for (boolean bool = localarcs.a();; bool = true)
     {
-      this.a.b.putString("cmd", "ipc_signature_setlike");
-      paramObject = new Bundle();
-      if (!paramBoolean) {
-        break label81;
+      QLog.d("OpenSdkIFrameProcessor", 1, new Object[] { "isEnableIFrame = ", Boolean.valueOf(bool) });
+      return bool;
+    }
+  }
+  
+  @NonNull
+  public arcs a(int paramInt)
+  {
+    return new arcs();
+  }
+  
+  @Nullable
+  public arcs a(aqxa[] paramArrayOfaqxa)
+  {
+    int i = 0;
+    if (paramArrayOfaqxa == null) {}
+    for (;;)
+    {
+      QLog.d("OpenSdkIFrameProcessor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
+      if ((paramArrayOfaqxa == null) || (paramArrayOfaqxa.length <= 0)) {
+        break;
       }
+      new arcs();
+      return arcs.a(paramArrayOfaqxa);
+      i = paramArrayOfaqxa.length;
     }
-    label81:
-    for (int i = 0;; i = 101)
-    {
-      paramObject.putInt("result", i);
-      this.a.b.putBundle("response", paramObject);
-      this.a.a(this.a.b);
-      this.a.b = null;
-      return;
+    return null;
+  }
+  
+  public void a(arcs paramarcs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenSdkIFrameProcessor", 2, "onUpdate " + paramarcs.toString());
     }
+  }
+  
+  public Class<arcs> clazz()
+  {
+    return arcs.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 675;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arct
  * JD-Core Version:    0.7.0.1
  */

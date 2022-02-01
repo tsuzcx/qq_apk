@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.qwallet.fragment;
 
 import android.text.TextUtils;
 import android.util.Base64;
-import bfqm;
+import bgzd;
 import java.io.File;
 import java.io.FileInputStream;
 import org.json.JSONObject;
@@ -14,7 +14,7 @@ class QzoneHbFragment$7
   
   public void run()
   {
-    Object localObject1 = bfqm.a().a();
+    Object localObject1 = bgzd.a().a();
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
     for (;;)
     {
@@ -29,7 +29,7 @@ class QzoneHbFragment$7
       }
       catch (Exception localException1)
       {
-        bfqm.a().a("");
+        bgzd.a().a("");
         localException1.printStackTrace();
       }
       Object localObject2 = new File(this.a);
@@ -71,7 +71,7 @@ class QzoneHbFragment$7
           if (localObject4 == null) {
             break;
           }
-          bfqm.a().a(localException2.toString());
+          bgzd.a().a(localException2.toString());
           this.this$0.a((JSONObject)localObject4);
           return;
         }

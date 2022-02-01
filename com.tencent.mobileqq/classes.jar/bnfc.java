@@ -1,44 +1,30 @@
-import android.graphics.Bitmap;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.7.1;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bnfc
-  extends bnfu
+  implements Observer<bnet>
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  public String b;
-  private boolean jdField_b_of_type_Boolean;
-  private Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
-  private boolean jdField_c_of_type_Boolean;
+  bnfc(bnev parambnev) {}
   
-  public bnfc(int paramInt, Bitmap paramBitmap)
+  public void a(@Nullable bnet parambnet)
   {
-    super(paramInt, paramBitmap);
-    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public bnfc a(Bitmap paramBitmap)
-  {
-    paramBitmap = new bnfc(this.jdField_c_of_type_Int, paramBitmap);
-    paramBitmap.jdField_c_of_type_AndroidGraphicsBitmap = this.jdField_c_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramBitmap.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    return paramBitmap;
-  }
-  
-  public String toString()
-  {
-    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_a_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + '}';
+    Object localObject = bnep.a(parambnet);
+    parambnet = new LinkedList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      bnet localbnet = (bnet)((Iterator)localObject).next();
+      bnff localbnff = new bnff(null);
+      localbnff.a = bnfh.a(localbnet);
+      parambnet.add(localbnff);
+    }
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.7.1(this, parambnet));
   }
 }
 

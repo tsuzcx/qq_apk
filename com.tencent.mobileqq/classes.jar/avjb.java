@@ -1,29 +1,22 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
-
-public class avjb
-  implements URLDrawable.URLDrawableListener
+class avjb
+  implements blgp
 {
-  public avjb(LoginWelcomeManager paramLoginWelcomeManager, avjf paramavjf, RecentUser paramRecentUser) {}
+  avjb(avja paramavja) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "tryShowCGRU drawable onLoadSuccessed");
-    }
-    this.jdField_a_of_type_Avjf.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Avjf.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
-    this.jdField_a_of_type_Avjf.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(null);
-    LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    this.a.a = true;
+    return false;
   }
 }
 

@@ -6,10 +6,10 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
-import bcef;
-import bkkq;
-import bkkz;
-import bkxr;
+import bdla;
+import blvy;
+import blwh;
+import bmja;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -19,12 +19,12 @@ public class TroopMemberCardProxyActivity
 {
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, Class paramClass, Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString3, String paramString4, int paramInt)
   {
-    paramQQAppInterface = new bkxr(paramQQAppInterface);
+    paramQQAppInterface = new bmja(paramQQAppInterface);
     PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
     if (localPluginCommunicationHandler != null) {
       localPluginCommunicationHandler.register(paramQQAppInterface);
     }
-    paramQQAppInterface = new bkkz(1);
+    paramQQAppInterface = new blwh(1);
     paramQQAppInterface.jdField_b_of_type_JavaLangString = paramString1;
     paramQQAppInterface.d = paramString2;
     paramQQAppInterface.jdField_a_of_type_JavaLangString = paramString4;
@@ -38,8 +38,8 @@ public class TroopMemberCardProxyActivity
     paramQQAppInterface.jdField_b_of_type_Int = paramInt;
     paramQQAppInterface.c = 10000;
     paramQQAppInterface.f = null;
-    bkkq.a(paramActivity, paramQQAppInterface);
-    bcef.b(null, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "load_plugin", 0, 0, null, null, null, null);
+    blvy.a(paramActivity, paramQQAppInterface);
+    bdla.b(null, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "load_plugin", 0, 0, null, null, null, null);
   }
   
   @Override

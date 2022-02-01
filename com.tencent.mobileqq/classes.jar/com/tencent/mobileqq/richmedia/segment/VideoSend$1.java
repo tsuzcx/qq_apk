@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richmedia.segment;
 
 import android.os.Bundle;
-import baid;
-import baie;
-import barq;
+import bbos;
+import bbot;
+import bbyf;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForLightVideo;
@@ -17,24 +17,24 @@ import java.util.ArrayList;
 public class VideoSend$1
   implements Runnable
 {
-  public VideoSend$1(baie parambaie, baid parambaid, Bundle paramBundle) {}
+  public VideoSend$1(bbot parambbot, bbos parambbos, Bundle paramBundle) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("VideoSend", 2, "submitTask begin");
     }
-    if (this.jdField_a_of_type_Baid.jdField_c_of_type_Int == 1) {
-      if (this.this$0.jdField_a_of_type_JavaUtilArrayList.size() == this.jdField_a_of_type_Baid.d)
+    if (this.jdField_a_of_type_Bbos.jdField_c_of_type_Int == 1) {
+      if (this.this$0.jdField_a_of_type_JavaUtilArrayList.size() == this.jdField_a_of_type_Bbos.d)
       {
-        this.this$0.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Baid);
-        localObject = new File(this.jdField_a_of_type_Baid.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Baid.jdField_a_of_type_Long = ((File)localObject).length();
-        this.jdField_a_of_type_Baid.jdField_b_of_type_JavaLangString = barq.a(this.jdField_a_of_type_Baid.jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_Baid.d == 0)
+        this.this$0.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Bbos);
+        localObject = new File(this.jdField_a_of_type_Bbos.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Bbos.jdField_a_of_type_Long = ((File)localObject).length();
+        this.jdField_a_of_type_Bbos.jdField_b_of_type_JavaLangString = bbyf.a(this.jdField_a_of_type_Bbos.jdField_a_of_type_JavaLangString);
+        if (this.jdField_a_of_type_Bbos.d == 0)
         {
-          this.jdField_a_of_type_Baid.jdField_b_of_type_Long = 0L;
-          this.this$0.a(this.jdField_a_of_type_Baid);
+          this.jdField_a_of_type_Bbos.jdField_b_of_type_Long = 0L;
+          this.this$0.a(this.jdField_a_of_type_Bbos);
         }
       }
     }
@@ -43,73 +43,73 @@ public class VideoSend$1
       do
       {
         return;
-        this.jdField_a_of_type_Baid.jdField_b_of_type_Long = (this.jdField_a_of_type_Baid.jdField_c_of_type_Long - ((baid)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_c_of_type_Long);
+        this.jdField_a_of_type_Bbos.jdField_b_of_type_Long = (this.jdField_a_of_type_Bbos.jdField_c_of_type_Long - ((bbos)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_c_of_type_Long);
         break;
       } while (!QLog.isColorLevel());
-      QLog.d("VideoSend", 2, "submitTask failed, mVideoSliceInfos.size():" + this.this$0.jdField_a_of_type_JavaUtilArrayList.size() + " info:" + this.jdField_a_of_type_Baid);
+      QLog.d("VideoSend", 2, "submitTask failed, mVideoSliceInfos.size():" + this.this$0.jdField_a_of_type_JavaUtilArrayList.size() + " info:" + this.jdField_a_of_type_Bbos);
       return;
-      if (this.jdField_a_of_type_Baid.jdField_c_of_type_Int == 3)
+      if (this.jdField_a_of_type_Bbos.jdField_c_of_type_Int == 3)
       {
-        this.jdField_a_of_type_Baid.jdField_a_of_type_JavaLangString = this.this$0.c();
-        localObject = new File(this.jdField_a_of_type_Baid.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Baid.jdField_a_of_type_Long = ((File)localObject).length();
-        this.jdField_a_of_type_Baid.jdField_b_of_type_JavaLangString = barq.a(this.jdField_a_of_type_Baid.jdField_a_of_type_JavaLangString);
-        this.this$0.b = this.jdField_a_of_type_Baid;
-        this.jdField_a_of_type_Baid.d = this.this$0.jdField_a_of_type_JavaUtilArrayList.size();
-        this.this$0.a(this.jdField_a_of_type_Baid);
+        this.jdField_a_of_type_Bbos.jdField_a_of_type_JavaLangString = this.this$0.c();
+        localObject = new File(this.jdField_a_of_type_Bbos.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Bbos.jdField_a_of_type_Long = ((File)localObject).length();
+        this.jdField_a_of_type_Bbos.jdField_b_of_type_JavaLangString = bbyf.a(this.jdField_a_of_type_Bbos.jdField_a_of_type_JavaLangString);
+        this.this$0.b = this.jdField_a_of_type_Bbos;
+        this.jdField_a_of_type_Bbos.d = this.this$0.jdField_a_of_type_JavaUtilArrayList.size();
+        this.this$0.a(this.jdField_a_of_type_Bbos);
         return;
       }
-      if (this.jdField_a_of_type_Baid.jdField_c_of_type_Int == 4)
+      if (this.jdField_a_of_type_Bbos.jdField_c_of_type_Int == 4)
       {
-        this.jdField_a_of_type_Baid.jdField_a_of_type_JavaLangString = this.this$0.a();
-        this.jdField_a_of_type_Baid.d = -1;
-        this.this$0.b(this.jdField_a_of_type_Baid, this.jdField_a_of_type_AndroidOsBundle);
+        this.jdField_a_of_type_Bbos.jdField_a_of_type_JavaLangString = this.this$0.a();
+        this.jdField_a_of_type_Bbos.d = -1;
+        this.this$0.b(this.jdField_a_of_type_Bbos, this.jdField_a_of_type_AndroidOsBundle);
         return;
       }
-    } while (this.jdField_a_of_type_Baid.jdField_c_of_type_Int != 5);
-    this.jdField_a_of_type_Baid.jdField_a_of_type_JavaLangString = this.this$0.b();
-    Object localObject = new File(this.jdField_a_of_type_Baid.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Baid.jdField_a_of_type_Long = ((File)localObject).length();
-    int i = this.jdField_a_of_type_Baid.e;
+    } while (this.jdField_a_of_type_Bbos.jdField_c_of_type_Int != 5);
+    this.jdField_a_of_type_Bbos.jdField_a_of_type_JavaLangString = this.this$0.b();
+    Object localObject = new File(this.jdField_a_of_type_Bbos.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bbos.jdField_a_of_type_Long = ((File)localObject).length();
+    int i = this.jdField_a_of_type_Bbos.e;
     if (QLog.isColorLevel()) {
-      QLog.d("VideoSend", 2, "combine file is generated," + this.jdField_a_of_type_Baid + " msVideo:" + i);
+      QLog.d("VideoSend", 2, "combine file is generated," + this.jdField_a_of_type_Bbos + " msVideo:" + i);
     }
     if ((this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.videoFileStatus == 1003))
     {
       localObject = ShortVideoUtils.getShortVideoSavePath(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo, "mp4");
-      FileUtils.copyFile(this.jdField_a_of_type_Baid.jdField_a_of_type_JavaLangString, (String)localObject);
+      FileUtils.copyFile(this.jdField_a_of_type_Bbos.jdField_a_of_type_JavaLangString, (String)localObject);
       this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.videoFileName = ((String)localObject);
       this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.videoFileTime = (i / 1000);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.videoFileSize = ((int)this.jdField_a_of_type_Baid.jdField_a_of_type_Long);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.videoFileSize = ((int)this.jdField_a_of_type_Bbos.jdField_a_of_type_Long);
       this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.serial();
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgContentByUniseq(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.frienduin, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.istroop, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.uniseq, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.msgData);
       if (QLog.isColorLevel()) {
-        QLog.d("VideoSend", 2, "combine file is generated,message is sent, info:" + this.jdField_a_of_type_Baid + " saveVideoPath:" + (String)localObject);
+        QLog.d("VideoSend", 2, "combine file is generated,message is sent, info:" + this.jdField_a_of_type_Bbos + " saveVideoPath:" + (String)localObject);
       }
-      this.this$0.c = this.jdField_a_of_type_Baid;
+      this.this$0.c = this.jdField_a_of_type_Bbos;
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqTransfileLightVideoUploadProcessor != null) {
         this.this$0.jdField_a_of_type_ComTencentMobileqqTransfileLightVideoUploadProcessor.sendMessageToUpdate(1003);
       }
       this.this$0.c();
       return;
     }
-    this.jdField_a_of_type_Baid.jdField_b_of_type_JavaLangString = barq.a(this.jdField_a_of_type_Baid.jdField_a_of_type_JavaLangString);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.mLocalMd5 = this.jdField_a_of_type_Baid.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Bbos.jdField_b_of_type_JavaLangString = bbyf.a(this.jdField_a_of_type_Bbos.jdField_a_of_type_JavaLangString);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.mLocalMd5 = this.jdField_a_of_type_Bbos.jdField_b_of_type_JavaLangString;
     localObject = ShortVideoUtils.getShortVideoSavePath(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo, "mp4");
-    FileUtils.copyFile(this.jdField_a_of_type_Baid.jdField_a_of_type_JavaLangString, (String)localObject);
+    FileUtils.copyFile(this.jdField_a_of_type_Bbos.jdField_a_of_type_JavaLangString, (String)localObject);
     this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.videoFileTime = (i / 1000);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.videoFileSize = ((int)this.jdField_a_of_type_Baid.jdField_a_of_type_Long);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.videoFileSize = ((int)this.jdField_a_of_type_Bbos.jdField_a_of_type_Long);
     this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.videoFileName = ((String)localObject);
     this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.serial();
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgContentByUniseq(this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.frienduin, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.istroop, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.uniseq, this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo.msgData);
     if (QLog.isColorLevel()) {
-      QLog.d("VideoSend", 2, "combine file is generated, info:" + this.jdField_a_of_type_Baid + " saveVideoPath:" + (String)localObject);
+      QLog.d("VideoSend", 2, "combine file is generated, info:" + this.jdField_a_of_type_Bbos + " saveVideoPath:" + (String)localObject);
     }
     if ((this.this$0.jdField_a_of_type_Int == 1) && (!this.jdField_a_of_type_AndroidOsBundle.getBoolean("video_segment_capture_success", true))) {
-      this.jdField_a_of_type_Baid.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Bbos.jdField_a_of_type_Boolean = false;
     }
-    this.this$0.a(this.jdField_a_of_type_Baid);
-    this.this$0.c = this.jdField_a_of_type_Baid;
+    this.this$0.a(this.jdField_a_of_type_Bbos);
+    this.this$0.c = this.jdField_a_of_type_Bbos;
   }
 }
 

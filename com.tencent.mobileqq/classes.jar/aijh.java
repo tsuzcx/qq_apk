@@ -1,32 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
+import org.json.JSONObject;
 
-class aijh
-  implements View.OnClickListener
+public class aijh
 {
-  aijh(aijg paramaijg) {}
+  private aiji a;
   
-  public void onClick(View paramView)
+  public aijh(aiji paramaiji)
   {
-    aijj localaijj = (aijj)paramView.getTag();
-    if ((localaijj == null) || (!(localaijj instanceof aijj))) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.resetSlideStatus();
-      View localView = (View)paramView.getParent();
-      if ((localView instanceof ShaderAnimLayout)) {
-        ((ShaderAnimLayout)localView).hideDirectly();
-      }
-      aijg.a(this.a, localaijj.a);
-      this.a.jdField_a_of_type_JavaUtilList.add(aijg.a(this.a).remove(this.a.getCount() - localaijj.b - 1));
-      this.a.notifyDataSetChanged();
+    this.a = paramaiji;
+  }
+  
+  public String a()
+  {
+    if (this.a == null) {
+      return "";
     }
+    return this.a.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<String> a()
+  {
+    if (this.a == null) {
+      return null;
+    }
+    return this.a.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(JSONObject paramJSONObject) {}
+  
+  public String b()
+  {
+    if (this.a == null) {
+      return "";
+    }
+    return this.a.b;
+  }
+  
+  public String c()
+  {
+    if (this.a == null) {
+      return "";
+    }
+    return this.a.c;
+  }
+  
+  public String d()
+  {
+    if (this.a == null) {
+      return "";
+    }
+    return this.a.d;
   }
 }
 

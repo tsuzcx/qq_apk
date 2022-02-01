@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
 
 public class aeds
-  implements DialogInterface.OnClickListener
+  extends aodk
 {
-  public aeds(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public aeds(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.a(this.a.b);
+    if (this.a.jdField_a_of_type_Boolean) {
+      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
+    }
   }
 }
 

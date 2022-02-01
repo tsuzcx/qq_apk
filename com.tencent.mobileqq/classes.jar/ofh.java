@@ -1,6 +1,49 @@
-public class ofh
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.io.File;
+import org.json.JSONObject;
+
+class ofh
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public static final String a = amtj.a(2131715432);
+  private ofh(ofd paramofd) {}
+  
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  {
+    synchronized (ofd.a(this.a))
+    {
+      ofd.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
+      ofd.a(this.a, ofd.a(this.a));
+      return;
+    }
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    synchronized (ofd.a(this.a))
+    {
+      ofd.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
+      try
+      {
+        paramString2 = new JSONObject(paramString2);
+        long l1 = paramString2.optLong("fileSize");
+        long l2 = paramString2.optLong("offset");
+        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
+        {
+          paramString2 = new File(ofd.b(paramString1));
+          if (paramString2.exists()) {
+            paramString2.renameTo(new File(ofd.a(paramString1)));
+          }
+          ofd.a(this.a, ofd.a(this.a));
+        }
+      }
+      catch (Exception paramString1)
+      {
+        label136:
+        break label136;
+      }
+      return;
+    }
+  }
 }
 
 

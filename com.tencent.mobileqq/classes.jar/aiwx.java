@@ -1,41 +1,44 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CSettingFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aiwx
-  implements adap
+  extends Handler
 {
-  public aiwx(ChatHistoryC2CSettingFragment paramChatHistoryC2CSettingFragment) {}
+  public WeakReference<GroupSearchRecommendView> a;
   
-  public void a(Activity paramActivity)
+  public aiwx(GroupSearchRecommendView paramGroupSearchRecommendView)
   {
-    QQToast.a(paramActivity, 2, 2131691367, 0).b(this.a.getActivity().getTitleBarHeight());
-    paramActivity.setResult(-1);
-    paramActivity.finish();
+    this.a = new WeakReference(paramGroupSearchRecommendView);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 0) {
-      bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 2, 0, "", "", "", "");
-    }
-    while (paramInt != 1) {
+    GroupSearchRecommendView localGroupSearchRecommendView = (GroupSearchRecommendView)this.a.get();
+    if (localGroupSearchRecommendView == null) {
       return;
     }
-    bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 2, 0, "", "", "", "");
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 2, 0, "", "", "", "");
-    }
-    while (paramInt != 1) {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      GroupSearchRecommendView.a(localGroupSearchRecommendView);
+      return;
+    case 2: 
+      if (QLog.isColorLevel()) {
+        QLog.i("GroupSearchRecommendView", 2, "fetch data successfully");
+      }
+      GroupSearchRecommendView.a(localGroupSearchRecommendView, false);
       return;
     }
-    bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 2, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
+    }
+    GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
   }
 }
 

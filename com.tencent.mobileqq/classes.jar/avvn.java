@@ -1,76 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class avvn
-  implements DialogInterface.OnClickListener
+class avvn
+  implements WtTicketPromise
 {
-  public avvn(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
+  avvn(avux paramavux, avvr paramavvr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void Done(Ticket paramTicket)
   {
-    avwu.a("MsgBackup_MsgBackupPcBaseFragment", "showStopMigrateDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.e) });
-    avtq.a().a().c();
-    avtq.a().a().a(null);
-    if (this.a.jdField_a_of_type_Boolean) {
-      if ((!this.a.e) && (this.a.b == 1))
-      {
-        this.a.a(this.a.getActivity());
-        if (!this.a.f)
-        {
-          if (this.a.b != 1) {
-            break label189;
-          }
-          if (this.a.e) {
-            avwr.a("0X800A267", 2);
-          }
-        }
-        label141:
-        if (this.a.f)
-        {
-          if (this.a.b != 1) {
-            break label309;
-          }
-          if (this.a.e) {
-            avwr.a("0X800A267", 3);
-          }
-        }
-      }
-    }
-    label189:
-    while (this.a.b != 2)
+    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
     {
+      paramTicket = new String(paramTicket._sig);
+      this.jdField_a_of_type_Avvr.a(1, paramTicket);
       return;
-      this.a.m();
-      break;
-      if (this.a.b != 2) {
-        break label141;
-      }
-      avwr.a("0X800A289", 1);
-      break label141;
-      if (this.a.e) {
-        if (this.a.getActivity() != null)
-        {
-          this.a.getActivity().setResult(1001);
-          this.a.getActivity().finish();
-        }
-      }
-      for (;;)
-      {
-        if ((this.a.f) || (this.a.b != 1) || (!this.a.e)) {
-          break label307;
-        }
-        avwr.a("0X800A267", 1);
-        break;
-        this.a.a(this.a.getActivity());
-      }
-      break label141;
     }
-    label307:
-    label309:
-    avwr.a("0X800A289", 2);
+    QLog.w("XProxy|NowProxy", 1, "skey is null");
+    this.jdField_a_of_type_Avvr.a(3, null);
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.w("XProxy|NowProxy", 1, "get skey failed");
+    this.jdField_a_of_type_Avvr.a(5, null);
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.w("XProxy|NowProxy", 1, "get skey time out");
+    this.jdField_a_of_type_Avvr.a(4, null);
   }
 }
 

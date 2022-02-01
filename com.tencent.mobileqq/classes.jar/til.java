@@ -1,40 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.viola.bridge.ViolaBridgeManager;
-import com.tencent.viola.core.ViolaInstance;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class til
-  implements tgz
+class til
+  implements tir
 {
-  public til(BridgeModule paramBridgeModule, String paramString) {}
+  til(tia paramtia) {}
   
-  public void a(int paramInt)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    if ((BridgeModule.access$000(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule) != paramInt) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null)) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        if ((paramInt == CommonSuspensionGestureLayout.c) || (paramInt == CommonSuspensionGestureLayout.e)) {
-          localJSONObject.put("state", 1);
-        }
-        for (;;)
-        {
-          BridgeModule.access$002(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, paramInt);
-          ViolaBridgeManager.getInstance().callbackJavascript(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getInstanceId(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getModuleName(), "callback", this.jdField_a_of_type_JavaLangString, localJSONObject, true);
-          return;
-          localJSONObject.put("state", 0);
-        }
-        return;
-      }
-      catch (JSONException localJSONException) {}
-    }
+    qgx.a().a(paramContext, 3, new tim(this, paramProteusItemData));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     til
  * JD-Core Version:    0.7.0.1
  */

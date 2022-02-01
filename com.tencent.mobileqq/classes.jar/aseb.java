@@ -1,6 +1,304 @@
-public abstract interface aseb
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.MultiEmotionSaveManager.1;
+import com.tencent.mobileqq.emoticonview.CustomEmoticonInfoBase;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
+
+public class aseb
+  implements Handler.Callback, Manager
 {
-  public abstract void a(boolean paramBoolean);
+  private volatile int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private asec jdField_a_of_type_Asec;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private volatile ConcurrentLinkedQueue<asdk> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private volatile CopyOnWriteArrayList<asdk> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private volatile int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  
+  public aseb(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  }
+  
+  private void a(String paramString1, String paramString2, asdk paramasdk)
+  {
+    this.jdField_a_of_type_Int += 1;
+    int i;
+    if (TextUtils.isEmpty(paramString1)) {
+      i = 10001;
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiEmotionSaveManager", 2, "realSaveEmo failed! errorCode = " + i);
+        }
+        if (paramasdk != null)
+        {
+          paramasdk.jdField_a_of_type_Int = -1;
+          paramasdk.jdField_b_of_type_Int = i;
+          paramasdk.c = axje.a(i);
+          paramString1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
+          paramString1.obj = paramasdk;
+          this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString1);
+        }
+        return;
+        if (TextUtils.isEmpty(paramString2))
+        {
+          i = 10002;
+          continue;
+        }
+        if (!FileUtils.fileExists(paramString1)) {
+          i = 10003;
+        }
+      }
+      else
+      {
+        i = 0;
+        Object localObject1 = paramString2;
+        File localFile;
+        do
+        {
+          if (i > 0) {
+            localObject1 = paramString2 + "_" + i;
+          }
+          Object localObject2 = localObject1;
+          if (!((String)localObject1).contains("."))
+          {
+            localObject2 = FileUtils.estimateFileType(paramString1);
+            localObject2 = (String)localObject1 + "." + (String)localObject2;
+          }
+          localFile = new File(asdj.jdField_a_of_type_JavaLangString, (String)localObject2);
+          i += 1;
+          localObject1 = localObject2;
+        } while (localFile.exists());
+        paramString2 = new File(paramString1);
+        ThreadManager.getFileThreadHandler().post(new MultiEmotionSaveManager.1(this, localFile, paramString2, paramString1, paramasdk));
+        return;
+      }
+      i = 0;
+    }
+  }
+  
+  private void b(asdk paramasdk)
+  {
+    String str = System.nanoTime() + "";
+    a(paramasdk.jdField_b_of_type_JavaLangString, str, paramasdk);
+  }
+  
+  private void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiEmotionSaveManager", 2, "clearCatch");
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Asec != null) {
+      this.jdField_a_of_type_Asec.b();
+    }
+  }
+  
+  private void e()
+  {
+    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Asec == null)) {}
+    int i;
+    do
+    {
+      return;
+      i = (int)(this.jdField_b_of_type_Int * 100.0D / this.jdField_a_of_type_Long);
+      if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Long) {
+        i = 100;
+      }
+    } while (this.jdField_a_of_type_Asec == null);
+    this.jdField_a_of_type_Asec.a(i);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiEmotionSaveManager", 2, "cancelMultiEmoSave");
+    }
+    c();
+    if (this.jdField_a_of_type_Asec != null) {
+      this.jdField_a_of_type_Asec.a();
+    }
+  }
+  
+  public void a(asdk paramasdk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiEmotionSaveManager", 2, "saveComplete");
+    }
+    if (this.jdField_a_of_type_Asec != null) {
+      this.jdField_a_of_type_Asec.a(paramasdk);
+    }
+    c();
+  }
+  
+  public void a(asec paramasec)
+  {
+    this.jdField_a_of_type_Asec = paramasec;
+  }
+  
+  public void a(List<EmoticonInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiEmotionSaveManager", 2, "saveMultiRichMedialFile emoSaveReqList is empty!");
+      }
+      paramList = new asdk();
+      paramList.jdField_a_of_type_Int = -1;
+      paramList.jdField_b_of_type_Int = 10006;
+      paramList.c = axje.a(10006);
+      a(paramList);
+    }
+    for (;;)
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiEmotionSaveManager", 2, "saveMultiRichMedialFile emoSaveReqList count is :" + paramList.size());
+      }
+      c();
+      paramList = paramList.iterator();
+      Object localObject;
+      while (paramList.hasNext())
+      {
+        localObject = (EmoticonInfo)paramList.next();
+        if ((localObject instanceof CustomEmoticonInfoBase))
+        {
+          localObject = (CustomEmoticonInfoBase)localObject;
+          asdk localasdk = new asdk();
+          localasdk.jdField_a_of_type_JavaLangString = ((CustomEmoticonInfoBase)localObject).resID;
+          localasdk.jdField_b_of_type_JavaLangString = ((CustomEmoticonInfoBase)localObject).path;
+          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localasdk);
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("MultiEmotionSaveManager", 2, "temp is not CustomEmoticonInfoBase class is " + localObject.getClass());
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiEmotionSaveManager", 2, "saveMultiRichMedialFile emoReqList is empty!");
+        }
+        paramList = new asdk();
+        paramList.jdField_a_of_type_Int = -1;
+        paramList.jdField_b_of_type_Int = 10006;
+        paramList.c = axje.a(10006);
+        a(paramList);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiEmotionSaveManager", 2, "saveMultiRichMedialFile emoReqList count is :" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+      }
+      d();
+      this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
+      paramList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (paramList.hasNext())
+      {
+        localObject = (asdk)paramList.next();
+        if (this.jdField_a_of_type_Int < 1) {
+          b((asdk)localObject);
+        } else {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(localObject);
+        }
+      }
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Asec = null;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    asdk localasdk;
+    if ((paramMessage.obj instanceof asdk))
+    {
+      localasdk = (asdk)paramMessage.obj;
+      if (localasdk != null) {
+        switch (paramMessage.what)
+        {
+        }
+      }
+    }
+    do
+    {
+      return false;
+      this.jdField_a_of_type_Int -= 1;
+      if (paramMessage.what == 2)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        if (QLog.isColorLevel()) {
+          QLog.i("MultiEmotionSaveManager", 2, "MSG_TYPE_SAVE_FAIL errorCode = " + localasdk.jdField_b_of_type_Int + ", errorMsg = " + localasdk.c);
+        }
+      }
+      for (;;)
+      {
+        this.jdField_b_of_type_Int += 1;
+        e();
+        paramMessage = (asdk)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+        if (paramMessage == null) {
+          break;
+        }
+        b(paramMessage);
+        return false;
+        this.jdField_b_of_type_Boolean = true;
+      }
+    } while (this.jdField_a_of_type_Int != 0);
+    paramMessage = new asdk();
+    if (this.jdField_b_of_type_Boolean) {
+      paramMessage.jdField_a_of_type_Int = 0;
+    }
+    for (;;)
+    {
+      a(paramMessage);
+      return false;
+      paramMessage.jdField_a_of_type_Int = -1;
+      paramMessage.jdField_b_of_type_Int = localasdk.jdField_b_of_type_Int;
+      paramMessage.c = localasdk.c;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiEmotionSaveManager", 2, "onDestroy");
+    }
+    c();
+  }
 }
 
 

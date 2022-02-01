@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.transfile;
 
-import amuo;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import android.graphics.Bitmap;
@@ -16,12 +15,13 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import aqyy;
-import areb;
-import avsq;
-import bfpx;
-import bgoe;
-import bgog;
+import anxc;
+import asdi;
+import asih;
+import awyr;
+import bgyo;
+import bhyo;
+import bhyq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
@@ -32,6 +32,7 @@ import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.emoticonview.CameraEmoticonInfo;
 import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
@@ -256,7 +257,7 @@ public class VasExtensionDownloader
     try
     {
       String str = paramDownloadParams.url.getFile();
-      if (aqyy.b(str))
+      if (asdi.b(str))
       {
         if (QLog.isColorLevel()) {
           QLog.d("VasExtensionDownloader", 2, "decodeFile isGifFile,path=" + str);
@@ -266,7 +267,7 @@ public class VasExtensionDownloader
       if (QLog.isColorLevel()) {
         QLog.d("VasExtensionDownloader", 2, "decodeFile getDecryptFileData,path=" + str);
       }
-      paramDownloadParams = aqyy.b(str);
+      paramDownloadParams = asdi.b(str);
       if (paramDownloadParams != null) {
         try
         {
@@ -420,7 +421,7 @@ public class VasExtensionDownloader
     //   229: getfield 304	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbWidth	I
     //   232: aload 8
     //   234: getfield 307	com/tencent/mobileqq/activity/photo/LocalMediaInfo:thumbHeight	I
-    //   237: invokestatic 313	bfvo:a	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   237: invokestatic 313	bheg:a	(Landroid/graphics/BitmapFactory$Options;II)I
     //   240: putfield 316	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   243: aload 7
     //   245: iconst_0
@@ -656,7 +657,7 @@ public class VasExtensionDownloader
     paramDownloadParams = new BitmapFactory.Options();
     paramDownloadParams.inTargetDensity = this.application.getResources().getDisplayMetrics().densityDpi;
     paramDownloadParams.inDensity = Math.max(paramDownloadParams.inTargetDensity, 320);
-    return bfpx.a(paramFile.getAbsolutePath(), paramDownloadParams);
+    return bgyo.a(paramFile.getAbsolutePath(), paramDownloadParams);
   }
   
   @Nullable
@@ -962,9 +963,9 @@ public class VasExtensionDownloader
         }
         return paramString;
       }
-      paramDownloadParams = new bgoe(paramDownloadParams, paramString);
-      paramDownloadParams.e = areb.b;
-      if (bgog.a(paramDownloadParams, null) == 0) {
+      paramDownloadParams = new bhyo(paramDownloadParams, paramString);
+      paramDownloadParams.e = asih.b;
+      if (bhyq.a(paramDownloadParams, null) == 0) {
         return paramString;
       }
     }
@@ -991,7 +992,7 @@ public class VasExtensionDownloader
     File localFile;
     if (bool1)
     {
-      localObject = aqyy.a(3, paramString2);
+      localObject = asdi.a(3, paramString2);
       localFile = new File((String)localObject);
     }
     for (;;)
@@ -1002,7 +1003,7 @@ public class VasExtensionDownloader
         if (bool2)
         {
           return localFile;
-          localObject = aqyy.a(4, paramString2);
+          localObject = asdi.a(4, paramString2);
           break;
         }
         if (!bool1) {
@@ -1011,7 +1012,7 @@ public class VasExtensionDownloader
         if (localBoolean.booleanValue()) {
           continue;
         }
-        paramString2 = aqyy.b(3, paramString2);
+        paramString2 = asdi.b(3, paramString2);
       }
       catch (OutOfMemoryError paramString2)
       {
@@ -1023,12 +1024,12 @@ public class VasExtensionDownloader
         continue;
       }
       return realDownloadFile(paramDownloadParams, paramString1, paramString2, (String)localObject);
-      paramString2 = aqyy.b(17, paramString2);
+      paramString2 = asdi.b(17, paramString2);
       continue;
       if (!localBoolean.booleanValue()) {
-        paramString2 = aqyy.b(4, paramString2);
+        paramString2 = asdi.b(4, paramString2);
       } else {
-        paramString2 = aqyy.b(18, paramString2);
+        paramString2 = asdi.b(18, paramString2);
       }
     }
   }
@@ -1053,10 +1054,10 @@ public class VasExtensionDownloader
         QLog.d("VasExtensionDownloader", 2, "exception:" + localThrowable.getMessage());
         localObject2 = null;
       }
-      Object localObject2 = (amuo)((AppInterface)localObject2).getManager(131);
+      Object localObject2 = (anxc)((AppInterface)localObject2).getManager(QQManagerFactory.INDIVIDUAL_RED_PACKET_MANAGER);
       if (localObject2 != null)
       {
-        localObject2 = ((amuo)localObject2).a();
+        localObject2 = ((anxc)localObject2).a();
         if (QLog.isColorLevel()) {
           QLog.d("VasExtensionDownloader", 2, "downloadImage redpacket send img filename = " + (String)localObject2);
         }
@@ -1080,7 +1081,7 @@ public class VasExtensionDownloader
       if ("COMMERCIAL_DRAINAGE".equals(paramString1))
       {
         i = 22;
-        paramDownloadParams = aqyy.a(i, str, MD5.toMD5(paramDownloadParams.url.getFile()));
+        paramDownloadParams = asdi.a(i, str, MD5.toMD5(paramDownloadParams.url.getFile()));
         if (QLog.isColorLevel()) {
           QLog.d("VasExtensionDownloader", 2, "emotion save local filePath: " + paramDownloadParams);
         }
@@ -1095,9 +1096,9 @@ public class VasExtensionDownloader
         return paramDownloadParams;
         i = 23;
         break;
-        paramString1 = new bgoe(paramString2, paramDownloadParams);
-        paramString1.e = areb.b;
-      } while (bgog.a(paramString1, null) == 0);
+        paramString1 = new bhyo(paramString2, paramDownloadParams);
+        paramString1.e = asih.b;
+      } while (bhyq.a(paramString1, null) == 0);
     }
     return null;
   }
@@ -1127,9 +1128,9 @@ public class VasExtensionDownloader
         QLog.d("VasExtensionDownloader", 2, "downloadImage : " + paramString2 + " -> " + paramString3);
       }
       File localFile = new File(paramString3);
-      localObject1 = new bgoe(paramString2, localFile);
-      ((bgoe)localObject1).e = areb.b;
-      int i = bgog.a((bgoe)localObject1, null);
+      localObject1 = new bhyo(paramString2, localFile);
+      ((bhyo)localObject1).e = asih.b;
+      int i = bhyq.a((bhyo)localObject1, null);
       reportFavoriteDownloadStatus(paramString1, i);
       localObject1 = localObject2;
       if (i == 0)
@@ -1149,7 +1150,7 @@ public class VasExtensionDownloader
   private void reportFavoriteDownloadStatus(String paramString, int paramInt)
   {
     if (("FAVOROTE_PANEL_DYNAMIC".equals(paramString)) || ("FAVORITE_PANEL_THUMB".equals(paramString)) || ("FAVORITE_PANEL_THUMB_NEW".equals(paramString))) {
-      avsq.e(String.valueOf(paramInt), 6);
+      awyr.e(String.valueOf(paramInt), 6);
     }
   }
   
@@ -1290,7 +1291,7 @@ public class VasExtensionDownloader
     try
     {
       paramURL = BaseApplicationImpl.sApplication.getRuntime().getAccount();
-      paramURL = (areb)((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramURL)).getManager(43);
+      paramURL = (asih)((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramURL)).getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
       if (paramURL != null) {
         return paramURL.a;
       }

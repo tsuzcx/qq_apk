@@ -1,22 +1,28 @@
 package com.tencent.qapmsdk.impl.instrumentation;
 
+import android.app.Activity;
 import android.content.Context;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.Window;
 import com.tencent.qapmsdk.common.logger.Logger;
-import com.tencent.qapmsdk.impl.appstate.b;
-import com.tencent.qapmsdk.impl.appstate.g;
+import com.tencent.qapmsdk.common.util.AndroidVersion;
+import com.tencent.qapmsdk.impl.appstate.QAPMMonitorThreadLocal;
+import com.tencent.qapmsdk.impl.appstate.h;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class QAPMAppInstrumentation
 {
   private static final String TAG = "QAPM_Impl_QAPMAppInstrumentation";
-  public static g activityTrace = new g();
-  public static b appStateTimeInfo;
+  public static h activityTrace = new h();
+  public static com.tencent.qapmsdk.impl.appstate.b appStateTimeInfo;
   public static volatile boolean isAppInBackground;
   
   static
   {
     try
     {
-      appStateTimeInfo = b.a();
+      appStateTimeInfo = com.tencent.qapmsdk.impl.appstate.b.a();
       label16:
       isAppInBackground = true;
       return;
@@ -27,11 +33,14 @@ public class QAPMAppInstrumentation
     }
   }
   
+  @QAPMReplaceCallSite
   public static void activityCreateBeginIns(String paramString)
   {
     try
     {
+      activityTrace.c(paramString);
       activityTrace.a(paramString, "#onCreate");
+      com.tencent.qapmsdk.impl.g.b.f.set(true);
       if (!isAppInBackground) {
         return;
       }
@@ -44,6 +53,7 @@ public class QAPMAppInstrumentation
     }
   }
   
+  @QAPMReplaceCallSite
   public static void activityCreateEndIns()
   {
     try
@@ -61,10 +71,33 @@ public class QAPMAppInstrumentation
     }
   }
   
+  @QAPMReplaceCallSite
+  public static void activityCreateForOnFocusChanged(Activity paramActivity)
+  {
+    try
+    {
+      paramActivity = paramActivity.getWindow().getDecorView().getViewTreeObserver();
+      if ((paramActivity != null) && (paramActivity.isAlive()) && (AndroidVersion.isKitKat())) {
+        paramActivity.addOnWindowFocusChangeListener(new QAPMAppInstrumentation.1());
+      }
+      return;
+    }
+    catch (Throwable paramActivity)
+    {
+      Logger.INSTANCE.exception("QAPM_Impl_QAPMAppInstrumentation", paramActivity);
+    }
+  }
+  
+  @QAPMReplaceCallSite
   public static void activityRestartBeginIns(String paramString)
   {
     try
     {
+      if (com.tencent.qapmsdk.impl.g.b.e()) {
+        QAPMMonitorThreadLocal.getInstance().d();
+      }
+      com.tencent.qapmsdk.impl.g.b.f.set(true);
+      activityTrace.c(paramString);
       activityTrace.a(paramString, "#onRestart");
       if (!isAppInBackground) {
         return;
@@ -78,6 +111,7 @@ public class QAPMAppInstrumentation
     }
   }
   
+  @QAPMReplaceCallSite
   public static void activityRestartEndIns()
   {
     activityTrace.a();
@@ -95,6 +129,7 @@ public class QAPMAppInstrumentation
     }
   }
   
+  @QAPMReplaceCallSite
   public static void activityResumeBeginIns(String paramString)
   {
     try
@@ -112,6 +147,7 @@ public class QAPMAppInstrumentation
     }
   }
   
+  @QAPMReplaceCallSite
   public static void activityResumeEndIns()
   {
     try
@@ -128,6 +164,7 @@ public class QAPMAppInstrumentation
     }
   }
   
+  @QAPMReplaceCallSite
   public static void activityStartBeginIns(String paramString)
   {
     try
@@ -162,6 +199,7 @@ public class QAPMAppInstrumentation
     }
   }
   
+  @QAPMReplaceCallSite
   public static void applicationCreateBeginIns()
   {
     try
@@ -175,6 +213,7 @@ public class QAPMAppInstrumentation
     }
   }
   
+  @QAPMReplaceCallSite
   public static void applicationCreateEndIns()
   {
     try
@@ -188,6 +227,7 @@ public class QAPMAppInstrumentation
     }
   }
   
+  @QAPMReplaceCallSite
   public static void attachBaseContextBeginIns(Context paramContext)
   {
     try
@@ -201,6 +241,7 @@ public class QAPMAppInstrumentation
     }
   }
   
+  @QAPMReplaceCallSite
   public static void attachBaseContextEndIns()
   {
     try

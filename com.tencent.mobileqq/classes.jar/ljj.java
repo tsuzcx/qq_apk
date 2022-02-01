@@ -1,154 +1,31 @@
+import android.graphics.PointF;
 import com.tencent.qphone.base.util.QLog;
 
 public class ljj
 {
-  private static volatile ljj jdField_a_of_type_Ljj;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ljk[] jdField_a_of_type_ArrayOfLjk = new ljk[4];
-  
-  public static ljj a()
-  {
-    if (jdField_a_of_type_Ljj == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ljj == null) {
-        jdField_a_of_type_Ljj = new ljj();
-      }
-      return jdField_a_of_type_Ljj;
-    }
-    finally {}
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ArrayOfLjk.length;
-  }
+  long jdField_a_of_type_Long;
+  PointF jdField_a_of_type_AndroidGraphicsPointF = null;
+  boolean jdField_a_of_type_Boolean = false;
   
   public void a()
   {
-    int i = 0;
-    QLog.i("FrameBufMgr", 1, "clear.");
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (i < this.jdField_a_of_type_ArrayOfLjk.length)
-        {
-          if (this.jdField_a_of_type_ArrayOfLjk[i] != null)
-          {
-            this.jdField_a_of_type_ArrayOfLjk[i].jdField_a_of_type_ArrayOfByte = null;
-            this.jdField_a_of_type_ArrayOfLjk[i].jdField_a_of_type_Int = 0;
-          }
-        }
-        else {
-          return;
-        }
-      }
-      i += 1;
-    }
+    QLog.w("ARZimuTask_SpitZimuTask", 1, "MouthLoactionInfo.clear");
+    this.jdField_a_of_type_AndroidGraphicsPointF = null;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(PointF paramPointF)
   {
-    int j = 0;
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (i < this.jdField_a_of_type_ArrayOfLjk.length)
-        {
-          if (this.jdField_a_of_type_ArrayOfLjk[i].jdField_a_of_type_Int == paramInt1)
-          {
-            this.jdField_a_of_type_ArrayOfLjk[i].jdField_a_of_type_Int = paramInt2;
-            j = 1;
-          }
-        }
-        else
-        {
-          if (j == 0) {
-            QLog.i("FrameBufMgr", 1, "setFrameBufState failed. oldState = " + paramInt1 + ", newState = " + paramInt2);
-          }
-          return;
-        }
-      }
-      finally {}
-      i += 1;
-    }
+    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt)
+  public boolean a()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (i < this.jdField_a_of_type_ArrayOfLjk.length)
-        {
-          if (this.jdField_a_of_type_ArrayOfLjk[i].jdField_a_of_type_ArrayOfByte == paramArrayOfByte) {
-            this.jdField_a_of_type_ArrayOfLjk[i].jdField_a_of_type_Int = paramInt;
-          }
-        }
-        else
-        {
-          QLog.i("FrameBufMgr", 1, "setFrameBufState failed. dataBuf = " + paramArrayOfByte + ", state = " + paramInt);
-          return;
-        }
-      }
-      finally {}
-      i += 1;
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    int i = 0;
-    QLog.i("FrameBufMgr", 1, "init. bufSize = " + paramInt);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      while (i < this.jdField_a_of_type_ArrayOfLjk.length)
-      {
-        if (this.jdField_a_of_type_ArrayOfLjk[i] == null) {
-          this.jdField_a_of_type_ArrayOfLjk[i] = new ljk(this);
-        }
-        if ((this.jdField_a_of_type_ArrayOfLjk[i].jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfLjk[i].jdField_a_of_type_ArrayOfByte.length != paramInt)) {
-          this.jdField_a_of_type_ArrayOfLjk[i].jdField_a_of_type_ArrayOfByte = new byte[paramInt];
-        }
-        this.jdField_a_of_type_ArrayOfLjk[i].jdField_a_of_type_Int = 0;
-        i += 1;
-      }
+    if (this.jdField_a_of_type_Boolean) {}
+    while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 1500L) {
       return true;
     }
-  }
-  
-  public byte[] a(int paramInt)
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (i < this.jdField_a_of_type_ArrayOfLjk.length)
-        {
-          if (this.jdField_a_of_type_ArrayOfLjk[i].jdField_a_of_type_Int == paramInt)
-          {
-            byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfLjk[i].jdField_a_of_type_ArrayOfByte;
-            return arrayOfByte;
-          }
-        }
-        else
-        {
-          QLog.i("FrameBufMgr", 1, "getFrameBufByState failed. state = " + paramInt);
-          return null;
-        }
-      }
-      finally {}
-      i += 1;
-    }
+    return false;
   }
 }
 

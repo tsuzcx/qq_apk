@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import amtj;
 import android.widget.TextView;
-import azbt;
+import anvx;
+import bahh;
 
 class PressToSpeakPanel$7
   implements Runnable
@@ -12,21 +12,21 @@ class PressToSpeakPanel$7
   public void run()
   {
     if (PressToSpeakPanel.a(this.this$0).a()) {
-      this.this$0.b(this.jdField_a_of_type_Int);
+      this.this$0.a(this.jdField_a_of_type_Int);
     }
     if (PressToSpeakPanel.c(this.this$0) == 1)
     {
       if (this.this$0.b())
       {
-        PressToSpeakPanel.a(this.this$0).setText(amtj.a(2131707518));
+        PressToSpeakPanel.a(this.this$0).setText(anvx.a(2131707865));
         return;
       }
-      PressToSpeakPanel.a(this.this$0).setText(amtj.a(2131707516));
+      PressToSpeakPanel.a(this.this$0).setText(anvx.a(2131707863));
       return;
     }
     if (PressToSpeakPanel.c(this.this$0) == 2)
     {
-      PressToSpeakPanel.a(this.this$0).setText(amtj.a(2131707513));
+      PressToSpeakPanel.a(this.this$0).setText(anvx.a(2131707860));
       return;
     }
     PressToSpeakPanel.a(this.this$0).setText(AudioPanel.a(this.jdField_a_of_type_Double));
@@ -34,7 +34,7 @@ class PressToSpeakPanel$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel.7
  * JD-Core Version:    0.7.0.1
  */

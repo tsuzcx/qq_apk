@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import pwc;
+import qhi;
 
 class ReadInJoyDeliverUGCActivity$5
   implements Runnable

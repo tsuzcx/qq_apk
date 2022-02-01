@@ -1,6 +1,12 @@
-public abstract interface aibq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aibq
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString);
+  aibq(aiav paramaiav) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

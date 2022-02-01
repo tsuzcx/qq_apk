@@ -1,6 +1,14 @@
+import android.animation.ValueAnimator;
+
 public abstract interface ytb
 {
-  public abstract void a(yta paramyta);
+  public abstract void a(ValueAnimator paramValueAnimator);
+  
+  public abstract void b(ValueAnimator paramValueAnimator);
+  
+  public abstract void c(ValueAnimator paramValueAnimator);
+  
+  public abstract void d(ValueAnimator paramValueAnimator);
 }
 
 

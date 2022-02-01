@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import atky;
+import aupt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
@@ -24,7 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ForwardH5HongBaoOption
-  extends atky
+  extends aupt
 {
   private List<Integer> jdField_a_of_type_JavaUtilList;
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
@@ -38,7 +38,7 @@ public class ForwardH5HongBaoOption
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokespecial 20	atky:<init>	(Landroid/content/Intent;)V
+    //   2: invokespecial 20	aupt:<init>	(Landroid/content/Intent;)V
     //   5: aload_0
     //   6: new 22	java/util/ArrayList
     //   9: dup
@@ -289,7 +289,7 @@ public class ForwardH5HongBaoOption
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131694062, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299076));
+      QQToast.a(BaseApplicationImpl.sApplication, 2131694253, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299080));
       return true;
     }
     for (;;)

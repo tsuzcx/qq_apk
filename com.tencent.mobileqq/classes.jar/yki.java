@@ -1,19 +1,12 @@
-import java.util.Observable;
-
-public class yki
-  extends Observable
+public abstract interface yki
 {
-  public void notifyObservers()
-  {
-    setChanged();
-    super.notifyObservers();
-  }
+  public abstract void M_();
   
-  public void notifyObservers(Object paramObject)
-  {
-    setChanged();
-    super.notifyObservers(paramObject);
-  }
+  public abstract void a(zbe paramzbe);
+  
+  public abstract void f();
+  
+  public abstract void h();
 }
 
 

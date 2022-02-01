@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class auue
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  public auue(MediaApiPlugin paramMediaApiPlugin, JSONObject paramJSONObject, boolean paramBoolean, BaseActivity paramBaseActivity) {}
+  public auue(ForwardSendHongBaoOption paramForwardSendHongBaoOption, QQCustomDialog paramQQCustomDialog) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d(MediaApiPlugin.a, 1, "User requestPermissions WRITE_EXTERNAL_STORAGE denied");
-    bfur.a(this.jdField_a_of_type_MqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.setResult(-1);
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.finish();
   }
 }
 

@@ -9,6 +9,12 @@ public class MaterialLimits
   public static final int TYPE_VIDEO = 0;
   @SerializedName("material_type")
   public int materialType = 2;
+  @SerializedName("max_counts")
+  public int maxCounts;
+  @SerializedName("min_counts")
+  public int minCounts;
+  @SerializedName("min_duration_ms")
+  public long minDurationMs;
 }
 
 

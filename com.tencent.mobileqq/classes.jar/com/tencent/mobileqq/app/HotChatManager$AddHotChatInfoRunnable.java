@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import amtp;
-import awkj;
+import anwd;
+import axql;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -24,16 +24,16 @@ class HotChatManager$AddHotChatInfoRunnable
         break label63;
       }
       if (QLog.isColorLevel()) {
-        awkj.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable already exist", this.a.troopUin });
+        axql.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable already exist", this.a.troopUin });
       }
     }
     return;
     label63:
     if (QLog.isColorLevel()) {
-      awkj.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable", this.a.troopUin });
+      axql.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable", this.a.troopUin });
     }
     this.this$0.a(this.a, 4);
-    ((amtp)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(35)).a();
+    ((anwd)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER)).a();
   }
 }
 

@@ -1,19 +1,29 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.phone.PhoneMatchView;
+import com.tencent.mobileqq.activity.phone.PhoneMatchView.1;
 
-class akiy
-  implements View.OnClickListener
+public class akiy
+  extends azip
 {
-  akiy(akho paramakho, axyc paramaxyc) {}
+  public akiy(PhoneMatchView.1 param1) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    Intent localIntent = axwc.a(akho.a(this.jdField_a_of_type_Akho).app, this.jdField_a_of_type_Axyc.a);
-    akho.a(this.jdField_a_of_type_Akho).startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.this$0.a(paramBoolean, paramInt, "onUploadContact");
+  }
+  
+  protected void b(boolean paramBoolean, int paramInt)
+  {
+    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContact");
+  }
+  
+  protected void c(boolean paramBoolean, int paramInt)
+  {
+    this.a.this$0.a(paramBoolean, paramInt, "onUploadContactNotBind");
+  }
+  
+  protected void d(boolean paramBoolean, int paramInt)
+  {
+    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContactNotBind");
   }
 }
 

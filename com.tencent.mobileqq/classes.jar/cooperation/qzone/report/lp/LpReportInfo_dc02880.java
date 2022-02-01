@@ -17,6 +17,7 @@ public class LpReportInfo_dc02880
   public int actiontype;
   public String item_type;
   public String qua;
+  public String reserves3;
   public int subactiontype;
   public long uin;
   public String url;
@@ -87,6 +88,7 @@ public class LpReportInfo_dc02880
       localHashMap.put("actiontype", String.valueOf(this.actiontype));
       localHashMap.put("subactiontype", String.valueOf(this.subactiontype));
       LpReportUtils.safePut(localHashMap, "item_type", this.item_type);
+      LpReportUtils.safePut(localHashMap, "reserves3", this.reserves3);
       if (!TextUtils.isEmpty(this.url)) {
         localHashMap.put("url", URLEncoder.encode(this.url));
       }

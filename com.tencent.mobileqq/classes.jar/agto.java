@@ -1,24 +1,16 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.view.View;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agto
-  implements afym
+class agto
+  implements aueo
 {
-  public agto(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  agto(agtf paramagtf) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    UnlimitedBladeWorks.a(this.a).b = true;
-    UnlimitedBladeWorks.a(this.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a) != null)
-    {
-      UnlimitedBladeWorks.a(this.a).a();
-      if (UnlimitedBladeWorks.b(this.a))
-      {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
-        UnlimitedBladeWorks.a(this.a, 0);
-      }
-    }
+    PermisionPrivacyActivity.a(this.a.jdField_a_of_type_AndroidContentContext);
+    bdla.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "0X800994C", "0X800994C", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,154 +1,60 @@
-import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.widget.media.danmu.DecelerateAccelerateInterpolator;
-import com.tencent.mobileqq.qassistant.view.VoicePanelContainer;
-import com.tencent.mobileqq.qassistant.view.VoicePanelSlideContainer;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
+import kotlin.Metadata;
+import kotlin.jvm.JvmField;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class azes
-  implements View.OnClickListener, azfy
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/constellation/ConstellationLauncher;", "", "()V", "DEFAULT_CONSTELLATION", "", "REQUEST_CODE_BIRTHDAY", "launchMiniProgram", "", "activity", "Landroid/app/Activity;", "url", "", "launchScene", "launchSelectAge", "launchFrom", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azes
 {
-  private VoicePanelContainer jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  @JvmField
+  public static final int a = 1001;
+  public static final azes a;
+  @JvmField
+  public static final int b = 0;
   
-  private void b(boolean paramBoolean)
+  static
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((azfg)((QQAppInterface)localAppRuntime).getManager(387)).a(paramBoolean, false);
-    }
+    jdField_a_of_type_Azes = new azes();
+    jdField_a_of_type_Int = 1001;
   }
   
-  private void d()
+  public final void a(@NotNull Activity paramActivity, @NotNull String paramString)
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer, "translationY", new float[] { ScreenUtil.getRealHeight(BaseApplicationImpl.getContext()), 0.0F, -100.0F, 50.0F, 0.0F });
-    localObjectAnimator.setDuration(800L);
-    localObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    localObjectAnimator.start();
-  }
-  
-  private void e()
-  {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer, "translationY", new float[] { 0.0F, -100.0F, ScreenUtil.getRealHeight(BaseApplicationImpl.getContext()) });
-    localObjectAnimator.setDuration(500L);
-    localObjectAnimator.setInterpolator(new DecelerateAccelerateInterpolator());
-    localObjectAnimator.addListener(new azet(this));
-    localObjectAnimator.start();
-  }
-  
-  private void f()
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) && (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer != null))
+    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    Intrinsics.checkParameterIsNotNull(paramString, "launchFrom");
+    Intent localIntent = new Intent((Context)paramActivity, AgeSelectionActivity.class);
+    Object localObject = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
+    localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.removeAllViews();
-      this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.b();
-      this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer = null;
-    }
-  }
-  
-  public int a(View paramView)
-  {
-    if (paramView == null)
-    {
+      int i = (int)bhaa.a((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin()).lBirthday;
       if (QLog.isColorLevel()) {
-        QLog.d("AssistantPanelManager", 2, "contentView is null");
+        QLog.d("ConstellationLauncher", 2, new Object[] { "launchSelectAge: called. ", "{card.lBirthday}: " + i });
       }
-      return 2;
-    }
-    Object localObject = BaseApplicationImpl.getContext();
-    if (!FloatingScreenPermission.checkPermission((Context)localObject)) {
-      return 1;
-    }
-    if (a()) {
-      a(false);
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer == null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer = new VoicePanelContainer((Context)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.setOnClickListener(this);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer != null)
-      {
-        localObject = paramView.findViewById(2131377557);
-        if ((localObject instanceof VoicePanelSlideContainer)) {
-          ((VoicePanelSlideContainer)localObject).setPanelSlideListener(this);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.addView(paramView);
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.a();
-      }
-      d();
-    }
-    return 0;
-  }
-  
-  public void a()
-  {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
-    localObjectAnimator.setDuration(800L);
-    localObjectAnimator.start();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      e();
-      return;
-    }
-    f();
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public void b()
-  {
-    b(false);
-    azgl.d(1);
-  }
-  
-  public void c()
-  {
-    try
-    {
-      a(true);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("AssistantPanelManager", 2, "onDestroy exception = " + localException.getMessage());
+      localIntent.putExtra("param_birthday", i);
+      localIntent.putExtra("param_launch_from", paramString);
+      paramActivity.startActivityForResult(localIntent, jdField_a_of_type_Int);
     }
   }
   
-  public void onClick(View paramView)
+  public final void a(@NotNull Activity paramActivity, @Nullable String paramString, int paramInt)
   {
-    switch (paramView.getId())
-    {
+    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    if (QLog.isColorLevel()) {
+      QLog.d("ConstellationLauncher", 2, new Object[] { "launchMiniProgram: called. ", "url: " + paramString + "  launchScene: " + paramInt });
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      b(true);
-      azgl.d(2);
-    }
+    MiniAppLauncher.startMiniApp((Context)paramActivity, paramString, paramInt, null, null);
   }
 }
 

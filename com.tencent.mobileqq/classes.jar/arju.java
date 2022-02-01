@@ -1,27 +1,50 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
 
-class arju
-  implements View.OnClickListener
+public class arju
+  extends arjj<arku>
 {
-  arju(arjr paramarjr) {}
-  
-  public void onClick(View paramView)
+  @NonNull
+  public static arku c()
   {
-    bcef.b(arjr.a(this.a).app, "dc00898", "", "", "0X800B446", "0X800B446", 1, 0, "", "", "", "");
-    arjr.a(this.a, "https://cmshow.qq.com/act_apollo/h5_act/cmshow3dsite/dist/html/reserve.html?_wv=3&adtag=extendFriend");
-    arjr.a(this.a);
-    arjr.a(this.a).setVisibility(8);
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    arku localarku2 = (arku)aqxe.a().a(527);
+    arku localarku1 = localarku2;
+    if (localarku2 == null) {
+      localarku1 = new arku();
+    }
+    return localarku1;
+  }
+  
+  @NonNull
+  public arku a()
+  {
+    return new arku();
+  }
+  
+  @NonNull
+  public arku a(@NonNull aqxa[] paramArrayOfaqxa)
+  {
+    return arku.a(paramArrayOfaqxa[0].a);
+  }
+  
+  @NonNull
+  public arku b()
+  {
+    return new arku();
+  }
+  
+  public Class<arku> clazz()
+  {
+    return arku.class;
+  }
+  
+  public int type()
+  {
+    return 527;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arju
  * JD-Core Version:    0.7.0.1
  */

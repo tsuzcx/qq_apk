@@ -1,56 +1,14 @@
-import android.support.v4.view.ViewCompat;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
-import com.tencent.mobileqq.activity.contacts.base.HeaderScrollView;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
 
 public class aird
+  implements blak
 {
-  public static boolean a(View paramView)
+  public aird(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment, View paramView) {}
+  
+  public void a()
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramView instanceof HeaderScrollView)) {
-      if (!((HeaderScrollView)paramView).b()) {
-        bool1 = true;
-      }
-    }
-    do
-    {
-      do
-      {
-        View localView;
-        do
-        {
-          for (;;)
-          {
-            return bool1;
-            bool1 = false;
-          }
-          if (!(paramView instanceof ViewGroup)) {
-            break;
-          }
-          localView = ((ViewGroup)paramView).getChildAt(1);
-          if ((localView == null) || (!(localView instanceof HeaderScrollView))) {
-            break label116;
-          }
-          bool1 = bool2;
-        } while (!((HeaderScrollView)localView).b());
-        return false;
-        if (!(paramView instanceof AbsListView)) {
-          break label116;
-        }
-        paramView = (AbsListView)paramView;
-        if (paramView.getChildCount() <= 0) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramView.getFirstVisiblePosition() > 0);
-      bool1 = bool2;
-    } while (paramView.getChildAt(0).getTop() < paramView.getPaddingTop());
-    return false;
-    label116:
-    return ViewCompat.canScrollVertically(paramView, -1);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

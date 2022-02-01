@@ -1,6 +1,12 @@
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+
 public abstract interface afrq
 {
-  public abstract void b(int paramInt);
+  public abstract void a();
+  
+  public abstract void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo);
+  
+  public abstract void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, ahya paramahya);
 }
 
 

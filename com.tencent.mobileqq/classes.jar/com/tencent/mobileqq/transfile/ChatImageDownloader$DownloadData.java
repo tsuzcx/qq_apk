@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.transfile;
 
-import aydl;
-import ayds;
-import ayeb;
+import azjx;
+import azke;
+import azkn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,11 +14,11 @@ public class ChatImageDownloader$DownloadData
 {
   QQAppInterface app;
   BaseApplicationImpl application;
-  public aydl downInfo;
+  public azjx downInfo;
   int fileSizeType;
   URLDrawableHandler handler;
   String host;
-  public String logId = ayds.a();
+  public String logId = azke.a();
   public int mPrioty = 1;
   public int netWorkType = -1;
   OutputStream out;
@@ -27,7 +27,7 @@ public class ChatImageDownloader$DownloadData
   String sendPath;
   public long startOffset;
   public int uinType = -1;
-  public ayeb upInfo;
+  public azkn upInfo;
   URL url;
   
   public ChatImageDownloader$DownloadData(ChatImageDownloader paramChatImageDownloader) {}

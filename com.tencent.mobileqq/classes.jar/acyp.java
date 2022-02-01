@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
-
 public class acyp
+  extends acyf
 {
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  public String a;
-  boolean jdField_a_of_type_Boolean;
-  public String b;
+  public String a()
+  {
+    return "bigbitmap";
+  }
   
-  protected acyp(ChatHistory paramChatHistory) {}
+  public void a() {}
 }
 
 

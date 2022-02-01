@@ -1,26 +1,10 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import kotlin.Metadata;
 
-class tzf
-  implements View.OnSystemUiVisibilityChangeListener
-{
-  tzf(tze paramtze) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 4866;; paramInt = 771)
-    {
-      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
-      return;
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/RIJBridgeInvokeHandler$Companion;", "", "()V", "CLEAR_MESSAGE_BOX_DATA", "", "FEEDS_REFRESH_MESSAGE", "GET_ALDCONFIG_PARAMS", "GET_BIU_TRIGGER_TYPE", "HAS_RED_PACKET_PERMISSION", "HAS_RED_PACKET_SHARE_PERMISSION", "HIDE_FOLLOW_ALERTVIEW", "IS_IN_KAN_DIAN_TAB", "NS_RIJ", "OPEN_ACCOUNT_PAGE_MORE", "OPEN_PRIVATE_LETTER", "OPEN_VIDEO", "Q_REPORT", "REQUEST_RED_PACKET_CONTENT_SHARE_TOAST", "SELECT_AND_INVITE_FRIEND", "SELECT_AND_UPLOAD_AVATAR", "SHOW_COMMENT_EDITOR", "SHOW_COMMENT_EDITOR_NATIVE", "SHOW_FOLLOW_ALERTVIEW", "SHOW_LEVEL_DIALOG", "SHOW_MULTI_BIU_EDIT_PAGE", "SHOW_PICTURE", "SHOW_RIJ_SHARE_MENU", "SHOW_UGC_EDIT_PAGE", "SHOW_UGC_VIDEO_RECORD_PAGE", "SHOW_VISIBLE_USER_LIST", "SOCIALIZE_FEEDS_UPDATE", "UPDATE_ACCOUNT_CARD_FOLLOW_INFO", "UPDATE_RED_PACKET_SHARE_TIME", "UPDATE_TOPIC_CARD_FOLLOW_INFO", "UPLOAD_TOPIC_PIC", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tzf {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tzf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,26 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yet
-  implements yfl
+  extends QQUIEventReceiver<yer, wsb>
 {
-  public yet(DoodleLayout paramDoodleLayout) {}
-  
-  public void a()
+  public yet(@NonNull yer paramyer)
   {
-    if (this.a.a != null) {
-      this.a.a.g();
+    super(paramyer);
+  }
+  
+  public void a(@NonNull yer paramyer, @NonNull wsb paramwsb)
+  {
+    if ((paramwsb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwsb.jdField_a_of_type_JavaUtilList == null)) {
+      return;
     }
+    paramyer.b(paramwsb.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wsb.class;
   }
 }
 

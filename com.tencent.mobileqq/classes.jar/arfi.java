@@ -1,174 +1,80 @@
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class arfi
+  extends aqwt<arfj>
 {
-  int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Map<Integer, arfk> jdField_a_of_type_JavaUtilMap;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  
-  public arfi(Activity paramActivity)
+  @NonNull
+  public arfj a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func SogouEmojiTaskController begins");
-    }
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    d();
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func SogouEmojiTaskController ends");
-    }
+    return new arfj();
   }
   
-  private void d()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new LinkedHashMap(10, 1.1F, true));
-  }
-  
-  public int a(String paramString1, String paramString2)
+  @Nullable
+  public arfj a(aqxa[] paramArrayOfaqxa)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func addTask begins, packId:" + paramString1 + ",exprId:" + paramString2);
+      QLog.d("ReadinjoyCommonConfProcessor", 2, "[onParsed]");
     }
-    arfk localarfk = new arfk();
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    localarfk.jdField_a_of_type_JavaLangString = paramString1;
-    localarfk.b = paramString2;
-    localarfk.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localarfk);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func addTask ends, mCurTaskId:" + this.jdField_a_of_type_Int);
-    }
-    b(2131694451);
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDestroy begins");
-    }
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0))
     {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      this.jdField_a_of_type_JavaUtilMap = null;
+      arfj localarfj = new arfj();
+      localarfj.a(paramArrayOfaqxa);
+      return localarfj;
     }
-    this.jdField_a_of_type_AndroidAppActivity = null;
+    return new arfj();
+  }
+  
+  public void a(arfj paramarfj)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDestroy ends");
+      QLog.d("ReadinjoyCommonConfProcessor", 2, "[onUpdate]");
     }
   }
   
-  public void a(int paramInt)
+  public Class<arfj> clazz()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func removeTask begins, taskId:" + paramInt + ",mEmojiTaskHashMap:" + this.jdField_a_of_type_JavaUtilMap);
-    }
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func removeTask ends");
-    }
+    return arfj.class;
   }
   
-  public boolean a(int paramInt)
+  public boolean isNeedCompressed()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func isTaskInMap begins, taskId:" + paramInt);
-    }
-    if (this.jdField_a_of_type_JavaUtilMap != null)
-    {
-      if ((arfk)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmojiTaskController", 2, "func isTaskInMap ends, taskId:" + paramInt + ",exists=" + bool);
-        }
-        return bool;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func isTaskInMap ends, taskId:" + paramInt + " NOT exist, cause map is null.");
-    }
     return false;
   }
   
-  public void b()
+  public boolean isNeedStoreLargeFile()
   {
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
+    return false;
   }
   
-  void b(int paramInt)
+  public int migrateOldVersion()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func showProgressDialog begins, textResId:" + paramInt);
-    }
-    for (;;)
+    QQAppInterface localQQAppInterface = (QQAppInterface)pkh.a();
+    if (localQQAppInterface != null)
     {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidAppProgressDialog == null) {
-          continue;
-        }
-        c();
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
-        if (!this.jdField_a_of_type_AndroidAppProgressDialog.isShowing()) {
-          this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("SogouEmojiTaskController", 2, "func showProgressDialog ends, ERROR! msg:" + localThrowable.getMessage());
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SogouEmojiTaskController", 2, "func showProgressDialog ends");
-      }
-      return;
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this.jdField_a_of_type_AndroidAppActivity, 2131755826);
-      this.jdField_a_of_type_AndroidAppProgressDialog.setOnDismissListener(new arfj(this));
-      this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
-      this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559574);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372546));
+      String str = localQQAppInterface.getCurrentUin();
+      return bhhr.N(localQQAppInterface.getApp(), str);
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
     }
   }
   
-  void c()
+  public int type()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func cancleProgressDailog begins");
-    }
-    if ((this.jdField_a_of_type_AndroidAppProgressDialog != null) && (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppProgressDialog.cancel();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func cancleProgressDailog ends");
-    }
+    return 92;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arfi
  * JD-Core Version:    0.7.0.1
  */

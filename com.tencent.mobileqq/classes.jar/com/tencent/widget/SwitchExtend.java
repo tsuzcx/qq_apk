@@ -15,7 +15,7 @@ public class SwitchExtend
   
   public SwitchExtend(Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(paramContext, paramAttributeSet, 2131035075);
+    super(paramContext, paramAttributeSet, 2131035080);
   }
   
   public SwitchExtend(Context paramContext, AttributeSet paramAttributeSet, int paramInt)

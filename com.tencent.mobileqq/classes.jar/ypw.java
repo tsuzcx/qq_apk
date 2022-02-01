@@ -1,6 +1,6 @@
 public abstract interface ypw
 {
-  public abstract void a(ypu paramypu);
+  public abstract void a();
 }
 
 

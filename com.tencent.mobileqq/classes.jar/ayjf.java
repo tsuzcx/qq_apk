@@ -1,21 +1,29 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayjf
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  public ayjf(NearbyProfileFragment paramNearbyProfileFragment, aaib paramaaib) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("PrecoverBusinessInfo:");
-    localStringBuilder.append("businessId=").append(this.a);
-    localStringBuilder.append(", name=").append(this.b);
-    return localStringBuilder.toString();
+    if (this.jdField_a_of_type_Aaib != null) {}
+    for (String str = this.jdField_a_of_type_Aaib.b;; str = "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501")
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      localIntent.putExtra("url", str);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(localIntent);
+      bdla.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

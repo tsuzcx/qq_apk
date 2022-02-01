@@ -1,16 +1,85 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.ExtractFrameRequest;
-import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.9.1;
+import android.os.Bundle;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import java.io.File;
 
 public class blrf
-  implements AECameraGLSurfaceView.ExtractFrameRequest
 {
-  blrf(blqw paramblqw) {}
+  public static long a;
   
-  public void onExtract(Bitmap paramBitmap)
+  public static String a()
   {
-    ThreadManager.excute(new VideoStoryCapturePart.9.1(this, paramBitmap), 64, null, false);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    return new File(localBaseApplicationImpl.getFilesDir(), "comic_so").getAbsolutePath() + File.separator;
+  }
+  
+  public static void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicSoHelper", 2, "initComicPlayerSoWithSubProcess");
+    }
+    Bundle localBundle = new Bundle();
+    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getPlayerSo", localBundle, null);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (!new File(a() + "libqgplayer_841.so").exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicSoHelper", 2, "initComicPlayerSo start download");
+      }
+      ((VasQuickUpdateManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER)).downloadItem(1004L, "libqgplayer_841", "comic");
+    }
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        a = SystemClock.elapsedRealtime();
+        bdka.a(paramQQAppInterface, "sendtdbank|b_sng_qqvip_qqcomic|soDownload", "1|" + a + "|0", true);
+        return;
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        paramQQAppInterface.printStackTrace();
+        return;
+      }
+    }
+    QLog.d("VipComicSoHelper", 2, "initComicPlayerSo has exists");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicSoHelper", 2, "onSoDownloadCompleted");
+    }
+    if (bhiw.a(a() + "libQGamePlayer.zip", a(), "libqgplayer_841.so")) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicSoHelper", 2, "comic player unCompressSo success");
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        long l1 = SystemClock.elapsedRealtime();
+        long l2 = a;
+        bdka.a(paramQQAppInterface, "sendtdbank|b_sng_qqvip_qqcomic|soDownload", "2|" + (l1 - l2) + "|" + paramInt, true);
+        return;
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        paramQQAppInterface.printStackTrace();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicSoHelper", 2, "comic player unCompressSo failure");
+      }
+    }
   }
 }
 

@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
 
-class asvh
-  implements View.OnClickListener
+public class asvh
+  extends AnimatorListenerAdapter
 {
-  asvh(asvf paramasvf) {}
+  public asvh(MatchingView paramMatchingView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    asvf.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (MatchingView.a(this.a)) {
+      MatchingView.a(this.a).start();
+    }
   }
 }
 

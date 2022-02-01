@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class alct
-  implements DialogInterface.OnClickListener
+public abstract interface alct
 {
-  alct(alcr paramalcr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(String paramString);
 }
 
 

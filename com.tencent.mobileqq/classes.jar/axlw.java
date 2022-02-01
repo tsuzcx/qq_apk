@@ -1,23 +1,43 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import java.util.List;
+import android.support.annotation.NonNull;
 
 public class axlw
-  implements PopupWindow.OnDismissListener
 {
-  public axlw(OCRResultActivity paramOCRResultActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
   
-  public void onDismiss()
+  public axlw()
   {
-    this.a.b = null;
-    if ((OCRResultActivity.b(this.a) != null) && (OCRResultActivity.b(this.a).size() > 1))
-    {
-      Drawable localDrawable = this.a.getResources().getDrawable(2130845519);
-      this.a.a.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.contains("icon");
     }
+    return false;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GrayTipHighlightItemInfo{");
+    localStringBuilder.append("old_key:").append(this.jdField_a_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("old_start:").append(this.jdField_b_of_type_Int).append(", ");
+    localStringBuilder.append("id:").append(this.jdField_b_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("start:").append(this.jdField_c_of_type_Int).append(", ");
+    localStringBuilder.append("end:").append(this.jdField_d_of_type_Int).append(", ");
+    localStringBuilder.append("key:").append(this.jdField_c_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("url:").append(this.jdField_d_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

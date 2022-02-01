@@ -1,16 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import android.widget.PopupWindow.OnDismissListener;
 
 class pft
-  extends pse
+  implements PopupWindow.OnDismissListener
 {
-  pft(pey parampey, String paramString, ReadInJoyBaseListView paramReadInJoyBaseListView)
-  {
-    super(paramString);
-  }
+  pft(pfs parampfs) {}
   
-  public void a(prx paramprx)
+  public void onDismiss()
   {
-    paramprx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView);
+    this.a.a(1.0F);
+    if (pfs.a(this.a) != null) {
+      pfs.a(this.a).a(pfs.a(this.a));
+    }
   }
 }
 

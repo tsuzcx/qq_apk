@@ -1,15 +1,35 @@
-public class avrn
-  extends vko
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.Callable;
+
+class avrn
+  implements Callable<File>
 {
-  public int a;
-  public avro a;
-  public String a;
-  public boolean a;
-  public Object[] a;
+  avrn(avrm paramavrm) {}
   
-  public String toString()
+  public File a()
   {
-    return "MiniAppEvent {, isSuccess=" + this.jdField_a_of_type_Boolean + ", type=" + this.jdField_a_of_type_Int + ", src=" + this.jdField_a_of_type_JavaLangString + " }";
+    try
+    {
+      boolean bool = avrm.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("shadow::CdnPmUpdater", 2, "isNeedDownload:" + bool);
+      }
+      if (!bool)
+      {
+        localFile = this.a.getLatest();
+        return localFile;
+      }
+      File localFile = this.a.a();
+      if (avrm.a(this.a) != null) {
+        avrm.a(this.a).a();
+      }
+      return localFile;
+    }
+    finally
+    {
+      avrm.a(this.a, false);
+    }
   }
 }
 

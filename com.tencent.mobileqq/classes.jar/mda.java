@@ -1,25 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class mda
-  implements View.OnClickListener
+public class mda
+  extends mdb
 {
-  mda(mcy parammcy) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.a().a().av = true;
-    mum.a(this.a.a);
-    mcy.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public boolean a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mda
  * JD-Core Version:    0.7.0.1
  */

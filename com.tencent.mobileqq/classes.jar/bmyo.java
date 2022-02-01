@@ -1,48 +1,31 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public class bmyo
-  implements bmth
+class bmyo
+  implements AdapterView.OnItemClickListener
 {
-  public bmyo(MusicProviderView paramMusicProviderView) {}
+  private bmyo(bmyl parambmyl) {}
   
-  public void a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.jdField_a_of_type_Bjng.sendEmptyMessage(2);
-  }
-  
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "requestMusicSuccess mListener= " + this.a.jdField_a_of_type_Bmyx);
+    paramAdapterView = this.a.jdField_a_of_type_Bmyh.a(paramInt);
+    paramView = this.a.getActivity().getIntent();
+    if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name))) {
+      QQToast.a(this.a.getActivity(), 2131690017, 0).a();
     }
-    if (this.a.jdField_a_of_type_Bmyx != null)
+    boolean bool;
+    do
     {
-      if (paramMusicItemInfo.mType == 2) {
-        this.a.jdField_a_of_type_Bmyx.a(true);
-      }
-    }
-    else {
       return;
-    }
-    this.a.jdField_a_of_type_Bmyx.a(false);
+      bool = this.a.jdField_a_of_type_Bmzd.a(paramAdapterView, paramInt, paramView);
+    } while (this.a.jdField_a_of_type_Bmyp == null);
+    this.a.jdField_a_of_type_Bmyp.a(paramAdapterView, paramInt, bool);
   }
-  
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if ((paramInt != -1) && (MusicProviderView.a(this.a) != null)) {
-      MusicProviderView.a(this.a).d();
-    }
-  }
-  
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo) {}
 }
 
 

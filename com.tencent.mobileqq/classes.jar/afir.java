@@ -1,22 +1,19 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-class afir
-  implements DialogInterface.OnClickListener
+public class afir
+  implements View.OnTouchListener
 {
-  afir(afiq paramafiq, Context paramContext) {}
+  public afir(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface = AIOUtils.setOpenAIOIntent(new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class), null);
-    paramDialogInterface.putExtra("uin", this.jdField_a_of_type_Afiq.a.sessionInfo.curFriendUin);
-    paramDialogInterface.putExtra("uintype", 3000);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.b();
+    }
+    return true;
   }
 }
 

@@ -1,40 +1,25 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class axbr
-  implements aprh
+public class axbr
+  implements bivu
 {
-  axbr(axax paramaxax, IphonePickerView paramIphonePickerView, bjnw parambjnw) {}
+  public axbr(MsgBackupQRFragment paramMsgBackupQRFragment) {}
   
-  public void a()
+  public void onItemSelect(View paramView, int paramInt)
   {
-    if ((this.jdField_a_of_type_Bjnw != null) && (this.jdField_a_of_type_Bjnw.isShowing()))
+    switch (paramInt)
     {
-      axax.a(this.jdField_a_of_type_Axax, this.jdField_a_of_type_Axax.c, false);
-      this.jdField_a_of_type_Bjnw.dismiss();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
-      {
-        if ((paramInt1 == 0) || (paramInt1 == 1)) {
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-        }
-        this.jdField_a_of_type_Axax.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
-      }
+    default: 
       return;
-      this.jdField_a_of_type_Axax.e = paramInt2;
-      continue;
-      this.jdField_a_of_type_Axax.f = paramInt2;
-      continue;
-      this.jdField_a_of_type_Axax.g = paramInt2;
     }
+    if (QLog.isColorLevel()) {
+      QLog.e("MsgBackup.MsgBackupQRFragment", 2, "TO_QRCODE page click left btn");
+    }
+    awzs.a().d();
+    this.a.onBackEvent();
+    axct.a("0X800A242", 4);
   }
 }
 

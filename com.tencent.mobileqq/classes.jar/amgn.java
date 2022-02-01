@@ -1,10 +1,26 @@
-import com.tencent.TMG.sdk.AVContext.StartParam;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
 
 public class amgn
-  extends AVContext.StartParam
+  extends amgz
 {
-  public int a;
-  public long a;
+  public View a;
+  public Button a;
+  public CheckBox a;
+  public TextView a;
+  public PhoneContact a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  
+  public amgn()
+  {
+    this.c = 11;
+  }
 }
 
 

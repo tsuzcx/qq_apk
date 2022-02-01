@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.specialcare;
 
-import akox;
+import almt;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class CareNotificationBar$3$2$1
   implements Runnable
 {
-  public CareNotificationBar$3$2$1(akox paramakox) {}
+  public CareNotificationBar$3$2$1(almt paramalmt) {}
   
   public void run()
   {
@@ -18,11 +18,11 @@ public class CareNotificationBar$3$2$1
       if (QLog.isColorLevel()) {
         QLog.i("CareNotificationBar", 2, "onAnimationEnd-->clearAnimation");
       }
-      Object localObject = this.a.a.a.getTag(2131374806);
+      Object localObject = this.a.a.a.getTag(2131375047);
       if ((localObject instanceof Drawable))
       {
         this.a.a.a.setBackgroundDrawable((Drawable)localObject);
-        this.a.a.a.setTag(2131374806, null);
+        this.a.a.a.setTag(2131375047, null);
       }
     }
   }

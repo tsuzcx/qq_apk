@@ -1,95 +1,98 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class aqgv
-  extends aqgc<aqgu>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/browser/BrowserItem;", "", "name", "", "title", "icon", "jumpUrl", "packageName", "isLocalApp", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V", "getIcon", "()Ljava/lang/String;", "()Z", "getJumpUrl", "getName", "getPackageName", "getTitle", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "other", "hashCode", "", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class aqgv
 {
-  static aqgu a = new aqgu();
+  @NotNull
+  private final String jdField_a_of_type_JavaLangString;
+  private final boolean jdField_a_of_type_Boolean;
+  @NotNull
+  private final String b;
+  @NotNull
+  private final String c;
+  @NotNull
+  private final String d;
+  @NotNull
+  private final String e;
   
-  public static aqgu c()
+  public aqgv(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, @NotNull String paramString5, boolean paramBoolean)
   {
-    aqgu localaqgu2 = (aqgu)apub.a().a(444);
-    aqgu localaqgu1 = localaqgu2;
-    if (localaqgu2 == null) {
-      localaqgu1 = a;
-    }
-    return localaqgu1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  @NonNull
-  public aqgu a()
+  @NotNull
+  public final String a()
   {
-    return a;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  @NonNull
-  public aqgu a(@NonNull aptx[] paramArrayOfaptx)
+  public final boolean a()
   {
-    aqgu localaqgu = new aqgu();
-    int m = paramArrayOfaptx.length;
-    int i = 0;
-    int j = 0;
-    while (i < m)
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  @NotNull
+  public final String b()
+  {
+    return this.b;
+  }
+  
+  @NotNull
+  public final String c()
+  {
+    return this.c;
+  }
+  
+  @NotNull
+  public final String d()
+  {
+    return this.d;
+  }
+  
+  @NotNull
+  public final String e()
+  {
+    return this.e;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      Object localObject = paramArrayOfaptx[i];
-      if (j > ((aptx)localObject).jdField_a_of_type_Int)
+      if ((paramObject instanceof aqgv))
       {
-        i += 1;
-      }
-      else
-      {
-        int k = ((aptx)localObject).jdField_a_of_type_Int;
-        j = k;
-        for (;;)
-        {
-          try
-          {
-            if (paramArrayOfaptx[0].jdField_a_of_type_JavaLangString == null) {
-              break;
-            }
-            localObject = new JSONObject(paramArrayOfaptx[0].jdField_a_of_type_JavaLangString);
-            localaqgu.a = ((JSONObject)localObject).optBoolean("enable", false);
-            if (((JSONObject)localObject).optInt("dltc", 0) != 1) {
-              break label166;
-            }
-            bool = true;
-            localaqgu.b = bool;
-            j = k;
-          }
-          catch (JSONException localJSONException)
-          {
-            xvv.e("QVipDiyTemplateProcessor", "parsed : " + paramArrayOfaptx[0].jdField_a_of_type_JavaLangString + " error:" + localJSONException);
-            j = k;
-          }
-          break;
-          label166:
-          boolean bool = false;
-        }
+        paramObject = (aqgv)paramObject;
+        if ((!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.b, paramObject.b)) || (!Intrinsics.areEqual(this.c, paramObject.c)) || (!Intrinsics.areEqual(this.d, paramObject.d)) || (!Intrinsics.areEqual(this.e, paramObject.e)) || (this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean)) {}
       }
     }
-    return localaqgu;
+    else {
+      return true;
+    }
+    return false;
   }
   
-  @NonNull
-  public aqgu b()
+  public int hashCode()
   {
-    return a;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public Class<aqgu> clazz()
+  @NotNull
+  public String toString()
   {
-    return aqgu.class;
-  }
-  
-  public int type()
-  {
-    return 444;
+    return "BrowserItem(name=" + this.jdField_a_of_type_JavaLangString + ", title=" + this.b + ", icon=" + this.c + ", jumpUrl=" + this.d + ", packageName=" + this.e + ", isLocalApp=" + this.jdField_a_of_type_Boolean + ")";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgv
  * JD-Core Version:    0.7.0.1
  */

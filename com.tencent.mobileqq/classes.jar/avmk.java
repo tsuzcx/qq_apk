@@ -1,17 +1,16 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
+import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
+import android.view.View;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
 import com.tencent.qphone.base.util.QLog;
 
-class avmk
-  implements SoundPool.OnLoadCompleteListener
+public class avmk
+  implements StaggeredGridLayoutManager.ExceptionListener
 {
-  avmk(avmj paramavmj, int paramInt, String paramString) {}
+  public avmk(HotPicPageView paramHotPicPageView) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
   {
-    if ((this.jdField_a_of_type_Avmj.a.play(paramInt1, 1.0F, 1.0F, 0, this.jdField_a_of_type_Int, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
-    }
+    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
   }
 }
 

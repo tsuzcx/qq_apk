@@ -1,72 +1,104 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentSinkData;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.FirstCommentAuthorTopSetReq;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.FirstCommentAuthorTopSetRsp;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.ReqBody;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.RspBody;
 
-class pgi
-  implements pen
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/FirstCommentSinkHandler;", "", "data", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentSinkData;", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentSinkData;)V", "getData", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentSinkData;", "onFailCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isOverTimes", "", "getOnFailCallback", "()Lkotlin/jvm/functions/Function1;", "setOnFailCallback", "(Lkotlin/jvm/functions/Function1;)V", "onSuccessCallback", "Lkotlin/Function0;", "getOnSuccessCallback", "()Lkotlin/jvm/functions/Function0;", "setOnSuccessCallback", "(Lkotlin/jvm/functions/Function0;)V", "generateRequestBody", "Ltencent/im/oidb/oidb_0xd1e/oidb_0xd1e$ReqBody;", "onCommentOperationFailed", "errorCode", "", "errorMsg", "", "onCommentOperationSuccess", "", "send0xd1eRequest", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pgi
 {
-  pgi(pgg parampgg) {}
+  @NotNull
+  private static final String jdField_a_of_type_JavaLangString = "FirstCommentSinkHandler";
+  public static final pgj a;
+  @NotNull
+  private final FirstCommentSinkData jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentSinkData;
+  @Nullable
+  private Function0<Unit> jdField_a_of_type_KotlinJvmFunctionsFunction0;
+  @Nullable
+  private Function1<? super Boolean, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
   
-  public void onClick(View paramView)
+  static
   {
-    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramView.getTag();
-    String str2 = null;
-    String str1;
-    label78:
-    String str3;
-    long l;
-    if ((!TextUtils.isEmpty(localBaseArticleInfo.getSubscribeUin())) && (!"16888".equals(localBaseArticleInfo.getSubscribeUin())))
+    jdField_a_of_type_Pgj = new pgj(null);
+  }
+  
+  public pgi(@NotNull FirstCommentSinkData paramFirstCommentSinkData)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentSinkData = paramFirstCommentSinkData;
+  }
+  
+  private final oidb_0xd1e.ReqBody a()
+  {
+    oidb_0xd1e.ReqBody localReqBody = new oidb_0xd1e.ReqBody();
+    oidb_0xd1e.FirstCommentAuthorTopSetReq localFirstCommentAuthorTopSetReq = new oidb_0xd1e.FirstCommentAuthorTopSetReq();
+    localFirstCommentAuthorTopSetReq.article_id.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentSinkData.b());
+    localFirstCommentAuthorTopSetReq.comment_id.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentSinkData.a());
+    localFirstCommentAuthorTopSetReq.comment_type.set(1);
+    localFirstCommentAuthorTopSetReq.op_type.set(3);
+    localFirstCommentAuthorTopSetReq.content_src.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentSinkData.d());
+    localFirstCommentAuthorTopSetReq.src.set(0);
+    localFirstCommentAuthorTopSetReq.business_info.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentHandlerBeanFirstCommentSinkData.d());
+    localReqBody.first_comment_author_top_set_req.set((MessageMicro)localFirstCommentAuthorTopSetReq);
+    return localReqBody;
+  }
+  
+  public final void a()
+  {
+    oidb_0xd1e.ReqBody localReqBody = a();
+    ntb.a(pnn.a(), (ntf)new pgk(this), localReqBody.toByteArray(), "OidbSvc.0xd1e", 3358, 10);
+  }
+  
+  public final void a(int paramInt, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "errorMsg");
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "errorCode : " + paramInt + "  msg: " + paramString);
+    paramString = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+    if (paramString != null) {
+      paramString = (Unit)paramString.invoke(Boolean.valueOf(false));
+    }
+  }
+  
+  public final void a(@Nullable Function0<Unit> paramFunction0)
+  {
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
+  }
+  
+  public final void a(@Nullable Function1<? super Boolean, Unit> paramFunction1)
+  {
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+  }
+  
+  public final void a(@NotNull byte[] paramArrayOfByte)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "data");
+    oidb_0xd1e.RspBody localRspBody = new oidb_0xd1e.RspBody();
+    localRspBody.mergeFrom(paramArrayOfByte);
+    if ((localRspBody.first_comment_author_top_set_rsp.over_times.has()) && (localRspBody.first_comment_author_top_set_rsp.over_times.get() > 0))
     {
-      str1 = localBaseArticleInfo.getSubscribeUin();
-      if ((str1 == null) || (localBaseArticleInfo.unowned)) {
-        break label337;
-      }
-      pgg.a(this.a, str1, pgg.a(this.a).a().a());
-      str2 = localBaseArticleInfo.mVideoVid;
-      str3 = String.valueOf(localBaseArticleInfo.innerUniqueID);
-      if (pgg.a(this.a).a().a() != null) {
-        break label375;
-      }
-      l = 0L;
-      label113:
-      str3 = new sie(null, str1, str2, str3, l, localBaseArticleInfo.mVideoDuration * 1000).a(pgg.a(this.a).a().b()).a().a();
-      if (TextUtils.isEmpty(localBaseArticleInfo.innerUniqueID)) {
-        break label395;
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "req fail, overtimes");
+      paramArrayOfByte = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte = (Unit)paramArrayOfByte.invoke(Boolean.valueOf(true));
       }
     }
-    label395:
-    for (str2 = String.valueOf(localBaseArticleInfo.innerUniqueID);; str2 = "0")
+    do
     {
-      odq.a(null, str1, "0X8007410", "0X8007410", 0, 0, "2", "", str2, str3, false);
-      uhs.a(pgg.a(this.a).a().a(), (ArticleInfo)localBaseArticleInfo, pgg.a(this.a).a().a(), 56);
-      uhs.a((Activity)pgg.a(this.a).a().a(), (ArticleInfo)localBaseArticleInfo, pgg.a(this.a).a().a(), 56, true, null);
-      if (paramView.getId() == 2131361876) {
-        psf.a(paramView);
-      }
       return;
-      str1 = str2;
-      if (TextUtils.isEmpty(localBaseArticleInfo.thirdUin)) {
-        break;
-      }
-      str1 = str2;
-      if ("16888".equals(localBaseArticleInfo.thirdUin)) {
-        break;
-      }
-      str1 = localBaseArticleInfo.thirdUin;
-      break;
-      label337:
-      if (!QLog.isColorLevel()) {
-        break label78;
-      }
-      QLog.d("RIJFrameworkHandleClick", 2, "onClick: handleAccountViewGroupClick articleinfo unowned = " + localBaseArticleInfo.unowned);
-      break label78;
-      label375:
-      l = pgg.a(this.a).a().a().a();
-      break label113;
-    }
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "req success");
+      paramArrayOfByte = this.jdField_a_of_type_KotlinJvmFunctionsFunction0;
+    } while (paramArrayOfByte == null);
+    paramArrayOfByte = (Unit)paramArrayOfByte.invoke();
   }
 }
 

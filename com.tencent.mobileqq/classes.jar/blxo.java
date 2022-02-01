@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.IInterface;
+import cooperation.qappcenter.remote.RecvMsg;
 
-class blxo
-  implements View.OnClickListener
+public abstract interface blxo
+  extends IInterface
 {
-  blxo(blxk paramblxk) {}
-  
-  public void onClick(View paramView)
-  {
-    blxk.a(this.a).a();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(RecvMsg paramRecvMsg);
 }
 
 

@@ -1,14 +1,16 @@
 package com.tencent.mobileqq.doutu;
 
-import afyn;
+import agrd;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.widget.ImageView;
-import aqwg;
-import bfvo;
+import arzt;
+import asaa;
+import bheg;
 import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -50,7 +52,7 @@ public class DuiButtonImageView
   
   public static boolean a()
   {
-    Object localObject1 = new File(aqwg.jdField_a_of_type_JavaLangString + "dui_icon");
+    Object localObject1 = new File(asaa.jdField_a_of_type_JavaLangString + "dui_icon");
     if (((File)localObject1).exists()) {}
     for (;;)
     {
@@ -98,12 +100,13 @@ public class DuiButtonImageView
     do
     {
       return false;
-      paramDuiButtonImageView.g();
+      paramDuiButtonImageView.f();
     } while (paramDuiButtonImageView.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable == null);
     paramDuiButtonImageView.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.h();
     paramDuiButtonImageView.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
     paramDuiButtonImageView.setImageDrawable(paramDuiButtonImageView.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable);
     paramDuiButtonImageView.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.c();
+    arzt.a();
     return true;
   }
   
@@ -141,7 +144,7 @@ public class DuiButtonImageView
     }
   }
   
-  private void g()
+  private void f()
   {
     int i = 0;
     try
@@ -151,17 +154,17 @@ public class DuiButtonImageView
       ((BitmapFactory.Options)localObject).inMutable = true;
       if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() > 0))
       {
-        localObject = bfvo.a(((File)jdField_a_of_type_JavaUtilList.get(0)).getAbsolutePath(), (BitmapFactory.Options)localObject);
+        localObject = bheg.a(((File)jdField_a_of_type_JavaUtilList.get(0)).getAbsolutePath(), (BitmapFactory.Options)localObject);
         if (localObject == null)
         {
           jdField_a_of_type_Boolean = false;
-          aqwg.a(this.jdField_a_of_type_AndroidContentContext);
+          asaa.a(this.jdField_a_of_type_AndroidContentContext);
         }
-        aqwg localaqwg = (aqwg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(214);
-        if (localaqwg == null) {
+        asaa localasaa = (asaa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DOUTU_MAGAGER);
+        if (localasaa == null) {
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = new CustomFrameAnimationDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject, localaqwg.jdField_a_of_type_MqqOsMqqHandler);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = new CustomFrameAnimationDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject, localasaa.jdField_a_of_type_MqqOsMqqHandler);
         while (i < jdField_a_of_type_JavaUtilList.size())
         {
           localObject = (File)jdField_a_of_type_JavaUtilList.get(i);
@@ -179,6 +182,50 @@ public class DuiButtonImageView
     }
   }
   
+  public boolean b()
+  {
+    jdField_a_of_type_JavaLangRefWeakReference = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("DuiButtonImageView", 2, "resumeAnim");
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a.a.size() > 0)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.d();
+    }
+    for (;;)
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("DuiButtonImageView", 2, "showLastFrame");
+      }
+      try
+      {
+        Object localObject = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject).inSampleSize = 1;
+        ((BitmapFactory.Options)localObject).inMutable = true;
+        if (jdField_a_of_type_JavaUtilList.size() <= 0) {
+          continue;
+        }
+        localObject = bheg.a(((File)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1)).getAbsolutePath(), (BitmapFactory.Options)localObject);
+        if (localObject == null)
+        {
+          jdField_a_of_type_Boolean = false;
+          asaa.a(this.jdField_a_of_type_AndroidContentContext);
+        }
+        setImageBitmap((Bitmap)localObject);
+        return true;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        QLog.e("DuiButtonImageView", 1, "oom occur!");
+        System.gc();
+      }
+      catch (Exception localException) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("DuiButtonImageView", 2, "resumeAnim error!", localException);
+      }
+    }
+  }
+  
   public void e()
   {
     if (QLog.isColorLevel()) {
@@ -188,56 +235,10 @@ public class DuiButtonImageView
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.g();
     }
   }
-  
-  public void f()
-  {
-    jdField_a_of_type_JavaLangRefWeakReference = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("DuiButtonImageView", 2, "resumeAnim");
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a.a.size() > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.d();
-    }
-    do
-    {
-      for (;;)
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("DuiButtonImageView", 2, "showLastFrame");
-        }
-        try
-        {
-          Object localObject = new BitmapFactory.Options();
-          ((BitmapFactory.Options)localObject).inSampleSize = 1;
-          ((BitmapFactory.Options)localObject).inMutable = true;
-          if (jdField_a_of_type_JavaUtilList.size() > 0)
-          {
-            localObject = bfvo.a(((File)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1)).getAbsolutePath(), (BitmapFactory.Options)localObject);
-            if (localObject == null)
-            {
-              jdField_a_of_type_Boolean = false;
-              aqwg.a(this.jdField_a_of_type_AndroidContentContext);
-            }
-            setImageBitmap((Bitmap)localObject);
-            return;
-          }
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          QLog.e("DuiButtonImageView", 1, "oom occur!");
-          System.gc();
-          return;
-        }
-        catch (Exception localException) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("DuiButtonImageView", 2, "resumeAnim error!", localException);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DuiButtonImageView
  * JD-Core Version:    0.7.0.1
  */

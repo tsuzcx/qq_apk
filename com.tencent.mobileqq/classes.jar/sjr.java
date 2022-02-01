@@ -1,6 +1,15 @@
-public abstract interface sjr
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
+
+class sjr
+  implements ttx
 {
-  public abstract void a(sjt paramsjt);
+  sjr(sjq paramsjq, Bundle paramBundle) {}
+  
+  public void a()
+  {
+    pqx.a(sjq.a(this.jdField_a_of_type_Sjq), sjq.a(this.jdField_a_of_type_Sjq).a, this.jdField_a_of_type_AndroidOsBundle);
+  }
 }
 
 

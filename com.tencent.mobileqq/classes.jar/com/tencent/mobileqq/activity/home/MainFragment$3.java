@@ -2,8 +2,9 @@ package com.tencent.mobileqq.activity.home;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import awcm;
+import axio;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.crash.RenderInSubThreadMonitor;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
 
@@ -15,37 +16,39 @@ class MainFragment$3
   public void run()
   {
     boolean bool2 = true;
-    if (this.this$0.getActivity() == null) {}
-    do
-    {
+    if (this.this$0.getActivity() == null) {
       return;
-      MainFragment.a(this.this$0, PreferenceManager.getDefaultSharedPreferences(MainFragment.a(this.this$0).getApp()));
-      boolean bool1 = bool2;
-      if (MainFragment.a(this.this$0).getBoolean("theme_voice_setting_" + MainFragment.a(this.this$0).getCurrentAccountUin(), true))
+    }
+    RenderInSubThreadMonitor.disableMonitor();
+    MainFragment.a(this.this$0, PreferenceManager.getDefaultSharedPreferences(MainFragment.a(this.this$0).getApp()));
+    boolean bool1 = bool2;
+    if (MainFragment.a(this.this$0).getBoolean("theme_voice_setting_" + MainFragment.a(this.this$0).getCurrentAccountUin(), true))
+    {
+      Object localObject = ThemeUtil.getUserCurrentThemeId(MainFragment.a(this.this$0));
+      localObject = ThemeUtil.getThemeInfo(this.this$0.getActivity(), (String)localObject);
+      bool1 = bool2;
+      if (localObject != null)
       {
-        Object localObject = ThemeUtil.getUserCurrentThemeId(MainFragment.a(this.this$0));
-        localObject = ThemeUtil.getThemeInfo(this.this$0.getActivity(), (String)localObject);
         bool1 = bool2;
-        if (localObject != null)
+        if (((ThemeUtil.ThemeInfo)localObject).status.equals("5"))
         {
           bool1 = bool2;
-          if (((ThemeUtil.ThemeInfo)localObject).status.equals("5"))
-          {
-            bool1 = bool2;
-            if (((ThemeUtil.ThemeInfo)localObject).isVoiceTheme) {
-              bool1 = false;
-            }
+          if (((ThemeUtil.ThemeInfo)localObject).isVoiceTheme) {
+            bool1 = false;
           }
         }
       }
-      MainFragment.a(this.this$0, bool1, MainFragment.a);
-      MainFragment.a(this.this$0, bool1, MainFragment.b);
-      MainFragment.a(this.this$0, bool1, MainFragment.c);
-      MainFragment.a(this.this$0, bool1, "NOW");
-      MainFragment.a(this.this$0, bool1, MainFragment.d);
-      MainFragment.a(this.this$0, bool1, "动态");
-    } while (awcm.a().a());
-    awcm.a().a(MainFragment.a(this.this$0));
+    }
+    MainFragment.a(this.this$0, bool1, MainFragment.a);
+    MainFragment.a(this.this$0, bool1, MainFragment.b);
+    MainFragment.a(this.this$0, bool1, MainFragment.c);
+    MainFragment.a(this.this$0, bool1, "NOW");
+    MainFragment.a(this.this$0, bool1, MainFragment.d);
+    MainFragment.a(this.this$0, bool1, "动态");
+    if (!axio.a().a()) {
+      axio.a().a(MainFragment.a(this.this$0));
+    }
+    RenderInSubThreadMonitor.enableMonitor();
   }
 }
 

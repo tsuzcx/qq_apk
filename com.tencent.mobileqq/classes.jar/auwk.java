@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
 
 public class auwk
-  implements bfhl
+  implements Handler.Callback
 {
-  public auwk(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public auwk(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
-  public void a(long paramLong)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramLong) });
+    MsgBackupSettingFragment.a(this.a, paramMessage);
+    return false;
   }
 }
 

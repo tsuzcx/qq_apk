@@ -1,37 +1,88 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class qcc
-  implements qdy
+  implements stm
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public qcc(VideoView paramVideoView) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(@NotNull stn arg1)
   {
-    paramBaseArticleInfo = new pzf().L(paramBaseArticleInfo).B(paramBaseArticleInfo);
-    switch (paramInt)
-    {
-    default: 
-      paramBaseArticleInfo.a("ReadInjoy_small_cell");
-    }
     for (;;)
     {
-      return paramBaseArticleInfo.a();
-      paramBaseArticleInfo.a("ReadInjoy_large_cell");
+      synchronized (this.a)
+      {
+        if (VideoView.access$1300(this.a))
+        {
+          VideoView.access$000(this.a, 6);
+          VideoView.access$1402(this.a, VideoView.access$1500(this.a));
+          VideoView.access$1602(this.a, "");
+          VideoView.access$1700(this.a);
+          if (VideoView.access$1800(this.a) != null) {
+            this.a.mProgressHandler.postDelayed(this.a, 500L);
+          }
+          return;
+        }
+        QLog.d("gifvideo.VideoView", 1, "invalid state");
+        VideoView.access$1602(this.a, "");
+        if (VideoView.access$500(this.a).get() == 5) {
+          VideoView.access$1900(this.a);
+        }
+      }
+      if (VideoView.access$500(this.a).get() == 4) {
+        VideoView.access$2000(this.a);
+      }
     }
   }
   
-  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2) {}
+  public void a(@NotNull stn paramstn, int paramInt1, int paramInt2) {}
   
-  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  public void a(@NotNull stn paramstn, int paramInt1, int paramInt2, int paramInt3, @Nullable Bitmap paramBitmap) {}
+  
+  public boolean a(@NotNull stn paramstn, int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString)
+  {
+    QLog.e("gifvideo.VideoView", 1, "TVK_IMediaPlayer.OnErrorListener model = " + paramInt1 + " errorType = " + paramInt2 + " errorCode = " + paramInt3 + " extra = " + paramString);
+    return false;
+  }
+  
+  public boolean a(@NotNull stn paramstn, int paramInt, @Nullable Object paramObject)
   {
     return false;
+  }
+  
+  public void b(@NotNull stn arg1)
+  {
+    synchronized (this.a)
+    {
+      VideoView.access$000(this.a, 10);
+      this.a.displayCover();
+      if (VideoView.access$2100(this.a) != null) {
+        VideoView.access$2100(this.a).c();
+      }
+      VideoView.access$2200(this.a);
+      return;
+    }
+  }
+  
+  public void c(@NotNull stn arg1)
+  {
+    synchronized (this.a)
+    {
+      if (VideoView.access$900(this.a) != null) {
+        VideoView.access$900(this.a).a();
+      }
+      if (VideoView.access$1800(this.a) != null) {
+        this.a.mProgressHandler.postDelayed(this.a, 500L);
+      }
+      return;
+    }
   }
 }
 

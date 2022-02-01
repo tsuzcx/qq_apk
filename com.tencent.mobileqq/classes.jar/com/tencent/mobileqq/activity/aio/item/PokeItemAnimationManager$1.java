@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agkc;
+import ahcs;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class PokeItemAnimationManager$1
         }
       }
     }
-    agkc.a(this.this$0, this.b, this.jdField_a_of_type_AndroidContentContext);
+    ahcs.a(this.this$0, this.b, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
-public class agib
-  extends aezf
+class agib
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public akxy a;
-  protected ViewGroup a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected ETTextView a;
-  protected TextView b;
-  public ETTextView b;
-  public View c;
+  agib(aght paramaght) {}
   
-  public agib(aghv paramaghv) {}
+  public void onGlobalLayout()
+  {
+    if ((aght.a(this.a).input.getLineCount() > 3) && (aght.a(this.a).enableFullScreenInput()) && (aght.a(this.a).getInputEnable()) && (!bdfk.b()))
+    {
+      this.a.a.setVisibility(0);
+      return;
+    }
+    this.a.a.setVisibility(8);
+  }
 }
 
 

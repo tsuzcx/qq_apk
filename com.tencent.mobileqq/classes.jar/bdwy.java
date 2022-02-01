@@ -1,34 +1,44 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
+import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-public class bdwy
-  implements View.OnFocusChangeListener
+public final class bdwy
+  implements bdxb
 {
-  public bdwy(NewTroopContactView paramNewTroopContactView) {}
+  private final File a;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public bdwy(String paramString)
   {
-    if (paramBoolean)
-    {
-      paramView = this.a.a();
-      if (paramView != null)
-      {
-        paramView.d(true);
-        paramView.a(NewTroopContactView.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList);
-        FragmentTransaction localFragmentTransaction = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getSupportFragmentManager().beginTransaction();
-        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
-        }
-        localFragmentTransaction.add(2131376347, paramView);
-        localFragmentTransaction.commitAllowingStateLoss();
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
-      }
+    this.a = new File(String.format("/data/local/tmp/%sPluginManager.apk", new Object[] { paramString }));
+  }
+  
+  public boolean a()
+  {
+    return this.a.exists();
+  }
+  
+  public File getLatest()
+  {
+    if (this.a.exists()) {
+      return this.a;
     }
+    return null;
+  }
+  
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    return ThreadManagerExecutor.getExecutorService(16).submit(new bdxa(this, paramFile));
+  }
+  
+  public Future<File> update()
+  {
+    return ThreadManagerExecutor.getExecutorService(16).submit(new bdwz(this));
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
   }
 }
 

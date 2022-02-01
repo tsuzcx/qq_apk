@@ -16,10 +16,7 @@ public final class PluginCombination
   @JvmField
   @NotNull
   public static final DefaultPluginConfig anrPlugin;
-  private static final List<DefaultPluginConfig> austerityPlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { dropFramePlugin, dbPlugin, ioPlugin, leakPlugin, ceilingHprofPlugin, ceilingValuePlugin, batteryPlugin, devicePlugin, anrPlugin, crashPlugin, statisticsPlugin, bigBitmapPlugin });
-  @JvmField
-  @NotNull
-  public static final DefaultPluginConfig batteryPlugin;
+  private static final List<DefaultPluginConfig> austerityPlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { dropFramePlugin, dbPlugin, ioPlugin, leakPlugin, ceilingHprofPlugin, ceilingValuePlugin, devicePlugin, anrPlugin, crashPlugin, statisticsPlugin, bigBitmapPlugin, startUpPlugin });
   @JvmField
   @NotNull
   public static final DefaultPluginConfig bigBitmapPlugin;
@@ -57,15 +54,21 @@ public final class PluginCombination
   @NotNull
   public static final DefaultPluginConfig loopStackPlugin = (DefaultPluginConfig)new DefaultPluginConfig.LoopStackPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
   @NotNull
-  private static final List<DefaultPluginConfig> loosePlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { loopStackPlugin, resourcePlugin, webViewPlugin, httpPlugin, jsErrorPlugin, userBreadCrumbPlugin, batteryPlugin });
+  private static final List<DefaultPluginConfig> loosePlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { loopStackPlugin, resourcePlugin, webViewPlugin, httpPlugin, jsErrorPlugin, userBreadCrumbPlugin });
   @NotNull
   private static final Lazy modeAll$delegate;
   @NotNull
   private static final Lazy modeStable$delegate;
   @JvmField
   @NotNull
+  public static final DefaultPluginConfig qqBatteryPlugin;
+  @JvmField
+  @NotNull
   public static final DefaultPluginConfig resourcePlugin;
   private static final List<DefaultPluginConfig> stablePlugins;
+  @JvmField
+  @NotNull
+  public static final DefaultPluginConfig startUpPlugin;
   @JvmField
   @NotNull
   public static final DefaultPluginConfig statisticsPlugin;
@@ -83,7 +86,6 @@ public final class PluginCombination
     leakPlugin = (DefaultPluginConfig)new DefaultPluginConfig.LeakPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     ceilingHprofPlugin = (DefaultPluginConfig)new DefaultPluginConfig.CeilingHprofPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     ceilingValuePlugin = (DefaultPluginConfig)new DefaultPluginConfig.CeilingValuePlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
-    batteryPlugin = (DefaultPluginConfig)new DefaultPluginConfig.BatteryPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     devicePlugin = (DefaultPluginConfig)new DefaultPluginConfig.DevicePlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     resourcePlugin = (DefaultPluginConfig)new DefaultPluginConfig.ResourcePlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     crashPlugin = (DefaultPluginConfig)new DefaultPluginConfig.CrashPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
@@ -94,9 +96,11 @@ public final class PluginCombination
     userBreadCrumbPlugin = (DefaultPluginConfig)new DefaultPluginConfig.BreadCrumbPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     statisticsPlugin = (DefaultPluginConfig)new DefaultPluginConfig.StatisticsPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     bigBitmapPlugin = (DefaultPluginConfig)new DefaultPluginConfig.BigBitmapPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
+    startUpPlugin = (DefaultPluginConfig)new DefaultPluginConfig.StartUpPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
+    qqBatteryPlugin = (DefaultPluginConfig)new DefaultPluginConfig.QQBatteryPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     modeAll$delegate = LazyKt.lazy((Function0)PluginCombination.Companion.modeAll.2.INSTANCE);
     modeStable$delegate = LazyKt.lazy((Function0)PluginCombination.Companion.modeStable.2.INSTANCE);
-    stablePlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { loopStackPlugin, resourcePlugin, dropFramePlugin, userBreadCrumbPlugin });
+    stablePlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { loopStackPlugin, resourcePlugin, dropFramePlugin, userBreadCrumbPlugin, anrPlugin, crashPlugin });
   }
 }
 

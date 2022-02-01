@@ -1,38 +1,28 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
-
 public class artd
-  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
+  private long a;
+  private long b;
   
-  public artd(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
+  public artd(long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramLong;
+    this.a = this.b;
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public long a()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 1);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    return this.b;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public artd a()
+  {
+    return new artd(this.b);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(float paramFloat)
+  {
+    this.b = (((float)this.b * paramFloat));
+  }
 }
 
 

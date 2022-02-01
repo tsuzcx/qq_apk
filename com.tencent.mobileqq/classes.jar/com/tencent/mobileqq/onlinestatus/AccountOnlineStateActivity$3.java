@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import amov;
+import anri;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class AccountOnlineStateActivity$3
@@ -10,9 +11,9 @@ class AccountOnlineStateActivity$3
   
   public void run()
   {
-    amov localamov = (amov)AccountOnlineStateActivity.a(this.this$0).getBusinessHandler(2);
-    if (localamov != null) {
-      localamov.B();
+    anri localanri = (anri)AccountOnlineStateActivity.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+    if (localanri != null) {
+      localanri.B();
     }
   }
 }

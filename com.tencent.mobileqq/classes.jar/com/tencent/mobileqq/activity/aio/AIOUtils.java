@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aeub;
-import aezn;
-import aezy;
-import ahiu;
-import amsw;
+import aade;
+import aflm;
+import afqz;
+import afrk;
+import aido;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -26,10 +26,11 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ListAdapter;
-import bcef;
-import bcin;
-import bdvp;
-import bfzg;
+import anvk;
+import bdla;
+import bdpl;
+import bfcs;
+import bhhy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.ChatActivity;
@@ -42,6 +43,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.mobileqq.widget.QQToast;
@@ -50,7 +52,6 @@ import com.tencent.widget.ListView;
 import java.lang.reflect.Field;
 import java.util.List;
 import mqq.os.MqqHandler;
-import znt;
 
 public final class AIOUtils
 {
@@ -103,7 +104,7 @@ public final class AIOUtils
   
   public static boolean beforeEnterAIO(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, Intent paramIntent)
   {
-    bfzg.a(null, "AIO_doOnCreate_BeforeEnterCost");
+    bhhy.a(null, "AIO_doOnCreate_BeforeEnterCost");
     if (!paramQQAppInterface.isLogin())
     {
       paramQQAppInterface = new Intent();
@@ -121,7 +122,7 @@ public final class AIOUtils
           do
           {
             return true;
-          } while (bdvp.a(paramBaseActivity, paramQQAppInterface, paramIntent));
+          } while (bfcs.a(paramBaseActivity, paramQQAppInterface, paramIntent));
           if (paramBoolean)
           {
             if (isValidChat(paramBaseActivity, paramQQAppInterface, paramIntent)) {
@@ -139,7 +140,7 @@ public final class AIOUtils
         } while (!QLog.isColorLevel());
         QLog.d("Q.aio.AIOUtils", 2, "onNewIntent isFinishing");
         return true;
-        if (!znt.a().a(paramIntent, paramBaseActivity, paramQQAppInterface)) {
+        if (!aade.a().a(paramIntent, paramBaseActivity, paramQQAppInterface)) {
           break;
         }
       } while (!QLog.isColorLevel());
@@ -161,7 +162,7 @@ public final class AIOUtils
       return true;
     }
     label207:
-    bfzg.a("AIO_doOnCreate_BeforeEnterCost", null);
+    bhhy.a("AIO_doOnCreate_BeforeEnterCost", null);
     return false;
   }
   
@@ -346,11 +347,16 @@ public final class AIOUtils
   @Deprecated
   public static final ChatMessage getMessage(View paramView)
   {
-    paramView = (aezy)getHolder(paramView);
+    paramView = (afrk)getHolder(paramView);
     if (paramView != null) {
       return paramView.a;
     }
     return null;
+  }
+  
+  public static int getTitleBarHeight(Context paramContext)
+  {
+    return paramContext.getResources().getDimensionPixelSize(2131299080);
   }
   
   public static final View getViewByPostion(ListView paramListView, int paramInt)
@@ -407,31 +413,31 @@ public final class AIOUtils
     return Build.MANUFACTURER.equalsIgnoreCase("Samsung");
   }
   
-  protected static boolean isShouldPreload(BaseChatPie paramBaseChatPie, aezn paramaezn, ChatMessage paramChatMessage)
+  protected static boolean isShouldPreload(BaseChatPie paramBaseChatPie, afqz paramafqz, ChatMessage paramChatMessage)
   {
     boolean bool2 = false;
     boolean bool1;
     int j;
     if (paramChatMessage == null)
     {
-      paramaezn = paramaezn.a();
+      paramafqz = paramafqz.a();
       bool1 = bool2;
-      if (paramaezn != null)
+      if (paramafqz != null)
       {
         bool1 = bool2;
-        if (paramaezn.size() > 0)
+        if (paramafqz.size() > 0)
         {
-          j = paramaezn.size();
-          if (aeub.jdField_a_of_type_Int <= 1) {
+          j = paramafqz.size();
+          if (aflm.jdField_a_of_type_Int <= 1) {
             break label115;
           }
-          i = aeub.jdField_a_of_type_Int;
+          i = aflm.jdField_a_of_type_Int;
           if (j <= i) {
             break label121;
           }
           j = i;
           label61:
-          if (!(paramBaseChatPie instanceof ahiu)) {
+          if (!(paramBaseChatPie instanceof aido)) {
             break label162;
           }
         }
@@ -446,11 +452,11 @@ public final class AIOUtils
       bool1 = bool2;
       if (j > -1)
       {
-        paramBaseChatPie = (ChatMessage)paramaezn.get(j);
+        paramBaseChatPie = (ChatMessage)paramafqz.get(j);
         if (i == 0) {
           break label124;
         }
-        if (!aeub.a(paramBaseChatPie)) {
+        if (!aflm.a(paramBaseChatPie)) {
           break label140;
         }
         bool1 = true;
@@ -464,13 +470,13 @@ public final class AIOUtils
         i = 10;
         break;
         break label61;
-        if ((!paramBaseChatPie.isread) && (aeub.a(paramBaseChatPie))) {
+        if ((!paramBaseChatPie.isread) && (aflm.a(paramBaseChatPie))) {
           return true;
         }
         j -= 1;
         break label76;
         bool1 = bool2;
-      } while (!aeub.a(paramChatMessage));
+      } while (!aflm.a(paramChatMessage));
       return true;
     }
   }
@@ -486,13 +492,13 @@ public final class AIOUtils
       }
       if (i == -1)
       {
-        QQToast.a(paramBaseActivity, paramBaseActivity.getString(2131718434), 0).b(paramBaseActivity.getTitleBarHeight());
+        QQToast.a(paramBaseActivity, paramBaseActivity.getString(2131718820), 0).b(paramBaseActivity.getTitleBarHeight());
         return false;
       }
       if (paramIntent.hasExtra("account"))
       {
-        bcef.b(paramQQAppInterface, "CliOper", "", "", "Fast_launch", "Fast_launch_msg", 0, 0, "1", "", "", "");
-        if (!((amsw)paramQQAppInterface.getManager(51)).b(str))
+        bdla.b(paramQQAppInterface, "CliOper", "", "", "Fast_launch", "Fast_launch_msg", 0, 0, "1", "", "", "");
+        if (!((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(str))
         {
           paramIntent.removeExtra("account");
           paramIntent.putExtra("shotcut_forward", ChatActivity.class.getName());
@@ -501,9 +507,9 @@ public final class AIOUtils
           return false;
         }
       }
-      if ((paramIntent.getBooleanExtra("shortcut", false)) && (!((amsw)paramQQAppInterface.getManager(51)).b(str)))
+      if ((paramIntent.getBooleanExtra("shortcut", false)) && (!((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(str)))
       {
-        QQToast.a(paramBaseActivity.getApplicationContext(), paramBaseActivity.getString(2131718435), 0).b(paramBaseActivity.getTitleBarHeight());
+        QQToast.a(paramBaseActivity.getApplicationContext(), paramBaseActivity.getString(2131718821), 0).b(paramBaseActivity.getTitleBarHeight());
         return false;
       }
       return true;
@@ -589,21 +595,21 @@ public final class AIOUtils
     return 0;
   }
   
-  public static int parseInt(bcin parambcin, String paramString)
+  public static int parseInt(bdpl parambdpl, String paramString)
   {
-    parambcin = parambcin.a(paramString);
-    if (TextUtils.isEmpty(parambcin)) {}
+    parambdpl = parambdpl.a(paramString);
+    if (TextUtils.isEmpty(parambdpl)) {}
     do
     {
       return 0;
       try
       {
-        int i = Integer.parseInt(parambcin);
+        int i = Integer.parseInt(parambdpl);
         return i;
       }
-      catch (Exception parambcin) {}
+      catch (Exception parambdpl) {}
     } while (!QLog.isColorLevel());
-    QLog.d("StructMsg", 2, parambcin.getMessage());
+    QLog.d("StructMsg", 2, parambdpl.getMessage());
     return 0;
   }
   
@@ -622,19 +628,19 @@ public final class AIOUtils
     paramQQAppInterface.sendMessageDelayed(paramQQAppInterface.obtainMessage(paramInt1, paramInt2, paramInt3, paramObject), paramInt4);
   }
   
-  public static final void preStartQWebIfNeed(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, aezn paramaezn, ChatMessage paramChatMessage)
+  public static final void preStartQWebIfNeed(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, afqz paramafqz, ChatMessage paramChatMessage)
   {
     
-    if (aeub.jdField_a_of_type_Int <= 0) {
+    if (aflm.jdField_a_of_type_Int <= 0) {
       return;
     }
-    preStartQWebIfNeedReal(paramQQAppInterface, isShouldPreload(paramBaseChatPie, paramaezn, paramChatMessage));
+    preStartQWebIfNeedReal(paramQQAppInterface, isShouldPreload(paramBaseChatPie, paramafqz, paramChatMessage));
   }
   
   public static void preStartQWebIfNeedReal(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     if (paramBoolean) {
-      ((WebProcessManager)paramQQAppInterface.getManager(13)).a(1, new AIOUtils.2());
+      ((WebProcessManager)paramQQAppInterface.getManager(QQManagerFactory.WEBPROCESS_MANAGER)).a(1, new AIOUtils.2());
     }
   }
   
@@ -642,7 +648,7 @@ public final class AIOUtils
   {
     boolean bool = true;
     Object localObject;
-    if (aeub.jdField_a_of_type_Int == -1)
+    if (aflm.jdField_a_of_type_Int == -1)
     {
       localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_gifplay.name());
       if (!TextUtils.isEmpty((CharSequence)localObject))
@@ -657,16 +663,16 @@ public final class AIOUtils
     }
     for (;;)
     {
-      aeub.b = bool;
+      aflm.b = bool;
       if (!"0".equals(localObject[3])) {}
       try
       {
         i = Integer.parseInt(localObject[3]);
-        if (aeub.jdField_a_of_type_Boolean)
+        if (aflm.jdField_a_of_type_Boolean)
         {
-          aeub.jdField_a_of_type_Int = i;
-          if (aeub.jdField_a_of_type_Int == -1) {
-            aeub.jdField_a_of_type_Int = 0;
+          aflm.jdField_a_of_type_Int = i;
+          if (aflm.jdField_a_of_type_Int == -1) {
+            aflm.jdField_a_of_type_Int = 0;
           }
           return;
           label112:
@@ -867,7 +873,7 @@ public final class AIOUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOUtils
  * JD-Core Version:    0.7.0.1
  */

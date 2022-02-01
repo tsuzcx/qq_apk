@@ -1,8 +1,19 @@
-public abstract interface bmfg
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqreader.js.JsCallParams;
+
+public final class bmfg
+  implements Parcelable.Creator<JsCallParams>
 {
-  public abstract void a(int paramInt);
+  public JsCallParams a(Parcel paramParcel)
+  {
+    return new JsCallParams(paramParcel, null);
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public JsCallParams[] a(int paramInt)
+  {
+    return new JsCallParams[paramInt];
+  }
 }
 
 

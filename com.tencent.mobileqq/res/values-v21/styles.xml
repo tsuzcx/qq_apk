@@ -10,13 +10,13 @@
     <style name="zf" parent="@android:style/TextAppearance.Material.Notification.Info" />
     <style name="zh" parent="@android:style/TextAppearance.Material.Notification.Time" />
     <style name="zi" parent="@android:style/TextAppearance.Material.Notification.Title" />
-    <style name="zn">
-        <item name="android:background">@drawable/cf8</item>
+    <style name="zq">
+        <item name="android:background">@drawable/d0c</item>
     </style>
-    <style name="zo">
+    <style name="zr">
         <item name="android:textAppearance">?android:textAppearanceButton</item>
-        <item name="android:textSize">@dimen/bd4</item>
-        <item name="android:textColor">@color/anh</item>
+        <item name="android:textSize">@dimen/bd5</item>
+        <item name="android:textColor">@color/ans</item>
     </style>
     <style name="u1" parent="@style/u0">
         <item name="android:windowDrawsSystemBarBackgrounds">false</item>

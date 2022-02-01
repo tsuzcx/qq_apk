@@ -1,42 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.VideoMeasureScaleView;
+import android.view.animation.Interpolator;
 
 public class skm
-  implements skn
+  implements Interpolator
 {
-  public skm(CaptureOperateTouchLayout paramCaptureOperateTouchLayout, TextView paramTextView, VideoMeasureScaleView paramVideoMeasureScaleView, ImageView paramImageView) {}
-  
-  public void a()
+  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717476);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView.setVisibility(0);
-    int i = CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout);
-    CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, this.jdField_a_of_type_AndroidWidgetImageView.getX() / CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout));
-    CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, i);
-    if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout) != null) {
-      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).a(i, CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout, CaptureOperateTouchLayout.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout)));
-    }
+    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
   }
   
-  public void a(boolean paramBoolean)
+  public float getInterpolation(float paramFloat)
   {
-    if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout) != null) {
-      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewCaptureOperateTouchLayout).a();
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717361);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView.setVisibility(4);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717523);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoMeasureScaleView.setVisibility(4);
+    return a(paramFloat, 0.0F, 1.0F, 1.0F);
   }
 }
 

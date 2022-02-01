@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bmbx;
+import bnrh;
 
 public class AEEditorOrderBroadcastReceiver
   extends BroadcastReceiver
@@ -31,8 +31,8 @@ public class AEEditorOrderBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     paramIntent = paramIntent.getStringExtra("generate_mission");
-    bmbx.b("AEEditorOrderBroadcastReceiver", "[onReceive] action :" + paramContext);
-    bmbx.b("AEEditorOrderBroadcastReceiver", "[onReceive] mission :" + paramIntent);
+    bnrh.b("AEEditorOrderBroadcastReceiver", "[onReceive] action :" + paramContext);
+    bnrh.b("AEEditorOrderBroadcastReceiver", "[onReceive] mission :" + paramIntent);
     if ("AEEDITOR_ORDER_CANCEL".equals(paramContext)) {
       this.mAEEditorOrderListener.onAEEditorCancel(paramIntent);
     }

@@ -1,37 +1,58 @@
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.open.agent.SocialFriendChooser;
+import com.tencent.vas.update.callback.listener.IDownloadListener;
 
-public class bhuv
-  extends Handler
+class bhuv
+  extends bhyn
 {
-  public bhuv(SocialFriendChooser paramSocialFriendChooser) {}
+  bhuv(bhuu parambhuu) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDone(bhyo parambhyo)
   {
-    switch (paramMessage.what)
+    int j = 0;
+    if ((bhuu.a(this.a) == null) || (parambhyo == null)) {
+      return;
+    }
+    Object localObject;
+    String str;
+    if ((parambhyo.a() == 3) && (parambhyo.jdField_a_of_type_Int == 0))
     {
-    default: 
-      return;
-    case 10001: 
-      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
-      paramMessage.putString("agentversion", bhpc.a().e());
-      paramMessage.putString("facetype", "mqqface");
-      String str = biex.a().a("https://fusion.qq.com/cgi-bin/appstage/get_image_update");
-      bhtw.a().a(str, paramMessage, new bhuw(this));
-      return;
+      i = 1;
+      localObject = parambhyo.a();
+      if ((localObject != null) && (((Bundle)localObject).getString("from") != null) && (((Bundle)localObject).getString("from").contains("silent_download"))) {
+        bhuu.a(this.a, parambhyo.c, parambhyo.jdField_a_of_type_Long);
+      }
+      localObject = bhuu.a(this.a);
+      str = parambhyo.jdField_a_of_type_JavaLangString;
+      if (i == 0) {
+        break label130;
+      }
     }
-    if ((this.a.jdField_a_of_type_Biae != null) && (!this.a.jdField_a_of_type_Biae.isCancelled())) {
-      this.a.jdField_a_of_type_Biae.cancel(true);
+    label130:
+    for (int i = j;; i = 8)
+    {
+      ((IDownloadListener)localObject).onCompleted(str, i, parambhyo.jdField_a_of_type_Int, parambhyo.jdField_b_of_type_JavaLangString);
+      return;
+      i = 0;
+      break;
     }
-    this.a.l();
-    paramMessage = new Intent();
-    paramMessage.putExtra("key_error_code", -7);
-    paramMessage.putExtra("key_error_msg", bian.e);
-    this.a.setResult(-1, paramMessage);
-    this.a.finish();
+  }
+  
+  public void onProgress(bhyo parambhyo)
+  {
+    if ((bhuu.a(this.a) != null) && (parambhyo != null)) {
+      bhuu.a(this.a).onProgress(parambhyo.jdField_a_of_type_JavaLangString, parambhyo.jdField_b_of_type_Long, parambhyo.jdField_a_of_type_Long, (int)parambhyo.jdField_a_of_type_Float);
+    }
+  }
+  
+  public boolean onStart(bhyo parambhyo)
+  {
+    if (parambhyo == null) {
+      return false;
+    }
+    if (bhuu.a(this.a) != null) {
+      bhuu.a(this.a).onDownloadStart(parambhyo.jdField_a_of_type_JavaLangString);
+    }
+    return super.onStart(parambhyo);
   }
 }
 

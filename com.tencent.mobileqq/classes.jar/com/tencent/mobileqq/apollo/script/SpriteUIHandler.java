@@ -1,17 +1,19 @@
 package com.tencent.mobileqq.apollo.script;
 
-import aezn;
-import afuq;
-import agcw;
-import amau;
-import ambc;
-import ambj;
-import amge;
+import afqz;
+import agnf;
+import agvm;
+import ancc;
+import anck;
+import ancr;
 import android.content.Context;
 import android.content.res.Resources;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
+import android.widget.RelativeLayout;
+import anhm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
@@ -28,20 +30,21 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import com.tencent.widget.XListView;
+import common.config.service.QzoneConfig;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
 
 public class SpriteUIHandler
-  implements ambj
+  implements ancr
 {
-  private amau jdField_a_of_type_Amau;
+  private ancc jdField_a_of_type_Ancc;
   private SpriteUIHandler.SpriteVisibleRunnable jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable;
   private WeakReference<XListView> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<aezn> b;
+  private WeakReference<afqz> b;
   
-  public SpriteUIHandler(amau paramamau)
+  public SpriteUIHandler(ancc paramancc)
   {
-    this.jdField_a_of_type_Amau = paramamau;
+    this.jdField_a_of_type_Ancc = paramancc;
   }
   
   public static int a(Context paramContext)
@@ -71,8 +74,8 @@ public class SpriteUIHandler
         int i = AIOUtils.findMessagePosition(paramLong, (ListAdapter)localObject2);
         if (i >= 0)
         {
-          ChatMessage localChatMessage = (ChatMessage)((aezn)localObject2).getItem(i);
-          localObject2 = ((aezn)localObject2).a.a(localChatMessage, (BaseAdapter)localObject2);
+          ChatMessage localChatMessage = (ChatMessage)((afqz)localObject2).getItem(i);
+          localObject2 = ((afqz)localObject2).a.a(localChatMessage, (BaseAdapter)localObject2);
           ApolloItemBuilder localApolloItemBuilder;
           View localView;
           if (((localObject2 instanceof ApolloItemBuilder)) && ((localChatMessage instanceof MessageForApollo)))
@@ -91,14 +94,14 @@ public class SpriteUIHandler
           }
           for (;;)
           {
-            if ((!(localObject2 instanceof afuq)) || (!(localChatMessage instanceof MessageForApollo))) {
+            if ((!(localObject2 instanceof agnf)) || (!(localChatMessage instanceof MessageForApollo))) {
               break label226;
             }
-            localObject1 = (afuq)localObject2;
+            localObject1 = (agnf)localObject2;
             if (paramInt != 1) {
               break;
             }
-            ((afuq)localObject1).a((MessageForApollo)localChatMessage);
+            ((agnf)localObject1).a((MessageForApollo)localChatMessage);
             return;
             localApolloItemBuilder.b((View)localObject1, (MessageForApollo)localChatMessage);
             continue;
@@ -111,12 +114,12 @@ public class SpriteUIHandler
     }
   }
   
-  public aezn a()
+  public afqz a()
   {
     if (this.b == null) {
       return null;
     }
-    return (aezn)this.b.get();
+    return (afqz)this.b.get();
   }
   
   public XListView a()
@@ -165,17 +168,17 @@ public class SpriteUIHandler
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    if (!ambc.b(paramQQAppInterface, paramInt, paramString))
+    if (!anck.b(paramQQAppInterface, paramInt, paramString))
     {
       QLog.i("cmshow_scripted_SpriteUIHandler", 1, "[onDoubleTap], condition NOT meet.");
       return;
     }
-    if (amge.a(paramQQAppInterface.getCurrentUin(), paramQQAppInterface) == 0)
+    if (anhm.a(paramQQAppInterface.getCurrentUin(), paramQQAppInterface) == 0)
     {
       QLog.i("cmshow_scripted_SpriteUIHandler", 1, "[onDoubleTap] sava onDoubleTap user is init status return");
       return;
     }
-    if (this.jdField_a_of_type_Amau.d == 1)
+    if (this.jdField_a_of_type_Ancc.d == 1)
     {
       paramInt = 1;
       if (paramInt != 0) {
@@ -198,8 +201,8 @@ public class SpriteUIHandler
       if (paramInt != 0) {
         break label213;
       }
-      QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131690046), 1).a();
-      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_double_disappear_clk", this.jdField_a_of_type_Amau.jdField_a_of_type_JavaLangString, 0, 0, new String[] { Integer.toString(ApolloUtil.b(this.jdField_a_of_type_Amau.jdField_a_of_type_Int)), "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+      QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131690079), 1).a();
+      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_double_disappear_clk", this.jdField_a_of_type_Ancc.jdField_a_of_type_JavaLangString, 0, 0, new String[] { Integer.toString(ApolloUtil.b(this.jdField_a_of_type_Ancc.jdField_a_of_type_Int)), "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
       return;
       paramInt = 0;
       break;
@@ -207,13 +210,13 @@ public class SpriteUIHandler
       break label58;
     }
     label213:
-    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_double_show_clk", 0, 0, new String[] { Integer.toString(ApolloUtil.b(this.jdField_a_of_type_Amau.jdField_a_of_type_Int)), "0" });
+    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_double_show_clk", 0, 0, new String[] { Integer.toString(ApolloUtil.b(this.jdField_a_of_type_Ancc.jdField_a_of_type_Int)), "0" });
   }
   
-  public void a(XListView paramXListView, aezn paramaezn)
+  public void a(XListView paramXListView, afqz paramafqz)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramXListView);
-    this.b = new WeakReference(paramaezn);
+    this.b = new WeakReference(paramafqz);
   }
   
   public void a(String paramString)
@@ -227,7 +230,7 @@ public class SpriteUIHandler
       return;
     }
     QLog.d("cmshow_scripted_SpriteUIHandler", 1, new Object[] { "showOrHideSurfaceView isHide:", Boolean.valueOf(paramBoolean) });
-    paramString = this.jdField_a_of_type_Amau.a();
+    paramString = this.jdField_a_of_type_Ancc.a();
     ThreadManager.getUIHandler().post(new SpriteUIHandler.6(this, paramString, paramBoolean));
   }
   
@@ -236,8 +239,39 @@ public class SpriteUIHandler
     if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable != null) {
       ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable);
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable = new SpriteUIHandler.SpriteVisibleRunnable(this.jdField_a_of_type_Amau, paramBoolean1, paramBoolean2, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable = new SpriteUIHandler.SpriteVisibleRunnable(this.jdField_a_of_type_Ancc, paramBoolean1, paramBoolean2, paramString);
     ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent, RelativeLayout paramRelativeLayout)
+  {
+    int i;
+    float f3;
+    float f1;
+    if (this.jdField_a_of_type_Ancc.d == 1)
+    {
+      i = 0;
+      f3 = paramMotionEvent.getY();
+      f1 = 0.0F;
+      if (paramRelativeLayout != null) {
+        f1 = paramRelativeLayout.getHeight();
+      }
+      if (i == 0) {
+        break label74;
+      }
+    }
+    label74:
+    for (float f2 = QzoneConfig.getInstance().getConfig("CMShow", "AioCMShowDisappearHeight", 0.3F);; f2 = QzoneConfig.getInstance().getConfig("CMShow", "AioCMShowDisplayHeight", 0.3F))
+    {
+      if (f3 < (1.0F - f2) * f1) {
+        break label94;
+      }
+      return true;
+      i = 1;
+      break;
+    }
+    label94:
+    return false;
   }
 }
 

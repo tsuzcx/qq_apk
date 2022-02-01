@@ -1,36 +1,68 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.mobileqq.transfile.richmediavfs.RmVFSUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Map;
 
-class axcg
-  implements View.OnClickListener
+public class axcg
+  extends axcb
 {
-  axcg(axcb paramaxcb) {}
+  public static String b = AppConstants.SDCARD_PATH + "ptt" + File.separator;
+  private static final String c = RmVFSUtils.getVFSPath(axcp.jdField_a_of_type_JavaLangString + "ptt" + File.separator);
+  private String d = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
+  private String e = (String)this.jdField_a_of_type_JavaUtilMap.get("uuid");
+  private String f = (String)this.jdField_a_of_type_JavaUtilMap.get("selfuin");
   
-  public void onClick(View paramView)
+  public axcg(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698350);
-      }
+    super(paramMsgBackupResEntity);
+    if (this.d == null) {
+      this.d = "";
     }
-    for (;;)
+    if (this.e == null) {
+      this.e = "";
+    }
+    if (this.f == null) {
+      this.f = "";
+    }
+    if ((TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {
+      a("md5:" + this.d + " mUUID:" + this.e + " mSelfuin:" + this.f);
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    return RmVFSUtils.getVFSPath(b + paramString2 + File.separator + paramString1);
+  }
+  
+  public axaa a()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
+    String str = a();
+    boolean bool = a(str);
+    if (QLog.isColorLevel()) {
+      a("getResDownloadObject,entity:" + ((MsgBackupResEntity)localObject).toLogString() + " tempPath:" + str + " exist:" + bool);
+    }
+    localObject = new axaa();
+    if (!bool) {}
+    for (bool = true;; bool = false)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
-      continue;
-      this.a.b();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i == 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698350);
-      } else if (this.a.a()) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698346);
-      } else {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.d();
-      }
+      ((axaa)localObject).jdField_a_of_type_Boolean = bool;
+      ((axaa)localObject).jdField_a_of_type_JavaLangString = str;
+      return localObject;
     }
+  }
+  
+  public String a()
+  {
+    return c + this.d + this.e + this.f;
+  }
+  
+  public String b()
+  {
+    return a(this.d, this.f);
   }
 }
 

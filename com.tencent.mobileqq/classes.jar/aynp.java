@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.StylePagerAdapter;
-import com.tencent.mobileqq.widget.ProfileCardScrollImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aynp
+class aynp
+  implements View.OnClickListener
 {
-  public HiBoomTextView a;
-  public ProfileCardScrollImageView a;
+  aynp(aynn paramaynn, ayni paramayni) {}
   
-  public aynp(VipProfileCardPreviewActivity.StylePagerAdapter paramStylePagerAdapter) {}
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Aynn.dismiss();
+    if (this.jdField_a_of_type_Ayni.a != null) {
+      this.jdField_a_of_type_Ayni.a.onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

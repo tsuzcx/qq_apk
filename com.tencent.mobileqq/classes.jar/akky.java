@@ -1,23 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class akky
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  akky(akkx paramakkx) {}
+  akky(akkr paramakkr) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      paramView.setAlpha(0.5F);
-    }
-    for (;;)
+    if (paramInt == 0)
     {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(1.0F);
-      }
+      this.a.b();
+      akkr.a(this.a).moveTaskToBack(true);
     }
   }
 }

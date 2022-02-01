@@ -1,22 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qay
-  implements qug
+public class qay
+  implements View.OnClickListener
 {
-  qay(qat paramqat, pvc parampvc, Container paramContainer, int paramInt) {}
+  public qay(ReadInJoySelfFragment paramReadInJoySelfFragment, String paramString1, int paramInt, String paramString2) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.a;
-    ArrayList localArrayList = ((rfe)localObject).a;
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {
-      return;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity(), QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity().startActivity(localIntent);
+      olh.a(null, "CliOper", "", "", "0X80092FF", "0X80092FF", 0, 0, ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment, this.jdField_a_of_type_Int) + "", this.jdField_a_of_type_Int + "", "", prp.a(this.b), false);
+      ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment, this.jdField_a_of_type_Int);
     }
-    localObject = (rff)((rfe)localObject).a.get(paramInt);
-    qat.a(this.jdField_a_of_type_Qat, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pvc.a(), (int)((rff)localObject).a, this.jdField_a_of_type_Pvc.a().innerUniqueID, this.jdField_a_of_type_Int, paramInt, this.jdField_a_of_type_Pvc.a());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

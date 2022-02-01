@@ -10,7 +10,8 @@ import feedcloud.FeedCloudMeta.StShare;
 public final class QQCircleBase$UserCircleInfo
   extends MessageMicro<UserCircleInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50, 58 }, new String[] { "id", "name", "circleType", "circleTab", "logo", "shareInfo", "tagId" }, new Object[] { "", "", Integer.valueOf(0), Integer.valueOf(0), "", null, "" }, UserCircleInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50, 58, 66 }, new String[] { "id", "name", "circleType", "circleTab", "logo", "shareInfo", "tagId", "circleJumpUrl" }, new Object[] { "", "", Integer.valueOf(0), Integer.valueOf(0), "", null, "", "" }, UserCircleInfo.class);
+  public final PBStringField circleJumpUrl = PBField.initString("");
   public final PBInt32Field circleTab = PBField.initInt32(0);
   public final PBInt32Field circleType = PBField.initInt32(0);
   public final PBStringField id = PBField.initString("");

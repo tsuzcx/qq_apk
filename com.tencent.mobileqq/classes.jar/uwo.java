@@ -1,14 +1,11 @@
-import NS_KING_INTERFACE.stPostCommentDingReq;
-import NS_KING_INTERFACE.stPostCommentDingRsp;
+import java.util.HashMap;
+import java.util.Map;
 
 public class uwo
-  extends urg<stPostCommentDingRsp>
 {
-  public uwo(String paramString1, String paramString2, int paramInt)
-  {
-    super("PostCommentDing", 10003);
-    this.a = new stPostCommentDingReq(paramString1, paramString2, paramInt);
-  }
+  private static final Map<String, Object> a = new HashMap();
+  
+  public static void a() {}
 }
 
 

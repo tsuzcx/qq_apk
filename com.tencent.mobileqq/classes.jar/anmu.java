@@ -1,24 +1,39 @@
-import android.util.Base64;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.lang.reflect.Type;
+import com.tencent.mobileqq.apollo.utils.task.TaskThreadPool.2;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
-public class anmu<T extends AbsStructMsg>
-  implements JsonDeserializer<T>, JsonSerializer<T>
+public class anmu
 {
-  public JsonElement a(T paramT, Type paramType, JsonSerializationContext paramJsonSerializationContext)
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new TaskThreadPool.2(this);
+  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private final RejectedExecutionHandler jdField_a_of_type_JavaUtilConcurrentRejectedExecutionHandler = new anmv(this);
+  private final ScheduledExecutorService jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService = Executors.newScheduledThreadPool(1);
+  protected final ScheduledFuture<?> a;
+  private final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
+  
+  public anmu(String paramString, int paramInt1, int paramInt2)
   {
-    return new JsonPrimitive(Base64.encodeToString(paramT.getBytes(), 3));
+    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService.scheduleAtFixedRate(this.jdField_a_of_type_JavaLangRunnable, 0L, 100L, TimeUnit.MILLISECONDS);
+    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(paramInt1, paramInt2, 5000L, TimeUnit.SECONDS, new ArrayBlockingQueue(100), new anmw(paramString), this.jdField_a_of_type_JavaUtilConcurrentRejectedExecutionHandler);
   }
   
-  public T a(JsonElement paramJsonElement, Type paramType, JsonDeserializationContext paramJsonDeserializationContext)
+  private boolean a()
   {
-    return bchh.a(Base64.decode(paramJsonElement.getAsString(), 3));
+    return !this.jdField_a_of_type_JavaUtilQueue.isEmpty();
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if (paramRunnable != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(paramRunnable);
+    }
   }
 }
 

@@ -1,15 +1,32 @@
-public abstract class sra
+import android.text.TextUtils;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.util.HashMap;
+
+class sra
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  private static int a = 7;
+  sra(sqy paramsqy) {}
   
-  public static int a()
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    return a;
+    if (sqy.a(this.a) != null)
+    {
+      paramString2 = (String)sqy.a(this.a).get(paramString1);
+      if (!TextUtils.isEmpty(paramString2)) {
+        sqy.a(this.a).a(paramString1, paramInt, paramString2);
+      }
+    }
   }
   
-  public static void a(int paramInt)
+  public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    a = paramInt;
+    if (sqy.a(this.a) != null)
+    {
+      paramString2 = (String)sqy.a(this.a).get(paramString1);
+      if (!TextUtils.isEmpty(paramString2)) {
+        sqy.a(this.a).a(paramString1, 1, paramString2);
+      }
+    }
   }
 }
 

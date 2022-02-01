@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import bmte;
+import aanb;
+import boiw;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import xvv;
-import ypi;
-import zxp;
+import ykq;
+import zeb;
 
 class VideoCompositeHelper$3
-  extends bmte
+  extends boiw
 {
   private long mStartTime;
   
@@ -22,7 +22,7 @@ class VideoCompositeHelper$3
   
   public void onFinish(String paramString, boolean paramBoolean, int paramInt)
   {
-    xvv.c(VideoCompositeHelper.TAG, "[vs_publish_flow] | fakeid:" + this.val$info.fakeVid + " music onStart download onFinish ");
+    ykq.c(VideoCompositeHelper.TAG, "[vs_publish_flow] | fakeid:" + this.val$info.fakeVid + " music onStart download onFinish ");
     this.val$info.backgroundMusicPath = paramString;
     long l1 = System.currentTimeMillis();
     long l2 = this.mStartTime;
@@ -34,7 +34,7 @@ class VideoCompositeHelper$3
     }
     for (;;)
     {
-      zxp.a("edit_music_download", zxp.a(this.val$code.getCode(), l1 - l2, this.val$musicNeedDownloadUrl, ypi.a(paramString)));
+      aanb.a("edit_music_download", aanb.a(this.val$code.getCode(), l1 - l2, this.val$musicNeedDownloadUrl, zeb.a(paramString)));
       VideoCompositeHelper.access$000(this.this$0, "needAndStartDownloadMusic");
       return;
       this.val$code.setCode(0);
@@ -51,13 +51,13 @@ class VideoCompositeHelper$3
   
   public void onStart(String paramString, boolean paramBoolean)
   {
-    xvv.c(VideoCompositeHelper.TAG, "[vs_publish_flow] | fakeid:" + this.val$info.fakeVid + " music onStart download");
+    ykq.c(VideoCompositeHelper.TAG, "[vs_publish_flow] | fakeid:" + this.val$info.fakeVid + " music onStart download");
     this.mStartTime = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.3
  * JD-Core Version:    0.7.0.1
  */

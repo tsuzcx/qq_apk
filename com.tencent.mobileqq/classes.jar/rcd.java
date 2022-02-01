@@ -1,52 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import java.net.MalformedURLException;
-import java.net.URL;
-import kotlin.Metadata;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterVideoBigPic;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rcd
-  extends rby
+class rcd
+  implements View.OnTouchListener
 {
-  protected void a()
+  rcd(rcb paramrcb, LinearLayout paramLinearLayout) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = a();
-    if (localObject != null) {
-      ((SocializeFeedsInfo)localObject).a = 6;
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
     }
-    localObject = a();
-    if (localObject != null) {
-      ((rfe)localObject).a = true;
-    }
-    localObject = a();
-    if (localObject != null)
-    {
-      localObject = ((rex)localObject).a;
-      if (localObject != null)
-      {
-        a().mTitle = ((rfg)localObject).g;
-        a().mVideoVid = ((rfg)localObject).e;
-      }
-    }
-    try
-    {
-      localObject = a();
-      if (localObject != null)
-      {
-        localObject = ((rex)localObject).a;
-        if (localObject != null)
-        {
-          localObject = ((rfg)localObject).d;
-          if (localObject != null) {
-            a().mVideoCoverUrl = new URL((String)localObject);
-          }
-        }
-      }
-      return;
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      localMalformedURLException.printStackTrace();
-    }
+    return false;
   }
 }
 

@@ -1,65 +1,58 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tavcut.player.MoviePlayer;
+import com.tencent.weseevideo.camera.mvauto.redo.ResourceModel;
 
 public class bnzx
+  extends ViewModel
 {
-  protected int a;
-  protected PublishVideoEntry a;
-  public boolean a;
-  int b;
-  int c;
-  protected int d = -1;
-  protected int e = -1;
+  public MutableLiveData<ResourceModel> a;
+  private MoviePlayer a;
+  private MutableLiveData<Long> b = new MutableLiveData();
   
-  public bnzx(int paramInt, PublishVideoEntry paramPublishVideoEntry)
+  public bnzx()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
-    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
-  }
-  
-  private int b(int paramInt)
-  {
-    return 0;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    case 3: 
-      return 3;
-    case 4: 
-      return 4;
-    }
-    return 5;
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
+    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
+      this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.play();
+    }
   }
   
-  public void a(int paramInt)
+  public void a(long paramLong)
   {
-    this.b = b(paramInt);
-    this.c = a(paramInt);
+    this.b.postValue(Long.valueOf(paramLong));
   }
   
-  public void b(int paramInt)
+  public void a(CMTime paramCMTime)
   {
-    this.d = paramInt;
+    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
+      this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.seekToTime(paramCMTime);
+    }
   }
   
-  public void c(int paramInt)
+  public void a(MoviePlayer paramMoviePlayer)
   {
-    this.e = paramInt;
+    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer = paramMoviePlayer;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
+      return this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.isPlaying();
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
+      this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.pause();
+    }
   }
 }
 

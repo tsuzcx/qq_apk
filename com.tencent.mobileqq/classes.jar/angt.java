@@ -1,38 +1,27 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class angt
-  implements WXShareHelper.WXShareListener
+  implements anfg
 {
-  angt(angs paramangs, int paramInt) {}
+  angt(angh paramangh, int paramInt, File paramFile, String paramString) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if ((paramBaseResp == null) || (paramBaseResp.transaction == null))
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + this.jdField_a_of_type_Int + " sucess:" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      QLog.e("AVGameShareBase", 1, "onWXShareResp: respData is null");
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Angh.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Int + anvx.a(2131699992));
+        return;
+      }
+      this.jdField_a_of_type_Angh.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + anvx.a(2131699991));
       return;
     }
-    if (!paramBaseResp.transaction.equals(this.jdField_a_of_type_Angs.jdField_a_of_type_JavaLangString))
-    {
-      QLog.e("AVGameShareBase", 1, "onWXShareResp: mWXTransaction is wrong");
-      return;
-    }
-    WXShareHelper.getInstance().removeObserver(this.jdField_a_of_type_Angs.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-    this.jdField_a_of_type_Angs.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = null;
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      this.jdField_a_of_type_Angs.d(this.jdField_a_of_type_Int);
-      return;
-    case 0: 
-      this.jdField_a_of_type_Angs.b(this.jdField_a_of_type_Int);
-      return;
-    }
-    this.jdField_a_of_type_Angs.c(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Angh.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + anvx.a(2131700013));
   }
 }
 

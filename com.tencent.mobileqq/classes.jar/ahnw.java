@@ -1,61 +1,13 @@
-import com.tencent.beacon.event.UserAction;
-import com.tencent.beacon.upload.TunnelInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahnw
+  implements ahnr
 {
-  static
+  public void a(agtf paramagtf, MessageRecord paramMessageRecord, agus paramagus, aftk paramaftk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    UserAction.registerTunnel(new TunnelInfo("00000BXKOY3QZQ1E"));
-  }
-  
-  public static void a(HashMap<String, String> paramHashMap)
-  {
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("00000BXKOY3QZQ1E", BaseApplicationImpl.getApplication().getRuntime().getAccount(), "expo", true, 0L, 0L, paramHashMap, null);
-  }
-  
-  public static void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, ahmw paramahmw)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("keyword", paramString1);
-    localHashMap.put("pic_md5", paramahmw.c());
-    localHashMap.put("pic_url", paramahmw.a());
-    localHashMap.put("aio_type", EmoticonUtils.getStickerRecAioType(paramInt));
-    if ((paramahmw instanceof ahnm))
-    {
-      paramString1 = ((ahnm)paramahmw).m();
-      if (paramString1 != null) {
-        localHashMap.put("algo_info", paramString1);
-      }
-      paramString1 = ((ahnm)paramahmw).n();
-      if (paramString1 != null) {
-        localHashMap.put("recom_transfer", paramString1);
-      }
-    }
-    paramString1 = paramahmw.d();
-    if ((paramString1 != null) && (paramString1.length() > 1) && (paramString1.endsWith("-"))) {
-      localHashMap.put("source", paramString1.substring(0, 1));
-    }
-    if (paramString2 != null) {
-      localHashMap.put("target_qq", paramString2);
-    }
-    localHashMap.put("duration_ms", paramahmw.a() + "");
-    if (paramBoolean)
-    {
-      a(localHashMap);
-      return;
-    }
-    b(localHashMap);
-  }
-  
-  public static void b(HashMap<String, String> paramHashMap)
-  {
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("00000BXKOY3QZQ1E", BaseApplicationImpl.getApplication().getRuntime().getAccount(), "click", true, 0L, 0L, paramHashMap, null);
+    paramagtf.a(paramMessageRecord, paramLinearLayout, paramagus, paramString);
   }
 }
 

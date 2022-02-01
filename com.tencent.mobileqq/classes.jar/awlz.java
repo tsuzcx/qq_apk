@@ -1,29 +1,63 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class awlz
-  implements bhai<oidb_0x8e4.RspBody>
+class awlz
+  implements awjg
 {
-  public awlz(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  awlz(awlt paramawlt, LocationRoom.Venue paramVenue) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public Pair<awit, LocationRoom.Venue> a()
   {
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    return new Pair(awlt.a(this.jdField_a_of_type_Awlt), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+  }
+  
+  public void a(awit paramawit, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "[venue] setVenue: onResult. roomKey: " + paramawit + " venue: " + paramVenue + " mRoomKey: " + awlt.a(this.jdField_a_of_type_Awlt) + " optType: " + paramInt1, " isSuccess: " + paramBoolean + " errorCode: " + paramInt2 });
+    }
+    if ((!paramawit.equals(awlt.a(this.jdField_a_of_type_Awlt))) || (paramVenue == null)) {
+      return;
+    }
+    awlt.a(this.jdField_a_of_type_Awlt).setVenueOprating(false);
+    awlt.a(this.jdField_a_of_type_Awlt).setVisibility(8);
+    if (paramBoolean)
     {
-      this.a.b = paramRspBody.string_invite_id.get().toStringUtf8();
-      GameRoomInviteActivity.a = this.a.b;
+      awlt.a(this.jdField_a_of_type_Awlt).setVenue(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+      QQToast.a(awlt.a(this.jdField_a_of_type_Awlt), 2, "集合点设置成功", 0).a();
+      bdla.b(null, "CliOper", "", "", "0X800A964", "0X800A964", 0, 0, "0", "0", "0", "");
+      return;
+    }
+    switch (paramInt2)
+    {
+    default: 
+      QQToast.a(awlt.a(this.jdField_a_of_type_Awlt), 1, "设置失败，请稍后重试", 0).a();
+      if (awlt.a(this.jdField_a_of_type_Awlt).a() != null) {
+        awlt.a(this.jdField_a_of_type_Awlt);
+      }
+      break;
     }
     for (;;)
     {
-      this.a.a(true);
+      if ((paramInt2 != 10001) && (paramInt2 != 10003) && (paramInt2 != 10004) && (paramInt2 != 10100)) {
+        break label389;
+      }
+      bdla.b(null, "CliOper", "", "", "0X800A965", "0X800A965", 2, 0, "0", "0", "0", "");
       return;
-      paramRspBody = this.a;
-      GameRoomInviteActivity.a = null;
-      paramRspBody.b = null;
+      QQToast.a(awlt.a(this.jdField_a_of_type_Awlt), 1, "你已离开共享会话", 0).a();
+      awlt.a(this.jdField_a_of_type_Awlt).finish();
+      break;
+      QQToast.a(awlt.a(this.jdField_a_of_type_Awlt), 1, "已有人设置集合点", 0).a();
+      break;
+      awlt.b(this.jdField_a_of_type_Awlt);
     }
+    label389:
+    bdla.b(null, "CliOper", "", "", "0X800A965", "0X800A965", 1, 0, "0", "0", "0", "");
   }
 }
 

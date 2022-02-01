@@ -1,290 +1,209 @@
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlParams;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
-public class atzb
+public abstract class atzb
+  implements auaw
 {
-  public static int a;
-  public static String a;
-  public static List<String> a;
-  public static int b;
-  public static int c;
-  public static int d = 7;
+  public Activity a;
+  protected Bundle a;
+  public atuw a;
+  protected atux a;
+  public atxa a;
+  private auav jdField_a_of_type_Auav;
+  private boolean jdField_a_of_type_Boolean = true;
+  protected boolean b;
+  protected boolean c;
   
-  static
+  public atzb(atxa paramatxa, Activity paramActivity)
   {
-    jdField_a_of_type_Int = 3;
-    b = 30000;
-    c = 7000;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_JavaUtilList = new ArrayList(3);
+    this.jdField_a_of_type_Atxa = paramatxa;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public static int a()
+  public auav a()
   {
-    return aqbo.a().b;
+    return this.jdField_a_of_type_Auav;
   }
   
-  public static String a()
+  public String a()
   {
-    String str2 = aqbm.a().jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    return str1;
+    return this.jdField_a_of_type_Atxa.c();
   }
   
-  public static void a(Context paramContext, FeedsItemData.GameInfo paramGameInfo)
+  public void a()
   {
-    if (paramGameInfo == null) {}
-    while (bfwv.a(paramContext, paramGameInfo.gamePkgName)) {
+    if (this.jdField_a_of_type_Atxa == null)
+    {
+      QLog.w("FileBrowserPresenter<FileAssistant>", 1, "FileBrowserPresenter init: but model is null");
       return;
     }
-    bldt.a();
-    paramContext = new WadlParams();
-    paramContext.d = 0;
-    paramContext.b(7);
-    paramContext.c = "10000144";
-    paramContext.jdField_e_of_type_JavaLangString = paramGameInfo.gameApkUrl;
-    paramContext.jdField_a_of_type_JavaLangString = paramGameInfo.gameAppId;
-    paramContext.jdField_e_of_type_Int = Integer.parseInt(paramGameInfo.gameVersionCode);
-    paramContext.jdField_f_of_type_JavaLangString = paramGameInfo.gamePkgName;
-    paramContext.p = "biz_src_zf_games";
-    paramContext.l = "publicAccount";
-    paramContext.j = paramGameInfo.gameName;
-    paramContext.k = paramGameInfo.gameIcon;
-    paramContext.b = 2;
-    paramContext.m = "publicAccount";
-    bldt.a().a(paramContext);
-  }
-  
-  public static void a(Bundle paramBundle, String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfigUtil", 2, "downloadGame appId=" + paramString + ",isRes=" + paramBoolean + ",resType=" + paramInt + ",req=" + paramBundle);
-    }
-    if ((paramBundle == null) || (TextUtils.isEmpty(paramString))) {}
-    String str;
-    do
+    if (this.jdField_a_of_type_Auav == null)
     {
+      QLog.w("FileBrowserPresenter<FileAssistant>", 1, "FileBrowserPresenter init: but fileViewer is null");
       return;
-      str = paramBundle.getString("packageName");
-    } while (TextUtils.isEmpty(str));
-    Object localObject2 = paramBundle.getString("apkChannel");
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = "10000144";
     }
-    bldt.a();
-    localObject2 = new WadlParams();
-    ((WadlParams)localObject2).d = paramBundle.getInt("from");
-    ((WadlParams)localObject2).b(paramBundle.getInt("flags"));
-    ((WadlParams)localObject2).c = ((String)localObject1);
-    ((WadlParams)localObject2).jdField_e_of_type_JavaLangString = paramBundle.getString("apkUrl");
-    ((WadlParams)localObject2).jdField_a_of_type_JavaLangString = paramString;
-    ((WadlParams)localObject2).jdField_e_of_type_Int = paramBundle.getInt("versionCode");
-    ((WadlParams)localObject2).jdField_f_of_type_JavaLangString = str;
-    localObject1 = paramBundle.getString("appName");
-    paramString = (String)localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      paramString = ((WadlParams)localObject2).jdField_f_of_type_JavaLangString;
-    }
-    ((WadlParams)localObject2).j = paramString;
-    ((WadlParams)localObject2).p = "biz_src_zf_games";
-    ((WadlParams)localObject2).l = paramBundle.getString("via");
-    ((WadlParams)localObject2).b = 2;
-    ((WadlParams)localObject2).o = paramBundle.getString("ext");
-    ((WadlParams)localObject2).m = paramBundle.getString("fromWebUrl", "");
-    ((WadlParams)localObject2).jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean)
+    this.jdField_a_of_type_Auav.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Auav.a();
+    h();
+    this.jdField_a_of_type_Auav.a(new atzc(this));
+    if (this.jdField_a_of_type_Atxa.i() == 4)
     {
-      ((WadlParams)localObject2).jdField_g_of_type_Int = paramInt;
-      ((WadlParams)localObject2).jdField_f_of_type_Int = paramBundle.getInt("resIndex");
-      ((WadlParams)localObject2).h = paramBundle.getString("resName");
-      ((WadlParams)localObject2).jdField_g_of_type_JavaLangString = paramBundle.getString("resVersionName");
-      ((WadlParams)localObject2).i = paramBundle.getString("resMD5");
+      this.jdField_a_of_type_Auav.b(true);
+      this.jdField_a_of_type_Auav.a(false);
+      b(this.jdField_a_of_type_Atxa.a());
     }
-    bldt.a().a((WadlParams)localObject2);
+    this.jdField_a_of_type_Auav.a(this);
+    if ((!this.jdField_a_of_type_Atxa.i()) && (this.jdField_a_of_type_Boolean) && (this.c)) {
+      bdla.b(null, "dc00898", "", "", "0X800A687", "0X800A687", 0, 0, "", "", "", "");
+    }
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(Configuration paramConfiguration) {}
+  
+  public void a(Bundle paramBundle)
   {
-    int i = 0;
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("game_center_sp", 0);
-    String str = "sp_key_game_center_feeds_show_float_window_date" + paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface = "sp_key_game_center_feeds_float_window_showed_games" + paramQQAppInterface.getCurrentAccountUin();
-    jdField_a_of_type_JavaLangString = localSharedPreferences.getString(str, "");
-    if (c().equals(jdField_a_of_type_JavaLangString))
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(atuw paramatuw)
+  {
+    this.jdField_a_of_type_Atuw = paramatuw;
+  }
+  
+  public void a(atux paramatux)
+  {
+    this.jdField_a_of_type_Atux = paramatux;
+  }
+  
+  protected void a(auav paramauav)
+  {
+    this.jdField_a_of_type_Auav = paramauav;
+  }
+  
+  public abstract boolean a();
+  
+  protected void b(float paramFloat)
+  {
+    int i = (int)((float)this.jdField_a_of_type_Atxa.c() * paramFloat);
+    int j = this.jdField_a_of_type_Atxa.h();
+    if (j == 1) {
+      this.jdField_a_of_type_Auav.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131692652) + "(" + FileUtil.filesizeToString(i) + "/" + FileUtil.filesizeToString(this.jdField_a_of_type_Atxa.c()) + ")");
+    }
+    for (;;)
     {
-      paramQQAppInterface = localSharedPreferences.getString(paramQQAppInterface, "");
-      if ((TextUtils.isEmpty(paramQQAppInterface)) || (paramQQAppInterface.split(";").length == 0)) {
-        jdField_a_of_type_JavaUtilList = new ArrayList(3);
+      this.jdField_a_of_type_Auav.a((int)(100.0F * paramFloat));
+      return;
+      if (j == 4) {
+        this.jdField_a_of_type_Auav.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131692630) + "(" + FileUtil.filesizeToString(i) + "/" + FileUtil.filesizeToString(this.jdField_a_of_type_Atxa.c()) + ")");
+      } else {
+        this.jdField_a_of_type_Auav.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131692612) + "(" + FileUtil.filesizeToString(i) + "/" + FileUtil.filesizeToString(this.jdField_a_of_type_Atxa.c()) + ")");
       }
-      for (;;)
+    }
+  }
+  
+  public abstract boolean b();
+  
+  protected void h()
+  {
+    this.c = false;
+    this.b = false;
+    int i = this.jdField_a_of_type_Atxa.i();
+    Object localObject;
+    if (i == 6)
+    {
+      this.jdField_a_of_type_AndroidAppActivity.getString(2131692309);
+      if (this.jdField_a_of_type_Atxa.h() == 1) {}
+      for (localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131692310);; localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131692309))
       {
+        this.jdField_a_of_type_Auav.a((String)localObject + "(" + bhea.a(this.jdField_a_of_type_Atxa.c()) + ")", new atzd(this));
+        this.jdField_a_of_type_Auav.b(false);
+        this.jdField_a_of_type_Auav.a(true);
         return;
-        paramQQAppInterface = paramQQAppInterface.split(";");
-        jdField_a_of_type_JavaUtilList = new ArrayList(3);
-        while (i < paramQQAppInterface.length)
-        {
-          jdField_a_of_type_JavaUtilList.add(paramQQAppInterface[i]);
-          i += 1;
-        }
+        this.c = true;
       }
     }
-    jdField_a_of_type_JavaLangString = c();
-    jdField_a_of_type_JavaUtilList = new ArrayList(3);
-  }
-  
-  public static void a(WadlParams paramWadlParams)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfigUtil", 2, "installGame params=" + paramWadlParams);
-    }
-    bldt.a();
-    bldt.a().b(paramWadlParams);
-  }
-  
-  public static boolean a()
-  {
-    aqbl localaqbl = aqbm.a();
-    if ((localaqbl != null) && (localaqbl.jdField_a_of_type_Int > 0))
+    if (i == 2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQGameConfigUtil", 2, "isPubAccountSwitch = true");
-      }
-      return true;
+      this.jdField_a_of_type_Auav.a(anvx.a(2131703969), new atze(this));
+      this.jdField_a_of_type_Auav.a(true);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfigUtil", 2, "isPubAccountSwitch = false");
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (jdField_a_of_type_JavaUtilList == null) {
-      jdField_a_of_type_JavaUtilList = new ArrayList(3);
-    }
-    return (jdField_a_of_type_JavaUtilList.size() < 3) && (!jdField_a_of_type_JavaUtilList.contains(paramString));
-  }
-  
-  public static String b()
-  {
-    String str2 = aqbm.a().jdField_b_of_type_JavaLangString;
-    String str1;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393";
-    }
-    do
+    if (i == 4)
     {
-      do
-      {
-        return str1;
-        if (TextUtils.isEmpty(str2)) {
-          break;
-        }
-        str1 = str2;
-      } while (str2.startsWith("http://"));
-      str1 = str2;
-    } while (str2.startsWith("https://"));
-    return "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393";
-  }
-  
-  public static boolean b()
-  {
-    apxv localapxv = apxw.a();
-    if ((localapxv != null) && (localapxv.b > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQGameConfigUtil", 2, "isGcMsgRemindOptimizeSwitch = true");
-      }
-      return true;
+      this.jdField_a_of_type_Auav.b(true);
+      b(this.jdField_a_of_type_Atxa.a());
+      this.jdField_a_of_type_Auav.a(false);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfigUtil", 2, "isGcMsgRemindOptimizeSwitch = false");
-    }
-    return false;
-  }
-  
-  public static String c()
-  {
-    Date localDate = new Date();
-    return new SimpleDateFormat("yyyy-MM-dd").format(localDate);
-  }
-  
-  public static boolean c()
-  {
-    boolean bool2 = false;
-    Object localObject = aqbm.a();
-    boolean bool1 = bool2;
-    if (localObject != null)
+    if (i == 5)
     {
-      bool1 = bool2;
-      if (((aqbl)localObject).c > 0)
-      {
-        localObject = ((aqbl)localObject).jdField_a_of_type_JavaLangString;
-        bool1 = bool2;
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          bool1 = bool2;
-          if (bjnd.a((String)localObject)) {
-            bool1 = true;
-          }
-        }
+      this.jdField_a_of_type_Auav.a(false);
+      return;
+    }
+    if ((this.jdField_a_of_type_Atxa.f() == 9501) && (NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidAppActivity)))
+    {
+      localObject = this.jdField_a_of_type_Atxa.a();
+      if (localObject != null) {
+        ((atvp)localObject).a();
       }
     }
-    return bool1;
-  }
-  
-  public static String d()
-  {
-    String str2 = aqbo.a().jdField_a_of_type_JavaLangString;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "https://imgcache.qq.com/ogame/sgame-official-account/precache.html";
-    }
-    return str1;
-  }
-  
-  public static boolean d()
-  {
-    aqbn localaqbn = aqbo.a();
-    if ((localaqbn != null) && (localaqbn.jdField_a_of_type_Int > 0))
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQGameConfigUtil", 2, "isPreloadSwitch = true");
+      this.jdField_a_of_type_Auav.b(false);
+      this.jdField_a_of_type_Auav.a(true);
+      return;
+      this.c = true;
+      this.jdField_a_of_type_Auav.a(anvx.a(2131703966) + bhea.a(this.jdField_a_of_type_Atxa.c()) + ")", new atzf(this));
+    }
+  }
+  
+  public void i() {}
+  
+  public void j() {}
+  
+  public void k() {}
+  
+  public void l() {}
+  
+  protected void m()
+  {
+    int i = this.jdField_a_of_type_Atxa.h();
+    if ((i == 2) || (i == 4)) {
+      if (this.jdField_a_of_type_Atxa.a() != null) {
+        this.jdField_a_of_type_Atxa.a().b();
       }
-      return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfigUtil", 2, "isPreloadSwitch = false");
+    for (;;)
+    {
+      this.jdField_a_of_type_Auav.b(false);
+      h();
+      return;
+      if ((i == 1) && (this.jdField_a_of_type_Atxa.a() != null)) {
+        this.jdField_a_of_type_Atxa.a().b();
+      }
     }
-    return false;
   }
   
-  public static boolean e()
+  protected void n()
   {
-    aqbl localaqbl = aqbm.a();
-    return (localaqbl != null) && (localaqbl.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
   }
   
-  public static boolean f()
+  public void o()
   {
-    aqbl localaqbl = aqbm.a();
-    return (localaqbl != null) && (localaqbl.jdField_b_of_type_Boolean);
+    n();
   }
+  
+  public void p() {}
 }
 
 

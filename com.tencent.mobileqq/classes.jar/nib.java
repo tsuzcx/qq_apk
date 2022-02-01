@@ -1,27 +1,27 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+import com.tencent.avgame.gameroom.GameRoomFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nib
-  extends RecyclerView.ItemDecoration
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public nib(GameRoomFragment paramGameRoomFragment) {}
   
-  public nib(nhx paramnhx, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.bottom = 0;
-    paramRect.top = 0;
-    paramRect.right = 0;
-    paramRect.left = 0;
+    String str = String.format(this.a.getString(2131690311), new Object[] { this.a.b.getText().toString().replace("-", " ") });
+    GameRoomFragment.a(this.a, str);
+    this.a.a(2, this.a.getString(2131690312));
+    if (this.a.a != null)
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
+    bdla.b(null, "dc00898", "", "", "0X800B020", "0X800B020", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

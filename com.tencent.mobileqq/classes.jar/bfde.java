@@ -1,38 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopNameHelper.GenTroopNameTask;
+import android.view.View;
 
-public class bfde
-  implements Comparable<bfde>
+class bfde
+  implements bkzq
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  bfde(bfda parambfda) {}
   
-  public bfde(TroopNameHelper.GenTroopNameTask paramGenTroopNameTask) {}
-  
-  public int a(@NonNull bfde parambfde)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = -1;
-    if ((this.f != null) && (parambfde.f != null)) {
-      i = this.f.compareTo(parambfde.f);
+    bfda.a(this.a);
+    if (paramInt == 0) {
+      bfda.a(this.a, "");
     }
-    do
-    {
-      do
-      {
-        return i;
-        if (this.f != null) {
-          break;
-        }
-      } while (parambfde.f == null);
-      return 1;
-    } while (parambfde.f == null);
-    return 0;
   }
 }
 

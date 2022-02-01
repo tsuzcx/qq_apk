@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.SparseArray;
-import bbkh;
-import bbki;
+import bcqz;
+import bcra;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class BusinessBuff
   implements Parcelable
 {
-  public static final Parcelable.Creator<BusinessBuff> CREATOR = new bbkh();
+  public static final Parcelable.Creator<BusinessBuff> CREATOR = new bcqz();
   private int jdField_a_of_type_Int;
   private byte[] jdField_a_of_type_ArrayOfByte;
   
@@ -32,7 +32,7 @@ public class BusinessBuff
     paramParcel.readByteArray(this.jdField_a_of_type_ArrayOfByte);
   }
   
-  public static SparseArray<bbki> a(ArrayList<byte[]> paramArrayList)
+  public static SparseArray<bcra> a(ArrayList<byte[]> paramArrayList)
   {
     SparseArray localSparseArray = new SparseArray();
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
@@ -82,7 +82,7 @@ public class BusinessBuff
               {
                 ((SummaryCardBusiEntry.comm)localObject4).mergeFrom((byte[])localObject2);
                 if (((SummaryCardBusiEntry.comm)localObject4).result.get() == 0) {
-                  localSparseArray.put(((SummaryCardBusiEntry.comm)localObject4).service.get(), new bbki((SummaryCardBusiEntry.comm)localObject4, (byte[])localObject1));
+                  localSparseArray.put(((SummaryCardBusiEntry.comm)localObject4).service.get(), new bcra((SummaryCardBusiEntry.comm)localObject4, (byte[])localObject1));
                 }
                 localObject2 = localObject1;
               }

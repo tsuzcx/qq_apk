@@ -1,46 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_write.DelFeedRsp;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
 
-final class axez
-  implements awqs
+public class axez
+  extends axfh
 {
-  axez(axfc paramaxfc, String paramString) {}
+  private final MultiAIOBaseViewPager a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public axez(MultiAIOBaseViewPager paramMultiAIOBaseViewPager)
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      paramBundle = new ilive_feeds_write.DelFeedRsp();
-    }
-    for (;;)
+    this.a = paramMultiAIOBaseViewPager;
+  }
+  
+  public int a(View paramView1, View paramView2)
+  {
+    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
     {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramInt = paramBundle.ret.get();
-        if (paramInt == 0)
-        {
-          if (this.jdField_a_of_type_Axfc != null) {
-            this.jdField_a_of_type_Axfc.a(bool, this.jdField_a_of_type_JavaLangString);
-          }
-          return;
-        }
-        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, ret=" + paramInt + ",msg=" + paramBundle.err_msg.get().toStringUtf8());
+      if (paramView1.a) {
+        return 1;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, e=" + paramArrayOfByte.toString());
-        continue;
-      }
-      bool = false;
-      continue;
-      QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
+      return -1;
     }
+    int i = this.a.a();
+    if (i == paramView1.b) {
+      return 1;
+    }
+    if (i == paramView2.b) {
+      return -1;
+    }
+    return paramView1.b - paramView2.b;
   }
 }
 

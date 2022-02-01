@@ -1,80 +1,71 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QVipBigClubSVIP9Config;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.os.Bundle;
+import android.util.SparseArray;
+import mqq.observer.BusinessObserver;
 
 public class aqgq
-  extends aqgc<QVipBigClubSVIP9Config>
+  implements BusinessObserver
 {
-  public static QVipBigClubSVIP9Config c()
-  {
-    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config2 = (QVipBigClubSVIP9Config)apub.a().a(427);
-    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config1 = localQVipBigClubSVIP9Config2;
-    if (localQVipBigClubSVIP9Config2 == null) {
-      localQVipBigClubSVIP9Config1 = new QVipBigClubSVIP9Config();
-    }
-    return localQVipBigClubSVIP9Config1;
-  }
+  private static aqgq jdField_a_of_type_Aqgq;
+  private int jdField_a_of_type_Int;
+  private final SparseArray<aqgp> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  @NonNull
-  public QVipBigClubSVIP9Config a()
+  public static aqgq a()
   {
-    return new QVipBigClubSVIP9Config();
-  }
-  
-  @NonNull
-  public QVipBigClubSVIP9Config a(aptx[] paramArrayOfaptx)
-  {
-    boolean bool = true;
-    localQVipBigClubSVIP9Config = new QVipBigClubSVIP9Config();
-    paramArrayOfaptx = paramArrayOfaptx[0].a;
+    if (jdField_a_of_type_Aqgq == null) {}
     try
     {
-      if (!TextUtils.isEmpty(paramArrayOfaptx))
-      {
-        paramArrayOfaptx = new JSONObject(paramArrayOfaptx);
-        if (paramArrayOfaptx.optInt("enable", 1) != 1) {
-          break label93;
-        }
+      if (jdField_a_of_type_Aqgq == null) {
+        jdField_a_of_type_Aqgq = new aqgq();
       }
-      for (;;)
-      {
-        localQVipBigClubSVIP9Config.mIsEnable = bool;
-        localQVipBigClubSVIP9Config.mAPngIconUrl = paramArrayOfaptx.optString("apng_icon_url_pattern", localQVipBigClubSVIP9Config.mAPngIconUrl);
-        localQVipBigClubSVIP9Config.mAPngIconUrlNewGray = paramArrayOfaptx.optString("apng_gray_icon_url_pattern", localQVipBigClubSVIP9Config.mAPngIconUrlNewGray);
-        localQVipBigClubSVIP9Config.mVipIconSettingsUrl = paramArrayOfaptx.optString("vipicon_setting_url_pattern", localQVipBigClubSVIP9Config.mVipIconSettingsUrl);
-        return localQVipBigClubSVIP9Config;
-        label93:
-        bool = false;
-      }
-      return localQVipBigClubSVIP9Config;
+      return jdField_a_of_type_Aqgq;
     }
-    catch (JSONException paramArrayOfaptx)
+    finally {}
+  }
+  
+  public int a(Context paramContext, aqfx paramaqfx)
+  {
+    return a(new aqgp(paramContext, paramaqfx));
+  }
+  
+  public int a(Context paramContext, aqgc paramaqgc)
+  {
+    return a(new aqgp(paramContext, paramaqgc));
+  }
+  
+  public int a(aqgp paramaqgp)
+  {
+    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
     {
-      xvv.e("QVipBigTroopExpiredProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfaptx.getMessage());
+      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
+      int i = this.jdField_a_of_type_Int + 1;
+      this.jdField_a_of_type_Int = i;
+      localSparseArray2.append(i, paramaqgp);
+      i = this.jdField_a_of_type_Int;
+      return i;
     }
   }
   
-  @NonNull
-  public QVipBigClubSVIP9Config b()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new QVipBigClubSVIP9Config();
-  }
-  
-  public Class<QVipBigClubSVIP9Config> clazz()
-  {
-    return QVipBigClubSVIP9Config.class;
-  }
-  
-  public int type()
-  {
-    return 427;
+    int i = paramBundle.getInt("req_id");
+    aqgp localaqgp = (aqgp)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
+      return;
+      localaqgp.b(paramBoolean, paramBundle.getBoolean("allow_download", true), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"), paramBundle.getString("jump_url"));
+      continue;
+      localaqgp.b(paramBoolean, paramBundle.getInt("jump", 0), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgq
  * JD-Core Version:    0.7.0.1
  */

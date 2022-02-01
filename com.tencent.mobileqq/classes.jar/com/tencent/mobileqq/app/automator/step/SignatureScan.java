@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import achf;
+import acxn;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 
@@ -9,7 +9,7 @@ public class SignatureScan
 {
   public int a()
   {
-    new achf(this.a.app).a(false);
+    new acxn(this.a.app).a(false);
     return 7;
   }
 }

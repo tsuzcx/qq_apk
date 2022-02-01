@@ -1,170 +1,163 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.ark.ArkAppPreloader;
-import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.common.app.BaseApplicationImpl;
+import QQWalletPay.ReqCheckChangePwdAuth;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenterUtil;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.1;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.2;
-import com.tencent.mobileqq.ark.ArkAppPreDownloadMgr.3;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
+import java.util.List;
+import org.json.JSONObject;
 
 public class aovq
+  extends aouc
 {
-  private int jdField_a_of_type_Int;
-  private ArkAppPreloader.PreloadAppCallback jdField_a_of_type_ComTencentArkArkAppPreloader$PreloadAppCallback = new aovs(this);
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private ConcurrentHashMap<String, aovu> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(8);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private Dialog jdField_a_of_type_AndroidAppDialog;
+  private aobw jdField_a_of_type_Aobw;
+  private aovt jdField_a_of_type_Aovt;
   
-  public aovq(QQAppInterface paramQQAppInterface)
+  public aovq(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Boolean = false;
-    ThreadManagerV2.executeOnSubThread(new ArkAppPreDownloadMgr.1(this));
+    super(paramQQAppInterface, paramContext);
   }
   
-  private void a(aovu paramaovu)
+  private boolean C()
   {
-    if (paramaovu == null)
+    if (!(this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("uin")) {}
+    for (String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin"); !str.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()); str = "")
     {
-      QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, "profiling preDownloadApp failed for item null");
-      return;
+      d();
+      return false;
     }
-    ThreadManagerV2.executeOnSubThread(new ArkAppPreDownloadMgr.3(this, paramaovu));
+    e();
+    return false;
   }
   
-  private static void a(String paramString)
+  private void a(int paramInt)
   {
-    paramString = new File(paramString);
-    if (!paramString.exists()) {
-      paramString.mkdirs();
+    Intent localIntent = new Intent();
+    localIntent.setAction("android.intent.action.VIEW");
+    localIntent.addCategory("android.intent.category.DEFAULT");
+    localIntent.setData(Uri.parse("midas://open_modify_status?status=" + paramInt));
+    if (this.jdField_a_of_type_AndroidContentContext.getPackageManager().queryIntentActivities(localIntent, 0).size() > 0) {
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
     }
+    ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).finish();
   }
   
-  private void a(String paramString1, String paramString2, ArkAppPreloader.PreloadAppCallback paramPreloadAppCallback, int paramInt)
+  private void d()
   {
-    String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
-    String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
-    String str3 = ArkEnvironmentManager.getInstance().getAppResPath(paramString1);
-    a(str3);
-    ArkAppPreloader.preloadApp(paramString1, paramString2, str2, str3, str1, paramPreloadAppCallback, paramInt);
+    this.jdField_a_of_type_AndroidAppDialog = bhdj.a(this.jdField_a_of_type_AndroidContentContext, 2131692703, this.jdField_a_of_type_AndroidContentContext.getString(2131692690), 2131692692, 2131692691, new aovr(this), new aovs(this));
+    this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
-  public static void c()
+  private void e()
   {
-    String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
-    String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
-    a(str1);
-    a(str2);
-    ArkAppPreloader.preloadCommon(ArkAppCenterUtil.getDensity(), str2, str1);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, "profiling startPredownload");
-    }
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0) && (!this.jdField_a_of_type_Boolean))
+    Object localObject;
+    String str1;
+    label50:
+    String str2;
+    label75:
+    String str3;
+    label101:
+    String str4;
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("packageName"))
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = 0;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        aovu localaovu = (aovu)((Map.Entry)localIterator.next()).getValue();
-        if (!TextUtils.isEmpty(localaovu.a)) {
-          if (TextUtils.isEmpty(ArkAppMgr.getInstance().getAppPathByNameFromLocal(localaovu.a, "", null, false))) {
-            a(localaovu);
-          } else {
-            QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling ark app predowloaded,app=", localaovu.a });
-          }
-        }
+      localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("packageName");
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("signareMode")) {
+        break label312;
+      }
+      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("signareMode");
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("appid")) {
+        break label318;
+      }
+      str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid");
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("timeStamp")) {
+        break label324;
+      }
+      str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("timeStamp");
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("resetWordMode")) {
+        break label331;
+      }
+      str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("resetWordMode");
+      label127:
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey("offerid")) {
+        break label338;
       }
     }
+    label312:
+    label318:
+    label324:
+    label331:
+    label338:
+    for (String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("offerid");; str5 = "")
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QwalletModifyPassAction", 2, "packageName : " + (String)localObject + " signatureMode :" + str1 + " appid : " + str2 + " timestamp : " + str3 + " resetWordMode : " + str4 + " offerId : " + str5);
+      }
+      localObject = new ReqCheckChangePwdAuth((String)localObject, str1, str2, str3, str4, str5);
+      ((aobv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QWALLET_AUTH_HANDLER)).a((ReqCheckChangePwdAuth)localObject);
+      this.jdField_a_of_type_Aovt = new aovt(this, null);
+      this.jdField_a_of_type_Aobw = new aobw(this.jdField_a_of_type_Aovt);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aobw);
+      return;
+      localObject = "";
+      break;
+      str1 = "";
+      break label50;
+      str2 = "";
+      break label75;
+      str3 = "";
+      break label101;
+      str4 = "";
+      break label127;
+    }
   }
   
-  public void a(apvp paramapvp)
+  private void f()
   {
-    if ((paramapvp != null) && (paramapvp.a() != null)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramapvp.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-    }
-    while (!QLog.isColorLevel()) {
+    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = true;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("userId", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localJSONObject.put("viewTag", "pswManage");
+      if (!PayBridgeActivity.tenpay((Activity)this.jdField_a_of_type_AndroidContentContext, localJSONObject.toString(), 5, "")) {}
+      for (int i = 1;; i = 0)
+      {
+        a(i);
+        return;
+      }
       return;
     }
-    QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, "profiling updatePreloadConfig cfg is empty");
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    for (;;)
+    catch (Exception localException)
     {
-      try
-      {
-        boolean bool;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
-          if (bool) {}
-        }
-        else
-        {
-          return;
-        }
-        String str;
-        HashMap localHashMap;
-        try
-        {
-          SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_app_first_use", 0);
-          bool = localSharedPreferences.getBoolean(paramString, false);
-          if (bool) {
-            break label218;
-          }
-          str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
-          localHashMap = new HashMap();
-          localHashMap.put("app_name", paramString);
-          if (!paramBoolean) {
-            break label193;
-          }
-          StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(str, "ark_app_predownload_first_hit", true, 0L, 0L, localHashMap, "", false);
-          QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling reportPredownloadFirstHit app=", paramString, ",hasUsed=", Boolean.valueOf(bool), ",hasPreDownload=", Boolean.valueOf(paramBoolean) });
-          localSharedPreferences.edit().putBoolean(paramString, true).apply();
-        }
-        catch (Exception paramString)
-        {
-          QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, "profiling reportPredownloadFirstHit exception=", paramString);
-        }
-        continue;
-        StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(str, "ark_app_predownload_first_hit", false, 0L, 0L, localHashMap, "", false);
-      }
-      finally {}
-      label193:
-      continue;
-      label218:
-      QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling reportPredownloadFirstHit not first use app=", paramString });
+      localException.printStackTrace();
+      a(1);
     }
   }
   
-  public void b()
+  public boolean a()
   {
-    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling startPreload");
-    ArkAppCenter.a(new ArkAppPreDownloadMgr.2(this), 10000L);
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QwalletModifyPassAction", 1, "doAction error: " + localException.getMessage());
+      a("QwalletModifyPassAction");
+    }
+    return false;
   }
 }
 

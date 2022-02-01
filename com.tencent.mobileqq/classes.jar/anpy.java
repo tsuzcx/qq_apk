@@ -1,30 +1,14 @@
-import android.content.Context;
-import com.tencent.avgame.ui.AVGameRoomCenterFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class anpy
-  extends anrh
+class anpy
+  implements DialogInterface.OnClickListener
 {
-  public anpy(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  anpy(anpu paramanpu) {}
   
-  public boolean a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      PublicFragmentActivity.a(this.a, AVGameRoomCenterFragment.class);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("AVGameShareEntryLobbyAction", 1, "doAction error: " + localException.getMessage());
-      a("AVGameShareEntryLobbyAction");
-    }
-    return true;
+    paramDialogInterface.dismiss();
   }
 }
 

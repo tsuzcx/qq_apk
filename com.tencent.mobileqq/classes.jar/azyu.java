@@ -1,58 +1,18 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import com.tencent.mobileqq.resourcesgrab.ResourceGrabFragment;
-import com.tencent.mobileqq.resourcesgrab.ResourceGrabView;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azyu
-  implements Application.ActivityLifecycleCallbacks
+  implements View.OnClickListener
 {
-  public azyu(ResourceGrabView paramResourceGrabView) {}
+  public azyu(AbsProfileHeaderView paramAbsProfileHeaderView, azrb paramazrb) {}
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabView", 2, "onActivityCreated activity: " + paramActivity);
-    }
-    ResourceGrabView.a(this.a, new WeakReference(paramActivity));
+    AbsProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView, this.jdField_a_of_type_Azrb);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabView", 2, "onActivityDestroyed activity: " + paramActivity);
-    }
-    if ((paramActivity instanceof FragmentActivity))
-    {
-      paramActivity = ((FragmentActivity)paramActivity).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
-      if ((paramActivity instanceof ResourceGrabFragment)) {
-        ((ResourceGrabFragment)paramActivity).d();
-      }
-    }
-    ResourceGrabView.a(this.a, null);
-  }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabView", 2, "onActivityResumed activity: " + paramActivity);
-    }
-    ResourceGrabView.a(this.a, new WeakReference(paramActivity));
-    this.a.a(ResourceGrabView.a(this.a));
-    ResourceGrabView.a(this.a);
-  }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

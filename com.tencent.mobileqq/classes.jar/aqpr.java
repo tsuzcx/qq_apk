@@ -1,13 +1,20 @@
-public class aqpr
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aqpr
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  aqpr(aqpp paramaqpp) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "DrawableParams{mUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mDefaultUrl='" + this.b + '\'' + ", mShape=" + this.jdField_a_of_type_Int + ", mCornerRadius=" + this.jdField_a_of_type_Float + '}';
+    aqpl.a(this.a.a).setVisibility(8);
+    aqpl.a(this.a.a, null);
+    if (aqpl.a(this.a.a).getItemCount() == 0) {
+      aqpl.a(this.a.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

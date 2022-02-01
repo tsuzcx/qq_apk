@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
 public class zbr
-  implements View.OnClickListener
+  implements zbs
 {
-  public zbr(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
-  
-  public void onClick(View paramView)
+  public void a(@NonNull ArrayList<zbt> paramArrayList, @NonNull Context paramContext)
   {
-    FollowedRecommendBannerView.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = 0;
+    while (i < zbt.a.length)
+    {
+      paramArrayList.add(new zbt(paramContext.getResources().getDrawable(zbt.b[i]), 0, zbt.a[i]));
+      i += 1;
+    }
   }
 }
 

@@ -55,7 +55,7 @@ class ClientLogReport$ReportRecord
     //   60: ldc 45
     //   62: ldc 47
     //   64: aload 4
-    //   66: invokestatic 53	mwv:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   66: invokestatic 53	ncl:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   69: aload_1
     //   70: ifnull +7 -> 77
     //   73: aload_1
@@ -186,7 +186,7 @@ class ClientLogReport$ReportRecord
     //   51: ldc 45
     //   53: ldc 102
     //   55: aload_1
-    //   56: invokestatic 53	mwv:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   56: invokestatic 53	ncl:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   59: aload_3
     //   60: ifnull +7 -> 67
     //   63: aload_3

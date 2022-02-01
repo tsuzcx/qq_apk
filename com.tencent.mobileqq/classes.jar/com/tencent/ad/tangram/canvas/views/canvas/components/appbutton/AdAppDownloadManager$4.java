@@ -3,7 +3,6 @@ package com.tencent.ad.tangram.canvas.views.canvas.components.appbutton;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.net.AdNet;
 import com.tencent.ad.tangram.statistics.b;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -40,7 +39,7 @@ class AdAppDownloadManager$4
     for (;;)
     {
       AdAppDownloadManager.access$200(this.this$0).cProgerss = i;
-      if ((this.val$isUserClick) || ((AdAppDownloadManager.access$000(this.this$0)) && (AdNet.isWifiConnected((Context)AdAppDownloadManager.access$700(this.this$0).get()))))
+      if ((this.val$isUserClick) || (AdAppDownloadManager.access$000(this.this$0)))
       {
         AdLog.i("AdAppDownloadManager", "isUserClick || autodownload && wifi " + this.val$isUserClick + " ," + (String)localObject1);
         AdAppDownloadManager.access$200(this.this$0).cState = 1;

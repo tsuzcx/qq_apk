@@ -1,33 +1,20 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ajbu
-  implements View.OnTouchListener
+  extends ajbn
 {
-  public ajbu(Conversation paramConversation) {}
+  public ArrayList<aixy> a;
+  public boolean a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ajbu(ArrayList<aixy> paramArrayList, boolean paramBoolean)
   {
-    if (QLog.isColorLevel())
-    {
-      paramView = new StringBuilder().append("statusTitle onTouch event :").append(paramMotionEvent.toString()).append(", mGestureDetector is null ");
-      if (this.a.a == null) {
-        break label81;
-      }
-    }
-    label81:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("Q.recent", 2, bool);
-      if (this.a.a != null) {
-        this.a.a.onTouchEvent(paramMotionEvent);
-      }
-      return true;
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

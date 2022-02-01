@@ -1,7 +1,5 @@
 package cooperation.qqreader.host.advertisement;
 
-import blbv;
-import blbw;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -10,13 +8,15 @@ import cooperation.vip.pb.TianShuAccess.AdPlacementInfo;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import cooperation.vip.pb.TianShuAccess.MapEntry;
 import cooperation.vip.pb.TianShuAccess.RspEntry;
+import cooperation.vip.tianshu.TianShuGetAdvCallback;
+import cooperation.vip.tianshu.TianShuManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 class ReaderTianShuSdk$ReaderTianShuGetAdvCallback
-  implements blbv
+  implements TianShuGetAdvCallback
 {
   int jdField_a_of_type_Int;
   ReaderTianShuSdk.RequestListener jdField_a_of_type_CooperationQqreaderHostAdvertisementReaderTianShuSdk$RequestListener;
@@ -87,7 +87,7 @@ class ReaderTianShuSdk$ReaderTianShuGetAdvCallback
             localHashMap.put("iAdId", String.valueOf(((TianShuAccess.AdItem)localObject).iAdId.get()));
           }
           localArrayList.add(localHashMap);
-          blbw.a().a((TianShuAccess.AdItem)localObject);
+          TianShuManager.getInstance().cacheTraceInfo((TianShuAccess.AdItem)localObject);
         }
         break;
         paramGetAdsRsp = null;

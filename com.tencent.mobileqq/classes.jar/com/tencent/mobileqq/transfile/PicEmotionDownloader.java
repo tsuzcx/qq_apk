@@ -9,12 +9,12 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import aqyy;
-import areb;
-import avsq;
-import bfvo;
-import bgoe;
-import bgog;
+import asdi;
+import asih;
+import awyr;
+import bheg;
+import bhyo;
+import bhyq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
@@ -25,6 +25,7 @@ import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emoticonview.EmoticonUtils;
@@ -96,7 +97,7 @@ public class PicEmotionDownloader
       localObject = "panel_preview";
       i = 2;
     }
-    label364:
+    label365:
     for (;;)
     {
       paramString = paramDownloadParams.getHeader("2g_use_gif");
@@ -115,7 +116,7 @@ public class PicEmotionDownloader
       {
         if (!paramDownloadParams.useApngImage)
         {
-          paramEmoticon = ((avsq)paramAppInterface.getManager(14)).a(paramEmoticon.epId);
+          paramEmoticon = ((awyr)paramAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(paramEmoticon.epId);
           if ((paramEmoticon != null) && (paramEmoticon.isAPNG == 2)) {
             paramDownloadParams.useApngImage = true;
           }
@@ -139,7 +140,7 @@ public class PicEmotionDownloader
         for (i = j | 0x20;; i = j | 0x4)
         {
           if (!paramEmoticon.isSound) {
-            break label364;
+            break label365;
           }
           localObject = "big_sound";
           i = 12;
@@ -178,7 +179,7 @@ public class PicEmotionDownloader
           {
             paramString2 = localBitmap;
             localObject1 = localBitmap;
-            paramString1 = bfvo.a(localBitmap);
+            paramString1 = bheg.a(localBitmap);
           }
           paramString2 = paramString1;
           localObject1 = paramString1;
@@ -370,7 +371,7 @@ public class PicEmotionDownloader
       }
       try
       {
-        if (aqyy.b(str)) {
+        if (asdi.b(str)) {
           return decodeGifFile(paramDownloadParams, paramString, str);
         }
         if (paramDownloadParams.useApngImage) {
@@ -379,7 +380,7 @@ public class PicEmotionDownloader
         if (QLog.isColorLevel()) {
           QLog.d("PicEmotionDownloader", 2, "decodeFile getDecryptFileData,path=" + str);
         }
-        paramDownloadParams = aqyy.b(str);
+        paramDownloadParams = asdi.b(str);
         if (paramDownloadParams != null)
         {
           paramDownloadParams = decodeDecryptFileData(str, paramDownloadParams);
@@ -425,7 +426,7 @@ public class PicEmotionDownloader
   
   protected void downlaodAIOEmoticon(Emoticon paramEmoticon, AppInterface paramAppInterface, int paramInt)
   {
-    paramAppInterface = (areb)paramAppInterface.getManager(43);
+    paramAppInterface = (asih)paramAppInterface.getManager(QQManagerFactory.CHAT_EMOTION_MANAGER);
     if (!paramAppInterface.b(paramEmoticon, paramInt)) {}
     for (boolean bool = true;; bool = false)
     {
@@ -525,7 +526,7 @@ public class PicEmotionDownloader
       String[] arrayOfString = new String[2];
       arrayOfString[0] = EmoticonUtils.smallEmoticonThumbUrl.replace("[epId]", paramEmoticon.epId).replace("[eId]", paramEmoticon.eId);
       arrayOfString[1] = EmoticonUtils.emoticonPreviewPath.replace("[epId]", paramEmoticon.epId).replace("[eId]", paramEmoticon.eId);
-      int i = bgog.a(new bgoe(arrayOfString[0], new File(arrayOfString[1])), paramAppInterface);
+      int i = bhyq.a(new bhyo(arrayOfString[0], new File(arrayOfString[1])), paramAppInterface);
       if (QLog.isColorLevel()) {
         QLog.d("PicEmotionDownloader", 2, "download small emoji, ret:" + i);
       }
@@ -562,7 +563,7 @@ public class PicEmotionDownloader
       if (paramBoolean)
       {
         paramEmoticon = "0";
-        avsq.a(paramEmoticon, 5);
+        awyr.a(paramEmoticon, 5);
       }
     }
     do
@@ -575,7 +576,7 @@ public class PicEmotionDownloader
         if (paramBoolean) {}
         for (paramEmoticon = "0";; paramEmoticon = "7001")
         {
-          avsq.a(paramEmoticon, 7);
+          awyr.a(paramEmoticon, 7);
           return;
         }
       }
@@ -583,7 +584,7 @@ public class PicEmotionDownloader
     if (paramBoolean) {}
     for (paramEmoticon = "0";; paramEmoticon = "66001")
     {
-      avsq.a(paramEmoticon, 6);
+      awyr.a(paramEmoticon, 6);
       return;
     }
   }

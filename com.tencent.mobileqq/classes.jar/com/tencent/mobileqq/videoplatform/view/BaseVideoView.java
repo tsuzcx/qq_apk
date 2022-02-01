@@ -92,15 +92,15 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131380754) != null)
+      if (findViewById(2131381105) != null)
       {
         if (LogUtil.isColorLevel()) {
           LogUtil.d(getLogTag(), 2, "addDebugView, debugTextView is exist");
         }
-        removeView(findViewById(2131380754));
+        removeView(findViewById(2131381105));
       }
       this.mDebugTextView = new TextView(this.mContext);
-      this.mDebugTextView.setId(2131380754);
+      this.mDebugTextView.setId(2131381105);
       this.mDebugTextView.setText(String.valueOf(this.mID));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
       localLayoutParams.leftMargin = UIUtil.dp2px(6.0F, this.mContext.getResources());
@@ -122,12 +122,12 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131380755) != null)
+      if (findViewById(2131381106) != null)
       {
         if (LogUtil.isColorLevel()) {
           LogUtil.d(getLogTag(), 2, "addVideoView, videoView is exist");
         }
-        removeView(findViewById(2131380755));
+        removeView(findViewById(2131381106));
       }
       View localView = this.mVPProxy.getVideoView();
       if (localView == null)
@@ -136,7 +136,7 @@ public class BaseVideoView
         return;
       }
       localView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      localView.setId(2131380755);
+      localView.setId(2131381106);
       addView(localView, 0);
       if (LogUtil.isColorLevel())
       {
@@ -256,7 +256,7 @@ public class BaseVideoView
   public boolean isMute()
   {
     if (this.mVPProxy != null) {
-      this.mVPProxy.isMute();
+      return this.mVPProxy.isMute();
     }
     return false;
   }

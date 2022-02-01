@@ -1,24 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class aesy
-  implements DialogInterface.OnClickListener
+  implements BusinessObserver
 {
-  public aesy(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  protected void a() {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.n();
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), paramDialogInterface, "0");
-      this.a.finish();
-      return;
+    if (paramInt == 10000) {
+      a();
     }
   }
 }

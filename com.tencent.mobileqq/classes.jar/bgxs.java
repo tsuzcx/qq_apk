@@ -1,40 +1,35 @@
-import android.os.MessageQueue.IdleHandler;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class bgxs
-  implements MessageQueue.IdleHandler
+final class bgxs
+  implements DownloadParams.DecodeHandler
 {
-  bgxs(bgxr parambgxr) {}
-  
-  public boolean queueIdle()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    Object localObject;
-    int i;
-    if (!bgxr.a().isEmpty())
+    try
     {
-      localObject = (bgxu)bgxr.a().remove(0);
-      i = ((bgxu)localObject).a();
-      if (2 == i) {
-        bgxr.a().add(localObject);
-      }
-    }
-    else
-    {
-      label38:
-      localObject = this.a;
-      if (bgxr.a().isEmpty()) {
-        break label75;
-      }
-    }
-    label75:
-    for (boolean bool = true;; bool = false)
-    {
-      ((bgxr)localObject).a = bool;
-      return this.a.a;
-      if (1 != i) {
+      int i = paramBitmap.getHeight();
+      int j = paramBitmap.getWidth();
+      int k = paramDownloadParams.reqWidth;
+      int m = paramDownloadParams.reqHeight;
+      float f = k * 1.0F / j;
+      paramDownloadParams = new Matrix();
+      paramDownloadParams.setScale(f, f);
+      if (i * f > m) {}
+      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, (int)(m / f), paramDownloadParams, true); QLog.isColorLevel(); paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, i, paramDownloadParams, true))
+      {
+        QLog.d(bgxc.a(), 2, String.format("ALIGN_TOP_DECODER srcHeight = %s, srcWidth = %s, reqWidth = %s, reqHeight = %s, scale = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f) }));
         break;
       }
-      break label38;
+      return paramDownloadParams;
+    }
+    catch (Exception paramDownloadParams)
+    {
+      paramDownloadParams.printStackTrace();
+      return paramBitmap;
     }
   }
 }

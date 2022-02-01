@@ -1,16 +1,8 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.widget.VideoView;
-
-final class bgqu
-  implements MediaPlayer.OnCompletionListener
+public abstract interface bgqu
 {
-  bgqu(VideoView paramVideoView) {}
+  public abstract void a(bgqt parambgqt);
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    this.a.start();
-  }
+  public abstract void b(bgqt parambgqt);
 }
 
 

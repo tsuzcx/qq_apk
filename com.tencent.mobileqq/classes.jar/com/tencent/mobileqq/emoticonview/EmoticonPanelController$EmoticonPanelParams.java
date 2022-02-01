@@ -45,6 +45,7 @@ class EmoticonPanelController$EmoticonPanelParams
         this.mBaseChatPie = paramEmoticonMainPanel.mBaseChatPie;
         this.isFilterSysFaceBeyond255 = EmoticonPanelController.access$600(paramEmoticonMainPanel);
         this.hideAllSettingTabs = paramEmoticonMainPanel.mHideAllSettingTabs;
+        this.mIsOnlySysEmotion = paramEmoticonMainPanel.mIsOnlySysEmotion;
       }
     }
   }
@@ -68,12 +69,13 @@ class EmoticonPanelController$EmoticonPanelParams
     localEmoticonPanelController.mBaseChatPie = this.mBaseChatPie;
     EmoticonPanelController.access$602(localEmoticonPanelController, this.isFilterSysFaceBeyond255);
     localEmoticonPanelController.mHideAllSettingTabs = this.hideAllSettingTabs;
+    localEmoticonPanelController.mIsOnlySysEmotion = this.mIsOnlySysEmotion;
     localEmoticonPanelController.setCurType(this.sessionType);
   }
   
   public EmoticonMainPanel create()
   {
-    this.emoticonMainPanel = ((EmoticonMainPanel)View.inflate(this.app.getApp(), 2131559130, null));
+    this.emoticonMainPanel = ((EmoticonMainPanel)View.inflate(this.app.getApp(), 2131559158, null));
     show();
     return this.emoticonMainPanel;
   }
@@ -89,7 +91,7 @@ class EmoticonPanelController$EmoticonPanelParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelController.EmoticonPanelParams
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,40 @@
-import android.os.Bundle;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/FirstCommentStickyHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oxj
-  extends nmf
+public class oxj
 {
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
+  private VideoCompositeHelper jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper = new VideoCompositeHelper();
+  private oxl jdField_a_of_type_Oxl;
+  
+  private void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      this.a.a(paramArrayOfByte);
-      return;
+    if (this.jdField_a_of_type_Oxl != null) {
+      this.jdField_a_of_type_Oxl.a(paramPublishVideoEntry, paramInt, paramString);
     }
-    this.a.a(paramInt, "Empty error message.");
   }
   
-  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  private void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
   {
-    paramBundle = this.a;
-    if (paramString != null) {}
-    for (;;)
-    {
-      paramBundle.a(paramInt, paramString);
-      return true;
-      paramString = "Empty error message.";
+    if (this.jdField_a_of_type_Oxl != null) {
+      this.jdField_a_of_type_Oxl.a(paramPublishVideoEntry, paramString);
     }
+  }
+  
+  public void a(String paramString)
+  {
+    VideoCompositeHelper.deleteVideoCache(VideoCompositeHelper.getPublishVideoEntry(paramString));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    paramString1 = VideoCompositeHelper.getPublishVideoEntry(paramString1);
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper.composite(paramString1, paramString2 + ".tmp.mp4", false, true, new oxk(this, l, paramString1));
+  }
+  
+  public void a(oxl paramoxl)
+  {
+    this.jdField_a_of_type_Oxl = paramoxl;
   }
 }
 

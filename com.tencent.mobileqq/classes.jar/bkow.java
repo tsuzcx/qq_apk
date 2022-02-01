@@ -1,6 +1,14 @@
-public abstract interface bkow
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+
+class bkow
+  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnVideoSizeChangedListener
 {
-  public abstract void b(boolean paramBoolean);
+  bkow(bkor parambkor, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnVideoSizeChangedListener paramOnVideoSizeChangedListener) {}
+  
+  public void onVideoSizeChanged(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnVideoSizeChangedListener.onVideoSizeChanged(this.jdField_a_of_type_Bkor, paramInt1, paramInt2);
+  }
 }
 
 

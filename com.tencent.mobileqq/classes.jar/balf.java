@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-
-class balf
-  implements DialogInterface.OnCancelListener
+public class balf
 {
-  balf(bakw parambakw) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public balf(int paramInt)
   {
-    if (this.a.b) {
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
-    }
+    this.a = paramInt;
   }
 }
 

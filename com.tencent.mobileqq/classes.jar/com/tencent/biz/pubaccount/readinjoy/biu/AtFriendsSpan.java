@@ -11,6 +11,11 @@ public class AtFriendsSpan
     super(paramString, paramLong, paramCharSequence);
   }
   
+  public AtFriendsSpan(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
+  {
+    super(paramString, paramLong, paramCharSequence, paramInt);
+  }
+  
   public AtFriendsSpan(String paramString, long paramLong, CharSequence paramCharSequence, Context paramContext, Paint paramPaint, int paramInt)
   {
     super(paramString, paramLong, paramCharSequence);

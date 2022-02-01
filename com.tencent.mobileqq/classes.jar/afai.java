@@ -1,111 +1,34 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class afai
-  implements afae
+  implements View.OnLongClickListener
 {
-  public ajyg a;
-  public PreloadManager a;
-  private QQAppInterface a;
+  public afai(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public afai(QQAppInterface paramQQAppInterface)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
-    this.jdField_a_of_type_Ajyg = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a("web_view_long_click", true))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
-      this.jdField_a_of_type_Ajyg = ((ajyg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
+      }
+      return true;
     }
-  }
-  
-  private void a(@NonNull PreloadManager paramPreloadManager, @NonNull ajyg paramajyg, @NonNull CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    String str1 = null;
-    String str2 = paramajyg.a("redPack", "https://imgcache.qq.com/channel/static/socialpay/skin/", new String[] { "prefix" });
-    switch (paramRedPacketInfo.skinType)
+    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a).a("image_long_click", false))
     {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      JSONObject localJSONObject = paramajyg.a("redPack", new String[] { "skinMap" });
-      paramajyg = str1;
-      if (localJSONObject != null)
-      {
-        localJSONObject = localJSONObject.optJSONObject(String.valueOf(paramRedPacketInfo.skinId));
-        paramajyg = str1;
-        if (localJSONObject != null)
-        {
-          paramajyg = localJSONObject.optString("aioZipMd5", "");
-          str1 = localJSONObject.optString("popZipMd5", "");
-          if (paramRedPacketInfo.skinType != 1) {
-            break label220;
-          }
-          paramRedPacketInfo.title = localJSONObject.optString("title", "");
-          paramRedPacketInfo.isHideTitle = localJSONObject.optInt("isHideTitle", paramRedPacketInfo.a());
-        }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
       }
-      if (paramRedPacketInfo.skinType == 1) {}
-      for (str1 = "aio_";; str1 = "pop_")
-      {
-        paramPreloadManager.a(str2 + str1 + paramRedPacketInfo.skinId + ".zip", paramajyg, new afaj(this, paramRedPacketInfo));
-        return;
-        paramajyg = str1;
-        break;
-      }
-    case 3: 
-      label220:
-      paramajyg = paramajyg.a("redPack", null, new String[] { "bigAnimMap", String.valueOf(paramRedPacketInfo.bigAnimId), "zipMd5" });
-      paramPreloadManager.a(str2 + "aio_special_" + paramRedPacketInfo.bigAnimId + ".zip", paramajyg, new afak(this, paramRedPacketInfo));
-      return;
+      return false;
     }
-    paramajyg = paramajyg.a("redPack", null, new String[] { "popAnimMap", String.valueOf(paramRedPacketInfo.bigAnimId), "zipMd5" });
-    paramPreloadManager.a(str2 + "pop_anim_" + paramRedPacketInfo.bigAnimId + ".png", paramajyg, new afal(this, paramRedPacketInfo));
-  }
-  
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    ThreadManager.post(new CustomizeStrategyFactory.SkinRedPacketStrategy.1(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, ahdi paramahdi)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      if (!(paramahdi instanceof ahdm)) {
-        break label74;
-      }
-      paramahdi = (ahdm)paramahdi;
-      paramRedPacketInfo.background = paramahdi.b;
-      paramRedPacketInfo.corner = paramahdi.jdField_a_of_type_AndroidGraphicsBitmap;
-      paramRedPacketInfo.animInfo = paramahdi.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
-      paramRedPacketInfo.title = paramahdi.c;
-      paramRedPacketInfo.icon = paramahdi.a(paramRedPacketInfo);
-      paramRedPacketInfo.isHideTitle = paramahdi.jdField_a_of_type_Int;
-      paramRedPacketInfo.resPath = paramahdi.d;
+    bigy localbigy = (bigy)this.a.mComponentsProvider.a(8);
+    if ((localbigy != null) && (localbigy.a(paramView))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
-    label74:
-    do
-    {
-      return;
-      if ((paramahdi instanceof ahdj))
-      {
-        paramahdi = (ahdj)paramahdi;
-        paramRedPacketInfo.specailBackgroundAnimInfo = paramahdi.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
-        paramRedPacketInfo.specialBackground = paramahdi.jdField_a_of_type_AndroidGraphicsBitmap;
-        return;
-      }
-    } while (!(paramahdi instanceof ahdl));
-    paramRedPacketInfo.resPath = ((ahdl)paramahdi).b;
   }
 }
 

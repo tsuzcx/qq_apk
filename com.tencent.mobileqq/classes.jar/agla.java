@@ -1,25 +1,48 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class agla
-  extends agld
+  implements agin
 {
-  public FrameLayout a;
-  public RelativeLayout a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public View c;
-  public int e;
-  public int f;
+  private BaseChatPie a;
   
-  public agla(agkz paramagkz)
+  public agla(BaseChatPie paramBaseChatPie)
   {
-    super(paramagkz);
-    this.jdField_a_of_type_Boolean = true;
+    this.a = paramBaseChatPie;
+  }
+  
+  private void a()
+  {
+    if ((this.a != null) && (this.a.getIfOnShowDone()) && (this.a.getCurType() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
+    }
+  }
+  
+  private void b()
+  {
+    if ((this.a != null) && (this.a.getCurType() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 6: 
+      a();
+      return;
+    }
+    b();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 6, 11 };
   }
 }
 

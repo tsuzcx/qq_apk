@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.automator;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import onz;
+import ovw;
 
 public class Automator$2
   implements Runnable
 {
   public void run()
   {
-    onz.a(this.this$0).clear();
-    onz.a(this.this$0).addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    onz.a(this.this$0).addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    ovw.a(this.this$0).clear();
+    ovw.a(this.this$0).addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    ovw.a(this.this$0).addAll(this.jdField_a_of_type_JavaUtilArrayList);
     if (this.jdField_a_of_type_Boolean) {
-      onz.a(this.this$0);
+      ovw.a(this.this$0);
     }
   }
 }

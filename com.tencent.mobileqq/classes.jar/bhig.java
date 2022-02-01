@@ -1,55 +1,37 @@
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhig
+final class bhig
+  extends ClickableSpan
 {
-  Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-  private Handler jdField_a_of_type_AndroidOsHandler = new bhih(this, Looper.getMainLooper());
-  Toast jdField_a_of_type_AndroidWidgetToast = null;
+  bhig(Context paramContext, axwq paramaxwq) {}
   
-  public bhig(Context paramContext) {}
-  
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidWidgetToast != null) {
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Axwq.b());
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Axwq.b());
     }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    bhii localbhii = new bhii(null);
-    localbhii.jdField_a_of_type_Int = paramInt4;
-    localbhii.b = paramInt1;
-    localbhii.c = paramInt3;
-    localbhii.d = paramInt2;
-    localMessage.obj = localbhii;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    bhii localbhii = new bhii(null);
-    localbhii.jdField_a_of_type_Int = paramInt3;
-    localbhii.jdField_a_of_type_JavaLangString = paramString;
-    localbhii.c = paramInt2;
-    localbhii.d = paramInt1;
-    localMessage.obj = localbhii;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#00aced"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhig
  * JD-Core Version:    0.7.0.1
  */

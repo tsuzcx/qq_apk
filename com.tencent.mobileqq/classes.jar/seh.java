@@ -1,79 +1,35 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import java.util.HashMap;
-import mqq.manager.Manager;
-
-public class seh
-  implements Manager
+class seh
+  implements seb
 {
-  public static int a;
-  public static int b;
-  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  HashMap<Long, Bundle> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = true;
-  HashMap<Long, Bundle> b;
+  seh(seg paramseg) {}
   
-  static
+  public void a() {}
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    jdField_b_of_type_Int = 1;
-  }
-  
-  public seh(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void a(int paramInt) {}
-  
-  public void a(TroopMemberApiService paramTroopMemberApiService)
-  {
-    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService == null) {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
-    }
-  }
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!ypi.b(paramString))) {}
-    for (;;)
+    switch (paramInt)
     {
-      sei localsei = new sei(this);
-      TransferRequest localTransferRequest = new TransferRequest();
-      localTransferRequest.mUpCallBack = new sej(this);
-      TransFileController localTransFileController = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController();
-      localsei.addFilter(new Class[] { BDHCommonUploadProcessor.class });
-      localTransFileController.addHandle(localsei);
-      localTransferRequest.mLocalPath = paramString;
-      localTransferRequest.mIsUp = true;
-      localTransferRequest.mFileType = 24;
-      localTransferRequest.mCommandId = 54;
-      localTransferRequest.mSelfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
-      localTransferRequest.mPeerUin = "0";
-      localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-      localTransFileController.transferAsync(localTransferRequest);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localTransferRequest.mUniseq), paramBundle);
-      this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localTransferRequest.mUniseq), paramBundle);
+    default: 
       return;
-      a(jdField_a_of_type_Int);
+    case 0: 
+      seg.a(this.a, paramString1);
+      seg.b(this.a, paramString2);
+      seg.a(this.a, 3);
+      return;
+    case 1001: 
+      seg.b(this.a, 10);
+      return;
+    case 1002: 
+      seg.b(this.a, 9);
+      return;
+    case 1003: 
+      seg.b(this.a, 11);
+      return;
     }
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService != null) {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = null;
-    }
+    seg.b(this.a, 13);
+    seg.c(this.a, 1002);
   }
 }
 

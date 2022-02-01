@@ -1,93 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.FaceItem;
-import com.tencent.av.business.manager.voiceRecog.VoiceRecogTips;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.FaceToolbar;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
 
 public class mdj
-  implements mgx
+  implements mik
 {
-  public mdj(FaceToolbar paramFaceToolbar) {}
+  public mdj(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void a(long paramLong)
+  public void a()
   {
-    EffectSettingUi.a(this.a.mApp, paramLong);
+    this.a.j = true;
+    this.a.M();
   }
   
-  public void a(long paramLong, mhr parammhr)
+  public void b()
   {
-    boolean bool = false;
-    int j = 1;
-    if (AudioHelper.f()) {
-      QLog.w(FaceToolbar.TAG, 1, "onEffectClick, seq[" + paramLong + "], id[" + parammhr.jdField_a_of_type_JavaLangString + "]");
-    }
-    EffectSettingUi.a(this.a.mApp, paramLong);
-    Object localObject = this.a.mApp.a();
-    if (this.a.checkDimmStatus(parammhr)) {}
-    do
-    {
-      return;
-      localObject = ((VideoController)localObject).a(this.a.mApp.a().a().d) + "";
-      VoiceRecogTips.a(this.a.mApp, parammhr);
-      if (!parammhr.jdField_a_of_type_JavaLangString.equals("0")) {
-        break;
-      }
-      this.a.notifyEvent(Integer.valueOf(6101), null, Boolean.valueOf(true));
-      lgu.a(2, (String)localObject);
-      lgu.a(2);
-    } while (!this.a.mApp.a(13));
-    ((lhg)this.a.mApp.a(13)).a(paramLong, "onEffectClick2");
-    return;
-    AudioHelper.a(parammhr.jdField_a_of_type_JavaLangString, false);
-    if ((parammhr.jdField_a_of_type_Int == 1) && (!mch.c) && (mch.b == 4) && (TextUtils.equals(mch.d, parammhr.jdField_a_of_type_JavaLangString)) && (this.a.mAdapterPendant.a() != parammhr)) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(FaceToolbar.TAG, 2, "onEffectClick_Check, type[" + parammhr.jdField_a_of_type_Int + "], sLastSenderFlag[" + mch.c + "], sLastItemId[" + mch.d + "], sLastFrom[" + mch.b + "], id[" + parammhr.jdField_a_of_type_JavaLangString + "], isSender[" + bool + "], click[" + this.a.mAdapterPendant.a() + "], info[" + parammhr + "]");
-      }
-      new mch(paramLong, parammhr.jdField_a_of_type_JavaLangString, bool, 1).a(this.a.mApp);
-      FaceItem localFaceItem = (FaceItem)this.a.mFaceManager.a(parammhr.jdField_a_of_type_JavaLangString);
-      int i = j;
-      if (localFaceItem != null)
-      {
-        if (!localFaceItem.getType().equalsIgnoreCase("face")) {
-          break label488;
-        }
-        i = j;
-      }
-      for (;;)
-      {
-        lgu.a(parammhr.jdField_a_of_type_JavaLangString, i, (String)localObject);
-        lgu.a(parammhr.jdField_a_of_type_JavaLangString, i);
-        return;
-        label488:
-        if (localFaceItem.getType().equalsIgnoreCase("pendant"))
-        {
-          i = 2;
-        }
-        else if (localFaceItem.getType().equalsIgnoreCase("voicesticker"))
-        {
-          i = 3;
-        }
-        else
-        {
-          i = j;
-          if (localFaceItem.getType().equalsIgnoreCase("creativecop")) {
-            i = 4;
-          }
-        }
-      }
-      bool = true;
-    }
+    this.a.j = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mdj
  * JD-Core Version:    0.7.0.1
  */

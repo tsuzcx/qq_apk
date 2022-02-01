@@ -1,16 +1,56 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import java.util.List;
+import Wallet.PfaFriend;
+import Wallet.PfaFriendRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class aksx
-  implements ajvf
+final class aksx
+  implements DialogInterface.OnClickListener
 {
-  public aksx(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  aksx(WeakReference paramWeakReference, ArrayList paramArrayList) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.E) && (paramInt1 > 0)) {
-      NewFlowCameraActivity.c = true;
+    if ((paramDialogInterface instanceof QQCustomDialogWtihInputAndChoose)) {
+      switch (paramInt)
+      {
+      }
+    }
+    do
+    {
+      return;
+      aksv.a((SelectMemberActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaUtilArrayList, (QQCustomDialogWtihInputAndChoose)paramDialogInterface);
+    } while ((aksv.a == null) || (aksv.a.vecRec == null) || (aksv.a.vecRec.size() <= 0));
+    paramInt = 0;
+    label79:
+    String str;
+    int i;
+    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      str = "friendpay.selectpage.unrecomchoosefriclick";
+      i = 0;
+    }
+    for (;;)
+    {
+      paramDialogInterface = str;
+      if (i < aksv.a.vecRec.size())
+      {
+        if (((ResultRecord)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).uin.equals(((PfaFriend)aksv.a.vecRec.get(i)).uin)) {
+          paramDialogInterface = "friendpay.selectpage.recommendfriclick";
+        }
+      }
+      else
+      {
+        bdla.b(albw.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramDialogInterface, 0, 0, "", "", "", "");
+        paramInt += 1;
+        break label79;
+        break;
+      }
+      i += 1;
     }
   }
 }

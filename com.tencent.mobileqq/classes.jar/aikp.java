@@ -1,206 +1,87 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class aikp
-  extends BusinessHandler
 {
-  public aikp(QQAppInterface paramQQAppInterface)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    super(paramQQAppInterface);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null) || (this.app == null)) {}
-    aikq localaikq;
-    do
-    {
-      do
-      {
-        return;
-        localaikq = (aikq)this.app.getManager(383);
-      } while (localaikq == null);
-      paramToServiceMsg = new oidb_0x5eb.RspBody();
-    } while (parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg) != 0);
-    if (paramToServiceMsg.rpt_msg_uin_data.has()) {}
-    for (paramToServiceMsg = paramToServiceMsg.rpt_msg_uin_data.get();; paramToServiceMsg = null)
-    {
-      localaikq.a(paramToServiceMsg);
-      notifyUI(1, true, new Object[] { paramToServiceMsg });
-      return;
-    }
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    paramString = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), paramString);
-    paramString.putWupBuffer(paramArrayOfByte);
-    if (paramBundle != null) {
-      paramString.extraData = paramBundle;
-    }
-    sendPbReq(paramString);
-  }
-  
-  public void a(List<Long> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty()) || (paramList.size() > 70)) {
-      return;
-    }
-    Object localObject = new oidb_0x5eb.ReqBody();
-    ((oidb_0x5eb.ReqBody)localObject).rpt_uint64_uins.set(paramList);
-    ((oidb_0x5eb.ReqBody)localObject).uint32_req_age.set(1);
-    ((oidb_0x5eb.ReqBody)localObject).uint32_req_gender.set(1);
-    ((oidb_0x5eb.ReqBody)localObject).uint32_req_city.set(1);
-    ((oidb_0x5eb.ReqBody)localObject).uint32_req_province.set(1);
-    ((oidb_0x5eb.ReqBody)localObject).uint32_req_country.set(1);
-    localObject = makeOIDBPkg("OidbSvc.0x5eb_troopnotifycation", 1515, 22, ((oidb_0x5eb.ReqBody)localObject).toByteArray());
-    ((ToServiceMsg)localObject).addAttribute("uins", paramList);
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null) || (this.app == null)) {}
-    label19:
-    label52:
-    do
-    {
-      do
-      {
-        do
-        {
-          break label19;
-          do
-          {
-            return;
-          } while (!paramFromServiceMsg.isSuccess());
-          paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-          try
-          {
-            paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
-            paramToServiceMsg = paramFromServiceMsg;
-          }
-          catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-          {
-            int k;
-            int j;
-            int i;
-            break label52;
-            paramFromServiceMsg.b(paramObject);
-            notifyUI(1, true, new Object[] { paramObject });
-          }
-        } while ((paramToServiceMsg == null) || (!paramToServiceMsg.uint32_result.has()) || (!paramToServiceMsg.bytes_bodybuffer.has()) || (paramToServiceMsg.bytes_bodybuffer.get() == null) || (paramToServiceMsg.uint32_result.get() != 0));
-        paramToServiceMsg = paramToServiceMsg.bytes_bodybuffer.get().toByteArray();
-        k = PkgTools.getShortData(paramToServiceMsg, 0);
-      } while (paramToServiceMsg.length != k * 10 + 2);
-      paramFromServiceMsg = (aikq)this.app.getManager(383);
-    } while (paramFromServiceMsg == null);
-    paramObject = new ArrayList();
-    j = 2;
-    i = 0;
-    while (i < k)
-    {
-      long l = PkgTools.getLongData(paramToServiceMsg, j);
-      paramObject.add(Long.valueOf(l));
-      j += 4;
-      int m = PkgTools.getShortData(paramToServiceMsg, j);
-      j = j + 2 + 4;
-      paramFromServiceMsg.a(l, m);
-      i += 1;
-    }
-  }
-  
-  public void b(List<Long> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty()) || (paramList.size() > 70)) {}
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
     do
     {
       return;
-      int i = 0;
-      while (i < paramList.size())
-      {
-        if ((Long)paramList.get(i) == null) {
-          paramList.remove(i);
-        }
-        i += 1;
+      c(paramQQAppInterface, paramString);
+      MessageRecord localMessageRecord = bcsa.a(-1026);
+      long l = bcrg.a();
+      localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1026, 0, l);
+      localMessageRecord.isread = true;
+      paramQQAppInterface.getMessageFacade().addMessage(localMessageRecord, localMessageRecord.selfuin);
+      bdla.b(paramQQAppInterface, "CliOper", "", "", "0X8004C56", "0X8004C56", 0, 0, "", "", "", "");
+    } while (!QLog.isColorLevel());
+    QLog.d("GatherContactsTipsHelper", 2, "insertUncommonlyUsedContactsTips success, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, List<String> paramList)
+  {
+    if ((paramQQAppInterface == null) || (paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        a(paramQQAppInterface, (String)paramList.next());
       }
-    } while (paramList.isEmpty());
-    short s = (short)paramList.size();
-    Object localObject = ByteBuffer.allocate(paramList.size() * 4 + 2);
-    ((ByteBuffer)localObject).putShort(s);
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      ((ByteBuffer)localObject).putInt((int)((Long)paramList.next()).longValue());
     }
-    paramList = ((ByteBuffer)localObject).array();
-    localObject = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(1640);
-    ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramList));
-    a("OidbSvc.0x668", ((oidb_sso.OIDBSSOPkg)localObject).toByteArray(), null);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return aikt.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      QLog.i("TroopNotificationHandler", 2, "TroopNotificationHandler onReceive res == null || req == null");
-    }
-    String str;
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
     do
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopNotificationHandler", 2, "TroopNotificationHandler onReceive resultCode:" + paramFromServiceMsg.getResultCode() + "errMsg: " + paramFromServiceMsg.getBusinessFailMsg() + "serviceCmd: " + paramToServiceMsg.getServiceCmd());
+      c(paramQQAppInterface, paramString);
+      MessageRecord localMessageRecord = bcsa.a(-1027);
+      long l = bcrg.a();
+      localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1027, 0, l);
+      localMessageRecord.isread = true;
+      paramQQAppInterface.getMessageFacade().addMessage(localMessageRecord, localMessageRecord.selfuin);
+      bdla.b(paramQQAppInterface, "CliOper", "", "", "0X8004C57", "0X8004C57", 0, 0, "", "", "", "");
+    } while (!QLog.isColorLevel());
+    QLog.d("GatherContactsTipsHelper", 2, "insertUncommonlyUsedContactsCancelSetTips success, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, List<String> paramList)
+  {
+    if ((paramQQAppInterface == null) || (paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        b(paramQQAppInterface, (String)paramList.next());
       }
-      str = paramToServiceMsg.getServiceCmd();
-      try
+    }
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Iterator localIterator = paramQQAppInterface.getMessageFacade().getMsgList(paramString, 0).iterator();
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if ((localMessageRecord.msgtype == -1026) || (localMessageRecord.msgtype == -1027))
       {
-        int i = ((oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject)).uint32_result.get();
-        if ((i != 0) && (QLog.isColorLevel())) {
-          QLog.i("TroopNotificationHandler", 2, "TroopNotificationHandler onReceive return Error result:" + i + "cmd：" + paramToServiceMsg.getServiceCmd());
+        paramQQAppInterface.getMessageFacade().removeMsgByUniseq(paramString, 0, localMessageRecord.uniseq);
+        if (QLog.isColorLevel()) {
+          QLog.d("GatherContactsTipsHelper", 2, "deleteUncommonlyUsedContactsAndCancelTips, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString + " msgtype:" + localMessageRecord.msgtype);
         }
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("TroopNotificationHandler", 2, "TroopNotificationHandler onReceive exception: " + localInvalidProtocolBufferMicroException.getMessage() + "cmd：" + paramToServiceMsg.getServiceCmd());
-          }
-        }
-      }
-      if ("OidbSvc.0x5eb_troopnotifycation".equals(str))
-      {
-        a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!"OidbSvc.0x668".equals(str));
-    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

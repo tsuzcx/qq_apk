@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
 import android.content.Context;
-import auoj;
-import auok;
+import avue;
+import avuf;
 import java.util.Map;
 
 public final class MonitorConfig$1
@@ -12,13 +12,13 @@ public final class MonitorConfig$1
   
   public void run()
   {
-    auok.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    if (auok.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString) != null)
+    avuf.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    if (avuf.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString) != null)
     {
-      auoj.b(String.valueOf(((auok)auok.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString)).jdField_a_of_type_Int));
+      avue.b(String.valueOf(((avuf)avuf.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString)).jdField_a_of_type_Int));
       return;
     }
-    auoj.b("3235983");
+    avue.b("3235983");
   }
 }
 

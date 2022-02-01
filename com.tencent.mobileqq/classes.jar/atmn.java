@@ -1,15 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class atmn
-  implements DialogInterface.OnClickListener
+public abstract interface atmn
 {
-  atmn(atmm paramatmm) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(atmm paramatmm);
+  
+  public abstract boolean a(String paramString, long paramLong, byte[] paramArrayOfByte);
 }
 
 

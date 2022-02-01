@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.richstatus.EditActivity;
-
-public class baml
-  implements bamx
+class baml
 {
-  public baml(EditActivity paramEditActivity) {}
+  bamd jdField_a_of_type_Bamd;
+  baml jdField_a_of_type_Baml;
+  boolean jdField_a_of_type_Boolean;
   
-  public void a(bhby parambhby)
+  private baml(bami parambami) {}
+  
+  public String toString()
   {
-    if (EditActivity.a(this.a) == parambhby)
-    {
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).a(null);
-      }
-      EditActivity.a(this.a, null);
+    StringBuilder localStringBuilder = new StringBuilder().append("state=").append(this.jdField_a_of_type_Bamd.a()).append(",active=").append(this.jdField_a_of_type_Boolean).append(",parent=");
+    if (this.jdField_a_of_type_Baml == null) {}
+    for (String str = "null";; str = this.jdField_a_of_type_Baml.jdField_a_of_type_Bamd.a()) {
+      return str;
     }
-  }
-  
-  public boolean a(bhby parambhby)
-  {
-    return parambhby != EditActivity.a(this.a);
   }
 }
 

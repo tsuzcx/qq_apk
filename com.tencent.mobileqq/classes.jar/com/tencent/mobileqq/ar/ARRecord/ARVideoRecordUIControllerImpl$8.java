@@ -1,58 +1,58 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import aoae;
-import aoai;
-import aoal;
+import apdg;
+import apdk;
+import apdn;
 
 public class ARVideoRecordUIControllerImpl$8
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$8(aoai paramaoai, int paramInt) {}
+  public ARVideoRecordUIControllerImpl$8(apdk paramapdk, int paramInt) {}
   
   public void run()
   {
-    if (aoai.a(this.this$0) != null) {
-      aoai.a(this.this$0).a(0);
+    if (apdk.a(this.this$0) != null) {
+      apdk.a(this.this$0).a(0);
     }
     if (this.a == 0) {
-      if (aoai.a(this.this$0) != -1) {
-        switch (aoai.a(this.this$0))
+      if (apdk.a(this.this$0) != -1) {
+        switch (apdk.a(this.this$0))
         {
         case 5: 
         default: 
-          aoai.a(this.this$0, -1);
+          apdk.a(this.this$0, -1);
         }
       }
     }
     for (;;)
     {
-      aoai.b(this.this$0, false);
-      if (!aoai.c(this.this$0)) {
-        aoai.a(this.this$0);
+      apdk.b(this.this$0, false);
+      if (!apdk.c(this.this$0)) {
+        apdk.a(this.this$0);
       }
       return;
-      aoai.a("0X8008A56");
-      aoae.a("AR视频已保存", aoai.e);
+      apdk.a("0X8008A56");
+      apdg.a("AR视频已保存", apdk.e);
       break;
-      aoae.a(aoai.h, true);
+      apdg.a(apdk.h, true);
       break;
-      aoai.a("0X8008A56");
-      aoae.a(aoai.h, true);
+      apdk.a("0X8008A56");
+      apdg.a(apdk.h, true);
       break;
-      if (aoai.b(this.this$0) == true)
+      if (apdk.b(this.this$0) == true)
       {
-        aoai.a(this.this$0, false);
+        apdk.a(this.this$0, false);
       }
       else
       {
-        aoai.a("0X8008A56");
-        aoae.a(aoai.h, true);
+        apdk.a("0X8008A56");
+        apdg.a(apdk.h, true);
         continue;
-        aoai.a("0X8008A56");
+        apdk.a("0X8008A56");
         if (this.a == 1) {
-          aoae.a("AR视频已保存", aoai.f);
+          apdg.a("AR视频已保存", apdk.f);
         } else {
-          aoae.a("AR视频已保存", aoai.g);
+          apdg.a("AR视频已保存", apdk.g);
         }
       }
     }

@@ -1,171 +1,23 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aabs
-  extends Handler
+  implements View.OnClickListener
 {
-  aabs(aabq paramaabq, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aabs(aabr paramaabr, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    label32:
-    Object localObject2;
-    label468:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            Object localObject1;
-            do
-            {
-              return;
-              switch (paramMessage.what)
-              {
-              default: 
-                if (paramMessage.arg1 != 1) {
-                  break label468;
-                }
-                this.a.b = paramMessage.arg2;
-                localObject1 = (String)paramMessage.obj;
-                localObject2 = this.a.mRuntime.a();
-              }
-            } while (localObject2 == null);
-            if (this.a.jdField_a_of_type_Long == -1L) {
-              this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-            }
-            ((CustomWebView)localObject2).loadUrlOriginal((String)localObject1);
-            ((CustomWebView)localObject2).requestFocus();
-            if (QLog.isColorLevel()) {
-              QLog.i("OfflinePluginQQ", 2, "mCheckupHandler loadUrl start \n" + (String)localObject1);
-            }
-            this.a.a((String)localObject1);
-            for (;;)
-            {
-              for (;;)
-              {
-                localObject1 = this.a.mRuntime.a();
-                localObject2 = this.a.mRuntime.a(this.a.mRuntime.a());
-                if ((localObject2 == null) || (!(localObject2 instanceof bgzi))) {
-                  break;
-                }
-                if (paramMessage.arg1 != 4) {
-                  break label535;
-                }
-                if ((aabq.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(aabq.a(this.a)))) {
-                  break;
-                }
-                localObject1 = (uea)aabq.jdField_a_of_type_JavaUtilHashMap.get(aabq.a(this.a));
-                if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-                  this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramMessage.arg2);
-                }
-                if (this.a.jdField_a_of_type_AndroidWidgetTextView == null) {
-                  break;
-                }
-                this.a.jdField_a_of_type_AndroidWidgetTextView.setText(((uea)localObject1).e + paramMessage.arg2 + "%");
-                return;
-                try
-                {
-                  localObject1 = (String)((Object[])(Object[])paramMessage.obj)[1];
-                  localObject2 = new JSONObject();
-                  ((JSONObject)localObject2).put("retcode", 0);
-                  ((JSONObject)localObject2).put("data", npn.a((String)localObject1));
-                  this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject2).toString() });
-                }
-                catch (Exception localException1)
-                {
-                  try
-                  {
-                    JSONObject localJSONObject1 = new JSONObject();
-                    localJSONObject1.put("retcode", -1);
-                    localJSONObject1.put("msg", "error");
-                    this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { localJSONObject1.toString() });
-                  }
-                  catch (JSONException localJSONException) {}
-                }
-              }
-              if (!QLog.isColorLevel()) {
-                break label32;
-              }
-              QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + localJSONException);
-              break label32;
-              if (paramMessage.arg1 == 2)
-              {
-                if (QLog.isDevelopLevel()) {
-                  QLog.i("OfflinePluginQQ", 4, "checkOfflineUpBack refresh current url");
-                }
-                this.a.c();
-              }
-              else if (paramMessage.arg1 == 3)
-              {
-                try
-                {
-                  JSONObject localJSONObject2 = (JSONObject)paramMessage.obj;
-                  this.a.a(localJSONObject2);
-                }
-                catch (Exception localException2)
-                {
-                  localException2.printStackTrace();
-                }
-              }
-            }
-          } while ((paramMessage.arg1 != 5) || (aabq.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(aabq.a(this.a))));
-          localObject2 = (uea)aabq.jdField_a_of_type_JavaUtilHashMap.get(aabq.a(this.a));
-        } while (localObject2 == null);
-        if (paramMessage.arg2 != 0) {
-          break;
-        }
-        ((uea)localObject2).a(3);
-      } while (localException2 == null);
-      paramMessage = localException2.getResources().getDrawable(2130839420);
-      paramMessage.setBounds(0, 0, 40, 40);
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramMessage, null, null, null);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(((uea)localObject2).d);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      }
-    } while (this.a.jdField_a_of_type_AndroidWidgetLinearLayout == null);
-    label535:
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    return;
-    if ((paramMessage.arg2 == 5) || (paramMessage.arg2 == 7))
-    {
-      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      }
-      ((uea)localObject2).a(4);
-      return;
-    }
-    yyi.a(1, 2131695574);
-    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    }
-    ((uea)localObject2).a(4);
+    zqm.a(this.jdField_a_of_type_Aabr.a.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 0, zyh.a(aabr.a(this.jdField_a_of_type_Aabr), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.width.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.height.get()));
+    aanb.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "blank_content_clk", 0, 0, new String[] { "", aabr.a(this.jdField_a_of_type_Aabr) + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

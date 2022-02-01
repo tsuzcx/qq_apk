@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.config;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import pbr;
+import pks;
 
 public class AladdinConfigServlet$ConfigResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<ConfigResult> CREATOR = new pbr();
+  public static final Parcelable.Creator<ConfigResult> CREATOR = new pks();
   private final int a;
   private final int b;
   private final int c;

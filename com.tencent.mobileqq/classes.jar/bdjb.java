@@ -1,34 +1,37 @@
-import android.content.Context;
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import android.support.v4.view.ViewCompat;
+import android.view.View;
+import com.tencent.mobileqq.startup.step.SetSplash;
 
-class bdjb
-  extends bdji<UserState>
+public final class bdjb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bdjb(bdiu parambdiu, UserState paramUserState, List paramList)
-  {
-    super(paramUserState, paramList);
-  }
+  public bdjb(int paramInt1, int paramInt2, int paramInt3, View paramView, bdjm parambdjm) {}
   
-  public void a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.a(paramInt);
-    a((UserState)bdiu.a(this.a).b());
-  }
-  
-  public void a(UserState paramUserState)
-  {
-    bdiu.a(this.a).b();
-    if (bdiu.a(this.a).a()) {
-      bdiu.a(this.a).d();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (this.jdField_a_of_type_Int > 0) {}
+    for (int i = (int)(this.jdField_a_of_type_Int * f);; i = 0)
+    {
+      int j = this.b;
+      int k = (int)((this.b - this.c) * f);
+      paramValueAnimator = new Rect(0, i, this.jdField_a_of_type_AndroidViewView.getRight(), j - k + i);
+      ViewCompat.setClipBounds(this.jdField_a_of_type_AndroidViewView, paramValueAnimator);
+      if ((f > 0.6D) && (!SetSplash.d()))
+      {
+        SetSplash.a(true);
+        SetSplash.b(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Bdjm);
+      }
+      return;
     }
-    bdiu.a(this.a).a(bdgn.c(bdiu.a(this.a).getString(2131719439), bdiu.a(this.a).a()), 0);
-    bdiu.a(this.a).j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjb
  * JD-Core Version:    0.7.0.1
  */

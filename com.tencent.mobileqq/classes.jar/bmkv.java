@@ -1,24 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.vip.ad.TianshuAdManager.1.1;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import cooperation.vip.tianshu.TianShuGetAdvCallback;
+import mqq.os.MqqHandler;
 
-class bmkv
-  implements View.OnClickListener
+public class bmkv
+  implements TianShuGetAdvCallback
 {
-  bmkv(bmku parambmku, AEEditorFilterBean paramAEEditorFilterBean, int paramInt) {}
+  bmkv(bmku parambmku) {}
   
-  public void onClick(View paramView)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    AEEditorFilterBean localAEEditorFilterBean = this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean;
-    boolean bool = true;
-    if (bmku.a(this.jdField_a_of_type_Bmku) != null) {
-      bool = bmku.a(this.jdField_a_of_type_Bmku).a(this.jdField_a_of_type_Int, localAEEditorFilterBean);
+    if ((paramBoolean) && (paramGetAdsRsp != null)) {
+      ThreadManager.getUIHandler().postDelayed(new TianshuAdManager.1.1(this, paramGetAdsRsp), 500L);
     }
-    if (bool) {
-      this.jdField_a_of_type_Bmku.a(this.jdField_a_of_type_Int);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

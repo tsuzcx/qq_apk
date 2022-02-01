@@ -1,22 +1,30 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class vzo
-  extends QQUIEventReceiver<vzf, voc>
+public abstract class vzo<T>
+  implements vzp<T>
 {
-  public vzo(@NonNull vzf paramvzf)
+  private vzq<T> a;
+  
+  public void a()
   {
-    super(paramvzf);
+    Object localObject = this.a.a();
+    if (localObject != null)
+    {
+      a(localObject);
+      ykq.a("Q.qqstory.home.data.Producer", "start one consumer:%s", localObject);
+      return;
+    }
+    ykq.d("Q.qqstory.home.data.Producer", "no data return");
   }
   
-  public void a(@NonNull vzf paramvzf, @NonNull voc paramvoc)
+  public abstract void a(T paramT);
+  
+  public void a(vzq<T> paramvzq)
   {
-    paramvzf.a.b(paramvoc);
+    this.a = paramvzq;
   }
   
-  public Class acceptEventClass()
+  public void b()
   {
-    return voc.class;
+    a();
   }
 }
 

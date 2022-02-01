@@ -1,17 +1,20 @@
-import android.view.View;
-import com.tencent.widget.ListView;
+import com.tencent.qphone.base.util.QLog;
 
-class pfj
-  extends pse
+final class pfj
+  implements tlu
 {
-  pfj(pey parampey, String paramString, View paramView, ListView paramListView, long paramLong)
+  pfj(String paramString) {}
+  
+  public void a(tlw paramtlw, int paramInt) {}
+  
+  public void a(tlw paramtlw, Throwable paramThrowable)
   {
-    super(paramString);
+    QLog.e("ReadInJoyCommentPBModule", 2, "preload failed " + this.a);
   }
   
-  public void a(prx paramprx)
+  public void a(tlw paramtlw, tls paramtls)
   {
-    paramprx.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Long);
+    QLog.d("ReadInJoyCommentPBModule", 2, "preload success " + this.a);
   }
 }
 

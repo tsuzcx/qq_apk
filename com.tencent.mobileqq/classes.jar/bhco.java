@@ -1,24 +1,13 @@
-import android.content.Context;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class bhco
-  implements View.OnClickListener
+final class bhco
+  implements MediaPlayer.OnCompletionListener
 {
-  public bhco(ContextMenuTextView paramContextMenuTextView) {}
-  
-  public void onClick(View paramView)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (paramView.getId() == 2131365216)
-    {
-      Context localContext = ContextMenuTextView.a(this.a);
-      ContextMenuTextView.a(this.a);
-      ((ClipboardManager)localContext.getSystemService("clipboard")).setText(this.a.getText().toString());
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramMediaPlayer.release();
+    bhcl.a = null;
   }
 }
 

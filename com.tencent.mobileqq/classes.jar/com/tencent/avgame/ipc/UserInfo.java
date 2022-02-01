@@ -3,12 +3,12 @@ package com.tencent.avgame.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ngq;
+import nni;
 
 public class UserInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<UserInfo> CREATOR = new ngq();
+  public static final Parcelable.Creator<UserInfo> CREATOR = new nni();
   public int a;
   public String a;
   public boolean a;

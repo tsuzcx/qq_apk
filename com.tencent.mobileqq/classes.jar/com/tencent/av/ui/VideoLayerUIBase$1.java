@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
-import lez;
+import lfe;
 
 class VideoLayerUIBase$1
   implements Runnable
@@ -13,8 +13,8 @@ class VideoLayerUIBase$1
     if (this.this$0.a != null)
     {
       Object localObject = this.this$0.a.a();
-      if ((((lez)localObject).j == 1011) && (((lez)localObject).I != 3)) {}
-      localObject = ((lez)localObject).d;
+      if ((((lfe)localObject).j == 1011) && (((lfe)localObject).I != 3)) {}
+      localObject = ((lfe)localObject).d;
       this.this$0.a.c((String)localObject);
     }
   }

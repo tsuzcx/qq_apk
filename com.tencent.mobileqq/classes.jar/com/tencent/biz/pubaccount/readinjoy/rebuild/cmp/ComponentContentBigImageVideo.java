@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -11,7 +10,8 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bgoa;
+import anvx;
+import bhyk;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
@@ -22,12 +22,14 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import pai;
-import pay;
-import pgb;
-import pvc;
-import rdm;
-import rwv;
+import pjr;
+import ppe;
+import pqa;
+import pqw;
+import pre;
+import qfw;
+import rps;
+import six;
 
 public class ComponentContentBigImageVideo
   extends ComponentContentBig
@@ -53,31 +55,31 @@ public class ComponentContentBigImageVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560111, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560158, this, true);
   }
   
-  public URL a(pvc parampvc)
+  public URL a(qfw paramqfw)
   {
-    Object localObject1 = parampvc.a();
+    Object localObject1 = paramqfw.a();
     Object localObject2;
-    if (parampvc.a() == 51)
+    if (paramqfw.a() == 51)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ComponentContentBigImageVideo", 2, "PolymericArticle use first page url");
       }
-      if ((pay.s((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mSinglePicture != null) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (!((ArticleInfo)localObject1).mNewPolymericInfo.b))
+      if ((pqw.g((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mSinglePicture != null) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (!((ArticleInfo)localObject1).mNewPolymericInfo.b))
       {
-        parampvc = ((ArticleInfo)localObject1).mSinglePicture.getFile();
-        localObject2 = pai.f();
-        parampvc = pay.a(parampvc, ((Integer)((Pair)localObject2).first).intValue(), ((Integer)((Pair)localObject2).second).intValue());
-        ((ArticleInfo)localObject1).mSinglePicture = pay.a(parampvc);
+        paramqfw = ((ArticleInfo)localObject1).mSinglePicture.getFile();
+        localObject2 = pjr.f();
+        paramqfw = pre.a(paramqfw, ((Integer)((Pair)localObject2).first).intValue(), ((Integer)((Pair)localObject2).second).intValue());
+        ((ArticleInfo)localObject1).mSinglePicture = pqa.a(paramqfw);
         ((ArticleInfo)localObject1).mNewPolymericInfo.b = true;
         if (QLog.isColorLevel()) {
-          QLog.e("ComponentContentBigImageVideo", 2, " handled url = " + parampvc);
+          QLog.e("ComponentContentBigImageVideo", 2, " handled url = " + paramqfw);
         }
       }
-      parampvc = ((ArticleInfo)localObject1).mSinglePicture;
-      return parampvc;
+      paramqfw = ((ArticleInfo)localObject1).mSinglePicture;
+      return paramqfw;
     }
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams() != null))
     {
@@ -92,7 +94,7 @@ public class ComponentContentBigImageVideo
         if (localObject1 == null) {
           break label306;
         }
-        parampvc = (pvc)localObject1;
+        paramqfw = (qfw)localObject1;
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -106,25 +108,25 @@ public class ComponentContentBigImageVideo
       }
     }
     label306:
-    return super.a(parampvc);
+    return super.a(paramqfw);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.b = ((TextView)paramView.findViewById(2131365817));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372735));
-    this.c = ((TextView)paramView.findViewById(2131381260));
+    this.b = ((TextView)paramView.findViewById(2131365915));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372928));
+    this.c = ((TextView)paramView.findViewById(2131381623));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof pvc))
+    if ((paramObject instanceof qfw))
     {
-      paramObject = ((pvc)paramObject).a();
+      paramObject = ((qfw)paramObject).a();
       if (paramObject != null) {
-        if (((pgb.g(paramObject)) || (pgb.i(paramObject)) || (pgb.j(paramObject)) || (pgb.k(paramObject))) && ((pgb.q(paramObject)) && (!pgb.a(paramObject)) && (!pgb.d(paramObject)))) {
+        if (((ppe.g(paramObject)) || (ppe.i(paramObject)) || (ppe.j(paramObject)) || (ppe.k(paramObject))) && ((ppe.q(paramObject)) && (!ppe.a(paramObject)) && (!ppe.d(paramObject)))) {
           break label118;
         }
       }
@@ -135,33 +137,33 @@ public class ComponentContentBigImageVideo
       this.c.setVisibility(4);
       return;
       label118:
-      if (pay.s(paramObject))
+      if (pqw.g(paramObject))
       {
         this.b.setVisibility(8);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianRoundCornerTextView.setVisibility(8);
       }
       else
       {
-        this.b.setText(pai.a(paramObject.mVideoDuration));
+        this.b.setText(pjr.a(paramObject.mVideoDuration));
       }
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.c.setVisibility(0);
-    Drawable localDrawable = getContext().getResources().getDrawable(2130843190);
+    Drawable localDrawable = getContext().getResources().getDrawable(2130843226);
     this.c.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
     this.c.setCompoundDrawablePadding(AIOUtils.dp2px(6.0F, getContext().getResources()));
     this.c.setVisibility(0);
-    if (bgoa.a() == 1)
+    if (bhyk.a() == 1)
     {
-      this.c.setText(amtj.a(2131701408));
+      this.c.setText(anvx.a(2131701759));
       return;
     }
     if (paramObject.mXGFileSize > 0L)
     {
-      this.c.setText(rwv.b(paramObject.mXGFileSize) + amtj.a(2131701461));
+      this.c.setText(six.b(paramObject.mXGFileSize) + anvx.a(2131701812));
       return;
     }
-    this.c.setText(amtj.a(2131701493));
+    this.c.setText(anvx.a(2131701844));
   }
   
   public void b()

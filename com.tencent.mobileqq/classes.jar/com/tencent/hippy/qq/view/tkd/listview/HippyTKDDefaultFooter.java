@@ -14,7 +14,7 @@ public class HippyTKDDefaultFooter
 {
   private static final int BALL_COUNT = 3;
   private static final String TAG = "DefaultFooterView";
-  private int ballColor = ResourceUtil.getColor(2131167247);
+  private int ballColor = ResourceUtil.getColor(2131167267);
   private int mBallColorId;
   private AnimatingBall[] mBalls = new AnimatingBall[3];
   private Integer mCustomBallColor;
@@ -109,13 +109,13 @@ public class HippyTKDDefaultFooter
       }
     }
     if (this.mCustomBallColor != null) {}
-    for (this.ballColor = this.mCustomBallColor.intValue();; this.ballColor = ResourceUtil.getColor(2131167247))
+    for (this.ballColor = this.mCustomBallColor.intValue();; this.ballColor = ResourceUtil.getColor(2131167267))
     {
       this.mBallColorId = 0;
       paramInt = i;
       break;
     }
-    this.mPullDownToRefreshSucIcon = UIBitmapUtils.getColorImage(ResourceUtil.getBitmap(2130850546), this.ballColor);
+    this.mPullDownToRefreshSucIcon = UIBitmapUtils.getColorImage(ResourceUtil.getBitmap(2130850677), this.ballColor);
     setTextColor(this.ballColor);
   }
   
@@ -153,35 +153,35 @@ public class HippyTKDDefaultFooter
       if (this.mLoadingStatus == 3)
       {
         stopLoading();
-        setText(ResourceUtil.getString(2131717635));
+        setText(ResourceUtil.getString(2131718002));
         setImageDrawable(this.mPullDownToRefreshFailIcon);
         return;
       }
       if (this.mLoadingStatus == 4)
       {
         stopLoading();
-        setText(ResourceUtil.getString(2131717642));
+        setText(ResourceUtil.getString(2131718009));
         setImageDrawable(this.mPullDownToRefreshFailIcon);
         return;
       }
       if (this.mLoadingStatus == 9)
       {
         stopLoading();
-        setText(ResourceUtil.getString(2131717636));
+        setText(ResourceUtil.getString(2131718003));
         setImageDrawable(null);
         return;
       }
       if (this.mLoadingStatus == 10)
       {
         stopLoading();
-        setText(ResourceUtil.getString(2131717637));
+        setText(ResourceUtil.getString(2131718004));
         setImageDrawable(null);
         return;
       }
       if (this.mLoadingStatus == 5)
       {
         stopLoading();
-        setText(ResourceUtil.getString(2131717635));
+        setText(ResourceUtil.getString(2131718002));
         setImageDrawable(this.mPullDownToRefreshFailIcon);
         postDelayed(new HippyTKDDefaultFooter.2(this), 2000L);
         return;
@@ -189,7 +189,7 @@ public class HippyTKDDefaultFooter
       if (this.mLoadingStatus == 6)
       {
         stopLoading();
-        setText(ResourceUtil.getString(2131717634));
+        setText(ResourceUtil.getString(2131718001));
         setImageDrawable(null);
         return;
       }

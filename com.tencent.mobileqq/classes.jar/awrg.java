@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnDismissListener;
-
-final class awrg
-  implements DialogInterface.OnCancelListener
+public class awrg
 {
-  awrg(DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public int a;
+  public long a;
+  public ahbj a;
+  public awre a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.a.onDismiss(paramDialogInterface);
-  }
+  public awrg(awra paramawra) {}
 }
 
 

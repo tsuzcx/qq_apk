@@ -1,39 +1,43 @@
 import android.os.Handler;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 
-class aksg
-  extends SosoInterface.OnLocationListener
+public class aksg
+  extends Handler
 {
-  private int jdField_a_of_type_Int = -1;
+  public aksg(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
   
-  public aksg(aksd paramaksd, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
-    {
-      double d1 = paramSosoLbsInfo.mLocation.mLat02;
-      double d2 = paramSosoLbsInfo.mLocation.mLon02;
+    super.handleMessage(paramMessage);
+    if (this.a.b()) {
       if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2);
+        QLog.i("RedPacketKuaKuaFragment", 2, "handleMessage:getActivity() == null || getActivity().isFinishing()");
       }
-      aksd.a(this.jdField_a_of_type_Aksd, d1, d2, this.jdField_a_of_type_Int);
     }
     do
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
       }
-    } while ((aksd.a(this.jdField_a_of_type_Aksd) == null) || (!aksd.a(this.jdField_a_of_type_Aksd).hasMessages(this.jdField_a_of_type_Int)));
-    aksd.a(this.jdField_a_of_type_Aksd, false, null, this.jdField_a_of_type_Int);
+      if (QLog.isColorLevel()) {
+        QLog.i("RedPacketKuaKuaFragment", 2, "handleMessage() returned:输入完成");
+      }
+    } while (NetConnInfoCenter.getServerTime() - RedPacketKuaKuaFragment.b(this.a) < RedPacketKuaKuaFragment.c(this.a));
+    if (TextUtils.isEmpty(RedPacketKuaKuaFragment.a(this.a).getText().toString()))
+    {
+      this.a.a(anvx.a(2131705449));
+      return;
+    }
+    bmhg.a(this.a.getActivity().app, "tenpay.com", new aksh(this));
   }
 }
 

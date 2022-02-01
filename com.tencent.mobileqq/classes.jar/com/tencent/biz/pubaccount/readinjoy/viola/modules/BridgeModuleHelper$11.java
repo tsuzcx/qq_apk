@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import org.json.JSONObject;
-import pay;
+import pkh;
 
 public final class BridgeModuleHelper$11
   implements Runnable
@@ -18,7 +18,7 @@ public final class BridgeModuleHelper$11
   
   public void run()
   {
-    int i = HttpDownloadUtil.downloadData((QQAppInterface)pay.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
+    int i = HttpDownloadUtil.downloadData((QQAppInterface)pkh.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
     if (QLog.isColorLevel()) {
       QLog.d("BridgeModuleHelper", 2, "saveImage imageUrl code=" + i + ",url= " + this.jdField_a_of_type_JavaLangString);
     }
@@ -49,7 +49,7 @@ public final class BridgeModuleHelper$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModuleHelper.11
  * JD-Core Version:    0.7.0.1
  */

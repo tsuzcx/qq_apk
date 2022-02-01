@@ -1,7 +1,7 @@
 package com.tencent.av.utils;
 
 import Override;
-import adxr;
+import aeow;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -12,28 +12,28 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Window;
-import bfur;
+import bhdj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import lzb;
+import lzr;
 import mqq.app.BaseActivity;
-import msn;
-import mso;
-import msp;
+import mtk;
+import mtl;
+import mtm;
 
 public class PopupDialog
   extends BaseActivity
 {
-  public static msp a;
+  public static mtm a;
   QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
   boolean jdField_a_of_type_Boolean = true;
   
   static
   {
-    jdField_a_of_type_Msp = new msp();
+    jdField_a_of_type_Mtm = new mtm();
   }
   
   public static QQCustomDialog a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -42,7 +42,7 @@ public class PopupDialog
     try
     {
       if (paramContext != BaseApplicationImpl.getApplication()) {
-        localQQCustomDialog1 = bfur.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
+        localQQCustomDialog1 = bhdj.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
       }
     }
     catch (Exception localException1)
@@ -71,14 +71,14 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "hideCustomDialog");
     }
-    jdField_a_of_type_Msp.jdField_a_of_type_Boolean = false;
-    msp localmsp = jdField_a_of_type_Msp;
-    if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    jdField_a_of_type_Mtm.jdField_a_of_type_Boolean = false;
+    mtm localmtm = jdField_a_of_type_Mtm;
+    if (mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      localmsp = jdField_a_of_type_Msp;
-      msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
-      localmsp = jdField_a_of_type_Msp;
-      msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
+      localmtm = jdField_a_of_type_Mtm;
+      mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+      localmtm = jdField_a_of_type_Mtm;
+      mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
     }
   }
   
@@ -107,7 +107,7 @@ public class PopupDialog
       paramString1.putExtra("public_fragment_window_feature", 1);
       paramString1.putExtra("request", localBundle);
       paramString1.addFlags(268435456);
-      adxr.a(paramContext, paramString1, PublicTransFragmentActivity.class, PopupDialogQQSide.class);
+      aeow.a(paramContext, paramString1, PublicTransFragmentActivity.class, PopupDialogQQSide.class);
       return;
     }
   }
@@ -117,18 +117,18 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "changeDialogText");
     }
-    Object localObject = jdField_a_of_type_Msp;
-    if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    Object localObject = jdField_a_of_type_Mtm;
+    if (mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      paramContext = jdField_a_of_type_Msp;
-      msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog.a(paramString1, paramString2);
+      paramContext = jdField_a_of_type_Mtm;
+      mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog.a(paramString1, paramString2);
       return;
     }
     localObject = new Intent(paramContext, PopupDialog.class);
     ((Intent)localObject).putExtra("invoke_type", "changeText");
     ((Intent)localObject).addFlags(268435456);
-    jdField_a_of_type_Msp.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_Msp.jdField_b_of_type_JavaLangString = paramString2;
+    jdField_a_of_type_Mtm.jdField_a_of_type_JavaLangString = paramString1;
+    jdField_a_of_type_Mtm.jdField_b_of_type_JavaLangString = paramString2;
     paramContext.startActivity((Intent)localObject);
   }
   
@@ -138,7 +138,7 @@ public class PopupDialog
       QLog.d("PopupDialog", 2, "sendIsResumeBroadcast isResume = " + paramBoolean);
     }
     if (this.jdField_a_of_type_Boolean) {
-      lzb.a(BaseApplicationImpl.getContext(), paramBoolean);
+      lzr.a(BaseApplicationImpl.getContext(), paramBoolean);
     }
   }
   
@@ -148,7 +148,7 @@ public class PopupDialog
     try
     {
       if (paramContext != BaseApplicationImpl.getApplication()) {
-        localQQCustomDialog1 = bfur.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
+        localQQCustomDialog1 = bhdj.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
       }
     }
     catch (Exception localException1)
@@ -181,21 +181,21 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "showCustomDialog");
     }
-    jdField_a_of_type_Msp.jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_Msp.jdField_a_of_type_Int = paramInt1;
-    jdField_a_of_type_Msp.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_Msp.jdField_b_of_type_JavaLangString = paramString2;
-    jdField_a_of_type_Msp.jdField_b_of_type_Int = paramInt2;
-    jdField_a_of_type_Msp.c = paramInt3;
-    jdField_a_of_type_Msp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener2;
-    jdField_a_of_type_Msp.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener1;
+    jdField_a_of_type_Mtm.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_Mtm.jdField_a_of_type_Int = paramInt1;
+    jdField_a_of_type_Mtm.jdField_a_of_type_JavaLangString = paramString1;
+    jdField_a_of_type_Mtm.jdField_b_of_type_JavaLangString = paramString2;
+    jdField_a_of_type_Mtm.jdField_b_of_type_Int = paramInt2;
+    jdField_a_of_type_Mtm.c = paramInt3;
+    jdField_a_of_type_Mtm.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener2;
+    jdField_a_of_type_Mtm.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener1;
     paramContext.startActivity(localIntent);
   }
   
   void a(String paramString1, String paramString2)
   {
-    jdField_a_of_type_Msp.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_Msp.jdField_b_of_type_JavaLangString = paramString2;
+    jdField_a_of_type_Mtm.jdField_a_of_type_JavaLangString = paramString1;
+    jdField_a_of_type_Mtm.jdField_b_of_type_JavaLangString = paramString2;
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(paramString1);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString2);
     if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
@@ -217,36 +217,36 @@ public class PopupDialog
       if ((!TextUtils.equals((CharSequence)localObject1, "changeText")) || (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)) {
         break;
       }
-      localObject1 = jdField_a_of_type_Msp.jdField_a_of_type_JavaLangString;
-      localObject2 = jdField_a_of_type_Msp.jdField_b_of_type_JavaLangString;
+      localObject1 = jdField_a_of_type_Mtm.jdField_a_of_type_JavaLangString;
+      localObject2 = jdField_a_of_type_Mtm.jdField_b_of_type_JavaLangString;
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle((String)localObject1);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage((CharSequence)localObject2);
     } while (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing());
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
     return;
-    int k = jdField_a_of_type_Msp.jdField_a_of_type_Int;
-    String str1 = jdField_a_of_type_Msp.jdField_a_of_type_JavaLangString;
-    String str2 = jdField_a_of_type_Msp.jdField_b_of_type_JavaLangString;
-    int i = jdField_a_of_type_Msp.jdField_b_of_type_Int;
-    int j = jdField_a_of_type_Msp.c;
+    int k = jdField_a_of_type_Mtm.jdField_a_of_type_Int;
+    String str1 = jdField_a_of_type_Mtm.jdField_a_of_type_JavaLangString;
+    String str2 = jdField_a_of_type_Mtm.jdField_b_of_type_JavaLangString;
+    int i = jdField_a_of_type_Mtm.jdField_b_of_type_Int;
+    int j = jdField_a_of_type_Mtm.c;
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    localObject1 = new msn(this);
-    Object localObject2 = new mso(this);
-    if ((i == 0) || (jdField_a_of_type_Msp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null))
+    localObject1 = new mtk(this);
+    Object localObject2 = new mtl(this);
+    if ((i == 0) || (jdField_a_of_type_Mtm.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null))
     {
       localObject1 = null;
-      i = 2131719509;
+      i = 2131719961;
     }
-    if ((j == 0) || (jdField_a_of_type_Msp.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null))
+    if ((j == 0) || (jdField_a_of_type_Mtm.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null))
     {
       localObject2 = null;
-      j = 2131719509;
+      j = 2131719961;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, k, str1, str2, i, j, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this, k, str1, str2, i, j, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject1);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
@@ -275,19 +275,19 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "onCreate");
     }
-    getWindow().setBackgroundDrawableResource(2130850608);
-    paramBundle = jdField_a_of_type_Msp;
-    if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    getWindow().setBackgroundDrawableResource(2130850739);
+    paramBundle = jdField_a_of_type_Mtm;
+    if (mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      paramBundle = jdField_a_of_type_Msp;
-      if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+      paramBundle = jdField_a_of_type_Mtm;
+      if (mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
       {
-        paramBundle = jdField_a_of_type_Msp;
-        msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+        paramBundle = jdField_a_of_type_Mtm;
+        mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       }
     }
-    paramBundle = jdField_a_of_type_Msp;
-    msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
+    paramBundle = jdField_a_of_type_Mtm;
+    mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
   }
   
   public void onDestroy()
@@ -300,8 +300,8 @@ public class PopupDialog
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    msp localmsp = jdField_a_of_type_Msp;
-    msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
+    mtm localmtm = jdField_a_of_type_Mtm;
+    mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
     super.onDestroy();
   }
   
@@ -322,18 +322,18 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "onNewIntent");
     }
-    paramIntent = jdField_a_of_type_Msp;
-    if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    paramIntent = jdField_a_of_type_Mtm;
+    if (mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      paramIntent = jdField_a_of_type_Msp;
-      if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+      paramIntent = jdField_a_of_type_Mtm;
+      if (mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
       {
-        paramIntent = jdField_a_of_type_Msp;
-        msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+        paramIntent = jdField_a_of_type_Mtm;
+        mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       }
     }
-    paramIntent = jdField_a_of_type_Msp;
-    msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
+    paramIntent = jdField_a_of_type_Mtm;
+    mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
   }
   
   public void onPause()
@@ -346,21 +346,21 @@ public class PopupDialog
   {
     super.onResume();
     b();
-    msp localmsp = jdField_a_of_type_Msp;
-    if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    mtm localmtm = jdField_a_of_type_Mtm;
+    if (mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      localmsp = jdField_a_of_type_Msp;
-      if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+      localmtm = jdField_a_of_type_Mtm;
+      if (mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
       {
-        localmsp = jdField_a_of_type_Msp;
-        msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+        localmtm = jdField_a_of_type_Mtm;
+        mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       }
     }
-    localmsp = jdField_a_of_type_Msp;
-    if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+    localmtm = jdField_a_of_type_Mtm;
+    if (mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
     {
-      localmsp = jdField_a_of_type_Msp;
-      msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
+      localmtm = jdField_a_of_type_Mtm;
+      mtm.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
     }
     a(true);
   }

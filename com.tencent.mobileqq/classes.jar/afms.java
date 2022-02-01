@@ -1,68 +1,32 @@
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class afms
+  implements BusinessObserver
 {
-  public afmr a = new afmr();
-  public afmr b = new afmr();
-  public afmr c = new afmr();
-  public afmr d = new afmr();
+  public afms(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a(this.b);
-    this.c.a(this.d);
-    this.b.a(this.d);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    this.a.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.b.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.c.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if (paramInt == 2002)
     {
-      this.a.a(this.b);
-      this.c.a(this.d);
-      this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
-      this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-      return;
-    }
-    this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
-    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-  }
-  
-  public void a(afms paramafms)
-  {
-    this.a.a(paramafms.a);
-    this.b.a(paramafms.b);
-    this.c.a(paramafms.c);
-    this.d.a(paramafms.d);
-  }
-  
-  public void b(afms paramafms)
-  {
-    if (paramafms.d == this.c)
-    {
-      this.a = paramafms.a;
-      this.c = paramafms.c;
-      this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
-    }
-    do
-    {
-      return;
-      if (this.d == paramafms.c)
+      if (paramBoolean) {}
+      try
       {
-        this.d.a(paramafms.d);
-        this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
+        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.2.1(this, paramBundle));
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("TransPathJob", 2, "TransPathJob merge point error");
+      catch (Throwable paramBundle)
+      {
+        QLog.e(QQNotifySettingBaseFragment.a(), 1, QLog.getStackTraceString(paramBundle));
+      }
+      this.a.b(3, "system error");
+      return;
+    }
   }
 }
 

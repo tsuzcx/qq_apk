@@ -1,26 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import java.io.File;
 
-class aipi
-  implements View.OnClickListener
+abstract interface aipi
 {
-  private WeakReference<aipe> a;
+  public abstract File a(String paramString);
   
-  public aipi(aipe paramaipe)
-  {
-    this.a = new WeakReference(paramaipe);
-  }
-  
-  public void onClick(View paramView)
-  {
-    aipe localaipe = (aipe)this.a.get();
-    if (localaipe != null) {
-      localaipe.onClick(paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract String c();
 }
 
 

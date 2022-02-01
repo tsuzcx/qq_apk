@@ -6,16 +6,16 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import vpl;
-import vpu;
-import vpz;
-import xbm;
-import xwa;
+import weg;
+import wep;
+import weu;
+import xqh;
+import ykv;
 
 public class QQStoryFriendSettings
   extends IphoneTitleBarActivity
 {
-  protected vpu<QQStoryFriendSettings> a = vpl.a(xbm.class, vpz.a(vpu.class), new Object[0]);
+  protected wep<QQStoryFriendSettings> a = weg.a(xqh.class, weu.a(wep.class), new Object[0]);
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -42,7 +42,7 @@ public class QQStoryFriendSettings
   public void doOnPause()
   {
     super.doOnPause();
-    xwa.a(7, this.currentActivityStayTime);
+    ykv.a(7, this.currentActivityStayTime);
   }
   
   @Override

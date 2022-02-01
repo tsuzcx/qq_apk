@@ -1,70 +1,45 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.widget.CountDownProgressBar;
 
 public class blaq
-  extends blas
+  extends Handler
 {
-  public blaq(String paramString, View paramView)
-  {
-    super(paramString, paramView);
-  }
+  public blaq(CountDownProgressBar paramCountDownProgressBar) {}
   
-  private int b(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
-    }
-    if ("center".equals(paramString)) {
-      return 13;
-    }
-    if ("center_horizontal".equals(paramString)) {
-      return 14;
-    }
-    if ("center_vertical".equals(paramString)) {
-      return 15;
-    }
-    return 9;
-  }
-  
-  protected ViewGroup.LayoutParams a(int paramInt1, int paramInt2)
-  {
-    return new RelativeLayout.LayoutParams(paramInt1, paramInt2);
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    super.a(paramString1, paramString2);
-    if (!(this.a instanceof RelativeLayout)) {}
-  }
-  
-  protected void a(String paramString1, String paramString2, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    super.a(paramString1, paramString2, paramLayoutParams);
-    paramLayoutParams = (RelativeLayout.LayoutParams)paramLayoutParams;
-    if ("gravity".equals(paramString1)) {
-      paramLayoutParams.addRule(b(paramString2));
+    switch (paramMessage.what)
+    {
     }
     do
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (!"relative".equals(paramString1));
-        paramString1 = paramString2.split(" ");
-      } while ((paramString1 == null) || (paramString1.length != 2));
-      if ("bottom".equals(paramString1[1]))
-      {
-        paramLayoutParams.addRule(3, Integer.parseInt(paramString1[0]));
-        paramLayoutParams.addRule(5, Integer.parseInt(paramString1[0]));
-        return;
+      return;
+      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
+      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
+      return;
+      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
+      if (CountDownProgressBar.a(this.a) <= (float)CountDownProgressBar.a(this.a)) {
+        break;
       }
-    } while (!"right".equals(paramString1[1]));
-    paramLayoutParams.addRule(6, Integer.parseInt(paramString1[0]));
+      CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
+      this.a.invalidate();
+    } while (CountDownProgressBar.a(this.a) == null);
+    CountDownProgressBar.a(this.a).a();
+    return;
+    CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
+    if (CountDownProgressBar.b(this.a) >= (float)CountDownProgressBar.b(this.a))
+    {
+      CountDownProgressBar.b(this.a, 0.0F);
+      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) - 1);
+    }
+    for (;;)
+    {
+      this.a.invalidate();
+      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
+      return;
+      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) + CountDownProgressBar.a(this.a));
+    }
   }
 }
 

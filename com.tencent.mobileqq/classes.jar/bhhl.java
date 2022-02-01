@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.PublicMenuBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Build.VERSION;
 
-public class bhhl
-  implements View.OnClickListener
+public final class bhhl
 {
-  public bhhl(PublicMenuBar paramPublicMenuBar, String paramString, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public static int a()
   {
-    if (PublicMenuBar.a(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar) != null) {
-      PublicMenuBar.b(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
+    if (Build.VERSION.SDK_INT > 10) {
+      return 4;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 0;
   }
 }
 

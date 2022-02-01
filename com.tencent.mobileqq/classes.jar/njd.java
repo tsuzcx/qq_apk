@@ -1,49 +1,31 @@
-import java.util.Map;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.avgame.gameroom.gamelist.GameListView;
 
 public class njd
+  implements View.OnTouchListener
 {
-  public static final String[] a = { "qqvgame.RoomManager-RoomInfoGet", "qqvgame.GameManager-SelectGame", "qqvgame.GameList-GetGameList", "qqvgame.RoomManager-RoomLeave", "qqvgame.RoomManager-RoomUserStatusChange", "qqvgame.UserHeartBeat-UserHeartBeat", "qqvgame.Share-GetShareLink", "qqvgame.GameList-GetQuestionClass", "qqvgame.ActivityCenter-GetActivitys", "qqvgame.ActivityCenter-SyncShareGame", "qqvgame.StrangerMatch-AddMatchRoom", "qqvgame.StrangerMatch-DelMatchRoom" };
-  public static final String[] b = { "qqvgame.GameManager-StartGame", "qqvgame.QuestionManager-GetQuestion", "qqvgame.GameRanking-GetRankingList", "qqvgame.QuestionManager-AnswerQuestion" };
-  public static final String[] c = { "OnlinePush.ReqPush" };
-  public static final String[] d = { "OidbSvc.0x5eb_20002" };
+  public njd(GameListView paramGameListView) {}
   
-  public static void a(Map<String, int[]> paramMap)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMap == null) {}
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
     for (;;)
     {
-      return;
-      String[] arrayOfString = b;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
+      return false;
+      paramView = nqf.a("avgame_start_game_owner_hl@3x.png");
+      if (paramView != null)
       {
-        paramMap.put(arrayOfString[i], new int[] { 3 });
-        i += 1;
-      }
-      arrayOfString = a;
-      j = arrayOfString.length;
-      i = 0;
-      while (i < j)
-      {
-        paramMap.put(arrayOfString[i], new int[] { 1 });
-        i += 1;
-      }
-      arrayOfString = c;
-      j = arrayOfString.length;
-      i = 0;
-      while (i < j)
-      {
-        paramMap.put(arrayOfString[i], new int[] { 4 });
-        i += 1;
-      }
-      arrayOfString = d;
-      j = arrayOfString.length;
-      i = 0;
-      while (i < j)
-      {
-        paramMap.put(arrayOfString[i], new int[] { 2 });
-        i += 1;
+        this.a.a.a().setImageBitmap(paramView);
+        continue;
+        paramView = nqf.a("avgame_start_game_owner_normal@3x.png");
+        if (paramView != null) {
+          this.a.a.a().setImageBitmap(paramView);
+        }
       }
     }
   }

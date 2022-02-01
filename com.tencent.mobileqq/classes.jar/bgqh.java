@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.MotionEvent;
 
-public class bgqh
-  implements View.OnClickListener
+public abstract interface bgqh
 {
-  public bgqh(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void onClick(View paramView)
-  {
-    LiangHaoBuyFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

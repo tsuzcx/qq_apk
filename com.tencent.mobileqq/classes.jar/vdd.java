@@ -1,203 +1,150 @@
-import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stFeed;
+import UserGrowth.stFriendFeed;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class vdd
-  extends vdc
+  extends blij<stFeed>
+  implements View.OnClickListener
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private String jdField_a_of_type_JavaLangString;
-  private List<vaq> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private stFeed jdField_a_of_type_UserGrowthStFeed;
+  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private uxe jdField_a_of_type_Uxe;
+  private vjn jdField_a_of_type_Vjn;
   
-  public vdd(uzq paramuzq)
+  private vdd(ViewGroup paramViewGroup, uxe paramuxe)
   {
-    super(paramuzq);
+    super(paramViewGroup, 2131560448);
+    this.jdField_a_of_type_Uxe = paramuxe;
+    c();
   }
   
-  private vaq a(List<vaq> paramList)
+  public static vdd a(ViewGroup paramViewGroup, uxe paramuxe)
   {
-    int i = 0;
-    while (i < paramList.size())
-    {
-      Object localObject = (vaq)paramList.get(i);
-      if (localObject != null)
-      {
-        localObject = (stSimpleMetaFeed)((vaq)localObject).a();
-        if ((localObject != null) && (!TextUtils.isEmpty(((stSimpleMetaFeed)localObject).id)) && (((stSimpleMetaFeed)localObject).id.equals(this.jdField_a_of_type_JavaLangString))) {
-          return (vaq)paramList.remove(i);
-        }
-      }
-      i += 1;
-    }
-    return null;
+    return new vdd(paramViewGroup, paramuxe);
   }
   
-  private void a(uzq paramuzq, boolean paramBoolean)
+  private void c()
   {
-    if ((paramuzq instanceof WSVerticalPageFragment))
-    {
-      paramuzq = ((WSVerticalPageFragment)paramuzq).a();
-      if (paramuzq != null) {}
-    }
-    else
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131367843));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)a(2131376333));
+    TextView localTextView1 = (TextView)a(2131381577);
+    TextView localTextView2 = (TextView)a(2131381578);
+    ImageView localImageView = (ImageView)a(2131381551);
+    localTextView1.setVisibility(0);
+    localImageView.setVisibility(0);
+    localTextView1.setOnClickListener(this);
+    localImageView.setOnClickListener(this);
+    localTextView2.setText(2131720133);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(a(), 0, false);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
+    this.jdField_a_of_type_Vjn = new vjn(a(), this.jdField_a_of_type_Uxe);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Vjn);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new uxt());
+    this.jdField_a_of_type_Vjn.a(new vde(this));
+  }
+  
+  public RecyclerView a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) {}
+    for (;;)
     {
       return;
-    }
-    paramuzq.f(paramBoolean);
-    paramuzq.e(paramBoolean);
-  }
-  
-  private void a(vaq paramvaq)
-  {
-    uzq localuzq = a();
-    Object localObject;
-    vct localvct;
-    if ((paramvaq != null) && (localuzq != null))
-    {
-      localObject = localuzq.a();
-      if (localObject != null)
+      int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
+      int k = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
+      int i = j;
+      while (i <= k - j)
       {
-        localvct = ((uze)localObject).a();
-        if (localvct != null) {
-          break label37;
+        RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
+        if ((localViewHolder instanceof blij)) {
+          this.jdField_a_of_type_Vjn.a((blij)localViewHolder);
         }
+        i += 1;
       }
     }
-    label37:
+  }
+  
+  public void a(stFeed paramstFeed)
+  {
+    if (paramstFeed == null) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    }
     do
     {
-      do
-      {
-        return;
-        uya.d("terry_ark", "WSVerticalForArkCardPresenter onSuccess getItemCount: " + ((uze)localObject).getItemCount());
-        ula localula = localvct.jdField_a_of_type_Ula;
-        if ((localula instanceof vbl)) {
-          ((vbl)localula).b(paramvaq);
-        }
-        localObject = (vaq)((uze)localObject).a(0);
-      } while (localObject == null);
-      paramvaq = (stSimpleMetaFeed)paramvaq.a();
-    } while (paramvaq == null);
-    if (paramvaq.floatingLayerCardStyle != null) {
-      paramvaq.floatingLayerCardStyle.cardType = 3;
-    }
-    ((vaq)localObject).a(paramvaq);
-    if (localvct.jdField_a_of_type_Urt != null) {
-      localvct.jdField_a_of_type_Urt.a = urv.a(paramvaq);
-    }
-    a(localuzq, paramvaq.isLoop);
-  }
-  
-  private boolean a(boolean paramBoolean)
-  {
-    Object localObject = a();
-    if ((paramBoolean) && (localObject != null))
-    {
-      localObject = ((uzq)localObject).a();
-      if ((localObject != null) && (((WSPlayerManager)localObject).e()))
-      {
-        uya.d("terry_ark", "WSVerticalForArkCardPresenter isPlayError");
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public List<vaq> a(ArrayList paramArrayList)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      if ((paramArrayList.get(0) instanceof stSimpleMetaFeed))
-      {
-        this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)paramArrayList.get(0));
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id;
-        this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.isLoop = true;
-      }
-      return WSVerticalDataManager.a().a(paramArrayList);
-    }
-    return Collections.emptyList();
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.a(paramViewHolder, paramInt);
-    uya.d("WSVerticalForArkCardPresenter", "WSVerticalForMiniAppPresenter onPageSelected: " + paramInt);
-    uzq localuzq = a();
-    if (localuzq == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramViewHolder instanceof vct));
-      paramViewHolder = (vct)paramViewHolder;
-      com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.a = 1;
-      unv localunv = new unv(4, new Object[] { Integer.valueOf(paramInt), paramViewHolder.jdField_a_of_type_JavaLangObject });
-      vli.a().dispatch(localunv);
-    } while (paramViewHolder.jdField_a_of_type_JavaLangObject == null);
-    localuzq.b(((vaq)paramViewHolder.jdField_a_of_type_JavaLangObject).a());
-  }
-  
-  public void a(List<vaq> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
-  {
-    Object localObject = a();
-    if (localObject == null) {
       return;
-    }
-    if (a(paramBoolean2))
-    {
-      ((uzq)localObject).a().a(paramList);
-      super.a(paramList, paramBoolean1, paramBoolean2, paramObject);
-      return;
-    }
-    if (paramBoolean2) {}
-    for (localObject = a(paramList);; localObject = null)
-    {
-      super.a(paramList, paramBoolean1, paramBoolean2, paramObject);
-      a((vaq)localObject);
-      return;
-    }
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
-  {
-    return a(paramBoolean2);
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    uya.d("terry_ark", "WSVerticalForArkCardPresenter fetchFeedData isRefresh: " + paramBoolean1 + " isFirst = " + paramBoolean2 + " from = " + paramString);
-    paramString = a();
-    if ((paramString != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null))
-    {
-      if (paramBoolean2) {
-        this.jdField_a_of_type_JavaUtilList = paramString.a();
-      }
-      vab.a().a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster_id, 10007, paramBoolean1, paramBoolean2, this.jdField_a_of_type_JavaUtilList, this, null);
-      return true;
-    }
-    return false;
+      this.jdField_a_of_type_UserGrowthStFeed = paramstFeed;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      paramstFeed = paramstFeed.friendFeed;
+      List localList = vcd.a(paramstFeed);
+      this.jdField_a_of_type_Vjn.a(localList);
+    } while (paramstFeed == null);
+    vpa.a().a(paramstFeed.attachInfo);
   }
   
   public void b()
   {
-    super.b();
-    vab.a().a();
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) || (this.jdField_a_of_type_Uxe == null)) {}
+    for (;;)
+    {
+      return;
+      int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
+      int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
+      if ((i >= 0) && (j < this.jdField_a_of_type_Uxe.b().size())) {
+        while (i <= j)
+        {
+          RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
+          if ((localViewHolder instanceof vjo)) {
+            ((vjo)localViewHolder).b();
+          }
+          i += 1;
+        }
+      }
+    }
   }
   
-  public void c()
+  public void h()
   {
-    super.c();
-    uzq localuzq = a();
-    if ((localuzq != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null)) {
-      localuzq.b(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    super.h();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      WSVerticalPageFragment.a(a(), "friend_feed", "friend", null, 0);
+      vka.b();
+      continue;
+      uym localuym = new uym(a());
+      if ((this.jdField_a_of_type_UserGrowthStFeed != null) && (this.jdField_a_of_type_UserGrowthStFeed.friendFeed != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStFeed.friendFeed.dialogTips))) {
+        localuym.a(this.jdField_a_of_type_UserGrowthStFeed.friendFeed.dialogTips);
+      }
+      localuym.show();
+      vka.a();
+      vka.d();
     }
   }
 }

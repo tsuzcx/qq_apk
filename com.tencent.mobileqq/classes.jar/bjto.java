@@ -1,33 +1,20 @@
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.widget.ReboundLayout;
+import java.util.Arrays;
 
-public class bjto
-  extends Animation
+public final class bjto
 {
-  private float jdField_a_of_type_Float;
-  private float b = 1.0F;
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  private bjto(ReboundLayout paramReboundLayout)
+  public String toString()
   {
-    ReboundLayout.a(paramReboundLayout, true);
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    paramFloat = (this.b - this.jdField_a_of_type_Float) * paramFloat + this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_ComTencentWidgetReboundLayout.scrollBy((int)((400 - this.jdField_a_of_type_ComTencentWidgetReboundLayout.getScrollX()) * paramFloat), 0);
-    if (paramFloat == 1.0F) {
-      ReboundLayout.a(this.jdField_a_of_type_ComTencentWidgetReboundLayout, false);
-    }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    setDuration(260L);
-    setInterpolator(new AccelerateInterpolator());
+    return "MultiParams{mRelationType=" + this.jdField_a_of_type_Int + ", mMultiAVType=" + this.b + ", mMultiAVSubType=" + this.c + ", mRoomId=" + this.d + ", mUin=" + this.jdField_a_of_type_Long + ", mOpenId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mSourceId=" + this.e + ", mSig=" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte) + ", mSvrRecogFlag=" + this.f + '}';
   }
 }
 

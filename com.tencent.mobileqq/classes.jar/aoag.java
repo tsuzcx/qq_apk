@@ -1,22 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aoag
-  implements ValueAnimator.AnimatorUpdateListener
+final class aoag
+  implements DialogInterface.OnClickListener
 {
-  public aoag(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
+  aoag(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
-    ARVideoRecordButtonView.a(this.a);
+    aoae.a("1");
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoag
  * JD-Core Version:    0.7.0.1
  */

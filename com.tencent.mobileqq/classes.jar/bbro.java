@@ -1,121 +1,16 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
-public class bbro
+class bbro
+  implements DialogInterface.OnClickListener
 {
-  private static String a = "Xiaomi;Redmi 4X;23|LGE;Nexus 5X;27|HUAWEI;CAM-UL00;23";
+  bbro(bbrl parambbrl) {}
   
-  public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramSVConfigItem.versionCode >= 1) {}
-    for (int i = 0;; i = -4)
-    {
-      VideoEnvironment.LogDownLoad("ShortVideoTrackingResourceMgr", "[checkResourceLowLimitVersion]limitVer=1 downVer=" + paramSVConfigItem.versionCode + " errCode=" + i, null);
-      return i;
-    }
-  }
-  
-  public static String a()
-  {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("tracking_short_video_mgr_sp", 4).getString("tracking_sv_md5_version_soname_key", "Tracking000_0");
-    boolean bool = bbpt.a(str, 1);
-    VideoEnvironment.LogDownLoad("ShortVideoTrackingResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
-    if (bool) {
-      return str;
-    }
-    return "Tracking000_0";
-  }
-  
-  static boolean a()
-  {
-    return bbxw.a();
-  }
-  
-  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
-  {
-    return bbxj.g();
-  }
-  
-  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    label349:
-    for (;;)
-    {
-      try
-      {
-        paramQQAppInterface = b();
-        paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
-        File localFile = new File(paramQQAppInterface);
-        if (localFile.exists())
-        {
-          if ((a().equals(paramString1)) && (bbpt.a(paramQQAppInterface, "tracking_config_file")))
-          {
-            VideoEnvironment.LogDownLoad("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[checkUnzipFileListSizeIsOK]success=true", null);
-            return bool1;
-          }
-          FileUtils.deleteDirectory(paramQQAppInterface);
-          VideoEnvironment.LogDownLoad("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
-        }
-        bool1 = localFile.mkdirs();
-        VideoEnvironment.LogDownLoad("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[exists]mkOK=" + bool1, null);
-        try
-        {
-          FileUtils.uncompressZip(paramString2, paramQQAppInterface, false);
-          boolean bool3 = bbpt.a(paramQQAppInterface, "tracking_config_file");
-          VideoEnvironment.LogDownLoad("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK success=" + bool3, null);
-          bool1 = bool2;
-          if (bool3)
-          {
-            bool1 = a(paramString1);
-            VideoEnvironment.LogDownLoad("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK saveOK=" + bool1, null);
-            if (bool1) {
-              break label349;
-            }
-            bool1 = a(paramString1);
-            VideoEnvironment.LogDownLoad("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool1, null);
-            if (bool1) {
-              break label349;
-            }
-            VideoEnvironment.LogDownLoad("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
-            bool1 = a("Tracking000_0");
-            VideoEnvironment.LogDownLoad("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
-            bool1 = bool2;
-          }
-        }
-        catch (Exception paramQQAppInterface)
-        {
-          paramQQAppInterface.printStackTrace();
-          bool1 = bool2;
-          continue;
-        }
-        bool1 = false;
-      }
-      finally {}
-    }
-  }
-  
-  private static boolean a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("tracking_short_video_mgr_sp", 4).edit();
-    localEditor.putString("tracking_sv_md5_version_soname_key", paramString);
-    boolean bool = localEditor.commit();
-    VideoEnvironment.LogDownLoad("ShortVideoTrackingResourceMgr", "storeNewPendantUnzipPath commitValue=" + bool + ",pathName=" + paramString, null);
-    return bool;
-  }
-  
-  public static String b()
-  {
-    String str = bbxj.a();
-    return str + "tracking_res_cache" + File.separator;
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "showSaveFileTips cancel");
   }
 }
 

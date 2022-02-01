@@ -1,8 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
-import pay;
+import pnn;
 
 class ReadInJoyDailyFragment$5
   implements Runnable
@@ -11,11 +12,11 @@ class ReadInJoyDailyFragment$5
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = pay.a();
+    QQAppInterface localQQAppInterface = pnn.a();
     if (localQQAppInterface == null) {
       return;
     }
-    ((WebProcessManager)localQQAppInterface.getManager(13)).e();
+    ((WebProcessManager)localQQAppInterface.getManager(QQManagerFactory.WEBPROCESS_MANAGER)).e();
   }
 }
 

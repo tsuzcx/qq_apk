@@ -1,4 +1,12 @@
-class bodc {}
+public abstract interface bodc
+  extends bocy
+{
+  public abstract void x();
+  
+  public abstract void y();
+  
+  public abstract void z();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

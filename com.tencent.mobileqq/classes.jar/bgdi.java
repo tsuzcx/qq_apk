@@ -1,40 +1,34 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class bgdi
-  extends RecyclerView.ViewHolder
-  implements AdapterView.OnItemClickListener
+  implements bkzq
 {
-  bgdb jdField_a_of_type_Bgdb;
-  bgdg jdField_a_of_type_Bgdg;
-  bgdh jdField_a_of_type_Bgdh;
-  HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
+  public bgdi(VisitorTroopCardFragment paramVisitorTroopCardFragment, bkzi parambkzi) {}
   
-  public bgdi(View paramView, bgdg parambgdg, bgdh parambgdh, bgdb parambgdb)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramView.findViewById(2131364741));
-    this.jdField_a_of_type_Bgdh = parambgdh;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Bgdh);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Bgdg = parambgdg;
-    this.jdField_a_of_type_Bgdb = parambgdb;
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    this.jdField_a_of_type_Bgdh.a(paramInt);
-    this.jdField_a_of_type_Bgdb.a(-1);
-    if (this.jdField_a_of_type_Bgdg != null)
-    {
-      bgdd localbgdd = new bgdd(2, null, ((Integer)this.jdField_a_of_type_Bgdh.getItem(paramInt)).intValue(), null);
-      this.jdField_a_of_type_Bgdg.a(localbgdd);
+    paramView = this.jdField_a_of_type_Bkzi.a(paramInt);
+    if (paramView == null) {
+      return;
     }
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    switch (paramView.c)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      VisitorTroopCardFragment.d(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
+      continue;
+      bhbu.a("grpProfile", "grpProfile_clk", "more_tipoff_click", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin });
+      TroopUtils.doReportTroop(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      bhbu.a("grpProfile", "grpProfile_clk", "more_share_click", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin });
+      VisitorTroopCardFragment.e(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
+    }
   }
 }
 

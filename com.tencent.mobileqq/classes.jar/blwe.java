@@ -1,12 +1,6 @@
-class blwe
-  implements blxw
+public abstract interface blwe
 {
-  blwe(blwd paramblwd) {}
-  
-  public void a(blvd paramblvd)
-  {
-    blwd.a(this.a, paramblvd);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

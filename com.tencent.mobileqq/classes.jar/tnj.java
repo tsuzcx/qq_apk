@@ -1,31 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class tnj
-  implements View.OnClickListener
+public class tnj
+  implements SoundPool.OnLoadCompleteListener
 {
-  tnj(tne paramtne, BarrageInfo paramBarrageInfo) {}
+  public tnj(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager, long paramLong) {}
   
-  public final void onClick(View paramView)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    tnd localtnd = this.jdField_a_of_type_Tne.a();
-    if (localtnd != null)
-    {
-      String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageInfo.a;
-      Intrinsics.checkExpressionValueIsNotNull(str, "barrageInfo.id");
-      localtnd.onEventBarrageOnClick(str);
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySkinAnimManager", 1, "setSoundPool onLoadComplete time = " + (l - this.jdField_a_of_type_Long));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    bdla.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "sound_load_time", 0, 0, ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager), String.valueOf(l - this.jdField_a_of_type_Long), null, null);
+    ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tnj
  * JD-Core Version:    0.7.0.1
  */

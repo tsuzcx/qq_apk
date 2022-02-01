@@ -1,44 +1,41 @@
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.QQComicStep;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 public class angf
-  extends amwl
+  extends Animation
 {
-  public angf(QQComicStep paramQQComicStep) {}
+  private final int a;
+  private final int b;
+  private final int c;
+  private final int d;
+  private final int e;
+  private final int f;
   
-  public void onMessageRecordAdded(List<MessageRecord> paramList)
+  public angf(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      paramList = new ArrayList(paramList).iterator();
-      while (paramList.hasNext())
-      {
-        Object localObject = bchh.a(((MessageRecord)paramList.next()).msgData);
-        if ((localObject instanceof StructMsgForImageShare))
-        {
-          localObject = (StructMsgForImageShare)localObject;
-          if ((((StructMsgForImageShare)localObject).mMsgActionData != null) && (((StructMsgForImageShare)localObject).mMsgActionData.startsWith("comic_plugin.apk")))
-          {
-            String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
-            if (arrayOfString.length >= 8) {
-              bkfq.a(this.a.a.mApp, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], agzi.a(((StructMsgForImageShare)localObject).mMsgActionData) });
-            }
-          }
-        }
-      }
-    }
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.d = paramInt5;
+    this.c = paramInt6;
+    this.a = paramInt3;
+    this.b = paramInt4;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    float f1 = this.e;
+    float f2 = this.a;
+    float f3 = this.d;
+    float f4 = this.f;
+    float f5 = this.b;
+    float f6 = this.c;
+    paramTransformation.getMatrix().preTranslate((1.0F - paramFloat) * (1.0F - paramFloat) * f1 + 2.0F * paramFloat * (1.0F - paramFloat) * f2 + paramFloat * paramFloat * f3, (1.0F - paramFloat) * (1.0F - paramFloat) * f4 + 2.0F * paramFloat * (1.0F - paramFloat) * f5 + paramFloat * paramFloat * f6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angf
  * JD-Core Version:    0.7.0.1
  */

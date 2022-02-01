@@ -1,27 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class qgq
-  implements CustomMethodsRegister.CustomMethodInterface
+public abstract interface qgq
 {
-  public Object invoke(String paramString, Object... paramVarArgs)
-  {
-    if ((paramVarArgs != null) && (paramVarArgs.length >= 1))
-    {
-      paramVarArgs = paramVarArgs[0];
-      QLog.d("RIJProteusMethod", 1, "MethodHyperLink invoke,s=" + paramString + " firstObject=" + paramVarArgs);
-      if (String.valueOf(paramVarArgs).startsWith("more-")) {
-        pkp.a().a(String.valueOf(paramVarArgs));
-      }
-    }
-    else
-    {
-      return null;
-    }
-    pay.d(BaseApplication.getContext(), String.valueOf(paramVarArgs));
-    return null;
-  }
+  public abstract void a(int paramInt, List<qgr> paramList);
 }
 
 

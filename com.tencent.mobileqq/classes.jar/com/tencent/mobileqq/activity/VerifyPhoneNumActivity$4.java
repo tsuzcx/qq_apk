@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import avsy;
+import awyz;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class VerifyPhoneNumActivity$4
   implements Runnable
@@ -10,12 +11,12 @@ class VerifyPhoneNumActivity$4
   
   public void run()
   {
-    ((avsy)this.this$0.app.getManager(11)).c();
+    ((awyz)this.this$0.app.getManager(QQManagerFactory.CONTACT_MANAGER)).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyPhoneNumActivity.4
  * JD-Core Version:    0.7.0.1
  */

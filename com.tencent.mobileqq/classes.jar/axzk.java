@@ -1,18 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.OperationView;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
-final class axzk
-  implements DialogInterface.OnClickListener
+public class axzk
 {
-  axzk(Function0 paramFunction0) {}
+  public int a;
+  public View a;
+  public ViewGroup a;
+  public RelativeLayout a;
+  public VideoData a;
+  public OperationView a;
+  public QQStoryVideoPlayerErrorView a;
+  public ImageDisplayView a;
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.invoke();
-  }
+  public axzk(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter) {}
 }
 
 

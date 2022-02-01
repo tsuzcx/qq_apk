@@ -1,16 +1,8 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
-
 public class awmz
-  extends DataSetObserver
 {
-  public awmz(PlayerInvitePanel paramPlayerInvitePanel) {}
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    this.a.a();
-  }
+  float a;
+  public Integer a;
+  float b;
 }
 
 

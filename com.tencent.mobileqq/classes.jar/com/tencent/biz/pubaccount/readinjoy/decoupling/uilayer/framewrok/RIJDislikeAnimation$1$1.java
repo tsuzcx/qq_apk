@@ -4,29 +4,29 @@ import android.content.Context;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import cooperation.plugin.PluginBaseActivity;
-import ped;
-import peg;
-import pew;
-import pex;
-import slt;
+import pne;
+import pnh;
+import pnz;
+import poa;
+import szd;
 
 public class RIJDislikeAnimation$1$1
   implements Runnable
 {
-  public RIJDislikeAnimation$1$1(pex parampex) {}
+  public RIJDislikeAnimation$1$1(poa parampoa) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Pew.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    if ((this.a.jdField_a_of_type_Pew.a.a().a() instanceof BaseActivity)) {
-      QQToast.a(this.a.jdField_a_of_type_Pew.a.a().a(), -1, this.a.jdField_a_of_type_Pew.a.a().a().getString(2131698822), 0).b(((BaseActivity)this.a.jdField_a_of_type_Pew.a.a().a()).getTitleBarHeight());
+    this.a.jdField_a_of_type_Pnz.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    if ((this.a.jdField_a_of_type_Pnz.a.a().a() instanceof BaseActivity)) {
+      QQToast.a(this.a.jdField_a_of_type_Pnz.a.a().a(), -1, this.a.jdField_a_of_type_Pnz.a.a().a().getString(2131699166), 0).b(((BaseActivity)this.a.jdField_a_of_type_Pnz.a.a().a()).getTitleBarHeight());
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Pew.a.a().a().a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
+      this.a.jdField_a_of_type_Pnz.a.a().a().a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
       return;
-      if ((this.a.jdField_a_of_type_Pew.a.a().a() instanceof PluginBaseActivity)) {
-        QQToast.a(this.a.jdField_a_of_type_Pew.a.a().a(), -1, this.a.jdField_a_of_type_Pew.a.a().a().getString(2131698822), 0).b(((PluginBaseActivity)this.a.jdField_a_of_type_Pew.a.a().a()).g());
+      if ((this.a.jdField_a_of_type_Pnz.a.a().a() instanceof PluginBaseActivity)) {
+        QQToast.a(this.a.jdField_a_of_type_Pnz.a.a().a(), -1, this.a.jdField_a_of_type_Pnz.a.a().a().getString(2131699166), 0).b(((PluginBaseActivity)this.a.jdField_a_of_type_Pnz.a.a().a()).g());
       }
     }
   }

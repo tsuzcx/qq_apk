@@ -1,52 +1,32 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Map;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
-class vmk
-  implements bbrr
+final class vmk
+  implements vmb
 {
-  vmk(vmj paramvmj, String paramString) {}
+  vmk(Activity paramActivity, String paramString1, WSDownloadParams paramWSDownloadParams, String paramString2, int paramInt) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, bbrl parambbrl)
+  public void a()
   {
-    vmp localvmp;
-    if (parambbrl.jdField_a_of_type_Int == 0)
-    {
-      parambbrl = (aycy)parambbrl.jdField_a_of_type_JavaLangObject;
-      localvmp = (vmp)this.jdField_a_of_type_Vmj.a.a.remove(this.jdField_a_of_type_JavaLangString);
-      if (localvmp != null)
-      {
-        if (!new File(parambbrl.b).exists()) {
-          break label99;
-        }
-        localvmp.b = (System.currentTimeMillis() - localvmp.jdField_a_of_type_Long);
-        if (localvmp.jdField_a_of_type_Vmi != null) {
-          localvmp.jdField_a_of_type_Vmi.a(localvmp, new ErrorMessage(0, "onDownload"));
-        }
-      }
-    }
-    label99:
-    do
-    {
-      do
-      {
-        return;
-        xvv.d("AsyncFileDownloader", "preload success , why file not exist , key : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-        return;
-        xvv.d("AsyncFileDownloader", "onPreLoadFailed,key=%s,errorCode=%s", new Object[] { this.jdField_a_of_type_JavaLangString, String.valueOf(parambbrl.jdField_a_of_type_Int) });
-        localvmp = (vmp)this.jdField_a_of_type_Vmj.a.a.remove(this.jdField_a_of_type_JavaLangString);
-      } while (localvmp == null);
-      localvmp.b = (System.currentTimeMillis() - localvmp.jdField_a_of_type_Long);
-    } while (localvmp.jdField_a_of_type_Vmi == null);
-    localvmp.jdField_a_of_type_Vmi.a(localvmp, new ErrorMessage(parambbrl.jdField_a_of_type_Int, "onFailed"));
+    vmr.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
   }
   
-  public void a(int paramInt, ArrayList<bbrl> paramArrayList) {}
+  public void b()
+  {
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_exposure", "dynamics_" + this.b + this.jdField_a_of_type_Int, 0);
+  }
   
-  public void b(int paramInt, bbrl parambbrl) {}
+  public void c()
+  {
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", "dynamics_" + this.b + this.jdField_a_of_type_Int, 1000001);
+    vmr.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
+  }
+  
+  public void d()
+  {
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", "dynamics_" + this.b + this.jdField_a_of_type_Int, 1000005);
+  }
 }
 
 

@@ -1,84 +1,63 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.filter.FilterItem;
-import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFilterList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FilterListPack;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qcircleshadow.local.widgets.QCircleFollowView;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.events.QCircleFollowUpdateEvent;
+import cooperation.qqcircle.events.QCircleFuelAnimationEvent;
+import cooperation.qqcircle.helpers.QCircleFollowManager;
+import cooperation.qqcircle.utils.QCircleDoubleFollowUserHepler;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudWrite.StDoFollowRsp;
 
 public class vvz
-  extends vqm
+  implements VSDispatchObserver.onVSRspCallBack<FeedCloudWrite.StDoFollowRsp>
 {
-  @NonNull
-  public final String a;
-  @NonNull
-  public final List<FilterItem> a;
-  public final boolean a;
-  public final int b;
+  public vvz(QCircleFollowView paramQCircleFollowView, int paramInt, boolean paramBoolean) {}
   
-  public vvz(byte[] paramArrayOfByte)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
   {
-    Object localObject1 = new qqstory_service.RspGetFilterList();
-    for (;;)
+    boolean bool = true;
+    QLog.d("QCircleFollowView", 1, "doFollow: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      try
-      {
-        ((qqstory_service.RspGetFilterList)localObject1).mergeFrom(paramArrayOfByte);
-        this.jdField_a_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).result.error_code.get();
-        this.jdField_b_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).result.error_desc.get().toStringUtf8();
-        if (((qqstory_service.RspGetFilterList)localObject1).is_end.get() != 0)
-        {
-          this.jdField_a_of_type_Boolean = bool;
-          this.jdField_a_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).next_cookie.get().toStringUtf8();
-          this.jdField_b_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).frequency.get();
-          paramArrayOfByte = new ArrayList();
-          localObject1 = ((qqstory_service.RspGetFilterList)localObject1).filter_list.get().iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          Object localObject2 = (qqstory_struct.FilterListPack)((Iterator)localObject1).next();
-          vvr localvvr = new vvr();
-          localvvr.jdField_a_of_type_Long = ((qqstory_struct.FilterListPack)localObject2).filter_id.get();
-          localvvr.jdField_a_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_name.get().toStringUtf8();
-          localvvr.jdField_a_of_type_Int = ((qqstory_struct.FilterListPack)localObject2).filter_type.get();
-          localvvr.jdField_b_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_config_file.get().toStringUtf8();
-          localvvr.c = ((qqstory_struct.FilterListPack)localObject2).filter_config_md5.get().toStringUtf8();
-          try
-          {
-            localObject2 = localvvr.a();
-            paramArrayOfByte.add(localObject2);
-            xvv.d("VideoFilterManager", "GET Filter : id=%d, name=%s, type=%d, url=%s, md5=%s", new Object[] { Long.valueOf(((FilterItem)localObject2).filterId), ((FilterItem)localObject2).filterName, Integer.valueOf(((FilterItem)localObject2).filterType), ((FilterItem)localObject2).filterConfigUrl, ((FilterItem)localObject2).filterConfigMd5 });
-          }
-          catch (FilterItem.FilterItemIllegalException localFilterItemIllegalException)
-          {
-            xvv.c("VideoFilterManager", "GET Filter error : ", localFilterItemIllegalException);
-          }
-          continue;
-        }
-        bool = false;
+      if (!QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView)) {}
+      this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.a(this.jdField_a_of_type_Int, true);
+      if (this.jdField_a_of_type_Int == 1) {
+        SimpleEventBus.getInstance().dispatchEvent(new QCircleFuelAnimationEvent());
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      if (this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.a != null) {
+        if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView) != null)
+        {
+          paramVSBaseRequest = QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView);
+          if (this.jdField_a_of_type_Int != 1) {
+            break label279;
+          }
+        }
+      }
+      label279:
+      for (paramBoolean = bool;; paramBoolean = false)
       {
-        xvv.e("VideoFilterManager", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
-        this.jdField_a_of_type_Int = -1;
-        this.jdField_b_of_type_JavaLangString = amtj.a(2131715276);
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
-        this.jdField_a_of_type_JavaLangString = "";
-        this.jdField_b_of_type_Int = 0;
+        paramVSBaseRequest.a(paramBoolean, this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.a);
+        SimpleEventBus.getInstance().dispatchEvent(new QCircleFollowUpdateEvent(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.a.id.get()));
+        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.getContext(), this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.a.id.get(), this.jdField_a_of_type_Int);
+        QCircleFollowManager.getInstance().setUinFollowed(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.a.id.get(), this.jdField_a_of_type_Int);
+        if (paramStDoFollowRsp != null) {
+          QCircleDoubleFollowUserHepler.getInstance().updateFollowUser(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.a.id.get(), this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.a.nick.get(), paramStDoFollowRsp.isDoubly.get());
+        }
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(paramArrayOfByte);
+    paramVSBaseRequest = this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.getContext();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2131697645;; i = 2131697776)
+    {
+      QQToast.a(paramVSBaseRequest, 1, i, 0).a();
+      return;
+    }
   }
 }
 

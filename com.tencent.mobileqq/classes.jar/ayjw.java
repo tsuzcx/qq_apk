@@ -1,46 +1,67 @@
-import ProfileLogic.QC.setUserProfileRsp;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ayjw
-  extends anam
+class ayjw
+  implements bkzq
 {
-  public ayjw(CoverDetailFragment paramCoverDetailFragment) {}
+  ayjw(ayjt paramayjt, ayka paramayka, aylx paramaylx, bkzi parambkzi) {}
   
-  public void e(boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity == null) {}
-    do
+    switch (paramInt)
     {
-      do
-      {
-        return;
-        if (!paramBoolean) {
-          break;
-        }
-      } while (!(paramObject instanceof setUserProfileRsp));
-      int i = ((setUserProfileRsp)paramObject).ret;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard.CoverDetailFragment", 0, "onDefaultCardRsp: [setUserProfileRsp] ret=" + i);
-      }
-      if (i == 0)
-      {
-        paramObject = new Intent();
-        paramObject.putExtra("cover_id_key", CoverDetailFragment.a(this.a));
-        localFragmentActivity.setResult(-1, paramObject);
-        localFragmentActivity.finish();
-        return;
-      }
-      CoverDetailFragment.a(this.a, localFragmentActivity);
+    default: 
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard.CoverDetailFragment", 0, "onDefaultCardRsp: isSuccess=false, cmd=" + paramObject);
+    }
+    axxu localaxxu = new axxu().h("data_card").i("feed_inform").d("2").a(this.jdField_a_of_type_Ayjt.a(this.jdField_a_of_type_Ayka)).b(this.jdField_a_of_type_Aylx.c).c(String.valueOf(this.jdField_a_of_type_Ayjt.a(this.jdField_a_of_type_Ayka)));
+    if (this.jdField_a_of_type_Ayjt.jdField_a_of_type_Boolean)
+    {
+      paramView = "1";
+      localaxxu.e(paramView).b(this.jdField_a_of_type_Ayjt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_Aylx.e)) || (!(this.jdField_a_of_type_Ayjt.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))) {
+        break label341;
       }
-    } while (!"profilelogic.setUserProfile".equals(paramObject));
-    CoverDetailFragment.a(this.a, localFragmentActivity);
+      paramView = new bhab();
+      if (!(this.jdField_a_of_type_Aylx instanceof aylu)) {
+        break label231;
+      }
+      paramView.b(((aylu)this.jdField_a_of_type_Aylx).b);
+      label172:
+      paramView.a(this.jdField_a_of_type_Aylx.n);
+      paramView = paramView.a();
+      bhaa.a((BaseActivity)this.jdField_a_of_type_Ayjt.jdField_a_of_type_AndroidContentContext, 0L, this.jdField_a_of_type_Aylx.e, null, 20006, "", paramView);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      paramView = "2";
+      break;
+      label231:
+      if ((this.jdField_a_of_type_Aylx instanceof aylw))
+      {
+        paramView.d(((aylw)this.jdField_a_of_type_Aylx).b).b(((aylw)this.jdField_a_of_type_Aylx).a);
+        break label172;
+      }
+      if ((this.jdField_a_of_type_Aylx instanceof ayly))
+      {
+        paramView.b(((ayly)this.jdField_a_of_type_Aylx).a);
+        break label172;
+      }
+      if ((this.jdField_a_of_type_Aylx instanceof ayma))
+      {
+        paramView.b(((ayma)this.jdField_a_of_type_Aylx).a);
+        break label172;
+      }
+      if (!(this.jdField_a_of_type_Aylx instanceof aymb)) {
+        break label172;
+      }
+      break label172;
+      label341:
+      QQToast.a(this.jdField_a_of_type_Ayjt.jdField_a_of_type_AndroidContentContext, 2, anvx.a(2131700533), 0).a();
+    }
   }
 }
 

@@ -1,55 +1,48 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import java.lang.ref.WeakReference;
 
-public class xrb
-  extends vqm
+class xrb
+  implements xra
 {
-  public String a;
-  public int b;
-  public String c;
-  public String d;
-  public String e;
+  private final int jdField_a_of_type_Int;
+  @NonNull
+  private final WeakReference<xra> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public xrb(qqstory_service.RspGetUserGuide paramRspGetUserGuide)
+  public xrb(@NonNull xra paramxra)
   {
-    if (paramRspGetUserGuide.pic_url.has())
-    {
-      localObject1 = paramRspGetUserGuide.pic_url.get().toStringUtf8();
-      this.a = ((String)localObject1);
-      if (!paramRspGetUserGuide.word.has()) {
-        break label129;
-      }
-      localObject1 = paramRspGetUserGuide.word.get().toStringUtf8();
-      label53:
-      this.c = ((String)localObject1);
-      this.b = paramRspGetUserGuide.seqno.get();
-      if (!paramRspGetUserGuide.confirm_word.has()) {
-        break label134;
-      }
-    }
-    label129:
-    label134:
-    for (Object localObject1 = paramRspGetUserGuide.confirm_word.get().toStringUtf8();; localObject1 = null)
-    {
-      this.d = ((String)localObject1);
-      localObject1 = localObject2;
-      if (paramRspGetUserGuide.cancel_word.has()) {
-        localObject1 = paramRspGetUserGuide.cancel_word.get().toStringUtf8();
-      }
-      this.e = ((String)localObject1);
-      return;
-      localObject1 = null;
-      break;
-      localObject1 = null;
-      break label53;
+    this.jdField_a_of_type_Int = System.identityHashCode(paramxra);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxra);
+  }
+  
+  private boolean a()
+  {
+    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
+  }
+  
+  public void a(@NonNull xqy paramxqy)
+  {
+    xra localxra = (xra)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localxra != null) {
+      localxra.a(paramxqy);
     }
   }
   
-  public String toString()
+  public void b(@NonNull xqy paramxqy)
   {
-    return "Response{imageUrl='" + this.a + '\'' + ", word='" + this.c + '\'' + ", seqno=" + this.b + ", confirmBtnTxt='" + this.d + '\'' + ", cancelBtnTxt='" + this.e + '\'' + '}';
+    xra localxra = (xra)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localxra != null) {
+      localxra.b(paramxqy);
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof xrb)) && (((xrb)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

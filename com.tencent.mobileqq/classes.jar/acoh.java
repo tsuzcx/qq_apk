@@ -1,22 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.imcore.message.QQMessageFacade.GetAioListCallback;
+import java.util.List;
 
 public class acoh
-  implements View.OnClickListener
+  implements acog
 {
-  public acoh(AccountManageActivity paramAccountManageActivity) {}
+  private acnw<QQMessageFacade.GetAioListCallback> a = new acnx();
   
-  public void onClick(View paramView)
+  public List<QQMessageFacade.GetAioListCallback> a()
   {
-    Intent localIntent = new Intent();
-    PublicFragmentActivity.a(this.a, localIntent, AccountOnlineStateActivity.class, 0);
-    axvf.a(this.a.app);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.a.a();
+  }
+  
+  public void a(Class<? extends QQMessageFacade.GetAioListCallback> paramClass)
+  {
+    this.a.a(paramClass);
   }
 }
 

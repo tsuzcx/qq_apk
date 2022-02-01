@@ -3,6 +3,7 @@ package cooperation.qzone.contentbox.model;
 import NS_MOBILE_FEEDS.single_feed;
 import NS_QZONE_MQMSG.CommentInfo;
 import NS_QZONE_MQMSG.MsgInteractData;
+import NS_QZONE_MQMSG.PushInfo;
 import NS_QZONE_MQMSG.ShareInfo;
 import cooperation.qzone.util.QZLog;
 import java.io.Serializable;
@@ -18,6 +19,7 @@ public class MQMsgInteractData
   public single_feed feed;
   public String jumpUrlToDetail = "";
   public MQLikeCell likeCell;
+  public int pushCount;
   public MQShareCell shareToFriend;
   public MQShareCell shareToQzone;
   public int totalComment;
@@ -38,6 +40,7 @@ public class MQMsgInteractData
       localMQMsgInteractData.shareToFriend = MQShareCell.parseFromJson(paramJSONObject.optJSONObject("shareToFriend"));
       localMQMsgInteractData.shareToQzone = MQShareCell.parseFromJson(paramJSONObject.optJSONObject("shareToQzone"));
       localMQMsgInteractData.buttonInfos = MQButtonCell.parseFromJsonArray(paramJSONObject.optJSONArray("buttonInfo"));
+      localMQMsgInteractData.pushCount = paramJSONObject.optInt("pushCount");
       return localMQMsgInteractData;
     }
     catch (Exception paramJSONObject)
@@ -56,6 +59,9 @@ public class MQMsgInteractData
     {
       localMQMsgInteractData.totalComment = paramMsgInteractData.commentInfo.totalComment;
       localMQMsgInteractData.jumpUrlToDetail = paramMsgInteractData.commentInfo.jumpUrlToDetail;
+    }
+    if (paramMsgInteractData.pushInfo != null) {
+      localMQMsgInteractData.pushCount = paramMsgInteractData.pushInfo.totalPush;
     }
     localMQMsgInteractData.shareToFriend = MQShareCell.readFrom(paramMsgInteractData.shareInfo.shareToFriend);
     localMQMsgInteractData.shareToQzone = MQShareCell.readFrom(paramMsgInteractData.shareInfo.shareToQzone);
@@ -78,6 +84,7 @@ public class MQMsgInteractData
       localJSONObject.put("shareToFriend", this.shareToFriend.convertToJson());
       localJSONObject.put("shareToQzone", this.shareToQzone.convertToJson());
       localJSONObject.put("buttonInfos", MQButtonCell.convertToJsonArray(this.buttonInfos));
+      localJSONObject.put("pushCount", this.pushCount);
       return localJSONObject;
     }
     catch (Exception localException)

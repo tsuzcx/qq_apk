@@ -1,44 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aekw
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aekw(TroopDisbandActivity paramTroopDisbandActivity, QQCustomDialog paramQQCustomDialog) {}
+  public aekw(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bhhw == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bhhw = new bhhw(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
-    }
-    if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity))
+    QQAppInterface localQQAppInterface;
+    String str1;
+    if (paramBoolean)
     {
-      paramDialogInterface = (anca)this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app.getBusinessHandler(20);
-      if (paramDialogInterface != null)
-      {
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.b & 0x1) == 0)
-        {
-          TroopDisbandActivity localTroopDisbandActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity;
-          localTroopDisbandActivity.b |= 0x1;
-          paramDialogInterface.l(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bhhw.b(0, 2131691949, 1000);
+      bkxs.a();
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label91;
+      }
+      str1 = "0X8004BE7";
+      label23:
+      if (!paramBoolean) {
+        break label97;
       }
     }
-    for (;;)
+    label91:
+    label97:
+    for (String str2 = "0X8004BE7";; str2 = "0X8004BE6")
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+      bdla.b(localQQAppInterface, "CliOper", "", "", str1, str2, 0, 1, "1", "", "", "");
+      if (AppSetting.c) {
+        NotifyPushSettingActivity.d(this.a).setContentDescription(anvx.a(2131707100));
       }
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bhhw.b(2, 2131691945, 1500);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bhhw.b(2, 2131694108, 1500);
+      bkxs.b();
+      break;
+      str1 = "0X8004BE6";
+      break label23;
     }
   }
 }

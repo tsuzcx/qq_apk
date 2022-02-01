@@ -1,13 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bhqd
-  implements DialogInterface.OnClickListener
+class bhqd
+  implements View.OnClickListener
 {
-  public bhqd(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
+  bhqd(bhqc parambhqc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.dismiss();
+      continue;
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
+      this.a.dismiss();
+      continue;
+      if (this.a.a != null) {
+        this.a.a.b();
+      }
+      this.a.dismiss();
+    }
+  }
 }
 
 

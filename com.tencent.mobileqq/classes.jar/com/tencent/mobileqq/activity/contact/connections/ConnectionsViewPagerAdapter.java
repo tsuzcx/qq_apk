@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import aicz;
+import aixy;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -15,9 +15,9 @@ public class ConnectionsViewPagerAdapter
 {
   private SimpleArrayMap<Integer, ConnectionsExplorationClidFragment> jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap = new SimpleArrayMap(10);
   protected QQAppInterface a;
-  private ArrayList<aicz> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<aixy> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public ConnectionsViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, ArrayList<aicz> paramArrayList)
+  public ConnectionsViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, ArrayList<aixy> paramArrayList)
   {
     super(paramFragmentManager);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
@@ -26,23 +26,23 @@ public class ConnectionsViewPagerAdapter
     }
   }
   
-  private aicz a(int paramInt)
+  private aixy a(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (aicz)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      return (aixy)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
     return null;
   }
   
   public ConnectionsExplorationClidFragment a(int paramInt)
   {
-    aicz localaicz = a(paramInt);
+    aixy localaixy = a(paramInt);
     ConnectionsExplorationClidFragment localConnectionsExplorationClidFragment = new ConnectionsExplorationClidFragment();
-    if (localaicz != null)
+    if (localaixy != null)
     {
-      localConnectionsExplorationClidFragment.a(localaicz.a);
+      localConnectionsExplorationClidFragment.a(localaixy.a);
       localConnectionsExplorationClidFragment.b(paramInt);
-      if (localaicz.a != 23) {
+      if (localaixy.a != 23) {
         break label68;
       }
     }
@@ -69,7 +69,7 @@ public class ConnectionsViewPagerAdapter
     }
   }
   
-  public void a(ArrayList<aicz> paramArrayList)
+  public void a(ArrayList<aixy> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);

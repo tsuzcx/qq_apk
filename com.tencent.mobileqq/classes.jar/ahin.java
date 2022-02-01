@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.12.1;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.customviews.MessageProgressTextView;
 
 public class ahin
-  extends andd
+  extends afqr
 {
-  ahin(ahik paramahik) {}
-  
-  protected void onGetFollowStatus(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    paramString = this.a;
-    if ((paramBoolean1) && (paramBoolean2)) {}
-    for (paramBoolean1 = true;; paramBoolean1 = false)
-    {
-      paramString.h = paramBoolean1;
-      ahik.a(this.a).post(new NearbyChatPie.12.1(this));
-      return;
-    }
-  }
+  public RelativeLayout a;
+  public SessionInfo a;
+  public MessageProgressTextView a;
+  public boolean a;
+  public RelativeLayout b;
+  public View c;
+  public RelativeLayout c;
 }
 
 

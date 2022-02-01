@@ -1,20 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class olk
-  implements View.OnClickListener
+public abstract interface olk
 {
-  public olk(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((this.a.a instanceof oiz)) {
-      ((oiz)this.a.a).o();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(ArrayList<olm> paramArrayList, String paramString, boolean paramBoolean);
 }
 
 

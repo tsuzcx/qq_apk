@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme.diy;
 
-import aezp;
+import afrb;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -13,12 +13,12 @@ import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView.ScaleType;
-import anws;
-import aqhx;
-import aqhy;
-import aqwv;
-import bgio;
-import bjkq;
+import aozu;
+import arlh;
+import arli;
+import asbf;
+import bhrj;
+import bkwb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -138,7 +138,7 @@ public class ThemeBackground
       return null;
       paramString = new File(paramString);
     } while ((!paramString.exists()) || (!isSupportVideo()));
-    return bgio.a().a(paramString, true, new ThemeBackground.3(paramInt));
+    return bhrj.a().a(paramString, true, new ThemeBackground.3(paramInt));
   }
   
   public static Drawable getDynamicDrawable(String paramString1, String paramString2, int paramInt)
@@ -151,10 +151,10 @@ public class ThemeBackground
   
   public static Drawable getGLDrawableDrawable(String paramString, Function0<Drawable> paramFunction0)
   {
-    if (!aqhy.c().f()) {
+    if (!arli.c().f()) {
       return (Drawable)paramFunction0.invoke();
     }
-    return bgio.a().a(new File(paramString), true, paramFunction0);
+    return bhrj.a().a(new File(paramString), true, paramFunction0);
   }
   
   private static void getImgFromCache(Context paramContext, String paramString1, ThemeBackground paramThemeBackground, SharedPreferences paramSharedPreferences, String paramString2, Bitmap paramBitmap)
@@ -170,7 +170,7 @@ public class ThemeBackground
         paramThemeBackground.img = new BitmapDrawable(paramContext.getResources(), paramBitmap);
         return;
       }
-      paramContext = new aqwv(paramContext.getResources(), paramBitmap);
+      paramContext = new asbf(paramContext.getResources(), paramBitmap);
       paramContext.setGravity(48);
       paramThemeBackground.img = paramContext;
       return;
@@ -215,7 +215,7 @@ public class ThemeBackground
     String str;
     if ((!TextUtils.isEmpty(paramString1)) && ("theme_bg_aio_path".equals(paramString1)))
     {
-      str = aezp.a(paramContext, paramString2, 0).getString("chat_uniform_bg", "null");
+      str = afrb.a(paramContext, paramString2, 0).getString("chat_uniform_bg", "null");
       if (!TextUtils.isEmpty(str)) {
         break label43;
       }
@@ -385,10 +385,10 @@ public class ThemeBackground
       return;
       localObject1 = null;
       break;
-      File localFile = new File(bjkq.a((File)localObject2));
+      File localFile = new File(bkwb.a((File)localObject2));
       if (localFile.exists())
       {
-        bool = bjkq.a(paramContext);
+        bool = bkwb.a(paramContext);
         if ((QLog.isColorLevel()) || (!bool)) {
           QLog.d("ThemeBackground", 2, "getThemeBackground, sharpP exists, bgType=" + paramString1 + ", path=" + paramString2 + ", sharpPAv=" + bool);
         }
@@ -424,7 +424,7 @@ public class ThemeBackground
         String str1 = arrayOfString[paramInt];
         String str2 = paramContext.getString(str1, null);
         if ((str2 != null) && (str2.contains("custom_background/" + paramString + "/"))) {
-          localEditor.putString(str1, str2.replace("custom_background/" + paramString + "/", "custom_background/" + anws.a(paramString) + "/"));
+          localEditor.putString(str1, str2.replace("custom_background/" + paramString + "/", "custom_background/" + aozu.a(paramString) + "/"));
         }
         paramInt += 1;
       }
@@ -451,15 +451,15 @@ public class ThemeBackground
     //   26: putfield 486	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
     //   29: aload_2
     //   30: aload 7
-    //   32: invokestatic 491	bfpx:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Lbfpy;
+    //   32: invokestatic 491	bgyo:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Lbgyp;
     //   35: astore 6
     //   37: aload 6
-    //   39: getfield 496	bfpy:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   39: getfield 496	bgyp:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   42: astore 5
     //   44: aload 5
     //   46: ifnull +11 -> 57
     //   49: aload 6
-    //   51: getfield 498	bfpy:jdField_a_of_type_Int	I
+    //   51: getfield 498	bgyp:jdField_a_of_type_Int	I
     //   54: ifeq +443 -> 497
     //   57: new 77	java/lang/StringBuilder
     //   60: dup
@@ -475,7 +475,7 @@ public class ThemeBackground
     //   84: ldc_w 502
     //   87: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   90: aload 6
-    //   92: getfield 498	bfpy:jdField_a_of_type_Int	I
+    //   92: getfield 498	bgyp:jdField_a_of_type_Int	I
     //   95: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   98: ldc_w 342
     //   101: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -503,7 +503,7 @@ public class ThemeBackground
     //   151: ldc_w 504
     //   154: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   157: aload 6
-    //   159: getfield 498	bfpy:jdField_a_of_type_Int	I
+    //   159: getfield 498	bgyp:jdField_a_of_type_Int	I
     //   162: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   165: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   168: invokevirtual 386	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -541,7 +541,7 @@ public class ThemeBackground
     //   238: iconst_0
     //   239: invokevirtual 422	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   242: aload 6
-    //   244: getfield 498	bfpy:jdField_a_of_type_Int	I
+    //   244: getfield 498	bgyp:jdField_a_of_type_Int	I
     //   247: iconst_1
     //   248: if_icmpne +371 -> 619
     //   251: iconst_2
@@ -554,10 +554,10 @@ public class ThemeBackground
     //   262: putfield 507	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   265: aload_2
     //   266: aload 7
-    //   268: invokestatic 491	bfpx:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Lbfpy;
+    //   268: invokestatic 491	bgyo:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Lbgyp;
     //   271: astore 6
     //   273: aload 6
-    //   275: getfield 496	bfpy:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   275: getfield 496	bgyp:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   278: astore 5
     //   280: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   283: ifne +8 -> 291
@@ -593,12 +593,12 @@ public class ThemeBackground
     //   354: ldc_w 515
     //   357: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   360: aload 6
-    //   362: getfield 498	bfpy:jdField_a_of_type_Int	I
+    //   362: getfield 498	bgyp:jdField_a_of_type_Int	I
     //   365: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   368: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   371: invokestatic 268	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   374: aload 6
-    //   376: getfield 498	bfpy:jdField_a_of_type_Int	I
+    //   376: getfield 498	bgyp:jdField_a_of_type_Int	I
     //   379: iconst_1
     //   380: if_icmpeq +217 -> 597
     //   383: new 380	java/util/HashMap
@@ -613,7 +613,7 @@ public class ThemeBackground
     //   402: ldc_w 517
     //   405: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   408: aload 6
-    //   410: getfield 498	bfpy:jdField_a_of_type_Int	I
+    //   410: getfield 498	bgyp:jdField_a_of_type_Int	I
     //   413: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   416: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   419: invokevirtual 386	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -670,7 +670,7 @@ public class ThemeBackground
     //   530: ldc_w 502
     //   533: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   536: aload 6
-    //   538: getfield 498	bfpy:jdField_a_of_type_Int	I
+    //   538: getfield 498	bgyp:jdField_a_of_type_Int	I
     //   541: invokevirtual 89	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   544: ldc_w 342
     //   547: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -719,7 +719,7 @@ public class ThemeBackground
     //   252	349	3	i	int
     //   112	494	4	bool	boolean
     //   42	578	5	localBitmap	Bitmap
-    //   35	502	6	localbfpy	bfpy
+    //   35	502	6	localbgyp	bgyp
     //   7	474	7	localOptions	android.graphics.BitmapFactory.Options
     //   104	460	8	localObject	Object
     //   614	1	8	localException	Exception
@@ -748,7 +748,7 @@ public class ThemeBackground
     paramString2 = getSharedPreferences(paramContext, paramString2, 4);
     String str = paramString2.getString(paramString1, "null");
     if ((str != null) && (str.equals(""))) {
-      paramThemeBackground.img = paramContext.getResources().getDrawable(2130838892);
+      paramThemeBackground.img = paramContext.getResources().getDrawable(2130838912);
     }
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
@@ -860,7 +860,7 @@ public class ThemeBackground
               if (localThemeBackground.img == null) {
                 break label63;
               }
-              localThemeBackground.img = new LayerDrawable(new Drawable[] { localThemeBackground.img, paramAppRuntime.getApplication().getApplicationContext().getResources().getDrawable(2130847385) });
+              localThemeBackground.img = new LayerDrawable(new Drawable[] { localThemeBackground.img, paramAppRuntime.getApplication().getApplicationContext().getResources().getDrawable(2130847473) });
               return localThemeBackground;
             }
           }
@@ -917,7 +917,7 @@ public class ThemeBackground
   
   private static void horizontalAnimateInit(int paramInt, ThemeBackground paramThemeBackground, View paramView)
   {
-    if ((ThemeUtil.isHorizontalAnimate()) && (bgio.a(paramThemeBackground.img)))
+    if ((ThemeUtil.isHorizontalAnimate()) && (bhrj.a(paramThemeBackground.img)))
     {
       paramView.addOnLayoutChangeListener(new ThemeBackground.5(paramInt, paramThemeBackground));
       setThemeDrawArea(paramView, paramInt, paramThemeBackground);
@@ -926,7 +926,7 @@ public class ThemeBackground
   
   public static boolean isSupportVideo()
   {
-    return aqhy.c().e();
+    return arli.c().e();
   }
   
   /* Error */
@@ -1287,7 +1287,7 @@ public class ThemeBackground
       return;
     }
     paramView = calThemeDrawArea(f3, f1, f2, paramInt);
-    bgio.a().a(paramThemeBackground.img, paramView[0], paramView[1], paramView[2], paramView[3]);
+    bhrj.a().a(paramThemeBackground.img, paramView[0], paramView[1], paramView[2], paramView[3]);
   }
 }
 

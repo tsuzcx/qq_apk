@@ -1,30 +1,25 @@
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
-class bngc
+public class bngc
   implements Animator.AnimatorListener
 {
-  bngc(bnga parambnga) {}
+  public bngc(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.a = false;
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AEProviderContainerView", 2, "panel closed");
+    }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

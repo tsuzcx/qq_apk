@@ -1,97 +1,153 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.Friends;
+import cooperation.qzone.QUA;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class bazi
-  extends bazc
-  implements View.OnClickListener
 {
-  public static final String a;
-  public int a;
-  public JSONObject a;
-  public String b;
-  public String j;
+  private static final Pattern a = Pattern.compile("@?\\{uin:\\d+,nick(name)?:.*?\\}");
   
-  static
+  public static newest_feeds_req a(int paramInt, long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString)
   {
-    jdField_a_of_type_JavaLangString = bazi.class.getSimpleName();
+    return new newest_feeds_req(paramInt, paramLong1, paramArrayList, paramLong2, paramString, QUA.getQUA3(), null);
   }
   
-  protected bazi(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, UnifySearchCommon.ResultItem paramResultItem)
+  public static newest_feeds_req a(Intent paramIntent)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt1);
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Int = paramInt2;
-    b(paramJSONObject);
-  }
-  
-  protected bazi(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, DynamicSearch.ResultItem paramResultItem)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt1);
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Int = paramInt2;
-    b(paramJSONObject);
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      i = 1;
+    if (paramIntent == null) {
+      return new newest_feeds_req();
     }
-    return i;
+    paramIntent = paramIntent.getSerializableExtra("req");
+    if ((paramIntent != null) && ((paramIntent instanceof newest_feeds_req))) {
+      return (newest_feeds_req)paramIntent;
+    }
+    return new newest_feeds_req();
   }
   
-  public void a(View paramView)
+  public static Intent a(Intent paramIntent, newest_feeds_req paramnewest_feeds_req)
   {
-    batc localbatc;
-    JSONObject localJSONObject;
-    if (batb.b.containsKey(this))
-    {
-      localbatc = (batc)batb.b.get(this);
-      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localJSONObject = new JSONObject();
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
-    try
+    localIntent.putExtra("req", paramnewest_feeds_req);
+    return localIntent;
+  }
+  
+  public static String a(String paramString)
+  {
+    if ("".equals(paramString)) {}
+    int j;
+    int i;
+    do
     {
-      localJSONObject.put("project", bbda.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localbatc.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "web");
-      localJSONObject.put("extra_info", this.b);
-      localJSONObject.put("tepl", this.f);
-      bbda.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(this.jdField_a_of_type_Long + "").obj2(this.j).ver1(this.g).ver2(bbda.a(this.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + batb.jdField_a_of_type_Long));
-      return;
+      return null;
+      int k = paramString.indexOf("uin:");
+      j = paramString.indexOf(",");
+      i = 0;
+      if (k != -1) {
+        i = k + 4;
+      }
+    } while ((i == 0) || (j == -1));
+    return paramString.substring(i, j);
+  }
+  
+  public static String a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {
+      localObject = null;
     }
-    catch (JSONException localJSONException)
+    Matcher localMatcher;
+    do
     {
-      for (;;)
+      return localObject;
+      localMatcher = a.matcher(paramString);
+      localObject = paramString;
+    } while (!localMatcher.find());
+    String str2 = localMatcher.group();
+    String str3 = a(str2);
+    String str1 = "";
+    Object localObject = str1;
+    if (!TextUtils.isEmpty(str3))
+    {
+      anvk localanvk = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      localObject = str1;
+      if (localanvk != null)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+        localObject = localanvk.e(str3);
+        if (localObject == null) {
+          break label154;
+        }
       }
     }
+    label152:
+    label154:
+    for (localObject = ((Friends)localObject).getFriendNickWithAlias();; localObject = "")
+    {
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        localObject = b(str2);
+      }
+      for (;;)
+      {
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label152;
+        }
+        paramString = paramString.replace(str2, "@" + (String)localObject + " ");
+        break;
+      }
+      break;
+    }
   }
   
-  public void a(bbhn parambbhn) {}
-  
-  public void b(JSONObject paramJSONObject) {}
-  
-  public void onClick(View paramView)
+  public static ArrayList<Long> a(QQAppInterface paramQQAppInterface)
   {
-    a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramQQAppInterface = (anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    Object localObject = paramQQAppInterface.d();
+    if (localObject != null)
+    {
+      paramQQAppInterface = new ArrayList(((ArrayList)localObject).size());
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Friends localFriends = (Friends)((Iterator)localObject).next();
+        if ((localFriends != null) && (Friends.isValidUin(localFriends.uin))) {
+          paramQQAppInterface.add(Long.valueOf(Long.parseLong(localFriends.uin)));
+        }
+      }
+    }
+    for (;;)
+    {
+      return paramQQAppInterface;
+      paramQQAppInterface = null;
+    }
+  }
+  
+  public static String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    int j;
+    int i;
+    do
+    {
+      return null;
+      int k = paramString.indexOf(",nick:");
+      j = paramString.indexOf("}");
+      i = 0;
+      if (k != -1) {
+        i = k + 6;
+      }
+    } while ((j == -1) || (i == 0));
+    return paramString.substring(i, j);
   }
 }
 

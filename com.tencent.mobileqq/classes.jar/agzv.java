@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agzv
-  implements View.OnClickListener
+  extends ahaa
 {
-  agzv(agzo paramagzo) {}
-  
-  public void onClick(View paramView)
+  agzv(agvm paramagvm)
   {
-    this.a.a(((TextView)paramView).getText().toString());
-    this.a.w();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahlu(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, (TroopChatPie)agvm.a(this.a));
   }
 }
 

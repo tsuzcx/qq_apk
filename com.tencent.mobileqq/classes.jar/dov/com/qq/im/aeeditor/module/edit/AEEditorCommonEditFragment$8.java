@@ -1,8 +1,8 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
 import android.support.v4.app.FragmentActivity;
-import bmcx;
-import bmht;
+import bnsp;
+import bnxl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -19,10 +19,10 @@ public class AEEditorCommonEditFragment$8
   public void run()
   {
     HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mCallback = new bmht(this);
+    localHttpNetReq.mCallback = new bnxl(this);
     localHttpNetReq.mReqUrl = "https://downv6.qq.com/shadow_qqcamera/ProcessAnimation_b9f8fc550f1535b445b564bfbe0d82c5.zip";
     localHttpNetReq.mHttpMethod = 0;
-    localHttpNetReq.mOutPath = new File(bmcx.e).getPath();
+    localHttpNetReq.mOutPath = new File(bnsp.e).getPath();
     localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
     localHttpNetReq.mExcuteTimeLimit = 30000L;
     try

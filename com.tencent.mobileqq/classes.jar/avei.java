@@ -1,17 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.9;
+import android.os.Bundle;
+import com.tencent.mobileqq.gamecenter.protocol.ReportTypeRsp;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class avei
-  implements DialogInterface.OnClickListener
+class avei
+  implements BusinessObserver
 {
-  public avei(LocationDialogUtil.9 param9) {}
+  avei(aveh paramaveh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (avdr.a(this.a.a)) {
-      this.a.a.finish();
+    paramBundle = (ReportTypeRsp)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("GameShare.NetHelper", 2, "ReportTypeRsp reportObserver:" + paramBoolean + "|" + paramBundle);
     }
   }
 }

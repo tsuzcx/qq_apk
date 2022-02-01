@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ark.API;
 
-import aonx;
-import aooa;
-import aoog;
+import apqy;
+import aprb;
+import aprh;
 import com.tencent.ark.ark.VariantWrapper;
 
 class ArkAppDeviceModule$ObserverMethod$5$2$1
@@ -12,8 +12,8 @@ class ArkAppDeviceModule$ObserverMethod$5$2$1
   
   public void run()
   {
-    aonx.a(this.a.a.jdField_a_of_type_Aooa.a, this.a.a.jdField_a_of_type_Long, false, 0.0D, 0.0D);
-    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_Aooa.a.a(this.a.a.jdField_a_of_type_Long);
+    apqy.a(this.a.a.jdField_a_of_type_Aprb.a, this.a.a.jdField_a_of_type_Long, false, 0.0D, 0.0D);
+    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_Aprb.a.a(this.a.a.jdField_a_of_type_Long);
     if (localVariantWrapper != null) {
       localVariantWrapper.Reset();
     }

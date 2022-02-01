@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.graphics.Bitmap;
 
-public class auyw
-  implements auzs
+public abstract interface auyw
 {
-  public auyw(ListenTogetherManager paramListenTogetherManager, BaseActivity paramBaseActivity, int paramInt, String paramString) {}
+  public abstract void a(String paramString);
   
-  public void a()
-  {
-    if ((ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
-      return;
-    }
-    ListenTogetherManager.a(ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1002);
-  }
-  
-  public void b() {}
+  public abstract void a(String paramString, Bitmap paramBitmap);
 }
 
 

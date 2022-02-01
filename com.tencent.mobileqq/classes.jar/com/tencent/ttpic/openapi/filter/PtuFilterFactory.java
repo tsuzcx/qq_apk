@@ -66,7 +66,7 @@ public class PtuFilterFactory
       localPicBaseFilter.RendProcessImage((QImage)localObject3, (Frame)localObject2);
       ((QImage)localObject3).UnBindBitmap(paramBitmap);
       localPicBaseFilter.clear();
-      ((BaseFilter)localObject1).ClearGLSL();
+      ((BaseFilter)localObject1).clearGLSL();
       ((Frame)localObject2).clear();
       return;
     }
@@ -84,7 +84,7 @@ public class PtuFilterFactory
       localPicBaseFilter.RendProcessImage((QImage)localObject1, localFrame);
       localPicBaseFilter.clear();
       localFrame.clear();
-      ((BaseFilter)localObject3).ClearGLSL();
+      ((BaseFilter)localObject3).clearGLSL();
       RendererUtils.clearTexture(paramInt1);
       ((QImage)localObject1).ToBitmap(paramBitmap);
       ((QImage)localObject1).Dispose();

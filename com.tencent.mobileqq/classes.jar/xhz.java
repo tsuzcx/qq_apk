@@ -1,22 +1,27 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper.3.1;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class xhz
-  implements View.OnFocusChangeListener
+  extends xif<StoryVideoItem>
 {
-  xhz(xhw paramxhw) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public xhz(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    if (!paramBoolean) {
-      this.a.b();
-    }
-    while (xhw.a(this.a)) {
-      return;
-    }
-    new Handler().postDelayed(new DetailCommentHelper.3.1(this), 200L);
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    ykq.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

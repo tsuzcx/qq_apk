@@ -1,70 +1,27 @@
-import android.content.Intent;
-import android.os.SystemClock;
-import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.avgame.gameroom.overlay.OverlayView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class njq
+  implements nhz
 {
-  private static njq jdField_a_of_type_Njq;
-  private String jdField_a_of_type_JavaLangString;
-  private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  public njq(OverlayView paramOverlayView) {}
   
-  public static njq a()
+  public void a(LottieDrawable paramLottieDrawable)
   {
-    if (jdField_a_of_type_Njq == null) {}
-    try
+    if (paramLottieDrawable != null)
     {
-      jdField_a_of_type_Njq = new njq();
-      return jdField_a_of_type_Njq;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public void a(String paramString, Intent paramIntent)
-  {
-    if ((paramIntent != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      long l1 = SystemClock.elapsedRealtime();
-      long l2 = paramIntent.getLongExtra("key_start_time", 0L);
-      if (l2 != 0L) {
-        QLog.i(this.jdField_a_of_type_JavaLangString, 2, paramString + "[" + (l1 - l2) + "]");
+      OverlayView.c(this.a, paramLottieDrawable);
+      if (QLog.isColorLevel()) {
+        QLog.d("OverlayView", 2, "loadLottieAnim success needRecoverSelfHeadCheerLottie = " + OverlayView.c(this.a));
       }
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      long l = SystemClock.elapsedRealtime();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(l));
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      long l1 = SystemClock.elapsedRealtime();
-      Long localLong = (Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (localLong != null)
+      if (OverlayView.c(this.a))
       {
-        long l2 = localLong.longValue();
-        QLog.i(this.jdField_a_of_type_JavaLangString, 2, paramString + "[" + (l1 - l2) + "]");
+        OverlayView.b(this.a).setImageDrawable(OverlayView.c(this.a));
+        OverlayView.c(this.a).playAnimation();
+        OverlayView.d(this.a, false);
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
     }
   }
 }

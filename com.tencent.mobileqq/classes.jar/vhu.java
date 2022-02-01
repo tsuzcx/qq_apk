@@ -1,16 +1,30 @@
-import java.util.List;
+import android.view.View;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 
 public class vhu
+  implements vhc
 {
-  public int a;
-  public String a;
-  public List<vhw> a;
-  public boolean a;
-  public int b = 500;
-  public String b;
-  public List<vhv> b;
-  public int c = 100;
-  public int d = 15;
+  private IVideoViewBase a;
+  
+  public vhu(IVideoViewBase paramIVideoViewBase)
+  {
+    this.a = paramIVideoViewBase;
+  }
+  
+  public View a()
+  {
+    if ((this.a instanceof View)) {
+      return (View)this.a;
+    }
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (this.a != null) {
+      this.a.setFixedSize(paramInt1, paramInt2);
+    }
+  }
 }
 
 

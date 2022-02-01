@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
@@ -14,7 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bfpm;
+import anvx;
+import bgyd;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.util.DisplayUtil;
@@ -40,7 +40,7 @@ class EmojiRedpacketUserGuideDialog$UserGuidView
     ((RelativeLayout.LayoutParams)localObject2).addRule(13);
     ((RelativeLayout.LayoutParams)localObject2).width = DisplayUtil.dip2px(paramContext, 40.0F);
     ((RelativeLayout.LayoutParams)localObject2).height = DisplayUtil.dip2px(paramContext, 40.0F);
-    localObject2 = getResources().getDrawable(2130843480);
+    localObject2 = getResources().getDrawable(2130843517);
     paramEmojiRedpacketUserGuideDialog.setBackgroundDrawable((Drawable)localObject2);
     ((Animatable)localObject2).start();
     paramEmojiRedpacketUserGuideDialog = new LinearLayout(paramContext);
@@ -59,14 +59,14 @@ class EmojiRedpacketUserGuideDialog$UserGuidView
     ((LinearLayout.LayoutParams)localObject1).height = ((int)(UIUtils.getWindowScreenHeight(paramContext) * 0.7D));
     ((LinearLayout.LayoutParams)localObject1).width = UIUtils.dip2px(paramContext, 320.0F);
     localObject1 = new ImageView(paramContext);
-    ((ImageView)localObject1).setImageResource(2130846452);
+    ((ImageView)localObject1).setImageResource(2130846548);
     paramEmojiRedpacketUserGuideDialog.addView((View)localObject1);
     paramEmojiRedpacketUserGuideDialog = (LinearLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
     paramEmojiRedpacketUserGuideDialog.topMargin = ((int)(UIUtils.getWindowScreenHeight(paramContext) * 0.02D));
     paramEmojiRedpacketUserGuideDialog.gravity = 1;
     paramEmojiRedpacketUserGuideDialog.width = UIUtils.dip2px(paramContext, 37.0F);
     paramEmojiRedpacketUserGuideDialog.height = UIUtils.dip2px(paramContext, 37.0F);
-    bfpm.a((View)localObject1, amtj.a(2131703146), null);
+    bgyd.a((View)localObject1, anvx.a(2131703497), null);
   }
 }
 

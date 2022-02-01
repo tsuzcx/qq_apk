@@ -1,32 +1,8 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Intent;
 
-class agja
-  implements bhba
+public abstract interface agja
 {
-  agja(agiy paramagiy) {}
-  
-  public void a(View paramView)
-  {
-    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
-    if (this.a.a()) {
-      return;
-    }
-    Object localObject = (FragmentActivity)paramView.getContext();
-    if (localObject != null) {}
-    for (localObject = ((FragmentActivity)localObject).getChatFragment();; localObject = null)
-    {
-      if (localObject == null)
-      {
-        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
-        return;
-      }
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
-      return;
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
 }
 
 

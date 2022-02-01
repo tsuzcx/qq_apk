@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.1;
-import com.tencent.qphone.base.util.QLog;
-
-public class amim
-  implements aloh
+class amim
+  extends blfn
 {
-  public amim(ApolloConfigDataReport.1 param1) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  amim(amik paramamik, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloConfigDataReport", 2, new Object[] { "checkReportConfigJson errorCode:", Integer.valueOf(paramInt1), ", httpCode:", Integer.valueOf(paramInt2) });
-    }
-    if ((paramInt1 == 0) && (paramInt2 == 200)) {
-      amil.b();
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public void a(int paramInt, Object paramObject, blfm[] paramArrayOfblfm)
+  {
+    paramInt = 0;
+    if ((paramArrayOfblfm == null) || (paramArrayOfblfm.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfblfm.length < 0)
+      {
+        paramArrayOfblfm[0].b = 0;
+        paramArrayOfblfm[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfblfm.length)
+      {
+        paramArrayOfblfm[paramInt].b = -1;
+        paramArrayOfblfm[paramInt].a = -1;
+        paramInt += 1;
+      }
     }
   }
 }

@@ -1,32 +1,37 @@
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 import android.widget.EditText;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
-import com.tencent.widget.XPanelContainer;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class aevy
-  extends anep
+  implements View.OnKeyListener
 {
-  public aevy(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
+  public aevy(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public void a(int paramInt)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.b();
-    SendBirthdayWishesActivity.a(this.a, paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
-      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
-    }
-    if (paramInt != 2)
+    if (paramInt == 67)
     {
-      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
-      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
+      if (paramKeyEvent.getAction() != 0) {
+        break label36;
+      }
+      SelectedAndSearchBar.a(this.a, TextUtils.isEmpty(SelectedAndSearchBar.a(this.a).getText()));
+    }
+    for (;;)
+    {
+      return false;
+      label36:
+      if ((paramKeyEvent.getAction() == 1) && (SelectedAndSearchBar.a(this.a))) {
+        SelectedAndSearchBar.a(this.a).a();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aevy
  * JD-Core Version:    0.7.0.1
  */

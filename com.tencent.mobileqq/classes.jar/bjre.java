@@ -1,16 +1,8 @@
-import android.view.View;
-
-class bjre
-  implements bjrg
+public abstract interface bjre
 {
-  bjre(bjrb parambjrb) {}
+  public abstract void a(int paramInt);
   
-  public void a(View paramView)
-  {
-    this.a.c(paramView);
-    this.a.c();
-    bjrb.a(this.a, paramView.getTag(), false);
-  }
+  public abstract void b();
 }
 
 

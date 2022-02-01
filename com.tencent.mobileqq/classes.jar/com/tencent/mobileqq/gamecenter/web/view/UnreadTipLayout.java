@@ -32,7 +32,7 @@ public class UnreadTipLayout
   
   private void a()
   {
-    setBackgroundDrawable(getResources().getDrawable(2130846159));
+    setBackgroundDrawable(getResources().getDrawable(2130846255));
     setVisibility(4);
   }
   
@@ -49,7 +49,7 @@ public class UnreadTipLayout
   
   public void setUnreadNum(int paramInt)
   {
-    setText(String.format(getContext().getString(2131697287), new Object[] { Integer.valueOf(paramInt) }));
+    setText(String.format(getContext().getString(2131697564), new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 

@@ -1,112 +1,162 @@
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.bgprobe.BackgroundException;
+import com.tencent.mobileqq.bgprobe.BackgroundProbeManager.1;
+import com.tencent.mobileqq.bgprobe.BackgroundProbeManager.2;
+import com.tencent.mobileqq.bgprobe.BackgroundService;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class aqfv
-  extends aptq<aqfu>
 {
-  @NonNull
-  public aqfu a(int paramInt)
-  {
-    QLog.i("QFileIPv6ConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
-    return new aqfu();
-  }
+  private static final long jdField_a_of_type_Long = TimeUnit.DAYS.toMillis(1L);
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean jdField_b_of_type_Boolean;
+  private static boolean c;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.context;
+  private long jdField_b_of_type_Long = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getLong("KEY_LAST_PROBE_SERVICE_START_TIME_MS", 0L);
   
-  @Nullable
-  public aqfu a(aptx[] paramArrayOfaptx)
+  private aqfv()
   {
-    QLog.i("QFileIPv6ConfigProcessor", 1, "onParsed");
-    if (paramArrayOfaptx != null) {
-      try
-      {
-        if (paramArrayOfaptx.length > 0)
-        {
-          paramArrayOfaptx = (aqfu)apul.a(paramArrayOfaptx[0].a, aqfu.class);
-          return paramArrayOfaptx;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfaptx) {}
-    }
-    return null;
-  }
-  
-  public void a(aqfu paramaqfu)
-  {
-    if (paramaqfu == null) {
-      QLog.i("QFileIPv6ConfigProcessor", 1, "FileIPv6Config onUpdate: newConf is null.");
-    }
-    label256:
-    for (;;)
+    if (new Random(System.currentTimeMillis()).nextInt(100000) == 0) {}
+    for (boolean bool = true;; bool = false)
     {
+      c = bool;
       return;
-      QLog.i("QFileIPv6ConfigProcessor", 1, "FileIPv6Config onUpdate");
-      Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 instanceof QQAppInterface)) {}
-      for (localObject1 = (QQAppInterface)localObject1;; localObject1 = null)
-      {
-        if (localObject1 == null) {
-          break label256;
-        }
-        Object localObject2 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject1).getCurrentUin(), 0).edit();
-        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_all_switch", paramaqfu.jdField_a_of_type_Boolean);
-        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_c2c_switch", paramaqfu.b);
-        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_group_switch", paramaqfu.c);
-        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_disc_switch", paramaqfu.d);
-        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_dataline_switch", paramaqfu.e);
-        ((SharedPreferences.Editor)localObject2).putInt("ipv6_strategy", paramaqfu.jdField_a_of_type_Int);
-        ((SharedPreferences.Editor)localObject2).apply();
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putBoolean("ipv6_all_switch", paramaqfu.jdField_a_of_type_Boolean);
-        ((Bundle)localObject2).putBoolean("ipv6_c2c_switch", paramaqfu.b);
-        ((Bundle)localObject2).putBoolean("ipv6_group_switch", paramaqfu.c);
-        ((Bundle)localObject2).putBoolean("ipv6_disc_switch", paramaqfu.d);
-        ((Bundle)localObject2).putBoolean("ipv6_dataline_switch", paramaqfu.e);
-        ((Bundle)localObject2).putInt("ipv6_strategy", paramaqfu.jdField_a_of_type_Int);
-        paramaqfu = (aser)((QQAppInterface)localObject1).getManager(317);
-        if (paramaqfu == null) {
-          break;
-        }
-        paramaqfu.b((Bundle)localObject2);
-        return;
-      }
     }
   }
   
-  public Class<aqfu> clazz()
+  private static int a()
   {
-    return aqfu.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
+    Object localObject = BaseApplicationImpl.getApplication().getPackageManager();
+    try
+    {
+      localObject = ((PackageManager)localObject).getApplicationInfo("com.tencent.mobileqq", 128);
+      if (localObject != null)
+      {
+        int i = ((ApplicationInfo)localObject).targetSdkVersion;
+        return i;
+      }
+    }
+    catch (Throwable localThrowable) {}
     return 0;
   }
   
-  public void onReqFailed(int paramInt)
+  public static aqfv a()
   {
-    QLog.i("QFileIPv6ConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+    return aqfw.a();
   }
   
-  public int type()
+  public static void a()
   {
-    return 449;
+    aqfv localaqfv = a();
+    BackgroundProbeManager.1 local1 = new BackgroundProbeManager.1(localaqfv);
+    BackgroundProbeManager.2 local2 = new BackgroundProbeManager.2(localaqfv);
+    boolean bool = localaqfv.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("BackgroundProbeManager", 2, "onRunningBackground: invoked.  probeEnabled: " + bool);
+    }
+    if (bool) {
+      bfce.a(local1, 180000L);
+    }
+    bfce.a(local2, 181000L);
+  }
+  
+  public static void a(Intent paramIntent)
+  {
+    if (new Random(System.currentTimeMillis()).nextInt(400) == 0) {}
+    for (int i = 1;; i = 0)
+    {
+      if ((c) && (b()) && (!jdField_b_of_type_Boolean) && (i != 0) && (paramIntent.getComponent() == null))
+      {
+        BackgroundException localBackgroundException = new BackgroundException("Implicit Broadcast");
+        bdjw.a(localBackgroundException, "intent: " + paramIntent.toString());
+        jdField_b_of_type_Boolean = true;
+        if (QLog.isColorLevel()) {
+          QLog.i("BackgroundProbeManager", 2, "reportImplicitBroadcast: invoked.  exception: " + localBackgroundException);
+        }
+      }
+      return;
+    }
+  }
+  
+  private boolean a()
+  {
+    if (System.currentTimeMillis() - this.jdField_b_of_type_Long > jdField_a_of_type_Long) {}
+    for (int i = 1; (b()) && (i != 0); i = 0) {
+      return true;
+    }
+    return false;
+  }
+  
+  private void b()
+  {
+    try
+    {
+      if (!jdField_a_of_type_Boolean)
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
+        this.jdField_a_of_type_AndroidContentContext.startService(localIntent);
+        this.jdField_b_of_type_Long = System.currentTimeMillis();
+        jdField_a_of_type_Boolean = true;
+        PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit().putLong("KEY_LAST_PROBE_SERVICE_START_TIME_MS", this.jdField_b_of_type_Long).apply();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      bdjw.a(new BackgroundException("startProbeService failed"));
+    }
+  }
+  
+  private static boolean b()
+  {
+    int i;
+    if (a() >= 26)
+    {
+      i = 1;
+      if (Build.VERSION.SDK_INT < 24) {
+        break label35;
+      }
+    }
+    label35:
+    for (int j = 1;; j = 0)
+    {
+      if ((i == 0) || (j == 0)) {
+        break label40;
+      }
+      return true;
+      i = 0;
+      break;
+    }
+    label40:
+    return false;
+  }
+  
+  private void c()
+  {
+    try
+    {
+      if (jdField_a_of_type_Boolean)
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
+        this.jdField_a_of_type_AndroidContentContext.stopService(localIntent);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("BackgroundProbeManager", 2, "stopProbeService: failed. ", localThrowable);
+    }
   }
 }
 

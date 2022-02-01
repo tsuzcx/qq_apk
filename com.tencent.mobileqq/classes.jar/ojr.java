@@ -1,6 +1,10 @@
-class ojr
+public class ojr
 {
-  private static final ojq a = new ojq(null);
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

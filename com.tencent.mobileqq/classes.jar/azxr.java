@@ -1,75 +1,78 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import android.util.SparseArray;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Constructor;
 
 public class azxr
-  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = 25;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int b;
-  private int c;
+  private static SparseArray<Class<? extends azwn>> a = new SparseArray();
   
-  public azxr(Context paramContext, String[] paramArrayOfString, int paramInt)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.b = paramContext.getColor(2131167102);
-    this.c = paramContext.getColor(2131167072);
+    a.put(102, azxg.class);
+    a.put(103, azxe.class);
+    a.put(104, azxd.class);
+    a.put(105, azxf.class);
+    a.put(106, azxh.class);
+    a.put(1002, azwx.class);
+    a.put(1004, ProfileColorScreenComponent.class);
+    a.put(1005, bace.class);
+    a.put(1006, babd.class);
+    a.put(1007, azzg.class);
+    a.put(1008, baax.class);
+    a.put(1009, babw.class);
+    a.put(1010, babk.class);
+    a.put(1011, babn.class);
+    a.put(1012, baca.class);
+    a.put(1013, bacf.class);
+    a.put(1014, babi.class);
+    a.put(1015, baai.class);
+    a.put(1016, bacw.class);
+    a.put(1017, babj.class);
+    a.put(1018, baby.class);
+    a.put(1019, baav.class);
+    a.put(1020, baan.class);
+    a.put(1021, azzb.class);
+    a.put(1022, azze.class);
+    a.put(1023, azyx.class);
+    a.put(1024, azyw.class);
+    a.put(1025, babf.class);
+    a.put(1026, azzi.class);
+    a.put(1027, bacm.class);
+    a.put(1028, bacu.class);
   }
   
-  public View a(int paramInt)
+  public static azxs a(int paramInt, azxt paramazxt, azrb paramazrb)
   {
-    return getView(paramInt, null, null);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileComponentFactory", 2, String.format("create componentType=%s", new Object[] { Integer.valueOf(paramInt) }));
     }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if (paramView == null)
-    {
-      localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
-      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+    azxs localazxs = badz.a(paramInt, paramazxt, paramazrb);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileComponentFactory", 2, String.format("create from vas component factory. component=%s", new Object[] { localazxs }));
     }
-    for (paramView = (WheelTextView)localObject1;; paramView = (View)localObject2)
+    if (localazxs == null)
     {
-      String str = this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      localObject2 = paramView;
-      if (paramView == null) {
-        localObject2 = (WheelTextView)localObject1;
+      Class localClass = (Class)a.get(paramInt);
+      if (localClass != null) {}
+      for (;;)
+      {
+        try
+        {
+          paramazxt = (azxs)localClass.getConstructor(new Class[] { azxt.class, azrb.class }).newInstance(new Object[] { paramazxt, paramazrb });
+          if (QLog.isColorLevel()) {
+            QLog.d("ProfileComponentFactory", 2, String.format("create from base component factory. component=%s", new Object[] { paramazxt }));
+          }
+          return paramazxt;
+        }
+        catch (Exception paramazxt)
+        {
+          QLog.e("ProfileComponentFactory", 1, "create component fail.", paramazxt);
+        }
+        paramazxt = localazxs;
       }
-      ((WheelTextView)localObject2).setTextSize(20.0F);
-      ((WheelTextView)localObject2).setTextColor(this.b);
-      ((WheelTextView)localObject2).setGravity(17);
-      ((WheelTextView)localObject2).setText(str);
-      ((WheelTextView)localObject2).setBackgroundColor(this.c);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject1 = paramView;
     }
+    return localazxs;
   }
 }
 

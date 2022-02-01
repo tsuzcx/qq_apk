@@ -1,23 +1,29 @@
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.List;
 
 public class nsn
-  implements bjoe
+  implements AdapterView.OnItemClickListener
 {
-  public nsn(EqqAccountDetailActivity paramEqqAccountDetailActivity, obr paramobr, bjnw parambjnw, int paramInt) {}
+  public nsn(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.i("PoiMapActivity", 2, "setOnItemClickListener" + paramInt);
+    }
+    paramAdapterView = (nsp)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
+    if (paramAdapterView != null)
     {
-      return;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_Obr, paramInt + 1);
-      this.jdField_a_of_type_Bjnw.dismiss();
-    } while ((!((ofx)EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).getManager(88)).a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))) || (this.jdField_a_of_type_Int == paramInt));
-    ((ogr)EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).getBusinessHandler(88)).a(134243867, EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), null, null, null, paramInt + 1, false);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.h = true;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(paramAdapterView);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_result", "", "", "", "");
+    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

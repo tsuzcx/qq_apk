@@ -17,16 +17,6 @@ public class FrameMontageFilter
     this.type = paramInt;
   }
   
-  public void ClearGLSL()
-  {
-    if (this.imagebitmap != null)
-    {
-      this.imagebitmap.recycle();
-      this.imagebitmap = null;
-    }
-    super.ClearGLSL();
-  }
-  
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     float f2 = 0.0F;
@@ -82,6 +72,16 @@ public class FrameMontageFilter
         f1 = 0.0F;
       }
     }
+  }
+  
+  public void clearGLSL()
+  {
+    if (this.imagebitmap != null)
+    {
+      this.imagebitmap.recycle();
+      this.imagebitmap = null;
+    }
+    super.clearGLSL();
   }
   
   public void setParameterDic(Map<String, Object> paramMap)

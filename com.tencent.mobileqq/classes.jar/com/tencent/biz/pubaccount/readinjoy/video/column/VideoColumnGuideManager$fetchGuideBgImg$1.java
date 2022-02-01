@@ -3,35 +3,35 @@ package com.tencent.biz.pubaccount.readinjoy.video.column;
 import android.widget.ImageView;
 import java.net.URL;
 import kotlin.Metadata;
-import sfq;
-import sft;
-import sym;
-import syn;
-import syo;
+import srv;
+import sry;
+import tlu;
+import tlv;
+import tlw;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class VideoColumnGuideManager$fetchGuideBgImg$1
   implements Runnable
 {
-  public VideoColumnGuideManager$fetchGuideBgImg$1(sfq paramsfq) {}
+  public VideoColumnGuideManager$fetchGuideBgImg$1(srv paramsrv) {}
   
   public final void run()
   {
     int j = 0;
-    syo localsyo = new syo();
-    ImageView localImageView = sfq.a(this.this$0);
+    tlw localtlw = new tlw();
+    ImageView localImageView = srv.a(this.this$0);
     if (localImageView != null) {}
     for (int i = localImageView.getWidth();; i = 0)
     {
-      localsyo.jdField_a_of_type_Int = i;
-      localImageView = sfq.a(this.this$0);
+      localtlw.jdField_a_of_type_Int = i;
+      localImageView = srv.a(this.this$0);
       i = j;
       if (localImageView != null) {
         i = localImageView.getHeight();
       }
-      localsyo.b = i;
-      localsyo.jdField_a_of_type_JavaNetURL = new URL("https://kd.qpic.cn/kamlin/assets/video_column_guide_bg_d59dfa8a.jpg");
-      syn.a().a(localsyo, (sym)new sft(this));
+      localtlw.b = i;
+      localtlw.jdField_a_of_type_JavaNetURL = new URL("https://kd.qpic.cn/kamlin/assets/video_column_guide_bg_d59dfa8a.jpg");
+      tlv.a().a(localtlw, (tlu)new sry(this));
       return;
     }
   }

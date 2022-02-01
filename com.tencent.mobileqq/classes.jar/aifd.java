@@ -1,36 +1,15 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class aifd
-  extends aiea
-  implements View.OnClickListener
+class aifd
+  implements DialogInterface.OnCancelListener
 {
-  public aifd(Context paramContext, QQAppInterface paramQQAppInterface, aifw paramaifw, aigo paramaigo)
-  {
-    super(paramContext, paramQQAppInterface, paramaifw, paramaigo);
-  }
+  aifd(aido paramaido) {}
   
-  public View a(int paramInt, View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    aife localaife;
-    if ((paramView == null) || (!(paramView.getTag() instanceof aife)))
-    {
-      localaife = new aife();
-      paramView = LayoutInflater.from(this.a).inflate(2131561249, null);
-      paramView.setTag(localaife);
-    }
-    for (;;)
-    {
-      paramView.setOnClickListener(this);
-      return paramView;
-      localaife = (aife)paramView.getTag();
-    }
+    this.a.finish();
   }
-  
-  public void onClick(View paramView) {}
 }
 
 

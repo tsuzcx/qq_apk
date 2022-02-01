@@ -1,24 +1,59 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import java.util.Iterator;
+import java.util.List;
 
 public class oot
-  implements AdapterView.OnItemClickListener
+  extends BroadcastReceiver
 {
-  public oot(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
+  public oot(ShopWebViewFragment paramShopWebViewFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.doOnBackPressed();
-    paramAdapterView = paramView.getTag();
-    if ((paramAdapterView instanceof oov))
+    if (paramIntent == null) {}
+    do
     {
-      paramAdapterView = (oov)paramAdapterView;
-      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_JavaLangString);
-      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_Long, paramAdapterView.b, "0X800953C", paramAdapterView.jdField_a_of_type_Int);
-    }
+      Object localObject;
+      do
+      {
+        do
+        {
+          return;
+          paramContext = paramIntent.getAction();
+          localObject = paramIntent.getStringExtra("uin");
+          Bitmap localBitmap = (Bitmap)paramIntent.getParcelableExtra("bitmap");
+          if (!"action_decode_finish".equals(paramContext)) {
+            break;
+          }
+          if ((this.a.jdField_a_of_type_Oog != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
+            this.a.jdField_a_of_type_Oog.a((String)localObject, localBitmap);
+          }
+        } while (this.a.jdField_a_of_type_Ooo == null);
+        this.a.jdField_a_of_type_Ooo.a((String)localObject);
+        return;
+      } while (!"action_on_shop_msg_receive".equals(paramContext));
+      this.a.jdField_a_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("datas");
+      paramContext = this.a.getActivity();
+      if ((paramContext instanceof EcshopWebActivity)) {
+        ((EcshopWebActivity)paramContext).jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
+      }
+      paramContext = paramIntent.getStringExtra("uin");
+      paramIntent = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramIntent.hasNext())
+      {
+        localObject = (RecentShopParcel)paramIntent.next();
+        if ((!TextUtils.isEmpty(((RecentShopParcel)localObject).a)) && (((RecentShopParcel)localObject).a.equals(paramContext))) {
+          ((RecentShopParcel)localObject).b += 1;
+        }
+      }
+    } while ((this.a.b != 1) || (this.a.jdField_a_of_type_Ooo == null));
+    this.a.jdField_a_of_type_Ooo.a(this.a.jdField_a_of_type_JavaUtilList);
   }
 }
 

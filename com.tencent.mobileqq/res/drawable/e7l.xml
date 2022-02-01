@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/e7m" />
-    <item android:state_pressed="false" android:drawable="@drawable/e7n" />
+    <item android:state_selected="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="4.0dip" />
+            <solid android:color="@color/skin_wt_template_item_bg_noselected" />
+        </shape>
+    </item>
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="4.0dip" />
+            <solid android:color="@color/skin_wt_template_item_bg_selected" />
+        </shape>
+    </item>
 </selector>

@@ -1,20 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-
-class awry
-  implements View.OnClickListener
+public abstract interface awry
 {
-  awry(awrw paramawrw) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    awrw.a(this.a).a.clear();
-    awrw.a(this.a).a();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b();
 }
 
 

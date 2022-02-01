@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
-import uaw;
+import aido;
+import uot;
 
 public class PublicAccountChatPie$10
   implements Runnable
 {
-  public PublicAccountChatPie$10(ahiu paramahiu) {}
+  public PublicAccountChatPie$10(aido paramaido) {}
   
   public void run()
   {
-    uaw.a().b(this.this$0.app);
+    uot.a().b(this.this$0.app);
   }
 }
 

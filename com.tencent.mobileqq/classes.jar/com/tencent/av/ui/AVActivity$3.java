@@ -23,13 +23,13 @@ class AVActivity$3
       return;
       l = AudioHelper.b();
       localView = this.this$0.a(l);
-      localRelativeLayout = (RelativeLayout)this.this$0.findViewById(2131373343);
+      localRelativeLayout = (RelativeLayout)this.this$0.findViewById(2131373556);
     } while ((localView == null) || (localRelativeLayout.getVisibility() == 0));
     QLog.w(this.this$0.b, 1, "qav_UserGuide_for_more, 计划显示, seq[" + l + "]");
     localView.setAlpha(0.01F);
     localView.setVisibility(0);
     if (this.this$0.jdField_a_of_type_ComTencentAvUiVideoControlUI != null) {
-      this.this$0.jdField_a_of_type_ComTencentAvUiVideoControlUI.C(l);
+      this.this$0.jdField_a_of_type_ComTencentAvUiVideoControlUI.D(l);
     }
     this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new AVActivity.3.1(this, l), 500L);
   }

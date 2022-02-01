@@ -1,8 +1,9 @@
 package cooperation.qqreader.view;
 
-import bkum;
-import bkvd;
+import bmfv;
+import bmgm;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import java.util.ArrayList;
 import java.util.Map;
 import mqq.app.AppRuntime;
@@ -21,12 +22,12 @@ public class ReaderTabBarView$1
     if (ReaderTabBarView.a(this.this$0) == null)
     {
       ReaderTabBarView.a(this.this$0, (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
-      ReaderTabBarView.a(this.this$0, (bkum)ReaderTabBarView.a(this.this$0).getManager(351));
+      ReaderTabBarView.a(this.this$0, (bmfv)ReaderTabBarView.a(this.this$0).getManager(QQManagerFactory.READER_RED_TOUCH_MANAGER));
     }
     Map localMap = ReaderTabBarView.a(this.this$0).a(ReaderTabBarView.a(this.this$0));
     if (localMap == null)
     {
-      bkvd.a("ReaderTabBarView", "RedAppInfoByPathList get map is null");
+      bmgm.a("ReaderTabBarView", "RedAppInfoByPathList get map is null");
       return;
     }
     ReaderTabBarView.a(this.this$0).runOnUiThread(new ReaderTabBarView.1.1(this, localMap));

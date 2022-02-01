@@ -1,68 +1,67 @@
-import android.text.format.Time;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.app.IndividualRedPacketManager.VIPHBStrategy.1;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.utils.QQConfMeetingLogReportHelper.2;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.MobileQQ;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class anxg
+  implements afrq
 {
-  static anxg jdField_a_of_type_Anxg;
-  private bczp jdField_a_of_type_Bczp = new anxh(this);
-  ShareAppLogHelper jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private QQAppInterface a;
   
-  anxg(QQAppInterface paramQQAppInterface)
+  public anxg(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.a = paramQQAppInterface;
   }
   
-  public static anxg a(QQAppInterface paramQQAppInterface)
-  {
-    jdField_a_of_type_Anxg = new anxg(paramQQAppInterface);
-    return jdField_a_of_type_Anxg;
-  }
+  public void a() {}
   
-  private void a(String paramString)
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    QLog.w("QQConfMeetingLogReportHelper", 1, "sendFile begin, path[" + paramString + "], Thread[" + Thread.currentThread().getId() + "]");
-    ThreadManager.post(new QQConfMeetingLogReportHelper.2(this, paramString), 2, null, true);
-  }
-  
-  protected int a(long paramLong)
-  {
-    Time localTime = new Time();
-    localTime.set(paramLong);
-    return localTime.hour;
-  }
-  
-  protected String a(long paramLong)
-  {
-    Time localTime = new Time();
-    localTime.set(paramLong);
-    return localTime.year + "-" + (localTime.month + 1) + "-" + localTime.monthDay;
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    long l2 = System.currentTimeMillis();
-    long l1 = paramLong1;
-    if (paramLong2 - paramLong1 < 1800000L) {
-      l1 = paramLong2 - 1800000L;
+    if ((paramRedPacketInfo == null) || (TextUtils.isEmpty(paramRedPacketInfo.templateId))) {
+      return;
     }
-    Object localObject2 = String.format("%02d", new Object[] { Integer.valueOf(a(l1)) });
-    Object localObject1 = String.format("%02d", new Object[] { Integer.valueOf(a(paramLong2)) });
-    String str2 = a(l1);
-    String str1 = a(paramLong2);
-    localObject2 = ShareAppLogHelper.a(str2 + "-" + (String)localObject2, "-");
-    localObject1 = ShareAppLogHelper.a(str1 + "-" + (String)localObject1, "-");
-    this.jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper = new ShareAppLogHelper(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getBaseContext());
-    this.jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper.a(this.jdField_a_of_type_Bczp);
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper.a((Time)localObject2, (Time)localObject1, true);
-    paramLong1 = System.currentTimeMillis();
-    QLog.w("QQConfMeetingLogReportHelper", 1, "doReportLocalLog, ret[" + bool + "], startTime[" + localObject2 + "], endTime[" + localObject1 + "], cost[" + (paramLong1 - l2) + "]");
+    if (QLog.isColorLevel()) {
+      QLog.d(anxc.b(), 2, "VIPHBStrategy.get Id = " + paramRedPacketInfo.templateId + "content = " + paramRedPacketInfo.jdField_a_of_type_JavaLangString);
+    }
+    Object localObject = (anxc)this.a.getManager(QQManagerFactory.INDIVIDUAL_RED_PACKET_MANAGER);
+    if ((localObject == null) || (!((anxc)localObject).c()) || (((anxc)localObject).c.get()))
+    {
+      String str;
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        str = anxc.b();
+        localStringBuilder = new StringBuilder().append("VIPHBStrategy get fail! Redpacket Disable or no TemplateInfo! ");
+        if (localObject != null) {
+          break label150;
+        }
+      }
+      label150:
+      for (localObject = "redPacketManager == null";; localObject = "isShowRedpacket:" + ((anxc)localObject).a().jdField_a_of_type_Boolean + ", PacketEnable:" + ((anxc)localObject).b() + ", mIsSDCardError:" + ((anxc)localObject).c.get())
+      {
+        QLog.d(str, 2, (String)localObject);
+        CustomizeStrategyFactory.a().a(paramRedPacketInfo);
+        return;
+      }
+    }
+    ThreadManager.post(new IndividualRedPacketManager.VIPHBStrategy.1(this, (anxc)localObject, paramRedPacketInfo), 8, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, ahya paramahya)
+  {
+    if ((paramRedPacketInfo != null) && ((paramahya instanceof ahyg)))
+    {
+      paramahya = (ahyg)paramahya;
+      paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap = paramahya.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramahya.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      paramRedPacketInfo.jdField_a_of_type_Afrp = paramahya.jdField_a_of_type_Afrp;
+      paramRedPacketInfo.b = paramahya.jdField_a_of_type_Boolean;
+    }
   }
 }
 

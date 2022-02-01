@@ -1,47 +1,89 @@
-import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
+import java.util.Comparator;
 
 public class ansn
-  extends anri
+  implements Comparator<DiscussionMemberInfo>
 {
-  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public ansn(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    paramQQAppInterface = new ansm(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "qboss";
-    paramQQAppInterface.c = "qboss_load";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Boolean = paramString2.equals(paramString1);
+  }
+  
+  public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
+  {
+    int i = -1;
+    if (paramDiscussionMemberInfo1.memberUin.equals(this.jdField_a_of_type_JavaLangString)) {
+      if (!this.jdField_a_of_type_Boolean) {}
     }
-    paramContext = paramContext[1].split("&");
-    int i = 0;
-    for (;;)
+    String str1;
+    String str2;
+    do
     {
-      if (i < paramContext.length)
+      do
       {
-        paramString = paramContext[i].split("=");
-        if (paramString.length == 2) {}
-        try
+        return 1;
+        return -1;
+        if (paramDiscussionMemberInfo2.memberUin.equals(this.jdField_a_of_type_JavaLangString))
         {
-          paramString[1] = URLDecoder.decode(paramString[1], "UTF-8");
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-          i += 1;
-        }
-        catch (Exception paramanrl)
-        {
+          if (this.jdField_a_of_type_Boolean) {}
           for (;;)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("QbossLoaderParser", 2, "failed to decode param value,tmps[1] is:" + paramString[0] + ",tmps[1] is:" + paramString[1], paramanrl);
-            }
+            return i;
+            i = 1;
           }
         }
+        paramDiscussionMemberInfo1 = ContactUtils.getDiscussionMemberName(paramDiscussionMemberInfo1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        paramDiscussionMemberInfo2 = ContactUtils.getDiscussionMemberName(paramDiscussionMemberInfo2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        if ((paramDiscussionMemberInfo1 == null) || (paramDiscussionMemberInfo1.length() == 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ContactUtils", 2, "lhsName is null");
+          }
+          throw new NullPointerException("com.tencent.mobileqq.utils.ContactUtils int compare lhsName is null for check ");
+        }
+        if ((paramDiscussionMemberInfo2 == null) || (paramDiscussionMemberInfo2.length() == 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ContactUtils", 2, "rhsName is null");
+          }
+          throw new NullPointerException("com.tencent.mobileqq.utils.ContactUtils  int compare rhsName is null for check ");
+        }
+        if ((!Character.isDigit(paramDiscussionMemberInfo1.charAt(0))) && (!Character.isDigit(paramDiscussionMemberInfo2.charAt(0)))) {
+          break;
+        }
+        if ((Character.isDigit(paramDiscussionMemberInfo1.charAt(0))) && (Character.isDigit(paramDiscussionMemberInfo2.charAt(0)))) {
+          return paramDiscussionMemberInfo1.charAt(0) - paramDiscussionMemberInfo2.charAt(0);
+        }
+      } while (Character.isDigit(paramDiscussionMemberInfo1.charAt(0)));
+      return -1;
+      str1 = ChnToSpell.a(paramDiscussionMemberInfo1, 1);
+      str2 = ChnToSpell.a(paramDiscussionMemberInfo2, 1);
+      if ((str1.length() == 0) || (str2.length() == 0)) {
+        return -str1.compareTo(str2);
       }
+      if (str1.charAt(0) != str2.charAt(0)) {
+        break;
+      }
+      if ((StringUtil.isAsciiAlpha(paramDiscussionMemberInfo1.charAt(0))) && (StringUtil.isAsciiAlpha(paramDiscussionMemberInfo2.charAt(0)))) {
+        return paramDiscussionMemberInfo1.charAt(0) - paramDiscussionMemberInfo2.charAt(0);
+      }
+    } while (Character.isLetter(paramDiscussionMemberInfo1.charAt(0)));
+    if (Character.isLetter(paramDiscussionMemberInfo2.charAt(0))) {
+      return -1;
     }
-    return paramQQAppInterface;
+    return str1.compareTo(str2);
+    return str1.charAt(0) - str2.charAt(0);
   }
 }
 

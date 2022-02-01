@@ -1,21 +1,24 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 
 public class arys
-  implements View.OnTouchListener
 {
-  public arys(FileAssistantActivity paramFileAssistantActivity) {}
+  public View a;
+  public RelativeLayout a;
+  public TextView a;
+  public HeartLayout a;
+  public View b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean a()
   {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
-    }
-    return false;
+    return (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.b != null);
+  }
+  
+  public boolean a(View paramView1, TextView paramTextView, View paramView2, RelativeLayout paramRelativeLayout, HeartLayout paramHeartLayout)
+  {
+    return (this.jdField_a_of_type_AndroidViewView == paramView1) && (this.jdField_a_of_type_AndroidWidgetTextView == paramTextView) && (this.b == paramView2) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == paramRelativeLayout) && (this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout == paramHeartLayout);
   }
 }
 

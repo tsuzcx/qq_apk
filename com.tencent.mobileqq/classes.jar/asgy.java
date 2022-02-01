@@ -1,52 +1,69 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Message;
+import android.os.Messenger;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
 
 public class asgy
+  extends bibo
 {
-  public int a;
-  public List<asgx> a;
+  public asgy(MessengerService paramMessengerService) {}
   
-  public asgy()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0);
-  }
-  
-  public String toString()
-  {
-    if (a()) {
-      localObject = "TPType:" + this.jdField_a_of_type_Int + "IPList:";
-    }
-    String str;
-    Iterator localIterator;
-    do
-    {
-      return localObject;
-      str = "TPType:" + this.jdField_a_of_type_Int + "IPList:";
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      localObject = str;
-    } while (!localIterator.hasNext());
-    Object localObject = (asgx)localIterator.next();
-    if (localObject != null) {
-      if (!TextUtils.isEmpty(((asgx)localObject).jdField_a_of_type_JavaLangString))
-      {
-        localObject = ((asgx)localObject).jdField_a_of_type_JavaLangString + ":" + ((asgx)localObject).jdField_a_of_type_Int + " ";
-        label145:
-        str = str + (String)localObject;
-      }
-    }
     for (;;)
     {
-      break;
-      localObject = ":" + ((asgx)localObject).jdField_a_of_type_Int + " ";
-      break label145;
+      try
+      {
+        paramObject = (Bundle)paramObject;
+        if (paramObject == null)
+        {
+          QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver.onUpdate dataBundle=null");
+          return;
+        }
+        int i = paramObject.getInt("result", -1);
+        if (!QLog.isColorLevel()) {
+          break label253;
+        }
+        QLog.d("Q.emoji.web.MessengerService", 2, "fcObserver.onUpdate ret=" + i + ", type=" + paramInt + ", isSuccess=" + paramBoolean);
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Err:" + paramObject.getMessage());
+        return;
+      }
+      QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Error type=" + paramInt);
+      paramObject = (QQAppInterface)MessengerService.a(this.a);
+      if (paramObject != null)
+      {
+        Object localObject = (bibs)paramObject.getBusinessHandler(BusinessHandlerFactory.FUN_CALL_HANDLER);
+        paramObject.removeObserver(this);
+        return;
+        if (this.a.a != null)
+        {
+          localObject = Message.obtain(null, 5);
+          paramObject.putInt("srcType", 7);
+          ((Message)localObject).setData(paramObject);
+          this.a.a.send((Message)localObject);
+          continue;
+          if (this.a.a != null)
+          {
+            localObject = Message.obtain(null, 5);
+            ((Message)localObject).setData(paramObject);
+            this.a.a.send((Message)localObject);
+          }
+        }
+      }
+      else
+      {
+        return;
+        label253:
+        switch (paramInt)
+        {
+        }
+      }
     }
   }
 }

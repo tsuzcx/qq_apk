@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import awcm;
-import azye;
+import axio;
+import bben;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +20,7 @@ class MiniMultiForwardFragment$1
     ArrayList localArrayList = new ArrayList();
     if (MiniMultiForwardFragment.a(this.this$0) == 3)
     {
-      ChatMessage localChatMessage = ((azye)this.this$0.a.getManager(340)).a(MiniMultiForwardFragment.a(this.this$0));
+      ChatMessage localChatMessage = ((bben)this.this$0.a.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(MiniMultiForwardFragment.a(this.this$0));
       if (localChatMessage == null) {
         break label161;
       }
@@ -41,7 +42,7 @@ class MiniMultiForwardFragment$1
       }
       else if (MiniMultiForwardFragment.a(this.this$0) == 1)
       {
-        localArrayList = MiniMultiForwardFragment.a(this.this$0, awcm.a().a);
+        localArrayList = MiniMultiForwardFragment.a(this.this$0, axio.a().a);
       }
       else
       {

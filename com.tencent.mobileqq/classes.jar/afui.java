@@ -1,54 +1,79 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import cooperation.qqcircle.report.QCircleLpReportDc05504;
+import java.util.HashMap;
+import java.util.List;
 
 public class afui
-  extends Drawable
+  extends afrl
 {
-  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  
-  public afui(int paramInt1, int paramInt2, float paramFloat)
+  public afui(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt2);
-    this.jdField_a_of_type_Float = paramFloat;
+    super(paramQQAppInterface, paramSessionInfo, paramContext, paramOnClickListener);
   }
   
-  public void draw(Canvas paramCanvas)
+  private afqz a()
   {
-    Rect localRect = getBounds();
-    int i = localRect.width();
-    int j = localRect.height();
-    if ((i > 0) && (j > 0))
-    {
-      paramCanvas.save();
-      jdField_a_of_type_AndroidGraphicsRectF.set(localRect);
-      paramCanvas.drawRoundRect(jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.restore();
+    if (!(this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {
+      return null;
     }
+    ChatFragment localChatFragment = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
+    if (localChatFragment == null) {
+      return null;
+    }
+    return localChatFragment.a().listAdapter;
   }
   
-  public int getOpacity()
+  protected void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, afqr paramafqr)
   {
-    return -3;
+    if ((!afok.a()) || (paramChatMessage == null) || (paramBaseChatItemLayout == null) || (paramBaseChatItemLayout.e == null)) {}
+    while ((paramChatMessage.fakeSenderType != 0) || (paramChatMessage.istroop != 1)) {
+      return;
+    }
+    if ((paramChatMessage.getQcircleRedDotFlag()) && (paramChatMessage.istroop == 1))
+    {
+      paramBaseChatItemLayout.e.setVisibility(0);
+      a(paramBaseChatItemLayout.e);
+      return;
+    }
+    paramBaseChatItemLayout.e.setVisibility(8);
   }
   
-  public void setAlpha(int paramInt)
+  public void b(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsColorFilter = paramColorFilter;
+    super.b(paramView);
+    if (paramView == null) {}
+    ChatMessage localChatMessage;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramView.getId() != 2131364563);
+      localChatMessage = ((afrk)AIOUtils.getHolder(paramView)).a;
+      localObject = a();
+    } while ((localObject == null) || (localChatMessage == null));
+    List localList = ((afqz)localObject).a();
+    afok.a().a(localList, localChatMessage.senderuin);
+    ((afqz)localObject).notifyDataSetChanged();
+    new HashMap();
+    Object localObject = localChatMessage.getQcircleRedDotJumpSchema();
+    paramView = bhey.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), (String)localObject);
+    if (paramView != null) {
+      paramView.a();
+    }
+    QCircleLpReportDc05504.report(localChatMessage.senderuin, 61, 1, 2);
   }
 }
 

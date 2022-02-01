@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bnco;
-import bnee;
+import bosg;
+import botw;
 
 public class EditPicMeiHua$1
   implements Runnable
 {
-  public EditPicMeiHua$1(bnco parambnco) {}
+  public EditPicMeiHua$1(bosg parambosg) {}
   
   public void run()
   {

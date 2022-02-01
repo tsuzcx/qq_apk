@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.servlet;
 
-import bbox;
-import bboz;
+import bcvr;
+import bcvt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
@@ -10,18 +10,18 @@ import mqq.app.NewIntent;
 public class QZoneManagerImp$4
   implements Runnable
 {
-  public QZoneManagerImp$4(bbox parambbox, int paramInt) {}
+  public QZoneManagerImp$4(bcvr parambcvr, int paramInt) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     if (QLog.isColorLevel()) {
-      QLog.d("QZoneManagerImp..UndealCount", 2, "sendGetFeedByTime.click leba.nowtime: " + l + ",QZoneNotifyServlet.lastGetFeedTime: " + bboz.c + ",config interval:" + QZoneHelper.getUpdateCountIntervalWhenClickFeedTab() + "difference: " + (l - bboz.c));
+      QLog.d("QZoneManagerImp..UndealCount", 2, "sendGetFeedByTime.click leba.nowtime: " + l + ",QZoneNotifyServlet.lastGetFeedTime: " + bcvt.c + ",config interval:" + QZoneHelper.getUpdateCountIntervalWhenClickFeedTab() + "difference: " + (l - bcvt.c));
     }
     QQAppInterface localQQAppInterface;
-    if (l - bboz.c > QZoneHelper.getUpdateCountIntervalWhenClickFeedTab())
+    if (l - bcvt.c > QZoneHelper.getUpdateCountIntervalWhenClickFeedTab())
     {
-      localQQAppInterface = bbox.a(this.this$0);
+      localQQAppInterface = bcvr.a(this.this$0);
       if ((localQQAppInterface != null) && (localQQAppInterface.getApplication() != null)) {
         break label103;
       }
@@ -30,7 +30,7 @@ public class QZoneManagerImp$4
     do
     {
       return;
-      NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApplication(), bboz.class);
+      NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApplication(), bcvt.class);
       localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
       localNewIntent.putExtra("qzone_send_by_time", this.a);
       localNewIntent.putExtra("scene", 103);

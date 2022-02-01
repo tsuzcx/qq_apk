@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.reward;
 
 import kotlin.Metadata;
-import qyb;
+import rkh;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class RIJRewardVideoTipsManager$showRewardSuccessTips$2
   implements Runnable
 {
-  public RIJRewardVideoTipsManager$showRewardSuccessTips$2(qyb paramqyb) {}
+  public RIJRewardVideoTipsManager$showRewardSuccessTips$2(rkh paramrkh) {}
   
   public final void run()
   {
-    qyb.c(this.this$0);
+    rkh.c(this.this$0);
   }
 }
 

@@ -1,18 +1,11 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
-import java.util.List;
+import android.widget.ImageView;
 
-public class zbp
-  implements zbv
+class zbp
 {
-  public zbp(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && ((FollowedRecommendBannerView.a(this.a) == null) || (FollowedRecommendBannerView.a(this.a).a() == null) || (paramInt >= FollowedRecommendBannerView.a(this.a).a().size()))) {
-      return;
-    }
-    zxp.a(FollowedRecommendBannerView.a(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
-  }
+  zbp(zbo paramzbo) {}
 }
 
 

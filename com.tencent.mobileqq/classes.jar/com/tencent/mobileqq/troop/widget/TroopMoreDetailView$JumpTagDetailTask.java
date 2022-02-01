@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.widget;
 
-import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import bfkb;
-import bfkc;
+import anvx;
+import bgss;
+import bgst;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.activity.TroopTagViewActivity;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
@@ -40,7 +40,7 @@ class TroopMoreDetailView$JumpTagDetailTask
       localQQAppInterface = TroopMoreDetailView.a(localTroopMoreDetailView);
     } while (localQQAppInterface == null);
     Object localObject1 = Long.toString(localTroopMoreDetailView.a.dwGroupClassExt);
-    bfkb localbfkb = bfkc.a(localActivity).a(localActivity, (String)localObject1);
+    bgss localbgss = bgst.a(localActivity).a(localActivity, (String)localObject1);
     List localList = localTroopMoreDetailView.a.troopTags;
     Intent localIntent = new Intent(localActivity, TroopTagViewActivity.class);
     localIntent.putExtra("troopuin", localTroopMoreDetailView.a.troopUin);
@@ -67,17 +67,17 @@ class TroopMoreDetailView$JumpTagDetailTask
       }
       localObject1 = localObject2;
       i = j;
-      if (localbfkb != null)
+      if (localbgss != null)
       {
         localObject1 = localObject2;
         i = j;
-        if (!TextUtils.isEmpty(localbfkb.a))
+        if (!TextUtils.isEmpty(localbgss.a))
         {
           localObject1 = localObject2;
           i = j;
-          if (!amtj.a(2131714677).equals(localbfkb.a))
+          if (!anvx.a(2131715024).equals(localbgss.a))
           {
-            localObject1 = localbfkb.a;
+            localObject1 = localbgss.a;
             i = 1;
           }
         }

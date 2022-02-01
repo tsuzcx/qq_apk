@@ -15,9 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import bcef;
+import bdla;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -27,12 +28,12 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.os.MqqHandler;
-import mxc;
-import mxn;
-import mya;
-import myi;
-import nhu;
-import nhv;
+import ncs;
+import ncz;
+import ndm;
+import ndu;
+import non;
+import noo;
 
 public class AVGameJoinRoomFragment
   extends PublicBaseFragment
@@ -45,9 +46,9 @@ public class AVGameJoinRoomFragment
   TextView jdField_a_of_type_AndroidWidgetTextView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
-  ArrayList<myi> jdField_a_of_type_JavaUtilArrayList;
-  mxc jdField_a_of_type_Mxc;
-  private mya jdField_a_of_type_Mya = new nhu(this);
+  ArrayList<ndu> jdField_a_of_type_JavaUtilArrayList;
+  ncs jdField_a_of_type_Ncs;
+  private ndm jdField_a_of_type_Ndm = new non(this);
   TextView b;
   TextView c;
   TextView d;
@@ -63,7 +64,7 @@ public class AVGameJoinRoomFragment
   private void a()
   {
     int m = 0;
-    bcef.b(null, "dc00898", "", "", "0X800B024", "0X800B024", 0, 0, "", "", "", "");
+    bdla.b(null, "dc00898", "", "", "0X800B024", "0X800B024", 0, 0, "", "", "", "");
     if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_JavaLangString.length() != 9)) {
       return;
     }
@@ -72,7 +73,7 @@ public class AVGameJoinRoomFragment
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     while (m < arrayOfChar.length - 1)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(new myi(Integer.parseInt(String.valueOf(arrayOfChar[m]))));
+      this.jdField_a_of_type_JavaUtilArrayList.add(new ndu(Integer.parseInt(String.valueOf(arrayOfChar[m]))));
       m += 1;
     }
     a(Integer.parseInt(String.valueOf(arrayOfChar[(arrayOfChar.length - 1)])));
@@ -82,21 +83,21 @@ public class AVGameJoinRoomFragment
   {
     if (this.jdField_a_of_type_JavaUtilArrayList.size() < 9)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(new myi(paramInt));
-      this.jdField_a_of_type_Mxc.a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_Mxc.notifyDataSetChanged();
+      this.jdField_a_of_type_JavaUtilArrayList.add(new ndu(paramInt));
+      this.jdField_a_of_type_Ncs.a(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Ncs.notifyDataSetChanged();
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 9)
       {
         Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        myi localmyi;
-        for (String str = ""; ((Iterator)localObject).hasNext(); str = str + localmyi.a()) {
-          localmyi = (myi)((Iterator)localObject).next();
+        ndu localndu;
+        for (String str = ""; ((Iterator)localObject).hasNext(); str = str + localndu.a()) {
+          localndu = (ndu)((Iterator)localObject).next();
         }
-        localObject = (mxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(373);
+        localObject = (ncz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.AV_GAME_MANAGER);
         if (localObject != null)
         {
-          bcef.b(null, "dc00898", "", "", "0X800B025", "0X800B025", 0, 0, "", "", "", "");
-          ((mxn)localObject).a(getActivity(), 4, str, null);
+          bdla.b(null, "dc00898", "", "", "0X800B025", "0X800B025", 0, 0, "", "", "", "");
+          ((ncz)localObject).a(getActivity(), 4, str, null);
         }
         ThreadManager.getUIHandler().postDelayed(new AVGameJoinRoomFragment.3(this), 1000L);
       }
@@ -116,23 +117,23 @@ public class AVGameJoinRoomFragment
   
   private void a(View paramView)
   {
-    paramView.findViewById(2131376628).setBackgroundColor(getActivity().getResources().getColor(2131167281));
-    ((TextView)paramView.findViewById(2131369068)).setVisibility(8);
-    TextView localTextView = (TextView)paramView.findViewById(2131369099);
-    localTextView.setText(getString(2131690620));
+    paramView.findViewById(2131376890).setBackgroundColor(getActivity().getResources().getColor(2131167301));
+    ((TextView)paramView.findViewById(2131369231)).setVisibility(8);
+    TextView localTextView = (TextView)paramView.findViewById(2131369262);
+    localTextView.setText(getString(2131690697));
     localTextView.setVisibility(0);
-    localTextView.setOnClickListener(new nhv(this));
+    localTextView.setOnClickListener(new noo(this));
     localTextView.setTextColor(-1);
-    localTextView = (TextView)paramView.findViewById(2131369115);
-    localTextView.setText(getString(2131690317));
+    localTextView = (TextView)paramView.findViewById(2131369278);
+    localTextView.setText(getString(2131690356));
     localTextView.setTextColor(-1);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376173));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376422));
     paramView = new LinearLayoutManager(getActivity(), 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
-    this.jdField_a_of_type_Mxc = new mxc(getActivity(), 9);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Mxc);
-    this.jdField_a_of_type_Mxc.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Ncs = new ncs(getActivity(), 9);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ncs);
+    this.jdField_a_of_type_Ncs.a(this.jdField_a_of_type_JavaUtilArrayList);
   }
   
   private void b()
@@ -140,27 +141,27 @@ public class AVGameJoinRoomFragment
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
       this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-      this.jdField_a_of_type_Mxc.a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_Mxc.notifyDataSetChanged();
+      this.jdField_a_of_type_Ncs.a(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Ncs.notifyDataSetChanged();
     }
   }
   
   private void b(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTableLayout = ((TableLayout)paramView.findViewById(2131365592));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372014));
-    this.b = ((TextView)paramView.findViewById(2131379935));
-    this.c = ((TextView)paramView.findViewById(2131378580));
-    this.d = ((TextView)paramView.findViewById(2131367123));
-    this.e = ((TextView)paramView.findViewById(2131366737));
-    this.f = ((TextView)paramView.findViewById(2131377539));
-    this.g = ((TextView)paramView.findViewById(2131377239));
-    this.h = ((TextView)paramView.findViewById(2131365946));
-    this.i = ((TextView)paramView.findViewById(2131371808));
-    this.j = ((TextView)paramView.findViewById(2131381307));
-    this.k = ((TextView)paramView.findViewById(2131365396));
-    this.l = ((TextView)paramView.findViewById(2131379522));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369193));
+    this.jdField_a_of_type_AndroidWidgetTableLayout = ((TableLayout)paramView.findViewById(2131365685));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372206));
+    this.b = ((TextView)paramView.findViewById(2131380274));
+    this.c = ((TextView)paramView.findViewById(2131378874));
+    this.d = ((TextView)paramView.findViewById(2131367242));
+    this.e = ((TextView)paramView.findViewById(2131366853));
+    this.f = ((TextView)paramView.findViewById(2131377812));
+    this.g = ((TextView)paramView.findViewById(2131377512));
+    this.h = ((TextView)paramView.findViewById(2131366047));
+    this.i = ((TextView)paramView.findViewById(2131371998));
+    this.j = ((TextView)paramView.findViewById(2131381670));
+    this.k = ((TextView)paramView.findViewById(2131365489));
+    this.l = ((TextView)paramView.findViewById(2131379832));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369355));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.c.setOnClickListener(this);
@@ -236,7 +237,7 @@ public class AVGameJoinRoomFragment
     if (QLog.isColorLevel()) {
       QLog.d("AVGameJoinRoomFragment", 2, "onCreateView");
     }
-    paramViewGroup = paramLayoutInflater.inflate(2131558728, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131558742, paramViewGroup, false);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
@@ -245,7 +246,7 @@ public class AVGameJoinRoomFragment
     }
     b(paramViewGroup);
     a(paramViewGroup);
-    bcef.b(null, "dc00898", "", "", "0X800B022", "0X800B022", 0, 0, "", "", "", "");
+    bdla.b(null, "dc00898", "", "", "0X800B022", "0X800B022", 0, 0, "", "", "", "");
     V4FragmentCollector.onV4FragmentViewCreated(this, paramViewGroup);
     return paramViewGroup;
   }
@@ -256,7 +257,7 @@ public class AVGameJoinRoomFragment
     if (QLog.isColorLevel()) {
       QLog.d("AVGameJoinRoomFragment", 2, "onDestroy");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Mya);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ndm);
   }
   
   public void onPause()
@@ -267,7 +268,7 @@ public class AVGameJoinRoomFragment
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Mya);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ndm);
   }
 }
 

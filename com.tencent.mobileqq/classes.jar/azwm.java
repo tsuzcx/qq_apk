@@ -1,11 +1,8 @@
-public class azwm
+public abstract interface azwm
 {
-  public boolean a;
+  public abstract void a(Object paramObject);
   
-  public String toString()
-  {
-    return "FriendClueConfig{friendClueSwitch=" + this.a + '}';
-  }
+  public abstract void b(Object paramObject);
 }
 
 

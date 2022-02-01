@@ -1,22 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
-public class akta
-  implements bjoe
+final class akta
+  implements DialogInterface.OnClickListener
 {
-  public akta(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  akta(Activity paramActivity, List paramList1, List paramList2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a("PTV.NewFlowCameraActivity");
-    NewFlowCameraActivity.e(this.a);
-    this.a.jdField_a_of_type_Bjnw.dismiss();
+    aksv.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

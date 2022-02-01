@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import avpa;
-import avpb;
+import awvf;
+import awvg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -18,17 +18,17 @@ public class MediaFocusController
   extends BroadcastReceiver
 {
   private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-  private avpa jdField_a_of_type_Avpa;
+  private awvf jdField_a_of_type_Awvf;
   private final Stack<MediaFocusStackItem> jdField_a_of_type_JavaUtilStack = new Stack();
   
-  public MediaFocusController(avpa paramavpa)
+  public MediaFocusController(awvf paramawvf)
   {
-    this.jdField_a_of_type_Avpa = paramavpa;
-    paramavpa = new IntentFilter();
-    paramavpa.addAction("tencent.mobileqq.mediafocus.request");
-    paramavpa.addAction("tencent.mobileqq.mediafocus.abandon");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this, paramavpa);
-    avpb.a();
+    this.jdField_a_of_type_Awvf = paramawvf;
+    paramawvf = new IntentFilter();
+    paramawvf.addAction("tencent.mobileqq.mediafocus.request");
+    paramawvf.addAction("tencent.mobileqq.mediafocus.abandon");
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this, paramawvf);
+    awvg.a();
   }
   
   private int a(MediaFocusStackItem paramMediaFocusStackItem)
@@ -67,8 +67,8 @@ public class MediaFocusController
       {
         a(paramString1, paramString2);
         a(1);
-        if (this.jdField_a_of_type_Avpa != null) {
-          this.jdField_a_of_type_Avpa.a();
+        if (this.jdField_a_of_type_Awvf != null) {
+          this.jdField_a_of_type_Awvf.a();
         }
         return 0;
       }
@@ -92,8 +92,8 @@ public class MediaFocusController
       if (!a(localMediaFocusStackItem.b())) {
         break label64;
       }
-      if (this.jdField_a_of_type_Avpa != null) {
-        this.jdField_a_of_type_Avpa.a(paramInt, localMediaFocusStackItem.a());
+      if (this.jdField_a_of_type_Awvf != null) {
+        this.jdField_a_of_type_Awvf.a(paramInt, localMediaFocusStackItem.a());
       }
     }
     return;
@@ -156,7 +156,7 @@ public class MediaFocusController
     this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this);
     this.jdField_a_of_type_JavaUtilStack.clear();
     this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Avpa = null;
+    this.jdField_a_of_type_Awvf = null;
   }
   
   public boolean a(String paramString1, String paramString2)
@@ -189,8 +189,8 @@ public class MediaFocusController
       }
       paramContext = (MediaFocusStackItem)paramIntent.getExtras().getParcelable("focusItem");
       i = a(paramContext);
-      if ((paramContext != null) && (a(paramContext.b())) && (i == 0) && (this.jdField_a_of_type_Avpa != null)) {
-        this.jdField_a_of_type_Avpa.a(1, paramContext.a());
+      if ((paramContext != null) && (a(paramContext.b())) && (i == 0) && (this.jdField_a_of_type_Awvf != null)) {
+        this.jdField_a_of_type_Awvf.a(1, paramContext.a());
       }
     }
     label109:

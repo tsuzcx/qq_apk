@@ -1,48 +1,7 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.now.NowQQLiveFragment;
-
 public class axim
-  implements bhle
 {
-  public axim(NowQQLiveFragment paramNowQQLiveFragment) {}
-  
-  public void onItemSelect(View paramView, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", axil.a);
-      this.a.getActivity().startActivity(paramView);
-    }
-    do
-    {
-      return;
-      if (5 == paramInt)
-      {
-        paramView = new Intent();
-        Bundle localBundle = new Bundle();
-        paramView.setComponent(new ComponentName(this.a.getActivity(), ChatActivity.class));
-        localBundle.putString("uin", axil.a);
-        localBundle.putInt("uintype", 1008);
-        localBundle.putString("uinname", amtj.a(2131694163));
-        paramView.putExtras(localBundle);
-        paramView.setFlags(67108864);
-        paramView.putExtra("isforceRequestDetail", false);
-        paramView.putExtra("jump_from", 2);
-        this.a.getActivity().startActivity(paramView);
-        axkk.a();
-        axkk.b();
-        return;
-      }
-    } while (1 != paramInt);
-    NowQQLiveFragment.a(this.a);
-  }
+  public static final String a = anvx.a(2131706485);
+  public static final String b = anvx.a(2131706482);
 }
 
 

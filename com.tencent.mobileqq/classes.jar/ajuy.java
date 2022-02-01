@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable;
 
 public class ajuy
-  extends bgod
+  implements DialogInterface.OnDismissListener
 {
-  ajuy(ajux paramajux) {}
+  public ajuy(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onDone(bgoe parambgoe)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super.onDone(parambgoe);
-    ThreadManager.getFileThreadHandler().post(new PreloadImgManager.1.1(this, parambgoe));
+    this.a.b.postDelayed(new ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable(this.a), 150L);
   }
 }
 

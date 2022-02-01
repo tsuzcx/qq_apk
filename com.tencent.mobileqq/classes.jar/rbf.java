@@ -1,16 +1,26 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.push.mvp.RIJPushNotifyDialog.playAnimation.1.onAnimationEnd.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import mqq.os.MqqHandler;
+import org.jetbrains.annotations.Nullable;
 
-class rbf
-  extends raj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/push/mvp/RIJPushNotifyDialog$playAnimation$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rbf
+  implements Animation.AnimationListener
 {
-  rbf(rau paramrau, AppInterface paramAppInterface) {}
+  rbf(Function0 paramFunction0) {}
   
-  public Drawable a()
+  public void onAnimationEnd(@Nullable Animation paramAnimation)
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_diandian_selected");
+    ThreadManager.getUIHandler().postDelayed((Runnable)new RIJPushNotifyDialog.playAnimation.1.onAnimationEnd.1(this), 30L);
   }
+  
+  public void onAnimationRepeat(@Nullable Animation paramAnimation) {}
+  
+  public void onAnimationStart(@Nullable Animation paramAnimation) {}
 }
 
 

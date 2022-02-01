@@ -1,88 +1,44 @@
-import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.redbag.OtherBtnController.2;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class mpx
-  extends mql
+  extends mri
 {
-  int jdField_a_of_type_Int = 2130842009;
-  Runnable jdField_a_of_type_JavaLangRunnable = null;
-  WeakReference<AVActivity> jdField_a_of_type_JavaLangRefWeakReference = null;
-  public mcc a;
+  public lwm a;
+  public mqa a;
   
-  mpx(mpe parammpe)
+  mpx(mqb parammqb)
   {
-    super(parammpe);
-    this.jdField_a_of_type_Mcc = null;
+    super(parammqb);
+    this.jdField_a_of_type_Lwm = new mpy(this);
   }
   
-  public void a()
+  void a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    mpz localmpz = new mpz(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localmpz);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(mqa parammqa)
   {
-    AVActivity localAVActivity = a();
-    QLog.w(this.i, 1, "setBtnsStyle, lightStyle[" + paramBoolean + "], avActivity[" + localAVActivity + "]");
-    if (localAVActivity == null) {}
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(); localAVActivity == null; localAVActivity = null) {
-      return false;
-    }
-    if (localAVActivity == a()) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  void b()
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {}
-    boolean bool;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Mcc == null) {
-        this.jdField_a_of_type_Mcc = new mpy(this);
-      }
-      if (this.jdField_a_of_type_JavaLangRunnable != null)
-      {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_JavaLangRunnable = null;
-      }
-      bool = a();
-      QLog.w(this.i, 1, "hook, mHook[" + bool + "]");
-      if (!bool) {
-        this.jdField_a_of_type_Int = 2130842009;
-      }
-      a(false);
-    } while (bool);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(a());
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Mcc);
-  }
-  
-  void c()
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+    mqb localmqb = a();
+    if (localmqb == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new OtherBtnController.2(this);
+    localmqb.a(parammqa);
+  }
+  
+  public void b(mqa parammqa)
+  {
+    mqb localmqb = a();
+    if (localmqb == null) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(this.jdField_a_of_type_JavaLangRunnable);
+    localmqb.b(parammqa);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mpx
  * JD-Core Version:    0.7.0.1
  */

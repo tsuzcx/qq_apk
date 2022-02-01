@@ -1,19 +1,43 @@
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.upload.uinterface.IUploadService;
+import com.tencent.upload.uinterface.UploadServiceBuilder;
+import cooperation.qzone.UploadEnv;
+import mqq.manager.Manager;
 
-public abstract class azvc
+public class azvc
+  implements Manager
 {
-  private static int b;
-  public int a;
+  public azvc(QQAppInterface paramQQAppInterface) {}
   
-  public azvc()
+  private void b(QQAppInterface paramQQAppInterface, azuy paramazuy)
   {
-    int i = b;
-    b = i + 1;
-    this.a = i;
+    UploadEnv localUploadEnv = new UploadEnv();
+    if (paramazuy != null)
+    {
+      UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramazuy, null, null, localUploadEnv, localUploadEnv);
+      return;
+    }
+    paramazuy = new azvd(this, Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramazuy, null, null, localUploadEnv, localUploadEnv);
   }
   
-  public abstract void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList);
+  public void a(QQAppInterface paramQQAppInterface, azuy paramazuy)
+  {
+    if (!UploadServiceBuilder.getInstance().isInitialized()) {
+      b(paramQQAppInterface, paramazuy);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, azuz paramazuz, azuy paramazuy)
+  {
+    if (!UploadServiceBuilder.getInstance().isInitialized()) {
+      b(paramQQAppInterface, paramazuy);
+    }
+    paramazuz.a();
+  }
+  
+  public void onDestroy() {}
 }
 
 

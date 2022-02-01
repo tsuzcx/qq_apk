@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-class uax
-  extends amwl
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class uax
+  implements View.OnClickListener
 {
-  uax(uaw paramuaw) {}
+  uax(uas paramuas, BarrageInfo paramBarrageInfo) {}
   
-  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
+  public final void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderManager", 2, "onSendResult->puin:" + paramString + ", isSuccess:" + paramBoolean);
+    uar localuar = this.jdField_a_of_type_Uas.a();
+    if (localuar != null)
+    {
+      String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageInfo.a;
+      Intrinsics.checkExpressionValueIsNotNull(str, "barrageInfo.id");
+      localuar.onEventBarrageOnClick(str);
     }
-    uaw.a(this.a, paramString);
-  }
-  
-  protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderManager", 2, "onUpdateSendMsgError->uin:" + paramString1 + ", type:" + paramInt1 + ", uniseq:" + paramLong2 + ", errorCode:" + paramInt2);
-    }
-    uaw.a(this.a, paramString1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uax
  * JD-Core Version:    0.7.0.1
  */

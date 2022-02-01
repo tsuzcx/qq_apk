@@ -1,40 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import org.jetbrains.annotations.Nullable;
 
-public class ssb
-  implements opa
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$showGuideRootView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ssb
+  extends AnimatorListenerAdapter
 {
-  public ssb(FastWebActivity paramFastWebActivity) {}
+  ssb(srv paramsrv, Function0 paramFunction0) {}
   
-  public void a(opd paramopd)
+  public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onBiuAndCommentSend fastWeb");
-    if (paramopd == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramopd.a()))
-    {
-      QLog.d("FastWebActivity", 1, localObject);
-      if ((paramopd == null) || (paramopd.a() != 0)) {
-        break;
-      }
-      if (FastWebActivity.a(this.a) != null)
-      {
-        localObject = FastWebActivity.a(this.a);
-        ((FastWebArticleInfo)localObject).b += 1L;
-        FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), this.a.a);
-      }
-      ooz.a(paramopd.c(), paramopd.a(), paramopd.c(), paramopd.b(), paramopd.a(), paramopd.d(), paramopd.e(), paramopd.a());
-      if ((paramopd.c() == 1) && (!FastWebActivity.g(this.a)))
-      {
-        FastWebActivity.e(this.a, true);
-        svm.a(this.a);
-      }
+    if (srv.a(this.jdField_a_of_type_Srv)) {
       return;
     }
-    QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131711999), 0).a();
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction0.invoke();
   }
 }
 

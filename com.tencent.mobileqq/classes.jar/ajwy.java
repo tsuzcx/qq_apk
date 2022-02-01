@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.view.MotionEvent;
 
-public class ajwy
-  implements DialogInterface.OnClickListener
+public abstract interface ajwy
 {
-  public ajwy(SendHbActivity paramSendHbActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    SendHbActivity.a(this.a);
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
 }
 
 

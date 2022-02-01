@@ -1,40 +1,40 @@
 package com.tencent.biz.pubaccount.readinjoy.reward;
 
 import android.view.ViewGroup;
-import bkwm;
+import bmhv;
 import com.tencent.mobileqq.utils.ViewUtils;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
-import sfz;
+import sse;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "popupWindow", "Lcom/tencent/biz/pubaccount/readinjoy/video/discovery/BubblePopupWindow;", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJRewardVideoTipsManager$showRewardCoinGuide$1$1
   extends Lambda
-  implements Function1<sfz, Unit>
+  implements Function1<sse, Unit>
 {
   public RIJRewardVideoTipsManager$showRewardCoinGuide$1$1(ViewGroup paramViewGroup)
   {
     super(1);
   }
   
-  public final void invoke(@Nullable sfz paramsfz)
+  public final void invoke(@Nullable sse paramsse)
   {
-    if (bkwm.d()) {
-      if (paramsfz != null) {
-        paramsfz.d(21);
+    if (bmhv.d()) {
+      if (paramsse != null) {
+        paramsse.d(21);
       }
     }
     do
     {
       return;
-      if (paramsfz != null) {
-        paramsfz.d(85);
+      if (paramsse != null) {
+        paramsse.d(85);
       }
-    } while (paramsfz == null);
-    paramsfz.a(0, this.$it.getWidth() / 2 + ViewUtils.dip2px(3.0F), 0, 0);
+    } while (paramsse == null);
+    paramsse.a(0, this.$it.getWidth() / 2 + ViewUtils.dip2px(3.0F), 0, 0);
   }
 }
 

@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
-public final class aurb
-  implements Parcelable.Creator<SingTogetherSession>
+public class aurb
+  implements View.OnTouchListener
 {
-  public SingTogetherSession a(Parcel paramParcel)
-  {
-    return new SingTogetherSession(paramParcel, null);
-  }
+  public aurb(ForwardFileOption paramForwardFileOption, ImageButton paramImageButton) {}
   
-  public SingTogetherSession[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new SingTogetherSession[paramInt];
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(25, 0, 0, 0));
+    }
+    while (paramMotionEvent.getAction() != 1) {
+      return false;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(0, 0, 0, 0));
+    return false;
   }
 }
 

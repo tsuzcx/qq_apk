@@ -1,22 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import java.util.Observable;
 
-class lfj
-  extends BroadcastReceiver
+public class lfj
+  extends Observable
 {
-  lfj(lfi paramlfi) {}
+  VideoAppInterface a = null;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public lfj(VideoAppInterface paramVideoAppInterface)
   {
-    paramIntent = paramIntent.getAction();
-    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE")) {
-      this.a.d(paramContext);
+    if (paramVideoAppInterface != null) {
+      this.a = paramVideoAppInterface;
     }
-    while (!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) {
+  }
+  
+  public void a(Object[] paramArrayOfObject)
+  {
+    try
+    {
+      super.setChanged();
+      super.notifyObservers(paramArrayOfObject);
       return;
     }
-    this.a.d(paramContext);
+    finally
+    {
+      paramArrayOfObject = finally;
+      throw paramArrayOfObject;
+    }
   }
 }
 

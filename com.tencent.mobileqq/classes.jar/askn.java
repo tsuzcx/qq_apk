@@ -1,91 +1,172 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.util.List;
 
-class askn
-  extends asjn
+public class askn
+  extends BaseAdapter
+  implements URLDrawableDownListener
 {
-  public askn(asji paramasji)
+  protected Context a;
+  protected Handler a;
+  protected askm a;
+  public List<askm> a;
+  
+  public askn(Context paramContext, Handler paramHandler, askm paramaskm)
   {
-    super(paramasji);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_Askm = paramaskm;
   }
   
-  protected String a()
+  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    return "StateUploadingWhenChangeToOff";
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    float f1 = paramInt1 / i;
+    float f2 = paramInt2 / j;
+    Matrix localMatrix = new Matrix();
+    localMatrix.postScale(f1, f2);
+    return Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public int a(askm paramaskm)
   {
-    b(paramInt1, paramInt2);
+    return paramaskm.a(this.jdField_a_of_type_JavaUtilList);
   }
   
-  protected void a(int paramInt, String paramString)
+  public askm a(int paramInt)
   {
-    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (askm)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return this.jdField_a_of_type_Askm;
+  }
+  
+  public Long a(int paramInt)
+  {
+    return Long.valueOf(a(paramInt).a());
+  }
+  
+  public List<askm> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(List<askm> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return a(paramInt).a(this.jdField_a_of_type_Askm);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 1;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+    }
+    for (;;)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      com.tencent.qphone.base.util.QLog.d("EmotionAdapter", 1, "getView position:" + paramInt);
+      Object localObject;
+      Drawable localDrawable;
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        localObject = (askm)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localDrawable = ((askm)localObject).a(this.jdField_a_of_type_AndroidContentContext);
+        if ((((askm)localObject).a()) || (!((askm)localObject).b())) {
+          break label221;
+        }
+        ((URLImageView)paramView).setURLDrawableDownListener(this);
+        label110:
+        if ((!(localDrawable instanceof awqx)) || (((awqx)localDrawable).a() == null)) {
+          break label232;
+        }
+        int i = AIOUtils.dp2px(100.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        localObject = a(((awqx)localDrawable).a(), i, i);
+        ((ImageView)paramView).setImageBitmap((Bitmap)localObject);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+        this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, paramInt, 0, localDrawable).sendToTarget();
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localObject = this.jdField_a_of_type_Askm;
+        break;
+        label221:
+        ((URLImageView)paramView).setURLDrawableDownListener(null);
+        break label110;
+        label232:
+        ((ImageView)paramView).setImageDrawable(localDrawable);
+      }
     }
-    asji.b(this.jdField_a_of_type_Asji, 11, 12);
-    asji.c(this.jdField_a_of_type_Asji, 11, 12);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateExcepInvalidWhenChangeToOff");
-    this.jdField_a_of_type_Asjn = new asjw(this.jdField_a_of_type_Asji);
   }
   
-  protected void a(long paramLong)
-  {
-    b(paramLong);
-  }
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
   
-  protected boolean a()
-  {
-    if (a("onRecvOnLineFile")) {
-      return false;
-    }
-    asji.a(this.jdField_a_of_type_Asji, 9, 11);
-    asji.a(this.jdField_a_of_type_Asji, 9, 14, false);
-    a("StateUploadingWhenRecv");
-    this.jdField_a_of_type_Asjn = new askp(this.jdField_a_of_type_Asji);
-    return true;
-  }
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  protected boolean a(int paramInt, String paramString, long paramLong)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
+    try
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
+      File localFile = paramURLDrawable.getFileInLocal();
+      if (localFile == null) {
+        break label74;
+      }
+      i = bheg.c(localFile.getAbsolutePath());
     }
-    localFileManagerEntity.Uuid = new String(paramString);
-    localFileManagerEntity.fProgress = 0.0F;
-    if ((aszt.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity, 7);
-    }
-    localFileManagerEntity.setCloudType(1);
-    asji.b(this.jdField_a_of_type_Asji, 11, 13);
-    asji.c(this.jdField_a_of_type_Asji, 11, 13);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateUploadoneWhenChangeToOff)");
-    this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_Asjn = new askq(this.jdField_a_of_type_Asji);
-    return true;
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    catch (Exception localException)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      for (;;)
+      {
+        localException.printStackTrace();
+        label74:
+        int i = 0;
+      }
     }
-    asji.b(this.jdField_a_of_type_Asji, 11, 9);
-    asji.c(this.jdField_a_of_type_Asji, 11, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Asjn = new asjq(this.jdField_a_of_type_Asji);
+    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+      com.tencent.TMG.utils.QLog.d("EmotionAdapter", 0, "onLoadSuccessed,orientation");
+    }
+    AIOGalleryAdapter.a(paramView, paramURLDrawable, i);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, -1, 1, paramURLDrawable).sendToTarget();
   }
-  
-  protected void j() {}
 }
 
 

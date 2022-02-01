@@ -1,19 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class lfd
-  extends BroadcastReceiver
 {
-  public lfd(VideoAppInterface paramVideoAppInterface) {}
+  public int a;
+  protected HashMap<String, Integer> a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static int a(lfd paramlfd, String paramString)
   {
-    paramContext = paramIntent.getAction();
-    QLog.d(VideoAppInterface.c(), 2, String.format("onReceive action=%s", new Object[] { paramContext }));
-    System.exit(0);
+    if (paramlfd == null) {}
+    while ((paramlfd.a == null) || (!paramlfd.a.containsKey(paramString))) {
+      return 0;
+    }
+    return ((Integer)paramlfd.a.get(paramString)).intValue();
+  }
+  
+  public static void a(lfd paramlfd, String paramString, int paramInt)
+  {
+    if (paramlfd == null) {
+      return;
+    }
+    if (paramlfd.a == null) {
+      paramlfd.a = new HashMap();
+    }
+    paramlfd.a.put(paramString, Integer.valueOf(paramInt));
   }
 }
 

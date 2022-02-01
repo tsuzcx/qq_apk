@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahzo;
-import ahzp;
+import aiun;
+import aiuo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -18,7 +18,7 @@ public class ViewFactory$GuideView
   implements View.OnClickListener
 {
   public static final int a;
-  public ahzp a;
+  public aiuo a;
   private int b = -1;
   
   static
@@ -39,7 +39,7 @@ public class ViewFactory$GuideView
     int i = 0;
     while (i < jdField_a_of_type_Int)
     {
-      addView(paramContext.inflate(2131558470, this, false));
+      addView(paramContext.inflate(2131558472, this, false));
       i += 1;
     }
   }
@@ -52,7 +52,7 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setTag(((Integer)localView.getTag()).intValue(), paramString);
-      ((TextView)localView.findViewById(2131367818)).setText(paramString);
+      ((TextView)localView.findViewById(2131367954)).setText(paramString);
       String str = localView.getContentDescription().toString();
       int k = str.length();
       int m = str.indexOf(":");
@@ -66,7 +66,7 @@ public class ViewFactory$GuideView
     }
   }
   
-  private void a(ArrayList<ahzo> paramArrayList, String paramString)
+  private void a(ArrayList<aiun> paramArrayList, String paramString)
   {
     int j = getChildCount();
     int i = 0;
@@ -74,28 +74,28 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setOnClickListener(this);
-      localView.setTag(Integer.valueOf(((ahzo)paramArrayList.get(i)).b));
-      localView.setTag(((ahzo)paramArrayList.get(i)).b, paramString);
-      ((ImageView)localView.findViewById(2131367813)).setImageResource(((ahzo)paramArrayList.get(i)).b);
-      ((TextView)localView.findViewById(2131367829)).setText(localView.getContext().getResources().getString(((ahzo)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
-      ((TextView)localView.findViewById(2131367818)).setText(paramString);
-      localView.setContentDescription(getResources().getString(((ahzo)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
+      localView.setTag(Integer.valueOf(((aiun)paramArrayList.get(i)).b));
+      localView.setTag(((aiun)paramArrayList.get(i)).b, paramString);
+      ((ImageView)localView.findViewById(2131367949)).setImageResource(((aiun)paramArrayList.get(i)).b);
+      ((TextView)localView.findViewById(2131367965)).setText(localView.getContext().getResources().getString(((aiun)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
+      ((TextView)localView.findViewById(2131367954)).setText(paramString);
+      localView.setContentDescription(getResources().getString(((aiun)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
       i += 1;
     }
   }
   
-  public ahzo a(int paramInt)
+  public aiun a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 80000000: 
-      return new ahzo(2131689630, 2130844610);
+      return new aiun(2131689630, 2130844676);
     case 80000001: 
-      return new ahzo(2131689632, 2130844611);
+      return new aiun(2131689632, 2130844677);
     }
-    return new ahzo(2131689631, 2130844612);
+    return new aiun(2131689631, 2130844678);
   }
   
   public void a(int paramInt, String paramString)
@@ -127,8 +127,8 @@ public class ViewFactory$GuideView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Ahzp != null) {
-        this.jdField_a_of_type_Ahzp.a(i, str);
+      if (this.jdField_a_of_type_Aiuo != null) {
+        this.jdField_a_of_type_Aiuo.a(i, str);
       }
       EventCollector.getInstance().onViewClicked(paramView);
       return;
@@ -140,9 +140,9 @@ public class ViewFactory$GuideView
     }
   }
   
-  public void setListener(ahzp paramahzp)
+  public void setListener(aiuo paramaiuo)
   {
-    this.jdField_a_of_type_Ahzp = paramahzp;
+    this.jdField_a_of_type_Aiuo = paramaiuo;
   }
 }
 

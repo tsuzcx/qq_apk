@@ -7,13 +7,13 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bcef;
-import bcvc;
-import bcwc;
-import bgui;
-import bgxd;
-import bgya;
-import bgyb;
+import bdla;
+import becb;
+import bedb;
+import bifa;
+import bihv;
+import biis;
+import biit;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -26,12 +26,12 @@ import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebSettings;
-import npn;
+import nwo;
 
 public class UnVisibleWebViewFragment
   extends WebViewFragment
 {
-  private bcwc a;
+  private bedb a;
   
   public static WebViewFragment a(Intent paramIntent)
   {
@@ -44,18 +44,18 @@ public class UnVisibleWebViewFragment
   
   private void a(String paramString)
   {
-    CookieManager.getInstance().setCookie(".docs.qq.com", "preloading_id=" + bcvc.a(paramString));
+    CookieManager.getInstance().setCookie(".docs.qq.com", "preloading_id=" + becb.a(paramString));
     CookieSyncManager.createInstance(BaseApplicationImpl.getApplication());
     CookieSyncManager.getInstance().sync();
   }
   
-  public bcwc a(ViewGroup paramViewGroup)
+  public bedb a(ViewGroup paramViewGroup)
   {
     boolean bool2 = false;
     if ((this.mUIStyle.mWWVRulesFromUrl & 0x40) != 0L) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      this.a = new bcwc(this.mApp, super.getActivity(), this, this.intent, bool1);
+      this.a = new bedb(this.mApp, super.getActivity(), this, this.intent, bool1);
       this.a.a(this.sonicClient);
       TouchWebView localTouchWebView = this.a.a();
       if (this.sonicClient != null) {
@@ -65,12 +65,12 @@ public class UnVisibleWebViewFragment
       localTouchWebView.setPluginEngine(this.mPluginEngine);
       if ((localTouchWebView instanceof SwiftReuseTouchWebView))
       {
-        bgxd localbgxd = this.mStatistics;
+        bihv localbihv = this.mStatistics;
         bool1 = bool2;
         if (1 == ((SwiftReuseTouchWebView)localTouchWebView).b) {
           bool1 = true;
         }
-        localbgxd.u = bool1;
+        localbihv.u = bool1;
       }
       if (localTouchWebView.getX5WebViewExtension() != null) {
         this.mX5CoreActive = true;
@@ -91,9 +91,9 @@ public class UnVisibleWebViewFragment
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "onDestroy");
     }
-    bgxd localbgxd = this.mStatistics;
+    bihv localbihv = this.mStatistics;
     this.isDestroyed = true;
-    localbgxd.l = true;
+    localbihv.l = true;
     if (this.a != null)
     {
       this.a.a();
@@ -112,7 +112,7 @@ public class UnVisibleWebViewFragment
     {
       this.webView = a(null).a();
       this.webView.getView().setOnTouchListener(this);
-      this.webView.setOnLongClickListener(new bgui(this));
+      this.webView.setOnLongClickListener(new bifa(this));
       l1 = System.currentTimeMillis();
       if ((this.mUIStyle.mRulesFromUrl & 0x10000) == 0L) {
         break label429;
@@ -143,7 +143,7 @@ public class UnVisibleWebViewFragment
       if (i == 0) {
         break label514;
       }
-      Bundle localBundle = bgyb.a();
+      Bundle localBundle = biit.a();
       if (localBundle != null) {
         localIX5WebViewExtension.invokeMiscMethod("setDomainsAndArgumentForImageRequest", localBundle);
       }
@@ -163,10 +163,10 @@ public class UnVisibleWebViewFragment
     {
       label292:
       if (QLog.isColorLevel()) {
-        QLog.i("WebLog_WebViewFragment", 2, String.format("reportInitPerformance, initType: %d, webViewType: %d, TbsAccelerator.sCostTime: %d", new Object[] { Long.valueOf(l1), Integer.valueOf(i), Long.valueOf(bgya.a) }));
+        QLog.i("WebLog_WebViewFragment", 2, String.format("reportInitPerformance, initType: %d, webViewType: %d, TbsAccelerator.sCostTime: %d", new Object[] { Long.valueOf(l1), Integer.valueOf(i), Long.valueOf(biis.a) }));
       }
       System.currentTimeMillis();
-      this.webView.reportInitPerformance(l1, i, this.mStatistics.jdField_c_of_type_Long, bgya.a);
+      this.webView.reportInitPerformance(l1, i, this.mStatistics.jdField_c_of_type_Long, biis.a);
       System.currentTimeMillis();
       this.mStatistics.e = 2;
       label514:
@@ -194,7 +194,7 @@ public class UnVisibleWebViewFragment
           i = 0;
           break label225;
           label490:
-          if (bgxd.s) {}
+          if (bihv.s) {}
           for (i = 1;; i = 0)
           {
             l1 = i;
@@ -227,14 +227,14 @@ public class UnVisibleWebViewFragment
   
   public void startLoadUrl()
   {
-    npn.a("Web_readyToLoadUrl");
+    nwo.a("Web_readyToLoadUrl");
     if (this.webView == null) {
       return;
     }
     initFinish();
     if ((this.mStatistics.i) && (this.mStatistics.k > 0L))
     {
-      bcef.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.k) / 1000000L), "", "", "", "" + this.mStatistics.jdField_c_of_type_Int);
+      bdla.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.k) / 1000000L), "", "", "", "" + this.mStatistics.jdField_c_of_type_Int);
       this.mStatistics.k = 0L;
     }
     this.mStatistics.q = System.currentTimeMillis();
@@ -246,7 +246,7 @@ public class UnVisibleWebViewFragment
       QLog.i("WebLog_WebViewFragment", 1, "tendocpreload , UnVisibleWebViewFragment  preload =" + this.webView);
       this.webView.loadUrl(this.mUrl);
     }
-    npn.b("Web_readyToLoadUrl");
+    nwo.b("Web_readyToLoadUrl");
     this.mStatistics.a(this.webView, this.mUrl, 0, 0, 0, 0, 0, null);
   }
 }

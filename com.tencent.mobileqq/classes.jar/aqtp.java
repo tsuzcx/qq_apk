@@ -1,17 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-
 public class aqtp
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aqtp(DataReportViewer paramDataReportViewer) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
-  }
+  public String a;
 }
 
 

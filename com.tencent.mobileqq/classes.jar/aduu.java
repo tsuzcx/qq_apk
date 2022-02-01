@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
-public class aduu
-  extends amsu
+class aduu
+  implements DialogInterface.OnClickListener
 {
-  public aduu(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  aduu(adut paramadut) {}
   
-  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing()) && (this.a.a.a.getWindow() != null)) {
+      this.a.a.a.dismiss();
     }
-  }
-  
-  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1) {
-      this.a.a(2131718207, 1);
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
   }
 }
 

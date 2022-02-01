@@ -1,29 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public final class nrq
-  implements DialogInterface.OnClickListener
+class nrq
+  implements WtTicketPromise
 {
-  public nrq(int paramInt, QQAppInterface paramQQAppInterface, long paramLong, Handler paramHandler) {}
+  nrq(nro paramnro) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void Done(Ticket paramTicket)
   {
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      ajek.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      l = NetConnInfoCenter.getServerTimeMillis();
-      ((amzs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(31)).a(String.valueOf(this.jdField_a_of_type_Long), true, l);
-      return;
-    }
-    ajek.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, false, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    ((amzs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(31)).a(String.valueOf(this.jdField_a_of_type_Long), false, l);
+    nro.a(this.a, false);
+    this.a.h();
   }
+  
+  public void Failed(ErrMsg paramErrMsg) {}
+  
+  public void Timeout(ErrMsg paramErrMsg) {}
 }
 
 

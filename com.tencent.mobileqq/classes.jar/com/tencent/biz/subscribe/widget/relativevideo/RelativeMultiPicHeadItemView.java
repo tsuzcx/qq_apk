@@ -4,11 +4,12 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StPoiInfoV2;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StVisitor;
-import amtj;
+import aabx;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-import bfzl;
+import anvx;
+import bhid;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.biz.subscribe.widget.SubscribeBannerView;
@@ -20,7 +21,6 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.List;
-import zms;
 
 public class RelativeMultiPicHeadItemView
   extends BaseWidgetView
@@ -63,7 +63,7 @@ public class RelativeMultiPicHeadItemView
   
   public int a()
   {
-    return 2131558783;
+    return 2131558808;
   }
   
   public SubscribeBannerView a()
@@ -80,14 +80,14 @@ public class RelativeMultiPicHeadItemView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379613));
-    this.b = ((TextView)findViewById(2131379606));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379614));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)findViewById(2131379605));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370196);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379759));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView = ((SubscribeBannerView)findViewById(2131364111));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView.setAdapter(new zms(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379925));
+    this.b = ((TextView)findViewById(2131379918));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379926));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)findViewById(2131379917));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370370);
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380080));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView = ((SubscribeBannerView)findViewById(2131364186));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView.setAdapter(new aabx(this));
   }
   
   public void a(Object paramObject)
@@ -113,13 +113,13 @@ public class RelativeMultiPicHeadItemView
       i = 8;
       label137:
       ((TextView)localObject).setVisibility(i);
-      this.b.setText(bfzl.c(getContext(), paramObject.createTime.get() * 1000L));
+      this.b.setText(bhid.c(getContext(), paramObject.createTime.get() * 1000L));
       i = ((CertifiedAccountMeta.StVisitor)paramObject.visitorInfo.get()).view_count.get();
       if (i <= 0) {
         break label293;
       }
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(UIUtils.formatCount(i) + amtj.a(2131718740));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(UIUtils.formatCount(i) + anvx.a(2131719129));
     }
     for (;;)
     {

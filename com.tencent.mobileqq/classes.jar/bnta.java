@@ -1,18 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.util.QZLog;
+import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager.InternalTaskEntry.1;
+import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager.TimerTaskRunnable;
+import java.util.concurrent.ScheduledFuture;
 
-class bnta
-  implements View.OnClickListener
+public class bnta
 {
-  bnta(bnsz parambnsz) {}
+  private long jdField_a_of_type_Long = -9223372036854775808L;
+  private TimerTaskManager.TimerTaskRunnable jdField_a_of_type_DovComQqImAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new TimerTaskManager.InternalTaskEntry.1(this);
+  private ScheduledFuture<?> jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    QZLog.d("QzoneEditPicturePartSav", 2, "onClick save button");
-    this.a.a.a(9);
-    EventCollector.getInstance().onViewClicked(paramView);
+    boolean bool2 = false;
+    long l = this.jdField_a_of_type_Long;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_DovComQqImAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable != null)
+    {
+      bool1 = bool2;
+      if (TimerTaskManager.TimerTaskRunnable.a(this.jdField_a_of_type_DovComQqImAeeditorLyricCommonTimerTaskManager$TimerTaskRunnable)) {
+        bool1 = true;
+      }
+    }
+    return String.format("Period = %d; IsValid = %b;", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1) });
   }
 }
 

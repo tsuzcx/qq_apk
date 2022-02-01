@@ -1,6 +1,23 @@
-public abstract interface wus
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+
+public class wus
+  extends wfh
 {
-  public abstract void a(wur paramwur);
+  public int b;
+  public int c;
+  
+  public wus(qqstory_service.RspGetBlackList paramRspGetBlackList)
+  {
+    super(paramRspGetBlackList.result);
+    this.b = paramRspGetBlackList.black_status.get();
+    this.c = paramRspGetBlackList.update_interval.get();
+  }
+  
+  public String toString()
+  {
+    return "GetBlackListStatusResponse{blackStatus=" + this.b + ", updateInterval=" + this.c + '}';
+  }
 }
 
 

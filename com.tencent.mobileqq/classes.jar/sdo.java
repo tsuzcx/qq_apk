@@ -1,44 +1,14 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.SDKInstallListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
-public class sdo
-  implements shd
+public abstract interface sdo<R>
 {
-  private Handler a;
+  public abstract void a(float paramFloat);
   
-  public sdo(Handler paramHandler)
-  {
-    this.a = paramHandler;
-  }
+  public abstract void a(int paramInt, @NotNull String paramString);
   
-  private void a(boolean paramBoolean, int paramInt)
-  {
-    ThreadManager.excute(new VideoPluginInstall.SDKInstallListener.1(this, paramBoolean, paramInt), 16, null, true);
-  }
+  public abstract void a(R paramR);
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "onInstalledSuccessed: ");
-    }
-    a(true, 0);
-    if (this.a != null) {
-      this.a.sendEmptyMessage(0);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "onInstalledFailed: code=" + paramInt);
-    }
-    a(false, paramInt);
-    if (this.a != null) {
-      this.a.sendEmptyMessage(1);
-    }
-  }
+  public abstract void a(@NotNull String paramString);
 }
 
 

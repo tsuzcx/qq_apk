@@ -1,14 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class axth
-  implements DialogInterface.OnDismissListener
+public class axth
 {
-  axth(axtg paramaxtg) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public axth(axtf paramaxtf) {}
+  
+  public boolean equals(Object paramObject)
   {
-    this.a.a.a(1030);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof axth))
+    {
+      paramObject = (axth)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
+      {
+        bool1 = bool2;
+        if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 

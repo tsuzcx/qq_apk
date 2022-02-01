@@ -1,111 +1,174 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class lig
-  extends lic
 {
-  boolean a;
-  int c = -1;
-  int d = -1;
-  
-  public lig(VideoAppInterface paramVideoAppInterface)
+  public static void a()
   {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_Boolean = false;
+    try
+    {
+      boolean bool = a("QuaVChatNewIntent", true, null);
+      QLog.d("VideoBeaconReporter", 1, "event_QuaVChatNewIntent, isSucceed[true],  ret[" + bool + "]");
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("VideoBeaconReporter", 2, "event_QuaVChatNewIntent:", localThrowable);
+    }
   }
   
-  public int a(String paramString)
+  public static void a(int paramInt, long paramLong1, long paramLong2, String paramString)
   {
-    int j = 0;
-    int i;
-    if ("750".equalsIgnoreCase(paramString)) {
-      i = this.c;
-    }
+    boolean bool2 = true;
+    QLog.d("VideoBeaconReporter", 1, "reportQuaOnCloseVideo_onCloseVideo :reason[" + paramInt + "], param0[" + paramLong1 + "], param1[" + paramLong2 + "], param2[" + paramString + "], ");
     for (;;)
     {
-      lba.f("SupportZimu", "isSupportPeer:" + paramString + "|" + i);
-      return i;
-      if ("735".equalsIgnoreCase(paramString))
+      try
       {
-        i = this.d;
+        localHashMap = new HashMap();
+        l = paramLong1;
+        if (paramLong2 != 0L)
+        {
+          i = (int)paramLong2 + 1000;
+          paramInt = i;
+          l = paramLong1;
+          if (paramString == null) {}
+        }
+      }
+      catch (Throwable paramString)
+      {
+        HashMap localHashMap;
+        long l;
+        int i;
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("VideoBeaconReporter", 2, "event_QuaOnCloseVideo:", paramString);
+        return;
+        boolean bool1 = false;
+        continue;
+        if (l != 0L) {
+          continue;
+        }
+        bool1 = bool2;
+        continue;
+      }
+      try
+      {
+        l = Long.parseLong(paramString);
+        paramInt = i;
+      }
+      catch (Exception paramString)
+      {
+        paramInt = i;
+        l = paramLong1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("VideoBeaconReporter", 2, "parseLong error:", paramString);
+        paramInt = i;
+        l = paramLong1;
+      }
+    }
+    localHashMap.put("reason", "" + paramInt);
+    localHashMap.put("error_code", "" + l);
+    if (paramInt == 1)
+    {
+      bool1 = bool2;
+      if (l != 1L)
+      {
+        bool1 = bool2;
+        if (l != 2L) {}
       }
       else
       {
-        i = j;
-        if ("live".equalsIgnoreCase(paramString))
-        {
-          i = j;
-          if (this.jdField_a_of_type_Boolean) {
-            i = 1;
-          }
-        }
+        bool2 = a("QuaOnCloseVideo", bool1, localHashMap);
+        QLog.d("VideoBeaconReporter", 1, "event_QuaOnCloseVideo, isSucceed[" + bool1 + "], node_reason[" + (String)localHashMap.get("reason") + "], node_error_code[" + (String)localHashMap.get("error_code") + "],     ret[" + bool2 + "]");
+        return;
       }
     }
   }
   
-  public boolean a(int paramInt, String paramString)
+  public static void a(long paramLong)
   {
-    lba.f("SupportZimu", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
-    if (!TextUtils.isEmpty(paramString))
+    boolean bool1 = true;
+    for (;;)
     {
-      String[] arrayOfString = paramString.split("\\|");
-      paramString = null;
-      if (arrayOfString.length > 0) {
-        paramString = arrayOfString[0];
-      }
-      switch (paramInt)
+      long l;
+      try
       {
-      }
-      while (("SUPPORT_TRUE".equalsIgnoreCase(paramString)) || ("SUPPORT_FALSE".equalsIgnoreCase(paramString)))
-      {
-        return true;
-        if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
-        {
-          this.c = 1;
+        new HashMap();
+        l = -1L;
+        if (paramLong <= 0L) {
+          break label107;
         }
-        else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
-        {
-          this.c = 0;
+        l = System.currentTimeMillis() - paramLong;
+      }
+      catch (Throwable localThrowable)
+      {
+        boolean bool2;
+        if (!QLog.isColorLevel()) {
           continue;
-          if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
-          {
-            this.d = 1;
-          }
-          else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
-          {
-            this.d = 0;
-            continue;
-            if ("SUPPORT_TRUE".equalsIgnoreCase(paramString)) {
-              this.jdField_a_of_type_Boolean = true;
-            } else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString)) {
-              this.jdField_a_of_type_Boolean = false;
-            }
-          }
         }
+        QLog.d("VideoBeaconReporter", 2, "event_QuaInviteClose:", localThrowable);
+        return;
+      }
+      bool2 = a("QuaInviteClose", bool1, null);
+      QLog.d("VideoBeaconReporter", 1, "event_QuaInviteClose, isSucceed[" + bool1 + "],  ret[" + bool2 + "]");
+      return;
+      label107:
+      while (l <= 2000L)
+      {
+        bool1 = false;
+        break;
       }
     }
-    return false;
   }
   
-  public boolean a(String paramString)
+  public static void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return false;
+    boolean bool = true;
+    for (;;)
+    {
+      try
+      {
+        localHashMap = new HashMap();
+        if (!paramBoolean1) {
+          continue;
+        }
+        localHashMap.put("broadcast_created", "1");
+        if (!paramBoolean2) {
+          continue;
+        }
+        localHashMap.put("vchat_created", "1");
+        paramBoolean1 = bool;
+      }
+      catch (Throwable localThrowable)
+      {
+        HashMap localHashMap;
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("VideoBeaconReporter", 2, "event_QuaProcessWakeUp:", localThrowable);
+        return;
+        localThrowable.put("vchat_created", "0");
+        paramBoolean1 = false;
+        continue;
+      }
+      paramBoolean2 = a("QuaProcessWakeUp", paramBoolean1, localHashMap);
+      QLog.d("VideoBeaconReporter", 1, "event_QuaProcessWakeUp, isSucceed[" + paramBoolean1 + "], node_broadcast_created[" + (String)localHashMap.get("broadcast_created") + "], node_vchat_created[" + (String)localHashMap.get("vchat_created") + "],     ret[" + paramBoolean2 + "]");
+      return;
+      localHashMap.put("broadcast_created", "0");
+    }
   }
   
-  public void b()
+  private static boolean a(String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap)
   {
-    VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    localVideoController.a(12, "SUPPORT_TRUE");
-    localVideoController.a(13, "SUPPORT_TRUE");
-    lba.f("SupportZimu", "sendSupportMsg");
-  }
-  
-  public void c()
-  {
-    this.c = -1;
-    this.d = -1;
-    this.jdField_a_of_type_Boolean = false;
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, paramString, paramBoolean, 0L, 0L, paramHashMap, null);
+    return true;
   }
 }
 

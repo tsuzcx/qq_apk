@@ -1,18 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
-import java.util.List;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
-public abstract class asfz
+public class asfz
+  implements asge
 {
-  long jdField_a_of_type_Long;
-  List<FavFileInfo> jdField_a_of_type_JavaUtilList;
+  public asfz(DragSortListView paramDragSortListView) {}
   
-  public asfz()
+  public float a(float paramFloat, long paramLong)
   {
-    this.a = 0L;
+    return this.a.e * paramFloat;
   }
-  
-  protected abstract void a(int paramInt, List<FavFileInfo> paramList, Bundle paramBundle);
 }
 
 

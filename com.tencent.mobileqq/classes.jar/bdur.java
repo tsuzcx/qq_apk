@@ -1,35 +1,18 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.mini.util.ColorUtils;
-import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
 
 public class bdur
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public bdur(TroopNickRuleFragment paramTroopNickRuleFragment) {}
+  public bdur(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    paramInt1 = paramCharSequence.length();
-    paramCharSequence = TroopNickRuleFragment.c - paramInt1 + "/" + TroopNickRuleFragment.c + "字";
-    if (paramInt1 >= TroopNickRuleFragment.c) {
-      this.a.a.setTextColor(this.a.getResources().getColor(2131166908));
-    }
-    for (;;)
-    {
-      this.a.a.setText(paramCharSequence);
-      return;
-      this.a.a.setTextColor(ColorUtils.parseColor("#878B99"));
-    }
+    paramDialogInterface.dismiss();
+    KidModeAdvanceSettingFragment.a(this.a).setEnabled(true);
+    KidModeAdvanceSettingFragment.a(this.a, KidModeAdvanceSettingFragment.a(this.a), false, KidModeAdvanceSettingFragment.a(this.a));
   }
 }
 

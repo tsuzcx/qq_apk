@@ -1,91 +1,196 @@
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.XRecyclerView;
-import java.util.List;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class pjc
-  extends pjm
 {
-  public pjc(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
-  
-  public void a(int paramInt, List<DynamicChannelDataModel> paramList)
+  public static String a()
   {
-    if (paramInt != ReadInJoyCGIDynamicChannelFragment.a(this.a)) {
-      return;
-    }
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(true, true);
-      return;
-    }
-    ReadInJoyCGIDynamicChannelFragment.b(this.a).b();
+    uwo.a();
+    StringBuilder localStringBuilder = new StringBuilder("{");
+    a(localStringBuilder, "probesize", Long.valueOf(bmhv.b()));
+    localStringBuilder.append(",");
+    a(localStringBuilder, "isFFProbelistSwitch", Boolean.valueOf(bmhv.u()));
+    localStringBuilder.append(",");
+    a(localStringBuilder, "isDownloadAsyncIo", Boolean.valueOf(bmhv.v()));
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
-  public void a(int paramInt1, boolean paramBoolean, List<pjt> paramList, int paramInt2)
+  public static JSONArray a(JSONArray paramJSONArray1, JSONArray paramJSONArray2)
   {
+    if (paramJSONArray2 == null) {
+      return paramJSONArray1;
+    }
     int i = 0;
-    if (paramInt1 != ReadInJoyCGIDynamicChannelFragment.d(this.a)) {
-      return;
-    }
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
-      ReadInJoyCGIDynamicChannelFragment.a(this.a, paramInt1, paramList);
-    }
-    if (paramList != null) {
-      i = paramList.size();
-    }
-    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onHeaderRefreshed, channelID = ", Integer.valueOf(paramInt1), ", success = ", Boolean.valueOf(paramBoolean), ", size = ", Integer.valueOf(i), ", insertIndex = ", Integer.valueOf(paramInt2) });
-  }
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
-  {
-    if (paramInt != ReadInJoyCGIDynamicChannelFragment.b(this.a)) {
-      return;
-    }
-    int i;
-    if (paramList != null)
-    {
-      i = paramList.size();
-      if ((!paramBoolean1) || (i <= 0)) {
-        break label175;
-      }
-    }
-    label175:
-    for (String str = String.format(this.a.getResources().getString(2131717235), new Object[] { Integer.valueOf(i) });; str = this.a.getResources().getString(2131717234))
-    {
-      ReadInJoyCGIDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
-      if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
-        ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
-      }
-      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onDataRefreshed, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", refreshSize = ", Integer.valueOf(i) });
-      ReadInJoyCGIDynamicChannelFragment.d(this.a).a(true, true);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
-  {
-    int i = 0;
-    if (paramInt != ReadInJoyCGIDynamicChannelFragment.c(this.a)) {
-      return;
-    }
-    if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0))
-    {
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).b(paramList);
-      ReadInJoyCGIDynamicChannelFragment.e(this.a).a(true, paramBoolean2);
-    }
     for (;;)
     {
-      if (paramList != null) {
-        i = paramList.size();
+      try
+      {
+        if ((i >= paramJSONArray1.length()) || (i >= paramJSONArray2.length())) {
+          break;
+        }
+        if (((paramJSONArray2.get(i) instanceof JSONObject)) && ((paramJSONArray1.get(i) instanceof JSONObject)))
+        {
+          JSONObject localJSONObject1 = (JSONObject)paramJSONArray2.get(i);
+          JSONObject localJSONObject2 = (JSONObject)paramJSONArray1.get(i);
+          Iterator localIterator = localJSONObject1.keys();
+          if (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            localJSONObject2.put(str, localJSONObject1.get(str));
+            continue;
+          }
+        }
+        i += 1;
       }
-      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onLoadMoreData, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", size = ", Integer.valueOf(i), ", hasMore = ", Boolean.valueOf(paramBoolean2) });
+      catch (Exception paramJSONArray2)
+      {
+        QLog.e("RIJJsonUtils", 2, "setCellArray:remoteArray: ", paramJSONArray2);
+        return paramJSONArray1;
+      }
+    }
+  }
+  
+  public static JSONObject a(JSONObject paramJSONObject, String paramString, Object paramObject)
+  {
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put(paramString, paramObject);
+      return localJSONObject;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.d("RIJJsonUtils", 1, "addInfo2Json error!  msg=" + paramJSONObject);
+    }
+    return localJSONObject;
+  }
+  
+  private static void a(StringBuilder paramStringBuilder, String paramString, Object paramObject)
+  {
+    paramStringBuilder.append("\"");
+    paramStringBuilder.append(paramString);
+    paramStringBuilder.append("\":");
+    paramStringBuilder.append("\"");
+    paramStringBuilder.append(paramObject);
+    paramStringBuilder.append("\"");
+  }
+  
+  public static void a(JSONObject paramJSONObject, String paramString, int paramInt)
+  {
+    if (paramInt >= 0) {}
+    try
+    {
+      paramJSONObject.put(paramString, paramInt);
       return;
-      ReadInJoyCGIDynamicChannelFragment.f(this.a).a(false, true);
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.d("RIJJsonUtils", 1, "putSafeIntValueToJson error!  msg=" + paramJSONObject);
+    }
+  }
+  
+  public static void a(JSONObject paramJSONObject, String paramString, long paramLong)
+  {
+    if (paramLong > 0L) {}
+    try
+    {
+      paramJSONObject.put(paramString, paramLong);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.d("RIJJsonUtils", 1, "putSafeLongValueToJson error!  msg=" + paramJSONObject);
+    }
+  }
+  
+  public static void a(JSONObject paramJSONObject, String paramString, long paramLong, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (paramLong > 0L)) {}
+    try
+    {
+      paramJSONObject.put(paramString, String.valueOf(paramLong));
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.d("RIJJsonUtils", 1, "putSafeLongValueConvertStringToJson error!  msg=" + paramJSONObject);
+    }
+  }
+  
+  public static void a(JSONObject paramJSONObject, String paramString1, String paramString2)
+  {
+    if (paramJSONObject == null)
+    {
+      QLog.d("RIJJsonUtils", 2, "addDataString2Json | jsonObject is null");
+      return;
+    }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      QLog.d("RIJJsonUtils", 2, "addDataString2Json | jsonObject key null");
+      return;
+    }
+    if (TextUtils.isEmpty(paramString2))
+    {
+      QLog.d("RIJJsonUtils", 2, "addDataString2Json | jsonObject value null");
+      return;
+    }
+    paramJSONObject.put(paramString1, paramString2);
+  }
+  
+  public static void a(JSONObject paramJSONObject, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      paramJSONObject.put(paramString1, paramString2);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.d("RIJJsonUtils", 1, "putSafeLongValueConvertStringToJson error!  msg=" + paramJSONObject);
+    }
+  }
+  
+  public static void a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  {
+    if ((paramJSONObject1 == null) || (paramJSONObject2 == null)) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = paramJSONObject2.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        try
+        {
+          paramJSONObject1.put(str, paramJSONObject2.get(str));
+        }
+        catch (Exception localException)
+        {
+          QLog.d("RIJJsonUtils", 1, "mergeJSONData error!  msg=" + localException);
+        }
+      }
+    }
+  }
+  
+  public static void b(JSONObject paramJSONObject, String paramString, long paramLong, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      paramJSONObject.put(paramString, paramLong);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.d("RIJJsonUtils", 1, "putSafeLongValueConvertStringToJson error!  msg=" + paramJSONObject);
     }
   }
 }

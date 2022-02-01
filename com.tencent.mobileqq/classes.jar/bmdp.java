@@ -1,6 +1,13 @@
-public abstract interface bmdp
+import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+public class bmdp
+  implements EIPCResultCallback
 {
-  public abstract void a(int paramInt);
+  public bmdp(QQPimGetTipsInfoIPC.NoticeClickTipsRunnable paramNoticeClickTipsRunnable) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult) {}
 }
 
 

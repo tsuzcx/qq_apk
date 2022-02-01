@@ -1,64 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.TroopPhotoController;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
 
 public class beww
-  extends aptq<bewv>
+  implements bkzq
 {
-  @NonNull
-  public bewv a(int paramInt)
-  {
-    QLog.d("TroopMemberLevelMapCofigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
-    return new bewv();
-  }
+  public beww(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, bkzi parambkzi) {}
   
-  @Nullable
-  public bewv a(aptx[] paramArrayOfaptx)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberLevelMapCofigProcessor", 2, "onParsed");
+    switch (paramInt)
+    {
     }
-    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
-      return bewv.a(paramArrayOfaptx[0].a);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      if (System.currentTimeMillis() - TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity) > 500L)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoTroopPhotoController.onDeleteItem(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
+        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, System.currentTimeMillis());
+      }
     }
-    return null;
-  }
-  
-  public void a(bewv parambewv) {}
-  
-  public Class<bewv> clazz()
-  {
-    return bewv.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopMemberLevelMapCofigProcessor", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 659;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beww
  * JD-Core Version:    0.7.0.1
  */

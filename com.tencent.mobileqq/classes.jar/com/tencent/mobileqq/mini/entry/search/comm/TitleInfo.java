@@ -4,6 +4,7 @@ public class TitleInfo
   implements ItemInfo
 {
   public String mTitle;
+  public boolean showRefreshButton;
   
   public TitleInfo(String paramString)
   {
@@ -13,6 +14,11 @@ public class TitleInfo
   public int getType()
   {
     return 1;
+  }
+  
+  public void setRefreshButtonVisibility(boolean paramBoolean)
+  {
+    this.showRefreshButton = paramBoolean;
   }
 }
 

@@ -43,8 +43,8 @@ public class MsgMoreView
   private void init(Context paramContext)
   {
     this.mContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131562352, this);
-    this.mAvatarListLayout = ((FrameLayout)findViewById(2131363151));
+    LayoutInflater.from(paramContext).inflate(2131562420, this);
+    this.mAvatarListLayout = ((FrameLayout)findViewById(2131363170));
     setOnClickListener(new MsgMoreView.1(this));
   }
   
@@ -63,7 +63,7 @@ public class MsgMoreView
       }
       while (j < i)
       {
-        UserListItemView localUserListItemView = new UserListItemView(this.mContext, 1);
+        UserListItemView localUserListItemView = new UserListItemView(this.mContext, 1, paramBoolean);
         localUserListItemView.setUin((String)paramMQMsg.userAvatar.get(j));
         localUserListItemView.setTranslationX(AVATAR_GAP * j);
         if ((j == i - 1) && (paramMQMsg.total - i > 0)) {
@@ -76,7 +76,7 @@ public class MsgMoreView
       }
     }
     if (paramBoolean) {
-      ((TextView)findViewById(2131371396)).setTextColor(-7500397);
+      ((TextView)findViewById(2131371581)).setTextColor(-7500397);
     }
   }
   

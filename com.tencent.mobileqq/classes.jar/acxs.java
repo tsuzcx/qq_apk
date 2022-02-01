@@ -1,18 +1,82 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
+import com.tencent.qapmsdk.base.config.PluginCombination;
+import com.tencent.qapmsdk.base.reporter.ab.AbProxy;
+import com.tencent.qapmsdk.base.reporter.ab.AbType;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class acxs
-  implements DialogInterface.OnClickListener
 {
-  public acxs(ChatHistory paramChatHistory) {}
+  public static Class<? extends AbType>[] a = { acxr.class, acxt.class };
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static int a(String paramString, HashMap<String, String> paramHashMap)
   {
-    this.a.a.setEnabled(true);
-    this.a.c.dismiss();
+    if (paramString != null)
+    {
+      if ("actSceneMem".equals(paramString)) {
+        return PluginCombination.leakPlugin.plugin;
+      }
+      if ("actScenePerf".equals(paramString)) {
+        return PluginCombination.resourcePlugin.plugin;
+      }
+      if (!"unifiedMonitor".equals(paramString)) {}
+    }
+    switch (Integer.parseInt((String)paramHashMap.get("family")))
+    {
+    default: 
+      return -1;
+    case 9: 
+    case 10: 
+      return PluginCombination.dropFramePlugin.plugin;
+    case 0: 
+      return PluginCombination.loopStackPlugin.plugin;
+    case 20: 
+      return PluginCombination.resourcePlugin.plugin;
+    }
+    return PluginCombination.qqBatteryPlugin.plugin;
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    if (paramHashMap == null) {}
+    do
+    {
+      return;
+      paramHashMap.put("deviceLv", String.valueOf(DeviceInfoUtil.getPerfLevel()));
+      paramString = AbProxy.getAbFactorByQapmPlugin(a(paramString, paramHashMap));
+    } while ((paramString == null) || (paramString.length() <= 0));
+    paramHashMap.put("abfactor", paramString);
+  }
+  
+  public static void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (paramJSONObject.has("newplugin"))
+        {
+          i = paramJSONObject.getInt("newplugin");
+          String str = AbProxy.getAbFactorByQapmPlugin(i);
+          if ((str == null) || (str.length() <= 0)) {
+            break;
+          }
+          paramJSONObject.put("abfactor", str);
+          return;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        QLog.e("MagnifierSDK.QAPM.AbFactorManger", 2, "", paramJSONObject);
+        return;
+      }
+      int i = paramJSONObject.getInt("plugin");
+    }
   }
 }
 

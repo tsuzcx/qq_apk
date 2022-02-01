@@ -1,57 +1,80 @@
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.nearby.smooth.ItemLoader;
-import com.tencent.widget.AbsListView;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
 
-public final class axgt
+public class axgt
 {
-  int jdField_a_of_type_Int;
-  final Handler jdField_a_of_type_AndroidOsHandler;
-  axgs jdField_a_of_type_Axgs;
-  final ItemLoader<?, ?> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  public float a;
+  public int a;
+  public ViewGroup.LayoutParams a;
+  public axge a;
+  public MultiCardCustomLayout a;
+  public MultiCardRootLayout a;
+  public float b;
+  public int b;
+  public int c;
   
-  void a()
+  public axgt(MultiCardFragment paramMultiCardFragment, MultiCardRootLayout paramMultiCardRootLayout, MultiCardCustomLayout paramMultiCardCustomLayout, axge paramaxge, axgg paramaxgg)
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout = paramMultiCardRootLayout;
+    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout = paramMultiCardCustomLayout;
+    this.jdField_a_of_type_Axge = paramaxge;
+    if (this.jdField_a_of_type_Axge != null) {
+      this.jdField_a_of_type_Axge.a(paramaxgg);
+    }
   }
   
-  void a(View paramView1, View paramView2, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Axgs.a();
-    ListAdapter localListAdapter = this.jdField_a_of_type_Axgs.a();
-    if ((this.jdField_a_of_type_Int != 2) && (!this.jdField_a_of_type_Boolean)) {}
-    for (boolean bool = true;; bool = false)
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.a(false);
+      this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getScaleX();
+      this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getScaleY();
     }
-  }
-  
-  void a(axgs paramaxgs)
-  {
-    this.jdField_a_of_type_Axgs = paramaxgs;
-    if (this.jdField_a_of_type_Axgs != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)
     {
-      paramaxgs = this.jdField_a_of_type_Axgs.a();
-      paramaxgs.setOnScrollListener(new axgw(this, null));
-      paramaxgs.setOnTouchListener(new axgv(this, null));
-      paramaxgs.setOnItemSelectedListener(new axgx(this, null));
+      this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getLayoutParams();
+      Object localObject = new int[2];
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getLocationOnScreen((int[])localObject);
+      this.jdField_b_of_type_Int = localObject[0];
+      this.c = localObject[1];
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(true);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.findViewById(2131371690);
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_Int = ((View)localObject).getVisibility();
+        ((View)localObject).setVisibility(8);
+      }
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout);
+    }
+    if (this.jdField_a_of_type_Axge != null) {
+      this.jdField_a_of_type_Axge.b(0);
     }
   }
   
-  void b()
+  public void b()
   {
-    if (this.jdField_a_of_type_Axgs == null) {
-      throw new IllegalStateException("Cannot cancel requests with no managed view");
+    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null))
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getParent() instanceof ViewGroup)) {
+        ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(false);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setScaleX(1.0F);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setScaleY(1.0F);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.a(true);
+      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.addView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout, 0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Axgs.a());
+    if (this.jdField_a_of_type_Axge != null) {
+      this.jdField_a_of_type_Axge.b(1);
+    }
   }
 }
 

@@ -1,77 +1,79 @@
 import android.os.Bundle;
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.WebSsoBody.WebSsoControlData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aasp
+class aasp
   implements BusinessObserver
 {
-  public void a(Bundle paramBundle) {}
+  aasp(aasm paramaasm, String paramString1, String paramString2) {}
   
-  public void a(Session paramSession) {}
-  
-  public void a(Session paramSession, float paramFloat) {}
-  
-  public void a(Session paramSession, boolean paramBoolean) {}
-  
-  public void a(MessageRecord paramMessageRecord, float paramFloat) {}
-  
-  public void a(MessageRecord paramMessageRecord, Boolean paramBoolean) {}
-  
-  public void b(Bundle paramBundle) {}
-  
-  public void b(Session paramSession) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramObject == null) {}
-    do
+    if (paramBoolean) {}
+    for (;;)
     {
-      do
+      try
       {
-        do
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
         {
-          Session localSession;
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  switch (paramInt)
-                  {
-                  default: 
-                    return;
-                  case 100: 
-                    paramObject = (Session)paramObject;
-                  }
-                } while (paramObject == null);
-                a(paramObject);
-                return;
-                paramObject = (Session)paramObject;
-              } while (paramObject == null);
-              b(paramObject);
-              return;
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length <= 1);
-            localSession = (Session)paramObject[0];
-          } while (localSession == null);
-          a(localSession, ((Float)paramObject[1]).floatValue());
-          return;
-          paramObject = (Session)paramObject;
-        } while (paramObject == null);
-        a(paramObject, paramBoolean);
+          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+          localWebSsoResponseBody.mergeFrom(paramBundle);
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("data", localWebSsoResponseBody.data.get());
+          localJSONObject.put("retcode", localWebSsoResponseBody.ret.get());
+          localJSONObject.put("cret", 0);
+          this.jdField_a_of_type_Aasm.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          if (((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.has()) {
+            this.jdField_a_of_type_Aasm.a = ((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.get();
+          }
+          if (((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).packageSize.has()) {
+            this.jdField_a_of_type_Aasm.b = ((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).packageSize.get();
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.i("SSOWebviewPlugin", 2, String.format("onReceive cmd=%s %b frequency=%d result=%s", new Object[] { this.b, Boolean.valueOf(((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.has()), Integer.valueOf(this.jdField_a_of_type_Aasm.a), localJSONObject }));
+          }
+        }
+        if (!QLog.isColorLevel()) {
+          break label385;
+        }
+        if (paramBundle == null) {
+          break label386;
+        }
+        paramBoolean = true;
+        QLog.i("SSOWebviewPlugin", 2, String.format("onReceive data!=null[%b]", new Object[] { Boolean.valueOf(paramBoolean) }));
         return;
-        paramObject = (Bundle)paramObject;
-      } while (paramObject == null);
-      a(paramObject);
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle = new JSONObject();
+        try
+        {
+          paramBundle.put("cret", 2);
+          this.jdField_a_of_type_Aasm.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+          return;
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          continue;
+        }
+      }
+      paramBundle = new JSONObject();
+      paramBundle.put("cret", 1);
+      this.jdField_a_of_type_Aasm.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
       return;
-      paramObject = (Bundle)paramObject;
-    } while (paramObject == null);
-    b(paramObject);
+      label385:
+      return;
+      label386:
+      paramBoolean = false;
+    }
   }
 }
 

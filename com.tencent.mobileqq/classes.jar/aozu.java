@@ -1,49 +1,106 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.LruCache;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
-class aozu
-  extends BroadcastReceiver
+public class aozu
 {
-  aozu(aozt paramaozt) {}
+  private static final Map<String, Integer> a = new HashMap();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static int a(String arg0, String paramString2)
   {
-    if ((paramIntent == null) || (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("faceType", -1) != this.a.jdField_a_of_type_Int)) {}
-    ArrayList localArrayList;
-    do
+    paramString2 = ??? + "_" + paramString2;
+    synchronized (a)
     {
-      return;
-      paramContext = paramIntent.getStringArrayListExtra("uinList");
-      localArrayList = paramIntent.getStringArrayListExtra("headPathList");
-    } while ((paramContext == null) || (localArrayList == null));
-    int j = paramContext.size();
-    if (QLog.isColorLevel()) {
-      QLog.d("NonMainAppHeadLoader", 2, "onReceive, uinListSize:" + j + " reqSize:" + this.a.jdField_a_of_type_JavaUtilHashSet.size());
-    }
-    paramIntent = new ArrayList(this.a.jdField_a_of_type_JavaUtilHashSet.size());
-    int i = 0;
-    while (i < j)
-    {
-      String str = (String)paramContext.get(i);
-      if (this.a.jdField_a_of_type_JavaUtilHashSet.contains(str))
+      if (a.containsKey(paramString2))
       {
-        this.a.jdField_a_of_type_JavaUtilHashSet.remove(str);
-        paramIntent.add(str);
+        i = ((Integer)a.get(paramString2)).intValue();
+        return i;
       }
-      this.a.jdField_b_of_type_AndroidSupportV4UtilLruCache.put(str, localArrayList.get(i));
-      i += 1;
+      int i = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4).getInt(paramString2, 0);
+      a.put(paramString2, Integer.valueOf(i));
     }
-    paramContext = Message.obtain();
-    paramContext.obj = paramIntent;
-    paramContext.what = 1001;
-    this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(paramContext);
+  }
+  
+  public static String a(String paramString)
+  {
+    String str = paramString;
+    if (paramString.length() > 4)
+    {
+      str = paramString.substring(4);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("DiySecureFileHelper", 4, paramString + " -> " + str);
+      }
+    }
+    return str;
+  }
+  
+  public static void a(String arg0, String paramString2, int paramInt)
+  {
+    int i = -1;
+    paramString2 = ??? + "_" + paramString2;
+    synchronized (a)
+    {
+      if (a.containsKey(paramString2)) {
+        i = ((Integer)a.get(paramString2)).intValue();
+      }
+      if (i != paramInt)
+      {
+        BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4).edit().putInt(paramString2, paramInt).commit();
+        a.put(paramString2, Integer.valueOf(paramInt));
+      }
+      return;
+    }
+  }
+  
+  private static void b(String paramString1, String paramString2)
+  {
+    Object localObject1 = new File(paramString1);
+    int i;
+    if (((File)localObject1).exists())
+    {
+      if (!((File)localObject1).isFile()) {
+        break label75;
+      }
+      i = FileUtils.quickMove(paramString1, paramString2);
+      if (i != 0) {
+        QLog.d("DiySecureFileHelper", 1, "Move [" + paramString1 + "] errorcode = " + i);
+      }
+    }
+    for (;;)
+    {
+      FileUtils.deleteDirectory(paramString1);
+      return;
+      label75:
+      if (((File)localObject1).isDirectory())
+      {
+        localObject1 = b((File)localObject1);
+        int j = localObject1.length;
+        i = 0;
+        while (i < j)
+        {
+          Object localObject2 = localObject1[i];
+          b(localObject2.getAbsolutePath(), new File(paramString2, localObject2.getName()).getAbsolutePath());
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  private static File[] b(File paramFile)
+  {
+    File[] arrayOfFile = paramFile.listFiles();
+    paramFile = arrayOfFile;
+    if (arrayOfFile == null)
+    {
+      QLog.e("DiySecureFileHelper", 1, new Throwable(), new Object[0]);
+      paramFile = new File[0];
+    }
+    return paramFile;
   }
 }
 

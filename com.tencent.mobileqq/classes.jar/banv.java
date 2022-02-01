@@ -1,40 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 public class banv
-  implements View.OnClickListener
 {
-  public banv(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public void onClick(View paramView)
+  public static banv a()
   {
-    String str = (String)paramView.getTag();
-    if (SignatureHistoryFragment.a(this.a).contains(str))
-    {
-      SignatureHistoryFragment.a(this.a).remove(str);
-      ((CheckBox)paramView).setChecked(false);
-    }
-    for (;;)
-    {
-      SignatureHistoryFragment.b(this.a, false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (SignatureHistoryFragment.a(this.a).size() >= 200)
-      {
-        this.a.a(1, 2131718516);
-        ((CheckBox)paramView).setChecked(false);
-      }
-      else
-      {
-        SignatureHistoryFragment.a(this.a).add(str);
-        ((CheckBox)paramView).setChecked(true);
-      }
-    }
+    return banx.a();
   }
+  
+  public void a()
+  {
+    bakl.a("HelloQQWake", "WakeService onWake hello qq");
+    Object localObject = bakl.a();
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = (bakx)((QQAppInterface)localObject).getManager(QQManagerFactory.VOICE_ASSISTANT_MANAGER);
+      if (localObject != null) {
+        ((bakx)localObject).a(2);
+      }
+      bdla.b(null, "dc00898", "", "", "0X800B167", "0X800B167", bamr.a(), 0, "", "", "", "");
+    } while (!bann.a);
+    bdla.b(null, "dc00898", "", "", "0X800B4FA", "0X800B4FA", bamr.a(), 0, "", "", "", "");
+  }
+  
+  public void a(boolean paramBoolean) {}
 }
 
 

@@ -1,16 +1,4 @@
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import tencent.gdt.qq_ad_get.QQAdGet;
-
-public abstract class ablb
-{
-  public GdtHandler.Params a;
-  public qq_ad_get.QQAdGet a;
-  
-  public boolean a()
-  {
-    return this.a != null;
-  }
-}
+public class ablb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

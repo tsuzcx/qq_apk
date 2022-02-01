@@ -1,50 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.viola.ui.view.VRefreshLayout;
-import com.tencent.viola.ui.view.VRefreshLayout.onRefreshStateChangeListener;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class thk
-  implements VRefreshLayout.onRefreshStateChangeListener
+public class thk
+  implements tgs
 {
-  thk(thj paramthj, RefreshAnimView paramRefreshAnimView, VRefreshLayout paramVRefreshLayout) {}
+  public static final String a;
+  private static String b = "WebFastLikeDislikeCreator";
+  private thl a;
   
-  public void onRefreshMove(int paramInt)
+  static
   {
-    int i = this.jdField_a_of_type_ComTencentViolaUiViewVRefreshLayout.getHeaderHeight();
-    if ((paramInt <= i) && (!thj.a(this.jdField_a_of_type_Thj)))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / i);
-    }
+    jdField_a_of_type_JavaLangString = anvx.a(2131716244);
   }
   
-  public void onStateEnd()
+  public int a(BaseData paramBaseData)
   {
-    thj.a(this.jdField_a_of_type_Thj, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
+    return 19;
   }
   
-  public void onStateFinish(boolean paramBoolean, String paramString)
+  public tgr a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
+    this.jdField_a_of_type_Thl = new thl(this, paramContext, LayoutInflater.from(paramContext).inflate(2131560226, null), paramBaseData);
+    return this.jdField_a_of_type_Thl;
   }
   
-  public void onStateIdel()
+  public boolean a(BaseData paramBaseData)
   {
-    thj.a(this.jdField_a_of_type_Thj, false);
-  }
-  
-  public void onStatePulling() {}
-  
-  public void onStateRefreshing()
-  {
-    thj.a(this.jdField_a_of_type_Thj, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
+    return paramBaseData.r == 21;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     thk
  * JD-Core Version:    0.7.0.1
  */

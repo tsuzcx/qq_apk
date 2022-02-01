@@ -16,12 +16,12 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vkp;
-import xvv;
+import vzk;
+import ykq;
 
 public class LikeEntry
   extends Entity
-  implements Comparable<LikeEntry>, vkp
+  implements Comparable<LikeEntry>, vzk
 {
   public static final int ROLE_NORMAL = 0;
   public static final int ROLE_VIP = 2;
@@ -114,7 +114,7 @@ public class LikeEntry
       }
       catch (Exception paramString)
       {
-        xvv.e("Q.qqstory:LikeEntry", String.format("Parse json error , %s", new Object[] { paramString.getMessage() }));
+        ykq.e("Q.qqstory:LikeEntry", String.format("Parse json error , %s", new Object[] { paramString.getMessage() }));
       }
     }
   }
@@ -149,7 +149,7 @@ public class LikeEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.LikeEntry
  * JD-Core Version:    0.7.0.1
  */

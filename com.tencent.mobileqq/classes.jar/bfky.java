@@ -1,12 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import javax.annotation.Nullable;
 
-class bfky
-  implements DialogInterface.OnClickListener
+public class bfky
+  extends aqwt<bfkx>
 {
-  bfky(bfkw parambfkw) {}
+  @NonNull
+  public bfkx a(int paramInt)
+  {
+    QLog.d("TroopEssenceMsgEntryConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new bfkx();
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  @Nullable
+  public bfkx a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0)) {
+      return bfkx.a(paramArrayOfaqxa);
+    }
+    return null;
+  }
+  
+  public void a(bfkx parambfkx) {}
+  
+  public Class<bfkx> clazz()
+  {
+    return bfkx.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TroopEssenceMsgEntryConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 668;
+  }
 }
 
 

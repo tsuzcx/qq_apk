@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
 import android.text.TextUtils;
-import bbxj;
-import boax;
+import bdee;
+import bpqp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.File;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 class PtvTemplateManager$1
   implements Runnable
 {
-  PtvTemplateManager$1(PtvTemplateManager paramPtvTemplateManager, File paramFile, boax paramboax, AppInterface paramAppInterface) {}
+  PtvTemplateManager$1(PtvTemplateManager paramPtvTemplateManager, File paramFile, bpqp parambpqp, AppInterface paramAppInterface) {}
   
   public void run()
   {
@@ -48,12 +48,12 @@ class PtvTemplateManager$1
         synchronized (PtvTemplateManager.a())
         {
           PtvTemplateManager.a(this.this$0, (PtvTemplateManager.PtvTemplateInfo)localObject1);
-          if (this.jdField_a_of_type_Boax != null) {
-            this.jdField_a_of_type_Boax.a();
+          if (this.jdField_a_of_type_Bpqp != null) {
+            this.jdField_a_of_type_Bpqp.a();
           }
           if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
           {
-            if (!bbxj.a()) {
+            if (!bdee.a()) {
               break;
             }
             PtvTemplateManager.a(this.this$0, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);

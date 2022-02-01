@@ -1,180 +1,205 @@
-import com.tencent.mobileqq.text.EmotcationConstants;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.text.QQText.EmoticonSpan;
-import com.tencent.mobileqq.text.QQTextBuilder;
+import android.annotation.TargetApi;
+import android.graphics.ImageFormat;
+import android.graphics.SurfaceTexture;
+import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
+import android.hardware.Camera.PreviewCallback;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 
 public class ljx
+  extends ljm
+  implements Camera.PreviewCallback
 {
-  public static int a;
+  public boolean a;
   
-  public static QQText a(String paramString, int paramInt)
+  public ljx(ljk paramljk, ljl paramljl)
   {
-    return new QQText(a(paramString), 3, paramInt);
+    super(paramljk, paramljl);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public static String a(int paramInt)
+  private int a(int paramInt)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramInt >= 0)
-    {
-      str1 = str2;
-      if (paramInt < EmotcationConstants.SYS_EMOTICON_SYMBOL.length) {
-        str1 = '\024' + EmotcationConstants.SYS_EMOTICON_SYMBOL[paramInt];
-      }
+    int i = ImageFormat.getBitsPerPixel(paramInt);
+    float f = i * 1.0F / 8.0F;
+    int j = (int)(ljk.b * ljk.jdField_a_of_type_Int * f);
+    if (AudioHelper.f()) {
+      QLog.w("MyPreviewCallback", 1, "getPreviewBufferSize, previewFormat[" + paramInt + "], bitPixel[" + i + "], byteNum[" + f + "], bufSize[" + j + "]");
     }
-    return str1;
+    return j;
   }
   
-  public static String a(QQTextBuilder paramQQTextBuilder)
+  private boolean a(int paramInt)
   {
-    int j = 0;
-    if (paramQQTextBuilder == null) {
-      return null;
+    if (paramInt <= 0) {
+      return false;
     }
-    int i = paramQQTextBuilder.length();
-    Object localObject1 = new char[i];
-    paramQQTextBuilder.getChars(0, i, (char[])localObject1, 0);
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    Object localObject2 = (QQText.EmoticonSpan[])paramQQTextBuilder.getSpans(0, i, QQText.EmoticonSpan.class);
-    if ((localObject2 != null) && (localObject2.length > 0))
+    try
     {
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      localStringBuilder2.append((char[])localObject1);
-      localObject1 = new ArrayList(localObject2.length);
-      i = 0;
-      Object localObject3;
-      if (i < localObject2.length)
-      {
-        localObject3 = localObject2[i];
-        if (localObject3 == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          ((ArrayList)localObject1).add(ljy.a((QQText.EmoticonSpan)localObject3, paramQQTextBuilder.getSpanStart(localObject3), paramQQTextBuilder.getSpanEnd(localObject3)));
-        }
-      }
-      Collections.sort((List)localObject1, ljy.jdField_a_of_type_JavaUtilComparator);
-      localObject2 = ((ArrayList)localObject1).iterator();
-      i = j;
-      if (((Iterator)localObject2).hasNext())
-      {
-        paramQQTextBuilder = (ljy)((Iterator)localObject2).next();
-        localObject3 = paramQQTextBuilder.jdField_a_of_type_ComTencentMobileqqTextQQText$EmoticonSpan;
-        int k = paramQQTextBuilder.jdField_a_of_type_Int;
-        j = paramQQTextBuilder.b;
-        switch (((QQText.EmoticonSpan)localObject3).emojiType)
-        {
-        default: 
-          paramQQTextBuilder = localStringBuilder2.substring(k, j);
-        }
-        for (;;)
-        {
-          if (i < k) {
-            localStringBuilder1.append(localStringBuilder2.substring(i, k));
-          }
-          localStringBuilder1.append(paramQQTextBuilder);
-          i = j;
-          break;
-          paramQQTextBuilder = '\024' + ((QQText.EmoticonSpan)localObject3).getDescription();
-          continue;
-          paramQQTextBuilder = a(((QQText.EmoticonSpan)localObject3).index & 0x7FFFFFFF);
-        }
-      }
-      if (i < localStringBuilder2.length()) {
-        localStringBuilder1.append(localStringBuilder2.substring(i));
-      }
-      ljy.a((List)localObject1);
+      ljv.a().a(paramInt);
+      return true;
     }
-    for (;;)
+    catch (OutOfMemoryError localOutOfMemoryError1)
     {
-      return localStringBuilder1.toString();
-      localStringBuilder1.append((char[])localObject1);
+      for (;;)
+      {
+        URLDrawable.clearMemoryCache();
+        try
+        {
+          ljv.a().a(paramInt);
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          QLog.e("MyPreviewCallback", 2, "allocateFrame failed , size:" + paramInt + ", " + localOutOfMemoryError2.getMessage());
+        }
+      }
+    }
+    return false;
+  }
+  
+  public void a()
+  {
+    ljv.a().a();
+    if (QLog.isColorLevel()) {
+      QLog.i("MyPreviewCallback", 2, "release");
     }
   }
   
-  public static String a(String paramString)
+  public void a(long paramLong, SurfaceTexture paramSurfaceTexture)
   {
-    int k = 0;
-    if (android.text.TextUtils.isEmpty(paramString)) {
-      localObject1 = "";
-    }
-    do
-    {
-      return localObject1;
-      localObject1 = paramString;
-    } while (paramString.indexOf("/") == -1);
-    int i = 0;
-    for (Object localObject1 = paramString;; localObject1 = paramString)
-    {
-      paramString = (String)localObject1;
-      int j = k;
-      Object localObject2 = localObject1;
-      try
+    this.jdField_a_of_type_Ljz.a();
+    int j;
+    int k;
+    int i;
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ljk.a() != null)) {
+      if (a(a(this.jdField_a_of_type_Ljk.a().getPreviewFormat())))
       {
-        String str;
-        if (i < EmotcationConstants.SYS_EMOTICON_SYMBOL.length)
+        j = 0;
+        k = 0;
+        if (j < ljv.a().a())
         {
-          localObject2 = localObject1;
-          str = '\024' + EmotcationConstants.SYS_EMOTICON_SYMBOL[i];
-          localObject2 = localObject1;
-          paramString = (String)localObject1;
-          if (((String)localObject1).indexOf(str) != -1)
+          paramSurfaceTexture = ljv.a().a(0);
+          i = k;
+          if (paramSurfaceTexture != null)
           {
-            localObject2 = localObject1;
-            paramString = ((String)localObject1).replace(str, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(i));
+            ljv.a().a(paramSurfaceTexture, 1);
+            this.jdField_a_of_type_Ljk.jdField_a_of_type_AndroidHardwareCamera.addCallbackBuffer(paramSurfaceTexture);
+            k += 1;
+            i = k;
+            if (k < 2) {}
           }
         }
         else
         {
-          for (;;)
-          {
-            localObject2 = paramString;
-            localObject1 = paramString;
-            if (j >= EmotcationConstants.SYS_EMOTICON_SYMBOL.length) {
-              break;
-            }
-            localObject2 = paramString;
-            str = EmotcationConstants.SYS_EMOTICON_SYMBOL[j];
-            localObject1 = paramString;
-            localObject2 = paramString;
-            if (paramString.indexOf(str) != -1)
-            {
-              localObject2 = paramString;
-              localObject1 = paramString.replace(str, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(j));
-            }
-            j += 1;
-            paramString = (String)localObject1;
-          }
-          return localObject1;
+          this.jdField_a_of_type_Ljk.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallbackWithBuffer(this);
+          i = 1;
         }
       }
-      catch (Exception paramString)
-      {
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("ChatRoomUtil", 2, "convertMsg exception", paramString);
-          localObject1 = localObject2;
-        }
-      }
-      i += 1;
+    }
+    for (;;)
+    {
+      QLog.w("MyPreviewCallback", 1, "setPreviewCallback, type[" + i + "], seq[" + paramLong + "]");
+      return;
+      j += 1;
+      k = i;
+      break;
+      this.jdField_a_of_type_Ljk.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallback(this);
+      i = 2;
+      continue;
+      i = 3;
+      this.jdField_a_of_type_Ljk.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallback(this);
     }
   }
   
-  public static void a(String paramString)
+  @TargetApi(8)
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    int i = lbu.a().a().d;
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatRoomUtil", 2, String.format("doReport, tag[%s], fromType[%s]", new Object[] { paramString, Integer.valueOf(i) }));
+    if (paramArrayOfByte == null)
+    {
+      if (AudioHelper.f()) {
+        QLog.w("MyPreviewCallback", 1, "onPreviewFrame, data is null, Camera[" + paramCamera + "], camera[" + this.jdField_a_of_type_Ljk.jdField_a_of_type_AndroidHardwareCamera + "]");
+      }
+      this.jdField_a_of_type_Ljz.b();
     }
-    bcef.b(null, "dc00898", "", "", paramString, paramString, i, 0, "", "", "", "");
+    int n;
+    int j;
+    int i;
+    boolean bool;
+    label327:
+    do
+    {
+      return;
+      a(this.jdField_a_of_type_Ljn);
+      n = paramArrayOfByte.length;
+      j = ljk.jdField_a_of_type_Int;
+      i = ljk.b;
+      int k = i;
+      int m = j;
+      if (n != j * i * 3 / 2)
+      {
+        if (n != 460800) {
+          break;
+        }
+        j = 640;
+        i = 480;
+        k = i;
+        m = j;
+        if (AudioHelper.f())
+        {
+          QLog.w("MyPreviewCallback", 1, "OnPreviewData false, expectSize[" + ljk.jdField_a_of_type_Int + ", " + ljk.b + "], dataLen[" + n + "], fixSize[" + j + ", " + i + "]");
+          m = j;
+          k = i;
+        }
+      }
+      this.jdField_a_of_type_Ljz.a(this.jdField_a_of_type_Ljn.jdField_a_of_type_Int, this.jdField_a_of_type_Ljk.f, ljk.d, this.jdField_a_of_type_Ljk.e, this.jdField_a_of_type_Ljn.c, this.jdField_a_of_type_Ljn.d, this.jdField_a_of_type_Ljn.b, n, m, k);
+      if (this.jdField_a_of_type_Ljl != null)
+      {
+        paramCamera = lox.a();
+        long l = this.jdField_a_of_type_Ljz.j;
+        i = ljk.c;
+        j = this.jdField_a_of_type_Ljn.jdField_a_of_type_Int;
+        n = this.jdField_a_of_type_Ljn.b;
+        if (this.jdField_a_of_type_Ljk.f != 1) {
+          break label467;
+        }
+        bool = true;
+        paramCamera.a(l, paramArrayOfByte, m, k, i, j, n, bool, ljk.d, System.currentTimeMillis());
+        this.jdField_a_of_type_Ljl.a(paramCamera);
+      }
+    } while ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Ljk.jdField_a_of_type_AndroidHardwareCamera == null));
+    paramCamera = ljv.a().a(0);
+    if (paramCamera == null)
+    {
+      paramCamera = paramArrayOfByte;
+      if (QLog.isDevelopLevel())
+      {
+        QLog.w("MyPreviewCallback", 1, "OnPreviewData, 没有空闲的缓存");
+        paramCamera = paramArrayOfByte;
+      }
+    }
+    for (;;)
+    {
+      ljv.a().a(paramCamera, 1);
+      this.jdField_a_of_type_Ljk.jdField_a_of_type_AndroidHardwareCamera.addCallbackBuffer(paramCamera);
+      return;
+      if (n == 1382400)
+      {
+        j = 1280;
+        i = 720;
+        break;
+      }
+      if (n != 115200) {
+        break;
+      }
+      j = 320;
+      i = 240;
+      break;
+      label467:
+      bool = false;
+      break label327;
+    }
   }
 }
 

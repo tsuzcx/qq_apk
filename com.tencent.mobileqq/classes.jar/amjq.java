@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ShowExternalTroop;
 
-public final class amjq
-  implements alob
+public class amjq
 {
-  public amjq(amjx paramamjx, QQAppInterface paramQQAppInterface) {}
+  public int a;
+  public ShowExternalTroop a;
   
-  public void a()
+  public amjq(int paramInt, ShowExternalTroop paramShowExternalTroop)
   {
-    this.jdField_a_of_type_Amjx.b(ApolloGameUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataShowExternalTroop = paramShowExternalTroop;
   }
 }
 

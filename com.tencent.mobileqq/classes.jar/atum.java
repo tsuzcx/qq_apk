@@ -1,152 +1,76 @@
-import NS_MINI_APP_MISC.MISC.StAppPlayingInfo;
-import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ThemeImageView;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.MobileQQ;
 
 public class atum
-  extends RecyclerView.Adapter<atuo>
+  extends atuk
 {
-  private int jdField_a_of_type_Int = 9999;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private final String jdField_a_of_type_JavaLangString;
-  private List<MISC.StAppPlayingInfo> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public bfjs a;
+  QQAppInterface a;
   
-  public atum(List<MISC.StAppPlayingInfo> paramList, String paramString, View.OnClickListener paramOnClickListener)
+  public atum(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  private int a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return 2131693161;
+    super(paramQQAppInterface, paramFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = auea.a(paramQQAppInterface.getApplication().getBaseContext(), paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize);
+    if ((paramFileManagerEntity.isZipInnerFile) && (auea.a(paramQQAppInterface, this, true))) {
+      this.jdField_a_of_type_Boolean = false;
     }
-    return 2131693164;
-  }
-  
-  private void a(atuo paramatuo)
-  {
-    try
+    this.jdField_a_of_type_Bfjs = bgke.a(paramQQAppInterface, paramFileManagerEntity);
+    if ((this.jdField_a_of_type_Bfjs.b == 2) || (this.jdField_a_of_type_Bfjs.b == 3))
     {
-      if (this.jdField_a_of_type_AndroidContentResColorStateList != null)
-      {
-        paramatuo.a().setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
-        paramatuo.b().setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
-        return;
+      boolean bool2 = auea.a(this);
+      if (c() == 3) {
+        if ((!this.jdField_a_of_type_Boolean) || (!bool2)) {
+          break label119;
+        }
       }
-      paramatuo.a().setTextColor(this.b);
-      paramatuo.b().setTextColor(this.b);
-      return;
-    }
-    catch (Throwable paramatuo)
-    {
-      QLog.e("IntimatePlayTogetherMin", 1, "updateThemeTextColor error", paramatuo);
-    }
-  }
-  
-  public atuo a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new atuo(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559283, null, false));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.b = paramInt;
-  }
-  
-  public void a(ColorStateList paramColorStateList)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-  }
-  
-  public void a(atuo paramatuo, int paramInt)
-  {
-    MISC.StAppPlayingInfo localStAppPlayingInfo = (MISC.StAppPlayingInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    boolean bool;
-    if (localStAppPlayingInfo != null)
-    {
-      bool = atup.a(localStAppPlayingInfo.appMetaInfo);
-      paramatuo.itemView.setOnClickListener(new atun(this, localStAppPlayingInfo, bool));
-      paramatuo.a().setVisibility(0);
-      paramatuo.a().setVisibility(0);
-      paramatuo.b().setVisibility(0);
-      if (localStAppPlayingInfo.appMetaInfo != null)
-      {
-        paramatuo.a().setText(localStAppPlayingInfo.appMetaInfo.appName.get());
-        paramatuo.a().setImageDrawable(MiniAppUtils.getIcon(paramatuo.a().getContext(), localStAppPlayingInfo.appMetaInfo.icon.get(), true));
-      }
-      IntimatePlayTogetherMiniGameCardView.a(paramatuo.a(), this.jdField_a_of_type_JavaLangString);
-      if ((localStAppPlayingInfo.myRank.get() == 0) || (localStAppPlayingInfo.friendRank.get() == 0)) {
-        break label271;
-      }
-      if (localStAppPlayingInfo.myRank.get() != localStAppPlayingInfo.friendRank.get()) {
-        break label228;
-      }
-      paramatuo.b().setText(2131693156);
-      paramatuo.a().setText(a(bool));
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        a(paramatuo);
-      }
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramatuo, paramInt, getItemId(paramInt));
+      this.jdField_a_of_type_Boolean = bool1;
       return;
-      label228:
-      TextView localTextView = paramatuo.b();
-      if (localStAppPlayingInfo.myRank.get() < localStAppPlayingInfo.friendRank.get()) {}
-      for (int i = 2131693158;; i = 2131693157)
-      {
-        localTextView.setText(i);
-        break;
-      }
-      label271:
-      if ((localStAppPlayingInfo.myRank.get() == 0) && (localStAppPlayingInfo.friendRank.get() > 0))
-      {
-        paramatuo.b().setText(String.format(paramatuo.itemView.getContext().getString(2131693159), new Object[] { Integer.valueOf(localStAppPlayingInfo.friendRank.get()) }));
-        paramatuo.a().setText(a(bool));
-      }
-      else
-      {
-        paramatuo.a().setVisibility(8);
-        paramatuo.a().setVisibility(8);
-        paramatuo.b().setVisibility(8);
-        paramatuo.a().setText(a(bool));
-      }
+      label119:
+      bool1 = false;
     }
   }
   
-  public void b(int paramInt)
+  public int c()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (FileUtil.fileExistsAndNotEmpty(super.g())) {
+      return 3;
+    }
+    return super.c();
   }
   
-  public int getItemCount()
+  public int d()
   {
-    return 1;
+    if ((c() == 6) && (e() == 31)) {
+      return super.d();
+    }
+    if (this.jdField_a_of_type_Bfjs != null) {
+      return this.jdField_a_of_type_Bfjs.b;
+    }
+    return 0;
+  }
+  
+  public String i()
+  {
+    String str2 = FileUtil.filesizeToString(super.b());
+    String str1 = str2;
+    if (104 == super.a().busId)
+    {
+      str1 = str2;
+      if (super.a().lastTime > 0L)
+      {
+        str1 = str2 + BaseApplicationImpl.getContext().getString(2131692282);
+        str1 = str1 + bgke.a(BaseApplicationImpl.getContext(), super.a().lastTime);
+      }
+    }
+    return str1;
   }
 }
 

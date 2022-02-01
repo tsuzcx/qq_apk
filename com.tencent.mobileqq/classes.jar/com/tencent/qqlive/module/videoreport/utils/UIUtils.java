@@ -7,10 +7,12 @@ import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import android.graphics.Rect;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AbsListView;
 import com.tencent.qqlive.module.videoreport.exposure.AreaInfo;
-import d;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UIUtils
 {
@@ -66,11 +68,6 @@ public class UIUtils
     return paramWindow.getDecorView();
   }
   
-  public static View getDecorView(d paramd)
-  {
-    return getDecorView(paramd.getActivity());
-  }
-  
   public static AreaInfo getExposureAreaInfo(View paramView)
   {
     double d = 0.0D;
@@ -100,6 +97,21 @@ public class UIUtils
       return null;
     }
     return ReflectUtils.getField(AbsListView.class, "mOnScrollListener", paramAbsListView);
+  }
+  
+  public static Set<View> getParentViews(View paramView)
+  {
+    HashSet localHashSet = new HashSet();
+    Object localObject = paramView;
+    if (paramView == null) {
+      return localHashSet;
+    }
+    while ((((View)localObject).getParent() instanceof ViewGroup))
+    {
+      localObject = (ViewGroup)((View)localObject).getParent();
+      localHashSet.add(localObject);
+    }
+    return localHashSet;
   }
   
   public static double getViewExposureRate(View paramView)

@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
-class apkc
-  implements bgfl
+public abstract interface apkc
 {
-  apkc(apka paramapka, int paramInt) {}
+  public abstract void a(int paramInt, apkm paramapkm, long paramLong);
   
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    paramQQAppInterface = bgja.a(this.jdField_a_of_type_Apka.a.getApp(), this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "playRingId.onCompleted: invoked. ", " wavPath: ", paramQQAppInterface });
-    }
-    apka.a(this.jdField_a_of_type_Apka, paramQQAppInterface);
-  }
+  public abstract void a(apke paramapke);
   
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
+  public abstract void a(apkf paramapkf);
+  
+  public abstract void a(apkg paramapkg);
+  
+  public abstract void a(apkh paramapkh);
+  
+  public abstract void a(apko paramapko);
+  
+  public abstract void b(apkf paramapkf);
 }
 
 

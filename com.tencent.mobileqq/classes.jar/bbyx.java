@@ -1,28 +1,26 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.soload.LoadParam.LoadItem;
-import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bbyx
-  implements bbzt
+  implements View.OnClickListener
 {
-  bbyx(bbyv parambbyv, String paramString, bbzj parambbzj, LoadParam.LoadItem paramLoadItem) {}
+  bbyx(bbyv parambbyv, bcfe parambcfe) {}
   
-  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
+  public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_Bbyv.a(paramSoInfo))
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bcfe.d))
     {
-      bbyv.a(this.jdField_a_of_type_Bbyv, 2);
-      return;
+      bcnc.a(this.jdField_a_of_type_Bbyv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bbyv.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bcfe.d);
+      bcnc.a("hot_list", "clk_title", new String[] { String.valueOf(1), String.valueOf(this.jdField_a_of_type_Bbyv.jdField_a_of_type_Int) });
     }
-    if ((TextUtils.equals(this.jdField_a_of_type_Bbyv.a.ver, this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Bbzj.b()))
+    for (;;)
     {
-      this.jdField_a_of_type_Bbyv.c = "runcrash";
-      bbyv.a(this.jdField_a_of_type_Bbyv, 8);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      bcnc.a("hot_list", "clk_title", new String[] { String.valueOf(2), String.valueOf(this.jdField_a_of_type_Bbyv.jdField_a_of_type_Int) });
     }
-    bbzk.b(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name);
-    bbyv.a(this.jdField_a_of_type_Bbyv, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem);
   }
 }
 

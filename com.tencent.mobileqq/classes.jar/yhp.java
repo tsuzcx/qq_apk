@@ -1,6 +1,39 @@
-public abstract interface yhp
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+
+class yhp
+  implements INetInfoHandler
 {
-  public abstract void a(String paramString);
+  yhp(yhn paramyhn) {}
+  
+  public void onNetMobile2None()
+  {
+    yhn.b(this.a, yhn.a(3));
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    yhn.b(this.a, yhn.a(1));
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    yhn.b(this.a, yhn.a(2));
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    yhn.b(this.a, yhn.a(1));
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    yhn.b(this.a, yhn.a(2));
+  }
+  
+  public void onNetWifi2None()
+  {
+    yhn.b(this.a, yhn.a(3));
+  }
 }
 
 

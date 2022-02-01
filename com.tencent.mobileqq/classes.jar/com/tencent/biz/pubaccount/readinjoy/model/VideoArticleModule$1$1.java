@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pkp;
+import pvm;
 
 class VideoArticleModule$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class VideoArticleModule$1$1
   
   public void run()
   {
-    pkp.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelVideoArticleModule$1.a, this.jdField_a_of_type_JavaUtilList);
+    pvm.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelVideoArticleModule$1.a, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

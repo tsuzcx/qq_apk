@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.utils;
 
-import arpa;
-import arpc;
+import astg;
+import asti;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
@@ -13,31 +13,31 @@ import java.io.File;
 public class ExtendFriendVoicePlayer$2
   implements Runnable
 {
-  public ExtendFriendVoicePlayer$2(arpa paramarpa, String paramString) {}
+  public ExtendFriendVoicePlayer$2(astg paramastg, String paramString) {}
   
   public void run()
   {
-    if ((arpa.a(this.this$0) != null) && (arpa.a(this.this$0).isFinishing()))
+    if ((astg.a(this.this$0) != null) && (astg.a(this.this$0).isFinishing()))
     {
       QLog.e("ExtendFriendVoicePlayer", 2, "playLocal file not exist download on executeOnFileThread but activity isFinishing");
       return;
     }
     QLog.i("ExtendFriendVoicePlayer", 2, "playLocal file not exist executeOnFileThread");
-    String str = BuddyTransfileProcessor.getTransferFilePath(arpa.a(this.this$0).app.getCurrentAccountUin(), MD5.toMD5(this.a), 23, null);
+    String str = BuddyTransfileProcessor.getTransferFilePath(astg.a(this.this$0).app.getCurrentAccountUin(), MD5.toMD5(this.a), 23, null);
     File localFile = new File(str);
-    int i = HttpDownloadUtil.downloadData(arpa.a(this.this$0).app, this.a, localFile);
+    int i = HttpDownloadUtil.downloadData(astg.a(this.this$0).app, this.a, localFile);
     if (i == 0)
     {
-      arpa.a(this.this$0).a(localFile);
+      astg.a(this.this$0).a(localFile);
       this.this$0.a(str);
       return;
     }
-    arpa.a(this.this$0).f(i);
+    astg.a(this.this$0).f(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.utils.ExtendFriendVoicePlayer.2
  * JD-Core Version:    0.7.0.1
  */

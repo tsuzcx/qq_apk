@@ -1,10 +1,59 @@
-public abstract interface slg
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment.LiveStatusCallback.1;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class slg
+  implements qgq
 {
-  public abstract void a();
+  private slg(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public abstract boolean a();
-  
-  public abstract void b();
+  public void a(int paramInt, List<qgr> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    paramList = paramList.iterator();
+    label12:
+    label146:
+    label147:
+    for (;;)
+    {
+      qgr localqgr;
+      if (paramList.hasNext())
+      {
+        localqgr = (qgr)paramList.next();
+        Iterator localIterator = VideoFeedsRecommendFragment.a(this.a).iterator();
+        paramInt = 0;
+        label45:
+        if (localIterator.hasNext())
+        {
+          VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
+          if ((TextUtils.isEmpty(localVideoInfo.j)) || (localVideoInfo.jdField_a_of_type_Qgp != null) || (Long.parseLong(localVideoInfo.j) != localqgr.jdField_a_of_type_Long)) {
+            break label146;
+          }
+          localVideoInfo.jdField_a_of_type_Qgp = localqgr.jdField_a_of_type_Qgp;
+          if (localqgr.jdField_a_of_type_Qgp.a != 1) {
+            break label146;
+          }
+          paramInt = 1;
+        }
+      }
+      for (;;)
+      {
+        break label45;
+        if (paramInt == 0) {
+          break label147;
+        }
+        six.a(new VideoFeedsRecommendFragment.LiveStatusCallback.1(this, localqgr));
+        break label12;
+        break;
+      }
+    }
+  }
 }
 
 

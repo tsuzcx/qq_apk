@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.business.sougou;
 
-import apgg;
+import aqjk;
 import java.util.ArrayList;
 
 class WordMatchManager$1
   implements Runnable
 {
-  WordMatchManager$1(WordMatchManager paramWordMatchManager, apgg paramapgg) {}
+  WordMatchManager$1(WordMatchManager paramWordMatchManager, aqjk paramaqjk) {}
   
   public void run()
   {

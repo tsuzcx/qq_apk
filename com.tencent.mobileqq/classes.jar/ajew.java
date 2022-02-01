@@ -1,43 +1,53 @@
-class ajew
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.mobileqq.data.ShowExternalTroop;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ajew
+  extends aofu
 {
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
+  public ajew(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  private ajew(int paramInt1, int paramInt2)
+  protected void onGetExtShowTroopList(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList, List<String> paramList1)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
+    this.a.b = false;
+    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0) || (paramInt != 0))
     {
-      this.jdField_a_of_type_Boolean = bool;
+      this.a.jdField_a_of_type_Int = 0;
+      if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
+        ShowExternalTroopListActivity.a(this.a);
+      }
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        paramList = new ArrayList();
+        this.a.jdField_a_of_type_Amjm.a(paramList);
+        paramInt = this.a.getTitleBarHeight();
+        QQToast.a(this.a, 1, this.a.getString(2131695911), 0).b(paramInt);
+        return;
+      }
+      this.a.a();
       return;
     }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (ajew)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0) {
-      return i + j * 31;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
+      ShowExternalTroopListActivity.a(this.a);
     }
+    this.a.c.setVisibility(0);
+    if (this.a.jdField_a_of_type_Amjm != null)
+    {
+      this.a.jdField_a_of_type_Int = paramList.size();
+      this.a.jdField_a_of_type_Amjm.a(paramList);
+    }
+    this.a.a(paramList1, true);
   }
 }
 

@@ -2,19 +2,19 @@ package dov.com.qq.im.aeeditor.module.edit;
 
 import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
-import bmhx;
+import bnxp;
 import com.tencent.mobileqq.widget.QQToast;
 import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
 public class AEEditorImageEditFragment$14$2
   implements Runnable
 {
-  public AEEditorImageEditFragment$14$2(bmhx parambmhx) {}
+  public AEEditorImageEditFragment$14$2(bnxp parambnxp) {}
   
   public void run()
   {
     this.a.a.a.a();
-    QQToast.a(this.a.a.getActivity(), this.a.a.getActivity().getResources().getString(2131719329), 1).a();
+    QQToast.a(this.a.a.getActivity(), this.a.a.getActivity().getResources().getString(2131719752), 1).a();
   }
 }
 

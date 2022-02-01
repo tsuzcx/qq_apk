@@ -1,17 +1,15 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnLoopStartListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnLoopStartListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class bjez
-  implements IMediaPlayer.OnLoopStartListener
+  implements DialogInterface.OnClickListener
 {
-  bjez(bjey parambjey, ReliableVideoPlayer.OnLoopStartListener paramOnLoopStartListener) {}
+  bjez(bjey parambjey) {}
   
-  public void onLoopStart(IMediaPlayer paramIMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnLoopStartListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnLoopStartListener.onLoopStart(this.jdField_a_of_type_Bjey);
-    }
+    QLog.d("IMBlockOpenSDKFragment", 1, "-->onClick--");
   }
 }
 

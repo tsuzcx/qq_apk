@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.home;
 
-import bfyz;
+import bhhr;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class MainFragment$5
@@ -11,7 +11,7 @@ class MainFragment$5
   public void run()
   {
     if (BaseApplicationImpl.getContext() != null) {
-      bfyz.a(BaseApplicationImpl.getContext(), "");
+      bhhr.a(BaseApplicationImpl.getContext(), "");
     }
   }
 }

@@ -6,13 +6,13 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bfvp;
-import bfwg;
+import bheh;
+import bhey;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import nkr;
-import nkv;
-import nkw;
+import nrr;
+import nrv;
+import nrw;
 
 public class JoinGroupTransitActivity
   extends BaseActivity
@@ -20,8 +20,8 @@ public class JoinGroupTransitActivity
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
-  private nkr jdField_a_of_type_Nkr;
-  private nkw jdField_a_of_type_Nkw;
+  private nrr jdField_a_of_type_Nrr;
+  private nrw jdField_a_of_type_Nrw;
   private String b = "";
   
   private void a()
@@ -32,11 +32,11 @@ public class JoinGroupTransitActivity
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         finish();
       }
-      this.jdField_a_of_type_Nkw = new nkw(this);
-      bfvp localbfvp = bfwg.a(this.app, this, this.jdField_a_of_type_JavaLangString);
-      this.b = localbfvp.b("activity_titile_name");
-      this.jdField_a_of_type_Long = Long.valueOf(localbfvp.b("group_code")).longValue();
-      this.jdField_a_of_type_Int = Integer.valueOf(localbfvp.b("subsource_id")).intValue();
+      this.jdField_a_of_type_Nrw = new nrw(this);
+      bheh localbheh = bhey.a(this.app, this, this.jdField_a_of_type_JavaLangString);
+      this.b = localbheh.b("activity_titile_name");
+      this.jdField_a_of_type_Long = Long.valueOf(localbheh.b("group_code")).longValue();
+      this.jdField_a_of_type_Int = Integer.valueOf(localbheh.b("subsource_id")).intValue();
       return;
     }
     catch (Exception localException)
@@ -59,16 +59,16 @@ public class JoinGroupTransitActivity
   {
     super.doOnCreate(paramBundle);
     a();
-    this.jdField_a_of_type_Nkr = new nkr(this, this.app, this.jdField_a_of_type_Int, this.b, new nkv(this));
-    this.jdField_a_of_type_Nkr.a();
-    this.jdField_a_of_type_Nkw.sendEmptyMessage(0);
+    this.jdField_a_of_type_Nrr = new nrr(this, this.app, this.jdField_a_of_type_Int, this.b, new nrv(this));
+    this.jdField_a_of_type_Nrr.a();
+    this.jdField_a_of_type_Nrw.sendEmptyMessage(0);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Nkr.b();
+    this.jdField_a_of_type_Nrr.b();
   }
   
   @Override

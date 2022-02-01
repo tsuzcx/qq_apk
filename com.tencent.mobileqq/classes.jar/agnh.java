@@ -1,12 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agnh
-  implements DialogInterface.OnClickListener
+  implements bkzq
 {
-  agnh(agne paramagne) {}
+  agnh(agnf paramagnf, agol paramagol, bkzi parambkzi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.cancel();
+      return;
+      admh.c(this.jdField_a_of_type_Agnf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agnf.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agnf.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agol.a.uniseq);
+    }
+  }
 }
 
 

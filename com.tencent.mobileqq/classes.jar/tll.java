@@ -1,10 +1,35 @@
-import kotlin.Metadata;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/OfflineBridgeInvokeHandler$Companion;", "", "()V", "BATCH_CHECK_UPDATE", "", "IS_CACHED", "NS_OFFLINE", "UPDATE_IF_NEED", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tll {}
+class tll
+  implements Animator.AnimatorListener
+{
+  tll(tli paramtli) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    tli.a(this.a).setVisibility(8);
+    tli.b(this.a).setVisibility(0);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a();
+    PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putLong("search_hotword_show_lasttime", System.currentTimeMillis()).commit();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tll
  * JD-Core Version:    0.7.0.1
  */

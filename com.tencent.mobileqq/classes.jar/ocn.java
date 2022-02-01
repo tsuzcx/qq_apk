@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class ocn
-  implements DialogInterface.OnClickListener
+class ocn
+  implements View.OnClickListener
 {
-  public ocn(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  ocn(obm paramobm, oji paramoji) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+    aahr.b((Activity)this.jdField_a_of_type_Obm.jdField_a_of_type_JavaLangRefWeakReference.get(), new aaht(this.jdField_a_of_type_Obm.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Obm.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Obm.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, obm.a(this.jdField_a_of_type_Obm));
+    obm.a(this.jdField_a_of_type_Obm, this.jdField_a_of_type_Oji.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

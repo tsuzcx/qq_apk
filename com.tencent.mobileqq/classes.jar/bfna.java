@@ -1,26 +1,15 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
 class bfna
-  implements View.OnClickListener
+  extends aahi
 {
-  bfna(bfmy parambfmy) {}
+  bfna(bfmz parambfmz, long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    int i = 2;
-    bhzm.b("NewUpgradeDialog", bhwn.a(10010, bfmy.a(), 2, 200));
-    bhwl.a().a(17, bhwn.a(10010, bfmy.a(), 4, 200));
-    this.a.dismiss();
-    ((Activity)this.a.a.get()).finish();
-    if (bfmy.a() == 2) {
-      i = 1;
-    }
-    bcef.b(null, "dc00898", "", "", "0X8008FFC", "0X8008FFC", i, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    bfmz.a(this.jdField_a_of_type_Bfmz, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_AndroidOsBundle, paramBoolean, paramInt, paramFileInfo);
   }
 }
 

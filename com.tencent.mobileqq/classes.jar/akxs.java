@@ -1,61 +1,22 @@
-import android.graphics.Color;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.qphone.base.util.QLog;
 
-public class akxs
-  extends Animation
+class akxs
+  implements IRedPacket.OnGetSkinListener
 {
-  private int jdField_a_of_type_Int;
-  private akxt jdField_a_of_type_Akxt;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  akxs(akxq paramakxq, Bundle paramBundle, ResultReceiver paramResultReceiver) {}
   
-  public akxs(ArrayList<Integer> paramArrayList)
+  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
   {
-    a(paramArrayList);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(ArrayList<Integer> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
-      return;
+    this.jdField_a_of_type_AndroidOsBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "getRedPacketBundle | info resPath = " + paramRedPacketInfoBase.resPath);
     }
-    float f = 1.0F / (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    int i = (int)(paramFloat / f);
-    f = (paramFloat - i * f) / f;
-    if (i == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-      i = this.jdField_a_of_type_JavaUtilArrayList.size() - 2;
-    }
-    for (;;)
-    {
-      int k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
-      int j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i + 1)).intValue();
-      i = j;
-      if (paramFloat < 1.0F)
-      {
-        i = (int)(Color.alpha(k) + (Color.alpha(j) - Color.alpha(k)) * f);
-        int m = (int)(Color.red(k) + (Color.red(j) - Color.red(k)) * f);
-        int n = (int)(Color.green(k) + (Color.green(j) - Color.green(k)) * f);
-        paramFloat = Color.blue(k);
-        i = Color.argb(i, m, n, (int)((Color.blue(j) - Color.blue(k)) * f + paramFloat));
-      }
-      this.jdField_a_of_type_Int = i;
-      if (this.jdField_a_of_type_Akxt == null) {
-        break;
-      }
-      this.jdField_a_of_type_Akxt.a(i);
-      return;
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, this.jdField_a_of_type_AndroidOsBundle);
     }
   }
 }

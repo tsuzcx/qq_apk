@@ -1,27 +1,30 @@
-import android.os.AsyncTask;
-
-class atld
-  extends df
+public class atld
 {
-  atld(atky paramatky) {}
+  public int a;
+  public String a;
   
-  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  public atld(String paramString, int paramInt)
   {
-    try
-    {
-      dc.a(this.a.a, paramAsyncTask, paramInt, new atle(this));
-      super.a(paramAsyncTask, paramInt);
-      return;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String a()
+  {
+    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.startsWith("[")) && (this.jdField_a_of_type_JavaLangString.endsWith("]"))) {
+      return this.jdField_a_of_type_JavaLangString.substring(1, this.jdField_a_of_type_JavaLangString.length() - 1);
     }
-    catch (Exception paramAsyncTask)
-    {
-      paramAsyncTask.printStackTrace();
-    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "" + this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atld
  * JD-Core Version:    0.7.0.1
  */

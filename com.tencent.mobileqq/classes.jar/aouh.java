@@ -1,6 +1,19 @@
-public abstract interface aouh
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+
+class aouh
+  implements bide
 {
-  public abstract void a(boolean paramBoolean);
+  aouh(aoug paramaoug, JumpActivity paramJumpActivity) {}
+  
+  public void onResult(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.b();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("extra_key_jump_src", 1);
+    ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, 1, localIntent);
+  }
 }
 
 

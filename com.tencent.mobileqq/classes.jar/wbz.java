@@ -1,61 +1,51 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertGroupId;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
 public class wbz
-  extends vqr<wca>
+  implements wbo
 {
-  public static final String a;
-  public List<String> a;
-  public int c;
+  private String a = "SimplePreloadListener";
   
-  static
+  public wbz(String paramString)
   {
-    jdField_a_of_type_JavaLangString = vpl.a("StoryGroupSvc.convert_group_id");
+    this.a = paramString;
   }
   
-  public String a()
+  public void a(String paramString, int paramInt1, int paramInt2, wbk paramwbk) {}
+  
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, wbk paramwbk)
   {
-    return jdField_a_of_type_JavaLangString;
+    if ((paramInt1 == 1) && (paramErrorMessage.errorCode == 14))
+    {
+      ykq.b(this.a, "download ignore because no mask pic url");
+      return;
+    }
+    ykq.d(this.a, "download error! vid = %s , fileType = %d , error = %s", new Object[] { paramString, Integer.valueOf(paramInt1), paramErrorMessage });
   }
   
-  public vqm a(byte[] paramArrayOfByte)
+  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, wbk paramwbk)
   {
-    qqstory_service.RspConvertGroupId localRspConvertGroupId = new qqstory_service.RspConvertGroupId();
-    try
-    {
-      localRspConvertGroupId.mergeFrom(paramArrayOfByte);
-      return new wca(localRspConvertGroupId);
+    paramString = ((wjp)wjs.a(5)).a(paramString);
+    if (paramString != null) {
+      wbl.a(paramString, paramFile.getAbsolutePath(), paramInt1);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      xvv.b("Q.qqstory.net:BatchNetHandler", a(), paramArrayOfByte);
-    }
-    return null;
   }
   
-  protected byte[] a()
+  public void a(String paramString, int paramInt, wbk paramwbk) {}
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, wbk paramwbk)
   {
-    qqstory_service.ReqConvertGroupId localReqConvertGroupId = new qqstory_service.ReqConvertGroupId();
-    localReqConvertGroupId.convert_from.set(this.c);
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        qqstory_struct.GroupId localGroupId = new qqstory_struct.GroupId();
-        localGroupId.group_uin.set(Long.valueOf(str).longValue());
-        localReqConvertGroupId.group_req_list.add(localGroupId);
-      }
+    ykq.a(this.a, "download success! vid = %s , fileType = %s , file path = %s", paramString, vzh.a(paramInt1), paramFile.getAbsolutePath());
+    paramString = ((wjp)wjs.a(5)).a(paramString);
+    if (paramString != null) {
+      wbl.a(paramString, paramFile.getAbsolutePath(), paramInt1, ykv.a(BaseApplicationImpl.getContext()));
     }
-    return localReqConvertGroupId.toByteArray();
+  }
+  
+  public void b(String paramString, int paramInt, wbk paramwbk)
+  {
+    ykq.a(this.a, "onPause! vid = %s , fileType = %d ", paramString, Integer.valueOf(paramInt));
   }
 }
 

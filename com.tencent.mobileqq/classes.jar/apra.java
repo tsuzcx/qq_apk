@@ -1,10 +1,8 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class apra
+public abstract interface apra
 {
-  public ProgressBar a;
-  public TextView a;
+  public abstract boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper);
 }
 
 

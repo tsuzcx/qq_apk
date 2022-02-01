@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afpl;
-import amwo;
+import aggp;
 import android.os.Bundle;
+import anzc;
 
 public class AIOSearchBarHelper$1
   implements Runnable
 {
-  public AIOSearchBarHelper$1(afpl paramafpl, Bundle paramBundle) {}
+  public AIOSearchBarHelper$1(aggp paramaggp, Bundle paramBundle) {}
   
   public void run()
   {
-    afpl.a(this.this$0).a(this.a.getString("uin"));
-    afpl.a(this.this$0).b(hashCode());
+    aggp.a(this.this$0).a(this.a.getString("uin"));
+    aggp.a(this.this$0).b(this.this$0.hashCode());
   }
 }
 

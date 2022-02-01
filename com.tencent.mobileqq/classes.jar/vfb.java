@@ -1,16 +1,20 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public class vfb
-  implements TextView.OnEditorActionListener
+class vfb
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public vfb(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  vfb(vfa paramvfa) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    return paramKeyEvent.getKeyCode() == 66;
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
+    {
+      vmp.d("WSMiniAppHelper", str + ", bundle: " + paramBundle.toString());
+      return;
+    }
   }
 }
 

@@ -1,28 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class akok
-  extends aknz
+  extends akmj
 {
-  public akok(Context paramContext)
+  akok(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    this.jdField_a_of_type_JavaLangString = amtj.a(2131697937);
-    this.b = this.jdField_a_of_type_JavaLangString;
+    super(paramNewPhotoListActivity);
   }
   
-  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public void initData(Intent paramIntent)
   {
-    if ((paramObject instanceof akok))
-    {
-      paramObject = (akok)paramObject;
-      paramObject.jdField_a_of_type_Bdyj.a(parambdyi.jdField_a_of_type_Bdyj);
-      return paramObject;
-    }
-    paramObject = new akok(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_Bdyj = new bdyj(parambdyi.jdField_a_of_type_Bdyj);
-    return paramObject;
+    super.initData(paramIntent);
+    ((akmq)this.mOtherCommonData).a = 6291456;
+    paramIntent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
   }
 }
 

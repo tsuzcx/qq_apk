@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.shareGroup.infocard;
 
-import xda;
+import xrv;
 
 public class QQStoryShareGroupProfileActivity$DeleteStoryVideoEventReceiver$1
   implements Runnable
 {
-  public QQStoryShareGroupProfileActivity$DeleteStoryVideoEventReceiver$1(xda paramxda, QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
+  public QQStoryShareGroupProfileActivity$DeleteStoryVideoEventReceiver$1(xrv paramxrv, QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
   
   public void run()
   {

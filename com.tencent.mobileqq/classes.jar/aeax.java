@@ -1,75 +1,19 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.35.1;
-import com.tencent.mobileqq.activity.QQSettingMe.35.2;
-import com.tencent.mobileqq.activity.QQSettingMe.35.3;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashSet;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import mqq.app.QQPermissionCallback;
 
 public class aeax
-  extends amsu
+  implements QQPermissionCallback
 {
-  public aeax(QQSettingMe paramQQSettingMe) {}
+  public aeax(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString) {}
   
-  protected void onGetStoreFace(boolean paramBoolean, HashSet<String> paramHashSet)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramHashSet.contains(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    }
+    bhdj.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (bftf.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.b(paramString);
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (bftf.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.35.1(this));
-    }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean2) && (paramBoolean1) && (this.a.c)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.35.2(this));
-    }
-  }
-  
-  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    int k = 0;
-    String str;
-    int i;
-    if ((paramBoolean) && (this.a.c) && (paramArrayOfString != null) && (paramArrayOfString.length > 0))
-    {
-      str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      i = 0;
-    }
-    for (;;)
-    {
-      int j = k;
-      if (str != null)
-      {
-        j = k;
-        if (i < paramArrayOfString.length)
-        {
-          if (!str.equals(paramArrayOfString[i])) {
-            break label97;
-          }
-          j = 1;
-        }
-      }
-      if (j != 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.35.3(this));
-      }
-      return;
-      label97:
-      i += 1;
-    }
+    FriendProfileImageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 

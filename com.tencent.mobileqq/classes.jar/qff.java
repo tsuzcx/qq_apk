@@ -1,118 +1,161 @@
-import android.content.Context;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.biz.pubaccount.readinjoy.model.DailyDynamicHeaderModule.1;
+import com.tencent.biz.pubaccount.readinjoy.model.DailyDynamicHeaderModule.2;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ExecutorService;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ReqBody;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspBody;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspChannelArticle;
 
 public class qff
-  implements ViewBase.OnClickListener
+  extends qhj
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private pvc jdField_a_of_type_Pvc;
-  private int b;
-  private int c;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   
-  public qff(pvc parampvc, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  public qff(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qxn paramqxn, Handler paramHandler)
   {
-    this.jdField_a_of_type_Pvc = parampvc;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqxn, paramHandler);
+    d();
   }
   
-  private int a(int paramInt)
+  public static JSONObject a()
   {
-    switch (paramInt)
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("ad_code", LbsManagerService.getCityCode());
+    localJSONObject.put("city_name", LbsManagerService.getProvince() + " " + LbsManagerService.getCity());
+    return localJSONObject;
+  }
+  
+  static JSONObject a(boolean paramBoolean)
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = a();
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
     {
-    case 1112: 
-    default: 
-      return 0;
-    case 1113: 
-      return 1;
+      localJSONObject2.put("req_type", i);
+      localJSONObject1.put("dynamic_header_req_param", localJSONObject2);
+      return localJSONObject1;
     }
-    return 2;
+  }
+  
+  private void c()
+  {
+    oidb_cmd0x68b.ReqBody localReqBody = new oidb_cmd0x68b.ReqBody();
+    long l = Long.valueOf(pkh.a()).longValue();
+    localReqBody.uint64_uin.set(l);
+    localReqBody.uint32_network_type.set(qer.a());
+    try
+    {
+      Object localObject = new JSONArray();
+      ((JSONArray)localObject).put(a(false));
+      localObject = ((JSONArray)localObject).toString();
+      if (QLog.isColorLevel()) {
+        QLog.d("DynamicHeaderModule", 2, "[requestForUpdate] req: " + (String)localObject);
+      }
+      localReqBody.bytes_nearby_cookie.set(ByteStringMicro.copyFromUtf8((String)localObject));
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("DynamicHeaderModule", 1, "[requestForUpdate] ", localException);
+      }
+    }
+    a(qxp.a("OidbSvc.0xcba", 3258, 0, localReqBody.toByteArray()));
+  }
+  
+  private void d()
+  {
+    String str = (String)bmhv.a("sp_key_daily_dynamic_header_data", "");
+    QLog.i("DynamicHeaderModule", 1, "[startLoadFromDisk] json=" + str);
+    if (!TextUtils.isEmpty(str)) {
+      a(str);
+    }
   }
   
   public void a()
   {
-    int k = this.jdField_a_of_type_Int;
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pvc.a();
-    int i;
-    if (localArticleInfo != null)
+    c();
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    oidb_cmd0x68b.RspBody localRspBody = new oidb_cmd0x68b.RspBody();
+    int i = pjz.a(paramToServiceMsg, paramFromServiceMsg, paramObject, localRspBody, false);
+    QLog.i("DynamicHeaderModule", 1, "[onReceive] result=" + i);
+    if (i == 0)
     {
-      if (!localArticleInfo.hasChannelInfo()) {
-        break label148;
+      if ((localRspBody.rspChannelArticle.has()) && (localRspBody.rspChannelArticle.get() != null))
+      {
+        paramToServiceMsg = (oidb_cmd0x68b.RspChannelArticle)localRspBody.rspChannelArticle.get();
+        if ((paramToServiceMsg.bytes_nearby_cookie.has()) && (paramToServiceMsg.bytes_nearby_cookie.get() != null))
+        {
+          paramToServiceMsg = paramToServiceMsg.bytes_nearby_cookie.get().toStringUtf8();
+          bmhv.a("sp_key_daily_dynamic_header_data", paramToServiceMsg);
+          a(paramToServiceMsg);
+        }
       }
-      i = localArticleInfo.mChannelInfoId;
-      if (!TextUtils.isEmpty(localArticleInfo.mArticleFriendLikeText)) {
-        break label153;
-      }
-    }
-    label148:
-    label153:
-    for (int j = 0;; j = 1)
-    {
-      String str = pay.d(localArticleInfo);
-      odq.a(null, "CliOper", "", localArticleInfo.mSubscribeID, "0X8007625", "0X8007625", 0, 0, Long.toString(localArticleInfo.mFeedId), Long.toString(localArticleInfo.mArticleID), Integer.toString(localArticleInfo.mStrategyId), pay.a(localArticleInfo.mAlgorithmID, pay.a(localArticleInfo), k, i, j, NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidContentContext), str, localArticleInfo.mStrCircleId, localArticleInfo.innerUniqueID, pay.f(localArticleInfo), localArticleInfo), false);
-      uhz.a(localArticleInfo, k);
       return;
-      i = 0;
-      break;
+    }
+    bmhv.a("sp_key_daily_dynamic_header_data", "");
+    ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderModule.2(this));
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool = true;
+    QLog.i("DynamicHeaderModule", 1, "[updateDynamicHeaderData] jsonString=" + paramString);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString).optJSONObject("dynamic_header_data");
+        paramString = this.jdField_a_of_type_OrgJsonJSONObject;
+        if (paramString == null) {
+          break label80;
+        }
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          label80:
+          QLog.e("DynamicHeaderModule", 1, "[updateDynamicHeaderData] ", paramString);
+          this.jdField_a_of_type_OrgJsonJSONObject = null;
+          bool = false;
+        }
+      }
+      ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderModule.1(this, bool));
+      return;
+      bool = false;
     }
   }
   
-  public void onClick(ViewBase paramViewBase)
+  public JSONObject b()
   {
-    if ((this.jdField_a_of_type_Pvc == null) || (this.jdField_a_of_type_Pvc.a() == null) || (this.jdField_a_of_type_Pvc.a().mSmallMiniGameInfo == null)) {
-      return;
-    }
-    String str = "";
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pvc.a();
-    switch (this.c)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-    default: 
-      paramViewBase = "";
-    case 1115: 
-    case 1112: 
-    case 1113: 
-    case 1114: 
-      for (;;)
-      {
-        if ((!TextUtils.isEmpty(paramViewBase)) && (!TextUtils.isEmpty(str)) && (!MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramViewBase, 2103, null)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("OnSmallGameCardClickListener", 0, "mini game url error jump by appid url = " + paramViewBase);
-          }
-          MiniAppLauncher.launchMiniAppById(this.jdField_a_of_type_AndroidContentContext, str, null, null, null, null, 2103);
-        }
-        a();
-        return;
-        obb.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo, this.jdField_a_of_type_Pvc.g(), this.b, obb.jdField_a_of_type_Int);
-        paramViewBase = localArticleInfo.mSmallMiniGameInfo.b(this.b);
-        str = localArticleInfo.mSmallMiniGameInfo.a(this.b);
-        continue;
-        int i = a(this.c);
-        obb.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo, this.jdField_a_of_type_Pvc.g(), i, obb.jdField_a_of_type_Int);
-        paramViewBase = localArticleInfo.mSmallMiniGameInfo.b(i);
-        str = localArticleInfo.mSmallMiniGameInfo.a(i);
-      }
-    }
-    nzz localnzz = new nzz().a(501L).b(50101L).c(5010105L).d(9L);
-    if (localArticleInfo.mSmallMiniGameInfo.a()) {}
-    for (paramViewBase = "3";; paramViewBase = "2")
-    {
-      paramViewBase = localnzz.h(paramViewBase).i(String.valueOf(this.b)).a();
-      obb.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
-      pay.d(this.jdField_a_of_type_AndroidContentContext, localArticleInfo.mSmallMiniGameInfo.a);
-      paramViewBase = "";
-      break;
+      JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
+      return localJSONObject;
     }
   }
+  
+  public void b() {}
 }
 
 

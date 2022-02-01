@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
-final class agcx
-  implements aghk
+class agcx
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if ((paramChatMessage instanceof MessageForLongTextMsg)) {
-      return 63;
-    }
-    if ((paramChatMessage instanceof MessageForWantGiftMsg)) {
-      return 72;
-    }
-    if ((paramChatMessage.vipBubbleID == 100000L) && (!paramChatMessage.isSend())) {
-      return 9;
-    }
-    return 0;
-  }
+  int jdField_a_of_type_Int;
+  WeakReference<Bitmap> jdField_a_of_type_JavaLangRefWeakReference;
+  boolean jdField_a_of_type_Boolean;
+  int b;
+  
+  agcx(agcw paramagcw) {}
 }
 
 

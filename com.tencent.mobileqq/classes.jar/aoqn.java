@@ -1,26 +1,14 @@
-import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager;
+import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager.ScanSpaceTask;
 
-class aoqn
-  extends aoqo
+public class aoqn
+  implements aerk
 {
-  private aoqn()
-  {
-    super(null);
-  }
+  public aoqn(ScanSpaceManager.ScanSpaceTask paramScanSpaceTask) {}
   
-  public String a()
+  public void a(int paramInt)
   {
-    return "GetUIN";
-  }
-  
-  public void a(aopk paramaopk, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    paramVariantWrapper.SetString(aori.a());
-  }
-  
-  public boolean b()
-  {
-    return true;
+    ScanSpaceManager.a(this.a.this$0, paramInt);
   }
 }
 

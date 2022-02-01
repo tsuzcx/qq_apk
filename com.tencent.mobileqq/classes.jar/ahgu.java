@@ -1,74 +1,28 @@
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
-import com.tencent.widget.XPanelContainer;
-import java.util.HashMap;
 
-class ahgu
+public class ahgu
   implements View.OnClickListener
 {
-  ahgu(ahgc paramahgc) {}
+  public ahgu(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, boolean paramBoolean1, boolean paramBoolean2, QQAppInterface paramQQAppInterface) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Bhar == null) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c != 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c <= 300L)) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      Object localObject = this.a.jdField_a_of_type_Bhar.a();
-      if (localObject != null)
-      {
-        HashMap localHashMap = ((bhaq)localObject).b();
-        localObject = ((bhaq)localObject).a();
-        if (paramView == this.a.jdField_a_of_type_AndroidWidgetImageView)
-        {
-          if (this.a.input.getVisibility() != 0)
-          {
-            if (localHashMap != null) {
-              this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
-            }
-            this.a.input.setVisibility(0);
-            this.a.mFunBtn.setVisibility(0);
-            this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-            ahgc.a(this.a).a(25);
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel != null) && (localObject != null)) {
-              this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.setBackgroundColor(((Integer)((HashMap)localObject).get("quickWordBgColor")).intValue());
-            }
-          }
-          else
-          {
-            if (localHashMap != null) {
-              this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localHashMap.get("textIcon"));
-            }
-            this.a.input.setVisibility(4);
-            this.a.mFunBtn.setVisibility(4);
-            this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-            this.a.hideAllPanels();
-          }
-        }
-        else if (paramView == this.a.b) {
-          if (ahgc.b(this.a).a() != 3)
-          {
-            this.a.onPanelIconClick(Integer.valueOf(3));
-            if (localHashMap != null) {
-              this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
-            }
-            this.a.input.setVisibility(0);
-            this.a.mFunBtn.setVisibility(0);
-            this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-          }
-          else
-          {
-            this.a.hideAllPanels();
-          }
-        }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.c = System.currentTimeMillis();
+      if ((this.jdField_a_of_type_Boolean) && (this.b)) {
+        bczv.a().a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      } else {
+        QLog.d("ShortVideoRealItemBuilder", 1, String.format("not support dance Pendant, codec[%s], entry[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b) }));
       }
     }
   }

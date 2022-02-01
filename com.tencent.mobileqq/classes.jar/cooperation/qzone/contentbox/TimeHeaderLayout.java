@@ -14,7 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bkyt;
+import bmkt;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -91,17 +91,17 @@ public class TimeHeaderLayout
   private void init()
   {
     this.handler = new Handler(Looper.getMainLooper());
-    LayoutInflater.from(getContext()).inflate(2131562359, this, true);
+    LayoutInflater.from(getContext()).inflate(2131562429, this, true);
     this.preferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_time_capsule", 0);
-    this.timeCapsule = findViewById(2131378619);
-    this.avatarView = ((ImageView)findViewById(2131363126));
-    this.registerDyasView = ((TextView)findViewById(2131375659));
-    this.loginDaysView = ((TextView)findViewById(2131375154));
-    this.vistorView = ((TextView)findViewById(2131375733));
-    this.mLayoutVisitor = ((LinearLayout)findViewById(2131369781));
+    this.timeCapsule = findViewById(2131378913);
+    this.avatarView = ((ImageView)findViewById(2131363145));
+    this.registerDyasView = ((TextView)findViewById(2131375901));
+    this.loginDaysView = ((TextView)findViewById(2131375396));
+    this.vistorView = ((TextView)findViewById(2131375975));
+    this.mLayoutVisitor = ((LinearLayout)findViewById(2131369950));
     this.mLayoutVisitor.setOnClickListener(this);
-    findViewById(2131378619).setOnClickListener(this);
-    bkyt.a(9, 1);
+    findViewById(2131378913).setOnClickListener(this);
+    bmkt.a(9, 1);
   }
   
   private void onDetailClick(TimeHeaderLayout.HeadInfo paramHeadInfo)
@@ -109,7 +109,7 @@ public class TimeHeaderLayout
     LpReportInfo_dc02880 localLpReportInfo_dc02880 = new LpReportInfo_dc02880(7, 3);
     LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc02880, false, true);
     if ((this.onDetailClickListner != null) && (paramHeadInfo != null)) {
-      this.onDetailClickListner.onDetailClick(paramHeadInfo.jumpUrl, 2131378619);
+      this.onDetailClickListner.onDetailClick(paramHeadInfo.jumpUrl, 2131378913);
     }
   }
   
@@ -163,8 +163,8 @@ public class TimeHeaderLayout
         if (QLog.isColorLevel()) {
           QLog.i("QZoneMsg", 0, " jump url = " + str);
         }
-        bkyt.a(9, 2);
-        this.onDetailClickListner.onDetailClick(str, 2131369781);
+        bmkt.a(9, 2);
+        this.onDetailClickListner.onDetailClick(str, 2131369950);
       }
     }
   }

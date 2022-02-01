@@ -1,23 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
 public class tpd
-  implements View.OnSystemUiVisibilityChangeListener
+  extends AnimatorListenerAdapter
 {
-  public tpd(ViolaLazyFragment paramViolaLazyFragment) {}
+  public tpd(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramInt = this.a.getActivity().getWindow().getDecorView().getSystemUiVisibility();
-    this.a.getActivity().getWindow().getDecorView().setSystemUiVisibility(paramInt | 0x2 | 0x400);
+    ReadInJoyDynamicGridView.b(this.a, false);
+    ReadInJoyDynamicGridView.a(this.a);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ReadInJoyDynamicGridView.b(this.a, true);
+    ReadInJoyDynamicGridView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tpd
  * JD-Core Version:    0.7.0.1
  */

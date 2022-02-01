@@ -1,139 +1,51 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextSendViewHelper.4;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 
 public class ahsx
-  extends ahsq
+  extends azky
 {
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new ahsy(this);
-  private Button b;
+  public ahsx(AIOImageProviderService paramAIOImageProviderService, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString) {}
   
-  public ahsx(ahsj paramahsj, QQAppInterface paramQQAppInterface, SharedPreferences paramSharedPreferences)
+  public void a(int paramInt, azkf paramazkf)
   {
-    super(paramQQAppInterface, paramahsj);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    a().d(paramBoolean);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(paramBoolean);
-  }
-  
-  private boolean b()
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("businessinfo_ptt_vt_send_type_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-    }
-    return bool;
-  }
-  
-  private void c(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("businessinfo_ptt_vt_send_type_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramBoolean).commit();
-    }
-  }
-  
-  private void e()
-  {
-    if (a().a())
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Ahts;
+    if (localObject != null)
     {
-      ahtf.a("0X800A1D8", 2, 0);
-      return;
+      if (paramazkf.jdField_a_of_type_Int != 0) {
+        break label139;
+      }
+      ((ahts)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramazkf.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
     }
-    ahtf.a("0X800A1D8", 1, 0);
-  }
-  
-  private void f()
-  {
-    if (a().a())
+    for (;;)
     {
-      ahtf.a("0X800A1D9", 2, 0);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Ahtb;
+      if (localObject != null)
+      {
+        if (paramazkf.jdField_a_of_type_Int != 0) {
+          break;
+        }
+        ((ahtb)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramazkf.jdField_a_of_type_Boolean);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      }
       return;
+      label139:
+      ((ahts)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramazkf.jdField_a_of_type_Azkb.jdField_a_of_type_JavaLangString + ", desc:" + paramazkf.jdField_a_of_type_Azkb.b, paramazkf.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
     }
-    ahtf.a("0X800A1D9", 1, 0);
+    ((ahtb)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramazkf.jdField_a_of_type_Azkb.jdField_a_of_type_JavaLangString + ", desc:" + paramazkf.jdField_a_of_type_Azkb.b, paramazkf.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
   }
   
-  private void g()
+  public void a_(int paramInt, boolean paramBoolean)
   {
-    if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-      this.b.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167045));
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Ahts;
+    if (localObject != null) {
+      ((ahts)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
     }
-  }
-  
-  private void h()
-  {
-    View localView = (View)this.jdField_a_of_type_AndroidWidgetCheckBox.getParent();
-    localView.post(new VoiceTextSendViewHelper.4(this, ScreenUtil.dip2px(8.0F), localView));
-  }
-  
-  public void a()
-  {
-    b(false);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131718138);
-  }
-  
-  public void a(VoiceTextPanel paramVoiceTextPanel)
-  {
-    super.a(paramVoiceTextPanel);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramVoiceTextPanel.findViewById(2131377065));
-    this.b = ((Button)paramVoiceTextPanel.findViewById(2131364175));
-    this.b.setOnClickListener(new ahsz(this));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahta(this));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramVoiceTextPanel.findViewById(2131364530));
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-    h();
-    g();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetButton.isEnabled();
-  }
-  
-  public void c()
-  {
-    boolean bool = b();
-    b(true);
-    if (bool)
-    {
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      a().c(true);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131718140);
-      a(true);
-      return;
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Ahtb;
+    if (localObject != null) {
+      ((ahtb)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
     }
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-    a().c(false);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131718138);
-    a(false);
-  }
-  
-  public void d()
-  {
-    a(true);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-    a().c(true);
   }
 }
 

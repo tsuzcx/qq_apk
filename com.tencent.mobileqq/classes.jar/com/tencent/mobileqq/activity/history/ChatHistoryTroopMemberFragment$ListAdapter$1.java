@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.history;
 
-import ajae;
+import ajvt;
 
 public class ChatHistoryTroopMemberFragment$ListAdapter$1
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$ListAdapter$1(ajae paramajae) {}
+  public ChatHistoryTroopMemberFragment$ListAdapter$1(ajvt paramajvt) {}
   
   public void run()
   {

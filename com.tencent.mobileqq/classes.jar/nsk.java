@@ -1,30 +1,25 @@
-import android.content.Intent;
-import android.net.Uri;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.data.EqqDetail;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nsk
-  implements bjoe
+  implements View.OnClickListener
 {
-  public nsk(EqqAccountDetailActivity paramEqqAccountDetailActivity, bjnw parambjnw, String paramString) {}
+  public nsk(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bjnw.dismiss();
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a == null);
-      npt.a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a.name, EqqAccountDetailActivity.m(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "IvrEnterpriseDetailEngineFalse");
-      return;
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    String str2 = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getText().toString();
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_cancel", str1, "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

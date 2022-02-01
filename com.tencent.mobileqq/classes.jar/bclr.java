@@ -1,43 +1,17 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
-class bclr
-  extends URLDrawableDownListener.Adapter
+public class bclr
+  extends bclv
 {
-  bclr(bclp parambclp) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public bclr(GroupSearchEngine paramGroupSearchEngine, bclw parambclw, String paramString, int paramInt)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadCancelled");
-    }
+    super(paramGroupSearchEngine, parambclw, paramString, paramInt);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public bcfi a(List<bcfj> paramList, String paramString)
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView.setBackgroundDrawable(paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadSuccessed");
-    }
+    return new bcfb(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import awor;
+import axut;
 
 class NearbyAppInterface$3
   implements Runnable

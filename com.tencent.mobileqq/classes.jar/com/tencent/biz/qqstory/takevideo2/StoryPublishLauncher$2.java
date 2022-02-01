@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.takevideo2;
 
-import blvn;
-import bmbx;
-import dov.com.qq.im.ae.download.AEResInfo;
-import ynm;
+import bnkt;
+import bnku;
+import bnrh;
+import zcf;
 
 public class StoryPublishLauncher$2
   implements Runnable
 {
-  public StoryPublishLauncher$2(ynm paramynm) {}
+  public StoryPublishLauncher$2(zcf paramzcf) {}
   
   public void run()
   {
-    bmbx.b("Q.qqstory.publish.StoryPublishLauncher", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
-    blvn.a().a(AEResInfo.AE_RES_BASE_PACKAGE, null, false);
-    blvn.a().a(AEResInfo.AE_RES_ADDITIONAL_PACKAGE, null, true);
+    bnrh.b("Q.qqstory.publish.StoryPublishLauncher", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
+    bnku.a().a(bnkt.b, null, false);
+    bnku.a().a(bnkt.c, null, true);
   }
 }
 

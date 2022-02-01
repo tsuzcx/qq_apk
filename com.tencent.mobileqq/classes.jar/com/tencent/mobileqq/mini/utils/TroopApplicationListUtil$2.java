@@ -3,74 +3,42 @@ package com.tencent.mobileqq.mini.utils;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bgyr;
+import bijj;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 final class TroopApplicationListUtil$2
   extends Handler
 {
-  TroopApplicationListUtil$2(Looper paramLooper, AsyncResult paramAsyncResult)
+  TroopApplicationListUtil$2(Looper paramLooper, String paramString1, String paramString2)
   {
     super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    if ((paramMessage.obj instanceof bgyr))
+    if ((paramMessage.obj instanceof bijj))
     {
-      paramMessage = (bgyr)paramMessage.obj;
-      if (paramMessage.c == 0)
-      {
-        int i;
+      paramMessage = (bijj)paramMessage.obj;
+      if (paramMessage.c == 0) {
         try
         {
-          if (paramMessage.d == null) {
-            break label203;
-          }
           QLog.d("TroopApplicationListUtil", 1, new Object[] { "handleMessage cgiState.htmlBody: ", paramMessage.d });
-          i = new JSONObject(paramMessage.d).optInt("ec", -1);
-          paramMessage = new JSONObject();
-          if (i == 44012)
-          {
-            paramMessage.put("isExisted", true);
-            paramMessage.put("errorCode", i);
-            this.val$listener.onReceiveResult(true, paramMessage);
-            return;
-          }
-          if (i == 0)
-          {
-            paramMessage.put("isExisted", false);
-            paramMessage.put("errorCode", i);
-            this.val$listener.onReceiveResult(true, paramMessage);
-            return;
-          }
-        }
-        catch (JSONException paramMessage)
-        {
-          QLog.e("TroopApplicationListUtil", 1, "handleMessage addMiniAppToTroopApplicationList exception ", paramMessage);
-          this.val$listener.onReceiveResult(false, null);
+          int i = new JSONObject(paramMessage.d).optInt("ec", -1);
+          TroopApplicationListUtil.showToast(i);
+          TroopApplicationListUtil.access$000(i, this.val$groupUin, this.val$appId);
           return;
         }
-        paramMessage.put("errorCode", i);
-        if (i == 44004) {
-          paramMessage.put("errMsg", "not group manager");
+        catch (Exception paramMessage)
+        {
+          QLog.e("TroopApplicationListUtil", 1, "handleMessage addMiniAppToTroopApplicationList exception ", paramMessage);
+          return;
         }
-        this.val$listener.onReceiveResult(false, paramMessage);
-        return;
-        label203:
-        QLog.e("TroopApplicationListUtil", 1, "native error, htmlBody is null");
-        this.val$listener.onReceiveResult(false, null);
-        return;
       }
-      QLog.e("TroopApplicationListUtil", 1, "handleMessage addMiniAppToTroopApplicationList ,resultCode : " + paramMessage.c);
-      this.val$listener.onReceiveResult(false, null);
+      QLog.d("TroopApplicationListUtil", 1, new Object[] { "handleMessage cgiState.resultCode: ", Integer.valueOf(paramMessage.c) });
       return;
     }
     QLog.e("TroopApplicationListUtil", 1, new Object[] { "handleMessage addMiniAppToTroopApplicationList ", " invalid msg.obj" });
-    this.val$listener.onReceiveResult(false, null);
   }
 }
 

@@ -1,16 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import Wallet.IdiomRedPackMatchRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class akqk
-  implements DialogInterface.OnClickListener
+class akqk
+  implements BusinessObserver
 {
-  public akqk(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  akqk(akqj paramakqj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a("608", "7", "2", true);
-    EditLocalVideoActivity.a(this.a, "an_yuanshipin");
+    if (paramInt == 26)
+    {
+      paramBundle = (IdiomRedPackMatchRsp)paramBundle.getSerializable("rsp");
+      if ((QLog.isColorLevel()) && (paramBundle != null)) {
+        QLog.d("PasswdRedBagManager", 2, "openSolitaireRedBagByIdiom reportObserver: " + paramBoolean + "|status: " + paramBundle.status + " |hbIdiom： " + paramBundle.hbIdiom + " |hbIdiomLastPY: " + paramBundle.hbIdiomLastPY + " |idiomSeq: " + paramBundle.idiomSeq + " |subchannel: " + paramBundle.subchannel);
+      }
+      if ((paramBoolean) && (paramBundle != null))
+      {
+        if (paramBundle.status != 0) {
+          break label163;
+        }
+        this.a.jdField_a_of_type_Akqe.a(this.a.jdField_a_of_type_Akqd.jdField_a_of_type_JavaLangString, paramBundle.hbIdiom, paramBundle.hbIdiomLastPY, paramBundle.idiomSeq, paramBundle.hbPoemRule);
+      }
+    }
+    label163:
+    do
+    {
+      return;
+      if (paramBundle.status == 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("PasswdRedBagManager", 2, "sessionInfo.curType: " + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+        }
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 0) {
+          this.a.jdField_a_of_type_Akqe.a(this.a.jdField_a_of_type_Akqd.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+        }
+        Bundle localBundle = new Bundle();
+        localBundle.putString("answer", this.a.jdField_a_of_type_JavaLangString);
+        localBundle.putInt("subchannel", paramBundle.subchannel);
+        this.a.jdField_a_of_type_Akqe.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_Akqd, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int, localBundle);
+        return;
+      }
+    } while (paramBundle.status != 2);
+    long l = NetConnInfoCenter.getServerTime();
+    akrn.a(akqe.a(this.a.jdField_a_of_type_Akqe).getCurrentAccountUin(), "idiom_match_in_phone", l + paramBundle.timeInterval);
   }
 }
 

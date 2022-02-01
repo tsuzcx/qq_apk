@@ -1,20 +1,100 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class sey
-  implements Animation.AnimationListener
+public abstract class sey<T>
+  implements spv
 {
-  sey(sex paramsex) {}
+  protected abstract String a();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected abstract List<T> a();
+  
+  public List<spw> a(int paramInt, boolean paramBoolean)
   {
-    sex.a(this.a).startAnimation(sex.a(this.a));
+    ArrayList localArrayList = new ArrayList();
+    if (paramInt >= 0)
+    {
+      List localList = a();
+      int i = paramInt;
+      if (b()) {
+        i = paramInt - 1;
+      }
+      a(i, paramBoolean, localList, localArrayList);
+      b(i, paramBoolean, localList, localArrayList);
+    }
+    return localArrayList;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected abstract spn a();
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected abstract spw a(T paramT);
+  
+  protected void a(int paramInt, boolean paramBoolean, List<T> paramList, List<spw> paramList1)
+  {
+    int j = paramInt + 1;
+    int i = 0;
+    int k = 0;
+    paramList1.size();
+    if (j < paramList.size())
+    {
+      int m = Math.min(srr.a().a(a(), paramInt) + paramInt, paramList.size() - 1);
+      paramInt = k;
+      for (;;)
+      {
+        i = paramInt;
+        if (j > m) {
+          break;
+        }
+        paramList1.add(a(paramList.get(j)));
+        j += 1;
+        paramInt += 1;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DefaultVideoPreDownloadController", 2, "scroll to next = " + paramBoolean + " preDownload to forward = " + i);
+    }
+  }
+  
+  public boolean a()
+  {
+    return srr.a().a(a());
+  }
+  
+  protected void b(int paramInt, boolean paramBoolean, List<T> paramList, List<spw> paramList1)
+  {
+    int m = 0;
+    int k = 0;
+    int j = paramInt - 1;
+    paramList1.size();
+    int i = m;
+    if (j >= 0)
+    {
+      i = m;
+      if (j < paramList.size())
+      {
+        m = Math.max(paramInt - srr.a().a(), 0);
+        paramInt = k;
+        for (;;)
+        {
+          i = paramInt;
+          if (j < m) {
+            break;
+          }
+          paramList1.add(a(paramList.get(j)));
+          j -= 1;
+          paramInt += 1;
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DefaultVideoPreDownloadController", 2, "scroll to next = " + paramBoolean + " preDownload to backward = " + i);
+    }
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
 }
 
 

@@ -1,20 +1,17 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
 public class tcp
-  implements TypeEvaluator<Rect>
+  extends View.AccessibilityDelegate
 {
-  public tcp(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
+  public tcp(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
-  public int a(int paramInt1, int paramInt2, float paramFloat)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
-  }
-  
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
-  {
-    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
+    if (paramInt != 4096) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
   }
 }
 

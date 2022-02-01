@@ -1,28 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
 class asvd
-  implements avpj
+  implements Animation.AnimationListener
 {
-  asvd(asuz paramasuz) {}
+  asvd(asvc paramasvc) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
-      } while (asuz.a(this.a));
-      asuz.b(this.a);
-      return;
-      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_LOSS");
-    } while (!asuz.a(this.a));
-    asuz.a(this.a);
+    this.a.a.c.setVisibility(8);
+    this.a.a.a = false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

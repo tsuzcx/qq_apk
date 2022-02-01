@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-
 public class alst
-  implements alsz
 {
-  public alst(CmGameDebugView paramCmGameDebugView) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void a()
+  public alst(int paramInt, String paramString1, String paramString2)
   {
-    this.a.b();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

@@ -1,16 +1,10 @@
-import android.view.View;
+import android.graphics.Bitmap;
 
-class agbz
-  implements atah
+public abstract interface agbz
 {
-  agbz(agap paramagap) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void onClick(View paramView)
-  {
-    paramView = asld.a();
-    aszt.c(this.a.a, paramView);
-    aszr.a("0X8007FA2");
-  }
+  public abstract void a(String paramString, long paramLong, Bitmap paramBitmap);
 }
 
 

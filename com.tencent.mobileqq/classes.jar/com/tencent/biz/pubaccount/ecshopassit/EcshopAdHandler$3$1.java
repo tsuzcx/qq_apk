@@ -1,23 +1,24 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
-import oge;
-import ogg;
-import ogh;
+import onx;
+import onz;
+import ooa;
 
 public class EcshopAdHandler$3$1
   implements Runnable
 {
-  public EcshopAdHandler$3$1(ogg paramogg, Object paramObject) {}
+  public EcshopAdHandler$3$1(onz paramonz, Object paramObject) {}
   
   public void run()
   {
     ChatMessage localChatMessage = (ChatMessage)this.a;
-    oge localoge = (oge)this.this$0.a.getBusinessHandler(139);
-    ogh localogh = new ogh();
-    localogh.a = 10;
-    localoge.a(oge.a(localogh, localChatMessage), null);
+    onx localonx = (onx)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.ESHOP_AD_HANDLER);
+    ooa localooa = new ooa();
+    localooa.a = 10;
+    localonx.a(onx.a(localooa, localChatMessage), null);
   }
 }
 

@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileBaseFavFileTabView;
 
 public class atbu
-  implements bhnm
+  extends atce
 {
-  public atbu(QfileEditBottomBar paramQfileEditBottomBar) {}
+  public atbu(QfileBaseFavFileTabView paramQfileBaseFavFileTabView) {}
   
   public void a(int paramInt)
   {
-    QfileEditBottomBar.a(this.a);
+    this.a.b(paramInt);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.a.a(paramBundle);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.a.a(paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbu
  * JD-Core Version:    0.7.0.1
  */

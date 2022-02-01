@@ -1,0 +1,144 @@
+package com.tencent.mobileqq.mini.entry.desktop;
+
+import android.app.Activity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import anvx;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
+import com.tencent.mobileqq.mini.entry.desktop.item.DesktopMostCommonlyUsedInfo;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
+
+class MiniAppDesktopAdapter$DesktopMostCommonlyUsedViewHolder
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
+{
+  private WeakReference<Activity> activityReference;
+  private ImageView addBtn;
+  private View backgroundView;
+  private ImageView closeBtn;
+  private TextView helpInfo;
+  private ImageView icon;
+  private MiniAppInfo miniAppInfo;
+  public int state = -1;
+  private TextView title;
+  
+  public MiniAppDesktopAdapter$DesktopMostCommonlyUsedViewHolder(View paramView, WeakReference<Activity> paramWeakReference)
+  {
+    super(paramView);
+    this.activityReference = paramWeakReference;
+    this.backgroundView = paramView.findViewById(2131371188);
+    this.icon = ((ImageView)paramView.findViewById(2131371191));
+    this.title = ((TextView)paramView.findViewById(2131371194));
+    this.helpInfo = ((TextView)paramView.findViewById(2131371190));
+    this.addBtn = ((ImageView)paramView.findViewById(2131371187));
+    this.closeBtn = ((ImageView)paramView.findViewById(2131371189));
+    this.helpInfo.setText(anvx.a(2131706366));
+    this.backgroundView.setOnClickListener(this);
+    this.addBtn.setOnClickListener(this);
+    this.closeBtn.setOnClickListener(this);
+  }
+  
+  private void onAddBtnClicked()
+  {
+    if (this.miniAppInfo == null) {
+      return;
+    }
+    this.state = 1;
+    setAllVisibility(8);
+    DesktopDataManager localDesktopDataManager = (DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
+    localDesktopDataManager.addAppToMyApp(this.miniAppInfo);
+    MiniAppCmdUtil.getInstance().setUserAppTop(this.miniAppInfo.appId, 1, this.miniAppInfo.verType, null, new MiniAppDesktopAdapter.DesktopMostCommonlyUsedViewHolder.1(this));
+    localDesktopDataManager.removeAppByModuleType(this.miniAppInfo.appId, 8);
+    MiniProgramLpReportDC04239.reportAsync("desktop", "add", "add_commonly", null);
+  }
+  
+  private void onCloseBtnClicked()
+  {
+    this.state = 2;
+    setAllVisibility(8);
+    rejectFrequentlyRecommends();
+    ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).removeAppByModuleType(this.miniAppInfo.appId, 8);
+    MiniProgramLpReportDC04239.reportAsync("desktop", "commonly", "close", null);
+  }
+  
+  private void onOtherClicked()
+  {
+    if (this.miniAppInfo == null) {
+      return;
+    }
+    this.state = 3;
+    MiniAppDesktopAdapter.startMiniApp((Activity)this.activityReference.get(), this.miniAppInfo, 3027);
+    MiniProgramLpReportDC04239.reportAsync("desktop", "commonly", "click", null);
+  }
+  
+  private void setAllVisibility(int paramInt)
+  {
+    if (this.backgroundView != null) {
+      this.backgroundView.setVisibility(paramInt);
+    }
+  }
+  
+  public void bindView(DesktopMostCommonlyUsedInfo paramDesktopMostCommonlyUsedInfo)
+  {
+    if ((paramDesktopMostCommonlyUsedInfo == null) || (paramDesktopMostCommonlyUsedInfo.appInfo == null)) {
+      return;
+    }
+    this.miniAppInfo = paramDesktopMostCommonlyUsedInfo.appInfo;
+    this.icon.setImageDrawable(MiniAppUtils.getIcon(this.icon.getContext(), this.miniAppInfo.iconUrl, true));
+    String str = this.miniAppInfo.name;
+    paramDesktopMostCommonlyUsedInfo = str;
+    if (str != null)
+    {
+      paramDesktopMostCommonlyUsedInfo = str;
+      if (str.length() >= 7) {
+        paramDesktopMostCommonlyUsedInfo = str.substring(0, 5) + "...";
+      }
+    }
+    this.title.setText(paramDesktopMostCommonlyUsedInfo);
+    this.state = 0;
+    setAllVisibility(0);
+    MiniProgramLpReportDC04239.reportAsync("desktop", "commonly", "expo", null);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    case 2131371188: 
+    default: 
+      onOtherClicked();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      onAddBtnClicked();
+      continue;
+      onCloseBtnClicked();
+    }
+  }
+  
+  public void rejectFrequentlyRecommends()
+  {
+    if (this.miniAppInfo == null) {
+      return;
+    }
+    MiniAppCmdUtil.getInstance().rejectFrequentlyRecommends(this.miniAppInfo.appId, new MiniAppDesktopAdapter.DesktopMostCommonlyUsedViewHolder.2(this));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.DesktopMostCommonlyUsedViewHolder
+ * JD-Core Version:    0.7.0.1
+ */

@@ -6,31 +6,42 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import kotlin.Metadata;
-import kotlin.TypeCastException;
+import kotlin.collections.CollectionsKt;
 import mqq.os.MqqHandler;
-import qxt;
+import rjz;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 public final class RIJRewardTaskLocalRepo$loadFromDB$1
   implements Runnable
 {
-  public RIJRewardTaskLocalRepo$loadFromDB$1(qxt paramqxt) {}
+  public RIJRewardTaskLocalRepo$loadFromDB$1(rjz paramrjz) {}
   
   public final void run()
   {
-    try
+    for (;;)
     {
-      List localList = qxt.a(this.this$0).createEntityManager().query(RedPacketTaskData.class, true, null, null, null, null, "insertTime desc", "500");
-      if (localList == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.List<com.tencent.biz.pubaccount.readinjoy.reward.RedPacketTaskData>");
+      try
+      {
+        List localList2 = rjz.a(this.this$0).createEntityManager().query(RedPacketTaskData.class, true, null, null, null, null, "insertTime desc", "500");
+        localList1 = localList2;
+        if ((localList2 instanceof List)) {
+          break label81;
+        }
+        localList1 = null;
       }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("RIJRewardTaskRepo", 1, QLog.getStackTraceString((Throwable)localException));
+      catch (Exception localException)
+      {
+        List localList1;
+        QLog.e("RIJRewardTaskRepo", 1, QLog.getStackTraceString((Throwable)localException));
+        return;
+      }
+      ThreadManager.getUIHandler().post((Runnable)new RIJRewardTaskLocalRepo.loadFromDB.1.1(this, localList1));
       return;
+      localList1 = CollectionsKt.emptyList();
+      continue;
+      label81:
+      if (localException == null) {}
     }
-    ThreadManager.getUIHandler().post((Runnable)new RIJRewardTaskLocalRepo.loadFromDB.1.1(this, localException));
   }
 }
 

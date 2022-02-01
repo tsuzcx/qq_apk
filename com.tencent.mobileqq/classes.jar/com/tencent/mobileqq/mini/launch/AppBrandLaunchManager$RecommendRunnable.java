@@ -4,6 +4,7 @@ import NS_COMM.COMM.Entry;
 import NS_COMM.COMM.StCommonExt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.RecommendAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
@@ -45,7 +46,7 @@ public class AppBrandLaunchManager$RecommendRunnable
       localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject instanceof QQAppInterface))
       {
-        localObject = (DesktopDataManager)((AppRuntime)localObject).getManager(336);
+        localObject = (DesktopDataManager)((AppRuntime)localObject).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
         if (localObject != null) {
           this.recommendAppInfos.addAll(((DesktopDataManager)localObject).parseRecommendExposureFromSp());
         }

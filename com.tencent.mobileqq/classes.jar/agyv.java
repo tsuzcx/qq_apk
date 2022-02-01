@@ -1,35 +1,17 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import java.util.Locale;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agyv
-  implements agyc
+  extends ahaa
 {
-  agyv(agyh paramagyh) {}
-  
-  public void a(AIOImageData paramAIOImageData, boolean paramBoolean)
+  agyv(agvm paramagvm)
   {
-    if ((this.a.jdField_a_of_type_Agzn.a() != null) && ((this.a.jdField_a_of_type_Agzn.a().a instanceof AIOImageData)))
-    {
-      AIOImageData localAIOImageData = (AIOImageData)this.a.jdField_a_of_type_Agzn.a().a;
-      if ((!paramBoolean) && (TextUtils.equals(localAIOImageData.jdField_h_of_type_JavaLangString, paramAIOImageData.jdField_h_of_type_JavaLangString)))
-      {
-        if (localAIOImageData.jdField_h_of_type_Long <= 0L) {
-          break label127;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, agyh.N(this.a).getString(2131694570), new Object[] { FileUtil.filesizeToString(localAIOImageData.jdField_h_of_type_Long) }));
-      }
-    }
-    for (;;)
-    {
-      this.a.c(true);
-      return;
-      label127:
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131694567);
-    }
+    super(paramagvm, null);
+  }
+  
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new abjz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

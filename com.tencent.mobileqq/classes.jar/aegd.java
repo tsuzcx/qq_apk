@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class aegd
-  implements DialogInterface.OnClickListener
+  extends CardObserver
 {
-  public aegd(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public aegd(Leba paramLeba) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGetWholePeopleVoteLebaSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetWholePeopleVoteLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    }
+    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
+      this.a.a.sendEmptyMessage(11340002);
+    }
   }
 }
 

@@ -1,16 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.SideBarView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class qkf
-  implements ValueAnimator.AnimatorUpdateListener
+class qkf
+  implements aaea
 {
-  public qkf(ProteusRecycleView paramProteusRecycleView) {}
+  qkf(qka paramqka, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void callback(Bundle paramBundle)
   {
-    this.a.setPadding(0, 0, (int)ProteusRecycleView.a(this.a).a(), 0);
+    QLog.d("ReadInJoyWebviewPlugin", 4, "receive readSkinAndSound callback resp:" + paramBundle.toString());
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", paramBundle.getString("skinId")).put("volumeIsOn", paramBundle.getInt("volumeIsOn"));
+      this.jdField_a_of_type_Qka.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
+      this.jdField_a_of_type_Qka.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+    }
   }
 }
 

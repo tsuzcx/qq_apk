@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
 
-class axbk
-  implements DialogInterface.OnClickListener
+public class axbk
+  implements bivu
 {
-  axbk(axbj paramaxbj, QQCustomDialog paramQQCustomDialog) {}
+  public axbk(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Axbj.a.f();
+    if (paramInt == 1)
+    {
+      if (MsgBackupPCAuthFragment.a(this.a)) {
+        this.a.k();
+      }
+      this.a.onBackEvent();
+    }
+    while (paramInt != 2) {
+      return;
+    }
   }
 }
 

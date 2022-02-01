@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import aews;
+import afod;
 import android.annotation.TargetApi;
 import android.database.Cursor;
 import android.os.Environment;
-import aqrs;
-import aybg;
-import bbli;
+import arve;
+import azhs;
+import bcsa;
 import com.dataline.mpfile.MpfileTaskRecord;
 import com.tencent.biz.pubaccount.AccountDetail.bean.DynamicInfoEntity;
 import com.tencent.biz.pubaccount.ecshopassit.EcShopData;
@@ -86,6 +86,7 @@ import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
 import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
 import com.tencent.mobileqq.troop.data.TroopTipsEntity;
 import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgItem;
+import com.tencent.mobileqq.troop.troopgame.MemberGradeLevelInfo;
 import com.tencent.mobileqq.trooponline.data.TroopAllOnlineData;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.SecurityUtile;
@@ -114,7 +115,7 @@ import mqq.app.MobileQQ;
 public class QQEntityManagerFactory
   extends EntityManagerFactory
 {
-  private static final Class[] EXTRA_CLASSES = { MultiMsgNick.class, FTSTroopSync.class, Reporting.class, BusinessCard.class, FTSTroopTime.class, DoutuData.class, QQOperationViopTipTask.class, HotPicTagInfo.class, BmqqAccountType.class, QQOperationTaskRecord.class, QQOperationVoipTipsTaskExcuteRecord.class, TroopNotificationCache.class, TroopAIOAppInfo.class, ReadInJoyActivityDAUInfo.class, HotPicData.class, HotVideoData.class, ProfileShoppingPhotoInfo.class, DrawerPushItem.class, TroopAioKeyBlackRule.class, TroopAioKeywordTipInfo.class, TroopAllOnlineData.class, DynamicInfoEntity.class, DiyPendantEntity.class, ApolloObtainedActionData.class, RecentInviteUser.class, ApolloGameRedDot.class, InterestTagInfo.class, OcrRecogResult.class, ArDownloadInfo.class, BlessPtvModule.class, BlessWording.class, QQStoryUserInfo.class, HotPicSendData.class, TroopTipsEntity.class, BubbleDiyEntity.class, TroopGiftBagInfo.class, HotChatInfo.class, ApolloGameData.class, EmoticonKeywords.class, BlessTask.class, VideoRedbagData.class, ApolloActionRecentData.class, TroopAioTopADInfo.class, NotificationRecommendTroopItem.class, FTSNewTroopSync.class, GuideData.class, FeedInfo.class, BeancurdMsg.class, APIQuotaEntity.class, AppInfo.class, QuestionSquareBean.class, CmGamePushItem.class, ApolloActionData.class, QZoneMsgEntityNew.class, ApolloPreDownloadData.class, ApolloBaseInfo.class, TraceData.class, PadFaceAd.class, GameNoticeInfo.class, ExtensionInfo.class, ApolloWhiteFaceID.class, MiniAppEntity.class, ColorNote.class, DesktopCardEntity.class, FrontBackData.class, DeskTopAppEntity.class, StickerRecommendEntity.class, StickerRecommendSortEntity.class, TofuItem.class, TroopEssenceMsgItem.class, MaterialData.class };
+  private static final Class[] EXTRA_CLASSES = { MultiMsgNick.class, FTSTroopSync.class, Reporting.class, BusinessCard.class, FTSTroopTime.class, DoutuData.class, QQOperationViopTipTask.class, HotPicTagInfo.class, BmqqAccountType.class, QQOperationTaskRecord.class, QQOperationVoipTipsTaskExcuteRecord.class, TroopNotificationCache.class, TroopAIOAppInfo.class, ReadInJoyActivityDAUInfo.class, HotPicData.class, HotVideoData.class, ProfileShoppingPhotoInfo.class, DrawerPushItem.class, TroopAioKeyBlackRule.class, TroopAioKeywordTipInfo.class, TroopAllOnlineData.class, DynamicInfoEntity.class, DiyPendantEntity.class, ApolloObtainedActionData.class, RecentInviteUser.class, ApolloGameRedDot.class, InterestTagInfo.class, OcrRecogResult.class, ArDownloadInfo.class, BlessPtvModule.class, BlessWording.class, QQStoryUserInfo.class, HotPicSendData.class, TroopTipsEntity.class, BubbleDiyEntity.class, TroopGiftBagInfo.class, HotChatInfo.class, ApolloGameData.class, EmoticonKeywords.class, BlessTask.class, VideoRedbagData.class, ApolloActionRecentData.class, TroopAioTopADInfo.class, NotificationRecommendTroopItem.class, FTSNewTroopSync.class, GuideData.class, FeedInfo.class, BeancurdMsg.class, APIQuotaEntity.class, AppInfo.class, QuestionSquareBean.class, CmGamePushItem.class, ApolloActionData.class, QZoneMsgEntityNew.class, ApolloPreDownloadData.class, ApolloBaseInfo.class, TraceData.class, PadFaceAd.class, GameNoticeInfo.class, ExtensionInfo.class, ApolloWhiteFaceID.class, MiniAppEntity.class, ColorNote.class, DesktopCardEntity.class, FrontBackData.class, DeskTopAppEntity.class, StickerRecommendEntity.class, StickerRecommendSortEntity.class, TofuItem.class, TroopEssenceMsgItem.class, MaterialData.class, TroopMemberInfo.class, MemberGradeLevelInfo.class };
   private static final String[] FORCE_IGNORED_TABLE = { "PAReportInfo", "CircleBuddy ", "CircleGroup ", "Sticker", "TopicInfo", "FriendMore", "FreshNewsNotify", "QQCardFolder", "bubble_diytext", "ApolloGameBtnData", "ApolloGameActivityConfig", "CardProfilev2", "SecMsgSession" };
   private static final String[] NO_ENTITY_TABLE = { "msg_sync_log", "msg_upgrade_log" };
   private static final String[] SYSTEM_TABLE;
@@ -403,7 +404,7 @@ public class QQEntityManagerFactory
       if (!VersionUtils.isHoneycomb()) {
         break label187;
       }
-      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 333, new aqrs(this));
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 340, new arve(this));
     }
     for (;;)
     {
@@ -423,7 +424,7 @@ public class QQEntityManagerFactory
         QLog.d(this.TAG, 1, new Object[] { "new SQLiteOpenHelper = : ", this.dbHelper });
         return this.dbHelper;
         label187:
-        this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 333);
+        this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 340);
       }
       catch (Exception paramString)
       {
@@ -464,7 +465,7 @@ public class QQEntityManagerFactory
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new ShieldListInfo()));
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new ContactCard()));
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new QZoneCover()));
-    MessageRecord localMessageRecord = bbli.a(-1000);
+    MessageRecord localMessageRecord = bcsa.a(-1000);
     localMessageRecord.frienduin = String.valueOf(AppConstants.LBS_HELLO_UIN);
     localMessageRecord.istroop = 1001;
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(localMessageRecord));
@@ -494,9 +495,9 @@ public class QQEntityManagerFactory
     if (this.closed) {
       throw new IllegalStateException("The EntityManagerFactory has been already closed");
     }
-    aybg localaybg = new aybg(this.dbHelper, this.mName);
+    azhs localazhs = new azhs(this.dbHelper, this.mName);
     this.closed = false;
-    return localaybg;
+    return localazhs;
   }
   
   public void doAfterUpgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}

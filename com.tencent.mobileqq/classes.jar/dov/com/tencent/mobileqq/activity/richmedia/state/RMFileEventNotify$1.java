@@ -1,23 +1,23 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import amtj;
 import android.widget.Toast;
-import bnuj;
-import bnuv;
+import anvx;
+import bpkb;
+import bpkn;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 
 public class RMFileEventNotify$1
   implements Runnable
 {
-  public RMFileEventNotify$1(bnuj parambnuj) {}
+  public RMFileEventNotify$1(bpkb parambpkb) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[runOnUIThread][stopWatching-delete-quit]");
     }
-    Toast.makeText(VideoEnvironment.getContext(), amtj.a(2131712563), 1).show();
+    Toast.makeText(VideoEnvironment.getContext(), anvx.a(2131712910), 1).show();
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
     localRMVideoStateMgr.a("RMFileEventNotify");
     if (localRMVideoStateMgr.a != null) {

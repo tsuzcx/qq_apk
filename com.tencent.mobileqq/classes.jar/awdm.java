@@ -1,58 +1,30 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awdm
-  implements bbqw
+public class awdm
+  extends BaseAdapter
 {
-  awdm(awdi paramawdi, long paramLong, awdd paramawdd, String paramString, int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt)
+  public int getCount()
   {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadVideo id = " + this.jdField_a_of_type_Long + ", result =" + paramInt);
-    }
-    if (this.jdField_a_of_type_Awdd.jdField_a_of_type_Bbqx.a != null)
-    {
-      String str = ShortVideoUtils.getShortVideoSavePath(this.jdField_a_of_type_Awdd.jdField_a_of_type_Bbqx.a, "mp4");
-      awde localawde = this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_JavaLangString);
-      if ((localawde != null) && (!localawde.jdField_a_of_type_Boolean))
-      {
-        localawde.jdField_a_of_type_Int = paramInt;
-        localawde.jdField_a_of_type_Awdd.jdField_a_of_type_Int = 3;
-        if (paramInt == 0) {
-          i = 1;
-        }
-        localawde.jdField_a_of_type_Awdv = new awdv(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, i, str, false);
-        this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_JavaLangString, localawde);
-        this.jdField_a_of_type_Awdi.a(localawde.jdField_a_of_type_Awdd, 0, 0, "");
-      }
-    }
+    return 0;
   }
   
-  public void b(int paramInt)
+  public Object getItem(int paramInt)
   {
-    if ((this.jdField_a_of_type_Awdi.a != null) && (this.jdField_a_of_type_Awdd.jdField_a_of_type_Bbqx.a != null)) {
-      this.jdField_a_of_type_Awdi.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, this.jdField_a_of_type_Awdd.jdField_a_of_type_Bbqx.a.videoFileSize, true);
-    }
-    awde localawde;
-    if (this.jdField_a_of_type_Awdd.jdField_a_of_type_Bbqx != null)
-    {
-      localawde = this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_JavaLangString);
-      if ((localawde != null) && (!localawde.jdField_a_of_type_Boolean))
-      {
-        localawde.c = paramInt;
-        this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_JavaLangString, localawde);
-        if (!awdi.a(this.jdField_a_of_type_Awdi)) {
-          break label136;
-        }
-        awdi.a(this.jdField_a_of_type_Awdi, localawde, localawde.c);
-      }
-    }
-    return;
-    label136:
-    awdi.b(this.jdField_a_of_type_Awdi, localawde, paramInt);
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return null;
   }
 }
 

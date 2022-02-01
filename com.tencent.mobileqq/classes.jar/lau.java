@@ -1,6 +1,10 @@
-class lau
+import android.os.Bundle;
+
+public abstract interface lau
 {
-  private static las a = new las(null);
+  public abstract void a();
+  
+  public abstract void a(Bundle paramBundle);
 }
 
 

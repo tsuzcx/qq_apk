@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aydj;
-import ayds;
+import azjv;
+import azke;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 final class ForwardUtils$5
   implements Runnable
 {
-  ForwardUtils$5(ayds paramayds, QQAppInterface paramQQAppInterface) {}
+  ForwardUtils$5(azke paramazke, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    aydj.a(this.val$finalReq, this.val$app);
+    azjv.a(this.val$finalReq, this.val$app);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ForwardUtils.5
  * JD-Core Version:    0.7.0.1
  */

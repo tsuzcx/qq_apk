@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.animation.AnimationUtils;
-import bhpc;
+import bizw;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.ProtocolDownloader.Adapter;
 import com.tencent.image.URLDrawableHandler;
@@ -82,12 +82,12 @@ public class LastModifySupportDownloader
   
   private String getLastModified(String paramString)
   {
-    return bhpc.a().a().getSharedPreferences("http_lastmodify", 0).getString(paramString, "");
+    return bizw.a().a().getSharedPreferences("http_lastmodify", 0).getString(paramString, "");
   }
   
   private void saveLastModified(String paramString1, String paramString2)
   {
-    SharedPreferences.Editor localEditor = bhpc.a().a().getSharedPreferences("http_lastmodify", 0).edit();
+    SharedPreferences.Editor localEditor = bizw.a().a().getSharedPreferences("http_lastmodify", 0).edit();
     localEditor.putString(paramString1, paramString2);
     localEditor.commit();
   }

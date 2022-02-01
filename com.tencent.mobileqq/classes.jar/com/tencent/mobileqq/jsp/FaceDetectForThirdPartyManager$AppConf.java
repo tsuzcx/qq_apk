@@ -15,6 +15,7 @@ public class FaceDetectForThirdPartyManager$AppConf
   public String errMsg;
   public final int mode;
   public int ret;
+  public String selectData;
   public final List<FaceDetectForThirdPartyManager.ServiceProtocolSerializable> serviceProtocols;
   public String session;
   
@@ -29,7 +30,7 @@ public class FaceDetectForThirdPartyManager$AppConf
   
   public String toString()
   {
-    return "appName=" + this.appName + " mode=" + this.mode + " colorSe=" + this.colorSequence + " session=" + this.session + " ret=" + this.ret + " errMsg=" + this.errMsg + " debug=" + this.debug;
+    return "appName=" + this.appName + " mode=" + this.mode + " colorSe=" + this.colorSequence + " session=" + this.session + " ret=" + this.ret + " errMsg=" + this.errMsg + " debug=" + this.debug + " selectData=" + this.selectData;
   }
 }
 

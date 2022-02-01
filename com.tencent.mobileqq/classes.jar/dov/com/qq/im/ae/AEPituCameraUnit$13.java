@@ -1,18 +1,16 @@
 package dov.com.qq.im.ae;
 
-import bljy;
-import dov.com.qq.im.ae.camera.core.AECameraManager;
+import bmxa;
+import bnbg;
 
 public class AEPituCameraUnit$13
   implements Runnable
 {
-  public AEPituCameraUnit$13(bljy parambljy) {}
+  public AEPituCameraUnit$13(bmxa parambmxa) {}
   
   public void run()
   {
-    if (this.this$0.a.isFlashEnabled()) {
-      this.this$0.a.turnFlash(this.this$0.a(), false);
-    }
+    this.this$0.a.f();
   }
 }
 

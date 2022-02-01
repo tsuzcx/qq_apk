@@ -1,16 +1,56 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import QC.GetConciseThemeRsp;
+import QC.ItemDisDetail;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.mobilereport.MobileReportManager;
+import java.util.ArrayList;
+import java.util.List;
 
-final class aexs
-  implements aeya
+class aexs
+  implements BusinessObserver
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  aexs(aexr paramaexr) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 42);
-    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
-    return paramQQAppInterface;
+    if (QLog.isColorLevel()) {
+      QLog.d("SimpleUIChoiceView", 1, new Object[] { "loadSimpleThemeListData isSuccess: ", Boolean.valueOf(paramBoolean) });
+    }
+    if ((paramBoolean) && ((paramObject instanceof GetConciseThemeRsp)))
+    {
+      paramObject = (GetConciseThemeRsp)paramObject;
+      int i = Integer.decode(bdfk.a(bdfk.c())).intValue();
+      bdfk.a.clear();
+      aexr.a().clear();
+      paramInt = 0;
+      while (paramInt < paramObject.vItems.size())
+      {
+        ItemDisDetail localItemDisDetail = (ItemDisDetail)paramObject.vItems.get(paramInt);
+        aexu localaexu = new aexu(this.a, localItemDisDetail.itemId + "", localItemDisDetail.image, paramInt);
+        if (i == localItemDisDetail.itemId) {
+          localaexu.a = true;
+        }
+        aexr.a(this.a, null, localaexu);
+        bdfk.a.add(localItemDisDetail.itemId + "");
+        if (TextUtils.equals("2920", localItemDisDetail.itemId + "")) {
+          bdfk.c = paramInt;
+        }
+        aexr.a().add(localaexu);
+        MobileReportManager.getInstance().reportAction(bdfk.a(localItemDisDetail.itemId), "4", "platform898", "4", "1", 101, 1, System.currentTimeMillis());
+        bdla.b(aexr.a(this.a).app, "dc00898", "", "", "qq_vip", "0X800B15B", Integer.decode(bdfk.a(localItemDisDetail.itemId)).intValue(), 0, "", "", "", "");
+        paramInt += 1;
+      }
+      paramInt = bdfk.a(i + "");
+      bdfk.a(aexr.a(this.a).getCurrentAccountUin(), paramInt, 3);
+      aexr.a(this.a).a(aexr.a());
+      aexr.a(this.a).notifyDataSetChanged();
+      if (paramInt < bdfk.a.size()) {
+        aexr.a(this.a).scrollToPosition(paramInt);
+      }
+    }
   }
 }
 

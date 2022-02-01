@@ -1,20 +1,59 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.oidb_0x87a.RspBody;
+import tencent.im.oidb.oidb_0x87c.RspBody;
 
-class adky
-  implements bdan
+public class adky
+  extends ayra
 {
-  adky(adkx paramadkx, CompoundButton paramCompoundButton, boolean paramBoolean, int paramInt) {}
+  private WeakReference<ayra> a;
   
-  public void onCancel()
+  public adky(ayra paramayra)
   {
-    this.jdField_a_of_type_Adkx.a.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, false);
+    this.a = new WeakReference(paramayra);
   }
   
-  public void onConfirm()
+  public void getTmpKeySuccess(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Adkx.a.b();
-    GeneralSettingActivity.a(this.jdField_a_of_type_Adkx.a, this.jdField_a_of_type_AndroidWidgetCompoundButton, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    ayra localayra = (ayra)this.a.get();
+    if (localayra != null)
+    {
+      localayra.getTmpKeySuccess(paramString1, paramString2);
+      return;
+    }
+    super.getTmpKeySuccess(paramString1, paramString2);
+  }
+  
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  {
+    ayra localayra = (ayra)this.a.get();
+    if (localayra != null)
+    {
+      localayra.onFailedResponse(paramString1, paramInt, paramString2);
+      return;
+    }
+    super.onFailedResponse(paramString1, paramInt, paramString2);
+  }
+  
+  public void sendSmsCodeSuccess(oidb_0x87a.RspBody paramRspBody)
+  {
+    ayra localayra = (ayra)this.a.get();
+    if (localayra != null)
+    {
+      localayra.sendSmsCodeSuccess(paramRspBody);
+      return;
+    }
+    super.sendSmsCodeSuccess(paramRspBody);
+  }
+  
+  public void verifySmsCodeSuccess(oidb_0x87c.RspBody paramRspBody)
+  {
+    ayra localayra = (ayra)this.a.get();
+    if (localayra != null)
+    {
+      localayra.verifySmsCodeSuccess(paramRspBody);
+      return;
+    }
+    super.verifySmsCodeSuccess(paramRspBody);
   }
 }
 

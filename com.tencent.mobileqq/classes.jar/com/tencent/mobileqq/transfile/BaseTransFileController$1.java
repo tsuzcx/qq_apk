@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import apub;
-import aqcq;
+import aqxe;
+import arfv;
 
 class BaseTransFileController$1
   implements Runnable
@@ -10,7 +10,7 @@ class BaseTransFileController$1
   
   public void run()
   {
-    this.this$0.mRichmediaIpv6ConifgBean = ((aqcq)apub.a().a(538));
+    this.this$0.mRichmediaIpv6ConifgBean = ((arfv)aqxe.a().a(538));
   }
 }
 

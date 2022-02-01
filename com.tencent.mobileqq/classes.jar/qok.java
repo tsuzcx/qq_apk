@@ -1,16 +1,20 @@
-import kotlin.Lazy;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager;", "getInstance", "()Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager;", "instance$delegate", "Lkotlin/Lazy;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qok
+class qok
+  implements qwm
 {
-  @NotNull
-  public final qoj a()
+  qok(qoj paramqoj, ArticleInfo paramArticleInfo, Container paramContainer) {}
+  
+  public void a()
   {
-    Lazy localLazy = qoj.a();
-    qok localqok = qoj.a;
-    return (qoj)localLazy.getValue();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a != null)
+    {
+      UrlJumpInfo localUrlJumpInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
+      six.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localUrlJumpInfo);
+      qoj.a(this.jdField_a_of_type_Qoj, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, localUrlJumpInfo.e, "");
+    }
   }
 }
 

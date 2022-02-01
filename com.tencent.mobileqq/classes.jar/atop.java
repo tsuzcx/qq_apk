@@ -1,24 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
 import com.tencent.qphone.base.util.QLog;
 
-public class atop
-  implements DialogInterface.OnClickListener
+class atop
+  extends atnt
 {
-  public atop(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atop(atno paramatno)
   {
-    try
+    super(paramatno);
+  }
+  
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Atno.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      paramDialogInterface.dismiss();
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "handleSDForImageShare dismiss Exception:", paramDialogInterface);
-    }
+    atno.b(this.jdField_a_of_type_Atno, 11, 7);
+    atno.c(this.jdField_a_of_type_Atno, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atno.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atnt.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Atnt = new aton(this.jdField_a_of_type_Atno);
   }
 }
 

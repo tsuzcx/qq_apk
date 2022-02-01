@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vas.qvip.fragment;
 
 import android.os.SystemClock;
-import aqhr;
-import aqhs;
+import arkz;
+import arla;
 import com.tencent.mobileqq.vas.qvip.view.QQVipWebview;
 
 class QQVipFeedWedFragment$3
@@ -14,8 +14,8 @@ class QQVipFeedWedFragment$3
   {
     if (QQVipFeedWedFragment.a(this.this$0) != null)
     {
-      aqhs.c();
-      String str = aqhr.a();
+      arla.c();
+      String str = arkz.a();
       this.this$0.a = SystemClock.elapsedRealtime();
       QQVipFeedWedFragment.a(this.this$0).loadUrl(str);
     }

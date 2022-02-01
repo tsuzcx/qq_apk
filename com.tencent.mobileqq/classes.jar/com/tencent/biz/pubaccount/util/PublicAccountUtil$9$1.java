@@ -2,6 +2,7 @@ package com.tencent.biz.pubaccount.util;
 
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
@@ -9,13 +10,13 @@ import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import odq;
-import ugr;
+import olh;
+import uuo;
 
 public class PublicAccountUtil$9$1
   implements Runnable
 {
-  public PublicAccountUtil$9$1(ugr paramugr, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
+  public PublicAccountUtil$9$1(uuo paramuuo, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
   
   public void run()
   {
@@ -26,7 +27,7 @@ public class PublicAccountUtil$9$1
     }
     if ((this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
     {
-      localObject2 = (PublicAccountHandler)((QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface).getBusinessHandler(11);
+      localObject2 = (PublicAccountHandler)((QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface).getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
       if (localObject2 != null) {
         ((PublicAccountHandler)localObject2).a(localObject1);
       }
@@ -34,15 +35,15 @@ public class PublicAccountUtil$9$1
     if (this.this$0.jdField_a_of_type_Int >= 0)
     {
       if (!(this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-        break label139;
+        break label140;
       }
       localObject1 = (QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface;
     }
     for (;;)
     {
-      odq.a((QQAppInterface)localObject1, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int);
+      olh.a((QQAppInterface)localObject1, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int);
       return;
-      label139:
+      label140:
       localObject1 = BaseApplicationImpl.getApplication().peekAppRuntime();
       if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface))) {
         localObject1 = (QQAppInterface)localObject1;
@@ -54,7 +55,7 @@ public class PublicAccountUtil$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountUtil.9.1
  * JD-Core Version:    0.7.0.1
  */

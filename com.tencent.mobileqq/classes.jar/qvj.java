@@ -1,47 +1,147 @@
+import android.graphics.Color;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class qvj
-  implements View.OnClickListener
+  extends TextBase
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  private NativeSummaryView a;
   
-  private qvj(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
-  
-  public void onClick(View paramView)
+  public qvj(VafContext paramVafContext)
   {
-    switch (paramView.getId())
+    super(paramVafContext);
+    this.mTextSize = Utils.dp2px(16.0D);
+    this.mLineSpaceExtra = Utils.rp2px(5.0D);
+    this.a = new NativeSummaryView(paramVafContext.getContext());
+    this.a.setTextColor(-11644322);
+  }
+  
+  public void a(qfw paramqfw)
+  {
+    if (this.a.getLayoutParams() == null)
     {
+      Object localObject = getComLayoutParams();
+      localObject = new ViewGroup.LayoutParams(((Layout.Params)localObject).mLayoutWidth, ((Layout.Params)localObject).mLayoutHeight);
+      this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    for (;;)
+    this.a.setModel(paramqfw);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setBackgroundColor(this.mBackground);
+    this.a.setTextSize(0, this.mTextSize);
+    this.a.setLineSpacing(this.mLineSpaceExtra, 1.0F);
+    this.a.setIncludeFontPadding(false);
+    this.a.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ComponentContentRecommendFollowList localComponentContentRecommendFollowList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList;
-      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
-      for (boolean bool = true;; bool = false)
+    default: 
+      return false;
+    }
+    if ((paramObject instanceof qfw)) {
+      a((qfw)paramObject);
+    }
+    return true;
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.setAttribute(paramInt, paramString);
+    case 1188: 
+      try
       {
-        localComponentContentRecommendFollowList.a(localRecommendFollowInfo, bool);
-        break;
+        paramInt = Color.parseColor(String.valueOf(paramString));
+        this.a.setTextColor(paramInt);
+        QLog.d("SummaryView", 1, "setEmotionFontColor: " + paramInt);
+        return true;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      catch (Exception paramString)
+      {
+        QLog.e("SummaryView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1187: 
+      try
+      {
+        this.mTextSize = Utils.dp2px(Integer.valueOf(String.valueOf(paramString)).intValue());
+        QLog.d("SummaryView", 1, "setEmotionFontSize: " + this.mTextSize);
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("SummaryView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1189: 
+      try
+      {
+        this.mLineSpaceExtra = Utils.rp2px(Float.valueOf(String.valueOf(paramString)).floatValue());
+        QLog.d("SummaryView", 1, "setEmotionlineSpace: " + this.mLineSpaceExtra);
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("SummaryView", 1, paramString, new Object[0]);
+        return false;
+      }
     }
+    try
+    {
+      paramInt = Color.parseColor(paramString);
+      this.a.setLinkedTextColor(paramInt);
+      QLog.d("SummaryView", 1, "SummaryView | setLinkTextColor: " + paramInt);
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("SummaryView", 1, paramString, new Object[0]);
+    }
+    return false;
+  }
+  
+  public void setTextColor(int paramInt)
+  {
+    this.a.setTextColor(paramInt);
   }
 }
 

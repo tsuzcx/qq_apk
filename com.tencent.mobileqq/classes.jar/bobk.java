@@ -1,25 +1,25 @@
-public class bobk
+import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+
+public final class bobk
+  implements VSDispatchObserver.onVSRspCallBack<CLIENT.StSmartMatchMusicRsp>
 {
-  public aydp a;
+  public bobk(VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack, long paramLong) {}
   
-  public String a()
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
   {
-    return null;
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (this.a == null) {
-      this.a = new aydp();
+    bnrh.b("AEEditorMusicHelper", "[requestRecommendedMusicList], onReceive(), isSuccess=" + paramBoolean + ", retCode=" + paramLong + ", errMsg=" + paramString);
+    if (this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack != null) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack.onReceive(paramVSBaseRequest, paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
     }
-    this.a.a = paramString1;
-    this.a.b = paramString2;
-    ayde.b(this, paramString1, paramString2);
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    int i = (int)paramLong;
+    if (paramBoolean) {
+      i = 1000;
+    }
+    bnqm.a().a(i, l1 - l2 + "", "AEEditorMusicList", 0);
   }
 }
 

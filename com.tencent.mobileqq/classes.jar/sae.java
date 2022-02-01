@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class sae
-  implements DialogInterface.OnShowListener
+  implements INetInfoHandler
 {
-  sae(sab paramsab) {}
+  sae(sad paramsad) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    sab.a(this.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
-    sab.a(this.a).getWindow().clearFlags(8);
+    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "onNetNone2Mobile");
+    sad.a(this.a);
   }
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "onNetWifi2Mobile");
+    sad.a(this.a);
+  }
+  
+  public void onNetWifi2None() {}
 }
 
 

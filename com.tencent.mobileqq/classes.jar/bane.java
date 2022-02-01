@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-
-public class bane
-  implements DialogInterface.OnClickListener
+class bane
+  implements baoc
 {
-  public bane(SignTextEditFragment paramSignTextEditFragment) {}
+  bane(band paramband) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(float paramFloat)
   {
-    paramDialogInterface.dismiss();
+    bakl.a("HelloQQWake", "onDetectResult detected:" + paramFloat);
+    if ((paramFloat > band.a(this.a).a) && (System.currentTimeMillis() - band.a(this.a) > 2500L))
+    {
+      band.a(this.a, System.currentTimeMillis());
+      if (band.a(this.a) != null) {
+        band.a(this.a).a();
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (band.a(this.a) != null) {
+      band.a(this.a).a(paramBoolean);
+    }
   }
 }
 

@@ -1,17 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.view.animation.Animation;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class ajor
-  extends ajoh
+  extends bkxp
 {
-  public ajor(PhotoCropActivity paramPhotoCropActivity)
-  {
-    super(paramPhotoCropActivity);
-  }
+  public ajor(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.getIntent().putExtra("PhotoConst.QZONE_COVER_SYNC_FLAG", paramInt);
+    this.a.a(true);
+    EmoticonGroupStoreFragment.a(this.a, false);
+    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.a(this.a));
+    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.b(this.a));
   }
 }
 

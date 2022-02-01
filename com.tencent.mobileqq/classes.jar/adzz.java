@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.20.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class adzz
-  implements DialogInterface.OnClickListener
+  implements birt
 {
-  public adzz(QQMapActivity paramQQMapActivity) {}
+  public adzz(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, String.format("onConfigUpdate configId=%s tag=%s", new Object[] { Integer.valueOf(paramInt), paramString }));
+    }
+    this.a.runOnUiThread(new FriendProfileCardActivity.20.1(this, paramString));
+  }
 }
 
 

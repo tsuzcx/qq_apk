@@ -1,17 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class yad
-  implements bhhk
+public class yad
+  extends QQUIEventReceiver<xzx, wix>
 {
-  yad(yaa paramyaa) {}
-  
-  public void onProgressChanged(bhhi parambhhi, int paramInt1, int paramInt2) {}
-  
-  public void onProgressCompleted(bhhi parambhhi)
+  public yad(xzx paramxzx)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambhhi);
+    super(paramxzx);
+  }
+  
+  public void a(@NonNull xzx paramxzx, @NonNull wix paramwix)
+  {
+    if (paramwix.a.isSuccess())
+    {
+      ykq.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramwix.toString());
+      xzx.a(paramxzx, true);
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wix.class;
   }
 }
 

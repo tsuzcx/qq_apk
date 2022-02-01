@@ -2,7 +2,11 @@ public abstract interface ysv
 {
   public abstract void a();
   
-  public abstract boolean a(boolean paramBoolean);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean, yrx paramyrx);
+  
+  public abstract void b(int paramInt);
 }
 
 

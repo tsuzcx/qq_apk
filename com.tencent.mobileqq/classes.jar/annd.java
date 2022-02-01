@@ -1,35 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.util.Arrays;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class annd
-  implements PermissionMonitor.Listener
+  implements View.OnClickListener
 {
-  static
-  {
-    if (!anmw.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  annd(annc paramannc) {}
   
-  annd(anmw paramanmw) {}
-  
-  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
-  {
-    if (anmw.a(this.jdField_a_of_type_Anmw) != Thread.currentThread()) {}
-    while ((!anmw.a(this.jdField_a_of_type_Anmw)) || (paramArrayOfObject.length != 4)) {
-      return;
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != anmw.a(this.jdField_a_of_type_Anmw))) {
-      throw new AssertionError();
-    }
-    ShadowParcel.b(anmw.a(this.jdField_a_of_type_Anmw), (byte[])paramArrayOfObject[1], ((Integer)paramArrayOfObject[2]).intValue(), ((Integer)paramArrayOfObject[3]).intValue());
-    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
-  }
+  public void onClick(View paramView) {}
 }
 
 

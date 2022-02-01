@@ -84,12 +84,15 @@ public class FavoritesJsPlugin
   private String fixEntryPath(String paramString1, String paramString2)
   {
     if (this.mMiniAppContext.isMiniGame()) {
-      paramString1 = "miniGamePath";
+      if (TextUtils.isEmpty(paramString2)) {
+        paramString1 = "miniGamePath";
+      }
     }
     String str;
     do
     {
       return paramString1;
+      return "?" + paramString2;
       str = paramString1;
       if (TextUtils.isEmpty(paramString1)) {
         str = this.mApkgInfo.getAppConfigInfo().entryPagePath;
@@ -111,13 +114,16 @@ public class FavoritesJsPlugin
       if (paramString.startsWith("http")) {
         return paramString;
       }
+      if (this.mMiniAppContext.isMiniGame()) {
+        return ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
+      }
       localByteArrayInputStream = this.mApkgInfo.readApkgToStream(paramString);
       if (localByteArrayInputStream == null) {
-        break label166;
+        break label197;
       }
       localByteArrayOutputStream = new ByteArrayOutputStream();
       if (localByteArrayOutputStream == null) {
-        break label161;
+        break label192;
       }
       localObject = new byte[4096];
       for (;;)
@@ -142,9 +148,9 @@ public class FavoritesJsPlugin
     localByteArrayOutputStream.close();
     localByteArrayInputStream.close();
     return paramString;
-    label161:
+    label192:
     return getDefaultPic();
-    label166:
+    label197:
     paramString = getDefaultPic();
     return paramString;
     return paramString;
@@ -229,7 +235,7 @@ public class FavoritesJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FavoritesJsPlugin
  * JD-Core Version:    0.7.0.1
  */

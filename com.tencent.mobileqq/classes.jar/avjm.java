@@ -1,21 +1,78 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import QC.BubbleInfo;
+import QC.BubbleRecommendRsp;
+import QC.ItemBase;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class avjm
-  implements View.OnClickListener
+public class avjm
+  implements avjv<BubbleRecommendRsp>
 {
-  avjm(avji paramavji, Activity paramActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    LoginUserGuideHelper.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Avji.a.a, avji.a(this.jdField_a_of_type_Avji));
-    this.jdField_a_of_type_Avji.g();
-    bcef.b(this.jdField_a_of_type_Avji.a.a, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 1, 0, "1", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 4;
+  }
+  
+  public String a(Context paramContext)
+  {
+    return bhnp.a(paramContext, "bubble", "mvip.gongneng.android.bubble.index_dynamic_tab");
+  }
+  
+  public String a(FontBubble paramFontBubble)
+  {
+    return bhnp.a("bubblePreview").replace("[id]", Integer.toString(paramFontBubble.bubbleId));
+  }
+  
+  public List<FontBubble> a(QQAppInterface paramQQAppInterface, BubbleRecommendRsp paramBubbleRecommendRsp)
+  {
+    int j = 0;
+    paramQQAppInterface = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramQQAppInterface.getAccount());
+    int i;
+    if (paramQQAppInterface == null)
+    {
+      QLog.e("FontBubbleManager", 1, "BubbleController no ExtensionInfo");
+      i = 0;
+    }
+    for (;;)
+    {
+      paramQQAppInterface = new ArrayList();
+      if (paramBubbleRecommendRsp.vItems == null) {
+        break;
+      }
+      paramBubbleRecommendRsp = paramBubbleRecommendRsp.vItems.iterator();
+      while (paramBubbleRecommendRsp.hasNext())
+      {
+        BubbleInfo localBubbleInfo = (BubbleInfo)paramBubbleRecommendRsp.next();
+        FontBubble localFontBubble = new FontBubble();
+        localFontBubble.viewType = 1;
+        localFontBubble.fontId = i;
+        localFontBubble.engine = j;
+        localFontBubble.bubbleId = localBubbleInfo.item.itemId;
+        localFontBubble.name = localBubbleInfo.name;
+        localFontBubble.feeType = localBubbleInfo.feeType;
+        localFontBubble.payUrl = localBubbleInfo.payUrl;
+        localFontBubble.title = localBubbleInfo.title;
+        localFontBubble.msg = localBubbleInfo.msg;
+        localFontBubble.btn = localBubbleInfo.btn;
+        localFontBubble.picUrl = localBubbleInfo.strPicUrl;
+        localFontBubble.panelType = 4;
+        paramQQAppInterface.add(localFontBubble);
+      }
+      i = (int)paramQQAppInterface.uVipFont;
+      j = paramQQAppInterface.vipFontType;
+    }
+    return paramQQAppInterface;
+  }
+  
+  public void a(aocy paramaocy)
+  {
+    paramaocy.e();
   }
 }
 

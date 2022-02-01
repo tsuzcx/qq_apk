@@ -1,12 +1,14 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
 public abstract interface ataf
 {
-  public abstract void a(Bitmap paramBitmap);
+  public abstract String a(FileInfo paramFileInfo);
+  
+  public abstract void a(FileInfo paramFileInfo, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ataf
  * JD-Core Version:    0.7.0.1
  */

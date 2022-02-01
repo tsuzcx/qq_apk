@@ -1,50 +1,95 @@
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
+import android.view.MotionEvent;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+
 public class bbwt
+  extends LinkMovementMethod
 {
-  public static long a()
+  private static bbwt jdField_a_of_type_Bbwt;
+  bbwr jdField_a_of_type_Bbwr;
+  boolean jdField_a_of_type_Boolean;
+  
+  public static MovementMethod a()
   {
-    return b(1) - c(1);
+    if (jdField_a_of_type_Bbwt == null) {
+      jdField_a_of_type_Bbwt = new bbwt();
+    }
+    return jdField_a_of_type_Bbwt;
   }
   
-  public static long a(int paramInt)
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    long l = Runtime.getRuntime().maxMemory() - a() * 1024L;
-    switch (paramInt)
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0) || (i == 3))
     {
-    case 0: 
-    default: 
-      return l;
-    case 1: 
-      return l / 1024L;
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      Object localObject = paramTextView.getLayout();
+      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
+      localObject = (bbwr[])paramSpannable.getSpans(j, j, bbwr.class);
+      if (QLog.isColorLevel()) {
+        QLog.i("StateColorMovementMethod", 2, String.format("onTouch action[%d] links=[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(localObject.length) }));
+      }
+      if (localObject.length != 0)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        paramSpannable = localObject[0];
+        if (i == 1)
+        {
+          if (this.jdField_a_of_type_Bbwr != null)
+          {
+            this.jdField_a_of_type_Bbwr.a(paramTextView, false);
+            this.jdField_a_of_type_Bbwr = null;
+          }
+          paramSpannable.onClick(paramTextView);
+        }
+        for (;;)
+        {
+          return true;
+          if (i == 0)
+          {
+            paramSpannable.a(paramTextView, true);
+            this.jdField_a_of_type_Bbwr = paramSpannable;
+          }
+          else if ((i == 3) && (this.jdField_a_of_type_Bbwr != null))
+          {
+            this.jdField_a_of_type_Bbwr.a(paramTextView, false);
+            this.jdField_a_of_type_Bbwr = null;
+          }
+        }
+      }
+      if (i != 1) {
+        break label312;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        paramTextView.performClick();
+      }
     }
-    return l / 1048576L;
-  }
-  
-  private static long b(int paramInt)
-  {
-    switch (paramInt)
+    for (;;)
     {
-    default: 
-      return Runtime.getRuntime().totalMemory();
-    case 0: 
-      return Runtime.getRuntime().totalMemory();
-    case 1: 
-      return Runtime.getRuntime().totalMemory() / 1024L;
+      if (this.jdField_a_of_type_Bbwr != null)
+      {
+        this.jdField_a_of_type_Bbwr.a(paramTextView, false);
+        this.jdField_a_of_type_Bbwr = null;
+      }
+      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+      label312:
+      if (i == 0) {
+        this.jdField_a_of_type_Boolean = true;
+      } else if (i == 3) {
+        this.jdField_a_of_type_Boolean = false;
+      }
     }
-    return Runtime.getRuntime().totalMemory() / 1024L / 1024L;
-  }
-  
-  private static long c(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return Runtime.getRuntime().freeMemory();
-    case 0: 
-      return Runtime.getRuntime().freeMemory();
-    case 1: 
-      return Runtime.getRuntime().freeMemory() / 1024L;
-    }
-    return Runtime.getRuntime().freeMemory() / 1024L / 1024L;
   }
 }
 

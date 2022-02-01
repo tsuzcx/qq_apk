@@ -1,32 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.1;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.2;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
+import com.tencent.mobileqq.statistics.UEC.UECItem;
+import java.util.ArrayList;
 
-public class bdlx
-  implements ISuperPlayer.OnInfoListener
+public abstract interface bdlx
 {
-  public bdlx(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.1(this));
-      continue;
-      TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.2(this));
-    }
-  }
+  public abstract void a(ArrayList<UEC.UECItem> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdlx
  * JD-Core Version:    0.7.0.1
  */

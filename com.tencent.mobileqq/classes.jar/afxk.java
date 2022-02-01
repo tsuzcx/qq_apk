@@ -1,34 +1,19 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForAutoReply;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-class afxk
-  extends ClickableSpan
+public class afxk
+  implements bdye
 {
-  afxk(afxj paramafxj, MessageForAutoReply paramMessageForAutoReply, agql paramagql) {}
+  public afxk(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public void onClick(@NonNull View paramView)
+  public void a()
   {
-    afxj.a(this.jdField_a_of_type_Afxj, paramView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForAutoReply);
-  }
-  
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForAutoReply.senderuin.equals(this.jdField_a_of_type_Afxj.a.getCurrentAccountUin()))
-    {
-      paramTextPaint.setColor(this.jdField_a_of_type_Agql.d.getCurrentTextColor());
-      paramTextPaint.setUnderlineText(true);
-      return;
-    }
-    paramTextPaint.setColor(BaseApplication.context.getResources().getColor(2131167030));
-    paramTextPaint.setUnderlineText(false);
+    int i = (int)(this.a.b - DisplayUtil.dip2px(this.a.jdField_a_of_type_AndroidContentContext, 165.0F) - this.a.jdField_a_of_type_Bdzh.b / 2.0F);
+    int j = (int)(this.a.b - DisplayUtil.dip2px(this.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.jdField_a_of_type_Bdzh.b / 2.0F);
+    int k = (int)(this.a.b - DisplayUtil.dip2px(this.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.jdField_a_of_type_Bdzh.b / 2.0F);
+    bdym localbdym = new bdym(new bdyd[] { new bdyh(450, this.a.jdField_a_of_type_Int / 2, (int)(-this.a.jdField_a_of_type_Bdzh.b / 2.0F), this.a.jdField_a_of_type_Int / 2, i), new bdyh(450, this.a.jdField_a_of_type_Int / 2, i, this.a.jdField_a_of_type_Int / 2, j), new bdyh(450, this.a.jdField_a_of_type_Int / 2, j, this.a.jdField_a_of_type_Int / 2, k) });
+    localbdym.a(new afxl(this));
+    this.a.jdField_a_of_type_Bdzh.a(new bdyd[] { localbdym });
   }
 }
 

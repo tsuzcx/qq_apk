@@ -1,6 +1,12 @@
-public abstract interface bbdx
+import android.content.DialogInterface.OnDismissListener;
+
+public abstract class bbdx
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  public DialogInterface.OnDismissListener a()
+  {
+    return new bbdy(this, this);
+  }
 }
 
 

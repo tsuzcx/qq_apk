@@ -1,43 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.view.View;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-class bldx
-  implements EIPClientConnectListener
+public abstract interface bldx
 {
-  bldx(bldv parambldv, long paramLong) {}
+  public abstract void a();
   
-  public void connectFailed()
-  {
-    bldv.a(this.jdField_a_of_type_Bldv, false);
-    bldv.b(this.jdField_a_of_type_Bldv, false);
-    synchronized (bldv.a(this.jdField_a_of_type_Bldv))
-    {
-      bldv.a(this.jdField_a_of_type_Bldv).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlQIPCConnector", 2, "connectFailed:" + bldv.a(this.jdField_a_of_type_Bldv));
-      }
-      return;
-    }
-  }
-  
-  public void connectSuccess(EIPCConnection arg1)
-  {
-    long l = System.currentTimeMillis();
-    if (??? != null) {
-      bldv.a(this.jdField_a_of_type_Bldv, ???.procName);
-    }
-    bldv.a(this.jdField_a_of_type_Bldv, true);
-    bldv.b(this.jdField_a_of_type_Bldv, false);
-    synchronized (bldv.a(this.jdField_a_of_type_Bldv))
-    {
-      bldv.a(this.jdField_a_of_type_Bldv).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlQIPCConnector", 2, "connectSuccess:" + bldv.a(this.jdField_a_of_type_Bldv) + "|" + (l - this.jdField_a_of_type_Long));
-      }
-      return;
-    }
-  }
+  public abstract void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt);
 }
 
 

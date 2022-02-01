@@ -1,88 +1,72 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
-import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface tmr
+public class tmr
+  implements tmq
 {
-  public abstract void a();
+  private File jdField_a_of_type_JavaIoFile;
+  private String jdField_a_of_type_JavaLangString;
+  private tmp jdField_a_of_type_Tmp;
   
-  public abstract void a(float paramFloat);
+  public tmr(Context paramContext, String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {
+      throw new IllegalArgumentException("" + paramString1 + " : " + paramString2);
+    }
+    this.jdField_a_of_type_Tmp = new tmp(paramContext, paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaIoFile = new File(paramString1);
+  }
   
-  public abstract void a(int paramInt, VVideoView paramVVideoView, boolean paramBoolean, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
+  public InputStream a(String paramString)
+  {
+    Object localObject = new File(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+    if (((File)localObject).exists()) {
+      try
+      {
+        localObject = new FileInputStream((File)localObject);
+        return localObject;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        QLog.e("ReadMergeFile", 2, "getFile:" + paramString, localFileNotFoundException);
+      }
+    }
+    InputStream localInputStream = this.jdField_a_of_type_Tmp.a(paramString);
+    QLog.d("TemplateFactory", 1, "使用兜底 file: " + paramString);
+    return localInputStream;
+  }
   
-  public abstract void a(VVideoView paramVVideoView);
-  
-  public abstract void a(VVideoView paramVVideoView, int paramInt);
-  
-  public abstract void a(VVideoView paramVVideoView, String paramString);
-  
-  public abstract void a(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
-  
-  public abstract void a(VVideoView paramVVideoView, JSONObject paramJSONObject);
-  
-  public abstract void a(VVideoView paramVVideoView, boolean paramBoolean);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
-  
-  public abstract boolean a();
-  
-  public abstract void a_(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(VVideoView paramVVideoView);
-  
-  public abstract void b(VVideoView paramVVideoView, int paramInt);
-  
-  public abstract void b(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
-  
-  public abstract void b(VVideoView paramVVideoView, JSONObject paramJSONObject);
-  
-  public abstract void b(VVideoView paramVVideoView, boolean paramBoolean);
-  
-  public abstract void b_(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void c(VVideoView paramVVideoView);
-  
-  public abstract void c(VVideoView paramVVideoView, int paramInt);
-  
-  public abstract void c(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener);
-  
-  public abstract void c(VVideoView paramVVideoView, boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void d(VVideoView paramVVideoView);
-  
-  public abstract void e();
-  
-  public abstract void e(VVideoView paramVVideoView);
-  
-  public abstract void f();
-  
-  public abstract void f(VVideoView paramVVideoView);
-  
-  public abstract void f_(int paramInt);
-  
-  public abstract void g();
-  
-  public abstract void g(VVideoView paramVVideoView);
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public List<String> a()
+  {
+    Object localObject2 = this.jdField_a_of_type_Tmp.a();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new ArrayList();
+    }
+    localObject2 = this.jdField_a_of_type_JavaIoFile.list();
+    if (localObject2 != null)
+    {
+      int j = localObject2.length;
+      int i = 0;
+      while (i < j)
+      {
+        ((List)localObject1).add(localObject2[i]);
+        i += 1;
+      }
+    }
+    return localObject1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tmr
  * JD-Core Version:    0.7.0.1
  */

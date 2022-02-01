@@ -1,8 +1,9 @@
 package com.tencent.biz.qqstory.storyHome;
 
 import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import vkz;
+import vzu;
 
 class QQStoryMainController$3
   implements Runnable
@@ -11,7 +12,7 @@ class QQStoryMainController$3
   
   public void run()
   {
-    ((vkz)QQStoryContext.a().getBusinessHandler(98)).notifyUI(2001, true, null);
+    ((vzu)QQStoryContext.a().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(2001, true, null);
   }
 }
 

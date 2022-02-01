@@ -1,24 +1,18 @@
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import com.tencent.mobileqq.ocr.view.gesture.GestureFrameLayout;
 
-class ayvr
+public class ayvr
+  implements ayvs
 {
-  private long jdField_a_of_type_Long;
-  private FeedCloudRead.StGetMainPageRsp jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp = new FeedCloudRead.StGetMainPageRsp();
+  public ayvr(GestureFrameLayout paramGestureFrameLayout) {}
   
-  ayvr(FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp, long paramLong)
+  public void a(aywg paramaywg)
   {
-    this.jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp.set(paramStGetMainPageRsp);
-    this.jdField_a_of_type_Long = paramLong;
+    this.a.a(paramaywg);
   }
   
-  public long a()
+  public void a(aywg paramaywg1, aywg paramaywg2)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public FeedCloudRead.StGetMainPageRsp a()
-  {
-    return this.jdField_a_of_type_FeedcloudFeedCloudRead$StGetMainPageRsp;
+    this.a.a(paramaywg2);
   }
 }
 

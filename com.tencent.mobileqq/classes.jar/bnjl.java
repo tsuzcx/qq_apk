@@ -1,32 +1,6 @@
-import android.graphics.Bitmap;
-
-public abstract interface bnjl
+class bnjl
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
-  
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
-  
-  public abstract void a(bnll parambnll);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract boolean a();
-  
-  public abstract void aH_();
-  
-  public abstract void a_(int paramInt, Object paramObject);
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  static final bnji a = new bnji(null);
 }
 
 

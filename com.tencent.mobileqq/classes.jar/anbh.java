@@ -1,48 +1,23 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.ims.signature.SignatureReport;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.apollo.screenshot.ApolloApngEncoder;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-class anbh
-  extends Handler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "resCode", "", "<anonymous parameter 1>", "Lcom/tencent/mobileqq/soload/LoadExtResult;", "kotlin.jvm.PlatformType", "onLoadResult"}, k=3, mv={1, 1, 16})
+final class anbh
+  implements bdgc
 {
-  anbh(anbg paramanbg, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public static final anbh a = new anbh();
   
-  public void handleMessage(Message paramMessage)
+  public final void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    switch (paramMessage.what)
+    if (paramInt == 0)
     {
-    case 2: 
-    default: 
+      QLog.d(ApolloApngEncoder.a.a(), 1, "loadLibIfNeed Success");
+      ApolloApngEncoder.a.a(true);
       return;
-    case 1: 
-      Object localObject;
-      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
-      {
-        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), nma.class);
-        ((NewIntent)localObject).putExtra("data", ((anbl)paramMessage.obj).a.toByteArray());
-        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
-        ((NewIntent)localObject).setObserver(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_Anbl = null;
-        return;
-        localObject = this.a.createToServiceMsg("SecCheckSigSvc.UploadReq");
-        ((ToServiceMsg)localObject).putWupBuffer(((anbl)paramMessage.obj).a.toByteArray());
-        this.a.sendPbReq((ToServiceMsg)localObject);
-      }
     }
-    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
+    QLog.e(ApolloApngEncoder.a.a(), 1, "loadLibIfNeed Error: " + paramInt);
   }
 }
 

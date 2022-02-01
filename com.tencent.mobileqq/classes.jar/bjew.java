@@ -1,26 +1,10 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
 
-class bjew
-  implements MiniAppLauncher.MiniAppLaunchListener
+public abstract interface bjew
 {
-  bjew(bjet parambjet, Activity paramActivity) {}
+  public abstract void a(Intent paramIntent);
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBoolean)
-    {
-      if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
-      {
-        QLog.d("NavigationJsPlugin", 1, "navigateBackMiniApp ok, finish current.");
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-      return;
-    }
-    QLog.e("NavigationJsPlugin", 1, "navigateBackMiniApp failed");
-  }
+  public abstract void a(bjgs parambjgs);
 }
 
 

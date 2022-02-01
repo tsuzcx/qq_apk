@@ -1,34 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.comment.DanmuItemBean;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-public final class appg
-  implements Parcelable.Creator<DanmuItemBean>
+public class appg
+  extends appe
 {
-  public DanmuItemBean a(Parcel paramParcel)
-  {
-    boolean bool = true;
-    DanmuItemBean localDanmuItemBean = new DanmuItemBean();
-    localDanmuItemBean.jdField_a_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.jdField_b_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.d = paramParcel.readLong();
-    localDanmuItemBean.jdField_c_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localDanmuItemBean.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readInt() == 1) {}
-    for (;;)
-    {
-      localDanmuItemBean.jdField_a_of_type_Boolean = bool;
-      localDanmuItemBean.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localDanmuItemBean.jdField_a_of_type_Int = paramParcel.readInt();
-      return localDanmuItemBean;
-      bool = false;
-    }
-  }
+  public String a;
   
-  public DanmuItemBean[] a(int paramInt)
+  public void a(AppInterface paramAppInterface, Bundle paramBundle)
   {
-    return new DanmuItemBean[paramInt];
+    this.a = paramBundle.getString("PromotionDescription", "");
   }
 }
 

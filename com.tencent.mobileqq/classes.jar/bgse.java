@@ -1,40 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bgse
-  extends QIPCModule
+  implements View.OnClickListener
 {
-  private static volatile bgse a;
+  public bgse(TroopInteractGiftAnimationController.1.1 param1) {}
   
-  private bgse(String paramString)
+  public void onClick(View paramView)
   {
-    super(paramString);
-  }
-  
-  public static bgse a()
-  {
-    if (a == null) {}
-    try
+    this.a.a.this$0.b();
+    bgsd localbgsd = this.a.a.this$0;
+    localbgsd.jdField_a_of_type_Int += 1;
+    if (this.a.a.this$0.jdField_a_of_type_Boolean)
     {
-      if (a == null) {
-        a = new bgse("weibo_qipc_module");
-      }
-      return a;
+      this.a.a.this$0.jdField_a_of_type_Boolean = false;
+      this.a.a.this$0.a(this.a.a.a, this.a.a.a.frienduin, this.a.a.a.interactId, this.a.a.a.animationPackageId, this.a.a.this$0.jdField_a_of_type_Int, false);
     }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    QLog.d("WeiBoQIPCModule", 1, "onCall main proc action : " + paramString);
-    if ("action_install_weibo_sdk".equals(paramString))
-    {
-      bgsf.a(3);
-      callbackResult(paramInt, EIPCResult.createSuccessResult(new Bundle()));
+    if (this.a.a.this$0.jdField_a_of_type_Int % 5 == 0) {
+      this.a.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a(this.a.a.a.animationPackageId + "");
     }
-    return null;
+    bdla.b(null, "dc00899", "Grp_flower", "", "inter_gift", "clk_ball", 0, 0, this.a.a.a.frienduin, "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

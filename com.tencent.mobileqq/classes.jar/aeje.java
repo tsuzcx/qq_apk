@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aeje
-  implements apgg
+  implements DialogInterface.OnClickListener
 {
-  public aeje(TextPreviewActivity paramTextPreviewActivity) {}
+  public aeje(NotificationActivity paramNotificationActivity) {}
   
-  public void a(apgh paramapgh)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Apgh = paramapgh;
-    if (this.a.i != 0) {
-      paramapgh.a(this.a.i);
-    }
-    this.a.i = paramapgh.a(1, this.a.e, 3, this.a.jdField_a_of_type_Apge);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeje
  * JD-Core Version:    0.7.0.1
  */

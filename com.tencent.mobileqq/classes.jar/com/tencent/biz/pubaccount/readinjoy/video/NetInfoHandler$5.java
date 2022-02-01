@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rsu;
-import slt;
+import sfj;
+import szd;
 
 public class NetInfoHandler$5
   implements Runnable
 {
-  public NetInfoHandler$5(rsu paramrsu) {}
+  public NetInfoHandler$5(sfj paramsfj) {}
   
   public void run()
   {
-    rsu.a(this.this$0).notifyDataSetChanged();
+    sfj.a(this.this$0).notifyDataSetChanged();
   }
 }
 

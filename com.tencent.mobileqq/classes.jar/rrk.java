@@ -1,58 +1,39 @@
-public final class rrk
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.articlesummary.articlesummary.OutsideLinkInfo;
+
+public class rrk
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  private String e;
+  public String a;
+  public String b;
+  public String c;
   
-  public rri a()
+  public rrk(articlesummary.OutsideLinkInfo paramOutsideLinkInfo)
   {
-    return new rri(this, null);
+    if (paramOutsideLinkInfo.title.has()) {
+      this.a = paramOutsideLinkInfo.title.get();
+    }
+    if (paramOutsideLinkInfo.bring_goods_url.has()) {
+      this.b = paramOutsideLinkInfo.bring_goods_url.get();
+    }
+    if (paramOutsideLinkInfo.icon_url.has()) {
+      this.c = paramOutsideLinkInfo.icon_url.get();
+    }
   }
   
-  public rrk a(long paramLong)
+  public articlesummary.OutsideLinkInfo a()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public rrk a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public rrk b(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public rrk b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public rrk c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public rrk d(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public rrk e(String paramString)
-  {
-    this.e = paramString;
-    return this;
+    articlesummary.OutsideLinkInfo localOutsideLinkInfo = new articlesummary.OutsideLinkInfo();
+    if (!TextUtils.isEmpty(this.c)) {
+      localOutsideLinkInfo.icon_url.set(this.c);
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localOutsideLinkInfo.bring_goods_url.set(this.b);
+    }
+    if (!TextUtils.isEmpty(this.a)) {
+      localOutsideLinkInfo.title.set(this.a);
+    }
+    return localOutsideLinkInfo;
   }
 }
 

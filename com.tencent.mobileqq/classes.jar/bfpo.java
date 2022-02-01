@@ -1,14 +1,37 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
+import android.support.annotation.NonNull;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
 
-final class bfpo
-  extends View.AccessibilityDelegate
+public class bfpo
+  extends SimpleObserver<bfph>
 {
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public bfpo(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  
+  public void a(bfph parambfph)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    paramAccessibilityNodeInfo.setVisibleToUser(false);
+    super.onNext(parambfph);
+    ykq.d("QQ.Troop.homework.CheckArithHWResultFragment", "requestSendHomeworkResult completed");
+    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+    zdl.a(parambfph.a);
+    zdl.a(parambfph.b);
+    CheckArithHWResultFragment.a(this.a, parambfph.a, parambfph.b);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    ykq.e("QQ.Troop.homework.CheckArithHWResultFragment", "send homework error:" + paramError);
+    QQToast.a(this.a.getActivity(), 1, anvx.a(2131701262), 0).a();
+    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+    CheckArithHWResultFragment.a(this.a, null, null);
   }
 }
 

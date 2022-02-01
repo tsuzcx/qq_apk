@@ -62,7 +62,7 @@ public class LpReportInfo_pf00034
       LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
       LpReportUtils.safePut(localHashMap, "touin", this.toUin);
       LpReportUtils.safePut(localHashMap, "network_type", NetworkState.getNetworkType());
-      LpReportUtils.safePut(localHashMap, "app_version", "8.4.8");
+      LpReportUtils.safePut(localHashMap, "app_version", "8.4.10");
       LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
       LpReportUtils.safePut(localHashMap, "platform", "android");
       LpReportUtils.safePut(localHashMap, "device_info", PlatformInfor.g().getDeviceInfor());

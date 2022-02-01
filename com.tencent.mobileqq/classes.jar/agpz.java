@@ -1,33 +1,17 @@
 import android.view.View;
-import android.view.ViewGroup;
-import java.lang.ref.SoftReference;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForAutoReply;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agpz
+class agpz
+  implements View.OnClickListener
 {
-  public String a;
-  SoftReference<View> a;
-  SoftReference<ViewGroup> b;
+  agpz(agpy paramagpy, MessageForAutoReply paramMessageForAutoReply) {}
   
-  public agpz(String paramString, View paramView, ViewGroup paramViewGroup)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
-    this.b = new SoftReference(paramViewGroup);
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-  }
-  
-  public ViewGroup a()
-  {
-    return (ViewGroup)this.b.get();
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    this.b = new SoftReference(paramViewGroup);
+    agpy.a(this.jdField_a_of_type_Agpy, this.jdField_a_of_type_ComTencentMobileqqDataMessageForAutoReply);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

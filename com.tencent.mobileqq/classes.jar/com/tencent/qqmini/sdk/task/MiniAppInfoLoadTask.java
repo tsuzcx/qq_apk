@@ -145,13 +145,14 @@ public class MiniAppInfoLoadTask
     paramMiniAppInfo.launchParam.clone(this.mMiniAppInfo.launchParam);
     paramMiniAppInfo.apkgInfo = this.mMiniAppInfo.apkgInfo;
     paramMiniAppInfo.launchParam.miniAppId = paramMiniAppInfo.appId;
+    ThreadManager.executeOnNetworkIOThreadPool(new MiniAppInfoLoadTask.6(this, paramMiniAppInfo));
     if ((paramMiniAppInfo.firstPage != null) && (!TextUtils.isEmpty(paramMiniAppInfo.firstPage.pagePath)))
     {
       if (paramMiniAppInfo.firstPage.pagePath.startsWith("/")) {
         paramMiniAppInfo.firstPage.pagePath = paramMiniAppInfo.firstPage.pagePath.substring(1);
       }
       if (!paramMiniAppInfo.firstPage.pagePath.contains(".html")) {
-        break label167;
+        break label179;
       }
       paramMiniAppInfo.launchParam.entryPath = paramMiniAppInfo.firstPage.pagePath;
     }
@@ -165,7 +166,7 @@ public class MiniAppInfoLoadTask
       }
       this.mMiniAppInfo = paramMiniAppInfo;
       return;
-      label167:
+      label179:
       if (paramMiniAppInfo.firstPage.pagePath.contains("?")) {
         paramMiniAppInfo.launchParam.entryPath = paramMiniAppInfo.firstPage.pagePath.replaceFirst("\\?", ".html\\?");
       } else {
@@ -178,6 +179,7 @@ public class MiniAppInfoLoadTask
   {
     paramMiniAppInfo.launchParam.clone(this.mMiniAppInfo.launchParam);
     paramMiniAppInfo.apkgInfo = this.mMiniAppInfo.apkgInfo;
+    ThreadManager.executeOnNetworkIOThreadPool(new MiniAppInfoLoadTask.7(this, paramMiniAppInfo));
     if ((paramMiniAppInfo.firstPage != null) && (!TextUtils.isEmpty(paramMiniAppInfo.firstPage.pagePath)))
     {
       if (paramMiniAppInfo.firstPage.pagePath.startsWith("/")) {
@@ -196,7 +198,7 @@ public class MiniAppInfoLoadTask
         paramMiniAppInfo.launchParam.scene = 1044;
       }
       if (!TextUtils.isEmpty(paramMiniAppInfo.launchParam.reportData)) {
-        break label280;
+        break label292;
       }
       paramMiniAppInfo.launchParam.reportData = paramMiniAppInfo.reportData;
     }
@@ -214,7 +216,7 @@ public class MiniAppInfoLoadTask
       }
       paramMiniAppInfo.launchParam.entryPath = (paramMiniAppInfo.firstPage.pagePath + ".html");
       break;
-      label280:
+      label292:
       if (!TextUtils.isEmpty(paramMiniAppInfo.reportData)) {
         paramMiniAppInfo.launchParam.reportData = (paramMiniAppInfo.launchParam.reportData + "&" + paramMiniAppInfo.reportData);
       }

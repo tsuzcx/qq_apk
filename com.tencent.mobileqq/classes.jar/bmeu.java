@@ -1,25 +1,20 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import cooperation.qqreader.ReaderSplashImpl.3.1;
 
 public class bmeu
-  implements View.OnClickListener
+  implements EnterCallback
 {
-  public bmeu(LyricWithBuoyView paramLyricWithBuoyView) {}
+  bmeu(bmer parambmer) {}
   
-  public void onClick(View paramView)
+  public void onCloseLoadingView() {}
+  
+  public void onEnterComplete() {}
+  
+  public void onShowLoadingView(View paramView)
   {
-    bmbx.a("LyricWithBuoyView", "LyricWithBuoyView onClick()");
-    if (LyricWithBuoyView.a(this.a) != null) {
-      LyricWithBuoyView.a(this.a).a();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bmbx.a("LyricWithBuoyView", "onClick() mOnLyricWithBuoyViewOperationListener == null.");
-    }
+    bmer.a(this.a).runOnUiThread(new ReaderSplashImpl.3.1(this, paramView));
   }
 }
 

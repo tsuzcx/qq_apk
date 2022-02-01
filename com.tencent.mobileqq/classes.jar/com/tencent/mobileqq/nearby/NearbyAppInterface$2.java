@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
+import axoc;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,7 +17,7 @@ class NearbyAppInterface$2
       if (!bool) {}
       try
       {
-        DeviceProfileManager.a(this.this$0, 215).a(this.this$0);
+        DeviceProfileManager.a(this.this$0, axoc.j).a(this.this$0);
         this.this$0.d = true;
         return;
       }

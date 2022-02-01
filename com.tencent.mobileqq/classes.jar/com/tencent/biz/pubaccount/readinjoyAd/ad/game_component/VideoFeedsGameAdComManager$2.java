@@ -1,35 +1,35 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.game_component;
 
-import amtj;
 import android.graphics.Color;
 import android.widget.TextView;
-import rvv;
-import tsf;
-import twq;
+import anvx;
+import swu;
+import ugq;
+import ukr;
 
 public class VideoFeedsGameAdComManager$2
   implements Runnable
 {
-  public VideoFeedsGameAdComManager$2(tsf paramtsf) {}
+  public VideoFeedsGameAdComManager$2(ugq paramugq) {}
   
   public void run()
   {
-    if ((tsf.a(this.this$0) != null) && (tsf.a(this.this$0).G != null))
+    if ((ugq.a(this.this$0) != null) && (ugq.a(this.this$0).C != null))
     {
-      tsf.a(this.this$0).G.setTextColor(Color.parseColor("#262626"));
-      if (twq.a()) {
-        tsf.a(this.this$0).G.setTextColor(Color.parseColor("#80000000"));
+      ugq.a(this.this$0).C.setTextColor(Color.parseColor("#262626"));
+      if (ukr.a()) {
+        ugq.a(this.this$0).C.setTextColor(Color.parseColor("#80000000"));
       }
-      tsf.a(this.this$0).G.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      tsf.a(this.this$0).G.setText(amtj.a(2131715229));
-      tsf.a(this.this$0).G.setClickable(false);
-      tsf.a(this.this$0).G.setClickable(false);
+      ugq.a(this.this$0).C.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      ugq.a(this.this$0).C.setText(anvx.a(2131715577));
+      ugq.a(this.this$0).C.setClickable(false);
+      ugq.a(this.this$0).C.setClickable(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.2
  * JD-Core Version:    0.7.0.1
  */

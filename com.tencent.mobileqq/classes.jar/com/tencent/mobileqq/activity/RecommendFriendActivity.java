@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aeca;
-import aecb;
-import aecc;
-import alkh;
-import alkv;
-import amvo;
+import aetf;
+import aetg;
+import aeth;
+import amii;
+import amiw;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -17,11 +16,13 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bjts;
+import anyb;
+import blfe;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -35,12 +36,12 @@ import java.util.List;
 public class RecommendFriendActivity
   extends BaseActivity
 {
-  alkh jdField_a_of_type_Alkh = new aeca(this);
-  private alkv jdField_a_of_type_Alkv;
-  private amvo jdField_a_of_type_Amvo;
+  amii jdField_a_of_type_Amii = new aetf(this);
+  private amiw jdField_a_of_type_Amiw;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bjts jdField_a_of_type_Bjts = new aecc(this);
+  private anyb jdField_a_of_type_Anyb;
+  blfe jdField_a_of_type_Blfe = new aeth(this);
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
   ArrayList<MayKnowRecommend> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -148,34 +149,34 @@ public class RecommendFriendActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131558459);
+    setContentView(2131558461);
     Intent localIntent = getIntent();
     int i = localIntent.getIntExtra("EntranceId", 0);
     paramBundle = localIntent.getStringExtra("uin");
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376679));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376947));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setFitsSystemWindows(true);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.c = ((TextView)findViewById(2131366061));
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131376111));
+    this.c = ((TextView)findViewById(2131366162));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131376358));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this.jdField_a_of_type_Bjts);
-    this.jdField_a_of_type_Alkv = new alkv(this, this.app, this.jdField_a_of_type_ComTencentWidgetSwipListView, i, this.jdField_a_of_type_Alkh);
-    int j = getResources().getDimensionPixelSize(2131297425);
-    this.jdField_a_of_type_Alkv.a(j);
-    this.jdField_a_of_type_Alkv.a(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369115));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this.jdField_a_of_type_Blfe);
+    this.jdField_a_of_type_Amiw = new amiw(this, this.app, this.jdField_a_of_type_ComTencentWidgetSwipListView, i, this.jdField_a_of_type_Amii);
+    int j = getResources().getDimensionPixelSize(2131297426);
+    this.jdField_a_of_type_Amiw.a(j);
+    this.jdField_a_of_type_Amiw.a(paramBundle);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369278));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131693582);
-    setTitle(getString(2131693582));
-    this.b = ((TextView)findViewById(2131369068));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131693766);
+    setTitle(getString(2131693766));
+    this.b = ((TextView)findViewById(2131369231));
     this.b.setVisibility(0);
     this.b.setText("");
-    this.b.setOnClickListener(new aecb(this));
-    this.jdField_a_of_type_Amvo = ((amvo)this.app.getManager(159));
-    ArrayList localArrayList = this.jdField_a_of_type_Amvo.c();
+    this.b.setOnClickListener(new aetg(this));
+    this.jdField_a_of_type_Anyb = ((anyb)this.app.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER));
+    ArrayList localArrayList = this.jdField_a_of_type_Anyb.c();
     try
     {
       paramBundle = (ArrayList)localIntent.getSerializableExtra("may_know_recmmds");
@@ -186,7 +187,7 @@ public class RecommendFriendActivity
       }
       if (localArrayList.size() > 0)
       {
-        this.jdField_a_of_type_Alkv.a(localArrayList);
+        this.jdField_a_of_type_Amiw.a(localArrayList);
         this.c.setVisibility(8);
         return true;
       }
@@ -201,7 +202,7 @@ public class RecommendFriendActivity
         paramBundle = null;
       }
       this.c.setVisibility(0);
-      this.jdField_a_of_type_Amvo.a(4);
+      this.jdField_a_of_type_Anyb.a(4);
     }
     return true;
   }
@@ -209,24 +210,24 @@ public class RecommendFriendActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Alkv != null) {
-      this.jdField_a_of_type_Alkv.c();
+    if (this.jdField_a_of_type_Amiw != null) {
+      this.jdField_a_of_type_Amiw.c();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Alkv != null) {
-      this.jdField_a_of_type_Alkv.a();
+    if (this.jdField_a_of_type_Amiw != null) {
+      this.jdField_a_of_type_Amiw.a();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Alkv != null) {
-      this.jdField_a_of_type_Alkv.b();
+    if (this.jdField_a_of_type_Amiw != null) {
+      this.jdField_a_of_type_Amiw.b();
     }
   }
   
@@ -239,7 +240,7 @@ public class RecommendFriendActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RecommendFriendActivity
  * JD-Core Version:    0.7.0.1
  */

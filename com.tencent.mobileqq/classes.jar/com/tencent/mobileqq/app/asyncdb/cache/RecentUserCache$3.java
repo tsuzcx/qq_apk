@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.asyncdb.cache;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anes;
+import aohi;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RecentUserCache$3
   implements Runnable
 {
-  public RecentUserCache$3(anes paramanes, SharedPreferences paramSharedPreferences) {}
+  public RecentUserCache$3(aohi paramaohi, SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {
@@ -23,8 +23,8 @@ public class RecentUserCache$3
     {
       SQLiteDatabase localSQLiteDatabase = ((QQAppInterface)this.this$0.app).getWritableDatabase();
       String str = this.this$0.getKey(AppConstants.RECOMMEND_CONTACT_UIN, 4000);
-      if (anes.e(this.this$0).containsKey(str)) {
-        anes.f(this.this$0).remove(str);
+      if (aohi.e(this.this$0).containsKey(str)) {
+        aohi.f(this.this$0).remove(str);
       }
       int i = localSQLiteDatabase.delete("recent", "uin=?", new String[] { AppConstants.RECOMMEND_CONTACT_UIN });
       if (QLog.isColorLevel()) {

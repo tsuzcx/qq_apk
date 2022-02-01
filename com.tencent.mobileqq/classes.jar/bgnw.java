@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerPreparedListener.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
 
 public class bgnw
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bgnw(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  public bgnw(RedDotAnimateView paramRedDotAnimateView) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
-    }
-    this.a.runOnUiThread(new VipVideoPlayActivity.VideoPlayerPreparedListener.1(this));
+    this.a.c = ((int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F));
+    this.a.invalidate();
   }
 }
 

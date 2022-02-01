@@ -1,13 +1,16 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import java.util.Date;
+import java.util.List;
 
 public class aiji
 {
-  public View a;
-  public LinearLayout a;
-  public TextView a;
-  public TextView b;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  Date jdField_a_of_type_JavaUtilDate;
+  List<String> jdField_a_of_type_JavaUtilList;
+  String jdField_b_of_type_JavaLangString;
+  Date jdField_b_of_type_JavaUtilDate;
+  String c;
+  String d;
 }
 
 

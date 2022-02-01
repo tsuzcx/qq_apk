@@ -1,46 +1,32 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class aejk
-  extends axld
+  implements DialogInterface.OnClickListener
 {
-  public aejk(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public aejk(NotificationActivity paramNotificationActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TextPreviewTranslateActivity.b(this.a);
-    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
+    try
     {
-      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
+      bdla.b(null, "P_CliOper", "Safe_StartAppCheck", "", "DIALOG_PACKAGE_INVALID", "LeftButton", 0, 0, "", "", "", "");
+      this.a.finish();
       return;
     }
-    String str2 = this.a.getResources().getString(2131698411);
-    String str1 = str2;
-    if (paramTranslateResult != null)
+    catch (Exception paramDialogInterface)
     {
-      if (TextUtils.isEmpty(paramTranslateResult.e)) {
-        break label92;
-      }
-      str1 = paramTranslateResult.e;
-    }
-    for (;;)
-    {
-      QQToast.a(this.a, 1, str1, 0).a();
-      return;
-      label92:
-      str1 = str2;
-      if (paramTranslateResult.a()) {
-        str1 = this.a.getResources().getString(2131698398);
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejk
  * JD-Core Version:    0.7.0.1
  */

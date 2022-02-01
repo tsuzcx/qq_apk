@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aoai;
-import aoat;
-import aoav;
-import aoly;
+import apdk;
+import apdv;
+import apdx;
+import apoz;
 import com.tencent.mobileqq.ar.ARArguments;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -15,7 +15,7 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector
 public class ScanGLRenderEnvFragment
   extends ScanGLRenderBaseFragment
 {
-  private aoav a;
+  private apdx a;
   
   public static ScanGLRenderEnvFragment a(ARArguments paramARArguments)
   {
@@ -28,35 +28,35 @@ public class ScanGLRenderEnvFragment
   
   private void c()
   {
-    boolean bool = aoat.a();
+    boolean bool = apdv.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("initVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      if (this.jdField_a_of_type_Aoav == null)
+      if (this.jdField_a_of_type_Apdx == null)
       {
-        this.jdField_a_of_type_Aoav = new aoav(getActivity());
-        aoai.a().a(this.jdField_a_of_type_Aoav);
+        this.jdField_a_of_type_Apdx = new apdx(getActivity());
+        apdk.a().a(this.jdField_a_of_type_Apdx);
       }
-      aoly localaoly = this.jdField_a_of_type_Aoly;
-      if (localaoly != null) {
-        localaoly.a(this.jdField_a_of_type_Aoav);
+      apoz localapoz = this.jdField_a_of_type_Apoz;
+      if (localapoz != null) {
+        localapoz.a(this.jdField_a_of_type_Apdx);
       }
     }
   }
   
   private void d()
   {
-    boolean bool = aoat.a();
+    boolean bool = apdv.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("unInitVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      aoly localaoly = this.jdField_a_of_type_Aoly;
-      if (localaoly != null) {
-        localaoly.a(null);
+      apoz localapoz = this.jdField_a_of_type_Apoz;
+      if (localapoz != null) {
+        localapoz.a(null);
       }
-      aoai.a().b(this.jdField_a_of_type_Aoav);
-      if (this.jdField_a_of_type_Aoav != null) {
-        this.jdField_a_of_type_Aoav = null;
+      apdk.a().b(this.jdField_a_of_type_Apdx);
+      if (this.jdField_a_of_type_Apdx != null) {
+        this.jdField_a_of_type_Apdx = null;
       }
     }
   }

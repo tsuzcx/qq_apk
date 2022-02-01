@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import amsw;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.text.style.URLSpan;
 import android.view.View;
-import bcef;
-import bftc;
+import anvk;
+import bdla;
+import bhbu;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
@@ -57,29 +58,29 @@ class TroopRequestActivity$NumberSpan
       label194:
       for (paramView = "0";; paramView = "1")
       {
-        bcef.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str, paramView, "", "");
+        bdla.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str, paramView, "", "");
         TroopUtils.openTroopInfoActivity(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, (Bundle)localObject, 2);
         return;
         i = 0;
         break;
       }
     }
-    if (((amsw)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app.getManager(51)).b(this.jdField_a_of_type_JavaLangString))
+    if (((anvk)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.jdField_a_of_type_JavaLangString))
     {
       localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_JavaLangString, 1);
       paramView = "";
       if (this.b)
       {
         if (i != 11) {
-          break label479;
+          break label480;
         }
         paramView = "0";
       }
     }
     for (;;)
     {
-      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "", paramView, "", "");
-      bftc.a("Grp_contacts_news", "notice", "see_fromdata", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "", paramView });
+      bdla.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "", paramView, "", "");
+      bhbu.a("Grp_contacts_news", "notice", "see_fromdata", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "", paramView });
       ProfileActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, (ProfileActivity.AllInOne)localObject);
       return;
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 2) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get() == 3))
@@ -91,7 +92,7 @@ class TroopRequestActivity$NumberSpan
       localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_JavaLangString, 24);
       TroopUtils.prepareTroopNotifyData(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, (ProfileActivity.AllInOne)localObject);
       break;
-      label479:
+      label480:
       if ((i == 3) || (i == 15) || (i == 16)) {
         paramView = "1";
       } else if ((i == 6) || (i == 7)) {
@@ -109,7 +110,7 @@ class TroopRequestActivity$NumberSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRequestActivity.NumberSpan
  * JD-Core Version:    0.7.0.1
  */

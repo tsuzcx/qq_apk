@@ -1,30 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class admq
-  implements View.OnClickListener
+public final class admq
+  implements DialogInterface.OnClickListener
 {
-  public admq(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public admq(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, adnm paramadnm, Bundle paramBundle) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (System.currentTimeMillis() - this.a.a < 2000L)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (HongbaoShowerActivity.a(this.a) == 0) {}
-    for (String str = "1";; str = "2")
-    {
-      bcef.b(localQQAppInterface, "dc01440", "", "", "0X80077EA", "0X80077EA", 0, 0, str, "", "", "");
-      break;
-    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Adnm, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

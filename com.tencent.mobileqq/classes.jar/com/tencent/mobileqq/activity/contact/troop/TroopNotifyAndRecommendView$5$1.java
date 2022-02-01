@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import aijs;
-import aike;
-import ailp;
+import ajep;
+import ajfb;
+import ajgm;
 
 public class TroopNotifyAndRecommendView$5$1
   implements Runnable
 {
-  public TroopNotifyAndRecommendView$5$1(ailp paramailp) {}
+  public TroopNotifyAndRecommendView$5$1(ajgm paramajgm) {}
   
   public void run()
   {

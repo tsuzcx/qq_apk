@@ -1,78 +1,33 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x935.oidb_0x935.GPS;
+import org.json.JSONObject;
 
 class amzr
-  extends SosoInterface.OnLocationListener
+  implements ankw
 {
-  amzr(amzp paramamzp, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  amzr(amzo paramamzo, String paramString) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopManagerImp", 2, "onLocationFinish errCode: " + paramInt + ", info: " + paramSosoLbsInfo);
-    }
-    if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-      return;
-    }
-    if (paramInt != 0)
+    try
     {
-      this.a.a(2L, null, 22);
-      return;
-    }
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
-    {
-      double d3 = paramSosoLbsInfo.mLocation.mLon02;
-      double d4 = paramSosoLbsInfo.mLocation.mLat02;
-      double d1 = paramSosoLbsInfo.mLocation.altitude;
-      int j = (int)paramSosoLbsInfo.mLocation.accuracy;
-      String str1 = paramSosoLbsInfo.mLocation.mProviderSource;
-      String str2 = paramSosoLbsInfo.mLocation.mVerifyKey;
-      int k = paramSosoLbsInfo.mLocation.fakeReason;
-      double d2 = paramSosoLbsInfo.mLocation.locationTime;
-      float f = paramSosoLbsInfo.mLocation.speed;
-      String str3 = paramSosoLbsInfo.mLocation.cityCode;
-      paramInt = 0;
-      try
-      {
-        int i = Integer.parseInt(str3);
-        paramInt = i;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("RecommendTroopManagerImp", 1, "parse cityCode error");
-        }
-      }
       if (QLog.isColorLevel()) {
-        QLog.d("RecommendTroopManagerImp", 2, "onLocationFinish longitude=" + d3 + ", latitude=" + d4 + ", accuracy=" + j + ", verifyKey=" + str2 + ", source=" + str1 + ", fakeReason=" + k + ", speed=" + f + ", locationTime=" + d2);
+        QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "[onVerifyResult], retCode:", Integer.valueOf(paramInt) });
       }
-      d3 = Double.valueOf(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D).intValue();
-      d4 = Double.valueOf(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D).intValue();
-      paramSosoLbsInfo = new oidb_0x935.GPS();
-      paramSosoLbsInfo.uint32_latitude.set((int)d3);
-      paramSosoLbsInfo.uint32_longitude.set((int)d4);
-      paramSosoLbsInfo.uint32_altitude.set((int)d1);
-      paramSosoLbsInfo.uint32_accuracy.set(j);
-      paramSosoLbsInfo.uint32_time.set((int)d2);
-      paramSosoLbsInfo.uint32_cityid.set(paramInt);
-      paramSosoLbsInfo.bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.4.8"));
-      paramSosoLbsInfo.uint32_client.set(2);
-      this.a.a(2L, paramSosoLbsInfo, 22);
+      ApolloCmdChannel localApolloCmdChannel = amwn.a();
+      if (localApolloCmdChannel != null)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("packName", this.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("result", paramInt);
+        localApolloCmdChannel.callbackFromRequest(amzo.a(this.jdField_a_of_type_Amzo), 0, "cs.file_correctness_check.local", localJSONObject.toString());
+      }
       return;
     }
-    this.a.a(2L, null, 22);
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
+    }
   }
 }
 

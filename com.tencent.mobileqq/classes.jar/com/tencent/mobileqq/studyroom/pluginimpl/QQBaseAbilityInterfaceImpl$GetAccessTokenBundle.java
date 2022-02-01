@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.studyroom.pluginimpl;
 
 import android.os.Bundle;
-import aumd;
+import avry;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.concurrent.Callable;
@@ -23,16 +23,16 @@ final class QQBaseAbilityInterfaceImpl$GetAccessTokenBundle
   {
     Bundle[] arrayOfBundle = new Bundle[1];
     AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    aumd localaumd = new aumd();
+    avry localavry = new avry();
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    localaumd.a(localAppInterface, this.pluginAppID, BaseApplicationImpl.getContext(), this.appId, new QQBaseAbilityInterfaceImpl.GetAccessTokenBundle.1(this, localaumd, arrayOfBundle, localCountDownLatch));
+    localavry.a(localAppInterface, this.pluginAppID, BaseApplicationImpl.getContext(), this.appId, new QQBaseAbilityInterfaceImpl.GetAccessTokenBundle.1(this, localavry, arrayOfBundle, localCountDownLatch));
     localCountDownLatch.await();
     return arrayOfBundle[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.pluginimpl.QQBaseAbilityInterfaceImpl.GetAccessTokenBundle
  * JD-Core Version:    0.7.0.1
  */

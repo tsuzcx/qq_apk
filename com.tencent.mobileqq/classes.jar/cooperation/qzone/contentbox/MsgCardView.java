@@ -1,19 +1,21 @@
 package cooperation.qzone.contentbox;
 
-import amtj;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anvr;
-import anwa;
-import bcef;
+import anvx;
+import aoyr;
+import aoza;
+import bdla;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -53,6 +55,7 @@ public class MsgCardView
   private ViewGroup mPicContainer;
   private RoundCornerLinearLayout mPicView;
   public QQDailyArkView mQQDailyArkView;
+  private ImageView mQcircleBG;
   private RelativeLayout mTitleContainer;
   private TextView mTitleDes;
   private TextView mTitleTime;
@@ -73,20 +76,21 @@ public class MsgCardView
     super(paramContext);
     this.mContext = paramContext;
     this.app = paramQQAppInterface;
-    LayoutInflater.from(this.mContext).inflate(2131562347, this);
-    this.mTitleContainer = ((RelativeLayout)findViewById(2131378747));
-    this.mTitleTime = ((TextView)findViewById(2131378803));
-    this.mTitleDes = ((TextView)findViewById(2131378749));
-    this.mPicView = ((RoundCornerLinearLayout)findViewById(2131371424));
+    LayoutInflater.from(this.mContext).inflate(2131562415, this);
+    this.mTitleContainer = ((RelativeLayout)findViewById(2131379040));
+    this.mTitleTime = ((TextView)findViewById(2131379096));
+    this.mTitleDes = ((TextView)findViewById(2131379042));
+    this.mPicContainer = ((ViewGroup)findViewById(2131371610));
+    this.mPicView = ((RoundCornerLinearLayout)findViewById(2131371609));
     this.mPicView.setRadius(CARD_RADIUS);
-    this.mMoreView = ((RoundCornerLinearLayout)findViewById(2131371442));
+    this.mMoreView = ((RoundCornerLinearLayout)findViewById(2131371628));
     this.mMoreView.setRadius(CARD_RADIUS);
-    this.mMoreContainer = ((FrameLayout)findViewById(2131371443));
-    this.mFeedTitleTv = ((TextView)findViewById(2131371432));
-    this.mFeedsContainer = ((LinearLayout)findViewById(2131371431));
-    this.mDateTv = ((TextView)findViewById(2131371465));
-    this.mPicContainer = ((ViewGroup)findViewById(2131371425));
-    this.mQQDailyArkView = ((QQDailyArkView)findViewById(2131362954));
+    this.mMoreContainer = ((FrameLayout)findViewById(2131371629));
+    this.mFeedTitleTv = ((TextView)findViewById(2131371618));
+    this.mFeedsContainer = ((LinearLayout)findViewById(2131371617));
+    this.mDateTv = ((TextView)findViewById(2131371651));
+    this.mQQDailyArkView = ((QQDailyArkView)findViewById(2131362971));
+    this.mQcircleBG = ((ImageView)findViewById(2131371611));
   }
   
   private BaseMsgView getFirstChild()
@@ -99,7 +103,7 @@ public class MsgCardView
     long l = System.currentTimeMillis() - paramLong;
     if (l < 3600000L)
     {
-      this.mTitleTime.setText(amtj.a(2131706063));
+      this.mTitleTime.setText(anvx.a(2131706415));
       return;
     }
     l /= 3600000L;
@@ -168,8 +172,9 @@ public class MsgCardView
       this.mMoreView.removeAllViews();
       this.msgPhotoView = null;
     }
-    label900:
-    label910:
+    label214:
+    label356:
+    label1132:
     for (;;)
     {
       return;
@@ -187,76 +192,63 @@ public class MsgCardView
         this.mDateTv.setVisibility(0);
         this.mTitleContainer.setVisibility(8);
         if (!paramBoolean1) {
-          break label797;
+          break label738;
         }
         this.mTitleDes.setTextColor(-1);
         this.mDateTv.setTextColor(-1);
         this.mTitleTime.setTextColor(-11580352);
         this.mFeedsContainer.setBackgroundColor(-15263977);
-        this.mPicContainer.setBackgroundResource(2130848407);
-        this.mMoreContainer.setBackgroundResource(2130848407);
+        this.mPicContainer.setBackgroundResource(2130848499);
+        this.mMoreContainer.setBackgroundResource(2130848499);
         this.mFeedTitleTv.setTextColor(-5723992);
-        this.mFeedTitleTv.setBackgroundResource(2130848382);
-        label197:
-        this.mPicContainer.setPadding(ViewUtils.dip2px(5.0F), 0, ViewUtils.dip2px(5.0F), 0);
+        this.mFeedTitleTv.setBackgroundResource(2130848473);
+        this.mQcircleBG.setImageDrawable(getResources().getDrawable(2130844046));
+        this.mPicContainer.setPadding(ViewUtils.dip2px(5.0F), ViewUtils.dip2px(5.0F), ViewUtils.dip2px(5.0F), ViewUtils.dip2px(5.0F));
         this.mPicView.removeAllViews();
-        if (paramBoolean2)
-        {
-          localObject = new TextView(this.mContext);
-          ((TextView)localObject).setPadding(ViewUtils.dip2px(12.0F), 0, 0, 0);
-          ((TextView)localObject).setGravity(16);
-          ((TextView)localObject).setTextSize(17.0F);
-          if (!paramBoolean1) {
-            break label878;
-          }
-          i = -198683;
-          label280:
-          ((TextView)localObject).setTextColor(i);
-          if ((paramMQMsg.msgType == 10) || (paramMQMsg.msgType == 11)) {
-            ((TextView)localObject).setTypeface(Typeface.DEFAULT_BOLD);
-          }
-          ((TextView)localObject).setText(paramMQMsg.title);
-          this.mPicView.addView((View)localObject, new LinearLayout.LayoutParams(-1, ViewUtils.dip2px(51.0F)));
-          localObject = new View(this.mContext);
-          if (!paramBoolean1) {
-            break label886;
-          }
-          i = -15066598;
-          label367:
-          ((View)localObject).setBackgroundColor(i);
-          this.mPicView.addView((View)localObject, new LinearLayout.LayoutParams(-1, 1));
+        if (paramMQMsg.msgType != 12) {
+          break label844;
         }
+        localObject = new MsgTitleView(this.mContext);
+        ((MsgTitleView)localObject).setData(paramMQMsg, paramBoolean1);
+        ((MsgTitleView)localObject).setMsgOnClickListener(this.msgOnClickListener);
+        this.mPicView.addView((View)localObject);
+        localObject = new View(this.mContext);
+        if (!paramBoolean1) {
+          break label836;
+        }
+        i = -15066598;
+        ((View)localObject).setBackgroundColor(i);
+        this.mPicView.addView((View)localObject, new LinearLayout.LayoutParams(-1, 1));
+        findViewById(2131371611).setVisibility(0);
         this.msgPhotoView = new MsgPhotoView(this.mContext);
         this.msgPhotoView.setApp(this.app);
         localObject = this.msgPhotoView;
         if (this.mLastPos != paramInt) {
-          break label894;
+          break label1030;
         }
         paramBoolean2 = true;
-        label435:
         ((MsgPhotoView)localObject).setData(paramBoolean2, paramMQMsg, paramBoolean1);
         this.msgPhotoView.setMsgOnClickListener(this.msgOnClickListener);
         this.mPicView.addView(this.msgPhotoView);
         this.mLastPos = paramInt;
-        if ((paramMQMsg.bottomCell == null) || (paramMQMsg.bottomCell.userAvatar == null) || (paramMQMsg.bottomCell.userAvatar.size() <= 0)) {
-          break label900;
+        if (paramMQMsg.msgType != 12) {
+          break label1036;
         }
-        this.mMoreView.removeAllViews();
-        localObject = new MsgMoreView(this.mContext);
-        ((MsgMoreView)localObject).setData(paramMQMsg, paramBoolean1);
-        ((MsgMoreView)localObject).setMsgOnClickListener(this.msgOnClickListener);
-        this.mMoreView.setVisibility(0);
-        this.mMoreView.addView((View)localObject);
+        localObject = new MsgMoreViewV2(this.mContext, this.app);
+        ((MsgMoreViewV2)localObject).setData(paramMQMsg, paramBoolean1);
+        ((MsgMoreViewV2)localObject).setMsgOnClickListener(this.msgOnClickListener);
+        this.mPicView.addView((View)localObject);
+        this.mMoreContainer.setVisibility(8);
       }
       for (;;)
       {
-        if ((!anwa.a(paramMQMsg.expand)) || (!anwa.a(paramMQMsg.pushTime))) {
-          break label910;
+        if ((!aoza.a(paramMQMsg.expand)) || (!aoza.a(paramMQMsg.pushTime))) {
+          break label1132;
         }
         this.mQQDailyArkView.setVisibility(0);
         this.mQQDailyArkView.setDarkMode(paramBoolean1);
         paramMQMsg = paramMQMsg.expand;
-        localObject = anwa.a((String)paramMQMsg.get("metaData"));
+        localObject = aoza.a((String)paramMQMsg.get("metaData"));
         if (this.mQQDailyArkView.a()) {
           break;
         }
@@ -264,7 +256,7 @@ public class MsgCardView
         if (QLog.isColorLevel()) {
           QLog.d("MsgCardView", 1, "QQDailyArkView exposed");
         }
-        bcef.b(null, "dc00898", "", "", "0X800AC01", "0X800AC01", 0, 0, "", "", "", "");
+        bdla.b(null, "dc00898", "", "", "0X800AC01", "0X800AC01", 0, 0, "", "", "", "");
         this.mQQDailyArkView.setExpReported(true);
         if (!(this.mContext instanceof QZoneMsgActivity)) {
           break;
@@ -276,26 +268,63 @@ public class MsgCardView
         updateTimeText(paramMQMsg.pushTime * 1000L);
         this.mTitleContainer.setVisibility(0);
         break label117;
-        label797:
         this.mTitleDes.setTextColor(-16777216);
         this.mDateTv.setTextColor(-16777216);
         this.mTitleTime.setTextColor(-5196865);
         this.mFeedsContainer.setBackgroundColor(-1);
-        this.mPicContainer.setBackgroundResource(2130848406);
-        this.mMoreContainer.setBackgroundResource(2130848406);
+        this.mPicContainer.setBackgroundResource(2130848498);
+        this.mMoreContainer.setBackgroundResource(2130848498);
         this.mFeedTitleTv.setTextColor(-16578534);
-        this.mFeedTitleTv.setBackgroundResource(2130848381);
-        break label197;
-        label878:
-        i = -16578534;
-        break label280;
-        label886:
+        this.mFeedTitleTv.setBackgroundResource(2130848472);
+        this.mQcircleBG.setImageDrawable(getResources().getDrawable(2130844047));
+        break label214;
         i = -1315339;
-        break label367;
-        label894:
+        break label321;
+        if (!paramBoolean2) {
+          break label356;
+        }
+        localObject = new TextView(this.mContext);
+        ((TextView)localObject).setPadding(ViewUtils.dip2px(12.0F), 0, 0, 0);
+        ((TextView)localObject).setGravity(16);
+        ((TextView)localObject).setTextSize(17.0F);
+        if (paramBoolean1)
+        {
+          i = -198683;
+          ((TextView)localObject).setTextColor(i);
+          if ((paramMQMsg.msgType == 10) || (paramMQMsg.msgType == 11)) {
+            ((TextView)localObject).setTypeface(Typeface.DEFAULT_BOLD);
+          }
+          ((TextView)localObject).setText(paramMQMsg.title);
+          this.mPicView.addView((View)localObject, new LinearLayout.LayoutParams(-1, ViewUtils.dip2px(51.0F)));
+          localObject = new View(this.mContext);
+          if (!paramBoolean1) {
+            break label1022;
+          }
+        }
+        label1022:
+        for (i = -15066598;; i = -1315339)
+        {
+          ((View)localObject).setBackgroundColor(i);
+          this.mPicView.addView((View)localObject, new LinearLayout.LayoutParams(-1, 1));
+          break;
+          i = -16578534;
+          break label899;
+        }
         paramBoolean2 = false;
-        break label435;
-        this.mMoreContainer.setVisibility(8);
+        break label399;
+        if ((paramMQMsg.bottomCell != null) && (paramMQMsg.bottomCell.userAvatar != null) && (paramMQMsg.bottomCell.userAvatar.size() > 0))
+        {
+          this.mMoreView.removeAllViews();
+          localObject = new MsgMoreView(this.mContext);
+          ((MsgMoreView)localObject).setData(paramMQMsg, paramBoolean1);
+          ((MsgMoreView)localObject).setMsgOnClickListener(this.msgOnClickListener);
+          this.mMoreView.setVisibility(0);
+          this.mMoreView.addView((View)localObject);
+        }
+        else
+        {
+          this.mMoreContainer.setVisibility(8);
+        }
       }
     }
   }

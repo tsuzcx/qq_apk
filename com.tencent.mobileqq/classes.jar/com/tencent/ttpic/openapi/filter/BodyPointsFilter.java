@@ -12,10 +12,10 @@ public class BodyPointsFilter
 {
   public static final String FRAGMENT_SHADER = " precision highp float;\n void main()\n {\n     gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n }\n";
   public static final String VERTEX_SHADER = "attribute vec4 position;\n\nvoid main() {\n    gl_Position = position;\n}";
-  private int BODY_POINTS_COUNT = 59;
-  float[] lineVertex = new float[this.BODY_POINTS_COUNT * 4];
+  private int bodyPointsCount = 59;
+  float[] lineVertex = new float[this.bodyPointsCount * 4];
   private boolean mNoPoints = true;
-  float[] pointsVertex = new float[this.BODY_POINTS_COUNT * 2];
+  float[] pointsVertex = new float[this.bodyPointsCount * 2];
   
   public BodyPointsFilter()
   {
@@ -76,7 +76,7 @@ public class BodyPointsFilter
     {
       GLES20.glLineWidth(4.0F);
       setDrawMode(AEOpenRenderConfig.DRAW_MODE.LINES);
-      setCoordNum(this.BODY_POINTS_COUNT * 2);
+      setCoordNum(this.bodyPointsCount * 2);
       setPositions(this.lineVertex);
       GlUtil.setBlendMode(true);
       OnDrawFrameGLSL();
@@ -84,7 +84,7 @@ public class BodyPointsFilter
       GlUtil.setBlendMode(false);
       GLES20.glLineWidth(8.0F);
       setDrawMode(AEOpenRenderConfig.DRAW_MODE.POINTS);
-      setCoordNum(this.BODY_POINTS_COUNT);
+      setCoordNum(this.bodyPointsCount);
       setPositions(this.pointsVertex);
       GlUtil.setBlendMode(true);
       OnDrawFrameGLSL();
@@ -95,12 +95,12 @@ public class BodyPointsFilter
   
   public void setBodyPointsSize(int paramInt)
   {
-    this.BODY_POINTS_COUNT = paramInt;
+    this.bodyPointsCount = paramInt;
   }
   
   public void updatePoints(List<PointF> paramList, int paramInt1, int paramInt2)
   {
-    if ((paramList == null) || (paramList.size() != this.BODY_POINTS_COUNT))
+    if ((paramList == null) || (paramList.size() != this.bodyPointsCount))
     {
       this.mNoPoints = true;
       return;

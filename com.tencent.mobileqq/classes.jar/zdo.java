@@ -1,17 +1,11 @@
-import android.app.Activity;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.7.1;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
 
-public class zdo
-  implements zko
+abstract interface zdo
 {
-  zdo(zdg paramzdg) {}
+  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
   
-  public void a(int paramInt)
-  {
-    if (zdg.q(this.a) != null) {
-      zdg.r(this.a).runOnUiThread(new DetailBaseBlock.7.1(this));
-    }
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

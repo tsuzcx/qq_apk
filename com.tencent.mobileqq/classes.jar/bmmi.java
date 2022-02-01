@@ -1,39 +1,70 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.open.base.MD5Utils;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import java.io.File;
+import java.util.HashMap;
 
 class bmmi
-  implements View.OnClickListener
+  implements Downloader.DownloadListener
 {
-  bmmi(bmmh parambmmh, int paramInt, bmmj parambmmj) {}
+  bmmi(bmmh parambmmh, bmlm parambmlm, String paramString1, String paramString2, argx paramargx) {}
   
-  public void onClick(View paramView)
+  public void onDownloadCanceled(String paramString)
   {
-    if (this.jdField_a_of_type_Int == bmmh.a(this.jdField_a_of_type_Bmmh))
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    QZLog.i("VipARQGLoaderManager", 2, "onDownloadCanceled = " + paramString);
+    if (this.jdField_a_of_type_Bmlm != null) {
+      this.jdField_a_of_type_Bmlm.b("download canceld url = " + paramString);
     }
-    bmmh.a(this.jdField_a_of_type_Bmmh, this.jdField_a_of_type_Int);
-    bmmh.a(this.jdField_a_of_type_Bmmh).a(bmmh.a(this.jdField_a_of_type_Bmmh), ((Integer)bmmh.a(this.jdField_a_of_type_Bmmh).get(this.jdField_a_of_type_Int)).intValue(), this.jdField_a_of_type_Int, bmmh.b(this.jdField_a_of_type_Bmmh));
-    bmmh.a(this.jdField_a_of_type_Bmmh, this.jdField_a_of_type_Bmmj, this.jdField_a_of_type_Int);
-    if ("adapter_extract".equals(bmmh.a(this.jdField_a_of_type_Bmmh)))
-    {
-      bmbg.a().a().f = "ai_color";
-      bmbg.a().a().h = -1;
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    QZLog.i("VipARQGLoaderManager", 2, "onDownloadFailed = " + paramString);
+    if (this.jdField_a_of_type_Bmlm != null) {
+      this.jdField_a_of_type_Bmlm.b("download fail url = " + paramString);
     }
-    for (;;)
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    QZLog.i("VipARQGLoaderManager", 2, "onDownloadSucceed = " + paramString);
+    paramString = QzoneZipCacheHelper.getBasePath("vip_qg", String.valueOf(this.jdField_a_of_type_JavaLangString.hashCode()));
+    paramDownloadResult = MD5Utils.encodeFileHexStr(this.b);
+    if (this.jdField_a_of_type_Argx != null) {
+      QZLog.i("VipARQGLoaderManager", 1, "download fileMD5 = " + paramDownloadResult + " config.md5 = " + this.jdField_a_of_type_Argx.c);
+    }
+    if ((this.jdField_a_of_type_Argx != null) && (!TextUtils.isEmpty(paramDownloadResult)) && (paramDownloadResult.equalsIgnoreCase(this.jdField_a_of_type_Argx.c)))
     {
-      bmbg.a().a().g = bmmh.b(this.jdField_a_of_type_Bmmh);
-      bmbc.a().s();
-      break;
-      if ("adapter_fix".equals(bmmh.a(this.jdField_a_of_type_Bmmh)))
+      paramDownloadResult = new File(this.b);
+      QzoneZipCacheHelper.unzipFile(paramDownloadResult.getAbsolutePath(), paramString);
+      if (paramDownloadResult.exists()) {
+        FileUtil.deleteFile(paramDownloadResult);
+      }
+      if (new File(paramString).exists())
       {
-        bmbg.a().a().f = "common_color";
-        bmbg.a().a().h = (this.jdField_a_of_type_Int + 1);
+        QZLog.i("VipARQGLoaderManager", 1, "download success file exist start put to map = " + paramString);
+        bmmh.a(this.jdField_a_of_type_Bmmh).put(this.jdField_a_of_type_JavaLangString, paramString);
+        if (this.jdField_a_of_type_Bmlm != null) {
+          this.jdField_a_of_type_Bmlm.a(paramString);
+        }
       }
     }
+    while (this.jdField_a_of_type_Bmlm == null)
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Bmlm == null);
+      this.jdField_a_of_type_Bmlm.b("download success but the file is not exist");
+      return;
+    }
+    this.jdField_a_of_type_Bmlm.b("download success but the file md5 is not match");
   }
 }
 

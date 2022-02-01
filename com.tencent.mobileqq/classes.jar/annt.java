@@ -1,36 +1,65 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.io.File;
 
 public class annt
+  extends annv
+  implements annx
 {
-  public static boolean a(int paramInt)
+  public annt(anny paramanny)
   {
-    return (paramInt == -2000) || (paramInt == -20000) || (paramInt == -3004) || (paramInt == -3005) || (paramInt == -3000) || (paramInt == -3001) || (paramInt == -1032);
+    super(null, paramanny);
+    this.jdField_a_of_type_Annx = this;
   }
   
-  public static boolean a(MessageRecord paramMessageRecord)
+  public static String a(String paramString)
   {
-    int i = paramMessageRecord.msgtype;
-    return (i == -2011) || (i == -2060) || (i == -2065) || (i == -5008) || (i == -5010) || (i == -2050) || (i == -1051) || (i == -2021) || (i == -2018) || (i == -4502);
+    paramString = Utils.Crc64String(paramString);
+    return "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/" + paramString + ".zip";
   }
   
-  public static boolean b(int paramInt)
+  public void a(annv paramannv, String paramString1, String paramString2, String paramString3)
   {
-    return paramInt == -2022;
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return (paramInt == -2005) || (paramInt == -2014) || (paramInt == -2017);
-  }
-  
-  public static boolean d(int paramInt)
-  {
-    return paramInt == -1035;
-  }
-  
-  public static boolean e(int paramInt)
-  {
-    return paramInt == -2011;
+    this.jdField_a_of_type_Int = 1;
+    bhyo localbhyo = new bhyo(paramString1, new File(paramString2));
+    localbhyo.p = true;
+    localbhyo.n = true;
+    localbhyo.f = "apollo_gif";
+    localbhyo.b = 1;
+    localbhyo.q = true;
+    localbhyo.r = true;
+    localbhyo.a(new annu(this, paramString1, paramString2, paramString3));
+    paramannv = BaseApplicationImpl.getApplication();
+    if (paramannv != null)
+    {
+      paramannv = paramannv.getRuntime();
+      if (!(paramannv instanceof QQAppInterface)) {}
+    }
+    for (paramannv = (QQAppInterface)paramannv;; paramannv = null)
+    {
+      if (paramannv != null)
+      {
+        paramannv = (bhyq)paramannv.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
+        if (paramannv != null)
+        {
+          paramannv = paramannv.a(3);
+          if (paramannv != null) {
+            paramannv.a(localbhyo, localbhyo.a(), null);
+          }
+        }
+      }
+      for (int i = 0;; i = 1)
+      {
+        if (i != 0) {
+          ThreadManager.executeOnNetWorkThread(new QQFrameZipDecoder.2(this, localbhyo));
+        }
+        return;
+      }
+    }
   }
 }
 

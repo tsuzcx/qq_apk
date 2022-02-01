@@ -1,40 +1,62 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-class sik
-  extends ptj
+public class sik
+  extends omw
 {
-  sik(sig paramsig) {}
+  private WeakReference<sij> a;
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public sik(sij paramsij)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "handleDoFavoriteResult isSuccess = " + paramBoolean + ", operationType = " + paramInt + ", cid = " + paramString2);
-    }
-    if (TextUtils.isEmpty(paramString1)) {}
-    while (!sig.a(this.a).contains(paramString1)) {
+    this.a = new WeakReference(paramsij);
+  }
+  
+  private void a(VideoInfo paramVideoInfo, sij paramsij)
+  {
+    if (paramsij == null) {}
+    while (paramVideoInfo == null) {
       return;
     }
-    paramString2 = new QQToast(sig.a(this.a));
-    paramString2.d(2000);
+    ThreadManager.post(new VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1(this, paramsij, paramVideoInfo), 5, null, true);
+  }
+  
+  protected void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    boolean bool = paramBundle.getBoolean("is_from_first_recommend_video");
+    sij localsij = (sij)this.a.get();
+    if (localsij == null) {}
+    while (!bool) {
+      return;
+    }
+    Object localObject1 = (VideoInfo.EntranceDownloadInfo)paramBundle.getParcelable("value_entrance_download_info");
+    if (localObject1 != null)
+    {
+      sij.a(localsij, (VideoInfo.EntranceDownloadInfo)localObject1);
+      return;
+    }
+    sij.a(localsij, paramBundle.getString("VALUE_COOKIE"));
+    Object localObject2 = null;
+    localObject1 = localObject2;
     if (paramBoolean)
     {
-      paramString2.a(QQToast.a(2));
-      paramString2.c(2131692037);
-      paramString2.b(sig.a(this.a).getResources().getDimensionPixelSize(2131299076) - (int)bfvh.a(sig.a(this.a), 5.0F));
+      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+      localObject1 = localObject2;
+      if (paramBundle != null)
+      {
+        localObject1 = localObject2;
+        if (paramBundle.size() > 0)
+        {
+          localObject1 = (VideoInfo)paramBundle.get(0);
+          sij.a(localsij, (VideoInfo)localObject1);
+        }
+      }
     }
-    for (;;)
-    {
-      sig.a(this.a).remove(paramString1);
-      return;
-      paramString2.a(QQToast.a(1));
-      paramString2.c(2131692038);
-      paramString2.b(sig.a(this.a).getResources().getDimensionPixelSize(2131299076) - (int)bfvh.a(sig.a(this.a), 5.0F));
-    }
+    a((VideoInfo)localObject1, localsij);
   }
 }
 

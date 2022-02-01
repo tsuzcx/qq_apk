@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import atyn;
+import avec;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.persistence.unique;
 public class GameUserInfo
   extends Entity
 {
-  public static final String TAG = atyn.a + "GameUserInfo";
+  public static final String TAG = avec.a + "GameUserInfo";
   public String mAppId;
   public String mFaceUrl;
   public String mLevelPic;

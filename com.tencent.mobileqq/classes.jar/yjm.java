@@ -1,54 +1,32 @@
-import android.app.Activity;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
-public class yjm
-  extends yju<yjh, yjh>
+class yjm
+  extends vzx
 {
-  private int a;
-  public WeakReference<Activity> a;
+  yjm(yjc paramyjc) {}
   
-  public yjm(@NonNull Activity paramActivity, int paramInt)
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, yjh paramyjh)
-  {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null)
+    if ((yjc.a(this.a) == null) || (yjc.a(this.a).a == null))
     {
-      xvv.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
-      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
+      ykq.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
       return;
     }
-    Object localObject = paramyjh.jdField_a_of_type_Yjl.jdField_a_of_type_JavaLangString;
-    paramJobContext = (JobContext)localObject;
-    if (!paramyjh.jdField_a_of_type_Yjl.jdField_b_of_type_Boolean)
+    String str = yjc.a(this.a).a.a;
+    if (!TextUtils.equals(str, paramStoryPushMsg.d))
     {
-      paramJobContext = (JobContext)localObject;
-      if (paramyjh.jdField_a_of_type_Yjl.jdField_a_of_type_Boolean) {
-        paramJobContext = paramyjh.jdField_a_of_type_Yjl.jdField_b_of_type_JavaLangString;
-      }
-    }
-    localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
-    int i = ((BitmapFactory.Options)localObject).outWidth;
-    int j = ((BitmapFactory.Options)localObject).outHeight;
-    if (this.jdField_a_of_type_Int == 5) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramyjh.jdField_a_of_type_Yjn = new yjn(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
-      paramyjh.jdField_a_of_type_JavaLangString = paramJobContext;
-      super.notifyResult(paramyjh);
+      ykq.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
       return;
     }
+    switch (paramStoryPushMsg.a)
+    {
+    case 16: 
+    case 17: 
+    default: 
+      return;
+    }
+    this.a.a(new ygl[] { new ygg(yfo.a(str)), (ygl)this.a.b.a(), new ygf(new yjn(this, str)) });
   }
 }
 

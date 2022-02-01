@@ -1,38 +1,45 @@
-import android.app.Activity;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aclu
-  extends ackb
+  extends acls
 {
-  public boolean b;
-  protected String c;
-  public String d;
-  public String e;
-  
-  public aclu(Activity paramActivity, int paramInt, String paramString1, String paramString2)
+  public aclu(JSONObject paramJSONObject)
   {
-    super(paramActivity, paramInt, paramString1);
-    this.c = paramString2;
+    a(paramJSONObject);
   }
   
-  protected Map<String, acjs> a()
+  public String a()
   {
-    return acme.a();
+    String str = super.a();
+    try
+    {
+      Object localObject = new JSONObject(str);
+      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("patchUrl", this.b);
+      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("PatchLogTag", 1, "DexPatchItemConfigArtLM writeToJsonString", localJSONException);
+    }
+    return str;
   }
   
-  public boolean b()
+  protected void a(JSONObject paramJSONObject)
   {
-    return this.jdField_b_of_type_Int == 2;
-  }
-  
-  protected void c()
-  {
-    ackg.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, new aclv(this));
+    super.a(paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
+    this.b = paramJSONObject.optString("patchUrl", null);
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aclu
  * JD-Core Version:    0.7.0.1
  */

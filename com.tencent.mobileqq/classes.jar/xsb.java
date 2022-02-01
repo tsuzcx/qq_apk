@@ -1,13 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xsb
-  implements DialogInterface.OnDismissListener
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wql>
 {
-  public xsb(StoryListPresenter.4.1 param1) {}
+  public xsb(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  {
+    super(paramQQStoryShareGroupProfileActivity);
+  }
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wql paramwql)
+  {
+    if (!paramQQStoryShareGroupProfileActivity.g) {
+      return;
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwql);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wql.class;
+  }
 }
 
 

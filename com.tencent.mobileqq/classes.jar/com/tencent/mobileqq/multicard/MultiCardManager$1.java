@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.multicard;
 
-import awas;
-import awau;
+import axgu;
+import axgw;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +15,7 @@ import mqq.os.MqqHandler;
 public class MultiCardManager$1
   implements Runnable
 {
-  public MultiCardManager$1(awas paramawas, ArrayList paramArrayList, long paramLong, awau paramawau) {}
+  public MultiCardManager$1(axgu paramaxgu, ArrayList paramArrayList, long paramLong, axgw paramaxgw) {}
   
   public void run()
   {
@@ -22,7 +23,7 @@ public class MultiCardManager$1
     Object localObject2;
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      localObject1 = (TroopManager)awas.a(this.this$0).getManager(52);
+      localObject1 = (TroopManager)axgu.a(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER);
       localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -37,10 +38,10 @@ public class MultiCardManager$1
     {
       localObject2 = new StringBuilder().append("callbackWithNativeMemberNick ").append(this.jdField_a_of_type_Long).append(" ");
       if (localHashMap == null) {
-        break label217;
+        break label218;
       }
     }
-    label217:
+    label218:
     for (Object localObject1 = localHashMap.size() + localHashMap.toString();; localObject1 = "null")
     {
       QLog.d("MultiCardManager", 2, (String)localObject1);

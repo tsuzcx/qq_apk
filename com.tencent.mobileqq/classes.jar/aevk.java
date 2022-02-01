@@ -1,9 +1,8 @@
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.view.View;
 
 public abstract interface aevk
 {
-  public abstract void queryHasSetNotify(Bundle paramBundle1, @Nullable Bundle paramBundle2);
+  public abstract void a(View paramView, int paramInt);
 }
 
 

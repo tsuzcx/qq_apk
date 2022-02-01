@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import avkm;
+import awqr;
 
 public class LyricViewController$10
   implements Runnable
 {
-  public LyricViewController$10(avkm paramavkm) {}
+  public LyricViewController$10(awqr paramawqr) {}
   
   public void run()
   {
-    avkm.a(this.this$0).a(this.this$0.a.a());
+    awqr.a(this.this$0).a(this.this$0.a.a());
   }
 }
 

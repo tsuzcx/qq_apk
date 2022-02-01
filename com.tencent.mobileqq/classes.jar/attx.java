@@ -1,25 +1,26 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader.RequestLoadedImgTask;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class attx
-  implements URLDrawableHandler
+final class attx
+  implements View.OnClickListener
 {
-  public attx(NearbyImgLoader.RequestLoadedImgTask paramRequestLoadedImgTask) {}
+  attx(Activity paramActivity, String paramString) {}
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public void onClick(View paramView)
   {
-    return false;
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BasePluginActivity)) {
+      auea.a(((BasePluginActivity)this.jdField_a_of_type_AndroidAppActivity).getOutActivity(), this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      auea.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    }
   }
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
 }
 
 

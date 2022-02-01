@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.activity.leba;
 
-import ajej;
-import amvb;
-import auxa;
+import ajzx;
+import anxo;
+import awcz;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +13,7 @@ import java.util.List;
 public class LebaMgrDataLogic$2
   implements Runnable
 {
-  public LebaMgrDataLogic$2(ajej paramajej, List paramList) {}
+  public LebaMgrDataLogic$2(ajzx paramajzx, List paramList) {}
   
   public void run()
   {
@@ -25,8 +26,8 @@ public class LebaMgrDataLogic$2
     localObject = (QQAppInterface)localObject;
     long l = NetConnInfoCenter.getServerTime();
     QLog.i("leba_sort_LebaMgrDataLogic", 1, "saveUserSortInfo " + this.a + ", time" + l + ", type" + this.this$0.a);
-    amvb.a(((QQAppInterface)localObject).getPreferences(), this.a, Long.valueOf(l), this.this$0.a);
-    ((auxa)((QQAppInterface)localObject).getBusinessHandler(128)).a(this.a, l, this.this$0.a);
+    anxo.a(((QQAppInterface)localObject).getPreferences(), this.a, Long.valueOf(l), this.this$0.a);
+    ((awcz)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.COMMPLGUGIN_HANDLER)).a(this.a, l, this.this$0.a);
   }
 }
 

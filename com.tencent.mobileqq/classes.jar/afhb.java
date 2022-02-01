@@ -1,80 +1,36 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class afhb
+  implements View.OnClickListener
 {
-  public static float a(float paramFloat, int paramInt)
-  {
-    return Math.abs(paramFloat) / paramInt;
-  }
+  public afhb(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public static int a(int paramInt)
+  public void onClick(View paramView)
   {
-    int i = paramInt;
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-      i = paramInt + 100;
-    }
-    return i;
-  }
-  
-  public static int a(int paramInt1, int paramInt2)
-  {
-    int j = 1;
-    int i;
-    if ((paramInt1 == 0) && (paramInt2 == 1)) {
-      i = j;
+    ProfileActivity.AllInOne localAllInOne;
+    if (((anvk)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(TroopRequestActivity.a(this.a))) {
+      localAllInOne = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 1);
     }
     for (;;)
     {
-      try
-      {
-        boolean bool = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-        paramInt1 = i;
-        if (bool) {
-          paramInt1 = i + 100;
-        }
-        return paramInt1;
-      }
-      catch (Exception localException) {}
-      if ((paramInt1 == 1) && (paramInt2 == 0))
-      {
-        i = 2;
-      }
-      else if ((paramInt1 == 1) && (paramInt2 == 2))
-      {
-        i = 3;
-      }
-      else if ((paramInt1 == 2) && (paramInt2 == 1))
-      {
-        i = 4;
-      }
-      else if ((paramInt1 == 0) && (paramInt2 == 2))
-      {
-        i = 7;
-      }
-      else
-      {
-        i = j;
-        if (paramInt1 == 2)
-        {
-          i = j;
-          if (paramInt2 == 0) {
-            i = 6;
-          }
-        }
-      }
+      bdla.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
+      ProfileActivity.b(this.a, localAllInOne);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localAllInOne = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 24);
+      TroopUtils.prepareTroopNotifyData(this.a.a, localAllInOne);
     }
-    return i;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 4) || (paramInt == 7) || (paramInt == 203) || (paramInt == 104) || (paramInt == 107) || (paramInt == 303);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return paramInt <= 107;
   }
 }
 

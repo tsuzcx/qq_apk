@@ -1,20 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.view.View;
 
-class sin
-  extends sif
+public abstract interface sin
 {
-  sin(sig paramsig) {}
+  public abstract void a(View paramView);
   
-  public int a()
-  {
-    return 3;
-  }
+  public abstract void a(View paramView, int paramInt);
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    sig.a(this.a).c(paramString + "&sourcefrom=6");
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  
+  public abstract void b(View paramView);
 }
 
 

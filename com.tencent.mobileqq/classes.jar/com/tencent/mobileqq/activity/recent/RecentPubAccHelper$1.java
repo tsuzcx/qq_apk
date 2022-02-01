@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.recent;
 
-import akmc;
+import alhu;
 
 public class RecentPubAccHelper$1
   implements Runnable
 {
-  public RecentPubAccHelper$1(akmc paramakmc) {}
+  public RecentPubAccHelper$1(alhu paramalhu) {}
   
   public void run()
   {

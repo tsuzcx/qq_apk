@@ -2,22 +2,30 @@ package com.tencent.biz.pubaccount.weishi_new.download;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import apdf;
+import aqgj;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import mqq.util.WeakReference;
-import umu;
-import unj;
-import unq;
-import uvr;
-import uya;
-import uyo;
+import vau;
+import vbj;
+import vbq;
+import vkf;
+import vmp;
+import vnd;
 
 public class RockDownloadPresenter
 {
   private WSDownloadParams jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams;
   private RockDownloadListener jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloadListener;
+  
+  private int a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene;
+    }
+    return 1;
+  }
   
   private RockDownloadListener a(Activity paramActivity, RockDownloadListenerWrapper paramRockDownloadListenerWrapper)
   {
@@ -34,8 +42,8 @@ public class RockDownloadPresenter
   
   public RockDownloadInfo a()
   {
-    int i = umu.a().c();
-    String str2 = umu.a().c();
+    int i = vau.a().c();
+    String str2 = vau.a().c();
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = a();
@@ -46,11 +54,11 @@ public class RockDownloadPresenter
   public void a(Activity paramActivity, RockDownloadInfo paramRockDownloadInfo, int paramInt, WSDownloadParams paramWSDownloadParams, RockDownloadListenerWrapper paramRockDownloadListenerWrapper)
   {
     if ((paramActivity != null) && (paramInt == 3)) {
-      unj.a(paramActivity);
+      vbj.a(paramActivity);
     }
-    if (unq.c())
+    if (vbq.c())
     {
-      uya.d("RockDownloader", "已有正在下载的任务，不响应");
+      vmp.d("RockDownloader", "已有正在下载的任务，不响应");
       return;
     }
     WSDownloadParams localWSDownloadParams = paramWSDownloadParams;
@@ -58,54 +66,54 @@ public class RockDownloadPresenter
       localWSDownloadParams = new WSDownloadParams();
     }
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams = localWSDownloadParams;
-    uvr.a(localWSDownloadParams, 1);
-    WSPublicAccReport.getInstance().reportDownload(localWSDownloadParams.mEventId, paramInt, 1, 1, 0);
+    vkf.a(localWSDownloadParams, 1);
+    WSPublicAccReport.getInstance().reportDownload(localWSDownloadParams.mEventId, paramInt, 1, 1, 0, localWSDownloadParams.mScene);
     if (paramInt == 1)
     {
-      apdf.a(paramRockDownloadInfo, a(paramActivity, paramRockDownloadListenerWrapper));
-      uya.d("RockDownloader", "执行预下载Rock下载 " + paramRockDownloadInfo.toString());
+      aqgj.a(paramRockDownloadInfo, a(paramActivity, paramRockDownloadListenerWrapper));
+      vmp.d("RockDownloader", "执行预下载Rock下载 " + paramRockDownloadInfo.toString());
       return;
     }
-    uyo.b(localWSDownloadParams.mScheme);
-    apdf.a(paramRockDownloadInfo, a(paramActivity, paramRockDownloadListenerWrapper));
-    uya.d("RockDownloader", "执行可call起安装Rock下载 " + paramRockDownloadInfo.toString());
+    vnd.b(localWSDownloadParams.mScheme);
+    aqgj.a(paramRockDownloadInfo, a(paramActivity, paramRockDownloadListenerWrapper));
+    vmp.d("RockDownloader", "执行可call起安装Rock下载 " + paramRockDownloadInfo.toString());
   }
   
   public boolean a(RockDownloadInfo paramRockDownloadInfo)
   {
-    boolean bool = apdf.a(paramRockDownloadInfo);
+    boolean bool = aqgj.a(paramRockDownloadInfo);
     if (bool)
     {
-      uya.b("RockDownloader", "rockdownload deleteSuccess");
+      vmp.b("RockDownloader", "rockdownload deleteSuccess");
       return bool;
     }
     if (paramRockDownloadInfo.realVersionCode == 333)
     {
-      uya.b("RockDownloader", "rockdownload 模拟 deleteFail");
+      vmp.b("RockDownloader", "rockdownload 模拟 deleteFail");
       return bool;
     }
-    uya.b("RockDownloader", "rockdownload deleteFail");
+    vmp.b("RockDownloader", "rockdownload deleteFail");
     return bool;
   }
   
   public boolean a(RockDownloadInfo paramRockDownloadInfo, int paramInt)
   {
-    boolean bool = apdf.b(paramRockDownloadInfo);
-    int i = unq.b();
+    boolean bool = aqgj.b(paramRockDownloadInfo);
+    int i = vbq.b();
     if (bool)
     {
-      uya.d("RockDownloader", "rockdownload installSuccess,eventType = " + i);
-      uvr.a(paramInt, 1);
-      WSPublicAccReport.getInstance().reportDownload(unq.a(), i, 2, 1, 1);
+      vmp.d("RockDownloader", "rockdownload installSuccess,eventType = " + i);
+      vkf.a(paramInt, 1);
+      WSPublicAccReport.getInstance().reportDownload(vbq.a(), i, 2, 1, 1, a());
       return bool;
     }
-    uya.d("RockDownloader", "rockdownload installFail,eventType = " + i);
+    vmp.d("RockDownloader", "rockdownload installFail,eventType = " + i);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.download.RockDownloadPresenter
  * JD-Core Version:    0.7.0.1
  */

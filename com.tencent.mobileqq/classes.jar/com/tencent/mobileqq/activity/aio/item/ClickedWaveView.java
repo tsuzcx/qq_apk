@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afxy;
-import agkg;
+import agqo;
+import ahcw;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -21,7 +21,7 @@ public class ClickedWaveView
 {
   static final int jdField_a_of_type_Int = AIOUtils.dp2px(0.01F, BaseApplicationImpl.getContext().getResources());
   static final int b = AIOUtils.dp2px(60.0F, BaseApplicationImpl.getContext().getResources());
-  afxy jdField_a_of_type_Afxy = null;
+  agqo jdField_a_of_type_Agqo = null;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   Scroller jdField_a_of_type_AndroidWidgetScroller = null;
@@ -69,8 +69,8 @@ public class ClickedWaveView
     for (;;)
     {
       return bool;
-      if (this.jdField_a_of_type_Afxy != null) {
-        this.jdField_a_of_type_Afxy.a();
+      if (this.jdField_a_of_type_Agqo != null) {
+        this.jdField_a_of_type_Agqo.a();
       }
       if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable))) {
         ((CustomFrameAnimationDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).unscheduleSelf((Runnable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
@@ -78,15 +78,15 @@ public class ClickedWaveView
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(jdField_a_of_type_Int, 0, b, 0, 900);
       this.c = jdField_a_of_type_Int;
       this.d = 30;
-      agkg.a(this, this.jdField_a_of_type_AndroidOsBundle.getInt("type"), this.jdField_a_of_type_AndroidOsBundle.getInt("id"));
+      ahcw.a(this, this.jdField_a_of_type_AndroidOsBundle.getInt("type"), this.jdField_a_of_type_AndroidOsBundle.getInt("id"));
       postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$MovingRadiusRunnable, 20L);
       return true;
       setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable))) {
         ((CustomFrameAnimationDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).d();
       }
-      if ((paramMotionEvent.getAction() == 1) && (this.jdField_a_of_type_Afxy != null)) {
-        this.jdField_a_of_type_Afxy.a(this.jdField_a_of_type_AndroidOsBundle);
+      if ((paramMotionEvent.getAction() == 1) && (this.jdField_a_of_type_Agqo != null)) {
+        this.jdField_a_of_type_Agqo.a(this.jdField_a_of_type_AndroidOsBundle);
       }
     }
   }
@@ -101,9 +101,9 @@ public class ClickedWaveView
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public void setOnTouchReceive(afxy paramafxy)
+  public void setOnTouchReceive(agqo paramagqo)
   {
-    this.jdField_a_of_type_Afxy = paramafxy;
+    this.jdField_a_of_type_Agqo = paramagqo;
   }
 }
 

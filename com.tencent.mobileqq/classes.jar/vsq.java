@@ -1,29 +1,21 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import rx.Observable;
+import rx.functions.Func1;
 
 public class vsq
-  implements View.OnFocusChangeListener
+  implements Func1<Drawable, Bitmap>
 {
-  public vsq(StoryInputBarView paramStoryInputBarView) {}
+  public vsq(RoundImageView paramRoundImageView) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public Bitmap a(Drawable paramDrawable)
   {
-    if (!paramBoolean) {
-      this.a.a();
+    paramDrawable = RoundImageView.a(this.a, paramDrawable);
+    if (paramDrawable == null) {
+      Observable.error(new Throwable("bitmap is null"));
     }
-    while (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Xgj.jdField_a_of_type_Boolean);
-    this.a.jdField_a_of_type_Xgj.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-    paramView = this.a;
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramView.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
+    return paramDrawable;
   }
 }
 

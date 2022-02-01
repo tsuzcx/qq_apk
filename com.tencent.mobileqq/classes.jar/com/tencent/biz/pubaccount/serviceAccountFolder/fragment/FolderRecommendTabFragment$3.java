@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import uaq;
-import uaw;
+import uon;
+import uot;
 
 class FolderRecommendTabFragment$3
   implements Runnable
@@ -15,20 +15,20 @@ class FolderRecommendTabFragment$3
   
   public void run()
   {
-    Object localObject = uaw.a();
-    List localList = ((uaw)localObject).a();
+    Object localObject = uot.a();
+    List localList = ((uot)localObject).a();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
     {
-      uaq localuaq = (uaq)localIterator.next();
-      if (FolderRecommendTabFragment.a(this.this$0, localuaq.a))
+      uon localuon = (uon)localIterator.next();
+      if (FolderRecommendTabFragment.a(this.this$0, localuon.a))
       {
-        localArrayList.add(localuaq);
+        localArrayList.add(localuon);
         localIterator.remove();
       }
     }
-    ((uaw)localObject).a(localList);
+    ((uot)localObject).a(localList);
     localObject = Message.obtain();
     ((Message)localObject).arg1 = this.a;
     ((Message)localObject).obj = localList;
@@ -39,7 +39,7 @@ class FolderRecommendTabFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.intimate.IntimateScoreCardView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QWalletHelper;
 
-public class aftt
-  implements Animator.AnimatorListener
+final class aftt
+  extends aofu
 {
-  public aftt(IntimateScoreCardView paramIntimateScoreCardView) {}
+  aftt(SessionInfo paramSessionInfo) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  protected void onOIDB0X88D_0_Ret(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
   {
-    onAnimationEnd(paramAnimator);
+    if (paramBoolean)
+    {
+      QWalletHelper.saveLastUpdateToopMemberNumTime(this.a.curFriendUin);
+      if (QLog.isColorLevel()) {
+        QLog.d("PlusPanelUtils", 2, "onOIDB0X88D_0_Ret 群uin：" + this.a.curFriendUin + " 群成员个数：" + paramTroopInfo.wMemberNum);
+      }
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    IntimateScoreCardView.a(this.a).setAlpha(1.0F);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

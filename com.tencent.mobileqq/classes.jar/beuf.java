@@ -1,86 +1,45 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.StoryUploadProcessor;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
-final class beuf
-  implements bexj
+class beuf
+  implements azla
 {
-  beuf(boolean paramBoolean, String paramString, QQAppInterface paramQQAppInterface, long paramLong) {}
+  beuf(beue parambeue) {}
   
-  private void a(int paramInt, String paramString)
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    if (paramInt == 0) {}
-    for (;;)
+    return null;
+  }
+  
+  public void onSend(azlb paramazlb)
+  {
+    if (paramazlb.jdField_b_of_type_Int == 0)
     {
-      try
-      {
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          bcef.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800B448", "0X800B448", 0, 0, String.valueOf(beue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString)), String.valueOf(this.jdField_a_of_type_Long), "1", "");
-          if ((paramInt != 0) && (BaseActivity.sTopActivity != null))
-          {
-            if (paramInt != 41005) {
-              break label171;
-            }
-            if (this.jdField_a_of_type_Boolean) {
-              QQToast.a(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131719297), 0).a();
-            }
-          }
-          paramString = (bety)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(171);
-          if (paramString != null) {
-            break;
-          }
-        }
-        else
-        {
-          bcef.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800B448", "0X800B448", 0, 0, String.valueOf(beue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString)), String.valueOf(this.jdField_a_of_type_Long), "2", "");
-          continue;
-        }
-        if (paramInt != 41020) {
-          break label203;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      label171:
-      QQToast.a(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131719298), 0).a();
-      continue;
-      label203:
-      if ((paramInt != 41004) && (paramInt != 41005) && (paramInt != 41012)) {
-        QQToast.a(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131719299), 0).a();
-      }
+      this.a.a.c = paramazlb.jdField_b_of_type_JavaLangString;
+      this.a.a.a = paramazlb.c;
+      beue.a(this.a);
+      beue.a(this.a, new ErrorMessage());
+      return;
     }
-    Object localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    if (localObject != null)
+    if ((paramazlb.jdField_b_of_type_Int == StoryUploadProcessor.makeStoryErrorCoder(940010)) && (beue.a(this.a).getAndIncrement() < 2))
     {
-      localObject = ((TroopManager)localObject).b(this.jdField_a_of_type_JavaLangString);
-      if (localObject != null) {
-        paramString.a(Long.parseLong(this.jdField_a_of_type_JavaLangString), (int)((TroopInfo)localObject).dwGroupClassExt, new Long(this.jdField_a_of_type_Long));
-      }
+      beue.b(this.a);
+      ykq.d("tribe_publish_TribeVideoFileObject", "retry load file");
+      return;
     }
+    beue.c(this.a);
+    paramazlb = new ErrorMessage(paramazlb.jdField_b_of_type_Int, paramazlb.a);
+    beue.a(this.a, paramazlb);
   }
   
-  public void a(int paramInt, String paramString, Object paramObject)
-  {
-    a(paramInt, paramString);
-  }
-  
-  public void a(Object paramObject)
-  {
-    a(0, "");
-  }
+  public void updateMsg(azlb paramazlb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beuf
  * JD-Core Version:    0.7.0.1
  */

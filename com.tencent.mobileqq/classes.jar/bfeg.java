@@ -1,33 +1,17 @@
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfeg
+  implements View.OnClickListener
 {
-  public static <T extends bfeh> T a(Class<T> paramClass)
-  {
-    try
-    {
-      paramClass = (bfeh)Class.forName(paramClass.getName()).newInstance();
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
-  }
+  public bfeg(NewTroopCreateActivity paramNewTroopCreateActivity) {}
   
-  public static <T extends Thread> T a(Class<T> paramClass)
+  public void onClick(View paramView)
   {
-    try
-    {
-      paramClass = (TroopUploadingThread)Class.forName(paramClass.getName()).newInstance();
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

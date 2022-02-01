@@ -1,15 +1,10 @@
-import android.animation.ValueAnimator;
+import android.graphics.Bitmap;
 
-public class yej
-  implements yei
+public abstract interface yej
 {
-  public void a(ValueAnimator paramValueAnimator) {}
+  public abstract Bitmap a(Bitmap paramBitmap);
   
-  public void b(ValueAnimator paramValueAnimator) {}
-  
-  public void c(ValueAnimator paramValueAnimator) {}
-  
-  public void d(ValueAnimator paramValueAnimator) {}
+  public abstract String a();
 }
 
 

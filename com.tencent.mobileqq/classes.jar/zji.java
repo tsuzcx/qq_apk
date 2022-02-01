@@ -1,12 +1,16 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Matrix;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
-final class zji
-  implements TypeEvaluator<Matrix>
+class zji
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
+  zji(zjh paramzjh, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return null;
+    paramValueAnimator = (zjk)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
   }
 }
 

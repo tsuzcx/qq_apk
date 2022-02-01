@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aezn;
-import ahek;
+import afqz;
+import ahzc;
 
 public class CmGameChatPie$10
   implements Runnable
 {
-  public CmGameChatPie$10(ahek paramahek) {}
+  public CmGameChatPie$10(ahzc paramahzc) {}
   
   public void run()
   {

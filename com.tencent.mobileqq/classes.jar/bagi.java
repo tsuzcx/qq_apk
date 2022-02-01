@@ -1,13 +1,24 @@
-import android.media.MediaFormat;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
 
 public class bagi
+  extends anyz
 {
-  public int a = -1;
-  public MediaFormat a;
-  public String a;
-  public int b = -1;
-  public MediaFormat b;
-  public String b;
+  public bagi(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  
+  protected void onInsertIntoBlackList(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, false);
+    }
+  }
+  
+  protected void onRemoveFromBlackList(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, true);
+    }
+  }
 }
 
 

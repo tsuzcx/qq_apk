@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.util;
 
 import android.text.TextUtils;
-import babj;
+import bbhs;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame;
@@ -25,18 +25,18 @@ public final class ReportBadCase$3
     String str;
     for (;;)
     {
-      synchronized (babj.a())
+      synchronized (bbhs.a())
       {
-        j = babj.a().size();
+        j = bbhs.a().size();
         arrayOfBadDataFrame = new BadcaseReportUtils.BadDataFrame[j];
         i = 0;
         if (i < j)
         {
-          arrayOfBadDataFrame[i] = ((BadcaseReportUtils.BadDataFrame)babj.a().get(i));
+          arrayOfBadDataFrame[i] = ((BadcaseReportUtils.BadDataFrame)bbhs.a().get(i));
           i += 1;
           break;
         }
-        babj.a().clear();
+        bbhs.a().clear();
         if ((arrayOfBadDataFrame == null) || (arrayOfBadDataFrame.length <= 0))
         {
           if (QLog.isColorLevel()) {
@@ -77,7 +77,7 @@ public final class ReportBadCase$3
       if ((localBadDataFrame.mZipSuccess) && (localBadDataFrame.zipPath != null) && (!"".equals(localBadDataFrame.zipPath))) {}
       try
       {
-        babj.a(localBadDataFrame, babj.b(), m, (String)???, str);
+        bbhs.a(localBadDataFrame, bbhs.b(), m, (String)???, str);
         j += 1;
       }
       catch (Exception localException)

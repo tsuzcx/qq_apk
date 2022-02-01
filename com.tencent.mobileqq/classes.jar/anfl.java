@@ -1,23 +1,87 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.barrage.BarrageView;
+import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class anfl
-  implements Comparator<File>
+class anfl
+  implements ampw
 {
-  public anfl(CleanCache paramCleanCache) {}
+  anfl(anfk paramanfk) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloViewController", 2, new Object[] { "[onCompleteRender] taskId=", Integer.valueOf(paramInt1), ", roleName=", paramString, ", errCode=", Integer.valueOf(paramInt2) });
     }
-    return 0;
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName null");
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (!anfk.a(this.a).containsKey(paramString))
+          {
+            QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName not showing");
+            return;
+          }
+          if ((anfk.a(this.a) == null) || (TextUtils.isEmpty(anfk.a(this.a).apolloId)) || (!anfk.a(this.a).apolloId.equals(paramString))) {
+            break;
+          }
+          anfk.b(this.a);
+          if (this.a.c != 5) {
+            this.a.jdField_a_of_type_Int = 1;
+          }
+          paramString = anfk.a(this.a).obtainMessage(18, 1, 0);
+          anfk.a(this.a).sendMessage(paramString);
+          this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
+        } while (TextUtils.isEmpty(anfk.a(this.a)));
+        if (!anfk.a(this.a)) {
+          break;
+        }
+      } while ((anfk.a(this.a) != 1) || (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null));
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.b();
+      return;
+      if (anfk.a(this.a) != 1) {
+        break;
+      }
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.a(true);
+    return;
+    this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a(1, anfk.a(this.a).apolloId, "Bubble");
+    return;
+    synchronized (anfk.a(this.a))
+    {
+      if (anfk.a(this.a).containsKey(paramString))
+      {
+        Message localMessage = anfk.a(this.a).obtainMessage(28);
+        localMessage.obj = paramString;
+        anfk.a(this.a).sendMessage(localMessage);
+        this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
+      }
+      return;
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloViewController", 2, new Object[] { "[onStartRender] taskId=", Integer.valueOf(paramInt), ", roleName=", paramString });
+    }
+    if ((anfk.a(this.a) != null) && (!TextUtils.isEmpty(anfk.a(this.a).apolloId)) && (anfk.a(this.a).apolloId.equals(paramString))) {
+      anfk.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfl
  * JD-Core Version:    0.7.0.1
  */

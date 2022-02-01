@@ -1,5 +1,6 @@
 package com.tencent.biz.ui;
 
+import aakx;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -12,13 +13,12 @@ import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebViewCallbackClient;
 import java.util.ArrayList;
 import java.util.Iterator;
-import zvl;
 
 public class TouchWebView
   extends CustomWebView
   implements WebViewCallbackClient
 {
-  protected zvl helper;
+  protected aakx helper;
   TouchWebView.OnOverScrollHandler l;
   GestureDetector mGesture;
   public float mLastYUp;
@@ -178,9 +178,9 @@ public class TouchWebView
     this.mScrollListenerForBiz = paramOnScrollChangedListener;
   }
   
-  public void setWebViewHelper(zvl paramzvl)
+  public void setWebViewHelper(aakx paramaakx)
   {
-    this.helper = paramzvl;
+    this.helper = paramaakx;
   }
 }
 

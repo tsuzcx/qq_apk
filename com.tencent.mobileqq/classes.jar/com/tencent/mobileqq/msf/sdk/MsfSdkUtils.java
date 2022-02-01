@@ -1790,6 +1790,28 @@ public class MsfSdkUtils
     return false;
   }
   
+  public static boolean isProcessExist(Context paramContext, String paramString)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
+      return false;
+    }
+    paramContext = (ActivityManager)paramContext.getSystemService("activity");
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getRunningAppProcesses();
+      if (paramContext != null)
+      {
+        paramContext = paramContext.iterator();
+        while (paramContext.hasNext()) {
+          if (TextUtils.equals(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName, paramString)) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
   public static boolean isScreenOn(Context paramContext)
   {
     if (paramContext == null) {
@@ -1896,7 +1918,7 @@ public class MsfSdkUtils
     //   14: new 486	java/io/FileInputStream
     //   17: dup
     //   18: aload_0
-    //   19: invokespecial 887	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   19: invokespecial 891	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   22: astore_1
     //   23: aload_2
     //   24: aload_1
@@ -1938,20 +1960,20 @@ public class MsfSdkUtils
     //   4: aload_1
     //   5: ifnonnull +4 -> 9
     //   8: return
-    //   9: new 891	java/io/FileOutputStream
+    //   9: new 895	java/io/FileOutputStream
     //   12: dup
     //   13: aload_0
     //   14: iconst_0
-    //   15: invokespecial 893	java/io/FileOutputStream:<init>	(Ljava/lang/String;Z)V
+    //   15: invokespecial 897	java/io/FileOutputStream:<init>	(Ljava/lang/String;Z)V
     //   18: astore_2
     //   19: aload_1
     //   20: aload_2
     //   21: ldc_w 365
-    //   24: invokevirtual 897	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   24: invokevirtual 901	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
     //   27: aload_2
     //   28: ifnull -20 -> 8
     //   31: aload_2
-    //   32: invokevirtual 898	java/io/FileOutputStream:close	()V
+    //   32: invokevirtual 902	java/io/FileOutputStream:close	()V
     //   35: return
     //   36: astore_0
     //   37: aconst_null
@@ -1959,7 +1981,7 @@ public class MsfSdkUtils
     //   39: aload_1
     //   40: ifnull +7 -> 47
     //   43: aload_1
-    //   44: invokevirtual 898	java/io/FileOutputStream:close	()V
+    //   44: invokevirtual 902	java/io/FileOutputStream:close	()V
     //   47: aload_0
     //   48: athrow
     //   49: astore_0
@@ -2080,7 +2102,7 @@ public class MsfSdkUtils
     //   68: invokespecial 134	java/io/File:<init>	(Ljava/lang/String;)V
     //   71: pop
     //   72: aload 5
-    //   74: invokevirtual 905	java/io/File:listFiles	()[Ljava/io/File;
+    //   74: invokevirtual 909	java/io/File:listFiles	()[Ljava/io/File;
     //   77: astore 5
     //   79: aload 5
     //   81: ifnull +105 -> 186
@@ -2097,7 +2119,7 @@ public class MsfSdkUtils
     //   98: aaload
     //   99: astore 6
     //   101: aload 6
-    //   103: invokevirtual 906	java/io/File:getName	()Ljava/lang/String;
+    //   103: invokevirtual 910	java/io/File:getName	()Ljava/lang/String;
     //   106: new 117	java/lang/StringBuilder
     //   109: dup
     //   110: invokespecial 118	java/lang/StringBuilder:<init>	()V
@@ -2111,7 +2133,7 @@ public class MsfSdkUtils
     //   130: invokevirtual 227	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   133: ifne +38 -> 171
     //   136: aload 6
-    //   138: invokevirtual 906	java/io/File:getName	()Ljava/lang/String;
+    //   138: invokevirtual 910	java/io/File:getName	()Ljava/lang/String;
     //   141: new 117	java/lang/StringBuilder
     //   144: dup
     //   145: invokespecial 118	java/lang/StringBuilder:<init>	()V
@@ -2129,7 +2151,7 @@ public class MsfSdkUtils
     //   176: dup
     //   177: aload 4
     //   179: invokespecial 134	java/io/File:<init>	(Ljava/lang/String;)V
-    //   182: invokevirtual 910	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   182: invokevirtual 914	java/io/File:renameTo	(Ljava/io/File;)Z
     //   185: pop
     //   186: ldc 2
     //   188: monitorexit
@@ -2175,7 +2197,7 @@ public class MsfSdkUtils
     //   5: anewarray 4	java/lang/Object
     //   8: dup
     //   9: iconst_0
-    //   10: ldc_w 920
+    //   10: ldc_w 924
     //   13: aastore
     //   14: dup
     //   15: iconst_1
@@ -2208,8 +2230,8 @@ public class MsfSdkUtils
     //   52: ifnonnull +14 -> 66
     //   55: new 483	java/io/IOException
     //   58: dup
-    //   59: ldc_w 922
-    //   62: invokespecial 923	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   59: ldc_w 926
+    //   62: invokespecial 927	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   65: athrow
     //   66: aload_3
     //   67: invokevirtual 105	java/io/File:exists	()Z
@@ -2221,45 +2243,45 @@ public class MsfSdkUtils
     //   79: invokevirtual 105	java/io/File:exists	()Z
     //   82: ifeq +10 -> 92
     //   85: aload_3
-    //   86: invokevirtual 926	java/io/File:canWrite	()Z
+    //   86: invokevirtual 930	java/io/File:canWrite	()Z
     //   89: ifne +34 -> 123
     //   92: new 483	java/io/IOException
     //   95: dup
     //   96: new 117	java/lang/StringBuilder
     //   99: dup
     //   100: invokespecial 118	java/lang/StringBuilder:<init>	()V
-    //   103: ldc_w 928
+    //   103: ldc_w 932
     //   106: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: aload_3
     //   110: invokevirtual 122	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   113: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   119: invokespecial 923	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   119: invokespecial 927	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   122: athrow
     //   123: aconst_null
     //   124: astore_0
-    //   125: new 930	java/io/OutputStreamWriter
+    //   125: new 934	java/io/OutputStreamWriter
     //   128: dup
-    //   129: new 891	java/io/FileOutputStream
+    //   129: new 895	java/io/FileOutputStream
     //   132: dup
     //   133: aload_3
-    //   134: invokespecial 931	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   134: invokespecial 935	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   137: ldc_w 690
-    //   140: invokespecial 933	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   140: invokespecial 937	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/lang/String;)V
     //   143: astore_3
     //   144: aload_3
     //   145: astore_0
     //   146: aload_3
     //   147: aload_2
-    //   148: invokevirtual 936	java/io/OutputStreamWriter:write	(Ljava/lang/String;)V
+    //   148: invokevirtual 940	java/io/OutputStreamWriter:write	(Ljava/lang/String;)V
     //   151: aload_3
     //   152: astore_0
     //   153: aload_3
-    //   154: invokevirtual 937	java/io/OutputStreamWriter:flush	()V
+    //   154: invokevirtual 941	java/io/OutputStreamWriter:flush	()V
     //   157: aload_3
     //   158: ifnull +7 -> 165
     //   161: aload_3
-    //   162: invokevirtual 938	java/io/OutputStreamWriter:close	()V
+    //   162: invokevirtual 942	java/io/OutputStreamWriter:close	()V
     //   165: return
     //   166: astore 4
     //   168: aconst_null
@@ -2271,7 +2293,7 @@ public class MsfSdkUtils
     //   177: aload_2
     //   178: ifnull -13 -> 165
     //   181: aload_2
-    //   182: invokevirtual 938	java/io/OutputStreamWriter:close	()V
+    //   182: invokevirtual 942	java/io/OutputStreamWriter:close	()V
     //   185: return
     //   186: astore_0
     //   187: return
@@ -2283,7 +2305,7 @@ public class MsfSdkUtils
     //   193: aload_2
     //   194: ifnull +7 -> 201
     //   197: aload_2
-    //   198: invokevirtual 938	java/io/OutputStreamWriter:close	()V
+    //   198: invokevirtual 942	java/io/OutputStreamWriter:close	()V
     //   201: aload_0
     //   202: athrow
     //   203: astore_2

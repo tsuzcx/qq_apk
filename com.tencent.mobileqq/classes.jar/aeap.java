@@ -1,18 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class aeap
-  implements bamo
+  implements Animation.AnimationListener
 {
-  public aeap(QQSettingMe paramQQSettingMe) {}
+  public aeap(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
-      this.a.y();
-    }
+    this.a.f = false;
+    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

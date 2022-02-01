@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.view.Window;
-import bkve;
+import bmgn;
 
 public class ActivityWrapper
 {
@@ -14,7 +14,7 @@ public class ActivityWrapper
   
   public ActivityWrapper(Context paramContext)
   {
-    this.a = bkve.a(paramContext);
+    this.a = bmgn.a(paramContext);
   }
   
   public void finish()

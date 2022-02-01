@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardUinInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
 
-public final class aphq
-  implements Parcelable.Creator<CardUinInfo>
+public class aphq
+  implements View.OnTouchListener
 {
-  public CardUinInfo a(Parcel paramParcel)
-  {
-    return new CardUinInfo(paramParcel);
-  }
+  public aphq(ScanningSurfaceView paramScanningSurfaceView) {}
   
-  public CardUinInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new CardUinInfo[paramInt];
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      ScanningSurfaceView.a(this.a, paramMotionEvent);
+    }
   }
 }
 

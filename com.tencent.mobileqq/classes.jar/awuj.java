@@ -1,13 +1,42 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class awuj
-  implements wxc
+public class awuj
+  extends aslz
 {
-  awuj(awuh paramawuh, awtx paramawtx, Object paramObject) {}
+  public awuj(MatchChatSettingFragment paramMatchChatSettingFragment) {}
   
-  public boolean a(wwz paramwwz, int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean1, ArrayList<asnt> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1, boolean paramBoolean3)
   {
-    return this.jdField_a_of_type_Awtx.a(this.jdField_a_of_type_Awuh, 0, paramInt1, this.jdField_a_of_type_Awuh.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
+    if (QLog.isColorLevel()) {
+      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1 + " chatSwitchOpen:" + paramBoolean2);
+    }
+    if (paramBoolean1) {
+      MatchChatSettingFragment.a(this.a, paramBoolean2);
+    }
+  }
+  
+  protected void f(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean);
+    }
+    MatchChatSettingFragment localMatchChatSettingFragment;
+    if (!paramBoolean)
+    {
+      localMatchChatSettingFragment = this.a;
+      if (MatchChatSettingFragment.a(this.a).a()) {
+        break label61;
+      }
+    }
+    label61:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      MatchChatSettingFragment.a(localMatchChatSettingFragment, paramBoolean);
+      return;
+    }
   }
 }
 

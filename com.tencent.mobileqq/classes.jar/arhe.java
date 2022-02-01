@@ -1,42 +1,72 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
-class arhe
-  extends WtloginObserver
+public class arhe
+  extends aqwt<arhd>
 {
-  arhe(arhc paramarhc) {}
+  @NonNull
+  public arhd a(int paramInt)
+  {
+    return new arhd();
+  }
   
-  public void onCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  @Nullable
+  public arhd a(aqxa[] paramArrayOfaqxa)
+  {
+    if ((paramArrayOfaqxa != null) && (paramArrayOfaqxa.length > 0) && (paramArrayOfaqxa[0] != null))
+    {
+      arhd localarhd = arhd.a(paramArrayOfaqxa[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfaqxa[0].a);
+      }
+      return localarhd;
+    }
+    return null;
+  }
+  
+  public void a(arhd paramarhd)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
+      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramarhd.toString());
     }
-    if (paramInt == 0)
-    {
-      arhc.c(this.a, true);
-      if (arhc.a(this.a) != null)
-      {
-        paramWUserSigInfo = (QQAppInterface)arhc.a(this.a).get();
-        if ((paramWUserSigInfo != null) && (arhf.a().a(paramWUserSigInfo))) {}
-      }
-      else
-      {
-        arhc.a(this.a, false);
-        arhc.b(this.a, false);
-      }
-      return;
-    }
-    arhc.a(this.a, false);
-    arhc.c(this.a, false);
+  }
+  
+  public Class<arhd> clazz()
+  {
+    return arhd.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 361;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arhe
  * JD-Core Version:    0.7.0.1
  */

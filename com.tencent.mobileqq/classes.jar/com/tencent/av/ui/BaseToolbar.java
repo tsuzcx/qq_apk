@@ -29,12 +29,12 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
-import lez;
-import mak;
-import mbp;
-import mbq;
-import mgr;
-import mtz;
+import lfe;
+import mbf;
+import mck;
+import mcl;
+import mhn;
+import mux;
 
 public abstract class BaseToolbar
 {
@@ -52,27 +52,27 @@ public abstract class BaseToolbar
     this.mActivity = new WeakReference(paramAVActivity);
   }
   
-  private static Button CreateImageButton(LinearLayout paramLinearLayout, int paramInt, mbq parammbq)
+  private static Button CreateImageButton(LinearLayout paramLinearLayout, int paramInt, mcl parammcl)
   {
-    if ((paramLinearLayout == null) || (parammbq == null)) {
+    if ((paramLinearLayout == null) || (parammcl == null)) {
       return null;
     }
     Button localButton = new Button(paramLinearLayout.getContext());
     Object localObject = paramLinearLayout.getResources();
-    int i = (int)((Resources)localObject).getDimension(2131297701);
+    int i = (int)((Resources)localObject).getDimension(2131297702);
     localButton.setId(paramInt);
     localButton.setGravity(17);
     localButton.setSingleLine();
-    localButton.setContentDescription(parammbq.jdField_a_of_type_JavaLangString);
+    localButton.setContentDescription(parammcl.jdField_a_of_type_JavaLangString);
     localButton.setBackgroundDrawable(null);
     localButton.setCompoundDrawablePadding(AIOUtils.dp2px(5.0F, (Resources)localObject));
-    localButton.setText(parammbq.jdField_a_of_type_JavaLangString);
+    localButton.setText(parammcl.jdField_a_of_type_JavaLangString);
     localButton.setTextSize(ViewUtils.pxTosp(AIOUtils.dp2px(12.0F, (Resources)localObject)));
-    parammbq = parammbq.jdField_a_of_type_JavaLangString;
+    parammcl = parammcl.jdField_a_of_type_JavaLangString;
     localObject = localButton.getPaint();
-    if ((localObject != null) && (!TextUtils.isEmpty(parammbq)))
+    if ((localObject != null) && (!TextUtils.isEmpty(parammcl)))
     {
-      paramInt = (int)(((TextPaint)localObject).measureText(parammbq) + 0.5F);
+      paramInt = (int)(((TextPaint)localObject).measureText(parammcl) + 0.5F);
       if (QLog.isColorLevel()) {
         QLog.i("", 2, "CreateImageButton textWidth[" + paramInt + "], btn_width[" + i + "]");
       }
@@ -80,9 +80,9 @@ public abstract class BaseToolbar
     }
     for (;;)
     {
-      parammbq = new LinearLayout.LayoutParams(paramInt, -2);
-      parammbq.weight = 1.0F;
-      localButton.setLayoutParams(parammbq);
+      parammcl = new LinearLayout.LayoutParams(paramInt, -2);
+      parammcl.weight = 1.0F;
+      localButton.setLayoutParams(parammcl);
       paramLinearLayout.addView(localButton);
       return localButton;
       paramInt = i;
@@ -100,9 +100,9 @@ public abstract class BaseToolbar
       return;
     }
     Object localObject = paramButton.getResources();
-    int i = (int)((Resources)localObject).getDimension(2131297697);
+    int i = (int)((Resources)localObject).getDimension(2131297698);
     if (paramInt2 > 0) {}
-    for (localObject = mtz.a((Resources)localObject, paramInt1, paramInt2);; localObject = ((Resources)localObject).getDrawable(paramInt1))
+    for (localObject = mux.a((Resources)localObject, paramInt1, paramInt2);; localObject = ((Resources)localObject).getDrawable(paramInt1))
     {
       ((Drawable)localObject).setBounds(0, 0, i, i);
       paramButton.setCompoundDrawables(null, (Drawable)localObject, null, null);
@@ -133,9 +133,9 @@ public abstract class BaseToolbar
     }
   }
   
-  public static void setSelectedListViewItemAndShow(HorizontalListView paramHorizontalListView, mgr parammgr, int paramInt)
+  public static void setSelectedListViewItemAndShow(HorizontalListView paramHorizontalListView, mhn parammhn, int paramInt)
   {
-    if ((!parammgr.a(paramInt)) || ((paramInt >= paramHorizontalListView.getFirstVisiblePosition()) && (paramInt <= paramHorizontalListView.getLastVisiblePosition()))) {
+    if ((!parammhn.a(paramInt)) || ((paramInt >= paramHorizontalListView.getFirstVisiblePosition()) && (paramInt <= paramHorizontalListView.getLastVisiblePosition()))) {
       return;
     }
     int j = 0;
@@ -143,8 +143,8 @@ public abstract class BaseToolbar
     if (paramInt > 0)
     {
       i = j;
-      if (paramInt > parammgr.a()) {
-        i = mgr.jdField_a_of_type_Int * (paramInt - 1);
+      if (paramInt > parammhn.a()) {
+        i = mhn.jdField_a_of_type_Int * (paramInt - 1);
       }
     }
     paramHorizontalListView.resetCurrentX(i);
@@ -204,7 +204,7 @@ public abstract class BaseToolbar
     return getUIInfo().d;
   }
   
-  protected abstract mbq getUIInfo();
+  protected abstract mcl getUIInfo();
   
   public String getUnableInfo()
   {
@@ -279,9 +279,9 @@ public abstract class BaseToolbar
   {
     if (this.mEffectBtn != null)
     {
-      this.mEffectBtn.setTag(2131378168, Boolean.valueOf(true));
+      this.mEffectBtn.setTag(2131378456, Boolean.valueOf(true));
       this.mEffectBtn.performClick();
-      this.mEffectBtn.setTag(2131378168, null);
+      this.mEffectBtn.setTag(2131378456, null);
     }
   }
   
@@ -339,7 +339,7 @@ public abstract class BaseToolbar
       }
     } while (((EffectOperateManager)localObject).a() != getEffectBtnId());
     localObject = new AnimatorSet();
-    ((AnimatorSet)localObject).addListener(new mbp(this));
+    ((AnimatorSet)localObject).addListener(new mck(this));
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleX", new float[] { 1.0F, 1.56F, 1.0F });
     localObjectAnimator1.setDuration(400L);
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleY", new float[] { 1.0F, 1.56F, 1.0F });
@@ -361,7 +361,7 @@ public abstract class BaseToolbar
     {
       paramRelativeLayout = getUnableInfo();
       if (!TextUtils.isEmpty(paramRelativeLayout)) {
-        mak.a(this.mApp, 1010, paramRelativeLayout);
+        mbf.a(this.mApp, 1010, paramRelativeLayout);
       }
       QLog.w(this.TAG, 1, "tryShowToolbar, 失败[" + paramRelativeLayout + "], seq[" + paramLong + "]");
       return false;
@@ -394,21 +394,21 @@ public abstract class BaseToolbar
       if (localObject == null) {
         break;
       }
-      int j = ((mbq)localObject).e;
-      int k = ((mbq)localObject).b;
+      int j = ((mcl)localObject).e;
+      int k = ((mcl)localObject).b;
       if ((bool) && (isEffectBtnEnable())) {
-        if ((((mbq)localObject).c == 0) || (!this.mEffectBtn.isSelected())) {
+        if ((((mcl)localObject).c == 0) || (!this.mEffectBtn.isSelected())) {
           break label270;
         }
       }
       label270:
-      for (int i = ((mbq)localObject).c;; i = j)
+      for (int i = ((mcl)localObject).c;; i = j)
       {
-        k = ((mbq)localObject).jdField_a_of_type_Int;
+        k = ((mcl)localObject).jdField_a_of_type_Int;
         if (this.mEffectBtnRedTouch != null)
         {
           this.mEffectBtnRedTouch.setHostEnable(true);
-          int m = 2131165963;
+          int m = 2131165972;
           j = i;
           i = m;
         }
@@ -421,10 +421,10 @@ public abstract class BaseToolbar
           if (this.mEffectBtnRedTouch != null) {
             this.mEffectBtnRedTouch.setHostEnable(false);
           }
-          i = ((mbq)localObject).b;
+          i = ((mcl)localObject).b;
           continue;
           j = i;
-          i = 2131165963;
+          i = 2131165972;
         }
       }
     }

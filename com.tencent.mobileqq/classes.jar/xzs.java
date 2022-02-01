@@ -1,68 +1,78 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi.2.1;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi.2.2;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.List;
 
-public class xzs
-  implements bjsd
+class xzs
+  extends SimpleJob<Object>
 {
-  xzs(xzq paramxzq) {}
-  
-  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  xzs(xzr paramxzr, String paramString)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.c(l);
-      return;
-    }
+    super(paramString);
   }
   
-  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    long l = System.currentTimeMillis();
+    paramJobContext = (wjf)wjs.a(19);
+    paramVarArgs = paramJobContext.a(wpy.a(this.a.jdField_b_of_type_JavaLangString));
+    boolean bool;
+    wqc localwqc;
+    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1))
     {
-      paramView.b(l);
-      return;
-    }
-  }
-  
-  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
-  {
-    paramListView = (PullRefreshHeader)paramView;
-    long l;
-    if (this.a.jdField_a_of_type_Long == 0L)
-    {
-      l = System.currentTimeMillis();
-      paramListView.a(l);
-      if (!NetworkUtil.isNetworkAvailable(this.a.a())) {
-        break label118;
+      bool = true;
+      List localList = paramJobContext.a(this.a.jdField_b_of_type_JavaLangString, null, 10L);
+      localwqc = new wqc(this.a.c, new ErrorMessage());
+      localwqc.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
+      localwqc.jdField_b_of_type_Boolean = true;
+      localwqc.c = true;
+      localwqc.e = true;
+      localwqc.jdField_a_of_type_Boolean = false;
+      localwqc.jdField_a_of_type_JavaUtilList = localList;
+      if (localList.size() <= 0) {
+        break label246;
       }
-      if (this.a.jdField_a_of_type_Vww != null) {
-        this.a.jdField_a_of_type_Vww.a();
+      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
+      label156:
+      if (paramJobContext != null) {
+        break label251;
       }
-      this.a.g();
-      new Handler(Looper.getMainLooper()).postDelayed(new EditVideoPoi.2.1(this), 300L);
+      localwqc.jdField_a_of_type_Boolean = true;
+      this.a.jdField_b_of_type_Boolean = true;
+      label174:
+      wad.a().dispatch(localwqc);
+      this.a.a(localList, false);
+      if (!localwqc.jdField_a_of_type_Boolean) {
+        break label294;
+      }
     }
-    for (;;)
+    label294:
+    for (paramJobContext = "true";; paramJobContext = "false")
     {
-      ((ainp)paramView.getTag()).a = true;
-      return true;
-      l = this.a.jdField_a_of_type_Long;
+      ykq.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
+      this.a.d();
+      return null;
+      bool = false;
       break;
-      label118:
-      new Handler(Looper.getMainLooper()).postDelayed(new EditVideoPoi.2.2(this), 300L);
+      label246:
+      paramJobContext = null;
+      break label156;
+      label251:
+      if ((paramVarArgs != null) && (paramJobContext.dbIndex >= paramVarArgs.maxCollectionIndex))
+      {
+        localwqc.jdField_a_of_type_Boolean = bool;
+        this.a.jdField_b_of_type_Boolean = true;
+        break label174;
+      }
+      localwqc.jdField_a_of_type_Boolean = false;
+      break label174;
     }
   }
-  
-  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

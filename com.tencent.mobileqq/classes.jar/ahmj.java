@@ -1,8 +1,17 @@
-public abstract interface ahmj
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+
+public class ahmj
+  implements agre
 {
-  public abstract void a();
+  public ahmj(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public abstract void b();
+  public void onUpdate(int paramInt)
+  {
+    if (paramInt == 23) {
+      UnlimitedBladeWorks.a(this.a).start();
+    }
+  }
 }
 
 

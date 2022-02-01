@@ -1,26 +1,14 @@
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import java.io.File;
+import java.io.FileFilter;
 
-public class ysb
-  extends SimpleJob
+class ysb
+  implements FileFilter
 {
-  public ysb(SegmentList paramSegmentList, String paramString)
-  {
-    super(paramString);
-  }
+  ysb(ysa paramysa) {}
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public boolean accept(File paramFile)
   {
-    this.a.a.f();
-    if (SegmentList.a(this.a)) {
-      return null;
-    }
-    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
-    return null;
+    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
   }
 }
 

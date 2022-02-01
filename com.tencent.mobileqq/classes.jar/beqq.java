@@ -1,35 +1,33 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.together.writetogether.client.RoomController;
+import com.tencent.mobileqq.together.writetogether.websocket.HeartBeat;
+import com.tencent.mobileqq.together.writetogether.websocket.WriteTogetherWebSocketSender;
+import java.util.concurrent.LinkedBlockingDeque;
+import okhttp3.Response;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
 
-class beqq
-  implements View.OnClickListener
+public class beqq
+  extends WebSocketListener
 {
-  beqq(beqp parambeqp) {}
+  public beqq(WriteTogetherWebSocketSender paramWriteTogetherWebSocketSender) {}
   
-  public void onClick(View paramView)
+  public void onClosed(WebSocket arg1, int paramInt, String paramString)
   {
-    BaseActivity localBaseActivity = (BaseActivity)beqp.a(this.a).get();
-    if (localBaseActivity != null)
+    this.a.jdField_a_of_type_Boolean = false;
+    synchronized (WriteTogetherWebSocketSender.a(this.a))
     {
-      beyy.a(beqp.b(this.a), beqp.c(this.a).curFriendUin);
-      Object localObject1 = bfcx.a();
-      Object localObject2 = ((bfcx)localObject1).a("troop_list_homework");
-      bfcy localbfcy = new bfcy();
-      localbfcy.a = beqp.d(this.a).curFriendUin;
-      localbfcy.c = "aio";
-      localObject1 = ((bfcx)localObject1).a((String)localObject2, localbfcy);
-      localObject2 = new Intent(localBaseActivity, QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      localBaseActivity.startActivity((Intent)localObject2);
-      bftc.a(beqp.c(this.a), beqp.e(this.a).curFriendUin, "homework", "AioSee_Clk", 0, 0, new String[] { beqp.f(this.a).curFriendUin, "", "", bftc.a(beqp.d(this.a), beqp.g(this.a).curFriendUin) });
+      WriteTogetherWebSocketSender.a(this.a).notify();
+      WriteTogetherWebSocketSender.a(this.a).a(true);
+      if (WriteTogetherWebSocketSender.a(this.a).size() == 0) {
+        this.a.a(WriteTogetherWebSocketSender.a(this.a).a());
+      }
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onOpen(WebSocket paramWebSocket, Response paramResponse)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController.a();
   }
 }
 

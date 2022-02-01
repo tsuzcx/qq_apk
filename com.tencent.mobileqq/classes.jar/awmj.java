@@ -1,21 +1,61 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.QQPermissionCallback;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
 
-public class awmj
-  implements QQPermissionCallback
+class awmj
 {
-  public awmj(GameRoomTransActivity paramGameRoomTransActivity) {}
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  awmj(awlt paramawlt, View paramView)
   {
-    QQToast.a(this.a, amtj.a(2131704187), 0).a();
-    this.a.finish();
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380686);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380688));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380685));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380690));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131380687);
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131380689);
+    if (blfw.a())
+    {
+      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130845344);
+      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130845342);
+      if ((this.jdField_b_of_type_AndroidViewView instanceof TextView)) {
+        ((TextView)this.jdField_b_of_type_AndroidViewView).setTextColor(-1);
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
+      ((TextView)this.jdField_b_of_type_AndroidViewView).setTextColor(-1);
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  void a()
   {
-    this.a.a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  void a(LocationRoom.Venue paramVenue)
+  {
+    LocationRoom.Venue localVenue = paramVenue;
+    if (paramVenue == null) {
+      localVenue = awlt.a(this.jdField_a_of_type_Awlt).a();
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(awlt.a(this.jdField_a_of_type_Awlt).getResources().getString(2131693711), new Object[] { localVenue.b }));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
+    awmp.a(awlt.a(this.jdField_a_of_type_Awlt, localVenue.a), awlt.a(this.jdField_a_of_type_Awlt).getResources().getString(2131693712), this.jdField_c_of_type_AndroidWidgetTextView);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new awmk(this));
+    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new awml(this));
+  }
+  
+  void b()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

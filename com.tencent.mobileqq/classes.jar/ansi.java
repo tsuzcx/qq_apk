@@ -1,53 +1,103 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.mobileqq.data.OperateVoipTipsInfo;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import protocol.KQQConfig.GetResourceRespInfo;
 
-class ansi
-  implements xfl
+public class ansi
+  implements BusinessObserver
 {
-  ansi(ansg paramansg) {}
+  protected void onBgResourceUpdate(boolean paramBoolean, long paramLong) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  protected void onCheckAuthCode(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onGetAppShareInfo(boolean paramBoolean, AppShareID paramAppShareID) {}
+  
+  protected void onGetAuthCode(boolean paramBoolean, String paramString1, String paramString2) {}
+  
+  protected void onGetRealNameStatus(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3) {}
+  
+  protected void onGetRealNameStatusForAV(boolean paramBoolean) {}
+  
+  protected void onGetRealNameStatusForExtendFriend(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3) {}
+  
+  protected void onGetRedPacketRainConfig(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void onOrginConfigUpdate(boolean paramBoolean, long paramLong) {}
+  
+  protected void onShowVoipTips(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList) {}
+  
+  protected void onSmallPicDownloadSuccess(boolean paramBoolean, String paramString) {}
+  
+  protected void onThemeResourceUpdate(boolean paramBoolean, GetResourceRespInfo paramGetResourceRespInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramString = ynm.a();
-    String str1 = ((Activity)this.a.a).getIntent().getStringExtra("from_type");
-    paramInt = ((Activity)this.a.a).getIntent().getIntExtra("capture_intent_mode", -1);
-    int i = ((Activity)this.a.a).getIntent().getIntExtra("firsttab", -1);
-    int j = ((Activity)this.a.a).getIntent().getIntExtra("secondtab", -1);
-    String str2 = ((Activity)this.a.a).getIntent().getStringExtra("itemid");
-    String str3 = ((Activity)this.a.a).getIntent().getStringExtra("story_game_id");
-    int k = ((Activity)this.a.a).getIntent().getIntExtra("key_finish_jump_to_page", 1);
-    String str4 = ((Activity)this.a.a).getIntent().getStringExtra("web_dispatch_event");
-    String str5 = ((Activity)this.a.a).getIntent().getStringExtra("story_capture_album_id");
-    Bundle localBundle = new Bundle();
-    if (TextUtils.equals(str1, "msgTab"))
+    switch (paramInt)
     {
-      localBundle.putInt("entrance_type", 103);
-      localBundle.putInt("key_finish_jump_to_page", k);
-      if (!TextUtils.isEmpty(str4)) {
-        localBundle.putString("web_dispatch_event", str4);
-      }
-      if (paramInt == -1) {
-        break label322;
-      }
-      paramString.a((Activity)this.a.a, localBundle, 2, paramInt, i, j, str2, str3, str5, true, 20000);
     }
-    for (;;)
+    do
     {
-      xvv.c("Q.qqstory.publish.QQstoryAction", "launchNewVideoTakeActivity by StoryPublishLauncher");
-      return;
-      if (TextUtils.equals(str1, "msgTabNew"))
+      do
       {
-        localBundle.putInt("entrance_type", 119);
-        break;
-      }
-      localBundle.putInt("entrance_type", 15);
-      break;
-      label322:
-      paramString.a((Activity)this.a.a, localBundle, 20000);
-    }
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              onBgResourceUpdate(paramBoolean, ((GetResourceRespInfo)paramObject).uiNewVer);
+              return;
+              onThemeResourceUpdate(paramBoolean, (GetResourceRespInfo)paramObject);
+              return;
+              onSmallPicDownloadSuccess(paramBoolean, (String)paramObject);
+              return;
+              onUpgradeConfig(paramBoolean, (UpgradeDetailWrapper)paramObject);
+              return;
+              onGetAppShareInfo(paramBoolean, (AppShareID)paramObject);
+              return;
+              onOrginConfigUpdate(paramBoolean, ((GetResourceRespInfo)paramObject).uiNewVer);
+              return;
+              onUpdateStatusActions(paramBoolean, ((Integer)paramObject).intValue());
+              return;
+              if ((paramObject != null) && ((paramObject instanceof OperateVoipTipsInfo)))
+              {
+                paramObject = (OperateVoipTipsInfo)paramObject;
+                onShowVoipTips(paramObject.uin, paramObject.uinType, paramObject.taskList);
+              }
+              onUpdateWeatherResources(paramBoolean);
+              return;
+              paramObject = (Pair)paramObject;
+              onGetAuthCode(paramBoolean, (String)paramObject.first, (String)paramObject.second);
+              return;
+              onCheckAuthCode(paramBoolean, ((Boolean)paramObject).booleanValue());
+              return;
+            } while (!(paramObject instanceof Object[]));
+            paramObject = (Object[])paramObject;
+            onGetRedPacketRainConfig(((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
+            return;
+          } while (!(paramObject instanceof Object[]));
+          paramObject = (Object[])paramObject;
+          onGetRealNameStatus((Boolean)paramObject[0], (Boolean)paramObject[1], (String)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
+          return;
+        } while (!(paramObject instanceof Object[]));
+        paramObject = (Object[])paramObject;
+      } while (paramObject.length <= 4);
+      onGetRealNameStatusForExtendFriend((Boolean)paramObject[0], (Boolean)paramObject[1], (String)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
+      return;
+    } while (!(paramObject instanceof Object[]));
+    onGetRealNameStatusForAV(((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
   }
+  
+  protected void onUpdateStatusActions(boolean paramBoolean, int paramInt) {}
+  
+  protected void onUpdateWeatherResources(boolean paramBoolean) {}
+  
+  protected void onUpgradeConfig(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper) {}
 }
 
 

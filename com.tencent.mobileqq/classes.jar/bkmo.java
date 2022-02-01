@@ -1,35 +1,15 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qappcenter.remote.SendMsg;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnErrorListener;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
 
 class bkmo
-  implements ServiceConnection
+  implements ISuperPlayer.OnErrorListener
 {
-  bkmo(bkmn parambkmn) {}
+  bkmo(bkmk parambkmk, AbsVideoPlayer.OnErrorListener paramOnErrorListener) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + bkmn.a(this.a));
-    }
-    this.a.a = bkmk.a(paramIBinder);
-    if (bkmn.a(this.a) != null)
-    {
-      paramComponentName = new SendMsg("cmd.registerListener");
-      paramComponentName.a = bkmn.a(this.a);
-      this.a.b(paramComponentName);
-    }
-    this.a.a();
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + bkmn.a(this.a));
-    }
-    this.a.a = null;
+    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bkmk, paramInt1, paramInt2);
   }
 }
 

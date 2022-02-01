@@ -1,25 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.reflect.Method;
 
-class ankb
-  extends axkv
+public class ankb
 {
-  ankb(anjz paramanjz, QQAppInterface paramQQAppInterface) {}
-  
-  public void getPhoneUnitySuccess(cmd0x9ae.RspBody paramRspBody)
+  public static void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Anjz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRspBody);
-  }
-  
-  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.e("AccountPhoneUnityManager", 1, new Object[] { "onFailedResponse code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
+    try
+    {
+      if (1 != BaseApplicationImpl.sProcessId) {
+        return;
+      }
+      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
+      if ((localClassLoader != null) && (!TextUtils.isEmpty(paramString2)) && (paramString2.contains("Apollo")))
+      {
+        localClassLoader.loadClass("com.tencent.mobileqq.apollo.utils.ApolloUtil").getMethod("handleApolloNoCatchCrash", new Class[] { Boolean.TYPE, String.class, String.class }).invoke(null, new Object[] { Boolean.valueOf(paramBoolean), paramString1, paramString2 });
+        return;
+      }
+    }
+    catch (Throwable paramString1)
+    {
+      paramString1.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ankb
  * JD-Core Version:    0.7.0.1
  */

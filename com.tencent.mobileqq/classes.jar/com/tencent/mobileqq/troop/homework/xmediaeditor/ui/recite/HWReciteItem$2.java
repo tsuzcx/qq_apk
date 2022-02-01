@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
-import benq;
-import bkxx;
+import bfut;
+import bmjg;
 
 class HWReciteItem$2
   implements Runnable
 {
-  HWReciteItem$2(HWReciteItem paramHWReciteItem, benq parambenq) {}
+  HWReciteItem$2(HWReciteItem paramHWReciteItem, bfut parambfut) {}
   
   public void run()
   {

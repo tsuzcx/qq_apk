@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bllh;
-import bllm;
-import blmi;
+import bmyq;
+import bmyv;
+import bmzr;
 import com.tencent.mobileqq.widget.QQToast;
 import mqq.util.WeakReference;
 
 public class AEPhotoListLogicBase$7
   implements Runnable
 {
-  public AEPhotoListLogicBase$7(blmi paramblmi) {}
+  public AEPhotoListLogicBase$7(bmzr parambmzr) {}
   
   public void run()
   {
-    ((bllh)this.this$0.a.get()).a.notifyDataSetChanged();
+    ((bmyq)this.this$0.a.get()).a.notifyDataSetChanged();
     this.this$0.e();
-    QQToast.a(((bllh)this.this$0.a.get()).getActivity(), "暂无媒体文件", 1000).a();
+    QQToast.a(((bmyq)this.this$0.a.get()).getActivity(), "暂无媒体文件", 1000).a();
   }
 }
 

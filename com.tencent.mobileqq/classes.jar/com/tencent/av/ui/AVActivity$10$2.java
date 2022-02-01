@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mas;
+import mbn;
 
 public class AVActivity$10$2
   implements Runnable
 {
-  public AVActivity$10$2(mas parammas) {}
+  public AVActivity$10$2(mbn parammbn) {}
   
   public void run()
   {

@@ -1,21 +1,36 @@
+import android.text.Editable;
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adoq
-  implements ViewSwitcher.ViewFactory
+  implements View.OnClickListener
 {
-  public adoq(Leba paramLeba) {}
+  public adoq(ChatHistory paramChatHistory) {}
   
-  public View makeView()
+  public void onClick(View paramView)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    if (this.a.d > 1)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839159);
+      ChatHistory localChatHistory = this.a;
+      localChatHistory.d -= 1;
+      if (this.a.d <= 1)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840554);
+      }
+      this.a.e = ((this.a.d - 1) * 8);
+      this.a.jdField_a_of_type_Ador.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.t();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

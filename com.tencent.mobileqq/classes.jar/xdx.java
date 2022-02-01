@@ -1,9 +1,28 @@
-public abstract interface xdx
-  extends xlw
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+
+public class xdx
+  extends Subscriber.SingleEventSubscriberNoRefect<wix>
 {
-  public abstract void b();
+  xdu a;
   
-  public abstract void c();
+  public xdx(@NonNull xdu paramxdu)
+  {
+    this.a = paramxdu;
+  }
+  
+  protected void a(@NonNull wix paramwix)
+  {
+    if (paramwix.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramwix.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wix.class;
+  }
 }
 
 

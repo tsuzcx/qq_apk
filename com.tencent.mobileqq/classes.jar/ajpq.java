@@ -1,20 +1,13 @@
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.image.AbstractGifImage;
 
-final class ajpq
-  implements DialogInterface.OnClickListener
+class ajpq
+  implements DialogInterface.OnDismissListener
 {
-  ajpq(Activity paramActivity, String paramString1, String paramString2) {}
+  ajpq(ajpi paramajpi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      ajpl.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

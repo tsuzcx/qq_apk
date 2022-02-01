@@ -1,40 +1,23 @@
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.LBSInfo;
 
-public class lxe
-  implements ampq
+public final class lxe
+  implements Parcelable.Creator<LBSInfo>
 {
-  private WeakReference<lxh> a;
-  private WeakReference<ampm> b;
-  private WeakReference<lwo> c;
-  
-  public lxe(lxh paramlxh, ampm paramampm, lwo paramlwo)
+  public LBSInfo a(Parcel paramParcel)
   {
-    this.a = new WeakReference(paramlxh);
-    this.b = new WeakReference(paramampm);
-    this.c = new WeakReference(paramlwo);
+    return new LBSInfo(paramParcel);
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public LBSInfo[] a(int paramInt)
   {
-    Object localObject = (ampm)this.b.get();
-    if (localObject != null) {
-      ((ampm)localObject).d(this);
-    }
-    localObject = (lxh)this.a.get();
-    lwo locallwo = (lwo)this.c.get();
-    if ((localObject != null) && (locallwo != null)) {
-      ((lxh)localObject).a(paramBoolean, locallwo);
-    }
-  }
-  
-  public void a(lwo paramlwo)
-  {
-    this.c = new WeakReference(paramlwo);
+    return new LBSInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lxe
  * JD-Core Version:    0.7.0.1
  */

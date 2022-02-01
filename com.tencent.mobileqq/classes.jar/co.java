@@ -2,13 +2,14 @@ import android.content.Intent;
 import android.view.View;
 import com.dataline.activities.LiteAdvanceActivity;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
 
 public class co
-  implements bjoe
+  implements bkzq
 {
-  public co(LiteAdvanceActivity paramLiteAdvanceActivity, bjnw parambjnw) {}
+  public co(LiteAdvanceActivity paramLiteAdvanceActivity, bkzi parambkzi) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -17,10 +18,10 @@ public class co
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bjnw.cancel();
+      this.jdField_a_of_type_Bkzi.cancel();
       return;
-      bcev.a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getCurrentAccountUin(), "dl_ckclearmsg");
-      paramView = (amqd)this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getBusinessHandler(8);
+      bdlq.a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getCurrentAccountUin(), "dl_ckclearmsg");
+      paramView = (ansr)this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       paramView.a(32, true);
       paramView.e();
       this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getMessageFacade().getDatalineMessageManager(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.a).a();

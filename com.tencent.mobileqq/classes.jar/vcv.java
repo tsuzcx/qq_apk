@@ -8,15 +8,17 @@ class vcv
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    uya.b("WSVerticalVideoItemView", "itemView onDoubleTap");
+    vmp.b("WSFollowFeedHolder", "VideoLayout onDoubleTap");
     vcu.a(this.a, paramMotionEvent);
+    vcu.a(this.a, true);
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    uya.b("WSVerticalVideoItemView", "itemView onSingleTapConfirmed");
+    vmp.b("WSFollowFeedHolder", "VideoLayout onSingleTapConfirmed");
     vcu.a(this.a);
+    vcu.a(this.a, false);
     return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }

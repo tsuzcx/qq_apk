@@ -1,25 +1,29 @@
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.SpecialCareInfo;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
+import android.os.Process;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
-class amsy
-  implements Comparator<SpecialCareInfo>
+public class amsy
 {
-  amsy(amsw paramamsw) {}
+  public static final int a;
+  public static final long a;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public long b;
+  public long c;
   
-  private String a(SpecialCareInfo paramSpecialCareInfo)
+  static
   {
-    Friends localFriends = this.a.b(paramSpecialCareInfo.uin);
-    if (localFriends == null) {
-      return paramSpecialCareInfo.uin;
-    }
-    return ContactUtils.getFriendName(localFriends) + localFriends.uin;
+    jdField_a_of_type_JavaLangString = DeviceInfoUtil.getDeviceOSVersion();
+    jdField_b_of_type_JavaLangString = DeviceInfoUtil.getModel();
+    jdField_c_of_type_JavaLangString = DeviceInfoUtil.getCpuType();
+    jdField_a_of_type_Int = DeviceInfoUtil.getCpuNumber();
+    jdField_a_of_type_Long = DeviceInfoUtil.getCpuFrequency();
   }
   
-  public int a(SpecialCareInfo paramSpecialCareInfo1, SpecialCareInfo paramSpecialCareInfo2)
+  public amsy()
   {
-    return ampx.a(a(paramSpecialCareInfo1), a(paramSpecialCareInfo2));
+    this.jdField_b_of_type_Long = DeviceInfoUtil.getApplicationMemory(Process.myPid());
+    this.jdField_c_of_type_Long = DeviceInfoUtil.getMemoryClass();
   }
 }
 

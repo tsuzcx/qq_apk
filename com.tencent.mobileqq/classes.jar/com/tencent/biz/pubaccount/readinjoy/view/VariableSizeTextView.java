@@ -24,8 +24,8 @@ import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
-import sqy;
-import sqz;
+import tej;
+import tek;
 
 public class VariableSizeTextView
   extends RelativeLayout
@@ -34,7 +34,7 @@ public class VariableSizeTextView
   protected float a;
   ViewConfiguration jdField_a_of_type_AndroidViewViewConfiguration = ViewConfiguration.get(getContext());
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private sqz jdField_a_of_type_Sqz;
+  private tek jdField_a_of_type_Tek;
   protected boolean a;
   public float b;
   private boolean b;
@@ -186,14 +186,14 @@ public class VariableSizeTextView
           }
           this.d = paramMotionEvent.getRawY();
           k = localLayoutParams.height;
-          if ((k != this.jdField_b_of_type_Float) && (this.jdField_a_of_type_Sqz != null)) {
-            this.jdField_a_of_type_Sqz.a();
+          if ((k != this.jdField_b_of_type_Float) && (this.jdField_a_of_type_Tek != null)) {
+            this.jdField_a_of_type_Tek.a();
           }
         } while (k <= this.jdField_b_of_type_Float);
         paramMotionEvent = ValueAnimator.ofFloat(new float[] { k, this.jdField_b_of_type_Float });
         paramMotionEvent.setDuration(300L);
         paramMotionEvent.setInterpolator(new DecelerateInterpolator());
-        paramMotionEvent.addUpdateListener(new sqy(this, localLayoutParams));
+        paramMotionEvent.addUpdateListener(new tej(this, localLayoutParams));
         setFocusable(false);
         setClickable(false);
         paramMotionEvent.start();
@@ -235,8 +235,8 @@ public class VariableSizeTextView
       for (k = (int)(m + k * Math.pow(Math.abs(f1), 0.7D));; k = (int)(this.jdField_b_of_type_Float + 0.5F))
       {
         localLayoutParams.height = k;
-        if (this.jdField_a_of_type_Sqz != null) {
-          this.jdField_a_of_type_Sqz.a(m, k);
+        if (this.jdField_a_of_type_Tek != null) {
+          this.jdField_a_of_type_Tek.a(m, k);
         }
         setLayoutParams(localLayoutParams);
         return true;
@@ -249,8 +249,8 @@ public class VariableSizeTextView
     label537:
     label543:
     localLayoutParams.height = k;
-    if (this.jdField_a_of_type_Sqz != null) {
-      this.jdField_a_of_type_Sqz.a(m, k);
+    if (this.jdField_a_of_type_Tek != null) {
+      this.jdField_a_of_type_Tek.a(m, k);
     }
     setLayoutParams(localLayoutParams);
     return true;
@@ -258,9 +258,9 @@ public class VariableSizeTextView
     return true;
   }
   
-  public void setOnSizeChangedListener(sqz paramsqz)
+  public void setOnSizeChangedListener(tek paramtek)
   {
-    this.jdField_a_of_type_Sqz = paramsqz;
+    this.jdField_a_of_type_Tek = paramtek;
   }
   
   public void setText(int paramInt1, int paramInt2, CharSequence paramCharSequence)
@@ -286,7 +286,7 @@ public class VariableSizeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView
  * JD-Core Version:    0.7.0.1
  */

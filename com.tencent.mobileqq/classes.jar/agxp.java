@@ -1,28 +1,17 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agxp
-  implements URLDrawable.URLDrawableListener
+  extends ahaa
 {
-  agxp(agxo paramagxo, String paramString) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  agxp(agvm paramagvm)
   {
-    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
+    super(paramagvm, null);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
-    }
-    agxo.a(this.jdField_a_of_type_Agxo).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+    return new agrz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

@@ -1,34 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 import java.util.List;
 
 public class aita
-  implements View.OnClickListener
+  extends pvq
 {
-  public aita(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public aita(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onClick(View paramView)
+  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
   {
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext()) {
-      ((EmoticonFromGroupEntity)localIterator.next()).status = -1;
+    if (paramBoolean)
+    {
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        this.a.c.clear();
+        this.a.c.addAll(paramList);
+      }
+      ClassificationSearchActivity.b(this.a, true);
     }
-    this.a.a.clear();
-    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
-    EmoticonGroupStoreFragment.b(this.a).setVisibility(0);
-    EmoticonGroupStoreFragment.a(this.a).a = false;
-    EmoticonGroupStoreFragment.a(this.a).a(false);
-    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
-    EmoticonGroupStoreFragment.e(this.a);
-    this.a.a(true);
-    this.a.resetLeftButton();
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

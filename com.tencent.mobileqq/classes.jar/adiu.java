@@ -1,39 +1,19 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.QQPermissionCallback;
 
-public class adiu
-  implements aysa
+class adiu
+  implements QQPermissionCallback
 {
-  public adiu(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  adiu(adis paramadis, banv parambanv) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a(0L, null, null, false);
+    QQToast.a(this.jdField_a_of_type_Adis.a, 2131695071, 1).a();
   }
   
-  public void a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.b(paramInt);
-  }
-  
-  public void a(AbsListView.OnScrollListener paramOnScrollListener)
-  {
-    this.a.a(paramOnScrollListener);
-  }
-  
-  public void b()
-  {
-    this.a.a(this.a.a.a, false, 8);
-  }
-  
-  public void b(AbsListView.OnScrollListener paramOnScrollListener)
-  {
-    this.a.b(paramOnScrollListener);
-  }
-  
-  public void c()
-  {
-    FriendProfileCardActivity.a(this.a);
+    banp.a().a(this.jdField_a_of_type_Adis.a, "AssistantSettingActivity", this.jdField_a_of_type_Banv);
   }
 }
 

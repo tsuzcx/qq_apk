@@ -1,15 +1,45 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.widget.ListView;
 
-class afup
-  extends aexg
+public abstract class afup
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView b;
-  TextView c;
-  TextView d;
+  public int a;
+  public AIOAnimationConatiner a;
+  public ListView a;
   
-  afup(afun paramafun) {}
+  public afup(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
+    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public abstract boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean a(Object... paramVarArgs);
+  
+  public void b() {}
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(paramInt);
+  }
+  
+  public abstract void c();
+  
+  public void d()
+  {
+    AIOAnimationConatiner.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

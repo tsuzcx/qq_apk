@@ -1,17 +1,12 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-class sno
-  extends pse
+public abstract interface sno
 {
-  sno(snn paramsnn, String paramString, List paramList)
-  {
-    super(paramString);
-  }
+  public abstract void a(VideoInfo paramVideoInfo);
   
-  public void a(prx paramprx)
-  {
-    paramprx.a(this.jdField_a_of_type_JavaUtilList);
-  }
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

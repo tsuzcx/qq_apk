@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import amsu;
-import anof;
+import anvi;
+import aoqy;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 class QQAppInterface$9
-  extends amsu
+  extends anvi
 {
   QQAppInterface$9(QQAppInterface paramQQAppInterface) {}
   

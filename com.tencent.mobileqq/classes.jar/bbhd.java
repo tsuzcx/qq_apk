@@ -1,50 +1,94 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
 
 public class bbhd
-  implements bbha
+  implements GLGestureListener
 {
-  protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private List<bbhb> jdField_a_of_type_JavaUtilList;
+  int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  bbhe jdField_a_of_type_Bbhe;
+  int jdField_b_of_type_Int;
+  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
+  private final int c;
+  private final int d;
+  private final int e;
   
-  public bbhd(ViewGroup paramViewGroup, int paramInt)
+  public bbhd(Context paramContext, bbhe parambbhe)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371352));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370109));
+    this.jdField_a_of_type_Bbhe = parambbhe;
+    paramContext = ViewConfiguration.get(paramContext);
+    this.c = ViewConfiguration.getDoubleTapTimeout();
+    this.d = 1000;
+    this.jdField_a_of_type_Int = paramContext.getScaledDoubleTapSlop();
+    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * this.jdField_a_of_type_Int);
+    this.e = paramContext.getScaledTouchSlop();
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  public View a()
+  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    int i = (int)paramFloat3 - (int)paramFloat1;
+    int j = (int)paramFloat4 - (int)paramFloat2;
+    return i * i + j * j > this.e;
   }
   
-  public LinearLayout a()
+  private boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {}
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return false;
+      } while ((Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) < this.d) || (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > this.c) || (a(paramMotionEvent1.getX(), paramMotionEvent1.getY(), paramMotionEvent2.getX(), paramMotionEvent2.getY())));
+      i = (int)paramMotionEvent1.getX() - (int)paramMotionEvent3.getX();
+      j = (int)paramMotionEvent1.getY() - (int)paramMotionEvent3.getY();
+    } while (i * i + j * j >= this.jdField_b_of_type_Int);
+    return true;
   }
   
-  public TextView a()
+  public int onGetPriority()
   {
-    return a();
+    return 0;
   }
   
-  public List<bbhb> a()
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    int i = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getAction();
+    if ((i == 1) && (!paramBoolean)) {}
+    switch (j & 0xFF)
+    {
+    default: 
+      return false;
+    case 0: 
+      if ((a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent)) && (this.jdField_a_of_type_Bbhe != null))
+      {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.jdField_a_of_type_Bbhe.a();
+        ykv.a("camera_clkdouble", bbhl.jdField_a_of_type_Int, 0, new String[0]);
+        bbhl.c();
+        if (QLog.isColorLevel()) {
+          QLog.d("GLGestureListener", 2, new Object[] { "", "CameraSwitchGesture" });
+        }
+      }
+      if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
+        this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+      }
+      this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      return false;
+    }
+    if (this.jdField_b_of_type_AndroidViewMotionEvent != null) {
+      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+    }
+    this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    return false;
   }
 }
 

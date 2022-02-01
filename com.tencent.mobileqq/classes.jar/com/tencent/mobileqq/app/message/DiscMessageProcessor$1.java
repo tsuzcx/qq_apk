@@ -1,58 +1,23 @@
 package com.tencent.mobileqq.app.message;
 
 import OnlinePushPack.MsgInfo;
-import android.text.TextUtils;
 import android.util.Pair;
-import anld;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.QLog;
+import aonw;
 import java.util.ArrayList;
 
 public class DiscMessageProcessor$1
   implements Runnable
 {
-  public DiscMessageProcessor$1(anld paramanld, ArrayList paramArrayList, long paramLong1, long paramLong2, String paramString, MsgInfo paramMsgInfo, long paramLong3) {}
+  public DiscMessageProcessor$1(aonw paramaonw, long paramLong1, long paramLong2, Pair paramPair1, MsgInfo paramMsgInfo, long paramLong3, long paramLong4, byte paramByte, long paramLong5, Pair paramPair2, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(this.jdField_a_of_type_Long)))
+    if (this.jdField_a_of_type_Long != this.jdField_b_of_type_Long)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(this.jdField_a_of_type_Long));
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.DiscMsgPc.discuss", 2, "陌生人uin包括自己,移出");
-      }
+      aonw.a(this.this$0, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_b_of_type_Long, this.c, this.d, this.jdField_a_of_type_Byte, this.e, this.jdField_b_of_type_AndroidUtilPair);
+      return;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaUtilArrayList.size() * 8);
-      int i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        String str2 = (String)((Pair)this.jdField_a_of_type_JavaUtilArrayList.get(i)).second;
-        String str1 = str2;
-        if (TextUtils.isEmpty(str2))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.DiscMsgPc.discuss", 2, "coptype 9 server showName empty");
-          }
-          str1 = ContactUtils.getDiscussionMemberShowName(anld.a(this.this$0), String.valueOf(this.b), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.get(i)));
-        }
-        if (i == 0) {
-          localStringBuilder.append(str1);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localStringBuilder.append("、" + str1);
-        }
-      }
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.DiscMsgPc.discuss", 2, "show yinsi tips" + localStringBuilder.toString());
-      }
-      anld.a(this.this$0, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_Long, this.b, this.c, localStringBuilder.toString());
-    }
+    aonw.a(this.this$0, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_Long, String.valueOf(this.c), this.jdField_a_of_type_Byte, this.e, false);
   }
 }
 

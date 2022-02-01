@@ -1,14 +1,26 @@
-public abstract interface bdjq
+import com.tencent.mobileqq.startup.step.UpdateSecureFileStrategy;
+import java.io.File;
+import java.io.FileFilter;
+import mqq.app.SecurityFileFrameworkManagerImpl;
+
+public class bdjq
+  implements FileFilter
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public bdjq(UpdateSecureFileStrategy paramUpdateSecureFileStrategy) {}
   
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
+  public boolean accept(File paramFile)
+  {
+    if ((paramFile.isDirectory()) && (paramFile.getName().startsWith("NoRename#")))
+    {
+      paramFile = paramFile.getName().replaceAll("NoRename#", "");
+      return (paramFile.length() == 9) && (paramFile.charAt(0) == SecurityFileFrameworkManagerImpl.generateVerifyChar(paramFile.substring(1)));
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjq
  * JD-Core Version:    0.7.0.1
  */

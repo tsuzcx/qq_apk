@@ -1,32 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class adgh
-  implements avtb<List<EmoticonPackage>>
+  implements DialogInterface.OnClickListener
 {
-  public adgh(EmosmActivity paramEmosmActivity) {}
+  public adgh(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString, int paramInt) {}
   
-  public void a(List<EmoticonPackage> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      this.a.g.setVisibility(8);
-    }
-    do
-    {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramList.next();
-        if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
-          this.a.c = true;
-        }
-      }
-    } while (this.a.c);
-    this.a.g.setVisibility(8);
+    bhoy.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, "mvip.n.a.gnew_apply", this.jdField_a_of_type_JavaLangString, 3, false, false, "", "", true, true);
+    bdla.b(null, "dc00898", "", "", "qq_vip", "0X800A4FB", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 

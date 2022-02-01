@@ -1,26 +1,17 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.widget.XEditTextEx;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agxi
-  implements ahbl
+  extends ahaa
 {
-  agxi(agxg paramagxg) {}
-  
-  public boolean a(PhotoListPanel paramPhotoListPanel)
+  agxi(agvm paramagvm)
   {
-    return false;
+    super(paramagvm, null);
   }
   
-  public boolean b(PhotoListPanel paramPhotoListPanel)
+  protected afrj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (agxg.a(this.a).receiptMode) {}
-    while ((agxg.a(this.a).isReplyTextMode()) || (agxg.a(this.a).input == null) || (agxg.a(this.a).input.getText() == null) || (agxg.a(this.a).input.getText().length() <= 0)) {
-      return false;
-    }
-    agxg.a(this.a).clickSendTextButton();
-    return true;
+    return new ahak(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

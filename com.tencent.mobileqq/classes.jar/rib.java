@@ -1,30 +1,29 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class rib
-  implements View.OnClickListener
+public class rib
+  implements qie
 {
-  rib(ria paramria, ReadInJoyDraftboxItem paramReadInJoyDraftboxItem) {}
+  public rib(ComponentHeaderPolymeric paramComponentHeaderPolymeric, ArticleInfo paramArticleInfo) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    Intent localIntent = new Intent(ria.a(this.jdField_a_of_type_Ria), ReadInJoyDeliverUGCActivity.class);
-    localIntent.putExtra("readinjoy_draftbox_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem.getId());
-    localIntent.putExtra("is_from_kan_dian", true);
-    localIntent.putExtra("support_topic", true);
-    if ((ria.a(this.jdField_a_of_type_Ria) instanceof BaseActivity))
-    {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem.type == 0) {
-        ((BaseActivity)ria.a(this.jdField_a_of_type_Ria)).startActivityForResult(localIntent, 1000);
-      }
-      odq.a(null, "", "0X80096DF", "0X80096DF", 0, 0, ria.a(this.jdField_a_of_type_Ria, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem) + "", "", "", "", false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderPolymeric", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean + " followStatus = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!paramString.equals(ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric).getTag())) {
+      return;
+    }
+    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, true);
+    if (paramBoolean)
+    {
+      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, false);
+      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1);
+      return;
+    }
+    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, 2);
   }
 }
 

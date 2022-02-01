@@ -34,12 +34,12 @@ public class QCircleChatShareArkBubbleView
   public void init(String paramString1, String paramString2, String paramString3)
   {
     setVisibility(8);
-    View localView = inflate(getContext(), 2131558637, null);
-    Object localObject = (ImageView)localView.findViewById(2131377264);
-    Drawable localDrawable = getContext().getResources().getDrawable(2131167276);
+    View localView = inflate(getContext(), 2131558649, null);
+    Object localObject = (ImageView)localView.findViewById(2131377537);
+    Drawable localDrawable = getContext().getResources().getDrawable(2131167296);
     ((ImageView)localObject).setImageDrawable(URLDrawableHelper.getDrawable(paramString1, localDrawable, localDrawable));
-    paramString1 = (TextView)localView.findViewById(2131377266);
-    localObject = (TextView)localView.findViewById(2131377263);
+    paramString1 = (TextView)localView.findViewById(2131377539);
+    localObject = (TextView)localView.findViewById(2131377536);
     if (TextUtils.isEmpty(paramString2))
     {
       paramString1.setVisibility(8);

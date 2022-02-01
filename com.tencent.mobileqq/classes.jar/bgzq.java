@@ -1,13 +1,7 @@
-import android.os.Bundle;
-
-public abstract interface bgzq
-  extends bguj
+class bgzq
 {
-  public abstract aadf getShare();
-  
-  public abstract boolean setShareUrl(String paramString);
-  
-  public abstract boolean setSummary(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle);
+  bgzm jdField_a_of_type_Bgzm;
+  bgzo jdField_a_of_type_Bgzo;
 }
 
 

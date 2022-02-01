@@ -1,103 +1,20 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class aebm
-  extends anau
+  implements DialogInterface.OnClickListener
 {
-  public aebm(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public aebm(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  protected void a(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SecSvcObserver", 2, String.format(Locale.getDefault(), "onGetPhoneUnityLocalData data: %s, create: %s, count: %s", new Object[] { paramObject, Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+    bdla.b(this.a.app, "dc00898", "", "", "0X800A0D9", "0X800A0D9", 0, 0, "", "", "", "");
+    if (NetworkUtil.isNetSupport(this.a)) {
+      FriendProfileMoreInfoActivity.b(this.a);
     }
-    boolean bool1;
-    if (paramObject == null)
-    {
-      bool1 = true;
-      boolean bool2 = bool1;
-      if (!bool1)
-      {
-        bool2 = bool1;
-        if ((paramObject instanceof aiho)) {
-          bool2 = ((aiho)paramObject).b;
-        }
-      }
-      paramObject = this.a.findViewById(2131374304);
-      if (paramObject != null)
-      {
-        if (!bool2) {
-          break label190;
-        }
-        paramObject.setVisibility(0);
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label138;
-        }
-        this.a.a(true);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-      bool1 = false;
-      break;
-      label138:
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        this.a.a(false);
-      }
-      else
-      {
-        paramObject = (aihp)this.a.app.getManager(102);
-        QQSettingSettingActivity.a(this.a, true, paramObject.a);
-        continue;
-        label190:
-        paramObject.setVisibility(8);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString)
-  {
-    boolean bool = true;
-    if (this.a.isFinishing()) {}
-    do
-    {
-      return;
-      if (paramBoolean)
-      {
-        paramString = this.a;
-        if (paramInt == 1) {}
-        for (paramBoolean = bool;; paramBoolean = false)
-        {
-          QQSettingSettingActivity.a(paramString, paramBoolean);
-          return;
-        }
-      }
-    } while (!this.a.isResume());
-    paramString = this.a.getString(2131691894);
-    QQToast.a(this.a.getApplicationContext(), paramString, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SecSvcObserver", 2, "onGetPhoneUnityInfo isSuc: " + paramBoolean);
-    }
-    if (this.a.isFinishing()) {}
-    do
-    {
-      return;
-      QQSettingSettingActivity.a(this.a, paramBoolean, paramBundle);
-    } while (!this.a.isResume());
-    paramBundle = this.a;
-    paramBundle.jdField_a_of_type_Int -= 1;
+    FriendProfileMoreInfoActivity.a(this.a, "https://ti.qq.com/hybrid-h5/school_relation/chooseschool?_wv=67108994");
   }
 }
 

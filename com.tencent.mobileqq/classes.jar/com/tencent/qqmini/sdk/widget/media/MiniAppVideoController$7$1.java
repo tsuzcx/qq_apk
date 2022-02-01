@@ -7,7 +7,7 @@ class MiniAppVideoController$7$1
   
   public void run()
   {
-    MiniAppVideoController.access$100(this.this$1.this$0).hideLoadingView();
+    MiniAppVideoController.access$300(this.this$1.this$0).hideLoadingView();
   }
 }
 

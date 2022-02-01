@@ -1,17 +1,21 @@
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
-public class aear
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aear
+  implements bkzq
 {
-  public aear(QQSettingMe paramQQSettingMe) {}
+  aear(aeaq paramaeaq, aebd paramaebd, bkzi parambkzi) {}
   
-  public void onGlobalLayout()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QQSettingMe.a(this.a)) {
-      QQSettingMe.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkzi.dismiss();
+      return;
+      this.jdField_a_of_type_Aeaq.a.b(this.jdField_a_of_type_Aebd);
     }
   }
 }

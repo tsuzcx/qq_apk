@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.coverselect;
 
 import android.graphics.Bitmap;
-import yoy;
+import zdr;
 
 class GalleryFragment$4
   implements Runnable
@@ -10,7 +10,7 @@ class GalleryFragment$4
   
   public void run()
   {
-    Bitmap localBitmap = yoy.a(this.a);
+    Bitmap localBitmap = zdr.a(this.a);
     GalleryFragment.a(this.this$0, localBitmap);
   }
 }

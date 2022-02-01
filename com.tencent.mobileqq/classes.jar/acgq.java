@@ -1,9 +1,47 @@
-public abstract class acgq
+import android.text.TextUtils;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+final class acgq
+  implements acgx
 {
-  public static int a;
-  public static String a = "https://zyjc.sec.qq.com/config?b=";
-  public static String b = "https://zyjc.sec.qq.com/reportFixer.php";
-  public static String c = "/sdcard/";
+  public boolean a(acfw paramacfw, String paramString, String... paramVarArgs)
+  {
+    if (paramacfw != null) {}
+    for (paramString = paramacfw.a(); (paramacfw == null) || (paramString == null); paramString = null)
+    {
+      acho.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = new JSONObject(paramVarArgs[0]);
+        paramacfw = paramVarArgs.optString("process", "com.tencent.mobileqq:mini");
+        if (TextUtils.equals(paramacfw, "com.tencent.mobileqq"))
+        {
+          paramacfw = PublicFragmentActivity.class;
+          GdtInterstitialFragmentForJS.a(paramString, paramacfw, paramVarArgs);
+          return true;
+        }
+      }
+      catch (JSONException paramacfw)
+      {
+        acho.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramacfw);
+        return true;
+      }
+      if (TextUtils.equals(paramacfw, "com.tencent.mobileqq:tool")) {
+        paramacfw = PublicFragmentActivityForTool.class;
+      } else {
+        paramacfw = PublicFragmentActivityForMini.class;
+      }
+    }
+  }
 }
 
 

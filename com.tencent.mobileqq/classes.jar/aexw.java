@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
 
-final class aexw
-  implements aeya
+class aexw
+  extends AccessibilityDelegateCompat
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  aexw(aexv paramaexv) {}
+  
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 22);
-    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
-    return paramQQAppInterface;
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setSelected(true);
   }
 }
 

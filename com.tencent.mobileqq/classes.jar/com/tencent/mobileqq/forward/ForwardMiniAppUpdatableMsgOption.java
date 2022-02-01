@@ -3,7 +3,7 @@ package com.tencent.mobileqq.forward;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import atky;
+import aupt;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
 
 public class ForwardMiniAppUpdatableMsgOption
-  extends atky
+  extends aupt
 {
   public ForwardMiniAppUpdatableMsgOption(Intent paramIntent)
   {

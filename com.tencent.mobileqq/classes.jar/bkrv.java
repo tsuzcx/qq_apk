@@ -1,130 +1,45 @@
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.RemoteException;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.1;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import mqq.app.AppRuntime;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.UploaderProxyImpl.1;
+import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy.UploadListener;
+import java.io.IOException;
+import java.util.concurrent.ConcurrentHashMap;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class bkrv
+  implements Callback
 {
-  private ServiceConnection a;
-  protected bkrl a;
-  public final String a;
-  protected WeakReference<AppRuntime> a;
-  protected HashSet<String> a;
-  public ConcurrentLinkedQueue<bkrx> a;
-  protected boolean a;
-  public final String b = "com.qqindividuality.ipc.QQIndividualityRemoteProxyService";
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public bkrv(AppRuntime paramAppRuntime)
-  {
-    this.jdField_a_of_type_JavaLangString = "QQIndividualityRemoteProxy";
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_AndroidContentServiceConnection = new bkrw(this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
-    a("qqindividuality_signature");
-  }
+  public bkrv(UploaderProxyImpl.1 param1) {}
   
-  private boolean a()
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
-    if ((this.jdField_a_of_type_Bkrl == null) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
-    {
-      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localAppRuntime != null)
-      {
-        QQIndividualityPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection, "com.qqindividuality.ipc.QQIndividualityRemoteProxyService");
-        this.jdField_a_of_type_Boolean = true;
-        return true;
-      }
+    QLog.e("UploaderProxyImpl", 1, "httpConnect err url:" + this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString, paramIOException);
+    if ("Canceled".equals(paramIOException.getLocalizedMessage())) {
+      this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadFailed(-5, "download error:cancel");
     }
-    return false;
-  }
-  
-  private boolean a(bkrx parambkrx)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambkrx);
-  }
-  
-  private boolean b()
-  {
-    if ((this.jdField_a_of_type_Bkrl != null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+    for (;;)
     {
-      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localAppRuntime != null)
-      {
-        QQIndividualityPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection);
-        this.jdField_a_of_type_Bkrl = null;
-        this.jdField_a_of_type_Boolean = false;
-      }
+      this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.this$0.a.remove(this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString);
+      return;
+      this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadFailed(bkoh.a(paramIOException, -1), "request error:network");
     }
-    return true;
   }
   
-  public void a(bkrx parambkrx)
+  public void onResponse(Call paramCall, Response paramResponse)
   {
-    if ((this.jdField_a_of_type_Bkrl != null) && (parambkrx != null))
-    {
-      Looper localLooper = Looper.getMainLooper();
-      if (Thread.currentThread() != localLooper.getThread()) {
-        new Handler(localLooper).post(new QQIndividualityRemoteProxy.1(this, parambkrx));
-      }
-    }
-    else
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    try
-    {
-      this.jdField_a_of_type_Bkrl.a(parambkrx.jdField_a_of_type_Int, parambkrx.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    catch (RemoteException parambkrx) {}
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, int paramInt, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-    {
-      paramString = new bkrx(this, paramInt, paramBundle);
-      if (this.jdField_a_of_type_Bkrl != null) {
-        a(paramString);
-      }
-      for (;;)
-      {
-        return true;
-        a(paramString);
-        a();
-      }
-    }
-    return false;
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.remove(paramString);
-      if (this.jdField_a_of_type_JavaUtilHashSet.isEmpty()) {
-        b();
-      }
-    }
-    return false;
+    int i = paramResponse.code();
+    paramCall = paramResponse.headers().toMultimap();
+    this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadHeadersReceived(i, paramCall);
+    this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadSucceed(i, paramResponse.body().bytes(), paramCall);
+    this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.this$0.a.remove(this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString);
   }
 }
 

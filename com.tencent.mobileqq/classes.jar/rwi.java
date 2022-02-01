@@ -1,46 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment;
 
 public class rwi
-  extends ofd
+  implements rwp
 {
-  private rwi(rwh paramrwh) {}
+  public rwi(CoverSelectTabFragment paramCoverSelectTabFragment) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void a(Bitmap paramBitmap)
   {
-    if (paramBundle.getBoolean("is_from_first_recommend_video"))
-    {
-      VideoInfo.EntranceDownloadInfo localEntranceDownloadInfo = (VideoInfo.EntranceDownloadInfo)paramBundle.getParcelable("value_entrance_download_info");
-      if (localEntranceDownloadInfo == null) {
-        break label32;
-      }
-      rwh.a(this.a, localEntranceDownloadInfo);
-    }
-    for (;;)
-    {
-      return;
-      label32:
-      rwh.a(this.a, paramBundle.getString("VALUE_COOKIE"));
-      if (paramBoolean)
-      {
-        paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-        if ((paramBundle != null) && (paramBundle.size() > 0))
-        {
-          paramBundle = (VideoInfo)paramBundle.get(0);
-          rwh.a(this.a, paramBundle);
-        }
-      }
-      while (paramBundle != null)
-      {
-        ThreadManager.post(new VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1(this, paramBundle), 5, null, true);
-        return;
-        paramBundle = null;
-      }
-    }
+    CoverSelectTabFragment.a(this.a).a(paramBitmap);
   }
 }
 

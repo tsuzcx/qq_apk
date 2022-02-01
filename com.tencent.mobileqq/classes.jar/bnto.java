@@ -1,14 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Interpolator;
 
-class bnto
-  implements DialogInterface.OnClickListener
+final class bnto
+  implements Interpolator
 {
-  bnto(bntl parambntl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public float getInterpolation(float paramFloat)
   {
-    bntl.a(this.a, "an_yuanshipin");
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

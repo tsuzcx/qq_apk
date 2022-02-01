@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ple;
+import pwb;
 
 public class ReadinjoySPEventReport$8
   implements Runnable
 {
-  public ReadinjoySPEventReport$8(ple parample) {}
+  public ReadinjoySPEventReport$8(pwb parampwb) {}
   
   public void run()
   {
-    ple.a(this.this$0, 1);
+    pwb.a(this.this$0, 1);
   }
 }
 

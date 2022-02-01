@@ -1,29 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
-import com.tencent.widget.AdapterView.AdapterDataSetObserver;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
 
-public class smu
-  extends AdapterView.AdapterDataSetObserver
+class smu
+  extends suv
 {
-  public smu(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
-  {
-    super(paramReadInJoyFlowLayout);
-  }
+  smu(smg paramsmg) {}
   
-  public void clearSavedState()
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    super.clearSavedState();
-  }
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    ReadInJoyFlowLayout.a(this.a);
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-    ReadInJoyFlowLayout.a(this.a);
+    if (paramVideoInfo != null)
+    {
+      rth.b(smg.a(this.a), paramVideoInfo.g, 1);
+      return;
+    }
+    QLog.e("VideoFeedsShareController", 1, "add to topic failed, mPlayingVideoInfo = null");
   }
 }
 

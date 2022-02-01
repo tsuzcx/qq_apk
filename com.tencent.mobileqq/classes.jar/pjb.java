@@ -1,11 +1,23 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class pjb
-  extends bjwy
+  implements ViewBase.OnClickListener
 {
-  pjb(pja parampja, View paramView)
+  pjb(pja parampja, int paramInt, ViewBase paramViewBase) {}
+  
+  public void onClick(ViewBase paramViewBase)
   {
-    super(paramView);
+    try
+    {
+      pir.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Pja.jdField_a_of_type_Int, this.jdField_a_of_type_Pja.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView, this.jdField_a_of_type_Pja.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Pja.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, this.jdField_a_of_type_Pja.jdField_a_of_type_Szd, this.jdField_a_of_type_Pja.jdField_a_of_type_Qfw, this.jdField_a_of_type_Pja.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase, this.jdField_a_of_type_Pja.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+      return;
+    }
+    catch (Exception paramViewBase)
+    {
+      QLog.d("ProteusSupportUtil", 1, "invokeListener error! cmd=" + this.jdField_a_of_type_Int + " msg=" + paramViewBase);
+    }
   }
 }
 

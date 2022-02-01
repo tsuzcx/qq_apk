@@ -1,25 +1,35 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
 
 public class zig
-  implements View.OnClickListener
+  extends ImageSpan
 {
-  public zig(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, zhq paramzhq) {}
-  
-  public void onClick(View paramView)
+  public zig(Context paramContext, int paramInt)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Zhq.a.poster.registerCertifiedAccountUrl.get()))
-    {
-      zbh.a(this.jdField_a_of_type_Zhq.a.poster.registerCertifiedAccountUrl.get());
-      zxp.b(this.jdField_a_of_type_Zhq.a.poster.id.get(), "auth_person", "apply_clk", 0, 0, new String[0]);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext, paramInt);
+  }
+  
+  public zig(Drawable paramDrawable)
+  {
+    super(paramDrawable);
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    paramPaint = paramPaint.getFontMetricsInt();
+    paramInt1 = paramPaint.descent;
+    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
+    paramInt2 = paramCharSequence.getBounds().bottom / 2;
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 

@@ -8,6 +8,7 @@ public class ApolloActionPackage
   extends Entity
 {
   public static final int PACKAGE_ID_3D_SEGMENT = 300;
+  public static final int PACKAGE_ID_CMS = 9;
   public static final int PACKAGE_ID_COLLECT = 4;
   public static final int PACKAGE_ID_DOUBLE_3D = 301;
   public static final int PACKAGE_ID_ENHANCE = 7;
@@ -58,7 +59,7 @@ public class ApolloActionPackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloActionPackage
  * JD-Core Version:    0.7.0.1
  */

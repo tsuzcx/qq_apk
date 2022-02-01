@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo.Medal;
 
-class lyb
-  implements DialogInterface.OnClickListener
+public final class lyb
+  implements Parcelable.Creator<RecvGVideoLevelInfo.Medal>
 {
-  lyb(lya paramlya) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public RecvGVideoLevelInfo.Medal a(Parcel paramParcel)
   {
-    this.a.a.a.b();
+    return new RecvGVideoLevelInfo.Medal(paramParcel);
+  }
+  
+  public RecvGVideoLevelInfo.Medal[] a(int paramInt)
+  {
+    return new RecvGVideoLevelInfo.Medal[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     lyb
  * JD-Core Version:    0.7.0.1
  */

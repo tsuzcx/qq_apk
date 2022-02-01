@@ -1,21 +1,34 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class awbi
-  extends RecyclerView.ItemDecoration
+public final class awbi
+  implements EIPCResultCallback
 {
-  private final int jdField_a_of_type_Int = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources());
+  public awbi(JSONObject paramJSONObject, twh paramtwh, String paramString) {}
   
-  private awbi(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramRect.top = this.jdField_a_of_type_Int;
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null)) {}
+    for (boolean bool = paramEIPCResult.data.getBoolean("action_update_biu_and_comment_switch");; bool = false) {
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("isGrayscaleUser", bool);
+        QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig is " + bool);
+        this.jdField_a_of_type_Twh.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+        return;
+      }
+      catch (JSONException paramEIPCResult)
+      {
+        for (;;)
+        {
+          QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig error " + paramEIPCResult.getMessage());
+        }
+      }
+    }
   }
 }
 

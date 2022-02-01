@@ -1,36 +1,51 @@
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.pannel.ApolloPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
 public class anos
-  extends Resources
+  extends bhow
 {
-  private anow a;
+  public anos(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, int paramInt) {}
   
-  public anos(anow paramanow)
+  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
   {
-    super(paramanow.b().getAssets(), paramanow.b().getDisplayMetrics(), paramanow.b().getConfiguration());
-    this.a = paramanow;
-  }
-  
-  public CharSequence getText(int paramInt)
-  {
-    int i = this.a.a(paramInt);
-    try
-    {
-      CharSequence localCharSequence = this.a.a().getText(i);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MultiLanguageEngine", 4, new Object[] { "getText delegate:", Integer.valueOf(paramInt), " ,langId:", Integer.valueOf(i), " ,content:" + localCharSequence });
-      }
-      return localCharSequence;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, new Object[] { "[showNewActionFloatView] onAuthResponse, result=", Boolean.valueOf(paramBoolean), ", data=", paramObject });
     }
-    catch (Resources.NotFoundException localNotFoundException) {}
-    return this.a.b().getText(i);
+    if ((paramObject != null) && ((paramObject instanceof HashMap)))
+    {
+      paramObject = (HashMap)paramObject;
+      localObject = (String)paramObject.get("optFrom");
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && ("newActionFloatView".equals(localObject))) {}
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanel.a.app.removeObserver(this);
+    if (paramBoolean)
+    {
+      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanel, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 0, 21, this.jdField_a_of_type_Int, null);
+      return;
+    }
+    Object localObject = new Bundle();
+    paramObject = (String)paramObject.get("url");
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, new Object[] { "[showNewActionFloatView] onAuthResponse, activityUrl=", paramObject });
+    }
+    ((Bundle)localObject).putString("activityUrl", paramObject);
+    ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewPannelApolloPanel, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 1, 22, this.jdField_a_of_type_Int, (Bundle)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anos
  * JD-Core Version:    0.7.0.1
  */

@@ -33,7 +33,7 @@ public final class PTSValueConvertUtil
     try
     {
       l = Long.valueOf((String)paramObject).longValue();
-      l = (l & 0xFF) << 24 | l >> 8;
+      l = l << 24 & 0xFF000000 | l >> 8 & 0xFFFFFF;
     }
     catch (NumberFormatException localNumberFormatException)
     {

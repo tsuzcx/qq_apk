@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import amwl;
-import amwm;
+import anyz;
+import anza;
 
 class ShortVideoForwardProcessor$6
-  extends amwl
+  extends anyz
 {
   ShortVideoForwardProcessor$6(ShortVideoForwardProcessor paramShortVideoForwardProcessor) {}
   
-  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, amwm paramamwm)
+  public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, anza paramanza)
   {
     this.this$0.logRichMediaEvent("sendMsgFinish", "success:" + paramBoolean);
-    this.this$0.copyStatisInfo(this.this$0.mStepMsg, false, paramBoolean, paramamwm);
+    this.this$0.copyStatisInfo(this.this$0.mStepMsg, false, paramBoolean, paramanza);
     if (paramBoolean)
     {
       this.this$0.onSuccess();

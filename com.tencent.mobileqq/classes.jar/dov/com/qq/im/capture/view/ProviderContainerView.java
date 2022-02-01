@@ -1,6 +1,5 @@
 package dov.com.qq.im.capture.view;
 
-import amtj;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -12,10 +11,11 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bbpr;
-import bmyv;
-import bmyw;
-import bmyy;
+import anvx;
+import bcwl;
+import boon;
+import booo;
+import booq;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collection;
@@ -30,12 +30,12 @@ public class ProviderContainerView
   extends FrameLayout
 {
   private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bmyv(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new boon(this);
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private bmyw jdField_a_of_type_Bmyw;
-  private bmyy jdField_a_of_type_Bmyy;
+  private booo jdField_a_of_type_Booo;
+  private booq jdField_a_of_type_Booq;
   private ProviderView jdField_a_of_type_DovComQqImCaptureViewProviderView;
   private HashMap<Integer, ProviderView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
@@ -59,23 +59,23 @@ public class ProviderContainerView
   
   private void a(ImageView paramImageView, int paramInt)
   {
-    paramInt = this.jdField_a_of_type_Bmyy.c(paramInt);
+    paramInt = this.jdField_a_of_type_Booq.c(paramInt);
     if (paramInt == 100) {
-      paramImageView.setContentDescription(amtj.a(2131708923));
+      paramImageView.setContentDescription(anvx.a(2131709270));
     }
     while (paramInt != 101) {
       return;
     }
-    paramImageView.setContentDescription(amtj.a(2131708927));
+    paramImageView.setContentDescription(anvx.a(2131709274));
   }
   
   private void b()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131560851, null);
+    View localView = LayoutInflater.from(getContext()).inflate(2131560911, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368250));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368395));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(0);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131373066));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131373276));
   }
   
   private void c(int paramInt)
@@ -88,8 +88,8 @@ public class ProviderContainerView
       this.jdField_a_of_type_DovComQqImCaptureViewProviderView = null;
     }
     ProviderView localProviderView;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Bmyy.c(paramInt)))) {
-      localProviderView = (ProviderView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Bmyy.c(paramInt)));
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Booq.c(paramInt)))) {
+      localProviderView = (ProviderView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Booq.c(paramInt)));
     }
     do
     {
@@ -106,12 +106,12 @@ public class ProviderContainerView
           this.jdField_a_of_type_DovComQqImCaptureViewProviderView.c();
         }
         return;
-        int i = this.jdField_a_of_type_Bmyy.c(paramInt);
-        localProviderView = this.jdField_a_of_type_Bmyy.a(getContext(), i);
+        int i = this.jdField_a_of_type_Booq.c(paramInt);
+        localProviderView = this.jdField_a_of_type_Booq.a(getContext(), i);
         if (localProviderView == null) {
           break;
         }
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Bmyy.c(paramInt)), localProviderView);
+        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Booq.c(paramInt)), localProviderView);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localProviderView);
       }
     } while (!QLog.isColorLevel());
@@ -162,18 +162,18 @@ public class ProviderContainerView
   @TargetApi(11)
   public void a(int paramInt, List<Integer> paramList)
   {
-    this.jdField_a_of_type_Bmyy = new bmyy(paramInt, paramList);
+    this.jdField_a_of_type_Booq = new booq(paramInt, paramList);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
     paramInt = 0;
-    while (paramInt < this.jdField_a_of_type_Bmyy.a())
+    while (paramInt < this.jdField_a_of_type_Booq.a())
     {
       paramList = new PressScaleImageView(getContext());
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       localLayoutParams.weight = 1.0F;
       localLayoutParams.gravity = 16;
       paramList.setTag(Integer.valueOf(paramInt));
-      paramList.setId(this.jdField_a_of_type_Bmyy.b(paramInt));
-      paramList.setImageResource(this.jdField_a_of_type_Bmyy.a(paramInt));
+      paramList.setId(this.jdField_a_of_type_Booq.b(paramInt));
+      paramList.setImageResource(this.jdField_a_of_type_Booq.a(paramInt));
       paramList.setScaleType(ImageView.ScaleType.CENTER);
       paramList.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       a(paramList, paramInt);
@@ -194,7 +194,7 @@ public class ProviderContainerView
     for (;;)
     {
       if (str != null) {
-        bbpr.a(str, this.jdField_a_of_type_Int);
+        bcwl.a(str, this.jdField_a_of_type_Int);
       }
       return;
       if (paramInt == 101) {
@@ -210,9 +210,9 @@ public class ProviderContainerView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setProviderContainViewListener(bmyw parambmyw)
+  public void setProviderContainViewListener(booo parambooo)
   {
-    this.jdField_a_of_type_Bmyw = parambmyw;
+    this.jdField_a_of_type_Booo = parambooo;
   }
 }
 

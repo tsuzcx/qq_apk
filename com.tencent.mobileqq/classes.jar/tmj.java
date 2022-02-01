@@ -1,28 +1,43 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import java.io.IOException;
+import java.io.InputStream;
 
-final class tmj
-  implements rnw
+public class tmj
+  implements ComplementFileStringLoader
 {
-  tmj(BridgeModule paramBridgeModule, long paramLong, String paramString) {}
+  private tmq a;
   
-  public void a(@NotNull List<UgcVideo> paramList)
+  public tmj(tmq paramtmq)
   {
-    if (!paramList.isEmpty()) {
-      tmd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_a_of_type_Long, paramList, this.jdField_a_of_type_JavaLangString, 0, "");
+    this.a = paramtmq;
+  }
+  
+  public String loadFileAsString(String paramString)
+  {
+    try
+    {
+      InputStream localInputStream = this.a.a(paramString);
+      if (localInputStream == null) {
+        throw new IllegalStateException(paramString + " not found");
+      }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("OfflineComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
+        localIOException.printStackTrace();
+      }
+      return null;
     }
-    QLog.i(tmd.jdField_a_of_type_JavaLangString, 2, "getUploadingVideoList,ugcVideoList.isEmpty");
+    String str = tmz.a(localIOException);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     tmj
  * JD-Core Version:    0.7.0.1
  */

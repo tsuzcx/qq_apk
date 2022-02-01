@@ -1,31 +1,27 @@
-import android.app.Activity;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
 
 public class axdv
+  implements axex
 {
-  public Activity a;
-  public View a;
-  public ImageView a;
-  public ListView a;
-  public TextView a;
-  public axdy a;
-  public axfs a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public View c;
-  public ImageView c;
-  public TextView c;
-  public View d;
-  public ImageView d;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  public axdv(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public axdv(axdo paramaxdo) {}
+  public void a()
+  {
+    MultiAIOFragment.a(this.a).a();
+  }
+  
+  public void a(int paramInt)
+  {
+    MultiAIOFragment.a(this.a).setViewPagerBusy(false);
+    MultiAIOFragment.a(this.a).setScrollState(2);
+    MultiAIOFragment.a(this.a).fling(-paramInt);
+  }
+  
+  public boolean a()
+  {
+    return MultiAIOFragment.a(this.a).a();
+  }
 }
 
 

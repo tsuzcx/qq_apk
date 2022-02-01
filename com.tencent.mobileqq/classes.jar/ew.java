@@ -14,11 +14,11 @@ class ew
   @SuppressLint({"NewApi"})
   public void onClick(View paramView)
   {
-    if (2131365391 == paramView.getId())
+    if (2131365484 == paramView.getId())
     {
       ex localex = new ex(this);
       ey localey = new ey(this);
-      bfur.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131693435), this.jdField_a_of_type_AndroidContentContext.getString(2131693414), 2131690620, 2131693454, localex, localey).show();
+      bhdj.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131693616), this.jdField_a_of_type_AndroidContentContext.getString(2131693595), 2131690697, 2131693635, localex, localey).show();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

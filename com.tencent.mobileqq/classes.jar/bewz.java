@@ -1,28 +1,25 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import mqq.app.QQPermissionCallback;
+
 public class bewz
+  implements QQPermissionCallback
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int[] a;
-  public int b;
-  public boolean b;
-  public int[] b;
-  public int c = -1;
-  public int d = -1;
+  public bewz(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable) {}
   
-  public bewz()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    bhdj.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public String toString()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return "rankId = " + this.jdField_a_of_type_Int + ",realLevel = " + this.jdField_b_of_type_Int + ",rankTitle = " + this.jdField_a_of_type_JavaLangString + ",isShowLevel" + this.jdField_a_of_type_Boolean + ",isShowRank = " + this.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bewz
  * JD-Core Version:    0.7.0.1
  */

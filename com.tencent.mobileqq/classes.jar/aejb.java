@@ -1,55 +1,23 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.ContainerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.NotificationActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class aejb
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public aejb(TextPreviewActivity paramTextPreviewActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aejb(NotificationActivity paramNotificationActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 100: 
-    case 16: 
-    case 18: 
-    case 19: 
-      do
-      {
-        do
-        {
-          return;
-          if (this.a.jdField_a_of_type_JavaLangCharSequence != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(this.a.jdField_a_of_type_JavaLangCharSequence);
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a.setMovementMethod(bhcn.a());
-          return;
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_Gb.a(this.a.e));
-          return;
-        } while (!(paramMessage.obj instanceof Drawable));
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
-        return;
-      } while (!(paramMessage.obj instanceof Bitmap));
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)paramMessage.obj);
-      return;
-    }
-    this.a.a();
+    ThreadManager.getSubThreadHandler().postDelayed(new NotificationActivity.1.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aejb
  * JD-Core Version:    0.7.0.1
  */

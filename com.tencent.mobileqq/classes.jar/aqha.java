@@ -1,72 +1,30 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aqha
-  extends aqgc<aqgz>
+class aqha
+  implements View.OnClickListener
 {
-  public static aqgz c()
-  {
-    aqgz localaqgz2 = (aqgz)apub.a().a(469);
-    aqgz localaqgz1 = localaqgz2;
-    if (localaqgz2 == null) {
-      localaqgz1 = new aqgz();
-    }
-    return localaqgz1;
-  }
+  aqha(aqgz paramaqgz, int paramInt) {}
   
-  @NonNull
-  public aqgz a()
+  public void onClick(View paramView)
   {
-    return new aqgz();
-  }
-  
-  @NonNull
-  public aqgz a(aptx[] paramArrayOfaptx)
-  {
-    boolean bool = true;
-    localaqgz = new aqgz();
-    paramArrayOfaptx = paramArrayOfaptx[0].jdField_a_of_type_JavaLangString;
-    try
+    if (aqgz.a(this.jdField_a_of_type_Aqgz) != this.jdField_a_of_type_Int)
     {
-      paramArrayOfaptx = new JSONObject(paramArrayOfaptx);
-      if (paramArrayOfaptx.optInt("is_show_recover_entry", 1) == 1) {}
-      for (;;)
-      {
-        localaqgz.jdField_a_of_type_Boolean = bool;
-        localaqgz.jdField_a_of_type_JavaLangString = paramArrayOfaptx.optString("recover_text", localaqgz.jdField_a_of_type_JavaLangString);
-        localaqgz.b = paramArrayOfaptx.optString("recover_url", localaqgz.b);
-        localaqgz.c = paramArrayOfaptx.optString("recoveryHomePageUrl", localaqgz.c);
-        return localaqgz;
-        bool = false;
-      }
-      return localaqgz;
+      aqgz.a(this.jdField_a_of_type_Aqgz, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aqgz.notifyDataSetChanged();
     }
-    catch (JSONException paramArrayOfaptx)
-    {
-      xvv.e("QVipFriendTag2Processor", "QVipFriendTag2Config onParsed exception :" + paramArrayOfaptx.getMessage());
+    azcl.a("0X800ADEB");
+    if (QLog.isColorLevel()) {
+      QLog.d("[BrowserOpt] RecommendBrowserAdapter", 2, new Object[] { "[action] bindItemClickListener: invoked. ", " position: ", Integer.valueOf(this.jdField_a_of_type_Int) });
     }
-  }
-  
-  @NonNull
-  public aqgz b()
-  {
-    return new aqgz();
-  }
-  
-  public Class<aqgz> clazz()
-  {
-    return aqgz.class;
-  }
-  
-  public int type()
-  {
-    return 469;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqha
  * JD-Core Version:    0.7.0.1
  */

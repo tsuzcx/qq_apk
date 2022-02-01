@@ -1,18 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class spt
-  implements DialogInterface.OnClickListener
+  implements sts
 {
-  public spt(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public spt(VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog remain confirm");
+      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " SUCCESS");
     }
+    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a));
+    }
+    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
   }
 }
 

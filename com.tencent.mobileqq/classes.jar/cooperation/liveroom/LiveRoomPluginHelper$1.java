@@ -3,10 +3,10 @@ package cooperation.liveroom;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.commons.IReportDelegate;
 import mqq.app.AppRuntime;
-import pkz;
+import pvw;
 
 final class LiveRoomPluginHelper$1
-  implements pkz
+  implements pvw
 {
   LiveRoomPluginHelper$1(LiveRoomPluginHelper.InitViolaListener paramInitViolaListener, AppRuntime paramAppRuntime, String paramString, IReportDelegate paramIReportDelegate) {}
   

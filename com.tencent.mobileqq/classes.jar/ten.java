@@ -1,29 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 public class ten
-  extends Handler
+  implements InvocationHandler
 {
-  public ten(ChannelTopBanner paramChannelTopBanner, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ten(FastWebActivity.1 param1) {}
   
-  public void handleMessage(Message paramMessage)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    if ((ChannelTopBanner.a(this.a)) || (!ChannelTopBanner.b(this.a))) {}
-    while (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.getCount() <= 1) {
-      return;
-    }
-    paramMessage = this.a;
-    paramMessage.jdField_a_of_type_Int += 1;
-    this.a.jdField_a_of_type_Int %= this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.getCount();
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setCurrentItem(this.a.jdField_a_of_type_Int, true);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
+    this.a.this$0.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    FastWebActivity.a(this.a.this$0).setMaskBackGroundDrawable(new ColorDrawable(0));
+    return null;
   }
 }
 

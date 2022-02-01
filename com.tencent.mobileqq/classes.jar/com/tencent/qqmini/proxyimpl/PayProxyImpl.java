@@ -8,7 +8,7 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.mini.app.AppLoaderManager;
+import com.tencent.mobileqq.mini.app.AppLoaderFactory;
 import com.tencent.mobileqq.minigame.ui.PayForFriendView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.annotation.ProxyService;
@@ -59,12 +59,12 @@ public class PayProxyImpl
       return paramActivity;
     }
     QLog.d(this.a, 1, "goMidasPay requestSource = " + i);
-    return PayBridgeActivity.a(AppLoaderManager.sMiniAppInterface, paramActivity, new PayProxyImpl.1(this, new Handler(Looper.getMainLooper()), paramIPayResultCallBack), i, paramBundle);
+    return PayBridgeActivity.a(AppLoaderFactory.getMiniAppInterface(), paramActivity, new PayProxyImpl.1(this, new Handler(Looper.getMainLooper()), paramIPayResultCallBack), i, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.PayProxyImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,35 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
-public class aibi
-  implements aira
+class aibi
+  implements bila<oidb_0x8ed.RspBody>
 {
-  public aibi(TroopView paramTroopView) {}
+  aibi(aibh paramaibh) {}
   
-  public void a()
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    if (bcoo.a())
-    {
-      localMessage = TroopView.a(this.a).obtainMessage(15);
-      TroopView.a(this.a).sendMessage(localMessage);
-    }
-    do
-    {
-      return;
-      if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext())) {
-        break label105;
-      }
-      if (this.a.a.size() <= 0) {
-        break;
-      }
-    } while ((TroopView.a(this.a) == null) || (TroopView.a(this.a) == null));
-    TroopView.a(this.a).c(TroopView.a(this.a).getCurrentItem());
-    return;
-    TroopView.b(this.a);
-    return;
-    label105:
     if (QLog.isColorLevel()) {
-      QLog.d("addContacts.TroopView", 2, "refresh falied. network unavailable");
+      QLog.d(this.a.a.tag, 2, "exitRoom: errorCode = " + paramInt);
     }
-    Message localMessage = TroopView.a(this.a).obtainMessage(13);
-    TroopView.a(this.a).sendMessageDelayed(localMessage, 1000L);
+    if ((paramInt == 0) || (paramInt == 1285))
+    {
+      if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
+        this.a.a.a.dismiss();
+      }
+      new Intent().putExtra("isNeedFinish", true);
+      bhhr.f(this.a.a.getActivity(), this.a.a.app.getCurrentAccountUin(), false);
+      axrb.a().d();
+      this.a.a.j = true;
+      this.a.a.finish(1);
+      return;
+    }
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
+      this.a.a.a.dismiss();
+    }
+    QQToast.a(this.a.a.getActivity(), 1, anvx.a(2131704547), 0).b(this.a.a.getTitleBarHeight());
   }
 }
 

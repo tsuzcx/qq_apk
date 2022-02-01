@@ -1,21 +1,20 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
 class txl
-  implements tqb
+  extends BroadcastReceiver
 {
-  txl(txk paramtxk, txh paramtxh) {}
+  txl(txk paramtxk) {}
   
-  public void a(boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Txk.c(this.jdField_a_of_type_Txh);
-      return;
-    }
-    this.jdField_a_of_type_Txk.d(this.jdField_a_of_type_Txh);
+    this.a.a(paramContext, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     txl
  * JD-Core Version:    0.7.0.1
  */

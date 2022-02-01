@@ -1,90 +1,61 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.ThreadManagerExecutor;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
-import java.util.concurrent.Executor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class rks
-  implements ISuperPlayer.OnSeekCompleteListener, rkt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class rks
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString;
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManagerExecutor.getExecutorService(64);
-  private rku jdField_a_of_type_Rku;
-  private rkw jdField_a_of_type_Rkw;
-  private rky jdField_a_of_type_Rky = new rkz();
-  private int b;
-  private int c;
+  rks(rkk paramrkk) {}
   
-  private void d()
+  public final void onClick(View paramView)
   {
-    e();
-    rku localrku = new rku(2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Rkw);
-    this.jdField_a_of_type_Rku = localrku;
-    localrku.a(this.jdField_a_of_type_Rky);
-    localrku.executeOnExecutor(this.jdField_a_of_type_JavaUtilConcurrentExecutor, null);
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_Rku != null) {
-      this.jdField_a_of_type_Rku.cancel(true);
+    if (rkk.b(this.a))
+    {
+      localObject1 = rkk.a(this.a);
+      if (localObject1 != null) {
+        ((rkl)localObject1).a("喂饼中，请稍等～");
+      }
     }
-    this.jdField_a_of_type_Rku = null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Rky != null) {
-      this.jdField_a_of_type_Rky.b();
+    int j = rkk.a(this.a, rkk.a(this.a));
+    Object localObject1 = rkk.a(this.a);
+    int i;
+    if (localObject1 != null)
+    {
+      Object localObject2 = ((VideoInfo)localObject1).j;
+      if (localObject2 == null) {
+        break label164;
+      }
+      if (((CharSequence)localObject2).length() <= 0) {
+        break label159;
+      }
+      i = 1;
+      if (i != 1) {
+        break label164;
+      }
+      rkk.a(this.a, true);
+      rkk.b(this.a, rkk.a(this.a));
+      localObject2 = pvj.a();
+      String str = ((VideoInfo)localObject1).j;
+      Intrinsics.checkExpressionValueIsNotNull(str, "it.accountUin");
+      ((pvj)localObject2).a(Long.parseLong(str), j, ((VideoInfo)localObject1).g);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Int == paramInt) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label159:
+      i = 0;
+      break;
+      label164:
+      localObject1 = rkk.a(this.a);
+      if (localObject1 != null) {
+        ((rkl)localObject1).a(false, "喂饼失败", rkk.a(this.a));
+      }
     }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Rky.a(paramInt, this);
-  }
-  
-  public void a(int paramInt1, int paramInt2, long paramLong)
-  {
-    this.b = paramInt1;
-    this.c = paramInt2;
-  }
-  
-  public void a(String paramString, ViewGroup paramViewGroup, rkt paramrkt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Rky.a(paramString, paramViewGroup);
-    this.jdField_a_of_type_Rky.a(paramrkt);
-    this.jdField_a_of_type_Rky.a(this);
-  }
-  
-  public void a(rkw paramrkw)
-  {
-    this.jdField_a_of_type_Rkw = paramrkw;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Rky != null) {
-      this.jdField_a_of_type_Rky.c();
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Rkw = null;
-    e();
-    this.jdField_a_of_type_Rky.a();
-  }
-  
-  public void onSeekComplete(ISuperPlayer paramISuperPlayer)
-  {
-    d();
   }
 }
 

@@ -1,17 +1,29 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileSimpleView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
 public class ayyu
-  extends ayyv
+  implements Animator.AnimatorListener
 {
-  public ayyu(VasProfileSimpleView paramVasProfileSimpleView, Animation paramAnimation)
+  public ayyu(ScanIconAnimateView paramScanIconAnimateView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(null);
+    ScanIconAnimateView.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileSimpleView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
 }
 

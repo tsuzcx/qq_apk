@@ -1,20 +1,40 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 
-class rot
-  implements View.OnClickListener
+public abstract class rot
 {
-  rot(roq paramroq) {}
-  
-  public void onClick(View paramView)
-  {
-    GroupManagerActivity.a((Activity)this.a.a);
-    bcef.b(roq.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public long a;
+  public BaseArticleInfo a;
+  public TabChannelCoverInfo a;
+  public Long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public BaseArticleInfo b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public boolean e;
+  public int f;
+  public String f;
+  public boolean f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
 }
 
 

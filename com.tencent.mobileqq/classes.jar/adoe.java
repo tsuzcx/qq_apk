@@ -1,22 +1,23 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class adoe
-  extends adnm
+  implements DialogInterface.OnClickListener
 {
-  public adoe(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
+  public adoe(ChatHistory paramChatHistory) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.b.g();
+    this.a.a.setEnabled(true);
+    this.a.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adoe
  * JD-Core Version:    0.7.0.1
  */

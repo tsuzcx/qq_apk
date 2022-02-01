@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.forward.ForwardPhotoOption.3;
 
-public final class ausg
-  implements Parcelable.Creator<WatchTogetherSession>
+public class ausg
+  implements View.OnTouchListener
 {
-  public WatchTogetherSession a(Parcel paramParcel)
-  {
-    return new WatchTogetherSession(paramParcel);
-  }
+  public ausg(ForwardPhotoOption.3 param3) {}
   
-  public WatchTogetherSession[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new WatchTogetherSession[paramInt];
+    return true;
   }
 }
 

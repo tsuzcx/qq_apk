@@ -1,21 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import com.tencent.mobileqq.search.model.BusinessGroupWord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class bcci
-  implements ValueAnimator.AnimatorUpdateListener
+public class bcci
+  extends aogh
 {
-  public bcci(View paramView) {}
+  public bcci(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, String paramString)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.setAlpha(1.0F - f);
+    super.a(paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "unify handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
+    }
+  }
+  
+  public void a(int paramInt, List<BusinessGroupWord> paramList)
+  {
+    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
+    HotWordsForSubBussFragment.a(this.a, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "unify handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcci
  * JD-Core Version:    0.7.0.1
  */

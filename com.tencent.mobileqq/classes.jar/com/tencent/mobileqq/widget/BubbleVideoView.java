@@ -15,14 +15,14 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import apub;
-import bhbo;
+import aqxe;
+import bimg;
 import com.tencent.util.VersionUtils;
 
 public class BubbleVideoView
   extends BubbleImageView
 {
-  private static bhbo a;
+  private static bimg a;
   private Bitmap b;
   private boolean c;
   
@@ -43,14 +43,14 @@ public class BubbleVideoView
   
   private void b(Canvas paramCanvas)
   {
-    if (jdField_a_of_type_Bhbo != null) {
-      jdField_a_of_type_Bhbo.a(this, paramCanvas);
+    if (jdField_a_of_type_Bimg != null) {
+      jdField_a_of_type_Bimg.a(this, paramCanvas);
     }
   }
   
-  public static void setDrawListener(bhbo parambhbo)
+  public static void setDrawListener(bimg parambimg)
   {
-    jdField_a_of_type_Bhbo = parambhbo;
+    jdField_a_of_type_Bimg = parambimg;
   }
   
   protected void a()
@@ -132,7 +132,7 @@ public class BubbleVideoView
       if (Build.VERSION.SDK_INT >= 28)
       {
         this.g = true;
-        Object localObject = (String)apub.a().a(462);
+        Object localObject = (String)aqxe.a().a(462);
         if ((localObject != null) && (((String)localObject).length() > 0))
         {
           localObject = ((String)localObject).split("\\|");

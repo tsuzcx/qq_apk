@@ -1,21 +1,29 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class blsf
-  extends RecyclerView.ViewHolder
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView b;
-  
-  public blsf(View paramView)
+  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, long paramLong)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368236));
-    this.b = ((ImageView)paramView.findViewById(2131368631));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366686));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt2 + "|");
+    localStringBuilder.append(paramInt1 + "|");
+    localStringBuilder.append(paramLong + "|");
+    localStringBuilder.append(Build.BRAND + "|");
+    localStringBuilder.append(Build.MODEL + "|");
+    localStringBuilder.append(Build.VERSION.RELEASE);
+    if ((paramAppRuntime instanceof QQAppInterface)) {}
+    for (paramAppRuntime = (QQAppInterface)paramAppRuntime;; paramAppRuntime = null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadSuccessRateReporter", 2, "[preloadSuccessRate]: " + localStringBuilder.toString());
+      }
+      bdka.a(paramAppRuntime, "sendtdbank|b_sng_qqvip_qqcomic|preloadSuccessRate", localStringBuilder.toString(), true);
+      return;
+    }
   }
 }
 

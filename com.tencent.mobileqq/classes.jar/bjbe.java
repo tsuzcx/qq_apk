@@ -1,24 +1,83 @@
-import android.view.View;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoViewInitListener;
-import com.tencent.superplayer.api.SuperPlayerFactory;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.agent.AuthorityControlFragment;
+import com.tencent.open.model.AppInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class bjbe
-  implements SDKInitListener
+public class bjbe
+  extends bjpk
 {
-  bjbe(bjbd parambjbd, AbsVideoPlayer.OnVideoViewInitListener paramOnVideoViewInitListener) {}
+  public bjbe(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public void onSDKInited(boolean paramBoolean)
+  protected void a(boolean paramBoolean, List<AppInfo> paramList)
   {
-    QLog.e("MiniAppVideoPlayer_SuperPlayer", 1, "superPlayer onSDKInited :" + paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorityControlActivity", 2, "onDelApp: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
+    }
+    QQAppInterface localQQAppInterface;
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
+    {
+      AuthorityControlFragment.a(this.a).b(paramList);
+      AuthorityControlFragment.a(this.a).a();
+      if (AuthorityControlFragment.a(this.a).getCount() == 0) {
+        AuthorityControlFragment.a(this.a);
+      }
+      int i = paramList.size();
+      paramList = String.format(anvx.a(2131700299), new Object[] { Integer.valueOf(i) });
+      QQToast.a(AuthorityControlFragment.a(this.a), 2, paramList, 0).a();
+      localQQAppInterface = AuthorityControlFragment.a(this.a);
+      if (!paramBoolean) {
+        break label207;
+      }
+    }
+    label207:
+    for (paramList = "0";; paramList = "1")
+    {
+      bdla.b(localQQAppInterface, "dc00898", "", "", "0X8009E1D", "0X8009E1D", 0, 0, paramList, "", "", "");
+      return;
+      QQToast.a(AuthorityControlFragment.a(this.a), 1, anvx.a(2131700303), 0).a();
+      break;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorityControlActivity", 2, "onGetAuthorizeAppList: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
+    }
     if (paramBoolean)
     {
-      bjbd.a(this.jdField_a_of_type_Bjbd, SuperPlayerFactory.createPlayerVideoView(BaseApplicationImpl.getContext()));
-      bjbd.a(this.jdField_a_of_type_Bjbd, SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 102, bjbd.a(this.jdField_a_of_type_Bjbd)));
-      if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoViewInitListener != null) && ((bjbd.a(this.jdField_a_of_type_Bjbd) instanceof View))) {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoViewInitListener.onVideoViewInit((View)bjbd.a(this.jdField_a_of_type_Bjbd));
+      paramString = paramList;
+      if (paramList == null) {
+        paramString = new ArrayList();
+      }
+      AuthorityControlFragment.a(this.a).a(paramString);
+      AuthorityControlFragment.a(this.a, new ArrayList(paramString));
+      if (AuthorityControlFragment.a(this.a).getCount() == 0) {
+        AuthorityControlFragment.a(this.a);
+      }
+    }
+    for (;;)
+    {
+      AuthorityControlFragment.a(this.a).notifyDataSetChanged();
+      if ((AuthorityControlFragment.a(this.a).isShowing()) && (!this.a.isRemoving())) {}
+      try
+      {
+        AuthorityControlFragment.a(this.a).dismiss();
+        label148:
+        AuthorityControlFragment.a(this.a, paramBoolean);
+        return;
+        AuthorityControlFragment.a(this.a).setVisibility(0);
+        this.a.setRightButton(2131690240, this.a);
+        continue;
+        AuthorityControlFragment.a(this.a);
+      }
+      catch (Throwable paramList)
+      {
+        break label148;
       }
     }
   }

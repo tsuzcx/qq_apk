@@ -1,18 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.TCWDatePicker.SavedState;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bjue
-  implements Parcelable.Creator<TCWDatePicker.SavedState>
+public class bjue
+  extends bjud
 {
-  public TCWDatePicker.SavedState a(Parcel paramParcel)
+  public void a(String paramString1, String paramString2)
   {
-    return new TCWDatePicker.SavedState(paramParcel, null);
+    QLog.d(paramString1, 1, paramString2);
   }
   
-  public TCWDatePicker.SavedState[] a(int paramInt)
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return new TCWDatePicker.SavedState[paramInt];
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
+  }
+  
+  public void b(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    QLog.d(paramString1, 1, paramString2);
+  }
+  
+  public void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
   }
 }
 

@@ -1,28 +1,19 @@
-import android.content.Context;
-import android.os.AsyncTask;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
-final class atbc
-  extends df
+public class atbc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  atbc(Context paramContext) {}
+  public atbc(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  public void onGlobalLayout()
   {
-    try
-    {
-      dc.a(this.a, paramAsyncTask, paramInt, new atbd(this));
-      super.a(paramAsyncTask, paramInt);
-      return;
-    }
-    catch (Exception paramAsyncTask)
-    {
-      paramAsyncTask.printStackTrace();
-    }
+    this.a.ao_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,12 @@
-import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
 
 public class aixh
-  extends aiwz
+  extends amgz
 {
-  public static final int[] a = { 2131690702 };
-  public static final int[] b = { 2131364426 };
-  
-  public aixh(FragmentActivity paramFragmentActivity)
-  {
-    super(paramFragmentActivity);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
-  }
+  public TextView a;
+  public PublicRecommendAccountInfo a;
+  public TextView b;
 }
 
 

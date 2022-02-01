@@ -1,21 +1,30 @@
-import QC.GetItemWatchWordReq;
-import QC.GetItemWatchWordRsp;
-import QC.UniBusinessItem;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import eipc.EIPCModule;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
 public class bgjv
-  implements bgju
+  extends aahi
 {
-  public void a(String paramString1, String paramString2, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
+  public bgjv(TroopFileTransferManager paramTroopFileTransferManager) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    paramEIPCResultCallback = new bgol("QC.UniBusinessLoginServer.UniBusinessLoginObj", "QCUniBusinessLogin.watchword", "stReq", "stRsp");
-    UniBusinessItem localUniBusinessItem = new UniBusinessItem();
-    localUniBusinessItem.appid = Integer.parseInt(paramString1);
-    localUniBusinessItem.itemid = Integer.parseInt(paramString2);
-    paramEIPCResultCallback.a("GetItemWatchWord", new GetItemWatchWordReq(anaj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()), localUniBusinessItem), new GetItemWatchWordRsp(), new bgjw(this, paramEIPCModule, paramInt), true);
+    if ((paramBoolean) && (paramFileInfo != null))
+    {
+      String str = paramFileInfo.str_file_id.get();
+      Object localObject = str;
+      if (!str.startsWith("/")) {
+        localObject = "/" + str;
+      }
+      localObject = this.a.a().a((String)localObject);
+      if (localObject != null)
+      {
+        ((bfif)localObject).a = paramFileInfo.uint32_bus_id.get();
+        ((bfif)localObject).c = paramFileInfo.uint32_dead_time.get();
+      }
+      this.a.a().d((bfif)localObject);
+    }
   }
 }
 

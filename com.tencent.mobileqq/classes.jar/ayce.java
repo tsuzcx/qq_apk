@@ -1,39 +1,29 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ayce
-  implements BusinessObserver
+class ayce
+  implements View.OnClickListener
 {
-  protected void a(NewerGuidePlugin.RecommendedListResp paramRecommendedListResp) {}
+  ayce(aycd paramaycd) {}
   
-  protected void a(boolean paramBoolean) {}
-  
-  protected void b(boolean paramBoolean) {}
-  
-  protected void c(boolean paramBoolean) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (paramView == null) {}
+    for (;;)
     {
-    default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    case 1: 
-      a(paramBoolean);
-      return;
-    case 2: 
-      b(paramBoolean);
-      return;
-    case 3: 
-      a((NewerGuidePlugin.RecommendedListResp)paramObject);
-      return;
+      if (StartLiveTopicLabelListView.a(this.a.a) != null) {
+        StartLiveTopicLabelListView.a(this.a.a).a();
+      }
     }
-    c(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayce
  * JD-Core Version:    0.7.0.1
  */

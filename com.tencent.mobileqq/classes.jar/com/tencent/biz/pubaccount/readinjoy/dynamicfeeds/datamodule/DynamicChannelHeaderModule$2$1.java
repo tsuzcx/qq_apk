@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
 import android.os.Bundle;
 import org.json.JSONObject;
-import pjr;
-import pjs;
+import puo;
+import pup;
 
 public class DynamicChannelHeaderModule$2$1
   implements Runnable
 {
-  public DynamicChannelHeaderModule$2$1(pjs parampjs, JSONObject paramJSONObject, Bundle paramBundle) {}
+  public DynamicChannelHeaderModule$2$1(pup parampup, JSONObject paramJSONObject, Bundle paramBundle) {}
   
   public void run()
   {
-    pjr.a(this.jdField_a_of_type_Pjs.jdField_a_of_type_Pjr, this.jdField_a_of_type_Pjs.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Pjs.jdField_a_of_type_Pix);
+    puo.a(this.jdField_a_of_type_Pup.jdField_a_of_type_Puo, this.jdField_a_of_type_Pup.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Pup.jdField_a_of_type_Ptu);
   }
 }
 

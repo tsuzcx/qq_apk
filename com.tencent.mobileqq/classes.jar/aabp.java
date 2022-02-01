@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp;
-
-public final class aabp
-  implements Parcelable.Creator<NewerGuidePlugin.RecommendedListResp>
+public abstract interface aabp
 {
-  public NewerGuidePlugin.RecommendedListResp a(Parcel paramParcel)
-  {
-    return new NewerGuidePlugin.RecommendedListResp(paramParcel);
-  }
-  
-  public NewerGuidePlugin.RecommendedListResp[] a(int paramInt)
-  {
-    return new NewerGuidePlugin.RecommendedListResp[paramInt];
-  }
+  public abstract void a(int paramInt);
 }
 
 

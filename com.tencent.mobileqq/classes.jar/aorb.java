@@ -1,84 +1,30 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aorb
-  implements DownloadListener
+  implements View.OnClickListener
 {
-  aorb(aoqz paramaoqz) {}
+  aorb(aora paramaora) {}
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (aoqz.a(this.a) != null) {
-      aoqz.a(this.a).a(this.a.a(paramString1, 6, paramString2).toString());
+    if (aora.a != null) {
+      aora.a(this.a).startActivity(aora.a);
     }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (aoqz.a(this.a) != null)) {
-      aoqz.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if ((paramDownloadInfo != null) && (aoqz.a(this.a) != null)) {
-      aoqz.a(this.a).a(this.a.a(paramDownloadInfo.k, paramDownloadInfo.a(), paramDownloadInfo.f, paramDownloadInfo.e, paramString, paramInt1, paramDownloadInfo.j).toString());
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (aoqz.a(this.a) != null)) {
-      aoqz.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (aoqz.a(this.a) != null)) {
-      aoqz.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if ((paramList != null) && (aoqz.a(this.a) != null))
-    {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        localJSONArray.put(this.a.a(localDownloadInfo));
-      }
-      aoqz.a(this.a).a(localJSONArray.toString());
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (aoqz.a(this.a) != null)) {
-      aoqz.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    if (aoqz.a(this.a) != null) {
-      aoqz.a(this.a).a(this.a.a(paramString1, 13, paramString2).toString());
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    if (aoqz.a(this.a) != null) {
-      aoqz.a(this.a).a(this.a.a(paramString1, 9, paramString2).toString());
-    }
+    bdla.b(null, "CliOper", "", "", "0X8006B15", "0X8006B15", 0, 0, "", "", "", "");
+    bdla.b(null, "dc00898", "", "", "0X8009AC8", "0X8009AC8", 0, 0, "", "", "", "");
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(aora.a(this.a));
+    int i = ((SharedPreferences)localObject).getInt("push_msg_notify_open", 0);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_open", i + 1);
+    ((SharedPreferences.Editor)localObject).commit();
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

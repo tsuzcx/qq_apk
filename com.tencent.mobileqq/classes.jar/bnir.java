@@ -1,24 +1,51 @@
-import android.animation.TypeEvaluator;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import dov.com.qq.im.ae.cmshow.AECMShowPhotoPreviewFragment;
+import java.util.List;
 
 public class bnir
-  implements TypeEvaluator<bnip>
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private bnip a;
+  private int jdField_a_of_type_Int;
   
-  public bnip a(float paramFloat, bnip parambnip1, bnip parambnip2)
+  public bnir(AECMShowPhotoPreviewFragment paramAECMShowPhotoPreviewFragment) {}
+  
+  public void onGlobalLayout()
   {
-    float f1 = parambnip1.a + (parambnip2.a - parambnip1.a) * paramFloat;
-    float f2 = parambnip1.b + (parambnip2.b - parambnip1.b) * paramFloat;
-    float f3 = parambnip1.c + (parambnip2.c - parambnip1.c) * paramFloat;
-    paramFloat = parambnip1.d + (parambnip2.d - parambnip1.d) * paramFloat;
-    if (this.a == null) {
-      this.a = new bnip(f1, f2, f3, paramFloat);
-    }
-    for (;;)
+    this.jdField_a_of_type_Int += 1;
+    bnrh.a("AECMShowPhotoPreviewFragment", "[onGlobalLayout] called, invokeCount=" + this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int >= 2)
     {
-      return this.a;
-      this.a.a(f1, f2, f3, paramFloat);
+      localObject = AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_DovComQqImAeCmshowAECMShowPhotoPreviewFragment).getViewTreeObserver();
+      if (((ViewTreeObserver)localObject).isAlive())
+      {
+        if (Build.VERSION.SDK_INT < 16) {
+          break label87;
+        }
+        ((ViewTreeObserver)localObject).removeOnGlobalLayoutListener(this);
+      }
     }
+    while (AECMShowPhotoPreviewFragment.b(this.jdField_a_of_type_DovComQqImAeCmshowAECMShowPhotoPreviewFragment))
+    {
+      return;
+      label87:
+      ((ViewTreeObserver)localObject).removeGlobalOnLayoutListener(this);
+    }
+    AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_DovComQqImAeCmshowAECMShowPhotoPreviewFragment, true);
+    Object localObject = AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_DovComQqImAeCmshowAECMShowPhotoPreviewFragment, AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_DovComQqImAeCmshowAECMShowPhotoPreviewFragment), AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_DovComQqImAeCmshowAECMShowPhotoPreviewFragment));
+    if ((localObject != null) && (((bolh)localObject).a != null) && (((Boolean)((bolh)localObject).a).booleanValue()))
+    {
+      AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_DovComQqImAeCmshowAECMShowPhotoPreviewFragment, (List)((bolh)localObject).b);
+      return;
+    }
+    AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_DovComQqImAeCmshowAECMShowPhotoPreviewFragment).setEnabled(true);
+    AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_DovComQqImAeCmshowAECMShowPhotoPreviewFragment).setText(2131689678);
+    AECMShowPhotoPreviewFragment.b(this.jdField_a_of_type_DovComQqImAeCmshowAECMShowPhotoPreviewFragment).setVisibility(0);
+    AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_DovComQqImAeCmshowAECMShowPhotoPreviewFragment).setVisibility(0);
   }
 }
 

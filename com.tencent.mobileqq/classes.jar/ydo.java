@@ -1,32 +1,54 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
-class ydo
-  implements vqp<wed, wgb>
+public class ydo
+  extends wag<ydd, wjx>
 {
-  ydo(ydh paramydh) {}
-  
-  public void a(@NonNull wed paramwed, @Nullable wgb paramwgb, @NonNull ErrorMessage paramErrorMessage)
+  public ydo(ydd paramydd)
   {
-    xvv.b("DoodleEmojiManager", "fireRequestEmojiPackList, result : " + paramwgb + ", errorMsg = " + paramErrorMessage);
-    synchronized (this.a.jdField_b_of_type_JavaLangObject)
+    super(paramydd);
+  }
+  
+  public void a(@NonNull ydd paramydd, @NonNull wjx paramwjx)
+  {
+    Object localObject = ydd.a(paramydd);
+    paramwjx = paramwjx.a;
+    wjv localwjv = (wjv)wjs.a(27);
+    localObject = ((ArrayList)localObject).iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
     {
-      if (!TextUtils.equals(paramwed.a, this.a.jdField_b_of_type_JavaLangString))
+      ydz localydz = (ydz)((Iterator)localObject).next();
+      if ((localydz instanceof yeb))
       {
-        xvv.d("DoodleEmojiManager", "cookie mismatch ! ignore this response : " + paramwgb);
-        return;
-      }
-      if ((paramwgb == null) || (paramErrorMessage.isFail()))
-      {
-        xvv.d("DoodleEmojiManager", "get emoji error : " + paramwgb + ", " + paramErrorMessage);
-        return;
+        wtd localwtd = (wtd)paramwjx.get(localydz.a().feedId);
+        if (localwtd == null) {
+          break label129;
+        }
+        ((yeb)localydz).d = localwjv.a(((yeb)localydz).a(), localwtd.a);
+        i = 1;
       }
     }
-    this.a.jdField_b_of_type_JavaLangString = paramwgb.a;
-    this.a.a(TextUtils.isEmpty(paramwed.a), paramwgb, false);
+    label129:
+    for (;;)
+    {
+      break;
+      if (i != 0) {
+        ydd.a(paramydd).f();
+      }
+      return;
+    }
   }
+  
+  public Class acceptEventClass()
+  {
+    return wjx.class;
+  }
+  
+  public void b(@NonNull ydd paramydd, @NonNull wjx paramwjx) {}
 }
 
 

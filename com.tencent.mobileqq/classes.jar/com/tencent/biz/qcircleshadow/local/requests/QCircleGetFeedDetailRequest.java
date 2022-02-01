@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import feedcloud.FeedCloudMeta.StFeed;
 import feedcloud.FeedCloudRead.StGetFeedDetailReq;
 import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
-import vhe;
+import vvx;
 
 public class QCircleGetFeedDetailRequest
   extends QCircleBaseRequest
@@ -32,7 +32,7 @@ public class QCircleGetFeedDetailRequest
     this.mRequest.from.set(paramInt);
     if (paramStFeed != null)
     {
-      paramString1 = vhe.a(paramStFeed);
+      paramString1 = vvx.a(paramStFeed);
       if (paramString1 != null)
       {
         paramString1.busiTranparent.set(paramStFeed.busiTranparent.get());
@@ -60,7 +60,7 @@ public class QCircleGetFeedDetailRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.requests.QCircleGetFeedDetailRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,59 @@
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+
 class aiew
-  extends bjub
+  extends aoav
 {
-  aiew(aieu paramaieu, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  aiew(aido paramaido) {}
+  
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    if (paramInt == 0) {
+      this.a.updateSession(this.a.mActivity.getIntent());
+    }
   }
   
-  public void a(int paramInt, Object paramObject, bjua[] paramArrayOfbjua)
+  public void onGetHistoryMsgRet(int paramInt)
   {
-    paramInt = 0;
-    if ((paramArrayOfbjua == null) || (paramArrayOfbjua.length <= 0)) {}
-    for (;;)
+    this.a.d(paramInt);
+  }
+  
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0)
     {
+      if ((paramPublicAccountInfo != null) && (this.a.sessionInfo != null) && (this.a.sessionInfo.curFriendUin.equals(paramPublicAccountInfo.getUin()))) {
+        this.a.finish(1);
+      }
+    }
+    else {
       return;
-      if (paramArrayOfbjua.length < 0)
-      {
-        paramArrayOfbjua[0].b = 0;
-        paramArrayOfbjua[0].a = 0;
-        paramInt = 1;
+    }
+    this.a.updateSession(this.a.mActivity.getIntent());
+  }
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.updateSession(this.a.mActivity.getIntent());
+    }
+    if ((paramBoolean) && (!aido.b(this.a)))
+    {
+      localObject = (aoan)this.a.app.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+      if (localObject == null) {
+        break label103;
       }
-      while (paramInt < paramArrayOfbjua.length)
-      {
-        paramArrayOfbjua[paramInt].b = -1;
-        paramArrayOfbjua[paramInt].a = -1;
-        paramInt += 1;
+    }
+    label103:
+    for (Object localObject = ((aoan)localObject).b(this.a.sessionInfo.curFriendUin);; localObject = null)
+    {
+      if ((localObject != null) && (this.a.a != null) && (!aido.c(this.a))) {
+        this.a.c();
       }
+      return;
     }
   }
 }

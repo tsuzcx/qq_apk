@@ -1,22 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.util.Comparator;
 
-public class avoa
-  implements View.OnClickListener
+final class avoa
+  implements Comparator<File>
 {
-  public avoa(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
-  
-  public void onClick(View paramView)
+  private int a(long paramLong1, long paramLong2)
   {
-    bcef.b(this.a.a, "dc00898", "", "", "0X800A698", "0X800A698", 0, 0, "", "", "", "");
-    Intent localIntent = new Intent();
-    PublicFragmentActivity.a(this.a.getActivity(), localIntent, MatchChatSettingFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramLong1 < paramLong2) {
+      return -1;
+    }
+    if (paramLong1 == paramLong2) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public int a(File paramFile1, File paramFile2)
+  {
+    return a(paramFile1.lastModified(), paramFile2.lastModified());
   }
 }
 

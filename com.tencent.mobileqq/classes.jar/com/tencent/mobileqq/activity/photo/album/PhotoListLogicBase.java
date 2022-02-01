@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bfwl;
+import bhfd;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
@@ -316,7 +316,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity, O extends O
   protected String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
   {
     int i = this.mPhotoCommonData.maxSelectNum;
-    return this.mActivity.getResources().getString(2131694431, new Object[] { Integer.valueOf(i) });
+    return this.mActivity.getResources().getString(2131694632, new Object[] { Integer.valueOf(i) });
   }
   
   public AbstractPhotoListActivity.Holder getViewCaseCamera(@NonNull AbstractPhotoListActivity.Holder paramHolder, int paramInt)
@@ -751,7 +751,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity, O extends O
       ((PhotoCommonBaseData)localObject2).selectedMediaInfoHashMap = new HashMap();
     }
     localObject1 = ((PhotoCommonBaseData)localObject2).selectedMediaInfoHashMap;
-    bfwl.a();
+    bhfd.a();
     this.mPhotoListData.videoSelectedCnt = 0;
     this.mPhotoListData.gifSelectedCount = 0;
     if (this.mPhotoCommonData.allMediaInfoHashMap == null)
@@ -1037,7 +1037,7 @@ public class PhotoListLogicBase<K extends AbstractPhotoListActivity, O extends O
       this.mActivity.sendBtn.setEnabled(bool);
       this.mActivity.previewBtn.setEnabled(bool);
       return;
-      str1 = this.mActivity.getString(2131694416);
+      str1 = this.mActivity.getString(2131694617);
       break;
     }
   }

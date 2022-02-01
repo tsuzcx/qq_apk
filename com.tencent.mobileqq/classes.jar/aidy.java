@@ -1,15 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-
-public class aidy
-  implements DialogInterface.OnDismissListener
+class aidy
+  implements aakl
 {
-  public aidy(NewFriendActivity paramNewFriendActivity) {}
+  aidy(aido paramaido) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.a.a = null;
+    aido.a(this.a, paramString);
   }
 }
 

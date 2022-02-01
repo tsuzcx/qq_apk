@@ -3,12 +3,12 @@ package com.tencent.mobileqq.together.writetogether.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdhp;
+import beos;
 
 public class EditUserHistory
   implements Parcelable
 {
-  public static final Parcelable.Creator<EditUserHistory> CREATOR = new bdhp();
+  public static final Parcelable.Creator<EditUserHistory> CREATOR = new beos();
   public long a;
   public String a;
   public String b;

@@ -1,27 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-final class bnbt
-  implements mng
+class bnbt
+  implements Observer<Boolean>
 {
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onError " + paramInt);
-    }
-  }
+  bnbt(bnbp parambnbp) {}
   
-  public void a(String paramString)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onStart " + paramString);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onFinish " + paramString);
-    }
+    bnbp.b(this.a);
   }
 }
 

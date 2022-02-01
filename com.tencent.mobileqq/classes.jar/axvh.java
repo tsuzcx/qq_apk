@@ -1,70 +1,41 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.CustomViewPager;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class axvh
+  implements axzh
 {
-  private axup jdField_a_of_type_Axup;
-  private HashMap<Long, axup> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public axvh(SmallVideoFragment paramSmallVideoFragment) {}
   
-  private axup b(long paramLong, axuq paramaxuq, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  public void a(int paramInt)
   {
-    Object localObject = null;
-    if (paramLong == 1030L) {
-      localObject = new axzu(paramLong, paramaxuq, paramQQAppInterface, paramBaseActivity);
-    }
-    for (;;)
+    Object localObject;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() != null)
     {
-      if (localObject != null)
-      {
-        ((axup)localObject).a();
-        ((axup)localObject).a(true);
-      }
-      return localObject;
-      if (paramLong == 1040L) {
-        localObject = new axzm(paramLong, paramaxuq, paramQQAppInterface, paramBaseActivity);
-      } else if (paramLong > 40000L) {
-        localObject = new axwk(paramLong, paramaxuq, paramQQAppInterface, paramBaseActivity);
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_JavaLangString;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() == null) {
+        break label168;
       }
     }
-  }
-  
-  public axup a(long paramLong, axuq paramaxuq, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
-  {
-    if ((this.jdField_a_of_type_Axup != null) && (this.jdField_a_of_type_Axup.a != paramLong)) {
-      this.jdField_a_of_type_Axup.a(false, paramLong);
-    }
-    axup localaxup = (axup)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    if (localaxup != null)
+    label168:
+    for (long l = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_Long;; l = 0L)
     {
-      localaxup.a(true, paramLong);
-      localaxup.a();
-      localaxup.a(false);
-      return localaxup;
-    }
-    paramaxuq = b(paramLong, paramaxuq, paramQQAppInterface, paramBaseActivity);
-    if (paramaxuq != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramaxuq);
-    }
-    this.jdField_a_of_type_Axup = paramaxuq;
-    return paramaxuq;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      axup localaxup = (axup)((Map.Entry)localIterator.next()).getValue();
-      if (localaxup != null) {
-        localaxup.e();
+      if (QLog.isColorLevel()) {
+        QLog.i("Native_ShortVideo_Report", 2, "onClickClose report module=short_video, action=view_click, obj1=6, res2=" + (String)localObject + ", anchor=" + l);
       }
+      localObject = (VideoPlayerPagerAdapter)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getAdapter();
+      if ((((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem()) instanceof ShortVideoCommentsView)) {
+        ((ShortVideoCommentsView)((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem())).j();
+      }
+      this.a.d();
+      return;
+      localObject = "0";
+      break;
     }
-    this.jdField_a_of_type_Axup = null;
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
   }
 }
 

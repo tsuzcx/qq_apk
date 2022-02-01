@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View.MeasureSpec;
-import bjsb;
+import bldn;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
@@ -32,7 +32,7 @@ public class XListView
   private int mLastRadius;
   private int mLastRoundMode;
   private int mMaxHeight = -1;
-  private bjsb mOnSizeChangeListener;
+  private bldn mOnSizeChangeListener;
   private int mOrientation;
   private int mRadius;
   private int mRoundMode = 0;
@@ -265,9 +265,9 @@ public class XListView
     this.mInterceptor = paramMotionEventInterceptor;
   }
   
-  public void setOnSizeChangeListener(bjsb parambjsb)
+  public void setOnSizeChangeListener(bldn parambldn)
   {
-    this.mOnSizeChangeListener = parambjsb;
+    this.mOnSizeChangeListener = parambldn;
   }
   
   public void setOverScrollDistance(int paramInt)

@@ -1,33 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.AbsPublishColumnFragment;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class ryy
-  implements puy
+  implements URLDrawable.URLDrawableListener
 {
-  private List<VideoInfo> a;
+  public ryy(AbsPublishColumnFragment paramAbsPublishColumnFragment) {}
   
-  public ryy(List<VideoInfo> paramList)
-  {
-    this.a = paramList;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a(int paramInt, Map<Long, rcz> paramMap)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
-      if (!TextUtils.isEmpty(localVideoInfo.j))
-      {
-        rcz localrcz = (rcz)paramMap.get(Long.valueOf(Long.parseLong(localVideoInfo.j)));
-        if (localrcz != null) {
-          localVideoInfo.q = localrcz.a();
-        }
-      }
-    }
+    AbsPublishColumnFragment.b(this.a);
   }
 }
 

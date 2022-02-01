@@ -1,8 +1,8 @@
+import android.graphics.Bitmap;
+
 public abstract interface bbte
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public abstract void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3);
 }
 
 

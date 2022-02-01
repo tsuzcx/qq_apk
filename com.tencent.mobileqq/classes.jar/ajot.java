@@ -1,8 +1,23 @@
-import android.view.MotionEvent;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
-public abstract interface ajot
+public class ajot
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  public ajot(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    EmoticonGroupStoreFragment.a(this.a).invalidate();
+  }
 }
 
 

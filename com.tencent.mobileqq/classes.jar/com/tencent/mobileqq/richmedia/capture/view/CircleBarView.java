@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
-import bacj;
-import back;
-import bacl;
+import bbis;
+import bbit;
+import bbiu;
 
 public class CircleBarView
   extends View
@@ -25,9 +25,9 @@ public class CircleBarView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bacj jdField_a_of_type_Bacj;
-  private back jdField_a_of_type_Back;
-  private bacl jdField_a_of_type_Bacl;
+  private bbis jdField_a_of_type_Bbis;
+  private bbit jdField_a_of_type_Bbit;
+  private bbiu jdField_a_of_type_Bbiu;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -86,25 +86,25 @@ public class CircleBarView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_Bacl = new bacl(this);
+    this.jdField_a_of_type_Bbiu = new bbiu(this);
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bacj != null) && (this.jdField_a_of_type_Bacj.hasStarted())) {
-      this.jdField_a_of_type_Bacj.cancel();
+    if ((this.jdField_a_of_type_Bbis != null) && (this.jdField_a_of_type_Bbis.hasStarted())) {
+      this.jdField_a_of_type_Bbis.cancel();
     }
     clearAnimation();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Bacj = new bacj(this);
+    this.jdField_a_of_type_Bbis = new bbis(this);
     this.jdField_a_of_type_Float = 100.0F;
-    this.jdField_a_of_type_Bacj.setDuration(paramInt);
-    this.jdField_a_of_type_Bacj.setRepeatCount(-1);
-    this.jdField_a_of_type_Bacj.setInterpolator(new LinearInterpolator());
-    startAnimation(this.jdField_a_of_type_Bacj);
+    this.jdField_a_of_type_Bbis.setDuration(paramInt);
+    this.jdField_a_of_type_Bbis.setRepeatCount(-1);
+    this.jdField_a_of_type_Bbis.setInterpolator(new LinearInterpolator());
+    startAnimation(this.jdField_a_of_type_Bbis);
   }
   
   public boolean a(int paramInt)
@@ -152,9 +152,9 @@ public class CircleBarView
     this.jdField_b_of_type_Float = paramFloat;
   }
   
-  public void setOnAnimationListener(back paramback)
+  public void setOnAnimationListener(bbit parambbit)
   {
-    this.jdField_a_of_type_Back = paramback;
+    this.jdField_a_of_type_Bbit = parambbit;
   }
   
   public void setTextView(TextView paramTextView)

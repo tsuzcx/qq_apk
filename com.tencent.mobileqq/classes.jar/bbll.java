@@ -1,8 +1,21 @@
+import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
+
 public class bbll
+  implements bblq
 {
-  public int e;
-  public long e;
-  public int f;
+  public bbll(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase) {}
+  
+  public GLSurfaceView.EGLConfigChooser a()
+  {
+    return new bblr(this.a, true);
+  }
+  
+  public GLSurfaceView.EGLContextFactory a()
+  {
+    return new bblm(this);
+  }
 }
 
 

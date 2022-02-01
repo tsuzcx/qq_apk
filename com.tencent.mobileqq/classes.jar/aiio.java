@@ -1,21 +1,33 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneIPCModule;
+import java.util.List;
+import org.json.JSONObject;
+
 class aiio
-  implements aiip<T>
+  implements aiiq
 {
-  aiio(aiin paramaiin, int paramInt) {}
+  aiio(aiin paramaiin) {}
   
-  public int a()
+  public void a(List<aihq> paramList, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(aiix paramaiix, T paramT, int paramInt)
-  {
-    this.jdField_a_of_type_Aiin.a(paramaiix, paramT, paramInt);
-  }
-  
-  public boolean a(T paramT, int paramInt)
-  {
-    return true;
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramString1 = new StringBuilder().append("OnImgUpdated: empty data or text ").append(paramString1).append(" ");
+      if (paramList == null) {}
+      for (paramList = "null";; paramList = Integer.valueOf(paramList.size()))
+      {
+        QLog.i("StickerRecManager", 2, paramList);
+        return;
+      }
+    }
+    paramList = QzoneIPCModule.parseSticker2Json(paramList);
+    if (paramList == null)
+    {
+      QLog.i("StickerRecManager", 2, "OnImgUpdated: failed to parse img data");
+      return;
+    }
+    QzoneIPCModule.getInstance().onGetStickerRecResp(paramString1, paramList.toString(), paramString2);
   }
 }
 

@@ -1,14 +1,112 @@
-final class nnz
-  implements nnv
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.base.MD5Utils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.ISPlayerPreDownloader;
+import com.tencent.superplayer.api.ISPlayerPreDownloader.Listener;
+import com.tencent.superplayer.api.SuperPlayerFactory;
+import com.tencent.superplayer.api.SuperPlayerVideoInfo;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class nnz
+  implements ISPlayerPreDownloader.Listener
 {
-  public void loaded(String paramString, int paramInt)
+  ISPlayerPreDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+  private final ConcurrentHashMap<Integer, noa> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  public void a()
   {
-    if ((paramInt == 0) && (nny.a.a())) {
-      nny.a.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
+    QLog.d("AVGameVideoPreLoadMgr", 1, "destroy");
+    b();
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader != null)
+    {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.destory();
+      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = null;
     }
   }
   
-  public void progress(int paramInt) {}
+  public void a(String paramString)
+  {
+    QLog.d("AVGameVideoPreLoadMgr", 1, "stopPreLoad url:=" + paramString);
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      noa localnoa;
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localnoa = (noa)((Map.Entry)localIterator.next()).getValue();
+      } while (!localnoa.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString));
+      for (paramString = localnoa; paramString != null; paramString = null)
+      {
+        this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.stopPreDownload(paramString.jdField_a_of_type_Int);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramString.jdField_a_of_type_Int));
+        return;
+      }
+    }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    QLog.d("AVGameVideoPreLoadMgr", 1, "preLoadUrl url:=" + paramString);
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader == null) {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = SuperPlayerFactory.createPreDownloader(BaseApplicationImpl.getApplication(), 107);
+    }
+    SuperPlayerVideoInfo localSuperPlayerVideoInfo = SuperPlayerFactory.createVideoInfoForUrl(paramString, 101, MD5Utils.toMD5(paramString));
+    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.setOnPreDownloadListener(this);
+    int i = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.startPreDownload(localSuperPlayerVideoInfo, paramLong1, paramLong2);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), new noa(i, paramString));
+  }
+  
+  public void b()
+  {
+    QLog.d("AVGameVideoPreLoadMgr", 1, "cancelALLPreDoload");
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        int i = ((Integer)localIterator.next()).intValue();
+        this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.stopPreDownload(i);
+      }
+    }
+  }
+  
+  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2) {}
+  
+  public void onPrepareError(int paramInt)
+  {
+    Object localObject = (noa)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    StringBuilder localStringBuilder = new StringBuilder().append("onPrepareSuccess content:=");
+    if (localObject != null) {}
+    for (localObject = ((noa)localObject).toString();; localObject = null)
+    {
+      QLog.d("AVGameVideoPreLoadMgr", 1, (String)localObject);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
+      return;
+    }
+  }
+  
+  public void onPrepareSuccess(int paramInt)
+  {
+    Object localObject = (noa)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    StringBuilder localStringBuilder = new StringBuilder().append("onPrepareSuccess content:=");
+    if (localObject != null) {}
+    for (localObject = ((noa)localObject).toString();; localObject = null)
+    {
+      QLog.d("AVGameVideoPreLoadMgr", 1, (String)localObject);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
+      return;
+    }
+  }
 }
 
 

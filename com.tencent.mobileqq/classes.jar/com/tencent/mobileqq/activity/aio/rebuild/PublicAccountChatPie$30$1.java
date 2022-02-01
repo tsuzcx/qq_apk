@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahiu;
-import ahjn;
+import aido;
+import aieh;
 import com.tencent.biz.ui.CustomMenuBar;
 
 public class PublicAccountChatPie$30$1
   implements Runnable
 {
-  public PublicAccountChatPie$30$1(ahjn paramahjn) {}
+  public PublicAccountChatPie$30$1(aieh paramaieh) {}
   
   public void run()
   {

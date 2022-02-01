@@ -1,129 +1,30 @@
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import java.util.List;
 
-public final class bekz
+class bekz
+  implements Animation.AnimationListener
 {
-  private static int jdField_a_of_type_Int = 4000;
-  private static final Map<String, bela> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
+  bekz(bekx parambekx) {}
   
-  private static void a(bela parambela, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((parambela != null) && (parambela.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
+    if (bekx.a(this.a) >= bekx.a(this.a).size())
     {
-      if (parambela.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
-      {
-        if (parambela.jdField_a_of_type_JavaIoFile == null)
-        {
-          File localFile = new File(parambela.jdField_a_of_type_JavaLangString);
-          if (!localFile.exists()) {
-            localFile.createNewFile();
-          }
-          parambela.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile, true);
-          parambela.jdField_a_of_type_JavaIoFile = localFile;
-        }
-        parambela.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(parambela.jdField_a_of_type_JavaIoFileOutputStream);
-      }
-      if (paramBoolean)
-      {
-        if (parambela.jdField_a_of_type_JavaIoFileOutputStream != null)
-        {
-          parambela.jdField_a_of_type_JavaIoFileOutputStream.flush();
-          parambela.jdField_a_of_type_JavaIoFileOutputStream.close();
-          parambela.jdField_a_of_type_JavaIoFileOutputStream = null;
-        }
-        parambela.jdField_a_of_type_JavaIoFile = null;
-      }
+      this.a.a(4);
+      return;
     }
+    bekx.b(this.a);
   }
   
-  public static void a(String paramString)
-  {
-    b(paramString);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public static boolean a(String paramString)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if ((bela)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
-    {
-      bela localbela = new bela();
-      localbela.jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_JavaUtilMap.put(paramString, localbela);
+    if (bekx.a(this.a) == 0) {
+      this.a.a(3);
     }
-    return true;
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
-  {
-    paramString = (bela)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null)
-    {
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
-        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
-      }
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
-    }
-    try
-    {
-      a(paramString, false);
-      label66:
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      return true;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      break label66;
-    }
-  }
-  
-  private static void b(String paramString)
-  {
-    bela localbela = (bela)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localbela == null) || (localbela.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      localbela.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
-      label31:
-      if (localbela.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-      try
-      {
-        localbela.jdField_a_of_type_JavaIoFileOutputStream.close();
-        label45:
-        localbela.jdField_a_of_type_JavaIoFileOutputStream = null;
-        jdField_a_of_type_JavaUtilMap.remove(paramString);
-        return;
-      }
-      catch (Exception localException1)
-      {
-        break label45;
-      }
-    }
-    catch (Exception localException2)
-    {
-      break label31;
-    }
-  }
-  
-  public static boolean b(String paramString)
-  {
-    bela localbela = (bela)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localbela != null) && (localbela.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      a(localbela, true);
-      label29:
-      localbela.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      b(paramString);
-      return true;
-    }
-    catch (IOException localIOException)
-    {
-      break label29;
-    }
+    bekx.b(this.a);
   }
 }
 

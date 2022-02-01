@@ -1,15 +1,19 @@
-class mts
+public class mts
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  long b = 0L;
-  long c = this.jdField_a_of_type_Mtq.jdField_a_of_type_Int;
+  public int a;
+  public String a;
+  public int b = 0;
+  public int c = 0;
   
-  mts(mtq parammtq) {}
+  mts()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mts
  * JD-Core Version:    0.7.0.1
  */

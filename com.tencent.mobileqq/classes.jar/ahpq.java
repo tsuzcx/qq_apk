@@ -1,88 +1,143 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.navigate.TroopAppShortcutHasNewAppNavBar.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class ahpq
+  extends ahpk
+  implements Animation.AnimationListener
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  private long jdField_a_of_type_Long;
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private QQAppInterface b;
+  
+  public ahpq(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    super(paramBaseChatPie, paramQQAppInterface, paramContext, paramSessionInfo, paramInt1, paramInt2);
+    this.b = paramQQAppInterface;
+    paramBaseChatPie = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getManager(QQManagerFactory.TROOP_MANAGER);
+    if ((paramBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo != null))
     {
-      return;
-      c(paramQQAppInterface, paramString);
-      MessageRecord localMessageRecord = bbli.a(-1026);
-      long l = bbko.a();
-      localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1026, 0, l);
-      localMessageRecord.isread = true;
-      paramQQAppInterface.getMessageFacade().addMessage(localMessageRecord, localMessageRecord.selfuin);
-      bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8004C56", "0X8004C56", 0, 0, "", "", "", "");
-    } while (!QLog.isColorLevel());
-    QLog.d("GatherContactsTipsHelper", 2, "insertUncommonlyUsedContactsTips success, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString);
+      paramBaseChatPie = paramBaseChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin);
+      if (paramBaseChatPie != null) {
+        this.jdField_a_of_type_Long = paramBaseChatPie.dwGroupClassExt;
+      }
+    }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, List<String> paramList)
+  public static String a(QQAppInterface paramQQAppInterface)
   {
-    if ((paramQQAppInterface == null) || (paramList == null) || (paramList.isEmpty())) {}
+    Object localObject = paramQQAppInterface;
+    if (paramQQAppInterface == null)
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface)) {
+        paramQQAppInterface = (QQAppInterface)localObject;
+      }
+      localObject = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        return "troopapp_shortcut_guide_counts";
+      }
+    }
+    return "troopapp_shortcut_guide_counts" + ((QQAppInterface)localObject).getCurrentAccountUin();
+  }
+  
+  public long a()
+  {
+    return 15000L;
+  }
+  
+  public View a()
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561002, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362992));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378961));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("管理员新增了应用");
+    return localView;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mChatDrawer != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mChatDrawer.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mChatDrawer.b(false);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mChatDrawer instanceof agex)) {
+        ((agex)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mChatDrawer).c(4);
+      }
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo == null)) {}
+    for (String str = "";; str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.troopUin)
+    {
+      bdla.b(null, "dc00898", "", str, "0X800AFB9", "0X800AFB9", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null)
+    {
+      QLog.d("NavigateBarManager.TroopAppShortcutHasNewAppNavBar", 1, "mChatPie == null");
+      return false;
+    }
+    int i = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getInt(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("NavigateBarManager.TroopAppShortcutHasNewAppNavBar", 2, String.format("needShow guide count: %s", new Object[] { Integer.valueOf(i) }));
+    }
+    if ((TroopUtils.getTroopHasNewApp(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getCurTroopUin())) && (i >= 3)) {}
     for (;;)
     {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        a(paramQQAppInterface, (String)paramList.next());
-      }
+      return bool;
+      bool = false;
     }
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, String paramString)
+  public void b()
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    bdla.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.troopUin, "0X800AFB8", "0X800AFB8", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo != null)
     {
-      return;
-      c(paramQQAppInterface, paramString);
-      MessageRecord localMessageRecord = bbli.a(-1027);
-      long l = bbko.a();
-      localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1027, 0, l);
-      localMessageRecord.isread = true;
-      paramQQAppInterface.getMessageFacade().addMessage(localMessageRecord, localMessageRecord.selfuin);
-      bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8004C57", "0X8004C57", 0, 0, "", "", "", "");
-    } while (!QLog.isColorLevel());
-    QLog.d("GatherContactsTipsHelper", 2, "insertUncommonlyUsedContactsCancelSetTips success, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString);
+      bglm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin, 101872323);
+      TroopUtils.setTroopHasNewApp(this.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin, false);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new TroopAppShortcutHasNewAppNavBar.1(this), 500L);
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, List<String> paramList)
+  public void c() {}
+  
+  public void d()
   {
-    if ((paramQQAppInterface == null) || (paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        b(paramQQAppInterface, (String)paramList.next());
-      }
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
   }
   
-  public static void c(QQAppInterface paramQQAppInterface, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Iterator localIterator = paramQQAppInterface.getMessageFacade().getMsgList(paramString, 0).iterator();
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if ((localMessageRecord.msgtype == -1026) || (localMessageRecord.msgtype == -1027))
-      {
-        paramQQAppInterface.getMessageFacade().removeMsgByUniseq(paramString, 0, localMessageRecord.uniseq);
-        if (QLog.isColorLevel()) {
-          QLog.d("GatherContactsTipsHelper", 2, "deleteUncommonlyUsedContactsAndCancelTips, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString + " msgtype:" + localMessageRecord.msgtype);
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

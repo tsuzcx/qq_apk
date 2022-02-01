@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.InviteToGroupInfo.UinInfo;
 
-class bffi
-  implements View.OnClickListener
+public final class bffi
+  implements Parcelable.Creator<InviteToGroupInfo.UinInfo>
 {
-  bffi(bffh parambffh, bffj parambffj, MediaPreviewInfo paramMediaPreviewInfo) {}
-  
-  public void onClick(View paramView)
+  public InviteToGroupInfo.UinInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Bffj.a.setVisibility(8);
-    this.jdField_a_of_type_Bffh.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo, this.jdField_a_of_type_Bffj);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new InviteToGroupInfo.UinInfo(paramParcel);
+  }
+  
+  public InviteToGroupInfo.UinInfo[] a(int paramInt)
+  {
+    return new InviteToGroupInfo.UinInfo[paramInt];
   }
 }
 

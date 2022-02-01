@@ -1,16 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayoutNew;
+import android.graphics.Point;
+import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import dov.com.qq.im.aeeditor.view.timeline.ScaleScrollLayout;
+import java.util.List;
+import org.jetbrains.annotations.Nullable;
 
 public class bnze
-  implements ValueAnimator.AnimatorUpdateListener
+  implements body
 {
-  public bnze(QIMCameraSegmentCaptureButtonLayoutNew paramQIMCameraSegmentCaptureButtonLayoutNew) {}
+  public bnze(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(@Nullable CutModelKt paramCutModelKt)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(this.a.c);
+    if (AEEditorMultiCutEditFragment.a(this.a) != null) {}
+    for (Point localPoint = AEEditorMultiCutEditFragment.a(this.a).a();; localPoint = null)
+    {
+      if ((localPoint != null) && (paramCutModelKt != null) && (AEEditorMultiCutEditFragment.a(this.a).size() > 1))
+      {
+        AEEditorMultiCutEditFragment.a(this.a).b();
+        AEEditorMultiCutEditFragment.a(this.a).a(paramCutModelKt.getUuid(), localPoint);
+      }
+      return;
+    }
   }
 }
 

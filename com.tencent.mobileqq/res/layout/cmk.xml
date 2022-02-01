@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ntu" android:layout_width="fill_parent" android:layout_height="36.0dip"
+<FrameLayout android:id="@id/o7r" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:background="@drawable/dhs" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="8.0dip">
-        <View android:id="@id/nu4" android:background="@drawable/dht" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.tencent.image.URLImageView android:id="@id/nto" android:visibility="gone" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="6.0dip" android:layout_centerVertical="true" />
-        <RelativeLayout android:id="@id/ntk" android:paddingTop="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true">
-            <com.tencent.image.URLImageView android:id="@id/ntp" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/ggb" />
-            <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/nu1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="34.0dip" android:layout_marginBottom="1.0dip" android:includeFontPadding="false" />
-            <TextView android:textSize="13.0sp" android:textColor="#ffede6ff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ntz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginBottom="1.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_toRightOf="@id/nu1" />
-            <TextView android:textSize="11.0sp" android:textColor="#ff00cafc" android:id="@id/nty" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginTop="18.0dip" />
-            <TextView android:textSize="11.0sp" android:textColor="#ff4e525e" android:id="@id/nu0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:layout_toRightOf="@id/nty" />
-            <ImageView android:id="@id/ntm" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/gga" android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <ImageView android:id="@id/ntn" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/gef" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/nu2" android:background="@drawable/a0p" android:visibility="gone" android:layout_width="56.0dip" android:layout_height="24.0dip" android:layout_marginRight="10.0dip" android:text="@string/fwq" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="bottom" android:id="@id/ntq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="-10.0dip" android:layout_marginRight="-10.0dip" android:layout_marginBottom="-41.0dip" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/mpm" android:background="@drawable/dqn" android:clickable="true" android:layout_width="260.0dip" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/ayq" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n5" android:text="什么是好友作品？" />
+        <TextView android:textSize="@dimen/aym" android:textColor="@color/bp" android:gravity="center" android:id="@id/o8q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="0.0dip" android:maxWidth="182.0dip" android:text="好友作品来自在微视中授权的QQ、微信或通讯录好友。" />
+        <TextView android:textSize="@dimen/ayo" android:textColor="@color/al3" android:gravity="center" android:id="@id/o8j" android:background="@drawable/dr2" android:layout_width="180.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/mp" android:layout_marginBottom="@dimen/n5" android:text="我知道了" />
+    </LinearLayout>
+</FrameLayout>

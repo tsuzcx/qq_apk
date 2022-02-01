@@ -1,98 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.1;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.2;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.3;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.4;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.5;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class ahqx
-  implements ahqq
+  extends ahtt
 {
-  private ahqs jdField_a_of_type_Ahqs;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahqy(this);
-  public Toast a;
-  public bdzi a;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
-  private View.OnClickListener b = new ahqz(this);
-  
-  public ahqx(QQAppInterface paramQQAppInterface, ahqs paramahqs, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo, bdzi parambdzi, Toast paramToast)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ahqs = paramahqs;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Bdzi = parambdzi;
-    this.jdField_a_of_type_AndroidWidgetToast = paramToast;
-  }
-  
-  public int a()
-  {
-    return 20;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131719307);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopMask(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin) == 3) {
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131719308);
-    }
-    View localView = ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramVarArgs, this.b, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "AIOchat", "exp_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, "", "", "");
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopMask(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin) == 3) {}
-    for (paramVarArgs = "1";; paramVarArgs = "0")
-    {
-      bcef.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "exp_topbar", 0, 0, str, paramVarArgs, "", "");
-      return localView;
-    }
-  }
+  ahqx(ahqw paramahqw) {}
   
   public void a()
   {
-    if ((a()) || (this.jdField_a_of_type_Boolean)) {
-      avnu.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
-    }
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.4(this));
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
   {
-    if (paramInt != 1000) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1);
-      if ((this.jdField_a_of_type_Bdzi == null) || (!this.jdField_a_of_type_Bdzi.a())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopAssistTipsBar", 2, "navigateBar is show, return ");
-    return;
-    ThreadManager.post(new TroopAssistTipsBar.1(this), 8, null, true);
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
   }
   
-  public boolean a()
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
   {
-    return 3 == this.jdField_a_of_type_Ahqs.a();
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
   }
   
-  public int[] a()
+  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle)
   {
-    return null;
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3));
   }
   
-  public int b()
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
   {
-    return 3;
+    this.a.a.runOnUiThread(new AIOGalleryActivity.AIOGalleryManager.1.3(this, paramArrayOfAIORichMediaData, paramInt));
   }
 }
 

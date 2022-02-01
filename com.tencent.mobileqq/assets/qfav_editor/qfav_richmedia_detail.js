@@ -78,3 +78,15 @@ function openFile(file) {
     }
     window.imagelistner.openFile(fid, path);
 }
+
+
+function openLocation(locationDiv) {
+    if (locationDiv == undefined || locationDiv == null) {
+        return;
+    }
+    var lat = locationDiv.getAttribute("lat");
+    var lon = locationDiv.getAttribute("lon");
+    var title = locationDiv.getAttribute("title");
+    var address = locationDiv.getAttribute("summary");
+    window.imagelistner.openLocation(lat, lon, title, address);
+}

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.msf.core.auth;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.al;
+import com.tencent.mobileqq.msf.core.am;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
 import com.tencent.mobileqq.msf.service.u;
@@ -472,7 +472,7 @@ public class j
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, UniPacket paramUniPacket, k paramk)
   {
-    al.a(paramFromServiceMsg);
+    am.a(paramFromServiceMsg);
     VerifyCodeInfo localVerifyCodeInfo = new VerifyCodeInfo();
     localVerifyCodeInfo.ssoSeq = paramFromServiceMsg.getRequestSsoSeq();
     localVerifyCodeInfo.wupSeq = paramUniPacket.getRequestId();

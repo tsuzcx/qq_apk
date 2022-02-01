@@ -1,150 +1,205 @@
-import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
+import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.oidb.cmd0xd79.Oidb_0xd79.ReqBody;
-import tencent.im.oidb.cmd0xd79.Oidb_0xd79.RspBody;
-import tencent.im.oidb.cmd0xd79.Oidb_0xd79.content;
 
 public class bdag
-  extends BusinessHandler
+  implements bdal, bdar
 {
-  private AtomicInteger a = new AtomicInteger();
+  private int jdField_a_of_type_Int = 0;
+  private bdaq jdField_a_of_type_Bdaq = new bdaq();
+  private VideoSourceHelper jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper;
+  private final String jdField_a_of_type_JavaLangString = "HwEncodeHelper";
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private long[] jdField_a_of_type_ArrayOfLong = new long[1];
+  private bdaq jdField_b_of_type_Bdaq = new bdaq();
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private String c;
   
-  public bdag(QQAppInterface paramQQAppInterface)
+  public bdag(String paramString1, String paramString2, String paramString3)
   {
-    super(paramQQAppInterface);
+    this.jdField_b_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper = new VideoSourceHelper(paramString1, paramString2);
   }
   
-  private void a(FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private boolean a()
   {
-    String str = null;
-    try
-    {
-      Oidb_0xd79.RspBody localRspBody = new Oidb_0xd79.RspBody();
-      parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-      int i = localRspBody.uint32_ret.get();
-      localRspBody.uint64_seq.get();
-      localRspBody.uint64_uin.get();
-      paramFromServiceMsg = str;
-      if (localRspBody.uint32_compress_flag.get() == 0)
-      {
-        paramObject = new Oidb_0xd79.content();
-        paramObject.mergeFrom(localRspBody.bytes_raw_content.get().toByteArray());
-        paramFromServiceMsg = str;
-        if (paramObject.bytes_slice_content.has()) {
-          paramFromServiceMsg = paramObject.bytes_slice_content.get();
-        }
-      }
-      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.size() > 0))
-      {
-        paramObject = new ArrayList(paramFromServiceMsg.size());
-        paramFromServiceMsg = paramFromServiceMsg.iterator();
-        while (paramFromServiceMsg.hasNext())
-        {
-          str = a(((ByteStringMicro)paramFromServiceMsg.next()).toStringUtf8());
-          if (!TextUtils.isEmpty(str)) {
-            paramObject.add(str);
-          }
-        }
-        if (i != 0) {
-          break label224;
-        }
-      }
-    }
-    catch (Exception paramFromServiceMsg)
-    {
-      QLog.d("ParticipleHandler", 1, paramFromServiceMsg, new Object[0]);
-      return;
-    }
-    label224:
-    for (boolean bool = true;; bool = false)
-    {
-      notifyUI(1, bool, paramObject);
-      return;
-      notifyUI(1, false, null);
-      return;
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    char[] arrayOfChar = paramString.toCharArray();
-    int k = paramString.length() - 1;
-    int i = 0;
-    while ((i <= k) && (arrayOfChar[i] <= ' ') && (arrayOfChar[i] != '\024')) {
-      i += 1;
+    boolean bool = true;
+    int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getBufferSize();
+    if ((arrayOfInt == null) || (arrayOfInt.length < 2)) {
+      bool = false;
     }
     for (;;)
     {
-      int j;
-      if ((j >= i) && (arrayOfChar[j] <= ' ') && ((j == 0) || (arrayOfChar[(j - 1)] != '\024')))
-      {
-        j -= 1;
+      return bool;
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEncodeHelper", 4, "initMediaBuffer videosize=" + arrayOfInt[0] + ", audiosize=" + arrayOfInt[1]);
       }
-      else
+      try
       {
-        if ((i == 0) && (j == k)) {
-          return paramString;
+        if (this.jdField_a_of_type_ArrayOfByte == null) {
+          this.jdField_a_of_type_ArrayOfByte = new byte[arrayOfInt[0]];
         }
-        return paramString.substring(i, j + 1);
-        j = k;
+        if (this.jdField_b_of_type_ArrayOfByte == null)
+        {
+          this.jdField_b_of_type_ArrayOfByte = new byte[arrayOfInt[1]];
+          return true;
+        }
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        localOutOfMemoryError.printStackTrace();
       }
     }
+    return false;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString)
+  public int a()
   {
-    a(paramQQAppInterface, paramString, "");
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    try
+    int j = 2;
+    if (!bdah.a()) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.initHelperParam() != 0)
     {
-      Oidb_0xd79.ReqBody localReqBody = new Oidb_0xd79.ReqBody();
-      localReqBody.uint64_seq.set(this.a.incrementAndGet());
-      paramQQAppInterface = paramQQAppInterface.getCurrentUin();
-      localReqBody.uint64_uin.set(Long.parseLong(paramQQAppInterface));
-      localReqBody.uint32_compress_flag.set(0);
-      localReqBody.bytes_content.set(ByteStringMicro.copyFrom(paramString1.getBytes()));
-      if (!TextUtils.isEmpty(paramString2)) {
-        localReqBody.uint64_sender_uin.set(Long.parseLong(paramString2));
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEncodeHelper", 4, "initHelperParam error");
       }
-      localReqBody.bytes_qua.set(ByteStringMicro.copyFrom(("and_" + AppSetting.a() + "_" + "8.4.8").getBytes()));
-      sendPbReq(makeOIDBPkg("OidbSvc.0xd79", 3449, 1, localReqBody.toByteArray()));
-      return;
+      return -1;
     }
-    catch (Exception paramQQAppInterface)
+    if (!a())
     {
-      QLog.d("ParticipleHandler", 1, paramQQAppInterface, new Object[0]);
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEncodeHelper", 4, "initMediaBuffer error");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
+      return -1;
     }
+    SVHwEncoder localSVHwEncoder = new SVHwEncoder();
+    int i;
+    if (CodecParam.mAudioChannel == 16)
+    {
+      i = 1;
+      if (CodecParam.mAudioFormat != 2) {
+        break label233;
+      }
+    }
+    for (;;)
+    {
+      int k = CodecParam.mAudioSampleRate;
+      localSVHwEncoder.a(CodecParam.mAudioSampleRate, i, k * i * j * 8, j);
+      int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getSourceVideoParam();
+      localSVHwEncoder.a(this.jdField_b_of_type_JavaLangString, arrayOfInt[0], arrayOfInt[1]);
+      boolean bool = localSVHwEncoder.a(CodecParam.mRecordFrames, CodecParam.mRecordTime, this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.mOrientationDegree);
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEncodeHelper", 4, "startHwEncode mRecordFrames=" + CodecParam.mRecordFrames + ", mRecordTime=" + CodecParam.mRecordTime + " successCode=" + bool);
+      }
+      if (bool) {
+        break label238;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
+      return -1;
+      i = 2;
+      break;
+      label233:
+      j = 1;
+    }
+    label238:
+    localSVHwEncoder.b(this, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
+    return this.jdField_a_of_type_Int;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  public bdaq a()
   {
-    return bdah.class;
+    boolean bool = false;
+    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper != null) && (!this.jdField_a_of_type_Boolean))
+    {
+      int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getNextAudioFrame(this.jdField_b_of_type_ArrayOfByte);
+      this.jdField_b_of_type_Bdaq.jdField_a_of_type_ArrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+      this.jdField_b_of_type_Bdaq.jdField_a_of_type_Int = 0;
+      this.jdField_b_of_type_Bdaq.jdField_b_of_type_Int = i;
+      this.jdField_b_of_type_Bdaq.jdField_b_of_type_Boolean = false;
+      bdaq localbdaq = this.jdField_b_of_type_Bdaq;
+      if (i > 0) {}
+      for (;;)
+      {
+        localbdaq.jdField_a_of_type_Boolean = bool;
+        localbdaq = this.jdField_b_of_type_Bdaq;
+        this.jdField_b_of_type_Bdaq.c = -1;
+        localbdaq.jdField_a_of_type_Long = -1;
+        this.jdField_b_of_type_Bdaq.jdField_a_of_type_Float = -1.0F;
+        if (QLog.isColorLevel()) {
+          QLog.d("HwEncodeHelper", 4, "getAudioFrame() bufferSize=" + this.jdField_b_of_type_ArrayOfByte.length + ", readSize=" + i);
+        }
+        this.jdField_a_of_type_Boolean = this.jdField_b_of_type_Bdaq.jdField_a_of_type_Boolean;
+        return this.jdField_b_of_type_Bdaq;
+        bool = true;
+      }
+    }
+    return null;
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public bdaq a(int paramInt)
   {
-    if ((paramFromServiceMsg.isSuccess()) && (TextUtils.equals(paramFromServiceMsg.getServiceCmd(), "OidbSvc.0xd79"))) {
-      a(paramFromServiceMsg, paramObject);
+    boolean bool = true;
+    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper != null) && (!this.jdField_b_of_type_Boolean))
+    {
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getNextVideoFrame(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfLong, paramInt);
+      this.jdField_a_of_type_Bdaq.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      this.jdField_a_of_type_Bdaq.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Bdaq.jdField_b_of_type_Int = paramInt;
+      this.jdField_a_of_type_Bdaq.jdField_b_of_type_Boolean = true;
+      bdaq localbdaq = this.jdField_a_of_type_Bdaq;
+      if (paramInt > 0) {
+        bool = false;
+      }
+      localbdaq.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Bdaq.jdField_a_of_type_Long = this.jdField_a_of_type_ArrayOfLong[0];
+      this.jdField_a_of_type_Bdaq.c = -1;
+      this.jdField_a_of_type_Bdaq.jdField_a_of_type_Float = -1.0F;
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEncodeHelper", 4, "getVideoFrame() bufferSize=" + this.jdField_a_of_type_ArrayOfByte.length + ", readSize=" + paramInt + ", frametime=" + this.jdField_a_of_type_ArrayOfLong[0]);
+      }
+      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Bdaq.jdField_a_of_type_Boolean;
+      return this.jdField_a_of_type_Bdaq;
     }
+    return null;
   }
+  
+  public String a()
+  {
+    return this.c;
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2) {}
+  
+  public void a(String paramString, int paramInt, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEncodeHelper", 4, "svMergeOK() path=" + paramString + ", totalTime=" + paramInt + " mergetime=" + paramLong + " us");
+    }
+    this.c = paramString;
+  }
+  
+  public void b() {}
+  
+  public void b(int paramInt) {}
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEncodeHelper", 4, "svErrorOcured() code=" + paramInt1 + ", subcode=" + paramInt2);
+    }
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void c() {}
 }
 
 

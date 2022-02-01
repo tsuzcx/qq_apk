@@ -1,20 +1,48 @@
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
+import java.util.ArrayList;
 
-class pyv
-  implements View.OnClickListener
+public class pyv
+  extends BaseAdapter
 {
-  pyv(pyr parampyr, articlesummary.PackJumpInfo paramPackJumpInfo) {}
+  private pyv(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public void onClick(View paramView)
+  public pyu a(int paramInt)
   {
-    String str = this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_url.get();
-    pay.a(pyr.a(this.jdField_a_of_type_Pyr), str);
-    pyr.a(2, this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_wording.get());
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (pyu)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public int getCount()
+  {
+    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.a.getActivity()).inflate(2131562736, paramViewGroup, false);
+      paramView.setOnClickListener(new pyw(this));
+    }
+    for (;;)
+    {
+      pyu localpyu = (pyu)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      paramView.setTag(Integer.valueOf(paramInt));
+      ((TextView)paramView).setText(localpyu.a());
+      this.a.jdField_a_of_type_Pie.a("exp_subchannel", localpyu);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

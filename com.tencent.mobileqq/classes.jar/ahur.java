@@ -1,20 +1,50 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.hiboom.SquareRelativeLayout;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+import mqq.util.WeakReference;
 
 public class ahur
-  implements MediaPlayer.OnCompletionListener
+  extends RecyclerView.ViewHolder
 {
-  public ahur(BlessActivity paramBlessActivity) {}
+  ahum jdField_a_of_type_Ahum;
+  public View a;
+  public FrameLayout a;
+  public ImageView a;
+  public TextView a;
+  public URLDrawable a;
+  public URLImageView a;
+  public SquareRelativeLayout a;
+  public NumberCheckBox a;
+  public ImageView b;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public ahur(ahup paramahup, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onCompletion");
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqHiboomSquareRelativeLayout = ((SquareRelativeLayout)paramView.findViewById(2131367057));
+    if (PhotoListPanel.f() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqHiboomSquareRelativeLayout.setCloseSquare(true);
     }
-    BlessActivity.a(this.a, true);
-    bcef.b(this.a.app, "CliOper", "", "", "0X800632E", "0X800632E", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131369102));
+    this.jdField_a_of_type_Ahum = ((PhotoListPanel)paramahup.a.get()).a();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131369046));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372693);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131369047));
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this.jdField_a_of_type_Ahum);
+    }
+    if ((((PhotoListPanel)paramahup.a.get()).m) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369194));
+    this.b = ((ImageView)paramView.findViewById(2131369103));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369193));
   }
 }
 

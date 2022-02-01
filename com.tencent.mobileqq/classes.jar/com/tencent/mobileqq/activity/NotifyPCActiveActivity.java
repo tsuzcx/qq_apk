@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adtj;
-import adtk;
-import adtl;
-import adtm;
-import amov;
-import ampt;
+import aeko;
+import aekp;
+import aekq;
+import aekr;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bcef;
-import bfur;
+import anri;
+import ansg;
+import bdla;
+import bhdj;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -25,14 +26,14 @@ public class NotifyPCActiveActivity
 {
   public static NotifyPCActiveActivity a;
   private int jdField_a_of_type_Int;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new adtm(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new aekr(this);
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   
   private void a()
   {
-    ampt localampt = (ampt)this.app.getBusinessHandler(4);
-    if (localampt != null) {
-      localampt.b();
+    ansg localansg = (ansg)this.app.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
+    if (localansg != null) {
+      localansg.b();
     }
   }
   
@@ -54,19 +55,19 @@ public class NotifyPCActiveActivity
       }
       return;
       this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver, true);
-      Object localObject1 = (amov)this.app.getBusinessHandler(2);
+      Object localObject1 = (anri)this.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
       Object localObject3 = getIntent().getExtras();
       Object localObject2 = ((Bundle)localObject3).getString("Message");
       String str = ((Bundle)localObject3).getString("lButton");
       localObject3 = ((Bundle)localObject3).getString("rButton");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, 230);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131558992);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(null).setMessage((CharSequence)localObject2).setPositiveButton((String)localObject3, new adtk(this, (amov)localObject1)).setNegativeButton(str, new adtj(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this, 230);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131559019);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(null).setMessage((CharSequence)localObject2).setPositiveButton((String)localObject3, new aekp(this, (anri)localObject1)).setNegativeButton(str, new aeko(this));
       continue;
       localObject2 = getIntent().getExtras();
       localObject1 = ((Bundle)localObject2).getString("Message");
       localObject2 = ((Bundle)localObject2).getString("button");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, 230).setMessage((CharSequence)localObject1).setPositiveButton((String)localObject2, new adtl(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bhdj.a(this, 230).setMessage((CharSequence)localObject1).setPositiveButton((String)localObject2, new aekq(this));
     }
   }
   
@@ -82,7 +83,7 @@ public class NotifyPCActiveActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559523);
+    super.setContentView(2131559556);
     jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity = this;
     this.jdField_a_of_type_Int = getIntent().getIntExtra("type", 0);
     paramBundle = getIntent().getAction();
@@ -91,7 +92,7 @@ public class NotifyPCActiveActivity
     }
     if ("mqq.intent.action.PCACTIVE_TIPS".equals(paramBundle))
     {
-      bcef.b(null, "CliOper", "", "", "0X8004975", "0X8004975", 0, 0, "", "", "", "");
+      bdla.b(null, "CliOper", "", "", "0X8004975", "0X8004975", 0, 0, "", "", "", "");
       this.jdField_a_of_type_Int = 1;
       a();
     }
@@ -156,7 +157,7 @@ public class NotifyPCActiveActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotifyPCActiveActivity
  * JD-Core Version:    0.7.0.1
  */

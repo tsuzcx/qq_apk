@@ -1,15 +1,17 @@
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import android.app.Activity;
+import com.sina.weibo.sdk.openapi.IWBAPI;
+import mqq.util.WeakReference;
 
-public class bicw
+class bicw
 {
-  public int a;
-  public DialogInterface.OnClickListener a;
-  public Bundle a;
-  public boolean a;
-  public boolean b;
+  WeakReference<Activity> a;
+  WeakReference<IWBAPI> b;
   
-  public bicw(bicl parambicl) {}
+  bicw(Activity paramActivity, IWBAPI paramIWBAPI)
+  {
+    this.a = new WeakReference(paramActivity);
+    this.b = new WeakReference(paramIWBAPI);
+  }
 }
 
 

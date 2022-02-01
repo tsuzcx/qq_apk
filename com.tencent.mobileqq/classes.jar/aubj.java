@@ -1,8 +1,26 @@
-public abstract interface aubj
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.widget.LinearLayout;
+
+class aubj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(int paramInt);
+  aubj(aubg paramaubg) {}
   
-  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
+      if ((aubg.a(this.a).getVisibility() == 0) && (Math.abs(aubg.a(this.a).getAlpha() - f) >= 0.02F)) {
+        aubg.a(this.a).setAlpha(f);
+      }
+      if ((aubg.a(this.a).getVisibility() == 0) && (Math.abs(aubg.a(this.a).getAlpha() - f) >= 0.02F)) {
+        aubg.a(this.a).setAlpha(f);
+      }
+    }
+  }
 }
 
 

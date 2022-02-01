@@ -1,21 +1,11 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class wlx
-  extends Handler
+public class wlx
+  extends vzj
 {
-  wlx(wlw paramwlw, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public final String a;
   
-  public void handleMessage(Message paramMessage)
+  public wlx(String paramString)
   {
-    if (this.a.a) {
-      return;
-    }
-    wlw.a(this.a, this.a.c);
+    this.a = paramString;
   }
 }
 

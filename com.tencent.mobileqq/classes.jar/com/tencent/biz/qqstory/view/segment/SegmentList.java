@@ -20,24 +20,24 @@ import com.tencent.widget.AbsListView.RecyclerListener;
 import com.tencent.widget.ListView;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
-import xqb;
-import xvv;
-import yos;
-import yrx;
-import yry;
-import yrz;
-import ysa;
-import ysb;
-import ysd;
-import ysf;
-import ysg;
-import yst;
-import ysv;
-import ysz;
+import yew;
+import ykq;
+import zdl;
+import zgq;
+import zgr;
+import zgs;
+import zgt;
+import zgu;
+import zgw;
+import zgy;
+import zgz;
+import zhm;
+import zho;
+import zhs;
 
 public abstract class SegmentList
   extends QQStoryPullToRefreshListView
-  implements AbsListView.RecyclerListener, ysf
+  implements AbsListView.RecyclerListener, zgy
 {
   public static int c;
   public static int d = 1;
@@ -47,10 +47,10 @@ public abstract class SegmentList
   private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   private AbsListView.RecyclerListener jdField_a_of_type_ComTencentWidgetAbsListView$RecyclerListener;
   private String jdField_a_of_type_JavaLangString;
-  public ysd a;
+  public zgw a;
   private boolean jdField_a_of_type_Boolean;
   private String jdField_b_of_type_JavaLangString = "default";
-  private yst jdField_b_of_type_Yst;
+  private zhm jdField_b_of_type_Zhm;
   protected boolean b;
   private boolean c;
   
@@ -83,31 +83,31 @@ public abstract class SegmentList
       if (this.jdField_a_of_type_Boolean) {
         return false;
       }
-      setAdapter(this.jdField_a_of_type_Ysd);
+      setAdapter(this.jdField_a_of_type_Zgw);
       f();
     }
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Ysd = new ysd(this, this);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new yrx(this));
+    this.jdField_a_of_type_Zgw = new zgw(this, this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new zgq(this));
     super.setRecyclerListener(this);
     super.setDragEnable(true);
-    super.setSwipListListener(new yry(this));
-    super.setRightIconMenuListener(new yrz(this));
+    super.setSwipListListener(new zgr(this));
+    super.setRightIconMenuListener(new zgs(this));
   }
   
-  public <T extends ysg> T a(String paramString)
+  public <T extends zgz> T a(String paramString)
   {
-    return this.jdField_a_of_type_Ysd.a(paramString);
+    return this.jdField_a_of_type_Zgw.a(paramString);
   }
   
-  public yst a(@NonNull String paramString)
+  public zhm a(@NonNull String paramString)
   {
-    yos.a(paramString);
+    zdl.a(paramString);
     if (paramString.equals(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_b_of_type_Yst;
+      return this.jdField_b_of_type_Zhm;
     }
     return null;
   }
@@ -116,7 +116,7 @@ public abstract class SegmentList
   
   public void a(int paramInt)
   {
-    xqb.c("SwipListView", new Object[] { "allRequestCompletedAndSuccess ", Integer.valueOf(paramInt) });
+    yew.c("SwipListView", new Object[] { "allRequestCompletedAndSuccess ", Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     case 2: 
@@ -141,7 +141,7 @@ public abstract class SegmentList
   
   public void a(int paramInt1, int paramInt2)
   {
-    xqb.c("SwipListView", new Object[] { "allRequestCompletedButOccurError ", Integer.valueOf(paramInt1) });
+    yew.c("SwipListView", new Object[] { "allRequestCompletedButOccurError ", Integer.valueOf(paramInt1) });
     switch (paramInt1)
     {
     case 2: 
@@ -166,17 +166,17 @@ public abstract class SegmentList
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Ysd.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Zgw.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void a(@NonNull String paramString)
   {
-    this.jdField_a_of_type_Ysd.a(paramString);
+    this.jdField_a_of_type_Zgw.a(paramString);
   }
   
-  public void a(@NonNull ysg paramysg)
+  public void a(@NonNull zgz paramzgz)
   {
-    this.jdField_a_of_type_Ysd.a(paramysg);
+    this.jdField_a_of_type_Zgw.a(paramzgz);
   }
   
   public void a(boolean paramBoolean)
@@ -202,27 +202,27 @@ public abstract class SegmentList
   
   public void h()
   {
-    this.jdField_a_of_type_Ysd.a(true);
+    this.jdField_a_of_type_Zgw.a(true);
   }
   
   public void j()
   {
-    setPullToRefreshListener(new ysa(this));
+    setPullToRefreshListener(new zgt(this));
     a();
-    this.jdField_a_of_type_Ysd.a();
-    Bosses.get().postJob(new ysb(this, "SwipListView"));
+    this.jdField_a_of_type_Zgw.a();
+    Bosses.get().postJob(new zgu(this, "SwipListView"));
   }
   
   public void k()
   {
-    this.jdField_a_of_type_Ysd.c();
+    this.jdField_a_of_type_Zgw.c();
   }
   
   public void l()
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_Ysd.d();
+    this.jdField_a_of_type_Zgw.d();
   }
   
   public void layoutChildren()
@@ -230,42 +230,42 @@ public abstract class SegmentList
     try
     {
       super.layoutChildren();
-      this.jdField_a_of_type_Ysd.e();
+      this.jdField_a_of_type_Zgw.e();
       if (this.jdField_c_of_type_Boolean) {
-        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Ysd.a();
+        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Zgw.a();
       }
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      xvv.e("SwipListView", localIllegalStateException.toString() + " ##info: mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.jdField_a_of_type_Ysd.getCount() + " .last segmentSimpleInfo=" + this.jdField_b_of_type_JavaLangString + " ,and current segmentSimpleInfo=" + this.jdField_a_of_type_Ysd.a());
+      ykq.e("SwipListView", localIllegalStateException.toString() + " ##info: mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.jdField_a_of_type_Zgw.getCount() + " .last segmentSimpleInfo=" + this.jdField_b_of_type_JavaLangString + " ,and current segmentSimpleInfo=" + this.jdField_a_of_type_Zgw.a());
       if (!this.jdField_c_of_type_Boolean) {
         throw localIllegalStateException;
       }
-      if (this.mItemCount == this.jdField_a_of_type_Ysd.getCount()) {
+      if (this.mItemCount == this.jdField_a_of_type_Zgw.getCount()) {
         throw localIllegalStateException;
       }
-      throw new QQStoryIllegalException(localIllegalStateException.toString() + " ##info: mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.jdField_a_of_type_Ysd.getCount() + " .last segmentSimpleInfo=" + this.jdField_b_of_type_JavaLangString + " ,and current segmentSimpleInfo=" + this.jdField_a_of_type_Ysd.a());
+      throw new QQStoryIllegalException(localIllegalStateException.toString() + " ##info: mItemCount=" + this.mItemCount + "mAdapter.getCount()=" + this.jdField_a_of_type_Zgw.getCount() + " .last segmentSimpleInfo=" + this.jdField_b_of_type_JavaLangString + " ,and current segmentSimpleInfo=" + this.jdField_a_of_type_Zgw.a());
     }
   }
   
   public void n()
   {
     LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
-    this.jdField_b_of_type_Yst = new yst(localLoadMoreLayout, getContext().getApplicationContext());
-    this.jdField_b_of_type_Yst.a(true, false);
+    this.jdField_b_of_type_Zhm = new zhm(localLoadMoreLayout, getContext().getApplicationContext());
+    this.jdField_b_of_type_Zhm.a(true, false);
     super.addFooterView(localLoadMoreLayout);
     super.setOnScrollListener(this);
   }
   
   public void o()
   {
-    this.jdField_a_of_type_Ysd.b();
+    this.jdField_a_of_type_Zgw.b();
   }
   
   public void onMovedToScrapHeap(View paramView)
   {
-    this.jdField_a_of_type_Ysd.a(paramView);
+    this.jdField_a_of_type_Zgw.a(paramView);
     if (this.jdField_a_of_type_ComTencentWidgetAbsListView$RecyclerListener != null) {
       this.jdField_a_of_type_ComTencentWidgetAbsListView$RecyclerListener.onMovedToScrapHeap(paramView);
     }
@@ -281,8 +281,8 @@ public abstract class SegmentList
     {
       return;
       this.jdField_a_of_type_Int = paramInt1;
-    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_b_of_type_Yst.a());
-    this.jdField_b_of_type_Yst.b(true);
+    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_b_of_type_Zhm.a());
+    this.jdField_b_of_type_Zhm.b(true);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
@@ -300,31 +300,31 @@ public abstract class SegmentList
       a(1, d);
       return true;
     }
-    this.jdField_a_of_type_Ysz.a();
+    this.jdField_a_of_type_Zhs.a();
     return true;
   }
   
   public void p()
   {
-    this.jdField_a_of_type_Ysd.notifyDataSetChanged();
+    this.jdField_a_of_type_Zgw.notifyDataSetChanged();
   }
   
   public void q()
   {
     if (this.jdField_c_of_type_Boolean) {
-      super.setAdapter(this.jdField_a_of_type_Ysd);
+      super.setAdapter(this.jdField_a_of_type_Zgw);
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    this.jdField_a_of_type_Ysd.a(paramInt);
+    this.jdField_a_of_type_Zgw.a(paramInt);
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if ((paramListAdapter instanceof ysd))
+    if ((paramListAdapter instanceof zgw))
     {
       super.setAdapter(paramListAdapter);
       this.jdField_c_of_type_Boolean = true;
@@ -335,17 +335,17 @@ public abstract class SegmentList
   
   public void setLoadMoreComplete(@NonNull String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    yos.a(paramString);
+    zdl.a(paramString);
     if (paramString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_b_of_type_Yst.a(paramBoolean1, paramBoolean2);
+      this.jdField_b_of_type_Zhm.a(paramBoolean1, paramBoolean2);
     }
   }
   
-  public void setOnLoadMoreListener(@NonNull String paramString, ysv paramysv)
+  public void setOnLoadMoreListener(@NonNull String paramString, zho paramzho)
   {
-    this.jdField_b_of_type_Yst.a(paramysv);
+    this.jdField_b_of_type_Zhm.a(paramzho);
     this.jdField_a_of_type_JavaLangString = paramString;
-    yos.a(paramString);
+    zdl.a(paramString);
   }
   
   public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)

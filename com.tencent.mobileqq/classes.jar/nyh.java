@@ -1,48 +1,20 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import java.io.File;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
-class nyh
-  implements TVK_ICacheMgr.IPreloadCallback
+public class nyh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private nyh(nyd paramnyd) {}
+  public nyh(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public void onGlobalLayout()
   {
-    synchronized (nyd.a(this.a))
-    {
-      nyd.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
-      nyd.a(this.a, nyd.a(this.a));
-      return;
-    }
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    synchronized (nyd.a(this.a))
-    {
-      nyd.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
-      try
-      {
-        paramString2 = new JSONObject(paramString2);
-        long l1 = paramString2.optLong("fileSize");
-        long l2 = paramString2.optLong("offset");
-        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
-        {
-          paramString2 = new File(nyd.b(paramString1));
-          if (paramString2.exists()) {
-            paramString2.renameTo(new File(nyd.a(paramString1)));
-          }
-          nyd.a(this.a, nyd.a(this.a));
-        }
-      }
-      catch (Exception paramString1)
-      {
-        label136:
-        break label136;
-      }
-      return;
-    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int i = this.a.getWindow().getDecorView().getBottom();
+    int j = this.a.getWindow().getDecorView().getTop();
+    LebaSearchPluginManagerActivity.a(this.a, i - j);
   }
 }
 

@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
-import aozj;
+import aqcn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -15,14 +15,14 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import lvv;
+import lwi;
 import org.xmlpull.v1.XmlPullParser;
 
 public class AVRedPacketConfig
   implements Parcelable, Serializable
 {
   static final String CONFIG_PATH = "avredpacket_config_";
-  public static final Parcelable.Creator<AVRedPacketConfig> CREATOR = new lvv();
+  public static final Parcelable.Creator<AVRedPacketConfig> CREATOR = new lwi();
   static final String TAG = "AVRedPacketConfig";
   public boolean checkEyeOpenClose;
   public boolean checkNormalFaceExpression;
@@ -224,11 +224,11 @@ public class AVRedPacketConfig
       }
       else if (paramString.equalsIgnoreCase("activityBeginTime"))
       {
-        localAVRedPacketConfig.operatingEntranceBeginTime = aozj.b(localXmlPullParser.nextText());
+        localAVRedPacketConfig.operatingEntranceBeginTime = aqcn.b(localXmlPullParser.nextText());
       }
       else if (paramString.equalsIgnoreCase("activityEndTime"))
       {
-        localAVRedPacketConfig.operatingEntranceEndTime = aozj.b(localXmlPullParser.nextText());
+        localAVRedPacketConfig.operatingEntranceEndTime = aqcn.b(localXmlPullParser.nextText());
       }
       else if (paramString.equalsIgnoreCase("androidCommonResUrl"))
       {

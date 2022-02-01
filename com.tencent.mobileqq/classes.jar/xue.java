@@ -1,169 +1,30 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ReqStoryMessageList;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment.1;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView.LayoutParams;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.Subscriber;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class xue
-  extends ysg<oidb_0x791.RedDotInfo>
-  implements View.OnClickListener
+  implements Subscriber
 {
-  public static final String KEY = "MessageNotifySegment";
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public xue(Context paramContext)
+  public xue(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
   {
-    super(paramContext);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
   }
   
-  public int a()
+  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
   {
-    return 1;
+    paramList.add(zdt.class);
   }
   
-  public View a(int paramInt, xsh paramxsh, ViewGroup paramViewGroup)
+  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
   {
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      paramxsh.a(2131378669).setVisibility(8);
-      paramxsh.a().setLayoutParams(new AbsListView.LayoutParams(-1, 0));
-      return paramxsh.a();
-    }
-    paramInt = UIUtils.dip2px(paramxsh.a().getContext(), 52.0F);
-    paramxsh.a(2131378669).setVisibility(0);
-    paramxsh.a().setLayoutParams(new AbsListView.LayoutParams(-1, paramInt));
-    paramxsh.a().setVisibility(0);
-    ImageView localImageView = (ImageView)paramxsh.a(2131368236);
-    Drawable localDrawable = bfvo.b();
-    QQStoryContext.a();
-    if (QQStoryContext.a() == null) {
-      localImageView.setImageDrawable(localDrawable);
-    }
-    for (;;)
-    {
-      return paramxsh.a();
-      if ((localImageView.getTag() != null) && ((this.jdField_a_of_type_JavaLangInteger == null) || (this.jdField_a_of_type_JavaLangInteger.equals(localImageView.getTag())))) {
-        return paramxsh.a();
-      }
-      localImageView.setTag(this.jdField_a_of_type_JavaLangInteger);
-      localImageView.setImageDrawable(localDrawable);
-      TextView localTextView = (TextView)paramxsh.a(2131365073);
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (this.jdField_a_of_type_Int > 99) {}
-      for (paramViewGroup = "99+";; paramViewGroup = Integer.valueOf(this.jdField_a_of_type_Int))
-      {
-        localTextView.setText(paramViewGroup + amtj.a(2131705762));
-        if (this.jdField_a_of_type_Long > 0L) {
-          break label272;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "uin <=0. fetch first message.");
-        }
-        a(localImageView);
-        break;
-      }
-      label272:
-      ThreadManager.post(new MessageNotifySegment.1(this, localImageView, localDrawable), 8, null, true);
-    }
-  }
-  
-  public String a()
-  {
-    return "MessageNotifySegment";
-  }
-  
-  public xsh a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561661, paramViewGroup, false);
-    paramViewGroup.findViewById(2131378669).setOnClickListener(this);
-    return new xsh(paramViewGroup);
-  }
-  
-  public void a(ImageView paramImageView)
-  {
-    qqstory_710_message.ReqStoryMessageList localReqStoryMessageList = new qqstory_710_message.ReqStoryMessageList();
-    localReqStoryMessageList.num.set(1);
-    localReqStoryMessageList.start_time.set(0);
-    localReqStoryMessageList.source.set(0);
-    localReqStoryMessageList.version_ctrl.set(775);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch first message from gray, start=0");
-    }
-    QQStoryContext.a();
-    nmb.a(QQStoryContext.a(), new xuf(this, paramImageView), localReqStoryMessageList.toByteArray(), vpl.a("StorySvc.get_710_message_list"));
-  }
-  
-  public void a(oidb_0x791.RedDotInfo paramRedDotInfo)
-  {
-    if ((paramRedDotInfo != null) && (paramRedDotInfo.uint32_appid.get() == 52) && (paramRedDotInfo.bool_display_reddot.get()) && (paramRedDotInfo.uint32_number.get() > 0))
-    {
-      this.jdField_a_of_type_Int = paramRedDotInfo.uint32_number.get();
-      this.jdField_a_of_type_Long = paramRedDotInfo.uint64_cmd_uin.get();
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramRedDotInfo.uint32_last_time.get());
-      this.jdField_a_of_type_JavaLangString = paramRedDotInfo.str_face_url.get().toStringUtf8();
-      return;
-    }
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  protected void c()
-  {
-    QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
-    if (localQQAppInterface != null)
-    {
-      a(((nmq)localQQAppInterface.getManager(70)).a(52));
-      return;
-    }
-    xvv.e("Q.qqstory.home.MessageNotifySegment", "Get the QQAppInterface is null,we dont know the red point state");
-  }
-  
-  public void onClick(View paramView)
-  {
-    Object localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, StoryMessageListActivity.class);
-    ((Intent)localObject).putExtra("qqstory_message_list_source", 0);
-    ((Intent)localObject).putExtra("qqstory_jump_source", "2");
-    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-    localObject = ((vvj)vux.a(2)).b(QQStoryContext.a().b());
-    if ((localObject != null) && (((QQUserUIItem)localObject).isVip))
-    {
-      i = 1;
-      if (i == 0) {
-        break label131;
-      }
-    }
-    label131:
-    for (int i = 1;; i = 2)
-    {
-      xwa.a("play_video", "clk_grey", i, 0, new String[] { "", "", "", "" });
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = 0;
-      break;
+    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDispatchable != null) {
+      paramDispatchable.c();
     }
   }
 }

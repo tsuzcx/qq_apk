@@ -1,18 +1,20 @@
 import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class adek
-  implements View.OnClickListener
+  extends bbdx
 {
-  public adek(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public adek(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramDialogInterface != null) && ((paramDialogInterface instanceof Dialog))) {
+      ((Dialog)paramDialogInterface).setOnDismissListener(null);
+    }
+    if (paramDialogInterface == this.a.c) {
+      this.a.c = null;
+    }
   }
 }
 

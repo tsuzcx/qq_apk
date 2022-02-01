@@ -1,38 +1,29 @@
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class xng
+  extends wag<xmx, wgy>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  
-  public xng(String paramString1, int paramInt, @Nullable String paramString2)
+  public xng(xmx paramxmx)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramxmx);
   }
   
-  public xng(String paramString1, int paramInt1, @Nullable String paramString2, int paramInt2)
+  public void a(@NonNull xmx paramxmx, @NonNull wgy paramwgy)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    if ((paramxmx.a != null) && (TextUtils.equals(paramxmx.a.b, paramwgy.a)))
+    {
+      ykq.a(this.TAG, "receive feed info change event. %s.", paramwgy.toString());
+      paramxmx.i();
+    }
   }
   
-  public boolean a()
+  public Class acceptEventClass()
   {
-    return (this.jdField_a_of_type_Int != 1) && ((this.jdField_a_of_type_Int != 2) || (this.jdField_b_of_type_Int != 0));
+    return wgy.class;
   }
   
-  public String toString()
-  {
-    return "FeedCommentSync{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNextCookie='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mSource=" + this.jdField_a_of_type_Int + '}';
-  }
+  public void b(@NonNull xmx paramxmx, @NonNull wgy paramwgy) {}
 }
 
 

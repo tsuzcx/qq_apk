@@ -1,62 +1,33 @@
-class aosz
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class aosz
+  extends aoui
 {
-  private double jdField_a_of_type_Double;
-  private long jdField_a_of_type_Long;
-  private long b;
-  private long c;
-  
-  public aosz(long paramLong1, long paramLong2)
+  public aouc a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoul paramaoul)
   {
-    this.b = paramLong2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Double = paramLong1;
-    this.c = System.currentTimeMillis();
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Long == -1L) {
-      return true;
+    paramQQAppInterface = new aosy(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "asyncmsg";
+    paramQQAppInterface.c = "open_async_detail";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    if (this.b > 0L)
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
     {
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Double = Math.min(this.jdField_a_of_type_Double + (l - this.c) * this.jdField_a_of_type_Long / this.b, this.jdField_a_of_type_Long);
-      this.c = l;
-      if (this.jdField_a_of_type_Double >= 1.0D)
+      int i = 0;
+      while (i < paramContext.length)
       {
-        this.jdField_a_of_type_Double -= 1.0D;
-        return true;
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
       }
     }
-    return false;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (aosz)paramObject;
-      if (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) {
-        return false;
-      }
-    } while (this.b == paramObject.b);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32) * 31 + (int)(this.b ^ this.b >>> 32);
-  }
-  
-  public String toString()
-  {
-    return String.format("TokenBucket:mTimes:%d,mPeriod:%d,mTokenCount:%f,mLastTimestamp:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), Double.valueOf(this.jdField_a_of_type_Double), Long.valueOf(this.c) });
+    return paramQQAppInterface;
   }
 }
 

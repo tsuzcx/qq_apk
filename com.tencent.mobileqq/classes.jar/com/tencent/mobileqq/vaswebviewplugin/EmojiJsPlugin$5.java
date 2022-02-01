@@ -4,9 +4,9 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.util.Pair;
-import aqyp;
-import aqyt;
-import ardu;
+import ascz;
+import asdd;
+import ashz;
 
 class EmojiJsPlugin$5
   implements DialogInterface.OnClickListener
@@ -19,9 +19,9 @@ class EmojiJsPlugin$5
     paramDialogInterface.putInt("id", this.val$emoPackId);
     paramDialogInterface.putInt("businessType", this.val$businessType);
     paramDialogInterface.putInt("sceneType", this.val$sceneType);
-    paramDialogInterface = aqyt.a("startDownloadEmoji", this.val$callbackid, this.this$0.mOnRemoteResp.key, paramDialogInterface);
+    paramDialogInterface = asdd.a("startDownloadEmoji", this.val$callbackid, this.this$0.mOnRemoteResp.key, paramDialogInterface);
     this.this$0.addDownloadingStateObserver(new Pair(Integer.valueOf(this.val$emoPackId), this.val$callbackid));
-    ardu.a().b(paramDialogInterface);
+    ashz.a().b(paramDialogInterface);
   }
 }
 

@@ -1,19 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aesf
-  extends aliz
+  extends aodb
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  int jdField_b_of_type_Int;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
+  public aesf(QQSettingMe paramQQSettingMe) {}
   
-  private aesf(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoChangedObserver");
+    }
+    this.a.c(this.a.a.getCurrentAccountUin());
+  }
 }
 
 

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.identification;
 
 import android.graphics.ColorMatrixColorFilter;
-import aukk;
-import aukl;
-import aukp;
+import avqf;
+import avqg;
+import avqk;
 
 public class IdentificationPoseReflect$3$1
   implements Runnable
 {
-  public IdentificationPoseReflect$3$1(aukl paramaukl, ColorMatrixColorFilter paramColorMatrixColorFilter) {}
+  public IdentificationPoseReflect$3$1(avqg paramavqg, ColorMatrixColorFilter paramColorMatrixColorFilter) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aukl.a.a.a(this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter);
+    this.jdField_a_of_type_Avqg.a.a.a(this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter);
   }
 }
 

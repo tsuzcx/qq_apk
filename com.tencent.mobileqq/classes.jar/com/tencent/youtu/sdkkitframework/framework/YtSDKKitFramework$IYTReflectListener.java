@@ -4,7 +4,11 @@ import android.graphics.ColorMatrixColorFilter;
 
 public abstract interface YtSDKKitFramework$IYTReflectListener
 {
-  public abstract void onReflectEvent(ColorMatrixColorFilter paramColorMatrixColorFilter);
+  public abstract float onGetAppBrightness();
+  
+  public abstract void onReflectEvent(ColorMatrixColorFilter paramColorMatrixColorFilter, float paramFloat);
+  
+  public abstract void onReflectStart(long paramLong);
 }
 
 

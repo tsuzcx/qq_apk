@@ -1,15 +1,17 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public final class afov
-  implements bjoe
+final class afov
+  implements afpm
 {
-  public afov(Activity paramActivity, bjnw parambjnw, String paramString, afpa paramafpa) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    AIOLongShotHelper.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramInt, this.jdField_a_of_type_Bjnw, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Afpa);
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 47);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    paramQQAppInterface.e = paramSessionInfo.troopUin;
+    return paramQQAppInterface;
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rwv;
+import six;
 
 public final class VideoFeedsHelper$2
   implements Runnable
 {
   public void run()
   {
-    rwv.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
+    six.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
   }
 }
 

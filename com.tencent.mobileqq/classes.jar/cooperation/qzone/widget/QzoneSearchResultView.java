@@ -1,6 +1,5 @@
 package cooperation.qzone.widget;
 
-import amsw;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.app.FragmentActivity;
@@ -11,10 +10,12 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bfvo;
-import bfzl;
+import anvk;
+import bheg;
+import bhid;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -63,7 +64,7 @@ public class QzoneSearchResultView
     }
     setVisibility(0);
     this.resultItem = paramResultItem;
-    Object localObject1 = ((amsw)paramQQAppInterface.getManager(51)).e(getUin());
+    Object localObject1 = ((anvk)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(getUin());
     paramQQAppInterface = "";
     if (localObject1 != null) {
       paramQQAppInterface = ((Friends)localObject1).name;
@@ -74,27 +75,27 @@ public class QzoneSearchResultView
     localObject1 = paramResultItem.pic_url_list.get();
     int i = paramResultItem.total_pic_num.get();
     long l = paramResultItem.ftime.get();
-    CharSequence localCharSequence = bfzl.a(getContext(), 3, 1000L * l, false);
+    CharSequence localCharSequence = bhid.a(getContext(), 3, 1000L * l, false);
     localObject3 = paramSearchBaseFragment.a(80000004, (String)localObject3);
     if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
       this.firstNameView.setText((CharSequence)localObject3);
       if (l <= 0L) {
-        break label324;
+        break label325;
       }
       this.publishTimeView.setText(localCharSequence);
-      label185:
+      label186:
       paramQQAppInterface = paramSearchBaseFragment.a(80000004, (String)localObject2);
       if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        break label336;
+        break label337;
       }
       this.titleView.setVisibility(8);
       this.summaryView.setMaxLines(2);
       this.summaryView.setEllipsize(TextUtils.TruncateAt.END);
-      label228:
+      label229:
       paramQQAppInterface = paramSearchBaseFragment.a(80000004, str);
       if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        break label397;
+        break label398;
       }
       this.summaryView.setVisibility(8);
     }
@@ -111,18 +112,18 @@ public class QzoneSearchResultView
       }
       this.firstNameView.setText(getUin());
       break;
-      label324:
+      label325:
       this.publishTimeView.setVisibility(8);
-      break label185;
-      label336:
+      break label186;
+      label337:
       this.titleView.setVisibility(0);
       localObject2 = new SpannableStringBuilder("《");
       ((SpannableStringBuilder)localObject2).append(paramQQAppInterface).append("》");
       this.titleView.setText((CharSequence)localObject2);
       this.summaryView.setMaxLines(1);
       this.summaryView.setEllipsize(TextUtils.TruncateAt.END);
-      break label228;
-      label397:
+      break label229;
+      label398:
       this.summaryView.setText(paramQQAppInterface);
     }
   }
@@ -140,12 +141,12 @@ public class QzoneSearchResultView
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.avartaView = ((ImageView)findViewById(2131367958));
-    this.firstNameView = ((TextView)findViewById(2131366723));
-    this.publishTimeView = ((TextView)findViewById(2131373160));
-    this.titleView = ((TextView)findViewById(2131378707));
-    this.summaryView = ((TextView)findViewById(2131378011));
-    this.container = ((QzoneImagesContainer)findViewById(2131368414));
+    this.avartaView = ((ImageView)findViewById(2131368094));
+    this.firstNameView = ((TextView)findViewById(2131366839));
+    this.publishTimeView = ((TextView)findViewById(2131373371));
+    this.titleView = ((TextView)findViewById(2131379001));
+    this.summaryView = ((TextView)findViewById(2131378299));
+    this.container = ((QzoneImagesContainer)findViewById(2131368571));
   }
   
   public void setAvartaView(Bitmap paramBitmap)
@@ -157,7 +158,7 @@ public class QzoneSearchResultView
       return;
     }
     this.avartaView.setVisibility(0);
-    this.avartaView.setImageBitmap(bfvo.a());
+    this.avartaView.setImageBitmap(bheg.a());
   }
 }
 

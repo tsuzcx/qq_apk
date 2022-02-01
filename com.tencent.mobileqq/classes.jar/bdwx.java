@@ -1,27 +1,31 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.CountDownLatch;
 
-public class bdwx
-  implements AdapterView.OnItemClickListener
+class bdwx
+  implements bdwj
 {
-  public bdwx(NewTroopContactView paramNewTroopContactView) {}
+  bdwx(bdwv parambdwv, File paramFile, Exception[] paramArrayOfException, CountDownLatch paramCountDownLatch) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    String str = ((ResultRecord)paramView.getTag()).uin;
-    if (this.a.a(str))
-    {
-      NewTroopContactView.a(this.a, str);
-      this.a.a.notifyDataSetChanged();
-      this.a.b(false);
-      NewTroopContactView.a(this.a);
+    QLog.d("studyroom.CdnPmUpdater", 1, " download cdn success");
+    if (!bdwv.a(this.jdField_a_of_type_Bdwv).renameTo(this.jdField_a_of_type_JavaIoFile)) {
+      this.jdField_a_of_type_ArrayOfJavaLangException[0] = new RuntimeException(anvx.a(2131700966) + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
     }
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    this.jdField_a_of_type_ArrayOfJavaLangException[0] = new Exception("下载失败 retcode:" + paramInt1 + " httpCode:" + paramInt2 + " err:" + paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("studyroom.CdnPmUpdater", 2, " onDownloadFailed ");
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt) {}
 }
 
 

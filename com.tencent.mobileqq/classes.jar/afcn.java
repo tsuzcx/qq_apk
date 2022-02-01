@@ -1,14 +1,8 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-final class afcn
-  implements bjog
+public class afcn
 {
-  afcn(QQAppInterface paramQQAppInterface) {}
-  
-  public void onDismiss()
-  {
-    bcef.b(this.a, "CliOper", "", "", "0X8004862", "0X8004862", 0, 0, "", "", "", "");
-  }
+  public long a;
+  public String a;
+  String b;
 }
 
 

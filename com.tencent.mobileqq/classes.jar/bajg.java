@@ -1,20 +1,23 @@
 import android.content.Context;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class bajg
-  implements aszj
+public class bajg
+  implements baik
 {
-  bajg(bajf parambajf, Context paramContext, AIOFileVideoData paramAIOFileVideoData, bakr parambakr) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
   
-  public void onNo() {}
-  
-  public void onYes()
+  public int a()
   {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData != null) && (this.jdField_a_of_type_Bakr != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.g = true;
-      this.jdField_a_of_type_Bakr.i();
-    }
+    return Math.max(2000, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(baii parambaii, baij parambaij) {}
+  
+  public void b(baii parambaii, baij parambaij)
+  {
+    this.jdField_a_of_type_Int = ((int)AudioHelper.a(this.jdField_a_of_type_AndroidContentContext, parambaij.jdField_a_of_type_ArrayOfByte, parambaij.jdField_a_of_type_Int, 1.0F));
   }
 }
 

@@ -1,24 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 public class ryi
-  extends apkq
+  implements QQPermissionCallback
 {
-  public ryi(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public ryi(EditVideoFragment paramEditVideoFragment) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    boolean bool = true;
-    super.onAddColorNote(paramBundle, paramBoolean);
-    if (paramBundle.getInt("color_note_curd_from_type") == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      swy.a(VideoFeedsPlayActivity.a(this.a), paramBoolean);
-      if (!paramBoolean) {
-        this.a.d();
-      }
-      return;
-    }
+    QLog.i("RIJUGC.EditVideoFragment", 1, "request position permissions, deny");
+    QQToast.a(this.a.getActivity(), 2131718110, 0).a();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("RIJUGC.EditVideoFragment", 1, "request position permissions, grant");
+    this.a.b();
   }
 }
 

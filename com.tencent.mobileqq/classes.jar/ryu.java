@@ -1,19 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-
-public class ryu
-  extends obx
+public abstract interface ryu
 {
-  private ryu(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    VideoFeedsPlayActivity.a("onSendArticleLikeReq isSuccess=" + paramBoolean + ", articleID=" + paramString);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  public abstract void a(int paramInt, String paramString);
 }
 
 

@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 class BaseChatPie$39
   implements Runnable
@@ -11,7 +9,7 @@ class BaseChatPie$39
   
   public void run()
   {
-    this.this$0.app.getMessageFacade().getAndParseAIOList(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, 8);
+    this.this$0.listView.setSelectionFromBottom(this.this$0.listView.getCount() - 1, 0);
   }
 }
 

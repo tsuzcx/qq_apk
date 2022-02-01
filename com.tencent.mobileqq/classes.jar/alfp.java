@@ -1,39 +1,13 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import java.util.HashMap;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
 
-class alfp
-  implements alep
+public class alfp
+  implements View.OnClickListener
 {
-  alfp(alfo paramalfo, String paramString) {}
+  public alfp(DrawerFrame paramDrawerFrame) {}
   
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Alfo.mRuntime.a().getCurrentAccountUin();
-      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
-      alfo.a(this.jdField_a_of_type_Alfo, this.jdField_a_of_type_JavaLangString, (List)localObject);
-      return;
-    }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
-      try
-      {
-        alfo.a(this.jdField_a_of_type_Alfo, this.jdField_a_of_type_JavaLangString, null);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
-    }
-    alfo.a(this.jdField_a_of_type_Alfo, this.jdField_a_of_type_JavaLangString, null);
-    return;
-  }
+  public void onClick(View paramView) {}
 }
 
 

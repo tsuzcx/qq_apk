@@ -1,108 +1,170 @@
-import android.graphics.Path;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.hotchat.anim.HeartLayout;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.List;
 
 public class awkp
-  extends aufs
+  extends BaseAdapter
 {
-  public awkp(HeartLayout paramHeartLayout)
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private awks jdField_a_of_type_Awks;
+  private awln jdField_a_of_type_Awln;
+  private List<LocationRoom.Venue> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int b = -1;
+  
+  awkp(Context paramContext)
   {
-    super(paramHeartLayout);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public Path a(int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger, View paramView)
+  int a()
   {
-    Random localRandom = this.jdField_a_of_type_JavaUtilRandom;
-    Path localPath = new Path();
-    label95:
-    label107:
-    int i;
-    int j;
-    int k;
-    int m;
-    if (!this.jdField_a_of_type_Aufu.jdField_a_of_type_Boolean) {
-      if ((paramInt1 < 0) || (paramInt1 > paramView.getWidth()))
-      {
-        this.jdField_a_of_type_Aufu.jdField_a_of_type_Int = ((paramView.getWidth() - (int)(20.0F * this.jdField_a_of_type_Aufu.jdField_a_of_type_Float)) / 2);
-        if ((paramInt2 >= 0) && (paramInt2 <= paramView.getHeight())) {
-          break label415;
-        }
-        this.jdField_a_of_type_Aufu.b = ((int)(20.0F * this.jdField_a_of_type_Aufu.jdField_a_of_type_Float));
-        if (!this.jdField_a_of_type_JavaUtilRandom.nextBoolean()) {
-          break label447;
-        }
-        paramInt1 = 1;
-        i = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Aufu.c) + this.jdField_a_of_type_Aufu.d);
-        j = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Aufu.c) + this.jdField_a_of_type_Aufu.d);
-        k = paramView.getHeight() - this.jdField_a_of_type_Aufu.b;
-        paramInt1 = (int)(paramAtomicInteger.intValue() * 4 * this.jdField_a_of_type_Aufu.jdField_a_of_type_Float);
-        paramInt2 = this.jdField_a_of_type_Aufu.g;
-        paramInt2 = localRandom.nextInt(this.jdField_a_of_type_Aufu.f) + (paramInt1 + paramInt2);
-        m = paramInt2 / this.jdField_a_of_type_Aufu.e;
-        paramInt1 = k - paramInt2;
-        if (paramInt1 >= 0) {
-          break label666;
-        }
-        paramInt1 = 0;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  LocationRoom.Venue a()
+  {
+    if (this.jdField_a_of_type_Int < 0) {
+      return null;
+    }
+    return a(this.jdField_a_of_type_Int);
+  }
+  
+  public LocationRoom.Venue a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < getCount())) {
+      return (LocationRoom.Venue)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  void a()
+  {
+    if ((this.jdField_a_of_type_Awln.a()) && (this.jdField_a_of_type_Awks != null)) {
+      this.jdField_a_of_type_Awks.a(1);
+    }
+  }
+  
+  void a(int paramInt)
+  {
+    LocationRoom.Venue localVenue1 = (LocationRoom.Venue)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.b > 0)
+    {
+      LocationRoom.Venue localVenue2 = (LocationRoom.Venue)this.jdField_a_of_type_JavaUtilList.remove(0);
+      this.jdField_a_of_type_JavaUtilList.add(this.b, localVenue2);
+    }
+    this.jdField_a_of_type_JavaUtilList.remove(localVenue1);
+    this.jdField_a_of_type_JavaUtilList.add(0, localVenue1);
+    this.b = paramInt;
+    this.jdField_a_of_type_Int = 0;
+    notifyDataSetChanged();
+    if (this.jdField_a_of_type_Awks != null) {
+      this.jdField_a_of_type_Awks.a(4);
+    }
+  }
+  
+  void a(awks paramawks)
+  {
+    this.jdField_a_of_type_Awks = paramawks;
+  }
+  
+  public void a(BaseActivity paramBaseActivity, TencentMap paramTencentMap, LatLng paramLatLng, String paramString)
+  {
+    this.jdField_a_of_type_Awln = new awln(paramBaseActivity, paramTencentMap, paramLatLng, paramString);
+    this.jdField_a_of_type_Awln.a(new awkq(this, paramString));
+    if ((this.jdField_a_of_type_Awln.a()) && (this.jdField_a_of_type_Awks != null)) {
+      this.jdField_a_of_type_Awks.a(0);
+    }
+    this.b = -1;
+    this.jdField_a_of_type_Int = -1;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int getCount()
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      if (this.jdField_a_of_type_Awln.b()) {
+        i = this.jdField_a_of_type_JavaUtilList.size() + 1;
       }
     }
-    label653:
-    label666:
-    for (;;)
+    else {
+      return i;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @SuppressLint({"InflateParams"})
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      paramInt2 = k - paramInt2 / 2;
-      if (paramInt2 < 0) {
-        paramInt2 = 0;
+      localObject = new awkr();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559338, null);
+      ((awkr)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365562);
+      ((awkr)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371815));
+      ((awkr)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362211));
+      ((awkr)localObject).jdField_b_of_type_AndroidViewView = paramView.findViewById(2131377301);
+      ((awkr)localObject).jdField_b_of_type_AndroidViewView.setVisibility(4);
+      ((awkr)localObject).c = paramView.findViewById(2131371562);
+      paramView.setTag(localObject);
+    }
+    while ((this.jdField_a_of_type_Awln.b()) && (paramInt == this.jdField_a_of_type_JavaUtilList.size()))
+    {
+      ((awkr)localObject).c.setVisibility(0);
+      ((awkr)localObject).jdField_a_of_type_AndroidViewView.setVisibility(8);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localObject = (awkr)paramView.getTag();
+    }
+    ((awkr)localObject).c.setVisibility(8);
+    ((awkr)localObject).jdField_a_of_type_AndroidViewView.setVisibility(0);
+    LocationRoom.Venue localVenue = a(paramInt);
+    String str;
+    if (localVenue != null)
+    {
+      ((awkr)localObject).c.setVisibility(8);
+      ((awkr)localObject).jdField_a_of_type_AndroidViewView.setVisibility(0);
+      ((awkr)localObject).jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
+      str = localVenue.b + localVenue.c;
+      if (paramInt != this.jdField_a_of_type_Int) {
+        break label387;
       }
-      for (;;)
-      {
-        localPath.moveTo(this.jdField_a_of_type_Aufu.jdField_a_of_type_Int, k);
-        localPath.cubicTo(this.jdField_a_of_type_Aufu.jdField_a_of_type_Int, k - m, this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + i, paramInt2 + m, this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + i, paramInt2);
-        localPath.moveTo(this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + i, paramInt2);
-        if (paramInt2 - m >= 0) {
-          localPath.cubicTo(this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + i, paramInt2 - m, this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + j, paramInt1 + m, this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + j, paramInt1);
-        }
-        return localPath;
-        this.jdField_a_of_type_Aufu.jdField_a_of_type_Int = (paramInt1 - (int)(20.0F * this.jdField_a_of_type_Aufu.jdField_a_of_type_Float / 3.0F));
-        break;
-        label415:
-        this.jdField_a_of_type_Aufu.b = (paramView.getHeight() - paramInt2 + (int)(20.0F * this.jdField_a_of_type_Aufu.jdField_a_of_type_Float / 3.0F));
-        break label95;
-        label447:
-        paramInt1 = -1;
-        break label107;
-        k = this.jdField_a_of_type_Aufu.l;
-        m = this.jdField_a_of_type_Aufu.k;
-        int n = this.jdField_a_of_type_Aufu.h / 2;
-        int i1;
-        int i2;
-        int i3;
-        int i4;
-        if (this.jdField_a_of_type_JavaUtilRandom.nextBoolean())
-        {
-          i = 1;
-          i1 = localRandom.nextInt(this.jdField_a_of_type_Aufu.c);
-          i2 = this.jdField_a_of_type_Aufu.d;
-          i3 = localRandom.nextInt(this.jdField_a_of_type_Aufu.c);
-          i4 = this.jdField_a_of_type_Aufu.d;
-          j = Math.abs(k - paramInt2) / (this.jdField_a_of_type_JavaUtilRandom.nextInt(3) + 2);
-          if (k <= paramInt2) {
-            break label653;
-          }
-          j = k - j;
-        }
-        for (;;)
-        {
-          localPath.moveTo(paramInt1 - this.jdField_a_of_type_Aufu.h / 2, paramInt2 - this.jdField_a_of_type_Aufu.i / 2);
-          localPath.cubicTo(i * (i1 + i2) + paramInt1, j, paramInt1 - i * (i3 + i4), j, m - n, k);
-          return localPath;
-          i = -1;
-          break;
-          j += k;
-        }
-      }
+      ((awkr)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131693695), new Object[] { localVenue.b }));
+      ((awkr)localObject).jdField_b_of_type_AndroidViewView.setVisibility(0);
+      localObject = ((awkr)localObject).jdField_a_of_type_AndroidWidgetTextView.getText().toString() + localVenue.c;
+    }
+    for (Object localObject = (String)localObject + this.jdField_a_of_type_AndroidContentContext.getString(2131694715);; localObject = str + this.jdField_a_of_type_AndroidContentContext.getString(2131694716))
+    {
+      paramView.setContentDescription((CharSequence)localObject);
+      break;
+      label387:
+      ((awkr)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localVenue.b);
+      ((awkr)localObject).jdField_b_of_type_AndroidViewView.setVisibility(4);
     }
   }
 }

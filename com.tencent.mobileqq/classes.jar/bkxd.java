@@ -1,12 +1,6 @@
-import android.os.Bundle;
-import android.os.IInterface;
-
 public abstract interface bkxd
-  extends IInterface
 {
-  public abstract Bundle a(String paramString, Bundle paramBundle);
-  
-  public abstract void a(String paramString, Bundle paramBundle);
+  public abstract void a(long paramLong);
 }
 
 

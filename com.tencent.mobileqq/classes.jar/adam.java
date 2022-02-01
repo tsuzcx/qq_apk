@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-public class adam
-  implements DialogInterface.OnClickListener
+class adam
+  implements View.OnClickListener
 {
-  public adam(ChatSettingActivity paramChatSettingActivity) {}
+  adam(adak paramadak, adaj paramadaj, adab paramadab, JSONObject paramJSONObject, adaa paramadaa) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ChatSettingActivity.c(this.a);
+    this.jdField_a_of_type_Adak.d();
+    QLog.i("DoraemonOpenAPI.apiMgr", 1, "accept " + this.jdField_a_of_type_Adaj.a);
+    adak.a(this.jdField_a_of_type_Adak, this.jdField_a_of_type_Adaj, 2);
+    adak.a(this.jdField_a_of_type_Adak, 0, this.jdField_a_of_type_Adab, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Adaa);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

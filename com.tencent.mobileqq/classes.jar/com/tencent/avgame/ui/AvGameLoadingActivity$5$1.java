@@ -1,11 +1,11 @@
 package com.tencent.avgame.ui;
 
-import niy;
+import npv;
 
 public class AvGameLoadingActivity$5$1
   implements Runnable
 {
-  public AvGameLoadingActivity$5$1(niy paramniy) {}
+  public AvGameLoadingActivity$5$1(npv paramnpv) {}
   
   public void run()
   {

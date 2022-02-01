@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aldk
-  implements bhnm
+class aldk
+  implements View.OnClickListener
 {
-  public aldk(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
+  aldk(aldh paramaldh) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    Intent localIntent = new Intent(aldh.a(this.a), NotifyPushSettingActivity.class);
+    aldh.a(this.a).startActivity(localIntent);
+    bdla.b(aldh.a(this.a).app, "CliOper", "", "", "0X8009EBB", "0X8009EBB", 0, 1, "", "", "", "");
+    bdla.a(aldh.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 2, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

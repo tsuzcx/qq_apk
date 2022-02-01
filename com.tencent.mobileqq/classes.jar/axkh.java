@@ -1,10 +1,16 @@
-import java.util.List;
+import com.tencent.mobileqq.music.QQPlayerService;
 
-public abstract interface axkh
+public class axkh
+  implements aqrn
 {
-  public abstract void a(List<axki> paramList);
+  public axkh(QQPlayerService paramQQPlayerService) {}
   
-  public abstract void b();
+  public void onServiceSyncSucc(boolean paramBoolean)
+  {
+    if ((QQPlayerService.b()) && (QQPlayerService.a(this.a) != null) && (!QQPlayerService.a(this.a).c())) {
+      QQPlayerService.a(this.a).e();
+    }
+  }
 }
 
 

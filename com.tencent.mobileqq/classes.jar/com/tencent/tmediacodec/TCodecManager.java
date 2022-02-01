@@ -5,6 +5,7 @@ import android.media.MediaCodec;
 import android.media.MediaCrypto;
 import android.media.MediaDescrambler;
 import android.media.MediaFormat;
+import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.Surface;
@@ -72,37 +73,20 @@ public final class TCodecManager
   
   private CodecWrapper getCodec(MediaFormat paramMediaFormat, TMediaCodec paramTMediaCodec, Surface paramSurface)
   {
-    boolean bool3 = isGlobalReuseEnable();
-    boolean bool4 = paramTMediaCodec.isReuseEnable();
-    boolean bool5 = paramTMediaCodec.isVideo();
-    boolean bool1;
-    if ((bool3) && (bool4))
-    {
-      bool1 = true;
-      if (TUtils.codecNeedsSetOutputSurfaceWorkaround()) {
-        break label226;
-      }
+    boolean bool = paramTMediaCodec.isVideo();
+    if (LogUtils.isLogEnable()) {
+      LogUtils.d("TCodecManager", "getCodec isVideo:" + bool + " codecFinalReuseEnable:" + paramTMediaCodec.codecFinalReuseEnable);
     }
-    label226:
-    for (boolean bool2 = true;; bool2 = false)
+    if (!paramTMediaCodec.codecFinalReuseEnable)
     {
-      if (LogUtils.isLogEnable()) {
-        LogUtils.d("TCodecManager", "getCodec isVideo:" + bool5 + " reuseEnable:" + bool1 + ' ' + "globalReuseEnable:" + bool3 + " mediaCodecReuseEnable:" + bool4 + " canUseSetOutputSurfaceAPI:" + bool2 + " ,surface:" + paramSurface);
-      }
-      if ((bool1) && (bool5) && (bool2) && (paramSurface != null)) {
-        break label232;
-      }
       paramTMediaCodec.isReUsed = false;
       if (LogUtils.isLogEnable()) {
-        LogUtils.d("TCodecManager", "getCodec return DirectCodecWrapper for mediaFormat:" + paramMediaFormat + " globalReuseEnable:" + bool3 + ' ' + "mediaCodecReuseEnable:" + bool4 + " surface:" + paramSurface);
+        LogUtils.d("TCodecManager", "getCodec return DirectCodecWrapper for mediaFormat:" + paramMediaFormat + " codecFinalReuseEnable:" + false + " surface:" + paramSurface);
       }
       return createDirectCodecWrapper(paramMediaFormat, paramTMediaCodec);
-      bool1 = false;
-      break;
     }
-    label232:
     Object localObject = FormatWrapper.create(paramMediaFormat);
-    paramSurface = obtainCodecWrapper(bool5, (FormatWrapper)localObject);
+    paramSurface = obtainCodecWrapper(bool, (FormatWrapper)localObject);
     FormatWrapper.dumpCsdArray(((FormatWrapper)localObject).initializationData);
     if (paramSurface != null)
     {
@@ -110,7 +94,7 @@ public final class TCodecManager
       if ((localObject == ReuseHelper.ReuseType.KEEP_CODEC_RESULT_YES_WITHOUT_RECONFIGURATION) || (localObject == ReuseHelper.ReuseType.KEEP_CODEC_RESULT_YES_WITH_RECONFIGURATION))
       {
         if (LogUtils.isLogEnable()) {
-          LogUtils.d("TCodecManager", "getCodec reuse, isVideo:" + bool5 + " reuseType:" + localObject);
+          LogUtils.d("TCodecManager", "getCodec reuse, isVideo:" + bool + " reuseType:" + localObject);
         }
         paramSurface.attachThread();
         paramSurface.prepareToReUse();
@@ -118,11 +102,11 @@ public final class TCodecManager
         return paramSurface;
       }
       if ((localObject == ReuseHelper.ReuseType.KEEP_CODEC_RESULT_NO) && (LogUtils.isLogEnable())) {
-        LogUtils.w("TCodecManager", "getCodec not reuse, isVideo:" + bool5 + " reuseType:" + localObject);
+        LogUtils.w("TCodecManager", "getCodec not reuse, isVideo:" + bool + " reuseType:" + localObject);
       }
     }
     if (LogUtils.isLogEnable()) {
-      LogUtils.d("TCodecManager", "getCodec not reuse, for can't find reUseAble CodecWrapper. isVideo:" + bool5);
+      LogUtils.d("TCodecManager", "getCodec not reuse, for can't find reUseAble CodecWrapper. isVideo:" + bool);
     }
     paramTMediaCodec.isReUsed = false;
     paramMediaFormat = createNewReuseCodecWrapper(paramMediaFormat, paramTMediaCodec);
@@ -263,6 +247,36 @@ public final class TCodecManager
       return;
     }
     this.mAudioCodecManager.removeFromRunning((ReuseCodecWrapper)paramCodecWrapper);
+  }
+  
+  public boolean reuseEnable(TMediaCodec paramTMediaCodec, Surface paramSurface)
+  {
+    boolean bool3 = isGlobalReuseEnable();
+    boolean bool4 = paramTMediaCodec.isReuseEnable();
+    boolean bool5 = paramTMediaCodec.isVideo();
+    boolean bool1;
+    if ((bool3) && (bool4))
+    {
+      bool1 = true;
+      if ((Build.VERSION.SDK_INT < 23) || (TUtils.codecNeedsSetOutputSurfaceWorkaround())) {
+        break label162;
+      }
+    }
+    label162:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      if (LogUtils.isLogEnable()) {
+        LogUtils.d("TCodecManager", "reuseEnable getCodec isVideo:" + bool5 + " reuseEnable:" + bool1 + ' ' + "globalReuseEnable:" + bool3 + " mediaCodecReuseEnable:" + bool4 + " canUseSetOutputSurfaceAPI:" + bool2 + " ,surface:" + paramSurface);
+      }
+      if ((!bool1) || (!bool5) || (!bool2) || (paramSurface == null)) {
+        break label168;
+      }
+      return true;
+      bool1 = false;
+      break;
+    }
+    label168:
+    return false;
   }
   
   public final void setGlobalReuseEnable(boolean paramBoolean)

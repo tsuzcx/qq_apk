@@ -1,15 +1,16 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class mrv
+class mrv
+  implements View.OnClickListener
 {
-  public static void a(Context paramContext, String paramString, int paramInt, mrw parammrw)
-  {
-    parammrw.a(paramContext, paramString);
-  }
+  mrv(mru parammru) {}
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mrv
  * JD-Core Version:    0.7.0.1
  */

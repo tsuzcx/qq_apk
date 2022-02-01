@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import amtj;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -23,7 +22,8 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhjs;
+import anvx;
+import biui;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -63,11 +63,11 @@ public class TipsBar
     super(paramContext, paramAttributeSet);
     Resources localResources = getResources();
     this.jdField_a_of_type_Float = localResources.getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = localResources.getDimensionPixelSize(2131298447);
-    this.e = localResources.getDimensionPixelSize(2131298449);
-    this.f = localResources.getDimensionPixelSize(2131298451);
-    this.jdField_c_of_type_Int = localResources.getDimensionPixelSize(2131298450);
-    this.d = localResources.getDimensionPixelSize(2131298450);
+    this.jdField_b_of_type_Int = localResources.getDimensionPixelSize(2131298451);
+    this.e = localResources.getDimensionPixelSize(2131298453);
+    this.f = localResources.getDimensionPixelSize(2131298455);
+    this.jdField_c_of_type_Int = localResources.getDimensionPixelSize(2131298454);
+    this.d = localResources.getDimensionPixelSize(2131298454);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.TipsBar);
     this.jdField_a_of_type_JavaLangString = paramContext.getString(6);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(5);
@@ -86,14 +86,14 @@ public class TipsBar
     {
     case 5: 
     default: 
-      return paramResources.getColorStateList(2131167047);
+      return paramResources.getColorStateList(2131167061);
     }
-    return paramResources.getColorStateList(2131167047);
+    return paramResources.getColorStateList(2131167061);
   }
   
   public static Drawable a(Resources paramResources, int paramInt)
   {
-    return paramResources.getDrawable(2130839360);
+    return paramResources.getDrawable(2130839381);
   }
   
   private void a()
@@ -102,7 +102,7 @@ public class TipsBar
     setClickable(true);
     Resources localResources = getResources();
     this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_c_of_type_AndroidWidgetImageView.setId(2131378697);
+    this.jdField_c_of_type_AndroidWidgetImageView.setId(2131378991);
     this.jdField_c_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.g, this.h);
     localLayoutParams.leftMargin = this.e;
@@ -110,7 +110,7 @@ public class TipsBar
     localLayoutParams.addRule(15);
     addView(this.jdField_c_of_type_AndroidWidgetImageView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131378698);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131378992);
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -127,8 +127,8 @@ public class TipsBar
     {
       localLayoutParams.leftMargin = this.f;
       localLayoutParams.addRule(15);
-      localLayoutParams.addRule(1, 2131378697);
-      localLayoutParams.addRule(0, 2131378699);
+      localLayoutParams.addRule(1, 2131378991);
+      localLayoutParams.addRule(0, 2131378993);
       addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
@@ -163,11 +163,11 @@ public class TipsBar
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131167019);
+      return paramResources.getColorStateList(2131167033);
     case 4: 
-      return paramResources.getColorStateList(2131167168);
+      return paramResources.getColorStateList(2131167182);
     }
-    return paramResources.getColorStateList(2131167019);
+    return paramResources.getColorStateList(2131167033);
   }
   
   private Button b()
@@ -204,14 +204,14 @@ public class TipsBar
     switch (paramInt)
     {
     }
-    for (paramResources = paramResources.getDrawable(2130839512);; paramResources = paramResources.getDrawable(2130839512)) {
+    for (paramResources = paramResources.getDrawable(2130839533);; paramResources = paramResources.getDrawable(2130839533)) {
       return a(paramResources);
     }
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131378699);
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131378993);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.rightMargin = this.e;
     localLayoutParams.leftMargin = this.e;
@@ -298,9 +298,9 @@ public class TipsBar
     localObject = d((Resources)localObject, this.jdField_a_of_type_Int);
     localImageView.setPadding(15, 15, 15, 15);
     localImageView.setImageDrawable((Drawable)localObject);
-    localImageView.setOnClickListener(new bhjs(this));
+    localImageView.setOnClickListener(new biui(this));
     if (AppSetting.c) {
-      localImageView.setContentDescription(amtj.a(2131714018));
+      localImageView.setContentDescription(anvx.a(2131714365));
     }
     return localImageView;
   }
@@ -328,18 +328,18 @@ public class TipsBar
     switch (paramInt)
     {
     default: 
-      paramResources = paramResources.getDrawable(2130839437);
+      paramResources = paramResources.getDrawable(2130839458);
     }
     for (;;)
     {
       return a(paramResources);
-      paramResources = paramResources.getDrawable(2130839437);
+      paramResources = paramResources.getDrawable(2130839458);
       continue;
-      paramResources = paramResources.getDrawable(2130839508);
+      paramResources = paramResources.getDrawable(2130839529);
       continue;
-      paramResources = paramResources.getDrawable(2130839504);
+      paramResources = paramResources.getDrawable(2130839525);
       continue;
-      paramResources = paramResources.getDrawable(2130839438);
+      paramResources = paramResources.getDrawable(2130839459);
     }
   }
   
@@ -355,7 +355,7 @@ public class TipsBar
       {
         localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
         this.jdField_a_of_type_AndroidViewView = new View(getContext());
-        this.jdField_a_of_type_AndroidViewView.setId(2131378696);
+        this.jdField_a_of_type_AndroidViewView.setId(2131378990);
         this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#7f000000"));
         addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
       }
@@ -387,7 +387,7 @@ public class TipsBar
     switch (paramInt)
     {
     }
-    for (paramResources = paramResources.getDrawable(2130850066);; paramResources = paramResources.getDrawable(2130839503)) {
+    for (paramResources = paramResources.getDrawable(2130850159);; paramResources = paramResources.getDrawable(2130839524)) {
       return a(paramResources);
     }
   }
@@ -396,7 +396,7 @@ public class TipsBar
   {
     if (this.jdField_b_of_type_AndroidWidgetImageView != null)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setId(2131378699);
+      this.jdField_b_of_type_AndroidWidgetImageView.setId(2131378993);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.rightMargin = this.e;
       localLayoutParams.leftMargin = this.e;
@@ -413,7 +413,7 @@ public class TipsBar
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.rightMargin = this.e;
       localLayoutParams.leftMargin = this.e;
-      this.jdField_a_of_type_AndroidWidgetButton.setId(2131378699);
+      this.jdField_a_of_type_AndroidWidgetButton.setId(2131378993);
       localLayoutParams.addRule(11);
       localLayoutParams.addRule(15);
       addView(this.jdField_a_of_type_AndroidWidgetButton, localLayoutParams);

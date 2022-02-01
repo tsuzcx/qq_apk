@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
-import otk;
-import owh;
+import pbm;
+import pfi;
 
 public class ReadInJoyCommentPBModule$10
   implements Runnable
 {
-  public ReadInJoyCommentPBModule$10(owh paramowh, int paramInt) {}
+  public ReadInJoyCommentPBModule$10(pfi parampfi, int paramInt) {}
   
   public void run()
   {
-    if (owh.a(this.this$0) != null)
+    if (pfi.a(this.this$0) != null)
     {
       if (this.a == 10003) {
-        owh.a(this.this$0).a(1002);
+        pfi.a(this.this$0).a(1002);
       }
     }
     else {
       return;
     }
-    owh.a(this.this$0).a(1003);
+    pfi.a(this.this$0).a(1003);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import com.tencent.biz.pubaccount.VideoInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
-import ruw;
+import shl;
 
 class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable$1
   implements Runnable

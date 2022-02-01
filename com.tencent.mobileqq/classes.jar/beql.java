@@ -1,60 +1,54 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import androidx.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
+import java.util.List;
 
-public class beql
-  extends WebViewPlugin
+public class beql<E>
 {
-  protected AtomicBoolean a;
-  protected zon a;
+  protected E a;
+  protected String a;
+  protected List<E> a;
   
-  public beql()
+  public beql(E paramE, List<E> paramList)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_JavaLangObject = paramE;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public E a()
   {
-    boolean bool = false;
-    if ((!"GroupAppPanel".equals(paramString2)) || (("launchGroupApp".equals(paramString3)) && (paramVarArgs.length > 0) && (this.jdField_a_of_type_Zon != null))) {}
-    try
-    {
-      paramString3 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString3.getString("groupCode");
-      paramString1 = paramString3.getString("appID");
-      paramString2 = paramString3.getString("url");
-      paramString3 = paramString3.getString("source");
-      this.jdField_a_of_type_Zon.a(paramJsBridgeListener, paramString1, paramString2, paramString3);
-      bool = true;
-      return bool;
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        paramJsBridgeListener.printStackTrace();
-        QLog.e("TroopAppPanelJsPlugin", 2, "launchGroupApp: args error");
-      }
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  @NonNull
+  List<E> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StateProcessor", 2, "[onExit] curState: " + this.jdField_a_of_type_JavaLangObject);
     }
   }
   
-  public void onCreate()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-    {
-      this.jdField_a_of_type_Zon = zon.a();
-      this.jdField_a_of_type_Zon.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("StateProcessor", 2, "[handleEvent] state: " + this.jdField_a_of_type_JavaLangObject + ", event: " + paramInt);
     }
   }
   
-  public void onDestroy()
+  public void a(E paramE)
   {
-    super.onDestroy();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      this.jdField_a_of_type_Zon.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("StateProcessor", 2, "[onEnter] enter: " + this.jdField_a_of_type_JavaLangObject + ", lastState: " + paramE);
     }
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

@@ -1,16 +1,6 @@
-import java.util.ArrayList;
-
 public abstract interface andc
 {
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(ArrayList<String> paramArrayList);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void b(String paramString1, String paramString2);
+  public abstract void a(boolean paramBoolean);
 }
 
 

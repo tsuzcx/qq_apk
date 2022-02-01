@@ -1,33 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.tkd.comment.publisher.qq.bridge.QQLogBridge;
 
 public class pct
-  implements AladdinConfigHandler
+  implements QQLogBridge
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void d(String paramString1, String paramString2)
   {
-    QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = pbt.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "opt_open_cost")) {
-        bkwm.a("preload_controller", Boolean.valueOf("1".equals(str2)));
-      }
-    }
-    return true;
+    QLog.d(paramString1, 2, paramString2);
   }
   
-  public void onWipeConfig(int paramInt)
+  public void e(String paramString1, String paramString2)
   {
-    bkwm.a("preload_controller", Boolean.valueOf(true));
+    QLog.e(paramString1, 2, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 2, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 2, paramString2);
   }
 }
 

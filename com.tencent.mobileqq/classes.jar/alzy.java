@@ -1,263 +1,42 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.process.video.CmGameGdtVideoPlayer.1;
-import com.tencent.mobileqq.apollo.process.video.CmGameGdtVideoPlayer.3;
-import com.tencent.mobileqq.app.ThreadManager;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
+import NS_COMM.COMM.StCommonExt;
+import android.text.TextUtils;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
-import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
-import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
-import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
-import com.tencent.superplayer.api.SuperPlayerFactory;
-import com.tencent.superplayer.view.ISPlayerVideoView;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class alzy
-  implements amaj, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnVideoPreparedListener
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetFeedListRsp>
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-  private ISPlayerVideoView jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CmGameGdtVideoPlayer.1(this);
-  private CopyOnWriteArrayList<amai> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private long b = 1000L;
+  public alzy(ShoppingFragment paramShoppingFragment, zsx paramzsx) {}
   
-  private void c()
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    if ((this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_AndroidOsHandler != null))
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d(ShoppingFragment.a, 2, "loadMore:" + paramBoolean + " " + paramLong + " " + paramString);
+    }
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFeedListRsp == null))
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_Long = (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs() - this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs());
-      if (this.jdField_a_of_type_Long > 0L) {
-        this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+      if (!TextUtils.isEmpty(paramString)) {
+        QQToast.a(ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment), 1, paramString, 0).a();
       }
+      return;
     }
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getVideoWidth();
-    }
-    return 0;
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs();
-    }
-    return 0L;
-  }
-  
-  public View a()
-  {
-    if ((this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView == null) || (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer == null)) {}
-    try
+    this.jdField_a_of_type_Zsx.a().b(paramStGetFeedListRsp.livePageInfo.get());
+    paramVSBaseRequest = paramStGetFeedListRsp.hotLive.get();
+    paramString = this.jdField_a_of_type_Zsx;
+    COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
+    if (paramStGetFeedListRsp.isFinish.get() == 1) {}
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      QLog.i("CmGameGdtVideoPlayer", 1, "[createPlayerVideoView]");
-      this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView = SuperPlayerFactory.createPlayerVideoView(BaseApplicationImpl.getContext());
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 110, this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCompletionListener(this);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoPreparedListener(this);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnErrorListener(this);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnInfoListener(this);
-      this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView.addViewCallBack(new alzz(this));
-      return (View)this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("CmGameGdtVideoPlayer", 1, "getVideoContainer", localException);
-        this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView = null;
-        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = null;
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
-    {
-      QLog.i("CmGameGdtVideoPlayer", 1, "[resume]");
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
-      this.jdField_a_of_type_Int = 3;
-      c();
-    }
-  }
-  
-  public void a(amai paramamai)
-  {
-    a(paramamai, 1000L);
-  }
-  
-  public void a(amai paramamai, long paramLong)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramamai))) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramamai);
-    }
-    this.b = paramLong;
-  }
-  
-  public void a(Context paramContext, AppInterface paramAppInterface) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
-    {
-      QLog.i("CmGameGdtVideoPlayer", 1, "[startPlay] url = " + paramString1);
-      paramString1 = SuperPlayerFactory.createVideoInfoForUrl(paramString1, 104, null);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.openMediaPlayer(BaseApplicationImpl.getContext(), paramString1, paramInt);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
-    {
-      QLog.i("CmGameGdtVideoPlayer", 1, "setMute " + paramBoolean);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOutputMute(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isOutputMute();
-    }
-    return false;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getVideoHeight();
-    }
-    return 0;
-  }
-  
-  public long b()
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs();
-    }
-    return 0L;
-  }
-  
-  public void b()
-  {
-    QLog.i("CmGameGdtVideoPlayer", 1, "[release]");
-    d();
-    ThreadManager.excute(new CmGameGdtVideoPlayer.3(this), 192, null, true);
-  }
-  
-  public void b(amai paramamai)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramamai))) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramamai);
-    }
-  }
-  
-  public boolean b()
-  {
-    if ((this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying()))
-    {
-      QLog.i("CmGameGdtVideoPlayer", 1, "[pause]");
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.pause();
-      d();
-      this.jdField_a_of_type_Int = 4;
-      return true;
-    }
-    return false;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public boolean c()
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying();
-    }
-    return false;
-  }
-  
-  public boolean d()
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPausing();
-    }
-    return false;
-  }
-  
-  public void onCompletion(ISuperPlayer paramISuperPlayer)
-  {
-    QLog.i("CmGameGdtVideoPlayer", 1, "[onCompletion]");
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 5;
-    paramISuperPlayer = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (paramISuperPlayer.hasNext())
-    {
-      amai localamai = (amai)paramISuperPlayer.next();
-      if (localamai != null) {
-        localamai.g();
-      }
-    }
-  }
-  
-  public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    QLog.i("CmGameGdtVideoPlayer", 1, "[onError]extra model = " + paramInt1 + ", errorType = " + paramInt2 + ", errorCode = " + paramInt3 + ", detailInfo = " + paramString);
-    paramISuperPlayer = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (paramISuperPlayer.hasNext())
-    {
-      amai localamai = (amai)paramISuperPlayer.next();
-      if (localamai != null) {
-        localamai.a(paramInt1, paramInt2, paramInt2, paramString);
-      }
-    }
-    d();
-    return false;
-  }
-  
-  public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
-  {
-    QLog.i("CmGameGdtVideoPlayer", 1, "what:" + paramInt);
-    return false;
-  }
-  
-  public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
-  {
-    QLog.i("CmGameGdtVideoPlayer", 1, "[onVideoPrepared]");
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Boolean = false;
-    paramISuperPlayer = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (paramISuperPlayer.hasNext())
-    {
-      amai localamai = (amai)paramISuperPlayer.next();
-      if (localamai != null) {
-        localamai.e();
-      }
+      paramString.b(paramVSBaseRequest, localStCommonExt, paramBoolean);
+      return;
     }
   }
 }

@@ -29,9 +29,9 @@ public class GeneralSharePagerView
   
   private void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559535, this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramContext.findViewById(2131365106));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131370080));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559568, this);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramContext.findViewById(2131365191));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131370252));
   }
   
   public void a(View paramView)

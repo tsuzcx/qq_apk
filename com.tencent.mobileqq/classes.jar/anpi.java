@@ -1,45 +1,23 @@
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.theme.SkinnableBitmapDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.lang.ref.WeakReference;
 
 public class anpi
-  extends anpp
 {
-  protected anpi(QQAppInterface paramQQAppInterface, anpt paramanpt)
-  {
-    super(paramQQAppInterface, paramanpt);
-  }
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<View.OnClickListener> jdField_a_of_type_JavaLangRefWeakReference;
+  int b;
   
-  public int a(QQMessageFacade.Message paramMessage)
+  public anpi(View paramView, int paramInt1, String paramString, int paramInt2, View.OnClickListener paramOnClickListener)
   {
-    return 526;
-  }
-  
-  public anpt a(QQMessageFacade.Message paramMessage)
-  {
-    Object localObject = a() + ": ";
-    this.a.b((String)localObject);
-    this.a.d(c());
-    a();
-    a(paramMessage, this.a);
-    paramMessage = bfvo.e();
-    localObject = BaseApplicationImpl.getContext().getResources().getDrawable(2130842709);
-    if ((localObject instanceof BitmapDrawable)) {
-      paramMessage = ((BitmapDrawable)localObject).getBitmap();
-    }
-    for (;;)
-    {
-      localObject = pay.d(BaseApplicationImpl.getContext());
-      this.a.a(paramMessage);
-      this.a.c((String)localObject);
-      return this.a;
-      if ((localObject instanceof SkinnableBitmapDrawable)) {
-        paramMessage = ((SkinnableBitmapDrawable)localObject).getBitmap();
-      }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+    if (paramOnClickListener != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnClickListener);
     }
   }
 }

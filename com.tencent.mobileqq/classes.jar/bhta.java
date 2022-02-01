@@ -1,35 +1,80 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.content.Context;
+import android.graphics.Typeface;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.config.business.qvip.QVipFeatureSwitchConfig;
+import com.tencent.mobileqq.vas.troopnick.TroopNickResDrawable;
+import com.tencent.mobileqq.widget.ColorClearableEditText;
+import com.tencent.mobileqq.widget.ColorNickTextView;
+import mqq.app.AppRuntime;
 
 public class bhta
-  implements bhtn
 {
-  public bhta(OpenAuthorityFragment paramOpenAuthorityFragment) {}
-  
-  public void a()
+  private static void a(TextView paramTextView)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), Login.class);
-    localIntent.putExtra("key_req_src", 1);
-    localIntent.putExtra("is_first_login", true);
-    localIntent.putExtra("appid", OpenAuthorityFragment.a(this.a));
-    OpenAuthorityFragment.a(this.a, null);
-    this.a.getActivity().startActivityForResult(localIntent, 1);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.a.a(paramString, paramBoolean);
-  }
-  
-  public void b()
-  {
-    this.a.c(OpenAuthorityFragment.b(this.a));
-    if (OpenAuthorityFragment.a(this.a) != null) {
-      OpenAuthorityFragment.a(this.a).b();
+    if ((paramTextView instanceof ColorNickTextView)) {
+      ((ColorNickTextView)paramTextView).b();
     }
+    while (!(paramTextView instanceof ColorClearableEditText)) {
+      return;
+    }
+    ((ColorClearableEditText)paramTextView).b();
+  }
+  
+  private static void a(TextView paramTextView, int paramInt1, int paramInt2)
+  {
+    Object localObject = bhsz.a(paramInt1, paramInt2);
+    if (localObject != null)
+    {
+      paramTextView.setTypeface((Typeface)localObject);
+      return;
+    }
+    localObject = BaseApplicationImpl.getApplication().getRuntime();
+    bhpm localbhpm = new bhpm((AppRuntime)localObject, paramInt1);
+    localbhpm.a(new bhsz(paramTextView, localbhpm, (AppRuntime)localObject, paramInt2));
+  }
+  
+  public static void a(TextView paramTextView, Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    if (paramTextView == null) {
+      return;
+    }
+    if ((arkg.a() != null) && (!arkg.a().isTroopNickEnable()))
+    {
+      b(paramTextView);
+      return;
+    }
+    if ((paramInt <= 0) || (paramContext == null))
+    {
+      b(paramTextView);
+      return;
+    }
+    Object localObject = paramTextView.getBackground();
+    if (((localObject instanceof TroopNickResDrawable)) && (((TroopNickResDrawable)localObject).a() == paramInt)) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        paramContext = new TroopNickResDrawable(paramContext, paramInt);
+        localObject = new bhsx(paramContext);
+        if (paramBoolean) {
+          ((bhsx)localObject).a(true);
+        }
+        paramContext.a((bhpt)localObject);
+        paramTextView.setBackgroundDrawable(paramContext);
+        paramContext.a(new bhtb(paramTextView));
+        a(paramTextView, ((bhsx)localObject).a, ((bhsx)localObject).b);
+      }
+      a(paramTextView);
+      return;
+    }
+  }
+  
+  private static void b(TextView paramTextView)
+  {
+    paramTextView.setTypeface(Typeface.DEFAULT);
+    paramTextView.setBackgroundDrawable(null);
+    paramTextView.setPadding(0, 0, 0, 0);
   }
 }
 

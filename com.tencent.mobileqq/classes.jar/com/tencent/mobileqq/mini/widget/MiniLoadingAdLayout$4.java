@@ -1,26 +1,33 @@
 package com.tencent.mobileqq.mini.widget;
 
-import android.os.Handler;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 class MiniLoadingAdLayout$4
   implements Runnable
 {
-  MiniLoadingAdLayout$4(MiniLoadingAdLayout paramMiniLoadingAdLayout, MiniLoadingAdLayout.OnDismissListener paramOnDismissListener) {}
+  MiniLoadingAdLayout$4(MiniLoadingAdLayout paramMiniLoadingAdLayout, String paramString) {}
   
   public void run()
   {
-    MiniLoadingAdLayout.access$310(this.this$0);
-    if (MiniLoadingAdLayout.access$300(this.this$0) == MiniLoadingAdLayout.access$400(this.this$0)) {
-      MiniLoadingAdLayout.access$500(this.this$0).setVisibility(0);
-    }
-    if (MiniLoadingAdLayout.access$300(this.this$0) > 0)
+    try
     {
-      MiniLoadingAdLayout.access$600(this.this$0).setText(MiniLoadingAdLayout.access$300(this.this$0) + "秒");
-      MiniLoadingAdLayout.access$700(this.this$0).postDelayed(this, 1000L);
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
+      localHttpURLConnection.setRequestMethod("GET");
+      localHttpURLConnection.setConnectTimeout(10000);
+      localHttpURLConnection.setReadTimeout(10000);
+      localHttpURLConnection.setUseCaches(false);
+      localHttpURLConnection.setInstanceFollowRedirects(true);
+      localHttpURLConnection.connect();
+      int i = localHttpURLConnection.getResponseCode();
+      QLog.i("MiniLoadingAdLayout", 1, "reportToGdt LoadingAd rspCode" + i);
       return;
     }
-    this.this$0.dismiss(false, this.val$onDismissListener);
+    catch (Throwable localThrowable)
+    {
+      QLog.i("MiniLoadingAdLayout", 1, "reportToGdt LoadingAd error, url = " + this.val$reportUrl, localThrowable);
+    }
   }
 }
 

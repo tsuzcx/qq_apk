@@ -1,7 +1,20 @@
-class avmc
-  extends anav
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.widget.XPanelContainer;
+
+public class avmc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  avmc(avma paramavma) {}
+  public avmc(HotPicMainPanel paramHotPicMainPanel) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.a.a != null) {
+      this.a.a.requestLayout();
+    }
+  }
 }
 
 

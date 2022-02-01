@@ -1,24 +1,21 @@
-import com.tencent.open.base.MD5Utils;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.gamecenter.data.GameNoticeCenter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-class avbz
+public class avbz
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public avbz(GameNoticeCenter paramGameNoticeCenter, String paramString) {}
   
-  public avbz(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = MD5Utils.toMD5(paramString2);
-    this.d = avbv.a(paramString1);
-  }
-  
-  public String toString()
-  {
-    return "MusicReqInfo{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.b + '\'' + ", md5='" + this.c + '\'' + ", status=" + this.jdField_a_of_type_Int + ", cachePath='" + this.d + '\'' + '}';
+    Message localMessage = GameNoticeCenter.access$200(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataGameNoticeCenter).obtainMessage(2);
+    localMessage.obj = this.jdField_a_of_type_JavaLangString;
+    localMessage.sendToTarget();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

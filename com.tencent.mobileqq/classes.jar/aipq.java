@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aipq
-  extends amwl
+  implements MediaPlayer.OnCompletionListener
 {
-  private aipq(FriendFragment paramFriendFragment) {}
+  public aipq(BlessActivity paramBlessActivity) {}
   
-  protected void onUpdateFriendsList()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (FriendFragment.b(this.a)) {
-      FriendFragment.a(this.a, 1400L, true);
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onCompletion");
     }
+    BlessActivity.a(this.a, true);
+    bdla.b(this.a.app, "CliOper", "", "", "0X800632E", "0X800632E", 0, 0, "", "", "", "");
   }
 }
 

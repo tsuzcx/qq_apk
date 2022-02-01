@@ -1,28 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.widget.PastablePwdEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class akpm
-  implements View.OnClickListener
+class akpm
+  implements DialogInterface.OnClickListener
 {
-  public akpm(LoginView paramLoginView) {}
+  akpm(akpk paramakpk) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.b != null) && (this.a.b.isShown())) {
-      this.a.b.setVisibility(8);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("");
-    LoginView.c(this.a);
-    libsafeedit.clearPassBuffer();
-    LoginView.d(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    akpj.a(this.a.a).dismiss();
   }
 }
 

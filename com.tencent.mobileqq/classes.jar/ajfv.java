@@ -1,33 +1,22 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.4.1;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 
 public class ajfv
-  extends axkw
+  implements ajgu
 {
-  ajfv(ajey paramajey) {}
+  public ajfv(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  protected void onGetQZoneFeedCountFin(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void a(Object... paramVarArgs)
   {
-    if ((paramBoolean1) && (paramBoolean2))
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
-      }
-      if ((this.a.a != null) && (this.a.a.app != null)) {}
+      ajeg localajeg = (ajeg)paramVarArgs[0];
+      String str1 = (String)paramVarArgs[1];
+      String str2 = (String)paramVarArgs[2];
+      paramVarArgs = (String)paramVarArgs[3];
+      TroopRequestActivity.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1, localajeg.a, this.a.jdField_a_of_type_Ajfr);
+      bhbu.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str1, str2, paramVarArgs, "0" });
     }
-    else
-    {
-      return;
-    }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    if ((GuardManager.a != null) && (!GuardManager.a.a())) {
-      ThreadManager.post(new MainAssistObserver.4.1(this, localQQAppInterface), 8, null, false);
-    }
-    this.a.g();
   }
 }
 

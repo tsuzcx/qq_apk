@@ -1,10 +1,17 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.ShortcutUtils.4;
 
-public abstract interface bkrl
-  extends IInterface
+public class bkrl
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public bkrl(ShortcutUtils.4 param4) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    QLog.e("Shortcut", 2, "cancel");
+  }
 }
 
 

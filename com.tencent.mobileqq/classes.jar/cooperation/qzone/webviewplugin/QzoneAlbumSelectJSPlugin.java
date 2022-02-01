@@ -3,7 +3,7 @@ package cooperation.qzone.webviewplugin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bgve;
+import bifw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -20,26 +20,26 @@ public class QzoneAlbumSelectJSPlugin
   private static final String TAG = QzoneBlogJsPlugin.class.getSimpleName();
   private static String pickCallBack = "";
   
-  private void handleSelectAlbum(bgve parambgve, String[] paramArrayOfString)
+  private void handleSelectAlbum(bifw parambifw, String[] paramArrayOfString)
   {
     try
     {
       paramArrayOfString = new JSONObject(paramArrayOfString[0]);
       pickCallBack = paramArrayOfString.getString("callback");
-      parambgve = new Bundle();
-      parambgve.putInt("key_personal_album_enter_model", 0);
-      parambgve.putBoolean("key_pass_result_by_bundle", true);
-      parambgve.putString("key_accept_album_anonymity", paramArrayOfString.optString("acceptType"));
-      parambgve.putString("key_deny_delect_tips", paramArrayOfString.optString("denyTips"));
-      parambgve.putBoolean("key_can_new_album", false);
-      parambgve.putString("key_from_type", paramArrayOfString.optString("fromType"));
+      parambifw = new Bundle();
+      parambifw.putInt("key_personal_album_enter_model", 0);
+      parambifw.putBoolean("key_pass_result_by_bundle", true);
+      parambifw.putString("key_accept_album_anonymity", paramArrayOfString.optString("acceptType"));
+      parambifw.putString("key_deny_delect_tips", paramArrayOfString.optString("denyTips"));
+      parambifw.putBoolean("key_can_new_album", false);
+      parambifw.putString("key_from_type", paramArrayOfString.optString("fromType"));
       paramArrayOfString = QZoneHelper.UserInfo.getInstance();
       paramArrayOfString.qzone_uin = this.parentPlugin.mRuntime.a().getCurrentAccountUin();
-      parambgve.putBoolean("key_need_change_to_jpg", false);
-      QZoneHelper.forwardToPersonalAlbumSelect(this.parentPlugin.mRuntime.a(), paramArrayOfString, parambgve, QZoneHelper.generateRequestCode(this.parentPlugin, this.parentPlugin.mRuntime, 7));
+      parambifw.putBoolean("key_need_change_to_jpg", false);
+      QZoneHelper.forwardToPersonalAlbumSelect(this.parentPlugin.mRuntime.a(), paramArrayOfString, parambifw, QZoneHelper.generateRequestCode(this.parentPlugin, this.parentPlugin.mRuntime, 7));
       return;
     }
-    catch (Exception parambgve)
+    catch (Exception parambifw)
     {
       while (!QLog.isColorLevel()) {}
       QLog.w(TAG, 2, "handlePickQzoneAlbum,decode param error");

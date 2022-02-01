@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import androidx.annotation.NonNull;
+import com.tencent.qqlive.module.videoreport.dtreport.video.playback.ReportThumbPlayer;
 import com.tencent.thumbplayer.adapter.ITPPlayerAdapter;
 import com.tencent.thumbplayer.adapter.TPPlayerAdapter;
 import com.tencent.thumbplayer.adapter.player.TPUrlDataSource;
@@ -470,7 +471,9 @@ public class TPPlayer
   
   public ITPBusinessReportManager getReportManager()
   {
-    return this.mReportManager;
+    TPReportManager localTPReportManager = this.mReportManager;
+    ReportThumbPlayer.getInstance().getReportManager(this, localTPReportManager);
+    return localTPReportManager;
   }
   
   public TPTrackInfo[] getTrackInfo()
@@ -1207,6 +1210,7 @@ public class TPPlayer
   
   public void pause()
   {
+    ReportThumbPlayer.getInstance().pause(this);
     TPLogUtil.i(this.TAG, LOG_API_CALL_PREFIX + "pause");
     this.mPlayerInternal.pause();
   }
@@ -1225,6 +1229,7 @@ public class TPPlayer
   
   public void release()
   {
+    ReportThumbPlayer.getInstance().release(this);
     TPLogUtil.i(this.TAG, LOG_API_CALL_PREFIX + "release");
     this.mPlayerInternal.release();
     this.mTPPluginManager.release();
@@ -1232,6 +1237,7 @@ public class TPPlayer
   
   public void reset()
   {
+    ReportThumbPlayer.getInstance().reset(this);
     TPLogUtil.i(this.TAG, LOG_API_CALL_PREFIX + "reset");
     this.mPlayerInternal.reset();
   }
@@ -1451,6 +1457,7 @@ public class TPPlayer
   
   public void setPlayerOptionalParam(TPOptionalParam paramTPOptionalParam)
   {
+    ReportThumbPlayer.getInstance().setPlayerOptionalParam(this, paramTPOptionalParam);
     this.mPlayerInternal.setPlayerOptionalParam(paramTPOptionalParam);
   }
   
@@ -1473,18 +1480,21 @@ public class TPPlayer
   
   public void start()
   {
+    ReportThumbPlayer.getInstance().start(this);
     TPLogUtil.i(this.TAG, LOG_API_CALL_PREFIX + "start");
     this.mPlayerInternal.start();
   }
   
   public void stop()
   {
+    ReportThumbPlayer.getInstance().stop(this);
     TPLogUtil.i(this.TAG, LOG_API_CALL_PREFIX + "stop");
     this.mPlayerInternal.stop();
   }
   
   public void stopAsync()
   {
+    ReportThumbPlayer.getInstance().stop(this);
     TPLogUtil.i(this.TAG, LOG_API_CALL_PREFIX + "stopAsync");
     this.mPlayerInternal.stopAsync();
   }

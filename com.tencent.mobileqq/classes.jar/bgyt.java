@@ -1,73 +1,72 @@
-import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneExternalRequest;
-import wns_proxy.HttpReq;
-import wns_proxy.HttpRsp;
-
 public class bgyt
-  extends QzoneExternalRequest
 {
-  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  public bgyt() {}
-  
-  public bgyt(String paramString1, long paramLong, HttpReq paramHttpReq, String paramString2)
+  public static int a(byte paramByte)
   {
-    super.setRefer(paramString2);
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.jdField_a_of_type_ComQqTafJceJceStruct = paramHttpReq;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.needCompress = false;
-    this.b = a(paramString1);
+    return paramByte & 0xFF;
   }
   
-  public static String a(String paramString)
+  public static int a(byte[] paramArrayOfByte)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.w("WebSoRequest", 1, "cmd is EMPTY OR NULL !!!");
-    }
-    do
+    int i = 0;
+    int j = 0;
+    while (i < 4)
     {
-      return null;
-      paramString = paramString.split("\\.");
-    } while ((paramString == null) || (paramString.length <= 0));
-    return paramString[(paramString.length - 1)];
+      j = j << 8 | a(paramArrayOfByte[i]);
+      i += 1;
+    }
+    return j;
   }
   
-  public static HttpRsp a(byte[] paramArrayOfByte, String paramString)
+  public static int a(byte[] paramArrayOfByte, int paramInt)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    try
+    int j = 0;
+    int i = paramInt;
+    while (i < paramInt + 4)
     {
-      paramArrayOfByte = (HttpRsp)decode(paramArrayOfByte, paramString);
-      return paramArrayOfByte;
+      j = j << 8 | a(paramArrayOfByte[i]);
+      i += 1;
     }
-    catch (Throwable paramArrayOfByte)
+    return j;
+  }
+  
+  public static short a(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    short s = 0;
+    while (i < 2)
     {
-      QLog.e("WebSoRequest", 1, "onResponse error:", paramArrayOfByte);
+      s = (short)((short)(s << 8) | a(paramArrayOfByte[i]));
+      i += 1;
     }
-    return null;
+    return s;
   }
   
-  public String getCmdString()
+  public static byte[] a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    byte[] arrayOfByte = new byte[4];
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    while (paramInt < 4)
+    {
+      arrayOfByte[paramInt] = Integer.valueOf(i >>> 24).byteValue();
+      i <<= 8;
+      paramInt += 1;
+    }
+    return arrayOfByte;
   }
   
-  public JceStruct getReq()
+  public static byte[] a(short paramShort)
   {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+    return new byte[] { (byte)(paramShort >>> 8), (byte)paramShort };
   }
   
-  public String uniKey()
+  public static byte[] b(int paramInt)
   {
-    return this.b;
+    int i = (byte)(paramInt & 0xFF);
+    int j = (byte)((0xFF00 & paramInt) >> 8);
+    int k = (byte)((0xFF0000 & paramInt) >> 16);
+    return new byte[] { (byte)((0xFF000000 & paramInt) >> 24), k, j, i };
   }
 }
 

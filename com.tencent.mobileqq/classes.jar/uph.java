@@ -1,43 +1,18 @@
-import UserGrowth.stFeed;
-import UserGrowth.stSplitBlock;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.widget.XListView.DrawFinishedListener;
 
 public class uph
-  extends bjwy<stFeed>
+  implements XListView.DrawFinishedListener
 {
-  private TextView a;
+  public uph(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  private uph(ViewGroup paramViewGroup, ujh paramujh)
+  public void drawFinished()
   {
-    super(paramViewGroup, 2131560406);
-    b();
-  }
-  
-  public static uph a(ViewGroup paramViewGroup, ujh paramujh)
-  {
-    return new uph(paramViewGroup, paramujh);
-  }
-  
-  private void b()
-  {
-    this.a = ((TextView)a(2131381218));
-  }
-  
-  public void a()
-  {
-    uvm.a(2);
-  }
-  
-  public void a(stFeed paramstFeed)
-  {
-    if (paramstFeed == null) {}
-    do
+    if ((!this.a.c) && (this.a.d))
     {
-      return;
-      paramstFeed = paramstFeed.recommend_splitter;
-    } while (paramstFeed == null);
-    this.a.setText(paramstFeed.tips);
+      this.a.c = true;
+      uuq.a("SUBSCRIPT_FEEDS_COST", null);
+    }
   }
 }
 

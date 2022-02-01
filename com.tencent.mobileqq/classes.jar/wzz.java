@@ -1,21 +1,31 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.dispatch.Dispatcher;
+import android.text.TextUtils;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wzz
-  extends Job<Object, Object, Object>
+public class wzz
+  extends QQUIEventReceiver<wzy, wzt>
 {
-  wzz(wzy paramwzy, String paramString, vuc paramvuc)
+  public wzz(@NonNull wzy paramwzy)
   {
-    super(paramString);
+    super(paramwzy);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void a(@NonNull wzy paramwzy, @NonNull wzt paramwzt)
   {
-    vli.a().dispatch(this.jdField_a_of_type_Vuc);
-    return null;
+    if (TextUtils.equals("SendVideoToFriendHelper", paramwzt.jdField_a_of_type_JavaLangString)) {}
+    switch (paramwzt.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    }
+    ykq.a(this.TAG, "download video or picture finish. videoLocalPath = %s.", paramwzt.b);
+    wzy.a(paramwzy, false);
+    paramwzy.a(paramwzy.jdField_a_of_type_AndroidOsBundle, paramwzy.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramwzy.jdField_a_of_type_JavaLangString, paramwzt.b);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wzt.class;
   }
 }
 

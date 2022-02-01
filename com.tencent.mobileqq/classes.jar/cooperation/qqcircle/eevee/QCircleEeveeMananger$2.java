@@ -15,17 +15,17 @@ class QCircleEeveeMananger$2
   
   public void onReceive(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudEeveeUndealmsg.FcUndealMsgsRsp paramFcUndealMsgsRsp)
   {
-    if (paramBoolean) {
+    if ((paramBoolean) && (QCircleEeveeMananger.access$000() != null)) {
       if (Looper.myLooper().equals(Looper.getMainLooper())) {
-        QCircleEeveeMananger.access$100(this.this$0).post(new QCircleEeveeMananger.2.1(this, paramFcUndealMsgsRsp));
+        QCircleEeveeMananger.access$200(this.this$0).post(new QCircleEeveeMananger.2.1(this, paramFcUndealMsgsRsp));
       }
     }
     do
     {
       return;
-      QCircleEeveeMananger.access$000(this.this$0, paramFcUndealMsgsRsp, this.val$visitScene);
+      QCircleEeveeMananger.access$100(this.this$0, paramFcUndealMsgsRsp, this.val$visitScene);
       return;
-      QLog.e("QCircleEeveeMananger", 1, "onReceive retCode= " + paramLong + "errMsg= " + paramString);
+      QLog.e("QCircleEeveeMananger", 1, "onReceive retCode= " + paramLong + "errMsg= " + paramString + " mInstance =" + QCircleEeveeMananger.access$000());
     } while (this.val$visitScene != 1000);
     QCircleLpReportDc010001.report(500, 15, 2, null, null, null, this.val$msgId, this.val$visitScene);
   }

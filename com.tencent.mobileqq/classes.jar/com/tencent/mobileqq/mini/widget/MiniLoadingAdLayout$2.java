@@ -2,32 +2,19 @@ package com.tencent.mobileqq.mini.widget;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.AppBrandRuntimeContainer;
-import com.tencent.mobileqq.minigame.ui.GameActivity;
+import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class MiniLoadingAdLayout$2
   implements View.OnClickListener
 {
-  MiniLoadingAdLayout$2(MiniLoadingAdLayout paramMiniLoadingAdLayout, boolean paramBoolean) {}
+  MiniLoadingAdLayout$2(MiniLoadingAdLayout paramMiniLoadingAdLayout, MiniLoadingAdLayout.OnDismissListener paramOnDismissListener) {}
   
   public void onClick(View paramView)
   {
-    if (this.val$isGame) {
-      if ((this.this$0.getContext() instanceof GameActivity)) {
-        ((GameActivity)this.this$0.getContext()).doOnBackPressed();
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      AppBrandRuntime localAppBrandRuntime = AppBrandRuntimeContainer.g().getCurrentAppBrandRuntime();
-      if (localAppBrandRuntime != null) {
-        localAppBrandRuntime.moveAppBrandToBack();
-      }
-    }
+    MiniLoadingAdLayout.report(MiniLoadingAdLayout.access$400(this.this$0, MiniLoadingAdLayout.access$200(this.this$0), MiniLoadingAdLayout.access$000(this.this$0).getUrlForClick(), 9));
+    this.this$0.dismiss(true, this.val$onDismissListener);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

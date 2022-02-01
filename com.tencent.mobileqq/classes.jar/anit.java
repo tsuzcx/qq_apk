@@ -1,215 +1,65 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.GroupActionResp;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import friendlist.AddGroupResp;
-import friendlist.DelGroupResp;
-import friendlist.MovGroupMemResp;
-import friendlist.ReSortGroupResp;
-import friendlist.RenameGroupResp;
-import friendlist.SetGroupResp;
-import java.nio.ByteBuffer;
-
 public class anit
-  extends anio
 {
-  public anit(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
+  private int jdField_a_of_type_Int;
+  private anjf jdField_a_of_type_Anjf;
+  private anjg jdField_a_of_type_Anjg;
+  private anji jdField_a_of_type_Anji;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
+  
+  private anit(int paramInt1, String paramString, int paramInt2, anji paramanji, anjg paramanjg, anjf paramanjf)
   {
-    super(paramQQAppInterface, paramFriendListHandler);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Anji = paramanji;
+    this.jdField_a_of_type_Anjg = paramanjg;
+    this.jdField_a_of_type_Anjf = paramanjf;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, MovGroupMemResp paramMovGroupMemResp)
+  public int a()
   {
-    paramToServiceMsg = paramToServiceMsg.extraData;
-    String str = paramToServiceMsg.getString("uin");
-    byte b1 = paramToServiceMsg.getByte("group_id");
-    byte b2 = paramToServiceMsg.getByte("away_group_id");
-    if (paramMovGroupMemResp.result == 0)
-    {
-      ((amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(str, b1);
-      a(9, true, new Object[] { str, Byte.valueOf(b1), Byte.valueOf(b2) });
-      return;
-    }
-    a(9, false, null);
+    return this.jdField_a_of_type_Int;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, SetGroupResp paramSetGroupResp)
+  public anjf a()
   {
-    boolean bool;
-    int i;
-    if (paramSetGroupResp.result == 0)
-    {
-      bool = true;
-      i = paramToServiceMsg.extraData.getInt("set_type", -1);
-      if (i == paramSetGroupResp.reqtype) {
-        break label671;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleSetGroupResp | unmatched reqtype, local = " + i + ", remote = " + paramSetGroupResp.reqtype);
-      }
-      bool = false;
-    }
-    label671:
-    for (;;)
-    {
-      Object localObject1 = ByteBuffer.wrap(paramSetGroupResp.vecBody);
-      amsw localamsw = (amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-      Object localObject2;
-      switch (i)
-      {
-      default: 
-        return;
-        bool = false;
-        break;
-      case 0: 
-        localObject2 = new AddGroupResp();
-        if (bool)
-        {
-          ((AddGroupResp)localObject2).dwToUin = ((ByteBuffer)localObject1).getInt();
-          ((AddGroupResp)localObject2).dwSequence = ((ByteBuffer)localObject1).getInt();
-          ((AddGroupResp)localObject2).cGroupId = ((ByteBuffer)localObject1).get();
-          ((AddGroupResp)localObject2).cSortId = ((ByteBuffer)localObject1).get();
-          localObject1 = localamsw.a(((AddGroupResp)localObject2).cGroupId + "");
-          if (localObject1 == null) {
-            break label295;
-          }
-          ((Groups)localObject1).group_id = ((AddGroupResp)localObject2).cGroupId;
-          ((Groups)localObject1).seqid = ((AddGroupResp)localObject2).cSortId;
-          ((Groups)localObject1).group_name = paramToServiceMsg.extraData.getString("group_name");
-        }
-        for (paramToServiceMsg = (ToServiceMsg)localObject1;; paramToServiceMsg = (ToServiceMsg)localObject1)
-        {
-          localamsw.a(paramToServiceMsg);
-          a(18, bool, new GroupActionResp(paramSetGroupResp.result, paramSetGroupResp.ErrorString, (AddGroupResp)localObject2));
-          return;
-          localObject1 = new Groups();
-          ((Groups)localObject1).group_id = ((AddGroupResp)localObject2).cGroupId;
-          ((Groups)localObject1).seqid = ((AddGroupResp)localObject2).cSortId;
-          ((Groups)localObject1).group_name = paramToServiceMsg.extraData.getString("group_name");
-        }
-      case 1: 
-        localObject2 = new RenameGroupResp();
-        if (bool)
-        {
-          ((RenameGroupResp)localObject2).dwToUin = ((ByteBuffer)localObject1).getInt();
-          ((RenameGroupResp)localObject2).dwSequence = ((ByteBuffer)localObject1).getInt();
-          i = ((ByteBuffer)localObject1).get();
-          ((RenameGroupResp)localObject2).cLen = ((ByteBuffer)localObject1).get();
-          paramToServiceMsg = new byte[((RenameGroupResp)localObject2).cLen];
-          ((ByteBuffer)localObject1).get(paramToServiceMsg, 0, ((RenameGroupResp)localObject2).cLen);
-          ((RenameGroupResp)localObject2).sGroupName = new String(paramToServiceMsg);
-          paramToServiceMsg = localamsw.a(String.valueOf(i));
-          if (paramToServiceMsg == null) {
-            break label485;
-          }
-        }
-        for (paramToServiceMsg.group_name = ((RenameGroupResp)localObject2).sGroupName;; paramToServiceMsg.group_name = ((RenameGroupResp)localObject2).sGroupName)
-        {
-          localamsw.a(paramToServiceMsg);
-          a(19, bool, new GroupActionResp(paramSetGroupResp.result, paramSetGroupResp.ErrorString, (RenameGroupResp)localObject2));
-          return;
-          paramToServiceMsg = new Groups();
-          paramToServiceMsg.group_id = ((int)((RenameGroupResp)localObject2).dwSequence);
-        }
-      case 2: 
-        paramToServiceMsg = new DelGroupResp();
-        if (bool)
-        {
-          paramToServiceMsg.dwToUin = ((ByteBuffer)localObject1).getInt();
-          paramToServiceMsg.dwSequence = ((ByteBuffer)localObject1).getInt();
-          paramToServiceMsg.cGroupid = ((ByteBuffer)localObject1).get();
-        }
-        paramSetGroupResp = new GroupActionResp(paramSetGroupResp.result, paramSetGroupResp.ErrorString, paramToServiceMsg);
-        this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.handleDelGroupResp(paramToServiceMsg, bool, paramSetGroupResp);
-        return;
-      case 3: 
-        label295:
-        label485:
-        localObject2 = new ReSortGroupResp();
-        if (bool)
-        {
-          ((ReSortGroupResp)localObject2).dwToUin = ((ByteBuffer)localObject1).getInt();
-          ((ReSortGroupResp)localObject2).dwSequence = ((ByteBuffer)localObject1).getInt();
-          localamsw.a(paramToServiceMsg.extraData.getByteArray("group_id_list"), paramToServiceMsg.extraData.getByteArray("sort_id_list"));
-        }
-        a(22, bool, new GroupActionResp(paramSetGroupResp.result, paramSetGroupResp.ErrorString, (ReSortGroupResp)localObject2));
-        return;
-      }
-    }
+    return this.jdField_a_of_type_Anjf;
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public anjg a()
   {
-    boolean bool = true;
-    Object localObject = paramFromServiceMsg.getServiceCmd();
-    if ("friendlist.MovGroupMemReq".equals(localObject))
-    {
-      i = paramToServiceMsg.extraData.getByte("move_fri_type");
-      if (i == 0) {
-        if (paramObject != null) {
-          a(paramToServiceMsg, (MovGroupMemResp)paramObject);
-        }
-      }
-    }
-    while (!"friendlist.SetGroupReq".equals(localObject))
-    {
-      int i;
-      do
-      {
-        return;
-        a(9, false, null);
-        return;
-      } while ((i != 1) || (paramObject == null));
-      paramToServiceMsg = (MovGroupMemResp)paramObject;
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("onSetGroupCmd :").append(paramToServiceMsg.extraData.getInt("set_type", -1000)).append(", ").append(paramFromServiceMsg.isSuccess()).append(", ");
-      if (paramObject == null) {
-        break label182;
-      }
-    }
-    for (;;)
-    {
-      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, bool);
-      if (!paramFromServiceMsg.isSuccess()) {
-        break label188;
-      }
-      paramFromServiceMsg = (SetGroupResp)paramObject;
-      if (paramFromServiceMsg == null) {
-        break;
-      }
-      a(paramToServiceMsg, paramFromServiceMsg);
-      return;
-      label182:
-      bool = false;
-    }
-    label188:
-    switch (paramToServiceMsg.extraData.getInt("set_type", -1))
-    {
-    default: 
-      return;
-    case 0: 
-      a(18, false, null);
-      return;
-    case 1: 
-      a(19, false, null);
-      return;
-    case 2: 
-      a(21, false, null);
-      return;
-    }
-    a(22, false, null);
+    return this.jdField_a_of_type_Anjg;
   }
   
-  public boolean a(String paramString)
+  public anji a()
   {
-    return ("friendlist.MovGroupMemReq".equals(paramString)) || ("friendlist.SetGroupReq".equals(paramString));
+    return this.jdField_a_of_type_Anji;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String a(int paramInt)
+  {
+    return this.jdField_a_of_type_Anjf.a(paramInt);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_Anjf.a(paramInt);
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return this.jdField_a_of_type_Anjf.b(paramInt);
   }
 }
 

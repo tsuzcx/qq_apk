@@ -1,18 +1,19 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ahgz;
-import amtp;
+import aibs;
+import anwd;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class HotChatPie$9
   implements Runnable
 {
-  public HotChatPie$9(ahgz paramahgz) {}
+  public HotChatPie$9(aibs paramaibs) {}
   
   public void run()
   {
-    ((amtp)this.this$0.app.getBusinessHandler(35)).a(this.this$0.app.getLongAccountUin(), this.this$0.sessionInfo.curFriendUin);
+    ((anwd)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER)).a(this.this$0.app.getLongAccountUin(), this.this$0.sessionInfo.curFriendUin);
   }
 }
 

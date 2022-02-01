@@ -1,98 +1,81 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.applets.data.AppletItem;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class nzp
-  extends WebViewClient
+  extends apas
 {
-  protected WebViewPluginEngine a;
+  public nzp(EqqAccountDetailActivity paramEqqAccountDetailActivity, oji paramoji, int paramInt1, int paramInt2) {}
   
-  public nzp(WebViewPluginEngine paramWebViewPluginEngine)
+  public int a()
   {
-    this.a = paramWebViewPluginEngine;
+    return 7;
   }
   
-  public void onLoadResource(WebView paramWebView, String paramString)
+  public void a(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WEBVIEWCHECK", 2, "CustomWebView loadUrl url:" + paramString);
-    }
-    super.onLoadResource(paramWebView, paramString);
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    if (this.a != null) {
-      this.a.a(paramString, 8589934594L, null);
-    }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    if (this.a != null) {
-      this.a.a(paramString, 8589934593L, null);
-    }
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WEBVIEWCHECK", 2, "CustomWebViewClient onReceivedError errorCode:" + paramInt + ", description:" + paramString1 + ", failingUrl:" + paramString2);
-    }
-    if (this.a != null) {
-      this.a.a(paramString2, 8589934595L, paramInt);
-    }
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
-  {
-    if (this.a != null) {
-      try
-      {
-        paramWebView = (WebResourceResponse)this.a.a(paramString, 8L);
-        return paramWebView;
-      }
-      catch (Exception paramWebView)
-      {
-        QLog.e("WEBVIEWCHECK", 1, "shouldInterceptRequest error:" + paramWebView.toString());
-      }
-    }
-    return null;
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((this.a != null) && (this.a.a(paramString))) {
-      bool1 = true;
-    }
-    do
+    if ((paramObject instanceof ArrayList))
     {
-      do
+      paramObject = ((ArrayList)paramObject).iterator();
+      for (;;)
       {
-        do
+        if (paramObject.hasNext())
         {
-          return bool1;
-          bool1 = bool2;
-        } while (paramString == null);
-        if (paramString.startsWith("http")) {
-          break;
+          Object localObject = paramObject.next();
+          if (((localObject instanceof AppletItem)) && (((AppletItem)localObject).c().equals(EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))))
+          {
+            this.jdField_a_of_type_Oji.d = this.jdField_a_of_type_Int;
+            this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.p();
+            if (this.jdField_a_of_type_Oji.e == 6)
+            {
+              if (this.b != 1) {
+                break label236;
+              }
+              this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(1);
+              bdla.b(EqqAccountDetailActivity.q(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.q(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "mp_msg_ziliao_2", "share_click", 0, 0, "", "", "", "");
+              bdla.b(EqqAccountDetailActivity.r(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.r(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8004F05", "0X8004F05", 0, 0, "", "", "", "");
+            }
+          }
         }
-        bool1 = bool2;
-      } while (!paramString.startsWith("data:"));
-      bool1 = bool2;
-    } while (paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"));
-    CustomWebView.addContextLog(npn.b(paramString, new String[0]));
-    return false;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, String.valueOf(this.b));
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.g();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "状态切换成功");
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Oji);
+      return;
+      label236:
+      bdla.b(EqqAccountDetailActivity.s(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.s(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8004F07", "0X8004F07", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "success:" + paramBoolean);
+    }
+    EqqAccountDetailActivity.e(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
+  }
+  
+  public void b(Object paramObject)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.d(2131694983);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    EqqAccountDetailActivity.e(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
+    if (EqqAccountDetailActivity.f(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity) == 0) {
+      EqqAccountDetailActivity.f(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
+    }
   }
 }
 

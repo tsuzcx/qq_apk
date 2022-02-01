@@ -1,26 +1,21 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
 class agrm
-  implements View.OnClickListener
+  implements bkzq
 {
-  agrm(agrl paramagrl) {}
+  agrm(agrl paramagrl, MessageForDeviceFile paramMessageForDeviceFile, bkzi parambkzi) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    agrq localagrq = (agrq)AIOUtils.getHolder(paramView);
-    if (paramView == localagrq.jdField_a_of_type_AndroidWidgetFrameLayout) {
-      this.a.b(localagrq);
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_Bkzi.dismiss();
       return;
-      if (paramView == localagrq.jdField_a_of_type_AndroidWidgetRelativeLayout) {
-        this.a.a(localagrq);
-      }
+      this.jdField_a_of_type_Agrl.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
     }
   }
 }

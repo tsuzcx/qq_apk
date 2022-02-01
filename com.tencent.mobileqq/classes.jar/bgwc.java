@@ -1,25 +1,9 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.qphone.base.util.QLog;
-
-public final class bgwc
-  implements ThreadExcutor.IThreadListener
+public class bgwc
 {
-  long a = 0L;
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "Web_qqbrowser_pre_get_key, cost=" + (System.currentTimeMillis() - this.a));
-    }
-    this.a = 0L;
-  }
-  
-  public void onPreRun()
-  {
-    this.a = System.currentTimeMillis();
-  }
+  public int a = -1;
+  public long a;
+  public String a;
+  public String b;
 }
 
 

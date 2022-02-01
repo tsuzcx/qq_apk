@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class poh
-  implements View.OnClickListener
+class poh
+  extends qdb
 {
-  public poh(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment, ImageView paramImageView) {}
-  
-  public void onClick(View paramView)
+  poh(pob parampob, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyFragment.getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramString);
+  }
+  
+  public void a(qcu paramqcu)
+  {
+    paramqcu.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

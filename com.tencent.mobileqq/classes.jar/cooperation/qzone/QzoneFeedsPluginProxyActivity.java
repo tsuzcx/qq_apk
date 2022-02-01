@@ -1,7 +1,7 @@
 package cooperation.qzone;
 
 import Override;
-import acjp;
+import aczy;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -73,7 +73,7 @@ public class QzoneFeedsPluginProxyActivity
   {
     super.onResume();
     if (getIntent().getIntExtra("hc_code", 0) != 0) {
-      acjp.a().a(getIntent().getIntExtra("hc_code", 0), true);
+      aczy.a().a(getIntent().getIntExtra("hc_code", 0), true);
     }
   }
   

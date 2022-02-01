@@ -1,7 +1,20 @@
-import kotlin.Metadata;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyUgcVideoReportItem;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/FirstCommentStickyHandler$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class oxi {}
+public final class oxi
+  implements Parcelable.Creator<ReadInJoyUgcVideoReportItem>
+{
+  public ReadInJoyUgcVideoReportItem a(Parcel paramParcel)
+  {
+    return new ReadInJoyUgcVideoReportItem(paramParcel);
+  }
+  
+  public ReadInJoyUgcVideoReportItem[] a(int paramInt)
+  {
+    return new ReadInJoyUgcVideoReportItem[paramInt];
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

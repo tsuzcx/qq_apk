@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import bcdc;
+import bdjx;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class CrashUtils$1
@@ -10,12 +10,12 @@ public final class CrashUtils$1
   
   public void run()
   {
-    bcdc.a(this.a);
+    bdjx.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.CrashUtils.1
  * JD-Core Version:    0.7.0.1
  */

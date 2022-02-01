@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.voicetextpanel.ui;
 
-import agkl;
-import agkm;
+import ahdb;
+import ahdc;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -14,8 +14,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bgas;
-import bgat;
+import bhjj;
+import bhjk;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
 import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
@@ -24,12 +24,12 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class VoiceTextPttPlayView
   extends RelativeLayout
-  implements agkl, View.OnClickListener, bgat
+  implements ahdb, View.OnClickListener, bhjk
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bgas jdField_a_of_type_Bgas;
+  private bhjj jdField_a_of_type_Bhjj;
   private PttAudioWaveView jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -68,7 +68,7 @@ public class VoiceTextPttPlayView
   private int a(int paramInt1, int paramInt2, QQRecorder.RecorderParam paramRecorderParam)
   {
     int i = (int)AIOUtils.px2dp((int)this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()), getContext().getResources());
-    paramInt2 = agkm.a(getContext(), paramInt2, 0.0F, i, 5, false, false);
+    paramInt2 = ahdc.a(getContext(), paramInt2, 0.0F, i, 5, false, false);
     if (QLog.isColorLevel()) {
       QLog.d("VoiceTextPttPlayView", 2, "setDuration  length=" + paramInt2 + " duration=" + paramInt1 + "  param.waveSampleLen" + paramRecorderParam.f);
     }
@@ -144,10 +144,10 @@ public class VoiceTextPttPlayView
   
   private void g()
   {
-    if (this.jdField_a_of_type_Bgas != null)
+    if (this.jdField_a_of_type_Bhjj != null)
     {
-      this.jdField_a_of_type_Bgas.e();
-      this.jdField_a_of_type_Bgas = null;
+      this.jdField_a_of_type_Bhjj.e();
+      this.jdField_a_of_type_Bhjj = null;
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) && (!this.jdField_a_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_Float - 0.0F) < 1.0E-008D)) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setCanSupportSlide(false);
@@ -161,14 +161,14 @@ public class VoiceTextPttPlayView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bgas == null)
+    if (this.jdField_a_of_type_Bhjj == null)
     {
-      this.jdField_a_of_type_Bgas = new bgas(this.jdField_a_of_type_JavaLangString, new Handler(), this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bgas.a(getContext());
-      this.jdField_a_of_type_Bgas.b();
-      this.jdField_a_of_type_Bgas.a(this);
-      this.jdField_a_of_type_Bgas.b(paramInt);
-      this.jdField_a_of_type_Bgas.b();
+      this.jdField_a_of_type_Bhjj = new bhjj(this.jdField_a_of_type_JavaLangString, new Handler(), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bhjj.a(getContext());
+      this.jdField_a_of_type_Bhjj.b();
+      this.jdField_a_of_type_Bhjj.a(this);
+      this.jdField_a_of_type_Bhjj.b(paramInt);
+      this.jdField_a_of_type_Bhjj.b();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setCanSupportSlide(true);
       return;
     }
@@ -220,8 +220,8 @@ public class VoiceTextPttPlayView
     a(paramInt, a(paramInt, a(paramInt), paramRecorderParam), paramRecorderParam, paramVoiceTextPanel);
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramRecorderParam.c;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setProgressColor(getContext().getResources().getColorStateList(2131167003).getDefaultColor());
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColorStateList(2131167003).getDefaultColor());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setProgressColor(getContext().getResources().getColorStateList(2131167017).getDefaultColor());
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColorStateList(2131167017).getDefaultColor());
   }
 }
 

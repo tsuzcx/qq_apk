@@ -1,21 +1,21 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XListView;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
 
-class akhr
+public class akhr
   implements View.OnClickListener
 {
-  akhr(akho paramakho) {}
+  public akhr(ContactListView paramContactListView) {}
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(akho.a(this.a), NotifyPushSettingActivity.class);
-    akho.a(this.a).startActivity(localIntent);
-    bcef.b(akho.a(this.a).app, "CliOper", "", "", "0X8009EBB", "0X8009EBB", 0, 1, "", "", "", "");
-    bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 2, 0, "", "", "", "");
+    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
+    ContactListView.a(this.a, null);
+    bmdv.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
+    QQPimGetTipsInfoIPC.a().c();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

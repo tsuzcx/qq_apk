@@ -4,10 +4,10 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
-import bkkk;
-import bkli;
-import bklz;
-import bkma;
+import blvs;
+import blwq;
+import blxh;
+import blxi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -29,8 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import mqq.app.NewIntent;
-import mqq.observer.ServerConfigObserver;
-import nma;
+import nta;
 import protocol.KQQConfig.GPS;
 import protocol.KQQConfig.ReqUserInfo;
 import tencent.im.plugin.ResourceConfig.GetResourceReqInfoV2;
@@ -39,12 +38,11 @@ import tencent.im.plugin.ResourceConfig.GetResourceRespInfoV2;
 import tencent.im.plugin.ResourceConfig.GetResourceRespV2;
 
 public class PluginUpdater
-  extends ServerConfigObserver
   implements Handler.Callback, Runnable
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bkma jdField_a_of_type_Bkma;
+  private blxi jdField_a_of_type_Blxi;
   private Map<String, PluginInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_a_of_type_Boolean;
   
@@ -53,8 +51,8 @@ public class PluginUpdater
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(paramHandler.getLooper(), this);
     paramContext = a(paramContext);
-    boolean bool = bkli.a(paramContext);
-    paramHandler = bkli.a(paramContext);
+    boolean bool = blwq.a(paramContext);
+    paramHandler = blwq.a(paramContext);
     if (paramHandler != null)
     {
       int n = paramHandler.length;
@@ -96,7 +94,7 @@ public class PluginUpdater
           j += 1;
           break label102;
           label181:
-          localObject = bkli.a(localFile);
+          localObject = blwq.a(localFile);
           if (localObject != null) {
             this.jdField_a_of_type_JavaUtilMap.put(((PluginInfo)localObject).mID, localObject);
           } else {
@@ -106,7 +104,7 @@ public class PluginUpdater
       }
     }
     if (bool) {
-      bkli.a(paramContext);
+      blwq.a(paramContext);
     }
     QLog.d("plugin_tag", 1, "init plugin updater :" + this.jdField_a_of_type_JavaUtilMap.size());
   }
@@ -208,7 +206,7 @@ public class PluginUpdater
             localHashMap.put(((PluginInfo)localObject1).mID, localObject5);
             break label1169;
           }
-          if ((this.jdField_a_of_type_Bkma == null) || (!this.jdField_a_of_type_Bkma.a((PluginInfo)localObject1))) {
+          if ((this.jdField_a_of_type_Blxi == null) || (!this.jdField_a_of_type_Blxi.a((PluginInfo)localObject1))) {
             break label1161;
           }
           ((Map)localObject3).remove(((PluginInfo)localObject1).mID);
@@ -259,8 +257,8 @@ public class PluginUpdater
         }
         else
         {
-          if (this.jdField_a_of_type_Bkma != null) {
-            this.jdField_a_of_type_Bkma.a(true);
+          if (this.jdField_a_of_type_Blxi != null) {
+            this.jdField_a_of_type_Blxi.a(true);
           }
           if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
           {
@@ -296,7 +294,7 @@ public class PluginUpdater
     PluginInfo localPluginInfo2 = (PluginInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
     PluginInfo localPluginInfo1 = localPluginInfo2;
     if (localPluginInfo2 == null) {
-      localPluginInfo1 = bkkk.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
+      localPluginInfo1 = blvs.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
     }
     return localPluginInfo1;
   }
@@ -304,7 +302,7 @@ public class PluginUpdater
   public void a()
   {
     File localFile = a(this.jdField_a_of_type_AndroidContentContext);
-    Object localObject = bkli.a(localFile);
+    Object localObject = blwq.a(localFile);
     if (localObject != null)
     {
       int i = 0;
@@ -316,13 +314,13 @@ public class PluginUpdater
     }
     localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (((Iterator)localObject).hasNext()) {
-      bkli.a((PluginInfo)((Iterator)localObject).next(), localFile);
+      blwq.a((PluginInfo)((Iterator)localObject).next(), localFile);
     }
   }
   
-  public void a(bkma parambkma)
+  public void a(blxi paramblxi)
   {
-    this.jdField_a_of_type_Bkma = parambkma;
+    this.jdField_a_of_type_Blxi = paramblxi;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -362,11 +360,11 @@ public class PluginUpdater
     ((ResourceConfig.GetResourceReqV2)localObject2).pluginType.set(128);
     ((ResourceConfig.GetResourceReqV2)localObject2).reqVer.set(1);
     ((ResourceConfig.GetResourceReqV2)localObject2).resReqInfo.set((List)localObject1);
-    ((ResourceConfig.GetResourceReqV2)localObject2).revision.set("94cf45ad");
-    localObject1 = new NewIntent(BaseApplicationImpl.getApplication(), nma.class);
+    ((ResourceConfig.GetResourceReqV2)localObject2).revision.set("b8c39faf");
+    localObject1 = new NewIntent(BaseApplicationImpl.getApplication(), nta.class);
     ((NewIntent)localObject1).putExtra("cmd", "ResourceConfig.ClientReqV2");
     ((NewIntent)localObject1).putExtra("data", ((ResourceConfig.GetResourceReqV2)localObject2).toByteArray());
-    ((NewIntent)localObject1).setObserver(new bklz(this));
+    ((NewIntent)localObject1).setObserver(new blxh(this));
     paramQQAppInterface.startServlet((NewIntent)localObject1);
   }
   
@@ -376,8 +374,8 @@ public class PluginUpdater
       QLog.d("plugin_tag", 2, "onGetPluginConfig: " + paramBoolean);
     }
     if (paramInt != 128) {
-      if (this.jdField_a_of_type_Bkma != null) {
-        this.jdField_a_of_type_Bkma.a(false);
+      if (this.jdField_a_of_type_Blxi != null) {
+        this.jdField_a_of_type_Blxi.a(false);
       }
     }
     do
@@ -386,8 +384,8 @@ public class PluginUpdater
       if ((paramBoolean) && (paramGetResourceRespV2 != null)) {
         break;
       }
-    } while (this.jdField_a_of_type_Bkma == null);
-    this.jdField_a_of_type_Bkma.a(false);
+    } while (this.jdField_a_of_type_Blxi == null);
+    this.jdField_a_of_type_Blxi.a(false);
     return;
     a(paramGetResourceRespV2);
     this.jdField_a_of_type_Boolean = false;

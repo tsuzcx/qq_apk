@@ -6,13 +6,13 @@
         <ImageView android:layout_gravity="left" android:id="@id/epv" android:background="@null" android:layout_width="36.0dip" android:layout_height="fill_parent" android:src="@drawable/dry" android:scaleType="centerInside" android:contentDescription="@string/pzp" />
         <ImageView android:layout_gravity="right" android:id="@id/ir3" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="fill_parent" android:src="@drawable/dt7" android:scaleType="centerInside" android:contentDescription="@string/pv7" />
     </FrameLayout>
-    <ViewStub android:id="@id/nta" android:layout="@layout/cmj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/o3n" android:layout="@layout/coc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView android:id="@id/kti" android:background="#ff1a1a1a" android:layout_width="fill_parent" android:layout_height="fill_parent" app:snap_speed_factor="20.0" />
     <LinearLayout android:gravity="center_horizontal" android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/kl7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
         <TextView android:textSize="15.0sp" android:textColor="#ffffffff" android:id="@id/kld" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
         <ImageView android:id="@id/kl8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:src="@drawable/dsz" />
         <ImageView android:id="@id/kl9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.0dip" android:src="@drawable/dsz" />
     </LinearLayout>
-    <ViewStub android:id="@id/ntc" android:layout="@layout/cmi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/o3p" android:layout="@layout/cob" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <FrameLayout android:layout_gravity="bottom" android:id="@id/b4z" android:background="@drawable/hdt" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </FrameLayout>

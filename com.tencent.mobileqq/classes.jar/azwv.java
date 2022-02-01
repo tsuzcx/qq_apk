@@ -1,51 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.CustomImgView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class azwv
-  implements View.OnClickListener
+class azwv
+  implements bhqe
 {
-  public azwv(AIOIceBreakView paramAIOIceBreakView) {}
+  azwv(azwp paramazwp) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    int i = 1;
-    QLog.i("IceBreak.HotPic", 2, "onClick.");
-    URLImageView localURLImageView = (URLImageView)((CustomImgView)paramView).a;
-    ahmw localahmw = (ahmw)paramView.getTag();
-    if ((localURLImageView.getDrawable() instanceof URLDrawable))
-    {
-      if (((URLDrawable)localURLImageView.getDrawable()).getStatus() == 1) {
-        AIOIceBreakView.a(this.a, localahmw);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsProfileHeaderComponent", 2, "ZanDoubleDialog: onLeftClick: ");
     }
-    else if (abwz.a(AIOIceBreakView.a(this.a).sessionInfo.curType) != 1044) {
-      if (AIOIceBreakView.a(this.a).sessionInfo.curType != 0) {
-        break label179;
-      }
-    }
-    for (;;)
+    if (azwp.e(this.a).getIntent().hasExtra("troopUin")) {}
+    for (Object localObject = "1";; localObject = "0")
     {
-      bcef.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CB", "0X800A4CB", i, 0, "", "", "", "");
-      if (AIOIceBreakView.a(this.a) != null) {
-        AIOIceBreakView.a(this.a).a(localURLImageView);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
+      VasWebviewUtil.reportCommercialDrainage(azwp.d(this.a).getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", (String)localObject, "");
+      localObject = new Intent(azwp.f(this.a), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("fragmentStyle", 3);
+      ((Intent)localObject).putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
+      ((Intent)localObject).putExtra("isTransparentTitle", true);
+      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+      azwp.g(this.a).startActivity((Intent)localObject);
       return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("IceBreak.HotPic", 2, "onClick:URLDrawable status != successed");
-      break;
-      label179:
-      i = 2;
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsProfileHeaderComponent", 2, "ZanDoubleDialog: onRightClick: ");
+    }
+    if (azwp.h(this.a).getIntent().hasExtra("troopUin")) {}
+    for (String str = "1";; str = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(azwp.e(this.a).getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", str, "");
+      bhoy.a(azwp.i(this.a), "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
+      azwp.a(this.a).set(true);
+      return;
     }
   }
 }

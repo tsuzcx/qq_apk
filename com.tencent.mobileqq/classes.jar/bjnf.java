@@ -1,11 +1,21 @@
-import android.view.animation.Interpolator;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadLogInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadLogListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
-public class bjnf
-  implements Interpolator
+class bjnf
+  implements ITMAssistantDownloadLogListener
 {
-  public float getInterpolation(float paramFloat)
+  SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
+  
+  bjnf(bjna parambjna) {}
+  
+  public void onLog(ArrayList<TMAssistantDownloadLogInfo> paramArrayList)
   {
-    return bjmb.a(paramFloat);
+    if ((paramArrayList == null) && (QLog.isColorLevel())) {
+      QLog.i("DownloadManager_", 2, "logList is null");
+    }
   }
 }
 

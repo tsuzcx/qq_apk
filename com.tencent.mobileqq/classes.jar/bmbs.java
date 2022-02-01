@@ -1,12 +1,107 @@
-import android.support.annotation.IntRange;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bmbs
+public class bmbs
 {
-  public abstract void a(@IntRange(from=0L, to=100L) int paramInt);
+  private static int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final boolean jdField_a_of_type_Boolean = true;
+  private int b = 3;
   
-  public abstract void a(@Nullable NetResp paramNetResp);
+  static
+  {
+    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+    int i = 0;
+    for (;;)
+    {
+      if (i < arrayOfStackTraceElement.length)
+      {
+        if (bmbs.class.getName().equals(arrayOfStackTraceElement[i].getClassName())) {
+          jdField_a_of_type_Int = i;
+        }
+      }
+      else {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  private StringBuilder a(int paramInt)
+  {
+    return new StringBuilder();
+  }
+  
+  private void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
+  {
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      StringBuilder localStringBuilder;
+      try
+      {
+        localStringBuilder = a(paramInt3);
+        if (paramString2 != null) {
+          localStringBuilder.append(paramString2);
+        }
+        paramString2 = paramString1;
+        if (paramString1 == null) {
+          paramString2 = this.jdField_a_of_type_JavaLangString;
+        }
+        switch (paramInt2)
+        {
+        default: 
+          return;
+        }
+      }
+      finally {}
+      if (!QLog.isDevelopLevel())
+      {
+        continue;
+        if (!QLog.isColorLevel())
+        {
+          continue;
+          QLog.e(paramString2, paramInt1, localStringBuilder.toString());
+          continue;
+          QLog.w(paramString2, paramInt1, localStringBuilder.toString());
+          continue;
+          QLog.i(paramString2, paramInt1, localStringBuilder.toString());
+          continue;
+          QLog.d(paramString2, paramInt1, localStringBuilder.toString());
+        }
+      }
+    }
+  }
+  
+  public bmbs a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bmbs a(String paramString1, int paramInt, String paramString2)
+  {
+    a(paramString1, paramInt, 6, paramString2, this.b);
+    return this;
+  }
+  
+  public final void a(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public bmbs b(String paramString1, int paramInt, String paramString2)
+  {
+    a(paramString1, paramInt, 4, paramString2, this.b);
+    return this;
+  }
+  
+  public bmbs c(String paramString1, int paramInt, String paramString2)
+  {
+    a(paramString1, paramInt, 3, paramString2, this.b);
+    return this;
+  }
 }
 
 

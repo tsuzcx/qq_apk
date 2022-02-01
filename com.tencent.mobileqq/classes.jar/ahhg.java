@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class ahhg
-  implements DialogInterface.OnClickListener
+public class ahhg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahhg(ahgz paramahgz, QQCustomDialog paramQQCustomDialog) {}
+  public ahhg(SixCombolEffectView paramSixCombolEffectView, ahhr paramahhr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.jdField_a_of_type_Ahhr.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
   }
 }
 

@@ -1,16 +1,8 @@
-class wja
-  extends whv
+public abstract interface wja
 {
-  wja(wif paramwif, String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a();
   
-  public boolean b()
-  {
-    a("WeChatImageJob_in_drawable", a("UrlDrawableDownloadJob_dra"));
-    return true;
-  }
+  public abstract void b();
 }
 
 

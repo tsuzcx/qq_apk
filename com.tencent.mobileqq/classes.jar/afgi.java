@@ -1,38 +1,150 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
-import com.tencent.mobileqq.util.DisplayUtil;
-
 public class afgi
-  implements bcrf
 {
-  public afgi(FriendShipWaveView paramFriendShipWaveView) {}
+  public double a = -100.0D;
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b = "";
+  public boolean b;
+  public int c;
+  public long c;
+  public String c = "";
+  public boolean c;
+  public int d;
+  public long d;
+  public String d = "";
+  public boolean d;
+  public int e;
+  public String e = "";
+  public int f;
+  public String f = "";
+  public int g;
+  public String g = "";
+  public int h;
+  public String h = "";
+  public int i;
+  public String i = "";
+  public int j;
+  public String j = "";
+  public int k;
+  public String k = "";
+  public int l;
+  public String l = "";
+  public int m;
+  public String m = "";
+  public int n;
+  public String n = "";
+  public int o;
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
+  public String t = "";
+  public String u;
+  public String v;
   
-  public void a()
+  public void a(String paramString)
   {
-    bcrm localbcrm = new bcrm(500, 0.0F, 1.0F);
-    this.a.d.jdField_a_of_type_Int = 255;
-    this.a.d.a(new bcre[] { localbcrm });
-    localbcrm.a(new afgj(this));
-    this.a.e = new bcsi();
-    this.a.e.a(FriendShipWaveView.a(this.a));
-    this.a.e.a(this.a.jdField_a_of_type_Int / 2 + DisplayUtil.dip2px(this.a.jdField_a_of_type_AndroidContentContext, 120.0F), this.a.b.d + 30.0F);
-    this.a.a(this.a.e);
-    localbcrm = new bcrm(500, 0.0F, 1.0F);
-    this.a.e.a(new bcre[] { localbcrm });
-    localbcrm.a(new afgk(this));
-    this.a.f = new bcsi();
-    this.a.f.a(FriendShipWaveView.b(this.a));
-    this.a.f.a(this.a.jdField_a_of_type_Int / 2 - DisplayUtil.dip2px(this.a.jdField_a_of_type_AndroidContentContext, 142.0F), this.a.c.d - 50.0F);
-    this.a.a(this.a.f);
-    localbcrm = new bcrm(500, 0.0F, 1.0F);
-    this.a.f.a(new bcre[] { localbcrm });
-    localbcrm.a(new afgl(this));
-    this.a.g = new bcsi();
-    this.a.g.a(FriendShipWaveView.c(this.a));
-    this.a.g.a(this.a.jdField_a_of_type_Int / 2 + DisplayUtil.dip2px(this.a.jdField_a_of_type_AndroidContentContext, 140.0F), this.a.c.d);
-    this.a.a(this.a.g);
-    localbcrm = new bcrm(500, 0.0F, 1.0F);
-    this.a.g.a(new bcre[] { localbcrm });
-    localbcrm.a(new afgm(this));
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.d = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.g = str;
+  }
+  
+  public void c(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.h = str;
+  }
+  
+  public void d(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.i = str;
+  }
+  
+  public void e(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.j = str;
+  }
+  
+  public void f(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.k = str;
+  }
+  
+  public void g(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.p = str;
+  }
+  
+  public void h(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.l = str;
+  }
+  
+  public void i(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.m = str;
+  }
+  
+  public void j(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.n = str;
+  }
+  
+  public void k(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.o = str;
   }
 }
 

@@ -1,9 +1,18 @@
-import android.app.Activity;
-import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.troop.utils.TroopFileManager.5.1;
+import java.util.List;
 
-public abstract interface bgjm
+public class bgjm
+  extends aahf
 {
-  public abstract void a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity, int paramInt);
+  bgjm(bgjh parambgjh) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<bfif> paramList, Bundle paramBundle)
+  {
+    ThreadManager.post(new TroopFileManager.5.1(this, paramBundle, paramInt2, paramByteStringMicro, paramBoolean1, paramList, paramBoolean2, paramInt3, paramInt1), 8, null, true);
+  }
 }
 
 

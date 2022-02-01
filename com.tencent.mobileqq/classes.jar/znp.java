@@ -1,36 +1,47 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.richframework.eventbus.SimpleEventBus;
-import com.tencent.biz.subscribe.event.FollowUpdateEvent;
-import com.tencent.biz.subscribe.widget.textview.FollowTextView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.richframework.download.RFWDownloadStrategy;
 
 public class znp
-  extends amyh
 {
-  public znp(FollowTextView paramFollowTextView) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private RFWDownloadStrategy jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWDownloadStrategy;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   
-  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString)
+  public znp(String paramString)
   {
-    super.onUnfollowPublicAccount(paramBoolean, paramString);
-    FollowTextView.a(this.a, true);
-    if (paramBoolean)
-    {
-      if (!FollowTextView.a(this.a)) {
-        FollowTextView.a(this.a, false, FollowTextView.a(this.a));
-      }
-      this.a.a(0);
-      if (FollowTextView.a(this.a) != null)
-      {
-        if (FollowTextView.a(this.a) != null) {
-          FollowTextView.a(this.a).a(false, FollowTextView.a(this.a));
-        }
-        SimpleEventBus.getInstance().dispatchEvent(new FollowUpdateEvent(0, FollowTextView.a(this.a).poster.id.get()));
-      }
-      return;
-    }
-    QQToast.a(this.a.getContext(), 2131690669, 0).a();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public znn a()
+  {
+    return new znn(this, null);
+  }
+  
+  public znp a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public znp a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public znp a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public znp b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return this;
   }
 }
 

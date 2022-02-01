@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.redtouch;
 
-import blbw;
-import blbx;
+import cooperation.vip.tianshu.TianShuManager;
+import cooperation.vip.tianshu.TianShuReportData;
 
 class RedTouchLifeTimeManager$1
   implements Runnable
 {
-  RedTouchLifeTimeManager$1(RedTouchLifeTimeManager paramRedTouchLifeTimeManager, blbx paramblbx) {}
+  RedTouchLifeTimeManager$1(RedTouchLifeTimeManager paramRedTouchLifeTimeManager, TianShuReportData paramTianShuReportData) {}
   
   public void run()
   {
-    blbw.a().a(this.a);
+    TianShuManager.getInstance().report(this.a);
   }
 }
 

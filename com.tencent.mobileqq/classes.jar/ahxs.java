@@ -1,25 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.Player;
+import java.lang.ref.WeakReference;
 
-public class ahxs
-  implements DialogInterface.OnClickListener
+public final class ahxs
+  extends AnimationView.Player
 {
-  public ahxs(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public static boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahxs(AnimationView paramAnimationView)
   {
-    switch (paramInt)
+    super(paramAnimationView);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    a = paramBoolean;
+  }
+  
+  public void a(AnimationView paramAnimationView)
+  {
+    reset();
+    this.playViewRef.clear();
+    this.playViewRef = new WeakReference(paramAnimationView);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
-      return;
     }
-    paramDialogInterface.dismiss();
+    for (;;)
+    {
+      return false;
+      if (a)
+      {
+        paramMessage = this.mHandler.obtainMessage(1);
+        this.mHandler.sendMessageDelayed(paramMessage, 500L);
+      }
+      else
+      {
+        autoPlay();
+      }
+    }
   }
 }
 

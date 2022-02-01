@@ -1,6 +1,10 @@
-public abstract interface zvz
+import android.widget.ImageView;
+
+class zvz
 {
-  public abstract void a();
+  public ImageView a;
+  
+  private zvz(zvx paramzvx) {}
 }
 
 

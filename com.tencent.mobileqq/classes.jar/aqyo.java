@@ -1,41 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.qphone.base.util.QLog;
-
 public class aqyo
-  extends Handler
+  extends aqyn
 {
-  public aqyo(Client paramClient, Looper paramLooper)
+  private aqzf a;
+  
+  aqyo(String paramString, aqzf paramaqzf)
   {
-    super(paramLooper);
+    super(paramString);
+    this.a = paramaqzf;
   }
   
-  public void handleMessage(Message paramMessage)
+  public aqzf a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-        this.a.onRespFromServer(paramMessage.getData());
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
-      return;
-      this.a.onPushMsgFromServer(paramMessage.getData());
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqyo
  * JD-Core Version:    0.7.0.1
  */

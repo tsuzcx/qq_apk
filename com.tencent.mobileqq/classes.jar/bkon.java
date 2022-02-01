@@ -1,16 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.MediaChooseJsProxyImpl.1.1;
 
-class bkon
-  implements DialogInterface.OnClickListener
+public class bkon
+  extends BroadcastReceiver
 {
-  bkon(bkok parambkok) {}
+  bkon(bkom parambkom) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.b = true;
-    bkok.a(this.a, 2);
-    bkok.c(this.a);
+    if (!bkom.a(this.a)) {}
+    do
+    {
+      return;
+      bkom.a(this.a, false);
+      paramContext = paramIntent.getAction();
+      QLog.d("MediaChooseJsProxyImpl", 2, "mAvatarReceiver.onReceive action=" + paramContext);
+    } while (!"get_media_info".equals(paramContext));
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaChooseJsProxyImpl", 2, new Object[] { paramIntent });
+    }
+    ThreadManagerV2.executeOnSubThread(new MediaChooseJsProxyImpl.1.1(this, paramIntent));
   }
 }
 

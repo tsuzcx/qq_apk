@@ -1,11 +1,42 @@
-public abstract interface bncx
-  extends bned
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.4.1;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.4.2;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.4.3;
+import mqq.os.MqqHandler;
+
+public class bncx
+  implements bnkq
 {
-  public abstract void aI_();
+  bncx(bncv parambncv) {}
   
-  public abstract void b();
+  public void onDownloadFinish(bnke parambnke, boolean paramBoolean)
+  {
+    if ((!paramBoolean) || (bncv.a(this.a) == null))
+    {
+      ThreadManager.getUIHandler().post(new AEBottomListAdapter.4.1(this, parambnke));
+      if (!paramBoolean) {
+        break label146;
+      }
+    }
+    label146:
+    for (int i = 0;; i = 1)
+    {
+      aanb.a("record_decoration_download", aanb.a(i, System.currentTimeMillis() - parambnke.jdField_a_of_type_Long, parambnke.d, parambnke.b, parambnke.jdField_a_of_type_JavaLangString));
+      return;
+      if ((parambnke.jdField_a_of_type_JavaLangString.equals(bncv.a(this.a).a())) && (parambnke.jdField_a_of_type_JavaLangString.equals(bncv.a(this.a).jdField_a_of_type_JavaLangString)))
+      {
+        bncv.a(this.a);
+        bncv.a(this.a, bncv.a(this.a));
+      }
+      ThreadManager.getUIHandler().post(new AEBottomListAdapter.4.2(this, parambnke));
+      break;
+    }
+  }
   
-  public abstract void d();
+  public void onProgressUpdate(bnke parambnke, int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new AEBottomListAdapter.4.3(this, parambnke, paramInt));
+  }
 }
 
 

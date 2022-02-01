@@ -1,35 +1,55 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeAnimStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class afan
-  implements akbj
+  extends bhyn
 {
-  public afan(CustomizeStrategyFactory.ThemeAnimStrategy.1 param1) {}
-  
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public afan(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
+    super(paramString1, paramString2);
+  }
+  
+  public void onCancel(bhyo parambhyo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambhyo);
+    }
+    super.onCancel(parambhyo);
+  }
+  
+  public void onDone(bhyo parambhyo)
+  {
+    super.onDone(parambhyo);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + parambhyo);
+    }
+    if (parambhyo.b()) {}
+    do
     {
-      this.a.a.animInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult);
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_AIO_REDPACKET background=" + this.a.a.background + ",animInfo=" + this.a.a.animInfo);
-      }
-      CustomizeStrategyFactory.a().a(this.a.a);
       return;
-    }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
+      if (parambhyo.a() == -1)
       {
-        paramPathResult.printStackTrace();
+        parambhyo = new Message();
+        parambhyo.what = 17;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambhyo);
+        return;
       }
+      parambhyo = this.a.jdField_a_of_type_Gb.a(this.a.e);
+    } while (parambhyo == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = parambhyo;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean onStart(bhyo parambhyo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + parambhyo);
     }
+    return super.onStart(parambhyo);
   }
 }
 

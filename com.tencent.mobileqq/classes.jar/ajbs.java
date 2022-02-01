@@ -1,17 +1,9 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-
 public class ajbs
-  implements View.OnLongClickListener
+  extends ajbn
 {
-  public ajbs(Conversation paramConversation) {}
-  
-  public boolean onLongClick(View paramView)
+  public boolean a()
   {
-    return this.a.a.b.performClick();
+    return true;
   }
 }
 

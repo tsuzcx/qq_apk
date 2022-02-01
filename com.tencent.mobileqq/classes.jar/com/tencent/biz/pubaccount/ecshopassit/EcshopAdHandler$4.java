@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import abrk;
+import achn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
@@ -19,14 +19,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import oge;
+import onx;
 import org.json.JSONObject;
 import tencent.im.oidb.qqshop.qq_ad.QQAdGet;
 
 public class EcshopAdHandler$4
   implements Runnable
 {
-  public EcshopAdHandler$4(oge paramoge, int paramInt, List paramList1, List paramList2, boolean paramBoolean, String paramString) {}
+  public EcshopAdHandler$4(onx paramonx, int paramInt, List paramList1, List paramList2, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
@@ -45,7 +45,7 @@ public class EcshopAdHandler$4
           break label403;
         }
         localObject1 = ((GdtDeviceInfoHelper.Result)localObject1).deviceInfo;
-        Object localObject3 = abrk.a((PBField)localObject1);
+        Object localObject3 = achn.a((PBField)localObject1);
         if ((localObject3 != null) && (localObject3 != JSONObject.NULL))
         {
           localObject3 = localObject3.toString();
